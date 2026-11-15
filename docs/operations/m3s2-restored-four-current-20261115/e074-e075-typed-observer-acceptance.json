@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "e074-e075-typed-observer-acceptance-v1",
+  "reviewer": "/root/m1_compact_transport",
+  "reviewedAtUtc": "2026-11-15T22:14:08.568579+00:00",
+  "decision": "ACCEPT_EXACT_TYPED_TRANSFORMATION_WITH_SEPARATE_ROOT_FONT_CLOSURE",
+  "originalObservationRef": {
+    "path": "docs/operations/m3s2-restored-four-current-20261115/e074-e075-actual-observations.json",
+    "sha256": "40c01a3ab8f174c9d944a1324069abf332d6be2f359a90236b9bd2acfe79af46"
+  },
+  "typedRef": {
+    "path": "docs/operations/m3s2-restored-four-current-20261115/e074-e075-vector-continuity-review.json",
+    "sha256": "da504e669b67bd3b963459ba8441b8146efb262959b923348552e467274b9ebf"
+  },
+  "rootBrowserClosureRef": {
+    "path": "docs/operations/m3s2-restored-four-current-20261115/root-browser-font-verification.json",
+    "sha256": "74833ae71f6b1dc98356b8f17560e388d228417e5056a4801a7db8618a34d7ed"
+  },
+  "observerClosureRef": {
+    "path": "docs/operations/m3s2-restored-four-current-20261115/observer-closure.json",
+    "sha256": "c4adb24728b603b3e94419327dd5a2c1e82cb4d2f7f182f0f468ea1e30731564"
+  },
+  "publicationManifestSha256": "431ce06204f1ba0b38ccf44ab5e975e8e917e999720a481973803ec24f31018d",
+  "currentSourceCommit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+  "baselineSourceCommit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+  "checks": {
+    "exactOriginalBytesPreserved": true,
+    "rowsCompared": 34,
+    "retainedRows": 34,
+    "semanticHolds": 0,
+    "priorFontPendingRowsClosedBySeparateRootWitness": [
+      "E074#20",
+      "E075#19",
+      "E075#8"
+    ],
+    "allUidOrdinalQuestionNoWholeQuestionAndCompactItemHashesExact": true,
+    "allChangedFieldSetsExact": true,
+    "allOriginalObservationTextsExactWithAttribution": true,
+    "originalAssetReferenceCount": 87,
+    "originalAssetReferencesPreserved": true,
+    "cardHashesPreserved": true,
+    "exactImmutableRefReads": 11,
+    "rootClosureAssetRefsAndNormalizedDomCompared": 6,
+    "rootClosureCaptureRawHashesChecked": 6,
+    "manifestRawByteEntriesChecked": 22,
+    "e074Q17Q23ExistingMethodAmendmentPreservedViaExactFrozenCompactItemHashes": true,
+    "originalObserverActualBrowserRemainsNotRun": true,
+    "separateRootActualChromeRolePreserved": true
+  },
+  "newTestsRun": 0,
+  "newVisualInspections": 0,
+  "newMathApproval": 0,
+  "newFourSlotValues": 0,
+  "sourceWrites": 0,
+  "assetWrites": 0,
+  "compactWrites": 0,
+  "blockingFindings": [],
+  "limitation": "Accepts exact transformation of this observer frozen 34-row review plus separately attributed root Chrome font-only closure at immutable b967; does not approve other observers rows or claim this observer ran Chrome or the final builder."
+}

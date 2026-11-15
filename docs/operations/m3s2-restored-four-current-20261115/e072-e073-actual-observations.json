@@ -1,0 +1,2506 @@
+{
+  "schemaVersion": "m3-restored-four-compact-observation-v1",
+  "reviewer": "/root/audit_m2",
+  "observedAtUtc": "2026-11-15T21:57:59.049304+00:00",
+  "currentCommit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+  "baselineCommit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+  "scope": "E072/E073 changed student payload only; reuse existing vectors and existing authority",
+  "renderer": "Inkscape 1.4, exported raw SVG to PNG at width1100; PIL white flatten/contactsheet; actual view_image observation",
+  "browserQa": "NOT_RUN",
+  "observedRows": 37,
+  "supportedRows": 32,
+  "holdCandidateRows": 1,
+  "sourceMutation": 0,
+  "assetMutation": 0,
+  "vectorMutation": 0,
+  "notes": [
+    "Image tag replacement leaves all other content/question HTML exactly unchanged for all four sources.",
+    "All existing choices, answer and solution text stay exact; solution images are observed separately.",
+    "This is current renderer continuity evidence, not a new full exam, semantic, difficulty or four-slot judgment.",
+    "E072 Q16 remains an explicit HOLD candidate until root independent observation."
+  ],
+  "authorityRefs": [
+    {
+      "exam": "E072",
+      "role": "top",
+      "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+      "path": "archive-work/m3s2-4slot-current-20261115/exams/E072.4slot.json",
+      "expectedSha256": "73c4502839a1a64c7cbfd06ca3b23c9157ffaded9ed3b93c043160446d21dfbd",
+      "exists": true,
+      "localPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/E072-top.json",
+      "sha256": "73c4502839a1a64c7cbfd06ca3b23c9157ffaded9ed3b93c043160446d21dfbd",
+      "matchesExpected": true,
+      "bytes": 157115,
+      "keys": [
+        "schemaVersion",
+        "sourceArchiveFile",
+        "sourceGitBlobSha",
+        "dictionaryVersion",
+        "judgedBy",
+        "items",
+        "candidates",
+        "selfCheck",
+        "sourceRebinding"
+      ]
+    },
+    {
+      "exam": "E072",
+      "role": "originalReview",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E072.4slot.json",
+      "expectedSha256": "d5cf1fb7609558863ae907e20d9c28e0a8f3753b43ccdbfe1ee8d3ba5807ca50",
+      "exists": true,
+      "localPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/E072-originalReview.json",
+      "sha256": "d5cf1fb7609558863ae907e20d9c28e0a8f3753b43ccdbfe1ee8d3ba5807ca50",
+      "matchesExpected": true,
+      "bytes": 157667,
+      "keys": [
+        "schemaVersion",
+        "sourceArchiveFile",
+        "sourceGitBlobSha",
+        "dictionaryVersion",
+        "judgedBy",
+        "items",
+        "candidates",
+        "selfCheck"
+      ]
+    },
+    {
+      "exam": "E072",
+      "role": "sourceContinuity",
+      "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+      "path": "archive-work/m3s2-4slot-current-20261115/current-source-continuity.json",
+      "expectedSha256": "6f608cf2458bf9ce06e5b2a2da304ffc3ab34315b612d92f9b6d2b241e7c5968",
+      "exists": true,
+      "localPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/E072-sourceContinuity.json",
+      "sha256": "6f608cf2458bf9ce06e5b2a2da304ffc3ab34315b612d92f9b6d2b241e7c5968",
+      "matchesExpected": true,
+      "bytes": 1660641,
+      "keys": [
+        "schemaVersion",
+        "sourceCommit",
+        "originalReviewCommit",
+        "sourceMutation",
+        "semanticApprovalMutation",
+        "difficultyApprovalMutation",
+        "examCount",
+        "itemCount",
+        "proofKindCounts",
+        "methodAmendmentCount",
+        "quoteRebindingCount",
+        "quoteRebindingUidCount",
+        "dictionary",
+        "priorRuntimeUidPreservation",
+        "runtimeStatus",
+        "mainRegistrationStatus",
+        "pagesStatus",
+        "warnings",
+        "exams",
+        "methodAmendments",
+        "quoteRebindings",
+        "items"
+      ]
+    },
+    {
+      "exam": "E073",
+      "role": "top",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E073.4slot.json",
+      "expectedSha256": "6384295e75c05ae22bb3885f88c6726af4855a51807172f1d149d8f14696aaf9",
+      "exists": true,
+      "localPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/E073-top.json",
+      "sha256": "6384295e75c05ae22bb3885f88c6726af4855a51807172f1d149d8f14696aaf9",
+      "matchesExpected": true,
+      "bytes": 123014,
+      "keys": [
+        "schemaVersion",
+        "sourceArchiveFile",
+        "sourceGitBlobSha",
+        "dictionaryVersion",
+        "judgedBy",
+        "items",
+        "candidates",
+        "selfCheck"
+      ]
+    },
+    {
+      "exam": "E073",
+      "role": "originalReview",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E073.4slot.json",
+      "expectedSha256": "6384295e75c05ae22bb3885f88c6726af4855a51807172f1d149d8f14696aaf9",
+      "exists": true,
+      "localPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/E073-originalReview.json",
+      "sha256": "6384295e75c05ae22bb3885f88c6726af4855a51807172f1d149d8f14696aaf9",
+      "matchesExpected": true,
+      "bytes": 123014,
+      "keys": [
+        "schemaVersion",
+        "sourceArchiveFile",
+        "sourceGitBlobSha",
+        "dictionaryVersion",
+        "judgedBy",
+        "items",
+        "candidates",
+        "selfCheck"
+      ]
+    },
+    {
+      "exam": "E073",
+      "role": "sourceContinuity",
+      "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+      "path": "archive-work/m3s2-4slot-current-20261115/current-source-continuity.json",
+      "expectedSha256": "6f608cf2458bf9ce06e5b2a2da304ffc3ab34315b612d92f9b6d2b241e7c5968",
+      "exists": true,
+      "localPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/E073-sourceContinuity.json",
+      "sha256": "6f608cf2458bf9ce06e5b2a2da304ffc3ab34315b612d92f9b6d2b241e7c5968",
+      "matchesExpected": true,
+      "bytes": 1660641,
+      "keys": [
+        "schemaVersion",
+        "sourceCommit",
+        "originalReviewCommit",
+        "sourceMutation",
+        "semanticApprovalMutation",
+        "difficultyApprovalMutation",
+        "examCount",
+        "itemCount",
+        "proofKindCounts",
+        "methodAmendmentCount",
+        "quoteRebindingCount",
+        "quoteRebindingUidCount",
+        "dictionary",
+        "priorRuntimeUidPreservation",
+        "runtimeStatus",
+        "mainRegistrationStatus",
+        "pagesStatus",
+        "warnings",
+        "exams",
+        "methodAmendments",
+        "quoteRebindings",
+        "items"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_9e4a30e040bad48407654dcdbf5217ce3af42b18555e661cec672ef194e66de5",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Added solution-only parabola preserves the existing upward-opening curve, intercept/vertex and quadrant/monotonicity discussion; no problem-side given is added.",
+      "beforeStudentSha256": "f8dace7a65b85dfff02bde2590fa08098c7c723e72371fd19dfae06d66d766d9",
+      "currentStudentSha256": "55ed0e5f650b9a7e25f2183642c65e20ff8ede4219dbd119a3eab203ac4b3ec0",
+      "currentQuestionSha256": "15b94fa2b9352821ca3b53e635a2791d7a4250c02c6221a04f26adf089179018",
+      "existingFourSlot": {
+        "ordinal": 1,
+        "format": "보기(ㄱㄴㄷ) 판정",
+        "given": [
+          91,
+          107
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          59,
+          311,
+          111,
+          149
+        ],
+        "condition": [
+          129,
+          297
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "ae692e6bb689d13f255fe4bd2c9e68133cc5d4457fbf481b18001388dd60127d",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q01.png",
+      "cardSha256": "176e34a0afb9ccedbef37226a327ab9eb413ac8af7e777d96838ac159fd1d1c2",
+      "assets": [
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q1-solution.svg",
+          "gitBlobSha": "ce7fe19e5fcb9aece9ce7ce840d17e59b5a2ce98",
+          "sha256": "e37374edc1c5ee4a92a31bc25cbb79b59ffd935ead7beed950121eabda2dc816",
+          "bytes": 2327,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/ce7fe19e5fcb9aece9ce7ce840d17e59b5a2ce98.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/ce7fe19e5fcb9aece9ce7ce840d17e59b5a2ce98.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_e04c76d1ef078f9bdac8b5c09a971f3e3d78d73a59a47d1ec82c8fa30121b218",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Prior/current problem both show the same vertex, axis and marked x-intercept. Solution view only names the vertex already used in the unchanged explanation.",
+      "beforeStudentSha256": "4f338563ecf65a691bc95fe375908a100b4913dbe3025c6677598ef321cccb27",
+      "currentStudentSha256": "ea70d3c770ef98c0414c1dd9020b6a0e07c5d70c48c655ef88b1552342f32f96",
+      "currentQuestionSha256": "888f3a26eabc0e5269f678dbe1cfd33cf689acc3a3fad8e7041d5548ee41827e",
+      "existingFourSlot": {
+        "ordinal": 2,
+        "format": "단일 정답",
+        "given": [
+          91,
+          311,
+          648
+        ],
+        "goal": [
+          332
+        ],
+        "method": [
+          596,
+          53
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "556d1eeb5bed5c2e65d4ed489d67d7c1f2fb868a676e256728cb88e48cbc1cc2",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q02.png",
+      "cardSha256": "320f4d7faec737743a67e491c0ff0d95d2f42bb9b23b9f5dd1cf2c5f61275bf5",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q02.png",
+          "gitBlobSha": "ccb16cfe894fe7260fcef9c94e3b1af2a55cfa26",
+          "sha256": "652682feaeed536cffec8d7d0f583197be40acbcdc6af55d1030009b7a968ebc",
+          "bytes": 18586,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/ccb16cfe894fe7260fcef9c94e3b1af2a55cfa26.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/ccb16cfe894fe7260fcef9c94e3b1af2a55cfa26.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q2-problem-v3.svg",
+          "gitBlobSha": "8c4fae24562ac38fb1ad799d6a0dfcfcadbec872",
+          "sha256": "c86193a6fd2c5b985fd7c3f1bf1c21841a06e46b2ecbb17300302b42303add34",
+          "bytes": 2572,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/8c4fae24562ac38fb1ad799d6a0dfcfcadbec872.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/8c4fae24562ac38fb1ad799d6a0dfcfcadbec872.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q2-solution.svg",
+          "gitBlobSha": "a4b15d3075300e537c7b2495532ae58aea47bda4",
+          "sha256": "4e65ffdf07891ccf019af14349368d1c029d7a7b34bd7f750db765fe3e935607",
+          "bytes": 2735,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/a4b15d3075300e537c7b2495532ae58aea47bda4.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/a4b15d3075300e537c7b2495532ae58aea47bda4.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_55ceebb06ed184cff817b9012d0e8b9966ac12607c7591a35c50c28dc433a932",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Wall, rectangular enclosure, two equal side variables and the total fence condition remain explicit. The solution curve illustrates the unchanged area-model method.",
+      "beforeStudentSha256": "7dddf5d65ec5668dc36512de75fa7b85f7cb823475070b09c2d4d41a4f64de7a",
+      "currentStudentSha256": "43657905bbe187ac2ced3711817e3b3ee2e22cd0aae4c5938d8ffce0bf1c29fb",
+      "currentQuestionSha256": "653b7ce230eb62fc005a7d79bf4936a8bc390e214147a19185bba0f8dc1df63d",
+      "existingFourSlot": {
+        "ordinal": 3,
+        "format": "단일 정답",
+        "given": [
+          165,
+          215
+        ],
+        "goal": [
+          215,
+          127
+        ],
+        "method": [
+          299,
+          59,
+          311
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "6ab5d9f0e72279d032fe31dbeef0530d3e765fec90be4a2d5139602b4a466b52",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q03.png",
+      "cardSha256": "d821f99c5163578249e164c16c050d9605c262fa1169b1406f384a02a60bc01b",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q03.png",
+          "gitBlobSha": "977033eb9a98eea72c8de3ce7ad6d3b1d8175dd8",
+          "sha256": "983a54b0070b3c177adeae6a8862bfa35b2a71c9da5dc2d294509472c495255d",
+          "bytes": 19131,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/977033eb9a98eea72c8de3ce7ad6d3b1d8175dd8.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/977033eb9a98eea72c8de3ce7ad6d3b1d8175dd8.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q3-problem-v3.svg",
+          "gitBlobSha": "ee970b8c299963ea338133317cfcfa5e99df3553",
+          "sha256": "f454257b93e049ec091ca86cd593adde8e9e5da44f2a2266d7ba4cb3ac2da62c",
+          "bytes": 3708,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/ee970b8c299963ea338133317cfcfa5e99df3553.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/ee970b8c299963ea338133317cfcfa5e99df3553.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q3-solution.svg",
+          "gitBlobSha": "46eabf37416382f1337ce871d87de575a9d0d342",
+          "sha256": "467213aa4c63e549381eb87ce6239b98602f937ec1a8b7b4f3553359181795a8",
+          "bytes": 2144,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/46eabf37416382f1337ce871d87de575a9d0d342.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/46eabf37416382f1337ce871d87de575a9d0d342.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_3815fd69e95e026cfdfba825cbc243eae57253f38329b28dc3eb18c14a39cd29",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "All five option numbers and three-class distribution patterns remain in the same order: off-centre peak, two high ends, uniform, opposite off-centre peak, dominant centre. No calibrated vertical scale exists; pixel-height identity is not claimed. Solution view illustrates the same spread comparison.",
+      "beforeStudentSha256": "85025bf0705b668852b3197d1132c812e44cb248e82ee37b56295e9e6f5537b9",
+      "currentStudentSha256": "17e9d6db1ed79195a93927a7d04a98bf0276bd3203bb65f0441040310b12a6ac",
+      "currentQuestionSha256": "1814f8499988f980906dd134c1b13fb50b4dd1846c3913e2462b721b46bddcda",
+      "existingFourSlot": {
+        "ordinal": 5,
+        "format": "단일 정답",
+        "given": [
+          348,
+          732
+        ],
+        "goal": [
+          348,
+          423
+        ],
+        "method": [
+          262,
+          256,
+          28
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "40bc33caf26c19fe4414850731688cab5c172054b0358b160633c9a757af229e",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q05.png",
+      "cardSha256": "dbb4a8079c45c653c290e3a9d47bde7d9eaef2084e0a20f3f8c056532e5120f4",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q05.png",
+          "gitBlobSha": "243344061e894e4c493b7601ab7d06e05867e0b4",
+          "sha256": "668e616ff082624503ec7a3563930c5f5c7b4b017b426cfb8677e98367da6d8f",
+          "bytes": 107599,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/243344061e894e4c493b7601ab7d06e05867e0b4.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/243344061e894e4c493b7601ab7d06e05867e0b4.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q5-problem-v3.svg",
+          "gitBlobSha": "f927aed4fb58bd9addd4bdf8c85ef1e901a131f1",
+          "sha256": "c3ac7cb5df9a6b6f551f6391b10ecd9621200971a8dcebc4e6351d6d7d91f921",
+          "bytes": 6534,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/f927aed4fb58bd9addd4bdf8c85ef1e901a131f1.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/f927aed4fb58bd9addd4bdf8c85ef1e901a131f1.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q5-solution.svg",
+          "gitBlobSha": "1f87329d3a484eeda4cf9178c5673d862fbf7544",
+          "sha256": "835be0cb87a8850fa8c22436cda96b8c4c4a77002dcc2a694c92eefad85781d1",
+          "bytes": 2971,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/1f87329d3a484eeda4cf9178c5673d862fbf7544.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/1f87329d3a484eeda4cf9178c5673d862fbf7544.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_30b9c6c66c14d11a802fd9ec05a7afb618277c0914daea78fb6d50129bf4aecc",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Solution-only number-line inventory and mean marker agree with the unchanged listed values and explanation; no problem-side value or choice changes.",
+      "beforeStudentSha256": "19e14c0d287602e64dc2cd5629abe926ff842216efc71cd852a24cdb2a79bf9b",
+      "currentStudentSha256": "9d2ab063b7a39ef917208830d48c5c3226476552169e78eb895be3789513bac8",
+      "currentQuestionSha256": "99e2ecf28494a834708c4cf4229effee4c58c91f976d7c76aa47c8d4d3308dff",
+      "existingFourSlot": {
+        "ordinal": 8,
+        "format": "단일 정답",
+        "given": [
+          419,
+          262
+        ],
+        "goal": [
+          256
+        ],
+        "method": [
+          262,
+          422,
+          256
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "94e60e088e925d6d0ba2b0f0e961c0d7c725e4333ab9ab77e63a049e944a6132",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q08.png",
+      "cardSha256": "39263100a10ad2dc377e313c9a812ab4f6ead81f53516d27230f493e4fa116de",
+      "assets": [
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q8-solution.svg",
+          "gitBlobSha": "9c0bf6ca61d10b1a5d02489b2b630a018bb33b69",
+          "sha256": "3de22be3180019352887a051d24771f336a9979d7b7f586aa4519bd351cb4be8",
+          "bytes": 2797,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/9c0bf6ca61d10b1a5d02489b2b630a018bb33b69.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/9c0bf6ca61d10b1a5d02489b2b630a018bb33b69.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_b9f9223e59b861e29bc26db066797bbfad893ed9aac38c46e60768fd2c93f1bc",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Solution-only deviation/frequency bars agree with the unchanged table and its existing completed-value explanation, including the frequency multiplicities.",
+      "beforeStudentSha256": "1bbf19d50c45d14ba6e40912740ecc1355b6742918d8e34a55e5ac3ef94e3fd1",
+      "currentStudentSha256": "ea99773e6e893c49dc117205cec833e540b74625cfe940a958e6b133a6314bf6",
+      "currentQuestionSha256": "07ab9bd40de3f47d1869fa18616a053fa4d63a00b80f7e2b2f224dcff530a369",
+      "existingFourSlot": {
+        "ordinal": 9,
+        "format": "단일 정답",
+        "given": [
+          422,
+          732
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          422,
+          732,
+          256
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "aff88164a0949f9fe8f0048e3e4fe5c283fd3f24c2ff3b070c50ef8ae78f8826",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q09.png",
+      "cardSha256": "3046f90e17448797c67024dec6b871f2db5ec799163ba85296d892981f41f969",
+      "assets": [
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q9-solution.svg",
+          "gitBlobSha": "baddf14f712a1cec9b108c725420ff9b56e22833",
+          "sha256": "d55a2c0404653c16e682a6a543cc1c8fbae6fe36d08e58205df9992aba46391a",
+          "bytes": 3353,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/baddf14f712a1cec9b108c725420ff9b56e22833.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/baddf14f712a1cec9b108c725420ff9b56e22833.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_ab5252f3fe76a648ad465875a5039e1f733890880356d5f83305f05b746622d0",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Solution-only two-row illustration shows the same affine transformation: mean translation and doubled distances. Illustrative dots are not treated as newly fixed problem data.",
+      "beforeStudentSha256": "d591a94b2afb35984fd00ad3f19fc2c2623027e8167485818053630a7bb1b414",
+      "currentStudentSha256": "a4341654ccefd2f3c4c13a29c12e948928adba815cd5504f0f4323aa6e87c366",
+      "currentQuestionSha256": "3f627e07c5ea0ea22cc8a071d3b9f32068ac5bdc3c205243893a5216e741f34c",
+      "existingFourSlot": {
+        "ordinal": 10,
+        "format": "단일 정답",
+        "given": [
+          419,
+          262,
+          728
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          262,
+          728,
+          304
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "9ce4149f1c632a3d7827086ce2262d9034d29c1ceba3a0e31a486cd1567dc2ee",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q10.png",
+      "cardSha256": "6fc7a0ae42a3975a8b8c32996570e35a336d4a69f6448259f58f9255b751e56b",
+      "assets": [
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q10-solution.svg",
+          "gitBlobSha": "e6b4553dea7f19ff8c4a15f167963c731bb9e7e4",
+          "sha256": "022db9242be395e21b3950d03aac4b0100ca3cc040c94c1fea918e88da2aeb45",
+          "bytes": 4961,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/e6b4553dea7f19ff8c4a15f167963c731bb9e7e4.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/e6b4553dea7f19ff8c4a15f167963c731bb9e7e4.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_3d46dac0d4a35af2a8d856219fba77ba75842927ce567b213fa53e131e39a941",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "The hypotenuse square, known leg square and target shaded square preserve their adjacency, given areas and right-angle relation. The subtraction annotation appears only in the solution.",
+      "beforeStudentSha256": "3fab83423be3679e146ed8f08fda527475f4b4a7c7b2d54c0d92d64800ce901c",
+      "currentStudentSha256": "f7bf6cb6591016293f0a4a9f7289510c7a59ef3c86f7acdc5e7a661517528e12",
+      "currentQuestionSha256": "b36226e2daace281a4b922bf4a5352d285feb3b3eb7e0bb12bf2f9453b81a9f7",
+      "existingFourSlot": {
+        "ordinal": 11,
+        "format": "단일 정답",
+        "given": [
+          161,
+          166,
+          213
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          195,
+          22
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "85d8f0ec1333a573ea262de325fad74aeb09ee16e1893803588e8fdbd57d6ccb",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q11.png",
+      "cardSha256": "c1f8e36380827bd3358840cc2b2bcf74152b178a7a036c6ebc8764943461afa5",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q11.png",
+          "gitBlobSha": "13c3e1d04cc760d91ccdfba2c861d8fc8315b102",
+          "sha256": "c82fb653533e2a308ccb10588667674e71c45ba30b790878ed43e22b6aa1c75c",
+          "bytes": 17842,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/13c3e1d04cc760d91ccdfba2c861d8fc8315b102.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/13c3e1d04cc760d91ccdfba2c861d8fc8315b102.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q11-problem-v3.svg",
+          "gitBlobSha": "408324c965eeddf3803fe6b0083c143ea5afd938",
+          "sha256": "879ffb5de84ae435b571d8ffd1d3d6cc232c6312d8194b5efee8c46c90a7b31b",
+          "bytes": 3235,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/408324c965eeddf3803fe6b0083c143ea5afd938.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/408324c965eeddf3803fe6b0083c143ea5afd938.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q11-solution.svg",
+          "gitBlobSha": "23adb6bcf20733f62ea07d9be9fb965f69593eef",
+          "sha256": "c676bb03176cf2735ed0b6323324aa4d086decdda19882ef779a9b25f9f717e7",
+          "bytes": 2975,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/23adb6bcf20733f62ea07d9be9fb965f69593eef.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/23adb6bcf20733f62ea07d9be9fb965f69593eef.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_2f71acb4859a2d74f594b2c1351447aa82856e0f7f5014b0f2ffc6580bfab25c",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Right-angle location and the hypotenuse/leg/unknown labels are unchanged. Solution colours the same right triangle without new problem information.",
+      "beforeStudentSha256": "86897e5a0b483ceae0cce0e653cf3446439fe84d29c593f42e340ffd17189337",
+      "currentStudentSha256": "da91e854ea7571f8e82b9b45e6113bd62d2d596707156712bc082e34867a20ac",
+      "currentQuestionSha256": "a5c3249a6f7f95ac4db1fea3134337a365ce58e40628c178603470fdf82a89c8",
+      "existingFourSlot": {
+        "ordinal": 12,
+        "format": "단일 정답",
+        "given": [
+          161
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          195,
+          22
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "359cb9f272d67aa5b43ebffd62681892b81f547d41e16432aa66fb1b24817276",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q12.png",
+      "cardSha256": "db74394479ebfa45ffcaa05d49134629113e1531b3502f75d577bf1278efad50",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q12.png",
+          "gitBlobSha": "638360b75c01e9f157c280502cdc73c8fb913120",
+          "sha256": "c278576bbd1b6034e5f302ec076e08a69e35d35a4dcee92fde3f95b99e6fa887",
+          "bytes": 11582,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/638360b75c01e9f157c280502cdc73c8fb913120.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/638360b75c01e9f157c280502cdc73c8fb913120.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q12-problem-v3.svg",
+          "gitBlobSha": "05defdea05f3ca93947f3ef74653e7a0c7dbb5d4",
+          "sha256": "3bcebf783d2e9a8ebd39be50f2c9d8bb712f86eb5358d791e12b982f1a676921",
+          "bytes": 2639,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/05defdea05f3ca93947f3ef74653e7a0c7dbb5d4.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/05defdea05f3ca93947f3ef74653e7a0c7dbb5d4.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q12-solution.svg",
+          "gitBlobSha": "7b18197b2e0c5f604505c37cf33f557e24fdff0b",
+          "sha256": "1ee6b66a5ffc99f053c0f81da7ee98613c86d44dc3defd110cfcaf23e5b4ab2a",
+          "bytes": 2663,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/7b18197b2e0c5f604505c37cf33f557e24fdff0b.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/7b18197b2e0c5f604505c37cf33f557e24fdff0b.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_4bf6e993409cc6600a428b5b25a1e16bc23e7262508216287e5ec666c0309313",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Rectangle side lengths, diagonal fold, reflected point and intersection E preserve the original incidence. The solution adds reflection guides consistent with the unchanged coordinate explanation.",
+      "beforeStudentSha256": "cb560e46924fb336dea90b224777279a042ad664ee1baf887e42700f93516840",
+      "currentStudentSha256": "b97631ff02e0aac75a64f74ff5ac6c9a7aa953b94283c2b9d5561dc5293e130e",
+      "currentQuestionSha256": "1dc1b02f43a488f35e9533c9121a4787c0b561059af3e89de8943c5980177bfc",
+      "existingFourSlot": {
+        "ordinal": 13,
+        "format": "단일 정답",
+        "given": [
+          165,
+          208,
+          310
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          195,
+          148,
+          368,
+          741
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "e728949f605c2a525bad28749d43614da1da14ec63b15b573d96bafa320e9a65",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q13.png",
+      "cardSha256": "4b3e56b0617e1c7984ff55664f8e5e5d0599665b1879e6986839f7d91ffa1b5c",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q13.png",
+          "gitBlobSha": "367e58c708dcc6f9b7e283e715a77bc03eeefab8",
+          "sha256": "c07b3baf4647502541de96d7dddd0a11d1d5ba1dc28e94aa1ccaa34f51bd072b",
+          "bytes": 55832,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/367e58c708dcc6f9b7e283e715a77bc03eeefab8.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/367e58c708dcc6f9b7e283e715a77bc03eeefab8.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q13-problem-v3.svg",
+          "gitBlobSha": "f1a0b420ff31d31672eb99190a7cd414e5be6b50",
+          "sha256": "392ee7576b2967f0442e2614d9417593a6d87c8f4707aa26dcb17effa4cf0572",
+          "bytes": 3908,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/f1a0b420ff31d31672eb99190a7cd414e5be6b50.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/f1a0b420ff31d31672eb99190a7cd414e5be6b50.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q13-solution.svg",
+          "gitBlobSha": "6408431b1ec19b144accfd7eefbf45ee519d70f8",
+          "sha256": "dd4516ce87bd7e38cfe00e98c8e86252f155eff6162230f44937d2180dcba5d8",
+          "bytes": 4761,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/6408431b1ec19b144accfd7eefbf45ee519d70f8.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/6408431b1ec19b144accfd7eefbf45ee519d70f8.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_6de5cac9aead9a391345ad351fbf1462a4ce613ff4a78f5140d5beecc689ed59",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "The five equal outside segments, consecutive right-angle chain and final radial length are preserved. The solution only separates the existing triangles by colour.",
+      "beforeStudentSha256": "e1c24c541c6f8bd317e4df83f76d9ac1cd130e6f501201f7a25ad3dfbfff26b5",
+      "currentStudentSha256": "e78efba53d9c76cd8429617286d7715cd175bd66649b92530c3b3966d5608e53",
+      "currentQuestionSha256": "8d69899f9fa47a3420227059e4d9a1031a18aee58983f53570df130698eec8ca",
+      "existingFourSlot": {
+        "ordinal": 14,
+        "format": "단일 정답",
+        "given": [
+          144,
+          346
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          195,
+          336,
+          741
+        ],
+        "condition": [
+          346
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "8cea247ea8f4948a8ae907334d37eb00367be1fb204da7ffd263d4a847d4ac3c",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q14.png",
+      "cardSha256": "46f21833e35b0946ae6f3c13f1efb480603f09e5476a98a8426adf691ef772b9",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q14.png",
+          "gitBlobSha": "ef7784086da514d89998178101ce50535391976a",
+          "sha256": "d5977aaee3f0eff225f3d0a38acdd0e8b25dd24c641ca7ab0c5d80f14ff77e98",
+          "bytes": 26192,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/ef7784086da514d89998178101ce50535391976a.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/ef7784086da514d89998178101ce50535391976a.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q14-problem-v3.svg",
+          "gitBlobSha": "013a46f8ca5d9ef82df133d1154d91d364a536b4",
+          "sha256": "a5138964e658046f452dc01c823cf3144c584de4b56abf79b384584b345fac46",
+          "bytes": 5420,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/013a46f8ca5d9ef82df133d1154d91d364a536b4.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/013a46f8ca5d9ef82df133d1154d91d364a536b4.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q14-solution.svg",
+          "gitBlobSha": "e5c66d86e1dda6388b56c302b4629f29c9091ca9",
+          "sha256": "b6b9b32c461856807f4fccaa4f8e2e145ce85843da39189d182429fd161dd44f",
+          "bytes": 5430,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/e5c66d86e1dda6388b56c302b4629f29c9091ca9.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/e5c66d86e1dda6388b56c302b4629f29c9091ca9.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_ef3f73506b6e2b9fb7281653244fccf5c6a56d314ffde44df924f333ad7b19ae",
+      "decision": "PENDING_ROOT_BROWSER_FONT_CHECK",
+      "observation": "The altitude foot, equal altitude/base segment, marked angle and slanted-side radical label refer to the same objects as before; solution highlighting follows the unchanged two-right-triangle method.",
+      "beforeStudentSha256": "a39adc4e94aa807f20f09415e4e9591c80efcfc95d5e4cf441e3691bf8356ac4",
+      "currentStudentSha256": "3409f767b916f28f18c7071adfb140f0dcdb373a3cf7ca949ec9546cd986e914",
+      "currentQuestionSha256": "048609fac98cacd208c4114e1cb43a3906b8f212a78e2184e7e70a003274418b",
+      "existingFourSlot": {
+        "ordinal": 15,
+        "format": "단일 정답",
+        "given": [
+          158,
+          179
+        ],
+        "goal": [
+          213
+        ],
+        "method": [
+          606,
+          449,
+          213
+        ],
+        "condition": [
+          179,
+          346
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "b2b9cdd8b78fdb6588114e56e4750bbf1190935882e403055cc3e3c7f348ac7f",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q15.png",
+      "cardSha256": "2264e599e4c612c385debee9d396955ea6b683d1819b000d586b034f6d7bf8b6",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q15.png",
+          "gitBlobSha": "ad989ffefffbd49f094739f02b6c73fc5854a324",
+          "sha256": "55b1cb3d2f3a2d34a386149819f44092bd20a73b2abdb58f1e5e847e00949832",
+          "bytes": 20145,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/ad989ffefffbd49f094739f02b6c73fc5854a324.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/ad989ffefffbd49f094739f02b6c73fc5854a324.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q15-problem-v3.svg",
+          "gitBlobSha": "ab7602293884d931d9d6bbfca35f4dd16b8f572d",
+          "sha256": "ef68d53e20cb0084adbb29b0213a0c79bd80247d5c99febf996768fb8d2007ef",
+          "bytes": 3590,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/ab7602293884d931d9d6bbfca35f4dd16b8f572d.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/ab7602293884d931d9d6bbfca35f4dd16b8f572d.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q15-solution.svg",
+          "gitBlobSha": "034cc46654f8ec378ea12c07441fd35a49035dc2",
+          "sha256": "504ac2e338fde2bc2fc059cb996f70ee4180a5a4863427844197f386e41699b4",
+          "bytes": 3696,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/034cc46654f8ec378ea12c07441fd35a49035dc2.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/034cc46654f8ec378ea12c07441fd35a49035dc2.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false,
+      "numericConditionRead": "Matches source literal and unchanged explanation",
+      "renderingLimitation": "Inkscape fallback places the radical glyph below the number baseline; exact SVG browser observation is pending. This is not classified as a math or slot defect."
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_41da48beb49a52e512cce60877073cedbe5bb65081e7e9ecdee6eb03d04fb57d",
+      "decision": "HOLD_RENDERER_CALLOUT_AMBIGUITY",
+      "observation": "HOLD candidate: the unchanged stem assigns length 12 to AE, but the new problem and solution length leader ends on the A–H subsegment. With H between A and E, the callout does not unambiguously identify the full given segment. No current continuity acceptance is issued pending independent confirmation.",
+      "beforeStudentSha256": "803260cf8bba976a38c82e1269fd1db683cad3c764e55dee75600d6bbec99be6",
+      "currentStudentSha256": "5c6952f98956c40249eae06288ec5c50d6ea5bb61c5b8e48d919119b7fd8e94f",
+      "currentQuestionSha256": "e84e69c24cd8f0f555d6f618368328fb1626380e14aa9afeb7fdd744965ea169",
+      "existingFourSlot": {
+        "ordinal": 16,
+        "format": "단일 정답",
+        "given": [
+          166,
+          161,
+          193
+        ],
+        "goal": [
+          214
+        ],
+        "method": [
+          195,
+          213,
+          22,
+          214
+        ],
+        "condition": [
+          193
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "b8208cc9d729e0f70d1d9d7ce5644108ec363e31266a7f73a236d33619051005",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q16.png",
+      "cardSha256": "468583fc111ac8c222e052e1f42e81af6f6dfd522eea68b8245671dc00916e96",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q16.png",
+          "gitBlobSha": "5be18e59cdceee0660a1f639070706e503a99182",
+          "sha256": "631a1aa9bec6c9c441444e2a7e678d4622cb295221a4bd496700597f4d3a2a62",
+          "bytes": 36386,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/5be18e59cdceee0660a1f639070706e503a99182.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/5be18e59cdceee0660a1f639070706e503a99182.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q16-problem-v3.svg",
+          "gitBlobSha": "6bf2da58ff9e8b9e791f08d68b96ef5f33c3f8b5",
+          "sha256": "02448b6e0dae047b903ad1b3c2dd36d29104fdea9e5080fb0b801c7dd268ab98",
+          "bytes": 6421,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/6bf2da58ff9e8b9e791f08d68b96ef5f33c3f8b5.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/6bf2da58ff9e8b9e791f08d68b96ef5f33c3f8b5.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q16-solution.svg",
+          "gitBlobSha": "8156c9584bbf28bf2c5c6221c4cd463bb0ace0c1",
+          "sha256": "a513a39a0be62c651448dc7ac310c61d206dd39c4e36323a00399ee7bf19d137",
+          "bytes": 6680,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/8156c9584bbf28bf2c5c6221c4cd463bb0ace0c1.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/8156c9584bbf28bf2c5c6221c4cd463bb0ace0c1.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_96181858fe80fcce4a9c13c2cfe748dc03643289896420cfdab5800be19ba21e",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "The three external squares, A/B/C and foot/extension L/M, auxiliary connections and right-angle locations are retained. Added solution shading refers to triangles already discussed in the unchanged proof.",
+      "beforeStudentSha256": "34c9d91e330007fa3b72d06c3e82cace9a864252ffac08dd36ddc455daeb33cd",
+      "currentStudentSha256": "172931f34939d3644320f73b5feebb0dcc2d7efd62b450a0be8708231bdea8b5",
+      "currentQuestionSha256": "e7fca88b6f0d79b2f87ad7d49c7d22e7142cbe00d16d0966632ba9717d81ff9c",
+      "existingFourSlot": {
+        "ordinal": 17,
+        "format": "보기(ㄱㄴㄷ) 판정",
+        "given": [
+          161,
+          166,
+          179
+        ],
+        "goal": [
+          129
+        ],
+        "method": [
+          195,
+          192,
+          193,
+          213
+        ],
+        "condition": [
+          344,
+          179
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "a94f8912c843b48dfcd510f54fe158ea9a746365178efbbab77ab21d7233b753",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q17.png",
+      "cardSha256": "af6cdbc97cb9661dcbce33cac5617d697d60403bfda2fff5e0772dd9ca35e2b0",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q17.png",
+          "gitBlobSha": "b0414f54a8125dfca442d8da8eceeef67ec17f66",
+          "sha256": "48a8ed7c39fef2fd073c826fd374b5fd58bcf2d71f2fddc7ae669c56a695b78b",
+          "bytes": 25832,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/b0414f54a8125dfca442d8da8eceeef67ec17f66.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/b0414f54a8125dfca442d8da8eceeef67ec17f66.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q17-problem-v3.svg",
+          "gitBlobSha": "a9167830623ac3c082f69d86ef13415b59930484",
+          "sha256": "efb01ee66bc6a3d770fdf9ac47f219699b39360ec34825dd2da4024dfb4057af",
+          "bytes": 5844,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/a9167830623ac3c082f69d86ef13415b59930484.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/a9167830623ac3c082f69d86ef13415b59930484.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q17-solution.svg",
+          "gitBlobSha": "21a5b48088b5ef6c3adaf2098221e28b25f06c10",
+          "sha256": "d253c26c2eb99887553606917b6630a0ec1f8ca227dafbc7c11bc9568255100f",
+          "bytes": 6050,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/21a5b48088b5ef6c3adaf2098221e28b25f06c10.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/21a5b48088b5ef6c3adaf2098221e28b25f06c10.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_0fb50cd6de86e5a5b5ffbcd3d3b65f01548598bafefafef4194310a0b74f0512",
+      "decision": "PENDING_ROOT_BROWSER_FONT_CHECK",
+      "observation": "Cuboid edge lengths and the same space diagonal remain attached to the original geometric objects. The solution highlights the existing vertical/base-diagonal right triangle.",
+      "beforeStudentSha256": "3e4b0d8319ff1ccdedc6f01ec230cb6e43a3e58bd4300338673a263863bb0b87",
+      "currentStudentSha256": "1aaaedcd23bfae4bb3ea612b9cadfac05149290433c24ec6863a9738e8c6c400",
+      "currentQuestionSha256": "a5468250f5f0bebe7fe581549bf6615ba7a4a8e60d663e9926d09ab7a27e271e",
+      "existingFourSlot": {
+        "ordinal": 18,
+        "format": "단일 정답",
+        "given": [
+          603,
+          607
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          195,
+          22
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "3be15830ad5f33885c4b2ad8116362b7217489ed85ecfea508306b82c83027ba",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q18.png",
+      "cardSha256": "d8d8834de2f0fb9705f7d6e3ce207dc73948abacdec9099e3ae25b926ff37f4f",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q18.png",
+          "gitBlobSha": "86775533ab2516eb65b8e742077e84109f187cf7",
+          "sha256": "9da5553830e93728d3b9199f7ac49d1fb53954c8f29899bef56c4d3fb53863ef",
+          "bytes": 65897,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/86775533ab2516eb65b8e742077e84109f187cf7.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/86775533ab2516eb65b8e742077e84109f187cf7.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q18-problem-v3.svg",
+          "gitBlobSha": "424cd8d49f0460ed2032ecd602fdd9198360c94c",
+          "sha256": "c581f5395028219a77aa9b3e7d3b17f92731bcf9f77a75062668d3ddb752e153",
+          "bytes": 3724,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/424cd8d49f0460ed2032ecd602fdd9198360c94c.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/424cd8d49f0460ed2032ecd602fdd9198360c94c.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q18-solution.svg",
+          "gitBlobSha": "ab57b0ca0a4c0751b6b94c19b45a0381be90b2f8",
+          "sha256": "c2731286b9ac220532960659d34418bc4214d738912e83f52644a8a1982c41db",
+          "bytes": 4921,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/ab57b0ca0a4c0751b6b94c19b45a0381be90b2f8.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/ab57b0ca0a4c0751b6b94c19b45a0381be90b2f8.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false,
+      "numericConditionRead": "Matches source literal and unchanged explanation",
+      "renderingLimitation": "Inkscape fallback places the radical glyph below the number baseline; exact SVG browser observation is pending. This is not classified as a math or slot defect."
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_9f9b381291920ee59d63d36a6886a25868f539394a7cd8076f995d9234c706f0",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Sphere, cutting plane, centre-to-plane distance and section point remain consistent. The solution cross-section displays the already derived radius and right triangle only.",
+      "beforeStudentSha256": "783dc6f20368a8a424ed4d5c30ddbd3e0ef606719065ea2380200cc5b4b16432",
+      "currentStudentSha256": "88a82783ba35d25d63adef108791bd99a98dcdf1053538dbb4a0d53ec824d0f0",
+      "currentQuestionSha256": "cf5e4122f5d9c0e6b267242912264c50775f37945d3f9d10e26b961b632d5287",
+      "existingFourSlot": {
+        "ordinal": 19,
+        "format": "단일 정답",
+        "given": [
+          415,
+          334,
+          219
+        ],
+        "goal": [
+          213
+        ],
+        "method": [
+          219,
+          195,
+          213
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "1d2fa9ed4f8a178186d603079d33c5b334566b6c5f4a43e212ae43bb23f8fd5c",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q19.png",
+      "cardSha256": "6858d82c5c742ee3a2500d4fa6acc1e572e5392c012974a285f5d2f821428381",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q19.png",
+          "gitBlobSha": "bd627600d2c99e31c9df000b147f056bd5b727d3",
+          "sha256": "eee500b6d62ff80db81bfc892b6077534ff0201b4b947befc9c22f450e7b8f83",
+          "bytes": 19850,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/bd627600d2c99e31c9df000b147f056bd5b727d3.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/bd627600d2c99e31c9df000b147f056bd5b727d3.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q19-problem-v3.svg",
+          "gitBlobSha": "459430c1e37328e97c7d83f8ec18960c4a7bf822",
+          "sha256": "ac1a3310344166be609dfd5dea7fdcead9723b2c061768da1eb9d6acdb68398e",
+          "bytes": 1836,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/459430c1e37328e97c7d83f8ec18960c4a7bf822.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/459430c1e37328e97c7d83f8ec18960c4a7bf822.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q19-solution.svg",
+          "gitBlobSha": "57a9e71d7dff02f5f24f4b44883d29aff9ab81c3",
+          "sha256": "b004827e933c1aedaa79a09d9b36930177b008dfa5e0a3a00f6fcd4d49410707",
+          "bytes": 2242,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/57a9e71d7dff02f5f24f4b44883d29aff9ab81c3.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/57a9e71d7dff02f5f24f4b44883d29aff9ab81c3.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_08a7bfd0752e4cc3849cf842a70992d6aac1b0206608a51fde906039be09e355",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Cone slant length and height/radius right-angle relation are unchanged; the derived base radius occurs only in the solution drawing.",
+      "beforeStudentSha256": "0035296f175c01721ad796eadb40e70931ea78e935b109cced48d47d072c063a",
+      "currentStudentSha256": "bf59484fe3ccf1c41045ac6fff282eb962fd4819ec4f786cfb0ef70b5fb00946",
+      "currentQuestionSha256": "0ee0b767529d37693e4fe38df067a03f1117712d27e3492a35d9b0dc208b4f4c",
+      "existingFourSlot": {
+        "ordinal": 20,
+        "format": "단일 정답",
+        "given": [
+          712,
+          653,
+          414
+        ],
+        "goal": [
+          218
+        ],
+        "method": [
+          153,
+          195,
+          22
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "39b450a4b85d8f2496eeb592b7a78974199c3c49168677b2a82c8501ffb2b595",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q20.png",
+      "cardSha256": "fd22a40fc06386063bf29877e3ca465d43449ed728521bf53d9b41aeed0fb05d",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q20.png",
+          "gitBlobSha": "7cd20a6305d53746e5e36b6494e97f307926d5cf",
+          "sha256": "93e715af72d6625e45b4dcdf93eb2d3620bf8f375fccb7d5d79d8bbc3d3b0da1",
+          "bytes": 40842,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/7cd20a6305d53746e5e36b6494e97f307926d5cf.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/7cd20a6305d53746e5e36b6494e97f307926d5cf.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q20-problem-v3.svg",
+          "gitBlobSha": "cc1f09e13d70b3f051f2c4f1bd3d48cfed11296d",
+          "sha256": "c570597074ea4cd27a93fe311abccac29ebea7a6452df7fb4b5e9fbae9667cb7",
+          "bytes": 1866,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/cc1f09e13d70b3f051f2c4f1bd3d48cfed11296d.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/cc1f09e13d70b3f051f2c4f1bd3d48cfed11296d.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q20-solution.svg",
+          "gitBlobSha": "fd4a471692baa39f4e8928e0e51ac2d2884d6622",
+          "sha256": "ef923c8089bbcc431072832a50b20ed8f4fea72f5bd799e0e6324b4b2de32d7d",
+          "bytes": 2137,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/fd4a471692baa39f4e8928e0e51ac2d2884d6622.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/fd4a471692baa39f4e8928e0e51ac2d2884d6622.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_521a35a379ee4b49026b8bc4901228fddd2a54316ff66b3aa1ff2a24ef862ad8",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "The already accepted ALIVE source wording fixes same-generator endpoints and exactly one winding. The current mirrored cylinder and unfolded solution preserve those explicit conditions; the earlier ambiguity is not re-decided.",
+      "beforeStudentSha256": "cba8a23b054e56a11ed0d193cb869a32317c10e1b9c1f5802e4fd5ebcbb8323a",
+      "currentStudentSha256": "975272f972b38386be7889caca4830b76721668d0b4180f001f16ace345ad183",
+      "currentQuestionSha256": "12d506532bef96914e2a12b7e5dd2dc2b8548bbf504e22e5e103858bc4dae7bc",
+      "existingFourSlot": {
+        "ordinal": 21,
+        "format": "단일 정답",
+        "given": [
+          711,
+          414,
+          390
+        ],
+        "goal": [
+          217
+        ],
+        "method": [
+          173,
+          622,
+          195
+        ],
+        "condition": [
+          743,
+          129
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "3ec560c19c173db698d17cbe35e4efc83fea915fe12b8cd2856fc67bfe6f7bd2",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q21.png",
+      "cardSha256": "e722aaa576469fdb80e4b2bd19230845596c1c5d6810030ad2f63b60ca2300ea",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q21-problem-v2.svg",
+          "gitBlobSha": "0870c7896b0de4afaf023c32efd210d0d28bb222",
+          "sha256": "ee5b14732e1313d88966d34983787f47e4a12308f53a53ed26c990e4fe03094d",
+          "bytes": 18039,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/0870c7896b0de4afaf023c32efd210d0d28bb222.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/0870c7896b0de4afaf023c32efd210d0d28bb222.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q21-problem-v3.svg",
+          "gitBlobSha": "9b39ec5f331df4602b6ed5c085fcde5a3780a033",
+          "sha256": "446786195a47b9fb5dc843658c40c07d0474a7080269be64efc4f92d10841164",
+          "bytes": 4545,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/9b39ec5f331df4602b6ed5c085fcde5a3780a033.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/9b39ec5f331df4602b6ed5c085fcde5a3780a033.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q21-solution.svg",
+          "gitBlobSha": "8f8e89610f98663d6b64296ea1355bef02913c2a",
+          "sha256": "b6ab8ad09f5fed70a180c7265bc1cd68a89a7083013d5008f98454829a69909a",
+          "bytes": 5637,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/8f8e89610f98663d6b64296ea1355bef02913c2a.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/8f8e89610f98663d6b64296ea1355bef02913c2a.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2f85026e4b5ebaca4f3c9db4fbe4262d7b0c35e7dcbbac2945cf53d3e8438721",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Solution-only graph preserves the unchanged quadratic, named intercept ordering, vertex and triangle used by the existing explanation.",
+      "beforeStudentSha256": "a7d6c301471ece9540c16106df5adbb28e9ee599e785d1869d2df0a8bb4bf1a9",
+      "currentStudentSha256": "df2649d0e416e18fba19a30bd7dec455530e482412f612bbc235205566735ed8",
+      "currentQuestionSha256": "80c62ac98f3401f04bda783909fe1da136dd19f0daf026c70c2ba506e42d0f50",
+      "existingFourSlot": {
+        "ordinal": 22,
+        "format": "소문항 묶음",
+        "given": [
+          91,
+          707,
+          181
+        ],
+        "goal": [
+          311,
+          340,
+          127,
+          213
+        ],
+        "method": [
+          59,
+          42,
+          151,
+          213
+        ],
+        "condition": [
+          29
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "55d2394741b9c64f98c093b217f62f5e1b8b78556994660fbef6b5561afab449",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q22.png",
+      "cardSha256": "f504dafdb833648b619c60327733bb8848d0c5816c6a2022ebba1ac0784cd698",
+      "assets": [
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q22-solution.svg",
+          "gitBlobSha": "fbd0cc4e3ddcd0c2f2202b2f116dac1b830ef0f0",
+          "sha256": "60905082aac4d7e70d01322a547b849594f87511c4388f23132bf4786331adbd",
+          "bytes": 3008,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/fbd0cc4e3ddcd0c2f2202b2f116dac1b830ef0f0.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/fbd0cc4e3ddcd0c2f2202b2f116dac1b830ef0f0.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_1b3db0a567898af74e87ef85aba11226424ce5c76d86c3f65128e2b297e03dd1",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Solution-only two-group deviation plots preserve the original multiplicities, including the stacked repeated deviations; no new data are introduced.",
+      "beforeStudentSha256": "503510264ef8bd6f8d37989fd1d1c22df0090a4f9e791d9bc3bc6d0a808664c8",
+      "currentStudentSha256": "404926fb9fb070f684ffc0d1305670da2659483588f4edeb911d2a62dacab25e",
+      "currentQuestionSha256": "65c627d4e33bce8679c6a3a449ca6ec5eb244c5b38199eb507b6b0bf48d90b97",
+      "existingFourSlot": {
+        "ordinal": 24,
+        "format": "서술",
+        "given": [
+          350,
+          261
+        ],
+        "goal": [
+          350,
+          132
+        ],
+        "method": [
+          262,
+          256,
+          728,
+          28
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "ae8922e8037d689a064dfa7fd740e12dc0dbaf57a2e9244b85f68063f6db77b2",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q24.png",
+      "cardSha256": "0d21ef7c624f121b6631fd0dd518bd9facad4a889006d44932b0060fdddeef1e",
+      "assets": [
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q24-solution.svg",
+          "gitBlobSha": "b72aadd0d7a04cc640b11c90c0337f13fe514cae",
+          "sha256": "00675eba25ed439649f34e3ca46541741c8e14a58f68a40ca872331b699cf05a",
+          "bytes": 5326,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/b72aadd0d7a04cc640b11c90c0337f13fe514cae.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/b72aadd0d7a04cc640b11c90c0337f13fe514cae.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E072",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_408bc5c02487c66e4ab317b0dc2f237206e806806b6a3947abdc3a0463242d4f",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Cube vertex naming, section AFC and height BJ remain linked to the same objects. Solution equal-edge and centre guides illustrate the unchanged equilateral/centre method; no metric-projection identity is claimed.",
+      "beforeStudentSha256": "484bb4dde01c24bed3d9b62d19b888aeffdd13592f141edab00d4dfaa915264e",
+      "currentStudentSha256": "cd6348fc8e0e944f93d6736b3be5ce3d31306cad06d10ed579a6e35752b47016",
+      "currentQuestionSha256": "cdbdeaf6dad089cc3ccecdc3b96d4570b27e3ea1e173b4df6f3512d209c18766",
+      "existingFourSlot": {
+        "ordinal": 25,
+        "format": "서술",
+        "given": [
+          601,
+          146,
+          713,
+          179
+        ],
+        "goal": [
+          218
+        ],
+        "method": [
+          160,
+          184,
+          191,
+          195
+        ],
+        "condition": [
+          179
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "442fb8610aa13eb3e585c87de43963abe32d62ec5827e528d3f53c7355352e98",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E072-q25.png",
+      "cardSha256": "1108fa407fff8bc0bddb9fbe9222d61868a09348b8b76e8b9ee921ccd062a86f",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/s04.png",
+          "gitBlobSha": "fc8c143d39129f3e82112600efea00e2836efc9e",
+          "sha256": "922578e162423c2dce629cc7cb093018f1d0796b1326909e8100e2b5dc02f596",
+          "bytes": 55983,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/fc8c143d39129f3e82112600efea00e2836efc9e.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/fc8c143d39129f3e82112600efea00e2836efc9e.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q25-problem-v3.svg",
+          "gitBlobSha": "114c767986848ca4c744313362c7f64531f50491",
+          "sha256": "4405fee90ef1d6b959db1bbaf0530ef6a994c933820e7ec08ef1d4de28fc90ec",
+          "bytes": 5027,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/114c767986848ca4c744313362c7f64531f50491.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/114c767986848ca4c744313362c7f64531f50491.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q25-solution.svg",
+          "gitBlobSha": "d4efbcbb8185dcba9edebcea798eedf4ffd4b399",
+          "sha256": "e4eaa11cb4da0f5d91d97a676549be95fbc940c26a3cc3341cb93ca4bc6f4e29",
+          "bytes": 6213,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/d4efbcbb8185dcba9edebcea798eedf4ffd4b399.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/d4efbcbb8185dcba9edebcea798eedf4ffd4b399.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_6d3ecec0345d0b9d1fb01142cc955a67c29ca96f42f08576058d8337b2a3841b",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Solution-only frequency chart has the same category inventory and multiplicities as the unchanged data list; the original mode method is retained.",
+      "beforeStudentSha256": "8ff6ddff154cd4aacc77cc693ff8aace2826b000bfdb71180160739193b29976",
+      "currentStudentSha256": "602e9612fb2b822295001b1eb70c9e6712405675097521f3eb1ecadb58b5d22b",
+      "currentQuestionSha256": "a900ee182bf895ecd3ad20d30a8a33e0cd46b44905a8fc2712e8ec8af5855826",
+      "existingFourSlot": {
+        "ordinal": 2,
+        "format": "단일 정답",
+        "given": [
+          261
+        ],
+        "goal": [
+          264
+        ],
+        "method": [
+          732,
+          264
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "c2f98dfd331cc6fa00ec4dec1ad0427c9eb8914de9df10c307bda662d1faa2ad",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q02.png",
+      "cardSha256": "7802d26be66233bd5e45647160bb55d20cefeea41e87c4c9574bc86aa2b85756",
+      "assets": [
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q2-solution.svg",
+          "gitBlobSha": "a8b588cf3b298afffdd5b692367d0b6774043970",
+          "sha256": "a8b7f2698d564a651c6986ced8bbfd998b584adea89b059f1238399580873aa9",
+          "bytes": 4739,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/a8b588cf3b298afffdd5b692367d0b6774043970.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/a8b588cf3b298afffdd5b692367d0b6774043970.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_05ebd824aeb9cb66da2e26085e048be2e1b04cc412f3c1c563efbceb09b9a1db",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Solution-only deviation bars retain the five student positions and the signs/values supplied or derived by the unchanged explanation.",
+      "beforeStudentSha256": "0754829eb5b332f49c871efaeafc4b5dfea6f692f901ae5ff84c02936ae829ac",
+      "currentStudentSha256": "d61323cc0e746b3311729a27d5514163376c8a1a663ece3e20d390599edc0bcd",
+      "currentQuestionSha256": "d0a7c244ceed203ce3809e6354709c5927b60d292598debbd37792fe09be7f6a",
+      "existingFourSlot": {
+        "ordinal": 7,
+        "format": "단일 정답",
+        "given": [
+          422,
+          262
+        ],
+        "goal": [
+          419
+        ],
+        "method": [
+          422,
+          286,
+          262
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "90e86757c075a5a3c9f31f3760c124afaeeae1e127bc12228f48f22a60febd83",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q07.png",
+      "cardSha256": "98619c5ebedf518179b891a6ba10f7c9c5e1463a9c4437cde5adc96b8cb58917",
+      "assets": [
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q7-solution.svg",
+          "gitBlobSha": "5a116e723169495d7e8748748a95a140e83fde04",
+          "sha256": "4c287dc4bfbb51565039ccc20815f2aad0cecdae9af5ca2788a9d441ba0d8583",
+          "bytes": 2889,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/5a116e723169495d7e8748748a95a140e83fde04.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/5a116e723169495d7e8748748a95a140e83fde04.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_d16f3363516fe494e67303a2597fee03a6a3da07697d063449a63d9c9b7f33e5",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Solution-only point sets show a uniform translation by five with unchanged distances and spread; no new fixed data are introduced.",
+      "beforeStudentSha256": "a4d35fbfbb58401f6629b184cfc2505d92b2d8c7f3a27516b0601bf09d925eed",
+      "currentStudentSha256": "9e0375a570e66b01089d68b5e53ada895f7c413b2a84424eb36babdf09c48adf",
+      "currentQuestionSha256": "76dd48a4817dfc9cb8d2250961b8b92d9459df92e005bcd654ab7a2d71f87b18",
+      "existingFourSlot": {
+        "ordinal": 10,
+        "format": "옳은 것 고르기",
+        "given": [
+          350,
+          262,
+          256,
+          728
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          262,
+          422,
+          317
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "25d0733047dab19e114acf2a86b1e959e460ac535f99b2adf1ff4fcdf41e0879",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q10.png",
+      "cardSha256": "11f6526fd2a888624a480cbe5a84ad7aa4df0fec8488d86c4aab06fd854cb987",
+      "assets": [
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q10-solution.svg",
+          "gitBlobSha": "cda5e8d91a021861756f69f8ed9cab6456cafea7",
+          "sha256": "222a805d86a0192342b6a44f00a4ca3baa1b1b0125b1c90f61403b26cb62a745",
+          "bytes": 4553,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/cda5e8d91a021861756f69f8ed9cab6456cafea7.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/cda5e8d91a021861756f69f8ed9cab6456cafea7.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_6b127a7387558b364dc302f8e683f1ad82afed20a9c108a035c5a6cb663ad45e",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Rectangle side lengths and four semicircle/circumcircle incidences are preserved. The problem shades the same four exterior lunes; solution colours only distinguish the same area decomposition.",
+      "beforeStudentSha256": "c35b7e1886a27218baff5d531f088223eeec7a39a6ea5c0b4434d6e8156f1383",
+      "currentStudentSha256": "e4210f1e5aa2049281c54eeb87e6f2aec5d0b7bf45a1f7b8b26a7f964b63d253",
+      "currentQuestionSha256": "f2513d9d4950349230fd3f95e48e8a52d0bd6b61881bacfb751a5b1b734ef58a",
+      "existingFourSlot": {
+        "ordinal": 11,
+        "format": "단일 정답",
+        "given": [
+          165,
+          620,
+          152
+        ],
+        "goal": [
+          213
+        ],
+        "method": [
+          195,
+          213,
+          288
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "b624c9f123bf407caa24d1d9dfda961a1bd291ee8556ddf7432db1bfa08b0800",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q11.png",
+      "cardSha256": "10d9c105183748aef842ff6d1c4606de146896985b3bd01d58eda8a3e27527ce",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q11.png",
+          "gitBlobSha": "23dee7101becf59bbcfe8bfac0a979b9ee453dd5",
+          "sha256": "68a1902515e22d02dff0639f476894281f7cbe0847ba6e068eb6e641b1480e90",
+          "bytes": 42671,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/23dee7101becf59bbcfe8bfac0a979b9ee453dd5.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/23dee7101becf59bbcfe8bfac0a979b9ee453dd5.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q11-problem-v3.svg",
+          "gitBlobSha": "ca08d57f2f391c4eb49daec61a78ec103d43de15",
+          "sha256": "abb6bbddafd2098dec6509018eaafa224ea5cd96fc48b4fa7347b789f7e8f861",
+          "bytes": 3309,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/ca08d57f2f391c4eb49daec61a78ec103d43de15.svg",
+          "nestedReferences": [
+            [
+              "",
+              "#beyond-outer-circle"
+            ]
+          ],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/ca08d57f2f391c4eb49daec61a78ec103d43de15.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q11-solution.svg",
+          "gitBlobSha": "0acc32de3c596dd3d69ad83224d65ac5f266ac7d",
+          "sha256": "88ab86afc14237bbb989e7cc9ac5238b967c21055640f1f6862696957efe2b76",
+          "bytes": 3480,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/0acc32de3c596dd3d69ad83224d65ac5f266ac7d.svg",
+          "nestedReferences": [
+            [
+              "",
+              "#beyond-outer-circle"
+            ]
+          ],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/0acc32de3c596dd3d69ad83224d65ac5f266ac7d.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_bc3b8d87f189e64570c8f3bd83d779247d1e795444bcaaabbad04809ae4b0331",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Square side and slanted edge values, external right angle and the perpendicular through F/G are preserved. The extra F right-angle mark is solution-only and follows the existing parallel-line explanation.",
+      "beforeStudentSha256": "d1dc10a4d6bf02bfa783eca335c7c95a6e59de21a0c46f0c5e6e9cbf209d222f",
+      "currentStudentSha256": "faf1b5172417b0037eb1b45dc641be25d3ad7faf157ef7e464f47859921538e5",
+      "currentQuestionSha256": "730412d87f36d01ba1928d04afee35664982235eafa4ca7437e8aad06369c7ee",
+      "existingFourSlot": {
+        "ordinal": 12,
+        "format": "단일 정답",
+        "given": [
+          166,
+          344,
+          179
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          195,
+          180,
+          192
+        ],
+        "condition": [
+          179
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "a084ab7ef0cdeac489f64b8dc6f9fcc8c51e169cc4bb33079219dc8171f4adfc",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q12.png",
+      "cardSha256": "e6cff33903093daea3c36d800fe7015a44df281f58123b4b981be850120d74af",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q12.png",
+          "gitBlobSha": "27f503ad1da5cf6713a7137c5cedcc95faf5fbd2",
+          "sha256": "93a45cdd61b0fbb0c3dcaff3e26d9bab3a3b9764886a7fb997e1dfa38a0c69b5",
+          "bytes": 19367,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/27f503ad1da5cf6713a7137c5cedcc95faf5fbd2.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/27f503ad1da5cf6713a7137c5cedcc95faf5fbd2.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q12-problem-v3.svg",
+          "gitBlobSha": "72811add9ee6b86500bd207f243491937fc01284",
+          "sha256": "5494a9f58dcc6e93ad8f8940e4cedc0861b4f3c60dd501461e32d20eb8e1c1c1",
+          "bytes": 4677,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/72811add9ee6b86500bd207f243491937fc01284.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/72811add9ee6b86500bd207f243491937fc01284.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q12-solution.svg",
+          "gitBlobSha": "ee0cff38f77d7da6c3b1aa3480b937bf8ebbe321",
+          "sha256": "dd1cc746b3ec4aebee194d152185eb25537d92d7b045417c2779096fbf3d537b",
+          "bytes": 5019,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/ee0cff38f77d7da6c3b1aa3480b937bf8ebbe321.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/ee0cff38f77d7da6c3b1aa3480b937bf8ebbe321.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_d039ee0f6e0429ef22c4300beac56b2c44631ab40d880f2080ce4b7626551849",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Regular hexagon labels, unit side and both diagonals remain unchanged. Solution centre/radius guides express the existing equilateral/radius argument.",
+      "beforeStudentSha256": "f32887d80d4fe15e8fc0ba02fde068cf0b3ee606ea071d69cc7786ab919a0131",
+      "currentStudentSha256": "6dfb2567cca67318f5fb5620c03cf95df7f07f22ae4a1ae60370e6254f8fb4be",
+      "currentQuestionSha256": "fec3940553276b6322536e0a3862b58cd66dc399fb1b614cc4c2d2ca6a43a556",
+      "existingFourSlot": {
+        "ordinal": 13,
+        "format": "단일 정답",
+        "given": [
+          605,
+          310
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          160,
+          153,
+          708
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "bfeab163a56f8c8c6ee1ee9119d2124ad9c9b1fe7590b6fadf2f9fc71042ff43",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q13.png",
+      "cardSha256": "79f6ebfdf4f54b7c947b8471a7f968a0374e724924cbdf400898baafca1f7203",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q13.png",
+          "gitBlobSha": "2201cc2b13a86b7f510c6a3c343d84298212fa09",
+          "sha256": "93f12d74ef07c938c77f1d3c01bc35960cecee87af2171b93488f8c47047bd5b",
+          "bytes": 19100,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/2201cc2b13a86b7f510c6a3c343d84298212fa09.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/2201cc2b13a86b7f510c6a3c343d84298212fa09.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q13-problem-v3.svg",
+          "gitBlobSha": "4706fbcdbfa0a7e99728a89564f80885dbd178f6",
+          "sha256": "5a1bd2c10f158bad12517eafe91051d6689c2b46b7aa412d8fe497a6fbf3d882",
+          "bytes": 3464,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/4706fbcdbfa0a7e99728a89564f80885dbd178f6.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/4706fbcdbfa0a7e99728a89564f80885dbd178f6.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q13-solution.svg",
+          "gitBlobSha": "eb8c301a36fc9dbf0147d38bba437ae95db7d8a8",
+          "sha256": "c64898f21bc224a6c4e1121e3de513405894a7e621a90c00a76719b6dce39b14",
+          "bytes": 4615,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/eb8c301a36fc9dbf0147d38bba437ae95db7d8a8.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/eb8c301a36fc9dbf0147d38bba437ae95db7d8a8.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_659dd7508f4a6cc9e661654cd4e8a64c1684857893b8303ca07e1aa15c2fd218",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Both joined right triangles, marked angles and x/y side assignments are preserved. Equal-leg ticks occur only in the solution and match the existing right-isosceles step.",
+      "beforeStudentSha256": "c9da2cb7a9be2043d045814c4fdfe934a2675811239c7484234efced8745830a",
+      "currentStudentSha256": "ba151186f951ff928cd4e380c0e9843dd02cf240d2dcf249cc860cc9b1a840f5",
+      "currentQuestionSha256": "d1325ecc3bc1fb25e414dadb7153408f6da34ada1a3d024ff1119647c64d50b8",
+      "existingFourSlot": {
+        "ordinal": 14,
+        "format": "단일 정답",
+        "given": [
+          161,
+          174
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          194,
+          606
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "d2a5d44cf4b51fd5eae74b4694939536d5f9d040770e30af6b04015d11340e9e",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q14.png",
+      "cardSha256": "db245e2a0b9a73aee5dd73590fd5e9c44f40ee9ccaf6090abeef160204223307",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q14.png",
+          "gitBlobSha": "1c5c93864195495fefa85eede6ba91d623e08768",
+          "sha256": "a58398cf3708e534d2b5403e9d4a4baea447e9f8c14066235bfce6f97405aa8c",
+          "bytes": 16079,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/1c5c93864195495fefa85eede6ba91d623e08768.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/1c5c93864195495fefa85eede6ba91d623e08768.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q14-problem-v3.svg",
+          "gitBlobSha": "09161f02827f37283a3459909ddc1cffc9846359",
+          "sha256": "680f23766834c6f6c9dec0ca058da262c95ceebf72eb3083ca902a17e2a6f076",
+          "bytes": 4758,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/09161f02827f37283a3459909ddc1cffc9846359.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/09161f02827f37283a3459909ddc1cffc9846359.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q14-solution.svg",
+          "gitBlobSha": "479a755f364d8f6e0b5ef09c514a9b11b9594a7e",
+          "sha256": "04df6027d4d98e3d6647a05f8adcabf28d1b93ce09fe4da9c110c72e4eabdba1",
+          "bytes": 5007,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/479a755f364d8f6e0b5ef09c514a9b11b9594a7e.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/479a755f364d8f6e0b5ef09c514a9b11b9594a7e.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_b581b17bde44c662b8ccfa09adeaf2822e1fa4bd9cb6f56fce52803de9ffc7ee",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "The fold along BD, reflected point E, intersection F and rectangle dimensions are retained. The solution marks the equal sides already justified in the unchanged text.",
+      "beforeStudentSha256": "cbaebdccb898262ba09df59f226bb62d286b5539d7bfe4ac080a8a97feed9f43",
+      "currentStudentSha256": "bff3bccdbeaf1456cb8dce999d8fcff961cfca1a2a3a882c5286f68e131a03f6",
+      "currentQuestionSha256": "3ce96b234e4147d7492a47cb7f7a308baae91bdf73fe07038a10970aebacadac",
+      "existingFourSlot": {
+        "ordinal": 15,
+        "format": "단일 정답",
+        "given": [
+          165,
+          208,
+          310
+        ],
+        "goal": [
+          213
+        ],
+        "method": [
+          209,
+          159,
+          195,
+          213
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "958a601e74488e1e6b88eaf2302224471ffcbc17872742146a275f6df2800365",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q15.png",
+      "cardSha256": "f6d848e39085f0b6353208814e0d20c644abe544b8098387ca29473769650889",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q15.png",
+          "gitBlobSha": "6047485a20fc60e5aaa653f9d36fdd32e0ab9998",
+          "sha256": "c6c9c5641a870d8dd097d83a5037faf16b233ce97eab8a536b2d9e47ec673410",
+          "bytes": 28476,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/6047485a20fc60e5aaa653f9d36fdd32e0ab9998.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/6047485a20fc60e5aaa653f9d36fdd32e0ab9998.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q15-problem-v3.svg",
+          "gitBlobSha": "3c9666029912367075d4f6e6726de5610cbacc02",
+          "sha256": "148457bfe57c9ec9c727480f0a643952c457d726a38a92addd313784d7853e68",
+          "bytes": 4079,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/3c9666029912367075d4f6e6726de5610cbacc02.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/3c9666029912367075d4f6e6726de5610cbacc02.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q15-solution.svg",
+          "gitBlobSha": "d61808275db886a9d0df533f8363aac359391cd3",
+          "sha256": "fae52ec14d8457c48671e721215c15412b6b03b7a92f44c9856f0e493b2c6018",
+          "bytes": 4795,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/d61808275db886a9d0df533f8363aac359391cd3.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/d61808275db886a9d0df533f8363aac359391cd3.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_567728bef2f6718337448505336dba083df7055980f6a556dcb6601eca53cc88",
+      "decision": "PENDING_ROOT_BROWSER_FONT_CHECK",
+      "observation": "The isosceles sides, radical base length, arbitrary base point and the two perpendicular feet retain their original roles. Solution shading supports the same area-sum method.",
+      "beforeStudentSha256": "4c461719d167d87ed7a6cbf8c6d305c229d4a9be3f8e72264a9d2a7341671406",
+      "currentStudentSha256": "c5f1e0d971f63461157705abb36c421eefa675f83bb02ac8041fbbfdd55164d3",
+      "currentQuestionSha256": "61132d5c2d6f932225fdf439516974ab987863a02e24fc6921b06176b9465d81",
+      "existingFourSlot": {
+        "ordinal": 16,
+        "format": "단일 정답",
+        "given": [
+          159,
+          179,
+          144
+        ],
+        "goal": [
+          215,
+          286
+        ],
+        "method": [
+          195,
+          213,
+          286
+        ],
+        "condition": [
+          743,
+          179
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "d281d3d76c9c939c4bd1271c43344fafa89aa7d748e8c349b5775aba2e261477",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q16.png",
+      "cardSha256": "85796a17a6a8f51521c485bce64a87dc436995d363732127ff7c0a3d331abb00",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q16.png",
+          "gitBlobSha": "1cc6d676505fee50b904811e3c747e0307558692",
+          "sha256": "9927220e6831f18765cee50f652ba7002385d0424502060c36a8d580ce134d86",
+          "bytes": 19980,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/1cc6d676505fee50b904811e3c747e0307558692.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/1cc6d676505fee50b904811e3c747e0307558692.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q16-problem-v3.svg",
+          "gitBlobSha": "88dcf74f52e90436bb131840359efb8f031e4f95",
+          "sha256": "27335f13dd9464f3a728423ec6f93b8e2d7a4c1141ad5a3a9642c0987ce37cf2",
+          "bytes": 4592,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/88dcf74f52e90436bb131840359efb8f031e4f95.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/88dcf74f52e90436bb131840359efb8f031e4f95.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q16-solution.svg",
+          "gitBlobSha": "c0198116129a82e1ca18b7563d3aee8044a9d207",
+          "sha256": "669662dc22a743c12720dc6232df39fc05e388f6cddd30487467d78c3cb79ae6",
+          "bytes": 5320,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/c0198116129a82e1ca18b7563d3aee8044a9d207.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/c0198116129a82e1ca18b7563d3aee8044a9d207.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false,
+      "numericConditionRead": "Matches source literal and unchanged explanation",
+      "renderingLimitation": "Inkscape fallback places the radical glyph below the number baseline; exact SVG browser observation is pending. This is not classified as a math or slot defect."
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_22e297193c6bb1b5e01150bb9917b342753e4901bd8f6ef7d41e6848ea9f1bdf",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Solution-only coordinate diagram places the two unchanged points and corresponding horizontal/vertical differences consistently with the distance explanation.",
+      "beforeStudentSha256": "0fba4bf7a39e4fe5216720bc147375ce916a25918e8484c62027061fdef0cfe4",
+      "currentStudentSha256": "db8cc496622974d1212029443290b41a9e32dcb035c866920454e254aa9fb1dc",
+      "currentQuestionSha256": "dfcfbe5a3c57318b3b60732725b739585118697d6c06ab33e3764e3e62f7227b",
+      "existingFourSlot": {
+        "ordinal": 17,
+        "format": "단일 정답",
+        "given": [
+          148,
+          142
+        ],
+        "goal": [
+          216
+        ],
+        "method": [
+          288,
+          195,
+          22
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "fe990ca1f9af017c6dcd4e52254c1a19a2faeeb73afcaa22820688b7372de73e",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q17.png",
+      "cardSha256": "7b068b6aad4d53df1665bd499b82f89b1adb1810e02f16650c2f8a43b71a9fa3",
+      "assets": [
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q17-solution.svg",
+          "gitBlobSha": "f93948434e23d06a2abe9e388aadaf6bb8d537a1",
+          "sha256": "ecaf3c5ffe57b3e44d075595d8c452d3090d9eaf7bae6ec7d3e569a081489186",
+          "bytes": 2829,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/f93948434e23d06a2abe9e388aadaf6bb8d537a1.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/f93948434e23d06a2abe9e388aadaf6bb8d537a1.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_62c77e5b3185cdeb5cbe69fab9aa4f47ddaa9bc9cb061f6b39c5cccaea5a81ec",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Cube side, section AFH and height from E retain their original incidence. Added solution equal-edge marks support the unchanged volume/base-area argument.",
+      "beforeStudentSha256": "ec86c94be0f3afdf2ffa9a454d6e6a1144eeb6ff3f2c164dba763a2b3812b74e",
+      "currentStudentSha256": "a3a72207e0e298a634ed51a872056477614594baad53569b280ff8c4816f32c1",
+      "currentQuestionSha256": "1c8aa0383c6be048d1a6bbd0c65082f8168fe396d77c1aaf7deb7c684d169e3f",
+      "existingFourSlot": {
+        "ordinal": 18,
+        "format": "단일 정답",
+        "given": [
+          601,
+          146,
+          158
+        ],
+        "goal": [
+          218
+        ],
+        "method": [
+          219,
+          653,
+          160,
+          195
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "8e072df03d41da03f5a472e529d37d53ec64e56874254c0f97ea7ebc12104c4d",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q18.png",
+      "cardSha256": "28b253c352776e84cfe0d316e81ab9ab2710f6c400bf8596fb8658ee936f141e",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q18.png",
+          "gitBlobSha": "6920e01bb2b174dc3c0aa4b2a62548ea74c3b862",
+          "sha256": "403537217fab71f5512dad8e189e9f773ad38d80e184054e487086b69fbf55e6",
+          "bytes": 28923,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/6920e01bb2b174dc3c0aa4b2a62548ea74c3b862.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/6920e01bb2b174dc3c0aa4b2a62548ea74c3b862.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q18-problem-v3.svg",
+          "gitBlobSha": "294aba96604fe1a55906a1bb7e77d3e794581da8",
+          "sha256": "3d4b11cc661b892504c6ee78b1aaa654448d6967c4f43a9314e641290e859d29",
+          "bytes": 5658,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/294aba96604fe1a55906a1bb7e77d3e794581da8.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/294aba96604fe1a55906a1bb7e77d3e794581da8.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q18-solution.svg",
+          "gitBlobSha": "956c237b4b4ce62e21d9dfd5b5e56002694fef0a",
+          "sha256": "7810ac4a2650b74551164d828fbe94e473749ba20d4f84a504221c9d387fb364",
+          "bytes": 7090,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/956c237b4b4ce62e21d9dfd5b5e56002694fef0a.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/956c237b4b4ce62e21d9dfd5b5e56002694fef0a.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_0e9d8a33d76c9b26427dad3620ad544eab943ce879d6ca6a4000c7884a883ec5",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Tetrahedron edge, perpendicular foot E, moving point on AC and two-face path remain consistent. The solution unfolding keeps E/D on opposite sides of AC and the same path crossing.",
+      "beforeStudentSha256": "3fbe5e8de88d439eb5bfef6818690684122c6e2526d7c2ff94a9644f45a3af4c",
+      "currentStudentSha256": "35f5b3822933814c5213f6eef6c6846ff8db05532643f700dcc61ccd4befef67",
+      "currentQuestionSha256": "0cc3ae0d4a683377c574c0565a24ef711f6264fbff295d6a3ac2d650fa38379f",
+      "existingFourSlot": {
+        "ordinal": 19,
+        "format": "단일 정답",
+        "given": [
+          600,
+          179,
+          144
+        ],
+        "goal": [
+          217
+        ],
+        "method": [
+          173,
+          160,
+          195,
+          741
+        ],
+        "condition": [
+          297
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "c1d3d219f0c7fae2d72ae0df87a7982e6116d7a30a7789b16f7a83612baa703f",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q19.png",
+      "cardSha256": "95c4d74870b6f0956293aa2f05ce70d7080d226b29ef2e2115711811e43a8923",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q19.png",
+          "gitBlobSha": "3092c5dad1eb54dd95ec4a4bf19df221c10da0cf",
+          "sha256": "06a985e6de2f0a1f11dbb6cb58b9aaf4e5c0012d93f9c2b6dcf2b153161f81f1",
+          "bytes": 52507,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/3092c5dad1eb54dd95ec4a4bf19df221c10da0cf.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/3092c5dad1eb54dd95ec4a4bf19df221c10da0cf.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q19-problem-v3.svg",
+          "gitBlobSha": "22231cb4d9f7b3c90492025e9a948a35d94f05e0",
+          "sha256": "3053c8b8122491c8eea92f2ca1f6f67d966998c6427098ac93af8a9be83ac07c",
+          "bytes": 3689,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/22231cb4d9f7b3c90492025e9a948a35d94f05e0.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/22231cb4d9f7b3c90492025e9a948a35d94f05e0.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q19-solution.svg",
+          "gitBlobSha": "8eea4883d26ac5666086ce35ab2d747733d391f5",
+          "sha256": "fb9ecf2c328b741be69a7a4fe1effc4928893e98c1abdeaa7fdc02eed5abb7de",
+          "bytes": 3010,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/8eea4883d26ac5666086ce35ab2d747733d391f5.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/8eea4883d26ac5666086ce35ab2d747733d391f5.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_d9eea39cb4893fe38be47534a0354f8fb98465fe9717b517f8bf14fb0ea02ef6",
+      "decision": "PENDING_ROOT_BROWSER_FONT_CHECK",
+      "observation": "Tetrahedron vertices, specified internal-division points and target triangle BEF are retained. Derived lengths and the altitude appear in the solution only.",
+      "beforeStudentSha256": "b94fd3e4bb05813d8ac773067c877b30411000fe3615eea3cb929755b90a6d7e",
+      "currentStudentSha256": "800728d722cbc6062644a21d01ca6977594a68b1986b7d27e5a5fcfb06013d07",
+      "currentQuestionSha256": "8a65588690cd7d99ec20cf605ce3f84fa5aa323a93b73776fa1e00b3125cfa7d",
+      "existingFourSlot": {
+        "ordinal": 20,
+        "format": "단일 정답",
+        "given": [
+          600,
+          189
+        ],
+        "goal": [
+          213
+        ],
+        "method": [
+          189,
+          160,
+          195,
+          213
+        ],
+        "condition": [
+          289
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "ef4d6684c9646c694ea24ba0462b3cd865ad7b66fbc17a243a7424ce8460e18a",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q20.png",
+      "cardSha256": "9088048285d7493e6771956c425ffb86a3f3c18fa49b31c2176cb8a858eb072c",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q20.png",
+          "gitBlobSha": "4b01e2dae51fa70a1ed9879a0f4acce13f57b694",
+          "sha256": "d703c51671b150d252c9def447c4a64d54d403d4f2907fa3cd6311c27ad4875c",
+          "bytes": 16201,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/4b01e2dae51fa70a1ed9879a0f4acce13f57b694.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/4b01e2dae51fa70a1ed9879a0f4acce13f57b694.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q20-problem-v3.svg",
+          "gitBlobSha": "edff5d4437715165683bb0f84cff1a8805ab0a74",
+          "sha256": "dfdf0b5745b8da8b43af14b962bfc4998483d03e2cdc9d05d4279e22a355858a",
+          "bytes": 3783,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/edff5d4437715165683bb0f84cff1a8805ab0a74.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/edff5d4437715165683bb0f84cff1a8805ab0a74.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q20-solution.svg",
+          "gitBlobSha": "3e5befd01b69fcaeefdedb69abf1dd90ac001af8",
+          "sha256": "e6d32c268a758a2bf0b2d032073ab06bf4b675ac84e8ed248b6790bcdb4eb3b9",
+          "bytes": 3712,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/3e5befd01b69fcaeefdedb69abf1dd90ac001af8.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/3e5befd01b69fcaeefdedb69abf1dd90ac001af8.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false,
+      "numericConditionRead": "Matches source literal and unchanged explanation",
+      "renderingLimitation": "Inkscape fallback places the radical glyph below the number baseline; exact SVG browser observation is pending. This is not classified as a math or slot defect."
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_9b55ab3e12d5214cdd0e07c0e63a62c82145c916a06112f88b616913042a0236",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Solution-only deviation plots preserve both four-round inventories and repeated mean values; the original variance-comparison method is unchanged.",
+      "beforeStudentSha256": "f03e7d91398358560ffa7765dd5b088e039540f9e4f90d24f412258459d162bd",
+      "currentStudentSha256": "90115f3e3d999393f581cb98511798fc2fc71964f6801cb4160262c3df46cbf6",
+      "currentQuestionSha256": "38d95ec08ee2e0fbb975d533a9b48ab1372b2ed564d097d1e194ca6a9b03b2f6",
+      "existingFourSlot": {
+        "ordinal": 21,
+        "format": "소문항 묶음",
+        "given": [
+          350,
+          261
+        ],
+        "goal": [
+          262,
+          256,
+          350
+        ],
+        "method": [
+          262,
+          422,
+          256,
+          28
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "700944cce3248969a3ca663bf4f4dbeb68f526441c68b52a0832295356eedd9a",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q21.png",
+      "cardSha256": "7ed8093927abbd6fe137f1fa131a53e1b47f3f78e76c1acebfac2c2fb88d754a",
+      "assets": [
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q21-solution.svg",
+          "gitBlobSha": "86a2ab1fc2d7711ba260746d8b5902dabb8af545",
+          "sha256": "76ad60c2069cc23c00a162c83d99cb9636cb11aeb7627953591146e75acb99f1",
+          "bytes": 5053,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/86a2ab1fc2d7711ba260746d8b5902dabb8af545.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/86a2ab1fc2d7711ba260746d8b5902dabb8af545.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_d85892ceefbd2568f6f4dc87fc256a6b2bad1fdf27e036399e6529aed90d53c7",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Octahedron edge and six vertices remain consistent. Solution centre and height guides illustrate the existing two-pyramid decomposition.",
+      "beforeStudentSha256": "67ffe2d86f1574814d4e80ebbde32224f3968dacc837e743bd70205f2568c457",
+      "currentStudentSha256": "25cc4c1a53de6c9e0cccd3504cb0428ae8521a77539b291d58233f359fb8cd37",
+      "currentQuestionSha256": "c44a4d681d2e1c2bd6d2ede6c623c98014d52c16452146e80b4a14a1468928d6",
+      "existingFourSlot": {
+        "ordinal": 22,
+        "format": "서술",
+        "given": [
+          602
+        ],
+        "goal": [
+          219
+        ],
+        "method": [
+          335,
+          713,
+          195,
+          219
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "c4f382c7a4adc87313998bc6bcdc4d54d3cecb65160ba29ffc82f32787695c74",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q22.png",
+      "cardSha256": "2ef14e660d6490082adac7ace6b9f6150f50be019ae8062175cc0d202c8a5782",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/s02.png",
+          "gitBlobSha": "417e707985e2aeed3e793c352817ff49d1f4bd63",
+          "sha256": "c62d2ed0a398861bd6e01869fb3d3e87c9e45e0449173d2bb6fea42b845dce7b",
+          "bytes": 25401,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/417e707985e2aeed3e793c352817ff49d1f4bd63.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/417e707985e2aeed3e793c352817ff49d1f4bd63.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q22-problem-v3.svg",
+          "gitBlobSha": "bd19774b067fe84f076d305823c0d8c076ce22d5",
+          "sha256": "b36112c89f34f33b8df72b8c69a551401d0a1aa37a1447faad38b0f0f57055e0",
+          "bytes": 4306,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/bd19774b067fe84f076d305823c0d8c076ce22d5.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/bd19774b067fe84f076d305823c0d8c076ce22d5.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q22-solution.svg",
+          "gitBlobSha": "733087929a90e293fc18e06d56365f89e881bc7f",
+          "sha256": "f3bca663fa739d4653bfa593703130bb7dc07fa4ada8a98217bcda11d2ad398b",
+          "bytes": 4827,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/733087929a90e293fc18e06d56365f89e881bc7f.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/733087929a90e293fc18e06d56365f89e881bc7f.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    },
+    {
+      "exam": "E073",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_6c554b4ae902f7cfb851e8d71a87fe4bddb60c29160bc10d05ebe34abb70bd42",
+      "decision": "CONTINUITY_SUPPORTED_FOR_EXISTING_FOUR_SLOT_ONLY",
+      "observation": "Cuboid edge lengths, endpoints E/C and required crossing edge FB are preserved. The solution unfolds the same adjacent faces into the same rectangle with the path crossing FB.",
+      "beforeStudentSha256": "113ad45ef1bd0f6c2fda37c33700d0f740af90aa9ff668032448e6b76550c20b",
+      "currentStudentSha256": "5e1aaa736e56e71fefdee6dcce5c8add5a6c3c63f81540d6b9e637ae61015f67",
+      "currentQuestionSha256": "94574680174855feda3e27db8b1cf614c141923c058eb797e2a9c8588bed34c8",
+      "existingFourSlot": {
+        "ordinal": 23,
+        "format": "서술",
+        "given": [
+          603,
+          390,
+          329
+        ],
+        "goal": [
+          217
+        ],
+        "method": [
+          173,
+          195,
+          297
+        ],
+        "condition": [
+          356
+        ],
+        "candidates": []
+      },
+      "existingFourSlotSha256": "69dcce32200c28b5cb4e7fd877febb5d7fb644aee831ed472debfe8f3b0564a1",
+      "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/cards/E073-q23.png",
+      "cardSha256": "67149ed9b05904fbbfd906d1cb97b2489d5c92bc9cf437ef9dec1f4203f98d7f",
+      "assets": [
+        {
+          "commit": "c9404f8d591b5fe19b923540b5cf1eb6127b8370",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/s03.png",
+          "gitBlobSha": "f8c2b388bfd444e2c32eea0ad4a3682dd85f7c1d",
+          "sha256": "126e5d375d4c7a30afe6c6841a20b15ae882d039ae459669e22850c34a83e465",
+          "bytes": 39877,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/f8c2b388bfd444e2c32eea0ad4a3682dd85f7c1d.png",
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/f8c2b388bfd444e2c32eea0ad4a3682dd85f7c1d.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q23-problem-v3.svg",
+          "gitBlobSha": "0ae05dcfeeb260fbf50e369dd1ee45d3b5bd25f7",
+          "sha256": "38a89e483fe6d15f47dd6794fbdcea2aac6081b241cdda94551967c45acf2027",
+          "bytes": 6034,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/0ae05dcfeeb260fbf50e369dd1ee45d3b5bd25f7.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/0ae05dcfeeb260fbf50e369dd1ee45d3b5bd25f7.png"
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_신흥중_2학기_중간_중3_수학/q23-solution.svg",
+          "gitBlobSha": "5cb4ee91a182e133d7e00d4dbda4d270e17a02d4",
+          "sha256": "ab22b063d21184a06aed77e83dd9e24f2db897d35602d8b5d011ef8459e15646",
+          "bytes": 4372,
+          "localRawPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/raw/5cb4ee91a182e133d7e00d4dbda4d270e17a02d4.svg",
+          "nestedReferences": [],
+          "renderedPath": "/workspace/scratch/987d4bf32f40/AP-m3-four-current-continuity/.tmp/four-visual/rendered/5cb4ee91a182e133d7e00d4dbda4d270e17a02d4.png"
+        }
+      ],
+      "newSemanticApproval": false,
+      "newFourSlotValues": false,
+      "newMathOrDifficultyQa": false
+    }
+  ],
+  "rendererFontPendingRows": 4,
+  "status": "INTERIM_ACTUAL_READ_WITH_FOUR_FONT_PENDING_AND_ONE_CALLOUT_HOLD"
+}
