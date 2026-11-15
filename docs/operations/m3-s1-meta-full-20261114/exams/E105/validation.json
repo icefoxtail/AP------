@@ -1,0 +1,925 @@
+{
+  "examKey": "E105",
+  "questions": 22,
+  "errors": [],
+  "sourceChangedItems": 22,
+  "sourceChangedFields": 57,
+  "sourceEdits": [
+    {
+      "ordinal": 1,
+      "field": "subUnitKey",
+      "before": "M3-01-RADICAL_ARITHMETIC",
+      "after": "M3-01-REAL_NUMBER_OPERATIONS",
+      "reason": "음수 제곱의 제곱근과 바깥 음수를 구별하고 근호 나눗셈을 정리하는 직접 혼합 계산이다. 계산 자체가 목표이므로 사칙연산 방법의 예외를 적용한다."
+    },
+    {
+      "ordinal": 1,
+      "field": "subUnit",
+      "before": "근호를 포함한 식의 사칙계산",
+      "after": "근호를 포함한 식의 계산",
+      "reason": "음수 제곱의 제곱근과 바깥 음수를 구별하고 근호 나눗셈을 정리하는 직접 혼합 계산이다. 계산 자체가 목표이므로 사칙연산 방법의 예외를 적용한다."
+    },
+    {
+      "ordinal": 2,
+      "field": "subUnitKey",
+      "before": "M3-02-FACTOR_APPLICATION",
+      "after": "M3-02-FACTORIZATION",
+      "reason": "좌변을 전개한 뒤 합차공식과 공통인수 묶기로 a+b를 드러내어 a-b를 직접 결정한다."
+    },
+    {
+      "ordinal": 2,
+      "field": "subUnit",
+      "before": "인수분해 공식을 이용한 식의 값 구하기",
+      "after": "인수분해",
+      "reason": "좌변을 전개한 뒤 합차공식과 공통인수 묶기로 a+b를 드러내어 a-b를 직접 결정한다."
+    },
+    {
+      "ordinal": 3,
+      "field": "subUnitKey",
+      "before": "M3-01-REAL_NUMBER_COMPARISON",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "각 보기의 근호를 간단히 하고 두 수의 차 또는 양수 제곱의 비교로 부등식의 참거짓을 판정한다."
+    },
+    {
+      "ordinal": 3,
+      "field": "subUnit",
+      "before": "실수의 대소 관계",
+      "after": "제곱근과 실수",
+      "reason": "각 보기의 근호를 간단히 하고 두 수의 차 또는 양수 제곱의 비교로 부등식의 참거짓을 판정한다."
+    },
+    {
+      "ordinal": 4,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 3,
+      "reason": "실제 중점 연결 그림에서 한 번 자를 때 넓이가 절반임을 삼각형 넓이로 설명하고 4회 반복 후 제곱근과 유리화로 변 길이를 얻는다."
+    },
+    {
+      "ordinal": 4,
+      "field": "subUnitKey",
+      "before": "M3-01-SQUARE_ROOT_GEOMETRY",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "실제 중점 연결 그림에서 한 번 자를 때 넓이가 절반임을 삼각형 넓이로 설명하고 4회 반복 후 제곱근과 유리화로 변 길이를 얻는다."
+    },
+    {
+      "ordinal": 4,
+      "field": "subUnit",
+      "before": "제곱근을 이용한 도형의 한 변의 길이 구하기",
+      "after": "제곱근과 실수",
+      "reason": "실제 중점 연결 그림에서 한 번 자를 때 넓이가 절반임을 삼각형 넓이로 설명하고 4회 반복 후 제곱근과 유리화로 변 길이를 얻는다."
+    },
+    {
+      "ordinal": 5,
+      "field": "subUnitKey",
+      "before": "M3-02-FACTOR_NUMERICAL",
+      "after": "M3-02-FACTORIZATION",
+      "reason": "가운데 항이 두 수 곱의 두 배임을 인식하여 완전제곱 인수분해 공식을 선택한다. 수치값 직접 계산보다 공식 대응이 핵심이다."
+    },
+    {
+      "ordinal": 5,
+      "field": "subUnit",
+      "before": "인수분해 공식을 이용한 수의 계산",
+      "after": "인수분해",
+      "reason": "가운데 항이 두 수 곱의 두 배임을 인식하여 완전제곱 인수분해 공식을 선택한다. 수치값 직접 계산보다 공식 대응이 핵심이다."
+    },
+    {
+      "ordinal": 6,
+      "field": "level",
+      "before": "중상",
+      "after": "중",
+      "reason": "두 정사각형 변이 자연수이므로 두 넓이가 동시에 완전제곱수라는 제한을 사용하여 유한한 후보를 열거한다. 기존 중상은 허용 level 중으로 정규화한다."
+    },
+    {
+      "ordinal": 6,
+      "field": "subUnitKey",
+      "before": "M3-01-NATURAL_SQUARE_ROOT",
+      "after": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "reason": "두 정사각형 변이 자연수이므로 두 넓이가 동시에 완전제곱수라는 제한을 사용하여 유한한 후보를 열거한다. 기존 중상은 허용 level 중으로 정규화한다."
+    },
+    {
+      "ordinal": 6,
+      "field": "subUnit",
+      "before": "근호 안의 식이 자연수가 되는 조건",
+      "after": "제곱근과 실수",
+      "reason": "두 정사각형 변이 자연수이므로 두 넓이가 동시에 완전제곱수라는 제한을 사용하여 유한한 후보를 열거한다. 기존 중상은 허용 level 중으로 정규화한다."
+    },
+    {
+      "ordinal": 7,
+      "field": "level",
+      "before": "중상",
+      "after": "중",
+      "reason": "연속한 3의 배수를 문자로 나타내어 제곱합 방정식을 세우고 인수분해 후 제곱의 차를 구한다. 기존 중상은 중으로 정규화한다."
+    },
+    {
+      "ordinal": 7,
+      "field": "subUnitKey",
+      "before": "M3-03-WORD_PROBLEM_NUMBER",
+      "after": "M3-03-QUADRATIC_EQUATION_WORD",
+      "reason": "연속한 3의 배수를 문자로 나타내어 제곱합 방정식을 세우고 인수분해 후 제곱의 차를 구한다. 기존 중상은 중으로 정규화한다."
+    },
+    {
+      "ordinal": 7,
+      "field": "subUnit",
+      "before": "이차방정식의 활용 (수의 성질)",
+      "after": "이차방정식의 활용",
+      "reason": "연속한 3의 배수를 문자로 나타내어 제곱합 방정식을 세우고 인수분해 후 제곱의 차를 구한다. 기존 중상은 중으로 정규화한다."
+    },
+    {
+      "ordinal": 8,
+      "field": "difficultyBucket",
+      "before": 1,
+      "after": 2,
+      "reason": "괄호를 전개하여 인수분해한 두 근 중 명시한 정수 구간에 드는 한 근을 선별한다. 직접 풀이에 범위 선별이 추가되어 bucket2로 선택하며 기존 하와 경계를 명시한다."
+    },
+    {
+      "ordinal": 8,
+      "field": "subUnitKey",
+      "before": "M3-03-SOLVE_FACTORING",
+      "after": "M3-03-QUADRATIC_EQUATION",
+      "reason": "괄호를 전개하여 인수분해한 두 근 중 명시한 정수 구간에 드는 한 근을 선별한다. 직접 풀이에 범위 선별이 추가되어 bucket2로 선택하며 기존 하와 경계를 명시한다."
+    },
+    {
+      "ordinal": 8,
+      "field": "subUnit",
+      "before": "이차방정식의 풀이 및 정수 조건 검토",
+      "after": "이차방정식",
+      "reason": "괄호를 전개하여 인수분해한 두 근 중 명시한 정수 구간에 드는 한 근을 선별한다. 직접 풀이에 범위 선별이 추가되어 bucket2로 선택하며 기존 하와 경계를 명시한다."
+    },
+    {
+      "ordinal": 9,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 3,
+      "reason": "두 이차방정식을 각각 인수분해하여 공통근을 찾고 나머지 두 근의 대소에 따라 문자에 대응시킨 후 식의 값을 계산한다."
+    },
+    {
+      "ordinal": 9,
+      "field": "subUnitKey",
+      "before": "M3-03-COMMON_ROOT",
+      "after": "M3-03-QUADRATIC_EQUATION",
+      "reason": "두 이차방정식을 각각 인수분해하여 공통근을 찾고 나머지 두 근의 대소에 따라 문자에 대응시킨 후 식의 값을 계산한다."
+    },
+    {
+      "ordinal": 9,
+      "field": "subUnit",
+      "before": "두 이차방정식의 공통근과 나머지 근",
+      "after": "이차방정식",
+      "reason": "두 이차방정식을 각각 인수분해하여 공통근을 찾고 나머지 두 근의 대소에 따라 문자에 대응시킨 후 식의 값을 계산한다."
+    },
+    {
+      "ordinal": 10,
+      "field": "level",
+      "before": "중상",
+      "after": "중",
+      "reason": "매개변수식이 (x-5)(x+m)으로 인수분해됨을 이용하고 근의 비에 두 순서가 가능함을 나누어 m 후보 중 큰 값을 결정한다. 기존 중상은 중으로 정규화한다."
+    },
+    {
+      "ordinal": 10,
+      "field": "subUnitKey",
+      "before": "M3-03-ROOT_RATIO",
+      "after": "M3-03-QUADRATIC_EQUATION",
+      "reason": "매개변수식이 (x-5)(x+m)으로 인수분해됨을 이용하고 근의 비에 두 순서가 가능함을 나누어 m 후보 중 큰 값을 결정한다. 기존 중상은 중으로 정규화한다."
+    },
+    {
+      "ordinal": 10,
+      "field": "subUnit",
+      "before": "두 근의 비가 주어진 이차방정식",
+      "after": "이차방정식",
+      "reason": "매개변수식이 (x-5)(x+m)으로 인수분해됨을 이용하고 근의 비에 두 순서가 가능함을 나누어 m 후보 중 큰 값을 결정한다. 기존 중상은 중으로 정규화한다."
+    },
+    {
+      "ordinal": 11,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 3,
+      "reason": "중근 조건을 만든 뒤 두 주사위의 유한한 자연수 순서쌍을 열거하여 전체36가지 중 사건의 비율을 구한다. 기존 판별식 기호 사용은 별도 교육과정 부채이다."
+    },
+    {
+      "ordinal": 11,
+      "field": "subUnitKey",
+      "before": "M3-03-DISCRIMINANT_PROBABILITY",
+      "after": "M3-03-QUADRATIC_EQUATION",
+      "reason": "중근 조건을 만든 뒤 두 주사위의 유한한 자연수 순서쌍을 열거하여 전체36가지 중 사건의 비율을 구한다. 기존 판별식 기호 사용은 별도 교육과정 부채이다."
+    },
+    {
+      "ordinal": 11,
+      "field": "subUnit",
+      "before": "중근 조건과 확률의 융합",
+      "after": "이차방정식",
+      "reason": "중근 조건을 만든 뒤 두 주사위의 유한한 자연수 순서쌍을 열거하여 전체36가지 중 사건의 비율을 구한다. 기존 판별식 기호 사용은 별도 교육과정 부채이다."
+    },
+    {
+      "ordinal": 12,
+      "field": "subUnitKey",
+      "before": "M3-04-VERTEX_FORM",
+      "after": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "reason": "표준형의 축 x=p로 p를 바로 정하고 지나는 점을 대입하여 a를 얻는 직접 계수 결정이다."
+    },
+    {
+      "ordinal": 12,
+      "field": "subUnit",
+      "before": "이차함수 $y=a(x-p)^2$의 식 구하기",
+      "after": "이차함수의 그래프",
+      "reason": "표준형의 축 x=p로 p를 바로 정하고 지나는 점을 대입하여 a를 얻는 직접 계수 결정이다."
+    },
+    {
+      "ordinal": 13,
+      "field": "subUnitKey",
+      "before": "M3-04-FUNCTION_IDENTIFICATION",
+      "after": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "reason": "실제 미로 이미지의 각 식에서 최고차항의 차수를 확인하고 정해진 오른쪽·아래 이동을 반복한다. 이미지 경로가 기존 해설과 일치한다."
+    },
+    {
+      "ordinal": 13,
+      "field": "subUnit",
+      "before": "이차함수의 뜻과 식별",
+      "after": "이차함수의 그래프",
+      "reason": "실제 미로 이미지의 각 식에서 최고차항의 차수를 확인하고 정해진 오른쪽·아래 이동을 반복한다. 이미지 경로가 기존 해설과 일치한다."
+    },
+    {
+      "ordinal": 14,
+      "field": "subUnitKey",
+      "before": "M3-04-GRAPH_PROPERTIES",
+      "after": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "reason": "실제 직선 그래프의 절편을 읽어 기울기와 y절편을 구한 뒤 포물선의 축과 양의 계수로 감소 구간을 결정한다."
+    },
+    {
+      "ordinal": 14,
+      "field": "subUnit",
+      "before": "이차함수 그래프의 증가·감소 구간 판정",
+      "after": "이차함수의 그래프",
+      "reason": "실제 직선 그래프의 절편을 읽어 기울기와 y절편을 구한 뒤 포물선의 축과 양의 계수로 감소 구간을 결정한다."
+    },
+    {
+      "ordinal": 15,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 3,
+      "reason": "같은 x좌표와 y좌표 조건으로 y=x를 대입하여 이차방정식을 만들고 근의 공식 후 음수해를 골라 제곱근 범위로 선택지를 결정한다."
+    },
+    {
+      "ordinal": 15,
+      "field": "subUnitKey",
+      "before": "M3-04-GRAPH_INTERSECTION",
+      "after": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "reason": "같은 x좌표와 y좌표 조건으로 y=x를 대입하여 이차방정식을 만들고 근의 공식 후 음수해를 골라 제곱근 범위로 선택지를 결정한다."
+    },
+    {
+      "ordinal": 15,
+      "field": "subUnit",
+      "before": "이차함수 그래프와 직선 $y=x$의 교점",
+      "after": "이차함수의 그래프",
+      "reason": "같은 x좌표와 y좌표 조건으로 y=x를 대입하여 이차방정식을 만들고 근의 공식 후 음수해를 골라 제곱근 범위로 선택지를 결정한다."
+    },
+    {
+      "ordinal": 16,
+      "field": "difficultyBucket",
+      "before": 2,
+      "after": 3,
+      "reason": "일차함수에 변환한 입력을 대입하여 두 식의 곱을 전개하고 완전제곱식으로 고쳐 최댓값을 구한다."
+    },
+    {
+      "ordinal": 16,
+      "field": "subUnitKey",
+      "before": "M3-04-QUADRATIC_MAX_MIN",
+      "after": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "reason": "일차함수에 변환한 입력을 대입하여 두 식의 곱을 전개하고 완전제곱식으로 고쳐 최댓값을 구한다."
+    },
+    {
+      "ordinal": 16,
+      "field": "subUnit",
+      "before": "이차함수의 식 전개와 최댓값 구하기",
+      "after": "이차함수의 그래프",
+      "reason": "일차함수에 변환한 입력을 대입하여 두 식의 곱을 전개하고 완전제곱식으로 고쳐 최댓값을 구한다."
+    },
+    {
+      "ordinal": 17,
+      "field": "subUnitKey",
+      "before": "M3-03-GEOMETRY_APPLICATION",
+      "after": "M3-03-QUADRATIC_EQUATION_WORD",
+      "reason": "정오각형의 각과 이등변삼각형 성질에서 필요한 길이 관계를 구성하고 AA 닮음비를 이차방정식으로 연결한다. 도형 관계를 구성하는 단계가 핵심인 비정형 연결이다."
+    },
+    {
+      "ordinal": 17,
+      "field": "subUnit",
+      "before": "이차방정식의 기하 활용 (황금비와 정오각형)",
+      "after": "이차방정식의 활용",
+      "reason": "정오각형의 각과 이등변삼각형 성질에서 필요한 길이 관계를 구성하고 AA 닮음비를 이차방정식으로 연결한다. 도형 관계를 구성하는 단계가 핵심인 비정형 연결이다."
+    },
+    {
+      "ordinal": 18,
+      "field": "level",
+      "before": "중상",
+      "after": "중",
+      "reason": "원뿔의 밑넓이와 옆넓이를 합한 식에 증가한 반지름을 대입하여 이차방정식을 세우고 양의 근을 제곱근 범위로 평가한다. 기존 중상은 중으로 정규화한다."
+    },
+    {
+      "ordinal": 18,
+      "field": "subUnitKey",
+      "before": "M3-03-WORD_PROBLEM_GEOMETRY",
+      "after": "M3-03-QUADRATIC_EQUATION_WORD",
+      "reason": "원뿔의 밑넓이와 옆넓이를 합한 식에 증가한 반지름을 대입하여 이차방정식을 세우고 양의 근을 제곱근 범위로 평가한다. 기존 중상은 중으로 정규화한다."
+    },
+    {
+      "ordinal": 18,
+      "field": "subUnit",
+      "before": "이차방정식의 활용 (입체도형의 겉넓이)",
+      "after": "이차방정식의 활용",
+      "reason": "원뿔의 밑넓이와 옆넓이를 합한 식에 증가한 반지름을 대입하여 이차방정식을 세우고 양의 근을 제곱근 범위로 평가한다. 기존 중상은 중으로 정규화한다."
+    },
+    {
+      "ordinal": 19,
+      "field": "level",
+      "before": "중상",
+      "after": "상",
+      "reason": "각 이등분과 이등변 조건으로 각을 정하고 두 이등변삼각형의 길이 등식 및 AA 닮음을 찾아 이차방정식을 구성한다. 근호 범위로 최종 길이를 판정하는 연결이며 기존 중상을 상으로 정규화한다."
+    },
+    {
+      "ordinal": 19,
+      "field": "difficultyBucket",
+      "before": 3,
+      "after": 4,
+      "reason": "각 이등분과 이등변 조건으로 각을 정하고 두 이등변삼각형의 길이 등식 및 AA 닮음을 찾아 이차방정식을 구성한다. 근호 범위로 최종 길이를 판정하는 연결이며 기존 중상을 상으로 정규화한다."
+    },
+    {
+      "ordinal": 19,
+      "field": "subUnitKey",
+      "before": "M3-03-GEOMETRY_SIMILARITY",
+      "after": "M3-03-QUADRATIC_EQUATION_WORD",
+      "reason": "각 이등분과 이등변 조건으로 각을 정하고 두 이등변삼각형의 길이 등식 및 AA 닮음을 찾아 이차방정식을 구성한다. 근호 범위로 최종 길이를 판정하는 연결이며 기존 중상을 상으로 정규화한다."
+    },
+    {
+      "ordinal": 19,
+      "field": "subUnit",
+      "before": "이차방정식의 활용 (삼각형의 닮음과 황금삼각형)",
+      "after": "이차방정식의 활용",
+      "reason": "각 이등분과 이등변 조건으로 각을 정하고 두 이등변삼각형의 길이 등식 및 AA 닮음을 찾아 이차방정식을 구성한다. 근호 범위로 최종 길이를 판정하는 연결이며 기존 중상을 상으로 정규화한다."
+    },
+    {
+      "ordinal": 20,
+      "field": "subUnitKey",
+      "before": "M3-03-WORD_PROBLEM_GRID",
+      "after": "M3-03-QUADRATIC_EQUATION_WORD",
+      "reason": "가로·세로 줄 수의 합과 좌석수의 곱을 한 변수 이차방정식으로 나타내어 정수 인수분해하고 두 수의 차를 구한다."
+    },
+    {
+      "ordinal": 20,
+      "field": "subUnit",
+      "before": "이차방정식의 활용 (좌석 배열과 실생활 문제)",
+      "after": "이차방정식의 활용",
+      "reason": "가로·세로 줄 수의 합과 좌석수의 곱을 한 변수 이차방정식으로 나타내어 정수 인수분해하고 두 수의 차를 구한다."
+    },
+    {
+      "ordinal": 21,
+      "field": "difficultyBucket",
+      "before": 4,
+      "after": 3,
+      "reason": "초기 앞선 거리6을 두 위치식에 반영하여 따라잡는 시점의 이차방정식을 세우고 양의 근의 범위를 평가한다. 절차가 정형적이므로 bucket3으로 선택하고 기존 상과 B34 경계를 남긴다."
+    },
+    {
+      "ordinal": 21,
+      "field": "subUnitKey",
+      "before": "M3-03-WORD_PROBLEM_MOTION",
+      "after": "M3-03-QUADRATIC_EQUATION_WORD",
+      "reason": "초기 앞선 거리6을 두 위치식에 반영하여 따라잡는 시점의 이차방정식을 세우고 양의 근의 범위를 평가한다. 절차가 정형적이므로 bucket3으로 선택하고 기존 상과 B34 경계를 남긴다."
+    },
+    {
+      "ordinal": 21,
+      "field": "subUnit",
+      "before": "이차방정식의 활용 (동점과 거리 추월)",
+      "after": "이차방정식의 활용",
+      "reason": "초기 앞선 거리6을 두 위치식에 반영하여 따라잡는 시점의 이차방정식을 세우고 양의 근의 범위를 평가한다. 절차가 정형적이므로 bucket3으로 선택하고 기존 상과 B34 경계를 남긴다."
+    },
+    {
+      "ordinal": 22,
+      "field": "subUnitKey",
+      "before": "M3-04-GRAPH_TRIANGLE_AREA",
+      "after": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "reason": "수평선분 길이로 B좌표를 정하고 왼쪽 조건으로 C위치를 제한한 뒤 삼각형 높이와 이차방정식을 연결하여 좌표의 범위를 구한다."
+    },
+    {
+      "ordinal": 22,
+      "field": "subUnit",
+      "before": "이차함수 그래프 위의 점과 삼각형의 넓이",
+      "after": "이차함수의 그래프",
+      "reason": "수평선분 길이로 B좌표를 정하고 왼쪽 조건으로 C위치를 제한한 뒤 삼각형 높이와 이차방정식을 연결하여 좌표의 범위를 구한다."
+    }
+  ],
+  "sourceWriterDeferred": [],
+  "fourSlot": {
+    "fail": [],
+    "warn": [
+      "#1 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)",
+      "#5 goal only 방법 terms",
+      "#5 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 22,
+      "examItems": 22,
+      "quotes": 175
+    }
+  },
+  "registrySha": "sha256:a95f364dfb6d3aed070543e74c769a730d227059201833d460c67f09a78c9a20",
+  "missingNativeLeaves": [],
+  "missing2022Leaves": [
+    13,
+    14,
+    15,
+    22
+  ],
+  "projectionBindingGaps": [
+    {
+      "ordinal": 3,
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "status": "MISSING_EXACT_BINDING"
+    },
+    {
+      "ordinal": 4,
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+      "templateKey": null,
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "status": "MISSING_EXACT_BINDING"
+    },
+    {
+      "ordinal": 6,
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+      "templateKey": null,
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "status": "MISSING_EXACT_BINDING"
+    }
+  ],
+  "protectedFields": {
+    "status": "PASS",
+    "items": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_a2d9ae0e50a5a2c424a200385c9d1dd49aaf1b39a8e26463c5ebeb19532b17ef",
+        "sha256": "7c8d8e625d2b8a9a89a7c01dc27a94be9f74ff7d30159174eb53779c836c0c6b",
+        "unchanged": true
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_1d13c50b9209a58efe6ba3a2f8ebe33f0816772b5cde4edd5d9cb50243623bb2",
+        "sha256": "ac1752bb6aac75879802abcb183638042b33f1e78c2e591a3084b8f2f98fb81e",
+        "unchanged": true
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_8df1cebd7cc85b0e2b6647b94a8754917fa6dad8f387f98907d3d679284625e0",
+        "sha256": "40b97d3e7d9371e9c0467117cdc0402d1995a1d13de08955799449b8e0a4d0bc",
+        "unchanged": true
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_b0a054b2e332cd96374e4eafbf547a74db30cbceb7249a0cb35e37229e1996f1",
+        "sha256": "acaa2f9e1fc4c1491880948e55ed6fca719d1891b006654d175b0e95c2b76068",
+        "unchanged": true
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_873e224ab5804f59cb116df233ecbb3dd25506bb590fe2b40611c9e08050704e",
+        "sha256": "7c6956d63a1b7f1e9bd67182898520199aa3e59099dbe4287d7b089fe8bd5ad0",
+        "unchanged": true
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_46290f70a8784db91199a39068989297e462f82df6b0b88c850f9175a0eda2bf",
+        "sha256": "b7532258b4a32d2f00ac5d343c31ba625ba3fc55e68a94c951dbd591b900a2c4",
+        "unchanged": true
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_037830134cc5a79cd42fc19784a467f2d328dcbedbac118d1ec7d82963d11e69",
+        "sha256": "0231c243dde9f3f6207626022548fa0dea5df82601b488d807b15cbacc531028",
+        "unchanged": true
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_18e864e57888ee6fa0e6e648e98417554cafdbb6109478eeb73bb01ef4729027",
+        "sha256": "fef062729c9480dc0a1a54376d974ae6c3b8906288de867b0ea6af17c0e1c643",
+        "unchanged": true
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_75688f33a577c3201b70ccc7d8523a0a33a2fd8faafa1d32a45c32e14b0e027f",
+        "sha256": "4b745b59ad9397af41733d2a03ef3fee935eae0f02faa3a9ff9cb05a23b5ca08",
+        "unchanged": true
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_b4fac870eec10789835bdf658b9209017725f15a9dea0e9343087b3f48f9f422",
+        "sha256": "3f8e1a45554f426c19fa970785ffdd1fde1103b2cc447105b46e268108f4c976",
+        "unchanged": true
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_3b58e1760465e25d8eada891b39549d166d6ab37dc2ce4b236e0497922e07afa",
+        "sha256": "47cbd4a40e8689602ecb2b748b54d519ea8058aa019bf580134f15ee5840f8e5",
+        "unchanged": true
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_c5bfe9770eee9043f3b66f27b7932afc6963470a1dd1a4a5e779db34510ad448",
+        "sha256": "daf7dc5d575fbb5ae51ec1947520cf10048f71281f9299d0c15a3de45d250125",
+        "unchanged": true
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_7d4f2dad6d7b18b2bc80f154e96d7546ac25533fd2d1ea1e80456fa81616b539",
+        "sha256": "b8539fcc220ffbc548adfa2e5ea8c837178ed99ebcc27e3099a493c0a7edcde6",
+        "unchanged": true
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_4612216b28117f01660a2a0402b504981122973c6c7c8f9a3b8dfb25d08dafae",
+        "sha256": "6c02740a50a4f189d3cdf606999367ce96bafd89c4e81f0af1143f14d5d061d6",
+        "unchanged": true
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_b6ab0939ae969b2b2922c297db142e443df23c975f5c2f75f5988ebfe4ec99d3",
+        "sha256": "048d875177a3d7a661741dd0ce913ca6c194dca7b352f785fcef98ffa8a0d352",
+        "unchanged": true
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_e3e64730cb7449665e4ea57f979408e7869ec16ac82b5c22a7831e7f125fbf5e",
+        "sha256": "bb82d4f341b1644588a3871b230f1f7f6ed326d9a62b689e38053b8e568d43a1",
+        "unchanged": true
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_adfe416ac4b0ea2fc389b4e59f5f656d3202e7fe69292a0c33ed2165545900ee",
+        "sha256": "b897a6a8edc0a03eedbd974f2013d07b3fd9e720bab54fd3eaf396f17d3b32f0",
+        "unchanged": true
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_55669e85610303254a9b770fc807522f3d6bc340b5df2af5c199a61a9e75d21e",
+        "sha256": "f83c16ba640604c8ad2dad631db313da9fb18454ee10f26ca1d0f6bcd22294cc",
+        "unchanged": true
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_11a2fcd5d98a9360d2ede6e14e12b60716fe3c263380dd45ceba6ca65658c00c",
+        "sha256": "9906a5eef315db6474a0d517b3ac17948420ab20453854d25a4d30847ab80338",
+        "unchanged": true
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_78d3f0e9c321ea20f84d83d4e960b2e15c122b4a049d1b27ed2f38b54a8ec6a8",
+        "sha256": "727e05feacdce381ef956517fa3f618eaf25b85ed9f4dad2b77fe4bacc17e9d9",
+        "unchanged": true
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_634ea416ea17beed3d4d6bf4d934f62d3641428a2ddb5ccbadfb286441a653a8",
+        "sha256": "6fcf54f0000914ff5ef89039485af42ed43feac59ff507d9e9be2d8838200577",
+        "unchanged": true
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_0261def77b843c71a405f917fe371e1df27ec65732836295b1f341cb44f0d0fa",
+        "sha256": "388fc6515b00de417435bc163127bd7421b4ea9f7223aff48f918086336a7ee3",
+        "unchanged": true
+      }
+    ]
+  },
+  "fingerprints": {
+    "status": "PASS",
+    "items": [
+      {
+        "ordinal": 1,
+        "questionUid": "qid_v1_a2d9ae0e50a5a2c424a200385c9d1dd49aaf1b39a8e26463c5ebeb19532b17ef",
+        "QBODY": "2b8609274eb4529cf5ac224d31fab12edae79fc2745f1452fba2da3d3079e16f",
+        "QFULL": "e32bd29782da492d2a07a13f1a826cd5ec6ffb5644f07e4d411ee1d9fef506ea",
+        "stemEvidenceSha256": "29b26f2591c8895723200a4d0cda228c8581d49c0110130eb9a9ac43f6574de1",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 2,
+        "questionUid": "qid_v1_1d13c50b9209a58efe6ba3a2f8ebe33f0816772b5cde4edd5d9cb50243623bb2",
+        "QBODY": "4bfe758947f0f37408834ee59c9692eac8a067a30223e85879cc021606410597",
+        "QFULL": "851c79c21390ae54adb9336a6d4200652a27039fd98a99a6594e4a60ba89c63d",
+        "stemEvidenceSha256": "ff8f4bc870a6c60dcbeb2e3014d9b1f4af420bfed8f158e59128ca9da8a92d45",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_8df1cebd7cc85b0e2b6647b94a8754917fa6dad8f387f98907d3d679284625e0",
+        "QBODY": "c5a2b8e901db3ff0247fef83e57a43ab7a78907727f89d7166fc915dba917d94",
+        "QFULL": "156f2a2c496d26194ba3ff5400dfb5ea019b5d07f110dd56852a026c53ab2bdc",
+        "stemEvidenceSha256": "b80113e2e7343c6aa7de6a3bbf7c1cd9c4fd355b0b66adf76c5ccc3293670bc6",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_b0a054b2e332cd96374e4eafbf547a74db30cbceb7249a0cb35e37229e1996f1",
+        "QBODY": "fbe9c13212ed5345410f174836f58a5a674562607e9ca5847846881a29eb64bd",
+        "QFULL": "ac2289377593329f0c807b63f54f79349dfc2c6d95721e20232b084fb60ab592",
+        "stemEvidenceSha256": "47a0651841427e3b97897a80f5e147b402ae7f762511d49411d3895966ebd496",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 5,
+        "questionUid": "qid_v1_873e224ab5804f59cb116df233ecbb3dd25506bb590fe2b40611c9e08050704e",
+        "QBODY": "3dc9ef4c1967e5b9561ec70d14649b31428d33cf757182a17dccc7bc302dd115",
+        "QFULL": "4ca7f8b1100ebe50721defb5d5e396f0b8d69161df860825836b28642b533b79",
+        "stemEvidenceSha256": "fde77b3109338f06e27139017a8a1ef2b87d0a745c2b9bee881f66ae1e98f4a9",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 6,
+        "questionUid": "qid_v1_46290f70a8784db91199a39068989297e462f82df6b0b88c850f9175a0eda2bf",
+        "QBODY": "0bdc52414ecb766fa910692e97a4fd9cd9b8dee7aa2c1a399938f0dbe518121f",
+        "QFULL": "d56a3ff4310dacec906471fdb9eb9b581965a6ac6ef96a36b47aa98d1194bf31",
+        "stemEvidenceSha256": "3aaa8b6e0f499e0d539bd349ab133e05e734d4c0dbd6badec0cf620fdd933d69",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_037830134cc5a79cd42fc19784a467f2d328dcbedbac118d1ec7d82963d11e69",
+        "QBODY": "816ba989c7fec4d7a0fa9154259e1f9754b37baf91c92bdd97e551e3efb2db0d",
+        "QFULL": "27b3bbaa0c155e59987246293c6e761afe1f2d0a7291608a085bc68b6ba6a2a2",
+        "stemEvidenceSha256": "df918d2d0a00a1a49048f5a66bcaf90fb3b377caf77a31672088957c6ac6069b",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 8,
+        "questionUid": "qid_v1_18e864e57888ee6fa0e6e648e98417554cafdbb6109478eeb73bb01ef4729027",
+        "QBODY": "cdb0f6483fb9c54c8e992b306bfc9b67cec9d53a759967a989437f3996e35c67",
+        "QFULL": "54965d06faae450932e12d9506781c7abbefc5e3b0330442356fb8cc80325da1",
+        "stemEvidenceSha256": "4253c9dca27c3ba74980cb907f7c348857b96981101ced309b010ca75b827c79",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 9,
+        "questionUid": "qid_v1_75688f33a577c3201b70ccc7d8523a0a33a2fd8faafa1d32a45c32e14b0e027f",
+        "QBODY": "e822eb44928f8be4bf94601cb52ce81291cba896d583d517a0ac913da84065cb",
+        "QFULL": "92594d45ebd87190f29bcca7efb88b97c8e870825fc40dd5a175c8c81444e417",
+        "stemEvidenceSha256": "004f9df8c9470b0f744fe285378141f9d509dd729993ef07eb00a7d8e3da8452",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 10,
+        "questionUid": "qid_v1_b4fac870eec10789835bdf658b9209017725f15a9dea0e9343087b3f48f9f422",
+        "QBODY": "05d3dbc6f4ed876b3e884f857acb09fc79c314f8328f59f05ac6fd18e38ab27a",
+        "QFULL": "bbef5e90095bf9b82f58d64c30c944fae30efa3601163ce5e01c1ca27c6349ac",
+        "stemEvidenceSha256": "d519f36606ecf4392c1b5cb2e2bddefb35e42868a7f3461101e1f502a323bcc5",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_3b58e1760465e25d8eada891b39549d166d6ab37dc2ce4b236e0497922e07afa",
+        "QBODY": "50927bf6951fc27ce2082ceff3213918a31b40959bebc9652d9a9b7b91903601",
+        "QFULL": "ad785bd86d3ee7f1dbb464f6d57e1612c3c88e2c396d115a42fa5ca5d85bd556",
+        "stemEvidenceSha256": "44349fd472e3defe4ba7e192bfa53f1c8820f01e11822c54203690ad40dfbe07",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 12,
+        "questionUid": "qid_v1_c5bfe9770eee9043f3b66f27b7932afc6963470a1dd1a4a5e779db34510ad448",
+        "QBODY": "5b6f70924c1679d6361142d013c435f4133309dffb2b1ce3cd0d534bceb67740",
+        "QFULL": "8c09edca5b34ffba55405ee1962451df6905a98e29c299086606acc50574416e",
+        "stemEvidenceSha256": "117c7fc9f75c02e3e607d4e395e3b2326b7b1211ec63b6cd531739874186eb7a",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 13,
+        "questionUid": "qid_v1_7d4f2dad6d7b18b2bc80f154e96d7546ac25533fd2d1ea1e80456fa81616b539",
+        "QBODY": "9fc2d22b5f8b51250ff3941e2a5c78ad75a7578554346ff2b606483a70dd6865",
+        "QFULL": "2ced6b31827da585d57cca217e969ba9f108ca53ca84cd3d0186608e6aa672cd",
+        "stemEvidenceSha256": "eefde4a910d2d097cfdc1490cf89aa895f667e93b6046ed2e53826d9bea3457e",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_4612216b28117f01660a2a0402b504981122973c6c7c8f9a3b8dfb25d08dafae",
+        "QBODY": "9379310e123897f225b67cb4c32f3fd7b1208a17e6678613c32590f588cad58b",
+        "QFULL": "f2a49700cc6d326f40c77f48b39f6ae60e42cdd4368ce655ef739a89df7a00fe",
+        "stemEvidenceSha256": "629cd172c14759bfd612a2fbaad935e06162bb913a04936dd9fa36bf2362450f",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 15,
+        "questionUid": "qid_v1_b6ab0939ae969b2b2922c297db142e443df23c975f5c2f75f5988ebfe4ec99d3",
+        "QBODY": "10a00b29cc9940b77a0b3be45aa00aad03880fc6750384e6572bd2c1d3265957",
+        "QFULL": "aa5102fce16695798c6fc11fea6f5d55b93ab3fe0294950794967a67033ecd63",
+        "stemEvidenceSha256": "9348d8cce035da6a25bfcec72c4c69dd2c319f4a50f0db9d535650ef614803f9",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_e3e64730cb7449665e4ea57f979408e7869ec16ac82b5c22a7831e7f125fbf5e",
+        "QBODY": "532585426c6241c02c91d5b2562f7ffa90af9952244d332eb2de81c6a8061a5b",
+        "QFULL": "0a3b877497bed9044f6436c70552eb1bf1d245db7561df6246172ece88d32f1d",
+        "stemEvidenceSha256": "fb24162fe467d6eabd6df4b9b0b6b3d0fc16ea8124a395cbccfc87fc3e8e9446",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_adfe416ac4b0ea2fc389b4e59f5f656d3202e7fe69292a0c33ed2165545900ee",
+        "QBODY": "68e8e83d0a458325e5d3363b13eeaab899199d4e3a8cc009626f71b9ca9651d0",
+        "QFULL": "93ee81b0c2f1f9914f3426477d59d9d0f26c1b48083be9dc9d8a9cfd12e3a5ab",
+        "stemEvidenceSha256": "394cd59f1dd3a8a2519ada5ff5e062fc1def1173140ca5570abaf6f998ab650b",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_55669e85610303254a9b770fc807522f3d6bc340b5df2af5c199a61a9e75d21e",
+        "QBODY": "adf470ef5ea9dfa2714d97d0a106f576c0399182c58ba4c2a8c69122ecd75ff7",
+        "QFULL": "b401ff6f4d659cec7ceacb12aeec208f3e7a25b5ff879402d939a34ccbb2fb0e",
+        "stemEvidenceSha256": "2cb6e78eb1f3d87d0fbf87a41cc6aad8ee84a6ba557afdf7b54cac7a79000a59",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 19,
+        "questionUid": "qid_v1_11a2fcd5d98a9360d2ede6e14e12b60716fe3c263380dd45ceba6ca65658c00c",
+        "QBODY": "5f5b34833489b5a2c10f670f838e72f3ec38692c94cd0862b1c88af678102a19",
+        "QFULL": "d5438332cd19ad44328e784707300d3ea40585edc1c99f0aaedeb69e43b9994a",
+        "stemEvidenceSha256": "95d5695f5a7b247431d432d0d3423b94faa8c71fde8101b57843e9b52b36c803",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_78d3f0e9c321ea20f84d83d4e960b2e15c122b4a049d1b27ed2f38b54a8ec6a8",
+        "QBODY": "294597258853f5d1f9d7eac7f61c07429472642bd0779737e67097e3efa638d4",
+        "QFULL": "bc53dbc3da7debfbc2a06227b8cc426a2e12630e2d12bedf611ba8fe4dcb714f",
+        "stemEvidenceSha256": "d987e010185207f0928bc891e0b96b5e9037af405bb50552b498b53825be088b",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_634ea416ea17beed3d4d6bf4d934f62d3641428a2ddb5ccbadfb286441a653a8",
+        "QBODY": "3bce0b3bb18fbd60232829bbd4ed05f29df9beeecca632783eb8c4c2a5b5e0d6",
+        "QFULL": "d8ee448a462ce3775838b9103a8493dc2ba0fa0663a8921d1e0c2a31b89a6fed",
+        "stemEvidenceSha256": "bddf9a262934a450ea41eaca7b55dcc6a4812e0d9f2bf57ecebbb9521a7cd001",
+        "stemEvidenceField": "content"
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_0261def77b843c71a405f917fe371e1df27ec65732836295b1f341cb44f0d0fa",
+        "QBODY": "f4fb9c9b7613297eb5713758fcf264044d2000423301905295f6c4b9199b7659",
+        "QFULL": "5af6f4821165be4f9fa1c28ced954a4616e7763aff4ddfb0df42c5f6e775eec0",
+        "stemEvidenceSha256": "080738ff0ca7b78a4a9cd29ff75d7164243e5962da4e9cb6828c22ebcbbe23da",
+        "stemEvidenceField": "content"
+      }
+    ]
+  },
+  "sourceFinalBlob": "86819964c2faf68b6eab6dcd6f7f105fee673a90",
+  "independentReview": {
+    "schemaVersion": "independent-meta-sample-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
+    "examKey": "E105",
+    "author": "meta_c",
+    "reviewer": "meta_b",
+    "reviewerOwner": "GPT_ROOT_D03144C8CA75/B",
+    "reviewedAt": "2026-11-15",
+    "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+    "scope": "METADATA_ONLY_LOCAL_PREPARATION",
+    "sourceBlob": "c6f862bd8a7930c7c203ddd4305ad28b49e410a0",
+    "sourceSha256": "e0c84ca50cfed3beaa22640a4218a82c3cca6c0839914100c8e5c47b6a35d657",
+    "reviewPath": "/workspace/scratch/d03144c8ca75/workers/C/E105.review.json",
+    "reviewSha256": "600f597f69a60267fe0683700648207f67e022f1422c5d74120c938b17643ef3",
+    "fourSlotPath": "/workspace/scratch/d03144c8ca75/workers/C/E105.4slot.json",
+    "fourSlotSha256": "119b8b9479dd1810f5c79819adefa68029f75480abc0ff43ad790f17541bf3cd",
+    "sampleOrdinals": [
+      11,
+      18,
+      22
+    ],
+    "samples": [
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_3b58e1760465e25d8eada891b39549d166d6ab37dc2ce4b236e0497922e07afa",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "readScope": [
+          "actual stem",
+          "actual choices",
+          "existing solution",
+          "review decision",
+          "4slot evidence",
+          "declared debt"
+        ],
+        "quotesVerified": 11,
+        "rationale": "실제 판별식 a(a-1)=3b를 만든 뒤1~6 두 주사위 순서쌍을 열거하여2/36으로 확률을 구함을 확인. CC_PROBABILITY_DEFINITION/SEQUENTIAL·자연수/범위조건·bucket3 수용. 중근을 사건조건으로 옮기고 구별가능을 추가한4칸을 재확인. 사전 주사위의 RETIRED 상태로 해당 용어를 재사용하지 않으며 실제 발문 문맥은 보존. 기존 D/4 사용에 관한 교육과정 부채 유지.",
+        "sourceFingerprints": {
+          "QBODY": "50927bf6951fc27ce2082ceff3213918a31b40959bebc9652d9a9b7b91903601",
+          "QFULL": "ad785bd86d3ee7f1dbb464f6d57e1612c3c88e2c396d115a42fa5ca5d85bd556"
+        },
+        "debtKindsPreserved": [
+          "CURRICULUM_METHOD_DEBT",
+          "TAXONOMY_PROPOSAL"
+        ]
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_55669e85610303254a9b770fc807522f3d6bc340b5df2af5c199a61a9e75d21e",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "readScope": [
+          "actual stem",
+          "actual choices",
+          "existing solution",
+          "review decision",
+          "4slot evidence",
+          "declared debt"
+        ],
+        "quotesVerified": 9,
+        "rationale": "모선10고정이라는 기존해설 해석으로 증가반지름을 겉넓이식에 넣고 양의 근의 구간을 구하는 연계가 명확. 원문에 변화 중 모선불변이 명시되지 않은 부채를 보존. 주어진 보기들이 구간이라는 점을 반영해 goal 범위를 보완한최종본 확인. 원뿔겉넓이공식 후보·양수조건·bucket3 수용.",
+        "sourceFingerprints": {
+          "QBODY": "adf470ef5ea9dfa2714d97d0a106f576c0399182c58ba4c2a8c69122ecd75ff7",
+          "QFULL": "b401ff6f4d659cec7ceacb12aeec208f3e7a25b5ff879402d939a34ccbb2fb0e"
+        },
+        "debtKindsPreserved": [
+          "CONTENT_CONDITION_AMBIGUITY",
+          "TAXONOMY_PROPOSAL"
+        ]
+      },
+      {
+        "ordinal": 22,
+        "questionUid": "qid_v1_0261def77b843c71a405f917fe371e1df27ec65732836295b1f341cb44f0d0fa",
+        "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+        "readScope": [
+          "actual stem",
+          "actual choices",
+          "existing solution",
+          "review decision",
+          "4slot evidence",
+          "declared debt"
+        ],
+        "quotesVerified": 13,
+        "rationale": "AB=5와 양수좌표에서B를 결정, C가 오른쪽이라는 조건으로 k>5를 제한, 삼각형 높이 절댓값을 양수로 풀어 이차방정식을 세운 뒤 근호범위를 구하는 실제해설을 확인. 좌표뿐 아니라 범위가 선택형 반환대상임을 보완한최종본 확인. CC삼각형넓이/이차방정식/근호비교, SEQUENTIAL, 상/bucket4 및 세부leaf부채 수용.",
+        "sourceFingerprints": {
+          "QBODY": "f4fb9c9b7613297eb5713758fcf264044d2000423301905295f6c4b9199b7659",
+          "QFULL": "5af6f4821165be4f9fa1c28ced954a4616e7763aff4ddfb0df42c5f6e775eec0"
+        },
+        "debtKindsPreserved": [
+          "RPM2022_LEAF_PROPOSAL",
+          "TAXONOMY_PROPOSAL"
+        ]
+      }
+    ],
+    "assetReadback": [],
+    "independentReviewerNotAuthor": true,
+    "contentQualityPass": false,
+    "remoteCompletionClaim": false,
+    "remaining": [
+      "root ownership handoff confirmation",
+      "root protected-field integration checks",
+      "remote checkpoint",
+      "Codex exact-leaf/projection and declared content debt processing"
+    ],
+    "compatibilityCorrectionReadback": {
+      "ordinals": [
+        6,
+        7,
+        10,
+        18,
+        19
+      ],
+      "originalLevel": "중상",
+      "compatibility": "UNKNOWN",
+      "levelBucketAndFourSlotUnchanged": true,
+      "reason": "원본 level은 정본3등급 enum이 아니므로 새level과 비교한 것으로 가장하지 않는다. #18 원문 및 최종 decision을 재조회했고 실제 의미판정과 독립검토 결론은 유지."
+    },
+    "reviewedArtifactHashCheck": {
+      "review": "600f597f69a60267fe0683700648207f67e022f1422c5d74120c938b17643ef3",
+      "4slot": "119b8b9479dd1810f5c79819adefa68029f75480abc0ff43ad790f17541bf3cd",
+      "independent": "0cbb4e5b75d72da0cd1fbcf93e143177b4d9347ebf506822115e2870887cdb6a"
+    }
+  },
+  "resolverExecution": "NOT_RUN",
+  "registration": "NOT_RUN",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "rpmAuthority": {
+    "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+    "sha256": "0aa8acc4bd953ed98571f5e7528158bed8db0aaf39da41a2294729ad06e274a3",
+    "records": 182
+  },
+  "sourceSchemaEvidence": {
+    "status": "NOT_APPLICABLE",
+    "sourceBlob": "c6f862bd8a7930c7c203ddd4305ad28b49e410a0",
+    "officialExtractorPath": "tools/4slot/exam-items.cjs",
+    "officialExtractorBlob": "debef5587df86821c04e543afb72a72b2e0fc1e4",
+    "officialToolModified": false,
+    "checkedStemQuotes": 0,
+    "checks": [],
+    "accountedOfficialFailures": [],
+    "missing": [],
+    "nextAction": null
+  },
+  "validatorCompatibilityOrdinals": [],
+  "difficultyPolicyDebtOrdinals": [],
+  "primaryEvidenceDebtOrdinals": [],
+  "evidenceDebtOrdinals": [],
+  "undecidedDifficultyOrdinals": []
+}
