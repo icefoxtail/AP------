@@ -96,6 +96,7 @@ test("normal registration sync refreshes parent links and then rebuilds the boun
     .map((match) => match.index)
     .filter((index) => !sync.slice(index, index + 80).includes("--check"));
   const catalogCheck = sync.indexOf('build-archive2-catalog.mjs", "--check"');
+  const finalProjection = sync.indexOf('build-archive2-ready-catalog.mjs');
 
   assert.ok(runtimeRename >= 0 && runtimeRename < parentLinks,
     "runtime input renames must finish before parent links are regenerated");
@@ -103,16 +104,20 @@ test("normal registration sync refreshes parent links and then rebuilds the boun
     "an intermediate catalog/manifest must include any runtime rename before parent-link generation");
   assert.ok(catalogWrites.some((index) => index < parentLinks),
     "a current intermediate catalog/manifest must be materialized before the parent-link generator consumes it");
-  assert.ok(catalogWrites.some((index) => index > parentLinks),
-    "the final catalog/manifest must be rebuilt after parent links change");
-  assert.ok(catalogCheck > catalogWrites.find((index) => index > parentLinks),
+  assert.ok(finalProjection > parentLinks,
+    "the final catalog/readiness fixed point must be rebuilt after parent links change");
+  assert.ok(catalogCheck > finalProjection,
     "the generated final catalog must then pass the stale check");
   const readinessWrite = sync.indexOf('refresh-runtime-source-readiness.mjs", "--write"');
   const readinessCheck = sync.indexOf('refresh-runtime-source-readiness.mjs", "--check"');
-  assert.ok(readinessWrite > catalogCheck,
-    "runtime readiness must bind the final verified catalog, after registration changes its version");
-  assert.ok(readinessCheck > readinessWrite,
+  assert.equal(readinessWrite, -1,
+    "no late readiness write may invalidate the already verified catalog manifest");
+  assert.ok(readinessCheck > catalogCheck,
     "the refreshed readiness receipt must pass its unchanged stale check");
+  const readyBuilder=read('archive/tools/build-archive2-ready-catalog.mjs');
+  assert.match(readyBuilder,/archive-test-projection\.js/);
+  assert.match(readyBuilder,/prepareArchiveTestProjection\(/,
+    "production must reuse the same bounded writer/scope/strict-check closure");
 });
 
 test("parent-link generation binds stable authority inputs instead of its own final catalog hash", () => {

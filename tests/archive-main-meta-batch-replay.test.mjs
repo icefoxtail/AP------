@@ -12,6 +12,16 @@ const metaPath='archive/data/question_metadata.json',identityPath='archive/data/
 const statePath='.archive-meta-register/auto/state.json',configPath='.archive-meta-register/auto/config.json';
 const canon='archive/data/meta-foundation/canonical',compiled='archive/data/meta-foundation/compiled';
 const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+async function withGitHubEnvironment(values, action) {
+  const previous=Object.fromEntries(Object.keys(values).map(key=>[key,process.env[key]]));
+  Object.assign(process.env,values);
+  try { return await action(); }
+  finally {
+    for(const [key,value]of Object.entries(previous)) {
+      if(value===undefined)delete process.env[key];else process.env[key]=value;
+    }
+  }
+}
 function fixture(t,{count=3,max=1,pending=ordinal=>ordinal===1}={}) {
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'auto-meta-batch-'));
   t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
@@ -45,10 +55,29 @@ function fixture(t,{count=3,max=1,pending=ordinal=>ordinal===1}={}) {
   put(configPath,{enabled:true,bootstrapBase:head,maxQuestionsPerRun:max,pilotTargets:[]});
   put(statePath,{schemaVersion:'archive-main-merge-meta-v1',lastProcessedCommit:head,completedPilots:[],latestReceipts:{},pending:Object.fromEntries(bank.map((_,i)=>[source+'#'+(i+1),{sourceArchiveFile:source,sourceOrdinal:i+1,baseCommit:head}]))});
   const reportPath=path.join(root,'first-report.json');
-  const first=()=>registerMergedSource({root,write:true,reportPath});
+  // This isolated temporary repository exercises the main writer. Never inherit
+  // the enclosing PR runner's ref, and restore it after each fixture operation.
+  const first=()=>withGitHubEnvironment({GITHUB_ACTIONS:'true',GITHUB_REF:'refs/heads/main'},
+    ()=>registerMergedSource({root,write:true,reportPath}));
   const replay=options=>registerMergedSource({root,replayReportPath:reportPath,...options});
   return {root,git,read,put,bytes,uid,bank,head,reportPath,first,replay,refreshRegistry};
 }
+
+test('the production writer rejects an explicit PR ref before changing any fixture data',async t=>{
+  const f=fixture(t,{count:1,pending:()=>false});
+  const guarded=[metaPath,identityPath,statePath,'archive/exams/'+source,
+    'archive/data/meta-foundation/runtime/middle3-v1.json'];
+  const before=guarded.map(file=>[file,f.bytes(file)]);
+  const environment={GITHUB_ACTIONS:process.env.GITHUB_ACTIONS,GITHUB_REF:process.env.GITHUB_REF};
+  await withGitHubEnvironment({GITHUB_ACTIONS:'true',GITHUB_REF:'refs/pull/2112/merge'},async()=>{
+    await assert.rejects(registerMergedSource({root:f.root,write:true,reportPath:f.reportPath}),/MAIN_ONLY_WRITER/);
+  });
+  assert.deepEqual({GITHUB_ACTIONS:process.env.GITHUB_ACTIONS,GITHUB_REF:process.env.GITHUB_REF},environment);
+  for(const [file,bytes]of before)assert.deepEqual(f.bytes(file),bytes,file);
+  assert.equal(fs.existsSync(f.reportPath),false);
+  assert.equal((await f.first()).applied,1,'the same isolated fixture runs under explicit main authority');
+  assert.deepEqual({GITHUB_ACTIONS:process.env.GITHUB_ACTIONS,GITHUB_REF:process.env.GITHUB_REF},environment);
+});
 
 test('a pending bounded batch replays itself while the next ready batch stays queued',async t=>{
   const f=fixture(t),first=await f.first();
@@ -117,4 +146,34 @@ test('an empty queue replays as no work with no state mutation',async t=>{
   const empty=await f.first(),before=f.bytes(statePath);assert.deepEqual(empty.results,[]);
   const replay=await f.replay();assert.equal(replay.replayed,0);assert.equal(replay.replayVerified,true);
   assert.deepEqual(replay.plannedPaths,[]);assert.deepEqual(f.bytes(statePath),before);
+});
+
+test('a new registry binding retries pending source without replacing a partial basic approval or clearing its holds',async t=>{
+  const f=fixture(t,{count:2,max:2,pending:()=>false});
+  const metadata=f.read(metaPath),held=metadata.records[0];
+  Object.assign(held,{metadataStatus:'approved_partial_with_explicit_holds',
+    tagStatus:'approved_subunit_concept_partial',metadataRevision:'original-basic-review',
+    approvalEvidence:['review/original-basic-classification.json'],
+    fieldStatus:{standardUnit:'approved_source',subUnit:'approved_source',concept:'approved_classification',
+      difficulty:'approved_source',problemType:'manual_review_pending',template:'manual_review_pending'}});
+  f.put(metaPath,metadata);
+  const heldBefore=structuredClone(held),sourceBefore=f.bytes('archive/exams/'+source),identityBefore=f.bytes(identityPath);
+  const bindings=f.read(compiled+'/curriculum_bindings.json');
+  f.put(compiled+'/curriculum_bindings.json',{...bindings,bindings:[]});f.refreshRegistry();
+  const beforeBinding=await f.first();assert.equal(beforeBinding.applied,0);assert.equal(beforeBinding.pending,2);
+  const signatureBefore=f.read(statePath).pending[source+'#1'].attemptSignature;
+  f.put(compiled+'/curriculum_bindings.json',bindings);f.refreshRegistry();
+  const registered=await f.first();
+  assert.equal(registered.applied,1,'the ordinary unreviewed second UID still uses the existing producer');
+  const kept=registered.results.find(r=>r.questionUid===f.uid(1));
+  assert.equal(kept.status,'SUPPLEMENT_PENDING');assert.deepEqual(kept.reasons,['EXPLICIT_PARTIAL_REVIEW_HOLD']);
+  assert.equal(kept.requestId,undefined);assert.equal(kept.receiptPath,undefined);
+  assert.notEqual(f.read(statePath).pending[source+'#1'].attemptSignature,signatureBefore);
+  assert.deepEqual(f.read(metaPath).records[0],heldBefore);
+  assert.deepEqual(f.bytes('archive/exams/'+source),sourceBefore);assert.deepEqual(f.bytes(identityPath),identityBefore);
+  const runtime=f.read('archive/data/meta-foundation/runtime/middle3-v1.json');
+  assert.deepEqual(runtime.records.map(r=>r.questionUid),[f.uid(2)]);
+  const replay=await f.replay();assert.equal(replay.replayVerified,true);assert.equal(replay.replayed,2);
+  assert.equal(replay.results.find(r=>r.questionUid===f.uid(1)).status,'SUPPLEMENT_PENDING');
+  assert.deepEqual(replay.plannedPaths,[]);assert.deepEqual(f.read(metaPath).records[0],heldBefore);
 });
