@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-native-proposal-finalization-v2-code-validation-v1",
+  "status": "CODE_AND_EVIDENCE_BINDING_VERIFIED_REGISTRATION_PENDING",
+  "codeBaseCommit": "f6ac509bda4f82d6e2452dabe6945ce6665e19a9",
+  "canonicalMainChecked": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+  "moduleRawSha256": "20ae92f875bd28eed5b3b5eddd9b5f1d739a390a32c1542a8b4e8b4b367f4d6f",
+  "tests": {
+    "command": "node --test tests/archive-reviewed-exam-registration-v2.test.mjs",
+    "passed": 383,
+    "failed": 0,
+    "skipped": 0,
+    "fullLogRawSha256": "7f9dea7efdfc4d3d0087a634f1cfa5c6d1c9cf73608fb077bc044ab0dac15f75",
+    "focusedPassed": 9,
+    "focusedLogRawSha256": "b787a70e5800e47948200d323791b064a4a6cd442d7c6a4152c6d9bc0dd48c14"
+  },
+  "actualEvidenceBinding": {
+    "reportRawSha256": "2f4447f7bd035a4d2558e985274d2d2d744e31081759493d4b6193d8def06ef5",
+    "tested": 11,
+    "passed": 9,
+    "expectedPrerequisiteRefusals": 2,
+    "failures": 0,
+    "m2Tpl1RemoteFinalizationCommit": "835f3ee8a3360c2fdf627b542561116ab2aeaae3",
+    "m2IndependentOriginalReviewSha256": "3a9c2b3050df1dfd59faaa2df2d5bc3a1d7017e94c806ddc454955b63029734c",
+    "m3EvidenceLocalPreviewCommit": "ee275b38e2eed3cf8485f66cea32d8f23bdbd982",
+    "m3FinalizationProofRawSha256": "c16d8e25a8f05ee6af3d144520a4753ed98bbeffc06aed6948413b5afd2584ae",
+    "prerequisite": "The exact CC_TRIANGLE_CENTROID_MEDIAN_RATIO record must be installed by the official M2 CC9 writer before M3 E010 Q5 and Q14 can reuse it. No simulated ACTIVE record was used.",
+    "m3RemoteFinalizationCommit": "9e50297143a0a30a0a1daf5e1b5f4c919a025371",
+    "reportPath": "docs/operations/m3-s2-proposal-finalization-v2-20261115/real-binding-proof.json"
+  },
+  "independentCodeCrossReview": {
+    "reviewer": "GPT_REGISTRAR_REPAIR",
+    "scope": [
+      "original template witness",
+      "original auxiliary witness",
+      "historical projection-note alias"
+    ],
+    "disposition": "No additional bypass found within inspected scope"
+  },
+  "scope": {
+    "nativeReviewDocumentsModified": 0,
+    "newFullMathematicalQa": 0,
+    "newReview2Claims": 0,
+    "newMainApprovals": 0,
+    "currentMainSourceWrites": 0,
+    "officialRegistryWriter": "NOT_RUN_IN_THIS_CODE_VALIDATION",
+    "consumer": "NOT_RUN_IN_THIS_CODE_VALIDATION"
+  },
+  "refusalsPreserved": [
+    "unknown proposal kind or debt",
+    "invented historical proposal ID",
+    "omitted selected proposal",
+    "source/content/solution/difficulty HOLD",
+    "student or renderer drift",
+    "ambiguous proposal document aliases",
+    "broadened independent review scope",
+    "changed existing ACTIVE parent or reused definition",
+    "replacement of known native template",
+    "auxiliary key deletion",
+    "missing dual evidence binding",
+    "missing exact curriculum binding",
+    "omitted mandatory Condition/Boundary original independent ref",
+    "identical student payload borrowed from another source path"
+  ],
+  "historicalProjectionNote": {
+    "artifactAlias": "proposals.json",
+    "actualFollowupSelectedRows": 5,
+    "scope": "same native UID/ordinal/rationale/debts and unchanged ACTIVE primary only",
+    "historicalBindingsResolved": false
+  },
+  "rootIndependentReviewHardening": [
+    "Condition and Boundary require the original independent review ref; deletion is rejected",
+    "sourceSnapshot.sourcePath must equal the exact request source path even when student payload is identical"
+  ]
+}
