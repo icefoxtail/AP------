@@ -1,0 +1,31 @@
+✔ selected add-only binding provider precedes its exact consumer in PR and main previews (284.267539ms)
+✔ binding dependency does not cross a different curriculum (335.022334ms)
+✔ binding dependency does not cross a different standardCourse (382.949785ms)
+✔ binding dependency does not cross a different standardUnitKey (364.490856ms)
+✔ binding dependency does not cross a different subUnitKey (324.874793ms)
+✔ binding dependency does not cross a different problemTypeKey (295.92138ms)
+✔ binding dependency leaves replacement to the unchanged registrar guards (301.823192ms)
+✔ binding dependency leaves inactive row to the unchanged registrar guards (292.764699ms)
+✔ binding dependency leaves another collection to the unchanged registrar guards (286.666976ms)
+✔ binding dependency leaves noncanonical path to the unchanged registrar guards (321.596934ms)
+✔ binding dependency leaves mismatched exact match to the unchanged registrar guards (296.098868ms)
+✔ binding dependency selects only its exact unchanged HEAD provider before the changed consumer (190.24464ms)
+✔ binding provider closure follows transitive exact dependencies and rejects their cycle (369.095383ms)
+✔ binding provider closure rejects two exact providers even if only its consumer changed (136.317619ms)
+✔ binding provider closure excludes unrelated providers, including an unrelated ambiguous key (213.507099ms)
+✔ binding provider closure uses Git dispatch and rejects selected working-copy drift (290.646892ms)
+✔ binding provider closure cannot use a deleted or nested provider and retains source/evidence gates (615.382709ms)
+✔ PR proof producer, preparation, Consumer and immutable replay all include the required unchanged provider (1166.848026ms)
+✔ missing or refused exact providers cannot be replaced by a foreign key or execute the consumer (349.055597ms)
+✔ binding dependency does not infer missing after keys from before or source (167.914368ms)
+✔ binding dependency rejects duplicate providers and cycles while allowing self-provided keys (155.238961ms)
+✔ identity-only preview verifies exact bindings while preserving metadata and creating no approval (655.362305ms)
+✔ identity-only preview rejects a semantic approval result, missing bindings or a mislabeled Consumer result (2374.149583ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10383.09037
