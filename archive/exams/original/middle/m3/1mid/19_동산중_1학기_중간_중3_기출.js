@@ -220,6 +220,11 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "가운데 넓이가 50 cm²이므로 한 변은 √50=5√2 cm이다. 정답은 ③이다.",
+    "solutionImageAlt": "같은 넓이의 여덟 조각 가운데 주황 네 조각이 가운데 정사각형을 채운다. 그 한 변은 직각변이 5 cm인 삼각형의 빗변이다.",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중3_기출/q7-solution.svg",
+    "imageSize": "large",
     "content": "아래 그림은 직각삼각형으로 만들어진 욕실 타일의 한 부분이다. 직각삼각형 8개로 한 변의 길이가 $10\\text{cm}$인 정사각형을 만들 때, 4개의 직각삼각형으로 만들어진 색칠된 정사각형의 한 변의 길이는? (4점)",
     "choices": [
       "$10\\text{cm}$",
@@ -236,7 +241,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "제곱근",
       "도형",
@@ -254,11 +259,16 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q07.png",
+    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q7-problem-v3.svg",
     "imageAlt": "한 변이 10cm인 정사각형 타일 안에 직각삼각형 4개로 만든 색칠한 정사각형"
   },
   {
     "id": 8,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "a=−√2, b=−1+√2이고 합은 −1이다. 정답은 ①이다.",
+    "solutionImageAlt": "두 대각선은 모두 √2이다. C의 0에서 왼쪽으로, B의 −1에서 오른쪽으로 간 같은 거리의 끝이 각각 P와 Q이다.",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중3_기출/q8-solution.svg",
+    "imageSize": "large",
     "content": "다음 그림에서 $ABCD$는 한 변의 길이가 1인 정사각형이고, $\\overline{AC}=\\overline{PC}$, $\\overline{BD}=\\overline{BQ}$이다. 점 $P$에 대응하는 수를 $a$, 점 $Q$에 대응하는 수를 $b$라고 할 때, $a+b$의 값은? (4점)",
     "choices": [
       "$-1$",
@@ -275,7 +285,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "제곱근",
       "수직선",
@@ -293,7 +303,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q08.png",
+    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q8-problem-v3.svg",
     "imageAlt": "수직선 위에 놓인 한 변의 길이가 1인 정사각형 ABCD와 점 P, Q"
   },
   {
@@ -552,6 +562,11 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "π(12.5−7.5)(12.5+7.5)=100π cm²이다. 정답은 ⑤이다.",
+    "solutionImageAlt": "파란 안쪽 원의 넓이는 바깥 원 전체 넓이에서 뺀다. 주황 고리 부분과 두 반지름을 서로 구별했다.",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중3_기출/q16-solution.svg",
+    "imageSize": "large",
     "content": "오른쪽 그림과 같이 반지름의 길이가 각각 $12.5\\text{cm}$, $7.5\\text{cm}$이고 중심이 같은 2개의 원이 있다. 이때 색칠한 부분의 넓이는? (4점)",
     "choices": [
       "$50\\pi\\text{cm}^{2}$",
@@ -568,7 +583,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "인수분해",
       "도형",
@@ -586,7 +601,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q16.png",
+    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q16-problem-v3.svg",
     "imageAlt": "반지름이 각각 12.5cm와 7.5cm인 동심원과 색칠된 고리"
   },
   {
@@ -664,6 +679,11 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "가로가 x+3일 때 세로가 x+2가 되어 넓이는 (x+3)(x+2)이다. 정답은 ①이다.",
+    "solutionImageAlt": "큰 정사각형 오른쪽에 초록 띠 세 개, 아래에 초록 띠 두 개를 붙였다. 오른쪽 아래에 단위 정사각형을 세 칸씩 두 줄 채운다.",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중3_기출/q19-solution.svg",
+    "imageSize": "large",
     "content": "다음 그림과 같은 세 종류의 직사각형 모양의 타일 12개를 서로 겹치지 않게 붙여 큰 직사각형을 만들려고 한다. 이때 만들어진 직사각형의 가로의 길이가 $x+3$일 때, 세로의 길이는? (4점)",
     "choices": [
       "$x+2$",
@@ -680,7 +700,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "인수분해",
       "도형",
@@ -698,7 +718,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q19.png",
+    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q19-problem-v3.svg",
     "imageAlt": "한 변이 x인 정사각형 한 개, 1×x 직사각형 다섯 개, 1×1 정사각형 여섯 개"
   },
   {
@@ -776,7 +796,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "content": "아래의 제곱근표를 이용하여 다음을 구하시오. (4점)\n(1) $\\sqrt{5.53}$의 어림한 값은? (1점)\n(2) $\\sqrt{x}$의 어림한 값이 2.390일 때, $x$의 값은? (1점)\n(3) $\\sqrt{553}$의 어림한 값은? (2점)",
+    "content": "아래의 제곱근표를 이용하여 다음을 구하시오. (4점)\n(1) $\\sqrt{5.53}$의 어림한 값은? (1점)\n(2) $\\sqrt{x}$의 어림한 값이 2.390일 때, $x$의 값은? (1점)\n(3) $\\sqrt{553}$의 어림한 값은? (2점)\n\n| 수 | 0 | 1 | 2 | 3 | 4 |\n| :---: | :---: | :---: | :---: | :---: | :---: |\n| 5.5 | 2.345 | 2.347 | 2.349 | 2.352 | 2.354 |\n| 5.6 | 2.366 | 2.369 | 2.371 | 2.373 | 2.375 |\n| 5.7 | 2.387 | 2.390 | 2.392 | 2.394 | 2.396 |\n| 5.8 | 2.408 | 2.410 | 2.412 | 2.415 | 2.417 |\n",
     "choices": [],
     "answer": "(1) 2.352, (2) 5.71, (3) 23.52",
     "category": "제곱근과 실수",
@@ -786,7 +806,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "제곱근표",
@@ -803,9 +823,7 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q22.png",
-    "imageAlt": "제곱근표: 수의 첫째 소수자리 5.5부터 5.8까지, 다음 숫자 0부터 4까지"
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -871,6 +889,11 @@ window.questionBank = [
   },
   {
     "id": 25,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "세 둘레를 더한 24√5 cm에서 두 공유 길이를 두 번 뺀 6√5 cm를 빼면 18√5 cm이다.",
+    "solutionImageAlt": "아래 치수는 각 정사각형의 한 변이다. 두 보라색 점선은 안쪽에서 서로 맞닿은 변이라 바깥 둘레에 들어가지 않는다.",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중3_기출/q25-solution.svg",
+    "imageSize": "large",
     "content": "정사각형 모양의 색종이 3장을 다음 그림과 같이 붙였다. B의 넓이는 A의 넓이의 4배이고, C의 넓이는 A의 넓이의 9배이다. 색종이 A의 넓이가 $5\\text{cm}^2$일 때, 전체 도형의 둘레의 길이를 구하시오. (4점)",
     "choices": [],
     "answer": "$18\\sqrt5\\text{cm}$",
@@ -881,7 +904,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "제곱근",
@@ -899,7 +922,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q25.png",
+    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q25-problem-v3.svg",
     "imageAlt": "넓이가 각각 5, 20, 45 제곱센티미터인 정사각형 A, B, C가 변을 맞대어 이어진 그림"
   }
 ];
