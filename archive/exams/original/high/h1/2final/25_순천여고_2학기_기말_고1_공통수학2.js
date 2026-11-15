@@ -1222,7 +1222,7 @@ window.questionBank = [
     {
     "number": 18,
     "score": 5.2,
-    "question": "정의역이 $\\{x|0 \\le x \\le 2\\}$인 함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 방정식 $f(f(x))=-f(x)+2$를 만족하는 모든 실근의 합은? [5.2점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-problem-v2.svg\" style=\"max-width: 265px; display: block; margin: 10px 0;\">",
+    "question": "정의역이 $\\{x|0 \\le x \\le 2\\}$인 함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 방정식 $f(f(x))=-f(x)+2$를 만족하는 모든 실근의 합은? [5.2점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-problem-v3.svg\" style=\"max-width: 265px; display: block; margin: 10px 0;\">",
     "choices": [
       "$\\frac{7}{4}$",
       "$2$",
@@ -1233,7 +1233,7 @@ window.questionBank = [
     "id": 18,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "content": "정의역이 $\\{x|0 \\le x \\le 2\\}$인 함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 방정식 $f(f(x))=-f(x)+2$를 만족하는 모든 실근의 합은? [5.2점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-problem-v2.svg\" style=\"max-width: 265px; display: block; margin: 10px 0;\">",
+    "content": "정의역이 $\\{x|0 \\le x \\le 2\\}$인 함수 $y=f(x)$의 그래프가 오른쪽 그림과 같을 때, 방정식 $f(f(x))=-f(x)+2$를 만족하는 모든 실근의 합은? [5.2점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-problem-v3.svg\" style=\"max-width: 265px; display: block; margin: 10px 0;\">",
     "image": "",
     "answer": "⑤",
     "solution": "$u=f(x)$로 놓으면 방정식은 $f(u)=2-u$이다. 그래프에서\n$f(u)=u+1$ ($0\\le u\\le1$), $f(u)=-2u+4$ ($1\\le u\\le2$)이다.\n\n첫 구간에서는 $u+1=2-u$이므로 $u=\\dfrac12$이다. 둘째 구간에서는 $-2u+4=2-u$이므로 $u=2$이다.\n\n이제 $f(x)=\\dfrac12$의 해는 $x=\\dfrac74$이고, $f(x)=2$의 해는 $x=1$이다.\n따라서 모든 실근의 합은 $\\dfrac74+1=\\dfrac{11}{4}$이고 정답은 ⑤이다.",

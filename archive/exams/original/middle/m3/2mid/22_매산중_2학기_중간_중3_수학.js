@@ -259,7 +259,11 @@ window.questionBank = [
       "subConcept": "x축 대칭과 계수 부호",
       "conditionsUsed": "x축 대칭에 따라 같은 x에서 y값의 부호를 바꾼다.",
       "integrationPatternExplanation": "x축 대칭의 y값 부호 변화만 적용하므로 통합유형은 NONE이다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 아래로 열린 포물선과 주황 위로 열린 포물선이 x축을 기준으로 서로 대칭이다. 같은 x 위치의 예시 점을 점선으로 대응시킨다.",
+    "solutionImageCaption": "x축 대칭은 (x,y)를 (x,−y)로 바꾸므로 y=−(−4/5x²)=4/5x²이다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -311,7 +315,11 @@ window.questionBank = [
       "subConcept": "계수 절댓값과 포물선의 폭",
       "conditionsUsed": "두 포물선이 아래로 열리고 점선의 폭이 더 좁다는 조건을 계수 a의 부호와 절댓값으로 바꾼다.",
       "integrationPatternExplanation": "포물선 계수와 그래프 모양의 관계를 해석하므로 통합유형은 NONE이다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시에서 파란 실선과 주황 점선은 원점을 꼭짓점으로 하는 아래로 열린 포물선이다. y=-1에서 주황 점선의 좌우 교점이 파란 실선보다 원점에 가깝다.",
+    "solutionImageCaption": "두 그래프가 아래로 열리므로 a<0이다. 같은 높이에서 점선의 |x|가 더 작으므로 |a|>1이다. 보기에서 가능한 값은 -2이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -360,7 +368,11 @@ window.questionBank = [
       "subConcept": "직각삼각형에서 tan 정의",
       "conditionsUsed": "AB=13, AC=12, BC=5에서 직각 위치와 A의 맞은편·이웃한 변을 확인한다.",
       "integrationPatternExplanation": "직각삼각형의 변 관계로 탄젠트를 계산하므로 통합유형은 NONE이다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 C가 직각이다. A의 맞은편 BC=5는 주황색, A의 이웃변 AC=12는 파란색, 빗변 AB=13는 초록색이다.",
+    "solutionImageCaption": "13²=12²+5²이므로 C=90°이다. tan A=맞은편/이웃한 변=BC/AC=5/12이다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -556,7 +568,11 @@ window.questionBank = [
       "subConcept": "tan과 피타고라스 정리",
       "conditionsUsed": "∠B=90°, AB=3, tanA=5/3으로 BC를 구한 뒤 AC를 구한다.",
       "integrationPatternExplanation": "탄젠트로 한 직각변을 구하고 피타고라스 정리를 적용한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 B가 직각이다. AB=3 cm는 각 A의 이웃한 직각변, BC=5 cm는 맞은편 직각변이며 AC는 빗변이다.",
+    "solutionImageCaption": "tan A=BC/AB=5/3이고 AB=3이므로 BC=5이다. 피타고라스 정리에서 AC=√(3²+5²)=√34 cm이다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -605,7 +621,11 @@ window.questionBank = [
       "subConcept": "특수각으로 직각삼각형의 넓이 계산",
       "conditionsUsed": "∠C=90°, ∠A=30°, BC=6에서 AC와 넓이를 차례로 구한다.",
       "integrationPatternExplanation": "특수각의 변의 비를 넓이 계산에 적용한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 C가 직각, A=30°이다. 밑변 BC=6 cm와 높이 AC=6√3 cm를 서로 다른 색으로 표시한다.",
+    "solutionImageCaption": "넓이는 1/2·BC·AC=1/2·6·6√3=18√3 cm²이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -654,7 +674,11 @@ window.questionBank = [
       "subConcept": "두 직각삼각형에서 변의 길이 곱 계산",
       "conditionsUsed": "ABC에서 ∠C=45°와 BC=6을, BCD에서 ∠B=30°와 BC=6을 각각 사용한다.",
       "integrationPatternExplanation": "두 직각삼각형에서 서로 다른 삼각비로 길이를 구해 곱한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 공통변 BC=6 cm를 사이에 둔 파란색 직각삼각형 ABC와 주황색 직각삼각형 BCD이다. 각도는 각각 45°와 30°이며 x=AB, y=CD이다.",
+    "solutionImageCaption": "ABC에서 x=AB=6sin45°=3√2이다. BCD에서 y=CD=6tan30°=2√3이다. 따라서 xy=3√2·2√3=6√6이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -703,7 +727,11 @@ window.questionBank = [
       "subConcept": "물매를 tan으로 해석",
       "conditionsUsed": "직각삼각형의 높이:밑변=3:10을 tan x와 연결하고 표의 값을 찾는다.",
       "integrationPatternExplanation": "지붕의 기울기를 탄젠트로 나타내어 표의 각과 연결한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 지붕 경사 삼각형 ABC에서 수평 밑변 AB=10, 수직 높이 BC=3이고 B는 직각이다. x는 A에서 지붕과 수평선이 이루는 각이다.",
+    "solutionImageCaption": "물매는 높이/밑변이므로 tan x=BC/AB=3/10=0.30이다. 표에서 tan 17°=0.30이므로 x=17°이다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -752,7 +780,11 @@ window.questionBank = [
       "subConcept": "특수각 좌표와 사다리꼴 넓이",
       "conditionsUsed": "반지름 2, 중심각 60°, AC⊥OB, DB⊥OB 및 O,A,D의 일직선 조건을 사용한다.",
       "integrationPatternExplanation": "중심각을 좌표로 나타내고 수직조건으로 사다리꼴의 넓이를 구한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 사분원의 반지름은 2이고 중심각 AOB는 60°이다. 두 평행변 AC, BD의 길이는 각각 √3, 2√3이고 두 변 사이의 거리 CB는 1이다.",
+    "solutionImageCaption": "사다리꼴 ACBD의 넓이는 (AC+BD)×CB÷2=(√3+2√3)×1÷2=3√3/2이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -804,7 +836,11 @@ window.questionBank = [
       "subConcept": "수직 평행이동과 점 대입",
       "conditionsUsed": "위로 k만큼 이동한 y=−4x²+3+k에 점 (1/2,5)를 대입한다.",
       "integrationPatternExplanation": "평행이동 후 함수식에 점을 대입하는 단일 함수 개념 풀이이다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 폭과 모양의 두 아래로 열린 포물선을 그린다. x=1/2에서 원래 그래프의 Q와 이동한 그래프 위의 P(1/2,5)를 점선으로 연결한다.",
+    "solutionImageCaption": "원래 그래프에서 x=1/2일 때 y=-4(1/2)²+3=2이다. 이동한 그래프가 y=5인 P를 지나므로 k=5−2=3이다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -856,7 +892,11 @@ window.questionBank = [
       "subConcept": "수평 평행이동과 그래프 성질",
       "conditionsUsed": "왼쪽 4만큼 이동한 y=3(x+4)²의 축·꼭짓점·점 통과·증가성을 확인한다.",
       "integrationPatternExplanation": "수평이동 후 같은 포물선의 기본 성질을 판정한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 원래 포물선 y=3x²와 주황색으로 왼쪽 이동한 포물선, 대칭축 x=-4, 이동한 그래프 위의 점 P(-2,12)를 나타낸다.",
+    "solutionImageCaption": "x축 방향으로 -4만큼 옮기면 식은 y=3(x+4)², 꼭짓점은 V=(-4,0)이다. x=-2일 때 y=12이며 x>0에서 그래프는 증가한다. 꼭짓점이 (4,0)이라는 설명은 틀렸다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -908,7 +948,11 @@ window.questionBank = [
       "subConcept": "꼭짓점형의 계수 결정",
       "conditionsUsed": "꼭짓점 (2,6)으로 꼭짓점형을 세우고 점 (0,2)를 대입한다.",
       "integrationPatternExplanation": "꼭짓점형과 한 점 조건으로 계수를 구한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선의 꼭짓점 V(2,6)과 곡선 위의 점 P(0,2)를 나타낸다.",
+    "solutionImageCaption": "꼭짓점에서 p=2, q=6이고, 점 P(0,2)를 대입하면 2=4a+6이므로 a=-1이다. 따라서 apq=(-1)·2·6=-12이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -960,7 +1004,11 @@ window.questionBank = [
       "subConcept": "평행이동 조건으로 원래 식 결정",
       "conditionsUsed": "오른쪽 3, 아래 5로 이동한 꼭짓점과 점 조건을 원래 함수로 역변환한다.",
       "integrationPatternExplanation": "평행이동을 역으로 해석하고 꼭짓점·점 조건으로 계수를 정한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 원래 포물선과 주황색으로 오른쪽 3, 아래 5만큼 옮긴 포물선을 그린다. 꼭짓점 V,W와 대응점 R(1,10), P(4,5)을 연결된 점쌍으로 표시한다.",
+    "solutionImageCaption": "이동된 꼭짓점 (2,-3)에서 원래 꼭짓점은 (-1,2)이므로 f(x)=a(x+1)²+2이다. P(4,5)는 f의 R(1,10)에 대응해 4a+2=10, a=2이다. 전개하면 f(x)=2x²+4x+4이므로 a+b-c=2+4-4=2. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1012,7 +1060,11 @@ window.questionBank = [
       "subConcept": "두 포물선의 꼭짓점·교점 관계",
       "conditionsUsed": "두 포물선이 서로의 꼭짓점을 지나고 p<−2이며 수평거리 AB=6이라는 조건을 연결한다.",
       "integrationPatternExplanation": "서로의 꼭짓점 조건과 수평 현 길이를 포물선 대칭성에 함께 적용한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 원래 포물선과 주황 이동 포물선은 서로의 꼭짓점을 지난다. 원래 그래프의 대칭축과, 꼭짓점 A에서 같은 높이로 잰 AB=6을 표시한다.",
+    "solutionImageCaption": "원래 포물선의 축은 x=-2이다. 두 번째 꼭짓점 A가 원래 그래프 위에 있고 두 포물선은 V=(-2,0)에서 만난다. 대칭축을 이용해 B의 위치를 읽으면 p=-5, q=18이고 a=-2이다. 따라서 a+p+q=11이다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1058,7 +1110,11 @@ window.questionBank = [
       "subConcept": "꼭짓점형과 축·절편 조건",
       "conditionsUsed": "선택 ①은 꼭짓점과 점, 선택 ②는 축과 y축 교점의 함수값을 사용한다.",
       "integrationPatternExplanation": "각 선택문항의 꼭짓점 또는 함수값 조건으로 매개변수를 결정한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 패널은 꼭짓점 V와 조건점 P를 지나는 포물선이다. 둘째 패널은 대칭축 x=2인 파란 포물선과 주황 포물선의 공통 y절편 C를 나타낸다.",
+    "solutionImageCaption": "1-① a=5이므로 y=5(x−3)²−2이다. 1-② p=2이고 공통 y절편이 5이므로 12+q=5, q=−7이다. 따라서 p+q=−5이다. 답: 1-① y=5(x−3)²−2, 1-② p+q=−5.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1104,7 +1160,11 @@ window.questionBank = [
       "subConcept": "점·절편·대칭축 조건으로 식 결정",
       "conditionsUsed": "선택 ①은 y절편과 두 점, 선택 ②는 축·x절편·y절편으로 식과 넓이를 구한다.",
       "integrationPatternExplanation": "각 선택문항의 계수·근·축 조건을 식으로 정리하고 필요한 넓이를 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선의 꼭짓점 A, x축 교점 B, y축 교점 C, 원점 O를 연결한 사각형 ABOC를 표시한다.",
+    "solutionImageCaption": "축 x=−3과 한 근 −9에서 다른 근은 3이다. y절편이 9이므로 y=−1/3(x+9)(x−3)이고 A=(−3,12)이다. [ABO]=54, [AOC]=27/2이므로 [ABOC]=135/2이다. 답: 135/2.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1149,7 +1209,11 @@ window.questionBank = [
       "subConcept": "q23-① 특수각 표; q23-② 정사각뿔 높이와 tan",
       "conditionsUsed": "①은 30°·45°·60°의 표준값, ②는 한 모서리 10인 정사각뿔과 두 변의 중점 조건을 사용한다.",
       "integrationPatternExplanation": "특수각 표를 완성하고, 다른 선택문항에서는 입체의 높이를 구해 삼각비를 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각뿔의 밑면 중심 O와 서로 마주 보는 변의 중점 M,N을 표시한다. 파란 단면 AOM은 O에서 직각이고 ∠AMN=x이다.",
+    "solutionImageCaption": "정사각형 밑면에서 OC=5√2이고 AC=10이므로 AO=√(10²−(5√2)²)=5√2이다. OM=5이므로 tan x=AO/OM=√2. 답: √2.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1169,7 +1233,7 @@ window.questionBank = [
       "특수각·닮음으로 삼각형 넓이 결정"
     ],
     "wide": true,
-    "content": "【서답형 4】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 4-①】</b> (4점)<br>직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=90^\\circ$, $\\overline{\\mathrm{AC}}=24\\text{ cm}$, $\\angle\\mathrm{A}=30^\\circ$이다. 점 $\\mathrm{D}$는 선분 $\\mathrm{BC}$ 위에 있고 $\\overline{\\mathrm{CD}}=8\\text{ cm}$일 때, 삼각형 $\\mathrm{ABD}$의 넓이를 구하시오.<br><br><b>【수준별 4-②】</b> (5점)<br>다음 그림과 같이 닮음비가 $1:2$인 두 이등변삼각형 $\\mathrm{ABC}, \\mathrm{DCE}$에서 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$이고 $\\angle\\mathrm{ABC}=30^\\circ$, $\\overline{\\mathrm{AB}}=4$이다. $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BD}}$의 교점을 $\\mathrm{F}$라 할 때, $\\triangle\\mathrm{FCD}$의 넓이를 구하시오.<br>(단, 세 점 $\\mathrm{B, C, E}$는 한 직선 위의 점이다.)<br><img src=\"assets/images/22_매산중_2학기_중간_중3_수학/s04_2.png\" alt=\"서답형 4-②의 삼각형 그림\">",
+    "content": "【서답형 4】 [서술형]<br>다음 두 수준별 문항 중 하나를 선택하여 풀이 과정과 답을 쓰시오.<br><br><b>【수준별 4-①】</b> (4점)<br>직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=90^\\circ$, $\\overline{\\mathrm{AC}}=24\\text{ cm}$, $\\angle\\mathrm{A}=30^\\circ$이다. 점 $\\mathrm{D}$는 선분 $\\mathrm{BC}$ 위에 있고 $\\overline{\\mathrm{CD}}=8\\text{ cm}$일 때, 삼각형 $\\mathrm{ABD}$의 넓이를 구하시오.<br><br><b>【수준별 4-②】</b> (5점)<br>다음 그림과 같이 닮음비가 $1:2$인 두 이등변삼각형 $\\mathrm{ABC}, \\mathrm{DCE}$에서 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$이고 $\\angle\\mathrm{ABC}=30^\\circ$, $\\overline{\\mathrm{AB}}=4$이다. $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BD}}$의 교점을 $\\mathrm{F}$라 할 때, $\\triangle\\mathrm{FCD}$의 넓이를 구하시오.<br>(단, 세 점 $\\mathrm{B, C, E}$는 한 직선 위의 점이다.)<br><img src=\"assets/images/22_매산중_2학기_중간_중3_수학/s04_2_question-v2.svg\" alt=\"서답형 4-②의 삼각형 그림\">",
     "choices": [],
     "answer": "①: 넓이 24√3 cm²; ②: 넓이 16√3/3 cm²",
     "solution": "① $\\angle A=30^\\circ$이고 빗변이 $AC=24$이므로 $BC=24\\sin30^\\circ=12$, $AB=24\\cos30^\\circ=12\\sqrt3$이다. $CD=8$이므로 $BD=12-8=4$이다. 따라서 $[ABD]=\\frac12\\cdot AB\\cdot BD=\\frac12\\cdot12\\sqrt3\\cdot4=24\\sqrt3\\text{ cm}^2$이다. ② 작은 이등변삼각형에서 $AB=AC=4$이고 밑각이 $30^\\circ$이므로 높이는 $4\\sin30^\\circ=2$, 밑변의 절반은 $4\\cos30^\\circ=2\\sqrt3$이다. 따라서 $BC=4\\sqrt3$이다. 닮음비가 $1:2$이므로 $CE=8\\sqrt3$이고, 큰 이등변삼각형의 높이는 $\\sqrt{8^2-(4\\sqrt3)^2}=4$이다. 밑변을 수평으로 두어 $B=(0,0)$, $C=(4\\sqrt3,0)$라 놓으면 $A=(2\\sqrt3,2)$, $D=(8\\sqrt3,4)$이다. $F$는 $BD$ 위의 점이므로 $F=(8\\sqrt3 t,4t)$라 두고, $F$가 $AC$ 위에도 있음을 이용하면 $F=(4\\sqrt3-2\\sqrt3 s,2s)$이다. 두 좌표를 같게 두면 $s=2t$, $8t=4-4t$에서 $t=\\frac13$이다. 따라서 $BF:FD=1:2$이다. $[BCD]=\\frac12\\cdot4\\sqrt3\\cdot4=8\\sqrt3$이고, 두 삼각형 $FCD$, $BCD$는 밑변 $CD$가 같다. 높이는 직선 $BD$ 위에서 $D$를 기준으로 비례하므로 넓이의 비는 $DF:DB=2:3$이다. 따라서 $[FCD]=\\frac23\\cdot8\\sqrt3=\\frac{16\\sqrt3}{3}$이다.",
@@ -1192,6 +1256,10 @@ window.questionBank = [
       "subConcept": "특수각·닮음과 삼각형 넓이; 4-①만 ALIVE 교체",
       "conditionsUsed": "①은 AC=24, ∠A=30°, CD=8을 사용한다. ②는 닮음비 1:2, AB=AC=4, ∠B=30°와 F의 교점 조건을 사용한다.",
       "integrationPatternExplanation": "삼각비와 넓이를 결합하는 ①, 닮음·직선 교점 비율과 넓이를 결합하는 ②로 구성된다."
-    }
+    },
+    "solutionImage": "assets/images/22_매산중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 패널은 직각삼각형 ABC에서 D가 BC 위에 있고 △ABD를 파란색으로 강조한다. 둘째 패널은 닮음비 1:2인 두 이등변삼각형과 교점 F, △FCD를 보여 준다.",
+    "solutionImageCaption": "4-① BC=12, AB=12√3, BD=4이므로 [ABD]=24√3 cm²이다. 4-② F가 BD를 1:2로 나누고 [BCD]=8√3이므로 [FCD]=(2/3)·8√3=16√3/3 cm²이다. 답: 4-① 24√3 cm², 4-② 16√3/3 cm².",
+    "solutionImageSize": "full"
   }
 ];

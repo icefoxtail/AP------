@@ -165,3 +165,21 @@ test("META_PIPELINE IntegrationPattern omission is checked against active runtim
   assert.doesNotThrow(() => verifyConsumerValues(root, [record], [runtime], { records: [consumer] }));
   assert.throws(() => verifyConsumerValues(root, [record], [{ ...runtime, integrationPattern: "CASE_BRANCH" }], { records: [consumer] }), /Consumer runtime metadata mismatch: fixture-uid.integrationPattern/);
 });
+
+test("a REVIEW2 type-hold item is checked only for its source binding; the same change without the type-hold flag still needs the approved assignment", t => {
+  const row = loadResolvedConsumerCatalog(repo).records.find(r => Array.isArray(r.canonicalAssignmentReasons) && r.canonicalAssignmentReasons.length &&
+    r.questionUid && fs.existsSync(path.join(repo, "archive/exams", r.sourceFile)));
+  if (!row) return t.skip("every catalog row currently has an approved canonical assignment");
+  const dir = tmp(t);
+  const blob = execFileSync("git", ["hash-object", "--path", `archive/exams/${row.sourceFile}`, "--stdin"],
+    { cwd: repo, input: fs.readFileSync(path.join(repo, "archive/exams", row.sourceFile)), encoding: "utf8" }).trim();
+  const request = (name, extra) => write(dir, name, { schemaVersion: "archive-reviewed-exam-meta-register-request-v2", sourceArchiveFile: row.sourceFile,
+    expectedSourceBlobSha1: blob, approval: { type: "REVIEW2" },
+    items: [{ sourceOrdinal: row.sourceOrdinal, questionUid: row.questionUid, before: { subUnitKey: "OLD" }, after: { subUnitKey: "NEW", standardUnitKey: "NEW_UNIT", curriculumKey: "2015" }, ...extra }] });
+  const out = verifyChangedUidConsumerApproval({ root: repo, requestPaths: [request("hold.json", { typeHold: true }), request("plain.json", {})] });
+  const failuresFor = name => out.failures.filter(f => f.file?.endsWith?.(name) || false);
+  const reasons = out.failures.map(f => f.reason);
+  assert.ok(reasons.includes("NOT_APPROVED_IN_CONSUMER"), "the plain request is still gated");
+  assert.equal(out.failures.length, reasons.filter(r => ["NOT_APPROVED_IN_CONSUMER", "VALUE_MISMATCH"].includes(r)).length);
+  assert.ok(out.exams.find(e => e.file.endsWith("hold.json")).passed >= 1, "the type-hold item passes on its source binding");
+});

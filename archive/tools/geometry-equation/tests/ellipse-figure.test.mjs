@@ -4,6 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {assetIdentity} from '../production/contracts.mjs';
 import fs from 'node:fs';
+import {validateSvgStudentLanguage} from '../../svg-language-contract.cjs';
 import {solveEllipseFigure,composeEllipseFigure,renderEllipseSvg,auditEllipseSvg,stopCurveLeaderShort,CURVE_LEADER_STOP,ellipseFigureSize,ellipseFigureSpec,ellipseLabelObstacles,placeLabels,validateEllipseFigurePlan,FIGURE_CAPABILITY} from '../production/ellipse-figure-v1.mjs';
 
 const identity=assetIdentity('22_매산고_1학기_중간_고2_기하와벡터_기출|18','SOLUTION_VISUAL','decisive-relation');
@@ -562,4 +563,78 @@ test('stopCurveLeaderShort leaves a short leader alone and shortens a long one a
   const moved=stopCurveLeaderShort({a:[0,0],b:[30,40]});
   assert.ok(Math.abs(Math.hypot(...moved.b)-(50-CURVE_LEADER_STOP))<1e-9);
   assert.ok(Math.abs(moved.b[0]*40-moved.b[1]*30)<1e-9,'still on the same line');
+});
+
+const parabolicArchPlan=()=>({
+  capability:'ellipse-figure-v1',
+  conic:{kind:'PARABOLA',vertex:['0','4'],p:'-1/4',axis:'Y'},
+  arch:{ground:'ground',laser:'laser'},
+  points:[
+    {id:'A',kind:'ON_CONIC',x:'-2'},
+    {id:'B',kind:'ON_CONIC',x:'2'},
+    {id:'C',kind:'POINT',x:'5/2',y:'0'},
+    {id:'T',kind:'TANGENT_FROM',from:'C',which:1,label:false},
+    {id:'D',kind:'FOOT',from:'T',onto:'base',label:false},
+  ],
+  segments:[
+    {id:'ground',from:'A',to:'B'},
+    {id:'gap',from:'B',to:'C'},
+    {id:'laser',from:'T',to:'C'},
+    {id:'height',from:'T',to:'D',dashed:true,label:'h'},
+  ],
+  lines:[{id:'base',y:'0',hidden:true}],
+  caption:'포물선과 지면의 레이저',
+  accessibilityDescription:'포물선 호의 양 끝이 지면과 만나고, C에서 출발한 선분은 호에 접한다.',
+  sourceConditions:[],newVisualInformation:[],
+});
+
+test('parabolic arch shows only the physical arc and its finite ground tangent',async()=>{
+  const plan=parabolicArchPlan(),model=await solveEllipseFigure(plan);
+  const {svg,spec}=await renderEllipseSvg({plan,model,identity,typographyPolicy:policy});
+  assert.deepEqual(model.arch,{from:{exact:'-2',value:-2},to:{exact:'2',value:2},contactX:{exact:'1',value:1}});
+  assert.deepEqual(spec.labels.map(label=>label.text),['A','B','C','h']);
+  assert.deepEqual(spec.labels.slice(0,3).map(label=>label.key),['point-A','point-B','point-C']);
+  for(const pid of ['A','B','C']){
+    assert.match(svg,new RegExp('<circle id="point-'+pid+'" data-role="point" data-point="'+pid+'"'));
+    assert.match(svg,new RegExp('<g id="label-point-'+pid+'"[^>]+data-owner="ellipse-point-'+pid+'" data-point="'+pid+'"'));
+  }
+  const language=validateSvgStudentLanguage(svg);
+  assert.equal(language.status,'PASS',JSON.stringify(language.errors));
+  assert.doesNotMatch(svg,/data-role="(?:axis|axis-head|tick)"|id="point-T"|id="point-D"|id="line-base"/);
+  assert.match(svg,/<desc id="visual-desc">포물선 호의 양 끝이 지면과 만나고, C에서 출발한 선분은 호에 접한다.<\/desc>/);
+  const audit=await auditEllipseSvg({plan,svg});
+  assert.equal(audit.status,'PASS',JSON.stringify(audit.errors));
+  assert.deepEqual(audit.checks.arch,{from:-2,to:2,contact:'T',emitter:'C'});
+  const replacePrim=(id,transform)=>svg.replace(new RegExp('<(?:path|line) id="'+id+'"[^>]+>'),transform);
+  const bad=[
+    [replacePrim('curve',tag=>tag.replace(/ L[^L"]+(")/,'$1')),'PARABOLIC_ARCH_CURVE_EXTENT_MISMATCH'],
+    [replacePrim('segment-laser',tag=>tag.replace(/ x2="[^"]+"/,' x2="0"')),'SEGMENT_ENDPOINT_MOVED:laser:C'],
+    [replacePrim('segment-ground',tag=>tag.replace(/ y2="[^"]+"/,' y2="0"')),'PARABOLIC_ARCH_GROUND_MOVED'],
+    [svg.replace('</desc>','</desc><line data-role="axis" x1="1" x2="2" y1="1" y2="1"/>'),'PARABOLIC_ARCH_COORDINATE_CUES'],
+    [svg.replace('</desc>','</desc><g id="formula" data-label-kind="EQUATION_LABEL"/>'),'PARABOLIC_ARCH_UNDECLARED_LABEL'],
+    [svg.replace(plan.accessibilityDescription,'설명 변경'),'PARABOLIC_ARCH_ACCESSIBLE_NAME_MISMATCH'],
+    [svg.replace('id="label-point-A"','id="point-A"'),'PARABOLIC_ARCH_DUPLICATE_ID'],
+    [svg.replace('data-owner="ellipse-point-A" data-point="A"','data-owner="ellipse-point-B" data-point="A"'),
+      'PARABOLIC_ARCH_POINT_LABEL_OWNER_MISMATCH:A'],
+    [svg.replace(/(<g id="label-point-B"[^>]+transform="translate\()([\d.]+)/,(_,prefix,x)=>prefix+String(Number(x)-20)),
+      'PARABOLIC_ARCH_GROUND_LABEL_DISPLACED:B'],
+  ];
+  for(const [changed,code] of bad){
+    assert.notEqual(changed,svg,code);
+    const result=await auditEllipseSvg({plan,svg:changed});
+    assert.ok(result.errors.includes(code),JSON.stringify(result.errors));
+  }
+});
+
+test('parabolic arch refuses loose geometry or coordinate cues',async()=>{
+  const source=parabolicArchPlan();
+  for(const [plan,code] of [
+    [{...source,arch:{ground:'missing',laser:'laser'}},'PARABOLIC_ARCH_SEGMENT_REQUIRED'],
+    [{...source,conic:{...source.conic,axis:'X'}},'PARABOLIC_ARCH_INVALID'],
+    [{...source,points:source.points.map(p=>p.id==='C'?{...p,coordinates:true}:p)},'PARABOLIC_ARCH_COORDINATE_CUES'],
+    [{...source,points:source.points.map(p=>p.id==='T'?{...p,which:2}:p)},'PARABOLIC_ARCH_LASER_INVALID'],
+    [{...source,segments:source.segments.map(s=>s.id==='ground'?{...s,to:'C'}:s)},'PARABOLIC_ARCH_GROUND_INVALID'],
+  ]){
+    await assert.rejects(solveEllipseFigure(plan),error=>String(error.message).includes(code),code);
+  }
 });

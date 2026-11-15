@@ -1,0 +1,300 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/1mid/25_왕운중_1학기_중간_중3_기출.js",
+  "questionId": 19,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "nw",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ne",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "se",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "sw",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "top",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "13"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "bottom",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "left",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "right",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "nw",
+          "ne",
+          "se",
+          "sw",
+          "top",
+          "bottom",
+          "left",
+          "right"
+        ],
+        "hiddenPointNames": [
+          "nw",
+          "ne",
+          "se",
+          "sw",
+          "top",
+          "bottom",
+          "left",
+          "right"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "topSide",
+            "refs": [
+              "nw",
+              "ne"
+            ]
+          },
+          {
+            "id": "rightSide",
+            "refs": [
+              "ne",
+              "se"
+            ]
+          },
+          {
+            "id": "bottomSide",
+            "refs": [
+              "se",
+              "sw"
+            ]
+          },
+          {
+            "id": "leftSide",
+            "refs": [
+              "sw",
+              "nw"
+            ]
+          },
+          {
+            "id": "colDiv",
+            "refs": [
+              "top",
+              "bottom"
+            ]
+          },
+          {
+            "id": "rowDiv",
+            "refs": [
+              "left",
+              "right"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "textLabels": [
+            {
+              "id": "upperLeft",
+              "at": [
+                3.5,
+                9.5
+              ],
+              "labelKind": "TEXT",
+              "text": "2x²",
+              "anchor": "CENTER",
+              "factRole": "GIVEN",
+              "labelWeight": "MATH"
+            },
+            {
+              "id": "upperRight",
+              "at": [
+                9.5,
+                9.5
+              ],
+              "labelKind": "MATH",
+              "text": "7x",
+              "anchor": "CENTER",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lowerLeft",
+              "at": [
+                3.5,
+                3
+              ],
+              "labelKind": "MATH",
+              "text": "8x",
+              "anchor": "CENTER",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lowerRight",
+              "at": [
+                9.5,
+                3
+              ],
+              "labelKind": "MATH",
+              "text": "28",
+              "anchor": "CENTER",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 520,
+          "height": 440
+        },
+        "caption": "네 영역의 넓이가 표시된 직사각형",
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 34,
+        "displayScale": 0.45,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

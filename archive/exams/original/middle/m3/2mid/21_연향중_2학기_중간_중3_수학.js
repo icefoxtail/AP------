@@ -265,7 +265,11 @@ window.examData = {
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "content": "오른쪽 그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{ON}}\\perp\\overline{\\mathrm{CD}}$, $\\overline{\\mathrm{OM}}\\perp\\overline{\\mathrm{AB}}$이고 $\\overline{\\mathrm{ON}}=\\overline{\\mathrm{OM}}=3$, $\\overline{\\mathrm{AB}}=6$일 때, $\\overline{\\mathrm{OC}}$의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q07.png\" />"
+      "content": "오른쪽 그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{ON}}\\perp\\overline{\\mathrm{CD}}$, $\\overline{\\mathrm{OM}}\\perp\\overline{\\mathrm{AB}}$이고 $\\overline{\\mathrm{ON}}=\\overline{\\mathrm{OM}}=3$, $\\overline{\\mathrm{AB}}=6$일 때, $\\overline{\\mathrm{OC}}$의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q07.png\" />",
+      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 현 AB의 반쪽 AM=MB=3, 중심거리 OM=3이며 OM은 AB에 수직이다. 같은 중심거리 ON도 표시한다.",
+      "solutionImageCaption": "직각삼각형 OMA에서 OA=√(3²+3²)=3√2이므로 OC=3√2이다. 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,
@@ -303,7 +307,11 @@ window.examData = {
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "content": "오른쪽 그림에서 $\\triangle\\mathrm{ABC}$는 원 $\\mathrm{O}$에 내접하고, 세 점 $\\mathrm{D, E, F}$는 원 $\\mathrm{O}$의 중심에서 $\\triangle\\mathrm{ABC}$의 각 변에 내린 수선의 발이다. $\\overline{\\mathrm{OE}}=\\overline{\\mathrm{OF}}$일 때, $\\angle x$의 크기는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q08.png\" />"
+      "content": "오른쪽 그림에서 $\\triangle\\mathrm{ABC}$는 원 $\\mathrm{O}$에 내접하고, 세 점 $\\mathrm{D, E, F}$는 원 $\\mathrm{O}$의 중심에서 $\\triangle\\mathrm{ABC}$의 각 변에 내린 수선의 발이다. $\\overline{\\mathrm{OE}}=\\overline{\\mathrm{OF}}$일 때, $\\angle x$의 크기는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q08.png\" />",
+      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 원의 중심 O에서 두 현에 수선을 내려 각각 E와 F에 닿는다. 두 수선의 길이는 같고 중심각 BOC는 115도이며 꼭짓점 C에 원주각 x가 표시된다.",
+      "solutionImageCaption": "OE=OF이므로 AC=BC이고 ∠AOC=∠BOC=115°이다. 따라서 ∠AOB=130°이고 x=65°이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
@@ -340,7 +348,11 @@ window.examData = {
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "content": "오른쪽 그림에서 원 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D, E, F}$는 접점이다. $\\overline{\\mathrm{AC}}=12\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=10\\,\\mathrm{cm}$, $\\overline{\\mathrm{BD}}=6\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{AD}}$의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q09.png\" />"
+      "content": "오른쪽 그림에서 원 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 내접원이고 세 점 $\\mathrm{D, E, F}$는 접점이다. $\\overline{\\mathrm{AC}}=12\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=10\\,\\mathrm{cm}$, $\\overline{\\mathrm{BD}}=6\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{AD}}$의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q09.png\" />",
+      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 내접원 접점 D,E,F를 표시하고 BD와 BE, CE와 CF, AD와 AF를 각각 같은 색 눈금으로 묶었다.",
+      "solutionImageCaption": "BE=BD=6cm, CE=10−6=4cm이므로 CF=4cm이다. 따라서 AF=AC−CF=8cm이고 AD=AF=8cm이다. 답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 10,
@@ -379,7 +391,11 @@ window.examData = {
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "content": "오른쪽 그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{CM}}\\perp\\overline{\\mathrm{AB}}$이고 $\\overline{\\mathrm{AM}}=\\overline{\\mathrm{BM}}=8\\,\\mathrm{cm}$, $\\overline{\\mathrm{CA}}=4\\sqrt{5}\\,\\mathrm{cm}$일 때, 원 $\\mathrm{O}$의 넓이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q10.png\" />"
+      "content": "오른쪽 그림의 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{CM}}\\perp\\overline{\\mathrm{AB}}$이고 $\\overline{\\mathrm{AM}}=\\overline{\\mathrm{BM}}=8\\,\\mathrm{cm}$, $\\overline{\\mathrm{CA}}=4\\sqrt{5}\\,\\mathrm{cm}$일 때, 원 $\\mathrm{O}$의 넓이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q10.png\" />",
+      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 현 AB의 중점 M에서 내린 수선 CM 위에 중심 O가 있고 M은 O와 C 사이에 있다. AM=BM=8cm, CA=4√5cm.",
+      "solutionImageCaption": "CM=4cm이고 OM=6cm이다. 반지름 OA=OC=10cm이므로 원의 넓이는 100πcm²이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -417,7 +433,11 @@ window.examData = {
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "content": "다음 그림과 같이 $\\overleftrightarrow{\\mathrm{AB}}$와 $\\overline{\\mathrm{PT}}$는 두 원 $\\mathrm{O, O'}$의 공통인 접선이고, 세 점 $\\mathrm{A, B, T}$는 접점이다. &lt;보기&gt; 중 옳은 것을 모두 고른 것은?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q11.png\" /><br><div style=\"border:1px solid #000; padding:8px; margin:6px 0;\"><strong>&lt;보기&gt;</strong><br>㉠ $\\angle\\mathrm{ATB}=80^\\circ$<br>㉡ $\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PB}}=\\overline{\\mathrm{PT}}$<br>㉢ $\\angle\\mathrm{PBT}=\\angle\\mathrm{PTB}$<br>㉣ $\\angle\\mathrm{OTP}=\\angle\\mathrm{OAP}$</div>"
+      "content": "다음 그림과 같이 $\\overleftrightarrow{\\mathrm{AB}}$와 $\\overline{\\mathrm{PT}}$는 두 원 $\\mathrm{O, O'}$의 공통인 접선이고, 세 점 $\\mathrm{A, B, T}$는 접점이다. &lt;보기&gt; 중 옳은 것을 모두 고른 것은?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q11.png\" /><br><div style=\"border:1px solid #000; padding:8px; margin:6px 0;\"><strong>&lt;보기&gt;</strong><br>㉠ $\\angle\\mathrm{ATB}=80^\\circ$<br>㉡ $\\overline{\\mathrm{PA}}=\\overline{\\mathrm{PB}}=\\overline{\\mathrm{PT}}$<br>㉢ $\\angle\\mathrm{PBT}=\\angle\\mathrm{PTB}$<br>㉣ $\\angle\\mathrm{OTP}=\\angle\\mathrm{OAP}$</div>",
+      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 원이 T에서 외접하고 A-P-B와 P-T가 공통 접선으로 그려져 있다. 세 접선 구간 PA, PB, PT를 같은 색 눈금으로 표시했다.",
+      "solutionImageCaption": "PA=PT, PB=PT이고 P는 AB 위에 있다. 이등변삼각형의 밑각을 더하면 ∠ATB=90°이므로 ㉠은 거짓이다. 옳은 것은 ㉡, ㉢, ㉣이며 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 12,
@@ -456,7 +476,11 @@ window.examData = {
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "content": "오른쪽 그림에서 $\\overparen{\\mathrm{AB}}$는 원의 일부분이다. $\\overline{\\mathrm{AB}}\\perp\\overline{\\mathrm{CD}}$이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{BD}}=10$, $\\overline{\\mathrm{CD}}=5$일 때, 이 원의 반지름의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q12.png\" />"
+      "content": "오른쪽 그림에서 $\\overparen{\\mathrm{AB}}$는 원의 일부분이다. $\\overline{\\mathrm{AB}}\\perp\\overline{\\mathrm{CD}}$이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{BD}}=10$, $\\overline{\\mathrm{CD}}=5$일 때, 이 원의 반지름의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q12.png\" />",
+      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 현 AB의 중점 D에서 CD가 수직이며 AD=DB=10, CD=5이다. 원의 중심 O를 D 아래쪽에 두어 호가 C를 지나게 했다.",
+      "solutionImageCaption": "OD=15/2이므로 반지름은 OC=OD+CD=25/2이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 13,
@@ -495,7 +519,11 @@ window.examData = {
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "content": "오른쪽 그림과 같이 원 $\\mathrm{O}$는 직사각형 $\\mathrm{ABCD}$의 세 변에 내접하고, $\\overline{\\mathrm{DE}}$는 원 $\\mathrm{O}$의 접선이다. $\\overline{\\mathrm{AB}}=10$, $\\overline{\\mathrm{BC}}=13$일 때, $\\triangle\\mathrm{CDE}$의 둘레의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q13.png\" />"
+      "content": "오른쪽 그림과 같이 원 $\\mathrm{O}$는 직사각형 $\\mathrm{ABCD}$의 세 변에 내접하고, $\\overline{\\mathrm{DE}}$는 원 $\\mathrm{O}$의 접선이다. $\\overline{\\mathrm{AB}}=10$, $\\overline{\\mathrm{BC}}=13$일 때, $\\triangle\\mathrm{CDE}$의 둘레의 길이는?<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/q13.png\" />",
+      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 직사각형 ABCD 안에 세 변에 접하는 원 O가 있다. D에서 E로 가는 선분은 T에서 원에 접하고, 두 접선 길이 쌍을 표시했다.",
+      "solutionImageCaption": "DH=DT=13−5=8, EG=ET=u라 두면 DE=8+u, CE=8−u이다. 직각삼각형 CDE에서 u=25/8이므로 DE=89/8, CE=39/8이다. 둘레는 10+89/8+39/8=26이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
@@ -687,6 +715,7 @@ window.examData = {
     },
     {
       "id": 19,
+      "solutionReminderImagePolicy": "STRIP_INLINE",
       "score": 7.0,
       "question": "서술형1. 아래 그림과 같이 직각삼각형 $\\mathrm{ABC}$의 꼭짓점 $\\mathrm{C}$에서 변 $\\mathrm{AB}$에 내린 수선의 발을 $\\mathrm{D}$라 하고, 점 $\\mathrm{D}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{E}$라고 하자. $\\angle\\mathrm{ACD}=x^\\circ$, $\\angle\\mathrm{DCE}=y^\\circ$라고 할 때, $\\sin x^\\circ - \\sin y^\\circ + 2\\tan y^\\circ$의 값을 구하시오.<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/s01.png\" />",
       "choices": [],
@@ -715,7 +744,11 @@ window.examData = {
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "content": "서술형1. 아래 그림과 같이 직각삼각형 $\\mathrm{ABC}$의 꼭짓점 $\\mathrm{C}$에서 변 $\\mathrm{AB}$에 내린 수선의 발을 $\\mathrm{D}$라 하고, 점 $\\mathrm{D}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{E}$라고 하자. $\\angle\\mathrm{ACD}=x^\\circ$, $\\angle\\mathrm{DCE}=y^\\circ$라고 할 때, $\\sin x^\\circ - \\sin y^\\circ + 2\\tan y^\\circ$의 값을 구하시오.<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/s01.png\" />"
+      "content": "서술형1. 아래 그림과 같이 직각삼각형 $\\mathrm{ABC}$의 꼭짓점 $\\mathrm{C}$에서 변 $\\mathrm{AB}$에 내린 수선의 발을 $\\mathrm{D}$라 하고, 점 $\\mathrm{D}$에서 변 $\\mathrm{BC}$에 내린 수선의 발을 $\\mathrm{E}$라고 하자. $\\angle\\mathrm{ACD}=x^\\circ$, $\\angle\\mathrm{DCE}=y^\\circ$라고 할 때, $\\sin x^\\circ - \\sin y^\\circ + 2\\tan y^\\circ$의 값을 구하시오.<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/s01.png\" />",
+      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: A-B-D가 한 직선이고 C에서 ABC가 직각이다. D에서 BC에 내린 수선 DE, BE=2, EC=8, 각 x와 y를 표시했다.",
+      "solutionImageCaption": "DE=√(BE·EC)=4, DC=4√5이다. x+y=90°, sin x=cos y=2√5/5, sin y=√5/5, tan y=1/2이므로 구하는 값은 1+√5/5이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,
@@ -747,7 +780,11 @@ window.examData = {
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "content": "서술형2. 오른쪽 그림에서 원 $\\mathrm{O}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내접원이고, 세 점 $\\mathrm{D, E, F}$는 접점이다. $\\overline{\\mathrm{BE}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{CE}}=9\\,\\mathrm{cm}$일 때, 다음에 답하시오.<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/s02.png\" /><br>(1) 원 $\\mathrm{O}$의 반지름의 길이를 구하시오. (3점)<br>(2) $\\triangle\\mathrm{OBC}$의 둘레의 길이를 구하시오. (3점)"
+      "content": "서술형2. 오른쪽 그림에서 원 $\\mathrm{O}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내접원이고, 세 점 $\\mathrm{D, E, F}$는 접점이다. $\\overline{\\mathrm{BE}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{CE}}=9\\,\\mathrm{cm}$일 때, 다음에 답하시오.<br><img src=\"assets/images/21_연향중_2학기_중간_중3_수학/s02.png\" /><br>(1) 원 $\\mathrm{O}$의 반지름의 길이를 구하시오. (3점)<br>(2) $\\triangle\\mathrm{OBC}$의 둘레의 길이를 구하시오. (3점)",
+      "solutionImage": "assets/images/21_연향중_2학기_중간_중3_수학/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 내접원 접점 D,E,F를 표시하고 같은 꼭짓점에서 나온 접선 길이 쌍을 같은 색 눈금으로 묶었다. BE=6cm, CE=9cm.",
+      "solutionImageCaption": "BC=15cm이고 AD=AF=x라 두면 (x+6)²+(x+9)²=15²에서 x=3cm이다. 따라서 원의 반지름은 3cm이다. OB=3√5cm, OC=3√10cm이므로 △OBC의 둘레는 15+3√5+3√10cm이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 21,

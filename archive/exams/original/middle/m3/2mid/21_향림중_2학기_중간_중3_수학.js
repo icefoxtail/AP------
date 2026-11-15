@@ -98,7 +98,11 @@ window.examData = {
         "$6\\sqrt{6}$"
       ],
       "answer": "①",
-      "solution": "BC를 C쪽으로 연장하고 A에서 연장선에 수선을 내려 발을 H라 하면, 그림의 외각으로 $\\angle ACH=45^\\circ$이다. 직각삼각형 ACH에서 $AH=6\\sin45^\\circ=3\\sqrt2$이고, 밑변 $BC=2\\sqrt2$이므로 넓이는 $\\frac12\\cdot2\\sqrt2\\cdot3\\sqrt2=6$이다. 따라서 ①이다."
+      "solution": "BC를 C쪽으로 연장하고 A에서 연장선에 수선을 내려 발을 H라 하면, 그림의 외각으로 $\\angle ACH=45^\\circ$이다. 직각삼각형 ACH에서 $AH=6\\sin45^\\circ=3\\sqrt2$이고, 밑변 $BC=2\\sqrt2$이므로 넓이는 $\\frac12\\cdot2\\sqrt2\\cdot3\\sqrt2=6$이다. 따라서 ①이다.",
+      "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 ABC의 AC=6, BC=2√2, ∠C=135°를 표시하고 BC의 C쪽 연장선 위로 높이 AH를 내렸다.",
+      "solutionImageCaption": "외각은 45°이므로 AH=6sin45°=3√2이다. 넓이는 ½·2√2·3√2=6이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 8,
@@ -112,7 +116,11 @@ window.examData = {
         "$a<0,\\ p>0,\\ q<0$"
       ],
       "answer": "④",
-      "solution": "그래프가 아래로 열리므로 $a<0$이다. 꼭짓점은 $y$축의 왼쪽에 있고 $x$좌표가 $-p$이므로 $p>0$이며, 꼭짓점의 $y$좌표 $q>0$이다. 따라서 ④이다."
+      "solution": "그래프가 아래로 열리므로 $a<0$이다. 꼭짓점은 $y$축의 왼쪽에 있고 $x$좌표가 $-p$이므로 $p>0$이며, 꼭짓점의 $y$좌표 $q>0$이다. 따라서 ④이다.",
+      "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 대표 포물선 개형은 아래로 열리고 꼭짓점은 y축 왼쪽이며 x축 위쪽에 있다. 실제 계수나 수치 좌표를 주장하는 그림은 아니다.",
+      "solutionImageCaption": "아래로 열리므로 a<0, 꼭짓점 x좌표 −p<0이므로 p>0, 꼭짓점 y좌표 q>0이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
@@ -140,7 +148,11 @@ window.examData = {
         "$y=3(x+1)^2-2$"
       ],
       "answer": "④",
-      "solution": "$x$축에 대칭인 그래프는 $y$의 부호를 바꾼 것이므로 $y=-[-3(x-1)^2+2]=3(x-1)^2-2$이다. 따라서 ④이다."
+      "solution": "$x$축에 대칭인 그래프는 $y$의 부호를 바꾼 것이므로 $y=-[-3(x-1)^2+2]=3(x-1)^2-2$이다. 따라서 ④이다.",
+      "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 파란 원래 포물선 f(x)=−3(x−1)²+2와 주황 x축 대칭 포물선 g(x)를 비교한다. 두 곡선은 x축을 기준으로 서로 반대쪽에 놓인다.",
+      "solutionImageCaption": "x축 대칭은 y의 부호를 바꾸므로 구하는 식은 y=3(x−1)²−2이다. 답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -224,7 +236,11 @@ window.examData = {
         "$8\\sqrt{2}\\,\\mathrm{cm}$"
       ],
       "answer": "①",
-      "solution": "$\\angle A=180^\\circ-75^\\circ-45^\\circ=60^\\circ$이다. B에서 AC에 수선을 내려 발을 H라 하자. 직각삼각형 BCH에서 $BH=8\\sin45^\\circ=4\\sqrt2$이고, 직각삼각형 ABH에서 $\\sin60^\\circ=BH/AB$이므로 $AB=4\\sqrt2/(\\sqrt3/2)=\\frac{8\\sqrt6}{3}$이다. 따라서 ①이다."
+      "solution": "$\\angle A=180^\\circ-75^\\circ-45^\\circ=60^\\circ$이다. B에서 AC에 수선을 내려 발을 H라 하자. 직각삼각형 BCH에서 $BH=8\\sin45^\\circ=4\\sqrt2$이고, 직각삼각형 ABH에서 $\\sin60^\\circ=BH/AB$이므로 $AB=4\\sqrt2/(\\sqrt3/2)=\\frac{8\\sqrt6}{3}$이다. 따라서 ①이다.",
+      "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: BC=8cm, 각 B=75°, C=45°, A=60°인 삼각형에서 BH를 AC에 수직으로 내렸다. BH=4√2cm이다.",
+      "solutionImageCaption": "BH=8sin45°=4√2이므로 sin60°=BH/AB에서 AB=8√6/3cm이다. 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -238,7 +254,11 @@ window.examData = {
         "$9\\sqrt{3}\\,\\mathrm{cm}^2$"
       ],
       "answer": "②",
-      "solution": "큰 정삼각형 ABC의 한 변은 6 cm이다. 그림에서 $AD=2$, $AF=4$, $EC=4$이므로 $BD=AB-AD=4$, $FC=AC-AF=2$, $BE=BC-EC=2$이다. 따라서 바깥 꼭짓점에 생기는 작은 삼각형은 각각 두 변이 2와 4이고 끼인각이 $60^\\circ$이다. 예를 들어 $\\triangle ADF$에서 D에서 AF에 내린 수선의 발을 G라 하면, 직각삼각형 ADG에서 $DG=AD\\sin60^\\circ=\\sqrt3$이다. 그러므로 $\\triangle ADF$의 넓이는 $\\frac12\\cdot AF\\cdot DG=\\frac12\\cdot4\\cdot\\sqrt3=2\\sqrt3$이다. 나머지 두 작은 삼각형의 넓이도 각각 $2\\sqrt3$이다. 큰 정삼각형의 넓이는 $\\frac{\\sqrt3}{4}\\cdot6^2=9\\sqrt3$이므로, $\\triangle DEF$의 넓이는 $9\\sqrt3-3\\cdot2\\sqrt3=3\\sqrt3\\,\\mathrm{cm}^2$이다. 따라서 ②이다."
+      "solution": "큰 정삼각형 ABC의 한 변은 6 cm이다. 그림에서 $AD=2$, $AF=4$, $EC=4$이므로 $BD=AB-AD=4$, $FC=AC-AF=2$, $BE=BC-EC=2$이다. 따라서 바깥 꼭짓점에 생기는 작은 삼각형은 각각 두 변이 2와 4이고 끼인각이 $60^\\circ$이다. 예를 들어 $\\triangle ADF$에서 D에서 AF에 내린 수선의 발을 G라 하면, 직각삼각형 ADG에서 $DG=AD\\sin60^\\circ=\\sqrt3$이다. 그러므로 $\\triangle ADF$의 넓이는 $\\frac12\\cdot AF\\cdot DG=\\frac12\\cdot4\\cdot\\sqrt3=2\\sqrt3$이다. 나머지 두 작은 삼각형의 넓이도 각각 $2\\sqrt3$이다. 큰 정삼각형의 넓이는 $\\frac{\\sqrt3}{4}\\cdot6^2=9\\sqrt3$이므로, $\\triangle DEF$의 넓이는 $9\\sqrt3-3\\cdot2\\sqrt3=3\\sqrt3\\,\\mathrm{cm}^2$이다. 따라서 ②이다.",
+      "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 정삼각형 ABC 안의 DEF를 표시하고, 같은 넓이의 세 모서리 삼각형을 주황색, 중앙 DEF를 파란색으로 구분했다.",
+      "solutionImageCaption": "큰 넓이는 9√3이고 세 모서리 넓이는 각각 2√3이므로 [DEF]=9√3−3·2√3=3√3cm²이다. 정답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
@@ -326,7 +346,11 @@ window.examData = {
       "question": "[서술형 4]<br>다음 그림과 같이 눈의 높이가 $1.8\\,\\mathrm{m}$인 사람이 번지 점프대로부터 $20\\,\\mathrm{m}$ 떨어진 곳에 서 있다. 이 사람이 점프대의 꼭대기 지점 $\\mathrm{C}$를 올려다본 각의 크기가 $43^\\circ$일 때, 번지 점프대의 높이를 구하시오. (단, $\\sin 43^\\circ = 0.68$, $\\cos 43^\\circ = 0.73$, $\\tan 43^\\circ = 0.93$으로 계산한다.) [5점]<br><img src=\"assets/images/21_향림중_2학기_중간_중3_수학/s04.png\" />",
       "choices": [],
       "answer": "$20.4\\,\\mathrm{m}$",
-      "solution": "높이 차를 $h$라 하면 $\\tan43^\\circ=\\frac{h}{20}=0.93$이므로 $h=20\\cdot0.93=18.6\\,\\mathrm{m}$이다. 눈높이 $1.8\\,\\mathrm{m}$를 더하면 점프대 높이는 $18.6+1.8=20.4\\,\\mathrm{m}$이다."
+      "solution": "높이 차를 $h$라 하면 $\\tan43^\\circ=\\frac{h}{20}=0.93$이므로 $h=20\\cdot0.93=18.6\\,\\mathrm{m}$이다. 눈높이 $1.8\\,\\mathrm{m}$를 더하면 점프대 높이는 $18.6+1.8=20.4\\,\\mathrm{m}$이다.",
+      "solutionImage": "assets/images/21_향림중_2학기_중간_중3_수학/q25-solution.svg",
+      "solutionImageAlt": "해설 그림: 눈 위치 A는 지면보다 1.8m 높고, 점프대 밑 B까지 수평 거리는 20m이다. 시선 AC는 수평 눈높이 AH와 43°를 이룬다.",
+      "solutionImageCaption": "높이 차는 20tan43°≈20·0.93=18.6m이다. 눈높이 1.8m를 더하면 점프대 높이는 20.4m이다.",
+      "solutionImageSize": "full"
     }
   ]
 };

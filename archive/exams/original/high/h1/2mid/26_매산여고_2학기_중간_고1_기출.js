@@ -612,7 +612,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "아래 그림과 같이 원 $x^2+y^2=36$을 접어서 점 $(3,0)$에서 $x$축에 접하도록 하였다. 선분 $AB$의 길이를 구하면? [4.1점]",
-    "image": "assets/images/26_매산여고_2학기_중간_고1_기출/q12.svg",
+    "image": "assets/images/26_매산여고_2학기_중간_고1_기출/q12-problem-v2.svg",
     "choices": [
       "$4\\sqrt6$",
       "$\\sqrt{97}$",
@@ -1010,7 +1010,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "그림과 같이 제 2사분면 위의 점 $P$에서 만나고 기울기가 양수인 서로 다른 두 직선 $l$, $m$에 대하여 직선 $l$이 $y$축, $x$축과 만나는 점을 각각 $A$, $B$라 하고, 직선 $m$이 $y$축, $x$축과 만나는 점을 각각 $C$, $D$라 할 때, $\\overline{OC}=3\\overline{OA}$이다. 직선 $l$의 기울기가 $\\dfrac13$이고, 사각형 $PDOA$의 넓이와 삼각형 $PCB$의 넓이가 모두 6일 때, 점 $P$의 $x$좌표와 $y$좌표의 곱을 구하면? (단, $O$는 원점이다.) [4.5점]",
-    "image": "assets/images/26_매산여고_2학기_중간_고1_기출/q19.svg",
+    "image": "assets/images/26_매산여고_2학기_중간_고1_기출/q19-problem-v2.svg",
     "choices": [
       "$-\\dfrac{20}{7}$",
       "$-\\dfrac{22}{7}$",
@@ -1069,7 +1069,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "아래 그림과 같이 좌표평면 위에 제 1사분면의 점 $A$와 $y$축 위의 점 $B$에 대하여 $\\overline{AB}=\\overline{AO}=\\sqrt5$인 이등변삼각형 $OAB$가 있다. 점 $A$를 직선 $y=x$에 대하여 대칭이동한 점을 $C$라 하면 점 $C$는 직선 $y=2x$ 위의 점이다. 선분 $AB$가 두 직선 $y=x$, $y=2x$와 만나는 점을 각각 $D$, $E$라 할 때, 삼각형 $ODE$의 외접원의 둘레의 길이를 구하면? (단, $O$는 원점이다.) [4.5점]",
-    "image": "assets/images/26_매산여고_2학기_중간_고1_기출/q20.svg",
+    "image": "assets/images/26_매산여고_2학기_중간_고1_기출/q20-problem-v2.svg",
     "choices": [
       "$\\dfrac{\\sqrt2}{3}\\pi$",
       "$\\dfrac{2\\sqrt2}{3}\\pi$",

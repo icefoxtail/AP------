@@ -355,7 +355,11 @@ window.questionBank = [
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_이수중_1학기_기말_중3_기출c/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 높이 h(x)=45x−5x²의 포물선과 높이 90 m 수평선이 만나는 두 교점을 표시한다. 두 시간 값은 그림에 쓰지 않는다.",
+    "solutionImageCaption": "45x−5x²=90을 풀면 x=3 또는 6이므로, 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -421,7 +425,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_이수중_1학기_기말_중3_기출c/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 기준 포물선은 y=−x²이고 주황 g(x)는 문제에서 ㉠로 표시한 포물선의 개형이다. 같은 높이에서 두 곡선의 가로 폭을 비교한다.",
+    "solutionImageCaption": "그림의 주황 g(x)는 문제의 ㉠을 나타낸다. ㉠은 아래로 열리고 y=−x²보다 넓으므로 계수는 음수이며 절댓값이 1보다 작다. 보기 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -562,7 +570,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_이수중_1학기_기말_중3_기출c/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 이동 전 파란 포물선과 이동 후 주황 포물선에서 x=−6인 점을 세로 점선으로 연결하고 P(−6,5)를 표시한다. 이동량 q는 그림에 적지 않는다.",
+    "solutionImageCaption": "5=−1/2·(−6)²+q에서 q=23이므로 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -687,7 +699,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_이수중_1학기_기말_중3_기출c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 그림의 한 점선은 왼쪽과 오른쪽 주탑 사이 전체 500 m, 다른 점선은 B에서 오른쪽 주탑까지 150 m를 나타낸다. 두 주탑 꼭대기는 다리보다 각각 50 m 높다. B 바로 위 케이블 점이 A이며, AB의 길이는 그림에 표시하지 않는다.",
+    "solutionImageCaption": "왼쪽과 오른쪽 주탑 사이 전체는 500 m이고, B에서 오른쪽 주탑까지는 150 m이다. 중앙 원점에서 오른쪽 주탑은 x=250이므로 B는 x=100이다. 케이블 y=x²/1250에서 AB=100²/1250=8 m, 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

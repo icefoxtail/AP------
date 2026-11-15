@@ -67,7 +67,7 @@ function validatePair(plan){
 }
 
 // --- conic (parabola, hyperbola, circle, ellipse; one `conic` or one or two `conics`) plans: a root `conic` field; the plan shape is checked here, every value in conic_figure.py -------------------------------
-const CONIC_TOP_KEYS=['capability','conic','conics','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote'];
+const CONIC_TOP_KEYS=['capability','conic','conics','points','segments','polygons','lines','caption','sourceConditions','newVisualInformation','sourceQuote','arch','accessibilityDescription'];
 const CONIC_POINT_KEYS={ORIGIN:['id','kind','label','coordinates'],FOCUS:['id','kind','label','coordinates','side','curve'],VERTEX:['id','kind','label','coordinates','side','curve'],
   CENTER:['id','kind','label','coordinates','curve'],POINT:['id','kind','x','y','label','coordinates'],
   ON_CONIC:['id','kind','x','y','branch','sign','label','coordinates','curve'],LINE_CONIC:['id','kind','line','which','label','coordinates','curve'],LINE_LINE:['id','kind','lines','label','coordinates'],
@@ -99,6 +99,15 @@ export function validateConicPlan(plan){
     onlyKeys(row,('conics' in plan?['id','label']:[]).concat(CONIC_KEYS_BY_KIND[row.kind]??CONIC_KEYS_BY_KIND.PARABOLA),'CONIC_PARAMETER_INVALID');
     if(!(row.kind in CONIC_KEYS_BY_KIND))bad('CONIC_KIND_UNSUPPORTED');
     if(row.label!==undefined&&(typeof row.label!=='string'||!row.label.trim()||row.label.length>40))bad('CONIC_LINE_LABEL_INVALID');
+  }
+  if(Object.hasOwn(plan,'arch')){
+    onlyKeys(plan.arch,['ground','laser'],'PARABOLIC_ARCH_INVALID');
+    if(Array.isArray(plan.conics)||plan.conic?.kind!=='PARABOLA'||plan.conic.axis!=='Y'
+      ||!LINE_ID.test(plan.arch.ground??'')||!LINE_ID.test(plan.arch.laser??'')||plan.arch.ground===plan.arch.laser)bad('PARABOLIC_ARCH_INVALID');
+  }
+  if(Object.hasOwn(plan,'accessibilityDescription')){
+    const text=plan.accessibilityDescription;
+    if(!plan.arch||typeof text!=='string'||!text.trim()||text.length>500||/[\r\n]/.test(text))bad('INVALID_ACCESSIBILITY_DESCRIPTION');
   }
   const kinds=new Set(rows.map(row=>row.kind));
   const points=plan.points??[];
@@ -192,10 +201,11 @@ function layoutOf(model){
   if(!(scale>=MIN_SCALE))bad('ELLIPSE_FIGURE_TOO_LARGE');
   // a figure with coordinate labels gets a wider frame so the labels have free room beside the strokes
   const wide=(model.points??[]).some(point=>point.coordinates===true),MX=wide?COORD_MARGIN_X:MARGIN_PX,MY=wide?COORD_MARGIN_Y:MARGIN_PX;
-  const width=Math.ceil(unitsW*scale)+2*MX,height=Math.ceil(unitsH*scale)+2*MY;
+  const belowGroundRoom=model.arch?20:0;
+  const width=Math.ceil(unitsW*scale)+2*MX,height=Math.ceil(unitsH*scale)+2*MY+belowGroundRoom;
   const baseX=bbox.minX-PAD_UNITS,baseY=bbox.minY-PAD_UNITS;
-  const px=x=>MX+(x-baseX)*scale,py=y=>height-MY-(y-baseY)*scale;
-  return {size:{width,height},scale,baseX,baseY,unitsW,unitsH,px,py,
+  const px=x=>MX+(x-baseX)*scale,py=y=>height-MY-belowGroundRoom-(y-baseY)*scale;
+  return {size:{width,height},scale,baseX,baseY,unitsW,unitsH,px,py,...(model.arch?{arch:true}:{}),
     rect:{x0:px(baseX),y0:py(baseY+unitsH),x1:px(baseX+unitsW),y1:py(baseY)}};
 }
 
@@ -304,7 +314,7 @@ export function placeLabels(entries,layout,obstacles){
     return leader;
   };
   const blocked=(box,entry)=>{
-    const edge=entry.coordinates?12:4;
+    const edge=entry.coordinates||layout.arch?12:4;
     if(box.x<edge||box.y<edge||box.x+box.width>layout.size.width-edge||box.y+box.height>layout.size.height-edge)return true;
     for(const point of obstacles.points){
       // A point label sits close to its own dot but must still clear the drawn circle.
@@ -335,7 +345,8 @@ export function placeLabels(entries,layout,obstacles){
       const leader=leaderFor(box,entry);if(leader===false)continue;
       const clearance=Math.min(...obstacles.points.filter(point=>point.key!==entry.pointId)
         .map(point=>boxDistance(point.x,point.y,box)).concat([40]));
-      const score=clearance*0.5-delta.distance*0.15;
+      // The arch has adjacent points on one baseline: proximity must win over empty space.
+      const score=layout.arch&&entry.role==='point'?-delta.distance:clearance*0.5-delta.distance*0.15;
       if(!best||score>best.score)best={box,score,leader};
     }
     if(!best&&entry.fallbacks){
@@ -570,6 +581,14 @@ function parabolaRuns(conic,layout,count=320){
   return runs.filter(row=>row.length>=2);
 }
 
+// Only the physical arch between its two ground contacts. Sample the vertex and laser contact exactly.
+function parabolicArchRun(conic,arch,count=160){
+  const h=num(conic.vertex.x),k=num(conic.vertex.y),p=num(conic.p);
+  const from=num(arch.from),to=num(arch.to);
+  const xs=[...new Set([from,to,h,num(arch.contactX),...Array.from({length:count-1},(_,i)=>from+(i+1)*(to-from)/count)])].sort((a,b)=>a-b);
+  return [xs.map(x=>[x,k+(x-h)**2/(4*p)])];
+}
+
 // One branch of the hyperbola (side +1 / -1 of the transverse axis) inside the plane window, as runs of model points.
 function hyperbolaRuns(conic,layout,side,count=400){
   const h=num(conic.center.x),k=num(conic.center.y),a=Math.sqrt(num(conic.aSquared)),b=Math.sqrt(num(conic.bSquared)),axisX=conic.transverse==='X';
@@ -628,7 +647,7 @@ function conicFigureSpec(plan,model){
   const conic=curveList[0];
   const anchor=conic.kind==='PARABOLA'?conic.vertex:conic.center;
   const vertexPx={x:layout.px(num(anchor.x)),y:layout.py(num(anchor.y))};
-  const prims=axisPrims(layout);
+  const prims=model.arch?[]:axisPrims(layout);
   const point=id=>model.points.find(row=>row.id===id);
   const toPx=(x,y)=>[layout.px(x),layout.py(y)];
   for(const polygon of plan.polygons??[]){
@@ -648,7 +667,7 @@ function conicFigureSpec(plan,model){
           data:{curve:one.kind,...tag,branch:name}});
       }
     }else prims.push({t:'path',id:`curve${suffix}`,role:'curve',cls:'curve',layer:25,
-      runs:toPxRuns(conicCurveRuns(one,layout)),
+      runs:toPxRuns(model.arch?parabolicArchRun(one,model.arch):conicCurveRuns(one,layout)),
       data:{curve:one.kind,...tag}});
   }
   const segmentLabelCounts=new Map();
@@ -695,17 +714,23 @@ function conicFigureSpec(plan,model){
       data:{foot:row.id}});
   }
   for(const row of model.points){
+    if(model.arch&&!row.labels)continue;
     prims.push({t:'circle',id:`point-${row.id}`,role:'point',cls:'point',layer:40,
       cx:r6(layout.px(num(row.x))),cy:r6(layout.py(num(row.y))),r:3.2,data:{point:row.id}});
   }
   const labels=[];
+  const groundLabels=new Set(model.arch?model.segments
+    .filter(seg=>[plan.arch.ground,plan.arch.laser].includes(seg.id)).flatMap(seg=>seg.id===plan.arch.laser?[seg.to]:[seg.from,seg.to]):[]);
   for(const row of model.points){
     if(!row.labels)continue;
     const px=layout.px(num(row.x)),py=layout.py(num(row.y));
     const source=(plan.points??[]).find(one=>one.id===row.id);
     const text=source?.coordinates===true?`${row.id}(${exactTex(row.x.exact)},${exactTex(row.y.exact)})`:row.id;
     labels.push({key:`point-${row.id}`,role:'point',pointId:row.id,text,
-      pointX:px,pointY:py,centerX:px,centerY:py,coordinates:source?.coordinates===true,candidates:labelCandidates({x:px,y:py},vertexPx.x,vertexPx.y,source?.coordinates===true),
+      pointX:px,pointY:py,centerX:px,centerY:py,coordinates:source?.coordinates===true,
+      candidates:groundLabels.has(row.id)
+        ?labelCandidates({x:px,y:py},px,py-1).filter(delta=>delta.dy>0&&Math.abs(delta.dx)<=8)
+        :labelCandidates({x:px,y:py},vertexPx.x,vertexPx.y,source?.coordinates===true),
       farCandidates:source?.coordinates===true?null:labelCandidates({x:px,y:py},vertexPx.x,vertexPx.y,true).filter(delta=>delta.distance>40&&delta.distance<=64)});
   }
   for(const {line,prim} of drawnLines){
@@ -815,12 +840,14 @@ export async function renderEllipseSvg({plan,model,identity,typographyPolicy,sto
   }
   for(const item of placed){
     const box=item.box;
+    const labelId=model.arch&&item.role==='point'?'label-'+item.key:item.key;
     const extra=item.role==='point'?` data-point="${esc(item.pointId)}"`:item.role==='line'?` data-line="${esc(item.lineId)}"`:item.role==='curve'?` data-curve-id="${esc(item.curveId)}"`:` data-segment="${esc(item.segmentId)}"`;
     const role=item.role==='point'?'point':item.role==='line'?'line':item.role==='curve'?'curve':'measure';
-    body+=`<g data-layer="90"><g id="${item.key}" data-label-kind="COORDINATE_LABEL" data-label-role="${role}" data-priority="0" data-font-px="${font}" data-owner="ellipse-${item.key}"${extra} data-tex="${esc(item.text)}" data-fragment-sha="${item.fragment.fragmentSha256}" data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${item.fragment.svg}</g></g>`;
+    body+=`<g data-layer="90"><g id="${labelId}" data-label-kind="COORDINATE_LABEL" data-label-role="${role}" data-priority="0" data-font-px="${font}" data-owner="ellipse-${item.key}"${extra} data-tex="${esc(item.text)}" data-fragment-sha="${item.fragment.fragmentSha256}" data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${item.fragment.svg}</g></g>`;
     lineage.fragmentSha256s[item.key]=item.fragment.fragmentSha256;
   }
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" data-ellipse-figure="${FIGURE_CAPABILITY}" ${model.mode==='CONIC'?`data-conic="${(model.conic?[model.conic]:model.conics).map(one=>one.kind).join('+')}"`:`data-major-axis="${model.majorAxis}"`} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
+  const names=model.arch?`<title id="visual-title">${esc(plan.caption??'포물선 모양 조형물')}</title><desc id="visual-desc">${esc(plan.accessibilityDescription??'포물선 호의 양 끝은 지면에 닿고, 지면에서 시작하는 선분은 호에 접한다.')}</desc>`:'';
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${model.arch?' aria-labelledby="visual-title visual-desc"':''} data-ellipse-figure="${FIGURE_CAPABILITY}" ${model.mode==='CONIC'?`data-conic="${(model.conic?[model.conic]:model.conics).map(one=>one.kind).join('+')}"`:`data-major-axis="${model.majorAxis}"`} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${names}${body}</svg>`;
   lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
   return {status:'RENDERED',svg,lineage,spec};
 }

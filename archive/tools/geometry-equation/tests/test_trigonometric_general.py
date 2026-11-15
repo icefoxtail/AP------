@@ -56,6 +56,32 @@ def refused(value):
 
 
 class TrigonometricGeneral(unittest.TestCase):
+    def test_display_window_does_not_turn_the_crop_into_a_source_interval(self):
+        raw={'family':'trigonometric','function':'COS','coefficients':['-2','2','1'],'phasePi':'0',
+             'sourceDomain':{'kind':'ALL_REALS'},'displayWindowPi':['-1/4','19/12'],'axisTickPi':True,
+             'axisTickValues':{'x':['1/2','1','3/2'],'y':['-1','3']},
+             'displayGuides':{'x':['1/2','1','3/2'],'y':['-1','3']},'showOriginLabel':True}
+        framed=fit_overview(raw)
+        self.assertTrue(framed['sourceDomainPreserved'])
+        plan=framed['graphPlan']
+        self.assertEqual(plan['sourceDomain'],{'kind':'ALL_REALS'})
+        self.assertEqual(plan['domain'],[-math.pi/4,19/12*math.pi])
+        self.assertNotIn('intervalFeatures',plan)
+        model=produce(plan)
+        observed=audit(plan,model['svg'],model['transform'],model=True)
+        self.assertEqual(observed['status'],'PASS',observed['errors'])
+        xml=model['svg'].replace('</svg>','<circle data-role="interval-endpoint"/></svg>')
+        self.assertIn('TRIG_DISPLAY_EXTRA_MARKUP',audit(plan,xml,model['transform'],model=True)['errors'])
+        changed={**plan,'domain':[-math.pi/2,plan['domain'][1]]}
+        self.assertIn('TRIG_DISPLAY_WINDOW_MISMATCH',audit(changed,model['svg'],model['transform'],model=True)['errors'])
+        for changes,code in [
+            ({'sourceDomain':{'kind':'INTERVAL_PI','rangePi':['-1/4','19/12']}},'TRIG_DISPLAY_WINDOW_REQUIRES_ALL_REAL_SINE_COSINE'),
+            ({'axisTickPiStep':'1/2'},'TRIG_DISPLAY_WINDOW_FIELD_UNSUPPORTED'),
+            ({'axisTickValues':{'x':['1/2','1','2'],'y':[]}},'TRIG_PI_TICK_OUTSIDE_VIEW'),
+            ({'displayGuides':{'x':['1/2'],'y':['2']}},'TRIG_DISPLAY_GUIDE_NOT_AT_EXTREMUM'),
+        ]:
+            with self.assertRaisesRegex(ValueError,code):fit_overview({**raw,**changes})
+
     def test_pi_rate_sine_on_a_plain_month_interval_has_exact_crossings_and_key_points(self):
         plan,_,observed=build_figure(interval('SIN',('24/5','5'),rate_pi='1/6',rng=('0','12'),lines=[{'id':'k','y':'37/5','intersectionCount':2}],key=True))
         self.assertEqual(observed['status'],'PASS',observed['errors'])

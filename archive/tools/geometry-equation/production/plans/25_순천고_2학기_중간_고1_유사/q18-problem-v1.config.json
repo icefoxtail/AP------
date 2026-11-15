@@ -1,0 +1,194 @@
+{
+  "sourcePath": "archive/exams/similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+  "questionId": 18,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "SOURCE_COORDINATE_AXES_v1",
+            "unit": "source-coordinate",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "NORMALIZATION_ORIGIN",
+              "inputs": [],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "NORMALIZATION_AXIS",
+              "inputs": [],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displaySegments": [
+          {
+            "id": "ab",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "bc",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "ca",
+            "refs": [
+              "C",
+              "A"
+            ]
+          }
+        ],
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "G"
+        ],
+        "hiddenPointNames": [
+          "G"
+        ],
+        "coordinateLabels": [
+          "B",
+          "C"
+        ],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 640,
+          "height": 600
+        },
+        "caption": "주어진 삼각형과 중심점",
+        "sourceConditions": [
+          "삼각형 ABC의 무게중심 G(2,3), B(0,-2), C(4,10)이다."
+        ],
+        "newVisualInformation": [
+          "문제에 주어진 삼각형과 무게중심"
+        ],
+        "planeMarks": {
+          "textLabels": [
+            {
+              "id": "g-coordinate",
+              "at": "G",
+              "text": "G(2,3)",
+              "labelKind": "MATH",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "sourceQuote": "삼각형 ABC의 무게중심이 G(2,3)"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "requestedSizeClass": "full",
+        "displayScale": 0.493994140625,
+        "cssTargetFontPx": 12.25,
+        "fontFloorCssPx": 11,
+        "comfortCssPx": 0.25,
+        "minimumBaseFontPx": 11,
+        "maximumBaseFontPx": 40,
+        "baseFontPx": 24.8,
+        "rounding": "CEIL_TO_TENTH_BASE_PX"
+      }
+    }
+  ]
+}

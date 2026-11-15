@@ -915,7 +915,7 @@ window.questionBank = [
     "choices": [],
     "answer": "25 cm²",
     "points": 5,
-    "image": "assets/images/26_팔마중_2학기_중간_중1_유사/q24.svg",
+    "image": "assets/images/26_팔마중_2학기_중간_중1_유사/q24-problem-v2.svg",
     "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
     "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
     "solution": "[정석 풀이과정]\n1단계: 합동인 두 삼각형 찾기\n정사각형 $ABCD$의 두 대각선의 교점 $E$에서 꼭짓점까지의 거리는 모두 같으므로 $\\overline{ED} = \\overline{EC}$입니다.\n정사각형의 대각선은 한 꼭짓점의 각을 이등분하므로 $\\angle EDC = \\angle ECD = 45^\\circ$입니다.\n또한 두 대각선은 서로 수직이므로 $\\angle DEC = 90^\\circ$이고, 정사각형 $EFGH$의 한 꼭짓점의 각 $\\angle FEH = 90^\\circ$입니다.\n회전된 정사각형의 변이 정사각형 $ABCD$의 변 $CD, BC$와 만나는 교점을 각각 $J, I$라 하면,\n$\\angle DEJ = 90^\\circ - \\angle JEC = \\angle CEI$입니다.\n따라서 $\\triangle EDJ$와 $\\triangle ECI$에서\n$\\overline{ED} = \\overline{EC}$, $\\angle EDJ = \\angle ECI = 45^\\circ$, $\\angle DEJ = \\angle CEI$\n이므로 한 변의 양 끝 각이 각각 같아 $\\triangle EDJ \\equiv \\triangle ECI$ ($ASA$ 합동)입니다.\n\n2단계: 겹치는 부분의 넓이 계산\n색칠한 사각형 $EJCI$의 넓이는\n$\\text{넓이}(EJCI) = \\text{넓이}(\\triangle EDC) - \\text{넓이}(\\triangle EDJ) + \\text{넓이}(\\triangle ECI) = \\text{넓이}(\\triangle EDC)$\n\n3단계: 삼각형 $EDC$의 넓이 계산\n정사각형 $ABCD$의 넓이는 $10 \\times 10 = 100\\mathrm{cm}^2$이고,\n두 대각선에 의해 넓이가 같은 4개의 직각이등변삼각형으로 나누어지므로\n$\\text{넓이}(\\triangle EDC) = \\dfrac{1}{4} \\times 100 = 25\\mathrm{cm}^2$\n\n따라서 색칠한 부분의 넓이는 $25\\mathrm{cm}^2$입니다.\n\n[답] 25 cm²",

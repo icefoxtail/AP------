@@ -788,7 +788,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "삼각기둥의 전개도가 [그림 1]과 같다. 삼각기둥의 겉넓이가 [그림 2]와 같이 밑면이 사다리꼴인 사각기둥의 겉넓이의 $\\dfrac{1}{2}$배일 때, 사각기둥의 높이는? (5점)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q14-student.svg\" style=\"max-width: 480px; display: block; margin: 10px 0;\">",
+    "content": "삼각기둥의 전개도가 [그림 1]과 같다. 삼각기둥의 겉넓이가 [그림 2]와 같이 밑면이 사다리꼴인 사각기둥의 겉넓이의 $\\dfrac{1}{2}$배일 때, 사각기둥의 높이는? (5점)<br><br><div style=\"display:flex;gap:8px;align-items:center;justify-content:center\"><div style=\"flex:1; text-align:center\">그림 1<img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q14-net-problem-v2.svg\" alt=\"삼각기둥 전개도\" style=\"height:auto; width:100%; max-width:175px; margin:0 auto 4px\"></div><div style=\"flex:1; text-align:center\">그림 2<img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q14-prism-problem-v2.svg\" alt=\"사다리꼴을 밑면으로 하는 사각기둥\" style=\"height:auto; width:100%; max-width:175px; margin:0 auto 4px\"></div></div>",
     "choices": [
       "$8\\text{ cm}$",
       "$10\\text{ cm}$",
@@ -1219,7 +1219,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서술형 1] 아래 그림에서 $\\angle x$의 크기를 구하시오. (4점)<br>($\\angle x$의 크기를 구하는 과정: 2점, $\\angle x$의 크기: 2점)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/s01-student.svg\" style=\"max-width: 400px; display: block; margin: 10px 0;\">",
+    "content": "[서술형 1] 아래 그림에서 $\\angle x$의 크기를 구하시오. (4점)<br>($\\angle x$의 크기를 구하는 과정: 2점, $\\angle x$의 크기: 2점)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q21-problem-v2.svg\" style=\"max-width: 400px; display: block; margin: 10px 0;\">",
     "choices": [],
     "answer": "$118^\\circ$",
     "solution": "삼각형의 꼭짓점에서 외각 x는 두 마주 보는 내각의 합이다.\n왼쪽 아래 내각은 표시된 외각 x+2°와 이웃하므로 180°−(x+2°)이다.\n따라서 x=180−(x+2)+58=236−x이고 2x=236이다.\n그러므로 x=118°이다.",
