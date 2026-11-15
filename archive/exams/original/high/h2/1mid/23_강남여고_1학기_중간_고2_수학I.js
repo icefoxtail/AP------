@@ -90,7 +90,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "level": "하"
+    "level": "하",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_수학I/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원과 좌표축, 제3사분면의 점 및 반지름이 만드는 직각삼각형이 표시되어 있다. 반지름 길이는 1, 세로 변의 크기는 2/3이며 sinθ=−2/3이 주어져 있다.",
+    "solutionImageCaption": "단위원의 제3사분면에서 sinθ가 세로 좌표이며, 반지름과 직각삼각형의 변 길이 관계가 보인다. 그림은 cos의 부호·크기를 구하는 관계를 설명한다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 3,
@@ -276,7 +280,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "level": "하"
+    "level": "하",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_수학I/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 증가하는 로그곡선 위에 x=3/2인 점 A가 표시되고, A에서 x축까지 수직 안내선이 이어진다. 왼쪽에는 자연 정의역 경계 x=3/4와 곡선 위 기준점 f(1)=2가 표시되어 있다.",
+    "solutionImageCaption": "첫 로그함수의 수직 점근선 x=3/2를 둘째 로그곡선의 입력으로 사용하는 위치 관계를 보여 준다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 7,
@@ -460,7 +468,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: u=x/π를 기준으로 tan x가 양수인 두 구간, 사인 조건의 구간, 두 조건의 공통 구간을 세 행의 수직선에 나타낸다. 열린 끝점과 분수 눈금이 표시되어 있다.",
+    "solutionImageCaption": "u=x/π로 바꾼 수직선에서 tan x>0, √2 sin x+1<0의 해 범위와 공통 구간을 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 11,
@@ -554,7 +566,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "level": "하"
+    "level": "하",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 0≤x<π에서 세 번 반복되는 y=sin 6x 곡선과 y=−1/2 수평선이 표시되어 있다. x=0은 닫힌 끝점이고 x=π는 열린 끝점이다.",
+    "solutionImageCaption": "0≤x<π에서 y=sin 6x의 세 주기와 y=−1/2 수평선을 함께 나타낸다. 수평선과 곡선의 교점 구조로 서로 다른 실근을 센다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 13,
