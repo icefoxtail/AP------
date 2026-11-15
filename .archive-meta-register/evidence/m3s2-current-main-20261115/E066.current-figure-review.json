@@ -1,0 +1,637 @@
+{
+  "schemaVersion": "m3-s2-complete-semantic-review-v1",
+  "reviewScope": "NARROW_CURRENT_FIGURE_CONTINUITY_ONLY",
+  "schemaUse": "The full UID/ordinal denominator is structural. Unselected rows are outside this narrow review. Existing approved semantic decisions are inherited from the immutable pending release request; this is not new full mathematical QA or REVIEW2.",
+  "examId": "E066",
+  "taskId": "e33d4ad1-c652-44cf-98fc-4561917ab5e0",
+  "author": "GPT_M3S2_RELEASE_CURRENT_FIGURE_INTEGRATION",
+  "rootIntegrator": "/root",
+  "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+  "sourceAfterBlob": "b5d867ed7bd83f03b1b6793dc5802de2cdcaf3ee",
+  "sourceAfterSha256": "3b6bc45e707e83a850030888cd58808949c5a8bd92b2a8fae2bb22089160446b",
+  "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+  "previousSourceCommit": "6b916d9042f5c76e628d7ff201e524d9114da65b",
+  "questionCount": 21,
+  "selectedUidCount": 8,
+  "fullMathematicalQa": false,
+  "newReviewPassCount": 0,
+  "newDifficultyJudgments": 0,
+  "originalSemanticReview": {
+    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.meta.json",
+    "sha256": "42c48637d656991bbdfa513ff7d71d0edea3ff75ec9a4da74aeb46364302728c"
+  },
+  "originalPendingRequest": {
+    "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+    "path": ".archive-meta-register/inbox/m3s2-e066-release-20261115.json",
+    "gitBlobSha": "ff112ddaf1482fee934cb9747e4234c56bd37e0d",
+    "sha256": "d07cdeffa92418a2dff5ea600ab20308ed28828ff4a2ed094440fb9e31eb8cb9"
+  },
+  "independentReviewRefs": [
+    {
+      "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E066.independent-figure-review.json",
+      "sha256": "123750bf1144cb56276c25b67710efa67e46f3deaa9ed6407315c44d1dfc98c6"
+    }
+  ],
+  "rendererAssetBindingRef": {
+    "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+    "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
+  },
+  "meaningAndDifficultyReusedWithoutChanges": true,
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_735d4d010270a8aa215ebe6209ff5dfc979bfe65810de87917e8013fe63f42f7",
+      "decision": "KEEP",
+      "inheritedSemanticDecision": "CORRECT",
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "primaryMethod": "tan으로 정한 두 직각변에서 빗변을 복원하고 여각의 sin·cos를 합한다.",
+        "decisiveStep": "AC:BC:AB=1:√2:√3이고 cos B=sin A이므로 합은 2√6/3이다."
+      },
+      "decisiveStep": "AC:BC:AB=1:√2:√3이고 cos B=sin A이므로 합은 2√6/3이다.",
+      "primaryMethod": "tan으로 정한 두 직각변에서 빗변을 복원하고 여각의 sin·cos를 합한다.",
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_BASIC_RELATION"
+          ]
+        }
+      ],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "currentQuestionSha256": "92cee050e8cdba5d0f98372a751b6cb1173a41052f0c53d1a1124a4f9d2d08b5",
+      "previousQuestionSha256": "4a2bbdac67109b8a3486956cdb6a7ef58c704b4e657bba9b302755ebc44b3fc0",
+      "changedProtectedFields": [
+        "image",
+        "solutionImage",
+        "layoutTag",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ],
+      "independentReviewRef": {
+        "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E066.independent-figure-review.json",
+        "sha256": "123750bf1144cb56276c25b67710efa67e46f3deaa9ed6407315c44d1dfc98c6"
+      },
+      "independentReviewer": "GPT_M3S2_RELEASE",
+      "independentFinding": "원 PNG와 현재 문제 SVG의 A·B·C, C의 직각과 변의 위치가 같다. 새 해설 SVG는 원래 검토한 AC:BC:AB=1:√2:√3 정규화 및 같은 BC를 분자로 쓰는 sin A=cos B를 표시한다. 본문과 답①·기존 풀이를 바꾸거나 문제 그림에 결과를 넣지 않는다.",
+      "semanticAfterValuesUnchangedFromPendingRequest": true,
+      "fullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_ad9d31a273c6401b5871b80eff14057d8479efde5b37b167c431545ad8b76e23",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_e1c1f3b573713fe27e6a4c3c9065b3e4fc34fa6d7ff5e5b80bdac09b69eccd62",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_2c4653864ba84a0d7ed70e121de38f78d4c817cae8cc158d07472cd4e6457bcd",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_f8f40a2a8d20b5ab12a9380b0df1bf6ba33c6e0840725f908029f6ee2f995d1e",
+      "decision": "KEEP",
+      "inheritedSemanticDecision": "CORRECT",
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [
+          "CC_PARALLEL_LINE_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "primaryMethod": "단위 사분원의 두 직각삼각형에서 변의 비와 여각·평행선 각 관계를 연결한다.",
+        "decisiveStep": "AC=AD=1, x+z=90°, y=z이므로 BC=sin x, tan y=1/DE, sin y=AB만 성립한다."
+      },
+      "decisiveStep": "AC=AD=1, x+z=90°, y=z이므로 BC=sin x, tan y=1/DE, sin y=AB만 성립한다.",
+      "primaryMethod": "단위 사분원의 두 직각삼각형에서 변의 비와 여각·평행선 각 관계를 연결한다.",
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_BASIC_RELATION"
+          ]
+        }
+      ],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "currentQuestionSha256": "31d7db107740ed102d0f1dd3066c9f1f56751b78104aa38d6e35476208cc1bf3",
+      "previousQuestionSha256": "0a53580d3daedbe127067047482023ee766583c79aea1e48d324b641a2dd3c2f",
+      "changedProtectedFields": [
+        "image",
+        "solutionImage",
+        "layoutTag",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ],
+      "independentReviewRef": {
+        "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E066.independent-figure-review.json",
+        "sha256": "123750bf1144cb56276c25b67710efa67e46f3deaa9ed6407315c44d1dfc98c6"
+      },
+      "independentReviewer": "GPT_M3S2_RELEASE",
+      "independentFinding": "단위 사분원의 중심 A, 호 위 C, 수선 CB·DE, 일직선 ACE 및 각 x·y·z의 위치가 원 PNG와 일치한다. 새 해설의 y=z 표시와 작은 직각삼각형 강조는 기존의 ㄱ·ㄷ·ㅂ 판정을 그대로 설명한다. 문제 SVG에 참인 보기나 결과 길이를 새로 표시하지 않는다.",
+      "semanticAfterValuesUnchangedFromPendingRequest": true,
+      "fullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_cfab332692957f696b20eeb87a131480322d56610f6885f864f1840796d73f1a",
+      "decision": "KEEP",
+      "inheritedSemanticDecision": "CORRECT",
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_ISOSCELES_CONVERSE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "primaryMethod": "30° 삼각형과 15°가 같은 이등변삼각형을 연결해 tan15°를 길이비로 유도한다.",
+        "decisiveStep": "DC=√3, DE=2이며 ∠BDE=150°, 나머지 두 각이 15°여서 BD=2. 따라서 tan15°=1/(2+√3)=2−√3이다."
+      },
+      "decisiveStep": "DC=√3, DE=2이며 ∠BDE=150°, 나머지 두 각이 15°여서 BD=2. 따라서 tan15°=1/(2+√3)=2−√3이다.",
+      "primaryMethod": "30° 삼각형과 15°가 같은 이등변삼각형을 연결해 tan15°를 길이비로 유도한다.",
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+          ]
+        }
+      ],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "currentQuestionSha256": "ad1463abdd17e9692455e5221409c830423216380cecf3ad3c6e9f233125ef79",
+      "previousQuestionSha256": "18f28b6abe021703623c0eb31648130e92a38f5209761554139f35d2c51a61d4",
+      "changedProtectedFields": [
+        "image",
+        "solutionImage",
+        "layoutTag",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ],
+      "independentReviewRef": {
+        "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E066.independent-figure-review.json",
+        "sha256": "123750bf1144cb56276c25b67710efa67e46f3deaa9ed6407315c44d1dfc98c6"
+      },
+      "independentReviewer": "GPT_M3S2_RELEASE",
+      "independentFinding": "B·D·C의 순서, CE=1, C의 직각, B의 15°와 D의 30°가 원 PNG와 같다. 새 해설 SVG에만 BD=DE 눈금 및 E의 같은 15° 관계를 더하며, 기존 중등 이등변 풀이의 tan15°=2−√3과 일치한다. 문제 SVG는 주어진 조건만 보존한다.",
+      "semanticAfterValuesUnchangedFromPendingRequest": true,
+      "fullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_a1c0fb5c6af3769e5917597fca74b96cc86c05d7e5a7192a3ce8e1cb742892d5",
+      "decision": "KEEP",
+      "inheritedSemanticDecision": "CORRECT",
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "primaryMethod": "단위 사분원에서 sin·cos·tan의 길이 표현과 여각을 판정한다.",
+        "decisiveStep": "sin32°≈0.53, cos32°≈√(1−0.53²)≈0.85, tan32°≈0.62이며 sin58°=cos32°이므로 ②④이다."
+      },
+      "decisiveStep": "sin32°≈0.53, cos32°≈√(1−0.53²)≈0.85, tan32°≈0.62이며 sin58°=cos32°이므로 ②④이다.",
+      "primaryMethod": "단위 사분원에서 sin·cos·tan의 길이 표현과 여각을 판정한다.",
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_BASIC_RELATION"
+          ]
+        }
+      ],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "currentQuestionSha256": "83c000156b51dbb026c298cf28eba7c9575449db45015ad07a04d7f288fbd48e",
+      "previousQuestionSha256": "b65ff80f5b9ed5293d8e13e7da2f98b9445c984e14ac54564ee355d8ad83a48f",
+      "changedProtectedFields": [
+        "image",
+        "solutionImage",
+        "layoutTag",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ],
+      "independentReviewRef": {
+        "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E066.independent-figure-review.json",
+        "sha256": "123750bf1144cb56276c25b67710efa67e46f3deaa9ed6407315c44d1dfc98c6"
+      },
+      "independentReviewer": "GPT_M3S2_RELEASE",
+      "independentFinding": "원 PNG의 단위 사분원·32°·0.53 높이·0.62 접선 높이와 두 수선 위치를 보존한다. 새 해설의 58°는 기존 여각 관계이며 sin58°=cos32°를 설명한다. 문제 그림에 구하려는 cos32° 값이나 정답 조합을 추가하지 않는다.",
+      "semanticAfterValuesUnchangedFromPendingRequest": true,
+      "fullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_be2c70e4a6bdca85b72cc1e5af5b07e71da6d708a59d9ca30ad7a2b1cadd5b95",
+      "decision": "KEEP",
+      "inheritedSemanticDecision": "CORRECT",
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "primaryMethod": "사다리를 빗변으로 하는 직각삼각형의 맞은편 높이를 sin으로 구한다.",
+        "decisiveStep": "AC=20sin55°=20×0.8192=16.384m이다."
+      },
+      "decisiveStep": "AC=20sin55°=20×0.8192=16.384m이다.",
+      "primaryMethod": "사다리를 빗변으로 하는 직각삼각형의 맞은편 높이를 sin으로 구한다.",
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+          ]
+        }
+      ],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "currentQuestionSha256": "70ae8048fca0419b1d3cef1a8747f844d33dddbf2c5548aaf3e038397b60dcae",
+      "previousQuestionSha256": "24e7adfa5aa60e6377412530b89d18a32bbc9d124b4b7b2621442fe3be9749b3",
+      "changedProtectedFields": [
+        "image",
+        "solutionImage",
+        "layoutTag",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ],
+      "independentReviewRef": {
+        "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E066.independent-figure-review.json",
+        "sha256": "123750bf1144cb56276c25b67710efa67e46f3deaa9ed6407315c44d1dfc98c6"
+      },
+      "independentReviewer": "GPT_M3S2_RELEASE",
+      "independentFinding": "원 PNG 및 본문에서 사다리 AB=20 m, 지면과의 55°, 벽의 높이 AC 관계가 유지된다. 새 문제/해설 SVG는 직각 C와 맞은편 높이를 분명히 표시하며 기존 AC=20sin55°=16.384 m, 답⑤와 일치한다. 원 PNG 아래 잘린 각도는 명시된 본문 55°와 결속해 확인했다.",
+      "semanticAfterValuesUnchangedFromPendingRequest": true,
+      "fullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_17e1e3ae633002ccca08101a78914e2ad1bc3ec5f7677cffe5a6f06a39ca4546",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_28d4be7249fd977dbb412ac02aa69fc8ed113cc1f15deff239b2ea22fbbc5e8d",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_54c588c609e51c56173794f38c9f755e49062f1f7565a0ad4eb7fb304eefc300",
+      "decision": "KEEP",
+      "inheritedSemanticDecision": "CORRECT",
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "crossConceptKeys": [
+          "CC_STRAIGHT_ANGLE"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "primaryMethod": "마름모의 높이를 변 길이와 sin60°로 나타내어 넓이에서 변을 역산한다.",
+        "decisiveStep": "높이=(√3/2)s, 넓이=(√3/2)s²=9√3이므로 양의 길이 s=3√2이다."
+      },
+      "decisiveStep": "높이=(√3/2)s, 넓이=(√3/2)s²=9√3이므로 양의 길이 s=3√2이다.",
+      "primaryMethod": "마름모의 높이를 변 길이와 sin60°로 나타내어 넓이에서 변을 역산한다.",
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+          ]
+        }
+      ],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "currentQuestionSha256": "4b74f5cee4b6f9ebc96f57fb95978863472dc243b9c9ae6139deb7af4605708e",
+      "previousQuestionSha256": "87a223a66aeed8bd7e88b3424f068648e2a0862365eefc580972010de42e834f",
+      "changedProtectedFields": [
+        "image",
+        "solutionImage",
+        "layoutTag",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ],
+      "independentReviewRef": {
+        "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E066.independent-figure-review.json",
+        "sha256": "123750bf1144cb56276c25b67710efa67e46f3deaa9ed6407315c44d1dfc98c6"
+      },
+      "independentReviewer": "GPT_M3S2_RELEASE",
+      "independentFinding": "원 PNG의 마름모 순서 A·B·C·D 및 B의 60°는 본문 A의 120°와 같은 조건이다. 새 문제 SVG는 본문에 이미 있는 A=120°와 마름모의 같은 변 눈금을 표시한다. 새 해설의 BA 연장 위 H, DH 수선, 바깥 60°는 기존 높이 (√3/2)s 풀이와 일치한다. 문제 SVG에 구할 변 길이를 넣지 않는다.",
+      "semanticAfterValuesUnchangedFromPendingRequest": true,
+      "fullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_47efa13f04d4f85c7249434221a31359f512de94b2abb33ebcd5e255377b0e28",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_113084bf2b39019a620eba2125d5183b5f4f2f1b3348f22c44611f5aead38e1b",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_7e4aa07247570caab785677161982d36ebdf98ba8c7963a1cb05c1f3ce67b4dd",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_9d287c6ad59d90578b2325f24c150e2a0b1c91fec9fd81031ce40604ea6cfce6",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_09408a4741c7f5b97f42d0b52a8f9c8e57a26893183ae05801b6e21990ac503c",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_2ce2c3ae134e7a18f7f3a7bd4a2e542df808e1262ecac8bd89e8ee6d82691dc1",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_c36e16664a8d1707b53f502708e0e399e0febd2ee0fe8f43216fabe9554858f9",
+      "decision": "KEEP",
+      "inheritedSemanticDecision": "CORRECT",
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "primaryMethod": "세 접선의 접선조각 등식과 한 직선 위 길이의 합·차를 잇는다.",
+        "decisiveStep": "CF=CD=4, AF=AC+CF=10, AE=AF=10이므로 BE=AE−AB=2이다."
+      },
+      "decisiveStep": "CF=CD=4, AF=AC+CF=10, AE=AF=10이므로 BE=AE−AB=2이다.",
+      "primaryMethod": "세 접선의 접선조각 등식과 한 직선 위 길이의 합·차를 잇는다.",
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_CIRCLE_TANGENT",
+          "mappedTemplateKeys": [
+            "TM_TANGENT_LENGTH"
+          ]
+        }
+      ],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "currentQuestionSha256": "146770d10af2836c03f52d9f26ae80b3661704543214ae349862e9ff4cd5948c",
+      "previousQuestionSha256": "4031b74873c0f5660f946ef941c5095e3ee793f7108ade79e55f6adf3dbca918",
+      "changedProtectedFields": [
+        "image",
+        "solutionImage",
+        "layoutTag",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ],
+      "independentReviewRef": {
+        "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E066.independent-figure-review.json",
+        "sha256": "123750bf1144cb56276c25b67710efa67e46f3deaa9ed6407315c44d1dfc98c6"
+      },
+      "independentReviewer": "GPT_M3S2_RELEASE",
+      "independentFinding": "A·C·F 및 A·B·E의 순서, 접점 D·E·F, AC=6, CD=4, AB=8, BE=x가 원 PNG와 같다. 새 해설의 CD=CF 및 BD=BE 표시가 기존 접선 길이 등식과 일치하여 BE=2를 유지한다. 문제 그림은 기존 주어진 길이와 x만 표시한다.",
+      "semanticAfterValuesUnchangedFromPendingRequest": true,
+      "fullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_b9966166613fb21c634a72bb7acf1ff80f3b73e2b228cbda7ae3e6353d3fd6b9",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_846c8162364ffd88edddd234d6cbc1ef676717a26cb6ead216e53683d7551e90",
+      "decision": "KEEP",
+      "inheritedSemanticDecision": "CORRECT",
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "primaryMethod": "넓이에서 높이를 복원한 뒤 삼각비로 밑변을 나누고 다른 직각삼각형의 빗변을 구한다.",
+        "decisiveStep": "AD=2√3, AB=AD/sin60°=4, BD=2, DC=3이므로 AC=√(12+9)=√21이다."
+      },
+      "decisiveStep": "AD=2√3, AB=AD/sin60°=4, BD=2, DC=3이므로 AC=√(12+9)=√21이다.",
+      "primaryMethod": "넓이에서 높이를 복원한 뒤 삼각비로 밑변을 나누고 다른 직각삼각형의 빗변을 구한다.",
+      "debts": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+          ]
+        }
+      ],
+      "contentDebt": [],
+      "registrationDebt": [],
+      "currentQuestionSha256": "1b5662f81ee4991d0b4a52d49230a4cad00b506abeef8eaaa96a0d66e516f524",
+      "previousQuestionSha256": "b25fc665ecc9ccd0c505aef04a92c2a3462c57eeefb651322f3cbfad18b04129",
+      "changedProtectedFields": [
+        "image",
+        "solutionImage",
+        "layoutTag",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ],
+      "independentReviewRef": {
+        "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E066.independent-figure-review.json",
+        "sha256": "123750bf1144cb56276c25b67710efa67e46f3deaa9ed6407315c44d1dfc98c6"
+      },
+      "independentReviewer": "GPT_M3S2_RELEASE",
+      "independentFinding": "원 PNG의 삼각형 ABC, BC=5 cm 및 B의 60°를 유지한다. 새 해설 SVG의 수선 AD와 두 직각삼각형은 기존 넓이→높이→삼각비→피타고라스 풀이와 같다. AD의 값이나 AB=4·AC=√21은 문제 SVG에 추가되지 않고 기존 해설/캡션에서만 제시된다.",
+      "semanticAfterValuesUnchangedFromPendingRequest": true,
+      "fullMathematicalQa": false,
+      "newReviewPassCount": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_11bced5689739bc24a03be6966d511920818acfd7d53421be0c592fa15fd7750",
+      "decision": "OUTSIDE_REASSESSMENT_SCOPE"
+    }
+  ]
+}
