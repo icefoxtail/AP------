@@ -1824,7 +1824,9 @@ function approvedBindingVersionFixture(t,make=ordinaryReassessmentWithPriorFixtu
     packPath=base+'/pack.json',bindingPath=base+'/bindings.json',indexPath='archive/data/meta-foundation/canonical/registry_index.json',
     compiledPath='archive/data/meta-foundation/compiled/taxonomy_registry.json',runtimePath='archive/data/meta-foundation/runtime/middle3-v1.json',
     receiptBase='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
-  const pack={packId:id,ownerPack:id,packVersion:'1.0.0',canonicalStatus:'ACTIVE',bindingCount:1,ownedStandardUnitDomains:['M3-01']};
+  const pack={packId:id,ownerPack:id,packVersion:'1.0.0',canonicalStatus:'ACTIVE',bindingCount:1,ownedStandardUnitDomains:['M3-01'],
+    curricula:[...new Set(f.registry.bindingRows.map(row=>row.curriculum))],
+    standardCourses:[...new Set(f.registry.bindingRows.map(row=>row.standardCourse))]};
   const bindings={status:'ACTIVE',bindingCount:1,bindings:[{...structuredClone(f.registry.bindingRows[0]),ownerPack:id}]};
   const taxonomy={problemTypes:[structuredClone(f.registry.problemTypes.get('PT_ROOT'))],templates:[structuredClone(f.registry.templates.get('TPL_ROOT'))]};
   taxonomy.problemTypes[0].problemTypeKey='PT_ROOT';taxonomy.templates[0].templateKey='TPL_ROOT';
@@ -1839,8 +1841,9 @@ function approvedBindingVersionFixture(t,make=ordinaryReassessmentWithPriorFixtu
   const writeAuthority=()=>{
     f.put(packPath,pack);f.put(bindingPath,bindings);f.put(base+'/taxonomy.json',taxonomy);f.put(base+'/aliases.json',{aliases:[]});
     compiled.sourcePacks[0].version=pack.packVersion;f.put(compiledPath,compiled);
-    f.put(indexPath,{status:'ACTIVE',activePacks:[{id,version:pack.packVersion,status:'ACTIVE'}],
-      canonicalSources:[packPath,bindingPath,base+'/taxonomy.json',base+'/aliases.json'].map(ref),compiledArtifacts:[ref(compiledPath)]});
+    const index={status:'ACTIVE',activePacks:[{id,version:pack.packVersion,status:'ACTIVE'}],activeConceptShards:[],
+      canonicalSources:[packPath,bindingPath,base+'/taxonomy.json',base+'/aliases.json'].map(ref),compiledArtifacts:[ref(compiledPath)]};
+    f.put(indexPath,index);f.registry.files.index=structuredClone(index);
     live.packVersion=pack.packVersion;live.records=structuredClone(f.receipt.runtimeRecords);f.put(runtimePath,live);
     f.registry.activePacks.get(id).version=pack.packVersion;
   };
@@ -1871,7 +1874,13 @@ function approvedBindingVersionFixture(t,make=ordinaryReassessmentWithPriorFixtu
   for(const rows of [f.receipt.appliedRecords,f.receipt.runtimeRecords])for(const row of rows){
     row.metaFoundationPackVersion='1.0.3';row.metadataRevision=`meta-foundation:${id}@1.0.3:exam-final_qa-v2:${f.receipt.requestId}`;
   }
-  f.refreshBinding?.();f.saveReceipt();writeAuthority();
+  // A renderer refresh replaces its own digest; retain the independently sealed
+  // ordinary source-review proof in the same writer output inventory.
+  const sourceBinding=f.receipt.outputDigests.find(ref=>ref.path===reviewedSourceBindingPath(f.receipt.requestId));
+  f.refreshBinding?.();
+  if(sourceBinding&&!f.receipt.outputDigests.some(ref=>ref.path===sourceBinding.path))
+    f.receipt.outputDigests.push(structuredClone(sourceBinding));
+  f.saveReceipt();writeAuthority();
   const priorRef=f.receipt.approval.evidenceRefs.find(r=>r.path===f.priorNativePath);
   const check=()=>assertReviewedPackVersionLineage({root:dir,current:f.current,runtime:f.nativeSource.runtimeRecord,
     prior:f.priorNativeReceipt.appliedRecords.find(r=>r.questionUid===f.current.questionUid),
