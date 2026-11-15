@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "m1-s1-pinpoint-solution-method-review-v1",
+  "workKey": "M1-S1-META-FULL",
+  "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
+  "at": "2026-11-15T09:49:06.384Z",
+  "author": "/root/awcr_acceptance",
+  "reviewer": "GPT_ROOT_33CD7F492CC2",
+  "reviewerRole": "ROOT",
+  "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
+  "questionUid": "qid_v1_93d23f09e6b4ba421810c56393949ce5910e7d0c7bf416ed78ea055842f93c2e",
+  "sourceOrdinal": 7,
+  "baseMainSha": "854215b755536cc73b1ce412aed239dc396fd53d",
+  "sourceBeforeGitBlobSha": "ca8b8eb414827d3402caa19333604a9004660f3e",
+  "sourceAfterGitBlobSha": "52b0ec503149dec163e3e2ebc3319ae8aa7b6a6c",
+  "qbodyBefore": "1174a1f6d91ebf37d20482882982a3c5dbff583e114c1b7b45f171bee7af52d0",
+  "qbodyAfter": "1174a1f6d91ebf37d20482882982a3c5dbff583e114c1b7b45f171bee7af52d0",
+  "qfullBefore": "62b35f25a2d31cf9dc6185ad6d16d06932f522ab8f7e3f1af33fdc72a5a56720",
+  "qfullAfter": "8972325da60d16f63ccac40a55652b1f1722c10e72daf95405c73b3e69483efd",
+  "solutionBeforeSha256": "a0f7dd1d217b6ec88b1629e5f434cee014dcf2fc2c37555af3cc30dce0411879",
+  "solutionAfterSha256": "58f231d26101ff1d1797c22eaaf35316cea1faefc6c51f0c49a8c3afd34b0e0c",
+  "previousDecision": {
+    "result": "PARTIAL_METHOD_EVIDENCE_DEBT",
+    "sample": {
+      "status": "REVIEWED_SAMPLE",
+      "reviewer": "GPT_ROOT_75DAEF2BA0F3",
+      "at": "2026-11-14T08:18:37.512Z",
+      "result": "PARTIAL_METHOD_EVIDENCE_DEBT",
+      "notes": "원문은 가장 작은 기약분수를 요구하지만 현재 해설은 제시한 분수가 두 곱을 자연수로 만듦만 확인한다. 최소성/도출 단계가 없어 method의 결정 단계 포괄 여부는 미완이다. 현재 파일이 이 한계를 methodCoverage/fourSlotStatus로 명시함을 확인했다. 기계적 인용 검증 성공을 수학적 완결로 취급하지 않는다."
+    },
+    "registrationHold": {
+      "schemaVersion": "4slot-native-review-hold-v1",
+      "reason": "PARTIAL_METHOD_EVIDENCE_DEBT",
+      "questionUid": "qid_v1_93d23f09e6b4ba421810c56393949ce5910e7d0c7bf416ed78ea055842f93c2e",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "ordinal": 7,
+      "evidence": {
+        "commit": "b2572826f5d86102193b5d6a84635e192301795b",
+        "path": "docs/operations/m1-operational-closeout-20261115/evidence/19_연향중_1학기_중간_중1_기출.independent-review.json",
+        "nativePath": "docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_중간_중1_기출/independent-review.json",
+        "sha256": "ed832a928386754cbec2f39a21653cc2fd9b28d6817112ab17cefa68b9b5fcde"
+      },
+      "nextAction": "원본의 최소 기약분수 도출·최소성 근거를 확보하여 기존 풀이와 4칸 method의 결정 단계를 문항 단위로 보완·재검한 뒤 보류 해제한다."
+    }
+  },
+  "currentDecision": {
+    "status": "REVIEWED_PINPOINT",
+    "reviewer": "GPT_ROOT_33CD7F492CC2",
+    "role": "ROOT",
+    "at": "2026-11-15T09:49:06.384Z",
+    "result": "ACCEPTED_AFTER_SOLUTION_MINIMALITY_REPAIR",
+    "scope": [
+      "solution",
+      "fourSlot.method"
+    ],
+    "notes": "ROOT 독립검증: n=13x/12는 자연수, 첫곱=8n/3의 자연수성은 3|n을 강제한다. 최소n=3과 x=36/13의 달성, gcd(36,13)=1, a+b=49 및 원정답⑤를 확인했다. 다른92문항의 해설승인을 주장하지 않는다."
+  },
+  "mathematicalVerification": {
+    "naturalParameter": "n=13x/12",
+    "otherProduct": "26x/9=8n/3",
+    "necessaryCondition": "gcd(8,3)=1 forces n to be a positive multiple of3",
+    "lowerBound": "n>=3; x>=36/13",
+    "attainment": "n=3 gives x=36/13 with products8 and3",
+    "reducedFraction": "gcd(36,13)=1",
+    "answer": "a+b=49; choice⑤"
+  },
+  "fourSlot": {
+    "beforeMethod": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "\\dfrac{36}{13}\\times\\dfrac{26}{9}=8",
+        "evidenceType": "IMPLIED",
+        "justification": "제시한 후보를 첫 곱 조건에 직접 대입해 자연수가 됨을 확인한다."
+      },
+      {
+        "term": "자연수",
+        "src": "solution",
+        "quote": "가 모두 자연수가 되어야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "afterMethod": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "\\dfrac{36}{13}\\times\\dfrac{26}{9}=8",
+        "evidenceType": "IMPLIED",
+        "justification": "제시한 후보를 첫 곱 조건에 직접 대입해 자연수가 됨을 확인한다."
+      },
+      {
+        "term": "자연수",
+        "src": "solution",
+        "quote": "가 모두 자연수가 되어야 한다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "서로소",
+        "src": "solution",
+        "quote": "$8$과 $3$은 서로소",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "배수",
+        "src": "solution",
+        "quote": "$n$은 $3$의 배수이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "methodIds": [
+      53,
+      1,
+      19,
+      12
+    ],
+    "coverage": {
+      "status": "COVERED_AFTER_PINPOINT_SOLUTION_REPAIR",
+      "covered": "두 번째 자연수 곱 n의 도입 → 첫 곱8n/3의 정수성 → 서로소인8과3에 따른 3의 배수 조건 → 가장 작은 n=3 → x=36/13의 달성 및 기약성.",
+      "priorStatus": "EVIDENCE_DEBT",
+      "missingDecisiveStep": null
+    },
+    "fullEvidence": {
+      "path": "docs/operations/m1-s1-meta-full-20261114/residual/pinpoint-20261115/yeonhyang19-four-slot-after.json",
+      "sha256": "719720b582e3798fe4e51806a38fc5da25edef9f1c3fc0e856cce34c17f69042"
+    }
+  },
+  "preservation": {
+    "sourceFieldChanges": [
+      [
+        7,
+        "solution"
+      ]
+    ],
+    "sourceItemCount": 23,
+    "unchangedSourceItems": 22,
+    "contentChoicesAnswerUnchanged": true,
+    "qbodyUnchanged": true,
+    "originalCompletedReviewCountReused": 286,
+    "originalIndependentSampleCountReused": 36,
+    "repeatedFullReviews": 0,
+    "newScopedSolutionApprovals": 1,
+    "other92CurrentSolutionApprovals": 0
+  },
+  "sourceAndSolutionQualityScope": "Q7 ONLY; source text/answer/choices and all other items preserved; no full semantic or publication approval",
+  "status": "APPROVED_SCOPED_CORRECTION_NOT_YET_PUBLISHED"
+}
