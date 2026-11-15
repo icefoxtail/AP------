@@ -202,6 +202,8 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "imageSize": "full",
+    "imageAlt": "한 변이 6 cm인 정사각형 종이를 오른쪽으로 이어 붙였다. 이웃 종이가 겹치는 띠의 너비는 1 cm이다. 뒤의 종이 끝은 띠 안에 점선으로 보인다.",
     "level": "상",
     "category": "일차부등식",
     "originalCategory": "일차부등식",
@@ -210,7 +212,7 @@ window.questionBank = [
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차부등식",
@@ -221,7 +223,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "한 변의 길이가 6cm인 정사각형 모양의 종이를 그림과 같이 이웃하는 종이끼리 1cm만큼 겹치도록 이어 붙여서 직사각형을 만들려고 한다. 직사각형의 넓이가 $360\\text{cm}^2$ 이상이 되도록 할 때, 종이를 최소 몇 장 붙여야 하는지 구하면? [5점]",
-    "image": "assets/images/24_향림중_1학기_기말_중2_기출/q7.png",
+    "image": "assets/images/24_향림중_1학기_기말_중2_기출/q7-problem-visual-v2.svg",
     "choices": [
       "11장",
       "12장",
