@@ -190,7 +190,10 @@ function verifyHistoricalCohorts(index, remember = false) {
     // against the current source bytes, UID map, exact ACTIVE binding, metadata,
     // runtime owner and applied receipt, including any legitimate pack move.
     const metadata = currentQuestionMetadata.get(uid);
-    assert(metadata && ["FINAL_QA", "REVIEW2"].includes(metadata.metadataApprovalType), uid);
+    // The production verifier also supports exact preservation of an existing
+    // META_PIPELINE_AUDIT. It replays the immutable prior audit and reviewed D5
+    // receipt; the approval kind alone never authorizes a historical transition.
+    assert(metadata && ["FINAL_QA", "REVIEW2", "META_PIPELINE_AUDIT"].includes(metadata.metadataApprovalType), uid);
     const input = nativeInput(metadata, row, entry);
     const receiptPath = assertNativeApproval(input, "historical reviewed transition: " + uid);
     if (remember) {
@@ -210,7 +213,7 @@ for (const entry of [...currentReviewedRows, ...additionalReviewedRows]) {
   const row = entry.row;
   const metadata = currentQuestionMetadata.get(row.questionUid);
   assert(metadata, row.questionUid);
-  if (["FINAL_QA", "REVIEW2"].includes(metadata.metadataApprovalType)) {
+  if (["FINAL_QA", "REVIEW2"].includes(metadata.metadataApprovalType) || nativeApprovals.has(row.questionUid)) {
     const input = nativeInput(metadata, row, entry);
     nativeApprovals.set(row.questionUid, assertNativeApproval(input, row.questionUid));
     if (!nativeInputs.some(existing => existing.current.questionUid === row.questionUid)) nativeInputs.push(input);
@@ -247,8 +250,9 @@ for (const [label, entries] of invalidCohortCases) {
 }
 console.log(`PASS historical cohorts 904/47/24: ${preservedCohorts.unchanged} unchanged, ${preservedCohorts.reviewedTransitions} byte-bound reviewed transitions; ${invalidCohortCases.length} rejected corruptions`);
 
-if (nativeInputs.length) {
-  const input = nativeInputs[0];
+const reviewedInput = nativeInputs.find(input => ["FINAL_QA", "REVIEW2"].includes(input.current.metadataApprovalType));
+if (reviewedInput) {
+  const input = reviewedInput;
   const rejects = (candidate, label) => {
     assert.throws(() => assertNativeApproval(candidate, label), { name: "AssertionError" }, label);
   };
@@ -289,6 +293,22 @@ if (nativeInputs.length) {
   }
   console.log(`PASS ${nativeInputs.length} byte-bound native approvals and ${cases.length + 1} rejection cases`);
 }
+
+const preservedAuditInputs = nativeInputs.filter(input => input.current.metadataApprovalType === "META_PIPELINE_AUDIT");
+for (const input of preservedAuditInputs) {
+  const changes = [
+    { current: { ...input.current, approvalEvidence: [] } },
+    { current: { ...input.current, metadataApprovalType: "FINAL_QA" } },
+    { current: { ...input.current, metadataRevision: input.current.metadataRevision + ":unproved" } },
+    { current: { ...input.current, fieldStatus: { ...input.current.fieldStatus, problemType: "approved_final_qa" } } },
+    { nativeSource: { ...input.nativeSource, bytes: Buffer.concat([input.nativeSource.bytes, Buffer.from("\n")]) } },
+    { nativeSource: { ...input.nativeSource, runtimeRecord: { ...input.nativeSource.runtimeRecord, metadataApprovalType: "FINAL_QA" } } },
+    { nativeSource: { ...input.nativeSource, runtimeStatus: "INACTIVE" } }
+  ];
+  for (const change of changes) assert.throws(() => assertNativeApproval({ ...input, ...change }, "audit preservation corruption"),
+    { name: "AssertionError" });
+}
+console.log(`PASS ${preservedAuditInputs.length} exact historical audit preservations; ${preservedAuditInputs.length * 7} rejected corruptions`);
 
 const byUid = new Map(catalog.records.map((row) => [row.questionUid, row]));
 const bySource = new Map(catalog.records.map((row) => [sourceKey(row.sourceFile, row.sourceOrdinal), row]));
