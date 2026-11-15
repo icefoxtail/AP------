@@ -1,0 +1,241 @@
+{
+  "sourcePath": "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+  "questionId": 18,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "120"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "100"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "ab",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "bc",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "ca",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "oa",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "ob",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "oc",
+            "refs": [
+              "O",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 520,
+          "height": 440
+        },
+        "caption": "외심 O와 삼각형 ABC에서 A의 두 각이 주어짐",
+        "accessibilityDescription": "A, B, C는 중심 O인 원 위에 있다. A에서 AB와 AO 사이의 각은 30도이고 AO와 AC 사이의 각은 40도이다.",
+        "sourceQuote": "점 O가 삼각형 ABC의 외심, ∠OAB=30°, ∠OAC=40°",
+        "sourceConditions": [
+          {
+            "id": "circumcenter",
+            "condition": "O is the circumcenter of triangle ABC",
+            "mappedTo": "displayed circle circ centered at O through A, B, and C"
+          },
+          {
+            "id": "angleOAB",
+            "condition": "∠BAO=30°",
+            "mappedTo": "planeMarks.angles[angleOAB] with refs B-A-O"
+          },
+          {
+            "id": "angleOAC",
+            "condition": "∠OAC=40°",
+            "mappedTo": "planeMarks.angles[angleOAC] with refs O-A-C"
+          }
+        ],
+        "newVisualInformation": [],
+        "planeMarks": {
+          "facts": [
+            {
+              "kind": "ON_CIRCLE",
+              "circle": "circ",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "id": "angleOAB",
+              "refs": [
+                "B",
+                "A",
+                "O"
+              ],
+              "value": 30,
+              "label": "30",
+              "arcs": 1,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "angleOAC",
+              "refs": [
+                "O",
+                "A",
+                "C"
+              ],
+              "value": 40,
+              "label": "40",
+              "arcs": 1,
+              "factRole": "GIVEN"
+            }
+          ]
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

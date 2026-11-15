@@ -1,0 +1,546 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2final/21_매산중_2학기_기말_중3_기출.js",
+  "questionId": 21,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C1",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O1",
+                "B1"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "80"
+                },
+                "turn": "CCW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circle1",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "O1",
+                "A1"
+              ],
+              "outputType": "CIRCLE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "12"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "28"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "21"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "G2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "21"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sub",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "7"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A2",
+                "B2"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A2",
+                "C2"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V",
+              "op": "MIDPOINT",
+              "inputs": [
+                "C2",
+                "B2"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "O2",
+              "op": "MIDPOINT",
+              "inputs": [
+                "C2",
+                "G2"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "outer",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "L",
+                "A2"
+              ],
+              "outputType": "CIRCLE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "smallA",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "U",
+                "A2"
+              ],
+              "outputType": "CIRCLE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "smallB",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "V",
+                "B2"
+              ],
+              "outputType": "CIRCLE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circle2",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "O2",
+                "C2"
+              ],
+              "outputType": "CIRCLE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A1",
+          "B1",
+          "C1",
+          "O1",
+          "A2",
+          "B2",
+          "C2",
+          "G2",
+          "O2",
+          "L",
+          "U",
+          "V"
+        ],
+        "displaySegments": [
+          {
+            "id": "ab1",
+            "refs": [
+              "A1",
+              "B1"
+            ]
+          },
+          {
+            "id": "ac1",
+            "refs": [
+              "A1",
+              "C1"
+            ]
+          },
+          {
+            "id": "bc1",
+            "refs": [
+              "B1",
+              "C1"
+            ]
+          },
+          {
+            "id": "ac2",
+            "refs": [
+              "A2",
+              "C2"
+            ]
+          },
+          {
+            "id": "cb2",
+            "refs": [
+              "C2",
+              "B2"
+            ]
+          },
+          {
+            "id": "cg2",
+            "refs": [
+              "C2",
+              "G2"
+            ]
+          },
+          {
+            "id": "ag2",
+            "refs": [
+              "A2",
+              "G2"
+            ]
+          },
+          {
+            "id": "bg2",
+            "refs": [
+              "B2",
+              "G2"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circle1",
+          "circle2"
+        ],
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 420
+        },
+        "caption": "매산중 서답형 원주각과 작은 반원을 뺀 부분",
+        "accessibilityDescription": "왼쪽 원에서 AB는 지름이며 A의 각은 40도이다. 오른쪽 큰 반원 안의 두 작은 반원 바깥이 색칠되어 있고, C에서 수직으로 올린 CG를 지름으로 하는 원의 중심은 O이다.",
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "given40",
+              "refs": [
+                "B1",
+                "A1",
+                "C1"
+              ],
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "value": 40,
+              "label": "40"
+            },
+            {
+              "id": "askX",
+              "refs": [
+                "C1",
+                "B1",
+                "A1"
+              ],
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "labelKind": "MATH",
+              "value": 50,
+              "label": "x"
+            }
+          ],
+          "arcs": [
+            {
+              "id": "edgeAG",
+              "circle": "outer",
+              "center": "L",
+              "from": "A2",
+              "to": "G2",
+              "side": "MINOR",
+              "highlight": false
+            },
+            {
+              "id": "edgeGB",
+              "circle": "outer",
+              "center": "L",
+              "from": "G2",
+              "to": "B2",
+              "side": "MINOR",
+              "highlight": false
+            },
+            {
+              "id": "edgeBC",
+              "circle": "smallB",
+              "center": "V",
+              "from": "B2",
+              "to": "C2",
+              "side": "CCW",
+              "highlight": false
+            },
+            {
+              "id": "edgeCA",
+              "circle": "smallA",
+              "center": "U",
+              "from": "C2",
+              "to": "A2",
+              "side": "CCW",
+              "highlight": false
+            }
+          ],
+          "regions": [
+            {
+              "id": "shaded",
+              "fill": "LIGHT",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "A2",
+                    "steps": [
+                      {
+                        "to": "G2",
+                        "arc": {
+                          "center": "L",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "B2",
+                        "arc": {
+                          "center": "L",
+                          "side": "MINOR"
+                        }
+                      },
+                      {
+                        "to": "C2",
+                        "arc": {
+                          "center": "V",
+                          "side": "CCW"
+                        }
+                      },
+                      {
+                        "to": "A2",
+                        "arc": {
+                          "center": "U",
+                          "side": "CCW"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "pointNames": {
+          "A1": "A",
+          "B1": "B",
+          "C1": "C",
+          "O1": "O",
+          "A2": "A",
+          "B2": "B",
+          "C2": "C",
+          "G2": "G"
+        },
+        "pointNameGroups": [
+          [
+            "A1",
+            "B1",
+            "C1",
+            "O1"
+          ],
+          [
+            "A2",
+            "B2",
+            "C2",
+            "G2"
+          ]
+        ],
+        "rightAngles": [
+          {
+            "id": "cg90",
+            "refs": [
+              "B2",
+              "C2",
+              "G2"
+            ]
+          }
+        ],
+        "hiddenPointNames": [
+          "L",
+          "U",
+          "V",
+          "O2"
+        ],
+        "hiddenPointStyle": "DOT",
+        "unmarkedPointNames": [
+          "L",
+          "U",
+          "V"
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 24,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

@@ -1,0 +1,396 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js",
+  "questionId": 10,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "L",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "H",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "V",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "W",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "16"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "L",
+          "R",
+          "T",
+          "H",
+          "U",
+          "V",
+          "W",
+          "X"
+        ],
+        "displaySegments": [
+          {
+            "id": "sLR",
+            "refs": [
+              "L",
+              "R"
+            ]
+          },
+          {
+            "id": "sLT",
+            "refs": [
+              "L",
+              "T"
+            ]
+          },
+          {
+            "id": "sTR",
+            "refs": [
+              "T",
+              "R"
+            ]
+          },
+          {
+            "id": "sTH",
+            "refs": [
+              "T",
+              "H"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sUV",
+            "refs": [
+              "U",
+              "V"
+            ]
+          },
+          {
+            "id": "sVW",
+            "refs": [
+              "V",
+              "W"
+            ]
+          },
+          {
+            "id": "sWX",
+            "refs": [
+              "W",
+              "X"
+            ]
+          },
+          {
+            "id": "sXU",
+            "refs": [
+              "X",
+              "U"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dBase",
+              "from": "L",
+              "to": "R",
+              "label": "6sqrt(3)",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "value": 10.392304845413264
+            },
+            {
+              "id": "dRectHeight",
+              "from": "U",
+              "to": "X",
+              "label": "3",
+              "unit": "cm",
+              "side": "RIGHT",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "value": 3
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "hLabel",
+              "ownerSegment": "sTH",
+              "text": "4",
+              "unit": "cm"
+            },
+            {
+              "id": "wLabel",
+              "ownerSegment": "sUV",
+              "text": "w"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rH",
+            "refs": [
+              "T",
+              "H",
+              "R"
+            ],
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "rX",
+            "refs": [
+              "U",
+              "X",
+              "W"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 620,
+          "height": 460
+        },
+        "caption": "밑변이 6√3 cm이고 높이가 4 cm인 삼각형은 높이 3 cm인 직사각형과 넓이가 같다.",
+        "accessibilityDescription": "밑변이 6√3 cm이고 높이가 4 cm인 삼각형은 높이 3 cm인 직사각형과 넓이가 같다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "삼각형의 밑변 6√3 cm, 높이 4 cm; 직사각형의 높이 3 cm.",
+            "mappedTo": [
+              "L",
+              "R",
+              "T",
+              "H",
+              "U",
+              "V",
+              "W",
+              "X"
+            ]
+          }
+        ],
+        "newVisualInformation": [],
+        "hiddenPointNames": [
+          "L",
+          "R",
+          "T",
+          "H",
+          "U",
+          "V",
+          "W",
+          "X"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 24,
+        "displayScale": 0.58,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

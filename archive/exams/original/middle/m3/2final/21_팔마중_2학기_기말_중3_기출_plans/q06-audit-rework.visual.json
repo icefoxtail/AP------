@@ -1,0 +1,341 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2final/21_팔마중_2학기_기말_중3_기출.js",
+  "questionId": 6,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "70"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "140"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "210"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "290"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "VECTOR_SCALE_POINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {
+                "k": {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "X"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "ab",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "bc",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "cd",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "da",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "be",
+            "refs": [
+              "B",
+              "E"
+            ]
+          },
+          {
+            "id": "de",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "xb",
+            "refs": [
+              "X",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 470
+        },
+        "caption": "원 위의 다섯 점과 주어진 두 각, B의 바깥각 x 및 D의 각 y",
+        "accessibilityDescription": "A, B, C, D, E는 원 위에 있다. ∠ABE는 35도, ∠ADC는 70도이다. X-B-C는 한 직선 위에 있고 x와 y를 표시했다.",
+        "sourceQuote": "∠ABE=35°, ∠ADC=70°, x는 ∠ABC의 이웃한 바깥각, y=∠ADE",
+        "sourceConditions": [
+          {
+            "id": "cyclic",
+            "condition": "A, B, C, D, E lie on one circle",
+            "mappedTo": "ON_CIRCLE fact"
+          },
+          {
+            "id": "givenABE",
+            "condition": "∠ABE=35°",
+            "mappedTo": "angle mark ABE"
+          },
+          {
+            "id": "givenADC",
+            "condition": "∠ADC=70°",
+            "mappedTo": "angle mark ADC"
+          },
+          {
+            "id": "externalX",
+            "condition": "x is adjacent to ∠ABC outside B",
+            "mappedTo": "X-B-C collinear and angle mark ABX"
+          },
+          {
+            "id": "unknownY",
+            "condition": "y=∠ADE",
+            "mappedTo": "angle mark ADE"
+          }
+        ],
+        "newVisualInformation": [],
+        "planeMarks": {
+          "facts": [
+            {
+              "kind": "ON_CIRCLE",
+              "circle": "circ",
+              "points": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E"
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "id": "abe",
+              "refs": [
+                "A",
+                "B",
+                "E"
+              ],
+              "value": 35,
+              "label": "35",
+              "arcs": 1,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "adc",
+              "refs": [
+                "A",
+                "D",
+                "C"
+              ],
+              "value": 70,
+              "label": "70",
+              "arcs": 1,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "x",
+              "refs": [
+                "A",
+                "B",
+                "X"
+              ],
+              "label": "x",
+              "arcs": 1
+            },
+            {
+              "id": "y",
+              "refs": [
+                "A",
+                "D",
+                "E"
+              ],
+              "label": "y",
+              "arcs": 1
+            }
+          ]
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 27,
+        "displayScale": 0.58,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}
