@@ -70,6 +70,11 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "C를 B보다 √2 오른쪽에 두면 P와 Q의 거리는 2−(√2−2)=4−√2이다. 정답은 ②이다.",
+    "solutionImageAlt": "두 초록 대각선의 길이는 모두 2이다. 수직선 아래의 두 초록 치수선은 같은 길이이고 가운데 정사각형의 한 변은 √2이다.",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중3_기출/q3-solution.svg",
+    "imageSize": "large",
     "content": "다음 그림은 한 변의 길이가 $\\sqrt2$인 정사각형 $ABCD$를 수직선 위에 나타낸 것이다. $\\overline{AC}=\\overline{PC}$, $\\overline{BD}=\\overline{BQ}$이고, 두 점 $P, Q$에 대응하는 수를 각각 $x, y$라고 할 때, $x$와 $y$ 사이의 거리는? (5점)",
     "choices": [
       "$\\sqrt2+1$",
@@ -86,7 +91,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "제곱근",
@@ -104,7 +109,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_연향중_1학기_중간_중3_기출/q03.png",
+    "image": "assets/images/19_연향중_1학기_중간_중3_기출/q3-problem-v3.svg",
     "imageAlt": "정사각형 ABCD의 대각선을 이용해 수직선 위의 점 P와 Q를 나타낸 그림"
   },
   {
@@ -391,6 +396,10 @@ window.questionBank = [
   },
   {
     "id": 12,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "세로 길이는 √112/√7=√16=4 cm이고 정답은 ③이다.",
+    "solutionImageAlt": "옅은 파랑 카드의 가로는 √112 cm이다. 가로와 세로의 비는 √7 대 1이라고 아래에 표시했다.",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중3_기출/q12-solution.svg",
     "content": "카드의 가로와 세로 길이 비가 $\\sqrt{7}:1$이다. 가로가 $\\sqrt{112}$ cm일 때 세로의 길이는?",
     "choices": [
       "$\\sqrt{6}$ cm",
@@ -631,6 +640,11 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 지름은 12+a와 12−a이다. 넓이의 차는 12πa=36π이므로 a=3이고 정답은 ①이다.",
+    "solutionImageAlt": "둘레에서 가운데 지름은 12 cm이다. 큰 지름과 작은 지름을 아래 두 치수선으로 나누고 차이에 해당하는 주황 영역을 표시했다.",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중3_기출/q19-solution.svg",
+    "imageSize": "large",
     "content": "다음 그림에서 세 원의 중심은 모두 $\\overline{AB}$ 위에 있고, 점 $D$는 $\\overline{BC}$의 중점이다. $\\overline{AD}$를 지름으로 하는 원의 둘레의 길이는 $12\\pi\\text{cm}$이고, 색칠한 부분의 넓이는 $36\\pi\\text{cm}^2$이다. $\\overline{CD}=a\\text{cm}$일 때, $a$의 값을 구하면?",
     "choices": [
       "$3$",
@@ -647,7 +661,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "다항식",
@@ -665,7 +679,7 @@ window.questionBank = [
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented",
-    "image": "assets/images/19_연향중_1학기_중간_중3_기출/q19.png",
+    "image": "assets/images/19_연향중_1학기_중간_중3_기출/q19-problem-v3.svg",
     "imageAlt": "같은 중심축 AB 위에 세 원과 점 C, D가 표시된 도형"
   },
   {
@@ -732,6 +746,7 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "imageSize": "large",
     "content": "다음 그림에서 두 점 $P, Q$에 대응하는 수를 각각 $p, q$라고 할 때, $3p+q$의 값을 구하는 풀이 과정과 답을 서술하여라. (단, 풀이 과정을 자세히 써라.) (7점)",
     "choices": [],
     "answer": "$-7-2\\sqrt2$",
@@ -742,7 +757,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "제곱근",
@@ -758,11 +773,15 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_연향중_1학기_중간_중3_기출/q22.png",
+    "image": "assets/images/19_연향중_1학기_중간_중3_기출/q22-problem-v3.svg",
     "imageAlt": "한 변의 길이가 1인 정사각형과 대각선, 수직선 위의 P와 Q"
   },
   {
     "id": 23,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "가로가 x+3, 세로가 x+2이므로 넓이는 (x+2)(x+3), 둘레는 4x+10이다.",
+    "solutionImageAlt": "파란 정사각형 오른쪽과 아래에 초록 띠를 붙이고 남은 오른쪽 아래를 주황 단위 정사각형 여섯 개로 채운다.",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중3_기출/q23-solution.svg",
     "content": "[서술형3] 넓이 $x^2$ 1개, $x$ 5개, $1$ 6개를 붙인 직사각형의 (1) 인수분해된 넓이, (2) 둘레를 구하시오.",
     "choices": [],
     "answer": "(1) (x+2)(x+3) (2) 4x+10",
