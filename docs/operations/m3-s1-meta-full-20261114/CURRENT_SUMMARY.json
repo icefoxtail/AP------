@@ -1,9 +1,9 @@
 {
   "workKey": "M3-S1-META-FULL",
   "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
-  "owner": "GPT_ROOT_E45FF6C78C51",
+  "owner": "GPT_ROOT_E0C948452E80",
   "branch": "review/m3-s1-meta-full-20261114",
-  "updatedAt": "2026-11-15T00:21:24.322159+00:00",
+  "status": "RUNNING",
   "totals": {
     "exams": 115,
     "questions": 2750,
@@ -11,10 +11,14 @@
     "reviewedExams": 73,
     "reviewedQuestions": 1731
   },
-  "reusedCompletedExams": 48,
-  "reusedCompletedQuestions": 1143,
-  "newlyReviewedExams": 25,
-  "newlyReviewedQuestions": 588,
+  "reusedCompletedExams": 73,
+  "reusedCompletedQuestions": 1731,
+  "newlyPreservedExams": 0,
+  "newlyPreservedQuestions": 0,
+  "remainingExams": 42,
+  "remainingQuestions": 1019,
+  "lastCompletedExam": "E073",
+  "nextIncompleteExam": "E074",
   "unreviewedExams": [
     "E074",
     "E075",
@@ -59,11 +63,12 @@
     "E114",
     "E115"
   ],
-  "reviewedWithEvidenceDebtExams": [
+  "reviewedWithExplicitDebts": [
     "E024",
     "E025",
     "E028",
     "E031",
+    "E034",
     "E035",
     "E043",
     "E044",
@@ -75,8 +80,15 @@
     "E066",
     "E073"
   ],
-  "mainMerge": "NOT_PERFORMED",
-  "registration": "NOT_PERFORMED",
-  "resolverExecution": "NOT_RUN",
-  "nextAction": "CONTINUE_REMAINING_EXAM_REVIEW"
+  "externalCheckpoint": {
+    "revision": 6,
+    "sha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff",
+    "fileId": "1EiDN_CCH8rwCRwGsy_lnSpFHvSup9Jcd",
+    "state": "VERIFIED_PREVIOUS_CHECKPOINT_CURRENT_SYNC_PENDING"
+  },
+  "nextAction": "CONTINUE_E074_AND_PENDING_ONLY",
+  "mainMerge": "NOT_RUN",
+  "registration": "NOT_RUN",
+  "deployment": "NOT_RUN",
+  "quality": "UNKNOWN"
 }

@@ -1,15 +1,17 @@
 # M3-S1-META-FULL
 
-Task: `675e8b6b-b864-4891-b6c2-e822f550853e`
-Root writer: `GPT_ROOT_E45FF6C78C51`
-Branch: `review/m3-s1-meta-full-20261114`
-Status: `RUNNING`
+Task: `675e8b6b-b864-4891-b6c2-e822f550853e`  
+Root writer: `GPT_ROOT_E0C948452E80`  
+Branch: `review/m3-s1-meta-full-20261114`  
+Status: `RUNNING` / `RUNNING`
 
-Current progress: [progress.json](docs/operations/m3-s1-meta-full-20261114/progress.json)
-Release handoff: [HANDOFF.md](docs/operations/m3-s1-meta-full-20261114/HANDOFF.md)
+Progress: [progress.json](docs/operations/m3-s1-meta-full-20261114/progress.json)  
+Handoff: [HANDOFF.md](docs/operations/m3-s1-meta-full-20261114/HANDOFF.md)
 
-Only the root writes this branch. Workers review disjoint source files and write separate artifacts. No main merge, shared registration, or deployment is authorized for this phase.
+Preserved packet snapshot: 73/115 exams, 1731/2750 questions. Last: E073. Next pending: E074.
 
-Resume authority: explicit current user direction, same task and branch. Previous writer termination was not independently confirmed. Latest remote is checked before each push; no force push.
+Root alone serializes branch writes. A/B/C write disjoint local artifacts. Every exam updates progress, handoff and this pointer before one atomic branch commit. A transaction counts remotely only after HEAD/tree/blob readback. AWCR+Notion sync every three saved exams or20 minutes.
 
-Resume checkpoint: AWCR r5, raw SHA-256 `00c4596d1e1e194a3fad7ad38066badc84c49229ed0b902375b1b3e953f5ee7d`. Existing 48 exams / 1143 items reused; remaining 67 exams / 1607 items assigned A20/B25/C22.
+Previous writer termination: NOT_INDEPENDENTLY_VERIFIED. No formal prior-owner offer was observed. Current exact-task resume is user-directed; isolated worktree, expected-HEAD fast-forward only, halt on ref conflict. This does not assert prior worker closure.
+
+AWCR last verified revision r6, raw SHA `43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff`; current-transaction external sync is pending until readback. Final remote SHA is recorded outside its own commit.

@@ -2,7 +2,7 @@
   "schemaVersion": "m3-s1-meta-full-progress-v1",
   "workKey": "M3-S1-META-FULL",
   "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
-  "owner": "GPT_ROOT_E45FF6C78C51",
+  "owner": "GPT_ROOT_E0C948452E80",
   "branch": "review/m3-s1-meta-full-20261114",
   "baseMain": "0ba1e7de048de3af0771da6c0972409fd46baa75",
   "status": "RUNNING",
@@ -10233,23 +10233,23 @@
       "nextAction": "SEMANTIC_REVIEW"
     }
   ],
-  "nextAction": "CONTINUE_REMAINING_EXAM_REVIEW",
+  "nextAction": "CONTINUE_E074_AND_PENDING_ONLY",
   "resumedAt": "2026-11-14T23:58:38.098191+00:00",
-  "authorityMainChecked": "0eb4b5306796f3828f9ebbf22a1a44e0eb24601c",
+  "authorityMainChecked": "22d5b2fa1c09eec588c434a16c41ae197e946c80",
   "resumeAuthority": {
-    "basis": "EXPLICIT_CURRENT_USER_DIRECTION",
-    "previousOwner": "GPT_ROOT_0B1AF1898334",
-    "previousRemoteHead": "75558dd6ef42caf09101a3c0cae880b3627de575",
+    "owner": "GPT_ROOT_E0C948452E80",
+    "basis": "EXPLICIT_CURRENT_USER_DIRECTED_EXACT_TASK_RESUME",
+    "previousOwner": "GPT_ROOT_E45FF6C78C51",
+    "previousRemoteHead": "fcb3591cd3d9a2feb766206c16186482e02417ee",
     "previousWriterTermination": "NOT_INDEPENDENTLY_VERIFIED",
-    "sameTask": true,
-    "sameBranch": true,
-    "rootOnlyPush": true,
-    "sharedCheckpointRevision": 5,
-    "predecessorRawSha256": "57c409cc805b2177e410ac2c24a00ac3b7a435c9fbca7e3417683395c58743dc",
-    "reusedCompletedExams": 48,
-    "reusedCompletedQuestions": 1143
+    "formalOfferFromPriorOwner": "NOT_OBSERVED",
+    "safety": "ISOLATED_WORKTREE_EXPECTED_HEAD_FAST_FORWARD_ONLY_STOP_ON_CONFLICT",
+    "reusedExams": 73,
+    "reusedQuestions": 1731,
+    "predecessorRevision": 6,
+    "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
   },
-  "updatedAt": "2026-11-15T00:21:24.322159+00:00",
+  "updatedAt": "2026-11-14T20:51:58.664367+00:00",
   "lastPublishedHeadBeforeCurrent": "1fba84b3dfac3eca4ac47a00939427a9def4b398",
   "resumeHistory": [
     {
@@ -10262,6 +10262,95 @@
       "rootOnlyPush": true,
       "sharedCheckpointRevision": 2,
       "predecessorRawSha256": "a898b038e1fbf8ab0dd49c82bfedfd69e9104dc984973930bbdbc2b221b857db"
+    },
+    {
+      "owner": "GPT_ROOT_E0C948452E80",
+      "basis": "EXPLICIT_CURRENT_USER_DIRECTED_EXACT_TASK_RESUME",
+      "previousOwner": "GPT_ROOT_E45FF6C78C51",
+      "previousRemoteHead": "fcb3591cd3d9a2feb766206c16186482e02417ee",
+      "previousWriterTermination": "NOT_INDEPENDENTLY_VERIFIED",
+      "formalOfferFromPriorOwner": "NOT_OBSERVED",
+      "safety": "ISOLATED_WORKTREE_EXPECTED_HEAD_FAST_FORWARD_ONLY_STOP_ON_CONFLICT",
+      "reusedExams": 73,
+      "reusedQuestions": 1731,
+      "predecessorRevision": 6,
+      "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
     }
-  ]
+  ],
+  "lastCompletedExam": "E073",
+  "nextIncompleteExam": "E074",
+  "remainingExams": 42,
+  "remainingQuestions": 1019,
+  "lastVerifiedRemoteHeadBeforeCurrent": "fcb3591cd3d9a2feb766206c16186482e02417ee",
+  "externalCheckpoint": {
+    "revision": 6,
+    "sha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff",
+    "fileId": "1EiDN_CCH8rwCRwGsy_lnSpFHvSup9Jcd",
+    "state": "VERIFIED_PREVIOUS_CHECKPOINT_CURRENT_SYNC_PENDING"
+  },
+  "workers": {
+    "A": {
+      "agent": "/root/meta_a",
+      "status": "ACTIVE",
+      "assignedExams": [
+        "E076",
+        "E079",
+        "E082",
+        "E085",
+        "E088",
+        "E091",
+        "E094",
+        "E097",
+        "E100",
+        "E103",
+        "E106",
+        "E109",
+        "E112",
+        "E115"
+      ],
+      "outputDirectory": "/workspace/scratch/e0c948452e80/workers/A"
+    },
+    "B": {
+      "agent": "/root/meta_b",
+      "status": "ACTIVE",
+      "assignedExams": [
+        "E074",
+        "E077",
+        "E080",
+        "E083",
+        "E086",
+        "E089",
+        "E092",
+        "E095",
+        "E098",
+        "E101",
+        "E104",
+        "E107",
+        "E110",
+        "E113"
+      ],
+      "outputDirectory": "/workspace/scratch/e0c948452e80/workers/B"
+    },
+    "C": {
+      "agent": "/root/meta_c",
+      "status": "ACTIVE",
+      "assignedExams": [
+        "E075",
+        "E078",
+        "E081",
+        "E084",
+        "E087",
+        "E090",
+        "E093",
+        "E096",
+        "E099",
+        "E102",
+        "E105",
+        "E108",
+        "E111",
+        "E114"
+      ],
+      "outputDirectory": "/workspace/scratch/e0c948452e80/workers/C"
+    }
+  }
 }
