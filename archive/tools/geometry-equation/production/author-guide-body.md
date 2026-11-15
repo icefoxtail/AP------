@@ -115,7 +115,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 지수·로그 쌍의 참조점에 이미 같은 정확 좌표를 표시하는 이름 있는 overlay 점이 있으면 해당 곡선에 `referenceLabelPoint:"A"`를 준다. overlay 점은 정확한 유리수 x·y를 직접 주고 `coordinates:true`로 표시한다. 참조점과 좌표가 다르거나 실제 라벨이 없으면 거부한다. 기존 참조점과 곡선은 그대로 그리며 중복 숫자 글자만 생략한다.
 
-참조점의 수치 자체가 답이면 곡선 행에 `formulaLabel:"NAME"`, `referenceLabelPoint:"A"`, `referenceLabelMode:"NAME"`을 주고, 이름 있는 A overlay 점의 정확한 x·y와 `coordinates:false`를 적는다. 참조점 표식은 유지하고 A의 이름만 쓴다. 관측기는 정확한 참조점과 이름의 소유·위치, 자동 참조 좌표와 점 좌표 라벨이 모두 생략됐는지 확인한다. 모드 없이 `referenceLabelPoint`만 쓰는 경우에는 기존처럼 `coordinates:true`가 필요하다.
+참조점의 수치 자체가 답이면 곡선 행에 `formulaLabel:"NAME"`, `referenceLabelPoint:"A"`, `referenceLabelMode:"NAME"`을 주고, 이름 있는 A overlay 점의 정확한 x·y와 `coordinates:false`를 적는다. 참조점 표식은 유지하고 A의 이름만 쓴다. 관측기는 정확한 참조점과 이름의 소유·위치, 자동 참조 좌표와 점 좌표 라벨이 모두 생략됐는지 확인한다. 모드 없이 `referenceLabelPoint`만 쓰는 경우에는 기존처럼 `coordinates:true`가 필요하다. 참조점에 이름과 좌표를 모두 쓰지 않는 그림에서는 곡선의 `referenceLabelMode:"MARKER"`와 `formulaLabel:"NAME"`을 쓰고, 같은 정확한 위치의 채운 overlay 점에 `coordinates:false`, `unnamed:true`를 준다. 관측기가 참조점과 마커 위치를 다시 확인한다.
 
 ### 3-3. 이어진 조각 그래프(이차식 조각 최대 4개)와 직선
 

@@ -102,9 +102,10 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
     }
     const geometry=[...svg.querySelectorAll('circle,line,polyline,polygon,path,rect[data-role="conditionBox"],rect[data-role="tick-label-knockout"]')].filter(e=>!e.closest('g[data-fragment-sha]')&&e.getAttribute('data-role')!=='region').map(e=>{   // a region fill is paint, not a stroke: labels and leaders may lie on it (plane_regions_observer.py checks it)
       const tag=e.tagName;const client=rect(e.getBoundingClientRect());
+      const role=e.getAttribute('data-role'),branch=e.getAttribute('data-branch');
       const style=getComputedStyle(e),matrix=e.getScreenCTM();
       const strokeWidthPx=style.stroke==='none'?0:parseFloat(style.strokeWidth)*(style.vectorEffect==='non-scaling-stroke'?1:Math.max(Math.hypot(matrix.a,matrix.b),Math.hypot(matrix.c,matrix.d)));
-      if(tag==='circle'){const at=project(e,e.cx.baseVal.value,e.cy.baseVal.value);const radius=e.r.baseVal.value*Math.hypot(e.getScreenCTM().a,e.getScreenCTM().b);return{id:e.id,kind:e.getAttribute('data-role')==='point'?'point':'circle',at,radius,client,strokeWidthPx,visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};}
+      if(tag==='circle'){const at=project(e,e.cx.baseVal.value,e.cy.baseVal.value);const radius=e.r.baseVal.value*Math.hypot(e.getScreenCTM().a,e.getScreenCTM().b);return{id:e.id,kind:role==='point'?'point':'circle',at,radius,client,strokeWidthPx,...(role==='logarithmic-reference'?{role,branch,state:e.getAttribute('data-state')}:{}),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};}
       if(tag==='rect'){
         const role=e.getAttribute('data-role');
         if(role==='tick-label-knockout')return{id:e.id,kind:'tickLabelKnockout',role,ownerLabelId:e.getAttribute('data-owner-label'),occludedPrimitiveIds:(e.getAttribute('data-occluded-primitives')||'').split(/\s+/).filter(Boolean),client,fill:style.fill,fillOpacity:Number.parseFloat(style.fillOpacity),opacity:Number.parseFloat(style.opacity),paintOrder:paintOrder.get(e)??null,strokeWidthPx,visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
@@ -114,7 +115,7 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       if(tag==='line')points=[project(e,e.x1.baseVal.value,e.y1.baseVal.value),project(e,e.x2.baseVal.value,e.y2.baseVal.value)];
       else if(tag==='polyline'||tag==='polygon'){for(let i=0;i<e.points.numberOfItems;i++){const p=e.points.getItem(i);points.push(project(e,p.x,p.y));}if(tag==='polygon'&&points.length)points.push(points[0]);}
       else{const length=e.getTotalLength(),count=Math.min(4096,Math.max(2,Math.ceil(length)));for(let i=0;i<=count;i++){const p=e.getPointAtLength(length*i/count);points.push(project(e,p.x,p.y));}}
-      return{id:e.id,kind:e.getAttribute('data-role')||'line',role:e.getAttribute('data-role'),points,client,paintOrder:paintOrder.get(e)??null,strokeWidthPx,strokeColor:style.stroke,markerStart:e.getAttribute('marker-start')||'',markerEnd:e.getAttribute('marker-end')||'',axis:e.getAttribute('data-axis'),value:e.getAttribute('data-value'),requiredLabelId:e.getAttribute('data-required-label-id'),owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean),ownerLabelId:e.getAttribute('data-owner-label'),leaderCrossing:e.getAttribute('data-leader-crossing')==='1',tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
+      return{id:e.id,kind:role||'line',role,points,client,...(tag==='polyline'&&role==='curve'&&/^REF_[A-Za-z][A-Za-z0-9]{0,7}$/.test(branch||'')?{branch}:{}),paintOrder:paintOrder.get(e)??null,strokeWidthPx,strokeColor:style.stroke,markerStart:e.getAttribute('marker-start')||'',markerEnd:e.getAttribute('marker-end')||'',axis:e.getAttribute('data-axis'),value:e.getAttribute('data-value'),requiredLabelId:e.getAttribute('data-required-label-id'),owner:e.getAttribute('data-owner'),ownerKind:e.getAttribute('data-owner-kind'),ownerPoints:(e.getAttribute('data-owner-points')||'').split(' ').filter(Boolean),ownerLabelId:e.getAttribute('data-owner-label'),leaderCrossing:e.getAttribute('data-leader-crossing')==='1',tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),visibilityEvidence:{kind:'GEOMETRY',elementAncestors:ancestorChain(e),content:[measuredContent(e,'GEOMETRY')]}};
     });
     const safeMargin=svg.getAttribute('data-publication-profile')==='fragment-publication-spike-v1'?12:32;
     const rootMatrix=svg.getScreenCTM();
@@ -190,12 +191,12 @@ function visibleGeometry(item){
   if(!visiblePaintedGeometry(evidence.content[0]))return{ok:false,code:'NOT_VISIBLE',effectStatus};
   return{ok:true,code:null,effectStatus};
 }
-function segmentIntersection(a,b) {
+function segmentIntersection(a,b,tolerance=.001) {
   if(a?.length!==2||b?.length!==2)return null;
   const cross=(u,v)=>u[0]*v[1]-u[1]*v[0],u=[a[1][0]-a[0][0],a[1][1]-a[0][1]],v=[b[1][0]-b[0][0],b[1][1]-b[0][1]],w=[b[0][0]-a[0][0],b[0][1]-a[0][1]],den=cross(u,v);
   if(Math.abs(den)<1e-9)return null;
   const t=cross(w,v)/den,s=cross(w,u)/den;
-  if(t<-.001||t>1.001||s<-.001||s>1.001)return null;
+  if(t < -tolerance||t>1+tolerance||s < -tolerance||s>1+tolerance)return null;
   return[a[0][0]+t*u[0],a[0][1]+t*u[1]];
 }
 function pointSegmentDistance(point,a,b) {
@@ -204,14 +205,43 @@ function pointSegmentDistance(point,a,b) {
   const t=Math.max(0,Math.min(1,((point[0]-a[0])*dx+(point[1]-a[1])*dy)/length2));
   return Math.hypot(point[0]-(a[0]+t*dx),point[1]-(a[1]+t*dy));
 }
-function segmentDistance(a,b) {
-  if(segmentIntersection([a[0],a[1]],[b[0],b[1]]))return 0;
+function segmentDistance(a,b,intersectionTolerance) {
+  if(segmentIntersection(a,b,intersectionTolerance))return 0;
   return Math.min(pointSegmentDistance(a[0],b[0],b[1]),pointSegmentDistance(a[1],b[0],b[1]),pointSegmentDistance(b[0],a[0],a[1]),pointSegmentDistance(b[1],a[0],a[1]));
+}
+function sharedLogTickGeometry(geometry,point,tolerance) {
+  const near=position=>Array.isArray(position)&&Math.hypot(position[0]-point[0],position[1]-point[1])<=tolerance;
+  const references=geometry.filter(item=>item.kind==='circle'&&item.role==='logarithmic-reference'&&item.state==='CLOSED'
+    &&/^[A-Za-z][A-Za-z0-9]{0,7}$/.test(item.branch||'')&&item.id==='reference-'+item.branch&&near(item.at)&&visibleGeometry(item).ok);
+  if(references.length!==2||references[0].branch===references[1].branch)return null;
+  const branches=new Set();
+  for(const {branch} of references){
+    const matches=geometry.filter(item=>item.kind==='curve'&&item.role==='curve'&&item.branch==='REF_'+branch
+      &&[`f-${branch}-branch-0`,`curve-${branch}-branch-0`].includes(item.id)
+      &&Array.isArray(item.points)&&item.points.length>=2&&item.points.some(near)&&visibleGeometry(item).ok);
+    if(matches.length!==1)return null;
+    branches.add(matches[0]);
+  }
+  return{branches,references};
+}
+function sharedLogTickDepartureClear(start,end,stroke,scale,clearance,tolerance) {
+  const length=Math.hypot(end[0]-start[0],end[1]-start[1]);
+  if(length<=.01*scale)return false;
+  const advance=distance=>start.map((value,index)=>value+(end[index]-value)*distance/length);
+  const leave=advance(.01*scale);
+  // The exact crossing is touched only at departure. The usual clearance applies once the leader has left it.
+  const far=length>12*scale?advance(12*scale):end;
+  return !stroke.points.some((point,index)=>index>0&&(
+    segmentDistance([leave,end],[stroke.points[index-1],point],0)<=tolerance||
+    segmentDistance([far,end],[stroke.points[index-1],point],0)<=clearance));
 }
 function ownerLeaderClearance(label,leader,geometry,tickIntersection,scale) {
   const clearance=6*scale+.25,allowedOwnerIds=new Set([label.tickOwner,`${label.tickAxis}-axis`]),rows=[],errors=[];
   if(leader?.points?.length!==2)return{status:'FAIL',clearanceCssPx:clearance,checks:[],errors:['LEADER_GEOMETRY_INVALID']};
   const [start,end]=leader.points;
+  const contactTolerance=.001*scale+1e-4;
+  const sharedLog=Math.hypot(start[0]-tickIntersection[0],start[1]-tickIntersection[1])<=contactTolerance
+    ?sharedLogTickGeometry(geometry,tickIntersection,contactTolerance):null;
   for(const other of geometry.filter(value=>value.id!==leader.id&&value.id!==leader.ownerLabelId)){
     let minimum=Infinity,intersections=[];
     let circleStartOnly=false;
@@ -237,8 +267,11 @@ function ownerLeaderClearance(label,leader,geometry,tickIntersection,scale) {
     }
     // A dot drawn exactly on this tick, and a dashed approach guide that ends on it, belong to the tick the leader names (the leader may touch the guide only at its start). A drawn line or segment running over this tick (the segment y=-5 over the tick -5) is the tick's own ground, touched only at the start too.
     const nearTick=point=>Array.isArray(point)&&Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])<=1*scale+.25;
-    const owner=allowedOwnerIds.has(other.id)||circleStartOnly||(other.kind==='point'&&nearTick(other.at))||(/-guide-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.some(nearTick))||(/^(overlay-(line|guide)|trig-pole|line)-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(other.kind==='line'&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(/^[fg]-piece-\d+/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25));
-    if(owner){
+    const sharedLogContact=sharedLog?.branches.has(other);
+    const owner=sharedLogContact||sharedLog?.references.includes(other)||allowedOwnerIds.has(other.id)||circleStartOnly||(other.kind==='point'&&nearTick(other.at))||(/-guide-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.some(nearTick))||(/^(overlay-(line|guide)|trig-pole|line)-/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(other.kind==='line'&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25))||(/^[fg]-piece-\d+/.test(String(other.id))&&Array.isArray(other.points)&&other.points.length>1&&other.points.some((q,i)=>i>0&&pointSegmentDistance(tickIntersection,other.points[i-1],q)<=1*scale+.25));
+    if(sharedLogContact&&!sharedLogTickDepartureClear(start,end,other,scale,clearance,contactTolerance)){
+      errors.push('LEADER_SHARED_LOG_CONTACT_NOT_CLEAR:'+other.id);
+    }else if(owner){
       if(intersections.some(point=>Math.hypot(point[0]-tickIntersection[0],point[1]-tickIntersection[1])>1*scale+.25))errors.push('LEADER_OWNER_ENDPOINT_CROSSING:'+other.id);
     }else if(minimum<=clearance)errors.push('LEADER_NEAR_GEOMETRY:'+leader.id+':'+other.id);
     rows.push({geometryId:other.id,kind:other.kind,ownerEndpointAllowed:owner,minClearanceCssPx:Number.isFinite(minimum)?minimum:null,requiredClearanceCssPx:owner?null:clearance,intersections});

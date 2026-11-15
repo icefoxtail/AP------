@@ -939,6 +939,41 @@ def tick_start_circle_ids(obstacles,start,end):
     return circle_ids
 
 
+def shared_log_tick_branches(obstacles, at):
+    """Two actual log-pair reference marks and their sampled reference vertices must coincide with the tick."""
+    tolerance=.001
+    references=[o for o in obstacles if o.get('kind')=='circle' and o.get('role')=='logarithmic-reference'
+                and re.fullmatch(r'reference-[A-Za-z][A-Za-z0-9]{0,7}',str(o.get('id')))
+                and math.dist(o['geometry'][:2],at)<=tolerance]
+    ids={o['id'].removeprefix('reference-') for o in references}
+    if len(references)!=2 or len(ids)!=2:return []
+    branches=[]
+    for ident in ids:
+        matches=[o for o in obstacles if o.get('kind')=='curve' and o.get('role')=='curve'
+                 and o.get('id') in (f'f-{ident}-branch-0',f'curve-{ident}-branch-0')
+                 and len(o['geometry'])>=2 and any(math.dist(at,p)<=tolerance for p in o['geometry'])]
+        if len(matches)!=1:return []
+        branches.append(matches[0])
+    return branches
+
+
+def shared_log_tick_departure_clear(start,end,strokes):
+    """Allow the shared start only. After leaving that neighborhood enforce ordinary stroke clearance."""
+    length=math.dist(start,end)
+    if length<=.01:return False
+    def advance(distance):
+        return tuple(a+(b-a)*distance/length for a,b in zip(start,end))
+    leave=advance(.01)
+    # Two ordinary clearance distances leave room for the rays to separate from the shared point.
+    far=advance(12) if length>12 else end
+    for stroke in strokes:
+        points=stroke['geometry']
+        for a,b in zip(points,points[1:]):
+            if segment_segment_distance(leave,end,a,b)<=.001:return False
+            if segment_segment_distance(far,end,a,b)<=6:return False
+    return True
+
+
 def tick_labels_first_order(label):
     """The tick-label retry order: at one priority the tick numbers go first (each is bound to its axis tick and may stand on two sides only), then every other label as in the first pass."""
     return (label.get('priority',2),0 if label.get('kind')=='TICK_LABEL' else 1,label['id'])
@@ -1047,6 +1082,9 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 owner_ids|={o.get('id') for o in occupied if o.get('kind') in {'circle','point'} and math.dist((o['geometry'][0],o['geometry'][1]),label['at'])<=1e-3}
                 # Likewise a dashed approach guide, or an overlay line/guide (a vertical line x=a through the tick, G5b), that passes exactly through this tick belongs to it (the leader may touch it only at its start).
                 owner_ids|={o.get('id') for o in occupied if (o.get('kind')=='line' and ('-guide-' in str(o.get('id')) or str(o.get('id','')).startswith(('overlay-line-','overlay-guide-','trig-pole-','line-'))) or o.get('kind')=='curve' and str(o.get('id','')).split('-piece-')[0] in ('f','g')) and isinstance(o.get('geometry'),(list,tuple)) and any(point_segment_distance(label['at'],c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+                shared=shared_log_tick_branches(obstacles,label['at'])
+                if shared and shared_log_tick_departure_clear(label['at'],end,shared):
+                    owner_ids.update(stroke['id'] for stroke in shared)
                 if not leader_clear(label['at'],end,occupied,owner_ids):
                     # A drawn segment or line running over the tick (the segment y=-5 over the tick -5) is the tick's own ground: its crossing at the leader's start is allowed.
                     owner_ids|=tick_ground_line_ids(occupied,label['at'])

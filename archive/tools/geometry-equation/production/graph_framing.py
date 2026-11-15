@@ -1195,7 +1195,7 @@ def _exp_log_curve_spec(row,index,code):
         point=row['referenceLabelPoint']
         if not isinstance(point,str) or not re.fullmatch('[A-Z]',point):
             raise ValueError('EXP_LOG_PAIR_REFERENCE_LABEL_POINT_INVALID:'+curve_id)
-    if 'referenceLabelMode' in row and (row['referenceLabelMode']!='NAME' or row.get('formulaLabel')!='NAME' or 'referenceLabelPoint' not in row):
+    if 'referenceLabelMode' in row and (row['referenceLabelMode'] not in ('NAME','MARKER') or row.get('formulaLabel')!='NAME' or 'referenceLabelPoint' not in row):
         raise ValueError('EXP_LOG_PAIR_REFERENCE_LABEL_MODE_INVALID:'+curve_id)
     family=row.get('family')
     if family not in {'exponential-affine','logarithmic-affine'}:raise ValueError(code+'_FAMILY_UNSUPPORTED')
@@ -1283,8 +1283,9 @@ def _fit_exp_log_pair_overview(plan):
         overlays=plan.get('overlays')
         points=overlays.get('points',[]) if isinstance(overlays,dict) else []
         owners=[point for point in points if isinstance(point,dict) and point.get('id')==source['referenceLabelPoint']] if isinstance(points,list) else []
-        show_coordinates=source.get('referenceLabelMode')!='NAME'
-        if (len(owners)!=1 or owners[0].get('coordinates') is not show_coordinates or owners[0].get('unnamed',False) is not False
+        mode=source.get('referenceLabelMode')
+        show_coordinates=mode is None; marker_only=mode=='MARKER'
+        if (len(owners)!=1 or owners[0].get('coordinates') is not show_coordinates or owners[0].get('unnamed',False) is not marker_only
             or owners[0].get('marker','FILLED')!='FILLED'
             or not all(_piecewise_fraction(owners[0].get(axis),code)==Fraction(curve['referencePoint'][axis]) for axis in ('x','y'))):
             raise ValueError(code)

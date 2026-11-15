@@ -264,6 +264,26 @@ class LayoutTests(unittest.TestCase):
         curve={'id':'f-branch-0','kind':'curve','role':'curve','geometry':[(20,160),(180,160)]}
         refused=layout([copy.deepcopy(item)],[tick,axis,curve],Box(0,0,200,240),measurements={item['id']:(27,16)},require_measurements=True)
         self.assertEqual(refused['unresolved'],[item['id']])
+    def test_shared_log_tick_requires_both_reference_markers_and_sampled_vertices(self):
+        at=(100,160)
+        g={'id':'f-g-branch-0','kind':'curve','role':'curve','geometry':[(70,180),at,(130,140)]}
+        h={'id':'f-h-branch-0','kind':'curve','role':'curve','geometry':[(70,170),at,(130,154)]}
+        marks=[{'id':'reference-'+name,'kind':'circle','role':'logarithmic-reference','geometry':(*at,4)} for name in ('g','h')]
+        all_strokes=[g,h,*marks]
+        self.assertEqual({o['id'] for o in shared_log_tick_branches(all_strokes,at)},{g['id'],h['id']})
+        self.assertEqual(shared_log_tick_branches([g,h,marks[0]],at),[])
+        self.assertEqual(shared_log_tick_branches([g,h,marks[0],{**marks[1],'geometry':(100.1,160,4)}],at),[])
+        self.assertEqual(shared_log_tick_branches([g,{**h,'geometry':[(70,170),(130,154)]},*marks],at),[])
+
+    def test_shared_log_tick_rejects_overlapping_and_recrossing_strokes(self):
+        start,end=(100,160),(79,144)
+        accepted={'geometry':[(70,170),start,(130,150)]}
+        overlap={'geometry':[(70,170),(89.5,152),start,(130,150)]}
+        recross={'geometry':[(70,170),(85,141),start,(130,150)]}
+        self.assertTrue(shared_log_tick_departure_clear(start,end,[accepted]))
+        self.assertFalse(shared_log_tick_departure_clear(start,end,[accepted,overlap]))
+        self.assertFalse(shared_log_tick_departure_clear(start,end,[accepted,recross]))
+
     def test_tick_label_cannot_fallback_to_panel_or_suppression(self):
         tick={'id':'tick-x--2','kind':'line','role':'tick','axis':'x','value':-2,'geometry':[(34.84,156),(34.84,164)]}
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,160),(250,160)]}

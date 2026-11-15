@@ -1445,8 +1445,8 @@ def _exp_log_pair_reference_label_errors(plan,root,model,expected_rows):
     errors=[]
     for curve in plan.get('curves',[]):
         ident=curve.get('id','')
-        name_only=curve.get('referenceLabelMode')=='NAME'
-        if 'referenceLabelMode' in curve and (not name_only or curve.get('formulaLabel')!='NAME' or 'referenceLabelPoint' not in curve):
+        mode=curve.get('referenceLabelMode')
+        if 'referenceLabelMode' in curve and (mode not in ('NAME','MARKER') or curve.get('formulaLabel')!='NAME' or 'referenceLabelPoint' not in curve):
             errors.append('EXP_LOG_PAIR_REFERENCE_LABEL_MODE_INVALID:'+ident)
             continue
         if 'referenceLabelPoint' not in curve:continue
@@ -1457,8 +1457,8 @@ def _exp_log_pair_reference_label_errors(plan,root,model,expected_rows):
             continue
         points=(plan.get('overlays') or {}).get('points',[])
         owners=[point for point in points if point.get('id')==owner]
-        show_coordinates=not name_only
-        if (len(owners)!=1 or owners[0].get('coordinates') is not show_coordinates or owners[0].get('unnamed',False) is not False
+        show_coordinates=mode is None; marker_only=mode=='MARKER'
+        if (len(owners)!=1 or owners[0].get('coordinates') is not show_coordinates or owners[0].get('unnamed',False) is not marker_only
             or owners[0].get('marker','FILLED')!='FILLED'):
             errors.append(code)
             continue
@@ -1475,7 +1475,11 @@ def _exp_log_pair_reference_label_errors(plan,root,model,expected_rows):
             errors.append(code)
         if any(node.get('id')=='reference-'+ident+'-value' for node in root.iter()):
             errors.append('EXP_LOG_PAIR_REFERENCE_LABEL_NOT_SUPPRESSED:'+ident)
-        if name_only:
+        if marker_only:
+            if any(node.get('id') in (owner+'-name',owner+'-coordinates') or
+                   (node.get('data-owner')==owner and node.get('data-label-kind')) for node in root.iter()):
+                errors.append('EXP_LOG_PAIR_REFERENCE_MARKER_LABEL_UNEXPECTED:'+owner)
+        elif mode=='NAME':
             if any(node.get('id')==owner+'-coordinates' or (node.get('data-owner')==owner and node.get('data-label-kind') in ('COORDINATE_LABEL','EQUATION_LABEL')) for node in root.iter()):
                 errors.append('EXP_LOG_PAIR_REFERENCE_COORDINATES_NOT_SUPPRESSED:'+owner)
             if not model:

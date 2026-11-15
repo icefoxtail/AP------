@@ -4,6 +4,8 @@ import test from 'node:test';import assert from 'node:assert/strict';import fs f
 import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {specFor} from '../production/phase2.mjs';
+import {assetIdentity} from '../production/contracts.mjs';
+import {typesetter} from '../production/typography.mjs';
 import {renderPlan} from '../production/render-plan.mjs';
 
 const observer=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
@@ -124,4 +126,61 @@ test('Suncheon Girls Q18 names exact inverse curves while leaving the default ev
   assert.ok((await check(numeric)).result.errors.includes('EXP_LOG_PAIR_NAME_LABEL_MISMATCH:g'));
   assert.equal(await frameError({...named.graphPlan,curves:[{...curves[0],formulaLabel:'3'},curves[1]]}),
     'EXP_LOG_PAIR_FORMULA_LABEL_INVALID:f');
+});
+
+test('shared logarithmic reference markers keep the exact y=1 tick and suppress only duplicate labels',async()=>{
+  const values=['2','3','1','3','2','3','1'];
+  const log=(id,base,rate)=>({id,family:'logarithmic-affine',base,coefficients:['1',rate,'1','1'],sourceDomain:{kind:'NATURAL_LOG_AFFINE'},
+    formulaLabel:'NAME',referenceLabelPoint:'G',referenceLabelMode:'MARKER'});
+  const raw={family:'exp-log-pair',identityLine:false,curves:[log('g','2','1/2'),log('h','4','1/4')],
+    axisTickValues:{x:['1','2','4','6'],y:['1','3']},
+    overlays:{points:[...values.map((y,x)=>({id:'F'+x,x:String(x),y,unnamed:true})),{id:'G',x:'0',y:'1',coordinates:false,unnamed:true}],
+      segments:values.slice(1).map((_,i)=>({id:'p'+i,from:'F'+i,to:'F'+(i+1),color:'BLUE'})),names:[{id:'nf',segment:'p0',text:'f'}]}};
+  const invoke=async(payload,options)=>{
+    const reply=await pythonWorker(payload,options);
+    assert.equal(reply.status,'OK',JSON.stringify(reply.result));return reply.result;
+  };
+  const {graphPlan}=await invoke({action:'frame_graph',graphPlan:raw});
+  const model=await invoke({action:'graph',graphPlan});
+  const identity=assetIdentity('shared-log-tick-fixture|1','SOLUTION_VISUAL','decisive-relation');
+  const spec=specFor({capability:'exp-log-pair-spike-v1',caption:'두 로그와 주기함수',graphPlan},model,identity.assetId);
+  const {labels}=await invoke({action:'prepare',spec});
+  assert.ok(labels.some(label=>label.id==='tick-y-1-label'&&label.target==='model-y-unit'));
+  assert.ok(labels.some(label=>label.id==='tick-y-3-label'));
+  assert.ok(!labels.some(label=>/^(G-name|G-coordinates|reference-[gh]-value)$/.test(label.id)));
+  const typeset=typesetter();
+  const fragments=Object.fromEntries(labels.map(label=>[label.id,typeset({id:label.id,owner:label.target||label.id,
+    factRole:'DERIVED_INTERMEDIATE',fontPx:20,...(label.math||label.kind==='POINT_NAME'?
+      {kind:'MATH',tex:label.tex||label.text.replaceAll('−','-')}:{kind:'TEXT',text:label.text})},identity)]));
+  const measurements=Object.fromEntries(Object.entries(fragments).map(([id,f])=>[id,[f.intrinsic.width,f.intrinsic.height]]));
+  const built=await invoke({action:'build',spec,measurements,fragments});
+  assert.deepEqual(built.witness.layout.unresolved,[]);
+  assert.deepEqual(built.witness.layout.suppressed,[]);
+  const leader=built.witness.layout.leaders.find(row=>row.ownerLabelId==='tick-y-1-label');
+  assert.ok(leader);
+  assert.deepEqual([leader.tickId,leader.axis,leader.value],['model-y-unit','y',1]);
+  assert.deepEqual(leader.from,labels.find(label=>label.id===leader.ownerLabelId).at);
+  const {aspectPolicy,...transform}=built.witness.coordinateModel;
+  const audit=async(svg,action='graphAudit',frame={...transform,displayScale:.6})=>invoke({action,graphPlan,svg,transform:frame},{script:observer});
+  assert.equal((await audit(model.svg,'modelBinding',model.transform)).status,'PASS');
+  const observed=await audit(built.svg);
+  assert.equal(observed.status,'PASS',JSON.stringify(observed.errors));
+  for(const [node,code] of [
+    ['<g id="G-name" data-owner="G" data-label-kind="POINT_NAME"/>','EXP_LOG_PAIR_REFERENCE_MARKER_LABEL_UNEXPECTED:G'],
+    ['<g id="G-coordinates"/>','EXP_LOG_PAIR_REFERENCE_MARKER_LABEL_UNEXPECTED:G'],
+    ['<g id="reference-h-value"/>','EXP_LOG_PAIR_REFERENCE_LABEL_NOT_SUPPRESSED:h'],
+  ]){
+    const bad=built.svg.replace('</svg>',node+'</svg>');
+    assert.ok((await audit(bad)).errors.includes(code));
+  }
+  for(const [change,code] of [
+    [p=>p.overlays.points.at(-1).x='1','EXP_LOG_PAIR_REFERENCE_LABEL_POINT_MISMATCH:g'],
+    [p=>p.overlays.points.at(-1).coordinates=true,'EXP_LOG_PAIR_REFERENCE_LABEL_POINT_MISMATCH:g'],
+    [p=>p.overlays.points.at(-1).unnamed=false,'EXP_LOG_PAIR_REFERENCE_LABEL_POINT_MISMATCH:g'],
+    [p=>p.curves[1].coefficients[3]='2','EXP_LOG_PAIR_REFERENCE_LABEL_POINT_MISMATCH:h'],
+    [p=>delete p.curves[1].referenceLabelPoint,'EXP_LOG_PAIR_REFERENCE_LABEL_MODE_INVALID:h'],
+  ]){
+    const bad=structuredClone(raw);change(bad);
+    assert.equal(await frameError(bad),code);
+  }
 });

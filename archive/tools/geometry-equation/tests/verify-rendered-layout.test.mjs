@@ -147,6 +147,53 @@ test('a tick leader may leave its exact circle-axis intersection but may not ent
     assert.ok(inspect(center,radius).errors.includes('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL'));
   }
 });
+function sharedLogTickCapture(){
+  const point=[100,160],labelBox={x:65,y:132,width:14,height:12};
+  const c=tickCapture({id:'model-y-unit',axis:'y',value:1,point,box:labelBox}),tick=c.labels[0];
+  tick.tickCalloutSchema='TICK_LABEL_OWNER_LEADER_v1';
+  const ink=(id,tag,box)=>{const evidence=visibleGeometryMeasurement(id,box);evidence.content[0].tag=tag;return evidence;};
+  const leader=(id,points,box,ownerLabelId,extra)=>({id,kind:'leader',role:'leader',points,client:box,ownerLabelId,
+    strokeWidthPx:.8,strokeColor:'#666',markerStart:'',markerEnd:'',visibilityEvidence:ink(id,'line',box),...extra});
+  c.geometry.push(leader(tick.id+'-owner-leader',[point,[79,144]],{x:79,y:144,width:21,height:16},tick.id,
+    {tickOwner:'model-y-unit',tickAxis:'y',tickValue:'1'}));
+  for(const [branch,points] of [['g',[[50,197],point,[150,123]]],['h',[[50,173],point,[150,147]]]]){
+    const id='f-'+branch+'-branch-0',box={x:50,y:points[2][1],width:100,height:points[0][1]-points[2][1]};
+    c.geometry.push({id,kind:'curve',role:'curve',branch:'REF_'+branch,points,client:box,strokeWidthPx:1,
+      visibilityEvidence:ink(id,'polyline',box)});
+    const reference='reference-'+branch,markerBox={x:96,y:156,width:8,height:8};
+    c.geometry.push({id:reference,kind:'circle',role:'logarithmic-reference',branch,state:'CLOSED',
+      at:point,radius:4,client:markerBox,strokeWidthPx:1,visibilityEvidence:ink(reference,'circle',markerBox)});
+  }
+  const dotBox={x:97,y:157,width:6,height:6};
+  c.geometry.push({id:'G',kind:'point',at:point,radius:3,client:dotBox,visibilityEvidence:ink('G','circle',dotBox)});
+  return c;
+}
+test('a shared log tick owner leader only touches the proven curves at its start',()=>{
+  const c=sharedLogTickCapture(),result=analyzeRenderedLayout(c);
+  assert.equal(result.status,'PASS',JSON.stringify(result.tickLabelEvidence[0].ownerLeader));
+  const evidence=result.tickLabelEvidence[0].ownerLeader.clearanceEvidence;
+  assert.ok(evidence.checks.some(row=>row.geometryId==='f-h-branch-0'&&row.ownerEndpointAllowed));
+});
+test('a shared log tick owner leader rejects forged branch, reference point and later contact',()=>{
+  const edits=[
+    c=>{c.geometry.find(item=>item.id==='f-g-branch-0').branch='REF_fake';},
+    c=>{c.geometry.find(item=>item.id==='reference-h').at=[100.01,160];},
+    c=>{c.geometry.find(item=>item.id==='reference-h').state='OPEN';},
+    c=>{c.geometry.find(item=>item.id==='model-y-unit-label-owner-leader').points[0]=[100,160.01];},
+    c=>{c.geometry.find(item=>item.id==='f-g-branch-0').points.splice(0,1,[50,197],[85,140]);},
+    c=>{c.geometry.find(item=>item.id==='f-g-branch-0').points.splice(0,1,[79,144],[89.5,152]);},
+    c=>{c.geometry.find(item=>item.id==='f-g-branch-0').points.splice(0,1,[80,150],[90,158]);},
+  ];
+  for(const change of edits){
+    const c=sharedLogTickCapture();
+    change(c);
+    const result=analyzeRenderedLayout(c);
+    assert.ok(result.errors.includes('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL:model-y-unit-label'),JSON.stringify(result.errors));
+  }
+  const wrongOwner=sharedLogTickCapture();
+  wrongOwner.geometry.find(item=>item.id==='model-y-unit-label-owner-leader').tickOwner='tick-y-3';
+  assert.ok(analyzeRenderedLayout(wrongOwner).errors.includes('TICK_LABEL_OWNER_LEADER_BINDING_MISMATCH:model-y-unit-label'));
+});
 test('cubic reproduction with x=-2 label moved to the upper-right panel fails',()=>{const r=analyzeRenderedLayout(tickCapture({box:{x:182.3,y:32,width:14,height:12}}));assert.ok(r.errors.includes('TICK_LABEL_ALONG_AXIS_MISALIGNMENT:tick-x--2-label'));});
 test('normal quartic tick label placement passes',()=>{const c=tickCapture({id:'tick-x-3',value:3,point:[300,200],box:{x:293,y:212,width:14,height:12}});assert.equal(analyzeRenderedLayout(c).status,'PASS');});
 test('adjacent-tick confusion fails even when owner metadata names a real tick',()=>{const second={id:'tick-x--1',kind:'tick',axis:'x',value:'-1',points:[[70,156],[70,164]],client:{x:70,y:156,width:0,height:8},strokeWidthPx:0};const c=tickCapture({box:{x:63,y:172,width:14,height:12},extraTicks:[second]});const r=analyzeRenderedLayout(c);assert.ok(r.errors.includes('TICK_LABEL_ALONG_AXIS_MISALIGNMENT:tick-x--2-label'));});
