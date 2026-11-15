@@ -646,3 +646,27 @@ Regression coverage is in `tests/archive-basic-scope-rebind.test.mjs`; the
 reviewed parent correction suite must continue to pass alongside it. This
 reconstruction was tested as new bytes after loss of an unpublished local
 implementation; historical test reports are not substituted for current runs.
+
+### Explicit M2 scope transport and ACTIVE family parents
+
+Two separately named profiles carry existing evidence across the registrar's display-parent boundary. They do not create mathematical, difficulty, primary-type, or curriculum judgments. Both require `PARTIAL_UIDS` and ordinary `FINAL_QA`, the exact whole-bank denominator, original immutable native review, unchanged student payload and renderer evidence, current ACTIVE definitions and binding, and the exact current canonical master. Shared registry changes and mixed evidence profiles are refused.
+
+1. `sourceReview.retainedScopeTransport` uses schema `archive-reviewed-retained-scope-transport-v1` and exactly the fields `curriculum`, `curriculumKey`, `courseKey`. The independent existing-primary disposition must expressly bind curriculum and the existing primary tuple. The same native UID's immutable RPM record supplies scope `M2-2`; the independent disposition is not represented as directly approving `courseKey`. This profile is limited to explicit `2015` / `M2-2` evidence. Explicit source or metadata nulls and conflicts are refused. Its optional `targetParentRef.retainedScopeParent`, schema `archive-reviewed-retained-primary-parent-v1`, carries only the exact L1/L2 of an ACTIVE `FAMILY_ACTIVE` RPM record with no own `templateKey`; PT/TPL authority remains the independently approved existing primary. `templateCandidates` are never an approval source.
+2. `targetParentRef.nativeSourceReview.crosswalkProfile = "ACTIVE_FAMILY_EXPLICIT_NATIVE_AFTER"` is a distinct parent profile. The immutable native `after` itself must expressly name curriculum, PT, TPL, RPM L1/L2 and the complete RPM path. The exact native-commit crosswalk must be ACTIVE / `FAMILY_ACTIVE`, have no own `templateKey`, and agree with the current unit, primary, scope and master leaf. No independent retained-primary authority is borrowed. The existing unmarked `DIRECT_BINDING_GAP` / `MISSING` contract is unchanged.
+
+For the second profile alone, an absent course can be carried by the additional exact marker:
+
+```json
+"courseTransport": {
+  "schemaVersion": "archive-native-family-course-transport-v1",
+  "field": "courseKey"
+}
+```
+
+This marker transports only `courseKey = "M2-2"`. Native `after.curriculum` must be `2015`; both immutable source snapshots and current source must have no own course property; current metadata must originally have no own course property. The native after must not already claim that field. The exact immutable RPM scope, current ACTIVE PT/TPL/binding/owning-pack scope, active unit parent and canonical master leaf are revalidated by the full native-parent validator before the value enters the accepted-after map. Explicit null, another semester, missing authority, registry mutation or another evidence profile still fails.
+
+The scope and course proofs record original metadata property presence. Receipt-backed replays may reconstruct an originally absent value from a serialized `before: null` only after the writer-issued source-review sidecar, full stored proof, current metadata/identity/runtime rows and request binding have been verified. An explicit initial null is never treated as absence. Parent proof hashes and the complete reconstructed source-review proof remain subject to exact replay comparison. Removing the opt-in, sidecar, proof or presence record cannot select a generic fallback.
+
+These profiles support metadata-only requests when current student/source values already agree with the immutable review. They do not require status declarations to be written into otherwise unchanged source files. Official writer, replay, native reuse, current catalog/parent/readiness checks and consumed-inbox typed Consumer verification remain separate release gates.
+
+AutoMeta can reuse an already issued explicit native-family approval when an older pending cursor differs only in the four difficulty metadata fields and both source versions omit both rationale properties. The complete receipt, source-review sidecar, immutable native review, current records, ACTIVE tuple and native parent must first pass their existing replay checks. The selected request must explicitly carry both rationale values, and both issued rationale bindings must come from exact `NATIVE_ITEM_FIELD` values. Other source-review profiles, explicit null rationale properties, other changed fields, missing or altered witnesses, and ordinary unmarked native approvals do not enter this path. It returns the existing receipt without writing source or issuing approval; the ordinary producer still requires its source rationale.

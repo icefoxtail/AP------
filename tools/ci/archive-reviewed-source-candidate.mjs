@@ -247,7 +247,7 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
   };
   exactKeys(manifest, ['schemaVersion', 'materializationId', 'baseCommit', 'identityRef', 'requestRefs', 'outputScope', 'files'], ['transportProfile']);
   requireThat(manifest.schemaVersion === MANIFEST_SCHEMA &&
-    (manifest.transportProfile === undefined || manifest.transportProfile === 'M3_REVIEWED_METADATA_V1'), 'MANIFEST_SCHEMA');
+    [undefined, 'M3_REVIEWED_METADATA_V1', 'M2_NATIVE_PROPOSAL_V3'].includes(manifest.transportProfile), 'MANIFEST_SCHEMA');
   exactKeys(manifest.identityRef, ['path', 'blobSha1', 'sha256']);
   requireThat(manifest.identityRef.path === 'archive/data/question_identity_map.json', 'IDENTITY_PATH');
   const identity = immutable(baseCommit, manifest.identityRef.path, { metadataOnly: false, maxBytes: 64 * 1024 * 1024 });
@@ -331,7 +331,7 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
           }
         }
       }
-      requests.push({ file, request, source, preservation, proposalCommits: new Set(), rendererCommits: new Set(), selectedV1RegistryChanges: [] });
+      requests.push({ file, request, source, preservation, proposalCommits: new Set(), rendererCommits: new Set(), selectedV1RegistryChanges: [], selectedV3RegistryChanges: [] });
     }
   }
   const materializationRequests = requests.filter(r => !r.preservation), used = new Set(), changedItems = new Map();
@@ -508,6 +508,113 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
     ctx.selectedV1RegistryChanges.push(changes[0]);
     ctx.proposalCommits.add(p.finalizationCommit);
   }
+  function m2FinalizationV3(ctx, item, native, nativeItem) {
+    const { request, source } = ctx, spec = item.sourceReview, p = spec.proposalFinalization;
+    exactKeys(p, ['schemaVersion', 'finalizationCommit', 'finalizationRef', 'proposalSelections']);
+    requireThat(native.schemaVersion === 'm2-s2-meta-review-v1' && Array.isArray(p.proposalSelections) &&
+      p.proposalSelections.length === 1 && Array.isArray(native.proposals), 'M2_V3_PROPOSAL_SCOPE');
+    const selection = p.proposalSelections[0];
+    exactKeys(selection, ['documentRef', 'index', 'proposalSha256', 'questionUid', 'sourceOrdinal'], ['proposalId']);
+    evidenceRef(selection.documentRef);
+    requireThat(selection.documentRef.path === spec.reviewPath && selection.documentRef.sha256 === spec.reviewRef.sha256 &&
+      Number.isSafeInteger(selection.index) && selection.index >= 0 && SHA256.test(selection.proposalSha256) &&
+      selection.questionUid === item.questionUid && selection.sourceOrdinal === item.sourceOrdinal, 'M2_V3_NATIVE_SELECTION');
+    const proposal = native.proposals[selection.index];
+    requireThat(plain(proposal) && digest(stable(proposal)) === selection.proposalSha256 &&
+      selection.proposalId === (proposal.id ?? proposal.proposalId) && text(selection.proposalId, 160) &&
+      ['CC', 'NEW_TPL', 'NEW_PT'].includes(proposal.type) && proposal.supportingQuestionUids?.includes(item.questionUid) &&
+      equal(nativeItem.proposalRefs, [selection.proposalId]), 'M2_V3_NATIVE_PROPOSAL');
+    bound(p.finalizationRef, request, item);
+    const proof = copy(p.finalizationRef, p.finalizationCommit, p.finalizationRef.path,
+      new Set(['archive-independent-m2-native-proposal-disposition-v1']), 'm2-proposal-v3').value;
+    const noNewApproval = s => s?.newFullMathematicalQa === false && s?.newReview2Claims === 0 &&
+      s?.newMetadataApprovals === 0 && s?.newDifficultyJudgments === 0;
+    requireThat(proof.status === 'NARROW_PROPOSALS_FINALIZED_REGISTRATION_PENDING' && noNewApproval(proof.scope) &&
+      proof.scope.newSourceContentEdits === 0, 'M2_V3_FINALIZATION_SCOPE');
+    const app = one(proof.applications, item);
+    requireThat(app.examId === native.examId && app.sourcePath === source.path &&
+      equal(app.nativeReviewRef, { commit: spec.reviewCommit, path: spec.reviewPath, sha256: spec.reviewRef.sha256 }) &&
+      app.nativeItemStableSha256 === digest(stable(nativeItem)) && equal(app.proposalSelections, p.proposalSelections) &&
+      app.newMathematicalQa === false && app.newMetadataApproval === false && app.difficultyChanged === false &&
+      equal(app.nativeProtectedStudentFieldsChanges, []) && Array.isArray(app.decisions) && app.decisions.length === 1 &&
+      equal(app.decisions[0].selection, selection) && text(app.reviewer, 160) && text(app.reason), 'M2_V3_APPLICATION');
+    const primaryKeys = ['standardCourse', 'standardUnitKey', 'subUnitKey', 'problemTypeKey', 'templateKey'];
+    exactKeys(app.reviewedPrimaryContext, primaryKeys);
+    requireThat(primaryKeys.every(k => text(app.reviewedPrimaryContext[k], 160) && app.reviewedPrimaryContext[k] === item.after[k]),
+      'M2_V3_PRIMARY_CONTEXT');
+    bound(app.independentReviewRef, request, item);
+    const witness = copy(app.independentReviewRef, p.finalizationCommit, app.independentReviewRef.path,
+      new Set(['archive-independent-m2-native-definition-finalization-v1']), 'm2-proposal-v3').value;
+    requireThat(witness.decision === 'APPROVE_EXACT_NEW_DEFINITIONS_AND_REUSE_APPLICATIONS' &&
+      witness.reviewer === app.reviewer && noNewApproval(witness) && witness.existingDefinitionsModified === 0 &&
+      witness.sourceWrites === 0 && witness.canonicalWrites === 0 && witness.officialCompilerResolverConsumerStillRequired === true &&
+      witness.actualMainRegistrationClaimed === false && witness.currentMainChecked === app.sourceSnapshot?.commit, 'M2_V3_INDEPENDENT_SCOPE');
+    const original = one(witness.rows, item), choice = app.decisions[0];
+    requireThat(['examId', 'sourceOrdinal', 'questionUid', 'sourcePath', 'nativeReviewRef', 'nativeItemStableSha256',
+      'sourceSnapshot', 'rendererAssets', 'reviewedPrimaryContext'].every(k => equal(original[k], app[k])) &&
+      equal(original.nativeProposal, proposal) && equal(original.proposalSelection, selection) &&
+      equal(original.nativeAfter, nativeItem.after) && equal(original.nativeActiveDefinitionMatch, nativeItem.activeDefinitionMatch ?? null) &&
+      equal(original.decision, choice) && original.protectedPayloadFieldsUnchanged === true &&
+      original.newFullMathematicalQa === false && original.newReview2 === false && original.newMetadataApproval === false &&
+      original.newDifficultyJudgment === false && original.sourceWrites === 0, 'M2_V3_ORIGINAL_WITNESS');
+    const operation = source.changes.find(c => c.questionUid === item.questionUid && c.sourceOrdinal === item.sourceOrdinal);
+    const exactChange = (change, key, definition) => {
+      requireThat(plain(change) && change.before === null && equal(change.match, { [key]: definition?.[key] }) &&
+        equal(change.after, definition) && definition?.status === 'ACTIVE' &&
+        witness.approvedRegistryChanges?.filter(c => equal(c, change)).length === 1, 'M2_V3_APPROVED_REGISTRY_CHANGE');
+      const matches = request.registryChanges.filter(c => {
+        const { evidenceRefs: ignored, ...core } = c;
+        return equal(core, change);
+      });
+      requireThat(matches.length === 1 && [p.finalizationRef, app.independentReviewRef]
+        .every(ref => matches[0].evidenceRefs?.some(r => equal(r, ref))), 'M2_V3_SELECTED_REGISTRY_CHANGE');
+      ctx.selectedV3RegistryChanges.push(matches[0]);
+    };
+    const definition = choice.definition;
+    if (proposal.type === 'CC') {
+      const op = operation.metadataFields.find(f => f.field === 'crossConceptKeys');
+      requireThat(/^CC_[A-Z0-9_]+$/.test(definition?.conceptKey || '') && Array.isArray(op?.before) &&
+        !op.before.includes(definition.conceptKey) && equal(op.after, [...op.before, definition.conceptKey]) &&
+        equal(item.after.crossConceptKeys, op.after), 'M2_V3_CONCEPT_APPLICATION');
+      if (choice.disposition === 'ADD_ONLY') exactChange(choice.registryChange, 'conceptKey', definition);
+      else {
+        requireThat(choice.disposition === 'REUSE_ACTIVE' && choice.registryChange === undefined &&
+          text(choice.canonicalPath, 500), 'M2_V3_REUSE_SCOPE');
+        const ref = choice.prerequisiteDefinitionRef;
+        exactKeys(ref, ['commit', 'path', 'sha256', 'definitionSha256']);
+        const prerequisite = immutable(ref.commit, ref.path);
+        requireThat(prerequisite.sha256 === ref.sha256 && ref.definitionSha256 === digest(stable(definition)) &&
+          prerequisite.value.registryChanges?.filter(c => c.path === choice.canonicalPath &&
+            c.match?.conceptKey === definition.conceptKey && equal(c.after, definition)).length === 1, 'M2_V3_REUSE_AUTHORITY');
+        // The public prerequisite is authority data, not proof that an ACTIVE
+        // definition is installed. The registrar checks the actual canonical
+        // before/after state; no prerequisite row is added by this transport.
+      }
+    } else {
+      requireThat(choice.disposition === 'ADD_ONLY' && definition?.templateKey === item.after.templateKey &&
+        definition.parentProblemTypeKey === item.after.problemTypeKey &&
+        operation.metadataFields.some(f => f.field === 'templateKey' && f.after === definition.templateKey), 'M2_V3_TEMPLATE_APPLICATION');
+      exactChange(choice.registryChange, 'templateKey', definition);
+      if (proposal.type === 'NEW_PT') {
+        requireThat(manifest.transportProfile === 'M2_NATIVE_PROPOSAL_V3' &&
+          operation.metadataFields.some(f => f.field === 'problemTypeKey' && f.after === item.after.problemTypeKey) &&
+          choice.problemTypeDefinition?.problemTypeKey === item.after.problemTypeKey &&
+          choice.problemTypeDefinition.ownerPack === definition.ownerPack, 'M2_V3_PRIMARY_PROFILE');
+        exactChange(choice.problemTypeRegistryChange, 'problemTypeKey', choice.problemTypeDefinition);
+        const change = choice.bindingRegistryChange, binding = choice.binding;
+        const expected = { problemTypeKey: item.after.problemTypeKey, curriculum: original.nativeRpmContext?.record?.curriculum,
+          standardCourse: item.after.standardCourse, standardUnitKey: item.after.standardUnitKey, subUnitKey: item.after.subUnitKey };
+        requireThat(plain(change) && change.collection === 'bindings' && change.before === null && equal(change.match, expected) &&
+          equal(change.after, binding) && Object.entries(expected).every(([k,v]) => binding?.[k] === v) && binding.status === 'ACTIVE' &&
+          binding.ownerPack === definition.ownerPack && equal(binding.supportingQuestionUids, [item.questionUid]) && binding.supportingItemCount === 1 &&
+          witness.approvedRegistryChanges?.filter(c => equal(c, change)).length === 1, 'M2_V3_PRIMARY_BINDING');
+        const matches = request.registryChanges.filter(c => { const { evidenceRefs: ignored, ...core } = c; return equal(core, change); });
+        requireThat(matches.length === 1 && [p.finalizationRef, app.independentReviewRef]
+          .every(ref => matches[0].evidenceRefs?.some(r => equal(r, ref))), 'M2_V3_SELECTED_REGISTRY_CHANGE');
+        ctx.selectedV3RegistryChanges.push(matches[0]);
+      }
+    }
+  }
   for (const ctx of requests) {
     const { request, preservation } = ctx;
     if (preservation) {
@@ -543,6 +650,8 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
         const p = spec.proposalFinalization;
         if (p.schemaVersion === 'archive-native-proposal-finalization-v1') {
           conceptFinalizationV1(ctx, item, native, nativeItem);
+        } else if (p.schemaVersion === 'archive-native-proposal-finalization-v3') {
+          m2FinalizationV3(ctx, item, native, nativeItem);
         } else {
         exactKeys(p, ['schemaVersion', 'finalizationCommit', 'finalizationRef', 'proposalSelections']);
         requireThat(p.schemaVersion === 'archive-native-proposal-finalization-v2' && Array.isArray(p.proposalSelections) && p.proposalSelections.length > 0, 'PROPOSAL_SPEC');
@@ -642,11 +751,13 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
       const approved = refs.flatMap(ref => {
         const doc = supplementary(ref, ctx).value;
         if (['archive-cross-concept-narrow-definition-finalization-v1',
-          'archive-reviewed-cross-concept-registry-change-proposal-v1'].includes(doc.schemaVersion)) return [];
+          'archive-reviewed-cross-concept-registry-change-proposal-v1',
+          'archive-independent-m2-native-proposal-disposition-v1',
+          'archive-independent-m2-native-definition-finalization-v1'].includes(doc.schemaVersion)) return [];
         return [...(doc.registryChanges || []), ...(doc.approvedRegistryChanges || []),
           ...(doc.change ? [doc.change] : []), ...(doc.applications || []).flatMap(a => (a.decisions || []).map(d => d.registryChange).filter(Boolean))];
       });
-      requireThat(ctx.selectedV1RegistryChanges.some(row => equal(row, change)) || approved.some(row => equal(row, core)),
+      requireThat([...ctx.selectedV1RegistryChanges, ...ctx.selectedV3RegistryChanges].some(row => equal(row, change)) || approved.some(row => equal(row, core)),
         'REGISTRY_CHANGE_NOT_IMMUTABLE_PROPOSAL');
     }
   }

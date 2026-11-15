@@ -27,11 +27,12 @@ const IDENTITY = 'archive/data/question_identity_map.json';
 const BASIC_LINKS = 'archive/data/basic-scope-source-links.json';
 const AUTHORITY = 'archive/data/meta-foundation/canonical/fixture/pack.json';
 const RECEIPT = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/own-reviewed-exam.json';
+const AUDIT_PRIOR_RECEIPT = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/prior-full-audit.json';
 const PLANNED = [META, AUTHORITY, RECEIPT].sort();
 const ALLOWED = [/^archive\/db\.js$/, /^archive\/data\/question_metadata\.json$/,
   /^archive\/data\/archive2-(?:catalog|canonical-input-manifest)\.json$/];
 
-function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
+function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, auditSourcePreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, text, target = root) => {
@@ -60,6 +61,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
   ].join('\n') + '\n');
   write(SOURCE, 'window.questions = '+JSON.stringify(Array.from({length:partial?24:1},(_,i)=>({id:i+1})))+';\n');
   write(EVIDENCE, json({ reviewed: 'fixture approval evidence, without student content' }));
+  if (auditSourcePreservation) write(AUDIT_PRIOR_RECEIPT, json({ fixture: 'immutable FULL audit authority; official validation remains required' }));
   write(DIFFICULTY_EVIDENCE, json({ schemaVersion: 'archive-difficulty5-reviewed-correction-v1', rows: [] }));
   write(META, json({ records: [{ questionUid: 'fixture', before: true }] }));
   write(IDENTITY, json({ records: [{ questionUid: 'fixture', sourceFingerprint: 'old' }] }));
@@ -104,6 +106,14 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
     Object.assign(request.approval, { metadataReviewed: true, approvedBy: 'fixture existing approval preservation',
       sourceRebind: { priorReceiptRef: evidenceRef } });
     Object.assign(request.items[0], { before: {}, after: {} });
+  }
+  if (auditSourcePreservation) {
+    const priorReceiptRef = { path: AUDIT_PRIOR_RECEIPT, sha256: sha(fs.readFileSync(path.join(root, AUDIT_PRIOR_RECEIPT))) };
+    Object.assign(request.approval, { type: 'META_PIPELINE_AUDIT', metadataReviewed: true,
+      approvedBy: 'fixture existing FULL audit subset preservation', evidenceRefs: [priorReceiptRef],
+      sourceRebind: { schemaVersion: 'archive-native-audit-source-preservation-v1', requestPath: REQUEST,
+        priorCommit: baseSha, priorReceiptRef } });
+    Object.assign(request.items[0], { before: {}, after: {}, reason: 'unchanged subset; no new approval', evidenceRefs: [priorReceiptRef] });
   }
   if (basicPreservation) {
     request.schemaVersion = 'archive-basic-scope-rebind-request-v1'; delete request.scope; delete request.registryChanges;
@@ -741,6 +751,64 @@ test('FINAL_QA partial source preservation verifies selected approval separately
   const checks=verifyNativeRequests({root:f.root,requests:f.selected(),run:f.run});
   assert.deepEqual(checks.find(c=>c.id==='native-consumer').preservedNativeApprovals,
     {requests:1,preservedMetadataApprovals:1,newMetadataApprovals:0,approvalTypes:['FINAL_QA']});
+});
+
+test('source-only audit subset reaches PR and main preview, official phases and typed Consumer without a D5 edge', t => {
+  const f = fixture(t, { partial: true, auditSourcePreservation: true, otherOwner: false });
+  const [selected] = f.selected();
+  assert.equal(selected.kind, 'native-approval-preservation');
+  assert.equal(selected.preservedApprovalType, 'META_PIPELINE_AUDIT');
+  assert.equal(selected.sourceRebind, undefined, 'source-only preservation does not fabricate a D5 dependency');
+  assert.equal(selected.auditSourcePreservation.schemaVersion, 'archive-native-audit-source-preservation-v1');
+  assert.equal(selected.auditSourcePreservation.priorCommit, f.baseSha);
+  assert.equal(selected.questionCount, 1); assert.equal(selected.sourceQuestionCount, 24);
+  assert.deepEqual(selectPendingNativeRequests({ root: f.root, headSha: f.headSha }), f.selected());
+  const proof = f.produce(); assert.equal(proof.status, 'PASS');
+  assert.deepEqual(proof.nativePreview.checks.find(c => c.id === 'native-consumer').preservedNativeApprovals,
+    { requests: 1, preservedMetadataApprovals: 1, newMetadataApprovals: 0, approvalTypes: ['META_PIPELINE_AUDIT'] });
+  assert.equal(f.validate(proof).reusable, true); f.assertShadowsRemoved();
+});
+
+for (const [name, mutation, error = /AUDIT_SOURCE_PRESERVATION_SCOPE/] of [
+  ['wrong approval type', r => { r.approval.type = 'FINAL_QA'; }],
+  ['missing metadata review', r => { delete r.approval.metadataReviewed; }],
+  ['full scope', r => { delete r.scope; }],
+  ['whole selection disguised as subset', r => { r.expectedQuestionCount = 1; }],
+  ['source review mixed into an item', r => { r.items[0].sourceReview = {}; }],
+  ['changed before', r => { r.items[0].before = { difficultyBucket: 2 }; }],
+  ['changed after', r => { r.items[0].after = { templateKey: 'NEW' }; }],
+  ['registry write', r => { r.registryChanges = [{}]; }],
+  ['identity-only mode', r => { r.registrationMode = 'IDENTITY_FINGERPRINT_ONLY'; }],
+  ['unknown source-only option', r => { r.approval.sourceRebind.allow = true; }],
+  ['nonimmutable prior commit', r => { r.approval.sourceRebind.priorCommit = 'main'; }],
+  ['wrong self request path', r => { r.approval.sourceRebind.requestPath = OTHER; }],
+  ['wrong prior directory', r => { r.approval.sourceRebind.priorReceiptRef.path = EVIDENCE; }],
+  ['unbound item prior evidence', r => { r.items[0].evidenceRefs = []; }],
+  ['unbound approval prior evidence', r => { r.approval.evidenceRefs = []; }],
+  ['mixed difficulty dependency', r => { r.approval.sourceRebind.difficultyRequestRef = { path: DIFFICULTY_REQUEST, sha256: 'a'.repeat(64) }; }, /AUDIT_DEPENDENCY_SCOPE/],
+  ['unknown preservation subtype', r => { r.approval.sourceRebind.schemaVersion = 'unreviewed-audit-source'; }, /PRESERVATION_SCOPE/],
+  ['duplicate selected UID', r => { r.items.push({ ...r.items[0], sourceOrdinal: 6 }); }, /SELECTED_UID_SCOPE/],
+]) test(`source-only audit preview refuses ${name}`, t => {
+  const f = fixture(t, { partial: true, auditSourcePreservation: true, otherOwner: false, mutateRequest: mutation });
+  assert.throws(f.selected, error);
+  assert.throws(() => selectPendingNativeRequests({ root: f.root, headSha: f.headSha }), error);
+  assert.equal(f.calls.length, 0);
+});
+
+test('source-only audit preview retains fixed evidence/source checks and official refusal/count guards', t => {
+  for (const [file, expected] of [[AUDIT_PRIOR_RECEIPT, /EVIDENCE_DRIFT/], [SOURCE, /SOURCE_NOT_FIXED/]]) {
+    const f = fixture(t, { partial: true, auditSourcePreservation: true });
+    f.write(file, fs.readFileSync(path.join(f.root, file), 'utf8') + '\n');
+    assert.throws(f.selected, expected);
+  }
+  for (const phase of ['dry-run', 'write', 'projection']) {
+    const refused = fixture(t, { partial: true, auditSourcePreservation: true });
+    refused.hook[phase] = () => { throw Error('STRICT_PRIOR_FULL_AUDIT_REPLAY_REFUSED'); };
+    assert.throws(refused.produce, /STRICT_PRIOR_FULL_AUDIT_REPLAY_REFUSED/);
+    const promoted = fixture(t, { partial: true, auditSourcePreservation: true });
+    promoted.hook.result = (p, result) => p === phase ? { ...result, newMetadataApprovals: 1 } : result;
+    assert.throws(promoted.produce, /DRY_RUN_NOT_PASS|WRITE_PLAN_MISMATCH|PROJECTION_NOT_VERIFIED/);
+  }
 });
 
 test('preservation refuses claimed new approvals or missing preservation counts in every official phase', t => {

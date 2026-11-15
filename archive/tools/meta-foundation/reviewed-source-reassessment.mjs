@@ -8,6 +8,8 @@ import { validateNativeProposalFinalization } from "./reviewed-proposal-finaliza
 import { validateReviewedCurrentRendererContinuity } from "./reviewed-current-renderer-continuity.mjs";
 import { bindReviewedNativeScopeFields } from "./reviewed-native-scope-fields.mjs";
 import { validateReviewedNativeRetainedFields } from "./reviewed-native-retained-fields.mjs";
+import { bindReviewedRetainedScopeTransport } from "./reviewed-retained-scope-transport.mjs";
+import { bindReviewedNativeFamilyCourse } from "./reviewed-native-parent.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -174,7 +176,7 @@ export function bindUnchangedReviewedPrimary({ native, row, accepted, patch, que
 }
 
 export function validateReviewedSourceReassessment({ root, request, patch, metadata, question, final, supportedFields,
-  canonicalBefore, canonicalAfter, cache = new Map() }) {
+  canonicalBefore, canonicalAfter, issuedSourceReview, cache = new Map() }) {
   if (request.scope !== "PARTIAL_UIDS" || request.approval?.type !== "FINAL_QA" ||
       request.approval.sourceRebind || patch.rebind !== undefined || !Object.hasOwn(patch.after, "sourceFingerprint"))
     fail("requires an exclusive PARTIAL_UIDS FINAL_QA fingerprint repair");
@@ -228,6 +230,10 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   const retainedNativeFields = validateReviewedNativeRetainedFields({ root, request, patch, native: loaded, row,
     accepted, question, final, canonicalBefore, canonicalAfter, studentPayload, studentFields: REASSESSED_STUDENT_FIELDS, bankFromBytes, cache });
   if (retainedNativeFields) Object.assign(accepted, retainedNativeFields.fields);
+  const retainedScopeTransport = bindReviewedRetainedScopeTransport({ root, request, patch, native: loaded, row,
+    metadata, accepted, question, final, retainedNativeFields, canonicalBefore, canonicalAfter,
+    issuedScopeProof: issuedSourceReview?.retainedScopeTransport, cache });
+  if (retainedScopeTransport) Object.assign(accepted, retainedScopeTransport.fields);
   const rationaleBindings = {};
   if (!identityOnly) for (const field of ["primaryMethod", "decisiveStep"]) {
     if (!Object.hasOwn(patch.after, field) && !Object.hasOwn(question, field)) continue;
@@ -268,6 +274,14 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     accepted[field] = value;
     rpmBindings[field] = { origin, valueSha256: sha256(stable(value)) };
   }
+  const nativeFamilyCourseTransport = bindReviewedNativeFamilyCourse({ root, request, patch, native: loaded, row,
+    metadata, question, final, accepted, canonicalBefore, canonicalAfter,
+    issuedProof: issuedSourceReview?.nativeFamilyCourseTransport,
+    sourceReview: { schemaVersion: patch.sourceReview.schemaVersion, nativeSchemaVersion: review.schemaVersion,
+      reviewCommit: loaded.spec.reviewCommit, reviewPath: loaded.spec.reviewPath, reviewRef: loaded.spec.reviewRef,
+      questionUid: patch.questionUid, sourceOrdinal: ordinal, studentPayloadSha256: sha256(stable(payload)),
+      rpmBindings, scope: "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false } });
+  if (nativeFamilyCourseTransport) Object.assign(accepted, nativeFamilyCourseTransport.fields);
   for (const [key, value] of Object.entries(patch.after)) {
     if (DERIVED_FIELDS.has(key) || equal(value, metadata[key] ?? null)) continue;
     // Source curriculum identifiers may be carried verbatim; they are never guessed from the reviewed grade.
@@ -296,6 +310,8 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     ...(unchangedPrimary ? { unchangedPrimaryBindings: unchangedPrimary.proof } : {}),
     ...(scopeFieldBindings ? { scopeFieldBindings: scopeFieldBindings.proof } : {}),
     ...(retainedNativeFields ? { retainedNativeFields: retainedNativeFields.proof } : {}),
+    ...(retainedScopeTransport ? { retainedScopeTransport: retainedScopeTransport.proof } : {}),
+    ...(nativeFamilyCourseTransport ? { nativeFamilyCourseTransport: nativeFamilyCourseTransport.proof } : {}),
     ...(proposalFinalization?.proof ? { proposalFinalization: proposalFinalization.proof } : {}),
     ...(proposalFinalization?.technicalBindings?.length ? { technicalProposalBindings: proposalFinalization.technicalBindings } : {}),
     scope: identityOnly ? "IDENTITY_BINDING_ONLY" : "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false };

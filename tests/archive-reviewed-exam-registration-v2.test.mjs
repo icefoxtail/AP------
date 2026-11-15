@@ -12,6 +12,7 @@ import { validateActiveMetaFields, loadActiveMetaRegistry } from "../archive/too
 import { nativeReviewedRendererRebind } from "../archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs";
 import { buildReviewedRendererBinding } from "../archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs";
 import { loadAuditPreservation } from "../archive/tools/meta-foundation/native-audit-preservation.mjs";
+import { auditSourceBindingPath } from "../archive/tools/meta-foundation/native-audit-source-preservation.mjs";
 import { buildReviewedSourceBinding, reviewedSourceBindingPath } from "../archive/tools/meta-foundation/reviewed-source-binding.mjs";
 import { verifyChangedUidConsumerApproval } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
 import canonical from "../archive/archive2-canonical.js";
@@ -4729,7 +4730,7 @@ function expandOriginalAuditInputs(f, count) {
 }
 
 function auditedSourcePreservationFixture(t, { solution = false, legacySourceAudit = false, consumerParent = false,
-  consumerCatalog = false, questionCount = 1, selectedOrdinals = null } = {}) {
+  consumerCatalog = false, questionCount = 1, selectedOrdinals = null, choiceRenderer = false } = {}) {
   const f = fixture(t, '중2 수학', '2015');
   legacySourceAudit ||= consumerParent;
   const canonicalSource = consumerParent || consumerCatalog;
@@ -4744,6 +4745,14 @@ function auditedSourcePreservationFixture(t, { solution = false, legacySourceAud
   for (const change of f.request.registryChanges)
     for (const row of change.after?.templates || []) row.ownerPack = 'NEW_COURSE';
   for (const p of [META, 'archive/data/question_identity_map.json']) f.put(p, knownUnit(f.read(p)));
+  if (choiceRenderer) {
+    f.q.choices[0] = '<img src="assets/images/audit-choice.svg">';
+    f.put('archive/assets/images/audit-choice.svg', typeof choiceRenderer === 'string' ? choiceRenderer
+      : '<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L1 1"/></svg>\n');
+    for (const p of [META, 'archive/data/question_identity_map.json']) {
+      const doc = f.read(p); doc.records[0].sourceFingerprint = auditSourceFingerprint(f.q); f.put(p, doc);
+    }
+  }
   const sourcePath = 'archive/exams/' + f.request.sourceArchiveFile;
   if (legacySourceAudit) {
     f.q.crossConceptKeys = [];
@@ -4874,6 +4883,158 @@ function auditedSourcePreservationFixture(t, { solution = false, legacySourceAud
   };
   return { ...f, request, prior, old, beforeQuestion, beforeBank, bank, sourcePath, registeredPath, save, difficulty, native, ref, checkpoint, projectedParent };
 }
+
+function auditFullSourceOnlyFixture(t, { questionCount = 4, selected = [1, 3], superseded = [], choiceRenderer = false } = {}) {
+  const f = auditedSourcePreservationFixture(t, { questionCount, choiceRenderer, legacySourceAudit: true });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const fullReceiptPath = f.registeredPath, fullReceipt = f.read(fullReceiptPath);
+  // Model later, separate approvals only as protected fixture state. They are
+  // deliberately ineligible for reuse of this earlier FULL audit receipt.
+  for (const p of [META, 'archive/data/meta-foundation/runtime/new-course-v1.json']) {
+    const doc = f.read(p);
+    for (const r of doc.records) if (superseded.includes(r.sourceOrdinal)) {
+      r.metadataApprovalType = 'FINAL_QA'; r.metadataRevision = 'fixture-later-reviewed-state';
+    }
+    f.put(p, doc);
+  }
+  const priorCommit = f.checkpoint('published full preservation and any later approvals');
+  const sourceBefore = fs.readFileSync(path.join(f.root, f.sourcePath));
+  f.put(f.sourcePath, sourceBefore.toString() + '// unrelated whole-source revision\n');
+  const requestId = 'audit-source-only', requestPath = '.archive-meta-register/inbox/' + requestId + '.json';
+  const ref = f.ref(fullReceiptPath);
+  const request = { schemaVersion: 'archive-reviewed-exam-meta-register-request-v2', requestId,
+    examUid: fullReceipt.examUid, sourceArchiveFile: fullReceipt.sourceArchiveFile,
+    expectedSourceBlobSha1: blob(fs.readFileSync(path.join(f.root, f.sourcePath))), expectedQuestionCount: questionCount,
+    scope: 'PARTIAL_UIDS', registryChanges: [],
+    approval: { type: 'META_PIPELINE_AUDIT', metadataReviewed: true, approvedBy: 'source-only-preservation',
+      metaPipelineAudit: fullReceipt.approval.metaPipelineAudit, evidenceRefs: [ref],
+      sourceRebind: { schemaVersion: 'archive-native-audit-source-preservation-v1', requestPath, priorCommit, priorReceiptRef: ref } },
+    items: selected.map(n => ({ questionUid: fullReceipt.appliedRecords.find(r => r.sourceOrdinal === n).questionUid,
+      sourceOrdinal: n, before: {}, after: {}, reason: 'Keep exactly the still-current original audit', evidenceRefs: [ref] })) };
+  const save = () => f.put(requestPath, request); save();
+  const native = (ordinal = selected[0], caughtUp = false) => {
+    const args = f.native(ordinal); args.nativeSource.bytes = fs.readFileSync(path.join(f.root, f.sourcePath));
+    args.nativeSource.blobSha1 = blob(args.nativeSource.bytes);
+    args.nativeSource.bank = loadSourceBank(args.nativeSource.bytes.toString());
+    args.question = args.nativeSource.bank[ordinal - 1];
+    if (caughtUp) args.previous = structuredClone(args.question);
+    return args;
+  };
+  return { ...f, request, requestPath, save, native, fullReceiptPath, fullReceipt, sourceBefore,
+    registeredPath: 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/' + requestId + '.json',
+    bindingPath: auditSourceBindingPath(requestId) };
+}
+
+function auditSourceTreeBytes(root) {
+  const visit = relative => fs.readdirSync(path.join(root, relative), { withFileTypes: true })
+    .filter(e => e.name !== '.git').sort((a, b) => a.name.localeCompare(b.name, 'en'))
+    .flatMap(e => e.isDirectory() ? visit(path.join(relative, e.name))
+      : [[path.join(relative, e.name), hash(fs.readFileSync(path.join(root, relative, e.name)))]]);
+  return visit('');
+}
+
+test('source-only audit subset replays the entire FULL24 and preserves twelve still-current approvals without D5', t => {
+  const f = auditFullSourceOnlyFixture(t, { questionCount: 24, selected: Array.from({ length: 12 }, (_, i) => i + 1),
+    superseded: Array.from({ length: 11 }, (_, i) => i + 14), choiceRenderer: true });
+  const selected = new Set(f.request.items.map(r => r.questionUid));
+  const files = [META, 'archive/data/question_identity_map.json', 'archive/data/meta-foundation/runtime/new-course-v1.json'];
+  const before = files.map(p => f.read(p)), source = fs.readFileSync(path.join(f.root, f.sourcePath));
+  const full = fs.readFileSync(path.join(f.root, f.fullReceiptPath));
+  assert.equal(f.fullReceipt.appliedRecords.length, 24);
+  const dry = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(dry.totalQuestions, 12); assert.equal(dry.newMetadataApprovals, 0);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read(f.registeredPath);
+  assert.equal(receipt.auditPreservation.priorFullCount, 24);
+  assert.equal(receipt.auditPreservation.publicCurrentAuthorityUids.length, 13);
+  assert.equal(receipt.auditPreservation.newDifficultyApprovals, 0);
+  assert.equal(receipt.preservedMetadataApprovals, 12); assert.deepEqual(receipt.fingerprintRepairs, []);
+  assert.equal(receipt.auditPreservation.difficultyRequestRef, undefined);
+  for (const p of files) assert.deepEqual(f.read(p).records.filter(r => !selected.has(r.questionUid)),
+    before[files.indexOf(p)].records.filter(r => !selected.has(r.questionUid)));
+  assert.deepEqual(f.read(files[1]), before[1], 'identity document is byte-semantically unchanged');
+  for (const row of receipt.appliedRecords) {
+    const old = before[0].records.find(r => r.questionUid === row.questionUid);
+    assert.equal(row.metadataRevision, `meta-foundation:${old.metaFoundationPackId}@${old.metaFoundationPackVersion}:exam-meta_pipeline_audit-v2:source-only-v1:${f.request.requestId}`,
+      'retain the existing catalog/parent audited-sidecar authority family and an explicit preservation marker');
+    for (const key of new Set([...Object.keys(old), ...Object.keys(row)]))
+      if (!['metadataRevision', 'approvalEvidence'].includes(key)) assert.deepEqual(row[key], old[key], key);
+  }
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.sourcePath)), source);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.fullReceiptPath)), full);
+  fs.rmSync(path.join(f.root, f.requestPath));
+  fs.rmSync(path.join(f.root, f.fullReceipt.auditPreservation.requestSnapshot.approval.sourceRebind.requestPath));
+  fs.rmSync(path.join(f.root, f.fullReceipt.auditPreservation.requestSnapshot.approval.sourceRebind.difficultyRequestRef.path));
+  const replay = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(replay.replay, true); assert.deepEqual(replay.plannedPaths, []);
+  for (const ordinal of f.request.items.map(r => r.sourceOrdinal)) for (const caught of [false, true]) {
+    const p = planAutoQuestion(f.native(ordinal, caught));
+    assert.equal(p.status, 'ALREADY_REGISTERED', JSON.stringify(p));
+    assert.equal(p.nativeReviewReceipt, f.registeredPath); assert.equal(p.newMetadataApprovals, 0);
+  }
+});
+
+test('source-only audit subset refuses changed authority, original proof, source, D5 and current state before any write', async t => {
+  const cases = [
+    ['full scope', f => { delete f.request.scope; }],
+    ['original audit approval type', f => { f.request.approval.type = 'FINAL_QA'; }],
+    ['new D5', f => { f.request.approval.sourceRebind.difficultyRequestRef = f.fullReceipt.auditPreservation.difficultyRequestRef; }],
+    ['semantic after', f => { f.request.items[0].after.templateKey = 'TPL_NEW'; }],
+    ['registry change', f => { f.request.registryChanges = [{ before: null, after: {} }]; }],
+    ['wrong immutable commit', f => { f.request.approval.sourceRebind.priorCommit = 'a'.repeat(40); }],
+    ['changed original receipt', f => { const d = f.read(f.fullReceiptPath); d.newMetadataApprovals = 24; f.put(f.fullReceiptPath, d); }],
+    ['selected UID outside prior', f => { f.request.items[0].questionUid = 'another-uid'; }],
+    ['ordinal outside source', f => { f.request.items[0].sourceOrdinal = 9; }],
+    ['superseded public row', f => { const row = f.fullReceipt.appliedRecords.find(r => r.sourceOrdinal === 4); f.request.items[0] = { ...f.request.items[0], questionUid: row.questionUid, sourceOrdinal: 4 }; }],
+    ['selected whole question metadata', f => { const bank = structuredClone(f.bank); bank[0].tagStatus = 'new'; f.put(f.sourcePath, 'window.questions=' + JSON.stringify(bank) + ';'); f.request.expectedSourceBlobSha1 = blob(fs.readFileSync(path.join(f.root, f.sourcePath))); }],
+    ['selected whole question answer', f => { const bank = structuredClone(f.bank); bank[0].answer = 'changed'; f.put(f.sourcePath, 'window.questions=' + JSON.stringify(bank) + ';'); f.request.expectedSourceBlobSha1 = blob(fs.readFileSync(path.join(f.root, f.sourcePath))); }],
+    ['current metadata authority', f => { const d = f.read(META); d.records[0].fieldStatus.problemType = 'manual_review_pending'; f.put(META, d); }],
+    ['current identity', f => { const p = 'archive/data/question_identity_map.json', d = f.read(p); d.records[0].sourceQuestionNo = 'wrong'; f.put(p, d); }],
+    ['current runtime', f => { const p = 'archive/data/meta-foundation/runtime/new-course-v1.json', d = f.read(p); d.records.find(r => r.sourceOrdinal === 1).difficultyBucket = 5; f.put(p, d); }],
+    ['same-path choice asset', f => { f.put('archive/assets/images/audit-choice.svg', '<svg/>'); }],
+    ['missing choice asset', f => { fs.rmSync(path.join(f.root, 'archive/assets/images/audit-choice.svg')); }],
+  ];
+  for (const [label, mutate] of cases) await t.test(label, child => {
+    const f = auditFullSourceOnlyFixture(child, { superseded: [4], choiceRenderer: true }); mutate(f); f.save();
+    const before = auditSourceTreeBytes(f.root); assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }));
+    assert.deepEqual(auditSourceTreeBytes(f.root), before);
+  });
+});
+
+test('source-only audit issued sidecar, provenance and renderer drift fail closed during replay and Native reuse', async t => {
+  const cases = [
+    ['receipt proof removed', f => { const d = f.read(f.registeredPath); delete d.auditPreservation; f.put(f.registeredPath, d); }],
+    ['sidecar missing', f => { fs.rmSync(path.join(f.root, f.bindingPath)); }],
+    ['sidecar request changed', f => { const d = f.read(f.bindingPath); d.requestSnapshot.items[0].after.difficultyBucket = 5; f.put(f.bindingPath, d); }],
+    ['sidecar plus source-only claim removed', f => { const d = f.read(f.registeredPath); delete d.approval.sourceRebind; delete d.auditPreservation; f.put(f.registeredPath, d); fs.rmSync(path.join(f.root, f.bindingPath)); }],
+    ['same-path asset changed', f => { f.put('archive/assets/images/audit-choice.svg', '<svg/>'); }],
+    ['new approval count', f => { const d = f.read(f.registeredPath); d.newMetadataApprovals = 1; f.put(f.registeredPath, d); }],
+    ['metadata marker removed', f => { const d = f.read(META); d.records[0].approvalEvidence = d.records[0].approvalEvidence.filter(r => r !== f.bindingPath); f.put(META, d); }],
+    ['runtime marker removed', f => { const p = 'archive/data/meta-foundation/runtime/new-course-v1.json', d = f.read(p); d.records.find(r => r.sourceOrdinal === 1).approvalEvidence = d.records.find(r => r.sourceOrdinal === 1).approvalEvidence.filter(r => r !== f.bindingPath); f.put(p, d); }],
+  ];
+  for (const [label, mutate] of cases) await t.test(label, child => {
+    const f = auditFullSourceOnlyFixture(child, { choiceRenderer: true });
+    registerReviewedExamV2({ root: f.root, request: f.request, write: true }); mutate(f);
+    const before = auditSourceTreeBytes(f.root);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }));
+    for (const caught of [false, true]) {
+      const plan = planAutoQuestion(f.native(1, caught));
+      assert.equal(plan.status, 'SUPPLEMENT_PENDING', JSON.stringify(plan));
+      assert.equal(plan.final, undefined); assert.equal(plan.nativeReviewReceipt, undefined);
+    }
+    assert.deepEqual(auditSourceTreeBytes(f.root), before);
+  });
+});
+
+test('source-only audit rejects preexisting external or unquoted SVG dependencies even when Git bytes match', async t => {
+  for (const svg of ['<svg><image href=external.svg /></svg>', '<svg><image href="external.svg" /></svg>',
+    '<svg><style>path{fill:url(https://example.invalid/external.svg)}</style></svg>']) await t.test(svg, child => {
+    const f = auditFullSourceOnlyFixture(child, { choiceRenderer: svg });
+    const before = auditSourceTreeBytes(f.root);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /SVG/);
+    assert.deepEqual(auditSourceTreeBytes(f.root), before);
+  });
+});
 
 function preservedAuditParentConsumerFixture(t) {
   const f = auditedSourcePreservationFixture(t, { consumerParent: true });
