@@ -292,6 +292,8 @@ def _with_label_options(plan,result):
     return {**result,'graphPlan':fitted}
 
 def _fit_overview_family(plan):
+    if 'translatedLogBandFeatures' in plan or ('translatedLogBand' in plan and plan.get('family')!='exp-log-pair'):
+        raise ValueError('TRANSLATED_LOG_BAND_PLAN_INVALID')
     if 'regions' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve','rational') and not (plan.get('family')=='polynomial' and isinstance(plan.get('coefficients'),list) and any(isinstance(value,str) and 'sqrt' in value for value in plan['coefficients'])):raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')   # (G18c) multi-curve regions plus exact Q(sqrt(r)) cubic regions
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
     if 'axisScale' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve'):raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')   # (G18c) a multi-curve figure may stretch y too (horizontal lines a unit apart need room for their labels)
@@ -1209,6 +1211,89 @@ def _exp_log_curve_spec(row,index,code):
     a,k,b,c=coefficients
     return {'id':curve_id,'family':family,'base':base,'coefficients':coefficients,'boundary':-b/k,'reference':(1-b)/k}
 
+def _translated_log_band(plan, curves):
+    """The four intersections are implicit roots of strictly increasing log-minus-line gaps.
+    Bisect in log-argument coordinates to stay inside the natural domain. The source relations
+    use exact fractions. Only the viewport and display samples use floats.
+    """
+    raw=plan['translatedLogBand']
+    code='TRANSLATED_LOG_BAND_PLAN_INVALID'
+    if (not isinstance(raw,dict) or not {'id','curves','lines'}<=set(raw) or set(raw)-{'id','curves','lines','fill'}
+        or not isinstance(raw.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,31}',raw['id'])
+        or raw.get('fill','LIGHT') not in ('LIGHT','MEDIUM') or plan.get('identityLine',False) is not False
+        or plan.get('axisTickValues',{'x':[],'y':[]})!={'x':[],'y':[]} or 'axisTitles' in plan or 'plotCanvas' in plan
+        or any('formulaLabel' in row or 'referenceLabelPoint' in row for row in plan['curves'])):
+        raise ValueError(code)
+    overlays=plan.get('overlays')
+    if (not isinstance(overlays,dict) or set(overlays)!={'lines'} or not isinstance(overlays['lines'],list)
+        or len(overlays['lines'])!=2 or any(not isinstance(row,dict) for row in overlays['lines'])
+        or raw['curves']!=[row['id'] for row in curves] or raw['lines']!=[row.get('id') for row in overlays['lines']]):
+        raise ValueError(code)
+    first,second=curves
+    if any(row['family']!='logarithmic-affine' or row['base']['kind'] not in ('INTEGER','RATIONAL') or
+           not row['base']['greaterThanOne'] for row in curves):
+        raise ValueError('TRANSLATED_LOG_BAND_CURVES_INVALID')
+    a,k,b,c=first['coefficients']
+    a2,k2,b2,c2=second['coefficients']
+    if a<=0 or k<=0 or a!=a2 or k!=k2 or first['base']['text']!=second['base']['text']:
+        raise ValueError('TRANSLATED_LOG_BAND_CURVES_INVALID')
+    dx,dy=(b-b2)/k,c2-c
+    line0,line1=overlays['lines']
+    line_code='TRANSLATED_LOG_BAND_LINES_INVALID'
+    if (any(not isinstance(row.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,31}',row['id']) or
+            'x' in row or row.get('style','SOLID')!='SOLID' or 'labelValues' in row
+            or ('label' in row and (not isinstance(row['label'],str) or row['label'].count('=')!=1
+                or not re.fullmatch(r'[0-9xy=+*/(). -]+',row['label']))) for row in (line0,line1))
+        or line0['id']==line1['id']):
+        raise ValueError(line_code)
+    m,m2=[_piecewise_fraction(row.get('slope'),line_code) for row in (line0,line1)]
+    q0,q1=[_piecewise_fraction(row.get('intercept'),line_code) for row in (line0,line1)]
+    if not (m==m2<0 and q0<q1):raise ValueError(line_code)
+    if not (dx>0 and dy==m*dx):raise ValueError('TRANSLATED_LOG_BAND_TRANSLATION_MISMATCH')
+
+    numeric_error='TRANSLATED_LOG_BAND_NUMERIC_SCOPE'
+    log_base=math.log(first['base']['float'])
+    if not log_base>0:raise ValueError(numeric_error)
+    alpha=float(a)/log_base;kf,bf,cf,mf=map(float,(k,b,c,m))
+    def intersection(q):
+        qf=float(q)
+        def gap(s):
+            return alpha*s+cf-mf*((math.exp(s)-bf)/kf)-qf
+        lo,hi=-32.0,32.0
+        if not gap(lo)<0<gap(hi):raise ValueError(numeric_error)
+        for _ in range(80):
+            mid=(lo+hi)/2
+            if gap(mid)<0:lo=mid
+            else:hi=mid
+        s=(lo+hi)/2
+        x=(math.exp(s)-bf)/kf
+        return s,[x,mf*x+qf]
+    s0,p0=intersection(q0)
+    s1,p1=intersection(q1)
+    if not s0<s1 or not float(first['boundary'])<p0[0]<p1[0]:raise ValueError(numeric_error)
+    dxf,dyf=float(dx),float(dy)
+    def shifted(point):return [point[0]+dxf,point[1]+dyf]
+    corners=[p0,p1,shifted(p1),shifted(p0)]
+    xs=[0.0,*[float(row[key]) for row in curves for key in ('boundary','reference')],*[point[0] for point in corners]]
+    ys=[0.0,float(c),float(c2),*[point[1] for point in corners]]
+    xspan,yspan=max(xs)-min(xs),max(ys)-min(ys)
+    xpad=max(.45,.09*xspan);ypad=max(.55,.13*yspan)
+    window=[min(xs)-xpad,max(xs)+xpad,min(ys)-ypad,max(ys)+ypad]
+    if (not all(math.isfinite(value) and abs(value)<=1e6 for value in window) or window[1]-window[0]>16
+        or window[3]-window[2]>16):
+        raise ValueError(numeric_error)
+    # For a uniform step in log(argument), the maximum chord error in data y is at most
+    # alpha * expm1(step)^2 / 8 by the second derivative of the log in source x.
+    max_step=math.log1p(math.sqrt(8*.15*(window[3]-window[2])/(420*alpha)))
+    count=max(16,math.ceil((s1-s0)/max_step))
+    if count>256:raise ValueError(numeric_error)
+    def sample(s):return [(math.exp(s)-bf)/kf,alpha*s+cf]
+    upper=[p0,*[sample(s0+(s1-s0)*i/count) for i in range(1,count)],p1]
+    lower=[shifted(point) for point in reversed(upper)]
+    return {'schemaVersion':'TRANSLATED_LOG_BAND_FEATURES_v1','id':raw['id'],'curves':raw['curves'],'lines':raw['lines'],
+            'fill':raw.get('fill','LIGHT'),'corners':corners,'traces':[upper,lower]},window
+
+
 def _fit_exp_log_pair_overview(plan):
     code='EXP_LOG_PAIR_PLAN_INVALID'
     if plan.get('sourceDomain') is not None or plan.get('domain') is not None or plan.get('viewport') is not None:raise ValueError(code)
@@ -1218,6 +1303,7 @@ def _fit_exp_log_pair_overview(plan):
     if len({row['id'] for row in curves})!=2:raise ValueError(code+'_ID_DUPLICATE')
     identity=plan.get('identityLine',False)
     if not isinstance(identity,bool):raise ValueError(code+'_IDENTITY_LINE_INVALID')
+    band,band_window=_translated_log_band(plan,curves) if 'translatedLogBand' in plan else (None,None)
     spans=[]
     for row in curves:
         base=row['base'];a,k,c=row['coefficients'][:3]
@@ -1236,12 +1322,20 @@ def _fit_exp_log_pair_overview(plan):
         lo_display,hi_display=row['display']
         if not (math.isfinite(lo_display) and math.isfinite(hi_display) and lo_display<hi_display):raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
         spans.append((lo_display,hi_display))
-    lo=max(spans[0][0],spans[1][0]);hi=min(spans[0][1],spans[1][1])
-    if not lo<hi:raise ValueError('EXP_LOG_PAIR_NO_SHARED_WINDOW')
-    anchors=[row['referencePoint'][0] for row in curves]
-    lo=min(lo,*anchors);hi=max(hi,*anchors)
-    if not math.isfinite(lo) or not math.isfinite(hi) or hi-lo>16:raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
-    pad=max(.75,.18*(hi-lo));lo-=pad;hi+=pad
+    if band is None:
+        lo=max(spans[0][0],spans[1][0]);hi=min(spans[0][1],spans[1][1])
+        if not lo<hi:raise ValueError('EXP_LOG_PAIR_NO_SHARED_WINDOW')
+        anchors=[row['referencePoint'][0] for row in curves]
+        lo=min(lo,*anchors);hi=max(hi,*anchors)
+        if not math.isfinite(lo) or not math.isfinite(hi) or hi-lo>16:raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
+        pad=max(.75,.18*(hi-lo));lo-=pad;hi+=pad
+    else:
+        lo,hi=band_window[:2]
+        for row,trace in zip(curves,band['traces']):
+            boundary=float(row['boundary'])
+            gap=min(trace[0][0],trace[-1][0])-boundary
+            if gap<=0:raise ValueError('TRANSLATED_LOG_BAND_NUMERIC_SCOPE')
+            row['display']=(boundary+min(.125/float(row['coefficients'][1]),gap/2),hi)
     def exp_value(row,value):
         a,k,c=row['coefficients'];base=row['base']['float']
         try:result=float(a)*(base**(float(k)*(value-float(row['shift']))))+float(c)
@@ -1273,7 +1367,7 @@ def _fit_exp_log_pair_overview(plan):
     anchors=[0.0,lo,hi,*[row['referencePoint'][1] for row in curves]]
     center=(min(anchors)+max(anchors))/2;half=max((hi-lo)*.8,(max(anchors)-min(anchors))/2+.15)
     low=center-half;high=center+half
-    viewport=[lo,hi,low,high]
+    viewport=band_window if band is not None else [lo,hi,low,high]
     if not all(math.isfinite(value) and abs(value)<=1e8 for value in viewport):raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
     for source,curve in zip(rows,feature_rows):
         if 'referenceLabelPoint' not in source:continue
@@ -1288,6 +1382,7 @@ def _fit_exp_log_pair_overview(plan):
     features={'schemaVersion':'EXP_LOG_PAIR_FEATURES_v1','identityLine':identity,'curves':feature_rows,'sampleBoundaryArgument':'1/8'}
     policy={'schemaVersion':'EXP_LOG_PAIR_POLICY_v1','identityLinePolicy':'DASHED_4_3' if identity else 'NONE','referenceMarkerRadiusIntrinsicPx':4,'minimumReferenceMarkerDiameterCssPx':3,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':32,'minimumAsymptoteSeparationCssPx':2}
     fitted={**plan,'domain':[lo,hi],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'EXP_LOG_PAIR_OVERVIEW_v1','expLogPairFeatures':features,'expLogPairPolicy':policy,'equalUnits':True,'axisRatio':1}
+    if band is not None:fitted['translatedLogBandFeatures']=band
     return {'graphPlan':fitted,'policy':'EXP_LOG_PAIR_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':None,'viewport':None}}
 
 def _fit_exponential_affine_overview(plan):

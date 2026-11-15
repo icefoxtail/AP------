@@ -5,6 +5,8 @@ import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {specFor} from '../production/phase2.mjs';
 import {renderPlan} from '../production/render-plan.mjs';
+import {assetIdentity} from '../production/contracts.mjs';
+import {typesetter} from '../production/typography.mjs';
 
 const observer=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
 const item={sourcePath:'archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js',ordinal:7,dir:'log-exp-bases'};
@@ -124,4 +126,93 @@ test('Suncheon Girls Q18 names exact inverse curves while leaving the default ev
   assert.ok((await check(numeric)).result.errors.includes('EXP_LOG_PAIR_NAME_LABEL_MISMATCH:g'));
   assert.equal(await frameError({...named.graphPlan,curves:[{...curves[0],formulaLabel:'3'},curves[1]]}),
     'EXP_LOG_PAIR_FORMULA_LABEL_INVALID:f');
+});
+
+const translatedQ12=()=>({capability:'exp-log-pair-spike-v1',caption:'두 로그곡선과 두 평행선 사이의 영역',graphPlan:{
+  family:'exp-log-pair',identityLine:false,axisTickValues:{x:[],y:[]},
+  curves:[
+    {id:'upper',family:'logarithmic-affine',base:'2',coefficients:['1','1','1','2'],sourceDomain:{kind:'NATURAL_LOG_AFFINE'}},
+    {id:'lower',family:'logarithmic-affine',base:'2',coefficients:['1','1','-1','-1'],sourceDomain:{kind:'NATURAL_LOG_AFFINE'}},
+  ],
+  overlays:{lines:[
+    {id:'l4',slope:'-3/2',intercept:'2',label:'3x+2y=4',color:'BLUE'},
+    {id:'l14',slope:'-3/2',intercept:'7',label:'3x+2y=14',color:'BLUE'},
+  ]},
+  translatedLogBand:{id:'band',curves:['upper','lower'],lines:['l4','l14'],fill:'LIGHT'},
+}});
+
+test('translated log band rejects author coordinates, wrong source relations and outside-family use',async()=>{
+  for(const [change,code] of [
+    [p=>p.translatedLogBand.corners=[[0,2],[2.211,3.683]],'PLAN_INVALID'],
+    [p=>p.overlays.lines[0].slope='-2','LINES_INVALID'],
+    [p=>p.overlays.lines[1].intercept='2','LINES_INVALID'],
+    [p=>p.curves[1].coefficients[3]='-2','TRANSLATION_MISMATCH'],
+    [p=>p.curves[1].base='3','CURVES_INVALID'],
+    [p=>p.overlays.points=[{id:'P',x:'2',y:'-1',coordinates:true}],'PLAN_INVALID'],
+    [p=>p.overlays.lines[1].intercept='50','NUMERIC_SCOPE'],
+  ]){
+    const {graphPlan}=translatedQ12();change(graphPlan);
+    assert.equal(await frameError(graphPlan),'TRANSLATED_LOG_BAND_'+code);
+  }
+  assert.equal(await frameError({...baseLog,translatedLogBand:translatedQ12().graphPlan.translatedLogBand}),
+    'TRANSLATED_LOG_BAND_PLAN_INVALID');
+});
+
+test('Suncheon Q12 translated log band verifies four exact boundaries and answer-safe output',async()=>{
+  const authored=translatedQ12();
+  const call=async(payload,options)=>{
+    const result=await pythonWorker(payload,options);
+    assert.equal(result.status,'OK',JSON.stringify(result.result));
+    return result.result;
+  };
+  const graphPlan=(await call({action:'frame_graph',graphPlan:authored.graphPlan})).graphPlan;
+  const plan={...authored,graphPlan};
+  const model=await call({action:'graph',graphPlan});
+  const check=(svg,transform,action='graphAudit',input=graphPlan)=>call({action,graphPlan:input,svg,transform},{script:observer});
+  const binding=await check(model.svg,model.transform,'modelBinding');
+  assert.equal(binding.status,'PASS',JSON.stringify(binding.errors));
+  const {translatedLogBand,...stockGraph}=authored.graphPlan;
+  const stock=await framed({...authored,graphPlan:stockGraph});
+  const stockSpec=specFor(stock.plan,stock.model,'stock-q12');
+  assert.ok(stockSpec.objects.some(row=>row.id==='reference-upper-value'));
+  assert.ok(!stock.model.svg.includes('translated-log-band-'));
+  const identity=assetIdentity('23_순천고_1학기_중간_고2_수학I|12','PROBLEM_VISUAL','image');
+  const spec=specFor(plan,model,identity.assetId);
+  const prepared=await call({action:'prepare',spec});
+  assert.deepEqual(prepared.labels.map(({id,text})=>[id,text]),[
+    ['axis-x','x'],['axis-y','y'],['formula-upper','y=log_2(x+1)+2'],['formula-lower','y=log_2(x−1)−1'],
+    ['overlay-line-l4-equation','3x+2y=4'],['overlay-line-l14-equation','3x+2y=14'],
+  ]);
+  const typeset=typesetter();
+  const fragments=Object.fromEntries(prepared.labels.map(label=>[label.id,typeset({id:label.id,owner:label.target||label.id,
+    factRole:'DERIVED_INTERMEDIATE',fontPx:20,...(label.math?{kind:'MATH',tex:label.tex||label.text.replaceAll('−','-')}:{kind:'TEXT',text:label.text}),
+  },identity)]));
+  const measurements=Object.fromEntries(Object.entries(fragments).map(([id,block])=>[id,[block.intrinsic.width,block.intrinsic.height]]));
+  const built=await call({action:'build',spec,fragments,measurements});
+  assert.deepEqual(built.witness.layout.unresolved,[]);
+  const {aspectPolicy,...coord}=built.witness.coordinateModel;
+  const transform={...coord,displayScale:.6};
+  const observed=await check(built.svg,transform);
+  assert.equal(observed.status,'PASS',JSON.stringify(observed.errors));
+  const fill=built.svg.match(/<path id="translated-log-band-band"[^>]+\/>/)?.[0];
+  assert.ok(fill);
+  const frozen=structuredClone(graphPlan);
+  frozen.translatedLogBandFeatures.corners[2][0]+=.25;
+  const wrongInventory=await check(model.svg,model.transform,'modelBinding',frozen);
+  assert.ok(wrongInventory.errors.includes('TRANSLATED_LOG_BAND_FEATURE_INVENTORY_MISMATCH'));
+  const shiftTrace=fill.replace(/( L[-.\d]+ )([-.\d]+)/,(_m,head,y)=>head+(Number(y)+8));
+  const wrongFormulaOwner=built.svg.replace(/(<g id="formula-lower"[^>]*?transform=")[^"]+"/,'$1translate(60 50)"');
+  for(const [svg,expected] of [
+    [built.svg.replace(fill,fill.replace(/ Z"/,'"')),'TRANSLATED_LOG_BAND_PATH_INVALID'],
+    [built.svg.replace(fill,shiftTrace),'TRANSLATED_LOG_BAND_CURVE_TRACE_MISMATCH'],
+    [built.svg.replace(fill,'').replace('</svg>',fill+'</svg>'),'TRANSLATED_LOG_BAND_FILL_LAYER'],
+    [built.svg.replace(/<line id="overlay-line-l14"[^>]+\/>/,''),'TRANSLATED_LOG_BAND_LINE_OWNER_MISSING:l14'],
+    [built.svg.replace('</svg>','<text id="answer">10</text></svg>'),'TRANSLATED_LOG_BAND_LABEL_INVENTORY'],
+    [built.svg.replace('</svg>','<circle id="translated-log-band-band-corner-false" cx="0" cy="0" r="2"/></svg>'),'TRANSLATED_LOG_BAND_VISIBLE_CORNER'],
+    [wrongFormulaOwner,'TRANSLATED_LOG_BAND_FORMULA_OWNER:lower'],
+  ]){
+    assert.notEqual(svg,built.svg);
+    const result=await check(svg,transform);
+    assert.ok(result.errors.includes(expected),JSON.stringify(result.errors));
+  }
 });

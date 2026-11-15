@@ -1441,6 +1441,196 @@ def _exp_log_pair_reference_label_errors(plan,root,model,expected_rows):
                 errors.append('EXP_LOG_PAIR_REFERENCE_OVERLAY_LABEL_MISSING:'+owner)
     return errors
 
+def _expected_translated_log_band(plan):
+    """Rebuild the input relation and intersections without the framer's samples or root search."""
+    raw=plan['translatedLogBand']
+    code='TRANSLATED_LOG_BAND_SOURCE_INVALID'
+    curves=plan['curves'];overlays=plan['overlays'];lines=overlays['lines']
+    if (not isinstance(raw,dict) or not {'id','curves','lines'}<=set(raw) or set(raw)-{'id','curves','lines','fill'}
+        or not isinstance(raw['id'],str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,31}',raw['id'])
+        or raw.get('fill','LIGHT') not in ('LIGHT','MEDIUM') or set(overlays)!={'lines'}
+        or len(curves)!=2 or len(lines)!=2 or raw['curves']!=[row['id'] for row in curves]
+        or raw['lines']!=[row['id'] for row in lines] or len(set(raw['curves']))!=2 or len(set(raw['lines']))!=2
+        or plan.get('identityLine',False) is not False or plan.get('axisTickValues',{'x':[],'y':[]})!={'x':[],'y':[]}
+        or 'axisTitles' in plan or 'plotCanvas' in plan or plan.get('equalUnits') is not True or plan.get('axisRatio')!=1):
+        raise ValueError(code)
+    if any(row['family']!='logarithmic-affine' or row.get('sourceDomain')!={'kind':'NATURAL_LOG_AFFINE'}
+           or 'formulaLabel' in row or 'referenceLabelPoint' in row for row in curves):
+        raise ValueError(code)
+    if any('x' in row or row.get('style','SOLID')!='SOLID' or 'labelValues' in row
+           or ('label' in row and (not isinstance(row['label'],str) or row['label'].count('=')!=1
+               or not re.fullmatch(r'[0-9xy=+*/(). -]+',row['label']))) for row in lines):
+        raise ValueError(code)
+    a,k,b,c=tuple(_piecewise_rational(v,code) for v in curves[0]['coefficients'])
+    other_a,other_k,other_b,other_c=tuple(_piecewise_rational(v,code) for v in curves[1]['coefficients'])
+    base,base2=(_exp_log_observer_base(row.get('base'),code) for row in curves)
+    if base['kind'] not in ('INTEGER','RATIONAL') or not base['greaterThanOne'] or base['exact']!=base2['exact']:
+        raise ValueError(code)
+    slope,m2=(_piecewise_rational(row['slope'],code) for row in lines)
+    q0,q1=(_piecewise_rational(row['intercept'],code) for row in lines)
+    if not (a==other_a>0 and k==other_k>0 and slope==m2<0 and q0<q1):raise ValueError(code)
+    dx,dy=(b-other_b)/k,other_c-c
+    if dx<=0 or dy!=slope*dx:raise ValueError(code)
+    # With t=k*x+b, intersection solves alpha*ln(t)+beta*t+gamma=0.
+    # beta>0, so the positive real Lambert W gives the unique positive t.
+    alpha=S.Rational(a)/S.log(base['exact']);beta=S.Rational(-slope/k)
+    upper=[]
+    for q in (q0,q1):
+        gamma=S.Rational(c+slope*b/k-q)
+        t=S.LambertW((beta/alpha)*S.exp(-gamma/alpha))/ (beta/alpha)
+        xp=(t-S.Rational(b))/S.Rational(k)
+        upper.append((float(xp.evalf(60)),float((S.Rational(slope)*xp+S.Rational(q)).evalf(60))))
+    corners=[*upper,*[(xp+float(dx),yp+float(dy)) for xp,yp in reversed(upper)]]
+    log_rows=[(float(alpha),float(k),float(shift),float(offset)) for shift,offset in ((b,c),(other_b,other_c))]
+    return raw,curves,lines,corners,log_rows
+
+
+def _log_band_trace_error(points,row,yscale,tolerance):
+    alpha,k,b,c=row
+    if points[-1][0]<points[0][0]:points=points[::-1]
+    residual=[]
+    for px,py in points:
+        argument=k*px+b
+        if argument<=0:return True
+        residual.append(abs(py-(alpha*math.log(argument)+c))*yscale)
+    for index,(left,right) in enumerate(zip(points,points[1:])):
+        dx=right[0]-left[0]
+        relative_step=k*dx/(k*left[0]+b)
+        if dx<=0 or max(residual[index:index+2])+alpha*relative_step**2*yscale/8>tolerance:return True
+    return max(residual)>tolerance
+
+
+def _translated_log_band_labels(nodes,curves,lines,model):
+    labels=[node for node in nodes if node.get('data-label-kind') or node.tag.split('}')[-1]=='text']
+    if model:return not labels
+    def tail(value):
+        return '' if value=='0' else value if value.startswith('-') else '+'+value
+    def x_term(exact):
+        value=Fraction(exact)
+        if value==0:return '0'
+        sign='-' if value<0 else ''
+        numerator='' if abs(value.numerator)==1 else str(abs(value.numerator))
+        denominator='' if value.denominator==1 else '/'+str(value.denominator)
+        return sign+numerator+'x'+denominator
+    expected={'axis-x':'x','axis-y':'y'}
+    for row in curves:
+        a,k,b,c=row['coefficients']
+        argument=x_term(k)+tail(b)
+        expected['formula-'+row['id']]='y='+('' if a=='1' else a)+'log_'+str(Fraction(row['base']))+'('+argument+')'+tail(c)
+    for row in lines:
+        expected['overlay-line-'+row['id']+'-equation']=row.get('label') or 'y='+x_term(row['slope'])+tail(row['intercept'])
+    if len(labels)!=len(expected) or {node.get('id') for node in labels}!=set(expected):return False
+    for node in labels:
+        text=expected[node.get('id')]
+        want=_ov_label_codes(text)
+        glyphs=[code for code in _ov_glyph_codes(node) if code!='2061']  # invisible function-application operator
+        if len(want)!=len(glyphs) or any(code not in allowed for code,allowed in zip(glyphs,want)):return False
+    return True
+
+
+def _translated_log_band_formula_owners(nodes,curves,branches,transform):
+    ox,oy,sx,sy=(transform[key] for key in ('originX','originY','sx','sy'))
+    groups={node.get('id'):node for node in nodes if node.tag.split('}')[-1]=='g'}
+    strokes={}
+    for curve in curves:
+        ident=curve['id']
+        points=[(ox+x*sx,oy-y*sy) for part in branches.get('REF_'+ident,[]) for x,y in part]
+        strokes[ident]=list(zip(points,points[1:]))
+    errors=[]
+    for ident,segments in strokes.items():
+        label_id='formula-'+ident;box=_region_label_box(groups,label_id)
+        code='TRANSLATED_LOG_BAND_FORMULA_OWNER:'+ident
+        if box is None or not segments:
+            errors.append(code);continue
+        leaders=[node for node in nodes if node.get('data-role')=='leader' and node.get('data-owner-label')==label_id]
+        if not leaders:
+            near=min(_ov_box_segment_distance(box,a,b) for a,b in segments)
+            others=min((_ov_box_segment_distance(box,a,b) for owner,edges in strokes.items() if owner!=ident for a,b in edges),default=math.inf)
+            if near+OV_MC_LABEL_OTHER_MARGIN_PX>others or near>OV_MC_NO_ROOM_CURVE_MAX_PX:errors.append(code)
+        else:
+            leader=leaders[0]
+            start=(float(leader.get('x1')),float(leader.get('y1')))
+            end=(float(leader.get('x2')),float(leader.get('y2')))
+            x,y,w,h=box;corners=[(x,y),(x+w,y),(x+w,y+h),(x,y+h)]
+            near=min(_ov_point_segment_distance(start,a,b) for a,b in segments)
+            target=min(_ov_point_segment_distance(end,a,b) for a,b in zip(corners,corners[1:]+corners[:1]))
+            if (len(leaders)!=1 or leader.get('data-owner')!=ident or not all(math.isfinite(v) for v in (*start,*end))
+                or max(near,target)>OV_LEADER_TOLERANCE_PX):
+                errors.append(code)
+    return errors
+
+
+def _translated_log_band_errors(plan,root,transform,branches,model):
+    raw,curves,lines,corners,log_rows=_expected_translated_log_band(plan)
+    frozen=plan.get('translatedLogBandFeatures')
+    if (not isinstance(frozen,dict) or frozen.get('schemaVersion')!='TRANSLATED_LOG_BAND_FEATURES_v1'
+        or any(frozen.get(key)!=raw[key] for key in ('id','curves','lines'))
+        or frozen.get('fill')!=raw.get('fill','LIGHT') or len(frozen.get('corners',[]))!=4
+        or any(not isinstance(a,list) or len(a)!=2 or not all(math.isfinite(v) for v in a) or math.dist(a,b)>1e-7
+               for a,b in zip(frozen['corners'],corners))):
+        return ['TRANSLATED_LOG_BAND_FEATURE_INVENTORY_MISMATCH']
+    ident='translated-log-band-'+raw['id'];nodes=list(root.iter())
+    regions=[node for node in nodes if node.get('data-role')=='region' or node.get('id')==ident]
+    if len(regions)!=1 or regions[0].get('id')!=ident or regions[0].tag.split('}')[-1]!='path':
+        return ['TRANSLATED_LOG_BAND_FILL_INVENTORY']
+    fill=regions[0];tint={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}[raw.get('fill','LIGHT')]
+    errors=[]
+    if (fill.get('fill')!=tint or fill.get('stroke')!='none' or fill.get('fill-rule')!='evenodd'
+        or any(fill.get(key) is not None for key in ('style','opacity','fill-opacity','clip-path','transform','display','visibility'))):
+        errors.append('TRANSLATED_LOG_BAND_FILL_PAINT')
+    ox,oy,sx,sy,display=(transform[key] for key in ('originX','originY','sx','sy','displayScale'))
+    tolerance=GRAPH_REGION_BOUNDARY_TOLERANCE
+    pixel=lambda point:(point[0]*sx*display,point[1]*sy*display)
+    distance=lambda a,b:math.dist(pixel(a),pixel(b))
+    token=r'[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?'
+    pair=rf'({token})[ ,]+({token})'
+    path=fill.get('d') or ''
+    if not re.fullmatch(rf'M\s*{pair}(?:\s*L\s*{pair}){{9,520}}\s*Z\s*',path):
+        return [*errors,'TRANSLATED_LOG_BAND_PATH_INVALID']
+    outline=[((float(px)-ox)/sx,(oy-float(py))/sy) for px,py in re.findall(pair,path)]
+    if not all(math.isfinite(value) for point in outline for value in point):return [*errors,'TRANSLATED_LOG_BAND_PATH_INVALID']
+    closest=[min(range(1,len(outline)-1),key=lambda i:distance(outline[i],corner)) for corner in corners[1:]]
+    hi0,hi1,lo1=closest
+    if (hi0<4 or hi1!=hi0+1 or lo1!=len(outline)-2 or lo1-hi1<4 or
+        any(distance(outline[index],corner)>tolerance/2 for index,corner in zip([0,*closest,len(outline)-1],[*corners,corners[0]]))):
+        return [*errors,'TRANSLATED_LOG_BAND_CORNER_OR_CLOSURE_MISMATCH']
+    if (_log_band_trace_error(outline[:hi0+1],log_rows[0],sy*display,tolerance) or
+        _log_band_trace_error(outline[hi1:lo1+1],log_rows[1],sy*display,tolerance)):
+        errors.append('TRANSLATED_LOG_BAND_CURVE_TRACE_MISMATCH')
+
+    by_id={node.get('id'):node for node in nodes if node.get('id')}
+    drawn_rows=plan['expLogPairFeatures']['curves']
+    if any(source['id']!=row['id'] or source['family']!=row['family']
+           or str(Fraction(source['base']))!=row['base'] or source['coefficients']!=row['coefficients']
+           for source,row in zip(curves,drawn_rows)):
+        errors.append('TRANSLATED_LOG_BAND_DRAW_SOURCE_MISMATCH')
+    draw_ids={row['id']:row['domain'] for row in drawn_rows}
+    viewport=plan['viewport']
+    for row,ends in zip(curves,(corners[:2],corners[2:])):
+        branch='REF_'+row['id'];parts=branches.get(branch,[])
+        elements=[node for node in nodes if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve' and node.get('data-branch')==branch]
+        if len(parts)!=1 or len(elements)!=1:
+            errors.append('TRANSLATED_LOG_BAND_CURVE_OWNER_MISSING:'+row['id']);continue
+        lo,hi=draw_ids[row['id']]
+        drawn=[pixel(p) for p in parts[0]]
+        if any(not (viewport[0]<p[0]<viewport[1] and viewport[2]<p[1]<viewport[3] and lo<p[0]<hi)
+               or min(_ov_point_segment_distance(pixel(p),a,b) for a,b in zip(drawn,drawn[1:]))>tolerance for p in ends):
+            errors.append('TRANSLATED_LOG_BAND_DRAW_RANGE:'+row['id'])
+        if nodes.index(fill)>=nodes.index(elements[0]):errors.append('TRANSLATED_LOG_BAND_FILL_LAYER')
+    for line,ends in zip(lines,((corners[3],corners[0]),(corners[1],corners[2]))):
+        element=by_id.get('overlay-line-'+line['id'])
+        if element is None or element.tag.split('}')[-1]!='line':
+            errors.append('TRANSLATED_LOG_BAND_LINE_OWNER_MISSING:'+line['id']);continue
+        a,b=[((float(element.get('x'+i))-ox)*display,(float(element.get('y'+i))-oy)*-display) for i in ('1','2')]
+        if any(_ov_point_segment_distance(pixel(p),a,b)>tolerance for p in ends):errors.append('TRANSLATED_LOG_BAND_LINE_EDGE_MISMATCH:'+line['id'])
+        if nodes.index(fill)>=nodes.index(element):errors.append('TRANSLATED_LOG_BAND_FILL_LAYER')
+    if not _translated_log_band_labels(nodes,curves,lines,model):errors.append('TRANSLATED_LOG_BAND_LABEL_INVENTORY')
+    if not model:errors.extend(_translated_log_band_formula_owners(nodes,curves,branches,transform))
+    if any(node.tag.split('}')[-1]=='circle' and (node.get('id') or '').startswith(ident) for node in nodes):
+        errors.append('TRANSLATED_LOG_BAND_VISIBLE_CORNER')
+    return errors
+
+
 def exp_log_pair_overview_audit(plan,svg,transform,model=False):
     errors=[];unsupported=[]
     try:
@@ -1519,6 +1709,9 @@ def exp_log_pair_overview_audit(plan,svg,transform,model=False):
         elif identity_nodes:errors.append('EXP_LOG_PAIR_UNEXPECTED_IDENTITY_LINE')
         errors.extend(_exp_log_pair_name_errors(plan,root,model))
         errors.extend(_exp_log_pair_reference_label_errors(plan,root,model,expected_rows))
+        if 'translatedLogBand' in plan:errors.extend(_translated_log_band_errors(plan,root,transform,branches,model))
+        elif 'translatedLogBandFeatures' in plan or any((node.get('id') or '').startswith('translated-log-band-') for node in root.iter()):
+            errors.append('TRANSLATED_LOG_BAND_UNDECLARED')
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
         return {'status':status,'errors':sorted(set(errors+unsupported)),'curves':[{key:value for key,value in row.items() if not key.startswith('_')} for row in expected_rows],'curveBranches':{key:len(value) for key,value in branches.items()},'identityLine':features.get('identityLine') is True,'mathMethod':'EXACT_BASES_AND_INDEPENDENT_MODEL_RECOMPUTATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'EXP_LOG_PAIR_SOURCE_SCHEMA_INVALID']}

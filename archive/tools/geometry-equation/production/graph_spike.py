@@ -340,8 +340,19 @@ def _produce_exp_log_pair(plan,vp):
     rows=features.get('curves')
     if not isinstance(rows,list) or len(rows)!=2:raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
     parts=[];samplings=[]
+    band=plan.get('translatedLogBandFeatures')
+    if band is not None:
+        upper,lower=band['traces']
+        points=[vp.screen(point) for point in [*upper,*lower,upper[0]]]
+        path='M'+' L'.join(' '.join(svg_number(value) for value in point) for point in points)+' Z'
+        fill={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}[band['fill']]
+        parts.append(f'<path id="translated-log-band-{band["id"]}" data-role="region" fill="{fill}" fill-rule="evenodd" stroke="none" d="{path}"/>')
     for row in rows:
-        result=sample(_exp_log_base_expression(row),row['domain'],vp,critical_x=[float(Fraction(row['referencePoint']['x']))])
+        critical=[float(Fraction(row['referencePoint']['x']))]
+        if band is not None:
+            trace=band['traces'][band['curves'].index(row['id'])]
+            critical.extend((trace[0][0],trace[-1][0]))
+        result=sample(_exp_log_base_expression(row),row['domain'],vp,critical_x=critical)
         samplings.append({'id':'curve-'+row['id'],**{key:value for key,value in result.items() if key!='branches'}})
         for index,branch in enumerate(result['branches']):
             points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in branch)
