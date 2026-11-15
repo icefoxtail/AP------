@@ -540,9 +540,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceQid": 11,
     "questionUid": "qid_v1_a79a9dd748010d19cc96a5896c82c599615a4b8d1e7c7a472f53c9e450c8607d",
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q11-solution.svg",
-    "solutionImageAlt": "지수함수의 평행이동과 대칭이동, 점근선 y=3",
-    "solutionImageCaption": "평행이동·대칭이동 뒤의 그래프와 수평점근선"
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 기준 곡선 y=4^(−x)와 대상 곡선 y=−4^(−x−1)+3이 다른 색으로 표시되어 있다. 대상 곡선에는 수평점근선 y=3과 점 P=(−1,2)가 표시되어 있다.",
+    "solutionImageCaption": "기준 곡선을 왼쪽으로 1만큼 옮긴 뒤 x축에 대칭하고 위로 3만큼 옮긴다. 치역의 위 경계와 수평점근선은 모두 3이다. 네 빈칸은 3, 3, −1, 3이므로 합은 8이고 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
