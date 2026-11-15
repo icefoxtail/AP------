@@ -1678,12 +1678,12 @@
           {
             "term": "미정계수",
             "src": "stem",
-            "quote": "[서술형 3] 다음 그림은 이차함수 $y = \\dfrac{1}{2}x^2 + ax$의 그래프이다. 이 그래프의 꼭짓점을 $\\mathrm{P}$라 하고, 포물선이 $x$축과 만나는 두 점을 각각 $\\mathrm{A, O}$라고 할 때, 점 $\\mathrm{A}$의 좌표는 $(6, 0)$이다. 아래 물음에 답하시오. (단, $\\mathrm{O}$는 원점) (7점)<br><br><p>"
+            "quote": "(1) 수 $a$의 값을 구하시오."
           },
           {
             "term": "넓이",
             "src": "stem",
-            "quote": "[서술형 3] 다음 그림은 이차함수 $y = \\dfrac{1}{2}x^2 + ax$의 그래프이다. 이 그래프의 꼭짓점을 $\\mathrm{P}$라 하고, 포물선이 $x$축과 만나는 두 점을 각각 $\\mathrm{A, O}$라고 할 때, 점 $\\mathrm{A}$의 좌표는 $(6, 0)$이다. 아래 물음에 답하시오. (단, $\\mathrm{O}$는 원점) (7점)<br><br><p>"
+            "quote": "(2) 삼각형 $\\mathrm{OPA}$의 넓이를 구하시오."
           }
         ],
         "method": [
@@ -1788,6 +1788,13 @@
     "quotesNotFound": 0,
     "notes": "Actual question and existing solution read; author self-check only. Independent root sample pending."
   },
+  "narrowQuoteAmendment": {
+    "ordinal": 24,
+    "priorFourSlotSha256": "2ee7d7d186890b3d53dbc08ca1d328aa70585c79526a1dea2f855095a1445f7c",
+    "by": "meta_b",
+    "at": "2026-11-15",
+    "reason": "그림뒤 두 물음을 정확인용하여 목표근거를 보완; 판정내용·원문·난도 변경없음"
+  },
   "reviewedSourceBaseBlob": "471d8c46d093ed7d13be50c2841d7fd4f2f40e57",
   "independentReview": {
     "schemaVersion": "integrated-meta-independent-review-v1",
@@ -1806,7 +1813,7 @@
       },
       "fourSlot": {
         "path": "/workspace/scratch/e45ff6c78c51/workers/B/E056.4slot.json",
-        "sha256": "2ee7d7d186890b3d53dbc08ca1d328aa70585c79526a1dea2f855095a1445f7c"
+        "sha256": "09253fe473cc84479d74c01239b7d9c0c1c30916cfa06a8be30e8db7fce9dc65"
       }
     },
     "sampledOrdinals": [
@@ -1859,6 +1866,23 @@
       },
       "finding": "표본q9의각의이등분선→각이등분선·삼각형의닮음→닮음은동일의미의ACTIVE표기임을원문과재대조. q7목표/조건변경없음. 표본밖공식후보들은정확정의로선언한스키마보완이며새전수의미검토를주장하지않음.",
       "additionalConditionAmendments": "q8의명시2:3비·q12의명시중근조건을각원문과직접대조하여추가보존확인."
-    }
+    },
+    "scopedQuoteAmendments": [
+      {
+        "at": "2026-11-15T00:19:06.340895+00:00",
+        "sourceOrdinal": 24,
+        "finding": "그림뒤(1)상수a값과(2)삼각형OPA넓이의원문목표를직접읽고새두quote의정확일치확인. source·난도·분류재검은수행하지않음.",
+        "priorInputs": {
+          "review": {
+            "path": "/workspace/scratch/e45ff6c78c51/workers/B/E056.review.json",
+            "sha256": "db5baa97c8034f32d320dee807d10c4d667291ad722a72c3489e0c56980f45fb"
+          },
+          "fourSlot": {
+            "path": "/workspace/scratch/e45ff6c78c51/workers/B/E056.4slot.json",
+            "sha256": "2ee7d7d186890b3d53dbc08ca1d328aa70585c79526a1dea2f855095a1445f7c"
+          }
+        }
+      }
+    ]
   }
 }
