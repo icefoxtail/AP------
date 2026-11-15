@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 85,
-    "reviewedQuestions": 2017
+    "reviewedExams": 86,
+    "reviewedQuestions": 2043
   },
   "duplicateUids": [],
   "exams": [
@@ -8654,9 +8654,33 @@
       ],
       "solutionCount": 26,
       "existing4slot": null,
-      "status": "PENDING",
+      "status": "REVIEWED_PROPOSAL",
       "assignedTo": "meta_b",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "81bd87231a7fab85da9eba747e4080133db18775",
+      "reviewer": "meta_b",
+      "independentReviewer": "meta_c",
+      "integratedBy": "GPT_ROOT_E0C948452E80",
+      "sampledOrdinals": [
+        8,
+        12,
+        24
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E086",
+      "checks": {
+        "fourSlotFail": 0,
+        "fourSlotWarn": 14,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      },
+      "sourceChangedItems": 0,
+      "sourceChangedFields": 0,
+      "contentDebtCount": 0,
+      "typeProposalCount": 31,
+      "evidenceDebtOrdinals": [],
+      "undecidedDifficultyOrdinals": [],
+      "difficultyPolicyDebtOrdinals": []
     },
     {
       "key": "E087",
@@ -10602,7 +10626,7 @@
       "nextAction": "SEMANTIC_REVIEW"
     }
   ],
-  "nextAction": "CONTINUE_E086_AND_PENDING_ONLY",
+  "nextAction": "CONTINUE_E087_AND_PENDING_ONLY",
   "resumedAt": "2026-11-14T23:58:38.098191+00:00",
   "authorityMainChecked": "22d5b2fa1c09eec588c434a16c41ae197e946c80",
   "resumeAuthority": {
@@ -10618,8 +10642,8 @@
     "predecessorRevision": 6,
     "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
   },
-  "updatedAt": "2026-11-15T06:02:18.903908+00:00",
-  "lastPublishedHeadBeforeCurrent": "317bb029864e5497119b435308c8506961c680ad",
+  "updatedAt": "2026-11-15T06:03:32.143904+00:00",
+  "lastPublishedHeadBeforeCurrent": "bfc61191177362730d8a8d5d8130a2ca75cbba4a",
   "resumeHistory": [
     {
       "basis": "EXPLICIT_USER_DIRECTION_TO_RESUME_DESPITE_UNCONFIRMED_STALE_RUNNING",
@@ -10646,15 +10670,15 @@
       "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
     }
   ],
-  "lastCompletedExam": "E085",
-  "nextIncompleteExam": "E086",
-  "remainingExams": 30,
-  "remainingQuestions": 733,
-  "lastVerifiedRemoteHeadBeforeCurrent": "317bb029864e5497119b435308c8506961c680ad",
+  "lastCompletedExam": "E086",
+  "nextIncompleteExam": "E087",
+  "remainingExams": 29,
+  "remainingQuestions": 707,
+  "lastVerifiedRemoteHeadBeforeCurrent": "bfc61191177362730d8a8d5d8130a2ca75cbba4a",
   "externalCheckpoint": {
-    "revision": 10,
-    "sha256": "457792aee2e0459535e50c7b6305a2cd3e398bdbbeb871df3510c94eecbb4617",
-    "fileId": "1UJhcBdZeAXq_gmS0qBo1EDnhZGFcSWN4",
+    "revision": 11,
+    "sha256": "9d9998945b6f28e9fe8769949bc7bab56df25a6c0fbbb16a3ad49f915721ed76",
+    "fileId": "1e7ynIuzXDhfeZaM0fD62yPOd8VrAD2OX",
     "state": "VERIFIED_PREVIOUS_CHECKPOINT_CURRENT_SYNC_PENDING"
   },
   "workers": {
@@ -10721,5 +10745,271 @@
       ],
       "outputDirectory": "/workspace/scratch/e0c948452e80/workers/C"
     }
-  }
+  },
+  "unsavedArtifacts": [
+    {
+      "examKey": "E087",
+      "sourceBlob": "f3f8cd1585444251a8f10ab5955cb46e3db11176",
+      "questionCount": 23,
+      "artifacts": [
+        {
+          "worker": "A",
+          "kind": "independent",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E087.independent.json",
+          "bytes": 2934,
+          "sha256": "4a66346c0577bcfdc817c33e59097cab7e5202e108ce6c39f1979afb9ba819b8",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "C",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/C/E087.review.json",
+          "bytes": 192755,
+          "sha256": "30662e0fc269b9c1eb1f1c4270771a4520405d68e75fe5c16067a96769f38090",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "C",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/C/E087.4slot.json",
+          "bytes": 105963,
+          "sha256": "5f8e37a97fec7813a9c24479221bada9c5bc6cea424ab58c25a27cc5233f3375",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
+      "examKey": "E088",
+      "sourceBlob": "dc5fba4ad5ba7fe69c8c1edd88c4aacb4b961e7e",
+      "questionCount": 25,
+      "artifacts": [
+        {
+          "worker": "A",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E088.review.json",
+          "bytes": 165381,
+          "sha256": "d457e05217fd6e09cd9fd44d7f743113a40da521f7dd74d60e5de955e094fb71",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "A",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E088.4slot.json",
+          "bytes": 148661,
+          "sha256": "4bd3bd98b20854c8467b9b473a654c1ed65e7b68ae9c0bb3a3883ee45dc011f6",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "B",
+          "kind": "independent",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E088.independent.json",
+          "bytes": 2673,
+          "sha256": "1c9998319244a0b25b33a02022026748970f9b32ab8a5dc956cde9027f024da6",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
+      "examKey": "E089",
+      "sourceBlob": "1020a2ac56c449fdc272c1564b2c5b86c669f325",
+      "questionCount": 23,
+      "artifacts": [
+        {
+          "worker": "B",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E089.review.json",
+          "bytes": 179132,
+          "sha256": "57435421c18ae07f2f3fdf86a3ec33856b014ab4408bb256d5a1768f6bfe592f",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "B",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E089.4slot.json",
+          "bytes": 54273,
+          "sha256": "d80ff940abde7fd4403974a0038c79d4fabba66b581d30e7446b80bd1b643d0f",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
+      "examKey": "E091",
+      "sourceBlob": "c94bab7233b222854cb80e6e641b027c210b13e0",
+      "questionCount": 25,
+      "artifacts": [
+        {
+          "worker": "A",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E091.review.json",
+          "bytes": 160598,
+          "sha256": "06ab0ef0b74fe1aa9ebed7855a00c202169e55307fee113686821ebf4dae77ae",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "A",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E091.4slot.json",
+          "bytes": 146237,
+          "sha256": "935c53af9e30fdf9ad7790fcc4cde6e1cfe5606903b1cafafd69b83b6eca7409",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "B",
+          "kind": "independent",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E091.independent.json",
+          "bytes": 2891,
+          "sha256": "17e4ea264e1790b9c6c0a26a019a28713617035b0801503fb90a3ece3e823997",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
+      "examKey": "E092",
+      "sourceBlob": "488f0686db5e445ed984ae926ca66fb3477c3b90",
+      "questionCount": 25,
+      "artifacts": [
+        {
+          "worker": "B",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E092.review.json",
+          "bytes": 202813,
+          "sha256": "fefd0c1cb8d246424154e532365877777ca1ed3ceba2c50db126c413dcb5103a",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "B",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E092.4slot.json",
+          "bytes": 77233,
+          "sha256": "c1ea4ad4c2c77e98dc30e2cd3a12a0ba811f3c4c850348dcfa50e3a18928ee64",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
+      "examKey": "E094",
+      "sourceBlob": "ad48d7189a35806290a82a38cf16a6f06c8ab12b",
+      "questionCount": 24,
+      "artifacts": [
+        {
+          "worker": "A",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E094.review.json",
+          "bytes": 166587,
+          "sha256": "12a6b0575b913bcc37d6440c76590fd9503f50420926d8b80813877cb5989fbe",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "A",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E094.4slot.json",
+          "bytes": 76705,
+          "sha256": "c706a4b00dd2c8b81a33de4523334c1b981ce24438fc3b54cf809fd7dd5e43a3",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "B",
+          "kind": "independent",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E094.independent.json",
+          "bytes": 3011,
+          "sha256": "336ce411361a004457aa21b315725e1e6ac18b136ed7cb4588cadf4bb2ef76af",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
+      "examKey": "E097",
+      "sourceBlob": "ce50093a0a30612f6d5ae98bc1858c5d844d8427",
+      "questionCount": 25,
+      "artifacts": [
+        {
+          "worker": "A",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E097.review.json",
+          "bytes": 154038,
+          "sha256": "4088e8e720c3f6b47da51612c46ae6b622966402345c4419a2ebd41265a6e318",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "A",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E097.4slot.json",
+          "bytes": 114431,
+          "sha256": "71cac0f47d4c56662b6f13735c84c0e1e31679b8a3f6ca79a171d6bc675da607",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "B",
+          "kind": "independent",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E097.independent.json",
+          "bytes": 2772,
+          "sha256": "3652845405eee6c2137e0ce8805c273ff9d392161de8323a12dc7bf47a6f1d91",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
+      "examKey": "E100",
+      "sourceBlob": "6446ed32f8a757d1fd37ab6e16a5ab42b25e58db",
+      "questionCount": 23,
+      "artifacts": [
+        {
+          "worker": "A",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E100.review.json",
+          "bytes": 154908,
+          "sha256": "9cb1b803ec193c5c094d9518b339b138153b8c17565592f667785732dcf9dd9c",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "A",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E100.4slot.json",
+          "bytes": 52522,
+          "sha256": "fea365396285ab21f38db24a22f322ffc9cf99ad23bf13a83b2398b929bfb1da",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "B",
+          "kind": "independent",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E100.independent.json",
+          "bytes": 2582,
+          "sha256": "ea5ba0a19f1d8cbe9eb03eb704017ed2ed86519c5bfe063d764e7548ebafe60b",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
+      "examKey": "E103",
+      "sourceBlob": "d288e88a3d3f9d4635ee120f08fd0f10af2739e8",
+      "questionCount": 21,
+      "artifacts": [
+        {
+          "worker": "A",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E103.review.json",
+          "bytes": 144220,
+          "sha256": "89770d6cc57fbc1b49eefdeef7e45896ae6ca410761fb888b30b08d2ebd37dc3",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "A",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E103.4slot.json",
+          "bytes": 60228,
+          "sha256": "71508749669c239d52ca68bb3bf979cba8eb9d6c9d8fa5f9d92a2ba4fb965f54",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    }
+  ]
 }

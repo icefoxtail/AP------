@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E086",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "owner": "GPT_ROOT_E0C948452E80/C",
+  "at": "2026-11-15T06:00:35.648297+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/18_동산중_1학기_기말_중3_수학.js",
+  "sourceBlob": "81bd87231a7fab85da9eba747e4080133db18775",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E086.review.json",
+      "sha256": "33ce878e466bf73da3d5a79ffacbf85b7fdf0d6349a96d845542ffcb2820073f"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E086.4slot.json",
+      "sha256": "fab18489d27f484e79ea21164460606c026f0bd0e1808bf306c5b5c53363baaa"
+    },
+    "sourceInput": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E086.input.json",
+      "sha256": "f239ab6c1e13a9a994e09a523682bafaa58c9f229b8ebaef0636208db92fe023"
+    }
+  },
+  "sampledOrdinals": [
+    8,
+    12,
+    24
+  ],
+  "findings": [
+    {
+      "ordinal": 8,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "기존 해설이 (x-2)(x-k)의 두 근을 얻고 2:k와 k:2 두 순서를 모두 나누는 것을 직접 확인했다. 비의 순서에 따른 경우분류와 곱 목표를 보존했으며 bucket3/B23 및 정확 leaf 공백이 타당하다."
+    },
+    {
+      "ordinal": 12,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 아벨로스 그림의 큰 반원에서 두 작은 반원을 제외한 영역을 확인했다. 해설의 지름 기반 넓이식, 인수분해 후 AC<BC로 작은 후보를 선택하는 단계를 읽었다. RPM039/131과 부등식 Condition, bucket3/B23 및 원넓이공식 후보를 수용한다."
+    },
+    {
+      "ordinal": 24,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 직사각형 그림에서 AB=BF=1, 대응변과 닮음 관계를 확인했다. 기존 해설의 비례식→이차방정식→근의 공식과 양의 길이 선택이 실제 문항 내용과 맞는다. CC_SIMILARITY 순차 통합, RPM039/131, bucket3/B23 및 방법 근거를 수용한다."
+    }
+  ],
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E086/12-question-1.png",
+      "sha256": "5ad57f581b0b5fee99157ea5bd208e0aef9c75e89df2d6aff4a01feb7e7694e8"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E086/24-question-1.png",
+      "sha256": "3ac372087a4a1d657a9828900b51fafcfa3dc59ec140ff2e929b08e0b4941896"
+    }
+  ],
+  "additionalContentObservations": [],
+  "scope": "METADATA_ONLY: sampled source stems, choices, existing solutions/actual blanks, author judgments and exact 4slot quotes directly compared. No full-exam rereview or mathematical PASS asserted. Source-only missing-method failures remain open.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}
