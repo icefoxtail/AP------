@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E044",
+  "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+  "author": "meta_b",
+  "reviewer": "meta_c_resume_20261115",
+  "owner": "GPT_ROOT_E45FF6C78C51/C",
+  "at": "2026-11-15T00:04:22.754772+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/22_왕운중_1학기_중간_중3_기출.js",
+  "sourceBlob": "3030a69ee1aadcd782d8e1308bc4641b271ef25b",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E044.review.json",
+      "sha256": "4be7c12a4bcde33772814f9da96c616a677ad8a63f714f1e4fbd53da25017f16"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E044.4slot.json",
+      "sha256": "0b3a691b7bdff15ee9a34dec2f04aa5a191f3b6ee67407d944022010b4355f33"
+    }
+  },
+  "sampledOrdinals": [
+    4,
+    10,
+    16
+  ],
+  "additionalChangedOrBoundaryOrdinals": [],
+  "scope": "METADATA_ONLY: listed source stems, choices, existing solutions, author decisions and exact 4slot quotes directly compared. Other completed author judgments reused; no full-exam rereview claim.",
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E044-q4.png",
+      "sha256": "029ae1dadfd7275a23120851783c68a69a09dc93da8981cade1a2099c4a96718"
+    }
+  ],
+  "findings": [
+    {
+      "ordinal": 4,
+      "status": "HOLD_CONFIRMED",
+      "note": "타일그림에서한변x와폭2a를직접읽었으나원문직사각형길이2와불일치. 이를contentdebt와UNKNOWN으로보존한판정수용."
+    },
+    {
+      "ordinal": 10,
+      "status": "HOLD_CONFIRMED",
+      "note": "a+b√7형태에서a,b범위미명시로계수유일성을강제하지않은UNKNOWN보류확인."
+    },
+    {
+      "ordinal": 16,
+      "status": "PASS",
+      "note": "공통인수2ab를직접묶는한단계인수분해1/B12이며추가보조개념이불필요함을확인."
+    }
+  ],
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

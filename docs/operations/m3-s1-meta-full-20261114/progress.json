@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 52,
-    "reviewedQuestions": 1239
+    "reviewedExams": 53,
+    "reviewedQuestions": 1263
   },
   "duplicateUids": [],
   "exams": [
@@ -4692,9 +4692,39 @@
           "path": "archive-work/4slot-annotate-v1/out/original/middle/m3/1mid/22_왕운중_1학기_중간_중3_기출.4slot.json"
         }
       },
-      "status": "PENDING",
+      "status": "REVIEWED_WITH_EVIDENCE_DEBT",
       "assignedTo": "meta_b",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "1760edf1b1be5894dd7df207b1629d20e9d599a0",
+      "reviewer": "meta_b",
+      "independentReviewer": "meta_c_resume_20261115",
+      "integratedBy": "GPT_ROOT_E45FF6C78C51",
+      "sampledOrdinals": [
+        4,
+        10,
+        16
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E044",
+      "checks": {
+        "fourSlotFail": 0,
+        "fourSlotWarn": 8,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      },
+      "sourceChangedItems": 12,
+      "sourceChangedFields": 25,
+      "contentDebtCount": 4,
+      "typeProposalCount": 28,
+      "evidenceDebtOrdinals": [
+        4,
+        10
+      ],
+      "undecidedDifficultyOrdinals": [
+        4,
+        10
+      ],
+      "difficultyPolicyDebtOrdinals": []
     },
     {
       "key": "E045",
@@ -9665,8 +9695,8 @@
     "reusedCompletedExams": 48,
     "reusedCompletedQuestions": 1143
   },
-  "updatedAt": "2026-11-15T00:06:43.799599+00:00",
-  "lastPublishedHeadBeforeCurrent": "b92d00ba846439b1d552de93906fbcc799bd2786",
+  "updatedAt": "2026-11-15T00:07:34.242831+00:00",
+  "lastPublishedHeadBeforeCurrent": "8b46d67a1d396631de1fc92561d67e472b6bb4a3",
   "resumeHistory": [
     {
       "basis": "EXPLICIT_USER_DIRECTION_TO_RESUME_DESPITE_UNCONFIRMED_STALE_RUNNING",
