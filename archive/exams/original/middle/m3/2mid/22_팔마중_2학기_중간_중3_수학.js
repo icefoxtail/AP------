@@ -42,11 +42,11 @@ window.questionBank = [
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-    "projectionStatus": "REUSE",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
-    "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
+    "projectionReason": "GLOBAL ACTIVE TPL_TRIG_RATIO_GEOMETRIC_DERIVATION와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
     "crossConceptKeys": [
       "CC_PYTHAGOREAN"
     ],
@@ -57,7 +57,7 @@ window.questionBank = [
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
@@ -65,6 +65,9 @@ window.questionBank = [
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q01.png"
     ]
+  ,
+    "primaryMethod": "직각 표시로 빗변을 확인하고 피타고라스로 남은 변을 복원한 뒤 코사인과 탄젠트의 정의를 적용한다.",
+    "decisiveStep": "직각 표시로 빗변을 확인하고 피타고라스로 남은 변을 복원한 뒤 코사인과 탄젠트의 정의를 적용한다."
   },
   {
     "id": 2,
@@ -98,22 +101,22 @@ window.questionBank = [
     "answer": "①",
     "solution": "그림에서 ∠B=90°, BC=4이다.\ntan A=BC/AB=2/3이므로 4/AB=2/3, 따라서 AB=6이다.\n피타고라스 정리로 AC²=AB²+BC²=6²+4²=52이므로 AC=2√13이다.\n따라서 정답은 ①이다.",
     "score": 3,
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비와 길이 > 직각삼각형의 변",
-    "rpmL3": "삼각비와 길이",
-    "rpmL4": "직각삼각형의 변",
-    "rpmPrimaryRecordId": "M3-RPM-059",
+    "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 피타고라스 결합",
+    "rpmL3": "복합도형",
+    "rpmL4": "피타고라스 결합",
+    "rpmPrimaryRecordId": "M3-RPM-066",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-    "projectionStatus": "REUSE",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
-    "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
+    "projectionReason": "GLOBAL ACTIVE TPL_TRIG_APPLICATION_CHAINED_MEASURE와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
     "crossConceptKeys": [
       "CC_PYTHAGOREAN"
     ],
@@ -124,7 +127,7 @@ window.questionBank = [
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
@@ -132,6 +135,9 @@ window.questionBank = [
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q02.png"
     ]
+  ,
+    "primaryMethod": "탄젠트 관계로 한 직각변을 정한 뒤 피타고라스로 최종 빗변을 구한다.",
+    "decisiveStep": "탄젠트 관계로 한 직각변을 정한 뒤 피타고라스로 최종 빗변을 구한다."
   },
   {
     "id": 3,
@@ -185,9 +191,9 @@ window.questionBank = [
     "crossConceptReasons": [],
     "conditionKeys": [],
     "conditionReasons": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
@@ -199,6 +205,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 공통 변 BD를 기준으로 분리한 두 직각삼각형 ABD와 BCD. 두 45° 각은 초록색으로 묶이고, 변 길이는 각 선분에 붙여 표시했다.",
     "solutionImageCaption": "△ABD에서 AD=2√6, △BCD에서 BC=4이므로 AD×BC=8√6. 답: 8√6, ⑤.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "두 연결된 직각삼각형에서30-60-90과45-45-90의 고정 변비를 직접 적용하여 공유변과 목표 두 변의 곱을 복원한다.",
+    "decisiveStep": "두 연결된 직각삼각형에서30-60-90과45-45-90의 고정 변비를 직접 적용하여 공유변과 목표 두 변의 곱을 복원한다."
   },
   {
     "id": 4,
@@ -253,12 +262,15 @@ window.questionBank = [
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
     "sourceImageRefs": []
+  ,
+    "primaryMethod": "각 선택지에 특수각 삼각비 값을 직접 대입하고 계산 결과를 비교하여 가장 큰 값을 고른다.",
+    "decisiveStep": "각 선택지에 특수각 삼각비 값을 직접 대입하고 계산 결과를 비교하여 가장 큰 값을 고른다."
   },
   {
     "id": 5,
@@ -308,17 +320,20 @@ window.questionBank = [
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
     "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
-    "crossConceptKeys": [],
-    "crossConceptReasons": [],
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_RATIO_AND_PROPORTION"],
+    "crossConceptReasons": ["삼각형 내각의 합180°가 세 각의 비를 각도로 바꾸는 기준량이다.","2:3:7의 비를 합12몫으로 비례배분하여 가장 작은 각30°를 결정한다."],
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
     "sourceImageRefs": []
+  ,
+    "primaryMethod": "삼각형 내각의 합을2:3:7로 비례배분하여 가장 작은 각을 정한 뒤 특수각 삼각비 식을 계산한다.",
+    "decisiveStep": "삼각형 내각의 합을2:3:7로 비례배분하여 가장 작은 각을 정한 뒤 특수각 삼각비 식을 계산한다."
   },
   {
     "id": 6,
@@ -356,25 +371,25 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비와 길이 > 각을 이용한 길이",
-    "rpmL3": "삼각비와 길이",
-    "rpmL4": "각을 이용한 길이",
-    "rpmPrimaryRecordId": "M3-RPM-060",
+    "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비의 뜻 > sin·cos·tan",
+    "rpmL3": "삼각비의 뜻",
+    "rpmL4": "sin·cos·tan",
+    "rpmPrimaryRecordId": "M3-RPM-055",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-    "projectionStatus": "REUSE",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
-    "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
-    "crossConceptKeys": [],
-    "crossConceptReasons": [],
+    "projectionReason": "GLOBAL ACTIVE TPL_TRIG_RATIO_TABLE_LOOKUP와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
+    "crossConceptKeys": ["CC_UNIT_QUARTER_CIRCLE"],
+    "crossConceptReasons": ["단위 사분원에서 OB=OC=1이고 OA=1−0.17임을 이용해 코사인 표의 조회값을 얻는다."],
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
@@ -382,6 +397,9 @@ window.questionBank = [
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q06.png"
     ]
+  ,
+    "primaryMethod": "사분원 반지름과 차이 길이로 코사인 값을 구해 표에서 각을 역조회하고 같은 행의 사인·탄젠트로 두 길이를 정한다.",
+    "decisiveStep": "사분원 반지름과 차이 길이로 코사인 값을 구해 표에서 각을 역조회하고 같은 행의 사인·탄젠트로 두 길이를 정한다."
   },
   {
     "id": 7,
@@ -419,18 +437,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비의 뜻 > 삼각비의 관계",
+    "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비의 뜻 > sin·cos·tan",
     "rpmL3": "삼각비의 뜻",
-    "rpmL4": "삼각비의 관계",
-    "rpmPrimaryRecordId": "M3-RPM-056",
+    "rpmL4": "sin·cos·tan",
+    "rpmPrimaryRecordId": "M3-RPM-055",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-    "projectionStatus": "REUSE",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
-    "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
+    "projectionReason": "GLOBAL ACTIVE TPL_TRIG_RATIO_GEOMETRIC_DERIVATION와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
     "crossConceptKeys": [
       "CC_PYTHAGOREAN"
     ],
@@ -440,8 +458,8 @@ window.questionBank = [
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
@@ -453,6 +471,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 정육면체 속 삼각형 EGC와 같은 이름으로 분리한 평면 직각삼각형 EGC. EG는 파랑, CG는 주황으로 나타냈다.",
     "solutionImageCaption": "sin x/cos x=tan x=CG/EG=5/(5√2)=√2/2. 답: ①.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "정육면체에서 면대각선과 수직 모서리의 길이를 복원하여 탄젠트를 구하고 sin/cos를 그 값으로 읽는다.",
+    "decisiveStep": "정육면체에서 면대각선과 수직 모서리의 길이를 복원하여 탄젠트를 구하고 sin/cos를 그 값으로 읽는다."
   },
   {
     "id": 8,
@@ -486,22 +507,22 @@ window.questionBank = [
     "answer": "③",
     "solution": "Q에서 OP에 내린 수선의 발을 H라 하자. ∠O=60°, OQ=12이므로 직각삼각형 OQH에서 OH=12cos60°=6, QH=12sin60°=6√3이다.\nOP=8이므로 PH=OP−OH=8−6=2이다. 직각삼각형 PHQ에서\nPQ²=PH²+QH²=2²+(6√3)²=4+108=112.\n따라서 PQ=4√7 m이고 정답은 ③이다.",
     "score": 4,
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비와 길이 > 각을 이용한 길이",
-    "rpmL3": "삼각비와 길이",
-    "rpmL4": "각을 이용한 길이",
-    "rpmPrimaryRecordId": "M3-RPM-060",
+    "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 피타고라스 결합",
+    "rpmL3": "복합도형",
+    "rpmL4": "피타고라스 결합",
+    "rpmPrimaryRecordId": "M3-RPM-066",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-    "projectionStatus": "REUSE",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
-    "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
+    "projectionReason": "GLOBAL ACTIVE TPL_TRIG_APPLICATION_CHAINED_MEASURE와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
     "crossConceptKeys": [
       "CC_PYTHAGOREAN"
     ],
@@ -512,7 +533,7 @@ window.questionBank = [
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
@@ -524,6 +545,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 삼각형 OPQ와 Q에서 OP에 내린 수선 H. 두 직각삼각형 OHQ, PHQ를 색으로 구분하고 OP=8 m, OQ=12 m, ∠O=60°를 표시했다.",
     "solutionImageCaption": "OH=6 m, QH=6√3 m, PH=2 m이므로 PQ²=2²+(6√3)²=112. 답: 4√7 m, ③.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "두 변 사이 각에서 수선을 선택해 사인·코사인으로 높이와 사영을 구하고 남은 밑변과 피타고라스로 두 지점 사이 거리를 구한다.",
+    "decisiveStep": "두 변 사이 각에서 수선을 선택해 사인·코사인으로 높이와 사영을 구하고 남은 밑변과 피타고라스로 두 지점 사이 거리를 구한다."
   },
   {
     "id": 9,
@@ -573,15 +597,15 @@ window.questionBank = [
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
     "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
-    "crossConceptKeys": [],
-    "crossConceptReasons": [],
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_DENOMINATOR_RATIONALIZATION"],
+    "crossConceptReasons": ["60°와75°의 두 내각에서 남은45°를 정해 특수직각삼각형 보조선을 구성한다.","고정 변비로 얻은 90/√2와 90√2/√3의 분모 근호를 제거하여 기존 정답 형태로 정리한다."],
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q09.png",
     "sourceImageRefs": [
@@ -591,6 +615,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 삼각형 ABC에 보조선 BD를 그려 두 직각삼각형으로 나눈 그림. 파랑은 45° 두 각, 주황은 다른 삼각형을 표시한다.",
     "solutionImageCaption": "△BCD에서 BD=90/√2=45√2 m. △ABD에서 AB=2BD/√3=30√6 m. 답: 30√6 m, ④.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "삼각형 내각 합에서45°를 찾고 보조선으로45-45-90과30-60-90 두 직각삼각형을 만들어 고정 변비로 거리를 전달한다.",
+    "decisiveStep": "삼각형 내각 합에서45°를 찾고 보조선으로45-45-90과30-60-90 두 직각삼각형을 만들어 고정 변비로 거리를 전달한다."
   },
   {
     "id": 10,
@@ -640,15 +667,15 @@ window.questionBank = [
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
     "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
-    "crossConceptKeys": [],
-    "crossConceptReasons": [],
+    "crossConceptKeys": ["CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"],
+    "crossConceptReasons": ["공유 높이 식에서 얻은 180/(√3−1)의 분모·분자에 켤레 √3+1을 곱하여 90(√3+1)로 정리한다."],
     "conditionKeys": [],
     "conditionReasons": [],
-    "integrationPattern": "INTERDEPENDENT",
-    "difficultyBucket": 4,
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q10.png",
     "sourceImageRefs": [
@@ -658,6 +685,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 지면 위의 두 관측점 A, B, 건물 발 C, 꼭대기 D. A의 시선 각은 45°, B의 시선 각은 60°이고 CD는 수직이다.",
     "solutionImageCaption": "tan45°=h/(x+180), tan60°=h/x이므로 x=90(1+√3), h=90(3+√3) m. 답: 90(3+√3) m, ①.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "같은 쪽 두 관측점과 건물 높이를 공통 미지수로 두고 두 탄젠트 식을 연결하여 높이를 결정한다.",
+    "decisiveStep": "같은 쪽 두 관측점과 건물 높이를 공통 미지수로 두고 두 탄젠트 식을 연결하여 높이를 결정한다."
   },
   {
     "id": 11,
@@ -702,22 +732,18 @@ window.questionBank = [
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-    "projectionStatus": "REUSE",
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
-    "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
-    "crossConceptReasons": [
-      "사각형을 두 삼각형으로 분할해 삼각형 넓이를 합산하는 것이 넓이 계산의 필수 보조 개념이다."
-    ],
+    "projectionReason": "기존 ACTIVE 부모 PT는 맞고 교육과정 binding 여부를 별도 확인했으나 전체 문항의 정확 TPL이 없다. 기존 제안에 지원 UID를 남기며 공통 등록은 수행하지 않았다.",
+    "crossConceptKeys": [],
+    "crossConceptReasons": [],
     "conditionKeys": [],
     "conditionReasons": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
@@ -729,6 +755,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 대각선 AC와 BD의 교각은 60°이고, 두 대각선으로 나뉜 △ABC와 △ACD를 서로 다른 색으로 구분했다.",
     "solutionImageCaption": "대각선 전체는 AC=8 cm, BD=5√3 cm이고 그 교각은 60°이다. 넓이=1/2·AC·BD·sin60°=30 cm². 답: 30 cm², ④.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "대각선으로 나눈 두 삼각형의 높이를 대각선의 수직 성분으로 합쳐 대각선 곱과 끼인각 사인으로 사각형 넓이를 계산한다.",
+    "decisiveStep": "대각선으로 나눈 두 삼각형의 높이를 대각선의 수직 성분으로 합쳐 대각선 곱과 끼인각 사인으로 사각형 넓이를 계산한다."
   },
   {
     "id": 12,
@@ -766,10 +795,10 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 평면도형 > 삼각형의 높이·넓이",
+    "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 평면도형 > 다각형의 길이·넓이",
     "rpmL3": "평면도형",
-    "rpmL4": "삼각형의 높이·넓이",
-    "rpmPrimaryRecordId": "M3-RPM-061",
+    "rpmL4": "다각형의 길이·넓이",
+    "rpmPrimaryRecordId": "M3-RPM-062",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -778,19 +807,15 @@ window.questionBank = [
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
     "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
-    "crossConceptKeys": [
-      "CC_SQUARE"
-    ],
-    "crossConceptReasons": [
-      "정사각형의 대각선 대칭 및 직각 성질이 ∠ABE를 결정하는 데 필수이며 삼각비 활용만으로는 이 각을 알 수 없다."
-    ],
+    "crossConceptKeys": ["CC_SQUARE","CC_ANGLE_BISECTOR"],
+    "crossConceptReasons": ["정사각형의 대각선 대칭 및 직각 성질이 ∠ABE를 결정하는 데 필수이며 삼각비 활용만으로는 이 각을 알 수 없다.","정사각형 대각선의 대칭축과 BE=BF를 이용한 각이등분으로 ∠ABE=30°를 얻는다."],
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q12.png",
     "sourceImageRefs": [
@@ -800,6 +825,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 정사각형 ABCD의 대각선 BD, 변 위의 E와 F, 이등변삼각형 EBF. BE와 BF에 같은 눈금이 있고 B의 각 분할을 색으로 구분했다.",
     "solutionImageCaption": "BE=BF=t에서 (1/2)t²sin30°=3/2이므로 t=√6. ∠ABE=30°이므로 AB=t cos30°=3√2/2 cm. 정사각형의 넓이는 AB²=9/2 cm². 답: 9/2 cm², ②.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "정사각형의 대칭축과 이등변 조건으로 각을 정하고 사인 넓이식에서 두 같은 변을 역산한 뒤 코사인으로 정사각형 한 변을 얻는다.",
+    "decisiveStep": "정사각형의 대칭축과 이등변 조건으로 각을 정하고 사인 넓이식에서 두 같은 변을 역산한 뒤 코사인으로 정사각형 한 변을 얻는다."
   },
   {
     "id": 13,
@@ -837,29 +865,25 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "rpmPrimaryPath": "원의 성질 > 원과 직선 > 원의 중심과 현 > 현의 수직이등분선과 중심",
+    "rpmPrimaryPath": "원의 성질 > 원과 직선 > 원의 중심과 현 > 중심거리와 현의 길이",
     "rpmL3": "원의 중심과 현",
-    "rpmL4": "현의 수직이등분선과 중심",
-    "rpmPrimaryRecordId": "M3-RPM-068",
+    "rpmL4": "중심거리와 현의 길이",
+    "rpmPrimaryRecordId": "M3-RPM-069",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-    "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
-    "projectionStatus": "REUSE",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
-    "projectionReason": "GLOBAL ACTIVE key의 canonical owner는 GEOMETRY_EQUATIONS이고, 현재 MIDDLE_GEOMETRY bindings.json에 2015/중3 수학/M3-06/M3-06-CIRCLE_LINE ACTIVE row가 있다. 최신 Meta Foundation §1.4 판정 규칙 5가 canonical ownerPack과 curriculum binding ownerPack이 달라도 unique active key와 유효 binding이면 정상 cross-pack reuse라고 명시한다. stale RPM crosswalk mismatch는 evidence에 별도 보존했다.",
-    "crossConceptKeys": [
-      "CC_CIRCUMCIRCLE"
-    ],
-    "crossConceptReasons": [
-      "세 삼각형 변이 원 O의 현이라는 조건을 이용해 변 길이 비교와 둘레로 전환한다."
-    ],
+    "projectionReason": "GLOBAL ACTIVE TM_CIRCLE_CHORD_LENGTH와 canonical owner GEOMETRY_EQUATIONS, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
+    "crossConceptKeys": [],
+    "crossConceptReasons": [],
     "conditionKeys": [],
     "conditionReasons": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
@@ -871,6 +895,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원의 세 현에 내린 중심 수선은 파랑 한 눈금으로 같다. 수선이 각 현을 이등분하며 같은 주황 두 눈금의 여섯 반현 중 AD는 3 cm이다.",
     "solutionImageCaption": "중심에서 같은 거리의 현 세 개는 길이가 같고, 각 수선은 현을 반으로 나눈다. AD=3 cm이므로 세 변은 각각 6 cm, 둘레는 18 cm이다. 정답은 ②이다.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "중심에서 세 현에 이르는 거리가 같아 세 현이 같음을 정하고 한 현의 중점 조건으로 변을 복원하여 둘레를 구한다.",
+    "decisiveStep": "중심에서 세 현에 이르는 거리가 같아 세 현이 같음을 정하고 한 현의 중점 조건으로 변을 복원하여 둘레를 구한다."
   },
   {
     "id": 14,
@@ -929,8 +956,8 @@ window.questionBank = [
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
@@ -938,6 +965,9 @@ window.questionBank = [
     "sourceImageRefs": [
       "assets/images/22_팔마중_2학기_중간_중3_수학/q14.png"
     ]
+  ,
+    "primaryMethod": "왼쪽은 중심거리·반지름에서 피타고라스로 현을 구하고 오른쪽은 현의 이등분과 같은 중심거리로 현을 구한 뒤 두 값을 더한다.",
+    "decisiveStep": "왼쪽은 중심거리·반지름에서 피타고라스로 현을 구하고 오른쪽은 현의 이등분과 같은 중심거리로 현을 구한 뒤 두 값을 더한다."
   },
   {
     "id": 15,
@@ -987,15 +1017,15 @@ window.questionBank = [
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
     "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
-    "crossConceptKeys": [],
-    "crossConceptReasons": [],
+    "crossConceptKeys": ["CC_EQUAL_CHORDS_EQUAL_DISTANCE"],
+    "crossConceptReasons": ["같은 중심거리 OM=ON에서 두 현AB=BC와 그에 대응하는 중심각의 상등을 얻어 원주각에 연결한다."],
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q15.png",
     "sourceImageRefs": [
@@ -1005,6 +1035,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 중심 O에서 내린 같은 두 수선 OM과 ON은 파랑 한 눈금이며 두 수선 사이 보라 각은 110도이다. 주황 호 AB가 원주각 ACB와 중심각 AOB의 공통 호이다.",
     "solutionImageCaption": "같은 현 AB와 BC에 대응하는 중심각은 같다. OM과 ON이 각 중심각을 반으로 나누므로 ∠AOB=∠MON=110°이다. 같은 호 AB를 보는 ∠ACB는 55°이다. 정답은 ③이다.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "같은 중심거리의 두 현과 중심각이 같음을 이용하고 수선의 각이등분으로 주어진 각을 중심각에 대응시킨 뒤 원주각을 구한다.",
+    "decisiveStep": "같은 중심거리의 두 현과 중심각이 같음을 이용하고 수선의 각이등분으로 주어진 각을 중심각에 대응시킨 뒤 원주각을 구한다."
   },
   {
     "id": 16,
@@ -1042,31 +1075,27 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "rpmPrimaryPath": "원의 성질 > 원과 직선 > 원의 중심과 현 > 현의 수직이등분선과 중심",
+    "rpmPrimaryPath": "원의 성질 > 원과 직선 > 원의 중심과 현 > 중심거리와 현의 길이",
     "rpmL3": "원의 중심과 현",
-    "rpmL4": "현의 수직이등분선과 중심",
-    "rpmPrimaryRecordId": "M3-RPM-068",
+    "rpmL4": "중심거리와 현의 길이",
+    "rpmPrimaryRecordId": "M3-RPM-069",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-    "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
-    "projectionStatus": "REUSE",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
-    "projectionReason": "GLOBAL ACTIVE key의 canonical owner는 GEOMETRY_EQUATIONS이고, 현재 MIDDLE_GEOMETRY bindings.json에 2015/중3 수학/M3-06/M3-06-CIRCLE_LINE ACTIVE row가 있다. 최신 Meta Foundation §1.4 판정 규칙 5가 canonical ownerPack과 curriculum binding ownerPack이 달라도 unique active key와 유효 binding이면 정상 cross-pack reuse라고 명시한다. stale RPM crosswalk mismatch는 evidence에 별도 보존했다.",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
-    "crossConceptReasons": [
-      "중심-현 직각삼각형에서 반현 길이를 계산하는 데 피타고라스 정리가 필요하다."
-    ],
+    "projectionReason": "GLOBAL ACTIVE TM_CIRCLE_CHORD_LENGTH와 canonical owner GEOMETRY_EQUATIONS, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
+    "crossConceptKeys": ["CC_GEOMETRIC_FOLDING","CC_PYTHAGOREAN"],
+    "crossConceptReasons": ["접힌 호가 기존 중심을 지나므로 반사된 중심간 거리 OO′가 반지름8이고 원래 중심에서 접는 현까지 거리는4이다.","중심-현 직각삼각형에서 반현 길이를 계산하는 데 피타고라스 정리가 필요하다."],
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q16.png",
     "sourceImageRefs": [
@@ -1076,6 +1105,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원래 원 O, 접는 선 AB와 중점 M, 반사된 중심 O′ 및 A와 B를 잇는 접힌 원호. OM과 MO′ 및 AM과 MB에 같은 눈금을 표시했다.",
     "solutionImageCaption": "OO′=8 cm이므로 OM=4 cm. 직각삼각형 OMA에서 AM=4√3 cm, 따라서 AB=8√3 cm. 답: 8√3 cm, ⑤.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "접힌 원호가 원래 중심을 지난다는 조건을 반사된 중심 간 거리로 옮겨 중심과 접는 현의 거리를 정하고 반현에 피타고라스를 적용한다.",
+    "decisiveStep": "접힌 원호가 원래 중심을 지난다는 조건을 반사된 중심 간 거리로 옮겨 중심과 접는 현의 거리를 정하고 반현에 피타고라스를 적용한다."
   },
   {
     "id": 17,
@@ -1129,11 +1161,11 @@ window.questionBank = [
     "crossConceptReasons": [],
     "conditionKeys": [],
     "conditionReasons": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 1,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q17.png",
     "sourceImageRefs": [
@@ -1143,6 +1175,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원과 접점 D, E, F. 파랑·주황·초록 표식은 각 꼭짓점에서 같은 길이의 접선 쌍을 나타낸다.",
     "solutionImageCaption": "AD=AF=3 cm, BD=BE=7 cm, CE=CF=6 cm이므로 BC=BE+EC=13 cm. 답: 13, ④.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "같은 꼭짓점에서의 두 접선 조각을 대응시키고 한 변의 차로 남은 조각을 구한 뒤 목표 삼각형 변의 두 조각을 합한다.",
+    "decisiveStep": "같은 꼭짓점에서의 두 접선 조각을 대응시키고 한 변의 차로 남은 조각을 구한 뒤 목표 삼각형 변의 두 조각을 합한다."
   },
   {
     "id": 18,
@@ -1196,11 +1231,11 @@ window.questionBank = [
     "crossConceptReasons": [],
     "conditionKeys": [],
     "conditionReasons": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q18.png",
     "sourceImageRefs": [
@@ -1210,6 +1245,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 첫 패널은 삼각형 ABC의 내접원과 접점 E,F,G, 두 번째는 B 부근의 P,Q와 PQ의 접점 T를 확대해 나타낸다. 각 접선 길이 쌍을 색과 눈금으로 구분했다.",
     "solutionImageCaption": "BE=BF=(6+7−9)/2=2 cm이다. PB+PQ+BQ=BE+BF=4 cm. 답: 4 cm, ②.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "큰 삼각형의 세 변으로 한 꼭짓점의 두 접선 길이를 정하고 새 접선의 등길이 조각을 소거하여 잘린 삼각형 둘레의 불변 합을 구한다.",
+    "decisiveStep": "큰 삼각형의 세 변으로 한 꼭짓점의 두 접선 길이를 정하고 새 접선의 등길이 조각을 소거하여 잘린 삼각형 둘레의 불변 합을 구한다."
   },
   {
     "id": 19,
@@ -1270,7 +1308,7 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B34",
+    "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q19.png",
@@ -1281,6 +1319,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 O에 외접하는 사각형 ABCD, 네 접점과 C·D의 직각 표시. 같은 꼭짓점에서 그은 접선 길이를 색으로 구분했다.",
     "solutionImageCaption": "A에서의 접선 길이를 u라 두면 AB=u+4, AD=u+2, BC=6, CD=4이다. (u+4)^2=(4−u)^2+16에서 u=1, 따라서 AB=5. 답: 5, ③.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "외접사각형의 마주 보는 변 합으로 두 미지변을 연결하고 직각사다리꼴의 밑변 차·높이로 피타고라스 식을 세워 목표 변을 복원한다.",
+    "decisiveStep": "외접사각형의 마주 보는 변 합으로 두 미지변을 연결하고 직각사다리꼴의 밑변 차·높이로 피타고라스 식을 세워 목표 변을 복원한다."
   },
   {
     "id": 20,
@@ -1330,19 +1371,15 @@ window.questionBank = [
     "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
     "projectionReason": "GLOBAL ACTIVE key의 canonical owner는 GEOMETRY_EQUATIONS이고, 현재 MIDDLE_GEOMETRY bindings.json에 2015/중3 수학/M3-06/M3-06-CIRCLE_LINE ACTIVE row가 있다. 최신 Meta Foundation §1.4 판정 규칙 5가 canonical ownerPack과 curriculum binding ownerPack이 달라도 unique active key와 유효 binding이면 정상 cross-pack reuse라고 명시한다. stale RPM crosswalk mismatch는 evidence에 별도 보존했다.",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
-    "crossConceptReasons": [
-      "현의 중점까지의 거리를 구할 때 반지름과 반현으로 만든 직각삼각형에서 피타고라스 정리가 필수이다."
-    ],
+    "crossConceptKeys": ["CC_EQUILATERAL_TRIANGLE","CC_PYTHAGOREAN","CC_TRIG_RATIO"],
+    "crossConceptReasons": ["현AB와BC가 반지름과 같으므로 두 정삼각형의 중심각60°를 얻는다.","현의 중점까지의 거리를 구할 때 반지름과 반현으로 만든 직각삼각형에서 피타고라스 정리가 필수이다.","현중점까지 중심거리를 복원한 뒤 마지막 삼각형 넓이에서 sin60°를 사용한다."],
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q20.png",
     "sourceImageRefs": [
@@ -1352,6 +1389,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 O와 점 A, B, C, 현의 중점 P·Q, 수선 OP·OQ 및 연하게 칠한 삼각형 OPQ. 같은 반지름·반현·삼각형 변을 색과 눈금으로 구분했다.",
     "solutionImageCaption": "△OAB와 △OBC는 정삼각형이므로 ∠POQ=60°, OP=OQ=3√3. 넓이=1/2·OP·OQ·sin60°=27√3/4. 답: 27√3/4, ①.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "현길이와 반지름이 같은 두 정삼각형을 확인하고 현 중점까지의 중심거리를 피타고라스로 구한 뒤 끼인 중심각으로 목표 삼각형 넓이를 계산한다.",
+    "decisiveStep": "P,Q가 현의 중점이므로 중심에서 현까지의 수선거리 OP=OQ=√(6²−3²)=3√3을 구한다. 두 정삼각형의 중심각을 각각 이등분하여 ∠POQ=60°로 두고 넓이에 연결한다."
   },
   {
     "id": 21,
@@ -1361,9 +1401,9 @@ window.questionBank = [
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
     "curriculum": "2015",
-    "standardUnitKey": "M3-06",
-    "standardUnit": "원의 성질",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M3-05",
+    "standardUnit": "삼각비",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -1385,35 +1425,31 @@ window.questionBank = [
     "answer": "③",
     "solution": "C는 AB의 중점이고 AC=CB=12이므로 두 원의 반지름은 6이다. A, O, C, O′, B가 AB 위에 있고, AO′=AC+CO′=12+6=18이다.\nAP는 원 O′의 접선이므로 O′P⊥AP. θ=∠O′AP라 하자. 직각삼각형 AO′P에서 O′P=6, AO′=18이므로 sinθ=6/18=1/3이다. 피타고라스 정리로 AP²=18²−6²=288, AP=12√2이므로 cosθ=AP/AO′=2√2/3이다.\n원 O에서 현 AQ에 내린 수선의 발을 H라 하자. OH⊥AQ이므로 H는 AQ의 중점이다. A, O, O′가 AB 위에 있고 A, H, Q, P가 한 직선 위에 있으므로 ∠OAH=∠O′AP=θ이다. 따라서 AH=OA cosθ=6×2√2/3=4√2이고 AQ=2AH=8√2이다.\n∠OAQ=θ이므로 △AOQ의 넓이는 1/2×AO×AQ×sinθ=1/2×6×8√2×1/3=8√2이다. 정답은 ③이다.",
     "score": 4,
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "rpmPrimaryPath": "원의 성질 > 원과 직선 > 원의 접선 > 접점의 반지름과 접선",
-    "rpmL3": "원의 접선",
-    "rpmL4": "접점의 반지름과 접선",
-    "rpmPrimaryRecordId": "M3-RPM-070",
+    "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 피타고라스 결합",
+    "rpmL3": "복합도형",
+    "rpmL4": "피타고라스 결합",
+    "rpmPrimaryRecordId": "M3-RPM-066",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "problemTypeKey": "PT_CIRCLE_TANGENT",
-    "templateKey": "TM_TANGENCY_CONDITION",
-    "projectionStatus": "REUSE",
-    "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
-    "projectionReason": "GLOBAL ACTIVE key의 canonical owner는 GEOMETRY_EQUATIONS이고, 현재 MIDDLE_GEOMETRY bindings.json에 2015/중3 수학/M3-06/M3-06-CIRCLE_LINE ACTIVE row가 있다. 최신 Meta Foundation §1.4 판정 규칙 5가 canonical ownerPack과 curriculum binding ownerPack이 달라도 unique active key와 유효 binding이면 정상 cross-pack reuse라고 명시한다. stale RPM crosswalk mismatch는 evidence에 별도 보존했다.",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
-    "crossConceptReasons": [
-      "접선 직각삼각형에서 cosθ를 구하는 데 피타고라스 관계가 필요하다."
-    ],
+    "projectionReason": "GLOBAL ACTIVE TPL_TRIG_APPLICATION_CHAINED_MEASURE와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY","CC_CIRCLE_CHORD_PERP_BISECTOR","CC_PYTHAGOREAN"],
+    "crossConceptReasons": ["접선AP와 접점반지름O′P의 수직 관계로 오른쪽 원의 직각삼각형을 만든다.","왼쪽 원에서 현AQ에 내린 중심의 수선이 AQ를 이등분하여 AH로부터 전체 현을 복원한다.","접선 직각삼각형에서 cosθ를 구하는 데 피타고라스 관계가 필요하다."],
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 5,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/q21.png",
     "sourceImageRefs": [
@@ -1423,6 +1459,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: AB=24의 중점 C에서 만나는 두 원, P 접선과 현 AQ·중점 H, 색칠한 △AOQ. 같은 반지름과 현의 두 반을 색으로 구분했다.",
     "solutionImageCaption": "AB=24, C는 중점이다. O′P=6, AO′=18이므로 sin∠O′AP=1/3; AQ=8√2. 넓이=8√2. 답: 8√2, ③.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "큰 원의 접선 직각삼각형에서 sin·cos를 구하고 같은 방향의 작은 원 현을 수직이등분하여 길이를 복원한 뒤 사인 넓이로 연결한다.",
+    "decisiveStep": "큰 원의 접선 직각삼각형에서 sin·cos를 구하고 같은 방향의 작은 원 현을 수직이등분하여 길이를 복원한 뒤 사인 넓이로 연결한다."
   },
   {
     "id": 22,
@@ -1450,8 +1489,8 @@ window.questionBank = [
     "answer": "(1) $2$; (2) $\\frac{4\\sqrt{3}}{3}$",
     "solution": "(1) ∠ABH=30°, AB=4이고 △ABH는 H에서 직각이다. 따라서 sin30°=AH/AB이므로 AH=4×1/2=2이다.\n(2) △ACH에서 ∠ACH=60°이고 AH는 ∠C의 맞은편 변이다. sin60°=AH/AC이므로 AC=AH/sin60°=2/(√3/2)=4√3/3이다.",
     "score": 4,
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비와 길이 > 직각삼각형의 변",
@@ -1462,19 +1501,19 @@ window.questionBank = [
     "semanticScopeRelation": "CURRENT_SCOPE",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-    "projectionStatus": "REUSE",
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
-    "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
-    "crossConceptKeys": [],
-    "crossConceptReasons": [],
+    "projectionReason": "GLOBAL ACTIVE TPL_TRIG_APPLICATION_DIRECT_MEASURE와 canonical owner MIDDLE_GEOMETRY, 교육과정 binding owner MIDDLE_GEOMETRY를 각각 읽기 확인했다. 이번 새 선택에 대한 공통 resolver/finalization은 수행하지 않았으며 RPM crosswalk 연결 공백은 별도 기록한다.",
+    "crossConceptKeys": ["CC_DENOMINATOR_RATIONALIZATION"],
+    "crossConceptReasons": ["두 번째 사인 관계로 얻은 4/√3을 4√3/3으로 표현하는 실제 분모 유리화를 보존한다."],
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 1,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/s01.png",
     "sourceImageRefs": [
@@ -1484,6 +1523,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 수선 AH로 나뉜 두 직각삼각형 △ABH·△ACH, AB=4 cm, B의 30°와 C의 60°.",
     "solutionImageCaption": "(1) △ABH에서 AH=2 cm. (2) △ACH에서 AC=4√3/3 cm. 답: (1) 2 cm, (2) 4√3/3 cm.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "첫 직각삼각형의 사인으로 공통 높이를 구한 뒤 두 번째 직각삼각형의 사인 관계에 전달해 목표 빗변을 구한다.",
+    "decisiveStep": "첫 직각삼각형의 사인으로 공통 높이를 구한 뒤 두 번째 직각삼각형의 사인 관계에 전달해 목표 빗변을 구한다."
   },
   {
     "id": 23,
@@ -1535,13 +1577,16 @@ window.questionBank = [
     "conditionReasons": [
       "0°≤x<90° 범위가 tanx=√3의 각 선택을 확정한다."
     ],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
     "sourceImageRefs": []
+  ,
+    "primaryMethod": "특수각 값을 대입해 탄젠트를 정리하고 지정된 반열린 구간에서 각을 찾아 그 각의 사인·코사인 곱을 계산한다.",
+    "decisiveStep": "특수각 값을 대입해 탄젠트를 정리하고 지정된 반열린 구간에서 각을 찾아 그 각의 사인·코사인 곱을 계산한다."
   },
   {
     "id": 24,
@@ -1573,10 +1618,10 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 평면도형 > 삼각형의 높이·넓이",
-    "rpmL3": "평면도형",
-    "rpmL4": "삼각형의 높이·넓이",
-    "rpmPrimaryRecordId": "M3-RPM-061",
+    "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 보조선 활용",
+    "rpmL3": "복합도형",
+    "rpmL4": "보조선 활용",
+    "rpmPrimaryRecordId": "M3-RPM-065",
     "semanticSourceScope": "M3-2",
     "semanticScopeRelation": "CURRENT_SCOPE",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -1585,15 +1630,15 @@ window.questionBank = [
     "canonicalOwnerPack": "MIDDLE_GEOMETRY",
     "bindingOwnerPack": "MIDDLE_GEOMETRY",
     "projectionReason": "현재 GLOBAL ACTIVE canonical PT/TPL parent 및 정확한 2015/중3 수학/L2 ACTIVE binding을 확인했다.",
-    "crossConceptKeys": [],
-    "crossConceptReasons": [],
+    "crossConceptKeys": ["CC_GEOMETRIC_FOLDING","CC_PARALLEL_LINE_ANGLES","CC_ISOSCELES_CONVERSE","CC_TRIANGLE_AREA"],
+    "crossConceptReasons": ["접기 전 테이프 가장자리와 접힌 변AB가 AC에 대해 대칭이라는 관계로 각을 대응한다.","원래 두 테이프 가장자리의 평행을 이용해 접기각을 삼각형의 각A,C로 옮긴다.","각A=각C에서 대변AB=BC를 얻어 삼각비로 구한 AB를 목표 넓이의 밑변으로 사용한다.","폭을 높이2로 해석한 뒤 복원한 밑변BC와 함께 삼각형 넓이를 구한다."],
     "conditionKeys": [],
     "conditionReasons": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculumApplicability": "CORE",
     "image": "assets/images/22_팔마중_2학기_중간_중3_수학/s03.png",
     "sourceImageRefs": [
@@ -1603,6 +1648,9 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 접는 선 AC가 있는 삼각형 ABC와 밑변에 내린 수선 AH. 왼쪽에 테이프 폭 2 cm를 별도 구간으로 표시하고, 같은 눈금으로 AH와 연결했다.",
     "solutionImageCaption": "∠ACB=67.5°이다. AH=2 cm, AB=BC=2√2 cm이므로 △ABC의 넓이는 2√2 cm². 답: (1) 67.5°, (2) 2√2 cm².",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "접기 대칭과 평행선으로 두 각이 같음을 얻고 종이 폭을 높이로 해석하여 사인으로 밑변을 복원한 다음 삼각형 넓이를 구한다.",
+    "decisiveStep": "접기 대칭과 평행선으로 두 각이 같음을 얻고 종이 폭을 높이로 해석하여 사인으로 밑변을 복원한 다음 삼각형 넓이를 구한다."
   },
   {
     "id": 25,
@@ -1657,7 +1705,7 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B23",
+    "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculumApplicability": "CORE",
     "sourceImageRefs": [
@@ -1672,5 +1720,8 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 위에는 서로 떨어진 세 원호 조각과 두 현의 수직이등분선, 아래에는 원호 AB와 현 AB, 수선 CM 및 현 아래 중심 O를 나타낸다.",
     "solutionImageCaption": "(1) 중심은 서로 다른 두 현의 수직이등분선의 교점이다. (2) r=10 cm. 답: (1) 원의 중심은 두 현의 수직이등분선의 교점, (2) 10 cm.",
     "solutionImageSize": "full"
+  ,
+    "primaryMethod": "두 현의 수직이등분선 교점으로 중심을 찾는 원리를 설명하고, 반현과 원호 높이로 중심거리 r−4를 표현해 피타고라스 식에서 반지름을 구한다.",
+    "decisiveStep": "두 현의 수직이등분선 교점으로 중심을 찾는 원리를 설명하고, 반현과 원호 높이로 중심거리 r−4를 표현해 피타고라스 식에서 반지름을 구한다."
   }
 ];

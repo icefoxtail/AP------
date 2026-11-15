@@ -1,0 +1,650 @@
+{
+  "schemaVersion": "archive-m3s2-reviewed-subset-release-v1",
+  "taskId": "e33d4ad1-c652-44cf-98fc-4561917ab5e0",
+  "approvedBy": "GPT_ROOT_C8F1B0BFB4FA_M3S2_RELEASE",
+  "reviewScope": "METADATA_ONLY_CURRENT_SOURCE",
+  "reviewBranchHead": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+  "sourceArchiveFile": "original/middle/m3/2final/21_동산중_2학기_기말_중3_수학.js",
+  "sourceInputBlobSha1": "ff57375c7261c857860addf108077e2741a913d3",
+  "sourceOutputBlobSha1": "19d0196b93cd32c1c07866d84c411066bad9708d",
+  "questionCount": 25,
+  "reviewedSourceDeclarationCount": 25,
+  "sourceDeclarationBasis": "EXISTING_REVIEWED_SOURCE_METADATA_FIELDWISE_PORT",
+  "selectedUidCount": 13,
+  "sourcePayloadPreservedExceptNamedSolutionRepairs": [],
+  "existingMetaRef": {
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E045.meta.json",
+    "gitCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "sha256": "eb0005530b8d61e9407b6c70879a3ebaf1b2151c0f0f0ff6b723e644e380d5bb"
+  },
+  "meaningReviewReused": true,
+  "newR1R2R3Certification": false,
+  "registration": "PENDING_OFFICIAL_REGISTRAR",
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_d5513a6e0c5bdf1589a690f30bcb1b6256f4afdaa0ed35c67f5fffcef6cbb8b5",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "같은 중심거리 OM=ON에서 AB=AC를 얻고 수선의 발 M,N이 두 현의 중점임을 확인한 뒤 중점연결로 작은 삼각형 둘레를 구한다.",
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "reason": "중심거리·현의 반분을 중점연결과 직접 이어가는 익숙한 전처리2이다.",
+        "boundary": "B12"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_MIDPOINT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이"
+        },
+        "rpmL4": "중심거리와 현의 길이"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_d5478717de56fbe7eed31660a4fb93a06a6937fa83c6b8a4187987abf2333826",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "현이 반지름 OC를 수직이등분하므로 중심에서 현까지 거리 r/2와 반현6을 두고 피타고라스로 반지름을 정한다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "r²=(r/2)²+6²의 표준 반현 직각삼각형 모델 한 번으로 해결하므로2이다.",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_d42099d8b6c96e18c97ca25c1ae7bf7bd18e967426f80e33a027f3286d3dfef0",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "평행선의 엇각과 원주각에서 두 작은 호가 각각40°임을 얻고 반원에서 목표 호100°를 정한 뒤 주어진 호길이3π와 비례로 계산한다.",
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "반원과 평행 관계 중 어느 호를 빼고 비교할지 정하는 표준 연결이 있어3이며 비정형 조건 재구성4는 없다.",
+        "boundary": "B34"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [
+          "CC_PARALLEL_LINE_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_c97f3c1062c8b885a2245bcc5d2cad2918b86ad3bd216f972c6576a66ce98144",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "중심각46°의 호와 원주각21°의 호를 합한 뒤 그 호에 대한 원주각을 구한다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "직접 대응하는 중심각·원주각을 같은 호 단위로 바꾸는 표준 변환2이다.",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원주각",
+          "l3": "원주각과 중심각",
+          "l4": "중심각과 원주각"
+        },
+        "rpmL4": "중심각과 원주각"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_705fa622931a3da56222bcbc0d761025ed1f621486027c47f571eb6cfff6d015",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "세 변에서 한 꼭짓점의 등접선 길이8을 정하고 새 접선의 두 조각을 둘레에서 소거하여 잘린 삼각형 둘레16을 구한다.",
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "접선 조각을 같은 변수로 놓아 변화 부분이 소거되는 둘레식을 구성하는 표준 구조 선택3이다.",
+        "boundary": "B34"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "한 점에서 그은 두 접선"
+        },
+        "rpmL4": "한 점에서 그은 두 접선"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_fb3e9d812af24cca1718ce9cb8958292c459cf96c7f64e211d2422d9264ffb40",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "직사각형의 세 변 접함에서 반지름2를 정하고 등접선으로 DE=8−x를 표현한 뒤 직각삼각형 DCE의 피타고라스로 EC=x를 결정한다.",
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "직사각형 가로6과 세로4가 모두 주어져 접선 조각과 한 미지수의 피타고라스 모델을 구성하는 표준 연결3이다. 가로 자체가 미지수인 E041Q24의 두 길이 표현 재구성과 구별한다.",
+        "boundary": "B34"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [
+          "CC_RECTANGLE_INSCRIBED_CIRCLE",
+          "CC_PYTHAGOREAN",
+          "CC_ALGEBRAIC_MODELING"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_f47fc13d739a14f5ac5115fb220cab0dc1237baed3c615caa258efd68740daa7",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "직교 대각선 네 직각삼각형의 피타고라스를 합차하여 AB²−AD²=20을 얻고 등접선에서 AB−AD=2를 얻은 뒤 합차공식으로 목표 합을 결정한다.",
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 4,
+        "reason": "네 제곱식을 상쇄하는 관계를 구성하고 접선의 대변합 조건과 곱 인수분해를 결합해야 하는 복합 구조화4를 유지한다.",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_DIFFERENCE_OF_SQUARES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기"
+        },
+        "rpmL4": "접선 조건으로 길이 구하기"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_2cac2b710a5e579c4aa3f5e2a804472f8cd3d664140a06ac4ec12b96a12cdb58",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "큰 원의 반현8과 작은 원의 접선 수직 관계로 R²−r²=64를 얻고 환형 영역의 넓이 π(R²−r²)를 계산한다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "두 반지름을 각각 구하지 않고 제곱 차를 넓이 목표에 직접 사용하는 표현 선택이 필요하여3을 유지한다. 반지름 차의 제곱이라는 기존 이유 문구는 제곱의 차로 정정한다.",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_CIRCLE_TANGENT_PROPERTY",
+          "CC_PYTHAGOREAN",
+          "CC_CIRCLE_CIRCUMFERENCE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_ee8aff0afb5bacca7aa8c48efe51903582b34b135d286a9292c4cb9e57306bf8",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "교차현의 각80°에서 두 호 합160°를 구하고 주어진3:1 비로 호CD120°를 정한 뒤 원주각60°로 옮긴다.",
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 2,
+        "reason": "각-호합 정리에 명시된 비를 넣은 다음 원주각으로 반감하는 직접 연결2이다. 별도 보조선·조건 재구성이 없어 기존상/4를 근거로 유지하지 않는다.",
+        "boundary": "B23"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [
+          "CC_RATIO_AND_PROPORTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_ce390ee1b42fe0d487820fa375cb4ddd30301fea6aead4d960b51e52317f3e83",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "OA=OD인 이등변삼각형의 밑각35°에서 중심각110°를 얻고 같은 호의 원주각55°를 구한다.",
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 2,
+        "reason": "반지름의 상등을 이용한 익숙한 중심각 전처리 뒤 절반으로 구하므로2이다. 원본075는 중심각과 원주각 leaf로 유효하다.",
+        "boundary": "B12"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [
+          "CC_ISOSCELES_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_83c868a00a7bd02d053c30f0b88f53c78509312725dd82848b7d3652a917371a",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "원주각100°가 보는 큰 호200°에서 중심각50°의 호를 빼고 남은 호의 여호를 선택하여 목표 원주각105°를 구한다.",
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "같은 원에서 큰 호·작은 호·여호의 대상을 선택하며 관계를 연쇄하는 표준3이다.",
+        "boundary": "B34"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_db36359a8341cc5d92e4394e7c514b57e2bd2372bd14b9d867e70358918cb8ab",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "남은 원둘레의 서로 평행하지 않은 두 현의 수직이등분선을 작도하고 그 교점을 원의 중심으로 복원한다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "두 현의 선택과 수직이등분선 작도 근거를 서술하는 정형 구성2이다. 서술형·6점이라는 형식만으로3을 유지하지 않는다.",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_4fdf0dacf44463bf4023933e8ec249f4884a19ec3317218355fd8290059c46af",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "외부 할선각의 호 차와 내부 교차현각의 호 합을 두 식으로 세워 두 호를 구하고 각각의 원주각을 비로 나타낸다.",
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "호 합·차를 미지수로 정하는 접근 선택 뒤 표준 연립과 원주각 관계로 해결하는3이다. 배점7점이나 단계 개수는5의 근거가 아니다.",
+        "boundary": "B34"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [
+          "CC_LINEAR_SYSTEM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    }
+  ],
+  "excluded": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING"
+      ]
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING"
+      ]
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_195e1ea3b2f697df53d577a8a8228b73dce5d4ccc8d3b20a59f1b7132059ee9e",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_d1e879818ec69d25a8543636cff882b68d4bd69b847023b52bfa0a515e78b6b2",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING"
+      ]
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_076745888f128878fc5a18439ff1212310053135d42e44aed5c3c5cc644f2354",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_e2a62b742929345a1881bee0e676b781af13eb85541b990c76abd834c81f0ffc",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_ad6b5bb0077aae978111e010e8e5ff45a1371c73d80193ede38ab18d7ebafbcd",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_b214c1abd6a39eb8045e05c0ae07bf484616adc9bb58c672d07485449f9b29a0",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_c50b74dcacfc4c34de39790a85608615230f8bdba6c0d52efa83d4e2d793d643",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_400038c6cfbf062d6ceced3a6b66abf3d047b8817e00b37f275a90bd4521f901",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_3599cf576a15d7d892ff02339ee11c53b084b599a703bd81dd35b3db00ed1e19",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_545ae807ba663719cc9a31c15e7d1f7f37e84de66283542c3ec32bf76597cedf",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    }
+  ]
+}

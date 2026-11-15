@@ -1,0 +1,1015 @@
+{
+  "schemaVersion": "archive-m3s2-reviewed-subset-release-v1",
+  "taskId": "e33d4ad1-c652-44cf-98fc-4561917ab5e0",
+  "approvedBy": "GPT_ROOT_C8F1B0BFB4FA_M3S2_RELEASE",
+  "reviewScope": "METADATA_ONLY_CURRENT_SOURCE",
+  "reviewBranchHead": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+  "sourceInputBlobSha1": "4a9820b57b603c8d606fac527e12f6993e4475ca",
+  "sourceOutputBlobSha1": "25553594523235dc0a28dba22c0fcac6d9000c5b",
+  "questionCount": 25,
+  "reviewedSourceDeclarationCount": 25,
+  "sourceDeclarationBasis": "EXISTING_REVIEWED_SOURCE_METADATA_FIELDWISE_PORT",
+  "selectedUidCount": 24,
+  "sourcePayloadPreservedExceptNamedSolutionRepairs": [],
+  "existingMetaRef": {
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E042.meta.json",
+    "gitCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "sha256": "a1909bf7c267878334dd6dc130fc2cf31354740bc7fed3e59ab4f55569bbed89"
+  },
+  "meaningReviewReused": true,
+  "newR1R2R3Certification": false,
+  "registration": "PENDING_OFFICIAL_REGISTRAR",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_291f30c01518fcdf591baf5377f860e33e8052bfe25784081074415d6cc7cf9e",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "직각 표시로 빗변을 확인하고 피타고라스로 남은 변을 복원한 뒤 코사인과 탄젠트의 정의를 적용한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "그림의 직각 해석과 한 번의 변 복원 뒤 삼각비를 계산하는 정형 전처리이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_2a8bf15edf4d8df3fe918184b861dc973767b7a3b22767dd007a952fc19594a7",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "탄젠트 관계로 한 직각변을 정한 뒤 피타고라스로 최종 빗변을 구한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "비례식 한 번으로 직각변을 복원하고 익숙한 제곱 관계를 적용한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 피타고라스 결합",
+        "rpmL3": "복합도형",
+        "rpmL4": "피타고라스 결합"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_7cf731cf1b98cd7728ff631d88ac551eac119bec36a0fb78a6a403903c1f3187",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "두 연결된 직각삼각형에서30-60-90과45-45-90의 고정 변비를 직접 적용하여 공유변과 목표 두 변의 곱을 복원한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "두 직각과 특수각이 모두 주어져 변비를 순서대로 적용하면 되는 정형 연결이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 보조선 활용",
+        "rpmL3": "복합도형",
+        "rpmL4": "보조선 활용",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_f4c6bf532cf7d7386e539ab7beee13e0c247382a430cbfbb90a533ea7493b48f",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "각 선택지에 특수각 삼각비 값을 직접 대입하고 계산 결과를 비교하여 가장 큰 값을 고른다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 1,
+        "reason": "공식값의 직접 대입과 사칙연산·대소 비교이며 별도 조건 변환이나 전략 선택이 없다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_7a883da10018ab7afb7f0a7bc1d6b40308d4743ddfc2e926fb94b55edf32d3f2",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "삼각형 내각의 합을2:3:7로 비례배분하여 가장 작은 각을 정한 뒤 특수각 삼각비 식을 계산한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "주어진 비를 각으로 바꾸는 한 번의 전처리가 필요하다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM",
+          "CC_RATIO_AND_PROPORTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_65159928df1e1c48f13163f5ec98e6367e0e597a68a72846cd8216ae64a3b513",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "사분원 반지름과 차이 길이로 코사인 값을 구해 표에서 각을 역조회하고 같은 행의 사인·탄젠트로 두 길이를 정한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "삼각비표의 한 번의 역조회 후 두 값을 대응시키는 정형 조건 해석이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+        "crossConceptKeys": [
+          "CC_UNIT_QUARTER_CIRCLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비의 뜻 > sin·cos·tan",
+        "rpmL3": "삼각비의 뜻",
+        "rpmL4": "sin·cos·tan"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_145f3602c195246e01d01a9ec8089ea1418056c93f320b256c7c413544cd812d",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "정육면체에서 면대각선과 수직 모서리의 길이를 복원하여 탄젠트를 구하고 sin/cos를 그 값으로 읽는다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "입체에서 필요한 직각삼각형을 식별하고 면대각선 길이를 구하는 표준 전처리이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": "삼각비 > 삼각비 > 삼각비의 뜻 > sin·cos·tan",
+        "rpmL4": "sin·cos·tan"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_c8489516941bc1eac8762e2f2ce2eee31dc6ec78b67b5d6153e96e8df8142645",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "두 변 사이 각에서 수선을 선택해 사인·코사인으로 높이와 사영을 구하고 남은 밑변과 피타고라스로 두 지점 사이 거리를 구한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "주어진 사선삼각형을 수선으로 나누는 전략 선택 뒤 정형 계산을 수행한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 피타고라스 결합",
+        "rpmL3": "복합도형",
+        "rpmL4": "피타고라스 결합"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_a2163cd7b9c48b37e48f11747879d5590743ea52c3a7e7372c86954589a90004",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "삼각형 내각 합에서45°를 찾고 보조선으로45-45-90과30-60-90 두 직각삼각형을 만들어 고정 변비로 거리를 전달한다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "보조선을 선택하여 두 특수직각삼각형을 구성하는 표준 측량 전략이 필요하다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM",
+          "CC_DENOMINATOR_RATIONALIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 보조선 활용",
+        "rpmL3": "복합도형",
+        "rpmL4": "보조선 활용",
+        "semanticScopeRelation": "CURRENT_SCOPE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_ae42b17eac52dee29739d8927db6a56ff5c63d4151f803b03480c0ab913b4cd7",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "같은 쪽 두 관측점과 건물 높이를 공통 미지수로 두고 두 탄젠트 식을 연결하여 높이를 결정한다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "두 관측 거리의 차와 공통 높이를 식으로 연결하는 표준 전략이다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+        "crossConceptKeys": [
+          "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_b99b0f71bc2323fadccc5dbd5380caaa6606493596ffd79bb9c1b17fba42cc2f",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "정사각형의 대칭축과 이등변 조건으로 각을 정하고 사인 넓이식에서 두 같은 변을 역산한 뒤 코사인으로 정사각형 한 변을 얻는다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "대칭·넓이식 역산·직각삼각형 측정을 연결하는 표준 복합 전략이다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_SQUARE",
+          "CC_ANGLE_BISECTOR"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 평면도형 > 다각형의 길이·넓이",
+        "rpmL4": "다각형의 길이·넓이"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_0a98886ec4b809c6dde1f2b7a17b4042fd24697330122c93f8e0fda42fb7442a",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "중심에서 세 현에 이르는 거리가 같아 세 현이 같음을 정하고 한 현의 중점 조건으로 변을 복원하여 둘레를 구한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "같은 중심거리와 수직이등분의 두 기본 성질을 직접 연결한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryPath": "원의 성질 > 원과 직선 > 원의 중심과 현 > 중심거리와 현의 길이",
+        "rpmL4": "중심거리와 현의 길이"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_7094d9f0c18fd0a0b77560c5c05b7ff7cfcfdade2f1f66c880ab188313b6d62c",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "왼쪽은 중심거리·반지름에서 피타고라스로 현을 구하고 오른쪽은 현의 이등분과 같은 중심거리로 현을 구한 뒤 두 값을 더한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "두 그림에서 지정된 기본 관계를 각각 적용하는 정형 계산이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_b76139bfb7984f50237b24fca836c3d1ed2f890c3e86dbd709c49db6ec7185f4",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "같은 중심거리의 두 현과 중심각이 같음을 이용하고 수선의 각이등분으로 주어진 각을 중심각에 대응시킨 뒤 원주각을 구한다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "현·중심각·각이등분의 관계를 연결하여 목표 원주각의 호를 정하는 표준 원각 추론이다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [
+          "CC_EQUAL_CHORDS_EQUAL_DISTANCE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_4b52ba92c597f9ce2db88cb5eb0a9cb7e056b36af55795e5a9dfd11176f36f4c",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "접힌 원호가 원래 중심을 지난다는 조건을 반사된 중심 간 거리로 옮겨 중심과 접는 현의 거리를 정하고 반현에 피타고라스를 적용한다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "접기 조건을 중심 거리로 해석하는 전략 뒤 정형 현 길이 계산을 수행한다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_GEOMETRIC_FOLDING",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryPath": "원의 성질 > 원과 직선 > 원의 중심과 현 > 중심거리와 현의 길이",
+        "rpmL4": "중심거리와 현의 길이"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_44ed308ed76ae6884c5a3ca3f8ef0b753188a01fd5a72da4f37a6e29b9a9c567",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "같은 꼭짓점에서의 두 접선 조각을 대응시키고 한 변의 차로 남은 조각을 구한 뒤 목표 삼각형 변의 두 조각을 합한다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 2,
+        "reason": "등접선 길이의 덧셈·뺄셈을 직접 연결하는 정형 계산이다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_6ca08a6cb282b4c44c282ad11bfd4660a94b4bc205771a9c5207d2ca711f51a4",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "큰 삼각형의 세 변으로 한 꼭짓점의 두 접선 길이를 정하고 새 접선의 등길이 조각을 소거하여 잘린 삼각형 둘레의 불변 합을 구한다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "움직이는 두 점의 위치와 접선 조각을 구조화해 둘레에서 변하는 부분이 상쇄됨을 파악해야 한다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_2fcf3d457839b26755108b4af16c450a6531061a5121c781c3094ef154b85c22",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "외접사각형의 마주 보는 변 합으로 두 미지변을 연결하고 직각사다리꼴의 밑변 차·높이로 피타고라스 식을 세워 목표 변을 복원한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "접선에 따른 변 합과 직각사다리꼴의 대각 측정을 한 미지수로 연결해야 한다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_49b61fc4641e1e17b49a21c9e8550d81ae36417be842a9d9f377f7630980b9fa",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "P,Q가 현의 중점이므로 중심에서 현까지의 수선거리 OP=OQ=√(6²−3²)=3√3을 구한다. 두 정삼각형의 중심각을 각각 이등분하여 ∠POQ=60°로 두고 넓이에 연결한다.",
+      "primaryMethod": "현길이와 반지름이 같은 두 정삼각형을 확인하고 현 중점까지의 중심거리를 피타고라스로 구한 뒤 끼인 중심각으로 목표 삼각형 넓이를 계산한다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "현과 반지름의 상등으로 정삼각형을 확인하고 중점 수선·중심거리·끼인각을 넓이에 연결하는 표준 복합 기하 전략이다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_EQUILATERAL_TRIANGLE",
+          "CC_PYTHAGOREAN",
+          "CC_TRIG_RATIO"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_2199ad76092d11984fcaa1a8967e62dfc3eb5a1fcf4806ba3f77af93c493b5f3",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "큰 원의 접선 직각삼각형에서 sin·cos를 구하고 같은 방향의 작은 원 현을 수직이등분하여 길이를 복원한 뒤 사인 넓이로 연결한다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "두 원에서 같은 각을 공유한다는 대응과 현 이등분을 선택하는 표준 복합 전략이다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_CIRCLE_TANGENT_PROPERTY",
+          "CC_CIRCLE_CHORD_PERP_BISECTOR",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 피타고라스 결합",
+        "rpmL3": "복합도형",
+        "rpmL4": "피타고라스 결합"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_c2f743e2254050417b951122f723b2940ab6fbf09185a7cedab76a69556ff781",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "첫 직각삼각형의 사인으로 공통 높이를 구한 뒤 두 번째 직각삼각형의 사인 관계에 전달해 목표 빗변을 구한다.",
+      "difficulty": {
+        "level": "하",
+        "bucket": 2,
+        "reason": "소문항이 공통 높이를 지정하여 풀이 흐름을 안내하는 정형 두 단계 삼각비 계산이다.",
+        "confidence": "medium",
+        "boundary": "B12",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": [
+          "CC_DENOMINATOR_RATIONALIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_4167b40a9f1412ac84b4a30c05b856a201aca4ed7019aae60a7b03e8a17e1798",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "특수각 값을 대입해 탄젠트를 정리하고 지정된 반열린 구간에서 각을 찾아 그 각의 사인·코사인 곱을 계산한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 2,
+        "reason": "한 번의 식 정리와 범위 내 특수각 역확인의 정형 계산이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_6f71c5715ae1f8a7a1af9d57fc02ff8644583d311e67dee18fb8b3d5c2a199c3",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "접기 대칭과 평행선으로 두 각이 같음을 얻고 종이 폭을 높이로 해석하여 사인으로 밑변을 복원한 다음 삼각형 넓이를 구한다.",
+      "difficulty": {
+        "level": "상",
+        "bucket": 3,
+        "reason": "접기 전후 대응과 실제 폭의 수직 거리를 연결하는 표준 기하 전략이다.",
+        "confidence": "medium",
+        "boundary": "B34",
+        "proposalAcceptanceStatus": "AUTHOR_PROPOSED_FINAL_VALUE_PENDING_INDEPENDENT_REVIEW_AND_ROOT_ACCEPTANCE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_GEOMETRIC_FOLDING",
+          "CC_PARALLEL_LINE_ANGLES",
+          "CC_ISOSCELES_CONVERSE",
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryPath": "삼각비 > 삼각비의 활용 > 복합도형 > 보조선 활용",
+        "rpmL3": "복합도형",
+        "rpmL4": "보조선 활용"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 25,
+      "questionUid": "qid_v1_e7910d6bd1e0429ed9eea6cef8deea42a3d2ce71b6d416795f741306a9e852b5",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": false
+      },
+      "decisiveStep": "두 현의 수직이등분선 교점으로 중심을 찾는 원리를 설명하고, 반현과 원호 높이로 중심거리 r−4를 표현해 피타고라스 식에서 반지름을 구한다.",
+      "difficulty": {
+        "level": "중",
+        "bucket": 3,
+        "reason": "원의 중심 위치와 현 높이를 미지 반지름 식으로 옮기는 표준 역측정 전략이다.",
+        "confidence": "medium",
+        "boundary": "NONE"
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "priorReviewNotes": [],
+      "currentSolutionRepairIndependentlyReviewed": false
+    }
+  ],
+  "excluded": [
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_e498bfea360a95d6ac2fdf4ab8574b034e028d72e4342915ad4e2598363cb2a7",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING"
+      ]
+    }
+  ]
+}

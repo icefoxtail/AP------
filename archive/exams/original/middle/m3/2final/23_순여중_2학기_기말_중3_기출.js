@@ -36,6 +36,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 첫 원에서 105° 원주각이 보는 큰 호와 중심의 x, 둘째 원에서 같은 호를 보는 60° 중심각과 x 원주각을 나란히 보인다.",
     "solutionImageCaption": "첫 중심각은 360°−2×105°=150°이고 둘째 원주각은 60°÷2=30°이다. 답: ②.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "첫 그림은 원주각을 두배한 큰 호에서 남는 작은 중심각을 구하고, 둘째 그림은 중심각을 반감해 원주각을 구한다.",
+    "decisiveStep": "첫 그림은 원주각을 두배한 큰 호에서 남는 작은 중심각을 구하고, 둘째 그림은 중심각을 반감해 원주각을 구한다."
   },
   {
     "id": 2,
@@ -72,6 +85,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 위의 E에서 현 BD를 보는 60°와 중심 O에서 호 CD를 보는 70°를 표시한다. 호 BC의 50°와 원주각 x의 대응을 읽을 수 있다.",
     "solutionImageCaption": "∠BOC=120°−70°=50°이므로 x=25°이다. 따라서 x=100°라고 한 설명 ⑤가 옳지 않다. 답: ⑤.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "한 원주각을 중심각으로 바꾸고 다른 중심각을 빼 목표호의 중심각을 구한 뒤 반감해야 함을 확인한다.",
+    "decisiveStep": "한 원주각을 중심각으로 바꾸고 다른 중심각을 빼 목표호의 중심각을 구한 뒤 반감해야 함을 확인한다."
   },
   {
     "id": 3,
@@ -108,6 +134,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 세 호의 비 3:4:5, 호 BC의 중심각 120°, 그 호를 보는 원주각 x를 표시한 원.",
     "solutionImageCaption": "호 BC는 원의 4/12이므로 중심각은 120°이고 원주각 x=60°이다. 답: ③.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_RATIO"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "원 전체360°를 호의 비3:4:5로 배분하여 목표호BC의 중심각을 구하고 그 절반을 읽는다.",
+    "decisiveStep": "원 전체360°를 호의 비3:4:5로 배분하여 목표호BC의 중심각을 구하고 그 절반을 읽는다."
   },
   {
     "id": 4,
@@ -142,6 +181,19 @@ window.questionBank = [
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q4-solution.svg"
+  ,
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "지름을 보는 원주각의 직각과 같은 호의 중심각 절반을 이용하여 성립하는 두 각 진술을 판정한다.",
+    "decisiveStep": "지름을 보는 원주각의 직각과 같은 호의 중심각 절반을 이용하여 성립하는 두 각 진술을 판정한다."
   },
   {
     "id": 5,
@@ -178,6 +230,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD에서 대각선 BD가 삼각형 BCD를 만든다. 주어진 각은 30°, 70°이고 미지각은 x, y이다.",
     "solutionImageCaption": "삼각형 BCD의 내각합과 내접사각형의 마주 보는 각 관계를 차례로 적용한다. x=80°, y=100°이다. 답: ⑤.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": null,
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "삼각형내각합으로 첫 각을 구하고 원에 내접하는 사각형의 대각합180°로 맞은편 각을 구한다.",
+    "decisiveStep": "삼각형내각합으로 첫 각을 구하고 원에 내접하는 사각형의 대각합180°로 맞은편 각을 구한다."
   },
   {
     "id": 6,
@@ -214,6 +279,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 두 원 그림을 나누어 표시한다. 첫 내접사각형에는 100°, 70°, x, y가 있고 둘째에는 내각 60°, 외각 95°, 미지각 x,y가 있다.",
     "solutionImageCaption": "첫 그림은 x=110°, y=80°이고 둘째 그림은 x=95°, y=60°이다. 답: ④.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": null,
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B12",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 1,
+    "primaryMethod": "두 그림에서 내접사각형의 대각합과 내각·외각의 보각관계를 직접 적용하여 네 각을 구한다.",
+    "decisiveStep": "두 그림에서 내접사각형의 대각합과 내각·외각의 보각관계를 직접 적용하여 네 각을 구한다."
   },
   {
     "id": 7,
@@ -250,6 +328,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원에 내접한 사각형 ABCD의 변을 연장해 F와 E에서 만난다. 외부각 50°, 20°와 내부각 A, C, D를 표시하고 B의 미지각은 x로 둔다.",
     "solutionImageCaption": "삼각형 FAD에서 A+D=230°, 삼각형 CDE에서 C+D=200°이고 A+C=180°이다. 따라서 D=125°, x=180°−125°=55°이므로 정답은 ④이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": null,
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_SYSTEM_OF_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "primaryMethod": "변의 연장선이 만든 두 삼각형의 내각합을 원의 내접사각형 내각으로 표현하고 대각합 관계와 함께 연립하여 목표각을 구한다.",
+    "decisiveStep": "변의 연장선이 만든 두 삼각형의 내각합을 원의 내접사각형 내각으로 표현하고 대각합 관계와 함께 연립하여 목표각을 구한다."
   },
   {
     "id": 8,
@@ -286,6 +377,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원에 내접한 오각형 ABCDE와 중심 O. 115°, 100°, 중심각 x와 같은 호 BC를 보는 원주각을 표시한다.",
     "solutionImageCaption": "∠BAE=115°에서 호 BAE=130°이고 ∠CDE=100°에서 호 CBAE=200°이다. 따라서 작은 호 BC=70°, x=70°, 그 원주각은 35°이다. 정답은 ①이다.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "primaryMethod": "두 원주각이 보는 서로 다른 큰 호를 전체원의 보완호와 연결하여 목표호BC의 크기를 차로 만들고 중심각·원주각을 구한다.",
+    "decisiveStep": "두 원주각이 보는 서로 다른 큰 호를 전체원의 보완호와 연결하여 목표호BC의 크기를 차로 만들고 중심각·원주각을 구한다."
   },
   {
     "id": 9,
@@ -322,6 +426,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원에서 AC를 지름, AT를 A의 접선으로 표시한다. 두 직각 관계와 같은 호 CB를 보는 파란 원주각, 접선·현에서 이어지는 주황 원주각을 보인다.",
     "solutionImageCaption": "∠CAT=∠CPA=90°이고 같은 호 CB를 보는 원주각은 같다. 접선과 현의 성질로 ∠BAT=∠BPA이다. 따라서 옳지 않은 설명은 ①이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": null,
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "접점반지름의 수직과 지름의 원주각이 모두90°임을 확인하고 같은 호의 각으로 접현각 정리의 증명근거를 판정한다.",
+    "decisiveStep": "접점반지름의 수직과 지름의 원주각이 모두90°임을 확인하고 같은 호의 각으로 접현각 정리의 증명근거를 판정한다."
   },
   {
     "id": 10,
@@ -358,6 +475,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 두 접선 그림을 위아래로 보인다. 첫 그림은 ∠ABC=120°와 미지각 x, 둘째 그림은 접선-현 각 40°, ∠ACB=80°, 미지각 x를 표시한다.",
     "solutionImageCaption": "접선-현 각의 성질과 삼각형 내각합으로 두 x를 차례로 구하면 120°, 60°이다. 답: ②.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "각 그림에서 접선과현의 각을 같은 현의 원주각으로 옮기고 둘째 그림은 삼각형내각합으로 나머지각을 구한다.",
+    "decisiveStep": "각 그림에서 접선과현의 각을 같은 현의 원주각으로 옮기고 둘째 그림은 삼각형내각합으로 나머지각을 구한다."
   },
   {
     "id": 11,
@@ -391,6 +521,19 @@ window.questionBank = [
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q11-solution.svg"
+  ,
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "primaryMethod": "AP=AT의 이등변 밑각을 구해 일직선상 외각을 얻고 접현각으로 다른 꼭짓각에 전달한 뒤 삼각형의 남은 각을 구한다.",
+    "decisiveStep": "AP=AT의 이등변 밑각을 구해 일직선상 외각을 얻고 접현각으로 다른 꼭짓각에 전달한 뒤 삼각형의 남은 각을 구한다."
   },
   {
     "id": 12,
@@ -427,6 +570,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: A에서 접하는 AQ와 지름 BC가 원 안에 표시되고 두 선의 연장 교점은 P이다. 주어진 각 55°와 미지각 x,y의 위치를 보인다.",
     "solutionImageCaption": "접선-현 정리로 x=35°, 삼각형 ABP에서 y=20°이므로 x+y=55°이다. 답: ①.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "primaryMethod": "접현각으로55°를 옮기고 지름에 대한 직각 및 반대방향 접선각을 이용해 두 삼각형의 남은 각을 각각 구해 합한다.",
+    "decisiveStep": "접현각으로55°를 옮기고 지름에 대한 직각 및 반대방향 접선각을 이용해 두 삼각형의 남은 각을 각각 구해 합한다."
   },
   {
     "id": 13,
@@ -463,6 +619,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 치수별로 점을 쌓았고 가장 많은 점이 쌓인 치수를 파란색으로 강조한다.",
     "solutionImageCaption": "치수 95가 다섯 번 나와 최빈값은 95이다. 따라서 옳은 설명은 ③이다.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "티셔츠 치수의 평균·짝수 중앙값·최빈값을 직접 계산하고 대표값의 정의에 대한 나머지 진술을 판정한다.",
+    "decisiveStep": "티셔츠 치수의 평균·짝수 중앙값·최빈값을 직접 계산하고 대표값의 정의에 대한 나머지 진술을 판정한다."
   },
   {
     "id": 14,
@@ -499,6 +668,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 같은 값 7이 한 곳에 두 번 쌓인다. 두 가운데 순서를 읽을 수 있다.",
     "solutionImageCaption": "정렬했을 때 넷째 값은 6이고 다섯째 값은 7이다. 두 값의 평균인 6.5가 중앙값이고 정답은 ③이다.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "유일한 최빈값이7이 되도록 누락값x=7을 정한 뒤 여덟 자료의 가운데 두 수 평균을 중앙값으로 구한다.",
+    "decisiveStep": "유일한 최빈값이7이 되도록 누락값x=7을 정한 뒤 여덟 자료의 가운데 두 수 평균을 중앙값으로 구한다."
   },
   {
     "id": 15,
@@ -531,6 +713,19 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "둘째 자료의 평균조건으로a+b=19를 정해 보기를 좁히고 두 자료의 중앙값 조건을 각각 확인한다.",
+    "decisiveStep": "둘째 자료의 평균조건으로a+b=19를 정해 보기를 좁히고 두 자료의 중앙값 조건을 각각 확인한다."
   },
   {
     "id": 16,
@@ -563,6 +758,19 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "templateKey": null,
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1,
+    "primaryMethod": "편차의 합을 전체변량합−개수×평균으로 바꾸어 항상0임을 적용한다.",
+    "decisiveStep": "편차의 합을 전체변량합−개수×평균으로 바꾸어 항상0임을 적용한다."
   },
   {
     "id": 17,
@@ -599,6 +807,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 평균선에서 왼쪽과 오른쪽에 있는 자료의 편차를 부호와 함께 표시한다.",
     "solutionImageCaption": "전체는 56회이고 나머지 일곱 값의 합은 46회이므로 x=10이다. 편차 제곱의 합 40을 학생 수 8로 나눈 분산은 5이다. 정답은 ②이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "평균에서 전체합을 얻어 누락변량을 복원하고 주어진 평균을 기준으로 편차제곱의 평균을 구한다.",
+    "decisiveStep": "평균에서 전체합을 얻어 누락변량을 복원하고 주어진 평균을 기준으로 편차제곱의 평균을 구한다."
   },
   {
     "id": 18,
@@ -635,6 +856,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 평균에서 같은 거리의 두 자료는 각각 같은 색이며 편차는 부호를 포함한다.",
     "solutionImageCaption": "평균이 4이므로 편차는 −2,1,2,−1,0이다. 분산은 편차 제곱의 합 10을 5로 나눈 2이고 표준편차는 √2이다. 정답은 ①이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B12",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "primaryMethod": "다섯 원자료의 평균을 구하고 각 편차의 제곱평균 및 그 제곱근으로 표준편차를 계산한다.",
+    "decisiveStep": "다섯 원자료의 평균을 구하고 각 편차의 제곱평균 및 그 제곱근으로 표준편차를 계산한다."
   },
   {
     "id": 19,
@@ -668,6 +902,19 @@ window.questionBank = [
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "지시한 두 점을 제외하고 남은 산점도의 전체 분포에 일정한 증가·감소 경향이 없음을 판정한다.",
+    "decisiveStep": "지시한 두 점을 제외하고 남은 산점도의 전체 분포에 일정한 증가·감소 경향이 없음을 판정한다."
   },
   {
     "id": 20,
@@ -705,6 +952,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 점수가 같은 점선보다 위쪽인 점은 파란색으로 강조하고, 점선 위의 동점은 검은색으로 남겼다.",
     "solutionImageCaption": "실기 점수가 더 높은 점은 (40,55)와 (65,75)이다. 10명 중 2명이므로 20%이며 정답은 ②이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "산점도에서 y>x인 학생수를 세고 전체10명 대비 비율을 백분율로 바꾼다.",
+    "decisiveStep": "산점도에서 y>x인 학생수를 세고 전체10명 대비 비율을 백분율로 바꾼다."
   },
   {
     "id": 21,
@@ -735,6 +995,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 O에 내접한 사각형 ABCD와 중심에서 각 꼭짓점으로 향하는 선분, 마주 보는 각이 보는 서로 보완하는 두 호를 나타낸 그림이다.",
     "solutionImageCaption": "두 보완 호의 중심각을 절반씩 보는 원주각의 관계를 적용한다. ∠A+∠C=180°, ∠B+∠D=180°.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": null,
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "마주보는 두 원주각이 보는 두 호가 원 전체를 이룸을 사용해 중심각합360°의 절반이180°임을 증명한다.",
+    "decisiveStep": "마주보는 두 원주각이 보는 두 호가 원 전체를 이룸을 사용해 중심각합360°의 절반이180°임을 증명한다."
   },
   {
     "id": 22,
@@ -765,6 +1038,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 지름 BC와 접선 PT, 접점 T의 62도 각, 지름에 의해 생긴 직각, 같은 호 TC를 보는 두 파란 원주각을 표시한 원 그림이다.",
     "solutionImageCaption": "접선-현각과 지름의 원주각으로 x를 구하고, 같은 호 TC의 원주각 관계로 y를 정한다. ∠x=28°, ∠y=28°.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "primaryMethod": "접현각62°를 원주각에 옮기고 지름에 대한 직각으로첫 각을 구한 뒤 같은 호의 원주각을 이용해둘째각에 전달한다.",
+    "decisiveStep": "접현각62°를 원주각에 옮기고 지름에 대한 직각으로첫 각을 구한 뒤 같은 호의 원주각을 이용해둘째각에 전달한다."
   },
   {
     "id": 23,
@@ -795,6 +1081,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 수직선에서 가운데 점 앞에 9세와 14세가 있고, 가운데 점 뒤에는 18세 두 명이 있다.",
     "solutionImageCaption": "다섯 명의 나이 합 74세에서 9, 15, 18, 18을 빼면 나머지는 14세이다. 따라서 중앙값은 15세이다.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "primaryMethod": "최빈값18의 반복과 알려진9·15세, 전체합74를 함께 써 나머지14세를 복원하고 정렬하여 중앙값을 구한다.",
+    "decisiveStep": "최빈값18의 반복과 알려진9·15세, 전체합74를 함께 써 나머지14세를 복원하고 정렬하여 중앙값을 구한다."
   },
   {
     "id": 24,
@@ -821,6 +1120,19 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "편차합0으로 여섯째편차를 구하고 여섯 편차의 제곱평균과 그 제곱근으로 분산·표준편차를 계산한다.",
+    "decisiveStep": "편차합0으로 여섯째편차를 구하고 여섯 편차의 제곱평균과 그 제곱근으로 분산·표준편차를 계산한다."
   }
 ];
 window.examTitle = "23_순여중_2학기_기말_중3_기출";

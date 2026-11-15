@@ -1,0 +1,615 @@
+{
+  "schemaVersion": "archive-m3s2-reviewed-subset-release-v1",
+  "taskId": "e33d4ad1-c652-44cf-98fc-4561917ab5e0",
+  "approvedBy": "GPT_ROOT_C8F1B0BFB4FA_M3S2_RELEASE",
+  "reviewScope": "METADATA_ONLY_CURRENT_SOURCE",
+  "reviewBranchHead": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_매산중_2학기_중간_중3_수학.js",
+  "sourceInputBlobSha1": "0f713b62544f7facdc8d6c7a315682fc9afc8bf8",
+  "sourceOutputBlobSha1": "cabd9f94f270f8e372051a9a95013634da9041ac",
+  "questionCount": 24,
+  "reviewedSourceDeclarationCount": 24,
+  "sourceDeclarationBasis": "EXISTING_REVIEWED_SOURCE_METADATA_FIELDWISE_PORT",
+  "selectedUidCount": 8,
+  "sourcePayloadPreservedExceptNamedSolutionRepairs": [],
+  "existingMetaRef": {
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E038.meta.json",
+    "gitCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "sha256": "2203e2c6472b19a1bd22f98aaa681dfa884f9149dcdf59904681cc60ccfeac84"
+  },
+  "meaningReviewReused": true,
+  "newR1R2R3Certification": false,
+  "registration": "PENDING_OFFICIAL_REGISTRAR",
+  "items": [
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_faf4ecd742c138d3b09cb23e6df665c801d3d044e276978d2e36358fbd2acfc9",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2022,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "원본의 직각C와 세 변13·12·5를 읽고 A의 맞은편 BC와 이웃한 직각변 AC의 비를 탄젠트로 쓴다. 기존 해설의 피타고라스 역 확인도 기록하되 도형 복원 문제로 확대하지 않는다.",
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "기존 이유는 빗변과 두 직각변 구별이며 현재 그림에 직각C가 표시되어 비가 직접 정해진다. 해설의 역정리 확인이 새 선택 부담을 만들지 않아1로 판정한다.",
+        "boundary": "B12",
+        "previousOperationalBucket": 2,
+        "previousSourceBucket": 2,
+        "previousSourceReason": "빗변과 두 직각변을 구별해 tan을 쓴다.",
+        "previousFirstPassEvidence": null,
+        "changedFromOperational": true,
+        "previousReasonAssessment": "기존 이유는 빗변과 두 직각변 구별이며 현재 그림에 직각C가 표시되어 비가 직접 정해진다. 해설의 역정리 확인이 새 선택 부담을 만들지 않아1로 판정한다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 경로는 별도로 확정하되 같은 ACTIVE 타입의 해당 문맥 연결은 출고 담당의 등록 작업으로 남긴다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "독립 VERIFIED_FINAL 기존 해설 provenance가 제공되지 않아 공식 Resolver 새 완료를 주장하지 않는다. 의미검토와 읽기전용 등록/결속 검사를 수행했다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_7c91daecf9d76ff5bd106d3364aab38a32b04e854f04bbb8b2f6ab3cffd46071",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2022,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "sin30와 cos45의 알려진 두 값을 대입하여 합을 낸다. 삼각형 길이 복원 없이 특수각 값 자체를 계산한다.",
+      "difficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "reason": "기존2 근거도 특수각 두 값의 합이다. 표준값 직접대입과 단순 합산뿐이므로1로 정정한다.",
+        "boundary": "B12",
+        "previousOperationalBucket": 2,
+        "previousSourceBucket": 2,
+        "previousSourceReason": "특수각 두 값의 합을 계산한다.",
+        "previousFirstPassEvidence": null,
+        "changedFromOperational": true,
+        "previousReasonAssessment": "기존2 근거도 특수각 두 값의 합이다. 표준값 직접대입과 단순 합산뿐이므로1로 정정한다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 경로는 별도로 확정하되 같은 ACTIVE 타입의 해당 문맥 연결은 출고 담당의 등록 작업으로 남긴다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "독립 VERIFIED_FINAL 기존 해설 provenance가 제공되지 않아 공식 Resolver 새 완료를 주장하지 않는다. 의미검토와 읽기전용 등록/결속 검사를 수행했다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_57e037fbe122e1f13dbd5abe8e6b52cda499f0a547407be039f94d0f9c06fc08",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2022,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "단위원의 반지름1을 빗변으로 보고 주어진 맞은편 변 약0.67에서 피타고라스로 인접변 약0.74를 얻어 코사인값을 읽는다. 42도는 특수각이 아니다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "기존2 유지. 그림의 두 길이를 표준 피타고라스 관계로 보완한 뒤 정의 비를 읽는 정형 전처리이다.",
+        "boundary": "NONE",
+        "previousOperationalBucket": 2,
+        "previousSourceBucket": 2,
+        "previousSourceReason": "삼각비의 수치 근삿값을 선택한다.",
+        "previousFirstPassEvidence": null,
+        "changedFromOperational": false,
+        "previousReasonAssessment": "기존2 유지. 그림의 두 길이를 표준 피타고라스 관계로 보완한 뒤 정의 비를 읽는 정형 전처리이다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 경로는 별도로 확정하되 같은 ACTIVE 타입의 해당 문맥 연결은 출고 담당의 등록 작업으로 남긴다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "독립 VERIFIED_FINAL 기존 해설 provenance가 제공되지 않아 공식 Resolver 새 완료를 주장하지 않는다. 의미검토와 읽기전용 등록/결속 검사를 수행했다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_687351aaed626382379a96c1739b21fa456cd1927e9a86eb4ac7c93c49fc099c",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2022,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "표의73도 행 코사인 열과74도 행 탄젠트 열을 각각 찾아 두 수치를 더한다. 특수각을 외워 산출하는 풀이가 아니다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "reason": "기존2 이유는 표에서 두 값을 찾고 더한다는 내용이다. 표가 모두 주어져 있어 직접조회만 필요하므로1이며 역사 중과 B12를 제안한다.",
+        "boundary": "B12",
+        "previousOperationalBucket": 2,
+        "previousSourceBucket": 2,
+        "previousSourceReason": "표의 두 값을 찾아 소수 덧셈을 한다.",
+        "previousFirstPassEvidence": null,
+        "changedFromOperational": true,
+        "previousReasonAssessment": "기존2 이유는 표에서 두 값을 찾고 더한다는 내용이다. 표가 모두 주어져 있어 직접조회만 필요하므로1이며 역사 중과 B12를 제안한다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "detail": "GLOBAL ACTIVE 정의는 재사용하지만 선택한 PT/TPL은 이 RPM row의 직접키 또는 templateCandidates와 일치하지 않는다. 신규 유형 생성과 구별하여 연결 정합화만 인계한다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 경로는 별도로 확정하되 같은 ACTIVE 타입의 해당 문맥 연결은 출고 담당의 등록 작업으로 남긴다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "독립 VERIFIED_FINAL 기존 해설 provenance가 제공되지 않아 공식 Resolver 새 완료를 주장하지 않는다. 의미검토와 읽기전용 등록/결속 검사를 수행했다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_b2ed049361d824b57832afb3ed3622898a079f8386231925288750057d8b1f10",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2022,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "tanA=BC/AB와 주어진 AB3에서 BC5를 구한 뒤 피타고라스로 목표 빗변 AC를 정한다. 최종 목표가 변의 길이인 직접측정 유형이다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "기존3 근거의 두 단계는 탄젠트 정의와 피타고라스의 정형 대입이다. 보조선이나 공유조건 선택이 없어2가 맞다.",
+        "boundary": "B23",
+        "previousOperationalBucket": 3,
+        "previousSourceBucket": 3,
+        "previousSourceReason": "tan으로 한 변을 구한 뒤 피타고라스 정리를 적용한다.",
+        "previousFirstPassEvidence": null,
+        "changedFromOperational": true,
+        "previousReasonAssessment": "기존3 근거의 두 단계는 탄젠트 정의와 피타고라스의 정형 대입이다. 보조선이나 공유조건 선택이 없어2가 맞다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 경로는 별도로 확정하되 같은 ACTIVE 타입의 해당 문맥 연결은 출고 담당의 등록 작업으로 남긴다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "독립 VERIFIED_FINAL 기존 해설 provenance가 제공되지 않아 공식 Resolver 새 완료를 주장하지 않는다. 의미검토와 읽기전용 등록/결속 검사를 수행했다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_de0972ff9036263825ffbbf0bed0421cba9372a2b0ead83d75eca5f0e1ce755f",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2022,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "30도 직각삼각형의 고정 변비로 빗변12와 다른 직각변6√3을 얻고 밑변·높이의 곱으로 넓이를 구한다. 현재 해설에 없는 sin/cos 계산을 썼다고 주장하지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "기존3 이유인 특수각 변비와 넓이 연결은 한 정형 길이 전처리 후 직접 넓이공식이다. 방법 선택이나 비정형 관계가 없어2로 판정한다.",
+        "boundary": "B23",
+        "previousOperationalBucket": 3,
+        "previousSourceBucket": 3,
+        "previousSourceReason": "특수각의 변의 비와 삼각형 넓이를 연결한다.",
+        "previousFirstPassEvidence": null,
+        "changedFromOperational": true,
+        "previousReasonAssessment": "기존3 이유인 특수각 변비와 넓이 연결은 한 정형 길이 전처리 후 직접 넓이공식이다. 방법 선택이나 비정형 관계가 없어2로 판정한다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 경로는 별도로 확정하되 같은 ACTIVE 타입의 해당 문맥 연결은 출고 담당의 등록 작업으로 남긴다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "독립 VERIFIED_FINAL 기존 해설 provenance가 제공되지 않아 공식 Resolver 새 완료를 주장하지 않는다. 의미검토와 읽기전용 등록/결속 검사를 수행했다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_4ba63c1677e691fafa6848199e46993c81dd7c5b2bb3615b75c528ead4b85e3a",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2022,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "이미 주어진 두 직각삼각형의 공통 변BC6을 각각 sin45와 tan30에 직접 적용하여 두 길이를 구한 뒤 곱한다. 서로 얽힌 미지조건이나 새 보조선은 없다.",
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 2,
+        "reason": "기존4 근거는 두 길이를 구해 곱한다는 단계수다. 두 삼각형 모두 각과 변이 명시되어 방법이 바로 결정되는2이고 상 문자열과의 강한 불일치는 STRONG_CONFLICT로 독립검토한다.",
+        "boundary": "B23",
+        "previousOperationalBucket": 4,
+        "previousSourceBucket": 4,
+        "previousSourceReason": "두 직각삼각형에서 각각 길이를 구해 곱한다.",
+        "previousFirstPassEvidence": null,
+        "changedFromOperational": true,
+        "previousReasonAssessment": "기존4 근거는 두 길이를 구해 곱한다는 단계수다. 두 삼각형 모두 각과 변이 명시되어 방법이 바로 결정되는2이고 상 문자열과의 강한 불일치는 STRONG_CONFLICT로 독립검토한다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "STRONG_CONFLICT",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "detail": "GLOBAL ACTIVE 정의는 재사용하지만 선택한 PT/TPL은 이 RPM row의 직접키 또는 templateCandidates와 일치하지 않는다. 신규 유형 생성과 구별하여 연결 정합화만 인계한다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 경로는 별도로 확정하되 같은 ACTIVE 타입의 해당 문맥 연결은 출고 담당의 등록 작업으로 남긴다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "독립 VERIFIED_FINAL 기존 해설 provenance가 제공되지 않아 공식 Resolver 새 완료를 주장하지 않는다. 의미검토와 읽기전용 등록/결속 검사를 수행했다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_98722ecf33c72cefec82f5f62860772c5904c4b7f1217db4e6b676706acb536d",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2022,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "사분원의 반지름과60도에서 A의 좌표를 삼각비로 정하고 수선·OAD공선 조건으로 C,D를 얻는다. 평행변AC·BD와 간격CB로 사다리꼴 넓이를 구하는 좌표 구성 풀이이다.",
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "reason": "기존4 이유는 좌표 구성과 길이 산출이다. 좌표 접근을 선택해야 하므로3이지만 하나의 직선과 수직 관계를 순차 적용하는 표준 구조라 비정형4의 근거는 부족하다.",
+        "boundary": "B34",
+        "previousOperationalBucket": 4,
+        "previousSourceBucket": 4,
+        "previousSourceReason": "좌표를 구성해 평행한 변의 길이와 간격을 구한다.",
+        "previousFirstPassEvidence": null,
+        "changedFromOperational": true,
+        "previousReasonAssessment": "기존4 이유는 좌표 구성과 길이 산출이다. 좌표 접근을 선택해야 하므로3이지만 하나의 직선과 수직 관계를 순차 적용하는 표준 구조라 비정형4의 근거는 부족하다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_COORDINATE_TRIG",
+          "CC_LINE_EQUATION",
+          "CC_TRAPEZOID"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 경로는 별도로 확정하되 같은 ACTIVE 타입의 해당 문맥 연결은 출고 담당의 등록 작업으로 남긴다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "독립 VERIFIED_FINAL 기존 해설 provenance가 제공되지 않아 공식 Resolver 새 완료를 주장하지 않는다. 의미검토와 읽기전용 등록/결속 검사를 수행했다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    }
+  ],
+  "excluded": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_224c400ffa9f2f629de6a65961fcb6dc962972a3d63e0bf7bfb4539a0380fc6a",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_266496bb12069d27636569749d7c66c473d5e04abbe8e6e8907197ce72f56380",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_7be82cf55ed1785188eacdb67ff36ccfca74da860a1592531b0a513cc4329251",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_c704061b6da9a53b7e8564ac3f6cf5a04b7279f7db107e9d4bb53017307fde0f",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_01e86bb0ddb38ac2a4bcb1123eae379606984b96f86beff837cdfe5862fa8e39",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_64c2b6e9d8a09ce1e9e10faddc872bc13f3c77adf1e20400f737b83adeb6708c",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_83cda756e3fe5ea56759246f839cd121b901b92a992c7ca2ea63821eacf43007",
+      "reasons": [
+        "STALE_REGISTERED_CONTENT_FINGERPRINT"
+      ]
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_f8162b8361a6d5e2ac83a6c99002f52b82ae632c6a8e11243e7f112921cabef6",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_9116b10c6731be09e38b2ac81ded708d1f6248cd7a29f80ad43c497b8f1697b9",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_3174d986ce619079700f71f70c58e3ba6071dfa231817182bcfc83bc7042d05e",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_8fcd599fce6db2ae6ff21a384a339a119cc288a541fb0fd6c2fcf9ff17c40b84",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_7235d5e5dd21ac3c5b7929db8c9b82b500a73afa26279431d92436e5e053cc0e",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_5e9ea6eaeb8d2a94f97f080339b2da07c15586a11e220e6c17f3ea3ee766183e",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_f309fc18fd6cf18c004c2af01398ca91fa305f55980696e7af93ad5197eeca11",
+      "reasons": [
+        "MULTI_VARIANT_SINGLE_FIELD_REPRESENTATION_GAP",
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING",
+        "BASIC_SCOPE_PARENT_MISSING"
+      ]
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_219e4d3eb588b985bdca39486d7b47f3d242a96b71e8e90e8a72a6d1d631e34c",
+      "reasons": [
+        "MULTI_VARIANT_SINGLE_FIELD_REPRESENTATION_GAP",
+        "EXACT_ACTIVE_PT_TPL_MISSING"
+      ]
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_3b04294258c4b0f7ae456e5fcccb100fa7bc4b83d554603410b84b4b19053c2d",
+      "reasons": [
+        "CURRENT_SOURCE_PAYLOAD_CHANGED"
+      ]
+    }
+  ]
+}

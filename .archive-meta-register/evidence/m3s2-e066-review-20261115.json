@@ -1,0 +1,692 @@
+{
+  "schemaVersion": "archive-m3s2-reviewed-subset-release-v1",
+  "taskId": "e33d4ad1-c652-44cf-98fc-4561917ab5e0",
+  "approvedBy": "GPT_ROOT_C8F1B0BFB4FA_M3S2_RELEASE",
+  "reviewScope": "METADATA_ONLY_CURRENT_SOURCE",
+  "reviewBranchHead": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+  "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+  "sourceInputBlobSha1": "55d612cef0c35beeac3eee8dcfb6ac0274afc703",
+  "sourceOutputBlobSha1": "5e5f6606410850a88b46a37686b82a9db4a3d3bb",
+  "questionCount": 21,
+  "reviewedSourceDeclarationCount": 21,
+  "sourceDeclarationBasis": "EXISTING_REVIEWED_SOURCE_METADATA_FIELDWISE_PORT",
+  "selectedUidCount": 9,
+  "sourcePayloadPreservedExceptNamedSolutionRepairs": [],
+  "existingMetaRef": {
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E066.meta.json",
+    "gitCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "sha256": "42c48637d656991bbdfa513ff7d71d0edea3ff75ec9a4da74aeb46364302728c"
+  },
+  "meaningReviewReused": true,
+  "newR1R2R3Certification": false,
+  "registration": "PENDING_OFFICIAL_REGISTRAR",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_735d4d010270a8aa215ebe6209ff5dfc979bfe65810de87917e8013fe63f42f7",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2020,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "AC:BC:AB=1:√2:√3이고 cos B=sin A이므로 합은 2√6/3이다.",
+      "primaryMethod": "tan으로 정한 두 직각변에서 빗변을 복원하고 여각의 sin·cos를 합한다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 중: tan 정보에서 sin으로 변환한다. 버킷2: 표준 비 설정과 여각 관계의 익숙한 전처리이다.",
+        "learningLevelProvenance": "PRESERVE_EXISTING_LEVEL_STABILITY_LOCK",
+        "adjudication": null
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_BASIC_RELATION"
+          ]
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_f8f40a2a8d20b5ab12a9380b0df1bf6ba33c6e0840725f908029f6ee2f995d1e",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2020,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "AC=AD=1, x+z=90°, y=z이므로 BC=sin x, tan y=1/DE, sin y=AB만 성립한다.",
+      "primaryMethod": "단위 사분원의 두 직각삼각형에서 변의 비와 여각·평행선 각 관계를 연결한다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "단위 사분원의 두 직각삼각형에서 분모1을 구별하고 y=z, x+z=90°를 적용한다. 여각 대응과 역수 tan z=1/DE는 익숙한 그림 해석이며 보기 개수는 반복 작업이므로 bucket2/B23이다.",
+        "learningLevelProvenance": "PRESERVE_EXISTING_LEVEL_STABILITY_LOCK",
+        "adjudication": {
+          "ordinal": 5,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 2,
+          "finalBucket": 2,
+          "reason": "단위 사분원의 두 직각삼각형에서 분모1을 구별하고 y=z, x+z=90°를 적용한다. 여각 대응과 역수 tan z=1/DE는 익숙한 그림 해석이며 보기 개수는 반복 작업이므로 bucket2/B23이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [
+          "CC_PARALLEL_LINE_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_BASIC_RELATION"
+          ]
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_cfab332692957f696b20eeb87a131480322d56610f6885f864f1840796d73f1a",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2020,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "DC=√3, DE=2이며 ∠BDE=150°, 나머지 두 각이 15°여서 BD=2. 따라서 tan15°=1/(2+√3)=2−√3이다.",
+      "primaryMethod": "30° 삼각형과 15°가 같은 이등변삼각형을 연결해 tan15°를 길이비로 유도한다.",
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 상: 외운 30° 값으로 15° 값을 새로 유도한다. 버킷3: 이등변삼각형을 찾아 여러 조건을 연결하지만 비정형 경우 분기는 없다.",
+        "learningLevelProvenance": "PRESERVE_EXISTING_LEVEL_STABILITY_LOCK",
+        "adjudication": {
+          "ordinal": 6,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 3,
+          "finalBucket": 3,
+          "reason": "DCE에서 DC=√3,DE2를 구한 뒤 BDE의 나머지각이15°임을 알아 BD=DE로 놓아야 한다. 이등변 구조를 선택해 BC=2+√3를 만든 다음tan15와 유리화를 연결하는3단계이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN",
+          "CC_ISOSCELES_CONVERSE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+          ]
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_a1c0fb5c6af3769e5917597fca74b96cc86c05d7e5a7192a3ce8e1cb742892d5",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2020,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "sin32°≈0.53, cos32°≈√(1−0.53²)≈0.85, tan32°≈0.62이며 sin58°=cos32°이므로 ②④이다.",
+      "primaryMethod": "단위 사분원에서 sin·cos·tan의 길이 표현과 여각을 판정한다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 중: 그림의 세 길이를 삼각비와 대응시킨다. 버킷2: 단위 사분원과 여각의 익숙한 해석이다.",
+        "learningLevelProvenance": "PRESERVE_EXISTING_LEVEL_STABILITY_LOCK",
+        "adjudication": {
+          "ordinal": 7,
+          "status": "RESOLVED",
+          "authorBucketBefore": 2,
+          "independentBucket": 2,
+          "finalBucket": 2,
+          "reason": "그림의 높이0.53은 sin32, 접선높이0.62는 tan32이다. cos32≈√(1−0.53²)≈0.85를 보충하고58°의 여각비로 옮긴다. 알려진 값을 읽고 한 비를 복원하는2단계이며 다답형으로 올리지 않는다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_RATIO_BASIC_RELATION"
+          ]
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_be2c70e4a6bdca85b72cc1e5af5b07e71da6d708a59d9ca30ad7a2b1cadd5b95",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2020,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "AC=20sin55°=20×0.8192=16.384m이다.",
+      "primaryMethod": "사다리를 빗변으로 하는 직각삼각형의 맞은편 높이를 sin으로 구한다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 하: 빗변과 끼인 각으로 높이를 구한다. 버킷1: 그림과 높이가 제시되어 sin을 바로 적용한다.",
+        "learningLevelProvenance": "PRESERVE_EXISTING_LEVEL_STABILITY_LOCK",
+        "adjudication": {
+          "ordinal": 8,
+          "status": "RESOLVED",
+          "authorBucketBefore": 1,
+          "independentBucket": 1,
+          "finalBucket": 1,
+          "reason": "빗변20과 맞은편 높이의 관계 AC=20sin55를 직접 쓰면20·0.8192=16.384이다. 그림과 발문에 각·삼각비값이 모두 있어 선택해야 할 보조선이나 조건 변환이 없는1단계이다.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+          ]
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_28d4be7249fd977dbb412ac02aa69fc8ed113cc1f15deff239b2ea22fbbc5e8d",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2020,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "150°의 보각30°로 높이 √13/2를 구해 넓이 ABD=√13/2, 넓이 BCD=6√3을 얻는다.",
+      "primaryMethod": "사각형을 대각선으로 나눠 두 삼각형의 삼각비 넓이를 합한다.",
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 중: 사각형 넓이의 표준 분할 응용이다. 버킷3: 두 삼각형으로 분할하고 둔각 높이를 따로 구성해야 한다.",
+        "learningLevelProvenance": "PRESERVE_EXISTING_LEVEL_STABILITY_LOCK",
+        "adjudication": {
+          "ordinal": 10,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 3,
+          "finalBucket": 3,
+          "reason": "대각선BD로 나누어 둔각150° 쪽은 외부 수선과30°를, 반대쪽은60°를 사용한다. 두 삼각형의 넓이를 만드는 분할·높이 선택이 필요하므로3단계이나 이후 계산이 표준적이라B23.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "crossConceptKeys": [
+          "CC_STRAIGHT_ANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+          ]
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_54c588c609e51c56173794f38c9f755e49062f1f7565a0ad4eb7fb304eefc300",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2020,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "높이=(√3/2)s, 넓이=(√3/2)s²=9√3이므로 양의 길이 s=3√2이다.",
+      "primaryMethod": "마름모의 높이를 변 길이와 sin60°로 나타내어 넓이에서 변을 역산한다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 중: 넓이와 한 각에서 미지의 변을 거꾸로 구한다. 버킷2: 높이식을 정하면 한 제곱식으로 끝나는 익숙한 전처리이다.",
+        "learningLevelProvenance": "PRESERVE_EXISTING_LEVEL_STABILITY_LOCK",
+        "adjudication": {
+          "ordinal": 11,
+          "status": "RESOLVED",
+          "authorBucketBefore": 2,
+          "independentBucket": 2,
+          "finalBucket": 2,
+          "reason": "마름모 한 변s의 높이를 s·sin60로 놓으면 넓이(√3/2)s²=9√3에서 s=3√2다. 같은 변 두 개와60°로 넓이식을 세우는 표준 역산으로2단계이며, 높이 표현 선택을 감안해B23.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "crossConceptKeys": [
+          "CC_STRAIGHT_ANGLE"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+          ]
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_c36e16664a8d1707b53f502708e0e399e0febd2ee0fe8f43216fabe9554858f9",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2020,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "CF=CD=4, AF=AC+CF=10, AE=AF=10이므로 BE=AE−AB=2이다.",
+      "primaryMethod": "세 접선의 접선조각 등식과 한 직선 위 길이의 합·차를 잇는다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "학습 수준 중: 두 외부점의 접선 조각을 연결한다. 버킷2: 도형의 점 순서를 읽으면 등식과 합·차가 바로 정해진다.",
+        "learningLevelProvenance": "PRESERVE_EXISTING_LEVEL_STABILITY_LOCK",
+        "adjudication": null
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_CIRCLE_TANGENT",
+          "mappedTemplateKeys": [
+            "TM_TANGENT_LENGTH"
+          ]
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_846c8162364ffd88edddd234d6cbc1ef676717a26cb6ead216e53683d7551e90",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2020,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "AD=2√3, AB=AD/sin60°=4, BD=2, DC=3이므로 AC=√(12+9)=√21이다.",
+      "primaryMethod": "넓이에서 높이를 복원한 뒤 삼각비로 밑변을 나누고 다른 직각삼각형의 빗변을 구한다.",
+      "difficulty": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "학습 수준 중: 넓이를 길이 정보로 바꾼 뒤 삼각비를 활용한다. 버킷3: 높이 복원→부분 밑변→다른 빗변의 조건 연결이 필요하다.",
+        "learningLevelProvenance": "PRESERVE_EXISTING_LEVEL_STABILITY_LOCK",
+        "adjudication": {
+          "ordinal": 20,
+          "status": "RESOLVED",
+          "authorBucketBefore": 3,
+          "independentBucket": 3,
+          "finalBucket": 3,
+          "reason": "넓이에서 높이2√3를 역산하고60° 삼각비로AB4·BD2를 정한 뒤 DC3과 피타고라스로AC√21을 얻는다. 넓이→길이→다른삼각형으로 옮기는3단계이며 모두 표준 절차라B23.",
+          "learningLevelPolicy": "KEEP_EXISTING_LEVEL_STABILITY_LOCK"
+        }
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "PROJECTION_BINDING_PENDING",
+          "curriculum": "2022",
+          "reason": "EXACT_ACTIVE_BINDING_PENDING",
+          "mappedProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "mappedTemplateKeys": [
+            "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+          ]
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    }
+  ],
+  "excluded": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_ad9d31a273c6401b5871b80eff14057d8479efde5b37b167c431545ad8b76e23",
+      "reasons": [
+        "STALE_REGISTERED_SOLUTION_FINGERPRINT"
+      ]
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_e1c1f3b573713fe27e6a4c3c9065b3e4fc34fa6d7ff5e5b80bdac09b69eccd62",
+      "reasons": [
+        "STALE_REGISTERED_SOLUTION_FINGERPRINT"
+      ]
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_2c4653864ba84a0d7ed70e121de38f78d4c817cae8cc158d07472cd4e6457bcd",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING"
+      ]
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_17e1e3ae633002ccca08101a78914e2ad1bc3ec5f7677cffe5a6f06a39ca4546",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_47efa13f04d4f85c7249434221a31359f512de94b2abb33ebcd5e255377b0e28",
+      "reasons": [
+        "STALE_REGISTERED_SOLUTION_FINGERPRINT"
+      ]
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_113084bf2b39019a620eba2125d5183b5f4f2f1b3348f22c44611f5aead38e1b",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING"
+      ]
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_7e4aa07247570caab785677161982d36ebdf98ba8c7963a1cb05c1f3ce67b4dd",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_9d287c6ad59d90578b2325f24c150e2a0b1c91fec9fd81031ce40604ea6cfce6",
+      "reasons": [
+        "STALE_REGISTERED_SOLUTION_FINGERPRINT"
+      ]
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_09408a4741c7f5b97f42d0b52a8f9c8e57a26893183ae05801b6e21990ac503c",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_2ce2c3ae134e7a18f7f3a7bd4a2e542df808e1262ecac8bd89e8ee6d82691dc1",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_b9966166613fb21c634a72bb7acf1ff80f3b73e2b228cbda7ae3e6353d3fd6b9",
+      "reasons": [
+        "STALE_REGISTERED_SOLUTION_FINGERPRINT"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_11bced5689739bc24a03be6966d511920818acfd7d53421be0c592fa15fd7750",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING"
+      ]
+    }
+  ]
+}

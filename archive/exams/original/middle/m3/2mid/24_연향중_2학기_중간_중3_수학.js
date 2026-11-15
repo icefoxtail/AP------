@@ -35,8 +35,16 @@ window.questionBank = [
     "curriculum": "2015",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-    "primaryMethod": "직각삼각형에서 각 C의 이웃변과 빗변을 확인하여 코사인 정의 적용",
-    "decisiveStep": "BC=3은 이웃변이고 AC=5는 빗변이므로 cos C=3/5"
+    "primaryMethod": "직각B를 기준으로 AC가 빗변이고 BC가 C의 이웃변임을 확인하여 코사인 정의의 비를 바로 읽는다.",
+    "decisiveStep": "직각B를 기준으로 AC가 빗변이고 BC가 C의 이웃변임을 확인하여 코사인 정의의 비를 바로 읽는다."
+  ,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -70,8 +78,16 @@ window.questionBank = [
     "curriculum": "2015",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
-    "primaryMethod": "특수각 삼각비의 정확한 값을 선택지별로 대입해 참·거짓을 판정",
-    "decisiveStep": "②의 두 항이 각각 1/2이므로 합이 1이며 다른 선택지의 등식은 성립하지 않음"
+    "primaryMethod": "각 선택지의30·45·60도 특수각 삼각비를 그대로 대입하여 곱·합·몫·차의 진술을 판정한다.",
+    "decisiveStep": "각 선택지의30·45·60도 특수각 삼각비를 그대로 대입하여 곱·합·몫·차의 진술을 판정한다."
+  ,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 3,
@@ -105,6 +121,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q3-solution.svg"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": ["CC_COMPLEMENTARY_ANGLE_TRIG"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "반지름1인 사분원의 점 좌표를 cos·sin으로 읽고 여각 관계 및 sin/cos의 비로 tan 근삿값을 비교한다.",
+    "decisiveStep": "반지름1인 사분원의 점 좌표를 cos·sin으로 읽고 여각 관계 및 sin/cos의 비로 tan 근삿값을 비교한다."
   },
   {
     "id": 4,
@@ -141,6 +169,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: ∠B=120°인 삼각형 ABC, BC 연장선 위 H와 60° 직각삼각형, 높이 AH.",
     "solutionImageCaption": "AH=6sin60°=3√3 cm이므로 넓이는 1/2×5×3√3=15√3/2 cm²이다. 정답: ③",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_SUPPLEMENTARY_ANGLES","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "120도의 바깥 예각60도를 사용해 높이를 sin60으로 정하고 밑변5와 결합하여 삼각형 넓이를 구한다.",
+    "decisiveStep": "120도의 바깥 예각60도를 사용해 높이를 sin60으로 정하고 밑변5와 결합하여 삼각형 넓이를 구한다."
   },
   {
     "id": 5,
@@ -172,6 +212,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q5-solution.svg"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "사인의 비2:3을 직각삼각형의 맞은편 변과 빗변에 대응시키고 남은 변을 피타고라스로 구해 탄젠트 비로 바꾼다.",
+    "decisiveStep": "사인의 비2:3을 직각삼각형의 맞은편 변과 빗변에 대응시키고 남은 변을 피타고라스로 구해 탄젠트 비로 바꾼다."
   },
   {
     "id": 6,
@@ -208,6 +260,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 수선 AD와 작은 직각삼각형 ADC, x각과 ∠B의 같은 호.",
     "solutionImageCaption": "x=∠B이므로 tan x=AC/AB=2√3/2=√3이다. 정답: ②",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_RIGHT_TRIANGLE_SIMILARITY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "빗변에 내린 수선으로 생긴 작은 직각삼각형과 큰 삼각형의 AA닮음에서 x=B를 정하고 알려진 두 변의 비로 tan을 구한다.",
+    "decisiveStep": "빗변에 내린 수선으로 생긴 작은 직각삼각형과 큰 삼각형의 AA닮음에서 x=B를 정하고 알려진 두 변의 비로 tan을 구한다."
   },
   {
     "id": 7,
@@ -238,6 +302,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "삼각형 내각합에 비1:2:3을 적용해30·60·90도를 정한 뒤 해당 특수각 삼각비를 식에 대입한다.",
+    "decisiveStep": "삼각형 내각합에 비1:2:3을 적용해30·60·90도를 정한 뒤 해당 특수각 삼각비를 식에 대입한다."
   },
   {
     "id": 8,
@@ -271,6 +347,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q8-solution.svg"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_ISOSCELES_CONVERSE","CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다.",
+    "decisiveStep": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다."
   },
   {
     "id": 9,
@@ -307,6 +395,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 나무 높이 h, 밑점 H, 45°·60° 관측각, BH=h와 CH=h/√3, BC=12m.",
     "solutionImageCaption": "h+h/√3=12이므로 h=6(3−√3) m이다. 정답: ③",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+    "crossConceptKeys": ["CC_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "양쪽 관측점 사이의 나무 높이를 공통미지수로 놓고 각 거리 h와 h/√3의 합이12라는 식으로 높이를 정한다.",
+    "decisiveStep": "양쪽 관측점 사이의 나무 높이를 공통미지수로 놓고 각 거리 h와 h/√3의 합이12라는 식으로 높이를 정한다."
   },
   {
     "id": 10,
@@ -343,6 +443,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 평행사변형 ABCD와 밑변 BC에 내린 수선 AH, ∠B=45° 및 변 길이.",
     "solutionImageCaption": "BC=6√2 cm, AH=7√2/2 cm이므로 넓이는 BC×AH=42 cm²이다. 정답: ④",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_PARALLELOGRAM_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평행사변형의 대변으로 밑변을 정하고 sin45로 높이를 계산하여 밑변과 높이의 곱으로 넓이를 구한다.",
+    "decisiveStep": "평행사변형의 대변으로 밑변을 정하고 sin45로 높이를 계산하여 밑변과 높이의 곱으로 넓이를 구한다."
   },
   {
     "id": 11,
@@ -379,6 +491,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 나무, 관찰자의 눈높이 1.5m, 수평거리 50m, 38° 시선과 눈높이 위 증가분 39m.",
     "solutionImageCaption": "눈높이 위 증가는 50×0.78=39 m이고 전체 높이는 39+1.5=40.5 m이다. 정답: ⑤",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "수평거리50과 주어진 tan38 근삿값으로 눈높이 위 높이를 구한 뒤 눈높이1.5를 더한다.",
+    "decisiveStep": "수평거리50과 주어진 tan38 근삿값으로 눈높이 위 높이를 구한 뒤 눈높이1.5를 더한다."
   },
   {
     "id": 12,
@@ -409,6 +533,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+    "crossConceptKeys": ["CC_ABSOLUTE_VALUE_SIMPLIFY"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "주어진 각의 구간으로 sin−cos와 sin+cos의 부호를 정해 두 절댓값을 풀고 sin값을 얻은 뒤 예각의 cos와 tan으로 변환한다.",
+    "decisiveStep": "주어진 각의 구간으로 sin−cos와 sin+cos의 부호를 정해 두 절댓값을 풀고 sin값을 얻은 뒤 예각의 cos와 tan으로 변환한다."
   },
   {
     "id": 13,
@@ -442,6 +578,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q13-solution.svg"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_DISTANCE_FORMULA","CC_PYTHAGOREAN","CC_ISOSCELES_TRIANGLE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다.",
+    "decisiveStep": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다."
   },
   {
     "id": 14,
@@ -478,6 +626,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 반지름 7 cm인 원, 길이 8 cm인 현 AB, 현의 중점 M과 중심 O에서 내린 수선 OM.",
     "solutionImageCaption": "직각삼각형 OAM에서 OM=√(7²−4²)=√33 cm이다. 정답: ⑤",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "현의 절반4와 반지름7을 직각삼각형에 대응하여 중심에서 현까지의 거리를 피타고라스로 구한다.",
+    "decisiveStep": "현의 절반4와 반지름7을 직각삼각형에 대응하여 중심에서 현까지의 거리를 피타고라스로 구한다."
   },
   {
     "id": 15,
@@ -511,15 +671,27 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q15-solution.svg"
+  ,
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "반현6을 이용해 원호까지 높이MC3을 먼저 복원하고 중심거리x와 반지름x+3의 피타고라스 식에서 중심거리를 정한다.",
+    "decisiveStep": "반현6을 이용해 원호까지 높이MC3을 먼저 복원하고 중심거리x와 반지름x+3의 피타고라스 식에서 중심거리를 정한다."
   },
   {
     "id": 16,
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
-    "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-06",
-    "standardUnit": "원의 성질",
+    "standardCourse": "중1 수학",
+    "standardUnitKey": "M1-06",
+    "standardUnit": "평면도형의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -539,11 +711,23 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "접점에서 반지름은 접선에 수직이므로\n$OA\\perp PA$, $OB\\perp PB$이다.\n따라서 사각형 $OAPB$의 내각의 합을 이용하면\n$\\angle AOB+90^\\circ+40^\\circ+90^\\circ=360^\\circ$\n$\\angle AOB=140^\\circ$이다.\n\n색칠한 큰 부채꼴의 중심각은\n$360^\\circ-140^\\circ=220^\\circ$이다.\n따라서 넓이는\n$\\dfrac{220}{360}\\times\\pi\\times6^2$\n$=22\\pi\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q16.png",
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+    "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q16-solution.svg"
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "접점 두 직각과 사각형 내각합으로 작은 중심각140도를 정하고 색칠한 큰 부채꼴220도를 선택하여 넓이를 구한다.",
+    "decisiveStep": "접점 두 직각과 사각형 내각합으로 작은 중심각140도를 정하고 색칠한 큰 부채꼴220도를 선택하여 넓이를 구한다."
   },
   {
     "id": 17,
@@ -577,6 +761,18 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q17-solution.svg"
+  ,
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_CIRCLE_CIRCUMFERENCE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "현의 중점으로 반현6과 중심거리r−4를 잡아 반지름의 피타고라스 식을 푼 뒤 원주를 계산한다.",
+    "decisiveStep": "현의 중점으로 반현6과 중심거리r−4를 잡아 반지름의 피타고라스 식을 푼 뒤 원주를 계산한다."
   },
   {
     "id": 18,
@@ -584,9 +780,9 @@ window.questionBank = [
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-06",
-    "standardUnit": "원의 성질",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M3-05",
+    "standardUnit": "삼각비",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -605,14 +801,26 @@ window.questionBank = [
     "answer": "②",
     "solution": "접점 $T$에서 반지름 $OT$는 접선 $PT$에 수직이므로\n$\\triangle PTO$는 직각삼각형이다.\n반지름을 $r$라 하면 $AO=OT=r$이고\n$PO=PA+AO=6+r$이다.\n\n$\\sin30^\\circ=\\dfrac{OT}{PO}$이므로\n$\\dfrac12=\\dfrac{r}{r+6}$\n$r+6=2r$\n$r=6$이다.\n따라서 $PO=12$이다.\n\n그러므로\n$PT=PO\\cos30^\\circ=12\\times\\dfrac{\\sqrt3}{2}=6\\sqrt3\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q18.png",
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q18-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 원 O의 접점 T에서 반지름 OT와 접선 PT가 직각인 도형, PA=6 cm와 30° 각.",
     "solutionImageCaption": "OA=OT=r, PO=6+r이고 sin30°=r/(r+6)에서 r=6이다. 따라서 PT=6√3 cm. 정답: ②",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY","CC_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "접점 직각삼각형의 반지름r과 중심거리r+6을 sin30에 대응해 r을 복원한 뒤 cos30으로 접선 길이를 구한다.",
+    "decisiveStep": "접점 직각삼각형의 반지름r과 중심거리r+6을 sin30에 대응해 r을 복원한 뒤 cos30으로 접선 길이를 구한다."
   },
   {
     "id": 19,
@@ -649,6 +857,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 삼각형의 내접원과 세 접점 D, E, F가 보인다. 같은 꼭짓점의 두 접선은 같은 색과 같은 개수의 눈금으로 표시했다. A는 파란색 한 눈금, B는 주황색 두 눈금, C는 초록색 세 눈금이다.",
     "solutionImageCaption": "CF=CE=8−5/2=11/2 cm이다. 정답: ③",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_LENGTH",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다.",
+    "decisiveStep": "각 꼭짓점의 두 접선길이를 같게 놓아 미지 접선조각 x로 나머지 변을 표현하고 한 일차식으로 CF를 구한다."
   },
   {
     "id": 20,
@@ -682,6 +902,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q20-solution.svg"
+  ,
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": null,
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_QUADRATIC_EQUATION_ROOTS","CC_CIRCLE_CIRCUMFERENCE"],
+    "conditionKeys": ["COND_POSITIVE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다.",
+    "decisiveStep": "등접선과 직각 꼭짓점의 반지름 정사각형 관계로 두 직각변을r+6,r+9로 표현하고 피타고라스 이차식의 양수근을 골라 원넓이를 구한다."
   },
   {
     "id": 21,
@@ -709,6 +941,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_연향중_2학기_중간_중3_수학/q21-solution.svg"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_RIGHT_TRIANGLE_SIMILARITY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "정육면체의 면대각선과 공간대각선을 복원하고 수선이 만든 직각삼각형의 닮음으로 목표각을 큰 삼각형의 각에 옮긴 뒤 세 삼각비를 조합한다.",
+    "decisiveStep": "정육면체의 면대각선과 공간대각선을 복원하고 수선이 만든 직각삼각형의 닮음으로 목표각을 큰 삼각형의 각에 옮긴 뒤 세 삼각비를 조합한다."
   },
   {
     "id": 22,
@@ -739,6 +983,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: △ABD의 연장선 높이 2 cm와 △BCD의 높이 3√3 cm를 각각 표시한 두 패널.",
     "solutionImageCaption": "[△ABD]=2√3 cm², [△BCD]=12√3 cm²이므로 전체 넓이는 14√3 cm²이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_SUPPLEMENTARY_ANGLES","CC_TRIANGLE_AREA","CC_POLYGON_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "대각선으로 사각형을 나누고 각각의 끼인각에서 sin30과sin60으로 높이를 구해 두 삼각형 넓이를 합한다.",
+    "decisiveStep": "대각선으로 사각형을 나누고 각각의 끼인각에서 sin30과sin60으로 높이를 구해 두 삼각형 넓이를 합한다."
   },
   {
     "id": 23,
@@ -769,5 +1025,17 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 두 동심원, 현 AB와 중심 수선 OM, M-D-B 순서 및 DB=√2 cm.",
     "solutionImageCaption": "MB=√(6²−2²)=4√2이므로 MD=3√2, OD=√(2²+(3√2)²)=√22 cm이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "큰 원의 반지름과 중심거리에서 반현MB를 구하고 DB를 빼 작은 원의 반현MD를 얻은 뒤 같은 높이OM의 직각삼각형으로 작은 반지름을 구한다.",
+    "decisiveStep": "큰 원의 반지름과 중심거리에서 반현MB를 구하고 DB를 빼 작은 원의 반현MD를 얻은 뒤 같은 높이OM의 직각삼각형으로 작은 반지름을 구한다."
   }
 ];

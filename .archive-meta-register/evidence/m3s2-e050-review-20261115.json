@@ -1,0 +1,760 @@
+{
+  "schemaVersion": "archive-m3s2-reviewed-subset-release-v1",
+  "taskId": "e33d4ad1-c652-44cf-98fc-4561917ab5e0",
+  "approvedBy": "GPT_ROOT_C8F1B0BFB4FA_M3S2_RELEASE",
+  "reviewScope": "METADATA_ONLY_CURRENT_SOURCE",
+  "reviewBranchHead": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+  "sourceArchiveFile": "original/middle/m3/2final/21_왕의중_2학기_기말_중3_수학.js",
+  "sourceInputBlobSha1": "c13852e4046acc1438b53b91bac92ee391b44515",
+  "sourceOutputBlobSha1": "04f3fdcde8055dd978333c857d16d3695eb16cca",
+  "questionCount": 24,
+  "reviewedSourceDeclarationCount": 24,
+  "sourceDeclarationBasis": "EXISTING_REVIEWED_SOURCE_METADATA_FIELDWISE_PORT",
+  "selectedUidCount": 11,
+  "sourcePayloadPreservedExceptNamedSolutionRepairs": [],
+  "existingMetaRef": {
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E050.meta.json",
+    "gitCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "sha256": "ccbd3f2ad3d0a08fe498a150cf66500bce3d36b4f96919ce5ca5f765f185c6cc"
+  },
+  "meaningReviewReused": true,
+  "newR1R2R3Certification": false,
+  "registration": "PENDING_OFFICIAL_REGISTRAR",
+  "items": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_3c63b22d77b928bede67ae83823e048323d9fb454ad9b41d17a2befc5194ae29",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2021,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "직각 C의 두 접선 조각을 반지름5로 정하고 BF=BE, AE=AH라는 등접선 관계를 이어 AH를 구한다. 원은 외접사각형의 접선 길이 조건을 제공하며 원주각을 쓰지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "AB11·BC13·반지름5를 접점별 조각으로 정리하는 한 정형 전처리가 있으므로 기존 운영2를 유지한다. 원래 source level은 없어서 새 중을 부여한다.",
+        "boundary": "NONE",
+        "historicalLevel": null,
+        "historicalLevelStatus": "ABSENT_IN_SOURCE",
+        "newlyAssessedLevel": "중",
+        "previousOperationalBucket": 2,
+        "compatibilityInterpretation": "원래 source level이 없으므로 신규 문자열을 과거 문자열 충돌 예외로 기록하지 않는다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 문맥 binding 1개 owner MIDDLE_GEOMETRY와 canonical GEOMETRY_EQUATIONS의 정합 대기이며 binding 부재가 아니다."
+        },
+        {
+          "type": "CURRENT2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 exact 문맥의 PT binding이 없으며 GLOBAL ACTIVE 의미 판단과 구별한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "현재 기존 해설을 읽은 메타 검토이며 독립 VERIFIED_FINAL 해설 provenance를 새로 만들지 않는다. 실제 Resolver 실행 또는 새 R1/R2/R3 PASS로 승격하지 않는다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_9d3f43509565f6e48e46fd011aa62f221a6a9898f3972c196b6789fb24d3dd76",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2021,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "작은 원의 접선 AB에 대한 수직거리 OT3과 큰 원의 반지름 OA5를 같은 직각삼각형에 놓고 현의 중점 T에서 반현4를 두 배 한다. 주제는 중심거리와 현의 길이이며 작은 원의 접점은 수직거리 입력이다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "두 동심원의 반지름을 빗변과 중심거리로 읽은 뒤 피타고라스로 반현을 구하는 익숙한 전처리이므로 기존2를 유지한다.",
+        "boundary": "NONE",
+        "historicalLevel": null,
+        "historicalLevelStatus": "ABSENT_IN_SOURCE",
+        "newlyAssessedLevel": "중",
+        "previousOperationalBucket": 2,
+        "compatibilityInterpretation": "원래 source level이 없으므로 신규 문자열을 과거 문자열 충돌 예외로 기록하지 않는다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 문맥 binding 1개 owner MIDDLE_GEOMETRY와 canonical GEOMETRY_EQUATIONS의 정합 대기이며 binding 부재가 아니다."
+        },
+        {
+          "type": "CURRENT2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 exact 문맥의 PT binding이 없으며 GLOBAL ACTIVE 의미 판단과 구별한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "현재 기존 해설을 읽은 메타 검토이며 독립 VERIFIED_FINAL 해설 provenance를 새로 만들지 않는다. 실제 Resolver 실행 또는 새 R1/R2/R3 PASS로 승격하지 않는다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_51807fe08cbc462d77af546e66e09252a5d4651c002dc29ab44d36b307dd4d1d",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2021,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "기존 해설은 AO의 접선각 이등분으로30도를 정하고 tan30으로 바깥 접선 AD=AE를 구한다. BC의 접점 F에서 BD=BF, CE=CF를 연결하여 삼각형 둘레를 AD+AE로 소거한다. 삼각비는 등접선 둘레 관계를 위한 보조 계산이다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "reason": "원래 운영2에서3으로 조정한다. 표시된 반지름40과 두 접선각60을 반각 직각삼각형으로 옮기고, 원 바깥 삼각형 둘레를 두 긴 접선으로 정리할 방법을 선택해야 한다. 단순 길이 대입과 구별한다.",
+        "boundary": "B23",
+        "historicalLevel": null,
+        "historicalLevelStatus": "ABSENT_IN_SOURCE",
+        "newlyAssessedLevel": "중",
+        "previousOperationalBucket": 2,
+        "compatibilityInterpretation": "원래 source level이 없으므로 신규 문자열을 과거 문자열 충돌 예외로 기록하지 않는다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [
+          "CC_TRIG_RATIO",
+          "CC_SPECIAL_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 문맥 binding 1개 owner MIDDLE_GEOMETRY와 canonical GEOMETRY_EQUATIONS의 정합 대기이며 binding 부재가 아니다."
+        },
+        {
+          "type": "CURRENT2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 exact 문맥의 PT binding이 없으며 GLOBAL ACTIVE 의미 판단과 구별한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "현재 기존 해설을 읽은 메타 검토이며 독립 VERIFIED_FINAL 해설 provenance를 새로 만들지 않는다. 실제 Resolver 실행 또는 새 R1/R2/R3 PASS로 승격하지 않는다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_4ca2e3a1d86a3c47ddcf7fb1e91a948f0275e65622c5735a60803308279afbbb",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2021,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "같은 호 AB를 보는 ACB와 ADB의65도를 옮기고 삼각형 ABC의 내각합으로 BAC25도를 정한 뒤 같은 호 BC의 BEC로 옮긴다. 첫 직각에서 AC가 지름이라는 기존 해설의 설명도 보존하되 실제 결정 관계는 같은 호의 원주각이다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "그려진 두 같은 호 대응과 주어진 직각을 순서대로 적용하는 정형 각 추적이므로 기존2를 유지한다. 별도 보조선이나 조건식 선택이 없다.",
+        "boundary": "NONE",
+        "historicalLevel": null,
+        "historicalLevelStatus": "ABSENT_IN_SOURCE",
+        "newlyAssessedLevel": "중",
+        "previousOperationalBucket": 2,
+        "compatibilityInterpretation": "원래 source level이 없으므로 신규 문자열을 과거 문자열 충돌 예외로 기록하지 않는다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 exact 문맥의 PT binding이 없으며 GLOBAL ACTIVE 의미 판단과 구별한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "현재 기존 해설을 읽은 메타 검토이며 독립 VERIFIED_FINAL 해설 provenance를 새로 만들지 않는다. 실제 Resolver 실행 또는 새 R1/R2/R3 PASS로 승격하지 않는다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_987fbc6524fa7b337ac86247c556ae0b53fa1171d6539fcc6cb24d1d674400eb",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2021,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "P가 작은 호 AB 위에 있으므로 APB가 보는 것은 P를 포함하지 않는 큰 호이다. 중심각100을360에서 빼서260을 얻고 원주각은 그 절반으로 정한다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "운영1에서2로 조정한다. 바로 중심각을 반으로 하는 대신 꼭짓점 P의 위치로 대상 호를 골라 큰 호로 바꾸는 한 조건 해석이 있다.",
+        "boundary": "B12",
+        "historicalLevel": null,
+        "historicalLevelStatus": "ABSENT_IN_SOURCE",
+        "newlyAssessedLevel": "중",
+        "previousOperationalBucket": 1,
+        "compatibilityInterpretation": "원래 source level이 없으므로 신규 문자열을 과거 문자열 충돌 예외로 기록하지 않는다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 exact 문맥의 PT binding이 없으며 GLOBAL ACTIVE 의미 판단과 구별한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "현재 기존 해설을 읽은 메타 검토이며 독립 VERIFIED_FINAL 해설 provenance를 새로 만들지 않는다. 실제 Resolver 실행 또는 새 R1/R2/R3 PASS로 승격하지 않는다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_526ecf5327add42c468eead6ded240a244d39ec585ac131222d3a36cf8b87ac2",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2021,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "정오각형의 같은 다섯 호를72도로 정하고 BAF와 ABF의 원주각36도를 차례로 얻는다. 이미 그려진 삼각형 ABF의 내각합과 F의 평각으로 목표 BFC를 구하는 복합 원의 각 관계이다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "운영3에서2로 조정한다. 모든 대각선이 이미 주어져 있고 정오각형의 등분과 같은 표준 원주각 관계를 적용한 뒤 내각합·평각으로 끝난다. 단계 수 자체를 전략 선택으로 세지 않는다.",
+        "boundary": "B23",
+        "historicalLevel": null,
+        "historicalLevelStatus": "ABSENT_IN_SOURCE",
+        "newlyAssessedLevel": "중",
+        "previousOperationalBucket": 3,
+        "compatibilityInterpretation": "원래 source level이 없으므로 신규 문자열을 과거 문자열 충돌 예외로 기록하지 않는다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM",
+          "CC_SUPPLEMENTARY_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 exact 문맥의 PT binding이 없으며 GLOBAL ACTIVE 의미 판단과 구별한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "현재 기존 해설을 읽은 메타 검토이며 독립 VERIFIED_FINAL 해설 provenance를 새로 만들지 않는다. 실제 Resolver 실행 또는 새 R1/R2/R3 PASS로 승격하지 않는다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_edd900502edd59e8c43de2e2095aef48d5b136131919b76ec3f0d817a296cc4c",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2021,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "내접사각형 대각에서 ABC82도를 얻고 PB와 BC의 반대방향 및 외부 삼각형 ABP로 접현각 BAP40도를 정한다. 이를 ACB로 옮긴 뒤 삼각형 ABC 내각합을 쓴다. 실제 최종 연결은 접선과 현의 각이다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "운영3에서2로 조정한다. 현재 해설은 그림에 모두 있는 두 삼각형과 일직선의 각을 차례로 계산한다. 새로운 선·공통 미지수·관계식 선택 없이 주어진98도와42도를 직접 전달하는 정형 연쇄이다.",
+        "boundary": "B23",
+        "historicalLevel": null,
+        "historicalLevelStatus": "ABSENT_IN_SOURCE",
+        "newlyAssessedLevel": "중",
+        "previousOperationalBucket": 3,
+        "compatibilityInterpretation": "원래 source level이 없으므로 신규 문자열을 과거 문자열 충돌 예외로 기록하지 않는다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM",
+          "CC_SUPPLEMENTARY_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 exact 문맥의 PT binding이 없으며 GLOBAL ACTIVE 의미 판단과 구별한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "현재 기존 해설을 읽은 메타 검토이며 독립 VERIFIED_FINAL 해설 provenance를 새로 만들지 않는다. 실제 Resolver 실행 또는 새 R1/R2/R3 PASS로 승격하지 않는다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_8d803fe076552da4e922b852e09c05a1c4dfdaacb231c3bc3ef8c64771dbe240",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2021,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "A와 C의 두 접현각 x,y를 각각 삼각형 ACD의 다른 두 내각으로 옮긴다. D85도와 삼각형 내각합으로 두 각의 합95도를 정한다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "두 접현각이 같은 삼각형의 두 내각이라는 정형 대응 후 내각합에 직접 대입하므로 기존2를 유지한다. x와y를 각각 별도로 구하거나 새 보조선을 추가하지 않는다.",
+        "boundary": "NONE",
+        "historicalLevel": null,
+        "historicalLevelStatus": "ABSENT_IN_SOURCE",
+        "newlyAssessedLevel": "중",
+        "previousOperationalBucket": 2,
+        "compatibilityInterpretation": "원래 source level이 없으므로 신규 문자열을 과거 문자열 충돌 예외로 기록하지 않는다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 exact 문맥의 PT binding이 없으며 GLOBAL ACTIVE 의미 판단과 구별한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "현재 기존 해설을 읽은 메타 검토이며 독립 VERIFIED_FINAL 해설 provenance를 새로 만들지 않는다. 실제 Resolver 실행 또는 새 R1/R2/R3 PASS로 승격하지 않는다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_c7087e0f7fc57d6820feff4804f7e3fea0bafa93826ca379b3b347968fdcae2f",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2021,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "현재 그림의 지름 AB와 접현각75도를 써서 ABC에서15도를 얻고, 접선 CP와 CT의 반대방향으로 BCP105도를 정해 삼각형 PBC에서 목표각을 구한다. 지름과 접현각은 서로 다른 원의 각 성질이지만 접현각이 주어진75도를 원 안으로 옮기는 결정 단계다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "운영3에서2로 조정한다. 기존 해설에 필요한 선과 교점이 모두 그려져 있으며, 지름 직각·접현각·평각·내각합을 순서대로 적용한다. 계산의 여러 줄을 비정형 선택 부담으로 보지 않는다.",
+        "boundary": "B23",
+        "historicalLevel": null,
+        "historicalLevelStatus": "ABSENT_IN_SOURCE",
+        "newlyAssessedLevel": "중",
+        "previousOperationalBucket": 3,
+        "compatibilityInterpretation": "원래 source level이 없으므로 신규 문자열을 과거 문자열 충돌 예외로 기록하지 않는다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM",
+          "CC_SUPPLEMENTARY_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 exact 문맥의 PT binding이 없으며 GLOBAL ACTIVE 의미 판단과 구별한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "현재 기존 해설을 읽은 메타 검토이며 독립 VERIFIED_FINAL 해설 provenance를 새로 만들지 않는다. 실제 Resolver 실행 또는 새 R1/R2/R3 PASS로 승격하지 않는다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_41e5a82e0a41db3b702a53e61f68d4a8716c5ce21e0317c355ae61a4b458a0ac",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2021,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "중심에서 현에 내린 수선으로 MB=AM=8을 정하고 같은 반지름 OC=OB=x 및 CM4에서 OM=x−4를 얻는다. 중심거리·반현·반지름의 피타고라스 관계로 반지름을 구하므로 현 길이 조건 이용의 ACTIVE 정의를 재사용한다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "운영2를 유지한다. 구할 반지름 x가 그림에 이미 있고, 그 반지름에서4를 뺀 중심거리로 식을 세우면 이항제곱의 x²가 소거된다. 새 변수나 보조선을 선택하는 복합 전략은 없다.",
+        "boundary": "NONE",
+        "historicalLevel": null,
+        "historicalLevelStatus": "ABSENT_IN_SOURCE",
+        "newlyAssessedLevel": "중",
+        "previousOperationalBucket": 2,
+        "compatibilityInterpretation": "원래 source level이 없으므로 신규 문자열을 과거 문자열 충돌 예외로 기록하지 않는다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+          "detail": "실제2015 문맥 binding 1개 owner MIDDLE_GEOMETRY와 canonical GEOMETRY_EQUATIONS의 정합 대기이며 binding 부재가 아니다."
+        },
+        {
+          "type": "CURRENT2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 exact 문맥의 PT binding이 없으며 GLOBAL ACTIVE 의미 판단과 구별한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "현재 기존 해설을 읽은 메타 검토이며 독립 VERIFIED_FINAL 해설 provenance를 새로 만들지 않는다. 실제 Resolver 실행 또는 새 R1/R2/R3 PASS로 승격하지 않는다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_ff593c1dec61a7ca565b81ef6533d6c410199c65bed7bc83a918284973db3c98",
+      "curriculumEvidence": {
+        "value": "2015",
+        "inferred": true,
+        "year": 2021,
+        "grade": "M3",
+        "basis": "2015_MIDDLE3_EFFECTIVE_FROM_2020_UNTIL_2022_MIDDLE3_EFFECTIVE_2027"
+      },
+      "decisiveStep": "PA와 PB의 반대방향과 삼각형 APD로 원주각 DAB60도를 정한 뒤, 대응 중심각120도와 주어진 호DB4를 전체 원주에 대한1/3로 연결한다. 실제 원의 핵심 관계는 원주각·중심각·호의 대응이며 직접 교차현 각 공식을 새로 넣지 않는다.",
+      "difficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "reason": "운영3에서2로 조정한다. 필요한 삼각형과 교차선이 모두 그려져 있고 주어진25도·85도를 내각합으로 정리한 뒤 같은 호의 비례를 적용한다. 긴 설명이나 서술형이라는 점은 난도 근거가 아니다.",
+        "boundary": "B23",
+        "historicalLevel": null,
+        "historicalLevelStatus": "ABSENT_IN_SOURCE",
+        "newlyAssessedLevel": "중",
+        "previousOperationalBucket": 3,
+        "compatibilityInterpretation": "원래 source level이 없으므로 신규 문자열을 과거 문자열 충돌 예외로 기록하지 않는다."
+      },
+      "currentMethodMetadataReview": null,
+      "after": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM",
+          "CC_SUPPLEMENTARY_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015"
+      },
+      "priorReviewNotes": [
+        {
+          "type": "CURRENT2022_ACTIVE_CONNECTION_GAP",
+          "detail": "현행2022 exact 문맥의 PT binding이 없으며 GLOBAL ACTIVE 의미 판단과 구별한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "현재 기존 해설을 읽은 메타 검토이며 독립 VERIFIED_FINAL 해설 provenance를 새로 만들지 않는다. 실제 Resolver 실행 또는 새 R1/R2/R3 PASS로 승격하지 않는다."
+        }
+      ],
+      "currentSolutionRepairIndependentlyReviewed": false
+    }
+  ],
+  "excluded": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_522aad4369ca7f25ac37dbc4cc3784efadda3b57f3b3aac880f3e20f7c36ceba",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING"
+      ]
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_eff6ff043b91e4e3eb17e4fead459bd92f1f80e6542ed6e19c65d5c174f8a3bd",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_8ff83ffd6886a7cdd666044116ed597d891feb8dff5c6ff4b3c2cbbbcec59fbf",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_532b5b1365804280c1362fc7a5e657f7563e4a5cc691bd9940ab1f0eb88650c9",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_e61704644266d40da7bba24177dc2aaab51abec653dec16db9f289764e5b63d8",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_85b28acafc8a15c5804440686c95c0c2f3ffd80ec43ecbcdf012d39d85d1bce8",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_a4e05dfcda2706efea28572996b974e137f18f8ed3b95e61b560eb44ce57f03b",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_d8f0edb756972ce895f94a1326257dd2f6714b3079c4bae5f8764c6bd400d42f",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_0eec338095606742a8d8d4bfabb3f2e77bf8689c1f675334c843079f13a106b9",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_81e5f1133c1f1f39869cfecab9585ce85c356745659aca63616e7e006d7d2606",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_1b886df18be22ebe4356b6cbf6cf03ea6a2f03bb9a50ff5ffc0b1e642f73ceab",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_0bbef25af2fb97dd7e89582f6daaf636752926156572dbfeaab33a8f9f8789a7",
+      "reasons": [
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_0e0638a16cca1a0f4aaf1552b270c599261588c6762935a954a4cb635ea93d8d",
+      "reasons": [
+        "EXACT_ACTIVE_PT_TPL_MISSING",
+        "EXACT_ACTIVE_CONTEXT_BINDING_MISSING"
+      ]
+    }
+  ]
+}

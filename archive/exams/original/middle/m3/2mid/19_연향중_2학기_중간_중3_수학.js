@@ -70,6 +70,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "각 변량의 일차변환2x-3에서 합과 평균이 같은 일차변환을 따름을 적용해 새 평균9를 구한다.",
+    "decisiveStep": "각 변량의 일차변환2x-3에서 합과 평균이 같은 일차변환을 따름을 적용해 새 평균9를 구한다."
   },
   {
     "id": 2,
@@ -109,10 +117,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceFidelity": "SOURCE_BYTES_PRESERVED",
     "semanticMetaEvidence": {
       "curriculumContext": "2019학년도 시행 당시 2009 개정 교육과정; 2022 개정 대응을 추측하지 않음",
@@ -140,6 +148,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "8개 매출을 정렬한 뒤 네 번째110과 다섯 번째120의 평균을 중앙값으로 구한다.",
+    "decisiveStep": "8개 매출을 정렬한 뒤 네 번째110과 다섯 번째120의 평균을 중앙값으로 구한다."
   },
   {
     "id": 3,
@@ -179,10 +195,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceFidelity": "SOURCE_BYTES_PRESERVED",
     "semanticMetaEvidence": {
       "curriculumContext": "2019학년도 시행 당시 2009 개정 교육과정; 2022 개정 대응을 추측하지 않음",
@@ -208,6 +224,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "24개 자료의 값별 빈도를 세어 가장5번 나타난6을 최빈값으로 정한다.",
+    "decisiveStep": "24개 자료의 값별 빈도를 세어 가장5번 나타난6을 최빈값으로 정한다."
   },
   {
     "id": 4,
@@ -248,7 +272,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -281,6 +305,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "평균7.4·짝수개 중앙값7.5·최빈값8을 각각 계산한 뒤 크기를 비교한다.",
+    "decisiveStep": "평균7.4·짝수개 중앙값7.5·최빈값8을 각각 계산한 뒤 크기를 비교한다."
   },
   {
     "id": 5,
@@ -351,6 +383,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "편차0인C의 기록8로 평균을 정하고 A와E의 편차를 각각 더해 두 원자료의 합을 구한다.",
+    "decisiveStep": "편차0인C의 기록8로 평균을 정하고 A와E의 편차를 각각 더해 두 원자료의 합을 구한다."
   },
   {
     "id": 6,
@@ -390,10 +430,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceFidelity": "SOURCE_BYTES_PRESERVED",
     "semanticMetaEvidence": {
       "curriculumContext": "2019학년도 시행 당시 2009 개정 교육과정; 2022 개정 대응을 추측하지 않음",
@@ -422,6 +462,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "평균6을 구한 뒤 다섯 편차의 제곱평균으로 분산0.4를 계산한다.",
+    "decisiveStep": "평균6을 구한 뒤 다섯 편차의 제곱평균으로 분산0.4를 계산한다."
   },
   {
     "id": 7,
@@ -461,10 +509,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceFidelity": "SOURCE_BYTES_PRESERVED",
     "semanticMetaEvidence": {
       "curriculumContext": "2019학년도 시행 당시 2009 개정 교육과정; 2022 개정 대응을 추측하지 않음",
@@ -493,6 +541,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "표의 평균이 가장 큰4반을 우수, 표준편차가 가장 작은3반을 고른 반으로 선택한다.",
+    "decisiveStep": "표의 평균이 가장 큰4반을 우수, 표준편차가 가장 작은3반을 고른 반으로 선택한다."
   },
   {
     "id": 8,
@@ -532,7 +588,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -565,6 +621,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "표적의 각 띠에서10점2발·9점1발·8점4발·7점1발을 읽어 도수표로 옮기고 가중평균8.5와 편차제곱평균1의 제곱근을 계산한다.",
+    "decisiveStep": "표적의 각 띠에서10점2발·9점1발·8점4발·7점1발을 읽어 도수표로 옮기고 가중평균8.5와 편차제곱평균1의 제곱근을 계산한다."
   },
   {
     "id": 9,
@@ -605,7 +669,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -637,6 +701,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "세 변 위 정사각형 넓이를 제곱길이로 읽어 BC²=54-36을 구하고 두 직각변의 곱으로 삼각형넓이를 계산한다.",
+    "decisiveStep": "세 변 위 정사각형 넓이를 제곱길이로 읽어 BC²=54-36을 구하고 두 직각변의 곱으로 삼각형넓이를 계산한다."
   },
   {
     "id": 10,
@@ -713,6 +785,14 @@ window.questionBank = [
       "sourceFidelity": "UNKNOWN"
     },
     "visualDisposition": "원본 PNG는 별도 보존하고, 명시적 조건을 표시한 완결형 대체 SVG를 사용함."
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "현 대체문항의 직각·30도·이웃변5를 읽어 tan30°=x/5로 맞은편변을 구한다.",
+    "decisiveStep": "현 대체문항의 직각·30도·이웃변5를 읽어 tan30°=x/5로 맞은편변을 구한다."
   },
   {
     "id": 11,
@@ -752,7 +832,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -785,6 +865,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "작은 직각삼각형에서AC15를 구하고 밑변분할12+8=20을 이용해 큰 직각삼각형의 빗변25를 구한다.",
+    "decisiveStep": "작은 직각삼각형에서AC15를 구하고 밑변분할12+8=20을 이용해 큰 직각삼각형의 빗변25를 구한다."
   },
   {
     "id": 12,
@@ -824,7 +912,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -856,6 +944,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "각 보기에서 가장 긴 변을 먼저 결정하고 그 제곱이 나머지 두 제곱합과 같은지 확인하여 두 정답을 고른다.",
+    "decisiveStep": "각 보기에서 가장 긴 변을 먼저 결정하고 그 제곱이 나머지 두 제곱합과 같은지 확인하여 두 정답을 고른다."
   },
   {
     "id": 13,
@@ -895,7 +991,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -927,6 +1023,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "안쪽 넓이100으로 한변10을 구하고 바깥 꼭짓점의 직각삼각형에서 나머지변8을 구해 바깥한변14와 넓이196을 얻는다.",
+    "decisiveStep": "안쪽 넓이100으로 한변10을 구하고 바깥 꼭짓점의 직각삼각형에서 나머지변8을 구해 바깥한변14와 넓이196을 얻는다."
   },
   {
     "id": 14,
@@ -999,6 +1103,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "정육각형을 여섯 정삼각형으로 나누어 주어진넓이로 한변6을 복원하고 이것이 외접반지름임을 이용해 원주12π를 구한다.",
+    "decisiveStep": "정육각형을 여섯 정삼각형으로 나누어 주어진넓이로 한변6을 복원하고 이것이 외접반지름임을 이용해 원주12π를 구한다."
   },
   {
     "id": 15,
@@ -1073,6 +1185,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "접는 선의 수직이등분 성질과 고정점C로 BOC가 정삼각형임을 확인하고 접힌 호의 중심B를 정확히 복원해60도 부채꼴에서 직각삼각형을 뺀다.",
+    "decisiveStep": "접는 선의 수직이등분 성질과 고정점C로 BOC가 정삼각형임을 확인하고 접힌 호의 중심B를 정확히 복원해60도 부채꼴에서 직각삼각형을 뺀다."
   },
   {
     "id": 16,
@@ -1113,10 +1233,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceFidelity": "SOURCE_BYTES_PRESERVED",
     "semanticMetaEvidence": {
       "curriculumContext": "2019학년도 시행 당시 2009 개정 교육과정; 2022 개정 대응을 추측하지 않음",
@@ -1147,6 +1267,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "두 밑각의 특수각 길이비로 양쪽 수평길이를 h/√3,h로 나타내고 그 합이 밑변차6이라는 식에서 공통높이를 구하여 사다리꼴넓이를 계산한다.",
+    "decisiveStep": "두 밑각의 특수각 길이비로 양쪽 수평길이를 h/√3,h로 나타내고 그 합이 밑변차6이라는 식에서 공통높이를 구하여 사다리꼴넓이를 계산한다."
   },
   {
     "id": 17,
@@ -1177,7 +1305,7 @@ window.questionBank = [
       "$\\triangle\\mathrm{ABC}$의 넓이는 50이다."
     ],
     "answer": "③",
-    "solution": "두 점 사이의 거리를 구해 각 문장을 확인한다.\n\n$AB=\\sqrt{(-1+7)^2+(-3-5)^2}$\n$=\\sqrt{6^2+(-8)^2}=10$이므로 ①은 옳다.\n\n$BC=\\sqrt{(1+1)^2+(11+3)^2}$\n$=\\sqrt{2^2+14^2}=\\sqrt{200}=10\\sqrt2$이므로 ②는 옳다.\n\n$CA=\\sqrt{(-7-1)^2+(5-11)^2}$\n$=\\sqrt{(-8)^2+(-6)^2}=10$이다. 따라서 $10\\sqrt3$이라고 한 ③은 옳지 않다.\n\nA에서 AB의 기울기는 $-8/6=-4/3$, AC의 기울기는 $6/8=3/4$이다. 두 기울기의 곱이 $-1$이므로 $\\angle A=90^\\circ$이고 ④는 옳다.\n넓이는 $\\dfrac12\\times10\\times10=50$이므로 ⑤도 옳다.\n\n정답은 ③이다.",
+    "solution": "좌표평면에서 각 선분의 양 끝점으로부터 가로·세로 방향의 선분을 그어 직각삼각형을 만들고 피타고라스 정리를 적용한다.\n$AB^2=6^2+8^2=100$이므로 $AB=10$이다.\n$BC^2=2^2+14^2=200$이므로 $BC=10\\sqrt2$이다.\n$CA^2=8^2+6^2=100$이므로 $CA=10$이다. 따라서 ①, ②는 옳고 $CA=10\\sqrt3$이라고 한 ③은 옳지 않다.\n또한 $AB^2+AC^2=100+100=200=BC^2$이므로 피타고라스 정리의 역에 따라 $\\angle A=90^\\circ$이다. 따라서 ④는 옳고, 삼각형의 넓이는 $\\dfrac12\\times10\\times10=50$이므로 ⑤도 옳다. 정답은 ③이다.",
     "subUnitKey": null,
     "subUnit": "두 점 사이의 거리와 직각삼각형",
     "subUnitConfidence": "historical_semantic_label_no_canonical_key",
@@ -1187,7 +1315,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -1220,6 +1348,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "좌표의가로세로차를 직각변으로 하여 피타고라스로세변을구하고 피타고라스역으로직각을판정한후 넓이와각보기를검증한다.",
+    "decisiveStep": "좌표의가로세로차를 직각변으로 하여 피타고라스로세변을구하고 피타고라스역으로직각을판정한후 넓이와각보기를검증한다."
   },
   {
     "id": 18,
@@ -1260,7 +1396,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -1292,6 +1428,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "직육면체의 모서리AB8, 면대각선BG=√(6²+4²), 공간대각선AG=√(6²+8²+4²)를 구해 둘레를 합한다.",
+    "decisiveStep": "직육면체의 모서리AB8, 면대각선BG=√(6²+4²), 공간대각선AG=√(6²+8²+4²)를 구해 둘레를 합한다."
   },
   {
     "id": 19,
@@ -1332,7 +1476,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -1365,6 +1509,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "지정모서리CD를 경계로 두 면을 펼쳐 수직길이합5와 모서리방향길이4로 직각삼각형을 만들고 최단거리√41을 구한다.",
+    "decisiveStep": "지정모서리CD를 경계로 두 면을 펼쳐 수직길이합5와 모서리방향길이4로 직각삼각형을 만들고 최단거리√41을 구한다."
   },
   {
     "id": 20,
@@ -1437,6 +1589,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "밑면 대각선의 절반3√2를 구하고 옆모서리6과 높이가 만드는 직각삼각형으로 높이3√2를 계산한다.",
+    "decisiveStep": "밑면 대각선의 절반3√2를 구하고 옆모서리6과 높이가 만드는 직각삼각형으로 높이3√2를 계산한다."
   },
   {
     "id": 21,
@@ -1503,6 +1663,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "변량3x+1에서 평균을100으로 변환하고 표준편차를3배하여9로 얻은 뒤 분산81로 제곱한다.",
+    "decisiveStep": "변량3x+1에서 평균을100으로 변환하고 표준편차를3배하여9로 얻은 뒤 분산81로 제곱한다."
   },
   {
     "id": 22,
@@ -1569,6 +1737,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "미지변a가 빗변인 경우와8이 빗변인 경우를 나누어 피타고라스 관계를 풀고6이 빗변일 가능성은 최대변 조건으로 배제한다.",
+    "decisiveStep": "미지변a가 빗변인 경우와8이 빗변인 경우를 나누어 피타고라스 관계를 풀고6이 빗변일 가능성은 최대변 조건으로 배제한다."
   },
   {
     "id": 23,
@@ -1594,7 +1770,7 @@ window.questionBank = [
     "content": "[서술형 3] 아래 그림과 같이 $\\overline{\\mathrm{AB}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\mathrm{cm}$인 직사각형 $\\mathrm{ABCD}$를 대각선 $\\mathrm{AC}$를 접는 선으로 하여 접었을 때, $\\triangle\\mathrm{CDE}$의 넓이를 구하면? (단, 풀이 과정을 자세히 써라.) (7점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/s03.png\" />",
     "choices": [],
     "answer": "$\\dfrac{21}{4}\\,\\mathrm{cm}^2$",
-    "solution": "직사각형에서 $AB=6$, 대각선 $AC=10$이므로 피타고라스 정리에 따라\n$BC=\\sqrt{10^2-6^2}=8$이다.\n좌표를 $B=(0,0)$, $A=(0,6)$, $C=(8,0)$, $D=(8,6)$으로 둔다.\n\n접은 뒤 점 $B$는 대각선 $AC$에 대하여 대칭인 점 $B'$로 옮겨진다. $AC$에 $B$에서 내린 수선의 발을 $O$라 하면 접는 선은 $BB'$의 수직이등분선이므로 $O$는 $BB'$의 중점이다.\n삼각형 $ABC$의 넓이는 $24$이고 밑변 $AC=10$이므로\n$\\dfrac12\\times10\\times BO=24$,\n$BO=\\dfrac{24}{5}$이다.\n$AC$의 방향은 $(8,-6)$이고 이에 수직인 방향은 $(3,4)$이므로 $BO$의 수평·수직 성분 비는 $3:4$이다. 따라서\n$O=\\left(\\dfrac35\\times\\dfrac{24}{5},\\dfrac45\\times\\dfrac{24}{5}\\right)=\\left(\\dfrac{72}{25},\\dfrac{96}{25}\\right)$,\n$B'=2O=\\left(\\dfrac{144}{25},\\dfrac{192}{25}\\right)$이다.\n\n접은 선분 $BC$는 $B'C$가 된다. 그림의 $E$는 $B'C$와 $AD$의 교점이고, $AD$는 $y=6$인 직선이다. $B'C$의 기울기는\n$\\dfrac{0-\\frac{192}{25}}{8-\\frac{144}{25}}=-\\dfrac{24}{7}$이다.\n따라서 $C=(8,0)$에서 $y=6$인 점의 $x$좌표는\n$6=-\\dfrac{24}{7}(x-8)$에서 $x=\\dfrac{25}{4}$이다. 즉 $E=\\left(\\dfrac{25}{4},6\\right)$이고\n$DE=8-\\dfrac{25}{4}=\\dfrac74$이다.\n\n$\\triangle CDE$는 $D$에서 직각이고 $CD=AB=6$이므로 넓이는\n$\\dfrac12\\times6\\times\\dfrac74=\\dfrac{21}{4}\\,\\mathrm{cm}^2$이다.",
+    "solution": "직각삼각형 $ABC$에서 $AB=6$, $AC=10$이므로 $BC=\\sqrt{10^2-6^2}=8$이다. 따라서 직사각형에서 $AD=8$, $CD=6$이다.\n접힌 점 $B$의 위치를 $B'$라 하면 접는 선 $AC$에 대하여 대응하는 각이 같으므로 $\\angle ACB'=\\angle ACB$이다. $C,E,B'$는 한 직선 위에 있으므로 $\\angle ACE=\\angle ACB$이다.\n또한 $AD\\parallel BC$이고 $E$가 $AD$ 위에 있으므로 엇각에 따라 $\\angle EAC=\\angle ACB$이다. 따라서 $\\angle ACE=\\angle EAC$이고, 삼각형 $AEC$는 $AE=CE$인 이등변삼각형이다.\n$AE=CE=x$라 하면 $DE=8-x$이다. 직각삼각형 $CDE$에서\n$x^2=6^2+(8-x)^2$이므로 $16x=100$, $x=25/4$이다. 따라서 $DE=8-25/4=7/4$이다.\n구하는 넓이는 $\\dfrac12\\times CD\\times DE=\\dfrac12\\times6\\times\\dfrac74=\\dfrac{21}{4}\\,\\mathrm{cm}^2$이다.",
     "subUnitKey": null,
     "subUnit": "접기와 좌표·수선",
     "subUnitConfidence": "historical_semantic_label_no_canonical_key",
@@ -1606,7 +1782,7 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "sourceFidelity": "SOURCE_BYTES_PRESERVED",
     "semanticMetaEvidence": {
@@ -1640,5 +1816,13 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "접기전후대응각과평행선엇각으로AE=CE를정하고,직각삼각형CDE에서x²=6²+(8−x)²를풀어DE=7/4와넓이21/4를구한다.",
+    "decisiveStep": "접기전후대응각과평행선엇각으로AE=CE를정하고,직각삼각형CDE에서x²=6²+(8−x)²를풀어DE=7/4와넓이21/4를구한다."
   }
 ];
