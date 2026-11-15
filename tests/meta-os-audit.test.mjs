@@ -45,6 +45,26 @@ test("field dictionary: sameMeaningAs and overlapsWith point at real, mutual, no
   }
 });
 
+test("fieldCandidates is recorded evidence, while unknown fields and effective-value gaps remain visible", () => {
+  const field = dictionary.fields.find(f => f.name === "fieldCandidates");
+  assert.ok(field, "the official REVIEW2 candidate container must have an explicit dictionary entry");
+  assert.equal(field.layer, "기록·증거");
+  assert.equal(field.kind, "증거");
+  assert.deepEqual(field.sameMeaningAs, [], "a candidate is not an alias of an effective main-cell value");
+  const candidate = { questionUid: "candidate-only", sourceArchiveFile: "original/candidate.js", fieldCandidates: {
+    standardUnitKey: [{ value: "M2-01", source: "p3" }],
+    subUnitKey: [{ value: "M2-01-EXPONENT_LAW", source: "registered" }],
+    rpmPath: [{ value: { majorUnit: "식의 계산", midUnit: "단항식의 계산", l3: "지수법칙", l4: "지수법칙의 이용" }, source: "agree" }]
+  } };
+  const fields = auditFields([{ ...candidate, unregisteredCandidateApproval: true }], dictionary);
+  assert.deepEqual(fields.notInDictionary, [{ name: "unregisteredCandidateApproval", rows: 1 }], "one defined container must not hide other unknown fields");
+  const gap = auditUtilizationGap([candidate], []);
+  for (const facet of ["unit", "subunit", "subunitStrict", "difficulty", "type"]) {
+    assert.equal(gap.table[facet].all.metadataHasValue, 0, `${facet}: candidates do not fill the main cell`);
+    assert.equal(gap.table[facet].all.catalogUsable, 0, `${facet}: candidates do not create a consumer assignment`);
+  }
+});
+
 test("status vocabulary: grades are known, canonical values exist in the same field, notes are present", () => {
   assert.equal(vocabulary.schemaVersion, "meta-os-status-vocabulary-v1");
   for (const grade of Object.keys(vocabulary.grades)) assert.ok(GRADES.has(grade), `grade ${grade} is not a known grade`);
