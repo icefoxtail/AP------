@@ -99,3 +99,52 @@ test('the observer rejects a tampered curve, key point or pole',async()=>{
   const result=await worker({graphPlan:tan.fitted,svg:tampered,transform:tan.model.transform},{script:OBSERVER});
   assert.equal(result.result.status,'FAIL',JSON.stringify(result.result.errors));
 });
+
+test('trig v2 can hide an endpoint number and keeps the original interval geometry',async()=>{
+  const graphPlan={
+    family:'trigonometric',function:'SIN',coefficients:['1','0'],ratePi:'1',phasePi:'0',
+    sourceDomain:{kind:'INTERVAL',range:['0','3'],states:['CLOSED','CLOSED']},
+    axisTickValues:{x:[],y:[]},
+    overlays:{
+      points:[{id:'O',x:'0',y:'0'},{id:'A',curveX:'1/2'},{id:'B',curveX:'5/2'}],
+      lines:[{id:'level',slope:'0',intercept:'1',label:'y=a',labelValues:{a:'1'}}],
+      polygons:[{id:'tri',points:['O','A','B'],fill:'MEDIUM'}],
+    },
+  };
+  const stock=await observe(graphPlan);
+  const hidden=await observe({...graphPlan,hideIntervalEndLabels:['END']});
+  assert.equal(stock.audit.status,'PASS',JSON.stringify(stock.audit.errors));
+  assert.equal(hidden.audit.status,'PASS',JSON.stringify(hidden.audit.errors));
+  assert.deepEqual(hidden.model,stock.model);
+  const spec=({fitted,model})=>specFor({
+    capability:'trigonometric-spike-v1',graphPlan:fitted,caption:'사인 곡선과 수평선',
+  },model,'geumdang24-q14');
+  const baseline=spec(stock),selected=spec(hidden);
+  assert.equal(baseline.objects.find(row=>row.id==='interval-end-label')?.text,'3');
+  assert.deepEqual(selected,{...baseline,objects:baseline.objects.filter(row=>row.id!=='interval-end-label')});
+  assert.deepEqual(selected.displayFacts.intervalFeatures.endpoints.map(row=>[row.side,row.state]),[['START','CLOSED'],['END','CLOSED']]);
+  const reject=async(svg,code)=>{
+    const result=await worker({action:'graphAudit',graphPlan:hidden.fitted,svg,transform:hidden.model.transform},{script:OBSERVER});
+    assert.equal(result.status,'OK',JSON.stringify(result.result));
+    assert.ok(result.result.errors.includes(code),JSON.stringify(result.result));
+  };
+  await reject(hidden.model.svg.replace('</svg>','<text id="interval-end-label">3</text></svg>'),
+    'TRIG_HIDDEN_INTERVAL_END_LABEL_PRESENT:end');
+  await reject(hidden.model.svg.replace('id="interval-endpoint-end"','id="missing-point"'),
+    'TRIG_INTERVAL_END_MARKER_MISMATCH:end');
+
+  const withTwoLabels={...graphPlan,sourceDomain:{kind:'INTERVAL',range:['1/4','3'],states:['OPEN','CLOSED']}};
+  const onlyEnd=await frame({...withTwoLabels,hideIntervalEndLabels:['START']});
+  assert.equal(onlyEnd.status,'OK',JSON.stringify(onlyEnd.result));
+  const objects=spec({fitted:onlyEnd.result.graphPlan,model:null}).objects;
+  assert.deepEqual(objects.filter(row=>/^interval-(start|end)-label$/.test(row.id)).map(row=>row.id),['interval-end-label']);
+});
+
+test('trig endpoint label hiding requires a current interval and unique side tokens',async()=>{
+  for(const hideIntervalEndLabels of [null,[],['END','END'],['LEFT']]){
+    const result=await frame(plainPlan({hideIntervalEndLabels}));
+    assert.equal(result.result.code,'TRIG_HIDE_INTERVAL_END_LABELS_INVALID',JSON.stringify(result.result));
+  }
+  const unsupported=await frame(plainPlan({sourceDomain:{kind:'ALL_REALS'},hideIntervalEndLabels:['END']}));
+  assert.equal(unsupported.result.code,'TRIG_HIDE_INTERVAL_END_LABELS_REQUIRES_V2',JSON.stringify(unsupported.result));
+});

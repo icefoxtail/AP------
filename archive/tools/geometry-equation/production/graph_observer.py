@@ -4542,6 +4542,14 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
             marker_ids=[node.get('id') for node in root.iter() if node.get('data-role')=='interval-endpoint']
             expected_ids=['interval-endpoint-'+side for side,y in zip(('start','end'),want['endY']) if y is not None]
             if sorted(marker_ids,key=str)!=sorted(expected_ids):errors.append('TRIG_TAN_INTERVAL_MARKER_INVENTORY_MISMATCH')
+        if 'hideIntervalEndLabels' in plan:
+            hidden=plan['hideIntervalEndLabels']
+            if (not isinstance(hidden,list) or not 1<=len(hidden)<=2
+                or any(side not in ('START','END') for side in hidden) or len(set(hidden))!=len(hidden)):
+                raise ValueError('TRIG_HIDE_INTERVAL_END_LABELS_INVALID')
+            for side in hidden:
+                if any(node.get('id')=='interval-'+side.lower()+'-label' for node in root.iter()):
+                    errors.append('TRIG_HIDDEN_INTERVAL_END_LABEL_PRESENT:'+side.lower())
         frozen=features.get('lines');frozen_ids=[row.get('id') for row in frozen] if isinstance(frozen,list) else None
         if frozen_ids!=[row['id'] for row in want['lines']]:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
         detail=[];all_marks=[]
