@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E094",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E0C948452E80/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "ad48d7189a35806290a82a38cf16a6f06c8ab12b",
+  "inputHashes": {
+    "reviewSha256": "68ef46c6f48dbf70c11b03793eb809afa091eefe9e769f61e2adc14df28bfa96",
+    "fourSlotSha256": "26b35474b3f006b698eedee566d851d07621eae43c03e54ef51cef2bd23ec028"
+  },
+  "sampledOrdinals": [
+    12,
+    20,
+    24
+  ],
+  "additionalReviewedOrdinals": [
+    23
+  ],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_154b5c0586cccb45653487937c2870e91d76dc4d6e92f8ca1236266751a57f59",
+      "status": "PASS_WITH_DEBT",
+      "note": "연속 홀수의 양수조건이 없어 가장 큰 수15뿐 아니라-3도 원문의 제곱합 관계에 부합한다. 독립검토 요청 뒤 CONTENT_AMBIGUITY_EVIDENCE_DEBT 및 level/bucket UNKNOWN 보류가 명시된 최신본 확인. 빈 해설의 method SOURCE_ONLY debt도 유지."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_91d3ef963e4a60de817a021e2e295a5c7ef85653a0f4a27f2eb21d13e5844ff6",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제 그림의 y축 대칭 정사각형·상하 두 포물선·오른변 위 E를 확인. 변의비와 정사각형 가로세로일치를 연결하는 구조4 후보, 평행/비/양수 조건과 넓이 목표 수용. source 해설 공백을 이유로 method를 채우지 않은 debt 유지."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_349bfc36b22ad0598ca47bd9f40aee126662b15bdb7aaf7838cda0a729b5d8f2",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제 도형의 AB8,AD14,BE4 및 A→B,E→C 운동방향 확인. 두 일차거리의 곱으로 삼각형 넓이를 모델링하고 제한된 운동구간 내 최대를 찾는 구조4 후보 수용. 독립요청 후 이동구간 범위조건 추가 확인; method SOURCE_ONLY debt 유지."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_cfa27f2f1a2a24deb6a00e0bb7de2297f819ef1d4b0ae063116ed362338978da",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제 발문은 높이의 최댓값을 얻을 때까지 걸린 초 단위 시간을 묻는다. 시간의 길이를 뜻하는 경과시간 CANDIDATE(parent 운동, ELAPSED_TIME)의 정의와 정확한 발문 인용을 확인했다. 벡터의 시점 id686 의미 오류가 제거되었고 SOURCE_ONLY·공용 등록 대기 debt는 보존된다."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E094/20-content-1.png",
+      "sha256": "c8128b5303a6891ee69e55848d67a73f31b02330aa8050a8f08abee156fa0fed",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E094/24-content-1.png",
+      "sha256": "6976ee119e9e63341e0bf17800ba1a58bcba2a01420ded2930bd961ecad9a6b0",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}
