@@ -3,7 +3,7 @@
   "requestId": "m3s2-e067-release-20261115",
   "examUid": "2020학년도 이수중학교 3학년 2학기 중간고사 수학",
   "sourceArchiveFile": "original/middle/m3/2mid/20_이수중_2학기_중간_중3_수학.js",
-  "expectedSourceBlobSha1": "820bdc9b51f5d505612f9487a99e0789f8f5302e",
+  "expectedSourceBlobSha1": "b137b5c2d9caa1c9fb6e4bf26bd391d9f33fe2ff",
   "expectedQuestionCount": 22,
   "scope": "PARTIAL_UIDS",
   "approval": {
@@ -18,6 +18,22 @@
       {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q1-10.independent-figure-review.json",
+        "sha256": "0e49a6ec1c516503211658c5c1edb56adc79056c3ee1d51ea868937fe9154018"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+        "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q13-22.independent-figure-review.json",
+        "sha256": "782c9e5989730eacf65e3b520d3a227cf217a62549b1605408bd7160629051cd"
       }
     ]
   },
@@ -50,7 +66,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "9768f6219e3e1c5335b6279f14586815e882c1fb0c544566ef4f04a430f3c8aa",
+        "contentFingerprint": "91cc4690f0267e4a2898e6a0cf5634026bfc2a37d96eb7cce9e78d3320248e00"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -73,7 +91,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "빗변·대변·인접변을 구별하여 각별 삼각비 판정",
-        "decisiveStep": "AC=13, AB=12, BC=5에서 cos A=12/13이다. 나머지 선택지는 sin A=5/13, tan A=5/12, cos C=5/13, tan C=12/5와 다르다."
+        "decisiveStep": "AC=13, AB=12, BC=5에서 cos A=12/13이다. 나머지 선택지는 sin A=5/13, tan A=5/12, cos C=5/13, tan C=12/5와 다르다.",
+        "sourceFingerprint": "b7c34598c5957061aa2a0070e2c15c5fcbcf9fae11a1c4cfe1eb2fef442dcac8",
+        "contentFingerprint": "8ca8daecef587535238d05e1edcbc3e19e327f972ca002c6afd1fc81e2d75511"
       },
       "reason": "AC=13, AB=12, BC=5에서 cos A=12/13이다. 나머지 선택지는 sin A=5/13, tan A=5/12, cos C=5/13, tan C=12/5와 다르다.",
       "evidenceRefs": [
@@ -84,11 +104,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q1-10.independent-figure-review.json",
+          "sha256": "0e49a6ec1c516503211658c5c1edb56adc79056c3ee1d51ea868937fe9154018"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "9768f6219e3e1c5335b6279f14586815e882c1fb0c544566ef4f04a430f3c8aa"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -121,7 +165,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "d8e51596a04849976bffca32059127fe92bfec12e85988fb5b14488cff74f32a",
+        "contentFingerprint": "8ea3d8c83190e8ddf7d632981fdfc0442a594a04351ee9f9db30210c15402d15"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -146,7 +192,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "탄젠트로 한 직각변을 정한 뒤 피타고라스로 빗변 계산",
-        "decisiveStep": "8/BC=2/3이므로 BC=12이다. AB²=8²+12²=208에서 AB=4√13이다."
+        "decisiveStep": "8/BC=2/3이므로 BC=12이다. AB²=8²+12²=208에서 AB=4√13이다.",
+        "sourceFingerprint": "0649f3557f1f9447d861a5477454e9475c48de3a8824567fe63e3a342acfc0a8",
+        "contentFingerprint": "fcb6f7e3f118c320030cd79668589db3454a7e461b376bace62fb9941d47c03e"
       },
       "reason": "8/BC=2/3이므로 BC=12이다. AB²=8²+12²=208에서 AB=4√13이다.",
       "evidenceRefs": [
@@ -157,11 +205,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q1-10.independent-figure-review.json",
+          "sha256": "0e49a6ec1c516503211658c5c1edb56adc79056c3ee1d51ea868937fe9154018"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "d8e51596a04849976bffca32059127fe92bfec12e85988fb5b14488cff74f32a"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -192,7 +264,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "ab92e520f4c1e4948083bd7ba3b67fd4caa70ba5b69d1982236f254f5a94a48b",
+        "contentFingerprint": "c62e9a1aca7c5533d4c585a6f0407cbcd0c927bd9bbc726427d946ddbab0b97b"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -215,7 +289,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "특수각의 알려진 삼각비 값과 선택지 대조",
-        "decisiveStep": "sin60°는 √3/2이고 1/2가 아니다. sin0=0, cos30=√3/2, tan45=1, cos90=0은 참이다."
+        "decisiveStep": "sin60°는 √3/2이고 1/2가 아니다. sin0=0, cos30=√3/2, tan45=1, cos90=0은 참이다.",
+        "sourceFingerprint": "ab92e520f4c1e4948083bd7ba3b67fd4caa70ba5b69d1982236f254f5a94a48b",
+        "contentFingerprint": "c62e9a1aca7c5533d4c585a6f0407cbcd0c927bd9bbc726427d946ddbab0b97b"
       },
       "reason": "sin60°는 √3/2이고 1/2가 아니다. sin0=0, cos30=√3/2, tan45=1, cos90=0은 참이다.",
       "evidenceRefs": [
@@ -226,11 +302,32 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q1-10.independent-figure-review.json",
+          "sha256": "0e49a6ec1c516503211658c5c1edb56adc79056c3ee1d51ea868937fe9154018"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -333,7 +430,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "b83d726b1526872ae1c680c95de74de1bee24afa0e694ee30bf208313eb67880",
+        "contentFingerprint": "2db1e4601b6bcd812e8b5e028e7f925d236aefc18d19c1b5b1630d08ac954e53"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -359,7 +458,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "높이로 나뉜 닮은 직각삼각형의 각을 큰 삼각형에 대응",
-        "decisiveStep": "AB=√(10²−8²)=6이고 x=∠C, y=∠B이므로 sin x=cos y=6/10, 합은6/5이다."
+        "decisiveStep": "AB=√(10²−8²)=6이고 x=∠C, y=∠B이므로 sin x=cos y=6/10, 합은6/5이다.",
+        "sourceFingerprint": "eefbd107063d7d48f69c04cab89b9521d1764ce6e74359cb5c6fa220bf65de0a",
+        "contentFingerprint": "9527534e348e69669f78a4be61f47f3a33a650a3032553977760f0fafffd70a3"
       },
       "reason": "AB=√(10²−8²)=6이고 x=∠C, y=∠B이므로 sin x=cos y=6/10, 합은6/5이다.",
       "evidenceRefs": [
@@ -370,11 +471,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q1-10.independent-figure-review.json",
+          "sha256": "0e49a6ec1c516503211658c5c1edb56adc79056c3ee1d51ea868937fe9154018"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "b83d726b1526872ae1c680c95de74de1bee24afa0e694ee30bf208313eb67880"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -405,7 +530,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "99d8fea8ce3ab52a478caa62455e6f95bd225556eb1baee1701cd4d9c7ba3411",
+        "contentFingerprint": "49e700923774822e35fc23dea976489efa16606980adb84df2fdd3bbccf160c1"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -430,7 +557,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "두 특수각 삼각형의 밑변을 높이 하나로 표현하여 합산",
-        "decisiveStep": "∠B=30°이므로 BH=√3h, ∠C=45°이므로 HC=h이다. (√3+1)h=10에서 h=5(√3−1)이다."
+        "decisiveStep": "∠B=30°이므로 BH=√3h, ∠C=45°이므로 HC=h이다. (√3+1)h=10에서 h=5(√3−1)이다.",
+        "sourceFingerprint": "7bb5748f6575be63a38be5a9c84eb9c4e8ce2395655c06c20c2c6339df363957",
+        "contentFingerprint": "5d759f8b31c5e1f38566a1f4dd1a3ef33901a3f029de1156df38da53e95ff4ce"
       },
       "reason": "∠B=30°이므로 BH=√3h, ∠C=45°이므로 HC=h이다. (√3+1)h=10에서 h=5(√3−1)이다.",
       "evidenceRefs": [
@@ -441,11 +570,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q1-10.independent-figure-review.json",
+          "sha256": "0e49a6ec1c516503211658c5c1edb56adc79056c3ee1d51ea868937fe9154018"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "99d8fea8ce3ab52a478caa62455e6f95bd225556eb1baee1701cd4d9c7ba3411"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -478,7 +631,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "d6ce7217097323042fe0b7b6f46aaaac1f162809b8ab370d0a0a06a63610808b",
+        "contentFingerprint": "1e0c8a3e372f8cbfa8b68f9a4d6c52a098b16e3438ee1566140eba1af9c91b54"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -504,7 +659,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "공통변 BC를 특수각으로 구한 후 다른 직각삼각형의 빗변 계산",
-        "decisiveStep": "tan60°=BC/√3에서 BC=3이다. BCD는45° 직각삼각형이므로 CD=3, BD=√18=3√2이다."
+        "decisiveStep": "tan60°=BC/√3에서 BC=3이다. BCD는45° 직각삼각형이므로 CD=3, BD=√18=3√2이다.",
+        "sourceFingerprint": "d4d99d128388e2d5c59153f89fac6ada863f0dfc423aea0c79a84a51c9312929",
+        "contentFingerprint": "09680ba3cb441179bc61a111dcc868f282b5a22f5c1c5d04f2ffde69db16bf7b"
       },
       "reason": "tan60°=BC/√3에서 BC=3이다. BCD는45° 직각삼각형이므로 CD=3, BD=√18=3√2이다.",
       "evidenceRefs": [
@@ -515,11 +672,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q1-10.independent-figure-review.json",
+          "sha256": "0e49a6ec1c516503211658c5c1edb56adc79056c3ee1d51ea868937fe9154018"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "d6ce7217097323042fe0b7b6f46aaaac1f162809b8ab370d0a0a06a63610808b"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -550,7 +731,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "225665af5f556a2b438d8bb5091b43ac9b8e3a0499de749cd130ee4b28c70b92",
+        "contentFingerprint": "6a44ea8b3cc53bf9c36613cf8e8f036893c4b8187b465668e1fc51ca37da0533"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -575,7 +758,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "반지름1의 삼각비 길이 표현과 여각 관계를 함께 판정",
-        "decisiveStep": "sin x=AB, cos x=OB, sin y=cos x=OB이고 cos y=sin x=AB이다. 접선 삼각형에서 tan x=CD이다. 따라서②만 틀린다."
+        "decisiveStep": "sin x=AB, cos x=OB, sin y=cos x=OB이고 cos y=sin x=AB이다. 접선 삼각형에서 tan x=CD이다. 따라서②만 틀린다.",
+        "sourceFingerprint": "621d03dec170c1e4b6a487deda958ce2103236a04da9b37b126833ddd229fc94",
+        "contentFingerprint": "3a15ab983d046668468fa24422d5b4089fcd92afe5754f3e3ecf7321889f3a74"
       },
       "reason": "sin x=AB, cos x=OB, sin y=cos x=OB이고 cos y=sin x=AB이다. 접선 삼각형에서 tan x=CD이다. 따라서②만 틀린다.",
       "evidenceRefs": [
@@ -586,11 +771,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q1-10.independent-figure-review.json",
+          "sha256": "0e49a6ec1c516503211658c5c1edb56adc79056c3ee1d51ea868937fe9154018"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "225665af5f556a2b438d8bb5091b43ac9b8e3a0499de749cd130ee4b28c70b92"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -621,7 +830,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "0e56fb8837f4e2bb06822db36988df0e65d2f41cea5e5e233b47883cb6857730",
+        "contentFingerprint": "6588ba986298edf292de09fc4085a57049ba4754962c62ba0b45dd0ffee10fb4"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -644,7 +855,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "단위 사분원의 세로좌표를 사인값으로 읽기",
-        "decisiveStep": "OA=1이므로 sin55°=AB/OA=AB이다. 그림의A의 세로좌표0.8192가 답이다."
+        "decisiveStep": "OA=1이므로 sin55°=AB/OA=AB이다. 그림의A의 세로좌표0.8192가 답이다.",
+        "sourceFingerprint": "1fd503b61b28bc195cd9c68a868ca2c8a8dba7e924aa3cc4751997d9fd4496d1",
+        "contentFingerprint": "c1e7923f08b8dd07440b60f405eef7e755cea941a781cd7fbca622cc00c39c97"
       },
       "reason": "OA=1이므로 sin55°=AB/OA=AB이다. 그림의A의 세로좌표0.8192가 답이다.",
       "evidenceRefs": [
@@ -655,11 +868,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q1-10.independent-figure-review.json",
+          "sha256": "0e49a6ec1c516503211658c5c1edb56adc79056c3ee1d51ea868937fe9154018"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "0e56fb8837f4e2bb06822db36988df0e65d2f41cea5e5e233b47883cb6857730"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -690,7 +927,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "6d0ec596eba3fd68d03c88d263935ab130a1fccf8213e0df7b7a2dc8ce78e03a",
+        "contentFingerprint": "fe14fab482ff3da403e36b58bf85b212a75ab31cfa8a05fa0eac52c5a97e64e3"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -713,7 +952,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "비탈길을 빗변으로 보는 직각삼각형에서 사인으로 높이차 표현",
-        "decisiveStep": "AC=200은 빗변이고 높이차h는15°의 대변이므로 sin15°=h/200, h=200sin15°이다."
+        "decisiveStep": "AC=200은 빗변이고 높이차h는15°의 대변이므로 sin15°=h/200, h=200sin15°이다.",
+        "sourceFingerprint": "f2303ffd02b99ee2d3785ef0a8599a5e39f86ff7b93ed4d3b3821b4dc25542d8",
+        "contentFingerprint": "decbfa1f2478409a271cf4267df521e786556de39f40ae32a1e00a1b03fee4a5"
       },
       "reason": "AC=200은 빗변이고 높이차h는15°의 대변이므로 sin15°=h/200, h=200sin15°이다.",
       "evidenceRefs": [
@@ -724,11 +965,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q13-22.independent-figure-review.json",
+          "sha256": "782c9e5989730eacf65e3b520d3a227cf217a62549b1605408bd7160629051cd"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "6d0ec596eba3fd68d03c88d263935ab130a1fccf8213e0df7b7a2dc8ce78e03a"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -759,7 +1024,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "aca1aab0285fb62fae1a217407f1bf79fe3cc0890f77d7320397484e1ea7ecca",
+        "contentFingerprint": "6e364e97672bcfe77369e707cb78d25b1a6651d23e521da21a8df3c9380ffa16"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -782,7 +1049,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "앙각과 부각으로 나눈 두 높이차를 더하기",
-        "decisiveStep": "아래쪽 높이40tan45=40, 위쪽 높이40tan60=40√3이다. 합40(1+1.7)=108m이다."
+        "decisiveStep": "아래쪽 높이40tan45=40, 위쪽 높이40tan60=40√3이다. 합40(1+1.7)=108m이다.",
+        "sourceFingerprint": "2803fcdced0f439e841cf248cd2bdc8964a6448b52fc341e733413890b7b74c5",
+        "contentFingerprint": "bbca1452866ee8c753674607d971d04bf637f790cf7f744d0baf2d8f8623cc41"
       },
       "reason": "아래쪽 높이40tan45=40, 위쪽 높이40tan60=40√3이다. 합40(1+1.7)=108m이다.",
       "evidenceRefs": [
@@ -793,11 +1062,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q13-22.independent-figure-review.json",
+          "sha256": "782c9e5989730eacf65e3b520d3a227cf217a62549b1605408bd7160629051cd"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "aca1aab0285fb62fae1a217407f1bf79fe3cc0890f77d7320397484e1ea7ecca"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -828,7 +1121,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "ff90f2557e294bfd4ce797ce1da1e8cf4d9190e2daef29bea861b51ed25de177",
+        "contentFingerprint": "46888fafff65496b13b7ee74c3b798fe7332806c415280a00974286ca6309d13"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -851,7 +1146,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "탄젠트로 눈높이 위의 높이를 구해 관측 높이 추가",
-        "decisiveStep": "h=10tan20=3.6m이고 나무 높이는h+1.6=5.2m이다."
+        "decisiveStep": "h=10tan20=3.6m이고 나무 높이는h+1.6=5.2m이다.",
+        "sourceFingerprint": "dca1a68bf5289043a84691d190ce86aaa5f688e16a368b7465d5f9e1060a4c23",
+        "contentFingerprint": "0f39260c9b00771f552c3ee4271dccc9018f3346c8e6f43fe6c5417db7370acd"
       },
       "reason": "h=10tan20=3.6m이고 나무 높이는h+1.6=5.2m이다.",
       "evidenceRefs": [
@@ -862,11 +1159,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q13-22.independent-figure-review.json",
+          "sha256": "782c9e5989730eacf65e3b520d3a227cf217a62549b1605408bd7160629051cd"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "ff90f2557e294bfd4ce797ce1da1e8cf4d9190e2daef29bea861b51ed25de177"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -899,7 +1220,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "d6c99d5e024ca780ac19b149c3daadec776f5202854790fe69756dd14b616e21",
+        "contentFingerprint": "7a68836c66e5114e98c0c0d480517a7997f596ed3c2a8a1119356803284e086d"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -922,7 +1245,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "끼인각30°로 높이를 내려 삼각형 넓이 계산",
-        "decisiveStep": "CH=6sin30=3이고 넓이(1/2)×8×3=12cm²이다."
+        "decisiveStep": "CH=6sin30=3이고 넓이(1/2)×8×3=12cm²이다.",
+        "sourceFingerprint": "c8374409ba0b15a56d5a98eebea5d09a31dbe124a4542edc71f85bec23a1132d",
+        "contentFingerprint": "8335fecad7377448a1ed032c85ff2eacb3230874edc0adf6da78412067c54ab3"
       },
       "reason": "CH=6sin30=3이고 넓이(1/2)×8×3=12cm²이다.",
       "evidenceRefs": [
@@ -933,11 +1258,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q13-22.independent-figure-review.json",
+          "sha256": "782c9e5989730eacf65e3b520d3a227cf217a62549b1605408bd7160629051cd"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "d6c99d5e024ca780ac19b149c3daadec776f5202854790fe69756dd14b616e21"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -970,7 +1319,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "0ff5e4e9c9ce066cbbe3445bf55bdacbf7c80fc345ccc6d5c22e1f9944f7b738",
+        "contentFingerprint": "caf89e4eaee9d051812a3c9d5be7d00bba47a7221f640a1464c56dea4a68bfd3"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -993,7 +1344,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "대각선으로 나뉜 삼각형 넓이합을 두 대각선 곱으로 묶기",
-        "decisiveStep": "네 삼각형의 합은(1/2)(AO+OC)(BO+OD)sin45=(1/2)×12×10×√2/2=30√2이다."
+        "decisiveStep": "네 삼각형의 합은(1/2)(AO+OC)(BO+OD)sin45=(1/2)×12×10×√2/2=30√2이다.",
+        "sourceFingerprint": "2ba5b775775b2935fe49394870ba6e2c9f6a40033c5648da1e38281748ff2914",
+        "contentFingerprint": "01ba43cfa6f53a5c7e5452294b559a4782e173c29bd586ee2c95ef74920f8d7a"
       },
       "reason": "네 삼각형의 합은(1/2)(AO+OC)(BO+OD)sin45=(1/2)×12×10×√2/2=30√2이다.",
       "evidenceRefs": [
@@ -1004,11 +1357,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q13-22.independent-figure-review.json",
+          "sha256": "782c9e5989730eacf65e3b520d3a227cf217a62549b1605408bd7160629051cd"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "0ff5e4e9c9ce066cbbe3445bf55bdacbf7c80fc345ccc6d5c22e1f9944f7b738"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -1039,7 +1416,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "68dc160aff93036f0e456d91e5d42950a4e0e68fd2df287e824999959fd4845a",
+        "contentFingerprint": "13be1311cc1f39e2450d1d42a4bbb5a4015e3a345962c40d912f893483c800dc"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -1062,7 +1441,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "세 변이 주어진 직각삼각형에서 각별 삼각비를 직접 합산",
-        "decisiveStep": "sinA=3/5, cosC=3/5, tanA=3/4이므로6/5+3/4=39/20이다."
+        "decisiveStep": "sinA=3/5, cosC=3/5, tanA=3/4이므로6/5+3/4=39/20이다.",
+        "sourceFingerprint": "fa2e73c83964697e400f6dacef62ec40fdb2dd047713b11af9a54ba9770e494f",
+        "contentFingerprint": "9c2ef63846822e474a227dfd5952844159bb6fe41168eac2b269adf72b7e1783"
       },
       "reason": "sinA=3/5, cosC=3/5, tanA=3/4이므로6/5+3/4=39/20이다.",
       "evidenceRefs": [
@@ -1073,11 +1454,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q13-22.independent-figure-review.json",
+          "sha256": "782c9e5989730eacf65e3b520d3a227cf217a62549b1605408bd7160629051cd"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "68dc160aff93036f0e456d91e5d42950a4e0e68fd2df287e824999959fd4845a"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -1108,7 +1513,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "9b67bc310475dc0ad26daa7749a11ada5542219cba9c9a64c2cb21f8202b9ba3",
+        "contentFingerprint": "3f9183c190a1b5e8bfc7b958ac2725ff7dd06ce89d6d4d797b05455d8cf638cf"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -1131,7 +1538,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "공통 높이4의 두 특수각 삼각형 밑변 차로 거리 계산",
-        "decisiveStep": "ADC의45°등변관계로DC=4, ABC의30°변비로BC=4√3이다. D가B와C사이에있으므로BD=4√3−4이다."
+        "decisiveStep": "ADC의45°등변관계로DC=4, ABC의30°변비로BC=4√3이다. D가B와C사이에있으므로BD=4√3−4이다.",
+        "sourceFingerprint": "5209b0661c5cdd933191e10eafda320419108934c43edcb247ed4a9043583e55",
+        "contentFingerprint": "a5ad4b1951754675306cfc1e2a4165d5a94d0b4d3f460841a95cd4501e0859e5"
       },
       "reason": "ADC의45°등변관계로DC=4, ABC의30°변비로BC=4√3이다. D가B와C사이에있으므로BD=4√3−4이다.",
       "evidenceRefs": [
@@ -1142,11 +1551,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q13-22.independent-figure-review.json",
+          "sha256": "782c9e5989730eacf65e3b520d3a227cf217a62549b1605408bd7160629051cd"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "9b67bc310475dc0ad26daa7749a11ada5542219cba9c9a64c2cb21f8202b9ba3"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -1177,7 +1610,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "b1f1b077396e4f38ae8b0841ad29b82d69184939269181ec70ca2c2b174a3f92",
+        "contentFingerprint": "e69a42903781bdb83d3b92439cec9f6db2f9d7b5c7cbffcc926369e423e530c5"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -1202,7 +1637,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "보조 높이를 내려 두 특수각 삼각형의 밑변 합으로 강폭 계산",
-        "decisiveStep": "∠C=45°이다. AB1000과B60°에서BH=500, AH=500√3이고 HC=AH이다. BC=500(1+√3)m이다."
+        "decisiveStep": "∠C=45°이다. AB1000과B60°에서BH=500, AH=500√3이고 HC=AH이다. BC=500(1+√3)m이다.",
+        "sourceFingerprint": "21bb6f5d6a571bf524b597d961890a6bae52a1c2f46a94e15fb204d88459fdd0",
+        "contentFingerprint": "2011c2549849a7043355e7a5e05cfa9703047c0fd9242017ae0f2900e11b2e82"
       },
       "reason": "∠C=45°이다. AB1000과B60°에서BH=500, AH=500√3이고 HC=AH이다. BC=500(1+√3)m이다.",
       "evidenceRefs": [
@@ -1213,11 +1650,35 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q13-22.independent-figure-review.json",
+          "sha256": "782c9e5989730eacf65e3b520d3a227cf217a62549b1605408bd7160629051cd"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "b1f1b077396e4f38ae8b0841ad29b82d69184939269181ec70ca2c2b174a3f92"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     },
     {
@@ -1248,7 +1709,9 @@
         "L3": null,
         "L4": null,
         "primaryMethod": null,
-        "decisiveStep": null
+        "decisiveStep": null,
+        "sourceFingerprint": "2bc18479927687b309513b50ddda190d1124e806e1dbb2c9c1bd0ba51b421e59",
+        "contentFingerprint": "356bb49f8fc3f6346c1d95f102fcf846c45bb36772d3f53ee56da59bec9ecd52"
       },
       "after": {
         "standardCourse": "중3 수학",
@@ -1271,7 +1734,9 @@
         "curriculumKey": "2015",
         "courseKey": "M3-2",
         "primaryMethod": "수평거리·앙각·기구높이를 측정하여 탄젠트 모델 세우기",
-        "decisiveStep": "건물이수직·지면이수평일때tanθ=(H−h)/d이다. 줄자로d와h, 클리노미터로θ를 재어H=h+d tanθ를 구하면된다."
+        "decisiveStep": "건물이수직·지면이수평일때tanθ=(H−h)/d이다. 줄자로d와h, 클리노미터로θ를 재어H=h+d tanθ를 구하면된다.",
+        "sourceFingerprint": "2bc18479927687b309513b50ddda190d1124e806e1dbb2c9c1bd0ba51b421e59",
+        "contentFingerprint": "356bb49f8fc3f6346c1d95f102fcf846c45bb36772d3f53ee56da59bec9ecd52"
       },
       "reason": "건물이수직·지면이수평일때tanθ=(H−h)/d이다. 줄자로d와h, 클리노미터로θ를 재어H=h+d tanθ를 구하면된다.",
       "evidenceRefs": [
@@ -1282,11 +1747,32 @@
         {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
           "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067-Q13-22.independent-figure-review.json",
+          "sha256": "782c9e5989730eacf65e3b520d3a227cf217a62549b1605408bd7160629051cd"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/renderer-asset-continuity.json",
+          "sha256": "e0161371c70a43b496a9a749c20d5a7162bdff3f9dc07812e64f8a47a18322e6"
         }
       ],
       "basicScopeParentRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
         "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "db946631979457102821465f70309203a513c69f",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-current-main-20261115/E067.current-figure-review.json",
+          "sha256": "ec9c339c9f59ce06fe9c3d473c2d5bdbef1cebd2701f7116a598f15eb43128ce"
+        }
       }
     }
   ]
