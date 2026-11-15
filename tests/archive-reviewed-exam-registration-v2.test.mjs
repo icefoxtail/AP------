@@ -1096,6 +1096,26 @@ test("canonical parent accepts the existing master scope alias 수학_상 for �
   assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
 });
 
+test("canonical parent uses the selected exact ACTIVE binding subunit label", t => {
+  const midUnit = "삼각형의 무게중심", f = parentOnlyWhitespaceFixture(t, midUnit);
+  const binding = f.request.registryChanges.find(change => change.path.endsWith("/bindings.json")).after.bindings[0];
+  binding.subUnitLabelKo = midUnit;
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.totalQuestions, 1);
+  assert.equal(f.read(META).records[0].L2, midUnit);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+});
+
+test("canonical parent refuses a subunit label from another binding context", t => {
+  const midUnit = "삼각형의 무게중심", f = parentOnlyWhitespaceFixture(t, midUnit);
+  const bindings = f.request.registryChanges.find(change => change.path.endsWith("/bindings.json")).after.bindings;
+  bindings[0].subUnitLabelKo = "다른 세부단원";
+  bindings.push({ ...bindings[0], subUnitKey: "SUB_OTHER", subUnitLabelKo: midUnit });
+  f.request.registryChanges.push({ path: "archive/data/master_tables/js_archive_tag_master.json", collection: "$", match: { key: "SUB_OTHER" }, before: null,
+    after: { key: "SUB_OTHER", keyType: "subUnitKey", parentKey: "UNIT_NEW", standardUnitKey: "UNIT_NEW", labelKo: midUnit, status: "active" }, evidenceRefs: f.evidenceRefs });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /canonical target parent mismatch/);
+});
+
 test("canonical parent scope aliases do not cross the upper and lower math courses", t => {
   const f = fixture(t, "수학(하)", "2015");
   attachMetaPipelineAudit(f, { targetCanonicalParent: true, targetCanonicalScope: "수학_상" });
@@ -2754,6 +2774,94 @@ function partialFixture(t) {
   writeBank();
   return { ...f, hold, sourcePath, writeBank, receiptPath: `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${f.request.requestId}.json` };
 }
+
+function partialSourceRebindFixture(t) {
+  const f = partialFixture(t);
+  const git = (...args) => execFileSync("git", args, { cwd: f.root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  git("init", "-q");
+  git("hash-object", "-w", f.sourcePath);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receiptRef = { path: f.receiptPath, sha256: hash(fs.readFileSync(path.join(f.root, f.receiptPath))) };
+  const text = `window.questions = ${JSON.stringify([f.q, { ...f.q, id: 2, editorialNote: "other question metadata updated" }])};\n`;
+  f.put(f.sourcePath, text);
+  const request = { schemaVersion: f.request.schemaVersion, requestId: "test-partial-source-rebind", scope: "PARTIAL_UIDS",
+    examUid: f.request.examUid, sourceArchiveFile: f.request.sourceArchiveFile, expectedSourceBlobSha1: blob(text), expectedQuestionCount: 2,
+    approval: { type: "FINAL_QA", metadataReviewed: true, approvedBy: "fixture-preservation-reviewer", evidenceRefs: [...f.evidenceRefs, receiptRef],
+      sourceRebind: { priorReceiptRef: receiptRef } },
+    items: [{ questionUid: "uid1", sourceOrdinal: 1, before: {}, after: {}, reason: "preserve the same approved question after another question changes", evidenceRefs: f.evidenceRefs }] };
+  return { ...f, request, receiptRef, priorReceiptPath: f.receiptPath };
+}
+
+test("partial source rebind preserves one approval and all omitted rows with zero new approvals", t => {
+  const f = partialSourceRebindFixture(t), before = f.read(META), beforeIdentity = fs.readFileSync(path.join(f.root, "archive/data/question_identity_map.json"));
+  const source = fs.readFileSync(path.join(f.root, f.sourcePath));
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.status, "PASS");
+  assert.deepEqual([result.expectedQuestionCount, result.partialUidCount, result.totalQuestions, result.newMetadataApprovals, result.preservedMetadataApprovals], [2, 1, 1, 0, 1]);
+  const after = f.read(META);
+  assert.deepEqual(after.records[1], before.records[1]);
+  assert.deepEqual(Object.keys({ ...before.records[0], ...after.records[0] }).filter(k => JSON.stringify(before.records[0][k]) !== JSON.stringify(after.records[0][k])).sort(), ["approvalEvidence", "metadataRevision"]);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, "archive/data/question_identity_map.json")), beforeIdentity);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.sourcePath)), source);
+  const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-partial-source-rebind.json");
+  assert.deepEqual([receipt.newMetadataApprovals, receipt.preservedMetadataApprovals], [0, 1]);
+  assert.deepEqual(receipt.appliedRecords.map(r => r.questionUid), ["uid1"]);
+  assert.deepEqual(receipt.runtimeRecords.map(r => r.questionUid), ["uid1"]);
+  const replay = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(replay.replay, true);
+  assert.deepEqual([replay.newMetadataApprovals, replay.preservedMetadataApprovals], [0, 1]);
+  receipt.preservedMetadataApprovals = 2;
+  f.put("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-partial-source-rebind.json", receipt);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /approval count drift/);  receipt.preservedMetadataApprovals = 1; receipt.sourceRawSha256 = "0".repeat(64);
+  f.put("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-partial-source-rebind.json", receipt);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /source binding drift/);
+});
+
+test("partial source rebind keeps the accepted row version when the active pack has advanced", t => {
+  const f = partialSourceRebindFixture(t), before = f.read(META).records[0];
+  const packPath = `${CANON}/packs/new-course/pack.json`, pack = f.read(packPath);
+  pack.packVersion = "1.0.1"; f.put(packPath, pack);
+  const index = f.read(`${CANON}/registry_index.json`); index.activePacks[0].version = "1.0.1"; f.put(`${CANON}/registry_index.json`, index);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
+  const after = f.read(META).records[0];
+  assert.equal(after.metaFoundationPackVersion, before.metaFoundationPackVersion);
+  assert.equal(after.metadataRevision, `meta-foundation:NEW_COURSE@${before.metaFoundationPackVersion}:exam-final_qa-v2:test-partial-source-rebind`);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+});
+
+test("partial source rebind rejects prior denominator, selection, identity, runtime and approval drift", t => {
+  for (const mutate of [
+    r => { r.expectedQuestionCount = 1; },
+    r => { r.partialUidCount = 2; },
+    r => { delete r.scope; },
+    r => { r.appliedRecords[0].questionUid = "uid2"; },
+    r => { r.appliedRecords[0].sourceOrdinal = 2; },
+    r => { r.appliedIdentityRecords[0].sourceFingerprint = "drift"; },
+    r => { r.runtimeRecords[0].templateKey = "TPL_UNREVIEWED"; },
+    r => { r.runtimeRecords[0].questionUid = "uid2"; },
+    r => { r.approval.type = "META_PIPELINE_AUDIT"; },
+    r => { r.sourceBlobSha1 = "0".repeat(40); },
+  ]) {
+    const f = partialSourceRebindFixture(t);
+    retargetPriorReceipt(f, mutate);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /sourceRebind|prior source blob/);
+  }
+});
+
+test("partial source rebind cannot add a held neighbour or change a selected renderer field", t => {
+  const extra = partialSourceRebindFixture(t);
+  extra.request.items.push({ ...extra.request.items[0], questionUid: "uid2", sourceOrdinal: 2 });
+  assert.throws(() => registerReviewedExamV2({ root: extra.root, request: extra.request }), /prior receipt does not match/);
+  for (const patch of [{ solutionImage: "unreviewed.svg" }, { number: 99 }, { primaryMethod: "unreviewed method" }]) {
+    const f = partialSourceRebindFixture(t);
+    const text = `window.questions = ${JSON.stringify([{ ...f.q, ...patch }, { ...f.q, id: 2 }])};\n`;
+    f.put(f.sourcePath, text); f.request.expectedSourceBlobSha1 = blob(text);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /selected source question changed/);
+  }
+  const changed = partialSourceRebindFixture(t);
+  changed.request.items[0].before = { level: "중" }; changed.request.items[0].after = { level: "상" };
+  assert.throws(() => registerReviewedExamV2({ root: changed.root, request: changed.request }), /must not change values/);
+});
 
 function itemRebindFixture(t) {
   const f = partialFixture(t);

@@ -1772,7 +1772,9 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredRep
     const matches = (read(masterPath).records || []).filter(r => r.curriculum === ref.curriculum && r.scope === ref.scope && r.majorUnit === ref.majorUnit && r.midUnit === ref.midUnit);
     // Same two legacy scope aliases used by archive2-canonical's master-path projection.
     const masterCourse = ({ 수학_상: "수학(상)", 수학_하: "수학(하)" })[ref.scope] || ref.scope;
-    const canonicalMidLabels = [resolved.binding.L2, resolved.sub?.labelKo, resolved.unit.labelKo].filter(Boolean);
+    // resolve() already selected the exact ACTIVE curriculum/course/unit/subunit/PT binding.
+    // Its canonical subunit display label is a context-bound alias, not a new parent rule.
+    const canonicalMidLabels = [resolved.binding.L2, resolved.binding.subUnitLabelKo, resolved.sub?.labelKo, resolved.unit.labelKo].filter(Boolean);
     let exactTypeParent = false;
     if (ref.crosswalkRef) {
       const cross = ref.crosswalkRef;
@@ -1898,21 +1900,54 @@ export function validateReviewedSourceFingerprints({ question: q, metadata, iden
 // FINAL_QA source-only rebind guard. `approval.sourceRebind.priorReceiptRef` names the SHA-bound registration receipt whose
 // per-question records the current metadata rows must still equal exactly. Nothing but the source binding, the metadata
 // revision and the approval evidence list may change; approval provenance (type, fieldStatus, EVIDENCE_DEBT) stays as registered.
-function loadSourceRebindPrior({ req, source, bytes, rows, read, evidenceRefs }) {
+function loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, priorBanks, read, evidenceRefs }) {
   const spec = req.approval.sourceRebind, ref = spec?.priorReceiptRef;
   if (req.approval.type !== "FINAL_QA" || req.registryChanges?.length) fail("sourceRebind requires FINAL_QA without registryChanges");
   if (!ref || !/^archive\/data\/meta-foundation\/evidence\/reviewed-exam-meta\/v1\/[^/]+\.json$/.test(ref.path || "") ||
       !req.approval.evidenceRefs.some(e => e.path === ref.path && e.sha256 === ref.sha256)) fail("sourceRebind priorReceiptRef must be an approval evidence ref");
   evidenceRefs([ref]);
   const prior = read(ref.path);
+  const partial = req.scope === "PARTIAL_UIDS", selectedCount = partial ? req.items.length : rows.length;
   if (prior.schemaVersion !== "archive-reviewed-exam-meta-registration-v2" || prior.metadataRegistrationStatus !== "REGISTERED" ||
-      prior.examUid !== req.examUid || prior.sourceArchiveFile !== source || prior.totalQuestions !== rows.length ||
-      !Array.isArray(prior.appliedRecords) || prior.appliedRecords.length !== rows.length) fail("sourceRebind prior receipt does not match this exam");
+      prior.examUid !== req.examUid || prior.sourceArchiveFile !== source || prior.totalQuestions !== selectedCount ||
+      !Array.isArray(prior.appliedRecords) || prior.appliedRecords.length !== selectedCount) fail("sourceRebind prior receipt does not match this exam");
   if (prior.sourceRawSha256 === digest(bytes)) fail("sourceRebind unnecessary: source bytes equal the prior receipt");
-  // The prior receipt must be a real registration receipt that the current approved rows were registered from.
-  if (prior.requestId !== path.basename(ref.path, ".json") || rows.some(r => !approved(r) || !(r.approvalEvidence || []).includes(ref.path)))
+  const records = unique(prior.appliedRecords, "questionUid", "prior receipt UID");
+  let priorRuntime;
+  if (partial) {
+    // Preserve the same previously approved subset, never turn a selected receipt
+    // into exam-wide approval or include an unregistered neighbour.
+    if (prior.scope !== "PARTIAL_UIDS" || prior.expectedQuestionCount !== rows.length ||
+        prior.partialUidCount !== selectedCount || prior.approval?.type !== "FINAL_QA" ||
+        prior.approval.metadataReviewed !== true || !String(prior.approval.approvedBy || "").trim() ||
+        !/^[a-f0-9]{64}$/.test(prior.requestSha256 || "") ||
+        !Array.isArray(prior.appliedIdentityRecords) || prior.appliedIdentityRecords.length !== selectedCount ||
+        !Array.isArray(prior.runtimeRecords) || prior.runtimeRecords.length !== selectedCount)
+      fail("sourceRebind partial prior scope/approval mismatch");
+    const priorIdentity = unique(prior.appliedIdentityRecords, "questionUid", "prior source rebind identity UID");
+    priorRuntime = unique(prior.runtimeRecords, "questionUid", "prior source rebind runtime UID");
+    const oldBank = loadPriorQuestionBank(root, prior.sourceBlobSha1, priorBanks);
+    if (oldBank.length !== rows.length) fail("sourceRebind partial prior source denominator mismatch");
+    for (const item of req.items) {
+      const old = records.get(item.questionUid), current = rows[item.sourceOrdinal - 1];
+      const id = ids.get(item.questionUid), runtime = priorRuntime.get(item.questionUid);
+      if (!old || old.sourceArchiveFile !== source || old.sourceOrdinal !== item.sourceOrdinal ||
+          old.metadataApprovalType !== "FINAL_QA" || current?.questionUid !== item.questionUid ||
+          !eq(priorIdentity.get(item.questionUid), id) || !runtime ||
+          runtime.sourceArchiveFile !== source || runtime.sourceOrdinal !== item.sourceOrdinal ||
+          runtime.sourceIdentity !== `${source}#${item.sourceOrdinal}`)
+        fail(`sourceRebind partial selected UID/identity/runtime mismatch: ${item.questionUid}`);
+      // A full question-object comparison covers renderer fields and numbering
+      // beyond the legacy sourceFingerprint. Only other questions/file bytes may change.
+      if (!eq(JSON.parse(JSON.stringify(oldBank[item.sourceOrdinal - 1])), JSON.parse(JSON.stringify(bank[item.sourceOrdinal - 1]))))
+        fail(`sourceRebind partial selected source question changed: ${item.questionUid}`);
+    }
+  }
+  // The prior receipt must be the registration linked by every selected approved row.
+  const selectedRows = partial ? req.items.map(item => rows[item.sourceOrdinal - 1]) : rows;
+  if (prior.requestId !== path.basename(ref.path, ".json") || selectedRows.some(r => !approved(r) || !(r.approvalEvidence || []).includes(ref.path)))
     fail("sourceRebind prior receipt is not the registration of the current approved rows");
-  return { receipt: prior, records: unique(prior.appliedRecords, "questionUid", "prior receipt UID") };
+  return { receipt: prior, records, priorRuntime };
 }
 
 export function verifyIdentityFingerprintConsumer(root, bindings, catalog) {
@@ -2083,6 +2118,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       (!partial || req.approval.type !== "FINAL_QA" || req.approval.sourceRebind || item.rebind !== undefined)))
     fail("source reassessment requires an exclusive PARTIAL_UIDS FINAL_QA fingerprint repair");
   const scopeFields = partial ? { scope: req.scope, partialUidCount: patches.size, expectedQuestionCount: req.expectedQuestionCount } : {};
+  const preservationFields = req.approval.sourceRebind ? { newMetadataApprovals: 0, preservedMetadataApprovals: patches.size } : {};
   const requestSha256 = digest(stable(req));
   const receiptPath = `${RECEIPTS}/${req.requestId}.json`;
   const receiptFull = safePath(root, receiptPath);
@@ -2091,6 +2127,12 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (req.registrationMode === "IDENTITY_FINGERPRINT_ONLY") return registerIdentityFingerprintOnly({
     root, req, metadata, identity, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, write, verifyProjection, read });
   if (previous) {
+    if (partial && req.approval.sourceRebind) {
+      if (previous.newMetadataApprovals !== 0 || previous.preservedMetadataApprovals !== patches.size)
+        fail("partial source rebind approval count drift");
+      if (previous.sourceArchiveFile !== source || previous.sourceBlobSha1 !== blob || previous.sourceRawSha256 !== digest(bytes))
+        fail("partial source rebind receipt source binding drift");
+    }
     if (partial && (previous.scope !== req.scope || previous.expectedQuestionCount !== req.expectedQuestionCount || previous.partialUidCount !== patches.size ||
         previous.totalQuestions !== patches.size || previous.appliedRecords.length !== patches.size ||
         unique(previous.appliedRecords, "questionUid", "receipt UID").size !== patches.size ||
@@ -2111,7 +2153,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (found.length !== 1 || !eq(found[0], record)) fail(`registered runtime drift: ${record.questionUid}`);
     }
     const consumerLanes = verifyProjection ? verifyConsumer(root, previous.appliedRecords, previous.runtimeRecords, read) : null;
-    return { status: "PASS", requestId: req.requestId, totalQuestions: patches.size, ...scopeFields, replay: true, plannedPaths: [],
+    return { status: "PASS", requestId: req.requestId, totalQuestions: patches.size, ...scopeFields, ...preservationFields, replay: true, plannedPaths: [],
       consumerSearchStatus: verifyProjection ? "STATIC_VALUES_VERIFIED" : "NOT_RUN", browserStatus: "NOT_RUN",
       ...(consumerLanes ? { consumerLanes } : {}) };
   }
@@ -2170,7 +2212,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   let identityChanged = false;
   // Source-only rebind (2026-11-02): re-bind an already registered receipt to changed source bytes without
   // touching any metadata value. The prior receipt (SHA-bound) must equal the current metadata row for row.
-  const rebindPrior = req.approval.sourceRebind ? loadSourceRebindPrior({ req, source, bytes, rows, read, evidenceRefs }) : null;
+  const rebindPrior = req.approval.sourceRebind ? loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, priorBanks, read, evidenceRefs }) : null;
   for (let i = 0; i < bank.length; i++) {
     const current = rows[i], patch = patches.get(current.questionUid);
     if (partial && !patch) continue;
@@ -2207,9 +2249,12 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
           current.contentFingerprint != null && checkedPrior.contentFingerprint !== current.contentFingerprint) fail(`source rebind: question text fingerprint drift: ${current.questionUid}`);
       appliedIdentityRecords.push(structuredClone(id));
       const packIdPrior = resolvedPrior.pack.meta.packId;
+      const preservedVersion = rebindPrior.priorRuntime ? current.metaFoundationPackVersion : resolvedPrior.pack.meta.packVersion;
       const finalPrior = { ...structuredClone(current), approvalEvidence: [...new Set([...(current.approvalEvidence || []), receiptPath])],
-        metadataRevision: `meta-foundation:${resolvedPrior.pack.meta.packId}@${resolvedPrior.pack.meta.packVersion}:exam-${req.approval.type.toLowerCase()}-v2:${req.requestId}` };
+        metadataRevision: `meta-foundation:${resolvedPrior.pack.meta.packId}@${preservedVersion}:exam-${req.approval.type.toLowerCase()}-v2:${req.requestId}` };
       const existingRuntime = (runtimes.get(owners.get(current.questionUid))?.data.records || []).find(r => r.questionUid === current.questionUid);
+      if (rebindPrior.priorRuntime && !eq(existingRuntime, rebindPrior.priorRuntime.get(current.questionUid)))
+        fail(`sourceRebind partial runtime differs from prior receipt: ${current.questionUid}`);
       const rrPrior = { ...finalPrior, sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
         approvedSourceFingerprint: checkedPrior.sourceFingerprint, legacyLevel: finalPrior.level,
         runtimeSelectable: finalPrior.defaultSelectable && finalPrior.curriculumApplicability === "DEFAULT_SCOPE" };
@@ -2554,7 +2599,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     metadataRegistrationStatus: "REGISTERED", examFinalQaStatus: "NOT_EVALUATED_BY_REGISTRAR",
     consumerSearchStatus: "NOT_RUN", totalQuestions: applied.length, registryChanges: req.registryChanges || [],
     ...(extensionUsage.size ? { generatedExtensionKeys: [...extensionUsage.values()].sort((x, y) => x.key.localeCompare(y.key, "en")) } : {}),
-    appliedRecords: applied, appliedIdentityRecords, fingerprintRepairs, runtimeRecords, outputDigests, ...scopeFields };
+    appliedRecords: applied, appliedIdentityRecords, fingerprintRepairs, runtimeRecords, outputDigests, ...scopeFields, ...preservationFields };
   plan.output.set(receiptPath, json(receipt));
   const changed = [...plan.output].filter(([file, text]) => !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text);
   if (changed.some(([file]) => file.startsWith("archive/exams/"))) fail("registration must not write exam source bytes");
@@ -2574,7 +2619,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       throw error;
     }
   }
-  return { status: "PASS", write, requestId: req.requestId, approvalType: req.approval.type, totalQuestions: applied.length, ...scopeFields,
+  return { status: "PASS", write, requestId: req.requestId, approvalType: req.approval.type, totalQuestions: applied.length, ...scopeFields, ...preservationFields,
     registryChangeCount: req.registryChanges?.length || 0, runtimeMaterialized: runtimeRecords.length,
     fingerprintRepairCount: fingerprintRepairs.length,
     consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file) };

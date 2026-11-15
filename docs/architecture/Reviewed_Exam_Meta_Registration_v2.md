@@ -152,6 +152,8 @@ PT/TPL에는 확장 키를 받지 않는다. 확장 키는 정본 registry·comp
 - 기존 Runtime 행은 `metadataRevision`/`approvalEvidence`만 다르게 재사용한다. 갱신되는 것은 메타 행의 `metadataRevision`·`approvalEvidence`와 새 영수증·Runtime 행뿐이며,
   `metadataApprovalType`, `fieldStatus`, `tagConfidence`, EVIDENCE_DEBT는 등록 당시 그대로 둔다(새 의미 검수를 했다고 기록하지 않는다).
 - 요청 근거로 승인 시점 바이트와 현재 바이트를 문항별로 비교한 `*.review.json`을 둔다(바뀐 필드 목록, 문항별 fingerprint 일치).
+- `PARTIAL_UIDS` 재결속은 이전 영수증도 `PARTIAL_UIDS`/`FINAL_QA`이고 전체 시험 분모와 선택 UID·ordinal 집합이 정확히 같을 때만 허용한다. 이전 Git source blob이 실제 존재하며 선택 문항 전체 객체(표시 번호·렌더러 필드·명시 메타 포함)가 현재와 같아야 한다. 같은 파일의 다른 문항 변경으로 깨진 파일 해시만 다시 결속한다.
+  이전 영수증의 선택 identity/runtime는 현재와 완전히 같아야 하고, 비선택 UID·HOLD는 변경하지 않는다. 기존 `metaFoundationPackVersion`·승인 종류·fieldStatus를 유지하며 결과·영수증·replay에 `newMetadataApprovals: 0`, `preservedMetadataApprovals: 선택 수`를 구분해 기록한다. 이전 FULL 또는 다른 승인 종류를 PARTIAL 재결속으로 변환하지 않는다.
 
 ### `META_PIPELINE_AUDIT` 승인 유형
 
@@ -188,6 +190,7 @@ SOP v1.2의 기존 원본에 예전 단원 네임스페이스가 남아 있으�
 - legacy/rich/key-only `META_PIPELINE_AUDIT` 입력은 1~5 `difficultyBucket`이나 `IntegrationPattern`을 판정하지 않는다. 새 sourceDrive flat v3 예외는 audit와 paired classification이 UID별 동일한 1~5 bucket, confidence, reason을 명시하므로 해당 bucket/confidence를 메타 provenance `approved_meta_pipeline_audit`로 바인딩한다. 이 경우에도 level에서 bucket을 계산하지 않는다. IntegrationPattern이 source schema에서 빠지고 production JS에도 없으면 manifest의 transport sentinel `NONE`만으로 값을 만들지 말고, 기존값은 보존하고 값이 없는 UID는 `unreviewedFields`에 `EVIDENCE_DEBT`로 남긴다. 기존 legacy bucket이 숫자형 1~5가 아니고 audit에서도 bucket 근거가 없으며 production JS에도 유효한 bucket이 없을 때만 정확한 `before`로 결속하여 `after: null`로 지우고 debt를 기록한다.
 - Consumer가 요구하는 L1/L2는 evidence-bound `.parent-labels.json`으로 현재 `basic-scope-parent-links.json`의 정확한 curriculum/course/unit/subunit 부모에서 가져온다. `courseKey` 별칭을 쓸 때는 해당 별칭이 ACTIVE owner pack의 `standardCourses`에 있어야 한다. standardUnit label을 부모 L1로 대체하지 않는다.
 - `targetParentRef`는 canonical master의 원래 scope와 parent row를 그대로 SHA 결속한다. course 대조에는 기존 Archive2 master projection과 같은 `수학_상 → 수학(상)`, `수학_하 → 수학(하)` 두 별칭만 정규화하며 curriculum·원래 master row·단원·L1/L2 검증은 유지한다.
+- L2 대조에는 `resolve()`가 선택한 정확한 ACTIVE 교육과정·과목·단원·세부단원·PT binding의 `subUnitLabelKo`도 정본 표시명으로 인정한다. 다른 binding의 별칭이나 요청이 임의 제공한 라벨은 사용하지 않으며, SHA 결속한 master의 교육과정·scope·L1/L2 검증은 그대로 유지한다.
 - 표준단원 표시명과 RPM 부모명이 다른 경우 `targetParentRef.crosswalkRef: {path, sha256, recordId}`로 정확한 ACTIVE_REFERENCE crosswalk 행을 함께 결속할 수 있다. 해당 행의 교육과정·과목·ACTIVE PT/TPL과 canonical master L1/L2가 모두 일치해야 한다. 문항 단원은 기존 ACTIVE binding과 감사 입력으로 계속 검증하며, 이 참조로 정본 정의나 binding을 재정의하지 않는다.
 - crosswalk의 과목이 `M3-2` 같은 학기 별칭이면 문항 `courseKey`와 정확히 같고 ACTIVE binding owner pack의 `standardCourses`에 실제로 선언된 경우에만 수용한다. 과목 표시명과 별칭의 교환으로 교육과정·PT/TPL·부모의 일치 검사를 생략하지 않는다.
 - 이전 `META_PIPELINE_AUDIT` 등록에서 PT 의미가 아니라 exact ACTIVE binding의 부모 L2만 잘못 연결된 경우, `parentBindingCorrectionRef`가 가리키는 SHA-bound 증거와 현재 binding의 정확한 before/after, 그 binding의 전체 supporting UID, 정본 부모 근거를 함께 제시하면 L2만 정정할 수 있다. 정정은 부모 경로를 바로잡는 범위로 제한하고 PT/TPL/CrossConcept 정의·키·supporting UID 및 학생용 payload는 바꾸지 않으며, 영향을 받는 모든 UID를 같은 N/N 요청에 포함한다. 정본 compiler가 owner pack patch version을 갱신한다.
