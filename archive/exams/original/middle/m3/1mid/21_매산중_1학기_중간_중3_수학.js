@@ -119,23 +119,19 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "표"
       ],
       "wide": false,
-      "content": "<p>4. 다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)</p><p><img src=\"assets/images/21_매산중_1학기_중간_중3_수학/q04.png\" alt=\"4.2부터 4.4까지의 수에 대한 제곱근표 일부 그림\" /></p>",
-      "question": "<p>4. 다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)</p><p><img src=\"assets/images/21_매산중_1학기_중간_중3_수학/q04.png\" alt=\"4.2부터 4.4까지의 수에 대한 제곱근표 일부 그림\" /></p>",
+      "content": "<p>4. 다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)</p>\n| $+$ | 0 | 1 | 2 | 3 | 4 |\n| :---: | :---: | :---: | :---: | :---: | :---: |\n| 4.2 | 2.049 | 2.052 | 2.054 | 2.057 | 2.059 |\n| 4.3 | 2.074 | 2.076 | 2.078 | 2.081 | 2.083 |\n| 4.4 | 2.098 | 2.100 | 2.102 | 2.105 | 2.107 |\n",
+      "question": "<p>4. 다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)</p>\n| $+$ | 0 | 1 | 2 | 3 | 4 |\n| :---: | :---: | :---: | :---: | :---: | :---: |\n| 4.2 | 2.049 | 2.052 | 2.054 | 2.057 | 2.059 |\n| 4.3 | 2.074 | 2.076 | 2.078 | 2.081 | 2.083 |\n| 4.4 | 2.098 | 2.100 | 2.102 | 2.105 | 2.107 |\n",
       "choices": [
         "$393$",
         "$475$",
         "$1285$",
         "$1674$",
         "$2431$"
-      ],
-      "image": "assets/images/21_매산중_1학기_중간_중3_수학/q04.png",
-      "images": [
-        "assets/images/21_매산중_1학기_중간_중3_수학/q04.png"
       ],
       "answer": "④",
       "solution": "[원문 조건 및 구할 대상]\n제곱근표에서 $\\sqrt{4.43} = a$의 값과 $\\sqrt{b} = 2.076$을 만족하는 $b$의 값을 찾아 $1000a - 100b$의 값을 계산한다.\n\n[핵심 발상/공식/보조선]\n제곱근표의 왼쪽 세로줄(소수 첫째 자리까지)과 위쪽 가로줄(소수 둘째 자리)이 만나는 위치에서 제곱근 값을 읽는다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $a$의 값 구하기\n제곱근표의 세로줄 $4.4$와 가로줄 $3$이 만나는 칸의 값을 읽으면\n$\\sqrt{4.43} = 2.105$\n따라서 $a = 2.105$\n\n2단계: $b$의 값 구하기\n제곱근표에서 수의 값이 $2.076$인 위치를 찾으면 세로줄 $4.3$과 가로줄 $1$이 만나는 칸이다.\n따라서 $\\sqrt{4.31} = 2.076$이므로\n$b = 4.31$\n\n3단계: $1000a - 100b$ 계산\n$1000a = 1000 \\times 2.105 = 2105$\n$100b = 100 \\times 4.31 = 431$\n$1000a - 100b = 2105 - 431 = 1674$\n\n[경우 나눔 및 5개 선지 검토]\n① 393, ② 475, ③ 1285: 자릿수 또는 행/열 오독 오류이다.\n④ 1674: 계산된 결과와 정확히 일치하여 정답이다.\n⑤ 2431: 오답이다.\n\n[명확한 결론]\n따라서 구하는 식의 값은 1674이므로 정답은 ④이다."
@@ -274,6 +270,10 @@ window.examData = {
     },
     {
       "id": 9,
+      "solutionImage": "assets/images/21_매산중_1학기_중간_중3_수학/q9-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "같은 파란색으로 표시한 두 대각선의 길이가 모두 √2이다. B에서 왼쪽 P까지와 A에서 오른쪽 Q까지 같은 길이를 수직선에 옮겼다.",
+      "solutionImageCaption": "정사각형의 두 대각선은 √2이다. B에서 왼쪽으로 옮긴 P는 2−√2이고 A에서 오른쪽으로 옮긴 Q는 1+√2이다. 옳지 않은 것은 ①이다.",
       "questionNumber": 9,
       "score": 5.0,
       "level": "중",
@@ -289,13 +289,13 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>9. 다음 그림과 같이 수직선 위에 한 변의 길이가 $1$인 정사각형 $\\mathrm{ABCD}$가 있다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{BP}}$일 때, 다음 중 옳지 않은 것은? (5점)</p><p><img src=\"assets/images/21_매산중_1학기_중간_중3_수학/q09.png\" alt=\"수직선 [1, 2] 위에 놓인 한 변의 길이 1인 정사각형 ABCD와 점 P, Q 그림\" /></p>",
-      "question": "<p>9. 다음 그림과 같이 수직선 위에 한 변의 길이가 $1$인 정사각형 $\\mathrm{ABCD}$가 있다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{BP}}$일 때, 다음 중 옳지 않은 것은? (5점)</p><p><img src=\"assets/images/21_매산중_1학기_중간_중3_수학/q09.png\" alt=\"수직선 [1, 2] 위에 놓인 한 변의 길이 1인 정사각형 ABCD와 점 P, Q 그림\" /></p>",
+      "content": "<p>9. 다음 그림과 같이 수직선 위에 한 변의 길이가 $1$인 정사각형 $\\mathrm{ABCD}$가 있다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{BP}}$일 때, 다음 중 옳지 않은 것은? (5점)</p><p><img src=\"assets/images/21_매산중_1학기_중간_중3_수학/q9-problem-v2.svg\" alt=\"수직선 [1, 2] 위에 놓인 한 변의 길이 1인 정사각형 ABCD와 점 P, Q 그림\" /></p>",
+      "question": "<p>9. 다음 그림과 같이 수직선 위에 한 변의 길이가 $1$인 정사각형 $\\mathrm{ABCD}$가 있다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{BP}}$일 때, 다음 중 옳지 않은 것은? (5점)</p><p><img src=\"assets/images/21_매산중_1학기_중간_중3_수학/q9-problem-v2.svg\" alt=\"수직선 [1, 2] 위에 놓인 한 변의 길이 1인 정사각형 ABCD와 점 P, Q 그림\" /></p>",
       "choices": [
         "점 $\\mathrm{P}$의 좌표는 $1-\\sqrt{2}$이다.",
         "점 $\\mathrm{Q}$의 좌표는 $1+\\sqrt{2}$이다.",
@@ -303,15 +303,19 @@ window.examData = {
         "$\\overline{\\mathrm{PA}}=\\sqrt{2}-1$",
         "$\\overline{\\mathrm{PQ}}=-1+2\\sqrt{2}$"
       ],
-      "image": "assets/images/21_매산중_1학기_중간_중3_수학/q09.png",
+      "image": "assets/images/21_매산중_1학기_중간_중3_수학/q9-problem-v2.svg",
       "images": [
-        "assets/images/21_매산중_1학기_중간_중3_수학/q09.png"
+        "assets/images/21_매산중_1학기_중간_중3_수학/q9-problem-v2.svg"
       ],
       "answer": "①",
       "solution": "[원문 조건 및 구할 대상]\n수직선 위의 점 1과 2를 밑변으로 하는 한 변의 길이가 1인 정사각형 $\\mathrm{ABCD}$($\\mathrm{A}=1, \\mathrm{B}=2$)에서 대각선을 회전시켜 얻은 점 $\\mathrm{P}, \\mathrm{Q}$에 관한 설명 중 옳지 않은 것을 고른다.\n\n[핵심 발상/공식/보조선]\n한 변의 길이가 1인 정사각형의 대각선의 길이는 $\\sqrt{1^2+1^2} = \\sqrt{2}$이다.\n- 기준점 $\\mathrm{A}(1)$에서 오른쪽으로 회전: $\\text{Q} = 1 + \\sqrt{2}$\n- 기준점 $\\mathrm{B}(2)$에서 왼쪽으로 회전: $\\text{P} = 2 - \\sqrt{2}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 대각선 $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BD}}$의 길이 구하기\n$\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BD}} = \\sqrt{1^2 + 1^2} = \\sqrt{2}$\n따라서 $\\overline{\\mathrm{BP}} = \\overline{\\mathrm{BD}} = \\sqrt{2}$이다. (선지 ③ 참)\n\n2단계: 점 $\\mathrm{Q}$의 좌표 구하기\n점 $\\mathrm{A}$가 1이므로 오른쪽으로 $\\sqrt{2}$만큼 이동한 점 $\\mathrm{Q}$의 좌표는\n$\\text{Q} = 1 + \\sqrt{2}$ (선지 ② 참)\n\n3단계: 점 $\\mathrm{P}$의 좌표 구하기\n점 $\\mathrm{B}$가 2이므로 왼쪽으로 $\\sqrt{2}$만큼 이동한 점 $\\mathrm{P}$의 좌표는\n$\\text{P} = 2 - \\sqrt{2}$\n그런데 선지 ①에는 '점 $\\mathrm{P}$의 좌표는 $1-\\sqrt{2}$이다'라고 잘못 표기되어 있다. (선지 ① 거짓)\n\n4단계: 선지 ④ 검토: $\\overline{\\mathrm{PA}}$의 길이\n$\\overline{\\mathrm{PA}} = \\text{A} - \\text{P} = 1 - (2 - \\sqrt{2}) = 1 - 2 + \\sqrt{2} = \\sqrt{2} - 1$ (참)\n\n5단계: 선지 ⑤ 검토: $\\overline{\\mathrm{PQ}}$의 길이\n$\\overline{\\mathrm{PQ}} = \\text{Q} - \\text{P} = (1 + \\sqrt{2}) - (2 - \\sqrt{2}) = 1 + \\sqrt{2} - 2 + \\sqrt{2} = -1 + 2\\sqrt{2}$ (참)\n\n[경우 나눔 및 5개 선지 검토]\n점 $\\mathrm{P}$는 점 $\\mathrm{B}(2)$를 중심으로 회전한 호이므로 좌표는 $2-\\sqrt{2}$이다. 따라서 ①번이 옳지 않다.\n\n[명확한 결론]\n따라서 옳지 않은 것은 ①이다."
     },
     {
       "id": 10,
+      "solutionImage": "assets/images/21_매산중_1학기_중간_중3_수학/q10-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "수직선의 2와 3 사이에 √5가 있다. 파란 치수선은 √5와 왼쪽 정수 2 사이의 거리, 초록 치수선은 오른쪽 정수 3까지의 거리이다.",
+      "solutionImageCaption": "두 거리의 합은 (√5−2)+(3−√5)=1이다. 정답은 ①이다.",
       "questionNumber": 10,
       "score": 5.0,
       "level": "중",
