@@ -108,7 +108,7 @@ export function auditPreservationDependency(request, file) {
   const spec = request.approval?.sourceRebind;
   const audit = spec?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
   if (audit && (request.schemaVersion !== NATIVE_REQUEST_SCHEMA || request.approval.type !== 'META_PIPELINE_AUDIT'
-      || request.scope !== undefined || request.registrationMode !== undefined
+      || request.scope !== undefined && request.scope !== 'PARTIAL_UIDS' || request.registrationMode !== undefined
       || spec.requestPath !== file)) fail('AUDIT_DEPENDENCY_SCOPE');
   if (!audit && spec?.difficultyRequestRef !== undefined) fail('AUDIT_DEPENDENCY_SCOPE');
   return audit ? { schemaVersion: AUDIT_PRESERVATION_SCHEMA, difficultyRequestRef: spec.difficultyRequestRef } : undefined;
@@ -122,7 +122,7 @@ export function orderNativeRequests(requests) {
     if (!request.sourceRebind) continue;
     const spec = request.sourceRebind, ref = spec.difficultyRequestRef;
     if (spec.schemaVersion !== AUDIT_PRESERVATION_SCHEMA || request.kind !== undefined && request.kind !== 'native-approval-preservation'
-        || request.scope !== undefined || request.registrationMode !== undefined) fail('AUDIT_DEPENDENCY_SCOPE');
+        || request.scope !== undefined && request.scope !== 'PARTIAL_UIDS' || request.registrationMode !== undefined) fail('AUDIT_DEPENDENCY_SCOPE');
     if (typeof ref?.path !== 'string' || !ref.path.startsWith(INBOX)
         || ref.path.slice(INBOX.length).includes('/') || !ref.path.endsWith('.json')
         || !/^[a-f0-9]{64}$/.test(ref.sha256 || '')) fail('AUDIT_DEPENDENCY_REF');
@@ -134,6 +134,16 @@ export function orderNativeRequests(requests) {
     if (!request.source || !dependency.source || request.source.path !== dependency.source.path
         || request.source.blobSha1 !== dependency.source.blobSha1
         || request.source.sha256 !== dependency.source.sha256) fail('AUDIT_DEPENDENCY_SOURCE');
+    // A selected audit subset still depends on the exact whole-source D5 input.
+    // The preview must not replace the original denominator with selectedCount.
+    const total = request.sourceQuestionCount, items = dependency.selectedItems;
+    if (!Number.isSafeInteger(total) || total < 1 || dependency.sourceQuestionCount !== total || dependency.questionCount !== total ||
+        !Array.isArray(items) || items.length !== total || new Set(items.map(i => i.questionUid)).size !== total ||
+        new Set(items.map(i => i.sourceOrdinal)).size !== total || items.some(i => !Number.isSafeInteger(i.sourceOrdinal) || i.sourceOrdinal < 1 || i.sourceOrdinal > total))
+      fail('AUDIT_DEPENDENCY_DENOMINATOR');
+    if (!Array.isArray(request.selectedItems) || request.selectedItems.length !== request.questionCount ||
+        request.selectedItems.some(i => !items.some(d => d.questionUid === i.questionUid && d.sourceOrdinal === i.sourceOrdinal)))
+      fail('AUDIT_DEPENDENCY_UID_SCOPE');
     dependencies.set(request.path, ref.path);
   }
   const remaining = [...requests], ordered = [], completed = new Set();

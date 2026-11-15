@@ -79,6 +79,11 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
         before: { level: '중' }, after: { difficultyBucket: 2, difficultyConfidence: 'high', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL' } }] },
     reviewedCorrection: { schemaVersion: 'archive-difficulty5-reviewed-correction-v1', approvalRef: 'fixed reviewed fixture',
       evidencePath: DIFFICULTY_EVIDENCE, evidenceSha256: sha(fs.readFileSync(path.join(root, DIFFICULTY_EVIDENCE))), rows: [] } };
+  if (auditPreservation && partial) {
+    const first = difficultyRequest.gemini.items[0];
+    difficultyRequest.gemini.items = Array.from({ length: 24 }, (_, i) => ({ ...copy(first), ordinal: i + 1,
+      questionUid: i + 1 === first.ordinal ? first.questionUid : 'whole-source-' + (i + 1) }));
+  }
   const request = difficultyOnly ? difficultyRequest : { schemaVersion: NATIVE_REQUEST_SCHEMA, requestId: 'own-reviewed-exam',
     sourceArchiveFile: 'original/native.js', expectedSourceBlobSha1: git('rev-parse', `HEAD:${SOURCE}`),
     expectedQuestionCount: partial ? 24 : 1, ...(partial ? {scope:'PARTIAL_UIDS'} : {}),
@@ -145,12 +150,12 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       const meta = JSON.parse(fs.readFileSync(path.join(target, META), 'utf8'));
       const replay = meta.records[0].difficultyBucket === 2, verify = phase === 'projection';
       if (verify && !replay) throw Error('FIXTURE_DIFFICULTY_NOT_APPLIED');
-      const changedFields = !verify && !replay ? 4 : 0;
+      const count = req.gemini.items.length, changedFields = !verify && !replay ? 4 * count : 0;
       const result = { status: 'PASS', mode: verify ? 'verify-reviewed-correction' : phase === 'write' ? 'write-reviewed-correction' : 'dry-run-reviewed-correction',
         requestId: req.gemini.requestId, sourceArchiveFile: req.gemini.sourceArchiveFile, sourceBlobSha: req.gemini.latestBlobSha,
         items: req.gemini.items.map(item => ({ questionUid: item.questionUid, ordinal: item.ordinal })),
-        summary: { total: 1, APPLY: !verify && !replay ? 1 : 0, ALREADY_REGISTERED: !verify && replay ? 1 : 0,
-          SKIP_INVALID: 0, CONFLICT: 0, VERIFIED: verify ? 1 : 0, changedFields, written: phase === 'write' && changedFields > 0 },
+        summary: { total: count, APPLY: !verify && !replay ? count : 0, ALREADY_REGISTERED: !verify && replay ? count : 0,
+          SKIP_INVALID: 0, CONFLICT: 0, VERIFIED: verify ? count : 0, changedFields, written: phase === 'write' && changedFields > 0 },
         ptTpl: 'UNTOUCHED_NOT_IN_SCOPE' };
       if (phase === 'write' && !replay) {
         Object.assign(meta.records[0], req.gemini.items[0].after); write(META, json(meta), target);
@@ -164,13 +169,15 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       const exams=files.map(file=>{const req=JSON.parse(fs.readFileSync(path.join(target,file),'utf8'));
         const identityRepair=req.registrationMode==='IDENTITY_FINGERPRINT_ONLY';
         const preservation=Boolean(req.approval?.sourceRebind);
+        const count=(req.gemini?.items||req.items).length;
         return { file, kind: req.schemaVersion===DIFFICULTY_REQUEST_SCHEMA?'difficulty5-ratings':identityRepair?'identity-fingerprint-repair':preservation?'native-approval-preservation':'reviewed-exam-v2',
           exam:req.gemini?.requestId||req.examUid||req.sourceArchiveFile,
-          sourceFile:'original/native.js',changed:1,checked:1,passed:1,skippedUnchanged:0,
+          sourceFile:'original/native.js',changed:count,checked:count,passed:count,skippedUnchanged:0,
           ...(identityRepair?{approvalCreated:false,newMetadataApprovals:0,identityBindings:1}:{}),
           ...(preservation?{approvalCreated:false,newMetadataApprovals:0,preservedMetadataApprovals:1,
             approvalType:req.approval.type,expectedQuestionCount:req.expectedQuestionCount}:{}) };});
-      return json(hook.consumerResult || { status: 'PASS', counts: { changed: files.length, checked: files.length, passed: files.length, skippedUnchanged: 0 },
+      const total=exams.reduce((n,e)=>n+e.changed,0);
+      return json(hook.consumerResult || { status: 'PASS', counts: { changed: total, checked: total, passed: total, skippedUnchanged: 0 },
         exams,
         failures: [], unobservedFields: [], assignmentPending: hook.assignmentPending || [] });
     }
@@ -341,6 +348,30 @@ test('audit preservation follows its exact difficulty input in apply, projection
   f.assertShadowsRemoved();
 });
 
+test('partial audit preview preserves its selected count and whole-source D5 dependency through shadow and Consumer proof', t => {
+  const f=fixture(t,{partial:true,pairedDifficulty:true,auditPreservation:true}),[difficulty,audit]=f.selected();
+  assert.equal(difficulty.questionCount,24);assert.equal(difficulty.sourceQuestionCount,24);
+  assert.equal(audit.scope,'PARTIAL_UIDS');assert.equal(audit.questionCount,1);assert.equal(audit.sourceQuestionCount,24);
+  assert.deepEqual(audit.selectedItems,[{questionUid:'fixture',sourceOrdinal:5}]);
+  const proof=f.produce();assert.equal(proof.status,'PASS');
+  assert.deepEqual(proof.nativePreview.plans.map(p=>p.requestPath),[DIFFICULTY_REQUEST,REQUEST]);
+  assert.deepEqual(proof.nativePreview.checks.find(c=>c.id==='native-consumer').preservedNativeApprovals,
+    {requests:1,preservedMetadataApprovals:1,newMetadataApprovals:0,approvalTypes:['META_PIPELINE_AUDIT']});
+  assert.equal(f.validate(proof).reusable,true);f.assertShadowsRemoved();
+});
+
+test('partial audit preview refuses a narrowed whole-source D5 dependency or substituted selected UID',t=>{
+  const f=fixture(t,{partial:true,pairedDifficulty:true,auditPreservation:true}),selected=f.selected();
+  for(const mutate of [
+    d=>{d.sourceQuestionCount=1;},d=>{d.questionCount=1;},d=>{d.selectedItems=d.selectedItems.slice(0,23);},
+    d=>{d.selectedItems[23].sourceOrdinal=23;},d=>{d.selectedItems[23].sourceOrdinal=25;},
+    d=>{d.selectedItems[23].questionUid=d.selectedItems[22].questionUid;},
+  ]){const bad=copy(selected);mutate(bad[0]);assert.throws(()=>orderNativeRequests(bad),/AUDIT_DEPENDENCY_DENOMINATOR/);}
+  const replaced=copy(selected);replaced[0].selectedItems.find(i=>i.sourceOrdinal===5).questionUid='another-UID';
+  assert.throws(()=>orderNativeRequests(replaced),/AUDIT_DEPENDENCY_UID_SCOPE/);
+  assert.equal(f.calls.length,0);
+});
+
 test('FINAL_QA partial source preservation verifies selected approval separately from the full source count', t => {
   const f=fixture(t,{partial:true,finalQaPreservation:true}),proof=f.produce();
   assert.equal(proof.status,'PASS');
@@ -405,7 +436,7 @@ for(const [name,mutation,error] of [
   ['different approval kind',r=>{r.approval.type='FINAL_QA';},/AUDIT_DEPENDENCY_SCOPE/],
   ['different subtype',r=>{r.approval.sourceRebind.schemaVersion='other-preservation';},/AUDIT_DEPENDENCY_SCOPE/],
   ['different own request path',r=>{r.approval.sourceRebind.requestPath=DIFFICULTY_REQUEST;},/AUDIT_DEPENDENCY_SCOPE/],
-  ['partial preservation',r=>{r.scope='PARTIAL_UIDS';},/AUDIT_DEPENDENCY_SCOPE/],
+  ['unsupported preservation scope',r=>{r.scope='PARTIAL_EXAM';},/AUDIT_DEPENDENCY_SCOPE/],
 ])test(`audit dependency rejects ${name}`,t=>{
   const f=fixture(t,{pairedDifficulty:true,auditPreservation:true,mutateRequest:mutation});
   assert.throws(()=>f.selected(),error);
