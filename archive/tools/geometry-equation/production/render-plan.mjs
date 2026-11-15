@@ -207,7 +207,9 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       for(let attempt=0;attempt<3;attempt++){
       const watch=stopwatch();
       where.plan=current;
-      checked=comp.compositePanels(current);framedPanels=[];panelModels=[];const panelSizes=[];
+      checked=comp.compositePanels(current);
+      if(current.linkedExpLogDetail)await comp.checkLinkedExpLogDetail(current);
+      framedPanels=[];panelModels=[];const panelSizes=[];
       for(const panel of checked){
         if(comp.isPlanePanel(panel.plan)){
           // A plane-figure panel keeps the single PLANE_FIGURE_v1 pipeline: exact SymPy model, the same spec and its own marks observer.

@@ -1833,6 +1833,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     extendedContract+=PIECEWISE_AFFINE_CONTRACT;
     extendedContract+=EXPONENTIAL_AFFINE_CONTRACT;
     extendedContract+=LOGARITHMIC_AFFINE_CONTRACT;
+    extendedContract+=' LINKED INVERSE-CURVE DETAIL (solution composite only): linkedExpLogDetail:{midpoint,segment,bisector} opts into exactly two stacked panels, exp-log-pair-spike-v1 followed by a multi-curve-figure-v1 of just the identity and perpendicular bisector lines. Both have the same exact explicit endpoints, midpoint and marked segment. Use NAME on both inverse curves, matching distinctive midpoint and segment colors across panels, and show the midpoint coordinate and segment length only in the detail (leaders stay with their respective owners). The association and displayed marks are checked separately before publication.';
     extendedContract+=' EXP-LOG PAIR CURVE NAMES: set formulaLabel:"NAME" on an exponential or logarithmic row with a one-letter id to write f(x) or g(x) beside its own curve instead of its evaluated equation. Exact bases, coefficients and reference geometry remain required. Default omits the option and prints the full evaluated equations.';
     extendedContract+=TRIG_AXIS_CROSSING_PAIR_CONTRACT;
     extendedContract+=TRIGONOMETRIC_CONTRACT;
