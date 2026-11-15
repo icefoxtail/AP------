@@ -1010,7 +1010,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceQid": 20,
     "questionUid": "qid_v1_37db272aaec7a7b10f1a1bb25034b31372f5a839bc250f8747513f509ce4d170",
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q20-solution.svg"
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 그림에는 세 함수와 좌표축으로 둘러싸인 영역의 정수 좌표를 세 열의 보라색 점으로 표시했다. 아래는 가장 높은 보라색 점 (2,5)를 옮겨 같은 비율로 확대한 그림으로, 바로 오른쪽 위에서 지수곡선과 감소 로그곡선이 교차한다.",
+    "solutionImageCaption": "두 로그곡선이 만나는 곳에서 경계가 바뀐다. 정수 x 값을 차례대로 확인하여 영역 내부와 경계의 점을 함께 센다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
