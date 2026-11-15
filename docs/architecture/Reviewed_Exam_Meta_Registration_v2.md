@@ -151,6 +151,61 @@ ACTIVE 정의·TPL 부모·exact 과정 binding 검증은 유지한다. 원 nati
 추가한다. 영수증에는 원 native.after SHA, proposal 문서/행 SHA, 독립 증거 commit/ref, source/asset 결속 및 확정 필드를
 별도로 보존한다. 이 증거가 새 수학 QA나 REVIEW2 승인으로 바뀌지 않는다.
 
+#### ID가 없는 원제안과 현재의 좁은 정의 판정
+
+`archive-native-proposal-finalization-v2`는 위 v1을 대체하지 않는 별도 명시 계약이다. 원제안에 ID가 없으면 새 ID를
+만들지 않고, 원문 문서의 SHA·배열 index·canonical JSON SHA·지원 UID·원번호의 정확한 tuple로 결속한다. 원래 ID가
+있으면 그 ID도 일치해야 한다. 선택한 UID의 모든 의미 제안과 `proposalSelections` 및 독립 검토의 `decisions`가
+순서까지 일치해야 하며, 모르는 제안 종류나 미처리 의미 부채를 누락해서 통과시킬 수 없다.
+
+```json
+{
+  "proposalFinalization": {
+    "schemaVersion": "archive-native-proposal-finalization-v2",
+    "finalizationCommit": "원격에서 보존하는 실제 독립 증거 commit",
+    "finalizationRef": { "path": "finalized-applications.json의 저장 경로", "sha256": "실바이트 SHA-256" },
+    "proposalSelections": [{
+      "documentRef": { "path": "원 native proposal 문서 경로", "sha256": "원문 SHA-256" },
+      "index": 0,
+      "proposalSha256": "원제안 canonical JSON SHA-256",
+      "questionUid": "정확한 지원 UID",
+      "sourceOrdinal": 1
+    }]
+  }
+}
+```
+
+독립 증거는 `archive-independent-native-proposal-disposition-v1`이며, 전체 수학 QA·REVIEW2·metadata·난도·학생 내용의
+신규 승인을 주장하지 않는다. 실제 원 native item 전체 SHA, 검토자 분리, 현재 source의 Git/blob/raw SHA·문항 SHA와
+원 native 대비 학생 payload 불변, 현재 모든 renderer 자산의 원 Git/raw SHA 및 실제 시각 검토 범위를 검사한다.
+`sourceSnapshot.sourcePath`는 요청의 `archive/exams/` 원본 경로와 정확히 같아야 하며, 학생 내용이 같은 다른 파일의
+snapshot을 빌려 결속할 수 없다.
+텍스트만 있는 문항은 실제 renderer 목록도 비어 있을 때만 빈 자산 목록을 허용한다. 다른 최종 주분류 PT를 새로
+만들거나 기존 ACTIVE 부모 정의를 바꾸는 요청은 이 계약으로 처리하지 않는다.
+
+- M3의 명시된 CC/Condition 제안은 독립 검토가 확정한 키만 기존 native 배열 끝에 추가한다. `ADD_ONLY`는 정확한
+  `before: null` 정의 요청 또는 이미 설치된 같은 정의와 결속한다. CC의 `REUSE_ACTIVE`는 변경 전부터 존재하고 변경
+  후에도 동일한 ACTIVE 정본 행과 결속한다. 다른 검토에서 확정된 CC를 재사용할 때 그 정의의 기존 지원 UID 집합을
+  고쳐 쓰지 않는다.
+- M3 `BOUNDARY_REVIEW`는 별도 독립 판정으로 원 native와 동일한 기존 ACTIVE PT/TPL을 유지하는 경우만 허용한다.
+  분류값을 추가하거나 변경하는 승인이 아니며, 원래 CC·Condition·integrationPattern·난도는 그대로 검사한다.
+- M2 `NEW_TPL`은 원 native의 명시 ID, `after.templateKey`의 부재/null/빈값 및
+  `activeDefinitionMatch.templateKey: null`, 이미 ACTIVE인 동일 부모를 모두 요구한다. 현재 source의 포괄적인 TPL을
+  원검토가 승인한 값으로 오인하지 않는다. 원 독립 검토의 정확한 한 UID·정의·소유 pack·부모와 원 source/assets를
+  `independentReviewRef`로 직접 대조하며, 정규화 문서만 작성해 원 검토의 범위를 넓힐 수 없다.
+
+M3 Condition/경계 application은 `independentReviewRef`가 필수이며 원문·현재 source·renderer 및 정확한 승인 정의/기존
+주분류 판정을 직접 검사한다. ref 삭제로 원 독립 검토 검사를 생략하는 fallback은 없다. 이 ref와 모든 부속 ref는 실제 `finalizationCommit`의 같은 경로 및
+로컬 바이트가 같아야 하고 approval/item 양쪽 evidenceRefs에 들어 있어야 한다. 영수증에 원 독립 ref와 정확한 disposition을
+남긴다. 원 native의 내용/해설/난도 HOLD, before/identity/source 지문, 과정 exact binding, 공식 writer와 Consumer 검사는
+계속 적용된다.
+
+M3 C그룹의 `artifactRefs["proposals.json"]`도 원 Git SHA로 읽는다. `proposals`와 두 이름이 동시에 있으면 모호성으로
+거절한다. 무형식 wrapper 중 원 UID/원번호·두 풀이 근거·debts 전체가 native와 같고, debts가 정확한
+`PROJECTION_BINDING_PENDING`이며 동일 ACTIVE PT/TPL을 가리키는 경우만 과거 기술 메모로 분리한다. 영수증의
+`declaredCurricula`는 원 제안의 교육과정을 그대로 보존하고 `historicalBindingsResolved: false`로 기록한다. 현재 2015
+등록이 원 2022 비교 메모의 바인딩까지 해결했다고 주장하지 않으며, 알 수 없는 debt·새 필드·다른 분류는 거절한다.
+
 ### 승인 메타를 보존하는 identity 지문만의 수리
 
 현재 metadata의 두 지문이 실제 source와 이미 일치하고 identity 지문만 오래된 경우, v2 요청에
@@ -461,3 +516,10 @@ valid native reuse 및 stale native 거부 계약은 유지한다. 배치 회귀
 중등 전 학년·고등 과목·미등록 미래 과목, 실제 Git 정본과의 확장 결합, 24 UID 보존,
 키 교체/수정/폐기/삭제, UID·근거·before·binding 오류, 재실행을 확인한다.
 순천고 실제 24 UID의 의미 승인이나 운영 등록 결과를 대신하지 않는다. SOP_v1.2 approval v4는 `META_AUDIT_ATOMIC_PACKAGE` + `COURIER_INTAKE_MANIFEST`의 UID/ordinal/PT/TPL/CC/단원 parity, corrective review 발췌의 실제 source 포함, 현재/원본 선언 SHA의 독립 결속, visual evidence 실제 상태, Condition 증거 부재 시 fail-closed, template inflation 미합성, 원본 바이트 불변을 검증한다. 두 네이티브 JSON만으로는 등록되지 않으며, 위 evidence contract가 모두 갖춰진 뒤에만 v4 등록이 성립한다.
+
+
+### Immutable native KEEP primary continuity
+
+A partial source reassessment may restore a primary tuple omitted from a native M2 KEEP delta only after the existing independent CC finalization has verified the exact primary context. Both immutable source snapshots, the current question, the explicit request and final metadata must agree. The native ACTIVE PT/TPL match and one exact curriculum binding are required. The unchanged current ACTIVE PT and template must both already name the selected UID among their supporting questions.
+
+The continuity proof may carry the two primary keys, an unchanged empty condition list and an unchanged integration value. It cannot add conditions, change primary definitions, infer a new curriculum, settle a hold or replace a native semantic decision. Optional source semantic-status fields are not promoted through this path. Official canonical binding, resolver, projection and typed Consumer gates still apply.
