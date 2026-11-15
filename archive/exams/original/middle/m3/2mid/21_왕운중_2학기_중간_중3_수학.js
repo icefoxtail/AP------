@@ -335,7 +335,11 @@ window.questionBank = [
       "subConcept": "직선 절편과 sin·cos·tan",
       "conditionsUsed": "기울기 1/2, 점 (−2,3), 축 절편 A·B.",
       "integrationPatternExplanation": "절편으로 직각삼각형을 만들어 기본 삼각비를 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: P(−2,3)을 지나는 직선이 x축의 A=(−8,0), y축의 B=(0,4)와 만나고, OAB 직각삼각형에서 각 a와 b를 표시한다.",
+    "solutionImageCaption": "직선은 y=1/2x+4이므로 A=(−8,0), B=(0,4)이다. AB=4√5, AO=8, BO=4에서 cos a=sin b=2√5/5, tan b=2이다. 따라서 cos a−sin b+tan b=2, 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -551,7 +555,11 @@ window.questionBank = [
       "subConcept": "사각형 넓이",
       "conditionsUsed": "AB=9, BC=12, ∠B=60°, AD=3√3, DC=6, ∠D=150°.",
       "integrationPatternExplanation": "두 삼각형 넓이를 구해 사각형 넓이로 합한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 △ABC와 주황 △ACD는 대각선 AC를 공유하며 주어진 변 길이와 각을 표시한다.",
+    "solutionImageCaption": "△ABC의 넓이는 27√3이고 △ACD의 넓이는 9√3/2이다. 합은 63√3/2 cm²이며 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -717,7 +725,11 @@ window.questionBank = [
       "subConcept": "직각삼각형의 높이와 삼각비",
       "conditionsUsed": "∠A=90°, AD⊥BC, AB=√7, AC=3.",
       "integrationPatternExplanation": "빗변 분할 관계로 두 삼각비를 구한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AD가 빗변 BC에 수직이고, x/y가 A의 직각을 나눈다. 두 색 삼각형의 대응각 표식을 나타낸다.",
+    "solutionImageCaption": "BC=4, BD=7/4, DC=9/4, AD=3√7/4이다. sin x=√7/4, tan y=3/√7이므로 sin x·tan y=3/4. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -827,7 +839,11 @@ window.questionBank = [
       "subConcept": "두 지점의 앙각과 공통 높이",
       "conditionsUsed": "두 지점 거리 100m, 앙각 45°,60°.",
       "integrationPatternExplanation": "같은 높이를 두 관측점의 거리와 연결한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 지면의 A,B 두 지점은 100m 떨어져 있고, 수선의 발 D는 그 사이에 있다. C까지의 시선각은 A에서 45°, B에서 60°이며 높이 수치는 표시하지 않는다.",
+    "solutionImageCaption": "AD=x, CD=x이므로 tan60°=x/(100−x). 이를 풀면 x=CD=50(3−√3)m이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -883,7 +899,11 @@ window.questionBank = [
       "subConcept": "반원과 tan",
       "conditionsUsed": "AC=2, ∠AOC=30°, ∠ACB=90°, C-O-B 일직선.",
       "integrationPatternExplanation": "반지름과 중심선 길이를 구한 뒤 삼각비를 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: O를 중심으로 하는 위쪽 반원에서 A는 호 위에 있고 C는 지름 안쪽에 있다. AC=2, 중심각 AOC=30°, C에서 직각이며 B의 각은 x이다.",
+    "solutionImageCaption": "OA=OB=4이고 OC=2√3이다. 따라서 CB=OC+OB=2√3+4이며, tan x=AC/CB=2/(2√3+4)=2−√3이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1048,7 +1068,11 @@ window.questionBank = [
       "subConcept": "무게중심과 넓이",
       "conditionsUsed": "AC=6, BC=9, ∠C=60°, G는 무게중심.",
       "integrationPatternExplanation": "삼각비로 전체 넓이를 구하고 무게중심 높이 비를 결합한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 중선 CM 위에 무게중심 G가 있고 M은 AB의 중점인 삼각형 ABC에서 영역 ABG를 표시한다.",
+    "solutionImageCaption": "△ABC의 넓이는 ½·6·9·sin60°=27√3/2이다. 무게중심 성질에 따라 △ABG의 넓이는 △ABC의 넓이의 1/3이므로 9√3/2 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1096,7 +1120,11 @@ window.questionBank = [
       "subConcept": "산 높이와 두 관측점",
       "conditionsUsed": "BC=60m, ∠B=45°, ∠C=60°.",
       "integrationPatternExplanation": "공통 높이를 두 직각삼각형에서 표현한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 지면 위에 B, C, D가 차례로 놓이고 BC는 60 m이다. B와 C에서 꼭대기 A를 보는 두 시선은 각각 45°와 60°이며, D에서 A까지의 높이를 초록색 수선으로 표시한다.",
+    "solutionImageCaption": "CD=x, AD=h라 두면 tan60°=h/x이므로 h=√3x이다. 또한 tan45°=h/(60+x)=1이므로 h=30(3+√3)m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1201,7 +1229,11 @@ window.questionBank = [
       "subConcept": "원뿔 단면과 부피",
       "conditionsUsed": "모선 4cm, 모선과 밑면의 각 60°.",
       "integrationPatternExplanation": "단면 삼각비로 r·h를 구한 뒤 부피를 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 원뿔에서 모선 4 cm와 밑면이 이루는 각은 60도이다. 단면의 밑변은 반지름이고 다른 직각변은 높이이다.",
+    "solutionImageCaption": "반지름은 4cos60°=2 cm이고, 높이는 4sin60°=2√3 cm이다. 따라서 부피는 8√3π/3 cm³이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1252,6 +1284,10 @@ window.questionBank = [
       "subConcept": "두 삼각형의 넓이와 sin",
       "conditionsUsed": "AD=DC=BC=3cm, ∠C=90°, x=∠ABD.",
       "integrationPatternExplanation": "피타고라스 관계와 넓이 공식 두 표현을 결합한다."
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: A,D,C가 일직선 위에 있는 직각삼각형 ABC에서 AD, DC, BC는 각각 3 cm이다. AB에 내린 D의 수선의 발 E를 표시한다.",
+    "solutionImageCaption": "피타고라스 정리에 따라 AB=3√5, BD=3√2이다. 넓이로 구한 DE=3/√5를 이용하면 sin x=DE/BD=√10/10이다.",
+    "solutionImageSize": "full"
   }
 ];
