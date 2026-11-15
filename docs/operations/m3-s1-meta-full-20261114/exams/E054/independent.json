@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E054",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T00:02:33.319863+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/21_왕의중_1학기_기말_중3_수학_기출.js",
+  "sourceBlob": "1c68795c9134c1c0894183ab554a18cf7ed9f7a8",
+  "inputArtifacts": {
+    "workers/C/E054.review.json": {
+      "sha256": "ec01248ba39389ca5dd564153d3bfe3b7e3b6b80721efd5d5ee8a73d709e0fda"
+    },
+    "workers/C/E054.4slot.json": {
+      "sha256": "48b735f0f8ef24acfda50bb8b5cf992c75fec8c633407a8803a146c5fc53327e"
+    },
+    "workers/C/E054.input.json": {
+      "sha256": "cdd35f4e4b9db36aa1f4c13423b8f0740c9c2880a6b5f513005a78c978c98cd0"
+    }
+  },
+  "sampledOrdinals": [
+    4,
+    13,
+    24
+  ],
+  "items": [
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_3f6a1b8ec8200378fedf19ee961c6dba4908e42453142e1af097dd50e32d3312",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "다섯 상황에서 이동거리·원둘레는 일차식, 대각선·겉넓이·직사각형 넓이는 이차식이다. 저자 primary43과 모델링 보조개념 수용. choices의 x≥4 명시조건이 범위 term과 실제 choice quote로 보완되고 도형 given도 실제 도형 보기로 결속됨을 확인."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_03d08107a716fa0ebcd06eaab26e61ac065d5262b082593998838be0d141bce6",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "y=-3x²를 x축 대칭시켜 y=3x²를 얻고 (-2,k)를 대입한다. 목표 k가 점의 좌표임을 goal 좌표·값으로 보완 확인. reflection 보조개념과 bucket2/B12 수용."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_7321753218a6a93c163f1931a8a00720fd0277968e9dbae364c39610d2e72c5e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "x²-4x+k의 축 x=2와 두 교점 거리8에서 교점 -2와6을 복원하여 k=-12. 해설의 대칭성·완전제곱식 경로, 주목표 상수, bucket2/B23을 확인."
+    }
+  ],
+  "findingsResolved": [
+    {
+      "ordinal": 4,
+      "issue": "choices 명시조건과 도형 given 인용 결속",
+      "resolution": "범위 x≥4 및 정육면체 choices 인용 원저자 보완 확인"
+    },
+    {
+      "ordinal": 13,
+      "issue": "goal 핵심 객체",
+      "resolution": "좌표를 값 앞에 추가 확인"
+    }
+  ],
+  "rootAdjudications": [],
+  "visualEvidence": [],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}
