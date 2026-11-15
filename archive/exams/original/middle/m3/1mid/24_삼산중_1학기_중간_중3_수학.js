@@ -1066,7 +1066,7 @@ window.questionBank = [
     "provenance": "ALIVE_REPLACEMENT",
     "sourceMode": "ALIVE_REPLACEMENT",
     "score": 5,
-    "content": "$x>2y>0$인 두 수 $x,y$에 대하여, 가로가 $x$, 세로가 $x-y$인 직사각형에서 한 변이 $y$인 정사각형 두 개를 겹치지 않게 잘라낸다. 남은 부분의 넓이를 인수분해한 식은? [5점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q19-problem-label-layout-v2-figure-only.svg\">",
+    "content": "$x>2y>0$인 두 수 $x,y$에 대하여, 가로가 $x$, 세로가 $x-y$인 직사각형에서 한 변이 $y$인 정사각형 두 개를 겹치지 않게 잘라낸다. 남은 부분의 넓이를 인수분해한 식은? [5점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q19-math-parity.svg\">",
     "choices": [
       "$(x-y)(x+2y)$",
       "$(x+y)(x+2y)$",
@@ -1128,7 +1128,7 @@ window.questionBank = [
       "replacementReason": "original q19 geometric square arrangement not visually retrievable; preserve factored-area core with new self-contained diagram and constraints",
       "replacementStage": "CREATE"
     },
-    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q19-problem-label-layout-v2-figure-only.svg",
+    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q19-math-parity.svg",
     "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q19-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 파란색과 주황색으로 나눈 남은 직사각형 조각을 색을 맞춰 재배치한다.",
     "solutionImageCaption": "파란 조각과 주황 조각을 옮겨 붙이면 가로 x+y, 세로 x−2y인 직사각형이 된다. 남은 넓이의 인수분해는 (x+y)(x−2y)이다. 정답은 ④이다.",

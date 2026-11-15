@@ -603,7 +603,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "대각선 $BD$를 그어 사각형 $ABCD$를 두 삼각형 $\\triangle ABD$와 $\\triangle BCD$로 나눈다.\n먼저 삼각형 $ABD$의 넓이는\n$[\\triangle ABD] = \\dfrac{1}{2} \\times AB \\times AD \\times \\sin 120^\\circ = \\dfrac{1}{2} \\times (2\\sqrt{2}) \\times (2\\sqrt{2}) \\times \\dfrac{\\sqrt{3}}{2} = 4 \\times \\dfrac{\\sqrt{3}}{2} = 2\\sqrt{3}$이다.\n다음으로 삼각형 $BCD$에서 $\\angle C = 135^\\circ$이므로 넓이는\n$[\\triangle BCD] = \\dfrac{1}{2} \\times BC \\times CD \\times \\sin 135^\\circ$\n$= \\dfrac{1}{2} \\times (2\\sqrt{3}) \\times (3\\sqrt{2} - \\sqrt{6}) \\times \\dfrac{\\sqrt{2}}{2}$\n$= \\dfrac{\\sqrt{6}}{2} \\times (3\\sqrt{2} - \\sqrt{6}) = \\dfrac{3\\sqrt{12} - 6}{2} = \\dfrac{6\\sqrt{3} - 6}{2} = 3\\sqrt{3} - 3$이다.\n따라서 사각형 $ABCD$의 넓이는 두 삼각형의 넓이의 합이므로\n$[ABCD] = [\\triangle ABD] + [\\triangle BCD] = 2\\sqrt{3} + (3\\sqrt{3} - 3) = 5\\sqrt{3} - 3$이다.\n정답은 ③이다.",
-    "image": "assets/images/26_삼산중_2학기_중간_중3_유사/q13.svg",
+    "image": "assets/images/26_삼산중_2학기_중간_중3_유사/q13-math-parity.svg",
     "points": 4.0,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
