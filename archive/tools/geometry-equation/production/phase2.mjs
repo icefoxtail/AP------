@@ -687,7 +687,7 @@ function specForFamily(plan,model,id){
         from:guide.axis==='x'?[x,0]:[0,y],to:guide.axis==='x'?[x,y]:[p.domain[1],y]});
     }
     return {id,visualType:'function_graph',viewport:{...graphViewport(v,{width:720,height:unit==='ONE'?420:660,panel:0}),declaredScale:true},axes:true,
-      title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:trigTickFacts(p,unit),objects};
+      title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...trigTickFacts(p,unit),...(unit==='ONE'?{xTickLeaderUsesInk:true}:{})},objects};
   }
   if(plan.capability==='trigonometric-spike-v1'&&plan.graphPlan?.trigIntervalFeatures?.schemaVersion==='TRIGONOMETRIC_INTERVAL_FEATURES_v2'){
     // General parameters (a rate or phase carrying pi, a plain or pi-unit x interval): the curve, reference lines and their curved crossings,
