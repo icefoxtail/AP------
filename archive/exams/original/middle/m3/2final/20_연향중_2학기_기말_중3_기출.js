@@ -947,9 +947,9 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|16",
     "decisiveStep": "산점도 및 상관관계에 대한 다섯 설명을 정의와 대조한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 양의 상관관계, 음의 상관관계, 상관관계 없음, 수평에 가까운 직선 모양의 산점도 네 가지 예시 그림",
-    "solutionImageCaption": "예: 점들이 오른쪽 위로 향하며 한 직선에 가까이 모이면 양의 상관관계, 오른쪽 아래로 향하면 음의 상관관계이다. 점이 흩어져 있거나 수평에 가까운 직선 모양이면 상관관계가 없다. 정답은 ①이다.",
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q16-solution-v2.svg",
+    "solutionImageAlt": "각 산점도는 예시 자료이다. 오른쪽으로 높아지는 파란 점과 낮아지는 주황 점, 고르게 흩어진 초록 점과 가로에 모인 보라 점을 한 눈금에 나란히 놓았다.",
+    "solutionImageCaption": "양의 상관관계가 있으면 x가 커질수록 y도 커지는 방향으로 점들이 모인다. 옳은 것은 ①이다.",
     "solutionImageSize": "full"
   },
   {
@@ -968,11 +968,11 @@ window.questionBank = [
       "통계",
       "산점도"
     ],
-    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q17.png",
+    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q17-problem-v2.svg",
     "category": "통계",
     "originalCategory": "통계",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "중",
     "standardCourse": "중3 수학",
@@ -1008,9 +1008,9 @@ window.questionBank = [
     "sourceDocumentSha256": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80",
     "sourceIdentityKey": "sha256:ef69bee036defbffa72fc2a6a53801475d8c018159ef385614af4e0d553ebf80|17",
     "decisiveStep": "산점도의 음의 상관관계와 각 상황의 변화 방향을 비교한다.",
-    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q17-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 점들이 왼쪽 위에서 오른쪽 아래로 퍼진 산점도와 아래로 향하는 화살표",
-    "solutionImageCaption": "예: 원문 산점도의 모양을 예시 자료로 다시 그린 것이다. 점들이 오른쪽 아래로 향하므로 한 변량이 커질수록 다른 변량은 작아지는 음의 상관관계이다. 낮의 길이와 밤의 길이, 이동 거리와 남은 연료가 이에 해당한다. 정답은 ①, ③이다.",
+    "solutionImage": "assets/images/20_연향중_2학기_기말_중3_기출/q17-solution-v3.svg",
+    "solutionImageAlt": "점들은 움직이는 방향이 서로 반대인 두 변량의 음의 상관관계를 이룬다. 주황 추세선을 그었다.",
+    "solutionImageCaption": "그림처럼 두 변량이 반대 방향으로 변하는 것은 낮과 밤의 길이, 자동차 이동 거리와 남은 연료이다. 정답은 ①과 ③이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1186,7 +1186,7 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "content": "[서술형 3] 다음은 두 학생 연이와 향이의 5회에 걸친 수학시험에서 받은 점수를 조사하여 나타낸 것이다. (단위: 점)\n(1) 다음 중 두 학생 연이, 향이의 수학 점수의 표준편차를 각각 구하면? (6점)\n(2) 두 학생 중에서 수학 점수가 더 고르게 분포된 학생은? (1점)",
+    "content": "[서술형 3] 다음은 두 학생 연이와 향이의 5회에 걸친 수학시험에서 받은 점수를 조사하여 나타낸 것이다. (단위: 점)\n(1) 다음 중 두 학생 연이, 향이의 수학 점수의 표준편차를 각각 구하면? (6점)\n(2) 두 학생 중에서 수학 점수가 더 고르게 분포된 학생은? (1점)\n| 학생 | 1회 | 2회 | 3회 | 4회 | 5회 |\n| :---: | :---: | :---: | :---: | :---: | :---: |\n| 연이 | 5 | 7 | 3 | 6 | 4 |\n| 향이 | 9 | 1 | 5 | 2 | 8 |\n",
     "choices": [],
     "answer": "(1) 연이: $\\sqrt{2}$점, 향이: $\\sqrt{10}$점, (2) 연이",
     "solution": "연이의 점수 합은\n$5+7+3+6+4=25$이고 평균은 $25\\div5=5$점이다.\n편차 제곱의 합은\n$(5-5)^2+(7-5)^2+(3-5)^2+(6-5)^2+(4-5)^2$\n$=0+4+4+1+1=10$이다.\n따라서 분산은 $10\\div5=2$, 표준편차는 $\\sqrt2$점이다.\n\n향이의 평균도\n$(9+1+5+2+8)\\div5=25\\div5=5$점이다.\n편차 제곱의 합은\n$(9-5)^2+(1-5)^2+(5-5)^2+(2-5)^2+(8-5)^2$\n$=16+16+0+9+9=50$이다.\n따라서 분산은 $50\\div5=10$, 표준편차는 $\\sqrt{10}$점이다.\n\n$\\sqrt2<\\sqrt{10}$이므로 점수가 더 고르게 분포된 학생은 연이이다.",
@@ -1194,11 +1194,10 @@ window.questionBank = [
       "통계",
       "표"
     ],
-    "image": "assets/images/20_연향중_2학기_기말_중3_기출/q21-r1.png",
     "category": "통계",
     "originalCategory": "통계",
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "level": "중",
     "standardCourse": "중3 수학",

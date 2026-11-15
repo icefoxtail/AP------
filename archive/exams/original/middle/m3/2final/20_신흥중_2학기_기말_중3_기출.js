@@ -111,7 +111,7 @@ window.questionBank = [
       "도형",
       "삼각형의 넓이"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중3_기출/q03.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중3_기출/q3-problem-v2.svg",
     "answer": "①",
     "solution": "점 $A$에서 $BC$에 내린 수선의 발을 $H$라 하자.\n직각삼각형 $ABH$에서\n$AH=AB\\sin60^\\circ=8\\cdot\\dfrac{\\sqrt3}{2}=4\\sqrt3$이다.\n따라서 삼각형의 넓이는\n$\\dfrac12\\cdot BC\\cdot AH=\\dfrac12\\cdot10\\cdot4\\sqrt3=20\\sqrt3\\rm\\,m^2$이다.\n따라서 정답은 ①이다.",
     "decisiveStep": "높이 AH=8sin60°=4√3을 구해 넓이 1/2·10·AH를 계산한다.",
@@ -126,7 +126,7 @@ window.questionBank = [
     "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
     "questionType": "객관식",
     "originalCategory": "삼각형의 넓이",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "standardCourse": "중3 수학",
     "standardUnitOrder": 5,
@@ -255,7 +255,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중3_기출/q06.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중3_기출/q6-problem-v2.svg",
     "answer": "④",
     "solution": "$AB$는 지름이므로 호 $ACB$의 크기는 $180^\\circ$이다.\n호 $AC:BC=3:1$이므로 호 $BC$는 반원의 $\\dfrac14$이다.\n따라서\n$\\angle BOC=\\overset{\\frown}{BC}=180^\\circ\\cdot\\dfrac14=45^\\circ$이다.\n따라서 정답은 ④이다.",
     "decisiveStep": "지름이 만든 반원 180°를 호의 비 3:1로 나누어 ∠BOC=45°를 얻는다.",
@@ -270,7 +270,7 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "questionType": "객관식",
     "originalCategory": "원의 성질",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "standardCourse": "중3 수학",
     "standardUnitOrder": 6,
@@ -549,7 +549,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중3_기출/q12.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중3_기출/q12-problem-v2.svg",
     "answer": "②",
     "solution": "$\\angle AOB=108^\\circ$이므로 호 $ACB$의 크기는 $108^\\circ$이다.\n$\\angle CDB=32^\\circ$가 보는 호 $CB$는\n$2\\cdot32^\\circ=64^\\circ$이다.\n따라서 호 $AC$의 크기는\n$108^\\circ-64^\\circ=44^\\circ$이다.\n$\\angle AEC$는 호 $AC$에 대한 원주각이므로\n$x=\\dfrac{44^\\circ}{2}=22^\\circ$이다.\n따라서 정답은 ②이다.",
     "decisiveStep": "호 ACB=108°, 호 CB=64°이므로 호 AC=44°이고 원주각 x=22°이다.",
@@ -564,7 +564,7 @@ window.questionBank = [
     "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "questionType": "객관식",
     "originalCategory": "원주각",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "standardCourse": "중3 수학",
     "standardUnitOrder": 6,
@@ -870,7 +870,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "content": "상, 중, 하 3수준으로 수준별 이동수업을 하는 어느 학급의 중간고사 수학 성적이다. 이 학급 수학 과목의 평균은? (4점)",
+    "content": "상, 중, 하 3수준으로 수준별 이동수업을 하는 어느 학급의 중간고사 수학 성적이다. 이 학급 수학 과목의 평균은? (4점)\n| 수준 | 인원수 | 평균 |\n| :---: | :---: | :---: |\n| 상급 | 12 | 90 |\n| 중급 | 15 | 80 |\n| 하급 | 12 | 70 |\n",
     "choices": [
       "$75$",
       "$80$",
@@ -881,7 +881,6 @@ window.questionBank = [
     "tags": [
       "통계"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중3_기출/q19.png",
     "answer": "②",
     "solution": "수준별 학생 수와 평균을 곱해 전체 점수의 합을 구한다.\n$12\\cdot90=1080$,\n$15\\cdot80=1200$,\n$12\\cdot70=840$이다.\n전체 점수의 합은\n$1080+1200+840=3120$이고 학생 수는\n$12+15+12=39$명이다.\n따라서 평균은\n$\\dfrac{3120}{39}=80$이다.\n따라서 정답은 ②이다.",
     "decisiveStep": "각 집단 평균에 인원수를 곱해 총점 3120과 총원 39를 구하면 가중평균은 80이다.",
@@ -901,7 +900,7 @@ window.questionBank = [
     "metaDebtReason": "표의 수준별 빈도와 평균을 가중해 전체 평균을 구하는 의미 분류는 확정했으나 exact ACTIVE PT/TPL projection은 없어 debt를 기록함.",
     "questionType": "객관식",
     "originalCategory": "통계 자료 해석",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "standardCourse": "중3 수학",
     "standardUnitOrder": 7,
@@ -1055,7 +1054,7 @@ window.questionBank = [
       "도형",
       "원"
     ],
-    "image": "assets/images/20_신흥중_2학기_기말_중3_기출/q23.png",
+    "image": "assets/images/20_신흥중_2학기_기말_중3_기출/q23-problem-v2.svg",
     "answer": "① ∠PAO=∠PBO=90°, ② PO=PO, ③ OA=OB, ④ △PAO≡△PBO, ⑤ PA=PB",
     "solution": "접선과 반지름은 접점에서 수직이므로\n$\\angle PAO=\\angle PBO=90^\\circ$이다.\n두 삼각형의 빗변은 공통이어서 $PO=PO$이고, 반지름이므로 $OA=OB$이다.\n따라서 직각삼각형 $PAO$와 $PBO$는 빗변과 한 변이 각각 같아\n$\\triangle PAO\\cong\\triangle PBO$ (RHS)이다.\n그러므로 대응변의 길이는 같아\n$PA=PB$이다.",
     "decisiveStep": "OA=OB, 공통 OP, 접선-반지름 직각으로 RHS 합동을 얻어 PA=PB를 결론낸다.",
@@ -1070,7 +1069,7 @@ window.questionBank = [
     "templateKey": "TM_TANGENT_LENGTH",
     "questionType": "서술형",
     "originalCategory": "원의 성질",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "wide": false,
     "standardCourse": "중3 수학",
     "standardUnitOrder": 6,
