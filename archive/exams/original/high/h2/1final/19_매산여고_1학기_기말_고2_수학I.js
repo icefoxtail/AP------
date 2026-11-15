@@ -261,7 +261,11 @@ window.questionBank = [
       "intakeEvidenceSha256": "f24b55d894b00ab56b231fe7c6b41e33778a773fccbf2d7f3348a8e625b7378e",
       "sourcePdfSha256": "87010d0fb7855019d7cdba48b30af73c201b3a88fca743d04d4b52a79c4bc41e",
       "sourcePdfComparison": "NOT_RUN_ROUTINE_PDF_RECHECK"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_수학I/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 중심 O에서 AOB=60°, BOC=120°이며, 현 AB=5, BC=5√3이다. AC는 지름이고 삼각형 ABC는 B에서 직각이다.",
+    "solutionImageCaption": "현의 길이와 직각삼각형의 넓이를 계산한다. 정답은 30이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -317,7 +321,11 @@ window.questionBank = [
       "intakeEvidenceSha256": "f24b55d894b00ab56b231fe7c6b41e33778a773fccbf2d7f3348a8e625b7378e",
       "sourcePdfSha256": "87010d0fb7855019d7cdba48b30af73c201b3a88fca743d04d4b52a79c4bc41e",
       "sourcePdfComparison": "NOT_RUN_ROUTINE_PDF_RECHECK"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_수학I/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 A, B, C, D의 대각선 AC가 파란 △ABC와 주황 △ACD를 나눈다. B각 θ와 D각 180°−θ가 표시되고 네 변의 길이는 2, 3, 4, 5이다.",
+    "solutionImageCaption": "두 삼각형의 넓이를 합한다. 정답은 2√30이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -421,7 +429,11 @@ window.questionBank = [
       "intakeEvidenceSha256": "f24b55d894b00ab56b231fe7c6b41e33778a773fccbf2d7f3348a8e625b7378e",
       "sourcePdfSha256": "87010d0fb7855019d7cdba48b30af73c201b3a88fca743d04d4b52a79c4bc41e",
       "sourcePdfComparison": "NOT_RUN_ROUTINE_PDF_RECHECK"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 일곱 번 시행한 뒤 남는 원래 항 번호 1, 129, 257이 128씩 떨어져 표시되어 있다. 항 값은 그림에 없다.",
+    "solutionImageCaption": "원래 제257항의 값을 구한다. 정답은 515이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
