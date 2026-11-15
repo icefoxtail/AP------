@@ -574,7 +574,7 @@ export function validateNativeProposalFinalization(args) {
   }
   const v3 = ctx.spec.schemaVersion === "archive-native-proposal-finalization-v3";
   const v2 = ctx.spec.schemaVersion === "archive-native-proposal-finalization-v2" || v3;
-  const allowed = v2 ? ["schemaVersion", "finalizationCommit", "finalizationRef", "proposalSelections"] :
+  const allowed = v2 ? ["schemaVersion", "finalizationCommit", "finalizationRef", "proposalSelections", ...(v3 ? ["curriculumTransport", "scopeParentTransport"] : [])] :
     ["schemaVersion", "finalizationCommit", "finalizationRef", "registryChangesRef", "proposalMappingRef", "sourceBindingRef", "proposalIds"];
   if (ctx.request.registrationMode || (!v2 && ctx.spec.schemaVersion !== "archive-native-proposal-finalization-v1") ||
       Object.keys(ctx.spec).some(k => !allowed.includes(k)) || !SHA1.test(ctx.spec.finalizationCommit || "") ||
@@ -595,9 +595,11 @@ export function validateNativeProposalFinalization(args) {
       fail(`finalized value must bind explicit request, source and final metadata: ${field}`);
   }
   const { question, ...snapshot } = result.snapshot;
-  return { fields: result.fields, technicalBindings: technical, proof: { ...ctx.spec, reviewer: result.reviewer,
+  return { fields: { ...result.fields, ...(result.curriculumTransport?.fields || {}), ...(result.scopeParentTransport?.fields || {}) }, technicalBindings: technical, proof: { ...ctx.spec, reviewer: result.reviewer,
     nativeAfterSha256: sha(stable(ctx.row.after)), nativeProposalBindings: proposals.map(p => ({ ...(p.id === undefined ? {} : { id: p.id }), type: p.type,
       proposalSha256: sha(stable(p.proposal)), documentRef: p.origin, ...(v2 ? { selection: p.selection } : {}) })),
     sourceSnapshot: snapshot, assetBindings: result.assets, definitions: result.definitions,
-    ...(v2 ? { dispositions: result.decisions, independentReviewRefs: result.independentReviews } : {}), finalizedFields: result.fields, newMathematicalQa: false, newReview2Claims: 0 } };
+    ...(v2 ? { dispositions: result.decisions, independentReviewRefs: result.independentReviews } : {}), finalizedFields: result.fields,
+    ...(result.curriculumTransport ? { curriculumTransport: result.curriculumTransport } : {}),
+    ...(result.scopeParentTransport ? { scopeParentTransport: result.scopeParentTransport } : {}), newMathematicalQa: false, newReview2Claims: 0 } };
 }

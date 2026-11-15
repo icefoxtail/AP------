@@ -220,7 +220,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   const identityOnly = request.registrationMode === "IDENTITY_FINGERPRINT_ONLY";
   const proposalFinalization = identityOnly && patch.sourceReview.proposalFinalization === undefined ? null :
     validateNativeProposalFinalization({ root, request, patch, native: loaded, row,
-      accepted, question, final, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
+      accepted, question, final, metadata, issuedSourceReview, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
   if (proposalFinalization) Object.assign(accepted, proposalFinalization.fields);
   const unchangedPrimary = identityOnly ? null : bindUnchangedReviewedPrimary({ native: loaded, row, accepted,
     patch, question, final, canonicalBefore, canonicalAfter, proposalFinalization });
