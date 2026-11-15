@@ -1045,7 +1045,10 @@ window.questionBank = [
     "sourceQid": 21,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution-recovery.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간 [4,8]의 코사인 곡선은 x=4와 8에서 높이 3이며, x=5에서 높이 5의 최댓값, x=7에서 높이 1의 최솟값을 갖는다.",
+    "solutionImageCaption": "주어진 구간 [4,8]은 코사인 함수의 한 주기이며 중심선은 y=3이다. x=5에서 최댓값 5, x=7에서 최솟값 1을 얻는다. 이 위치와 값을 식에 대입한다. 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
