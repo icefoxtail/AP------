@@ -63,6 +63,14 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-pr-registration-prepare.test.mjs']
   },
   {
+    label: 'tests/archive-pr-native-preview.test.mjs',
+    args: ['--test', 'tests/archive-pr-native-preview.test.mjs']
+  },
+  {
+    label: 'tests/archive-reviewed-native-scope-fields.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
+  },
+  {
     label: 'tests/archive-main-merge-meta.test.mjs',
     args: ['--test', 'tests/archive-main-merge-meta.test.mjs']
   },
@@ -237,6 +245,14 @@ const requiredCommands = [
   {
     label: 'tests/archive-reviewed-apply-bridge.test.mjs',
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
+  },
+  {
+    label: 'tests/archive-reviewed-native-parent.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-native-parent.test.mjs']
+  },
+  {
+    label: 'tests/archive-native-replay-registry-context.test.mjs',
+    args: ['--test', 'tests/archive-native-replay-registry-context.test.mjs']
   },
   {
     label: 'tests/archive-saved-papers-runtime.mjs',
