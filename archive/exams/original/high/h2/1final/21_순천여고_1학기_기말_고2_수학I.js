@@ -1004,9 +1004,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_순천여고_1학기_기말_고2_수학I/q23-solution.svg",
-    "solutionImageAlt": "원에 내접한 삼각형과 현 AC에서 가장 먼 점 P 및 최대 높이",
-    "solutionImageCaption": "현 AC에서 가장 먼 점에서 높이는 반지름 4와 중심거리 2의 합이다.",
+    "solutionImage": "assets/images/21_순천여고_1학기_기말_고2_수학I/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 첫 그림에서 파란 △OAB의 넓이는 S1=4, 주황 △OCA의 넓이는 S2=4√3이며 표시된 각은 45°, 60°, 75°이다. 둘째 그림은 AC=4√3의 중점 M, OM=2, 원의 반지름 4와 가장 먼 점 P를 보여 높이 PM=6임을 나타낸다.",
+    "solutionImageCaption": "현 BC로 각 A를 정하고 넓이 조건으로 B와 C를 결정한다. 현 AC에 내린 수선과 원 위의 가장 먼 점에서 높이는 6이다. 정답은 12√3이다.",
     "solutionImageSize": "full"
   }
 ];
