@@ -922,7 +922,7 @@ window.questionBank = [
     },
     "problemVisualTriage": "SOURCE_PNG_UNAVAILABLE_AUDITED_TEXT_SUFFICIENT",
     "solutionVisualTriage": "REQUIRED",
-    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학/q10_solution.svg",
+    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q10-solution-v2.svg",
     "answerCardinality": 1,
     "curriculum": "2015",
     "rpmPrimaryId": "M3-RPM-039",
@@ -943,7 +943,10 @@ window.questionBank = [
     "curriculumKey": "2015",
     "rpmPrimaryRecordId": "M3-RPM-039",
     "rpmL1": "이차방정식",
-    "rpmL2": "이차방정식의 활용"
+    "rpmL2": "이차방정식의 활용",
+    "solutionImageAlt": "해설 그림: 왼쪽 직사각형의 가로와 세로는 23 cm와 18 cm이다. 오른쪽은 가로 23−t와 세로 18+2t이며, 두 넓이를 같은 파랑으로 표시했다.",
+    "solutionImageCaption": "넓이 비교식 23×18=(23−t)(18+2t)는 2t(14−t)=0이 된다. 처음을 제외하고 길이가 유효한 답은 14초 후이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1035,7 +1038,11 @@ window.questionBank = [
     "curriculumKey": "2015",
     "rpmPrimaryRecordId": "M3-RPM-046",
     "rpmL1": "이차함수",
-    "rpmL2": "이차함수와 그 그래프"
+    "rpmL2": "이차함수와 그 그래프",
+    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 왼쪽 가지에서 원점을 지나면 주황 오른쪽 가지로 이어진다. 주황 부분은 오른쪽으로 갈수록 내려간다.",
+    "solutionImageCaption": "감소하는 전체 구간은 꼭짓점 오른쪽인 x>0이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1127,7 +1134,11 @@ window.questionBank = [
     "curriculumKey": "2015",
     "rpmPrimaryRecordId": "M3-RPM-045",
     "rpmL1": "이차함수",
-    "rpmL2": "이차함수와 그 그래프"
+    "rpmL2": "이차함수와 그 그래프",
+    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 다른 색의 포물선을 같은 꼭짓점에 그렸다. 아래로 열린 경우는 위로 뒤집어 폭을 비교했다. 짧은 선으로 이은 숫자는 각각 계수의 절댓값이다.",
+    "solutionImageCaption": "절댓값이 클수록 같은 높이에서 y축에 가깝다. 가장 큰 3에 해당하는 y=−3x²가 가장 좁으므로 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1219,7 +1230,11 @@ window.questionBank = [
     "curriculumKey": "2015",
     "rpmPrimaryRecordId": "M3-RPM-045",
     "rpmL1": "이차함수",
-    "rpmL2": "이차함수와 그 그래프"
+    "rpmL2": "이차함수와 그 그래프",
+    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래 파란 그래프와 위 주황 그래프의 점 두 개는 x=−2에서 x축에 대칭이다. 두 점을 세로 점선으로 연결했다.",
+    "solutionImageCaption": "대칭한 식은 y=3x²이다. x=−2를 대입하면 k=12이므로 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1311,7 +1326,11 @@ window.questionBank = [
     "curriculumKey": "2015",
     "rpmPrimaryRecordId": "M3-RPM-049",
     "rpmL1": "이차함수",
-    "rpmL2": "이차함수 y=ax²+bx+c의 그래프"
+    "rpmL2": "이차함수 y=ax²+bx+c의 그래프",
+    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 초록 포물선은 원점을 꼭짓점으로 한다. 같은 폭의 파란 포물선은 그 아래 y축 위에 꼭짓점이 있다.",
+    "solutionImageCaption": "상수항 −5는 꼭짓점을 y축 방향으로 5만큼 아래로 옮긴다. x축 방향 이동이라는 ⑤가 옳지 않다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1403,7 +1422,11 @@ window.questionBank = [
     "curriculumKey": "2015",
     "rpmPrimaryRecordId": "M3-RPM-049",
     "rpmL1": "이차함수",
-    "rpmL2": "이차함수 y=ax²+bx+c의 그래프"
+    "rpmL2": "이차함수 y=ax²+bx+c의 그래프",
+    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선의 원점에서 왼쪽으로 이동하고, 다시 주황 꼭짓점까지 아래로 내려가는 두 구간을 표시했다.",
+    "solutionImageCaption": "옮긴 꼭짓점은 (−2,−4)이므로 m=−2, n=−4이다. 따라서 m−n=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1495,7 +1518,7 @@ window.questionBank = [
     },
     "problemVisualTriage": "REPLACED_WITH_SELF_CONTAINED_TEXT",
     "solutionVisualTriage": "REQUIRED",
-    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학/q16_solution.svg",
+    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q16-solution-v2.svg",
     "answerCardinality": 1,
     "curriculum": "2015",
     "rpmPrimaryId": "M3-RPM-050",
@@ -1516,7 +1539,10 @@ window.questionBank = [
     "curriculumKey": "2015",
     "rpmPrimaryRecordId": "M3-RPM-050",
     "rpmL1": "이차함수",
-    "rpmL2": "이차함수 y=ax²+bx+c의 그래프"
+    "rpmL2": "이차함수 y=ax²+bx+c의 그래프",
+    "solutionImageAlt": "해설 그림: 초록 직선에 주어진 두 점을 표시했다. 초록 직선은 오른쪽으로 갈수록 내려가고, 파란 포물선은 아래쪽으로 열린다. 꼭짓점 V는 오른쪽 x축 위에 있다.",
+    "solutionImageCaption": "직선에서 a=−2, b=2이다. 포물선은 아래로 열리고 꼭짓점이 (2,0)이므로 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1608,7 +1634,11 @@ window.questionBank = [
     "curriculumKey": "2015",
     "rpmPrimaryRecordId": "M3-RPM-051",
     "rpmL1": "이차함수",
-    "rpmL2": "이차함수 y=ax²+bx+c의 그래프"
+    "rpmL2": "이차함수 y=ax²+bx+c의 그래프",
+    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선이 x축 위 꼭짓점에 닿는다. 꼭짓점의 x좌표를 2로 표시했다.",
+    "solutionImageCaption": "꼭짓점의 높이인 k+5는 0이므로 k=−5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1700,7 +1730,11 @@ window.questionBank = [
     "curriculumKey": "2015",
     "rpmPrimaryRecordId": "M3-RPM-054",
     "rpmL1": "이차함수",
-    "rpmL2": "이차함수 y=ax²+bx+c의 그래프"
+    "rpmL2": "이차함수 y=ax²+bx+c의 그래프",
+    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 파랑과 아래로 열린 주황이 같은 꼭짓점에서 만난다. 꼭짓점을 x축의 1에 점선으로 연결했다.",
+    "solutionImageCaption": "b=2이면 두 번째 꼭짓점 높이는 6이다. 첫째도 a−1=6이므로 a=7, ab=14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1790,7 +1824,7 @@ window.questionBank = [
     },
     "problemVisualTriage": "REPLACED_WITH_SELF_CONTAINED_TEXT",
     "solutionVisualTriage": "REQUIRED",
-    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학/q19_solution.svg",
+    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q19-solution-v2.svg",
     "answerCardinality": 1,
     "curriculum": "2015",
     "rpmPrimaryId": "M3-RPM-053",
@@ -1811,7 +1845,10 @@ window.questionBank = [
     "curriculumKey": "2015",
     "rpmPrimaryRecordId": "M3-RPM-053",
     "rpmL1": "이차함수",
-    "rpmL2": "이차함수 y=ax²+bx+c의 그래프"
+    "rpmL2": "이차함수 y=ax²+bx+c의 그래프",
+    "solutionImageAlt": "해설 그림: 주어진 두 점을 해당 꼭짓점과 y절편에 연결했다. 꼭짓점보다 y절편이 낮으므로 그래프는 아래로 열린다.",
+    "solutionImageCaption": "두 조건으로부터 y=−2x²+2x+1이다. 따라서 abc=−4<0이어서 abc>0이라는 ④가 옳지 않다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1885,7 +1922,7 @@ window.questionBank = [
     },
     "problemVisualTriage": "TEXT_SUFFICIENT",
     "solutionVisualTriage": "REQUIRED",
-    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학/q20_solution.svg",
+    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q20-solution-v2.svg",
     "answerCardinality": 1,
     "curriculum": "2015",
     "rpmPrimaryId": "M3-RPM-050",
@@ -1906,7 +1943,10 @@ window.questionBank = [
     "curriculumKey": "2015",
     "rpmPrimaryRecordId": "M3-RPM-050",
     "rpmL1": "이차함수",
-    "rpmL2": "이차함수 y=ax²+bx+c의 그래프"
+    "rpmL2": "이차함수 y=ax²+bx+c의 그래프",
+    "solutionImageAlt": "해설 그림: 주황 삼각형은 y축 위의 BO를 밑변으로 한다. 꼭짓점 A에서 왼쪽으로 내린 점선이 밑변의 연장에 닿는다.",
+    "solutionImageCaption": "A=(3,−4), B=(0,5)이다. 밑변 BO=5이고 y축까지의 수평 거리는 3이므로 넓이는 15/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -2093,13 +2133,13 @@ window.questionBank = [
     "subUnit": "이차함수와 그 그래프",
     "subUnitConfidence": "canonical_rpm_semantic_candidate",
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "그래프 조건으로 식 구하기"
     ],
     "wide": false,
-    "content": "서술형 3. 아래 새 그래프는 $x$축과 $(-1,0)$, $(3,0)$에서 만나고 $y$축과 $(0,-3)$에서 만난다. 이 그래프를 나타내는 이차함수의 식을 $y=ax^2+bx+c$의 꼴로 구하고 과정을 쓰시오. [5점]<br><br><img src=\"assets/images/21_왕의중_1학기_기말_중3_수학/q23_problem.svg\">",
+    "content": "서술형 3. 아래 새 그래프는 $x$축과 $(-1,0)$, $(3,0)$에서 만나고 $y$축과 $(0,-3)$에서 만난다. 이 그래프를 나타내는 이차함수의 식을 $y=ax^2+bx+c$의 꼴로 구하고 과정을 쓰시오. [5점]<br><br><img src=\"assets/images/21_왕의중_1학기_기말_중3_수학_기출/q23-problem-v2.svg\">",
     "choices": [],
     "answer": "$y=x^2-2x-3$",
     "solution": "$x$절편이 $-1,3$이므로 $y=ax^2+bx+c$에 대입하면 $a-b+c=0$, $9a+3b+c=0$이다.<br>$y$절편이 $-3$이므로 $(x,y)=(0,-3)$을 대입하여 $c=-3$이다.<br>따라서 두 식은 $a-b=3$, $9a+3b=3$이 된다. 둘째 식의 양변을 $3$으로 나누면 $3a+b=1$이다.<br>두 식 $a-b=3$, $3a+b=1$을 더하면 $4a=4$이므로 $a=1$이다.<br>$a-b=3$에 $a=1$을 대입하면 $1-b=3$이므로 $b=-2$이다.<br>$c=-3$이므로 구하는 이차함수는 $\\boxed{y=x^2-2x-3}$이다.",
@@ -2151,9 +2191,8 @@ window.questionBank = [
       "adjudication": "기존 level은 보존. 표준 접근과 조건연결 구조로 current-pass 판정; 인접 불일치는 경계 안정화 규칙에 따라 허용."
     },
     "problemVisualTriage": "REQUIRED_NEW_GRAPH",
-    "solutionVisualTriage": "REQUIRED",
-    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학/q23_solution.svg",
-    "problemImage": "assets/images/21_왕의중_1학기_기말_중3_수학/q23_problem.svg",
+    "solutionVisualTriage": "EXEMPT_DETAILED_STEPWISE_SMALLBOARD",
+    "problemImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q23-problem-v2.svg",
     "answerCardinality": "subjective_expression",
     "curriculum": "2015",
     "rpmPrimaryId": "M3-RPM-054",
@@ -2260,6 +2299,10 @@ window.questionBank = [
     "curriculumKey": "2015",
     "rpmPrimaryRecordId": "M3-RPM-054",
     "rpmL1": "이차함수",
-    "rpmL2": "이차함수 y=ax²+bx+c의 그래프"
+    "rpmL2": "이차함수 y=ax²+bx+c의 그래프",
+    "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 점 A와 B를 잇는 길이 8의 선분 가운데에서 파란 포물선의 꼭짓점 V로 점선을 내렸다.",
+    "solutionImageCaption": "양쪽 x절편은 대칭축에서 각각 4만큼 떨어져 있다. A의 x좌표 −2를 대입하면 12+k=0이므로 k=−12이다.",
+    "solutionImageSize": "full"
   }
 ];
