@@ -7,7 +7,7 @@ import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {validateReviewedSourceReassessment} from './reviewed-source-reassessment.mjs';
 import {REVIEWED_META_VALUE_FIELDS} from './reviewed-meta-value-fields.mjs';
-import {validateNativePreservationScope} from './native-source-preservation-scope.mjs';
+import {validateNativePreservationScope,fullNativePreservationAncestor} from './native-source-preservation-scope.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a-f0-9]{64}$/;
@@ -95,13 +95,13 @@ export function isPartialNativeSourcePreservation(receipt,root) {
       .every(row=>Array.isArray(row.approvalEvidence)&&row.approvalEvidence.includes(relative)))continue;
     try {
       const prior=JSON.parse(readBytes(root,relative));
-      if(prior.scope!=='PARTIAL_UIDS'||prior.approval?.type!=='FINAL_QA'||relative!==receiptPath(prior.requestId)||
+      if(prior.approval?.type!=='FINAL_QA'||relative!==receiptPath(prior.requestId)||
         prior.examUid!==receipt.examUid||prior.sourceArchiveFile!==receipt.sourceArchiveFile||
-        prior.expectedQuestionCount!==receipt.expectedQuestionCount||prior.partialUidCount<receipt.partialUidCount||
         prior.sourceBlobSha1===receipt.sourceBlobSha1)continue;
       const uid=receipt.appliedRecords[0].questionUid,ordinal=receipt.appliedRecords[0].sourceOrdinal,
-        now=selected(receipt,uid,ordinal),old=selected(prior,uid,ordinal);
-      if([...now.records.keys()].some(uid=>!old.records.has(uid)))continue;
+        now=selected(receipt,uid,ordinal),old=selected(prior,uid,ordinal,{allowFullAncestor:true});
+      if(old.expectedQuestionCount!==now.expectedQuestionCount||old.count<now.count||
+        [...now.records.keys()].some(uid=>!old.records.has(uid)))continue;
       if([...now.records].every(([id,row])=>{
         const before=old.records.get(id),evidenceAfter=[...new Set([...before.approvalEvidence,receiptPath(receipt.requestId)])];
         return same(unchanged(row),unchanged(before))&&same(row.approvalEvidence,evidenceAfter)&&
@@ -139,8 +139,7 @@ export function hasNativeSourcePreservationClaim({root,current,runtimeRecord,nat
     if(!nativePath(relative)||relative===latest||!runtimeRecord.approvalEvidence.includes(relative))continue;
     try {
       const prior=JSON.parse(readBytes(root,relative));
-      if(prior.scope!=='PARTIAL_UIDS')continue;
-      const old=selected(prior,current.questionUid,current.sourceOrdinal);
+      const old=selected(prior,current.questionUid,current.sourceOrdinal,{allowFullAncestor:true});
       const evidenceAfter=[...new Set([...old.row.approvalEvidence,latest])];
       if(relative===receiptPath(prior.requestId)&&same(unchanged(current),unchanged(old.row))&&
         same(unchanged(runtimeRecord),unchanged(old.runtime))&&same(current.approvalEvidence,evidenceAfter)&&
@@ -159,21 +158,23 @@ function unique(rows,label) {
   }
   return result;
 }
-function selected(receipt,uid,ordinal) {
+function selected(receipt,uid,ordinal,{allowFullAncestor=false}={}) {
+  const full=allowFullAncestor&&receipt.scope===undefined?fullNativePreservationAncestor(receipt):null;
+  const count=full?.count??receipt.partialUidCount,expectedQuestionCount=full?.expectedQuestionCount??receipt.expectedQuestionCount;
   const records=unique(receipt.appliedRecords,'metadata'),identities=unique(receipt.appliedIdentityRecords,'identity'),runtimes=unique(receipt.runtimeRecords,'runtime');
   if(receipt.schemaVersion!=='archive-reviewed-exam-meta-registration-v2'||receipt.metadataRegistrationStatus!=='REGISTERED'||
-    receipt.scope!=='PARTIAL_UIDS'||receipt.registrationMode!==undefined||receipt.approval?.type!=='FINAL_QA'||
+    (!full&&receipt.scope!=='PARTIAL_UIDS')||receipt.registrationMode!==undefined||receipt.approval?.type!=='FINAL_QA'||
     receipt.approval.metadataReviewed!==true||!String(receipt.approval.approvedBy||'').trim()||
     !SHA256.test(receipt.requestSha256||'')||!SHA1.test(receipt.sourceBlobSha1||'')||!SHA256.test(receipt.sourceRawSha256||'')||
     typeof receipt.sourceArchiveFile!=='string'||!receipt.sourceArchiveFile.endsWith('.js')||!String(receipt.examUid||'').trim()||
-    !Number.isInteger(receipt.expectedQuestionCount)||!Number.isInteger(receipt.partialUidCount)||receipt.partialUidCount<1||
-    receipt.partialUidCount>receipt.expectedQuestionCount||receipt.totalQuestions!==receipt.partialUidCount||
-    [records,identities,runtimes].some(map=>map.size!==receipt.partialUidCount||!same([...map.keys()].sort(),[...records.keys()].sort()))||
+    !Number.isInteger(expectedQuestionCount)||!Number.isInteger(count)||count<1||
+    count>expectedQuestionCount||receipt.totalQuestions!==count||
+    [records,identities,runtimes].some(map=>map.size!==count||!same([...map.keys()].sort(),[...records.keys()].sort()))||
     new Set([...records.values()].map(row=>row.sourceOrdinal)).size!==records.size)fail('exact partial FINAL_QA inventory required');
   const relative=receiptPath(receipt.requestId);
   for(const [id,row]of records) {
     const runtime=runtimes.get(id),identity=identities.get(id),revision=`meta-foundation:${row.metaFoundationPackId}@${row.metaFoundationPackVersion}:exam-final_qa-v2:${receipt.requestId}`;
-    if(!Number.isInteger(row.sourceOrdinal)||row.sourceOrdinal<1||row.sourceOrdinal>receipt.expectedQuestionCount||
+    if(!Number.isInteger(row.sourceOrdinal)||row.sourceOrdinal<1||row.sourceOrdinal>expectedQuestionCount||
       [row,runtime,identity].some(value=>value.sourceArchiveFile!==receipt.sourceArchiveFile||value.sourceOrdinal!==row.sourceOrdinal)||
       row.metadataApprovalType!=='FINAL_QA'||runtime.metadataApprovalType!=='FINAL_QA'||
       row.metadataRevision!==revision||runtime.metadataRevision!==revision||
@@ -182,7 +183,7 @@ function selected(receipt,uid,ordinal) {
       runtime.sourceIdentity!==`${receipt.sourceArchiveFile}#${row.sourceOrdinal}`)fail('selected approval, revision or source identity changed');
   }
   if(records.get(uid)?.sourceOrdinal!==ordinal)fail('selected target missing');
-  return {records,identities,runtimes,row:records.get(uid),identity:identities.get(uid),runtime:runtimes.get(uid)};
+  return {records,identities,runtimes,count,expectedQuestionCount,row:records.get(uid),identity:identities.get(uid),runtime:runtimes.get(uid)};
 }
 function gitSource(root,sourceBlob,rawSha,expectedCount) {
   if(!SHA1.test(sourceBlob||''))fail('exact prior Git blob required');
@@ -270,12 +271,12 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
       !absentOrEmpty(cursor.fingerprintRepairs)||!absentOrEmpty(cursor.nativeParentBindings))fail('exact source-only preservation required');
     const raw=readBytes(root,ref.path);
     if(sha(raw)!==ref.sha256)fail('prior receipt digest changed');
-    const prior=JSON.parse(raw),old=selected(prior,identity.questionUid,ordinal);
+    const prior=JSON.parse(raw),old=selected(prior,identity.questionUid,ordinal,{allowFullAncestor:Object.hasOwn(spec,'selectedSubset')});
     if(ref.path!==receiptPath(prior.requestId)||seen.has(prior.requestId)||prior.examUid!==cursor.examUid||
-      prior.sourceArchiveFile!==cursor.sourceArchiveFile||prior.expectedQuestionCount!==cursor.expectedQuestionCount||
+      prior.sourceArchiveFile!==cursor.sourceArchiveFile||old.expectedQuestionCount!==state.expectedQuestionCount||
       prior.sourceRawSha256===cursor.sourceRawSha256)fail('preserved ancestor scope or source binding changed');
     const excluded=validateNativePreservationScope(spec,[...old.records.values()],[...state.records.values()]);
-    const priorSource=gitSource(root,prior.sourceBlobSha1,prior.sourceRawSha256,prior.expectedQuestionCount);
+    const priorSource=gitSource(root,prior.sourceBlobSha1,prior.sourceRawSha256,old.expectedQuestionCount);
     if(excluded.length) {
       // The full prior receipt remains immutable. Excluded rows are not issued
       // by this receipt, but their old approvals must also replay as history.
@@ -314,7 +315,7 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
   const repairs=(cursor.fingerprintRepairs||[]).filter(row=>row.questionUid===identity.questionUid);
   if(repairs.length>1)fail('ambiguous original selected repair');
   if(repairs[0]?.rebind!==undefined) {
-    const original=gitSource(root,repairs[0].rebind.priorSourceBlobSha1,undefined,cursor.expectedQuestionCount);
+    const original=gitSource(root,repairs[0].rebind.priorSourceBlobSha1,undefined,state.expectedQuestionCount);
     if(revalidateLeaf({...context,previous:original.bank[ordinal-1]})!==relative)fail('original solution repair cannot replay');
   }
   return true;

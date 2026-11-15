@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "root-full-native-subset-independent-read-v1",
+  "decision": "ACCEPT_BOUNDED_CODE_AND_EXISTING_APPROVAL_PRESERVATION_FOR_PR_CI",
+  "reviewer": "GPT_ROOT_26FC42390A50",
+  "codeAuthor": "ci_m2s2",
+  "requestAuthor": "m1_release",
+  "basePrHead": "b2b87e9916b1569e9d134112771e616e606eaa17",
+  "codeManifestSha256": "ee3d645e19745800ee7de4aa77787c2c96857312538baaaac5b94553e0322e4b",
+  "dataManifestSha256": "9757dcb95b2045e2848212b23ba86201be8cb496713667961570a3aad257bb8a",
+  "localConsumerProofSha256": "ad105561c5dd7677b8f5dc18fe4123d252381ebfabefb98bab829b435069e9d0",
+  "findings": [
+    "Recognizes only an immutable terminal legacy full FINAL_QA receipt with absent scope/count overrides, complete three UID inventories and contiguous ordinals 1..N. Actual old source denominator is still required.",
+    "The child remains explicit PARTIAL_UIDS with an exact selected/excluded partition. The original full23 receipt and all its22 evidence blobs remain unchanged.",
+    "The native verifier replays the complete historical approval, retains the verified old identity context and checks unchanged current whole questions and approval values for selected16. Excluded7 are not registered.",
+    "Selected canonical/native Consumer16 and ALREADY_REGISTERED16 are proved; page native metadata is APPROVED16 but VERIFIED query0 and automaticfalse remain existing policy values. No UI policy change or new semantic approval is claimed.",
+    "114 focused code tests are reused; the root read the final three-code/docs delta and exact before-CAS without rerunning the same tests."
+  ],
+  "counts": {
+    "sourceDenominator": 23,
+    "preservedApprovals": 16,
+    "excluded": 7,
+    "newApprovals": 0
+  },
+  "scopedLocalChecks": "PASS",
+  "prCi": "NOT_RUN_WITH_FULL_EXTENSION",
+  "actualMainRegistration": "NOT_RUN",
+  "pages": "NOT_RUN"
+}

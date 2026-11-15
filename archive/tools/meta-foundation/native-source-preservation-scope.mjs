@@ -16,6 +16,33 @@ const inventory = (rows, label) => {
   return out;
 };
 
+// Read the legacy full-exam shape as an immutable terminal ancestor. Do not
+// manufacture partial scope fields or infer a full approval from a short array.
+export function fullNativePreservationAncestor(receipt, expectedQuestionCount) {
+  if (!receipt || ['scope', 'partialUidCount', 'expectedQuestionCount', 'registrationMode'].some(key => Object.hasOwn(receipt, key)) ||
+      receipt.schemaVersion !== 'archive-reviewed-exam-meta-registration-v2' || receipt.metadataRegistrationStatus !== 'REGISTERED' ||
+      receipt.approval?.type !== 'FINAL_QA' || receipt.approval.metadataReviewed !== true ||
+      !String(receipt.approval.approvedBy || '').trim() || Object.hasOwn(receipt.approval, 'sourceRebind') ||
+      receipt.newMetadataApprovals === 0 && receipt.preservedMetadataApprovals > 0 ||
+      !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(receipt.requestId || '') ||
+      !/^[a-f0-9]{64}$/.test(receipt.requestSha256 || '') || !/^[a-f0-9]{40}$/.test(receipt.sourceBlobSha1 || '') ||
+      !/^[a-f0-9]{64}$/.test(receipt.sourceRawSha256 || '') || !String(receipt.examUid || '').trim() ||
+      typeof receipt.sourceArchiveFile !== 'string' || !receipt.sourceArchiveFile.endsWith('.js'))
+    fail('an unmodified terminal FULL FINAL_QA ancestor is required');
+  const count = receipt.totalQuestions;
+  if (!Number.isSafeInteger(count) || count < 1 || expectedQuestionCount !== undefined && count !== expectedQuestionCount)
+    fail('full ancestor denominator differs from the actual exam');
+  const records = inventory(receipt.appliedRecords, 'full metadata'), identities = inventory(receipt.appliedIdentityRecords, 'full identity'),
+    runtimes = inventory(receipt.runtimeRecords, 'full runtime');
+  if ([records, identities, runtimes].some(map => map.size !== count) ||
+      receipt.appliedRecords.some((row, index) => row.sourceOrdinal !== index + 1))
+    fail('full ancestor requires complete contiguous 1..N inventories');
+  for (const [uid, row] of records) for (const value of [row, identities.get(uid), runtimes.get(uid)])
+    if (!value || value.sourceArchiveFile !== receipt.sourceArchiveFile || value.sourceOrdinal !== row.sourceOrdinal)
+      fail('full ancestor UID/source/ordinal inventories differ');
+  return { kind: 'FULL_EXAM', count, expectedQuestionCount: count };
+}
+
 export function validateNativePreservationScope(spec, priorRecords, selectedItems) {
   const prior = inventory(priorRecords, 'prior'), selected = inventory(selectedItems, 'selected');
   for (const [uid, row] of selected) if (prior.get(uid)?.sourceOrdinal !== row.sourceOrdinal)

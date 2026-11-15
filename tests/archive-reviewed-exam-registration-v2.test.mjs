@@ -5363,7 +5363,7 @@ test("REVIEW2 overrides: consumer verification passes only for recorded REVIEW2 
   assert.throws(() => verifyConsumerValues(f.root, review2, runtime, catalog, { sourceValueOverrides: [{ ...overrides[0], registeredValue: "other" }] }), /Consumer metadata conflict/);
 });
 
-function strictSubsetRegistrarFixture(t) {
+function strictSubsetRegistrarFixture(t,{fullAncestor=false}={}) {
   const f=fixture(t),sourcePath='archive/exams/'+f.request.sourceArchiveFile;
   // This fixture must be a complete production-native approval, not only a
   // minimal registrar fixture with unindexed rules or an ownerless template.
@@ -5375,7 +5375,8 @@ function strictSubsetRegistrarFixture(t) {
   for(const doc of [metadata,identity]){doc.records[0].contentFingerprint=auditContentFingerprint(f.q);doc.records.push({...structuredClone(doc.records[0]),questionUid:'uid2',sourceOrdinal:2});}
   f.put(META,metadata);f.put('archive/data/question_identity_map.json',identity);
   const oldBank=[f.q,{...f.q,id:2}],bytes='window.questions='+JSON.stringify(oldBank)+';\n';f.put(sourcePath,bytes);
-  f.request.expectedSourceBlobSha1=blob(bytes);f.request.expectedQuestionCount=2;f.request.scope='PARTIAL_UIDS';
+  f.request.expectedSourceBlobSha1=blob(bytes);f.request.expectedQuestionCount=2;
+  if(fullAncestor)delete f.request.scope;else f.request.scope='PARTIAL_UIDS';
   f.request.items.push({...structuredClone(f.request.items[0]),questionUid:'uid2',sourceOrdinal:2});
   execFileSync('git',['init','-q'],{cwd:f.root});execFileSync('git',['hash-object','-w',sourcePath],{cwd:f.root});
   registerReviewedExamV2({root:f.root,request:f.request,write:true});
@@ -5418,6 +5419,44 @@ for(const [name,change]of [
   ['selected new approval value',f=>{f.request.items[0].before={level:'중'};f.request.items[0].after={level:'상'};}],
 ])test('strict subset registrar refuses '+name+' before writing',t=>{
   const f=strictSubsetRegistrarFixture(t);change(f);const before=fs.readFileSync(path.join(f.root,META));
+  assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.request,write:true}));
+  assert.deepEqual(fs.readFileSync(path.join(f.root,META)),before);
+  assert.equal(fs.existsSync(path.join(f.root,'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/strict-subset-preserve.json')),false);
+});
+
+test('full ancestor subset registrar preserves the original full receipt and writes only the exact selected approval',t=>{
+  const f=strictSubsetRegistrarFixture(t,{fullAncestor:true}),priorBytes=fs.readFileSync(path.join(f.root,f.priorPath)),prior=f.read(f.priorPath);
+  for(const key of ['scope','partialUidCount','expectedQuestionCount'])assert.equal(Object.hasOwn(prior,key),false);
+  assert.equal(prior.totalQuestions,2);assert.equal(prior.appliedRecords.length,2);
+  const before={metadata:f.read(META),runtime:f.read('archive/data/meta-foundation/runtime/new-course-v1.json'),
+    identity:fs.readFileSync(path.join(f.root,'archive/data/question_identity_map.json')),source:fs.readFileSync(path.join(f.root,f.sourcePath))};
+  const dry=registerReviewedExamV2({root:f.root,request:f.request});assert.equal(dry.newMetadataApprovals,0);assert.equal(dry.preservedMetadataApprovals,1);
+  const write=registerReviewedExamV2({root:f.root,request:f.request,write:true});assert.equal(write.preservedMetadataApprovals,1);
+  assert.equal(write.scope,'PARTIAL_UIDS');assert.equal(write.expectedQuestionCount,2);
+  assert.deepEqual(f.read(META).records.find(row=>row.questionUid==='uid2'),before.metadata.records.find(row=>row.questionUid==='uid2'));
+  assert.deepEqual(f.read('archive/data/meta-foundation/runtime/new-course-v1.json').records.find(row=>row.questionUid==='uid2'),before.runtime.records.find(row=>row.questionUid==='uid2'));
+  assert.deepEqual(fs.readFileSync(path.join(f.root,'archive/data/question_identity_map.json')),before.identity);
+  assert.deepEqual(fs.readFileSync(path.join(f.root,f.sourcePath)),before.source);
+  assert.deepEqual(fs.readFileSync(path.join(f.root,f.priorPath)),priorBytes);
+  const replay=registerReviewedExamV2({root:f.root,request:f.request});assert.equal(replay.replay,true);assert.deepEqual(replay.plannedPaths,[]);
+});
+
+for(const [name,change]of [
+  ['ambiguous scope field',(f,p)=>{p.scope=null;}],
+  ['invented partial count',(f,p)=>{p.partialUidCount=2;}],
+  ['invented expected count',(f,p)=>{p.expectedQuestionCount=2;}],
+  ['truncated metadata',(f,p)=>{p.appliedRecords.pop();}],
+  ['truncated runtime',(f,p)=>{p.runtimeRecords.pop();}],
+  ['duplicate full ordinal',(f,p)=>{p.appliedIdentityRecords[1].sourceOrdinal=1;}],
+  ['reordered full metadata',(f,p)=>{p.appliedRecords.reverse();}],
+  ['hidden full preservation claim',(f,p)=>{p.approval.sourceRebind={priorReceiptRef:f.priorRef};}],
+  ['missing original evidence',(f,p)=>{p.approval.evidenceRefs=[];}],
+  ['missing explicit subset',f=>{delete f.request.approval.sourceRebind.selectedSubset;}],
+  ['selected layout change',f=>{f.currentBank[0].imageSize='unreviewed-layout';const b='window.questions='+JSON.stringify(f.currentBank)+';\n';f.put(f.sourcePath,b);f.request.expectedSourceBlobSha1=blob(b);}],
+])test('full ancestor subset registrar rejects '+name+' without writing',t=>{
+  const f=strictSubsetRegistrarFixture(t,{fullAncestor:true}),prior=f.read(f.priorPath);change(f,prior);f.put(f.priorPath,prior);
+  f.priorRef.sha256=hash(fs.readFileSync(path.join(f.root,f.priorPath)));
+  const before=fs.readFileSync(path.join(f.root,META));
   assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.request,write:true}));
   assert.deepEqual(fs.readFileSync(path.join(f.root,META)),before);
   assert.equal(fs.existsSync(path.join(f.root,'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/strict-subset-preserve.json')),false);

@@ -18,7 +18,7 @@ import { REVIEWED_SOURCE_BINDING_OPT_INS, reviewedSourceBindingItems, reviewedSo
 import { restoreReviewedReplayCanonicalBefore } from "./reviewed-replay-registry-context.mjs";
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from "./native-reviewed-source-reuse.mjs";
 import { loadActiveMetaRegistry } from "./active-registry.mjs";
-import { validateNativePreservationScope } from "./native-source-preservation-scope.mjs";
+import { validateNativePreservationScope, fullNativePreservationAncestor } from "./native-source-preservation-scope.mjs";
 import { nativeReviewReceipt, activeBindingContext } from "./auto-register-merged-source.mjs";
 import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
@@ -1960,8 +1960,9 @@ function loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, prio
   if (partial) {
     // Preserve the same previously approved subset, never turn a selected receipt
     // into exam-wide approval or include an unregistered neighbour.
-    if (prior.scope !== "PARTIAL_UIDS" || prior.expectedQuestionCount !== rows.length ||
-        prior.partialUidCount !== priorCount || prior.approval?.type !== "FINAL_QA" ||
+    const fullAncestor = subset && prior.scope === undefined ? fullNativePreservationAncestor(prior, rows.length) : null;
+    if ((!fullAncestor && (prior.scope !== "PARTIAL_UIDS" || prior.expectedQuestionCount !== rows.length ||
+        prior.partialUidCount !== priorCount)) || prior.approval?.type !== "FINAL_QA" ||
         prior.approval.metadataReviewed !== true || !String(prior.approval.approvedBy || "").trim() ||
         !/^[a-f0-9]{64}$/.test(prior.requestSha256 || "") ||
         !Array.isArray(prior.appliedIdentityRecords) || prior.appliedIdentityRecords.length !== priorCount ||

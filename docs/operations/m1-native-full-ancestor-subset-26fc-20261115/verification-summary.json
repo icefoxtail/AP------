@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "full-native-ancestor-subset-release-verification-v1",
+  "status": "PASS_LOCAL_BOUNDED_PENDING_ROOT_PR_CI",
+  "scope": {
+    "implicitFullAncestor": 23,
+    "unchangedWholeQuestionSelection": 16,
+    "explicitExcludedChanged": 7,
+    "newSemanticApprovals": 0,
+    "newMathReview": 0,
+    "sourceEdits": 0,
+    "canonicalRegistryEdits": 0
+  },
+  "dependsOn": {
+    "pr": 2179,
+    "frozenPartial104ManifestSha256": "61d6a67bc4cb670a4fbb8aa070ad8c028c28db8b3f9aba148f121e77d3f17e49",
+    "autoRegisterBlob": "4826b8d6bd89fb46c6e3d2c14537a352f6994f57"
+  },
+  "contract": {
+    "child": "PARTIAL_UIDS with the existing explicit selectedSubset contract; exact partition and empty before/after values.",
+    "ancestor": "Unmodified terminal FULL FINAL_QA receipt: scope/partialUidCount/expectedQuestionCount/registrationMode absent; complete matching UID inventories and contiguous ordered metadata ordinals 1..N; actual old Git bank count N.",
+    "authority": "Complete old native proof, current prior-state equality, immutable source/evidence, unchanged selected whole objects and all approval values. Full preservation chains are not added.",
+    "futureExcluded": "Historical identity context persists through prior links; excluded current or future registration is not overwritten or treated as selected."
+  },
+  "focusedTests": [
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/native-full-subset/native-full-focused-v1.tap",
+      "sha256": "dd65a1c266fcca468fb4e926c3edfcfa41c49b24e4a7092ce37787f87084c37b",
+      "pass": 17,
+      "fail": 0
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/native-full-subset/registrar-full-focused-v1.tap",
+      "sha256": "bb6fdf98def8ab96c01eea90ccef1e75955174900d136c1fc26b03bbd46d4189",
+      "pass": 12,
+      "fail": 0
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/native-full-subset/native-partial-parity.tap",
+      "sha256": "c29aa08c27c2d49df2d3ddb3dc6ae0aea71b3eff56160bad4105b94ee21a617d",
+      "pass": 68,
+      "fail": 0
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-recovery/native-full-subset/registrar-partial-parity.tap",
+      "sha256": "d96e846e142c03b5bf4a2fda370aebccdb621f827f0d8a953878a5005e644997",
+      "pass": 17,
+      "fail": 0
+    }
+  ],
+  "focusedPassTotal": 114,
+  "focusedFailTotal": 0,
+  "realLocalValidation": {
+    "path": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/m1-current365-continuity/native16-validation/official-native16-local-final.json",
+    "sha256": "ad105561c5dd7677b8f5dc18fe4123d252381ebfabefb98bab829b435069e9d0",
+    "status": "PASS_LOCAL_SCOPED_ONLY",
+    "dry": {
+      "path": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/m1-current365-continuity/native16-validation/official-dry16.json",
+      "sha256": "6b50f4a98d5167c3ab77f0843ab312b70acebf912110f5a7037828435f8b73d9"
+    },
+    "write": {
+      "path": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/m1-current365-continuity/native16-validation/official-write16.json",
+      "sha256": "ed26cb8f56f6982188dd4bf2904a531fd659d71750155465e5f437429f6c88a7"
+    },
+    "preservedExistingApprovals": 16,
+    "newMetadataApprovals": 0,
+    "canonicalConsumer": 16,
+    "currentNativeReuse": 16,
+    "autoMetaAlreadyRegistered": 16,
+    "newAPPLY": 0,
+    "readonlyReplay": 16,
+    "excludedNativeOrProjectionMarkers": 0,
+    "actualMainRegistration": "NOT_RUN"
+  },
+  "displayBoundary": {
+    "verifiedEligible": 0,
+    "automaticEligible": 0,
+    "reason": "Existing DISPLAY_PROJECTION_COURSE_NOT_ALLOWED remains. Canonical/native receipt preservation is not a claim of page VERIFIED eligibility."
+  },
+  "dataOwnedSeparately": {
+    "agent": "/root/m1_release",
+    "manifest": "/workspace/scratch/26fc42390a50/m1-work/.tmp/pr2141-authority-correction/m1-current365-continuity/native16-candidate/candidate-manifest.json",
+    "sha256": "0b87a9179d5fc4cfc5a903b0d6e5c804ebff4b5e7ac078d601513a5165b60835"
+  },
+  "prior104FrozenPathsUnchanged": 11,
+  "actualMainRegistration": "NOT_RUN",
+  "pages": "NOT_RUN",
+  "remoteWrites": 0,
+  "fullRepositoryCI": "REQUIRED_ON_ROOT_FOLLOWUP_PR"
+}

@@ -608,6 +608,20 @@ AutoMeta는 원 영수증 전체를 유지한 채 선택 subset의 승인값·�
 Git source와 정확한 metadata·runtime·identity로 역사 근거만 검증한다. 현재 검증 메타 표시·자동 선택·VERIFIED
 조회는 실제 Consumer 정책에 따라 별도로 거부되어야 한다. 원문을 직접 선택하는 경로는 그 승인 판정과 별개다.
 
+### 기존 전체 시험지 영수증에서 일부만 보존
+
+현재 자식 요청은 계속 `PARTIAL_UIDS`와 명시적인 `selectedSubset`을 사용한다. 그 원 영수증이 기존 전체
+시험지 형식이면 `scope`, `partialUidCount`, `expectedQuestionCount`, `registrationMode` 필드가 모두 없어야 한다.
+`totalQuestions=N`과 metadata·identity·runtime 세 inventory의 수가 모두 같고, 같은 UID와 원본 순번 1..N이
+누락·중복 없이 정확히 대응해야 한다. 실제 원본 Git bank도 N문항이어야 한다. 부분 영수증의 필드를 지우거나
+짧은 목록을 전체로 간주하지 않는다. 기존 영수증의 바이트·scope·분모는 바꾸지 않고 내부 비교용 수만 읽는다.
+
+이 확장은 독립적인 원 native `FINAL_QA` leaf에만 적용한다. 원 영수증이 다시 `sourceRebind`를 주장하거나
+명시적인 보존 count를 가진 전체 보존 체인은 이 확장의 대상이 아니다. 자식의 선택·제외 집합은 원 전체
+승인을 정확히 나누며, 원 전체 승인의 실제 native 재생, 현재 저장 상태 일치, 선택 문항의 전체 객체·승인값
+불변, 변경된 제외 문항의 상태 보존을 모두 요구한다. 기존 순환·깊이 제한과 이후 제외 UID 등록의 독립성도
+유지한다. 새 승인·원본·난도·정본 변경을 허용하는 경로가 아니다.
+
 ## 검증
 
 `node --test tests/archive-reviewed-exam-registration-v2.test.mjs`는 격리된 임시 저장소에서
