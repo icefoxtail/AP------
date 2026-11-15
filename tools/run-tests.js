@@ -35,6 +35,18 @@ const tests = includeQuarantined
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/archive-basic-scope-rebind.test.mjs',
+    args: ['--test', 'tests/archive-basic-scope-rebind.test.mjs']
+  },
+  {
+    label: 'tests/archive-source-metadata-materializer.test.mjs',
+    args: ['--test', 'tests/archive-source-metadata-materializer.test.mjs']
+  },
+  {
+    label: 'tests/archive-reviewed-source-candidate.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-source-candidate.test.mjs']
+  },
+  {
     label: 'tests/archive-reviewed-parent-correction.test.mjs',
     args: ['--test', 'tests/archive-reviewed-parent-correction.test.mjs']
   },
