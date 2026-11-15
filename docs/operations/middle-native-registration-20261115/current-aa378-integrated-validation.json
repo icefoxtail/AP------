@@ -1,0 +1,45 @@
+{
+  "actualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "exactFailureRerun": {
+    "base": "88cd90648df4d1ef2c60104f3ec41359ecf7eec4",
+    "change": "Merged actual aa378 registration outputs; no code or test assertions weakened",
+    "exitCode": 0,
+    "fail": 0,
+    "logSha256": "3544b61fd9c9ed8abf23cd4cf308ac4c18c7e4bef1b9cfef93fe3bf85a072235",
+    "pass": 5,
+    "skip": 0,
+    "tests": 5
+  },
+  "excludedScope": "M3S1",
+  "integrationDiff": {
+    "excludedScopeChangedPaths": [],
+    "files": 122,
+    "newInboxRequests": 6,
+    "sources": 4,
+    "svgAssets": 2
+  },
+  "localIntegrationCommit": "88cd90648df4d1ef2c60104f3ec41359ecf7eec4",
+  "regression": {
+    "base": "c282be910ae3880a2c402572af33d93b0a3ba7fd",
+    "exitCode": 1,
+    "fail": 5,
+    "failureCause": "canonical input digest mismatch for compiled/taxonomy_registry.json on pre-registration034 snapshot",
+    "logSha256": "863b2b7e3dd646b7b947bc40427e5491e40cee1a829fbc1b24c0bf47fcd35074",
+    "pass": 1346,
+    "skip": 0,
+    "suites": 7,
+    "tests": 1351
+  },
+  "schemaVersion": "middle-native-registration-integration-validation-v1",
+  "scope": "M1S1,M1S2,M2S1,M2S2,M3S2",
+  "status": "IN_PROGRESS",
+  "tree": "fd49e5f4418b106a2e2ccdc0d3a15abe5ae523a4",
+  "verificationLimits": [
+    "No single all-1351-pass run is claimed.",
+    "No production PR merge of this integration yet.",
+    "Typed issued-sourceReview binding recovery for 6 cohorts/81 UIDs remains in progress.",
+    "E029 audited append24 and M2 follow6+preserve11 actual packets remain in progress.",
+    "M3 new15 follows recovered authority.",
+    "Whole-project semantic completion not claimed."
+  ]
+}
