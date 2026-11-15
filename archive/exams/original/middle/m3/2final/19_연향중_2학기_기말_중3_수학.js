@@ -4,8 +4,9 @@ window.examData = {
   "questions": [
     {
       "id": 1,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "오른쪽 그림과 같이 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에 대하여 $\\sin A + \\cos C \\times \\tan C$의 값은?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q01.png\" />",
+      "question": "오른쪽 그림과 같이 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에 대하여 $\\sin A + \\cos C \\times \\tan C$의 값은?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q1-problem-v2.svg\" alt=\"직각삼각형 ABC에서 B가 직각이다. 세로 AB는 √5이고 밑변 BC는 2이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$\\dfrac{2}{3}$",
         "$\\dfrac{\\sqrt{5}}{3}$",
@@ -38,9 +39,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q1-solution.svg",
-      "solutionImageAlt": "해설 그림: 꼭짓점 B에서 직각인 직각삼각형 ABC이다. 세로 변 AB에 √5, 가로 변 BC에 2, 빗변 AC에 3이 적혀 있고, 각 A와 각 C가 서로 다른 색의 호로 표시되어 있다.",
-      "solutionImageCaption": "피타고라스 정리로 AC=3이다. sin A와 cos C는 모두 BC÷AC로 3분의 2이고, tan C는 BC분의 AB로 2분의 √5이다. 따라서 sin A+cos C×tan C는 3분의 (2+√5)이다. 정답은 ④이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q1-solution-v2.svg",
+      "solutionImageAlt": "파란 빗변 AC는 길이 3인 치수선이 붙어 있다. 초록 밑변은 A의 맞은편이면서 C에 붙은 직각변이다.",
+      "solutionImageCaption": "sin A=2/3, cos C=2/3, tan C=√5/2이므로 식은 (2+√5)/3이다. 정답은 ④이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -63,8 +64,9 @@ window.examData = {
   },
     {
       "id": 2,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}, \\overline{\\mathrm{BC}}$ 위의 점 $\\mathrm{D, E}$에 대하여 $\\overline{\\mathrm{DE}}\\perp\\overline{\\mathrm{BC}}$이고 $\\angle\\mathrm{BDE}=\\angle x$일 때, $\\sin x + \\cos x$의 값은?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q02.png\" />",
+      "question": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}, \\overline{\\mathrm{BC}}$ 위의 점 $\\mathrm{D, E}$에 대하여 $\\overline{\\mathrm{DE}}\\perp\\overline{\\mathrm{BC}}$이고 $\\angle\\mathrm{BDE}=\\angle x$일 때, $\\sin x + \\cos x$의 값은?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q2-problem-v2.svg\" alt=\"A에서 만나는 두 변의 길이는 AB=8, AC=6이다. D에서 BC까지 수선을 그었으며 D의 각이 x이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$\\dfrac{1}{5}$",
         "$\\dfrac{3}{10}$",
@@ -98,9 +100,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q2-solution.svg",
-      "solutionImageAlt": "해설 그림: 꼭짓점 A에서 직각인 직각삼각형 ABC이고, 변 AB 위의 점 D에서 변 BC에 내린 수선 DE가 있다. AB에 8, AC에 6, BC에 10이 적혀 있고 각 B는 파란색, 각 BDE는 분홍색 호에 x로 표시되어 있다.",
-      "solutionImageCaption": "BC=10이므로 sin B는 5분의 3, cos B는 5분의 4이다. 각 x는 90°−∠B이므로 sin x=cos B=5분의 4, cos x=sin B=5분의 3이다. 따라서 sin x+cos x=5분의 7이다. 정답은 ⑤이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q2-solution-v2.svg",
+      "solutionImageAlt": "주황 작은 삼각형 BDE와 파랑 큰 삼각형의 두 직각 위치를 비교한다. 같은 B에서의 각이 보인다.",
+      "solutionImageCaption": "∠BDE는 B의 여각이므로 sin x=4/5, cos x=3/5이다. 합은 7/5이고 정답은 ⑤이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -123,8 +125,9 @@ window.examData = {
   },
     {
       "id": 3,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "오른쪽 그림과 같은 직육면체에서 $\\angle\\mathrm{AGE}=\\angle x$라고 할 때, $\\sin x - \\cos x$의 값은?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q03.png\" />",
+      "question": "오른쪽 그림과 같은 직육면체에서 $\\angle\\mathrm{AGE}=\\angle x$라고 할 때, $\\sin x - \\cos x$의 값은?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q3-problem-v2.svg\" alt=\"직육면체의 가로는 5 cm, 깊이는 3 cm, 높이는 4 cm이다. A와 G를 공간 대각선으로 이었고 각 x는 G에서 밑면 대각선 GE와 이루는 각이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$\\dfrac{\\sqrt{2}+\\sqrt{3}}{5}$",
         "$\\dfrac{\\sqrt{3}+4}{5}$",
@@ -157,9 +160,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q3-solution.svg",
-      "solutionImageAlt": "해설 그림: 왼쪽에는 가로 5, 세로 3, 높이 4인 직육면체에 대각선 AG와 밑면의 대각선 EG가 그려져 있다. 오른쪽에는 직각삼각형 AEG가 따로 있고 AE에 4, EG에 루트 34, AG에 5 루트 2가 적혀 있으며 각 x가 분홍색으로 표시되어 있다.",
-      "solutionImageCaption": "밑면에서 EG=√(5²+3²)=√34이고 AE=4이다. AG=√(16+34)=5√2이므로 sin x=AE÷AG는 5분의 2√2, cos x=EG÷AG는 5분의 √17이다. 따라서 sin x−cos x는 5분의 (2√2−√17)이다. 정답은 ④이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q3-solution-v2.svg",
+      "solutionImageAlt": "초록 밑면 대각선 EG와 파란 공간 대각선 AG, 주황 수직 AE가 하나의 직각삼각형을 이룬다.",
+      "solutionImageCaption": "EG=√34, AE=4, AG=5√2이다. 따라서 sin x−cos x=(4−√34)/(5√2)이고 정답은 ④이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -241,8 +244,9 @@ window.examData = {
   },
     {
       "id": 5,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 다음 중 옳은 것을 모두 고르면? (정답 2개)(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q05.png\" />",
+      "question": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 다음 중 옳은 것을 모두 고르면? (정답 2개)(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q5-problem-v2.svg\" alt=\"O에서 나온 사선이 사분원 호의 A를 지나 접선 위 C에 닿는다. 반지름은 1이고 각 a, b는 O와 C에 표시했다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$\\sin a = \\overline{\\mathrm{CD}}$",
         "$\\sin b = \\overline{\\mathrm{OB}}$",
@@ -276,9 +280,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q5-solution.svg",
-      "solutionImageAlt": "해설 그림: 반지름이 1인 사분원 안에 점 O에서 시작하는 선분 OC가 있고, 점 A에서 밑변 OD에 내린 수선 AB와 점 D에서 세운 수선 CD가 있다. 각 a는 분홍색, 각 b는 연두색 호이며 AB는 파란색, OB는 주황색 선분이다.",
-      "solutionImageCaption": "OA=1이므로 sin a=AB, cos a=OB이다. 큰 직각삼각형 OCD에서 b=90°−a이므로 sin b=cos a=OB이고 cos b=sin a=AB이다. 따라서 옳은 것은 sin b=OB와 cos b=AB이다. 정답은 ②, ④이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q5-solution-v2.svg",
+      "solutionImageAlt": "파랑 사분원 안쪽의 작은 직각삼각형을 옅은 주황으로 칠했다. 초록 접선 CD가 오른쪽의 큰 높이이다.",
+      "solutionImageCaption": "OA=OD=1이므로 sin a=AB, cos a=OB, tan a=CD이다. b는 a의 여각이다. 옳은 선택지는 ②와 ④이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -301,8 +305,9 @@ window.examData = {
   },
     {
       "id": 6,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "지면에 수직으로 서 있던 나무가 번개를 맞아 부러져 오른쪽 그림과 같이 지면과 $33^\\circ$의 각을 이루게 되었다. 부러지기 전의 이 나무의 높이는?<br>(단, $\\cos 33^\\circ=0.8, \\tan 33^\\circ=0.6$으로 계산한다.)(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q06.png\" />",
+      "question": "지면에 수직으로 서 있던 나무가 번개를 맞아 부러져 오른쪽 그림과 같이 지면과 $33^\\circ$의 각을 이루게 되었다. 부러지기 전의 이 나무의 높이는?<br>(단, $\\cos 33^\\circ=0.8, \\tan 33^\\circ=0.6$으로 계산한다.)(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q6-problem-v2.svg\" alt=\"부러진 지점 A와 땅에 닿은 C를 이은 나무가 지면에서 33도를 이룬다. B에서 C까지는 20 m이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$32\\text{ m}$",
         "$35\\text{ m}$",
@@ -336,9 +341,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q6-solution.svg",
-      "solutionImageAlt": "해설 그림: 꼭짓점 B에서 직각인 직각삼각형 ABC이다. 밑변 BC에 20, 세로 변 AB에 12, 빗변 AC에 25가 적혀 있고, 점 C의 각 33°가 표시되어 있다. AB는 파란색, AC는 주황색 선분이다.",
-      "solutionImageCaption": "cos33°=0.8이므로 AC=20÷0.8=25 m이고, tan33°=0.6이므로 AB=20×0.6=12 m이다. 부러지기 전 나무의 높이는 AB+AC=12+25=37 m이다. 정답은 ③이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q6-solution-v2.svg",
+      "solutionImageAlt": "부러진 사선 AC와 남아 있는 세로 AB를 다른 색으로 나타냈다. 두 부분을 합쳐 원래 높이를 계산한다.",
+      "solutionImageCaption": "문제에서 주어진 근삿값으로 AC=20/0.8=25 m, AB=20×0.6=12 m이다. 원래 높이는 37 m이고 정답은 ③이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -361,8 +366,9 @@ window.examData = {
   },
     {
       "id": 7,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "오른쪽 그림과 같이 두 대각선이 이루는 각의 크기가 $45^\\circ$인 사각형 $\\mathrm{ABCD}$가 있다. 대각선 $\\mathrm{BD}$의 길이가 $12\\text{ cm}$이고 사각형 $\\mathrm{ABCD}$의 넓이가 $30\\sqrt{2}\\text{ cm}^2$일 때, 대각선 $\\mathrm{AC}$의 길이는?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q07.png\" />",
+      "question": "오른쪽 그림과 같이 두 대각선이 이루는 각의 크기가 $45^\\circ$인 사각형 $\\mathrm{ABCD}$가 있다. 대각선 $\\mathrm{BD}$의 길이가 $12\\text{ cm}$이고 사각형 $\\mathrm{ABCD}$의 넓이가 $30\\sqrt{2}\\text{ cm}^2$일 때, 대각선 $\\mathrm{AC}$의 길이는?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q7-problem-v2.svg\" alt=\"주황 대각선 BD 길이는 12 cm이다. 파랑 AC와 주황 BD가 만나는 곳의 오른쪽 각이 45도이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$5\\sqrt{2}\\text{ cm}$",
         "$5\\sqrt{3}\\text{ cm}$",
@@ -396,9 +402,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q7-solution.svg",
-      "solutionImageAlt": "해설 그림: 사각형의 두 대각선 AC와 BD가 점 O에서 만난다. 대각선 AC는 파란색, BD는 주황색이며 BD 위쪽에 12가 적혀 있고, 점 O에서 두 대각선이 이루는 각 45°가 표시되어 있다. 사각형 안은 연한 회색으로 칠해져 있다.",
-      "solutionImageCaption": "사각형의 넓이는 2분의 1×AC×BD×sin45°이다. 30√2=2분의 1×AC×12×(2분의 √2)=3√2×AC이므로 AC=10 cm이다. 정답은 ③이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q7-solution-v2.svg",
+      "solutionImageAlt": "파란 대각선을 기준으로 주황과 파랑 면을 나누고 두 꼭짓점에서 보라 수선을 내렸다.",
+      "solutionImageCaption": "넓이=AC·BD·sin45°/2=3√2·AC이다. 30√2인 경우 AC=10 cm이고 정답은 ③이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -421,8 +427,9 @@ window.examData = {
   },
     {
       "id": 8,
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "다음 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 내접원 $\\mathrm{I}$의 반지름의 길이를 구하면?<br>(단, 점 $\\mathrm{D}$는 원 $\\mathrm{I}$의 접점이다.)(5점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q08.png\" />",
+      "question": "다음 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 내접원 $\\mathrm{I}$의 반지름의 길이를 구하면?<br>(단, 점 $\\mathrm{D}$는 원 $\\mathrm{I}$의 접점이다.)(5점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q8-problem-v2.svg\" alt=\"이등변삼각형 밑변 BC 길이는 6√3 cm이고 B의 각은 30도이다. 내접원 I가 밑변에 D에서 닿는다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$6\\sqrt{3}-9$",
         "$6\\sqrt{3}+9$",
@@ -457,9 +464,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q8-solution.svg",
-      "solutionImageAlt": "해설 그림: 이등변삼각형 ABC의 안쪽에 내접원이 있고, 꼭짓점 A에서 밑변 BC에 내린 높이 AD가 초록색으로 그려져 있다. 밑변 아래에 6√3이 적혀 있고 높이 AD에 3, 옆변 AB에 6이 적혀 있다. 점 B의 밑각 30°가 표시되어 있다.",
-      "solutionImageCaption": "BD=3√3, 밑각 30°이므로 AD=3, AB=AC=6이다. 삼각형의 넓이 9√3은 r(6+3√3)과 같으므로 r=9√3÷(6+3√3)=6√3−9 cm이다. 정답은 ①이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q8-solution-v2.svg",
+      "solutionImageAlt": "파란 같은 두 사선과 초록 같은 두 반밑변이 있다. 원의 중심 I와 접점 D를 잇는 주황 선이 높이 일부를 이룬다.",
+      "solutionImageCaption": "높이는 3, 두 옆변은 각각 6이다. 넓이 9√3을 반둘레 6+3√3으로 나누면 반지름은 6√3−9 cm이다. 정답은 ①이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -482,8 +489,9 @@ window.examData = {
   },
     {
       "id": 9,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 그림의 원에서 $\\overline{\\mathrm{AB}}\\perp\\overline{\\mathrm{OM}}, \\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$이다. $\\overline{\\mathrm{OD}}=10\\text{ cm}, \\overline{\\mathrm{OM}}=6\\text{ cm}$일 때, $\\triangle\\mathrm{OCD}$의 넓이를 구하면?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q09.png\" />",
+      "question": "다음 그림의 원에서 $\\overline{\\mathrm{AB}}\\perp\\overline{\\mathrm{OM}}, \\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$이다. $\\overline{\\mathrm{OD}}=10\\text{ cm}, \\overline{\\mathrm{OM}}=6\\text{ cm}$일 때, $\\triangle\\mathrm{OCD}$의 넓이를 구하면?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q9-problem-v2.svg\" alt=\"AB와 CD에 같은 초록 눈금을 썼다. 중심 O에서 AB에 내린 수선 OM은 6 cm이며 반지름 OD는 10 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$48\\text{ cm}^2$",
         "$50\\text{ cm}^2$",
@@ -518,9 +526,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q9-solution.svg",
-      "solutionImageAlt": "해설 그림: 원의 중심 O에서 현 AB에 내린 수선 OM과 현 CD에 내린 수선 ON이 있고, 중심에서 A, C, D로 이은 반지름이 있다. OD에 10, OM에 6이 적혀 있고 두 현 AB와 CD는 주황색, 삼각형 OCD는 분홍색으로 칠해져 있다.",
-      "solutionImageCaption": "AM=√(10²−6²)=8이므로 AB=16 cm이다. AB=CD이므로 현 CD까지의 거리도 6 cm이고, 삼각형 OCD의 넓이는 2분의 1×16×6=48 cm²이다. 정답은 ①이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q9-solution-v2.svg",
+      "solutionImageAlt": "두 같은 현의 수선은 주황 같은 표시이다. 오른쪽 삼각형 OCD의 밑변 CD와 중심까지의 높이를 다른 색으로 구분했다.",
+      "solutionImageCaption": "현의 반은 √(10²−6²)=8 cm이므로 CD=16 cm이다. 같은 현은 중심에서의 거리도 6 cm이므로 넓이는 48 cm²이다. 정답은 ①이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -543,8 +551,9 @@ window.examData = {
   },
     {
       "id": 10,
+      "layoutTag": "fullwidth",
       "score": 3.0,
-      "question": "다음 그림과 같은 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$이다. 이때 $x$의 값을 구하면?(3점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q10.png\" />",
+      "question": "다음 그림과 같은 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{OM}}=\\overline{\\mathrm{ON}}$이다. 이때 $x$의 값을 구하면?(3점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q10-problem-v2.svg\" alt=\"중심 O에서 BC와 AC에 내린 두 수선은 같은 길이이다. A의 각은 70도이고 C의 각을 x로 표시했다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "30",
         "40",
@@ -578,9 +587,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q10-solution.svg",
-      "solutionImageAlt": "해설 그림: 원에 내접하는 삼각형 ABC와 원의 중심 O가 있다. O에서 변 BC와 AC에 수직으로 내린 선분 OM, ON이 주황색 같은 길이 표시를 갖고, 변 BC와 AC에는 초록색 같은 길이 표시가 있다. 각 A는 70°, 각 C는 x로 표시되어 있다.",
-      "solutionImageCaption": "OM=ON이므로 BC=AC이고, 삼각형 ABC는 이등변삼각형이다. 따라서 ∠B=∠A=70°이고 x=∠C=180°−70°−70°=40°이다. 정답은 ②이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q10-solution-v2.svg",
+      "solutionImageAlt": "두 같은 거리 OM과 ON은 주황 눈금이다. 그에 해당하는 두 현 AC와 BC에 같은 초록 눈금을 표시했다.",
+      "solutionImageCaption": "AC=BC이므로 A와 B의 각은 각각 70°이다. 따라서 x=40°이고 정답은 ②이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -603,8 +612,9 @@ window.examData = {
   },
     {
       "id": 11,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 그림에서 원 $\\mathrm{O}$가 $\\triangle\\mathrm{ABC}$의 내접원일 때, $\\overline{\\mathrm{BD}}=14\\text{ cm}, \\overline{\\mathrm{AD}}=3\\text{ cm}, \\overline{\\mathrm{CF}}=8\\text{ cm}$일 때, $\\overline{\\mathrm{BC}}$의 값을 구하면?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q11.png\" />",
+      "question": "다음 그림에서 원 $\\mathrm{O}$가 $\\triangle\\mathrm{ABC}$의 내접원일 때, $\\overline{\\mathrm{BD}}=14\\text{ cm}, \\overline{\\mathrm{AD}}=3\\text{ cm}, \\overline{\\mathrm{CF}}=8\\text{ cm}$일 때, $\\overline{\\mathrm{BC}}$의 값을 구하면?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q11-problem-v2.svg\" alt=\"삼각형 ABC의 세 변이 원 O에 각각 D, E, F에서 접한다. BD=14 cm, AD=3 cm, CF=8 cm를 표시했다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$14\\text{ cm}$",
         "$15\\text{ cm}$",
@@ -641,9 +651,9 @@ window.examData = {
         "repairDisposition": "ALIVE_REPLACEMENT",
         "sourceFidelityStatus": "UNKNOWN"
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q11-solution.svg",
-      "solutionImageAlt": "해설 그림: 삼각형 ABC에 원 O가 내접하고 접점 D, E, F가 표시되어 있다. BD에 14, AD에 3, CF에 8이 적혀 있고, 같은 점에서 그은 접선 쌍이 파랑, 주황, 초록의 같은 길이 표시로 구별되어 있으며 밑변 BC 아래에 x가 적혀 있다.",
-      "solutionImageCaption": "한 점에서 원에 그은 두 접선의 길이는 같으므로 BE=BD=14 cm, CE=CF=8 cm이다. 따라서 BC=BE+EC=14+8=22 cm이다. 정답은 ⑤이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q11-solution-v2.svg",
+      "solutionImageAlt": "B의 접선 쌍은 주황, A의 접선 쌍은 파랑, C의 접선 쌍은 초록이다. 같은 색에는 같은 눈금 수를 썼다.",
+      "solutionImageCaption": "BE=BD=14 cm, CE=CF=8 cm이다. 따라서 BC=22 cm이고 정답은 ⑤이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -666,8 +676,9 @@ window.examData = {
   },
     {
       "id": 12,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 그림과 같이 가로의 길이가 $12\\text{ cm}$, 세로의 길이가 $8\\text{ cm}$인 직사각형의 3개의 변에 원 $\\mathrm{O}$가 내접하고 $\\overline{\\mathrm{DE}}$는 원 $\\mathrm{O}$의 접선일 때, $\\overline{\\mathrm{DE}}$의 길이를 구하면?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q12.png\" />",
+      "question": "다음 그림과 같이 가로의 길이가 $12\\text{ cm}$, 세로의 길이가 $8\\text{ cm}$인 직사각형의 3개의 변에 원 $\\mathrm{O}$가 내접하고 $\\overline{\\mathrm{DE}}$는 원 $\\mathrm{O}$의 접선일 때, $\\overline{\\mathrm{DE}}$의 길이를 구하면?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q12-problem-v2.svg\" alt=\"직사각형의 가로가 12 cm, 세로가 8 cm이다. 원은 왼쪽과 위아래 변, 그리고 D와 E를 잇는 사선에 접한다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$8\\text{ cm}$",
         "$9\\text{ cm}$",
@@ -701,9 +712,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q12-solution.svg",
-      "solutionImageAlt": "해설 그림: 가로 12, 세로 8인 직사각형 안에 원 O가 위, 왼쪽, 아래 변에 접해 있고, 꼭짓점 D에서 아래 변 위의 점 E까지 원에 접하는 선분이 그어져 있다. 접점 T, L, P가 표시되어 있고 같은 길이의 접선은 파랑과 주황 표시로 구별되어 있다.",
-      "solutionImageCaption": "반지름은 4이므로 DT=12−4=8이고 DP=DT=8이다. EL=EP=e라 하면 DE=8+e, CE=8−e이다. 직각삼각형 DCE에서 (8+e)²=8²+(8−e)²이므로 e=2이고 DE=10 cm이다. 정답은 ③이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q12-solution-v2.svg",
+      "solutionImageAlt": "위쪽 D에서 이어지는 두 접선이 주황, 바닥 E에서 이어지는 두 접선이 초록이다. 사선 접점과 바닥 접점을 함께 비교한다.",
+      "solutionImageCaption": "D에서 접점까지는 8 cm이다. E에서 접점까지를 e라 하면 (8+e)²=8²+(8−e)²이므로 e=2이다. DE=10 cm이고 정답은 ③이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -726,8 +737,9 @@ window.examData = {
   },
     {
       "id": 13,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 그림에서 $\\overline{\\mathrm{AC}}, \\overline{\\mathrm{BD}}, \\overline{\\mathrm{CD}}$는 지름이 $\\overline{\\mathrm{AB}}$인 원 $\\mathrm{O}$의 접선이다. $\\overline{\\mathrm{AC}}=4\\text{ cm}, \\overline{\\mathrm{BD}}=9\\text{ cm}$일 때, 원 $\\mathrm{O}$의 반지름의 길이를 구하면?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q13.png\" />",
+      "question": "다음 그림에서 $\\overline{\\mathrm{AC}}, \\overline{\\mathrm{BD}}, \\overline{\\mathrm{CD}}$는 지름이 $\\overline{\\mathrm{AB}}$인 원 $\\mathrm{O}$의 접선이다. $\\overline{\\mathrm{AC}}=4\\text{ cm}, \\overline{\\mathrm{BD}}=9\\text{ cm}$일 때, 원 $\\mathrm{O}$의 반지름의 길이를 구하면?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q13-problem-v2.svg\" alt=\"반원의 지름 양 끝에서 세운 두 접선은 각각 4 cm와 9 cm이다. 두 끝점 C, D는 반원을 E에서 스치는 사선 위에 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$2\\text{ cm}$",
         "$4\\text{ cm}$",
@@ -761,9 +773,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q13-solution.svg",
-      "solutionImageAlt": "해설 그림: 지름 AB인 반원과 양 끝에서 위로 세운 두 접선 AC, BD, 그리고 반원에 접하는 선분 CD가 있다. AC에 4, BD에 9가 적혀 있고, 점 C에서 BD 위의 점 F까지 수평으로 이은 점선과 직각 표시, 그 길이 2r이 적혀 있다. BD 오른쪽에는 BF 4, FD 5, 전체 BD 9가 겹치지 않게 표시되어 있다.",
-      "solutionImageCaption": "CE=CA=4, DE=DB=9이므로 CD=13이다. 직각삼각형 CFD에서 FD=9−4=5, CF=2r이므로 13²=(2r)²+5²이다. 따라서 (2r)²=144, 2r=12이고 반지름은 6 cm이다. 정답은 ④이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q13-solution-v2.svg",
+      "solutionImageAlt": "C의 두 접선이 초록, D의 두 접선이 주황이다. C에서 상대편 접선까지 그은 점선은 지름과 평행하다.",
+      "solutionImageCaption": "CD=4+9=13 cm, 높이 차는 5 cm이다. 피타고라스 정리로 지름은 12 cm이므로 반지름은 6 cm이다. 정답은 ④이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -786,8 +798,9 @@ window.examData = {
   },
     {
       "id": 14,
+      "layoutTag": "fullwidth",
       "score": 3.0,
-      "question": "다음 그림의 원 $\\mathrm{O}$에서 $\\angle x$의 크기는?(3점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q14.png\" />",
+      "question": "다음 그림의 원 $\\mathrm{O}$에서 $\\angle x$의 크기는?(3점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q14-problem-v2.svg\" alt=\"A와 P를 잇는 지름에 중심 O가 놓인다. P의 각은 55도이고 O의 각이 x이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$100^\\circ$",
         "$105^\\circ$",
@@ -820,9 +833,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q14-solution.svg",
-      "solutionImageAlt": "해설 그림: 원 O 위의 세 점 A, B, P가 있고 A, O, P는 한 직선 위에 있다. 점 P에서의 원주각 55°는 파란색, 중심 O에서의 중심각 x는 분홍색이며 두 각이 바라보는 호 AB는 초록색으로 강조되어 있다.",
-      "solutionImageCaption": "호 AB에 대한 원주각이 55°이므로 중심각은 그 두 배이다. x=2×55°=110°이다. 정답은 ③이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q14-solution-v2.svg",
+      "solutionImageAlt": "P의 파랑 원주각과 O의 주황 중심각에서 같은 초록 호 AB를 본다.",
+      "solutionImageCaption": "같은 호를 보는 중심각은 원주각의 두 배이다. x=110°이고 정답은 ③이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -845,8 +858,9 @@ window.examData = {
   },
     {
       "id": 15,
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "다음 그림에서 점 $\\mathrm{P}$는 두 현 $\\mathrm{AB, CD}$의 연장선의 교점이다. $\\overgroup{\\mathrm{AB}}=\\overgroup{\\mathrm{BC}}=\\overgroup{\\mathrm{CD}}$이고, $\\angle\\mathrm{APD}=30^\\circ$일 때, $\\angle x$의 크기는?(5점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q15.png\" />",
+      "question": "다음 그림에서 점 $\\mathrm{P}$는 두 현 $\\mathrm{AB, CD}$의 연장선의 교점이다. $\\overgroup{\\mathrm{AB}}=\\overgroup{\\mathrm{BC}}=\\overgroup{\\mathrm{CD}}$이고, $\\angle\\mathrm{APD}=30^\\circ$일 때, $\\angle x$의 크기는?(5점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q15-problem-v2.svg\" alt=\"A, B, C, D가 원 위에 있고 두 할선은 오른쪽의 P에서 만난다. 호 AB, BC와 CD는 같은 초록 모양이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$22.5^\\circ$",
         "$23.5^\\circ$",
@@ -880,9 +894,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q15-solution.svg",
-      "solutionImageAlt": "해설 그림: 원 위의 네 점 B, A, D, C와 원 밖의 점 P가 있다. 직선 BA와 직선 CD가 P에서 만나 각 30°를 이루고, 호 AB, 호 BC, 호 CD는 초록색, 호 DA는 주황색으로 강조되어 있다. 점 C에서 선분 CA와 CD가 이루는 각 x는 분홍색이다.",
-      "solutionImageCaption": "호 AB=호 BC=호 CD=t라 하면 호 AD=360°−3t이다. 30°=(t−(360°−3t))÷2에서 t=105°이므로 호 AD=45°이다. x는 호 AD에 대한 원주각이므로 x=22.5°이다. 정답은 ①이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q15-solution-v2.svg",
+      "solutionImageAlt": "같은 세 호 외에 남는 주황 호 AD를 표시했다. P의 각과 C의 각이 어느 호를 보는지 비교한다.",
+      "solutionImageCaption": "같은 세 호는 각각 105°이고 남은 호 AD는 45°이다. x=∠ACD=22.5°이므로 정답은 ①이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -905,8 +919,9 @@ window.examData = {
   },
     {
       "id": 16,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 중 네 점 $\\mathrm{A, B, C, D}$가 한 원 위에 있는 것을 모두 고르면? (정답 2개)(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q16.png\" />",
+      "question": "다음 중 네 점 $\\mathrm{A, B, C, D}$가 한 원 위에 있는 것을 모두 고르면? (정답 2개)(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q16-problem-v2.svg\" alt=\"다섯 선택지의 사각형과 두 대각선을 각 패널에 표시했다. 원문에 주어진 30도, 35도, 45도, 50도, 55도, 60도와 직각의 표시를 보존했다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "①",
         "②",
@@ -940,9 +955,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q16-solution.svg",
-      "solutionImageAlt": "해설 그림: 두 개의 그림이 나란히 있다. 왼쪽 그림은 선분 BC를 지름으로 하는 원 위에 A와 D가 있고 각 A와 각 D가 직각이다. 오른쪽 그림은 위쪽 변 AD가 가로이고 아래쪽 변 BC가 짧은 사각형이 원에 내접해 있으며, 두 대각선이 직각으로 만나고 각 BAC는 30°, 같은 현 AD를 보는 두 각 60°가 파란색으로 표시되어 있다.",
-      "solutionImageCaption": "②는 ∠BAC=∠BDC=90°로 같은 지름 BC를 보므로 한 원 위에 있다. ⑤는 직각삼각형에서 ∠ABD=60°이고 ∠ACD=60°로 같은 현 AD를 보는 두 각이 같아 한 원 위에 있다. ①은 AB∥CD만 알 수 있고 ③은 50°와 45°, ④는 35°와 55°가 서로 달라 원 위에 있지 않다. 정답은 ②, ⑤이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q16-solution-v2.svg",
+      "solutionImageAlt": "왼쪽에서 두 직각이 같은 밑변 BC를 바라본다. 오른쪽에서는 표시된 두 60도 원주각이 같은 현 AD를 바라본다.",
+      "solutionImageCaption": "두 직각이 공통인 지름 BC를 보거나 두 원주각이 공통인 현 AD를 본다. 해당하는 것은 ②와 ⑤이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -965,8 +980,9 @@ window.examData = {
   },
     {
       "id": 17,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 그림에서 점 $\\mathrm{P}$는 두 현 $\\mathrm{AB, CD}$의 교점이다. $\\wideparen{\\mathrm{BD}}=4\\text{ cm}, \\angle\\mathrm{ADC}=25^\\circ, \\angle\\mathrm{DPB}=85^\\circ$일 때, 이 원의 둘레의 길이는?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q17.png\" />",
+      "question": "다음 그림에서 점 $\\mathrm{P}$는 두 현 $\\mathrm{AB, CD}$의 교점이다. $\\wideparen{\\mathrm{BD}}=4\\text{ cm}, \\angle\\mathrm{ADC}=25^\\circ, \\angle\\mathrm{DPB}=85^\\circ$일 때, 이 원의 둘레의 길이는?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q17-problem-v2.svg\" alt=\"교점 P의 아래 각은 85도이며 D의 왼쪽 각은 25도이다. 아래의 호 DB에는 길이 4 cm를 표시했다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$4\\text{ cm}$",
         "$6\\text{ cm}$",
@@ -1000,9 +1016,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q17-solution.svg",
-      "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D와 두 현 AB, CD의 교점 P가 있다. 점 D의 각 25°는 파란색, 점 P의 각 85°는 분홍색이고 호 DB는 주황색으로 길이 4가 적혀 있으며 호 AC는 초록색이다.",
-      "solutionImageCaption": "∠ADC=25°이므로 호 AC=50°이다. 85°=½(호 DB+50°)에서 호 DB=120°이다. 호 DB는 원둘레의 3분의 1이고 길이가 4 cm이므로 원둘레는 4×3=12 cm이다. 정답은 ⑤이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q17-solution-v2.svg",
+      "solutionImageAlt": "위쪽 초록 호 AC와 아래쪽 주황 호 DB가 교점 각을 정한다. 25도 원주각은 초록 호를 본다.",
+      "solutionImageCaption": "호 AC는 50°, 호 DB는 120°이다. DB가 원둘레의 1/3이고 그 길이가 4 cm이므로 원둘레는 12 cm, 정답은 ⑤이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -1025,8 +1041,9 @@ window.examData = {
   },
     {
       "id": 18,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 그림에서 $\\overleftrightarrow{\\mathrm{AT}}$는 원 $\\mathrm{O}$의 접선이고 점 $\\mathrm{A}$는 접점일 때, $\\angle x + \\angle y$의 크기를 구하면?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q18.png\" />",
+      "question": "다음 그림에서 $\\overleftrightarrow{\\mathrm{AT}}$는 원 $\\mathrm{O}$의 접선이고 점 $\\mathrm{A}$는 접점일 때, $\\angle x + \\angle y$의 크기를 구하면?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q18-problem-v2.svg\" alt=\"원의 아래쪽 A를 지나는 직선 AT가 접선이다. 왼쪽 AD와 접선의 각은 25도, 오른쪽 AB와 접선의 각은 35도이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$75^\\circ$",
         "$80^\\circ$",
@@ -1061,9 +1078,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q18-solution.svg",
-      "solutionImageAlt": "해설 그림: 원 O 위의 네 점 A, B, C, D와 점 A에서 원에 접하는 직선이 있다. 접선과 현 AD가 이루는 각 25°와 그 현을 바라보는 원주각 ABD가 파란색, 접선과 현 AB가 이루는 각 35°와 각 x가 초록색, 각 y는 분홍색으로 표시되어 있다.",
-      "solutionImageCaption": "접선과 현이 이루는 각은 원주각과 같으므로 ∠ABD=25°, x=35°이다. 삼각형 ADB에서 ∠DAB=120°이고 마주 보는 각의 합이 180°이므로 y=60°이다. 따라서 x+y=95°이다. 정답은 ⑤이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q18-solution-v2.svg",
+      "solutionImageAlt": "같은 파랑 25도는 현 AD에 대응하고, 주황 35도는 현 AB를 본다. 위쪽 y는 아래쪽 호 DB를 본다.",
+      "solutionImageCaption": "x=35°이고 ∠ABD=25°이다. 따라서 ∠DAB=120°이며 내접사각형에서 y=60°이다. x+y=95°, 정답은 ⑤이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -1086,8 +1103,9 @@ window.examData = {
   },
     {
       "id": 19,
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "다음 그림과 같이 두 원 $\\mathrm{O}$와 $\\mathrm{O'}$은 점 $\\mathrm{B}$에서 접하고, $\\overline{\\mathrm{AQ}}$는 원 $\\mathrm{O'}$의 접선이다. $\\overline{\\mathrm{OO'}}=3\\text{ cm}$일 때, $\\overline{\\mathrm{BP}}$의 길이를 구하면?(5점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q19.png\" />",
+      "question": "다음 그림과 같이 두 원 $\\mathrm{O}$와 $\\mathrm{O'}$은 점 $\\mathrm{B}$에서 접하고, $\\overline{\\mathrm{AQ}}$는 원 $\\mathrm{O'}$의 접선이다. $\\overline{\\mathrm{OO'}}=3\\text{ cm}$일 때, $\\overline{\\mathrm{BP}}$의 길이를 구하면?(5점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q19-problem-v2.svg\" alt=\"서로 다른 두 원이 오른쪽 끝 B에서 접한다. 큰 원의 중심 O는 작은 원 둘레 위에 있으며 두 중심 사이가 3 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$2\\sqrt{2}\\text{ (cm)}$",
         "$2\\sqrt{6}\\text{ (cm)}$",
@@ -1122,9 +1140,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q19-solution-v2.svg",
-      "solutionImageAlt": "해설 그림: 네 개의 그림이 있다. 첫째는 점 B에서 접하는 큰 원과 작은 원, 작은 원에 접하는 접선 AQ와 접점 P, 선분 PB이다. 둘째는 직각삼각형 AO′P이고 O′P에 3, AO′에 9, AP에 6√2가 적혀 있다. 셋째는 각 O′를 공유하는 닮은 직각삼각형 O′HP이고 O′H에 1, HP에 2√2, O′P에 3이 적혀 있다. 넷째는 직각삼각형 PHB이고 PH에 2√2, HO′에 1, O′B에 3, HB에 4가 표시되어 있다.",
-      "solutionImageCaption": "작은 원의 반지름은 3, 큰 원의 반지름은 6이므로 AO′=9이고 AP=√(9²−3²)=6√2이다. 점 P에서 AB에 내린 수선의 발을 H라 하면 삼각형 O′PA와 O′HP가 닮음이어서 O′H=1, PH=2√2이다. HB=1+3=4이므로 직각삼각형 PHB에서 BP²=(2√2)²+4²=24, BP=2√6 cm이다. 정답은 ②이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q19-solution-v3.svg",
+      "solutionImageAlt": "접점 P에서 작은 원의 반지름에 직각 표지를 넣고, P에서 지름 AB로 내린 주황 수선을 표시했다.",
+      "solutionImageCaption": "AO′=9, O′P=3이므로 AP=6√2이다. 지름 위의 발 H에 대해 PH=2√2, HB=4여서 BP=2√6 cm이다. 정답은 ②이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -1147,8 +1165,9 @@ window.examData = {
   },
     {
       "id": 20,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 그림에서 $\\overleftrightarrow{\\mathrm{PB}}$는 원의 접선이고, 점 $\\mathrm{B}$는 접점이다. $\\angle\\mathrm{P}=30^\\circ, \\overline{\\mathrm{PA}}=8\\text{ cm}, \\overline{\\mathrm{AC}}=10\\text{ cm}$일 때, $\\triangle\\mathrm{APB}$의 넓이를 구하면?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q20.png\" />",
+      "question": "다음 그림에서 $\\overleftrightarrow{\\mathrm{PB}}$는 원의 접선이고, 점 $\\mathrm{B}$는 접점이다. $\\angle\\mathrm{P}=30^\\circ, \\overline{\\mathrm{PA}}=8\\text{ cm}, \\overline{\\mathrm{AC}}=10\\text{ cm}$일 때, $\\triangle\\mathrm{APB}$의 넓이를 구하면?(4점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q20-problem-v2.svg\" alt=\"P에서 수평선이 B에서 원에 접한다. 30도를 이루는 할선은 A를 거쳐 C에 닿고 PA=8 cm, AC=10 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$12\\text{ cm}^2$",
         "$24\\text{ cm}^2$",
@@ -1183,9 +1202,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q20-solution.svg",
-      "solutionImageAlt": "해설 그림: 원 위의 점 A, B, C와 원 밖의 점 P가 있다. 점 P에서 원의 접선 PB와 점 A, C를 지나는 직선이 그어져 있고 각 P는 30°이다. PA에 8, AC에 10, PB에 12가 적혀 있으며 삼각형 APB는 분홍색으로 칠해져 있다.",
-      "solutionImageCaption": "PC=8+10=18이므로 PB²=PA×PC=8×18=144, PB=12 cm이다. 삼각형 APB의 넓이는 2분의 1×8×12×sin30°=24 cm²이다. 정답은 ②이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q20-solution-v2.svg",
+      "solutionImageAlt": "접선과 할선 사이의 삼각형 APB를 옅은 주황으로 칠했다. 접선의 반지름 방향과 PA의 치수가 서로 다른 색이다.",
+      "solutionImageCaption": "PC=18 cm이고 PB²=PA·PC=144이므로 PB=12 cm이다. 넓이는 8×12×sin30°/2=24 cm², 정답은 ②이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -1208,8 +1227,9 @@ window.examData = {
   },
     {
       "id": 21,
+      "layoutTag": "fullwidth",
       "score": 7.0,
-      "question": "[서술형 1] 다음 그림과 같이 연못의 가장자리에 있는 두 지점 $\\mathrm{A, B}$와 $\\mathrm{A}$에서 $8\\text{ m}$ 떨어진 지점 $\\mathrm{C}$에 대하여 $\\angle\\mathrm{BAC}=75^\\circ, \\angle\\mathrm{ABC}=45^\\circ$일 때, 다음을 구하여라. (단, 풀이 과정을 자세히 써라.)(7점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/s01.png\" /><br>(1) $\\angle\\mathrm{BAH}$의 크기(1점)<br>(2) $\\angle\\mathrm{CAH}$의 크기(1점)<br>(3) 두 지점 $\\mathrm{A, H}$ 사이의 거리(2점)<br>(4) 두 지점 $\\mathrm{A, B}$ 사이의 거리(3점)",
+      "question": "[서술형 1] 다음 그림과 같이 연못의 가장자리에 있는 두 지점 $\\mathrm{A, B}$와 $\\mathrm{A}$에서 $8\\text{ m}$ 떨어진 지점 $\\mathrm{C}$에 대하여 $\\angle\\mathrm{BAC}=75^\\circ, \\angle\\mathrm{ABC}=45^\\circ$일 때, 다음을 구하여라. (단, 풀이 과정을 자세히 써라.)(7점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q21-problem-v2.svg\" alt=\"연못의 끝 A와 B 사이를 이었다. A에서 C까지 8 m이고 A의 75도와 B의 45도를 표시했다. A에서 BC에 내린 수선의 발은 H이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"><br>(1) $\\angle\\mathrm{BAH}$의 크기(1점)<br>(2) $\\angle\\mathrm{CAH}$의 크기(1점)<br>(3) 두 지점 $\\mathrm{A, H}$ 사이의 거리(2점)<br>(4) 두 지점 $\\mathrm{A, B}$ 사이의 거리(3점)",
       "choices": [],
       "answer": "(1) 45°; (2) 30°; (3) 4√3 m; (4) 4√6 m",
       "solution": "$AH\\perp BC$이므로 $\\triangle ABH$와 $\\triangle ACH$는 각각 $H$에서 직각이다. $H$가 $BC$ 위에 있으므로 $\\angle ABH=\\angle ABC=45^\\circ$이고, $\\triangle ABH$에서 $\\angle BAH=45^\\circ$이다.\\n$\\angle BAC=75^\\circ$이므로 $\\angle CAH=75^\\circ-45^\\circ=30^\\circ$이다. $AC=8$ m를 빗변으로 하는 직각삼각형 $ACH$에서 $AH=AC\\cos30^\\circ=8\\cdot\\dfrac{\\sqrt3}{2}=4\\sqrt3$ m이다.\\n마지막으로 $\\triangle ABH$는 $45^\\circ-45^\\circ-90^\\circ$ 직각이등변삼각형이므로 $AB=AH\\sqrt2=4\\sqrt6$ m이다.",
@@ -1238,9 +1258,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q21-solution.svg",
-      "solutionImageAlt": "해설 그림: 연못 가장자리의 세 지점을 꼭짓점으로 하는 삼각형 ABC이고, 꼭짓점 A에서 변 BC에 내린 높이 AH가 주황색으로 그려져 있다. AC에 8이 적혀 있고 각 A는 75°, 각 B는 45°이며 각 BAH와 각 CAH는 서로 다른 색의 호로 표시되어 있다.",
-      "solutionImageCaption": "(1) 삼각형 ABH에서 ∠BAH=45°이다. (2) ∠CAH=75°−45°=30°이다. (3) 직각삼각형 ACH에서 AH=8cos30°=4√3 m이다. (4) 직각이등변삼각형 ABH에서 AB=AH×√2=4√6 m이다. 정답은 (1) 45°, (2) 30°, (3) 4√3 m, (4) 4√6 m이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q21-solution-v2.svg",
+      "solutionImageAlt": "주황 높이가 두 작은 직각삼각형의 공통 변이다. 왼쪽 AC와 오른쪽 AB에 다른 색을 썼다.",
+      "solutionImageCaption": "∠BAH=45°, ∠CAH=30°이다. AH=4√3 m이고 AB=4√6 m이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -1263,8 +1283,9 @@ window.examData = {
   },
     {
       "id": 22,
+      "layoutTag": "fullwidth",
       "score": 7.0,
-      "question": "[서술형 2] 다음 그림은 강물에 떠 있는 통나무의 단면을 나타낸 것이다. $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{CD}}, \\overline{\\mathrm{AD}}\\perp\\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AD}}=20\\text{ cm}, \\overline{\\mathrm{BD}}=40\\text{ cm}$일 때, 이 통나무의 지름의 길이를 구하여라. (단, 풀이 과정을 자세히 써라.)(7점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/s02.png\" />",
+      "question": "[서술형 2] 다음 그림은 강물에 떠 있는 통나무의 단면을 나타낸 것이다. $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{CD}}, \\overline{\\mathrm{AD}}\\perp\\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AD}}=20\\text{ cm}, \\overline{\\mathrm{BD}}=40\\text{ cm}$일 때, 이 통나무의 지름의 길이를 구하여라. (단, 풀이 과정을 자세히 써라.)(7점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q22-problem-v2.svg\" alt=\"목재가 수평 물 위로 올라온 높이 AD는 20 cm이다. 물 경계 BC는 D에서 두 같은 40 cm 조각으로 나뉜다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [],
       "answer": "100 cm",
       "solution": "$AD\\perp BC$이고 $BD=CD=40$ cm이므로 $D$는 현 $BC$의 중점이며 원의 중심 $O$도 수직이등분선 $AD$ 위에 있다. 그림에서 중심은 현 아래쪽이므로 $OD=r-20$이고 $OA=r$이다.\\n직각삼각형 $ODB$에서 $OB=r$, $OD=r-20$, $DB=40$이므로 $r^2=(r-20)^2+40^2$이다. 전개하면 $r^2=r^2-40r+400+1600$이므로 $40r=2000$, $r=50$ cm이다. 따라서 지름은 $2r=100$ cm이다.",
@@ -1293,9 +1314,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q22-solution.svg",
-      "solutionImageAlt": "해설 그림: 통나무 단면인 원과 물 표면을 나타내는 현 BC가 있다. 현의 중점 D에서 위로 호의 꼭대기 A까지 20, 현의 절반 BD에 40이 적혀 있고, 중심 O에서 D까지 r에서 20을 뺀 값, O에서 B까지 r이 표시되어 있으며 D에서 직각 표시가 있다.",
-      "solutionImageCaption": "원의 반지름을 r라 하면 OD=r−20이다. 직각삼각형 ODB에서 r²=(r−20)²+40²이므로 40r=2000, r=50 cm이다. 지름은 2r=100 cm이다. 정답은 100 cm이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q22-solution-v2.svg",
+      "solutionImageAlt": "물 위는 주황이고 물 아래 원의 완전한 둘레를 파랑으로 표시했다. 중심 O에서 현의 중점 D까지 수직선을 이었다.",
+      "solutionImageCaption": "r²=40²+(r−20)²이므로 r=50 cm이다. 통나무의 지름은 100 cm이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
@@ -1318,8 +1339,9 @@ window.examData = {
   },
     {
       "id": 23,
+      "layoutTag": "fullwidth",
       "score": 6.0,
-      "question": "[서술형 3] 다음 그림에서 $\\overline{\\mathrm{AB}}$는 반원 $\\mathrm{O}$의 지름이고 $\\angle\\mathrm{COD}=30^\\circ$일 때 $\\angle x$의 크기를 구하여라. (단, 풀이 과정을 자세히 써라.)(6점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/s03.png\" />",
+      "question": "[서술형 3] 다음 그림에서 $\\overline{\\mathrm{AB}}$는 반원 $\\mathrm{O}$의 지름이고 $\\angle\\mathrm{COD}=30^\\circ$일 때 $\\angle x$의 크기를 구하여라. (단, 풀이 과정을 자세히 써라.)(6점)<br><img src=\"assets/images/19_연향중_2학기_기말_중3_수학/q23-problem-v2.svg\" alt=\"지름의 양 끝 A·B와 반원 위 C·D를 연결한 두 직선이 P에서 만난다. 반원 중심의 30도에 대응하는 작은 호는 CD이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [],
       "answer": "75°",
       "solution": "$AB$가 지름이므로 위쪽 반원의 호 $AB$는 $180^\\circ$이다. 중심각 $\\angle COD=30^\\circ$이므로 작은 호 $CD$는 $30^\\circ$이다.\\n원 밖의 점 $P$에서 두 할선 $PCA$, $PDB$가 이루는 각은 먼 두 점 사이의 호와 가까운 두 점 사이의 호의 차의 절반이다. 따라서 $x=\\dfrac12(\\widehat{AB}-\\widehat{CD})=\\dfrac12(180^\\circ-30^\\circ)=75^\\circ$이다.",
@@ -1347,9 +1369,9 @@ window.examData = {
         "integrationPattern": null,
         "canonicalKeyDebt": "Canonical enum/key dictionary was not conclusively matched; null retained pending R1/R2 source-of-truth lookup."
       },
-      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q23-solution.svg",
-      "solutionImageAlt": "해설 그림: 지름 AB인 반원 위의 두 점 C, D와 중심 O가 있고, 각 COD는 30°이다. 직선 AC와 BD가 반원 위쪽의 점 P에서 만나 각 x를 이룬다. 위쪽 호 AB는 초록색, 짧은 호 CD는 주황색이다.",
-      "solutionImageCaption": "호 AB=180°, 호 CD=30°이다. 원 밖의 점 P에서 두 할선이 이루는 각은 먼 호와 가까운 호의 차의 절반이므로 x=(180°−30°)÷2=75°이다. 정답은 75°이다.",
+      "solutionImage": "assets/images/19_연향중_2학기_기말_중3_수학/q23-solution-v2.svg",
+      "solutionImageAlt": "반원 전체와 주황 작은 호 CD, 원 바깥의 x를 서로 다른 색으로 표시해 대응을 비교한다.",
+      "solutionImageCaption": "x는 180°에서 30°를 뺀 값의 절반이므로 75°이다.",
       "solutionImageSize": "full"
     ,
     "standardCourse": "중3 수학",
