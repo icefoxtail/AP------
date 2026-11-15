@@ -35,6 +35,7 @@ window.questionBank = [
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q01-audit-rework.svg",
+    "imageAlt": "첫째는 수평선분, 둘째는 수직선분이다. 셋째는 오른쪽 한 점에서 왼쪽 위와 왼쪽 아래로 뻗은 두 선분, 넷째는 위쪽 한 점에서 왼쪽 아래와 오른쪽 아래로 뻗은 두 선분이다. 다섯째는 위아래로 나란한 두 점이다.",
     "imageStatus": "reviewed_pass",
     "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q01-audit-rework.svg",
     "visualSpec": {

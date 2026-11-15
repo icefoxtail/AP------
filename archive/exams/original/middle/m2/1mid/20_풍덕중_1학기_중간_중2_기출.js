@@ -584,7 +584,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "content": "그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, $\\angle OBC$의 크기를 구하면? [4점]<br><img src=\"assets/images/20_풍덕중_1학기_중간_중2_기출/q18-audit-rework.svg\" style=\"width:100%;max-width:570px;height:auto\" alt=\"문제 그림\">",
+    "content": "그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, $\\angle OBC$의 크기를 구하면? [4점]<br><img src=\"assets/images/20_풍덕중_1학기_중간_중2_기출/q18-audit-rework.svg\" style=\"width:100%;max-width:570px;height:auto\" alt=\"점 A에서 AB와 AO가 이루는 각은 30도, AO와 AC가 이루는 각은 40도로 표시되어 있다.\">",
     "choices": [
       "$18^\\circ$",
       "$20^\\circ$",

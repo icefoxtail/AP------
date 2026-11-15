@@ -781,6 +781,7 @@ window.questionBank = [
   "points": 4,
   "imageSize": "tall",
   "image": "assets/images/25_왕의중_2학기_중간_중1_유사/q20-audit-rework.svg",
+  "imageAlt": "ㄱ은 밑변 7 cm, 왼쪽 밑각 60도, 오른쪽 밑각 70도. ㄴ은 왼쪽 변 5 cm, 밑변 8 cm, 오른쪽 변 7 cm. ㄷ은 왼쪽 변 6 cm, 밑변 8 cm, 왼쪽 밑각 50도. ㄹ은 왼쪽 변 6 cm, 밑변 8 cm, 오른쪽 밑각 40도. ㅁ은 오른쪽 변 6 cm, 밑변 8 cm, 오른쪽 밑각 50도. ㅂ은 밑변 7 cm, 왼쪽 밑각 60도, 오른쪽 밑각 50도이다.",
   "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
   "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
   "solution": "[키포인트] 두 변의 길이와 그 끼인각의 크기가 각각 같으면 두 삼각형은 SAS 합동이다.\n보기의 삼각형들을 살펴보면:\n삼각형 ㄷ은 두 변의 길이가 $6\\,\\mathrm{cm}$, $8\\,\\mathrm{cm}$이고 그 끼인각의 크기가 $50^\\circ$이다.\n삼각형 ㅁ은 두 변의 길이가 $6\\,\\mathrm{cm}$, $8\\,\\mathrm{cm}$이고 그 끼인각의 크기가 $50^\\circ$이다.\n따라서 삼각형 ㄷ과 삼각형 ㅁ은 두 변의 길이와 그 끼인각의 크기가 각각 같으므로 SAS 합동이다.\n다른 보기들의 경우 대응하는 변의 길이나 각의 조건이 일치하지 않는다.\n따라서 바르게 짝지은 것은 ③ ㄷ과 ㅁ이므로 정답은 ③이다.",

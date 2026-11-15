@@ -253,6 +253,7 @@ window.questionBank = [
       "원의 성질"
     ],
     "image": "assets/images/21_팔마중_2학기_기말_중3_기출/q06-audit-rework.svg",
+    "imageAlt": "점 B에서 BA와 CB의 연장선이 이루는 바깥각이 x이다. 점 D에서 DA와 DE가 이루는 각이 y이다.",
     "imageSize": "full",
     "questionType": "객관식",
     "layoutTag": "grid",

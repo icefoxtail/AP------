@@ -341,6 +341,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/24_효천고_2학기_기말_고1_수학_유사/q07-audit-rework.svg",
+    "imageAlt": "세로 점근선의 가로축 표시는 1, 가로 점근선의 세로축 표시는 2이다. 왼쪽 가지가 세로축과 만나는 점은 원점 아래에 있다.",
     "imageSize": "full",
     "content": "유리함수 $f(x)=\\dfrac{ax+b}{x+c}$의 그래프가 그림과 같을 때, 무리함수 $g(x)=\\sqrt{cx+b}+a$의 그래프가 지나는 사분면을 모두 적은 것은? [3.6점]",
     "choices": [

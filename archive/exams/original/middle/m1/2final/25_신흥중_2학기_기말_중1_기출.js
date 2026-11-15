@@ -206,6 +206,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "색칠 부분의 경계는 큰 호, 작은 호, 반지름 방향의 직선 두 개로 이루어진다. 안쪽의 빈 부분은 넓이에 넣지 않는다.\n\n큰 부채꼴의 반지름은 $8\\rm\\,cm$, 작은 부채꼴의 반지름은 $4\\rm\\,cm$, 중심각은 모두 $45^\\circ$이다.\n\n큰 호의 길이는 $2\\pi\\times8\\times\\dfrac{45}{360}=2\\pi\\rm\\,cm$이다.\n작은 호의 길이는 $2\\pi\\times4\\times\\dfrac{45}{360}=\\pi\\rm\\,cm$이다.\n\n두 호를 잇는 직선 부분은 각각 $8-4=4\\rm\\,cm$이므로 합계 $4+4=8\\rm\\,cm$이다.\n\n따라서 색칠 부분의 둘레는\n$2\\pi+\\pi+8=3\\pi+8\\rm\\,cm$이므로 정답은 ④이다.",
     "image": "assets/images/25_신흥중_2학기_기말_중1_기출/q04-audit-rework.svg",
+    "imageAlt": "공통 중심의 각 표시는 45도이다. 중심에서 안쪽 호까지의 치수선은 4 cm, 바깥 호까지의 치수선은 8 cm로 표시된다.",
     "imageSize": "full",
     "solutionImage": "assets/images/25_신흥중_2학기_기말_중1_기출/q4-solution-v2.svg",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",

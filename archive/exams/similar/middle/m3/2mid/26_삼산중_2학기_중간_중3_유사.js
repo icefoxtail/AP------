@@ -223,6 +223,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "그림에서 $\\angle C = 90^\\circ$이므로 빗변은 $AB = 4$이다.\n삼각비의 표에서 $\\cos 38^\\circ = 0.7880$, $\\sin 38^\\circ = 0.6157$이다.\n각 $A = 38^\\circ$에 대하여\n$AC = AB \\cos 38^\\circ = 4 \\times 0.7880 = 3.1520$\n$BC = AB \\sin 38^\\circ = 4 \\times 0.6157 = 2.4628$\n따라서 두 변의 길이의 합은\n$AC + BC = 3.1520 + 2.4628 = 5.6148$이다.\n정답은 ⑤이다.",
     "image": "assets/images/26_삼산중_2학기_중간_중3_유사/q05-audit-rework.svg",
+    "imageAlt": "삼각비 표에서 각도별 사인, 코사인, 탄젠트 순서로 37도는 0.6018, 0.7986, 0.7536이다. 38도는 0.6157, 0.7880, 0.7813이다. 39도는 0.6293, 0.7771, 0.8098이다.",
     "imageSize": "tall",
     "points": 4.0,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",

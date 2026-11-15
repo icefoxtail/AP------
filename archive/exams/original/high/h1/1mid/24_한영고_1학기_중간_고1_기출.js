@@ -466,6 +466,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/24_한영고_1학기_중간_고1_기출/q11-audit-rework.svg",
+    "imageAlt": "위로 열린 f의 가로축 교점은 −1과 2이고, 아래로 열린 g의 가로축 교점은 −4와 2이다.",
     "imageSize": "full",
     "solutionImage": "assets/images/24_한영고_1학기_중간_고1_기출/q11-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 파란 곡선 f(x), 주황 곡선 g(x), 초록 점선 y=2g(x)가 그려져 있다. f는 x절편 (−1,0), (2,0)을, g는 x절편 (−4,0), (2,0)을 가지며, f와 2g는 두 점 (−3,10), (2,0)에서 만난다.",

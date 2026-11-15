@@ -110,6 +110,7 @@ window.questionBank = [
     "answer": "③",
     "points": 4,
     "image": "assets/images/26_팔마중_2학기_중간_중1_유사/q03-audit-rework.svg",
+    "imageAlt": "왼쪽 세로변 AB는 6 cm, 위쪽 가로변 AD는 4 cm, 아래쪽 가로변 BC는 8 cm이다.",
     "imageSize": "full",
     "problemTypeKey": "PT_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK",
     "templateKey": "TPL_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK_CORE",

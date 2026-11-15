@@ -1200,6 +1200,7 @@ window.questionBank = [
       "원의 성질"
     ],
     "image": "assets/images/21_매산중_2학기_기말_중3_기출/q21-audit-rework.svg",
+    "imageAlt": "왼쪽 그림에서 AB는 원의 지름이며, A의 각도 표시는 40도이고 x는 B의 각이다. 오른쪽 그림은 큰 반원 안에서 작은 두 반원의 바깥쪽을 칠한 모습이다.",
     "imageSize": "tall",
     "level": "상",
     "category": "원의 성질",

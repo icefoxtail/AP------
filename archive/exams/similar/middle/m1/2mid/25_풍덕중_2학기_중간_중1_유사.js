@@ -441,6 +441,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
     "solution": "[키포인트] 평행선 $l, m$ 사이에 꺾인 점이 있을 때는 그 점을 지나고 $l, m$에 평행한 보조선을 긋는다.\n꺾인 점들에 평행한 보조선을 각각 그으면,\n왼쪽으로 꺾인 각들의 합과 오른쪽으로 꺾인 각들의 합이 서로 같다는 성질을 이용할 수 있다.\n그림에서 오른쪽을 향하는 각은 $40^\\circ$와 $\\angle x$이고,\n왼쪽을 향하는 각은 $85^\\circ$와 $25^\\circ$이다.\n따라서\n$40^\\circ+\\angle x=85^\\circ+25^\\circ$\n$40^\\circ+\\angle x=110^\\circ$\n$\\angle x=70^\\circ$\n정답은 ①이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중1_유사/q11-audit-rework.svg",
+    "imageAlt": "위쪽 직선과 만나는 각은 40도이다. 꺾인 두 곳의 각은 위에서 85도와 x이며, 아래쪽 직선과 만나는 각은 25도이다.",
     "imageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
