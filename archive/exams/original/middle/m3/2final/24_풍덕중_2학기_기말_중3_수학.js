@@ -771,7 +771,7 @@ window.questionBank = [
     "choices": [],
     "answer": "51°",
     "solution": "∠BGD=26°가 보는 호 BD의 크기는 52°이다. 조건에 따라 호 BD=호 AC의 두 배이므로 호 AC=26°이다. AB가 지름이므로 한 반원 AB=180°, 남은 호 CD의 크기는 180°−52°−26°=102°이다. 원주각 x=∠CFD는 호 CD의 절반이므로 x=51°이다.",
-    "image": "assets/images/24_풍덕중_2학기_기말_중3_수학/q22_R1_clean-figure-only.svg",
+    "image": "assets/images/24_풍덕중_2학기_기말_중3_수학/q22-quality-v4.svg",
     "imageSize": "full",
     "imageSize": "full",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",

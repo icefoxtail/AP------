@@ -48,7 +48,7 @@ window.questionBank = [
     {
       "id": 3,
       "score": 4,
-      "question": "다음 그림과 같이 꼭짓점이 A, B, C, D의 순서로 놓인 한 변의 길이가 1인 정사각형 ABCD에, 점 B를 중심으로 반지름이 1인 사분원의 호 AC가 내접한다. 점 P는 호 AC 위에 있고, 직선 BP와 선분 CD의 교점을 R이라 하자. 점 P에서 직선 BC에 내린 수선의 발을 Q라 하자. ∠PBQ=40°일 때, QC/PR의 값과 같은 것은?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q03_editorial.svg\" />",
+      "question": "다음 그림과 같이 꼭짓점이 A, B, C, D의 순서로 놓인 한 변의 길이가 1인 정사각형 ABCD에, 점 B를 중심으로 반지름이 1인 사분원의 호 AC가 내접한다. 점 P는 호 AC 위에 있고, 직선 BP와 선분 CD의 교점을 R이라 하자. 점 P에서 직선 BC에 내린 수선의 발을 Q라 하자. ∠PBQ=40°일 때, QC/PR의 값과 같은 것은?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q03-quality-v4.svg\" />",
       "choices": [
         "$\\sin 50^\\circ$",
         "$\\cos 50^\\circ$",
@@ -118,7 +118,7 @@ window.questionBank = [
     {
       "id": 6,
       "score": 5,
-      "question": "다음 그림과 같이 직각삼각형 ABC와 DBC에서 ∠BAC=90°, ∠BCD=90°, ∠ACB=45°, ∠BDC=60°, CD=10이다. 두 선분 AC와 BD의 교점을 E라 할 때, 삼각형 EBC의 넓이를 구하면?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q06_editorial.svg\" />",
+      "question": "다음 그림과 같이 직각삼각형 ABC와 DBC에서 ∠BAC=90°, ∠BCD=90°, ∠ACB=45°, ∠BDC=60°, CD=10이다. 두 선분 AC와 BD의 교점을 E라 할 때, 삼각형 EBC의 넓이를 구하면?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q06-quality-v4.svg\" />",
       "choices": [
         "$75\\sqrt{3}$",
         "$75(\\sqrt{3}-1)$",
@@ -350,7 +350,7 @@ window.questionBank = [
     {
       "id": 16,
       "score": 5,
-      "question": "다음 그림과 같이 원 밖의 점 X에서 직선 X-A-Y는 원에 A에서 접하고, 선분 YB도 원에 B에서 접한다. 직선 X-D-B는 원과 D, B의 순서로 만나며, 원 위의 점은 D, C, B, A 순서로 놓여 있다(C는 A를 포함하지 않는 호 DB 위의 점이다). ∠DBA=25°, ∠BXA=35°이고 x=∠AYB, y=∠DCB일 때, x+y의 크기는?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q16_editorial.svg\" />",
+      "question": "다음 그림과 같이 원 밖의 점 X에서 직선 X-A-Y는 원에 A에서 접하고, 선분 YB도 원에 B에서 접한다. 직선 X-D-B는 원과 D, B의 순서로 만나며, 원 위의 점은 D, C, B, A 순서로 놓여 있다(C는 A를 포함하지 않는 호 DB 위의 점이다). ∠DBA=25°, ∠BXA=35°이고 x=∠AYB, y=∠DCB일 때, x+y의 크기는?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q16-quality-v4.svg\" />",
       "choices": [
         "$145^\\circ$",
         "$150^\\circ$",

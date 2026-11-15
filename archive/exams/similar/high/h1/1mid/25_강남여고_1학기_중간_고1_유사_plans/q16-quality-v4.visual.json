@@ -1,0 +1,110 @@
+{
+  "sourcePath": "archive/exams/similar/high/h1/1mid/25_강남여고_1학기_중간_고1_유사.js",
+  "questionId": 16,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "composite-panels-v1",
+        "caption": "정사각기둥과 서로 직교하는 세 기둥",
+        "accessibilityDescription": "왼쪽 그림에는 정사각기둥의 가로, 세로, 높이가 표시되어 있다. 오른쪽 그림에서는 세 기둥이 중심에서 서로 수직으로 만난다.",
+        "panels": [
+          {
+            "caption": {
+              "text": "[그림 1]"
+            },
+            "plan": {
+              "capability": "solid-figure-v1",
+              "solids": [
+                {
+                  "kind": "PRISM",
+                  "base": {
+                    "kind": "POLYGON",
+                    "points": [
+                      [
+                        0,
+                        0
+                      ],
+                      [
+                        2,
+                        0
+                      ],
+                      [
+                        2,
+                        2
+                      ],
+                      [
+                        0,
+                        2
+                      ]
+                    ]
+                  },
+                  "height": 6,
+                  "names": "........"
+                }
+              ],
+              "dims": [
+                {
+                  "edge": [
+                    "#b0",
+                    "#b1"
+                  ],
+                  "label": "x",
+                  "side": "BOTTOM"
+                },
+                {
+                  "edge": [
+                    "#b1",
+                    "#b2"
+                  ],
+                  "label": "x",
+                  "side": "BOTTOM"
+                },
+                {
+                  "edge": [
+                    "#b0",
+                    "#t0"
+                  ],
+                  "label": "y",
+                  "side": "LEFT"
+                }
+              ]
+            }
+          },
+          {
+            "caption": {
+              "text": "[그림 2]"
+            },
+            "plan": {
+              "capability": "solid-figure-v1",
+              "solids": [
+                {
+                  "kind": "ORTHOGONAL_SQUARE_PRISM_UNION",
+                  "side": 2,
+                  "length": 6
+                }
+              ]
+            }
+          }
+        ],
+        "newVisualInformation": [],
+        "sourceConditions": [
+          {
+            "id": "shape",
+            "condition": "가로와 세로가 x이고 높이가 y인 정사각기둥 세 개가 중앙에서 서로 수직으로 만난다.",
+            "mappedTo": [
+              "그림 1",
+              "그림 2"
+            ]
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 30,
+        "displayScale": 0.38,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

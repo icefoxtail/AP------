@@ -99,7 +99,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 그림에서 위 칸의 식이 바로 아래 두 칸의 식을 더한 것과 같을 때, $A+B$의 값을 계산하면?",
-    "image": "assets/images/19_금당중_1학기_기말_중1_유사/q03.svg",
+    "image": "assets/images/19_금당중_1학기_기말_중1_유사/q03-quality-v4.svg",
     "choices": [
       "$1$",
       "$2$",

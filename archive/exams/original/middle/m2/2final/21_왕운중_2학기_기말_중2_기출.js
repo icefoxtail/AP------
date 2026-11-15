@@ -310,7 +310,7 @@ window.questionBank = [
       "9",
       "12"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중2_기출/q06-source-repaired.svg",
+    "image": "assets/images/21_왕운중_2학기_기말_중2_기출/q06-quality-v4.svg",
     "imageSize": "full",
     "imageSize": "full",
     "answer": "③",

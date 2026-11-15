@@ -1073,7 +1073,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "AUDITED_REPAIR",
     "score": 3,
-    "content": "그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AB=12$, $AC=5$이다. 점 $D$는 선분 $AB$ 위에, 점 $E$는 선분 $BC$ 위에 있고 $DE\\perp BC$이다. $\\angle BDE=x$일 때, $13\\cos x$의 값을 구하면? (3점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q13.svg\" alt=\"AB=12, AC=5인 직각삼각형과 BC에 수직인 DE\" />",
+    "content": "그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AB=12$, $AC=5$이다. 점 $D$는 선분 $AB$ 위에, 점 $E$는 선분 $BC$ 위에 있고 $DE\\perp BC$이다. $\\angle BDE=x$일 때, $13\\cos x$의 값을 구하면? (3점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q13-quality-v4.svg\" alt=\"AB=12, AC=5인 직각삼각형과 BC에 수직인 DE\" />",
     "choices": [
       "$5$",
       "$12$",

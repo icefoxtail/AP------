@@ -658,7 +658,7 @@ window.questionBank = [
       "특수각"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=90^\\circ$, $\\angle\\mathrm{A}=30^\\circ$, $\\overline{\\mathrm{AB}}=5\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{BC}}=x\\,\\mathrm{cm}$의 값은? (3점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q10_replacement.svg\" alt=\"직각삼각형 ABC에서 B가 직각, A가 30도이며 AB는 5cm, BC는 xcm\" />",
+    "content": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=90^\\circ$, $\\angle\\mathrm{A}=30^\\circ$, $\\overline{\\mathrm{AB}}=5\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{BC}}=x\\,\\mathrm{cm}$의 값은? (3점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q10-quality-v4.svg\" alt=\"직각삼각형 ABC에서 B가 직각, A가 30도이며 AB는 5cm, BC는 xcm\" />",
     "choices": [
       "$\\dfrac{5\\sqrt3}{3}\\,\\mathrm{cm}$",
       "$5\\,\\mathrm{cm}$",

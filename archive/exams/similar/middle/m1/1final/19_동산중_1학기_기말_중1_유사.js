@@ -786,7 +786,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 그림은 어느 도시의 하루 동안의 기온 변화를 나타낸 그래프이다. $x$시일 때의 기온을 $y\\ ^\\circ\\text{C}$라 할 때, 하루 중 기온이 상승한 시간대는 몇 시부터 몇 시까지인가? (4점)",
-    "image": "assets/images/19_동산중_1학기_기말_중1_유사/q20-native-graph.svg",
+    "image": "assets/images/19_동산중_1학기_기말_중1_유사/q20-quality-v4.svg",
     "imageSize": "full",
     "choices": [
       "$0$시부터 $6$시",
@@ -973,7 +973,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "25. (서술형 4) (6점)<br>다음 그림은 일정한 거리를 달리는 자동차의 속력과 걸리는 시간 사이의 관계를 나타낸 그래프이다. 물음에 답하시오. (단, 속력을 $x\\text{ km/h}$, 걸리는 시간을 $y$시간이라 한다.)<br>(1) 속력이 $30\\text{ km/h}$일 때, 목적지까지 걸리는 시간을 구하시오. (2점)<br>(2) 목적지까지 걸리는 시간이 $2$시간일 때의 자동차의 속력을 구하시오. (2점)<br>(3) $x$와 $y$ 사이의 관계식을 구하시오. (2점)",
-    "image": "assets/images/19_동산중_1학기_기말_중1_유사/q25-native-graph.svg",
+    "image": "assets/images/19_동산중_1학기_기말_중1_유사/q25-quality-v4.svg",
     "imageSize": "full",
     "choices": [],
     "answer": "(1) $4$시간, (2) $60\\text{ km/h}$, (3) $y=\\frac{120}{x}$",

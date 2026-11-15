@@ -45,7 +45,7 @@ $\\angle x=130^\\circ-70^\\circ=60^\\circ$이다.
 그러므로 $\\angle y-\\angle x=70^\\circ-60^\\circ=10^\\circ$이다.
 따라서 정답은 ⑤이다.`,
     "imageSize": "full",
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q01.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q01-quality-v4.svg"
   },
   {
     "id": 2,
@@ -133,7 +133,8 @@ $q$와 $n$이 만나는 점에서 오른쪽 아래 각은 $93^\\circ$이다.
 두 각은 동위각이고 크기가 같으므로 $p \\parallel q$이다.
 한편 $q$와 $m$이 만나는 점의 오른쪽 위 각은 $93^\\circ$이지만 $q$와 $n$이 만나는 점의 오른쪽 위 각은 $180^\\circ-93^\\circ=87^\\circ$이므로 $m$과 $n$은 평행하지 않고, 같은 방법으로 $l$과 $m$, $q$와 $r$도 평행하지 않다.
 따라서 정답은 ②, ④이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q03.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q03-quality-v4.svg",
+    "imageSize": "full"
   },
   {
     "id": 4,
@@ -299,7 +300,8 @@ $q$와 $n$이 만나는 점에서 오른쪽 아래 각은 $93^\\circ$이다.
 - $a+b$가 아닌 $a$ 또는 $b$ 하나만 구한다.
 
 따라서 정답은 ④이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q06-display-v2.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q06-quality-v4.svg",
+    "imageSize": "full"
   },
   {
     "id": 7,
@@ -460,7 +462,7 @@ $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
 - 합동식의 대응 순서를 확인하지 않고 ∠BDC를 ∠DAE와 같다고 판단하지 않는다.
 
 따라서 정답은 ⑤이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q09-display-v2-figure-only.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q09-quality-v4.svg"
   },
   {
     "id": 10,
@@ -610,7 +612,7 @@ $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
       "표"
     ],
     "wide": false,
-    "content": `다음 표에서 $y$가 $x$에 정비례할 때, $pqr$의 값을 구하면? [4점]`,
+    "content": `다음 표에서 $y$가 $x$에 정비례할 때, $pqr$의 값을 구하면? [4점]\n\n|  |  |  |  |  |\n| --- | --- | --- | --- | --- |\n| $x$ | $p$ | −2 | 4 | $r$ |\n| $y$ | $\\frac{3}{4}$ | $\\frac{1}{2}$ | $q$ | −5 |`,
     "choices": [
       "$48$",
       "$54$",
@@ -649,7 +651,6 @@ $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
 - $-5=-\\frac{1}{4}r$를 풀 때 $r$의 부호를 잘못 쓴다.
 
 따라서 정답은 ③이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q13-display-v2.svg"
   },
   {
     "id": 14,
@@ -691,7 +692,7 @@ $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
 ⑤ 점 $F$에서 $EG$에 내린 수선의 발은 $P$이므로 거리는 $FP$이고, $FP=HP$이다.
 
 따라서 정답은 ①이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q14.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q14-quality-v4.svg"
   },
   {
     "id": 15,
@@ -1011,7 +1012,7 @@ $12=3-6c$, $-6c=9$, $c=-\\dfrac32$이다.
 
 따라서 정답은 ③이다.`,
     "imageSize": "full",
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q20-figure-only.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q20-quality-v4.svg"
   },
   {
     "id": 21,
@@ -1065,7 +1066,8 @@ $12=3-6c$, $-6c=9$, $c=-\\dfrac32$이다.
 - 이웃한 각의 합을 $360^\\circ$로 쓴다.
 
 따라서 답은$x=12$,$y=27$이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q21-display-v2.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q21-quality-v4.svg",
+    "imageSize": "full"
   },
   {
     "id": 22,
@@ -1142,7 +1144,7 @@ $\\triangle AOB\\equiv\\triangle DOC$ (SAS 합동)이다.
 $AB=12\\,\\mathrm{km}$이다.
 
 따라서 지점 $A$에서 집 $B$까지의 거리는 $12\\,\\mathrm{km}$이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q23-figure-only.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q23-quality-v4.svg"
   },
   {
     "id": 24,
@@ -1181,6 +1183,6 @@ $180^\\circ-2\\times72^\\circ=36^\\circ$이다.
 $AD\\parallel BC$이므로 점 $I$에서 표시된 $\\angle x$도 $36^\\circ$이다.
 따라서 $\\angle x=36^\\circ$이다.`,
     "imageSize": "full",
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q24.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q24-quality-v4.svg"
   }
 ];

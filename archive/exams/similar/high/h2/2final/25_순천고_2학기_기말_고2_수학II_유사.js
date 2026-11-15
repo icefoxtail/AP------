@@ -460,7 +460,7 @@ window.questionBank = [
       "ㄱ, ㄷ",
       "ㄱ, ㄴ"
     ],
-    "image": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q07-engine-upgrade.svg",
+    "image": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q07-quality-v4.svg",
     "imageSize": "full",
     "imageKind": "diagram",
     "answer": "③",
@@ -1069,7 +1069,7 @@ window.questionBank = [
       "$\\dfrac{9}{2}$",
       "$\\dfrac{27}{2}$"
     ],
-    "image": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q16-readable-v3.svg",
+    "image": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q16-quality-v4.svg",
     "imageSize": "full",
     "imageKind": "diagram",
     "answer": "④",

@@ -570,7 +570,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "오른쪽 그림과 같은 전개도를 접어 정육면체를 만들려고 한다. 마주 보는 면에 적힌 두 수가 서로 역수일 때, $(a+c)\\div b$의 값을 구하시오.",
-    "image": "assets/images/23_동산중_1학기_중간_중1_유사/q15.svg",
+    "image": "assets/images/23_동산중_1학기_중간_중1_유사/q15-quality-v4.svg",
     "solutionImage": "assets/images/23_동산중_1학기_중간_중1_유사/q15-solution.svg",
     "solutionImageAlt": "정육면체 전개도에서 같은 표시가 된 세 쌍의 면이 서로 마주 본다.",
     "solutionImageCaption": "마주 보는 면의 역수 관계로 a, c, b를 구하고 (a+c)÷b를 계산한다.",

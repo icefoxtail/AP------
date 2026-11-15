@@ -447,7 +447,7 @@ window.questionBank = [
       "subject": "수학",
       "courseFolderLabel": "수학(상)"
     },
-    "image": "assets/images/21_효천고_1학기_기말_고1_기출/q07-audit-rework.svg",
+    "image": "assets/images/21_효천고_1학기_기말_고1_기출/q07-quality-v4.svg",
     "imageSize": "large",
     "sourceMode": "SOURCE_ONLY",
     "category": "이차함수",
@@ -501,7 +501,7 @@ window.questionBank = [
       "originalFigureRef": "assets/images/21_효천고_1학기_기말_고1_기출/q07.png",
       "originalFigureSha256": "e72a934e8343f7e8514d288214f96cc2744b74bda188035c372227dbc621474f",
       "originalFigureDisposition": "IMMUTABLE_UNREFERENCED_HISTORY",
-      "repairedStudentFigureRef": "assets/images/21_효천고_1학기_기말_고1_기출/q07-audit-rework.svg",
+      "repairedStudentFigureRef": "assets/images/21_효천고_1학기_기말_고1_기출/q07-quality-v4.svg",
       "decisiveSourceFact": "printed equation y=-x²+4",
       "printedGraphConflict": "original graph labels x-intercepts −3 and 3",
       "equationDerivedIntersections": [

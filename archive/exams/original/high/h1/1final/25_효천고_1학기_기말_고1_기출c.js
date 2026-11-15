@@ -584,7 +584,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 이차함수 $y = f(x)$의 그래프와 직선 $y = g(x)$가 만나는 두 점의 $x$좌표는 $-1,\\ -7$이다. $h(x) = f(x) - g(x)$라고 하면 $-4 \\le x \\le 0$에서 이차함수 $y = h(x)$의 최댓값이 9일 때, 같은 범위에서 이차함수 $y = h(x)$의 최솟값은? [4.7점]<br><img src=\"assets/images/25_효천고_1학기_기말_고1_기출c/q16-problem-v2.svg\" style=\"display:block; margin:8px auto; width:240px; max-width:100%; height:auto; max-height:215px; object-fit:contain\" alt=\"아래로 열린 포물선 y=f(x)와 올라가는 직선 y=g(x)가 두 점에서 만나는 그림\">",
+    "content": "다음 그림과 같이 이차함수 $y = f(x)$의 그래프와 직선 $y = g(x)$가 만나는 두 점의 $x$좌표는 $-1,\\ -7$이다. $h(x) = f(x) - g(x)$라고 하면 $-4 \\le x \\le 0$에서 이차함수 $y = h(x)$의 최댓값이 9일 때, 같은 범위에서 이차함수 $y = h(x)$의 최솟값은? [4.7점]<br><img src=\"assets/images/25_효천고_1학기_기말_고1_기출c/q16-quality-v4.svg\" style=\"display:block; margin:8px auto; width:240px; max-width:100%; height:auto; max-height:215px; object-fit:contain\" alt=\"아래로 열린 포물선 y=f(x)와 올라가는 직선 y=g(x)가 두 점에서 만나는 그림\">",
     "choices": [
       "$-11$",
       "$-9$",

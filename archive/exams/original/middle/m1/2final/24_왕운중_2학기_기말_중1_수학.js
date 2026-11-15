@@ -1275,7 +1275,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서술형 2] 다음 그림과 같이 $\\overline{AB} \\parallel \\overline{DC}$이고 $\\overline{AB}=\\overline{AD}=\\overline{BC}$인 사다리꼴 $ADCB$에서 꼭짓점 $A, B, C$를 중심으로 하는 부채꼴의 넓이를 각각 $P, Q, R$이라고 할 때, $R+Q-P$의 값을 구하시오. (6점)<br>($P$를 구하는 과정: 1점, $Q, R$을 구하는 과정: 2점, $R+Q-P$의 값: 1점)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/s02-student.svg\" style=\"max-width: 400px; display: block; margin: 10px 0;\">",
+    "content": "[서술형 2] 다음 그림과 같이 $\\overline{AB} \\parallel \\overline{DC}$이고 $\\overline{AB}=\\overline{AD}=\\overline{BC}$인 사다리꼴 $ADCB$에서 꼭짓점 $A, B, C$를 중심으로 하는 부채꼴의 넓이를 각각 $P, Q, R$이라고 할 때, $R+Q-P$의 값을 구하시오. (6점)<br>($P$를 구하는 과정: 1점, $Q, R$을 구하는 과정: 2점, $R+Q-P$의 값: 1점)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q22-quality-v4.svg\" style=\"max-width: 400px; display: block; margin: 10px 0;\">",
     "choices": [],
     "answer": "$14\\pi\\text{ cm}^2$",
     "solution": "그림에서 $AB=AD=BC=2\\text{ cm}$, $DC=4\\text{ cm}$이고 $AB\\parallel DC$이다.\nP의 중심각은 $60^\\circ$, 반지름은 2 cm이므로 $P=\\pi\\times2^2\\times\\dfrac{60}{360}=\\dfrac{2}{3}\\pi\\text{ cm}^2$이다.\nQ의 중심각은 $60^\\circ$, 반지름은 4 cm이므로 $Q=\\pi\\times4^2\\times\\dfrac{60}{360}=\\dfrac{8}{3}\\pi\\text{ cm}^2$이다.\nR의 중심각은 $120^\\circ$, 반지름은 6 cm이므로 $R=\\pi\\times6^2\\times\\dfrac{120}{360}=12\\pi\\text{ cm}^2$이다.\n\n따라서 $R+Q-P=12\\pi+\\dfrac{8}{3}\\pi-\\dfrac{2}{3}\\pi=14\\pi\\text{ cm}^2$이다.",

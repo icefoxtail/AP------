@@ -119,13 +119,13 @@ window.questionBank = [
     "solutionImageCaption": "양의 y절편과 음의 수평점근선을 갖는 감소 지수함수",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
-    "content": "1이 아닌 두 양수 $a, b$에 대하여 두 함수 $y=\\log_a x$와 $y=\\log_b x$의 그래프가 다음 그림과 같을 때, 함수 $y=\\left(\\dfrac{a}{b}\\right)^x-b^a$의 그래프의 개형으로 가장 알맞은 것은? (4.2점)<br><img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-restored-problem.svg\" alt=\"점 (1, 0)에서 만나는 두 감소 로그함수. x가 1보다 큰 쪽에서 밑이 a인 곡선이 밑이 b인 곡선보다 위에 있다.\" style=\"width:285px;max-width:100%;height:auto;\">",
+    "content": "1이 아닌 두 양수 $a, b$에 대하여 두 함수 $y=\\log_a x$와 $y=\\log_b x$의 그래프가 다음 그림과 같을 때, 함수 $y=\\left(\\dfrac{a}{b}\\right)^x-b^a$의 그래프의 개형으로 가장 알맞은 것은? (4.2점)<br><img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-quality-v4.svg\" alt=\"점 (1, 0)에서 만나는 두 감소 로그함수. x가 1보다 큰 쪽에서 밑이 a인 곡선이 밑이 b인 곡선보다 위에 있다.\" style=\"width:285px;max-width:100%;height:auto;\">",
     "choices": [
-      "<img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-restored-choice1.svg\" alt=\"증가하고 y축을 원점 위에서 지나는 그래프\" style=\"width:130px;max-width:100%;height:auto;\">",
-      "<img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-restored-choice2.svg\" alt=\"증가하고 y축을 원점 아래에서 지나는 그래프\" style=\"width:130px;max-width:100%;height:auto;\">",
-      "<img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-restored-choice3.svg\" alt=\"감소하고 원점을 지나는 그래프\" style=\"width:130px;max-width:100%;height:auto;\">",
-      "<img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-restored-choice4.svg\" alt=\"감소하고 y축을 원점 아래에서 지나는 그래프\" style=\"width:130px;max-width:100%;height:auto;\">",
-      "<img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-restored-choice5.svg\" alt=\"감소하고 y축을 원점 위에서 지나는 그래프\" style=\"width:130px;max-width:100%;height:auto;\">"
+      "<img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-quality-v4-choice-1.svg\" alt=\"증가하고 y축을 원점 위에서 지나는 그래프\" style=\"width:130px;max-width:100%;height:auto;\">",
+      "<img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-quality-v4-choice-2.svg\" alt=\"증가하고 y축을 원점 아래에서 지나는 그래프\" style=\"width:130px;max-width:100%;height:auto;\">",
+      "<img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-quality-v4-choice-3.svg\" alt=\"감소하고 원점을 지나는 그래프\" style=\"width:130px;max-width:100%;height:auto;\">",
+      "<img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-quality-v4-choice-4.svg\" alt=\"감소하고 y축을 원점 아래에서 지나는 그래프\" style=\"width:130px;max-width:100%;height:auto;\">",
+      "<img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-quality-v4-choice-5.svg\" alt=\"감소하고 y축을 원점 위에서 지나는 그래프\" style=\"width:130px;max-width:100%;height:auto;\">"
     ],
     "answer": "⑤",
     "solution": "두 로그함수의 그래프가 모두 감소하므로 $0<a<1$, $0<b<1$이다. $x>1$에서 $\\log_a x>\\log_b x$이므로 $\\dfrac{1}{\\ln a}>\\dfrac{1}{\\ln b}$이다. $\\ln a$와 $\\ln b$가 모두 음수이므로 $\\ln a<\\ln b$, 즉 $a<b$이다.\n\n따라서 $0<\\dfrac ab<1$이므로 $y=\\left(\\dfrac ab\\right)^x-b^a$의 그래프는 감소한다. 또 $0<b^a<1$이므로 $y$절편은 $1-b^a>0$이고, 수평점근선은 $y=-b^a<0$이다.\n\n원점 위에서 $y$축을 지나며 $x$가 커질수록 $x$축 아래의 수평점근선에 가까워지는 그래프는 ⑤이다.",

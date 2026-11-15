@@ -344,8 +344,8 @@ window.examData = {
     },
     {
       "id": 9,
-      "image": "assets/images/21_매산중_2학기_중간_중3_수학/q9-problem-v2.svg",
-      "imageSize": "tall",
+      "image": "assets/images/21_매산중_2학기_중간_중3_수학/q09-quality-v4.svg",
+      "imageSize": "full",
       "score": 5.0,
       "question": "다음 그림과 같이 한 변의 길이가 $4$인 정사면체 $\\mathrm{A-BCD}$에서 $\\overline{\\mathrm{BC}}$의 중점을 $\\mathrm{E}$라 한다. $\\angle \\mathrm{EDA} = x^\\circ$일 때, $\\sin x^\\circ$의 값은?<br>",
       "choices": [

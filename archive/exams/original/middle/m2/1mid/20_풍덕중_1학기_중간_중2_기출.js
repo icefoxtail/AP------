@@ -514,7 +514,7 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "content": "점 $I$는 $\\triangle ABC$의 내심이고, $\\angle BIC = 110^\\circ$일 때, $\\angle A$의 크기는? [4점]<br><svg width='160' height='130' viewBox='0 0 160 130'><path d='M80,18.84 L45,115 L115,115 Z M45,115 L80,90.49 L115,115' fill='none' stroke='black'/><circle cx='80' cy='90.49' r='2' fill='black'/><text x='76' y='14' font-size='10'>A</text><text x='35' y='122' font-size='10'>B</text><text x='119' y='122' font-size='10'>C</text><text x='83' y='88' font-size='9'>I</text><text x='68' y='108' font-size='9'>110°</text></svg>",
+    "content": "점 $I$는 $\\triangle ABC$의 내심이고, $\\angle BIC = 110^\\circ$일 때, $\\angle A$의 크기는? [4점]<br><img src=\"assets/images/20_풍덕중_1학기_중간_중2_기출/q16-quality-v4.svg\" alt=\"문제 그림\" style=\"max-width:100%;height:auto\">",
     "choices": [
       "$37^\\circ$",
       "$40^\\circ$",

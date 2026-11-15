@@ -219,7 +219,7 @@ window.questionBank = [
       "ㄴ, ㄷ",
       "ㄷ, ㄹ"
     ],
-    "image": "assets/images/21_매산여고_2학기_기말_고2_수학II/q06-engine-upgrade.svg",
+    "image": "assets/images/21_매산여고_2학기_기말_고2_수학II/q06-quality-v4.svg",
     "answer": "②",
     "solution": "그래프가 $t$축과 만나는 시각은 $t=0,2,5,9$이다. 각 구간의 부호를 읽어 판단한다.\nㄱ. 속도의 부호가 $t=2,5$에서 바뀌므로 운동 방향은 두 번 바뀐다. 참.\nㄴ. $3$초부터 $8$초까지의 이동거리는 그래프와 $t$축 사이 넓이의 합이다.\n$4+\\frac{1\\cdot4}{2}+\\frac{1\\cdot4}{2}+2\\cdot4=16$\n따라서 $4$가 아니므로 거짓.\nㄷ. $v(1)=4$, $v(3)=-4$이므로 두 시각의 속력은 모두 $4$이다. 참.\nㄹ. $t=7$일 때까지의 위치 변화는\n$4-2-4-2+2+4=2$\n이므로 원점으로 돌아오지 않는다. 거짓.\n참인 것은 ㄱ, ㄷ이므로 정답은 ②이다.",
     "decisiveStep": "true statements ㄱ, ㄷ; answer ②; clean graph reconstructed from original PDF; axis, labels and piecewise trace preserve the source",
