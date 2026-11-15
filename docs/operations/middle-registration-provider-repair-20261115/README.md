@@ -2,7 +2,7 @@
 
 This revision preserves M2 E020 as the only supplier of the duplicated M2 linear-function binding, removes the duplicate E029 ADD, and requeues the existing Wangun 20-item review. It also issues durable original-request bindings for ordinary FINAL_QA source reassessments that cite older native receipts. A lineage reference alone never authorizes reuse: the immutable source reassessment must successfully replay before it is distinguished from source-only preservation. Explicit sourceRebind/count claims and the existing source-only ancestry checks remain strict.
 
-The current-source refresh changes only the expected source blob in six requests. Their 30 selected question objects, identity rows, original approval/evidence values and 42 renderer references are unchanged between the earlier verified input snapshot and main 6e3d0669. E050 Q7 has a real renderer representation change and is deliberately not covered by this equivalence claim; its separate transport evidence remains under review.
+The current-source refresh changes only the expected source blob in six requests. Their 30 selected question objects, identity rows, original approval/evidence values and 42 renderer references are unchanged between the earlier verified input snapshot and main 6e3d0669. E050 Q7 has a real renderer representation change and uses a separate transport witness. Its five choice boundary values, direction, endpoint state and order were independently verified equal against the merged owner SVGs. Original difficulty values, approval reference and metadata/identity bindings are preserved; the original evidence is unchanged. E037 is also operationally requeued so its existing approved binding is present before the E054 consumer in PR preview.
 
 ## Verification boundaries
 
