@@ -940,6 +940,7 @@ window.questionBank = [
     "question": "다음 그림과 같이 좌표평면 위에 곡선 $y = \\log_{\\frac{1}{2}} x$와 $x$축 위에 서로 다른 세 점 $A(x_1, 0)$, $B(x_2, 0)$, $C(x_3, 0)$이 있다. $\\overline{AB} = \\overline{BC}$일 때, 옳은 것만을 [보기]에서 있는 대로 고른 것은? (단, $1 < x_1 < x_2 < x_3$) [4.2점]\n<보기>\nㄱ. $\\log_{\\frac{1}{2}} (x_2 - x_1) = \\log_{\\frac{1}{2}} (x_3 - x_2)$\nㄴ. $\\log_{\\frac{1}{2}} (x_1 + x_2 + x_3) = \\log_{\\frac{1}{2}} (3x_2)$이다.\nㄷ. $\\log_{\\frac{1}{2}} \\frac{x_2}{x_1} > \\log_{\\frac{1}{2}} \\frac{x_3}{x_2}$이다.",
     "content": "다음 그림과 같이 좌표평면 위에 곡선 $y = \\log_{\\frac{1}{2}} x$와 $x$축 위에 서로 다른 세 점 $A(x_1, 0)$, $B(x_2, 0)$, $C(x_3, 0)$이 있다. $\\overline{AB} = \\overline{BC}$일 때, 옳은 것만을 보기에서 있는 대로 고른 것은? (단, $1 < x_1 < x_2 < x_3$) [4.2점]\n<보기>\nㄱ. $\\log_{\\frac{1}{2}} (x_2 - x_1) = \\log_{\\frac{1}{2}} (x_3 - x_2)$\nㄴ. $\\log_{\\frac{1}{2}} (x_1 + x_2 + x_3) = \\log_{\\frac{1}{2}} (3x_2)$이다.\nㄷ. $\\log_{\\frac{1}{2}} \\frac{x_2}{x_1} > \\log_{\\frac{1}{2}} \\frac{x_3}{x_2}$이다.",
     "image": "assets/images/23_순천여고_1학기_중간_고2_수학I/q16.png",
+    "imageAlt": "좌표평면에서 밑이 2분의 1인 감소 로그곡선이 보인다. 가로축 오른쪽에 A, B, C가 왼쪽부터 표시되어 있다.",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -1063,6 +1064,7 @@ window.questionBank = [
     "question": "그림과 같이 선분 $AB$를 지름으로 하는 반원이 있다. 선분 $AB$의 중점을 $O$라 하고 호 $AB$ 위의 점 $P$에 대하여 $AP$의 중점 $Q$에서 선분 $AB$에 내린 수선의 발을 $R$이라 하자. $\\angle PAB = 30^\\circ$이고 $\\log_3 (\\overline{AR} \\times \\overline{OR}) = \\frac{8}{3}$일 때, 삼각형 $PAB$의 넓이를 구하면 $k\\sqrt[6]{3}$이다. 상수 $k$의 값은? [4.3점]",
     "content": "그림과 같이 선분 $AB$를 지름으로 하는 반원이 있다. 선분 $AB$의 중점을 $O$라 하고 호 $AB$ 위의 점 $P$에 대하여 $AP$의 중점 $Q$에서 선분 $AB$에 내린 수선의 발을 $R$이라 하자. $\\angle PAB = 30^\\circ$이고 $\\log_3 (\\overline{AR} \\times \\overline{OR}) = \\frac{8}{3}$일 때, 삼각형 $PAB$의 넓이를 구하면 $k\\sqrt[6]{3}$이다. 상수 $k$의 값은? [4.3점]",
     "image": "assets/images/23_순천여고_1학기_중간_고2_수학I/q18.png",
+    "imageAlt": "지름 AB인 반원에 중심 O와 호 위의 P를 표시했다. 선분 AP 위의 Q에서 지름에 내린 수선의 발은 R이다. 각 PAB는 30도이다.",
     "choices": [
       "$64$",
       "$72$",
