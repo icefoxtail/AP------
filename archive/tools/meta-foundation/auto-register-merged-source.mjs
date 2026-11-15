@@ -7,6 +7,7 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { isUnambiguousLegacySourceUidAlias } from '../intelligence/question-identity-contract.mjs';
 import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
+import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 
@@ -200,7 +201,8 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||registeredIdentity[0].sourceOrdinal!==ordinal||registeredIdentity[0].sourceFingerprint!==identity.sourceFingerprint
         ||!equal(registeredIdentity[0].sourceQuestionNo,identity.sourceQuestionNo)
         ||current.metadataRevision!==`meta-foundation:${ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
-      if(!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
+      if(reviewedFigure!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }
@@ -308,6 +310,13 @@ export function planQuestion({question:q, previous, current, identity, registry,
   // Existing declarations are evidence of what was merged, not proof of independent mathematical QA.
   if(!hasSourceRationale) return reject('SOURCE_SEMANTIC_RATIONALE_MISSING');
   if(!binding.L1||!binding.L2||!pt.canonicalLabelKo||!tpl.canonicalLabelKo) return reject('CANONICAL_LABELS_MISSING');
+  // A newly available registry binding does not resolve a reviewed row's
+  // explicit type hold. Keep its approved basic fields and provenance intact;
+  // only an explicit reviewed registration may replace these held values.
+  // Native receipt reuse above retains priority and does not create approval.
+  if(current.metadataStatus==='approved_partial_with_explicit_holds'
+    &&['problemType','template'].some(k=>current.fieldStatus?.[k]==='manual_review_pending'))
+    return reject('EXPLICIT_PARTIAL_REVIEW_HOLD');
   const final={...candidate,sourceFingerprint:fp,contentFingerprint:cf,curriculum:check.curriculum,curriculumKey:check.curriculum,
     courseKey:check.curriculum===current.curriculumKey&&current.courseKey?current.courseKey:candidate.standardCourse,
     L1:binding.L1,L2:binding.L2,L3:pt.canonicalLabelKo,L4:tpl.canonicalLabelKo,
