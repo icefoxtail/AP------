@@ -82,15 +82,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "인수분해",
-      "이차방정식",
-      "지수",
-      "원",
-      "대입",
-      "조건해석"
-    ],
+    "tags": ["객관식", "인수분해", "이차방정식", "대입", "조건해석"],
     "wide": false,
     "content": "이차방정식 $x^2+2ax+8=0$의 한 근이 $-2$일 때, $a$의 값과 다른 한 근을 $b$라 할 때, $a+b$의 값은?",
     "choices": [
@@ -118,16 +110,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "제곱근",
-      "근호",
-      "무리수",
-      "유리수",
-      "인수분해",
-      "이차방정식",
-      "판별식"
-    ],
+    "tags": ["객관식", "제곱근", "근호", "무리수", "유리수", "인수분해", "이차방정식"],
     "wide": false,
     "content": "다음 이차방정식 중 해가 유리수가 아닌 것은?",
     "choices": [
@@ -227,16 +210,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "전개",
-      "계수비교",
-      "이차방정식",
-      "근과계수",
-      "대입",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "전개", "이차방정식", "대입", "조건해석", "계산"],
     "wide": false,
     "content": "이차방정식 $(x-3)(x+5)=2x-6$의 두 근 중 큰 근을 $p$라고 할 때, 이차방정식 $px^2-(p^2-5)x-7=0$ 의 두 근의 합은?",
     "choices": [
@@ -264,15 +238,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "절댓값",
-      "이차함수",
-      "함수",
-      "도형",
-      "원",
-      "범위"
-    ],
+    "tags": ["객관식", "이차함수", "함수", "도형", "범위"],
     "wide": false,
     "content": "다음 중 이차함수 $y=x^2$의 그래프에 대한 설명으로 옳지 않은 것은?",
     "choices": [
@@ -391,14 +357,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차함수",
-      "함수판별",
-      "개념",
-      "오답선별",
-      "조건해석"
-    ],
+    "tags": ["객관식", "이차함수", "개념", "오답선별", "조건해석"],
     "wide": false,
     "content": "다음 그림은 이차함수 $y=ax^2$의 그래프를 평행이동한 것이다. 이 그래프가 점 $(-8,\\ k)$를 지날 때, $k$의 값은? (단, $a$는 상수)",
     "choices": [
@@ -460,15 +419,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "fullwidth",
-    "tags": [
-      "객관식",
-      "이차함수",
-      "그래프",
-      "축",
-      "좌표대입",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "이차함수", "그래프", "축", "조건해석"],
     "wide": true,
     "content": "이차함수 $y=a(x+p)^2$의 그래프가 아래 그림과 같을 때, 다음 중 이차함수 $y=ax^2+p$의 그래프로 알맞은 것은? (단, $a$, $p$는 상수이다.)",
     "choices": [
@@ -528,15 +479,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차함수",
-      "꼭짓점",
-      "완전제곱식",
-      "계수비교",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "이차함수", "꼭짓점", "조건해석", "계산"],
     "wide": false,
     "content": "이차함수 $y=-x^2+kx-5$의 그래프가 점 $(3,\\ 1)$을 지날 때, 이 그래프의 축의 방정식은?",
     "choices": [
@@ -564,15 +507,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "완전제곱식",
-      "이차함수",
-      "지수",
-      "함수",
-      "표해석",
-      "좌표"
-    ],
+    "tags": ["객관식", "완전제곱식", "이차함수", "함수", "좌표"],
     "wide": false,
     "content": "이차함수 $y=3x^2$의 그래프를 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $-13$만큼 평행이동하면 이차함수 $y=3x^2+px+q$의 그래프와 완전히 포개어진다. 이때, $p+q$의 값은? (단, $p$, $q$는 상수이다.)",
     "choices": [
@@ -671,14 +606,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차함수",
-      "최대최소",
-      "오답선별",
-      "개념",
-      "조건해석"
-    ],
+    "tags": ["객관식", "이차함수", "오답선별", "개념", "조건해석"],
     "wide": false,
     "content": "세 점 $(1,\\ 0)$, $(5,\\ 0)$, $(4,\\ k)$를 지나는 포물선을 그래프로 하는 이차함수의 식을 $y=x^2+bx+c$라고 할 때, $b+c-k$의 값은? (단, $b$, $c$는 상수)",
     "choices": [
@@ -725,32 +653,24 @@ window.questionBank = [
   {
     "id": 22,
     "level": "중",
-    "category": "이차함수와 그래프",
+    "category": "이차방정식",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-04",
-    "standardUnit": "이차함수와 그래프",
-    "standardUnitOrder": 4,
+    "standardUnitKey": "M3-03",
+    "standardUnit": "이차방정식",
+    "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "계수비교",
-      "이차함수",
-      "함수",
-      "표해석",
-      "좌표",
-      "대입"
-    ],
+    "tags": ["이차함수", "함수", "대입"],
     "wide": false,
     "content": "이차함수 $f(x)=\\dfrac{1}{2}x^2-x+1$에서 $f(p)=p$를 만족시키는 모든 $p$의 값의 합을 구하시오.",
     "choices": [],
     "answer": "$4$",
     "solution": "$f(p)=p$를 이차방정식으로 바꿔 직접 푼다.\n\n$\\dfrac12p^2-p+1=p$에서 $p^2-4p+2=0$, 즉 $(p-2)^2=2$. 따라서 $p=2\\pm\\sqrt2$이고 모든 값의 합은 4이다.",
-    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "이차함수의 그래프",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+    "subUnit": "이차방정식",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 23,
