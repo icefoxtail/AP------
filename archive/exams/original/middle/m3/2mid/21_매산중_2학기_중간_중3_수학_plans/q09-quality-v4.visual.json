@@ -1,0 +1,80 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2mid/21_매산중_2학기_중간_중3_수학.js",
+  "questionId": 9,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "solid-figure-v1",
+        "caption": "정사면체 A-BCD",
+        "accessibilityDescription": "정사면체의 꼭짓점과 모서리 BC의 중점 E를 나타내며, D에서 E와 A로 이은 선분 사이에 각호가 있다.",
+        "solids": [
+          {
+            "kind": "REGULAR_POLYHEDRON",
+            "faces": 4,
+            "side": 4,
+            "names": "DCBA",
+            "points": [
+              {
+                "id": "E",
+                "at": {
+                  "midpoint": [
+                    "B",
+                    "C"
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "segments": [
+          {
+            "from": "D",
+            "to": "E",
+            "style": "DASHED",
+            "role": "REF"
+          }
+        ],
+        "marks": {
+          "angles": [
+            {
+              "refs": [
+                "E",
+                "D",
+                "A"
+              ],
+              "arcs": 1,
+              "label": "x^\\circ",
+              "labelPlacement": "WEDGE"
+            }
+          ]
+        },
+        "dims": [
+          {
+            "edge": "AD"
+          }
+        ],
+        "sourceConditions": [
+          {
+            "id": "shape",
+            "condition": "모서리 길이가 4인 정사면체, E는 BC 중점이다.",
+            "mappedTo": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ]
+          }
+        ],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 30,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

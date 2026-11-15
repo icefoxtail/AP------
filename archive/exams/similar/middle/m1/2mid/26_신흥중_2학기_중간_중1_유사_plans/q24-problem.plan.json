@@ -1,12 +1,50 @@
 {
   "capability": "construction-spike-v1",
-  "sourceQuote": "다음 그림과 같이 정삼각형 $ABC$의 변",
-  "caption": "Q24 기하학적 다이어그램 및 시각자료 관계도",
   "mathPlan": {
     "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
     "nodes": [
       {
-        "id": "O",
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
         "op": "SOURCE_POINT",
         "inputs": [],
         "args": {
@@ -23,13 +61,201 @@
         },
         "outputType": "POINT",
         "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ad",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "be",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ad",
+          "be"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
       }
     ]
   },
-  "assetPath": "assets/images/26_신흥중_2학기_중간_중1_유사/q24.svg",
-  "engineEvidence": {
-    "resultPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q24-problem-result.json",
-    "statePath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q24-problem-state.json",
-    "svgPath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사_plans/engine_evidence/q24-problem.svg"
-  }
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sDC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "sBE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 570,
+    "height": 465
+  },
+  "caption": "정삼각형 ABC에서 길이가 같은 BD와 CE, 두 선분 AD와 BE가 만나는 점 P",
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "equal",
+        "count": 1,
+        "segments": [
+          "sBD",
+          "sCE"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "id": "target",
+        "refs": [
+          "A",
+          "P",
+          "E"
+        ],
+        "value": 60,
+        "label": "APE",
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "labelKind": "NAME"
+      }
+    ]
+  },
+  "displayLines": [],
+  "displayCircles": []
 }

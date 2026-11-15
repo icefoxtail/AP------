@@ -817,7 +817,7 @@ window.questionBank = [
     "answer": "④",
     "points": 4.2,
     "solution": "두 함수의 교점의 $x$좌표는 방정식 $f(x)-g(x)=0$의 실근임을 이용하여 식을 작성한다.\n$f(x)$는 최고차항의 계수가 $-1$인 이차함수이고, 교점의 $x$좌표가 $1, 6$이므로 $f(x)-g(x)=0$의 두 근이 $1, 6$이다.\n\n$h(x) = f(x)-g(x)$라 하면, $h(x)$는 최고차항의 계수가 $-1$인 이차함수이다.\n$h(x)=0$의 두 근이 $1, 6$이므로\n$h(x) = -(x-1)(x-6) = -(x^2-7x+6) = -x^2+7x-6$이다.\n$h(x)$의 그래프는 $x$축과 두 점 $A(1, 0)$, $B(6, 0)$에서 만난다.\n이차함수 $h(x)$의 최댓값을 구하기 위해 완전제곱식으로 변형하면\n$h(x) = -\\left(x^2-7x+\\dfrac{49}{4}\\right) + \\dfrac{49}{4} - 6$\n$= -\\left(x-\\dfrac{7}{2}\\right)^2 + \\dfrac{25}{4}$이다.\n따라서 꼭짓점 $V\\left(\\dfrac{7}{2}, \\dfrac{25}{4}\\right)$에서 $x=\\dfrac{7}{2}$일 때 최댓값 $\\dfrac{25}{4}$를 갖는다.\n$\\alpha = \\dfrac{7}{2}$, $\\beta = \\dfrac{25}{4}$이므로\n$4\\alpha+8\\beta = 4\\left(\\dfrac{7}{2}\\right) + 8\\left(\\dfrac{25}{4}\\right) = 14 + 50 = 64$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/26_매산고_1학기_중간_고1_유사/q15.svg",
+    "image": "assets/images/26_매산고_1학기_중간_고1_유사/q15-problem-readable-v2.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고1_유사/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 h(x)=f(x)-g(x)=-(x-1)(x-6)이 x축과 두 점 A(1,0), B(6,0)에서 만나고 꼭짓점은 V(7/2, 25/4)이다. α=7/2, β=25/4이므로 4α+8β=64이다.",

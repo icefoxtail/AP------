@@ -1,0 +1,133 @@
+{
+  "sourcePath": "archive/exams/original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js",
+  "questionId": 17,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "ellipse-figure-v1",
+        "conic": {
+          "kind": "PARABOLA",
+          "vertex": [
+            "0",
+            "4"
+          ],
+          "p": "-1/4",
+          "axis": "Y"
+        },
+        "points": [
+          {
+            "id": "A",
+            "kind": "ON_CONIC",
+            "y": "0",
+            "branch": "NEG"
+          },
+          {
+            "id": "B",
+            "kind": "ON_CONIC",
+            "y": "0",
+            "branch": "POS"
+          },
+          {
+            "id": "C",
+            "kind": "POINT",
+            "x": "5/2",
+            "y": "0"
+          },
+          {
+            "id": "T",
+            "kind": "TANGENT_FROM",
+            "from": "C",
+            "which": 1,
+            "label": false
+          },
+          {
+            "id": "D",
+            "kind": "POINT",
+            "x": "1",
+            "y": "0",
+            "label": false
+          },
+          {
+            "id": "V",
+            "kind": "POINT",
+            "x": "3",
+            "y": "4",
+            "label": false
+          },
+          {
+            "id": "O",
+            "kind": "POINT",
+            "x": "3",
+            "y": "0",
+            "label": false
+          },
+          {
+            "id": "K",
+            "kind": "POINT",
+            "x": "0",
+            "y": "4",
+            "label": false
+          }
+        ],
+        "segments": [
+          {
+            "id": "ground",
+            "from": "A",
+            "to": "B",
+            "label": "4\\,\\mathrm{m}"
+          },
+          {
+            "id": "gap",
+            "from": "B",
+            "to": "C",
+            "label": "0.5m"
+          },
+          {
+            "id": "laser",
+            "from": "T",
+            "to": "C"
+          },
+          {
+            "id": "target",
+            "from": "T",
+            "to": "D",
+            "label": "h",
+            "dashed": true
+          },
+          {
+            "id": "height",
+            "from": "O",
+            "to": "V",
+            "label": "4\\,\\mathrm{m}",
+            "dashed": true
+          },
+          {
+            "id": "guide",
+            "from": "K",
+            "to": "V",
+            "dashed": true
+          }
+        ],
+        "arch": {
+          "ground": "ground",
+          "laser": "laser"
+        },
+        "caption": "포물선과 사선",
+        "accessibilityDescription": "가로 기준선 위에 포물선과 사선이 그려져 있고, 바닥의 세 점과 높이 표기가 보인다.",
+        "sourceConditions": [
+          "조형물의 지면 폭 4m, 높이 4m",
+          "B에서 C까지의 지면 거리는 0.5m",
+          "레이저는 포물선에 접한다."
+        ],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 27,
+        "displayScale": 0.45,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

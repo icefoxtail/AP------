@@ -1,0 +1,385 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사.js",
+  "questionId": 13,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "합동인 두 삼각형",
+        "accessibilityDescription": "삼각형 ABC와 DEF의 대응각 및 길이.",
+        "sourceQuote": "△ABC≡△DEF; ∠A=65°, ∠F=45°, AB=7cm; ∠B=x°, DE=ycm",
+        "newVisualInformation": [],
+        "sourceConditions": [
+          {
+            "id": "congruence",
+            "condition": "△ABC≡△DEF in the printed vertex order",
+            "mappedTo": "translated corresponding triangles"
+          },
+          {
+            "id": "angles",
+            "condition": "A=65°, F=45°, B=x°",
+            "mappedTo": "angle marks"
+          },
+          {
+            "id": "lengths",
+            "condition": "AB=7 cm and DE=y cm",
+            "mappedTo": "AB dimension and DE expression label"
+          }
+        ],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-7"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Aright",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Bright",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Ac",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "Aright"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "25"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Bc",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "B",
+                "Bright"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "20"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineAC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "Ac"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineBC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "Bc"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lineAC",
+                "lineBC"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "C"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "Aright",
+          "Bright",
+          "Ac",
+          "Bc"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "DE",
+            "refs": [
+              "D",
+              "E"
+            ]
+          },
+          {
+            "id": "EF",
+            "refs": [
+              "E",
+              "F"
+            ]
+          },
+          {
+            "id": "FD",
+            "refs": [
+              "F",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 700,
+          "height": 460
+        },
+        "displayLines": [],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "angA",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 65,
+              "label": "65",
+              "arcs": 1
+            },
+            {
+              "id": "xB",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "label": "x",
+              "labelKind": "DEGREE",
+              "arcs": 1
+            },
+            {
+              "id": "angF",
+              "refs": [
+                "E",
+                "F",
+                "D"
+              ],
+              "value": 45,
+              "label": "45",
+              "arcs": 1
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "AB7",
+              "from": "A",
+              "to": "B",
+              "label": "7",
+              "unit": "cm",
+              "value": 7,
+              "side": "LEFT",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "yDE",
+              "ownerSegment": "DE",
+              "text": "y",
+              "unit": "cm",
+              "labelAt": "MID",
+              "side": "RIGHT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "Aright",
+          "Bright",
+          "Ac",
+          "Bc"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

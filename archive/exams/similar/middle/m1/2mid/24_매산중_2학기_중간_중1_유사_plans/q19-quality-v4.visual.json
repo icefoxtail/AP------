@@ -1,0 +1,569 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/24_매산중_2학기_중간_중1_유사.js",
+  "questionId": 19,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "오각형의 외각",
+        "accessibilityDescription": "다섯 꼭짓점의 외각을 나타낸 오각형.",
+        "sourceQuote": "외각 70°, 80°, 65°와 미지의 외각 x, y",
+        "newVisualInformation": [],
+        "sourceConditions": [
+          {
+            "id": "pentagon",
+            "condition": "A convex pentagon is shown",
+            "mappedTo": "five side segments"
+          },
+          {
+            "id": "exterior-angles",
+            "condition": "Three exterior angles are 70°, 80°, and 65°",
+            "mappedTo": "three labeled angle arcs"
+          }
+        ],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "V0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R0",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "V0"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "V0"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "rational",
+                  "numerator": "94771858",
+                  "denominator": "100000000"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "R1",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "V1"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V2",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "V1",
+                "R1"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "72"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "R2",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "V2"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V3",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "V2",
+                "R2"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "142"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "R3",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "V3"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V4",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "V3",
+                "R3"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "222"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "R4",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "V4"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V5ext",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "V4",
+                "R4"
+              ],
+              "args": {
+                "length": {
+                  "kind": "rational",
+                  "numerator": "65",
+                  "denominator": "100"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "222"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "R5",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "V0"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V0ext",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "V0",
+                "R5"
+              ],
+              "args": {
+                "length": {
+                  "kind": "rational",
+                  "numerator": "65",
+                  "denominator": "100"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "287"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V1ext",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "V1",
+                "R1"
+              ],
+              "args": {
+                "length": {
+                  "kind": "rational",
+                  "numerator": "65",
+                  "denominator": "100"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V2ext",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "V2",
+                "R2"
+              ],
+              "args": {
+                "length": {
+                  "kind": "rational",
+                  "numerator": "65",
+                  "denominator": "100"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "72"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V3ext",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "V3",
+                "R3"
+              ],
+              "args": {
+                "length": {
+                  "kind": "rational",
+                  "numerator": "65",
+                  "denominator": "100"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "142"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "V4ext",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "V4",
+                "R4"
+              ],
+              "args": {
+                "length": {
+                  "kind": "rational",
+                  "numerator": "65",
+                  "denominator": "100"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "222"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "V0",
+          "V1",
+          "V2",
+          "V3",
+          "V4",
+          "R0",
+          "R1",
+          "R2",
+          "R3",
+          "R4",
+          "R5",
+          "V0ext",
+          "V1ext",
+          "V2ext",
+          "V3ext",
+          "V4ext"
+        ],
+        "displaySegments": [
+          {
+            "id": "e0",
+            "refs": [
+              "V0",
+              "V1"
+            ]
+          },
+          {
+            "id": "e1",
+            "refs": [
+              "V1",
+              "V2"
+            ]
+          },
+          {
+            "id": "e2",
+            "refs": [
+              "V2",
+              "V3"
+            ]
+          },
+          {
+            "id": "e3",
+            "refs": [
+              "V3",
+              "V4"
+            ]
+          },
+          {
+            "id": "e4",
+            "refs": [
+              "V4",
+              "V0"
+            ]
+          },
+          {
+            "id": "extX",
+            "refs": [
+              "V0",
+              "V0ext"
+            ]
+          },
+          {
+            "id": "extY",
+            "refs": [
+              "V1",
+              "V1ext"
+            ]
+          },
+          {
+            "id": "ext70",
+            "refs": [
+              "V2",
+              "V2ext"
+            ]
+          },
+          {
+            "id": "ext80",
+            "refs": [
+              "V3",
+              "V3ext"
+            ]
+          },
+          {
+            "id": "ext65",
+            "refs": [
+              "V4",
+              "V4ext"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 680,
+          "height": 520
+        },
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "x",
+              "refs": [
+                "V0ext",
+                "V0",
+                "V1"
+              ],
+              "label": "x",
+              "labelKind": "MATH",
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "y",
+              "refs": [
+                "V1ext",
+                "V1",
+                "V2"
+              ],
+              "label": "y",
+              "labelKind": "MATH",
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "ang70",
+              "refs": [
+                "V2ext",
+                "V2",
+                "V3"
+              ],
+              "value": 70,
+              "label": "70",
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "ang80",
+              "refs": [
+                "V3ext",
+                "V3",
+                "V4"
+              ],
+              "value": 80,
+              "label": "80",
+              "arcs": 1,
+              "style": "ARC"
+            },
+            {
+              "id": "ang65",
+              "refs": [
+                "V4ext",
+                "V4",
+                "V0"
+              ],
+              "value": 65,
+              "label": "65",
+              "arcs": 1,
+              "style": "ARC"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "V0",
+          "V1",
+          "V2",
+          "V3",
+          "V4",
+          "R0",
+          "R1",
+          "R2",
+          "R3",
+          "R4",
+          "R5",
+          "V0ext",
+          "V1ext",
+          "V2ext",
+          "V3ext",
+          "V4ext"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

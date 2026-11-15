@@ -1,0 +1,282 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
+  "questionId": 14,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "50"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "80"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "50"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "ab",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "bc",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "cd",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "da",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "ac",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "bd",
+            "refs": [
+              "B",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 585
+        },
+        "caption": "원과 네 꼭짓점 및 각호",
+        "accessibilityDescription": "원을 둘러싼 네 점을 선분으로 잇고 내부의 교차 선분과 몇 곳의 각호를 표시했다.",
+        "sourceQuote": "원 O에 내접하는 사각형 ABCD에서 ∠CAD=115°, ∠ADC=40°, ∠ABD=x",
+        "sourceConditions": [
+          {
+            "id": "cyclicOrder",
+            "condition": "A, B, C, D appear on the circumference in that order",
+            "mappedTo": "polar positions A=0°, B=50°, C=80°, D=310° on circ"
+          },
+          {
+            "id": "angleCAD",
+            "condition": "∠CAD=115°",
+            "mappedTo": "angle mark CAD"
+          },
+          {
+            "id": "angleADC",
+            "condition": "∠ADC=40°",
+            "mappedTo": "angle mark ADC"
+          },
+          {
+            "id": "unknown",
+            "condition": "∠ABD=x",
+            "mappedTo": "unvalued x angle mark ABD"
+          }
+        ],
+        "newVisualInformation": [],
+        "planeMarks": {
+          "facts": [
+            {
+              "kind": "ON_CIRCLE",
+              "circle": "circ",
+              "points": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ]
+            }
+          ],
+          "angles": [
+            {
+              "id": "cad",
+              "refs": [
+                "C",
+                "A",
+                "D"
+              ],
+              "value": 115,
+              "label": "115",
+              "arcs": 1,
+              "factRole": "GIVEN",
+              "ring": 2
+            },
+            {
+              "id": "adc",
+              "refs": [
+                "A",
+                "D",
+                "C"
+              ],
+              "value": 40,
+              "label": "40",
+              "arcs": 1,
+              "factRole": "GIVEN",
+              "ring": 2
+            },
+            {
+              "id": "abd",
+              "refs": [
+                "A",
+                "B",
+                "D"
+              ],
+              "label": "x",
+              "arcs": 1,
+              "ring": 2
+            }
+          ]
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 20,
+        "displayScale": 0.59,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

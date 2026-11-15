@@ -245,6 +245,27 @@ test("basic preservation summary reports existing approvals and zero new or adva
   assert.doesNotMatch(out, /1\/1 approved/);
 });
 
+test("new BASIC parent Consumer requires the official review and reports a new basic parent separately", t => {
+  const f = historicalConsumerFixture(t), item = f.request.items[0];
+  const request = { schemaVersion: "archive-basic-scope-rebind-request-v1", requestId: "new-basic-no-receipt", examUid: "historical-fixture",
+    sourceArchiveFile: f.request.sourceArchiveFile, expectedSourceBlobSha1: f.request.expectedSourceBlobSha1, expectedQuestionCount: 24,
+    approval: { type: "BASIC_SCOPE_REBIND", sourceReview: { schemaVersion: "archive-reviewed-native-basic-parent-v1" } },
+    items: [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
+      after: { sourceFingerprint: item.after.sourceFingerprint, contentFingerprint: item.after.contentFingerprint },
+      basicParent: { grade: "중2", curriculumKey: "2022", courseKey: "M2-1", L1: "fixture", L2: "fixture" } }] };
+  const out = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "new-basic.json", request)] });
+  assert.equal(out.status, "FAIL"); assert.equal(out.exams[0].kind, "basic-parent-registration");
+  assert.equal(out.exams[0].newBasicParentApprovals, 0); assert.equal(out.exams[0].preservedMetadataApprovals, 0);
+  assert.equal(out.exams[0].newMetadataApprovals, 0); assert.equal(out.exams[0].approvalCreated, false);
+  assert.equal(out.counts.passed, 0); assert.equal(out.counts.skippedUnchanged, 0); assert.equal(out.failures[0].reason, "BASIC_PRESERVATION_MISMATCH");
+  const summary = renderSummary({ status: "PASS", mainSha: "a".repeat(40), counts: { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 },
+    exams: [{ kind: "basic-parent-registration", exam: "basic", changed: 1, checked: 1, passed: 1, skippedUnchanged: 0,
+      newBasicParentApprovals: 1, preservedMetadataApprovals: 0, expectedQuestionCount: 24, newMetadataApprovals: 1, advancedApprovals: 0, approvalCreated: true }],
+    failures: [], unobservedFields: [], assignmentPending: [] });
+  assert.match(summary, /New basic parent approvals: 1; preserved prior parents: 0; advanced approvals: 0; source questions: 24/);
+  assert.doesNotMatch(summary, /Preserved basic approvals: 1/);
+});
+
 test("identity-only Consumer verification reports one exact binding and zero new approvals", t => {
   const f = historicalConsumerFixture(t), item = f.request.items[0];
   const fingerprints = { sourceFingerprint: item.after.sourceFingerprint, contentFingerprint: item.after.contentFingerprint };

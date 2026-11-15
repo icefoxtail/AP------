@@ -1809,7 +1809,8 @@ window.questionBank = [
       "좌표평면",
       "최단 거리"
     ],
-    "image": "assets/images/21_팔마고_1학기_기말_고1_기출/q21-alive-replacement-problem.svg",
+    "image": "assets/images/21_팔마고_1학기_기말_고1_기출/q21-audit-rework.svg",
+    "imageSize": "large",
     "answer": "$24+\\dfrac{12}{\\sqrt{13}}\\text{ m}$",
     "solution": "도로는 $R(0,12)$, $S(18,0)$을 지나는 직선이다.\n기울기는\n$\\dfrac{0-12}{18-0}$\n$=-\\dfrac{12}{18}$\n$=-\\dfrac23$이다.\n점 $R$을 지나는 점-기울기식은\n$y-12=-\\dfrac23(x-0)$,\n$y=-\\dfrac23x+12$이다.\n양변에 3을 곱하면\n$3y=-2x+36$이고,\n따라서 도로의 방정식은\n$2x+3y-36=0$이다.\n\n우체국 $P(24,0)$에서 도로까지의 최단거리는 수선의 길이이다.\n점과 직선 사이의 거리 공식에 대입하면\n$d=\\dfrac{|2\\cdot24+3\\cdot0-36|}{\\sqrt{2^2+3^2}}$\n$=\\dfrac{|12|}{\\sqrt{13}}$\n$=\\dfrac{12}{\\sqrt{13}}\\text{ m}$이다.\n집 $H(0,0)$에서 우체국까지는 $24$ m이고, 우체국을 지난 뒤에는 $P$에서 도로에 내린 수선의 발까지가 가장 짧다.\n따라서 집에서 우체국에 들렀다가 도로에 도착하기까지의 최단거리는\n$24+\\dfrac{12}{\\sqrt{13}}\\text{ m}$이다.",
     "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q21-solution-v2.svg",

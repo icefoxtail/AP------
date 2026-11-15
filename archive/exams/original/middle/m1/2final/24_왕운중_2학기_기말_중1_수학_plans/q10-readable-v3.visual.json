@@ -1,0 +1,328 @@
+{
+  "sourcePath": "archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+  "questionId": 10,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "원 안의 두 반원",
+        "accessibilityDescription": "큰 원과 두 반원의 경계, 작은 반원의 반지름을 나타낸 그림.",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "K",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "big",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "left",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "L"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "right",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "R"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "L",
+          "O",
+          "K",
+          "R",
+          "B"
+        ],
+        "displayLines": [],
+        "displaySegments": [
+          {
+            "id": "sAL",
+            "refs": [
+              "A",
+              "L"
+            ]
+          },
+          {
+            "id": "sLK",
+            "refs": [
+              "L",
+              "K"
+            ]
+          },
+          {
+            "id": "sKR",
+            "refs": [
+              "K",
+              "R"
+            ]
+          },
+          {
+            "id": "sRB",
+            "refs": [
+              "R",
+              "B"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 540,
+          "height": 460
+        },
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "pointNames": {
+          "L": "O′",
+          "R": "O″"
+        },
+        "hiddenPointNames": [
+          "A",
+          "B",
+          "K"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displayCircles": [
+          "big"
+        ],
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "smallLeft",
+              "circle": "left",
+              "center": "L",
+              "from": "A",
+              "to": "K",
+              "side": "CW",
+              "highlight": false
+            },
+            {
+              "id": "smallRight",
+              "circle": "right",
+              "center": "R",
+              "from": "K",
+              "to": "B",
+              "side": "CW",
+              "highlight": false
+            }
+          ],
+          "regions": [
+            {
+              "id": "shade",
+              "fill": "LIGHT",
+              "factRole": "GIVEN",
+              "shapes": [
+                {
+                  "loop": {
+                    "start": "A",
+                    "steps": [
+                      {
+                        "to": "A",
+                        "arc": {
+                          "center": "O",
+                          "side": "FULL"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "holes": [
+                {
+                  "sector": {
+                    "center": "L",
+                    "from": "A",
+                    "to": "K",
+                    "side": "CW"
+                  }
+                },
+                {
+                  "sector": {
+                    "center": "R",
+                    "from": "K",
+                    "to": "B",
+                    "side": "CW"
+                  }
+                }
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "radiusL",
+              "ownerSegment": "sAL",
+              "text": "6 cm",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "radiusR",
+              "ownerSegment": "sRB",
+              "text": "4 cm",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "sourceConditions": [],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

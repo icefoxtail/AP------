@@ -596,3 +596,53 @@ revision과 원 영수증·evidence append 관계를 확인하여 producer 우�
 A partial source reassessment may restore a primary tuple omitted from a native M2 KEEP delta only after the existing independent CC finalization has verified the exact primary context. Both immutable source snapshots, the current question, the explicit request and final metadata must agree. The native ACTIVE PT/TPL match and one exact curriculum binding are required. The unchanged current ACTIVE PT and template must both already name the selected UID among their supporting questions.
 
 The continuity proof may carry the two primary keys, an unchanged empty condition list and an unchanged integration value. It cannot add conditions, change primary definitions, infer a new curriculum, settle a hold or replace a native semantic decision. Optional source semantic-status fields are not promoted through this path. Official canonical binding, resolver, projection and typed Consumer gates still apply.
+## Existing basic approval with an independently held native primary
+
+`archive-basic-scope-rebind-request-v1` may explicitly select
+`approval.sourceReview.schemaVersion = archive-basic-native-source-hold-preservation-v1`.
+This is a fingerprint continuation of an existing basic approval. It does not
+register the source's proposed PT/TPL, accept the native semantic delta, create
+REVIEW2 evidence, change a difficulty judgment, or remove an explicit type hold.
+The original figure-only registrar and reviewed text-only preservation contracts
+remain separate and unchanged.
+
+The opt-in names an immutable `priorCommit`, native review commit/path/ref, and
+independent primary HOLD commit/path/ref. The local evidence copies must equal
+the exact Git bytes and be SHA-bound to both the approval and selected items.
+Every selected item carries only its UID/ordinal, before/after fingerprints,
+the exact existing `basicParent`, evidence, reason, and hold reason
+`MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY`. Registry changes, parent correction,
+sourceRebind, scope modes, and difficulty corrections cannot be mixed into it.
+
+The writer re-derives the old fingerprints from the historical source, requires
+the historical body/choices/answer to remain unchanged, and checks the current
+student payload against both immutable native source snapshots. The native
+review must cover the complete source bank, read the source and solution, retain
+the RPM decision, and have no unresolved content or proposal debt. A different
+reviewer must have issued the exact immutable primary HOLD, with no approved
+retention fields. Its source, UID, native item, native after/match, full current
+question, and renderer inventory are all revalidated. External renderer assets
+must match the native/current Git versions and live bytes; self-contained nested
+SVG images are checked recursively. Unsupported inline or undeclared renderer
+shapes are refused.
+
+The prior basic approval is resolved using the production canonical loader and
+its complete Git/manifest-bound input bundle. All current metadata values,
+including difficulty/confidence, and all non-fingerprint identity values must
+equal that prior state. PT/TPL remain empty with `manual_review_pending` field
+statuses. At most one existing `EXPLICIT_L4_HOLD` runtime row is permitted; its
+entire value and path must remain unchanged. An approved, added, missing,
+duplicate, or altered runtime is refused. Neither source nor runtime is written.
+
+The receipt records `preservedMetadataApprovals`, `newMetadataApprovals: 0`,
+`advancedApprovals: 0`, the explicit hold reason, protected-value digests, exact
+renderer evidence, and any held runtime digest. Replay re-runs these checks.
+`--verify-projection` reports `STATIC_VALUES_VERIFIED`, not a consumer result.
+The typed Changed-UID Consumer separately requires the official replay, exact
+held runtime, current canonical `APPROVED/PASS`, and actual page-query visibility.
+Its result is basic-approval preservation with zero new advanced approvals.
+
+Regression coverage is in `tests/archive-basic-scope-rebind.test.mjs`; the
+reviewed parent correction suite must continue to pass alongside it. This
+reconstruction was tested as new bytes after loss of an unpublished local
+implementation; historical test reports are not substituted for current runs.

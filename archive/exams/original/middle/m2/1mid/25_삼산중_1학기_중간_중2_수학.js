@@ -1041,7 +1041,7 @@ window.questionBank = [
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -1064,7 +1064,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "review_required",
     "reviewStatus": "review_required",
-    "content": "일차부등식 $-3x - 2a > 1 + 2(a - x)$의 해를 수직선 위에 나타내면 다음 그림과 같을 때, 수 $a$의 값은? (4점)<br><br><img src=\"assets/images/25_삼산중_1학기_중간_중2_수학/q17-clean-v1.png\" style=\"max-width: 400px; display: block; margin: 10px 0;\">",
+    "content": "일차부등식 $-3x - 2a > 1 + 2(a - x)$의 해를 수직선 위에 나타내면 다음 그림과 같을 때, 수 $a$의 값은? (4점)<br><br><img src=\"assets/images/25_삼산중_1학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"수직선에서 −2는 빈 점이다. −2 위에서 왼쪽으로 화살표가 뻗어 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "questionUid": "25_삼산중_1학기_중간_중2_수학|17",
     "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
     "sourceOrdinal": 17,
@@ -1231,7 +1231,7 @@ window.questionBank = [
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -1254,7 +1254,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "tagStatus": "review_required",
     "reviewStatus": "review_required",
-    "content": "다음 그림과 같이 다항식이 적혀 있는 과녁이 있다. 영호와 순자가 각각 과녁에 화살을 던졌는데, 영호는 $-x + 3y$가 적힌 칸을 맞혔다. 두 사람이 맞힌 칸에 적힌 다항식의 뺄셈의 결과가 $4x - y$일 때, 순자가 맞힌 칸에 적힌 다항식이 될 수 있는 것을 모두 고른 것은? (5점)<br><br><img src=\"assets/images/25_삼산중_1학기_중간_중2_수학/q20-clean-v1.png\" style=\"max-width: 400px; display: block; margin: 10px 0;\">",
+    "content": "다음 그림과 같이 다항식이 적혀 있는 과녁이 있다. 영호와 순자가 각각 과녁에 화살을 던졌는데, 영호는 $-x + 3y$가 적힌 칸을 맞혔다. 두 사람이 맞힌 칸에 적힌 다항식의 뺄셈의 결과가 $4x - y$일 때, 순자가 맞힌 칸에 적힌 다항식이 될 수 있는 것을 모두 고른 것은? (5점)<br><br><img src=\"assets/images/25_삼산중_1학기_중간_중2_수학/q20-problem-visual-v2.svg\" alt=\"중앙 f는 3x+2y이다. 위 왼쪽 a는 4x−5y, 왼쪽 b는 2x−3y, 아래 왼쪽 c는 −5x+4y, 아래 오른쪽 d는 3x−y, 오른쪽 e는 2x+7y이다. 화살표가 있는 위 오른쪽에는 −x+3y가 적혀 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "questionUid": "25_삼산중_1학기_중간_중2_수학|20",
     "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
     "sourceOrdinal": 20,
@@ -1346,7 +1346,7 @@ window.questionBank = [
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
@@ -1369,7 +1369,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "tagStatus": "review_required",
     "reviewStatus": "review_required",
-    "content": "〈서술형 2〉 다음 그림에서 직사각형의 넓이와 사다리꼴의 넓이가 서로 같을 때, 사다리꼴의 높이를 구하시오. (5점)<br><br><img src=\"assets/images/25_삼산중_1학기_중간_중2_수학/q22.png\" style=\"max-width: 480px; display: block; margin: 10px 0;\">",
+    "content": "〈서술형 2〉 다음 그림에서 직사각형의 넓이와 사다리꼴의 넓이가 서로 같을 때, 사다리꼴의 높이를 구하시오. (5점)<br><br><img src=\"assets/images/25_삼산중_1학기_중간_중2_수학/q22-problem-visual-v2.svg\" alt=\"왼쪽 직사각형의 가로는 3a²b, 세로는 4ab이다. 오른쪽 사다리꼴의 두 나란한 변은 2a와 4a이다. B에서 아랫변으로 내린 수선의 발이 E이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "questionUid": "25_삼산중_1학기_중간_중2_수학|22",
     "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
     "sourceOrdinal": 22,
@@ -1390,9 +1390,9 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "integrationPatternReason": "The verified solution combines the named intermediate actions in order/branch form."
   ,
-    "solutionImage": "assets/images/25_삼산중_1학기_중간_중2_수학/q22-solution.svg",
-    "solutionImageAlt": "같은 넓이를 가진 직사각형과 사다리꼴의 변 길이와 높이",
-    "solutionImageCaption": "모식도이며 실제 길이 비율을 나타내지 않는다.",
+    "solutionImage": "assets/images/25_삼산중_1학기_중간_중2_수학/q22-solution-visual-v2.svg",
+    "solutionImageAlt": "왼쪽 직사각형의 가로는 3a²b, 세로는 4ab이다. 오른쪽 사다리꼴의 두 나란한 변은 2a와 4a이다. B에서 아랫변으로 내린 수선의 발이 E이다. 높이는 h로 표시했다.",
+    "solutionImageCaption": "두 넓이는 각각 12a³b²와 3ah이다. 둘이 같으므로 사다리꼴의 높이는 4a²b²이다.",
     "solutionImageSize": "full"
 },
   {

@@ -276,6 +276,11 @@ if (reviewedInput) {
   // changed bytes is rejected even when its receipt and all metadata flags remain intact.
   const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-native-proof-"));
   try {
+    // Preserved approvals replay their immutable Git ancestry as well as the
+    // copied evidence files. Give this isolated fixture read-only access to the
+    // same object history; its proof bytes remain independent mutable copies.
+    execFileSync("git", ["clone", "--quiet", "--shared", "--no-checkout", "--local", root, fixtureRoot],
+      { stdio: ["ignore", "pipe", "pipe"] });
     const receiptPath = nativeApprovals.get(input.current.questionUid);
     const receipt = readJson(receiptPath);
     for (const relative of [receiptPath, ...receipt.approval.evidenceRefs.map(ref => ref.path)]) {

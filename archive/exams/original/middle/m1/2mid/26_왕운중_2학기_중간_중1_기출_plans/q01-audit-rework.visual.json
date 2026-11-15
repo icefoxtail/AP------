@@ -1,0 +1,295 @@
+{
+  "sourcePath": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+  "questionId": 1,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "AA",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "BB",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "AX",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "AA"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "AY",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "AA",
+                "AX"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "36"
+                },
+                "turn": "CCW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "BX",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "BB"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "BY",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "BB",
+                "BX"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "turn": "CCW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "AA",
+          "BB",
+          "AX",
+          "AY",
+          "BX",
+          "BY"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sa1",
+            "refs": [
+              "AA",
+              "AX"
+            ]
+          },
+          {
+            "id": "sa2",
+            "refs": [
+              "AA",
+              "AY"
+            ]
+          },
+          {
+            "id": "sb1",
+            "refs": [
+              "BB",
+              "BX"
+            ]
+          },
+          {
+            "id": "sb2",
+            "refs": [
+              "BB",
+              "BY"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "coordinateCanvas": {
+          "width": 620,
+          "height": 340
+        },
+        "caption": "선분과 두 각의 그림",
+        "accessibilityDescription": "윗줄의 선분과 아랫줄의 두 각을 떨어뜨려 배치했다.",
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "aLen",
+              "ownerSegment": "sAB",
+              "text": "a"
+            }
+          ],
+          "angles": [
+            {
+              "id": "angA",
+              "refs": [
+                "AX",
+                "AA",
+                "AY"
+              ],
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "noLabel": true
+            },
+            {
+              "id": "angB",
+              "refs": [
+                "BX",
+                "BB",
+                "BY"
+              ],
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "noLabel": true
+            }
+          ]
+        },
+        "pointNames": {
+          "A": "A",
+          "B": "B",
+          "AA": "A",
+          "BB": "B"
+        },
+        "pointNameGroups": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "AA",
+            "BB"
+          ]
+        ],
+        "hiddenPointNames": [
+          "AX",
+          "AY",
+          "BX",
+          "BY"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 34,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

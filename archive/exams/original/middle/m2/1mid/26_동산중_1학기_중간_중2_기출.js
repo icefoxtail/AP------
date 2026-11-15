@@ -951,7 +951,7 @@ window.questionBank = [
     "imageStatus": "provided",
     "answerStatus": "verified",
     "solutionStatus": "created",
-    "reviewStatus": "manual_review",
+    "reviewStatus": "reviewed_pass",
     "sourceIdentityKey": "26_동산중_1학기_중간_중2_기출:q19",
     "sourcePage": 4,
 },
@@ -1006,7 +1006,7 @@ window.questionBank = [
     "imageStatus": "not_required",
     "answerStatus": "verified",
     "solutionStatus": "created",
-    "reviewStatus": "manual_review",
+    "reviewStatus": "reviewed_pass",
     "sourceIdentityKey": "26_동산중_1학기_중간_중2_기출:q20",
     "sourcePage": 4,
 },
@@ -1059,7 +1059,7 @@ window.questionBank = [
     "imageStatus": "not_required",
     "answerStatus": "verified",
     "solutionStatus": "created",
-    "reviewStatus": "manual_review",
+    "reviewStatus": "reviewed_pass",
     "sourceIdentityKey": "26_동산중_1학기_중간_중2_기출:q21",
     "sourcePage": 4,
 },
@@ -1151,7 +1151,8 @@ window.questionBank = [
     "reviewStatus": "manual_review",
     "sourceIdentityKey": "26_동산중_1학기_중간_중2_기출:q23",
     "sourcePage": 4,
-    "image": "assets/images/26_동산중_1학기_중간_중2_기출/q23-clean.svg"
+    "image": "assets/images/26_동산중_1학기_중간_중2_기출/q23-readable-v3.svg",
+    "imageSize": "full"
   },
   {
     "id": 24,
