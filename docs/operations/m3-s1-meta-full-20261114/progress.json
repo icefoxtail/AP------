@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 95,
-    "reviewedQuestions": 2262
+    "reviewedExams": 96,
+    "reviewedQuestions": 2288
   },
   "duplicateUids": [],
   "exams": [
@@ -10539,9 +10539,38 @@
       ],
       "solutionCount": 26,
       "existing4slot": null,
-      "status": "PENDING",
+      "status": "REVIEWED_WITH_EVIDENCE_DEBT",
       "assignedTo": "meta_a",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "d1d93a3a4405c825e036005fb284eb6e627002a7",
+      "reviewer": "meta_a",
+      "independentReviewer": "meta_b",
+      "integratedBy": "GPT_ROOT_E0C948452E80",
+      "sampledOrdinals": [
+        15,
+        21,
+        23
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E109",
+      "checks": {
+        "fourSlotFail": 0,
+        "fourSlotWarn": 13,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      },
+      "sourceChangedItems": 25,
+      "sourceChangedFields": 50,
+      "contentDebtCount": 2,
+      "typeProposalCount": 0,
+      "evidenceDebtOrdinals": [
+        15
+      ],
+      "undecidedDifficultyOrdinals": [
+        15
+      ],
+      "difficultyPolicyDebtOrdinals": [],
+      "validatorCompatibilityOrdinals": []
     },
     {
       "key": "E110",
@@ -11006,8 +11035,8 @@
     "predecessorRevision": 6,
     "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
   },
-  "updatedAt": "2026-11-15T06:13:31.299589+00:00",
-  "lastPublishedHeadBeforeCurrent": "fdc887a21595fdc650226e3bca2a8646c8764599",
+  "updatedAt": "2026-11-15T06:13:48.699536+00:00",
+  "lastPublishedHeadBeforeCurrent": "c0c7141a024a29ba6fc6c9a614ce3b90d7e9625e",
   "resumeHistory": [
     {
       "basis": "EXPLICIT_USER_DIRECTION_TO_RESUME_DESPITE_UNCONFIRMED_STALE_RUNNING",
@@ -11034,11 +11063,11 @@
       "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
     }
   ],
-  "lastCompletedExam": "E100",
+  "lastCompletedExam": "E109",
   "nextIncompleteExam": "E094",
-  "remainingExams": 20,
-  "remainingQuestions": 488,
-  "lastVerifiedRemoteHeadBeforeCurrent": "fdc887a21595fdc650226e3bca2a8646c8764599",
+  "remainingExams": 19,
+  "remainingQuestions": 462,
+  "lastVerifiedRemoteHeadBeforeCurrent": "c0c7141a024a29ba6fc6c9a614ce3b90d7e9625e",
   "externalCheckpoint": {
     "revision": 14,
     "sha256": "b8309700fb38b58cfcefcba3bbb7cdee73c4c58f81b1386ea56b2d0d1ade692d",
@@ -11136,8 +11165,8 @@
           "worker": "B",
           "kind": "independent",
           "path": "/workspace/scratch/e0c948452e80/workers/B/E094.independent.json",
-          "bytes": 3011,
-          "sha256": "336ce411361a004457aa21b315725e1e6ac18b136ed7cb4588cadf4bb2ef76af",
+          "bytes": 3545,
+          "sha256": "8cbc9fe6d1de42251ec632de7b0c24aacce15c08310fb12e1fa0a0c10735f710",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],
@@ -11192,8 +11221,8 @@
           "worker": "B",
           "kind": "independent",
           "path": "/workspace/scratch/e0c948452e80/workers/B/E097.independent.json",
-          "bytes": 2772,
-          "sha256": "3652845405eee6c2137e0ce8805c273ff9d392161de8323a12dc7bf47a6f1d91",
+          "bytes": 3275,
+          "sha256": "1722df4008b36248c4a1dc3eb2a575868693b67a7e8e8e6d289cfa1c63da6994",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],
@@ -11272,8 +11301,8 @@
           "worker": "B",
           "kind": "independent",
           "path": "/workspace/scratch/e0c948452e80/workers/B/E103.independent.json",
-          "bytes": 4175,
-          "sha256": "d08160fe408c9576807e10da2226b212c2ad866dac7730717aa8ad54adfcbb8b",
+          "bytes": 4703,
+          "sha256": "efaab83ac4a91b310d105e98c6bfcbbcd8443f32ab3cd959a96484a3bcd43e12",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],
@@ -11304,40 +11333,8 @@
           "worker": "B",
           "kind": "independent",
           "path": "/workspace/scratch/e0c948452e80/workers/B/E106.independent.json",
-          "bytes": 4280,
-          "sha256": "e93bf833538a11b3202954b542a38e09742a5763eae8a0310641d9f3535e55a3",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        }
-      ],
-      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
-    },
-    {
-      "examKey": "E109",
-      "sourceBlob": "36c7d72c3e6dc510ca7ab6c198346707180e9492",
-      "questionCount": 26,
-      "artifacts": [
-        {
-          "worker": "A",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E109.review.json",
-          "bytes": 187210,
-          "sha256": "14a7fd6c6e072a811004c7f04f5bfb1d9682cb310f676656b515fdf7fd944aac",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "A",
-          "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/A/E109.4slot.json",
-          "bytes": 158576,
-          "sha256": "bbc1101e9bfb57d60cfe77313927fe56e43fd18bf4f83c3f30df6d5a187e846e",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "B",
-          "kind": "independent",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E109.independent.json",
-          "bytes": 3153,
-          "sha256": "cae72e6271fcce8b276404a2d9b47aac1bf5f04a74938c3f10597cce583489d5",
+          "bytes": 4767,
+          "sha256": "1ffe90fe47b96d80e0d1e8772f8c33efda888caf96cbdda871ddaaf5ac3bd2fb",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],
@@ -11362,6 +11359,30 @@
           "path": "/workspace/scratch/e0c948452e80/workers/A/E112.4slot.json",
           "bytes": 173783,
           "sha256": "c45df41886e90113be0390bf3e85249f3f704a12dfeb7151f838328986847c77",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
+      "examKey": "E115",
+      "sourceBlob": "14abf906edb417567a756e3fbca76163f16128af",
+      "questionCount": 25,
+      "artifacts": [
+        {
+          "worker": "A",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E115.review.json",
+          "bytes": 184322,
+          "sha256": "e8f6c0be6bdee6caa87b22365ab3aeece833c336b1185ebb4c936e76f71547e6",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "A",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E115.4slot.json",
+          "bytes": 161844,
+          "sha256": "616331db282157d4a400fd5ec11d9936a3d8d24723f036b69c86139bec858012",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],

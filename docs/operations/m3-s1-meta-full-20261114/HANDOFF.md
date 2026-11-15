@@ -8,9 +8,9 @@ Branch: `review/m3-s1-meta-full-20261114`
 
 ## 검증된 저장 범위
 
-전체115시험지·2,750문항. 이전73시험지·1,731문항 재사용. 현재 검토패킷 95시험지·2262문항, 이번추가 22시험지·531문항. 잔여20시험지·488문항. 이 snapshot의 원격 저장은 해당 commit의 HEAD/tree/blob readback으로 확인한다.
+전체115시험지·2,750문항. 이전73시험지·1,731문항 재사용. 현재 검토패킷 96시험지·2288문항, 이번추가 23시험지·557문항. 잔여19시험지·462문항. 이 snapshot의 원격 저장은 해당 commit의 HEAD/tree/blob readback으로 확인한다.
 
-마지막 완료: **E100**. 다음 미완료: **E094**.
+마지막 완료: **E109**. 다음 미완료: **E094**.
 
 ## 소유권·복구
 
@@ -22,11 +22,11 @@ A/B/C 담당·실제 output 경로는 progress.workers. 패킷은 문항별 의�
 
 마지막 검증 AWCR: r14 / raw SHA `b8309700fb38b58cfcefcba3bbb7cdee73c4c58f81b1386ea56b2d0d1ade692d` / Drive `1HBtwTDvYQWXdkSBdqmHgL_VqM74cbmfd`. 이 commit 자체의 외부 sync는 다음 raw readback 전까지 SYNC_PENDING. 원격 검증 후3시험지마다,20분 이내,중단/오류/마감 때 AWCR append-only와 Notion 중3 1학기 행만 갱신한다.
 
-이전 원격 HEAD: `fdc887a21595fdc650226e3bca2a8646c8764599`. 현재 commit의 SHA는 원격 조회 후 AWCR/Notion에 기록한다. 같은 commit 안에 자기 SHA를 요구하지 않는다.
+이전 원격 HEAD: `c0c7141a024a29ba6fc6c9a614ce3b90d7e9625e`. 현재 commit의 SHA는 원격 조회 후 AWCR/Notion에 기록한다. 같은 commit 안에 자기 SHA를 요구하지 않는다.
 
 ## 품질·출고 경계
 
-근거 부채 또는 미판정 상태 시험지: E024, E025, E028, E031, E034, E035, E043, E044, E047, E050, E059, E061, E064, E066, E073, E080, E081, E082, E083, E084, E085, E088, E089, E090, E091, E092, E093, E095, E100. 자세한 UID·사유는 exams/E###/review.json 및 validation.json. 공식4칸 실패·난도UNKNOWN·leaf/binding gap과 source drift는 숨기지 않는다. 검토패킷 저장은 전체 품질 PASS 또는 출고승인이 아니다.
+근거 부채 또는 미판정 상태 시험지: E024, E025, E028, E031, E034, E035, E043, E044, E047, E050, E059, E061, E064, E066, E073, E080, E081, E082, E083, E084, E085, E088, E089, E090, E091, E092, E093, E095, E100, E109. 자세한 UID·사유는 exams/E###/review.json 및 validation.json. 공식4칸 실패·난도UNKNOWN·leaf/binding gap과 source drift는 숨기지 않는다. 검토패킷 저장은 전체 품질 PASS 또는 출고승인이 아니다.
 
 문제·보기·정답·해설·그림·UID·순서는 불변. source가 지원하는 메타만 최소 수정하고 미지원 필드는 소형 제안으로 남긴다. main·공용 레지스트리·DB·catalog·runtime 등록·배포는 이 Pro 범위에서 NOT_RUN. 전체 패킷과 명명 부채를 정리한 후 CODEX_LOCAL에 OFFERED한다.
 
@@ -49,7 +49,6 @@ A/B/C 담당·실제 output 경로는 progress.workers. 패킷은 문항별 의�
 | E106 | 21 | `original/middle/m3/1final/16_은계중_1학기_기말_중3_수학.js` |
 | E107 | 24 | `original/middle/m3/1final/16_장흥중_1학기_기말_중3_수학.js` |
 | E108 | 25 | `original/middle/m3/1final/16_창포중_1학기_기말_중3_수학.js` |
-| E109 | 26 | `original/middle/m3/1final/16_환호여중_1학기_기말_중3_수학.js` |
 | E110 | 24 | `original/middle/m3/1mid/16_경북장흥중_1학기_중간_중3_수학.js` |
 | E111 | 29 | `original/middle/m3/1mid/16_부산대천리중_1학기_중간_중3_수학.js` |
 | E112 | 26 | `original/middle/m3/1mid/16_부산만덕중_1학기_중간_중3_수학.js` |
@@ -61,4 +60,4 @@ A/B/C 담당·실제 output 경로는 progress.workers. 패킷은 문항별 의�
 
 정확한 파일 경로·SHA·작성자는 `progress.json`의 `unsavedArtifacts`에 기록한다. 읽는 동안 변한 파일은 검증된 완성본으로 취급하지 않는다.
 
-E094 / E096 / E097 / E098 / E101 / E103 / E106 / E109 / E112
+E094 / E096 / E097 / E098 / E101 / E103 / E106 / E112 / E115

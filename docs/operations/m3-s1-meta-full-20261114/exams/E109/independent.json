@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E109",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E0C948452E80/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "36c7d72c3e6dc510ca7ab6c198346707180e9492",
+  "inputHashes": {
+    "reviewSha256": "14a7fd6c6e072a811004c7f04f5bfb1d9682cb310f676656b515fdf7fd944aac",
+    "fourSlotSha256": "bbc1101e9bfb57d60cfe77313927fe56e43fd18bf4f83c3f30df6d5a187e846e"
+  },
+  "sampledOrdinals": [
+    15,
+    21,
+    23
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_367b7b0fcc10fb70157049a91f6a017b483b9dd379fa11694c76a3dda059a5d9",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제그림은위로열린포물선이고꼭짓점은y축왼쪽이다. 기존해설의아래로열림·원점오른쪽설명과반대이므로CONTENT_AMBIGUITY_EVIDENCE_DEBT와최종level/bucketUNKNOWN 보류수용."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_b77f30d7d71d04efba0d23c1155fb526ef4b9d9ff5bc474c285c8683f094cf45",
+      "status": "PASS",
+      "note": "실제축3인내접직사각형그림과해설의b=6,너비6-2t,높이-t²+6t,둘레최적화후높이재대입과정을확인. 소문항안내없이변수모델·대칭·최적치·별도목표를구성하므로4/B34후보를수용하며길이goal과최댓값condition분리도정확하다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_e3d239a62ade327f7f8b8899571c9a85d845708ad72ff738a4a88385cf9999ce",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제스캔하단의도형은잘려있으나발문이BC+CE=7와두제곱넓이합25를완결적으로제공한다. 기존해설의x²+(7-x)²=25와작은변선택은실재하며독립요청후안내된소문항구조에맞는bucket2/B23으로변경한최신본확인. PARTIALLY_CROPPED_IMAGE debt보존."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E109/15-content-1.png",
+      "sha256": "e1cab356e4643ed998d0a2f24289fee79f9da2222878b4a68bd3fe45af28c8a6",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E109/21-content-1.png",
+      "sha256": "20c8c185e20ffbfff61c17815a982819526dad20e057685378bbc2eb26ba330f",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E109/23-content-1.png",
+      "sha256": "a3fdaf9b80b7914d4d01982607f5d7a56abb47afa3a452486724526c8cd6f492",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}
