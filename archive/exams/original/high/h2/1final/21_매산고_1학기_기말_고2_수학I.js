@@ -499,7 +499,11 @@ window.questionBank = [
     },
     "layoutTag": "grid",
     "wide": false,
-    "sourceIdentityFingerprint": "135f441006703a1786a763d8ed2bca015dbad512a0555d77420987e7deed4566"
+    "sourceIdentityFingerprint": "135f441006703a1786a763d8ed2bca015dbad512a0555d77420987e7deed4566",
+    "solutionImage": "assets/images/21_매산고_1학기_기말_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위의 삼각형 ABC와 아래쪽 정사각형 BDEC가 보인다. AC와 AD로 둘러싸인 영역과 ABC, BCD, ABD의 넓이 영역을 구분한다.",
+    "solutionImageCaption": "B=(0,0), C=(15,0), D=(0,−15)로 놓으면 A=(41/5,8√21/5)이다. [ADC]=[ABC]+[BCD]−[ABD]=51+12√21이므로 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
