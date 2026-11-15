@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "m1-pr-release-gates-readonly-v1",
+  "observedAtUtc": "2026-11-15T09:57:00Z",
+  "remoteMain": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+  "branchProtection": {
+    "protected": false,
+    "requiredStatusChecks": {
+      "enforcement_level": "off",
+      "contexts": [],
+      "checks": []
+    },
+    "detailedProtectionRead": "FORBIDDEN_403_INTEGRATION_PERMISSION"
+  },
+  "sourceOfRequiredPractice": "docs/agents/common.md and applicable PR workflow path filters at 854215b755536cc73b1ce412aed239dc396fd53d",
+  "expectedApplicablePrChecks": [
+    {
+      "workflow": "CI",
+      "jobs": [
+        "plan",
+        "test"
+      ]
+    },
+    {
+      "workflow": "Archive2 Runtime Guard",
+      "jobs": [
+        "Archive2 runtime contract",
+        "Archive2 50-question solution Chrome"
+      ]
+    },
+    {
+      "workflow": "Problem Bank Shared Meta",
+      "jobs": [
+        "shared-meta"
+      ]
+    },
+    {
+      "workflow": "Archive Main Auto Metadata",
+      "jobs": [
+        "test"
+      ],
+      "note": "Read-only inventory for compact change; register is skipped on PR"
+    }
+  ],
+  "notApplicableToThreeTargetFiles": [
+    {
+      "name": "Approved source, scoped Meta, and Consumer validation",
+      "reason": "Workflow path filters cover QID9/generated package assets and tests; not the two original JS and one compact"
+    }
+  ],
+  "activeWriter": [
+    {
+      "id": 43700835087,
+      "status": "pending",
+      "sha": "b7d8fb57baecbd91601fe0445e7dd0c5166873c1",
+      "createdAt": "2026-11-15T09:46:17Z"
+    },
+    {
+      "id": 43699689896,
+      "status": "in_progress",
+      "sha": "1a86eed3e7c6b9195194704576e7c6e19bbf75e6",
+      "createdAt": "2026-11-15T09:31:53Z"
+    }
+  ],
+  "latestWriterJob": [
+    {
+      "id": 132767884585,
+      "name": "register",
+      "status": "in_progress",
+      "conclusion": null,
+      "currentStep": "Prepare only changed native registration lanes in one transaction"
+    },
+    {
+      "id": 132767885596,
+      "name": "test",
+      "status": "completed",
+      "conclusion": "skipped"
+    }
+  ],
+  "lastPagesRun": {
+    "id": 43680234179,
+    "conclusion": "success",
+    "actualOutcome": "NO_OP",
+    "deployConclusion": "skipped",
+    "candidateSha": "accaff074ed2d4958924db52e891cadf3cad0af5",
+    "liveRegisteredSha": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+    "newValidationReceiptIssued": false
+  },
+  "liveReceiptUrl": "https://icefoxtail.github.io/AP------/_archive-release.json",
+  "liveReceiptSha256": "db4b1f7475d74fdd9cc950906812d91861f9a9052f397793dbdebfbc85a0f8d2",
+  "completionChecks": [
+    "New PR exact head applicable checks completed successfully",
+    "Merged main exact source JS and compact blobs read back",
+    "Writer persistence completed with nonempty exact registered_sha",
+    "Fixed registered SHA target4 difficulty fields match, original92 plus amendedQ7 four-slot consumer registered",
+    "Pages context source_sha and verified_release_main_sha match registered_sha, release gate and deploy success",
+    "Live _archive-release.json registeredMainSHA and applicable student data match persisted snapshot"
+  ],
+  "remoteMutations": 0,
+  "semanticRereview": "NOT_RUN"
+}

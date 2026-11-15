@@ -1,0 +1,184 @@
+{
+  "schemaVersion": "archive-writer-race-observation-v1",
+  "runId": 43690585850,
+  "jobId": 132740199913,
+  "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43690585850",
+  "artifactId": 14155713607,
+  "artifactSha256": "a5a0af7dc32131d5aaa3b4ce347df3afdafe2c76ac849d0c64501ce2625d7a87",
+  "status": "RETRY_EXHAUSTED",
+  "reason": "Three prepared candidates invalidated by protected main advances before persistence",
+  "reports": [
+    {
+      "loggedAt": "2026-11-15T08:32:33.1051535Z",
+      "inputSha": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+      "status": "PREPARED_WITH_PENDING",
+      "safeToPersist": true,
+      "registrationReady": true,
+      "publishable": true,
+      "lanes": [
+        {
+          "id": "reviewed",
+          "status": "VERIFIED",
+          "durationMs": 1204462,
+          "changedCount": 455
+        },
+        {
+          "id": "semantic",
+          "status": "VERIFIED",
+          "durationMs": 379345,
+          "changedCount": 14
+        },
+        {
+          "id": "shared",
+          "status": "VERIFIED",
+          "durationMs": 214018,
+          "changedCount": 0
+        },
+        {
+          "id": "generated",
+          "status": "VERIFIED",
+          "durationMs": 43516,
+          "changedCount": 0
+        },
+        {
+          "id": "reviewedFinal",
+          "status": "VERIFIED",
+          "changedCount": 0
+        },
+        {
+          "id": "studentIndexes",
+          "status": "VERIFIED",
+          "durationMs": 21435,
+          "changedCount": 1
+        },
+        {
+          "id": "fourSlot",
+          "status": "VERIFIED",
+          "durationMs": 17723,
+          "changedCount": 3
+        }
+      ]
+    },
+    {
+      "loggedAt": "2026-11-15T09:06:08.8544603Z",
+      "inputSha": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+      "status": "PREPARED_WITH_PENDING",
+      "safeToPersist": true,
+      "registrationReady": true,
+      "publishable": true,
+      "lanes": [
+        {
+          "id": "reviewed",
+          "status": "VERIFIED",
+          "durationMs": 1200746,
+          "changedCount": 458
+        },
+        {
+          "id": "semantic",
+          "status": "VERIFIED",
+          "durationMs": 378400,
+          "changedCount": 14
+        },
+        {
+          "id": "shared",
+          "status": "VERIFIED",
+          "durationMs": 213939,
+          "changedCount": 0
+        },
+        {
+          "id": "generated",
+          "status": "VERIFIED",
+          "durationMs": 41909,
+          "changedCount": 0
+        },
+        {
+          "id": "reviewedFinal",
+          "status": "VERIFIED",
+          "changedCount": 0
+        },
+        {
+          "id": "studentIndexes",
+          "status": "VERIFIED",
+          "durationMs": 21013,
+          "changedCount": 1
+        },
+        {
+          "id": "fourSlot",
+          "status": "VERIFIED",
+          "durationMs": 17643,
+          "changedCount": 3
+        }
+      ]
+    },
+    {
+      "loggedAt": "2026-11-15T09:37:07.4038010Z",
+      "inputSha": "dfcec53044d08fef5287332a1fa46d954875a988",
+      "status": "PREPARED_WITH_PENDING",
+      "safeToPersist": true,
+      "registrationReady": true,
+      "publishable": true,
+      "lanes": [
+        {
+          "id": "reviewed",
+          "status": "VERIFIED",
+          "durationMs": 1190462,
+          "changedCount": 453
+        },
+        {
+          "id": "semantic",
+          "status": "VERIFIED",
+          "durationMs": 307204,
+          "changedCount": 14
+        },
+        {
+          "id": "shared",
+          "status": "VERIFIED",
+          "durationMs": 157208,
+          "changedCount": 0
+        },
+        {
+          "id": "generated",
+          "status": "VERIFIED",
+          "durationMs": 37072,
+          "changedCount": 0
+        },
+        {
+          "id": "reviewedFinal",
+          "status": "VERIFIED",
+          "changedCount": 0
+        },
+        {
+          "id": "studentIndexes",
+          "status": "VERIFIED",
+          "durationMs": 18895,
+          "changedCount": 1
+        },
+        {
+          "id": "fourSlot",
+          "status": "VERIFIED",
+          "durationMs": 16223,
+          "changedCount": 3
+        }
+      ]
+    }
+  ],
+  "finalAttempt": {
+    "base": "dfcec53044d08fef5287332a1fa46d954875a988",
+    "includesPr2112": true,
+    "reviewedAppliedRequests": 165,
+    "reviewedRejectedRequests": 0,
+    "appliedByCohort": {
+      "m2s1": 61,
+      "m2s2": 69,
+      "m3s2": 35
+    },
+    "testDurationMs": 72175.347856,
+    "artifactMtimesUtc": {
+      "appliedFile": "2026-11-15T09:14:32Z",
+      "compileWrite": "2026-11-15T09:14:34Z",
+      "reviewedCompleted": "2026-11-15T09:26:02Z"
+    },
+    "interpretation": "PR2112 is present, but reviewed lane still took 1190462 ms. Test suite totals only 72175 ms; bulk registrar, build and projection/consumer work dominate. Exact per-command attribution unavailable."
+  },
+  "remoteMutation": 0
+}

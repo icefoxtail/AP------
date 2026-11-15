@@ -1,0 +1,604 @@
+{
+  "schemaVersion": "m1-s1-source-only-evidence-trace-v1",
+  "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
+  "owner": "/root/source_method_debt",
+  "readAtUtc": "2026-11-15",
+  "reviewBaseline": "b2572826f5d86102193b5d6a84635e192301795b",
+  "operationalReadBaseline": "854215b755536cc73b1ce412aed239dc396fd53d",
+  "scope": {
+    "sourceOnlyQuestions": 193,
+    "sourceOnlyExams": 8,
+    "full286ReviewRepeated": false,
+    "independent36ReviewRepeated": false,
+    "solved93LineageRepeated": false,
+    "newMethodApprovals": 0
+  },
+  "conclusion": "No current approved solution-method evidence was located for these 193 UIDs in the examined sources. Preserve method=[] and do not substitute old inferred candidate labels or different-UID similar solutions.",
+  "knownCandidateBranch": {
+    "branch": "work/4slot-annotate-v1",
+    "head": "5d2180d1e0d4c74453c06570f4adf65dd07957bb",
+    "files": [
+      {
+        "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/1mid/16_연향중_1학기_중간_중1_수학.4slot.json",
+        "blobSha1": "dcfe140adf37ff9cdbb9559dbb3fbcc378096b74",
+        "sourceArchiveFile": "original/middle/m1/1mid/16_연향중_1학기_중간_중1_수학.js",
+        "sourceGitBlobSha1": "7e6a0fb42fa48072c0d62627636174abe6b0e22f",
+        "questions": 24,
+        "judgedBy": "antigravity-5h-batch",
+        "methodReferencesBySrc": {
+          "stem": 35,
+          "choices": 15,
+          "solution": 0,
+          "other": 0
+        },
+        "independentApprovalLocated": false
+      },
+      {
+        "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/1mid/17_금당중_1학기_중간_중1_수학.4slot.json",
+        "blobSha1": "186d5d49669b06ae2537a1b864bb25da6e024015",
+        "sourceArchiveFile": "original/middle/m1/1mid/17_금당중_1학기_중간_중1_수학.js",
+        "sourceGitBlobSha1": "4049952db83b25d675d1ace39fecad78e611c0e5",
+        "questions": 25,
+        "judgedBy": "antigravity-5h-batch",
+        "methodReferencesBySrc": {
+          "stem": 29,
+          "choices": 23,
+          "solution": 0,
+          "other": 0
+        },
+        "independentApprovalLocated": false
+      },
+      {
+        "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/1mid/17_매산중_1학기_중간_중1_수학.4slot.json",
+        "blobSha1": "6ec215ed066bae5aa9699fee435e6a76a4a17438",
+        "sourceArchiveFile": "original/middle/m1/1mid/17_매산중_1학기_중간_중1_수학.js",
+        "sourceGitBlobSha1": "3cee19be7a4c1c993d299d4138729b8479c1140c",
+        "questions": 24,
+        "judgedBy": "antigravity-5h-batch",
+        "methodReferencesBySrc": {
+          "stem": 37,
+          "choices": 14,
+          "solution": 0,
+          "other": 0
+        },
+        "independentApprovalLocated": false
+      },
+      {
+        "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/1mid/17_삼산중_1학기_중간_중1_수학.4slot.json",
+        "blobSha1": "d278fd3ed98446c9483b8ee858640c085e98e46e",
+        "sourceArchiveFile": "original/middle/m1/1mid/17_삼산중_1학기_중간_중1_수학.js",
+        "sourceGitBlobSha1": "559db58665a8773f179d57acd9e1a0226387b11d",
+        "questions": 24,
+        "judgedBy": "antigravity-5h-batch",
+        "methodReferencesBySrc": {
+          "stem": 41,
+          "choices": 10,
+          "solution": 0,
+          "other": 0
+        },
+        "independentApprovalLocated": false
+      }
+    ],
+    "questionCount": 97,
+    "methodEntryCount": 204,
+    "solutionQuoteCount": 0,
+    "finalExamDirectory": "archive-work/4slot-annotate-v1/out/original/middle/m1/1final",
+    "finalExamDirectoryResult": "NOT_FOUND_AT_KNOWN_PATH",
+    "decision": "Self-check candidate terms from stem/choices are not an independent approval of a current solution."
+  },
+  "operationalEvidenceSearch": {
+    "current4slotTrackedFiles": 481,
+    "current4slotHydratedFiles": 481,
+    "metaFoundationEvidenceTrackedFiles": 1578,
+    "metaFoundationEvidenceHydratedFiles": 1578,
+    "exact193UidMatches": 0,
+    "currentMetadata193Status": "registration_pending_semantic_review",
+    "currentNonemptyPT": 0,
+    "currentNonemptyTPL": 0,
+    "limits": "This is a bounded search of the known candidate branch, current operational 4slot/evidence directories, exact UID metadata, supplied review artifacts and named Drive files, not a proof of universal nonexistence."
+  },
+  "supplementalDriveCandidates": [
+    {
+      "fileId": "1roqBi7fvgKQyVY4Vl2f_Jld_cqdiNrgG",
+      "filename": "2019_연향중1_수학_1기말_주관식_정답.pdf",
+      "rawSha256": "9ea32aa1cc81e3a93152d2f80c527f9dfda9dc10f6b175a0e74fc60aeb1fc108",
+      "pagesInspected": [
+        1,
+        2,
+        3
+      ],
+      "observation": "Printed questions with handwritten final answers and corrections; no complete worked solution or independent current-version approval evidence in the examined PDF.",
+      "effect": "NO_METHOD_APPROVAL"
+    },
+    {
+      "fileId": "1cTRyVR0GgPyhxFInByrD47Ff8d2shDTW",
+      "filename": "2019_왕운중1_수학_1기말_주관식_정답.pdf",
+      "rawSha256": "3462e7eac0033b17afdd6aa8500650f5180ee546457b0e1d050f4190fc2c9af9",
+      "pagesInspected": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "observation": "Printed questions with handwritten final answers and cancellation mark; no complete worked solution or independent current-version approval evidence in the examined PDF.",
+      "effect": "NO_METHOD_APPROVAL"
+    }
+  ],
+  "maesanSelectableItems": [
+    {
+      "questionUid": "qid_v1_5b30fd3ce0e76896ca056689272cd4eeae1cc87c3ebfe60d5764df1a31bfba6f",
+      "ordinal": 22,
+      "methodStatus": "SOURCE_ONLY_METHOD_EMPTY",
+      "finalCandidate": {
+        "problemTypeKey": "PT_M1_RECIPROCAL_RELATION",
+        "templateKey": "TPL_M1_RECIPROCAL_RELATION_RECOVER_AND_PRODUCT",
+        "problemTypeStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+        "templateStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+        "parentDefinition": {
+          "key": "PT_M1_RECIPROCAL_RELATION",
+          "registryStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+          "definition": "0이 아닌 두 수의 곱이 1인 역수 관계로 수를 복원하고 그 수의 부호·수체계 성질 또는 요청한 식의 값을 결정한다.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": null,
+          "exclusions": [
+            "잘못 수행한 연산을 복원하는 상황"
+          ],
+          "differenceFromExisting": "잘못 실행한 연산을 되돌리는 상황이 없는 역수 문제를 기존 오연산 복원 부모에 연결하지 않는다.",
+          "proposalRef": "PT_M1_RECIPROCAL_RELATION"
+        },
+        "templateDefinition": {
+          "key": "TPL_M1_RECIPROCAL_RELATION_RECOVER_AND_PRODUCT",
+          "registryStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+          "definition": "주어진 수의 역수 또는 주어진 역수와 곱하여 1이 되는 수를 복원한 뒤 요청한 곱을 계산한다. 수가 소수·대분수로 주어지거나 미지수가 고정 계수와 곱해진 경우 해당 직접 전처리를 포함한다.",
+          "ownerPack": "MIDDLE1",
+          "parentProblemTypeKey": "PT_M1_RECIPROCAL_RELATION",
+          "exclusions": [],
+          "differenceFromExisting": "오계산 사건 없이 역수 관계 자체가 입력이며, 같은 부모의 합 산출 변형과 마지막 연산이 다르다.",
+          "proposalRef": "TPL_M1_RECIPROCAL_RELATION_RECOVER_AND_PRODUCT"
+        },
+        "candidateSource": {
+          "artifactId": "IN_9a2d472993a1ca",
+          "jsonPointer": "/items/21"
+        },
+        "rawWorkerKeys": {
+          "problemTypeKey": "PT_M1_RECIPROCAL_RELATION",
+          "templateKey": "TPL_M1_RECIPROCAL_RELATION_RECOVER_AND_PRODUCT"
+        },
+        "projectionStatus": "NOT_APPLIED",
+        "releaseReady": false
+      },
+      "partCandidates": [],
+      "difficultyDecisionReused": {
+        "action": "WITHDRAW_MAX_OF_OPTIONAL_PARTS_AS_SINGLE_UID_DIFFICULTY",
+        "prior": null,
+        "proposedSingleUidBucket": "UNKNOWN",
+        "singleUidStatus": "PART_SELECTION_CONTEXT_REQUIRED",
+        "sourceUidPreserved": true,
+        "sourceLevelPreserved": true,
+        "reason": "원본 p4는 주관식2·3·4 각각의 수준별 선택형을 명시한다. 서로 다른 선택지에서 가장 높은 부담은 모든 응시자의 필수 부담이 아니므로 최대 bucket을 UID에 자동대표시키지 않는다. 소문항 난도 후보만 sidecar로 유지한다.",
+        "rubricPath": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+        "rubricSha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638",
+        "parts": [
+          {
+            "partId": "2-1",
+            "difficultyBucketCandidate": 1,
+            "difficultyConfidence": "low",
+            "difficultyBoundaryFlag": "B12",
+            "reason": "직접 역수 두 개와 곱으로 바로 결정되는 절차다.",
+            "notCanonicalUidProjection": true
+          },
+          {
+            "partId": "2-2",
+            "difficultyBucketCandidate": 2,
+            "difficultyConfidence": "low",
+            "difficultyBoundaryFlag": "B12",
+            "reason": "소수·대분수를 분수로 바꾸는 익숙한 전처리 후 같은 역수·곱 절차다.",
+            "notCanonicalUidProjection": true
+          },
+          {
+            "partId": "2-3",
+            "difficultyBucketCandidate": 2,
+            "difficultyConfidence": "low",
+            "difficultyBoundaryFlag": "B23",
+            "reason": "역수가 주어진 수식에서 미지 인수를 복원하는 한 번의 익숙한 역변환 뒤 곱한다. 경우분기나 비정형 전략 선택은 필수가 아니다.",
+            "notCanonicalUidProjection": true
+          }
+        ],
+        "finality": "PROVISIONAL_STEM_BASED; verified solution and selection context required"
+      }
+    },
+    {
+      "questionUid": "qid_v1_2dac9ee608178a2f9220b84b68f42cbf6559ffc08cefccef3aca64e7b1269d62",
+      "ordinal": 23,
+      "methodStatus": "SOURCE_ONLY_METHOD_EMPTY",
+      "finalCandidate": null,
+      "partCandidates": [
+        {
+          "problemTypeKey": "PT_M1_DIVISOR_EXPONENT_REASONING",
+          "templateKey": "TPL_M1_DIVISOR_EXPONENT_REASONING_DIRECT_COUNT",
+          "problemTypeStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+          "templateStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+          "parentDefinition": {
+            "key": "PT_M1_DIVISOR_EXPONENT_REASONING",
+            "registryStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+            "definition": "자연수의 소인수별 허용 지수로 약수를 구성하거나 약수 개수를 구하고, 주어진 약수 개수·구조 조건을 만족하는 인수 또는 지수를 결정한다.",
+            "ownerPack": "MIDDLE1",
+            "parentProblemTypeKey": null,
+            "exclusions": [
+              "범위에서 약수가 정확히 3개인 자연수의 개수만을 세는 기존 특화 유형"
+            ],
+            "differenceFromExisting": "기존 PT_DIVISOR_COUNT는 약수가 정확히 3개인 수를 구간에서 세는 목표로 한정된다. 이 후보는 일반 약수 지수곱과 약수 표의 구성을 다룬다.",
+            "proposalRef": "PT_M1_DIVISOR_EXPONENT_REASONING"
+          },
+          "templateDefinition": {
+            "key": "TPL_M1_DIVISOR_EXPONENT_REASONING_DIRECT_COUNT",
+            "registryStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+            "definition": "고정된 자연수를 소인수분해하고 각 소인수 지수에 1을 더한 값들의 곱으로 양의 약수 개수를 구한다. 고정 자연수를 미지 자연수로 나눈 몫의 자연수 조건이 주어지면 그 미지수를 약수로 해석하는 직접 전처리를 포함한다.",
+            "ownerPack": "MIDDLE1",
+            "parentProblemTypeKey": "PT_M1_DIVISOR_EXPONENT_REASONING",
+            "exclusions": [],
+            "differenceFromExisting": "약수가3개인 자연수를 구간에서 세는 기존 부모와 달리 주어진 한 자연수의 약수 수를 결정한다. 해설 회수 전에는 전략 후보이며 나열법을 실제 method로 대체하여 기록하지 않는다.",
+            "proposalRef": "TPL_M1_DIVISOR_EXPONENT_REASONING_DIRECT_COUNT"
+          },
+          "candidateSource": {
+            "artifactId": "IN_9a2d472993a1ca",
+            "jsonPointer": "/items/22"
+          },
+          "rawWorkerKeys": {
+            "problemTypeKey": "PT_M1_DIVISOR_EXPONENT_REASONING",
+            "templateKey": "TPL_M1_DIVISOR_EXPONENT_REASONING_DIRECT_COUNT"
+          },
+          "projectionStatus": "NOT_APPLIED",
+          "releaseReady": false,
+          "partId": "3-1",
+          "rawPartEvidence": {
+            "partId": "3-1",
+            "problemTypeKey": "PT_M1_DIVISOR_EXPONENT_REASONING",
+            "templateKey": "TPL_M1_DIVISOR_EXPONENT_REASONING_DIRECT_COUNT",
+            "methodCandidate": "고정된 자연수의 약수 개수",
+            "rpm2015": "M1-RPM-005",
+            "rpm2022": "M1-RPM-118"
+          }
+        },
+        {
+          "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+          "templateKey": "TPL_M1_COMMON_DIVISOR_INTEGRAL_QUOTIENT",
+          "problemTypeStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+          "templateStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+          "parentDefinition": {
+            "key": "PT_M1_COMMON_DIVISOR_CONDITION",
+            "registryStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+            "definition": "여러 정수에 대한 나눗셈의 정수성 또는 나머지 조건을 같은 미지 자연수의 공약수 조건으로 바꾸어 허용값의 최댓값·개수·집합을 결정한다. 직접 같은 수의 물건을 배분하는 상황 없이도 분모 또는 제수의 역할을 식으로 해석한다.",
+            "ownerPack": "MIDDLE1",
+            "parentProblemTypeKey": null,
+            "exclusions": [],
+            "differenceFromExisting": "기존 정의의 같은 수의 물건을 최대 인원에게 배분하는 서사와 다르게, 미지 제수의 정수성/나머지 제한이 결정적이다.",
+            "proposalRef": "PT_M1_COMMON_DIVISOR_CONDITION"
+          },
+          "templateDefinition": {
+            "key": "TPL_M1_COMMON_DIVISOR_INTEGRAL_QUOTIENT",
+            "registryStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+            "definition": "고정된 자연수들을 같은 미지 자연수로 나눈 몫이 모두 자연수라는 조건을 미지수의 공약수 조건으로 바꾼다. 최댓값이면 최대공약수, 개수이면 최대공약수의 약수를 사용한다.",
+            "ownerPack": "MIDDLE1",
+            "parentProblemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+            "exclusions": [],
+            "differenceFromExisting": "인원별 물품 배분 단계가 없고 분모의 자연수 조건이 직접 제시된다.",
+            "proposalRef": "TPL_M1_COMMON_DIVISOR_INTEGRAL_QUOTIENT"
+          },
+          "candidateSource": {
+            "artifactId": "IN_9a2d472993a1ca",
+            "jsonPointer": "/items/22"
+          },
+          "rawWorkerKeys": {
+            "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+            "templateKey": "TPL_M1_COMMON_DIVISOR_INTEGRAL_QUOTIENT"
+          },
+          "projectionStatus": "NOT_APPLIED",
+          "releaseReady": false,
+          "partId": "3-2",
+          "rawPartEvidence": {
+            "partId": "3-2",
+            "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+            "templateKey": "TPL_M1_COMMON_DIVISOR_INTEGRAL_QUOTIENT",
+            "methodCandidate": "공약수의 개수",
+            "rpm2015": "M1-RPM-008",
+            "rpm2022": "M1-RPM-121"
+          }
+        },
+        {
+          "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+          "templateKey": "TPL_M1_COMMON_DIVISOR_AFFINE_DENOMINATOR_FILTER",
+          "problemTypeStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+          "templateStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+          "parentDefinition": {
+            "key": "PT_M1_COMMON_DIVISOR_CONDITION",
+            "registryStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+            "definition": "여러 정수에 대한 나눗셈의 정수성 또는 나머지 조건을 같은 미지 자연수의 공약수 조건으로 바꾸어 허용값의 최댓값·개수·집합을 결정한다. 직접 같은 수의 물건을 배분하는 상황 없이도 분모 또는 제수의 역할을 식으로 해석한다.",
+            "ownerPack": "MIDDLE1",
+            "parentProblemTypeKey": null,
+            "exclusions": [],
+            "differenceFromExisting": "기존 정의의 같은 수의 물건을 최대 인원에게 배분하는 서사와 다르게, 미지 제수의 정수성/나머지 제한이 결정적이다.",
+            "proposalRef": "PT_M1_COMMON_DIVISOR_CONDITION"
+          },
+          "templateDefinition": {
+            "key": "TPL_M1_COMMON_DIVISOR_AFFINE_DENOMINATOR_FILTER",
+            "registryStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+            "definition": "고정 자연수를 미지 자연수의 일차식으로 나눈 값이 자연수라는 조건에서 분모를 양의 약수 후보로 나열한다. 각 약수에서 미지수를 역산하고 미지수의 자연수 조건을 다시 확인한다.",
+            "ownerPack": "MIDDLE1",
+            "parentProblemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+            "exclusions": [],
+            "differenceFromExisting": "최대 배분 인원 또는 약수3개 수의 개수와 달리 분모의 약수성과 역산 변수의 자연수성을 연쇄 적용한다.",
+            "proposalRef": "TPL_M1_COMMON_DIVISOR_AFFINE_DENOMINATOR_FILTER"
+          },
+          "candidateSource": {
+            "artifactId": "IN_9a2d472993a1ca",
+            "jsonPointer": "/items/22"
+          },
+          "rawWorkerKeys": {
+            "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+            "templateKey": "TPL_M1_COMMON_DIVISOR_AFFINE_DENOMINATOR_FILTER"
+          },
+          "projectionStatus": "NOT_APPLIED",
+          "releaseReady": false,
+          "partId": "3-3",
+          "rawPartEvidence": {
+            "partId": "3-3",
+            "problemTypeKey": "PT_M1_COMMON_DIVISOR_CONDITION",
+            "templateKey": "TPL_M1_COMMON_DIVISOR_AFFINE_DENOMINATOR_FILTER",
+            "methodCandidate": "약수 후보에서 일차식 역산 후 자연수 검사",
+            "rpm2015": "M1-RPM-006",
+            "rpm2022": "M1-RPM-119"
+          }
+        }
+      ],
+      "difficultyDecisionReused": {
+        "action": "WITHDRAW_MAX_OF_OPTIONAL_PARTS_AS_SINGLE_UID_DIFFICULTY",
+        "prior": null,
+        "proposedSingleUidBucket": "UNKNOWN",
+        "singleUidStatus": "PART_SELECTION_CONTEXT_REQUIRED",
+        "sourceUidPreserved": true,
+        "sourceLevelPreserved": true,
+        "reason": "원본 p4는 주관식2·3·4 각각의 수준별 선택형을 명시한다. 서로 다른 선택지에서 가장 높은 부담은 모든 응시자의 필수 부담이 아니므로 최대 bucket을 UID에 자동대표시키지 않는다. 소문항 난도 후보만 sidecar로 유지한다.",
+        "rubricPath": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+        "rubricSha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638",
+        "parts": [
+          {
+            "partId": "3-1",
+            "difficultyBucketCandidate": 1,
+            "difficultyConfidence": "low",
+            "difficultyBoundaryFlag": "B12",
+            "reason": "분수의 자연수 조건을 약수로 한 번 읽어 직접 나열/개수공식 적용한다.",
+            "notCanonicalUidProjection": true
+          },
+          {
+            "partId": "3-2",
+            "difficultyBucketCandidate": 2,
+            "difficultyConfidence": "low",
+            "difficultyBoundaryFlag": "B12",
+            "reason": "두 분수의 조건을 공약수로 결합한 뒤 최대공약수의 약수를 센다.",
+            "notCanonicalUidProjection": true
+          },
+          {
+            "partId": "3-3",
+            "difficultyBucketCandidate": 3,
+            "difficultyConfidence": "low",
+            "difficultyBoundaryFlag": "B23",
+            "reason": "분모를 약수로 놓을 전략 선택 후 역산한 n의 자연수 조건으로 후보를 다시 걸러야 한다.",
+            "notCanonicalUidProjection": true
+          }
+        ],
+        "finality": "PROVISIONAL_STEM_BASED; verified solution and selection context required"
+      }
+    },
+    {
+      "questionUid": "qid_v1_c7b9cac8b827c18eeb31e8d31ac94eac119d66b78d623bc21e8835c58a667c05",
+      "ordinal": 24,
+      "methodStatus": "SOURCE_ONLY_METHOD_EMPTY",
+      "finalCandidate": null,
+      "partCandidates": [
+        {
+          "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+          "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+          "problemTypeStatus": "ACTIVE",
+          "templateStatus": "ACTIVE",
+          "parentDefinition": {
+            "key": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+            "registryStatus": "ACTIVE",
+            "definition": "수나 문자를 일차식에 대입하고 연산 순서에 따라 식의 값을 구한다.",
+            "ownerPack": "MIDDLE1",
+            "parentProblemTypeKey": null,
+            "exclusions": [],
+            "evidence": {
+              "artifactId": "IN_acf912adcec138"
+            }
+          },
+          "templateDefinition": {
+            "key": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+            "registryStatus": "ACTIVE",
+            "definition": "주어진 수를 일차식에 대입한 뒤 거듭제곱·부호·곱셈·나눗셈 순서로 식의 값을 구한다.",
+            "ownerPack": "MIDDLE1",
+            "parentProblemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+            "exclusions": [],
+            "evidence": {
+              "artifactId": "IN_acf912adcec138"
+            }
+          },
+          "candidateSource": {
+            "artifactId": "IN_9a2d472993a1ca",
+            "jsonPointer": "/items/23"
+          },
+          "rawWorkerKeys": {
+            "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+            "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION"
+          },
+          "projectionStatus": "NOT_APPLIED",
+          "releaseReady": false,
+          "partId": "4-1",
+          "rawPartEvidence": {
+            "partId": "4-1",
+            "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+            "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+            "status": "ACTIVE_DEFINITION_REUSE_CANDIDATE"
+          }
+        },
+        {
+          "problemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+          "templateKey": "TPL_M1_NUMERIC_SUBSTITUTION_SIGNED_POWER_ABSOLUTE",
+          "problemTypeStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+          "templateStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+          "parentDefinition": {
+            "key": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+            "registryStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+            "definition": "문자에 주어진 값 또는 선행 조건으로 정한 값을 대입하고 연산 순서와 부호를 처리하여 일반 대수식의 값을 구한다.",
+            "ownerPack": "MIDDLE1",
+            "parentProblemTypeKey": null,
+            "exclusions": [
+              "새로 정의한 연산 규칙 해석",
+              "일차식만이면 기존 literal parent 우선"
+            ],
+            "differenceFromExisting": "기존 LITERAL 부모는 일차식으로 제한되고, 기존 ALGEBRAIC_EXPRESSION 부모는 새로 정의한 연산에 한정된다. 비선형 항을 포함한 보통 대수식 대입을 위한 후보이다.",
+            "proposalRef": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION"
+          },
+          "templateDefinition": {
+            "key": "TPL_M1_NUMERIC_SUBSTITUTION_SIGNED_POWER_ABSOLUTE",
+            "registryStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+            "definition": "주어진 문자값을 대수식에 직접 대입하고 괄호에 의한 음수의 거듭제곱 범위, 선행 음수 부호, 절댓값 및 사칙연산 순서로 식값을 구한다.",
+            "ownerPack": "MIDDLE1",
+            "parentProblemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+            "exclusions": [],
+            "differenceFromExisting": "일차식에 한정되지 않으며 값을 앞 조건에서 먼저 복원할 것을 요구하지 않는 직접 대입이다.",
+            "proposalRef": "TPL_M1_NUMERIC_SUBSTITUTION_SIGNED_POWER_ABSOLUTE"
+          },
+          "candidateSource": {
+            "artifactId": "IN_9a2d472993a1ca",
+            "jsonPointer": "/items/23"
+          },
+          "rawWorkerKeys": {
+            "problemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+            "templateKey": "TPL_M1_NUMERIC_SUBSTITUTION_SIGNED_POWER_ABSOLUTE"
+          },
+          "projectionStatus": "NOT_APPLIED",
+          "releaseReady": false,
+          "partId": "4-2",
+          "rawPartEvidence": {
+            "partId": "4-2",
+            "problemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+            "templateKey": "TPL_M1_NUMERIC_SUBSTITUTION_SIGNED_POWER_ABSOLUTE",
+            "status": "UNREGISTERED_PROPOSAL"
+          }
+        },
+        {
+          "problemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+          "templateKey": "TPL_M1_NUMERIC_SUBSTITUTION_ALTERNATING_UNIT_POWER",
+          "problemTypeStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+          "templateStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+          "parentDefinition": {
+            "key": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+            "registryStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+            "definition": "문자에 주어진 값 또는 선행 조건으로 정한 값을 대입하고 연산 순서와 부호를 처리하여 일반 대수식의 값을 구한다.",
+            "ownerPack": "MIDDLE1",
+            "parentProblemTypeKey": null,
+            "exclusions": [
+              "새로 정의한 연산 규칙 해석",
+              "일차식만이면 기존 literal parent 우선"
+            ],
+            "differenceFromExisting": "기존 LITERAL 부모는 일차식으로 제한되고, 기존 ALGEBRAIC_EXPRESSION 부모는 새로 정의한 연산에 한정된다. 비선형 항을 포함한 보통 대수식 대입을 위한 후보이다.",
+            "proposalRef": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION"
+          },
+          "templateDefinition": {
+            "key": "TPL_M1_NUMERIC_SUBSTITUTION_ALTERNATING_UNIT_POWER",
+            "registryStatus": "UNREGISTERED_ROOT_INTEGRATED_PROPOSAL",
+            "definition": "주어진 값이 1 또는 -1인 문자를 반복 거듭제곱식에 대입한 뒤 지수의 홀짝과 바깥 부호로 각 항의 부호 패턴을 정한다. 반복 묶음과 끝에 남는 항을 나누어 합을 계산한다.",
+            "ownerPack": "MIDDLE1",
+            "parentProblemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+            "exclusions": [],
+            "differenceFromExisting": "문자 대입이 없는 고정 수식의 반복 합과 구분되며, 일차식만의 대입 TPL로 고차항을 처리하지 않는다.",
+            "proposalRef": "TPL_M1_NUMERIC_SUBSTITUTION_ALTERNATING_UNIT_POWER"
+          },
+          "candidateSource": {
+            "artifactId": "IN_9a2d472993a1ca",
+            "jsonPointer": "/items/23"
+          },
+          "rawWorkerKeys": {
+            "problemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+            "templateKey": "TPL_M1_NUMERIC_SUBSTITUTION_ALTERNATING_UNIT_POWER"
+          },
+          "projectionStatus": "NOT_APPLIED",
+          "releaseReady": false,
+          "partId": "4-3",
+          "rawPartEvidence": {
+            "partId": "4-3",
+            "problemTypeKey": "PT_M1_NUMERIC_SUBSTITUTION_EVALUATION",
+            "templateKey": "TPL_M1_NUMERIC_SUBSTITUTION_ALTERNATING_UNIT_POWER",
+            "status": "UNREGISTERED_PROPOSAL"
+          }
+        }
+      ],
+      "difficultyDecisionReused": {
+        "action": "WITHDRAW_MAX_OF_OPTIONAL_PARTS_AS_SINGLE_UID_DIFFICULTY",
+        "prior": null,
+        "proposedSingleUidBucket": "UNKNOWN",
+        "singleUidStatus": "PART_SELECTION_CONTEXT_REQUIRED",
+        "sourceUidPreserved": true,
+        "sourceLevelPreserved": true,
+        "reason": "원본 p4는 주관식2·3·4 각각의 수준별 선택형을 명시한다. 서로 다른 선택지에서 가장 높은 부담은 모든 응시자의 필수 부담이 아니므로 최대 bucket을 UID에 자동대표시키지 않는다. 소문항 난도 후보만 sidecar로 유지한다.",
+        "rubricPath": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+        "rubricSha256": "3afb7c110d922847a058a550117b4abd6035b26683771ece21ebcd2f3985f638",
+        "parts": [
+          {
+            "partId": "4-1",
+            "difficultyBucketCandidate": 1,
+            "difficultyConfidence": "low",
+            "difficultyBoundaryFlag": "NONE",
+            "reason": "주어진 수를 일차식에 직접 대입하는 한 번의 기본 절차다.",
+            "notCanonicalUidProjection": true
+          },
+          {
+            "partId": "4-2",
+            "difficultyBucketCandidate": 2,
+            "difficultyConfidence": "low",
+            "difficultyBoundaryFlag": "B12",
+            "reason": "음수 대입 시 제곱 앞 부호와 절댓값 범위를 구별하는 익숙한 전처리·연산이다.",
+            "notCanonicalUidProjection": true
+          },
+          {
+            "partId": "4-3",
+            "difficultyBucketCandidate": 3,
+            "difficultyConfidence": "low",
+            "difficultyBoundaryFlag": "B23",
+            "reason": "1003항을 직접 계산하지 않고 홀짝에 따른 부호 묶음과 남은 항으로 표현을 선택해야 한다.",
+            "notCanonicalUidProjection": true
+          }
+        ],
+        "finality": "PROVISIONAL_STEM_BASED; verified solution and selection context required"
+      }
+    }
+  ],
+  "maesanDecision": "Reuse existing source-confirmed optional-part decisions: 3 whole-UID difficulty buckets remain unknown and 2 singular PT/TPL projections remain withheld. Do not flatten to the hardest optional part, split UID, or infer an official solution from handwriting.",
+  "relatedSimilarQ20": {
+    "sourcePath": "archive/exams/similar/middle/m1/1final/19_금당중_1학기_기말_중1_유사.js",
+    "currentBlobSha1": "4d6ada0bf9431d779c6a59189c8cd8701973c234",
+    "reviewCandidateBlobSha1": "359b294ff5bf3d5f7da5ffcd652820a7a3406f1b",
+    "receiptPath": "archive/exams/similar/middle/m1/1final/19_금당중_1학기_기말_중1_유사.review-receipt.json",
+    "receiptBlobSha1": "794c9329098202397cdf5463451a9f38e5b94c00",
+    "q20CurrentAndReviewedObjectIdentical": true,
+    "originalSourceHashOrUidBindingFound": false,
+    "targetedIndependentMathRecheck": "PASS_FOR_EXISTING_SIMILAR_Q20_ONLY",
+    "methodReuseForOriginal": "NOT_ALLOWED_DIFFERENT_UID_AND_DIFFERENT_CONSTANT"
+  },
+  "generatedConsumerIndex": {
+    "path": "archive/data/generated-lite-consumer/v1/index.json",
+    "blobSha1": "07c7245ac429be27218aeb22481334e76e8b0905",
+    "records": 1536,
+    "targetOriginalExamNameHits": 0,
+    "targetOriginalQ20UidHits": 0,
+    "targetOriginalSourceBlobHits": 0
+  },
+  "nextEvidenceRequired": {
+    "perSourceOnlyQuestion": [
+      "Actual worked solution keyed to the original question UID and current source bytes, or authorized creation of a new reviewed solution",
+      "Independent current-solution review or explicit approval evidence with immutable revision/hash",
+      "Decisive method terms and literal/implied evidence tied to that approved solution; no dictionary-key substitution"
+    ]
+  }
+}

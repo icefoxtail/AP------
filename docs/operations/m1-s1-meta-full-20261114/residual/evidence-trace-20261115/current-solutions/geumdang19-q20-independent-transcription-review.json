@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "m1-s1-independent-pinpoint-transcription-review-v1",
+  "taskId": "ef319e48-5efb-4d99-a4ac-5ded7ac1d74d",
+  "at": "2026-11-15T09:56:17.052Z",
+  "reviewer": "/root/awcr_acceptance",
+  "authorReviewed": "/root/source_method_debt",
+  "verdict": "ACCEPTED_SCOPED_TRANSCRIPTION_CORRECTION",
+  "scope": "금당19기말 Q20 원문 전사6→8, 유사Q20 직접 영향, identity와 legacy fingerprint 보존 판단만 확인.",
+  "sourceArchiveFile": "original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.js",
+  "questionUid": "qid_v1_2e57de2c53204013dd96317d274069537db1672516e0797707dc13f55167161f",
+  "baseMainSha": "854215b755536cc73b1ce412aed239dc396fd53d",
+  "visualSourceEvidence": [
+    {
+      "driveFileId": "1U1Ns8dm9CHgaAw7mszaNM501qt-GlJZ1",
+      "rawSha256": "be0f190d7caf4dc5a2204dc92600fa4429ea32920ea24ac6dc1a8673b5f009ef",
+      "page1based": 3,
+      "observation": "인쇄된 Q20 분자는8이다.",
+      "pdfRerenderedIndependently": true
+    },
+    {
+      "driveFileId": "1lYd_uECxzmTcewD0fGs_5OughLFRl614",
+      "rawSha256": "6b43897bc98ae6eff72ce32cbb0632ad24e60c6add94b3964c521e88f3610271",
+      "page1based": 3,
+      "observation": "별도 스캔의 인쇄된 Q20 분자도8이다. 수기 표시는 승인 근거로 사용하지 않았다.",
+      "pdfRerenderedIndependently": true
+    }
+  ],
+  "sourceComparison": {
+    "questionCount": 24,
+    "changedFields": [
+      [
+        20,
+        "question"
+      ]
+    ],
+    "exactChange": "fraction numerator6 to8",
+    "other23QuestionsUnchanged": true,
+    "choicesAnswerSolutionAndTopLevelMetadataUnchanged": true,
+    "blankAnswerAndSolutionCount": 24,
+    "originalCRLFCount": 384,
+    "afterCRLFCount": 384,
+    "beforeBlob": "3f280a62cbe273a347f5fec051bfa040feafc1df",
+    "afterBlob": "a370abb83cfa7bb65a8de980422c5b4869c3490f",
+    "beforeQuestionSha256": "e3b4508b5b80404ba6c3ee4ce454328f9ec8c1744331ce77e7e38648452e17a3",
+    "afterQuestionSha256": "d9a63b5ba1d70ecdda13d39c8876052e040626e0916609eb3ef4c3aa66ee8c4a"
+  },
+  "similarImpact": {
+    "q20CurrentPriorEntireObjectIdentical": true,
+    "currentQ20Sha256": "4ca01a018ca69fa13a01abbfe768fe90a3a56fd0b86b3d55e2281749e6e23f84",
+    "existingIndependentReceiptReadForQ20Only": true,
+    "numeratorRemains12": true,
+    "originalPathUidOldBlobDirectReferencesInCurrentJsMetaReceipt": 0,
+    "problemPlanBlob": "130a8dcb4cbed689bb3f02b4126b7822874b22cf",
+    "solutionPlanBlob": "34930835e85da8e4a505c834e168b5f735bfe0b4",
+    "bothPlans": "EXEMPT status and visualization reason only; no original-source dependency",
+    "conclusion": "검토한 직접 근거에서는 유사Q20 수정이나 기존 검토 무효화가 필요하지 않다. 새 해설승인을 부여한 것은 아니다."
+  },
+  "identityAndFingerprint": {
+    "canonicalUidTupleMatch": true,
+    "manualIdentityEditRequired": false,
+    "legacyQbodyUnchanged": "74edb18ce2dc5f38f174aa2d6d760d75052344dd53bd783cc63b740e41d913f3",
+    "legacyQfullUnchanged": "5fa5c642c2e67904a431c09b87af47083b00a585b3304c71f01ab7e6700b0ccf",
+    "limitation": "이 구형 source는 question 필드를 쓰지만 기존 audit-only canonical hash는 content:null을 사용한다. 따라서 QBODY/QFULL 동일성은 본문 불변의 증명이 아니다. 실제 전사 변경은 source blob 및 question 문자열 SHA256으로 결속되며, 이번 범위에서 identity/fingerprint 규약을 임의 이관하지 않는 판단은 적절하다."
+  },
+  "excludedClaims": {
+    "newMethodApprovals": 0,
+    "newCurrentSolutionApprovals": 0,
+    "sourceConditionDebtResolved": false,
+    "fullReview286Repeated": false,
+    "independentSample36Repeated": false,
+    "lineage93Repeated": false,
+    "publicationPerformed": false
+  },
+  "repositoryMutationPerformedByReviewer": false,
+  "reviewedVerificationSha256": "7fa93d6552a8b83ba0a6a17e201553a80b35bb1fc1a3703fd65ae2b88293baa8"
+}
