@@ -67,6 +67,7 @@ function validateCompact(d, rel, dict) {
   if(!d.reviewedBy||!String(d.reviewedBy.agent||'').trim()||!d.reviewedBy.at||!Array.isArray(d.reviewedBy.sampled))errors.push('REVIEW_REFERENCE_MISSING');
   if(!d.evidence||['branch','commit','path'].some(k=>typeof d.evidence[k]!=='string'||!d.evidence[k].trim()))errors.push('EVIDENCE_REFERENCE_MISSING');
   if(!Array.isArray(d.items)||!d.items.length)errors.push('ITEMS_EMPTY');
+  if(d.evidence?.nativeHoldReview?.rendererCorrection&&(!Array.isArray(d.items)||d.items.filter(it=>it.registrationHold?.reason===rendererHold.REASON).length!==1))errors.push('RENDERER_HOLD_ONE_UID_REQUIRED');
   return errors;
 }
 function validateItem(it, dict) {
@@ -93,7 +94,7 @@ function validateRegistrationHold(root, d, it, id, cur) {
   if(!h||h.schemaVersion!=='4slot-native-review-hold-v1')return ['UNSUPPORTED_HOLD'];
   if(h.questionUid!==id?.questionUid||h.sourceOrdinal!==cur?.ordinal||h.sourceQuestionNo!==sourceIdentityNumber(cur?.q||{})||h.ordinal!==it.ordinal)errors.push('HOLD_IDENTITY_MISMATCH');
   if(typeof h.nextAction!=='string'||!h.nextAction.trim())errors.push('HOLD_NEXT_ACTION_MISSING');
-  if(h.reason==='SOURCE_RENDERER_CORRECTION_PENDING')return [...errors,...rendererHold.validate(root,d,it,id,cur,{safe,sha,blob,stable,payloadHash,identityHash,git,assetRefs})];
+  if(h.reason==='SOURCE_RENDERER_CORRECTION_PENDING')return [...errors,...rendererHold.validate(root,d,it,id,cur,{safe,sha,blob,stable,payloadHash,identityHash,git,assetRefs,loadBank})];
   if(h.reason==='SOURCE_EVIDENCE_UNRESOLVED')return [...errors,...validateM2SourceHold(root,d,it,id,cur)];
   if(h.reason!=='PARTIAL_METHOD_EVIDENCE_DEBT'||!/^original\/middle\/m1\/1(?:mid|final)\//.test(d.sourceArchiveFile))return [...errors,'UNSUPPORTED_HOLD'];
   const e=h.evidence, native=d.evidence?.independentReview;
