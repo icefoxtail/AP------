@@ -103,8 +103,13 @@ window.examData = {
     },
     {
       "id": 8,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "닮음에서 (x+1)/2=2/((x+1)/2)이다. x=−1+2√2이며 정답은 ②이다.",
+      "solutionImageAlt": "왼쪽은 A4 용지, 오른쪽은 반으로 자른 A5를 세워 놓은 것이다. A4와 A5 각각에서 긴 변과 짧은 변이 대응한다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q8-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "A4용지는 큰 규격의 용지를 절반으로 자르고, 또 다시 절반으로 자르는 과정을 반복해서 만들어지며 각 용지는 짧은 변의 길이와 긴 변의 길이가 서로 닮음이다. 오른쪽 그림과 같은 A4용지의 짧은 변의 길이를 $2$, 긴 변의 길이를 $x+1$이라고 할 때, $x$의 값을 구하면? [4점]<br><img src=\"assets/images/19_연향중_1학기_기말_중3_수학/q08.png\" alt=\"문제 8번 그림\" style=\"max-width: 250px;\">",
+      "question": "A4용지는 큰 규격의 용지를 절반으로 자르고, 또 다시 절반으로 자르는 과정을 반복해서 만들어지며 각 용지는 짧은 변의 길이와 긴 변의 길이가 서로 닮음이다. 오른쪽 그림과 같은 A4용지의 짧은 변의 길이를 $2$, 긴 변의 길이를 $x+1$이라고 할 때, $x$의 값을 구하면? [4점]<br><img src=\"assets/images/19_연향중_1학기_기말_중3_수학/q8-problem-v3.svg\" alt=\"세로로 놓인 A4의 짧은 변은 2, 긴 변은 x+1이다. 가운데 접을 선이 A4를 두 장의 A5로 나누고, 위쪽 A5를 반으로 나누면 A6가 된다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$x = -1 - 2\\sqrt{2}$",
         "$x = -1 + 2\\sqrt{2}$",
@@ -117,6 +122,10 @@ window.examData = {
     },
     {
       "id": 9,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "−5(t−10)(t−20)≥0이므로 10초부터 20초까지이다. 정답은 ②이다.",
+      "solutionImageAlt": "파란 포물선은 분출 후 높이이다. 높이 3500 m의 주황 수평선 위에 놓이는 곡선 부분을 옅은 주황으로 칠했다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q9-solution.svg",
       "score": 4,
       "question": "지면으로부터 높이가 $2500\\text{ m}$인 어느 화산이 폭발하여 초속 $150\\text{ m}$로 용암이 분출되었다. 분출물의 $t$초 후의 높이가 $(-5t^2 + 150t + 2500)\\text{m}$일 때, 분출물의 높이가 $3500\\text{ m}$ 이상인 것은 몇 초 동안인지 구하면? [4점]",
       "choices": [
@@ -145,6 +154,10 @@ window.examData = {
     },
     {
       "id": 11,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "0<a<2/3이어야 한다. 이 범위에 있는 선택지의 계수는 1/4이므로 정답은 ④이다.",
+      "solutionImageAlt": "두 포물선은 원점에서 위로 열린다. 같은 높이의 보라 보조선을 따라 파랑과 초록 가지 사이의 가로 폭을 비교한다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q11-solution.svg",
       "score": 4,
       "question": "다음 조건을 모두 만족하는 포물선을 그래프로 하는 이차함수의 식은? [4점]\n\n(가) 원점을 꼭짓점, $y$축을 축으로 한다.\n(나) 함숫값이 0보다 크거나 같다.\n(다) 이차함수 $y = \\dfrac{2}{3}x^2$의 그래프보다 폭이 넓다.",
       "choices": [
@@ -159,8 +172,13 @@ window.examData = {
     },
     {
       "id": 12,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "꼭짓점에서 p=−1이고 y절편에서 a=2이다. 따라서 a+p=1이며 정답은 ②이다.",
+      "solutionImageAlt": "주황 꼭짓점에서 세로축까지 가로로 1만큼 간다. 파란 세로축 교점의 높이가 2라는 조건을 짚었다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q12-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "다음 그림과 같은 이차함수 $y = a(x-p)^2$의 그래프에서 $a+p$의 값은? [4점]<br><img src=\"assets/images/19_연향중_1학기_기말_중3_수학/q12.png\" alt=\"문제 12번 그림\" style=\"max-width: 250px;\">",
+      "question": "다음 그림과 같은 이차함수 $y = a(x-p)^2$의 그래프에서 $a+p$의 값은? [4점]<br><img src=\"assets/images/19_연향중_1학기_기말_중3_수학/q12-problem-v3.svg\" alt=\"파란 포물선의 꼭짓점은 가로축의 −1에 있다. 세로축과는 눈금 2에서 만난다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$-3$",
         "$1$",
@@ -173,6 +191,10 @@ window.examData = {
     },
     {
       "id": 13,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=x²+6x+4=(x+3)²−5이다. 축은 x=−3, 꼭짓점은 (−3,−5)이고 정답은 ⑤이다.",
+      "solutionImageAlt": "파란 포물선의 양 가지는 보라 점선에 대칭이다. 파란 길이가 가장 낮아지는 위치에 주황 점을 표시했다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q13-solution.svg",
       "score": 4,
       "question": "이차함수 $y = x^2 + 6x + 4$의 그래프의 축의 방정식과 꼭짓점의 좌표를 차례로 구하면? [4점]",
       "choices": [
@@ -187,6 +209,10 @@ window.examData = {
     },
     {
       "id": 14,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "축은 x=3이고 아래로 열리므로 증가하는 범위는 x<3이다. 정답은 ③이다.",
+      "solutionImageAlt": "선 모양으로 구분한 왼쪽 주황 가지를 따라 오른쪽으로 움직이면 꼭짓점까지 높이가 올라간다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q14-solution.svg",
       "score": 3,
       "question": "이차함수 $y = -3(x-3)^2 + 2$의 그래프에서 $x$의 값이 증가함에 따라 $y$의 값도 증가하는 $x$의 값의 범위는? [3점]",
       "choices": [
@@ -215,6 +241,10 @@ window.examData = {
     },
     {
       "id": 16,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "a=3이며 꼭짓점의 가로 좌표는 5 또는 −1이다. 제1사분면 조건에서 b=−30, c=77이라 a+b+c=50이고 정답은 ④이다.",
+      "solutionImageAlt": "두 포물선은 같은 폭이며 하나의 검은 점을 같이 지난다. 파란 포물선의 꼭짓점만 제1사분면에 있다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q16-solution.svg",
       "score": 5,
       "question": "다음 <조건>을 모두 만족하는 이차함수를 $y = ax^2 + bx + c$라고 할 때, 상수 $a, b, c$에 대하여 $a+b+c$의 값을 구하면? [5점]\n\n<조건>\n(가) 이 이차함수의 그래프는 $y = -3x^2 - 2x + 3$의 그래프와 폭이 같다.\n(나) 최솟값은 $2$이다.\n(다) 그래프는 점 $(2, 29)$를 지난다.\n(라) 그래프의 꼭짓점은 제1사분면 위에 있다.",
       "choices": [
@@ -229,8 +259,13 @@ window.examData = {
     },
     {
       "id": 17,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "A=(−5,0), B=(1,0), C=(0,−5)이다. 중점 D=(−2,0)를 지나므로 m=−5/2, n=−5이고 합은 −15/2이다. 정답은 ⑤이다.",
+      "solutionImageAlt": "같은 높이의 두 삼각형을 주황과 초록으로 칠했다. 보라 직선이 밑변과 만나는 D 양쪽에는 같은 초록 한 눈금이 있다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q17-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "다음 그림은 이차함수 $y = x^2 + 4x - 5$와 일차함수 $y = mx + n$의 그래프이다. 포물선과 $x$축과의 교점을 $A, B$라 하고, $y$축과의 교점을 $C$라 할 때, $\\Delta ABC$의 넓이는 점 $C$를 지나는 일차함수 $y = mx + n$의 그래프에 의해 이등분된다고 한다. 이 때, 상수 $n$과 $m$에 대하여 $m+n$의 값을 구하면? [4점]<br><img src=\"assets/images/19_연향중_1학기_기말_중3_수학/q17.png\" alt=\"문제 17번 그림\" style=\"max-width: 250px;\">",
+      "question": "다음 그림은 이차함수 $y = x^2 + 4x - 5$와 일차함수 $y = mx + n$의 그래프이다. 포물선과 $x$축과의 교점을 $A, B$라 하고, $y$축과의 교점을 $C$라 할 때, $\\Delta ABC$의 넓이는 점 $C$를 지나는 일차함수 $y = mx + n$의 그래프에 의해 이등분된다고 한다. 이 때, 상수 $n$과 $m$에 대하여 $m+n$의 값을 구하면? [4점]<br><img src=\"assets/images/19_연향중_1학기_기말_중3_수학/q17-problem-v3.svg\" alt=\"파란 포물선의 두 가로축 교점 A와 B, 세로축 교점 C를 세 변으로 이었다. 보라 직선은 C를 지나 삼각형의 넓이를 반으로 나눈다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$-5$",
         "$-\\dfrac{5}{2}$",
@@ -243,8 +278,13 @@ window.examData = {
     },
     {
       "id": 18,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "a<0, b>0, c>0이다. f(2)>0이고 4f(−1/2)=a−2b+4c<0이므로 ⑤가 옳지 않다.",
+      "solutionImageAlt": "가로 눈금 −1/2에 대응하는 주황 점은 축 아래이고 2에 대응하는 초록 점은 위이다. 세로축을 만나는 점도 가로축 위이다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q18-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "이차함수 $y = ax^2 + bx + c$의 그래프가 아래 그림과 같을 때, 다음 중 옳지 않은 것은? [4점]<br><img src=\"assets/images/19_연향중_1학기_기말_중3_수학/q18.png\" alt=\"문제 18번 그림\" style=\"max-width: 250px;\">",
+      "question": "이차함수 $y = ax^2 + bx + c$의 그래프가 아래 그림과 같을 때, 다음 중 옳지 않은 것은? [4점]<br><img src=\"assets/images/19_연향중_1학기_기말_중3_수학/q18-problem-v3.svg\" alt=\"꼭짓점은 세로축 오른쪽에 있고 파란 포물선은 아래로 열린다. 가로 눈금 −1/2의 함수값은 음수이고 눈금 2에서는 양수이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$b > 0$",
         "$ab < 0$",
@@ -257,6 +297,10 @@ window.examData = {
     },
     {
       "id": 19,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=a(x−3)²−5에서 a>0이다. 왼쪽 교점이 원점보다 왼쪽이어야 하므로 0<a<5/9이다. 정답은 ①이다.",
+      "solutionImageAlt": "공통 꼭짓점에서 올라가는 파랑 가지는 왼쪽 아래 영역을 지나고, 주황 경계 곡선의 왼쪽 교점은 원점이다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q19-solution.svg",
       "score": 4,
       "question": "이차함수 $y = ax^2 + bx + c$는 $x = 3$일 때 최솟값이 $-5$이다. 이 이차함수의 그래프가 모든 사분면을 지날 때, $a$의 값의 범위는? (단, $a, b, c$는 상수이다.) [4점]",
       "choices": [
@@ -271,6 +315,10 @@ window.examData = {
     },
     {
       "id": 20,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "교점에서 a=4/(x+1)²이다. 2≤x≤4 범위의 양 끝을 대입하면 4/25≤a≤4/9이다. 정답은 ⑤이다.",
+      "solutionImageAlt": "점 A와 B가 놓인 주황 가로 선분을 세 파란 곡선의 오른쪽 가지가 지난다. 두 끝에서 만나는 경우를 각각 다른 선 모양으로 그렸다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q20-solution.svg",
       "score": 5,
       "question": "좌표평면 위의 두 점 $A(2, 2)$, $B(4, 2)$에 대하여 이차함수 $y = ax^2 + 2ax + a - 2$의 그래프가 $\\overline{AB}$와 만날 때, 상수 $a$의 값의 범위를 구하면? [5점]",
       "choices": [
@@ -285,14 +333,23 @@ window.examData = {
     },
     {
       "id": 21,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "단면 넓이 x(48−2x)=288에서 (x−12)²=0이다. 0<x<24에 맞는 값은 12 cm이다.",
+      "solutionImageAlt": "위쪽에는 물받이를 보는 방향과 주황 단면을 표시했다. 아래에는 두 접힌 면을 펼친 모습이 있어 전체 폭 48 cm를 양쪽 x와 가운데 폭으로 나눠 읽을 수 있다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q21-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 6,
-      "question": "다음 그림과 같이 폭이 $48\\text{ cm}$인 철판의 양쪽을 $x\\text{ cm}$만큼 직각으로 접어 올려 물받이를 만들려고 한다. 색칠한 부분의 넓이가 $288\\text{ cm}^2$일 때, $x$의 값을 구하는 풀이 과정과 답을 서술하여라. [6점]<br><img src=\"assets/images/19_연향중_1학기_기말_중3_수학/s01.png\" alt=\"서술형 1번 그림\" style=\"max-width: 250px;\">",
+      "question": "다음 그림과 같이 폭이 $48\\text{ cm}$인 철판의 양쪽을 $x\\text{ cm}$만큼 직각으로 접어 올려 물받이를 만들려고 한다. 색칠한 부분의 넓이가 $288\\text{ cm}^2$일 때, $x$의 값을 구하는 풀이 과정과 답을 서술하여라. [6점]<br><img src=\"assets/images/19_연향중_1학기_기말_중3_수학/q21-problem-v3.svg\" alt=\"폭 48 cm인 철판의 양쪽을 같은 폭 x만큼 접어 세웠다. 앞쪽의 주황 직사각형이 색칠한 물받이 단면이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [],
       "answer": "$12\\text{ cm}$",
       "solution": "양쪽을 각각 $x\\text{ cm}$만큼 접어 올리므로 밑면의 가로 길이는 $(48-2x)\\text{ cm}$이고 높이는 $x\\text{ cm}$이다.\n물받이의 높이와 밑면 폭은 모두 양수여야 하므로\n$x>0$, $48-2x>0$,\n즉 $0<x<24$이다.\n색칠한 직사각형의 넓이는 288이므로\n$x(48-2x)=288$\n$48x-2x^2=288$\n$x^2-24x+144=0$\n$(x-12)^2=0$\n$x=12$\n$12$는 $0<x<24$를 만족한다.\n따라서 답은 $12\\text{ cm}$이다."
     },
     {
       "id": 22,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "두 공통점은 (−1,8), (3,0)이다. a−b=5, 3a+b=−1을 풀면 a=1, b=−4이다.",
+      "solutionImageAlt": "아래로 열린 파랑과 위로 열린 초록 포물선은 두 점을 공유한다. 두 검은 점에 모두 주황 직선이 지나간다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q22-solution.svg",
       "score": 7,
       "question": "두 이차함수 $y = -x^2 + 9$, $y = ax^2 + bx + 3$의 그래프의 두 교점이 직선 $y = -2x + 6$ 위에 있을 때, 두 상수 $a, b$의 값을 각각 구하여라. (단, 풀이 과정을 자세히 써라.) [7점]",
       "choices": [],
@@ -301,8 +358,13 @@ window.examData = {
     },
     {
       "id": 23,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "넓이는 S=x(4−2x)=−2(x−1)²+2이다. 최대가 되는 점 P=(1,2)이다.",
+      "solutionImageAlt": "위에서 직선 위의 점에 따라 직사각형 높이가 달라진다. 아래는 가로 길이에 따른 넓이 그래프이며 주황 꼭짓점에서 최대가 된다.",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q23-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 7,
-      "question": "오른쪽 그림과 같이 직선 $y = -2x + 4$ 위의 점 P에서 $x$축, $y$축에 내린 수선의 발을 각각 Q, R라고 하자. 이때, 직사각형 ORPQ의 넓이가 최대가 되는 점 P의 좌표를 구하여라. (단, 풀이 과정을 자세히 써라.) [7점]<br><img src=\"assets/images/19_연향중_1학기_기말_중3_수학/s03.png\" alt=\"서술형 3번 그림\" style=\"max-width: 250px;\">",
+      "question": "오른쪽 그림과 같이 직선 $y = -2x + 4$ 위의 점 P에서 $x$축, $y$축에 내린 수선의 발을 각각 Q, R라고 하자. 이때, 직사각형 ORPQ의 넓이가 최대가 되는 점 P의 좌표를 구하여라. (단, 풀이 과정을 자세히 써라.) [7점]<br><img src=\"assets/images/19_연향중_1학기_기말_중3_수학/q23-problem-v3.svg\" alt=\"직선 위의 P에서 수선을 내려 가로축의 Q와 세로축의 R에 닿는다. 파란 직사각형은 O·R·P·Q를 꼭짓점으로 한다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [],
       "answer": "$(1,2)$",
       "solution": "점 $P$를 $P=(x,4-2x)$로 둔다. $P$가 제1사분면에 있어 직사각형의 가로와 세로가 모두 양수이므로\n$x>0$, $4-2x>0$,\n즉 $0<x<2$이다.\n직사각형의 가로는 $x$, 세로는 $4-2x$이므로 넓이 $S$는\n$S=x(4-2x)$\n$S=-2x^2+4x$\n$S=-2(x-1)^2+2$\n$(x-1)^2\\ge0$이므로 $S\\le2$이고, 등호는 $x=1$일 때 성립한다.\n그때 $y=4-2\\cdot1=2$이다.\n따라서 넓이가 최대가 되는 점은 $P=(1,2)$이다."
