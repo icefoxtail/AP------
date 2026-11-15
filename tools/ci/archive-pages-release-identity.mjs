@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { sourceQualityHoldDependencyPaths } from '../../archive/tools/source-quality-holds.mjs';
 // Content identity for the registered student package. The public receipt is written only after
 // the existing release gate passes; it is neither a registration writer nor a new approval record.
 import crypto from "node:crypto";
@@ -77,7 +78,8 @@ function dependencyDigests({ sourceRoot, entries, packagedPaths, buildOnly }) {
   const buildOnlyPaths = new Set(buildOnly.map(entry => entry.path));
   // Source/parity checks also read unshipped Generated sources and canonical evidence. A matching
   // package alone cannot reuse their earlier result when one of these direct inputs has changed.
-  const archiveInputs = entries.filter(entry => buildOnlyPaths.has(entry.path) ||
+  const sourceQualityInputs = new Set(sourceQualityHoldDependencyPaths(sourceRoot));
+  const archiveInputs = entries.filter(entry => sourceQualityInputs.has(entry.path) || buildOnlyPaths.has(entry.path) ||
     (entry.path.startsWith("archive/") && !packagedPaths.has(entry.path) &&
       !entry.path.startsWith("archive/assets/images/") && !entry.path.startsWith("archive/tools/")) ||
     entry.path.startsWith("docs/rules/01_CANONICAL/taxonomy/") || entry.path.startsWith("alive/") ||

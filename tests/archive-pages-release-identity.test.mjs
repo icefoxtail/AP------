@@ -1,3 +1,4 @@
+import { seedSourceQualityHoldFixture } from './helpers/source-quality-hold-fixture.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -37,6 +38,7 @@ function fixture(t) {
     files: ["index.html", "archive/runtime.js", "archive/data/meta.json", "shared/runtime.js", "apmath/index.html"],
     trees: [{ path: "archive/exams" }, { path: "archive/assets/solutions" }], minifyJson: ["archive/data/meta.json"] };
   put("tools/archive-pages-release-manifest.json", JSON.stringify(manifest));
+  seedSourceQualityHoldFixture(root);
   const sha = commit();
   const identity = () => computeReleaseIdentity({ sourceRoot: root, registeredMainSHA: git("rev-parse", "HEAD") });
   const live = value => ({ ...value, releaseGate: "RELEASE_GATE_PASS" });

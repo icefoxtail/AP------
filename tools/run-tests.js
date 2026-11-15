@@ -40,6 +40,22 @@ const jsTestTimeout = file => file === 'archive2-compose-scope.test.js' ? 180000
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/native-approved-renderer-consumer.test.mjs',
+    args: ['--test', 'tests/native-approved-renderer-consumer.test.mjs']
+  },
+  {
+    label: 'tests/native-approved-renderer-preservation.test.mjs',
+    args: ['--test', 'tests/native-approved-renderer-preservation.test.mjs']
+  },
+  {
+    label: 'tests/native-approved-renderer-preview.test.mjs',
+    args: ['--test', 'tests/native-approved-renderer-preview.test.mjs']
+  },
+  {
+    label: 'tests/archive-source-quality-holds.test.mjs',
+    args: ['--test', 'tests/archive-source-quality-holds.test.mjs']
+  },
+  {
     label: 'tests/archive-native-authority-correction.test.mjs',
     args: ['--test', 'tests/archive-native-authority-correction.test.mjs']
   },
@@ -85,12 +101,20 @@ const requiredCommands = [
     timeout: 300000
   },
   {
+    label: 'tests/archive-main-auto-parent-retry.test.mjs',
+    args: ['--test', 'tests/archive-main-auto-parent-retry.test.mjs']
+  },
+  {
     label: 'tests/archive-main-meta-batch-replay.test.mjs',
     args: ['--test', 'tests/archive-main-meta-batch-replay.test.mjs']
   },
   {
     label: 'tests/item-4slot-runtime.test.cjs',
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-public-reviewed-rebind.test.cjs',
+    args: ['--test', 'tests/item-4slot-public-reviewed-rebind.test.cjs']
   },
   {
     label: 'tests/item-4slot-m3-renderer-hold.test.cjs',

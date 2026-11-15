@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { sourceQualityHoldDependencyPaths } from '../../archive/tools/source-quality-holds.mjs';
+import { canonicalParentRetryRequests, canonicalParentRetryDependencies } from '../../archive/tools/meta-foundation/canonical-parent-retry.mjs';
 // One preparation transaction for the existing registration producers. This script never commits or pushes.
 // Each successful lane stages its allowlisted output. Native `git diff`/reset guards then see that index as
 // their baseline; a single final push helper commits the consistent result, requests and cursors together.
@@ -73,6 +75,7 @@ function rollbackStaged(root, allowed) {
 
 export function nativeLanes(root) {
   const config=read(root,'.archive-meta-register/auto/config.json',{});
+  const parentRetry=canonicalParentRetryRequests(root)[0]||null;
   const shared=specs(root,'tools/ci/archive-pages-registration.paths');
   const reviewed=specs(root,'tools/ci/archive-meta-register-commit.paths');
   const reviewedScoped=specs(root,'tools/ci/archive-meta-register-trigger-paths.txt').filter(p=>!p.includes('*'));
@@ -96,7 +99,7 @@ export function nativeLanes(root) {
     'tools/ci/archive-pages-registration-derive.sh','archive/archive2-core.js','archive/archive2-canonical.js',
     'archive/problem-bank-meta.js','archive/meta-foundation-runtime.js','archive/mixer-selector.js',
     'archive/archive2-source.js','archive/unit-past-exams-core.js'];
-  const registration=['archive/exams/','archive/data/question_identity_map.json','archive/data/question_metadata.json',
+  const registration=[...sourceQualityHoldDependencyPaths(root),'archive/exams/','archive/data/question_identity_map.json','archive/data/question_metadata.json',
     'archive/data/meta-foundation/','archive/data/master_tables/','archive/data/r2e-intake/',
     'archive/data/basic-scope-source-links.json','archive/data/basic-scope-parent-groups.json',
     'archive/data/textbook-source-manifest-v1.json','archive/data/basic-scope-parent-links.json',
@@ -120,10 +123,10 @@ export function nativeLanes(root) {
         // Reuse its real checks before commit; its old post-push summary names HEAD as registered,
         // so use this writer's accurate PREPARED summary and the push helper's exact SHA instead.
         ?[{...cmd('bash','tools/ci/verify-registered-consumer-approval.sh'),env:{GITHUB_STEP_SUMMARY:'/dev/null'}}]:[]},
-    {id:'semantic',inputs:[...code,...registration,'.archive-meta-register/auto/config.json','.archive-meta-register/auto/state.json',
+    {id:'semantic',inputs:[...code,...registration,...canonicalParentRetryDependencies(root),'.archive-meta-register/auto/config.json','.archive-meta-register/auto/state.json',
       'tools/ci/archive-main-auto-meta-pass.sh','tests/archive-question-identity-contract.test.mjs',
       'tests/archive-question-identity-runtime.test.mjs'],outputs:auto,enabled:config.enabled===true,
-      commands:[cmd('bash','tools/ci/archive-main-auto-meta-pass.sh')],
+      commands:[{...cmd('bash','tools/ci/archive-main-auto-meta-pass.sh'),...(parentRetry?{env:{ARCHIVE_CANONICAL_PARENT_RETRY_REQUEST:parentRetry.path,ARCHIVE_CANONICAL_PARENT_RETRY_SHA256:parentRetry.sha256}}:{})}],
       finalCommands:({env})=>fs.existsSync(path.join(env.RUNNER_TEMP,'archive-main-auto-meta/report.json'))
         ?[cmd('node','archive/tools/meta-foundation/auto-register-merged-source.mjs','--verify','--report',path.join(env.RUNNER_TEMP,'archive-main-auto-meta/report.json'))]:[],
       continuation:({root,env})=>{
@@ -133,7 +136,7 @@ export function nativeLanes(root) {
         // Early native refusals can have no attemptSignature (for example a removed target). They
         // are still observed pending debt, not an unprocessed batch: retry only entries absent from
         // this exact run's results, otherwise stable refusals would rebuild forever on identical input.
-        return Object.keys(pending).some(key=>!attempted.has(key));
+        return canonicalParentRetryRequests(root).length>0||Object.keys(pending).some(key=>!attempted.has(key));
       }},
     {id:'shared',inputs:[...code,...registration,'archive/assets/','archive/data/generated-lite-consumer/v1/',
       'archive/db.js','archive/question-index.js','archive/question-identity.js'],outputs:shared,required:true,
