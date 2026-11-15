@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "archive-m2s2-closeout-validation-v1",
+  "status": "PASS",
+  "scope": "Isolated official source registration, projection and actual consumer verification; main release is not yet claimed.",
+  "source": {
+    "exams": 67,
+    "questions": 1604,
+    "metadataFieldChanges": 18039,
+    "syntaxPass": 67,
+    "protectedPayloadChanges": 0,
+    "historicalLearningLevelChanges": 0,
+    "syntaxOnlyLineEndingsNormalized": 7
+  },
+  "apply": {
+    "requests": 67,
+    "passed": 67,
+    "failed": 0,
+    "questions": 1567,
+    "applied": 1283,
+    "alreadyRegistered": 284,
+    "verified": 0,
+    "changedFields": 3526,
+    "staleSourceBinding": 75
+  },
+  "projection": {
+    "requests": 67,
+    "passed": 67,
+    "failed": 0,
+    "questions": 1567,
+    "applied": 0,
+    "alreadyRegistered": 0,
+    "verified": 1567,
+    "changedFields": 0,
+    "staleSourceBinding": 75
+  },
+  "consumer": {
+    "changed": 1567,
+    "checked": 1567,
+    "passed": 1567,
+    "skippedUnchanged": 0
+  },
+  "isolation": {
+    "schemaVersion": "archive-m2s2-isolated-change-proof-v1",
+    "status": "PASS",
+    "scope": "Isolated official difficulty writer and consumer; production remains pending",
+    "selectedUids": 1567,
+    "changedMetadataUids": 1283,
+    "changedFields": 3526,
+    "fieldCounts": {
+      "difficultyBucket": 525,
+      "legacyLevelCompatibility": 916,
+      "difficultyConfidence": 1015,
+      "difficultyBoundaryFlag": 1070
+    },
+    "outsideSelectedUidChanges": 0,
+    "nonDifficultyChanges": 0,
+    "identityBytesUnchanged": true,
+    "metadataBeforeSha256": "e8391197df74ae89778ac86f394ca6a0c83969e46384a79d749c0c8d9cc4763b",
+    "metadataAfterSha256": "5592f2ffcb9a6caa1d2606bfbc260bcdc29fa22300a422380058f39a038451e7",
+    "identitySha256": "b1614828a0c694d396d79239e1c44e6c40488d155e6844e3420dbb075fbdd176"
+  },
+  "unresolvedSourceUids": 36,
+  "separateAdvancedApprovalUidCount": 1,
+  "officialReportRefs": [
+    {
+      "path": "docs/operations/m2s2-closeout-20261115/registration-write.json",
+      "sha256": "ea90eba4b92255acd9f93e6d5ceff042dc64d3a253021730986304f78949ef88"
+    },
+    {
+      "path": "docs/operations/m2s2-closeout-20261115/registration-verify.json",
+      "sha256": "420662599d8cb009327968db3fba175cd4747ca3e0683490d83e447a135defe0"
+    },
+    {
+      "path": "docs/operations/m2s2-closeout-20261115/isolation-proof.json",
+      "sha256": "cfe5f5b49edb99daa31032b4520a76b4a477895efbcf86bb5bac569b13b442d1"
+    }
+  ]
+}

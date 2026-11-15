@@ -34,7 +34,18 @@ window.questionBank = [
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 서로 닮은 두 삼각기둥의 대응 모서리와 큰 기둥의 30도 각을 나타낸다.",
     "solutionImageCaption": "예: 대응 높이의 비는 4:6=2:3이므로 AC=10/3cm이다. 답: ③",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "닮은 삼각기둥의 대응 모서리",
+    "decisiveStep": "주어진 대응 높이의 비2:3을 다른 모서리에 적용하여 길이 진술을 판정한다."
   },
   {
     "id": 2,
@@ -62,7 +73,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "축척을 실제 가로·세로에 적용",
+    "decisiveStep": "m를cm로 통일한 두 길이를 축척의 분모80으로 나눈다."
   },
   {
     "id": 3,
@@ -97,7 +119,18 @@ window.questionBank = [
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 겹친 직사각형 ABCD와 DAEF에서 두 변 AD와 DF를 같은 색으로 나타낸다.",
     "solutionImageCaption": "닮음의 대응 순서에 따라 AB:DA=AD:DF이다. 답: ④ 16cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "회전된 대응 순서에서 닮음비",
+    "decisiveStep": "AB↔DA와 AD↔DF의 서로 다른 역할을 닮음 기호 순서에서 읽어 비례식을 세운다."
   },
   {
     "id": 4,
@@ -125,14 +158,25 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 두 각이 각각 같으므로 두 삼각형의 닮음을 이용한다.\n$AC=AD+DC=2+6=8\\rm\\,cm$이고, $\\angle A=\\angle DEC$, $\\angle ACB=\\angle DCE$이다.\n따라서 $\\triangle ABC\\sim\\triangle EDC$이고 $AC:EC=8:4=2:1$이다.\n이에 따라 $BC:DC=2:1$이므로 $BC=12\\rm\\,cm$이다.\n$BE=BC-EC=12-4=8\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q4.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+    "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 큰 삼각형 ABC와 작은 삼각형 EDC에서 대응변 AC와 EC, BC와 DC를 같은 색으로 구분한다.",
     "solutionImageCaption": "AC=8cm이므로 두 삼각형의 닮음비는 2:1이고 BC=12cm이다. 답: ⑤ 8cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 3,
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "공통각을 보태어 뒤바뀐 대응 AA 닮음",
+    "decisiveStep": "전체AC를 먼저 구성하고 A↔E,C↔C의 대응비로 BC를 구한 뒤 EC를 뺀다."
   },
   {
     "id": 5,
@@ -160,14 +204,28 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 직사각형의 중심과 평행·수직 관계를 이용해 닮은 직각삼각형을 만든다.\n$BD=2BO=10\\rm\\,cm$이고, 직사각형의 세로 길이는 $6\\rm\\,cm$이므로 점 $O$에서 $AD$까지의 수직거리는 $3\\rm\\,cm$이다.\n점 $O$에서 $AD$에 수직선을 내려 그 발을 $H$라 하면 $OH=3\\rm\\,cm$이다.\n$EO\\perp BD$, $EH\\parallel BC$, $OH\\parallel DC$이므로 $\\triangle EOH\\sim\\triangle BCD$이다.\n따라서 $EO:BD=OH:BC=3:8$이므로 $EO=10\\times\\dfrac{3}{8}=\\dfrac{15}{4}\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q5.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+    "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형의 중심 O에서 변 AD에 수선을 내리고 두 닮은 직각삼각형 EOH, BCD를 다른 색으로 표시한다.",
     "solutionImageCaption": "중심에서 윗변까지 OH=3cm이고 BD=10cm이므로 닮음비를 이용한다. 답: ⑤ 15/4cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+    "crossConceptKeys": [
+      "CC_RECTANGLE_PROPERTIES",
+      "CC_MIDPOINT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "수선 보조선으로 새 직각삼각형 닮음",
+    "decisiveStep": "중점O의 높이OH를 직사각형 높이의 절반으로 읽고 이중 수직 관계로 EOH와BCD의 닮음을 만들어 EO를 정한다."
   },
   {
     "id": 6,
@@ -175,8 +233,8 @@ window.questionBank = [
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-07",
-    "standardUnit": "피타고라스 정리",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
     "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -195,14 +253,25 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 직각삼각형에서 빗변에 내린 높이는 두 빗변 조각의 비례중항이다.\n그림에서 $AD=9\\rm\\,cm$, $BD=6\\rm\\,cm$이다.\n$AD^2=BD\\cdot CD$이므로 $9^2=6\\cdot CD$이다.\n따라서 $CD=\\dfrac{81}{6}=\\dfrac{27}{2}\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q6.png",
-    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
-    "subUnit": "피타고라스 정리의 활용",
+    "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+    "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 빗변에 내린 높이 AD를 기준으로 두 직각삼각형을 다른 색으로 나누어 표시한다.",
     "solutionImageCaption": "두 직각삼각형의 닮음에서 AD²=BD×CD이다. 답: ④ 27/2cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "difficultyBucket": 2,
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "빗변에 내린 높이의 비례중항",
+    "decisiveStep": "직각삼각형의 높이로 나뉜 두 작은 삼각형의 닮음에서 AD²=BD·CD를 적용한다."
   },
   {
     "id": 7,
@@ -237,7 +306,18 @@ window.questionBank = [
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q7-solution.svg",
     "solutionImageAlt": "해설 그림: 평행한 AB, EF, DC와 교점 E를 그려 두 닮은 삼각형을 색으로 구분한다.",
     "solutionImageCaption": "끌어낸 선분의 몫은 같은 기준으로 나눈 비를 뜻한다. 닮은 두 삼각형에서 AE:EC=3:2이므로 CE:CA=2:5이다. 답: ⑤ 24/5cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "primaryMethod": "교차 삼각형의 비를 내부 평행선에 전달",
+    "decisiveStep": "교차하는 AEB/CED에서 AE:EC를 구하고 CE:CA로 바꾸어 CEF/CAB의 길이에 사용한다."
   },
   {
     "id": 8,
@@ -272,7 +352,20 @@ window.questionBank = [
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형의 각 변의 중점을 잇고 작은 삼각형의 세 변을 5cm, 4cm, 6cm로 표시한다.",
     "solutionImageCaption": "중점 연결 정리로 세 변은 5cm, 4cm, 6cm이다. 답: ① 15cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [
+      "CC_PERIMETER"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "세 중점연결선의 절반 길이",
+    "decisiveStep": "세 중점을 이은 각 변이 원삼각형 대응변의 절반임을 적용해 세 길이를 합한다."
   },
   {
     "id": 9,
@@ -307,7 +400,18 @@ window.questionBank = [
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 세 평행선 l, m, n을 지나는 두 횡단선이 l과 m 사이에서 교차하고, 각 횡단선의 대응 구간을 끌어내 표시한다.",
     "solutionImageCaption": "단위는 cm이다. 두 횡단선은 l과 m 사이에서 교차한다. 18:12=3:2이므로 x−8=12이다. 답: ① 20cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "difficultyBucket": 2,
+    "difficultyBoundaryFlag": "B23",
+    "primaryMethod": "평행선 대응비에서 전체 길이 복원",
+    "decisiveStep": "x는두 평행구간 전체이므로 x-8을 대응 부분으로 두어18:12 비를 적용한다."
   },
   {
     "id": 10,
@@ -335,14 +439,25 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 사다리꼴의 두 옆변을 연장하여 닮은 삼각형으로 바꾼다.\n$AB=AM+MB=10+4=14\\rm\\,cm$이다.\n두 옆변 $AB$, $DC$를 위쪽으로 연장하여 만나는 점을 $P$라 하면 $\\triangle PAD\\sim\\triangle PBC$이다.\n$AD:BC=7:14=1:2$이므로 $PA:PB=1:2$이다. 또한 $PB-PA=AB=14$이므로 $PA=14$, $PB=28$이다.\n$PM=PA+AM=24$이고 $\\triangle PMN\\sim\\triangle PBC$이므로 $MN:14=24:28=6:7$이다.\n따라서 $MN=12\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q10.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 사다리꼴의 두 옆변을 위로 연장해 만나는 P와 평행한 세 선분 AD, MN, BC를 나타낸다.",
     "solutionImageCaption": "예: 옆변을 연장한 그림에서 닮음비로 PA=14cm, PM=24cm이며 PM:PB=6:7이다. 답: ④ 12cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "사다리꼴 옆변 연장으로 평행선 비례",
+    "decisiveStep": "옆변을 연장한 공통 꼭짓점을 만들고 밑변비로 PA를 복원하여 PM:PB를 중간 평행선 길이에 옮긴다."
   },
   {
     "id": 11,
@@ -371,14 +486,24 @@ window.questionBank = [
     "answer": "②, ⑤",
     "solution": "[키포인트] 무게중심은 각 중선을 꼭짓점 쪽부터 $2:1$로 나누고, 세 중선은 삼각형을 넓이가 같은 6개의 작은 삼각형으로 나눈다.\n①에서 $BG:GE=2:1$이므로 옳다.\n②의 $GE$와 $GF$는 서로 다른 중선 위의 길이이므로 일반적으로 같지 않아 옳지 않다.\n③에서 $\\triangle GBD$는 6개의 같은 넓이의 작은 삼각형 중 하나이므로 $\\dfrac16\\triangle ABC$가 맞다.\n④에서 $\\square FBDG$는 같은 넓이의 작은 삼각형 2개로 이루어져 전체의 $\\dfrac13$이므로 옳다.\n⑤에서 $\\triangle AGE$는 전체의 $\\dfrac16$이고 $\\triangle ADC$는 전체의 $\\dfrac12$이므로 $\\triangle AGE=\\dfrac13\\triangle ADC$이다. 따라서 제시된 $\\dfrac12$는 옳지 않다.\n따라서 정답은 ②, ⑤이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q11.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+    "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형의 세 중선이 나누는 여섯 개의 넓이가 같은 삼각형과 BG:GE=2:1을 나타낸 그림.",
     "solutionImageCaption": "끌어낸 선분의 몫은 같은 기준으로 나눈 비를 뜻한다. 예: 세 중선이 만드는 여섯 삼각형은 넓이가 같고 BG:GE=2:1이다. 서로 다른 중선 위의 GE와 GF는 일반적으로 같지 않다. 답: ②, ⑤",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "무게중심의 중선비와 등적 분할 진위",
+    "decisiveStep": "각 중선2:1과 여섯 등넓이 삼각형에서 서로 다른 중선 길이의 비교와 두 영역의 넓이비 진술을 판정한다."
   },
   {
     "id": 12,
@@ -406,14 +531,25 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 무게중심이 밑변에서 차지하는 높이의 비를 차례로 적용한다.\n$G$는 $\\triangle ABC$의 무게중심이므로 밑변 $BC$에서 $G$까지의 높이는 $A$에서 $BC$까지 높이의 $\\dfrac13$이다.\n또 $G'$은 $\\triangle GBC$의 무게중심이므로 $G'$에서 $BC$까지의 높이는 $G$에서 $BC$까지 높이의 $\\dfrac13$, 즉 원래 높이의 $\\dfrac19$이다.\n$D$는 $BC$의 중점이므로 $BD=\\dfrac12 BC$이다.\n따라서 $[\\triangle G'BD]=\\dfrac12\\times\\dfrac12 BC\\times\\dfrac19 h=\\dfrac1{18}[\\triangle ABC]$이다.\n$5=\\dfrac1{18}[\\triangle ABC]$이므로 $[\\triangle ABC]=90\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q12.png",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+    "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형의 중선 위에 두 무게중심 G, G′과 밑변 중점 D를 표시하고 삼각형 G′BD를 색칠한다.",
     "solutionImageCaption": "전체 높이를 h라 하면 G와 G′의 높이는 h/3, h/9이고 BD는 BC의 절반이다. 색칠한 5cm²는 전체의 1/18이다. 답: ③ 90cm²",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "templateKey": "",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "연속 무게중심의 높이비와 넓이",
+    "decisiveStep": "두 번의 무게중심에서 높이를1/3씩 축소하고 밑변의 중점1/2와 결합해 전체 넓이를 역산한다."
   },
   {
     "id": 13,
@@ -448,7 +584,21 @@ window.questionBank = [
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 평행사변형에서 대각선 BD와 중선 AM의 교점 P를 표시하고 삼각형 ABP와 PBM을 다른 색으로 구분한다.",
     "solutionImageCaption": "끌어낸 선분의 몫은 같은 기준으로 나눈 비를 뜻한다. 평행선의 닮음에서 AP:PM=2:1이고 두 색 영역은 같은 높이를 갖는다. 답: ① 8cm²",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [
+      "CC_QUADRILATERAL_PROPERTIES",
+      "CC_AREA_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "평행사변형 교점비를 공통 높이 넓이에 전달",
+    "decisiveStep": "대변과 중점에서2:1을 얻고 교차 닮음의 AP:PM을 삼각형ABM의 넓이 분할에 사용한다."
   },
   {
     "id": 14,
@@ -483,7 +633,18 @@ window.questionBank = [
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 사다리꼴에서 D로부터 밑변 BC에 수선을 내려 밑변 차 9cm인 직각삼각형을 색칠한다.",
     "solutionImageCaption": "두 밑변의 차는 9cm이고 높이는 12cm이다. 답: ④ 15cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "사다리꼴 밑변 차로 숨은 직각변 구성",
+    "decisiveStep": "밑변차9와 높이12를 직각변으로 삼아 기울어진 옆변을 제곱 관계로 구한다."
   },
   {
     "id": 15,
@@ -514,7 +675,18 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "세 반원 넓이의 지름 제곱 합",
+    "decisiveStep": "반원 넓이합을 세 변의 제곱합으로 나타내고 직각변 제곱합을 빗변 제곱으로 치환한다."
   },
   {
     "id": 16,
@@ -542,7 +714,21 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+    "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 2,
+    "difficultyBoundaryFlag": "B12",
+    "primaryMethod": "주사위 차별 순서쌍 분류와 합",
+    "decisiveStep": "차3과4를 배타적으로 나누고 각각 순서 바꾼 쌍까지 세어 합한다."
   },
   {
     "id": 17,
@@ -573,7 +759,24 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+    "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+    "crossConceptKeys": [
+      "CC_POLYGON_VERTEX_MOTION"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE",
+      "COND_DIVISIBILITY"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "오각형 이동의 나머지에서 합별 계수",
+    "decisiveStep": "합을5로나눈 나머지가2인2·7·12로 나누어 주사위 순서쌍 수를 합한다."
   },
   {
     "id": 18,
@@ -597,7 +800,17 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "닮음 정의를 만족하는 도형 예시 구성",
+    "decisiveStep": "정사각형과 정삼각형을 선택하여 대응각동등과 대응변비 일정, 확대·축소 관계를 설명한다."
   },
   {
     "id": 19,
@@ -626,7 +839,17 @@ window.questionBank = [
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 액자의 바깥 직사각형과 안쪽 직사각형에서 가로와 세로를 각각 같은 색으로 나타낸다.",
     "solutionImageCaption": "안쪽의 가로와 세로는 각각 24cm, 18cm이고 대응변의 비 5:4와 4:3이 다르다. 답: 닮지 않는다.",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "안팎 직사각형의 닮음 대응비 판정",
+    "decisiveStep": "테두리의 폭을 양쪽에서 빼 안쪽 가로·세로를 구성하고 두 비가 일치하지 않음을 설명한다."
   },
   {
     "id": 20,
@@ -648,10 +871,21 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{16}{5}\\rm\\,cm$",
     "solution": "[키포인트] $BC\\parallel DE$이므로 작은 삼각형과 큰 삼각형이 닮음이다.\n$AB=4\\rm\\,cm$, $BD=6\\rm\\,cm$이므로 $AD=10\\rm\\,cm$이다.\n$BC\\parallel DE$이므로 $\\triangle ABC\\sim\\triangle ADE$이다.\n따라서 $AB:AD=BC:DE$이므로 $4:10=x:8$이다.\n$10x=32$이므로 $x=\\dfrac{16}{5}$이다.\n따라서 구하는 값은 $\\dfrac{16}{5}\\rm\\,cm$이다.",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "삼각형 내부 평행선의 부분과 전체 비",
+    "decisiveStep": "부분4와6을 합한 전체10에 대한4의 비를 평행한 두 변x와8에 적용한다."
   },
   {
     "id": 21,
@@ -680,7 +914,16 @@ window.questionBank = [
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 DE와 BC가 평행하고 E를 지나는 EF가 AB에 평행하도록 보조선을 나타낸다.",
     "solutionImageCaption": "두 평행 관계에서 대응각이 같고 사각형 DBFE는 평행사변형이다. 답: (1) EF∥AB, (2) AA 닮음, (3) EF, EC, 평행사변형, DB, DB, EC",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "primaryMethod": "평행 보조선의 AA 닮음으로 분할비 증명",
+    "decisiveStep": "지정한 평행 보조선으로 AA 닮음과 평행사변형을 만들고 대응변EF를 DB로 치환해 선분비 명제를 증명한다."
   },
   {
     "id": 22,
@@ -709,7 +952,18 @@ window.questionBank = [
     "solutionImage": "assets/images/23_신흥중_2학기_기말_중2_기출/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형에서 삼각형 ABD를 색칠하고 대각선 BD와 수선 AE의 관계를 나타낸다.",
     "solutionImageCaption": "BD=10cm이고 색칠한 삼각형의 넓이는 24cm²이다. 답: 24/5cm",
-    "solutionImageSize": "full"
+    "solutionImageSize": "full",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "같은 삼각형의 두 밑변 넓이식으로 높이 복원",
+    "decisiveStep": "피타고라스로 대각선10을 얻은 뒤 두 직각변으로 계산한 넓이24를 대각선 밑변의 넓이식5AE와 같게 놓는다."
   },
   {
     "id": 23,
@@ -730,9 +984,25 @@ window.questionBank = [
     "choices": [],
     "answer": "3가지",
     "solution": "[키포인트] 각 동전의 개수를 미지수로 두고 가능한 범위 안에서 정수해를 센다.\n$50$원, $100$원, $500$원짜리 동전의 개수를 각각 $x,y,z$라 하면 $0\\le x,y,z\\le4$이고 $50x+100y+500z=800$이다.\n$50$으로 나누면 $x+2y+10z=16$이다.\n$z=0$이면 왼쪽의 최댓값은 $4+2\\times4=12$이므로 불가능하다.\n$z=1$이면 $x+2y=6$이고 가능한 $(x,y)$는 $(4,1),(2,2),(0,3)$의 $3$가지이다.\n$z\\ge2$이면 $10z\\ge20$이므로 불가능하다.\n따라서 구하는 방법의 수는 3가지이다.",
-    "subUnitKey": "M2-08-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 성질",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+    "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+    "crossConceptKeys": [
+      "CC_NON_NEGATIVE_INTEGER_SOLUTION"
+    ],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "제한된 동전 개수의 큰 액면별 경우분류",
+    "decisiveStep": "가중합을800으로 놓고500원 개수0·1·2이상으로 분기하여 범위 안의 정수쌍을 센다."
   }
 ];

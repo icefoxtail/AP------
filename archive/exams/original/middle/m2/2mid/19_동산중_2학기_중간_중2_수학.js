@@ -2,331 +2,937 @@ window.examData = {
   "title": "2019학년도 순천동산여중 2학년 2학기 중간고사 수학",
   "totalScore": 100.0,
   "questions": [
-    {
-      "id": 1,
-      "score": 3.0,
-      "question": "<p>1. 다음 연립방정식의 해를 주어진 그래프를 이용하여 구하면?(3점)</p><p>$$\\begin{cases} x+y=2 \\\\ 2x-y=-5 \\end{cases}$$</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q01.png\" /></p>",
-      "choices": [
-        "$x=-1,\\ y=-3$",
-        "$x=-1,\\ y=2$",
-        "$x=-1,\\ y=3$",
-        "$x=1,\\ y=2$",
-        "$x=1,\\ y=3$"
-      ],
-      "answer": "",
-      "solution": ""
+  {
+    "id": 1,
+    "score": 3,
+    "question": "<p>1. 다음 연립방정식의 해를 주어진 그래프를 이용하여 구하면?(3점)</p><p>$$\\begin{cases} x+y=2 \\\\ 2x-y=-5 \\end{cases}$$</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q01.png\" /></p>",
+    "choices": [
+      "$x=-1,\\ y=-3$",
+      "$x=-1,\\ y=2$",
+      "$x=-1,\\ y=3$",
+      "$x=1,\\ y=2$",
+      "$x=1,\\ y=3$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 일차방정식의 관계",
+    "rpmL3": "두 직선의 관계",
+    "rpmL4": "교점과 연립방정식",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 일차방정식의 관계",
+      "l3": "두 직선의 관계",
+      "l4": "교점과 연립방정식"
     },
-    {
-      "id": 2,
-      "score": 4.0,
-      "question": "<p>2. 연립방정식 $\\begin{cases} 2x-y=3 \\\\ x+ay=4 \\end{cases}$의 각 일차방정식의 그래프를 그렸더니 두 그래프의 교점의 좌표가 $(b,\\ 1)$이었다. 이때 $a,\\ b$의 값을 옳게 구한 것을 고르면?(4점)</p>",
-      "choices": [
-        "$a=1,\\ b=1$",
-        "$a=2,\\ b=1$",
-        "$a=2,\\ b=2$",
-        "$a=3,\\ b=1$",
-        "$a=3,\\ b=2$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "그림의 교점을 연립방정식의 해로 읽기",
+    "decisiveStep": "그림에서 두 직선이 만나는 점의 x,y좌표를 그대로 읽는다."
+  },
+  {
+    "id": 2,
+    "score": 4,
+    "question": "<p>2. 연립방정식 $\\begin{cases} 2x-y=3 \\\\ x+ay=4 \\end{cases}$의 각 일차방정식의 그래프를 그렸더니 두 그래프의 교점의 좌표가 $(b,\\ 1)$이었다. 이때 $a,\\ b$의 값을 옳게 구한 것을 고르면?(4점)</p>",
+    "choices": [
+      "$a=1,\\ b=1$",
+      "$a=2,\\ b=1$",
+      "$a=2,\\ b=2$",
+      "$a=3,\\ b=1$",
+      "$a=3,\\ b=2$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 일차방정식의 관계",
+    "rpmL3": "두 직선의 관계",
+    "rpmL4": "교점과 연립방정식",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 일차방정식의 관계",
+      "l3": "두 직선의 관계",
+      "l4": "교점과 연립방정식"
     },
-    {
-      "id": 3,
-      "score": 4.0,
-      "question": "<p>3. 두 일차함수 $y=2x-4$, $y=x-3$의 교점을 지나고, $-6x+3y=2$의 그래프와 평행한 직선의 $x$절편과 $y$절편을 옳게 구한 것을 고르면?(4점)</p>",
-      "choices": [
-        "$x\\text{절편} : \\dfrac{1}{3},\\quad y\\text{절편} : -4$",
-        "$x\\text{절편} : \\dfrac{1}{3},\\quad y\\text{절편} : -3$",
-        "$x\\text{절편} : 2,\\quad y\\text{절편} : -3$",
-        "$x\\text{절편} : 2,\\quad y\\text{절편} : -4$",
-        "$x\\text{절편} : 3,\\quad y\\text{절편} : -4$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "일부 알려진 교점으로 미정계수 역산",
+    "decisiveStep": "y=1을 첫 식에 넣어 b를 얻고 그 공통점을 둘째 식에 대입한다."
+  },
+  {
+    "id": 3,
+    "score": 4,
+    "question": "<p>3. 두 일차함수 $y=2x-4$, $y=x-3$의 교점을 지나고, $-6x+3y=2$의 그래프와 평행한 직선의 $x$절편과 $y$절편을 옳게 구한 것을 고르면?(4점)</p>",
+    "choices": [
+      "$x\\text{절편} : \\dfrac{1}{3},\\quad y\\text{절편} : -4$",
+      "$x\\text{절편} : \\dfrac{1}{3},\\quad y\\text{절편} : -3$",
+      "$x\\text{절편} : 2,\\quad y\\text{절편} : -3$",
+      "$x\\text{절편} : 2,\\quad y\\text{절편} : -4$",
+      "$x\\text{절편} : 3,\\quad y\\text{절편} : -4$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_PARALLEL",
+    "crossConceptKeys": [
+      "CC_INTERCEPTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 일차방정식의 관계",
+    "rpmL3": "그래프 활용",
+    "rpmL4": "조건에 따른 식 결정",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 일차방정식의 관계",
+      "l3": "그래프 활용",
+      "l4": "조건에 따른 식 결정"
     },
-    {
-      "id": 4,
-      "score": 4.0,
-      "question": "<p>4. 두 일차방정식 $3x-2y=a$, $2x-by=2$의 해가 무수히 많을 때, $ab$의 값을 고르면?(4점)</p>",
-      "choices": [
-        "$1$",
-        "$2$",
-        "$3$",
-        "$4$",
-        "$5$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "평행한 원래 직선을 식별한 뒤 두 절편",
+    "decisiveStep": "주어진 직선의 기울기가 첫 일차함수와 같으므로 공통 교점을 지나는 목표 직선은 첫 함수임을 알고 절편을 읽는다."
+  },
+  {
+    "id": 4,
+    "score": 4,
+    "question": "<p>4. 두 일차방정식 $3x-2y=a$, $2x-by=2$의 해가 무수히 많을 때, $ab$의 값을 고르면?(4점)</p>",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_LINE_RELATION",
+    "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "standardUnitKey": "M2-03",
+    "standardUnit": "연립일차방정식",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "일차부등식과 연립일차방정식",
+    "rpmL2": "연립일차방정식",
+    "rpmL3": "해가 특수한 연립방정식",
+    "rpmL4": "계수 조건으로 해의 상태 판단",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차부등식과 연립일차방정식",
+      "midUnit": "연립일차방정식",
+      "l3": "해가 특수한 연립방정식",
+      "l4": "계수 조건으로 해의 상태 판단"
     },
-    {
-      "id": 5,
-      "score": 4.0,
-      "question": "<p>5. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}$와 $\\angle\\mathrm{C}$의 이등분선의 교점을 $\\mathrm{D}$라고 하자. $\\angle\\mathrm{BDC}=100^\\circ$일 때 $\\angle\\mathrm{DBC}$와 $\\angle\\mathrm{A}$의 크기를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q05.png\" /></p>",
-      "choices": [
-        "$\\angle\\mathrm{DBC}=40^\\circ,\\quad \\angle\\mathrm{A}=20^\\circ$",
-        "$\\angle\\mathrm{DBC}=80^\\circ,\\quad \\angle\\mathrm{A}=20^\\circ$",
-        "$\\angle\\mathrm{DBC}=32.5^\\circ,\\quad \\angle\\mathrm{A}=50^\\circ$",
-        "$\\angle\\mathrm{DBC}=40^\\circ,\\quad \\angle\\mathrm{A}=50^\\circ$",
-        "$\\angle\\mathrm{DBC}=65^\\circ,\\quad \\angle\\mathrm{A}=50^\\circ$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "해가 무수히 많은 계수비 조건",
+    "decisiveStep": "두 식이 같은 직선을 나타내도록 x계수,y계수,상수항의 비를 같게 놓는다."
+  },
+  {
+    "id": 5,
+    "score": 4,
+    "question": "<p>5. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}$와 $\\angle\\mathrm{C}$의 이등분선의 교점을 $\\mathrm{D}$라고 하자. $\\angle\\mathrm{BDC}=100^\\circ$일 때 $\\angle\\mathrm{DBC}$와 $\\angle\\mathrm{A}$의 크기를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q05.png\" /></p>",
+    "choices": [
+      "$\\angle\\mathrm{DBC}=40^\\circ,\\quad \\angle\\mathrm{A}=20^\\circ$",
+      "$\\angle\\mathrm{DBC}=80^\\circ,\\quad \\angle\\mathrm{A}=20^\\circ$",
+      "$\\angle\\mathrm{DBC}=32.5^\\circ,\\quad \\angle\\mathrm{A}=50^\\circ$",
+      "$\\angle\\mathrm{DBC}=40^\\circ,\\quad \\angle\\mathrm{A}=50^\\circ$",
+      "$\\angle\\mathrm{DBC}=65^\\circ,\\quad \\angle\\mathrm{A}=50^\\circ$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_INCENTER",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "삼각형의 성질",
+    "rpmL2": "삼각형의 외심과 내심",
+    "rpmL3": "내심",
+    "rpmL4": "각의 이등분선과 내심",
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각형의 성질",
+      "midUnit": "삼각형의 외심과 내심",
+      "l3": "내심",
+      "l4": "각의 이등분선과 내심"
     },
-    {
-      "id": 6,
-      "score": 4.0,
-      "question": "<p>6. 아래의 그림과 같이 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{AC}}$, $\\overline{\\mathrm{AB}}\\perp \\overline{\\mathrm{DE}}$, $\\angle\\mathrm{EAD}=30^\\circ$이고, $\\overline{\\mathrm{DC}}=2\\text{cm}$, $\\overline{\\mathrm{AC}}=4\\text{cm}$일 때, $\\triangle\\mathrm{ADB}$의 넓이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q06.png\" /></p>",
-      "choices": [
-        "$2\\text{cm}^2$",
-        "$4\\text{cm}^2$",
-        "$6\\text{cm}^2$",
-        "$8\\text{cm}^2$",
-        "$10\\text{cm}^2$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "이등변삼각형의 내심각 역산",
+    "decisiveStep": "같은 밑각의 이등분각과 작은 삼각형 내각합으로 DBC를 구한 뒤 큰 꼭지각을 구한다."
+  },
+  {
+    "id": 6,
+    "score": 4,
+    "question": "<p>6. 아래의 그림과 같이 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{AC}}$, $\\overline{\\mathrm{AB}}\\perp \\overline{\\mathrm{DE}}$, $\\angle\\mathrm{EAD}=30^\\circ$이고, $\\overline{\\mathrm{DC}}=2\\text{cm}$, $\\overline{\\mathrm{AC}}=4\\text{cm}$일 때, $\\triangle\\mathrm{ADB}$의 넓이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q06.png\" /></p>",
+    "choices": [
+      "$2\\text{cm}^2$",
+      "$4\\text{cm}^2$",
+      "$6\\text{cm}^2$",
+      "$8\\text{cm}^2$",
+      "$10\\text{cm}^2$"
+    ],
+    "answer": "",
+    "solution": ""
+  },
+  {
+    "id": 7,
+    "score": 4,
+    "question": "<p>7. 다음 그림과 같은 두 직각삼각형이 서로 합동이 되지 않은 조건은?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q07.png\" /></p>",
+    "choices": [
+      "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DE}},\\ \\overline{\\mathrm{AC}}=\\overline{\\mathrm{DF}}$",
+      "$\\angle\\mathrm{B}=\\angle\\mathrm{E},\\ \\overline{\\mathrm{AC}}=\\overline{\\mathrm{DF}}$",
+      "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DE}},\\ \\angle\\mathrm{B}=\\angle\\mathrm{E}$",
+      "$\\angle\\mathrm{B}=\\angle\\mathrm{E},\\ \\overline{\\mathrm{BC}}=\\overline{\\mathrm{EF}}$",
+      "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DE}}$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "직각삼각형 합동 충분조건 비교",
+    "decisiveStep": "두 직각을 공통으로 두고 RHS,RHA와 남은 각을 보완한 ASA 조건을 비교한다."
+  },
+  {
+    "id": 8,
+    "score": 4,
+    "question": "<p>8. 점 $\\mathrm{O}$는 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 외심이다. $\\angle\\mathrm{A}=45^\\circ$, $\\overline{\\mathrm{OB}}=2\\text{cm}$일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q08.png\" /></p>",
+    "choices": [
+      "$2\\text{cm}^2$",
+      "$3\\text{cm}^2$",
+      "$4\\text{cm}^2$",
+      "$5\\text{cm}^2$",
+      "$6\\text{cm}^2$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE",
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "삼각형의 성질",
+    "rpmL2": "삼각형의 외심과 내심",
+    "rpmL3": "외접원·내접원 활용",
+    "rpmL4": "외심·내심을 이용한 복합도형",
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각형의 성질",
+      "midUnit": "삼각형의 외심과 내심",
+      "l3": "외접원·내접원 활용",
+      "l4": "외심·내심을 이용한 복합도형"
     },
-    {
-      "id": 7,
-      "score": 4.0,
-      "question": "<p>7. 다음 그림과 같은 두 직각삼각형이 서로 합동이 되지 않은 조건은?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q07.png\" /></p>",
-      "choices": [
-        "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DE}},\\ \\overline{\\mathrm{AC}}=\\overline{\\mathrm{DF}}$",
-        "$\\angle\\mathrm{B}=\\angle\\mathrm{E},\\ \\overline{\\mathrm{AC}}=\\overline{\\mathrm{DF}}$",
-        "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DE}},\\ \\angle\\mathrm{B}=\\angle\\mathrm{E}$",
-        "$\\angle\\mathrm{B}=\\angle\\mathrm{E},\\ \\overline{\\mathrm{BC}}=\\overline{\\mathrm{EF}}$",
-        "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DE}}$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "반빗변 외심과 직각이등변삼각형 넓이",
+    "decisiveStep": "OA=OB=OC와 45도 조건으로 OB가 AC의 수선높이임을 알아 넓이를 구한다."
+  },
+  {
+    "id": 9,
+    "score": 3,
+    "question": "<p>9. 오른쪽 그림에서 점 $\\mathrm{O}$가 $\\triangle\\mathrm{ABC}$의 외심일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이를 구하면?(3점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q09.png\" /></p>",
+    "choices": [
+      "$12\\text{cm}$",
+      "$15\\text{cm}$",
+      "$16\\text{cm}$",
+      "$22\\text{cm}$",
+      "$24\\text{cm}$"
+    ],
+    "answer": "",
+    "solution": ""
+  },
+  {
+    "id": 10,
+    "score": 4,
+    "question": "<p>10. 오른쪽 그림에서 점 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 외심이다. 다음 중 옳은 것을 고르면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q10.png\" /></p>",
+    "choices": [
+      "$\\overline{\\mathrm{OD}}=\\overline{\\mathrm{OE}}=\\overline{\\mathrm{OF}}$",
+      "$\\angle\\mathrm{BOC}=2\\angle\\mathrm{A}$",
+      "$\\triangle\\mathrm{ADO}\\equiv \\triangle\\mathrm{AOF}$",
+      "$\\angle\\mathrm{DBO}=\\angle\\mathrm{EBO}$",
+      "점 $\\mathrm{O}$는 항상 삼각형 내부에 존재한다."
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "외심의 기본성질 진술 판정",
+    "decisiveStep": "꼭짓점 등거리와 중심각 관계를 외심 성질로 구별하고 내심 성질의 혼입을 판단한다."
+  },
+  {
+    "id": 11,
+    "score": 4,
+    "question": "<p>11. 아래의 정삼각형 $\\mathrm{ABC}$의 내심을 $\\mathrm{I}$라 하자. $\\mathrm{I}$에서 각 변에 수직으로 내린 선과의 교점을 $\\mathrm{D},\\ \\mathrm{E},\\ \\mathrm{F}$라 하자. $\\overline{\\mathrm{AD}}=2\\text{cm}$일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q11.png\" /></p>",
+    "choices": [
+      "$4\\text{cm}$",
+      "$8\\text{cm}$",
+      "$10\\text{cm}$",
+      "$12\\text{cm}$",
+      "$14\\text{cm}$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+    "crossConceptKeys": [
+      "CC_EQUILATERAL_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "삼각형의 성질",
+    "rpmL2": "삼각형의 외심과 내심",
+    "rpmL3": "내심",
+    "rpmL4": "내심과 거리",
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각형의 성질",
+      "midUnit": "삼각형의 외심과 내심",
+      "l3": "내심",
+      "l4": "내심과 거리"
     },
-    {
-      "id": 8,
-      "score": 4.0,
-      "question": "<p>8. 점 $\\mathrm{O}$는 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 외심이다. $\\angle\\mathrm{A}=45^\\circ$, $\\overline{\\mathrm{OB}}=2\\text{cm}$일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q08.png\" /></p>",
-      "choices": [
-        "$2\\text{cm}^2$",
-        "$3\\text{cm}^2$",
-        "$4\\text{cm}^2$",
-        "$5\\text{cm}^2$",
-        "$6\\text{cm}^2$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "정삼각형 내심 수선발의 중점 성질",
+    "decisiveStep": "정삼각형에서 내심 수선발이 변의 중점임을 이용해 한 변을 복원하고 세 변을 더한다."
+  },
+  {
+    "id": 12,
+    "score": 4,
+    "question": "<p>12. 아래 그림에서 점 $\\mathrm{I}$가 $\\triangle\\mathrm{ABC}$의 내심일 때, $x$와 $\\angle\\mathrm{BIC}$에 대해 $x+\\angle\\mathrm{BIC}$를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q12.png\" /></p>",
+    "choices": [
+      "$140^\\circ$",
+      "$145^\\circ$",
+      "$150^\\circ$",
+      "$155^\\circ$",
+      "$160^\\circ$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_INCENTER",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "삼각형의 성질",
+    "rpmL2": "삼각형의 외심과 내심",
+    "rpmL3": "내심",
+    "rpmL4": "각의 이등분선과 내심",
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각형의 성질",
+      "midUnit": "삼각형의 외심과 내심",
+      "l3": "내심",
+      "l4": "각의 이등분선과 내심"
     },
-    {
-      "id": 9,
-      "score": 3.0,
-      "question": "<p>9. 오른쪽 그림에서 점 $\\mathrm{O}$가 $\\triangle\\mathrm{ABC}$의 외심일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이를 구하면?(3점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q09.png\" /></p>",
-      "choices": [
-        "$12\\text{cm}$",
-        "$15\\text{cm}$",
-        "$16\\text{cm}$",
-        "$22\\text{cm}$",
-        "$24\\text{cm}$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "세 이등분각과 내심각 합",
+    "decisiveStep": "그림의 두 밑각 절반으로 BIC와 꼭지각의 절반 x를 구하여 합한다."
+  },
+  {
+    "id": 13,
+    "score": 4,
+    "question": "<p>13. 아래 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}$의 이등분선과 $\\overline{\\mathrm{AC}}$가 만나는 점을 $\\mathrm{D}$라고 하자. $\\angle\\mathrm{C}=80^\\circ$일 때, $\\angle\\mathrm{ADB}$의 크기를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q13.png\" /></p>",
+    "choices": [
+      "$120^\\circ$",
+      "$130^\\circ$",
+      "$140^\\circ$",
+      "$150^\\circ$",
+      "$160^\\circ$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+    "crossConceptKeys": [
+      "CC_ANGLE_BISECTOR"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "삼각형의 성질",
+    "rpmL2": "이등변삼각형",
+    "rpmL3": "이등변삼각형의 성질",
+    "rpmL4": "밑각",
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각형의 성질",
+      "midUnit": "이등변삼각형",
+      "l3": "이등변삼각형의 성질",
+      "l4": "밑각"
     },
-    {
-      "id": 10,
-      "score": 4.0,
-      "question": "<p>10. 오른쪽 그림에서 점 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 외심이다. 다음 중 옳은 것을 고르면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q10.png\" /></p>",
-      "choices": [
-        "$\\overline{\\mathrm{OD}}=\\overline{\\mathrm{OE}}=\\overline{\\mathrm{OF}}$",
-        "$\\angle\\mathrm{BOC}=2\\angle\\mathrm{A}$",
-        "$\\triangle\\mathrm{ADO}\\equiv \\triangle\\mathrm{AOF}$",
-        "$\\angle\\mathrm{DBO}=\\angle\\mathrm{EBO}$",
-        "점 $\\mathrm{O}$는 항상 삼각형 내부에 존재한다."
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "밑각을 이등분하여 작은 삼각형 각 계산",
+    "decisiveStep": "두 밑각을 같게 놓고 B각의 절반과 꼭지각을 구해 ADB를 정한다."
+  },
+  {
+    "id": 14,
+    "score": 4,
+    "question": "<p>14. 아래 그림에서 $\\square\\mathrm{ABCD}$는 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$, $\\overline{\\mathrm{AB}}\\parallel \\overline{\\mathrm{CD}}$이고, $\\overline{\\mathrm{AC}}$가 $\\angle\\mathrm{A}$를 이등분 한다. $\\overline{\\mathrm{AD}}=6\\text{cm}$일 때 $\\square\\mathrm{ABCD}$의 둘레의 길이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q14.png\" /></p>",
+    "choices": [
+      "$18\\text{cm}$",
+      "$20\\text{cm}$",
+      "$22\\text{cm}$",
+      "$24\\text{cm}$",
+      "$26\\text{cm}$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+    "crossConceptKeys": [
+      "CC_ANGLE_BISECTOR_PARALLEL"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "사각형의 성질",
+    "rpmL2": "여러 가지 사각형",
+    "rpmL3": "직사각형·마름모·정사각형",
+    "rpmL4": "각 사각형의 성질",
+    "rpmPrimaryPath": {
+      "majorUnit": "사각형의 성질",
+      "midUnit": "여러 가지 사각형",
+      "l3": "직사각형·마름모·정사각형",
+      "l4": "각 사각형의 성질"
     },
-    {
-      "id": 11,
-      "score": 4.0,
-      "question": "<p>11. 아래의 정삼각형 $\\mathrm{ABC}$의 내심을 $\\mathrm{I}$라 하자. $\\mathrm{I}$에서 각 변에 수직으로 내린 선과의 교점을 $\\mathrm{D},\\ \\mathrm{E},\\ \\mathrm{F}$라 하자. $\\overline{\\mathrm{AD}}=2\\text{cm}$일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q11.png\" /></p>",
-      "choices": [
-        "$4\\text{cm}$",
-        "$8\\text{cm}$",
-        "$10\\text{cm}$",
-        "$12\\text{cm}$",
-        "$14\\text{cm}$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "평행사변형 판정 후 마름모 둘레",
+    "decisiveStep": "한 쌍 대변의 평행·등변으로 평행사변형을 확인하고 대각선의 각이등분으로 이웃변이 같음을 얻는다."
+  },
+  {
+    "id": 15,
+    "score": 3,
+    "question": "<p>15. 다음 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 점 $\\mathrm{O}$는 두 대각선의 교점이고 $\\overline{\\mathrm{AC}}=8\\text{cm}$, $\\overline{\\mathrm{BC}}=10\\text{cm}$, $\\overline{\\mathrm{BD}}=12\\text{cm}$일 때, $\\triangle\\mathrm{AOD}$의 둘레의 길이를 구하면?(3점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q15.png\" /></p>",
+    "choices": [
+      "$15\\text{cm}$",
+      "$20\\text{cm}$",
+      "$22\\text{cm}$",
+      "$28\\text{cm}$",
+      "$30\\text{cm}$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "사각형의 성질",
+    "rpmL2": "평행사변형",
+    "rpmL3": "평행사변형의 성질",
+    "rpmL4": "평행사변형의 대각선 성질",
+    "rpmPrimaryPath": {
+      "majorUnit": "사각형의 성질",
+      "midUnit": "평행사변형",
+      "l3": "평행사변형의 성질",
+      "l4": "평행사변형의 대각선 성질"
     },
-    {
-      "id": 12,
-      "score": 4.0,
-      "question": "<p>12. 아래 그림에서 점 $\\mathrm{I}$가 $\\triangle\\mathrm{ABC}$의 내심일 때, $x$와 $\\angle\\mathrm{BIC}$에 대해 $x+\\angle\\mathrm{BIC}$를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q12.png\" /></p>",
-      "choices": [
-        "$140^\\circ$",
-        "$145^\\circ$",
-        "$150^\\circ$",
-        "$155^\\circ$",
-        "$160^\\circ$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "대각선의 이등분과 대변 길이",
+    "decisiveStep": "AO,OD를 각각 대각선의 절반으로 읽고 AD=BC를 써 세 변을 더하는 형식이다."
+  },
+  {
+    "id": 16,
+    "score": 4,
+    "question": "<p>16. 다음 오른쪽의 사각형 $\\mathrm{ABCD}$가 평행사변형이 되지 않은 것을 모두 찾아 고르면?(4점)(2개)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q16.png\" /></p>",
+    "choices": [
+      "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DC}},\\ \\overline{\\mathrm{AC}}=\\overline{\\mathrm{BD}}$",
+      "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DC}},\\ \\overline{\\mathrm{AD}}=\\overline{\\mathrm{BC}}$",
+      "$\\angle\\mathrm{BAD}=\\angle\\mathrm{ABC},\\ \\angle\\mathrm{ADC}=\\angle\\mathrm{DCB}$",
+      "$\\overline{\\mathrm{AD}}\\parallel\\overline{\\mathrm{BC}},\\ \\overline{\\mathrm{AB}}\\parallel\\overline{\\mathrm{DC}}$",
+      "$\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OC}},\\ \\overline{\\mathrm{OB}}=\\overline{\\mathrm{OD}}$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+    "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "사각형의 성질",
+    "rpmL2": "평행사변형",
+    "rpmL3": "평행사변형의 판정",
+    "rpmL4": "변·각 조건",
+    "rpmPrimaryPath": {
+      "majorUnit": "사각형의 성질",
+      "midUnit": "평행사변형",
+      "l3": "평행사변형의 판정",
+      "l4": "변·각 조건"
     },
-    {
-      "id": 13,
-      "score": 4.0,
-      "question": "<p>13. 아래 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}$의 이등분선과 $\\overline{\\mathrm{AC}}$가 만나는 점을 $\\mathrm{D}$라고 하자. $\\angle\\mathrm{C}=80^\\circ$일 때, $\\angle\\mathrm{ADB}$의 크기를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q13.png\" /></p>",
-      "choices": [
-        "$120^\\circ$",
-        "$130^\\circ$",
-        "$140^\\circ$",
-        "$150^\\circ$",
-        "$160^\\circ$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "평행사변형 충분조건과 반례 구별",
+    "decisiveStep": "표준 다섯 판정조건에 대응시키고 등변사다리꼴도 가능한 두 조건을 제외한다."
+  },
+  {
+    "id": 17,
+    "score": 4,
+    "question": "<p>17. 아래의 직사각형 $\\mathrm{ABCD}$에 대해서 $\\angle\\mathrm{BAC}$를 이등분한 선과 $\\overline{\\mathrm{BC}}$와 만나는 점을 $\\mathrm{E}$라 하자. $\\mathrm{E}$가 변 $\\overline{\\mathrm{BC}}$ 위에 있고, $\\overline{\\mathrm{BE}}=3\\text{cm}$, $\\overline{\\mathrm{EC}}=5\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\text{cm}$라 할 때 $\\triangle\\mathrm{AEC}$의 넓이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q17.png\" /></p>",
+    "choices": [
+      "$12\\text{cm}^2$",
+      "$14\\text{cm}^2$",
+      "$15\\text{cm}^2$",
+      "$20\\text{cm}^2$",
+      "$25\\text{cm}^2$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+    "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+    "crossConceptKeys": [
+      "CC_RECTANGLE_PROPERTIES",
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "각이등분선의 변비로 높이 복원 후 넓이",
+    "decisiveStep": "BE:EC=AB:AC에서 직사각형의 높이 AB를 구해 AEC의 밑변 EC와 곱한다."
+  },
+  {
+    "id": 18,
+    "score": 4,
+    "question": "<p>18. 아래의 마름모 $\\mathrm{ABCD}$에 대해서 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{BE}}$가 되도록 $\\overline{\\mathrm{AC}}$위의 점 $\\mathrm{E}$를 잡았다. $\\angle\\mathrm{EAD}=50^\\circ$라 할 때, $\\angle\\mathrm{EBC}$의 크기를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q18.png\" /></p>",
+    "choices": [
+      "$20^\\circ$",
+      "$30^\\circ$",
+      "$40^\\circ$",
+      "$50^\\circ$",
+      "$60^\\circ$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "사각형의 성질",
+    "rpmL2": "여러 가지 사각형",
+    "rpmL3": "직사각형·마름모·정사각형",
+    "rpmL4": "특수 사각형의 대각선 성질",
+    "rpmPrimaryPath": {
+      "majorUnit": "사각형의 성질",
+      "midUnit": "여러 가지 사각형",
+      "l3": "직사각형·마름모·정사각형",
+      "l4": "특수 사각형의 대각선 성질"
     },
-    {
-      "id": 14,
-      "score": 4.0,
-      "question": "<p>14. 아래 그림에서 $\\square\\mathrm{ABCD}$는 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$, $\\overline{\\mathrm{AB}}\\parallel \\overline{\\mathrm{CD}}$이고, $\\overline{\\mathrm{AC}}$가 $\\angle\\mathrm{A}$를 이등분 한다. $\\overline{\\mathrm{AD}}=6\\text{cm}$일 때 $\\square\\mathrm{ABCD}$의 둘레의 길이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q14.png\" /></p>",
-      "choices": [
-        "$18\\text{cm}$",
-        "$20\\text{cm}$",
-        "$22\\text{cm}$",
-        "$24\\text{cm}$",
-        "$26\\text{cm}$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "마름모 대각선과 보조 이등변삼각형 각",
+    "decisiveStep": "마름모 대각선이 꼭지각을 이등분한다는 점과 AE=BE를 이용해 B의 각을 나누어 뺀다."
+  },
+  {
+    "id": 19,
+    "score": 4,
+    "question": "<p>19. 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 네 내각의 이등분선으로 만들어지는 $\\square\\mathrm{EFGH}$는 어떤 도형인지 고르면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q19.png\" /></p>",
+    "choices": [
+      "정사각형",
+      "직사각형",
+      "마름모",
+      "두 대각선이 서로를 수직 이등분 하는 사각형",
+      "네 변의 길이가 같은 사각형"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+    "templateKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "사각형의 성질",
+    "rpmL2": "여러 가지 사각형",
+    "rpmL3": "사각형의 포함 관계",
+    "rpmL4": "조건으로 사각형 판정",
+    "rpmPrimaryPath": {
+      "majorUnit": "사각형의 성질",
+      "midUnit": "여러 가지 사각형",
+      "l3": "사각형의 포함 관계",
+      "l4": "조건으로 사각형 판정"
     },
-    {
-      "id": 15,
-      "score": 3.0,
-      "question": "<p>15. 다음 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 점 $\\mathrm{O}$는 두 대각선의 교점이고 $\\overline{\\mathrm{AC}}=8\\text{cm}$, $\\overline{\\mathrm{BC}}=10\\text{cm}$, $\\overline{\\mathrm{BD}}=12\\text{cm}$일 때, $\\triangle\\mathrm{AOD}$의 둘레의 길이를 구하면?(3점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q15.png\" /></p>",
-      "choices": [
-        "$15\\text{cm}$",
-        "$20\\text{cm}$",
-        "$22\\text{cm}$",
-        "$28\\text{cm}$",
-        "$30\\text{cm}$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "이웃한 두 내각 이등분선의 직각",
+    "decisiveStep": "평행사변형의 이웃각 합180도를 반으로 나누어 내부 네 각이 직각임을 확인한다."
+  },
+  {
+    "id": 20,
+    "score": 3,
+    "question": "<p>20. 아래 그림의 $\\square\\mathrm{ABCD}$는 $\\overline{\\mathrm{AD}}\\parallel\\overline{\\mathrm{BC}}$이고, $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DC}}$인 등변사다리꼴이다. $\\overline{\\mathrm{AD}}=3\\text{cm}$, $\\overline{\\mathrm{BC}}=5\\text{cm}$이고, 점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, $\\overline{\\mathrm{BH}}$의 길이를 구하면?(3점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q20.png\" /></p>",
+    "choices": [
+      "$1\\text{cm}$",
+      "$2\\text{cm}$",
+      "$3\\text{cm}$",
+      "$4\\text{cm}$",
+      "$5\\text{cm}$"
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "사각형의 성질",
+    "rpmL2": "여러 가지 사각형",
+    "rpmL3": "사다리꼴",
+    "rpmL4": "등변사다리꼴",
+    "rpmPrimaryPath": {
+      "majorUnit": "사각형의 성질",
+      "midUnit": "여러 가지 사각형",
+      "l3": "사다리꼴",
+      "l4": "등변사다리꼴"
     },
-    {
-      "id": 16,
-      "score": 4.0,
-      "question": "<p>16. 다음 오른쪽의 사각형 $\\mathrm{ABCD}$가 평행사변형이 되지 않은 것을 모두 찾아 고르면?(4점)(2개)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q16.png\" /></p>",
-      "choices": [
-        "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DC}},\\ \\overline{\\mathrm{AC}}=\\overline{\\mathrm{BD}}$",
-        "$\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DC}},\\ \\overline{\\mathrm{AD}}=\\overline{\\mathrm{BC}}$",
-        "$\\angle\\mathrm{BAD}=\\angle\\mathrm{ABC},\\ \\angle\\mathrm{ADC}=\\angle\\mathrm{DCB}$",
-        "$\\overline{\\mathrm{AD}}\\parallel\\overline{\\mathrm{BC}},\\ \\overline{\\mathrm{AB}}\\parallel\\overline{\\mathrm{DC}}$",
-        "$\\overline{\\mathrm{OA}}=\\overline{\\mathrm{OC}},\\ \\overline{\\mathrm{OB}}=\\overline{\\mathrm{OD}}$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "등변사다리꼴 양쪽 밑변 여분의 절반",
+    "decisiveStep": "두 밑변의 차가 양쪽에 같게 나뉨을 이용해 BH를 구한다."
+  },
+  {
+    "id": 21,
+    "score": 4,
+    "question": "<p>21. 다음 중 옳지 않은 것을 고르면?(4점)(2개)</p>",
+    "choices": [
+      "마름모에서 서로 다른 두 대각선이 이등분 하면 정사각형이다.",
+      "등변사다리꼴에서 한 내각이 $90^\\circ$이면 직사각형이다.",
+      "직사각형에서 두 대각선이 수직으로 만나면 정사각형이다.",
+      "평행사변형에서 두 대각선의 길이가 같으면 직사각형이다.",
+      "등변사다리꼴에서 이웃하는 두 변의 길이가 같으면 마름모 이다."
+    ],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "사각형의 성질",
+    "rpmL2": "여러 가지 사각형",
+    "rpmL3": "사각형의 포함 관계",
+    "rpmL4": "조건으로 사각형 판정",
+    "rpmPrimaryPath": {
+      "majorUnit": "사각형의 성질",
+      "midUnit": "여러 가지 사각형",
+      "l3": "사각형의 포함 관계",
+      "l4": "조건으로 사각형 판정"
     },
-    {
-      "id": 17,
-      "score": 4.0,
-      "question": "<p>17. 아래의 직사각형 $\\mathrm{ABCD}$에 대해서 $\\angle\\mathrm{BAC}$를 이등분한 선과 $\\overline{\\mathrm{BC}}$와 만나는 점을 $\\mathrm{E}$라 하자. $\\mathrm{E}$가 변 $\\overline{\\mathrm{BC}}$ 위에 있고, $\\overline{\\mathrm{BE}}=3\\text{cm}$, $\\overline{\\mathrm{EC}}=5\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\text{cm}$라 할 때 $\\triangle\\mathrm{AEC}$의 넓이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q17.png\" /></p>",
-      "choices": [
-        "$12\\text{cm}^2$",
-        "$14\\text{cm}^2$",
-        "$15\\text{cm}^2$",
-        "$20\\text{cm}^2$",
-        "$25\\text{cm}^2$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "특수사각형의 추가 충분조건 판정",
+    "decisiveStep": "마름모의 기본 대각선 이등분과 새 조건을 구별하고 등변사다리꼴의 인접변 같음이 마름모를 보장하는지 판단한다."
+  },
+  {
+    "id": 22,
+    "score": 5,
+    "question": "<p>서술형 1. 아래 그림과 같이 두 일차방정식 $3x+y=3$, $x-y=-3$의 그래프와 $x$축으로 둘러싸인 삼각형의 넓이를 풀이과정과 함께 구하시오. (5점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s01.png\" /></p>",
+    "choices": [],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+    "templateKey": "TPL_AREA_DIRECT",
+    "crossConceptKeys": [
+      "CC_LINEAR_SYSTEM",
+      "CC_INTERCEPTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "standardUnitKey": "M2-04",
+    "standardUnit": "일차함수와 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 일차방정식의 관계",
+    "rpmL3": "그래프 활용",
+    "rpmL4": "넓이",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 일차방정식의 관계",
+      "l3": "그래프 활용",
+      "l4": "넓이"
     },
-    {
-      "id": 18,
-      "score": 4.0,
-      "question": "<p>18. 아래의 마름모 $\\mathrm{ABCD}$에 대해서 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{BE}}$가 되도록 $\\overline{\\mathrm{AC}}$위의 점 $\\mathrm{E}$를 잡았다. $\\angle\\mathrm{EAD}=50^\\circ$라 할 때, $\\angle\\mathrm{EBC}$의 크기를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q18.png\" /></p>",
-      "choices": [
-        "$20^\\circ$",
-        "$30^\\circ$",
-        "$40^\\circ$",
-        "$50^\\circ$",
-        "$60^\\circ$"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "두 직선의 교점과 절편으로 삼각형 넓이",
+    "decisiveStep": "연립해 교점 높이를 얻고 두 x절편 사이 길이를 밑변으로 잡는다."
+  },
+  {
+    "id": 23,
+    "score": 4,
+    "question": "<p>서술형 2. 아래 그림의 $\\triangle\\mathrm{ABC}$은 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변 삼각형이다. 점 $\\mathrm{E}$는 $\\triangle\\mathrm{ABC}$의 내심이고, $\\mathrm{F}$는 $\\triangle\\mathrm{EBC}$의 내심이다. $\\angle\\mathrm{BAC}=40^\\circ$일 때 $\\angle\\mathrm{EBF}$의 크기를 구하시오.(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s02.png\" /></p>",
+    "choices": [],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_INCENTER",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "삼각형의 성질",
+    "rpmL2": "삼각형의 외심과 내심",
+    "rpmL3": "내심",
+    "rpmL4": "각의 이등분선과 내심",
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각형의 성질",
+      "midUnit": "삼각형의 외심과 내심",
+      "l3": "내심",
+      "l4": "각의 이등분선과 내심"
     },
-    {
-      "id": 19,
-      "score": 4.0,
-      "question": "<p>19. 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 네 내각의 이등분선으로 만들어지는 $\\square\\mathrm{EFGH}$는 어떤 도형인지 고르면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q19.png\" /></p>",
-      "choices": [
-        "정사각형",
-        "직사각형",
-        "마름모",
-        "두 대각선이 서로를 수직 이등분 하는 사각형",
-        "네 변의 길이가 같은 사각형"
-      ],
-      "answer": "",
-      "solution": ""
+    "primaryMethod": "중첩된 두 내심의 연속 이등분",
+    "decisiveStep": "이등변삼각형 밑각을 구한 뒤 E와 F의 내심 조건으로 B의 각을 두 번 이등분한다."
+  },
+  {
+    "id": 24,
+    "score": 5,
+    "question": "<p>서술형 3. 아래 그림과 같은 정사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{BC}}$ 위에 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{CF}}$가 되도록 점 $\\mathrm{E}$, $\\mathrm{F}$를 잡자. $\\overline{\\mathrm{AC}}$가 $\\overline{\\mathrm{BE}}$, $\\overline{\\mathrm{DF}}$와 만나는 점을 각각 $\\mathrm{G}$, $\\mathrm{H}$라 하자.</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s03.png\" /></p><p>(1) 사각형 $\\mathrm{EBFD}$는 평행사변형임을 보이시오.</p><p>(2) $\\angle\\mathrm{ABG}=25^\\circ$일 때, $\\angle\\mathrm{GHF}$의 크기를 풀이과정과 함께 구하시오.</p><p>(채점기준 - 1. 평행사변형임을 보이기 : 2점, 2. $\\angle\\mathrm{GHF}$ 구하기 : 3점) [5점]</p>",
+    "choices": [],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "rpmL1": "사각형의 성질",
+    "rpmL2": "여러 가지 사각형",
+    "rpmL3": "직사각형·마름모·정사각형",
+    "rpmL4": "각 사각형의 성질",
+    "rpmPrimaryPath": {
+      "majorUnit": "사각형의 성질",
+      "midUnit": "여러 가지 사각형",
+      "l3": "직사각형·마름모·정사각형",
+      "l4": "각 사각형의 성질"
     },
-    {
-      "id": 20,
-      "score": 3.0,
-      "question": "<p>20. 아래 그림의 $\\square\\mathrm{ABCD}$는 $\\overline{\\mathrm{AD}}\\parallel\\overline{\\mathrm{BC}}$이고, $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DC}}$인 등변사다리꼴이다. $\\overline{\\mathrm{AD}}=3\\text{cm}$, $\\overline{\\mathrm{BC}}=5\\text{cm}$이고, 점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, $\\overline{\\mathrm{BH}}$의 길이를 구하면?(3점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q20.png\" /></p>",
-      "choices": [
-        "$1\\text{cm}$",
-        "$2\\text{cm}$",
-        "$3\\text{cm}$",
-        "$4\\text{cm}$",
-        "$5\\text{cm}$"
-      ],
-      "answer": "",
-      "solution": ""
-    },
-    {
-      "id": 21,
-      "score": 4.0,
-      "question": "<p>21. 다음 중 옳지 않은 것을 고르면?(4점)(2개)</p>",
-      "choices": [
-        "마름모에서 서로 다른 두 대각선이 이등분 하면 정사각형이다.",
-        "등변사다리꼴에서 한 내각이 $90^\\circ$이면 직사각형이다.",
-        "직사각형에서 두 대각선이 수직으로 만나면 정사각형이다.",
-        "평행사변형에서 두 대각선의 길이가 같으면 직사각형이다.",
-        "등변사다리꼴에서 이웃하는 두 변의 길이가 같으면 마름모 이다."
-      ],
-      "answer": "",
-      "solution": ""
-    },
-    {
-      "id": 22,
-      "score": 5.0,
-      "question": "<p>서술형 1. 아래 그림과 같이 두 일차방정식 $3x+y=3$, $x-y=-3$의 그래프와 $x$축으로 둘러싸인 삼각형의 넓이를 풀이과정과 함께 구하시오. (5점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s01.png\" /></p>",
-      "choices": [],
-      "answer": "",
-      "solution": ""
-    },
-    {
-      "id": 23,
-      "score": 4.0,
-      "question": "<p>서술형 2. 아래 그림의 $\\triangle\\mathrm{ABC}$은 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변 삼각형이다. 점 $\\mathrm{E}$는 $\\triangle\\mathrm{ABC}$의 내심이고, $\\mathrm{F}$는 $\\triangle\\mathrm{EBC}$의 내심이다. $\\angle\\mathrm{BAC}=40^\\circ$일 때 $\\angle\\mathrm{EBF}$의 크기를 구하시오.(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s02.png\" /></p>",
-      "choices": [],
-      "answer": "",
-      "solution": ""
-    },
-    {
-      "id": 24,
-      "score": 5.0,
-      "question": "<p>서술형 3. 아래 그림과 같은 정사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{BC}}$ 위에 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{CF}}$가 되도록 점 $\\mathrm{E}$, $\\mathrm{F}$를 잡자. $\\overline{\\mathrm{AC}}$가 $\\overline{\\mathrm{BE}}$, $\\overline{\\mathrm{DF}}$와 만나는 점을 각각 $\\mathrm{G}$, $\\mathrm{H}$라 하자.</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s03.png\" /></p><p>(1) 사각형 $\\mathrm{EBFD}$는 평행사변형임을 보이시오.</p><p>(2) $\\angle\\mathrm{ABG}=25^\\circ$일 때, $\\angle\\mathrm{GHF}$의 크기를 풀이과정과 함께 구하시오.</p><p>(채점기준 - 1. 평행사변형임을 보이기 : 2점, 2. $\\angle\\mathrm{GHF}$ 구하기 : 3점) [5점]</p>",
-      "choices": [],
-      "answer": "",
-      "solution": ""
-    },
-    {
-      "id": 25,
-      "score": 6.0,
-      "question": "<p>서술형 4. 사다리꼴 $\\mathrm{ABCE}$에서 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{CD}}$라 하자.</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s04.png\" /></p><p>(1) $\\triangle\\mathrm{AEF}\\equiv\\triangle\\mathrm{DCF}$임을 보이시오.</p><p>(2) 점 $\\mathrm{A}$에 $\\overline{\\mathrm{BD}}$에 수직으로 내린 점을 $\\mathrm{G}$라 하자. $\\overline{\\mathrm{BD}}=6\\text{cm}$, $\\overline{\\mathrm{AG}}=4\\text{cm}$일 때, $\\square\\mathrm{ABCE}$의 넓이를 구하시오.</p><p>(채점기준 : (1) 3점, (2) 3점) [6점]</p>",
-      "choices": [],
-      "answer": "",
-      "solution": ""
-    }
-  ]
+    "primaryMethod": "안내된 평행사변형 증명과 교차각 계산",
+    "decisiveStep": "정사각형의 같은 변에서 같은 길이를 빼 ED=BF를 얻고 평행사변형으로 확인한 뒤 평행선과 대각선45도로 목표각을 옮긴다."
+  },
+  {
+    "id": 25,
+    "score": 6,
+    "question": "<p>서술형 4. 사다리꼴 $\\mathrm{ABCE}$에서 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{CD}}$라 하자.</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s04.png\" /></p><p>(1) $\\triangle\\mathrm{AEF}\\equiv\\triangle\\mathrm{DCF}$임을 보이시오.</p><p>(2) 점 $\\mathrm{A}$에 $\\overline{\\mathrm{BD}}$에 수직으로 내린 점을 $\\mathrm{G}$라 하자. $\\overline{\\mathrm{BD}}=6\\text{cm}$, $\\overline{\\mathrm{AG}}=4\\text{cm}$일 때, $\\square\\mathrm{ABCE}$의 넓이를 구하시오.</p><p>(채점기준 : (1) 3점, (2) 3점) [6점]</p>",
+    "choices": [],
+    "answer": "",
+    "solution": "",
+    "curriculum": "2015",
+    "standardCourse": "중2 수학",
+    "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+    "templateKey": "TPL_M1_TRAPEZOID_AREA_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "UNKNOWN",
+    "primaryMethod": "평행선의 ASA 증명과 사다리꼴 밑변합 복원",
+    "decisiveStep": "AE와 CD의 평행·같음을 이용한 두 각과 한 변으로 합동을 보이고 BD가 사다리꼴의 밑변합임을 이용한다."
+  }
+]
 };
