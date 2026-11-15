@@ -608,7 +608,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q19",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 n=6에서 중심 O와 M_6가 같은 반지름 2√2인 두 원을 정한다. 중심선 위의 N_6는 가까운 점, F_6는 먼 점이고, O에서의 거리는 각각 4√2와 8√2이다. 그림은 일반 n의 두 극단 거리를 설명하는 예시이다.",
+    "solutionImageCaption": "예: 합에 포함된 n=6에서 두 원의 반지름은 2√2이고 중심거리는 6√2이다. 중심선 위의 가까운 점과 먼 점에서 OP는 각각 4√2, 8√2이다. 일반 n≥5에서는 OP의 최솟값과 최댓값이 √2(n−2), √2(n+2)이다. 접점의 반지름과 접선은 직각이므로 sin∠AP_nO=2√2/OP이고, 따라서 f(n)=4/(n²−4)=1/(n−2)−1/(n+2)이다. n=6,8,…,18 합은 14/45이므로 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
