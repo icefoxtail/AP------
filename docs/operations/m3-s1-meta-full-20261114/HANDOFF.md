@@ -10,8 +10,8 @@
 ## 저장 범위
 
 전체115시험지·2750문항. 기존 원격97시험지·2312문항의 유효 검토를 보존했다.
-이 commit의 패킷 snapshot은 109시험지·2596문항이며 이번 추가는 12시험지·284문항이다.
-원격 잔여는 6시험지·154문항. 마지막 저장 대상은 E108, 다음은 E110이다.
+이 commit의 패킷 snapshot은 110시험지·2620문항이며 이번 추가는 13시험지·308문항이다.
+원격 잔여는 5시험지·130문항. 마지막 저장 대상은 E110, 다음은 E111이다.
 각 snapshot의 원격 완료 계수는 해당 commit의 push 및 ref/tree/blob readback 성공 후 확정한다. 자기 commit SHA는 이후 AWCR/Notion과 원격 영수증에 기록한다.
 
 ## 소유권과 재사용
@@ -33,7 +33,7 @@
 
 ## 체크포인트와 다음 단계
 
-최근 검증 AWCR r23 / raw SHA `ca25eb5aecc1879e45bc067931a82a8c98f90ba91870b83ff3a1e8ca0a6d7d60` / Drive `1cPS4qvpUDJH7rssakuUYXu8VLkZ4oD7D`.
+최근 검증 AWCR r24 / raw SHA `481843eacddc4739e849a575b92455df296bfceaf9469b8cba8fb5f3ef8a1b9f` / Drive `15clG1iXAduCY4LDOU_lCxF3SCbCQK2Jv`.
 이 commit의 외부 sync는 후속 checkpoint raw readback으로 확인한다. 3시험지마다 또는20분 이내 AWCR와 Notion 중3 행을 갱신한다.
-다음: `SERIAL_SAVE_E110`. 모든 패킷과 명명 부채를 마감한 뒤 CODEX_LOCAL에 OFFERED한다. 현재 Codex 수락은 관측되지 않았다.
+다음: `SERIAL_SAVE_E111`. 모든 패킷과 명명 부채를 마감한 뒤 CODEX_LOCAL에 OFFERED한다. 현재 Codex 수락은 관측되지 않았다.
 main 병합·공용 등록·배포는 NOT_RUN. 검토패킷 보존·무결성 검사를 전체 품질 PASS로 표현하지 않는다.

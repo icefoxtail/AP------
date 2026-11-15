@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "independent-meta-sample-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "taskId": "675e8b6b-b864-4891-b6c2-e822f550853e",
+  "examKey": "E110",
+  "author": "meta_a_resume_d03144c8ca75",
+  "reviewer": "meta_c",
+  "reviewerOwner": "GPT_ROOT_D03144C8CA75/C",
+  "reviewedAt": "2026-11-15",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "scope": "METADATA_ONLY_LOCAL_PREPARATION",
+  "sourceBlob": "a103367961b4069161f51613d8230db57ece6385",
+  "sourceSha256": "cff5b61b811d0e0cc782874265a7f18d5c01a9c8b8aa65c5065a9ae3e32fae30",
+  "reviewPath": "/workspace/scratch/d03144c8ca75/workers/A/E110.review.json",
+  "reviewSha256": "2ca457084beb328ed8f2536eb35b0bd742b33e86bc81ef230b2b3c2f92677b44",
+  "fourSlotPath": "/workspace/scratch/d03144c8ca75/workers/A/E110.4slot.json",
+  "fourSlotSha256": "4aff99c69ff812024279035f51d68c787bc7827954322053b6139a8d42d9aee5",
+  "inputSha256": "fa848d3879af4c53414b8e840c39d490b88721834365915b54f19d890d700cad",
+  "sampleOrdinals": [
+    16,
+    17,
+    24
+  ],
+  "samples": [
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_93c1299cd71ce32b72a8af7d35f219b875582e9604e4afc927bf61a053b2309e",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot exact quote",
+        "projection and debt"
+      ],
+      "quotesVerified": 7,
+      "sourceFingerprints": {
+        "QBODY": "f7dcc70faf21c0eaccba58422af63fcf659417314f5715a83c4ec433ca9f3a4c",
+        "QFULL": "5544a80ba66a6cf4254b8351ae9ba7c1e7a3c6e1e726a794607c2560f3a419a4"
+      },
+      "rationale": "실제 발문에 계수 정수 제한이 없고 다른 실수 계수 표현이 가능하므로 정수조건 누락 부채를 보존한 것이 적절하다. 의도된 인수분해/계수비교 메타 후보와 난도1은 내용 품질 PASS와 구분한다. 독립 검토에서 templateKey=null인 FAMILY_ACTIVE를 exact ACTIVE라고 쓴 부분을 지적했고 최종 패킷에서 그 주장을 보류한 것을 재확인했다.",
+      "debtKindsPreserved": [
+        "CONTENT_MISSING_INTEGER_RESTRICTION",
+        "TAXONOMY_PROPOSAL"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_7ba573b47d4151789c5f47d7ddec4a24b7f92ecc158da2766e433c9c507419aa",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot exact quote",
+        "projection and debt"
+      ],
+      "quotesVerified": 6,
+      "sourceFingerprints": {
+        "QBODY": "486fc100dbb5d49604c2b7fcc54e7d5c6700a97b08b4f8f68e5798014e80f315",
+        "QFULL": "e23c515dcb8e74bb756afcaa87eace4e14b6ae5bad207d750ad01066935ca718"
+      },
+      "rationale": "기존 해설은 합차공식으로 17×15를 만든 뒤 소인수분해와 약수 개수 공식으로 연결한다. 두 정형 단계의 직접 연결이므로 중/bucket2 제안을 수용하며 기존 상/3과의 강한 충돌 이력도 그대로 보존한다.",
+      "debtKindsPreserved": []
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_aced2041089876d9af53050928ac7314d4a5895a59de7948ac9d6baa3f9b4289",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "readScope": [
+        "actual stem",
+        "actual choices",
+        "existing solution",
+        "review decision",
+        "4slot exact quote",
+        "projection and debt"
+      ],
+      "quotesVerified": 9,
+      "sourceFingerprints": {
+        "QBODY": "805b54826244868338e4de943df79054f77c7c7e90507c5101ae485690a4d927",
+        "QFULL": "d5aed32235706720374cd5c390b9a55bb73d10f80cb346e3cb85a858cea9c164"
+      },
+      "rationale": "실제 PNG에서 직각 경계의 두 정사각형과 중앙 점선 및 폭a를 확인했다. 중앙선 변 r+a로 둘레를 구하고 외곽-내부 넓이 차를 합차공식으로 바꾸어 al로 표현하는 경로가 일치한다. 정확 RPM leaf가 없다고 null/제안으로 남긴 점을 수용하며 등록 완료로 간주하지 않는다.",
+      "debtKindsPreserved": [
+        "TAXONOMY_PROPOSAL",
+        "RPM2022_LEAF_PROPOSAL"
+      ]
+    }
+  ],
+  "assetEvidence": [
+    {
+      "ordinal": 24,
+      "path": "/workspace/scratch/d03144c8ca75/workers/A/assets/E110/q24.png",
+      "sha256": "2971a9f8c4c33d971948822e4d1ab65f933e79eea934a55e5be091d3ff08a44e",
+      "status": "INDEPENDENTLY_VIEWED"
+    }
+  ],
+  "independentReviewerNotAuthor": true,
+  "contentQualityPass": false,
+  "remoteCompletionClaim": false,
+  "remaining": [
+    "root ownership handoff confirmation",
+    "root integration and protected-field checks",
+    "remote checkpoint",
+    "Codex exact mapping and declared content debt processing"
+  ]
+}
