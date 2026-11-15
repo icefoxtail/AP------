@@ -1255,3 +1255,21 @@ window.questionBank = [
     "decisiveStep": "OA=OB,OC=OD가 같은대각선의 절반끼리 동등함을 보장하지 않음을 반례로 보인다."
   }
 ];
+
+// Carry the immutable native review and independently finalized application.
+Object.assign(window.questionBank[10], {
+  "crossConceptKeys": [
+    "CC_RIGHT_TRIANGLE_THIRTY_DEGREE_HALF_HYPOTENUSE"
+  ],
+  "curriculumKey": "2015",
+  "courseKey": "M2-2"
+});
+
+// Carry the immutable native review and independently finalized application.
+Object.assign(window.questionBank[14], {
+  "crossConceptKeys": [
+    "CC_RIGHT_TRIANGLE_THIRTY_DEGREE_HALF_HYPOTENUSE"
+  ],
+  "curriculumKey": "2015",
+  "courseKey": "M2-2"
+});

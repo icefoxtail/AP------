@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "m2-follow6-full-consumer-verification-v1",
+  "status": "PASS",
+  "catalogSourceFiles": 1211,
+  "catalogQuestions": 28882,
+  "totalRequests": 13,
+  "totalUidCount": 47,
+  "ownedRequests": 7,
+  "ownedNewUidCount": 6,
+  "ownedPreservedUidCount": 11,
+  "inheritedDependencyUidCount": 30,
+  "officialReplayProjectionRequests": 13,
+  "officialReplayPlannedPaths": 0,
+  "changedUidConsumer": {
+    "kind": "changed-uid-consumer",
+    "request": ".archive-meta-register/inbox/m1s2-wangun26-full-subset-preserve-20261115.json",
+    "elapsedMs": 107327,
+    "status": "PASS",
+    "counts": {
+      "changed": 47,
+      "checked": 47,
+      "passed": 47,
+      "skippedUnchanged": 0
+    }
+  },
+  "gates": [
+    {
+      "id": "native-projection",
+      "outcome": "success"
+    },
+    {
+      "id": "native-consumer",
+      "outcome": "success",
+      "preservedNativeApprovals": {
+        "requests": 4,
+        "preservedMetadataApprovals": 34,
+        "newMetadataApprovals": 0,
+        "approvalTypes": [
+          "FINAL_QA"
+        ]
+      }
+    }
+  ],
+  "observed": [
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m1s2-wangun26-full-subset-preserve-20261115.json",
+      "elapsedMs": 28195,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 16,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m1s2-wangun26-original-renderer-preserve-20261115.json",
+      "elapsedMs": 30046,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 7,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m2s2-centroid2-20261115-E023.json",
+      "elapsedMs": 8457,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 2,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m2s2-e059-cc2-20261115.json",
+      "elapsedMs": 8652,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 2,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m2s2-follow6-20261115-E004.json",
+      "elapsedMs": 7124,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 1,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m2s2-follow6-20261115-E005.json",
+      "elapsedMs": 10457,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 1,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m2s2-follow6-20261115-E026.json",
+      "elapsedMs": 9495,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 2,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m2s2-follow6-20261115-E035.json",
+      "elapsedMs": 8335,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 1,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m2s2-follow6-20261115-E054.json",
+      "elapsedMs": 7833,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 1,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m2s2-follow6-preserve-20261115-E004.json",
+      "elapsedMs": 6470,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 10,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m2s2-follow6-preserve-20261115-E054.json",
+      "elapsedMs": 7588,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 1,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m2s2-follow9-20261115-E028.json",
+      "elapsedMs": 10151,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 1,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "replay-projection",
+      "request": ".archive-meta-register/inbox/m2s2-retained2-20261115-E006.json",
+      "elapsedMs": 9288,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 2,
+        "usableMetaLane": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "changed-uid-consumer",
+      "request": ".archive-meta-register/inbox/m1s2-wangun26-full-subset-preserve-20261115.json",
+      "elapsedMs": 107327,
+      "status": "PASS",
+      "counts": {
+        "changed": 47,
+        "checked": 47,
+        "passed": 47,
+        "skippedUnchanged": 0
+      }
+    }
+  ],
+  "immutableShadow": "NOT_RUN_PENDING_ROOT_COMBINED",
+  "actualMainRegistration": "PENDING_ROOT_PUBLICATION_AND_WRITER",
+  "browser": "NOT_RUN",
+  "canonicalVerifiedUidCount": 47,
+  "usableMetaLaneUidCount": 0,
+  "sourceResultHashes": {
+    ".tmp/follow6-consumer-final.json": "1c6af291a237544927ff0ee139992086c9b12bf5cd01695c8af56b1d0e01314a",
+    ".tmp/follow6-consumer-14.json": "5d4a11e2b55c5b50eea935ea066592e3eef64ff1f2dce8f0202493fa323b0e25",
+    ".tmp/follow6-full-catalog.log": "d58d442192f315c7f627664cf4858e06f54ee97d069a519c57b0422ac6c82301"
+  }
+}

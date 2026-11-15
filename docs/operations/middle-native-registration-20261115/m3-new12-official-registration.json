@@ -1,0 +1,773 @@
+{
+  "schemaVersion": "m3-new12-official-registration-local-validation-v1",
+  "status": "PASS",
+  "baseMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "inputCommit": "c999ffcb1939261ed90b27e075d529d2fd52cb46",
+  "orderedRequests": [
+    ".archive-meta-register/inbox/m1s2-wangun26-full-subset-preserve-20261115.json",
+    ".archive-meta-register/inbox/m1s2-wangun26-original-renderer-preserve-20261115.json",
+    ".archive-meta-register/inbox/m2s2-centroid2-20261115-E023.json",
+    ".archive-meta-register/inbox/m2s2-e059-cc2-20261115.json",
+    ".archive-meta-register/inbox/m2s2-follow9-20261115-E028.json",
+    ".archive-meta-register/inbox/m2s2-retained2-20261115-E006.json",
+    ".archive-meta-register/inbox/m3s2-finalized-e010-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-finalized-e011-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-finalized-e014-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-finalized-e034-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-finalized-e052-preserve2-20261115.json",
+    ".archive-meta-register/inbox/m3s2-finalized-e052-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-tpl5-e005-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-tpl5-e023-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-tpl5-e035-transport-20261115.json"
+  ],
+  "ownRequests": [
+    ".archive-meta-register/inbox/m3s2-finalized-e011-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-finalized-e014-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-finalized-e034-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-finalized-e052-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-tpl5-e005-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-tpl5-e023-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-tpl5-e035-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-finalized-e010-transport-20261115.json",
+    ".archive-meta-register/inbox/m3s2-finalized-e052-preserve2-20261115.json"
+  ],
+  "counts": {
+    "requests": 15,
+    "ownRequests": 9,
+    "ownSelectedUids": 14,
+    "inheritedRequests": 6,
+    "inheritedSelectedUids": 30,
+    "totalSelectedUids": 44
+  },
+  "resume": {
+    "previousInputCommit": "cd8978cefc5f8b75e8ea442ae39108330b049161",
+    "previousReportSha256": "232c55be9c97658f57141a5c863d1d73d0ecfb5b3a6ab5c99838f4f3389462c4",
+    "completedRequestsRetained": [
+      "m1s2-wangun26-full-subset-preserve-20261115",
+      "m1s2-wangun26-original-renderer-preserve-20261115"
+    ],
+    "reason": "Remove consumed supplier inbox from E010 approval evidence before E010 registration; keep immutable finalization authority and explicit definition dependency.",
+    "uninterruptedSuccessClaimed": false
+  },
+  "results": [
+    {
+      "requestPath": ".archive-meta-register/inbox/m1s2-wangun26-full-subset-preserve-20261115.json",
+      "requestId": "m1s2-wangun26-full-subset-preserve-20261115",
+      "selectedUids": 16,
+      "own": false,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle1-v1.json",
+          "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full-subset-preserve-20261115.json"
+        ],
+        "elapsedMs": 5041
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle1-v1.json",
+          "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full-subset-preserve-20261115.json"
+        ],
+        "elapsedMs": 5098
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 23639
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full-subset-preserve-20261115.json",
+        "sha256": "72712dca9fb7833233136475cc790173131b98e96ef2ff28c996d9f8ba111a3f"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m1s2-wangun26-original-renderer-preserve-20261115.json",
+      "requestId": "m1s2-wangun26-original-renderer-preserve-20261115",
+      "selectedUids": 7,
+      "own": false,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle1-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-original-renderer-preserve-20261115.original-renderer-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-original-renderer-preserve-20261115.json"
+        ],
+        "elapsedMs": 8328
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle1-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-original-renderer-preserve-20261115.original-renderer-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-original-renderer-preserve-20261115.json"
+        ],
+        "elapsedMs": 9329
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 32903
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-original-renderer-preserve-20261115.json",
+        "sha256": "ab90098b3889ffcd012539caf9d291f5060728961980da966b5490de4338e43d"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m2s2-centroid2-20261115-E023.json",
+      "requestId": "m2s2-centroid2-20261115-E023",
+      "selectedUids": 2,
+      "own": false,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/concept_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-centroid2-20261115-E023.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-centroid2-20261115-E023.json"
+        ],
+        "elapsedMs": 9699
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/concept_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-centroid2-20261115-E023.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-centroid2-20261115-E023.json"
+        ],
+        "elapsedMs": 7495
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 1907
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-centroid2-20261115-E023.json",
+        "sha256": "7da289d6d3f69bc53316146e492fc9ba51e3daffc8eba0abfb61fdd9b310ec97"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m2s2-e059-cc2-20261115.json",
+      "requestId": "m2s2-e059-cc2-20261115",
+      "selectedUids": 2,
+      "own": false,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/concept_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+          "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e059-cc2-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e059-cc2-20261115.json"
+        ],
+        "elapsedMs": 7300
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/concept_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+          "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e059-cc2-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e059-cc2-20261115.json"
+        ],
+        "elapsedMs": 7545
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 3326
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e059-cc2-20261115.json",
+        "sha256": "796c1c43753c0424eda92d03e90e0ce305f4dfd6054b376b36aebf3e2972db43"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m2s2-follow9-20261115-E028.json",
+      "requestId": "m2s2-follow9-20261115-E028",
+      "selectedUids": 1,
+      "own": false,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+          "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-follow9-20261115-E028.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-follow9-20261115-E028.json"
+        ],
+        "elapsedMs": 14751
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+          "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-follow9-20261115-E028.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-follow9-20261115-E028.json"
+        ],
+        "elapsedMs": 13803
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 2389
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-follow9-20261115-E028.json",
+        "sha256": "19e8c866d554e6963490977502866e3b16f514bcc779eee322acd0207fb36796"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m2s2-retained2-20261115-E006.json",
+      "requestId": "m2s2-retained2-20261115-E006",
+      "selectedUids": 2,
+      "own": false,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-retained2-20261115-E006.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-retained2-20261115-E006.json"
+        ],
+        "elapsedMs": 7511
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-retained2-20261115-E006.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-retained2-20261115-E006.json"
+        ],
+        "elapsedMs": 7319
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 3616
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-retained2-20261115-E006.json",
+        "sha256": "71bbd1087bee13c982f3bfcbf2b804d7b110b84996fa4f697d9b2a124757b1ef"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m3s2-finalized-e010-transport-20261115.json",
+      "requestId": "m3s2-finalized-e010-transport-20261115",
+      "selectedUids": 2,
+      "own": true,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e010-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e010-transport-20261115.json"
+        ],
+        "elapsedMs": 6670
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e010-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e010-transport-20261115.json"
+        ],
+        "elapsedMs": 6621
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 2737
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e010-transport-20261115.json",
+        "sha256": "f884e3e5e8520326a305e48060fae0ac519b052ada5266bc6e7e6970ddb7741d"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m3s2-finalized-e011-transport-20261115.json",
+      "requestId": "m3s2-finalized-e011-transport-20261115",
+      "selectedUids": 3,
+      "own": true,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/aliases.json",
+          "archive/data/meta-foundation/compiled/concept_registry.json",
+          "archive/data/meta-foundation/compiled/condition_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/condition_registry.json",
+          "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e011-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e011-transport-20261115.json"
+        ],
+        "elapsedMs": 11559
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/aliases.json",
+          "archive/data/meta-foundation/compiled/concept_registry.json",
+          "archive/data/meta-foundation/compiled/condition_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/condition_registry.json",
+          "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e011-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e011-transport-20261115.json"
+        ],
+        "elapsedMs": 10542
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 3340
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e011-transport-20261115.json",
+        "sha256": "bc8d9e3416531b3363005d69daeb21dc7589891ea4625e87c1dcc4ee73e80256"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m3s2-finalized-e014-transport-20261115.json",
+      "requestId": "m3s2-finalized-e014-transport-20261115",
+      "selectedUids": 1,
+      "own": true,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e014-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e014-transport-20261115.json"
+        ],
+        "elapsedMs": 7031
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e014-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e014-transport-20261115.json"
+        ],
+        "elapsedMs": 6760
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 2980
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e014-transport-20261115.json",
+        "sha256": "2a02930b0f67d54a2e5e7dcbadb586b432f1d96698f8bf4de0359f91f29f3955"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m3s2-finalized-e034-transport-20261115.json",
+      "requestId": "m3s2-finalized-e034-transport-20261115",
+      "selectedUids": 1,
+      "own": true,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e034-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e034-transport-20261115.json"
+        ],
+        "elapsedMs": 7698
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e034-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e034-transport-20261115.json"
+        ],
+        "elapsedMs": 7118
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 3799
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e034-transport-20261115.json",
+        "sha256": "c05feba196a12b7d338f98c6476cd2667408fffa739e7d0131e00745002011b8"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m3s2-finalized-e052-preserve2-20261115.json",
+      "requestId": "m3s2-finalized-e052-preserve2-20261115",
+      "selectedUids": 2,
+      "own": true,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e052-preserve2-20261115.json"
+        ],
+        "elapsedMs": 5074
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e052-preserve2-20261115.json"
+        ],
+        "elapsedMs": 5785
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 2428
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e052-preserve2-20261115.json",
+        "sha256": "04e62439cb8ef45fd2501997547594cd71428c505b7cf2f2ca7f674f2fc5e80b"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m3s2-finalized-e052-transport-20261115.json",
+      "requestId": "m3s2-finalized-e052-transport-20261115",
+      "selectedUids": 1,
+      "own": true,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e052-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e052-transport-20261115.json"
+        ],
+        "elapsedMs": 6301
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e052-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e052-transport-20261115.json"
+        ],
+        "elapsedMs": 10045
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 3457
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-finalized-e052-transport-20261115.json",
+        "sha256": "7e1ff4e3dc997f33335278de03a146086d0d381b4ea8bb89d74757e817d141ac"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m3s2-tpl5-e005-transport-20261115.json",
+      "requestId": "m3s2-tpl5-e005-transport-20261115",
+      "selectedUids": 1,
+      "own": true,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+          "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e005-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e005-transport-20261115.json"
+        ],
+        "elapsedMs": 14521
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+          "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e005-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e005-transport-20261115.json"
+        ],
+        "elapsedMs": 14652
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 3965
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e005-transport-20261115.json",
+        "sha256": "528050db0ddb647397b7c79fdadd7c39fe6818ec9cee480d81e37ed4339ec870"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m3s2-tpl5-e023-transport-20261115.json",
+      "requestId": "m3s2-tpl5-e023-transport-20261115",
+      "selectedUids": 2,
+      "own": true,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e023-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e023-transport-20261115.json"
+        ],
+        "elapsedMs": 8111
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e023-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e023-transport-20261115.json"
+        ],
+        "elapsedMs": 10999
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 10532
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e023-transport-20261115.json",
+        "sha256": "385b1d40a9f99ff329a11351ae7499f567d438ddd8b9792b5419167b5b767f3a"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    },
+    {
+      "requestPath": ".archive-meta-register/inbox/m3s2-tpl5-e035-transport-20261115.json",
+      "requestId": "m3s2-tpl5-e035-transport-20261115",
+      "selectedUids": 1,
+      "own": true,
+      "dry": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e035-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e035-transport-20261115.json"
+        ],
+        "elapsedMs": 6155
+      },
+      "write": {
+        "status": "PASS",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e035-transport-20261115.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e035-transport-20261115.json"
+        ],
+        "elapsedMs": 7992
+      },
+      "replay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": [],
+        "elapsedMs": 2703
+      },
+      "isolatedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e035-transport-20261115.json",
+        "sha256": "453e5b0d7da1ea7d78ef0f48616e099454480c16f3a9261754646a559c01e75b"
+      },
+      "cumulativeReplay": {
+        "status": "PASS",
+        "replay": true,
+        "plannedPaths": []
+      }
+    }
+  ],
+  "immutableInputsUnchanged": true,
+  "officialConsumer": "NOT_RUN"
+}

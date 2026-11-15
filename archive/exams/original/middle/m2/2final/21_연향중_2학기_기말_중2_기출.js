@@ -1196,3 +1196,13 @@ window.questionBank = [
     "decisiveStep": "기약분모에 남으면 안 되는3과17을 약분할 분자를 세고 두 사건을 합한다."
   }
 ];
+
+// Carry the immutable native review and independently finalized application.
+Object.assign(window.questionBank[11], {
+  "crossConceptKeys": [
+    "CC_PYTHAGOREAN",
+    "CC_TRIANGLE_CENTROID_MEDIAN_RATIO"
+  ],
+  "curriculumKey": "2015",
+  "courseKey": "M2-2"
+});

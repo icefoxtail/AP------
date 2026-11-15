@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "independent-code-boundary-review-v1",
+  "reviewer": "/root/audit_m2",
+  "codeCommit": "e8fd27e37ddcc1acf7da7d2368936825b9209df8",
+  "supersedesInitialReviewSha256": "53b69fd995a230c626677a4151c274c1e05ca05712f7d6abe30919d45a38bf91",
+  "status": "PASS",
+  "blockingFindings": 0,
+  "narrowFollowup": "Explicit ACTIVE owner object and nonempty string registry/container versions must exist before exact equality.",
+  "officialTests": {
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0
+  },
+  "additionalIndependentCases": {
+    "passed": 8,
+    "failed": 0,
+    "cases": [
+      "both null",
+      "both empty string",
+      "both whitespace string",
+      "both number",
+      "both object",
+      "both absent",
+      "registry null with valid container",
+      "container null with valid registry"
+    ],
+    "registryRemainsActiveInAllCases": true,
+    "noPrecedenceReturnedAfterMutation": true
+  },
+  "initialCounterexampleClosed": "Missing ACTIVE pack plus absent runtime container version returns empty map.",
+  "initialReviewCorrection": "The original 4b review and 16 tests missed the simultaneous absence equality. That initial PASS was withdrawn; this exact follow-up and added type/blank/null probes are the current evidence.",
+  "sourceAndInputChanges": 0,
+  "fullCatalog": "AUTHOR_OWNED_NOT_REEXECUTED_BY_REVIEWER",
+  "logs": {
+    ".tmp/e029-catalog-bridge-e8-independent.tap": "184ff3c0454d33448633c9a6478ac4e2d8b8d4bf23149438a6609d8cbf524fbc",
+    ".tmp/e029-active-container-probe.tap": "2d90d900830aab4f3f7450e4a505e066748ea10db6ba72a341fe7081f731c6c6"
+  }
+}

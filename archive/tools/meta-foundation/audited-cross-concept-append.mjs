@@ -8,6 +8,7 @@ import vm from 'node:vm';
 import {execFileSync} from 'node:child_process';
 import {loadVerifiedHistoricalAuditSnapshot, isPreservableAuditRecord, isAuditPreservation} from './native-audit-preservation.mjs';
 import {validateReviewedAuditCrossConceptComponent, REASSESSED_STUDENT_FIELDS} from './reviewed-source-reassessment.mjs';
+import {loadActiveMetaRegistry} from './active-registry.mjs';
 
 export const AUDIT_CC_APPEND_SCHEMA = 'archive-audit-finalized-cc-append-v1';
 export const AUDIT_CC_BINDING_SCHEMA = 'archive-audit-finalized-cc-binding-v1';
@@ -317,6 +318,83 @@ export function nativeAuditCcAppend({nativeSource,question,previous,current,iden
     } catch { /* Missing/changed audit, component or source proof grants nothing. */ }
   }
   return null;
+}
+
+// A source declaration can predate the original audit (for example a broad
+// template or an incomplete CC array). Preserve that audit's field precedence
+// only after replaying both authorities and every current row of the full
+// source. A revision label selects work; it never grants this precedence.
+export function verifiedAuditCcSourcePrecedence({root,source,bytes,bank,metadataRows,identityRows}) {
+  const empty=()=>new Map();
+  if (!Array.isArray(metadataRows) || !metadataRows.some(row=>
+      row.crossConceptApprovalComponents!==undefined ||
+      /:audit-finalized-cc-append-v1:/.test(row.metadataRevision||'') ||
+      row.approvalEvidence?.some(p=>typeof p==='string'&&p.endsWith('.audit-cc-append.json')))) return empty();
+  try {
+    const sourcePath='archive/exams/'+source;
+    if (!Buffer.isBuffer(bytes) || !bytes.equals(fs.readFileSync(safe(root,sourcePath))) ||
+        !same(bank,bankFrom(bytes))) return empty();
+    const actualMetadata=read(root,'archive/data/question_metadata.json').records;
+    const actualIdentities=read(root,'archive/data/question_identity_map.json').records;
+    const sourceRows=rows=>rows.filter(r=>r.sourceArchiveFile===source).sort((a,b)=>a.sourceOrdinal-b.sourceOrdinal);
+    if (!same(sourceRows(actualMetadata),sourceRows(metadataRows)) ||
+        !Array.isArray(identityRows) || !same(sourceRows(actualIdentities),sourceRows(identityRows)) ||
+        sourceRows(actualMetadata).length!==bank.length || sourceRows(actualIdentities).length!==bank.length) return empty();
+    const current=inventory(actualMetadata,'current catalog metadata'),identities=inventory(actualIdentities,'current catalog identity');
+    const registry=loadActiveMetaRegistry(root);
+    if (registry.status!=='ACTIVE') return empty();
+    const tables={pt:registry.problemTypes,tpl:registry.templates,cc:registry.concepts,cond:registry.conditions};
+    const runtimeRows=new Map(),runtimeDir='archive/data/meta-foundation/runtime';
+    for (const file of fs.readdirSync(safe(root,runtimeDir)).filter(p=>p.endsWith('.json'))) {
+      const pack=read(root,runtimeDir+'/'+file);
+      if (!Array.isArray(pack.records)) continue;
+      for (const row of pack.records) if (row.sourceArchiveFile===source) {
+        if (runtimeRows.has(row.questionUid)) return empty();
+        runtimeRows.set(row.questionUid,{row,pack});
+      }
+    }
+    if (runtimeRows.size!==bank.length) return empty();
+    const candidates=new Set(metadataRows.flatMap(row=>receiptCandidates(row,null)));
+    let accepted=null;
+    for (const receiptPath of candidates) {
+      let receipt;
+      try {receipt=read(root,receiptPath);} catch {continue;}
+      if (!isAuditCcAppend(receipt.approval)) continue;
+      const binding=read(root,auditCcBindingPath(receipt.requestId)),request=binding.requestSnapshot;
+      if (request?.sourceArchiveFile!==source || receiptPath!==RECEIPTS+request?.requestId+'.json') return empty();
+      const context=loadAuditCcAppend({root,request,bytes,bank,canonicalBefore:tables,canonicalAfter:tables});
+      assertAuditCcAppendReceipt(context,receipt);
+      const checked=new Map();
+      for (const item of request.items) {
+        const row=current.get(item.questionUid),identity=identities.get(item.questionUid),runtime=runtimeRows.get(item.questionUid);
+        const active=registry.activePacks.get(row?.metaFoundationPackId);
+        // The ACTIVE container may have gained definitions since the original
+        // audit. Its version must match the registry; each retained row keeps
+        // its own historical approval version, checked by the exact replay.
+        if (!row || !runtime || runtime.pack.status!=='ACTIVE' || runtime.pack.packId!==row.metaFoundationPackId ||
+            !active || active.status!=='ACTIVE' || !text(active.version) || !text(runtime.pack.packVersion) ||
+            active.version!==runtime.pack.packVersion) return empty();
+        const question=bank[item.sourceOrdinal-1];
+        planAuditCcAppendRow(context,{current:row,identity,runtime:runtime.row,question,ordinal:item.sourceOrdinal,receiptPath,replay:true});
+        const fields=new Map();
+        for (const [field,value] of Object.entries(row)) {
+          const sourceValue=question[field];
+          if (sourceValue!==undefined&&sourceValue!==null&&String(sourceValue).trim()!==''&&!same(sourceValue,value))
+            fields.set(field,{sourceValue:structuredClone(sourceValue),registeredValue:structuredClone(value)});
+        }
+        checked.set(row.questionUid,fields);
+      }
+      // Nothing is exposed until all selected and non-selected rows passed.
+      if (accepted) return empty();
+      accepted=checked;
+    }
+    return accepted||empty();
+  } catch {return empty();}
+}
+
+export function auditCcSourceFieldIsVerified(precedence,questionUid,field,sourceValue,registeredValue) {
+  const bound=precedence?.get(questionUid)?.get(field);
+  return Boolean(bound)&&same(bound.sourceValue,sourceValue)&&same(bound.registeredValue,registeredValue);
 }
 
 export function hasExplicitAuditCcAppendClaim({root,current,runtimeRecord}) {

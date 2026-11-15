@@ -1,0 +1,188 @@
+{
+  "status": "PASS_LOCAL_PENDING_ROOT_COMBINED_SHADOW",
+  "actualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "codeCommit": "e8fd27e37ddcc1acf7da7d2368936825b9209df8",
+  "requestSha256": "caffd1ab40fc48ca90835b2c2739dd456ff980c3cf57f8fbe5f3af08a96914f1",
+  "wholeAuditDenominator": 24,
+  "preservedMetadataApprovals": 24,
+  "newWholeMetadataApprovals": 0,
+  "finalizedCrossConceptApplications": 1,
+  "registryAdditions": 1,
+  "fingerprintRepairs": 0,
+  "officialRegistration": {
+    "status": "PASS",
+    "requestPath": ".archive-meta-register/inbox/m2s2-e029-audit-cc-append-20261115.json",
+    "requestSha256": "caffd1ab40fc48ca90835b2c2739dd456ff980c3cf57f8fbe5f3af08a96914f1",
+    "stages": [
+      {
+        "stage": "dry",
+        "status": "PASS",
+        "elapsedMs": 17305,
+        "resultPath": ".tmp/e029-dry.json",
+        "resultSha256": "0fd4f83ca143dbd7b637a13134791fcb155ddfc44e32e65f14868dc99c31eca1",
+        "plannedPathCount": 8
+      },
+      {
+        "stage": "write",
+        "status": "PASS",
+        "elapsedMs": 8555,
+        "resultPath": ".tmp/e029-write.json",
+        "resultSha256": "b7d8ebbd637f7ff745df15b48941d5740bb655bb08aba68fff0a2c217cb408a5",
+        "plannedPathCount": 8
+      },
+      {
+        "stage": "replay",
+        "status": "PASS",
+        "elapsedMs": 92354,
+        "resultPath": ".tmp/e029-replay.json",
+        "resultSha256": "b6c6884db95bd3a7f52d3d8fcd9de1dc71a6f2857afcae593e4420bb9fd9a822",
+        "plannedPathCount": 0
+      }
+    ]
+  },
+  "nativeAutoMeta": {
+    "status": "PASS",
+    "requestPath": ".archive-meta-register/inbox/m2s2-e029-audit-cc-append-20261115.json",
+    "requestSha256": "caffd1ab40fc48ca90835b2c2739dd456ff980c3cf57f8fbe5f3af08a96914f1",
+    "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e029-audit-cc-append-20261115.json",
+    "receiptSha256": "8e53cb2130a818885e3161b6b96e804f3d6c0f29d0e5d94bb5d9a748d203613c",
+    "sourceSha256": "4793c0c89208948c20b8960ea39294ac82e078fbe2d92d1e957eeca96329548e",
+    "wholeDenominator": 24,
+    "nativeReceiptsRevalidatedByOfficialAutoMeta": 24,
+    "autoMetaAlreadyRegistered": 24,
+    "autoMetaApply": 0,
+    "pending": 0,
+    "newMetadataApprovals": 0,
+    "preservedMetadataApprovals": 24,
+    "selectedCrossConceptApplications": 1,
+    "previousCursor": "pre-append source from exact base Git",
+    "elapsedMs": 75469,
+    "remoteRegistration": "NOT_APPLIED"
+  },
+  "sourceBoundaries": {
+    "status": "PASS",
+    "actualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+    "requestPath": ".archive-meta-register/inbox/m2s2-e029-audit-cc-append-20261115.json",
+    "sourceSha256": "4793c0c89208948c20b8960ea39294ac82e078fbe2d92d1e957eeca96329548e",
+    "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e029-audit-cc-append-20261115.json",
+    "receiptSha256": "8e53cb2130a818885e3161b6b96e804f3d6c0f29d0e5d94bb5d9a748d203613c",
+    "bindingPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e029-audit-cc-append-20261115.audit-cc-append.json",
+    "bindingSha256": "048715bf2033cd585b14daf0253dd3fbea214a533105d8bdce872069806fbbe3",
+    "preservedAudit": 24,
+    "selectedComponentApplications": 1,
+    "newWholeMetadataApprovals": 0,
+    "newMathQa": 0,
+    "unselectedWholeQuestionsExact": 23,
+    "studentPayloadsExact": 24,
+    "originalAssetsExact": 29,
+    "identityFileExact": true,
+    "outsideMetadataAndRuntimeExact": true,
+    "originalReceiptExact": true,
+    "registryChanges": 1,
+    "keptIntegration": "NONE"
+  },
+  "fullCatalog": {
+    "exams": 1211,
+    "questions": 28882,
+    "targetCanonical": 24,
+    "targetUsableMetaLane": 0,
+    "changedUidChecked": 24,
+    "changedUidPassed": 24,
+    "changedUidSkipped": 0,
+    "consumerStages": {
+      "status": "PASS",
+      "requestPath": ".archive-meta-register/inbox/m2s2-e029-audit-cc-append-20261115.json",
+      "results": [
+        {
+          "stage": "projection",
+          "status": "PASS",
+          "elapsedMs": 132083,
+          "path": ".tmp/e029-projection.json",
+          "sha256": "1eeeefb3a89068ef4feca91c35b5a71a826e70a3da1b3b082a7cd78ca3bd9f70"
+        },
+        {
+          "stage": "changed-consumer",
+          "status": "PASS",
+          "elapsedMs": 120799,
+          "path": ".tmp/e029-changed-consumer.json",
+          "sha256": "1b490dc6edc8632cdfd7f1934e8d8eeeb7db4da5d8fd1750397d52847fd18a47"
+        }
+      ]
+    },
+    "buildAndConsumerCodeCommit": "4b4415c879318352349c1a04a42646c0f7039a48",
+    "finalCodeDifference": "Explicit ACTIVE pack existence and nonempty string versions only; actual complete-cohort proof rerun at final code gives the same two exact field pairs.",
+    "finalCodeActualPrecedence": {
+      "path": ".tmp/e029-actual-catalog-precedence-hardened.json",
+      "sha256": "c8881ad99db8dc698ab170aaadbcc1a6a5d8f0a353f0a25ff405250e4a5ff1af"
+    },
+    "wholeCatalogBoundary": {
+      "path": ".tmp/e029-catalog-precedence-boundary.json",
+      "sha256": "55a8243dbe01e4f722c61ed35444243729c9d13322969dc54a66f3398dd2dea1"
+    }
+  },
+  "targetedRegression": {
+    "catalogPrecedence": {
+      "passed": 17,
+      "failed": 0,
+      "log": {
+        "path": ".tmp/e029-catalog-precedence-tests-hardened.log",
+        "sha256": "b4342e5792e8187a83569576b1809afb06cbc670d11d80a90ebc84a6adafe67c"
+      }
+    },
+    "existingConsumerContracts": {
+      "passed": 2,
+      "failed": 0,
+      "log": {
+        "path": ".tmp/e029-existing-consumer-contract-tests.log",
+        "sha256": "262d35c0cf6c44491cde739b1a447ce9a213fa55bb8a867ae050708a0919c9cb"
+      }
+    },
+    "existingSemanticAuthority": {
+      "status": "PASS",
+      "log": {
+        "path": ".tmp/e029-existing-semantic-authority-test.log",
+        "sha256": "1e029e1baac393a34c36f3bd9f92672c22723b9dbb6712474fdcbbc4ba612c02"
+      }
+    }
+  },
+  "independentReview": {
+    "inputScope": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-follow4-transport/.tmp/e029-production-input-independent-review.json",
+      "sha256": "e137e2de0265695362ca0f799136d6d9e4f4a082c419dd7f69ce5e3137518d9f",
+      "status": "PASS"
+    },
+    "finalCodeBridge": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-follow4-transport/.tmp/e029-catalog-bridge-e8-independent-review.json",
+      "sha256": "7ab9702700c91b84e0d952d7770a21f13e225dc8734519f3ae70a417c1e0f191",
+      "status": "PASS",
+      "officialTests": 17,
+      "extraActiveContainerProbes": 8
+    }
+  },
+  "retainedInitialFailures": [
+    {
+      "path": ".tmp/e029-projection-failure.json",
+      "reason": "Original audit source precedence was absent for the new typed revision. Existing Q19 template and Q23 CC differences reappeared; original actual-aa catalog had zero conflicts."
+    },
+    {
+      "path": ".tmp/e029-catalog-missing-pack-before-fix.log",
+      "reason": "Both ACTIVE registry pack and runtime container version missing admitted undefined equality. Explicit existence/nonempty string checks now reject it."
+    },
+    {
+      "path": ".tmp/e029-boundary-harness-header-expectation.log",
+      "reason": "Harness incorrectly expected canonical version/count unchanged; corrected to assert official one-addition count and patch increment."
+    }
+  ],
+  "immutableShadow": "PENDING_ROOT_COMBINED",
+  "shadowOwner": "/root",
+  "productionRegistration": "NOT_APPLIED",
+  "remoteWritesPerformed": false,
+  "scopeNote": "Q17 integration remains NONE; every other row keeps its original integration, including original Q23 SEQUENTIAL. This is one already finalized CC application plus retention of the original 24 audits, not 24 new approvals.",
+  "dataCommit": "89a7a501c0d49aa20292437f198086883427303f",
+  "dataPaths": [
+    "archive/exams/original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+    ".archive-meta-register/inbox/m2s2-e029-audit-cc-append-20261115.json",
+    "archive/data/meta-review/m2-s2-20261114/exams/E029/review.json",
+    "docs/operations/m2s2-e029-audit-cc-append-20261115/transport-boundary.json"
+  ]
+}
