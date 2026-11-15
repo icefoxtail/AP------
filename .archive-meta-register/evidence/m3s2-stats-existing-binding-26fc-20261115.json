@@ -1,0 +1,1018 @@
+{
+  "schemaVersion": "archive-reviewed-existing-definition-binding-v1",
+  "owner": "/root/m3s2_release",
+  "currentSourceCommit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+  "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+  "decision": "PROPOSE_FIVE_EXACT_CONTEXT_BINDINGS",
+  "scope": "Fourteen unchanged reviewed middle3 second-semester statistics items, existing ACTIVE definitions only.",
+  "newDefinitions": 0,
+  "newMathematicalQa": false,
+  "newDifficultyJudgments": 0,
+  "definitionRef": {
+    "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+    "sha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683",
+    "problemTypes": [
+      {
+        "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "canonicalLabelKo": "중앙값과 최빈값 결정",
+        "definition": "자료를 크기순으로 정렬해 한가운데 값을 중앙값으로, 가장 자주 나타나는 값을 최빈값으로 정한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402"
+        ],
+        "sourceUnits": [
+          "M3-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402",
+            "sourceOrdinal": 17,
+            "classificationRationale": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE/TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "- 가장 많이 나타난 수는 $8$(3회)입니다.",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      },
+      {
+        "problemTypeKey": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
+        "canonicalLabelKo": "막대그래프로 산포도 비교",
+        "definition": "여러 자료의 막대그래프 분포를 보고 평균과 분산·표준편차의 대소를 비교 판정한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e"
+        ],
+        "sourceUnits": [
+          "M3-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e",
+            "sourceOrdinal": 21,
+            "classificationRationale": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON/TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "- 세 반의 그래프는 모두 중앙의 동일한 권수를 기준으로 완벽히 좌우 대칭입니다.",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      },
+      {
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "canonicalLabelKo": "편차의 성질 활용",
+        "definition": "편차의 합이 0이라는 성질로 미지의 편차를 구하고, 편차 제곱의 평균으로 분산·표준편차를 계산한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4"
+        ],
+        "sourceUnits": [
+          "M3-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4",
+            "sourceOrdinal": 25,
+            "classificationRationale": "PT_M3_DISPERSION_DEVIATION_PROPERTIES/TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "$$2 + 3 + 1 + (-1) + (-2) + 0 + a = 0$$",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      },
+      {
+        "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+        "canonicalLabelKo": "도수분포표에서 분산 계산",
+        "definition": "계급값과 도수로 평균을 구하고 편차 제곱의 도수 가중 평균으로 분산을 계산한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359"
+        ],
+        "sourceUnits": [
+          "M3-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359",
+            "sourceOrdinal": 20,
+            "classificationRationale": "PT_M3_DISPERSION_FREQUENCY_TABLE/TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "$$\\text{분산} = \\dfrac{84}{20} = \\dfrac{21}{5}$$",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      },
+      {
+        "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+        "canonicalLabelKo": "변량의 선형변환과 평균·분산",
+        "definition": "각 변량에 상수를 곱하거나 더했을 때 평균·분산·표준편차가 어떻게 변하는지 계산한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_68c7f338cd3057ba3a7f66a0ec25a7e28888873817ccc0e074a1997c009f4208"
+        ],
+        "sourceUnits": [
+          "M3-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_68c7f338cd3057ba3a7f66a0ec25a7e28888873817ccc0e074a1997c009f4208",
+            "sourceOrdinal": 19,
+            "classificationRationale": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS/TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "$$\\text{분산} = 3^2 \\times \\dfrac{8}{3} = 9 \\times \\dfrac{8}{3} = 24$$",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      }
+    ],
+    "templates": [
+      {
+        "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+        "parentProblemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "canonicalLabelKo": "이산 자료의 중앙값·최빈값 계산",
+        "definition": "홀수 개 변량의 (n+1)/2번째 값을 중앙값으로, 도수가 가장 큰 값을 최빈값으로 계산한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402"
+        ],
+        "sourceUnits": [
+          "M3-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_be3f294d2e234b1a484e11c9301e85ed65c0fd1a9a5516a6f392d9be0c054402",
+            "sourceOrdinal": 17,
+            "classificationRationale": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE/TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "- 가장 많이 나타난 수는 $8$(3회)입니다.",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      },
+      {
+        "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+        "parentProblemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+        "canonicalLabelKo": "도수분포표 분산 계산 절차",
+        "definition": "계급값·도수 표를 만들어 평균을 구하고 (편차²×도수) 총합을 총도수로 나눈다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359"
+        ],
+        "sourceUnits": [
+          "M3-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_c1e2a05a4305e0a48b1bd81fbf9f147373d777b18f24a17d00054b24c51ba359",
+            "sourceOrdinal": 20,
+            "classificationRationale": "PT_M3_DISPERSION_FREQUENCY_TABLE/TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "$$\\text{분산} = \\dfrac{84}{20} = \\dfrac{21}{5}$$",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      },
+      {
+        "templateKey": "TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS",
+        "parentProblemTypeKey": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
+        "canonicalLabelKo": "막대그래프 분포의 산포 비교",
+        "definition": "여러 집단의 대칭 분포에서 평균이 같음을 확인하고, 평균 근처에 가장 밀집한 집단의 분산·표준편차가 가장 작다고 판정한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e"
+        ],
+        "sourceUnits": [
+          "M3-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_92d386e755585e95b8fa0a4c9c8a616cc77afe6bd67c45349e3680824f3bf04e",
+            "sourceOrdinal": 21,
+            "classificationRationale": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON/TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS bound at M3-07/M3-07-STATISTICS_DATA_INTERPRETATION; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "- 세 반의 그래프는 모두 중앙의 동일한 권수를 기준으로 완벽히 좌우 대칭입니다.",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      },
+      {
+        "templateKey": "TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA",
+        "parentProblemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+        "canonicalLabelKo": "k배 변량의 평균·분산 계산",
+        "definition": "변량을 k배 하면 평균은 k배, 분산은 k²배가 됨을 이용해 새 평균과 분산을 구한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_68c7f338cd3057ba3a7f66a0ec25a7e28888873817ccc0e074a1997c009f4208"
+        ],
+        "sourceUnits": [
+          "M3-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_68c7f338cd3057ba3a7f66a0ec25a7e28888873817ccc0e074a1997c009f4208",
+            "sourceOrdinal": 19,
+            "classificationRationale": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS/TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "$$\\text{분산} = 3^2 \\times \\dfrac{8}{3} = 9 \\times \\dfrac{8}{3} = 24$$",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      },
+      {
+        "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+        "parentProblemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "canonicalLabelKo": "서술형: 미지 편차와 표준편차",
+        "definition": "편차 합 0에서 미지 편차를 구하고 제곱합을 개수로 나눈 분산의 제곱근으로 표준편차를 서술한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4"
+        ],
+        "sourceUnits": [
+          "M3-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_73d2b48684d7dd3c4b26db633558febd2046dab02be059fbb4fd8a1a3c5145c4",
+            "sourceOrdinal": 25,
+            "classificationRationale": "PT_M3_DISPERSION_DEVIATION_PROPERTIES/TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE bound at M3-07/M3-07-STATISTICS_REPRESENTATIVE; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "$$2 + 3 + 1 + (-1) + (-2) + 0 + a = 0$$",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "nativeReviewRefs": [
+    {
+      "examId": "E004",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E004.meta.json",
+      "sha256": "9ffc19cebe03fe1d16d0c4880090223c60419186c041ad898d32da9980160852"
+    },
+    {
+      "examId": "E007",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E007.meta.json",
+      "sha256": "8c1dcdb53be7d37e0705e6a763bb44a9071a001c8a42b1e9c1374c3f98450dc6"
+    },
+    {
+      "examId": "E016",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E016.meta.json",
+      "sha256": "bae583c6a5229fb9d6c434cdc844ecf4f4835c7fddfcc24e9241b42ca38b3017"
+    },
+    {
+      "examId": "E022",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E022.meta.json",
+      "sha256": "fbc30bf968e0e6470b8e254e2208dbea8782e2155c9d8ce477836b84fc4f45c2"
+    },
+    {
+      "examId": "E023",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E023.meta.json",
+      "sha256": "eccccd6d85d264936ed6f7d5bff1e2779d6cb993ba471b090df04c09813fd375"
+    },
+    {
+      "examId": "E035",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E035.meta.json",
+      "sha256": "09a2366601ddf6989f6dbf294de0819d39b126845e0bc633ac102a65fb049324"
+    },
+    {
+      "examId": "E044",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E044.meta.json",
+      "sha256": "6db8ac3966db10a19d43a18df3d2a492de09c7b4f65a8508d741a380d0005f57"
+    },
+    {
+      "examId": "E049",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E049.meta.json",
+      "sha256": "f7c5e27609c9316193db0986e3282ba0ea8042d49988f6301eccf9c0f21eef5a"
+    },
+    {
+      "examId": "E052",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+      "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+    }
+  ],
+  "supportingItems": [
+    {
+      "examId": "E004",
+      "sourcePath": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_0bff84730bfa584139049ea52c4c76555081d3795a870f1102c100b3be0ea753",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE"
+      },
+      "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E004.meta.json",
+        "sha256": "9ffc19cebe03fe1d16d0c4880090223c60419186c041ad898d32da9980160852"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "BINDING_OR_CROSSWALK_DEBT",
+          "recordId": "M3-RPM-084",
+          "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+          "studentPayloadUnchanged": true
+        },
+        {
+          "type": "VERIFIED_SOLUTION_PROVENANCE",
+          "scope": "Official Resolver execution precondition",
+          "semanticReviewStillCompleted": true
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "8a6e623f352d0c0351b54d3a4fb2b9c64fab5b5b",
+      "sourceAfterBlobSha1": "8999273fdc850303b14f9a3a476e3f820e2bf972",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E007",
+      "sourcePath": "archive/exams/original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_0c5e23d3dbadeedff877715d06a794333ae5712f2ec5a4359f45037bec4b4831",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS"
+      },
+      "templateKey": "TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E007.meta.json",
+        "sha256": "8c1dcdb53be7d37e0705e6a763bb44a9071a001c8a42b1e9c1374c3f98450dc6"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "BINDING_OR_CROSSWALK_DEBT",
+          "recordId": "M3-RPM-086",
+          "templateKey": "TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA",
+          "studentPayloadUnchanged": true
+        },
+        {
+          "type": "VERIFIED_SOLUTION_PROVENANCE",
+          "scope": "Official Resolver execution precondition",
+          "semanticReviewStillCompleted": true
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "5e4747d10c6997128a958f73f0a54dc2a654b46a",
+      "sourceAfterBlobSha1": "bb76fbc92e275998555444c2339da6de63abc170",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E007",
+      "sourcePath": "archive/exams/original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_cc2a12e5f1bcb5aeda938edd3ffdfa7ebdadd0396bed0f332ee5fa620d316eda",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE"
+      },
+      "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E007.meta.json",
+        "sha256": "8c1dcdb53be7d37e0705e6a763bb44a9071a001c8a42b1e9c1374c3f98450dc6"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "BINDING_OR_CROSSWALK_DEBT",
+          "recordId": "M3-RPM-084",
+          "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+          "studentPayloadUnchanged": true
+        },
+        {
+          "type": "VERIFIED_SOLUTION_PROVENANCE",
+          "scope": "Official Resolver execution precondition",
+          "semanticReviewStillCompleted": true
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "5e4747d10c6997128a958f73f0a54dc2a654b46a",
+      "sourceAfterBlobSha1": "bb76fbc92e275998555444c2339da6de63abc170",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E007",
+      "sourcePath": "archive/exams/original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_2ba68366aeffc9dd76cbce9857968e2ae3a4739f7895172c45d43d8a5bb14f3e",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES"
+      },
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E007.meta.json",
+        "sha256": "8c1dcdb53be7d37e0705e6a763bb44a9071a001c8a42b1e9c1374c3f98450dc6"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "BINDING_OR_CROSSWALK_DEBT",
+          "recordId": "M3-RPM-085",
+          "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+          "studentPayloadUnchanged": true
+        },
+        {
+          "type": "VERIFIED_SOLUTION_PROVENANCE",
+          "scope": "Official Resolver execution precondition",
+          "semanticReviewStillCompleted": true
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "5e4747d10c6997128a958f73f0a54dc2a654b46a",
+      "sourceAfterBlobSha1": "bb76fbc92e275998555444c2339da6de63abc170",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E016",
+      "sourcePath": "archive/exams/original/middle/m3/2final/24_왕운중_2학기_기말_중3_수학.js",
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_f92f434404a218c1ff23e59ae8cc6c0eff90e8aa0a53a0e2e53fe543dfb34d01",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES"
+      },
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E016.meta.json",
+        "sha256": "bae583c6a5229fb9d6c434cdc844ecf4f4835c7fddfcc24e9241b42ca38b3017"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "BINDING_OR_CROSSWALK_DEBT",
+          "recordId": "M3-RPM-085",
+          "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+          "studentPayloadUnchanged": true
+        },
+        {
+          "type": "VERIFIED_SOLUTION_PROVENANCE",
+          "scope": "Official Resolver execution precondition",
+          "semanticReviewStillCompleted": true
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "e4d7cfc5a68f644773b9d3c7922b312c3c9b7c56",
+      "sourceAfterBlobSha1": "0b9a5b630a5f36256c343843f9064238169c2b40",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E022",
+      "sourcePath": "archive/exams/original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_ca1174572f5e881c776fd53d41314819a5655ba2a3dc535951e7b490d3ed0a73",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES"
+      },
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E022.meta.json",
+        "sha256": "fbc30bf968e0e6470b8e254e2208dbea8782e2155c9d8ce477836b84fc4f45c2"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "BINDING_OR_CROSSWALK_DEBT",
+          "recordId": "M3-RPM-085",
+          "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+          "studentPayloadUnchanged": true
+        },
+        {
+          "type": "VERIFIED_SOLUTION_PROVENANCE",
+          "scope": "Official Resolver execution precondition",
+          "semanticReviewStillCompleted": true
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "840d351a7a04c19ae94f4ea4d81d4948c0a86895",
+      "sourceAfterBlobSha1": "69ad87a873c8760de8b59284ea5366faaf563688",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E023",
+      "sourcePath": "archive/exams/original/middle/m3/2final/23_순천여중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_a3442f4ea4d002b787a9d5165b846bf157a1d7e7036d1eae20f0a0d5e0a84a64",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES"
+      },
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E023.meta.json",
+        "sha256": "eccccd6d85d264936ed6f7d5bff1e2779d6cb993ba471b090df04c09813fd375"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "detail": "GLOBAL ACTIVE 정확 골격을 재사용하며 원본2015 M3와 현행2022 RPM 연결은 별도 확인한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "fff3a98ca3a542b4b524e2bca932e337735fff55",
+      "sourceAfterBlobSha1": "d4beb26b6db889b5e57d6ca9bcbbecf9393df69d",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E035",
+      "sourcePath": "archive/exams/original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_3031022afa6ecf3e4700368b57ef495201eb5500d6a7e804a496d9e5e273170e",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON"
+      },
+      "templateKey": "TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E035.meta.json",
+        "sha256": "09a2366601ddf6989f6dbf294de0819d39b126845e0bc633ac102a65fb049324"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+        },
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "role": "original",
+          "recordId": "M3-RPM-086",
+          "problemTypeKey": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
+          "templateKey": "TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS",
+          "nativeMappedTemplates": [],
+          "detail": "GLOBAL ACTIVE의 실제 정의가 맞으나 이 RPM 행은 다른 TPL 또는 RPM_ONLY다. 새 유형이 아닌 existing-definition crosswalk/binding 연결 검토 대상이다."
+        },
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "role": "current2022",
+          "recordId": "M3-RPM-173",
+          "problemTypeKey": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
+          "templateKey": "TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS",
+          "nativeMappedTemplates": [],
+          "detail": "GLOBAL ACTIVE의 실제 정의가 맞으나 이 RPM 행은 다른 TPL 또는 RPM_ONLY다. 새 유형이 아닌 existing-definition crosswalk/binding 연결 검토 대상이다."
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "0868b01fa40d00480b2750d1a01451c671b446ab",
+      "sourceAfterBlobSha1": "7fba91b638af6dbc122be7e8be169485671b5908",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E035",
+      "sourcePath": "archive/exams/original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_4db6a06abc704a569dd107ebba89f76f6a16369b57d757a25cc92589c995997c",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES"
+      },
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E035.meta.json",
+        "sha256": "09a2366601ddf6989f6dbf294de0819d39b126845e0bc633ac102a65fb049324"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+        },
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "role": "original",
+          "recordId": "M3-RPM-085",
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+          "nativeMappedTemplates": [],
+          "detail": "GLOBAL ACTIVE의 실제 정의가 맞으나 이 RPM 행은 다른 TPL 또는 RPM_ONLY다. 새 유형이 아닌 existing-definition crosswalk/binding 연결 검토 대상이다."
+        },
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "role": "current2022",
+          "recordId": "M3-RPM-172",
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+          "nativeMappedTemplates": [],
+          "detail": "GLOBAL ACTIVE의 실제 정의가 맞으나 이 RPM 행은 다른 TPL 또는 RPM_ONLY다. 새 유형이 아닌 existing-definition crosswalk/binding 연결 검토 대상이다."
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "0868b01fa40d00480b2750d1a01451c671b446ab",
+      "sourceAfterBlobSha1": "7fba91b638af6dbc122be7e8be169485671b5908",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E044",
+      "sourcePath": "archive/exams/original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_14a5c06de4f04e408c9afaac581898823240ae30a3918abe469f4f41a0e8398d",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE"
+      },
+      "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E044.meta.json",
+        "sha256": "6db8ac3966db10a19d43a18df3d2a492de09c7b4f65a8508d741a380d0005f57"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+        },
+        {
+          "type": "BINDING_OR_OWNER_CONTEXT_GAP",
+          "curriculumRole": "current2022",
+          "crosswalkRecordId": "M1-RPM-223",
+          "exactContextBindingCount": 0,
+          "canonicalOwner": "MIDDLE3",
+          "bindingOwners": [],
+          "distinction": "Definition reuse was judged; current semantic context binding/owner relation awaits release owner."
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "926254f712783e21e97c18c50486006eb9412863",
+      "sourceAfterBlobSha1": "4138e9a13e9d85fe4b69793c314f29cc05e61c7f",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E044",
+      "sourcePath": "archive/exams/original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_901a7807a76e4450c7a4068aae419a32e4abff8f6824a576ba4a07096b1fa89b",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE"
+      },
+      "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E044.meta.json",
+        "sha256": "6db8ac3966db10a19d43a18df3d2a492de09c7b4f65a8508d741a380d0005f57"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+        },
+        {
+          "type": "BINDING_OR_OWNER_CONTEXT_GAP",
+          "curriculumRole": "current2022",
+          "crosswalkRecordId": "M3-RPM-171",
+          "exactContextBindingCount": 0,
+          "canonicalOwner": "MIDDLE3",
+          "bindingOwners": [],
+          "distinction": "Definition reuse was judged; current semantic context binding/owner relation awaits release owner."
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "926254f712783e21e97c18c50486006eb9412863",
+      "sourceAfterBlobSha1": "4138e9a13e9d85fe4b69793c314f29cc05e61c7f",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E044",
+      "sourcePath": "archive/exams/original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_67b324d8c693061ad471978ece78fa527d426cf8db7c5fc432e48f1c7d84b22e",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES"
+      },
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E044.meta.json",
+        "sha256": "6db8ac3966db10a19d43a18df3d2a492de09c7b4f65a8508d741a380d0005f57"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+        },
+        {
+          "type": "BINDING_OR_OWNER_CONTEXT_GAP",
+          "curriculumRole": "current2022",
+          "crosswalkRecordId": "M3-RPM-172",
+          "exactContextBindingCount": 0,
+          "canonicalOwner": "MIDDLE3",
+          "bindingOwners": [],
+          "distinction": "Definition reuse was judged; current semantic context binding/owner relation awaits release owner."
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "926254f712783e21e97c18c50486006eb9412863",
+      "sourceAfterBlobSha1": "4138e9a13e9d85fe4b69793c314f29cc05e61c7f",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E049",
+      "sourcePath": "archive/exams/original/middle/m3/2final/21_왕운중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_81fc01a464eb66464e0c139d0e87f1849740ab2e42469f26969827f3d58d2d2a",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES"
+      },
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E049.meta.json",
+        "sha256": "f7c5e27609c9316193db0986e3282ba0ea8042d49988f6301eccf9c0f21eef5a"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "role": "comparison2015",
+          "recordId": "M3-RPM-085",
+          "selectedTemplate": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+          "nativeMappedTemplates": [],
+          "detail": "기존 GLOBAL ACTIVE 정의 재사용이며 이 RPM row에 해당 TPL을 연결하는 출고 작업이 필요하다. 새 정의 개발과 구별한다."
+        },
+        {
+          "type": "ACTIVE_CONTEXT_BINDING_GAP",
+          "role": "comparison2015",
+          "recordId": "M3-RPM-085",
+          "context": {
+            "curriculum": "2015",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE"
+          },
+          "detail": "정확 curriculum/course/unit/subunit/PT 문맥의 ACTIVE binding 부재. canonical 정의의 존재와 연결 완료를 구별한다."
+        },
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "role": "current2022",
+          "recordId": "M3-RPM-172",
+          "selectedTemplate": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+          "nativeMappedTemplates": [],
+          "detail": "기존 GLOBAL ACTIVE 정의 재사용이며 이 RPM row에 해당 TPL을 연결하는 출고 작업이 필요하다. 새 정의 개발과 구별한다."
+        },
+        {
+          "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+          "role": "current2022",
+          "recordId": "M3-RPM-172",
+          "context": {
+            "curriculum": "2022",
+            "standardCourse": "중3 수학",
+            "standardUnitKey": "M3-07",
+            "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE"
+          },
+          "detail": "정확 curriculum/course/unit/subunit/PT 문맥의 ACTIVE binding 부재. canonical 정의의 존재와 연결 완료를 구별한다."
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "c4f182c0ffd63e3a6ff02f2ba950f1f287940dca",
+      "sourceAfterBlobSha1": "5983f5e390d2fe70c07137ccd07e2d4809e27965",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    },
+    {
+      "examId": "E052",
+      "sourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_0ab41c3d206f877202c18d6b95e4d22eb9ddcb5f183dd512e984195d08e739a2",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-07",
+        "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES"
+      },
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+        "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+      },
+      "studentPayloadChangedFields": [],
+      "nativeDebts": [
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+        },
+        {
+          "type": "ORIGINAL_CONTEXT_BINDING_GAP",
+          "detail": "Global ACTIVE semantic reuse exists; exact chosen publisher unit/subunit/curriculum binding is absent."
+        },
+        {
+          "type": "CURRENT2022_CONTEXT_BINDING_GAP",
+          "detail": "Global ACTIVE semantic reuse exists; exact chosen publisher unit/subunit/curriculum binding is absent."
+        }
+      ],
+      "nativeProposalRefs": [],
+      "existingBinding": null,
+      "reasons": [],
+      "sourceBeforeBlobSha1": "2b71e1d36ec1ad2c3886298a7eb70080394bf18c",
+      "sourceAfterBlobSha1": "d6591d2fad6984d4194f7a4885fab460d5743109",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false
+    }
+  ],
+  "actualMainRegistration": "PENDING"
+}

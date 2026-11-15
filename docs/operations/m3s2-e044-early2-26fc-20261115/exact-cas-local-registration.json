@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "m3s2-e044-actual-cas-native-registration-v1",
+  "status": "LOCAL_DRY_WRITE10_PASS_CONSUMER_PENDING",
+  "main": "5cdb0fea82185a48cc19cf1e2945f3002fe1d9bb",
+  "candidatePlanSha256": "daae9b2565e09103868f1ab39306bbd04b9560d80e1f51b6a0679bb0a398d1f6",
+  "fixtureInputsSha256": "7f6a94b80e7e53dfbad2d8f3efca073f2f29d71c86cb5927f1ce87fcc8326a04",
+  "cas": [
+    {
+      "sourcePath": "archive/exams/original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js",
+      "beforeBlobSha1": "926254f712783e21e97c18c50486006eb9412863",
+      "beforeSha256": "442f4228845573b4a4f320815488be084183da3a04e04d94203a191958697454"
+    },
+    {
+      "priorReceiptRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e044-release-20261115.json",
+        "sha256": "caf823dfb257f2430d1370b3d9aec5be06091ab0953e315c07aba007de83fe02"
+      },
+      "actualPriorUidCount": 8,
+      "actualMetadataIdentityRuntimeExact": true
+    },
+    {
+      "questionUid": "qid_v1_14a5c06de4f04e408c9afaac581898823240ae30a3918abe469f4f41a0e8398d",
+      "sourceOrdinal": 11,
+      "currentMetadataSha256": "28251156f12d667d6bd22cc1b5ef18695d8396d12690473ac2f99cf1dd6dfb0a",
+      "currentIdentitySha256": "717292a34ebf3c6d6ef9e1b7543b4a35d6c4e8089b8a181c095ad131f44bb169",
+      "runtimeAbsent": true,
+      "requestBeforeExact": true
+    },
+    {
+      "questionUid": "qid_v1_901a7807a76e4450c7a4068aae419a32e4abff8f6824a576ba4a07096b1fa89b",
+      "sourceOrdinal": 13,
+      "currentMetadataSha256": "ab78c290e6de5918cec7364546b6779b0544ed2f0c5762f3c4849419c8778e29",
+      "currentIdentitySha256": "300dc5c8dc96939fa1dd14ae6ffe868a1d7da692c990b0a45a842c3804c8545d",
+      "runtimeAbsent": true,
+      "requestBeforeExact": true
+    }
+  ],
+  "requests": [
+    {
+      "requestId": "m3s2-e044-preserve-early2-26fc-20261115",
+      "kind": "EXISTING_APPROVAL_PRESERVATION",
+      "dry": {
+        "status": "PASS",
+        "write": false,
+        "requestId": "m3s2-e044-preserve-early2-26fc-20261115",
+        "approvalType": "FINAL_QA",
+        "totalQuestions": 8,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 8,
+        "expectedQuestionCount": 25,
+        "newMetadataApprovals": 0,
+        "preservedMetadataApprovals": 8,
+        "registryChangeCount": 0,
+        "runtimeMaterialized": 8,
+        "fingerprintRepairCount": 0,
+        "consumerSearchStatus": "NOT_RUN",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e044-preserve-early2-26fc-20261115.json"
+        ]
+      },
+      "write": {
+        "status": "PASS",
+        "write": true,
+        "requestId": "m3s2-e044-preserve-early2-26fc-20261115",
+        "approvalType": "FINAL_QA",
+        "totalQuestions": 8,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 8,
+        "expectedQuestionCount": 25,
+        "newMetadataApprovals": 0,
+        "preservedMetadataApprovals": 8,
+        "registryChangeCount": 0,
+        "runtimeMaterialized": 8,
+        "fingerprintRepairCount": 0,
+        "consumerSearchStatus": "NOT_RUN",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e044-preserve-early2-26fc-20261115.json"
+        ]
+      },
+      "receipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e044-preserve-early2-26fc-20261115.json",
+        "sha256": "7e484c0f8e9416bbb430bf2870760405699545918bb857bbe6766d3f630e6980"
+      }
+    },
+    {
+      "requestId": "m3s2-e044-early2-26fc-20261115",
+      "kind": "NEW_SAME_VERSION_NATIVE_REGISTRATION",
+      "dry": {
+        "status": "PASS",
+        "write": false,
+        "requestId": "m3s2-e044-early2-26fc-20261115",
+        "approvalType": "FINAL_QA",
+        "totalQuestions": 2,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 2,
+        "expectedQuestionCount": 25,
+        "registryChangeCount": 2,
+        "runtimeMaterialized": 2,
+        "fingerprintRepairCount": 2,
+        "consumerSearchStatus": "NOT_RUN",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/packs/middle3/bindings.json",
+          "archive/data/meta-foundation/canonical/packs/middle3/pack.json",
+          "archive/data/meta-foundation/runtime/middle3-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e044-early2-26fc-20261115.json"
+        ]
+      },
+      "write": {
+        "status": "PASS",
+        "write": true,
+        "requestId": "m3s2-e044-early2-26fc-20261115",
+        "approvalType": "FINAL_QA",
+        "totalQuestions": 2,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 2,
+        "expectedQuestionCount": 25,
+        "registryChangeCount": 2,
+        "runtimeMaterialized": 2,
+        "fingerprintRepairCount": 2,
+        "consumerSearchStatus": "NOT_RUN",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/packs/middle3/bindings.json",
+          "archive/data/meta-foundation/canonical/packs/middle3/pack.json",
+          "archive/data/meta-foundation/runtime/middle3-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e044-early2-26fc-20261115.json"
+        ]
+      },
+      "receipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e044-early2-26fc-20261115.json",
+        "sha256": "8579d9eca7507842580bcb4f3c62895fdc8ec277a5a433a3419e32347d39294b"
+      }
+    }
+  ],
+  "scopedBuilderInventory": {
+    "exactCurrentExamEntry": {
+      "file": "original/middle/m3/2final/21_금당중_2학기_기말_중3_기출.js",
+      "school": "금당중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2021,
+      "semester": "2",
+      "examType": "final",
+      "subject": "중3 수학",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "M3-06",
+      "rangeStartUnit": "원의 성질",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "M3-07",
+      "rangeEndUnit": "통계",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-06",
+          "rangeStartUnit": "원의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M3-07",
+          "rangeEndUnit": "통계",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    "derivedDbSha256": "3c2c49de3350fad36a25f53c8f0f145d920904b01aa07bf84c2a60fb72390465",
+    "sources": 1,
+    "questions": 25
+  },
+  "productionWrites": 0,
+  "remoteWrites": 0,
+  "actualMainRegistration": false
+}
