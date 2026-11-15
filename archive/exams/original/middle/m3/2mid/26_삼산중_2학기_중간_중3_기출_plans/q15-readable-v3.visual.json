@@ -1,0 +1,377 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+  "questionId": 15,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "neg",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "28"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "28"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "numerator": "-4",
+                            "denominator": "5"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "28"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "rational",
+                        "numerator": "18",
+                        "denominator": "5"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sub",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "numerator": "-3",
+                            "denominator": "5"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "28"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "rational",
+                        "numerator": "24",
+                        "denominator": "5"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "numerator": "4",
+                            "denominator": "5"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "28"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "rational",
+                        "numerator": "18",
+                        "denominator": "5"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sub",
+                    "args": [
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "numerator": "3",
+                            "denominator": "5"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "28"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "rational",
+                        "numerator": "24",
+                        "denominator": "5"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "rim",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "8"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O",
+          "M"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "CD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "OD",
+            "refs": [
+              "O",
+              "D"
+            ]
+          },
+          {
+            "id": "OM",
+            "refs": [
+              "O",
+              "M"
+            ],
+            "dashed": true
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "rim"
+        ],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 620,
+          "height": 470
+        },
+        "caption": "원과 같은 길이의 두 현",
+        "accessibilityDescription": "반지름 OD와 중심에서 두 현에 내린 수선",
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "chords",
+              "count": 1,
+              "segments": [
+                "AB",
+                "CD"
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "radiusOD",
+              "ownerSegment": "OD",
+              "text": "8 cm",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lengthOM",
+              "ownerSegment": "OM",
+              "text": "6 cm",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rightM",
+            "refs": [
+              "O",
+              "M",
+              "B"
+            ],
+            "factRole": "GIVEN"
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

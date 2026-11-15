@@ -401,7 +401,8 @@ $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
 - 삼각형의 대응 순서를 확인하지 않는 것
 
 따라서 정답은 ③이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q08.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q08-readable-v3.svg",
+    "imageSize": "full"
   },
   {
     "id": 9,
@@ -749,7 +750,8 @@ $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
 - 선분의 끝점 순서를 바꾸어 중복 계산하는 것
 
 따라서 정답은 ①이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q15.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q15-readable-v3.svg",
+    "imageSize": "full"
   },
   {
     "id": 16,
@@ -851,7 +853,8 @@ $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
 - 중점 조건을 두 선분의 길이가 같다는 뜻으로 사용하지 않는다.
 
 따라서 정답은 ②이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q17.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q17-readable-v3.svg",
+    "imageSize": "full"
   },
   {
     "id": 18,

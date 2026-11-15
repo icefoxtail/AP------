@@ -1265,7 +1265,7 @@ window.questionBank = [
     "provenance": "AUDITED_REPAIR",
     "sourceMode": "AUDITED_REPAIR",
     "score": 4,
-    "content": "[서술형 2]<br>세 모서리의 길이가 각각 $(\\sqrt6+\\sqrt8)$ cm, $\\sqrt6$ cm, $\\sqrt8$ cm인 직육면체의 (1) 부피 (2점), (2) 겉넓이 (2점)를 각각 구하시오. [4점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q22-problem.svg\">",
+    "content": "[서술형 2]<br>세 모서리의 길이가 각각 $(\\sqrt6+\\sqrt8)$ cm, $\\sqrt6$ cm, $\\sqrt8$ cm인 직육면체의 (1) 부피 (2점), (2) 겉넓이 (2점)를 각각 구하시오. [4점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q22-readable-v3.svg\">",
     "choices": [],
     "answer": "부피: $12\\sqrt2+8\\sqrt6$ cm³; 겉넓이: $28+24\\sqrt3$ cm²",
     "solution": "(1) $a=\\sqrt6+\\sqrt8$, $b=\\sqrt6$, $c=\\sqrt8$.<br>부피 $abc=(\\sqrt6+\\sqrt8)\\sqrt{48}=4\\sqrt3(\\sqrt6+2\\sqrt2)=12\\sqrt2+8\\sqrt6$ cm³.<br>(2) 겉넓이 $=2(ab+bc+ca)=2[\\sqrt6(\\sqrt6+\\sqrt8)+\\sqrt{48}+\\sqrt8(\\sqrt6+\\sqrt8)]$.<br>$=2[(6+4\\sqrt3)+4\\sqrt3+(8+4\\sqrt3)]=28+24\\sqrt3$ cm².",
@@ -1316,7 +1316,8 @@ window.questionBank = [
       "sourceGitPath": "스캔_인테이크_산출물/24_삼산중_1학기_중간_중3_수학/24_삼산중_1학기_중간_중3_수학.js",
       "sourceQid": "q22"
     },
-    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q22-problem.svg",
+    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q22-readable-v3.svg",
+    "imageSize": "full",
     "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q22-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 세 면을 파랑·주황·초록으로 구분한 직육면체. 앞 가로 AB는 √6+√8 cm, 왼쪽 위 깊이 EH는 √8 cm, 앞 오른쪽 높이 BF는 √6 cm이고 같은 방향 모서리에는 서로 다른 눈금 수가 표시되어 있다.",
     "solutionImageCaption": "(1) 부피: (√6+√8)×√6×√8=12√2+8√6 cm³. (2) 겉넓이: 2[(√6+√8)√6+√6√8+√8(√6+√8)]=28+24√3 cm².",

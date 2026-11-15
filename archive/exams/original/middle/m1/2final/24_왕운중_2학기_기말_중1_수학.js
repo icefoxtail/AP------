@@ -552,7 +552,7 @@ window.questionBank = [
       "원"
     ],
     "wide": false,
-    "content": "다음 그림은 두 반원 $O', O''$을 큰 원 $O$의 반원에 꼭 맞게 놓은 것이다. 반원 $O'$와 $O''$의 반지름의 길이가 각각 $6\\text{ cm}, 4\\text{ cm}$일 때, 색칠한 부분의 둘레의 길이는? (5점)<br>(단, 점 $O, O', O''$은 한 직선 상에 있다.)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q10-student.svg\" style=\"max-width: 400px; display: block; margin: 10px 0;\">",
+    "content": "다음 그림은 두 반원 $O', O''$을 큰 원 $O$의 반원에 꼭 맞게 놓은 것이다. 반원 $O'$와 $O''$의 반지름의 길이가 각각 $6\\text{ cm}, 4\\text{ cm}$일 때, 색칠한 부분의 둘레의 길이는? (5점)<br>(단, 점 $O, O', O''$은 한 직선 상에 있다.)<br><br><img src=\"assets/images/24_왕운중_2학기_기말_중1_수학/q10-readable-v3.svg\" style=\"max-width: 400px; display: block; margin: 10px 0;\">",
     "choices": [
       "$20\\pi\\text{ cm}$",
       "$(20\\pi + 20)\\text{ cm}$",

@@ -472,7 +472,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "points": 4,
-    "image": "assets/images/25_팔마중_2학기_중간_중1_유사/q12.svg",
+    "image": "assets/images/25_팔마중_2학기_중간_중1_유사/q12-readable-v3.svg",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
     "solution": "[키포인트] 이미 주어진 한 변과 한 각에 조건 하나를 더해 SSS, SAS, ASA 중 유효한 합동 조건을 완성합니다.\n\n주어진 조건은\n$\\overline{AB} = \\overline{DE}$\n$\\angle B = \\angle E$\n입니다.\n\n① $\\overline{AC} = \\overline{DF}$가 주어지면 두 변과 끼인각이 아닌 각이 주어지는 형태(SSA)가 되므로 합동이 보장되지 않습니다.\n② $\\overline{BC} = \\overline{EF}$가 주어지면 두 변 $\\overline{AB}=\\overline{DE}$, $\\overline{BC}=\\overline{EF}$와 그 끼인각 $\\angle B = \\angle E$가 각각 같으므로 SAS 합동 조건을 만족하여 합동이 됩니다. (옳음)\n③ $\\angle C = \\angle D$는 대응하는 각의 위치가 일치하지 않습니다.\n④ $\\overline{AC} = \\overline{DE}$는 이미 같은 변과 다른 변의 관계이므로 합동 조건이 아닙니다.\n⑤ $\\angle A = \\angle F$는 대응하는 각의 위치가 어긋나 있습니다.\n\n따라서 필요한 조건으로 옳은 것은 ②입니다.",

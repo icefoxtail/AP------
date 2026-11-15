@@ -1,0 +1,314 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/26_삼산중_2학기_중간_중3_유사.js",
+  "questionId": 22,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "48"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "V",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "48"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "48"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "S",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "B",
+                "V"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "48"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "48"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "45"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "building",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "S"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "sight",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "T"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "building",
+                "sight"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ground",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "C",
+                "ground"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "V",
+          "S",
+          "T"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sDB",
+            "refs": [
+              "D",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBV",
+            "refs": [
+              "B",
+              "V"
+            ],
+            "dashed": true
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 540
+        },
+        "caption": "기울어진 구조물과 지면",
+        "accessibilityDescription": "기울어진 선분과 지면, 높이의 수선",
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aView",
+              "refs": [
+                "D",
+                "A",
+                "C"
+              ],
+              "value": 45,
+              "label": "45",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aTilt",
+              "refs": [
+                "V",
+                "B",
+                "C"
+              ],
+              "value": 5,
+              "label": "5",
+              "ring": 3,
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dAB",
+              "from": "A",
+              "to": "B",
+              "label": "48",
+              "unit": "m",
+              "side": "BELOW",
+              "style": "ARROW",
+              "value": 48,
+              "factRole": "GIVEN",
+              "offset": 3
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rD",
+            "refs": [
+              "C",
+              "D",
+              "A"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "hiddenPointNames": [
+          "V",
+          "S",
+          "T"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

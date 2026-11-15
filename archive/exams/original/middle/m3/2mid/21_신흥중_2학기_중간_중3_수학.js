@@ -806,7 +806,7 @@ window.questionBank = [
       "중심거리와 현의 길이"
     ],
     "wide": true,
-    "content": "다음 그림과 같이 반지름의 길이가 $4\\,\\text{cm}$인 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{AB}}$를 접는 선으로 하여 짧은 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지나도록 접었을 때, $\\overline{\\mathrm{AB}}$의 길이는?<br><img src=\"assets/images/21_신흥중_2학기_중간_중3_수학/q15_diagram_RECONSTRUCTED.svg\" />",
+    "content": "다음 그림과 같이 반지름의 길이가 $4\\,\\text{cm}$인 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{AB}}$를 접는 선으로 하여 짧은 호 $\\mathrm{AB}$가 원의 중심 $\\mathrm{O}$를 지나도록 접었을 때, $\\overline{\\mathrm{AB}}$의 길이는?<br><img src=\"assets/images/21_신흥중_2학기_중간_중3_수학/q15-readable-v3.svg\" />",
     "choices": [
       "$2\\,\\text{cm}$",
       "$2\\sqrt{3}\\,\\text{cm}$",

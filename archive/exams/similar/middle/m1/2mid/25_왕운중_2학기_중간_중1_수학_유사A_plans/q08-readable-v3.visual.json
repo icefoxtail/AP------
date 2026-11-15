@@ -1,0 +1,227 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학_유사A.js",
+  "questionId": 8,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "두 삼각형",
+        "accessibilityDescription": "삼각형의 꼭짓점과 대응 변의 눈금을 나타낸 그림.",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "9"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Z",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "Q",
+          "R",
+          "X",
+          "Y",
+          "Z"
+        ],
+        "displayLines": [],
+        "displaySegments": [
+          {
+            "id": "sPQ",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          },
+          {
+            "id": "sPR",
+            "refs": [
+              "P",
+              "R"
+            ]
+          },
+          {
+            "id": "sQR",
+            "refs": [
+              "Q",
+              "R"
+            ]
+          },
+          {
+            "id": "sXY",
+            "refs": [
+              "X",
+              "Y"
+            ]
+          },
+          {
+            "id": "sXZ",
+            "refs": [
+              "X",
+              "Z"
+            ]
+          },
+          {
+            "id": "sYZ",
+            "refs": [
+              "Y",
+              "Z"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 580,
+          "height": 360
+        },
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "one",
+              "count": 1,
+              "segments": [
+                "sPQ",
+                "sXY"
+              ]
+            },
+            {
+              "id": "two",
+              "count": 2,
+              "segments": [
+                "sPR",
+                "sXZ"
+              ]
+            }
+          ]
+        },
+        "sourceConditions": [],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

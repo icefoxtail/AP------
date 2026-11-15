@@ -1069,7 +1069,8 @@ window.questionBank = [
       "$\\dfrac{9}{2}$",
       "$\\dfrac{27}{2}$"
     ],
-    "image": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q16.svg",
+    "image": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q16-readable-v3.svg",
+    "imageSize": "full",
     "imageKind": "diagram",
     "answer": "④",
     "solutionImage": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q16-solution.svg",

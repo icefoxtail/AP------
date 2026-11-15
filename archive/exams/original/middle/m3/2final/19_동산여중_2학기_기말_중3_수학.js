@@ -561,7 +561,7 @@ window.examData = {
         "현",
         "원"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q13_question-v2.svg",
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q13-readable-v3-image.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q13-solution.svg",
       "solutionImageAlt": "해설 그림: 반지름 5cm인 원 O 안에 평행한 두 현 AB, CD가 있고 중심에서 각 현에 내린 수선의 발 M, N이 있다. OM과 ON은 3cm인 초록색 선분이고 OA는 5cm인 파란색 선분이며 AM은 4cm이다.",
@@ -606,7 +606,7 @@ window.examData = {
         "현",
         "원"
       ],
-      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q14_question-v2.svg",
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q14-readable-v3-image.svg",
       "imageSize": "full",
       "solutionImage": "assets/images/19_동산여중_2학기_기말_중3_수학/q14-solution.svg",
       "solutionImageAlt": "해설 그림: 지름 AB가 놓인 원 O에서 현 CD가 AB와 점 M에서 수직으로 만난다. AM은 4cm인 주황색, OM은 2cm인 보라색, 반지름 OC는 6cm인 파란색이고 CM은 4√2cm, MD는 CM과 같은 길이로 초록색이다.",

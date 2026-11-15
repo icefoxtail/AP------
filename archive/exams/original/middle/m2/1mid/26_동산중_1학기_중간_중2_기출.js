@@ -1151,7 +1151,8 @@ window.questionBank = [
     "reviewStatus": "manual_review",
     "sourceIdentityKey": "26_동산중_1학기_중간_중2_기출:q23",
     "sourcePage": 4,
-    "image": "assets/images/26_동산중_1학기_중간_중2_기출/q23-clean.svg"
+    "image": "assets/images/26_동산중_1학기_중간_중2_기출/q23-readable-v3.svg",
+    "imageSize": "full"
   },
   {
     "id": 24,

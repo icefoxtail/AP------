@@ -280,7 +280,7 @@ window.questionBank = [
     {
       "id": 13,
       "score": 4,
-      "question": "다음 그림과 같이 한 원 위의 점이 A, B, D, C 순서로 놓여 있다. 원 밖의 점 P를 지나는 두 할선의 점 순서는 각각 P-A-B와 P-C-D이고, 현 AD와 CB의 교점은 Q이다. 작은 호 AC와 작은 호 BD의 길이의 비가 1:3이고, ∠APC=50°일 때, ∠BQD의 크기는?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q13_editorial.svg\" />",
+      "question": "다음 그림과 같이 한 원 위의 점이 A, B, D, C 순서로 놓여 있다. 원 밖의 점 P를 지나는 두 할선의 점 순서는 각각 P-A-B와 P-C-D이고, 현 AD와 CB의 교점은 Q이다. 작은 호 AC와 작은 호 BD의 길이의 비가 1:3이고, ∠APC=50°일 때, ∠BQD의 크기는?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q13-readable-v3.svg\" />",
       "choices": [
         "$80^\\circ$",
         "$85^\\circ$",

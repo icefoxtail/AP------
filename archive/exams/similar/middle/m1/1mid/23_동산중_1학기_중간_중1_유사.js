@@ -879,8 +879,7 @@ window.questionBank = [
       "계산 순서"
     ],
     "wide": true,
-    "content": "서술형3. 다음 식의 계산 순서를 차례로 나열하고 계산하시오. (단, 풀이 과정을 자세히 쓰시오.)",
-    "image": "assets/images/23_동산중_1학기_중간_중1_유사/q23.svg",
+    "content": "서술형3. 다음 식의 계산 순서를 차례로 나열하고 계산하시오. (단, 풀이 과정을 자세히 쓰시오.)\n\n<div style=\"font-size:1.28em\">$$\n\\underbrace{5-\\underbrace{\\bigl\\{\\underbrace{3-\\underbrace{6\\div\\underbrace{\\left(-\\frac{3}{2}\\right)^2}_{\\displaystyle\\text{ㄹ}}}_{\\displaystyle\\text{ㄷ}}}_{\\displaystyle\\text{ㄴ}}\\bigr\\}\\times(-2)}_{\\displaystyle\\text{ㅁ}}}_{\\displaystyle\\text{ㄱ}}\n$$</div>",
     "choices": [],
     "answer": "ㄹ → ㄷ → ㄴ → ㅁ → ㄱ, 17/3",
     "points": 7.0,

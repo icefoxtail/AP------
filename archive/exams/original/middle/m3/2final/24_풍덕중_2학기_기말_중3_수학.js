@@ -133,7 +133,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "원에서 중심에서 현에 내린 수선은 현을 이등분하므로 $AM=MB$, $CN=ND$이다. 두 직각삼각형 $OMA$, $ONC$에서 $OA=OC$ (반지름), $OM=ON$이고 두 삼각형은 직각삼각형이므로 피타고라스 정리로 $AM^2=OA^2-OM^2=OC^2-ON^2=CN^2$. 따라서 $AM=CN$, $AB=2AM=2CN=CD$이다. 반드시 성립하는 것은 ④뿐이다.",
-    "image": "assets/images/24_풍덕중_2학기_기말_중3_수학/q04_REPLACEMENT.svg",
+    "image": "assets/images/24_풍덕중_2학기_기말_중3_수학/q04-readable-v3.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
