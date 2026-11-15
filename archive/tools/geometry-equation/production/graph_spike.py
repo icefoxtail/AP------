@@ -543,6 +543,19 @@ def _mc_region_parts(features,vp):
             upper_at=min(upper,key=lambda point:abs(point[0]-mid));lower_at=min(lower,key=lambda point:abs(point[0]-mid))
             cx,cy=(upper_at[0]+lower_at[0])/2,(upper_at[1]+lower_at[1])/2
             labels.append(f'<text id="region-{region["id"]}-label" x="{cx:.12g}" y="{cy:.12g}" text-anchor="middle" font-size="12">{html.escape(region["label"])}</text>')
+        columns=region.get('integerColumns',[])
+        if columns:
+            top=max(float(Fraction(row['upper'])) for row in columns)
+            label_y=top+(vp.yMax-top)*.35
+            for index,row in enumerate(columns):
+                ident=f'region-{region["id"]}-guide-{row["x"]}'
+                sx,low=vp.screen((row['x'],float(Fraction(row['lower']))))
+                _,high=vp.screen((row['x'],float(Fraction(row['upper']))))
+                _,text_y=vp.screen((row['x'],label_y))
+                style=('data-role="guide" stroke="#8a8a8a" stroke-width="0.8" stroke-dasharray="2 4"'
+                       if 0<index<len(columns)-1 else 'data-role="line" stroke="#111" stroke-width="1.6"')
+                labels.append(f'<line id="{ident}" {style} x1="{sx:.12g}" x2="{sx:.12g}" y1="{low:.12g}" y2="{high:.12g}"/>')
+                labels.append(f'<text id="{ident}-count" x="{sx:.12g}" y="{text_y:.12g}" text-anchor="middle" font-size="12">{row["count"]}</text>')
     return fills,labels
 
 def _mc_row_y(row,x_value):

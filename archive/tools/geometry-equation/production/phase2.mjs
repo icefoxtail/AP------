@@ -1609,6 +1609,17 @@ function multiCurveSpec(plan,id){
       });
     };
     objects.push({id:'region-'+region.id,kind:'GRAPH_REGION',fill:region.fill,domain:[from,to],upper:rowsOf(region.upper),lower:rowsOf(region.lower),...label});
+    if(region.integerColumns){
+      const top=Math.max(...region.integerColumns.map(row=>exactValue(row.upper)));
+      const labelY=top+(v[3]-top)*.35;
+      for(const [index,{x,lower,upper,count}] of region.integerColumns.entries()){
+        const id='region-'+region.id+'-guide-'+x;
+        const interior=index>0&&index<region.integerColumns.length-1;
+        objects.push({id,kind:'SEGMENT',from:[x,exactValue(lower)],to:[x,exactValue(upper)],...(interior?{guide:true}:{})});
+        objects.push({id:id+'-count',kind:'GRAPH_ANNOTATION',text:String(count),at:[x,labelY],math:true,
+          priority:0,directions:['N'],gaps:[8,12,20],allowSuppress:false});
+      }
+    }
   }
   return {id,visualType:'function_graph',viewport:{...graphViewport(v,canvas),...((p.axisRatio??1)===1?{equalUnits:true}:{}),...(p.axisScale!==undefined?{declaredScale:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts({axisTickValues:p.axisTickValues??{x:[],y:[]}}),...(marks.length?{multiCurveMarks:marks}:{})},objects};
 }
@@ -1844,6 +1855,7 @@ const CONTAINER_FILL_CONTRACT=` CONTAINER FILL FIGURES (container-fill-figure-v1
     extendedContract+=SOLID_FIGURE_CONTRACT;
     extendedContract+=SET_DIAGRAM_CONTRACT;
     extendedContract+=MULTI_CURVE_CONTRACT;
+    extendedContract+=' An optional integerColumns:true on a multi-curve between region writes the count in every integer column between the two inclusive walls without drawing individual points. Use two EXPONENTIAL curves of the same base and rate, 2 to 8 columns with integer x limits, and integer exponents at those x positions. The engine computes exact bounds and floor(upper)-ceil(lower)+1 in each column and never prints their sum. Each count is drawn above its own segment; the two walls are solid and the interior columns are dotted.';
     extendedContract+=' MULTI-CURVE EXPONENTIAL: an EXPONENTIAL row has id, kind, base (integer string 2 to 1000), coefficients:[A,k,C] (exact rationals; A,k nonzero), optional shiftX (exact rational, default zero), and an explicit finite domain. Draws y=A*base^(k*(x-shiftX))+C on the stated span, with the usual curve label, color, style and endpoint options and a required graphPlan.viewport. This display interval does not add source endpoint marks unless the author requests them. Inverses and abs are unsupported for this kind.';
     extendedContract+=' OBLIQUE RATIONAL (multi-curve-figure-v1): a RATIONAL curve may carry a quadratic numerator [a0,a1,a2] with a2 nonzero, y=(a0+a1x+a2x^2)/(d0+d1x). It has the vertical asymptote x=p (dashed, with its text) but no horizontal one; the oblique asymptote y=qx+r, q=a2/d1, is not drawn by the curve: draw it as a dashed LINE curve of the same figure. a2=0 is MULTI_CURVE_COEFFICIENT_INVALID (use the linear numerator), a numerator that vanishes at the pole is MULTI_CURVE_RATIONAL_DEGENERATE, abs:true is MULTI_CURVE_COEFFICIENT_INVALID and a curve with inverseOf pointing at it is MULTI_CURVE_INVERSE_UNSUPPORTED. Use it only when the problem itself is that function (it is outside the high-school graph syllabus), never as a detour of a solution.';
     extendedContract+=CONTAINER_FILL_CONTRACT;

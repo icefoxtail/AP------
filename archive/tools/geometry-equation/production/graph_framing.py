@@ -4573,6 +4573,7 @@ def multi_curve_source(plan):
             source=by_id.get(inverse_of) if isinstance(inverse_of,str) else None
             if source is None or source.get('inverseOf') is not None:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
             if 'kind' in entry and entry['kind'] not in MULTI_CURVE_KINDS:raise ValueError('MULTI_CURVE_KIND_INVALID:'+ident)
+            if entry.get('kind')=='EXPONENTIAL':raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
             curve=_mc_inverse_curve(entry,ident,source,_mc_look(entry,ident,True))
             curve['intervalGiven']='domain' in entry
             if 'domain' in entry:curve['interval']=_mc_interval_fractions(entry['domain'],'MULTI_CURVE_DOMAIN_INVALID:'+ident)
@@ -4754,7 +4755,7 @@ def _mc_row(curve):
     return row
 
 # ---- (G18c) shaded regions of a multi-curve figure: between two drawn curves, under a curve, or a half-plane / quadrant piece that runs to the frame ----
-MULTI_CURVE_REGION_FIELDS={'id','between','under','from','to','halfPlane','and','fill','label'}
+MULTI_CURVE_REGION_FIELDS={'id','between','under','from','to','halfPlane','and','fill','label','integerColumns'}
 MULTI_CURVE_MAX_REGIONS=4
 MULTI_CURVE_HALF_PLANE_OPS=('<','<=','>','>=')
 MULTI_CURVE_REGION_SAMPLES=41
@@ -4778,6 +4779,29 @@ def _mc_region_boundary(curve,ident,region_id,start,end):
     if curve['kind']=='RATIONAL':
         pole=-curve['denominator'][0]/curve['denominator'][1]
         if start<=pole<=end:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+ident)
+
+def _mc_integer_columns(region_id, curves, start, end):
+    # Same base and rate make the difference a constant plus one monotone exponential.
+    # Exact positivity at both walls therefore proves the upper/lower order throughout.
+    code='GRAPH_REGION_INTEGER_COLUMNS_INVALID:'+region_id
+    if (any(curve=='axis' or curve['kind']!='EXPONENTIAL' for curve in curves)
+        or len({(curve['base'],curve['coefficients'][1]) for curve in curves})!=1
+        or start.denominator!=1 or end.denominator!=1 or not 2<=end-start+1<=8):
+        raise ValueError(code)
+    columns=[]
+    for x in range(int(start),int(end)+1):
+        values=[]
+        for curve in curves:
+            a,k,c=curve['coefficients']
+            exponent=k*(x-curve['shiftX'])
+            if exponent.denominator!=1:raise ValueError(code)
+            values.append(a*Fraction(curve['base'])**int(exponent)+c)
+        lower,upper=values
+        if lower>=upper:raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
+        count=math.floor(upper)-math.ceil(lower)+1
+        if not 1<=count<=9999:raise ValueError(code)
+        columns.append({'x':x,'lower':str(lower),'upper':str(upper),'count':count})
+    return columns
 
 def _mc_regions(plan,curves,viewport):
     """The frozen rows of graphPlan.regions (G18c): BETWEEN {upper,lower,from,to} (two curves, or a curve and 'axis'), or HALF_PLANE {box} (a quadrant piece cut by
@@ -4804,6 +4828,8 @@ def _mc_regions(plan,curves,viewport):
         if len(shapes)!=1:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
         row={'id':region_id,'fill':fill}
         if label is not None:row['label']=label
+        if 'integerColumns' in entry and (entry['integerColumns'] is not True or shapes[0]!='between' or label is not None):
+            raise ValueError('GRAPH_REGION_INTEGER_COLUMNS_INVALID:'+region_id)
         if shapes[0]=='halfPlane':
             if 'from' in entry or 'to' in entry:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
             sides=[entry['halfPlane']]
@@ -4848,6 +4874,7 @@ def _mc_regions(plan,curves,viewport):
         if len(signs)>1:raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
         upper,lower=(names[0],names[1]) if signs=={True} else (names[1],names[0])
         row.update({'kind':'BETWEEN','upper':upper,'lower':lower,'from':_mc_text(start),'to':_mc_text(end)})
+        if entry.get('integerColumns') is True:row['integerColumns']=_mc_integer_columns(region_id,[by_id.get(lower,'axis'),by_id.get(upper,'axis')],start,end)
         rows.append(row)
     return rows
 

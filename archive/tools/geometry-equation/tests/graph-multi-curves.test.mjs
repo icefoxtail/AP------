@@ -213,3 +213,41 @@ test('Maesan Q14 retains its exact exponential and quadratic on one frame', asyn
     assert.equal(reply.result.code,code,JSON.stringify(reply.result));
   }
 });
+
+test('Maesan Q24 observes exact region columns without plotting the individual integer points',async()=>{
+  const graphPlan={
+    family:'multi-curve',viewport:[0,7.6,-135,120],axisScale:{x:32,y:1},
+    curves:[
+      {id:'f',kind:'EXPONENTIAL',base:'2',coefficients:['1','1','3'],shiftX:'1',domain:['4','7']},
+      {id:'g',kind:'EXPONENTIAL',base:'2',coefficients:['-1','1','15/2'],domain:['4','7']},
+    ],
+    axisTickValues:{x:['4','5','6','7'],y:[]},
+    regions:[{id:'band',between:['f','g'],from:'4',to:'7',fill:'LIGHT',integerColumns:true}],
+  };
+  const call=async(payload,options)=>{
+    const response=await pythonWorker(payload,options);
+    assert.equal(response.status,'OK',JSON.stringify(response.result));
+    return response.result;
+  };
+  const framed=(await call({action:'frame_graph',graphPlan})).graphPlan;
+  const model=await call({action:'graph',graphPlan:framed});
+  const expected=[
+    {x:4,lower:'-17/2',upper:'11',count:20},{x:5,lower:'-49/2',upper:'19',count:44},
+    {x:6,lower:'-113/2',upper:'35',count:92},{x:7,lower:'-241/2',upper:'67',count:188},
+  ];
+  assert.deepEqual(framed.multiCurveFeatures.regions[0].integerColumns,expected);
+  assert.doesNotMatch(model.svg,/<circle\b|>344</);
+  const spec=specFor({capability:'multi-curve-figure-v1',graphPlan:framed,caption:'두 지수함수 사이의 정수점'},model,'q24');
+  const columns=spec.objects.filter(({id,kind})=>id.startsWith('region-band-guide-')&&kind==='SEGMENT');
+  assert.deepEqual(columns.map(row=>[row.from[0],row.guide??false]),[[4,false],[5,true],[6,true],[7,false]]);
+  const audit=svg=>call({action:'modelBinding',graphPlan:framed,svg,transform:model.transform},{script:observerScript});
+  assert.equal((await audit(model.svg)).status,'PASS');
+  const wrongNumber=model.svg.replace('>44</text>','>344</text>');
+  assert.ok((await audit(wrongNumber)).errors.includes('GRAPH_REGION_INTEGER_COLUMN_COUNT:region-band-guide-5'));
+  const wrongWall=model.svg.replace(/(id="region-band-guide-7"[^>]*y2=")([^"]+)/,
+    (_all,before,number)=>before+(Number(number)-3));
+  assert.ok((await audit(wrongWall)).errors.includes('GRAPH_REGION_INTEGER_COLUMN_GEOMETRY:region-band-guide-7'));
+  const wrongRate={...graphPlan,curves:[graphPlan.curves[0],{...graphPlan.curves[1],coefficients:['-1/128','2','15/2']}]};
+  const refused=await pythonWorker({action:'frame_graph',graphPlan:wrongRate});
+  assert.equal(refused.result.code,'GRAPH_REGION_INTEGER_COLUMNS_INVALID:band');
+});

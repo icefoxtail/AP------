@@ -4834,7 +4834,7 @@ def _mc_obs_inverse_definition(source,ident):
         return {'kind':'Y_OF_X','coefficients':[o*o*q2-c0/c1,-2*o*q2,q2]}
     return None
 
-MC_REGION_FIELDS={'id','between','under','from','to','halfPlane','and','fill','label'}
+MC_REGION_FIELDS={'id','between','under','from','to','halfPlane','and','fill','label','integerColumns'}
 
 def _mc_region_expected(plan,entry,by_id,viewport):
     """(G18c) One declared region rebuilt from the plan's own fields: ('BETWEEN',names,start,end,[upper,lower]) with the upper / lower fixed by this observer's own
@@ -4885,7 +4885,63 @@ def _mc_region_expected(plan,entry,by_id,viewport):
     order=[0,1] if signs=={True} else [1,0]
     return ('BETWEEN',[names[order[0]],names[order[1]]],start,end,[lambda x_value,c=boundaries[order[0]]:value(c,x_value),lambda x_value,c=boundaries[order[1]]:value(c,x_value)])
 
-def multi_curve_region_errors(plan,transform,root,by_id,features):
+def _mc_obs_integer_columns(region_id,curves,left,right):
+    error='GRAPH_REGION_INTEGER_COLUMNS_INVALID:'+region_id
+    if (any(not curve or curve['kind']!='EXPONENTIAL' for curve in curves)
+        or len({(curve['base'],curve['c'][1]) for curve in curves})!=1
+        or left.denominator!=1 or right.denominator!=1 or not 2<=right-left+1<=8):
+        raise ValueError(error)
+    rows=[]
+    for x in range(int(left),int(right)+1):
+        values=[]
+        for curve in curves:
+            a,k,c=(S.Rational(term.numerator,term.denominator) for term in curve['c'])
+            shift=curve['shiftX']
+            exponent=k*(x-S.Rational(shift.numerator,shift.denominator))
+            if not exponent.is_Integer:raise ValueError(error)
+            values.append(c+a*S.Integer(curve['base'])**exponent)
+        low,high=values
+        if low>=high:raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
+        count=int(S.floor(high)-S.ceiling(low)+1)
+        if not 1<=count<=9999:raise ValueError(error)
+        rows.append({'x':x,'lower':str(low),'upper':str(high),'count':count})
+    return rows
+
+def _mc_integer_column_artwork(region_id,root,transform,columns,model):
+    errors=[];ox,oy,sx,sy,scale=(transform[key] for key in ('originX','originY','sx','sy','displayScale'))
+    prefix='region-'+region_id+'-guide-'
+    nodes=[node for node in root.iter() if (node.get('id') or '').startswith(prefix)]
+    ids=sorted([prefix+str(row['x'])+suffix for row in columns for suffix in ('','-count')])
+    if sorted(node.get('id') for node in nodes)!=ids:
+        return ['GRAPH_REGION_INTEGER_COLUMN_INVENTORY:'+region_id]
+    by_id={node.get('id'):node for node in nodes}
+    for index,row in enumerate(columns):
+        x=row['x'];guide_id=prefix+str(x);node=by_id[guide_id]
+        want_x=ox+sx*x;want_low=oy-sy*float(Fraction(row['lower']));want_high=oy-sy*float(Fraction(row['upper']))
+        got=[float(node.get(key,'inf')) for key in ('x1','y1','x2','y2')]
+        target=(want_x,want_low,want_x,want_high)
+        style=('guide','#8a8a8a','2 4') if 0<index<len(columns)-1 else ('line','#111',None)
+        if (node.tag.split('}')[-1]!='line'
+            or tuple(node.get(key) for key in ('data-role','stroke','stroke-dasharray'))!=style
+            or any(not abs(a-b)*scale<=.35 for a,b in zip(got,target))):
+            errors.append('GRAPH_REGION_INTEGER_COLUMN_GEOMETRY:'+guide_id)
+        label_id=guide_id+'-count';label=by_id[label_id];text=str(row['count'])
+        box=_region_label_box(by_id,label_id)
+        if model:
+            shown=label.tag.split('}')[-1]=='text' and ''.join(label.itertext()).strip()==text
+        else:
+            glyphs=_ov_glyph_codes(label);codes=_ov_label_codes(text)
+            shown=len(glyphs)==len(codes) and all(glyph in allowed for glyph,allowed in zip(glyphs,codes))
+        if not shown:errors.append('GRAPH_REGION_INTEGER_COLUMN_COUNT:'+guide_id)
+        if box is None or abs(box[0]+box[2]/2-want_x)>.4*sx or box[1]+box[3]>=want_high:
+            errors.append('GRAPH_REGION_INTEGER_COLUMN_OWNER:'+guide_id)
+    if not model:
+        axes=[node for node in root.iter() if node.get('data-role')=='axis' and node.get('data-axis')=='x']
+        if len(axes)!=1 or any(not abs(float(axes[0].get(key,'inf'))-oy)*scale<=.35 for key in ('y1','y2')):
+            errors.append('GRAPH_REGION_INTEGER_COLUMN_X_AXIS:'+region_id)
+    return errors
+
+def multi_curve_region_errors(plan,transform,root,by_id,features,model=False):
     """(G18c) Independent check of graphPlan.regions on a multi-curve figure: each region is rebuilt from the plan's own fields; the fill path in the FINAL SVG must follow
     both boundary curves between from and to (or fill exactly the frame piece of a half-plane), be painted beneath every stroke, carry the declared fill, hold its label
     inside, and no undeclared fill may be drawn. The frozen rows must say the same."""
@@ -4907,7 +4963,15 @@ def multi_curve_region_errors(plan,transform,root,by_id,features):
         region_id=entry.get('id')
         if not isinstance(region_id,str):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
         declared_ids.add(region_id)
-        try:expected=_mc_region_expected(plan,entry,by_id,plan['viewport'])
+        try:
+            expected=_mc_region_expected(plan,entry,by_id,plan['viewport'])
+            columns=None
+            if 'integerColumns' in entry:
+                if (entry['integerColumns'] is not True or 'between' not in entry or expected[0]!='BETWEEN'
+                    or entry.get('label') is not None):
+                    raise ValueError('GRAPH_REGION_INTEGER_COLUMNS_INVALID:'+region_id)
+                upper,lower=expected[1]
+                columns=_mc_obs_integer_columns(region_id,[by_id.get(lower),by_id.get(upper)],expected[2],expected[3])
         except (ValueError,KeyError,TypeError,ZeroDivisionError) as error:
             errors.append(str(error) if isinstance(error,ValueError) and str(error).startswith('GRAPH_REGION') else 'GRAPH_REGION_INVENTORY_MISMATCH:'+region_id);continue
         fill=entry.get('fill','LIGHT')
@@ -4915,7 +4979,8 @@ def multi_curve_region_errors(plan,transform,root,by_id,features):
         row=frozen_by.get(region_id)
         if row is None:errors.append('GRAPH_REGION_INVENTORY_MISMATCH:'+region_id)
         else:
-            same=row.get('fill')==fill and row.get('label')==entry.get('label') and row.get('kind')==expected[0]
+            same=(row.get('fill')==fill and row.get('label')==entry.get('label')
+                  and row.get('kind')==expected[0] and row.get('integerColumns')==columns)
             try:
                 if expected[0]=='BETWEEN':
                     same=same and row.get('upper')==expected[1][0] and row.get('lower')==expected[1][1] and _pp_same(_pp_exact(row.get('from')),expected[2]) and _pp_same(_pp_exact(row.get('to')),expected[3])
@@ -4953,6 +5018,8 @@ def multi_curve_region_errors(plan,transform,root,by_id,features):
                 band=max(abs(yu-yl),1e-9)
                 if not _region_inside(polygon,(x,(yu+yl)/2)):errors.append('GRAPH_REGION_INTERIOR_MISSING:'+region_id)
                 if _region_inside(polygon,(x,yu+max(4*ytol,GRAPH_REGION_OUTSIDE*band))) or _region_inside(polygon,(x,yl-max(4*ytol,GRAPH_REGION_OUTSIDE*band))):errors.append('GRAPH_REGION_OUTSIDE_BOUNDARY:'+region_id)
+        if columns is not None:
+            errors.extend(_mc_integer_column_artwork(region_id,root,transform,columns,model))
         mine=order[id(node)]
         if any(order[id(other)]<mine and (other.tag.split('}')[-1] in {'line','circle','polyline','polygon'} or (other.tag.split('}')[-1]=='path' and other.get('data-mark')!='graph-region')) for other in root.iter()):
             errors.append('GRAPH_REGION_NOT_BENEATH_STROKES:'+region_id)
@@ -5074,7 +5141,7 @@ def rational_region_errors(plan,transform,root):
                 if found:break
     return sorted(set(errors))
 
-def multi_curve_audit(plan,svg,transform):
+def multi_curve_audit(plan,svg,transform,model=False):
     """Independent multi-curve audit: every curve and branch is rebuilt from the plan's exact definitions, the frozen
     inventory is compared, and every final SVG polyline tagged CURVE_<id>[_POS|_NEG|_L|_R] is checked against the recomputed
     curve, its draw interval, its branch side, its endpoints and each segment midpoint. The frozen sampling expression is
@@ -5106,6 +5173,7 @@ def multi_curve_audit(plan,svg,transform):
             if entry.get('inverseOf') is not None:
                 source=by_id.get(entry['inverseOf'])
                 if source is None or source.get('inverse') or source.get('abs'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+                if kind=='EXPONENTIAL':raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
                 definition=_mc_obs_inverse_definition(source,ident) if source['kind'] in MC_FREE_KINDS else None
                 if definition is None:
                     # a quadratic half: its inverse is a square root (own derivation, exact)
@@ -5448,7 +5516,7 @@ def multi_curve_audit(plan,svg,transform):
             if (node.get('data-curve')!=curve_id or node.get('data-endpoint')!=which or node.get('data-state')!=state
                 or node.get('fill')!=('#111' if state=='CLOSED' else '#fff') or node.get('stroke')!='black' or abs(radius-4)>1e-6 or abs(stroke_width-1)>1e-6
                 or abs(got[0]-want_x)*sx*display>.35 or abs(got[1]-want_y)*sy*display>.35):errors.append('MULTI_CURVE_DOMAIN_ENDPOINT_MISMATCH:'+ident)
-        errors.extend(multi_curve_region_errors(plan,transform,root,by_id,features))   # (G18c) shaded regions
+        errors.extend(multi_curve_region_errors(plan,transform,root,by_id,features,model))   # (G18c) shaded regions
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
         return {'status':status,'errors':sorted(set(errors+unsupported)),'curveCount':len(curves),'branchCount':sum(len(curve['branches']) for curve in curves),'mathMethod':'INDEPENDENT_EXACT_COEFFICIENTS_AND_FINAL_SVG_POLYLINES'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError) as error:
@@ -5551,7 +5619,7 @@ def _audit_family(plan,svg,transform,model=False):
     if plan.get('family')=='piecewise-discontinuous':
         return piecewise_discontinuous_audit(plan,svg,transform)
     if plan.get('family')=='multi-curve':
-        return multi_curve_audit(plan,svg,transform)
+        return multi_curve_audit(plan,svg,transform,model)
     if plan.get('family')=='piecewise-affine' and plan.get('shapeIntent')=='OVERVIEW':
         return piecewise_affine_overview_audit(plan,svg,transform)
     if plan.get('family')=='exponential-affine' and plan.get('shapeIntent')=='OVERVIEW':
