@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E062",
+  "status": "PASS_WITH_PROPOSALS",
+  "author": "meta_b",
+  "reviewer": "meta_c_resume_20261115",
+  "owner": "GPT_ROOT_E45FF6C78C51/C",
+  "at": "2026-11-15T00:12:22.818207+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js",
+  "sourceBlob": "eebeee847532101ab195eb497f120f6f6c717128",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E062.review.json",
+      "sha256": "607bc3c4776d3de73e9246dd3f170ebcd9e522b1ef41a51ce889aa4e914d0ba5"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E062.4slot.json",
+      "sha256": "a7796529e39a07f7a79f002bff722d2802ceb84959054ee32147bbe902644fca"
+    }
+  },
+  "sampledOrdinals": [
+    5,
+    11,
+    24
+  ],
+  "additionalChangedOrBoundaryOrdinals": [],
+  "scope": "METADATA_ONLY: listed source stems, choices, existing solutions, author decisions and exact 4slot quotes directly compared. Other completed author judgments reused; no full-exam rereview claim.",
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/assets/E062/05-image-1.png",
+      "sha256": "ee356a26b4bb78bd2f48a38d833458c43bde8685d223238f1d9160fb325e74a7"
+    }
+  ],
+  "findings": [
+    {
+      "ordinal": 5,
+      "status": "PASS_AFTER_REVISION",
+      "note": "정사각형원호의Q-A-B-P배치를직접확인. 명시대각선길이와좌표의역이동·순이동표준과정이므로2/B23보완수용."
+    },
+    {
+      "ordinal": 11,
+      "status": "PASS_AFTER_REVISION",
+      "note": "표준근호정리후명시된유리수결과에맞춰무리수항계수를0으로두는2/B23보완확인. exacttargetgap·유리수조건보존."
+    },
+    {
+      "ordinal": 24,
+      "status": "PASS",
+      "note": "정수인수두상수의곱-3에서네경우를모두만들어계수합을구하는중3판단수용. 정수조건과미정계수·합목표보존."
+    }
+  ],
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}
