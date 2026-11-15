@@ -4911,21 +4911,29 @@ def _mc_integer_column_artwork(region_id,root,transform,columns,model):
     errors=[];ox,oy,sx,sy,scale=(transform[key] for key in ('originX','originY','sx','sy','displayScale'))
     prefix='region-'+region_id+'-guide-'
     nodes=[node for node in root.iter() if (node.get('id') or '').startswith(prefix)]
-    ids=sorted([prefix+str(row['x'])+suffix for row in columns for suffix in ('','-count')])
-    if sorted(node.get('id') for node in nodes)!=ids:
-        return ['GRAPH_REGION_INTEGER_COLUMN_INVENTORY:'+region_id]
+    expected_ids=[]
     by_id={node.get('id'):node for node in nodes}
+    def line_matches(node,style,target):
+        if node is None or node.tag.split('}')[-1]!='line':return False
+        if tuple(node.get(key) for key in ('data-role','stroke','stroke-dasharray'))!=style:return False
+        actual=[float(node.get(key,'inf')) for key in ('x1','y1','x2','y2')]
+        return all(abs(a-b)*scale<=.35 for a,b in zip(actual,target))
     for index,row in enumerate(columns):
-        x=row['x'];guide_id=prefix+str(x);node=by_id[guide_id]
-        want_x=ox+sx*x;want_low=oy-sy*float(Fraction(row['lower']));want_high=oy-sy*float(Fraction(row['upper']))
-        got=[float(node.get(key,'inf')) for key in ('x1','y1','x2','y2')]
-        target=(want_x,want_low,want_x,want_high)
-        style=('guide','#8a8a8a','2 4') if 0<index<len(columns)-1 else ('line','#111',None)
-        if (node.tag.split('}')[-1]!='line'
-            or tuple(node.get(key) for key in ('data-role','stroke','stroke-dasharray'))!=style
-            or any(not abs(a-b)*scale<=.35 for a,b in zip(got,target))):
-            errors.append('GRAPH_REGION_INTEGER_COLUMN_GEOMETRY:'+guide_id)
-        label_id=guide_id+'-count';label=by_id[label_id];text=str(row['count'])
+        x=row['x'];guide_id=prefix+str(x)
+        low,high=map(Fraction,(row['lower'],row['upper']))
+        want_x=ox+sx*x;want_low=oy-sy*float(low);want_high=oy-sy*float(high)
+        interior=0<index<len(columns)-1
+        style=('guide','#8a8a8a','2 4') if interior else ('line','#111',None)
+        halves=[(guide_id,want_low,want_high)]
+        if interior and low<0<high:
+            halves=[(guide_id,want_low,oy),(guide_id+'-upper',oy,want_high)]
+        for ident,start_y,end_y in halves:
+            expected_ids.append(ident)
+            if not line_matches(by_id.get(ident),style,(want_x,start_y,want_x,end_y)):
+                errors.append('GRAPH_REGION_INTEGER_COLUMN_GEOMETRY:'+ident)
+        label_id=guide_id+'-count';label=by_id.get(label_id);text=str(row['count'])
+        expected_ids.append(label_id)
+        if label is None:continue
         box=_region_label_box(by_id,label_id)
         if model:
             shown=label.tag.split('}')[-1]=='text' and ''.join(label.itertext()).strip()==text
@@ -4935,6 +4943,8 @@ def _mc_integer_column_artwork(region_id,root,transform,columns,model):
         if not shown:errors.append('GRAPH_REGION_INTEGER_COLUMN_COUNT:'+guide_id)
         if box is None or abs(box[0]+box[2]/2-want_x)>.4*sx or box[1]+box[3]>=want_high:
             errors.append('GRAPH_REGION_INTEGER_COLUMN_OWNER:'+guide_id)
+    if sorted(node.get('id') for node in nodes)!=sorted(expected_ids):
+        errors.append('GRAPH_REGION_INTEGER_COLUMN_INVENTORY:'+region_id)
     if not model:
         axes=[node for node in root.iter() if node.get('data-role')=='axis' and node.get('data-axis')=='x']
         if len(axes)!=1 or any(not abs(float(axes[0].get(key,'inf'))-oy)*scale<=.35 for key in ('y1','y2')):

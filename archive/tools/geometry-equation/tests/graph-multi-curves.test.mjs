@@ -239,7 +239,8 @@ test('Maesan Q24 observes exact region columns without plotting the individual i
   assert.doesNotMatch(model.svg,/<circle\b|>344</);
   const spec=specFor({capability:'multi-curve-figure-v1',graphPlan:framed,caption:'두 지수함수 사이의 정수점'},model,'q24');
   const columns=spec.objects.filter(({id,kind})=>id.startsWith('region-band-guide-')&&kind==='SEGMENT');
-  assert.deepEqual(columns.map(row=>[row.from[0],row.guide??false]),[[4,false],[5,true],[6,true],[7,false]]);
+  assert.deepEqual(columns.map(row=>[row.from[0],row.guide??false]),[[4,false],[5,true],[5,true],[6,true],[6,true],[7,false]]);
+  assert.deepEqual(columns.filter(row=>row.from[0]===5).map(row=>[row.from[1],row.to[1]]),[[-24.5,0],[0,19]]);
   const audit=svg=>call({action:'modelBinding',graphPlan:framed,svg,transform:model.transform},{script:observerScript});
   assert.equal((await audit(model.svg)).status,'PASS');
   const wrongNumber=model.svg.replace('>44</text>','>344</text>');

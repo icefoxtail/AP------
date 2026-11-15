@@ -1615,7 +1615,11 @@ function multiCurveSpec(plan,id){
       for(const [index,{x,lower,upper,count}] of region.integerColumns.entries()){
         const id='region-'+region.id+'-guide-'+x;
         const interior=index>0&&index<region.integerColumns.length-1;
-        objects.push({id,kind:'SEGMENT',from:[x,exactValue(lower)],to:[x,exactValue(upper)],...(interior?{guide:true}:{})});
+        const low=exactValue(lower),high=exactValue(upper);
+        const split=interior&&low<0&&high>0;
+        objects.push({id,kind:'SEGMENT',from:[x,low],to:[x,split?0:high],...(interior?{guide:true}:{})});
+        // At a crossing, the dotted segments share the x-axis tick as their endpoint.
+        if(split)objects.push({id:id+'-upper',kind:'SEGMENT',from:[x,0],to:[x,high],guide:true});
         objects.push({id:id+'-count',kind:'GRAPH_ANNOTATION',text:String(count),at:[x,labelY],math:true,
           priority:0,directions:['N'],gaps:[8,12,20],allowSuppress:false});
       }

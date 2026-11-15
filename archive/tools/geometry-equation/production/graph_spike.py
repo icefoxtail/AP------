@@ -549,12 +549,19 @@ def _mc_region_parts(features,vp):
             label_y=top+(vp.yMax-top)*.35
             for index,row in enumerate(columns):
                 ident=f'region-{region["id"]}-guide-{row["x"]}'
-                sx,low=vp.screen((row['x'],float(Fraction(row['lower']))))
-                _,high=vp.screen((row['x'],float(Fraction(row['upper']))))
+                lower,upper=map(Fraction,(row['lower'],row['upper']))
+                sx,low=vp.screen((row['x'],float(lower)))
+                _,high=vp.screen((row['x'],float(upper)))
                 _,text_y=vp.screen((row['x'],label_y))
+                interior=0<index<len(columns)-1
                 style=('data-role="guide" stroke="#8a8a8a" stroke-width="0.8" stroke-dasharray="2 4"'
-                       if 0<index<len(columns)-1 else 'data-role="line" stroke="#111" stroke-width="1.6"')
-                labels.append(f'<line id="{ident}" {style} x1="{sx:.12g}" x2="{sx:.12g}" y1="{low:.12g}" y2="{high:.12g}"/>')
+                       if interior else 'data-role="line" stroke="#111" stroke-width="1.6"')
+                spans=[(ident,low,high)]
+                if interior and lower<0<upper:
+                    _,axis_y=vp.screen((row['x'],0))
+                    spans=[(ident,low,axis_y),(ident+'-upper',axis_y,high)]
+                for name,start_y,end_y in spans:
+                    labels.append(f'<line id="{name}" {style} x1="{sx:.12g}" x2="{sx:.12g}" y1="{start_y:.12g}" y2="{end_y:.12g}"/>')
                 labels.append(f'<text id="{ident}-count" x="{sx:.12g}" y="{text_y:.12g}" text-anchor="middle" font-size="12">{row["count"]}</text>')
     return fills,labels
 
