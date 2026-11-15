@@ -1,0 +1,963 @@
+{
+  "schemaVersion": "archive-m2s1-scoped-four-slot-rebind-v1",
+  "sourceCommit": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+  "oldReviewCommit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+  "newFullMathematicalReview": false,
+  "newFullSemanticApproval": false,
+  "scope": "Six changed current-source UID bindings; reuse exact independent source repairs and original complete four-slot review.",
+  "independentStatus": "PENDING",
+  "rows": [
+    {
+      "examId": "E007",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "ordinal": 22,
+      "questionUid": "qid_v1_8171d41b62f36fba0ba61a42a12330feec6722317af1c011cdf1abc96eac2c91",
+      "sourceGitBlobSha": "5457f28dd7e7c32f5a05b090c7df9c33096a4d5c",
+      "originalNativeRef": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E007/amendments/resume-prerequisite-scope-r1/four-slot.json",
+        "sha256": "17c6677b1c194eaa31b5763a9874570fc1586e851e1a6fa546f84acb882faad1"
+      },
+      "repairRef": {
+        "commit": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+        "path": ".archive-meta-register/evidence/m2s1-closeout-20261115/source-solution-repairs.json",
+        "sha256": "232c5a2cf38e6ad2f1fdbe9367a8751e3bdc617e94f63d27bc0a247c5b6694c2",
+        "afterSolutionSha256": "0d1a7788f2bdd121da9f01c6ba0b1654ddd24415d15370e32a2a27b1fd591939"
+      },
+      "oldPayloadSha256": "b8bd2e5cd2b8c776942568b1f5404e476b4b655888bb41db5f0e9ca968973e9e",
+      "currentPayloadSha256": "609ba1a9b2acfa18cb623a1d735f838c791758faeff04d7c85f4ba7e4f5041a2",
+      "oldFingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2445df9ce5832dd330e90366c3a63943ba579830d7858329c79e618dbd8804b5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "15c0b986ac6b05a20cc2347290ab510c9f241df648c56bf38d1cc4ccf04e83fd"
+        }
+      ],
+      "currentFingerprints": {
+        "QBODY": "2445df9ce5832dd330e90366c3a63943ba579830d7858329c79e618dbd8804b5",
+        "QFULL": "2f58b4a360d24e5aa1e6ba88d7d7f8cf3f1e9e9aba00e2a90183fdcaa11f2e42"
+      },
+      "beforeSlots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "stem",
+            "quote": "$2^a\\times11\\times5^9$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "지수",
+            "termId": 276,
+            "src": "stem",
+            "quote": "자연수 $a$의 값을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "termId": 277,
+            "src": "solution",
+            "quote": "$2^a\\times11\\times5^9=11\\times2^{a-9}\\times10^9$",
+            "evidenceType": "IMPLIED",
+            "justification": "2와5의아홉쌍을10⁹으로묶는다."
+          },
+          {
+            "term": "자릿수",
+            "termId": 559,
+            "src": "solution",
+            "quote": "11자리의 수이려면",
+            "evidenceType": "IMPLIED",
+            "justification": "십진11자리의값을10거듭제곱상하한으로변환."
+          },
+          {
+            "term": "경우분류",
+            "termId": 293,
+            "src": "solution",
+            "quote": "$a<9$이면",
+            "evidenceType": "IMPLIED",
+            "justification": "a≥9와a<9에서10⁹묶기의가능성을나누어판정."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "가능한 자연수 $a$"
+          },
+          {
+            "term": "자릿수",
+            "termId": 559,
+            "src": "stem",
+            "quote": "11자리의 자연수"
+          }
+        ]
+      },
+      "afterSlots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "termId": 20,
+            "src": "stem",
+            "quote": "$2^a\\times11\\times5^9$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "지수",
+            "termId": 276,
+            "src": "stem",
+            "quote": "자연수 $a$의 값을 모두"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "termId": 277,
+            "src": "solution",
+            "quote": "$2^a\\times11\\times5^9=11\\times2^{a-9}\\times10^9$",
+            "evidenceType": "IMPLIED",
+            "justification": "2와5의아홉쌍을10⁹으로묶는다."
+          },
+          {
+            "term": "자릿수",
+            "termId": 559,
+            "src": "solution",
+            "quote": "11자리의 수이려면",
+            "evidenceType": "IMPLIED",
+            "justification": "십진11자리의값을10거듭제곱상하한으로변환."
+          },
+          {
+            "term": "경우분류",
+            "termId": 293,
+            "src": "solution",
+            "quote": "$a<9$이면",
+            "evidenceType": "IMPLIED",
+            "justification": "a≥9와a<9에서10⁹묶기의가능성을나누어판정."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "termId": 1,
+            "src": "stem",
+            "quote": "가능한 자연수 $a$"
+          },
+          {
+            "term": "자릿수",
+            "termId": 559,
+            "src": "stem",
+            "quote": "11자리의 자연수"
+          }
+        ]
+      },
+      "currentSolution": "$a\\ge9$이면\n$2^a\\times11\\times5^9=11\\times2^{a-9}\\times10^9$이다.\n11자리의 수이려면\n$10\\le11\\times2^{a-9}<100$\n이어야 한다. 따라서 $a-9=0,1,2,3$이다.\n$a<9$이면 가장 큰 경우에도 $5,500,000,000$ 이하이므로 11자리가 아니다.\n가능한 자연수는 $9,10,11,12$이다.",
+      "methodOrQuoteChanged": false
+    },
+    {
+      "examId": "E010",
+      "sourcePath": "archive/exams/original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+      "ordinal": 8,
+      "questionUid": "qid_v1_8599eef554e954c99d2f8419dd0bfa76be96099c7eb6f2207330439a00d2084c",
+      "sourceGitBlobSha": "fabb21790ff7da755575901c837cfc434fc13ea7",
+      "originalNativeRef": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E010/four-slot.json",
+        "sha256": "1c5ede25ebe93e5f6f5ebb093f32de9863b2be7affbcaa98305528e09313007a"
+      },
+      "repairRef": {
+        "commit": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+        "path": ".archive-meta-register/evidence/m2s1-closeout-20261115/source-solution-repairs.json",
+        "sha256": "232c5a2cf38e6ad2f1fdbe9367a8751e3bdc617e94f63d27bc0a247c5b6694c2",
+        "afterSolutionSha256": "00f9bf2f607a2c05bb467094d4806226922e07eb481fcea81cde461a8007b0ee"
+      },
+      "oldPayloadSha256": "af827b4b1da380fcca06039823874faafb1b3946b2f6b3a944627ad2e8520b57",
+      "currentPayloadSha256": "474252ada8e5024dac9655bdf15862d8169a9b9ad8255d85835c31ff7c9ab9ba",
+      "oldFingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "eda939ebbde6f28069aaba9721b21ffe647010be494b8ddc4bacb9ea891b269b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fa715e778e910463b3275c682063a3327ae0977bfbcbe55c7bacf74c67812e74"
+        }
+      ],
+      "currentFingerprints": {
+        "QBODY": "eda939ebbde6f28069aaba9721b21ffe647010be494b8ddc4bacb9ea891b269b",
+        "QFULL": "10edfceb67e0c97e4efe1b9e1e30fe5243dd853f186f78f78baad051ac1bf9a4"
+      },
+      "beforeSlots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "stem",
+            "quote": "두 연립방정식"
+          },
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해가 서로 같을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a + b$의 값"
+          },
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$a + b$"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "solution",
+            "quote": "$2x+y=5$, $x+y=3$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "둘째 연립방정식에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "afterSlots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "stem",
+            "quote": "두 연립방정식"
+          },
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해가 서로 같을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$a + b$의 값"
+          },
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "$a + b$"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립방정식",
+            "termId": 67,
+            "src": "solution",
+            "quote": "$2x+y=5$와 $x+y=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 연립방정식의 공통해가 만족하는 두 일차방정식을 함께 사용한다."
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "둘째 연립방정식에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "currentSolution": "두 연립방정식의 공통해는 $2x+y=5$와 $x+y=3$을 모두 만족하므로, 두 식을 변끼리 빼면 $x=2$, 따라서 $y=1$이다.\n$3x-2y=a$에 대입하면 $a=3(2)-2(1)=4$이다.\n같은 해를 둘째 연립방정식에 대입하면 $2b+1=5$이므로 $b=2$이다.\n따라서 $a+b=4+2=6$이고 정답은 ①이다.",
+      "methodOrQuoteChanged": true
+    },
+    {
+      "examId": "E034",
+      "sourcePath": "archive/exams/original/middle/m2/1final/22_매산중_1학기_기말_중2_수학.js",
+      "ordinal": 6,
+      "questionUid": "qid_v1_e65a2448463846d2f4b7e97807efad1e9cb9b2692a5c09406ecc45c241255548",
+      "sourceGitBlobSha": "ed8a2efdf35615ddd9a7f67b728d07ab05c15de9",
+      "originalNativeRef": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E034/four-slot.json",
+        "sha256": "6543e732caf18dc373ee151449192e5d2283b01bbee75388a453d0f3c498ac78"
+      },
+      "repairRef": {
+        "commit": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+        "path": ".archive-meta-register/evidence/m2s1-closeout-20261115/source-solution-repairs.json",
+        "sha256": "232c5a2cf38e6ad2f1fdbe9367a8751e3bdc617e94f63d27bc0a247c5b6694c2",
+        "afterSolutionSha256": "1f3e5e58b9844a9d62b3b833bf54e5908702fb54abf0ac85bd1010f4e7d6890b"
+      },
+      "oldPayloadSha256": "7a04f7d1bba61bd19d050ee88a538ffe32306c6124361af19228d7d3f13c0ce6",
+      "currentPayloadSha256": "ec87b3f784d86a2d8b146b9e4e43d539a131c830e1d5dd6da4ffda75ed48240b",
+      "oldFingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "690ad1e46cd880591892fc3b2f88827409d3d3c5597438fbd6ef2d7b547886b7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0db3ca8b4ecd20a0544d03d23c913c5e2619942a459711b9649105813d99b783"
+        }
+      ],
+      "currentFingerprints": {
+        "QBODY": "690ad1e46cd880591892fc3b2f88827409d3d3c5597438fbd6ef2d7b547886b7",
+        "QFULL": "8c2177f0b0186b117d983b8f488ca00ab0e54ca2f74abaf855de2b3661be98ad"
+      },
+      "beforeSlots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "연립방정식"
+          },
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$x + 5y = 2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "가감법",
+            "termId": 434,
+            "src": "solution",
+            "quote": "㉡에서 ㉠을 변끼리 빼면 $x$가 소거된다",
+            "evidenceType": "IMPLIED",
+            "justification": "공통해를 구하기 위해 동일계수 x항을 뺀다."
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "공통해 $(2, 0)$을 $2x + 3y = a$에 대입한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "afterSlots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "연립방정식"
+          },
+          {
+            "term": "일차방정식",
+            "termId": 64,
+            "src": "stem",
+            "quote": "$x + 5y = 2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "상수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "가감법",
+            "termId": 434,
+            "src": "solution",
+            "quote": "㉡에서 ㉠을 변끼리 빼면 $x$가 소거된다",
+            "evidenceType": "IMPLIED",
+            "justification": "공통해를 구하기 위해 동일계수 x항을 뺀다."
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "공통해 $(2, 0)$을 $2x + 3y = a$에 대입한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "currentSolution": "[키포인트] 세 일차방정식이 공통인 해를 가질 때에는, 미정계수가 포함되지 않은 두 일차방정식을 먼저 연립하여 해 $(x, y)$를 구한 뒤 미정계수가 있는 식에 대입한다.\n1단계 (조건 분석): 연립방정식 $\\begin{cases} 2x + 3y = a \\\\ x - 4y = 2 \\end{cases}$의 해가 $x + 5y = 2$를 만족하므로, 세 일차방정식의 해는 모두 같다.\n2단계 (공통해 구하기): 상수가 완전히 주어진 두 식을 연립한다.\n$\\begin{cases} x - 4y = 2 & \\cdots ㉠ \\\\ x + 5y = 2 & \\cdots ㉡ \\end{cases}$\n㉡에서 ㉠을 변끼리 빼면 $x$가 소거된다:\n$(x + 5y) - (x - 4y) = 2 - 2$\n$9y = 0 \\implies y = 0$\n3단계 ($x$값 구하기): $y = 0$을 ㉠에 대입하면\n$x - 4(0) = 2 \\implies x = 2$\n따라서 공통해는 $(x, y) = (2, 0)$이다.\n4단계 (상수 $a$ 결정): 공통해 $(2, 0)$을 $2x + 3y = a$에 대입한다:\n$a = 2(2) + 3(0) = 4 + 0 = 4$\n5단계 (결론): 따라서 상수 $a$의 값은 4이다.\n따라서 정답은 ④이다.",
+      "methodOrQuoteChanged": false
+    },
+    {
+      "examId": "E035",
+      "sourcePath": "archive/exams/original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+      "ordinal": 6,
+      "questionUid": "qid_v1_bf73519ee8c86e25805ec66ca2db0cd33bffdc238dddd8f3b6fa4d75bfb99684",
+      "sourceGitBlobSha": "0049fe463e63005ee621b950814b26221e6132ba",
+      "originalNativeRef": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E035/four-slot.json",
+        "sha256": "cf6835ce4e9c0edb554e815dd9a9ba7abfdd2832156d255d4bb192ea1ab3346d"
+      },
+      "repairRef": {
+        "commit": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+        "path": ".archive-meta-register/evidence/m2s1-closeout-20261115/source-solution-repairs.json",
+        "sha256": "232c5a2cf38e6ad2f1fdbe9367a8751e3bdc617e94f63d27bc0a247c5b6694c2",
+        "afterSolutionSha256": "b087954bb541b90924eebc6353426205336e91f7ce4532c81cd277b517251a7d"
+      },
+      "oldPayloadSha256": "12806ebbba32a33fd38928ecf95f4e23e31e627f1b8ae56afd1c0c946ffb7e1d",
+      "currentPayloadSha256": "11cefc2fc5c6947c059079bd4e70159b294275fa204654758fb15e6063e9806e",
+      "oldFingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6e2b09e771daedb67685e01c7f262f50b74d35f1b3391fa03014163ed23015d4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a603781221c92d0a5fe41b6ae031337ae7613910b683f7ac98738b9d1a8f44b3"
+        }
+      ],
+      "currentFingerprints": {
+        "QBODY": "6e2b09e771daedb67685e01c7f262f50b74d35f1b3391fa03014163ed23015d4",
+        "QFULL": "a64ddf569648b40c8aca58c4003afbda45b90d30020901bce959be52eae17824"
+      },
+      "beforeSlots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "\\begin{cases} ax+4y=3 \\\\ 3x-2y=2b \\end{cases}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건",
+            "termId": 394,
+            "src": "stem",
+            "quote": "두 수 $a,b$의 조건"
+          },
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "두 수 $a,b$"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "solution",
+            "quote": "두 직선이 서로 평행하고 서로 다른 직선이어야 한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "solution",
+            "quote": "평행하려면 $x,y$의 계수비가 같아야",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "상수항",
+            "termId": 697,
+            "src": "solution",
+            "quote": "상수항의 비도 같아야 한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해가 없을 때"
+          }
+        ]
+      },
+      "afterSlots": {
+        "given": [
+          {
+            "term": "연립일차방정식",
+            "termId": 568,
+            "src": "stem",
+            "quote": "\\begin{cases} ax+4y=3 \\\\ 3x-2y=2b \\end{cases}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건",
+            "termId": 394,
+            "src": "stem",
+            "quote": "두 수 $a,b$의 조건"
+          },
+          {
+            "term": "매개변수",
+            "termId": 308,
+            "src": "stem",
+            "quote": "두 수 $a,b$"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "termId": 180,
+            "src": "solution",
+            "quote": "두 직선이 서로 평행하고 서로 다른 직선이어야 한다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수",
+            "termId": 50,
+            "src": "solution",
+            "quote": "평행하려면 $x,y$의 계수비가 같아야",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "상수항",
+            "termId": 697,
+            "src": "solution",
+            "quote": "두 식의 좌변이 같으므로 두 직선이 완전히 같은 직선이 되려면 우변도 같아야 한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "동일한 x,y항의 좌변에 대응하는 상수 3과 -4b를 직접 비교한다. 2b로 나누지 않는다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "해",
+            "termId": 78,
+            "src": "stem",
+            "quote": "해가 없을 때"
+          }
+        ]
+      },
+      "currentSolution": "해가 없으려면 두 직선이 서로 평행하고 서로 다른 직선이어야 한다.\n\n두 식은\n\n$ax+4y=3$\n\n$3x-2y=2b$\n\n이다.\n\n평행하려면 $x,y$의 계수비가 같아야 하므로\n\n$\\dfrac a3=\\dfrac4{-2}$\n\n$\\dfrac a3=-2$\n\n$a=-6$이다.\n\n이때 첫째 식은 $-6x+4y=3$이다. 둘째 식의 양변에 $-2$를 곱하면 $-6x+4y=-4b$이다.\n\n두 식의 좌변이 같으므로 두 직선이 완전히 같은 직선이 되려면 우변도 같아야 한다. 따라서\n\n$3=-4b$\n\n$b=-\\dfrac34$이다.\n\n해가 없으려면 같은 직선은 아니어야 하므로\n\n$b\\ne-\\dfrac34$이다.\n\n따라서\n\n$a=-6,\\quad b\\ne-\\dfrac34$\n\n이고 정답은 ④이다.",
+      "methodOrQuoteChanged": true
+    },
+    {
+      "examId": "E037",
+      "sourcePath": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "ordinal": 17,
+      "questionUid": "qid_v1_9a118037d255406dd4b83c4a158ee3f1e5d4fb6a161432cc31feb258b430af8b",
+      "sourceGitBlobSha": "61aa989f31c9db4467573f3246aedf30492d8bd7",
+      "originalNativeRef": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E037/four-slot.json",
+        "sha256": "9d2f4000a1ab11ad3d373685aa429b953bcfe93b9b5f27b44286f4ab8d25be32"
+      },
+      "repairRef": {
+        "commit": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+        "path": ".archive-meta-register/evidence/m2s1-closeout-20261115/source-solution-repairs.json",
+        "sha256": "232c5a2cf38e6ad2f1fdbe9367a8751e3bdc617e94f63d27bc0a247c5b6694c2",
+        "afterSolutionSha256": "c0c9cf7143574501e1ae9eb1f49fcfc83bffec42473e9d6bc01bb08ef666bca1"
+      },
+      "oldPayloadSha256": "d2cf1fce38a88f84ea425319b66af3c1c1d56cd3823f6c3e719aa6d2e7f1d464",
+      "currentPayloadSha256": "49df343223d178f09ac33515f6a433a046526dc0091845ba94b611a4d5c4af1e",
+      "oldFingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7ed059ec6d49c6b5a98fe1d4d43873cf3575b66724872d786f1db1f3ea9ad68c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ecfece88f5189d3cc257632fd0d678c2dcdf2a4430c076c7f34d1f093bab37f3"
+        }
+      ],
+      "currentFingerprints": {
+        "QBODY": "7ed059ec6d49c6b5a98fe1d4d43873cf3575b66724872d786f1db1f3ea9ad68c",
+        "QFULL": "384895018fe5461e02ba7c82a5566ae036be13164fe9dee8c3d6a9fbf4846e52"
+      },
+      "beforeSlots": {
+        "given": [
+          {
+            "term": "마름모",
+            "termId": 164,
+            "src": "stem",
+            "quote": "마름모"
+          },
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "stem",
+            "quote": "두 대각선의 교점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle x + \\angle y$"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$\\angle x + \\angle y$"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "termId": 179,
+            "src": "solution",
+            "quote": "$\\angle \\text{BOC} = 90^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "solution",
+            "quote": "두 예각의 합은 $90^\\circ$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "afterSlots": {
+        "given": [
+          {
+            "term": "마름모",
+            "termId": 164,
+            "src": "stem",
+            "quote": "마름모"
+          },
+          {
+            "term": "교점",
+            "termId": 181,
+            "src": "stem",
+            "quote": "두 대각선의 교점"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "termId": 174,
+            "src": "stem",
+            "quote": "$\\angle x + \\angle y$"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "stem",
+            "quote": "$\\angle x + \\angle y$"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "termId": 179,
+            "src": "solution",
+            "quote": "$\\angle \\text{BOC} = 90^\\circ$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합",
+            "termId": 286,
+            "src": "solution",
+            "quote": "두 예각의 합은 $90^\\circ$이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "각이등분선",
+            "termId": 717,
+            "src": "solution",
+            "quote": "마름모의 대각선 $\\text{BD}$는 꼭짓각 $\\angle\\text{ABC}$를 이등분하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "마름모의 대각선이 꼭짓각을 이등분하므로 그림의 y를 직각삼각형 OBC의 각과 연결한다. 대변의 비를 다루는 각의이등분선정리는 사용하지 않는다."
+          }
+        ],
+        "condition": []
+      },
+      "currentSolution": "[키포인트] 마름모의 두 대각선은 서로를 수직이등분하므로 $\\angle \\text{BOC} = 90^\\circ$이다.\n1단계: 마름모의 두 대각선은 수직으로 만나므로 $\\angle \\text{BOC} = 90^\\circ$이다.\n2단계: 마름모의 대각선 $\\text{BD}$는 꼭짓각 $\\angle\\text{ABC}$를 이등분하므로 $\\angle\\text{ABO}=\\angle\\text{OBC}$이다. 그림에서 $\\angle y=\\angle\\text{ABO}$이므로 $\\angle\\text{OBC}=\\angle y$이다.\n3단계: 직각삼각형 $\\text{OBC}$에서 $\\angle\\text{BCO}=\\angle x$이고 두 예각의 합은 $90^\\circ$이다.\n$\\angle x + \\angle y = 90^\\circ$\n따라서 정답은 ④이다.",
+      "methodOrQuoteChanged": true
+    },
+    {
+      "examId": "E057",
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_왕의중_1학기_기말_중2_수학.js",
+      "ordinal": 19,
+      "questionUid": "qid_v1_74ee64d3d28eb489ca2870a2d344812048b0da42659eb078f6cb22ff53b346f0",
+      "sourceGitBlobSha": "0768f5034bc1e81d075d4e53f8980997cf6afadd",
+      "originalNativeRef": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E057/four-slot.json",
+        "sha256": "16832e4bad899a853affff4e396f966c996fb005bce6c5fa6842f2429530d3fb"
+      },
+      "repairRef": {
+        "commit": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+        "path": ".archive-meta-register/evidence/m2s1-closeout-20261115/E057-q19-current-source-recheck.json",
+        "sha256": "951fb4369f8b0bdca81ca1210ba66974dec57d3a8a7ed89f240b9ca899b11140",
+        "figure": {
+          "path": "archive/assets/images/20_왕의중_1학기_기말_중2_수학/q19-problem-v2.svg",
+          "sha256": "28400c26c45bae0015e7ddb39755516083784c4e8f33194872e8ed5c782ab97c",
+          "visualInspection": "Rendered with Sharp and inspected; no final equation or y-intercept is disclosed."
+        }
+      },
+      "oldPayloadSha256": "5bc370c0c691d0b52eaf653af52ef2129b44829056640054e4b3d0dcfbbb5eba",
+      "currentPayloadSha256": "eee751a210a8b086b600e22786aaa2a09223bfc6474149a8c077e4c2935d5026",
+      "oldFingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "13052bdaceea6bc5e6f3024570791c10edf2101be660c9a1dacd870493f1cb98"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "46aeffa61ecbe51a742c775dfb5622f7f88694ef677cf8f0194da15875bf5082"
+        }
+      ],
+      "currentFingerprints": {
+        "QBODY": "a5f4e6ae2cb2d0fdbfe2a663f6f5f1c0891e758b9c058b5313f7e22ea72545ed",
+        "QFULL": "9c30b2edd50e7f4599d8fb459f39da53c696fa850982dd174ba4f334993c8b2d"
+      },
+      "beforeSlots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수 $y=ax+b$"
+          },
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "두 점 $(2, 0)$, $(3, -1)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "stem",
+            "quote": "두 수 $a$와 $b$"
+          },
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "stem",
+            "quote": "두 수 $a$와 $b$"
+          },
+          {
+            "term": "곱",
+            "termId": 287,
+            "src": "stem",
+            "quote": "$ab$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기 $a=\\dfrac{-1-0}{3-2}=-1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "점 $(2,0)$을 대입",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "solution",
+            "quote": "$y$절편 $b$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "afterSlots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "termId": 90,
+            "src": "stem",
+            "quote": "일차함수 $y=ax+b$"
+          },
+          {
+            "term": "점",
+            "termId": 142,
+            "src": "stem",
+            "quote": "두 점 $(2, 0)$, $(3, -1)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "stem",
+            "quote": "두 수 $a$와 $b$"
+          },
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "stem",
+            "quote": "두 수 $a$와 $b$"
+          },
+          {
+            "term": "곱",
+            "termId": 287,
+            "src": "stem",
+            "quote": "$ab$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "termId": 150,
+            "src": "solution",
+            "quote": "기울기 $a=\\dfrac{-1-0}{3-2}=-1$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "termId": 53,
+            "src": "solution",
+            "quote": "점 $(2,0)$을 대입",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "y절편",
+            "termId": 649,
+            "src": "solution",
+            "quote": "$y$절편 $b$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "currentSolution": "[원문 조건 및 구할 대상]\n두 점 $(2,0)$, $(3,-1)$을 지나는 직선 $y=ax+b$에서 기울기 $a$와 $y$절편 $b$를 구해 곱 $ab$를 계산한다.\n\n[핵심 발상/공식]\n기울기 $a=\\dfrac{y\\text{의 값의 증가량}}{x\\text{의 값의 증가량}}$이고, 직선 위의 점을 $y=ax+b$에 대입하여 $b$를 결정한다.\n\n[연속 등식 및 중간 계산]\n1단계: 직선은 $(2,0)$, $(3,-1)$을 지난다.\n2단계: 기울기 $a=\\dfrac{-1-0}{3-2}=-1$이다.\n3단계: 점 $(2,0)$을 대입하면 $0=-1\\times 2+b$이므로 $b=2$이다.\n4단계: 직선은 $y=-x+2$이다. $(3,-1)$을 대입하면 $-1=-3+2$로 일치한다.\n5단계: $ab=(-1)\\times2=-2$이다.\n\n[경우 나눔 및 선택지 검토]\n④의 값 $-2$가 계산한 값과 일치한다.\n\n[결론]\n따라서 정답은 ④이다.",
+      "methodOrQuoteChanged": false
+    }
+  ],
+  "files": [
+    {
+      "examId": "E007",
+      "rawPath": "archive-work/m2s1-4slot-current-20261115/exams/E007.4slot.json",
+      "sha256": "049ff85aeb2c5ccde47562ebdbb5418f44a38a2265406625ebaaf8521eadad2f",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.4slot.json",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "items": 24,
+      "changedOrdinals": [
+        22
+      ],
+      "validation": {
+        "fail": [],
+        "warnings": 14
+      }
+    },
+    {
+      "examId": "E010",
+      "rawPath": "archive-work/m2s1-4slot-current-20261115/exams/E010.4slot.json",
+      "sha256": "c5020652030e21e18f8b8e68a16c55ee32c6c35346294e3d740d50d503e535fe",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.4slot.json",
+      "sourcePath": "archive/exams/original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+      "items": 24,
+      "changedOrdinals": [
+        8
+      ],
+      "validation": {
+        "fail": [],
+        "warnings": 10
+      }
+    },
+    {
+      "examId": "E034",
+      "rawPath": "archive-work/m2s1-4slot-current-20261115/exams/E034.4slot.json",
+      "sha256": "a2caa92a75524ac2bccde04c50e175108ea8e8a00e700fd7f3400b8369216b6b",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/22_매산중_1학기_기말_중2_수학.4slot.json",
+      "sourcePath": "archive/exams/original/middle/m2/1final/22_매산중_1학기_기말_중2_수학.js",
+      "items": 24,
+      "changedOrdinals": [
+        6
+      ],
+      "validation": {
+        "fail": [],
+        "warnings": 25
+      }
+    },
+    {
+      "examId": "E035",
+      "rawPath": "archive-work/m2s1-4slot-current-20261115/exams/E035.4slot.json",
+      "sha256": "fef875cb00e213cb26a4a90f2a5b5807fb73c2822ccc776f4406d5d87a71a325",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.4slot.json",
+      "sourcePath": "archive/exams/original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+      "items": 24,
+      "changedOrdinals": [
+        6
+      ],
+      "validation": {
+        "fail": [],
+        "warnings": 10
+      }
+    },
+    {
+      "examId": "E037",
+      "rawPath": "archive-work/m2s1-4slot-current-20261115/exams/E037.4slot.json",
+      "sha256": "ba1b3bce30da0e3db680216eda52723d764d794074af9ef929a3bd3e9e968a8a",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.4slot.json",
+      "sourcePath": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "items": 25,
+      "changedOrdinals": [
+        17
+      ],
+      "validation": {
+        "fail": [],
+        "warnings": 33
+      }
+    },
+    {
+      "examId": "E057",
+      "rawPath": "archive-work/m2s1-4slot-current-20261115/exams/E057.4slot.json",
+      "sha256": "f08f547b8f0abb6f52ad2c71b6da0fa57255cd6f8556d7f0c601faa0bd594733",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/20_왕의중_1학기_기말_중2_수학.4slot.json",
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_왕의중_1학기_기말_중2_수학.js",
+      "items": 24,
+      "changedOrdinals": [
+        19
+      ],
+      "validation": {
+        "fail": [],
+        "warnings": 6
+      }
+    }
+  ]
+}
