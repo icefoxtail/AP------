@@ -1,0 +1,104 @@
+[
+  {
+    "id": "B-E011-TRIG_ORDER_REUSE",
+    "kind": "NEW_TPL",
+    "proposedKey": "TPL_TRIG_RATIO_GENERAL_ANGLE_ORDER",
+    "parentProblemTypeKey": "PT_TRIG_RATIO",
+    "definition": "0도부터 90도 사이 일반각의 사인·코사인·탄젠트 값을 단조성, 같은 각의 비 관계 및 0·1 경계값으로 비교하고 순서를 판정한다.",
+    "internalSkeleton": "기준값 0·1 및 45도 관계를 잡는다 → 각의 순서나 동일각 sin/cos/tan 관계로 부등호를 정한다 → 전체 순서 또는 진위를 결정한다.",
+    "distinguishFrom": {
+      "TPL_TRIG_RATIO_SPECIAL_ANGLE": "일반각의 값 자체를 알지 않고 대소 관계로 결정한다.",
+      "TPL_TRIG_RATIO_BASIC_RELATION": "하나의 주어진 삼각비에서 다른 수치를 복원하는 절차가 아니다.",
+      "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION": "주목적이 식의 간소화가 아니라 대소 순서 판정이다."
+    },
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "exactMatch": false
+    },
+    "supportOrdinals": [
+      7
+    ],
+    "rpmRecordId": "M3-RPM-056",
+    "requiredChanges": [
+      "taxonomy TPL",
+      "RPM056/144 family 연결",
+      "exact binding 검증"
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_020eec100424bc478eabae41c66b091d4bf1c17939e7a07be556532478e2f1b0"
+    ],
+    "reuseCandidateFrom": "worker-outputs/b/E002/proposals.json",
+    "notRegistered": true
+  },
+  {
+    "id": "B-E011-COND_SPECIFIED_APPROXIMATIONS",
+    "kind": "NEW_CONDITION",
+    "proposedKey": "COND_SPECIFIED_APPROXIMATIONS",
+    "definition": "계산에 사용할 근삿값이 문제에서 지정되어 있어 실제 정확값이나 다른 반올림값 대신 그 수치로 계산해야 한다.",
+    "internalSkeleton": "지정 근삿값 확인 → 동일 수치로 대입 → 결과 비교",
+    "distinguishFrom": {
+      "COND_RANGE": "허용 변수 구간이 아니라 수치 계산의 대입값을 고정한다."
+    },
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      9,
+      10
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_3b4595999c22c82e40420fa1d0d09f36072fd9c9c779ef54e115324d30a86c5b",
+      "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/condition_registry.json",
+      "exactMatch": false
+    },
+    "sourceWritePolicy": "제안 키는 등록 전 source/inbox에 넣지 않는다."
+  },
+  {
+    "id": "B-E011-CC_POLYGON_INTERIOR_ANGLE_SUM",
+    "kind": "NEW_CROSSCONCEPT",
+    "proposedKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+    "definition": "다른 primary의 보조 단계에서 단순 다각형의 내각합 (n−2)×180도를 이용해 필요한 각을 복원한다.",
+    "internalSkeleton": "다각형 식별 → 내각합에서 알려진 각 차감",
+    "distinguishFrom": {
+      "CC_TRIANGLE_ANGLE_SUM": "삼각형만을 명시하는 기존 키로 사각형 내각합360도를 투영하지 않는다.",
+      "CC_M1_POLYGON_ANGLE_SOLID_VERTEX_FEASIBILITY": "입체 꼭짓점의 면각합 제한과 다르다."
+    },
+    "parentProblemTypeKey": null,
+    "supportOrdinals": [
+      17
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8"
+    ],
+    "globalActiveSearch": {
+      "searchedAllActive": true,
+      "registryPath": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "exactMatch": false
+    },
+    "sourceWritePolicy": "제안 키는 등록 전 source/inbox에 넣지 않는다."
+  },
+  {
+    "id": "B-E011-EXISTING_TEMPLATE_CONNECTIONS",
+    "kind": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+    "existingTemplates": [
+      "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "TPL_TRIG_RATIO_TABLE_LOOKUP"
+    ],
+    "supportOrdinals": [
+      1,
+      8,
+      21,
+      22
+    ],
+    "supportingQuestionUids": [
+      "qid_v1_c6cb2f7b40eba6d81db9e932c3c6439e61b55c5fd27effbebcad22eaaf28ad34",
+      "qid_v1_b9bb8d4ace10d292ab68efb2acd20162e1d7e08d929994a6cce781790b10e558",
+      "qid_v1_7cab381aa1964afe56c02ca94552f98ab34da430c16bb61d75ac913fd30a5f36",
+      "qid_v1_b0e8a002e9d7658f7bb3c7bfb1cf3f3e48c126152ea149652b9f5482d52bf5e0"
+    ],
+    "definition": "GLOBAL ACTIVE에 이미 존재하는 정확한 TPL을 재사용하며 RPM055/143의 단일 BASIC 연결과 구별한다. 신규 TPL 등록이 아닌 exact crosswalk/binding 연결 검토이다."
+  }
+]
