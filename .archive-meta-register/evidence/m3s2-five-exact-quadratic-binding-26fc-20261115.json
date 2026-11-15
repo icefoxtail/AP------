@@ -1,0 +1,1227 @@
+{
+  "schemaVersion": "archive-reviewed-existing-definition-binding-v1",
+  "owner": "/root/m3s2_release",
+  "currentSourceCommit": "a9ca41250739f7f43fcbfecbf4c54276cd72178a",
+  "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+  "decision": "PROPOSE_ONE_EXACT_CONTEXT_BINDING_FOR_FIVE_REVIEWED_ITEMS",
+  "scope": "Five same-version c17 native-reviewed M3 S2 exam items. Existing M3-1 mathematical scope and exact current canonical parents are reused. No new definition or full mathematics review.",
+  "newDefinitions": 0,
+  "newMathematicalQa": false,
+  "newDifficultyJudgments": 0,
+  "definitionRefs": [
+    {
+      "key": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3",
+      "parentProblemTypeKey": null,
+      "recordStableSha256": "c16fd01ae5c0ae63c10acd5abd49835d75e4f001a2a0f91d11198be0d1a003b8",
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+      "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683",
+      "record": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+        "canonicalLabelKo": "이차함수의 판별",
+        "definition": "실생활·도형 관계식이 y=ax^2+bx+c (a≠0) 꼴인지 판별하여 이차함수인 것을 고른다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa"
+        ],
+        "sourceUnits": [
+          "M3-04"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa",
+            "sourceOrdinal": 1,
+            "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_DEFINITION/TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "- ③ 원의 넓이: $y = \\pi x^2$ ($x^2$의 계수가 $\\pi \\ne 0$인 이차함수)",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "key": "TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3",
+      "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+      "recordStableSha256": "1f7b1d544dda74a85a66422d2575b6aa1492eb6d2f55d6f17d06e0cc759aae58",
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+      "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683",
+      "record": {
+        "templateKey": "TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM",
+        "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+        "canonicalLabelKo": "관계식 중 이차함수 고르기",
+        "definition": "둘레·넓이·부피·거리 공식을 각각 식으로 세워 최고차항이 2차인 것을 고른다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa"
+        ],
+        "sourceUnits": [
+          "M3-04"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_258f4918b80ba1034758ae714755cc9b47c451164a96bdccf1406536382b50aa",
+            "sourceOrdinal": 1,
+            "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_DEFINITION/TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "- ③ 원의 넓이: $y = \\pi x^2$ ($x^2$의 계수가 $\\pi \\ne 0$인 이차함수)",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "key": "PT_COORD_TRIANGLE_AREA",
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "parentProblemTypeKey": null,
+      "recordStableSha256": "9ef67038b39797e8faee156b35c9d5853bdd44ba82324d97a0c97673a01e9fd2",
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+      "documentSha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458",
+      "record": {
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "canonicalLabelKo": "좌표를 이용한 삼각형의 넓이",
+        "definition": "좌표평면에서 삼각형의 넓이 또는 넓이비를 계산하거나 이를 이용하여 점의 위치·조건을 결정하는 유형.",
+        "aliases": [
+          "좌표와 삼각형의 넓이"
+        ],
+        "internalDescription": "coordinate triangle area / area-ratio as primary objective",
+        "supportingQuestionUids": [
+          "qid_v1_0677e4cbcd0b5e7cce72dfe64c562361a87837bf3bd80778d65c7d09665ead91",
+          "qid_v1_1e2b3a3d1f55b9e03253ba354fbc0f217bd8758adbf907b8cc9efe0d5c7dbea1",
+          "qid_v1_35583d47fb5734c66881a9e8ac018ede973588a4e2a9c08f2122e065ac358834",
+          "qid_v1_dccb083387df8d64a7c5899ea23f7100d190323189f21f3b6243077a1ddcb1cd",
+          "qid_v1_f7263d8d6c439be133acc3e7a61c0d958d8dbd517b16cb09c0273d4bad83011d"
+        ],
+        "supportingItemCount": 5,
+        "sourceUnit": "PLANE_COORDINATE",
+        "status": "ACTIVE",
+        "ownerPack": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "key": "TPL_AREA_DIRECT",
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "parentProblemTypeKey": "PT_COORD_TRIANGLE_AREA",
+      "recordStableSha256": "fa2ee802da94ea69d2170cb19c44e28ca4ea5dc8be1084cfdf8af70960956c02",
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+      "documentSha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458",
+      "record": {
+        "templateKey": "TPL_AREA_DIRECT",
+        "canonicalLabelKo": "좌표를 이용한 삼각형의 넓이 구하기",
+        "definition": "세 점의 좌표에서 삼각형의 넓이를 직접 계산한다.",
+        "aliases": [],
+        "internalSkeleton": "세 점의 좌표에서 삼각형의 넓이를 직접 계산한다.",
+        "parentProblemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "supportingQuestionUids": [
+          "qid_v1_f7263d8d6c439be133acc3e7a61c0d958d8dbd517b16cb09c0273d4bad83011d"
+        ],
+        "supportingItemCount": 1,
+        "sourceUnit": "PLANE_COORDINATE",
+        "status": "ACTIVE",
+        "ownerPack": "GEOMETRY_EQUATIONS"
+      }
+    },
+    {
+      "key": "CC_QUADRATIC_FACTORIZATION",
+      "status": "ACTIVE",
+      "ownerPack": null,
+      "parentProblemTypeKey": null,
+      "recordStableSha256": "724c5ec2449534229db18cdb6b14f33bd5f37a2fce9adada48cc80b1975faa04",
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/data/meta-foundation/canonical/concepts/algebra.json",
+      "documentSha256": "6f0c3508c293f6861a7d9a2641be2c90769d8cc46c00c75cbe67092edb009d54",
+      "record": {
+        "conceptKey": "CC_QUADRATIC_FACTORIZATION",
+        "canonicalLabelKo": "이차식의 인수분해",
+        "definition": "x^2+(a+b)x+ab = (x+a)(x+b) 꼴 인수분해",
+        "aliases": [],
+        "supportingQuestionUids": [
+          "qid_v1_01060d47bb3eace5181944f8d79555a8848dc33e76402356d7c56206446b3203"
+        ],
+        "supportingItemCount": 1,
+        "status": "ACTIVE",
+        "ownerConceptShard": "ALGEBRA",
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+            "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+            "questionUids": [
+              "qid_v1_01060d47bb3eace5181944f8d79555a8848dc33e76402356d7c56206446b3203"
+            ],
+            "questionCount": 1,
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+              "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+            },
+            "sourceParityRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+              "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "key": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3",
+      "parentProblemTypeKey": null,
+      "recordStableSha256": "375a613ad962acced5a3c49091d6a8141fcbb62863d5f6704a986b1c3cdd583e",
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+      "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683",
+      "record": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "canonicalLabelKo": "꼭짓점·일반형 상호 변환으로 식 결정",
+        "definition": "꼭짓점과 지나는 점으로 표준형 계수를 결정하거나, 일반형을 표준형으로 변환해 꼭짓점을 읽는다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 2,
+        "supportingQuestionUids": [
+          "qid_v1_46e5b047eacab91915c0d9b45be592d4ba477089ece163f8c8ac77a8aa40aa03",
+          "qid_v1_98505b445a7266aed9e511b1e9e17af58002cfbfda68d23fa8c1164a2a2dd354"
+        ],
+        "sourceUnits": [
+          "M3-04"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_46e5b047eacab91915c0d9b45be592d4ba477089ece163f8c8ac77a8aa40aa03",
+            "sourceOrdinal": 7,
+            "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM/TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "$$3 = a(0-2)^2 - 1 = 4a - 1$$",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          },
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_98505b445a7266aed9e511b1e9e17af58002cfbfda68d23fa8c1164a2a2dd354",
+            "sourceOrdinal": 23,
+            "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM/TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "$$y = 3(x-1)^2 + 1$$",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "key": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3",
+      "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "recordStableSha256": "b655d5fa896d2dd6040c6034d647eae55268a72028d9466d6a9ad59b71054bb6",
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+      "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683",
+      "record": {
+        "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+        "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "canonicalLabelKo": "서술형: 일반형을 표준형으로 변형",
+        "definition": "3으로 묶어 완전제곱식을 만들고 상수를 조정해 표준형을 쓴 뒤 꼭짓점을 답한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_98505b445a7266aed9e511b1e9e17af58002cfbfda68d23fa8c1164a2a2dd354"
+        ],
+        "sourceUnits": [
+          "M3-04"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_98505b445a7266aed9e511b1e9e17af58002cfbfda68d23fa8c1164a2a2dd354",
+            "sourceOrdinal": 23,
+            "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM/TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "$$y = 3(x-1)^2 + 1$$",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "key": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3",
+      "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "recordStableSha256": "02677bec7ebd1ba1905d14eda5b254e57a5f12e3298e3f091c263c3c2aa04f77",
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+      "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683",
+      "record": {
+        "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+        "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+        "canonicalLabelKo": "꼭짓점·y절편으로 계수 결정",
+        "definition": "y=a(x-2)^2-1에 y절편 (0, 3)을 대입해 a=1을 얻고 a+p+q를 계산한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE3",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_46e5b047eacab91915c0d9b45be592d4ba477089ece163f8c8ac77a8aa40aa03"
+        ],
+        "sourceUnits": [
+          "M3-04"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "META_PIPELINE_AUDIT_SOP_V12_CORRECTIVE_REVIEW",
+            "questionUid": "qid_v1_46e5b047eacab91915c0d9b45be592d4ba477089ece163f8c8ac77a8aa40aa03",
+            "sourceOrdinal": 7,
+            "classificationRationale": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM/TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT bound at M3-04/M3-04-QUADRATIC_FUNCTION_GRAPH; original audit assignment preserved in the corrective review.",
+            "decisiveEvidence": "$$3 = a(0-2)^2 - 1 = 4a - 1$$",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.audit.source.json",
+              "sha256": "bfe0c58899ec89c3a977242c131e8ececea7069056e9905814b2d03b60486f4f"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-7-a2d822d963b0-20261104.corrective-review.json",
+              "sha256": "a75370b593eb950ce55faa3b0e67d8e60734219073fb2d9aa212402714df0b49"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "key": "CC_RECTANGLE_AREA",
+      "status": "ACTIVE",
+      "ownerPack": null,
+      "parentProblemTypeKey": null,
+      "recordStableSha256": "6646de763d876ce0d4703fcd7d7e71c3fcff0c8476e2dc7de1c4c8c6bc52d2e7",
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "documentSha256": "3c24c543d18345e8144bd013064666c0a29afa8138e7007ccb209dea5c210837",
+      "record": {
+        "conceptKey": "CC_RECTANGLE_AREA",
+        "canonicalLabelKo": "직사각형의 넓이",
+        "definition": "직사각형의 가로와 세로의 길이를 곱하여 넓이를 구하는 것.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6"
+        ],
+        "supportingItemCount": 1,
+        "sourceUnits": [
+          "M2-01"
+        ],
+        "legacyKeys": [],
+        "evidenceProvenance": [
+          {
+            "source": "CORRECTIVE_REVIEW_NOV04_DRIFT_PLUS_CURRENT_SOURCE",
+            "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+            "sourceOrdinal": 3,
+            "classificationRationale": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA/TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES bound at M2-01/M2-01-POLYNOMIAL_OPERATIONS; original audit assignment preserved in originalAssignment.",
+            "decisiveEvidence": "2단계: $\\triangle ADE$의 넓이는 $\\frac12\\times AD\\times DE=\\frac12\\times 2b(3a-\\frac23b)=3ab-\\frac23b^2$.",
+            "auditPackageRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.audit.source.json",
+              "sha256": "76b97fb1fd49b0e9627d4d621f5f1d16e665efd8665ff13da4edac4d6ec09cbb"
+            },
+            "correctiveReviewRef": {
+              "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-nov04-4-31cbb3b72991-20261104.corrective-review.json",
+              "sha256": "b932715df8392801776a7a5362025ce042f9f61c4010f7b26675c271bda5f9f4"
+            }
+          }
+        ],
+        "taxonomyRefs": [
+          "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA"
+        ],
+        "curriculumRefs": [
+          "2015:중2-1:M2-01"
+        ],
+        "ownerConceptShard": "PLANE_GEOMETRY"
+      }
+    }
+  ],
+  "nativeReviewRefs": [
+    {
+      "examId": "E037",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E037.meta.json",
+      "sha256": "b3a70bf9a6abf4a3ffd4f18a7cac75254aaca6e15c05afcab02568b152ecebe8"
+    },
+    {
+      "examId": "E054",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E054.meta.json",
+      "sha256": "e55d1953e9439b249d8efd84a8bd8a4a3e4d97652336b40eb838afc41e00734e"
+    },
+    {
+      "examId": "E061",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E061.meta.json",
+      "sha256": "e4d10e18c28a9cdcbd589b1bcdb80ef0c7a231c2abaf02872c9061d210f7449f"
+    }
+  ],
+  "supportingItems": [
+    {
+      "examId": "E037",
+      "questionUid": "qid_v1_a1d4525e9784f170d1e22ce9d86b7a77e34f6dd021206cf0824e2f0fb0ae75cc",
+      "sourceOrdinal": 3,
+      "sourcePath": "archive/exams/original/middle/m3/2mid/22_동산중_2학기_중간_중3_수학.js",
+      "cohort": "REMAINING_65",
+      "classification": "EXACT_CONTEXT_BINDING_CANDIDATE_NOT_YET_REGISTRAR_VALIDATED",
+      "groupId": "B13",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM"
+      },
+      "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+      "currentSource": {
+        "commit": "a9ca41250739f7f43fcbfecbf4c54276cd72178a",
+        "gitBlobSha1": "b03172589e65030113086e3823b0d77d36fb095b",
+        "sha256": "b80c33efa76f3b7a37ae5cf240c8eca662cf2e3fd018326e2514cee807b7a592",
+        "sameWholeSourceBlobAsPriorAudit": true
+      },
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E037.meta.json",
+        "sha256": "b3a70bf9a6abf4a3ffd4f18a7cac75254aaca6e15c05afcab02568b152ecebe8"
+      },
+      "nativeItemStableSha256": "d515158260a681adffe80cafa41c902bb0af7f5107a76db4ec8252952506d774",
+      "nativeDecision": "CORRECT",
+      "nativeAfterStableSha256": "36467859a93d19ade80e5e31435eff662de031e6b9ef8d22411237f02a8d5e67",
+      "studentPayloadChangedFields": [],
+      "assets": [],
+      "nativeDebts": [
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "detail": "실제 풀이 골격에 맞는 GLOBAL ACTIVE 정의를 재사용하며 publisher crosswalk의 정밀 연결은 출고 담당에게 인계한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+        }
+      ],
+      "nativeProposalSelections": [],
+      "nativeRpm": {
+        "originalCurriculum": "2015",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "일반형",
+          "l4": "완전제곱식 변형",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "recordId": "M3-RPM-051"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "일반형 그래프",
+            "l4": "완전제곱식 변형"
+          },
+          "recordId": "M3-RPM-139",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+            "parentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+            "unitKey": "RPM22-M3-L1-04",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-1",
+            "L1": "이차함수",
+            "L2": "이차함수의 그래프(2)",
+            "label": "이차함수의 그래프(2)",
+            "order": 9,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-04"
+            ]
+          }
+        }
+      },
+      "currentMetadata": {
+        "recordStableSha256": "d812485d3d89c4dc2616457c1546b531d8390755113df2782b516be15bd823fc",
+        "metadataStatus": "registration_pending_semantic_review",
+        "metadataApprovalType": null,
+        "reviewStatus": "review_required",
+        "curriculum": null,
+        "curriculumKey": null,
+        "sourceDeclaredCurriculum": "2015"
+      },
+      "activeDefinitions": {
+        "problemType": {
+          "key": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE3",
+          "parentProblemTypeKey": null,
+          "recordStableSha256": "375a613ad962acced5a3c49091d6a8141fcbb62863d5f6704a986b1c3cdd583e",
+          "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+          "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+          "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683"
+        },
+        "template": {
+          "key": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE3",
+          "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "recordStableSha256": "b655d5fa896d2dd6040c6034d647eae55268a72028d9466d6a9ad59b71054bb6",
+          "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+          "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+          "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683"
+        },
+        "auxiliary": []
+      },
+      "exactInstalledBindingCount": 0,
+      "blockers": [],
+      "requestCandidate": null,
+      "nextAction": "Inspect the exact native RPM/crosswalk disposition and minimal existing-definition context binding; compare all affected actual targets and preserve excluded/held consumers before official scoped registration.",
+      "actualRegistration": "NOT_RUN",
+      "consumer": "NOT_RUN",
+      "pages": "NOT_RUN",
+      "sourceBeforeBlobSha1": "b03172589e65030113086e3823b0d77d36fb095b",
+      "sourceAfterBlobSha1": "0b2873d6a44bf2317202f40ffd4faf31ec85f8a1",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false,
+      "courseAndParentFromNative": {
+        "questionUid": "qid_v1_a1d4525e9784f170d1e22ce9d86b7a77e34f6dd021206cf0824e2f0fb0ae75cc",
+        "sourceOrdinal": 3,
+        "nativeCourse": "중3 수학",
+        "nativeRpmRecord": "M3-RPM-051",
+        "nativeRpmScope": "M3-1",
+        "existingBasicParent": {
+          "grade": "중3",
+          "curriculumKey": "2015",
+          "courseKey": "M3-1",
+          "standardUnitKey": "M3-04",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "L1": "이차함수",
+          "L2": "이차함수 y=ax²+bx+c의 그래프"
+        },
+        "parentRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-quadratic-d3f90e23e5df-26fc-20261115.parent-labels.json",
+          "sha256": "e78ed75003258e7b2c0b8ef3a33e5cda7676f64cf58647ea88a9709d0b074707"
+        },
+        "sourceReviewRef": {
+          "schemaVersion": "archive-reviewed-source-reassessment-v1",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E037.meta.json",
+          "reviewRef": {
+            "path": ".archive-meta-register/evidence/m3s2-native-review-20261114/E037.meta.json",
+            "sha256": "b3a70bf9a6abf4a3ffd4f18a7cac75254aaca6e15c05afcab02568b152ecebe8"
+          }
+        },
+        "oldCandidateCourseKey": "M3-2",
+        "currentMetadataSha256": "3cc9dadc69cc8145ada0e47e1d78d4bac2cdf58ad5b9e94429bbd90554cd6fa4",
+        "newFullMathematicalQa": false
+      }
+    },
+    {
+      "examId": "E037",
+      "questionUid": "qid_v1_f2721da21ad48fdef9649b9c08980c1181c22caf8efcf6e0cc56088a91056a0f",
+      "sourceOrdinal": 7,
+      "sourcePath": "archive/exams/original/middle/m3/2mid/22_동산중_2학기_중간_중3_수학.js",
+      "cohort": "REMAINING_65",
+      "classification": "EXACT_CONTEXT_BINDING_CANDIDATE_NOT_YET_REGISTRAR_VALIDATED",
+      "groupId": "B13",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM"
+      },
+      "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+      "currentSource": {
+        "commit": "a9ca41250739f7f43fcbfecbf4c54276cd72178a",
+        "gitBlobSha1": "b03172589e65030113086e3823b0d77d36fb095b",
+        "sha256": "b80c33efa76f3b7a37ae5cf240c8eca662cf2e3fd018326e2514cee807b7a592",
+        "sameWholeSourceBlobAsPriorAudit": true
+      },
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E037.meta.json",
+        "sha256": "b3a70bf9a6abf4a3ffd4f18a7cac75254aaca6e15c05afcab02568b152ecebe8"
+      },
+      "nativeItemStableSha256": "bafd6fd7c485134b2d7f652c31703eb88d283e8c52713451ed0b2842b5bea942",
+      "nativeDecision": "CORRECT",
+      "nativeAfterStableSha256": "5b403a48f6abd0938a35653750a434c5d06a4d29970eda83da8821cbd80baf0a",
+      "studentPayloadChangedFields": [],
+      "assets": [
+        {
+          "path": "archive/assets/images/22_동산중_2학기_중간_중3_수학/q07.png",
+          "nativeGitBlobSha1": "52f8fb04e7cdb885d3454914d65fbfe19998015f",
+          "currentGitBlobSha1": "52f8fb04e7cdb885d3454914d65fbfe19998015f",
+          "currentRawSha256": "36c1801249eb1e8138b3fbcd93c522ba6a09a3ea196ad11d95827928302300cf",
+          "byteIdentical": true
+        }
+      ],
+      "nativeDebts": [
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "detail": "실제 풀이 골격에 맞는 GLOBAL ACTIVE 정의를 재사용하며 publisher crosswalk의 정밀 연결은 출고 담당에게 인계한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+        }
+      ],
+      "nativeProposalSelections": [],
+      "nativeRpm": {
+        "originalCurriculum": "2015",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "그래프와 계수",
+          "l4": "조건으로 식 구하기",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "recordId": "M3-RPM-054"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "최대·최소와 활용",
+            "l4": "조건으로 식 결정"
+          },
+          "recordId": "M3-RPM-142",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+            "parentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+            "unitKey": "RPM22-M3-L1-04",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-1",
+            "L1": "이차함수",
+            "L2": "이차함수의 그래프(2)",
+            "label": "이차함수의 그래프(2)",
+            "order": 9,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-04"
+            ]
+          }
+        }
+      },
+      "currentMetadata": {
+        "recordStableSha256": "7f22ae811e27d13a8393c0908db6041ea3360e2f46cda30bde416024e5a1d823",
+        "metadataStatus": "registration_pending_semantic_review",
+        "metadataApprovalType": null,
+        "reviewStatus": "review_required",
+        "curriculum": null,
+        "curriculumKey": null,
+        "sourceDeclaredCurriculum": "2015"
+      },
+      "activeDefinitions": {
+        "problemType": {
+          "key": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE3",
+          "parentProblemTypeKey": null,
+          "recordStableSha256": "375a613ad962acced5a3c49091d6a8141fcbb62863d5f6704a986b1c3cdd583e",
+          "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+          "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+          "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683"
+        },
+        "template": {
+          "key": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE3",
+          "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "recordStableSha256": "02677bec7ebd1ba1905d14eda5b254e57a5f12e3298e3f091c263c3c2aa04f77",
+          "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+          "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+          "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683"
+        },
+        "auxiliary": []
+      },
+      "exactInstalledBindingCount": 0,
+      "blockers": [],
+      "requestCandidate": null,
+      "nextAction": "Inspect the exact native RPM/crosswalk disposition and minimal existing-definition context binding; compare all affected actual targets and preserve excluded/held consumers before official scoped registration.",
+      "actualRegistration": "NOT_RUN",
+      "consumer": "NOT_RUN",
+      "pages": "NOT_RUN",
+      "sourceBeforeBlobSha1": "b03172589e65030113086e3823b0d77d36fb095b",
+      "sourceAfterBlobSha1": "0b2873d6a44bf2317202f40ffd4faf31ec85f8a1",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false,
+      "courseAndParentFromNative": {
+        "questionUid": "qid_v1_f2721da21ad48fdef9649b9c08980c1181c22caf8efcf6e0cc56088a91056a0f",
+        "sourceOrdinal": 7,
+        "nativeCourse": "중3 수학",
+        "nativeRpmRecord": "M3-RPM-054",
+        "nativeRpmScope": "M3-1",
+        "existingBasicParent": {
+          "grade": "중3",
+          "curriculumKey": "2015",
+          "courseKey": "M3-1",
+          "standardUnitKey": "M3-04",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "L1": "이차함수",
+          "L2": "이차함수 y=ax²+bx+c의 그래프"
+        },
+        "parentRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-quadratic-d3f90e23e5df-26fc-20261115.parent-labels.json",
+          "sha256": "e78ed75003258e7b2c0b8ef3a33e5cda7676f64cf58647ea88a9709d0b074707"
+        },
+        "sourceReviewRef": {
+          "schemaVersion": "archive-reviewed-source-reassessment-v1",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E037.meta.json",
+          "reviewRef": {
+            "path": ".archive-meta-register/evidence/m3s2-native-review-20261114/E037.meta.json",
+            "sha256": "b3a70bf9a6abf4a3ffd4f18a7cac75254aaca6e15c05afcab02568b152ecebe8"
+          }
+        },
+        "oldCandidateCourseKey": "M3-2",
+        "currentMetadataSha256": "125e52ad6ff95fd9bfd9fa24de9505d02903dd8bf1ca70b8608e53d144503d72",
+        "newFullMathematicalQa": false
+      }
+    },
+    {
+      "examId": "E054",
+      "questionUid": "qid_v1_10f83f802e59ad8d2712878d2d65a7927db0ae9e65da5b3f50d5777970bdc27f",
+      "sourceOrdinal": 7,
+      "sourcePath": "archive/exams/original/middle/m3/2mid/21_동산중_2학기_중간_중3_수학.js",
+      "cohort": "REMAINING_65",
+      "classification": "EXACT_CONTEXT_BINDING_CANDIDATE_NOT_YET_REGISTRAR_VALIDATED",
+      "groupId": "B13",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM"
+      },
+      "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+      "currentSource": {
+        "commit": "a9ca41250739f7f43fcbfecbf4c54276cd72178a",
+        "gitBlobSha1": "93430cd51b40853bb7519d2fbef03bec8aa77efc",
+        "sha256": "9fec2f72e25a9f51f29d69d11bed77aee63e0acd52b4e875895f842de8a20135",
+        "sameWholeSourceBlobAsPriorAudit": true
+      },
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E054.meta.json",
+        "sha256": "e55d1953e9439b249d8efd84a8bd8a4a3e4d97652336b40eb838afc41e00734e"
+      },
+      "nativeItemStableSha256": "53537274022dc77484410d7bc09d91cee6a96f5587c5a2b295d95aef1fc4edd2",
+      "nativeDecision": "CORRECT",
+      "nativeAfterStableSha256": "b9a3e15bfb36f05c0548aaf0ba1c50ef98fe3027089638573fbe569f56a5190c",
+      "studentPayloadChangedFields": [],
+      "assets": [],
+      "nativeDebts": [],
+      "nativeProposalSelections": [],
+      "nativeRpm": {
+        "originalCurriculum": "2015",
+        "originalCurriculumProvenance": {
+          "status": "EXPLICIT",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "일반형",
+          "l4": "완전제곱식 변형",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "recordId": "M3-RPM-051"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "일반형 그래프",
+            "l4": "완전제곱식 변형"
+          },
+          "recordId": "M3-RPM-139",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+            "parentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+            "unitKey": "RPM22-M3-L1-04",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-1",
+            "L1": "이차함수",
+            "L2": "이차함수의 그래프(2)",
+            "label": "이차함수의 그래프(2)",
+            "order": 9,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-04"
+            ]
+          }
+        }
+      },
+      "currentMetadata": {
+        "recordStableSha256": "c799d4856de846234a7577fd111a9b7ede7be68bb6917ff49e1b1bdc3eaf535f",
+        "metadataStatus": "registration_pending_semantic_review",
+        "metadataApprovalType": null,
+        "reviewStatus": "review_required",
+        "curriculum": null,
+        "curriculumKey": null,
+        "sourceDeclaredCurriculum": "2015"
+      },
+      "activeDefinitions": {
+        "problemType": {
+          "key": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE3",
+          "parentProblemTypeKey": null,
+          "recordStableSha256": "375a613ad962acced5a3c49091d6a8141fcbb62863d5f6704a986b1c3cdd583e",
+          "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+          "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+          "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683"
+        },
+        "template": {
+          "key": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE3",
+          "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "recordStableSha256": "b655d5fa896d2dd6040c6034d647eae55268a72028d9466d6a9ad59b71054bb6",
+          "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+          "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+          "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683"
+        },
+        "auxiliary": []
+      },
+      "exactInstalledBindingCount": 0,
+      "blockers": [],
+      "requestCandidate": null,
+      "nextAction": "Inspect the exact native RPM/crosswalk disposition and minimal existing-definition context binding; compare all affected actual targets and preserve excluded/held consumers before official scoped registration.",
+      "actualRegistration": "NOT_RUN",
+      "consumer": "NOT_RUN",
+      "pages": "NOT_RUN",
+      "sourceBeforeBlobSha1": "93430cd51b40853bb7519d2fbef03bec8aa77efc",
+      "sourceAfterBlobSha1": "ad0be9a47a66450dba847eccb6e0f524a82991a2",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false,
+      "courseAndParentFromNative": {
+        "questionUid": "qid_v1_10f83f802e59ad8d2712878d2d65a7927db0ae9e65da5b3f50d5777970bdc27f",
+        "sourceOrdinal": 7,
+        "nativeCourse": "중3 수학",
+        "nativeRpmRecord": "M3-RPM-051",
+        "nativeRpmScope": "M3-1",
+        "existingBasicParent": {
+          "grade": "중3",
+          "curriculumKey": "2015",
+          "courseKey": "M3-1",
+          "standardUnitKey": "M3-04",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "L1": "이차함수",
+          "L2": "이차함수 y=ax²+bx+c의 그래프"
+        },
+        "parentRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-quadratic-d3f90e23e5df-26fc-20261115.parent-labels.json",
+          "sha256": "e78ed75003258e7b2c0b8ef3a33e5cda7676f64cf58647ea88a9709d0b074707"
+        },
+        "sourceReviewRef": {
+          "schemaVersion": "archive-reviewed-source-reassessment-v1",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E054.meta.json",
+          "reviewRef": {
+            "path": ".archive-meta-register/evidence/m3s2-native-review-20261114/E054.meta.json",
+            "sha256": "e55d1953e9439b249d8efd84a8bd8a4a3e4d97652336b40eb838afc41e00734e"
+          }
+        },
+        "oldCandidateCourseKey": "M3-2",
+        "currentMetadataSha256": "842312beea287e5cd8a348a540371abc783b5788375e3b8dc270b34069aa5c1b",
+        "newFullMathematicalQa": false
+      }
+    },
+    {
+      "examId": "E061",
+      "questionUid": "qid_v1_321b4898420d25430441194ed806a78fd65f0331b4e3a24a57c65b138b2ea768",
+      "sourceOrdinal": 9,
+      "sourcePath": "archive/exams/original/middle/m3/2mid/21_향림중_2학기_중간_중3_수학.js",
+      "cohort": "REMAINING_65",
+      "classification": "EXACT_CONTEXT_BINDING_CANDIDATE_NOT_YET_REGISTRAR_VALIDATED",
+      "groupId": "B13",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM"
+      },
+      "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+      "currentSource": {
+        "commit": "a9ca41250739f7f43fcbfecbf4c54276cd72178a",
+        "gitBlobSha1": "712a31e5b624f279ec1f96bca1e2c80843ee3d18",
+        "sha256": "d24ebc0841c8e9946d290dc7cf24b64abfd2814ee0880f2dabadcda8d5342e70",
+        "sameWholeSourceBlobAsPriorAudit": true
+      },
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E061.meta.json",
+        "sha256": "e4d10e18c28a9cdcbd589b1bcdb80ef0c7a231c2abaf02872c9061d210f7449f"
+      },
+      "nativeItemStableSha256": "cd168ff44d422b9909b66392652c39c3ab53a68a52d2484056bbb5ac7938215e",
+      "nativeDecision": "CORRECT",
+      "nativeAfterStableSha256": "c0d3139fcd4bc4427730f64a8efbfbf56e1d2eb416e557ff313cd1f3598859b8",
+      "studentPayloadChangedFields": [],
+      "assets": [
+        {
+          "path": "archive/assets/images/21_향림중_2학기_중간_중3_수학/q09.png",
+          "nativeGitBlobSha1": "f51a0c5befc17ddb2d85f64087ceb3295d04e64d",
+          "currentGitBlobSha1": "f51a0c5befc17ddb2d85f64087ceb3295d04e64d",
+          "currentRawSha256": "6309793597d55d872db37481c097045f4cced9bbd91dd4dee77fd78bf6f36145",
+          "byteIdentical": true
+        }
+      ],
+      "nativeDebts": [],
+      "nativeProposalSelections": [],
+      "nativeRpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수와 그 그래프",
+          "l3": "그래프와 식",
+          "l4": "계수 결정",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "recordId": "M3-RPM-048"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "최대·최소와 활용",
+            "l4": "조건으로 식 결정"
+          },
+          "recordId": "M3-RPM-142",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+            "parentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+            "unitKey": "RPM22-M3-L1-04",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-1",
+            "L1": "이차함수",
+            "L2": "이차함수의 그래프(2)",
+            "label": "이차함수의 그래프(2)",
+            "order": 9,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-04"
+            ]
+          }
+        }
+      },
+      "currentMetadata": {
+        "recordStableSha256": "9a47805de17caafcf17954249ddb64635ffbb48815caf732fc19e2c7a91c64a1",
+        "metadataStatus": "registration_pending_semantic_review",
+        "metadataApprovalType": null,
+        "reviewStatus": "review_required",
+        "curriculum": null,
+        "curriculumKey": null,
+        "sourceDeclaredCurriculum": "2015"
+      },
+      "activeDefinitions": {
+        "problemType": {
+          "key": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE3",
+          "parentProblemTypeKey": null,
+          "recordStableSha256": "375a613ad962acced5a3c49091d6a8141fcbb62863d5f6704a986b1c3cdd583e",
+          "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+          "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+          "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683"
+        },
+        "template": {
+          "key": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE3",
+          "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "recordStableSha256": "02677bec7ebd1ba1905d14eda5b254e57a5f12e3298e3f091c263c3c2aa04f77",
+          "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+          "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+          "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683"
+        },
+        "auxiliary": []
+      },
+      "exactInstalledBindingCount": 0,
+      "blockers": [],
+      "requestCandidate": null,
+      "nextAction": "Inspect the exact native RPM/crosswalk disposition and minimal existing-definition context binding; compare all affected actual targets and preserve excluded/held consumers before official scoped registration.",
+      "actualRegistration": "NOT_RUN",
+      "consumer": "NOT_RUN",
+      "pages": "NOT_RUN",
+      "sourceBeforeBlobSha1": "712a31e5b624f279ec1f96bca1e2c80843ee3d18",
+      "sourceAfterBlobSha1": "0b9e0c3f6bd42d8746c5650a0caa8093072b76cd",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false,
+      "courseAndParentFromNative": {
+        "questionUid": "qid_v1_321b4898420d25430441194ed806a78fd65f0331b4e3a24a57c65b138b2ea768",
+        "sourceOrdinal": 9,
+        "nativeCourse": "중3 수학",
+        "nativeRpmRecord": "M3-RPM-048",
+        "nativeRpmScope": "M3-1",
+        "existingBasicParent": {
+          "grade": "중3",
+          "curriculumKey": "2015",
+          "courseKey": "M3-1",
+          "standardUnitKey": "M3-04",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "L1": "이차함수",
+          "L2": "이차함수와 그 그래프"
+        },
+        "parentRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-quadratic-f66271074135-26fc-20261115.parent-labels.json",
+          "sha256": "719e8d94a611266dca5dc1fb2afdb06170546cbcebb861d5bd99d3d530a10521"
+        },
+        "sourceReviewRef": {
+          "schemaVersion": "archive-reviewed-source-reassessment-v1",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E061.meta.json",
+          "reviewRef": {
+            "path": ".archive-meta-register/evidence/m3s2-native-review-20261114/E061.meta.json",
+            "sha256": "e4d10e18c28a9cdcbd589b1bcdb80ef0c7a231c2abaf02872c9061d210f7449f"
+          }
+        },
+        "oldCandidateCourseKey": "M3-2",
+        "currentMetadataSha256": "f644562283bb030132d63b0d20ab5d54a7103e48e2712cfa9c01882808eaaf37",
+        "newFullMathematicalQa": false
+      }
+    },
+    {
+      "examId": "E061",
+      "questionUid": "qid_v1_8bfe87a0304533dcc678119879bb2646ae973041d4c3da165da4f196273a8065",
+      "sourceOrdinal": 23,
+      "sourcePath": "archive/exams/original/middle/m3/2mid/21_향림중_2학기_중간_중3_수학.js",
+      "cohort": "REMAINING_65",
+      "classification": "EXACT_CONTEXT_BINDING_CANDIDATE_NOT_YET_REGISTRAR_VALIDATED",
+      "groupId": "B13",
+      "target": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-04",
+        "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM"
+      },
+      "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+      "currentSource": {
+        "commit": "a9ca41250739f7f43fcbfecbf4c54276cd72178a",
+        "gitBlobSha1": "712a31e5b624f279ec1f96bca1e2c80843ee3d18",
+        "sha256": "d24ebc0841c8e9946d290dc7cf24b64abfd2814ee0880f2dabadcda8d5342e70",
+        "sameWholeSourceBlobAsPriorAudit": true
+      },
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E061.meta.json",
+        "sha256": "e4d10e18c28a9cdcbd589b1bcdb80ef0c7a231c2abaf02872c9061d210f7449f"
+      },
+      "nativeItemStableSha256": "61baf89ab396f04ed80a481f310c5c3753692a1d5d1e25fc0f9016939de43839",
+      "nativeDecision": "CORRECT",
+      "nativeAfterStableSha256": "c0d3139fcd4bc4427730f64a8efbfbf56e1d2eb416e557ff313cd1f3598859b8",
+      "studentPayloadChangedFields": [],
+      "assets": [
+        {
+          "path": "archive/assets/images/21_향림중_2학기_중간_중3_수학/s02.png",
+          "nativeGitBlobSha1": "09318b3fda666a8590bc1bbbcb760c8644743b6a",
+          "currentGitBlobSha1": "09318b3fda666a8590bc1bbbcb760c8644743b6a",
+          "currentRawSha256": "f21892a64ac4abf149976eafa50cddb9244330914d89fec8ec75e3dff345f400",
+          "byteIdentical": true
+        }
+      ],
+      "nativeDebts": [],
+      "nativeProposalSelections": [],
+      "nativeRpm": {
+        "originalCurriculum": null,
+        "originalCurriculumProvenance": {
+          "status": "UNSPECIFIED",
+          "comparisonPathCurriculum": "2015",
+          "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+        },
+        "base": {
+          "majorUnit": "이차함수",
+          "midUnit": "이차함수와 그 그래프",
+          "l3": "그래프와 식",
+          "l4": "계수 결정",
+          "curriculum": "2015",
+          "scope": "M3-1",
+          "recordId": "M3-RPM-048"
+        },
+        "current2022": {
+          "basePath": {
+            "majorUnit": "이차함수",
+            "midUnit": "이차함수의 그래프(2)",
+            "l3": "최대·최소와 활용",
+            "l4": "조건으로 식 결정"
+          },
+          "recordId": "M3-RPM-142",
+          "effectiveParent": {
+            "key": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+            "parentKey": "[\"2022\",\"M3-1\",\"이차함수\",\"이차함수의 그래프(2)\"]",
+            "unitKey": "RPM22-M3-L1-04",
+            "grade": "중3",
+            "gradeKey": "M3",
+            "curriculumKey": "2022",
+            "courseKey": "M3-1",
+            "L1": "이차함수",
+            "L2": "이차함수의 그래프(2)",
+            "label": "이차함수의 그래프(2)",
+            "order": 9,
+            "orderInUnit": 2,
+            "legacyUnitKeys": [
+              "M22-3-04"
+            ]
+          }
+        }
+      },
+      "currentMetadata": {
+        "recordStableSha256": "559b09bf8cf73f861ac4120c3ce35b78effd17b998eef2684bd7651b4375e3bc",
+        "metadataStatus": "registration_pending_semantic_review",
+        "metadataApprovalType": null,
+        "reviewStatus": "review_required",
+        "curriculum": null,
+        "curriculumKey": null,
+        "sourceDeclaredCurriculum": "2015"
+      },
+      "activeDefinitions": {
+        "problemType": {
+          "key": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE3",
+          "parentProblemTypeKey": null,
+          "recordStableSha256": "375a613ad962acced5a3c49091d6a8141fcbb62863d5f6704a986b1c3cdd583e",
+          "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+          "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+          "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683"
+        },
+        "template": {
+          "key": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE3",
+          "parentProblemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "recordStableSha256": "02677bec7ebd1ba1905d14eda5b254e57a5f12e3298e3f091c263c3c2aa04f77",
+          "commit": "40f16f8a7f4488991cc58589f49c3817676891c9",
+          "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+          "documentSha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683"
+        },
+        "auxiliary": []
+      },
+      "exactInstalledBindingCount": 0,
+      "blockers": [],
+      "requestCandidate": null,
+      "nextAction": "Inspect the exact native RPM/crosswalk disposition and minimal existing-definition context binding; compare all affected actual targets and preserve excluded/held consumers before official scoped registration.",
+      "actualRegistration": "NOT_RUN",
+      "consumer": "NOT_RUN",
+      "pages": "NOT_RUN",
+      "sourceBeforeBlobSha1": "712a31e5b624f279ec1f96bca1e2c80843ee3d18",
+      "sourceAfterBlobSha1": "0b9e0c3f6bd42d8746c5650a0caa8093072b76cd",
+      "studentPayloadUnchanged": true,
+      "newMathematicalQa": false,
+      "courseAndParentFromNative": {
+        "questionUid": "qid_v1_8bfe87a0304533dcc678119879bb2646ae973041d4c3da165da4f196273a8065",
+        "sourceOrdinal": 23,
+        "nativeCourse": "중3 수학",
+        "nativeRpmRecord": "M3-RPM-048",
+        "nativeRpmScope": "M3-1",
+        "existingBasicParent": {
+          "grade": "중3",
+          "curriculumKey": "2015",
+          "courseKey": "M3-1",
+          "standardUnitKey": "M3-04",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "L1": "이차함수",
+          "L2": "이차함수와 그 그래프"
+        },
+        "parentRef": {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-quadratic-f66271074135-26fc-20261115.parent-labels.json",
+          "sha256": "719e8d94a611266dca5dc1fb2afdb06170546cbcebb861d5bd99d3d530a10521"
+        },
+        "sourceReviewRef": {
+          "schemaVersion": "archive-reviewed-source-reassessment-v1",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E061.meta.json",
+          "reviewRef": {
+            "path": ".archive-meta-register/evidence/m3s2-native-review-20261114/E061.meta.json",
+            "sha256": "e4d10e18c28a9cdcbd589b1bcdb80ef0c7a231c2abaf02872c9061d210f7449f"
+          }
+        },
+        "oldCandidateCourseKey": "M3-2",
+        "currentMetadataSha256": "2881afa4ff15078e2e2f408438665bce7ddd411a55933b3b17aaa6d88113bf2b",
+        "newFullMathematicalQa": false
+      }
+    }
+  ],
+  "impactRef": {
+    "path": ".tmp/m3s2-remainder47-impact/entire-approved-binding-boundary-5f8f509.json",
+    "sha256": "038eae10eb6ec7a3a4e9a12da87571db69d09d59e523887e6009b70c84fb818e"
+  },
+  "actualMainRegistration": "NOT_RUN",
+  "sourceMainActualMetadataSha256": "0dbbd6244fdd5b48fbb5920880e7f66ddba6ee23fdc00fb54022b263c2532a6f",
+  "currentTargetImpact": {
+    "path": "m3s2-remainder7-5cdb/actual-target-impact-5cdb.json",
+    "sha256": "3d7c8bea46fe519c9fc80bc675c6b780e3b209ac7f0a84f1217b994d59ede229",
+    "newApplyOutsideTheseFive": 0,
+    "note": "The only new APPLY rows under the two-binding superset are exactly these five; B07 is omitted from this candidate. A one-binding exact follow-up will run before publication."
+  }
+}
