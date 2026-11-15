@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E060",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T00:05:07.886233+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/21_매산중_1학기_중간_중3_기출.js",
+  "sourceBlob": "6291c5d8a6fdc3cad7f1440392cb075c53e8e483",
+  "inputArtifacts": {
+    "workers/C/E060.review.json": {
+      "sha256": "0b13e57632f143fccd0c549689c78c4d33b918ee83ec59b2cdd55f2fda303ac6"
+    },
+    "workers/C/E060.4slot.json": {
+      "sha256": "1bc7aa871f55c62728b3065ee3f76cdd30717a7ce9d1e4afff22a72f442ff7cb"
+    },
+    "workers/C/E060.input.json": {
+      "sha256": "8dd58e35e956336ead5ad358c9d50eaf7c77ce6d5d00d9ec8ba21868fd494a47"
+    }
+  },
+  "sampledOrdinals": [
+    3,
+    9,
+    20,
+    24
+  ],
+  "items": [
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_2e6545dfef048e540a09a49f866a452ee33b944f09e751082a0fc6a6e9ba26db",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "발문⑤ 0.2929…와 기존해설 0.2999…=0.3의 전사·수값 불일치가 CONTENT_REVIEW_REQUIRED에 정확히 남아 있다. 유리수라는 판정은 양쪽 모두 같아 primary 무리수 판별과 난도1 판단의 근거는 보존된다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_9734dc7225dc278a08788d4b84aeafd4ed175578973005e558a51ecdf9ad2e4f",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실물 그림 A=1 B=2, 대각선 길이√2 및 P왼쪽/Q오른쪽을 확인. P=2-√2이므로 ①의1-√2를 배제하는 기존해설과 좌표·피타고라스 method 및 상등조건을 확인."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_26eec82dc1c33c720b18f499684728d6d55dddce9679dbbefe28e67a639dfbad",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "잘못 보지 않은 두 항 -18,-7을 각각 회수해 (x+2)(x-9)로 인수분해한다. 현재저자 level중/2 B23로 보완한 근거는 전략이 정형적이라는 source 의미와 부합한다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_0df2b010de190600e45013c55192b285f208426eaff72efbea2b5638caeca538",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "mn=-3의 네 부호 있는 정수인수쌍을 열거하여 a=±5,±1을 얻는 해설을 확인. 정수조건과 경우분류·계수비교 method가 결정적이며 bucket3/B23·level중은 유한경우를 직접 구조화하는 부담에 부합한다."
+    }
+  ],
+  "findingsResolved": [],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/A/independent_assets/E060-q09.png",
+      "sha256": "37d1b16254fa306236f4d947097f29b3c2456ea61b5d10616ad60d033ab282f7",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}
