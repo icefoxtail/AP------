@@ -16,6 +16,7 @@ from point_names import tex_map
 v = S.Symbol('v', real=True)
 NS = '{http://www.w3.org/2000/svg}'
 TOL = 0.01
+SET_COLOR_LINES = {'BLUE': '#1f5fa8', 'WARM': '#b85c00', 'GREEN': '#2e7d32', 'ROSE': '#b8325f', 'VIOLET': '#6b46b3'}
 RATIONAL = re.compile(r'^-?\d{1,15}(?:/\d{1,15})?$')
 DECIMAL = re.compile(r'^-?\d{1,6}\.\d{1,2}$')
 
@@ -726,6 +727,8 @@ def expected_figure(numberLine):
     for row in numberLine['rows']:
         kind = row['kind']
         parametric = None
+        if 'color' in row and (kind != 'SET' or not isinstance(row['color'], str) or row['color'] not in SET_COLOR_LINES):
+            raise ValueError('NL_OBSERVER_SET_COLOR_INVALID')
         if kind == 'SET':
             parts = []
             for piece in row['pieces']:
@@ -971,10 +974,20 @@ def audit_figure(numberLine, svg, pointNames=None):
             continue
         # SET / RESULT rows
         pieces = row['pieces']
+        color = row['spec'].get('color')
+        band_stroke = SET_COLOR_LINES[color] if color is not None else '#111'
+        if color is not None:
+            arrow = by_id.get('r%d-axis-arrow' % index)
+            if axis.get('stroke') != '#111' or arrow is None or arrow.get('fill') != '#111' or arrow.get('stroke') != 'none':
+                errors.append('NL_AXIS_COLOR:%d' % index)
+            for tick in (element for element in ticks if in_row(element)):
+                if tick.get('stroke') != '#111':
+                    errors.append('NL_TICK_COLOR:' + tick.get('id'))
         bands = sorted([element for element in lines if element.get('data-role') == 'solution-band' and in_row(element)], key=lambda element: int(element.get('data-piece', 0)))
         if len(bands) != len(pieces): errors.append('NL_BAND_COUNT:%d' % index)
         expected_ends = {}
         for k, (piece, band) in enumerate(zip(pieces, bands), start=1):
+            if band.get('stroke') != band_stroke: errors.append('NL_BAND_COLOR:' + band.get('id'))
             if abs(_num(band, 'y1') - axis_y) > TOL or abs(_num(band, 'y2') - axis_y) > TOL: errors.append('NL_BAND_OFF_AXIS:%s' % band.get('id'))
             x1, x2 = _num(band, 'x1'), _num(band, 'x2')
             if piece.inf.is_finite:
@@ -1005,7 +1018,8 @@ def audit_figure(numberLine, svg, pointNames=None):
             if element is None: continue
             if abs(_num(element, 'cx') - px(value)) > TOL or abs(_num(element, 'cy') - axis_y) > TOL: errors.append('NL_ENDPOINT_POSITION:' + element.get('id'))
             fill = (element.get('fill') or '').lower()
-            if fill != ('#111' if closed else '#fff') or element.get('data-state') != ('CLOSED' if closed else 'OPEN'): errors.append('NL_ENDPOINT_STATE:' + element.get('id'))
+            if fill != (band_stroke if closed else '#fff') or element.get('data-state') != ('CLOSED' if closed else 'OPEN'): errors.append('NL_ENDPOINT_STATE:' + element.get('id'))
+            if element.get('stroke') != band_stroke: errors.append('NL_ENDPOINT_COLOR:' + element.get('id'))
             text = element.get('data-value', '')
             try: ok_value = S.simplify(_value(text, 'NL_ENDPOINT_VALUE') - value) == 0
             except ValueError: ok_value = False
@@ -1027,6 +1041,7 @@ def audit_figure(numberLine, svg, pointNames=None):
         for text, element in integer_dots.items():
             if re.fullmatch(r'-?\d+', text or '') and abs(_num(element, 'cx') - px(int(text))) > TOL: errors.append('NL_INTEGER_POSITION:' + text)
             if (element.get('fill') or '').lower() != '#111': errors.append('NL_INTEGER_NOT_FILLED:' + text)
+            if color is not None and element.get('stroke') != '#111': errors.append('NL_INTEGER_COLOR:' + text)
         modes = dict(item.split(':') for item in (root.get('data-integer-labels') or '').split(',') if item)
         mode = modes.get(str(index))
         if want and mode not in ('ALL', 'ENDS') or not want and mode is not None: errors.append('NL_INTEGER_LABEL_MODE:%d' % index)
