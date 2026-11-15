@@ -431,7 +431,11 @@ window.questionBank = [
       "subConcept": "삼각형의 높이·넓이",
       "conditionsUsed": "AC=20, BC=24, sinC=3/5, cosC=4/5.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 H는 A에서 BC에 내린 수선의 발이다. AC=20, BC 전체 길이 24와 높이 AH=12를 표시한다. CH와 BH는 주황과 보라로 구분한다.",
+    "solutionImageCaption": "AH=20·(3/5)=12, CH=20·(4/5)=16이다. 따라서 BH=24−16=8이고 직각삼각형 ABH에서 AB=√(12²+8²)=4√13이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -597,7 +601,11 @@ window.questionBank = [
       "subConcept": "다각형의 길이·넓이",
       "conditionsUsed": "합동 마름모 6개, 한 변 12cm.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 점을 둘러싸는 여섯 마름모를 표시한다. 파랗게 칠한 한 마름모의 중심 쪽 각은 60°이고 한 변은 12 cm이다. 모든 변에는 같은 파란 눈금이 있다.",
+    "solutionImageCaption": "여섯 중심각은 같고 합이 360°이므로 각각 60°이다. 한 마름모의 넓이는 12·12·sin60°=72√3cm²이다. 여섯 개의 넓이를 더하면 432√3cm²이므로 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -651,7 +659,11 @@ window.questionBank = [
       "subConcept": "삼각형의 높이·넓이",
       "conditionsUsed": "테이프 폭 8cm, AC는 접는 선, ∠ABC=45°.",
       "integrationPatternExplanation": "M3 RPM 분류와 active PT/TPL 소유권은 분리했다. owner mismatch 또는 binding gap은 null로 남겼다."
-    }
+    },
+    "solutionImage": "assets/images/21_신흥중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 폭 8cm인 평행한 테이프 가장자리 중 위쪽 가장자리의 일부가 AC를 축으로 접혀 AB가 된다. 삼각형 ABC에서 ∠B=45°, AB와 BC는 같은 눈금이고 A에서 BC에 내린 높이는 8cm이다.",
+    "solutionImageCaption": "AC에 대한 접기와 AU∥BC에서 ∠BAC=∠ACB이므로 AB=BC이다. ∠B=45°이고 높이 AH=8cm이므로 BC=8/sin45°=8√2cm이다. 따라서 △ABC의 넓이는 ½·8·8√2=32√2cm², 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

@@ -1750,7 +1750,11 @@ window.questionBank = [
       },
       "rationale": "Direct review established source non-uniqueness. This independently authored complete M3 item is a replacement, not original recovery; no missing original conditions were inferred from answer choices.",
       "originalCropPreserved": true
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 외접한 사각형 ABCD의 접점 E,F,G,H와 주어진 AB=5cm, AE=2cm, CD=6cm, CF=3cm를 표시한다. x=BF, y=DH이며 꼭짓점별 같은 접선 길이 쌍을 눈금으로 묶는다.",
+    "solutionImageCaption": "BE=BF=5−2=3cm이고 CG=CF=3cm이다. CD=6cm이므로 DG=3cm, 따라서 DH=DG=3cm이다. x+y=3+3=6cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -2120,7 +2124,11 @@ window.questionBank = [
       "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "Mapped semantics retained; exact M3 binding pending owner-pack reconciliation."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 그림은 길이 14 cm인 현을 아래에 확대해 왼쪽 반현 AH에 x를 표시한다. 둘째 그림은 두 중심거리 4 cm와 길이가 같은 두 현을 색과 눈금으로 구분한다.",
+    "solutionImageCaption": "(1) 중심에서 현에 내린 수선은 현을 이등분하므로 x=14÷2=7 cm이다. (2) 중심에서 같은 거리에 있는 두 현의 길이는 같으므로 x=5 cm이다. 답은 (1) 7 cm, (2) 5 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -2203,6 +2211,10 @@ window.questionBank = [
       "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
       "projectionStatus": "PROJECTION_BINDING_PENDING",
       "projectionReason": "Mapped semantics retained; exact M3 binding pending owner-pack reconciliation."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 현 AB와 수선 OC가 M에서 만난다. 같은 반지름 OA와 OC는 파란색이며, AM과 MB는 주황 한 줄 눈금이다. ∠OAM=45°, AM=x cm, CM=3 cm를 표시한다.",
+    "solutionImageCaption": "(1) △OAM은 45°-45°-90°이므로 OA=√2x, OM=x이다. 따라서 a=√2, b=1이다. (2) OC=OA이고 OC=OM+MC이므로 √2x=x+3, x=3(√2+1) cm이다. (3) M은 AB의 중점이므로 AB=2x=6(√2+1) cm이다. 답은 (1) a=√2, b=1, (2) x=3(√2+1) cm, (3) AB=6(√2+1) cm이다.",
+    "solutionImageSize": "full"
   }
 ];
