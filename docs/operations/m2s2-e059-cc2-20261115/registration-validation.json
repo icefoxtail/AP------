@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "m2s2-e059-exact-cc-registration-validation-v1",
+  "status": "PASS_LOCAL_CURRENT_SOURCE_REGISTRAR_AND_CONSUMER",
+  "baseCommit": "6b608e3e606eb50ce4fd3d9ad6954d6fc4120f1f",
+  "request": {
+    "path": ".archive-meta-register/inbox/m2s2-e059-cc2-20261115.json",
+    "sha256": "1be9bd92d6fceee223590c12d138f9bd794928e4bb76ff1ee76cf5ede9a77852"
+  },
+  "officialRegistration": {
+    "status": "PASS_LOCAL_OFFICIAL_WRITE_REPLAY_BOUNDARY",
+    "baseCommit": "6b608e3e606eb50ce4fd3d9ad6954d6fc4120f1f",
+    "requestPath": ".archive-meta-register/inbox/m2s2-e059-cc2-20261115.json",
+    "requestSha256": "1be9bd92d6fceee223590c12d138f9bd794928e4bb76ff1ee76cf5ede9a77852",
+    "sourcePath": "archive/exams/original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js",
+    "sourceBlob": "b8d54021c11d6a90eb49742be004fa81654a37ea",
+    "selected": 2,
+    "registryChanges": 2,
+    "dryStatus": "PASS",
+    "writeStatus": "PASS",
+    "replayStatus": "PASS",
+    "replayPlannedPaths": [],
+    "outsideMetadata": 28888,
+    "outsideMetadataChanged": 0,
+    "identityUnchanged": true,
+    "outsideRuntime": 1409,
+    "outsideRuntimeChanged": 0,
+    "otherCanonicalConceptsUnchanged": true,
+    "sourceStudentPayloadsUnchanged": 23,
+    "outsideSourceObjectsUnchanged": 21,
+    "sourceReviewStatusUnchanged": true,
+    "derivedTagProofRef": {
+      "path": "docs/operations/m2s2-e059-cc2-20261115/derived-tag-status-transport.json",
+      "sha256": "496dc3d31d7e8595058bd076206468cb93558518b9e017f6dbbac1ee5ef9b0e8"
+    },
+    "existingSourceMetadataApprovals": 0,
+    "replayOutputBytesIdentical": true,
+    "actualMainRegistration": false,
+    "consumerVerification": "PENDING",
+    "immutableHeadShadow": "PENDING"
+  },
+  "fullCatalog": {
+    "sourceCount": 1211,
+    "questionCount": 28882,
+    "metadataRecordCount": 28890,
+    "command": [
+      "node",
+      "archive/tools/build-archive2-catalog.mjs"
+    ],
+    "stdoutSha256": "4d20ebd75616fc4c1c7a3afd657b4a5093853f7e09c57dbb939d14f4e19179a8"
+  },
+  "consumer": {
+    "status": "PASS",
+    "requestId": "m2s2-e059-cc2-20261115",
+    "totalQuestions": 2,
+    "scope": "PARTIAL_UIDS",
+    "partialUidCount": 2,
+    "expectedQuestionCount": 23,
+    "replay": true,
+    "plannedPaths": [],
+    "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+    "browserStatus": "NOT_RUN",
+    "consumerLanes": {
+      "canonical": 2,
+      "usableMetaLane": 0
+    },
+    "reportSha256": "10e5f85bd65c2737e6672241554684bd229c951a980354e967c78db344d40c9d"
+  },
+  "changedUidConsumer": {
+    "status": "PASS",
+    "counts": {
+      "changed": 2,
+      "checked": 2,
+      "passed": 2,
+      "skippedUnchanged": 0
+    },
+    "failures": [],
+    "assignmentPending": [],
+    "unobservedFields": [],
+    "reportSha256": "8a72d55808807ab4b145e976f797352c93185462cb287a5ece7a958599633655"
+  },
+  "immutableHeadShadow": {
+    "status": "NOT_RUN_AGAINST_FINAL_INTEGRATED_MAIN",
+    "reason": "Official selectNativeRequests includes inherited partial-preservation inputs. Baseline 6b still contains the E054/Wangun source bindings being repaired by PR2172; those requests are not filtered out or relabelled PASS here.",
+    "requiredGate": "Re-run exact fixed-input selection and rederiveNativePlans on the final integrated main/PR snapshot."
+  },
+  "remoteCi": "REQUIRED",
+  "browserStatus": "NOT_RUN_METADATA_TRANSPORT",
+  "newMathematicalQa": false,
+  "newSemanticJudgment": false,
+  "productionRegistrationClaim": false
+}

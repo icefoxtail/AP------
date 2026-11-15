@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "archive-native-explicit-cc-scope-transport-v1",
+  "baseCommit": "6b608e3e606eb50ce4fd3d9ad6954d6fc4120f1f",
+  "nativeReview": {
+    "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+    "originalPath": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+    "path": ".archive-meta-register/evidence/m2s2-cc7-ready3-20261115/E059.review.json",
+    "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544"
+  },
+  "nativeRootAcceptance": {
+    "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+    "originalPath": "archive/data/meta-review/m2-s2-20261114/exams/E059/root-acceptance.json",
+    "path": ".archive-meta-register/evidence/m2s2-cc7-ready3-20261115/E059.root-acceptance.json",
+    "sha256": "42e56ecde1852bf5818cd21498c96e15b3deed2a5956b2fddc0d3da625535f73",
+    "reviewSha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544",
+    "semanticReviewStatus": "PRO_REVIEW_COMPLETE"
+  },
+  "finalization": {
+    "commit": "1bd67bd03dfc299d371ea0e9ee55677bf4e9052a",
+    "path": ".archive-meta-register/evidence/m2s2-cc7-definition-finalization-20261115.json",
+    "sha256": "8f6cbbfce02aa128a60b786b28e2eb5521405342b8d09ad2b42daa92ce3fdb00"
+  },
+  "rows": [
+    {
+      "questionUid": "qid_v1_7c0c618d63f2d9206e5e301a165195bbdf84f94024985da9a551967f5eedea78",
+      "sourceOrdinal": 7,
+      "explicitAfterCurriculum": "2015",
+      "explicitAfterPrimary": {
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION"
+      },
+      "nativeCrossConceptKeys": [
+        "CC_TRIANGLE_INCENTER",
+        "CC_TRIANGLE_AREA"
+      ],
+      "addedFinalizedConcept": "CC_TRIANGLE_AREA_INRADIUS_SEMIPERIMETER",
+      "proposalIds": [
+        "B-E059-INCIRCLE-SEMIPERIMETER"
+      ],
+      "scopeSource": {
+        "field": "semanticRpm.rpmRecordId -> immutable LOCKED RPM record.scope",
+        "rpmRecordId": "M2-RPM-100",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "recordStableSha256": "00da97789e5be6aab21d39f61cdd23559e1f381fe1dd7f042bd76a27a9fa3159",
+        "currentRecordExact": true
+      },
+      "rendererRefs": [
+        {
+          "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q07.png",
+          "sha256": "5fdd824e91ef61c6ea52a8c619b842cf2631881e34c481d235607c66717fde74"
+        },
+        {
+          "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q7-solution.svg",
+          "sha256": "82bb09e3008c9400a33a94580aabcd3475c608e92513c96ee04486dadec81b42"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9",
+      "sourceOrdinal": 12,
+      "explicitAfterCurriculum": "2015",
+      "explicitAfterPrimary": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION"
+      },
+      "nativeCrossConceptKeys": [
+        "CC_CIRCLE_CIRCUMFERENCE"
+      ],
+      "addedFinalizedConcept": "CC_CYLINDER_LATERAL_UNFOLDING_SHORTEST_PATH",
+      "proposalIds": [
+        "B-E059-CYLINDER-UNFOLD"
+      ],
+      "scopeSource": {
+        "field": "semanticRpm.rpmRecordId -> immutable LOCKED RPM record.scope",
+        "rpmRecordId": "M2-RPM-106",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "recordStableSha256": "93c1ec08cf25021f371af5367d0ac5a645e9c7d80c660204bca385d7d45cbeeb",
+        "currentRecordExact": true
+      },
+      "rendererRefs": [
+        {
+          "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q12-solution.svg",
+          "sha256": "e856d5f926726dcef66ed2576542cf9ec01d5bfdd255fc92f5a3ea71c19e80b5"
+        },
+        {
+          "path": "archive/assets/images/19_신흥중_2학기_기말_중2_기출/q12.png",
+          "sha256": "fb6e7b003d77e4e943d0ccf81308b879c6d3fd63c23376c2caae45303f7b2c2d"
+        }
+      ]
+    }
+  ],
+  "crosswalk": {
+    "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+    "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39"
+  },
+  "newCurriculumInference": false,
+  "newPrimaryInference": false,
+  "newMathematicalQa": false,
+  "newReview2Claim": false,
+  "existingSourceMetadataApprovals": 0
+}
