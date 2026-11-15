@@ -30,8 +30,8 @@ window.questionBank = [
     "wide": false,
     "level": "하",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "정의 직접 적용이지만 제곱근과 기호의 값 구별이 보기 함정. 하 legacy는 기초 개념 수준을 나타내므로 인접 mismatch 허용.",
     "primaryMethod": "제곱근과 양의 제곱근의 정의를 각 보기별 적용",
@@ -97,9 +97,9 @@ window.questionBank = [
     ],
     "wide": false,
     "level": "하",
-    "difficultyBucket": 1,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "넓이18에서 양의 제곱근을 구하는 직접 적용.",
     "primaryMethod": "넓이 보존으로 양의 제곱근 결정",
@@ -126,7 +126,7 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_RECTANGLE_AREA", "CC_SQUARE_AREA"],
     "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "SEQUENTIAL",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
@@ -192,7 +192,7 @@ window.questionBank = [
     "projectionReason": "EXACT_ACTIVE_BINDING_PENDING",
     "crossConceptKeys": [],
     "conditionKeys": ["COND_POSITIVE"],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_ACTIVE_PT_TPL_EXACT_M3_BINDING_PENDING"
   },
   {
@@ -241,8 +241,8 @@ window.questionBank = [
       "l3": "제곱근",
       "l4": "제곱근의 성질"
     },
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "rpmPrimaryId": "M3-RPM-002",
@@ -255,7 +255,7 @@ window.questionBank = [
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -287,9 +287,9 @@ window.questionBank = [
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "보기마다 제곱·이항·역수·음수 부호 전략 선택 필요.",
     "primaryMethod": "양수 제곱 비교·차의 부호·역수 비교",
@@ -352,7 +352,7 @@ window.questionBank = [
     "level": "상",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B23",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "도형에서 두 직각삼각형을 읽고 길이조건을 수직선으로 연결. 비정형/존재성 중심 단계는 없어4 아님;2/3 재검 후3. 상 legacy와 인접 차이 허용.",
     "primaryMethod": "모눈 직각삼각형의 피타고라스 후 수직선 길이 합",
@@ -415,8 +415,8 @@ window.questionBank = [
     "wide": false,
     "level": "하",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "유리화 전처리 뒤 표준 동류근호 계산. 기초 계산인 하 legacy와2 인접 차이 허용.",
     "primaryMethod": "동류근호로 정리 후 계수 계산",
@@ -509,7 +509,7 @@ window.questionBank = [
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
     "conditionKeys": ["COND_NATURAL_NUMBER","COND_RANGE"],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -572,7 +572,7 @@ window.questionBank = [
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
     "conditionKeys": ["COND_NATURAL_NUMBER"],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -634,8 +634,8 @@ window.questionBank = [
     "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_POSITIVE"],
-    "integrationPattern": "INTERDEPENDENT",
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -696,7 +696,7 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_UNMATERIALIZED",
     "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_PERFECT_SQUARE"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
@@ -762,7 +762,7 @@ window.questionBank = [
     "projectionReason": "EXACT_ACTIVE_BINDING_PENDING",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_ACTIVE_PT_TPL_EXACT_M3_BINDING_PENDING"
   },
   {
@@ -888,7 +888,7 @@ window.questionBank = [
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -921,8 +921,8 @@ window.questionBank = [
     "wide": false,
     "level": "하",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "선전개라는 익숙한 전처리로 매우 짧아짐. 하 legacy 유지 가능한 인접 차이.",
     "primaryMethod": "전개 후 소거하여 합을 대입",
@@ -951,7 +951,7 @@ window.questionBank = [
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -1013,8 +1013,8 @@ window.questionBank = [
     "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_POSITIVE"],
-    "integrationPattern": "INTERDEPENDENT",
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -1046,7 +1046,7 @@ window.questionBank = [
     ],
     "wide": false,
     "level": "중",
-    "difficultyBucket": 2,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
@@ -1077,7 +1077,7 @@ window.questionBank = [
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -1110,8 +1110,8 @@ window.questionBank = [
     "wide": false,
     "level": "하",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "기본 합차공식 또는 직접계산 가능. 하 legacy와2 인접 차이 허용.",
     "primaryMethod": "차의 제곱공식으로 수를 인수분해",
@@ -1140,7 +1140,7 @@ window.questionBank = [
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -1203,7 +1203,7 @@ window.questionBank = [
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
     "conditionKeys": ["COND_POSITIVE"],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -1266,7 +1266,7 @@ window.questionBank = [
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -1329,7 +1329,7 @@ window.questionBank = [
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -1362,8 +1362,8 @@ window.questionBank = [
     "wide": false,
     "level": "하",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "중간수2022를 찾는 익숙한 전처리. 기초 수계산 하 legacy 유지.",
     "primaryMethod": "두 수의 중간값을 이용해 합차공식 적용",
@@ -1392,7 +1392,7 @@ window.questionBank = [
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -1448,8 +1448,8 @@ window.questionBank = [
     "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_RANGE"],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -1505,8 +1505,8 @@ window.questionBank = [
     "projectionReason": "RPM_ONLY_COMPATIBILITY_PROJECTION",
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_NATURAL_NUMBER","COND_RANGE"],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   },
   {
@@ -1533,8 +1533,8 @@ window.questionBank = [
     "wide": false,
     "level": "중",
     "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "인접 네 인수의 끝끼리/가운데끼리 재배열하여 같은 이차식을 만드는 표현 선택.",
     "primaryMethod": "주어진 유리식 조건을 공통 이차식으로 바꾸어 두 곱에 대입",
@@ -1549,8 +1549,8 @@ window.questionBank = [
       "l3": "인수분해의 활용",
       "l4": "인수분해를 이용한 식의 값"
     },
-    "subUnitKey": "M3-02-FACTORIZATION",
-    "subUnit": "인수분해",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "rpmPrimaryId": "M3-RPM-027",
@@ -1563,7 +1563,7 @@ window.questionBank = [
     "nullReason": "NO_SAFE_LEGACY_PROJECTION_IN_CURRENT_M3_CROSSWALK",
     "crossConceptKeys": [],
     "conditionKeys": ["COND_NONZERO"],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "NONE",
     "metaEvidenceDebt": "RPM_PRIMARY_MIGRATION_GAP_NO_ACTIVE_MAPPING"
   }
 ];
