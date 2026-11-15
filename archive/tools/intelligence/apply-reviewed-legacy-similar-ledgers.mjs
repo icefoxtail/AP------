@@ -82,6 +82,28 @@ export function verifyVisualRebindQuestions(ledger, oldQuestions, questions, fig
   return reviewedQids;
 }
 
+function readPriorVisualFingerprints(commit, receiptPath, name, ledger, oldQuestions) {
+  const fingerprints = new Map();
+  if (commit === undefined) return fingerprints;
+  requireAssert(/^[a-f0-9]{40}$/.test(commit), 'prior visual rebind commit ' + name);
+  execFileSync('git', ['merge-base', '--is-ancestor', commit, 'HEAD'], { cwd: repo, stdio: 'ignore' });
+  const readAtCommit = file => execFileSync('git', ['show', commit + ':' + file], { cwd: repo, maxBuffer: 8 * 1024 * 1024 });
+  const prior = JSON.parse(readAtCommit(path.relative(repo, receiptPath).replaceAll('\\', '/')).toString('utf8'));
+  const priorCode = readAtCommit('archive/exams/' + ledger.sourceFile);
+  requireAssert(prior.schemaVersion === 'JS_ARCHIVE_LEGACY_SIMILAR_VISUAL_REBIND_V1' &&
+    prior.sourceFile === ledger.sourceFile && prior.reviewLedger === name &&
+    prior.previousGitBlobSha === ledger.sourceGitBlobSha && prior.currentGitBlobSha === gitBlob(priorCode) &&
+    Array.isArray(prior.figures) && prior.figures.length > 0, 'prior visual rebind receipt ' + name);
+  const priorQuestions = loadQuestions(priorCode, ledger.sourceFile);
+  const qids = verifyVisualRebindQuestions(ledger, oldQuestions, priorQuestions, prior.figures,
+    asset => readAtCommit('archive/' + asset));
+  for (const qid of qids) {
+    const q = priorQuestions[qid - 1];
+    fingerprints.set(qid, { source: sourceHash(q), body: bodyHash(q) });
+  }
+  return fingerprints;
+}
+
 export function readVisualRebind(name, ledger, code, questions) {
   const receiptPath = path.join(rebindDir, name.replace(/\.review\.json$/, '.json'));
   if (!fs.existsSync(receiptPath)) return null;
@@ -97,7 +119,8 @@ export function readVisualRebind(name, ledger, code, questions) {
   const oldQuestions = loadQuestions(oldCode, ledger.sourceFile);
   const reviewedQids = verifyVisualRebindQuestions(ledger, oldQuestions, questions, receipt.figures,
     asset => fs.readFileSync(safePath(archive, asset)));
-  return { reviewedQids, evidenceRef: path.relative(repo, receiptPath).replaceAll('\\', '/') };
+  const priorFingerprints = readPriorVisualFingerprints(receipt.priorVisualRebindCommit, receiptPath, name, ledger, oldQuestions);
+  return { reviewedQids, priorFingerprints, evidenceRef: path.relative(repo, receiptPath).replaceAll('\\', '/') };
 }
 function verifyMaster(row, master, taxonomy, bindings, conditions) {
   const scope = master.records.find((r) => r.curriculum === row.rpmCurriculum &&
@@ -182,20 +205,28 @@ export function applyReviewedLegacySimilarLedgers({ prepareSourceLinksFor } = {}
       requireAssert(q.answer === row.independentAnswer, 'reviewed answer changed q' + row.qid);
       const sourceFingerprint = sourceHash(q);
       const contentFingerprint = bodyHash(q);
+      const priorVisual = visualRebind ? rebind.priorFingerprints.get(Number(row.qid)) : null;
+      const sourceBindings = [row.sourceFingerprint, sourceFingerprint];
+      const bodyBindings = [row.sourceBodyFingerprint, contentFingerprint];
+      if (priorVisual) {
+        sourceBindings.push(priorVisual.source);
+        bodyBindings.push(priorVisual.body);
+      }
       requireAssert(visualRebind || row.sourceFingerprint === sourceFingerprint && row.sourceBodyFingerprint === contentFingerprint,
         'frozen per-item content/solution digest q' + row.qid);
       requireAssert(q.standardUnitKey === row.standardUnitKey && q.subUnitKey === row.subUnitKey &&
         q.standardUnit === row.standardUnit && q.subUnit === row.subUnit, 'physical canonical unit mismatch q' + row.qid);
       requireAssert([meta.sourceFingerprint, row.sourceFingerprint].includes(row.oldSourceFingerprint) ||
-        [row.sourceFingerprint, sourceFingerprint].includes(meta.sourceFingerprint), 'unrecognized prior fingerprint q' + row.qid);
+        sourceBindings.includes(meta.sourceFingerprint), 'unrecognized prior fingerprint q' + row.qid);
       requireAssert([meta.contentFingerprint, row.sourceBodyFingerprint].includes(row.oldSourceBodyFingerprint) ||
-        [row.sourceBodyFingerprint, contentFingerprint].includes(meta.contentFingerprint), 'unrecognized prior body fingerprint q' + row.qid);
+        bodyBindings.includes(meta.contentFingerprint), 'unrecognized prior body fingerprint q' + row.qid);
       const canonicalSelection = verifyMaster(row, master, taxonomy, bindings, conditions);
       if (visualRebind) {
         const candidates = sourceLinksByItem.get(sourceFile + '#' + row.sourceOrdinal) ?? [];
         for (const link of candidates) {
-          requireAssert([row.sourceFingerprint, sourceFingerprint].includes(link.sourceFingerprint) &&
-            [row.sourceBodyFingerprint, contentFingerprint].includes(link.sourceBodyFingerprint),
+          requireAssert(([row.sourceFingerprint, sourceFingerprint].includes(link.sourceFingerprint) &&
+            [row.sourceBodyFingerprint, contentFingerprint].includes(link.sourceBodyFingerprint)) ||
+            (priorVisual?.source === link.sourceFingerprint && priorVisual?.body === link.sourceBodyFingerprint),
             'visual rebind existing basic parent fingerprint q' + row.qid);
           if (link.sourceFingerprint === sourceFingerprint && link.sourceBodyFingerprint === contentFingerprint) continue;
           requireAssert(prepareSourceLinksFor === name, 'visual rebind reviewed source link must be prepared q' + row.qid);
@@ -246,7 +277,8 @@ export function applyReviewedLegacySimilarLedgers({ prepareSourceLinksFor } = {}
         updated++;
       }
       if (id.sourceFingerprint !== sourceFingerprint) {
-        requireAssert([row.oldSourceFingerprint, row.sourceFingerprint].includes(id.sourceFingerprint), 'identity old fingerprint q' + row.qid);
+        requireAssert(id.sourceFingerprint === row.oldSourceFingerprint || sourceBindings.includes(id.sourceFingerprint),
+          'identity old fingerprint q' + row.qid);
         id.sourceFingerprint = sourceFingerprint;
         updated++;
       }
