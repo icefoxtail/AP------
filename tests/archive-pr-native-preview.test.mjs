@@ -261,10 +261,13 @@ test('selected add-only binding provider precedes its exact consumer in PR and m
 });
 
 for (const field of Object.keys(BINDING_KEY)) test(`binding dependency does not cross a different ${field}`, t => {
-  const f = bindingDependencyFixture(t, { mutateProvider: r => {
+  const mutateProvider = r => {
     r.registryChanges[0].match[field] += '-other'; r.registryChanges[0].after[field] += '-other';
-  } });
+  };
+  const f = bindingDependencyFixture(t, { mutateProvider });
   assert.deepEqual(f.select().map(r => r.path), [REQUEST, BINDING_PROVIDER]);
+  const inherited = bindingDependencyFixture(t, { mutateProvider, unchangedProvider: true });
+  assert.deepEqual(inherited.select().map(r => r.path), [REQUEST]);
 });
 
 for (const [name, mutateProvider] of [
@@ -276,11 +279,189 @@ for (const [name, mutateProvider] of [
 ]) test(`binding dependency leaves ${name} to the unchanged registrar guards`, t => {
   const f = bindingDependencyFixture(t, { mutateProvider });
   assert.deepEqual(f.select().map(r => r.path), [REQUEST, BINDING_PROVIDER]);
+  const inherited = bindingDependencyFixture(t, { mutateProvider, unchangedProvider: true });
+  assert.deepEqual(inherited.select().map(r => r.path), [REQUEST]);
 });
 
-test('binding dependency never pulls an unchanged provider from another inbox scope', t => {
+test('binding dependency selects only its exact unchanged HEAD provider before the changed consumer', t => {
   const f = bindingDependencyFixture(t, { unchangedProvider: true });
-  assert.deepEqual(f.select().map(r => r.path), [REQUEST]);
+  const selected = f.select();
+  assert.deepEqual(selected.map(r => r.path), [BINDING_PROVIDER, REQUEST]);
+  assert.deepEqual(selected[0].inheritedBindingProvider, {
+    baseSha: f.baseSha, requestSha256: sha(json(f.provider)),
+    requiredBy: [{ requestPath: REQUEST, questionUid: 'fixture', sourceOrdinal: 5, key: BINDING_KEY }],
+  });
+  assert.equal(selected[1].inheritedBindingProvider, undefined);
+  assert.equal(f.calls.length, 0, 'selection itself never executes a registrar');
+});
+
+function changeOnlyBindingConsumer(f) {
+  const baseSha = f.git('rev-parse', 'HEAD');
+  f.request.items[0].reason = `changed consumer input after ${baseSha}`;
+  f.write(REQUEST, json(f.request)); f.git('add', REQUEST); f.git('commit', '-qm', 'consumer input only');
+  const headSha = f.git('rev-parse', 'HEAD');
+  return { root: f.root, baseSha, headSha };
+}
+
+test('binding provider closure follows transitive exact dependencies and rejects their cycle', t => {
+  const f = bindingDependencyFixture(t);
+  const secondKey = { ...BINDING_KEY, problemTypeKey: 'PT_SECOND' };
+  const secondPath = '.archive-meta-register/inbox/zzz-second-provider.json';
+  f.provider.items[0].after = copy(secondKey);
+  const second = copy(f.provider); second.requestId = 'second-provider';
+  second.items[0].questionUid = 'second-uid'; second.items[0].sourceOrdinal = 7;
+  second.registryChanges[0].match = copy(secondKey);
+  second.registryChanges[0].after = { ...copy(secondKey), status: 'ACTIVE', ownerPack: 'MIDDLE2' };
+  f.write(BINDING_PROVIDER, json(f.provider)); f.write(secondPath, json(second));
+  f.git('add', BINDING_PROVIDER, secondPath); f.git('commit', '-qm', 'pending transitive provider');
+  let input = changeOnlyBindingConsumer(f), selected = selectNativeRequests(input);
+  assert.deepEqual(selected.map(r => r.path), [secondPath, BINDING_PROVIDER, REQUEST]);
+  assert.equal(selected[0].inheritedBindingProvider.requiredBy[0].requestPath, BINDING_PROVIDER);
+  assert.equal(selected[1].inheritedBindingProvider.requiredBy[0].requestPath, REQUEST);
+  second.items[0].after = copy(BINDING_KEY); f.write(secondPath, json(second));
+  f.git('add', secondPath); f.git('commit', '-qm', 'cyclic pending provider');
+  f.request.items[0].reason = 'next consumer revision';
+  input = changeOnlyBindingConsumer(f);
+  assert.throws(() => selectNativeRequests(input), /REGISTRY_DEPENDENCY_CYCLE/);
+});
+
+test('binding provider closure rejects two exact providers even if only its consumer changed', t => {
+  const f = bindingDependencyFixture(t), duplicate = copy(f.provider);
+  duplicate.requestId = 'duplicate-provider'; duplicate.items[0].questionUid = 'duplicate-uid';
+  const file = '.archive-meta-register/inbox/duplicate-provider.json';
+  f.write(file, json(duplicate)); f.git('add', file); f.git('commit', '-qm', 'second pending exact provider');
+  assert.throws(() => selectNativeRequests(changeOnlyBindingConsumer(f)), /REGISTRY_DEPENDENCY_AMBIGUOUS/);
+  assert.equal(f.calls.length, 0);
+});
+
+test('binding provider closure excludes unrelated providers, including an unrelated ambiguous key', t => {
+  const f = bindingDependencyFixture(t);
+  for (const name of ['unrelated-a', 'unrelated-b']) {
+    const req = copy(f.provider); req.requestId = name; req.items[0].questionUid = name;
+    for (const value of [req.registryChanges[0].match, req.registryChanges[0].after]) value.subUnitKey += '-unrelated';
+    const file = `.archive-meta-register/inbox/${name}.json`;
+    f.write(file, json(req)); f.git('add', file);
+  }
+  f.git('commit', '-qm', 'unrelated pending inputs');
+  const input = changeOnlyBindingConsumer(f);
+  assert.deepEqual(selectNativeRequests(input).map(r => r.path), [BINDING_PROVIDER, REQUEST]);
+});
+
+test('binding provider closure uses Git dispatch and rejects selected working-copy drift', t => {
+  const f = bindingDependencyFixture(t, { unchangedProvider: true });
+  f.write(BINDING_PROVIDER, json({ ...f.provider, requestId: 'forged' }));
+  assert.throws(f.select, /REQUEST_NOT_FIXED/);
+  const foreign = bindingDependencyFixture(t, { unchangedProvider: true, mutateProvider: r => {
+    r.registryChanges[0].match.curriculum = '2022'; r.registryChanges[0].after.curriculum = '2022';
+  } });
+  const forged = copy(foreign.provider);
+  forged.registryChanges[0].match = copy(BINDING_KEY);
+  Object.assign(forged.registryChanges[0].after, BINDING_KEY);
+  foreign.write(BINDING_PROVIDER, json(forged));
+  foreign.write('.archive-meta-register/inbox/untracked-provider.json', json(forged));
+  assert.deepEqual(foreign.select().map(r => r.path), [REQUEST]);
+});
+
+test('binding provider closure cannot use a deleted or nested provider and retains source/evidence gates', t => {
+  const deleted = bindingDependencyFixture(t, { unchangedProvider: true });
+  deleted.git('rm', BINDING_PROVIDER); deleted.git('commit', '-qm', 'deleted pending provider');
+  assert.deepEqual(deleted.select().map(r => r.path), [REQUEST]);
+  const nested = bindingDependencyFixture(t, { unchangedProvider: true });
+  nested.write('.archive-meta-register/inbox/nested/provider.json', json(nested.provider));
+  nested.git('rm', BINDING_PROVIDER); nested.git('add', '.archive-meta-register/inbox/nested/provider.json');
+  nested.git('commit', '-qm', 'foreign nested provider');
+  assert.deepEqual(nested.select().map(r => r.path), [REQUEST]);
+  const drift = bindingDependencyFixture(t, { unchangedProvider: true });
+  drift.write(EVIDENCE, json({ altered: true }));
+  assert.throws(drift.select, /EVIDENCE_DRIFT/);
+  drift.write(EVIDENCE, drift.git('show', `HEAD:${EVIDENCE}`) + '\n');
+  drift.write(SOURCE, fs.readFileSync(path.join(drift.root, SOURCE), 'utf8') + '\n');
+  drift.git('add', SOURCE); drift.git('commit', '-qm', 'unreviewed source bytes');
+  assert.throws(drift.select, /SOURCE_NOT_FIXED/);
+});
+
+// Model an actual registrar dependency, rather than just testing array order:
+// the consumer refuses until the canonical row has been officially written.
+function bindingProofRunner(f) {
+  const bindingPath = f.provider.registryChanges[0].path;
+  const files = [BINDING_PROVIDER, REQUEST], read = (target, file) => JSON.parse(fs.readFileSync(path.join(target, file), 'utf8'));
+  const writes = [];
+  const run = (program, args, target = f.root) => {
+    if (args[0]?.endsWith('/register-reviewed-exam-meta-source.mjs')) {
+      const file = args[args.indexOf('--request') + 1]; assert.ok(files.includes(file));
+      const request = read(target, file), receiptPath = `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${request.requestId}.json`;
+      const replay = fs.existsSync(path.join(target, receiptPath));
+      const phase = args.includes('--verify-projection') ? 'projection' : args.includes('--write') ? 'write' : 'dry';
+      if (file === REQUEST || phase === 'projection') {
+        if (!fs.existsSync(path.join(target, bindingPath))) throw Error('ACTIVE_BINDING_MISSING');
+        assert.deepEqual(read(target, bindingPath), f.provider.registryChanges[0].after);
+      }
+      const plannedPaths = replay ? [] : [META, receiptPath, ...(file === BINDING_PROVIDER ? [bindingPath] : [])].sort();
+      if (phase === 'projection') assert.equal(replay, true);
+      if (phase === 'write' && !replay) {
+        if (file === BINDING_PROVIDER) f.write(bindingPath, json(request.registryChanges[0].after), target);
+        const metadata = read(target, META), item = request.items[0];
+        metadata.records = metadata.records.filter(r => r.questionUid !== item.questionUid);
+        metadata.records.push({ questionUid: item.questionUid, ...item.after });
+        metadata.records.sort((a, b) => a.questionUid.localeCompare(b.questionUid, 'en'));
+        f.write(META, json(metadata), target);
+        f.write(receiptPath, json({ requestSha256: sha(fs.readFileSync(path.join(target, file))) }), target);
+        writes.push({ target, file });
+      }
+      return json({ status: 'PASS', requestId: request.requestId, totalQuestions: 1, replay,
+        scope: 'PARTIAL_UIDS', partialUidCount: 1, expectedQuestionCount: 24, plannedPaths,
+        consumerSearchStatus: phase === 'projection' ? 'STATIC_VALUES_VERIFIED' : 'NOT_RUN' });
+    }
+    if (args[0]?.endsWith('/verify-changed-uid-consumer-approval.mjs')) {
+      const requested = args.flatMap((value, i) => value === '--request' ? [args[i + 1]] : []);
+      assert.deepEqual(requested, files);
+      const exams = requested.map(file => {
+        const request = read(target, file), row = read(target, META).records.find(r => r.questionUid === request.items[0].questionUid);
+        assert.deepEqual(row, { questionUid: request.items[0].questionUid, ...request.items[0].after });
+        return { file, kind: 'reviewed-exam-v2', sourceFile: request.sourceArchiveFile,
+          changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 };
+      });
+      return json({ status: 'PASS', counts: { changed: 2, checked: 2, passed: 2, skippedUnchanged: 0 },
+        exams, failures: [], unobservedFields: [], assignmentPending: [] });
+    }
+    return f.run(program, args, target);
+  };
+  return { run, writes };
+}
+
+test('PR proof producer, preparation, Consumer and immutable replay all include the required unchanged provider', t => {
+  const f = bindingDependencyFixture(t, { unchangedProvider: true }), runner = bindingProofRunner(f);
+  const repo = 'owner/repository', options = { root: f.root, repo, expectedSha: f.headSha, runId: 41, runAttempt: 1,
+    event: { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
+      base: { sha: f.baseSha, repo: { id: 101 } }, head: { sha: f.headSha, repo: { id: 101 } } } }, run: runner.run };
+  const before = fs.readFileSync(path.join(f.root, BINDING_PROVIDER)), proof = producePrRegistrationProof(options);
+  assert.equal(proof.status, 'PASS');
+  assert.deepEqual(proof.nativePreview.requests.map(r => [r.path, r.questionCount, r.sourceQuestionCount]),
+    [[BINDING_PROVIDER, 1, 24], [REQUEST, 1, 24]]);
+  assert.deepEqual(proof.nativePreview.plans.map(r => r.requestPath), [BINDING_PROVIDER, REQUEST]);
+  assert.deepEqual(runner.writes.filter(r => r.target === f.root).map(r => r.file), [BINDING_PROVIDER, REQUEST]);
+  const snapshot = f.snapshot();
+  assert.equal(validateLocalRegistrationProof({ ...options, proof }).reusable, true);
+  assert.deepEqual(f.snapshot(), snapshot);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, BINDING_PROVIDER)), before);
+  const shadowTargets = [...new Set(runner.writes.filter(r => r.target !== f.root).map(r => r.target))];
+  assert.ok(shadowTargets.length > 0);
+  for (const target of shadowTargets) assert.equal(fs.existsSync(target), false);
+  const forged = copy(proof); forged.nativePreview.requests.shift();
+  assert.throws(() => validateLocalRegistrationProof({ ...options, proof: forged }), /INPUT_MANIFEST_MISMATCH/);
+});
+
+test('missing or refused exact providers cannot be replaced by a foreign key or execute the consumer', t => {
+  const missing = bindingDependencyFixture(t, { unchangedProvider: true, mutateProvider: r => {
+    r.registryChanges[0].match.curriculum = '2022'; r.registryChanges[0].after.curriculum = '2022';
+  } }), runner = bindingProofRunner(missing);
+  assert.throws(() => applyNativeRequests({ root: missing.root, requests: missing.select(), run: runner.run }), /ACTIVE_BINDING_MISSING/);
+  assert.deepEqual(runner.writes, []);
+  const refused = bindingDependencyFixture(t, { unchangedProvider: true }), calls = [];
+  assert.throws(() => applyNativeRequests({ root: refused.root, requests: refused.select(), run: (_program, args) => {
+    calls.push(args[args.indexOf('--request') + 1]); throw Error('PROVIDER_OFFICIAL_REFUSAL');
+  } }), /PROVIDER_OFFICIAL_REFUSAL/);
+  assert.deepEqual(calls, [BINDING_PROVIDER]);
 });
 
 test('binding dependency does not infer missing after keys from before or source', t => {

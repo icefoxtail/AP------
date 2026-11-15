@@ -1,6 +1,7 @@
 // Apply source-bound v2 and reviewed difficulty5 requests in a disposable CI checkout.
-// PRs select changed requests plus exact inherited, approval-preserving partial
-// FINAL_QA source rebinds. Pushes select the exact pending HEAD inbox.
+// PRs select changed requests, their exact pending ACTIVE binding providers,
+// and inherited approval-preserving partial FINAL_QA source rebinds.
+// Pushes select the exact pending HEAD inbox.
 // The main writer, inbox consumption and approval policy remain unchanged.
 import fs from 'node:fs';
 import os from 'node:os';
@@ -283,10 +284,58 @@ function partialFinalQaPreservation(request) {
       && item.rebind === undefined && item.sourceReview === undefined);
 }
 
+// Expand only explicit registry dependencies of the selected requests. Dispatch
+// comes from the same immutable HEAD inbox, never a working copy or moving ref.
+// A matching provider must still pass the ordinary request/source/evidence
+// selector and official registrar; this does not approve a canonical row.
+function selectBindingProviderClosure({ root, baseSha, headSha, files, basePaths, pendingPaths }) {
+  const fixed = new Map(), providers = new Map();
+  for (const file of pendingPaths) {
+    const raw = gitBytes(root, `${headSha}:${file}`);
+    let request;
+    try { request = JSON.parse(raw); } catch { continue; }
+    if (!request || typeof request !== 'object' || Array.isArray(request)) continue;
+    const descriptor = nativeRegistryDependencyDescriptor(request);
+    if (!descriptor) continue;
+    fixed.set(file, { raw, descriptor });
+    for (const row of descriptor.provides) {
+      const key = JSON.stringify(row.key);
+      if (!providers.has(key)) providers.set(key, []);
+      providers.get(key).push(file);
+    }
+  }
+  const selected = new Set(files), queue = [...selected], inherited = new Map();
+  for (let i = 0; i < queue.length; i++) {
+    const consumer = queue[i];
+    for (const row of fixed.get(consumer)?.descriptor.requires || []) {
+      const matches = providers.get(JSON.stringify(row.key)) || [];
+      if (matches.length > 1) fail('REGISTRY_DEPENDENCY_AMBIGUOUS');
+      const provider = matches[0];
+      // A missing provider may be an existing canonical binding. Leave that
+      // decision, including refusal of a missing ACTIVE row, to the registrar.
+      if (!provider || provider === consumer) continue;
+      if (!selected.has(provider)) {
+        const raw = fixed.get(provider).raw;
+        if (!basePaths.has(provider) || !raw.equals(gitBytes(root, `${baseSha}:${provider}`)))
+          fail(`INHERITED_BINDING_PROVIDER_CHANGED:${provider}`);
+        inherited.set(provider, { baseSha, requestSha256: sha(raw), requiredBy: [] });
+        selected.add(provider); queue.push(provider);
+      }
+      const reason = inherited.get(provider);
+      const witness = { requestPath: consumer, questionUid: row.questionUid, sourceOrdinal: row.sourceOrdinal, key: row.key };
+      if (reason && !reason.requiredBy.some(value => eq(value, witness))) reason.requiredBy.push(witness);
+    }
+  }
+  for (const reason of inherited.values()) reason.requiredBy.sort((a, b) =>
+    a.requestPath.localeCompare(b.requestPath, 'en') || a.sourceOrdinal - b.sourceOrdinal
+      || JSON.stringify(a.key).localeCompare(JSON.stringify(b.key), 'en'));
+  return { files: [...selected], inherited };
+}
+
 // A code-only PR may inherit source changes whose registration writer is still
-// pending. Only an exact no-new-approval partial FINAL_QA rebind may supply that
-// existing receipt in the temporary projection. Ordinary other-owner requests,
-// D5/audit/basic approvals and any semantic patch keep the changed-input boundary.
+// pending. An exact no-new-approval partial FINAL_QA rebind may supply that
+// existing receipt. Ordinary inherited requests are selected only when their
+// exact add-only ACTIVE binding is required by this fixed selection.
 export function selectNativeRequests({ root, baseSha, headSha }) {
   const fields = git(root, 'diff', '--name-status', '--diff-filter=AM', '--no-renames', '-z', baseSha, headSha, '--', INBOX).split('\0').filter(Boolean);
   if (fields.length % 2) fail('DIFF_INVALID');
@@ -296,8 +345,9 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     if (['A', 'M'].includes(fields[i]) && flatInboxPath(file)) files.push(file);
   }
   const changed = new Set(files), basePaths = new Set(pendingNativeRequestPaths({ root, headSha: baseSha }));
+  const pendingPaths = pendingNativeRequestPaths({ root, headSha });
   const inherited = new Map();
-  for (const file of pendingNativeRequestPaths({ root, headSha })) {
+  for (const file of pendingPaths) {
     if (changed.has(file) || !basePaths.has(file)) continue;
     // Read the fixed Git input for dispatch. A forged working copy cannot turn
     // an ordinary inherited request into an eligible preservation request.
@@ -308,7 +358,9 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     inherited.set(file, { baseSha, requestSha256: sha(raw) });
     files.push(file);
   }
-  return selectFixedNativeRequests({ root, files, headSha, rejectUnsupported: false, inherited });
+  const closure = selectBindingProviderClosure({ root, baseSha, headSha, files, basePaths, pendingPaths });
+  return selectFixedNativeRequests({ root, files: closure.files, headSha, rejectUnsupported: false,
+    inherited, inheritedBindingProviders: closure.inherited });
 }
 
 const flatInboxPath = file => file.startsWith(INBOX) && !file.slice(INBOX.length).includes('/') && file.endsWith('.json');
@@ -326,7 +378,7 @@ export function selectPendingNativeRequests({ root, headSha }) {
   return selectFixedNativeRequests({ root, headSha, files: pendingNativeRequestPaths({ root, headSha }), rejectUnsupported: true });
 }
 
-function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, inherited = new Map() }) {
+function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, inherited = new Map(), inheritedBindingProviders = new Map() }) {
   const requests = [];
   for (const file of files) {
     safe(root, file);
@@ -390,6 +442,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
     requests.push({ ...fileRef(root, file), requestId: request.requestId, questionCount: selectedItems.length,
       sourceQuestionCount: request.expectedQuestionCount, selectedItems,
       ...(inherited.has(file) ? { inheritedPreservation: inherited.get(file) } : {}),
+      ...(inheritedBindingProviders.has(file) ? { inheritedBindingProvider: inheritedBindingProviders.get(file) } : {}),
       ...(partial ? { scope: request.scope } : {}),
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
