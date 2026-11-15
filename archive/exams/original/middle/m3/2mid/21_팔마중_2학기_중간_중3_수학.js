@@ -870,7 +870,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "055db95f5cf3a48e690eb8eac987ef71a7076efc"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD의 한 변은 6이고 M,N은 중점이다. 목표 삼각형 BMN과 나머지 세 직각삼각형을 색으로 나눴다.",
+    "solutionImageCaption": "[BMN]=6²−(9+9+9/2)=27/2이고 BM=BN=3√5이다. ½BM·BN·sinx=27/2에서 sinx=3/5이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1190,7 +1194,11 @@ window.questionBank = [
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
     "sourceAssetGitBlobs": [
       "e40478e2235369a444c18b334dbeccac65d8e086"
-    ]
+    ],
+    "solutionImage": "assets/images/21_팔마중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 원과 O를 지나는 초록 접힌 호를 구분한다. 접는 선 AB가 보라 선분 OO′를 수직으로 이등분하고, M은 현의 중점이다.",
+    "solutionImageCaption": "접힌 호의 중심을 O′이라 하면 OO′=12 cm이다. 접는 선까지의 거리 OM은 OO′의 절반인 6 cm이다. 직각삼각형 OMA에서 AM=6√3 cm이므로 AB=12√3 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

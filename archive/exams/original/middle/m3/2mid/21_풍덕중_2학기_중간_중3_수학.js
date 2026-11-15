@@ -244,7 +244,11 @@ window.examData = {
         "$\\sqrt{17}$"
       ],
       "answer": "②",
-      "solution": "중심을 지나는 할선의 원 밖 부분이 $3$ cm이고 반지름 $OB=2$ cm이므로 $PO=3+2=5$ cm이다.\n반지름과 접선은 접점에서 수직이므로 삼각형 $POA$는 직각삼각형이다.\n$PA^2=PO^2-OA^2=5^2-2^2=21$, 따라서 $x=PA=\\sqrt{21}$ cm이다.\n정답은 ②이다."
+      "solution": "중심을 지나는 할선의 원 밖 부분이 $3$ cm이고 반지름 $OB=2$ cm이므로 $PO=3+2=5$ cm이다.\n반지름과 접선은 접점에서 수직이므로 삼각형 $POA$는 직각삼각형이다.\n$PA^2=PO^2-OA^2=5^2-2^2=21$, 따라서 $x=PA=\\sqrt{21}$ cm이다.\n정답은 ②이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 중심 O를 지나는 할선에서 P와 가까운 원의 교점 사이 길이는 3cm이고 반지름 OB=2cm이다. 접점 A,B에서 그은 접선 PA=x와 PB를 표시했다.",
+      "solutionImageCaption": "PO=3+2=5cm이다. 직각삼각형 POA에서 x=PA=√(5²−2²)=√21cm이다. 답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -290,7 +294,11 @@ window.examData = {
         "$\\frac{3\\sqrt{6}}{2}$"
       ],
       "answer": "①",
-      "solution": "$x=\\angle DAC$이고 $\\angle ACB=90^\\circ$이므로 $\\triangle ADC$는 C에서 직각이다.\n$\\sin x=\\dfrac{\\overline{DC}}{\\overline{AD}}=\\dfrac12$, $\\overline{DC}=4$이므로 $\\overline{AD}=8$이다.\n피타고라스 정리로 $\\overline{AC}=\\sqrt{8^2-4^2}=4\\sqrt3$이다. 또 $\\overline{BD}=\\overline{DC}=4$이므로 $\\overline{BC}=8$이다.\n$\\triangle ABC$에서 $\\overline{AB}=\\sqrt{(4\\sqrt3)^2+8^2}=4\\sqrt7$이다.\n$\\overline{BD}=\\overline{DC}$이고 두 삼각형 ABD, ADC의 높이는 같으므로 두 삼각형의 넓이는 같다. 따라서 $[ADC]=\\dfrac12\\cdot4\\cdot4\\sqrt3=8\\sqrt3$이다.\nD에서 AB에 내린 수선의 발을 H라 하자. 직각삼각형 ADH에서 $\\overline{DH}=\\overline{AD}\\sin y=8\\sin y$이다. 그러므로 $[ABD]=\\dfrac12\\cdot\\overline{AB}\\cdot\\overline{DH}=\\dfrac12\\cdot4\\sqrt7\\cdot8\\sin y=16\\sqrt7\\sin y$이다.\n두 넓이를 같게 놓으면 $16\\sqrt7\\sin y=8\\sqrt3$이므로 $\\sin y=\\dfrac{\\sqrt3}{2\\sqrt7}=\\dfrac{\\sqrt{21}}{14}$이다.\n정답은 ①이다."
+      "solution": "$x=\\angle DAC$이고 $\\angle ACB=90^\\circ$이므로 $\\triangle ADC$는 C에서 직각이다.\n$\\sin x=\\dfrac{\\overline{DC}}{\\overline{AD}}=\\dfrac12$, $\\overline{DC}=4$이므로 $\\overline{AD}=8$이다.\n피타고라스 정리로 $\\overline{AC}=\\sqrt{8^2-4^2}=4\\sqrt3$이다. 또 $\\overline{BD}=\\overline{DC}=4$이므로 $\\overline{BC}=8$이다.\n$\\triangle ABC$에서 $\\overline{AB}=\\sqrt{(4\\sqrt3)^2+8^2}=4\\sqrt7$이다.\n$\\overline{BD}=\\overline{DC}$이고 두 삼각형 ABD, ADC의 높이는 같으므로 두 삼각형의 넓이는 같다. 따라서 $[ADC]=\\dfrac12\\cdot4\\cdot4\\sqrt3=8\\sqrt3$이다.\nD에서 AB에 내린 수선의 발을 H라 하자. 직각삼각형 ADH에서 $\\overline{DH}=\\overline{AD}\\sin y=8\\sin y$이다. 그러므로 $[ABD]=\\dfrac12\\cdot\\overline{AB}\\cdot\\overline{DH}=\\dfrac12\\cdot4\\sqrt7\\cdot8\\sin y=16\\sqrt7\\sin y$이다.\n두 넓이를 같게 놓으면 $16\\sqrt7\\sin y=8\\sqrt3$이므로 $\\sin y=\\dfrac{\\sqrt3}{2\\sqrt7}=\\dfrac{\\sqrt{21}}{14}$이다.\n정답은 ①이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 D는 BC의 중점이고, AD와 D에서 AB에 내린 수선 DH를 표시했다. x=∠DAC, y=∠BAD이며 △ABD와 △ADC의 넓이는 같은 색이다.",
+      "solutionImageCaption": "sin x=1/2, DC=4cm에서 AD=8cm이고 AC=4√3cm이다. △ADC의 넓이는 8√3cm²이다. 두 삼각형의 넓이가 같으므로 16√7 sin y=8√3, 따라서 sin y=√21/14이다. 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,
@@ -338,7 +346,11 @@ window.examData = {
       "question": "[서술형 2]<br>다음 그림과 같이 반지름의 길이가 $3\\,\\mathrm{cm}$인 반원 $\\mathrm{O}$에서 $\\angle \\mathrm{ABC}=30^\\circ$일 때, 색칠한 부분의 넓이를 구하시오. (7점)<br><img src=\"assets/images/21_풍덕중_2학기_중간_중3_수학/s02.png\" /><br><br><table style=\"border-collapse: collapse; width: 100%; border: 1px solid #333;\"><tr style=\"border-bottom: 1px solid #333; background: #f8f8f8;\"><th style=\"padding: 4px; border-right: 1px solid #333;\">채점 기준</th><th style=\"padding: 4px; width: 60px;\">배점</th></tr><tr style=\"border-bottom: 1px solid #333;\"><td style=\"padding: 4px; border-right: 1px solid #333;\">(i) 보조선을 그어 부채꼴의 중심각의 크기를 구한 경우</td><td style=\"padding: 4px; text-align: center;\">2점</td></tr><tr><td style=\"padding: 4px; border-right: 1px solid #333;\">(ii) 색칠한 부분의 넓이를 구한 경우 (구해야 할 각 도형의 넓이 구하는 식을 모두 적고 계산할 것)</td><td style=\"padding: 4px; text-align: center;\">5점</td></tr></table>",
       "choices": [],
       "answer": "$3\\pi-\\dfrac{9\\sqrt{3}}{4}$",
-      "solution": "중심에서 호의 양 끝점으로 $OB$, $OC$를 그린다. 반원의 반지름이 $3$ cm이므로 $OB=OC=3$ cm이다.\n$O$는 지름 $AB$ 위에 있으므로 $\\angle OBC=\\angle ABC=30^\\circ$이다. $OB=OC$인 이등변삼각형에서 $\\angle OCB=30^\\circ$이므로 $\\angle BOC=120^\\circ$이다.\n부채꼴 $BOC$의 넓이는 $\\dfrac{120}{360}\\pi\\cdot3^2=3\\pi$이다.\n점 $C$에서 직선 $AB$에 수선 $CH$를 내려 발을 $H$라 하자. $\\angle COH=60^\\circ$이고 $OC=3$이므로 직각삼각형 $OCH$에서 $CH=3\\sin60^\\circ=\\dfrac{3\\sqrt3}{2}$이다.\n따라서 $[COB]=\\dfrac12\\cdot OB\\cdot CH=\\dfrac12\\cdot3\\cdot\\dfrac{3\\sqrt3}{2}=\\dfrac{9\\sqrt3}{4}$이다.\n색칠한 부분은 부채꼴에서 삼각형을 뺀 부분이므로 넓이는 $3\\pi-\\dfrac{9\\sqrt3}{4}$ cm$^2$이다."
+      "solution": "중심에서 호의 양 끝점으로 $OB$, $OC$를 그린다. 반원의 반지름이 $3$ cm이므로 $OB=OC=3$ cm이다.\n$O$는 지름 $AB$ 위에 있으므로 $\\angle OBC=\\angle ABC=30^\\circ$이다. $OB=OC$인 이등변삼각형에서 $\\angle OCB=30^\\circ$이므로 $\\angle BOC=120^\\circ$이다.\n부채꼴 $BOC$의 넓이는 $\\dfrac{120}{360}\\pi\\cdot3^2=3\\pi$이다.\n점 $C$에서 직선 $AB$에 수선 $CH$를 내려 발을 $H$라 하자. $\\angle COH=60^\\circ$이고 $OC=3$이므로 직각삼각형 $OCH$에서 $CH=3\\sin60^\\circ=\\dfrac{3\\sqrt3}{2}$이다.\n따라서 $[COB]=\\dfrac12\\cdot OB\\cdot CH=\\dfrac12\\cdot3\\cdot\\dfrac{3\\sqrt3}{2}=\\dfrac{9\\sqrt3}{4}$이다.\n색칠한 부분은 부채꼴에서 삼각형을 뺀 부분이므로 넓이는 $3\\pi-\\dfrac{9\\sqrt3}{4}$ cm$^2$이다.",
+      "solutionImage": "assets/images/21_풍덕중_2학기_중간_중3_수학/q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 위쪽 반원 O에서 현 BC와 호 BC 사이 활꼴을 옅게 칠했다. 반지름은 3cm, ∠ABC=30°, 중심각 ∠BOC=120°이며 C에서 지름 AB에 내린 수선 CH는 3√3/2cm이다.",
+      "solutionImageCaption": "부채꼴 BOC의 넓이는 3πcm²이고 △BOC의 넓이는 9√3/4cm²이다. 색칠한 넓이는 3π−9√3/4cm²이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 24,

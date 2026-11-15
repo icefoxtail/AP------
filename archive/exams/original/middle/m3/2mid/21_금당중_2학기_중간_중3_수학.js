@@ -1182,7 +1182,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Active M3 binding matches the audited solution."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AB=5 cm, BC=4 cm, ∠ABC=150°이다. E는 B에서 C의 반대쪽으로 연장한 직선 위에 있고 AE는 BC에 수직인 높이다.",
+    "solutionImageCaption": "∠ABC=150°이므로 AE=AB·sin150°=5/2 cm이다. △ABC의 넓이는 ½·BC·AE=½·4·(5/2)=5 cm²이며 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1270,7 +1274,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Active M3 binding matches the audited solution."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: O에서 A와 B까지 줄의 길이는 각각 40 cm이고 ∠AOB=30°이다. A는 바닥에서 10 cm 위의 최저점이며, B에서 바닥에 내린 수선을 표시한다.",
+    "solutionImageCaption": "OB의 바닥 방향 수직 성분은 40cos30°=20√3 cm이다. 따라서 B의 높이는 10+(40−20√3)=50−20√3 cm이며 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1998,7 +2006,11 @@ window.questionBank = [
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "projectionStatus": "PROJECTION_REUSE",
       "projectionReason": "Active M3 binding matches the audited solution."
-    }
+    },
+    "solutionImage": "assets/images/21_금당중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 밑변 AB와 수선 CH를 나타낸다. ∠B=30°, ∠C=105°, BC=8 cm이며, 고도 CH=4 cm, BH=4√3 cm, AH=4 cm이다. AH와 CH는 같은 눈금으로 표시한다.",
+    "solutionImageCaption": "△BCH에서 CH=8sin30°=4 cm, BH=8cos30°=4√3 cm이다. ∠A=180°−30°−105°=45°이므로 AH=CH=4 cm이다. 따라서 AB=4+4√3 cm이고, 넓이는 ½·AB·CH=8+8√3 cm²이다. 답은 (1) 4+4√3 cm, (2) 8+8√3 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
