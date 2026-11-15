@@ -146,7 +146,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
-    "templateKey": "TPL_GENERAL_ANGLE_SAME_QUADRANT"
+    "templateKey": "TPL_GENERAL_ANGLE_SAME_QUADRANT",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원의 양의 x축에서 30°와 330° 방향으로 뻗는 두 동경을 나타낸다. 두 동경은 서로 다른 사분면의 원 위 점에서 끝난다.",
+    "solutionImageCaption": "단위원에서 양의 x축을 기준으로 한 30°와 330°의 두 동경은 서로 다른 원 위의 점에 닿는다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -167,7 +171,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
     "subUnit": "삼각함수의 관계",
     "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
-    "templateKey": "TPL_TRIG_IDENTITY_ROOT_FEASIBILITY"
+    "templateKey": "TPL_TRIG_IDENTITY_ROOT_FEASIBILITY",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: x축을 cosθ, y축을 sinθ로 읽는 단위원과 주황색 직선 x+y=1/2를 나타낸다. 제4사분면의 교점 P 옆에 s<0<c를 표시한다.",
+    "solutionImageCaption": "주황색 직선 x+y=1/2와 단위원의 제4사분면 교점이 조건을 만족하고 s−c<0이다. x축은 cosθ, y축은 sinθ로 해석한다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -385,7 +393,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
-    "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO"
+    "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 2인 원 위의 제4사분면 점 A와 x축에 내린 수선을 그린다. 직각삼각형의 빗변은 2이고 두 변은 6/5와 8/5로 3:4:5에 같은 비율을 곱한 길이다.",
+    "solutionImageCaption": "제4사분면에서 반지름 2와 3:4:5 비례로 정해지는 직각삼각형을 나타낸다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
