@@ -1,0 +1,2006 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1mid/21_풍덕중_1학기_중간_중3_기출.js",
+  "sourceGitBlobSha": "642341207286e1fb234aea8a9802623fa6809ad9",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "meta_a",
+    "owner": "M3_S1_RESUME_20261115_A",
+    "assignmentId": "M3-S1-META-FULL",
+    "at": "2026-11-15T00:03:46.446716+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_84fcff5970cb03ede41068bd0779218cdda66188e51de21671ad74cdde9878e9",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "10eb9b82d7933fb697f49ba4504a8245000c55949bf315b44edb937acc3b4d76"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0b040403dfcc01e6349ccc23e029144df0ab953371bf290d2363db6bfad67961"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "양수의 제곱근은 항상 두 개이다.",
+            "src": "choices",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "quote": "다음 보기 중에서 옳은 것은? (2점)",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "quote": "양수 $t>0$의 제곱근은 $\\pm\\sqrt{t}$이다.\n① $\\sqrt5\\ne5$이므로 거짓이다.\n② $0^2=0$이므로 $0$의 제곱근은 $0$이다. 따라서 거짓이다.\n③ $\\sqrt{(-3)^2}=|-3|=3$이므로 거짓이다.\n④ $\\sqrt{49}=7$이고 $7$의 제곱근은 $\\pm\\sqrt7$이므로 거짓이다.\n⑤ 양수 $t>0$의 제곱근은 $\\pm\\sqrt t$ 두 개이므로 참이다.\n따라서 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "양수의 제곱근 두 개와 주근 표기를 구별하여 ⑤를 판정한다.",
+            "termId": 369
+          },
+          {
+            "term": "제곱근",
+            "quote": "양수 $t>0$의 제곱근은 $\\pm\\sqrt{t}$이다.\n① $\\sqrt5\\ne5$이므로 거짓이다.\n② $0^2=0$이므로 $0$의 제곱근은 $0$이다. 따라서 거짓이다.\n③ $\\sqrt{(-3)^2}=|-3|=3$이므로 거짓이다.\n④ $\\sqrt{49}=7$이고 $7$의 제곱근은 $\\pm\\sqrt7$이므로 거짓이다.\n⑤ 양수 $t>0$의 제곱근은 $\\pm\\sqrt t$ 두 개이므로 참이다.\n따라서 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "양수의 제곱근 두 개와 주근 표기를 구별하여 ⑤를 판정한다.",
+            "termId": 22
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근 정의 판정",
+        "condition": "양수의 제곱근 두 개와 주근 표기를 구별하여 ⑤를 판정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_1b8448da8f0a3b7c8152a92e72ca3b4483e1244da81e8475fab3204778d161fe",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "59a8edc37755abecb0076b4816dd81dbcde21454ae1c455666469d65c4d182ca"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a8e4737e6154a1a6d96ecc458a26c7747b3f385dcd9cd9c8688fb32b1d4cdf7e"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "quote": "다음 보기 중에서 무리수인 것의 개수는? (3점)<br><br><보기><br>ㄱ. $1.414$<br>ㄴ. $\\pi$<br>ㄷ. $3 - \\sqrt{9}$<br>ㄹ. $\\sqrt{28}$<br>ㅁ. $-\\sqrt{0.01}$<br>ㅂ. $0.0\\dot{4}$",
+            "src": "stem",
+            "termId": 5
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리수",
+            "quote": "다음 보기 중에서 무리수인 것의 개수는? (3점)<br><br><보기><br>ㄱ. $1.414$<br>ㄴ. $\\pi$<br>ㄷ. $3 - \\sqrt{9}$<br>ㄹ. $\\sqrt{28}$<br>ㅁ. $-\\sqrt{0.01}$<br>ㅂ. $0.0\\dot{4}$",
+            "src": "stem",
+            "termId": 4
+          },
+          {
+            "term": "개수",
+            "quote": "다음 보기 중에서 무리수인 것의 개수는? (3점)<br><br><보기><br>ㄱ. $1.414$<br>ㄴ. $\\pi$<br>ㄷ. $3 - \\sqrt{9}$<br>ㄹ. $\\sqrt{28}$<br>ㅁ. $-\\sqrt{0.01}$<br>ㅂ. $0.0\\dot{4}$",
+            "src": "stem",
+            "termId": 129
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "quote": "ㄱ. $1.414$는 유한소수이므로 유리수이다.\nㄴ. $\\pi$는 무리수이다.\nㄷ. $3-\\sqrt9=3-3=0$이므로 유리수이다.\nㄹ. $\\sqrt{28}=2\\sqrt7$이고 $\\sqrt7$은 무리수이므로 무리수이다.\nㅁ. $-\\sqrt{0.01}=-0.1$이므로 유리수이다.\nㅂ. $0.0\\dot4=0.0444\\ldots=\\frac{2}{45}$이므로 유리수이다.\n따라서 무리수는 ㄴ, ㄹ의 2개이므로 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "유한·순환소수와 완전제곱수의 근호를 제외하면 π와 √28만 남는다.",
+            "termId": 369
+          },
+          {
+            "term": "제곱근",
+            "quote": "ㄱ. $1.414$는 유한소수이므로 유리수이다.\nㄴ. $\\pi$는 무리수이다.\nㄷ. $3-\\sqrt9=3-3=0$이므로 유리수이다.\nㄹ. $\\sqrt{28}=2\\sqrt7$이고 $\\sqrt7$은 무리수이므로 무리수이다.\nㅁ. $-\\sqrt{0.01}=-0.1$이므로 유리수이다.\nㅂ. $0.0\\dot4=0.0444\\ldots=\\frac{2}{45}$이므로 유리수이다.\n따라서 무리수는 ㄴ, ㄹ의 2개이므로 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "유한·순환소수와 완전제곱수의 근호를 제외하면 π와 √28만 남는다.",
+            "termId": 22
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "유리수·무리수 구분",
+        "condition": "유한·순환소수와 완전제곱수의 근호를 제외하면 π와 √28만 남는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_906943728e3c0098ee8c699074b9af57263cab9c73e17046ed1af4fd4c83c020",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "20f9c025f335988a74c38899bb28b738164938233154f42e7c0c19573a043055"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bb55509e1a9473b71fa95af63520ad655f09cc7d1dea6264413fa2316aa3fcee"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "다음 세 수 $a, b, c$의 대소 관계를 바르게 나타낸 것은? (3점)<br><br><보기><br>$a = 3 + \\sqrt{3}, \\quad b = 4.2, \\quad c = 5 - \\sqrt{2}$",
+            "src": "stem",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "순서",
+            "quote": "다음 세 수 $a, b, c$의 대소 관계를 바르게 나타낸 것은? (3점)<br><br><보기><br>$a = 3 + \\sqrt{3}, \\quad b = 4.2, \\quad c = 5 - \\sqrt{2}$",
+            "src": "stem",
+            "termId": 29
+          }
+        ],
+        "method": [
+          {
+            "term": "근삿값",
+            "quote": "$\\sqrt3\\approx1.732$, $\\sqrt2\\approx1.414$이다.\n$a=3+\\sqrt3\\approx4.732$이고 $c=5-\\sqrt2\\approx3.586$이다.\n$b=4.2$이므로 $a>b>c$이다.\n따라서 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√2와 √3의 근삿값으로 c<b<a의 순서를 정한다.",
+            "termId": 560
+          },
+          {
+            "term": "대소비교",
+            "quote": "$\\sqrt3\\approx1.732$, $\\sqrt2\\approx1.414$이다.\n$a=3+\\sqrt3\\approx4.732$이고 $c=5-\\sqrt2\\approx3.586$이다.\n$b=4.2$이므로 $a>b>c$이다.\n따라서 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√2와 √3의 근삿값으로 c<b<a의 순서를 정한다.",
+            "termId": 28
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "실수의 대소 비교",
+        "condition": "√2와 √3의 근삿값으로 c<b<a의 순서를 정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_fa7ef075cf5d6f7ab3ba74e972532c33c27ab8e78e1b698d61e1dd23036aa7bb",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "48cf0d059bce40304be3807d47a37c7faaa250939fbaa70fa08d7d09f41ecd27"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "73c77b18b548cad16b821c4152a906cd27aea5f13bf4dfeacf01853b691ce4d1"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$(-9)^2$의 양의 제곱근을 $a$, $5^2$의 음의 제곱근을 $b$라고 할 때, $a+b$의 값은? (3점)",
+            "src": "stem",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "$(-9)^2$의 양의 제곱근을 $a$, $5^2$의 음의 제곱근을 $b$라고 할 때, $a+b$의 값은? (3점)",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "quote": "$(-9)^2=81$이므로 양의 제곱근은 $a=9$이다.\n$5^2=25$이므로 음의 제곱근은 $b=-5$이다.\n$a+b=9+(-5)=4$이다.\n따라서 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "81의 양의 제곱근 9와 25의 음의 제곱근 -5를 취한다.",
+            "termId": 22
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "양·음의 제곱근",
+        "condition": "81의 양의 제곱근 9와 25의 음의 제곱근 -5를 취한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_19f1030f3c8418f299b77bc02d00d7e94e1fbf51c5813878a44f8073061b76ea",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "00a5f7d419dd5113dad7f955c577b22cc99ba89f0c2bfed469aaa88921278e34"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8d91e227c4ecb064ca525c9188bde518545168068e5b1c45ebbe037e02460506"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차식",
+            "quote": "다항식 $(x-4)(x+9)$를 바르게 전개한 것은? (3점)",
+            "src": "stem",
+            "termId": 36
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "quote": "다항식 $(x-4)(x+9)$를 바르게 전개한 것은? (3점)",
+            "src": "stem",
+            "termId": 35
+          },
+          {
+            "term": "전개",
+            "quote": "다항식 $(x-4)(x+9)$를 바르게 전개한 것은? (3점)",
+            "src": "stem",
+            "termId": 41
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "quote": "분배법칙으로 전개한다.\n$(x-4)(x+9)=x^2+9x-4x-36$\n$=x^2+5x-36$\n따라서 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "상수의 합 5와 곱 -36으로 전개한다.",
+            "termId": 40
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 일차식의 곱",
+        "condition": "상수의 합 5와 곱 -36으로 전개한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_ec16734c9b45ccf6319290581d9d20460a1a4c8a833dbabef7aadb11eef297ef",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b2ca8ed8a3cc4ce20acadc50fed5528fe5da641111d206e3a8dda73d6613a139"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "83f9dba1f30db3b1caee2fcd1f8f10f354db04a8bdc432a2dabb7e35da6b1556"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "$x^2 + 6xy + 4y^2 = (x+2y)^2$",
+            "src": "choices",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수분해",
+            "quote": "다음 중에서 인수분해가 잘못 된 것은? (3점)",
+            "src": "stem",
+            "termId": 42
+          },
+          {
+            "term": "판정",
+            "quote": "다음 중에서 인수분해가 잘못 된 것은? (3점)",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "quote": "각 식의 오른쪽을 전개해 확인한다.\n① $(a+b)^2=a^2+2ab+b^2$이므로 옳다.\n② $(3x-1)^2=9x^2-6x+1$이므로 옳다.\n③ $(x+2y)^2=x^2+4xy+4y^2$이므로 $x^2+6xy+4y^2$와 다르다.\n④ $(3x+7y)(3x-7y)=9x^2-49y^2$이므로 옳다.\n⑤ $(a-3b)^2=a^2-6ab+9b^2$이므로 옳다.\n잘못 인수분해한 것은 ③이므로 정답은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(x+2y)²의 중간항은 4xy이므로 6xy인 식과 다르다.",
+            "termId": 40
+          },
+          {
+            "term": "계수비교",
+            "quote": "각 식의 오른쪽을 전개해 확인한다.\n① $(a+b)^2=a^2+2ab+b^2$이므로 옳다.\n② $(3x-1)^2=9x^2-6x+1$이므로 옳다.\n③ $(x+2y)^2=x^2+4xy+4y^2$이므로 $x^2+6xy+4y^2$와 다르다.\n④ $(3x+7y)(3x-7y)=9x^2-49y^2$이므로 옳다.\n⑤ $(a-3b)^2=a^2-6ab+9b^2$이므로 옳다.\n잘못 인수분해한 것은 ③이므로 정답은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(x+2y)²의 중간항은 4xy이므로 6xy인 식과 다르다.",
+            "termId": 696
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "인수분해 공식 검산",
+        "condition": "(x+2y)²의 중간항은 4xy이므로 6xy인 식과 다르다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_083f2658d52ad47e462c12208978b01cfd71263163bd286359e77fcc1ae4695c",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6030bc4aabda460e90663aaa39d0dac6af3f3db390c34268d60288f619eda289"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a4d86597a5d07f9a683a52f41899f2595f35fe4805606a1a848bd1ca232d6e66"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "곱",
+            "quote": "$202 \\times 198$을 계산할 때 가장 편리한 곱셈 공식은? (3점)",
+            "src": "stem",
+            "termId": 287
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱셈공식",
+            "quote": "$202 \\times 198$을 계산할 때 가장 편리한 곱셈 공식은? (3점)",
+            "src": "stem",
+            "termId": 40
+          },
+          {
+            "term": "판정",
+            "quote": "$202 \\times 198$을 계산할 때 가장 편리한 곱셈 공식은? (3점)",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "quote": "$202\\times198=(200+2)(200-2)$로 나타낸다.\n$(a+b)(a-b)=a^2-b^2$를 이용하면\n$202\\times198=200^2-2^2=40000-4=39996$이다.\n따라서 정답은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "202와 198을 200±2로 보아 합차공식을 고른다.",
+            "termId": 694
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "곱셈공식으로 수 계산",
+        "condition": "202와 198을 200±2로 보아 합차공식을 고른다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_c45b86c849cf83df4142ee5fdc9271c99e5e6105e74b40d50bdf882dfe87a4f3",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ccc9de5a2a37efc26ce86f19b5a045c04dd4affcad1c85549a94f93466944ce6"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "183f522859a1eddd4bc717b21e1a5f04419319a6b7115adb2f51f5de893db642"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "두 실수 $a, b$에 대하여 $a-b>0$이고 $ab<0$일 때, 다음을 간단히 한 것은? (4점)<br><br><보기><br>$\\sqrt{(-a)^2} - (\\sqrt{-b})^2 - \\sqrt{(4b)^2} + \\sqrt{(b-a)^2}$",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "문자식",
+            "quote": "두 실수 $a, b$에 대하여 $a-b>0$이고 $ab<0$일 때, 다음을 간단히 한 것은? (4점)<br><br><보기><br>$\\sqrt{(-a)^2} - (\\sqrt{-b})^2 - \\sqrt{(4b)^2} + \\sqrt{(b-a)^2}$",
+            "src": "stem",
+            "termId": 34
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "두 실수 $a, b$에 대하여 $a-b>0$이고 $ab<0$일 때, 다음을 간단히 한 것은? (4점)<br><br><보기><br>$\\sqrt{(-a)^2} - (\\sqrt{-b})^2 - \\sqrt{(4b)^2} + \\sqrt{(b-a)^2}$",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "quote": "$ab<0$이므로 $a,b$의 부호는 서로 다르다.\n또 $a-b>0$이므로 $a>0$, $b<0$이다.\n따라서 $\\sqrt{(-a)^2}=a$, $(\\sqrt{-b})^2=-b$, $\\sqrt{(4b)^2}=-4b$, $\\sqrt{(b-a)^2}=a-b$이다.\n주어진 식은 $a-(-b)-(-4b)+(a-b)$이다.\n$=a+b+4b+a-b=2a+4b$이다.\n따라서 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "a-b>0과 ab<0에서 a>0>b를 정하고 각 제곱근을 절댓값으로 풀어 2a+4b를 얻는다.",
+            "termId": 25
+          },
+          {
+            "term": "절댓값",
+            "quote": "$ab<0$이므로 $a,b$의 부호는 서로 다르다.\n또 $a-b>0$이므로 $a>0$, $b<0$이다.\n따라서 $\\sqrt{(-a)^2}=a$, $(\\sqrt{-b})^2=-b$, $\\sqrt{(4b)^2}=-4b$, $\\sqrt{(b-a)^2}=a-b$이다.\n주어진 식은 $a-(-b)-(-4b)+(a-b)$이다.\n$=a+b+4b+a-b=2a+4b$이다.\n따라서 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "a-b>0과 ab<0에서 a>0>b를 정하고 각 제곱근을 절댓값으로 풀어 2a+4b를 얻는다.",
+            "termId": 24
+          }
+        ],
+        "condition": [
+          {
+            "term": "대소비교",
+            "quote": "두 실수 $a, b$에 대하여 $a-b>0$이고 $ab<0$일 때, 다음을 간단히 한 것은? (4점)<br><br><보기><br>$\\sqrt{(-a)^2} - (\\sqrt{-b})^2 - \\sqrt{(4b)^2} + \\sqrt{(b-a)^2}$",
+            "src": "stem",
+            "termId": 28
+          }
+        ]
+      },
+      "reasons": {
+        "method": "부호에 따른 근호 제거",
+        "condition": "a-b>0과 ab<0에서 a>0>b를 정하고 각 제곱근을 절댓값으로 풀어 2a+4b를 얻는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_ea4ad3a6405ee4b1cf9c545bcb5f9c6005c1c054316c3165d32116c4b5ef9bba",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "94f135e5faa26c31e302ec27d4ec02b70ae752d733feb384173152d31de5bb3a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5d45ec06b1b63d9f981e52fe573ebced2e0ae68e4988173a83be2493e0a54a34"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수직선",
+            "quote": "수직선 위의 두 점 $B$, $C$가 나타내는 수는 각각 $3$, $5$이다. 선분 $BC$에 수직이고 수직선 위쪽에 있는 선분 $CA$의 길이는 $1$이다. 점 $B$를 중심으로 하고 $BA$를 반지름으로 하는 원이 수직선과 만나는 두 점 중, $B$의 왼쪽에 있는 점을 $P$라 하자. 점 $P$가 나타내는 수를 고르시오. (4점)<br><br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q09_alive_problem.svg\">",
+            "src": "stem",
+            "termId": 295
+          },
+          {
+            "term": "직각삼각형",
+            "quote": "수직선 위의 두 점 $B$, $C$가 나타내는 수는 각각 $3$, $5$이다. 선분 $BC$에 수직이고 수직선 위쪽에 있는 선분 $CA$의 길이는 $1$이다. 점 $B$를 중심으로 하고 $BA$를 반지름으로 하는 원이 수직선과 만나는 두 점 중, $B$의 왼쪽에 있는 점을 $P$라 하자. 점 $P$가 나타내는 수를 고르시오. (4점)<br><br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q09_alive_problem.svg\">",
+            "src": "stem",
+            "termId": 161
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "quote": "수직선 위의 두 점 $B$, $C$가 나타내는 수는 각각 $3$, $5$이다. 선분 $BC$에 수직이고 수직선 위쪽에 있는 선분 $CA$의 길이는 $1$이다. 점 $B$를 중심으로 하고 $BA$를 반지름으로 하는 원이 수직선과 만나는 두 점 중, $B$의 왼쪽에 있는 점을 $P$라 하자. 점 $P$가 나타내는 수를 고르시오. (4점)<br><br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q09_alive_problem.svg\">",
+            "src": "stem",
+            "termId": 148
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "quote": "$BC=5-3=2$이고 $CA=1$이다.\n$\\triangle BCA$는 $C$에서 직각이므로 피타고라스 정리에 따라\n$BA^2=BC^2+CA^2=2^2+1^2=5$이다.\n따라서 $BA=\\sqrt5$이고, 이것이 중심 $B$인 원의 반지름이다.\n$B$가 나타내는 수는 $3$이고 $P$는 $B$의 왼쪽 교점이므로\n$P=3-\\sqrt5$이다.\n따라서 정답은 ④이다.<br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q09_alive_solution.svg\" alt=\"수직선에서 피타고라스 정리로 구한 길이와 점 P\">",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 변 2와 1로 BA=√5를 얻어 왼쪽 교점 P=3-√5를 정한다.",
+            "termId": 195
+          },
+          {
+            "term": "거리",
+            "quote": "$BC=5-3=2$이고 $CA=1$이다.\n$\\triangle BCA$는 $C$에서 직각이므로 피타고라스 정리에 따라\n$BA^2=BC^2+CA^2=2^2+1^2=5$이다.\n따라서 $BA=\\sqrt5$이고, 이것이 중심 $B$인 원의 반지름이다.\n$B$가 나타내는 수는 $3$이고 $P$는 $B$의 왼쪽 교점이므로\n$P=3-\\sqrt5$이다.\n따라서 정답은 ④이다.<br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q09_alive_solution.svg\" alt=\"수직선에서 피타고라스 정리로 구한 길이와 점 P\">",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 변 2와 1로 BA=√5를 얻어 왼쪽 교점 P=3-√5를 정한다.",
+            "termId": 216
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "수직선 위 무리수 위치",
+        "condition": "직각삼각형의 변 2와 1로 BA=√5를 얻어 왼쪽 교점 P=3-√5를 정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_4fbfd553b93a14c438c9897e860d41274aee6fadb764da66a49213254ef5c42a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "05cbd00263f5d0ebe534f86cb7ca9e1e555213a8f98456b466b6b73f475857d4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7584c72d840aae79f0953b821dea24941987058f92bdbb8e76ec3937e7d1f57b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근표",
+            "quote": "다음 제곱근표에서 $4.53$에 대응하는 제곱근의 근삿값을 $a$, 제곱근의 근삿값 $2.202$에 대응하는 수를 $10b$라 할 때, $a+b$의 값을 구하면? (4점)<br><br><table style=\"width: 100%; border-collapse: collapse; text-align: center; margin: 10px 0;\"><thead><tr><th style=\"border: 1px solid #000; padding: 4px;\">수</th><th style=\"border: 1px solid #000; padding: 4px;\">1</th><th style=\"border: 1px solid #000; padding: 4px;\">2</th><th style=\"border: 1px solid #000; padding: 4px;\">3</th><th style=\"border: 1px solid #000; padding: 4px;\">4</th><th style=\"border: 1px solid #000; padding: 4px;\">5</th></tr></thead><tbody><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.5</td><td style=\"border: 1px solid #000; padding: 4px;\">2.124</td><td style=\"border: 1px solid #000; padding: 4px;\">2.126</td><td style=\"border: 1px solid #000; padding: 4px;\">2.128</td><td style=\"border: 1px solid #000; padding: 4px;\">2.131</td><td style=\"border: 1px solid #000; padding: 4px;\">2.133</td></tr><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.6</td><td style=\"border: 1px solid #000; padding: 4px;\">2.147</td><td style=\"border: 1px solid #000; padding: 4px;\">2.149</td><td style=\"border: 1px solid #000; padding: 4px;\">2.152</td><td style=\"border: 1px solid #000; padding: 4px;\">2.154</td><td style=\"border: 1px solid #000; padding: 4px;\">2.156</td></tr><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.7</td><td style=\"border: 1px solid #000; padding: 4px;\">2.170</td><td style=\"border: 1px solid #000; padding: 4px;\">2.173</td><td style=\"border: 1px solid #000; padding: 4px;\">2.175</td><td style=\"border: 1px solid #000; padding: 4px;\">2.177</td><td style=\"border: 1px solid #000; padding: 4px;\">2.179</td></tr><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.8</td><td style=\"border: 1px solid #000; padding: 4px;\">2.193</td><td style=\"border: 1px solid #000; padding: 4px;\">2.195</td><td style=\"border: 1px solid #000; padding: 4px;\">2.198</td><td style=\"border: 1px solid #000; padding: 4px;\">2.200</td><td style=\"border: 1px solid #000; padding: 4px;\">2.202</td></tr><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.9</td><td style=\"border: 1px solid #000; padding: 4px;\">2.216</td><td style=\"border: 1px solid #000; padding: 4px;\">2.218</td><td style=\"border: 1px solid #000; padding: 4px;\">2.220</td><td style=\"border: 1px solid #000; padding: 4px;\">2.223</td><td style=\"border: 1px solid #000; padding: 4px;\">2.225</td></tr></tbody></table>",
+            "src": "stem",
+            "termId": 561
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "다음 제곱근표에서 $4.53$에 대응하는 제곱근의 근삿값을 $a$, 제곱근의 근삿값 $2.202$에 대응하는 수를 $10b$라 할 때, $a+b$의 값을 구하면? (4점)<br><br><table style=\"width: 100%; border-collapse: collapse; text-align: center; margin: 10px 0;\"><thead><tr><th style=\"border: 1px solid #000; padding: 4px;\">수</th><th style=\"border: 1px solid #000; padding: 4px;\">1</th><th style=\"border: 1px solid #000; padding: 4px;\">2</th><th style=\"border: 1px solid #000; padding: 4px;\">3</th><th style=\"border: 1px solid #000; padding: 4px;\">4</th><th style=\"border: 1px solid #000; padding: 4px;\">5</th></tr></thead><tbody><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.5</td><td style=\"border: 1px solid #000; padding: 4px;\">2.124</td><td style=\"border: 1px solid #000; padding: 4px;\">2.126</td><td style=\"border: 1px solid #000; padding: 4px;\">2.128</td><td style=\"border: 1px solid #000; padding: 4px;\">2.131</td><td style=\"border: 1px solid #000; padding: 4px;\">2.133</td></tr><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.6</td><td style=\"border: 1px solid #000; padding: 4px;\">2.147</td><td style=\"border: 1px solid #000; padding: 4px;\">2.149</td><td style=\"border: 1px solid #000; padding: 4px;\">2.152</td><td style=\"border: 1px solid #000; padding: 4px;\">2.154</td><td style=\"border: 1px solid #000; padding: 4px;\">2.156</td></tr><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.7</td><td style=\"border: 1px solid #000; padding: 4px;\">2.170</td><td style=\"border: 1px solid #000; padding: 4px;\">2.173</td><td style=\"border: 1px solid #000; padding: 4px;\">2.175</td><td style=\"border: 1px solid #000; padding: 4px;\">2.177</td><td style=\"border: 1px solid #000; padding: 4px;\">2.179</td></tr><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.8</td><td style=\"border: 1px solid #000; padding: 4px;\">2.193</td><td style=\"border: 1px solid #000; padding: 4px;\">2.195</td><td style=\"border: 1px solid #000; padding: 4px;\">2.198</td><td style=\"border: 1px solid #000; padding: 4px;\">2.200</td><td style=\"border: 1px solid #000; padding: 4px;\">2.202</td></tr><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.9</td><td style=\"border: 1px solid #000; padding: 4px;\">2.216</td><td style=\"border: 1px solid #000; padding: 4px;\">2.218</td><td style=\"border: 1px solid #000; padding: 4px;\">2.220</td><td style=\"border: 1px solid #000; padding: 4px;\">2.223</td><td style=\"border: 1px solid #000; padding: 4px;\">2.225</td></tr></tbody></table>",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "합",
+            "quote": "다음 제곱근표에서 $4.53$에 대응하는 제곱근의 근삿값을 $a$, 제곱근의 근삿값 $2.202$에 대응하는 수를 $10b$라 할 때, $a+b$의 값을 구하면? (4점)<br><br><table style=\"width: 100%; border-collapse: collapse; text-align: center; margin: 10px 0;\"><thead><tr><th style=\"border: 1px solid #000; padding: 4px;\">수</th><th style=\"border: 1px solid #000; padding: 4px;\">1</th><th style=\"border: 1px solid #000; padding: 4px;\">2</th><th style=\"border: 1px solid #000; padding: 4px;\">3</th><th style=\"border: 1px solid #000; padding: 4px;\">4</th><th style=\"border: 1px solid #000; padding: 4px;\">5</th></tr></thead><tbody><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.5</td><td style=\"border: 1px solid #000; padding: 4px;\">2.124</td><td style=\"border: 1px solid #000; padding: 4px;\">2.126</td><td style=\"border: 1px solid #000; padding: 4px;\">2.128</td><td style=\"border: 1px solid #000; padding: 4px;\">2.131</td><td style=\"border: 1px solid #000; padding: 4px;\">2.133</td></tr><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.6</td><td style=\"border: 1px solid #000; padding: 4px;\">2.147</td><td style=\"border: 1px solid #000; padding: 4px;\">2.149</td><td style=\"border: 1px solid #000; padding: 4px;\">2.152</td><td style=\"border: 1px solid #000; padding: 4px;\">2.154</td><td style=\"border: 1px solid #000; padding: 4px;\">2.156</td></tr><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.7</td><td style=\"border: 1px solid #000; padding: 4px;\">2.170</td><td style=\"border: 1px solid #000; padding: 4px;\">2.173</td><td style=\"border: 1px solid #000; padding: 4px;\">2.175</td><td style=\"border: 1px solid #000; padding: 4px;\">2.177</td><td style=\"border: 1px solid #000; padding: 4px;\">2.179</td></tr><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.8</td><td style=\"border: 1px solid #000; padding: 4px;\">2.193</td><td style=\"border: 1px solid #000; padding: 4px;\">2.195</td><td style=\"border: 1px solid #000; padding: 4px;\">2.198</td><td style=\"border: 1px solid #000; padding: 4px;\">2.200</td><td style=\"border: 1px solid #000; padding: 4px;\">2.202</td></tr><tr><td style=\"border: 1px solid #000; padding: 4px;\">4.9</td><td style=\"border: 1px solid #000; padding: 4px;\">2.216</td><td style=\"border: 1px solid #000; padding: 4px;\">2.218</td><td style=\"border: 1px solid #000; padding: 4px;\">2.220</td><td style=\"border: 1px solid #000; padding: 4px;\">2.223</td><td style=\"border: 1px solid #000; padding: 4px;\">2.225</td></tr></tbody></table>",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근표",
+            "quote": "표의 $4.5$행 $3$열에서 $a=2.128$이다.\n$2.202$는 $4.8$행 $5$열의 근삿값이므로 이에 대응하는 수는 $4.85$이다.\n따라서 $10b=4.85$, $b=0.485$이다.\n$a+b=2.128+0.485=2.613$이다.\n따라서 정답은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√4.53=2.128과 √4.85=2.202를 읽고 10b=4.85를 풀어 합을 구한다.",
+            "termId": 561
+          },
+          {
+            "term": "등식의성질",
+            "quote": "표의 $4.5$행 $3$열에서 $a=2.128$이다.\n$2.202$는 $4.8$행 $5$열의 근삿값이므로 이에 대응하는 수는 $4.85$이다.\n따라서 $10b=4.85$, $b=0.485$이다.\n$a+b=2.128+0.485=2.613$이다.\n따라서 정답은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "√4.53=2.128과 √4.85=2.202를 읽고 10b=4.85를 풀어 합을 구한다.",
+            "termId": 433
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "제곱근표 역방향 읽기",
+        "condition": "√4.53=2.128과 √4.85=2.202를 읽고 10b=4.85를 풀어 합을 구한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_0ec077cfc4aa707773ea12dde5d85e843eb061a075e1dcb3645d48804cd99c89",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a142bda047ec950c6c4cb3ce1d9f0c02e2bce83a727bea5c6249add003bc6077"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6f6854ec73baadf117bf3fde2166d3792e9053d96f1b61e97f9d9bcc8f5628dc"
+        }
+      ],
+      "format": "옳지 않은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "quote": "$2\\sqrt{3}(\\sqrt{3}-\\sqrt{6}) + 4\\sqrt{2} = 6 - 2\\sqrt{2}$",
+            "src": "choices",
+            "termId": 23
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "다음 중에서 계산이 틀린 것은? (4점)",
+            "src": "stem",
+            "termId": 61
+          },
+          {
+            "term": "판정",
+            "quote": "다음 중에서 계산이 틀린 것은? (4점)",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "quote": "각 보기의 좌변을 계산한다.\n① $2\\sqrt6\\times3\\sqrt2\\div\\sqrt3=6\\sqrt{12}\\div\\sqrt3=12$이므로 옳다.\n② $\\sqrt{28}\\div\\frac{\\sqrt7}{\\sqrt3}\\times\\frac{\\sqrt3}{2}=2\\sqrt7\\times\\frac{\\sqrt3}{\\sqrt7}\\times\\frac{\\sqrt3}{2}=3$이다. 제시된 $2\\sqrt3$과 다르므로 틀렸다.\n③ $4\\sqrt2\\div\\frac1{\\sqrt2}+\\sqrt{28}\\div\\sqrt7=8+2=10$이므로 옳다.\n④ $\\sqrt{24}\\times\\sqrt2-9\\sqrt6\\div\\sqrt2=4\\sqrt3-9\\sqrt3=-5\\sqrt3$이므로 옳다.\n⑤ $2\\sqrt3(\\sqrt3-\\sqrt6)+4\\sqrt2=6-6\\sqrt2+4\\sqrt2=6-2\\sqrt2$이므로 옳다.\n따라서 계산이 틀린 것은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "곱셈·나눗셈의 순서에 따라 ⑤는 3이 되어 제시된 2√3과 다르다.",
+            "termId": 22
+          },
+          {
+            "term": "사칙연산",
+            "quote": "각 보기의 좌변을 계산한다.\n① $2\\sqrt6\\times3\\sqrt2\\div\\sqrt3=6\\sqrt{12}\\div\\sqrt3=12$이므로 옳다.\n② $\\sqrt{28}\\div\\frac{\\sqrt7}{\\sqrt3}\\times\\frac{\\sqrt3}{2}=2\\sqrt7\\times\\frac{\\sqrt3}{\\sqrt7}\\times\\frac{\\sqrt3}{2}=3$이다. 제시된 $2\\sqrt3$과 다르므로 틀렸다.\n③ $4\\sqrt2\\div\\frac1{\\sqrt2}+\\sqrt{28}\\div\\sqrt7=8+2=10$이므로 옳다.\n④ $\\sqrt{24}\\times\\sqrt2-9\\sqrt6\\div\\sqrt2=4\\sqrt3-9\\sqrt3=-5\\sqrt3$이므로 옳다.\n⑤ $2\\sqrt3(\\sqrt3-\\sqrt6)+4\\sqrt2=6-6\\sqrt2+4\\sqrt2=6-2\\sqrt2$이므로 옳다.\n따라서 계산이 틀린 것은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "곱셈·나눗셈의 순서에 따라 ⑤는 3이 되어 제시된 2√3과 다르다.",
+            "termId": 32
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호 혼합 계산 판정",
+        "condition": "곱셈·나눗셈의 순서에 따라 ⑤는 3이 되어 제시된 2√3과 다르다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_dd94dc335ae4555727a2ef9d484bc08f216608d6821b1b2c4cc5ffe14435d524",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "93ba3d70cb2ed4961705719fc00562e7a6cf2b7ce53bd6fe89c579a3fee40658"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4359fb1120d6c4cfd19e7d5b8a3d98cc3d76bd5c5d1d1d256ff29c423254a588"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$\\sqrt{17-a}$가 정수가 되도록 하는 모든 자연수 $a$의 값의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "quote": "$\\sqrt{17-a}$가 정수가 되도록 하는 모든 자연수 $a$의 값의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 1
+          },
+          {
+            "term": "합",
+            "quote": "$\\sqrt{17-a}$가 정수가 되도록 하는 모든 자연수 $a$의 값의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱수",
+            "quote": "$\\sqrt{17-a}=n$이라 두면 $n$은 정수이고 $17-a=n^2\\ge0$이다.\n$a$가 자연수이므로 $n=0,1,2,3,4$이다.\n따라서 $a=17-n^2$의 값은 $17,16,13,8,1$이다.\n그 합은 $17+16+13+8+1=55$이다.\n따라서 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "17-a가 0·1·4·9·16인 경우를 열거하여 양의 a 다섯 값을 합한다.",
+            "termId": 700
+          },
+          {
+            "term": "경우분류",
+            "quote": "$\\sqrt{17-a}=n$이라 두면 $n$은 정수이고 $17-a=n^2\\ge0$이다.\n$a$가 자연수이므로 $n=0,1,2,3,4$이다.\n따라서 $a=17-n^2$의 값은 $17,16,13,8,1$이다.\n그 합은 $17+16+13+8+1=55$이다.\n따라서 정답은 ②이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "17-a가 0·1·4·9·16인 경우를 열거하여 양의 a 다섯 값을 합한다.",
+            "termId": 293
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "quote": "$\\sqrt{17-a}$가 정수가 되도록 하는 모든 자연수 $a$의 값의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 2
+          },
+          {
+            "term": "자연수",
+            "quote": "$\\sqrt{17-a}$가 정수가 되도록 하는 모든 자연수 $a$의 값의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "제곱근의 정수 조건",
+        "condition": "17-a가 0·1·4·9·16인 경우를 열거하여 양의 a 다섯 값을 합한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_7055ade3ea78a832859b3cb59b296ecd6c3d1c453b354d0a645331d2ceef80a2",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "360a999e408d3e74cac47a63c8229c8d23b3c76549990f65f49a73598559146e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "522caeeddcdc2e09c0d4f1243925c8c65c9cf9c106e71e414b5b2633a6e95965"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$a=\\sqrt{7}$일 때, $a-\\frac{1}{a}$은 $a$의 몇 배인지 구하면? (4점)",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "유리식",
+            "quote": "$a=\\sqrt{7}$일 때, $a-\\frac{1}{a}$은 $a$의 몇 배인지 구하면? (4점)",
+            "src": "stem",
+            "termId": 38
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "$a=\\sqrt{7}$일 때, $a-\\frac{1}{a}$은 $a$의 몇 배인지 구하면? (4점)",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "약분",
+            "quote": "$a-\\frac1a$가 $a$의 $k$배라 하면\n$k=\\frac{a-\\frac1a}{a}=1-\\frac1{a^2}$이다.\n$a=\\sqrt7$이므로 $a^2=7$이다.\n따라서 $k=1-\\frac17=\\frac67$이고 정답은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "식을 1-1/a²로 정리한 뒤 a²=7을 넣는다.",
+            "termId": 58
+          },
+          {
+            "term": "대입",
+            "quote": "$a-\\frac1a$가 $a$의 $k$배라 하면\n$k=\\frac{a-\\frac1a}{a}=1-\\frac1{a^2}$이다.\n$a=\\sqrt7$이므로 $a^2=7$이다.\n따라서 $k=1-\\frac17=\\frac67$이고 정답은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "식을 1-1/a²로 정리한 뒤 a²=7을 넣는다.",
+            "termId": 53
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근호가 주어진 식의 값",
+        "condition": "식을 1-1/a²로 정리한 뒤 a²=7을 넣는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_c2325fc4d7daa4c7c550c82cbd01cab1f782a8c6f59b4f6de1850e9b616a7321",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ba9a3b0ca7903f4f375c3c4aa18aeba306373d938923c7be8ded6c5bf19cc424"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1a6e2e685ab60e5e7bfdf9aa881562a90a8234c4bc9d6f88e3aa5745e249c472"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "quote": "윗변의 길이와 아랫변의 길이의 비가 $1:3$인 사다리꼴이 있다. 이 사다리꼴의 높이를 한 변의 길이로 하는 정사각형의 넓이가 $300\\,\\text{cm}^2$이고 사다리꼴의 넓이도 이와 같다고 할 때, 사다리꼴의 윗변의 길이와 아랫변의 길이를 각각 구하면? (5점) (단위는 $\\text{cm}$이다.)",
+            "src": "stem",
+            "termId": 166
+          },
+          {
+            "term": "사다리꼴",
+            "quote": "윗변의 길이와 아랫변의 길이의 비가 $1:3$인 사다리꼴이 있다. 이 사다리꼴의 높이를 한 변의 길이로 하는 정사각형의 넓이가 $300\\,\\text{cm}^2$이고 사다리꼴의 넓이도 이와 같다고 할 때, 사다리꼴의 윗변의 길이와 아랫변의 길이를 각각 구하면? (5점) (단위는 $\\text{cm}$이다.)",
+            "src": "stem",
+            "termId": 167
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "quote": "윗변의 길이와 아랫변의 길이의 비가 $1:3$인 사다리꼴이 있다. 이 사다리꼴의 높이를 한 변의 길이로 하는 정사각형의 넓이가 $300\\,\\text{cm}^2$이고 사다리꼴의 넓이도 이와 같다고 할 때, 사다리꼴의 윗변의 길이와 아랫변의 길이를 각각 구하면? (5점) (단위는 $\\text{cm}$이다.)",
+            "src": "stem",
+            "termId": 215
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "quote": "정사각형의 한 변이 사다리꼴의 높이 $h$이므로 $h^2=300$이다.\n$h>0$이므로 $h=\\sqrt{300}=10\\sqrt3\\,\\text{cm}$이다.\n윗변을 $t$라 하면 아랫변은 $3t$이다.\n사다리꼴의 넓이가 $300$이므로 $\\frac{t+3t}{2}h=300$, 즉 $2th=300$이다.\n$t=\\frac{150}{h}=\\frac{150}{10\\sqrt3}=5\\sqrt3$이다.\n아랫변은 $3t=15\\sqrt3$이므로 정답은 ①이다.<br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q14_solution.svg\" alt=\"높이와 밑변의 비를 표시한 사다리꼴 및 정사각형 넓이 풀이\">",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "정사각형 넓이로 높이 10√3을 구하고 사다리꼴 밑변 1:3과 넓이를 결합한다.",
+            "termId": 22
+          },
+          {
+            "term": "넓이",
+            "quote": "정사각형의 한 변이 사다리꼴의 높이 $h$이므로 $h^2=300$이다.\n$h>0$이므로 $h=\\sqrt{300}=10\\sqrt3\\,\\text{cm}$이다.\n윗변을 $t$라 하면 아랫변은 $3t$이다.\n사다리꼴의 넓이가 $300$이므로 $\\frac{t+3t}{2}h=300$, 즉 $2th=300$이다.\n$t=\\frac{150}{h}=\\frac{150}{10\\sqrt3}=5\\sqrt3$이다.\n아랫변은 $3t=15\\sqrt3$이므로 정답은 ①이다.<br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q14_solution.svg\" alt=\"높이와 밑변의 비를 표시한 사다리꼴 및 정사각형 넓이 풀이\">",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "정사각형 넓이로 높이 10√3을 구하고 사다리꼴 밑변 1:3과 넓이를 결합한다.",
+            "termId": 213
+          },
+          {
+            "term": "모델링",
+            "quote": "정사각형의 한 변이 사다리꼴의 높이 $h$이므로 $h^2=300$이다.\n$h>0$이므로 $h=\\sqrt{300}=10\\sqrt3\\,\\text{cm}$이다.\n윗변을 $t$라 하면 아랫변은 $3t$이다.\n사다리꼴의 넓이가 $300$이므로 $\\frac{t+3t}{2}h=300$, 즉 $2th=300$이다.\n$t=\\frac{150}{h}=\\frac{150}{10\\sqrt3}=5\\sqrt3$이다.\n아랫변은 $3t=15\\sqrt3$이므로 정답은 ①이다.<br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q14_solution.svg\" alt=\"높이와 밑변의 비를 표시한 사다리꼴 및 정사각형 넓이 풀이\">",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "정사각형 넓이로 높이 10√3을 구하고 사다리꼴 밑변 1:3과 넓이를 결합한다.",
+            "termId": 299
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "quote": "윗변의 길이와 아랫변의 길이의 비가 $1:3$인 사다리꼴이 있다. 이 사다리꼴의 높이를 한 변의 길이로 하는 정사각형의 넓이가 $300\\,\\text{cm}^2$이고 사다리꼴의 넓이도 이와 같다고 할 때, 사다리꼴의 윗변의 길이와 아랫변의 길이를 각각 구하면? (5점) (단위는 $\\text{cm}$이다.)",
+            "src": "stem",
+            "termId": 289
+          }
+        ]
+      },
+      "reasons": {
+        "method": "넓이를 근호 길이로 전환",
+        "condition": "정사각형 넓이로 높이 10√3을 구하고 사다리꼴 밑변 1:3과 넓이를 결합한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_b44f004e15733bfe466846f31933b81af24324dcdbeecff57f25f786affa97a6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "56dbc7ece0ba5e43bc64c467d94a542c6d1e5f1c24b933305e127d930d46c4bf"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ccc254e37ad68a4a4f48ce8e5c9616b4e8b12fc765005f4a4f400eb8d1026a12"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$\\sqrt{\\frac{140}{a}}$이 자연수가 되도록 하는 자연수 $a$의 값의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "quote": "$\\sqrt{\\frac{140}{a}}$이 자연수가 되도록 하는 자연수 $a$의 값의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 1
+          },
+          {
+            "term": "합",
+            "quote": "$\\sqrt{\\frac{140}{a}}$이 자연수가 되도록 하는 자연수 $a$의 값의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱수",
+            "quote": "$\\sqrt{\\frac{140}{a}}=n$이라 두면 $n$은 자연수이고 $140=an^2$이다.\n따라서 $n^2$은 $140$의 제곱수 약수이다.\n$140=2^2\\cdot5\\cdot7$이므로 $n^2$은 $1$ 또는 $4$이다.\n이에 대응하는 자연수 $a$는 $140$ 또는 $35$이다.\n구하는 합은 $140+35=175$이므로 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "140/a를 자연수의 제곱으로 두면 140의 제곱수 약수는 1과 4이다.",
+            "termId": 700
+          },
+          {
+            "term": "약수",
+            "quote": "$\\sqrt{\\frac{140}{a}}=n$이라 두면 $n$은 자연수이고 $140=an^2$이다.\n따라서 $n^2$은 $140$의 제곱수 약수이다.\n$140=2^2\\cdot5\\cdot7$이므로 $n^2$은 $1$ 또는 $4$이다.\n이에 대응하는 자연수 $a$는 $140$ 또는 $35$이다.\n구하는 합은 $140+35=175$이므로 정답은 ⑤이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "140/a를 자연수의 제곱으로 두면 140의 제곱수 약수는 1과 4이다.",
+            "termId": 11
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "quote": "$\\sqrt{\\frac{140}{a}}$이 자연수가 되도록 하는 자연수 $a$의 값의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "제곱근의 자연수 조건",
+        "condition": "140/a를 자연수의 제곱으로 두면 140의 제곱수 약수는 1과 4이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_793abc574d0228e3137f2b5efb504950dc4a1104dd76b69c52228ebca8177611",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b06c264d3452eb22055ff7d1a3872a1c4a6562db4d7c914a12a21f43eaeb7654"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "41603ccd581e60684013c898acb3e69e1317258cbbb298f1d32892f2924f2a27"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$-4 < a < 3$일 때, $\\sqrt{a^2+8a+16} - \\sqrt{a^2-8a+16}$을 간단히 하면? (4점)",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "이차식",
+            "quote": "$-4 < a < 3$일 때, $\\sqrt{a^2+8a+16} - \\sqrt{a^2-8a+16}$을 간단히 하면? (4점)",
+            "src": "stem",
+            "termId": 37
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "$-4 < a < 3$일 때, $\\sqrt{a^2+8a+16} - \\sqrt{a^2-8a+16}$을 간단히 하면? (4점)",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "각 근호 안의 식을 완전제곱식으로 정리한다.\n$\\sqrt{a^2+8a+16}-\\sqrt{a^2-8a+16}=|a+4|-|a-4|$이다.\n$-4<a<3$이므로 $a+4>0$이고 $a-4<0$이다.\n따라서 $|a+4|=a+4$, $|a-4|=4-a$이다.\n주어진 식은 $(a+4)-(4-a)=2a$이므로 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근호를 절댓값(a+4)와 절댓값(a-4)로 바꾸고 -4<a<3의 부호로 제거한다.",
+            "termId": 59
+          },
+          {
+            "term": "절댓값",
+            "quote": "각 근호 안의 식을 완전제곱식으로 정리한다.\n$\\sqrt{a^2+8a+16}-\\sqrt{a^2-8a+16}=|a+4|-|a-4|$이다.\n$-4<a<3$이므로 $a+4>0$이고 $a-4<0$이다.\n따라서 $|a+4|=a+4$, $|a-4|=4-a$이다.\n주어진 식은 $(a+4)-(4-a)=2a$이므로 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근호를 절댓값(a+4)와 절댓값(a-4)로 바꾸고 -4<a<3의 부호로 제거한다.",
+            "termId": 24
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "quote": "$-4 < a < 3$일 때, $\\sqrt{a^2+8a+16} - \\sqrt{a^2-8a+16}$을 간단히 하면? (4점)",
+            "src": "stem",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "완전제곱식의 근호",
+        "condition": "두 근호를 절댓값(a+4)와 절댓값(a-4)로 바꾸고 -4<a<3의 부호로 제거한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_8c612a148c43efd1e790dc7acac1be3589c9e8da9db108c460df9ee017bf97e0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c042e44d41e3a9aaca2c09735e04e8cba4c7a1a6069e1245a9131cd3805e6281"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4c7531debebdb0649f395f1e50710f735f38a2812ec1ce446b5b37bf903fba67"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "$(2x-a)(bx+4)$를 전개한 식이 $4x^2+6x+c$일 때, 세 수 $a, b, c$의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 35
+          },
+          {
+            "term": "항등식",
+            "quote": "$(2x-a)(bx+4)$를 전개한 식이 $4x^2+6x+c$일 때, 세 수 $a, b, c$의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 48
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "$(2x-a)(bx+4)$를 전개한 식이 $4x^2+6x+c$일 때, 세 수 $a, b, c$의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "합",
+            "quote": "$(2x-a)(bx+4)$를 전개한 식이 $4x^2+6x+c$일 때, 세 수 $a, b, c$의 합을 구하면? (4점)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "quote": "먼저 곱을 전개한다.\n$(2x-a)(bx+4)=2bx^2+(8-ab)x-4a$이다.\n$4x^2+6x+c$와 계수를 비교하면 $2b=4$이므로 $b=2$이다.\n또 $8-ab=6$이므로 $ab=2$, 따라서 $a=1$이다.\n상수항 비교로 $c=-4$이다.\n$a+b+c=1+2-4=-1$이므로 정답은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²·x·상수항 계수를 비교해 b=2,a=1,c=-4를 정한다.",
+            "termId": 41
+          },
+          {
+            "term": "계수비교",
+            "quote": "먼저 곱을 전개한다.\n$(2x-a)(bx+4)=2bx^2+(8-ab)x-4a$이다.\n$4x^2+6x+c$와 계수를 비교하면 $2b=4$이므로 $b=2$이다.\n또 $8-ab=6$이므로 $ab=2$, 따라서 $a=1$이다.\n상수항 비교로 $c=-4$이다.\n$a+b+c=1+2-4=-1$이므로 정답은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "x²·x·상수항 계수를 비교해 b=2,a=1,c=-4를 정한다.",
+            "termId": 696
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "전개 후 계수 결정",
+        "condition": "x²·x·상수항 계수를 비교해 b=2,a=1,c=-4를 정한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_43f5038bdb58e6dd3f3ae64d0a08a4d14c82bea1cf7b105357cc298500a65fee",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b3d984ab470179d395285522144927facf6634deab8fcb9dac84a4bd5c69c40c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e2e1cd98489d2ea45a4caf18068a7bd8614b6a4999594738f19858b968d02dcf"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "소수",
+            "quote": "$1.24^2 + 7.52 \\times 1.24 + 3.76^2$을 계산하면? (4점)",
+            "src": "stem",
+            "termId": 9
+          },
+          {
+            "term": "제곱합",
+            "quote": "$1.24^2 + 7.52 \\times 1.24 + 3.76^2$을 계산하면? (4점)",
+            "src": "stem",
+            "termId": 336
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "$1.24^2 + 7.52 \\times 1.24 + 3.76^2$을 계산하면? (4점)",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "$7.52=2\\times3.76$이므로 식은\n$1.24^2+2\\times3.76\\times1.24+3.76^2$이다.\n$(u+v)^2=u^2+2uv+v^2$를 이용하면\n$(1.24+3.76)^2=5^2=25$이다.\n따라서 정답은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "7.52=2×3.76을 알아보고 (1.24+3.76)²로 묶는다.",
+            "termId": 59
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "완전제곱식으로 수 계산",
+        "condition": "7.52=2×3.76을 알아보고 (1.24+3.76)²로 묶는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_185021517524a789a4853ed00ff3298a4dc7c4b65cb03dbbaa2fee7749a87d9e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "64f734814907318268af1890d62a719c541f466c65aad95d84c3b3e7f1b4ef27"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7539ad21ca0e92704f59ff904a11c57b2026c379a0589c885f2230f510c4b92f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "$a=3-2\\sqrt{3}$, $b=3+2\\sqrt{3}$일 때, $\\frac{1}{a+b} - \\frac{1}{a-b} = \\frac{m+\\sqrt{n}}{12}$이다. (단, $m,n$은 자연수이다.) 이때 $m+n$의 값을 구하면? (5점)",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "유리식",
+            "quote": "$a=3-2\\sqrt{3}$, $b=3+2\\sqrt{3}$일 때, $\\frac{1}{a+b} - \\frac{1}{a-b} = \\frac{m+\\sqrt{n}}{12}$이다. (단, $m,n$은 자연수이다.) 이때 $m+n$의 값을 구하면? (5점)",
+            "src": "stem",
+            "termId": 38
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "$a=3-2\\sqrt{3}$, $b=3+2\\sqrt{3}$일 때, $\\frac{1}{a+b} - \\frac{1}{a-b} = \\frac{m+\\sqrt{n}}{12}$이다. (단, $m,n$은 자연수이다.) 이때 $m+n$의 값을 구하면? (5점)",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "합",
+            "quote": "$a=3-2\\sqrt{3}$, $b=3+2\\sqrt{3}$일 때, $\\frac{1}{a+b} - \\frac{1}{a-b} = \\frac{m+\\sqrt{n}}{12}$이다. (단, $m,n$은 자연수이다.) 이때 $m+n$의 값을 구하면? (5점)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "quote": "$a+b=6$, $a-b=-4\\sqrt3$이다.\n$\\frac1{a+b}-\\frac1{a-b}=\\frac16+\\frac1{4\\sqrt3}=\\frac16+\\frac{\\sqrt3}{12}=\\frac{2+\\sqrt3}{12}$이다.\n따라서 $m+\\sqrt n=2+\\sqrt3$이다.\n$m\\ne2$라면 $r=2-m$은 0이 아닌 유리수이고 $\\sqrt n=r+\\sqrt3$이다.\n제곱하면 $n=r^2+3+2r\\sqrt3$인데, $r\\ne0$이므로 오른쪽은 무리수이다. 이는 자연수 $n$과 모순이다.\n그러므로 $m=2$이고 $\\sqrt n=\\sqrt3$에서 $n=3$이다.\n$m+n=2+3=5$이므로 정답은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "a+b=6,a-b=-4√3을 넣어 1/6+√3/12=(2+√3)/12로 정리한다.",
+            "termId": 53
+          },
+          {
+            "term": "유리화",
+            "quote": "$a+b=6$, $a-b=-4\\sqrt3$이다.\n$\\frac1{a+b}-\\frac1{a-b}=\\frac16+\\frac1{4\\sqrt3}=\\frac16+\\frac{\\sqrt3}{12}=\\frac{2+\\sqrt3}{12}$이다.\n따라서 $m+\\sqrt n=2+\\sqrt3$이다.\n$m\\ne2$라면 $r=2-m$은 0이 아닌 유리수이고 $\\sqrt n=r+\\sqrt3$이다.\n제곱하면 $n=r^2+3+2r\\sqrt3$인데, $r\\ne0$이므로 오른쪽은 무리수이다. 이는 자연수 $n$과 모순이다.\n그러므로 $m=2$이고 $\\sqrt n=\\sqrt3$에서 $n=3$이다.\n$m+n=2+3=5$이므로 정답은 ③이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "a+b=6,a-b=-4√3을 넣어 1/6+√3/12=(2+√3)/12로 정리한다.",
+            "termId": 57
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "quote": "$a=3-2\\sqrt{3}$, $b=3+2\\sqrt{3}$일 때, $\\frac{1}{a+b} - \\frac{1}{a-b} = \\frac{m+\\sqrt{n}}{12}$이다. (단, $m,n$은 자연수이다.) 이때 $m+n$의 값을 구하면? (5점)",
+            "src": "stem",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "분모 유리화 후 계수 읽기",
+        "condition": "a+b=6,a-b=-4√3을 넣어 1/6+√3/12=(2+√3)/12로 정리한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_157873f81cbdc6277dfebcf96882ebb5679de499966e82d54a175ce4b8550aa6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "59b2603ccfceddf698b3d2d1436ce33efca0fcb0c20dd5698438f45dc4ae4ece"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6ce55b4c3dea4246fe506d8335b4eabf13d21c4d50205f4fb0ac9c653fa4504f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "곱",
+            "quote": "$(3+1)(3^2+1)(3^4+1)=\\frac{1}{a}(3^b-1)$이 성립할 때, $ab$의 값은? (5점) (단, $a, b$는 자연수이고 $b\\le 8$이다.)",
+            "src": "stem",
+            "termId": 287
+          },
+          {
+            "term": "거듭제곱",
+            "quote": "$(3+1)(3^2+1)(3^4+1)=\\frac{1}{a}(3^b-1)$이 성립할 때, $ab$의 값은? (5점) (단, $a, b$는 자연수이고 $b\\le 8$이다.)",
+            "src": "stem",
+            "termId": 20
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "$(3+1)(3^2+1)(3^4+1)=\\frac{1}{a}(3^b-1)$이 성립할 때, $ab$의 값은? (5점) (단, $a, b$는 자연수이고 $b\\le 8$이다.)",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "합",
+            "quote": "$(3+1)(3^2+1)(3^4+1)=\\frac{1}{a}(3^b-1)$이 성립할 때, $ab$의 값은? (5점) (단, $a, b$는 자연수이고 $b\\le 8$이다.)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "합차공식",
+            "quote": "$(3-1)(3+1)=3^2-1$이다.\n$(3^2-1)(3^2+1)=3^4-1$이고, $(3^4-1)(3^4+1)=3^8-1$이다.\n따라서 $(3+1)(3^2+1)(3^4+1)=\\frac{3^8-1}{3-1}=3280$이다.\n주어진 등식에서 $3^b-1=3280a\\ge3280$이다.\n$3^7-1=2186<3280$이므로 $b\\ge8$이다.\n조건 $b\\le8$과 함께 $b=8$이다.\n$3280=\\frac{3^8-1}{a}=\\frac{6560}{a}$이므로 $a=2$이다.\n따라서 $ab=2\\times8=16$이고 정답은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "누락된 3-1을 곱하고 나누어 세 합의 곱을 (3⁸-1)/2로 만든다.",
+            "termId": 694
+          },
+          {
+            "term": "대소비교",
+            "quote": "$(3-1)(3+1)=3^2-1$이다.\n$(3^2-1)(3^2+1)=3^4-1$이고, $(3^4-1)(3^4+1)=3^8-1$이다.\n따라서 $(3+1)(3^2+1)(3^4+1)=\\frac{3^8-1}{3-1}=3280$이다.\n주어진 등식에서 $3^b-1=3280a\\ge3280$이다.\n$3^7-1=2186<3280$이므로 $b\\ge8$이다.\n조건 $b\\le8$과 함께 $b=8$이다.\n$3280=\\frac{3^8-1}{a}=\\frac{6560}{a}$이므로 $a=2$이다.\n따라서 $ab=2\\times8=16$이고 정답은 ④이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "누락된 3-1을 곱하고 나누어 세 합의 곱을 (3⁸-1)/2로 만든다.",
+            "termId": 28
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "quote": "$(3+1)(3^2+1)(3^4+1)=\\frac{1}{a}(3^b-1)$이 성립할 때, $ab$의 값은? (5점) (단, $a, b$는 자연수이고 $b\\le 8$이다.)",
+            "src": "stem",
+            "termId": 1
+          },
+          {
+            "term": "범위",
+            "quote": "$(3+1)(3^2+1)(3^4+1)=\\frac{1}{a}(3^b-1)$이 성립할 때, $ab$의 값은? (5점) (단, $a, b$는 자연수이고 $b\\le 8$이다.)",
+            "src": "stem",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "연쇄 합차공식",
+        "condition": "누락된 3-1을 곱하고 나누어 세 합의 곱을 (3⁸-1)/2로 만든다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_71dd1c4b7e6418329a3ed8391b626e6348ef05908e53630c4e2d6644ef45b11d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f38febdd0879232b934940af1ea29f12ac11354521d4b16135b1531cad478c73"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2d9b3bf56890985290e548d0fa3cb1ee2f666186df457ced566d698fd661f6a0"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "자연수 $x$에 대하여 $\\sqrt{x}$ 이하의 자연수의 개수를 $N(x)$라고 할 때, $N(1)+N(2)+N(3)+\\cdots+N(36)$의 값은? (5점)",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "자연수",
+            "quote": "자연수 $x$에 대하여 $\\sqrt{x}$ 이하의 자연수의 개수를 $N(x)$라고 할 때, $N(1)+N(2)+N(3)+\\cdots+N(36)$의 값은? (5점)",
+            "src": "stem",
+            "termId": 1
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "termId": 129,
+            "quote": "자연수 $x$에 대하여 $\\sqrt{x}$ 이하의 자연수의 개수를 $N(x)$라고 할 때, $N(1)+N(2)+N(3)+\\cdots+N(36)$의 값은? (5점)",
+            "src": "stem"
+          },
+          {
+            "term": "합",
+            "quote": "자연수 $x$에 대하여 $\\sqrt{x}$ 이하의 자연수의 개수를 $N(x)$라고 할 때, $N(1)+N(2)+N(3)+\\cdots+N(36)$의 값은? (5점)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱수",
+            "quote": "$1\\le\\sqrt{x}<2$인 자연수 $x$는 $1\\le x\\le3$의 3개이므로 이때 $N(x)=1$이다.\n$2\\le\\sqrt{x}<3$이면 $4\\le x\\le8$의 5개이므로 $N(x)=2$이다.\n$3\\le\\sqrt{x}<4$이면 $9\\le x\\le15$의 7개이므로 $N(x)=3$이다.\n$4\\le\\sqrt{x}<5$이면 $16\\le x\\le24$의 9개이므로 $N(x)=4$이다.\n$5\\le\\sqrt{x}<6$이면 $25\\le x\\le35$의 11개이므로 $N(x)=5$이다.\n$x=36$에서는 $\\sqrt{x}=6$이므로 $N(36)=6$이다.\n전체 합은 $3+10+21+36+55+6=131$이므로 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "k²≤x<(k+1)²에서 N(x)=k인 구간별 개수로 1부터36까지의 합을 묶는다.",
+            "termId": 700
+          },
+          {
+            "term": "경우분류",
+            "quote": "$1\\le\\sqrt{x}<2$인 자연수 $x$는 $1\\le x\\le3$의 3개이므로 이때 $N(x)=1$이다.\n$2\\le\\sqrt{x}<3$이면 $4\\le x\\le8$의 5개이므로 $N(x)=2$이다.\n$3\\le\\sqrt{x}<4$이면 $9\\le x\\le15$의 7개이므로 $N(x)=3$이다.\n$4\\le\\sqrt{x}<5$이면 $16\\le x\\le24$의 9개이므로 $N(x)=4$이다.\n$5\\le\\sqrt{x}<6$이면 $25\\le x\\le35$의 11개이므로 $N(x)=5$이다.\n$x=36$에서는 $\\sqrt{x}=6$이므로 $N(36)=6$이다.\n전체 합은 $3+10+21+36+55+6=131$이므로 정답은 ①이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "k²≤x<(k+1)²에서 N(x)=k인 구간별 개수로 1부터36까지의 합을 묶는다.",
+            "termId": 293
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "quote": "자연수 $x$에 대하여 $\\sqrt{x}$ 이하의 자연수의 개수를 $N(x)$라고 할 때, $N(1)+N(2)+N(3)+\\cdots+N(36)$의 값은? (5점)",
+            "src": "stem",
+            "termId": 1
+          },
+          {
+            "term": "범위",
+            "quote": "자연수 $x$에 대하여 $\\sqrt{x}$ 이하의 자연수의 개수를 $N(x)$라고 할 때, $N(1)+N(2)+N(3)+\\cdots+N(36)$의 값은? (5점)",
+            "src": "stem",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "제곱근 이하 자연수 개수",
+        "condition": "k²≤x<(k+1)²에서 N(x)=k인 구간별 개수로 1부터36까지의 합을 묶는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_c464af2954351334c4e75c532a1638d353527c0ce4a100268012ea0396da875a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "400b037600c5ef13ced2d354cb9fc193705a6f3f79a2de7f457338a429d8fa07"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d6e1955da2cef60523918a4b053588d7cf03f2c6d045bc3e1c9074f3fe705b66"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "quote": "[서술형 1] $\\frac{\\sqrt{5}-\\sqrt{3}}{\\sqrt{5}+\\sqrt{3}} + \\frac{\\sqrt{5}+\\sqrt{3}}{\\sqrt{5}-\\sqrt{3}}$을 간단히 하시오. (4점)",
+            "src": "stem",
+            "termId": 22
+          },
+          {
+            "term": "유리식",
+            "quote": "[서술형 1] $\\frac{\\sqrt{5}-\\sqrt{3}}{\\sqrt{5}+\\sqrt{3}} + \\frac{\\sqrt{5}+\\sqrt{3}}{\\sqrt{5}-\\sqrt{3}}$을 간단히 하시오. (4점)",
+            "src": "stem",
+            "termId": 38
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "[서술형 1] $\\frac{\\sqrt{5}-\\sqrt{3}}{\\sqrt{5}+\\sqrt{3}} + \\frac{\\sqrt{5}+\\sqrt{3}}{\\sqrt{5}-\\sqrt{3}}$을 간단히 하시오. (4점)",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "quote": "$u=\\sqrt5$, $v=\\sqrt3$라 두고 두 분수를 통분한다.\n$\\frac{u-v}{u+v}+\\frac{u+v}{u-v}=\\frac{(u-v)^2+(u+v)^2}{(u+v)(u-v)}$이다.\n분자는 $2u^2+2v^2=2\\cdot5+2\\cdot3=16$이고 분모는 $u^2-v^2=5-3=2$이다.\n따라서 주어진 식의 값은 $\\frac{16}{2}=8$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 분수의 공통분모를 5-3으로 만들고 분자를 제곱식 합으로 정리한다.",
+            "termId": 57
+          },
+          {
+            "term": "곱셈공식",
+            "quote": "$u=\\sqrt5$, $v=\\sqrt3$라 두고 두 분수를 통분한다.\n$\\frac{u-v}{u+v}+\\frac{u+v}{u-v}=\\frac{(u-v)^2+(u+v)^2}{(u+v)(u-v)}$이다.\n분자는 $2u^2+2v^2=2\\cdot5+2\\cdot3=16$이고 분모는 $u^2-v^2=5-3=2$이다.\n따라서 주어진 식의 값은 $\\frac{16}{2}=8$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "두 분수의 공통분모를 5-3으로 만들고 분자를 제곱식 합으로 정리한다.",
+            "termId": 40
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "켤레 분모 유리화",
+        "condition": "두 분수의 공통분모를 5-3으로 만들고 분자를 제곱식 합으로 정리한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_b888b8c667a0a3393510cbbe9a67c447d69f9bec0ba6f28ef574c53dc2c2e01d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ea19652ed9724ccc86e2cbbd786602989a7d07121b2fb5fe73f38351dd683f1c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "313dd193bb6a13040edcc58158b26a9b2bc6ac4dd09a2dab2f05e7dbe61614e2"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "quote": "[서술형 2] $x=3+\\sqrt{3}$, $y=3-\\sqrt{3}$일 때, 인수분해 공식을 이용하여 다음 값을 구하시오. (각 3점) [총 6점]<br><br>(1) $x^2+2xy+y^2$<br><br>(2) $x^2-y^2$",
+            "src": "stem",
+            "termId": 35
+          },
+          {
+            "term": "제곱근",
+            "quote": "[서술형 2] $x=3+\\sqrt{3}$, $y=3-\\sqrt{3}$일 때, 인수분해 공식을 이용하여 다음 값을 구하시오. (각 3점) [총 6점]<br><br>(1) $x^2+2xy+y^2$<br><br>(2) $x^2-y^2$",
+            "src": "stem",
+            "termId": 22
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "[서술형 2] $x=3+\\sqrt{3}$, $y=3-\\sqrt{3}$일 때, 인수분해 공식을 이용하여 다음 값을 구하시오. (각 3점) [총 6점]<br><br>(1) $x^2+2xy+y^2$<br><br>(2) $x^2-y^2$",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "$x+y=(3+\\sqrt3)+(3-\\sqrt3)=6$이다.\n$x-y=(3+\\sqrt3)-(3-\\sqrt3)=2\\sqrt3$이다.\n(1) $x^2+2xy+y^2=(x+y)^2=6^2=36$이다.\n(2) $x^2-y^2=(x+y)(x-y)=6\\cdot2\\sqrt3=12\\sqrt3$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(1)은 (x+y)²,(2)는 (x-y)(x+y)로 묶어 주어진 근호 합·차를 대입한다.",
+            "termId": 59
+          },
+          {
+            "term": "합차공식",
+            "quote": "$x+y=(3+\\sqrt3)+(3-\\sqrt3)=6$이다.\n$x-y=(3+\\sqrt3)-(3-\\sqrt3)=2\\sqrt3$이다.\n(1) $x^2+2xy+y^2=(x+y)^2=6^2=36$이다.\n(2) $x^2-y^2=(x+y)(x-y)=6\\cdot2\\sqrt3=12\\sqrt3$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(1)은 (x+y)²,(2)는 (x-y)(x+y)로 묶어 주어진 근호 합·차를 대입한다.",
+            "termId": 694
+          },
+          {
+            "term": "대입",
+            "quote": "$x+y=(3+\\sqrt3)+(3-\\sqrt3)=6$이다.\n$x-y=(3+\\sqrt3)-(3-\\sqrt3)=2\\sqrt3$이다.\n(1) $x^2+2xy+y^2=(x+y)^2=6^2=36$이다.\n(2) $x^2-y^2=(x+y)(x-y)=6\\cdot2\\sqrt3=12\\sqrt3$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "(1)은 (x+y)²,(2)는 (x-y)(x+y)로 묶어 주어진 근호 합·차를 대입한다.",
+            "termId": 53
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "인수분해 후 식의 값",
+        "condition": "(1)은 (x+y)²,(2)는 (x-y)(x+y)로 묶어 주어진 근호 합·차를 대입한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_e696d2fdc07dd30dbc2d4a6275cd4731017152dfad4c85de3eda4cac8805482e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "062df24cca584dc56c0b6e5efbe28d5b7f11a8308986935af35f23ca11481d92"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1f8818c31b9c95976671d67f537417013161deea8adbb8c11c7a9780614d5ec3"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차식",
+            "quote": "[서술형 3] $36x^2 + (5k+2)x + 9$가 완전제곱식이 되기 위한 모든 수 $k$ 값의 합을 구하시오. (5점)",
+            "src": "stem",
+            "termId": 37
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "[서술형 3] $36x^2 + (5k+2)x + 9$가 완전제곱식이 되기 위한 모든 수 $k$ 값의 합을 구하시오. (5점)",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "합",
+            "quote": "[서술형 3] $36x^2 + (5k+2)x + 9$가 완전제곱식이 되기 위한 모든 수 $k$ 값의 합을 구하시오. (5점)",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "quote": "완전제곱식의 형태는 $(6x+3)^2$ 또는 $(6x-3)^2$이다.\n$(6x+3)^2=36x^2+36x+9$이므로 $5k+2=36$이다.\n$(6x-3)^2=36x^2-36x+9$이므로 $5k+2=-36$이다.\n따라서 $k=\\frac{34}{5}$ 또는 $k=-\\frac{38}{5}$이다.\n두 값의 합은 $\\frac{34}{5}-\\frac{38}{5}=-\\frac45$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "중간항 5k+2가 ±2·6·3이 되는 두 경우를 구해 k들을 합한다.",
+            "termId": 59
+          },
+          {
+            "term": "계수비교",
+            "quote": "완전제곱식의 형태는 $(6x+3)^2$ 또는 $(6x-3)^2$이다.\n$(6x+3)^2=36x^2+36x+9$이므로 $5k+2=36$이다.\n$(6x-3)^2=36x^2-36x+9$이므로 $5k+2=-36$이다.\n따라서 $k=\\frac{34}{5}$ 또는 $k=-\\frac{38}{5}$이다.\n두 값의 합은 $\\frac{34}{5}-\\frac{38}{5}=-\\frac45$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "중간항 5k+2가 ±2·6·3이 되는 두 경우를 구해 k들을 합한다.",
+            "termId": 696
+          },
+          {
+            "term": "경우분류",
+            "quote": "완전제곱식의 형태는 $(6x+3)^2$ 또는 $(6x-3)^2$이다.\n$(6x+3)^2=36x^2+36x+9$이므로 $5k+2=36$이다.\n$(6x-3)^2=36x^2-36x+9$이므로 $5k+2=-36$이다.\n따라서 $k=\\frac{34}{5}$ 또는 $k=-\\frac{38}{5}$이다.\n두 값의 합은 $\\frac{34}{5}-\\frac{38}{5}=-\\frac45$이다.",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "중간항 5k+2가 ±2·6·3이 되는 두 경우를 구해 k들을 합한다.",
+            "termId": 293
+          }
+        ],
+        "condition": [
+          {
+            "term": "완전제곱식",
+            "quote": "[서술형 3] $36x^2 + (5k+2)x + 9$가 완전제곱식이 되기 위한 모든 수 $k$ 값의 합을 구하시오. (5점)",
+            "src": "stem",
+            "termId": 59
+          }
+        ]
+      },
+      "reasons": {
+        "method": "완전제곱식의 계수",
+        "condition": "중간항 5k+2가 ±2·6·3이 되는 두 경우를 구해 k들을 합한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "qid_v1_b8440323e59cd24e19986be3b01aa3bf525cb677c763252fb598aa173bba9532",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "34219a9f630695354ca867ec1cde9e82ad280a08cd82a90f0801fa62e0025004"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "577540d58a7516b6aae08a28e375d566e5a70f29705949c9bd7ba2e4c22a1693"
+        }
+      ],
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "quote": "[서술형 4] 오른쪽은 넓이가 $(5x^2-7xy-6y^2)\\,\\text{cm}^2$인 직사각형 모양의 그림이다. 이 그림의 가로의 길이가 $(5x+3y)\\,\\text{cm}$일 때, 이 그림의 둘레의 길이를 구하시오. (5점)<br><br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q25.png\">",
+            "src": "stem",
+            "termId": 165
+          },
+          {
+            "term": "다항식",
+            "quote": "[서술형 4] 오른쪽은 넓이가 $(5x^2-7xy-6y^2)\\,\\text{cm}^2$인 직사각형 모양의 그림이다. 이 그림의 가로의 길이가 $(5x+3y)\\,\\text{cm}$일 때, 이 그림의 둘레의 길이를 구하시오. (5점)<br><br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q25.png\">",
+            "src": "stem",
+            "termId": 35
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "quote": "[서술형 4] 오른쪽은 넓이가 $(5x^2-7xy-6y^2)\\,\\text{cm}^2$인 직사각형 모양의 그림이다. 이 그림의 가로의 길이가 $(5x+3y)\\,\\text{cm}$일 때, 이 그림의 둘레의 길이를 구하시오. (5점)<br><br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q25.png\">",
+            "src": "stem",
+            "termId": 214
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "quote": "넓이 식을 가운데 항을 나누어 인수분해한다.\n$5x^2-7xy-6y^2=5x^2-10xy+3xy-6y^2$\n$=5x(x-2y)+3y(x-2y)$\n$=(5x+3y)(x-2y)$이다.\n직사각형의 넓이는 가로와 세로의 곱이다. 가로가 $5x+3y$이므로 세로는 $x-2y$ cm이다.\n둘레는 $2[(5x+3y)+(x-2y)]=12x+2y$ cm이다.\n따라서 정답은 $12x+2y$ cm이다.<br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q25_solution.svg\" alt=\"직사각형 넓이식을 가운데 항을 나누어 인수분해한 뒤 둘레를 계산\">",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이를 (5x+3y)(x-2y)로 분해하여 세로를 읽고 두 변의 합의 두 배를 구한다.",
+            "termId": 42
+          },
+          {
+            "term": "넓이",
+            "quote": "넓이 식을 가운데 항을 나누어 인수분해한다.\n$5x^2-7xy-6y^2=5x^2-10xy+3xy-6y^2$\n$=5x(x-2y)+3y(x-2y)$\n$=(5x+3y)(x-2y)$이다.\n직사각형의 넓이는 가로와 세로의 곱이다. 가로가 $5x+3y$이므로 세로는 $x-2y$ cm이다.\n둘레는 $2[(5x+3y)+(x-2y)]=12x+2y$ cm이다.\n따라서 정답은 $12x+2y$ cm이다.<br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q25_solution.svg\" alt=\"직사각형 넓이식을 가운데 항을 나누어 인수분해한 뒤 둘레를 계산\">",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이를 (5x+3y)(x-2y)로 분해하여 세로를 읽고 두 변의 합의 두 배를 구한다.",
+            "termId": 213
+          },
+          {
+            "term": "둘레",
+            "quote": "넓이 식을 가운데 항을 나누어 인수분해한다.\n$5x^2-7xy-6y^2=5x^2-10xy+3xy-6y^2$\n$=5x(x-2y)+3y(x-2y)$\n$=(5x+3y)(x-2y)$이다.\n직사각형의 넓이는 가로와 세로의 곱이다. 가로가 $5x+3y$이므로 세로는 $x-2y$ cm이다.\n둘레는 $2[(5x+3y)+(x-2y)]=12x+2y$ cm이다.\n따라서 정답은 $12x+2y$ cm이다.<br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q25_solution.svg\" alt=\"직사각형 넓이식을 가운데 항을 나누어 인수분해한 뒤 둘레를 계산\">",
+            "src": "solution",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이를 (5x+3y)(x-2y)로 분해하여 세로를 읽고 두 변의 합의 두 배를 구한다.",
+            "termId": 214
+          }
+        ],
+        "condition": []
+      },
+      "reasons": {
+        "method": "인수분해로 다른 변 구하기",
+        "condition": "넓이를 (5x+3y)(x-2y)로 분해하여 세로를 읽고 두 변의 합의 두 배를 구한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:03:46.446716+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "AUTHOR_CHECKED",
+    "independentReview": "PENDING_ROOT_SAMPLE"
+  },
+  "reviewedSourceBaseBlob": "a88b2897c73e9efb813b5174dc5d17e058e6d196",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "examKey": "E067",
+    "author": "meta_a",
+    "reviewer": "meta_b",
+    "reviewedAt": "2026-11-15",
+    "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+    "status": "PASS_WITH_EXPLICIT_DEBTS",
+    "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+    "sourceBaseBlob": "a88b2897c73e9efb813b5174dc5d17e058e6d196",
+    "inputHashes": {
+      "reviewSha256": "ff9914f12d4772c5f4efc32ef99e0cef0c8705287ee5bb4d07f4dbf115053a43",
+      "fourSlotSha256": "17cdf8ccffd2c55050a33cbf1d2725cb3eed3baa8c7e5259f9b963ea3fa12867"
+    },
+    "sampledOrdinals": [
+      4,
+      16,
+      21
+    ],
+    "additionalReviewedOrdinals": [],
+    "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+    "findings": [
+      {
+        "ordinal": 4,
+        "questionUid": "qid_v1_fa7ef075cf5d6f7ab3ba74e972532c33c27ab8e78e1b698d61e1dd23036aa7bb",
+        "status": "PASS",
+        "note": "양·음의 제곱근을 지정된 부호대로 직접 읽는 하1. goal 식의값·method 제곱근은 실제기존해설과 일치."
+      },
+      {
+        "ordinal": 16,
+        "questionUid": "qid_v1_793abc574d0228e3137f2b5efb504950dc4a1104dd76b69c52228ebca8177611",
+        "status": "PASS",
+        "note": "완전제곱식으로 고친 뒤 명시 구간 -4<a<3의 부호를 적용. 중2와 완전제곱 보조·범위조건 수용."
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_71dd1c4b7e6418329a3ed8391b626e6348ef05908e53630c4e2d6644ef45b11d",
+        "status": "PASS",
+        "note": "자연수 개수 N(x)의 누적합을 제곱수 경계별로 구간화하는 전략3. 저자가 보완한 goal 개수+합 확인; 상3/B34 인접은 정의를 해석하고 묶음 구조를 만드는 판단으로 수용."
+      }
+    ],
+    "assetReview": [],
+    "decisiveMethodOrGoalErrorsInSample": 0,
+    "inventedQuotesInSample": 0,
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sharedRegistration": "NOT_PERFORMED",
+    "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E067",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "a88b2897c73e9efb813b5174dc5d17e058e6d196",
+  "inputHashes": {
+    "reviewSha256": "ff9914f12d4772c5f4efc32ef99e0cef0c8705287ee5bb4d07f4dbf115053a43",
+    "fourSlotSha256": "17cdf8ccffd2c55050a33cbf1d2725cb3eed3baa8c7e5259f9b963ea3fa12867"
+  },
+  "sampledOrdinals": [
+    4,
+    16,
+    21
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_fa7ef075cf5d6f7ab3ba74e972532c33c27ab8e78e1b698d61e1dd23036aa7bb",
+      "status": "PASS",
+      "note": "양·음의 제곱근을 지정된 부호대로 직접 읽는 하1. goal 식의값·method 제곱근은 실제기존해설과 일치."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_793abc574d0228e3137f2b5efb504950dc4a1104dd76b69c52228ebca8177611",
+      "status": "PASS",
+      "note": "완전제곱식으로 고친 뒤 명시 구간 -4<a<3의 부호를 적용. 중2와 완전제곱 보조·범위조건 수용."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_71dd1c4b7e6418329a3ed8391b626e6348ef05908e53630c4e2d6644ef45b11d",
+      "status": "PASS",
+      "note": "자연수 개수 N(x)의 누적합을 제곱수 경계별로 구간화하는 전략3. 저자가 보완한 goal 개수+합 확인; 상3/B34 인접은 정의를 해석하고 묶음 구조를 만드는 판단으로 수용."
+    }
+  ],
+  "assetReview": [],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}
