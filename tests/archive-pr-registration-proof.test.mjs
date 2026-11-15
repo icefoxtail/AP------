@@ -1,3 +1,4 @@
+import { seedSourceQualityHoldFixture } from './helpers/source-quality-hold-fixture.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -62,6 +63,7 @@ function fixture(t, changedFile = 'archive/exams/original/new.js') {
       .map(file => ({ path: file, sha256: sha256(fs.readFileSync(path.join(root, 'archive', file))) })),
   }) + '\n');
   manifest(false);
+  seedSourceQualityHoldFixture(root);
   git('add', '.'); git('commit', '-qm', 'baseline');
   const baseSha = git('rev-parse', 'HEAD');
   git('switch', '-qc', 'source-pr');
