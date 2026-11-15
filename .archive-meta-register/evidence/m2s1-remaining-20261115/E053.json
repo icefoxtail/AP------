@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_BOUNDED_REPAIR_OR_DEBT_RECHECK",
+  "producer": "/root/m2s1_release",
+  "priorAcceptedReview": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E053/amendments/unknown-legacy-compatibility-r1/accepted-review.json",
+    "sha256": "7c3cdee2b6f9ea86e9a1b80879d2e1d2c72ec32976fa58bd8380d54f945d572e"
+  },
+  "currentSourceBlobSha": "a678e285b7dac921d761dde46b3b74389d763147",
+  "narrowEvidence": {
+    "firstEightProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-remaining-20261115/first8-proposal.json",
+      "sha256": "ccc53758c54ba407f991529db5a14b3211a9a936d17c2d562c92a449b699cc25"
+    },
+    "firstEightIndependent": {
+      "path": ".archive-meta-register/evidence/m2s1-remaining-20261115/first8-independent.json",
+      "sha256": "427337f3bcfc71c66baea43bee65a735389f2eb12bda3b6b9ed8ae436e465827"
+    },
+    "benchIndependent": {
+      "path": ".archive-meta-register/evidence/m2s1-remaining-20261115/E075-Q20-independent.json",
+      "sha256": "de50cde321ddfd79520204c7675fdd2b523495080b401f94a232b9785ba29d79"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 24,
+    "selectedQuestions": 1
+  },
+  "newAdvancedMetadataApprovals": 0,
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+      "ordinal": 23,
+      "questionUid": "qid_v1_e4002b19166a2e6a6f00744485e690a54463bf5f9440e538961b5fa5623bad83",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "sourceFingerprint": "10fc2a9bde1d14912e71fec9720047db3e82a1af3e6ce2362269d11dd2b84638",
+        "contentFingerprint": "017a6e475e93b974807f736bcfe25d95bad3c47c570ce0540a1eadbf8cc0c8b4"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "a680f01e3442825383a36161e794e61865b76ab64e792c6d3fbf177cea39293d",
+      "contentFingerprint": "965cc8db4bbd316cd1464f0cdfffd2b5fed6f62d4df95cfe8393cee6717b95f3",
+      "staleSourceBinding": true,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "거듭제곱 전개 후 각 문자의 지수를 비교. 보기가 공백인 표현부채 유지\nCurrent bounded closure: Remove five empty option placeholders, retaining the current response type, stem, answer and existing solution. Existing numeric difficulty/confidence are preserved; no advanced metadata or REVIEW2 approval is created."
+    }
+  ]
+}

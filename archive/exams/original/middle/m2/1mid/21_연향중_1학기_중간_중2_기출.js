@@ -312,11 +312,11 @@ window.questionBank = [
     "id": 7,
     "content": "다음 중에서 일차부등식 $2x+5 > 2+3x$의 해를 수직선 위에 옳게 나타낸 것은? <span class='score'>(4점)</span>",
     "choices": [
-      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='10' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>2</text></svg></div>",
-      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='90' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>2</text></svg></div>",
-      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='white' stroke='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='10' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>",
-      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='90' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>",
-      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='white' stroke='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='90' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>"
+      "<div class=\"svg-center\"><img src=\"assets/images/21_연향중_1학기_중간_중2_기출/q07-choice-1-readable-v3.svg\" alt=\"수직선 보기\" style=\"width:210px;max-width:100%;height:auto\"></div>",
+      "<div class=\"svg-center\"><img src=\"assets/images/21_연향중_1학기_중간_중2_기출/q07-choice-2-readable-v3.svg\" alt=\"수직선 보기\" style=\"width:210px;max-width:100%;height:auto\"></div>",
+      "<div class=\"svg-center\"><img src=\"assets/images/21_연향중_1학기_중간_중2_기출/q07-choice-3-readable-v3.svg\" alt=\"수직선 보기\" style=\"width:210px;max-width:100%;height:auto\"></div>",
+      "<div class=\"svg-center\"><img src=\"assets/images/21_연향중_1학기_중간_중2_기출/q07-choice-4-readable-v3.svg\" alt=\"수직선 보기\" style=\"width:210px;max-width:100%;height:auto\"></div>",
+      "<div class=\"svg-center\"><img src=\"assets/images/21_연향중_1학기_중간_중2_기출/q07-choice-5-readable-v3.svg\" alt=\"수직선 보기\" style=\"width:210px;max-width:100%;height:auto\"></div>"
     ],
     "answer": "③",
     "category": "일차부등식",
@@ -336,7 +336,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "$2x+5>2+3x$\n$2x-3x>2-5$\n$-x>-3$이다.\n양변을 $-1$로 나누면\n$x<3$이다.\n\n따라서 정답은 ③이다.",
+    "solution": "$2x+5>2+3x$\n$2x-3x>2-5$\n$-x>-3$이다.\n양변을 $-1$로 나누면\n$x<3$이다.\n\n$x<3$은 $3$을 포함하지 않으므로 $3$에 빈 원을 표시하고 왼쪽으로 선을 긋는다. 이에 해당하는 수직선은 ③이다.\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -536,7 +536,7 @@ window.questionBank = [
       "기출"
     ],
     "wide": false,
-    "solution": "$(3^x)^2\\times3^{11}\\div(3^5)^3=3^{2x+11-15}=3^{2x-4}$이다.\n문제에서 이 값이 $\\dfrac1{3^2}=3^{-2}$라고 했으므로\n$2x-4=-2$이다.\n따라서 $2x=2$, $x=1$이다.\n\n따라서 정답은 ①이다.",
+    "solution": "$(3^5)^3=3^{15}$이므로 주어진 등식의 양변에 $3^{15}$을 곱하면\n$(3^x)^2\\times3^{11}=\\dfrac{3^{15}}{3^2}=3^{13}$이다.\n왼쪽은 $3^{2x+11}$이므로 지수를 비교하면 $2x+11=13$이다.\n따라서 $x=1$이므로 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",

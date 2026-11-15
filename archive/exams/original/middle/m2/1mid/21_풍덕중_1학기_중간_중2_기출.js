@@ -799,13 +799,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "$(\\frac{x^a}{2y^b})^3 = \\frac{x^{24}}{8y^6}$ 일 때 $a+b$의 값은? [4점]",
-    "choices": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ],
+    "choices": [],
     "answer": "10",
     "solution": "$3a = 24 \\implies a=8, 3b=6 \\implies b=2$\n$\\therefore a+b = 10$",
     "subUnitKey": "M2-01-EXPONENT_LAW",

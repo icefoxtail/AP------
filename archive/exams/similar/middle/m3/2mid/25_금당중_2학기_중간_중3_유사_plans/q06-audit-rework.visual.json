@@ -1,0 +1,210 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/25_금당중_2학기_중간_중3_유사.js",
+  "questionId": 6,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "sourceConditions": [
+          "∠C=90°",
+          "∠B=30°",
+          "BC=6√3 cm",
+          "AD는 ∠A의 이등분선, D∈BC"
+        ],
+        "newVisualInformation": [
+          "BC 전체의 치수 끝점을 B와 C에 결속해 BD와 혼동되지 않게 함"
+        ],
+        "caption": "직각삼각형과 선분 AD",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "6"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "VECTOR_SCALE_POINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {
+                "k": {
+                  "kind": "rational",
+                  "numerator": "1",
+                  "denominator": "3"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "AD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 480,
+          "height": 360
+        },
+        "accessibilityDescription": "삼각형 내부에 A에서 밑변 위의 D로 이어지는 선분이 있고 밑변 바깥에 치수선이 있다.",
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "angleB",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 30,
+              "label": "30",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "givenBC",
+              "from": "B",
+              "to": "C",
+              "label": "6sqrt(3)",
+              "side": "BELOW",
+              "style": "ARROW",
+              "value": 10.392304845413264,
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rightC",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ],
+            "factRole": "GIVEN"
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 30,
+        "displayScale": 0.52,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

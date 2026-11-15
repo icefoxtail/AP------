@@ -15,6 +15,8 @@ import {REVIEWED_META_VALUE_FIELDS} from '../archive/tools/meta-foundation/revie
 import {reviewedRendererBindingPath,buildReviewedRendererBinding} from '../archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs';
 import {reviewedSourceBindingPath,buildReviewedSourceBinding} from '../archive/tools/meta-foundation/reviewed-source-binding.mjs';
 import {hasNativeReviewedSourceClaim,validateNativeReviewedSourceReuse} from '../archive/tools/meta-foundation/native-reviewed-source-reuse.mjs';
+import {hasNativeSourcePreservationClaim} from '../archive/tools/meta-foundation/native-preserved-source-reuse.mjs';
+import {SOURCE_SUBSET_SCHEMA,SOURCE_SUBSET_EVIDENCE_SCHEMA,sourceSubsetEvidencePath} from '../archive/tools/meta-foundation/source-subset-preservation.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source='original/middle/m3/1mid/fixture.js',uid='qid_v1_'+'a'.repeat(64);
 function fixture() {
@@ -158,9 +160,9 @@ test('native receipt reuse accepts missing producer-only fields without completi
   assert.equal(JSON.stringify({question:f.question,current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,receipt:f.receipt}),before);
   for(const row of [f.question,f.current,f.nativeSource.runtimeRecord])for(const field of ['difficultyBoundaryFlag','legacyLevelCompatibility'])assert.equal(Object.hasOwn(row,field),false);
 });
-function partialNativeReviewFixture(t) {
+function partialNativeReviewFixture(t,{completeFields=false}={}) {
   const f=nativeReviewFixture(t,{ordinal:3,questionOverrides:{id:3},
-    omitFields:['difficultyBoundaryFlag','legacyLevelCompatibility'],officialValidator:true});
+    omitFields:completeFields?[]:['difficultyBoundaryFlag','legacyLevelCompatibility'],officialValidator:true});
   f.allRecords=structuredClone(f.receipt.appliedRecords);
   f.allRuntimes=structuredClone(f.receipt.runtimeRecords);
   f.nativeSource.identityByJoin=new Map(f.receipt.appliedIdentityRecords.map(r=>[
@@ -180,8 +182,8 @@ test('partial native reuse finds a noncontiguous selected UID without rewriting 
   assert.equal(JSON.stringify({current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,
     receipt:f.receipt,question:f.question}),before);
 });
-function solutionRebindNativeFixture(t) {
-  const f=partialNativeReviewFixture(t),oldBank=structuredClone(f.nativeSource.bank);
+function solutionRebindNativeFixture(t,{completeFields=false}={}) {
+  const f=partialNativeReviewFixture(t,{completeFields}),oldBank=structuredClone(f.nativeSource.bank);
   f.previous.solution='previous solution explicitly repaired by the native FINAL_QA';
   oldBank[f.ordinal-1].solution=f.previous.solution;
   execFileSync('git',['init','-q'],{cwd:f.nativeSource.root});
@@ -516,8 +518,8 @@ test('pinned DongSan source validates through the official registry and planner'
   assert.equal(r.status,'APPLY',JSON.stringify(r));assert.equal(r.final.problemTypeKey,'PT_M3_SQUARE_ROOT_PROPERTY');assert.equal(r.final.templateKey,'TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT');
 });
 
-function reviewedFigureNativeFixture(t,{form='image',mutateCurrent,mutatePending,mutateIndependent,mutateRenderer,mutateNative,nestedDependency=false,genericReview=false}={}) {
-  const f=partialNativeReviewFixture(t),dir=f.nativeSource.root;
+function reviewedFigureNativeFixture(t,{form='image',mutateCurrent,mutatePending,mutateIndependent,mutateRenderer,mutateNative,nestedDependency=false,genericReview=false,completeFields=false}={}) {
+  const f=partialNativeReviewFixture(t,{completeFields}),dir=f.nativeSource.root;
   const sha=v=>crypto.createHash('sha256').update(v).digest('hex');
   const blob=v=>crypto.createHash('sha1').update(`blob ${v.length}\0`).update(v).digest('hex');
   const stable=v=>JSON.stringify(v,(_,x)=>x&&typeof x==='object'&&!Array.isArray(x)?Object.fromEntries(Object.keys(x).sort().map(k=>[k,x[k]])):x);
@@ -858,7 +860,7 @@ test('compound reuse follows the writer value contract without approving native 
   assert.equal(f.current.standardUnitOrder,undefined);
 });
 
-function typedSourceReviewFixture(t) {
+function typedSourceReviewFixture(t,{ordinaryLineage=false,includePlain=false}={}) {
   const f=nativeReviewFixture(t,{ordinal:2,questionOverrides:{id:2,standardCourse:'중2 수학',courseKey:'M2-2',
     standardUnitKey:'M2-06',subUnitKey:'M2-06-RATIO'},officialValidator:true});
   const dir=f.nativeSource.root,sha=v=>crypto.createHash('sha256').update(v).digest('hex');
@@ -897,7 +899,8 @@ function typedSourceReviewFixture(t) {
   const rpmRef=put(rpmPath,{records:[{id:'M2-RPM-TEST',curriculum:'2015',scope:'M2-2',standardUnitKey:'M2-06',subUnitKey:'M2-06-RATIO'}]});
   git('add','.');git('commit','-qm','Synthetic immutable reviewed source');
   const base=git('rev-parse','HEAD'),sourceBlob=git('rev-parse',base+':'+sourcePath);
-  const after=Object.fromEntries(REVIEWED_META_VALUE_FIELDS.filter(k=>Object.hasOwn(f.current,k)&&!['problemTypeKey','templateKey'].includes(k)).map(k=>[k,f.current[k]]));
+  const after=Object.fromEntries(REVIEWED_META_VALUE_FIELDS.filter(k=>Object.hasOwn(f.current,k)&&
+    (ordinaryLineage||!['problemTypeKey','templateKey'].includes(k))).map(k=>[k,f.current[k]]));
   const native={schemaVersion:'m2-s2-meta-review-v1',sourceArchiveFile:f.source,baseSha:base,sourceGitBlobSha:sourceBlob,owner:'native-reviewer',reviewedQuestionCount:2,
     items:f.receipt.appliedRecords.map(row=>({questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal,rpmDecision:'KEEP',rpmRecordId:'M2-RPM-TEST',decisiveStep:f.question.decisiveStep,
       after,proposalRefs:[],registrationDebt:[],fieldReview:{classification:'기존 주유형 유지',binding:'정확한 기존 ACTIVE binding 대조',difficulty:'확정 난도 유지'},
@@ -908,9 +911,13 @@ function typedSourceReviewFixture(t) {
     after:{problemTypeKey:'PT_ROOT',templateKey:'TPL_ROOT',sourceFingerprint:sourceFingerprint(f.question),contentFingerprint:contentFingerprint(f.question)},
     identityBefore:{sourceFingerprint:'b'.repeat(64)},evidenceRefs:[reviewRef,rpmRef],sourceReview:{schemaVersion:'archive-reviewed-source-reassessment-v1',
       reviewCommit:git('rev-parse','HEAD'),reviewPath:reviewRef.path,reviewRef,retainedFields:{schemaVersion:'archive-reviewed-native-retained-fields-v1',fields:['problemTypeKey','templateKey']}}};
+  const priorRef=ordinaryLineage?put('archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/prior-native-review.json',
+    {...structuredClone(f.receipt),requestId:'prior-native-review'}):null;
+  if(ordinaryLineage)delete patch.sourceReview.retainedFields;
   const request={schemaVersion:'archive-reviewed-exam-meta-register-request-v2',requestId:f.receipt.requestId,examUid:f.receipt.examUid,scope:'PARTIAL_UIDS',
     sourceArchiveFile:f.source,expectedSourceBlobSha1:sourceBlob,expectedQuestionCount:2,registryChanges:[],items:[patch],
-    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'fixture-reviewer',evidenceRefs:[reviewRef,rpmRef]}};
+    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'fixture-reviewer',evidenceRefs:[reviewRef,rpmRef,...(priorRef?[priorRef]:[])]}};
+  if(includePlain)request.items.unshift({...structuredClone(patch),questionUid:plainCurrent.questionUid,sourceOrdinal:1});
   const tables={pt:f.registry.problemTypes,tpl:f.registry.templates,cc:new Map(),cond:new Map(),master:new Map(master.map(r=>[r.key,r])),
     bindings:new Map([[stable(['2015','중2 수학','M2-06','M2-06-RATIO','PT_ROOT']),binding]])};
   const proof=validateReviewedSourceReassessment({root:dir,request,patch,metadata:{...f.current,...patch.before},question:f.question,final:f.current,
@@ -921,9 +928,65 @@ function typedSourceReviewFixture(t) {
     requestSha256:sha(stable(request)),approval:request.approval,registryChanges:[],appliedRecords:[f.current],appliedIdentityRecords:[f.identity],runtimeRecords:[f.nativeSource.runtimeRecord],
     fingerprintRepairs:[{questionUid:uid,sourceOrdinal:2,metadataBefore:{sourceFingerprint:patch.before.sourceFingerprint,contentFingerprint:patch.before.contentFingerprint},
       identityBefore:patch.identityBefore,after:{sourceFingerprint:sourceFingerprint(f.question),contentFingerprint:contentFingerprint(f.question)},sourceReview:proof}]});
+  if(includePlain){
+    const plainPatch=request.items[0],plainQuestion=f.nativeSource.bank[0];
+    const plainProof=validateReviewedSourceReassessment({root:dir,request,patch:plainPatch,metadata:{...plainCurrent,...plainPatch.before},question:plainQuestion,final:plainCurrent,
+      supportedFields:new Set(REVIEWED_META_VALUE_FIELDS),canonicalBefore:tables,canonicalAfter:tables});
+    for(const row of [plainCurrent,plainRuntime])row.approvalEvidence.push(bindingPath);
+    f.receipt.partialUidCount=f.receipt.totalQuestions=2;
+    f.receipt.appliedRecords.unshift(plainCurrent);f.receipt.appliedIdentityRecords.unshift(plainIdentity);f.receipt.runtimeRecords.unshift(plainRuntime);
+    f.receipt.fingerprintRepairs.unshift({questionUid:plainCurrent.questionUid,sourceOrdinal:1,
+      metadataBefore:{sourceFingerprint:plainPatch.before.sourceFingerprint,contentFingerprint:plainPatch.before.contentFingerprint},identityBefore:plainPatch.identityBefore,
+      after:{sourceFingerprint:sourceFingerprint(plainQuestion),contentFingerprint:contentFingerprint(plainQuestion)},sourceReview:plainProof});
+  }
   f.receipt.outputDigests=[put(bindingPath,buildReviewedSourceBinding({request,...f.receipt}))];f.saveReceipt();
   return Object.assign(f,{put,git,sha,stable,request,bindingPath,sourcePath,reviewPath:reviewRef.path,plainCurrent,plainIdentity,plainRuntime});
 }
+
+test('ordinary source reassessment with prior receipt lineage replays its durable native proof',t=>{
+  const f=typedSourceReviewFixture(t,{ordinaryLineage:true});
+  assert.equal(f.receipt.fingerprintRepairs[0].sourceReview.retainedNativeFields,undefined);
+  assert.equal(f.receipt.approval.sourceRebind,undefined);
+  const before=JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.nativeSource.bank]);
+  assert.equal(validateNativeReviewedSourceReuse(f.receipt,f.nativeSource,f.question,f.identity,f.ordinal,f.current,f.registry),true);
+  for(const previous of [f.previous,structuredClone(f.question)]) {
+    const result=planQuestion({...f,previous});assert.equal(result.status,'ALREADY_REGISTERED');
+    assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  }
+  assert.equal(JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.nativeSource.bank]),before);
+});
+for(const [name,mutate]of [
+  ['missing sidecar',f=>fs.unlinkSync(path.join(f.nativeSource.root,f.bindingPath))],
+  ['missing sidecar digest',f=>{f.receipt.outputDigests=[];}],
+  ['missing native evidence',f=>fs.unlinkSync(path.join(f.nativeSource.root,f.reviewPath))],
+  ['changed native evidence',f=>f.put(f.reviewPath,{unreviewed:true})],
+  ['locally rehashed forged request snapshot',f=>{
+    const bound=JSON.parse(fs.readFileSync(path.join(f.nativeSource.root,f.bindingPath)));
+    bound.requestSnapshot.items[0].before.problemTypeKey='fabricated';
+    f.receipt.outputDigests=[f.put(f.bindingPath,bound)];
+  }],
+  ['locally rehashed forged native commit',f=>{
+    f.request.items[0].sourceReview.reviewCommit='e'.repeat(40);
+    f.receipt.requestSha256=f.sha(f.stable(f.request));
+    f.receipt.fingerprintRepairs[0].sourceReview.reviewCommit='e'.repeat(40);
+    f.receipt.outputDigests=[f.put(f.bindingPath,buildReviewedSourceBinding({request:f.request,...f.receipt}))];
+  }],
+  ['sourceReview marker and prior-receipt prefix without durable proof',f=>{
+    f.receipt.fingerprintRepairs[0].sourceReview={schemaVersion:'archive-reviewed-source-reassessment-v1'};
+    f.receipt.outputDigests=[];fs.unlinkSync(path.join(f.nativeSource.root,f.bindingPath));
+    for(const row of [f.current,f.nativeSource.runtimeRecord])row.approvalEvidence=row.approvalEvidence.filter(p=>p!==f.bindingPath);
+  }],
+  ['explicit sourceRebind mixed with a direct review',f=>{f.receipt.approval.sourceRebind={};}],
+  ['preservation count claim mixed with a direct review',f=>{f.receipt.newMetadataApprovals=0;f.receipt.preservedMetadataApprovals=1;}],
+])test('ordinary lineage cannot bypass native proof or preservation guards: '+name,t=>{
+  const f=typedSourceReviewFixture(t,{ordinaryLineage:true});assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
+  mutate(f);f.saveReceipt();
+  for(const previous of [f.previous,structuredClone(f.question)]) {
+    const out=planQuestion({...f,previous});assert.equal(out.status,'SUPPLEMENT_PENDING');
+    assert.equal(out.nativeReviewReceipt,undefined);assert.equal(out.final,undefined);
+  }
+});
+
 function typedSourceAncestor(f) {
   const priorPath=f.receiptPath,priorRef={path:priorPath,sha256:f.sha(fs.readFileSync(path.join(f.nativeSource.root,priorPath)))};
   f.git('hash-object','-w',f.sourcePath);
@@ -938,6 +1001,13 @@ function typedSourceAncestor(f) {
     appliedRecords:[f.current],runtimeRecords:[f.nativeSource.runtimeRecord]};
   f.receiptPath=nextPath;f.saveReceipt=()=>f.put(nextPath,f.receipt);f.saveReceipt();return f;
 }
+test('source-only descendants replay an ordinary lineage ancestor and retain its native evidence obligation',t=>{
+  const f=typedSourceAncestor(typedSourceReviewFixture(t,{ordinaryLineage:true}));
+  assert.equal(validateNativeReviewedSourceReuse(f.receipt,f.nativeSource,f.question,f.identity,f.ordinal,f.current,f.registry),true);
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  f.put(f.reviewPath,{unreviewed:true});
+  const result=planQuestion(f);assert.equal(result.status,'SUPPLEMENT_PENDING');assert.equal(result.final,undefined);
+});
 test('typed native source review revalidates a consumed request without altering its approval',t=>{
   const f=typedSourceReviewFixture(t),before=JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.nativeSource.bank]);
   assert.equal(validateNativeReviewedSourceReuse(f.receipt,f.nativeSource,f.question,f.identity,f.ordinal,f.current,f.registry),true);
@@ -1016,4 +1086,281 @@ test('an explicit receipt ancestry with no typed source review preserves the pla
   assert.equal(hasNativeReviewedSourceClaim({root:f.nativeSource.root,current:f.current,runtimeRecord:f.nativeSource.runtimeRecord}),false);
   assert.equal(validateNativeReviewedSourceReuse(f.receipt,f.nativeSource,f.question,f.identity,f.ordinal,f.current,f.registry),null);
   assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+});
+
+// A new source container can change an unselected question after a native
+// solution/figure approval. Its selected approval and original proof stay exact.
+function preserveNativeSubset(f,id='plain-source-preservation') {
+  const dir=f.nativeSource.root,sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+  const put=(relative,value)=>{const file=path.join(dir,relative);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,typeof value==='string'||Buffer.isBuffer(value)?value:JSON.stringify(value));};
+  execFileSync('git',['init','-q'],{cwd:dir});
+  f.saveReceipt();
+  const prior=structuredClone(f.receipt),priorPath=f.receiptPath,priorBytes=fs.readFileSync(path.join(dir,priorPath));
+  execFileSync('git',['hash-object','-w','--stdin'],{cwd:dir,input:f.nativeSource.bytes});
+  const nextBank=structuredClone(f.nativeSource.bank),selected=new Set(prior.appliedRecords.map(row=>row.sourceOrdinal));
+  const other=nextBank.findIndex((_,i)=>!selected.has(i+1));assert.notEqual(other,-1);
+  nextBank[other].primaryMethod='unselected container-only change '+id;
+  const bytes=Buffer.from('window.questionBank='+JSON.stringify(nextBank)+';\n'),blobSha1=crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+  put('archive/exams/'+source,bytes);
+  const nextPath='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/'+id+'.json';
+  const updated=row=>({...structuredClone(row),metadataRevision:`meta-foundation:${row.metaFoundationPackId}@${row.metaFoundationPackVersion}:exam-final_qa-v2:${id}`,
+    approvalEvidence:[...new Set([...row.approvalEvidence,nextPath])]});
+  const appliedRecords=prior.appliedRecords.map(updated),runtimeRecords=prior.runtimeRecords.map(updated),ref={path:priorPath,sha256:sha(priorBytes)};
+  f.receipt={...prior,requestId:id,requestSha256:sha(id+prior.requestSha256),sourceBlobSha1:blobSha1,sourceRawSha256:sha(bytes),
+    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'preserve exact previous approval',evidenceRefs:[ref],sourceRebind:{priorReceiptRef:ref}},
+    registryChanges:[],fingerprintRepairs:[],nativeParentBindings:[],outputDigests:[],newMetadataApprovals:0,preservedMetadataApprovals:prior.partialUidCount,
+    appliedRecords,runtimeRecords};
+  f.current=appliedRecords.find(row=>row.questionUid===f.identity.questionUid);
+  f.nativeSource={...f.nativeSource,bytes,blobSha1,bank:nextBank,runtimeRecord:runtimeRecords.find(row=>row.questionUid===f.identity.questionUid)};
+  f.receiptPath=nextPath;f.saveReceipt=()=>put(nextPath,f.receipt);f.saveReceipt();
+  return Object.assign(f,{ancestor:prior,ancestorPath:priorPath,put,sha});
+}
+
+function strictSubsetNativeFixture(t,make=partialNativeReviewFixture,{completeFields=false}={}) {
+  const f=preserveNativeSubset(make(t,{completeFields}),'strict-subset-preservation'),uid=f.identity.questionUid;
+  const excluded=f.ancestor.appliedRecords.find(row=>row.questionUid!==uid);
+  // The other previously approved question receives a separate renderer update.
+  // Its live identity fingerprint no longer equals the original two-item receipt.
+  f.nativeSource.bank[excluded.sourceOrdinal-1].image='assets/later-excluded-renderer.svg';
+  const bytes=Buffer.from('window.questionBank='+JSON.stringify(f.nativeSource.bank)+';\n');
+  Object.assign(f.nativeSource,{bytes,blobSha1:crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex')});
+  f.put('archive/exams/'+source,bytes);
+  Object.assign(f.receipt,{sourceBlobSha1:f.nativeSource.blobSha1,sourceRawSha256:f.sha(bytes),
+    totalQuestions:1,partialUidCount:1,preservedMetadataApprovals:1});
+  for(const key of ['appliedRecords','appliedIdentityRecords','runtimeRecords'])f.receipt[key]=f.receipt[key].filter(row=>row.questionUid===uid);
+  const identities=[...f.nativeSource.identityByJoin.values()].map(row=>structuredClone(row));
+  identities.find(row=>row.questionUid===excluded.questionUid).sourceFingerprint=sourceFingerprint(f.nativeSource.bank[excluded.sourceOrdinal-1]);
+  f.nativeSource.identityMap={schemaVersion:'question-identity-map-v1',records:identities};
+  f.nativeSource.identityByJoin=new Map(identities.map(row=>[`${row.sourceArchiveFile}#${row.sourceOrdinal}`,row]));
+  const evidencePath=sourceSubsetEvidencePath(f.receipt.requestId),ref={path:evidencePath,sha256:''};
+  const priorRef=f.receipt.approval.sourceRebind.priorReceiptRef;
+  f.receipt.approval.sourceRebind={schemaVersion:SOURCE_SUBSET_SCHEMA,priorReceiptRef:priorRef,subsetEvidenceRef:ref};
+  f.receipt.approval.evidenceRefs.push(ref);
+  for(const row of [f.current,f.nativeSource.runtimeRecord])row.approvalEvidence.push(evidencePath);
+  const proof={schemaVersion:SOURCE_SUBSET_EVIDENCE_SCHEMA,scope:'STRICT_SUBSET_OF_PRIOR_FINAL_QA',requestId:f.receipt.requestId,
+    examUid:f.receipt.examUid,sourceArchiveFile:source,expectedQuestionCount:3,priorReceiptRef:priorRef,
+    priorPartialUidCount:2,selectedUidCount:1,selected:[{questionUid:uid,sourceOrdinal:f.ordinal}],
+    excluded:[{questionUid:excluded.questionUid,sourceOrdinal:excluded.sourceOrdinal}],
+    priorSourceBlobSha1:f.ancestor.sourceBlobSha1,priorSourceRawSha256:f.ancestor.sourceRawSha256,
+    currentSourceBlobSha1:f.receipt.sourceBlobSha1,currentSourceRawSha256:f.receipt.sourceRawSha256,
+    newMetadataApprovals:0,newMathematicalQa:false,newReviewPassCount:0};
+  const publish=()=>{f.put(evidencePath,proof);ref.sha256=f.sha(fs.readFileSync(path.join(f.nativeSource.root,evidencePath)));};
+  publish();f.saveReceipt();return Object.assign(f,{proof,evidencePath,publish,excluded});
+}
+function strictTypedSubsetFixture(t){
+  const f=typedSourceReviewFixture(t,{ordinaryLineage:true,includePlain:true}),prior=structuredClone(f.receipt),dir=f.nativeSource.root;
+  const priorRef={path:f.receiptPath,sha256:f.sha(fs.readFileSync(path.join(dir,f.receiptPath)))};
+  const bank=structuredClone(f.nativeSource.bank);bank[0].image='assets/later-excluded-renderer.svg';
+  const bytes=Buffer.from('window.questionBank='+JSON.stringify(bank)+';\n');f.put(f.sourcePath,bytes.toString());
+  const id='strict-typed-source-subset',nextPath='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/'+id+'.json';
+  const proofPath=sourceSubsetEvidencePath(id),proofRef={path:proofPath,sha256:''};
+  const update=row=>({...structuredClone(row),metadataRevision:`meta-foundation:${row.metaFoundationPackId}@${row.metaFoundationPackVersion}:exam-final_qa-v2:${id}`,
+    approvalEvidence:[...row.approvalEvidence,nextPath,proofPath]});
+  f.current=update(f.current);const runtime=update(f.nativeSource.runtimeRecord);
+  const identities=structuredClone(prior.appliedIdentityRecords);identities[0].sourceFingerprint=sourceFingerprint(bank[0]);
+  f.nativeSource={...f.nativeSource,bank,bytes,blobSha1:crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex'),runtimeRecord:runtime,
+    identityMap:{schemaVersion:'question-identity-map-v1',records:identities},identityByJoin:new Map(identities.map(r=>[`${r.sourceArchiveFile}#${r.sourceOrdinal}`,r]))};
+  f.receipt={...prior,requestId:id,requestSha256:f.sha(id),sourceBlobSha1:f.nativeSource.blobSha1,sourceRawSha256:f.sha(bytes),partialUidCount:1,totalQuestions:1,
+    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'preserve prior subset only',evidenceRefs:[priorRef,proofRef],
+      sourceRebind:{schemaVersion:SOURCE_SUBSET_SCHEMA,priorReceiptRef:priorRef,subsetEvidenceRef:proofRef}},
+    newMetadataApprovals:0,preservedMetadataApprovals:1,registryChanges:[],fingerprintRepairs:[],nativeParentBindings:[],outputDigests:[],
+    appliedRecords:[f.current],appliedIdentityRecords:[f.identity],runtimeRecords:[runtime]};
+  const proof={schemaVersion:SOURCE_SUBSET_EVIDENCE_SCHEMA,scope:'STRICT_SUBSET_OF_PRIOR_FINAL_QA',requestId:id,examUid:prior.examUid,sourceArchiveFile:f.source,
+    expectedQuestionCount:2,priorReceiptRef:priorRef,priorPartialUidCount:2,selectedUidCount:1,selected:[{questionUid:uid,sourceOrdinal:2}],
+    excluded:[{questionUid:f.plainIdentity.questionUid,sourceOrdinal:1}],priorSourceBlobSha1:prior.sourceBlobSha1,priorSourceRawSha256:prior.sourceRawSha256,
+    currentSourceBlobSha1:f.receipt.sourceBlobSha1,currentSourceRawSha256:f.receipt.sourceRawSha256,newMetadataApprovals:0,newMathematicalQa:false,newReviewPassCount:0};
+  const ref=f.put(proofPath,proof);proofRef.sha256=ref.sha256;f.receiptPath=nextPath;f.saveReceipt=()=>f.put(nextPath,f.receipt);f.saveReceipt();return f;
+}
+test('strict subset replays the actual immutable ordinary source reassessment and its durable sidecar',t=>{
+  const f=strictTypedSubsetFixture(t);
+  for(const previous of [f.previous,structuredClone(f.question)]){
+    const result=planQuestion({...f,previous});assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));assert.equal(result.nativeReviewReceipt,f.receiptPath);
+  }
+  fs.unlinkSync(path.join(f.nativeSource.root,f.bindingPath));
+  for(const previous of [f.previous,structuredClone(f.question)]){
+    const result=planQuestion({...f,previous});assert.equal(result.status,'SUPPLEMENT_PENDING');assert.equal(result.final,undefined);
+  }
+});
+for(const [name,make]of [
+  ['plain approval',partialNativeReviewFixture],['solution repair',solutionRebindNativeFixture],
+  ['independent figure',reviewedFigureNativeFixture],['compound renderer',compoundRendererNativeFixture],
+])test('strict subset replays its original '+name+' with a separately updated excluded identity',t=>{
+  const f=strictSubsetNativeFixture(t,make),original=fs.readFileSync(path.join(f.nativeSource.root,f.ancestorPath));
+  const before=JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.nativeSource.identityMap,f.nativeSource.bank]);
+  for(const previous of [f.previous,structuredClone(f.question)]) {
+    const result=planQuestion({...f,previous});assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  }
+  assert.equal(JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.nativeSource.identityMap,f.nativeSource.bank]),before);
+  assert.deepEqual(fs.readFileSync(path.join(f.nativeSource.root,f.ancestorPath)),original);
+  assert.deepEqual(f.receipt.appliedRecords.map(row=>row.questionUid),[f.identity.questionUid]);
+  assert.equal(f.receipt.expectedQuestionCount,3);
+});
+for(const [name,change]of [
+  ['missing schema',f=>{delete f.receipt.approval.sourceRebind.schemaVersion;}],
+  ['missing evidence marker',f=>{delete f.receipt.approval.sourceRebind.subsetEvidenceRef;}],
+  ['missing subset file',f=>{fs.unlinkSync(path.join(f.nativeSource.root,f.evidencePath));}],
+  ['missing latest receipt',f=>{fs.unlinkSync(path.join(f.nativeSource.root,f.receiptPath));}],
+  ['missing original receipt',f=>{fs.unlinkSync(path.join(f.nativeSource.root,f.ancestorPath));}],
+  ['all receipt markers removed',f=>{
+    delete f.receipt.approval.sourceRebind;delete f.receipt.newMetadataApprovals;delete f.receipt.preservedMetadataApprovals;
+    f.receipt.approval.evidenceRefs=structuredClone(f.ancestor.approval.evidenceRefs);
+  }],
+  ['issued subset marker stripped',f=>{for(const row of [f.current,f.nativeSource.runtimeRecord])row.approvalEvidence=row.approvalEvidence.filter(p=>p!==f.evidencePath);}],
+  ['selection UID changed',f=>{f.proof.selected[0].questionUid=f.excluded.questionUid;f.publish();}],
+  ['selection ordinal changed',f=>{f.proof.selected[0].sourceOrdinal=f.excluded.sourceOrdinal;f.publish();}],
+  ['selection duplicated',f=>{f.proof.selected.push({...f.proof.selected[0]});f.publish();}],
+  ['excluded inventory omitted',f=>{f.proof.excluded=[];f.publish();}],
+  ['denominator reduced to selected count',f=>{f.proof.expectedQuestionCount=1;f.publish();}],
+  ['new approval claimed',f=>{f.proof.newMetadataApprovals=1;f.publish();}],
+  ['new review claimed',f=>{f.proof.newReviewPassCount=2;f.publish();}],
+  ['wrong historical raw hash',f=>{f.proof.priorSourceRawSha256='e'.repeat(64);f.publish();}],
+  ['wrong current source blob',f=>{f.proof.currentSourceBlobSha1='e'.repeat(40);f.publish();}],
+  ['live excluded identity rekeyed',f=>{f.nativeSource.identityMap.records.find(row=>row.questionUid===f.excluded.questionUid).questionUid='unreviewed-new-uid';}],
+  ['live excluded identity number changed',f=>{f.nativeSource.identityMap.records.find(row=>row.questionUid===f.excluded.questionUid).sourceQuestionNo=88;}],
+  ['selected identity changed',f=>{f.identity.sourceFingerprint='e'.repeat(64);}],
+  ['selected metadata changed',f=>{f.current.fieldStatus.problemType='manual_review';}],
+  ['selected runtime changed',f=>{f.nativeSource.runtimeRecord.metadataApprovalType='MAIN_MERGE';}],
+  ['original approval proof changed',f=>{fs.appendFileSync(f.evidenceFile,' unreviewed');}],
+  ['bound original solution repair removed',f=>{f.ancestor.fingerprintRepairs=[];f.put(f.ancestorPath,f.ancestor);}],
+  ['cycle to current receipt',f=>{f.receipt.approval.sourceRebind.priorReceiptRef.path=f.receiptPath;f.publish();}],
+])test('strict subset refuses '+name+' without entering the ordinary producer',t=>{
+  const f=strictSubsetNativeFixture(t,solutionRebindNativeFixture,{completeFields:true});
+  Object.assign(f.registry.bindingRows[0],{L1:'Numbers',L2:'Roots'});
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  assert.equal(planQuestion({...f,nativeSource:undefined}).status,'APPLY');
+  change(f);
+  if(name!=='missing latest receipt')f.saveReceipt();
+  for(const previous of [f.previous,structuredClone(f.question)]) {
+    const result=planQuestion({...f,previous});assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+  }
+});
+test('strict subset retains original renderer asset obligations after a warm cache',t=>{
+  const f=strictSubsetNativeFixture(t,compoundRendererNativeFixture);
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  fs.appendFileSync(path.join(f.nativeSource.root,f.solutionAsset),'<!-- unreviewed asset change -->');
+  for(const previous of [f.previous,structuredClone(f.question)])assert.equal(planQuestion({...f,previous}).status,'SUPPLEMENT_PENDING');
+});
+for(const [name,make]of [
+  ['plain unchanged source',partialNativeReviewFixture],['solution correction',solutionRebindNativeFixture],
+  ['independent figure',reviewedFigureNativeFixture],['compound renderer',compoundRendererNativeFixture],
+])test('source-only preservation reuses the original '+name+' approval across old and caught-up cursors',t=>{
+  const f=preserveNativeSubset(make(t)),before=JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.nativeSource.bank]);
+  for(const previous of [f.previous,structuredClone(f.question)]) {
+    const result=planQuestion({...f,previous});assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  }
+  assert.equal(JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.nativeSource.bank]),before);
+});
+test('two exact source-only preserves replay the original solution proof without approval or identity changes',t=>{
+  const f=preserveNativeSubset(preserveNativeSubset(solutionRebindNativeFixture(t)),'second-source-preservation');
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  f.previous=structuredClone(f.question);assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+});
+const updatePreservedPrior=f=>{
+  f.put(f.ancestorPath,f.ancestor);
+  f.receipt.approval.sourceRebind.priorReceiptRef.sha256=f.sha(fs.readFileSync(path.join(f.nativeSource.root,f.ancestorPath)));
+};
+for(const [name,change]of [
+  ['prior SHA changed',f=>{f.receipt.approval.sourceRebind.priorReceiptRef.sha256='e'.repeat(64);}],
+  ['prior receipt missing',f=>fs.unlinkSync(path.join(f.nativeSource.root,f.ancestorPath))],
+  ['prior receipt symlink',f=>{fs.renameSync(path.join(f.nativeSource.root,f.ancestorPath),path.join(f.nativeSource.root,'prior-copy.json'));fs.symlinkSync(path.join(f.nativeSource.root,'prior-copy.json'),path.join(f.nativeSource.root,f.ancestorPath));}],
+  ['sourceRebind removed',f=>{delete f.receipt.approval.sourceRebind;}],
+  ['sourceRebind and count markers removed',f=>{delete f.receipt.approval.sourceRebind;delete f.receipt.newMetadataApprovals;delete f.receipt.preservedMetadataApprovals;}],
+  ['sourceRebind, count markers and prior-ref all removed',f=>{
+    delete f.receipt.approval.sourceRebind;delete f.receipt.newMetadataApprovals;delete f.receipt.preservedMetadataApprovals;
+    f.receipt.approval.evidenceRefs=structuredClone(f.ancestor.approval.evidenceRefs);
+  }],
+  ['all receipt markers and predecessor file removed',f=>{
+    delete f.receipt.approval.sourceRebind;delete f.receipt.newMetadataApprovals;delete f.receipt.preservedMetadataApprovals;
+    f.receipt.approval.evidenceRefs=structuredClone(f.ancestor.approval.evidenceRefs);
+    fs.unlinkSync(path.join(f.nativeSource.root,f.ancestorPath));
+  }],
+  ['all receipt markers removed and predecessor JSON malformed',f=>{
+    delete f.receipt.approval.sourceRebind;delete f.receipt.newMetadataApprovals;delete f.receipt.preservedMetadataApprovals;
+    f.receipt.approval.evidenceRefs=structuredClone(f.ancestor.approval.evidenceRefs);f.put(f.ancestorPath,'invalid JSON');
+  }],
+  ['unregistered new approval',f=>{f.receipt.newMetadataApprovals=1;}],
+  ['wrong preserved count',f=>{f.receipt.preservedMetadataApprovals=1;}],
+  ['unknown scope',f=>{f.receipt.scope='ALL';}],
+  ['new registry change',f=>{f.receipt.registryChanges=[{collection:'bindings'}];}],
+  ['malformed registry change object',f=>{f.receipt.registryChanges={collection:'bindings'};}],
+  ['new fingerprint repair',f=>{f.receipt.fingerprintRepairs=[{questionUid:uid}];}],
+  ['unknown sourceRebind option',f=>{f.receipt.approval.sourceRebind.allowContentChanges=true;}],
+  ['parent scope change',f=>{f.ancestor.examUid='other-exam';updatePreservedPrior(f);}],
+  ['parent denominator change',f=>{f.ancestor.expectedQuestionCount=4;updatePreservedPrior(f);}],
+  ['parent selected UID change',f=>{f.ancestor.appliedRecords[0].questionUid='other';updatePreservedPrior(f);}],
+  ['parent ordinal change',f=>{f.ancestor.appliedIdentityRecords[0].sourceOrdinal=2;updatePreservedPrior(f);}],
+  ['parent approval downgraded',f=>{f.ancestor.approval.type='MAIN_MERGE';updatePreservedPrior(f);}],
+  ['parent approval evidence changed',f=>{f.put('review/metadata.json','unreviewed change');}],
+  ['current approved field changed',f=>{f.current.fieldStatus.problemType='review_required';}],
+  ['current runtime field changed',f=>{f.nativeSource.runtimeRecord.reviewStatus='review_required';}],
+  ['parent selected whole question changed',f=>{
+    const bank=structuredClone(f.nativeSource.bank);bank[f.ordinal-1].sharedMaterial='unreviewed selected material';
+    const bytes=Buffer.from('window.questionBank='+JSON.stringify(bank)+';\n');
+    f.ancestor.sourceBlobSha1=execFileSync('git',['hash-object','-w','--stdin'],{cwd:f.nativeSource.root,input:bytes,encoding:'utf8'}).trim();
+    f.ancestor.sourceRawSha256=f.sha(bytes);updatePreservedPrior(f);
+  }],
+  ['another selected question changed outside legacy fingerprint fields',f=>{
+    const bank=structuredClone(f.nativeSource.bank),other=f.ancestor.appliedRecords.find(row=>row.questionUid!==f.identity.questionUid);
+    bank[other.sourceOrdinal-1].sharedMaterial='unreviewed selected neighbour material';
+    const bytes=Buffer.from('window.questionBank='+JSON.stringify(bank)+';\n');
+    f.ancestor.sourceBlobSha1=execFileSync('git',['hash-object','-w','--stdin'],{cwd:f.nativeSource.root,input:bytes,encoding:'utf8'}).trim();
+    f.ancestor.sourceRawSha256=f.sha(bytes);updatePreservedPrior(f);
+  }],
+  ['original repair before fingerprint changed',f=>{f.ancestor.fingerprintRepairs[0].metadataBefore.sourceFingerprint='e'.repeat(64);updatePreservedPrior(f);}],
+  ['original old source blob changed',f=>{f.ancestor.fingerprintRepairs[0].rebind.priorSourceBlobSha1='e'.repeat(40);updatePreservedPrior(f);}],
+  ['preserved metadata evidence removed',f=>{f.current.approvalEvidence=[f.receiptPath];}],
+  ['preserved runtime evidence removed',f=>{f.nativeSource.runtimeRecord.approvalEvidence=[f.receiptPath];}],
+])test('source-only native ancestry refuses '+name+' without producer fallback',t=>{
+  const f=preserveNativeSubset(solutionRebindNativeFixture(t));change(f);f.saveReceipt();
+  assert.equal(hasNativeSourcePreservationClaim({root:f.nativeSource.root,current:f.current,runtimeRecord:f.nativeSource.runtimeRecord}),true);
+  for(const previous of [f.previous,structuredClone(f.question)]) {
+    const result=planQuestion({...f,previous});assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+  }
+});
+for(const make of [reviewedFigureNativeFixture,compoundRendererNativeFixture])test('preserved renderer ancestry rechecks actual assets after a warm cache and caught-up cursor: '+make.name,t=>{
+  const f=preserveNativeSubset(make(t));assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  fs.appendFileSync(path.join(f.nativeSource.root,f.solutionAsset),'<!-- unreviewed renderer bytes -->');
+  for(const previous of [f.previous,structuredClone(f.question)]) {
+    const result=planQuestion({...f,previous});assert.equal(result.status,'SUPPLEMENT_PENDING');assert.equal(result.final,undefined);
+  }
+});
+test('partial source preservation cannot replace an unknown old student payload with an existing approved one',t=>{
+  const f=preserveNativeSubset(solutionRebindNativeFixture(t));f.previous.answer='unreviewed old answer';
+  const result=planQuestion(f);assert.equal(result.status,'SUPPLEMENT_PENDING');assert.equal(result.final,undefined);
+});
+test('partial source preservation bounds the receipt ancestry depth',t=>{
+  let f=partialNativeReviewFixture(t);
+  for(let i=0;i<65;i++)f=preserveNativeSubset(f,'source-preservation-depth-'+i);
+  const result=planQuestion(f);assert.equal(result.status,'SUPPLEMENT_PENDING');assert.equal(result.final,undefined);
+});
+for(const [name,removeLatest]of [
+  ['missing latest',f=>fs.unlinkSync(path.join(f.nativeSource.root,f.receiptPath))],
+  ['missing latest and original',f=>{fs.unlinkSync(path.join(f.nativeSource.root,f.receiptPath));fs.unlinkSync(path.join(f.nativeSource.root,f.ancestorPath));}],
+  ['empty latest object',f=>{f.put(f.receiptPath,{});}],
+  ['latest approval removed',f=>{delete f.receipt.approval;f.saveReceipt();}],
+  ['latest approval type removed',f=>{delete f.receipt.approval.type;f.saveReceipt();}],
+  ['latest scope removed',f=>{delete f.receipt.scope;f.saveReceipt();}],
+  ['latest selected metadata removed',f=>{f.receipt.appliedRecords=[];f.saveReceipt();}],
+  ['latest preservation markers removed and source tuple rolled back',f=>{
+    delete f.receipt.approval.sourceRebind;delete f.receipt.newMetadataApprovals;delete f.receipt.preservedMetadataApprovals;
+    f.receipt.approval.evidenceRefs=structuredClone(f.ancestor.approval.evidenceRefs);
+    f.receipt.sourceBlobSha1=f.ancestor.sourceBlobSha1;f.receipt.sourceRawSha256=f.ancestor.sourceRawSha256;f.saveReceipt();
+  }],
+])for(const make of [solutionRebindNativeFixture,reviewedFigureNativeFixture])test(name+' preservation receipt cannot invoke the otherwise eligible producer: '+make.name,t=>{
+  // Complete the ordinary producer fields so neither missing difficulty fields
+  // nor absent canonical labels can accidentally hide a fallback to APPLY.
+  const f=preserveNativeSubset(make(t,{completeFields:true}));
+  Object.assign(f.registry.bindingRows[0],{L1:'Numbers',L2:'Roots'});
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  // The unchanged ordinary producer has enough information to write these rows.
+  for(const previous of [f.previous,structuredClone(f.question)])assert.equal(planQuestion({...f,previous,nativeSource:undefined}).status,'APPLY');
+  removeLatest(f);
+  for(const previous of [f.previous,structuredClone(f.question)]) {
+    const result=planQuestion({...f,previous});assert.equal(result.status,'SUPPLEMENT_PENDING');
+    assert.deepEqual(result.reasons,['NATIVE_SOURCE_PRESERVATION_REVALIDATION_FAILED']);assert.equal(result.final,undefined);
+  }
 });

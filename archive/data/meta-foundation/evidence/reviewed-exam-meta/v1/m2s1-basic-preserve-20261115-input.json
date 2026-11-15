@@ -1,0 +1,539 @@
+{
+  "schemaVersion": "archive-basic-scope-preservation-review-input-v1",
+  "status": "PROPOSED_FOR_INDEPENDENT_CURRENT_SOURCE_AND_PARENT_REVIEW",
+  "rows": [
+    {
+      "examId": "E052",
+      "uid": "qid_v1_40078cc008bed4eb3627c56e67fb5dfdefdf8fa5b28795bd79528ea193adbba8",
+      "repairKind": "EMPTY_CHOICE_PLACEHOLDERS_ONLY",
+      "textEdits": {},
+      "questionUid": "qid_v1_40078cc008bed4eb3627c56e67fb5dfdefdf8fa5b28795bd79528ea193adbba8",
+      "sourceOrdinal": 24,
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+      "sourceArchiveFile": "original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+      "priorCommit": "2ea8fb8b109921997e6764a3f85213d9d04b4364",
+      "repairBaseCommit": "994cbbaa62192d40454fe2ba522f0f8b05e0b58a",
+      "priorSource": {
+        "blobSha1": "0f44cbbf6b2c74c5adbcafa70a28617358bb3ae3",
+        "rawSha256": "39e1cca5495463b59dfc76189633bcf77270af2a7e3c2570ea4d3f9bc9e19db3"
+      },
+      "repairBaseSource": {
+        "blobSha1": "d07e680fe49b577f06eb4ae522b6ce477c912e67",
+        "rawSha256": "73e7dca45980a7e405e540a14afd9d8394bb71a351129c9f1826a5abcb5fd3d3"
+      },
+      "currentSource": {
+        "blobSha1": "31db24d38d74e65fbd8f1e4980579b627b94a04c",
+        "rawSha256": "fe3354f7db609f4ed10695c133ef231ac8d9f4c01bfcc9833b9b380eca167b37"
+      },
+      "priorQuestion": {
+        "id": 24,
+        "level": "중",
+        "category": "서술형 4",
+        "originalCategory": "서술형 4",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "서술형",
+        "layoutTag": "grid",
+        "tags": [
+          "서술형",
+          "일차부등식활용",
+          "비용비교",
+          "최소자연수"
+        ],
+        "wide": false,
+        "content": "기본 회비 $10,000$원을 내면 권당 $500$원, 회비가 없으면 권당 $1,000$원인 대여점이 있다. 몇 권 이상부터 회비를 내는 것이 유리한지 구하시오. [5점]",
+        "choices": [
+          " ",
+          " ",
+          " ",
+          " ",
+          " "
+        ],
+        "answer": "21권",
+        "solution": "$x$권을 빌린다고 하면 회비를 내는 경우의 비용은 $10000+500x$원이고, 회비가 없는 경우는 $1000x$원이다.\n회비를 내는 것이 더 유리하려면\n$10000+500x<1000x$여야 한다.\n따라서 $10000<500x$, 즉 $x>20$이다.\n\n21권 이상부터 회비를 내는 것이 유리하다.",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "curriculum": "2015",
+        "course": "중2 수학",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "두 비용식을 비교하는 부등식을 푼다.",
+        "decisiveStep": "x>20에서 최소 21권을 확정한다.",
+        "semanticSourceScope": "M2-1",
+        "semanticScopeRelation": "TARGET_SCOPE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "semanticConfidence": "HIGH",
+        "evidenceRefs": [
+          "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+        ],
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryRecordId": "M2-RPM-028",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "비율·가격·도형",
+          "l4": "할인·이익"
+        },
+        "rpmL3": "비율·가격·도형",
+        "rpmL4": "할인·이익",
+        "projectionStatus": "RPM_ONLY",
+        "ownerPack": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+        "projectionReason": "Preserve RPM semantic without inventing PT/TPL.",
+        "semanticBoundaryReason": null,
+        "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+      },
+      "beforeQuestion": {
+        "id": 24,
+        "level": "중",
+        "category": "서술형 4",
+        "originalCategory": "서술형 4",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "서술형",
+        "layoutTag": "grid",
+        "tags": [
+          "서술형",
+          "일차부등식활용",
+          "비용비교",
+          "최소자연수"
+        ],
+        "wide": false,
+        "content": "기본 회비 $10,000$원을 내면 권당 $500$원, 회비가 없으면 권당 $1,000$원인 대여점이 있다. 몇 권 이상부터 회비를 내는 것이 유리한지 구하시오. [5점]",
+        "choices": [
+          " ",
+          " ",
+          " ",
+          " ",
+          " "
+        ],
+        "answer": "21권",
+        "solution": "$x$권을 빌린다고 하면 회비를 내는 경우의 비용은 $10000+500x$원이고, 회비가 없는 경우는 $1000x$원이다.\n회비를 내는 것이 더 유리하려면\n$10000+500x<1000x$여야 한다.\n따라서 $10000<500x$, 즉 $x>20$이다.\n\n21권 이상부터 회비를 내는 것이 유리하다.",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "curriculum": "2015",
+        "course": "중2 수학",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "두 비용식을 비교하는 부등식을 푼다.",
+        "decisiveStep": "x>20에서 최소 21권을 확정한다.",
+        "semanticSourceScope": "M2-1",
+        "semanticScopeRelation": "TARGET_SCOPE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "semanticConfidence": "HIGH",
+        "evidenceRefs": [
+          "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+        ],
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryRecordId": "M2-RPM-028",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "비율·가격·도형",
+          "l4": "할인·이익"
+        },
+        "rpmL3": "비율·가격·도형",
+        "rpmL4": "할인·이익",
+        "projectionStatus": "RPM_ONLY",
+        "ownerPack": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+        "projectionReason": "Preserve RPM semantic without inventing PT/TPL.",
+        "semanticBoundaryReason": null,
+        "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+      },
+      "afterQuestion": {
+        "id": 24,
+        "level": "중",
+        "category": "서술형 4",
+        "originalCategory": "서술형 4",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "서술형",
+        "layoutTag": "grid",
+        "tags": [
+          "서술형",
+          "일차부등식활용",
+          "비용비교",
+          "최소자연수"
+        ],
+        "wide": false,
+        "content": "기본 회비 $10,000$원을 내면 권당 $500$원, 회비가 없으면 권당 $1,000$원인 대여점이 있다. 몇 권 이상부터 회비를 내는 것이 유리한지 구하시오. [5점]",
+        "choices": [],
+        "answer": "21권",
+        "solution": "$x$권을 빌린다고 하면 회비를 내는 경우의 비용은 $10000+500x$원이고, 회비가 없는 경우는 $1000x$원이다.\n회비를 내는 것이 더 유리하려면\n$10000+500x<1000x$여야 한다.\n따라서 $10000<500x$, 즉 $x>20$이다.\n\n21권 이상부터 회비를 내는 것이 유리하다.",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "curriculum": "2015",
+        "course": "중2 수학",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "두 비용식을 비교하는 부등식을 푼다.",
+        "decisiveStep": "x>20에서 최소 21권을 확정한다.",
+        "semanticSourceScope": "M2-1",
+        "semanticScopeRelation": "TARGET_SCOPE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "semanticConfidence": "HIGH",
+        "evidenceRefs": [
+          "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+          "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+          "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+        ],
+        "rpmSemanticStatus": "FINAL",
+        "rpmPrimaryRecordId": "M2-RPM-028",
+        "rpmPrimaryPath": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "비율·가격·도형",
+          "l4": "할인·이익"
+        },
+        "rpmL3": "비율·가격·도형",
+        "rpmL4": "할인·이익",
+        "projectionStatus": "RPM_ONLY",
+        "ownerPack": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+        "projectionReason": "Preserve RPM semantic without inventing PT/TPL.",
+        "semanticBoundaryReason": null,
+        "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+      },
+      "beforeQuestionSha256": "4551c9df9c4d3e07aa2473350a898c4ed79d9ba556e69200fb84259e69467afd",
+      "afterQuestionSha256": "5d8653effee617c087ccbbcfa00bd3695290690be1832383aa7212fb02155fa7",
+      "changes": [
+        {
+          "field": "choices",
+          "beforeSha256": "8b0ff4878990fc2305298577f8e3a9eeecfdc0e8f92bad710bf687fffdb9987a",
+          "afterSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "priorMetadata": {
+        "questionUid": "qid_v1_40078cc008bed4eb3627c56e67fb5dfdefdf8fa5b28795bd79528ea193adbba8",
+        "sourceArchiveFile": "original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "cbf18a3ea811766cfb1a4abb4fc7afed6c5027530a0cf3f0ec606186a2ac5b50",
+        "contentFingerprint": "36a342635034e90977cb957a09c9de7858ad589d8db6fce814df848933c32345",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "conceptClusterKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": 2,
+        "tagConfidence": "candidate_evidence",
+        "tagStatus": "approved_subunit_concept_partial",
+        "metadataStatus": "approved_partial_with_explicit_holds",
+        "fieldStatus": {
+          "standardUnit": "approved_source",
+          "subUnit": "approved_source",
+          "concept": "approved_classification",
+          "problemType": "manual_review_pending",
+          "template": "manual_review_pending",
+          "difficulty": "approved_source"
+        },
+        "metadataRevision": "archive-metadata-v1-phase1b-20260825",
+        "approvalEvidence": [
+          "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
+        ],
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "priorIdentity": {
+        "questionUid": "qid_v1_40078cc008bed4eb3627c56e67fb5dfdefdf8fa5b28795bd79528ea193adbba8",
+        "legacyQKey": "original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js_24",
+        "sourceArchiveFile": "original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "cbf18a3ea811766cfb1a4abb4fc7afed6c5027530a0cf3f0ec606186a2ac5b50"
+      },
+      "priorStoredFingerprints": {
+        "sourceFingerprint": "cbf18a3ea811766cfb1a4abb4fc7afed6c5027530a0cf3f0ec606186a2ac5b50",
+        "contentFingerprint": "36a342635034e90977cb957a09c9de7858ad589d8db6fce814df848933c32345"
+      },
+      "priorGitFingerprints": {
+        "sourceFingerprint": "5928dc6cadc79e6b0bd3dc696cb730633cb7f7792e46fc3d9c5c18cd0832e233",
+        "contentFingerprint": "36a342635034e90977cb957a09c9de7858ad589d8db6fce814df848933c32345"
+      },
+      "priorBodyBindingMatches": true,
+      "preexistingFullFingerprintDrift": true,
+      "basicParent": {
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "일차부등식의 활용",
+        "grade": "중2"
+      },
+      "priorCanonical": {
+        "approvalStatus": "APPROVED",
+        "reviewStatus": "PASS",
+        "reasons": []
+      },
+      "reviewClaims": [
+        "Current before/after changes exactly match the declared narrow repair.",
+        "Existing approved basic unit/subunit still describes the repaired question; preserve its exact parent.",
+        "Preserve all metadata type/template holds and fieldStatus; grant zero advanced approval.",
+        "Preserve historical level and existing source/metadata approval kinds.",
+        "Preexisting full-source fingerprint drift is recorded separately and is not used to claim the prior basic approval invalid."
+      ]
+    },
+    {
+      "examId": "E068",
+      "uid": "qid_v1_6cd979a1423e4d663e4e49facfd678e59c598fa0ca9d44fd800ff9a568034890",
+      "repairKind": "REVIEWED_KOREAN_TEXT_ONLY",
+      "textEdits": {
+        "content": [
+          {
+            "from": "집에서 걸어간 최대 거리는",
+            "to": "처음에 뛴 최대 거리는"
+          }
+        ],
+        "solution": [
+          {
+            "from": "처음에 간 거리를",
+            "to": "처음에 뛴 거리를"
+          },
+          {
+            "from": "따라서 집에서 간 최대 거리는",
+            "to": "따라서 처음에 뛴 최대 거리는"
+          }
+        ]
+      },
+      "questionUid": "qid_v1_6cd979a1423e4d663e4e49facfd678e59c598fa0ca9d44fd800ff9a568034890",
+      "sourceOrdinal": 25,
+      "sourcePath": "archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js",
+      "sourceArchiveFile": "original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js",
+      "priorCommit": "2ea8fb8b109921997e6764a3f85213d9d04b4364",
+      "repairBaseCommit": "994cbbaa62192d40454fe2ba522f0f8b05e0b58a",
+      "priorSource": {
+        "blobSha1": "ccbe5999110d077c337442fe63087eedd49c1122",
+        "rawSha256": "8de0c5fbf51d3889a0eca69ec8ce25769bcd37b48e4885529d473952263fc57f"
+      },
+      "repairBaseSource": {
+        "blobSha1": "94f6d0b5fff97426b5cc45ee90e001a127a928d7",
+        "rawSha256": "cc6aa32cb149a996b1aef3c712cbd0a99fbfce2370aeb9801515f5343bb7d4e9"
+      },
+      "currentSource": {
+        "blobSha1": "f4e2584963196574e95f9b2faa03ece35e02316d",
+        "rawSha256": "16b67e00511d4a6f5fe166e0f0210e0d8ef9c92be040c38b709c46f7aa746ce3"
+      },
+      "priorQuestion": {
+        "id": 25,
+        "category": "일차부등식",
+        "content": "정국이가 집에서 $16km$ 떨어진 편의점에 가는데, 처음에는 $5km/h$로 뛰다가 중간에 차를 타고 $60km/h$로 갔다. 집에서 편의점까지 $1$시간 이내에 도착하려면 집에서 걸어간 최대 거리는 몇 $km$인지 구하시오. [5점]",
+        "choices": [],
+        "answer": "4km",
+        "originalCategory": "일차부등식",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "",
+        "layoutTag": "grid",
+        "tags": [
+          "기출",
+          "단답형",
+          "서술형",
+          "활용",
+          "조건해석",
+          "일차부등식",
+          "거리속력시간",
+          "최댓값"
+        ],
+        "wide": false,
+        "solution": "처음에 간 거리를 $xkm$라 하면, 차를 타고 간 거리는 $(16-x)km$입니다.\n따라서 걸린 시간은\n$\\frac{x}{5}+\\frac{16-x}{60}\\le1$\n양변에 $60$을 곱하면\n$12x+16-x\\le60$\n$11x\\le44$\n$x\\le4$\n따라서 집에서 간 최대 거리는 $4km$입니다.",
+        "level": "중",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "beforeQuestion": {
+        "id": 25,
+        "category": "일차부등식",
+        "content": "정국이가 집에서 $16km$ 떨어진 편의점에 가는데, 처음에는 $5km/h$로 뛰다가 중간에 차를 타고 $60km/h$로 갔다. 집에서 편의점까지 $1$시간 이내에 도착하려면 집에서 걸어간 최대 거리는 몇 $km$인지 구하시오. [5점]",
+        "choices": [],
+        "answer": "4km",
+        "originalCategory": "일차부등식",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "",
+        "layoutTag": "grid",
+        "tags": [
+          "기출",
+          "단답형",
+          "서술형",
+          "활용",
+          "조건해석",
+          "일차부등식",
+          "거리속력시간",
+          "최댓값"
+        ],
+        "wide": false,
+        "solution": "처음에 간 거리를 $xkm$라 하면, 차를 타고 간 거리는 $(16-x)km$입니다.\n따라서 걸린 시간은\n$\\frac{x}{5}+\\frac{16-x}{60}\\le1$\n양변에 $60$을 곱하면\n$12x+16-x\\le60$\n$11x\\le44$\n$x\\le4$\n따라서 집에서 간 최대 거리는 $4km$입니다.",
+        "level": "중",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "afterQuestion": {
+        "id": 25,
+        "category": "일차부등식",
+        "content": "정국이가 집에서 $16km$ 떨어진 편의점에 가는데, 처음에는 $5km/h$로 뛰다가 중간에 차를 타고 $60km/h$로 갔다. 집에서 편의점까지 $1$시간 이내에 도착하려면 처음에 뛴 최대 거리는 몇 $km$인지 구하시오. [5점]",
+        "choices": [],
+        "answer": "4km",
+        "originalCategory": "일차부등식",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "",
+        "layoutTag": "grid",
+        "tags": [
+          "기출",
+          "단답형",
+          "서술형",
+          "활용",
+          "조건해석",
+          "일차부등식",
+          "거리속력시간",
+          "최댓값"
+        ],
+        "wide": false,
+        "solution": "처음에 뛴 거리를 $xkm$라 하면, 차를 타고 간 거리는 $(16-x)km$입니다.\n따라서 걸린 시간은\n$\\frac{x}{5}+\\frac{16-x}{60}\\le1$\n양변에 $60$을 곱하면\n$12x+16-x\\le60$\n$11x\\le44$\n$x\\le4$\n따라서 처음에 뛴 최대 거리는 $4km$입니다.",
+        "level": "중",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "beforeQuestionSha256": "e165ffe069a4b75d97cfc5a37082e5131ebc815d1c8ffb48af60115fce00df2a",
+      "afterQuestionSha256": "5886c38a2eacd0778a397225e96669c25a0aae587f9f1f7b9addaa3077c10c7d",
+      "changes": [
+        {
+          "field": "content",
+          "beforeSha256": "84ec734fa6f738e742a40bd3fe8d08f2c94031c403e25eb32c826fe8e8738595",
+          "afterSha256": "9cc73969295ca9df6e338f463b0be830daebc7894f8e101f2252377ace35e934"
+        },
+        {
+          "field": "solution",
+          "beforeSha256": "68d8223245d0d9f88a9439f471b3122a9d9e3e480b7dc961aab69f3a28a9a241",
+          "afterSha256": "a08cb38207f03fbf1957dedf8f792eb78a1ec9fbc3cef3eb45f202b104debd21"
+        }
+      ],
+      "priorMetadata": {
+        "questionUid": "qid_v1_6cd979a1423e4d663e4e49facfd678e59c598fa0ca9d44fd800ff9a568034890",
+        "sourceArchiveFile": "original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 25,
+        "sourceQuestionNo": "25",
+        "sourceFingerprint": "3c29b6bc8cbb77ae303e4599e2c8b12022a021f188b351f60a8cbce3cf6ded25",
+        "contentFingerprint": "e864ea9402c7add91accac5af1dfe519a94db9be5eefb64c8cd930bd6a8dd56a",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "conceptClusterKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": 3,
+        "tagConfidence": "candidate_evidence",
+        "tagStatus": "approved_subunit_concept_partial",
+        "metadataStatus": "approved_partial_with_explicit_holds",
+        "fieldStatus": {
+          "standardUnit": "approved_source",
+          "subUnit": "approved_source",
+          "concept": "approved_classification",
+          "problemType": "manual_review_pending",
+          "template": "manual_review_pending",
+          "difficulty": "approved_source"
+        },
+        "metadataRevision": "archive-metadata-v1-phase1b-20260825",
+        "approvalEvidence": [
+          "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
+        ],
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "priorIdentity": {
+        "questionUid": "qid_v1_6cd979a1423e4d663e4e49facfd678e59c598fa0ca9d44fd800ff9a568034890",
+        "legacyQKey": "original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js_25",
+        "sourceArchiveFile": "original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 25,
+        "sourceQuestionNo": "25",
+        "sourceFingerprint": "3c29b6bc8cbb77ae303e4599e2c8b12022a021f188b351f60a8cbce3cf6ded25"
+      },
+      "priorStoredFingerprints": {
+        "sourceFingerprint": "3c29b6bc8cbb77ae303e4599e2c8b12022a021f188b351f60a8cbce3cf6ded25",
+        "contentFingerprint": "e864ea9402c7add91accac5af1dfe519a94db9be5eefb64c8cd930bd6a8dd56a"
+      },
+      "priorGitFingerprints": {
+        "sourceFingerprint": "3c29b6bc8cbb77ae303e4599e2c8b12022a021f188b351f60a8cbce3cf6ded25",
+        "contentFingerprint": "e864ea9402c7add91accac5af1dfe519a94db9be5eefb64c8cd930bd6a8dd56a"
+      },
+      "priorBodyBindingMatches": true,
+      "preexistingFullFingerprintDrift": false,
+      "basicParent": {
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "일차부등식의 활용",
+        "grade": "중2"
+      },
+      "priorCanonical": {
+        "approvalStatus": "APPROVED",
+        "reviewStatus": "PASS",
+        "reasons": []
+      },
+      "reviewClaims": [
+        "Current before/after changes exactly match the declared narrow repair.",
+        "Existing approved basic unit/subunit still describes the repaired question; preserve its exact parent.",
+        "Preserve all metadata type/template holds and fieldStatus; grant zero advanced approval.",
+        "Preserve historical level and existing source/metadata approval kinds.",
+        "Preexisting full-source fingerprint drift is recorded separately and is not used to claim the prior basic approval invalid."
+      ]
+    }
+  ]
+}

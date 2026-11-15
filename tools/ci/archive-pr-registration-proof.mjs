@@ -57,7 +57,13 @@ const positiveInteger = value => Number.isSafeInteger(value) && value > 0;
 function command(program, args, root, inherit = false) {
   const result = spawnSync(program, args, { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
     timeout: 12 * 60 * 1000, stdio: inherit ? 'inherit' : ['ignore', 'pipe', 'pipe'] });
-  if (result.error || result.status !== 0) throw Error(`REGISTRATION_COMMAND_FAILED:${program}:${args[0]}:${result.status ?? result.signal}`);
+  if (result.error || result.status !== 0) {
+    const requestIndex = args.indexOf('--request');
+    const request = requestIndex >= 0 ? `:request=${args[requestIndex + 1]}` : '';
+    const diagnostic = result.error?.message || String(result.stderr || '').split(/\r?\n/)
+      .map(line => line.trim()).find(line => /^(?:Error|TypeError|SyntaxError|RangeError|AssertionError(?: \[.*?\])?):/.test(line));
+    throw Error(`REGISTRATION_COMMAND_FAILED:${program}:${args[0]}:${result.status ?? result.signal}${request}${diagnostic ? `: ${diagnostic.slice(0, 2000)}` : ''}`);
+  }
   return result.stdout || '';
 }
 const git = (root, ...args) => command('git', args, root);

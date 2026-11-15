@@ -52,6 +52,65 @@ function fixture(t, behaviors) {
   return { dir, run, exists, readJson: rel => JSON.parse(fs.readFileSync(path.join(dir, rel), 'utf8')) };
 }
 
+function registryDependencyFixture(t, { providerBehavior = 'ok' } = {}) {
+  const f = fixture(t, { '00-consumer': 'ok', '10-unrelated': 'ok', '99-provider': providerBehavior });
+  const key = { curriculum: '2015', standardCourse: '중2 수학', standardUnitKey: 'M2-06',
+    subUnitKey: 'M2-06-PARALLEL_LENGTH_RATIO', problemTypeKey: 'PT_QUADRILATERAL_PROPERTIES' };
+  const put = (name, value) => fs.writeFileSync(path.join(f.dir, '.archive-meta-register/inbox', name + '.json'), JSON.stringify(value));
+  put('00-consumer', { schemaVersion: 'archive-reviewed-exam-meta-register-request-v2', behavior: 'ok',
+    items: [{ questionUid: 'consumer', sourceOrdinal: 1, after: key }] });
+  put('99-provider', { schemaVersion: 'archive-reviewed-exam-meta-register-request-v2', behavior: providerBehavior,
+    items: [{ questionUid: 'provider', sourceOrdinal: 1, after: key }],
+    registryChanges: [{ path: 'archive/data/meta-foundation/canonical/packs/middle2/bindings.json', collection: 'bindings',
+      match: key, before: null, after: { ...key, status: 'ACTIVE', ownerPack: 'MIDDLE2' } }] });
+  git(f.dir, 'add', '-A'); git(f.dir, 'commit', '-qm', 'binding provider after consumer in filename order');
+  return f;
+}
+
+test('main add-only binding provider executes before its exact dependent request', t => {
+  const f = registryDependencyFixture(t), r = f.run();
+  assert.equal(r.status, 0, r.stderr);
+  assert.deepEqual(r.applied, ['.archive-meta-register/inbox/10-unrelated.json',
+    '.archive-meta-register/inbox/99-provider.json', '.archive-meta-register/inbox/00-consumer.json']);
+  assert.deepEqual(r.rejected, []);
+});
+
+test('a refused binding provider blocks only its exact consumer and cannot create approval', t => {
+  const f = registryDependencyFixture(t, { providerBehavior: 'fail' }), r = f.run();
+  assert.equal(r.status, 0, r.stderr);
+  assert.deepEqual(r.applied, ['.archive-meta-register/inbox/10-unrelated.json']);
+  assert.deepEqual(r.rejected, ['.archive-meta-register/inbox/99-provider.json', '.archive-meta-register/inbox/00-consumer.json']);
+  assert.equal(f.exists('derived/00-consumer.out'), false);
+  assert.match(f.readJson('.archive-meta-register/rejected/00-consumer.rejection.json').error, /REGISTRY_DEPENDENCY_NOT_APPLIED/);
+});
+
+test('an audit consumer cannot turn a refused binding dependency into provisional approval', t => {
+  const f = registryDependencyFixture(t, { providerBehavior: 'fail' });
+  const relative = '.archive-meta-register/inbox/00-consumer.json', request = f.readJson(relative);
+  request.approval = { type: 'META_PIPELINE_AUDIT' };
+  fs.writeFileSync(path.join(f.dir, relative), JSON.stringify(request));
+  const r = f.run(); assert.equal(r.status, 0, r.stderr);
+  assert.deepEqual(r.applied, ['.archive-meta-register/inbox/10-unrelated.json']);
+  assert.equal(f.exists('.archive-meta-register/pending-supplement'), false);
+  assert.match(f.readJson('.archive-meta-register/rejected/00-consumer.rejection.json').error, /REGISTRY_DEPENDENCY_NOT_APPLIED/);
+});
+
+for (const mode of ['duplicate', 'cycle']) test(`main rejects a ${mode} binding graph before invoking any registrar`, t => {
+  const f = registryDependencyFixture(t), relative = '.archive-meta-register/inbox/99-provider.json', provider = f.readJson(relative);
+  if (mode === 'duplicate') provider.registryChanges.push(structuredClone(provider.registryChanges[0]));
+  else {
+    const consumerPath = '.archive-meta-register/inbox/00-consumer.json', consumer = f.readJson(consumerPath);
+    const change = structuredClone(provider.registryChanges[0]);
+    change.match.problemTypeKey = 'PT_SECOND'; change.after.problemTypeKey = 'PT_SECOND';
+    consumer.registryChanges = [change]; provider.items[0].after = structuredClone(change.match);
+    fs.writeFileSync(path.join(f.dir, consumerPath), JSON.stringify(consumer));
+  }
+  fs.writeFileSync(path.join(f.dir, relative), JSON.stringify(provider));
+  const r = f.run(); assert.equal(r.status, 1);
+  assert.match(r.stderr, mode === 'duplicate' ? /REGISTRY_DEPENDENCY_AMBIGUOUS/ : /REGISTRY_DEPENDENCY_CYCLE/);
+  assert.deepEqual(r.applied, []); assert.equal(f.exists('derived'), false);
+});
+
 test('a refused first request does not block the remaining requests (head-of-line fix)', t => {
   const f = fixture(t, { '16-first-bad': 'fail', '17-good': 'ok', '18-also-bad': 'fail', '19-good': 'ok' });
   const r = f.run();
@@ -286,8 +345,22 @@ function passFixture(t, behaviors, { buildFailOnce = false } = {}) {
   git(dir, 'init', '-q', '--initial-branch=main');
   for (const [k, v] of [['user.name', 'test'], ['user.email', 'test@example.invalid'], ['core.autocrlf', 'false']]) git(dir, 'config', k, v);
   const put = (rel, text) => { fs.mkdirSync(path.dirname(path.join(dir, rel)), { recursive: true }); fs.writeFileSync(path.join(dir, rel), text); };
+  // The real preview imports typed preservation contracts. Copy their actual
+  // local module closure before installing the intentional heavy-step stubs.
+  const copiedModules = new Set();
+  const copyModule = rel => {
+    if (copiedModules.has(rel)) return;
+    assert.ok(!path.posix.isAbsolute(rel) && !rel.startsWith('../'), 'fixture module stays in the repository');
+    copiedModules.add(rel);
+    const source = read(rel);
+    put(rel, source);
+    const localImports = /(?:^|[;\n])\s*(?:import|export)\s+(?:[^;'\"]*?\sfrom\s*)?['\"](\.{1,2}\/[^'\"]+)['\"]/g;
+    for (const match of source.matchAll(localImports))
+      copyModule(path.posix.normalize(path.posix.join(path.posix.dirname(rel), match[1])));
+  };
   for (const rel of ['tools/ci/reviewed-meta-register-pass.sh', 'tools/ci/register-reviewed-meta-requests.mjs', 'tools/ci/archive-pr-native-preview.mjs', 'tools/ci/collect-reviewed-consumer-refusals.mjs', 'tools/ci/archive-meta-register-commit.paths', 'archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs'])
-    put(rel, read(rel));
+    if (rel === 'tools/ci/archive-pr-native-preview.mjs') copyModule(rel);
+    else put(rel, read(rel));
   // The real registration paths plus `derived/`, where the stub registrar writes its output.
   put('tools/ci/archive-meta-register-commit.paths', read('tools/ci/archive-meta-register-commit.paths') + 'derived/\n');
   put('derived/.keep', '');

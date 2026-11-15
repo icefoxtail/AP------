@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_NARROW_SOURCE_REPAIR",
+  "producer": "/root/m2s1_release",
+  "priorAcceptedReview": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E075/accepted-review.json",
+    "sha256": "aa4481280680692fcba891af1bb16017e9ec11b2bdb6909386a2c0179a87a5ee"
+  },
+  "currentSourceBlobSha": "0b274e50f77fd082ba0980337a099c72d8df2fff",
+  "narrowRepairEvidence": {
+    "authorProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-proposal-r2.json",
+      "sha256": "2c47a0ec73195f01abb86d4d31de45942405670bebbe71f5627766f9e4a3d935",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-followup-repair-proposals-r2.json"
+    },
+    "independentCrosscheck": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-independent-r2.json",
+      "sha256": "aca19626b875a1ce20470291122e867dca9aadfb030577dbd3bc9f82f0bf6ff7",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-narrow-independent-review-20261115-r2.json"
+    },
+    "authorPredecessor": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-proposal-r1.json",
+      "sha256": "f1ad5cae10923f8b4bcea820e52f053e36bc2887184f2dd64a7617b8aa7bef2c",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-followup-repair-proposals.json"
+    },
+    "independentPredecessor": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-independent-r1.json",
+      "sha256": "faa0a5bffe1f2c003a5ffb97c1162b0f14479cdf5690581983cf3f382be912b4",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-narrow-independent-review-20261115-r1.json"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 24,
+    "selectedQuestions": 2
+  },
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "newAdvancedMetadataApprovals": 0,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "ordinal": 6,
+      "questionUid": "qid_v1_60d136d40490d26320ebf194f41d706006d1bd2aa5768f8f6c3512341a83e381",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "sourceFingerprint": "12f6cf26e38d4a3c15cefd6a19f345cb134cc8e37fafa9f00885fe183e1aac11",
+        "contentFingerprint": "8f5cb2e103d8918863dd402317cb3eb5f9e9cd4e50d375b6b3de464b317bee67"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "8ae26f39a4e8df2d21ca46209c971b73930d6f89d7409b8a1748c143c623aef8",
+      "contentFingerprint": "8f5cb2e103d8918863dd402317cb3eb5f9e9cd4e50d375b6b3de464b317bee67",
+      "staleSourceBinding": false,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "무수히많은해의계수비조건을이용한다.기존해설이1+2k분모0예외를분리하지않은좁은부채로낮은확신.\n후속 범위: Multiply the second equation by -2 before comparing coefficients; no division by 1+2k occurs. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "ordinal": 18,
+      "questionUid": "qid_v1_cf84bf35f4720664d68008ccee6740917650f9f51e19bb4335eb21342d22c2d6",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "sourceFingerprint": "35ce72eadee0532aa0cd530e9d808526df4733076efbc6495c3084b91bc3ddb4",
+        "contentFingerprint": "b3629762fcdc66cd041088ed5947011e9735b8285739ef8aaa032d6f4f41fadb"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "43de4d36daf4b5fc48f15f7cd7714c1b9847796c811a55f785979cba77b94607",
+      "contentFingerprint": "b3629762fcdc66cd041088ed5947011e9735b8285739ef8aaa032d6f4f41fadb",
+      "staleSourceBinding": false,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "현재와미래나이두조건의공통범위에서자연수를선택한다.기존29/3=9.667은근삿값을등호로쓴표현부채로보존.\n후속 범위: Keep the exact boundary 29/3 throughout; avoid treating a rounded decimal as an equality or exact endpoint. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다."
+    }
+  ]
+}

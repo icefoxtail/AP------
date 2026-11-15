@@ -1,0 +1,162 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/25_금당중_2학기_중간_중3_유사.js",
+  "questionId": 22,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "SOURCE_COORDINATE_AXES_v1",
+            "unit": "source-coordinate",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "NORMALIZATION_ORIGIN",
+              "inputs": [],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U",
+              "op": "NORMALIZATION_AXIS",
+              "inputs": [],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "l",
+              "op": "SOURCE_LINE",
+              "inputs": [],
+              "args": {
+                "a": {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                "b": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "c": {
+                  "kind": "integer",
+                  "value": "-24"
+                }
+              },
+              "outputType": "LINE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [
+          "l"
+        ],
+        "displayCircles": [],
+        "displaySegments": [],
+        "displayPoints": [
+          "A",
+          "B",
+          "O"
+        ],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "lineLabels": [
+          {
+            "nodeId": "l",
+            "form": "SLOPE_INTERCEPT",
+            "labelAt": 0.78
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "atA",
+              "refs": [
+                "O",
+                "A",
+                "B"
+              ],
+              "value": 36.86989764584402,
+              "label": "a",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "atB",
+              "refs": [
+                "A",
+                "B",
+                "O"
+              ],
+              "value": 53.13010235415598,
+              "label": "b",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 640,
+          "height": 410
+        },
+        "caption": "직선이 x축과 y축에서 만나는 두 점 A, B와 삼각형의 각"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.48,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

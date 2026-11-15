@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "archive-registrar-derived-tag-status-transport-v1",
+  "status": "DERIVED_METADATA_TAG_SYNCHRONIZATION_ONLY",
+  "baseCommit": "6b608e3e606eb50ce4fd3d9ad6954d6fc4120f1f",
+  "sourcePath": "archive/exams/original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js",
+  "sourceBeforeStatusTransportBlob": "f9bd037d8f6a35adbc1df91a41240cc52f8c662e",
+  "sourceAfterStatusTransportBlob": "b8d54021c11d6a90eb49742be004fa81654a37ea",
+  "rows": [
+    {
+      "questionUid": "qid_v1_7c0c618d63f2d9206e5e301a165195bbdf84f94024985da9a551967f5eedea78",
+      "sourceOrdinal": 7,
+      "fields": [
+        {
+          "field": "tagConfidence",
+          "before": "review_required",
+          "after": "approved_final_qa",
+          "origin": "OFFICIAL_FINAL_QA_REGISTRAR_OUTPUT"
+        },
+        {
+          "field": "tagStatus",
+          "before": "review_required",
+          "after": "reviewed_pass",
+          "origin": "OFFICIAL_FINAL_QA_REGISTRAR_OUTPUT"
+        }
+      ],
+      "semanticAfterStableSha256": "3c5530c8a09f6fa3ed0c88c9607162629d98affbb088bb0bea09ba9674d13611",
+      "sourceReviewStatus": "review_required"
+    },
+    {
+      "questionUid": "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9",
+      "sourceOrdinal": 12,
+      "fields": [
+        {
+          "field": "tagConfidence",
+          "before": "review_required",
+          "after": "approved_final_qa",
+          "origin": "OFFICIAL_FINAL_QA_REGISTRAR_OUTPUT"
+        },
+        {
+          "field": "tagStatus",
+          "before": "review_required",
+          "after": "reviewed_pass",
+          "origin": "OFFICIAL_FINAL_QA_REGISTRAR_OUTPUT"
+        }
+      ],
+      "semanticAfterStableSha256": "8d36d475897ce8ace1ad5f886f80e4b4c79e577b7acd471302c2a1d5a13b490b",
+      "sourceReviewStatus": "review_required"
+    }
+  ],
+  "derivationContract": {
+    "coreMetadataFields": "META_FIELDS + OPTIONAL_METADATA_FIELDS",
+    "nativeRequestValueFieldsExcludeStatus": true,
+    "reassessmentDerivedFieldsExcludeStatus": true,
+    "statusNotAuthoredByNativeReview": true,
+    "registrarConfidenceRule": "FINAL_QA -> approved_final_qa",
+    "registrarTagStatusRule": "no remaining manual field hold -> reviewed_pass",
+    "manualFieldHoldRemains": false,
+    "codeRefs": [
+      {
+        "path": "archive/archive2-core.js",
+        "sha256": "7541493a2f603248357ed953656184bbcf7643d87f5ac99134a0fad55552a0be"
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+        "sha256": "d356c200abb98fae827428831ca123df204cee7934781dfd2e27bd99478780cb"
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+        "sha256": "88f5134969a35cee3772454da854d7d8dc6c19b8a12a3043820d5a3f5aea1b21"
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-meta-value-fields.mjs",
+        "sha256": "ebce5ab16817840a87fa1a316719c17c850fe772a89e40cbc9004f3dae808e65"
+      }
+    ]
+  },
+  "localPreview": {
+    "requestRawSha256": "ae3462c41ec3ecec443329865e88861fb1f7792f654eb84098fe8c4658f0e38f",
+    "receiptSha256": "46a5e2cccffb49989c79e43214f834cce294e32b4cd2d28913056ff6e602a175",
+    "sourceBlobSha1": "f9bd037d8f6a35adbc1df91a41240cc52f8c662e",
+    "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+    "actualProductionRegistration": false
+  },
+  "preservation": {
+    "newMathematicalQa": false,
+    "newReview2Claim": false,
+    "nativeApprovalMutation": 0,
+    "requestMeaningAfterMutation": 0,
+    "requestBeforeMutation": 0,
+    "sourceReviewStatusUnchanged": true,
+    "allStudentPayloadsUnchanged": true,
+    "otherQuestionObjectsUnchanged": 21
+  },
+  "publicationGate": "REQUIRES_FULL_CONSUMER_AND_IMMUTABLE_HEAD_SHADOW_AND_REMOTE_CI"
+}

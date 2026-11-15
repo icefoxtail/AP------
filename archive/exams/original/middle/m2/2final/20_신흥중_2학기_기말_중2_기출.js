@@ -164,11 +164,11 @@ window.questionBank = [
       "scope": "M2-1",
       "majorUnit": "일차함수",
       "midUnit": "일차함수와 그 그래프",
-      "l3": "일차함수",
-      "l4": ""
+      "l3": "일차함수의 뜻",
+      "l4": "함숫값"
     },
-    "rpmL3": "일차함수",
-    "rpmL4": "",
+    "rpmL3": "일차함수의 뜻",
+    "rpmL4": "함숫값",
     "semanticSourceScope": "M2-1",
     "semanticScopeRelation": "PREVIOUS_SCOPE",
     "projectionStatus": "PROJECTION_UNMATERIALIZED",

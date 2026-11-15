@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "producer": "/root/m2s1_release; gemini is the existing registrar envelope field name, not an authorship claim",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "m2s1-followup-20261115-E050",
+    "createdAt": "2026-11-15T00:00:00Z",
+    "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+    "latestBlobSha": "7a91302f47df3aa5d2bb085f36ca1cfdece3b7d7",
+    "items": [
+      {
+        "ordinal": 7,
+        "questionUid": "qid_v1_48e2cccdd167683e98ba18543f6c2a376b25ec632f52bb969fd9e940f513a488",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "ordinal": 11,
+        "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "User-authorized release; accepted native review 150b22a57f1a7075cae4ea89810bacc3bb7fff15:docs/operations/m2-s1-meta-full-20261114/exams/E050/accepted-review.json; source debt closed only for the 21 exact repairs independently crosschecked by /root/registrar_repair, evidence aca19626b875a1ce20470291122e867dca9aadfb030577dbd3bc9f82f0bf6ff7",
+    "evidencePath": ".archive-meta-register/evidence/m2s1-e050-renderer-transport-20261115.json",
+    "evidenceSha256": "6b336b5691e5965f9cc46fe673484657b07f4fdc90880360b39d553c81e0377e",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+        "ordinal": 7,
+        "questionUid": "qid_v1_48e2cccdd167683e98ba18543f6c2a376b25ec632f52bb969fd9e940f513a488",
+        "before": {
+          "level": "중",
+          "difficultyBucket": "중",
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "2d4e406a53e810c96c409b571204009d0613f90463e8d1c05a1899fcf2e029ca",
+          "contentFingerprint": "eaa0cc91a60aea94c5e95f6ce516a88eb4ae9e1ae2531a90f05158c6ef119df5"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "3ae26e77678c037985a7dcb2e3f3b310846ef34390c43da9f6dbca43dce96e5f",
+        "contentFingerprint": "5f86cfeedda832e24df534c2488581aa5bef63fdfe84cb2f3e28876e472c9042",
+        "staleSourceBinding": true,
+        "refreshBinding": false,
+        "decision": "CORRECT",
+        "reason": "일차부등식의 해를 열린 점과 왼쪽 방향의 실제 SVG 수직선으로 대응한다.\n후속 범위: State the open endpoint and leftward ray that identify the actual third inline SVG. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다."
+      },
+      {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+        "ordinal": 11,
+        "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+        "before": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "sourceFingerprint": "297bfe405ea27f6d20086374bb5881c018d667de6df009a033f4a2b23ac678e7",
+          "contentFingerprint": "074d285bd8d7df37b8f9938371b47c767d3deddd0dcfd0d8fbf8b74616abff7e"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "794ce2fc22f8288ae6c82ae4b813457477710267438b6b0c081701555ba6d9d4",
+        "contentFingerprint": "074d285bd8d7df37b8f9938371b47c767d3deddd0dcfd0d8fbf8b74616abff7e",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "decision": "CORRECT",
+        "reason": "거듭제곱의 곱과 몫을 한 밑으로 정리한 뒤 지수를 같게 둔다.\n후속 범위: Use positive exponent multiplication after clearing the denominator, avoiding a high-school negative exponent step. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다."
+      }
+    ]
+  }
+}
