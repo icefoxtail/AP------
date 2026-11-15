@@ -35,7 +35,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 내심 I에서 변 BC에 내린 수선 ID에 4cm가 적혀 있고, AB와 AC에 내린 수선도 ID와 같은 길이 표시가 되어 있다. ∠A=80°, ∠ICB=20°이며 BI와 CI가 각을 이등분하는 것이 같은 호 표시로 나타나 있다.",
     "solutionImageCaption": "내심 I에서 세 변까지의 거리는 같고, BI와 CI는 각을 이등분하는 선이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "내심의 반각과 변까지 같은 거리",
+    "decisiveStep": "내심에서 두 각의 반각을 연결하고 다른 변까지의 거리를 같은 내접원 반지름으로 옮긴다."
   },
   {
     "id": 2,
@@ -72,7 +81,18 @@ window.questionBank = [
     "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 외심 O에서 세 꼭짓점까지의 OA, OB, OC에 같은 길이 표시가 있고, 변 AB, BC, CA에 내린 수선 OD, OE, OF에 직각 표시가 있다. OD를 공통변으로 가지는 두 직각삼각형이 색칠되어 있다.",
     "solutionImageCaption": "외심 O에서 OA, OB, OC의 길이가 같고, 색칠한 두 직각삼각형은 OD를 공통변으로 가진다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_CIRCUMCENTER"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "외심 등거리로 RHS 합동",
+    "decisiveStep": "외심의 같은 반지름과 공통 수선 길이로 두 직각삼각형의 합동을 보인다."
   },
   {
     "id": 3,
@@ -110,7 +130,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 ㄴ은 빗변이 위쪽에 있고 빗변 5cm와 한 예각 40°가 적혀 있으며, 직각삼각형 ㄷ은 직각이 오른쪽 위에 있고 빗변 5cm와 한 예각 40°가 적혀 있다.",
     "solutionImageCaption": "ㄴ과 ㄷ에서 빗변의 길이 5cm와 한 예각 40°를 나란히 놓고 비교한 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "표시된 빗변·예각의 RHA 비교",
+    "decisiveStep": "각 그림에서 직각의 맞은편 변과 예각을 대응시켜 같은 두 요소가 있는 쌍을 찾는다."
   },
   {
     "id": 4,
@@ -148,7 +177,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 직선 l 위에 점 D, A, E가 있고 B, C에서 l에 내린 수선 BD=4cm, CE=3cm와 직각 표시가 있다. AB=AC(같은 눈금), ∠BAD=∠ACE(같은 호), ∠BAC 직각 표시와 AD=3cm, AE=4cm가 그려져 있다.",
     "solutionImageCaption": "합동인 삼각형 ABD와 CAE에서 AD=CE=3cm, AE=BD=4cm이고 세 점 D, A, E는 직선 l 위에 있다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "직각 회전 배치에서 RHA 합동",
+    "decisiveStep": "직각을 이루는 두 쌍의 선분으로 같은 예각을 얻어 빗변이 같은 두 삼각형을 대응시킨다."
   },
   {
     "id": 5,
@@ -182,7 +220,16 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q5-solution.svg"
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q5-solution.svg",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "내심 반각과 세 여각의 합",
+    "decisiveStep": "수선 삼각형의 각을 원래 각의 반으로 표현하고 세 각의 합을 소거하여 주어진 비로 배분한다."
   },
   {
     "id": 6,
@@ -219,7 +266,18 @@ window.questionBank = [
     "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원 I와 접점 D, E, F가 있고 삼각형 DEF가 그려져 있다. 접선 AD와 AF에 같은 눈금, 반지름 ID, IE, IF에 같은 눈금이 표시되어 있다.",
     "solutionImageCaption": "내접원 I의 접점 D, E, F와 반지름 ID, IE, IF, 접선 AD, AF에 같은 길이 표시를 한 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "crossConceptKeys": [
+      "CC_CIRCLE_TANGENT_LENGTH"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "한 원의 내심·외심 역할과 접선",
+    "decisiveStep": "원 중심의 변까지 거리와 접점까지 반지름을 구별해 두 삼각형에서 서로 다른 중심 역할을 판정한다."
   },
   {
     "id": 7,
@@ -256,7 +314,18 @@ window.questionBank = [
     "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q7-solution.svg",
     "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC에서 ∠A의 이등분선 AD 위에 점 P가 있다. AB=AC, BD=CD, PB=PC에 같은 눈금이 있고 ∠BAD=∠CAD, ∠ABP=∠PBD에 같은 호 표시와 점 D의 직각 표시가 있다.",
     "solutionImageCaption": "AB=AC, ∠BAD=∠CAD이고 ∠ABP=∠PBD가 되는 위치의 P에 대해 AD⊥BC, BD=CD, PB=PC를 표시한 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_INCENTER"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "꼭짓각 이등분선의 수직이등분 성질",
+    "decisiveStep": "꼭짓각 이등분선을 밑변의 수직이등분선으로 보고 그 위 점의 등거리와 추가 이등분선의 교점을 해석한다."
   },
   {
     "id": 8,
@@ -292,7 +361,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 사각형 ABCD를 보기 ㄱ~ㄹ의 조건에 따라 2×2로 나타낸 네 그림이다. ㄱ은 AB=BC=5cm, CD=DA=7cm를 적은 사각형, ㄴ은 두 대각선과 ∠ABD=∠BDC, ∠ACB=∠DAC를 같은 호로 표시한 그림, ㄷ은 AD=BC 눈금과 ∠A, ∠B를 표시한 그림, ㄹ은 AD∥BC 표시와 대각선의 교점 O에서 ∠OAD=∠ODA를 표시한 그림이다.",
     "solutionImageCaption": "보기 ㄱ~ㄹ의 조건을 각각 그림으로 나타냈다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "각 조건을 평행사변형 판정으로 변환",
+    "decisiveStep": "엇각·동측내각 조건을 평행으로 바꾸어 두 대변 쌍 또는 한 쌍의 평행·등장을 확인한다."
   },
   {
     "id": 9,
@@ -329,7 +407,18 @@ window.questionBank = [
     "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 ∠B=68°, ∠ACD=42°가 표시되고, AD∥BC의 엇각 ∠ACB와 ∠CAD가 70°로 같으며, 반직선 AE가 ∠CAD를 이등분하고 B, C, E가 한 직선 위에서 ∠ACE=110°가 표시된다.",
     "solutionImageCaption": "AD∥BC의 엇각 70°와 AE의 이등분, ∠ACE=110°를 나타낸다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "crossConceptKeys": [
+      "CC_ANGLE_BISECTOR"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "평행사변형 각과 이등분선",
+    "decisiveStep": "이웃각과 엇각으로 대각선 옆의 각을 정하고 이등분하여 바깥 삼각형의 목표각을 구한다."
   },
   {
     "id": 10,
@@ -363,7 +452,18 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q10-solution.svg"
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q10-solution.svg",
+    "crossConceptKeys": [
+      "CC_AREA_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "수직 대각선의 넓이와 밑변비",
+    "decisiveStep": "마름모의 수직 대각선으로 전체 넓이를 구하고 반영역을 밑변비로 다시 나눈다."
   },
   {
     "id": 11,
@@ -400,7 +500,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q11-solution.svg",
     "solutionImageAlt": "해설 그림: 반지름 4cm인 원 O 안에 꼭짓점 B가 원 위에 있는 직사각형 OABC가 있고, 두 대각선 OB와 AC의 절반 위에 같은 길이 눈금이 하나씩 있으며, 원의 반지름 하나(O에서 원 위 왼쪽 점까지)에 4cm가 적혀 있다.",
     "solutionImageCaption": "직사각형의 두 대각선 OB와 AC는 길이가 같고 OB는 원의 반지름이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "직사각형 대각선의 같은 길이",
+    "decisiveStep": "원의 반지름인 대각선을 다른 대각선에 바로 옮긴다."
   },
   {
     "id": 12,
@@ -434,7 +543,16 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "사각형의 분기 조건 역추적",
+    "decisiveStep": "각 가지의 결과 도형을 보고 대각선 이등분·길이와 한 쌍 평행 조건을 선택한다."
   },
   {
     "id": 13,
@@ -468,7 +586,16 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q13-solution.svg"
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q13-solution.svg",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "정사각형 대각선의 길이·직각·반각",
+    "decisiveStep": "같은 대각선의 절반으로 길이를 정하고 수직 대각선과 꼭짓각 이등분으로 작은 각을 얻는다."
   },
   {
     "id": 14,
@@ -503,7 +630,21 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q14-solution.svg"
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q14-solution.svg",
+    "crossConceptKeys": [
+      "CC_QUADRILATERAL_PROPERTIES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "semanticSourceScope": "M1-2",
+    "semanticScopeRelation": "LOWER_GRADE_PREREQUISITE",
+    "primaryMethod": "평행사변형 중점 조건으로 SAS를 만든 뒤 대응각 이동",
+    "decisiveStep": "대변과 중점에서 같은 두 변을 얻고 끼인각을 대응시켜 SAS 합동으로 목표 각을 옮긴다."
   },
   {
     "id": 15,
@@ -535,7 +676,19 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_UPPER_BOUND"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "큰 동전의 개수별 정수해 열거",
+    "decisiveStep": "큰 동전의 개수를 둘로 나누고 남은 두 동전의 식을 각 재고 상한 안에서 센다."
   },
   {
     "id": 16,
@@ -567,7 +720,20 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_DISTINCT_DIGITS",
+      "COND_DIVISIBILITY"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "끝자리별 비복원 숫자 배열",
+    "decisiveStep": "일의 자리 0과 0 아닌 짝수를 나누어 십의 자리 0·중복 제외를 달리 센다."
   },
   {
     "id": 17,
@@ -599,7 +765,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "구별되는 두 사람의 승부 경우 열거",
+    "decisiveStep": "승자에 따라 세 가지씩을 나누어 서로 겹치지 않는 경우를 합한다."
   },
   {
     "id": 18,
@@ -631,7 +806,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "순서 없는 두 사람 선택",
+    "decisiveStep": "악수 한 번을 두 학생의 중복 없는 쌍과 대응시킨다."
   },
   {
     "id": 19,
@@ -663,7 +847,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "한 명 선택과 두 집단 선택의 합곱",
+    "decisiveStep": "한 명을 선택하는 두 배타집단은 더하고 두 대표를 각각 뽑는 경우는 곱한다."
   },
   {
     "id": 20,
@@ -698,7 +891,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "경유 여부의 합의 법칙과 길 선택의 곱",
+    "decisiveStep": "학교를 거치는 연속 선택의 곱과 바로 가는 별도 경로를 더한다."
   },
   {
     "id": 21,
@@ -726,7 +928,18 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q21-solution.svg"
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q21-solution.svg",
+    "crossConceptKeys": [
+      "CC_ANGLE_BISECTOR"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "같은 두 각의 대변 연결",
+    "decisiveStep": "이등변 성질과 이등분선으로 같은 각을 만든 뒤 두 삼각형에 역 성질을 연속 적용한다."
   },
   {
     "id": 22,
@@ -754,7 +967,16 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "그림의 두 평행사변형 판정조건 설명",
+    "decisiveStep": "한 그림은 대각선 서로 이등분, 다른 그림은 두 쌍 대변의 등장 조건으로 판정한다."
   },
   {
     "id": 23,
@@ -780,7 +1002,21 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [
+      "CC_POINT_SUBSTITUTION"
+    ],
+    "conditionKeys": [
+      "COND_RANGE",
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "점 대입 후 주사위 범위의 순서쌍 열거",
+    "decisiveStep": "좌표를 직선식에 넣어 두 눈의 관계식을 만들고 1부터 6 범위에서 허용쌍을 센다."
   },
   {
     "id": 24,
@@ -811,6 +1047,15 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q24-solution.svg"
+    "solutionImage": "assets/images/25_삼산중_2학기_중간_중2_수학/q24-solution.svg",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "primaryMethod": "세 지점 등거리의 외심 작도",
+    "decisiveStep": "두 선분의 수직이등분선 교점으로 세 지점에서 같은 거리인 곳을 찾고 성질을 설명한다."
   }
 ];

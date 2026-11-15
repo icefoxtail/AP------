@@ -45,7 +45,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q1-solution.svg",
     "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC에서 AC 위의 점 D가 BC=BD를 만족한다. ∠C, ∠BDC, ∠ABC는 75°, ∠CBD는 30°이고 ∠x는 ∠ABD로 표시된다.",
     "solutionImageCaption": "BC=BD, AB=AC에서 얻는 75°, 30° 관계와 ∠x의 위치를 보여 준다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "두 이등변삼각형의 밑각 연결",
+    "decisiveStep": "같은 두 변이 만드는 밑각을 두 삼각형에서 차례로 확정하고 큰 각에서 작은 각을 뺀다."
   },
   {
     "id": 2,
@@ -91,7 +93,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q2-solution.svg",
     "solutionImageAlt": "해설 그림: AB=AC인 이등변삼각형 ABC에서 밑각 ∠B=x와 ∠C가 각각 55°, 꼭지각이 70°이고 이등분선 AD가 ∠A를 35°씩 나누며 AD가 BC와 직각을 이룬다.",
     "solutionImageCaption": "이등분선 AD로 나뉜 35°, 35°와 D에서의 직각을 보여 준다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "꼭짓각 이등분선과 밑각",
+    "decisiveStep": "밑각을 확정한 뒤 꼭짓각의 절반과 삼각형 내각 합으로 수선 각을 얻는다."
   },
   {
     "id": 3,
@@ -137,7 +141,9 @@ window.questionBank = [
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q3-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 DEF를 나란히 놓고 두 삼각형의 빗변 AB, DE를 붉은 굵은 선으로, 직각변 AC, BC, DF, EF를 일반 선으로 구분해 표시한다.",
     "solutionImageCaption": "두 직각삼각형의 빗변과 직각변을 구분해 보여 준다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "직각삼각형 합동조건의 대응 검토",
+    "decisiveStep": "각 선택지의 빗변·직각변 대응을 확인하여 합동을 보장하지 않는 조건을 판별한다."
   },
   {
     "id": 4,
@@ -172,18 +178,23 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_RIGHT_TRIANGLE_CONGRUENCE_RHA",
+      "CC_TRIANGLE_AREA"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q4.png",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: ∠C=90°인 직각삼각형 ABC에서 AD가 ∠A를 이등분하고 DE⊥AB이다. 눈금과 각 표식으로 △ACD≅△AED를 나타내고 BE=4, BD=5, DC=DE=3을 적었으며 △BDE가 색칠되어 있다.",
     "solutionImageCaption": "△ACD≅△AED로 얻는 길이와 색칠한 △BDE를 보여 준다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "각의 이등분선의 대변 분할비",
+    "decisiveStep": "RHA 합동으로 높이를 대응시키고 각 이등분선의 변 분할비로 그 높이를 수치화한다."
   },
   {
     "id": 5,
@@ -218,18 +229,22 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_CONGRUENCE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q5.png",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q5-solution-v2.svg",
     "solutionImageAlt": "해설 그림: △ABC의 외심 O에서 세 변에 내린 수선과 세 꼭짓점으로 이은 선분을 그리고, OA=OB=OC, AF=FC, AD=DB, BE=EC를 서로 다른 눈금·동그라미 묶음으로 표시했으며 합동인 △OFA와 △OFC를 색칠했다.",
     "solutionImageCaption": "외심의 OA=OB=OC와 합동인 △OFA, △OFC를 보여 준다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "외심의 정의와 수직이등분선",
+    "decisiveStep": "꼭짓점까지의 등거리와 현의 수직이등분 성질을 이용해 보기의 참·거짓을 판별한다."
   },
   {
     "id": 6,
@@ -264,18 +279,23 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE",
+      "CC_TRIANGLE_ANGLE_SUM"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q6.png",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: △ABC의 외심 O에서 AO, BO의 연장선이 BC, AC와 만나는 점 D, E를 나타낸다. OA=OB이고 ∠AOB=128°, ∠OAB=∠OBA=26°, ∠C=64°이다.",
     "solutionImageCaption": "OA=OB인 이등변삼각형 AOB의 각 128°, 26°, 26°를 보여 준다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "외심 중심각과 보조삼각형 내각합",
+    "decisiveStep": "외심의 중심각으로 밑각을 정한 뒤 두 삼각형의 내각 합을 더해 미지의 원래 두 각을 소거한다."
   },
   {
     "id": 7,
@@ -315,7 +335,9 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "닮은 도형의 대응각 조건",
+    "decisiveStep": "도형군마다 대응각 고정 여부를 비교하여 직각 하나만으로는 닮음을 보장할 수 없음을 판정한다."
   },
   {
     "id": 8,
@@ -349,13 +371,18 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES",
+      "CC_TRIANGLE_CONGRUENCE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평행사변형 대각선 이등분 증명",
+    "decisiveStep": "평행선의 엇각과 대변의 길이를 ASA 대응 순서에 맞추어 증명의 빈칸을 채운다."
   },
   {
     "id": 9,
@@ -389,13 +416,18 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_ANGLE_BISECTOR",
+      "CC_PARALLEL_LINE_ANGLES"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평행사변형 이웃각의 보각 관계",
+    "decisiveStep": "엇각으로 이등분된 각을 옮겨 원래 각을 복원하고 이웃각의 합을 적용한다."
   },
   {
     "id": 10,
@@ -434,14 +466,16 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q10.png",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q10-solution.svg",
     "solutionImageAlt": "해설 그림: 내심 I를 가진 삼각형 ABC에서 CI가 ∠C를 이등분해 ∠ICB와 ∠ICA가 18°로 같고, AI가 ∠A를 이등분해 ∠x와 같은 호로 표시되며, ∠AIC=130°, ∠C=36°, ∠B=80°, ∠A=64°가 적혀 있다.",
     "solutionImageCaption": "내심의 각 이등분선으로 ∠C, ∠B, ∠A를 차례로 구하는 과정을 보여 준다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "내심이 만드는 각의 관계",
+    "decisiveStep": "내심각으로 한 꼭짓각을 구하고 다른 꼭짓각과 내각 합을 이용하여 목표 반각을 확정한다."
   },
   {
     "id": 11,
@@ -481,7 +515,9 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "직사각형 대각선의 등분·등장",
+    "decisiveStep": "대각선의 절반과 다른 반대각선의 길이가 같음을 식으로 옮긴다."
   },
   {
     "id": 12,
@@ -519,9 +555,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "외심과 내심의 각 관계 결합",
+    "decisiveStep": "내심의 반각에서 원삼각형의 각을 얻어 내심각과 외심각에 각각 연결한다."
   },
   {
     "id": 13,
@@ -561,7 +599,9 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평행사변형 대각선의 등적 분할",
+    "decisiveStep": "서로 이등분하는 대각선이 만드는 네 삼각형의 넓이가 같음을 사용한다."
   },
   {
     "id": 14,
@@ -589,19 +629,24 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "마름모의 모든 변의 길이는 같다. 또한 $M$은 $CD$의 중점이므로 $CM=DM$이고 $AM$은 공통이다. 제시된 합동에서 $AC=AD$를 얻는다. 마름모의 한 변을 $s$라 하면 $AD=s$이고, 삼각형 $ACD$에서 $AC=AD=CD=s$이므로 정삼각형이다. 따라서 $\\angle D=60^\\circ$. 마름모의 대각은 같으므로 마주 보는 $\\angle B=60^\\circ$. 정답은 ③이다.",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_CONGRUENCE",
+      "CC_EQUILATERAL_TRIANGLE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "마름모와 합동의 대응변 연결",
+    "decisiveStep": "주어진 합동에서 대각선과 변의 같음을 얻고 세 변이 같은 삼각형을 발견한다."
   },
   {
     "id": 15,
@@ -639,9 +684,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "닮음비의 제곱과 넓이비",
+    "decisiveStep": "주어진 닮음비를 제곱하여 알려진 넓이에 바로 적용한다."
   },
   {
     "id": 16,
@@ -679,15 +726,17 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q16.png",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q16-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 서로 닮은 두 삼각뿔 ABCV와 A′B′C′V′를 나란히 그린 그림이다. 대응하는 모서리 AB=6cm와 A′B′=9cm, VC=x cm와 V′C′=15cm, BC=z cm와 B′C′=6cm를 표시했고, 대응하는 각 ∠VAC와 ∠V′A′C′를 호로 나타내어 각각 55°와 y°라고 적었으며 닮음비는 2:3이다.",
     "solutionImageCaption": "AB:A′B′=6:9=2:3이므로 대응하는 모서리 VC와 V′C′, BC와 B′C′의 길이의 비도 2:3이고, 대응하는 각 ∠VAC=55°와 ∠V′A′C′=y°의 크기는 같다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "닮은 입체의 대응 모서리·각",
+    "decisiveStep": "표시된 대응 모서리로 닮음비를 정하고 다른 모서리와 대응각을 읽는다."
   },
   {
     "id": 17,
@@ -695,8 +744,8 @@ window.questionBank = [
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -716,24 +765,28 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$\\triangle ABC$와 $\\triangle ACE$는 같은 높이를 가지며 밑변의 비가 $BC:CE=3:2$이다. 그러므로 $[ACE]=15\\times\\frac23=10\\text{ cm}^2$. $AC\\parallel DE$이므로 점 $D,E$는 $AC$와 평행한 한 직선 위에 있고, 두 삼각형 $ACD$, $ACE$는 밑변 $AC$가 같고 높이도 같아 넓이가 같다. 따라서 $[ACD]=10\\text{ cm}^2$. 사각형 $ABCD$는 $\\triangle ABC$와 $\\triangle ACD$로 나뉘므로 넓이는 $15+10=25\\text{ cm}^2$. 정답은 ①이다.",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_AREA_RATIO"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q17.png",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 왼쪽 그림은 B, C, E가 한 직선 위에 있고 BC:CE=3:2일 때 색칠한 삼각형 ABC(15)와 ACE(10)를, 오른쪽 그림은 AC∥DE일 때 색칠한 삼각형 ABC(15)와 ACD(10)가 사각형 ABCD를 이루는 모양을 보여 준다. 넓이의 단위는 cm²이다.",
     "solutionImageCaption": "밑변의 비와 평행선으로 △ACE, △ACD의 넓이를 구하는 과정을 보여 준다. (넓이의 단위: cm²)",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "평행선 사이 등적 변형",
+    "decisiveStep": "같은 높이의 밑변비로 한 넓이를 구하고 평행선 사이 같은 밑변·높이로 목표 삼각형에 옮긴다."
   },
   {
     "id": 18,
@@ -773,7 +826,9 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평행사변형 판정 조건",
+    "decisiveStep": "사각형 내각합에서 남은 각을 복원하여 두 쌍의 대각이 각각 같음을 판정한다."
   },
   {
     "id": 19,
@@ -810,10 +865,12 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "정사각형의 충분조건 조합",
+    "decisiveStep": "직사각형 조건과 마름모 조건의 동시 충족 여부를 보고 같은 직각조건을 반복한 선택지를 걸러낸다."
   },
   {
     "id": 20,
@@ -821,8 +878,8 @@ window.questionBank = [
     "category": "사각형의 성질",
     "originalCategory": "사각형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-05",
-    "standardUnit": "도형의 성질",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -841,19 +898,24 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$2DF=3FC$이므로 $DF:FC=3:2$이다.\n\n직사각형에서 $AD\\parallel BC$이고, 점 $E$가 $BC$의 연장선 위에 있으므로 $AD\\parallel CE$이다. 또 $A,F,E$와 $D,F,C$는 각각 한 직선 위에 있다.\n\n따라서 $\\angle ADF=\\angle ECF=90^\\circ$이고, $\\angle AFD=\\angle EFC$는 맞꼭지각으로 같다. 두 쌍의 대응각이 같으므로\n$$\\triangle ADF\\sim\\triangle ECF\\quad(\\text{AA 닮음})$$\n이다.\n\n닮은 삼각형에서 대응하는 변의 비를 이용하면\n$$AD:CE=DF:FC=3:2$$\n이므로\n$$CE=\\dfrac23 AD$$\n이다.\n\n또 $DC=DF+FC$이고 $DF:FC=3:2$이므로\n$$DF=\\dfrac35 DC$$\n이다.\n\n$\\triangle DFE$에서 밑변을 $DF$로 잡는다. $CE$가 $DC$에 수직이고 $DF$는 $DC$ 위에 있으므로, 점 $E$에서 밑변 $DF$까지의 높이는 $CE$이다.\n\n따라서 넓이는\n$$\\begin{aligned}\n[\\triangle DFE]\n&=\\dfrac12\\times DF\\times CE\\\\\n&=\\dfrac12\\times\\dfrac35 DC\\times\\dfrac23 AD\\\\\n&=\\dfrac15(DC\\times AD)\n\\end{aligned}$$\n이다.\n\n직사각형의 넓이는 $DC\\times AD=160\\text{ cm}^2$이므로\n$$[\\triangle DFE]=\\dfrac15\\times160=32\\text{ cm}^2$$\n이다.\n\n따라서 정답은 ②이다.",
-    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
-    "subUnit": "사각형의 성질",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA",
+      "CC_RECTANGLE_AREA"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "AA 닮음에서 높이비 도출",
+    "decisiveStep": "연장선에서 맞꼭지각과 두 직각을 찾아 AA를 세우고 얻은 높이비를 밑변비와 곱하여 넓이에 연결한다."
   },
   {
     "id": 21,
@@ -882,18 +944,23 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_ANGLE_SUM",
+      "CC_SUPPLEMENTARY_ANGLES"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q21.png",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D는 AB 위의 점이다. ∠B와 ∠BCD가 33°로 같고 BD와 DC가 같으며, ∠ACD=48°, ∠ADC와 ∠DAC가 66°로 같고 AC도 같은 길이 표시를 가진다. BD=6 cm, BC=9 cm, ∠ACB=81°가 적혀 있다.",
     "solutionImageCaption": "두 이등변삼각형 DBC와 ADC의 같은 각과 같은 변을 보여 준다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "같은 각의 대변이 같음",
+    "decisiveStep": "내각합과 평각으로 두 번 같은 각을 만들어 변의 같음을 연쇄적으로 이전한다."
   },
   {
     "id": 22,
@@ -922,18 +989,22 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_ANGLE_SUM"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q22.png",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 BC의 중점 M에서 AB, AC에 내린 수선의 발이 D, E이다. MD=ME, BM=MC이고 직각삼각형 MDB와 MEC가 색칠되어 있으며 ∠B와 ∠C가 32°로 같게 표시된다.",
     "solutionImageCaption": "색칠한 두 직각삼각형이 RHS 합동이어서 ∠C=∠B임을 보여 준다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "RHS 합동으로 꼭짓각 연결",
+    "decisiveStep": "중점에서 얻은 같은 빗변과 같은 수선 길이로 두 직각삼각형의 대응각을 정한다."
   },
   {
     "id": 23,
@@ -941,8 +1012,8 @@ window.questionBank = [
     "category": "삼각형의 성질",
     "originalCategory": "삼각형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-05",
-    "standardUnit": "도형의 성질",
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
@@ -956,24 +1027,28 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $\\triangle DBF\\sim\\triangle ABC$ (AA)\n(2) $\\dfrac{64}{9}\\text{ cm}$",
     "solution": "(1) 접은 도형에서 각은 보존되므로 $\\angle DFE=\\angle DAE=\\angle A$. 주어진 조건 $\\angle BDF=\\angle DFE$에서 $\\angle BDF=\\angle A$이다. 또 $D$는 $AB$ 위, $F$는 $BC$ 위이고 $\\angle B=90^\\circ$이므로 $\\angle DBF=\\angle ABC=90^\\circ$. 따라서 $\\triangle DBF\\sim\\triangle ABC$ (AA)이다.\n(2) 대응변의 비를 $k=DB/AB=DF/AC$라 하자. 접기에서 $AD=DF$이고 $AB=AD+DB=16\\text{ cm}$. 따라서 $16=20k+16k$, $k=\\frac{4}{9}$. 그러므로 $BD=16k=\\dfrac{64}{9}\\text{ cm}$. 답: $\\dfrac{64}{9}\\text{ cm}$.",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_GEOMETRIC_FOLDING"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q23.png",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC(AB=16 cm, AC=20 cm)를 꼭짓점 A가 BC 위의 점 F에 오도록 접은 그림이다. AD=DF, AE=EF이고 ∠BDF, ∠DFE, ∠A가 같은 호로 표시되며 직각삼각형 DBF가 색칠되어 있다.",
     "solutionImageCaption": "접힌 선에서 생기는 같은 변과 같은 각을 보여 준다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "접기 각 보존으로 AA 닮음 구성",
+    "decisiveStep": "접기로 보존되는 각과 주어진 같은 각을 연결하여 작은 직각삼각형과 원삼각형의 AA 닮음을 세운다."
   },
   {
     "id": 24,
@@ -1002,17 +1077,22 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_QUADRILATERAL_PROPERTIES",
+      "CC_ISOSCELES_TRIANGLE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "image": "assets/images/26_왕의중_2학기_중간_중2_기출/q24.png",
     "solutionImage": "assets/images/26_왕의중_2학기_중간_중2_기출/q24-solution.svg",
     "solutionImageAlt": "해설 그림: 마름모 ABCD에서 A에서 BC, CD에 내린 수선의 발 P, Q가 있다. 색칠한 직각삼각형 ABP와 ADQ는 합동이고 AB=AD, AP=AQ이며 ∠B=∠D=64°, ∠PAQ=64°가 표시된다.",
     "solutionImageCaption": "색칠한 두 직각삼각형의 합동으로 AP=AQ와 ∠PAQ=64°를 보여 준다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "RHA 합동으로 이등변삼각형 구성",
+    "decisiveStep": "마름모에서 같은 빗변·예각을 얻어 수선 삼각형을 RHA 합동으로 만들고 두 수선의 같은 길이를 이용한다."
   }
 ];

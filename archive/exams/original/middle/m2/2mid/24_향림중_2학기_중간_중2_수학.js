@@ -30,7 +30,16 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "일차함수의 두 축 절편 직접 계산",
+    "decisiveStep": "y=0과 x=0을 각각 대입하여 두 절편을 읽는다."
   },
   {
     "id": 2,
@@ -65,7 +74,16 @@ window.questionBank=[
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q2-solution.svg"
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q2-solution.svg",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "그래프의 두 점에서 기울기 계산",
+    "decisiveStep": "눈금에서 두 좌표를 읽고 y증가량을 x증가량으로 나눈다."
   },
   {
     "id": 3,
@@ -96,7 +114,20 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "한 함수의 사분면에서 계수 부호를 전달",
+    "decisiveStep": "첫 그래프의 제외 사분면으로 a와b 부호를 구하고 바뀐 두 계수의 부호로 둘째 그래프를 판정한다."
   },
   {
     "id": 4,
@@ -127,7 +158,20 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_RELATION_PARALLEL_PARAMETER",
+    "problemTypeKey": "PT_LINE_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 일차함수의 평행 기울기",
+    "decisiveStep": "두 기울기3/a와9를 같게 놓고 절편이 다름을 확인한다."
   },
   {
     "id": 5,
@@ -158,7 +202,18 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "templateKey": "TPL_LINE_TWO_POINTS",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 점의 기울기와 한 점 대입",
+    "decisiveStep": "두 좌표 차의 비로 기울기를 얻고 한 점을 다시 대입해 절편을 정한다."
   },
   {
     "id": 6,
@@ -190,7 +245,20 @@ window.questionBank=[
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rpm_primary_repair",
     "subUnitClassificationDepth": "complete_rpm_primary",
-    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q6-solution.svg"
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q6-solution.svg",
+    "templateKey": "TPL_AREA_DIRECT",
+    "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+    "crossConceptKeys": [
+      "CC_LINE_INTERSECTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "세 교점의 좌표로 삼각형 넓이",
+    "decisiveStep": "공통 교점과 x=4위의 두 함숫값을 꼭짓점으로 읽어 세로 밑변과 가로 높이를 정한다."
   },
   {
     "id": 7,
@@ -221,7 +289,17 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_LINE_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "difficultyBoundaryFlag": "B23",
+    "primaryMethod": "세 점의 공선성을 두 직선의 일치로 표현",
+    "decisiveStep": "공통점Q를 지나는 PQ와QR의 기울기를 같게 놓아 미지 좌표 매개변수를 정한다."
   },
   {
     "id": 8,
@@ -252,7 +330,18 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rpm_primary_repair",
-    "subUnitClassificationDepth": "complete_rpm_primary"
+    "subUnitClassificationDepth": "complete_rpm_primary",
+    "templateKey": "TPL_RELATION_PARALLEL_PARAMETER",
+    "problemTypeKey": "PT_LINE_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "세로 직선의 동일 x좌표 조건",
+    "decisiveStep": "y축에 평행한 직선 위 두 점의 x좌표를 같게 놓고 서로 다른 점임을 확인한다."
   },
   {
     "id": 9,
@@ -283,7 +372,17 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "교점의 한 좌표에서 방정식 계수 결정",
+    "decisiveStep": "x축 위라는 조건으로 y=0을 넣어 x를 얻고 같은 점을 다른 식에 대입하여 a를 정한다."
   },
   {
     "id": 10,
@@ -314,7 +413,18 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+    "problemTypeKey": "PT_LINE_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "연립방정식의 해 개수와 직선 위치",
+    "decisiveStep": "좌변 계수배와 상수항의 배를 비교하여 평행·일치·한 교점을 구별한다."
   },
   {
     "id": 11,
@@ -348,7 +458,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "이등변삼각형 대칭축의 밑변 이등분",
+    "decisiveStep": "이등변삼각형 꼭짓점의 대칭선이 밑변을 반으로 나눔을 사용한다."
   },
   {
     "id": 12,
@@ -382,7 +503,18 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q12-solution.svg"
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q12-solution.svg",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B34",
+    "primaryMethod": "같은 밑각과 두 밑각 이등분선의 각 연결",
+    "decisiveStep": "같은 밑각을 θ로 두고 ABD의 반각식으로 θ를 얻어 BFC와 일직선각에 전달한다."
   },
   {
     "id": 13,
@@ -416,7 +548,17 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "직각삼각형 합동조건의 충분성 비교",
+    "decisiveStep": "각만 같은 닮음 조건을 제외하고 RHS·SAS·ASA·RHA로 크기까지 정해지는 경우를 비교한다."
   },
   {
     "id": 14,
@@ -450,7 +592,18 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q14-solution.svg"
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q14-solution.svg",
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "같은 반지름에서 중심각으로 전달",
+    "decisiveStep": "두 이등변삼각형의 중심각을 구한 뒤 중심 주위360도에서 나머지각을 구한다."
   },
   {
     "id": 15,
@@ -484,7 +637,23 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CIRCUMFERENCE",
+      "CC_ISOSCELES_CONVERSE",
+      "CC_PYTHAGOREAN",
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "primaryMethod": "외접반지름을 빗변 길이로 옮긴 넓이 계산",
+    "decisiveStep": "원넓이에서 반지름을 구하고 직각삼각형 외심의 빗변 중점 관계로 전체 빗변을 얻어 제곱 관계와 넓이에 전달한다."
   },
   {
     "id": 16,
@@ -518,7 +687,18 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q16-solution.svg"
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q16-solution.svg",
+    "templateKey": "TPL_TRIANGLE_INCENTER",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "내심 중심각에서 원래 꼭짓각",
+    "decisiveStep": "두 밑각의 반각 합을 전체 내각합으로 나타내어 남은 꼭짓각을 구한다."
   },
   {
     "id": 17,
@@ -552,7 +732,22 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_TRIANGLE_INCENTER",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA",
+      "CC_TRIANGLE_CONGRUENCE",
+      "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "내심의 동일 거리에서 반지름과 접점 구간",
+    "decisiveStep": "같은 높이의 넓이합으로 r을 얻고 RHS 대응변으로 접점 구간을 변수화하여 작은 삼각형의 넓이를 정한다."
   },
   {
     "id": 18,
@@ -582,11 +777,26 @@ window.questionBank=[
     "answer": "③",
     "solution": "평행선에서 생기는 엇각과 각의 이등분 조건을 이용하면 이등변삼각형을 찾을 수 있다.\n$CE$는 $BC$의 연장선이므로 $CE\\parallel AD$이다. 따라서 $\\angle CED=\\angle ADE$이다. 또 $DE$가 $\\angle ADC$의 이등분선이므로 $\\angle ADE=\\angle EDC$이다. 그러므로 $\\angle CED=\\angle EDC$이고 삼각형 $CDE$는 이등변삼각형이어서 $CE=CD=6\\,\\mathrm{cm}$이다. 한편 $BC=AD=4\\,\\mathrm{cm}$이고 $E,B,C$가 차례로 한 직선 위에 있으므로 $BE=CE-BC=6-4=2\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_향림중_2학기_중간_중2_수학/q18.png",
-    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
-    "subUnit": "사각형의 성질",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q18-solution.svg"
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q18-solution.svg",
+    "templateKey": "TPL_ISOSCELES_CONVERSE",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES",
+      "CC_QUADRILATERAL_PROPERTIES",
+      "CC_ANGLE_BISECTOR"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평행각과 반각으로 새 이등변삼각형 판정",
+    "decisiveStep": "같아진 두 각으로 CE=CD를 얻고 평행사변형의 BC=AD를 빼 연장 구간을 구한다."
   },
   {
     "id": 19,
@@ -620,7 +830,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평행 대변의 수직선과 직각 분할",
+    "decisiveStep": "CD에 수직인 AF가 평행한 AB에도 수직임을 읽고90도에서 주어진각을 뺀다."
   },
   {
     "id": 20,
@@ -653,7 +874,18 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+    "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평행한 변과 같은 변이 동일한 한 쌍인지 구별",
+    "decisiveStep": "다른 쌍의 두 변이 같은 등변사다리꼴 반례를 들어 충분조건이 아님을 판단한다."
   },
   {
     "id": 21,
@@ -678,7 +910,18 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rpm_primary_repair",
-    "subUnitClassificationDepth": "complete_rpm_primary"
+    "subUnitClassificationDepth": "complete_rpm_primary",
+    "templateKey": "TPL_LINE_MULTI_CONDITION",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "점 통과와 절편의 교차 조건으로 계수 결정",
+    "decisiveStep": "첫 함수의 점 통과로 a를 구하고 같은 절편을 둘째 함수의 x축 위 점으로 읽어 b를 정한다."
   },
   {
     "id": 22,
@@ -706,7 +949,21 @@ window.questionBank=[
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q22-solution.svg"
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q22-solution.svg",
+    "crossConceptKeys": [
+      "CC_SPEED_DISTANCE_TIME",
+      "CC_AREA"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B34",
+    "primaryMethod": "등속 이동점이 만드는 넓이의 일차함수 모델",
+    "decisiveStep": "이동 거리를 x와3x로 나타내고 남은 변18-x와 함께 사다리꼴 넓이식에 넣어 목표 넓이의 시간을 구한다."
   },
   {
     "id": 23,
@@ -734,7 +991,18 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q23-solution.svg"
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q23-solution.svg",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B34",
+    "primaryMethod": "등변 밑각과 내외각의 삼등분 위치",
+    "decisiveStep": "45도 밑각과135도 외각을 각각 세 등분하고 각 목표 삼각형에 들어가는 조각의 수를 구별한다."
   },
   {
     "id": 24,
@@ -762,6 +1030,17 @@ window.questionBank=[
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q24-solution.svg"
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q24-solution.svg",
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평행사변형 대변 동등과 대각선 이등분",
+    "decisiveStep": "대변 길이식을 같게 놓고 대각선 전체 길이를 반 길이의 두 배로 표현해 두 문자를 각각 정한다."
   }
 ];

@@ -663,10 +663,15 @@ for (const record of records) {
   result.reasons.forEach(count);
   if (record.automatic) count("automatic");
 }
+// Count the already evaluated rows once. Re-normalizing each exam path for
+// every record makes this display summary quadratic in the inventory size.
+const automaticCountBySource = new Map();
+for (const record of records) {
+  if (record.automatic)
+    automaticCountBySource.set(record.sourceFile, (automaticCountBySource.get(record.sourceFile) || 0) + 1);
+}
 for (const exam of exams)
-  exam.automaticCount = records.filter((record) =>
-    record.sourceFile === core.normalizeFile(exam.file) && record.automatic,
-  ).length;
+  exam.automaticCount = automaticCountBySource.get(core.normalizeFile(exam.file)) || 0;
 const indexVersion = hash(
   JSON.stringify([
     core.VERSION,
