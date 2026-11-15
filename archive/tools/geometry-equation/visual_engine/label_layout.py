@@ -623,11 +623,24 @@ def point_box_has_unambiguous_owner(box,owner,competitors):
             if owner_distance2+POINT_OWNER_DISTANCE_TOLERANCE_PX2>=competitor_distance2:return False
     return True
 
+def measured_tick_ink(fragment):
+    observed=(fragment or {}).get('observedBBox')
+    try:
+        ink=[finite(observed[key]) for key in ('x','y','width','height')] if isinstance(observed,dict) else None
+    except (ValueError,TypeError):
+        return None
+    return ink if ink is not None and ink[2]>0 and ink[3]>0 else None
+
 def tick_ink_box(box,ink):
     """The rectangle the glyphs of a measured label really cover. ink=[x,y,width,height] is the ink extent the browser reported for the label's frozen fragment,
     relative to the fragment's own top-left corner (the label box). A label without that report has its box as its ink."""
     if ink is None:return box
     return Box(box.x+ink[0],box.y+ink[1],ink[2],ink[3])
+
+def tick_leader_endpoint(box,at,ink):
+    # The leader ends on the measured glyph edge.
+    target=tick_ink_box(box,ink)
+    return owner_leader_endpoint(target,at,[target.x+target.width/2,target.y+target.height/2])
 
 def tick_box_respects_owner(box,at,axis,ink=None):
     """Keep a tick label on an axis-normal side of its actual owner tick.
@@ -1027,7 +1040,8 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
             box=Box(center[0]-w/2,center[1]-h/2,w,h)
             if acceptable(box):
                 chosen=box;method='OWNER_BOUND_TICK_LEADER'
-                end=owner_leader_endpoint(box,label['at'],center)
+                ink=label.get('tickInk') if label.get('tickLeaderUsesInk') else None
+                end=tick_leader_endpoint(box,label['at'],ink) if ink is not None else owner_leader_endpoint(box,label['at'],center)
                 owner_ids={tick_owner['id'],label['tickAxis']+'-axis'}|tick_start_circle_ids(occupied,label['at'],end)
                 # A dot drawn exactly on its own tick (a declared function value on an axis) is part of that tick, not an obstacle to its leader.
                 owner_ids|={o.get('id') for o in occupied if o.get('kind') in {'circle','point'} and math.dist((o['geometry'][0],o['geometry'][1]),label['at'])<=1e-3}

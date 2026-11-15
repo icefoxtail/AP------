@@ -66,6 +66,30 @@ class TickGapByInkTests(unittest.TestCase):
         result=self.run_layout({**item,'preferred':'W','preferTickSide':True,'tickInk':self.INK},obstacles)
         self.assertEqual(result['labels'][0]['placement'],'COORDINATE_RELOCATION_E')
 
+    def test_plain_x_tick_leader_ends_on_the_measured_glyph(self):
+        # The advance width of a 42 px digit is 21 px; the visible digit is narrower.
+        ink=[v*2.1 for v in self.INK]
+        tick={'id':'tick-x-1','kind':'line','role':'tick','axis':'x','value':1,'geometry':[(100,96),(100,104)]}
+        axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,100),(240,100)]}
+        guide={'id':'overlay-line-crossing','kind':'line','role':'line','geometry':[(100,20),(100,180)]}
+        item=label('tick-x-1-label',(100,100),'1','TICK_LABEL',0,tickId='tick-x-1',tickAxis='x',
+                   tickValue=1,tickDisplayValue='1',tickInk=ink,directions=('S','N'))
+        def arrange(value):
+            return layout([value],[tick,axis,guide],Box(0,0,240,200),
+                          measurements={value['id']:(21,27.972)},require_measurements=True)
+        old=arrange(item)
+        proposed=arrange({**item,'tickLeaderUsesInk':True})
+        self.assertEqual(old['unresolved'],[])
+        self.assertEqual(proposed['unresolved'],[])
+        before,after=old['leaders'][0],proposed['leaders'][0]
+        self.assertEqual((after['tickId'],after['value'],after['from']),('tick-x-1',1,[100,100]))
+        self.assertEqual(old['labels'][0]['box'],proposed['labels'][0]['box'])
+        visible=tick_ink_box(Box(**proposed['labels'][0]['box']),ink)
+        self.assertGreater(visible.x-before['to'][0],2)
+        self.assertAlmostEqual(after['to'][0],visible.x)
+        self.assertLessEqual(visible.y,after['to'][1])
+        self.assertLessEqual(after['to'][1],visible.bottom)
+
     def test_x_axis_gap_uses_the_vertical_ink_too(self):
         box=Box(95,116,10,13.32)                                                   # box top 16 below the axis y=100
         self.assertTrue(tick_box_respects_owner(box,(100,100),'x'))

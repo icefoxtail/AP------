@@ -22,7 +22,7 @@ def _exact_float(text):
 from .viewport import for_spec
 from .function_sampling import sample
 from .math_expression import Expr,parse,serialize,evaluate,exact_coordinate
-from .label_layout import Box,layout,approximate_size,DIRECTIONS,point_segment_distance,segment_segment_distance
+from .label_layout import Box,layout,approximate_size,DIRECTIONS,point_segment_distance,segment_segment_distance,measured_tick_ink
 from .svg_composer import compose,num as _num
 from .style_tokens import load
 from .config import resolve_output
@@ -592,6 +592,8 @@ def prepare(spec):
                 tick_primitive['requiredLabelId']=label_id
                 label={'id':label_id,'kind':'TICK_LABEL','tickId':tick_id,'target':tick_id,'owner':tick_id,'tickAxis':axis,'tickValue':value,'tickDisplayValue':text,'at':p,'text':text,'font':tokens['tickLabel'],'priority':0,'allowSuppress':False,'preferred':'S' if axis=='x' else 'W','directions':('S','N') if axis=='x' else ('W','E'),'gaps':(8,12),'centered':True,'math':True,**({'tex':tick_fraction_tex} if tick_fraction_tex else {}),**({'tickPiValue':tick_pi['multiple']} if tick_pi else {}),**({'tickCalloutFallback':True} if spec['displayFacts'].get('tickLabelFallbackCallout') is True else {})}
                 if spec['displayFacts'].get('preferTickSide') is True:label['preferTickSide']=True
+                if axis=='x' and spec['displayFacts'].get('xTickLeaderUsesInk') is True:
+                    label['tickLeaderUsesInk']=True
                 if tick_pi is not None and axis=='x' and tick_pi['multiple']==spec['displayFacts'].get('sharedZeroTickPi'):
                     label['sharedZeroTick']=True
                 callout=tick_callouts.pop((axis,value),None)
@@ -1447,10 +1449,8 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False,
             label['allowSuppress']=False
             if label['kind']=='TICK_LABEL':
                 # The browser's own report of where the glyphs sit inside the frozen fragment (observedBBox: getBBox of the fragment root): the tick gap is judged on it.
-                seen=(fragments.get(label['id']) or {}).get('observedBBox')
-                try:ink=[finite(seen[key]) for key in ('x','y','width','height')] if isinstance(seen,dict) else None
-                except (ValueError,TypeError):ink=None
-                if ink is not None and ink[2]>0 and ink[3]>0:label['tickInk']=ink
+                ink=measured_tick_ink(fragments.get(label['id']))
+                if ink is not None:label['tickInk']=ink
             if label['kind']=='GRAPH_ANNOTATION':
                 label['gaps']=(12,20,32,48)
                 if label['id'].startswith('tick-y-'):label['directions']=('W','E');label['priority']=0
