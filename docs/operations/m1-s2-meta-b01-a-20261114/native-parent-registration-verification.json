@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "m1s2-native-parent-registration-verification-v1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "baselineRemoteHead": "e8fa8be3b342e73fd11a278c3ce542600d47154f",
+  "latestMainRechecked": "8b839bd17607448100f9790e84deb05af49e3017",
+  "latestMainOverlap": "NONE: PR1973 changes different B01-B source/compact/report paths only; current main definitions and our four exams unchanged",
+  "failure": {
+    "ciRun": 43530562918,
+    "job": 132246954097,
+    "ciObservedError": "REGISTRATION_COMMAND_FAILED during native --verify-projection; wrapper discarded child stderr",
+    "isolatedObservedError": "Consumer metadata mismatch: qid_v1_0bc8c861739c94238388304386b6fb85000500f1f463bc9e21d0423c4b0b874b.curriculumKey",
+    "cause": "Native label fallback lacked the verified RPM basic parent; 22 of 24 generated native L1/L2 labels were not canonical parents. Existing official basicScopeParentRef supplies the exact parent without editing shared definitions."
+  },
+  "change": {
+    "requestPath": ".archive-meta-register/inbox/m1s2-b01-a-exam2-native-20261114-r3.json",
+    "rawRequestSha256": "ff267ef3464905953560e8cc0b9b0c6051e4e0b66e508019104b9dbaba582997",
+    "stableRequestSha256": "2b4a3546109b0f7c22395dd09295573a2b43a2f0af188596af6e8b113cdc84bd",
+    "parentEvidenceFiles": 8,
+    "parentSelections": 24,
+    "nativeL1L2CorrectionsVsR2": 22,
+    "normalParentValuesPreserved": [
+      1,
+      21
+    ],
+    "sourceChanges": 0,
+    "sharedDefinitionChanges": 0,
+    "q23Level": "상",
+    "q23DifficultyBucket": 4,
+    "declaredGapsPreserved": true
+  },
+  "validation": {
+    "officialDryRun": {
+      "status": "PASS",
+      "write": false,
+      "requestId": "m1s2-b01-a-exam2-native-20261114-r3",
+      "approvalType": "FINAL_QA",
+      "totalQuestions": 24,
+      "registryChangeCount": 0,
+      "runtimeMaterialized": 24,
+      "fingerprintRepairCount": 24,
+      "consumerSearchStatus": "NOT_RUN",
+      "replay": false,
+      "plannedPaths": [
+        "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "archive/data/question_metadata.json",
+        "archive/data/question_identity_map.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-a-exam2-native-20261114-r3.json"
+      ]
+    },
+    "isolatedApply": {
+      "status": "PASS",
+      "write": true,
+      "requestId": "m1s2-b01-a-exam2-native-20261114-r3",
+      "approvalType": "FINAL_QA",
+      "totalQuestions": 24,
+      "registryChangeCount": 0,
+      "runtimeMaterialized": 24,
+      "fingerprintRepairCount": 24,
+      "consumerSearchStatus": "NOT_RUN",
+      "replay": false,
+      "plannedPaths": [
+        "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "archive/data/question_metadata.json",
+        "archive/data/question_identity_map.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-b01-a-exam2-native-20261114-r3.json"
+      ]
+    },
+    "isolatedProjection": {
+      "status": "PASS",
+      "requestId": "m1s2-b01-a-exam2-native-20261114-r3",
+      "totalQuestions": 24,
+      "replay": true,
+      "plannedPaths": [],
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "browserStatus": "NOT_RUN",
+      "consumerLanes": {
+        "canonical": 24,
+        "usableMetaLane": 0
+      }
+    },
+    "isolatedChangedUidConsumer": {
+      "status": "PASS",
+      "mainSha": "UNKNOWN",
+      "counts": {
+        "changed": 24,
+        "checked": 24,
+        "passed": 24,
+        "skippedUnchanged": 0
+      },
+      "exams": [
+        {
+          "file": ".archive-meta-register/inbox/m1s2-b01-a-exam2-native-20261114-r3.json",
+          "kind": "reviewed-exam-v2",
+          "exam": "25_왕운중_2학기_기말_중1_기출",
+          "sourceFile": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js",
+          "changed": 24,
+          "checked": 24,
+          "passed": 24,
+          "skippedUnchanged": 0
+        }
+      ],
+      "failures": [],
+      "unobservedFields": [],
+      "solverOnlyRevisions": [],
+      "assignmentPending": []
+    }
+  },
+  "fixtureScope": "Diagnostic disposable one-exam 24-question fixture with exact current source and copied official definitions/metadata/identity/runtime, official native registrar and catalog/index producers. This is not a full repository CI proof or main registration.",
+  "checkpoints": {
+    "supersededRequestId": "m1s2-b01-a-exam2-native-20261114-r2",
+    "supersededRemoteCommit": "e8fa8be3b342e73fd11a278c3ce542600d47154f",
+    "supersededDryRunReport": "docs/operations/m1-s2-meta-b01-a-20261114/root-exam2.native-dryrun.json",
+    "priorRegistrationAudit": "docs/operations/m1-s2-meta-b01-a-20261114/a2-registration-audit.json"
+  },
+  "nextAction": "Commit and verify remote HEAD, then required full-checkout PR CI; only after green merge and verify main writer/Consumer/deployment separately."
+}

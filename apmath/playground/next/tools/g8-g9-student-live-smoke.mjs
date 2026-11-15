@@ -147,6 +147,51 @@ async function settle(page) {
   }
   throw Error('Canvas/layout did not settle');
 }
+function readStudentEntry() {
+  const visible = selector => !!document.querySelector(selector)?.checkVisibility();
+  const pane = document.querySelector('#apl-pane-explore');
+  // The narrow layout uses display: contents: the pane has no box, but its
+  // rendered children must still be visible and the pane must not be hidden.
+  const explorePanel = {
+    present: !!pane, hidden: pane?.hidden ?? true,
+    ariaHidden: pane?.getAttribute('aria-hidden') ?? null,
+    display: pane ? getComputedStyle(pane).display : null,
+    renderedChildren: pane ? [...pane.children]
+      .filter(child => child.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }))
+      .map(child => ({ tag: child.tagName.toLowerCase(), id: child.id || null, className: child.getAttribute('class') })) : []
+  };
+  return {
+    sceneId: String(lab.scene.id), tab: lab.tab, nativePlayer: lab.video?.state ?? null,
+    lessonFirst: document.body.classList.contains('apl-lessonfirst'),
+    entryVisible: visible('.apl-lentry'), entryMode: document.querySelector('.apl-lentry')?.dataset.mode ?? null,
+    lessonButtons: document.querySelectorAll('.apl-lentry .apl-lgo').length,
+    directExploreVisible: visible('.apl-lentry .apl-lmanual'),
+    tabsVisible: visible('.apl-tabs'), exploreTabVisible: visible('button.apl-tab[aria-controls="apl-pane-explore"]'),
+    explorePanelVisible: explorePanel.present && !explorePanel.hidden && explorePanel.ariaHidden !== 'true' && explorePanel.display !== 'none' && explorePanel.renderedChildren.length > 0,
+    explorePanel
+  };
+}
+async function enterStudentExploration(page, entry) {
+  try {
+    // Keep the normal student URL and record its first screen before following
+    // the existing visible entry control. Wide screens already expose exploration.
+    if (entry.before.lessonFirst) {
+      if (!entry.before.entryVisible || entry.before.entryMode !== 'first' || !entry.before.lessonButtons || entry.before.nativePlayer !== 'idle') throw Error('Lesson-first screen has no idle lesson entry');
+      const selector = '.apl-lentry[data-mode="first"] .apl-lmanual', button = page.locator(selector);
+      if (await button.count() !== 1 || !await button.isVisible() || !await button.isEnabled()) throw Error('Lesson-first screen has no usable direct-exploration button');
+      entry.action = { selector, method: 'Playwright locator.click on the actual UI' };
+      await button.click();
+    }
+    await settle(page);
+    entry.after = await page.evaluate(readStudentEntry);
+    const after = entry.after;
+    if (after.lessonFirst || after.sceneId !== entry.before.sceneId || after.tab !== 'explore' || !after.tabsVisible || !after.exploreTabVisible || !after.explorePanelVisible) throw Error(`Exploration entry did not expose the original tabs and panel: ${JSON.stringify(after)}`);
+    entry.status = 'PASS';
+  } catch (error) {
+    entry.status = 'FAIL'; entry.error = error.message;
+    throw Error(`Student exploration entry failed: ${error.message}`);
+  }
+}
 async function inspect(page, state) {
   return page.evaluate(state => {
     const L = window.lab, sc = L.scene, s = L.s, call = value => typeof value === 'function' ? value(s, L) : value;
@@ -265,6 +310,7 @@ try {
     const pendingAssets = new Set(), verifiedURLs = new Set();
     let page, screenshotGuard, listening = true;
     const capture = async (filename, state) => {
+      const evidence = state === 'entry' ? record.entry : record;
       const sceneId = await page.evaluate(() => String(lab.scene.id));
       try {
         const bundle = await captureReviewState({ page, guard: screenshotGuard, out, name: filename, id: sceneId, state, fullPage: true, settle: () => settle(page), collectContent: false,
@@ -274,13 +320,13 @@ try {
             const png = { sha256: sha256(bytes), bytes: bytes.length, width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
             if (!screenshotEnvironmentMatches(e.frame.touchEnvironment, screenshotGuard.expectedTouch)) throw Error(`Unverified screenshot environment: ${e.file}`);
             if (e.frame.fullPage === false && (png.width !== e.frame.viewport.width || png.height !== e.frame.viewport.height || e.frame.touchEnvironment.pixelEnvironment !== VIEWPORT_PIXEL_POLICY)) throw Error(`Viewport capture readback mismatch: ${e.file}`);
-            record.captureMetadata[e.file] = { ...e.frame, png, pngSha256: png.sha256 };
+            evidence.captureMetadata[e.file] = { ...e.frame, png, pngSha256: png.sha256 };
           }
         });
         if (screenshotGuard.expectedTouch) {
-          const frame = record.captureMetadata[bundle.file];
+          const frame = evidence.captureMetadata[bundle.file];
           if (frame?.fullPage !== false || bundle.rawReference?.file !== filename) throw Error(`Required viewport evidence missing: ${filename}`);
-          record.viewportCaptures.push({ file: bundle.file, rawReference: filename, id: sceneId, state, diagnostic: state === 'failure', frame });
+          evidence.viewportCaptures.push({ file: bundle.file, rawReference: filename, id: sceneId, state, diagnostic: state === 'failure', frame });
         }
         return { filename, sha256: sha256(fs.readFileSync(path.join(out, filename))) };
       } catch (error) {
@@ -321,6 +367,11 @@ try {
       record.inventory = await page.evaluate(() => ({ id: lab.id, sceneIds: lab.list.map(s => String(s.id)), groupCount: lab.groups.length }));
       const inv = record.inventory;
       if (inv.id !== unit.id || inv.sceneIds.length !== unit.scenes || new Set(inv.sceneIds).size !== unit.scenes || inv.sceneIds[0] !== unit.first || inv.groupCount !== unit.groups) record.errors.push({ kind: 'runtime-inventory-mismatch', expected: unit, actual: inv });
+      record.entry = { before: await page.evaluate(readStudentEntry), action: null, status: 'RUNNING', captureMetadata: {}, viewportCaptures: [] };
+      // Entry evidence is additional to the unchanged seven-state denominator.
+      record.entry.capture = await capture(`${id}--entry.png`, 'entry');
+      await enterStudentExploration(page, record.entry);
+      if (record.entry.action) record.interactions.push({ state: 'enter-explore', ...record.entry.action });
       let questionSignature;
       for (const state of STATES) {
         let selector;

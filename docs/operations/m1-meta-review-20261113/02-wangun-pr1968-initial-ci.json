@@ -1,0 +1,214 @@
+{
+  "schemaVersion": "existing-exam-exact-head-initial-ci-v1",
+  "observedAt": "2026-11-13 17:14:40 UTC",
+  "status": "CI_FAILED_EXISTING_BASE_RECEIPT_BINDING",
+  "pr": {
+    "number": 1968,
+    "url": "https://github.com/icefoxtail/AP------/pull/1968",
+    "head": "29707a569189aacd886cf84776ae31ec0640f2b1",
+    "headTree": "2352887a61876a2b65badb2dbd538cda2295996f",
+    "ciEventBase": "2391df9b009b1c1f47ab450ed501fe06dd78f918",
+    "testedMergeSnapshot": "432899dd84ebb5ccf78d06f46822006ea33e8150",
+    "finalMetadataObservation": {
+      "head": "29707a569189aacd886cf84776ae31ec0640f2b1",
+      "base": "2391df9b009b1c1f47ab450ed501fe06dd78f918",
+      "state": "open",
+      "draft": false,
+      "merged": false,
+      "mergeable": false
+    }
+  },
+  "allFourWorkflowsTerminal": true,
+  "workflows": [
+    {
+      "id": 43467747061,
+      "name": "Problem Bank Shared Meta",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 132031291579,
+          "name": "shared-meta",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43467747068,
+      "name": "Generated Consumer browser smoke",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 132031292132,
+          "name": "browser-smoke",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43467747305,
+      "name": "Archive2 Runtime Guard",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 132031292231,
+          "name": "Archive2 runtime contract",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 132031292836,
+          "name": "Archive2 50-question solution Chrome",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43467747613,
+      "name": "CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "id": 132031293306,
+          "name": "plan",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 132032739405,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "failure"
+        }
+      ]
+    }
+  ],
+  "pollObservations": [
+    {
+      "at": "2026-11-13 17:08:17 UTC",
+      "completedSuccess": 3,
+      "remaining": "CI in_progress"
+    },
+    {
+      "at": "2026-11-13 17:09:30 UTC",
+      "completedSuccess": 3,
+      "remaining": "CI in_progress"
+    },
+    {
+      "at": "2026-11-13 17:10:30 UTC",
+      "completedSuccess": 3,
+      "completedFailure": 1
+    }
+  ],
+  "failedJob": {
+    "runId": 43467747613,
+    "jobId": 132032739405,
+    "stepNumber": 19,
+    "stepName": "Run tests",
+    "command": "node tools/run-tests.js --ci-scope \"$RUNNER_TEMP/archive-ci-scope.json\"",
+    "stepStartedAtFromLog": "2026-11-13T17:04:50.9588848Z",
+    "assertionAt": "2026-11-13T17:08:07.1641846Z",
+    "stepExitedAt": "2026-11-13T17:10:03.7910160Z",
+    "exitCode": 1,
+    "failingTestFile": "tests/meta-foundation-middle-geometry-runtime.test.js",
+    "stackLocations": [
+      "assertNativeApproval:131:3",
+      "main:146:42"
+    ],
+    "assertion": "native receipt was not verified",
+    "actual": null,
+    "expected": true,
+    "questionUid": "qid_v1_73d4da5316f252d9835ecaa3d66a8b1eb09a4d7ed5c6aa07e8d20327466ec136",
+    "testFileCounts": {
+      "pass": 335,
+      "fail": 1,
+      "knownFail": 0,
+      "total": 336,
+      "quarantinedSkipped": 8
+    },
+    "boundedFailureExcerpt": [
+      "AssertionError [ERR_ASSERTION]: qid_v1_73d4da5316f252d9835ecaa3d66a8b1eb09a4d7ed5c6aa07e8d20327466ec136: native receipt was not verified",
+      "at assertNativeApproval (/home/runner/work/AP------/AP------/tests/meta-foundation-middle-geometry-runtime.test.js:131:3)",
+      "at main (/home/runner/work/AP------/AP------/tests/meta-foundation-middle-geometry-runtime.test.js:146:42) {",
+      "generatedMessage: false,",
+      "code: 'ERR_ASSERTION',",
+      "actual: null,",
+      "expected: true,",
+      "operator: '==',",
+      "diff: 'simple'",
+      "}",
+      "Test failed: tests/meta-foundation-middle-geometry-runtime.test.js",
+      "TAP version 13"
+    ]
+  },
+  "baseDependencyEvidence": {
+    "sourceArchiveFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "sourceOrdinal": 20,
+    "belongsToWangunRequest": false,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "identityEvidence": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+    "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+    "receiptBlobSha1BothBaseAndPrHead": "3fdb8ea81301408bc05bf57d7893e262450a757c",
+    "receiptExpected": {
+      "rawSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+      "blobSha1": "a8de75bc9cc2b6a4479866d75b8ebec637404a04"
+    },
+    "ciEventBaseSource": {
+      "commit": "2391df9b009b1c1f47ab450ed501fe06dd78f918",
+      "rawSha256": "2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56",
+      "blobSha1": "f1a73e96053d17564b42672415ca6bfc5b73cb2c",
+      "matchesReceipt": false
+    },
+    "prHeadSource": {
+      "commit": "29707a569189aacd886cf84776ae31ec0640f2b1",
+      "rawSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+      "blobSha1": "a8de75bc9cc2b6a4479866d75b8ebec637404a04",
+      "matchesReceipt": true
+    },
+    "mandatoryGuard": "archive/tools/meta-foundation/auto-register-merged-source.mjs nativeReviewReceipt line88 rejects receipt.sourceRawSha256/sourceBlobSha1 mismatch.",
+    "observed": "The existing Shinheung source bytes in the fixed CI event base cannot satisfy the still-bound rev3 receipt. PR1968 does not edit that source; its own pre-merge source remains receipt-bound.",
+    "inference": "This concrete base source/receipt mismatch is sufficient to explain the native receipt rejection. The one observed failure is outside the Wangun23 request. A full baseline test was not rerun, and no claim is made that every other receipt condition has been independently reproved."
+  },
+  "wangunNativePreviewEvidence": {
+    "requestId": "m1-wangun-2026-mid-meta-review-20261113",
+    "requestSha256": "feb528273a4167b654a50dcd6d825c7db9173b0bf2fee1c47904b20b4bb505c1",
+    "declaredQuestionCount": 23,
+    "declaredRegistryChanges": 16,
+    "preparationStep": {
+      "number": 11,
+      "name": "Prepare and verify PR registration data once",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "producerCommand": "node tools/ci/archive-pr-registration-proof.mjs produce --proof-file \"$RUNNER_TEMP/archive-pr-registration-proof/proof.json\"",
+    "generatedNativeReceiptPathObservedInJobFootprintLog": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
+    "generatedReceiptCandidateBytesObserved": 228810,
+    "ciArtifactsReturned": 0,
+    "exportedPerRequestPreviewReceiptAvailable": false,
+    "actualCiNative23RecordReadback": "NOT_AVAILABLE_FROM_EXPORTED_ARTIFACT",
+    "boundary": "Preparation success and generated receipt-path observation are CI facts. No exact23 record-level CI artifact or operational main success is claimed; previously verified local23 proof remains separate."
+  },
+  "rawLog": {
+    "path": ".tmp/m1-meta-review/02-pr1968-ci-132032739405.log",
+    "utf8Bytes": 1272798,
+    "sha256": "2655204063e7b844c39c93cea8c0609681d29d76b443d1133c3e081460ccc076",
+    "storageScope": "LOCAL_SCRATCH_ONLY"
+  },
+  "executionBoundary": {
+    "sourceOrCanonicalChanges": false,
+    "gitIndexOrRefChanges": false,
+    "apiWrites": false,
+    "workflowRerun": false,
+    "writerInvoked": false,
+    "testsRerun": false,
+    "mathReviewRepeated": false,
+    "operationalCompletionClaim": false
+  }
+}

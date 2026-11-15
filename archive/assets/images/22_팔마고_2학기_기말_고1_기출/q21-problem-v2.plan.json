@@ -1,0 +1,73 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "sourceQuote": "함수 y=a√(-x+b)+c의 그래프: 제1사분면에서 끝나고 두 축에 점선 가이드",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "2",
+      "-1"
+    ],
+    "amplitude": "1",
+    "sign": 1,
+    "offset": "1",
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      -4,
+      2
+    ],
+    "viewport": [
+      -4,
+      4,
+      -2,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "hideLabels": [
+      "formula",
+      "start"
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "x": "2",
+          "y": "1",
+          "unnamed": true
+        }
+      ],
+      "guides": [
+        {
+          "id": "gx",
+          "from": "P",
+          "axis": "x"
+        },
+        {
+          "id": "gy",
+          "from": "P",
+          "axis": "y"
+        }
+      ]
+    }
+  },
+  "caption": "제1사분면에 끝점을 갖는 무리함수 그래프",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "감소하는 무리함수 그래프의 오른쪽 끝은 제1사분면에 있다",
+      "mappedTo": [
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": []
+}

@@ -595,7 +595,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q09.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q09.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: D는 B에서 AC에 내린 수선의 발이다. AB=18 cm인 30도 직각삼각형과, 45도 및 두 직각변이 같은 직각삼각형을 수선 BD가 이어 준다.",
+      "solutionImageCaption": "A=180°−105°−45°=30°이므로 BD=18sin30°=9이다. C가 45°인 직각이등변삼각형에서 BC=9√2이다. 정답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 10,
@@ -661,7 +665,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q10.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q10.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 탑을 두 삼각형으로 나눴다. 파랑 왼쪽 60도와 주황 오른쪽 45도는 수직 높이 h를 공유하고, 주황 같은 눈금은 AD=DC이다. 관측점 사이는 12 m이다.",
+      "solutionImageCaption": "수평 거리 BD=h/√3이고 DC=h이다. 두 거리 합이 12 m이므로 h=6(3−√3) m이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -727,7 +735,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q11.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q11.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 파랑 한 눈금인 두 8 cm 변이 이루는 주황 꼭지각은 30도이다. 아래 두 밑각이 같은 위치에 파랑 호가 있다.",
+      "solutionImageCaption": "두 밑각이 각각 75°이므로 꼭지각은 30°이다. 넓이는 (1/2)·8·8·sin30°=16 cm². 정답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 12,
@@ -793,7 +805,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q12.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q12.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 평행사변형에서 AB=4 cm이며 높이는 A에서 아래 선분으로 내린 수선 h이다. 아래 변의 중점 M부터 C까지가 파란 삼각형 밑변이다. 주어진 각 D는 60도이다.",
+      "solutionImageCaption": "MC=6/2=3 cm이다. 높이 h=4sin60°=2√3 cm이므로 삼각형 넓이는 (1/2)·3·2√3=3√3 cm²이다. 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 13,
@@ -924,7 +940,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q14.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q14.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 원의 중심 O에서 길이 16 cm인 현 AB로 수선을 내려 H를 잡는다. 파랑 눈금은 현의 같은 두 반쪽이다. 주황 삼각형에서 중심거리 6 cm와 반지름 x를 읽는다.",
+      "solutionImageCaption": "현 절반은 8 cm이고 직각변은 6 cm와 8 cm이다. 빗변인 반지름은 √(6²+8²)=10 cm이고 정답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 15,
@@ -1056,7 +1076,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q16.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q16.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 두 직각삼각형에서 OA와 OC는 파랑 한 눈금, 같은 현을 이등분한 구간은 주황 두 눈금이다. 중심부터 수선의 발까지의 두 선분은 눈금 없이 그렸다.",
+      "solutionImageCaption": "AM=AB/2, CN=CD/2이고 AB=CD이므로 AM=CN이다. 빗변 OA=OC는 반지름이므로 두 직각삼각형은 RHS 합동이다. 정답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -1122,7 +1146,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q17.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q17.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원과 접점 P, Q, F, X, 안쪽 접선 DE를 표시한다. 파랑·주황·초록 눈금은 A·B·C에서 각각 같은 접선 길이 쌍이고, 보라색 구간은 DP, DX, EQ, EX이다.",
+      "solutionImageCaption": "B에서 그은 접선 BP=BQ=(6+5−4)/2=7/2 cm이다. BED의 둘레는 BD+BE+DE=2BP이므로 답: 7 cm, ④.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
@@ -1188,7 +1216,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q18.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q18.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 원 O의 두 접선 PA, PB와 접점 A, B, 반지름 OA·OB, 현 AB의 중점 M 및 수직이등분선 OP.",
+      "solutionImageCaption": "OA=3 cm, AP=4 cm이므로 OP=5 cm이고 AM=12/5 cm이다. AB=2AM이므로 답: 24/5 cm, ③.",
+      "solutionImageSize": "full"
     },
     {
       "id": 19,
@@ -1248,7 +1280,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/s01.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/s01.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 교차하는 두 직각삼각형 ABC, DBC와 교점 E에서 밑변 BC에 내린 수선 EH. CH와 EH는 같은 길이로 표시했다.",
+      "solutionImageCaption": "BC=10√3이고 45° 직각삼각형에서 CH=EH이다. 답: 15−5√3.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,
@@ -1368,7 +1404,11 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/s03.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/s03.png",
+      "solutionImage": "assets/images/22_연향중_2학기_중간_중3_수학/q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 내접원과 접점 D, E, F, 중심 O에서 접점으로 향하는 세 반지름. 같은 꼭짓점의 접선 길이를 색과 눈금으로 묶었다.",
+      "solutionImageCaption": "BE=BD=2, CE=CF=3, AD=AF=OD=1이므로 반지름은 1 cm이다. 넓이 πr²=π. 답: π cm².",
+      "solutionImageSize": "full"
     }
   ]
 };

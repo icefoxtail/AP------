@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "m1s2-independent-three-sample-v1",
+  "revision": 2,
+  "reviewer": "/root/meta_c",
+  "author": "/root/meta_b",
+  "sourceArchiveFile": "original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js",
+  "sourceGitBlobSha": "0f3b05966c71d8781f784e209de2e51f3838fc83",
+  "sampled": [
+    13,
+    19,
+    22
+  ],
+  "scope": "THREE_ALL_META_NOT_R1_R2",
+  "readOrder": "CONTENT_SOLUTION_AND_NECESSARY_ORIGINAL_IMAGES_BEFORE_AUTHOR_SLOTS",
+  "status": "ACCEPTED_AFTER_EVIDENCE_FINALIZATION",
+  "boundInputs": {
+    "source": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/sources/archive/exams/original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js",
+      "sha256": "43951f730da00176e60b470b78438561b1b19b908df702b33504c7559b726874"
+    },
+    "review": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/reviews/23_금당중_2학기_기말_중1_기출/review.json",
+      "sha256": "69f57acd41ee371da2d74a2032f1c90a59b76f8219e401ccd4a1cab1421af15a"
+    },
+    "raw": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/reviews/23_금당중_2학기_기말_중1_기출/full.4slot.json",
+      "sha256": "db195443db3f2740b478380af40fd61d2fe8b1775835b5965c1e038c8b267903"
+    },
+    "compact": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/compact/archive/data/item-4slot/original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.4slot.json",
+      "sha256": "1ef3f820b2364589a76cc227f0d69f038e2152da6f82b1b61d43203d799ea327"
+    },
+    "proposal": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/reviews/23_금당중_2학기_기말_중1_기출/proposal.json",
+      "sha256": "dddceee17280f9e820b8d4c638f066df4b1a6f8b263248b16d4cfb417fdaf22d"
+    }
+  },
+  "images": [
+    {
+      "ordinal": 13,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/geumdang23-q13-image.png",
+      "sha256": "27ea57add4b89f289dc7badb0f8ebb6c4869f05a8b55bc9c0a72ffa5754ea84d",
+      "actualViewed": true
+    },
+    {
+      "ordinal": 19,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/geumdang23-q19-image.png",
+      "sha256": "cbb0b3c704e8caef82c8793411ae49724c1465c8fcb4ba2f1ea58f43b7888b5a",
+      "actualViewed": true
+    },
+    {
+      "ordinal": 22,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/geumdang23-q22-image.png",
+      "sha256": "658168ba8b40602dce84b7e2e39381fa2d75b7511be37881d6acc2e277b15832",
+      "actualViewed": true
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_4471d95b73c44214785108fd5f5184e780584e3819cae0601713d6247d0744a0",
+      "metadataVerdict": "ACCEPT_NEW_TPL_EXISTING_PT_AND_SHARED_PROPOSAL",
+      "reason": "원그림의 정삼각형 장애물 안쪽을 제외한 첫300도 부채꼴과, 끈이 각 변4를 감은 뒤 남은2를 반지름으로 두 이웃 꼭짓점의120도 영역을 구성한다. 정해진 도형의 측정만 하는 SECTOR_MEASURE와 달리 중심 이동·잔여길이·접근 영역 자체의 생성이 결정적이다. 같은 TETHERED_REACHABLE_REGION 제안을 재사용하고 현재 source TPL null을 등록대기로 두는 처리에 동의한다.",
+      "registry": {
+        "sourceNative": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": null
+        },
+        "activeBindingTuples": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+            "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+            "ownerPack": "MIDDLE_GEOMETRY"
+          }
+        ],
+        "rpmPathReference": "M1-RPM-093",
+        "exactRpmNativePair": false,
+        "pathReferenceIsNotNativeBindingProof": true
+      },
+      "crossConcept": "정삼각형60도/외각120도를 외부 기하 성질로 얻어 부채꼴 구성에 전달하므로 CC_EQUILATERAL_TRIANGLE와 SEQUENTIAL을 수용한다.",
+      "condition": "담장 내부 배제와 끈의 제한은 해당 접근 가능 영역 구조의 전제이며 일반 수치 길이만으로 별도 수범위COND를 추가하지 않는다.",
+      "difficultyVerdict": "ACCEPT_BUCKET3_TO4_MIDDLE_BORDERLINE_ACCEPTABLE",
+      "difficultyReason": "중심이 변하지 않는 합성 부채꼴 공식 적용과 달리 끈 소모에 따른 새 중심 및 추가 영역을 스스로 구성해야 한다.3에서4/B34로의 교정과 중/4 인접 예외를 지지한다. 계산량이나 배점은 판단 근거로 사용하지 않았다.",
+      "fourSlotVerdict": "PASS",
+      "fourSlotReason": "부채꼴·외각·길이로 접근영역 생성과 잔여 반지름을 드러내고, 합은 분리된 세 면적의 결합으로 근거가 있다. 제외 조건과 넓이 목표도 실제 발문 인용에 대응한다.",
+      "requiredMetadataFinalization": {
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "resolution": "APPLIED_AND_ACTUALLY_READ_BACK"
+      }
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_cb9787da6dcb950604620dfaf53cfa5e45e1ae7ba918dfe2f66e16488ee66de4",
+      "metadataVerdict": "ACCEPT_EXISTING_VOLUME_DIFFERENCE",
+      "reason": "꼭 맞는 세 구의 지름을 합하여 원기둥 높이를 복원한 뒤 원기둥과 세 구의 부피 차를 구한다. 반지름을 원기둥 부피에서 역산하여 구의 겉넓이를 구하는 SPHERE_IN_CYLINDER_VOLUME_CONSTRAINT와 목표·정보 흐름이 달라 기존 VOLUME_DIFFERENCE가 정확하다.",
+      "registry": {
+        "sourceNative": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-07",
+          "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+          "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+          "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE"
+        },
+        "activeBindingTuples": [
+          {
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+            "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+            "ownerPack": "MIDDLE1"
+          }
+        ],
+        "rpmPathReference": "M1-RPM-106",
+        "exactRpmNativePair": true,
+        "pathReferenceIsNotNativeBindingProof": true
+      },
+      "crossConcept": "세 구의 배열로 치수를 얻고 부피를 빼는 일은 현 입체측정 primary 안이므로 CC빈값과 NONE을 지지한다.",
+      "condition": "꼭 맞는 접촉 배치는 raw condition 내접으로 기록했으며 독립 수범위 제한은 없다.",
+      "difficultyVerdict": "ACCEPT_BUCKET2_TO3_MIDDLE_NORMAL_B23",
+      "difficultyReason": "그림에서 원기둥 높이를 세 지름의 합으로 모델링하고 두 입체 부피를 연결하는 표준 공간 해석이다.3/B23은 타당한 경계이며 기존중과 일치한다.",
+      "fourSlotVerdict": "PASS",
+      "fourSlotReason": "원기둥·구 given, 부피 goal, 지름의 합으로 높이 복원·부피차 방법과 꼭 맞는 조건을 정확한 인용으로 보존했다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_ee9ddf2b5976c985c3b07fb0a418ac3cbcda1a214e92b7bdcec4776f37714eb4",
+      "metadataVerdict": "ACCEPT_EXISTING_EXTERIOR_ANGLE_TPL_WITH_2015_PARENT_BINDING_AND_EXACT_CROSSWALK_DEBT",
+      "reason": "원그림의 외각2x−10을 떨어진 두 내각x−30과80의 합으로 놓는 한 번의 일차방정식이다. 외각정리는 내각합+보각의 동치 관계이므로 기존 EXTERIOR_ANGLE_EQUATION 재사용을 수용한다. 평면도형의 각 계산이라는2015 RPM084 의미 path는 맞지만 record의 native PT는 TRIANGLE_ANGLE_CONDITION이어서 source의 TRIANGLE_ANGLE_CHASE exact 결속과 다르다.",
+      "registry": {
+        "sourceNative": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION"
+        },
+        "activeBindingTuples": [],
+        "rpmPathReference": "M1-RPM-084",
+        "exactRpmNativePair": false,
+        "pathReferenceIsNotNativeBindingProof": true
+      },
+      "crossConcept": "삼각형 외각 관계를 식으로 쓰는 primary 내부 절차여서 CC빈값/NONE이 적합하다.",
+      "condition": "별도의 해 제한 없이 하나의 각식으로 결정되므로 COND빈값을 보존한다.",
+      "difficultyVerdict": "KEEP_BUCKET2_MIDDLE_NORMAL",
+      "difficultyReason": "외각 관계를 한 번 해석하면 익숙한 일차식이 바로 정해져2가 적합하다. 서술형 응답 형식을 난도 가산으로 쓰지 않는다.",
+      "fourSlotVerdict": "PASS_LOW_DENSITY_JUSTIFIED",
+      "fourSlotReason": "삼각형·각·외각·일차방정식 네 용어가 실제 한 단계의 구조를 충분히 표현한다. 추가 일반어로 밀도를 늘리지 않는다."
+    }
+  ],
+  "requiredEvidenceFinalization": [
+    {
+      "ordinals": [
+        13
+      ],
+      "kind": "ACTIVE_PT_DEFINITION_NORMALIZATION",
+      "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+      "definition": "원·호·현·부채꼴의 각 관계와 반지름·중심각에 따른 호 길이·넓이를 이용해 원이 포함된 도형의 각이나 측정값을 결정한다.",
+      "reason": "현재 부모 정의는 원각 관계만 언급하지만 ACTIVE SECTOR_MEASURE와 이번 새 부채꼴 접근영역 자식은 측정도 포함한다. 기존 부모를 재사용하면서 문구를 정규화한다.",
+      "resolution": "APPLIED_AND_ACTUALLY_READ_BACK"
+    },
+    {
+      "ordinals": [
+        22
+      ],
+      "kind": "ACTIVE_PT_DEFINITION_NORMALIZATION",
+      "parent": "PT_M1_TRIANGLE_ANGLE_CHASE",
+      "definition": "삼각형 내각합·외각·이등변 관계·인접각과 같은 기본 각 관계를 전달하거나 식으로 나타내어 목표각을 구한다.",
+      "reason": "현재 부모 정의의 연속 이등변삼각형 한정은 이미 ACTIVE 외각방정식·맞꼭지각전달·내부점각합 자식들을 포괄하지 않는다.",
+      "resolution": "APPLIED_AND_ACTUALLY_READ_BACK"
+    },
+    {
+      "ordinals": [
+        22
+      ],
+      "kind": "EXACT_RPM_NATIVE_PAIR_GAP",
+      "record": "M1-RPM-084",
+      "reason": "2015 의미 경로의 존재와 현재 source native PT/TPL의 exact crosswalk 일치를 별개로 명시한다. 현재 exact2015 부모 binding 누락만 쓰면 record PT 불일치를 놓칠 수 있다.",
+      "resolution": "APPLIED_AND_ACTUALLY_READ_BACK"
+    }
+  ],
+  "validation": {
+    "sampleExactQuotes": 19,
+    "quoteFailures": 0,
+    "sourceModifiedByReviewer": false,
+    "commonRegistryModified": false
+  },
+  "rootDifficultySupplement": "Q4/Q14/Q24의 판정은 root 독립파일의 별도 범위이며 본3표본 PASS를 전시험지2차검토로 확대하지 않는다.",
+  "priorRevisionSha256": "abfa223875f3f9eadde756e3df15ce717bfa3fcf2671c06268d79d7b36927d46",
+  "finalReadback": {
+    "sourceGitBlobSha": "0f3b05966c71d8781f784e209de2e51f3838fc83",
+    "rawSha256": "db195443db3f2740b478380af40fd61d2fe8b1775835b5965c1e038c8b267903",
+    "sampleQuotesRead": 19,
+    "fourSlotSemanticChanges": 0,
+    "readEvidence": [
+      "Q13 BORDERLINE_ACCEPTABLE source and difficulty evidence",
+      "Q22 source-native RPM pair false and binding false separately",
+      "Q13 circle-parent and Q22 triangle-angle-parent definition normalization proposals with supporting UID"
+    ],
+    "originalMeaningAndFigureJudgmentsPreserved": true
+  }
+}

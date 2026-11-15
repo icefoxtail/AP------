@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "m1s2-targeted-term-fix-v1",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+  "sourceBlob": "ba372dca25302f43b0dbcab43adf2f149a54efe8",
+  "ordinal": 13,
+  "questionUid": "qid_v1_1ccf9efd4287e19ca192d5a90e39cec133c7d5288f0d7ac0c3750a53bacb0bae",
+  "reviewer": "GPT_ROOT_64695B8EDE31",
+  "decision": "SEPARATE_TRIANGLE_SIDE_EXISTENCE_FROM_TRIGONOMETRIC_INEQUALITY",
+  "before": {
+    "ordinal": 13,
+    "format": "보기(ㄱㄴㄷ) 판정",
+    "given": [
+      158,
+      215
+    ],
+    "goal": [
+      141,
+      318,
+      132
+    ],
+    "method": [
+      723,
+      76,
+      181
+    ],
+    "condition": [],
+    "candidates": []
+  },
+  "after": {
+    "ordinal": 13,
+    "format": "보기(ㄱㄴㄷ) 판정",
+    "given": [
+      158,
+      215
+    ],
+    "goal": [
+      141,
+      318,
+      132
+    ],
+    "method": [
+      723,
+      181,
+      158
+    ],
+    "condition": [],
+    "candidates": [
+      "삼각형의세변조건"
+    ]
+  },
+  "dictionaryAuthority": "docs/architecture/4slot/term-dictionary-v1.5.json",
+  "reason": "사전id76의 en/sourceKeys는 TRIGONOMETRIC_INEQUALITY이다. 삼각형의 두 짧은 변 합을 가장 긴 변과 비교하는 존재조건은 다른 개념이므로 후보로 분리하고 사전 상위 삼각형을 함께 보존한다.",
+  "proposal": {
+    "term": "삼각형의세변조건",
+    "en": [
+      "TRIANGLE_SIDE_EXISTENCE"
+    ],
+    "synonyms": [
+      "삼각형의성립조건"
+    ],
+    "kind": "방법",
+    "parent": "삼각형",
+    "note": "삼각형을 구성할 수 있으려면 가장 긴 변보다 나머지 두 변의 길이 합이 커야 한다는 존재 조건. 사전id76 TRIGONOMETRIC_INEQUALITY와 다른 개념.",
+    "usedIn": [
+      13
+    ]
+  },
+  "rawEvidence": {
+    "fileId": "141-uvWRpoMK-S71Rd2bB2j-yQJW3Bv_t",
+    "url": "https://drive.google.com/file/d/141-uvWRpoMK-S71Rd2bB2j-yQJW3Bv_t/view?usp=drivesdk",
+    "sha256": "b143dcf03d5658727a11a86c5a606d127afc9bfd8417f8f57df06f732660b40a",
+    "bytes": 59121,
+    "readbackVerified": true
+  },
+  "validation": {
+    "fail": [],
+    "warn": [
+      "#3 only 4 distinct terms",
+      "#21 method has 사칙연산 (단원 목표가 계산 자체일 때만 허용)"
+    ],
+    "stats": {
+      "items": 25,
+      "examItems": 25,
+      "quotes": 161
+    }
+  },
+  "reuse": {
+    "unaffectedItems": 24,
+    "priorIndependentSampleOrdinals": [
+      7,
+      16,
+      24
+    ],
+    "currentTargetedIndependentReviewer": "GPT_ROOT_64695B8EDE31"
+  },
+  "sourceChanges": 0
+}

@@ -23,7 +23,75 @@ const server = http.createServer((req, res) => {
 });
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 fs.mkdirSync(out, { recursive: true });
-const report = { commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), checks: [], failures: [], limitations: ['Representative non-G7 scenes only; physical devices NOT_RUN.'] };
+const report = { commit: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(), entries: [], checks: [], failures: [], limitations: ['Representative non-G7 scenes and targeted G7 disclosure checks only; physical devices NOT_RUN.'] };
+function readStudentEntry() {
+  const visible = selector => !!document.querySelector(selector)?.checkVisibility();
+  const pane = document.querySelector('#apl-pane-explore');
+  const explorePanel = {
+    present: !!pane, hidden: pane?.hidden ?? true, ariaHidden: pane?.getAttribute('aria-hidden') ?? null,
+    display: pane ? getComputedStyle(pane).display : null,
+    renderedChildren: pane ? [...pane.children]
+      .filter(child => child.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }))
+      .map(child => ({ tag: child.tagName.toLowerCase(), id: child.id || null, className: child.getAttribute('class') })) : []
+  };
+  return {
+    sceneId: String(lab.scene.id), tab: lab.tab, nativePlayer: lab.video?.state ?? null,
+    lessonFirst: document.body.classList.contains('apl-lessonfirst'),
+    entryMode: document.querySelector('.apl-lentry')?.dataset.mode ?? null,
+    directExploreVisible: visible('.apl-lentry .apl-lmanual'), tabsVisible: visible('.apl-tabs'),
+    learningView: lab.learning?.view ?? null, learningMode: lab.learning?.mode ?? null, activeShort: !!lab.learning?.active,
+    explorePanelVisible: explorePanel.present && !explorePanel.hidden && explorePanel.ariaHidden !== 'true' && explorePanel.display !== 'none' && explorePanel.renderedChildren.length > 0,
+    explorePanel
+  };
+}
+async function enterStudentExploration(page, unit, viewport, sceneId = null) {
+  const g7Contents = unit.startsWith('g7-') && sceneId !== null;
+  const entry = { unit, viewport, requestedSceneId: sceneId, actions: [], status: 'RUNNING' };
+  report.entries.push(entry);
+  try {
+    if (g7Contents) await page.waitForFunction(() => lab.learning?.enabled() && lab.learning.view === 'contents' && lab.toc?.isOpen && !document.body.classList.contains('apl-g7-loading'));
+    entry.before = await page.evaluate(readStudentEntry);
+    if (g7Contents) {
+      const target = await page.evaluate(id => {
+        const i = lab.list.findIndex(scene => scene.id === id);
+        const item = i >= 0 ? lab.learning.lessonInfo(i)[0] : null;
+        return item ? { i, choice: item.choice } : null;
+      }, sceneId);
+      if (!target) throw Error(`No contents learning item for ${sceneId}`);
+      const selector = `.apl-toc button[data-i="${target.i}"][data-choice="${target.choice}"]`;
+      const item = page.locator(selector);
+      if (await item.count() !== 1) throw Error(`Expected one contents item for ${sceneId}`);
+      await item.click();
+      entry.actions.push({ selector, method: 'Playwright locator.click on the actual UI' });
+      await page.waitForFunction(i => lab.index === i && lab.learning.view === 'lesson' && !lab.toc.isOpen, target.i);
+      await page.locator('.g7-learning-controls').getByRole('button', { name: '직접 해 보기', exact: true }).click();
+      entry.actions.push({ selector: '.g7-learning-controls', role: 'button', name: '직접 해 보기', method: 'Playwright locator.click on the actual UI' });
+      await page.waitForFunction(() => lab.learning.mode === 'explore' && !lab.learning.active && lab.video.state === 'idle');
+    } else if (entry.before.lessonFirst) {
+      if (entry.before.entryMode !== 'first' || !entry.before.directExploreVisible || entry.before.nativePlayer !== 'idle') throw Error('Native lesson entry has no visible direct-exploration control');
+      const selector = '.apl-lentry[data-mode="first"] .apl-lmanual', button = page.locator(selector);
+      if (await button.count() !== 1 || !await button.isEnabled()) throw Error('Native direct-exploration control is unavailable');
+      await button.click();
+      entry.actions.push({ selector, method: 'Playwright locator.click on the actual UI' });
+    } else {
+      entry.status = 'NOT_REQUIRED';
+      return;
+    }
+    await page.waitForFunction(() => {
+      const pane = document.querySelector('#apl-pane-explore');
+      return !document.body.classList.contains('apl-lessonfirst') && lab.tab === 'explore'
+        && document.querySelector('.apl-tabs')?.checkVisibility() && pane && !pane.hidden && pane.getAttribute('aria-hidden') !== 'true'
+        && [...pane.children].some(child => child.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }));
+    });
+    entry.after = await page.evaluate(readStudentEntry);
+    if (entry.after.sceneId !== (sceneId || entry.before.sceneId) || !entry.after.explorePanelVisible) throw Error('Exploration entry did not preserve the requested scene and expose its controls');
+    entry.status = 'PASS';
+  } catch (error) {
+    entry.status = 'FAIL'; entry.error = error.message;
+    report.failures.push({ unit, viewport, id: sceneId, stage: 'student-exploration-entry', error: error.message });
+    throw error;
+  }
+}
 const browser = await chromium.launch({ channel: 'chromium', headless: true });
 try {
   for (const unit of units) for (const viewport of viewports) {
@@ -32,6 +100,7 @@ try {
     page.on('pageerror', e => report.failures.push({ unit, viewport, error: e.message }));
     await page.goto(`http://127.0.0.1:${server.address().port}/apmath/playground/next/labs/${unit}.html?theme=board`, { waitUntil: 'networkidle' });
     await page.waitForFunction(() => window.lab && lab.list.length);
+    await enterStudentExploration(page, unit, viewport);
     const count = await page.evaluate(() => lab.list.length);
     const indices = [...new Set([0, Math.floor(count / 2), count - 1])];
     const settle = async () => { await page.waitForFunction(() => !lab._tween); await page.evaluate(async () => { lab.render(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); lab.render(); }); };
@@ -69,7 +138,8 @@ try {
     page.on('pageerror', e => report.failures.push({ unit, viewport, error: e.message }));
     await page.goto(`http://127.0.0.1:${server.address().port}/apmath/playground/next/labs/${unit}.html?theme=board`, { waitUntil: 'networkidle' });
     await page.waitForFunction(() => window.lab && lab.list.some(sc => sc.id === 'a1-rect'));
-    await page.evaluate(() => { lab.goScene(lab.list.findIndex(sc => sc.id === 'a1-rect')); lab.setTab('explore'); lab.render(); });
+    await enterStudentExploration(page, unit, viewport, id);
+    await page.evaluate(() => { lab.setTab('explore'); lab.render(); });
     const initial = await page.locator('.apl-question .q').textContent();
     const label = await page.evaluate(() => APLab.stripEmoji(lab.params.a1W.label));
     await page.getByRole('slider', { name: label, exact: true }).fill('7');
@@ -90,6 +160,7 @@ try {
     page.on('pageerror', e => report.failures.push({ unit, viewport, error: e.message }));
     await page.goto(`http://127.0.0.1:${server.address().port}/apmath/playground/next/labs/${unit}.html?theme=board`, { waitUntil: 'networkidle' });
     await page.waitForFunction(() => window.lab && lab.list.some(sc => sc.id === 'f1-star'));
+    await enterStudentExploration(page, unit, viewport, id);
     const settle = async () => {
       await page.waitForFunction(() => !lab._tween);
       await page.evaluate(async () => { lab.render(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); lab.render(); });
@@ -97,7 +168,7 @@ try {
       // Compare every input only after that real animation has finished.
       await page.waitForFunction(() => !lab._tween && !lab._raf);
     };
-    await page.evaluate(() => { lab.goScene(lab.list.findIndex(sc => sc.id === 'f1-star')); lab.setTab('review'); lab.setStep(1); });
+    await page.evaluate(() => { lab.setTab('review'); lab.setStep(1); });
     await settle();
     const initial = await page.evaluate(() => {
       window.__solutionReads = 0;

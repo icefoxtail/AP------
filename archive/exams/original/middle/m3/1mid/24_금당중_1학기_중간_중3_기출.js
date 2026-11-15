@@ -372,7 +372,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_1학기_중간_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 면적 5, 45, 20cm²의 세 정사각형과 길이 √5, 3√5, 2√5cm의 변을 표시한다. 내부 공유변은 각각 작은 정사각형 변과 오른쪽 정사각형 변과 같은 색 눈금으로 묶었다.",
+    "solutionImageCaption": "세 둘레의 합 24√5cm에서 내부 공유변 √5cm와 2√5cm를 각각 두 번 빼면 18√5cm이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

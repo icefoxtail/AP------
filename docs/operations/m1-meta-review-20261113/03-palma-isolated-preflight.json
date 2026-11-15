@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "reviewed-exam-isolated-preflight-v1",
+  "status": "PASS_EXACT24_REGISTRATION_PROJECTION_CONSUMER_AND_SCOPE_PROTECTION_LOCAL_ONLY",
+  "scope": "LOCAL_ISOLATED_ONLY_NOT_OPERATIONAL_MAIN",
+  "baselineMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+  "requestId": "m1-palma-2026-mid-meta-review-20261113",
+  "requestRawSha256": "c59a32637f1fc578152a94297844500f4b4ca65b891757830aaf3264b2feb5f5",
+  "requestCanonicalSha256": "7eabd34d965a39395f9121a14f037c70deb4f69ec9910d14fd647c73695cb0d4",
+  "sourceRawSha256": "1fa5adbc46ef6180400a4666c4328bb2d2b6655d059e660291ccf550803332c7",
+  "sourceBlobSha1": "2b8411c03707eaa39fdf0159e3de448d459da181",
+  "questionCount": 24,
+  "nativeClassificationCorrections": 14,
+  "registryChanges": 7,
+  "runtimeMaterialized": 24,
+  "nativePack": {
+    "packId": "MIDDLE1",
+    "packVersion": "1.0.8",
+    "problemTypeCount": 95,
+    "templateCount": 213,
+    "bindingCount": 179
+  },
+  "projection": {
+    "status": "PASS",
+    "requestId": "m1-palma-2026-mid-meta-review-20261113",
+    "totalQuestions": 24,
+    "replay": true,
+    "plannedPaths": [],
+    "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+    "browserStatus": "NOT_RUN",
+    "consumerLanes": {
+      "canonical": 24,
+      "usableMetaLane": 0
+    }
+  },
+  "consumer": {
+    "status": "PASS",
+    "mainSha": "738af248bd62813a572ac81725892b3f12ee2beb",
+    "counts": {
+      "changed": 24,
+      "checked": 24,
+      "passed": 24,
+      "skippedUnchanged": 0
+    },
+    "exams": [
+      {
+        "file": ".tmp/m1-meta-review/03-palma-reviewed-request.json",
+        "kind": "reviewed-exam-v2",
+        "exam": "26_팔마중_2학기_중간_중1_기출",
+        "sourceFile": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+        "changed": 24,
+        "checked": 24,
+        "passed": 24,
+        "skippedUnchanged": 0
+      }
+    ],
+    "failures": [],
+    "unobservedFields": [],
+    "solverOnlyRevisions": [],
+    "assignmentPending": []
+  },
+  "actualRpmParents": {
+    "status": "PASS",
+    "evidencePath": "docs/operations/m1-meta-review-20261113/03-palma-actual-rpm-parents.json",
+    "sha256": "f18b620e3e814291eca3b55622288c8c9ed9d12c0aa23c7987d4408c6bfcec1b",
+    "nativeValueMatches": 24,
+    "exactLeafCount": 19,
+    "rpmDebtOrdinals": [
+      6,
+      8,
+      12,
+      13,
+      14
+    ],
+    "legacyParentAmbiguousOrdinals": [
+      6,
+      8
+    ],
+    "exactConstructionParentOnlyOrdinals": [
+      12,
+      13,
+      14
+    ],
+    "noFalseRpmSubstitutions": true
+  },
+  "fingerprints": {
+    "officialRequestedFieldApplicationCount": 24,
+    "actuallyDifferentSourceFingerprintOrdinals": [
+      1,
+      3,
+      4,
+      10
+    ],
+    "actuallyDifferentIdentityFingerprintOrdinals": [
+      1,
+      3,
+      4,
+      10
+    ],
+    "currentNormalSourcePayloadUnchanged": true
+  },
+  "q19BeforeAuthority": {
+    "sourceTemplateKey": null,
+    "metadataTemplateKey": "",
+    "requestBeforeTemplateKey": "",
+    "normalizationWaiver": false
+  },
+  "preserved": {
+    "studentPayloadQuestions": 24,
+    "externalFigureCount": 37,
+    "sourceDifficultyAndReviewStatus": 24,
+    "existingCrosswalkRows": 260,
+    "newExactCrosswalkRows": 13,
+    "lockedMasterLeaves": 326,
+    "l1Count": 24,
+    "l2Count": 54,
+    "newParentOrLeafCount": 0,
+    "mathFinalQaPerformed": false,
+    "fullR1R2R3Rerun": false
+  },
+  "resolvedEnvironmentIssue": {
+    "firstQuestionIndexStatus": "DB_SOURCE_PARITY_FAIL_LOCAL_SPARSE_CHECKOUT_723_FILES",
+    "resolution": "Materialized existing /archive/exams/ source JS at the same exact main. Re-ran the unchanged source-parity gate and builder successfully.",
+    "productionSourceMissing": false,
+    "gateWeakened": false,
+    "firstFailureLogSha256": "8dd01ab448d402880e7e055fe4d2bdb8ea38b841587743771fd409079c23aad6"
+  },
+  "formalReceipt": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-palma-2026-mid-meta-review-20261113.json",
+    "sha256": "174a337a8e6aaca46c897c7d3fbbc6bccbc0c30072b81a2e9781373aaa4c1fdd",
+    "scope": "LOCAL_ONLY"
+  },
+  "logs": [
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-official-dry-run.json",
+      "sha256": "e4284582141f43dee01e61b751ca7c10618e48b0fd8f13f585de4872d96d9ec6"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-official-write.json",
+      "sha256": "c385f30ba9c868d0ecc64524a9a2c7e1d9f79d8f9e15cfe5217f6048a5b59321"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-question-index-full-source.log",
+      "sha256": "2099a9cb2e84d98e2135d054af2df92ff38f7fe2dd566c8a9cd096096ecc08e4"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-catalog1.log",
+      "sha256": "93b188c260a8ac1622a2b431c477c71d8db942d3fe3a579ff9ebab1dbc2e046d"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-parent-links.log",
+      "sha256": "bf66e3e0cdf59dabb841880c1bb9c452443ed512da6ba4a4605406dc45843229"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-catalog2.log",
+      "sha256": "0d849f640cd238dbe3677cc7282e6d37dca010de3a896d3155c2533995e07fc5"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-parent-check.log",
+      "sha256": "bf66e3e0cdf59dabb841880c1bb9c452443ed512da6ba4a4605406dc45843229"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-catalog-check.log",
+      "sha256": "0d849f640cd238dbe3677cc7282e6d37dca010de3a896d3155c2533995e07fc5"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-projection.json",
+      "sha256": "5f7c9f1c3ed070f1208463d03fff11a333dfb8e86f766a0653d95bddf9d9d77b"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-consumer.json",
+      "sha256": "966cb828a13306fed74cf7ec261a5b6abcfcc1b03768fc8e891e380cd28f9ba1"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-actual-rpm-parents.json",
+      "sha256": "f18b620e3e814291eca3b55622288c8c9ed9d12c0aa23c7987d4408c6bfcec1b"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-palma-register/.tmp/m1-meta-review/03-palma-rpm-parent-tests.log",
+      "sha256": "bbcce5d4f5a23f704134296e14b31f8f0360e864f7aa7d4fe4c8668d4284a7b4"
+    }
+  ],
+  "outsideScopeProtection": {
+    "status": "PASS",
+    "evidencePath": "03-palma-isolated-minimal-protection.json",
+    "rawSha256": "661ca6380531220b14e5abffe51f86e7cbe887fd3d8d9113d50069f43ba3c875",
+    "outsideTargetChanged": 0,
+    "outsideTargetAdded": 0,
+    "outsideTargetMissing": 0,
+    "existingReviewedReceiptsBytePreserved": 723,
+    "closedQuestionsPreserved": 47,
+    "mainRegistrationClaim": false
+  },
+  "browserStatus": "NOT_RUN_LOCAL_REQUIRED_PR_CI_STILL_PENDING",
+  "mainRegistration": "NOT_STARTED",
+  "focusedChecks": {
+    "rpmParentTests": 18,
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "scope": "Existing RPM parent helper tests; only exact expected ID fixtures for leaves177/184 extended to the reviewed new DIRECT rows.",
+    "testDenominatorAndAssertionsPreserved": true,
+    "consumerInputUnchangedAfterTestFixtureEdit": true
+  }
+}

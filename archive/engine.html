@@ -432,7 +432,7 @@
     </script>
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
-    <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261011.2">
+    <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261114-svg-problem-2">
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261003-reader-controls-s1-1">
     <script src="render-feedback.js?v=20261106-solution-loading-1"></script>
     <script defer src="archive2-reader-controls.js?v=20261111-student-navigation-1"></script>
@@ -1966,6 +1966,7 @@ function detectChoiceRenderMode(choices) {
 }
 
 function renderChoicesHTML(q) {
+    if (q.choicesEmbeddedInImage === true || q.sourcePayload?.choicesEmbeddedInImage === true) return '';
     const circled = ['①', '②', '③', '④', '⑤'];
     const isSubjective = !Array.isArray(q.choices) || q.choices.length === 0 || q.choices[0] === '주관식' || q.choices.every(c => extractChoice(c).trim() === '');
     if (isSubjective) return '<div class="answer-box"></div>';

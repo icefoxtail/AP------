@@ -1,0 +1,262 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2mid/20_이수중_2학기_중간_중3_수학.js",
+  "questionId": 18,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "B",
+          "C",
+          "A",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "ba",
+            "refs": [
+              "B",
+              "A"
+            ]
+          },
+          {
+            "id": "ad",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "dc",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "cb",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "ac",
+            "refs": [
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "angleB",
+              "refs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "value": 60,
+              "label": "60",
+              "style": "ARC"
+            },
+            {
+              "id": "angleD",
+              "refs": [
+                "A",
+                "D",
+                "C"
+              ],
+              "value": 150,
+              "label": "150",
+              "style": "ARC"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "lenAB",
+              "ownerSegment": "ba",
+              "text": "6",
+              "unit": "cm",
+              "side": "RIGHT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lenAD",
+              "ownerSegment": "ad",
+              "text": "2√3",
+              "unit": "cm",
+              "side": "RIGHT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lenDC",
+              "ownerSegment": "dc",
+              "text": "4",
+              "unit": "cm",
+              "side": "RIGHT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lenBC",
+              "ownerSegment": "cb",
+              "text": "8",
+              "unit": "cm",
+              "side": "RIGHT",
+              "factRole": "GIVEN"
+            }
+          ],
+          "regions": [
+            {
+              "id": "quad",
+              "fill": "LIGHT",
+              "factRole": "GIVEN",
+              "shapes": [
+                {
+                  "polygon": [
+                    "A",
+                    "B",
+                    "C",
+                    "D"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "coordinateCanvas": {
+          "width": 615,
+          "height": 410
+        },
+        "caption": "네 변의 길이와 두 각이 표시된 사각형 ABCD",
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 36,
+        "displayScale": 0.45,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

@@ -41,6 +41,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { loadResolvedConsumerCatalog } from "./reviewed-exam-registration-v2.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
+import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
 const require = createRequire(import.meta.url);
 const SCHEMA = {
@@ -50,6 +51,7 @@ const SCHEMA = {
   LEGACY: "archive-reviewed-exam-meta-register-request-v1",
   SCOPED_LINKS: "archive2-reviewed-basic-source-links-exam-scoped-v1",
   DIFF5: "archive-difficulty5-register-request-v1",
+  BASIC_PARENT_CORRECTION: "archive-basic-parent-correction-request-v1",
   BASIC_REBIND: "archive-basic-scope-rebind-request-v1",
 };
 const GENERATED_INDEX = "archive/data/generated-lite-consumer/v1/index.json";
@@ -93,6 +95,25 @@ function loadBank(root, source) {
 function deriveUnit(root, doc, file, catalogRowsOf) {
   const fail = (reason, detail) => { throw new UnitError(reason, detail); };
   const schema = doc?.schemaVersion;
+  if (schema === BINDING_COURSE_CORRECTION_SCHEMA_V2) {
+    if (!doc.requestId || !Array.isArray(doc.sourceSnapshots) || !doc.sourceSnapshots.length ||
+        doc.sourceSnapshots.some(s => !/^original\/middle\/m1\/(?:1|2)(?:mid|final)\/[^/\\\0]+\.js$/.test(s.sourceArchiveFile || '') ||
+          !/^[a-f0-9]{40}$/.test(s.expectedSourceBlobSha1 || '')) ||
+        !Array.isArray(doc.preservedConsumers) || !doc.preservedConsumers.length)
+      fail("INVALID_REQUEST", "binding correction v2 needs its derived source snapshots and preserved consumers");
+    // One attributable unit per request. Different exams can share ordinals;
+    // their UIDs and source snapshots remain separate within this unit.
+    return { kind: "binding-course-correction", exam: doc.requestId, sourceFile: null,
+      sourceSnapshots: doc.sourceSnapshots, request: doc,
+      rows: doc.preservedConsumers.map(r => ({ ordinal: r.sourceOrdinal, uid: r.questionUid, sourceFile: r.sourceArchiveFile, unchanged: false })) };
+  }
+  if (schema === BINDING_COURSE_CORRECTION_SCHEMA) {
+    if (!doc.sourceArchiveFile || !Array.isArray(doc.preservedConsumers) || !doc.preservedConsumers.length)
+      fail("INVALID_REQUEST", "binding correction needs its exact preserved consumer set");
+    return { kind: "binding-course-correction", exam: doc.sourceArchiveFile, sourceFile: doc.sourceArchiveFile,
+      expectedBlob: doc.expectedSourceBlobSha1, request: doc,
+      rows: doc.preservedConsumers.map(r => ({ ordinal: r.sourceOrdinal, uid: r.questionUid, unchanged: false })) };
+  }
   if (schema === SCHEMA.SCOPED_LINKS) {
     if (!Array.isArray(doc.records) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "scoped links need sourceArchiveFile and records[]");
     if (Number.isInteger(doc.recordCount) && doc.recordCount !== doc.records.length) fail("INVALID_REQUEST", "scoped recordCount mismatch");
@@ -125,16 +146,20 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     return { kind: schema === SCHEMA.V2 ? "reviewed-exam-v2" : "finalqa-pinpoint-v1", approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
   }
-  if (schema === SCHEMA.BASIC_REBIND) {
+  if (schema === SCHEMA.BASIC_REBIND || schema === SCHEMA.BASIC_PARENT_CORRECTION) {
+    const correction = schema === SCHEMA.BASIC_PARENT_CORRECTION;
     if (!Array.isArray(doc.items) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "rebind request needs sourceArchiveFile and items[]");
     // A rebind changes no metadata value: the claim is only that the question is approved again in the consumer
     // (gated: canonical assignment APPROVED/PASS) and is bound to the current bytes (both fingerprints).
     const rows = doc.items.map(item => {
       if (!item?.after?.sourceFingerprint || !item.after.contentFingerprint) fail("INVALID_REQUEST", `item #${item?.sourceOrdinal} has no after fingerprints`);
-      return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: {}, fingerprint: item.after.sourceFingerprint,
+      return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: correction ? {
+        L1: item.basicParent.L1, L2: item.basicParent.L2,
+        standardUnitKey: item.parentAfter.standardUnitKey, subUnitKey: item.parentAfter.subUnitKey,
+      } : {}, fingerprint: item.after.sourceFingerprint,
         bodyFingerprint: item.after.contentFingerprint, unchanged: false, gated: true };
     });
-    return { kind: "basic-scope-rebind", approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
+    return { kind: correction ? "basic-parent-correction" : "basic-scope-rebind", approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
   }
   if (schema === SCHEMA.NONPT) {
@@ -198,7 +223,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
   return fail("UNSUPPORTED_REQUEST_SCHEMA", `${file}: schemaVersion=${JSON.stringify(schema)}`);
 }
 
-function loadConsumer(root) {
+export function loadConsumer(root) {
   const catalog = loadResolvedConsumerCatalog(root);
   const records = catalog.records;
   const ProblemBankMeta = require("../../problem-bank-meta.js");
@@ -350,20 +375,40 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
     result.counts.changed += rows.length;
     if (!consumer) continue;
     let sourceBound = true;
-    try {
-      const sourcePath = `archive/exams/${normalizeFile(unit.sourceFile)}`;
-      const blob = unit.kind === "difficulty5-ratings"
-        ? bindDifficulty5Source(fs.readFileSync(path.join(root, sourcePath)), unit.expectedBlob).sha
-        : gitBlobSha1(root, sourcePath);
-      if (unit.expectedBlob !== blob) {
+    const sourceBindings = unit.sourceSnapshots || [{ sourceArchiveFile: unit.sourceFile, expectedSourceBlobSha1: unit.expectedBlob }];
+    for (const binding of sourceBindings) {
+      try {
+        const sourcePath = `archive/exams/${normalizeFile(binding.sourceArchiveFile)}`;
+        const blob = unit.kind === "difficulty5-ratings"
+          ? bindDifficulty5Source(fs.readFileSync(path.join(root, sourcePath)), binding.expectedSourceBlobSha1).sha
+          : gitBlobSha1(root, sourcePath);
+        if (binding.expectedSourceBlobSha1 !== blob) {
+          sourceBound = false;
+          result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_BLOB_MISMATCH", detail: `${unit.sourceSnapshots ? binding.sourceArchiveFile + ': ' : ''}request ${binding.expectedSourceBlobSha1 ?? null} != worktree ${blob}` });
+        }
+      } catch (error) {
         sourceBound = false;
-        result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_BLOB_MISMATCH", detail: `request ${unit.expectedBlob ?? null} != worktree ${blob}` });
+        result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_UNREADABLE", detail: error.message });
       }
-    } catch (error) {
-      sourceBound = false;
-      result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_UNREADABLE", detail: error.message });
     }
     if (!sourceBound) continue;
+    if (unit.kind === "binding-course-correction") {
+      // This operation creates no approval. Its gate is exact preservation of
+      // every runtime consumer in the pack, including existing non-approvals.
+      // Do not route it through checkRow's "approved now" requirement or count
+      // it as an unchanged/skipped exam.
+      summary.checked = rows.length; result.counts.checked += rows.length;
+      try {
+        const preservation = verifyBindingCourseCorrectionWithConsumer({ root, request: unit.request, consumer });
+        summary.passed = rows.length; result.counts.passed += rows.length;
+        summary.preservedRuntimeUids = preservation.checkedRuntimeUids;
+        summary.approvalCreated = false;
+      } catch (error) {
+        result.failures.push({ exam: unit.exam, qid: rows[0]?.ordinal ?? "-", uid: rows[0]?.uid ?? "-",
+          reason: "VALUE_MISMATCH", detail: error.message });
+      }
+      continue;
+    }
     for (const row of rows) {
       summary.checked++; result.counts.checked++;
       const checked = checkRow(consumer, unit, row);
@@ -380,15 +425,19 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
 
 export function renderSummary(result) {
   const c = result.counts;
-  const lines = ["### Changed-UID effective consumer approval", ""];
+  const preservation = result.exams.some(e => e.kind === "binding-course-correction");
+  const lines = [preservation ? "### Changed-UID consumer verification" : "### Changed-UID effective consumer approval", ""];
   if (result.status === "PASS") {
-    lines.push(`PASS: changed ${c.passed}/${c.changed} approved (checked ${c.checked}, skippedUnchanged ${c.skippedUnchanged}), main \`${result.mainSha}\`.`);
+    lines.push(`PASS: changed ${c.passed}/${c.changed} ${preservation ? "verified" : "approved"} (checked ${c.checked}, skippedUnchanged ${c.skippedUnchanged}), main \`${result.mainSha}\`.`);
+    if (preservation) lines.push("Binding-course corrections preserve existing consumer state and create no metadata or exam approval.");
   } else {
     lines.push(`FAIL: changed ${c.changed}, checked ${c.checked}, passed ${c.passed}, skippedUnchanged ${c.skippedUnchanged}, main \`${result.mainSha}\`.`, "",
       "| exam | QID | UID | reason |", "| --- | --- | --- | --- |");
     for (const f of result.failures) lines.push(`| ${f.exam} | ${f.qid} | ${f.uid} | ${f.reason}${f.detail ? `: ${String(f.detail).replace(/\|/g, "\\|")}` : ""} |`);
   }
   for (const e of result.exams) lines.push("", `- ${e.kind} \`${e.exam}\`: changed ${e.changed}, checked ${e.checked}, passed ${e.passed}, skippedUnchanged ${e.skippedUnchanged}`);
+  for (const e of result.exams.filter(e => e.kind === "binding-course-correction"))
+    lines.push(`  Preserved runtime consumers: ${e.preservedRuntimeUids ?? 0}; new approvals: 0.`);
   if (result.assignmentPending?.length) {
     const byExam = new Map();
     for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);

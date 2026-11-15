@@ -1,0 +1,2038 @@
+{
+  "schemaVersion": "existing-exam-source-candidate-independent-review-v1",
+  "reviewer": "exam_reviewer",
+  "observedAt": "2026-11-13T15:58:36.921Z",
+  "status": "PASS_SOURCE_CANDIDATE_STATIC_PRESERVATION_AND_PLAN_PARITY",
+  "source": {
+    "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+    "sha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
+    "sizeBytes": 83556,
+    "blobSha1": "76377173ecb0ba989188561bbefac2afb3232479"
+  },
+  "candidate": {
+    "path": ".tmp/m1-meta-review/02-wangun-source-candidate.js",
+    "sha256": "5d862f69ea0cc724cd6cdd07a90f1fb9326bc911a0458c80afd2ec9c0c5f3e8c",
+    "sizeBytes": 93121,
+    "blobSha1": "a22a74484d83fffbbc69f8a03f5b8f36a1ed4402"
+  },
+  "semanticAuthority": {
+    "path": "docs/operations/m1-meta-review-20261113/02-wangun-semantic-review-rev2.json",
+    "sha256": "dec35a46e5418c3f2280134d9cdd7ae076e328d74f6fa69a63cebf9f3f5b764e",
+    "sizeBytes": 100787,
+    "blobSha1": "c100d1d72cfcf639ea5688441ea02f425b70b96f"
+  },
+  "figureManifest": {
+    "path": ".tmp/m1-meta-review/02-wangun-figure-manifest.json",
+    "sha256": "ee9cc6d108afaed96a40b219a71505fa795178793ffe0ef2f1cf882c03c76f8a",
+    "sizeBytes": 20383,
+    "blobSha1": "f255c005d2d6d22707e33f5b19260849122b89ad"
+  },
+  "nativePlan": {
+    "path": ".tmp/m1-meta-review/02-wangun-native-registration-plan.json",
+    "sha256": "59219ab25ffecefdfeb230acce2ca720351e2d758b83f5a897daa8c717ac5860",
+    "sizeBytes": 394902,
+    "blobSha1": "4566ea9b13a7f91def286d5846dc32e4d6958d4f"
+  },
+  "identityAuthority": {
+    "path": "archive/data/question_identity_map.json",
+    "sha256": "4cfec82571a6624e670e9c3fa808c0695792d52fadb8f8ecbd094fee74ad3b2a",
+    "sizeBytes": 27938431,
+    "blobSha1": "f87befc70f81602ab0686abf19b8bc4b33daa819"
+  },
+  "metadataAuthority": {
+    "path": "archive/data/question_metadata.json",
+    "sha256": "f736b93822412471136634a929a19afa4a350033059856c71780c9c3cf219e00",
+    "sizeBytes": 69955517,
+    "blobSha1": "89b940334d6bfe38bbf4fa5ed1c918cd88fbbc5c"
+  },
+  "summary": {
+    "questionCount": 23,
+    "explicitOrdinalUidAssociationsMatched": 23,
+    "normalPayloadsPreserved": 23,
+    "difficultyPreserved": 23,
+    "sourceReviewHistoryPreserved": 23,
+    "semanticAfterMatches": 23,
+    "nativePlanMatches": 23,
+    "sourceRequiredFieldParityMatches": 23,
+    "externalAssetCount": 33,
+    "externalAssetHashesMatched": 33,
+    "exactRpmCount": 19,
+    "rpmDebtOrdinals": [
+      2,
+      3,
+      4,
+      16
+    ],
+    "metadataAnnotationChangedCount": 23,
+    "nonBankWindowGlobalsPreserved": true,
+    "discrepancyCount": 0,
+    "preexistingDisplayNumberDifferences": 3
+  },
+  "discrepancies": [],
+  "questions": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_04eec2165bbc177b619ab9ca935330f6fd60a9906437f50a36f56aa18de7c95a",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "subUnitKey",
+        "subUnit",
+        "rpmPrimaryRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "fe14c5458c030627f154d9793d9af33b0d85e7d9102637cb481d43559ae3e691",
+      "protectedValuesSha256After": "fe14c5458c030627f154d9793d9af33b0d85e7d9102637cb481d43559ae3e691",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "level": "하",
+        "problemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+        "templateKey": "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-190-CONSTRUCTION-ORDER-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 작도",
+        "l4": "한 변과 양 끝각 조건"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q001_question-v2.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q1-solution-v2.svg"
+      ]
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "subUnitKey",
+        "subUnit",
+        "rpmPrimaryRecordId",
+        "rpmPrimaryPath",
+        "rpmCrosswalkStatus",
+        "runtimeMaterializationStatus",
+        "crossConceptKeys",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmSemanticStatus",
+        "metaNullReason"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "dc5ae463f66f4b7c2755c63d9e09238fcf35dde4bdacf29bc96e9f002d90086b",
+      "protectedValuesSha256After": "dc5ae463f66f4b7c2755c63d9e09238fcf35dde4bdacf29bc96e9f002d90086b",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "level": "하",
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_INEQUALITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": null,
+      "rpmDebt": true,
+      "rpmPath": null,
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q2-solution.svg"
+      ]
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_bab52ee228bcefba5cba3c3e098437496cea2050c01904e3da3ab63c81581df2",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "subUnitKey",
+        "subUnit",
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "runtimeMaterializationStatus",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmSemanticStatus",
+        "metaNullReason"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "7b3348fd5b6b034d971087e8c19a3a67352f195f0486a17e5d057f8cd0b27e1d",
+      "protectedValuesSha256After": "7b3348fd5b6b034d971087e8c19a3a67352f195f0486a17e5d057f8cd0b27e1d",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "level": "하",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE_AFTER_REPAIR",
+      "rpmRecordId": null,
+      "rpmDebt": true,
+      "rpmPath": null,
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q003_question-v2.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q3-solution-v3.svg"
+      ]
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_347acf016e50757f50f493be205035c52686071e612c8f9ee44312d8f7e5e785",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "runtimeMaterializationStatus",
+        "problemTypeKey",
+        "templateKey",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmSemanticStatus",
+        "metaNullReason"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "f08ab914631f8aafb24eff75937427c6e06fca909f9fab7beac75678e80dcccc",
+      "protectedValuesSha256After": "f08ab914631f8aafb24eff75937427c6e06fca909f9fab7beac75678e80dcccc",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "level": "하",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": null,
+      "rpmDebt": true,
+      "rpmPath": null,
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q004_question-v2.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q4-solution-v3.svg"
+      ]
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_489c87bbd253da2356fd202dd5103c28eccd0de434e4fd6995a7063d92b55575",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "subUnitKey",
+        "subUnit",
+        "rpmPrimaryRecordId",
+        "crossConceptKeys",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "09689b4343d9a28a00eeb6e0433fd09550745cd59d8fc49642825b166c9c9a05",
+      "protectedValuesSha256After": "09689b4343d9a28a00eeb6e0433fd09550745cd59d8fc49642825b166c9c9a05",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "level": "하",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-190-UNIQUENESS-CONSTRUCTION-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 작도",
+        "l4": "한 변과 양 끝각 조건"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q005_question-v2.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q5-solution-v2.svg"
+      ]
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_66b8bd71d68a153b6a7bdb56ff3536201ca5b0b7ca68e82b7a120b47ba8ce55b",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "rpmPrimaryRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "fc638b655ab5f2ad3a387cc9db4b6fe135376046ba4084c3921b733cc7d0dd34",
+      "protectedValuesSha256After": "fc638b655ab5f2ad3a387cc9db4b6fe135376046ba4084c3921b733cc7d0dd34",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "level": "하",
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-167-DIRECT-TABLE-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "정비례",
+        "l4": "정비례 관계식"
+      },
+      "assetPaths": []
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "canonicalBindingStatus",
+        "runtimeMaterializationStatus",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "d6ed028d6f3f1312fb05267c5ef1ab2a89e23009484807f6838a4fef26b46176",
+      "protectedValuesSha256After": "d6ed028d6f3f1312fb05267c5ef1ab2a89e23009484807f6838a4fef26b46176",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "level": "하",
+        "problemTypeKey": "PT_M1_PROPORTION_GRAPH_PROPERTY_JUDGMENT",
+        "templateKey": "TPL_M1_PROPORTION_GRAPH_PROPERTY_JUDGMENT_COMPARISON_WITH_RECTANGLE_AREA",
+        "crossConceptKeys": [
+          "CC_RECTANGLE_AREA"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "REINTERPRETATION",
+        "difficultyBucket": 2
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-170-GRAPH-PROPERTY-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "반비례",
+        "l4": "반비례 그래프"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q7-solution-v3.svg"
+      ]
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_be5c74c260f54fd3283324a100fa4c69a1f876580f99076a1caa364716f6b497",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "canonicalBindingStatus",
+        "runtimeMaterializationStatus",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "e68bbcde421f3add15bda2f53cb82fa2ceefea1f834298bd85c70b421ac719ac",
+      "protectedValuesSha256After": "e68bbcde421f3add15bda2f53cb82fa2ceefea1f834298bd85c70b421ac719ac",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "level": "하",
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
+        "crossConceptKeys": [
+          "CC_QUADRANTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-169-INVERSE-SUBSTITUTION-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "반비례",
+        "l4": "반비례 관계식"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q8-solution-v2.svg"
+      ]
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_a86218e4f1d4036989c499fc2e0a19036ff858458049473da7a544394ca9bcbb",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "subUnitKey",
+        "subUnit",
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "canonicalBindingStatus",
+        "runtimeMaterializationStatus",
+        "problemTypeKey",
+        "templateKey",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "73482edc03fdd4e06c3d4fb02d530b5d2ec88472a36af4d5cea5e3ce3d056327",
+      "protectedValuesSha256After": "73482edc03fdd4e06c3d4fb02d530b5d2ec88472a36af4d5cea5e3ce3d056327",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "level": "하",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-177-TRANSFER-DIRECT-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q009_question-v2.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q9-solution-v3.svg"
+      ]
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "canonicalBindingStatus",
+        "runtimeMaterializationStatus",
+        "problemTypeKey",
+        "templateKey",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "87b2e1e44222f001166202979d418d286b03e6b0386346cfd448b6a6287f78ab",
+      "protectedValuesSha256After": "87b2e1e44222f001166202979d418d286b03e6b0386346cfd448b6a6287f78ab",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "level": "하",
+        "problemTypeKey": "PT_M1_INVERSE_PROPORTION_WORK_APPLICATION",
+        "templateKey": "TPL_M1_INVERSE_PROPORTION_WORK_APPLICATION_REMAINING_WORK_RESOURCE_COUNT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-172-REMAINING-WORK-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석",
+        "l4": "정비례·반비례 활용"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q10-solution.svg"
+      ]
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "subUnitKey",
+        "subUnit",
+        "rpmPrimaryRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "5fcf5757e6f73869cb102ff7fd6335b8efd9ce78c47844e44565e19bcefcae11",
+      "protectedValuesSha256After": "5fcf5757e6f73869cb102ff7fd6335b8efd9ce78c47844e44565e19bcefcae11",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "level": "중",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
+        "crossConceptKeys": [
+          "CC_SEGMENT_MIDPOINT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-192-GENERAL-SIDE-TRANSFER-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "SAS 합동"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q011_question-v2.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q11-solution-v4.svg"
+      ]
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_e0bf633136ca14fc3f3192b62eec9bdffa4227f3153aae3edb2e8d4b3a443532",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "subUnitKey",
+        "subUnit",
+        "rpmPrimaryRecordId",
+        "crossConceptKeys",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "8013783e579f7db6f30eac4542f975c2945b2e553b3623bcc20514baa52621fb",
+      "protectedValuesSha256After": "8013783e579f7db6f30eac4542f975c2945b2e553b3623bcc20514baa52621fb",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "level": "중",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+        "crossConceptKeys": [
+          "CC_PARALLEL_LINE_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-193-CONSTRUCTION-CRITERION-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "ASA 합동"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q012_question-v2.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q12-solution-v5.svg"
+      ]
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_ffce93ef42912eb61d142ffaadaf7bf56869adece6a6ed9beade2e717d08600b",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "subUnitKey",
+        "subUnit",
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "canonicalBindingStatus",
+        "runtimeMaterializationStatus",
+        "problemTypeKey",
+        "templateKey",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "9a8bffec0631c1ce817721e17b7bcfe5a03ab14dde186ad3e1603dd8153fb0e2",
+      "protectedValuesSha256After": "9a8bffec0631c1ce817721e17b7bcfe5a03ab14dde186ad3e1603dd8153fb0e2",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "level": "상",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-177-TRANSFER-BENT-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q013_question-v2.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q13-solution-v3.svg"
+      ]
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_976adc004f55751504e0f92aafd1b6ec3f45c9e42af13b0a2b49c2a9f080ca0c",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "canonicalBindingStatus",
+        "runtimeMaterializationStatus",
+        "problemTypeKey",
+        "templateKey",
+        "conditionKeys",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "f90079f588036ef34bd320f9b9f692a44a37259dd8b45f1ef6bc6a230b668a6e",
+      "protectedValuesSha256After": "f90079f588036ef34bd320f9b9f692a44a37259dd8b45f1ef6bc6a230b668a6e",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "level": "상",
+        "problemTypeKey": "PT_M1_INVERSE_PROPORTION_REGION_POINT_COUNT",
+        "templateKey": "TPL_M1_INVERSE_PROPORTION_REGION_POINT_COUNT_STRICT_BELOW_NATURAL_POINTS",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-172-REGION-NATURAL-POINTS-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석",
+        "l4": "정비례·반비례 활용"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q014_question_v3.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q14-solution-v5.svg"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_da359e1af270778eaba94a76f15ea85954775c38c2df5aee986dc8ca22deba1f",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "subUnitKey",
+        "subUnit",
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "canonicalBindingStatus",
+        "runtimeMaterializationStatus",
+        "crossConceptKeys",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "897aa78564c2c98e6bd40f70b0c01f4346d4a928924750e072d14158436ad468",
+      "protectedValuesSha256After": "897aa78564c2c98e6bd40f70b0c01f4346d4a928924750e072d14158436ad468",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "level": "하",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION",
+        "crossConceptKeys": [
+          "CC_VERTICAL_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-177-ALTERNATE-POSITION-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "평행선과 각",
+        "l4": "동위각·엇각"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q015_question-v2.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q15-solution-v4.svg"
+      ]
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_883588b373d439a971a7895ded9819b72d753b886850f4d6b614a70fe1c94dd6",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "canonicalBindingStatus",
+        "runtimeMaterializationStatus",
+        "crossConceptKeys",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmSemanticStatus",
+        "metaNullReason"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "be38beeeee9200a2607a7ddfc3ff56a7e8db08833658349ab8c10cc803a2f2be",
+      "protectedValuesSha256After": "be38beeeee9200a2607a7ddfc3ff56a7e8db08833658349ab8c10cc803a2f2be",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "level": "중",
+        "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+        "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
+        "crossConceptKeys": [
+          "CC_SPATIAL_POSITION_RELATION",
+          "CC_PARALLEL_LINE_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE_AFTER_META_REPAIR",
+      "rpmRecordId": null,
+      "rpmDebt": true,
+      "rpmPath": null,
+      "assetPaths": []
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_5fc1c99bd44c3aa0d8a579b57b9dc692129f8f7aafa66734154c979f307196f2",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "rpmPrimaryRecordId",
+        "rpmPrimaryPath",
+        "rpmCrosswalkStatus",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "a045651f53fcb20ee20dc473e4cf66dfd5296813646e77ba3fd623944ec78898",
+      "protectedValuesSha256After": "a045651f53fcb20ee20dc473e4cf66dfd5296813646e77ba3fd623944ec78898",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "level": "중",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-224",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값",
+        "l3": "중앙값과 최빈값",
+        "l4": "최빈값"
+      },
+      "assetPaths": []
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_6d302cad46fda4208bcacf6d853e9198738cc18e26c98f8e011bdad9672ef9f3",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "e290fa81703e928d1bbae301f7045679ee2f57dfc11bfcf3e121a884fd61f7bf",
+      "protectedValuesSha256After": "e290fa81703e928d1bbae301f7045679ee2f57dfc11bfcf3e121a884fd61f7bf",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "level": "하",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-223-DEFINITION-AUDIT-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값",
+        "l3": "중앙값과 최빈값",
+        "l4": "중앙값"
+      },
+      "assetPaths": []
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "subUnitKey",
+        "subUnit",
+        "rpmPrimaryRecordId",
+        "rpmPrimaryPath",
+        "rpmCrosswalkStatus",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "d66671f8d100189987f8a1295fc782a2db71505a13b2d62a1bdbbceda5db4d4b",
+      "protectedValuesSha256After": "d66671f8d100189987f8a1295fc782a2db71505a13b2d62a1bdbbceda5db4d4b",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "level": "상",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "crossConceptKeys": [
+          "CC_FREQUENCY_DISTRIBUTION_TABLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-223-MEDIAN-RECONSTRUCTION-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값",
+        "l3": "중앙값과 최빈값",
+        "l4": "중앙값"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q019_stemleaf.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q19-solution-v2.svg"
+      ]
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_3e86de14da10d8992dbc19f6545babb8e7d87c7f9a579cc79ecb29757262426e",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "rpmPrimaryRecordId",
+        "rpmPrimaryPath",
+        "rpmCrosswalkStatus",
+        "crossConceptKeys",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "d506f378500cd12b325b77d6b1f1fad3991a7f83327206aaf040c49838620807",
+      "protectedValuesSha256After": "d506f378500cd12b325b77d6b1f1fad3991a7f83327206aaf040c49838620807",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "level": "중",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "crossConceptKeys": [
+          "CC_PERCENTAGE_CALCULATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-227-STEM-LEAF-CLASS-AUDIT-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "통계",
+        "midUnit": "도수분포표와 상대도수",
+        "l3": "도수분포표",
+        "l4": "계급·도수"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q20-solution.svg"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_9fdaf44f2d5156120df8007115c8393404e618be363a73a3c372357ab0a185fa",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "integrationPattern",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "e6dc8cd5d9fa6a3ee2ef8ab51f02e66d271ca2eeea8c892f2095baa59166346b",
+      "protectedValuesSha256After": "e6dc8cd5d9fa6a3ee2ef8ab51f02e66d271ca2eeea8c892f2095baa59166346b",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "level": "하",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-176-VERTICAL-ANGLE-EQUATION-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "기본 도형",
+        "l3": "각",
+        "l4": "맞꼭지각"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q021_question-v2.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q21-solution-v2.svg"
+      ]
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "rpmPrimaryRecordId",
+        "rpmCrosswalkStatus",
+        "canonicalBindingStatus",
+        "runtimeMaterializationStatus",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "cef1f31b328d7c8196378ccf6c049292dbceef86fa43109fced626585821d9df",
+      "protectedValuesSha256After": "cef1f31b328d7c8196378ccf6c049292dbceef86fa43109fced626585821d9df",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "level": "중",
+        "problemTypeKey": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+        "templateKey": "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION",
+        "crossConceptKeys": [
+          "CC_RATIO_AND_PROPORTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-172-HORIZONTAL-DIVISION-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "l3": "관계 해석",
+        "l4": "정비례·반비례 활용"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q022_question-v2.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q22-solution-v3.svg"
+      ]
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_48d2321fd14aa0bb4e7cca39b2c8699e2dd65c8fd5b21a533f635435552ec03a",
+      "explicitSourceOrdinalUidAligned": true,
+      "changedMetadataFields": [
+        "subUnitKey",
+        "subUnit",
+        "rpmPrimaryRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "tagConfidence",
+        "tagStatus",
+        "primaryMethod",
+        "decisiveStep"
+      ],
+      "normalPayloadPreserved": true,
+      "difficultyPreserved": true,
+      "sourceReviewHistoryPreserved": true,
+      "allNonAllowlistedValuesPreserved": true,
+      "protectedValuesSha256Before": "f62e5275fe60a04f375d369af01f2754989d7ec8e6af52f8a2f79391d6843276",
+      "protectedValuesSha256After": "f62e5275fe60a04f375d369af01f2754989d7ec8e6af52f8a2f79391d6843276",
+      "semanticAfterMatches": true,
+      "nativePlanMatches": true,
+      "sourceRequiredFieldParity": true,
+      "sourceRequiredFieldsPresent": [
+        "standardCourse",
+        "standardUnitKey",
+        "standardUnit",
+        "subUnitKey",
+        "subUnit",
+        "level",
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys",
+        "integrationPattern",
+        "difficultyBucket"
+      ],
+      "expectedRequestSourceFields": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "level": "상",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4
+      },
+      "historicalSourceReviewStatus": "REVIEW2_DONE",
+      "rpmRecordId": "M1-RPM-192-CORRESPONDENCE-20261113",
+      "rpmDebt": false,
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "SAS 합동"
+      },
+      "assetPaths": [
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q023_question-v2.svg",
+        "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q23-solution-v5.svg"
+      ]
+    }
+  ],
+  "externalAssets": [
+    {
+      "ordinal": 1,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q001_question-v2.svg",
+      "expectedSha256": "9829d27f74f87c4b65cd97f907450b63dab3898f7e83520d6d426dec0ceb5939",
+      "actualSha256": "9829d27f74f87c4b65cd97f907450b63dab3898f7e83520d6d426dec0ceb5939",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 1,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q1-solution-v2.svg",
+      "expectedSha256": "ec188e1807f03513dd42621c3912addb5b4a139a05379e205e238b87fbef06e7",
+      "actualSha256": "ec188e1807f03513dd42621c3912addb5b4a139a05379e205e238b87fbef06e7",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 2,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q2-solution.svg",
+      "expectedSha256": "9481170f39224ae0bf82f47a2aba1fc814e10fc4f19ef7a6b252394cc63f1681",
+      "actualSha256": "9481170f39224ae0bf82f47a2aba1fc814e10fc4f19ef7a6b252394cc63f1681",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 3,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q003_question-v2.svg",
+      "expectedSha256": "07ed905ec8b8fbbbacd5ab9c024fab1895a347b86168558818c9bbc13853003a",
+      "actualSha256": "07ed905ec8b8fbbbacd5ab9c024fab1895a347b86168558818c9bbc13853003a",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 3,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q3-solution-v3.svg",
+      "expectedSha256": "bf3241eb64a4476ef5d1ede500cdb524c238f9000af151101fa9acc32857808a",
+      "actualSha256": "bf3241eb64a4476ef5d1ede500cdb524c238f9000af151101fa9acc32857808a",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 4,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q004_question-v2.svg",
+      "expectedSha256": "410aa9e3fd4a3bcc5685e7c1dcd11767cf4a8fc3ad6b9a082aaf0b1a7e79b56c",
+      "actualSha256": "410aa9e3fd4a3bcc5685e7c1dcd11767cf4a8fc3ad6b9a082aaf0b1a7e79b56c",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 4,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q4-solution-v3.svg",
+      "expectedSha256": "807f9a67f10ac778b395e16fd43bb35e872e9a9d5970ede8d5521b4e79e15a23",
+      "actualSha256": "807f9a67f10ac778b395e16fd43bb35e872e9a9d5970ede8d5521b4e79e15a23",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 5,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q005_question-v2.svg",
+      "expectedSha256": "4b27cf42a7c18a2d934301ca09aaff582230f88ffeaca63f17a8ecc1aa29ac13",
+      "actualSha256": "4b27cf42a7c18a2d934301ca09aaff582230f88ffeaca63f17a8ecc1aa29ac13",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 5,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q5-solution-v2.svg",
+      "expectedSha256": "a4a2d78e09fea139b1e767ae52706563ad8ff244e98211672f53bb72f6eff985",
+      "actualSha256": "a4a2d78e09fea139b1e767ae52706563ad8ff244e98211672f53bb72f6eff985",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 7,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q7-solution-v3.svg",
+      "expectedSha256": "b4610b02f91d040204f8b9c64efab59501ace507ddedbb5349211b230b4bab21",
+      "actualSha256": "b4610b02f91d040204f8b9c64efab59501ace507ddedbb5349211b230b4bab21",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 8,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q8-solution-v2.svg",
+      "expectedSha256": "1d526dfb34a133a7dcb72e934d074bcaca5d5324bdd61b45a8973a1f7d040aaf",
+      "actualSha256": "1d526dfb34a133a7dcb72e934d074bcaca5d5324bdd61b45a8973a1f7d040aaf",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 9,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q009_question-v2.svg",
+      "expectedSha256": "04ace8000b189a825e22dafde076784dbc2507000b3d79b13a807ea4d4c8412d",
+      "actualSha256": "04ace8000b189a825e22dafde076784dbc2507000b3d79b13a807ea4d4c8412d",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 9,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q9-solution-v3.svg",
+      "expectedSha256": "5293f44f23cb27eb6e0000489f1f2b8a4667f39d2a4b713cc7e088bd9802f5f2",
+      "actualSha256": "5293f44f23cb27eb6e0000489f1f2b8a4667f39d2a4b713cc7e088bd9802f5f2",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 10,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q10-solution.svg",
+      "expectedSha256": "2505554361ae14e1fb55fab0f40f833951be8fd53d3e8fcb154aebe254477dbf",
+      "actualSha256": "2505554361ae14e1fb55fab0f40f833951be8fd53d3e8fcb154aebe254477dbf",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 11,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q011_question-v2.svg",
+      "expectedSha256": "27129c4ebbdb01f7729f1d0c923bd518ea4d11887142078a4093b04c249086ce",
+      "actualSha256": "27129c4ebbdb01f7729f1d0c923bd518ea4d11887142078a4093b04c249086ce",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 11,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q11-solution-v4.svg",
+      "expectedSha256": "3199e80100752224704e0a3b41e1d4d9f54e18dc4f4f81dd287b35108aefa5bd",
+      "actualSha256": "3199e80100752224704e0a3b41e1d4d9f54e18dc4f4f81dd287b35108aefa5bd",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 12,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q012_question-v2.svg",
+      "expectedSha256": "3b5122c589e63fa223fca9cc47e08df070fb6708d91a08d22d06484d2c1b6d5a",
+      "actualSha256": "3b5122c589e63fa223fca9cc47e08df070fb6708d91a08d22d06484d2c1b6d5a",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 12,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q12-solution-v5.svg",
+      "expectedSha256": "d387012139f24a56752f6275df6082e0e4c63f71429992b47aca8c5d9e060d8e",
+      "actualSha256": "d387012139f24a56752f6275df6082e0e4c63f71429992b47aca8c5d9e060d8e",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 13,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q013_question-v2.svg",
+      "expectedSha256": "abbe1970decb7fdadfd28c68969feb2e6438ffc30fe21663edec1396e94aa533",
+      "actualSha256": "abbe1970decb7fdadfd28c68969feb2e6438ffc30fe21663edec1396e94aa533",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 13,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q13-solution-v3.svg",
+      "expectedSha256": "60e536a3961c4b80bed1fc728962e67999c4901dcc0f135a270ee72a9d10dd45",
+      "actualSha256": "60e536a3961c4b80bed1fc728962e67999c4901dcc0f135a270ee72a9d10dd45",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 14,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q014_question_v3.svg",
+      "expectedSha256": "6671a5b05078112ee96e8dbabaca46b9ec7d822d995570f09de589216e2b40fa",
+      "actualSha256": "6671a5b05078112ee96e8dbabaca46b9ec7d822d995570f09de589216e2b40fa",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 14,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q14-solution-v5.svg",
+      "expectedSha256": "a138c1c0ddf3ee4107be0c986b4732f49d9bb5b18e1e122cf0181c618d85d5ce",
+      "actualSha256": "a138c1c0ddf3ee4107be0c986b4732f49d9bb5b18e1e122cf0181c618d85d5ce",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 15,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q015_question-v2.svg",
+      "expectedSha256": "319dc6141747d5c1ffe4308cdb99ec253dc2b6e0d3d4d2021b92cd95449d50a9",
+      "actualSha256": "319dc6141747d5c1ffe4308cdb99ec253dc2b6e0d3d4d2021b92cd95449d50a9",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 15,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q15-solution-v4.svg",
+      "expectedSha256": "ec611036c005706dd8d27746fc7c2543882725ec3d7818dd0b4bb611a9276b04",
+      "actualSha256": "ec611036c005706dd8d27746fc7c2543882725ec3d7818dd0b4bb611a9276b04",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 19,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q019_stemleaf.svg",
+      "expectedSha256": "5e6d7210f127ba0b48b3be749bbae98583f36cd284d811895de286c2c57abd7c",
+      "actualSha256": "5e6d7210f127ba0b48b3be749bbae98583f36cd284d811895de286c2c57abd7c",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 19,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q19-solution-v2.svg",
+      "expectedSha256": "1ee1dd887ba6efd2d0bc4e54c746e03604d7f96871e86795e813837f347bda6c",
+      "actualSha256": "1ee1dd887ba6efd2d0bc4e54c746e03604d7f96871e86795e813837f347bda6c",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 20,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q20-solution.svg",
+      "expectedSha256": "93d1ec9c39b724406af9d2dc98524b46a38fed3c989bf4af3730813fd05c326f",
+      "actualSha256": "93d1ec9c39b724406af9d2dc98524b46a38fed3c989bf4af3730813fd05c326f",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 21,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q021_question-v2.svg",
+      "expectedSha256": "7ebc353f309fa031aec1f2e77349ddd89a57e8c285aaa313d39200ab1f2bee2d",
+      "actualSha256": "7ebc353f309fa031aec1f2e77349ddd89a57e8c285aaa313d39200ab1f2bee2d",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 21,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q21-solution-v2.svg",
+      "expectedSha256": "5009f12236ece074a347640c76658958c626fde405504c61799d51b3c1aca4ce",
+      "actualSha256": "5009f12236ece074a347640c76658958c626fde405504c61799d51b3c1aca4ce",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 22,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q022_question-v2.svg",
+      "expectedSha256": "8df0f15a7c37d9bca4ea42eb9c43b459f426c17d185f0c3f1e667cba6b242719",
+      "actualSha256": "8df0f15a7c37d9bca4ea42eb9c43b459f426c17d185f0c3f1e667cba6b242719",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 22,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q22-solution-v3.svg",
+      "expectedSha256": "d4fcd2eb64bbd98e5c24a1db23f4a7c4eaeec273d8f2b92da541249fbfcf6846",
+      "actualSha256": "d4fcd2eb64bbd98e5c24a1db23f4a7c4eaeec273d8f2b92da541249fbfcf6846",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 23,
+      "role": "question",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q023_question-v2.svg",
+      "expectedSha256": "47288ce5fd80c00d7d4fe1b430a9481ad2b26dfe6b20bf1b06f8d04912c41257",
+      "actualSha256": "47288ce5fd80c00d7d4fe1b430a9481ad2b26dfe6b20bf1b06f8d04912c41257",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    },
+    {
+      "ordinal": 23,
+      "role": "solution",
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q23-solution-v5.svg",
+      "expectedSha256": "2b7c02011d0f494926b6e5d4128868d0684dda30af44d8b4baf81c63205f60ff",
+      "actualSha256": "2b7c02011d0f494926b6e5d4128868d0684dda30af44d8b4baf81c63205f60ff",
+      "matchesFrozenSource": true,
+      "candidateOrdinalRoleReferenceMatches": true
+    }
+  ],
+  "sourceRequiredFieldContract": {
+    "authorityPath": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+    "authoritySha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1",
+    "selectors": [
+      "sourceFields",
+      "source/approved metadata parity"
+    ],
+    "fields": [
+      "standardCourse",
+      "standardUnitKey",
+      "standardUnit",
+      "subUnitKey",
+      "subUnit",
+      "level",
+      "L3",
+      "L4",
+      "problemTypeKey",
+      "templateKey",
+      "crossConceptKeys",
+      "conditionKeys",
+      "integrationPattern",
+      "difficultyBucket"
+    ],
+    "expectedValuesAreRequestRequirementsOnly": true,
+    "formalRequestExistsOrWasExecuted": false,
+    "note": "Every source-present required field must match eventual patch.after plus preserved metadata. The per-question expectedRequestSourceFields are requirements for the future request, not an executed request or generated registration proof.",
+    "preserveCurrentSourceMetadataRecommended": true,
+    "additionalCatalogParityRequirements": [
+      "Preserve source difficultyConfidence, difficultyBoundaryFlag and legacyLevelCompatibility when present; the builder can copy all allowed source metadata with preserveCurrentSourceMetadata:true.",
+      "Keep historical source reviewStatus in source; the existing FINAL_QA/REVIEW2 sourceReviewStatus mechanism separates it from metadata approval.",
+      "Source tagStatus reviewed_pass and tagConfidence approved_final_qa are the intended FINAL_QA metadata annotations; verify their actual registered values in the final consumer."
+    ]
+  },
+  "reviewAnnotationBoundary": {
+    "sourceReviewStatusPreserved": true,
+    "sourceReviewStatusHandlingEvidence": [
+      {
+        "path": "archive/tools/build-archive2-catalog.mjs",
+        "selector": "sourceReviewStatus projection for exam-final_qa/review2-v2 metadata revisions"
+      },
+      {
+        "path": "archive/archive2-canonical.js",
+        "selector": "FINAL_QA/REVIEW2 exact assignment preserves historical sourceReviewStatus and removes reviewStatus-only metadata conflict"
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+        "selector": "usable-meta lane reviewStatus-only conflict handling"
+      }
+    ],
+    "tagStatusAndConfidencePurpose": "Align source metadata review annotations with the intended official FINAL_QA metadata lane. These do not assert fresh solution/math QA."
+  },
+  "pendingOperationalGates": [
+    "The native definitions, exact bridges and Q6/Q8 course spelling dependency must be formally applied through the authorized path before claiming usable native metadata.",
+    "Refresh request inputs against actual corrected main and use this candidate source SHA/blob.",
+    "Build the eventual official request with exact per-ordinal UID/source fingerprints, source-required values, final crosswalk hashes and explicit RPM debt/parent-only references.",
+    "Run the isolated official 23-question candidate consumer preflight, then PR/CI/main writer and actual final Consumer verification."
+  ],
+  "executionBoundary": {
+    "candidateOnly": true,
+    "sourceApplied": false,
+    "canonicalOrRegistrationApplied": false,
+    "mathQaPerformed": false,
+    "fullR1R2R3Rerun": false,
+    "semanticRereadPerformed": false,
+    "normalDataChanges": false,
+    "gitOrApiMutation": false,
+    "onlyWrittenFile": ".tmp/m1-meta-review/02-wangun-source-candidate-independent-review.json",
+    "sourceParsing": "Node VM, preserving and accepting trailing-comma JavaScript style",
+    "objectPreservationScope": "All non-allowlisted parsed fields compared with property-presence checks; no claim of byte-identical whole JS after metadata changes."
+  },
+  "observations": [
+    {
+      "code": "PREEXISTING_DISPLAY_LABEL_DIFFERS_FROM_LEGACY_IDENTITY_NUMBER",
+      "severity": "NONBLOCKING_EXPECTED_REPRESENTATION",
+      "ordinals": [
+        21,
+        22,
+        23
+      ],
+      "sourceAndCandidateDisplayLabels": [
+        "서답형1",
+        "서답형2",
+        "서답형3"
+      ],
+      "metadataAndIdentityNumbers": [
+        21,
+        22,
+        23
+      ],
+      "sourceOrdinals": [
+        21,
+        22,
+        23
+      ],
+      "sourceDisplayLabelsPreserved": true,
+      "explicitOrdinalUidAlignmentPassed": true,
+      "explanation": "The first static comparison additionally required display-number equality with the legacy identity number. Inspection of the actual source and v2 contract showed that this is not a required identity invariant: v2 joins by sourceOrdinal and UID and sets runtime sourceQuestionNo from the preserved source display label. This is not a candidate discrepancy and no source/identity edit is warranted.",
+      "codeEvidence": [
+        {
+          "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+          "selectors": [
+            "UID/source ordinal mismatch check at 1919",
+            "runtime sourceQuestionNo and sourceIdentity construction at 2135"
+          ],
+          "sha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/checkpoint-tools/build-reviewed-exam-v2-request.mjs",
+          "selectors": [
+            "byOrdinal and explicit projection sourceOrdinal join",
+            "UID/ordinal identity mismatch check"
+          ],
+          "sha256": "13870d8efc334b693ef057e33ffa49ee31eda522da41475067444dc250aa8b9c"
+        }
+      ]
+    }
+  ]
+}

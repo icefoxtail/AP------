@@ -3,6 +3,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {composeConstructionCandidate} from '../production/construction-candidate-svg-v1.mjs';
+import {assetIdentity} from '../production/contracts.mjs';
 import {pythonWorker} from '../production/worker.mjs';
 import {renderPlan} from '../production/render-plan.mjs';
 
@@ -109,4 +112,38 @@ test('a domain from -pi/2 to 3pi/2 with a vertical line draws both end dots, the
   const svg=fs.readFileSync(path.join(out,'figure-solution.svg'),'utf8');
   assert.equal((svg.match(/id="interval-endpoint-(start|end)"/g)||[]).length,2);
   assert.ok(/id="line-v"[^>]*stroke="#b8325f"/.test(svg));assert.ok(/id="line-h"[^>]*stroke="#1f5fa8"/.test(svg));
+});
+
+test('Q11 pi window draws only declared ticks, retains the curve crop and audits the final SVG',async()=>{
+  const graphPlan={family:'trigonometric',function:'COS',coefficients:['-2','2','1'],phasePi:'0',
+    sourceDomain:{kind:'ALL_REALS'},displayWindowPi:['-1/4','19/12'],axisTickPi:true,
+    axisTickValues:{x:['1/2','1','3/2'],y:['-1','3']},displayGuides:{x:['1/2','1','3/2'],y:['-1','3']},showOriginLabel:true};
+  const framed=await frame(graphPlan);
+  assert.equal(framed.status,'OK',JSON.stringify(framed.result));
+  const frozen=framed.result.graphPlan;
+  const model=await pythonWorker({action:'graph',graphPlan:frozen});
+  assert.equal(model.status,'OK',JSON.stringify(model.result));
+  let transform;
+  const worker=async(payload,options)=>{
+    const reply=await pythonWorker(payload,options);
+    if(payload.action==='build'&&reply.status==='OK'){
+      const {aspectPolicy,...rest}=reply.result.witness.coordinateModel;
+      transform={...rest,displayScale:1};
+    }
+    return reply;
+  };
+  const composed=await composeConstructionCandidate({
+    plan:{capability:'trigonometric-spike-v1',caption:'삼각함수 그래프의 일부',graphPlan:frozen},
+    model:model.result,identity:assetIdentity('25_매산고_1학기_중간_고2_대수|11','PROBLEM_VISUAL','image'),
+    typographyPolicy:{schemaVersion:'REQUESTED_PROFILE_TYPOGRAPHY_v1',baseFontPx:27.7,displayScale:.4,fontFloorCssPx:11},worker,
+  });
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.doesNotMatch(composed.svg,/id="(?:period-label|interval-start-label|interval-end-label|formula)"|data-role="interval-endpoint"/);
+  assert.equal([...composed.svg.matchAll(/data-label-kind="TICK_LABEL"/g)].length,5);
+  assert.equal([...composed.svg.matchAll(/data-role="guide"/g)].length,5);
+  const observer=fileURLToPath(new URL('../production/graph-observer-worker.py',import.meta.url));
+  const wrongLabel=composed.svg.replace('data-tick-display-value="3π/2"','data-tick-display-value="π/2"');
+  assert.notEqual(wrongLabel,composed.svg);
+  const response=await pythonWorker({action:'graphAudit',graphPlan:frozen,svg:wrongLabel,transform},{script:observer});
+  assert.ok(response.result.errors.includes('TRIG_DISPLAY_TICK_TEXT_MISMATCH:x:3/2'),JSON.stringify(response.result));
 });

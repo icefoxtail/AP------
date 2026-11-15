@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "m1-review-pr-ci-observation-v1",
+  "observedAt": "2026-11-13T12:57:13.852Z",
+  "pr": {
+    "number": 1961,
+    "url": "https://github.com/icefoxtail/AP------/pull/1961",
+    "state": "open",
+    "merged": false,
+    "mergeable": true,
+    "headSha": "64650d1c2e34b49a0779769d8df502eb853ff693",
+    "baseSha": "d7c468679b7877bba82e63e3b3f9f5dcb8a1363c"
+  },
+  "result": "ALL_OBSERVED_PR_WORKFLOWS_SUCCESS",
+  "workflowCount": 3,
+  "jobCount": 5,
+  "workflows": [
+    {
+      "id": 43427659002,
+      "name": "Problem Bank Shared Meta",
+      "path": ".github/workflows/problem-bank-meta.yml",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43427659002",
+      "headSha": "64650d1c2e34b49a0779769d8df502eb853ff693",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-13T12:43:59Z",
+      "updatedAt": "2026-11-13T12:45:19Z",
+      "jobs": [
+        {
+          "id": 131892977158,
+          "name": "shared-meta",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43427658981,
+      "name": "Archive2 Runtime Guard",
+      "path": ".github/workflows/archive2-runtime-guard.yml",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43427658981",
+      "headSha": "64650d1c2e34b49a0779769d8df502eb853ff693",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-13T12:43:59Z",
+      "updatedAt": "2026-11-13T12:50:15Z",
+      "jobs": [
+        {
+          "id": 131892976669,
+          "name": "Archive2 runtime contract",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 131892977294,
+          "name": "Archive2 50-question solution Chrome",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 43427659052,
+      "name": "CI",
+      "path": ".github/workflows/ci.yml",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43427659052",
+      "headSha": "64650d1c2e34b49a0779769d8df502eb853ff693",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-13T12:43:59Z",
+      "updatedAt": "2026-11-13T12:56:26Z",
+      "jobs": [
+        {
+          "id": 131892977435,
+          "name": "plan",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 131893028819,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "ciTestSelectedSteps": [
+    {
+      "number": 11,
+      "name": "Prepare and verify PR registration data once",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "number": 19,
+      "name": "Run tests",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "operationalRegistration": {
+    "status": "NOT_EVALUATED_BY_THIS_PR_CI_OBSERVATION",
+    "completedExams": 0,
+    "reason": "Main single-writer request receipt and exact consumer validation remain separate post-merge gates."
+  },
+  "observationActions": {
+    "readOnlyGithub": true,
+    "retryDispatched": false,
+    "writerInvoked": false,
+    "merged": false,
+    "commentsPosted": false,
+    "trackedFilesEdited": false
+  }
+}

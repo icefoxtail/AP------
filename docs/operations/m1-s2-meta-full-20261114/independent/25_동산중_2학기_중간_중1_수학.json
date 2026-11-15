@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "m1-s2-independent-sample-review-v1",
+  "reviewer": "meta-a",
+  "author": "meta-c",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
+  "candidateSourceBlob": "a984b1302f3595b09284378987a3127d14e2a52a",
+  "candidateSourceRawSha256": "0b5eb488096c46fe55271cfb34c06affa6cf2f5aafd3ac744d669d4047d3aa93",
+  "raw4slotSha256": "e844fa29af1e2d8c2444b62154fcbbf939adf9d96c40e5f84cd8b7a078ce887b",
+  "sampled": [
+    8,
+    9,
+    19
+  ],
+  "status": "PASS_THREE_SAMPLES_AFTER_MINOR_CORRECTIONS",
+  "directReads": [
+    "current candidate content/choices/solution for each sample",
+    "current ACTIVE PT/TPL full definitions, aliases, supporting UIDs",
+    "author raw4slot/review/proposals",
+    "current RPM paths and exact-binding conditions"
+  ],
+  "items": [
+    {
+      "ordinal": 8,
+      "verdict": "ACCEPTED",
+      "meaning": "구간 전체에서 기준 수의 소인수 배수를 제외하여 서로소 개수를 센다. PRIME_FACTORIZATION보다 GCD_LCM 부모가 정확하고 2022 binding 부채와 RPM leaf 공백은 실제 미판정과 분리되어 있다.",
+      "native": "EXISTING_PT_TEMPLATE_REUSE_CORRECT",
+      "difficulty": "중/2 유지",
+      "slotCorrections": [
+        {
+          "operation": "ADD",
+          "slot": "goal",
+          "term": "서로소",
+          "src": "stem",
+          "quote": "25$와 서로소인 자연수",
+          "reason": "개수의 대상인 서로소 수를 goal에도 명시한다."
+        }
+      ],
+      "priorVerdict": "ACCEPT_WITH_MINOR_GOAL_COMPLETION",
+      "correctionsReadback": "All requested terms and exact quotes directly verified in revised raw4slot"
+    },
+    {
+      "ordinal": 9,
+      "verdict": "ACCEPTED",
+      "meaning": "최소·최대 소인수 지수 제한을 동시에 만족하는 세 번째 수를 열거하고 주어진 수와의 중복을 제외한다. 기존 PT가 맞으며 THIRD_CANDIDATE의 문장정의는 인수쌍·자릿수 예시라 정비가 필요하다.",
+      "native": "현재 alias TPL_ENUMERATE_ALL_VALUES_FROM_GCD_LCM_EXPONENTS 및 지원UID가 이 문항을 포함하므로 기존 정의 정규화 우선 제안에 동의. 2022 GCD_LCM exact binding 결손도 정확히 분리.",
+      "rpm": "M1-RPM-124 나누어떨어짐 조건은 미지수가 공약수의 배수·공배수의 약수여야 한다는 의미에 대응.",
+      "fourSlot": "PASS",
+      "condition": "서로 다른 일반 수의 제외를 DISTINCT_DIGITS/POINTS로 근사하지 않고 신규 일반 조건 제안으로 분리한 판단에 동의.",
+      "difficulty": "상/4 보존; 제한을 교차해 지수 조합을 열거하고 중복을 제거하는 선택 부담 있음.",
+      "priorVerdict": "ACCEPT_WITH_DOCUMENTED_DEFINITION_AND_BINDING_DEBT"
+    },
+    {
+      "ordinal": 19,
+      "verdict": "ACCEPTED",
+      "meaning": "부호 규칙과 분수의 역수 변환으로 각 계산의 참·거짓을 판단한다. NONE 변경 및 사칙연산 method 사용 모두 타당(계산 자체가 목표).",
+      "native": "PT/TPL 이름·alias FIND_INCORRECT_RATIONAL_MULTIPLICATION_DIVISION와 지원UID는 정확히 이 문항을 포함하지만 두 definition 문장은 공유 인수의 소수 계산으로 좁다. key 유지하면서 정의 정비 proposal을 추가해야 한다.",
+      "difficulty": "중/2 유지",
+      "slotCorrections": [
+        {
+          "operation": "ADD",
+          "slot": "given",
+          "term": "유리수",
+          "src": "solution",
+          "quote": "분수로 나눌 때",
+          "reason": "generic 연산보다 수학적 대상을 구체화한다."
+        },
+        {
+          "operation": "ADD",
+          "slot": "goal",
+          "term": "연산",
+          "src": "stem",
+          "quote": "두 수의 곱셈과 나눗셈의 결과",
+          "reason": "판정의 대상인 유리수 계산을 드러낸다."
+        }
+      ],
+      "definitionProposal": {
+        "kind": "ACTIVE_DEFINITION_GENERALIZATION",
+        "parentProblemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT",
+        "problemTypeDefinition": "정수와 유리수의 연산 규칙과 계산 순서를 이용하여 식의 값을 계산하거나 주어진 계산 결과의 옳고 그름을 판정한다.",
+        "templateDefinition": "정수·유리수의 곱셈과 나눗셈에서 부호와 역수를 적용하여 값을 계산하거나 계산 결과를 검증한다.",
+        "distinction": "기존 등록 alias·지원 문항의 폭을 반영하는 정의 정비이며 새 PT/TPL 생성을 요구하지 않음."
+      },
+      "priorVerdict": "ACCEPT_WITH_MINOR_TARGET_AND_DEFINITION_DEBT_CORRECTION",
+      "correctionsReadback": "All requested terms and exact quotes directly verified in revised raw4slot"
+    }
+  ],
+  "requiredFigures": "세 표본 모두 본문에 그림 없음",
+  "sourceModified": false,
+  "mathFullR1R2Performed": false,
+  "authorReviewSha256AtReadback": "1c46fcecfa5828d0eb2b603a98df3df9690f051c748a440c63dce9276afa3772",
+  "revision": 3,
+  "finalReadback": {
+    "sourceBytesUnchanged": true,
+    "Q8": "goal 서로소 with exact stem quote verified",
+    "Q19": "given 유리수, goal 연산 exact quotes verified; DEFINITION_NORMALIZATION_REUSE proposal for existing PT/TPL directly read",
+    "unresolvedSampleDefects": 0
+  },
+  "authorReviewSha256": "14a48285b00df37168bf6199670a2ccb3dadfd24606de9dfb4db5d18934c0f10",
+  "compactSha256": "9483c7f1bf09fce60b1a4bace5f0fc5df547f6ff5aad80edd42c8e79314e17db",
+  "technicalReadbacks": [
+    {
+      "contract": "4slot §10 candidate parent same slot",
+      "beforeBinding": {
+        "candidateSourceBlob": "a984b1302f3595b09284378987a3127d14e2a52a",
+        "candidateSourceRawSha256": "0b5eb488096c46fe55271cfb34c06affa6cf2f5aafd3ac744d669d4047d3aa93",
+        "raw4slotSha256": "57fe4d9cd78cfc53f6bdfabd13d7901028feaa7ff5c4d4e167b0e564266db1fa",
+        "authorReviewSha256": null
+      },
+      "sourceUnchanged": true,
+      "semanticConclusionsRetained": true,
+      "changesDirectlyVerified": [
+        {
+          "exam": "25_동산중_2학기_중간_중1_수학",
+          "ordinal": 23,
+          "slot": "method",
+          "candidate": "역연산",
+          "parent": "연산",
+          "parentDictionaryId": 33,
+          "src": "solution",
+          "quote": "잘못 계산한 식을 먼저 세워 어떤 수를 구한"
+        }
+      ],
+      "status": "ACCEPTED"
+    }
+  ]
+}

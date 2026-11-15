@@ -1,0 +1,1920 @@
+{
+  "schemaVersion": "1.0",
+  "status": "READ_ONLY_SCOPE_AUDIT_NO_REGISTRATION_EXECUTED",
+  "owner": "/root/exam_reviewer",
+  "createdAt": "2026-11-13T20:35:12.604533+00:00",
+  "baselineMain": "bf35b7e13417b033ee167117d567a9f0262712d6",
+  "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+  "targetExamUidCount": 24,
+  "candidateChange": {
+    "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+    "collection": "bindings",
+    "indexes": [
+      151,
+      152,
+      153,
+      154,
+      155
+    ],
+    "standardCourse": {
+      "before": "中1 수학",
+      "after": "중1 수학"
+    },
+    "allOtherRowFieldsUnchanged": true,
+    "packScopeExtensionRequested": false
+  },
+  "guardEvidence": {
+    "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+    "approvedPredicate": {
+      "line": 25,
+      "expression": "reviewStatus === reviewed_pass OR metadataStatus startsWith approved_"
+    },
+    "registryPlan": {
+      "lines": [
+        1363,
+        1400
+      ],
+      "existingRowReplacementSupported": true,
+      "strictBeforeRequired": true,
+      "afterMustRetainEveryMatchField": true,
+      "matchWarning": "standardCourse changes, so do not include standardCourse in match; use the verified unique unchanged tuple shown per row."
+    },
+    "lookup": {
+      "lines": [
+        1543,
+        1552
+      ],
+      "tuple": [
+        "curriculum",
+        "standardCourse",
+        "standardUnitKey",
+        "subUnitKey_or_null",
+        "problemTypeKey"
+      ]
+    },
+    "outOfScopeApprovedGuard": {
+      "lines": [
+        1876,
+        1898
+      ],
+      "comparison": "PT/TPL/master/CC/condition definitions plus exact-course binding signature for every approved metadata row outside all 24 target UIDs. Pack scope removal is checked separately."
+    },
+    "resolve": {
+      "lines": [
+        1592,
+        1607
+      ],
+      "exactCourseRequired": true
+    }
+  },
+  "counts": {
+    "metadataRecordsScanned": 28890,
+    "approvedMetadataRecordsScanned": 12320,
+    "beforeExactTupleRows": 0,
+    "afterExactTupleRows": 17,
+    "unionTupleRows": 17,
+    "unionApprovedRows": 17,
+    "targetUnionRows": 16,
+    "outsideApprovedUnionRows": 1,
+    "outsideAnyUnionRows": 1,
+    "samePTMetadataRows": 94,
+    "bindingSupportingDistinctUids": 17,
+    "bindingSupportingOutsideTarget": 1,
+    "runtimeFilesScanned": 17,
+    "runtimeRecordsScanned": 6608,
+    "runtimeRelevantRows": 22,
+    "runtimeRelevantOutsideTarget": 6,
+    "postCorrectionExactBindingCollisions": 0,
+    "runtimeExactTupleRows": 17,
+    "runtimeExactTupleTargetRows": 16,
+    "runtimeExactTupleOutsideTargetRows": 1,
+    "runtimeSamePTDifferentTupleRows": 5
+  },
+  "perBinding": [
+    {
+      "pointer": "/bindings/151",
+      "before": {
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "curriculum": "2022",
+        "standardCourse": "中1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "supportingItemCount": 3,
+        "supportingQuestionUids": [
+          "qid_v1_06868fd215d11b2d3508f0a0921c36298710ad1e73484bccbd627df856d12be3",
+          "qid_v1_d7b96738e9d6598b1b4905d6ccffd342efa81007ff672f4edddc440021608072",
+          "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "supportingItemCount": 3,
+        "supportingQuestionUids": [
+          "qid_v1_06868fd215d11b2d3508f0a0921c36298710ad1e73484bccbd627df856d12be3",
+          "qid_v1_d7b96738e9d6598b1b4905d6ccffd342efa81007ff672f4edddc440021608072",
+          "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "onlyChangedField": "standardCourse",
+      "stableMatchCandidate": {
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "curriculum": "2022",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "ownerPack": "MIDDLE1"
+      },
+      "stableMatchCount": 1,
+      "matchingMetadataCount": 3,
+      "approvedMatchingMetadataCount": 3,
+      "targetOrdinals": [
+        1,
+        2,
+        22
+      ],
+      "outsideApproved": [],
+      "supportingUidsAllInTarget": true
+    },
+    {
+      "pointer": "/bindings/152",
+      "before": {
+        "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+        "curriculum": "2022",
+        "standardCourse": "中1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "supportingItemCount": 2,
+        "supportingQuestionUids": [
+          "qid_v1_bff9adbdf8d75282f6a616ec39c2a5b771cc5f3abe3c7d4618067384f92b4cad",
+          "qid_v1_cc10b4d08c3aa07a1eac39b56c2e9be5ec804ad7ee63be7aae8de63b7b707595"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "supportingItemCount": 2,
+        "supportingQuestionUids": [
+          "qid_v1_bff9adbdf8d75282f6a616ec39c2a5b771cc5f3abe3c7d4618067384f92b4cad",
+          "qid_v1_cc10b4d08c3aa07a1eac39b56c2e9be5ec804ad7ee63be7aae8de63b7b707595"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "onlyChangedField": "standardCourse",
+      "stableMatchCandidate": {
+        "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+        "curriculum": "2022",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "ownerPack": "MIDDLE1"
+      },
+      "stableMatchCount": 1,
+      "matchingMetadataCount": 2,
+      "approvedMatchingMetadataCount": 2,
+      "targetOrdinals": [
+        3,
+        4
+      ],
+      "outsideApproved": [],
+      "supportingUidsAllInTarget": true
+    },
+    {
+      "pointer": "/bindings/153",
+      "before": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "curriculum": "2022",
+        "standardCourse": "中1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "supportingItemCount": 5,
+        "supportingQuestionUids": [
+          "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897",
+          "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+          "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec",
+          "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70",
+          "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "supportingItemCount": 5,
+        "supportingQuestionUids": [
+          "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897",
+          "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+          "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec",
+          "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70",
+          "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "onlyChangedField": "standardCourse",
+      "stableMatchCandidate": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "curriculum": "2022",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "ownerPack": "MIDDLE1"
+      },
+      "stableMatchCount": 1,
+      "matchingMetadataCount": 5,
+      "approvedMatchingMetadataCount": 5,
+      "targetOrdinals": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "outsideApproved": [],
+      "supportingUidsAllInTarget": true
+    },
+    {
+      "pointer": "/bindings/154",
+      "before": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "curriculum": "2022",
+        "standardCourse": "中1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "supportingItemCount": 5,
+        "supportingQuestionUids": [
+          "qid_v1_13e2eac8fb571a990e58082dd8da83a4e8e903655c974e591bcd17cc6a822522",
+          "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2",
+          "qid_v1_63b7882e55688be203b1ad8541fae9d3c18e60e6678a855ea676afdeab51497b",
+          "qid_v1_9670b98fc8cec71dd9d7d31514c4870c73ca1584b14b331ee75fb5560eebf8ac",
+          "qid_v1_d94fa7d473fa39559b5a1313bb6169d669806c4ff8226d1adff023029cbc88eb"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "supportingItemCount": 5,
+        "supportingQuestionUids": [
+          "qid_v1_13e2eac8fb571a990e58082dd8da83a4e8e903655c974e591bcd17cc6a822522",
+          "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2",
+          "qid_v1_63b7882e55688be203b1ad8541fae9d3c18e60e6678a855ea676afdeab51497b",
+          "qid_v1_9670b98fc8cec71dd9d7d31514c4870c73ca1584b14b331ee75fb5560eebf8ac",
+          "qid_v1_d94fa7d473fa39559b5a1313bb6169d669806c4ff8226d1adff023029cbc88eb"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "onlyChangedField": "standardCourse",
+      "stableMatchCandidate": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "curriculum": "2022",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION",
+        "ownerPack": "MIDDLE1"
+      },
+      "stableMatchCount": 1,
+      "matchingMetadataCount": 5,
+      "approvedMatchingMetadataCount": 5,
+      "targetOrdinals": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "outsideApproved": [
+        {
+          "questionUid": "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2",
+          "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 20,
+          "sourceQuestionNo": "20",
+          "sourceFingerprint": "df90031e522b46df8527431fbb04af0a33a2e1ff1b6ae495a1d225ac835e81a5",
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-1",
+          "standardUnitKey": "M1-03",
+          "subUnitKey": "M1-03-LINEAR_EQUATION",
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+          "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+          "reviewStatus": "reviewed_pass",
+          "metadataStatus": "approved_r2e_final",
+          "defaultSelectable": true,
+          "metaFoundationPackId": "MIDDLE1",
+          "metaFoundationPackVersion": "1.0.1",
+          "approvalEvidence": [
+            "archive/data/r2e-input/middle1/evidence/B31/META_REVIEW_LEDGER.json",
+            "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B31/HOLD_META_PATCH_RECEIPT.json"
+          ]
+        }
+      ],
+      "supportingUidsAllInTarget": false
+    },
+    {
+      "pointer": "/bindings/155",
+      "before": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "curriculum": "2022",
+        "standardCourse": "中1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+        "supportingItemCount": 2,
+        "supportingQuestionUids": [
+          "qid_v1_51128c898d31ea8c392a5381789d670bc0a1a7c452182bfb24a4adda563d3449",
+          "qid_v1_a5aa7c134853c9e34bce34ee1690a96d8c74b4f6967d52bc5c87a674ab0f89df"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+        "supportingItemCount": 2,
+        "supportingQuestionUids": [
+          "qid_v1_51128c898d31ea8c392a5381789d670bc0a1a7c452182bfb24a4adda563d3449",
+          "qid_v1_a5aa7c134853c9e34bce34ee1690a96d8c74b4f6967d52bc5c87a674ab0f89df"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1"
+      },
+      "onlyChangedField": "standardCourse",
+      "stableMatchCandidate": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "curriculum": "2022",
+        "standardUnitKey": "M1-03",
+        "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+        "ownerPack": "MIDDLE1"
+      },
+      "stableMatchCount": 1,
+      "matchingMetadataCount": 2,
+      "approvedMatchingMetadataCount": 2,
+      "targetOrdinals": [
+        10,
+        23
+      ],
+      "outsideApproved": [],
+      "supportingUidsAllInTarget": true
+    }
+  ],
+  "matchedMetadata": [
+    {
+      "questionUid": "qid_v1_06868fd215d11b2d3508f0a0921c36298710ad1e73484bccbd627df856d12be3",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2",
+      "sourceFingerprint": "702adbb60027f32954d1f9dcfb2db378d6f150d6fb943179680752116ec68741",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_13e2eac8fb571a990e58082dd8da83a4e8e903655c974e591bcd17cc6a822522",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "sourceFingerprint": "ecf8cd9eb20faf2724bd6c94afbc417bd6080240c3420c1ec717b592e96b82da",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": "6",
+      "sourceFingerprint": "1bf1840b466bb9916b94860978ff4d5a3abab9db0617447ce207f364bacfedbb",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_51128c898d31ea8c392a5381789d670bc0a1a7c452182bfb24a4adda563d3449",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "sourceFingerprint": "8dc1defbd7aa78a602aa60f94ad4c8582d642159b8cebca32ab567e41eb3130b",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2",
+      "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "df90031e522b46df8527431fbb04af0a33a2e1ff1b6ae495a1d225ac835e81a5",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B31/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B31/HOLD_META_PATCH_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_63b7882e55688be203b1ad8541fae9d3c18e60e6678a855ea676afdeab51497b",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceFingerprint": "c74b82decfab61ad0623d1b4e41d605db2de241b36d26036c579c39df440197f",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "sourceFingerprint": "b32dde780be2966350026abb17750d1ed43a6f8f965fff52f2013d94d1e189a5",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9670b98fc8cec71dd9d7d31514c4870c73ca1584b14b331ee75fb5560eebf8ac",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceFingerprint": "6c167046269c82a034e35d7e8e47be66f8f66978c8976b97764bc8fbbfc6e285",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "sourceFingerprint": "d72e5b6c16b33133e1a7d05658f700acd582d5289abaf93d523a8938be177fd8",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a5aa7c134853c9e34bce34ee1690a96d8c74b4f6967d52bc5c87a674ab0f89df",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": "23",
+      "sourceFingerprint": "858c0625cf71dd4a5adff95573939fe4aedd3119d718a062167eaec30197b205",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_RATE",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bff9adbdf8d75282f6a616ec39c2a5b771cc5f3abe3c7d4618067384f92b4cad",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "sourceFingerprint": "df79f72392c807bb1a4512acaa4985583a733a60ef0c52f5360a08feb7b7a7da",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_cc10b4d08c3aa07a1eac39b56c2e9be5ec804ad7ee63be7aae8de63b7b707595",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": "3",
+      "sourceFingerprint": "62aa53e908f20dc736716add9f5c072e6fd265b6f75f43fca9031b2024dcacc8",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d7b96738e9d6598b1b4905d6ccffd342efa81007ff672f4edddc440021608072",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceFingerprint": "cf9b10b97c2177e6f9e5673a0544d7267a78ec15048227b3b6c7a841326cce60",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d94fa7d473fa39559b5a1313bb6169d669806c4ff8226d1adff023029cbc88eb",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceFingerprint": "03f1f3903d247b654edff7d840ffcfd01a8721f7612a29d6e50520521f3cdf49",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "22",
+      "sourceFingerprint": "3abd1ea9fa214a0f450f54e4efb0e046afc40d3463459480ef51bffdc89bceff",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceFingerprint": "cc872351ff267308db5b09c99e294ff273fb575bb1ba7b95e55e0fcbf05b3fad",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "sourceFingerprint": "e07401ec40aa3c58aac41c61a453aecd7c062f4fac3043cfa0619de235a7ab84",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_TERM_COEFFICIENT_AUDIT",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B26/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B26/R2E_META_RECEIPT.json"
+      ]
+    }
+  ],
+  "outsideApproved": [
+    {
+      "questionUid": "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2",
+      "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "df90031e522b46df8527431fbb04af0a33a2e1ff1b6ae495a1d225ac835e81a5",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1",
+      "approvalEvidence": [
+        "archive/data/r2e-input/middle1/evidence/B31/META_REVIEW_LEDGER.json",
+        "R2E_STATE_BRANCH:m1-b01-b31-r2e-20260927/B31/HOLD_META_PATCH_RECEIPT.json"
+      ]
+    }
+  ],
+  "runtimeRelevantRows": [
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_06868fd215d11b2d3508f0a0921c36298710ad1e73484bccbd627df856d12be3",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2",
+      "sourceFingerprint": "702adbb60027f32954d1f9dcfb2db378d6f150d6fb943179680752116ec68741",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_13e2eac8fb571a990e58082dd8da83a4e8e903655c974e591bcd17cc6a822522",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "sourceFingerprint": "ecf8cd9eb20faf2724bd6c94afbc417bd6080240c3420c1ec717b592e96b82da",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_30c291c6598021a7dd7fd9bb63dfeefd5c794ff5906efe79314df3e06319d3b6",
+      "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 19,
+      "sourceFingerprint": "95a69266218d36b22c5d449cf8758e859af9c195706fc43c5b0fe2d23045be8d",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
+      "reviewStatus": "reviewed_hold",
+      "defaultSelectable": true,
+      "runtimeSelectable": false,
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": "6",
+      "sourceFingerprint": "1bf1840b466bb9916b94860978ff4d5a3abab9db0617447ce207f364bacfedbb",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_51128c898d31ea8c392a5381789d670bc0a1a7c452182bfb24a4adda563d3449",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "sourceFingerprint": "8dc1defbd7aa78a602aa60f94ad4c8582d642159b8cebca32ab567e41eb3130b",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_523e6ed7bac116437727b292456c3a9ce638332418cf7e4c97f93fab031e81c6",
+      "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 19,
+      "sourceFingerprint": "4f321f9866c20d88547c43d3e31a26bf476d3f9e3663fc8cf12ab11001f09c0c",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_QUOTIENT_EQUIVALENCE",
+      "reviewStatus": "reviewed_hold",
+      "defaultSelectable": true,
+      "runtimeSelectable": false,
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2",
+      "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "df90031e522b46df8527431fbb04af0a33a2e1ff1b6ae495a1d225ac835e81a5",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_63b7882e55688be203b1ad8541fae9d3c18e60e6678a855ea676afdeab51497b",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceFingerprint": "c74b82decfab61ad0623d1b4e41d605db2de241b36d26036c579c39df440197f",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+      "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 16,
+      "sourceFingerprint": "d3bdde430ede77550fa7062967d38844f7a5c225041a0ad81cf0fa6ef2f40935",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_SYMBOLIC_VALIDITY",
+      "reviewStatus": "reviewed_hold",
+      "defaultSelectable": true,
+      "runtimeSelectable": false,
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "sourceFingerprint": "b32dde780be2966350026abb17750d1ed43a6f8f965fff52f2013d94d1e189a5",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_9670b98fc8cec71dd9d7d31514c4870c73ca1584b14b331ee75fb5560eebf8ac",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceFingerprint": "6c167046269c82a034e35d7e8e47be66f8f66978c8976b97764bc8fbbfc6e285",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_96b8eb92791789902a541107aae7a2f503b2e2340b0faeeed63c6d2de1876e23",
+      "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 18,
+      "sourceFingerprint": "f3d6282ff81493ff7c26695273bd5049022e22b42151f04642a638282edf1f06",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+      "reviewStatus": "reviewed_hold",
+      "defaultSelectable": true,
+      "runtimeSelectable": false,
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "sourceFingerprint": "d72e5b6c16b33133e1a7d05658f700acd582d5289abaf93d523a8938be177fd8",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_a5aa7c134853c9e34bce34ee1690a96d8c74b4f6967d52bc5c87a674ab0f89df",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": "23",
+      "sourceFingerprint": "858c0625cf71dd4a5adff95573939fe4aedd3119d718a062167eaec30197b205",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_RATE",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_bff9adbdf8d75282f6a616ec39c2a5b771cc5f3abe3c7d4618067384f92b4cad",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "sourceFingerprint": "df79f72392c807bb1a4512acaa4985583a733a60ef0c52f5360a08feb7b7a7da",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_cc10b4d08c3aa07a1eac39b56c2e9be5ec804ad7ee63be7aae8de63b7b707595",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": "3",
+      "sourceFingerprint": "62aa53e908f20dc736716add9f5c072e6fd265b6f75f43fca9031b2024dcacc8",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_d7b96738e9d6598b1b4905d6ccffd342efa81007ff672f4edddc440021608072",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceFingerprint": "cf9b10b97c2177e6f9e5673a0544d7267a78ec15048227b3b6c7a841326cce60",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_d94fa7d473fa39559b5a1313bb6169d669806c4ff8226d1adff023029cbc88eb",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceFingerprint": "03f1f3903d247b654edff7d840ffcfd01a8721f7612a29d6e50520521f3cdf49",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "22",
+      "sourceFingerprint": "3abd1ea9fa214a0f450f54e4efb0e046afc40d3463459480ef51bffdc89bceff",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceFingerprint": "cc872351ff267308db5b09c99e294ff273fb575bb1ba7b95e55e0fcbf05b3fad",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525",
+      "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "sourceFingerprint": "e07401ec40aa3c58aac41c61a453aecd7c062f4fac3043cfa0619de235a7ab84",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_TERM_COEFFICIENT_AUDIT",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc",
+      "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 18,
+      "sourceFingerprint": "c6909778d99f79f119771ad730c8d50990e41df72a20f5a0463da4ff4096ce0c",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+      "reviewStatus": "reviewed_hold",
+      "defaultSelectable": true,
+      "runtimeSelectable": false,
+      "metaFoundationPackVersion": "1.0.1"
+    }
+  ],
+  "runtimeRelevantOutsideTarget": [
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_30c291c6598021a7dd7fd9bb63dfeefd5c794ff5906efe79314df3e06319d3b6",
+      "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 19,
+      "sourceFingerprint": "95a69266218d36b22c5d449cf8758e859af9c195706fc43c5b0fe2d23045be8d",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
+      "reviewStatus": "reviewed_hold",
+      "defaultSelectable": true,
+      "runtimeSelectable": false,
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_523e6ed7bac116437727b292456c3a9ce638332418cf7e4c97f93fab031e81c6",
+      "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 19,
+      "sourceFingerprint": "4f321f9866c20d88547c43d3e31a26bf476d3f9e3663fc8cf12ab11001f09c0c",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_QUOTIENT_EQUIVALENCE",
+      "reviewStatus": "reviewed_hold",
+      "defaultSelectable": true,
+      "runtimeSelectable": false,
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2",
+      "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "df90031e522b46df8527431fbb04af0a33a2e1ff1b6ae495a1d225ac835e81a5",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "standardCourse": "중1 수학",
+      "courseKey": "M1-1",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-LINEAR_EQUATION",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_r2e_final",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+      "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 16,
+      "sourceFingerprint": "d3bdde430ede77550fa7062967d38844f7a5c225041a0ad81cf0fa6ef2f40935",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_SYMBOLIC_VALIDITY",
+      "reviewStatus": "reviewed_hold",
+      "defaultSelectable": true,
+      "runtimeSelectable": false,
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_96b8eb92791789902a541107aae7a2f503b2e2340b0faeeed63c6d2de1876e23",
+      "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 18,
+      "sourceFingerprint": "f3d6282ff81493ff7c26695273bd5049022e22b42151f04642a638282edf1f06",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+      "reviewStatus": "reviewed_hold",
+      "defaultSelectable": true,
+      "runtimeSelectable": false,
+      "metaFoundationPackVersion": "1.0.1"
+    },
+    {
+      "runtimeFile": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "runtimePackId": "MIDDLE1",
+      "questionUid": "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc",
+      "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 18,
+      "sourceFingerprint": "c6909778d99f79f119771ad730c8d50990e41df72a20f5a0463da4ff4096ce0c",
+      "curriculum": "2015",
+      "standardUnitKey": "M1-03",
+      "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+      "reviewStatus": "reviewed_hold",
+      "defaultSelectable": true,
+      "runtimeSelectable": false,
+      "metaFoundationPackVersion": "1.0.1"
+    }
+  ],
+  "supportingUidChecks": {
+    "bindingUids": [
+      "qid_v1_06868fd215d11b2d3508f0a0921c36298710ad1e73484bccbd627df856d12be3",
+      "qid_v1_13e2eac8fb571a990e58082dd8da83a4e8e903655c974e591bcd17cc6a822522",
+      "qid_v1_30d4bbedcab88624031547aecaab21f9eb7d53f0a1fd19dbd3bf4d4b6b167897",
+      "qid_v1_51128c898d31ea8c392a5381789d670bc0a1a7c452182bfb24a4adda563d3449",
+      "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2",
+      "qid_v1_63b7882e55688be203b1ad8541fae9d3c18e60e6678a855ea676afdeab51497b",
+      "qid_v1_82b306a8e72f0b42f9a235f304a85cbea85ccdd4d522b0ba8f34872e5e3c82f4",
+      "qid_v1_9670b98fc8cec71dd9d7d31514c4870c73ca1584b14b331ee75fb5560eebf8ac",
+      "qid_v1_a1f47262e984cf2360d5267f3236c4e4437206454a81fa2588c2832ea90e22ec",
+      "qid_v1_a5aa7c134853c9e34bce34ee1690a96d8c74b4f6967d52bc5c87a674ab0f89df",
+      "qid_v1_bff9adbdf8d75282f6a616ec39c2a5b771cc5f3abe3c7d4618067384f92b4cad",
+      "qid_v1_cc10b4d08c3aa07a1eac39b56c2e9be5ec804ad7ee63be7aae8de63b7b707595",
+      "qid_v1_d7b96738e9d6598b1b4905d6ccffd342efa81007ff672f4edddc440021608072",
+      "qid_v1_d94fa7d473fa39559b5a1313bb6169d669806c4ff8226d1adff023029cbc88eb",
+      "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e",
+      "qid_v1_e503bc22c72fb8e6da81af140c795b91d65306212c2cbbc797a1f0c1ff4ccf70",
+      "qid_v1_ed1de40de7e0c8d94aaad317c2a528e2cd235a8712070d20e776d66db7225525"
+    ],
+    "allHaveMetadata": true,
+    "allAreDongsan24": false,
+    "taxonomySupportRows": [
+      {
+        "pointer": "/problemTypes/14",
+        "key": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "supportingCount": 8,
+        "outsideTargetUids": [
+          "qid_v1_30c291c6598021a7dd7fd9bb63dfeefd5c794ff5906efe79314df3e06319d3b6",
+          "qid_v1_523e6ed7bac116437727b292456c3a9ce638332418cf7e4c97f93fab031e81c6",
+          "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+          "qid_v1_96b8eb92791789902a541107aae7a2f503b2e2340b0faeeed63c6d2de1876e23",
+          "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc"
+        ]
+      },
+      {
+        "pointer": "/problemTypes/82",
+        "key": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+        "supportingCount": 2,
+        "outsideTargetUids": []
+      },
+      {
+        "pointer": "/problemTypes/83",
+        "key": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "supportingCount": 5,
+        "outsideTargetUids": []
+      },
+      {
+        "pointer": "/problemTypes/84",
+        "key": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "supportingCount": 5,
+        "outsideTargetUids": [
+          "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2"
+        ]
+      },
+      {
+        "pointer": "/problemTypes/85",
+        "key": "PT_M1_LINEAR_EQUATION_MODELING",
+        "supportingCount": 2,
+        "outsideTargetUids": []
+      },
+      {
+        "pointer": "/templates/17",
+        "key": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
+        "supportingCount": 1,
+        "outsideTargetUids": [
+          "qid_v1_30c291c6598021a7dd7fd9bb63dfeefd5c794ff5906efe79314df3e06319d3b6"
+        ]
+      },
+      {
+        "pointer": "/templates/18",
+        "key": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_QUOTIENT_EQUIVALENCE",
+        "supportingCount": 1,
+        "outsideTargetUids": [
+          "qid_v1_523e6ed7bac116437727b292456c3a9ce638332418cf7e4c97f93fab031e81c6"
+        ]
+      },
+      {
+        "pointer": "/templates/19",
+        "key": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_SYMBOLIC_VALIDITY",
+        "supportingCount": 1,
+        "outsideTargetUids": [
+          "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a"
+        ]
+      },
+      {
+        "pointer": "/templates/20",
+        "key": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+        "supportingCount": 2,
+        "outsideTargetUids": [
+          "qid_v1_96b8eb92791789902a541107aae7a2f503b2e2340b0faeeed63c6d2de1876e23",
+          "qid_v1_f2d73f1a7f05cf6ac999f48101d8022d1c4ca345492e582fd9eaf78f8fda66fc"
+        ]
+      },
+      {
+        "pointer": "/templates/160",
+        "key": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+        "supportingCount": 2,
+        "outsideTargetUids": []
+      },
+      {
+        "pointer": "/templates/161",
+        "key": "TPL_M1_LINEAR_EXPRESSION_TERM_COEFFICIENT_AUDIT",
+        "supportingCount": 1,
+        "outsideTargetUids": []
+      },
+      {
+        "pointer": "/templates/162",
+        "key": "TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS",
+        "supportingCount": 1,
+        "outsideTargetUids": []
+      },
+      {
+        "pointer": "/templates/163",
+        "key": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+        "supportingCount": 2,
+        "outsideTargetUids": []
+      },
+      {
+        "pointer": "/templates/164",
+        "key": "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION",
+        "supportingCount": 1,
+        "outsideTargetUids": []
+      },
+      {
+        "pointer": "/templates/165",
+        "key": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
+        "supportingCount": 1,
+        "outsideTargetUids": []
+      },
+      {
+        "pointer": "/templates/166",
+        "key": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+        "supportingCount": 1,
+        "outsideTargetUids": []
+      },
+      {
+        "pointer": "/templates/167",
+        "key": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+        "supportingCount": 2,
+        "outsideTargetUids": [
+          "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2"
+        ]
+      },
+      {
+        "pointer": "/templates/168",
+        "key": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
+        "supportingCount": 1,
+        "outsideTargetUids": []
+      },
+      {
+        "pointer": "/templates/169",
+        "key": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+        "supportingCount": 1,
+        "outsideTargetUids": []
+      },
+      {
+        "pointer": "/templates/170",
+        "key": "TPL_M1_LINEAR_EQUATION_MODEL_RATE",
+        "supportingCount": 1,
+        "outsideTargetUids": []
+      }
+    ]
+  },
+  "postCorrectionExactBindingCollisions": [],
+  "proofs": [
+    {
+      "path": "archive/data/question_metadata.json",
+      "bytes": 70054587,
+      "sha256": "4842ee51b15b531576395440997eb53ccf5ef499b6680115c6091bd4d60f5d56",
+      "gitBlobSha1": "a7c1a453fb5ecab57af4133b40856633c0b5d0fa",
+      "sameBytesAsMain": true
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "bytes": 102046,
+      "sha256": "53cd70317cb28b8ea06099505a799da62994a9de25caadaa343dce3d9a012fa4",
+      "gitBlobSha1": "1b625131cf7d677b8646378ac0a2f019952360bb",
+      "sameBytesAsMain": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "bytes": 191815,
+      "sha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1",
+      "gitBlobSha1": "2d6f40082bf6f97cfbb93ec853fc39f5028833ff",
+      "sameBytesAsMain": true
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "bytes": 465214,
+      "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+      "gitBlobSha1": "6947b8766655e9d121b26aaa1dfe2c46193585aa",
+      "sameBytesAsMain": true
+    }
+  ],
+  "runtimeScanProofs": [
+    {
+      "path": "archive/data/meta-foundation/runtime/algebra-2022-v1.json",
+      "bytes": 79180,
+      "sha256": "f0815609ab134bc69f86c318032f3be19be33260c372c0554f8ed421d28d298c",
+      "gitBlobSha1": "9d432747c8f7ceae187296a1c105c411461488fe",
+      "sameBytesAsMain": true,
+      "packId": "ALGEBRA_2022",
+      "recordCount": 21,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/derivative-v1.json",
+      "bytes": 938989,
+      "sha256": "eed7219e7991de43d41b74bda71ad0eb6eaa93f4be03a21d7c8ae335c586cc86",
+      "gitBlobSha1": "5f1b68d3680ff031a53c873939f0e198844fa80c",
+      "sameBytesAsMain": true,
+      "packId": "DERIVATIVE",
+      "recordCount": 395,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json",
+      "bytes": 133751,
+      "sha256": "b41f6fbd015af882647a863e8c9d0ffd515f6bb52d78f495226cee262588b2f6",
+      "gitBlobSha1": "744d2a1fc87d88d6b1c9b14ddfbaef5d390bdc93",
+      "sameBytesAsMain": true,
+      "packId": "EXPONENTS_LOGARITHMS",
+      "recordCount": 16,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+      "bytes": 1277556,
+      "sha256": "aef8bbb561544f47e4a3f77a6c0884dfb6c761114960b34ab0ac7a20d7477873",
+      "gitBlobSha1": "8cc13bb74270ce68f119aec69fe89ea6b72d024d",
+      "sameBytesAsMain": true,
+      "packId": "FUNCTIONS_GRAPHS",
+      "recordCount": 544,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+      "bytes": 986922,
+      "sha256": "b4002030ca438d48891291178bc3b844031c6aee7615423a054938b6dbb7733c",
+      "gitBlobSha1": "7ae77769a58ae4b494323ccc0cae82d6e98560bb",
+      "sameBytesAsMain": true,
+      "packId": "GEOMETRY_EQUATIONS",
+      "recordCount": 448,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/geometry-v1.json",
+      "bytes": 450510,
+      "sha256": "086b7af881c888fcd8622fc2fa8c1325e08e646e2dbf23981e7a0cc32fd14959",
+      "gitBlobSha1": "ad8b73867dc4731a840d516bb3de1dd2fdb80a2f",
+      "sameBytesAsMain": true,
+      "packId": "GEOMETRY",
+      "recordCount": 106,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/h1-foundation-v1.json",
+      "bytes": 4245414,
+      "sha256": "e8aa55f44fce8739605e4c2d31d1ea413f14ab917ea447b47807018aaf38c033",
+      "gitBlobSha1": "3a8e84d5030f861669aa271e7f631adecc3cb62e",
+      "sameBytesAsMain": true,
+      "packId": "H1_FOUNDATION",
+      "recordCount": 1284,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/h1-original-source-v1.json",
+      "bytes": 6727222,
+      "sha256": "08d04537134cdb893cebc14ec88cf35ff06e10bbbb39e1d3b2e2fa1512e8aaa9",
+      "gitBlobSha1": "cff2c222c8e371eb55f66b8578a28db0b4bd1b90",
+      "sameBytesAsMain": true,
+      "packId": "H1_ORIGINAL_SOURCE",
+      "recordCount": 287,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/integral-calculus-v1.json",
+      "bytes": 537959,
+      "sha256": "c8976b8e61ea0d7d76b74b5f343c7471c8932802525c1e71ab05a49255462e84",
+      "gitBlobSha1": "7e30642b331dd969df259e019f6134cfb2c1183d",
+      "sameBytesAsMain": true,
+      "packId": "INTEGRAL_CALCULUS",
+      "recordCount": 194,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/limit-continuity-v1.json",
+      "bytes": 309698,
+      "sha256": "d748bafa3923a1c1344253cb6701acbd97b7139a39d29d0aaf2090c899b42760",
+      "gitBlobSha1": "e305a34db250cea79fa4ba8dab6002ee733f0c59",
+      "sameBytesAsMain": true,
+      "packId": "LIMIT_CONTINUITY",
+      "recordCount": 184,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "bytes": 2753840,
+      "sha256": "a30aa5bf76476fee5c1ebb7295ea53561030fcd3f4ac2488be23ab917e5c20ea",
+      "gitBlobSha1": "1e1875d502537d5d5e503c315d30ded4a99472df",
+      "sameBytesAsMain": true,
+      "packId": "MIDDLE_GEOMETRY",
+      "recordCount": 1017,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "bytes": 1496291,
+      "sha256": "70c27072c9c28bbf2014568dc4032f0735cbaf049f74a82543ae484baeec91d0",
+      "gitBlobSha1": "055990e3a79b4cea257cdf941b57dbb4fc1de017",
+      "sameBytesAsMain": true,
+      "packId": "MIDDLE1",
+      "recordCount": 659,
+      "selectedCount": 22
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+      "bytes": 213520,
+      "sha256": "7b2c33e080267539725efbb8089ed6f1cb2263150b610612403b0be5fa216dd8",
+      "gitBlobSha1": "73a85105e604e475034b92af74cacac46a224f8d",
+      "sameBytesAsMain": true,
+      "packId": "MIDDLE2",
+      "recordCount": 36,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle3-v1.json",
+      "bytes": 818892,
+      "sha256": "636e6c7dc9248639a649d746e744b1430fa4c3a3e05da86a5895d155685cff30",
+      "gitBlobSha1": "3afc6f712f7e31b6d1ab5ee5928411566ca48eaa",
+      "sameBytesAsMain": true,
+      "packId": "MIDDLE3",
+      "recordCount": 126,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/probability-statistics-v1.json",
+      "bytes": 2374117,
+      "sha256": "6a0cb8ce17ef2e59b12d381a85db4cd8590ac878f5d557a33640274cde5d9cec",
+      "gitBlobSha1": "c577dd9525165e0abd1476dbb1c71b1b6af8f165",
+      "sameBytesAsMain": true,
+      "packId": "PROBABILITY_STATISTICS",
+      "recordCount": 902,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+      "bytes": 837204,
+      "sha256": "76835dfb6bcefe0362ed364a01b16eebb115af4f39273253b7fe9236cc2591a7",
+      "gitBlobSha1": "48ffe4bd8e3a063982bb9cf9daf0205dc12256f3",
+      "sameBytesAsMain": true,
+      "packId": "SETS_PROPOSITIONS",
+      "recordCount": 383,
+      "selectedCount": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/trigonometry-v1.json",
+      "bytes": 51675,
+      "sha256": "99d70fb0cf7344c8291757052d40ef06312989cf4e584fcb8a87c4f97353ae9a",
+      "gitBlobSha1": "1003a81b2a8844ef77cdfb0a6ae620dec082aa69",
+      "sameBytesAsMain": true,
+      "packId": "TRIGONOMETRY",
+      "recordCount": 6,
+      "selectedCount": 0
+    }
+  ],
+  "activeBindingScanProofs": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "bytes": 102046,
+      "sha256": "53cd70317cb28b8ea06099505a799da62994a9de25caadaa343dce3d9a012fa4",
+      "gitBlobSha1": "1b625131cf7d677b8646378ac0a2f019952360bb",
+      "sameBytesAsMain": true
+    }
+  ],
+  "conclusion": {
+    "outOfScopeApprovedBindingSignatureChangeCount": 1,
+    "sameExamFiveExistingRowCorrectionsSupportedByInspectedGuard": false,
+    "perRowScope": {
+      "151": "TARGET_EXAM_ONLY",
+      "152": "TARGET_EXAM_ONLY",
+      "153": "TARGET_EXAM_ONLY",
+      "154": "OUTSIDE_APPROVED_CONSUMER_PRESENT",
+      "155": "TARGET_EXAM_ONLY"
+    },
+    "explanation": "후보 5행의 after exact tuple 소비자는 승인 17개이며 동산16개와 풍덕2025기말 Q20 1개다. 기존 중국어 course tuple 소비자는0개다. /154를 한국어 course로 바꾸면 풍덕 Q20의 signature에서 exact active binding이0→1로 변하므로 동산24만 target인 v2 요청의 out-of-scope guard가 거부할 조건이다. 나머지4행의 exact tuple 소비자는 모두 동산 안에 있다. supporting UID와 runtime도 이 외부1개를 확인했다. 따라서 5행 전체를 동산 단독 v2 요청으로 안전하게 처리할 수 있다고 결론내리지 않는다.",
+    "allowedNextStep": "Root가 공식 binding-course-correction 보존 경로 등 이미 지원되는 정정 방식과 보호 증거를 검토해야 한다. 이 조사에서 새 요청이나 승인 변경을 만들지 않았으며 외부 UID를 동산 target으로 편입하지 않는다.",
+    "remainingGate": "공식 registrar/Consumer 검증은 미실행이다. 기존 guard를 유지하고 실제 승인·정상 데이터·다른 시험지 metadata/runtime 보존 근거를 갖춘 정정 후 동산 요청을 진행해야 한다."
+  },
+  "notExecuted": [
+    "source/canonical writes",
+    "registry write",
+    "formal registrar dry-run",
+    "full Consumer re-run",
+    "R1",
+    "R2",
+    "R3",
+    "mathQA",
+    "Git/index mutations"
+  ],
+  "samePTDifferentTupleSummary": {
+    "count": 77,
+    "guardAffected": false,
+    "reason": "PT 이름이 같아도 curriculum/course/unit/subUnit exact tuple이 달라 이번 5개 binding 수정의 소비자가 아니다. PT/TPL 정의는 변경 대상이 아니다.",
+    "groups": [
+      {
+        "curriculum": "2015",
+        "standardCourseOrFallback": "중1 수학",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "reviewStatus": "reviewed_hold",
+        "metadataStatus": "approved_full_with_selectability_hold",
+        "count": 5
+      },
+      {
+        "curriculum": "2015",
+        "standardCourseOrFallback": "중1 수학",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "reviewStatus": null,
+        "metadataStatus": null,
+        "count": 3
+      },
+      {
+        "curriculum": "2015",
+        "standardCourseOrFallback": "중1 수학",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "reviewStatus": null,
+        "metadataStatus": null,
+        "count": 2
+      },
+      {
+        "curriculum": "2015",
+        "standardCourseOrFallback": "중1 수학",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "reviewStatus": null,
+        "metadataStatus": null,
+        "count": 9
+      },
+      {
+        "curriculum": "2015",
+        "standardCourseOrFallback": "중1 수학",
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "reviewStatus": null,
+        "metadataStatus": null,
+        "count": 2
+      },
+      {
+        "curriculum": null,
+        "standardCourseOrFallback": "중1 수학",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "reviewStatus": "review_required",
+        "metadataStatus": "registration_pending_semantic_review",
+        "count": 14
+      },
+      {
+        "curriculum": null,
+        "standardCourseOrFallback": "중1 수학",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "reviewStatus": "review_required",
+        "metadataStatus": "registration_pending_semantic_review",
+        "count": 9
+      },
+      {
+        "curriculum": null,
+        "standardCourseOrFallback": "중1 수학",
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "reviewStatus": "review_required",
+        "metadataStatus": "registration_pending_semantic_review",
+        "count": 19
+      },
+      {
+        "curriculum": null,
+        "standardCourseOrFallback": "중1 수학",
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "reviewStatus": "review_required",
+        "metadataStatus": "registration_pending_semantic_review",
+        "count": 12
+      },
+      {
+        "curriculum": null,
+        "standardCourseOrFallback": "중1 수학",
+        "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+        "reviewStatus": "review_required",
+        "metadataStatus": "registration_pending_semantic_review",
+        "count": 2
+      }
+    ]
+  },
+  "runtimeDifferentTupleNote": {
+    "count": 5,
+    "curricula": [
+      "2015"
+    ],
+    "allReviewedHold": true,
+    "allRuntimeNotSelectable": true,
+    "reason": "다섯 2015 HOLD 행은 PT 이름만 같고 후보2022 binding exact tuple을 소비하지 않는다."
+  },
+  "outOfScopeBindingSignatureDelta": [
+    {
+      "questionUid": "qid_v1_553b57b364c7ebc98905d8268bc248b500f3e8a62855de1769b6328dfff6fdb2",
+      "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 20,
+      "bindingPointer": "/bindings/154",
+      "beforeExactActiveBindingCount": 0,
+      "afterExactActiveBindingCount": 1,
+      "unchangedSignatureComponents": [
+        "PT",
+        "TPL",
+        "standardUnit master",
+        "subUnit master",
+        "CrossConcept definitions",
+        "Condition definitions"
+      ],
+      "officialGuardWouldDetectDifference": true
+    }
+  ]
+}

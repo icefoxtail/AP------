@@ -1,0 +1,209 @@
+{
+  "schemaVersion": "concurrent-pr-ci-blocker-observation-v1",
+  "recordedAt": "2026-11-13T16:48:09.182Z",
+  "status": "PR1967_OPEN_CI_BLOCKED_NO_NEW_MAIN_REGISTRATION_OBSERVED",
+  "ownerBoundary": {
+    "otherTaskOwnsShinheung": true,
+    "ourTaskOwnsWangun": true,
+    "otherOwnerFilesEdited": false,
+    "testGuardsWeakened": false,
+    "externalMessagesCommentsOrMutations": false
+  },
+  "pullRequest": {
+    "number": 1967,
+    "url": "https://github.com/icefoxtail/AP------/pull/1967",
+    "lastObservedState": "open",
+    "lastObservedMerged": false,
+    "latestObservedHead": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+    "headChangeObserved": false,
+    "ciCheckoutMergeRef": "43a2282cae500b81d70063895e055dfd9ed7de21",
+    "ciScopeBase": "57bd2b9c4a1d028c531a1dee86446fedd895e62d",
+    "latestObservedRemoteMain": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+    "newMainWriterForThisPrObserved": false,
+    "ongoingOwnerActivityBeyondPublishedHead": "NOT_OBSERVABLE"
+  },
+  "ci": {
+    "runId": 43461548044,
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43461548044",
+    "name": "CI",
+    "conclusion": "failure",
+    "planJob": {
+      "id": 132009475629,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "failedJob": {
+      "id": 132009552680,
+      "name": "test",
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/icefoxtail/AP------/actions/runs/43461548044/job/132009552680",
+      "failedStep": {
+        "number": 19,
+        "name": "Run tests"
+      },
+      "upstreamSteps": [
+        {
+          "number": 11,
+          "name": "Prepare and verify PR registration data once",
+          "conclusion": "success"
+        },
+        {
+          "number": 12,
+          "name": "Prepare temporary main source registration projection",
+          "conclusion": "skipped"
+        },
+        {
+          "number": 16,
+          "name": "Verify original exam visibility in the student search UI",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "testFileSummary": {
+      "passed": 335,
+      "failed": 1,
+      "knownFailed": 0,
+      "total": 336,
+      "blockingFile": "tests/meta-foundation-middle-geometry-runtime.test.js"
+    },
+    "otherExactHeadWorkflows": [
+      {
+        "id": 43461548053,
+        "name": "Archive Main Auto Metadata",
+        "conclusion": "success",
+        "event": "pull_request"
+      },
+      {
+        "id": 43461548158,
+        "name": "Problem Bank Shared Meta",
+        "conclusion": "success",
+        "event": "pull_request"
+      },
+      {
+        "id": 43461548061,
+        "name": "Archive2 Runtime Guard",
+        "conclusion": "success",
+        "event": "pull_request"
+      }
+    ],
+    "otherWorkflowSuccessDoesNotProveMainRegistration": true
+  },
+  "directFailure": {
+    "observedAtInLog": "2026-11-13T16:30:02.3673747Z",
+    "questionUid": "qid_v1_73d4da5316f252d9835ecaa3d66a8b1eb09a4d7ed5c6aa07e8d20327466ec136",
+    "sourceOrdinal": 20,
+    "exam": "2026 신흥중 중1 2학기 중간",
+    "errorType": "AssertionError [ERR_ASSERTION]",
+    "message": "native receipt was not verified",
+    "actual": null,
+    "expected": true,
+    "assertion": "tests/meta-foundation-middle-geometry-runtime.test.js:131",
+    "caller": "tests/meta-foundation-middle-geometry-runtime.test.js:146",
+    "jobLogLines": "8440-8450",
+    "rawLogSaved": false,
+    "logRetrievedBy": "github_fetch_workflow_job_logs",
+    "boundedExcerptOnly": true
+  },
+  "actualCiPreparation": {
+    "loggedCommand": "node tools/ci/archive-pr-registration-proof.mjs produce --proof-file \"$RUNNER_TEMP/archive-pr-registration-proof/proof.json\"",
+    "loggedOutput": {
+      "state": "PASS",
+      "scope": "registration-data-only",
+      "chrome": "NOT_INCLUDED"
+    },
+    "loggedScope": {
+      "mode": "full",
+      "prepareProjection": false,
+      "reason": "shared, mixed raw-content/code, or unclassified dependency changed"
+    },
+    "materializerLoggedMetadataMutationCount": 0,
+    "materializerLoggedQuestionMetadataChanged": false,
+    "reviewedRequestAppliedLogCount": 0,
+    "reviewedRequestRejectedLogCount": 0,
+    "codeChain": [
+      {
+        "path": "tools/ci/archive-pr-registration-proof.mjs",
+        "gitRef": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+        "sha256": "0148af27b87ffbaeb7794afc96fdc52f4fcb7b2e10696293e335e98f82fa5d99",
+        "lineScopes": [
+          "229-261"
+        ]
+      },
+      {
+        "path": "tools/ci/archive-pr-registration-prepare.mjs",
+        "gitRef": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+        "sha256": "e6fd66a8db9b7ff0c62b25f9591c1adcd0b16849a2a4acb94c41dbd46ec83c5e",
+        "lineScopes": [
+          "36-64"
+        ]
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "gitRef": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+        "sha256": "f9623dc55da2f6be477cd8e025455752bd8aef71598749253caa24a19685fda1",
+        "lineScopes": [
+          "145-154"
+        ]
+      }
+    ],
+    "executedPreparationActions": [
+      "materialize-meta-v2-payloads.mjs --write",
+      "python3 archive/build_db.py",
+      "registration data parity/identity/catalog checks"
+    ],
+    "reviewedInboxRegistrarIncluded": false,
+    "autoMetaNativeRegistrationIncluded": false,
+    "meaning": "The successful preparation verdict concerns derived registration data. Its actual function body does not register the new reviewed-exam inbox request or create that request’s native receipt."
+  },
+  "mechanism": {
+    "classification": "CI_SOURCE_CHANGED_WITH_PREEXISTING_NATIVE_APPROVAL_DATA",
+    "confirmedCodeFact": "The PR changes Shinheung source metadata while the executed PR preparation path does not apply its pending reviewed-exam v2 request.",
+    "pendingRequestId": "m1-shinheung-meta-closeout-20261113-bf-r1",
+    "pendingRequestRawSha256": "d5eaebc7e756eb076078e685649bbcd87eefaef7b7f7e4f54a1b5a28ef1f6c55",
+    "previousNativeSourceRawSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+    "prSourceRawSha256": "2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56",
+    "previousReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+    "previousReceiptRawSha256": "aea5a3bb228638586c4a36c3eb4d1e8528d76d5a3787a0f52bcac8ab2f2c9054",
+    "nativeProofGuard": {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "gitRef": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+      "sha256": "4ffb982960da1c72aca906dc8977d76b1f2a37d9f63debe187559ce7a62a1f9f",
+      "lineScopes": [
+        "59-109"
+      ]
+    },
+    "explanation": "nativeReviewReceipt requires exact current source bytes/blob and current metadata/runtime to match a registered receipt. New source bytes plus the preexisting byte-bound receipt are therefore insufficient. The actual failed assertion proves null receipt verification; the code/log trace identifies that the executed preparation did not produce the pending request’s replacement receipt.",
+    "exactFirstFailingInternalPredicate": "NOT_PRINTED_BY_CI_AND_NOT_INSTRUMENTED",
+    "newReceiptRuntimeFilesystemIndependentlyDownloaded": false,
+    "postFormalRegistrationFailureClaimed": false,
+    "crosswalkAppendCause": false,
+    "mathErrorCauseClaimed": false
+  },
+  "operationalImplication": {
+    "isolatedWangunPreflightMayContinue": true,
+    "why": "It uses a separate isolated registration state and does not publish the frozen crosswalk evidence dependency or modify the Shinheung owner’s task.",
+    "wangunPublicationWaitsFor": "PR1967 owner fix/exact-head CI and actual main writer request receipt/source/Consumer closure, then fresh main/evidence binding.",
+    "noTestWaiverSuggested": true,
+    "mainReceiptOrSuccessNotInferredFromCi": true,
+    "monitoring": "Stopped frequent polling at root instruction. Resume on meaningful PR head/merge/writer change."
+  },
+  "evidenceLinks": {
+    "crosswalkImpactDocument": "docs/operations/m1-meta-review-20261113/02-crosswalk-append-existing-approval-impact.json",
+    "crosswalkImpactSha256": "0352b378cbc13e7406ba32b13fa2913c9830c70b8429f09c7cf6bb7bc4e3b4a5",
+    "scopeReport": ".tmp/m1-meta-review/02-pr1967-concurrent-scope-check.json",
+    "scopeReportSha256": "9285f9a611fb5147d006949111457dcde7e6dcc5a755ce57adb31a3d2a5c1141"
+  },
+  "boundaries": {
+    "rawQuestionAnswerSolutionCopied": false,
+    "semanticReread": false,
+    "mathQa": false,
+    "r1r2r3": false,
+    "testsExecutedByThisAudit": false,
+    "registrarOrMainWriterExecuted": false,
+    "sourceCanonicalOrIndexWrites": false,
+    "gitWrites": false,
+    "apiWrites": false,
+    "otherOwnerWorkChanged": false
+  }
+}

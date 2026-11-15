@@ -1,0 +1,238 @@
+{
+  "sourcePath": "archive/exams/original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js",
+  "questionId": 19,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "solid-figure-v1",
+        "solids": [
+          {
+            "id": "tri",
+            "kind": "PRISM",
+            "base": {
+              "kind": "POLYGON",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  0,
+                  10
+                ]
+              ]
+            },
+            "height": 24,
+            "names": "......"
+          }
+        ],
+        "space": {
+          "points": [
+            {
+              "id": "P",
+              "at": {
+                "divide": [
+                  "#b0",
+                  "#b1"
+                ],
+                "ratio": "3:5"
+              },
+              "hideName": true,
+              "hideDot": true
+            },
+            {
+              "id": "Q",
+              "at": {
+                "divide": [
+                  "#b1",
+                  "#b2"
+                ],
+                "ratio": "5:3"
+              },
+              "hideName": true,
+              "hideDot": true
+            },
+            {
+              "id": "R",
+              "at": {
+                "divide": [
+                  "#b0",
+                  "#b2"
+                ],
+                "ratio": "5:3"
+              },
+              "hideName": true,
+              "hideDot": true
+            },
+            {
+              "id": "U",
+              "at": {
+                "divide": [
+                  "#t0",
+                  "#t1"
+                ],
+                "ratio": "3:5"
+              },
+              "hideName": true,
+              "hideDot": true
+            },
+            {
+              "id": "V",
+              "at": {
+                "divide": [
+                  "#t1",
+                  "#t2"
+                ],
+                "ratio": "5:3"
+              },
+              "hideName": true,
+              "hideDot": true
+            },
+            {
+              "id": "W",
+              "at": {
+                "divide": [
+                  "#t0",
+                  "#t2"
+                ],
+                "ratio": "5:3"
+              },
+              "hideName": true,
+              "hideDot": true
+            }
+          ],
+          "segments": [
+            {
+              "from": "P",
+              "to": "Q",
+              "style": "DASHED"
+            },
+            {
+              "from": "Q",
+              "to": "R",
+              "style": "DASHED"
+            },
+            {
+              "from": "U",
+              "to": "V",
+              "style": "SOLID"
+            },
+            {
+              "from": "V",
+              "to": "W",
+              "style": "SOLID"
+            },
+            {
+              "from": "P",
+              "to": "U",
+              "style": "SOLID"
+            },
+            {
+              "from": "Q",
+              "to": "V",
+              "style": "DASHED"
+            },
+            {
+              "from": "R",
+              "to": "W",
+              "style": "DASHED"
+            },
+            {
+              "from": "#t0",
+              "to": "U",
+              "style": "SOLID"
+            },
+            {
+              "from": "W",
+              "to": "#t0",
+              "style": "SOLID"
+            },
+            {
+              "from": "#b0",
+              "to": "P",
+              "style": "SOLID"
+            },
+            {
+              "from": "R",
+              "to": "#b0",
+              "style": "SOLID"
+            }
+          ]
+        },
+        "dims": [
+          {
+            "from": "#b0",
+            "to": "#b1",
+            "label": "8",
+            "side": "BOTTOM"
+          },
+          {
+            "from": "#b0",
+            "to": "#b2",
+            "label": "10",
+            "side": "LEFT"
+          },
+          {
+            "from": "#b1",
+            "to": "#t1",
+            "label": "24",
+            "side": "RIGHT",
+            "line": 1
+          }
+        ],
+        "highlights": [
+          {
+            "polygon": [
+              "#t0",
+              "U",
+              "V",
+              "W"
+            ]
+          },
+          {
+            "polygon": [
+              "#b0",
+              "P",
+              "U",
+              "#t0"
+            ]
+          },
+          {
+            "polygon": [
+              "P",
+              "Q",
+              "V",
+              "U"
+            ]
+          }
+        ],
+        "caption": "직각삼각기둥을 잘라 만든 직육면체",
+        "accessibilityDescription": "밑면의 직각변이 8과 10이고, 기둥의 높이가 24인 직각삼각기둥이다. 두 절단으로 남는 직육면체의 윗면과 옆면이 옅게 칠해져 있다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "직각변 8, 10인 삼각형을 밑면으로 한 높이 24 삼각기둥을 두 번 잘랐다.",
+            "mappedTo": [
+              "solids",
+              "dims",
+              "space",
+              "highlights"
+            ]
+          }
+        ],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 23,
+        "displayScale": 0.49,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

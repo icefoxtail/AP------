@@ -1397,7 +1397,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 사각형 ABCD에서 AB=6 cm, BC=8 cm, ∠ABC=60°, AD=2√3 cm, DC=4 cm, ∠ADC=150°일 때, 사각형 ABCD의 넓이는? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q18-alive.svg\" alt=\"AB=6 cm, BC=8 cm, ∠ABC=60°, AD=2√3 cm, DC=4 cm, ∠ADC=150°인 사각형 ABCD\" />",
+    "content": "다음 그림과 같은 사각형 ABCD에서 AB=6 cm, BC=8 cm, ∠ABC=60°, AD=2√3 cm, DC=4 cm, ∠ADC=150°일 때, 사각형 ABCD의 넓이는? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q18-problem-v2.svg\" alt=\"AB=6 cm, BC=8 cm, ∠ABC=60°, AD=2√3 cm, DC=4 cm, ∠ADC=150°인 사각형 ABCD\" />",
     "choices": [
       "$8\\sqrt{3}\\,\\mathrm{cm}^2$",
       "$12\\sqrt{3}\\,\\mathrm{cm}^2$",

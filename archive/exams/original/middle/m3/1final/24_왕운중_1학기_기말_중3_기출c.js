@@ -738,7 +738,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/24_왕운중_1학기_기말_중3_기출c/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 3x+4y와 세로 2x+3y가 표시된 직사각형 액자.",
+    "solutionImageCaption": "넓이식을 인수분해하여 세로를 확인하고, 두 변의 합을 두 배 하여 둘레를 구한다. 답: 10x+14y.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

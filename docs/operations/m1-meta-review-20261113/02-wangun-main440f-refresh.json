@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "wangun-registered-main-refresh-v1",
+  "recordedAt": "2026-11-13T17:19:19.790358+00:00",
+  "status": "DEPENDENCY_ACTUALLY_CLOSED_REQUEST_UNCHANGED_FRESH_DRY_RUN_PASS",
+  "previousPreflightMain": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+  "registeredMain": "440f412bd221e3d62df16130984a2626a3ee6441",
+  "registeredMainTree": "c77b8e1c88357ea17ac1b650db2029a1f836ebfc",
+  "priorCi": {
+    "head": "29707a569189aacd886cf84776ae31ec0640f2b1",
+    "base": "2391df9b009b1c1f47ab450ed501fe06dd78f918",
+    "runId": 43467747613,
+    "pass": 335,
+    "fail": 1,
+    "failure": "Shinheung Q20 native receipt source bytes do not match registration-pending base.",
+    "evidence": "02-wangun-pr1968-initial-ci.json"
+  },
+  "dependency": {
+    "pr": 1967,
+    "writerRun": 43467456637,
+    "writerJob": 132030268013,
+    "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-meta-closeout-20261113-bf-r1.json",
+    "receiptSha256": "bd627b6fe34082ed8ca2a90e49955e75ffb7ee2cfc6e3e4411ae4041d4d2d555",
+    "sourceSha256": "2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56",
+    "sourceBlobSha1": "f1a73e96053d17564b42672415ca6bfc5b73cb2c",
+    "registered": 24,
+    "runtime": 24,
+    "postAutoMetaFinalConsumer": {
+      "status": "PASS",
+      "mainSha": "2391df9b009b1c1f47ab450ed501fe06dd78f918",
+      "counts": {
+        "changed": 24,
+        "checked": 24,
+        "passed": 24,
+        "skippedUnchanged": 0
+      },
+      "exams": [
+        {
+          "file": "/home/runner/work/_temp/archive-registration-writer/native/archive-meta-register-pass/requests/m1-shinheung-meta-closeout-20261113-bf-r1.json",
+          "kind": "reviewed-exam-v2",
+          "exam": "26_신흥중_2학기_중간_중1_기출",
+          "sourceFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+          "changed": 24,
+          "checked": 24,
+          "passed": 24,
+          "skippedUnchanged": 0
+        }
+      ],
+      "failures": [],
+      "unobservedFields": [],
+      "solverOnlyRevisions": [],
+      "assignmentPending": []
+    },
+    "finalLogSha256": "bef428c5b94432cf2dc8c3fe0dc7c02afae6714a02b6db6559f9763649236e28",
+    "persistedReportSha256": "350141de4c653ea2bd0ebbf3cf4fca36b47d8edd6795c447bed466a97d644a4d",
+    "persistedInputSha": "440f412bd221e3d62df16130984a2626a3ee6441",
+    "persistedGlobalStatus": "REGISTRATION_PARTIAL",
+    "globalSafeToPersist": false,
+    "targetCompletionIsSeparateFromGlobalOptionalSemanticPending": true,
+    "zipSha256": "1f18b7be96a23604d5075592a3b24500bf76657c39431c186301f0b1162f9978",
+    "appliedRequests": 1,
+    "rejectedRequests": 0,
+    "pendingRequests": 0,
+    "rootIndependentlyReadZipAndActualGitReceipt": true
+  },
+  "wangun": {
+    "requestId": "m1-wangun-2026-mid-meta-review-20261113",
+    "requestRawSha256": "feb528273a4167b654a50dcd6d825c7db9173b0bf2fee1c47904b20b4bb505c1",
+    "requestBytesChanged": false,
+    "freshDryRun": {
+      "status": "PASS",
+      "write": false,
+      "requestId": "m1-wangun-2026-mid-meta-review-20261113",
+      "approvalType": "FINAL_QA",
+      "totalQuestions": 23,
+      "registryChangeCount": 16,
+      "runtimeMaterialized": 23,
+      "fingerprintRepairCount": 23,
+      "consumerSearchStatus": "NOT_RUN",
+      "replay": false,
+      "plannedPaths": [
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+        "archive/data/meta-foundation/canonical/registry_index.json",
+        "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+        "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+        "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
+        "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+        "archive/data/question_metadata.json",
+        "archive/data/question_identity_map.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json"
+      ]
+    },
+    "freshDryRunSha256": "25293fbce6403de60b2ca5a7695be402f097d26fe627791f3b2ac7cc8c51e099",
+    "freshDryRunExactlyEqualsPreviouslyValidatedDryRun": true,
+    "matchedDistinctEvidenceRefs": 11,
+    "targetMainSourceUnchanged": true,
+    "semanticAndFiguresReadRepeated": false,
+    "fullR1R2R3Rerun": false,
+    "actualMainRegistration": "NOT_APPLIED"
+  },
+  "nextAction": "Publish current registered-main merge to owned PR1968 branch; require exact fresh-head CI before merge, then actual Wangun receipt/final23 Consumer/remoteSHA."
+}

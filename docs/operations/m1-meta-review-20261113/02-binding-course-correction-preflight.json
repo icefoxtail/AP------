@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "binding-course-correction-preflight-v1",
+  "recordedAt": "2026-11-13T16:06:01.486893+00:00",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "owner": "GPT_ROOT_933015CD0A4F",
+  "status": "ISOLATED_PREFLIGHT_PASSED_MAIN_NOT_APPLIED",
+  "baselineMain": "e2aa30e7c95aac4fc1a6a0748d13f078382b6f40",
+  "toolPrerequisite": {
+    "pr": 1965,
+    "head": "9f82851d9807ffd04952a43874622e9d331e038b",
+    "mergeSha": "e2aa30e7c95aac4fc1a6a0748d13f078382b6f40",
+    "requiredHeadWorkflows": [
+      "Problem Bank Shared Meta:SUCCESS",
+      "Archive Main Auto Metadata:SUCCESS",
+      "Archive2 Runtime Guard:SUCCESS",
+      "CI:SUCCESS"
+    ]
+  },
+  "request": {
+    "requestId": "m1-proportion-course-spelling-20261113",
+    "schemaVersion": "archive-binding-course-correction-request-v1",
+    "rawSha256": "b5c56ef1dca62d921297b75dc80415392e006a2bed1f9494c94f0e8c58146ba4",
+    "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+    "sourceBlob": "c75dc3e1ce47c0ec85e51a63b1a1e16ab479385f",
+    "sourceRawSha256": "357bfa1d8b326e228179624bf4943ec151a53362e23b00d2dcaac717a5334029",
+    "expectedQuestionCount": 24,
+    "beforeFileCount": 111,
+    "preservedConsumerCount": 1,
+    "expectedConsumerStateSha256": "6b1f3e5aaae347361cd4d0d0b8b82aff872f996809f8efe9d295d8f9bd7bb619"
+  },
+  "exactChange": {
+    "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+    "collection": "bindings",
+    "before": {
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "curriculum": "2022",
+      "standardCourse": "中1 수학",
+      "standardUnitKey": "M1-04",
+      "subUnitKey": "M1-04-GRAPH_RELATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_9a70f8dfb14b04696845323d046dedded271684fd020f1c73fd3d7f3a800dffc"
+      ],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1"
+    },
+    "after": {
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "curriculum": "2022",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-04",
+      "subUnitKey": "M1-04-GRAPH_RELATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_9a70f8dfb14b04696845323d046dedded271684fd020f1c73fd3d7f3a800dffc"
+      ],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1"
+    }
+  },
+  "verification": {
+    "dryRun": {
+      "rawSha256": "54cf4ecbaa2e7035dc0d4f3308f7a4559e0824169ce777035ac97ea590d1f4be",
+      "result": {
+        "status": "DRY_RUN",
+        "approvalCreated": false,
+        "consumerVerification": "POST_BUILD_NOT_RUN",
+        "affectedBindingUidCount": 1,
+        "checkedRuntimeUids": 613,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+          "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+          "archive/data/meta-foundation/runtime/middle1-v1.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-proportion-course-spelling-20261113.binding-course-correction.json"
+        ]
+      }
+    },
+    "isolatedWrite": {
+      "rawSha256": "62c330e0c5f52e2f0328e930e2f9612313a4cafa601d0cb34edacf7bc677d121",
+      "result": {
+        "status": "REGISTERED_CORRECTION",
+        "approvalCreated": false,
+        "consumerVerification": "POST_BUILD_NOT_RUN",
+        "affectedBindingUidCount": 1,
+        "checkedRuntimeUids": 613,
+        "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-proportion-course-spelling-20261113.binding-course-correction.json"
+      }
+    },
+    "projection": {
+      "rawSha256": "6bd8fc9b830b16fa9a0c46a93cb52155d76ccfbae110fc6911829686741a93b6",
+      "result": {
+        "status": "PASS",
+        "verificationKind": "EXISTING_CONSUMERS_PRESERVED",
+        "approvalCreated": false,
+        "bindingRowsCorrected": 1,
+        "affectedBindingUidCount": 1,
+        "checkedRuntimeUids": 613,
+        "sourceArchiveFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+        "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-proportion-course-spelling-20261113.binding-course-correction.json"
+      }
+    },
+    "consumer": {
+      "rawSha256": "d325eb55b24da9fc22d00ddc21f1a40e22c50a434181475e88f2b2fee3cdaecd",
+      "result": {
+        "status": "PASS",
+        "mainSha": "e2aa30e7c95aac4fc1a6a0748d13f078382b6f40",
+        "counts": {
+          "changed": 1,
+          "checked": 1,
+          "passed": 1,
+          "skippedUnchanged": 0
+        },
+        "exams": [
+          {
+            "file": ".tmp/m1-meta-review/02-course-correction.request.json",
+            "kind": "binding-course-correction",
+            "exam": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+            "sourceFile": "original/middle/m1/2final/25_동산중_2학기_기말_중1_기출.js",
+            "changed": 1,
+            "checked": 1,
+            "passed": 1,
+            "skippedUnchanged": 0,
+            "preservedRuntimeUids": 613,
+            "approvalCreated": false
+          }
+        ],
+        "failures": [],
+        "unobservedFields": [],
+        "solverOnlyRevisions": [],
+        "assignmentPending": []
+      }
+    },
+    "build": {
+      "command": "python archive/build_db.py",
+      "exitCode": 0,
+      "rawLogSha256": "eccae045b305bf448d626c7793cb2b0d3f48870235823e55ed141f00ab2519f3",
+      "registrationAndCatalogChecks": "PASS",
+      "initialSetupAttempt": {
+        "exitCode": 2,
+        "cause": "Fresh sparse worktree omitted archive/build_db.py; exact tracked script hydrated before successful run.",
+        "rawLogSha256": "95c4ca1d30e6a150ccf16ee42c1dfd58f6176f7fb9987f20b90e7ec05095a379"
+      }
+    }
+  },
+  "receipt": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-proportion-course-spelling-20261113.binding-course-correction.json",
+    "rawSha256": "6533efaaeb1684991b992e10153d7db9eb09790f762b906093df72f3bb37beb6",
+    "status": "CORRECTED_EXISTING_BINDING",
+    "approvalCreated": false,
+    "protectedFileCount": 104,
+    "runtimeConsumerCount": 613,
+    "packVersionBefore": "1.0.5",
+    "packVersionAfter": "1.0.6"
+  },
+  "concurrency": {
+    "otherKnownTaskId": "241f49f8-fccb-4880-944e-9814a117b88e",
+    "owner": "GPT_ROOT_BF50408FB63B",
+    "awcrRevision": 12,
+    "awcrFileId": "13N3Bgph_uBnALJ76MuZGrUUWntipCmY_",
+    "awcrRawSha256": "2e96a4426d684f2aadba5a60eecd9111762b9eea9f884a4908e39d7032f707c2",
+    "observedBoundary": "Other owner withheld Wangun23 and standalone course correction; no other task adopted."
+  },
+  "limits": [
+    "Actual main registration and final post-writer Consumer verification remain required.",
+    "No new metadata approval or mathematical FINAL QA is created.",
+    "No source, metadata, identity, existing R2 proof, or runtime record change is authorized.",
+    "Wangun23 source/registration is a separate subsequent request from corrected main.",
+    "R1/R2/R3 not rerun."
+  ]
+}

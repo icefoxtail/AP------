@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "existing-exam-isolated-parent-reproduction-v1",
+  "observedAt": "2026-11-13T13:50:24.847Z",
+  "scope": "ISOLATED_UNCOMMITTED_REPRODUCTION_NOT_OPERATIONAL_REGISTRATION",
+  "status": "REPRODUCED_Q5_Q8_PARENT_FAILURE",
+  "baselineMainSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+  "baselineMainTree": "d52de79fedc3e134286d57707f78b783130d7d2c",
+  "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev2",
+  "requestRawSha256": "267ab2f0a9abcb465030af0d198cd0b676b0ff465f730bdb625e50a8f5782f30",
+  "sourceRawSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+  "method": [
+    "official reviewed-exam v2 registrar --write in an isolated detached worktree",
+    "build-archive2-catalog -> build-basic-scope-parent-links -> build-archive2-catalog",
+    "official --verify-projection reproduced exact Q5 curriculumKey error",
+    "official verify-changed-uid-consumer-approval checked all 24 actual consumer rows"
+  ],
+  "registerResult": {
+    "status": "PASS_LOCAL_WRITE_ONLY",
+    "registryChanges": 17,
+    "appliedRecords": 24
+  },
+  "projectionVerification": {
+    "exitCode": 1,
+    "error": "Consumer metadata mismatch: qid_v1_6a2e9c320796f57d28232cd1f9ebfda5e29f4eb50926e74c0cc339d2eae8e593.curriculumKey"
+  },
+  "consumerVerification": {
+    "status": "FAIL",
+    "mainSha": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+    "counts": {
+      "changed": 24,
+      "checked": 24,
+      "passed": 22,
+      "skippedUnchanged": 0
+    },
+    "exams": [
+      {
+        "file": ".tmp/m1-meta-review/01-reviewed-exam-rev2.request.json",
+        "kind": "reviewed-exam-v2",
+        "exam": "26_신흥중_2학기_중간_중1_기출",
+        "sourceFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+        "changed": 24,
+        "checked": 24,
+        "passed": 22,
+        "skippedUnchanged": 0
+      }
+    ],
+    "failures": [
+      {
+        "exam": "26_신흥중_2학기_중간_중1_기출",
+        "qid": 5,
+        "uid": "qid_v1_6a2e9c320796f57d28232cd1f9ebfda5e29f4eb50926e74c0cc339d2eae8e593",
+        "reason": "NOT_APPROVED_IN_CONSUMER",
+        "detail": "reasons=[\"canonical_parent_missing\"] approvalStatus=null reviewEvidence=null"
+      },
+      {
+        "exam": "26_신흥중_2학기_중간_중1_기출",
+        "qid": 8,
+        "uid": "qid_v1_b6c658fe81fb556f0b50dd0a137ae096115f366d679b1e1afd05b3346cb72b27",
+        "reason": "NOT_APPROVED_IN_CONSUMER",
+        "detail": "reasons=[\"canonical_parent_missing\"] approvalStatus=null reviewEvidence=null"
+      }
+    ],
+    "unobservedFields": [],
+    "solverOnlyRevisions": [],
+    "assignmentPending": []
+  },
+  "failedRows": [
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_6a2e9c320796f57d28232cd1f9ebfda5e29f4eb50926e74c0cc339d2eae8e593",
+      "nativeParent": {
+        "L1": "평면도형의 성질",
+        "L2": "다각형과 원",
+        "curriculumKey": "2022",
+        "courseKey": "M1-2"
+      },
+      "consumerParent": {
+        "L1": "",
+        "L2": "",
+        "curriculumKey": "",
+        "courseKey": ""
+      },
+      "canonicalAssignmentReasons": [
+        "canonical_parent_missing"
+      ],
+      "metaBinding": "exact",
+      "metadataConflicts": [],
+      "rpmPrimaryPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "l3": "삼각형·다각형의 각",
+        "l4": "변·대각선 개수"
+      },
+      "rpmL1": "평면도형",
+      "rpmL2": "다각형",
+      "expectedParent": {
+        "L1": "평면도형",
+        "L2": "다각형"
+      }
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_b6c658fe81fb556f0b50dd0a137ae096115f366d679b1e1afd05b3346cb72b27",
+      "nativeParent": {
+        "L1": "기본도형",
+        "L2": "위치 관계",
+        "curriculumKey": "2022",
+        "courseKey": "M1-2"
+      },
+      "consumerParent": {
+        "L1": "",
+        "L2": "",
+        "curriculumKey": "",
+        "courseKey": ""
+      },
+      "canonicalAssignmentReasons": [
+        "canonical_parent_missing"
+      ],
+      "metaBinding": "exact",
+      "metadataConflicts": [],
+      "rpmPrimaryPath": null,
+      "rpmL1": null,
+      "rpmL2": null,
+      "expectedParent": {
+        "L1": "기본 도형",
+        "L2": "위치 관계"
+      }
+    }
+  ],
+  "operationalRegistration": {
+    "appliedQuestions": 0,
+    "appliedRegistryChanges": 0,
+    "completedExams": 0,
+    "totalExams": 44
+  },
+  "fullR1R2R3Rerun": false,
+  "mathApprovalClaimed": false,
+  "sourceBytesChanged": false
+}

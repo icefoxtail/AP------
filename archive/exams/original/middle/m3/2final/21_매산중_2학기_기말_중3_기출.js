@@ -803,7 +803,8 @@ window.questionBank = [
       "통계",
       "대표값"
     ],
-    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q14.png",
+    "image": "assets/images/21_매산중_2학기_기말_중3_기출/q14-problem-v2.svg",
+    "imageSize": "tall",
     "level": "상",
     "category": "통계",
     "originalCategory": "통계",

@@ -624,7 +624,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_신흥중_1학기_기말_중3_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 폭 60 cm에서 주황색으로 표시된 양끝 x cm를 접는다. 단면의 가로가 60−2x cm, 높이가 x cm이다.",
+    "solutionImageCaption": "단면은 가로 60−2x, 세로 x이다. 둘레는 120−2x이고 넓이 400이면 x=10 또는 20이다. 옳지 않은 것은 ②, ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -659,7 +663,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_신흥중_1학기_기말_중3_기출c/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 꽃밭을 예시로 그리고, 아래쪽 가로에는 x m, 오른쪽 세로에는 4−x m를 붙였다.",
+    "solutionImageCaption": "둘레 8 m의 절반은 4 m이므로 세로는 4−x이다. 넓이는 y=x(4−x)=−x²+4x이고, 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -695,7 +703,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_신흥중_1학기_기말_중3_기출c/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선이 x축을 만나는 두 점 O와 A, 보라 점선인 대칭축, 그 위의 꼭짓점 V를 표시한다.",
+    "solutionImageCaption": "x(x−6)=0이므로 절편은 0과 6이다. 꼭짓점의 x좌표는 가운데인 3이고, x=3일 때 y=−9이다. 답은 (3,−9), ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -721,7 +733,11 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_신흥중_1학기_기말_중3_기출c/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 파랑 정사각형 타일 하나, 주황 직사각형 타일 네 개, 초록 단위타일 세 개를 맞춰 직사각형을 만들었다.",
+    "solutionImageCaption": "파랑의 변은 x, 주황은 x와 1, 초록은 한 변 1이다. 따라서 전체의 두 변은 x+1과 x+3이며, x²+4x+3=(x+1)(x+3)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -770,6 +786,10 @@ window.questionBank = [
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_신흥중_1학기_기말_중3_기출c/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 표에 든 일곱 점을 지나는 포물선이다. 점선 축 양쪽에서 같은 높이의 알맞은 짝을 같은 색으로 표시했다.",
+    "solutionImageCaption": "표의 y값은 −5, 0, 3, 4, 3, 0, −5이다. 꼭짓점 (1,4), 축 x=1, x절편 −1과 3, y절편 3이고 위로 볼록하다.",
+    "solutionImageSize": "full"
   }
 ];

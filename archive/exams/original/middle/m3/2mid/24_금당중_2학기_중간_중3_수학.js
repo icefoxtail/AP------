@@ -31,7 +31,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 직각삼각형의 원래 겹친 배치와 분리된 같은 방향 배치를 함께 보이며, A각 기준 맞은편 변과 이웃한 변을 색으로 구분한다.",
+    "solutionImageCaption": "④의 비는 cos A의 역수이므로 옳지 않다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -63,7 +67,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC에서 AB=4, BC=√7, AC=3이며 C가 직각이다. B에서 맞은편 변과 이웃한 변을 색으로 구분한다.",
+    "solutionImageCaption": "피타고라스 정리로 AC=3이므로 cosB×tanB=AC/AB=3/4이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -126,7 +134,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 반지름 1인 사분원에서 OA=1, OB=0.72인 직각삼각형과 44°·46°의 여각을 표시한다.",
+    "solutionImageCaption": "cos x=0.72이므로 표에서 x=44°이고 cos46°=sin44°=0.69이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -156,7 +168,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: ∠A의 맞은편 변을 2, 이웃한 변을 1로 정규화한 직각삼각형이다. 빗변은 √5이다.",
+    "solutionImageCaption": "tanA=2/1이므로 cosA=1/√5, sinA=2/√5이고 cosA−sinA=−√5/5이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -188,7 +204,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직각삼각형 ABC와 BCD가 BC를 공유한다. 첫 삼각형에서 BC=√6이고, 두 번째에서는 BC와 CD가 같은 길이다.",
+    "solutionImageCaption": "△ABC에서 BC=√6이고 △BCD는 직각이등변삼각형이므로 BD=2√3이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -200,7 +220,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -216,11 +236,16 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "정삼각형의 중선과 무게중심의 성질을 이용하여 $DH$를 구한 뒤, 직각삼각형 $ADH$에 피타고라스 정리를 적용한다.\n밑면 $\\triangle BCD$는 한 변의 길이가 $6$인 정삼각형이고, $M$은 $BC$의 중점이다.\n무게중심 $H$는 중선 $DM$을 꼭짓점 쪽에서 $2:1$로 나눈다.\n\n$DM$, $DH$, $MH$를 순서대로 구하고, $AH\\perp$ 밑면이므로 직각삼각형 $ADH$에서 $AH$를 구한다.\n\n$BM=CM=3$이므로 $DM=\\sqrt{6^2-3^2}=3\\sqrt3$이다.\n무게중심의 성질에 의하여 $DH=\\dfrac23DM=2\\sqrt3$, $MH=\\dfrac13DM=\\sqrt3$이다.\n또한 $AD=6$이고 $AH\\perp DH$이므로 $AH=\\sqrt{AD^2-DH^2}=\\sqrt{36-12}=2\\sqrt6$이다.\n따라서 ④는 옳다.\n한편 $MC=3$, $MD=3\\sqrt3$, $MH=\\sqrt3$이고 $\\tan x^\\circ=\\dfrac{AH}{DH}=\\sqrt2$이므로 나머지 보기는 옳지 않다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q07.png",
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q7_question-v2.svg",
+    "imageSize": "tall",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사면체에서 한 모서리 AB=AD=6, 밑면 중선과 무게중심 H, 직각단면 ADH를 나타낸다. AH는 수선으로 표시한다.",
+    "solutionImageCaption": "DH=2√3, AH=2√6이므로 tan x=√2이다. 보기 중 옳은 것은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -253,7 +278,10 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q08-solution.svg"
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D는 B에서 AC에 내린 수선의 발이다. △BCD는 60° 직각삼각형이고 △ABD는 45° 직각삼각형이다.",
+    "solutionImageCaption": "△BCD에서 BD=4√3이고 △ABD는 직각이등변삼각형이므로 AB=4√6 cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -285,7 +313,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 내심 I에서 BI와 CI가 각을 이등분한다. ∠BIC=105°이고 C는 직각이다.",
+    "solutionImageCaption": "∠BIC=90°+A/2에서 A=30°, B=60°이므로 sinA:cosA:tanA=√3:3:2이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -317,7 +349,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 사각형 ABCD를 대각선 AC로 나누어 파란 삼각형 ABC와 주황 삼각형 ACD를 구분한다. AC=8, AD=5, 두 끼인각이 표시되어 있다.",
+    "solutionImageCaption": "△ABC의 넓이는 32이고 △ACD의 넓이는 10√3이므로 사각형의 넓이는 32+10√3 cm²이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -329,7 +365,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -345,11 +381,16 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "두 큰 직각삼각형의 특수각을 이용하여 겹친 직각삼각형 $ADF$의 밑변과 높이를 구한다.\n$AC=AE=6\\,\\mathrm{cm}$, $\\angle ACB=60^\\circ$, $\\angle AED=45^\\circ$이고, $\\angle B=\\angle D=90^\\circ$이다.\n\n먼저 $45^\\circ$ 직각삼각형 $ADE$에서 $AD$를 구하고, $\\triangle ADF$의 $A$각이 $30^\\circ$임을 이용하여 $DF$를 구한다.\n\n$\\triangle ADE$는 빗변이 $6$인 직각이등변삼각형이므로 $AD=DE=\\dfrac{6}{\\sqrt2}=3\\sqrt2$이다.\n$\\triangle ABC$에서 $\\angle A=30^\\circ$이고 $F$는 $AC$ 위에 있으므로 $\\angle DAF=30^\\circ$이다.\n$\\triangle ADF$는 $D$에서 직각이므로 $\\tan30^\\circ=\\dfrac{DF}{AD}$이다.\n따라서 $DF=AD\\tan30^\\circ=3\\sqrt2\\times\\dfrac{\\sqrt3}{3}=\\sqrt6$이다.\n그러므로 넓이는 $\\dfrac12\\times AD\\times DF=\\dfrac12\\times3\\sqrt2\\times\\sqrt6=3\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q11.png",
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q11_question-v2.svg",
+    "imageSize": "tall",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직각삼각형이 겹친 원래 배치와 분리한 △ADF를 함께 보인다. 분리된 삼각형에는 30°와 직각, 두 변의 길이가 표시되어 있다.",
+    "solutionImageCaption": "AD=3√2, DF=√6이므로 △ADF의 넓이는 3√3 cm²이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -415,7 +456,10 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q13-solution.svg"
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 안의 삼각형 BMN에 K에서 내린 BK 수선과 M에서 BN에 내린 MH 수선을 보인다. BH와 BM이 cos x의 두 변이다.",
+    "solutionImageCaption": "직각삼각형 BMH에서 cos x=BH/BM=(8/√5)/(2√5)=4/5이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -447,7 +491,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 지름 AB와 그에 수직인 현 CD가 M에서 만난다. M은 CD의 중점이며 △OMC의 두 직각변이 표시되어 있다.",
+    "solutionImageCaption": "AB=14이므로 반지름 OC=7, OM=3이다. 직각삼각형 OMC에서 CM=2√10이므로 CD=4√10 cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -479,7 +527,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O에서 현 AB와 CD까지의 중심거리가 같고 두 현은 각각 수선의 발 P, Q에서 이등분된다. CD=6 cm와 ∠BAO=30°가 표시되어 있다.",
+    "solutionImageCaption": "중심거리 같은 현은 같으므로 AB=6, AP=3이다. 직각삼각형 AOP에서 cos30°=AP/AO이므로 반지름은 2√3 cm이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -511,7 +563,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 O의 두 현 AB와 AC에 내린 수선의 길이를 비교하고, 꼭짓각 40°인 삼각형 ABC의 같은 밑각을 표시한다.",
+    "solutionImageCaption": "중심거리 같은 현은 AB=AC이므로 두 밑각은 (180°−40°)/2=70°이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -576,7 +632,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 안의 원과 네 접점 F, G, H, I가 보인다. D에서 그은 두 접선은 파란색 한 눈금, E에서 그은 두 접선은 주황색 두 눈금이다. 점선은 반지름이다.",
+    "solutionImageCaption": "DE는 D와 E에서 각각 그은 접선 길이의 합이며, CE를 빼면 BE를 구할 수 있다. 정답 ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -608,7 +668,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: P에서 그은 두 접선은 파란색 한 눈금, 두 반지름은 주황색 두 눈금이다. 접점의 직각과 중심각 120도를 표시했다.",
+    "solutionImageCaption": "두 직각삼각형의 넓이를 더한 뒤 중심각 120°의 부채꼴 넓이를 뺀다. 정답 ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -620,7 +684,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -636,7 +700,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "현이 지나간 부분은 두 동심원 사이의 고리이며, 현의 절반과 두 반지름으로 직각삼각형을 만든다.\n큰 원의 반지름을 $R$, 작은 원의 반지름을 $r$라 하자. 길이가 $2$인 현은 작은 원에 접하므로 중심에서 현까지의 거리는 $r$이다.\n\n중심에서 현에 수선을 내려 $R^2-r^2$를 구한 뒤 두 원의 넓이의 차를 계산한다.\n\n중심에서 현에 내린 수선은 현을 이등분하므로 현의 절반의 길이는 $1$이다.\n따라서 피타고라스 정리에 의하여 $R^2=r^2+1^2$, 즉 $R^2-r^2=1$이다.\n현을 한 바퀴 돌릴 때 지나가는 부분은 두 원 사이의 고리이므로 그 넓이는 $\\pi R^2-\\pi r^2=\\pi(R^2-r^2)=\\pi$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q20.png",
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q20_question-v2.svg",
+    "imageSize": "tall",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -693,7 +758,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 D는 B와 C 사이에 있다. BD와 DA에 같은 눈금이 있고, 30도 직각삼각형의 두 변 AC와 DC의 길이는 각각 1과 √3이다.",
+    "solutionImageCaption": "큰 직각삼각형의 높이는 1, 밑변은 2+√3이다. 정답 2−√3.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -705,23 +774,27 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
-    "content": "[서술형 3] 다음 그림은 원형 접시가 세 조각으로 깨진 것이다. 세 학생이 원의 중심을 찾아 깨지기 전의 접시 모양을 그리려고 한다. 세 학생 중에서 옳게 말한 사람을 찾고, 원의 중심을 찾는 방법을 설명하시오. [5점]",
+    "content": "[서술형 3] 다음 그림은 원형 접시가 세 조각으로 깨진 것이다. 세 학생이 원의 중심을 찾아 깨지기 전의 접시 모양을 그리려고 한다. 세 학생 중에서 옳게 말한 사람을 찾고, 원의 중심을 찾는 방법을 설명하시오. [5점]<br><br>A. 조각 ①은 너무 작아서 중심을 찾을 수 없네.<br>B. 어느 조각을 이용하더라도 중심을 찾을 수 있어.<br>C. 중심은 조각 ②에 있으니 조각 ②가 없으면 중심을 찾을 수 없어.",
     "choices": [],
     "answer": "B",
     "solution": "원의 중심을 찾을 때는 현의 수직이등분선을 이용한다.\n\n한 조각의 원호 위에 서로 다른 세 점 $P$, $Q$, $R$을 잡는다.\n두 현 $PQ$, $QR$을 긋는다.\n\n현 $PQ$의 수직이등분선을 그린다.\n이 직선은 원래 원의 중심을 지난다.\n\n현 $QR$의 수직이등분선도 그린다.\n이 직선 역시 원래 원의 중심을 지난다.\n\n따라서 두 수직이등분선의 교점이 원의 중심이다.\n교점이 조각의 바깥에 있어도 두 직선을 연장하면 찾을 수 있다.\n\n그러므로 어느 조각을 이용하더라도 중심을 찾을 수 있다고 말한 학생 B가 옳다.",
-    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q23.png",
-    "imageSize": "full",
+    "image": "assets/images/24_금당중_2학기_중간_중3_수학/q23_question-v2.svg",
+    "imageSize": "tall",
+    "imageSize": "tall",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q23-solution.svg"
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원호 위 P,Q,R로 만든 두 현의 중점 M,N에서 수직이등분선을 그어 교점 O를 찾는다. 각 현의 중점 표식과 직각 표시가 있다.",
+    "solutionImageCaption": "두 현의 수직이등분선은 모두 원의 중심을 지나므로 교점 O가 중심이다. 옳은 학생은 B이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -748,6 +821,9 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q24-solution.svg"
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중3_수학/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 동심원에 그은 현 AB에 중심 O에서 점선 수선을 내린다. 반지름 OA는 6 cm, OM은 2 cm이다. AM 4√2 cm와 MD 3√2 cm, DB √2 cm가 각 선분에 붙어 있다.",
+    "solutionImageCaption": "큰 반지름의 제곱에서 작은 반지름의 제곱을 빼고 원주율을 곱한다. 정답 14π cm².",
+    "solutionImageSize": "full"
   }
 ];

@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "exact-known-concurrent-task-latest-check-v1",
+  "status": "READ_ONLY_METADATA_CHECK_COMPLETE_LIVE_CI_ACTIVITY_UNDETERMINED",
+  "recordedAtUtc": "2026-11-13T16:53:19.663Z",
+  "requestingTaskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "requestingOwner": "GPT_ROOT_933015CD0A4F",
+  "subject": {
+    "taskId": "241f49f8-fccb-4880-944e-9814a117b88e",
+    "owner": "GPT_ROOT_BF50408FB63B"
+  },
+  "search": {
+    "folderId": "19RrwqM5viv7SP0pSRb_xbCIpXCQcjYtY",
+    "scope": "Exact taskId and owner filename filter only",
+    "metadataOnly": true,
+    "matchedFileCount": 13,
+    "observedRevisions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "providerNextPageTokenPresent": false,
+    "latestObservedRevision": 13,
+    "newerRevisionFound": false,
+    "unrelatedTaskContentsRead": 0
+  },
+  "latestCheckpoint": {
+    "fileId": "1On2Gpe0EmP9W7IffBCg2qZLr0z0ZV288",
+    "url": "https://drive.google.com/file/d/1On2Gpe0EmP9W7IffBCg2qZLr0z0ZV288/view?usp=drivesdk",
+    "fileName": "AWCR-v2-241f49f8-fccb-4880-944e-9814a117b88e-r13-GPT_ROOT_BF50408FB63B-02717bf9-1197-42ee-aefa-7726548e43ae.json",
+    "providerCreatedAtUtc": "2026-11-13T16:18:12.770Z",
+    "providerModifiedAtUtc": "2026-11-13T16:18:12.770Z",
+    "sharedRevision": 13,
+    "rawSha256": "105d05f2df229857c3ff90f28a28f5b3881b31abf72f7b1c82ab7f1b9e77691f",
+    "bytes": 15340,
+    "mimeType": "text/plain",
+    "actualRawFetchVerified": true,
+    "taskOwnerRevisionVerified": true,
+    "rawLocalPath": ".tmp/m1-meta-review/02-concurrent-task-r13-remote.raw",
+    "previousSharedCheckpointSha256": "2e96a4426d684f2aadba5a60eecd9111762b9eea9f884a4908e39d7032f707c2",
+    "matchesPreviouslyVerifiedR12Sha256": true
+  },
+  "safeState": {
+    "state": "IN_PROGRESS",
+    "nextAction": "RUN_REQUIRED_CHECKS",
+    "completion": "UNKNOWN",
+    "quality": "UNKNOWN",
+    "handoffStatus": "NONE",
+    "remainingCriterionIds": [
+      "SHIN24_CANONICAL_REGISTRATION",
+      "SHIN24_MAIN_INTEGRATION",
+      "SHIN24_REQUIRED_VALIDATION",
+      "NEXT_WORKER_HANDOFF"
+    ]
+  },
+  "scopeAssessment": {
+    "declaredActiveScope": "Shinheung24 supplemental metadata registration and required validation",
+    "wangun23Withheld": true,
+    "standaloneCourseCorrectionWithheld": true,
+    "otherTaskAdopted": false,
+    "ownershipTransferObserved": false,
+    "pausedStateObserved": false,
+    "explicitCiRepairClaimForPr1967Observed": false,
+    "liveCiRepairActivity": "UNKNOWN",
+    "reason": "The latest discovered checkpoint was saved before the known PR1967 publication and contains no PR1967 head or CI-failure repair state. IN_PROGRESS and RUN_REQUIRED_CHECKS remain declared; the absence of a newer checkpoint is not proof of inactivity or abandonment.",
+    "checkpointOwnOperationalCompletion": "0/24; this refers to the other owner's supplemental request, not the requesting task's earlier first-exam closeout."
+  },
+  "boundedCheckpointAssessment": {
+    "newlyClaimedWork": "The checkpoint describes a local Shinheung24 preflight and a binding-owner context repair in producer/test artifacts, with publication and actual main registration still unobserved at that time.",
+    "localConsumerCountDeclared": 24,
+    "localNativeReuseCountDeclared": 24,
+    "unitChecksDeclared": 113,
+    "registryChangesDeclared": 0,
+    "newApprovalCreatedByReuseDeclared": false,
+    "validationByThisRead": "Checkpoint transport integrity only; no source content, tests, CI repair, or operational result revalidated."
+  },
+  "selectedArtifactRefs": [
+    {
+      "id": "bf50408fb63b.owner-overlap-review",
+      "kind": "WORKING_ARTIFACT",
+      "sha256": "347022eee049a7d9bf390487354cd5ba4051a1b6f1dc55d2bbd97bb3c8a259d1",
+      "verification": "LOCAL_BYTES_HASH_VERIFIED"
+    },
+    {
+      "id": "bf50408fb63b.scope-supersession",
+      "kind": "WORKING_ARTIFACT",
+      "sha256": "406e37f8b8fee71892dadebd8e8ceb69b3a375b444722f1f001e122fbb747b47",
+      "verification": "LOCAL_BYTES_HASH_VERIFIED"
+    },
+    {
+      "id": "bf50408fb63b.shin24-native-request-r1",
+      "kind": "WORKING_ARTIFACT",
+      "sha256": "d5eaebc7e756eb076078e685649bbcd87eefaef7b7f7e4f54a1b5a28ef1f6c55",
+      "verification": "LOCAL_BYTES_HASH_VERIFIED"
+    },
+    {
+      "id": "bf50408fb63b.shin24-independent-consumer-checks",
+      "kind": "WORKING_ARTIFACT",
+      "sha256": "4af32cbf8e368cea90b52a3c0632284411c3c10addfaefc67b1ced6d5acb52e6",
+      "verification": "LOCAL_BYTES_HASH_VERIFIED"
+    },
+    {
+      "id": "bf50408fb63b.shin24-binding-owner-producer",
+      "kind": "WORKING_ARTIFACT",
+      "sha256": "4ffb982960da1c72aca906dc8977d76b1f2a37d9f63debe187559ce7a62a1f9f",
+      "verification": "LOCAL_BYTES_HASH_VERIFIED"
+    },
+    {
+      "id": "bf50408fb63b.shin24-binding-owner-tests",
+      "kind": "WORKING_ARTIFACT",
+      "sha256": "da304d9f52a813c8c18d97f86905ee3fb7cb99334b6c2f54aef47e5d6797ecfa",
+      "verification": "LOCAL_BYTES_HASH_VERIFIED"
+    },
+    {
+      "id": "bf50408fb63b.shin24-independent-native-reuse",
+      "kind": "WORKING_ARTIFACT",
+      "sha256": "6b973ed50c87a83b673c04a4d48eb93a9144451f1286cb8aa90540103ef283a3",
+      "verification": "LOCAL_BYTES_HASH_VERIFIED"
+    },
+    {
+      "id": "bf50408fb63b.shin24-local-registration-receipt",
+      "kind": "WORKING_ARTIFACT",
+      "sha256": "23a22c3be729b5dae37214526a519d7d08055be35fe54b5549d1cb214f2fd31d",
+      "verification": "LOCAL_BYTES_HASH_VERIFIED"
+    }
+  ],
+  "knownPrContextFromRoot": {
+    "pr": 1967,
+    "url": "https://github.com/icefoxtail/AP------/pull/1967",
+    "head": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+    "statusAtRootObservation": "OPEN_WITH_NATIVE_PROOF_CI_FAILURE",
+    "prPublicationAfterLatestCheckpoint": true,
+    "checkedByThisTask": false
+  },
+  "coordinationDecision": {
+    "duplicateCiRepairStarted": false,
+    "sharedProducerOrTestsModified": false,
+    "independentWangunBranchAndDraftPreparation": "May continue within root's owned scope; a separate branch does not alter the concurrent request's pinned main evidence.",
+    "mutableCrosswalkMainMergeGate": "Wait for PR1967's exact main registration writer, then refresh current main inputs and rebind the Wangun request before main publication.",
+    "ownerLiveActivityConclusion": "Cannot classify as actively fixing or paused from this checkpoint alone."
+  },
+  "executionBoundary": {
+    "driveWrites": false,
+    "gitOrIndexWrites": false,
+    "productionWrites": false,
+    "otherTaskJoinOrClaim": false,
+    "externalMessages": false,
+    "ownAwcrRevisionCreated": false,
+    "upstreamSummaryCopiedIntoReport": false,
+    "rawSourceQuestionAnswerSolutionOrLogIncluded": false
+  }
+}

@@ -251,9 +251,10 @@ window.questionBank = [
     solution: "[키포인트] 대응도에서 화살표를 따라 $f(3)$을 구한 뒤 한 번 더 $f$를 적용한다.\n조건 정리: 대응도에서 $3\\mapsto1$, $1\\mapsto0$, $0\\mapsto2$이다.\n풀이 방향: $(f\\circ f)(3)=f(f(3))$을 먼저 계산한다.\n정석 풀이:\n1. $f(3)=1$이므로 $(f\\circ f)(3)=f(1)=0$이다.\n2. 또 $f(0)=2$이다.\n3. 따라서 $(f\\circ f)(3)+f(0)=0+2=2$이다.\n따라서 정답은 ②이다.",
     reviewStatus: "reviewed_pass",
     solutionStatus: "reviewed_pass",
-    image: "assets/images/25_제일고_2학기_기말_고1_유사/q10.svg",
+    image: "assets/images/25_제일고_2학기_기말_고1_유사/q10-problem-v2.svg",
+    imageSize: "full",
     imageStatus: "reviewed_pass",
-    visualAsset: "assets/images/25_제일고_2학기_기말_고1_유사/q10.svg",
+    visualAsset: "assets/images/25_제일고_2학기_기말_고1_유사/q10-problem-v2.svg",
     visualSpec: {
       visualSpecVersion: "0.1",
       visualDependency: "ESSENTIAL",
@@ -261,7 +262,7 @@ window.questionBank = [
       renderer: "deterministic-svg",
       semanticRoles: ["function", "composition"],
       essentialVisualFacts: "X→X arrows 0→2, 1→0, 2→3, 3→1",
-      assetRef: "assets/images/25_제일고_2학기_기말_고1_유사/q10.svg"
+      assetRef: "assets/images/25_제일고_2학기_기말_고1_유사/q10-problem-v2.svg"
     },
     generationMode: "EXAM_FOLLOWUP_SIMILAR_ONLY",
     sourceGrounding: "plan-2026-08-26"
@@ -314,9 +315,10 @@ window.questionBank = [
     solution: "[키포인트] 함수식 대신 그래프와 두 직선의 교점 좌표에서 필요한 함숫값과 입력값을 읽는다.\n조건 정리: $A=(4,p)$는 $x=4$에서의 함수값을, $B=(q,8)$은 함수값이 $8$이 되는 입력값을 뜻한다.\n풀이 방향: 그래프에서 두 교점의 좌표를 각각 읽어 $p,q$를 구한다.\n정석 풀이:\n1. 직선 $x=4$와 그래프의 교점은 $(4,7)$이므로 $p=7$이다.\n2. 직선 $y=8$과 그래프의 교점은 $(5,8)$이므로 $q=5$이다.\n3. 따라서 $p+q=7+5=12$이다.\n따라서 정답은 ④이다.",
     reviewStatus: "reviewed_pass",
     solutionStatus: "reviewed_pass",
-    image: "assets/images/25_제일고_2학기_기말_고1_유사/q12.svg",
+    image: "assets/images/25_제일고_2학기_기말_고1_유사/q12-problem-v2.svg",
+    imageSize: "tall",
     imageStatus: "reviewed_pass",
-    visualAsset: "assets/images/25_제일고_2학기_기말_고1_유사/q12.svg",
+    visualAsset: "assets/images/25_제일고_2학기_기말_고1_유사/q12-problem-v2.svg",
     visualSpec: {
       visualSpecVersion: "0.1",
       visualDependency: "ESSENTIAL",
@@ -324,7 +326,7 @@ window.questionBank = [
       renderer: "deterministic-svg",
       semanticRoles: ["graph", "inverse", "read-off"],
       essentialVisualFacts: "y=f(x), y=x; vertical x=4 and horizontal y=8 support intersection read-off",
-      assetRef: "assets/images/25_제일고_2학기_기말_고1_유사/q12.svg"
+      assetRef: "assets/images/25_제일고_2학기_기말_고1_유사/q12-problem-v2.svg"
     },
     generationMode: "EXAM_FOLLOWUP_SIMILAR_ONLY",
     sourceGrounding: "plan-2026-08-26"
@@ -454,9 +456,10 @@ window.questionBank = [
     solution: "[키포인트] 먼저 점 $E(3,3)$으로부터 $k$를 구한 뒤, 정사각형의 가로 길이와 세로 길이를 같게 놓는다.\n조건 정리: $E(3,3)$이 $y=\\sqrt{kx}$ 위에 있고, $A$와 $D$는 같은 높이에 있다.\n풀이 방향: $k$를 복원하고 $A,D$의 $x$좌표 차이를 정사각형의 한 변으로 사용한다.\n정석 풀이:\n1. $3=\\sqrt{3k}$이므로 $9=3k$, 따라서 $k=3$이다.\n2. $A=(t,\\sqrt{3t})$이다. 같은 높이의 점 $D$는 $y=\\sqrt{x}$ 위에 있으므로 $D$의 $x$좌표는 $3t$이다.\n3. 정사각형의 가로 길이는 $3t-t=2t$, 세로 길이는 $\\sqrt{3t}$이다. 따라서 $2t=\\sqrt{3t}$이다.\n4. $t\\gt0$이므로 양변을 제곱하여 $4t^2=3t$, 즉 $t=\\dfrac34$이다.\n5. 따라서 $4t+6=3+6=9$이다.\n따라서 정답은 ⑤이다.",
     reviewStatus: "reviewed_pass",
     solutionStatus: "reviewed_pass",
-    image: "assets/images/25_제일고_2학기_기말_고1_유사/q17.svg",
+    image: "assets/images/25_제일고_2학기_기말_고1_유사/q17-problem-v2.svg",
+    imageSize: "tall",
     imageStatus: "reviewed_pass",
-    visualAsset: "assets/images/25_제일고_2학기_기말_고1_유사/q17.svg",
+    visualAsset: "assets/images/25_제일고_2학기_기말_고1_유사/q17-problem-v2.svg",
     visualSpec: {
       visualSpecVersion: "0.1",
       visualDependency: "ESSENTIAL",
@@ -464,7 +467,7 @@ window.questionBank = [
       renderer: "deterministic-svg",
       semanticRoles: ["radical", "square", "feet"],
       essentialVisualFacts: "y=sqrt(3x), y=sqrt(x), E=(3,3), ABCD is a square; target coordinate is not labeled",
-      assetRef: "assets/images/25_제일고_2학기_기말_고1_유사/q17.svg"
+      assetRef: "assets/images/25_제일고_2학기_기말_고1_유사/q17-problem-v2.svg"
     },
     generationMode: "EXAM_FOLLOWUP_SIMILAR_ONLY",
     sourceGrounding: "plan-2026-08-26"

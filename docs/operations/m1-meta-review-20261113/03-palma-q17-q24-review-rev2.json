@@ -1,0 +1,1300 @@
+{
+  "schemaVersion": "existing-exam-semantic-review-candidate-v1",
+  "createdAt": "2026-11-13T18:30:27.624822+00:00",
+  "reviewer": "GPT_META_AUTHORITY_933015CD0A4F",
+  "scope": "2026 팔마중 중1 2학기 중간 Q17-Q24",
+  "status": "READ_COMPLETE_CANDIDATE_NOT_REGISTERED",
+  "mainSha": "738af248bd62813a572ac81725892b3f12ee2beb",
+  "source": "archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+  "sourceSha256": "9a5e79c37b15d4e19054166b3eed5541df76992f39166518ac147aed18360861",
+  "sourceBlobSha1": "a366f180ffe4b8495bb79fcc362ef1e0ff4618ca",
+  "inputReference": {
+    "path": ".tmp/m1-meta-review/03-palma-review-input.json",
+    "sha256": "7f0adf2ecc94af0cfda801a04674794a627d78c69b3511713c8c3e373edaebdb"
+  },
+  "figureManifest": {
+    "path": ".tmp/m1-meta-review/03-palma-figure-manifest-main738.json",
+    "sha256": "4c4898be66ca98a620e2677f032ca84d8e7c4d8c42ea4c56b8f8b91ef3514d47"
+  },
+  "counts": {
+    "questionsRead": 8,
+    "questionFiguresRead": 5,
+    "solutionFiguresRead": 5,
+    "exactRpmLeafCandidates": 8,
+    "rpmLeafDebts": 0,
+    "nativeParentCorrections": [
+      21,
+      24
+    ],
+    "newTemplateOnlyCandidates": [
+      17
+    ],
+    "newPtTemplateCandidates": [
+      19
+    ]
+  },
+  "authorityReferences": {
+    "taxonomy": {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "sha256": "2a78e103a87399acd95e605209ce0960a1e8fc05bcbe576fc64d82803fb99b0e",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    "bindings": {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "sha256": "485ab5537f98f2229a93e10db69e74e5b23c8903db0b8459bc910e8b69f62fbd",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    "tagMaster": {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "sha256": "e8db23593ff878de968ced04c011bd1f4de79279d7bab5c733c9ed98899d8551",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    "crosswalk": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "sha256": "3c53f0a15d279135201cba06512aa9971af192abc5ca0750d39510eba07c35c0",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    "rpmParents": {
+      "path": "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json",
+      "sha256": "d3ee4088aa2ba6e2a9b8c91ee11bca721400752e414375067660f9053635550c",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    "lockedMaster": {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    "concepts": {
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "sha256": "3c24c543d18345e8144bd013064666c0a29afa8138e7007ccb209dea5c210837",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    "conditions": {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "sha256": "8c60ebb19670c12491b7259e90530d3b64c16e1252bb691e5b69d1670a16f617",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    "metaRules": {
+      "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+      "sha256": "11889c08f041e0ac9ed3e131c3119369d51fb53d3704eaa637482894190d24cf",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    }
+  },
+  "items": [
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_8ddd54f26e647cf88c553a1f15133ae63dea7b6233caaa68e0194f88351c273b",
+      "status": "SEMANTIC_REVIEW_COMPLETE_PENDING_ROOT_CONFIRMATION",
+      "readCoverage": {
+        "prompt": true,
+        "choices": true,
+        "choiceCount": 5,
+        "providedSolution": true,
+        "textFieldsSha256": "cf8e4e183c46017aa3d00f54e26dc1494a47846caeee1af84f7cb2ad69cd30d5",
+        "assets": [],
+        "visualObservation": "문제·해설 그림 필드가 모두 없는 문항임을 확인했다."
+      },
+      "primaryMethod": "다각형의 내각의 합과 외각의 합 공식을 각각 적용하여 두 총합의 관계를 계산한다.",
+      "decisiveStep": "변의 수에 따라 달라지는 내각의 합과 변의 수에 무관한 외각의 합을 구분하여 요구된 연산에 결합한다.",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "beforeRpmPrimaryPath": null,
+      "sourceVsMetadataNativeFieldsEqual": true,
+      "judgment": {
+        "native": "TPL_CORRECTION_CANDIDATE",
+        "nativeReason": "L1/L2와 polygon PT는 적합하지만 현재 TPL이 요구하는 비 배분·개별 보각 단계는 없다.",
+        "rpm": "EXACT_MASTER_LEAF_IDENTIFIED",
+        "rpmReason": "주된 가변 계산이 변의 수에서 내각 총합을 구하는 것이므로 내각의 합 리프를 Primary로 두며 외각 총합은 동일 polygon 총합 템플릿의 부수 단계다.",
+        "relatedMetaReason": "두 총합 공식은 제안한 동일 primary taxonomy의 기본 골격으로 해결한다. 별도의 추가 개념·값 제한이 없다."
+      },
+      "proposedAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIRECT_INTERIOR_EXTERIOR_TOTALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "내각의 합"
+        }
+      },
+      "rpm": {
+        "baseLeafRecordId": "M1-RPM-194",
+        "basePath": [
+          "2022",
+          "M1-2",
+          "평면도형",
+          "다각형",
+          "다각형의 내각과 외각",
+          "내각의 합"
+        ],
+        "effectiveParent": {
+          "key": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+          "courseKey": "M1-2",
+          "L1": "평면도형",
+          "L2": "다각형"
+        },
+        "baseLeafPresent": true,
+        "rpmLeafDebt": false,
+        "existingCompatibleCrosswalkRows": [],
+        "existingExactDirectRows": [],
+        "bridgeAction": "EXACT_DIRECT_ROW_REQUIRED_FOR_REGISTRATION_PARENT_REF",
+        "solutionResolverRun": false,
+        "solutionVerificationFinalAsserted": false
+      },
+      "nativeRegistration": {
+        "existingPt": true,
+        "existingTpl": false,
+        "exactActiveBindingCount": 1,
+        "addExactBindingRequired": false,
+        "doNotModifyExistingDefinitions": true,
+        "newProposal": "q17"
+      },
+      "definitionReferences": [
+        {
+          "kind": "problemType",
+          "key": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "정다각형 내각·외각 관계로 변 수와 성질을 결정하는 각 관계 L3이며 #23의 직접 계산과 풀이 핵심을 공유한다.",
+          "aliases": [
+            "PT_M1_POLYGON_ANGLE_RELATIONS",
+            "PT_M1_POLYGON_DIAGONAL_COUNT_FROM_PARTITION",
+            "PT_M1_POLYGON_INTERIOR_TO_EXTERIOR_ANGLE",
+            "PT_M1_POLYGON_TRIANGULATION_COUNT",
+            "PT_M1_REGULAR_POLYGON_COUNT_ANGLE_PROPERTY_JUDGMENT",
+            "PT_REGULAR_POLYGON_ANGLE_RELATIONS",
+            "PT_REGULAR_POLYGON_DIAGONAL_COUNT"
+          ]
+        },
+        {
+          "kind": "template",
+          "key": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "The template uses the five-part ratio, total pentagon sum 540°, and supplementary exterior angles.",
+          "aliases": [
+            "NONAGON_EXTENSIONS_FORM_TRIANGLE",
+            "TPL_M1_FOUR_PENTAGON_INTERIORS_TO_ADJACENT_EXTERIOR",
+            "TPL_M1_PENTAGON_RATIO_TO_EXTREMAL_ANGLES"
+          ]
+        }
+      ],
+      "crossConceptReferences": [],
+      "unresolved": [
+        "ROOT_DECISION_ON_NEW_TEMPLATE"
+      ],
+      "normalDataAndDifficultyPreserved": true,
+      "rootSemanticConfirmation": "CONFIRMED_NEW_NATIVE_DEFINITION_REGISTRATION_PENDING"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_3ffc1c4b696a4ef7c2ba59b1d37004134fc05ff0ce0212d0b55acd689ff8fce7",
+      "status": "SEMANTIC_REVIEW_COMPLETE_PENDING_ROOT_CONFIRMATION",
+      "readCoverage": {
+        "prompt": true,
+        "choices": true,
+        "choiceCount": 5,
+        "providedSolution": true,
+        "textFieldsSha256": "32201d4a6ca570df0a1cecebbcb79524afb30f9dd2905fb8d04962aac2dae8b4",
+        "assets": [],
+        "visualObservation": "문제·해설 그림 필드가 모두 없는 문항임을 확인했다."
+      },
+      "primaryMethod": "정다각형의 이웃한 내각·외각의 보각 관계와 주어진 비로 한 외각을 정해 변의 수를 찾는다.",
+      "decisiveStep": "각의 비를 보각의 전체 크기에 배분한 다음 외각 총합을 한 외각으로 나누어 정다각형의 종류를 결정한다.",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "beforeRpmPrimaryPath": null,
+      "sourceVsMetadataNativeFieldsEqual": true,
+      "judgment": {
+        "native": "KEEP",
+        "nativeReason": "보각 관계→외각→변 수라는 핵심이 기존 REGULAR_POLYGON_ANGLE 정의 및 IDENTIFY_REGULAR_POLYGON_FROM_ANGLE_RATIO alias와 일치한다. 끝의 선택지 성질 감사 유무만으로 새 TPL을 만들지 않는다.",
+        "rpm": "EXACT_MASTER_LEAF_IDENTIFIED",
+        "rpmReason": "묻는 것이 한 각의 계산 자체보다 조건에서 정다각형의 종류를 찾는 것이므로 RPM200이 맞다. 현재200의 composite PT/TPL은 이 문항과 다르므로 기존 행을 수정하지 않고 exact 추가 행이 필요하다.",
+        "relatedMetaReason": "보각·비 분배·변 수 환산은 이 primary 타입의 기본 절차이므로 CC와 조건은 비워 두고 NONE을 유지한다."
+      },
+      "proposedAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "정다각형",
+          "l4": "조건으로 정다각형 찾기"
+        }
+      },
+      "rpm": {
+        "baseLeafRecordId": "M1-RPM-200",
+        "basePath": [
+          "2022",
+          "M1-2",
+          "평면도형",
+          "다각형",
+          "정다각형",
+          "조건으로 정다각형 찾기"
+        ],
+        "effectiveParent": {
+          "key": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+          "courseKey": "M1-2",
+          "L1": "평면도형",
+          "L2": "다각형"
+        },
+        "baseLeafPresent": true,
+        "rpmLeafDebt": false,
+        "existingCompatibleCrosswalkRows": [],
+        "existingExactDirectRows": [],
+        "bridgeAction": "EXACT_DIRECT_ROW_REQUIRED_FOR_REGISTRATION_PARENT_REF",
+        "solutionResolverRun": false,
+        "solutionVerificationFinalAsserted": false
+      },
+      "nativeRegistration": {
+        "existingPt": true,
+        "existingTpl": true,
+        "exactActiveBindingCount": 1,
+        "addExactBindingRequired": false,
+        "doNotModifyExistingDefinitions": true,
+        "newProposal": null
+      },
+      "definitionReferences": [
+        {
+          "kind": "problemType",
+          "key": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "정다각형 내각·외각 관계로 변 수와 성질을 결정하는 각 관계 L3이며 #23의 직접 계산과 풀이 핵심을 공유한다.",
+          "aliases": [
+            "PT_M1_POLYGON_ANGLE_RELATIONS",
+            "PT_M1_POLYGON_DIAGONAL_COUNT_FROM_PARTITION",
+            "PT_M1_POLYGON_INTERIOR_TO_EXTERIOR_ANGLE",
+            "PT_M1_POLYGON_TRIANGULATION_COUNT",
+            "PT_M1_REGULAR_POLYGON_COUNT_ANGLE_PROPERTY_JUDGMENT",
+            "PT_REGULAR_POLYGON_ANGLE_RELATIONS",
+            "PT_REGULAR_POLYGON_DIAGONAL_COUNT"
+          ]
+        },
+        {
+          "kind": "template",
+          "key": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "각의 보각 관계로 외각을 구하고 변 수를 찾아 선택지의 성질을 검증한다.",
+          "aliases": [
+            "TPL_IDENTIFY_REGULAR_POLYGON_FROM_ANGLE_RATIO",
+            "TPL_INTERIOR_SUM_TO_SIDE_COUNT_AND_ANGLE",
+            "TPL_M1_REGULAR_POLYGON_INTERIOR_ANGLE_CHECK",
+            "TPL_M1_TOTAL_VERTEX_ANGLE_SUM_TO_EXTERIOR",
+            "TPL_M1_TRIANGLES_FROM_POINT_ON_SIDE"
+          ]
+        }
+      ],
+      "crossConceptReferences": [],
+      "unresolved": [],
+      "normalDataAndDifficultyPreserved": true
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f",
+      "status": "SEMANTIC_REVIEW_COMPLETE_PENDING_ROOT_CONFIRMATION",
+      "readCoverage": {
+        "prompt": true,
+        "choices": true,
+        "choiceCount": 5,
+        "providedSolution": true,
+        "textFieldsSha256": "b6e4becbf307bf2cd5a65cd155b40e3667e19bbdb0567227dc7aa2b71e8945de",
+        "assets": [
+          {
+            "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q19.png",
+            "sha256": "5c0f24a453a788a2f84f77faaf1be622b3fa8946c9f2d38686abc46da0713bdc",
+            "blobSha1": "a59603937cd95a8a5dddb7e740e34121d5ebfe21",
+            "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+            "field": "image",
+            "actualVisualRead": true
+          },
+          {
+            "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q19-solution.svg",
+            "sha256": "adf3e38f720e44b50c24b65a15e6fe0f2d74ab2a7f081bf9e2cdb1ae1062b7ed",
+            "blobSha1": "052b7ee2b0d51369c08aa101b3a73cf5cf9d193d",
+            "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+            "field": "solutionImage",
+            "actualVisualRead": true,
+            "render": {
+              "path": ".tmp/m1-meta-review/03-palma-q17-q24-renders/q19-solution.png",
+              "sha256": "56c1f9fd99f9249663413a8c95f65e07dd7018e8e0afad9a1c1ec7987af90bb0",
+              "method": "Inkscape faithful SVG render; no asset edits"
+            }
+          }
+        ],
+        "visualObservation": "문제 그림의 일곱 표시각과 교차하는 닫힌 경로를 읽었다. 해설 SVG에서 각 꼭짓점의 연장선·바깥 회전각 표시를 확인했으며 보조 연결선에 의한 삼각형 분할 그림은 없다."
+      },
+      "primaryMethod": "별 모양 교차 경로의 전체 회전각과 각 꼭짓점의 보각 관계를 이용해 표시각의 합을 결정한다.",
+      "decisiveStep": "경로의 회전 총합을 꼭짓점별 방향 전환각의 합과 연결하고 표시각들을 한꺼번에 소거 없이 정리한다.",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "beforeRpmPrimaryPath": null,
+      "sourceVsMetadataNativeFieldsEqual": true,
+      "judgment": {
+        "native": "PT_TPL_CORRECTION_CANDIDATE",
+        "nativeReason": "정다각형의 단일 내외각 공식이나 삼각형 세 외각의 합으로 분류할 수 없다. 실제 제공된 회전각 해설에 맞는 일반형 후보를 분리했다.",
+        "rpm": "EXACT_MASTER_LEAF_IDENTIFIED",
+        "rpmReason": "삼각형·다각형의 각을 연결해 표시각을 계산하는 RPM197 범위다. 볼록다각형 외각 총합을 직접 대입하는 RPM195로 대체하면 교차 경로의 회전 구조를 잃는다.",
+        "relatedMetaReason": "회전각 합산과 보각 전환은 새 primary 정의의 핵심이다. 반복 횟수 조건 키는 함수·변환 반복 제한용이므로 경로를 도는 회전 수에 붙이지 않는다."
+      },
+      "proposedAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM",
+        "templateKey": "TPL_M1_STAR_POLYGON_ANGLE_SUM_TURNING_ANGLE_TOTAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "각의 크기 계산"
+        }
+      },
+      "rpm": {
+        "baseLeafRecordId": "M1-RPM-197",
+        "basePath": [
+          "2022",
+          "M1-2",
+          "평면도형",
+          "다각형",
+          "삼각형·다각형의 각",
+          "각의 크기 계산"
+        ],
+        "effectiveParent": {
+          "key": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+          "courseKey": "M1-2",
+          "L1": "평면도형",
+          "L2": "다각형"
+        },
+        "baseLeafPresent": true,
+        "rpmLeafDebt": false,
+        "existingCompatibleCrosswalkRows": [],
+        "existingExactDirectRows": [],
+        "bridgeAction": "EXACT_DIRECT_ROW_REQUIRED_FOR_REGISTRATION_PARENT_REF",
+        "solutionResolverRun": false,
+        "solutionVerificationFinalAsserted": false
+      },
+      "nativeRegistration": {
+        "existingPt": false,
+        "existingTpl": false,
+        "exactActiveBindingCount": 0,
+        "addExactBindingRequired": true,
+        "doNotModifyExistingDefinitions": true,
+        "newProposal": "q19"
+      },
+      "definitionReferences": [
+        {
+          "kind": "problemType",
+          "key": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "정다각형 내각·외각 관계로 변 수와 성질을 결정하는 각 관계 L3이며 #23의 직접 계산과 풀이 핵심을 공유한다.",
+          "aliases": [
+            "PT_M1_POLYGON_ANGLE_RELATIONS",
+            "PT_M1_POLYGON_DIAGONAL_COUNT_FROM_PARTITION",
+            "PT_M1_POLYGON_INTERIOR_TO_EXTERIOR_ANGLE",
+            "PT_M1_POLYGON_TRIANGULATION_COUNT",
+            "PT_M1_REGULAR_POLYGON_COUNT_ANGLE_PROPERTY_JUDGMENT",
+            "PT_REGULAR_POLYGON_ANGLE_RELATIONS",
+            "PT_REGULAR_POLYGON_DIAGONAL_COUNT"
+          ]
+        }
+      ],
+      "crossConceptReferences": [],
+      "unresolved": [],
+      "normalDataAndDifficultyPreserved": true,
+      "rootSemanticConfirmation": "CONFIRMED_NEW_NATIVE_DEFINITION_REGISTRATION_PENDING"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_5ff9229265ef4aef481e014c3565592c9726b89f9ff8d2714b81fe3e3b097064",
+      "status": "SEMANTIC_REVIEW_COMPLETE_PENDING_ROOT_CONFIRMATION",
+      "readCoverage": {
+        "prompt": true,
+        "choices": true,
+        "choiceCount": 5,
+        "providedSolution": true,
+        "textFieldsSha256": "830580cd1e9c0c6cebd896c0ae0fc732c5dea2ac9e6cabfd597e2b4e231914b7",
+        "assets": [
+          {
+            "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q20.png",
+            "sha256": "b267450ff0d54d51a55964cc3e3e5565eabf6bfb8e3ad17d43dadc408046e8c4",
+            "blobSha1": "ffb2df049ac14e331311a6fe4ab0de9b3479d5f0",
+            "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+            "field": "image",
+            "actualVisualRead": true
+          },
+          {
+            "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q20-solution.svg",
+            "sha256": "8188b0978dd7a685dadec87cca99a1c60548ca289646bee26bd987bbfda2b5d1",
+            "blobSha1": "d711d8f48dc184f1e7f192fb09cbe018e1e3a945",
+            "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+            "field": "solutionImage",
+            "actualVisualRead": true,
+            "render": {
+              "path": ".tmp/m1-meta-review/03-palma-q17-q24-renders/q20-solution.png",
+              "sha256": "d25cb4e3f5ca588c570eb50688b054e03ac7368baada96a7f2125c90240ca5c3",
+              "method": "Inkscape faithful SVG render; no asset edits"
+            }
+          }
+        ],
+        "visualObservation": "문제에서 A와 C가 서로 다른 평행선 위에 있고 AC가 횡단선인 삼각형을 확인했다. 해설 그림의 두 비 분배 각과 두 삼각형 내각 표시는 텍스트 풀이와 동일한 역할이다."
+      },
+      "primaryMethod": "평행선과 각의 비로 삼각형 양 끝의 각 관계를 정하고 삼각형 내각의 합으로 남은 각을 결정한다.",
+      "decisiveStep": "횡단선 양쪽의 동측 내각 합을 비로 표현해 두 부분각의 합을 얻은 뒤 삼각형의 내각합에 대입한다.",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "conceptClusterKey": "POSITION_RELATION",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_ANGLE_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "beforeRpmPrimaryPath": null,
+      "sourceVsMetadataNativeFieldsEqual": true,
+      "judgment": {
+        "native": "KEEP_WITH_RELATED_META_COMPLETION",
+        "nativeReason": "보각·각의 비를 먼저 적용하고 삼각형 내각합으로 마무리한다는 기존 ANGLE_RATIO 정의와 실제 흐름이 일치한다.",
+        "rpm": "EXACT_MASTER_LEAF_IDENTIFIED",
+        "rpmReason": "이미 주어진 평행선에서 각을 이동·계산하는 것이므로 RPM177이다. 동측 내각의 보각 관계는 동위각·엇각의 같음과 평각으로 연결되는 같은 평행선 각 관계이며 평행 여부를 판정하는178은 아니다.",
+        "relatedMetaReason": "평행선에서 얻은 각 관계를 삼각형 내각합에 사용해야 목표각이 결정되므로 CC_TRIANGLE_ANGLE_SUM을 추가하고 SEQUENTIAL로 정규화한다."
+      },
+      "proposedAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "conceptClusterKey": "POSITION_RELATION",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_ANGLE_RATIO",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각"
+        }
+      },
+      "rpm": {
+        "baseLeafRecordId": "M1-RPM-177",
+        "basePath": [
+          "2022",
+          "M1-2",
+          "기본 도형",
+          "기본 도형",
+          "평행선과 각",
+          "동위각·엇각"
+        ],
+        "effectiveParent": {
+          "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "위치 관계"
+        },
+        "baseLeafPresent": true,
+        "rpmLeafDebt": false,
+        "existingCompatibleCrosswalkRows": [],
+        "existingExactDirectRows": [],
+        "bridgeAction": "EXACT_DIRECT_ROW_REQUIRED_FOR_REGISTRATION_PARENT_REF",
+        "solutionResolverRun": false,
+        "solutionVerificationFinalAsserted": false
+      },
+      "nativeRegistration": {
+        "existingPt": true,
+        "existingTpl": true,
+        "exactActiveBindingCount": 1,
+        "addExactBindingRequired": false,
+        "doNotModifyExistingDefinitions": true,
+        "newProposal": null
+      },
+      "definitionReferences": [
+        {
+          "kind": "problemType",
+          "key": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "두 평행선과 꺾은 선이 만드는 연쇄 각으로 표시된 각을 구한다.",
+          "aliases": [
+            "FOLDING_PARALLEL_LINES_TRIANGLE_ANGLE_SUM",
+            "PARALLEL_LINE_ANGLE_DIFFERENCE",
+            "PT_M1_PARALLEL_LINE_ANGLE_RELATIONS",
+            "PT_PARALLEL_LINES_ZIGZAG_ANGLE",
+            "PT_PARALLEL_LINE_ANGLE_RATIO_TRIANGLE",
+            "PT_PARALLEL_LINE_ANGLE_RELATIONS"
+          ]
+        },
+        {
+          "kind": "template",
+          "key": "TPL_M1_PARALLEL_ANGLE_TRANSFER_ANGLE_RATIO",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "보각 관계와 두 각의 비를 먼저 적용하고 삼각형 내각합으로 남은 각을 마무리한다.",
+          "aliases": [
+            "TPL_PARALLEL_ANGLE_RATIO_AND_TRIANGLE_SUM",
+            "TPL_PARALLEL_PAIR_IDENTIFICATION_FROM_TRANSVERSAL_ANGLES"
+          ]
+        }
+      ],
+      "crossConceptReferences": [
+        {
+          "key": "CC_TRIANGLE_ANGLE_SUM",
+          "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+          "definition": "평면 위의 모든 삼각형의 세 내각의 크기의 총합은 180°이다",
+          "reason": "평행선에서 얻은 각 관계를 삼각형 내각합에 사용해야 목표각이 결정되므로 CC_TRIANGLE_ANGLE_SUM을 추가하고 SEQUENTIAL로 정규화한다."
+        }
+      ],
+      "unresolved": [],
+      "normalDataAndDifficultyPreserved": true
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_b7a4e9fe41cebbe2f68649f03fbb6c7fde5a0ac4ff88c2b9ff08a3bce63966eb",
+      "status": "SEMANTIC_REVIEW_COMPLETE_PENDING_ROOT_CONFIRMATION",
+      "readCoverage": {
+        "prompt": true,
+        "choices": true,
+        "choiceCount": 0,
+        "providedSolution": true,
+        "textFieldsSha256": "201cbf525a6104ca8a1203a2963127d900253ede591d6d7f28fde3b69bfbae0f",
+        "assets": [
+          {
+            "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q21.png",
+            "sha256": "b3fb98e078316ae7b63593d55b7f208ef4dc2731bbacbb0975f184cc69be0a5b",
+            "blobSha1": "4f28b4f6388372ec82a51c1c5d54627e1dc846cd",
+            "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+            "field": "image",
+            "actualVisualRead": true
+          },
+          {
+            "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q21-solution.svg",
+            "sha256": "f8ba01bafa3139730c9bd077bde320731171a243328d65db5254c8f4b14af404",
+            "blobSha1": "a4dbfc60844c007cffdd6e899390dccc0dd61c2e",
+            "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+            "field": "solutionImage",
+            "actualVisualRead": true,
+            "render": {
+              "path": ".tmp/m1-meta-review/03-palma-q17-q24-renders/q21-solution.png",
+              "sha256": "3352d7c0aec48c53b2b2fd35f17c4f56c0b601ba2754d744667509855d40faae",
+              "method": "Inkscape faithful SVG render; no asset edits"
+            }
+          }
+        ],
+        "visualObservation": "문제에서 B-D-C가 한 직선이고 꼭짓점의 두 각이 AD로 나뉨을 확인했다. 원본 상단 일부는 잘려 있으나 각 표시는 보이고, 해설 SVG에는 A와 두 부분삼각형·공유 직선의 각 관계가 온전히 표시돼 있다."
+      },
+      "primaryMethod": "분할된 삼각형의 외각 성질과 직선 위 보각, 내각합을 연결해 두 목표각의 관계를 계산한다.",
+      "decisiveStep": "한 부분삼각형의 외각으로 한 목표각을 정하고 공유 밑변의 보각을 다른 부분삼각형 내각합에 연결한다.",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "conceptClusterKey": "BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "beforeRpmPrimaryPath": null,
+      "sourceVsMetadataNativeFieldsEqual": true,
+      "judgment": {
+        "native": "NATIVE_PARENT_CORRECTION_KEEP_PT_TPL",
+        "nativeReason": "각 자체의 정의나 맞꼭지각이 아니라 삼각형 내각·외각 계산이므로 M1-06 다각형과 원으로 이동한다. 기존 TPL의 외각→내각합 구조와 TRIANGLE_WITH_CEVian_AND_EXTERIOR_ANGLE alias가 정확히 해당한다. PT의 대표 이등변 예제는 전체 유효 template 범위를 제한하는 literal 조건으로 보지 않는다.",
+        "rpm": "EXACT_MASTER_LEAF_IDENTIFIED",
+        "rpmReason": "M1-RPM175 각의 크기라는 기존 FAMILY 연결에만 맞추면 기본도형으로 잘못 남는다. 실제 심화 각 계산인 RPM197을 쓰고 이 PT의 M1-06 exact binding과 DIRECT 행을 추가해야 한다.",
+        "relatedMetaReason": "보각·삼각형 외각·내각합이 동일 primary triangle-angle 체인의 핵심이라 CC를 중복으로 추가하지 않는다."
+      },
+      "proposedAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "각의 크기 계산"
+        }
+      },
+      "rpm": {
+        "baseLeafRecordId": "M1-RPM-197",
+        "basePath": [
+          "2022",
+          "M1-2",
+          "평면도형",
+          "다각형",
+          "삼각형·다각형의 각",
+          "각의 크기 계산"
+        ],
+        "effectiveParent": {
+          "key": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+          "courseKey": "M1-2",
+          "L1": "평면도형",
+          "L2": "다각형"
+        },
+        "baseLeafPresent": true,
+        "rpmLeafDebt": false,
+        "existingCompatibleCrosswalkRows": [],
+        "existingExactDirectRows": [],
+        "bridgeAction": "EXACT_DIRECT_ROW_REQUIRED_FOR_REGISTRATION_PARENT_REF",
+        "solutionResolverRun": false,
+        "solutionVerificationFinalAsserted": false
+      },
+      "nativeRegistration": {
+        "existingPt": true,
+        "existingTpl": true,
+        "exactActiveBindingCount": 0,
+        "addExactBindingRequired": true,
+        "doNotModifyExistingDefinitions": true,
+        "newProposal": null
+      },
+      "definitionReferences": [
+        {
+          "kind": "problemType",
+          "key": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "공통 선분 길이 조건으로 연속된 이등변삼각형의 각을 추론한다.",
+          "aliases": [
+            "PT_CHAINED_ISOSCELES_ANGLE_CHASE",
+            "PT_M1_INTERIOR_POINT_TRIANGLE_ANGLE_SUM",
+            "PT_M1_TRIANGLE_ANGLE_EXTERIOR_SUM",
+            "PT_TRIANGLE_EXTERIOR_ANGLE_LINEAR_EQUATION",
+            "PT_VERTICAL_ANGLE_TRIANGLE_ANGLE_CHASE"
+          ]
+        },
+        {
+          "kind": "template",
+          "key": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "한 외각을 보각 내각으로 바꾸고 삼각형의 세 각 합 방정식을 푼다.",
+          "aliases": [
+            "TPL_TRIANGLE_EXTERIOR_ANGLE_AND_INTERIOR_SUM",
+            "TRIANGLE_WITH_CEVian_AND_EXTERIOR_ANGLE"
+          ]
+        }
+      ],
+      "crossConceptReferences": [],
+      "unresolved": [],
+      "normalDataAndDifficultyPreserved": true
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_4fde7f4e5f3ba55ede413c85c7e48572ee8b2c26bf5add8a27cf71bac14fd139",
+      "status": "SEMANTIC_REVIEW_COMPLETE_PENDING_ROOT_CONFIRMATION",
+      "readCoverage": {
+        "prompt": true,
+        "choices": true,
+        "choiceCount": 0,
+        "providedSolution": true,
+        "textFieldsSha256": "aa3bfa75536df3c72058cc5326f75979feeacf00e98a7b93e5999d3e6438bf23",
+        "assets": [
+          {
+            "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q22.png",
+            "sha256": "1b56087a66cbce5a2e132be4fe7bb51bef9bbf5d08124f04bbd3ad6b16aeea6e",
+            "blobSha1": "3bd3193b95d4bbb31230e13942749dccf0358139",
+            "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+            "field": "image",
+            "actualVisualRead": true
+          },
+          {
+            "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q22-solution.svg",
+            "sha256": "d5d7bb53271be89aa592c4e593bbfbcf48687ada547254bdffb590e6f2fe11ff",
+            "blobSha1": "c190d35e847bed53f0dc844b51bc78b48abe0520",
+            "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+            "field": "solutionImage",
+            "actualVisualRead": true,
+            "render": {
+              "path": ".tmp/m1-meta-review/03-palma-q17-q24-renders/q22-solution.png",
+              "sha256": "0d2819cd2d31c5830dce120c57cbeba74310b4f885af044d46c7ec4544635ea9",
+              "method": "Inkscape faithful SVG render; no asset edits"
+            }
+          }
+        ],
+        "visualObservation": "문제의 교차 두 직선, 직각 표시와 문자각을 확인했다. 해설 SVG의 같은 겹호가 실제 맞꼭지각 쌍을 연결하고 평각의 남은 부분도 따로 표시한다."
+      },
+      "primaryMethod": "직각과 평각의 관계로 한 각을 정하고 맞꼭지각 관계를 식으로 표현하여 나머지 미지수를 결정한다.",
+      "decisiveStep": "직각과 주어진 각을 합한 각을 맞꼭지각의 일차식에 대응시키고 나머지 각은 평각에서 뺀다.",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "conceptClusterKey": "BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "beforeRpmPrimaryPath": null,
+      "sourceVsMetadataNativeFieldsEqual": true,
+      "judgment": {
+        "native": "KEEP",
+        "nativeReason": "기존 TPL의 vertical-opposite pair·adjacent straight-angle equation·perpendicular reference angle 세 요소가 모두 실제 문항에 있다.",
+        "rpm": "EXACT_MASTER_LEAF_IDENTIFIED",
+        "rpmReason": "맞꼭지각을 이용해 식의 각을 결정하는 것이 핵심이므로 RPM176. 왕운 단계에서 생성된 VERTICAL-ANGLE-EQUATION exact 행을 그대로 재사용 가능하다.",
+        "relatedMetaReason": "간단한 일차식 계산은 이 각 방정식 TPL의 기본 연산이다. 직각·평각을 별도 CC 또는 값 조건으로 중복 기록하지 않는다."
+      },
+      "proposedAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "conceptClusterKey": "BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "각",
+          "l4": "맞꼭지각"
+        }
+      },
+      "rpm": {
+        "baseLeafRecordId": "M1-RPM-176",
+        "basePath": [
+          "2022",
+          "M1-2",
+          "기본 도형",
+          "기본 도형",
+          "각",
+          "맞꼭지각"
+        ],
+        "effectiveParent": {
+          "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "기본 도형"
+        },
+        "baseLeafPresent": true,
+        "rpmLeafDebt": false,
+        "existingCompatibleCrosswalkRows": [
+          {
+            "id": "M1-RPM-176",
+            "mappingStatus": "FAMILY_ACTIVE"
+          },
+          {
+            "id": "M1-RPM-176-VERTICAL-ANGLE-EQUATION-20261113",
+            "mappingStatus": "DIRECT_ACTIVE"
+          }
+        ],
+        "existingExactDirectRows": [
+          "M1-RPM-176-VERTICAL-ANGLE-EQUATION-20261113"
+        ],
+        "bridgeAction": "REUSE_EXISTING_DIRECT",
+        "solutionResolverRun": false,
+        "solutionVerificationFinalAsserted": false
+      },
+      "nativeRegistration": {
+        "existingPt": true,
+        "existingTpl": true,
+        "exactActiveBindingCount": 1,
+        "addExactBindingRequired": false,
+        "doNotModifyExistingDefinitions": true,
+        "newProposal": null
+      },
+      "definitionReferences": [
+        {
+          "kind": "problemType",
+          "key": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "직각으로 표시된 각과 주어진 각을 합한 뒤 맞꼭지각으로 목표 각을 결정한다.",
+          "aliases": [
+            "ANGLE_RATIOS_WITH_STRAIGHT_ANGLE",
+            "CONCURRENT_LINES_ANGLE_DIFFERENCE",
+            "CONCURRENT_LINES_ANGLE_EQUATION",
+            "PT_ANGLE_CHASE_VERTICAL_AND_RIGHT_ANGLE",
+            "PT_ANGLE_MEASURE_FROM_ALGEBRAIC_RELATIONS",
+            "PT_M1_INTERSECTING_LINES_ANGLE_RELATION"
+          ]
+        },
+        {
+          "kind": "template",
+          "key": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "The template combines a vertical-opposite pair, an adjacent straight-angle equation, and a perpendicular reference angle.",
+          "aliases": [
+            "TPL_M1_SUPPLEMENTARY_AFFINE_ANGLES",
+            "TPL_M1_VERTICAL_AND_LINEAR_PAIR_DIFFERENCE",
+            "TPL_RIGHT_ANGLE_AND_TWO_LINEAR_ANGLES",
+            "TPL_RIGHT_ANGLE_STRAIGHT_ANGLE_LINEAR_EQUATION",
+            "TPL_THREE_ADJACENT_ANGLES_LINEAR_EQUATION",
+            "TPL_VERTICAL_ANGLE_LINEAR_AND_RIGHT_ANGLE_EQUATIONS",
+            "VERTICAL_PAIR_THEN_LINEAR_PAIR"
+          ]
+        }
+      ],
+      "crossConceptReferences": [],
+      "unresolved": [],
+      "normalDataAndDifficultyPreserved": true
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_2222cce621e720b3998c49bb63edb0c8ddb93f85655114d1630ec3daf7b9f832",
+      "status": "SEMANTIC_REVIEW_COMPLETE_PENDING_ROOT_CONFIRMATION",
+      "readCoverage": {
+        "prompt": true,
+        "choices": true,
+        "choiceCount": 0,
+        "providedSolution": true,
+        "textFieldsSha256": "1f6184fb991a654c49290692dc6a164917c3f1f0dd5e1843b80ecdddf99e0697",
+        "assets": [],
+        "visualObservation": "문제·해설 그림 필드가 모두 없는 문항임을 확인했다."
+      },
+      "primaryMethod": "한 꼭짓점의 대각선 수와 삼각형 분할 수를 변의 수로 나타내어 정다각형의 변 수와 각을 결정한다.",
+      "decisiveStep": "두 개수 관계를 같은 변 수의 일차식으로 세워 변 수를 정한 뒤 해당 정다각형의 내각·외각 공식을 적용한다.",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "beforeRpmPrimaryPath": null,
+      "sourceVsMetadataNativeFieldsEqual": true,
+      "judgment": {
+        "native": "KEEP",
+        "nativeReason": "기존 TPL 정의의 변 수·꼭짓점 대각선 수·삼각형 분할 수를 주어진 일차관계에 대입하는 골격과 일치한다. 식의 조합이나 최종 각을 묻는 형식 차이 때문에 새 TPL을 만들지 않는다.",
+        "rpm": "EXACT_MASTER_LEAF_IDENTIFIED",
+        "rpmReason": "변 수를 결정하는 핵심이 꼭짓점 대각선·삼각형 분할 개수이므로 RPM198. 정해진 변 수의 각 계산은 후속 직접 적용이다.",
+        "relatedMetaReason": "변 수와 각 관계는 같은 polygon-angle-and-count primary 타입 안의 직접 계산이므로 NONE을 유지한다. 별도 ACTIVE CC가 없는 일반 정다각형 각에 무관한 보각·정팔각형 넓이 키를 넣지 않는다."
+      },
+      "proposedAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "rpmPrimaryPath": {
+          "majorUnit": "평면도형",
+          "midUnit": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "변·대각선 개수"
+        }
+      },
+      "rpm": {
+        "baseLeafRecordId": "M1-RPM-198",
+        "basePath": [
+          "2022",
+          "M1-2",
+          "평면도형",
+          "다각형",
+          "삼각형·다각형의 각",
+          "변·대각선 개수"
+        ],
+        "effectiveParent": {
+          "key": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+          "courseKey": "M1-2",
+          "L1": "평면도형",
+          "L2": "다각형"
+        },
+        "baseLeafPresent": true,
+        "rpmLeafDebt": false,
+        "existingCompatibleCrosswalkRows": [
+          {
+            "id": "M1-RPM-198",
+            "mappingStatus": "FAMILY_ACTIVE"
+          }
+        ],
+        "existingExactDirectRows": [],
+        "bridgeAction": "EXACT_DIRECT_ROW_REQUIRED_FOR_REGISTRATION_PARENT_REF",
+        "solutionResolverRun": false,
+        "solutionVerificationFinalAsserted": false
+      },
+      "nativeRegistration": {
+        "existingPt": true,
+        "existingTpl": true,
+        "exactActiveBindingCount": 1,
+        "addExactBindingRequired": false,
+        "doNotModifyExistingDefinitions": true,
+        "newProposal": null
+      },
+      "definitionReferences": [
+        {
+          "kind": "problemType",
+          "key": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "정다각형 내각·외각 관계로 변 수와 성질을 결정하는 각 관계 L3이며 #23의 직접 계산과 풀이 핵심을 공유한다.",
+          "aliases": [
+            "PT_M1_POLYGON_ANGLE_RELATIONS",
+            "PT_M1_POLYGON_DIAGONAL_COUNT_FROM_PARTITION",
+            "PT_M1_POLYGON_INTERIOR_TO_EXTERIOR_ANGLE",
+            "PT_M1_POLYGON_TRIANGULATION_COUNT",
+            "PT_M1_REGULAR_POLYGON_COUNT_ANGLE_PROPERTY_JUDGMENT",
+            "PT_REGULAR_POLYGON_ANGLE_RELATIONS",
+            "PT_REGULAR_POLYGON_DIAGONAL_COUNT"
+          ]
+        },
+        {
+          "kind": "template",
+          "key": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "The template substitutes n, n−3, and n−2 into the given linear relation.",
+          "aliases": [
+            "TPL_M1_SIDE_COUNT_LOCAL_DIAGONALS_TRIANGLES_EQUATION",
+            "TWO_DIAGONALS_TWO_TRIANGLES_ONE_QUADRILATERAL"
+          ]
+        }
+      ],
+      "crossConceptReferences": [],
+      "unresolved": [],
+      "normalDataAndDifficultyPreserved": true
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_175a477a1b54c46883e3a4dc79848a6308d2f6b6d8adedd2445b0c7fad15e67f",
+      "status": "SEMANTIC_REVIEW_COMPLETE_PENDING_ROOT_CONFIRMATION",
+      "readCoverage": {
+        "prompt": true,
+        "choices": true,
+        "choiceCount": 0,
+        "providedSolution": true,
+        "textFieldsSha256": "99b3531b13a27efa96a967046c6f86c63645bd450b295dc1ec52b6096d3f3824",
+        "assets": [
+          {
+            "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q24.png",
+            "sha256": "81b2f363b46c2c469e5835f057f41f4eceae54100295d9a1767f097481997dc8",
+            "blobSha1": "8a366bde1020046d7c72c76aa199e735bd468de2",
+            "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+            "field": "image",
+            "actualVisualRead": true
+          },
+          {
+            "path": "archive/assets/images/26_팔마중_2학기_중간_중1_기출/q24-solution.svg",
+            "sha256": "6047432233f7ae8eabf8c0406bf025e850e30d28958c3fa4c3d026fd45922f91",
+            "blobSha1": "893bb043369e0e882d37708ab2bb4825ddfac33a",
+            "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+            "field": "solutionImage",
+            "actualVisualRead": true,
+            "render": {
+              "path": ".tmp/m1-meta-review/03-palma-q17-q24-renders/q24-solution.png",
+              "sha256": "496dd6f9ceece2a5cc978ed3439ccc44a65acaffafb43a3455f3827d1e3d871f",
+              "method": "Inkscape faithful SVG render; no asset edits"
+            }
+          }
+        ],
+        "visualObservation": "문제 그림에서 E가 첫 정사각형의 중심이고 J·I가 두 정사각형 경계의 교점임을 확인했다. 해설 SVG의 대응 선분 표시·각 표시와 빗금 조각, 색칠한 영역은 ASA 증명과 넓이 이동을 직접 뒷받침한다."
+      },
+      "primaryMethod": "정사각형의 대각선·직각 성질로 두 삼각형의 ASA 합동을 보인 뒤 같은 넓이 조각을 바꾸어 겹친 부분의 넓이를 계산한다.",
+      "decisiveStep": "중심에서 두 꼭짓점까지 같은 변과 그 양 끝의 같은 각으로 ASA 합동을 확정하고, 빼고 더하는 두 조각의 넓이를 상쇄한다.",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "conceptClusterKey": "POSITION_RELATION",
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+        "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "beforeRpmPrimaryPath": null,
+      "sourceVsMetadataNativeFieldsEqual": true,
+      "judgment": {
+        "native": "NATIVE_PARENT_CORRECTION_KEEP_PT_TPL",
+        "nativeReason": "실제 핵심은 ASA 합동으로 넓이를 옮기는 것이므로 위치 관계가 아니라 작도와 합동이다. 기존 square-configuration PT 및 CORE TPL의 prove congruent→transfer area 구조가 정확히 같으며 대표 예제의 다른 변 길이·배치 수는 literal 제한이 아니다.",
+        "rpm": "EXACT_MASTER_LEAF_IDENTIFIED",
+        "rpmReason": "현재 해설은 한 변과 그 양 끝의 두 각을 비교하는 ASA이므로 RPM193이다. 도형이 정사각형이라는 외형만으로 다각형 또는 위치 관계에 두지 않는다.",
+        "relatedMetaReason": "Primary is RPM M1-RPM-193 ASA congruence. Square properties supply the ASA conditions; after congruence the solution requires equal-area region transfer and square-area scaling, both outside the ASA leaf. These form one sequential chain, not repetitive mutual dependence. The existing native template covers this entire method and is reused, but its broad projection definition does not make the external-to-RPM concepts redundant."
+      },
+      "proposedAfter": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "conceptClusterKey": "CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+        "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+        "crossConceptKeys": [
+          "CC_SQUARE_PROPERTIES",
+          "CC_GEOMETRIC_AREA_TRANSFORM",
+          "CC_SQUARE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "ASA 합동"
+        }
+      },
+      "rpm": {
+        "baseLeafRecordId": "M1-RPM-193",
+        "basePath": [
+          "2022",
+          "M1-2",
+          "기본 도형",
+          "작도와 합동",
+          "삼각형의 합동",
+          "ASA 합동"
+        ],
+        "effectiveParent": {
+          "key": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+          "courseKey": "M1-2",
+          "L1": "기본 도형",
+          "L2": "작도와 합동"
+        },
+        "baseLeafPresent": true,
+        "rpmLeafDebt": false,
+        "existingCompatibleCrosswalkRows": [],
+        "existingExactDirectRows": [],
+        "bridgeAction": "EXACT_DIRECT_ROW_REQUIRED_FOR_REGISTRATION_PARENT_REF",
+        "solutionResolverRun": false,
+        "solutionVerificationFinalAsserted": false
+      },
+      "nativeRegistration": {
+        "existingPt": true,
+        "existingTpl": true,
+        "exactActiveBindingCount": 0,
+        "addExactBindingRequired": true,
+        "doNotModifyExistingDefinitions": true,
+        "newProposal": null
+      },
+      "definitionReferences": [
+        {
+          "kind": "problemType",
+          "key": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "Use symmetry and congruent triangles in adjoining-square regions.",
+          "aliases": [
+            "SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA"
+          ]
+        },
+        {
+          "kind": "template",
+          "key": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "definition": "Prove the labelled pair congruent, then transfer its area to the requested regions.",
+          "aliases": [
+            "ASA_TRIANGLE_PAIR_AND_COMPOSITE_AREA"
+          ]
+        }
+      ],
+      "crossConceptReferences": [
+        {
+          "key": "CC_SQUARE_PROPERTIES",
+          "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+          "definition": "네 변의 길이가 같고 네 각이 모두 직각이며 대각선의 길이가 같고 서로를 수직이등분한다",
+          "reason": "CC_SQUARE_PROPERTIES가 합동 조건을 만들고, CC_GEOMETRIC_AREA_TRANSFORM이 합동 결과를 넓이 상쇄로 사용하며, CC_SQUARE_AREA가 마지막 전체 넓이 계산에 필요하다. ASA Primary 이후 넓이 이동·계산을 순차 적용하므로 SEQUENTIAL이다."
+        },
+        {
+          "key": "CC_GEOMETRIC_AREA_TRANSFORM",
+          "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+          "definition": "합동이거나 넓이가 같은 도형으로 잘라 옮겨 복잡한 도형의 넓이를 단순한 직사각형 등의 넓이로 바꾸어 구하는 방법.",
+          "reason": "CC_SQUARE_PROPERTIES가 합동 조건을 만들고, CC_GEOMETRIC_AREA_TRANSFORM이 합동 결과를 넓이 상쇄로 사용하며, CC_SQUARE_AREA가 마지막 전체 넓이 계산에 필요하다. ASA Primary 이후 넓이 이동·계산을 순차 적용하므로 SEQUENTIAL이다."
+        },
+        {
+          "key": "CC_SQUARE_AREA",
+          "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+          "definition": "한 변의 길이의 제곱으로 넓이를 구하거나 역산",
+          "reason": "CC_SQUARE_PROPERTIES가 합동 조건을 만들고, CC_GEOMETRIC_AREA_TRANSFORM이 합동 결과를 넓이 상쇄로 사용하며, CC_SQUARE_AREA가 마지막 전체 넓이 계산에 필요하다. ASA Primary 이후 넓이 이동·계산을 순차 적용하므로 SEQUENTIAL이다."
+        }
+      ],
+      "unresolved": [],
+      "normalDataAndDifficultyPreserved": true,
+      "integrationClarification": {
+        "primaryReference": "RPM L1-L4, not the whole native PT/TPL wording",
+        "decision": "SEQUENTIAL",
+        "crossConceptKeys": [
+          "CC_SQUARE_PROPERTIES",
+          "CC_GEOMETRIC_AREA_TRANSFORM",
+          "CC_SQUARE_AREA"
+        ],
+        "nativeTemplateReused": true,
+        "DEEP_COMPOSITERejected": "No repeated mutually dependent structure in provided solution",
+        "ruleRefs": [
+          {
+            "path": "docs/agents/metadata.md",
+            "section": "CURRENT TOP — 단일 메타 Resolver 연결"
+          },
+          {
+            "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+            "sections": [
+              "5.1",
+              "5.2",
+              "8"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "newNativeProposals": {
+    "q17": {
+      "kind": "NEW_TEMPLATE_ONLY",
+      "ownerPack": "MIDDLE1",
+      "parentProblemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIRECT_INTERIOR_EXTERIOR_TOTALS",
+      "canonicalLabelKo": "다각형의 내각의 합과 외각의 합 계산",
+      "definition": "변의 수가 주어진 다각형의 내각의 합과 볼록다각형의 외각의 합을 각각 적용하여 요구한 합이나 차를 구한다.",
+      "internalSkeleton": "주어진 변의 수로 내각의 합을 나타낸다 → 외각의 합이 변의 수와 무관한 일정한 값임을 적용한다 → 두 총합에 요구된 연산을 한다.",
+      "aliases": [],
+      "rejectionOfExisting": "INTERIOR_EXTERIOR_SUM의 명시적 정의는 각의 비를 배분하고 이웃한 내각·외각의 보각을 이용하는 구조다. 이 문항은 비 배분·개별 내각 복원·보각 전환 없이 두 총합 공식을 직접 쓴다. 특정 숫자나 응답형식 차이가 아닌 필수 단계의 차이다.",
+      "status": "ROOT_MEANING_CONFIRMED_REGISTRATION_PENDING"
+    },
+    "q19": {
+      "kind": "NEW_PROBLEM_TYPE_AND_TEMPLATE_CANDIDATE",
+      "ownerPack": "MIDDLE1",
+      "sourceUnits": [
+        "M1-06"
+      ],
+      "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM",
+      "canonicalLabelKo": "별 모양 도형의 각의 합",
+      "definition": "별 모양의 교차 도형을 이루는 닫힌 경로에서 방향을 바꾸는 각의 총합을 이용해 표시된 꼭짓점 각들의 합을 결정한다.",
+      "templateKey": "TPL_M1_STAR_POLYGON_ANGLE_SUM_TURNING_ANGLE_TOTAL",
+      "templateLabelKo": "별 모양 도형의 외각을 이용한 각의 합",
+      "templateDefinition": "닫힌 별 모양 경로를 한 번 따라갈 때의 전체 회전각을 확인하고, 각 꼭짓점에서 방향을 바꾸는 각을 표시각의 보각으로 나타내어 표시각의 합을 구한다.",
+      "internalSkeleton": "닫힌 경로를 따라갈 때 진행 방향이 총 몇 바퀴 회전하는지 확인한다 → 꼭짓점별 방향 전환각을 표시각의 보각으로 나타낸다 → 전환각 총합을 진행 방향의 회전 횟수와 연결한다 → 표시각의 합을 정리한다.",
+      "aliases": [],
+      "rejectionOfExisting": "POLYGON_ANGLE_AND_COUNT는 정다각형의 변 수·내외각 공식이고 현재 해설의 교차 경로 회전 횟수는 포함하지 않는다. 기존 CROSSING_POLYGON_ANGLE_SUM 및 AUXILIARY_ANGLE_ELIMINATION은 삼각형·다각형 분할, 교차점 보조각과 맞꼭지각 소거를 명시한다. 현재 해설과 해설 그림은 각 꼭짓점의 바깥쪽 방향 전환각과 경로 회전 총합을 사용하며 그 분할·보조각 소거 단계가 없다.",
+      "minimalAlternativeForRoot": "ROOT_REJECTED: existing CROSSING_POLYGON_ANGLE_SUM explicitly requires partition/intersection-angle elimination; retain its definition and register a distinct turning-angle type.",
+      "status": "ROOT_MEANING_CONFIRMED_REGISTRATION_PENDING",
+      "generalizationNote": "진행 방향의 회전 횟수를 사용한다. 임의의 자기교차 도형에서 중심점 둘레의 감김 횟수와 언제나 같다고 일반화하지 않는다."
+    }
+  },
+  "boundary": {
+    "existingMetadataNotAssumedCorrect": true,
+    "sourceAnswersSolutionsAndAssetsEdited": false,
+    "difficultyOrQaFlagsEdited": false,
+    "mathProofCertification": "NOT_RUN_READING_ONLY",
+    "R1R2R3Rerun": false,
+    "officialResolverRun": false,
+    "registrationOrMainClaim": false,
+    "sourceCanonicalGitIndexRefsMutation": false,
+    "pendingRootSemanticConfirmation": true
+  },
+  "revision": 2,
+  "previousReport": {
+    "path": ".tmp/m1-meta-review/03-palma-q17-q24-review.json",
+    "sha256": "5ddb3d4cef5515ad9f5a7d04e21434af27f74de95da0460614c2e1ffc7816236",
+    "preserved": true
+  },
+  "revisionReason": "Root confirmed Q17 and Q19 new native definitions after direct source/canonical reading; clarified that Q24 Primary is RPM ASA and native template breadth does not erase cross-concepts outside that RPM leaf.",
+  "rootConfirmation": {
+    "q17NewTemplate": "CONFIRMED_BY_PARENT_DIRECT_REVIEW",
+    "q19NewProblemTypeAndTemplate": "CONFIRMED_BY_PARENT_DIRECT_REVIEW",
+    "productionRegistration": "NOT_RUN"
+  },
+  "newNativeExactBeforePlan": {
+    "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+    "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+    "fileSha256": "2a78e103a87399acd95e605209ce0960a1e8fc05bcbe576fc64d82803fb99b0e",
+    "nodes": [
+      {
+        "collection": "templates",
+        "keyField": "templateKey",
+        "key": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIRECT_INTERIOR_EXTERIOR_TOTALS",
+        "before": null,
+        "changeMode": "ADD_ONLY",
+        "ownerPack": "MIDDLE1"
+      },
+      {
+        "collection": "problemTypes",
+        "keyField": "problemTypeKey",
+        "key": "PT_M1_STAR_POLYGON_ANGLE_SUM",
+        "before": null,
+        "changeMode": "ADD_ONLY",
+        "ownerPack": "MIDDLE1"
+      },
+      {
+        "collection": "templates",
+        "keyField": "templateKey",
+        "key": "TPL_M1_STAR_POLYGON_ANGLE_SUM_TURNING_ANGLE_TOTAL",
+        "before": null,
+        "changeMode": "ADD_ONLY",
+        "ownerPack": "MIDDLE1"
+      }
+    ],
+    "note": "Draft exact-key absence only; full official registryChanges schema, binding, evidence and approvals remain root-owned registration work."
+  }
+}

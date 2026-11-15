@@ -1,0 +1,648 @@
+{
+  "schemaVersion": "m1-next-exam-concurrency-scope-v1",
+  "repository": "icefoxtail/AP------",
+  "mainSha": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+  "scope": "Read-only changed paths and registrar dependency inspection. No next-exam semantic question review, tests, Git/index/branch/PR mutation, or tracked-file changes.",
+  "targetSources": {
+    "next": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+    "completed": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js"
+  },
+  "pullRequests": [
+    {
+      "number": 1965,
+      "url": "https://github.com/icefoxtail/AP------/pull/1965",
+      "title": "fix(archive): 중1 유형 등록의 과정명·부모 표기 정정 경로",
+      "headSha": "0f65b93e4d8656c6f8c0710d64bd510e11228a89",
+      "baseSha": "208ab1649ad0e201e5b05917c259269dc545b0d0",
+      "state": "open",
+      "merged": false,
+      "mergeable": true,
+      "changedFileCount": 8,
+      "changedPaths": [
+        {
+          "path": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs",
+          "status": "modified"
+        },
+        {
+          "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+          "status": "modified"
+        },
+        {
+          "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+          "status": "modified"
+        },
+        {
+          "path": "docs/operations/binding-course-correction-v1.md",
+          "status": "added"
+        },
+        {
+          "path": "tests/archive-binding-course-correction.test.mjs",
+          "status": "added"
+        },
+        {
+          "path": "tests/archive-reviewed-exam-registration-v2.test.mjs",
+          "status": "modified"
+        },
+        {
+          "path": "tools/ci/reviewed-meta-register-pass.sh",
+          "status": "modified"
+        }
+      ],
+      "directNextSourceChanged": false,
+      "directCompletedSourceChanged": false,
+      "sourceRequestCanonicalDataChanged": []
+    },
+    {
+      "number": 1959,
+      "url": "https://github.com/icefoxtail/AP------/pull/1959",
+      "title": "feat(archive): rebuild Hyangrim 2024 problem figures with SVG engine",
+      "headSha": "84c2eaeea1fc24167bff3cfdbbcf151a42d02ae2",
+      "baseSha": "2b90b85dd848806ba62f844b85225db8bcae5ee3",
+      "state": "open",
+      "merged": false,
+      "mergeable": false,
+      "changedFileCount": 71,
+      "changedPaths": [
+        {
+          "path": ".github/workflows/geometry-publication-tests.yml",
+          "status": "modified"
+        },
+        {
+          "path": "archive/engine.html",
+          "status": "modified"
+        },
+        {
+          "path": "archive/tools/geometry-equation/nested-panel-measurement.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/README.md",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/manifest.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q10/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q10/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q11/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q11/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q13/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q13/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q14/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q14/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q15/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q15/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q16/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q16/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q17/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q17/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q18/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q18/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q19/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q19/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q2/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q2/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q20/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q20/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q21/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q21/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q23/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q23/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q3/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q3/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q5/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q5/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q6/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q6/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q7/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q7/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q8/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q8/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q9/plan.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/q9/source-facts.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/ops/problem-figures/hyangrim24-20261113/source-inventory.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/composite-candidate-svg-v1.mjs",
+          "status": "modified"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/construction-archive-capture-v1.md",
+          "status": "modified"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/construction-archive-capture-v1.mjs",
+          "status": "modified"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/font-name-table.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/problem-browser-font.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/problem-figure-path.md",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/problem-figure-runner.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/problem-output-envelope.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/problem-source-edge-styles.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/published-problem-capture.md",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/published-problem-capture.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/render-plan.mjs",
+          "status": "modified"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/setup-problem-browser-font.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/solid-figure-v1.mjs",
+          "status": "modified"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/solid_figure_observer.py",
+          "status": "modified"
+        },
+        {
+          "path": "archive/tools/geometry-equation/production/solid_figure_observer_worker.py",
+          "status": "modified"
+        },
+        {
+          "path": "archive/tools/geometry-equation/record-visual-browser-evidence.mjs",
+          "status": "modified"
+        },
+        {
+          "path": "archive/tools/geometry-equation/tests/construction-archive-capture-v1.test.mjs",
+          "status": "modified"
+        },
+        {
+          "path": "archive/tools/geometry-equation/tests/fixtures/legacy-rendered-layout-2180ce31.json",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/tests/nested-panel-measurement.browser.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/tests/nested-panel-measurement.test.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/tests/problem-figure-path.test.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/tests/problem-figure.browser.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/tests/problem-source-edge-styles.test.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/tests/published-problem-capture.test.mjs",
+          "status": "added"
+        },
+        {
+          "path": "archive/tools/geometry-equation/verify-rendered-layout.mjs",
+          "status": "modified"
+        },
+        {
+          "path": "tests/archive2-exam-tablet-fit.test.cjs",
+          "status": "added"
+        }
+      ],
+      "directNextSourceChanged": false,
+      "directCompletedSourceChanged": false,
+      "sourceRequestCanonicalDataChanged": []
+    },
+    {
+      "number": 1751,
+      "url": "https://github.com/icefoxtail/AP------/pull/1751",
+      "title": "Register META_PIPELINE reviewed batch",
+      "headSha": "ac702c3b21bb3ce67851f0d8831a3ad559fd7fd0",
+      "baseSha": "51337fecfad02283d410df24b6d2e92df32b594c",
+      "state": "open",
+      "merged": false,
+      "mergeable": true,
+      "changedFileCount": 324,
+      "directNextSourceChanged": false,
+      "directCompletedSourceChanged": false
+    },
+    {
+      "number": 1952,
+      "url": "https://github.com/icefoxtail/AP------/pull/1952",
+      "title": "feat(meta): REVIEW2 등록 완화 — 원본 미보유 칸, reviewStatus, 유형 미결합(typeHold)",
+      "headSha": "3e299cd72c248e7b74c2e3e409850e747cf1e6c7",
+      "baseSha": "9cb02201fb93d92f0e8263cf96c6ab6e981d1f53",
+      "state": "open",
+      "merged": false,
+      "mergeable": true,
+      "changedFileCount": 4,
+      "directNextSourceChanged": false,
+      "directCompletedSourceChanged": false
+    }
+  ],
+  "pr1965": {
+    "newSchema": "archive-binding-course-correction-request-v1",
+    "directProductionDataDelta": 0,
+    "newRegistrar": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+    "supportedCorrection": {
+      "pack": "MIDDLE1",
+      "status": "ACTIVE",
+      "curricula": [
+        "2015",
+        "2022"
+      ],
+      "beforeCourse": "中1 수학",
+      "afterCourse": "중1 수학",
+      "changesAllowed": "Exactly one existing binding row's standardCourse spelling, with all other fields byte/semantic protected.",
+      "sourceScope": "One existing original M1 exam; all affected consumers must already be approved and use corrected course, unchanged native PT/TPL/unit/subunit and existing indexed proof.",
+      "dependencies": "Exact current source/compiler/metadata/identity/runtime/proof hashes and matching canonical/runtime versions. All runtime UIDs are compared for semantic/approval/selection preservation.",
+      "approvalCreated": false,
+      "requiredSequencing": "If needed, standalone correction on current main first; build a later ordinary exam request from the new main. No actual request is part of this PR."
+    },
+    "ordinaryV2Delta": {
+      "file": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "change": "Canonical L2 matching uses existing compact(NFC, remove whitespace) on labels and target ref instead of exact array includes. Parent master membership, curriculum/course, exact-type exception, and explicit binding L1 guard remain.",
+      "scope": "Whitespace spelling equivalence only; no new leaf, native type, approval or automatic assignment."
+    },
+    "sharedFilesWithPr1952": [
+      "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "tests/archive-reviewed-exam-registration-v2.test.mjs"
+    ],
+    "nextExamDependency": "Not required merely to begin ordinary Wangun 2026 metadata review. Re-read current registrar if merged before building/applying the next request; do not use this correction to bypass normal v2 approval.",
+    "reviewLimit": "Static scope analysis only, not a full PR correctness review or test certification."
+  },
+  "pr1959": {
+    "declaredTarget": "archive/exams/original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+    "sourceInventoryRawSha256": "d529ffa8403b62f353ac9b0e8ea0ab3f5869b0cb720888f0b804591951b8b3d1",
+    "questionCount": 23,
+    "problemImageCount": 19,
+    "plannedOrdinals": [
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23
+    ],
+    "declaredAllowedLaterSourceFields": [
+      "image",
+      "imageSize",
+      "imageAlt"
+    ],
+    "actualSourceFileChanges": 0,
+    "actualSourceRequestChanges": 0,
+    "renderAndVisualReviewStatus": "NOT_RUN",
+    "currentSourceMatchesInventory": true,
+    "sharedImpact": [
+      "archive/engine.html",
+      "geometry production/render/capture helpers and geometry-publication-tests workflow"
+    ],
+    "futureAction": "Before reviewing Hyangrim 2024 midterm, refresh PR/main publication status, actual source/blob and image fingerprint inputs; keep image production ownership separate. Current PR head has engine inputs/plans and infrastructure, not direct source publication."
+  },
+  "sourceMetadataOnly": [
+    {
+      "path": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "blobSha1": "76377173ecb0ba989188561bbefac2afb3232479",
+      "rawSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
+      "bytes": 83556
+    },
+    {
+      "path": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+      "blobSha1": "a8de75bc9cc2b6a4479866d75b8ebec637404a04",
+      "rawSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+      "bytes": 81613
+    },
+    {
+      "path": "archive/exams/original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+      "blobSha1": "9bd66c89633797ff41672dd849ffae996d17a96d",
+      "rawSha256": "d529ffa8403b62f353ac9b0e8ea0ab3f5869b0cb720888f0b804591951b8b3d1",
+      "bytes": 48372
+    },
+    {
+      "path": "archive/exams/original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+      "blobSha1": "09af4de044d1d2c1dac7b2ae3a48b10223aff144",
+      "rawSha256": "d662414e9d0c338b15e583bf262d2afaf1e0d322ca5c7375f0a423c16f94d22e",
+      "bytes": 46667
+    },
+    {
+      "path": "archive/exams/original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
+      "blobSha1": "7a77b7f312aa941ef607a2fb8bf637294a3d010f",
+      "rawSha256": "ce6f5676cd83799e4973e41a592f33a4df2994d9fb6694451b351973f9bee721",
+      "bytes": 55251
+    }
+  ],
+  "hyangrimInventory": {
+    "basis": "git ls-tree -r --name-only at exact main33f26c795e7a86fc3b63737996c6885cff4c7bba",
+    "counts": {
+      "m1": 3,
+      "m2": 10,
+      "m3": 7,
+      "total": 20
+    },
+    "sources": [
+      "archive/exams/original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+      "archive/exams/original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
+      "archive/exams/original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+      "archive/exams/original/middle/m2/1final/21_향림중_1학기_기말_중2_수학.js",
+      "archive/exams/original/middle/m2/1final/22_향림중_1학기_기말_중2_수학.js",
+      "archive/exams/original/middle/m2/1final/23_향림중_1학기_기말_중2_기출.js",
+      "archive/exams/original/middle/m2/1final/24_향림중_1학기_기말_중2_기출.js",
+      "archive/exams/original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+      "archive/exams/original/middle/m2/2final/21_향림중_2학기_기말_중2_수학.js",
+      "archive/exams/original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+      "archive/exams/original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+      "archive/exams/original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js",
+      "archive/exams/original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+      "archive/exams/original/middle/m3/1final/22_향림중_1학기_기말_중3_수학.js",
+      "archive/exams/original/middle/m3/1mid/22_향림중_1학기_중간_중3_수학.js",
+      "archive/exams/original/middle/m3/1mid/23_향림중_1학기_중간_중3_기출.js",
+      "archive/exams/original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js",
+      "archive/exams/original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+      "archive/exams/original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
+      "archive/exams/original/middle/m3/2mid/21_향림중_2학기_중간_중3_수학.js"
+    ],
+    "existingPr1751SourceBindings": [
+      {
+        "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+        "progressOrder": 24,
+        "pr1751RequestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-071.json",
+        "requestExpectedSourceBlobSha1": "7992871989d4dcfd6afab8850d6f817f5d11efb7",
+        "currentMainSourceBlobSha1": "9bd66c89633797ff41672dd849ffae996d17a96d",
+        "sourceBlobMatches": false
+      },
+      {
+        "sourceArchiveFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js",
+        "progressOrder": 20,
+        "pr1751RequestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-106.json",
+        "requestExpectedSourceBlobSha1": "09af4de044d1d2c1dac7b2ae3a48b10223aff144",
+        "currentMainSourceBlobSha1": "09af4de044d1d2c1dac7b2ae3a48b10223aff144",
+        "sourceBlobMatches": true
+      }
+    ]
+  },
+  "reusedPriorEvidence": {
+    "path": "docs/operations/m1-meta-review-20261113/01-shinheung-concurrent-work-check.json",
+    "sha256": "e06a73f3224e7c2eb44aa898a7c14e2ee1c2b21b52340c913b7e7bf1fc2e8891",
+    "reason": "PR1751 and PR1952 exact heads unchanged; reuse 61/61 parsed request source headers rather than reread all payloads.",
+    "pr1751": {
+      "requestCount": 61,
+      "readCount": 61,
+      "failedOrUnparsed": 0,
+      "nextSourceOverlap": 0,
+      "completedSourceOverlap": 0,
+      "futureExamOverlap": {
+        "basis": "Exact sourceArchiveFile equality against the existing 44-exam progress list.",
+        "count": 6,
+        "exams": [
+          {
+            "progressOrder": 17,
+            "progressStatus": "PENDING",
+            "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-105.json",
+            "requestBlob": "0654242b7605a13e598408d9e9e88206c15c65f6",
+            "sourceArchiveFile": "original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.js"
+          },
+          {
+            "progressOrder": 20,
+            "progressStatus": "PENDING",
+            "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-106.json",
+            "requestBlob": "76c6bc5df4bf31eb81457a2086ddc38db0fa6c93",
+            "sourceArchiveFile": "original/middle/m1/2final/24_향림중_2학기_기말_중1_기출.js"
+          },
+          {
+            "progressOrder": 24,
+            "progressStatus": "PENDING",
+            "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-071.json",
+            "requestBlob": "9d1abc563ec68316485f7bbf0ae262efd3b57cae",
+            "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js"
+          },
+          {
+            "progressOrder": 38,
+            "progressStatus": "PENDING",
+            "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-101.json",
+            "requestBlob": "87355ff9afa9121c9b710256fed5fbd1e625643b",
+            "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js"
+          },
+          {
+            "progressOrder": 39,
+            "progressStatus": "PENDING",
+            "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-087.json",
+            "requestBlob": "5d9d25e607070d5b03740c6c467ae746195ccbda",
+            "sourceArchiveFile": "original/middle/m1/1mid/19_왕운중_1학기_중간_중1_기출.js"
+          },
+          {
+            "progressOrder": 40,
+            "progressStatus": "PENDING",
+            "requestPath": ".archive-meta-register/inbox/meta-pipeline-batch-20261111-098.json",
+            "requestBlob": "858f1badfc5909e9befd3facc2d50c5503312702",
+            "sourceArchiveFile": "original/middle/m1/1mid/19_팔마중_1학기_중간_중1_기출.js"
+          }
+        ],
+        "nextAction": "Before starting each listed exam, recheck PR1751 head, main registration/application receipts, and that exam's metadata assignment state. Keep one-exam-at-a-time review and preserve independently pending source work."
+      }
+    },
+    "pr1952": {
+      "sourceChanges": 0,
+      "requestChanges": 0,
+      "nextSourceOverlap": 0,
+      "completedSourceOverlap": 0,
+      "changedPaths": [
+        "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+        "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+        "docs/agents/metadata.md",
+        "tests/archive-reviewed-exam-registration-v2.test.mjs"
+      ]
+    }
+  },
+  "mainWriter": {
+    "id": 43444692701,
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43444692701",
+    "eventHead": "208ab1649ad0e201e5b05917c259269dc545b0d0",
+    "status": "completed",
+    "conclusion": "success",
+    "completedAt": "2026-11-13T15:08:06Z",
+    "jobs": [
+      {
+        "id": 131950960315,
+        "name": "register",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 131950962497,
+        "name": "test",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ],
+    "result": "PUSHED",
+    "attempts": 1,
+    "registeredSha": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+    "persistenceLog": "2026-11-13T15:07:51.1458941Z [single Archive registration writer] result=PUSHED attempts=1 main_sha=33f26c795e7a86fc3b63737996c6885cff4c7bba registered_sha=33f26c795e7a86fc3b63737996c6885cff4c7bba",
+    "rootCursorOnlyProof": {
+      "path": "docs/operations/m1-meta-review-20261113/01-shinheung-main-cursor-only-advance.json",
+      "sha256": "2cff3e6bca78775fe4703e58708fef979f68284bef218fdd3b18dba839afe1b1",
+      "status": "Parent independently verified only two AutoMeta state files changed; archive/docs/tools/tests subtree equality permits reuse of actual24 proof. No duplicate consumer tests by this agent."
+    }
+  },
+  "noTestsRun": true,
+  "noQuestionSemanticReview": true,
+  "noGitIndexOrTrackedMutations": true,
+  "observedAtUtc": "2026-11-13T15:12:41.295796+00:00"
+}

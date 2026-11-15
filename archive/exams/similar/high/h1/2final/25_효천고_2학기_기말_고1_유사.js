@@ -442,9 +442,9 @@ window.questionBank = [
     "solution": "[키포인트] 유리함수의 점근선과 가지의 방향으로 $b,c$와 $a$의 부호를 정한 뒤, 무리함수의 $x$절편 조건을 식으로 바꾼다.\n조건 정리: 그림에서 점근선은 $x=2$, $y=2$이고 가지의 방향으로 $a\\gt0$이다. 따라서 $-b=2$, $c=2$이므로 $b=-2$이다.\n풀이 방향: 무리함수의 $x$절편을 $a$로 나타내고 그 좌표가 $0$ 이상이라는 조건을 적용한다.\n정석 풀이: 무리함수는 $y=-\\sqrt{a(x+2)}+2$이다. $y=0$이면 $a(x+2)=4$이므로 $x=\\dfrac4a-2$이다. 이 값이 $0$ 이상이려면 $\\dfrac4a\\ge2$이고 $a\\gt0$이므로 $0\\lt a\\le2$이다. 따라서 $a-b+c=a+4$의 최댓값은 $a=2$일 때 $6$이다.\n따라서 정답은 ⑤이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_효천고_2학기_기말_고1_유사/q13.svg",
+    "image": "assets/images/25_효천고_2학기_기말_고1_유사/q13-problem-v2.svg",
     "imageStatus": "reviewed_pass",
-    "visualAsset": "assets/images/25_효천고_2학기_기말_고1_유사/q13.svg",
+    "visualAsset": "assets/images/25_효천고_2학기_기말_고1_유사/q13-problem-v2.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
@@ -456,7 +456,7 @@ window.questionBank = [
         "asymptote"
       ],
       "essentialVisualFacts": "y=4/(x+1)+2; radical y=-sqrt(4(x-1))+2; asymptotes x=-1,y=2",
-      "assetRef": "plan-locked"
+      "assetRef": "assets/images/25_효천고_2학기_기말_고1_유사/q13-problem-v2.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"
@@ -598,9 +598,10 @@ window.questionBank = [
     "solution": "[키포인트] 목표값에서 시작해 $f(x)=t$의 원상을 세 단계 거꾸로 추적한다.\n조건 정리: $0\\le t\\lt6$이면 $f(x)=t$는 $x=\\dfrac t2$, $x=6-\\dfrac t2$의 두 해를 갖는다.\n풀이 방향: $2$의 원상에서 시작해 두 번 더 원상을 구한다.\n정석 풀이: $f(x)=2$의 해는 $1,5$이다. 다음 단계에서 $1$의 원상은 $\\dfrac12,\\dfrac{11}{2}$이고, $5$의 원상은 $\\dfrac52,\\dfrac72$이므로 네 값이 생긴다. 이 네 값은 모두 $0$과 $6$ 사이의 값이고 $6$이 아니므로 각각 다시 두 개의 원상을 갖는다. 서로 겹치는 값이 없으므로 마지막 원상은 모두 $8$개이다.\n따라서 정답은 ③이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_효천고_2학기_기말_고1_유사/q17.svg",
+    "image": "assets/images/25_효천고_2학기_기말_고1_유사/q17-problem-v2.svg",
+    "imageSize": "tall",
     "imageStatus": "reviewed_pass",
-    "visualAsset": "assets/images/25_효천고_2학기_기말_고1_유사/q17.svg",
+    "visualAsset": "assets/images/25_효천고_2학기_기말_고1_유사/q17-problem-v2.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",

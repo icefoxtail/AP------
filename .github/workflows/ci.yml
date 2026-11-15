@@ -47,8 +47,9 @@ jobs:
     needs: plan
     if: needs.plan.outputs.run == 'true'
     runs-on: ubuntu-latest
-    # Source PRs now generate their temporary projection before running the unchanged tests.
-    timeout-minutes: 15
+    # Source PRs generate and verify their temporary projection, including one
+    # bounded builder recovery, before running the unchanged full test scope.
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:

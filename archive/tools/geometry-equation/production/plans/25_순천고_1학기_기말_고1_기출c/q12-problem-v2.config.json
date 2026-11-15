@@ -1,0 +1,165 @@
+{
+  "sourcePath": "archive/exams/original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js",
+  "questionId": 12,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "3",
+                "-4",
+                "1"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -2,
+            6
+          ],
+          "viewport": [
+            -2,
+            6,
+            -2,
+            6
+          ],
+          "requiredPoints": [
+            {
+              "id": "V",
+              "x": 2,
+              "y": -1,
+              "marker": "NONE"
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "h2",
+                "slope": "0",
+                "intercept": "2",
+                "style": "DASHED",
+                "label": "y=2"
+              }
+            ],
+            "points": [
+              {
+                "value": "2-sqrt(3)",
+                "id": "P",
+                "axis": "x",
+                "unnamed": true
+              },
+              {
+                "curveX": "1",
+                "id": "Q",
+                "unnamed": true
+              },
+              {
+                "curveX": "3",
+                "id": "R",
+                "unnamed": true
+              },
+              {
+                "value": "2+sqrt(3)",
+                "id": "S",
+                "axis": "x",
+                "unnamed": true
+              },
+              {
+                "unnamed": true,
+                "curveX": "2-sqrt(3)",
+                "id": "U"
+              },
+              {
+                "unnamed": true,
+                "curveX": "2+sqrt(3)",
+                "id": "W"
+              },
+              {
+                "curveX": "4",
+                "unnamed": true,
+                "id": "F"
+              },
+              {
+                "x": "0",
+                "y": "0",
+                "id": "O"
+              }
+            ],
+            "segments": [
+              {
+                "from": "U",
+                "id": "pGuide",
+                "dashed": true,
+                "to": "P"
+              },
+              {
+                "from": "W",
+                "id": "sGuide",
+                "dashed": true,
+                "to": "S"
+              }
+            ],
+            "callouts": [
+              {
+                "point": "P",
+                "direction": "S",
+                "id": "labelP",
+                "text": "p"
+              },
+              {
+                "point": "Q",
+                "direction": "S",
+                "id": "labelQ",
+                "text": "q"
+              },
+              {
+                "point": "R",
+                "direction": "S",
+                "id": "labelR",
+                "text": "r"
+              },
+              {
+                "point": "S",
+                "direction": "S",
+                "id": "labelS",
+                "text": "s"
+              },
+              {
+                "direction": "NE",
+                "point": "F",
+                "text": "y=f(x)",
+                "id": "fLabel"
+              }
+            ]
+          },
+          "axisScale": {
+            "y": "1/2",
+            "x": "1"
+          }
+        },
+        "caption": "위로 열린 이차함수 y=f(x)에서 y=2와의 교점 x좌표를 p, s로 나타내고, x절편을 q, r로 나타내어 p<q<r<s를 보인다.",
+        "pointNames": {
+          "O": "O"
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 12
+      }
+    }
+  ]
+}

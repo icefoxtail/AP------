@@ -570,8 +570,11 @@ window.questionBank = [
     "rpmPrimaryIdCandidate": "M3-RPM-007",
     "rpmBindingStatus": "DIRECT_BINDING_GAP",
     "learningDifficulty": "중",
-    "solutionImage": "assets/images/22_연향중_1학기_중간_중3_수학/q10_solution.svg",
-    "problemImage": "assets/images/22_연향중_1학기_중간_중3_수학/q10_replacement.svg"
+    "solutionImage": "assets/images/22_연향중_1학기_중간_중3_기출c/q10-solution-v2.svg",
+    "problemImage": "assets/images/22_연향중_1학기_중간_중3_수학/q10_replacement.svg",
+    "solutionImageAlt": "해설 그림: 파란 삼각형에는 밑변 4√5 cm와 수직 높이 2√2 cm를, 주황 직사각형에는 가로 x cm와 높이 √5 cm를 표시한 개념도이다. 크기는 비례하지 않는다.",
+    "solutionImageCaption": "삼각형 넓이는 ½·4√5·2√2=4√10 cm²이고 직사각형 넓이는 x√5 cm²이다. 4√10=√2·x√5이므로 x=4 cm, 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -799,7 +802,10 @@ window.questionBank = [
     "rpmBindingStatus": "RPM_ONLY",
     "learningDifficulty": "중",
     "problemImage": "assets/images/22_연향중_1학기_중간_중3_수학/q14.png",
-    "solutionImage": "assets/images/22_연향중_1학기_중간_중3_수학/q14_solution.svg"
+    "solutionImage": "assets/images/22_연향중_1학기_중간_중3_기출c/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 x² 타일 하나, 주황 x 타일 세 개, 초록 단위 타일 두 개가 빈틈없이 직사각형을 이룬다.",
+    "solutionImageCaption": "넓이의 합은 x²+3x+2이며 (x+1)(x+2)로 인수분해된다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1130,7 +1136,10 @@ window.questionBank = [
     "rpmBindingStatus": "UNKNOWN",
     "learningDifficulty": "중",
     "problemImage": "assets/images/22_연향중_1학기_중간_중3_수학/q20.png",
-    "solutionImage": "assets/images/22_연향중_1학기_중간_중3_수학/q20_solution.svg"
+    "solutionImage": "assets/images/22_연향중_1학기_중간_중3_기출c/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 윗줄과 아랫줄은 서로 직각인 두 고리의 동일한 길이 조각을 순서대로 펼친 것이다. 아래 별도 선분은 매듭에 쓰는 끈이다.",
+    "solutionImageCaption": "한 방향 고리는 28 cm이고 두 직각 방향의 고리는 56 cm이다. 매듭 10 cm를 더하면 필요한 길이는 66 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

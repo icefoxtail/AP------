@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "crosswalk-append-existing-approval-impact-v1",
+  "recordedAt": "2026-11-13T16:43:01.422Z",
+  "status": "READ_ONLY_CODE_TRACE_COMPLETE_NO_POST_CHANGE_EXECUTION",
+  "scope": {
+    "existingExam": "2026 신흥중 중1 2학기 중간",
+    "existingExamQuestionCount": 24,
+    "upcomingExam": "2026 왕운중 중1 2학기 중간",
+    "upcomingQuestionCount": 23,
+    "inspectedMain": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+    "inspectedPr": {
+      "number": 1967,
+      "head": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+      "url": "https://github.com/icefoxtail/AP------/pull/1967"
+    },
+    "crosswalk": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "currentMainSha256": "f43c66b50f9b7bb188114f6105cc173ad1e5895f0aa403a902e27510738fb8da",
+      "currentMainRows": 245,
+      "proposedRows": 260,
+      "proposedSha256PrefixReportedByRoot": "3c53",
+      "unchangedExistingRowsReportedByRoot": 245,
+      "proposedAppendRows": 15,
+      "postAppendBytesNotExecutedByThisAudit": true
+    }
+  },
+  "conclusion": {
+    "wholeFileHashAppendAloneRevokesExistingNativeReceipt": false,
+    "wholeFileHashAppendAloneRevokesExistingCanonicalConsumerApproval": false,
+    "wholeFileHashAppendAloneBreaksGeometryNativeProofTest": false,
+    "freshOrReplayedOldRequestCanFail": true,
+    "basis": "This conclusion is limited to raw evidence-hash validation. Existing source, current accepted metadata, identity, runtime rows, selected definitions and immutable approval documents must remain preserved, and the new canonical manifest must be rebuilt consistently. It is not a post-change Consumer PASS or a general waiver for arbitrary registry changes."
+  },
+  "approvalEvidence": {
+    "existingRev3": {
+      "gitRef": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+      "rawSha256": "aea5a3bb228638586c4a36c3eb4d1e8528d76d5a3787a0f52bcac8ab2f2c9054",
+      "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
+      "approvalType": "FINAL_QA",
+      "approvalRefs": [
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-review.json",
+          "sha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0",
+          "actualSha256": "8b2c99318e81f7452fb2dde608eacbdc0fa95de5b7493656944ee269a49829b0"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-semantic-read-checkpoint.json",
+          "sha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521",
+          "actualSha256": "54b03884ea1c0fd49871a57ff75cca4c6880d79414d7d391d0e14fc9a0936521"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-source-metadata-delta.json",
+          "sha256": "e84cfa75c6d2fd10c4643ffd96df9fa87cf0bd2fe7c894464aa6ac29eafc4a06",
+          "actualSha256": "e84cfa75c6d2fd10c4643ffd96df9fa87cf0bd2fe7c894464aa6ac29eafc4a06"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-classification-check.json",
+          "sha256": "f6272a524da0f1f16e142a3fe585134e5123059fa49cc0f0f9c63086332c0950",
+          "actualSha256": "f6272a524da0f1f16e142a3fe585134e5123059fa49cc0f0f9c63086332c0950"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-verification-boundary.json",
+          "sha256": "ae95c1a24a5c1704d114175cbd1d3ef56159ff5dfdfdb1f30f1937f1078c99b1",
+          "actualSha256": "ae95c1a24a5c1704d114175cbd1d3ef56159ff5dfdfdb1f30f1937f1078c99b1"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-crosswalk-preparation.json",
+          "sha256": "68f2a73b0bc5ff948985c7f22962f66b546dd387e5200d7003747b3b451d980f",
+          "actualSha256": "68f2a73b0bc5ff948985c7f22962f66b546dd387e5200d7003747b3b451d980f"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-pack-scope-impact.json",
+          "sha256": "880162ca6835635b1a7c7d0911443214e89d0ac70a696c85b464c08c1e7684a9",
+          "actualSha256": "880162ca6835635b1a7c7d0911443214e89d0ac70a696c85b464c08c1e7684a9"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-tag-annotation-repair.json",
+          "sha256": "2cab1eb2d69efbc6f0fcbb80f3dc41d2d40fbc5bc1e6a199f7c5e703095a33a0",
+          "actualSha256": "2cab1eb2d69efbc6f0fcbb80f3dc41d2d40fbc5bc1e6a199f7c5e703095a33a0"
+        },
+        {
+          "path": "docs/operations/m1-meta-review-20261113/01-shinheung-canonical-parent-repair.json",
+          "sha256": "025b76456d75f84c5f4f1c2aa73041eba1c96954232e7e6a2bffacf68877f8cb",
+          "actualSha256": "025b76456d75f84c5f4f1c2aa73041eba1c96954232e7e6a2bffacf68877f8cb"
+        }
+      ],
+      "approvalRefCount": 9,
+      "matchingRawHashCount": 9,
+      "mutableCrosswalkApprovalRefCount": 0,
+      "immutableOperationsDocRefCount": 9,
+      "itemCrosswalkEvidenceCount": null
+    },
+    "pr1967Request": {
+      "gitRef": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+      "path": ".archive-meta-register/inbox/m1-shinheung-meta-closeout-20261113-bf-r1.json",
+      "rawSha256": "d5eaebc7e756eb076078e685649bbcd87eefaef7b7f7e4f54a1b5a28ef1f6c55",
+      "requestId": "m1-shinheung-meta-closeout-20261113-bf-r1",
+      "approvalType": "FINAL_QA",
+      "approvalRefs": [
+        {
+          "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/01-shinheung-rationale-review.json",
+          "sha256": "bdf93959515ee2ba63f8c0e681d0cd007a1fcb7d5428868f8e28a1584d47eff2",
+          "actualSha256": "bdf93959515ee2ba63f8c0e681d0cd007a1fcb7d5428868f8e28a1584d47eff2"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/02-shinheung-auxiliary-review.json",
+          "sha256": "85524c542fc7ed2e37dcea1a8d8cc4c8ccbe55ff3dbe59c7c22aedb66c44c0ed",
+          "actualSha256": "85524c542fc7ed2e37dcea1a8d8cc4c8ccbe55ff3dbe59c7c22aedb66c44c0ed"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+          "sha256": "af9ca64b73bcf0be8e0bb3918ff929ebca1491f3589b401aea1efa20e9d9557d",
+          "actualSha256": "af9ca64b73bcf0be8e0bb3918ff929ebca1491f3589b401aea1efa20e9d9557d"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/10-shinheung-only-source-integration.json",
+          "sha256": "8675933a0318aea34991bd261e2866dd900653575c690900d4b2dd6c4839609d",
+          "actualSha256": "8675933a0318aea34991bd261e2866dd900653575c690900d4b2dd6c4839609d"
+        },
+        {
+          "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/11-shinheung-classification-audit-ledger.json",
+          "sha256": "9389a4d7eb83a6652a8939daef265a92d0d98a3041add8f63501e883bccf74fc",
+          "actualSha256": "9389a4d7eb83a6652a8939daef265a92d0d98a3041add8f63501e883bccf74fc"
+        }
+      ],
+      "approvalRefCount": 5,
+      "matchingRawHashCount": 5,
+      "mutableCrosswalkApprovalRefCount": 0,
+      "immutableOperationsDocRefCount": 5,
+      "itemCrosswalkEvidenceCount": 24
+    },
+    "distinction": "The existing crosswalk-preparation evidence is an immutable operations document. Neither approval.evidenceRefs list directly includes the mutable canonical crosswalk file. PR1967 item evidence lists do include that file, which matters at registration/replay but is not recursively checked by nativeReviewReceipt."
+  },
+  "traces": [
+    {
+      "pathway": "FRESH_REQUEST_AND_REGISTERED_REPLAY_VERIFY_PROJECTION",
+      "code": {
+        "gitRef": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+        "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+        "sha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1",
+        "lineScopes": [
+          "1794-1812",
+          "1841-1858"
+        ],
+        "functions": [
+          "registerReviewedExamV2"
+        ]
+      },
+      "checks": "Every approval, item and registry-change evidence ref is raw-SHA checked before source/receipt/replay branching.",
+      "impact": "A request still bound to f43 cannot be replayed against changed middle1.json bytes. This rejects the request as evidence missing/drift; it is not itself a revocation of an already stored Consumer assignment.",
+      "affectedScope": "The whole 24-item pending PR1967 request; item crosswalk evidence is present in all24 items, including parent-only Q8/Q10."
+    },
+    {
+      "pathway": "AUTOMETA_NATIVE_REVIEW_RECEIPT",
+      "code": {
+        "gitRef": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+        "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+        "sha256": "4ffb982960da1c72aca906dc8977d76b1f2a37d9f63debe187559ce7a62a1f9f",
+        "lineScopes": [
+          "59-109",
+          "112-133"
+        ],
+        "functions": [
+          "nativeReviewReceipt",
+          "activeBindingContext"
+        ]
+      },
+      "checks": "nativeReviewReceipt line96 hashes receipt.approval.evidenceRefs only. It separately binds full current source SHA/blob, source denominator, UID/ordinal, current metadata, runtime row, identity and metadata revision. activeBindingContext independently checks ACTIVE exact binding/definition/runtime-owner and owner-pack course scope.",
+      "doesNotCheck": "No recursive parsing of evidence document contents, and no loop over the original request items.evidenceRefs or registryChanges evidence.",
+      "impact": "Both the prior9 and prospective5 approval refs are immutable operations documents, so a canonical crosswalk append alone does not cause this receipt proof to fail.",
+      "affectedScope": "All24 native receipt candidates; availability of the producer reuse path remains subject to its other identity, source, enum/difficulty and scope guards."
+    },
+    {
+      "pathway": "MIDDLE_GEOMETRY_NATIVE_APPROVAL_TEST",
+      "code": {
+        "gitRef": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+        "path": "tests/meta-foundation-middle-geometry-runtime.test.js",
+        "sha256": "235dea0eb9c4c38910a96a4d164999c74d1345f847bb9e1fc6f3eccdcf437264",
+        "lineScopes": [
+          "98-139",
+          "141-147",
+          "185-200"
+        ],
+        "functions": [
+          "assertNativeApproval",
+          "nativeInput"
+        ]
+      },
+      "checks": "The test calls activeBindingContext and nativeReviewReceipt, then checks receipt identity equality and metadata/runtime approval values. Its negative hash-drift fixture mutates approval.evidenceRefs[0], not a mutable item-only crosswalk ref.",
+      "impact": "The same9/5 immutable-document distinction applies; this test contains no independent all-item crosswalk hash verification.",
+      "affectedQuestionOrdinals": [
+        6,
+        15,
+        16,
+        20,
+        23
+      ],
+      "affectedNativeQuestionCount": 5
+    },
+    {
+      "pathway": "ACTUAL_CANONICAL_CONSUMER",
+      "code": {
+        "gitRef": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+        "path": "archive/archive2-canonical.js",
+        "sha256": "f431557509e91ff70ea8d02be69c4ed1a2981c5e99b02b8b62e8636bd56e6760",
+        "lineScopes": [
+          "173-182",
+          "1289-1348"
+        ],
+        "functions": [
+          "reviewedRegistrationProofPaths",
+          "resolveCatalog"
+        ]
+      },
+      "loader": {
+        "gitRef": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+        "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+        "sha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1",
+        "lineScopes": [
+          "2268-2289"
+        ],
+        "functions": [
+          "loadResolvedConsumerCatalog"
+        ]
+      },
+      "checks": "The loader verifies the current canonical input manifest and registered proof bytes. Assignment construction checks REGISTERED receipt provenance, exact current source raw SHA, metadata revision/fingerprints/approved fields, and the unique ACTIVE runtime overlay with matching accepted classification and selection fields.",
+      "doesNotCheck": "This assignment path does not invoke registerReviewedExamV2 and does not read the original request or rehash every item evidence ref. It does not recursively validate the historical crosswalk snapshot referenced inside an immutable document.",
+      "impact": "A consistent new manifest and unchanged current native source/metadata/runtime preserve the existing approval input. The old crosswalk whole-file hash is not an independent expiry condition for this assignment.",
+      "affectedQuestionCount": 24,
+      "runtimeOwnerCounts": {
+        "MIDDLE1": 19,
+        "MIDDLE_GEOMETRY": 5
+      }
+    },
+    {
+      "pathway": "STUDENT_CONSUMER_FINAL_QUERY_CHECK",
+      "code": {
+        "gitRef": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+        "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+        "sha256": "8a217ce01fa7c774214f17f069b0ac68e0b1e319d0b147b8273eb215579b9b43",
+        "lineScopes": [
+          "204-236",
+          "251-282"
+        ],
+        "functions": [
+          "loadConsumer",
+          "checkRow"
+        ]
+      },
+      "checks": "Loads the real canonical Consumer and page index, then checks current assignment APPROVED/PASS with no canonical pending reasons, correct UID/source identity, fields and directSelectable. It does not re-run registration evidence validation.",
+      "impact": "The final query result must still be observed after Wangun changes. This code trace does not substitute for that direct-impact check."
+    }
+  ],
+  "operationalSequence": {
+    "pending1967": "Finish the owning task’s actual registration/writer and verify its new receipt/source before Wangun publication, because its pending request binds f43.",
+    "thenWangun": "Refresh actual main; keep the newly closed Shinheung source/current receipt/approval documents/metadata/runtime intact while appending only the planned new crosswalk rows.",
+    "historicRev3": "PR1967 changes Shinheung source bytes from ed814 to2f1ab. After its successful new registration, the old rev3 remains a historical verified snapshot; the new byte-bound receipt becomes the current assignment authority. That change is separate from the Wangun crosswalk append.",
+    "noBypassProposed": true
+  },
+  "boundaries": {
+    "rawQuestionAnswerSolutionCopied": false,
+    "semanticReread": false,
+    "mathQa": false,
+    "r1r2r3": false,
+    "testsRun": false,
+    "registrarExecuted": false,
+    "consumerExecutedAfterAppend": false,
+    "sourceCanonicalEdits": false,
+    "gitIndexOrApiWrites": false,
+    "externalCommentsOrMessages": false,
+    "postAppendPassClaimed": false
+  },
+  "relatedScopeReport": {
+    "path": ".tmp/m1-meta-review/02-pr1967-concurrent-scope-check.json",
+    "sha256": "9285f9a611fb5147d006949111457dcde7e6dcc5a755ce57adb31a3d2a5c1141"
+  }
+}
