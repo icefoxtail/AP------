@@ -411,7 +411,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차방정식",
@@ -419,7 +419,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "다음은 어느 해 4월의 달력이다. 위아래로 이웃하는 두 날짜를 곱한 값이 $228$일 때, 아래의 날짜 $x$를 구하기 위한 방정식으로 가장 적절한 것은? (4점)<br><br>",
+    "content": "다음은 어느 해 4월의 달력이다. 위아래로 이웃하는 두 날짜를 곱한 값이 $228$일 때, 아래의 날짜 $x$를 구하기 위한 방정식으로 가장 적절한 것은? (4점)<br><br><strong>4월</strong><br>\n| 일 | 월 | 화 | 수 | 목 | 금 | 토 |\n| :---: | :---: | :---: | :---: | :---: | :---: | :---: |\n|  | 1 | 2 | 3 | 4 | 5 | 6 |\n| 7 | 8 | 9 | 10 | 11 | 12 | 13 |\n| 14 | 15 | 16 | 17 | 18 | 19 | 20 |\n| 21 | 22 | 23 | 24 | 25 | 26 | 27 |\n| 28 | 29 | 30 |  |  |  |  |",
     "choices": [
       "$x(x+7) = 228$",
       "$x(x-7) = 228$",
@@ -433,8 +433,6 @@ window.questionBank = [
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "image": "assets/images/21_금당중_1학기_기말_중3_수학/q09.png",
-    "imageSize": "medium",
     "sourceMode": "ORIGINAL",
     "provenance": {
       "sourceMode": "ORIGINAL",
@@ -463,7 +461,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": ["객관식","이차함수의 뜻"],
     "wide": false,
     "content": "아래 그림은 한 변의 길이가 $x+1$인 정사각형에서 한 변의 길이가 1인 정사각형을 잘라낸 것이다. 색칠한 부분의 넓이를 $y$라고 할 때, $y$를 $x$에 대한 식으로 바르게 나타낸 것은? (4점)<br><br>",
@@ -480,8 +478,8 @@ window.questionBank = [
     "subUnit": "이차함수와 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "image": "assets/images/21_금당중_1학기_기말_중3_수학/q10.png",
-    "imageSize": "medium",
+    "image": "assets/images/21_금당중_1학기_기말_중3_기출c/q10-problem-v2.svg",
+    "imageSize": "large",
     "sourceMode": "ORIGINAL",
     "provenance": {
       "sourceMode": "ORIGINAL",
@@ -498,7 +496,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": ["CC_AREA"],
     "conditionKeys": [],
-    "integrationPattern": "REINTERPRETATION"
+    "integrationPattern": "REINTERPRETATION",
+    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_기출c/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위 하얀 부분은 잘라낸 한 변 1인 정사각형이다. 남은 부분에서 한 변 x인 파란 정사각형과 가로가 x, 세로가 1인 두 주황 직사각형이 보인다.",
+    "solutionImageCaption": "파란 정사각형의 넓이는 x²이고 주황 직사각형의 넓이는 각각 x이다. 따라서 y=x²+2x이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -549,7 +551,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_기출c/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 y=3x²와 주황 포물선 y=−7x²/2는 모두 원점에 꼭짓점이 있다. 두 포물선은 각각 위와 아래로 열린다.",
+    "solutionImageCaption": "y=3x²는 꼭짓점이 원점이고 위로 열린다. 이차항 계수의 절댓값 3이 7/2보다 작으므로 파란 그래프의 폭이 더 넓다. 옳은 설명은 ㄴ과 ㄷ이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -584,7 +590,7 @@ window.questionBank = [
     "subUnit": "이차함수와 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_수학/q12_solution.svg",
+    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_기출c/q12-solution-v2.svg",
     "sourceMode": "ALIVE_REPLACEMENT",
     "provenance": {
       "sourceMode": "ALIVE_REPLACEMENT",
@@ -606,7 +612,10 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImageAlt": "해설 그림: 파랑은 c=3, 초록은 d=1, 보라는 b=−1/2, 주황은 a=−2인 포물선이다. x=1의 세로 점선이 네 곡선을 지난다.",
+    "solutionImageCaption": "x=1일 때 함수값은 각각의 이차항 계수이다. 세로선 위에서 위부터 c, d, b, a의 높이로 읽힌다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -618,7 +627,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차함수와 그래프",
@@ -641,8 +650,8 @@ window.questionBank = [
     "subUnit": "이차함수와 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "image": "assets/images/21_금당중_1학기_기말_중3_수학/q13.png",
-    "imageSize": "medium",
+    "image": "assets/images/21_금당중_1학기_기말_중3_기출c/q13-problem-v2.svg",
+    "imageSize": "large",
     "sourceMode": "ORIGINAL",
     "provenance": {
       "sourceMode": "ORIGINAL",
@@ -710,7 +719,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_기출c/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: O를 꼭짓점으로 하는 주황 포물선은 아래로, V를 꼭짓점으로 하는 파란 포물선은 위로 열린다. 두 포물선의 가로 폭은 같다.",
+    "solutionImageCaption": "파란 그래프의 꼭짓점은 (1,0)이고 축은 x=1이다. 두 그래프의 이차항 계수의 절댓값이 2로 같으므로 폭이 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -761,7 +774,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_기출c/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원래 파란 포물선과 평행이동한 주황 포물선은 같은 폭이다. 원래 꼭짓점 O에서 새 꼭짓점 V에 이르는 가로와 세로의 이동을 점선으로 표시한다.",
+    "solutionImageCaption": "이동 전 꼭짓점은 (0,0), 이동 후 꼭짓점은 (−2,1)이다. 왼쪽으로 2만큼, 위로 1만큼 이동했으므로 a=−2, b=1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -773,7 +790,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차함수와 그래프",
@@ -796,9 +813,8 @@ window.questionBank = [
     "subUnit": "이차함수와 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "image": "assets/images/21_금당중_1학기_기말_중3_수학/q16.png",
+    "image": "assets/images/21_금당중_1학기_기말_중3_기출c/q16-problem-v2.svg",
     "imageSize": "large",
-    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_수학/q16_solution.svg",
     "sourceMode": "ORIGINAL",
     "provenance": {
       "sourceMode": "ORIGINAL",
@@ -866,7 +882,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": ["COND_NONZERO"],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_기출c/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 파란 예시와 아래로 열린 주황 예시는 꼭짓점 V를 공유한다. V를 지나는 세로 점선을 기준으로 양쪽이 거울처럼 대응한다.",
+    "solutionImageCaption": "축은 꼭짓점을 지나는 세로 직선이다. 꼭짓점의 x좌표가 3이므로 축의 방정식은 x=3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -917,7 +937,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_기출c/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 파랑은 y=(x−3)²−1, 주황은 y=3(x+1)²−2이다. x=−1에서 파란 점 P는 x축 위, 주황 점 Q는 x축 아래이다.",
+    "solutionImageCaption": "파란 식에서 x<0이면 (x−3)²>9이므로 y>8이다. 주황 식은 x=−1에서 y=−2이며, 나머지 세 식도 음수 x를 골라 함수값이 음수임을 확인할 수 있다. 제3사분면을 지나지 않는 것은 y=(x−3)²−1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -948,6 +972,10 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] $x$축에 대한 대칭은 모든 점 $(x,y)$를 $(x,-y)$로 바꾸는 것입니다.\n주어진 함수는 $y=2(x-3)^2+4$입니다.\n대칭한 그래프의 식은 $y=-[2(x-3)^2+4]$.\n$y=-2(x-3)^2-4$. 정답 ⑤입니다.",
+    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_기출c/q19-solution.svg",
+    "solutionImageAlt": "파란 포물선의 꼭짓점 V와 주황 포물선의 꼭짓점 W는 x좌표가 같으며 x축에서 위아래로 같은 거리에 있다. 두 포물선은 x축에 대하여 대칭이다.",
+    "solutionImageCaption": "x축에 대칭인 점은 x가 그대로이고 y의 부호만 반대이다. 주어진 식 전체에 −1을 곱하면 y=−2(x−3)²−4가 된다.",
+    "solutionImageSize": "full",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수와 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -980,7 +1008,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차함수와 그래프",
@@ -1003,9 +1031,9 @@ window.questionBank = [
     "subUnit": "이차함수와 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "image": "assets/images/21_금당중_1학기_기말_중3_수학/q20.png",
+    "image": "assets/images/21_금당중_1학기_기말_중3_기출c/q20-problem-v2.svg",
     "imageSize": "large",
-    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_수학/q20_solution.svg",
+    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_기출c/q20-solution-v2.svg",
     "sourceMode": "ORIGINAL",
     "provenance": {
       "sourceMode": "ORIGINAL",
@@ -1022,7 +1050,10 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": ["COND_NONZERO"],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImageAlt": "해설 그림: 원문과 같은 x절편과 대칭축을 갖는 예시 포물선이다. 왼쪽 x절편은 −1, 대칭축은 x=1이며 x=−2의 점 P는 x축 위에 놓인다. 세로 눈금은 생략했다.",
+    "solutionImageCaption": "위로 열린 포물선이므로 a>0이다. y절편과 x=1의 함수값은 음수, x=−1의 함수값은 0이다. x=−2는 두 근의 바깥쪽이므로 4a−2b+c>0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1073,7 +1104,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": ["COND_RANGE"],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_기출c/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 예시 포물선의 꼭짓점 V는 (−2,3)이다. 파란 곡선의 y절편 P는 x축 위, 주황 곡선의 y절편 Q는 x축 아래에 있다.",
+    "solutionImageCaption": "모든 사분면을 지나려면 포물선이 아래로 열려 a<0이어야 한다. x>0에서 양수인 함수값이 있으려면 y(0)=4a+3>0이어야 하므로 −3/4<a<0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1129,7 +1164,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "이차함수와 그래프",
@@ -1146,9 +1181,9 @@ window.questionBank = [
     "subUnit": "이차함수와 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "image": "assets/images/21_금당중_1학기_기말_중3_수학/q23.png",
+    "image": "assets/images/21_금당중_1학기_기말_중3_기출c/q23-problem-v2.svg",
     "imageSize": "large",
-    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_수학/q23_solution.svg",
+    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_기출c/q23-solution-v2.svg",
     "sourceMode": "ORIGINAL",
     "provenance": {
       "sourceMode": "ORIGINAL",
@@ -1165,7 +1200,10 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": ["CC_QUADRATIC_EQUATION","CC_TRIANGLE_AREA"],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImageAlt": "해설 그림: 파란 포물선의 꼭짓점 A와 두 x절편 B, C를 이어 주황 삼각형을 만들었다. A에서 밑변 BC에 내린 높이 AH를 점선으로 표시한다.",
+    "solutionImageCaption": "두 근은 −1과 5이므로 B=(−1,0), C=(5,0)이고 BC=6이다. 대칭축은 x=2이며 A=(2,18)이다. 넓이는 6×18÷2=54이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -1194,7 +1232,7 @@ window.questionBank = [
     "subUnit": "이차함수와 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_수학/q24_solution.svg",
+    "solutionImage": "assets/images/21_금당중_1학기_기말_중3_기출c/q24-solution-v2.svg",
     "sourceMode": "ORIGINAL",
     "provenance": {
       "sourceMode": "ORIGINAL",
@@ -1211,6 +1249,9 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": ["CC_COMPLETE_SQUARE"],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImageAlt": "해설 그림: 아래로 열린 파란 포물선에서 꼭짓점 V는 (1,1)이다. y절편 A와 대칭점 B는 높이 −2에 있어 주황 점을 점선으로 잇는다.",
+    "solutionImageCaption": "식을 정리하면 y=−3(x−1)²+1이다. 꼭짓점은 (1,1), y절편은 (0,−2), 대칭점은 (2,−2)이다. x<0이면 y<−2이므로 제2사분면을 지나지 않는다.",
+    "solutionImageSize": "full"
   }
 ];
