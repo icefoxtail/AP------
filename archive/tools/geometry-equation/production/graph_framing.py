@@ -1834,7 +1834,8 @@ def _fit_trig_display_window(plan):
     a,c=spec['a'],spec['c']
     low,high=min(0.0,float(c-abs(a))),max(0.0,float(c+abs(a)))
     span=max(1.0,high-low)
-    ypad=.42*span
+    # A tighter ordinary-unit frame separates O from the nearby y tick without changing the curve crop.
+    ypad=(.16 if plain else .42)*span
     if (len(ticks)!=len(set(ticks)) or len(y_ticks)!=len(set(y_ticks))
         or any(not value or not low-ypad<float(value)<high+ypad for value in y_ticks)):
         raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')

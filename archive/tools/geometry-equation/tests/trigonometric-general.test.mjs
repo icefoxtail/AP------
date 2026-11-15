@@ -162,6 +162,8 @@ test('Gangnam Girls Q11 crops a pi-rate cosine in ordinary x units without inven
   assert.equal(audit.status,'PASS',JSON.stringify(audit.errors));
   assert.deepEqual(fitted.domain,[-.6,5.75]);
   assert.deepEqual(fitted.trigDisplayFeatures.extrema,['1/2','2','7/2','5']);
+  // At the source typography sizes, O and the -1 tick need separate rows on the left of the y-axis.
+  assert.ok(Math.abs((fitted.viewport[3]-fitted.viewport[2])-5.28)<1e-9);
   const spec=specFor({capability:'trigonometric-spike-v1',caption:'주어진 코사인 그래프',graphPlan:fitted},model,'q11');
   assert.deepEqual(spec.displayFacts.axisTickValues,graphPlan.axisTickValues);
   assert.deepEqual(spec.objects.filter(row=>row.guide).map(row=>row.from[1]),[-1,3]);

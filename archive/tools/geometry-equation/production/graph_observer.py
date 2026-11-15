@@ -4399,7 +4399,7 @@ def trig_display_window_audit(plan, svg, transform, model):
         a,c,rate,phase=(spec[key] for key in ('a','c','rate','phase'))
         low,high=min(0.0,float(c-abs(a))),max(0.0,float(c+abs(a)))
         span=max(1.,high-low)
-        ypad=.42*span
+        ypad=(.16 if plain else .42)*span
         xpad=max(.1*(x1-x0),.5)
         left=max(xpad,max(1.0,abs(x0)))
         expected_window=[x0-left,x1+xpad,low-ypad,high+ypad]
