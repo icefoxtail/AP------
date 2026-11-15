@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 91,
-    "reviewedQuestions": 2164
+    "reviewedExams": 92,
+    "reviewedQuestions": 2189
   },
   "duplicateUids": [],
   "exams": [
@@ -9230,9 +9230,61 @@
       ],
       "solutionCount": 0,
       "existing4slot": null,
-      "status": "PENDING",
+      "status": "REVIEWED_WITH_EVIDENCE_DEBT",
       "assignedTo": "meta_b",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "488f0686db5e445ed984ae926ca66fb3477c3b90",
+      "reviewer": "meta_b",
+      "independentReviewer": "meta_c",
+      "integratedBy": "GPT_ROOT_E0C948452E80",
+      "sampledOrdinals": [
+        8,
+        16,
+        25
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E092",
+      "checks": {
+        "fourSlotFail": 25,
+        "fourSlotWarn": 24,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      },
+      "sourceChangedItems": 0,
+      "sourceChangedFields": 0,
+      "contentDebtCount": 27,
+      "typeProposalCount": 31,
+      "evidenceDebtOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "undecidedDifficultyOrdinals": [
+        16
+      ],
+      "difficultyPolicyDebtOrdinals": []
     },
     {
       "key": "E093",
@@ -10784,7 +10836,7 @@
       "nextAction": "SEMANTIC_REVIEW"
     }
   ],
-  "nextAction": "CONTINUE_E092_AND_PENDING_ONLY",
+  "nextAction": "CONTINUE_E093_AND_PENDING_ONLY",
   "resumedAt": "2026-11-14T23:58:38.098191+00:00",
   "authorityMainChecked": "22d5b2fa1c09eec588c434a16c41ae197e946c80",
   "resumeAuthority": {
@@ -10800,8 +10852,8 @@
     "predecessorRevision": 6,
     "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
   },
-  "updatedAt": "2026-11-15T06:06:18.196731+00:00",
-  "lastPublishedHeadBeforeCurrent": "5f32bfbb5c73305d53f8666dc7b702317d5c1d07",
+  "updatedAt": "2026-11-15T06:11:02.690031+00:00",
+  "lastPublishedHeadBeforeCurrent": "a44e60f949982578ee123908fec49322d4cab637",
   "resumeHistory": [
     {
       "basis": "EXPLICIT_USER_DIRECTION_TO_RESUME_DESPITE_UNCONFIRMED_STALE_RUNNING",
@@ -10828,15 +10880,15 @@
       "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
     }
   ],
-  "lastCompletedExam": "E091",
-  "nextIncompleteExam": "E092",
-  "remainingExams": 24,
-  "remainingQuestions": 586,
-  "lastVerifiedRemoteHeadBeforeCurrent": "5f32bfbb5c73305d53f8666dc7b702317d5c1d07",
+  "lastCompletedExam": "E092",
+  "nextIncompleteExam": "E093",
+  "remainingExams": 23,
+  "remainingQuestions": 561,
+  "lastVerifiedRemoteHeadBeforeCurrent": "a44e60f949982578ee123908fec49322d4cab637",
   "externalCheckpoint": {
-    "revision": 12,
-    "sha256": "d020c5bf9e13e8312e08abe438dbf37e1f419e17de3848335c7fe10510cece85",
-    "fileId": "1oUQuUYjWVY94Q6eZ0zYIoZWdFduoyxDe",
+    "revision": 13,
+    "sha256": "cbe6999d85befee6c4706ed86319dabe6ffbbd2e36f8aa6e41c465b7650b9a22",
+    "fileId": "1Gi1LowIxZzNvezxaafhYLw8K_9Q-NbY1",
     "state": "VERIFIED_PREVIOUS_CHECKPOINT_CURRENT_SYNC_PENDING"
   },
   "workers": {
@@ -10906,32 +10958,32 @@
   },
   "unsavedArtifacts": [
     {
-      "examKey": "E092",
-      "sourceBlob": "488f0686db5e445ed984ae926ca66fb3477c3b90",
-      "questionCount": 25,
+      "examKey": "E093",
+      "sourceBlob": "bd1ebce4da97d7d2997658a764869cc34c93fa39",
+      "questionCount": 26,
       "artifacts": [
         {
-          "worker": "B",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E092.review.json",
-          "bytes": 202813,
-          "sha256": "fefd0c1cb8d246424154e532365877777ca1ed3ceba2c50db126c413dcb5103a",
-          "state": "LOCAL_ONLY_NOT_COUNTED"
-        },
-        {
-          "worker": "B",
-          "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E092.4slot.json",
-          "bytes": 77236,
-          "sha256": "20ec58bb5f289fbabd4616b6539c16122dac1c5faf5d7e9513e6abf4d81eb5e0",
+          "worker": "A",
+          "kind": "independent",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E093.independent.json",
+          "bytes": 2957,
+          "sha256": "b402e6afa7a9c6249986a4377a46852a0117c7e4338e32a6198c7c7e1e7dff1d",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         },
         {
           "worker": "C",
-          "kind": "independent",
-          "path": "/workspace/scratch/e0c948452e80/workers/C/E092.independent.json",
-          "bytes": 3202,
-          "sha256": "38639545f7ef9956ea4c959b03f2014292fd77cb3f28590563cbbc83cda8b2ea",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/C/E093.review.json",
+          "bytes": 230531,
+          "sha256": "f05e637058fec0388200618d43b262d3c478028f24a71d42442651dadc39435d",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "C",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/C/E093.4slot.json",
+          "bytes": 71572,
+          "sha256": "cf3c2ee8767edcd9bac4f345e4b835b57e5684a0585ae038b1380314ba1009be",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],
@@ -11026,6 +11078,30 @@
       "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
     },
     {
+      "examKey": "E098",
+      "sourceBlob": "cfe0f4ed00a2ec80687b1044292c48d18af5076c",
+      "questionCount": 21,
+      "artifacts": [
+        {
+          "worker": "B",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E098.review.json",
+          "bytes": 160189,
+          "sha256": "8531bb601fb642422a6ec6e97c80ba09a41b0def395b0242933c03032bedeaa1",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "B",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E098.4slot.json",
+          "bytes": 46492,
+          "sha256": "487dc3e31c6f83e70afd9360b605e74190eb52eef3c1c18601f97a91a3f3be57",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
       "examKey": "E100",
       "sourceBlob": "6446ed32f8a757d1fd37ab6e16a5ab42b25e58db",
       "questionCount": 23,
@@ -11050,8 +11126,32 @@
           "worker": "B",
           "kind": "independent",
           "path": "/workspace/scratch/e0c948452e80/workers/B/E100.independent.json",
-          "bytes": 2582,
-          "sha256": "ea5ba0a19f1d8cbe9eb03eb704017ed2ed86519c5bfe063d764e7548ebafe60b",
+          "bytes": 2690,
+          "sha256": "a93c050cf74200abb6d59fa9fd0e1c364aec4b2f1baf622a35530c974fb7b86d",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
+      "examKey": "E101",
+      "sourceBlob": "0ba6e708e5999831eb3db86d16e135aac4c5eea6",
+      "questionCount": 25,
+      "artifacts": [
+        {
+          "worker": "B",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E101.review.json",
+          "bytes": 265826,
+          "sha256": "ea6b1cc3708283c61b07c2f448c754b60285cfe05879475ccec8eec35ad8e50d",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "B",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E101.4slot.json",
+          "bytes": 177592,
+          "sha256": "6ff6c56642b174ead0c0cb2d1329007e95f79060cba4d8d20042db7b38ba9c72",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],
@@ -11077,6 +11177,14 @@
           "bytes": 60691,
           "sha256": "213e0d698b283303fd524a2c6fe98031f790341002d51d4bb9078b121d0208af",
           "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "B",
+          "kind": "independent",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E103.independent.json",
+          "bytes": 4175,
+          "sha256": "d08160fe408c9576807e10da2226b212c2ad866dac7730717aa8ad54adfcbb8b",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],
       "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
@@ -11100,6 +11208,46 @@
           "path": "/workspace/scratch/e0c948452e80/workers/A/E106.4slot.json",
           "bytes": 135433,
           "sha256": "1084cc9f8a8802039aa921a464400b0ffbb5a7695140bee219b7414304c60f6d",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "B",
+          "kind": "independent",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E106.independent.json",
+          "bytes": 4280,
+          "sha256": "e93bf833538a11b3202954b542a38e09742a5763eae8a0310641d9f3535e55a3",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
+      "examKey": "E109",
+      "sourceBlob": "36c7d72c3e6dc510ca7ab6c198346707180e9492",
+      "questionCount": 26,
+      "artifacts": [
+        {
+          "worker": "A",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E109.review.json",
+          "bytes": 187210,
+          "sha256": "14a7fd6c6e072a811004c7f04f5bfb1d9682cb310f676656b515fdf7fd944aac",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "A",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E109.4slot.json",
+          "bytes": 158576,
+          "sha256": "bbc1101e9bfb57d60cfe77313927fe56e43fd18bf4f83c3f30df6d5a187e846e",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "B",
+          "kind": "independent",
+          "path": "/workspace/scratch/e0c948452e80/workers/B/E109.independent.json",
+          "bytes": 3153,
+          "sha256": "cae72e6271fcce8b276404a2d9b47aac1bf5f04a74938c3f10597cce583489d5",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],
