@@ -489,8 +489,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] $y$축의 방향으로 $-4$만큼 이동하면 모든 $y$값에서 $4$를 뺀다.\n$y=ax-2$를 이동한 식은 $y=ax-6$이다.\n이 식이 $y=-\\dfrac13x+b$와 같으므로 $a=-\\dfrac13$, $b=-6$이다.\n따라서 $ab=\\left(-\\dfrac13\\right)(-6)=2$이므로 정답은 ②이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
