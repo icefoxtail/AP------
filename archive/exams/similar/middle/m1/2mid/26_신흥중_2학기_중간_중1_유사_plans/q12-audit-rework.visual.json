@@ -1,0 +1,235 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/26_신흥중_2학기_중간_중1_유사.js",
+  "questionId": 12,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "outputType": "POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "17"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "7"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "turn": "CCW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "turn": "CCW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lAE",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "E"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lDB",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "D",
+                "B"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "P",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lAE",
+                "lDB"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "C",
+          "B",
+          "D",
+          "E",
+          "P"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sCB",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          },
+          {
+            "id": "sDC",
+            "refs": [
+              "D",
+              "C"
+            ]
+          },
+          {
+            "id": "sCE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          },
+          {
+            "id": "sEB",
+            "refs": [
+              "E",
+              "B"
+            ]
+          },
+          {
+            "id": "sAE",
+            "refs": [
+              "A",
+              "E"
+            ]
+          },
+          {
+            "id": "sDB",
+            "refs": [
+              "D",
+              "B"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "coordinateCanvas": {
+          "width": 620,
+          "height": 365
+        },
+        "caption": "두 삼각형과 교차 선분",
+        "accessibilityDescription": "나란한 두 삼각형 위로 선분 AE와 DB가 지나고 교차하는 곳에 점 P가 표시되어 있다.",
+        "planeMarks": {}
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 30,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

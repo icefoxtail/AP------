@@ -1,0 +1,257 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2mid/21_동산중_2학기_중간_중3_수학.js",
+  "questionId": 24,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "6"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sCB",
+            "refs": [
+              "C",
+              "B"
+            ]
+          },
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAD",
+            "refs": [
+              "A",
+              "D"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dAB",
+              "from": "A",
+              "to": "B",
+              "label": "6",
+              "side": "ABOVE",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "value": 6
+            },
+            {
+              "id": "dCD",
+              "from": "C",
+              "to": "D",
+              "label": "2",
+              "side": "BELOW",
+              "style": "ARROW",
+              "factRole": "GIVEN",
+              "value": 2
+            }
+          ],
+          "callouts": [
+            {
+              "id": "kAD",
+              "kind": "SEGMENT",
+              "path": [
+                "A",
+                "D"
+              ],
+              "at": "RIGHT",
+              "link": "ENDS",
+              "dimensions": [
+                {
+                  "id": "dAD",
+                  "from": "A",
+                  "to": "D",
+                  "label": "4",
+                  "side": "BELOW",
+                  "style": "ARROW",
+                  "offset": "AUTO",
+                  "value": 4,
+                  "factRole": "GIVEN"
+                }
+              ]
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rC",
+            "refs": [
+              "A",
+              "C",
+              "B"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 560,
+          "height": 440
+        },
+        "caption": "직각삼각형과 선분 AD",
+        "accessibilityDescription": "삼각형의 한 꼭짓점에서 밑변의 점 D로 선분이 이어지고 주변에 치수 표기가 있다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "∠C=90°, D는 BC 위의 점, AB=6, AD=4, CD=2.",
+            "mappedTo": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

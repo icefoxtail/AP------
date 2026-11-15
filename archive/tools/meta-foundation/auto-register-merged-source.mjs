@@ -11,6 +11,7 @@ import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
+import { hasReviewedReceiptLineage } from './reviewed-source-binding.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 
@@ -206,8 +207,12 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||current.metadataRevision!==`meta-foundation:${ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
       const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
       const reviewedRenderer=nativeReviewedRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
-      validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
-      const preservedSource=nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,
+      const reviewedSource=validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
+      // Only a replayed immutable source reassessment distinguishes a direct
+      // review's lineage refs from source-only preservation. null is no proof;
+      // explicit sourceRebind/count claims still enter every preservation guard.
+      const directSourceReview=reviewedSource===true&&hasReviewedReceiptLineage(receipt);
+      const preservedSource=directSourceReview?null:nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,
         revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor})});
       if(preservedSource!==true&&reviewedFigure!==true&&reviewedRenderer!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;

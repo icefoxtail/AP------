@@ -1,0 +1,214 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_왕의중_2학기_중간_중1_유사.js",
+  "questionId": 13,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "사다리꼴 ABCD",
+        "accessibilityDescription": "네 꼭짓점과 변 표시가 있는 사다리꼴.",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "planeMarks": {
+          "dimensions": [
+            {
+              "id": "dAD",
+              "from": "A",
+              "to": "D",
+              "side": "ABOVE",
+              "label": "4 cm",
+              "value": 4,
+              "labelKind": "TEXT",
+              "style": "ARROW",
+              "offset": "AUTO",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dBC",
+              "from": "B",
+              "to": "C",
+              "side": "BELOW",
+              "label": "10 cm",
+              "value": 10,
+              "labelKind": "TEXT",
+              "style": "ARROW",
+              "offset": "AUTO",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dAB",
+              "from": "A",
+              "to": "B",
+              "side": "LEFT",
+              "label": "6 cm",
+              "value": 6,
+              "labelKind": "TEXT",
+              "style": "ARROW",
+              "offset": "AUTO",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rB",
+            "refs": [
+              "A",
+              "B",
+              "C"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 430
+        },
+        "sourceConditions": [
+          {
+            "id": "shape",
+            "condition": "AD ∥ BC, ∠B = 90°. AB = 6cm, BC = 10cm, AD = 4cm.",
+            "mappedTo": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

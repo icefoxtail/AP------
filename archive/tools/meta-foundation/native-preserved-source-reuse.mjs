@@ -5,6 +5,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import {hasReviewedReceiptLineage} from './reviewed-source-binding.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a-f0-9]{64}$/;
@@ -163,6 +164,15 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     receipt.sourceBlobSha1!==source.blobSha1||receipt.sourceRawSha256!==sha(source.bytes))fail('current receipt differs from actual state');
   const seen=new Set();
   while(isPartialNativeSourcePreservation(cursor,root)) {
+    // A source-only descendant may reach a direct reassessment whose evidence
+    // also names older receipts. Replay that cursor's immutable native proof;
+    // the lineage marker alone cannot end the preservation chain.
+    if(hasReviewedReceiptLineage(cursor)&&cursor.fingerprintRepairs?.some(row=>
+      row.questionUid===identity.questionUid&&row.sourceReview!==undefined)) {
+      const context={nativeSource:source,current:state.row,identity:state.identity,question:source.bank[ordinal-1]};
+      if(revalidateLeaf(context)!==receiptPath(cursor.requestId))fail('direct source-review ancestor cannot replay');
+      break;
+    }
     if(seen.has(cursor.requestId)||seen.size>=64)fail('source-rebind cycle or depth exceeded');
     seen.add(cursor.requestId);evidence(root,cursor.approval.evidenceRefs);
     const spec=cursor.approval.sourceRebind,ref=spec?.priorReceiptRef;

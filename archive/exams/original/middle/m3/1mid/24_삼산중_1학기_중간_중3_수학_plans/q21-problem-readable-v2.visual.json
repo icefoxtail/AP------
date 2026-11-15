@@ -1,0 +1,210 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js",
+  "questionId": 21,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "L",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "8"
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "8"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "L",
+          "R",
+          "O",
+          "A",
+          "P",
+          "Q"
+        ],
+        "displaySegments": [
+          {
+            "id": "saxis",
+            "refs": [
+              "L",
+              "R"
+            ],
+            "arrow": "BOTH"
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 640,
+          "height": 320
+        },
+        "caption": "수직선에서 점 A의 양쪽에 같은 거리로 놓인 두 점",
+        "hiddenPointNames": [
+          "L",
+          "R",
+          "O"
+        ],
+        "unmarkedPointNames": [
+          "L",
+          "R"
+        ],
+        "planeMarks": {
+          "textLabels": [
+            {
+              "id": "zero",
+              "at": "O",
+              "text": "0",
+              "anchor": "S"
+            },
+            {
+              "id": "two",
+              "at": "A",
+              "text": "2",
+              "anchor": "S"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.48,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_왕의중_2학기_중간_중1_유사.js",
+  "questionId": 12,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "180"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "215"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "35"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "E",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "F",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "R",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "displaySegments": [
+          {
+            "id": "s0",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "s1",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "s2",
+            "refs": [
+              "O",
+              "E"
+            ]
+          },
+          {
+            "id": "s3",
+            "refs": [
+              "O",
+              "F"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 610,
+          "height": 440
+        },
+        "caption": "점 O 주변의 직선과 각호",
+        "displayLines": [],
+        "displayCircles": [],
+        "hiddenPointNames": [
+          "R"
+        ],
+        "hiddenPointStyle": "NONE",
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a",
+              "refs": [
+                "A",
+                "O",
+                "C"
+              ],
+              "value": 35,
+              "label": "35",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b",
+              "refs": [
+                "D",
+                "O",
+                "E"
+              ],
+              "value": 25,
+              "label": "25",
+              "style": "SECTOR",
+              "factRole": "GIVEN",
+              "ring": 3
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "right",
+            "refs": [
+              "B",
+              "O",
+              "F"
+            ]
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 20,
+        "displayScale": 0.59,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/25_금당중_2학기_중간_중3_유사.js",
+  "questionId": 11,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "D"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "225"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 510
+        },
+        "caption": "각 A가 135도이고 두 이웃 변의 길이가 주어진 평행사변형 ABCD",
+        "displayLines": [],
+        "displayCircles": [],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a",
+              "refs": [
+                "B",
+                "A",
+                "D"
+              ],
+              "value": 135,
+              "label": "135",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "ab",
+              "from": "A",
+              "to": "B",
+              "side": "LEFT",
+              "label": "6",
+              "unit": "cm",
+              "style": "BAR",
+              "factRole": "GIVEN",
+              "offsetPx": 45
+            },
+            {
+              "id": "ad",
+              "from": "A",
+              "to": "D",
+              "side": "ABOVE",
+              "label": "8",
+              "unit": "cm",
+              "style": "BAR",
+              "factRole": "GIVEN",
+              "offsetPx": 45
+            }
+          ]
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.48,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

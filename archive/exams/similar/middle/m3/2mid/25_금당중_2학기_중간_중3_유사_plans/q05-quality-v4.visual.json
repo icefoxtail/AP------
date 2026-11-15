@@ -1,0 +1,225 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/25_금당중_2학기_중간_중3_유사.js",
+  "questionId": 5,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "base",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "H",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "A",
+                "base"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "H"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sAC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sAH",
+            "refs": [
+              "A",
+              "H"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 680,
+          "height": 520
+        },
+        "caption": "직각삼각형과 높이",
+        "accessibilityDescription": "삼각형 ABC의 두 변과 꼭짓점 A에서 내린 높이.",
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "x",
+              "refs": [
+                "B",
+                "A",
+                "H"
+              ],
+              "label": "x",
+              "ring": 1,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "y",
+              "refs": [
+                "H",
+                "A",
+                "C"
+              ],
+              "label": "y",
+              "ring": 2,
+              "factRole": "GIVEN"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dAB",
+              "from": "A",
+              "to": "B",
+              "label": "6",
+              "unit": "cm",
+              "side": "LEFT",
+              "style": "ARROW",
+              "value": 6,
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "dAC",
+              "from": "A",
+              "to": "C",
+              "label": "8",
+              "unit": "cm",
+              "side": "ABOVE",
+              "style": "ARROW",
+              "value": 8,
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "rA",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ],
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "rH",
+            "refs": [
+              "A",
+              "H",
+              "B"
+            ],
+            "factRole": "GIVEN"
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

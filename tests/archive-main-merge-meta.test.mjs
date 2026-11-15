@@ -859,7 +859,7 @@ test('compound reuse follows the writer value contract without approving native 
   assert.equal(f.current.standardUnitOrder,undefined);
 });
 
-function typedSourceReviewFixture(t) {
+function typedSourceReviewFixture(t,{ordinaryLineage=false}={}) {
   const f=nativeReviewFixture(t,{ordinal:2,questionOverrides:{id:2,standardCourse:'중2 수학',courseKey:'M2-2',
     standardUnitKey:'M2-06',subUnitKey:'M2-06-RATIO'},officialValidator:true});
   const dir=f.nativeSource.root,sha=v=>crypto.createHash('sha256').update(v).digest('hex');
@@ -898,7 +898,8 @@ function typedSourceReviewFixture(t) {
   const rpmRef=put(rpmPath,{records:[{id:'M2-RPM-TEST',curriculum:'2015',scope:'M2-2',standardUnitKey:'M2-06',subUnitKey:'M2-06-RATIO'}]});
   git('add','.');git('commit','-qm','Synthetic immutable reviewed source');
   const base=git('rev-parse','HEAD'),sourceBlob=git('rev-parse',base+':'+sourcePath);
-  const after=Object.fromEntries(REVIEWED_META_VALUE_FIELDS.filter(k=>Object.hasOwn(f.current,k)&&!['problemTypeKey','templateKey'].includes(k)).map(k=>[k,f.current[k]]));
+  const after=Object.fromEntries(REVIEWED_META_VALUE_FIELDS.filter(k=>Object.hasOwn(f.current,k)&&
+    (ordinaryLineage||!['problemTypeKey','templateKey'].includes(k))).map(k=>[k,f.current[k]]));
   const native={schemaVersion:'m2-s2-meta-review-v1',sourceArchiveFile:f.source,baseSha:base,sourceGitBlobSha:sourceBlob,owner:'native-reviewer',reviewedQuestionCount:2,
     items:f.receipt.appliedRecords.map(row=>({questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal,rpmDecision:'KEEP',rpmRecordId:'M2-RPM-TEST',decisiveStep:f.question.decisiveStep,
       after,proposalRefs:[],registrationDebt:[],fieldReview:{classification:'기존 주유형 유지',binding:'정확한 기존 ACTIVE binding 대조',difficulty:'확정 난도 유지'},
@@ -909,9 +910,12 @@ function typedSourceReviewFixture(t) {
     after:{problemTypeKey:'PT_ROOT',templateKey:'TPL_ROOT',sourceFingerprint:sourceFingerprint(f.question),contentFingerprint:contentFingerprint(f.question)},
     identityBefore:{sourceFingerprint:'b'.repeat(64)},evidenceRefs:[reviewRef,rpmRef],sourceReview:{schemaVersion:'archive-reviewed-source-reassessment-v1',
       reviewCommit:git('rev-parse','HEAD'),reviewPath:reviewRef.path,reviewRef,retainedFields:{schemaVersion:'archive-reviewed-native-retained-fields-v1',fields:['problemTypeKey','templateKey']}}};
+  const priorRef=ordinaryLineage?put('archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/prior-native-review.json',
+    {...structuredClone(f.receipt),requestId:'prior-native-review'}):null;
+  if(ordinaryLineage)delete patch.sourceReview.retainedFields;
   const request={schemaVersion:'archive-reviewed-exam-meta-register-request-v2',requestId:f.receipt.requestId,examUid:f.receipt.examUid,scope:'PARTIAL_UIDS',
     sourceArchiveFile:f.source,expectedSourceBlobSha1:sourceBlob,expectedQuestionCount:2,registryChanges:[],items:[patch],
-    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'fixture-reviewer',evidenceRefs:[reviewRef,rpmRef]}};
+    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'fixture-reviewer',evidenceRefs:[reviewRef,rpmRef,...(priorRef?[priorRef]:[])]}};
   const tables={pt:f.registry.problemTypes,tpl:f.registry.templates,cc:new Map(),cond:new Map(),master:new Map(master.map(r=>[r.key,r])),
     bindings:new Map([[stable(['2015','중2 수학','M2-06','M2-06-RATIO','PT_ROOT']),binding]])};
   const proof=validateReviewedSourceReassessment({root:dir,request,patch,metadata:{...f.current,...patch.before},question:f.question,final:f.current,
@@ -925,6 +929,51 @@ function typedSourceReviewFixture(t) {
   f.receipt.outputDigests=[put(bindingPath,buildReviewedSourceBinding({request,...f.receipt}))];f.saveReceipt();
   return Object.assign(f,{put,git,sha,stable,request,bindingPath,sourcePath,reviewPath:reviewRef.path,plainCurrent,plainIdentity,plainRuntime});
 }
+
+test('ordinary source reassessment with prior receipt lineage replays its durable native proof',t=>{
+  const f=typedSourceReviewFixture(t,{ordinaryLineage:true});
+  assert.equal(f.receipt.fingerprintRepairs[0].sourceReview.retainedNativeFields,undefined);
+  assert.equal(f.receipt.approval.sourceRebind,undefined);
+  const before=JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.nativeSource.bank]);
+  assert.equal(validateNativeReviewedSourceReuse(f.receipt,f.nativeSource,f.question,f.identity,f.ordinal,f.current,f.registry),true);
+  for(const previous of [f.previous,structuredClone(f.question)]) {
+    const result=planQuestion({...f,previous});assert.equal(result.status,'ALREADY_REGISTERED');
+    assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  }
+  assert.equal(JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.nativeSource.bank]),before);
+});
+for(const [name,mutate]of [
+  ['missing sidecar',f=>fs.unlinkSync(path.join(f.nativeSource.root,f.bindingPath))],
+  ['missing sidecar digest',f=>{f.receipt.outputDigests=[];}],
+  ['missing native evidence',f=>fs.unlinkSync(path.join(f.nativeSource.root,f.reviewPath))],
+  ['changed native evidence',f=>f.put(f.reviewPath,{unreviewed:true})],
+  ['locally rehashed forged request snapshot',f=>{
+    const bound=JSON.parse(fs.readFileSync(path.join(f.nativeSource.root,f.bindingPath)));
+    bound.requestSnapshot.items[0].before.problemTypeKey='fabricated';
+    f.receipt.outputDigests=[f.put(f.bindingPath,bound)];
+  }],
+  ['locally rehashed forged native commit',f=>{
+    f.request.items[0].sourceReview.reviewCommit='e'.repeat(40);
+    f.receipt.requestSha256=f.sha(f.stable(f.request));
+    f.receipt.fingerprintRepairs[0].sourceReview.reviewCommit='e'.repeat(40);
+    f.receipt.outputDigests=[f.put(f.bindingPath,buildReviewedSourceBinding({request:f.request,...f.receipt}))];
+  }],
+  ['sourceReview marker and prior-receipt prefix without durable proof',f=>{
+    f.receipt.fingerprintRepairs[0].sourceReview={schemaVersion:'archive-reviewed-source-reassessment-v1'};
+    f.receipt.outputDigests=[];fs.unlinkSync(path.join(f.nativeSource.root,f.bindingPath));
+    for(const row of [f.current,f.nativeSource.runtimeRecord])row.approvalEvidence=row.approvalEvidence.filter(p=>p!==f.bindingPath);
+  }],
+  ['explicit sourceRebind mixed with a direct review',f=>{f.receipt.approval.sourceRebind={};}],
+  ['preservation count claim mixed with a direct review',f=>{f.receipt.newMetadataApprovals=0;f.receipt.preservedMetadataApprovals=1;}],
+])test('ordinary lineage cannot bypass native proof or preservation guards: '+name,t=>{
+  const f=typedSourceReviewFixture(t,{ordinaryLineage:true});assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
+  mutate(f);f.saveReceipt();
+  for(const previous of [f.previous,structuredClone(f.question)]) {
+    const out=planQuestion({...f,previous});assert.equal(out.status,'SUPPLEMENT_PENDING');
+    assert.equal(out.nativeReviewReceipt,undefined);assert.equal(out.final,undefined);
+  }
+});
+
 function typedSourceAncestor(f) {
   const priorPath=f.receiptPath,priorRef={path:priorPath,sha256:f.sha(fs.readFileSync(path.join(f.nativeSource.root,priorPath)))};
   f.git('hash-object','-w',f.sourcePath);
@@ -939,6 +988,13 @@ function typedSourceAncestor(f) {
     appliedRecords:[f.current],runtimeRecords:[f.nativeSource.runtimeRecord]};
   f.receiptPath=nextPath;f.saveReceipt=()=>f.put(nextPath,f.receipt);f.saveReceipt();return f;
 }
+test('source-only descendants replay an ordinary lineage ancestor and retain its native evidence obligation',t=>{
+  const f=typedSourceAncestor(typedSourceReviewFixture(t,{ordinaryLineage:true}));
+  assert.equal(validateNativeReviewedSourceReuse(f.receipt,f.nativeSource,f.question,f.identity,f.ordinal,f.current,f.registry),true);
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  f.put(f.reviewPath,{unreviewed:true});
+  const result=planQuestion(f);assert.equal(result.status,'SUPPLEMENT_PENDING');assert.equal(result.final,undefined);
+});
 test('typed native source review revalidates a consumed request without altering its approval',t=>{
   const f=typedSourceReviewFixture(t),before=JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.nativeSource.bank]);
   assert.equal(validateNativeReviewedSourceReuse(f.receipt,f.nativeSource,f.question,f.identity,f.ordinal,f.current,f.registry),true);

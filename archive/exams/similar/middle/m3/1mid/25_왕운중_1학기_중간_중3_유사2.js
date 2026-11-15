@@ -238,7 +238,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "수직선 위의 점 $A(2)$를 중심으로 하고 밑변이 3, 높이가 1인 직각삼각형의 빗변을 반지름으로 하는 원을 그려 수직선의 왼쪽과 만나는 점을 $P$라 하자. 점 $B(7)$을 중심으로 하고 밑변이 2, 높이가 2인 직각삼각형의 빗변을 반지름으로 하는 원을 그려 수직선의 오른쪽과 만나는 점을 $Q$라 할 때, $P$와 $Q$ 사이에 있는 정수의 개수는?\n<br><svg width=\"280\" height=\"160\" viewBox=\"0 0 280 160\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"10\" y1=\"130\" x2=\"270\" y2=\"130\" stroke=\"black\" stroke-width=\"1\" />\n  <polygon points=\"110,130 110,110 50,110\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\n  <polygon points=\"210,130 210,90 250,90\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\n  <text x=\"110\" y=\"145\" font-size=\"10px\" text-anchor=\"middle\">2</text>\n  <text x=\"210\" y=\"145\" font-size=\"10px\" text-anchor=\"middle\">7</text>\n  <text x=\"110\" y=\"105\" font-size=\"10px\" text-anchor=\"middle\">A</text>\n  <text x=\"210\" y=\"85\" font-size=\"10px\" text-anchor=\"middle\">B</text>\n</svg>",
+    "content": "수직선 위의 점 $A(2)$를 중심으로 하고 밑변이 3, 높이가 1인 직각삼각형의 빗변을 반지름으로 하는 원을 그려 수직선의 왼쪽과 만나는 점을 $P$라 하자. 점 $B(7)$을 중심으로 하고 밑변이 2, 높이가 2인 직각삼각형의 빗변을 반지름으로 하는 원을 그려 수직선의 오른쪽과 만나는 점을 $Q$라 할 때, $P$와 $Q$ 사이에 있는 정수의 개수는?\n<br><img src=\"assets/images/25_왕운중_1학기_중간_중3_유사2/q09-problem-readable-v2.svg\" alt=\"수직선 위의 중심 A와 B에서 두 호를 그어 교점 P와 Q를 표시한 그림\" style=\"width:420px;max-width:100%;height:auto;\">",
     "choices": [
       "9개",
       "10개",

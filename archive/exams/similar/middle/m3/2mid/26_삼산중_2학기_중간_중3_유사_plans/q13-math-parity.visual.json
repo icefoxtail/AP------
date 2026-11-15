@@ -1,0 +1,260 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/2mid/26_삼산중_2학기_중간_중3_유사.js",
+  "questionId": 13,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sub",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "3"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          },
+          {
+            "id": "sDA",
+            "refs": [
+              "D",
+              "A"
+            ]
+          },
+          {
+            "id": "sBD",
+            "refs": [
+              "B",
+              "D"
+            ],
+            "dashed": true
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 620,
+          "height": 470
+        },
+        "caption": "사각형 ABCD",
+        "accessibilityDescription": "사각형의 네 변과 두 각, 대각선을 표시한 그림.",
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aA",
+              "refs": [
+                "B",
+                "A",
+                "D"
+              ],
+              "value": 120,
+              "label": "120",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "aC",
+              "refs": [
+                "B",
+                "C",
+                "D"
+              ],
+              "value": 135,
+              "label": "135",
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "eAB",
+              "ownerSegment": "sAB",
+              "text": "2√2",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "eBC",
+              "ownerSegment": "sBC",
+              "text": "2√3",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "eCD",
+              "ownerSegment": "sCD",
+              "text": "3√2−√6",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "eDA",
+              "ownerSegment": "sDA",
+              "text": "2√2",
+              "factRole": "GIVEN"
+            }
+          ]
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

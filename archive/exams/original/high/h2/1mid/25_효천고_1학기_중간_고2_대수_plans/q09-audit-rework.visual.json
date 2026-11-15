@@ -1,0 +1,310 @@
+{
+  "sourcePath": "archive/exams/original/high/h2/1mid/25_효천고_1학기_중간_고2_대수.js",
+  "questionId": 9,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "U"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "150"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "U"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "30"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "U"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "150"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "U"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "12"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "30"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "k6",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "k12",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "12"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "displayCircles": [],
+        "displaySegments": [
+          {
+            "id": "OB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "OA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "BD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 455
+        },
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "innerArc",
+              "circle": "k6",
+              "center": "O",
+              "from": "B",
+              "to": "A",
+              "side": "MINOR",
+              "highlight": false
+            },
+            {
+              "id": "outerArc",
+              "circle": "k12",
+              "center": "O",
+              "from": "D",
+              "to": "C",
+              "side": "MINOR",
+              "highlight": false
+            }
+          ],
+          "angles": [
+            {
+              "id": "centralAngle",
+              "refs": [
+                "B",
+                "O",
+                "A"
+              ],
+              "value": 120,
+              "label": "2*pi/3",
+              "style": "ARC",
+              "labelKind": "MATH",
+              "ring": 2
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "radius6",
+              "from": "O",
+              "to": "B",
+              "label": "6",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "ARROW",
+              "offsetPx": 35,
+              "extension": "NONE"
+            },
+            {
+              "id": "radius12",
+              "from": "O",
+              "to": "C",
+              "label": "12",
+              "unit": "cm",
+              "side": "BELOW",
+              "style": "ARROW",
+              "offsetPx": 35,
+              "extension": "NONE"
+            }
+          ]
+        },
+        "caption": "부채꼴 모양의 두 원호",
+        "accessibilityDescription": "점 O에서 뻗는 두 방향에 크기가 다른 두 원호와 각호 및 치수선이 표시되어 있다.",
+        "sourceQuote": "∠BOA=2/3π이고 두 부채꼴 OAB, OCD의 반지름의 길이가 각각 6cm, 12cm일 때",
+        "sourceConditions": [
+          {
+            "id": "S1",
+            "condition": "중심각 ∠BOA=2π/3",
+            "mappedTo": "planeMarks.angles"
+          },
+          {
+            "id": "S2",
+            "condition": "두 부채꼴의 반지름이 6 cm와 12 cm",
+            "mappedTo": "planeMarks.dimensions"
+          },
+          {
+            "id": "S3",
+            "condition": "두 부채꼴은 중심 O를 공유하고 바깥/안쪽 호를 갖는다",
+            "mappedTo": [
+              "planeMarks.arcs",
+              "displaySegments"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "the central angle arc is explicitly attached to its two radii",
+          "each radius label is tied to its own exact segment"
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 24,
+        "displayScale": 0.55,
+        "fontFloorCssPx": 12
+      }
+    }
+  ]
+}

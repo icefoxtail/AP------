@@ -1,0 +1,255 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_풍덕중_2학기_중간_중1_유사.js",
+  "questionId": 5,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "평각과 세 각의 식",
+        "accessibilityDescription": "직선 AB 위에 나뉜 세 각.",
+        "sourceQuote": "A,O,B are collinear; the adjacent angle expressions are shown.",
+        "newVisualInformation": [],
+        "sourceConditions": [
+          {
+            "id": "straight",
+            "condition": "A,O,B lie on one straight line",
+            "mappedTo": "line AB"
+          },
+          {
+            "id": "three-angles",
+            "condition": "The upper straight angle is partitioned into the three printed expressions",
+            "mappedTo": "three angle arcs"
+          }
+        ],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "110"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "80"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lineAB",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "O",
+          "R"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "OC",
+            "refs": [
+              "O",
+              "C"
+            ]
+          },
+          {
+            "id": "OD",
+            "refs": [
+              "O",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 680,
+          "height": 520
+        },
+        "displayLines": [
+          "lineAB"
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "leftExpr",
+              "refs": [
+                "A",
+                "O",
+                "C"
+              ],
+              "value": 70,
+              "label": "(2x+10)",
+              "labelKind": "DEGREE",
+              "arcs": 1
+            },
+            {
+              "id": "middleExpr",
+              "refs": [
+                "C",
+                "O",
+                "D"
+              ],
+              "value": 30,
+              "label": "x",
+              "labelKind": "DEGREE",
+              "arcs": 1
+            },
+            {
+              "id": "rightExpr",
+              "refs": [
+                "D",
+                "O",
+                "B"
+              ],
+              "value": 80,
+              "label": "(x+50)",
+              "labelKind": "DEGREE",
+              "arcs": 1
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "R"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

@@ -3452,6 +3452,35 @@ test("partial source reassessment binds real review/source Git objects and prese
   assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
 });
 
+test("ordinary source reassessment with receipt lineage writes a durable request and revalidates it on replay", t => {
+  const f = reviewedSourceFixture(t);
+  const priorPath = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/prior-review.json";
+  f.put(priorPath, { requestId: "prior-review", sourceArchiveFile: f.request.sourceArchiveFile,
+    appliedRecords: f.read(META).records });
+  f.request.approval.evidenceRefs.push({ path: priorPath, sha256: hash(fs.readFileSync(path.join(f.root, priorPath))) });
+  const bindingPath = f.receiptPath.replace(/\.json$/, ".source-review-binding.json");
+  const before = fs.readFileSync(path.join(f.root, f.sourcePath));
+  const dry = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.ok(dry.plannedPaths.includes(bindingPath));
+  assert.equal(fs.existsSync(path.join(f.root, bindingPath)), false);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read(f.receiptPath), bound = f.read(bindingPath);
+  assert.deepEqual(bound.requestSnapshot, JSON.parse(stable(f.request)));
+  assert.deepEqual(bound.records.map(row => row.questionUid), [f.item.questionUid]);
+  assert.equal(receipt.approval.sourceRebind, undefined);
+  assert.equal(receipt.fingerprintRepairs[0].sourceReview.retainedNativeFields, undefined);
+  assert.ok(receipt.appliedRecords[0].approvalEvidence.includes(bindingPath));
+  assert.ok(receipt.runtimeRecords[0].approvalEvidence.includes(bindingPath));
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.sourcePath)), before);
+  const raw = fs.readFileSync(path.join(f.root, bindingPath));
+  fs.unlinkSync(path.join(f.root, bindingPath));
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /registered source-review binding missing/);
+  fs.writeFileSync(path.join(f.root, bindingPath), raw);
+  fs.unlinkSync(path.join(f.root, "docs/native-review.json"));
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /evidence missing\/drift: docs\/native-review\.json/);
+});
+
 test("native M2 S1/S2 reviews keep pending registration separate from settled field judgments", t => {
   for (const schema of ["m2-s1-meta-review-v1", "m2-s2-meta-review-v1"]) {
     const f = reviewedSourceFixture(t, schema);

@@ -1,0 +1,360 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+  "questionId": 22,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "피사의 사탑과 지면",
+        "accessibilityDescription": "지면 위의 두 지점과 사탑 꼭대기를 잇는 선과 두 각의 위치를 나타낸 그림.",
+        "sourceConditions": [
+          {
+            "id": "source",
+            "condition": "AB=60 m, ∠CAB=45°이고 C에서 지면에 내린 수선 CD와 사탑 BC 사이의 각이 4°이다.",
+            "mappedTo": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "U",
+              "Aref",
+              "Bref"
+            ]
+          }
+        ],
+        "newVisualInformation": [],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "inputs": [],
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "60"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "inputs": [],
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "SOURCE_POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "60"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "inputs": [],
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Aref",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "45"
+                },
+                "turn": "CCW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Bref",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "B",
+                "U"
+              ],
+              "outputType": "POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "turn": "CCW"
+              },
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "sight",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "Aref"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "tower",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "Bref"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "ground",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "outputType": "LINE",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "C",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "sight",
+                "tower"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "C",
+                "ground"
+              ],
+              "outputType": "POINT",
+              "args": {},
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Tleft",
+              "op": "TRANSLATE_POINT",
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "-32"
+                }
+              },
+              "inputs": [
+                "C"
+              ],
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Tright",
+              "op": "POLAR_POINT",
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "32"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "turn": "CCW"
+              },
+              "inputs": [
+                "C",
+                "Tleft"
+              ],
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "tiltCircle",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "32"
+                }
+              },
+              "inputs": [
+                "C"
+              ],
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "U",
+          "Aref",
+          "Bref",
+          "Tleft",
+          "Tright"
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 530,
+          "height": 425
+        },
+        "hiddenPointNames": [
+          "U",
+          "Aref",
+          "Bref",
+          "Tleft",
+          "Tright"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ],
+            "emphasis": "BOLD"
+          },
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "CD",
+            "refs": [
+              "C",
+              "D"
+            ],
+            "dashed": true
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "view",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 45,
+              "label": "45",
+              "arcs": 1,
+              "arcScale": "PROPORTIONAL"
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "baseLength",
+              "from": "A",
+              "to": "B",
+              "label": "60",
+              "value": 60,
+              "side": "BELOW",
+              "unit": "m",
+              "style": "ARROW",
+              "factRole": "GIVEN"
+            }
+          ],
+          "arcs": [
+            {
+              "id": "tiltArc",
+              "circle": "tiltCircle",
+              "center": "C",
+              "from": "Tleft",
+              "to": "Tright",
+              "side": "CCW",
+              "highlight": true,
+              "label": "4",
+              "labelKind": "DEGREE",
+              "labelPlacement": "AUTO"
+            }
+          ]
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.57,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

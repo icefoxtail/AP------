@@ -9,7 +9,7 @@ import { loadCanonical } from './compile-meta-foundation.mjs';
 import { validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
 import { validateNativeReviewedParent } from './reviewed-native-parent.mjs';
 import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
-import { REVIEWED_SOURCE_BINDING_OPT_INS, reviewedSourceBindingItems, reviewedSourceBindingPath,
+import { REVIEWED_SOURCE_BINDING_OPT_INS, hasReviewedReceiptLineage, reviewedSourceBindingItems, reviewedSourceBindingPath,
   buildReviewedSourceBinding } from './reviewed-source-binding.mjs';
 import { restoreReviewedReplayCanonicalBefore } from './reviewed-replay-registry-context.mjs';
 
@@ -29,7 +29,8 @@ const caches = new Map(), supportedFields = new Set(REVIEWED_META_VALUE_FIELDS);
 const marker = p => typeof p === 'string' && p.startsWith(RECEIPTS) && /\/[A-Za-z0-9][A-Za-z0-9_-]{0,100}\.source-review-binding\.json$/.test(p);
 const markers = row => (Array.isArray(row?.approvalEvidence) ? row.approvalEvidence : []).filter(marker);
 const typedProof = (receipt, uid) => receipt.fingerprintRepairs?.some(repair => repair.questionUid === uid &&
-  REVIEWED_SOURCE_BINDING_OPT_INS.some(({proofKey}) => repair.sourceReview?.[proofKey] !== undefined)) ||
+  (REVIEWED_SOURCE_BINDING_OPT_INS.some(({proofKey}) => repair.sourceReview?.[proofKey] !== undefined) ||
+    hasReviewedReceiptLineage(receipt) && repair.sourceReview !== undefined)) ||
   receipt.nativeParentBindings?.some(row => row.questionUid === uid);
 
 function safePath(root, relative) {
