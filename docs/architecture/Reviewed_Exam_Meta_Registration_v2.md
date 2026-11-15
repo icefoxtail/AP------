@@ -44,7 +44,70 @@ node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --requ
 - 일부 문항을 등록하려면 최상위에 `"scope": "PARTIAL_UIDS"`를 넣고 `items`에 대상 UID만 적는다. `expectedQuestionCount`는 실제 시험지 전체 문항 수다. 빈 요청, 시험지 밖 UID, 중복 UID·순번, UID와 순번의 불일치는 거부한다.
 - `expectedSourceBlobSha1`에는 현재 원본 blob을 적는다. 부분 요청에서 `after.sourceFingerprint`를 제출할 때는 항목에 `"rebind": { "priorSourceBlobSha1": "...", "priorContentFingerprint": "..." }`가 필요하다. 해당 과거 blob이 실행 환경의 Git에 있어야 한다.
 - 등록기는 과거 blob의 같은 순번 문항에서 원본·내용 지문을 다시 계산한다. 보관된 원본 지문은 과거 또는 현재 판본과 맞아야 하며, 발문·보기·그림 참조의 내용 지문이 달라지면 거부한다. 기존 `before`·`after` 지문과 `identityBefore` 검사도 유지한다. 전체 요청은 기존 방식 그대로 처리하며 `rebind`를 명시하면 같은 추가 검사를 받는다.
-- 부분 영수증의 `totalQuestions`와 `appliedRecords`는 요청 UID만 센다. `scope`와 `partialUidCount`가 추가되며, 재실행과 소비자 검사도 이 UID 범위를 사용한다.
+- 부분 영수증의 `totalQuestions`와 `appliedRecords`는 요청 UID만 센다. `scope`, `partialUidCount`, 원시험 분모인 `expectedQuestionCount`가 추가되며, 재실행과 소비자 검사도 이 UID 범위를 사용한다.
+- AutoMeta는 부분 영수증의 원시험 분모·선택 UID 집합·각 순번과 지문을 실제 source/identity에 대조하고 UID로 현재 행을 찾는다. 원본 바이트, 승인 근거, 현재 metadata/runtime까지 모두 일치할 때만 기존 native 승인을 유지하며, 생략한 UID에 이 승인을 확대하지 않는다. 전체 등록 영수증은 기존 형식을 유지한다.
+- 원본 `questionUid`에 남은 `파일 basename|양의 원번호` 형식은 별도 좁은 어댑터로만 읽는다. 실제 bank의 번호·alias가 유일하고 identity records 및 canonical UID/파일+순번/파일+원번호/legacyQKey lookup이 모두 같은 UID를 가리켜야 한다. 상충하는 표시번호나 임의의 unknown/canonical UID는 계속 거부한다. 원본 alias는 수정하지 않고, 등록·영수증·Runtime에는 canonical UID를 사용한다.
+
+### 현재 원본을 실제로 검토한 부분 지문 수리 `item.sourceReview`
+
+현재 source의 발문·그림 등이 이미 검토되었지만 metadata/identity 지문만 그 이전 판본에 남아 있으면,
+내용 불변을 요구하는 `rebind`로 처리하지 않는다. `FINAL_QA` 메타 요청의 `PARTIAL_UIDS` 항목은 다음처럼
+원래 검토 파일과 검토 Git commit을 명시할 수 있다. `sourceReview`와 `rebind`/`approval.sourceRebind`는 함께 쓰지 않는다.
+
+```json
+{
+  "sourceReview": {
+    "schemaVersion": "archive-reviewed-source-reassessment-v1",
+    "reviewCommit": "40자리 실제 검토 commit",
+    "reviewPath": "그 commit 안의 원래 검토 JSON 경로",
+    "reviewRef": { "path": "현재 checkout의 수정하지 않은 원검토 JSON 사본", "sha256": "실바이트 SHA-256" }
+  }
+}
+```
+
+`reviewRef`는 승인과 해당 item의 `evidenceRefs`에 모두 포함한다. 등록기는 현재 사본과 실제 Git commit의
+원검토 바이트가 같은지 검사한다. 임의의 지문·검토 완료 문장이나 다시 만든 승인 JSON으로 대체할 수 없다.
+지원하는 native 입력은 `m3-s2-complete-semantic-review-v1`, `m2-s1-meta-review-v1`, `m2-s2-meta-review-v1`이다.
+M3는 `sourceAfterBlob`/`sourceAfterSha256`가 그 검토 commit의 실제 source와 일치해야 한다.
+M2는 `baseSha`의 실제 source blob과 `sourceGitBlobSha`를 대조하고, 검토 commit의 source도 별도로 읽는다.
+source 객체·검토 commit을 읽을 수 없는 실행 환경은 거절한다. writer/CI의 전체 Git history 및 원검토 branch 참조를 보존한다.
+
+원검토의 전체 문항 수·UID·순번이 유일해야 하며 대상 행은 확정된 의미 판정과 실제 `decisiveStep`/`after`를 제공해야 한다.
+M2의 `REGISTRATION_PENDING` 표기만으로 확정 필드를 버리지는 않으며 `rpmDecision`·`fieldReview`·`after`·`finalDifficulty`를 직접 읽는다.
+명시적인 원문·해설·그림·난도 hold, 미확정 판정, 원검토와 다른 요청값은 거절한다. 일반 FINAL_QA는 최종 메타 행을 다시 등록하므로
+원검토가 확정한 등록기 지원 의미·난도 필드가 `final`에서 모두 일치해야 한다. 검토된 PT/TPL 교정을 `after`에서 생략하여 옛값을
+재승인할 수 없다. L1~L4 표시명은 기존 정본 검증을 계속 받으며, 등록기 계약 밖의 native 보조 필드는 임의로 생성하지 않는다.
+교육과정·과목 식별자는 현재 원본이나 기존 메타의 명시값을 유지하며 원검토가 명시한 값과도 일치해야 한다.
+
+`primaryMethod`/`decisiveStep`을 운반할 때는 native `after`, native 항목의 같은 필드, 검토 commit source의 같은 필드 순으로
+실제 값을 찾는다. 요청 `after`와 source에 선언된 값, 최종 metadata는 그 값과 완전히 같아야 한다. native에 별도 `primaryMethod`가
+없으면 원검토 `decisiveStep` 문자열을 source와 요청의 두 필드에 그대로 실은 경우만 허용하며, 영수증에는
+`NATIVE_DECISIVE_STEP_VERBATIM`으로 기록한다. 별도 주풀이 판정이나 새 독립 검수로 기록하지 않는다. `rationaleBindings`는
+각 값의 출처와 SHA를 보존하며, 요청에서 필드를 빼서 상충하는 기존 rationale를 유지하는 경우는 거절한다.
+
+발문 별칭·원번호·보기·정답·해설·그림/SVG 참조·레이아웃 등 학생 payload를 실제 검토 source와 현재 source에서 직접 대조한다.
+검토 이후의 해설 수리나 그림 변경을 과거 검토로 승인하지 않는다. 현재 blob, `before`/`after` 두 지문 및 `identityBefore`의
+기존 검사는 그대로 수행한다. metadata 지문은 현재와 맞고 identity만 오래된 경우에도 이 검토 결속과 기존 메타/정본 검증이 필요하다.
+원본 JS를 쓰지 않으며 생략한 UID는 그대로 둔다. 영수증은 검토 schema/commit/경로/SHA·source blob·UID·학생 payload SHA와
+`newMathematicalQa: false`를 보존한다. 이 경로가 새 수학 독립 검수나 REVIEW2 2회 통과를 생성하지 않는다.
+
+### 승인 메타를 보존하는 identity 지문만의 수리
+
+현재 metadata의 두 지문이 실제 source와 이미 일치하고 identity 지문만 오래된 경우, v2 요청에
+`"registrationMode": "IDENTITY_FINGERPRINT_ONLY"`와 `"scope": "PARTIAL_UIDS"`를 명시한다. `FINAL_QA`와 위 `sourceReview`의
+동일한 실제 원검토·Git·UID·현재 학생 payload 결속이 필요하다. 등록 정본 변경은 허용하지 않는다.
+
+- 각 item의 `before`/`after`에는 현재 metadata와 정확히 같은 `sourceFingerprint`와 `contentFingerprint` 두 필드만 쓴다.
+  현재 metadata에 기존 승인 상태가 있어야 하고, `identityBefore.sourceFingerprint`에는 실제 오래된 identity 값을 적는다.
+  임의의 의미값·난도·후보·typeHold 변경이나 이미 일치하는 identity의 불필요한 수리는 거절한다.
+- 공식 writer는 `question_identity_map.json`의 해당 지문과 수리 영수증만 쓴다. 원본 JS, metadata 전체 바이트·승인 상태·남은 hold,
+  Runtime 및 정본은 보존한다. 이 모드에서는 원검토의 새 의미값을 등록하지 않으며 승인 수가 증가하지 않는다.
+- 영수증 schema는 `archive-reviewed-identity-fingerprint-repair-v1`이고 `metadataRegistrationStatus: PRESERVED_WITHOUT_NEW_APPROVAL`,
+  `metadataChanged: false`, `newMetadataApprovals: 0` 및 metadata 전후 SHA를 보존한다. 일반 의미 등록 영수증으로 해석하지 않는다.
+  두 번째 파일 쓰기가 실패하면 identity 쓰기도 되돌린다.
+- 재실행은 해당 UID/현재 source·metadata 두 지문/identity/영수증의 일치를 다시 검사한다. 별도 승인 요청이 나중에 변경한 비지문 메타는
+  이 수리 영수증이 소유하지 않는다. `--verify-projection`은 실제 resolver와 학생용 ProblemBankMeta 검색에서 UID와 두 지문을 확인하고,
+  새 의미 승인 없이 수리된 source binding만 검증한다. 기존 소비자 충돌은 면제하지 않는다.
 
 ### Generated 확장 키(EXT-*) — 사용은 허용, 정본 승격 없음 (2026-11-02)
 

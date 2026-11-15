@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { isUnambiguousLegacySourceUidAlias } from '../intelligence/question-identity-contract.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -53,6 +54,49 @@ const archived = (root,commit,file) => {
 const mapUnique = (rows, key, label) => { const m=new Map(); for(const r of rows||[]){const k=key(r);if(m.has(k))throw Error(`DUPLICATE_${label}:${k}`);m.set(k,r);}return m; };
 const semantic = q => pick(q,FIELDS);
 
+// A partial receipt keeps the original source denominator but owns only its selected
+// UID set. Bind every selected row to the actual identity map and source ordinal;
+// an array offset cannot identify a row in a noncontiguous registration.
+function nativeReceiptRecords(receipt,{bank,identityByJoin,identityMap},source) {
+  if(!Array.isArray(receipt.appliedRecords))return null;
+  if(receipt.scope===undefined) {
+    if(receipt.totalQuestions!==bank.length||receipt.appliedRecords.length!==bank.length
+      ||new Set(receipt.appliedRecords.map(r=>r.questionUid)).size!==bank.length
+      ||receipt.appliedRecords.some((r,i)=>r.sourceArchiveFile!==source||r.sourceOrdinal!==i+1))return null;
+    return new Map(receipt.appliedRecords.map(r=>[r.questionUid,r]));
+  }
+  if(receipt.scope!=='PARTIAL_UIDS'||!Number.isInteger(receipt.partialUidCount)
+    ||receipt.partialUidCount<1||receipt.partialUidCount>bank.length
+    ||receipt.expectedQuestionCount!==bank.length||receipt.totalQuestions!==receipt.partialUidCount
+    ||receipt.appliedRecords.length!==receipt.partialUidCount||!(identityByJoin instanceof Map)
+    ||!Array.isArray(receipt.appliedIdentityRecords)||receipt.appliedIdentityRecords.length!==receipt.partialUidCount
+    ||!Array.isArray(receipt.runtimeRecords))return null;
+  const records=mapUnique(receipt.appliedRecords,r=>r.questionUid,'NATIVE_PARTIAL_UID');
+  const identities=mapUnique(receipt.appliedIdentityRecords,r=>r.questionUid,'NATIVE_PARTIAL_IDENTITY');
+  const runtimes=mapUnique(receipt.runtimeRecords,r=>r.questionUid,'NATIVE_PARTIAL_RUNTIME');
+  if(new Set(receipt.appliedRecords.map(r=>r.sourceOrdinal)).size!==records.size
+    ||[...identities.keys(),...runtimes.keys()].some(uid=>!records.has(uid)))return null;
+  for(const [uid,record] of records) {
+    const ordinal=record.sourceOrdinal,q=bank[ordinal-1],identity=identityByJoin.get(`${source}#${ordinal}`);
+    if(!Number.isInteger(ordinal)||ordinal<1||ordinal>bank.length||record.sourceArchiveFile!==source
+      ||!identity||identity.questionUid!==uid||identity.sourceArchiveFile!==source||identity.sourceOrdinal!==ordinal
+      ||identity.status&&identity.status!=='VERIFIED'||!equal(identities.get(uid),identity)
+      ||!equal(record.sourceQuestionNo,identity.sourceQuestionNo)
+      ||record.sourceFingerprint!==sourceFingerprint(q)||record.contentFingerprint!==contentFingerprint(q)
+      ||identity.sourceFingerprint!==record.sourceFingerprint)return null;
+    if(q.questionUid&&q.questionUid!==uid&&!isUnambiguousLegacySourceUidAlias({question:q,
+      sourceArchiveFile:source,sourceOrdinal:ordinal,identityRecord:identity,identityMap,bank}))return null;
+    const runtime=runtimes.get(uid);
+    // REVIEW2 may retain an explicit type hold without a runtime row. It cannot
+    // supply another UID's runtime, and the reused target must have its own row.
+    if(runtime&&(runtime.sourceArchiveFile!==source||runtime.sourceOrdinal!==ordinal
+      ||runtime.sourceIdentity!==`${source}#${ordinal}`||runtime.sourceFingerprint!==record.sourceFingerprint
+      ||runtime.contentFingerprint!==record.contentFingerprint||runtime.approvedSourceFingerprint!==record.sourceFingerprint
+      ||String(runtime.sourceQuestionNo??'')!==String(q.sourceQuestionNo??q.id??'')))return null;
+  }
+  return records;
+}
+
 // The reviewed lane may have just registered this exact source before AutoMeta reaches an older
 // pending cursor. Reuse its byte-bound native receipt, never the approval flags alone. Returning
 // ALREADY_REGISTERED also leaves the native metadata revision, runtime and RPM parent untouched.
@@ -86,18 +130,14 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||receipt.metadataRegistrationStatus!=='REGISTERED'||receipt.requestId!==requestId
         ||!/^[a-f0-9]{64}$/.test(receipt.requestSha256||'')||receipt.sourceArchiveFile!==source
         ||receipt.sourceRawSha256!==sha256(bytes)||receipt.sourceBlobSha1!==blobSha1
-        ||receipt.totalQuestions!==bank.length||!Array.isArray(receipt.appliedRecords)
-        ||receipt.appliedRecords.length!==bank.length
-        ||new Set(receipt.appliedRecords.map(r=>r.questionUid)).size!==bank.length
-        ||receipt.appliedRecords.some((r,i)=>r.sourceArchiveFile!==source||r.sourceOrdinal!==i+1)
         ||approval?.type!==current.metadataApprovalType||approval.metadataReviewed!==true
         ||!String(approval.approvedBy||'').trim()||approval.type==='REVIEW2'&&approval.reviewPassCount!==2
         ||!Array.isArray(approval.evidenceRefs)||!approval.evidenceRefs.length)continue;
       if(!approval.evidenceRefs.every(ref=>/^[a-f0-9]{64}$/.test(ref.sha256||'')&&sha256(boundRead(ref.path))===ref.sha256))continue;
-      const record=receipt.appliedRecords[ordinal-1];
+      const record=nativeReceiptRecords(receipt,nativeSource,source)?.get(identity.questionUid);
       const runtime=receipt.runtimeRecords?.filter(r=>r.questionUid===identity.questionUid);
       const registeredIdentity=receipt.appliedIdentityRecords?.filter(r=>r.questionUid===identity.questionUid);
-      if(record.questionUid!==identity.questionUid||!equal(record,current)
+      if(!record||record.sourceOrdinal!==ordinal||!equal(record,current)
         ||runtime?.length!==1||!equal(runtime[0],runtimeRecord)
         ||registeredIdentity?.length!==1||registeredIdentity[0].sourceArchiveFile!==source
         ||registeredIdentity[0].sourceOrdinal!==ordinal||registeredIdentity[0].sourceFingerprint!==identity.sourceFingerprint
@@ -135,7 +175,9 @@ export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
 export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
   if (!identity || !current || identity.questionUid!==current.questionUid || identity.sourceArchiveFile!==source || current.sourceArchiveFile!==source || Number(identity.sourceOrdinal)!==ordinal || Number(current.sourceOrdinal)!==ordinal) return reject('UID_JOIN_MISMATCH');
-  if (q.questionUid && q.questionUid!==identity.questionUid) return reject('SOURCE_UID_CONFLICT');
+  if (q.questionUid && q.questionUid!==identity.questionUid && !isUnambiguousLegacySourceUidAlias({question:q,
+    sourceArchiveFile:source,sourceOrdinal:ordinal,identityRecord:identity,
+    identityMap:nativeSource?.identityMap,bank:nativeSource?.bank})) return reject('SOURCE_UID_CONFLICT');
   if (identity.status && identity.status!=='VERIFIED') return reject('UID_NOT_VERIFIED');
   const questionNo=String(q.sourceQuestionNo??q.id??'');
   if(previous&&String(previous.sourceQuestionNo??previous.id??'')!==questionNo)return reject('SOURCE_ORDINAL_CHANGED');
@@ -236,7 +278,7 @@ async function context(root) {
     runtimes.set(data.packId,{rel,data});
     for(const r of data.records){if(owners.has(r.questionUid))throw Error('DUPLICATE_RUNTIME_UID');owners.set(r.questionUid,data.packId);}
   }
-  return {registry,validate:validateActiveMetaFields,refreshRuntime,metadata,metaByUid,identityByJoin,runtimes,owners};
+  return {registry,validate:validateActiveMetaFields,refreshRuntime,metadata,metaByUid,identityMap:identity,identityByJoin,runtimes,owners};
 }
 
 export function selectTargets(root, state, config, head) {
@@ -303,7 +345,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       if(['FINAL_QA','REVIEW2'].includes(current?.metadataApprovalType)&&!nativeSource.blobSha1)
         nativeSource.blobSha1=execFileSync('git',['hash-object','--path',rel,'--stdin'],{cwd:root,input:nativeSource.bytes,encoding:'utf8',stdio:['pipe','pipe','pipe']}).trim();
       result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,
-        nativeSource:{...nativeSource,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
+        nativeSource:{...nativeSource,identityMap:c.identityMap,identityByJoin:c.identityByJoin,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
           runtimeStatus:c.runtimes.get(runtimeOwner)?.data.status}});
       if(result.status==='APPLY') {
         const rt=c.runtimes.get(result.ownerPack);if(!rt||rt.data.status!=='ACTIVE')throw Error('OWNER_RUNTIME_MISSING');
