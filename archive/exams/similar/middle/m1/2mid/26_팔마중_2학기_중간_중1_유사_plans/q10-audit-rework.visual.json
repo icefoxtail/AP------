@@ -1,0 +1,517 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사.js",
+  "questionId": 10,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Up",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "Q"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "0"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineLnode",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "L0",
+                "L1"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "transversalNode",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "Q",
+                "P"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "arcQ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "Q"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "qLineCross",
+              "op": "INTERSECTION",
+              "inputs": [
+                "lineLnode",
+                "arcQ"
+              ],
+              "args": {},
+              "outputType": "POINT_SET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "Q"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "normalQ",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q",
+                "P"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "90"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "qTransCross",
+              "op": "INTERSECTION",
+              "inputs": [
+                "transversalNode",
+                "arcQ"
+              ],
+              "args": {},
+              "outputType": "POINT_SET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "B",
+              "op": "SELECT_POINT",
+              "inputs": [
+                "qTransCross"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "branch": {
+                "kind": "SIDE_OF_ORIENTED_LINE",
+                "refs": [
+                  "Q",
+                  "normalQ"
+                ],
+                "sign": -1
+              }
+            },
+            {
+              "id": "C",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "rational",
+                  "numerator": "12",
+                  "denominator": "5"
+                },
+                "dy": {
+                  "kind": "rational",
+                  "numerator": "16",
+                  "denominator": "5"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "arcP",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "P",
+                "C"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "transferSeed",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "arcTransfer",
+              "op": "CIRCLE_THROUGH_POINT",
+              "inputs": [
+                "C",
+                "transferSeed"
+              ],
+              "args": {},
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "dCross",
+              "op": "INTERSECTION",
+              "inputs": [
+                "arcP",
+                "arcTransfer"
+              ],
+              "args": {},
+              "outputType": "POINT_SET",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "SELECT_POINT",
+              "inputs": [
+                "dCross"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "branch": {
+                "kind": "SIDE_OF_ORIENTED_LINE",
+                "refs": [
+                  "Q",
+                  "P"
+                ],
+                "sign": -1
+              }
+            },
+            {
+              "id": "Dright",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "D"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "8"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Dleft",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "D"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "-8"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "Q",
+          "A",
+          "B",
+          "P",
+          "C",
+          "D",
+          "L0",
+          "L1",
+          "Up",
+          "normalQ",
+          "Dright",
+          "Dleft"
+        ],
+        "displaySegments": [
+          {
+            "id": "segmentL",
+            "refs": [
+              "L0",
+              "L1"
+            ],
+            "arrow": "BOTH"
+          },
+          {
+            "id": "segmentTransversal",
+            "refs": [
+              "Q",
+              "C"
+            ]
+          },
+          {
+            "id": "finalLine",
+            "refs": [
+              "Dleft",
+              "Dright"
+            ],
+            "arrow": "BOTH"
+          },
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 510
+        },
+        "caption": "두 직선과 컴퍼스 호",
+        "accessibilityDescription": "가로 방향의 두 직선 주변에 점 이름, 기호, 비스듬한 선과 여러 원호가 있다.",
+        "planeMarks": {
+          "traces": [
+            {
+              "id": "markQArc",
+              "center": "Q",
+              "radius": {
+                "point": "A"
+              },
+              "through": [
+                "A",
+                "B"
+              ],
+              "spanDeg": 14,
+              "label": "㉡",
+              "labelKind": "TEXT",
+              "labelAt": "START",
+              "factRole": "GIVEN",
+              "span": "JOIN"
+            },
+            {
+              "id": "markPArc",
+              "center": "P",
+              "radius": {
+                "point": "C"
+              },
+              "through": [
+                "C",
+                "D"
+              ],
+              "spanDeg": 14,
+              "label": "㉢",
+              "labelKind": "TEXT",
+              "labelAt": "END",
+              "factRole": "GIVEN",
+              "span": "JOIN"
+            },
+            {
+              "id": "markTransfer",
+              "center": "C",
+              "radius": {
+                "point": "D"
+              },
+              "through": [
+                "D"
+              ],
+              "spanDeg": 20,
+              "factRole": "GIVEN"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "factRole": "GIVEN",
+              "labelAt": "END",
+              "id": "givenLineName",
+              "labelKind": "MATH",
+              "ownerSegment": "segmentL",
+              "text": "l"
+            },
+            {
+              "id": "stageOne",
+              "ownerSegment": "segmentTransversal",
+              "text": "㉠",
+              "labelKind": "TEXT",
+              "labelAt": 0.57
+            },
+            {
+              "id": "stageFive",
+              "ownerSegment": "finalLine",
+              "text": "㉤",
+              "labelKind": "TEXT",
+              "labelAt": 0.83
+            },
+            {
+              "id": "stageFour",
+              "ownerSegment": "sAB",
+              "text": "㉣",
+              "labelKind": "TEXT",
+              "labelAt": 0.5
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "L0",
+          "L1",
+          "Up",
+          "normalQ",
+          "Dright",
+          "Dleft"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 20,
+        "displayScale": 0.59,
+        "fontFloorCssPx": 11
+      }
+    }
+  ],
+  "sourceFigure": {
+    "path": "archive/assets/images/26_팔마중_2학기_중간_중1_유사/q10.svg",
+    "note": "현재 인쇄 캡처를 확인했다. 직선 l, 보조선, 컴퍼스 폭, 전이된 현, 최종 평행선이 하나의 정확한 작도 관계를 이루도록 복원한다."
+  }
+}

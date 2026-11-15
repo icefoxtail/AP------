@@ -1,0 +1,392 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m3/1mid/25_왕운중_1학기_중간_중3_유사1.js",
+  "questionId": 9,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "L",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "11"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "U",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "V",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "W",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "X",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Y",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "A"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "5"
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "B"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "L",
+          "R",
+          "A",
+          "B",
+          "U",
+          "V",
+          "W",
+          "X",
+          "Y",
+          "P",
+          "Q"
+        ],
+        "displaySegments": [
+          {
+            "id": "saxis",
+            "refs": [
+              "L",
+              "R"
+            ],
+            "arrow": "BOTH"
+          },
+          {
+            "id": "sAU",
+            "refs": [
+              "A",
+              "U"
+            ]
+          },
+          {
+            "id": "sUV",
+            "refs": [
+              "U",
+              "V"
+            ]
+          },
+          {
+            "id": "sVA",
+            "refs": [
+              "V",
+              "A"
+            ]
+          },
+          {
+            "id": "sWX",
+            "refs": [
+              "W",
+              "X"
+            ]
+          },
+          {
+            "id": "sXY",
+            "refs": [
+              "X",
+              "Y"
+            ]
+          },
+          {
+            "id": "sYB",
+            "refs": [
+              "Y",
+              "B"
+            ]
+          },
+          {
+            "id": "sBX",
+            "refs": [
+              "B",
+              "X"
+            ],
+            "dashed": true
+          },
+          {
+            "id": "sBW",
+            "refs": [
+              "B",
+              "W"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 320
+        },
+        "caption": "수직선 위의 중심 A와 B에서 두 호를 그어 교점 P와 Q를 표시한 그림",
+        "hiddenPointNames": [
+          "L",
+          "R",
+          "U",
+          "V",
+          "W",
+          "X",
+          "Y"
+        ],
+        "hiddenPointStyle": "NONE",
+        "planeMarks": {
+          "traces": [
+            {
+              "id": "traceP",
+              "center": "A",
+              "radius": {
+                "point": "V"
+              },
+              "through": [
+                "P"
+              ],
+              "spanDeg": 23
+            },
+            {
+              "id": "traceQ",
+              "center": "B",
+              "radius": {
+                "point": "X"
+              },
+              "through": [
+                "Q"
+              ],
+              "spanDeg": 23
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "ax",
+              "at": "A",
+              "text": "-1",
+              "anchor": "S"
+            },
+            {
+              "id": "bx",
+              "at": "B",
+              "text": "4",
+              "anchor": "S"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.48,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

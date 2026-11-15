@@ -1,0 +1,400 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/24_매산중_2학기_중간_중1_유사.js",
+  "questionId": 22,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "평행선과 두 각의 식",
+        "accessibilityDescription": "평행한 직선 l, m과 횡단선.",
+        "sourceQuote": "l∥m; marked angles are (3x−10)° and (2x+40)°",
+        "newVisualInformation": [],
+        "sourceConditions": [
+          {
+            "id": "parallel",
+            "condition": "l is parallel to m",
+            "mappedTo": "two parallel line objects"
+          },
+          {
+            "id": "expressions",
+            "condition": "the two indicated angle expressions are shown",
+            "mappedTo": "angle arcs at their intersections"
+          }
+        ],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "PR",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "P"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Lplus",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "P",
+                "PR"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "20"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Lminus",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "P",
+                "PR"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "200"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Tup",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "P",
+                "PR"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "100"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Tdown",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "P",
+                "PR"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "80"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Mleft",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Mref",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "Mleft"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Mright",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Mleft",
+                "Mref"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "20"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineL",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "Lminus",
+                "Lplus"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineM",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "Mleft",
+                "Mright"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "transversal",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "P",
+                "Tdown"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lineM",
+                "transversal"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Qref",
+              "op": "TRANSLATE_POINT",
+              "inputs": [
+                "Q"
+              ],
+              "args": {
+                "dx": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "dy": {
+                  "kind": "integer",
+                  "value": "0"
+                }
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Qdown",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "Q",
+                "Qref"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "80"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "P",
+          "PR",
+          "Lplus",
+          "Lminus",
+          "Tup",
+          "Tdown",
+          "Mleft",
+          "Mref",
+          "Mright",
+          "Q",
+          "Qref",
+          "Qdown"
+        ],
+        "displaySegments": [],
+        "coordinateCanvas": {
+          "width": 680,
+          "height": 520
+        },
+        "displayLines": [
+          "lineL",
+          "lineM",
+          "transversal"
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "topExpr",
+              "refs": [
+                "Lplus",
+                "P",
+                "Tup"
+              ],
+              "value": 80,
+              "label": "(3x-10)",
+              "labelKind": "MATH",
+              "arcs": 1
+            },
+            {
+              "id": "bottomExpr",
+              "refs": [
+                "Mright",
+                "Q",
+                "Qdown"
+              ],
+              "value": 100,
+              "label": "(2x+40)",
+              "labelKind": "MATH",
+              "arcs": 1
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "line-l-label",
+              "text": "l",
+              "at": [
+                4.5,
+                6
+              ],
+              "labelKind": "MATH",
+              "anchor": "CENTER",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "line-m-label",
+              "text": "m",
+              "at": [
+                4.5,
+                -2.5
+              ],
+              "labelKind": "MATH",
+              "anchor": "CENTER",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "P",
+          "PR",
+          "Lplus",
+          "Lminus",
+          "Tup",
+          "Tdown",
+          "Mleft",
+          "Mref",
+          "Mright",
+          "Q",
+          "Qref",
+          "Qdown"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

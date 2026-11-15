@@ -1,0 +1,214 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+  "questionId": 24,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "원과 현 AB",
+        "accessibilityDescription": "원의 중심에서 현에 내린 수선의 위치를 나타낸 그림.",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "inputs": [],
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-8"
+                  }
+                ]
+              },
+              "inputs": [],
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-8"
+                  }
+                ]
+              },
+              "inputs": [],
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M",
+              "op": "SOURCE_POINT",
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-8"
+                  }
+                ]
+              },
+              "inputs": [],
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "rim",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "10"
+                }
+              },
+              "inputs": [
+                "O"
+              ],
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "M"
+        ],
+        "displayCircles": [
+          "rim"
+        ],
+        "displayLines": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 520,
+          "height": 390
+        },
+        "newVisualInformation": [],
+        "displaySegments": [
+          {
+            "id": "OA",
+            "refs": [
+              "O",
+              "A"
+            ]
+          },
+          {
+            "id": "OB",
+            "refs": [
+              "O",
+              "B"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "OM",
+            "refs": [
+              "O",
+              "M"
+            ]
+          }
+        ],
+        "rightAngles": [
+          {
+            "id": "perpendicular",
+            "refs": [
+              "B",
+              "M",
+              "O"
+            ],
+            "factRole": "GIVEN"
+          }
+        ],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "radii",
+              "count": 2,
+              "segments": [
+                "OA",
+                "OB"
+              ]
+            }
+          ],
+          "facts": [
+            {
+              "kind": "ON_CIRCLE",
+              "circle": "rim",
+              "points": [
+                "A",
+                "B"
+              ]
+            }
+          ]
+        },
+        "sourceConditions": [
+          {
+            "id": "circle",
+            "condition": "AB는 원의 현이고 OM은 현에 내린 수선이다.",
+            "mappedTo": [
+              "rim",
+              "AB",
+              "OM"
+            ]
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 25,
+        "displayScale": 0.57,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

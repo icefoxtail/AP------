@@ -34,9 +34,10 @@ window.questionBank = [
     "solution": "[키포인트] 수직선 판정법으로 각 그림에 하나의 $x$값이 하나의 $y$값에 대응하는지 확인한다.\n조건 정리: 다섯 그래프 중 함수의 그래프가 아닌 것을 모두 찾는다.\n풀이 방향: 각 그래프에 수직선을 그어 두 점 이상에서 만나는 그래프를 함수가 아닌 것으로 분류한다.\n정석 풀이:\n1. 첫 번째와 네 번째 그래프는 모든 수직선이 그래프와 많아야 한 점에서 만나므로 함수의 그래프이다.\n2. 두 번째, 세 번째, 다섯 번째 그래프는 적절한 수직선이 그래프와 두 점 이상에서 만나므로 함수의 그래프가 아니다.\n3. 따라서 함수의 그래프가 아닌 것은 ②, ③, ⑤이다.\n핵심 확인: 수직선 판정 결과 함수가 아닌 그래프와 함수인 그래프를 각각 모두 확인했다.\n따라서 정답은 ②, ③, ⑤이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
-    "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q01-problem-v2.svg",
+    "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q01-audit-rework.svg",
+    "imageAlt": "첫째는 수평선분, 둘째는 수직선분이다. 셋째는 오른쪽 한 점에서 왼쪽 위와 왼쪽 아래로 뻗은 두 선분, 넷째는 위쪽 한 점에서 왼쪽 아래와 오른쪽 아래로 뻗은 두 선분이다. 다섯째는 위아래로 나란한 두 점이다.",
     "imageStatus": "reviewed_pass",
-    "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q01-problem-v2.svg",
+    "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q01-audit-rework.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
@@ -47,7 +48,7 @@ window.questionBank = [
         "vertical-line-test"
       ],
       "essentialVisualFacts": "five panels; non-functions are 2,3,5 by vertical-line test",
-      "assetRef": "assets/images/25_팔마고_2학기_기말_고1_유사/q01-problem-v2.svg"
+      "assetRef": "assets/images/25_팔마고_2학기_기말_고1_유사/q01-audit-rework.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"

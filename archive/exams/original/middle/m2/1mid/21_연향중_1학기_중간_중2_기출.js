@@ -312,11 +312,11 @@ window.questionBank = [
     "id": 7,
     "content": "다음 중에서 일차부등식 $2x+5 > 2+3x$의 해를 수직선 위에 옳게 나타낸 것은? <span class='score'>(4점)</span>",
     "choices": [
-      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='10' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>2</text></svg></div>",
-      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='90' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>2</text></svg></div>",
-      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='white' stroke='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='10' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>",
-      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='90' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>",
-      "<div class='svg-center'><svg width='100' height='40'><line x1='10' y1='25' x2='90' y2='25' stroke='black'/><circle cx='50' cy='10' r='3' fill='white' stroke='black'/><line x1='50' y1='25' x2='50' y2='10' stroke='black'/><line x1='50' y1='10' x2='90' y2='10' stroke='black'/><text x='47' y='38' font-size='9'>3</text></svg></div>"
+      "<div class=\"svg-center\"><img src=\"assets/images/21_연향중_1학기_중간_중2_기출/q07-choice-1-readable-v3.svg\" alt=\"수직선 보기\" style=\"width:210px;max-width:100%;height:auto\"></div>",
+      "<div class=\"svg-center\"><img src=\"assets/images/21_연향중_1학기_중간_중2_기출/q07-choice-2-readable-v3.svg\" alt=\"수직선 보기\" style=\"width:210px;max-width:100%;height:auto\"></div>",
+      "<div class=\"svg-center\"><img src=\"assets/images/21_연향중_1학기_중간_중2_기출/q07-choice-3-readable-v3.svg\" alt=\"수직선 보기\" style=\"width:210px;max-width:100%;height:auto\"></div>",
+      "<div class=\"svg-center\"><img src=\"assets/images/21_연향중_1학기_중간_중2_기출/q07-choice-4-readable-v3.svg\" alt=\"수직선 보기\" style=\"width:210px;max-width:100%;height:auto\"></div>",
+      "<div class=\"svg-center\"><img src=\"assets/images/21_연향중_1학기_중간_중2_기출/q07-choice-5-readable-v3.svg\" alt=\"수직선 보기\" style=\"width:210px;max-width:100%;height:auto\"></div>"
     ],
     "answer": "③",
     "category": "일차부등식",
