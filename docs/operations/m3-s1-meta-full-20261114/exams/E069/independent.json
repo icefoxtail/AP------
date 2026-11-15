@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E069",
+  "reviewer": "meta_a",
+  "author": "meta_c",
+  "independence": "작성자와 다른 에이전트가 실제 source 본문·선택지·기존 해설·시각자료를 읽고 의미·난도·4칸을 대조했다. 새로운 수학 정답/해설 PASS를 생성하지 않았다.",
+  "at": "2026-11-15T00:15:34.559771+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/20_연향중_1학기_기말_중3_수학.js",
+  "sourceBlob": "8797f6f5b6967d16b45618ed624e12389986ff99",
+  "inputArtifacts": {
+    "workers/C/E069.review.json": {
+      "sha256": "c6015d2ed528ccf7e916e32353db160679a16d1dab7779b3bf8c2a5e10354450"
+    },
+    "workers/C/E069.4slot.json": {
+      "sha256": "0b639d085b844584cd10a75b0a7d13a8330a57d493993b464609eddb97a071bc"
+    },
+    "workers/C/E069.input.json": {
+      "sha256": "b6ac94bc8dde580a32ad900c299ad280e7590c05ae157ded47b0e8f98db8209e"
+    }
+  },
+  "sampledOrdinals": [
+    8,
+    18,
+    20
+  ],
+  "items": [
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_ac590a38d0f5cbae05eee8b872f1060805d2bd7224e63424d8437112cc30c629",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "원둘레와거리3x는일차,정육면체겉넓이6x²·사다리꼴넓이4x²는이차. 한모서리만주어진육각기둥의부피미정은기존해설과CONTENT_DEBT에보존되어있다. primary43·모델링/차수·bucket2수용."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_e4d0e72f44d19d6d093de1f458d6f4bb019bed7b78bb0fb5b1f4a40ab97fead3",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "4a배후b²를더해(2ax+b)²=b²-4ac로만드는실제유도를확인. D<0일때실근없음과D≥0의제곱근추출을구분하고a≠0분모조건을유지한다. 지정빈칸없이전체유도및실근조건을구성하는3단계판정과method3개를수용."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_7574296a0d7acd77ad421daa6ebc17e29857e5a7c27e1f7bafadfb6976b44ce3",
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "reason": "실물어두운띠와꼭짓점P(1,-3),Q(3,-3)를확인. 두곡선은수평2만큼이동하며x=1절단조각을옮기면2×3직사각형이된다. 기존해설의등적변형·넓이method와상/4 B34는비정형곡선영역의구조선택부담에부합한다."
+    }
+  ],
+  "findingsResolved": [],
+  "rootAdjudications": [],
+  "visualEvidence": [
+    {
+      "path": "workers/C/E069-assets/20-question-img1.png",
+      "sha256": "217db208de7ac5d831f3d974b34e46da21133b88a8ccf4e01e0e3c0e7d4de677",
+      "status": "VIEWED"
+    }
+  ],
+  "status": "ACCEPTED_SAMPLED_WITH_RESOLVED_FINDINGS",
+  "scopeLimit": "표본 의미·메타 교정·4칸 검토의 수용이다. 공식 resolver 및 전체 수학 검증·출고 승인을 의미하지 않는다."
+}
