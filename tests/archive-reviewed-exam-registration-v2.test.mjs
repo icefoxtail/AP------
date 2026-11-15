@@ -3543,7 +3543,7 @@ test("identity-only Consumer check validates real page visibility and exact fing
     records: [{ ...catalog.records[0], metadataConflicts: ["standardUnitKey"] }] }), /Consumer metadata conflict/);
 });
 
-function auditedSourcePreservationFixture(t, { solution = false } = {}) {
+function auditedSourcePreservationFixture(t, { solution = false, legacySourceAudit = false } = {}) {
   const f = fixture(t, '중2 수학', '2015');
   const knownUnit = value => JSON.parse(JSON.stringify(value).replaceAll('UNIT_NEW', 'M2-01').replaceAll('SUB_NEW', 'M2-01-EXPONENT_LAW'));
   f.request = knownUnit(f.request); f.q = knownUnit(f.q);
@@ -3551,17 +3551,29 @@ function auditedSourcePreservationFixture(t, { solution = false } = {}) {
     for (const row of change.after?.templates || []) row.ownerPack = 'NEW_COURSE';
   for (const p of [META, 'archive/data/question_identity_map.json']) f.put(p, knownUnit(f.read(p)));
   const sourcePath = 'archive/exams/' + f.request.sourceArchiveFile;
-  delete f.q.integrationPattern;
+  if (legacySourceAudit) {
+    f.q.crossConceptKeys = [];
+    f.q.metaStatus = 'RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED';
+    f.q.metaNullReason = 'Prior source placeholder; the audit binds the exact approved sidecar.';
+  } else delete f.q.integrationPattern;
   f.put(sourcePath, 'window.questions=' + JSON.stringify([f.q]) + ';\n');
   f.request.expectedSourceBlobSha1 = blob(fs.readFileSync(path.join(f.root, sourcePath)));
-  f.request.items[0].before.integrationPattern = null; f.request.items[0].after.integrationPattern = null;
+  if (!legacySourceAudit) {
+    f.request.items[0].before.integrationPattern = null; f.request.items[0].after.integrationPattern = null;
+  }
   const metadata = f.read(META);
-  Object.assign(metadata.records[0], { contentFingerprint: auditContentFingerprint(f.q), tagStatus: 'review_required',
-    tagConfidence: 'review_required', fieldStatus: { difficulty: 'source_unreviewed' } });
+  Object.assign(metadata.records[0], { contentFingerprint: auditContentFingerprint(f.q),
+    tagStatus: legacySourceAudit ? 'approved_subunit_concept_partial' : 'review_required',
+    tagConfidence: legacySourceAudit ? 'rule_inferred' : 'review_required',
+    fieldStatus: { difficulty: legacySourceAudit ? 'approved_source' : 'source_unreviewed' } });
+  if (legacySourceAudit) delete metadata.records[0].reviewStatus;
   f.put(META, metadata);
-  attachMetaPipelineAudit(f);
-  f.request.approval.metaPipelineAudit.unreviewedFields = [{ field: 'integrationPattern', status: 'EVIDENCE_DEBT',
-    questionUids: ['uid1'], reason: 'The audit did not assess integration.' }];
+  if (legacySourceAudit) attachMetaPipelineAuditV2(f);
+  else {
+    attachMetaPipelineAudit(f);
+    f.request.approval.metaPipelineAudit.unreviewedFields = [{ field: 'integrationPattern', status: 'EVIDENCE_DEBT',
+      questionUids: ['uid1'], reason: 'The audit did not assess integration.' }];
+  }
   registerReviewedExamV2({ root: f.root, request: f.request, write: true });
   const receiptPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json';
   const prior = f.read(receiptPath), beforeQuestion = structuredClone(f.q), old = prior.appliedRecords[0];
@@ -3570,7 +3582,8 @@ function auditedSourcePreservationFixture(t, { solution = false } = {}) {
   git('init', '-q'); const priorCommit = checkpoint('original audited approval');
   const masterPath = 'archive/data/master_tables/js_archive_tag_master.json';
   const master = f.read(masterPath); master.find(r => r.key === 'M2-01').labelKo = '현재 정본 표시'; f.put(masterPath, master);
-  f.q.standardUnit = '현재 정본 표시'; f.q.difficultyBucket = 2;
+  if (!legacySourceAudit) f.q.standardUnit = '현재 정본 표시';
+  f.q.difficultyBucket = 2;
   if (solution) f.q.solution = '독립적으로 확인한 해설의 제한된 정정';
   const sourceBytes = 'window.questions=' + JSON.stringify([f.q]) + ';\n'; f.put(sourcePath, sourceBytes);
   execFileSync('git', ['hash-object', '-w', '--stdin'], { cwd: f.root, input: sourceBytes });
@@ -3653,6 +3666,95 @@ for (const solution of [false, true]) test('audit preservation keeps original ap
   const plan = planAutoQuestion(f.native());
   assert.equal(plan.status, 'ALREADY_REGISTERED', JSON.stringify(plan));
   assert.equal(plan.preservedMetadataApprovals, 1); assert.equal(plan.newMetadataApprovals, 0); assert.equal(plan.final, undefined);
+});
+
+test('legacy source-approved partial audit preserves its absent QA status and source-sidecar difference', t => {
+  const f = auditedSourcePreservationFixture(t, { legacySourceAudit: true });
+  assert.equal(Object.hasOwn(f.old, 'reviewStatus'), false);
+  assert.equal(f.old.tagStatus, 'approved_subunit_concept_partial');
+  assert.equal(f.old.fieldStatus.difficulty, 'approved_source');
+  assert.deepEqual(f.q.crossConceptKeys, []);
+  assert.deepEqual(f.old.crossConceptKeys, ['CC_NEW']);
+  const sourceBytes = fs.readFileSync(path.join(f.root, f.sourcePath));
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.newMetadataApprovals, 0); assert.equal(result.preservedMetadataApprovals, 1);
+  const row = f.read(META).records[0];
+  assert.equal(Object.hasOwn(row, 'reviewStatus'), false);
+  for (const key of ['metadataApprovalType', 'metadataStatus', 'tagStatus', 'tagConfidence', 'fieldStatus',
+    'metaFoundationPackVersion', 'problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys', 'integrationPattern', 'level'])
+    assert.deepEqual(row[key], f.old[key], key);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.sourcePath)), sourceBytes);
+  fs.rmSync(path.join(f.root, f.request.approval.sourceRebind.requestPath));
+  fs.rmSync(path.join(f.root, f.request.approval.sourceRebind.difficultyRequestRef.path));
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+  assert.equal(registerDifficulty5({ root: f.root, request: f.difficulty, verifyProjection: true }).summary.VERIFIED, 1);
+  const plan = planAutoQuestion(f.native());
+  assert.equal(plan.status, 'ALREADY_REGISTERED', JSON.stringify(plan));
+  assert.equal(plan.preservedMetadataApprovals, 1); assert.equal(plan.newMetadataApprovals, 0);
+  assert.equal(plan.final, undefined);
+});
+
+test('legacy source-approved partial audit rejects status, debt, version and approved-value drift', async t => {
+  for (const [name, mutate] of [
+    ['invented QA', row => { row.reviewStatus = 'reviewed_pass'; }],
+    ['null instead of absent QA', row => { row.reviewStatus = null; }],
+    ['changed tag', row => { row.tagStatus = 'review_required'; }],
+    ['promoted difficulty status', row => { row.fieldStatus.difficulty = 'approved_meta_pipeline_audit'; }],
+    ['removed field status', row => { delete row.fieldStatus.condition; }],
+    ['invented integration status', row => { row.fieldStatus.integrationPattern = 'approved_meta_pipeline_audit'; }],
+    ['different pack version', row => { row.metaFoundationPackVersion = '2.0.0'; }],
+    ['discarded approved concepts', row => { row.crossConceptKeys = []; }],
+  ]) await t.test(name, t => {
+    const f = auditedSourcePreservationFixture(t, { legacySourceAudit: true });
+    const metadata = f.read(META); mutate(metadata.records[0]); f.put(META, metadata);
+    const before = fs.readFileSync(path.join(f.root, META));
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }));
+    assert.deepEqual(fs.readFileSync(path.join(f.root, META)), before);
+    assert.equal(fs.existsSync(path.join(f.root, f.registeredPath)), false);
+  });
+});
+
+test('legacy source-approved partial audit allows no unreviewed source transport beyond exact D5', async t => {
+  for (const [name, mutate] of [
+    ['new source concepts even when equal to sidecar', q => { q.crossConceptKeys = ['CC_NEW']; }],
+    ['different source PT', q => { q.problemTypeKey = 'PT_OTHER'; }],
+    ['new rationale', q => { q.primaryMethod = 'new source rationale'; }],
+    ['canonical label transport', q => { q.standardUnit = '현재 정본 표시'; }],
+    ['legacy level edit', q => { q.level = '하'; }],
+    ['student answer edit', q => { q.answer = '2'; }],
+  ]) await t.test(name, t => {
+    const f = auditedSourcePreservationFixture(t, { legacySourceAudit: true }); mutate(f.q);
+    const bytes = 'window.questions=' + JSON.stringify([f.q]) + ';\n'; f.put(f.sourcePath, bytes);
+    f.request.expectedSourceBlobSha1 = blob(bytes); f.difficulty.gemini.latestBlobSha = blob(bytes);
+    const ref = f.request.approval.sourceRebind.difficultyRequestRef;
+    f.put(ref.path, f.difficulty); Object.assign(ref, f.ref(ref.path)); f.save();
+    const before = fs.readFileSync(path.join(f.root, META));
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }),
+      /unreviewed source field|legacy level baseline|binding drift|fingerprint|student inputs/);
+    assert.deepEqual(fs.readFileSync(path.join(f.root, META)), before);
+  });
+});
+
+test('legacy source-approved partial audit requires the exact typed immutable prior approval', async t => {
+  for (const [name, mutate] of [
+    ['different audit package version', p => { p.approval.metaPipelineAudit.schemaVersion = 'meta-pipeline-audit-approval-v1'; }],
+    ['prior QA invented', p => { p.appliedRecords[0].reviewStatus = 'reviewed_pass'; }],
+    ['prior QA null', p => { p.appliedRecords[0].reviewStatus = null; }],
+    ['prior difficulty status changed', p => { p.appliedRecords[0].fieldStatus.difficulty = 'source_unreviewed'; }],
+    ['prior extra field debt', p => { p.appliedRecords[0].fieldStatus.integrationPattern = 'EVIDENCE_DEBT'; }],
+  ]) await t.test(name, t => {
+    const f = auditedSourcePreservationFixture(t, { legacySourceAudit: true });
+    const spec = f.request.approval.sourceRebind, sourceBytes = fs.readFileSync(path.join(f.root, f.sourcePath));
+    const oldSource = execFileSync('git', ['show', spec.priorCommit + ':' + f.sourcePath], { cwd: f.root });
+    mutate(f.prior); f.put(spec.priorReceiptRef.path, f.prior);
+    fs.writeFileSync(path.join(f.root, f.sourcePath), oldSource);
+    spec.priorCommit = f.checkpoint('synthetic incompatible historical approval');
+    fs.writeFileSync(path.join(f.root, f.sourcePath), sourceBytes);
+    Object.assign(spec.priorReceiptRef, f.ref(spec.priorReceiptRef.path));
+    f.request.approval.metaPipelineAudit = structuredClone(f.prior.approval.metaPipelineAudit); f.save();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }),
+      /unchanged-value contract|original v2 audit/);
+  });
 });
 
 test('audit preservation rejects drift, unreviewed transport, wrong scope and approval promotion', async t => {

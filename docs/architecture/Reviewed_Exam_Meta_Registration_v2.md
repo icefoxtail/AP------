@@ -327,6 +327,13 @@ approval.sourceRebind.schemaVersion: archive-native-audit-preservation-v1을 사
 - AutoMeta는 위 증거, 현재 source/identity/metadata/runtime, ACTIVE PT/TPL과 exact binding을 다시 검증해 기존 승인만 재사용한다.
   감사가 남긴 null IntegrationPattern과 명시 debt는 그대로 유지한다. D5 재실행도 같은 보존 영수증이 실제 해설 지문 수리까지
   입증할 때만 새 full fingerprint를 인정한다. 근거·UID·분모·승인 종류·debt·재결속 내역 중 하나라도 달라지면 거부한다.
+- 과거 `meta-pipeline-audit-approval-v2`가 남긴 `approved_subunit_concept_partial` tag, `reviewStatus` 미기재,
+  일곱 분류 필드의 `approved_meta_pipeline_audit`와 난도의 `approved_source`라는 정확한 상태 조합도 보존할 수 있다.
+  이 경우 원본은 네 D5 필드 외에 한 필드도 바꿀 수 없고, 해설 수리도 함께 적용하지 않는다.
+  당시 source의 빈 보조 분류와 승인 sidecar가 달랐다면, immutable prior source와 승인 영수증에서 각각 확인한
+  기존 관계만 유지한다. 새 source 값으로 덮거나 비어 있던 QA 상태를 추가하지 않는다.
+  현재 metadata/identity/runtime는 기존 승인 전체와 공식 D5 결과에 정확히 일치해야 하며,
+  재결속 후에도 원 승인 종류·상태·fieldStatus·pack version을 유지하고 새 승인 수는 0이다.
 
 ## 검증
 
