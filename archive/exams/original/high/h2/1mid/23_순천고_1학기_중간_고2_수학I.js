@@ -471,7 +471,11 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q15",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: t≥0에서 대표 아래로 열린 포물선 F(t)와 수평선 F(t)=2, 4, 8이 표시되어 있다. 예시 곡선은 4<F최댓값<8인 모양이며 실제 자연수 a의 답 후보를 나타내지 않는다. y=2는 양의 t에서 한 교점, y=4는 두 교점, y=8은 교점이 없다. 각 양의 t 교점은 원래 변수 x=−t와 x=t 두 입력에 대응한다.",
+    "solutionImageCaption": "예: 4<F최댓값<8인 대표 포물선에서 F(t)=2는 양의 t에서 한 점, F(t)=4는 두 점, F(t)=8은 만나지 않는다. 양의 t 교점은 원래 x=±t의 두 입력에 대응한다. 원문에서 모든 자연수 a의 값의 합은 7이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
