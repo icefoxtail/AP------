@@ -590,7 +590,10 @@ window.questionBank = [
     "answerStatus": "created_pending_review",
     "solutionStatus": "created_pending_review",
     "reviewStatus": "manual_review",
-    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I/q13-solution.svg"
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 지수곡선 y=2^x, y=8×2^x와 수평 경계 y=1, y=4 사이에서 가로 선분이 두 곡선을 길이 3으로 잇는다.",
+    "solutionImageCaption": "높이 y가 같을 때 두 x좌표의 차는 3이며 높이 구간은 y=1부터 y=4까지다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
