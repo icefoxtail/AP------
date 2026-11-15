@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "palma-q22-final-context-r3",
+  "reviewerTaskInstance": "/root/palma_q22_independent",
+  "reviewedOn": "2026-11-15",
+  "scope": "Narrow follow-up to the existing independent A-only SVG review: final original-source Archive context, including Korean question/prose/caption readability. No new SVG, math, alt, or full semantic review.",
+  "priorIndependentReview": {
+    "path": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/review-r2/independent-review-r2.json",
+    "sha256": "9cd18f220bab99b157a56deff62fb034352d412fd75b37506fdc22a437869105",
+    "svgVerdict": "A_ONLY_PASS"
+  },
+  "archiveCapture": {
+    "runId": "43698492039",
+    "artifactId": "14154999715",
+    "artifactZipPath": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/ci-43698492039/artifact.zip",
+    "artifactZipSha256": "1bf90306342f8ee4d5d5e6961ff43fa80ef8628e6f7fa2cf978034b332e60cdd",
+    "artifactCommit": "df6d7796638983161dd5d69772b8a9b0d5fa8337",
+    "captureStatus": "PASS_MEASURED",
+    "mode": "sol",
+    "viewport": "desktop",
+    "synthetic": false,
+    "runtime": "Playwright Chromium 157.0.8103.50",
+    "sourceSha256": "73e7dca45980a7e405e540a14afd9d8394bb71a351129c9f1826a5abcb5fd3d3",
+    "candidateSha256": "73e7dca45980a7e405e540a14afd9d8394bb71a351129c9f1826a5abcb5fd3d3",
+    "svgSha256": "9f07d3bd115489e64cb2f63ddb0b1e8a6617794145ce9b30580e6a3f652df01d",
+    "svgResponse": { "status": 200, "bytes": 29603 },
+    "rowCounts": { "questionBlocks": 24, "pageCount": 5, "loadedSvgCount": 1, "failedSvgCount": 0, "missingGlyphCount": 0, "clippedTextCount": 0, "overflowCount": 0 }
+  },
+  "directlyViewedEvidence": {
+    "zipEntry": ".tmp/archive/palma-final-26fc/21_팔마중_1학기_중간_중2_기출/visual-engine/production/final-source-capture/archive-render/attempt-01/va-b9961463f237d9400148706f10c61a591d986bd922831fb4a85fd8149704625e-sol-desktop-va-b9961463f237d9400148706f10c61a591d986bd922831fb4a85fd8149704625e-context.png",
+    "localReviewCopy": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/review-r2/inspection-r3/va-b9961463f237d9400148706f10c61a591d986bd922831fb4a85fd8149704625e-sol-desktop-va-b9961463f237d9400148706f10c61a591d986bd922831fb4a85fd8149704625e-context.png",
+    "contextPngSha256": "78a324a1a2aceb5019ae15d55636bb79908b0f93e6f540b17163a3e9e559f25b",
+    "contextPngDimensionsPx": { "width": 317, "height": 570 },
+    "rawJsonLocalReviewCopy": "/workspace/scratch/26fc42390a50/palma_q22_visual/q22/review-r2/inspection-r3/va-b9961463f237d9400148706f10c61a591d986bd922831fb4a85fd8149704625e-sol-desktop.json",
+    "rawJsonSha256": "18fc47c3a10eb911287c0200245ece22aee98defd1d7440160de830b2a34fd4e",
+    "rawTargetRectCssPx": { "width": 288, "height": 220.1875 },
+    "fontWaitMs": 0.5,
+    "directVisualObservation": "Korean question text and solution prose are visible and readable in the final Archive context PNG. The restored caption is visible below the SVG and its Korean words and equality formula (3πa³ = (4/3)πa²h) are readable at the captured desktop context size. The prior missing-Korean-text issue is resolved in this capture. No text/image overlap or visible clipping is present in the q22 block."
+  },
+  "followUpVerdict": {
+    "finalSourceKoreanContext": "PASS_VISUALLY_OBSERVED",
+    "captionAndFormula": "PASS_VISUALLY_OBSERVED",
+    "priorRenderingIssue": "RESOLVED_IN_THIS_CAPTURE",
+    "svgVerdictChanged": false,
+    "svgFontFloor": "UNCHANGED_FROM_R2; effective vector-size estimate 11.9993 CSS px, with the prior direct-DOM font-metric caveat",
+    "htmlTextFontFloor": "NOT_INDEPENDENTLY_MEASURED_AS_A_CSS_METRIC; this narrow follow-up records direct visual legibility only",
+    "fullPageOrFullExamReview": "NOT_PERFORMED"
+  }
+}

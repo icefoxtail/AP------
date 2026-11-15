@@ -100,7 +100,11 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
     request.approval.sourceRebind = { schemaVersion: 'archive-native-audit-preservation-v1', requestPath: REQUEST,
       difficultyRequestRef: { path: DIFFICULTY_REQUEST, sha256: sha(json(difficultyRequest)) } };
   }
-  if (finalQaPreservation) request.approval.sourceRebind = { priorReceiptRef: evidenceRef };
+  if (finalQaPreservation) {
+    Object.assign(request.approval, { metadataReviewed: true, approvedBy: 'fixture existing approval preservation',
+      sourceRebind: { priorReceiptRef: evidenceRef } });
+    Object.assign(request.items[0], { before: {}, after: {} });
+  }
   if (basicPreservation) {
     request.schemaVersion = 'archive-basic-scope-rebind-request-v1'; delete request.scope; delete request.registryChanges;
     request.approval.type = 'BASIC_SCOPE_REBIND'; request.approval.sourceReview = { schemaVersion: 'archive-basic-scope-current-source-preservation-v1' };
@@ -686,6 +690,98 @@ function laterCodePush(f) {
   const headSha = f.git('rev-parse', 'HEAD');
   return { root: f.root, eventName: 'push', event: { before: baseSha, after: headSha }, expectedSha: headSha, run: f.run };
 }
+
+function laterCodePr(f) {
+  const baseSha=f.git('rev-parse','HEAD');
+  // This checker change ordinarily needs no archive materialization. An exact
+  // inherited preservation still has to supply a coherent temporary receipt.
+  f.write(CI_WORKFLOW_PATH,'// subsequent code-only PR while registration is pending\n');
+  f.git('add','--',CI_WORKFLOW_PATH);f.git('commit','-qm','later code-only PR');
+  const headSha=f.git('rev-parse','HEAD'),repo='owner/repository';
+  return {root:f.root,repo,event:{number:17,repository:{id:101,full_name:repo},pull_request:{
+    number:17,base:{sha:baseSha,repo:{id:101}},head:{sha:headSha,repo:{id:101}}}},
+    expectedSha:headSha,runId:41,runAttempt:1,run:f.run};
+}
+
+test('code-only PR preserves an exact inherited partial FINAL_QA approval through the official projection and Consumer',t=>{
+  const f=fixture(t,{partial:true,finalQaPreservation:true}),options=laterCodePr(f);
+  const baseSha=options.event.pull_request.base.sha,headSha=options.expectedSha;
+  const beforeRequest=fs.readFileSync(path.join(f.root,REQUEST)),other=fs.readFileSync(path.join(f.root,OTHER));
+  const selected=selectNativeRequests({root:f.root,baseSha,headSha});
+  assert.deepEqual(selected.map(r=>r.path),[REQUEST]);
+  assert.deepEqual(selected[0].inheritedPreservation,{baseSha,requestSha256:sha(beforeRequest)});
+  assert.equal(selected[0].kind,'native-approval-preservation');
+  assert.equal(selected[0].questionCount,1);assert.equal(selected[0].sourceQuestionCount,24);
+  const proof=producePrRegistrationProof(options);
+  assert.equal(proof.preparation.state,'PREPARED');assert.deepEqual(proof.nativePreview.requests,selected);
+  assert.deepEqual(proof.nativePreview.checks.find(c=>c.id==='native-consumer').preservedNativeApprovals,
+    {requests:1,preservedMetadataApprovals:1,newMetadataApprovals:0,approvalTypes:['FINAL_QA']});
+  assert.equal(validateLocalRegistrationProof({...options,proof}).reusable,true);
+  assert.deepEqual(fs.readFileSync(path.join(f.root,REQUEST)),beforeRequest,'preview never consumes the inherited request');
+  assert.deepEqual(fs.readFileSync(path.join(f.root,OTHER)),other,'unrelated inherited requests stay untouched');
+  assert.equal(f.git('rev-parse','HEAD'),headSha);f.assertShadowsRemoved();
+});
+
+for(const [name,mutate]of [
+  ['a nonempty semantic before',r=>{r.items[0].before={templateKey:'OLD'};}],
+  ['a nonempty semantic after',r=>{r.items[0].after={templateKey:'NEW'};}],
+  ['registry additions',r=>{r.registryChanges=[{path:AUTHORITY,after:{status:'ACTIVE'}}];}],
+  ['full-exam scope',r=>{delete r.scope;}],
+  ['another approval type',r=>{r.approval.type='REVIEW2';}],
+  ['an unreviewed approval',r=>{r.approval.metadataReviewed=false;}],
+  ['an audit dependency',r=>{r.approval.sourceRebind.schemaVersion='archive-native-audit-preservation-v1';}],
+  ['an item fingerprint repair',r=>{r.items[0].rebind={priorSourceBlobSha1:'a'.repeat(40)};}],
+  ['an item source reassessment',r=>{r.items[0].sourceReview={reviewCommit:'a'.repeat(40)};}],
+  ['identity-only mode',r=>{r.registrationMode='IDENTITY_FINGERPRINT_ONLY';}],
+])test(`code-only PR does not adopt inherited preservation with ${name}`,t=>{
+  const f=fixture(t,{partial:true,finalQaPreservation:true,mutateRequest:mutate}),options=laterCodePr(f);
+  assert.deepEqual(selectNativeRequests({root:f.root,baseSha:options.event.pull_request.base.sha,headSha:options.expectedSha}),[]);
+  assert.equal(f.calls.filter(c=>c.program!=='git').length,0);
+});
+
+test('inherited preservation rejects working-copy request drift and a changed source snapshot',t=>{
+  const f=fixture(t,{partial:true,finalQaPreservation:true}),options=laterCodePr(f);
+  const select=()=>selectNativeRequests({root:f.root,baseSha:options.event.pull_request.base.sha,headSha:options.expectedSha});
+  const original=fs.readFileSync(path.join(f.root,REQUEST));
+  f.write(REQUEST,original.toString()+'\n');assert.throws(select,/REQUEST_NOT_FIXED/);f.write(REQUEST,original);
+  f.write(SOURCE,fs.readFileSync(path.join(f.root,SOURCE),'utf8')+'\n');
+  f.git('add','--',SOURCE);f.git('commit','-qm','later source change without a reviewed rebind');
+  options.expectedSha=f.git('rev-parse','HEAD');
+  assert.throws(select,/SOURCE_NOT_FIXED/);assert.equal(f.calls.filter(c=>c.program!=='git').length,0);
+});
+
+test('changed preservation keeps ordinary changed-input ownership and cannot masquerade as inherited',t=>{
+  const f=fixture(t,{partial:true,finalQaPreservation:true}),options=laterCodePr(f);
+  f.write(REQUEST,json({...f.request,items:f.request.items.map(item=>({...item,reason:'changed request input'}))}));
+  f.git('add','--',REQUEST);f.git('commit','-qm','changed preservation input');
+  const selected=selectNativeRequests({root:f.root,baseSha:options.event.pull_request.base.sha,headSha:f.git('rev-parse','HEAD')});
+  assert.deepEqual(selected.map(r=>r.path),[REQUEST]);assert.equal(selected[0].inheritedPreservation,undefined);
+});
+
+test('working-copy forgery and deleted inherited requests cannot expand the fixed preservation selection',t=>{
+  const ordinary=fixture(t,{partial:true}),ordinaryPr=laterCodePr(ordinary),forged=copy(ordinary.request);
+  Object.assign(forged.approval,{type:'FINAL_QA',metadataReviewed:true,approvedBy:'forged local dispatcher',
+    sourceRebind:{priorReceiptRef:forged.approval.evidenceRefs[0]}});
+  Object.assign(forged.items[0],{before:{},after:{}});ordinary.write(REQUEST,json(forged));
+  ordinary.write('.archive-meta-register/inbox/untracked-preservation.json',json({...forged,requestId:'untracked'}));
+  assert.deepEqual(selectNativeRequests({root:ordinary.root,baseSha:ordinaryPr.event.pull_request.base.sha,headSha:ordinaryPr.expectedSha}),[]);
+  const preserved=fixture(t,{partial:true,finalQaPreservation:true}),preservedPr=laterCodePr(preserved);
+  fs.unlinkSync(path.join(preserved.root,REQUEST));
+  assert.throws(()=>selectNativeRequests({root:preserved.root,baseSha:preservedPr.event.pull_request.base.sha,headSha:preservedPr.expectedSha}),/ENOENT/);
+  preserved.git('add','--',REQUEST);preserved.git('commit','-qm','remove the inherited request');
+  assert.deepEqual(selectNativeRequests({root:preserved.root,baseSha:preservedPr.event.pull_request.base.sha,headSha:preserved.git('rev-parse','HEAD')}),[]);
+  assert.equal([...ordinary.calls,...preserved.calls].filter(c=>c.program!=='git').length,0);
+});
+
+test('inherited preservation cannot bypass an official registrar refusal or claim a new approval',t=>{
+  const f=fixture(t,{partial:true,finalQaPreservation:true}),options=laterCodePr(f);
+  f.hook['dry-run']=()=>{throw Error('FIXTURE_SELECTED_QUESTION_CHANGED');};
+  assert.throws(()=>producePrRegistrationProof(options),/SELECTED_QUESTION_CHANGED/);
+  assert.equal(f.calls.filter(c=>c.args.includes('--write')).length,0);
+  delete f.hook['dry-run'];f.hook.result=(_phase,result)=>({...result,newMetadataApprovals:1});
+  assert.throws(()=>producePrRegistrationProof(options),/DRY_RUN_NOT_PASS/);
+  assert.equal(f.calls.filter(c=>c.args.includes('--write')).length,0);
+});
 
 test('main code-only push applies the fixed pending inbox then checks projection and typed Consumer without consuming it', t => {
   const f = fixture(t, { partial: true, otherOwner: false });
