@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E053",
+  "owner": "B",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "4ac46524bb0fa2a59b17ed6d469eb66d73012993",
+  "sourceSha256": "0c2d9c14291387733b6f83fa6f06a3a3c5a73193d08b225ca821f9105f45ba8a",
+  "reviewSha256": "3a7c0c4a887b28561915bb3817fe646fc06cbfdcd8f911ce518c9baf8a1bc6ef",
+  "fourSlotSha256": "7319051b0cf19163ad2b640bce32476ecb04aca9b85dc449281b326ab5661039",
+  "independentSampleSha256": "2cacc0a6ea8083a2a19b9dfa9403db533311ae2f87d4af223f50fab72dca8185",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE",
+  "operationalStatus": "REGISTRATION_PENDING",
+  "unresolvedItems": [],
+  "sampleReviewer": "ROOT",
+  "sampleOrdinals": [
+    4,
+    15,
+    24
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "62647cd02bbc8051a4e6311fa9a6ef2cd1ab1f892aba7f6d67009fa9401cf05b",
+      "finalReviewSha256": "3a7c0c4a887b28561915bb3817fe646fc06cbfdcd8f911ce518c9baf8a1bc6ef",
+      "independentSampleSha256": "2cacc0a6ea8083a2a19b9dfa9403db533311ae2f87d4af223f50fab72dca8185",
+      "adjudicatedCompatibilityOrdinals": [
+        2,
+        5,
+        7,
+        8,
+        9,
+        24
+      ],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "평행이동을 식으로 한 번 바꾼 뒤 주어진 후보좌표를 대입한다. 직접 대입형과의 B12 경계를 받아들인다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "실제 그래프의 두 절편을 먼저 읽어 기울기로 바꾸고 계수를 비교하는 한 단계 전처리이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "하나의 그래프를 직선식으로 바꾼 뒤 기울기·절편·평행·증가량을 정형적으로 비교한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "명시된 두 점을 기울기와 한 점 공식에 직접 넣는 기본형이다. 중이라는 기존 문자열과 bucket1의 인접 차이를 별도로 수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "주어진 식에서 두 절편을 구하고 실제 다섯 그래프 선택지와 대응한다. 그림을 읽는 전처리가 있으나 전략선택은 없다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "주어진 직선의 x절편을 먼저 정한 뒤 그 점을 지나는 수직선의 식을 만든다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "두 식의 계수비와 상수항을 구별해 기울기는 같고 절편은 다른 조건을 적용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "완성된 다섯 후보에 세 피드백을 차례로 대조하는 정형 조건검증이다. 원본상의 STRONG_CONFLICT와 해설 숫자지칭 오류를 유지한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "동전과 주사위의 각 사건을 정한 후 통상 독립시행의 곱을 적용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 20,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "제시된 AO와 BO 유전인자 모형을 네 표본쌍으로 옮기는 전처리와 확률비 계산이다. 기존 해설의 이상적인 유전모형에 대한 메타 판단이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "종료시점이 다른 두 승리경로를 나누고 미래승률을 상금배분으로 바꾼다. 비슷한 실력을 동일승률·독립으로 구체화한 기존 모형의 sourceHold는 유지한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "소문항이 감소율로 식을 세우고 목표높이를 대입하는 순서를 안내한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "상",
+      "reason": "소문항이 절편그래프·교점·넓이 경로를 모두 안내하는 정형 연속계산이다. 원본상과 bucket2 강한충돌을 숨기지 않는다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "직선의 유일한 교점 조건을 두 주사위 눈의 곱제약으로 전환한 뒤 제외쌍을 세는 핵심 모델전환이 있다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 25,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "비복원 조건을 반영한 같은색 두 경로의 표준 곱과 합이다. 분모변화만으로 bucket3으로 올리지 않는다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 15,
+      "reason": "정답369와 추측396을 비교하면 같은자리인 숫자는3이다. 기존해설의 마지막후보 설명은9만제자리라고 잘못지칭한다. 후보369와1스트라이크2볼이라는 결과는 유지된다.",
+      "metadataJudgmentUnresolved": false
+    },
+    {
+      "ordinal": 21,
+      "reason": "실력이비슷하다는 서술을 기존해설은 매경기승률1/2 및 독립으로 구체화한다. 메타는 그기존모형에 한정하며 발문의 엄밀한 확률가정 완결성은 별도로둔다.",
+      "metadataJudgmentUnresolved": false
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}
