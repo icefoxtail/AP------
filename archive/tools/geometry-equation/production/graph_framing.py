@@ -299,6 +299,8 @@ def _fit_overview_family(plan):
     if 'formulaAt' in plan and plan.get('family')!='rational':raise ValueError('FORMULA_AT_UNSUPPORTED_FAMILY')
     if 'asymptoteOnly' in plan and plan.get('family')!='rational':raise ValueError('ASYMPTOTE_ONLY_REQUIRES_RATIONAL')
     if 'pairedAxisCrossing' in plan and plan.get('family')!='trigonometric':raise ValueError('TRIG_AXIS_CROSSING_PAIR_SOURCE_INVALID')
+    if 'hideIntervalEndLabels' in plan and plan.get('family')!='trigonometric':
+        raise ValueError('TRIG_HIDE_INTERVAL_END_LABELS_REQUIRES_V2')
     if plan.get('family')=='rational':return _with_label_options(plan,_fit_rational_overview(plan))
     if plan.get('family')=='sqrt-affine':
         if 'displaySize' in plan and plan['displaySize']!='full':raise ValueError('SQRT_DISPLAY_SIZE_INVALID')
@@ -1600,6 +1602,11 @@ def trig_pi_ticks(plan,kind,x0,x1,span=None):
     return sorted(set(multiples)|set(regular))
 
 def _fit_trigonometric_interval_v2(plan,spec):
+    if 'hideIntervalEndLabels' in plan:
+        hidden=plan['hideIntervalEndLabels']
+        if (not isinstance(hidden,list) or not 1<=len(hidden)<=2
+            or any(side not in ('START','END') for side in hidden) or len(set(hidden))!=len(hidden)):
+            raise ValueError('TRIG_HIDE_INTERVAL_END_LABELS_INVALID')
     function=spec['function'];a=spec['a'];rate=spec['rate'];c=spec['c']
     kind,lo,hi,states=trig_interval_v2_source(plan)
     if kind=='INTERVAL' and not spec['rateHasPi']:raise ValueError('TRIG_INTERVAL_REQUIRES_RATE_PI')
@@ -1844,6 +1851,11 @@ def _fit_trig_display_window(plan):
             'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
 def _fit_trigonometric_overview(plan):
+    if 'hideIntervalEndLabels' in plan:
+        source=plan.get('sourceDomain')
+        if (not isinstance(source,dict) or source.get('kind') not in ('INTERVAL','INTERVAL_PI')
+            or 'pairedAxisCrossing' in plan or 'displayWindowPi' in plan):
+            raise ValueError('TRIG_HIDE_INTERVAL_END_LABELS_REQUIRES_V2')
     if 'pairedAxisCrossing' in plan:return _fit_trig_axis_crossing_pair(plan)
     function=plan.get('function')
     if function not in {'SIN','COS','TAN'}:raise ValueError('UNSUPPORTED_TRIGONOMETRIC_FUNCTION')
@@ -1854,7 +1866,9 @@ def _fit_trigonometric_overview(plan):
         legacy=source.get('kind')=='INTERVAL_PI' and plan.get('ratePi') is None and plan.get('phase') is None and plan.get('axisTickPi') is None and plan.get('keyPoints') is not True and function in {'SIN','COS'}
         # the additive fields (absolute value, stepped pi ticks, display size, line colour / vertical / surd level / end crossing) live on the general interval form only
         legacy=legacy and plan.get('absolute') is None and plan.get('axisTickPiStep') is None and plan.get('displaySize') is None and not any(isinstance(row,dict) and (set(row)-{'id','y','slope','intercept','intersectionCount'} or (isinstance(row.get('y'),str) and 'sqrt' in row['y'])) for row in (plan.get('referenceLines') if isinstance(plan.get('referenceLines'),list) else []))
-        if legacy:return _fit_trigonometric_interval(plan,function)
+        if legacy:
+            if 'hideIntervalEndLabels' in plan:raise ValueError('TRIG_HIDE_INTERVAL_END_LABELS_REQUIRES_V2')
+            return _fit_trigonometric_interval(plan,function)
         return _fit_trigonometric_interval_v2(plan,trig_spec(plan))
     if plan.get('referenceLines') is not None:raise ValueError('TRIG_REFERENCE_LINES_REQUIRE_INTERVAL_PI')
     if plan.get('absolute') is not None:raise ValueError('TRIG_ABSOLUTE_REQUIRES_INTERVAL')
