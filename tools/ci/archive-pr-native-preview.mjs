@@ -193,6 +193,62 @@ export function nativeRegistryDependencies(requests) {
   return dependencies;
 }
 
+const DEFINITION_DEPENDENCY_SCHEMA = 'archive-native-active-definition-dependency-v1';
+const DEFINITION_KINDS = [
+  { collection: 'concepts', field: 'conceptKey', itemField: 'crossConceptKeys',
+    path: /^archive\/data\/meta-foundation\/canonical\/concepts\/[a-z0-9_-]+\.json$/ },
+  { collection: 'conditions', field: 'conditionKey', itemField: 'conditionKeys',
+    path: /^archive\/data\/meta-foundation\/canonical\/condition_registry\.json$/ },
+];
+const explicitDefinitionKey = value => typeof value === 'string' && value.length > 0 && value.trim() === value;
+
+// An exact reviewed add-only definition can supply a later request in the same
+// transaction. This establishes order only: each registrar still authenticates
+// the definition and its approval, then the consumer reads the actual written
+// canonical row through the unchanged REUSE_ACTIVE contract.
+export function nativeDefinitionDependencyDescriptor(request) {
+  if (request.schemaVersion !== NATIVE_REQUEST_SCHEMA || request.registrationMode !== undefined) return undefined;
+  const provides = (Array.isArray(request.registryChanges) ? request.registryChanges : []).flatMap(change => {
+    const kind = DEFINITION_KINDS.find(row => row.collection === change.collection);
+    const key = kind && change.after?.[kind.field];
+    return kind && kind.path.test(change.path) && change.before === null && change.after?.status === 'ACTIVE'
+      && explicitDefinitionKey(key) && change.match && Object.keys(change.match).length === 1
+      && change.match[kind.field] === key ? [{ collection: kind.collection, path: change.path, key }] : [];
+  });
+  const requires = (Array.isArray(request.items) ? request.items : []).flatMap(item => DEFINITION_KINDS.flatMap(kind =>
+    (Array.isArray(item.after?.[kind.itemField]) ? item.after[kind.itemField] : []).filter(explicitDefinitionKey)
+      .map(key => ({ collection: kind.collection, key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal }))));
+  return provides.length || requires.length ? { schemaVersion: DEFINITION_DEPENDENCY_SCHEMA, provides, requires } : undefined;
+}
+
+export function nativeDefinitionDependencies(requests) {
+  const providers = new Map(), dependencies = new Map();
+  const keyOf = row => {
+    if (!DEFINITION_KINDS.some(kind => kind.collection === row?.collection) || !explicitDefinitionKey(row.key))
+      fail('DEFINITION_DEPENDENCY_KEY');
+    return JSON.stringify([row.collection, row.key]);
+  };
+  for (const request of requests) {
+    const descriptor = request.definitionDependency;
+    if (!descriptor) continue;
+    if (descriptor.schemaVersion !== DEFINITION_DEPENDENCY_SCHEMA || !Array.isArray(descriptor.provides)
+      || !Array.isArray(descriptor.requires)) fail('DEFINITION_DEPENDENCY_DESCRIPTOR');
+    for (const row of descriptor.provides) {
+      const key = keyOf(row), kind = DEFINITION_KINDS.find(kind => kind.collection === row.collection);
+      if (!kind.path.test(row.path)) fail('DEFINITION_DEPENDENCY_PATH');
+      if (providers.has(key)) fail('DEFINITION_DEPENDENCY_AMBIGUOUS');
+      providers.set(key, request.path);
+    }
+  }
+  for (const request of requests) for (const row of request.definitionDependency?.requires || []) {
+    const provider = providers.get(keyOf(row));
+    if (!provider || provider === request.path) continue;
+    if (!dependencies.has(request.path)) dependencies.set(request.path, new Set());
+    dependencies.get(request.path).add(provider);
+  }
+  return dependencies;
+}
+
 export function orderNativeRequests(requests) {
   const byPath = new Map(requests.map(request => [request.path, request]));
   if (byPath.size !== requests.length) fail('DUPLICATE_REQUEST_PATH');
@@ -255,15 +311,18 @@ export function orderNativeRequests(requests) {
     }
   }
   const registryDependencies = nativeRegistryDependencies(requests);
-  for (const [consumer, providers] of registryDependencies) {
-    if (!dependencies.has(consumer)) dependencies.set(consumer, new Set());
-    for (const provider of providers) dependencies.get(consumer).add(provider);
+  const definitionDependencies = nativeDefinitionDependencies(requests);
+  for (const graph of [registryDependencies, definitionDependencies]) {
+    for (const [consumer, providers] of graph) {
+      if (!dependencies.has(consumer)) dependencies.set(consumer, new Set());
+      for (const provider of providers) dependencies.get(consumer).add(provider);
+    }
   }
   const remaining = [...requests], ordered = [], completed = new Set();
   while (remaining.length) {
     const index = remaining.findIndex(request => !dependencies.has(request.path)
       || [...dependencies.get(request.path)].every(dependency => completed.has(dependency)));
-    if (index < 0) fail(registryDependencies.size ? 'REGISTRY_DEPENDENCY_CYCLE' : 'AUDIT_DEPENDENCY_CYCLE');
+    if (index < 0) fail(registryDependencies.size || definitionDependencies.size ? 'REGISTRY_DEPENDENCY_CYCLE' : 'AUDIT_DEPENDENCY_CYCLE');
     const [request] = remaining.splice(index, 1);
     ordered.push(request); completed.add(request.path);
   }
@@ -362,6 +421,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
     }
     const sourceRebind = auditPreservationDependency(request, file);
     const registryDependency = nativeRegistryDependencyDescriptor(request);
+    const definitionDependency = nativeDefinitionDependencyDescriptor(request);
     const preservation = request.approval?.sourceRebind !== undefined;
     if (preservation && (correction || request.registrationMode !== undefined ||
         !request.approval.sourceRebind || typeof request.approval.sourceRebind !== 'object' || Array.isArray(request.approval.sourceRebind) ||
@@ -410,6 +470,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
       ...(registryDependency ? { registryDependency } : {}),
+      ...(definitionDependency ? { definitionDependency } : {}),
       ...(basicPreservation ? { basicPreservation, kind: 'basic-approval-preservation' }
         : correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }
         : preservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type } : {}), source: { ...source, blobSha1 },
