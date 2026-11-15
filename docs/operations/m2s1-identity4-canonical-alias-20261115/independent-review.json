@@ -1,0 +1,387 @@
+{
+  "schemaVersion": "m1-independent-m2s1-four-source-alias-corrections-review-v1",
+  "reviewId": "m1-release-independent-m2s1-identity4-20261115",
+  "reviewer": "root/m1_release",
+  "decision": "ACCEPT_NARROW_TECHNICAL_SOURCE_ALIAS_CORRECTION",
+  "exactRegisteredMain": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+  "verification": {
+    "path": "/workspace/scratch/26fc42390a50/m1-work/.tmp/independent-m2s1-identity4-20261115/input-verification.json",
+    "sha256": "ecff690c2908ea0706e9a433a0d45ed0bba081b4e17a3a2d5c0884290a44ef07",
+    "scriptPath": "/workspace/scratch/26fc42390a50/m1-work/.tmp/independent-m2s1-identity4-20261115/verify-inputs.mjs",
+    "scriptSha256": "851e0543bafb8e8f9a529c54064dd53d12192a4b193900d7d564b0e630329985",
+    "errors": []
+  },
+  "scope": "Only four embedded questionUid display aliases in two M2S1 source banks and the associated two compact nested sourceGitBlobSha bindings. No new identity, fingerprint migration, source/mathematics/semantic judgment, difficulty assignment or shared code change.",
+  "counts": {
+    "sourceFiles": 2,
+    "sourceQuestions": 48,
+    "studentAndReviewedBaselineUnchanged": 48,
+    "wholeObjectsUnchanged": 44,
+    "sourceQuestionUidCorrections": 4,
+    "compactNestedBindings": 2,
+    "orphanRecordsUnchanged": 44,
+    "existingNativeApprovedRows": 0,
+    "assets": 9,
+    "existingFourSlotRows": 44,
+    "existingFullyEqualRows": 22,
+    "existingProvenanceOnlyRows": 22,
+    "afterLocalFourSlotRows": 48,
+    "afterLocalFourSlotPending": 0,
+    "difficultyValuesVerifiedUnchanged": 48
+  },
+  "findings": [
+    {
+      "finding": "All four legacy basename|positive-number aliases satisfy the exact current isUnambiguousLegacySourceUidAlias contract. Canonical UID, source/ordinal and legacy source/number lookups agree uniquely.",
+      "implication": "Replacing each display alias with its already-existing canonical UID is a source identity correction; it does not mint or move a UID. Unknown explicit aliases continue to be rejected by the canonical resolver."
+    },
+    {
+      "finding": "The actual 5f8 source-to-candidate comparison contains exactly four questionUid fields and no other question-field change. All 48 student payloads and current fingerprints match the already-reviewed baseline, while all nine assets match exact current Git bytes and baseline hashes.",
+      "implication": "The existing question and renderer reviews remain the same edition. The prior E010 Q8 six-rebind review is reused, not reopened."
+    },
+    {
+      "finding": "The two compact files change only identityReconciliation.sourceGitBlobSha. Their original source baseline header, native evidence refs, all 48 slot vectors, and the other 22+22 orphan reconciliation records remain exact.",
+      "implication": "The compact nested hashes follow only the corrected current source file bytes; no stale header or blank-method exception is introduced."
+    },
+    {
+      "finding": "All 48 source sidecars are registration_pending_semantic_review, with no current approved semantic row. Four canonical identity fingerprints remain historical and unchanged.",
+      "implication": "The identity-fingerprint-only route is correctly ineligible because it requires an already-approved current metadata/source fingerprint. The existing four-slot canonical-tuple route explicitly allows historical identity fingerprints only with the independent current payload/baseline proof."
+    },
+    {
+      "finding": "The existing official scoped build/Consumer evidence is exact: 44 registered plus four SOURCE_UID_CONFLICT before, 48 registered and zero pending after, all four new rows CANONICAL_SOURCE_TUPLE/HISTORICAL.",
+      "implication": "This is four-slot registration eligibility, not four new semantic approvals. The original official builder/Consumer was not rerun because its exact input/output and code hashes were revalidated."
+    },
+    {
+      "finding": "All 44 prior registered consumer values survive. Twenty-two rows are completely identical; the other 22 E010 rows change only sourceBinding from EXACT_BLOB to UNCHANGED_STUDENT_PAYLOAD.",
+      "implication": "This provenance transition is required by the unchanged official builder after a source-file UID correction. The original overly strict comparison failure remains preserved, and neither the builder guard nor the slot data was weakened."
+    },
+    {
+      "finding": "The current D5 values and fingerprints of all 48 UID match the read-only verification result. AutoMeta still returns SUPPLEMENT_PENDING/IDENTITY_SOURCE_FINGERPRINT_MISMATCH for the same four rows.",
+      "implication": "There is no new difficulty registration or semantic release. Original applied difficulty requests remain historical and correctly fail against changed whole-source blobs; only local, unpublished verify-mode copies adjust gemini.latestBlobSha."
+    }
+  ],
+  "sourceCorrections": [
+    {
+      "questionUid": "qid_v1_8599eef554e954c99d2f8419dd0bfa76be96099c7eb6f2207330439a00d2084c",
+      "sourceArchiveFile": "original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 8,
+      "oldAlias": "25_왕운중_1학기_기말_중2_수학|8",
+      "newUid": "qid_v1_8599eef554e954c99d2f8419dd0bfa76be96099c7eb6f2207330439a00d2084c",
+      "officialAliasProof": true,
+      "lookups": [
+        {
+          "status": "RESOLVED_CANONICAL_UID",
+          "questionUid": "qid_v1_8599eef554e954c99d2f8419dd0bfa76be96099c7eb6f2207330439a00d2084c",
+          "sourceArchiveFile": "original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+          "sourceOrdinal": 8,
+          "sourceQuestionNo": 8,
+          "candidates": []
+        },
+        {
+          "status": "RESOLVED_SOURCE_ORDINAL",
+          "questionUid": "qid_v1_8599eef554e954c99d2f8419dd0bfa76be96099c7eb6f2207330439a00d2084c",
+          "sourceArchiveFile": "original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+          "sourceOrdinal": 8,
+          "sourceQuestionNo": 8,
+          "candidates": []
+        },
+        {
+          "status": "RESOLVED_LEGACY_UNAMBIGUOUS",
+          "questionUid": "qid_v1_8599eef554e954c99d2f8419dd0bfa76be96099c7eb6f2207330439a00d2084c",
+          "sourceArchiveFile": "original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+          "sourceOrdinal": 8,
+          "sourceQuestionNo": 8,
+          "candidates": []
+        }
+      ],
+      "identityFingerprint": "fa715e778e910463b3275c682063a3327ae0977bfbcbe55c7bacf74c67812e74",
+      "currentFingerprint": "10edfceb67e0c97e4efe1b9e1e30fe5243dd853f186f78f78baad051ac1bf9a4",
+      "studentPayloadSha256": "474252ada8e5024dac9655bdf15862d8169a9b9ad8255d85835c31ff7c9ab9ba",
+      "semanticStatus": "registration_pending_semantic_review",
+      "approvalType": null
+    },
+    {
+      "questionUid": "qid_v1_b20b8e96af6712af0ab2ac191b1a1db3ec482b94cdb53833a157e33e2d54d24e",
+      "sourceArchiveFile": "original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+      "sourceOrdinal": 9,
+      "oldAlias": "25_왕운중_1학기_기말_중2_수학|9",
+      "newUid": "qid_v1_b20b8e96af6712af0ab2ac191b1a1db3ec482b94cdb53833a157e33e2d54d24e",
+      "officialAliasProof": true,
+      "lookups": [
+        {
+          "status": "RESOLVED_CANONICAL_UID",
+          "questionUid": "qid_v1_b20b8e96af6712af0ab2ac191b1a1db3ec482b94cdb53833a157e33e2d54d24e",
+          "sourceArchiveFile": "original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+          "sourceOrdinal": 9,
+          "sourceQuestionNo": 9,
+          "candidates": []
+        },
+        {
+          "status": "RESOLVED_SOURCE_ORDINAL",
+          "questionUid": "qid_v1_b20b8e96af6712af0ab2ac191b1a1db3ec482b94cdb53833a157e33e2d54d24e",
+          "sourceArchiveFile": "original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+          "sourceOrdinal": 9,
+          "sourceQuestionNo": 9,
+          "candidates": []
+        },
+        {
+          "status": "RESOLVED_LEGACY_UNAMBIGUOUS",
+          "questionUid": "qid_v1_b20b8e96af6712af0ab2ac191b1a1db3ec482b94cdb53833a157e33e2d54d24e",
+          "sourceArchiveFile": "original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+          "sourceOrdinal": 9,
+          "sourceQuestionNo": 9,
+          "candidates": []
+        }
+      ],
+      "identityFingerprint": "54ad7144dda310fd8e1476b35855352d317e436c8a9bcc3ecc81e71a8a011cee",
+      "currentFingerprint": "2cc9d7cea66e4a0d379ef50722186e8cb56ffbeb335175bdcc0971720d6154b6",
+      "studentPayloadSha256": "07ece2686cc141750a1d86fe9aa63a37dd504333f76199dcc1d90218381e3520",
+      "semanticStatus": "registration_pending_semantic_review",
+      "approvalType": null
+    },
+    {
+      "questionUid": "qid_v1_9b57651ca9aadb8efbb577c2bc4b9310ff41d73998245a38409ca4eedda48f95",
+      "sourceArchiveFile": "original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+      "sourceOrdinal": 10,
+      "oldAlias": "25_삼산중_1학기_중간_중2_수학|10",
+      "newUid": "qid_v1_9b57651ca9aadb8efbb577c2bc4b9310ff41d73998245a38409ca4eedda48f95",
+      "officialAliasProof": true,
+      "lookups": [
+        {
+          "status": "RESOLVED_CANONICAL_UID",
+          "questionUid": "qid_v1_9b57651ca9aadb8efbb577c2bc4b9310ff41d73998245a38409ca4eedda48f95",
+          "sourceArchiveFile": "original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+          "sourceOrdinal": 10,
+          "sourceQuestionNo": 10,
+          "candidates": []
+        },
+        {
+          "status": "RESOLVED_SOURCE_ORDINAL",
+          "questionUid": "qid_v1_9b57651ca9aadb8efbb577c2bc4b9310ff41d73998245a38409ca4eedda48f95",
+          "sourceArchiveFile": "original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+          "sourceOrdinal": 10,
+          "sourceQuestionNo": 10,
+          "candidates": []
+        },
+        {
+          "status": "RESOLVED_LEGACY_UNAMBIGUOUS",
+          "questionUid": "qid_v1_9b57651ca9aadb8efbb577c2bc4b9310ff41d73998245a38409ca4eedda48f95",
+          "sourceArchiveFile": "original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+          "sourceOrdinal": 10,
+          "sourceQuestionNo": 10,
+          "candidates": []
+        }
+      ],
+      "identityFingerprint": "0fa824a449dca307f57e24938835e351bbf8a63e2eddd34fd296508121baf5a8",
+      "currentFingerprint": "6b74807839dede0a3d0d9773cf171e3bdfc0fb21883e2e84447b97ab02e84b75",
+      "studentPayloadSha256": "feb183c30530b9052445621c060512eeed8d1ea0ed2a5bc2c637e7be643f5b0a",
+      "semanticStatus": "registration_pending_semantic_review",
+      "approvalType": null
+    },
+    {
+      "questionUid": "qid_v1_aef96962f21a8ec3790b5eabff513b0eb9f9562f5a3a9c6ff1ecd3863b2cdc02",
+      "sourceArchiveFile": "original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+      "sourceOrdinal": 15,
+      "oldAlias": "25_삼산중_1학기_중간_중2_수학|15",
+      "newUid": "qid_v1_aef96962f21a8ec3790b5eabff513b0eb9f9562f5a3a9c6ff1ecd3863b2cdc02",
+      "officialAliasProof": true,
+      "lookups": [
+        {
+          "status": "RESOLVED_CANONICAL_UID",
+          "questionUid": "qid_v1_aef96962f21a8ec3790b5eabff513b0eb9f9562f5a3a9c6ff1ecd3863b2cdc02",
+          "sourceArchiveFile": "original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+          "sourceOrdinal": 15,
+          "sourceQuestionNo": 15,
+          "candidates": []
+        },
+        {
+          "status": "RESOLVED_SOURCE_ORDINAL",
+          "questionUid": "qid_v1_aef96962f21a8ec3790b5eabff513b0eb9f9562f5a3a9c6ff1ecd3863b2cdc02",
+          "sourceArchiveFile": "original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+          "sourceOrdinal": 15,
+          "sourceQuestionNo": 15,
+          "candidates": []
+        },
+        {
+          "status": "RESOLVED_LEGACY_UNAMBIGUOUS",
+          "questionUid": "qid_v1_aef96962f21a8ec3790b5eabff513b0eb9f9562f5a3a9c6ff1ecd3863b2cdc02",
+          "sourceArchiveFile": "original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+          "sourceOrdinal": 15,
+          "sourceQuestionNo": 15,
+          "candidates": []
+        }
+      ],
+      "identityFingerprint": "93a1a09823bef848e3a00c3e398d7ff87d8f9bd74a6a528d310312ee7f4ef25b",
+      "currentFingerprint": "84eafe120b0722792472307603a60941a2c28fb5643fcc6dd1a5d8340da0c3e4",
+      "studentPayloadSha256": "cc6b257ee6c402a2185b15a2b202ff3b65537b4cdb3b7f0b8a90ceeda53a708d",
+      "semanticStatus": "registration_pending_semantic_review",
+      "approvalType": null
+    }
+  ],
+  "currentActualFourSlot": {
+    "registered": 1382,
+    "pending": 4,
+    "pendingReason": "SOURCE_UID_CONFLICT",
+    "scope": "The currently registered M2S1 compact cohort at actual 5f8"
+  },
+  "expectedAfterFutureWriter": {
+    "registered": 1386,
+    "pendingForTheseFour": 0,
+    "status": "NOT_RUN_EXPECTATION_ONLY"
+  },
+  "officialScopedConsumer": {
+    "schemaVersion": "archive-item-4slot-runtime-v1",
+    "status": "PASS",
+    "verified": 48,
+    "pending": 0,
+    "indexSha256": "95573bfdd8b43eeb65c7b1699bdfb78e9b8eb7e975446d134e2c7dc5fc2434cd",
+    "sourceMutation": 0,
+    "semanticApprovalMutation": 0
+  },
+  "gatePreservation": {
+    "officialAliasHelperUnchanged": true,
+    "canonicalResolverUnknownExplicitUidStillRejected": true,
+    "identityOnlyApprovalRequirementUnchanged": true,
+    "historicalFingerprintPreserved": true,
+    "studentPayloadBaselineAndAssetChecksUnchanged": true,
+    "semanticAutoMetaFourRemainPending": true,
+    "oldDifficultySourceDriftStillRejected": true
+  },
+  "publicationBoundary": {
+    "ownedFileCount": 4,
+    "newCanonicalUids": 0,
+    "metadataChanges": 0,
+    "identityMapChanges": 0,
+    "fingerprintChanges": 0,
+    "newSemanticApprovals": 0,
+    "newDifficultyRegistrations": 0,
+    "fixtureAndLocalD5RequestsPublishable": false
+  },
+  "releaseConditions": [
+    "Root must publish exactly the four owned source/compact files after verifying their expected before blobs on the actual integration main. Fixture data and local-d5-readonly requests are not release inputs.",
+    "Preserve the original native review evidence and old applied D5 requests. Do not rewrite their historical source hashes or count the read-only D5 proof as a new registration.",
+    "After main merge, require the actual four-slot writer receipt and target Consumer readback for these four UID plus preservation of the other44 before reporting1386 actual. Pages remains a separate root verification.",
+    "These source UID corrections do not resolve the independent semantic/fingerprint debts; the four AutoMeta rows remain pending."
+  ],
+  "sourceRows": [
+    {
+      "examId": "E010",
+      "sourceArchiveFile": "original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+      "beforeBlob": "fabb21790ff7da755575901c837cfc434fc13ea7",
+      "afterBlob": "49dfe153213760e9add8b6083e8503fdd51f830b",
+      "beforeSha256": "293ab5bd4382b574174d5dff404844a8b10fbf81456d9aa8b8d0e7f8db669350",
+      "afterSha256": "911a94249af09176bc61bf3a875ba1715298e009c200b4577f777d3f259f6099",
+      "sourceQuestions": 24,
+      "aliasChanges": [
+        8,
+        9
+      ],
+      "nativeCommit": "34b27e9a8634740f92964e750675ef96e3353955",
+      "nativePath": "archive-work/m2s1-4slot-current-20261115/exams/E010.4slot.json",
+      "nativeSha256": "c5020652030e21e18f8b8e68a16c55ee32c6c35346294e3d740d50d503e535fe",
+      "baselineBlob": "fabb21790ff7da755575901c837cfc434fc13ea7",
+      "metadataApprovedRows": 0,
+      "orphanRecordsPreserved": 22,
+      "compactSha256": "c82acdbe651a3f729b0ff3dfba1c233af111a9467b969e1c7d37493217353c88"
+    },
+    {
+      "examId": "E013",
+      "sourceArchiveFile": "original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+      "beforeBlob": "147d94e9a4bc409f8788353c5da285f4fed6a12d",
+      "afterBlob": "ad23fdcb4182b9dee773fc0575977808d4ac3731",
+      "beforeSha256": "1763bad481473ec85608bac512740db312cb61ad1be26c39b52a37b26244e224",
+      "afterSha256": "e1173270c995e55bff25493d140ed669e0efb00123a667eb9418c861fd4e045a",
+      "sourceQuestions": 24,
+      "aliasChanges": [
+        10,
+        15
+      ],
+      "nativeCommit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "nativePath": "docs/operations/m2-s1-meta-full-20261114/exams/E013/amendments/fresh-difficulty-evidence-r1/four-slot.json",
+      "nativeSha256": "b5412c0fdc6c034cd511b99c92b6280174c5db0775985940ebcb923c5c1b6d87",
+      "baselineBlob": "4cbcf1be8a0083baacfe81880c22f4521350a48a",
+      "metadataApprovedRows": 0,
+      "orphanRecordsPreserved": 22,
+      "compactSha256": "951ae40d7f4f2c6f8378010aca320ad90384502cb3a95e06e40d12c6c7a74d82"
+    }
+  ],
+  "evidenceRefs": [
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-evidence/m2s1-identity4-source-alias/owned-upload-manifest.json",
+      "sha256": "d7212a153a09593900d97f60535606b7a91567caa5a04c6096fbf8c7163e0269"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-evidence/m2s1-identity4-source-alias/proposal-proof-v2.json",
+      "sha256": "650bceb650832ecabca841c2104a26d8859a248d3720f1eacf34cd233785db6a"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-evidence/m2s1-identity4-source-alias/minimal-source-alias-and-compact.patch",
+      "sha256": "0ad43f7fc1efcd1e4fcf03bd3313bdbd7ba1408262ca7380273b541e5d131c9e"
+    },
+    {
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/tools/intelligence/question-identity-contract.mjs",
+      "sha256": "2ef84cd2baeefaae4d77c262f354a4a1e57b16a4b979c71bd86c134bb2f36524",
+      "blobSha1": "347ff148cf36ab978e5e1d9a07769301d3114ef0"
+    },
+    {
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "4dab05cbf8fde039b39009b777609c92f52b8d7646421f57397306809f560ff5",
+      "blobSha1": "2315cd2609c9121d42656b7baa8427430bbd904f"
+    },
+    {
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "sha256": "abc82d69c920f727e72a1710582477911e78e4b5749c9b0a55c5faf5028075d7",
+      "blobSha1": "07188c7d06b5ab50c3caea53095b333f07eacc21"
+    },
+    {
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "archive/tools/meta-foundation/register-difficulty5.mjs",
+      "sha256": "545d8eec8fc1c48f6887f6d0d1c37cbb23bb81a4d5063d6b2e75f5069f3a653a",
+      "blobSha1": "6e9c5be3c94c155799163ccb9447566615bfb1fb"
+    },
+    {
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "sha256": "525a9c27a3c7779496224ab1ea833eb3d44fb9ab44e4c4cc5072268541b3af87",
+      "blobSha1": "95579fed546008c37287d806a81b48a303b7014b"
+    },
+    {
+      "commit": "5f8f509108cfc4bfac3ce47813839aaa3c558274",
+      "path": "docs/architecture/Reviewed_Exam_Meta_Registration_v2.md",
+      "sha256": "957afb9c7d87125656be578b51838549a1c217fc86a87000fc5d7159af052301",
+      "blobSha1": "5cea4f792cdaa6ed2d1cc0042a11fb8459fdea88"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-evidence/m2s1-identity4-source-alias/before-index.json",
+      "sha256": "1ec04e38414cf9d5fe8dba0ca7ed7665ed0a9778656386b9065bbed7a3421768"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-evidence/m2s1-identity4-source-alias/after-index.json",
+      "sha256": "689174fcd61f190ef848f44c489464c5b9ecf522fe7a72500de6d5526a062116"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-evidence/m2s1-identity4-source-alias/prepare-proposal.mjs",
+      "sha256": "65f39befd11dc5d103d6c8abd21b63aee4c5f581f4fde5310cb901c8d5425a92"
+    },
+    {
+      "path": "/workspace/scratch/26fc42390a50/ci-evidence/m2s1-identity4-source-alias/finalize-proposal-v2.mjs",
+      "sha256": "efdbb0e6e7a89463d6227d84f7843242766c5df91e31b9f64cf6cee66a648db5"
+    }
+  ],
+  "excludedM3S1SourceReads": 0,
+  "sourceWrites": 0,
+  "registryWrites": 0,
+  "metadataWrites": 0,
+  "identityWrites": 0,
+  "approvalWrites": 0,
+  "remoteWrites": 0,
+  "newFullMathReview": false,
+  "newSixRebindReview": false,
+  "officialBuilderRerun": false,
+  "actualFutureRegistration": "NOT_RUN",
+  "actualFutureConsumer": "NOT_RUN",
+  "actualFuturePages": "NOT_RUN",
+  "nextAction": "Root may include only the four exact owned files in a normal PR, then verify CI, actual main writer, four-slot receipts/Consumer and Pages; retain semantic and difficulty distinctions."
+}
