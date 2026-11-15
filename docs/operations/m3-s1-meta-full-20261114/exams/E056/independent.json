@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "examKey": "E056",
+  "status": "PASS_WITH_PROPOSALS_AND_CONTENT_DEBT",
+  "author": "meta_b",
+  "reviewer": "meta_c_resume_20261115",
+  "owner": "GPT_ROOT_E45FF6C78C51/C",
+  "at": "2026-11-15T00:08:03.440500+00:00",
+  "sourceArchiveFile": "original/middle/m3/1final/21_풍덕중_1학기_기말_중3_수학.js",
+  "sourceBlob": "471d8c46d093ed7d13be50c2841d7fd4f2f40e57",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E056.review.json",
+      "sha256": "db5baa97c8034f32d320dee807d10c4d667291ad722a72c3489e0c56980f45fb"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E056.4slot.json",
+      "sha256": "2ee7d7d186890b3d53dbc08ca1d328aa70585c79526a1dea2f855095a1445f7c"
+    }
+  },
+  "sampledOrdinals": [
+    7,
+    9,
+    20
+  ],
+  "additionalChangedOrBoundaryOrdinals": [],
+  "scope": "METADATA_ONLY: listed source stems, choices, existing solutions, author decisions and exact 4slot quotes directly compared. Other completed author judgments reused; no full-exam rereview claim.",
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E056-q09.png",
+      "sha256": "63f52d009e91509bb09ba9479ef2c95c8d8373e54afb537b3b2df8ecaa32d226"
+    },
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/B/E056-q20.png",
+      "sha256": "2e54ac002fccad11982d12aa74b3ea8469e7a9882b33355761f3958949532616"
+    }
+  ],
+  "findings": [
+    {
+      "ordinal": 7,
+      "status": "PASS_AFTER_REVISION",
+      "note": "위로볼록을위로열림으로반대로적용한기존해설의contentdebt를보존. 목표그래프와조건위로볼록을분리한수정및독립하1판정확인."
+    },
+    {
+      "ordinal": 9,
+      "status": "PASS_AFTER_REVISION",
+      "note": "그림의36도·이등분선·변6을직접확인. 작은이등변삼각형과큰삼각형의닮음을구성하는상4와보조개념결합,상등조건보완을수용."
+    },
+    {
+      "ordinal": 20,
+      "status": "PASS",
+      "note": "그림의축평행직사각형·포물선상단두점배치를직접확인. 대칭으로폭·높이를나타내고고정둘레를이차방정식에옮기는중3판단과최적화전용TPL미부여수용."
+    }
+  ],
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE",
+  "dictionaryRevisionSupplement": {
+    "at": "2026-11-15T00:14:08.819253+00:00",
+    "priorInputs": {
+      "review": {
+        "path": "/workspace/scratch/e45ff6c78c51/workers/B/E056.review.json",
+        "sha256": "f0a7d93ea2c49dc8728aec04133297eccac3006221833ff2c5738959cc85a709"
+      },
+      "fourSlot": {
+        "path": "/workspace/scratch/e45ff6c78c51/workers/B/E056.4slot.json",
+        "sha256": "67af88bc90189566e5be28bc03e970b2c4e5087f75b139511e5ba9d9740dec0d"
+      }
+    },
+    "finding": "표본q9의각의이등분선→각이등분선·삼각형의닮음→닮음은동일의미의ACTIVE표기임을원문과재대조. q7목표/조건변경없음. 표본밖공식후보들은정확정의로선언한스키마보완이며새전수의미검토를주장하지않음.",
+    "additionalConditionAmendments": "q8의명시2:3비·q12의명시중근조건을각원문과직접대조하여추가보존확인."
+  }
+}
