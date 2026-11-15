@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "head": "f3205f692f18b626ee5525ec74e207cbc06aed47",
+  "parent": "b47525eda9c571d2c38e9f4f1913d594ee182e87",
+  "productionInputsChanged": 0,
+  "sourceAssetChanges": 0,
+  "codeChange": "Clone each expected evidence ref before returning it to callers; immutable replay cache references are private.",
+  "focusedRegression": {
+    "tests": 1,
+    "pass": 1,
+    "fail": 0,
+    "skip": 0
+  },
+  "recoveryRegression": {
+    "tests": 33,
+    "pass": 33,
+    "fail": 0,
+    "skip": 0
+  },
+  "failingPreFixIndependentReport": "/workspace/scratch/987d4bf32f40/AP-m2-e029-current/.tmp/recovery-cache-alias-independent.json",
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+      "sha256": "b8b5ec6403c0de787670a045205dc4139db4607a14feb116611c7d614b71d778",
+      "bytes": 52478
+    },
+    {
+      "path": "tests/archive-reviewed-exam-registration-v2.test.mjs",
+      "sha256": "36f225b66c68b21340e75fe8d6d5dbe3029ed42d91ef27d5a3a1f2468894e87e",
+      "bytes": 512495
+    }
+  ],
+  "previousActual29Outputs": "UNCHANGED_CODE_PATHS_EXPECTED_ROOT_SHADOW_COMPARE",
+  "fullUnionConsumer": "RUNNING_SEPARATELY_AT_B475"
+}

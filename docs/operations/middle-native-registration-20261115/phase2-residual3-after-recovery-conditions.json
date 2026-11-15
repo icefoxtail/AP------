@@ -1,0 +1,300 @@
+{
+  "schemaVersion": "phase2-residual3-after-recovery-conditions-v1",
+  "owner": "/root/audit_m2",
+  "status": "MEMO_ONLY_WAIT_FOR_ROOT_ACTUAL_MAIN",
+  "phase1FrozenScopeCommit": "ae9cf910ed51aa17723a930bcf6f6a32a8f3046a",
+  "preparationRef": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-follow4-transport/.tmp/m3-residual3-preparation/preparation.json",
+    "sha256": "e3207799bdd79aa96ee2978b8c0145aa195be2f76a44686e63be43dbe6cd6ddc"
+  },
+  "actualPhase2Main": null,
+  "counts": {
+    "newUids": 3,
+    "preservedUids": 23,
+    "uniqueUids": 26,
+    "sourceFiles": 2,
+    "studentRowsToKeep": 47,
+    "unpatchedWholeObjectsToKeep": 45
+  },
+  "newRows": [
+    {
+      "examId": "E001",
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+        "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9",
+        "bytes": 154687
+      },
+      "finalizationRef": {
+        "commit": "9e50297143a0a30a0a1daf5e1b5f4c919a025371",
+        "path": ".archive-meta-register/evidence/m3s2-proposal-finalization-20261115/finalized-applications.json",
+        "sha256": "c16d8e25a8f05ee6af3d144520a4753ed98bbeffc06aed6948413b5afd2584ae",
+        "bytes": 116760
+      },
+      "sourcePatchFields": [
+        "conditionKeys"
+      ],
+      "sourceMetadataPatch": {
+        "conditionKeys": [
+          "COND_EXCLUDED_ANGLE_VALUE"
+        ]
+      }
+    },
+    {
+      "examId": "E001",
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+        "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9",
+        "bytes": 154687
+      },
+      "finalizationRef": {
+        "commit": "9e50297143a0a30a0a1daf5e1b5f4c919a025371",
+        "path": ".archive-meta-register/evidence/m3s2-proposal-finalization-20261115/finalized-applications.json",
+        "sha256": "c16d8e25a8f05ee6af3d144520a4753ed98bbeffc06aed6948413b5afd2584ae",
+        "bytes": 116760
+      },
+      "sourcePatchFields": [],
+      "sourceMetadataPatch": {}
+    },
+    {
+      "examId": "E017",
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_26ba5f84c88b65529515252ee9a59dea9045f235aa88303f93ef47b8c8808074",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E017.meta.json",
+        "sha256": "bd0eca3b50372ffb1608829ff8b01a35f38d0e272008d62a3d8ba12be3d0c59d",
+        "bytes": 185190
+      },
+      "finalizationRef": {
+        "commit": "156e71e9916ba7d71fa2f071d30669b056a3c8f4",
+        "path": ".archive-meta-register/evidence/m3s2-tpl5-finalization-20261115/independent-review.json",
+        "sha256": "c58b0442f5333aa6ddfda8b73febb7ba7431ce305093d93ecdf696d0d49e53ea",
+        "bytes": 11722
+      },
+      "sourcePatchFields": [
+        "templateKey",
+        "courseKey"
+      ],
+      "sourceMetadataPatch": {
+        "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+        "courseKey": "M3-2"
+      }
+    }
+  ],
+  "actualRecoveryCohorts": [
+    {
+      "examId": "E001",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "expectedQuestionCount": 24,
+      "selectedCount": 5,
+      "sourceOrdinals": [
+        2,
+        4,
+        5,
+        7,
+        24
+      ],
+      "questionUids": [
+        "qid_v1_ab95fc3ac35a546243376fb7ffd4c66ae94161c410fc794f00417c54d512f192",
+        "qid_v1_04ffcbf3befa26a307a87e5037cafd0ffecf7cf1e30a57b5dcbf25aeabb24fff",
+        "qid_v1_0db703b21a0a6fb130d81f94cc4091088d55267e1e70ba29de11299b9e7668e5",
+        "qid_v1_f1aa4b2260fb163c51e65b7d7e79112ad9d1b6a6fa75c995c6bd3fed04b687f9",
+        "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5"
+      ],
+      "phase1RecoveryRequest": {
+        "path": ".archive-meta-register/inbox/issued-binding-recovery-e001-current-native-preservation-20261115.json",
+        "sha256": "36612efc1e44e7c398485ed6e0bb102908c48092982f540ea9d73f01c9b12870"
+      },
+      "requiredActualReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e001-current-native-preservation-20261115.json",
+      "requiredActualRecoveryProofPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e001-current-native-preservation-20261115.source-binding-recovery.json",
+      "actualRegisteredCommit": null,
+      "actualReceiptRawSha256": null,
+      "actualRecoveryProofRawSha256": null,
+      "oldIssuedReceiptIsHistoricalOnly": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e001-current-native-preservation-20261115.json",
+        "sha256": "2f524c6206c8d8c83d508e7c60731acd5e6b943c697d27e1e5f857216fcd280b"
+      },
+      "oldIssuedReceiptCommit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "preservationContract": {
+        "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+        "scope": "PARTIAL_UIDS",
+        "approvalType": "FINAL_QA",
+        "sourceRebind": {
+          "priorReceiptRef": "EXACT_ACTUAL_RECOVERED_FULL_COHORT_RECEIPT"
+        },
+        "itemBefore": {},
+        "itemAfter": {},
+        "registryChanges": []
+      },
+      "proofClosure": [
+        "actual recovered receipt and .source-binding-recovery.json with raw SHA256",
+        "all actual recovered receipt.approval.evidenceRefs",
+        "all current referenced renderer assets with exact raw SHA256 in request approval/item dependencies"
+      ],
+      "mustReplayActualRecoveryAuthority": true,
+      "noSubset": true,
+      "noNewSourceReview": true,
+      "compositionValidation": "PENDING_ACTUAL_PHASE2_PREDECESSOR_AND_OFFICIAL_VALIDATION"
+    },
+    {
+      "examId": "E017",
+      "sourceArchiveFile": "original/middle/m3/2final/24_풍덕중_2학기_기말_중3_수학.js",
+      "expectedQuestionCount": 23,
+      "selectedCount": 18,
+      "sourceOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        11,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "questionUids": [
+        "qid_v1_abc338d8026a2f8896d67ffb7bbed0e806f1e22c2170583dba4fd518211682ce",
+        "qid_v1_1a74c734d78746bd1b09bd1b66a929e7f3fad20c6301abf7909ce6ba9646aca0",
+        "qid_v1_c6e0e4557f43a326f81f6af296c9838622ff1bf1295b30a1a3508da74d71eeba",
+        "qid_v1_5410ac0c007aa6abd5d1c868a33b7489599dafd6ef8484235b4415abc501c084",
+        "qid_v1_9868b8468a33c3bdb26ddc0a347af449096040a4b4070a5adad9696b584b7934",
+        "qid_v1_87cd6ed2298c49062f7b29a99fbf9d62a344103effc2a3acac9a58efd841a097",
+        "qid_v1_4f8d4a482d310b71d7e9be5cd124ad07bd69fa8ebd3646a8d6c173e95485e638",
+        "qid_v1_8e11620988eaf1afdf004961f15f57dc42d140746e3b05e65b8c1534f618fb5c",
+        "qid_v1_850fcf61ea5f1f1c81c3c9d3d10f69c387dc11c800aaa7d2d7bd602f89a05420",
+        "qid_v1_7038ea7d9fc17a089bb84393139938acd7aafb5b54008c0b8c2360c9592b13f5",
+        "qid_v1_7890109e827de4a0b57d5b05ff773b1772028863816f78dc1f60d62571859de2",
+        "qid_v1_62f17a8816fa5773a9db3fd751edf6333eb77b0a02c9e1e44630dfb8c504ada0",
+        "qid_v1_e0879785596d4546903e64f8b93577645ae4350d983805937dc66d18787d74c2",
+        "qid_v1_344a3e6e187e96c64fcb95e3cd4f4d0839e7d08c6004c9d632cdbcb3124d3d2b",
+        "qid_v1_cc730575ccc2472322e45080f84b386d09e535edba9795084d7306443d6f7339",
+        "qid_v1_fe16586c69d44e78a0afaa71ecc4f67ef55bc1235b7b3a7884ce5e8d2851c8ca",
+        "qid_v1_8d1a53a9d3d783e278bd7a58f45ccd737a46e48e44102b99044ff73275b7c523",
+        "qid_v1_de5c9f171c3ce37bd236c48ea238097df1dd2d5c2344d7090b59223f8d43bfa8"
+      ],
+      "phase1RecoveryRequest": {
+        "path": ".archive-meta-register/inbox/issued-binding-recovery-e017-current695-native-preserve-20261115.json",
+        "sha256": "e030a2791f4fb2e54fee272218add99045b13b0bbbeed7c4f6bf71abfb4c9c97"
+      },
+      "requiredActualReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e017-current695-native-preserve-20261115.json",
+      "requiredActualRecoveryProofPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e017-current695-native-preserve-20261115.source-binding-recovery.json",
+      "actualRegisteredCommit": null,
+      "actualReceiptRawSha256": null,
+      "actualRecoveryProofRawSha256": null,
+      "oldIssuedReceiptIsHistoricalOnly": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e017-current695-native-preserve-20261115.json",
+        "sha256": "e6ddf8561cda4e4852b406546eea49f945fccff8def851dbedce0d6f8a2a4d62"
+      },
+      "oldIssuedReceiptCommit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "preservationContract": {
+        "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+        "scope": "PARTIAL_UIDS",
+        "approvalType": "FINAL_QA",
+        "sourceRebind": {
+          "priorReceiptRef": "EXACT_ACTUAL_RECOVERED_FULL_COHORT_RECEIPT"
+        },
+        "itemBefore": {},
+        "itemAfter": {},
+        "registryChanges": []
+      },
+      "proofClosure": [
+        "actual recovered receipt and .source-binding-recovery.json with raw SHA256",
+        "all actual recovered receipt.approval.evidenceRefs",
+        "all current referenced renderer assets with exact raw SHA256 in request approval/item dependencies"
+      ],
+      "mustReplayActualRecoveryAuthority": true,
+      "noSubset": true,
+      "noNewSourceReview": true,
+      "compositionValidation": "PENDING_ACTUAL_PHASE2_PREDECESSOR_AND_OFFICIAL_VALIDATION"
+    }
+  ],
+  "templateProvider": {
+    "requestPath": ".archive-meta-register/inbox/m3s2-tpl5-e005-transport-20261115.json",
+    "requestRawSha256": "d716d9a68c3e618ee4d27707a6858d836dbc2875e840b6c666880f536aaec8dd",
+    "requiredActualReceiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-tpl5-e005-transport-20261115.json",
+    "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+    "definitionStableSha256": "f585110cfaac97f54743c6d1fbfeea4e37aa6c89bab407f7936874eb1d14ea85",
+    "requiredActualState": "ACTIVE exact approved definition, parent PT and canonical/compiled registry parity at the actual registered main",
+    "actualRegisteredCommit": null,
+    "actualReceiptRawSha256": null,
+    "authorityRef": {
+      "commit": "156e71e9916ba7d71fa2f071d30669b056a3c8f4",
+      "path": ".archive-meta-register/evidence/m3s2-tpl5-finalization-20261115/independent-review.json",
+      "sha256": "c58b0442f5333aa6ddfda8b73febb7ba7431ce305093d93ecdf696d0d49e53ea",
+      "bytes": 11722
+    },
+    "consumerDisposition": "REUSE_ACTIVE",
+    "definitionCreateAllowed": false,
+    "notOrderedByCcConditionGraph": true,
+    "requiresProviderActuallyInstalledBeforePhase2": true
+  },
+  "conditionProvider": {
+    "examId": "E001",
+    "sourceOrdinal": 8,
+    "conditionKey": "COND_EXCLUDED_ANGLE_VALUE",
+    "approvedAuthorityCommit": "9e50297143a0a30a0a1daf5e1b5f4c919a025371",
+    "expectedAction": "Exact previously approved ADD_ONLY definition, after checking actual canonical state; any pre-existing conflicting definition blocks issuance",
+    "newApproval": false
+  },
+  "freshBeforeRequirements": [
+    "Read the root-provided actual registered main SHA and exact generated recovery/provider receipts; a PR result or local preview is not a predecessor.",
+    "Read both source whole-file Git blobs, all 26 current metadata/identity records, and current referenced renderer bytes at that SHA. The aa378 draft observations must not become current before values automatically.",
+    "Replay E001 full recovered5 and E017 full recovered18, retain original-native and durable recovery ancestry. The superseded E01715+3 preview chain is not accepted.",
+    "E001 Q8 adds only the already approved condition field; E001 Q19 has no source patch. E017 Q23 changes only approved templateKey/courseKey. Recompute both final source blobs and bind both new and preservation requests to them.",
+    "Preservation requests remain before/after empty and registry0; new3 requests carry only immutable c17/9e502/156e71 approved fields. No new semantic, mathematical QA, difficulty or curriculum inference.",
+    "Read actual .source-binding-recovery.json plus receipt.approval.evidenceRefs and current renderer assets into complete raw-SHA request dependencies. Then official source-only composition must validate the real prior ancestry."
+  ],
+  "phase2ScopeDescriptor": {
+    "path": ".archive-meta-register/auto/run-scopes/middle-registration-20261115-phase2.json",
+    "schemaVersion": "archive-semantic-run-scope-v1",
+    "scopeId": "middle-registration-20261115",
+    "phase": "phase2",
+    "excludedSourcePrefixes": [
+      "original/middle/m3/1final/",
+      "original/middle/m3/1mid/"
+    ],
+    "inboxBindings": null,
+    "notIssued": true,
+    "requirements": [
+      "Root actual phase1 receipt commit has consumed every bound phase1 inbox, so the retained phase1 descriptor resolves inactive.",
+      "Finish all authorized phase2 request bytes first. The expected layout is two new-item source requests plus two full-cohort preservation requests, but bind the actual finalized complete tracked HEAD inbox set rather than hardcoding a count.",
+      "Each binding is exact {path,sha256} of the raw final inbox JSON at the immutable phase2 Git HEAD. Do not bind old local validation commits or phase1 preview request copies.",
+      "Do not absorb a concurrent owner request into this batch automatically. Any extra, partial or drifted inbox rejects before writers; coordinate a new exact complete authorized snapshot.",
+      "Ensure one active scope only. Working/index inbox consumption does not disable the current run; all bound requests absent at the later registered HEAD returns to normal future automation.",
+      "Current-scope excluded old pending values stay exact; new excluded deltas stay queued. Only allowed unattempted work contributes continuation; all full validation and final metadata/runtime/identity/4slot/debt guards remain required."
+    ]
+  },
+  "requiredOfficialChecks": [
+    "dry/write/replay against actual phase2 before values and exact prior23",
+    "student47/whole-object45/source/runtimes/identity/outside scope boundaries",
+    "full catalog and Consumer for unique26, including actual preserved23",
+    "unfiltered immutable official shadow and exact-head CI",
+    "root-only main writer, exact registered receipts, excluded-row/debt guard and downstream Pages evidence"
+  ],
+  "heldScopesUnchanged": [
+    "M3S1",
+    "M3S2 E020 Q16",
+    "nine M2 holds"
+  ],
+  "productionSourceWrites": 0,
+  "productionInboxRequestsIssued": 0,
+  "newReceiptRefsFinalized": 0,
+  "codeEdits": 0,
+  "newApprovals": 0,
+  "newTestsRun": 0
+}

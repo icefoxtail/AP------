@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "root-issued-recovery-ref-isolation-code-review-v1",
+  "status": "PASS_DIRECT_CODE_REVIEW",
+  "reviewer": "GPT_ROOT_META_PLAN_20261115",
+  "reviewedCommit": "f3205f692f18b626ee5525ec74e207cbc06aed47",
+  "integratedLocalHead": "4de837dc2882ed9f20232012fd19dd83bd334204",
+  "remoteHead": "54fd96be659636a1f44c56923f03f8d8f07245d2",
+  "tree": "20a1a43c01489bd64ce5432194215af66171f1be",
+  "filesRead": 2,
+  "productionCodeDiff": "expectedRefs stores structuredClone(ref) rather than the shared cache reference. Returned evidence objects no longer expose the private immutable replay objects.",
+  "regressionRead": "Transitive-only reference ownership is tested; normal restored request, native receipt and AutoMeta paths remain asserted.",
+  "sourceAssetsOrProductionInputsChanged": 0,
+  "authorReportedRecoveryTests": {
+    "pass": 33,
+    "fail": 0,
+    "skip": 0
+  },
+  "additionalIndependentExecution": {
+    "status": "BLOCKED",
+    "reason": "The independent agent turn was automatically stopped with possible cybersecurity risk. It was not retried and is not counted as a PASS."
+  },
+  "originalDefectEvidence": "PRESERVED_SEPARATELY",
+  "serializedOutputEquality": "PENDING_ROOT_UNFILTERED_29_SHADOW",
+  "remoteExactHeadCi": {
+    "status": "RUNNING",
+    "runId": 43754865872
+  },
+  "productionApplied": false
+}
