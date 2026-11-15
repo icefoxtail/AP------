@@ -300,7 +300,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차방정식",
@@ -308,7 +308,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "가로, 세로의 길이가 각각 $15\\text{ m}$, $10\\text{ m}$인 직사각형 모양의 땅에 오른쪽 그림과 같이 폭이 일정한 도로를 만들려고 한다. 도로를 제외한 땅의 넓이가 $84\\text{ m}^2$가 되도록 할 때, 이 도로의 폭은? (4점)<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q09.png\">",
+    "content": "가로, 세로의 길이가 각각 $15\\text{ m}$, $10\\text{ m}$인 직사각형 모양의 땅에 오른쪽 그림과 같이 폭이 일정한 도로를 만들려고 한다. 도로를 제외한 땅의 넓이가 $84\\text{ m}^2$가 되도록 할 때, 이 도로의 폭은? (4점)<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q9-problem-v2.svg\">",
     "choices": [
       "$3\\text{ m}$",
       "$4\\text{ m}$",
@@ -317,7 +317,8 @@ window.questionBank = [
       "$7\\text{ m}$"
     ],
     "answer": "①",
-    "solution": "도로의 폭을 $x\\,\\mathrm{m}$라고 놓는다. 폭이 $x$인 두 도로를 제외하면 네 직사각형이 남는다. 이 네 조각을 겹치지 않게 붙여 놓으면 전체 넓이는 가로 $15-x$, 세로 $10-x$인 직사각형의 넓이와 같다.\n따라서 $(15-x)(10-x)=84$이다.\n전개하면 $150-25x+x^2=84$,\n$x^2-25x+66=0$이다.\n인수분해하면 $(x-3)(x-22)=0$이므로 $x=3$ 또는 $22$이다.\n폭은 짧은 변 $10\\,\\mathrm m$보다 작아야 하므로 $x=22$는 그림과 맞지 않는다.\n따라서 도로 폭은 $3\\,\\mathrm m$이고 정답은 ①이다.<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q09-solution.svg\" alt=\"도로를 제외한 네 땅 조각의 넓이 재배치도\">",
+    "solution": "도로의 폭을 $x\\,\\mathrm{m}$라고 놓는다. 폭이 $x$인 두 도로를 제외하면 네 직사각형이 남는다. 이 네 조각을 겹치지 않게 붙여 놓으면 전체 넓이는 가로 $15-x$, 세로 $10-x$인 직사각형의 넓이와 같다.\n따라서 $(15-x)(10-x)=84$이다.\n전개하면 $150-25x+x^2=84$,\n$x^2-25x+66=0$이다.\n인수분해하면 $(x-3)(x-22)=0$이므로 $x=3$ 또는 $22$이다.\n폭은 짧은 변 $10\\,\\mathrm m$보다 작아야 하므로 $x=22$는 그림과 맞지 않는다.\n따라서 도로 폭은 $3\\,\\mathrm m$이고 정답은 ①이다.<br><br>",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q9-solution-v2.svg",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -325,7 +326,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 두 도로의 폭은 모두 x이다. 도로를 뺀 네 조각을 아래 그림에서 같은 색으로 이어 가로 15−x, 세로 10−x의 직사각형으로 만들었다.",
+    "solutionImageCaption": "남은 넓이는 (15−x)(10−x)=84이다. 풀면 x=3 또는 22인데 폭은 10 m보다 작으므로 3 m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -433,7 +437,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 비교를 위해 각 포물선의 꼭짓점과 열리는 방향을 맞췄다. 색이 다른 곡선 옆에는 이차항 계수의 절댓값이 있고, 같은 높이를 가로 점선으로 표시한다.",
+    "solutionImageCaption": "평행이동이나 x축에 대한 대칭은 폭을 바꾸지 않는다. 다섯 절댓값 중 가장 작은 수가 1/3이므로 y=x²/3의 폭이 가장 넓다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -469,7 +477,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 파랑과 초록은 위로 열리며, 같은 높이의 파란 두 점은 초록 두 점보다 서로 가깝다. 아래쪽 주황은 파랑을 x축에 대칭시킨 곡선이다.",
+    "solutionImageCaption": "y=4x²는 y=2x²보다 이차항 계수의 절댓값이 크므로 폭이 더 좁다. 따라서 더 넓다는 설명이 옳지 않다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -505,7 +517,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선의 꼭짓점 V는 (4,3)이고 초록 점 M은 (2,1)이다. y축 위의 주황 점 N이 구하는 교점이다.",
+    "solutionImageCaption": "y=a(x−4)²+3에 (2,1)을 대입하면 a=−1/2이다. x=0을 대입하면 y=−5이므로 N=(0,−5)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -535,7 +551,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 원래 포물선과 주황 이동한 포물선을 비교한다. 꼭짓점 사이 이동은 점선이고, 새 꼭짓점보다 왼쪽에서 올라가는 부분은 붉은색이다.",
+    "solutionImageCaption": "왼쪽으로 2, 위로 5만큼 평행이동하면 새 꼭짓점은 (−2,5)이다. 포물선은 아래로 열리므로 x<−2에서 x가 커질 때 y도 커진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -548,7 +568,7 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차함수",
@@ -558,14 +578,15 @@ window.questionBank = [
     "wide": false,
     "content": "다음에서 이차함수 $y=-\\frac{1}{2}x^2+2x+2$의 그래프는? (4점)",
     "choices": [
-      "<img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q16_1_display.png\">",
-      "<img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q16_2_display.png\">",
-      "<img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q16_3_display.png\">",
-      "<img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q16_4_display.png\">",
-      "<img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q16_5_display.png\">"
+      "<img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q16-choice1-problem-v2.svg\" width=\"260\">",
+      "<img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q16-choice2-problem-v2.svg\" width=\"260\">",
+      "<img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q16-choice3-problem-v2.svg\" width=\"260\">",
+      "<img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q16-choice4-problem-v2.svg\" width=\"260\">",
+      "<img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q16-choice5-problem-v2.svg\" width=\"260\">"
     ],
     "answer": "⑤",
-    "solution": "그래프의 방향과 꼭짓점, 절편을 계산하여 그림을 대조한다.\n$y=-\\frac12x^2+2x+2$에서 완전제곱식을 만들면\n$y=-\\frac12(x^2-4x)+2$,\n$=-\\frac12\\{(x-2)^2-4\\}+2$,\n$=-\\frac12(x-2)^2+4$이다.\n따라서 아래로 열린 포물선이고 꼭짓점은 $(2,4)$, 대칭축은 $x=2$이다.\n또한 $x=0$에서 $y=2$이므로 $y$절편은 $2$이다.\n다섯 그림을 실제로 비교하면 꼭짓점 $(2,4)$와 $y$절편 $2$를 모두 만족하는 것은 ⑤이다.\n따라서 정답은 ⑤이다.<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q16-solution.svg\" alt=\"꼭짓점과 y절편을 표시한 포물선\">",
+    "solution": "그래프의 방향과 꼭짓점, 절편을 계산하여 그림을 대조한다.\n$y=-\\frac12x^2+2x+2$에서 완전제곱식을 만들면\n$y=-\\frac12(x^2-4x)+2$,\n$=-\\frac12\\{(x-2)^2-4\\}+2$,\n$=-\\frac12(x-2)^2+4$이다.\n따라서 아래로 열린 포물선이고 꼭짓점은 $(2,4)$, 대칭축은 $x=2$이다.\n또한 $x=0$에서 $y=2$이므로 $y$절편은 $2$이다.\n다섯 그림을 실제로 비교하면 꼭짓점 $(2,4)$와 $y$절편 $2$를 모두 만족하는 것은 ⑤이다.\n따라서 정답은 ⑤이다.<br><br>",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q16-solution-v2.svg",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -573,7 +594,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 파란 꼭짓점 V는 (2,4), 주황 y절편 I는 (0,2)이다. V에서 x축으로 수선을 이었다.",
+    "solutionImageCaption": "완전제곱식으로 고치면 y=−(x−2)²/2+4이다. 꼭짓점은 (2,4), y절편은 2이므로 두 조건을 모두 만족하는 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -586,7 +610,7 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "이차함수",
@@ -594,7 +618,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "이차함수 $y=a(x+p)^2-q$의 그래프가 아래 그림과 같을 때, $a, p, q$의 부호는? (단, $a, p, q$는 상수이다.) (4점)<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q17.png\">",
+    "content": "이차함수 $y=a(x+p)^2-q$의 그래프가 아래 그림과 같을 때, $a, p, q$의 부호는? (단, $a, p, q$는 상수이다.) (4점)<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q17-problem-v2.svg\">",
     "choices": ["$a>0, p>0, q>0$", "$a>0, p>0, q\\lt0$", "$a>0, p\\lt0, q>0$", "$a\\lt0, p\\lt0, q>0$", "$a\\lt0, p>0, q>0$"],
     "answer": "②",
     "solution": "이차함수 $y=a(x+p)^2-q$의 꼭짓점은 $(-p,-q)$이다.\n그림의 포물선은 위쪽으로 열리므로 $a>0$이다.\n꼭짓점이 $y$축의 왼쪽에 있으므로 $-p\\lt0$, 따라서 $p>0$이다.\n꼭짓점이 $x$축보다 위에 있으므로 $-q>0$, 따라서 $q\\lt0$이다.\n세 부호가 모두 일치하는 $a>0,\\ p>0,\\ q\\lt0$인 ②가 정답이다.",
@@ -605,7 +629,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위의 주황 꼭짓점 V에서 각 좌표축으로 점선을 그었다.",
+    "solutionImageCaption": "위로 열리므로 a>0이다. 꼭짓점 (−p,−q)가 y축 왼쪽, x축 위쪽이므로 −p<0, −q>0이다. 따라서 p>0, q<0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -635,7 +663,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 보라색은 원래 포물선이고 파란색은 오른쪽과 위로 이동한 포물선이다. 새 꼭짓점 V의 왼쪽 가지를 굵게 표시한다.",
+    "solutionImageCaption": "이동하면 꼭짓점은 (1,−2)이다. 포물선이 아래로 열리고 꼭짓점 왼쪽에서 올라가므로 증가하는 범위는 x<1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -671,7 +703,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선에서 V는 (−3,−2)이고 주황 A와 B는 (0,−11)과 (1,−18)이다.",
+    "solutionImageCaption": "y절편에서 c=−11이다. B와 V를 대입하면 a+b=−7, 3a−b=3이고, 따라서 a=−1, b=−6이다. 식은 y=−x²−6x−11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -707,7 +743,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 파란 포물선의 꼭짓점 A와 위로 열린 주황 포물선의 꼭짓점 B는 두 곡선에 모두 놓인다.",
+    "solutionImageCaption": "B의 x좌표 3을 첫 함수에 대입하면 b=−7이다. A=(0,2)를 두 번째 식에 대입하면 2=9a−7이어서 a=1, ab=−7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -750,7 +790,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "이차방정식",
@@ -758,10 +798,11 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "【서답형 2】 [서술형]<br><br><b>【수준별 2-①】</b> (4점)<br>아래 그림에서 $\\overline{\\mathrm{BC}} : \\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}} : \\overline{\\mathrm{BC}}$를 만족시키고, $\\overline{\\mathrm{AC}}$의 길이를 $1$, $\\overline{\\mathrm{BC}}$의 길이를 $x$라고 할 때, $x$의 값을 구하시오.<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/s02_1.png\"><br><br><b>【수준별 2-②】</b> (5점)<br>아래 정오각형의 모든 대각선을 그리면 별을 그릴 수 있다. 정오각형의 한 변의 길이가 $1\\text{ cm}$일 때, 별의 한 변의 길이를 구하시오.<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/s02_2.png\">",
+    "content": "【서답형 2】 [서술형]<br><br><b>【수준별 2-①】</b> (4점)<br>아래 그림에서 $\\overline{\\mathrm{BC}} : \\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}} : \\overline{\\mathrm{BC}}$를 만족시키고, $\\overline{\\mathrm{AC}}$의 길이를 $1$, $\\overline{\\mathrm{BC}}$의 길이를 $x$라고 할 때, $x$의 값을 구하시오.<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q22-sub1-problem-v2.svg\"><br><br><b>【수준별 2-②】</b> (5점)<br>아래 정오각형의 모든 대각선을 그리면 별을 그릴 수 있다. 정오각형의 한 변의 길이가 $1\\text{ cm}$일 때, 별의 한 변의 길이를 구하시오.<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q22-sub2-problem-v2.svg\">",
     "choices": [],
     "answer": "① (1+√5)/2; ② (√5−1)/2 cm",
-    "solution": "【수준별 2-①】\n그림에서 $A,C,B$는 차례로 한 직선 위에 있고 $AC=1$, $BC=x$이다.\n따라서 $AB=AC+CB=1+x$이다.\n주어진 비례식 $BC:AB=AC:BC$를 분수식으로 바꾸면\n$\\frac{x}{1+x}=\\frac1x$이다.\n길이는 양수이므로 $x>0$이고 분모가 $0$이 아니다.\n양변에 $x(1+x)$를 곱하면\n$x^2=x+1$,\n$x^2-x-1=0$이다.\n근의 공식으로 $x=\\frac{1\\pm\\sqrt5}{2}$이다.\n$x>0$이므로 $x=\\frac{1+\\sqrt5}{2}$이다.\n\n【수준별 2-②】<br><br>정오각형의 한 변 $AB=1$이고 대각선의 길이를 $d$라고 하자. 대각선 $AC$와 $BE$의 첫 교점을 $P$로 두면 별의 한 변은 $AP=s$이다.<br>정오각형의 내각은 $108^\\circ$이고, 대각선은 꼭짓점의 각을 $36^\\circ$와 $72^\\circ$로 나눈다. 따라서 큰 삼각형 $ABE$와 작은 삼각형 $PBA$의 각은 각각 $108^\\circ,36^\\circ,36^\\circ$로 같아 닮음이다.<br>대응변은 $BE\\leftrightarrow BA$, $AB\\leftrightarrow PB$이므로 $d:1=1:s$, 즉 $ds=1$이다. 이 닮음에서 $AP=PB=s$이다.<br>또한 삼각형 $PBC$에서 $\\angle BPC=\\angle PBC=72^\\circ$이므로 $PC=BC=1$이다.<br>$P$가 $AC$ 위에 있으므로 $AC=AP+PC$, 즉 $d=s+1$이다.<br>두 관계를 대입하면 $s(s+1)=1$, 따라서 $s^2+s-1=0$이다.<br>$s>0$인 해를 택하면 $s=\\frac{\\sqrt5-1}{2}$이다.<br>따라서 별의 한 변의 길이는 $\\frac{\\sqrt5-1}{2}\\text{ cm}$이다.<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/s02_2-solution.svg\" alt=\"정오각형 대각선의 교점 P와 닮음으로 AP의 길이를 구하는 그림\">",
+    "solution": "【수준별 2-①】\n그림에서 $A,C,B$는 차례로 한 직선 위에 있고 $AC=1$, $BC=x$이다.\n따라서 $AB=AC+CB=1+x$이다.\n주어진 비례식 $BC:AB=AC:BC$를 분수식으로 바꾸면\n$\\frac{x}{1+x}=\\frac1x$이다.\n길이는 양수이므로 $x>0$이고 분모가 $0$이 아니다.\n양변에 $x(1+x)$를 곱하면\n$x^2=x+1$,\n$x^2-x-1=0$이다.\n근의 공식으로 $x=\\frac{1\\pm\\sqrt5}{2}$이다.\n$x>0$이므로 $x=\\frac{1+\\sqrt5}{2}$이다.\n\n【수준별 2-②】<br><br>정오각형의 한 변 $AB=1$이고 대각선의 길이를 $d$라고 하자. 대각선 $AC$와 $BE$의 첫 교점을 $P$로 두면 별의 한 변은 $AP=s$이다.<br>정오각형의 내각은 $108^\\circ$이고, 대각선은 꼭짓점의 각을 $36^\\circ$와 $72^\\circ$로 나눈다. 따라서 큰 삼각형 $ABE$와 작은 삼각형 $PBA$의 각은 각각 $108^\\circ,36^\\circ,36^\\circ$로 같아 닮음이다.<br>대응변은 $BE\\leftrightarrow BA$, $AB\\leftrightarrow PB$이므로 $d:1=1:s$, 즉 $ds=1$이다. 이 닮음에서 $AP=PB=s$이다.<br>또한 삼각형 $PBC$에서 $\\angle BPC=\\angle PBC=72^\\circ$이므로 $PC=BC=1$이다.<br>$P$가 $AC$ 위에 있으므로 $AC=AP+PC$, 즉 $d=s+1$이다.<br>두 관계를 대입하면 $s(s+1)=1$, 따라서 $s^2+s-1=0$이다.<br>$s>0$인 해를 택하면 $s=\\frac{\\sqrt5-1}{2}$이다.<br>따라서 별의 한 변의 길이는 $\\frac{\\sqrt5-1}{2}\\text{ cm}$이다.<br><br>",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q22-solution-v2.svg",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -769,7 +810,10 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 첫 그림은 AC=1, CB=x를 서로 다른 색으로 표시한다. 둘째 그림에서 같은 길이 AP와 BP는 주황, 같은 1 cm인 AB, BC, PC는 파랑으로 묶는다.",
+    "solutionImageCaption": "(1) x/(1+x)=1/x에서 x²=x+1이다. 양의 해는 (1+√5)/2이다. (2) 대각선 길이를 d, 별의 한 변을 s라 하면 닮은 삼각형에서 ds=1, AC=AP+PC에서 d=s+1이다. 따라서 s(s+1)=1이고 별의 한 변은 (√5−1)/2 cm이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -792,6 +836,10 @@ window.questionBank = [
     "choices": [],
     "answer": "① 4/3; ② 9",
     "solution": "【수준별 3-①】\n꼭짓점이 $(-3,5)$이므로 함수의 식은\n$y=a(x+3)^2+5$이다.\n$y$축과의 교점 $(0,-1)$을 지나므로\n$-1=a(0+3)^2+5$,\n$-1=9a+5$,\n$9a=-6$,\n$a=-\\frac23$이다.\n주어진 꼴 $y=a(x-p)^2+q$와 비교하면 $p=-3$, $q=5$이다.\n따라서 $a+p+q=-\\frac23-3+5=\\frac43$이다.\n\n【수준별 3-②】\n$y=-\\frac12(x-p)^2+q$의 대칭축은 $x=p$이다.\n축이 $x=-2$이므로 $p=-2$이고 꼭짓점은 $(-2,q)$이다.\n꼭짓점이 $y=-x+5$ 위에 있으므로\n$q=-(-2)+5=7$이다.\n따라서 $q-p=7-(-2)=9$이다.",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "첫째 파란 포물선은 꼭짓점 V와 y절편 I를 지난다. 둘째 그림은 파란 꼭짓점 V가 주황 직선 위에 있고, V와 x축을 점선으로 이었다.",
+    "solutionImageCaption": "(1) −1=9a+5이므로 a=−2/3, p=−3, q=5이다. 따라서 a+p+q=4/3이다. (2) p=−2이고 직선에 x=−2를 대입한 q는 7이므로 q−p=9이다.",
+    "solutionImageSize": "full",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -803,6 +851,7 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "solutionReminderImagePolicy": "STRIP_INLINE",
     "score": 5,
     "level": "상",
     "category": "이차함수",
@@ -812,7 +861,7 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "이차함수",
@@ -820,10 +869,14 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "【서답형 4】 [서술형]<br><br><b>【수준별 4-①】</b> (4점)<br>아래 그림과 같은 이차함수 $y=-2x^2-4x+1$의 그래프에 대하여 꼭짓점을 $\\mathrm{A}$, 그래프의 축과 $x$축과의 교점을 $\\mathrm{B}$, 그래프와 $y$축과의 교점을 $\\mathrm{C}$라 할 때, 사다리꼴 $\\mathrm{ABOC}$의 넓이를 구하시오.<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/s04_1.png\"><br><br><b>【수준별 4-②】</b> (5점)<br>아래 그림은 이차함수 $y=-x^2+n$의 그래프이다. $x$축과의 교점을 $\\mathrm{A, B}$라 하고, $y$축과의 교점을 $\\mathrm{C}$라 할 때, $\\triangle\\mathrm{ABC}$가 정삼각형이 되도록 하는 $n$의 값을 구하시오.<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/s04_2.png\">",
+    "content": "【서답형 4】 [서술형]<br><br><b>【수준별 4-①】</b> (4점)<br>아래 그림과 같은 이차함수 $y=-2x^2-4x+1$의 그래프에 대하여 꼭짓점을 $\\mathrm{A}$, 그래프의 축과 $x$축과의 교점을 $\\mathrm{B}$, 그래프와 $y$축과의 교점을 $\\mathrm{C}$라 할 때, 사다리꼴 $\\mathrm{ABOC}$의 넓이를 구하시오.<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q24-sub1-problem-v2.svg\"><br><br><b>【수준별 4-②】</b> (5점)<br>아래 그림은 이차함수 $y=-x^2+n$의 그래프이다. $x$축과의 교점을 $\\mathrm{A, B}$라 하고, $y$축과의 교점을 $\\mathrm{C}$라 할 때, $\\triangle\\mathrm{ABC}$가 정삼각형이 되도록 하는 $n$의 값을 구하시오.<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/q24-sub2-problem-v2.svg\">",
     "choices": [],
     "answer": "① 2; ② 3",
-    "solution": "【수준별 4-①】\n$y=-2x^2-4x+1$을 완전제곱식으로 고치면\n$y=-2(x^2+2x)+1\n=-2\\{(x+1)^2-1\\}+1\n=-2(x+1)^2+3$이다.\n따라서 꼭짓점 $A=(-1,3)$이다.\n대칭축 $x=-1$과 $x$축의 교점은 $B=(-1,0)$이다.\n$y$축과의 교점은 $x=0$을 넣어 구하므로 $C=(0,1)$이다.\n$O=(0,0)$이다.\n사다리꼴 $ABOC$에서 평행한 두 변은 $AB$와 $OC$이다.\n각각 길이는 $3$, $1$이고 두 직선 $x=-1$과 $x=0$ 사이의 거리는 $1$이다.\n따라서 넓이는 $\\frac12(3+1)\\cdot1=2$이다.\n\n【수준별 4-②】<br><br>함수 $y=-x^2+n$에서 $x$축과의 교점은 $0=-x^2+n$, 즉 $x^2=n$이다.<br>따라서 $A=(-\\sqrt n,0)$, $B=(\\sqrt n,0)$이고 $AB=2\\sqrt n$이다. 정삼각형이므로 $n>0$이고 $C=(0,n)$이다.<br>$O=(0,0)$은 $AB$의 중점이고 $CO\\perp AB$이다. 그러므로 $AO=\\sqrt n$, $CO=n$, $AC=AB=2\\sqrt n$이다.<br>직각삼각형 $AOC$에 피타고라스 정리를 쓰면<br>$(2\\sqrt n)^2=(\\sqrt n)^2+n^2$, 즉 $4n=n+n^2$이다.<br>$n^2-3n=0$, $n(n-3)=0$이다.<br>$n>0$이므로 $n=3$이다.<br><br><img src=\"assets/images/21_매산중_1학기_기말_중3_수학/s04-solution.svg\" alt=\"사다리꼴 넓이와 정삼각형 높이 도식\">",
+    "solution": "【수준별 4-①】\n$y=-2x^2-4x+1$을 완전제곱식으로 고치면\n$y=-2(x^2+2x)+1\n=-2\\{(x+1)^2-1\\}+1\n=-2(x+1)^2+3$이다.\n따라서 꼭짓점 $A=(-1,3)$이다.\n대칭축 $x=-1$과 $x$축의 교점은 $B=(-1,0)$이다.\n$y$축과의 교점은 $x=0$을 넣어 구하므로 $C=(0,1)$이다.\n$O=(0,0)$이다.\n사다리꼴 $ABOC$에서 평행한 두 변은 $AB$와 $OC$이다.\n각각 길이는 $3$, $1$이고 두 직선 $x=-1$과 $x=0$ 사이의 거리는 $1$이다.\n따라서 넓이는 $\\frac12(3+1)\\cdot1=2$이다.\n\n【수준별 4-②】<br><br>함수 $y=-x^2+n$에서 $x$축과의 교점은 $0=-x^2+n$, 즉 $x^2=n$이다.<br>따라서 $A=(-\\sqrt n,0)$, $B=(\\sqrt n,0)$이고 $AB=2\\sqrt n$이다. 정삼각형이므로 $n>0$이고 $C=(0,n)$이다.<br>$O=(0,0)$은 $AB$의 중점이고 $CO\\perp AB$이다. 그러므로 $AO=\\sqrt n$, $CO=n$, $AC=AB=2\\sqrt n$이다.<br>직각삼각형 $AOC$에 피타고라스 정리를 쓰면<br>$(2\\sqrt n)^2=(\\sqrt n)^2+n^2$, 즉 $4n=n+n^2$이다.<br>$n^2-3n=0$, $n(n-3)=0$이다.<br>$n>0$이므로 $n=3$이다.<br><br>",
+    "solutionImage": "assets/images/21_매산중_1학기_기말_중3_수학/q24-solution-v2.svg",
+    "solutionImageAlt": "첫 그림은 주황 사다리꼴의 평행한 두 변과 포물선을 표시한다. 둘째 그림은 정삼각형을 원점 O에서 두 직각삼각형으로 나눈다.",
+    "solutionImageCaption": "(1) AB=3, OC=1이고 두 평행변 사이 거리는 1이므로 넓이는 2이다. (2) AO=√n, CO=n, AC=2√n이다. 피타고라스 정리를 쓰면 4n=n+n²이고 n>0이므로 n=3이다.",
+    "solutionImageSize": "full",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
