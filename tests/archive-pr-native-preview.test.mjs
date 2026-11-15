@@ -12,6 +12,7 @@ import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, prRegistrationProofNeeded,
 } from '../tools/ci/archive-pr-registration-proof.mjs';
 
 import { preparePrRegistration } from '../tools/ci/archive-pr-registration-prepare.mjs';
+import { SOURCE_SUBSET_SCHEMA, sourceSubsetEvidencePath } from '../archive/tools/meta-foundation/source-subset-preservation.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = value => JSON.stringify(value, null, 2) + '\n';
@@ -31,7 +32,7 @@ const PLANNED = [META, AUTHORITY, RECEIPT].sort();
 const ALLOWED = [/^archive\/db\.js$/, /^archive\/data\/question_metadata\.json$/,
   /^archive\/data\/archive2-(?:catalog|canonical-input-manifest)\.json$/];
 
-function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
+function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, finalQaPreservation = false, subsetPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, text, target = root) => {
@@ -100,10 +101,20 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
     request.approval.sourceRebind = { schemaVersion: 'archive-native-audit-preservation-v1', requestPath: REQUEST,
       difficultyRequestRef: { path: DIFFICULTY_REQUEST, sha256: sha(json(difficultyRequest)) } };
   }
-  if (finalQaPreservation) {
+  if (finalQaPreservation || subsetPreservation) {
     Object.assign(request.approval, { metadataReviewed: true, approvedBy: 'fixture existing approval preservation',
       sourceRebind: { priorReceiptRef: evidenceRef } });
     Object.assign(request.items[0], { before: {}, after: {} });
+  }
+  if (subsetPreservation) {
+    const proofPath = sourceSubsetEvidencePath(request.requestId);
+    // This fixture tests dispatch only; the registrar test suite authenticates
+    // the complete strict-subset proof and the original approved inventory.
+    const bytes = json({ schemaVersion: 'archive-native-source-subset-evidence-v1', dispatchFixture: true });
+    write(proofPath, bytes);
+    const ref = { path: proofPath, sha256: sha(bytes) };
+    request.approval.sourceRebind = { schemaVersion: SOURCE_SUBSET_SCHEMA, priorReceiptRef: evidenceRef, subsetEvidenceRef: ref };
+    request.approval.evidenceRefs.push(ref);request.items[0].evidenceRefs.push(ref);
   }
   if (basicPreservation) {
     request.schemaVersion = 'archive-basic-scope-rebind-request-v1'; delete request.scope; delete request.registryChanges;
@@ -114,7 +125,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
   mutateRequest?.(request);
   write(REQUEST, json(request));
   if (pairedDifficulty) write(DIFFICULTY_REQUEST, json(difficultyRequest));
-  git('add', '--', REQUEST, ...(pairedDifficulty ? [DIFFICULTY_REQUEST] : [])); git('commit', '-qm', 'own request only');
+  git('add', '--', REQUEST, ...(pairedDifficulty ? [DIFFICULTY_REQUEST] : []), ...(subsetPreservation ? [sourceSubsetEvidencePath(request.requestId)] : [])); git('commit', '-qm', 'own request only');
   const headSha = git('rev-parse', 'HEAD'), repo = 'owner/repository';
   const event = { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
     number: 17, base: { sha: baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } },
@@ -779,6 +790,44 @@ function laterCodePr(f) {
     number:17,base:{sha:baseSha,repo:{id:101}},head:{sha:headSha,repo:{id:101}}}},
     expectedSha:headSha,runId:41,runAttempt:1,run:f.run};
 }
+
+test('explicit strict subset uses the same changed, pending and inherited official preservation dispatch',t=>{
+  const f=fixture(t,{partial:true,subsetPreservation:true,otherOwner:false}),changed=f.selected();
+  assert.deepEqual(changed.map(r=>[r.path,r.kind,r.questionCount,r.sourceQuestionCount]),[[REQUEST,'native-approval-preservation',1,24]]);
+  assert(changed[0].evidence.some(ref=>ref.path===sourceSubsetEvidencePath(f.request.requestId)));
+  assert.deepEqual(selectPendingNativeRequests({root:f.root,headSha:f.headSha}),changed);
+  const options=laterCodePr(f),baseSha=options.event.pull_request.base.sha,headSha=options.expectedSha;
+  const inherited=selectNativeRequests({root:f.root,baseSha,headSha});
+  assert.equal(inherited[0].kind,'native-approval-preservation');
+  assert.deepEqual(inherited[0].inheritedPreservation,{baseSha,requestSha256:sha(fs.readFileSync(path.join(f.root,REQUEST)))});
+  // Dispatch must still invoke the real registrar boundary and propagate refusal.
+  f.hook['dry-run']=()=>{throw Error('FIXTURE_SUBSET_PRIOR_APPROVAL_NOT_VERIFIED');};
+  assert.throws(()=>producePrRegistrationProof(options),/SUBSET_PRIOR_APPROVAL_NOT_VERIFIED/);
+  assert.equal(fs.existsSync(path.join(f.root,RECEIPT)),false);
+});
+for(const [name,mutate]of [
+  ['unknown schema',r=>{r.approval.sourceRebind.schemaVersion='unreviewed-subset';}],
+  ['unknown schema option',r=>{r.approval.sourceRebind.allowExcluded=true;}],
+  ['missing subset evidence',r=>{delete r.approval.sourceRebind.subsetEvidenceRef;}],
+  ['wrong deterministic evidence path',r=>{r.approval.sourceRebind.subsetEvidenceRef.path=EVIDENCE;}],
+  ['missing item evidence',r=>{r.items[0].evidenceRefs=[r.approval.sourceRebind.priorReceiptRef];}],
+  ['full scope',r=>{delete r.scope;}],
+  ['new values',r=>{r.items[0].after={templateKey:'UNREVIEWED'};}],
+  ['new registry additions',r=>{r.registryChanges=[{path:AUTHORITY,after:{}}];}],
+  ['new source review',r=>{r.items[0].sourceReview={reviewCommit:'a'.repeat(40)};}],
+])test('strict subset dispatch refuses '+name+' and never adopts it as inherited approval',t=>{
+  const f=fixture(t,{partial:true,subsetPreservation:true,mutateRequest:mutate});
+  assert.throws(()=>f.selected(),/PRESERVATION_SCOPE/);
+  const options=laterCodePr(f);
+  assert.deepEqual(selectNativeRequests({root:f.root,baseSha:options.event.pull_request.base.sha,headSha:options.expectedSha}),[]);
+  assert.equal(f.calls.filter(c=>c.program!=='git').length,0);
+});
+test('strict subset selection binds actual evidence bytes to the fixed Git head',t=>{
+  const f=fixture(t,{partial:true,subsetPreservation:true}),proofPath=sourceSubsetEvidencePath(f.request.requestId);
+  assert.equal(f.selected().length,1);f.write(proofPath,'unreviewed working-copy proof');
+  assert.throws(()=>f.selected(),/EVIDENCE_DRIFT/);
+  assert.equal(f.calls.filter(c=>c.program!=='git').length,0);
+});
 
 test('code-only PR preserves an exact inherited partial FINAL_QA approval through the official projection and Consumer',t=>{
   const f=fixture(t,{partial:true,finalQaPreservation:true}),options=laterCodePr(f);

@@ -92,22 +92,23 @@ test("normal registration sync refreshes parent links and then rebuilds the boun
   const sync = source.slice(start);
   const runtimeRename = sync.indexOf("sync-runtime-source-path-renames.mjs");
   const parentLinks = sync.indexOf("build-basic-scope-parent-links.mjs");
-  const catalogWrites = [...sync.matchAll(/build-archive2-catalog\.mjs/g)]
+  const projectionWrites = [...sync.matchAll(/build-archive2-ready-catalog\.mjs/g)]
     .map((match) => match.index)
     .filter((index) => !sync.slice(index, index + 80).includes("--check"));
+  const parentCheck = sync.indexOf('build-basic-scope-parent-links.mjs", "--check"');
   const catalogCheck = sync.indexOf('build-archive2-catalog.mjs", "--check"');
-  const finalProjection = sync.indexOf('build-archive2-ready-catalog.mjs');
+  const finalProjection = projectionWrites.at(-1);
 
   assert.ok(runtimeRename >= 0 && runtimeRename < parentLinks,
     "runtime input renames must finish before parent links are regenerated");
-  assert.ok(catalogWrites.length > 0 && runtimeRename < catalogWrites[0],
-    "an intermediate catalog/manifest must include any runtime rename before parent-link generation");
-  assert.ok(catalogWrites.some((index) => index < parentLinks),
-    "a current intermediate catalog/manifest must be materialized before the parent-link generator consumes it");
+  assert.ok(projectionWrites.some((index) => runtimeRename < index && index < parentLinks),
+    "the intermediate catalog and runtime readiness must settle after renames and before parent-link generation");
   assert.ok(finalProjection > parentLinks,
     "the final catalog/readiness fixed point must be rebuilt after parent links change");
-  assert.ok(catalogCheck > finalProjection,
-    "the generated final catalog must then pass the stale check");
+  assert.ok(parentCheck > finalProjection,
+    "parent links must pass their unchanged stale check after the final readiness projection");
+  assert.ok(catalogCheck > parentCheck,
+    "the generated final catalog must pass its stale check after parent-link stability is verified");
   const readinessWrite = sync.indexOf('refresh-runtime-source-readiness.mjs", "--write"');
   const readinessCheck = sync.indexOf('refresh-runtime-source-readiness.mjs", "--check"');
   assert.equal(readinessWrite, -1,

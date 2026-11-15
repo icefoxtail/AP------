@@ -1,0 +1,54 @@
+{
+  "sourcePath": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+  "questionId": 10,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "solid-figure-v1",
+        "caption": "원기둥과 두 반구",
+        "accessibilityDescription": "원기둥과 반구가 만나는 경계와 치수를 나타낸 입체 그림.",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "lower",
+            "kind": "HEMISPHERE",
+            "radius": 4,
+            "orientation": "APEX_DOWN"
+          },
+          {
+            "id": "tube",
+            "kind": "CYLINDER",
+            "radius": 4,
+            "height": 6,
+            "on": "lower"
+          },
+          {
+            "id": "upper",
+            "kind": "HEMISPHERE",
+            "radius": 4,
+            "on": "tube"
+          }
+        ],
+        "dims": [
+          {
+            "solid": "tube",
+            "height": true
+          },
+          {
+            "solid": "tube",
+            "radius": "bottom"
+          }
+        ],
+        "sourceConditions": [],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

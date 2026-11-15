@@ -1,0 +1,125 @@
+{
+  "sourcePath": "archive/exams/similar/high/h2/2final/25_순천고_2학기_기말_고2_수학II_유사.js",
+  "questionId": 16,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "sourceQuote": "곡선 $f(x)=x^2(4-x)$가 $x$축과 만나는 두 점",
+        "caption": "곡선 위의 점 P와 x축에 내린 수선",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "domain": [
+            -0.6,
+            4.6
+          ],
+          "viewport": [
+            -1,
+            5,
+            -1,
+            11
+          ],
+          "requiredPoints": [
+            {
+              "id": "O",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "A",
+              "x": 4,
+              "y": 0
+            },
+            {
+              "id": "M",
+              "x": "8/3",
+              "y": "256/27"
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "P",
+                "curveX": "2"
+              },
+              {
+                "id": "H",
+                "axis": "x",
+                "value": "2"
+              }
+            ],
+            "segments": [
+              {
+                "id": "PH",
+                "from": "P",
+                "to": "H",
+                "dashed": true
+              }
+            ],
+            "polygons": []
+          },
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "0",
+                "4",
+                "-1"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "exactCoordinates": {
+            "O": [
+              "0",
+              "0"
+            ],
+            "A": [
+              "4",
+              "0"
+            ],
+            "M": [
+              "8/3",
+              "256/27"
+            ]
+          },
+          "coordinateBand": {
+            "hide": [
+              "M"
+            ]
+          }
+        },
+        "assetPath": "assets/images/25_순천고_2학기_기말_고2_수학II_유사/q16.svg",
+        "accessibilityDescription": "곡선 y=f(x), x축과 점 P에서 내린 수선의 발 H.",
+        "sourceConditions": [
+          {
+            "id": "S1",
+            "condition": "f(x)=x²(4−x), 0<t<4, P=(t,f(t)), H is its perpendicular foot on the x-axis",
+            "mappedTo": [
+              "graphPlan.coefficients",
+              "graphPlan.sourceDomain",
+              "graphPlan.overlays"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "P, H and the perpendicular segment are clearly visible."
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 36,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

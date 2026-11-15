@@ -1,0 +1,261 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사.js",
+  "questionId": 12,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "두 삼각형과 직선",
+        "accessibilityDescription": "두 삼각형의 점과 두 선분의 교점을 나타낸 그림.",
+        "sourceQuote": "l∥m; O=AB∩CD",
+        "sourceConditions": [
+          {
+            "id": "parallel",
+            "condition": "l is parallel to m",
+            "mappedTo": "parallel arrow marks"
+          },
+          {
+            "id": "intersection",
+            "condition": "AB and CD intersect at O",
+            "mappedTo": "displayed crossing at O"
+          }
+        ],
+        "newVisualInformation": [],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "-2"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "lineL",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineM",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "D",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineAB",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineCD",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "D"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "C",
+          "D",
+          "B",
+          "O"
+        ],
+        "displaySegments": [
+          {
+            "id": "l",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "m",
+            "refs": [
+              "D",
+              "B"
+            ]
+          },
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "CD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 600,
+          "height": 440
+        },
+        "displayLines": [],
+        "planeMarks": {
+          "parallels": [
+            {
+              "id": "lm",
+              "count": 1,
+              "segments": [
+                "l",
+                "m"
+              ]
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "label-l",
+              "text": "l",
+              "at": [
+                0,
+                2.3
+              ],
+              "labelKind": "MATH",
+              "anchor": "CENTER",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "label-m",
+              "text": "m",
+              "at": [
+                0,
+                -2.3
+              ],
+              "labelKind": "MATH",
+              "anchor": "CENTER",
+              "factRole": "GIVEN"
+            }
+          ]
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

@@ -1,0 +1,371 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/24_매산중_2학기_중간_중1_유사.js",
+  "questionId": 20,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "caption": "삼각형과 각",
+        "accessibilityDescription": "삼각형의 변과 각을 이루는 선을 나타낸 그림.",
+        "sourceQuote": "∠A=50°, BD는 ∠B의 이등분선, CD는 ∠C의 외각 이등분선",
+        "sourceConditions": [
+          {
+            "id": "A50",
+            "condition": "∠A=50°",
+            "mappedTo": "angle mark at A"
+          },
+          {
+            "id": "bisB",
+            "condition": "BD bisects ∠B",
+            "mappedTo": "angle marks at B"
+          },
+          {
+            "id": "bisC",
+            "condition": "CD bisects exterior ∠C",
+            "mappedTo": "angle marks at C"
+          }
+        ],
+        "newVisualInformation": [],
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "E",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "refB",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aB",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "B",
+                "refB"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "70"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "aC",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "C",
+                "B"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "60"
+                },
+                "turn": "CW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineBA",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "aB"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineCA",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "C",
+                "aC"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "A",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "lineBA",
+                "lineCA"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bisB",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "A",
+                "B",
+                "C"
+              ],
+              "args": {
+                "mode": "INTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "bisCE",
+              "op": "ANGLE_BISECTOR",
+              "inputs": [
+                "B",
+                "C",
+                "A"
+              ],
+              "args": {
+                "mode": "EXTERNAL"
+              },
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "D",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "bisB",
+                "bisCE"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "refB"
+        ],
+        "displaySegments": [
+          {
+            "id": "AB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "AC",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "BC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "CE",
+            "refs": [
+              "C",
+              "E"
+            ]
+          },
+          {
+            "id": "BD",
+            "refs": [
+              "B",
+              "D"
+            ]
+          },
+          {
+            "id": "CD",
+            "refs": [
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 700,
+          "height": 580
+        },
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "A50",
+              "refs": [
+                "B",
+                "A",
+                "C"
+              ],
+              "value": 50,
+              "label": "50",
+              "arcs": 1
+            },
+            {
+              "id": "xD",
+              "refs": [
+                "B",
+                "D",
+                "C"
+              ],
+              "value": 25,
+              "label": "x",
+              "labelKind": "MATH",
+              "arcs": 1
+            },
+            {
+              "id": "bisB1",
+              "refs": [
+                "A",
+                "B",
+                "D"
+              ],
+              "value": 35,
+              "noLabel": true,
+              "arcs": 1
+            },
+            {
+              "id": "bisB2",
+              "refs": [
+                "D",
+                "B",
+                "C"
+              ],
+              "value": 35,
+              "noLabel": true,
+              "arcs": 1
+            },
+            {
+              "id": "bisC1",
+              "refs": [
+                "A",
+                "C",
+                "D"
+              ],
+              "value": 60,
+              "noLabel": true,
+              "arcs": 1
+            },
+            {
+              "id": "bisC2",
+              "refs": [
+                "D",
+                "C",
+                "E"
+              ],
+              "value": 60,
+              "noLabel": true,
+              "arcs": 1
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "refB"
+        ],
+        "hiddenPointStyle": "NONE",
+        "displayLines": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 28,
+        "displayScale": 0.62,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

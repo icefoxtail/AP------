@@ -1,0 +1,351 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+  "questionId": 22,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "-7",
+                    "denominator": "6"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "4"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "3"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "4"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "mul",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "numerator": "1",
+                            "denominator": "4"
+                          },
+                          {
+                            "kind": "expression",
+                            "op": "sqrt",
+                            "args": [
+                              {
+                                "kind": "integer",
+                                "value": "91"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "rational",
+                    "numerator": "9",
+                    "denominator": "4"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "Q",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "expression",
+                    "op": "add",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "4"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "91"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "circ",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "rational",
+                  "numerator": "25",
+                  "denominator": "6"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "B",
+          "C",
+          "P",
+          "Q"
+        ],
+        "displayLines": [],
+        "displayCircles": [
+          "circ"
+        ],
+        "displaySegments": [
+          {
+            "id": "ab",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "ac",
+            "refs": [
+              "A",
+              "C"
+            ]
+          },
+          {
+            "id": "bc",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "cq",
+            "refs": [
+              "C",
+              "Q"
+            ]
+          },
+          {
+            "id": "ap",
+            "refs": [
+              "A",
+              "P"
+            ]
+          },
+          {
+            "id": "pq",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          },
+          {
+            "id": "pc",
+            "refs": [
+              "P",
+              "C"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 700,
+          "height": 460
+        },
+        "caption": "원과 삼각형 및 연장선",
+        "accessibilityDescription": "원 안의 삼각형 두 변과 원 바깥으로 이어지는 두 선에 점 이름이 표시되어 있다.",
+        "sourceQuote": "AB=AC=5, BC=8인 삼각형의 외접원; P는 원 위; Q는 AP와 BC의 연장선 교점; AP:PQ=1:3",
+        "sourceConditions": [
+          {
+            "id": "equalSides",
+            "condition": "AB=AC=5",
+            "mappedTo": "equal mark and 5 labels on AB and AC"
+          },
+          {
+            "id": "base",
+            "condition": "BC=8",
+            "mappedTo": "8 label on BC"
+          },
+          {
+            "id": "circumcircle",
+            "condition": "O is the circumcenter of ABC and P lies on its circle",
+            "mappedTo": "circle circ with ON_CIRCLE fact for A, B, C, P"
+          },
+          {
+            "id": "intersectionQ",
+            "condition": "Q lies on the extensions of AP and BC, with A-P-Q in order",
+            "mappedTo": "displayed AP, PQ, BC, CQ segments and exact point positions"
+          },
+          {
+            "id": "ratio",
+            "condition": "AP:PQ=1:3",
+            "mappedTo": "1 and 3 labels on AP and PQ"
+          }
+        ],
+        "newVisualInformation": [],
+        "planeMarks": {
+          "equalLengths": [
+            {
+              "id": "isosceles",
+              "count": 1,
+              "segments": [
+                "ab",
+                "ac"
+              ]
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "ab5",
+              "ownerSegment": "ab",
+              "text": "5",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ac5",
+              "ownerSegment": "ac",
+              "text": "5",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "bc8",
+              "ownerSegment": "bc",
+              "text": "8",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "ratioPQ",
+              "ownerSegment": "pq",
+              "text": "3",
+              "factRole": "GIVEN"
+            }
+          ],
+          "facts": [
+            {
+              "kind": "ON_CIRCLE",
+              "circle": "circ",
+              "points": [
+                "A",
+                "B",
+                "C",
+                "P"
+              ]
+            }
+          ]
+        }
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 27,
+        "displayScale": 0.58,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

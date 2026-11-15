@@ -310,7 +310,9 @@ window.questionBank = [
       "9",
       "12"
     ],
-    "image": "assets/images/21_왕운중_2학기_기말_중2_기출/q06-source-repaired.svg",
+    "image": "assets/images/21_왕운중_2학기_기말_중2_기출/q06-quality-v4.svg",
+    "imageSize": "full",
+    "imageSize": "full",
     "answer": "③",
     "solution": "$\\angle A=90^\\circ$이고 $AD\\perp BC$이므로 직각삼각형의 높이 성질을 적용한다.\n$BC=BD+DC$이고 $BD=16$, $DC=z$이므로\n$BC=16+z$이다.\n$AB^2=BD\\cdot BC$에서\n$20^2=16(16+z)$,\n$400=16(16+z)$,\n$25=16+z$,\n$z=9$이다.\n따라서 $BC=16+9=25$이다.\n$AD^2=BD\\cdot DC$에서\n$x^2=16\\cdot9$,\n$x^2=144$,\n$x=12$이다.\n$AC^2=DC\\cdot BC$에서\n$y^2=9\\cdot25$,\n$y^2=225$,\n$y=15$이다.\n따라서 $x-y+z=12-15+9=6$이고 정답은 ③이다.",
     "level": "중",

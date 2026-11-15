@@ -527,7 +527,7 @@ window.questionBank = [
     "provenance": "ALIVE_REPLACEMENT",
     "sourceMode": "ALIVE_REPLACEMENT",
     "score": 4,
-    "content": "밑변의 길이가 $6\\sqrt3$ cm이고 높이가 $4$ cm인 삼각형이 있다. 높이가 $3$ cm인 직사각형과 넓이가 같을 때, 직사각형의 가로 길이는? [4점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q10-problem.svg\">",
+    "content": "밑변의 길이가 $6\\sqrt3$ cm이고 높이가 $4$ cm인 삼각형이 있다. 높이가 $3$ cm인 직사각형과 넓이가 같을 때, 직사각형의 가로 길이는? [4점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q10-audit-rework.svg\">",
     "choices": [
       "$\\frac{5\\sqrt3}{3}$",
       "$2\\sqrt3$",
@@ -586,7 +586,8 @@ window.questionBank = [
       "replacementReason": "original q10 relied on inaccessible geometry PNG; replacement preserves area-equivalence with radicals, score, grade and difficulty",
       "replacementStage": "CREATE"
     },
-    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q10-problem.svg",
+    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q10-audit-rework.svg",
+    "imageSize": "full",
     "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q10-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 같은 파란색으로 채운 삼각형과 직사각형의 넓이가 같고, 각 도형의 밑변 또는 가로와 높이를 구별한다.",
     "solutionImageCaption": "삼각형과 직사각형의 같은 넓이 관계. 직사각형의 가로 길이는 4√3 cm.",
@@ -993,7 +994,7 @@ window.questionBank = [
     "provenance": "ALIVE_REPLACEMENT",
     "sourceMode": "ALIVE_REPLACEMENT",
     "score": 5,
-    "content": "넓이가 각각 $8,18,32\\,\\mathrm{cm}^2$인 정사각형 세 개가 있다. 각 정사각형의 한 변의 길이의 합을 구하면? [5점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q18-problem.svg\">",
+    "content": "넓이가 각각 $8,18,32\\,\\mathrm{cm}^2$인 정사각형 세 개가 있다. 각 정사각형의 한 변의 길이의 합을 구하면? [5점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q18-problem-label-layout-v2-figure-only.svg\">",
     "choices": [
       "$7\\sqrt2$",
       "$8\\sqrt2$",
@@ -1052,7 +1053,7 @@ window.questionBank = [
       "replacementReason": "original q18 had geometry PNG with unknown segment location; maintain radicals and geometry with a complete independent replacement",
       "replacementStage": "CREATE"
     },
-    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q18-problem.svg",
+    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q18-problem-label-layout-v2-figure-only.svg",
     "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q18-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 파랑·주황·초록 정사각형 안의 넓이 8, 18, 32와 아래의 한 변 길이 2√2, 3√2, 4√2를 짝지었다. 길이 단위는 cm, 넓이 단위는 제곱센티미터이다.",
     "solutionImageCaption": "세 정사각형의 한 변 길이는 2√2 cm, 3√2 cm, 4√2 cm이며, 그 합은 9√2 cm.",
@@ -1065,7 +1066,7 @@ window.questionBank = [
     "provenance": "ALIVE_REPLACEMENT",
     "sourceMode": "ALIVE_REPLACEMENT",
     "score": 5,
-    "content": "$x>2y>0$인 두 수 $x,y$에 대하여, 가로가 $x$, 세로가 $x-y$인 직사각형에서 한 변이 $y$인 정사각형 두 개를 겹치지 않게 잘라낸다. 남은 부분의 넓이를 인수분해한 식은? [5점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q19-problem.svg\">",
+    "content": "$x>2y>0$인 두 수 $x,y$에 대하여, 가로가 $x$, 세로가 $x-y$인 직사각형에서 한 변이 $y$인 정사각형 두 개를 겹치지 않게 잘라낸다. 남은 부분의 넓이를 인수분해한 식은? [5점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q19-math-parity.svg\">",
     "choices": [
       "$(x-y)(x+2y)$",
       "$(x+y)(x+2y)$",
@@ -1127,7 +1128,7 @@ window.questionBank = [
       "replacementReason": "original q19 geometric square arrangement not visually retrievable; preserve factored-area core with new self-contained diagram and constraints",
       "replacementStage": "CREATE"
     },
-    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q19-problem.svg",
+    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q19-math-parity.svg",
     "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q19-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 파란색과 주황색으로 나눈 남은 직사각형 조각을 색을 맞춰 재배치한다.",
     "solutionImageCaption": "파란 조각과 주황 조각을 옮겨 붙이면 가로 x+y, 세로 x−2y인 직사각형이 된다. 남은 넓이의 인수분해는 (x+y)(x−2y)이다. 정답은 ④이다.",
@@ -1198,7 +1199,7 @@ window.questionBank = [
     "provenance": "ALIVE_REPLACEMENT",
     "sourceMode": "ALIVE_REPLACEMENT",
     "score": 6,
-    "content": "[서술형 1]<br>수직선 위의 점 $A$는 수 $2$에 대응한다. 넓이가 $8$인 정사각형의 한 변의 길이만큼 $A$에서 오른쪽으로 이동한 점을 $P$, 왼쪽으로 이동한 점을 $Q$라 한다. $P,Q$에 대응되는 수가 각각 $a,b$일 때, $\\dfrac ba$의 값을 구하시오. [6점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q21-problem.svg\">",
+    "content": "[서술형 1]<br>수직선 위의 점 $A$는 수 $2$에 대응한다. 넓이가 $8$인 정사각형의 한 변의 길이만큼 $A$에서 오른쪽으로 이동한 점을 $P$, 왼쪽으로 이동한 점을 $Q$라 한다. $P,Q$에 대응되는 수가 각각 $a,b$일 때, $\\dfrac ba$의 값을 구하시오. [6점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q21-problem-readable-v2.svg\">",
     "choices": [],
     "answer": "$2\\sqrt2-3$",
     "solution": "넓이가 $8$인 정사각형의 한 변은 $\\sqrt8=2\\sqrt2$이다.<br>$a=2+2\\sqrt2$, $b=2-2\\sqrt2$.<br>$\\dfrac ba=\\dfrac{2-2\\sqrt2}{2+2\\sqrt2}=\\dfrac{1-\\sqrt2}{1+\\sqrt2}$.<br>분모의 켤레식 $1-\\sqrt2$를 곱하면<br>$\\dfrac{1-\\sqrt2}{1+\\sqrt2}=\\dfrac{(1-\\sqrt2)^2}{(1+\\sqrt2)(1-\\sqrt2)}=\\dfrac{3-2\\sqrt2}{1-2}=2\\sqrt2-3$이다.",
@@ -1251,7 +1252,7 @@ window.questionBank = [
       "replacementReason": "original q21 P/Q ownership depends on inaccessible number-line PNG; complete replacement preserves irrational numberline construction and ratio task",
       "replacementStage": "CREATE"
     },
-    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q21-problem.svg",
+    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q21-problem-readable-v2.svg",
     "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q21-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 수직선에서 A=2를 중심으로 Q와 P까지 같은 길이 2√2의 span을 좌우에 표시한다.",
     "solutionImageCaption": "정사각형 한 변이 2√2이므로 b=2−2√2, a=2+2√2이다. 따라서 b/a=(1−√2)/(1+√2)를 켤레식으로 유리화한다. 답: 2√2−3.",
@@ -1264,7 +1265,7 @@ window.questionBank = [
     "provenance": "AUDITED_REPAIR",
     "sourceMode": "AUDITED_REPAIR",
     "score": 4,
-    "content": "[서술형 2]<br>세 모서리의 길이가 각각 $(\\sqrt6+\\sqrt8)$ cm, $\\sqrt6$ cm, $\\sqrt8$ cm인 직육면체의 (1) 부피 (2점), (2) 겉넓이 (2점)를 각각 구하시오. [4점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q22-problem.svg\">",
+    "content": "[서술형 2]<br>세 모서리의 길이가 각각 $(\\sqrt6+\\sqrt8)$ cm, $\\sqrt6$ cm, $\\sqrt8$ cm인 직육면체의 (1) 부피 (2점), (2) 겉넓이 (2점)를 각각 구하시오. [4점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q22-readable-v3.svg\">",
     "choices": [],
     "answer": "부피: $12\\sqrt2+8\\sqrt6$ cm³; 겉넓이: $28+24\\sqrt3$ cm²",
     "solution": "(1) $a=\\sqrt6+\\sqrt8$, $b=\\sqrt6$, $c=\\sqrt8$.<br>부피 $abc=(\\sqrt6+\\sqrt8)\\sqrt{48}=4\\sqrt3(\\sqrt6+2\\sqrt2)=12\\sqrt2+8\\sqrt6$ cm³.<br>(2) 겉넓이 $=2(ab+bc+ca)=2[\\sqrt6(\\sqrt6+\\sqrt8)+\\sqrt{48}+\\sqrt8(\\sqrt6+\\sqrt8)]$.<br>$=2[(6+4\\sqrt3)+4\\sqrt3+(8+4\\sqrt3)]=28+24\\sqrt3$ cm².",
@@ -1315,7 +1316,8 @@ window.questionBank = [
       "sourceGitPath": "스캔_인테이크_산출물/24_삼산중_1학기_중간_중3_수학/24_삼산중_1학기_중간_중3_수학.js",
       "sourceQid": "q22"
     },
-    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q22-problem.svg",
+    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q22-readable-v3.svg",
+    "imageSize": "full",
     "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q22-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 세 면을 파랑·주황·초록으로 구분한 직육면체. 앞 가로 AB는 √6+√8 cm, 왼쪽 위 깊이 EH는 √8 cm, 앞 오른쪽 높이 BF는 √6 cm이고 같은 방향 모서리에는 서로 다른 눈금 수가 표시되어 있다.",
     "solutionImageCaption": "(1) 부피: (√6+√8)×√6×√8=12√2+8√6 cm³. (2) 겉넓이: 2[(√6+√8)√6+√6√8+√8(√6+√8)]=28+24√3 cm².",

@@ -815,7 +815,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "두 점근선은 $x=2,\\ y=1$이므로 교점은 $Q(2,1)$이다.\n$P$의 $x$좌표를 $x_P$라 하자. $0\\lt x_P\\lt2$이면\n$x_P-2\\lt0$이고 $-2\\lt x_P-2\\lt0$이므로 $\\dfrac5{x_P-2}\\lt-\\dfrac52$\n$\\Rightarrow y_P=\\dfrac5{x_P-2}+1\\lt0$\n이므로 제1사분면의 점이 아니다. $x_P\\le0$일 때도 제1사분면이 아니므로 $x_P\\gt2$이다.\n\n$u=x_P-2\\gt0$이라 두면\n$P=\\left(2+u,\\,1+\\dfrac5u\\right)$이다.\n\n사각형 $PNQM$은 두 점근선에 수직으로 내린 선분으로 이루어진 직사각형이다.\n가로 길이 $=u$\n세로 길이 $=\\dfrac5u$\n이므로 둘레 $L$은\n$L=2\\left(u+\\dfrac5u\\right)$이다.\n\n양수 $u,\\dfrac5u$에 대해\n$u+\\dfrac5u\\ge2\\sqrt{u\\cdot\\dfrac5u}$\n$=2\\sqrt5$이다.\n등호는 $u=\\dfrac5u$, 즉 $u=\\sqrt5$일 때 성립한다.\n이때 $P=(2+\\sqrt5,1+\\sqrt5)$는 실제로 제1사분면에 있다.\n\n따라서 둘레의 최솟값은\n$L_{\\min}=2\\cdot2\\sqrt5=4\\sqrt5$이다.\n따라서 정답은 ④이다.",
     "points": 4.2,
-    "image": "assets/images/24_매산여고_2학기_기말_고1_유사/q15.svg",
+    "image": "assets/images/24_매산여고_2학기_기말_고1_유사/q15-engine-upgrade.svg",
     "imageSize": "full",
     "curriculum": "2015",
     "curriculumKey": "2015",

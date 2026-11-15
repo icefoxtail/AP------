@@ -918,7 +918,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "함수 $y=a\\sin(bx-c)+1$의 그래프의 일부가 다음 그림과 같을 때, 상수 $a$, $b$, $c$에 대하여 $abc$의 값은? [4.9점]<br>(단, $a<0$, $b>0$, $0<c<\\pi$이다.)",
+    "content": "함수 $y=a\\sin(bx-c)+1$의 그래프의 일부가 다음 그림과 같을 때, 상수 $a$, $b$, $c$에 대하여 $abc$의 값은? [4.9점]<br>(단, $a<0$, $b>0$, $0<c<\\pi$이며, 이 함수의 주기는 $\\pi$이다.)",
     "choices": [
       "$-\\dfrac{10}{3}\\pi$",
       "$-2\\pi$",
@@ -929,8 +929,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "그림에서 읽은 값은 다음과 같다. 그래프의 최댓값은 $3$, 최솟값은 $-1$이고 주기는 $\\pi$이다. 그래프는 점 $(0,2)$를 지나고, 최대인 점은 $y$축의 왼쪽에 있어 $x=0$ 근처에서 그래프는 감소한다.\n\n(i) 진폭은 $\\dfrac{3-(-1)}{2}=2$이고 중심선은 $y=1$이다. $a<0$이므로 $a=-2$이다.\n\n(ii) 주기가 $\\pi$이므로 $\\dfrac{2\\pi}{b}=\\pi$에서 $b=2$이다.\n\n(iii) $y=-2\\sin(2x-c)+1$이 점 $(0,2)$를 지나므로\n$2=-2\\sin(-c)+1=2\\sin c+1$이고 $\\sin c=\\dfrac12$이다.\n$0<c<\\pi$이므로 $c=\\dfrac{\\pi}{6}$ 또는 $c=\\dfrac{5\\pi}{6}$이다.\n\n두 값 중 그림과 맞는 것을 고른다. 최댓값 $3$을 갖는 점은 $-2\\sin(2x-c)+1=3$, 즉 $\\sin(2x-c)=-1$일 때이다.\n$c=\\dfrac{\\pi}{6}$이면 $2x-\\dfrac{\\pi}{6}=-\\dfrac{\\pi}{2}$에서 $x=-\\dfrac{\\pi}{6}$이다. 최대인 점이 $y$축의 왼쪽에 있으므로 $x=0$ 근처에서 그래프는 감소하여 그림과 같다.\n$c=\\dfrac{5\\pi}{6}$이면 $2x-\\dfrac{5\\pi}{6}=-\\dfrac{\\pi}{2}$에서 $x=\\dfrac{\\pi}{6}$이다. 최대인 점이 $y$축의 오른쪽에 있으므로 $x=0$ 근처에서 그래프가 증가하여 그림과 다르다.\n따라서 $c=\\dfrac{\\pi}{6}$이다.\n\n(iv) $abc=(-2)\\times2\\times\\dfrac{\\pi}{6}=-\\dfrac{2}{3}\\pi$이다.\n정답은 ④이다.",
     "points": 4.9,
-    "image": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q17.svg",
-    "imageAlt": "함수 y=a sin(bx-c)+1의 그래프의 일부이다. 최댓값은 3, 최솟값은 -1, 주기는 π이고 점 (0, 2)를 지나며 이 점에서 그래프는 감소한다.",
+    "image": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q17-engine-upgrade.svg",
+    "imageAlt": "사인함수의 그래프",
     "imageSize": "full",
     "solutionImage": "assets/images/26_제일고_1학기_중간_고2_대수_유사/q17-solution.svg",
     "solutionImageAlt": "y=a sin(bx-c)+1의 그래프이다. 최댓값 3, 최솟값 -1, 주기 π이고 점 (0, 2)를 지나며 이 점에서 감소한다.",

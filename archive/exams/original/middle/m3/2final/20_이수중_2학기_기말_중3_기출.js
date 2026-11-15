@@ -848,7 +848,8 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "image": "assets/images/20_이수중_2학기_기말_중3_기출/q14.svg",
+    "image": "assets/images/20_이수중_2학기_기말_중3_기출/q14-audit-rework.svg",
+    "imageSize": "full",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "questionType": "객관식",

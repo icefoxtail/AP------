@@ -630,7 +630,7 @@ window.questionBank = [
       "RPM_CANDIDATE"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 수직선 위의 두 점 $\\mathrm{A}(1)$과 $\\mathrm{B}(2)$에 대하여 $\\overline{\\mathrm{AB}}$를 한 변으로 하는 정사각형 $\\mathrm{ABCD}$가 있다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AP}}=\\overline{\\mathrm{AQ}}$인 두 점 $\\mathrm{P}(a)$와 $\\mathrm{Q}(b)$에 대하여 $a+b$의 값은? (4점)<br><img src=\"assets/images/22_신흥중_1학기_중간_중3_수학/q12_problem_AUDITED_SCHEMATIC.svg\">",
+    "content": "다음 그림과 같이 수직선 위의 두 점 $\\mathrm{A}(1)$과 $\\mathrm{B}(2)$에 대하여 $\\overline{\\mathrm{AB}}$를 한 변으로 하는 정사각형 $\\mathrm{ABCD}$가 있다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AP}}=\\overline{\\mathrm{AQ}}$인 두 점 $\\mathrm{P}(a)$와 $\\mathrm{Q}(b)$에 대하여 $a+b$의 값은? (4점)<br><img src=\"assets/images/22_신흥중_1학기_중간_중3_수학/q12-readable-v3.svg\">",
     "choices": [
       "$-\\sqrt{2}$",
       "$0$",
@@ -656,7 +656,7 @@ window.questionBank = [
       "sourceJsBlob": "4d726cb2f2cf2b245e909cc8c2845c928e7f803f",
       "sourcePngGitBlob": "3af23cf240f9f909464877e153d0d25732f9c52f",
       "originalContent": "다음 그림과 같이 수직선 위의 두 점 $\\mathrm{A}(1)$과 $\\mathrm{B}(2)$에 대하여 $\\overline{\\mathrm{AB}}$를 한 변으로 하는 정사각형 $\\mathrm{ABCD}$가 있다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AP}}=\\overline{\\mathrm{AQ}}$인 두 점 $\\mathrm{P}(a)$와 $\\mathrm{Q}(b)$에 대하여 $a+b$의 값은? (4점)<br><img src=\"assets/images/22_신흥중_1학기_중간_중3_수학/q12.png\">",
-      "repairedContent": "다음 그림과 같이 수직선 위의 두 점 $\\mathrm{A}(1)$과 $\\mathrm{B}(2)$에 대하여 $\\overline{\\mathrm{AB}}$를 한 변으로 하는 정사각형 $\\mathrm{ABCD}$가 있다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AP}}=\\overline{\\mathrm{AQ}}$인 두 점 $\\mathrm{P}(a)$와 $\\mathrm{Q}(b)$에 대하여 $a+b$의 값은? (4점)<br><img src=\"assets/images/22_신흥중_1학기_중간_중3_수학/q12_problem_AUDITED_SCHEMATIC.svg\">",
+      "repairedContent": "다음 그림과 같이 수직선 위의 두 점 $\\mathrm{A}(1)$과 $\\mathrm{B}(2)$에 대하여 $\\overline{\\mathrm{AB}}$를 한 변으로 하는 정사각형 $\\mathrm{ABCD}$가 있다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AP}}=\\overline{\\mathrm{AQ}}$인 두 점 $\\mathrm{P}(a)$와 $\\mathrm{Q}(b)$에 대하여 $a+b$의 값은? (4점)<br><img src=\"assets/images/22_신흥중_1학기_중간_중3_수학/q12-readable-v3.svg\">",
       "repairReason": "Missing published original PNG at referenced target-relative asset path. An algebraically faithful student-view problem SVG was constructed from already visual-audited source qid facts. The printed source PNG Git blob remains unchanged.",
       "affectedFields": [
         "content",
@@ -671,7 +671,7 @@ window.questionBank = [
       "originalImageFrozen": true,
       "previousSolution": "AB=2-1=1이므로 정사각형 대각선 AC=√(1²+1²)=√2이다.<br>A(1)에서 좌우 √2만큼 떨어진 수직선 두 교점의 좌표는 1+√2, 1-√2이다.<br>따라서 a+b=(1+√2)+(1-√2)=2, 정답 ④.<br>q12_solution.svg는 이 사실을 나타내는 실제 렌더 확인된 보조 그림이다. 원본 q12 PNG와의 시각 대조는 별도.",
       "replacementAssets": {
-        "problem": "assets/images/22_신흥중_1학기_중간_중3_수학/q12_problem_AUDITED_SCHEMATIC.svg",
+        "problem": "assets/images/22_신흥중_1학기_중간_중3_수학/q12-readable-v3.svg",
         "solution": "assets/images/22_신흥중_1학기_중간_중3_수학/q12_solution_SOURCE_PARITY_REPAIRED_20261013.svg"
       }
     },
@@ -1034,7 +1034,7 @@ window.questionBank = [
       "RPM_CANDIDATE"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 넓이가 각각 $5\\text{ cm}^2$, $45\\text{ cm}^2$, $125\\text{ cm}^2$인 세 정사각형을 이어 붙여서 새로운 도형을 만들었다. 이 도형의 둘레의 길이를 구하면? (5점)<br><img src=\"assets/images/22_신흥중_1학기_중간_중3_수학/q19_problem_AUDITED_SCHEMATIC.svg\">",
+    "content": "다음 그림과 같이 넓이가 각각 $5\\text{ cm}^2$, $45\\text{ cm}^2$, $125\\text{ cm}^2$인 세 정사각형을 이어 붙여서 새로운 도형을 만들었다. 이 도형의 둘레의 길이를 구하면? (5점)<br><img src=\"assets/images/22_신흥중_1학기_중간_중3_수학/q19-display-v2-figure-only.svg\">",
     "choices": [
       "$26\\sqrt{5}\\text{ cm}$",
       "$28\\sqrt{5}\\text{ cm}$",

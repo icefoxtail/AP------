@@ -1,0 +1,329 @@
+{
+  "sourcePath": "archive/exams/original/high/h1/1mid/22_순천여고_1학기_중간_고1_기출.js",
+  "questionId": 18,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "sourceQuote": "직각삼각형 ABC가 있다. 변 AB 위의 한 점 P에서 변 BC에 내린 수선의 발을 Q",
+        "caption": "직각삼각형과 점 P에서 만든 사각형",
+        "accessibilityDescription": "직각삼각형 ABC와 선분 AB 위의 점 P, 수선의 발 Q, 평행선의 교점 R.",
+        "sourceConditions": [
+          {
+            "id": "S1",
+            "condition": "∠A=90°, ∠B=60°, AB=5",
+            "mappedTo": [
+              "mathPlan.nodes:A",
+              "mathPlan.nodes:B",
+              "mathPlan.nodes:C",
+              "planeMarks.dimensions",
+              "rightAngles",
+              "planeMarks.angles"
+            ]
+          },
+          {
+            "id": "S2",
+            "condition": "P is an interior point of AB, Q is the perpendicular foot to BC, and PR is parallel to BC meeting AC at R",
+            "mappedTo": [
+              "mathPlan.nodes:P",
+              "mathPlan.nodes:Q",
+              "mathPlan.nodes:linePR",
+              "mathPlan.nodes:R",
+              "displaySegments",
+              "planeMarks.parallels"
+            ]
+          }
+        ],
+        "newVisualInformation": [
+          "P, Q, R and the quadrilateral are clearly attached to the named triangle."
+        ],
+        "assetPath": "archive/assets/images/22_순천여고_1학기_중간_고1_기출/q18-source-clean.svg",
+        "realization": {
+          "recipeId": "PLANE_FIGURE_v1",
+          "unit": "source-length",
+          "reflectionEquivalent": false
+        },
+        "coordinateCanvas": {
+          "width": 700,
+          "height": 500
+        },
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "rational",
+                    "numerator": "5",
+                    "denominator": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "mul",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "numerator": "5",
+                        "denominator": "2"
+                      },
+                      {
+                        "kind": "expression",
+                        "op": "sqrt",
+                        "args": [
+                          {
+                            "kind": "integer",
+                            "value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "B",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "C",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "10"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "MIDPOINT",
+              "inputs": [
+                "A",
+                "B"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineBC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "B",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "Q",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "P",
+                "lineBC"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "lineAC",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "A",
+                "C"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "linePR",
+              "op": "PARALLEL_THROUGH",
+              "inputs": [
+                "P",
+                "lineBC"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "R",
+              "op": "LINE_INTERSECTION",
+              "inputs": [
+                "linePR",
+                "lineAC"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "A",
+          "B",
+          "C",
+          "P",
+          "Q",
+          "R"
+        ],
+        "displaySegments": [
+          {
+            "id": "sAB",
+            "refs": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "sBC",
+            "refs": [
+              "B",
+              "C"
+            ]
+          },
+          {
+            "id": "sCA",
+            "refs": [
+              "C",
+              "A"
+            ]
+          },
+          {
+            "id": "sPQ",
+            "refs": [
+              "P",
+              "Q"
+            ]
+          },
+          {
+            "id": "sQC",
+            "refs": [
+              "Q",
+              "C"
+            ]
+          },
+          {
+            "id": "sCR",
+            "refs": [
+              "C",
+              "R"
+            ]
+          },
+          {
+            "id": "sRP",
+            "refs": [
+              "R",
+              "P"
+            ]
+          }
+        ],
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "aB",
+              "refs": [
+                "C",
+                "B",
+                "A"
+              ],
+              "value": 60,
+              "label": "60",
+              "style": "SECTOR",
+              "arcs": 1,
+              "factRole": "GIVEN"
+            }
+          ],
+          "parallels": [
+            {
+              "id": "parPRBC",
+              "count": 1,
+              "segments": [
+                "sRP",
+                "sBC"
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "id": "dAB",
+              "from": "A",
+              "to": "B",
+              "label": "5",
+              "style": "INLINE",
+              "value": 5,
+              "factRole": "GIVEN",
+              "side": "LEFT"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "raA",
+            "refs": [
+              "B",
+              "A",
+              "C"
+            ],
+            "factRole": "GIVEN"
+          },
+          {
+            "id": "raQ",
+            "refs": [
+              "P",
+              "Q",
+              "B"
+            ],
+            "factRole": "DERIVED_INTERMEDIATE"
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 36,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

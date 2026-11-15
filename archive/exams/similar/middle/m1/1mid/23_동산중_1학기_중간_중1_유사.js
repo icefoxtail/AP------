@@ -451,8 +451,7 @@ window.questionBank = [
       "결합법칙"
     ],
     "wide": false,
-    "content": "다음 계산 과정에서 ①~⑤에 들어갈 것으로 옳지 않은 것은?",
-    "image": "assets/images/23_동산중_1학기_중간_중1_유사/q12.svg",
+    "content": "다음 계산 과정에서 ①~⑤에 들어갈 것으로 옳지 않은 것은?\n\n<div class=\"note-box\">\n$$\n\\begin{aligned}\n&(-25)\\times(+7)\\times(-4)\\\\\n={}&(-25)\\times(-4)\\times(+7) && \\cdots\\ \\text{㉠}\\\\\n={}&\\{(-25)\\times(-4)\\}\\times(+7) && \\cdots\\ \\text{㉡}\\\\\n={}&\\text{㉢}\\times(+7)\\\\\n={}&\\text{㉣}\n\\end{aligned}\n$$\n</div>",
     "choices": [
       "㉠: 곱셈의 교환법칙",
       "㉡: 곱셈의 결합법칙",
@@ -571,7 +570,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "오른쪽 그림과 같은 전개도를 접어 정육면체를 만들려고 한다. 마주 보는 면에 적힌 두 수가 서로 역수일 때, $(a+c)\\div b$의 값을 구하시오.",
-    "image": "assets/images/23_동산중_1학기_중간_중1_유사/q15.svg",
+    "image": "assets/images/23_동산중_1학기_중간_중1_유사/q15-quality-v4.svg",
     "solutionImage": "assets/images/23_동산중_1학기_중간_중1_유사/q15-solution.svg",
     "solutionImageAlt": "정육면체 전개도에서 같은 표시가 된 세 쌍의 면이 서로 마주 본다.",
     "solutionImageCaption": "마주 보는 면의 역수 관계로 a, c, b를 구하고 (a+c)÷b를 계산한다.",
@@ -879,8 +878,7 @@ window.questionBank = [
       "계산 순서"
     ],
     "wide": true,
-    "content": "서술형3. 다음 식의 계산 순서를 차례로 나열하고 계산하시오. (단, 풀이 과정을 자세히 쓰시오.)",
-    "image": "assets/images/23_동산중_1학기_중간_중1_유사/q23.svg",
+    "content": "서술형3. 다음 식의 계산 순서를 차례로 나열하고 계산하시오. (단, 풀이 과정을 자세히 쓰시오.)\n\n<div style=\"font-size:1.28em\">$$\n\\underbrace{5-\\underbrace{\\bigl\\{\\underbrace{3-\\underbrace{6\\div\\underbrace{\\left(-\\frac{3}{2}\\right)^2}_{\\displaystyle\\text{ㄹ}}}_{\\displaystyle\\text{ㄷ}}}_{\\displaystyle\\text{ㄴ}}\\bigr\\}\\times(-2)}_{\\displaystyle\\text{ㅁ}}}_{\\displaystyle\\text{ㄱ}}\n$$</div>",
     "choices": [],
     "answer": "ㄹ → ㄷ → ㄴ → ㅁ → ㄱ, 17/3",
     "points": 7.0,

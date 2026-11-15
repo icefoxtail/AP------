@@ -1,0 +1,445 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사.js",
+  "questionId": 15,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "L0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "8"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N0",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "M1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "6"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "T",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "N0",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "115"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "S",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "N0",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "10"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "295"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "U",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "T",
+                "N0"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "6"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "180"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "l",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "L0",
+                "L1"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "m",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "M0",
+                "M1"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "n",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "T",
+                "N0"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "L0",
+          "T0",
+          "L1",
+          "M0",
+          "N0",
+          "M1",
+          "R",
+          "T",
+          "S",
+          "U"
+        ],
+        "displaySegments": [
+          {
+            "id": "sl",
+            "refs": [
+              "L0",
+              "L1"
+            ]
+          },
+          {
+            "id": "sm",
+            "refs": [
+              "M0",
+              "M1"
+            ]
+          },
+          {
+            "id": "sn",
+            "refs": [
+              "U",
+              "S"
+            ]
+          }
+        ],
+        "displayLines": [],
+        "displayCircles": [],
+        "axisTickValues": {
+          "x": [],
+          "y": []
+        },
+        "coordinateCanvas": {
+          "width": 720,
+          "height": 560
+        },
+        "caption": "두 직선과 횡단선",
+        "accessibilityDescription": "두 평행한 직선과 한 횡단선이 만드는 각",
+        "planeMarks": {
+          "expressionLabels": [
+            {
+              "id": "lLabel",
+              "ownerSegment": "sl",
+              "text": "l",
+              "labelAt": "END",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "mLabel",
+              "ownerSegment": "sm",
+              "text": "m",
+              "labelAt": "END",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "nLabel",
+              "ownerSegment": "sn",
+              "text": "n",
+              "labelAt": "END",
+              "factRole": "GIVEN"
+            }
+          ],
+          "angles": [
+            {
+              "id": "a",
+              "refs": [
+                "L0",
+                "T",
+                "U"
+              ],
+              "label": "a",
+              "factRole": "GIVEN",
+              "style": "ARC"
+            },
+            {
+              "id": "b",
+              "refs": [
+                "U",
+                "T",
+                "L1"
+              ],
+              "label": "b",
+              "factRole": "GIVEN",
+              "style": "ARC"
+            },
+            {
+              "id": "c",
+              "refs": [
+                "L0",
+                "T",
+                "N0"
+              ],
+              "factRole": "GIVEN",
+              "noLabel": true,
+              "style": "ARC"
+            },
+            {
+              "id": "d",
+              "refs": [
+                "N0",
+                "T",
+                "L1"
+              ],
+              "label": "d",
+              "factRole": "GIVEN",
+              "style": "ARC"
+            },
+            {
+              "id": "e",
+              "refs": [
+                "M0",
+                "N0",
+                "T"
+              ],
+              "label": "e",
+              "factRole": "GIVEN",
+              "style": "ARC"
+            },
+            {
+              "id": "f",
+              "refs": [
+                "T",
+                "N0",
+                "M1"
+              ],
+              "label": "f",
+              "factRole": "GIVEN",
+              "style": "ARC"
+            },
+            {
+              "id": "g",
+              "refs": [
+                "M0",
+                "N0",
+                "S"
+              ],
+              "label": "g",
+              "factRole": "GIVEN",
+              "style": "ARC"
+            },
+            {
+              "id": "h",
+              "refs": [
+                "S",
+                "N0",
+                "M1"
+              ],
+              "value": 65,
+              "label": "65",
+              "factRole": "GIVEN",
+              "style": "ARC"
+            }
+          ],
+          "textLabels": [
+            {
+              "id": "c-name",
+              "at": [
+                -4.9,
+                8
+              ],
+              "text": "c",
+              "labelKind": "MATH",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "hiddenPointNames": [
+          "L0",
+          "T0",
+          "L1",
+          "M0",
+          "N0",
+          "M1",
+          "R",
+          "T",
+          "S",
+          "U"
+        ],
+        "hiddenPointStyle": "NONE"
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.56,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}
