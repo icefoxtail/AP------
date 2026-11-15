@@ -44,7 +44,8 @@ import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
-import { isSourceSubsetRebind } from "./source-subset-preservation.mjs";
+import { isExplicitSourceSubsetRebind } from "./source-subset-preservation.mjs";
+import { isOriginalFinalQaRendererPreservation, isExplicitOriginalRendererRequest } from "./original-finalqa-renderer-preservation.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
 const require = createRequire(import.meta.url);
@@ -166,10 +167,12 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     if (schema === SCHEMA.V2 && doc.approval?.sourceRebind !== undefined) {
       const audit = doc.approval.type === "META_PIPELINE_AUDIT" &&
         doc.approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
-      const partial = doc.scope === "PARTIAL_UIDS", subset = isSourceSubsetRebind(doc.approval.sourceRebind);
+      const partial = doc.scope === "PARTIAL_UIDS", subset = isExplicitSourceSubsetRebind(doc.approval.sourceRebind);
+      const originalRenderer = isOriginalFinalQaRendererPreservation(doc.approval.sourceRebind);
       if ((!audit && doc.approval.type !== "FINAL_QA") || !doc.approval.sourceRebind ||
           typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
-          (!audit && doc.approval.sourceRebind.schemaVersion !== undefined && !subset) || subset && !partial ||
+          (!audit && doc.approval.sourceRebind.schemaVersion !== undefined && !subset && !originalRenderer) || (subset || originalRenderer) && !partial ||
+          originalRenderer && !isExplicitOriginalRendererRequest(doc) ||
           doc.approval.metadataReviewed !== true || doc.registryChanges?.length ||
           (doc.scope !== undefined && !partial) ||
           !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(doc.requestId || "") ||

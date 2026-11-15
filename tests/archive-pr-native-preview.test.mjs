@@ -12,7 +12,7 @@ import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, prRegistrationProofNeeded,
 } from '../tools/ci/archive-pr-registration-proof.mjs';
 
 import { preparePrRegistration } from '../tools/ci/archive-pr-registration-prepare.mjs';
-import { SOURCE_SUBSET_SCHEMA, sourceSubsetEvidencePath } from '../archive/tools/meta-foundation/source-subset-preservation.mjs';
+import { SOURCE_SUBSET_SCHEMA, sourceSubsetEvidencePath, FULL_SOURCE_SUBSET_SCHEMA, fullSourceSubsetEvidencePath } from '../archive/tools/meta-foundation/source-subset-preservation.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = value => JSON.stringify(value, null, 2) + '\n';
@@ -107,13 +107,14 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
     Object.assign(request.items[0], { before: {}, after: {} });
   }
   if (subsetPreservation) {
-    const proofPath = sourceSubsetEvidencePath(request.requestId);
+    const proofPath = subsetPreservation === 'full' ? fullSourceSubsetEvidencePath(request.requestId) : sourceSubsetEvidencePath(request.requestId);
     // This fixture tests dispatch only; the registrar test suite authenticates
     // the complete strict-subset proof and the original approved inventory.
     const bytes = json({ schemaVersion: 'archive-native-source-subset-evidence-v1', dispatchFixture: true });
     write(proofPath, bytes);
     const ref = { path: proofPath, sha256: sha(bytes) };
-    request.approval.sourceRebind = { schemaVersion: SOURCE_SUBSET_SCHEMA, priorReceiptRef: evidenceRef, subsetEvidenceRef: ref };
+    request.approval.sourceRebind = { schemaVersion: subsetPreservation === 'full' ? FULL_SOURCE_SUBSET_SCHEMA : SOURCE_SUBSET_SCHEMA,
+      priorReceiptRef: evidenceRef, subsetEvidenceRef: ref };
     request.approval.evidenceRefs.push(ref);request.items[0].evidenceRefs.push(ref);
   }
   if (basicPreservation) {
@@ -125,7 +126,8 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
   mutateRequest?.(request);
   write(REQUEST, json(request));
   if (pairedDifficulty) write(DIFFICULTY_REQUEST, json(difficultyRequest));
-  git('add', '--', REQUEST, ...(pairedDifficulty ? [DIFFICULTY_REQUEST] : []), ...(subsetPreservation ? [sourceSubsetEvidencePath(request.requestId)] : [])); git('commit', '-qm', 'own request only');
+  git('add', '--', REQUEST, ...(pairedDifficulty ? [DIFFICULTY_REQUEST] : []), ...(subsetPreservation ? [
+    subsetPreservation === 'full' ? fullSourceSubsetEvidencePath(request.requestId) : sourceSubsetEvidencePath(request.requestId)] : [])); git('commit', '-qm', 'own request only');
   const headSha = git('rev-parse', 'HEAD'), repo = 'owner/repository';
   const event = { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
     number: 17, base: { sha: baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } },
@@ -827,6 +829,22 @@ test('strict subset selection binds actual evidence bytes to the fixed Git head'
   assert.equal(f.selected().length,1);f.write(proofPath,'unreviewed working-copy proof');
   assert.throws(()=>f.selected(),/EVIDENCE_DRIFT/);
   assert.equal(f.calls.filter(c=>c.program!=='git').length,0);
+});
+
+test('full-source subset keeps its distinct typed proof through changed, pending and inherited dispatch',t=>{
+  const f=fixture(t,{partial:true,subsetPreservation:'full',otherOwner:false}),selected=f.selected();
+  assert.equal(selected[0].kind,'native-approval-preservation');assert.equal(selected[0].questionCount,1);assert.equal(selected[0].sourceQuestionCount,24);
+  assert(selected[0].evidence.some(ref=>ref.path===fullSourceSubsetEvidencePath(f.request.requestId)));
+  assert.deepEqual(selectPendingNativeRequests({root:f.root,headSha:f.headSha}),selected);
+  const options=laterCodePr(f),inherited=selectNativeRequests({root:f.root,baseSha:options.event.pull_request.base.sha,headSha:options.expectedSha});
+  assert.equal(inherited[0].kind,'native-approval-preservation');assert(inherited[0].inheritedPreservation);
+  f.hook['dry-run']=()=>{throw Error('ORIGINAL_FULL_REUSE_PROOF_NOT_VERIFIED');};
+  assert.throws(()=>producePrRegistrationProof(options),/ORIGINAL_FULL_REUSE_PROOF_NOT_VERIFIED/);
+  for(const mutateRequest of [r=>{r.approval.sourceRebind.schemaVersion=SOURCE_SUBSET_SCHEMA;},r=>{delete r.scope;},
+    r=>{r.items[0].after={difficultyBucket:4};},r=>{r.items[0].sourceReview={};}]){
+    const bad=fixture(t,{partial:true,subsetPreservation:'full',mutateRequest});
+    assert.throws(()=>bad.selected(),/PRESERVATION_SCOPE/);
+  }
 });
 
 test('code-only PR preserves an exact inherited partial FINAL_QA approval through the official projection and Consumer',t=>{

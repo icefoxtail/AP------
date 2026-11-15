@@ -6,7 +6,7 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {hasReviewedReceiptLineage} from './reviewed-source-binding.mjs';
-import {hasSourceSubsetMarker,isSourceSubsetRebind,validateSourceSubsetEvidence,preservedSourceEvidence,priorSourceIdentityContext} from './source-subset-preservation.mjs';
+import {hasSourceSubsetMarker,isExplicitSourceSubsetRebind,isFullSourceSubsetRebind,validateExplicitSourceSubsetEvidence,preservedSourceEvidence,priorSourceIdentityContext,replayOriginalFullFinalQa} from './source-subset-preservation.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a-f0-9]{64}$/;
@@ -52,12 +52,14 @@ export function isPartialNativeSourcePreservation(receipt,root) {
       .every(row=>Array.isArray(row.approvalEvidence)&&row.approvalEvidence.includes(relative)))continue;
     try {
       const prior=JSON.parse(readBytes(root,relative));
-      if(prior.scope!=='PARTIAL_UIDS'||prior.approval?.type!=='FINAL_QA'||relative!==receiptPath(prior.requestId)||
+      const full=prior.scope===undefined,priorCount=full?prior.totalQuestions:prior.partialUidCount,
+        priorDenominator=full?prior.totalQuestions:prior.expectedQuestionCount;
+      if((!full&&prior.scope!=='PARTIAL_UIDS')||prior.approval?.type!=='FINAL_QA'||relative!==receiptPath(prior.requestId)||
         prior.examUid!==receipt.examUid||prior.sourceArchiveFile!==receipt.sourceArchiveFile||
-        prior.expectedQuestionCount!==receipt.expectedQuestionCount||prior.partialUidCount<receipt.partialUidCount||
+        priorDenominator!==receipt.expectedQuestionCount||priorCount<receipt.partialUidCount||
         prior.sourceBlobSha1===receipt.sourceBlobSha1)continue;
       const uid=receipt.appliedRecords[0].questionUid,ordinal=receipt.appliedRecords[0].sourceOrdinal,
-        now=selected(receipt,uid,ordinal),old=selected(prior,uid,ordinal);
+        now=selected(receipt,uid,ordinal),old=selected(prior,uid,ordinal,{full});
       if([...now.records.keys()].some(id=>!old.records.has(id)))continue;
       if([...now.records].every(([id,row])=>{
         const before=old.records.get(id),evidenceAfter=[...new Set([...before.approvalEvidence,receiptPath(receipt.requestId)])];
@@ -97,8 +99,9 @@ export function hasNativeSourcePreservationClaim({root,current,runtimeRecord,nat
     if(!nativePath(relative)||relative===latest||!runtimeRecord.approvalEvidence.includes(relative))continue;
     try {
       const prior=JSON.parse(readBytes(root,relative));
-      if(prior.scope!=='PARTIAL_UIDS')continue;
-      const old=selected(prior,current.questionUid,current.sourceOrdinal);
+      const full=prior.scope===undefined;
+      if(!full&&prior.scope!=='PARTIAL_UIDS')continue;
+      const old=selected(prior,current.questionUid,current.sourceOrdinal,{full});
       const evidenceAfter=[...new Set([...old.row.approvalEvidence,latest])];
       if(relative===receiptPath(prior.requestId)&&same(unchanged(current),unchanged(old.row))&&
         same(unchanged(runtimeRecord),unchanged(old.runtime))&&same(current.approvalEvidence,evidenceAfter)&&
@@ -117,21 +120,24 @@ function unique(rows,label) {
   }
   return result;
 }
-function selected(receipt,uid,ordinal) {
+function selected(receipt,uid,ordinal,{full=false}={}) {
   const records=unique(receipt.appliedRecords,'metadata'),identities=unique(receipt.appliedIdentityRecords,'identity'),runtimes=unique(receipt.runtimeRecords,'runtime');
+  const count=full?receipt.totalQuestions:receipt.partialUidCount,denominator=full?receipt.totalQuestions:receipt.expectedQuestionCount;
   if(receipt.schemaVersion!=='archive-reviewed-exam-meta-registration-v2'||receipt.metadataRegistrationStatus!=='REGISTERED'||
-    receipt.scope!=='PARTIAL_UIDS'||receipt.registrationMode!==undefined||receipt.approval?.type!=='FINAL_QA'||
+    (full?['scope','partialUidCount','expectedQuestionCount'].some(key=>Object.hasOwn(receipt,key)):receipt.scope!=='PARTIAL_UIDS')||
+    receipt.registrationMode!==undefined||receipt.approval?.type!=='FINAL_QA'||
     receipt.approval.metadataReviewed!==true||!String(receipt.approval.approvedBy||'').trim()||
     !SHA256.test(receipt.requestSha256||'')||!SHA1.test(receipt.sourceBlobSha1||'')||!SHA256.test(receipt.sourceRawSha256||'')||
     typeof receipt.sourceArchiveFile!=='string'||!receipt.sourceArchiveFile.endsWith('.js')||!String(receipt.examUid||'').trim()||
-    !Number.isInteger(receipt.expectedQuestionCount)||!Number.isInteger(receipt.partialUidCount)||receipt.partialUidCount<1||
-    receipt.partialUidCount>receipt.expectedQuestionCount||receipt.totalQuestions!==receipt.partialUidCount||
-    [records,identities,runtimes].some(map=>map.size!==receipt.partialUidCount||!same([...map.keys()].sort(),[...records.keys()].sort()))||
+    !Number.isInteger(denominator)||!Number.isInteger(count)||count<1||
+    count>denominator||receipt.totalQuestions!==count||
+    [records,identities,runtimes].some(map=>map.size!==count||!same([...map.keys()].sort(),[...records.keys()].sort()))||
+    full&&[...records.values()].some((row,i)=>row.sourceOrdinal!==i+1)||
     new Set([...records.values()].map(row=>row.sourceOrdinal)).size!==records.size)fail('exact partial FINAL_QA inventory required');
   const relative=receiptPath(receipt.requestId);
   for(const [id,row]of records) {
     const runtime=runtimes.get(id),identity=identities.get(id),revision=`meta-foundation:${row.metaFoundationPackId}@${row.metaFoundationPackVersion}:exam-final_qa-v2:${receipt.requestId}`;
-    if(!Number.isInteger(row.sourceOrdinal)||row.sourceOrdinal<1||row.sourceOrdinal>receipt.expectedQuestionCount||
+    if(!Number.isInteger(row.sourceOrdinal)||row.sourceOrdinal<1||row.sourceOrdinal>denominator||
       [row,runtime,identity].some(value=>value.sourceArchiveFile!==receipt.sourceArchiveFile||value.sourceOrdinal!==row.sourceOrdinal)||
       row.metadataApprovalType!=='FINAL_QA'||runtime.metadataApprovalType!=='FINAL_QA'||
       row.metadataRevision!==revision||runtime.metadataRevision!==revision||
@@ -156,7 +162,7 @@ function gitSource(root,sourceBlob,rawSha,expectedCount) {
 const unchanged=row=>Object.fromEntries(Object.entries(row).filter(([key])=>!['metadataRevision','approvalEvidence'].includes(key)));
 const absentOrEmpty=value=>value===undefined||Array.isArray(value)&&value.length===0;
 
-export function nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,revalidateLeaf}) {
+export function nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,revalidateLeaf,registry}) {
   if(!isPartialNativeSourcePreservation(receipt,nativeSource.root))return null;
   const root=fs.realpathSync(nativeSource.root),runtime=nativeSource.runtimeRecord;
   if(!same(JSON.parse(readBytes(root,receiptPath(receipt.requestId))),receipt))fail('current receipt bytes differ from supplied receipt');
@@ -179,20 +185,22 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     if(seen.has(cursor.requestId)||seen.size>=64)fail('source-rebind cycle or depth exceeded');
     seen.add(cursor.requestId);evidence(root,cursor.approval.evidenceRefs);
     const spec=cursor.approval.sourceRebind,ref=spec?.priorReceiptRef;
-    const subset=isSourceSubsetRebind(spec);
+    const subset=isExplicitSourceSubsetRebind(spec),fullSubset=isFullSourceSubsetRebind(spec);
     if(!spec||!subset&&!same(Object.keys(spec).sort(),['priorReceiptRef'])||!nativePath(ref?.path)||!SHA256.test(ref.sha256||'')||
       !cursor.approval.evidenceRefs.some(item=>same(item,ref))||cursor.newMetadataApprovals!==0||
       cursor.preservedMetadataApprovals!==cursor.partialUidCount||!absentOrEmpty(cursor.registryChanges)||
       !absentOrEmpty(cursor.fingerprintRepairs)||!absentOrEmpty(cursor.nativeParentBindings))fail('exact source-only preservation required');
     const raw=readBytes(root,ref.path);
     if(sha(raw)!==ref.sha256)fail('prior receipt digest changed');
-    const prior=JSON.parse(raw),old=selected(prior,identity.questionUid,ordinal);
-    if(subset)validateSourceSubsetEvidence({root,current:cursor,prior,selected:[...state.records.values()]});
+    const prior=JSON.parse(raw);
+    if(subset)validateExplicitSourceSubsetEvidence({root,current:cursor,prior,selected:[...state.records.values()]});
+    const old=selected(prior,identity.questionUid,ordinal,{full:fullSubset});
+    const priorDenominator=fullSubset?prior.totalQuestions:prior.expectedQuestionCount;
     if(ref.path!==receiptPath(prior.requestId)||seen.has(prior.requestId)||prior.examUid!==cursor.examUid||
-      prior.sourceArchiveFile!==cursor.sourceArchiveFile||prior.expectedQuestionCount!==cursor.expectedQuestionCount||
+      prior.sourceArchiveFile!==cursor.sourceArchiveFile||priorDenominator!==cursor.expectedQuestionCount||
       (!subset&&prior.partialUidCount!==cursor.partialUidCount)||prior.sourceRawSha256===cursor.sourceRawSha256||
       (!subset&&!same([...old.records.keys()].sort(),[...state.records.keys()].sort())))fail('preserved ancestor scope or source binding changed');
-    const priorSource=gitSource(root,prior.sourceBlobSha1,prior.sourceRawSha256,prior.expectedQuestionCount);
+    const priorSource=gitSource(root,prior.sourceBlobSha1,prior.sourceRawSha256,priorDenominator);
     for(const [uid,row]of state.records) {
       const before=old.records.get(uid),beforeRuntime=old.runtimes.get(uid),nextRuntime=state.runtimes.get(uid);
       const approvalEvidence=preservedSourceEvidence(before.approvalEvidence,receiptPath(cursor.requestId),spec);
@@ -203,6 +211,7 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
         fail('selected whole question, approval or identity changed');
     }
     const historicalIdentity=subset?priorSourceIdentityContext(source,prior):{};
+    if(fullSubset)replayOriginalFullFinalQa({root,prior,priorReceiptRef:ref,nativeSource:source,registry,revalidateLeaf});
     cursor=prior;state=old;source={...source,...priorSource,...historicalIdentity,runtimeRecord:old.runtime};
   }
   evidence(root,cursor.approval.evidenceRefs);

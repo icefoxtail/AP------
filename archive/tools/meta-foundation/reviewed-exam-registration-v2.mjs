@@ -20,8 +20,10 @@ import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from 
 import { loadActiveMetaRegistry } from "./active-registry.mjs";
 import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
-import { isSourceSubsetRebind, validateSourceSubsetEvidence, preservedSourceEvidence, priorSourceIdentityContext } from "./source-subset-preservation.mjs";
+import { isExplicitSourceSubsetRebind, isFullSourceSubsetRebind, validateExplicitSourceSubsetEvidence, preservedSourceEvidence, priorSourceIdentityContext, replayOriginalFullFinalQa } from "./source-subset-preservation.mjs";
 import { nativeReviewReceipt } from "./auto-register-merged-source.mjs";
+import { isOriginalFinalQaRendererPreservation, loadOriginalFinalQaRendererPreservation, planOriginalRendererPreservedRow,
+  buildOriginalRendererBinding, assertOriginalRendererReceipt } from "./original-finalqa-renderer-preservation.mjs";
 
 const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
@@ -1949,11 +1951,12 @@ function loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, prio
   evidenceRefs([ref]);
   const prior = read(ref.path);
   const partial = req.scope === "PARTIAL_UIDS", selectedCount = partial ? req.items.length : rows.length;
-  const subset = isSourceSubsetRebind(spec), priorCount = subset ? prior.partialUidCount : selectedCount;
+  const subset = isExplicitSourceSubsetRebind(spec), fullSubset = isFullSourceSubsetRebind(spec);
+  const priorCount = fullSubset ? prior.totalQuestions : subset ? prior.partialUidCount : selectedCount;
   if (prior.schemaVersion !== "archive-reviewed-exam-meta-registration-v2" || prior.metadataRegistrationStatus !== "REGISTERED" ||
       prior.examUid !== req.examUid || prior.sourceArchiveFile !== source || prior.totalQuestions !== priorCount ||
       !Array.isArray(prior.appliedRecords) || prior.appliedRecords.length !== priorCount) fail("sourceRebind prior receipt does not match this exam");
-  const subsetProof = subset ? validateSourceSubsetEvidence({ root, prior, selected: req.items,
+  const subsetProof = subset ? validateExplicitSourceSubsetEvidence({ root, prior, selected: req.items,
     current: { ...req, sourceBlobSha1: req.expectedSourceBlobSha1, sourceRawSha256: digest(bytes) } }) : null;
   if (prior.sourceRawSha256 === digest(bytes)) fail("sourceRebind unnecessary: source bytes equal the prior receipt");
   const records = unique(prior.appliedRecords, "questionUid", "prior receipt UID");
@@ -1961,8 +1964,9 @@ function loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, prio
   if (partial) {
     // The legacy path preserves the exact prior subset. Only the separate typed
     // proof may select fewer already approved UIDs; neither path expands scope.
-    if (prior.scope !== "PARTIAL_UIDS" || prior.expectedQuestionCount !== rows.length ||
-        prior.partialUidCount !== priorCount || prior.approval?.type !== "FINAL_QA" ||
+    if ((fullSubset ? prior.scope !== undefined || prior.totalQuestions !== rows.length :
+        prior.scope !== "PARTIAL_UIDS" || prior.expectedQuestionCount !== rows.length || prior.partialUidCount !== priorCount) ||
+        prior.approval?.type !== "FINAL_QA" ||
         prior.approval.metadataReviewed !== true || !String(prior.approval.approvedBy || "").trim() ||
         !/^[a-f0-9]{64}$/.test(prior.requestSha256 || "") ||
         !Array.isArray(prior.appliedIdentityRecords) || prior.appliedIdentityRecords.length !== priorCount ||
@@ -1992,7 +1996,7 @@ function loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, prio
   const selectedRows = partial ? req.items.map(item => rows[item.sourceOrdinal - 1]) : rows;
   if (prior.requestId !== path.basename(ref.path, ".json") || selectedRows.some(r => !approved(r) || !(r.approvalEvidence || []).includes(ref.path)))
     fail("sourceRebind prior receipt is not the registration of the current approved rows");
-  return { receipt: prior, records, priorRuntime, subsetProof };
+  return { receipt: prior, records, priorRuntime, subsetProof, fullSubset };
 }
 
 export function verifyIdentityFingerprintConsumer(root, bindings, catalog) {
@@ -2139,6 +2143,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
   if (!Array.isArray(bank) || !Number.isInteger(req.expectedQuestionCount) || bank.length !== req.expectedQuestionCount || !bank.length) fail("source denominator mismatch");
   const auditPreservationRequested = isAuditPreservation(req.approval);
+  const originalRendererRequested = isOriginalFinalQaRendererPreservation(req.approval.sourceRebind);
   if (req.approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA && !auditPreservationRequested)
     fail("audit source rebind must retain META_PIPELINE_AUDIT approval type");
   const metaPipelineAudit = auditPreservationRequested ? null : validateMetaPipelineAudit({ root, approval: req.approval, source, sourceBytes: bytes, sourceBlobSha1: blob,
@@ -2212,11 +2217,19 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (previous.sourceArchiveFile !== source || previous.sourceBlobSha1 !== blob || previous.sourceRawSha256 !== digest(bytes))
         fail("partial source rebind receipt source binding drift");
     }
-    const subsetReplay = isSourceSubsetRebind(req.approval.sourceRebind) || isSourceSubsetRebind(previous.approval?.sourceRebind);
+    const subsetReplay = isExplicitSourceSubsetRebind(req.approval.sourceRebind) || isExplicitSourceSubsetRebind(previous.approval?.sourceRebind);
     if (subsetReplay) {
       if (!eq(previous.approval, req.approval)) fail("source subset replay approval binding changed");
-      validateSourceSubsetEvidence({ root, current: previous, prior: read(req.approval.sourceRebind.priorReceiptRef.path),
+      validateExplicitSourceSubsetEvidence({ root, current: previous, prior: read(req.approval.sourceRebind.priorReceiptRef.path),
         selected: previous.appliedRecords });
+    }
+    const originalRendererReplay = originalRendererRequested || isOriginalFinalQaRendererPreservation(previous.approval?.sourceRebind);
+    if (originalRendererReplay) {
+      const registry = loadActiveMetaRegistry(root);
+      const preserved = loadOriginalFinalQaRendererPreservation({ root, request: req, bytes, bank: JSON.parse(JSON.stringify(bank)), registry,
+        nativeSource: { root, identityMap: identity, identityByJoin: new Map(identity.records.map(row => [`${row.sourceArchiveFile}#${row.sourceOrdinal}`, row])) },
+        revalidateLeaf: context => nativeReviewReceipt({ source, registry, ...context }) });
+      assertOriginalRendererReceipt(preserved, previous);
     }
     if (partial && (previous.scope !== req.scope || previous.expectedQuestionCount !== req.expectedQuestionCount || previous.partialUidCount !== patches.size ||
         previous.totalQuestions !== patches.size || previous.appliedRecords.length !== patches.size ||
@@ -2345,17 +2358,19 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const found = allRuntime.filter(r => r.questionUid === record.questionUid);
       if (found.length !== 1 || !eq(found[0], record)) fail(`registered runtime drift: ${record.questionUid}`);
       const current = previous.appliedRecords.find(row => row.questionUid === record.questionUid);
-      if (subsetReplay) {
+      if (subsetReplay || originalRendererReplay) {
         preservedSourceRegistry ??= loadActiveMetaRegistry(root);
         const resolved = resolve(current, currentTables), ordinal = current.sourceOrdinal;
         const question = JSON.parse(JSON.stringify(bank[ordinal - 1]));
         const runtimeStatus = runtimeDocuments.find(doc => doc.records?.some(row => row.questionUid === current.questionUid))?.status;
         if (nativeReviewReceipt({ nativeSource: { root, bytes, blobSha1: blob, bank: JSON.parse(JSON.stringify(bank)),
             runtimeRecord: found[0], runtimeStatus, identityMap: identity,
+            runtimeStatusByPack: new Map(runtimeDocuments.map(doc => [doc.packId, doc.status])),
             identityByJoin: new Map(identity.records.map(row => [`${row.sourceArchiveFile}#${row.sourceOrdinal}`, row])) },
           question, previous: question, current, identity: ids.get(current.questionUid),
           source, ordinal, pt: resolved.pt, tpl: resolved.tpl, ownerPack: current.metaFoundationPackId, registry: preservedSourceRegistry }) !== receiptPath)
-          fail("source subset replay did not revalidate its preserved native approval");
+          fail(originalRendererReplay ? "original renderer replay did not revalidate its preserved native approval"
+            : "source subset replay did not revalidate its preserved native approval");
       }
       if (previous.approval?.type === "FINAL_QA" && previous.approval.sourceRebind &&
           hasNativeReviewedSourceClaim({ root, current, runtimeRecord: found[0] })) {
@@ -2430,7 +2445,12 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   // touching any metadata value. The prior receipt (SHA-bound) must equal the current metadata row for row.
   const auditPreservation = auditPreservationRequested ? loadAuditPreservation({ root, request: req, bytes, bank }) : null;
   if (auditPreservation) registerDifficulty5({ root, request: auditPreservation.difficulty, verifyProjection: true });
-  const rebindPrior = req.approval.sourceRebind && !auditPreservation ? loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, priorBanks, read, evidenceRefs }) : null;
+  const originalRendererRegistry = originalRendererRequested ? loadActiveMetaRegistry(root) : null;
+  const originalRenderer = originalRendererRequested ? loadOriginalFinalQaRendererPreservation({ root, request: req, bytes,
+    bank: JSON.parse(JSON.stringify(bank)), registry: originalRendererRegistry,
+    nativeSource: { root, identityMap: identity, identityByJoin: new Map(identity.records.map(row => [`${row.sourceArchiveFile}#${row.sourceOrdinal}`, row])) },
+    revalidateLeaf: context => nativeReviewReceipt({ source, registry: originalRendererRegistry, ...context }) }) : null;
+  const rebindPrior = req.approval.sourceRebind && !auditPreservation && !originalRenderer ? loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, priorBanks, read, evidenceRefs }) : null;
   let rebindSourceRegistry;
   for (let i = 0; i < bank.length; i++) {
     const current = rows[i], patch = patches.get(current.questionUid);
@@ -2444,6 +2464,20 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     evidenceRefs(patch.evidenceRefs);
     requireText(patch.reason, `UID ${current.questionUid} semantic reason`);
     if (!patch.after || typeof patch.after !== "object" || Array.isArray(patch.after) || !patch.before || typeof patch.before !== "object" || Array.isArray(patch.before)) fail(`before/after required: ${current.questionUid}`);
+    if (originalRenderer) {
+      const resolved = resolve(current, tables), packId = resolved.pack.meta.packId, owner = owners.get(current.questionUid);
+      const runtime = (runtimes.get(owner)?.data.records || []).find(r => r.questionUid === current.questionUid);
+      if (owner !== packId || current.metaFoundationPackId !== packId ||
+          current.L3 !== resolved.pt.canonicalLabelKo || current.L4 !== resolved.tpl.canonicalLabelKo)
+        fail("original renderer preservation ACTIVE owner/labels mismatch: " + current.questionUid);
+      const kept = planOriginalRendererPreservedRow(originalRenderer, { current, identity: id, runtime, question: q, ordinal: i + 1, receiptPath });
+      if (!eq(id, kept.identityAfter)) { Object.assign(id, kept.identityAfter); identityChanged = true; }
+      appliedIdentityRecords.push(structuredClone(kept.identityAfter)); fingerprintRepairs.push(kept.fingerprintRepair);
+      const rt = runtimes.get(packId).data;
+      rt.records = rt.records.filter(r => r.questionUid !== current.questionUid); rt.records.push(kept.runtimeAfter); touched.add(packId);
+      Object.assign(current, kept.final); applied.push(structuredClone(kept.final)); runtimeRecords.push(kept.runtimeAfter);
+      continue;
+    }
     if (auditPreservation) {
       const resolved = resolve(current, tables, { allowConditionDebt: current.conditionKeysEvidenceDebt?.status === "EVIDENCE_DEBT" });
       const packId = resolved.pack.meta.packId, owner = owners.get(current.questionUid);
@@ -2492,20 +2526,32 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const existingRuntime = (runtimes.get(owners.get(current.questionUid))?.data.records || []).find(r => r.questionUid === current.questionUid);
       if (rebindPrior.priorRuntime && !eq(existingRuntime, rebindPrior.priorRuntime.get(current.questionUid)))
         fail(`sourceRebind partial runtime differs from prior receipt: ${current.questionUid}`);
-      if (rebindPrior.subsetProof) {
+      if (rebindPrior.subsetProof && !rebindPrior.originalFullNativeVerified) {
         rebindSourceRegistry ??= loadActiveMetaRegistry(root);
-        rebindPrior.sourceBytes ??= execFileSync("git", ["cat-file", "blob", rebindPrior.receipt.sourceBlobSha1],
-          { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
-        const oldBank = JSON.parse(JSON.stringify(loadPriorQuestionBank(root, rebindPrior.receipt.sourceBlobSha1, priorBanks)));
-        const oldQuestion = oldBank[i];
-        const historicalIdentity = priorSourceIdentityContext({ identityMap: identity,
-          identityByJoin: new Map(identity.records.map(row => [`${row.sourceArchiveFile}#${row.sourceOrdinal}`, row])) }, rebindPrior.receipt);
-        if (nativeReviewReceipt({ nativeSource: { root, bytes: rebindPrior.sourceBytes, blobSha1: rebindPrior.receipt.sourceBlobSha1,
-            bank: oldBank, runtimeRecord: existingRuntime, runtimeStatus: runtimes.get(owners.get(current.questionUid))?.data.status,
-            ...historicalIdentity },
-          question: oldQuestion, previous: oldQuestion, current, identity: id, source, ordinal: i + 1,
-          pt: resolvedPrior.pt, tpl: resolvedPrior.tpl, ownerPack: current.metaFoundationPackId, registry: rebindSourceRegistry }) !== req.approval.sourceRebind.priorReceiptRef.path)
-          fail("source subset prior native approval was not verified");
+        // A full ancestor keeps its original ordered inventory. Recheck all its
+        // original native records, including the excluded historical rows, while
+        // emitting a new receipt only for the unchanged selected subset.
+        if (rebindPrior.fullSubset) {
+          for (const original of rebindPrior.receipt.appliedRecords) resolve(original, tables);
+          replayOriginalFullFinalQa({ root, prior: rebindPrior.receipt, priorReceiptRef: req.approval.sourceRebind.priorReceiptRef,
+            nativeSource: { root, identityMap: identity, identityByJoin: new Map(identity.records.map(row => [`${row.sourceArchiveFile}#${row.sourceOrdinal}`, row])),
+              runtimeStatusByPack: new Map([...runtimes].map(([pack, item]) => [pack, item.data.status])) },
+            registry: rebindSourceRegistry, revalidateLeaf: context => nativeReviewReceipt({ source, registry: rebindSourceRegistry, ...context }) });
+          rebindPrior.originalFullNativeVerified = true;
+        } else {
+          rebindPrior.sourceBytes ??= execFileSync("git", ["cat-file", "blob", rebindPrior.receipt.sourceBlobSha1],
+            { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
+          const oldBank = JSON.parse(JSON.stringify(loadPriorQuestionBank(root, rebindPrior.receipt.sourceBlobSha1, priorBanks)));
+          const oldQuestion = oldBank[i];
+          const historicalIdentity = priorSourceIdentityContext({ identityMap: identity,
+            identityByJoin: new Map(identity.records.map(row => [`${row.sourceArchiveFile}#${row.sourceOrdinal}`, row])) }, rebindPrior.receipt);
+          if (nativeReviewReceipt({ nativeSource: { root, bytes: rebindPrior.sourceBytes, blobSha1: rebindPrior.receipt.sourceBlobSha1,
+              bank: oldBank, runtimeRecord: existingRuntime, runtimeStatus: runtimes.get(owners.get(current.questionUid))?.data.status,
+              ...historicalIdentity },
+            question: oldQuestion, previous: oldQuestion, current, identity: id, source, ordinal: i + 1,
+            pt: resolvedPrior.pt, tpl: resolvedPrior.tpl, ownerPack: current.metaFoundationPackId, registry: rebindSourceRegistry }) !== req.approval.sourceRebind.priorReceiptRef.path)
+            fail("source subset prior native approval was not verified");
+        }
       }
       const rrPrior = { ...finalPrior, sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
         approvedSourceFingerprint: checkedPrior.sourceFingerprint, legacyLevel: finalPrior.level,
@@ -2819,7 +2865,13 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (fs.existsSync(full) && fs.readFileSync(full, "utf8") !== text) fail("source-review binding path already contains different evidence");
     plan.output.set(sourceBindingPath, text);
   }
-  const outputDigests = [...plan.output].filter(([file, text]) => file !== META && (file === rendererBindingPath || file === sourceBindingPath || !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text)).map(([file, text]) => ({ path: file, sha256: digest(text) }));
+  const originalRendererBindingPath = originalRenderer?.bindingPath;
+  if (originalRenderer) {
+    const text = json(buildOriginalRendererBinding(originalRenderer, requestSha256)), full = safePath(root, originalRendererBindingPath);
+    if (fs.existsSync(full) && fs.readFileSync(full, "utf8") !== text) fail("original renderer sidecar path already contains different evidence");
+    plan.output.set(originalRendererBindingPath, text);
+  }
+  const outputDigests = [...plan.output].filter(([file, text]) => file !== META && (file === rendererBindingPath || file === sourceBindingPath || file === originalRendererBindingPath || !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text)).map(([file, text]) => ({ path: file, sha256: digest(text) }));
   const receipt = { schemaVersion: "archive-reviewed-exam-meta-registration-v2", requestId: req.requestId, requestSha256,
     examUid: req.examUid, sourceArchiveFile: source, sourceBlobSha1: blob, sourceRawSha256: digest(bytes), approval: req.approval,
     ...(auditPreservation ? { metaPipelineAudit: structuredClone(auditPreservation.prior.metaPipelineAudit),

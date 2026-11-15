@@ -8,7 +8,8 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
-import { SOURCE_SUBSET_SCHEMA, sourceSubsetEvidencePath } from '../../archive/tools/meta-foundation/source-subset-preservation.mjs';
+import { isExplicitSourceSubsetRebind, isFullSourceSubsetRebind, sourceSubsetEvidencePath, fullSourceSubsetEvidencePath } from '../../archive/tools/meta-foundation/source-subset-preservation.mjs';
+import { isOriginalFinalQaRendererPreservation,isExplicitOriginalRendererRequest } from '../../archive/tools/meta-foundation/original-finalqa-renderer-preservation.mjs';
 
 export const NATIVE_PREVIEW_SCHEMA = 'archive-pr-native-preview/v1';
 export const NATIVE_REQUEST_SCHEMA = 'archive-reviewed-exam-meta-register-request-v2';
@@ -274,11 +275,11 @@ function explicitSubsetReferences(request) {
   const rebind = request.approval?.sourceRebind, ref = rebind?.subsetEvidenceRef;
   const sameRef = (a, b) => a && b && eq(Object.keys(a).sort(), ['path', 'sha256'])
     && a.path === b.path && a.sha256 === b.sha256;
-  return rebind?.schemaVersion === SOURCE_SUBSET_SCHEMA
+  return isExplicitSourceSubsetRebind(rebind)
     && eq(Object.keys(rebind).sort(), ['priorReceiptRef', 'schemaVersion', 'subsetEvidenceRef'])
     && /^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(request.requestId || '')
     && ref && eq(Object.keys(ref).sort(), ['path', 'sha256'])
-    && ref.path === sourceSubsetEvidencePath(request.requestId) && /^[a-f0-9]{64}$/.test(ref.sha256 || '')
+    && ref.path === (isFullSourceSubsetRebind(rebind) ? fullSourceSubsetEvidencePath(request.requestId) : sourceSubsetEvidencePath(request.requestId)) && /^[a-f0-9]{64}$/.test(ref.sha256 || '')
     && Array.isArray(request.approval.evidenceRefs) && request.approval.evidenceRefs.some(item => sameRef(item, ref))
     && request.approval.evidenceRefs.some(item => sameRef(item, rebind.priorReceiptRef))
     && Array.isArray(request.items) && request.items.every(item => Array.isArray(item.evidenceRefs) && item.evidenceRefs.some(entry => sameRef(entry, ref)));
@@ -290,7 +291,7 @@ function partialFinalQaPreservation(request) {
       Array.isArray(request.registryChanges) && request.registryChanges.length === 0)
     && approval?.type === 'FINAL_QA' && approval.metadataReviewed === true
     && typeof approval.approvedBy === 'string' && Boolean(approval.approvedBy.trim())
-    && rebind && !Array.isArray(rebind) && (eq(Object.keys(rebind), ['priorReceiptRef']) || explicitSubsetReferences(request))
+    && rebind && !Array.isArray(rebind) && (eq(Object.keys(rebind), ['priorReceiptRef']) || explicitSubsetReferences(request) || isExplicitOriginalRendererRequest(request))
     && typeof rebind.priorReceiptRef?.path === 'string' && /^[a-f0-9]{64}$/.test(rebind.priorReceiptRef?.sha256 || '')
     && Array.isArray(request.items) && request.items.length > 0
     && request.items.every(item => emptyObject(item.before) && emptyObject(item.after)
@@ -365,7 +366,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
     if (preservation && (correction || request.registrationMode !== undefined ||
         !request.approval.sourceRebind || typeof request.approval.sourceRebind !== 'object' || Array.isArray(request.approval.sourceRebind) ||
         !(sourceRebind || request.approval.type === 'FINAL_QA' && (request.approval.sourceRebind.schemaVersion === undefined ||
-          request.approval.sourceRebind.schemaVersion === SOURCE_SUBSET_SCHEMA && partialFinalQaPreservation(request))))) fail('PRESERVATION_SCOPE');
+          (isExplicitSourceSubsetRebind(request.approval.sourceRebind) || isOriginalFinalQaRendererPreservation(request.approval.sourceRebind)) && partialFinalQaPreservation(request))))) fail('PRESERVATION_SCOPE');
     const partial = !correction && request.scope === 'PARTIAL_UIDS';
     if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');
     if (request.registrationMode !== undefined && (correction || !partial || request.registrationMode !== 'IDENTITY_FINGERPRINT_ONLY')) fail('REGISTRATION_MODE');
