@@ -10,6 +10,7 @@ import core from "../archive/archive2-core.js";
 
 const require = createRequire(import.meta.url);
 const canonical = require("../archive/archive2-canonical.js");
+const archiveSource = require("../archive/archive2-source.js");
 const ProblemBankMeta = require("../archive/problem-bank-meta.js");
 const sourceFile = "original/middle/m3/1final/26_test_중3.js";
 const uid = "qid_v1_" + "1".repeat(64);
@@ -480,6 +481,49 @@ test("META_PIPELINE_AUDIT registration receipt binds its approved metadata into 
   resources[proofPath].sourceRawSha256 = "e".repeat(64);
   const wrongSource = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
   assert.ok(wrongSource.canonicalAssignmentReasons.includes("assignment_missing"));
+
+  // Native evidence names exact file bytes, while browser loading deliberately
+  // normalizes BOM/CRLF. Equal JavaScript text is not equal approval bytes.
+  const sourceCatalog = resources["data/archive2-catalog.json"];
+  const normalized = "window.questionBank = [];\n";
+  const sha = value => crypto.createHash("sha256").update(value).digest("hex");
+  sourceCatalog.sourceHashes = [[sourceFile, sha(normalized)]];
+  for (const raw of [normalized.replace(/\n/g, "\r\n"), "\uFEFF" + normalized]) {
+    const rawSha = sha(Buffer.from(raw, "utf8"));
+    assert.notEqual(rawSha, sha(normalized));
+    resources[proofPath].sourceRawSha256 = rawSha;
+    sourceCatalog.sourceRawHashes = [[sourceFile, rawSha]];
+    const approved = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
+    assert.equal(approved.assignmentEvidence.reviewEvidence.approvalType, "META_PIPELINE_AUDIT");
+    assert.equal(approved.reviewedExamRegistration.sourceJsSha256, sha(normalized), "browser-facing hash is unchanged");
+    const pageRow = ProblemBankMeta.buildIndex([{ ...approved, currentSourceJsSha256: sha(normalized) }], [])[0];
+    assert.equal(pageRow.L3, "검증된 개념");
+
+    sourceCatalog.sourceRawHashes = [];
+    const missingRaw = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
+    assert.ok(missingRaw.canonicalAssignmentReasons.includes("assignment_missing"), "normalized bytes cannot authorize a raw-byte receipt");
+    sourceCatalog.sourceRawHashes = [[sourceFile, sha(raw + " ")]];
+    const alteredRaw = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
+    assert.ok(alteredRaw.canonicalAssignmentReasons.includes("assignment_missing"));
+  }
+  for (const invalid of [null, [[sourceFile, "bad-sha"]], [["other-file.js", "a".repeat(64)]],
+    [[sourceFile, "a".repeat(64)], [sourceFile, "b".repeat(64)]]]) {
+    sourceCatalog.sourceRawHashes = invalid;
+    assert.throws(() => canonical.resolveCatalog(input), /catalog raw source hash/);
+  }
+});
+
+test("browser source loading retains normalized hashes for CRLF and BOM files", async () => {
+  const normalized = 'window.questionBank = [{id: 1, content: "fixture", choices: [], answer: "a", solution: "s"}];\n';
+  const sha = value => crypto.createHash("sha256").update(value).digest("hex");
+  for (const [index, raw] of [normalized.replace(/\n/g, "\r\n"), "\uFEFF" + normalized].entries()) {
+    const file = `original/middle/m3/1final/raw-hash-fixture-${index}.js`;
+    const options = { baseUrl: "https://archive.test/archive/", fetcher: async () => new Response(raw) };
+    const bank = await archiveSource.load(file, sha(normalized), options);
+    assert.equal(bank.length, 1);
+    assert.equal(bank[0].content, "fixture");
+    await assert.rejects(() => archiveSource.load(file, sha(Buffer.from(raw, "utf8")), options), /원본 파일이 변경/);
+  }
 });
 
 test("built catalog has no production taxonomy fallback without a fingerprint-bound reviewed assignment", () => {

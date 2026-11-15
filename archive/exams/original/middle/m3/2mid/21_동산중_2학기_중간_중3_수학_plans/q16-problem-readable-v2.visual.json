@@ -1,0 +1,244 @@
+{
+  "sourcePath": "archive/exams/original/middle/m3/2mid/21_동산중_2학기_중간_중3_수학.js",
+  "questionId": 16,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "A",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "V",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "1"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "1"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "50"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "oa",
+              "op": "LINE_THROUGH",
+              "inputs": [
+                "O",
+                "A"
+              ],
+              "args": {},
+              "outputType": "LINE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "H",
+              "op": "PERPENDICULAR_FOOT",
+              "inputs": [
+                "P",
+                "oa"
+              ],
+              "args": {},
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "arc",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [
+                "O"
+              ],
+              "args": {
+                "radius": {
+                  "kind": "integer",
+                  "value": "1"
+                }
+              },
+              "outputType": "CIRCLE",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "A",
+          "V",
+          "P",
+          "H"
+        ],
+        "displaySegments": [
+          {
+            "id": "sOH",
+            "refs": [
+              "O",
+              "H"
+            ]
+          },
+          {
+            "id": "sHA",
+            "refs": [
+              "H",
+              "A"
+            ]
+          },
+          {
+            "id": "sOV",
+            "refs": [
+              "O",
+              "V"
+            ]
+          },
+          {
+            "id": "sOP",
+            "refs": [
+              "O",
+              "P"
+            ]
+          },
+          {
+            "id": "sPH",
+            "refs": [
+              "P",
+              "H"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 640,
+          "height": 440
+        },
+        "caption": "반지름이 1인 사분원 안의 직각삼각형 OPH",
+        "displayLines": [],
+        "displayCircles": [],
+        "hiddenPointNames": [
+          "V"
+        ],
+        "hiddenPointStyle": "NONE",
+        "planeMarks": {
+          "arcs": [
+            {
+              "id": "sector",
+              "circle": "arc",
+              "center": "O",
+              "from": "A",
+              "to": "V",
+              "side": "MINOR",
+              "highlight": false
+            }
+          ],
+          "angles": [
+            {
+              "id": "ang",
+              "refs": [
+                "P",
+                "O",
+                "H"
+              ],
+              "value": 50,
+              "label": "x",
+              "style": "ARC",
+              "factRole": "GIVEN",
+              "labelKind": "MATH"
+            }
+          ],
+          "expressionLabels": [
+            {
+              "id": "rad",
+              "ownerSegment": "sOP",
+              "text": "1",
+              "side": "LEFT"
+            }
+          ]
+        },
+        "rightAngles": [
+          {
+            "id": "perp",
+            "refs": [
+              "O",
+              "H",
+              "P"
+            ]
+          }
+        ]
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.48,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

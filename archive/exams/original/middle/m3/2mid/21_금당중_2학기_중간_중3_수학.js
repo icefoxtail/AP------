@@ -1413,7 +1413,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ALIVE_REPLACEMENT",
     "score": 4.0,
-    "content": "다음 그림과 같이 원 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 내접원이고, 변 $\\mathrm{AB},\\mathrm{BC},\\mathrm{CA}$와 접하는 점을 각각 $\\mathrm{F},\\mathrm{D},\\mathrm{E}$라 하자. $\\overline{\\mathrm{AF}}=4\\,\\text{cm}$, $\\overline{\\mathrm{BD}}=3\\,\\text{cm}$, $\\overline{\\mathrm{CE}}=5\\,\\text{cm}$일 때, 삼각형 $\\mathrm{ABC}$의 둘레는?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q20_ALIVE_PROBLEM.svg\" />",
+    "content": "다음 그림과 같이 원 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 내접원이고, 변 $\\mathrm{AB},\\mathrm{BC},\\mathrm{CA}$와 접하는 점을 각각 $\\mathrm{F},\\mathrm{D},\\mathrm{E}$라 하자. $\\overline{\\mathrm{AF}}=4\\,\\text{cm}$, $\\overline{\\mathrm{BD}}=3\\,\\text{cm}$, $\\overline{\\mathrm{CE}}=5\\,\\text{cm}$일 때, 삼각형 $\\mathrm{ABC}$의 둘레는?<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q20-problem-readable-v2.svg\" />",
     "choices": [
       "$20\\,\\text{{cm}}$",
       "$22\\,\\text{{cm}}$",

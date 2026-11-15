@@ -150,6 +150,58 @@ test('partial native reuse finds a noncontiguous selected UID without rewriting 
   assert.equal(JSON.stringify({current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,
     receipt:f.receipt,question:f.question}),before);
 });
+function solutionRebindNativeFixture(t) {
+  const f=partialNativeReviewFixture(t),oldBank=structuredClone(f.nativeSource.bank);
+  f.previous.solution='previous solution explicitly repaired by the native FINAL_QA';
+  oldBank[f.ordinal-1].solution=f.previous.solution;
+  execFileSync('git',['init','-q'],{cwd:f.nativeSource.root});
+  const oldBytes='window.questionBank='+JSON.stringify(oldBank)+';\n';
+  const priorSourceBlobSha1=execFileSync('git',['hash-object','-w','--stdin'],{cwd:f.nativeSource.root,input:oldBytes,encoding:'utf8'}).trim();
+  const fp=sourceFingerprint(f.previous),cf=contentFingerprint(f.previous);
+  f.receipt.fingerprintRepairs=[{questionUid:f.identity.questionUid,sourceOrdinal:f.ordinal,
+    metadataBefore:{sourceFingerprint:fp,contentFingerprint:cf},identityBefore:{sourceFingerprint:fp},
+    after:{sourceFingerprint:sourceFingerprint(f.question),contentFingerprint:contentFingerprint(f.question)},
+    rebind:{priorSourceBlobSha1,priorContentFingerprint:cf}}];
+  f.saveReceipt();return f;
+}
+test('a selected solution-only repair reuses its new native approval across an older cursor',t=>{
+  const f=solutionRebindNativeFixture(t),before=JSON.stringify({current:f.current,identity:f.identity,
+    runtime:f.nativeSource.runtimeRecord,receipt:f.receipt,question:f.question});
+  delete f.registry.bindingRows[0].L1;delete f.registry.bindingRows[0].L2;
+  const result=planQuestion(f);
+  assert.equal(result.status,'ALREADY_REGISTERED',JSON.stringify(result));
+  assert.equal(result.nativeReviewReceipt,f.receiptPath);assert.equal(result.final,undefined);
+  assert.equal(JSON.stringify({current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,
+    receipt:f.receipt,question:f.question}),before);
+});
+test('solution-only native reuse requires exact selected repair, previous Git bytes and unchanged student inputs',async t=>{
+  const cases=[
+    ['missing repair',f=>{delete f.receipt.fingerprintRepairs;}],
+    ['other UID repair',f=>{f.receipt.fingerprintRepairs[0].questionUid='other';}],
+    ['duplicate repair',f=>{f.receipt.fingerprintRepairs.push(structuredClone(f.receipt.fingerprintRepairs[0]));}],
+    ['other ordinal',f=>{f.receipt.fingerprintRepairs[0].sourceOrdinal=1;}],
+    ['old metadata mismatch',f=>{f.receipt.fingerprintRepairs[0].metadataBefore.sourceFingerprint='0'.repeat(64);}],
+    ['old identity mismatch',f=>{f.receipt.fingerprintRepairs[0].identityBefore.sourceFingerprint='0'.repeat(64);}],
+    ['old content mismatch',f=>{f.receipt.fingerprintRepairs[0].metadataBefore.contentFingerprint='0'.repeat(64);}],
+    ['missing old content declaration',f=>{delete f.receipt.fingerprintRepairs[0].metadataBefore.contentFingerprint;}],
+    ['current source mismatch',f=>{f.receipt.fingerprintRepairs[0].after.sourceFingerprint='0'.repeat(64);}],
+    ['current content mismatch',f=>{f.receipt.fingerprintRepairs[0].after.contentFingerprint='0'.repeat(64);}],
+    ['missing actual old blob',f=>{f.receipt.fingerprintRepairs[0].rebind.priorSourceBlobSha1='0'.repeat(40);}],
+    ['wrong rebind content',f=>{f.receipt.fingerprintRepairs[0].rebind.priorContentFingerprint='0'.repeat(64);}],
+    ['old source solution differs from cursor',f=>{f.previous.solution+=' different';const fp=sourceFingerprint(f.previous);f.receipt.fingerprintRepairs[0].metadataBefore.sourceFingerprint=fp;f.receipt.fingerprintRepairs[0].identityBefore.sourceFingerprint=fp;}],
+    ['changed stem',f=>{f.previous.content='old different stem';}],
+    ['changed answer',f=>{f.previous.answer='other';}],
+    ['changed figure',f=>{f.previous.figureSvg='<svg/>';}],
+    ['changed layout',f=>{f.previous.layoutTag='wide';}],
+    ['changed renderer number',f=>{f.previous.number=8;}],
+    ['ambiguous reassessment proof',f=>{f.receipt.fingerprintRepairs[0].sourceReview={};}],
+  ];
+  for(const [name,mutate] of cases)await t.test(name,t=>{
+    const f=solutionRebindNativeFixture(t);mutate(f);f.saveReceipt();const result=planQuestion(f);
+    assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+  });
+});
 test('AutoMeta retains a partial canonical approval when the source carries its uniquely bound legacy alias',t=>{
   const f=partialNativeReviewFixture(t),identityMap={schemaVersion:'question-identity-map-v1',records:[],lookup:{
     byQuestionUid:{},bySourceFileAndOrdinal:{[source]:{}},bySourceFileAndQuestionNo:{[source]:{}},byLegacyQKey:{}}};

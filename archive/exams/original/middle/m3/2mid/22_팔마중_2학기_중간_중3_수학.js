@@ -17,8 +17,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "직각삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}}=3$, $\\overline{\\text{BC}}=1$일 때, $\\cos A \\times \\tan B$의 값은? [3점]<br><br>",
     "choices": [
@@ -87,8 +87,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "직각삼각형 $\\text{ABC}$에서 $\\tan A=\\frac{2}{3}$일 때, $\\overline{\\text{AC}}$의 길이를 구하면? [3점]<br><br>",
     "choices": [
@@ -157,8 +157,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "$\\angle\\text{ABD}=60^\\circ$, $\\angle\\text{BDC}=45^\\circ$이고 $\\overline{\\text{AB}}=2\\sqrt{2}$일 때, $\\overline{\\text{AD}} \\times \\overline{\\text{BC}}$의 값은? [4점]<br><br>",
     "choices": [
@@ -227,8 +227,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "다음 중 계산한 값이 가장 큰 것을 고르면? [4점]",
     "choices": [
@@ -290,8 +290,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "삼각형 $\\text{ABC}$의 세 내각의 크기의 비가 $2:3:7$이고, 세 내각 중 가장 작은 크기의 각을 $\\text{A}$라 할 때, $\\sin A \\times \\cos A - \\tan A$의 값은? [4점]",
     "choices": [
@@ -353,8 +353,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "반지름의 길이가 $1$인 사분원에서 $\\overline{\\text{AC}}=0.17$이다. $\\overline{\\text{AB}}$의 길이를 $a$, $\\overline{\\text{CD}}$의 길이를 $b$라고 할 때, $a+b$의 값은? [4점]<br><br><br><br><table border=\"1\" style=\"border-collapse:collapse; text-align:center; width:100%; max-width:320px;\"><thead><tr style=\"background-color:#f2f2f2;\"><th>각도</th><th>사인(sin)</th><th>코사인(cos)</th><th>탄젠트(tan)</th></tr></thead><tbody><tr><td>$32^\\circ$</td><td>0.53</td><td>0.85</td><td>0.62</td></tr><tr><td>$33^\\circ$</td><td>0.54</td><td>0.84</td><td>0.65</td></tr><tr><td>$34^\\circ$</td><td>0.56</td><td>0.83</td><td>0.67</td></tr></tbody></table>",
     "choices": [
@@ -419,8 +419,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "한 모서리의 길이가 $5$인 정육면체에서 $\\angle\\text{CEG}=x^\\circ$라 할 때, $\\sin x^\\circ \\div \\cos x^\\circ$의 값은? [4점]<br><br>",
     "choices": [
@@ -493,8 +493,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "어느 공원에 있는 호수의 양 끝 지점 $\\text{P}$, $\\text{Q}$ 사이의 거리를 구하기 위하여 거리와 각을 측정하여 나타낸 것이다. $\\overline{\\text{OP}}=8\\text{ m}$, $\\overline{\\text{OQ}}=12\\text{ m}$이고 $\\angle\\text{O}=60^\\circ$일 때, 두 지점 $\\text{P}$, $\\text{Q}$ 사이의 거리는? [4점]<br><br>",
     "choices": [
@@ -567,8 +567,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "강의 양쪽에 있는 두 지점 $\\text{A}$, $\\text{B}$ 사이의 거리를 구하기 위하여 거리와 각을 측량하여 나타낸 그림이다. $\\angle\\text{A}=60^\\circ$, $\\angle\\text{B}=75^\\circ$이고 $\\overline{\\text{BC}}=90\\text{ m}$일 때, 두 지점 $\\text{A}$, $\\text{B}$ 사이의 거리는? [4점]<br><br>",
     "choices": [
@@ -637,8 +637,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "$180\\text{ m}$ 떨어진 두 지점 $\\text{A}$와 $\\text{B}$에서 이 건물의 꼭대기 $\\text{D}$ 지점을 올려다본 각의 크기가 각각 $45^\\circ$, $60^\\circ$이다. 이 건물의 높이 $\\overline{\\text{CD}}$의 길이는? [4점]<br><br>",
     "choices": [
@@ -777,8 +777,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "$\\square\\text{ABCD}$는 정사각형이고, $\\triangle\\text{EBF}$는 $\\overline{\\text{BE}}=\\overline{\\text{BF}}$인 이등변삼각형이다. $\\angle\\text{EBF}=30^\\circ$이고 $\\triangle\\text{EBF}$의 넓이가 $\\frac{3}{2}\\text{ cm}^2$일 때, 정사각형 $\\text{ABCD}$의 넓이는? [4점]<br><br>",
     "choices": [
@@ -847,8 +847,8 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "원 $\\text{O}$는 $\\triangle\\text{ABC}$의 외접원이고 $\\overline{\\text{OD}}=\\overline{\\text{OE}}=\\overline{\\text{OF}}$이다. $\\overline{\\text{AD}}=3\\text{ cm}$일 때, $\\triangle\\text{ABC}$의 둘레의 길이는? [3점]<br><br>",
     "choices": [
@@ -917,8 +917,8 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "그림에서 $x+y$값은? [3점]<br><br>",
     "choices": [
@@ -987,8 +987,8 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "$\\overline{\\text{OM}} \\perp \\overline{\\text{AB}}$, $\\overline{\\text{ON}} \\perp \\overline{\\text{BC}}$이고 $\\overline{\\text{OM}}=\\overline{\\text{ON}}$이다. $\\angle\\text{MON}=110^\\circ$일 때, $\\angle\\text{ACB}$의 크기는? [4점]<br><br>",
     "choices": [
@@ -1057,8 +1057,8 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "그림은 $\\overline{\\text{AB}}$를 접는 선으로 하여 $\\overgroup{\\text{AB}}$가 원의 중심 $\\text{O}$를 지나도록 접은 것이다. $\\overline{\\text{AB}}$의 길이는? [4점]<br><br>",
     "choices": [
@@ -1127,8 +1127,8 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "원 $\\text{O}$는 $\\triangle\\text{ABC}$의 내접원이고, 세 점 $\\text{D}$, $\\text{E}$, $\\text{F}$는 그 접점이다. $\\overline{\\text{AD}}=3$, $\\overline{\\text{BD}}=7$, $\\overline{\\text{AC}}=9$일 때, $x$의 값은? [4점]<br><br>",
     "choices": [
@@ -1197,8 +1197,8 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "원 $\\text{O}$는 $\\triangle\\text{ABC}$의 내접원이고 $\\overline{\\text{PQ}}$는 원 $\\text{O}$의 접선일 때, $\\triangle\\text{PBQ}$의 둘레의 길이는? [4점]<br><br>",
     "choices": [
@@ -1267,8 +1267,8 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "$\\square\\text{ABCD}$는 원 $\\text{O}$에 외접하고 $\\angle\\text{C}=\\angle\\text{D}=90^\\circ$, $\\overline{\\text{BC}}=6$, $\\overline{\\text{CD}}=4$일 때, $\\overline{\\text{AB}}$의 길이는? [4점]<br><br>",
     "choices": [
@@ -1341,8 +1341,8 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "반지름의 길이가 $6$인 원 $\\text{O}$에서 $\\overline{\\text{OA}}=\\overline{\\text{AB}}=\\overline{\\text{BC}}=6$이고, 점 $\\text{P}$, $\\text{Q}$가 각각 $\\overline{\\text{AB}}$, $\\overline{\\text{BC}}$의 중점일 때, $\\triangle\\text{OPQ}$의 넓이는? [4점]<br><br>",
     "choices": [
@@ -1411,8 +1411,8 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "길이가 $24$인 선분 $\\text{AB}$의 중점 $\\text{C}$에 대하여 $\\overline{\\text{AC}}$와 $\\overline{\\text{CB}}$를 각각 지름으로 하는 두 원 $\\text{O}$, $\\text{O}'$이 있다. $\\overline{\\text{AP}}$가 원 $\\text{O}'$의 접선이고, $\\overline{\\text{AP}}$와 원 $\\text{O}$의 교점을 $\\text{Q}$라고 할 때, $\\triangle\\text{AOQ}$의 넓이는? [4점]<br><br>",
     "choices": [
@@ -1481,8 +1481,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "【서술형 1】 [서술형]<br>$\\triangle\\text{ABC}$의 꼭짓점 $\\text{A}$에서 $\\overline{\\text{BC}}$에 내린 수선의 발을 $\\text{H}$라 할 때, $\\overline{\\text{AC}}$의 길이를 구하려고 한다. [4점]<br><br><br><br>(1) $\\triangle\\text{ABH}$에서 $\\overline{\\text{AH}}$의 길이를 삼각비를 이용하여 풀이 과정을 자세히 쓰고 답을 구하시오. (2점)<br><br>(2) $\\triangle\\text{ACH}$에서 $\\overline{\\text{AC}}$의 길이를 삼각비를 이용하여 풀이 과정을 자세히 쓰고 답을 구하시오. (2점)",
     "choices": [],
@@ -1545,8 +1545,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "【서술형 2】 [서술형]<br>$\\cos 30^\\circ \\times \\tan x^\\circ = \\sin 30^\\circ + \\tan 45^\\circ$일 때, $\\sin x^\\circ \\times \\cos x^\\circ$의 값을 구하려고 한다. (단, $0^\\circ \\le x^\\circ < 90^\\circ$) [6점]<br><br>(1) $\\cos 30^\\circ \\times \\tan x^\\circ = \\sin 30^\\circ + \\tan 45^\\circ$에서 $x$의 값을 구하는 과정을 자세히 서술하고 답을 구하시오. (4점)<br><br>(2) 위 (1)에서 구한 $x$ 값을 이용하여 $\\sin x^\\circ \\times \\cos x^\\circ$의 값을 구하는 과정을 자세히 서술하고 답을 구하시오. (2점)",
     "choices": [],
@@ -1606,8 +1606,8 @@ window.questionBank = [
       "도형",
       "삼각비"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "【서술형 3】 [서술형]<br>폭이 $2\\text{ cm}$인 종이 테이프를 그림과 같이 $\\overline{\\text{AC}}$를 접는 선으로 하여 접었다. $\\angle\\text{ABC}=45^\\circ$일 때, $\\triangle\\text{ABC}$의 넓이를 구하려고 한다. [5점]<br><br><br><br>(1) $\\angle\\text{ACB}$의 크기 구하는 과정을 자세히 서술하고 답을 구하시오. (2점)<br><br>(2) $\\triangle\\text{ABC}$의 넓이 구하는 과정을 자세히 서술하고 답을 구하시오. (3점)",
     "choices": [],
@@ -1670,8 +1670,8 @@ window.questionBank = [
       "도형",
       "원의 성질"
     ],
-    "tagConfidence": "auto_high",
-    "tagStatus": "auto_high",
+    "tagConfidence": "approved_final_qa",
+    "tagStatus": "reviewed_pass",
     "wide": false,
     "content": "【서술형 4】 [서술형]<br>그림은 원 모양의 접시를 떨어뜨려 깨진 조각들이다. [5점]<br><br>(1) 깨진 접시의 원의 중심을 찾으려고 한다. 사용한 원의 성질을 한 문장으로 서술하시오. (2점)<br><img src=\"assets/images/22_팔마중_2학기_중간_중3_수학/s04_1.png\"><br><br>(2) 깨진 접시의 조각이 아래와 같을 때, 반지름의 길이를 구하는 과정을 자세히 서술하고 답을 구하시오. (3점)<br><img src=\"assets/images/22_팔마중_2학기_중간_중3_수학/s04_2.png\">",
     "choices": [],

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-m3s2-first464-release-verification-v1",
+  "sourceCommit": "b6e19ab9f598369506195d2379ae28d7dc826ba4",
+  "requestCommit": "b6e19ab9f598369506195d2379ae28d7dc826ba4",
+  "registrarCodeCommit": "b83d93523356ac7b60672495598205898defeb49",
+  "rawSourceHashFixCommit": "11ebefa98cfc4f734a9db93c2df37bf27a2943a4",
+  "actualMainConflictCheck": "0f985c4a242888c44a45db99b1a55c7ff32a1aa3",
+  "isolatedSandbox": true,
+  "fullSourceFileCount": 7415,
+  "generatedFilesWrittenOnlyInsideSandbox": true,
+  "registeredRequests": 35,
+  "projectionPassed": 35,
+  "projectionUidPassed": 464,
+  "projectionLanes": {
+    "canonical": 464,
+    "usableMetaLane": 0
+  },
+  "consumerStatus": "PASS",
+  "actualSelectionMetrics": {
+    "count": 464,
+    "generalUse": 464,
+    "difficultyUsable": 464,
+    "approvedMetaFacets": 464,
+    "strictAdvanced": 464,
+    "strictBasic": 440,
+    "strictBasicExclusions": {
+      "applicability": 24
+    }
+  },
+  "consumerCounts": {
+    "changed": 464,
+    "checked": 464,
+    "passed": 464,
+    "skippedUnchanged": 0
+  },
+  "failures": [],
+  "status": "PASS",
+  "scope": "35 official FINAL_QA metadata requests only. Reviewed source declarations for the remaining questions and separate figure/source/type followups do not count as completed native approval.",
+  "fullBuild": {
+    "command": "python archive/build_db.py",
+    "attempts": [
+      {
+        "attempt": 1,
+        "exitCode": 1,
+        "logPath": "/workspace/scratch/c8f1b0bfb4fa/m3s2/.tmp/m3s2-release/first464-full-build-1.log",
+        "sha256": "63989e9e0dbc4ed78bb0fa5e091084df55bd74176c50faccf37d0fc2035b8c28"
+      },
+      {
+        "attempt": 2,
+        "exitCode": 0,
+        "logPath": "/workspace/scratch/c8f1b0bfb4fa/m3s2/.tmp/m3s2-release/first464-full-build-2.log",
+        "sha256": "e24bc35803085cde04a61a799db35829985fb8e012b712ce699c931ca0793873"
+      }
+    ],
+    "finalExitCode": 0,
+    "initialFailure": "Runtime source-readiness fixed point after the fresh complete data write; the next full build and its --check gates pass."
+  },
+  "officialWriter": {
+    "requests": 35,
+    "passed": 35,
+    "registeredUids": 464,
+    "nativeReusePassed": 464,
+    "sourceFieldParityMismatches": 0
+  },
+  "proofRefs": [
+    {
+      "path": "docs/operations/m3-s2-release-20261115/first464-native-writer-auto-reuse.json",
+      "sha256": "08eaab407b50a2b5c1eaf2c58a6c9e1eb4dc39087129ddd4ae6aa5d58239c30c"
+    },
+    {
+      "path": "docs/operations/m3-s2-release-20261115/first464-consumer-result.json",
+      "sha256": "e2c677e5f577497f15f644f0b09572706fd0d4dc59a516df1971eb26ccc387c6"
+    },
+    {
+      "path": "docs/operations/m3-s2-release-20261115/first464-projection-result.json",
+      "sha256": "52447e43cea84e91444bd061f9c63e12969c9b6da79a4f814cfc7f7c355d21cb"
+    }
+  ],
+  "existingNativeApprovalContinuity": {
+    "receiptReferencedUids": 71,
+    "validNativeReceiptsOnActualMain": 0,
+    "validNativeApprovalLost": 0,
+    "newlyRestoredByFirstSubset": 39,
+    "existingAuditKind": "META_PIPELINE_AUDIT",
+    "evidence": "preexisting-native-approval-continuity.json"
+  },
+  "rawHashRecovery": {
+    "examId": "E063",
+    "uidCount": 11,
+    "sourceRawSha256": "24d864f8e37a3b2d8d10f45f7d80ed689b79b03c85b20042de74980c7196114b",
+    "normalizedSourceHashPreserved": "095e8a1d0d62ca8af01ad251330b333d66350dd548e861ddd3186111077e3116",
+    "actualCanonicalAndConsumerCount": 11
+  },
+  "limits": [
+    "No entire 1958-question quality PASS is asserted.",
+    "24 E042 rows preserve their declared CORE applicability: all are approved and directly selectable, while the strict basic DEFAULT_SCOPE selector excludes them. This scope distinction is retained explicitly.",
+    "Seven current-figure reassessments and the separate source/type repairs remain outside this first464 registration subset."
+  ],
+  "productionStatus": "AWAITING_SERIALIZED_REMOTE_CI_MERGE_WRITER_DEPLOYMENT"
+}
