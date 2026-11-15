@@ -48,6 +48,7 @@ import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
 import { NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_HOLD_REASON } from "./native-basic-hold-preservation.mjs";
 import { NATIVE_BASIC_PARENT_SCHEMA } from "./reviewed-native-basic-parent.mjs";
 import { isExplicitSourceSubsetRebind } from "./source-subset-preservation.mjs";
+import { isExplicitIssuedSourceBindingRecoveryRequest } from "./issued-source-binding-recovery.mjs";
 import { isOriginalFinalQaRendererPreservation, isExplicitOriginalRendererRequest } from "./original-finalqa-renderer-preservation.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
@@ -172,10 +173,10 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       const audit = doc.approval.type === "META_PIPELINE_AUDIT" &&
         doc.approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
       const partial = doc.scope === "PARTIAL_UIDS", subset = isExplicitSourceSubsetRebind(doc.approval.sourceRebind);
-      const originalRenderer = isOriginalFinalQaRendererPreservation(doc.approval.sourceRebind);
+      const originalRenderer = isOriginalFinalQaRendererPreservation(doc.approval.sourceRebind), recovery = isExplicitIssuedSourceBindingRecoveryRequest(doc);
       if ((!audit && !auditCcAppend && doc.approval.type !== "FINAL_QA") || !doc.approval.sourceRebind ||
           typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
-          (!audit && !auditCcAppend && doc.approval.sourceRebind.schemaVersion !== undefined && !subset && !originalRenderer) || (subset || originalRenderer) && !partial ||
+          (!audit && !auditCcAppend && doc.approval.sourceRebind.schemaVersion !== undefined && !subset && !originalRenderer && !recovery) || (subset || originalRenderer || recovery) && !partial ||
           originalRenderer && !isExplicitOriginalRendererRequest(doc) ||
           doc.approval.metadataReviewed !== true || !auditCcAppend && doc.registryChanges?.length ||
           (doc.scope !== undefined && !partial) ||

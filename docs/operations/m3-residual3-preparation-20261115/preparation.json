@@ -1,0 +1,817 @@
+{
+  "schemaVersion": "m3-residual3-recovery-dependent-preparation-v1",
+  "owner": "/root/audit_m2",
+  "status": "PREPARATION_ONLY_NOT_A_REGISTRATION_REQUEST",
+  "observedActualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "observedRootNew12LocalInput": "c999ffcb1939261ed90b27e075d529d2fd52cb46",
+  "newUidCount": 3,
+  "sourceFiles": 2,
+  "sourcePatchRows": 2,
+  "protectedStudentRows": 47,
+  "nonPatchedWholeObjects": 45,
+  "existingApprovalsRequiringActualRecovery": 23,
+  "expectedOwnedUidUnionAfterRecovery": 26,
+  "productionSourceWrites": 0,
+  "productionInboxRequestsIssued": 0,
+  "predecessorReceiptRefsFinalized": 0,
+  "newMathematicalQa": 0,
+  "newDifficultyJudgments": 0,
+  "officialRegistrationRun": false,
+  "consumerRun": false,
+  "immutableShadowRun": false,
+  "heldScopeChanges": 0,
+  "excludedScopes": [
+    "M3S1",
+    "M3S2_E020_Q16",
+    "existing nine M2 holds"
+  ],
+  "rows": [
+    {
+      "examId": "E001",
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+      "status": "PREPARATION_ONLY_RECOVERY_RECEIPT_REQUIRED",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+        "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9",
+        "bytes": 154687
+      },
+      "nativeItemStableSha256": "161db3686f1de378fb13d2911d3a483842cae9cf1332d2e1c1b2a225135c7ec4",
+      "finalizationRef": {
+        "commit": "9e50297143a0a30a0a1daf5e1b5f4c919a025371",
+        "path": ".archive-meta-register/evidence/m3s2-proposal-finalization-20261115/finalized-applications.json",
+        "sha256": "c16d8e25a8f05ee6af3d144520a4753ed98bbeffc06aed6948413b5afd2584ae",
+        "bytes": 116760
+      },
+      "applicationStableSha256": "ba476b3fbe3339009be5e6dd91f6933af0c32f143b9084deb853c0be46bd4ccf",
+      "sourceSnapshot": {
+        "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+        "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+        "blob": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+        "sha256": "616a36936b61a7885e83b4c0702a09006f759819bc8abb03e23b6455672dba98",
+        "questionSha256": "8c91ebedf8f8068555d25e14f74fd2f405d6dddefe36fa9d774fb45ffa78cca2"
+      },
+      "currentWholeQuestionStableSha256": "8c91ebedf8f8068555d25e14f74fd2f405d6dddefe36fa9d774fb45ffa78cca2",
+      "wholeQuestionMatchesApprovedSnapshot": true,
+      "namespaceObservation": {
+        "source": {
+          "curriculum": "2015",
+          "curriculumKey": null,
+          "courseKey": null
+        },
+        "metadata": {
+          "curriculum": "2015",
+          "curriculumKey": "2015",
+          "courseKey": "M3-2"
+        },
+        "noNewNamespaceSourcePatch": true
+      },
+      "sourceMetadataPatch": {
+        "conditionKeys": [
+          "COND_EXCLUDED_ANGLE_VALUE"
+        ]
+      },
+      "sourcePatchFields": [
+        "conditionKeys"
+      ],
+      "draftAfter": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_EXCLUDED_ANGLE_VALUE"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "primaryMethod": "빗변과 맞은편 변의 사인비 정의에서 BC=√13 sin a°를 바로 나타낸다. 삼각비 기본 길이 표현이다.",
+        "decisiveStep": "빗변과 맞은편 변의 사인비 정의에서 BC=√13 sin a°를 바로 나타낸다. 삼각비 기본 길이 표현이다.",
+        "sourceFingerprint": "1f647291051d2d2db72d81474c442b1c7859584458f119955d5143625e5cab97",
+        "contentFingerprint": "49c0e02cc376228a2bf3fb372b5cc69445f93c59d02e5801461643d48dbf21f3"
+      },
+      "beforeObservation": {
+        "commit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+        "values": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-05",
+          "standardUnit": "삼각비",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "subUnit": "삼각비",
+          "conceptClusterKey": "TRIG_RATIO",
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "crossConceptKeys": [
+            "CC_TRIG_RATIO",
+            "CC_TRIG_MEASUREMENT"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "NONE",
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "primaryMethod": null,
+          "decisiveStep": null,
+          "sourceFingerprint": "8e6c1e27d2abd9a3d7b6af0cd4a4e1aaa10795e90339867acdccaf1cec1a24d5",
+          "contentFingerprint": "fe317b1f9df72fe7bbc7a1fb6a8c682137574242fcf896621317997e5ad68b8e",
+          "L1": "삼각비",
+          "L2": "삼각비의 활용",
+          "L3": "삼각비의 활용",
+          "L4": "삼각비로 직접 길이·높이·거리 구하기"
+        },
+        "metadataRowStableSha256": "17a706690209dcabcbfa4ab7444ee4d91e2ea8aa57167bb5be7ff45211c9c8b0",
+        "identityRowStableSha256": "43bcec5fa0d2a19a435cd4e4afc5d9c783ff10cf89977c7e3a39d3ae5287975a",
+        "identityBefore": {
+          "sourceFingerprint": "8e6c1e27d2abd9a3d7b6af0cd4a4e1aaa10795e90339867acdccaf1cec1a24d5"
+        },
+        "mustRefetchAfterActualRecovery": true
+      },
+      "draftSourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+        "reviewRef": {
+          "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+          "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9"
+        },
+        "proposalFinalization": {
+          "schemaVersion": "archive-native-proposal-finalization-v2",
+          "finalizationCommit": "9e50297143a0a30a0a1daf5e1b5f4c919a025371",
+          "finalizationRef": {
+            "path": ".archive-meta-register/evidence/m3s2-proposal-finalization-20261115/finalized-applications.json",
+            "sha256": "c16d8e25a8f05ee6af3d144520a4753ed98bbeffc06aed6948413b5afd2584ae"
+          },
+          "proposalSelections": [
+            {
+              "documentRef": {
+                "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.proposals.json",
+                "sha256": "3bfceaeaccaaa79e8b06912de334d13920ea4cc4ff05cf3b9195c6cb88f6e3e4"
+              },
+              "index": 0,
+              "proposalSha256": "dbdab4eb244f93fb39f285438400918afc6198a21ea27a0241474ea21431c46c",
+              "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+              "sourceOrdinal": 8
+            }
+          ]
+        }
+      },
+      "registryChangeDraft": {
+        "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+        "collection": "conditions",
+        "match": {
+          "conditionKey": "COND_EXCLUDED_ANGLE_VALUE"
+        },
+        "before": null,
+        "after": {
+          "conditionKey": "COND_EXCLUDED_ANGLE_VALUE",
+          "canonicalLabelKo": "특정 예각 값 제외",
+          "definition": "문제에서 특정 예각 값을 제외하도록 명시하여, 그 각에서 서로 다른 삼각비 표현이 같은 값을 갖는 경우를 배제하는 조건.",
+          "aliases": [],
+          "owner": "CONDITION_CORE",
+          "status": "ACTIVE",
+          "sourceEligibility": "ORIGINAL_EXAM",
+          "supportingQuestionUids": [
+            "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74"
+          ],
+          "supportingItemCount": 1,
+          "evidenceProvenance": [
+            {
+              "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+              "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+              "sourceOrdinal": 8,
+              "nativeReviewRef": {
+                "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+                "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+                "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9"
+              },
+              "nativeProposalDocumentRef": {
+                "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.proposals.json",
+                "sha256": "3bfceaeaccaaa79e8b06912de334d13920ea4cc4ff05cf3b9195c6cb88f6e3e4"
+              },
+              "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+              "currentSourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+              "currentSourceRawSha256": "616a36936b61a7885e83b4c0702a09006f759819bc8abb03e23b6455672dba98"
+            }
+          ]
+        }
+      },
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/26_삼산중_2학기_중간_중3_기출/q8_question-v2.svg",
+          "sha256": "d8cc56cdd1466b324ffddd98fed8f6f2c628f2904acf69185cba3422a09aa657",
+          "currentCommit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+          "immutableCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+          "currentGitBlobSha1": "8981c33c7075e718ddd11ccb7baae8182b377910"
+        },
+        {
+          "path": "archive/assets/images/26_삼산중_2학기_중간_중3_기출/q8-solution.svg",
+          "sha256": "6c1176eb7549a84c96c2ecd4c209f5a6d4934630400ddcf60375fbbbccf056bf",
+          "currentCommit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+          "immutableCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+          "currentGitBlobSha1": "43594268c480d2ce0061a8b9751abc1efb91f234"
+        }
+      ],
+      "newDefinition": true,
+      "sourceRationaleUnchanged": true,
+      "newMathematicalQa": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "examId": "E001",
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
+      "status": "PREPARATION_ONLY_RECOVERY_RECEIPT_REQUIRED",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+        "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9",
+        "bytes": 154687
+      },
+      "nativeItemStableSha256": "667b48e4a955fbf088ec87fbb182b0b8368dcec38ed9e449e6f22c9f5816ef35",
+      "finalizationRef": {
+        "commit": "9e50297143a0a30a0a1daf5e1b5f4c919a025371",
+        "path": ".archive-meta-register/evidence/m3s2-proposal-finalization-20261115/finalized-applications.json",
+        "sha256": "c16d8e25a8f05ee6af3d144520a4753ed98bbeffc06aed6948413b5afd2584ae",
+        "bytes": 116760
+      },
+      "applicationStableSha256": "6cfae630671dec211ee947f683ea2e5d7dcf892376fbca148e8c76bd7ecbdee9",
+      "sourceSnapshot": {
+        "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+        "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+        "blob": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+        "sha256": "616a36936b61a7885e83b4c0702a09006f759819bc8abb03e23b6455672dba98",
+        "questionSha256": "862a4bcb72ec52d1dcb9b5cef3272810e3bc28d7c9475ce307a5bc70df738b50"
+      },
+      "currentWholeQuestionStableSha256": "862a4bcb72ec52d1dcb9b5cef3272810e3bc28d7c9475ce307a5bc70df738b50",
+      "wholeQuestionMatchesApprovedSnapshot": true,
+      "namespaceObservation": {
+        "source": {
+          "curriculum": null,
+          "curriculumKey": null,
+          "courseKey": null
+        },
+        "metadata": {
+          "curriculum": "2015",
+          "curriculumKey": "2015",
+          "courseKey": "M3-2"
+        },
+        "noNewNamespaceSourcePatch": true
+      },
+      "sourceMetadataPatch": {},
+      "sourcePatchFields": [],
+      "draftAfter": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_EQUILATERAL_TRIANGLE",
+          "CC_CIRCLE_SECTOR_AREA",
+          "CC_PYTHAGOREAN_THEOREM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": "현 AP까지의 중심거리에서 AP를 먼저 결정하고, 중심각 120°인 부채꼴과 두 삼각형을 분해하여 정삼각형에서 빼는 넓이를 얻는다. 주된 현 길이 복원에 부채꼴 넓이 계산이 결합된 문항이다.",
+        "decisiveStep": "현 AP까지의 중심거리에서 AP를 먼저 결정하고, 중심각 120°인 부채꼴과 두 삼각형을 분해하여 정삼각형에서 빼는 넓이를 얻는다. 주된 현 길이 복원에 부채꼴 넓이 계산이 결합된 문항이다.",
+        "sourceFingerprint": "0a5174b679c93b913e50c736f41f0b49666113eda10eaa59f1ec4dcd81054216",
+        "contentFingerprint": "fc4af0b68c1789c3ce57d3f2ff8ddc089ccab5e46b911944324b0ebd7d9cdde1"
+      },
+      "beforeObservation": {
+        "commit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+        "values": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+          "subUnit": "원과 직선",
+          "conceptClusterKey": "CIRCLE_LINE",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+          "crossConceptKeys": [
+            "CC_EQUILATERAL_TRIANGLE",
+            "CC_CIRCLE_SECTOR_AREA",
+            "CC_SPECIAL_ANGLES"
+          ],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "level": "상",
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "primaryMethod": null,
+          "decisiveStep": null,
+          "sourceFingerprint": "1b60f4fa8133fe52849538a6e715fe17af0d762aad0177b616d87b2b8c1dbe45",
+          "contentFingerprint": "abcf8ac8d1a174a66145067d03ce41129b1322d53f3b645ac5b626bc868d79d0",
+          "L1": "원의 성질",
+          "L2": "원과 직선",
+          "L3": "원주각·중심각과 원의 각 관계",
+          "L4": "부채꼴과 원이 포함된 도형의 길이·넓이"
+        },
+        "metadataRowStableSha256": "4ab04b12024a44f8f05c97cd43998ff92e6d6ff643100676c882ec3f160d208c",
+        "identityRowStableSha256": "dfb465d9e3b479cd7dcee98733ecf5dd3ddd3f70c044a4cd20dda4a4c05a2bce",
+        "identityBefore": {
+          "sourceFingerprint": "1b60f4fa8133fe52849538a6e715fe17af0d762aad0177b616d87b2b8c1dbe45"
+        },
+        "mustRefetchAfterActualRecovery": true
+      },
+      "draftSourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+        "reviewRef": {
+          "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+          "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9"
+        },
+        "proposalFinalization": {
+          "schemaVersion": "archive-native-proposal-finalization-v2",
+          "finalizationCommit": "9e50297143a0a30a0a1daf5e1b5f4c919a025371",
+          "finalizationRef": {
+            "path": ".archive-meta-register/evidence/m3s2-proposal-finalization-20261115/finalized-applications.json",
+            "sha256": "c16d8e25a8f05ee6af3d144520a4753ed98bbeffc06aed6948413b5afd2584ae"
+          },
+          "proposalSelections": [
+            {
+              "documentRef": {
+                "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.proposals.json",
+                "sha256": "3bfceaeaccaaa79e8b06912de334d13920ea4cc4ff05cf3b9195c6cb88f6e3e4"
+              },
+              "index": 3,
+              "proposalSha256": "62beda64f613777fe12511ec498f2aa888cfac46a07cba65a16fe45bccc1586e",
+              "questionUid": "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
+              "sourceOrdinal": 19
+            }
+          ]
+        }
+      },
+      "registryChangeDraft": null,
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/26_삼산중_2학기_중간_중3_기출/q19_question-v2.svg",
+          "sha256": "64a5fe49cc0b2b3323ede2c2bf621f5ec759e7dbe4ce0098e7450808ea98d8ce",
+          "currentCommit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+          "immutableCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+          "currentGitBlobSha1": "3f44b189c6dc9276d01882f574e9d1b649822018"
+        },
+        {
+          "path": "archive/assets/images/26_삼산중_2학기_중간_중3_기출/q19-solution.svg",
+          "sha256": "4882d6d2d43064164b6af60b0c36f88015ed3223214c0451b345da733c40ba8f",
+          "currentCommit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+          "immutableCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+          "currentGitBlobSha1": "5a55736a216087889e8c38661226a7f09089cc7b"
+        }
+      ],
+      "newDefinition": false,
+      "sourceRationaleUnchanged": true,
+      "newMathematicalQa": 0,
+      "newDifficultyJudgments": 0
+    },
+    {
+      "examId": "E017",
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_26ba5f84c88b65529515252ee9a59dea9045f235aa88303f93ef47b8c8808074",
+      "status": "PREPARATION_ONLY_RECOVERY_RECEIPT_AND_TPL_PROVIDER_REQUIRED",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E017.meta.json",
+        "sha256": "bd0eca3b50372ffb1608829ff8b01a35f38d0e272008d62a3d8ba12be3d0c59d",
+        "bytes": 185190
+      },
+      "nativeItemStableSha256": "9ce51dffacdcbf768388d5218d7ac1be7caf02d0fb98580b60077d9dff00bd7f",
+      "finalizationRef": {
+        "commit": "156e71e9916ba7d71fa2f071d30669b056a3c8f4",
+        "path": ".archive-meta-register/evidence/m3s2-tpl5-finalization-20261115/independent-review.json",
+        "sha256": "c58b0442f5333aa6ddfda8b73febb7ba7431ce305093d93ecdf696d0d49e53ea",
+        "bytes": 11722
+      },
+      "sourceSnapshot": {
+        "commit": "22d5b2fa1c09eec588c434a16c41ae197e946c80",
+        "examId": "E017",
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_26ba5f84c88b65529515252ee9a59dea9045f235aa88303f93ef47b8c8808074",
+        "sourcePath": "archive/exams/original/middle/m3/2final/24_풍덕중_2학기_기말_중3_수학.js",
+        "sourceBlobSha1": "66c4b936639266c2fe7209d86a9983c7ca05e74f",
+        "sourceRawSha256": "f8ce09df1943691c5bed1b9ea3a9c3c66096dbd2d4c05a67784b25d0e818a1d1",
+        "questionStableSha256": "a20391f05580175d635d2b12188304707dc188bf0c9740159b6e946e96ad8c83",
+        "nativeReview": {
+          "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "path": "docs/operations/m3-s2-meta-full-20261114/exams/E017.meta.json",
+          "sha256": "bd0eca3b50372ffb1608829ff8b01a35f38d0e272008d62a3d8ba12be3d0c59d"
+        },
+        "sourceIdenticalToIndependentReview": true
+      },
+      "nativeFieldsMatchExceptApprovedTemplate": true,
+      "applicationStableSha256": "cf3cdac41f4a8b8a9055550ce66675efdc96b76c04c581b65d73d0a464a1245e",
+      "currentWholeQuestionStableSha256": "a20391f05580175d635d2b12188304707dc188bf0c9740159b6e946e96ad8c83",
+      "wholeQuestionMatchesApprovedSnapshot": true,
+      "sourceMetadataPatch": {
+        "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+        "courseKey": "M3-2"
+      },
+      "sourcePatchFields": [
+        "templateKey",
+        "courseKey"
+      ],
+      "draftAfter": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+        "subUnit": "원주각",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "courseKey": "M3-2",
+        "primaryMethod": "대각의 두 원주각이 보는 호가 원 전체를 이룬다는 이유로 대각합180도를 설명하고 주어진130도를 뺀다.",
+        "decisiveStep": "대각의 두 원주각이 보는 호가 원 전체를 이룬다는 이유로 대각합180도를 설명하고 주어진130도를 뺀다.",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "sourceFingerprint": "9b029d4fc99d0a403cd8325158fd7ef07ec5f9d6c5ed343bbb65fc0f4fc62c10",
+        "contentFingerprint": "bdc9453b16304aa6342dd9fd2aea031c2e4e77b84aae75e6e2df79bb7a3f2ec1"
+      },
+      "beforeObservation": {
+        "commit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+        "values": {
+          "standardCourse": "중3 수학",
+          "standardUnitKey": "M3-06",
+          "standardUnit": "원의 성질",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "subUnit": "원주각",
+          "problemTypeKey": "",
+          "templateKey": "",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "",
+          "level": null,
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "courseKey": null,
+          "primaryMethod": null,
+          "decisiveStep": null,
+          "curriculum": null,
+          "curriculumKey": null,
+          "sourceFingerprint": "9b029d4fc99d0a403cd8325158fd7ef07ec5f9d6c5ed343bbb65fc0f4fc62c10",
+          "contentFingerprint": "bdc9453b16304aa6342dd9fd2aea031c2e4e77b84aae75e6e2df79bb7a3f2ec1",
+          "L1": null,
+          "L2": null,
+          "L3": null,
+          "L4": null
+        },
+        "metadataRowStableSha256": "5ab1ff80d4a5849f66dd6fe4e9e68aa13f8f67ddddd780f98356015b8c77c7dd",
+        "identityRowStableSha256": "4036918736bc5e3d5d1d96afd8759c601999dc9967a5b62d49dbc0a085a8c38c",
+        "identityBefore": {
+          "sourceFingerprint": "9b029d4fc99d0a403cd8325158fd7ef07ec5f9d6c5ed343bbb65fc0f4fc62c10"
+        },
+        "mustRefetchAfterActualRecovery": true
+      },
+      "draftSourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E017.meta.json",
+        "reviewRef": {
+          "path": "docs/operations/m3-s2-meta-full-20261114/exams/E017.meta.json",
+          "sha256": "bd0eca3b50372ffb1608829ff8b01a35f38d0e272008d62a3d8ba12be3d0c59d"
+        },
+        "proposalFinalization": {
+          "schemaVersion": "archive-native-proposal-finalization-v1",
+          "finalizationCommit": "156e71e9916ba7d71fa2f071d30669b056a3c8f4",
+          "finalizationRef": {
+            "path": ".archive-meta-register/evidence/m3s2-tpl5-finalization-20261115/independent-review.json",
+            "sha256": "c58b0442f5333aa6ddfda8b73febb7ba7431ce305093d93ecdf696d0d49e53ea"
+          },
+          "proposalMappingRef": {
+            "path": ".archive-meta-register/evidence/m3s2-tpl5-finalization-20261115/proposal-mapping.json",
+            "sha256": "e51aa994458e76fd7ca7c17c09f7aa0ed38117357e9349491b16a305e93badaa"
+          },
+          "sourceBindingRef": {
+            "path": ".archive-meta-register/evidence/m3s2-tpl5-finalization-20261115/published-source-binding.json",
+            "sha256": "f463526fc3170799f0708987f9fd896753e0564cf331281e4a8bec863d3fe93b"
+          },
+          "proposalIds": [
+            "B-E017-REUSE-TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES"
+          ]
+        }
+      },
+      "registryChangeDraft": null,
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/24_풍덕중_2학기_기말_중3_수학/q23-solution-v2.svg",
+          "sha256": "d39b859f77f62be57d931b23db8fd46d452ea4aa802e85413ec09a90ef0ca2b8",
+          "currentCommit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+          "immutableCommit": "86a7f6d4230ea1d60c45da7e8425aeeb6293cef7",
+          "currentGitBlobSha1": "eed7b9f62a7244d5218be0be24980be1c9ab3ffa"
+        },
+        {
+          "path": "archive/assets/images/24_풍덕중_2학기_기말_중3_수학/s04.png",
+          "sha256": "f12dd157c3fbae5b4d96a182119c73f80a6d827fd2b21bcda6074210e681d4e1",
+          "currentCommit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+          "immutableCommit": "86a7f6d4230ea1d60c45da7e8425aeeb6293cef7",
+          "currentGitBlobSha1": "c707152141d9402f9675190ad41423efd6847a1a"
+        }
+      ],
+      "explicitNamespaceEvidence": {
+        "nativeScope": "M3-2",
+        "nativeField": "rpm.base.scope",
+        "unchangedSourceCurriculum": "2015",
+        "nativeCrosswalkRecordId": "M3-RPM-077",
+        "currentRecordMatchesNativeRecord": true,
+        "recordStableSha256": "a21f922ced918c6df11b857b8759cc37ecda00e4cb189681d7aa3511251ceb89",
+        "proofRef": {
+          "path": "docs/operations/m3s2-tpl5-transport-20261115/native-course-namespace-proof.json",
+          "sha256": "ab11e8f6e03d2812bdb960122f665ac70e99df0c67c383fdbf11ce72873c9cb3"
+        }
+      },
+      "providerDependency": {
+        "requestPath": ".archive-meta-register/inbox/m3s2-tpl5-e005-transport-20261115.json",
+        "observedLocalInputCommit": "c999ffcb1939261ed90b27e075d529d2fd52cb46",
+        "requestRawSha256": "d716d9a68c3e618ee4d27707a6858d836dbc2875e840b6c666880f536aaec8dd",
+        "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+        "definitionStableSha256": "f585110cfaac97f54743c6d1fbfeea4e37aa6c89bab407f7936874eb1d14ea85",
+        "mustBeActuallyActiveBeforeRegistration": true,
+        "alreadyInstalledOnActualMain": false
+      },
+      "newDefinition": false,
+      "newMathematicalQa": 0,
+      "newDifficultyJudgments": 0
+    }
+  ],
+  "sourceSummaries": [
+    {
+      "examId": "E001",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "currentSource": {
+        "commit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+        "blobSha1": "e4bd31bf6103609c12d2f6c3a77adbc5b6281aa9",
+        "rawSha256": "c0d29b7169882a0c78537d559b11392154631ba77636d37e80340e95306590ca"
+      },
+      "sameSourceAtRootNew12Input": true,
+      "sourceQuestionCount": 24,
+      "sourcePatchOrdinals": [
+        8
+      ],
+      "newApplicationOrdinals": [
+        8,
+        19
+      ],
+      "currentStudentPayloadsUnchanged": 24,
+      "nonPatchedWholeObjectsUnchanged": 23,
+      "candidateAppendRepresentation": {
+        "blobSha1": "5e3a75e417656a9043e7feb22620c2aa86572e78",
+        "rawSha256": "cffee80824b686fd2a7a1d1beed5431f3a0381b9744e755ce77f36bf97e88457",
+        "notWrittenToProductionSource": true,
+        "mustRecomputeWithActualRecoveryBase": true
+      },
+      "preservationRequirement": {
+        "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+        "expectedCount": 5,
+        "sourceOrdinals": [
+          2,
+          4,
+          5,
+          7,
+          24
+        ],
+        "questionUids": [
+          "qid_v1_ab95fc3ac35a546243376fb7ffd4c66ae94161c410fc794f00417c54d512f192",
+          "qid_v1_04ffcbf3befa26a307a87e5037cafd0ffecf7cf1e30a57b5dcbf25aeabb24fff",
+          "qid_v1_0db703b21a0a6fb130d81f94cc4091088d55267e1e70ba29de11299b9e7668e5",
+          "qid_v1_f1aa4b2260fb163c51e65b7d7e79112ad9d1b6a6fa75c995c6bd3fed04b687f9",
+          "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5"
+        ],
+        "futureActualRecoveryReceiptRef": null,
+        "sourceRebindRequestNotIssued": true,
+        "oldPreviewReceiptsNotAcceptedAsPredecessor": true,
+        "legacyE01715Plus3PlanSupersededByActual18": false,
+        "requiredContract": "Full exact-set preservation of the actual recovered FINAL_QA cohort; immutable recovered original-native and durable source-review lineage must be revalidated by the official registrar."
+      }
+    },
+    {
+      "examId": "E017",
+      "sourcePath": "archive/exams/original/middle/m3/2final/24_풍덕중_2학기_기말_중3_수학.js",
+      "currentSource": {
+        "commit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+        "blobSha1": "59822370af4a0e61bee4a5683143ed736f497c42",
+        "rawSha256": "bf4785b44d2137bd8753df2e5834403daec60675b9b7c8f61bac8ebc91151acf"
+      },
+      "sameSourceAtRootNew12Input": true,
+      "sourceQuestionCount": 23,
+      "sourcePatchOrdinals": [
+        23
+      ],
+      "newApplicationOrdinals": [
+        23
+      ],
+      "currentStudentPayloadsUnchanged": 23,
+      "nonPatchedWholeObjectsUnchanged": 22,
+      "candidateAppendRepresentation": {
+        "blobSha1": "922a05f3af3aff66daf62a85ee9e25ff2e49072c",
+        "rawSha256": "aa6a339383f672c17dcdfd6acd081473d08d36e0aec9a7bea58ce00b6e50bda5",
+        "notWrittenToProductionSource": true,
+        "mustRecomputeWithActualRecoveryBase": true
+      },
+      "preservationRequirement": {
+        "sourceArchiveFile": "original/middle/m3/2final/24_풍덕중_2학기_기말_중3_수학.js",
+        "expectedCount": 18,
+        "sourceOrdinals": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          9,
+          11,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "questionUids": [
+          "qid_v1_abc338d8026a2f8896d67ffb7bbed0e806f1e22c2170583dba4fd518211682ce",
+          "qid_v1_1a74c734d78746bd1b09bd1b66a929e7f3fad20c6301abf7909ce6ba9646aca0",
+          "qid_v1_c6e0e4557f43a326f81f6af296c9838622ff1bf1295b30a1a3508da74d71eeba",
+          "qid_v1_5410ac0c007aa6abd5d1c868a33b7489599dafd6ef8484235b4415abc501c084",
+          "qid_v1_9868b8468a33c3bdb26ddc0a347af449096040a4b4070a5adad9696b584b7934",
+          "qid_v1_87cd6ed2298c49062f7b29a99fbf9d62a344103effc2a3acac9a58efd841a097",
+          "qid_v1_4f8d4a482d310b71d7e9be5cd124ad07bd69fa8ebd3646a8d6c173e95485e638",
+          "qid_v1_8e11620988eaf1afdf004961f15f57dc42d140746e3b05e65b8c1534f618fb5c",
+          "qid_v1_850fcf61ea5f1f1c81c3c9d3d10f69c387dc11c800aaa7d2d7bd602f89a05420",
+          "qid_v1_7038ea7d9fc17a089bb84393139938acd7aafb5b54008c0b8c2360c9592b13f5",
+          "qid_v1_7890109e827de4a0b57d5b05ff773b1772028863816f78dc1f60d62571859de2",
+          "qid_v1_62f17a8816fa5773a9db3fd751edf6333eb77b0a02c9e1e44630dfb8c504ada0",
+          "qid_v1_e0879785596d4546903e64f8b93577645ae4350d983805937dc66d18787d74c2",
+          "qid_v1_344a3e6e187e96c64fcb95e3cd4f4d0839e7d08c6004c9d632cdbcb3124d3d2b",
+          "qid_v1_cc730575ccc2472322e45080f84b386d09e535edba9795084d7306443d6f7339",
+          "qid_v1_fe16586c69d44e78a0afaa71ecc4f67ef55bc1235b7b3a7884ce5e8d2851c8ca",
+          "qid_v1_8d1a53a9d3d783e278bd7a58f45ccd737a46e48e44102b99044ff73275b7c523",
+          "qid_v1_de5c9f171c3ce37bd236c48ea238097df1dd2d5c2344d7090b59223f8d43bfa8"
+        ],
+        "futureActualRecoveryReceiptRef": null,
+        "sourceRebindRequestNotIssued": true,
+        "oldPreviewReceiptsNotAcceptedAsPredecessor": true,
+        "legacyE01715Plus3PlanSupersededByActual18": true,
+        "requiredContract": "Full exact-set preservation of the actual recovered FINAL_QA cohort; immutable recovered original-native and durable source-review lineage must be revalidated by the official registrar."
+      }
+    }
+  ],
+  "evidenceManifest": [
+    {
+      "commit": "9e50297143a0a30a0a1daf5e1b5f4c919a025371",
+      "path": ".archive-meta-register/evidence/m3s2-proposal-finalization-20261115/finalized-applications.json",
+      "sha256": "c16d8e25a8f05ee6af3d144520a4753ed98bbeffc06aed6948413b5afd2584ae",
+      "bytes": 116760
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+      "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9",
+      "bytes": 154687
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E017.meta.json",
+      "sha256": "bd0eca3b50372ffb1608829ff8b01a35f38d0e272008d62a3d8ba12be3d0c59d",
+      "bytes": 185190
+    },
+    {
+      "commit": "9e50297143a0a30a0a1daf5e1b5f4c919a025371",
+      "path": ".archive-meta-register/evidence/m3s2-proposal-finalization-20261115/root-condition-boundary-review.json",
+      "sha256": "c660e2edce02cb5b16e837da74bdee39ff2fbd3f37d66d894a8d8b71e894961f",
+      "bytes": 28896
+    },
+    {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.proposals.json",
+      "sha256": "3bfceaeaccaaa79e8b06912de334d13920ea4cc4ff05cf3b9195c6cb88f6e3e4",
+      "bytes": 2689
+    },
+    {
+      "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+      "path": "archive/assets/images/26_삼산중_2학기_중간_중3_기출/q8_question-v2.svg",
+      "sha256": "d8cc56cdd1466b324ffddd98fed8f6f2c628f2904acf69185cba3422a09aa657",
+      "bytes": 11851
+    },
+    {
+      "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+      "path": "archive/assets/images/26_삼산중_2학기_중간_중3_기출/q8-solution.svg",
+      "sha256": "6c1176eb7549a84c96c2ecd4c209f5a6d4934630400ddcf60375fbbbccf056bf",
+      "bytes": 11313
+    },
+    {
+      "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+      "path": "archive/assets/images/26_삼산중_2학기_중간_중3_기출/q19_question-v2.svg",
+      "sha256": "64a5fe49cc0b2b3323ede2c2bf621f5ec759e7dbe4ce0098e7450808ea98d8ce",
+      "bytes": 16700
+    },
+    {
+      "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+      "path": "archive/assets/images/26_삼산중_2학기_중간_중3_기출/q19-solution.svg",
+      "sha256": "4882d6d2d43064164b6af60b0c36f88015ed3223214c0451b345da733c40ba8f",
+      "bytes": 31665
+    },
+    {
+      "commit": "156e71e9916ba7d71fa2f071d30669b056a3c8f4",
+      "path": ".archive-meta-register/evidence/m3s2-tpl5-finalization-20261115/independent-review.json",
+      "sha256": "c58b0442f5333aa6ddfda8b73febb7ba7431ce305093d93ecdf696d0d49e53ea",
+      "bytes": 11722
+    },
+    {
+      "commit": "156e71e9916ba7d71fa2f071d30669b056a3c8f4",
+      "path": ".archive-meta-register/evidence/m3s2-tpl5-finalization-20261115/proposal-mapping.json",
+      "sha256": "e51aa994458e76fd7ca7c17c09f7aa0ed38117357e9349491b16a305e93badaa",
+      "bytes": 79139
+    },
+    {
+      "commit": "156e71e9916ba7d71fa2f071d30669b056a3c8f4",
+      "path": ".archive-meta-register/evidence/m3s2-tpl5-finalization-20261115/published-source-binding.json",
+      "sha256": "f463526fc3170799f0708987f9fd896753e0564cf331281e4a8bec863d3fe93b",
+      "bytes": 5618
+    },
+    {
+      "commit": "22d5b2fa1c09eec588c434a16c41ae197e946c80",
+      "path": "archive/exams/original/middle/m3/2final/24_풍덕중_2학기_기말_중3_수학.js",
+      "sha256": "f8ce09df1943691c5bed1b9ea3a9c3c66096dbd2d4c05a67784b25d0e818a1d1",
+      "bytes": 61796
+    },
+    {
+      "commit": "86a7f6d4230ea1d60c45da7e8425aeeb6293cef7",
+      "path": ".archive-meta-register/inbox/m3s2-tpl5-e017-transport-20261115.json",
+      "sha256": "e2866b5b32429d15a73199d7d29435f6a5f9c1245e5f304550b589b256117812",
+      "bytes": 7710
+    },
+    {
+      "commit": "22d5b2fa1c09eec588c434a16c41ae197e946c80",
+      "path": "archive/assets/images/24_풍덕중_2학기_기말_중3_수학/q23-solution-v2.svg",
+      "sha256": "d39b859f77f62be57d931b23db8fd46d452ea4aa802e85413ec09a90ef0ca2b8",
+      "bytes": 27786
+    },
+    {
+      "commit": "86a7f6d4230ea1d60c45da7e8425aeeb6293cef7",
+      "path": "archive/assets/images/24_풍덕중_2학기_기말_중3_수학/q23-solution-v2.svg",
+      "sha256": "d39b859f77f62be57d931b23db8fd46d452ea4aa802e85413ec09a90ef0ca2b8",
+      "bytes": 27786
+    },
+    {
+      "commit": "22d5b2fa1c09eec588c434a16c41ae197e946c80",
+      "path": "archive/assets/images/24_풍덕중_2학기_기말_중3_수학/s04.png",
+      "sha256": "f12dd157c3fbae5b4d96a182119c73f80a6d827fd2b21bcda6074210e681d4e1",
+      "bytes": 237608
+    },
+    {
+      "commit": "86a7f6d4230ea1d60c45da7e8425aeeb6293cef7",
+      "path": "archive/assets/images/24_풍덕중_2학기_기말_중3_수학/s04.png",
+      "sha256": "f12dd157c3fbae5b4d96a182119c73f80a6d827fd2b21bcda6074210e681d4e1",
+      "bytes": 237608
+    },
+    {
+      "commit": "86a7f6d4230ea1d60c45da7e8425aeeb6293cef7",
+      "path": "docs/operations/m3s2-tpl5-transport-20261115/native-course-namespace-proof.json",
+      "sha256": "ab11e8f6e03d2812bdb960122f665ac70e99df0c67c383fdbf11ce72873c9cb3",
+      "bytes": 5977
+    }
+  ],
+  "requiredNextActions": [
+    "Wait for actual main recovery receipts for the E001 original5 and E017 original18 cohorts.",
+    "Re-read current source bytes, selected metadata/identity before values, and both actual recovered receipt raw hashes; stop on drift.",
+    "Re-read the actual ACTIVE E005-provided TPL before E017 registration. Do not assume the CC/COND dependency graph orders TPL; any same-transaction alternative requires its own official order and registrar proof.",
+    "Group E001 Q8/Q19 against one final source blob, append only the approved Q8 condition, and preserve the recovered five separately.",
+    "Append only E017 Q23 TPL/courseKey and preserve all eighteen recovered approvals through their actual full cohort receipt.",
+    "Include exact native/finalization/current renderer references in both approval/item evidence; retain all recovered sidecars and ancestry.",
+    "Run official dry/write/replay, complete source/identity/runtime boundaries, catalog/Consumer, immutable shadow and exact-head CI before publication."
+  ]
+}

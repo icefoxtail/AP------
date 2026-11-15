@@ -12,6 +12,7 @@ import {validateReviewedSourceReassessment} from './reviewed-source-reassessment
 import {REVIEWED_META_VALUE_FIELDS} from './reviewed-meta-value-fields.mjs';
 import {nativeReviewedRendererRebind} from './native-reviewed-renderer-reuse.mjs';
 import {reviewedRendererBindingPath} from './reviewed-current-renderer-continuity.mjs';
+import {isIssuedSourceBindingRecovery,hasIssuedSourceBindingRecoveryMarker} from './issued-source-binding-recovery.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a-f0-9]{64}$/;
@@ -44,7 +45,8 @@ function evidence(root,refs) {
 // from turning an issued preservation receipt into an ordinary FINAL_QA receipt.
 export function isPartialNativeSourcePreservation(receipt,root) {
   if(receipt?.approval?.type!=='FINAL_QA'||!(receipt.scope==='PARTIAL_UIDS'||Object.hasOwn(receipt,'partialUidCount')))return false;
-  if(receipt.appliedRecords?.some(hasSourceSubsetMarker)||receipt.runtimeRecords?.some(hasSourceSubsetMarker))return true;
+  if(receipt.appliedRecords?.some(hasSourceSubsetMarker)||receipt.runtimeRecords?.some(hasSourceSubsetMarker)||
+    receipt.appliedRecords?.some(hasIssuedSourceBindingRecoveryMarker)||receipt.runtimeRecords?.some(hasIssuedSourceBindingRecoveryMarker))return true;
   if(Object.hasOwn(receipt.approval,'sourceRebind')||receipt.newMetadataApprovals===0&&receipt.preservedMetadataApprovals>0||
     Array.isArray(receipt.approval.evidenceRefs)&&receipt.approval.evidenceRefs.some(ref=>nativePath(ref?.path)))return true;
   if(!root||!ID.test(receipt.requestId||'')||!Array.isArray(receipt.appliedRecords)||!receipt.appliedRecords.length||
@@ -81,6 +83,7 @@ export function isPartialNativeSourcePreservation(receipt,root) {
 // Preserve the existing non-native producer behavior. Only a claimed partial
 // preservation chain blocks that fallback when its original proof cannot replay.
 export function hasNativeSourcePreservationClaim({root,current,runtimeRecord,nativeSource}) {
+  if(hasIssuedSourceBindingRecoveryMarker(current)||hasIssuedSourceBindingRecoveryMarker(runtimeRecord))return true;
   if(hasSourceSubsetMarker(current)||hasSourceSubsetMarker(runtimeRecord))return true;
   for(const row of [current,runtimeRecord])for(const relative of row?.approvalEvidence||[]) {
     if(!nativePath(relative))continue;
@@ -349,6 +352,11 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
   if(ordinaryReviewedReassessment({receipt,nativeSource,question,identity,ordinal,current,registry}))return null;
   const seen=new Set();
   while(isPartialNativeSourcePreservation(cursor,root)) {
+    if(isIssuedSourceBindingRecovery(cursor.approval?.sourceRebind)) {
+      const context={nativeSource:source,current:state.row,identity:state.identity,question:source.bank[ordinal-1]};
+      if(revalidateLeaf(context)!==receiptPath(cursor.requestId))fail('issued source recovery ancestor cannot replay');
+      break;
+    }
     // A source-only descendant may reach a direct reassessment whose evidence
     // also names older receipts. Replay that cursor's immutable native proof;
     // the lineage marker alone cannot end the preservation chain.

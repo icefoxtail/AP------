@@ -26,6 +26,7 @@ import { isExplicitSourceSubsetRebind, isFullSourceSubsetRebind, validateExplici
 import { nativeReviewReceipt } from "./auto-register-merged-source.mjs";
 import { isOriginalFinalQaRendererPreservation, loadOriginalFinalQaRendererPreservation, planOriginalRendererPreservedRow,
   buildOriginalRendererBinding, assertOriginalRendererReceipt } from "./original-finalqa-renderer-preservation.mjs";
+import { isIssuedSourceBindingRecovery, registerIssuedSourceBindingRecovery } from "./issued-source-binding-recovery.mjs";
 
 const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
@@ -2108,6 +2109,8 @@ function registerIdentityFingerprintOnly({ root, req, metadata, identity, rows, 
 }
 
 export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false }) {
+  if (isIssuedSourceBindingRecovery(req?.approval?.sourceRebind))
+    return registerIssuedSourceBindingRecovery({ root, request: req, write, verifyProjection });
   if (req.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2") fail("request schema mismatch");
   if (req.registrationMode !== undefined && req.registrationMode !== "IDENTITY_FINGERPRINT_ONLY") fail("unsupported registration mode");
   if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(req.requestId || "")) fail("valid requestId required");

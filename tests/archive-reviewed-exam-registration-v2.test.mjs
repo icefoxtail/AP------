@@ -13,6 +13,8 @@ import { nativeReviewedRendererRebind } from "../archive/tools/meta-foundation/n
 import { buildReviewedRendererBinding } from "../archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs";
 import { loadAuditPreservation } from "../archive/tools/meta-foundation/native-audit-preservation.mjs";
 import { buildReviewedSourceBinding, reviewedSourceBindingPath } from "../archive/tools/meta-foundation/reviewed-source-binding.mjs";
+import { prepareIssuedSourceBindingRecovery, issuedSourceBindingRecoveryPath, isExplicitIssuedSourceBindingRecoveryRequest } from "../archive/tools/meta-foundation/issued-source-binding-recovery.mjs";
+import { loadCanonical as recoveryCanonical, buildCompiled as recoveryCompiled, compiledOutputs as recoveryOutputs, buildRegistryIndex as recoveryIndex } from "../archive/tools/meta-foundation/compile-meta-foundation.mjs";
 import { verifyChangedUidConsumerApproval } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
 import { SOURCE_SUBSET_SCHEMA, SOURCE_SUBSET_EVIDENCE_SCHEMA, sourceSubsetEvidencePath,
   FULL_SOURCE_SUBSET_SCHEMA, FULL_SOURCE_SUBSET_EVIDENCE_SCHEMA, fullSourceSubsetEvidencePath,
@@ -6471,5 +6473,213 @@ test('renderer v3 prior solution witness cannot be omitted or broaden the exact 
     const f = rendererV3PriorSolutionFixture(t); registerReviewedExamV2({ root: f.root, request: f.request, write: true });
     fs.appendFileSync(path.join(f.root, f.solutionPath), ' ');
     assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /live renderer bytes changed/);
+  });
+});
+
+// Model the historical writer's missing sidecar in fixture data only. Production
+// recovery always pins the original issued Git receipt and never edits it.
+function issuedBindingRecoveryFixture(t) {
+  const f=fixture(t),sourcePath=`archive/exams/${f.request.sourceArchiveFile}`;
+  f.request=JSON.parse(JSON.stringify(f.request).replaceAll('UNIT_NEW','M1-RECOVERY-TEST'));
+  f.q.standardUnitKey='M1-RECOVERY-TEST';
+  const complete={difficultyConfidence:'high',difficultyBoundaryFlag:'NONE',legacyLevelCompatibility:'NORMAL'};
+  Object.assign(f.q,complete);Object.assign(f.request.items[0].after,complete);
+  Object.assign(f.request.items[0].before,Object.fromEntries(Object.keys(complete).map(key=>[key,null])));
+  const index=f.read(`${CANON}/registry_index.json`);index.status='ACTIVE';
+  index.canonicalSources.push({path:`${CANON}/metadata_rules.json`});f.put(`${CANON}/registry_index.json`,index);
+  f.put(`${CANON}/metadata_rules.json`,{status:'ACTIVE',integrationPatterns:['NONE']});
+  const conditions=f.read(`${CANON}/condition_registry.json`);conditions.status='ACTIVE';f.put(`${CANON}/condition_registry.json`,conditions);
+  for(const change of f.request.registryChanges){
+    if(change.path.endsWith('/bindings.json'))Object.assign(change.after.bindings[0],{L1:'새 단원',L2:'새 세부단원'});
+    if(change.path.endsWith('/taxonomy.json'))change.after.templates[0].ownerPack='NEW_COURSE';
+  }
+  const bank=[f.q,{...f.q,id:2},{...f.q,id:3}];
+  const initial={...f.read(META).records[0],standardUnitKey:f.q.standardUnitKey,contentFingerprint:auditContentFingerprint(f.q),sourceQuestionNo:1};
+  const records=[initial,{...initial,questionUid:'uid2',sourceOrdinal:2,sourceQuestionNo:2},
+    {questionUid:'uid3',sourceArchiveFile:f.request.sourceArchiveFile,sourceOrdinal:3,sourceQuestionNo:3,sourceFingerprint:'held',reviewStatus:'manual_review'}];
+  f.put(META,{records,counts:{}});f.put('archive/data/question_identity_map.json',{records:structuredClone(records)});
+  const writeBank=()=>{const raw=`window.questions=${JSON.stringify(bank)};\n`;f.put(sourcePath,raw);return raw;};
+  const git=(...args)=>execFileSync('git',args,{cwd:f.root,encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
+  const commit=()=>{git('add','-A');git('-c','user.name=Recovery fixture','-c','user.email=fixture@example.invalid','commit','--allow-empty','-qm','Immutable fixture snapshot');return git('rev-parse','HEAD');};
+  git('init','-q');const first=writeBank();git('hash-object','-w',sourcePath);
+  f.request.scope='PARTIAL_UIDS';f.request.expectedQuestionCount=3;f.request.expectedSourceBlobSha1=blob(first);
+  f.request.items=records.slice(0,2).map(row=>({...structuredClone(f.request.items[0]),questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal}));
+  registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const firstPath=`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${f.request.requestId}.json`;
+  const firstRef={path:firstPath,sha256:hash(fs.readFileSync(path.join(f.root,firstPath)))};commit();
+  bank[2].editorialNote='unselected metadata changed';const source=writeBank();
+  const reviewPath='docs/issued-recovery-native.json',after=structuredClone(f.request.items[0].after);
+  f.put(reviewPath,{schemaVersion:'m3-s2-complete-semantic-review-v1',sourceArchiveFile:f.request.sourceArchiveFile,
+    author:'original-native-reviewer',rootIntegrator:'original-native-integrator',questionCount:3,
+    sourceAfterBlob:blob(source),sourceAfterSha256:hash(source),mathR1R2R3:'NOT_RUN_OUT_OF_SCOPE',
+    items:records.map((row,i)=>({ordinal:i+1,questionUid:row.questionUid,after:i<2?after:{},
+      decisiveStep:'existing reviewed decisive step',decision:i<2?'CORRECT':'REVIEW_COMPLETE_WITH_SOURCE_PREREQUISITE_HOLD',...(i<2?{debts:[]}: {})}))});
+  const reviewCommit=commit(),reviewRef={path:reviewPath,sha256:hash(fs.readFileSync(path.join(f.root,reviewPath)))};
+  const oldRows=f.read(META).records,ids=f.read('archive/data/question_identity_map.json').records;
+  const refs=[...f.evidenceRefs,firstRef,reviewRef],original={schemaVersion:f.request.schemaVersion,requestId:'historical-issued-source-review',scope:'PARTIAL_UIDS',
+    examUid:f.request.examUid,sourceArchiveFile:f.request.sourceArchiveFile,expectedQuestionCount:3,expectedSourceBlobSha1:blob(source),registryChanges:[],
+    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'original-transport-reviewer',evidenceRefs:refs},
+    items:oldRows.slice(0,2).map((row,i)=>({questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal,
+      before:{sourceFingerprint:row.sourceFingerprint,contentFingerprint:row.contentFingerprint},
+      after:{sourceFingerprint:auditSourceFingerprint(bank[i]),contentFingerprint:auditContentFingerprint(bank[i])},
+      identityBefore:{sourceFingerprint:ids[i].sourceFingerprint},evidenceRefs:refs,reason:'preserve the existing approved values with exact native source authority',
+      sourceReview:{schemaVersion:'archive-reviewed-source-reassessment-v1',reviewCommit,reviewPath,reviewRef}}))};
+  const originalPath=`.archive-meta-register/inbox/${original.requestId}.json`;f.put(originalPath,original);const pre=commit();
+  registerReviewedExamV2({root:f.root,request:original,write:true});
+  const originalReceiptPath=`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${original.requestId}.json`;
+  const bindingPath=reviewedSourceBindingPath(original.requestId),receipt=f.read(originalReceiptPath);
+  const runtimePath='archive/data/meta-foundation/runtime/new-course-v1.json';
+  // This is an explicit historical-format fixture transformation, not a writer
+  // option: remove only the new durable output and its corresponding provenance.
+  for(const p of [META,runtimePath]){const doc=f.read(p);for(const row of doc.records)if(Array.isArray(row.approvalEvidence))row.approvalEvidence=row.approvalEvidence.filter(value=>value!==bindingPath);f.put(p,doc);}
+  for(const row of [...receipt.appliedRecords,...receipt.runtimeRecords])row.approvalEvidence=row.approvalEvidence.filter(value=>value!==bindingPath);
+  receipt.outputDigests=receipt.outputDigests.filter(ref=>ref.path!==bindingPath).map(ref=>({...ref,sha256:hash(fs.readFileSync(path.join(f.root,ref.path)))}));
+  fs.unlinkSync(path.join(f.root,bindingPath));f.put(originalReceiptPath,receipt);fs.unlinkSync(path.join(f.root,originalPath));const issued=commit();
+  const priorReceiptRef={path:originalReceiptPath,sha256:hash(fs.readFileSync(path.join(f.root,originalReceiptPath)))};
+  const prepared=prepareIssuedSourceBindingRecovery({root:f.root,requestId:'typed-issued-source-recovery',
+    originalRequestRef:{commit:pre,path:originalPath,sha256:hash(j(original))},issuedReceiptCommit:issued,priorReceiptRef});
+  return {...f,git,commit,bank,sourcePath,writeBank,original,originalReceiptPath,priorReceiptRef,pre,issued,reviewPath,runtimePath,
+    request:prepared.request,prepared,receiptPath:`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${prepared.request.requestId}.json`,
+    proofPath:issuedSourceBindingRecoveryPath(prepared.request.requestId)};
+}
+async function recoveryAuto(f,request=f.request){
+  const {nativeReviewReceipt,activeBindingContext}=await import('../archive/tools/meta-foundation/auto-register-merged-source.mjs');
+  const metadata=f.read(META),identity=f.read('archive/data/question_identity_map.json'),runtime=f.read(f.runtimePath),registry=loadActiveMetaRegistry(f.root);
+  const raw=fs.readFileSync(path.join(f.root,f.sourcePath)),bank=loadSourceBank(raw.toString());
+  assert.equal(registry.status,'ACTIVE',JSON.stringify(registry.errors));
+  return request.items.map(item=>{
+    const current=metadata.records.find(row=>row.questionUid===item.questionUid),id=identity.records.find(row=>row.questionUid===item.questionUid),q=bank[item.sourceOrdinal-1];
+    const runtimeRecord=runtime.records.find(row=>row.questionUid===item.questionUid),check=validateActiveMetaFields({...current,sourceArchiveFile:request.sourceArchiveFile},registry,{requireFields:false});
+    const binding=activeBindingContext({candidate:current,check,registry,runtimeOwner:'NEW_COURSE'});
+    const options={question:q,previous:structuredClone(q),current,identity:id,source:request.sourceArchiveFile,ordinal:item.sourceOrdinal,
+      registry,validate:validateActiveMetaFields,runtimeOwner:'NEW_COURSE',nativeSource:{root:f.root,bytes:raw,blobSha1:blob(raw),bank,runtimeRecord,runtimeStatus:runtime.status,
+        identityMap:identity,identityByJoin:new Map(identity.records.map(row=>[`${row.sourceArchiveFile}#${row.sourceOrdinal}`,row])),runtimeStatusByPack:new Map([['NEW_COURSE',runtime.status]])}};
+    return {native:nativeReviewReceipt({...options,...binding}),auto:planAutoQuestion(options)};
+  });
+}
+test('issued binding recovery replays immutable pre-state, preserves whole-cohort values and issues only new provenance',async t=>{
+  const f=issuedBindingRecoveryFixture(t),old=fs.readFileSync(path.join(f.root,f.originalReceiptPath)),source=fs.readFileSync(path.join(f.root,f.sourcePath)),identity=fs.readFileSync(path.join(f.root,'archive/data/question_identity_map.json'));
+  assert.equal(isExplicitIssuedSourceBindingRecoveryRequest(f.request),true);
+  const before=f.read(META),dry=registerReviewedExamV2({root:f.root,request:f.request});
+  assert.equal(dry.newMetadataApprovals,0);assert.equal(dry.preservedMetadataApprovals,2);assert.equal(dry.sourceReviewUidCount,2);
+  assert.equal(fs.existsSync(path.join(f.root,f.receiptPath)),false);assert.deepEqual(f.read(META),before);
+  registerReviewedExamV2({root:f.root,request:f.request,write:true});assert.equal(registerReviewedExamV2({root:f.root,request:f.request}).replay,true);
+  assert.deepEqual(fs.readFileSync(path.join(f.root,f.originalReceiptPath)),old);assert.deepEqual(fs.readFileSync(path.join(f.root,f.sourcePath)),source);
+  assert.deepEqual(fs.readFileSync(path.join(f.root,'archive/data/question_identity_map.json')),identity);assert.deepEqual(f.read(META).records[2],before.records[2]);
+  const strip=row=>Object.fromEntries(Object.entries(row).filter(([key])=>!['metadataRevision','approvalEvidence'].includes(key)));
+  for(let i=0;i<2;i++)assert.deepEqual(strip(f.read(META).records[i]),strip(before.records[i]));
+  for(const result of await recoveryAuto(f)){assert.equal(result.native,f.receiptPath);assert.equal(result.auto.status,'ALREADY_REGISTERED',JSON.stringify(result.auto));}
+});
+test('issued binding recovery refuses changed authority or any member of the original whole cohort before writing',async t=>{
+  const f=issuedBindingRecoveryFixture(t),paths=[META,'archive/data/question_identity_map.json',f.runtimePath,f.originalReceiptPath,f.sourcePath,f.reviewPath];
+  const frozen=new Map(paths.map(p=>[p,fs.readFileSync(path.join(f.root,p))]));
+  const mutations=[
+    ['subset',request=>request.items.pop()],['semantic after',request=>request.items[0].after.problemTypeKey='PT_OTHER'],
+    ['new approval',request=>request.approval.approvedBy='different-reviewer'],['original commit',request=>request.approval.sourceRebind.originalRequestRef.commit=f.issued],
+    ['issued commit',request=>request.approval.sourceRebind.issuedReceiptCommit=f.pre],['original digest',request=>request.approval.sourceRebind.originalRequestRef.sha256='a'.repeat(64)],
+    ['metadata',()=>{const d=f.read(META);d.records[1].difficultyBucket=4;f.put(META,d);}],
+    ['runtime',()=>{const d=f.read(f.runtimePath);d.records[1].conditionKeys=[];f.put(f.runtimePath,d);}],
+    ['identity',()=>{const d=f.read('archive/data/question_identity_map.json');d.records[1].sourceQuestionNo=20;f.put('archive/data/question_identity_map.json',d);}],
+    ['original receipt',()=>{const d=f.read(f.originalReceiptPath);d.appliedRecords[0].difficultyBucket=4;f.put(f.originalReceiptPath,d);}],
+    ['source outside cohort',()=>fs.appendFileSync(path.join(f.root,f.sourcePath),'\n')],
+    ['missing original native',()=>fs.unlinkSync(path.join(f.root,f.reviewPath))],
+  ];
+  for(const [name,mutate]of mutations)await t.test(name,()=>{
+    const request=structuredClone(f.request);mutate(request);
+    assert.throws(()=>registerReviewedExamV2({root:f.root,request,write:true}),/issued source binding recovery:|git|ENOENT|fatal/);
+    assert.equal(fs.existsSync(path.join(f.root,f.receiptPath)),false);assert.equal(fs.existsSync(path.join(f.root,f.proofPath)),false);
+    for(const [p,raw]of frozen){fs.mkdirSync(path.dirname(path.join(f.root,p)),{recursive:true});fs.writeFileSync(path.join(f.root,p),raw);}
+  });
+});
+test('issued binding recovery composes with later source-only preservation and never exempts a missing old leaf',async t=>{
+  const f=issuedBindingRecoveryFixture(t);registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const recovered=f.read(f.receiptPath),ref={path:f.receiptPath,sha256:hash(fs.readFileSync(path.join(f.root,f.receiptPath)))};
+  f.commit();f.bank[2].editorialNote='later approved transport outside selected cohort';const raw=f.writeBank();
+  const request={...structuredClone(f.request),requestId:'later-source-preservation',expectedSourceBlobSha1:blob(raw),
+    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'later-transport-reviewer',evidenceRefs:[ref],sourceRebind:{priorReceiptRef:ref}},
+    items:f.request.items.map(row=>({questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal,before:{},after:{},reason:'preserve existing cohort after an outside metadata change',evidenceRefs:[ref]}))};
+  registerReviewedExamV2({root:f.root,request,write:true});assert.equal(registerReviewedExamV2({root:f.root,request}).replay,true);
+  const childPath=`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${request.requestId}.json`;
+  for(const result of await recoveryAuto(f,request)){assert.equal(result.native,childPath);assert.equal(result.auto.status,'ALREADY_REGISTERED',JSON.stringify(result.auto));}
+  const proof=fs.readFileSync(path.join(f.root,f.proofPath));fs.unlinkSync(path.join(f.root,f.proofPath));
+  assert.throws(()=>registerReviewedExamV2({root:f.root,request}),/ENOENT|recovery|typed source/);
+  for(const result of await recoveryAuto(f,request)){assert.equal(result.native,null);assert.equal(result.auto.status,'SUPPLEMENT_PENDING',JSON.stringify(result.auto));}
+  fs.writeFileSync(path.join(f.root,f.proofPath),proof);
+  assert.deepEqual(f.read(f.receiptPath),recovered,'source-only descendant cannot rewrite the recovery receipt');
+});
+
+test('issued binding recovery rechecks other cohort members and missing proof markers at native reuse',async t=>{
+  const f=issuedBindingRecoveryFixture(t);registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const paths=[META,'archive/data/question_identity_map.json',f.runtimePath,f.receiptPath,f.proofPath,f.originalReceiptPath];
+  const frozen=new Map(paths.map(p=>[p,fs.readFileSync(path.join(f.root,p))]));
+  const mutateDoc=(p,fn)=>{const d=f.read(p);fn(d);f.put(p,d);};
+  const cases=[
+    ['other metadata',()=>mutateDoc(META,d=>d.records[1].difficultyBucket=4)],
+    ['other runtime',()=>mutateDoc(f.runtimePath,d=>d.records.find(r=>r.questionUid==='uid2').difficultyBucket=4)],
+    ['other identity',()=>mutateDoc('archive/data/question_identity_map.json',d=>d.records[1].sourceQuestionNo=7)],
+    ['missing proof',()=>fs.unlinkSync(path.join(f.root,f.proofPath))],
+    ['forged proof request',()=>mutateDoc(f.proofPath,d=>d.requestSnapshot.items.pop())],
+    ['missing recovery marker',()=>mutateDoc(f.receiptPath,d=>delete d.approval.sourceRebind)],
+    ['all direct markers removed',()=>{
+      mutateDoc(f.receiptPath,d=>{delete d.approval.sourceRebind;delete d.issuedSourceBindingRecovery;delete d.newMetadataApprovals;delete d.preservedMetadataApprovals;
+        for(const row of [...d.appliedRecords,...d.runtimeRecords])row.approvalEvidence=row.approvalEvidence.filter(p=>p!==f.proofPath);});
+      for(const p of [META,f.runtimePath])mutateDoc(p,d=>{for(const row of d.records)if(row.approvalEvidence)row.approvalEvidence=row.approvalEvidence.filter(value=>value!==f.proofPath);});
+      fs.unlinkSync(path.join(f.root,f.proofPath));
+    }],
+  ];
+  for(const [name,mutate]of cases)await t.test(name,async()=>{
+    assert.equal((await recoveryAuto(f))[0].native,f.receiptPath);mutate();
+    const result=(await recoveryAuto(f))[0];assert.equal(result.native,null);assert.equal(result.auto.status,'SUPPLEMENT_PENDING',JSON.stringify(result.auto));
+    for(const [p,raw]of frozen)fs.writeFileSync(path.join(f.root,p),raw);
+  });
+});
+function compileRecoveryFixture(f){
+  const canonical=recoveryCanonical(p=>f.read(p)),outputs=recoveryOutputs(canonical,recoveryCompiled(canonical));
+  for(const [p,raw]of outputs)f.put(p,raw);
+  f.put(`${CANON}/registry_index.json`,recoveryIndex(canonical,outputs,p=>fs.readFileSync(path.join(f.root,p),'utf8')));
+}
+function laterRecoveryDefinition(f){
+  const source='fixture/later.js',q={...f.q,templateKey:'TPL_LATER'},raw=`window.questions=${JSON.stringify([q])};\n`;
+  f.put(`archive/exams/${source}`,raw);
+  const initial={questionUid:'uid4',sourceArchiveFile:source,sourceOrdinal:1,sourceQuestionNo:1,sourceFingerprint:auditSourceFingerprint(q),contentFingerprint:auditContentFingerprint(q),
+    standardCourse:q.standardCourse,standardUnitKey:q.standardUnitKey,subUnitKey:q.subUnitKey,reviewStatus:'review_required'};
+  for(const p of [META,'archive/data/question_identity_map.json']){const d=f.read(p);d.records.push(structuredClone(initial));f.put(p,d);}
+  const after={...f.read(f.reviewPath).items[0].after,templateKey:'TPL_LATER'},tpl={...f.read(`${CANON}/packs/new-course/taxonomy.json`).templates[0],
+    templateKey:'TPL_LATER',canonicalLabelKo:'후속 풀이 구조',definition:'후속의 명시적으로 승인된 풀이 구조',supportingQuestionUids:['uid4'],supportingItemCount:1};
+  const request={schemaVersion:f.request.schemaVersion,requestId:'unrelated-additive-template',scope:'PARTIAL_UIDS',examUid:'exam-later',sourceArchiveFile:source,
+    expectedSourceBlobSha1:blob(raw),expectedQuestionCount:1,approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'later-original-reviewer',evidenceRefs:f.evidenceRefs},
+    registryChanges:[{path:`${CANON}/packs/new-course/taxonomy.json`,collection:'templates',match:{templateKey:'TPL_LATER'},before:null,after:tpl,evidenceRefs:f.evidenceRefs}],
+    items:[{questionUid:'uid4',sourceOrdinal:1,before:Object.fromEntries(Object.keys(after).map(k=>[k,initial[k]??null])),after,reason:'exact later independent fixture approval',evidenceRefs:f.evidenceRefs}]};
+  registerReviewedExamV2({root:f.root,request,write:true});return request;
+}
+test('issued binding recovery allows a later additive definition and current container while preserving issued row versions',async t=>{
+  const f=issuedBindingRecoveryFixture(t);registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const before=f.read(f.receiptPath);laterRecoveryDefinition(f);
+  const registry=loadActiveMetaRegistry(f.root),runtime=f.read(f.runtimePath);
+  assert.equal(registry.status,'ACTIVE');assert.equal(runtime.packVersion,registry.activePacks.get('NEW_COURSE').version);
+  assert.notEqual(runtime.packVersion,before.appliedRecords[0].metaFoundationPackVersion);
+  assert.equal(registerReviewedExamV2({root:f.root,request:f.request}).replay,true);
+  for(const result of await recoveryAuto(f)){assert.equal(result.native,f.receiptPath);assert.equal(result.auto.status,'ALREADY_REGISTERED',JSON.stringify(result.auto));}
+  assert.deepEqual(f.read(f.receiptPath),before);
+});
+test('issued binding recovery refuses digest-valid selected canonical drift and missing exact bindings',async t=>{
+  const f=issuedBindingRecoveryFixture(t);registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const canonicalPaths=[...f.read(`${CANON}/registry_index.json`).canonicalSources.map(r=>r.path),...f.read(`${CANON}/registry_index.json`).compiledArtifacts.map(r=>r.path),`${CANON}/registry_index.json`,f.runtimePath];
+  const frozen=new Map(canonicalPaths.map(p=>[p,fs.readFileSync(path.join(f.root,p))]));
+  const mutation=(p,fn)=>{const d=f.read(p);fn(d);f.put(p,d);compileRecoveryFixture(f);};
+  const cases=[
+    ['binding removed',()=>mutation(`${CANON}/packs/new-course/bindings.json`,d=>d.bindings=[])],
+    ['binding course changed',()=>mutation(`${CANON}/packs/new-course/bindings.json`,d=>d.bindings[0].standardCourse='중2 수학')],
+    ['PT definition',()=>mutation(`${CANON}/packs/new-course/taxonomy.json`,d=>d.problemTypes[0].definition+=' changed')],
+    ['TPL definition',()=>mutation(`${CANON}/packs/new-course/taxonomy.json`,d=>d.templates[0].definition+=' changed')],
+    ['CC definition',()=>mutation(`${CANON}/concepts/new-concepts.json`,d=>d.concepts[0].definition+=' changed')],
+    ['Condition definition',()=>mutation(`${CANON}/condition_registry.json`,d=>d.conditions[0].definition+=' changed')],
+    ['runtime container version',()=>{const d=f.read(f.runtimePath);d.packVersion='0.0.1';f.put(f.runtimePath,d);}],
+  ];
+  for(const [name,mutate]of cases)await t.test(name,async()=>{
+    mutate();assert.equal(loadActiveMetaRegistry(f.root).status,'ACTIVE','failure must be semantic/scoped, not a stale digest');
+    assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.request}),/issued source binding recovery:/);
+    assert.equal((await recoveryAuto(f))[0].native,null);
+    for(const [p,raw]of frozen)fs.writeFileSync(path.join(f.root,p),raw);
   });
 });

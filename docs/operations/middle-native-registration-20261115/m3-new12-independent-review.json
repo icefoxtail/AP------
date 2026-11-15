@@ -1,0 +1,621 @@
+{
+  "schemaVersion": "m3s2-new12-independent-input-review-v1",
+  "reviewer": "/root/audit_m1",
+  "status": "PASS_READ_ONLY",
+  "head": "c999ffcb1939261ed90b27e075d529d2fd52cb46",
+  "actualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "manifest": {
+    "path": "docs/operations/m3s2-new12-current-20261115/request-manifest.json",
+    "sha256": "81ba63848f26377f75a28ed0e579209d26c9dfa5e49b21c33c3f4448f51bbd2e"
+  },
+  "counts": {
+    "requests": 9,
+    "selected": 14,
+    "sources": 8,
+    "student": 194,
+    "unchangedWholeObjectsOutside": 182,
+    "changedQuestions": 12,
+    "evidenceImported": 21,
+    "durableRefs": 48,
+    "rendererRefs": 23
+  },
+  "sourceBoundaries": [
+    {
+      "examId": "E011",
+      "source": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "total": 23,
+      "differences": [
+        {
+          "ordinal": 9,
+          "fields": [
+            "conditionKeys",
+            "courseKey"
+          ]
+        },
+        {
+          "ordinal": 10,
+          "fields": [
+            "conditionKeys",
+            "courseKey"
+          ]
+        },
+        {
+          "ordinal": 17,
+          "fields": [
+            "crossConceptKeys",
+            "courseKey"
+          ]
+        }
+      ],
+      "studentPayloadsUnchanged": 23,
+      "wholeObjectsOutsideSelectionUnchanged": 20
+    },
+    {
+      "examId": "E014",
+      "source": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+      "total": 24,
+      "differences": [
+        {
+          "ordinal": 22,
+          "fields": [
+            "crossConceptKeys",
+            "courseKey"
+          ]
+        }
+      ],
+      "studentPayloadsUnchanged": 24,
+      "wholeObjectsOutsideSelectionUnchanged": 23
+    },
+    {
+      "examId": "E034",
+      "source": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+      "total": 25,
+      "differences": [
+        {
+          "ordinal": 22,
+          "fields": [
+            "crossConceptKeys",
+            "courseKey"
+          ]
+        }
+      ],
+      "studentPayloadsUnchanged": 25,
+      "wholeObjectsOutsideSelectionUnchanged": 24
+    },
+    {
+      "examId": "E052",
+      "source": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "total": 25,
+      "differences": [
+        {
+          "ordinal": 5,
+          "fields": [
+            "crossConceptKeys",
+            "courseKey"
+          ]
+        }
+      ],
+      "studentPayloadsUnchanged": 25,
+      "wholeObjectsOutsideSelectionUnchanged": 24
+    },
+    {
+      "examId": "E005",
+      "source": "archive/exams/original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+      "total": 24,
+      "differences": [
+        {
+          "ordinal": 2,
+          "fields": [
+            "templateKey",
+            "courseKey"
+          ]
+        }
+      ],
+      "studentPayloadsUnchanged": 24,
+      "wholeObjectsOutsideSelectionUnchanged": 23
+    },
+    {
+      "examId": "E023",
+      "source": "archive/exams/original/middle/m3/2final/23_순천여중_2학기_기말_중3_기출.js",
+      "total": 24,
+      "differences": [
+        {
+          "ordinal": 5,
+          "fields": [
+            "templateKey",
+            "courseKey"
+          ]
+        },
+        {
+          "ordinal": 6,
+          "fields": [
+            "templateKey",
+            "courseKey"
+          ]
+        }
+      ],
+      "studentPayloadsUnchanged": 24,
+      "wholeObjectsOutsideSelectionUnchanged": 22
+    },
+    {
+      "examId": "E035",
+      "source": "archive/exams/original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+      "total": 25,
+      "differences": [
+        {
+          "ordinal": 3,
+          "fields": [
+            "templateKey",
+            "courseKey"
+          ]
+        }
+      ],
+      "studentPayloadsUnchanged": 25,
+      "wholeObjectsOutsideSelectionUnchanged": 24
+    },
+    {
+      "examId": "E010",
+      "source": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+      "total": 24,
+      "differences": [
+        {
+          "ordinal": 5,
+          "fields": [
+            "crossConceptKeys",
+            "courseKey"
+          ]
+        },
+        {
+          "ordinal": 14,
+          "fields": [
+            "crossConceptKeys",
+            "courseKey"
+          ]
+        }
+      ],
+      "studentPayloadsUnchanged": 24,
+      "wholeObjectsOutsideSelectionUnchanged": 22
+    }
+  ],
+  "requests": [
+    {
+      "examId": "E011",
+      "path": ".archive-meta-register/inbox/m3s2-finalized-e011-transport-20261115.json",
+      "requestId": "m3s2-finalized-e011-transport-20261115",
+      "count": 3,
+      "frozenCommit": "2beff3753a6669d64120922f6edffd7921923b46"
+    },
+    {
+      "examId": "E014",
+      "path": ".archive-meta-register/inbox/m3s2-finalized-e014-transport-20261115.json",
+      "requestId": "m3s2-finalized-e014-transport-20261115",
+      "count": 1,
+      "frozenCommit": "2beff3753a6669d64120922f6edffd7921923b46"
+    },
+    {
+      "examId": "E034",
+      "path": ".archive-meta-register/inbox/m3s2-finalized-e034-transport-20261115.json",
+      "requestId": "m3s2-finalized-e034-transport-20261115",
+      "count": 1,
+      "frozenCommit": "2beff3753a6669d64120922f6edffd7921923b46"
+    },
+    {
+      "examId": "E052",
+      "path": ".archive-meta-register/inbox/m3s2-finalized-e052-transport-20261115.json",
+      "requestId": "m3s2-finalized-e052-transport-20261115",
+      "count": 1,
+      "frozenCommit": "2beff3753a6669d64120922f6edffd7921923b46"
+    },
+    {
+      "examId": "E005",
+      "path": ".archive-meta-register/inbox/m3s2-tpl5-e005-transport-20261115.json",
+      "requestId": "m3s2-tpl5-e005-transport-20261115",
+      "count": 1,
+      "frozenCommit": "86a7f6d4230ea1d60c45da7e8425aeeb6293cef7"
+    },
+    {
+      "examId": "E023",
+      "path": ".archive-meta-register/inbox/m3s2-tpl5-e023-transport-20261115.json",
+      "requestId": "m3s2-tpl5-e023-transport-20261115",
+      "count": 2,
+      "frozenCommit": "86a7f6d4230ea1d60c45da7e8425aeeb6293cef7"
+    },
+    {
+      "examId": "E035",
+      "path": ".archive-meta-register/inbox/m3s2-tpl5-e035-transport-20261115.json",
+      "requestId": "m3s2-tpl5-e035-transport-20261115",
+      "count": 1,
+      "frozenCommit": "86a7f6d4230ea1d60c45da7e8425aeeb6293cef7"
+    },
+    {
+      "examId": "E010",
+      "path": ".archive-meta-register/inbox/m3s2-finalized-e010-transport-20261115.json",
+      "requestId": "m3s2-finalized-e010-transport-20261115",
+      "count": 2,
+      "frozenCommit": null
+    },
+    {
+      "examId": "E052",
+      "path": ".archive-meta-register/inbox/m3s2-finalized-e052-preserve2-20261115.json",
+      "requestId": "m3s2-finalized-e052-preserve2-20261115",
+      "count": 2,
+      "frozenCommit": null
+    }
+  ],
+  "originalBeforeValuesExact": 14,
+  "immutableNativeRecordsExact": 12,
+  "immutableImportedDocuments": 21,
+  "durableReferenceCount": 48,
+  "consumedInboxAuthorityRefs": 0,
+  "rendererRefsByteExact": 23,
+  "authorityRows": [
+    {
+      "examId": "E011",
+      "ordinal": 9,
+      "questionUid": "qid_v1_3b4595999c22c82e40420fa1d0d09f36072fd9c9c779ef54e115324d30a86c5b",
+      "authority": "archive-native-proposal-finalization-v2",
+      "nativeStableSha256": "f6792e8ea60774ebbb3574321b273e058587df7f0fc43036499554da0322b0bb",
+      "definitionSummaries": [
+        {
+          "key": "COND_SPECIFIED_APPROXIMATIONS",
+          "disposition": "ADD_ONLY",
+          "definitionSha256": "5602b25195705164db1574406f7f13a1fa050baba2a0f424e58b95c167f9a0fd"
+        }
+      ],
+      "rationaleOrigins": {
+        "primaryMethod": [
+          "native.decisiveStep"
+        ],
+        "decisiveStep": [
+          "native.row",
+          "native.decisiveStep"
+        ]
+      },
+      "explicitNativeCourse": "M3-2",
+      "originalSourceCurriculumUnchanged": true,
+      "newCurriculumClaims": false,
+      "issuedAfterExact": true
+    },
+    {
+      "examId": "E011",
+      "ordinal": 10,
+      "questionUid": "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c",
+      "authority": "archive-native-proposal-finalization-v2",
+      "nativeStableSha256": "dfb6092f431bb3a31739e74ce092a377147a665ab728606ed50c9dcc1f0db2ba",
+      "definitionSummaries": [
+        {
+          "key": "COND_SPECIFIED_APPROXIMATIONS",
+          "disposition": "ADD_ONLY",
+          "definitionSha256": "5602b25195705164db1574406f7f13a1fa050baba2a0f424e58b95c167f9a0fd"
+        }
+      ],
+      "rationaleOrigins": {
+        "primaryMethod": [
+          "native.decisiveStep"
+        ],
+        "decisiveStep": [
+          "native.row",
+          "native.decisiveStep"
+        ]
+      },
+      "explicitNativeCourse": "M3-2",
+      "originalSourceCurriculumUnchanged": true,
+      "newCurriculumClaims": false,
+      "issuedAfterExact": true
+    },
+    {
+      "examId": "E011",
+      "ordinal": 17,
+      "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+      "authority": "archive-native-proposal-finalization-v2",
+      "nativeStableSha256": "70a19f396e6fd832db088d0bb28c0394cc1712ff5af013c83158e545e957dd86",
+      "definitionSummaries": [
+        {
+          "key": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+          "disposition": "ADD_ONLY",
+          "definitionSha256": "d0793e5d1f53923e049a0bdeab5e0fc9497d7c01062b5910412df61a38415e86"
+        }
+      ],
+      "rationaleOrigins": {
+        "primaryMethod": [
+          "native.decisiveStep"
+        ],
+        "decisiveStep": [
+          "native.row",
+          "native.decisiveStep"
+        ]
+      },
+      "explicitNativeCourse": "M3-2",
+      "originalSourceCurriculumUnchanged": true,
+      "newCurriculumClaims": false,
+      "issuedAfterExact": true
+    },
+    {
+      "examId": "E014",
+      "ordinal": 22,
+      "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+      "authority": "archive-native-proposal-finalization-v2",
+      "nativeStableSha256": "41c9003be0b90109c50f23c555cf583419c00a23502f3f7ae537d98513db0dbd",
+      "definitionSummaries": [
+        {
+          "key": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+          "disposition": "ADD_ONLY",
+          "definitionSha256": "d0793e5d1f53923e049a0bdeab5e0fc9497d7c01062b5910412df61a38415e86"
+        }
+      ],
+      "rationaleOrigins": {
+        "primaryMethod": [
+          "native.decisiveStep"
+        ],
+        "decisiveStep": [
+          "native.row",
+          "native.decisiveStep"
+        ]
+      },
+      "explicitNativeCourse": "M3-2",
+      "originalSourceCurriculumUnchanged": true,
+      "newCurriculumClaims": false,
+      "issuedAfterExact": true
+    },
+    {
+      "examId": "E034",
+      "ordinal": 22,
+      "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+      "authority": "archive-native-proposal-finalization-v2",
+      "nativeStableSha256": "120e49a6241088d076a6a757995b2e2a9bd6ac2ab187bf08119eb516abbda278",
+      "definitionSummaries": [
+        {
+          "key": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+          "disposition": "ADD_ONLY",
+          "definitionSha256": "d0793e5d1f53923e049a0bdeab5e0fc9497d7c01062b5910412df61a38415e86"
+        }
+      ],
+      "rationaleOrigins": {
+        "primaryMethod": [
+          "native.decisiveStep"
+        ],
+        "decisiveStep": [
+          "native.row",
+          "native.decisiveStep"
+        ]
+      },
+      "explicitNativeCourse": "M3-2",
+      "originalSourceCurriculumUnchanged": true,
+      "newCurriculumClaims": false,
+      "issuedAfterExact": true
+    },
+    {
+      "examId": "E052",
+      "ordinal": 5,
+      "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+      "authority": "archive-native-proposal-finalization-v2",
+      "nativeStableSha256": "3201f9d49c300e25e58d65e52b68878c30be1a22f3d134aa0d61d243543006e6",
+      "definitionSummaries": [
+        {
+          "key": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+          "disposition": "ADD_ONLY",
+          "definitionSha256": "d0793e5d1f53923e049a0bdeab5e0fc9497d7c01062b5910412df61a38415e86"
+        }
+      ],
+      "rationaleOrigins": {
+        "primaryMethod": [
+          "native.decisiveStep"
+        ],
+        "decisiveStep": [
+          "native.row",
+          "native.decisiveStep"
+        ]
+      },
+      "explicitNativeCourse": "M3-2",
+      "originalSourceCurriculumUnchanged": true,
+      "newCurriculumClaims": false,
+      "issuedAfterExact": true
+    },
+    {
+      "examId": "E005",
+      "ordinal": 2,
+      "questionUid": "qid_v1_7e22ca89dcf5c2f0233abf9095940d2d5d076efe87f6082910c62bbd768a4354",
+      "authority": "archive-native-proposal-finalization-v1",
+      "nativeStableSha256": "cbaba5b1147bf84dca2d04761d7e6f91c0a8f77aae933f78485e068b7c5fe2ce",
+      "definitionSummaries": [],
+      "rationaleOrigins": {
+        "primaryMethod": [
+          "native.decisiveStep"
+        ],
+        "decisiveStep": [
+          "native.row",
+          "native.decisiveStep"
+        ]
+      },
+      "explicitNativeCourse": "M3-2",
+      "originalSourceCurriculumUnchanged": true,
+      "newCurriculumClaims": false,
+      "issuedAfterExact": true
+    },
+    {
+      "examId": "E023",
+      "ordinal": 5,
+      "questionUid": "qid_v1_94efc9c51bf25d22e5ac9b1e3006705e72341f2652ad155375ece9e102123347",
+      "authority": "archive-native-proposal-finalization-v1",
+      "nativeStableSha256": "e9d1c4a41e9692b22903b5c1621187dd5e62303c43bca245ed8ada4331c38a60",
+      "definitionSummaries": [],
+      "rationaleOrigins": {
+        "primaryMethod": [
+          "native.decisiveStep"
+        ],
+        "decisiveStep": [
+          "native.row",
+          "native.decisiveStep"
+        ]
+      },
+      "explicitNativeCourse": "M3-2",
+      "originalSourceCurriculumUnchanged": true,
+      "newCurriculumClaims": false,
+      "issuedAfterExact": true
+    },
+    {
+      "examId": "E023",
+      "ordinal": 6,
+      "questionUid": "qid_v1_1c1c8ab990d5b4c5935d17b0acd0426564b75cd37bd1039b6a74ff81fae8d5d3",
+      "authority": "archive-native-proposal-finalization-v1",
+      "nativeStableSha256": "261bf40975c8847c37a84cf8ee7812f6f88e1f78a4e424c8ea18cb3432bb8668",
+      "definitionSummaries": [],
+      "rationaleOrigins": {
+        "primaryMethod": [
+          "native.decisiveStep"
+        ],
+        "decisiveStep": [
+          "native.row",
+          "native.decisiveStep"
+        ]
+      },
+      "explicitNativeCourse": "M3-2",
+      "originalSourceCurriculumUnchanged": true,
+      "newCurriculumClaims": false,
+      "issuedAfterExact": true
+    },
+    {
+      "examId": "E035",
+      "ordinal": 3,
+      "questionUid": "qid_v1_15868fb06caee7d7b9cbc5f6179f64550c398c130d0e327777407a9319a90a26",
+      "authority": "archive-native-proposal-finalization-v1",
+      "nativeStableSha256": "771803b7d4f28c7cc93fc8d45a259be4b14dcc15b5ffd69b659df76607670d62",
+      "definitionSummaries": [],
+      "rationaleOrigins": {
+        "primaryMethod": [
+          "native.decisiveStep"
+        ],
+        "decisiveStep": [
+          "native.row",
+          "native.decisiveStep"
+        ]
+      },
+      "explicitNativeCourse": "M3-2",
+      "originalSourceCurriculumUnchanged": true,
+      "newCurriculumClaims": false,
+      "issuedAfterExact": true
+    },
+    {
+      "examId": "E010",
+      "ordinal": 5,
+      "questionUid": "qid_v1_719c286ffcf71eb9f34be502cdb7964b0d74f8401d10a964fed913205341eefc",
+      "authority": "archive-native-proposal-finalization-v2",
+      "nativeStableSha256": "89354cf3558e9df794cefa18ec67e86e96e830a56f6ba67ca779ea9157bc00e7",
+      "definitionSummaries": [
+        {
+          "key": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO",
+          "disposition": "REUSE_ACTIVE",
+          "definitionSha256": "81a3ba8b43ed4e487df88ec14479ee746ae1694d8819f8ff4874f627da37ec11"
+        }
+      ],
+      "rationaleOrigins": {
+        "primaryMethod": [
+          "native.decisiveStep"
+        ],
+        "decisiveStep": [
+          "native.row",
+          "native.decisiveStep"
+        ]
+      },
+      "explicitNativeCourse": "M3-2",
+      "originalSourceCurriculumUnchanged": true,
+      "newCurriculumClaims": false,
+      "issuedAfterExact": true
+    },
+    {
+      "examId": "E010",
+      "ordinal": 14,
+      "questionUid": "qid_v1_6377390a036884a114da2d38588443a733bbf318de7093d7b9c839035ffa33bf",
+      "authority": "archive-native-proposal-finalization-v2",
+      "nativeStableSha256": "65a778bc75b5010efbc88f612402bc2bf89e74470f3ac0350427038c91ca13fa",
+      "definitionSummaries": [
+        {
+          "key": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO",
+          "disposition": "REUSE_ACTIVE",
+          "definitionSha256": "81a3ba8b43ed4e487df88ec14479ee746ae1694d8819f8ff4874f627da37ec11"
+        }
+      ],
+      "rationaleOrigins": {
+        "primaryMethod": [
+          "native.decisiveStep"
+        ],
+        "decisiveStep": [
+          "native.row",
+          "native.decisiveStep"
+        ]
+      },
+      "explicitNativeCourse": "M3-2",
+      "originalSourceCurriculumUnchanged": true,
+      "newCurriculumClaims": false,
+      "issuedAfterExact": true
+    },
+    {
+      "examId": "E052",
+      "ordinal": 2,
+      "questionUid": "qid_v1_600e20543decf50f0033dc65a1a757ecb528796d236665ecf8dfceb2d5d1ea94",
+      "authority": "EXACT_PRIOR_FINAL_QA_2_OF_25",
+      "allApprovedValuesPreserved": true
+    },
+    {
+      "examId": "E052",
+      "ordinal": 25,
+      "questionUid": "qid_v1_796434a371934dab9b840443d828fd1a43688ac6aa8c5fc2b03b956c39d7e714",
+      "authority": "EXACT_PRIOR_FINAL_QA_2_OF_25",
+      "allApprovedValuesPreserved": true
+    }
+  ],
+  "registryChangesExactIndependentApprovals": [
+    {
+      "requestId": "m3s2-finalized-e011-transport-20261115",
+      "key": "COND_SPECIFIED_APPROXIMATIONS",
+      "definitionSha256": "5602b25195705164db1574406f7f13a1fa050baba2a0f424e58b95c167f9a0fd"
+    },
+    {
+      "requestId": "m3s2-finalized-e011-transport-20261115",
+      "key": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+      "definitionSha256": "d0793e5d1f53923e049a0bdeab5e0fc9497d7c01062b5910412df61a38415e86"
+    },
+    {
+      "requestId": "m3s2-tpl5-e005-transport-20261115",
+      "key": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+      "definitionSha256": "f585110cfaac97f54743c6d1fbfeea4e37aa6c89bab407f7936874eb1d14ea85"
+    }
+  ],
+  "provider": {
+    "requestId": "m2s2-centroid2-20261115-E023",
+    "definitionSha256": "81a3ba8b43ed4e487df88ec14479ee746ae1694d8819f8ff4874f627da37ec11",
+    "decision": "REUSE_ACTIVE",
+    "immutableAuthorityCommit": "9e50297143a0a30a0a1daf5e1b5f4c919a025371",
+    "providerOwnRegistrationInSameLocalTransaction": true,
+    "actualMainDefinitionInstalled": false,
+    "approvalInboxesUsed": false,
+    "orderVerifiedFromOfficialRecordedSequence": true
+  },
+  "authorValidationReadback": [
+    {
+      "path": ".tmp/new12-official-registration.json",
+      "sha256": "5c003960151aabf483a2fddd48c8da4368b3093f324e2faeb636bcdc12463496"
+    },
+    {
+      "path": ".tmp/new12-consumer-verification.json",
+      "sha256": "86a4cfd95e79b8ddc722587f4c2d0421b379f4641594ee0e27ed3b83156c0c2e"
+    },
+    {
+      "path": ".tmp/new12-scope-and-autometa.json",
+      "sha256": "218b3b0c1d4a152d4c60b968c1634a4c4e71f8687330b9ede1003e778fc8639e"
+    }
+  ],
+  "independentWriterOrConsumerRerun": false,
+  "liveIssuedOwnValuesCompared": true,
+  "productionRegistration": "NOT_APPLIED",
+  "immutableShadow": "PENDING_ROOT_COMBINED",
+  "newMathematicalQa": false,
+  "blockingFindings": [],
+  "excludedScopes": [
+    "M3S1",
+    "M3S2_E001_Q8_Q19_RECOVERY_DEPENDENT",
+    "M3S2_E017_Q23_RECOVERY_DEPENDENT",
+    "M3S2_E020_Q16_HOLD"
+  ],
+  "inspectionNote": "Input authority and boundaries checked against exact Git, immutable proofs, actual aa and local issued records. Official dry/write/replay, AutoMeta and full Consumer results are readbacks attributed to the author; the reviewer did not rerun them."
+}

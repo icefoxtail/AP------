@@ -11,6 +11,7 @@ import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
+import { validateIssuedSourceBindingRecovery } from './issued-source-binding-recovery.mjs';
 import { hasReviewedReceiptLineage, reviewedSourceBindingPath } from './reviewed-source-binding.mjs';
 import { nativeOriginalFinalQaRendererRebind,hasOriginalFinalQaRendererClaim } from './original-finalqa-renderer-preservation.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
@@ -212,6 +213,7 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||registeredIdentity[0].sourceOrdinal!==ordinal||registeredIdentity[0].sourceFingerprint!==identity.sourceFingerprint
         ||!equal(registeredIdentity[0].sourceQuestionNo,identity.sourceQuestionNo)
         ||current.metadataRevision!==`meta-foundation:${ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
+      if(validateIssuedSourceBindingRecovery(receipt,nativeSource,question,identity,ordinal,current)===true)return receiptPath;
       const originalRenderer=nativeOriginalFinalQaRendererRebind({receipt,nativeSource,previous,question,identity,ordinal,current,registry,
         revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor}),
         revalidateDirectSource:()=>validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry)===true&&hasReviewedReceiptLineage(receipt)});

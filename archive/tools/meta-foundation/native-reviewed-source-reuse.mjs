@@ -13,6 +13,7 @@ import { REVIEWED_SOURCE_BINDING_OPT_INS, hasReviewedReceiptLineage, reviewedSou
   buildReviewedSourceBinding } from './reviewed-source-binding.mjs';
 import { restoreReviewedReplayCanonicalBefore } from './reviewed-replay-registry-context.mjs';
 import { isSourceSubsetRebind, validateSourceSubsetEvidence, preservedSourceEvidence } from './source-subset-preservation.mjs';
+import { isIssuedSourceBindingRecovery, validateIssuedSourceBindingRecovery } from './issued-source-binding-recovery.mjs';
 
 const RECEIPTS = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const INDEX = 'archive/data/meta-foundation/canonical/registry_index.json';
@@ -210,6 +211,14 @@ export function validateNativeReviewedSourceReuse(receipt, nativeSource, questio
   while (true) {
     if (seen.has(cursor.requestId) || seen.size >= 64) fail('source-rebind receipt cycle or depth exceeded');
     seen.add(cursor.requestId); evidence(root,cursor.approval.evidenceRefs);
+    if (isIssuedSourceBindingRecovery(cursor.approval?.sourceRebind)) {
+      const raw = cursor === receipt ? nativeSource.bytes : execFileSync('git', ['cat-file', 'blob', cursor.sourceBlobSha1],
+        { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ['ignore','pipe','pipe'] });
+      if (wanted.size || validateIssuedSourceBindingRecovery(cursor, { ...nativeSource, bytes:raw,
+        blobSha1:cursor.sourceBlobSha1, bank:cursorBank, runtimeRecord:state.runtime }, cursorBank[ordinal-1],
+        state.identity, ordinal, state.row) !== true) fail('issued source recovery ancestor cannot replay');
+      return true;
+    }
     if (typedProof(cursor,identity.questionUid) || wanted.has(reviewedSourceBindingPath(cursor.requestId))) {
       if (cursor.approval.sourceRebind !== undefined) fail('source rebind cannot issue a new typed review');
       const verified = validateDirect(cursor,{...context,current:state.row,runtimeRecord:state.runtime,identity:state.identity});
