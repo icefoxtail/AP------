@@ -3,6 +3,8 @@ window.examTitle="24_금당중_2학기_중간_중2_수학";
 window.questionBank=[
   {
     "id": 1,
+    "imageSize": "full",
+    "imageAlt": "왼쪽 삼각형 ABC의 BC는 24 cm, AC는 18 cm이다. 오른쪽 작은 삼각형 DEF의 DE는 7 cm이다.",
     "level": "하",
     "category": "삼각형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -11,7 +13,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "삼각형의 닮음",
       "도형"
@@ -27,7 +29,7 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "닮음비는 대응하는 변의 길이의 비와 같다.\n$EF=24\\div3=8$, $DF=18\\div3=6$이다. 또한 $DE=7$이므로 $\\triangle DEF$의 둘레는 $7+8+6=21$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q1.png",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q1-problem-visual-v2.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
@@ -109,6 +111,8 @@ window.questionBank=[
   },
   {
     "id": 3,
+    "imageSize": "full",
+    "imageAlt": "AB 전체는 7 cm이고 AM은 x cm이다. 밑변 BC는 11 cm이다. M을 지나 BC와 평행한 MN의 길이가 y cm이다.",
     "level": "중",
     "category": "삼각형의 중점연결정리",
     "originalCategory": "도형의 닮음",
@@ -117,7 +121,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "삼각형의 중점연결정리",
       "도형"
@@ -133,7 +137,7 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "삼각형의 두 변의 중점을 이은 선분은 나머지 한 변과 평행하고 길이는 그 변의 절반이다.\n$AB=7$이므로 $AM=\\dfrac{7}{2}$. 또 $M$을 지나 $BC$에 평행한 직선이 $AC$와 만나는 점이 $N$이므로 $N$도 $AC$의 중점이고 $MN=\\dfrac{BC}{2}=\\dfrac{11}{2}$이다. 따라서 $x+y=\\dfrac72+\\dfrac{11}{2}=9$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q3.png",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q3-problem-visual-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
@@ -163,6 +167,8 @@ window.questionBank=[
   },
   {
     "id": 4,
+    "imageSize": "tall",
+    "imageAlt": "왼쪽 기둥의 윗면은 A, B, C이고 아랫면은 D, E, F이다. 오른쪽은 G, H, I와 J, K, L이다. EF의 길이는 2 cm, 대응 모서리 KL은 4 cm이다. B와 H의 삼각형 각은 직각이다.",
     "level": "하",
     "category": "닮은 입체도형의 부피비",
     "originalCategory": "도형의 닮음",
@@ -171,7 +177,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "닮은 입체도형의 부피비",
       "도형"
@@ -187,7 +193,7 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "닮은 입체도형의 부피의 비는 닮음비의 세제곱이다.\n부피의 비는 $1:8$이다. 따라서 큰 삼각기둥의 부피는 $12\\times8=96\\,\\mathrm{cm}^3$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q4.png",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q4-problem-visual-v2.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
@@ -217,6 +223,8 @@ window.questionBank=[
   },
   {
     "id": 5,
+    "imageSize": "tall",
+    "imageAlt": "A, B, D는 한 직선에 있고 A, C, E도 한 직선에 있다. BC와 DE가 평행하다. AD 전체는 12 cm, DB는 4 cm, CE는 3 cm, DE는 9 cm이다.",
     "level": "상",
     "category": "평행선과 닮음",
     "originalCategory": "도형의 닮음",
@@ -225,7 +233,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "평행선과 닮음",
       "도형"
@@ -241,7 +249,7 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "$BC\\parallel DE$이므로 $\\triangle ABC$와 $\\triangle ADE$가 닮는다.\n$AB=AD-DB=12-4=8$이다. 따라서 닮음비는 $AB:AD=8:12=2:3$이다. $BC:DE=2:3$이므로 $BC=9\\times\\dfrac23=6$이다. 또한 $AC:AE=2:3$이고 $AE=AC+3$이므로 $\\dfrac{AC}{AC+3}=\\dfrac23$이다. $3AC=2AC+6$에서 $AC=6$이다. 둘레는 $8+6+6=20$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q5.png",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q5-problem-visual-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
@@ -271,6 +279,8 @@ window.questionBank=[
   },
   {
     "id": 6,
+    "imageSize": "tall",
+    "imageAlt": "AB 위에 D, AC 위에 F와 E가 있다. DE와 BC, DF와 BE에 각기 다른 평행 화살표를 붙였다. AF는 9이고 FE는 6이다.",
     "level": "상",
     "category": "평행선 사이의 선분의 길이의 비",
     "originalCategory": "도형의 닮음",
@@ -279,7 +289,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "평행선 사이의 선분의 길이의 비",
       "도형"
@@ -295,7 +305,7 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "두 평행선 조건을 차례로 사용하면 같은 선분비를 연결할 수 있다.\n$DF\\parallel BE$이므로 $\\dfrac{AD}{AB}=\\dfrac{AF}{AE}=\\dfrac9{15}=\\dfrac35$이다. 또 $DE\\parallel BC$이므로 $\\dfrac{AE}{AC}=\\dfrac{AD}{AB}=\\dfrac35$이다. 따라서 $AE:EC=3:2$이고 $15:EC=3:2$이므로 $EC=10$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q6.png",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q6-problem-visual-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
@@ -325,6 +335,8 @@ window.questionBank=[
   },
   {
     "id": 7,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC에서 AD는 옅은 점선이고, BE와 CF는 각각 다른 색의 실선이다. 세 선은 삼각형 안의 G에서 만난다.",
     "level": "중",
     "category": "삼각형의 무게중심",
     "originalCategory": "삼각형의 무게중심",
@@ -333,7 +345,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "삼각형의 무게중심",
       "복수정답",
@@ -350,7 +362,7 @@ window.questionBank=[
     ],
     "answer": "①, ⑤",
     "solution": "무게중심은 세 중선의 교점이며 각 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n$GB$와 $GC$는 서로 다른 중선 위의 선분이므로 일반적으로 같지 않아 ①은 옳지 않다. $AG:GD=2:1$이므로 ②는 옳다. 세 중선은 삼각형을 넓이가 같은 여섯 작은 삼각형으로 나누므로 사각형 $AFGE$와 $\\triangle GBC$의 넓이는 모두 전체의 $\\dfrac13$이고, $\\triangle ABC$의 넓이는 $\\triangle GBD$의 $6$배이다. 한편 중선 $CF$에서 $CG:GF=2:1$이므로 $GF=\\dfrac12CG$이며 $\\dfrac13CG$가 아니다. 따라서 옳지 않은 것은 ①, ⑤이다.\n따라서 정답은 ①, ⑤이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q7.png",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q7-problem-visual-v2.svg",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
     "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -380,6 +392,8 @@ window.questionBank=[
   },
   {
     "id": 8,
+    "imageSize": "tall",
+    "imageAlt": "A에서 밑변의 D로, B에서 AC의 F로 그은 중선은 G에서 만난다. AG는 12 cm이다. EF는 AD와 평행하고 DE와 EC에는 같은 눈금이 있다.",
     "level": "중",
     "category": "삼각형의 무게중심",
     "originalCategory": "삼각형의 무게중심",
@@ -388,7 +402,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "삼각형의 무게중심",
       "도형"
@@ -404,7 +418,7 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "무게중심의 $2:1$ 성질과 삼각형의 중점연결정리를 함께 사용한다.\n$AG:GD=2:1$이므로 $GD=6$이고 $AD=18$이다. $DE=EC$이므로 $E$는 $DC$의 중점이다. $E$를 지나 $DA$에 평행한 직선이 $AC$와 만나는 점이 $F$이므로 $F$는 $AC$의 중점이고 $EF=\\dfrac12AD=9\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q8.png",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q8-problem-visual-v2.svg",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
     "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -436,6 +450,8 @@ window.questionBank=[
   },
   {
     "id": 9,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC에서 D와 E는 두 사선 위에 있다. D와 E를 잇고 중선 BE와 CD가 G에서 만나는 모습을 보였다.",
     "level": "중",
     "category": "삼각형의 무게중심",
     "originalCategory": "삼각형의 무게중심",
@@ -444,7 +460,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "삼각형의 무게중심",
       "도형"
@@ -460,7 +476,7 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "중점연결선 $DE$와 무게중심의 $2:1$ 성질을 높이비로 바꾸면 같은 밑변 $DE$를 가진 두 삼각형의 넓이비를 구할 수 있다.\n$D,E$가 중점이므로 $DE\\parallel BC$이고, $A$에서 $DE$까지의 거리는 $\\dfrac h2$이다. 무게중심 $G$는 중선을 꼭짓점 쪽에서 $2:1$로 나누므로 $G$에서 $BC$까지의 거리는 $\\dfrac h3$이다. 따라서 $G$에서 $DE$까지의 거리는 $\\dfrac h2-\\dfrac h3=\\dfrac h6$이다. $\\triangle ADE$와 $\\triangle GDE$는 밑변 $DE$가 같으므로 넓이비는 $\\dfrac h2:\\dfrac h6=3:1$이다. 따라서 $[GDE]=30\\div3=10\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q9.png",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q9-problem-visual-v2.svg",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
     "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -494,6 +510,11 @@ window.questionBank=[
   },
   {
     "id": 10,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "접어도 BC′=BC=10 cm이다. 직각삼각형 ABC′에서 AC′=6 cm이고 윗변 전체가 10 cm이므로 DC′=4 cm이다.",
+    "solutionImageAlt": "직사각형의 세로는 8 cm, 가로는 10 cm이다. E는 D 아래 3 cm이다. 접는 선 BE를 기준으로 C를 윗변 위의 C′로 이동했다. 풀이에서 AC′는 6 cm이다.",
+    "imageSize": "tall",
+    "imageAlt": "직사각형의 세로는 8 cm, 가로는 10 cm이다. E는 D 아래 3 cm이다. 접는 선 BE를 기준으로 C를 윗변 위의 C′로 이동했다.",
     "level": "중",
     "category": "피타고라스 정리의 활용",
     "originalCategory": "피타고라스 정리",
@@ -502,7 +523,7 @@ window.questionBank=[
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "피타고라스 정리의 활용",
       "도형"
@@ -518,12 +539,12 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "접기 전후에 대응하는 점까지의 거리는 같고, 직각삼각형에서 피타고라스 정리를 사용할 수 있다.\n접기 전후의 대응점이므로 $BC'=BC=10$이다. $C'$는 $AD$ 위에 있어 $\\triangle ABC'$는 $A$에서 직각이고, $AB=8$이다. 따라서 $AC'^2+8^2=10^2$이므로 $AC'=6$이다. 직사각형에서 $AD=BC=10$이므로 $DC'=AD-AC'=10-6=4$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q10.png",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q10-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_금당중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중2_수학/q10-solution-visual-v2.svg",
     "curriculum": "2015",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
     "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
@@ -549,6 +570,8 @@ window.questionBank=[
   },
   {
     "id": 11,
+    "imageSize": "tall",
+    "imageAlt": "왼쪽 직각삼각형의 빗변은 15 cm이고 아래 가로변은 y cm이다. 오른쪽 빗변은 13 cm이고 위 가로변은 5 cm이다. 공유하는 세로변은 x cm이다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -557,7 +580,7 @@ window.questionBank=[
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "피타고라스 정리",
       "도형"
@@ -573,7 +596,7 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "두 직각삼각형에 피타고라스 정리를 차례로 적용한다.\n$x^2+5^2=13^2$이므로 $x^2=144$, $x=12$이다. 이어서 $y^2+12^2=15^2$이므로 $y^2=81$, $y=9$이다. 따라서 $x+y=12+9=21$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q11.png",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q11-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
@@ -1095,6 +1118,8 @@ window.questionBank=[
   },
   {
     "id": 22,
+    "imageSize": "tall",
+    "imageAlt": "직사각형에서 BC는 8 cm, DC는 6 cm이다. 대각선 BD의 중점 O를 지나는 수선이 윗변 E, 아랫변 F와 만난다. BO는 5 cm이다.",
     "level": "상",
     "category": "닮음의 활용",
     "originalCategory": "도형의 닮음",
@@ -1103,7 +1128,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "닮음의 활용",
@@ -1114,7 +1139,7 @@ window.questionBank=[
     "choices": [],
     "answer": "(1) $\\triangle DOE\\sim\\triangle BCD$ (AA 닮음), (2) $5:8$, (3) $EO=\\dfrac{15}{4}\\,\\mathrm{cm}$",
     "solution": "직각과 평행선에서 생기는 각을 이용하면 두 삼각형의 AA 닮음을 찾을 수 있다.\n(1) $\\angle DOE=90^\\circ=\\angle BCD$이고, $DO$와 $DB$는 같은 직선, $DE\\parallel BC$이므로 $\\angle ODE=\\angle DBC$이다. 따라서 $\\triangle DOE\\sim\\triangle BCD$이다. (2) 대응은 $D\\leftrightarrow B$, $O\\leftrightarrow C$, $E\\leftrightarrow D$이므로 닮음비는 $DO:BC=5:8$이다. (3) $EO:CD=5:8$이고 $CD=6$이므로 $EO=6\\times\\dfrac58=\\dfrac{15}{4}\\,\\mathrm{cm}$이다.\n따라서 구하는 닮은 두 삼각형은 $\\triangle DOE$와 $\\triangle BCD$, 닮음비는 $5:8$, $EO=\\dfrac{15}{4}\\,\\mathrm{cm}$이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q22.png",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q22-problem-visual-v2.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
@@ -1144,6 +1169,11 @@ window.questionBank=[
   },
   {
     "id": 23,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "닮음을 이용하면 EP=2 cm이고 EQ=10 cm이다. PQ=EQ−EP이므로 8 cm이다.",
+    "solutionImageAlt": "위 변 AD와 가운데 EF, 아래 변 BC는 평행하다. E부터 F까지 이어진 선이 BD와 P에서, AC와 Q에서 만난다. AD는 6 cm, BC는 15 cm, AE는 8 cm, EB는 4 cm이다. 풀이에서 EP는 2 cm, EQ는 10 cm이다.",
+    "imageSize": "tall",
+    "imageAlt": "위 변 AD와 가운데 EF, 아래 변 BC는 평행하다. E부터 F까지 이어진 선이 BD와 P에서, AC와 Q에서 만난다. AD는 6 cm, BC는 15 cm, AE는 8 cm, EB는 4 cm이다.",
     "level": "상",
     "category": "평행선과 닮음",
     "originalCategory": "도형의 닮음",
@@ -1152,7 +1182,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "평행선과 닮음",
@@ -1163,12 +1193,12 @@ window.questionBank=[
     "choices": [],
     "answer": "$8\\mathrm{cm}$",
     "solution": "평행선으로 생기는 두 쌍의 닮은 삼각형에서 $EP$와 $EQ$를 각각 구한다.\n$BE:BA=4:12=1:3$이고 $EP\\parallel AD$이므로 $EP:AD=1:3$, 따라서 $EP=2$이다. 또 $AE:AB=8:12=2:3$이고 $EQ\\parallel BC$이므로 $EQ:BC=2:3$, 따라서 $EQ=10$이다. 점의 순서가 $E-P-Q-F$이므로 $PQ=EQ-EP=10-2=8\\,\\mathrm{cm}$이다.\n따라서 구하는 길이는 $8\\,\\mathrm{cm}$이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q23.png",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q23-problem-visual-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/24_금당중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중2_수학/q23-solution-visual-v2.svg",
     "curriculum": "2015",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
