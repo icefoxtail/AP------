@@ -519,7 +519,7 @@ window.questionBank = [
   {
     "id": 12,
     "questionType": "객관식",
-    "content": "함수 $y=a\\sin bx + c$의 그래프가 그림과 같을 때, 세 상수 $a, b, c$에 대하여 $a+b+c$의 값은? [4.1점]<br>(단, $a>0, b>0$)<br><br><div class=\"exam-img-box\"><img src=\"assets/images/23_팔마고_1학기_중간_고2_수학I/q12.png\" class=\"exam-img\"></div>",
+    "content": "함수 $y=a\\sin bx + c$의 그래프가 그림과 같을 때, 세 상수 $a, b, c$에 대하여 $a+b+c$의 값은? [4.1점]<br>(단, $a>0, b>0$)<br><br><div class=\"exam-img-box\"><img src=\"assets/images/23_팔마고_1학기_중간_고2_수학I/q12.png\" class=\"exam-img\" alt=\"곡선 y=a sin bx+c의 최고점은 y=2에서 x=π/4와 5π/4에 있고, 가운데 최저점은 y=−4에서 x=3π/4에 있다. 점선 안내선이 최고·최저 높이와 x좌표를 표시한다.\"></div>",
     "choices": [
       "1",
       "2",
@@ -564,7 +564,7 @@ window.questionBank = [
   {
     "id": 13,
     "questionType": "객관식",
-    "content": "이차함수 $y=f(x)$의 그래프와 일차함수 $y=g(x)$의 그래프가 그림과 같을 때, 부등식 $\\log_3 f\\left(\\frac{x}{3}\\right) \\le \\log_3 g\\left(\\frac{x}{3}\\right)$를 만족시키는 정수 $x$의 개수는? [4.6점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/23_팔마고_1학기_중간_고2_수학I/q13.png\" class=\"exam-img\"></div>",
+    "content": "이차함수 $y=f(x)$의 그래프와 일차함수 $y=g(x)$의 그래프가 그림과 같을 때, 부등식 $\\log_3 f\\left(\\frac{x}{3}\\right) \\le \\log_3 g\\left(\\frac{x}{3}\\right)$를 만족시키는 정수 $x$의 개수는? [4.6점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/23_팔마고_1학기_중간_고2_수학I/q13.png\" class=\"exam-img\" alt=\"좌표평면에 위로 열린 이차함수 y=f(x)와 증가하는 직선 y=g(x)가 있다. f의 x절편은 −4,4이고 g의 x절편은 1이다. 두 그래프의 교점 x좌표 −2,6에 세로 점선이 표시되어 있다.\"></div>",
     "choices": [
       "3",
       "4",
@@ -757,7 +757,7 @@ window.questionBank = [
   {
     "id": 17,
     "questionType": "객관식",
-    "content": "그림과 같이 직선 $y=-\\frac{1}{2}x+7$이 $y$축, $x$축과 만나는 점을 각각 $\\mathrm{A}, \\mathrm{B}$라 하고, 직선 $y=-\\frac{1}{2}x+7$이 두 함수 $y=\\log_a(x-1)$, $y=\\log_a(x-3)-1$의 그래프와 만나는 점을 각각 $\\mathrm{P}, \\mathrm{Q}$라 하자. $\\overline{\\mathrm{AP}}=2\\overline{\\mathrm{QB}}$일 때, 상수 $a^3$의 값은? (단, $a>1$) [4.6점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/23_팔마고_1학기_중간_고2_수학I/q17.png\" class=\"exam-img\"></div>",
+    "content": "그림과 같이 직선 $y=-\\frac{1}{2}x+7$이 $y$축, $x$축과 만나는 점을 각각 $\\mathrm{A}, \\mathrm{B}$라 하고, 직선 $y=-\\frac{1}{2}x+7$이 두 함수 $y=\\log_a(x-1)$, $y=\\log_a(x-3)-1$의 그래프와 만나는 점을 각각 $\\mathrm{P}, \\mathrm{Q}$라 하자. $\\overline{\\mathrm{AP}}=2\\overline{\\mathrm{QB}}$일 때, 상수 $a^3$의 값은? (단, $a>1$) [4.6점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/23_팔마고_1학기_중간_고2_수학I/q17-problem-v1.svg\" class=\"exam-img\" alt=\"좌표평면에 직선 y=−1/2 x+7과 로그곡선 y=log_a(x−1), y=log_a(x−3)−1이 그려져 있다. 직선의 y축 교점 A와 x축 교점 B, 각 로그곡선과의 교점 P,Q가 표시되어 있다.\"></div>",
     "choices": [
       "7",
       "8",
@@ -847,7 +847,7 @@ window.questionBank = [
   {
     "id": 19,
     "questionType": "서술형",
-    "content": "[서답형 2(단답형 2)] 그림과 같이 1보다 큰 두 양수 $a, b$ ($a>b$)에 대하여 점 $\\mathrm{A}(2, 0)$을 지나고 기울기가 1인 직선이 두 함수 $y=\\log_a x$, $y=\\log_b x$의 그래프와 제1사분면에서 만나는 점을 각각 $\\mathrm{P}, \\mathrm{Q}$라 하자. 점 $\\mathrm{P}$를 중심으로 하는 원을 $\\mathrm{C}$라 할 때, 원 $\\mathrm{C}$는 두 점 $\\mathrm{A}, \\mathrm{Q}$를 지난다. 이 원 $\\mathrm{C}$와 $x$축이 만나는 점 중 $\\mathrm{A}$가 아닌 점 $\\mathrm{R}$에 대하여 $\\overline{\\mathrm{AR}}=2$이다. $a^2+b^2$의 값을 구하시오. [5점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/23_팔마고_1학기_중간_고2_수학I/q19.png\" class=\"exam-img\"></div>",
+    "content": "[서답형 2(단답형 2)] 그림과 같이 1보다 큰 두 양수 $a, b$ ($a>b$)에 대하여 점 $\\mathrm{A}(2, 0)$을 지나고 기울기가 1인 직선이 두 함수 $y=\\log_a x$, $y=\\log_b x$의 그래프와 제1사분면에서 만나는 점을 각각 $\\mathrm{P}, \\mathrm{Q}$라 하자. 점 $\\mathrm{P}$를 중심으로 하는 원을 $\\mathrm{C}$라 할 때, 원 $\\mathrm{C}$는 두 점 $\\mathrm{A}, \\mathrm{Q}$를 지난다. 이 원 $\\mathrm{C}$와 $x$축이 만나는 점 중 $\\mathrm{A}$가 아닌 점 $\\mathrm{R}$에 대하여 $\\overline{\\mathrm{AR}}=2$이다. $a^2+b^2$의 값을 구하시오. [5점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/23_팔마고_1학기_중간_고2_수학I/q19.png\" class=\"exam-img\" alt=\"좌표평면에 y=log_a x, y=log_b x 두 곡선과 A=(2,0)을 지나는 기울기 1인 직선이 있고, 직선과 두 곡선의 교점은 P,Q이다. P를 중심으로 A,Q를 지나는 원 C가 그려져 있으며, 원의 다른 x축 교점 R은 A의 오른쪽에 있다.\"></div>",
     "choices": [],
     "answer": "13",
     "solution": "<p><b>1. 원의 중심 좌표</b></p><p>$A=(2,0)$이고 그림에서 다른 $x$축 교점 $R$은 $A$의 오른쪽에 있으며 $AR=2$이므로 $R=(4,0)$입니다. 원의 중심 $P$는 현 $AR$의 수직이등분선 위에 있으므로 $x_P=\\frac{2+4}{2}=3$입니다. 또 $P$는 기울기 1인 직선 $y=x-2$ 위에 있으므로 $P=(3,1)$입니다.</p><p><b>2. 지름의 성질로 Q 구하기</b></p><p>직선 $AQ$는 원의 중심 $P$를 지나므로 $AQ$는 지름입니다. 따라서 $P$가 $AQ$의 중점이고 $Q=2P-A=(4,2)$입니다.</p><p><b>3. 두 로그의 밑 계산</b></p><p>$P$가 $y=\\log_ax$ 위에 있으므로 $1=\\log_a3$, 즉 $a=3$입니다. $Q$가 $y=\\log_bx$ 위에 있으므로 $2=\\log_b4$, 즉 $b^2=4$와 $b>1$에서 $b=2$입니다. 따라서 $a^2+b^2=9+4=\\boxed{13}$입니다.</p>",
