@@ -33,6 +33,10 @@ window.examData = {
     },
     {
       "id": 3,
+      "solutionImageCaption": "N(1), N(2), N(3)은 1이고 N(4)부터 N(8)은 2이며 N(9)는 3이다. 합은 3+10+3=16이며 정답은 ②이다.",
+      "solutionImageAlt": "1부터 9까지 한 칸씩 나눈 수직선에서 초록 세 점은 처음 묶음이다. 파랑 다섯 점은 두 번째 묶음이고 오른쪽 주황 한 점은 마지막 묶음이다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/20_신흥중_1학기_기말_중3_수학/q3-solution.svg",
       "score": 4,
       "question": "$\\sqrt{x}$ 이하의 자연수의 개수를 $N(x)$라고 하면 $2 < \\sqrt{5} < 3$이므로 $N(5) = 2$이다. 이 때, $N(1) + N(2) + N(3) + \\cdots + N(9)$의 값을 구하면? (4점)",
       "choices": [
@@ -47,8 +51,13 @@ window.examData = {
     },
     {
       "id": 4,
+      "solutionImageCaption": "정사각형의 한 변은 가로 2, 세로 1인 삼각형의 빗변이어서 √5이다. P=−2+√5, Q=−2−√5이므로 차는 2√5이고 정답은 ②이다.",
+      "solutionImageAlt": "파랑 정사각형 테두리와 오른쪽의 가로 한 칸·세로 두 칸 수선이 보인다. 같은 반지름의 두 초록 호가 수직선 양쪽에 닿는다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/20_신흥중_1학기_기말_중3_수학/q4-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4,
-      "question": "다음 수직선 위에서 점 $\\mathrm{P}$와 점 $\\mathrm{Q}$에 대응하는 수를 구하여 $P-Q$의 값을 구하면? (4점)<br><br><p><img src=\"assets/images/20_신흥중_1학기_기말_중3_수학/q04.png\" alt=\"문제 4번 그림\" style=\"max-width: 500px;\"></p>",
+      "question": "다음 수직선 위에서 점 $\\mathrm{P}$와 점 $\\mathrm{Q}$에 대응하는 수를 구하여 $P-Q$의 값을 구하면? (4점)<br><br><p><img src=\"assets/images/20_신흥중_1학기_기말_중3_수학/q4-problem-v2.svg\" alt=\"격자에 놓인 기울어진 정사각형과 수직선 위의 P와 Q를 그렸다. 수직선의 −2를 중심으로 그은 초록 두 호의 반지름은 같다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p>",
       "choices": [
         "$1 + 2\\sqrt{5}$",
         "$2\\sqrt{5}$",
@@ -61,6 +70,10 @@ window.examData = {
     },
     {
       "id": 5,
+      "solutionImageCaption": "두 절댓값은 a−1과 2−a이므로 합이 1이다. 정답은 ③이다.",
+      "solutionImageAlt": "가운데 a를 기준으로 왼쪽 1까지는 파랑, 오른쪽 2까지는 주황이다. 두 길이는 각각 a−1, 2−a이다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/20_신흥중_1학기_기말_중3_수학/q5-solution.svg",
       "score": 4,
       "question": "$1 < a < 2$일 때, $|a-2| + \\sqrt{(1-a)^2}$의 값을 구하면? (4점)",
       "choices": [
@@ -89,6 +102,10 @@ window.examData = {
     },
     {
       "id": 7,
+      "solutionImageCaption": "0<3−√5<1이므로 a=0, b=3−√5이다. a−2b=−6+2√5이고 정답은 ④이다.",
+      "solutionImageAlt": "3에서 √5만큼 뺀 수가 수직선의 0과 1 사이 주황 점에 있다. 위쪽 초록 선은 0과 1 사이의 구간이다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/20_신흥중_1학기_기말_중3_수학/q7-solution.svg",
       "score": 4,
       "question": "$3 - \\sqrt{5}$의 정수부분을 $a$, 소수부분을 $b$라 할 때, $a - 2b$의 값을 구하면? (4점)",
       "choices": [
@@ -173,6 +190,10 @@ window.examData = {
     },
     {
       "id": 13,
+      "solutionImageCaption": "두 직사각형 넓이의 합은 2Bx이므로 2B=3이다. B=3/2, A=B²=9/4이므로 A+B=15/4이다. 정답은 ②이다.",
+      "solutionImageAlt": "한 변을 x와 B로 나눈 정사각형이다. 두 주황 직사각형은 크기가 같은 xB이고, 파란 x²과 초록 B²도 각각 하나씩 있다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/20_신흥중_1학기_기말_중3_수학/q13-solution.svg",
       "score": 4,
       "question": "$(x+B)^2$을 전개하면 이차식 $x^2 + 3x + A$가 된다. 이 때, $A+B$의 값을 구하면? (4점)",
       "choices": [
@@ -285,14 +306,23 @@ window.examData = {
     },
     {
       "id": 21,
+      "solutionImageCaption": "두 평행한 변의 합은 2√8이므로 평균은 √8이다. 높이 √3을 곱하면 넓이는 2√6이다.",
+      "solutionImageAlt": "사다리꼴의 윗변은 √8−1, 아랫변은 √8+1이고 두 변과 직각을 이루는 왼쪽의 높이는 √3이다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/20_신흥중_1학기_기말_중3_수학/q21-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 5,
-      "question": "[서술형1] 다음 사다리꼴의 넓이를 구하여라. (풀이 과정을 자세히 쓰시오) (5점)<br><br><p><img src=\"assets/images/20_신흥중_1학기_기말_중3_수학/s01.png\" alt=\"서술형 1번 그림\" style=\"max-width: 300px;\"></p>",
+      "question": "[서술형1] 다음 사다리꼴의 넓이를 구하여라. (풀이 과정을 자세히 쓰시오) (5점)<br><br><p><img src=\"assets/images/20_신흥중_1학기_기말_중3_수학/q21-problem-v2.svg\" alt=\"사다리꼴의 윗변은 √8−1, 아랫변은 √8+1이고 두 변과 직각을 이루는 왼쪽의 높이는 √3이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p>",
       "choices": [],
       "answer": "$2\\sqrt6$",
       "solution": "그림에서 윗변과 아랫변은 왼쪽 변에 수직이므로 서로 평행하고, 높이는 $\\sqrt3$이다.\n사다리꼴의 넓이는 $(\\text{윗변}+\\text{아랫변})\\times\\text{높이}\\div2$이므로\n$S=\\dfrac{(\\sqrt8-1)+(\\sqrt8+1)}2\\times\\sqrt3$\n$=\\dfrac{2\\sqrt8}{2}\\times\\sqrt3$\n$=\\sqrt8\\times\\sqrt3$\n$=\\sqrt{24}$\n$=2\\sqrt6$이다."
     },
     {
       "id": 22,
+      "solutionImageCaption": "정사각형의 넓이는 128이다. 세로 h는 128/(4√3)이므로 32√3/3이다.",
+      "solutionImageAlt": "왼쪽 정사각형의 변 하나는 8√2이고 오른쪽 직사각형의 밑변은 4√3이다. 같은 넓이인 두 도형의 변과 밑변을 비교한다.",
+      "solutionImageSize": "full",
+      "solutionImage": "assets/images/20_신흥중_1학기_기말_중3_수학/q22-solution.svg",
       "score": 5,
       "question": "[서술형2] 한 변의 길이가 $8\\sqrt{2}$인 정사각형과 넓이가 같은 직사각형을 만들려고 한다. 이 직사각형의 가로의 길이가 $4\\sqrt{3}$일 때, 세로의 길이를 구하여라. (풀이 과정을 자세히 쓰시오) (5점)",
       "choices": [],
