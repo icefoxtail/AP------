@@ -148,3 +148,30 @@ test('trig endpoint label hiding requires a current interval and unique side tok
   const unsupported=await frame(plainPlan({sourceDomain:{kind:'ALL_REALS'},hideIntervalEndLabels:['END']}));
   assert.equal(unsupported.result.code,'TRIG_HIDE_INTERVAL_END_LABELS_REQUIRES_V2',JSON.stringify(unsupported.result));
 });
+
+test('Gangnam Girls Q11 crops a pi-rate cosine in ordinary x units without invented endpoints',async()=>{
+  const graphPlan={family:'trigonometric',function:'COS',ratePi:'2/3',coefficients:['2','1'],phasePi:'-4/3',
+    sourceDomain:{kind:'ALL_REALS'},displayWindowX:['-3/5','23/4'],
+    axisTickValues:{x:['1','3','4'],y:['-1','3']},displayGuides:{y:['-1','3']},showOriginLabel:true};
+  const framed=await frame(graphPlan);
+  assert.equal(framed.status,'OK',JSON.stringify(framed.result));
+  const fitted=framed.result.graphPlan;
+  const {result:model,status}=await worker({action:'graph',graphPlan:fitted});
+  assert.equal(status,'OK',JSON.stringify(model));
+  const {result:audit}=await worker({action:'modelBinding',graphPlan:fitted,svg:model.svg,transform:model.transform},{script:OBSERVER});
+  assert.equal(audit.status,'PASS',JSON.stringify(audit.errors));
+  assert.deepEqual(fitted.domain,[-.6,5.75]);
+  assert.deepEqual(fitted.trigDisplayFeatures.extrema,['1/2','2','7/2','5']);
+  // At the source typography sizes, O and the -1 tick need separate rows on the left of the y-axis.
+  assert.ok(Math.abs((fitted.viewport[3]-fitted.viewport[2])-5.28)<1e-9);
+  const spec=specFor({capability:'trigonometric-spike-v1',caption:'주어진 코사인 그래프',graphPlan:fitted},model,'q11');
+  assert.deepEqual(spec.displayFacts.axisTickValues,graphPlan.axisTickValues);
+  assert.deepEqual(spec.objects.filter(row=>row.guide).map(row=>row.from[1]),[-1,3]);
+  assert.ok(!spec.objects.some(row=>/^(period|interval|formula)/.test(row.id)));
+  assert.doesNotMatch(model.svg,/data-role="interval-endpoint"/);
+  const tampered=model.svg.replace('</svg>','<circle id="interval-endpoint-end" cx="0" cy="0" r="3"/></svg>');
+  const rejected=await worker({action:'modelBinding',graphPlan:fitted,svg:tampered,transform:model.transform},{script:OBSERVER});
+  assert.ok(rejected.result.errors.includes('TRIG_DISPLAY_EXTRA_MARKUP'));
+  const piTicks=await frame({...graphPlan,axisTickPi:true});
+  assert.equal(piTicks.result.code,'TRIG_TICK_PI_REQUIRES_PI_AXIS');
+});

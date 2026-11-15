@@ -61,7 +61,9 @@ function boundDocument(ctx, ref) {
 }
 
 function nativeProposals(ctx) {
-  const { native, row, patch } = ctx, ref = native.review.artifactRefs?.proposals;
+  const { native, row, patch } = ctx, refs = native.review.artifactRefs || {},
+    ref = refs.proposals || refs["proposals.json"];
+  if (refs.proposals && refs["proposals.json"]) fail("ambiguous native proposal document aliases");
   let proposals = native.review.proposals || [], origin = { path: native.spec.reviewPath, sha256: native.spec.reviewRef.sha256 };
   if (ref) {
     if (native.review.proposals !== undefined || !SHA256.test(ref.sha256 || "")) fail("ambiguous native proposal document");
@@ -81,7 +83,7 @@ function nativeProposals(ctx) {
   }
   for (const id of row.proposalRefs || []) if (!byId.has(id)) fail("native item proposal is missing");
   const selected = [], technical = [];
-  for (const proposal of proposals) {
+  for (const [index, proposal] of proposals.entries()) {
     const id = proposal.id || proposal.proposalId;
     // M2 TERM proposals belong to the separate four-slot vocabulary contract.
     // FINAL_QA's value allowlist cannot register a term or its candidate fields.
@@ -100,13 +102,24 @@ function nativeProposals(ctx) {
           new Set(ordinals).size !== ordinals.length || !ordinals.includes(patch.sourceOrdinal)))
       fail("native proposal does not support the exact UID/ordinal");
     const kind = native.review.schemaVersion === "m3-s2-complete-semantic-review-v1" ? proposal.kind || proposal.type : proposal.type;
+    if (native.review.schemaVersion === "m3-s2-complete-semantic-review-v1" && refs["proposals.json"] && kind === undefined) {
+      technical.push(validateActiveReuse(ctx, { id, kind: "HISTORICAL_PROJECTION_BINDING_NOTE", proposal, origin })); continue;
+    }
     if (native.review.schemaVersion === "m3-s2-complete-semantic-review-v1" && ACTIVE_REUSE_KINDS.has(kind)) {
       technical.push(validateActiveReuse(ctx, { id, kind, proposal, origin })); continue;
     }
     if (["BINDING", "EXACT_BINDING", "LINK", "LINK_MISSING"].includes(kind)) continue;
-    if (!text(id)) fail("selected semantic proposal requires an exact native ID");
-    const type = ["CC", "NEW_CC", "CROSS_CONCEPT"].includes(kind) ? "CC" : ["TPL", "NEW_TPL", "NEW_TEMPLATE"].includes(kind) ? "TPL" : "UNSUPPORTED";
-    selected.push({ id, type, proposal, origin });
+    const v2 = ctx.spec?.schemaVersion === "archive-native-proposal-finalization-v2";
+    if (!text(id) && !v2) fail("selected semantic proposal requires an exact native ID");
+    let type = ["CC", "NEW_CC", "CROSS_CONCEPT"].includes(kind) ? "CC" : ["TPL", "NEW_TPL", "NEW_TEMPLATE"].includes(kind) ? "TPL" : "UNSUPPORTED";
+    if (v2 && native.review.schemaVersion === "m3-s2-complete-semantic-review-v1") {
+      if (["NEW_CROSS_CONCEPT_PROPOSAL", "NEW_CROSSCONCEPT", "NEW_CC_PROPOSAL", "CROSS_CONCEPT_DEFINITION_GAP"].includes(kind)) type = "CC";
+      if (["CONDITION_CANDIDATE", "NEW_CONDITION"].includes(kind)) type = "CONDITION";
+      if (kind === "BOUNDARY_REVIEW") type = "BOUNDARY";
+    }
+    selected.push({ id, type, kind, proposal, origin, selection: { documentRef: origin, index,
+      proposalSha256: sha(stable(proposal)), questionUid: patch.questionUid, sourceOrdinal: patch.sourceOrdinal,
+      ...(id === undefined ? {} : { proposalId: id }) } });
   }
   const semanticDebt = [...(row.debts || []), ...(row.registrationDebt || [])].some(d =>
     /^(NEW_CC|NEW_CROSS_CONCEPT|NEW_CROSSCONCEPT|CROSS_CONCEPT_DEFINITION_GAP|NEW_CONDITION|NEW_TPL|NEW_TEMPLATE|NEW_TPL_PROPOSAL|NEW_PT|NEW_PROBLEM_TYPE|DEFINITION_REQUIRED)$/.test(typeof d === "string" ? d : d?.type || d?.kind || ""));
@@ -121,7 +134,19 @@ function validateActiveReuse(ctx, { id, kind, proposal, origin }) {
   if (!text(ptKey) || !text(tplKey) || ctx.final.problemTypeKey !== ptKey || ctx.final.templateKey !== tplKey ||
       beforePt?.status !== "ACTIVE" || beforeTpl?.status !== "ACTIVE" || beforeTpl.parentProblemTypeKey !== ptKey ||
       !equal(beforePt, afterPt) || !equal(beforeTpl, afterTpl)) fail("technical reuse requires unchanged pre-existing ACTIVE PT/TPL definitions");
-  if (kind === "EXISTING_ACTIVE_CROSSWALK_CONNECTION") {
+  if (kind === "HISTORICAL_PROJECTION_BINDING_NOTE") {
+    const keys = ["ordinal", "questionUid", "status", "primaryMethod", "decisiveStep", "debts"], debts = proposal.debts;
+    if (id !== undefined || Object.keys(proposal).some(k => !keys.includes(k)) ||
+        proposal.status !== "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR" ||
+        !text(proposal.primaryMethod) || proposal.primaryMethod !== ctx.row.primaryMethod ||
+        !text(proposal.decisiveStep) || proposal.decisiveStep !== ctx.row.decisiveStep ||
+        !Array.isArray(debts) || !debts.length || !equal(debts, ctx.row.debts) || debts.some(d =>
+          !d || Object.keys(d).some(k => !["type", "curriculum", "reason", "mappedProblemTypeKey", "mappedTemplateKeys"].includes(k)) ||
+          d.type !== "PROJECTION_BINDING_PENDING" || d.reason !== "EXACT_ACTIVE_BINDING_PENDING" ||
+          !["2015", "2022"].includes(d.curriculum) || d.mappedProblemTypeKey !== ptKey ||
+          !uniqueStrings(d.mappedTemplateKeys) || !d.mappedTemplateKeys.includes(tplKey)))
+      fail("historical projection note is not an exact native technical binding debt");
+  } else if (kind === "EXISTING_ACTIVE_CROSSWALK_CONNECTION") {
     if (!uniqueStrings(proposal.existingTemplates) || !proposal.existingTemplates.includes(tplKey)) fail("technical connection does not name the native template");
   } else if (kind === "REUSE_ACTIVE_ADD_CROSSWALK") {
     if (proposal.templateKey !== tplKey || proposal.parentProblemTypeKey !== ptKey ||
@@ -139,7 +164,10 @@ function validateActiveReuse(ctx, { id, kind, proposal, origin }) {
     fail("publisher-leaf gap does not preserve the reviewed ACTIVE template");
   return { ...(id ? { id } : {}), kind, proposalSha256: sha(stable(proposal)), documentRef: origin,
     problemTypeKey: ptKey, templateKey: tplKey, problemTypeDefinitionSha256: sha(stable(beforePt)), templateDefinitionSha256: sha(stable(beforeTpl)),
-    scope: "EXISTING_ACTIVE_PT_TPL_REUSE", newDefinition: false, newMathematicalQa: false };
+    scope: "EXISTING_ACTIVE_PT_TPL_REUSE", newDefinition: false, newMathematicalQa: false,
+    ...(kind === "HISTORICAL_PROJECTION_BINDING_NOTE" ? {
+      declaredCurricula: [...new Set(proposal.debts.map(d => d.curriculum))], historicalBindingsResolved: false,
+    } : {}) };
 }
 
 function exactNativeRef(ctx, ref) {
@@ -158,6 +186,7 @@ function oneRow(rows, ctx, ordinalKey) {
 }
 
 function sourceSnapshot(ctx, { commit, sourcePath, blob, sha256, questionSha256 }) {
+  if (sourcePath !== `archive/exams/${ctx.request.sourceArchiveFile}`) fail("source snapshot must bind the exact request source path");
   if (!SHA1.test(blob || "") || !SHA256.test(sha256 || "") || !SHA256.test(questionSha256 || "")) fail("source snapshot digest missing");
   const file = gitFile(ctx, commit, sourcePath);
   if (file.blob !== blob || file.sha256 !== sha256) fail("source snapshot Git/blob/SHA mismatch");
@@ -213,7 +242,7 @@ function assetBindings(ctx, snapshot, primary) {
 }
 
 function exactDefinition(ctx, change, keyField, definition) {
-  const collection = keyField === "conceptKey" ? "concepts" : "templates", key = definition?.[keyField];
+  const collection = { conceptKey: "concepts", conditionKey: "conditions", templateKey: "templates" }[keyField], key = definition?.[keyField];
   if (!text(key) || definition.status !== "ACTIVE" || !text(definition.canonicalLabelKo) || !text(definition.definition) ||
       !uniqueStrings(definition.supportingQuestionUids) || !definition.supportingQuestionUids.includes(ctx.patch.questionUid) ||
       definition.supportingItemCount !== definition.supportingQuestionUids.length ||
@@ -234,6 +263,226 @@ function exactDefinition(ctx, change, keyField, definition) {
     if (records?.length !== 1 || !equal(records[0], definition)) fail("installed definition differs from finalization");
   }
   return { path: change.path, collection, key, definitionSha256: sha(stable(definition)) };
+}
+
+function rendererInventory(ctx) {
+  const refs = new Set();
+  const add = value => {
+    if (typeof value !== "string" || !/^(?:archive\/)?assets\//.test(value) || /[?#]/.test(value))
+      fail("unsupported disposition renderer reference");
+    const relative = value.startsWith("archive/") ? value : `archive/${value}`;
+    safePath(ctx.root, relative); refs.add(relative);
+  };
+  const explicit = value => {
+    if (value === undefined || value === null || value === "") return;
+    if (Array.isArray(value)) value.forEach(explicit);
+    else if (typeof value === "string") add(value);
+    else fail("unsupported disposition renderer shape");
+  };
+  for (const key of ["image", "images", "solutionImage", "solutionImages"]) explicit(ctx.question[key]);
+  const inline = value => {
+    if (typeof value === "string") {
+      for (const match of value.matchAll(/(?:src|href)\s*=\s*["']([^"']+)["']/gi)) if (!match[1].startsWith("#")) add(match[1]);
+      if (/url\s*\(/i.test(value)) fail("unsupported disposition inline asset URL");
+    } else if (Array.isArray(value)) value.forEach(inline);
+    else if (value && typeof value === "object") Object.values(value).forEach(inline);
+  };
+  inline(ctx.studentPayload(ctx.question));
+  return sorted([...refs]);
+}
+
+function dispositionAssets(ctx, snapshot, declared) {
+  const expected = rendererInventory(ctx);
+  if (!Array.isArray(declared) || !equal(sorted(declared.map(r => r.path)), expected) ||
+      declared.some(r => Object.keys(r).some(k => !["path", "gitBlobSha1", "sha256", "visuallyInspected"].includes(k)) ||
+        !SHA1.test(r.gitBlobSha1 || "") || !SHA256.test(r.sha256 || "") || r.visuallyInspected !== true))
+    fail("complete independently inspected renderer inventory required");
+  return expected.map(relative => {
+    const row = declared.find(r => r.path === relative), file = gitFile(ctx, snapshot.commit, relative),
+      native = gitFile(ctx, ctx.native.spec.reviewCommit, relative), local = safePath(ctx.root, relative);
+    if (row.gitBlobSha1 !== file.blob || row.sha256 !== file.sha256 || file.sha256 !== native.sha256 ||
+        !fs.existsSync(local) || sha(fs.readFileSync(local)) !== file.sha256) fail("disposition renderer bytes changed");
+    if (/\.svg$/i.test(relative)) {
+      const svg = file.bytes.toString("utf8"), dependencies = [
+        ...[...svg.matchAll(/(?:src|href)\s*=\s*["']([^"']+)["']/gi)].map(m => m[1]),
+        ...[...svg.matchAll(/url\s*\(\s*["']?([^\s)"']+)["']?\s*\)/gi)].map(m => m[1]),
+      ];
+      if (dependencies.some(value => !value.startsWith("#") && !/^data:image\/[a-z0-9.+-]+;base64,/i.test(value)))
+        fail("unsupported disposition SVG dependency");
+    }
+    return { path: relative, gitBlobSha1: file.blob, sha256: file.sha256 };
+  });
+}
+
+function reusedDefinition(ctx, decision, keyField) {
+  const collection = { conceptKey: "concepts", conditionKey: "conditions" }[keyField],
+    table = { conceptKey: "cc", conditionKey: "cond" }[keyField], definition = decision.definition, key = definition?.[keyField];
+  if (!collection || !text(key) || definition.status !== "ACTIVE" || !text(definition.definition) ||
+      !text(decision.canonicalPath) || !decision.canonicalPath.startsWith(CANON) || decision.registryChange)
+    fail("exact unchanged ACTIVE definition reuse required");
+  const full = safePath(ctx.root, decision.canonicalPath);
+  if (!fs.existsSync(full)) fail("reused canonical definition missing");
+  const records = parse(fs.readFileSync(full))[collection]?.filter(r => r[keyField] === key),
+    before = ctx.canonicalBefore?.[table]?.get(key), after = ctx.canonicalAfter?.[table]?.get(key);
+  if (records?.length !== 1 || !equal(records[0], definition) || before?.status !== "ACTIVE" ||
+      !equal(before, after) || Object.entries(definition).some(([k, v]) => !equal(before[k], v)))
+    fail("reused canonical definition changed or was not already ACTIVE");
+  return { path: decision.canonicalPath, collection, key, definitionSha256: sha(stable(definition)), newDefinition: false };
+}
+
+function nativeFieldBase(ctx, field) {
+  if (Object.hasOwn(ctx.accepted, field)) return ctx.accepted[field];
+  const a = ctx.native.committedBank[ctx.patch.sourceOrdinal - 1], b = ctx.native.reviewedBank[ctx.patch.sourceOrdinal - 1];
+  if (!Object.hasOwn(a, field) || !Object.hasOwn(b, field) || !equal(a[field], b[field]))
+    fail(`native disposition field has no exact base: ${field}`);
+  return a[field];
+}
+
+function independentTemplateWitness(ctx, app, choice, selected, snapshot, assets, parent) {
+  const witness = boundDocument(ctx, app.independentReviewRef);
+  if (witness.schemaVersion !== "archive-template-definition-independent-review-v1" ||
+      witness.decision !== "APPROVE_EXACT_DEFINITION_AND_SELECTED_APPLICATION" ||
+      witness.scope !== "NARROW_NEW_TEMPLATE_DEFINITION_AND_ONE_EXISTING_REVIEWED_ITEM" ||
+      witness.reviewer !== app.reviewer || witness.examId !== app.examId ||
+      witness.questionUid !== app.questionUid || witness.sourceOrdinal !== app.sourceOrdinal ||
+      !equal({ commit: witness.nativeReview?.commit, path: witness.nativeReview?.path, sha256: witness.nativeReview?.sha256 }, app.nativeReviewRef) ||
+      witness.originalProposal?.id !== selected.id || witness.originalProposal?.type !== selected.kind ||
+      witness.originalProposal?.sha256 !== selected.selection.proposalSha256 ||
+      !equal(witness.proposedDefinition, choice.definition) || witness.proposedDefinitionCanonicalSha256 !== sha(stable(choice.definition)) ||
+      witness.parentProblemTypeKey !== parent.problemTypeKey || witness.definitionOwnerPack !== parent.ownerPack ||
+      choice.registryChange?.path !== `${CANON}packs/${parent.ownerPack.toLowerCase().replaceAll("_", "-")}/taxonomy.json` ||
+      witness.currentMainChecked !== snapshot.commit || witness.sourceAndAssetsStillMatchCurrentMain !== true ||
+      !witness.sourceSnapshots?.some(r => r.path === snapshot.sourcePath && r.blob === snapshot.blob &&
+        r.sha256 === snapshot.sha256 && r.questionSha256 === snapshot.questionSha256) ||
+      !equal(witness.approvedSupportingQuestionUids, [ctx.patch.questionUid]) ||
+      witness.newProblemTypes !== 0 || witness.newTemplatesAuthorizedForOfficialRegistration !== 1 ||
+      witness.newCrossConcepts !== 0 || witness.newConditions !== 0 || witness.newMetadataApprovals !== 0 ||
+      witness.newDifficultyApprovals !== 0 || witness.existingDefinitionsChanged !== 0 || witness.sourceWrites !== 0 ||
+      witness.canonicalWrites !== 0 || witness.fullExamQaClaimed !== false || witness.officialCompilerResolverConsumerStillRequired !== true)
+    fail("normalized M2 template disposition differs from the original independent review");
+  const witnessedAssets = witness.rendererBindings;
+  if (!Array.isArray(witnessedAssets) || !equal(sorted(witnessedAssets.map(r => r.path)), sorted(assets.map(r => r.path))) ||
+      witnessedAssets.some(r => r.visuallyInspected !== true || !assets.some(a => a.path === r.path && a.sha256 === r.sha256)))
+    fail("independent template renderer scope mismatch");
+  for (const [field, originalField] of [["authorDraftRef", "draftRef"], ["registryProposalRef", "registryChangeProposalRef"]]) {
+    if (app[field] === undefined) continue;
+    boundDocument(ctx, app[field]);
+    if (app[field].sha256 !== witness[originalField]?.sha256) fail("normalized template provenance ref differs from original review");
+  }
+  return app.independentReviewRef;
+}
+
+function independentAuxiliaryWitness(ctx, app, choice, selected, snapshot, assets) {
+  const witness = boundDocument(ctx, app.independentReviewRef), candidates = witness.rows?.filter(r => r.questionUid === app.questionUid);
+  if (witness.schemaVersion !== "archive-independent-proposal-condition-boundary-finalization-v1" ||
+      witness.decision !== "APPROVE_EXACT_TWO_CONDITIONS_AND_ONE_EXISTING_TEMPLATE_BOUNDARY" ||
+      witness.reviewer !== app.reviewer || candidates?.length !== 1 || witness.newMetadataApprovals !== 0 ||
+      witness.newDifficultyApprovals !== 0 || witness.newFullExamQa !== false || witness.newReview2 !== false ||
+      witness.existingDefinitionsModified !== 0 || witness.newCrossConceptDefinitions !== 0 || witness.newTemplateDefinitions !== 0 ||
+      witness.sourceWrites !== 0 || witness.canonicalWrites !== 0 || witness.officialCompilerResolverAndConsumerStillRequired !== true)
+    fail("normalized auxiliary disposition lacks its exact original independent review");
+  const row = candidates[0];
+  if (row.examId !== app.examId || row.sourceOrdinal !== app.sourceOrdinal || !equal(row.nativeProposal, selected.proposal) ||
+      row.proposalJsonSha256 !== sha(JSON.stringify(selected.proposal)) ||
+      !equal({ commit: row.nativeMetaRef?.commit, path: row.nativeMetaRef?.path, sha256: row.nativeMetaRef?.sha256 }, app.nativeReviewRef) ||
+      !equal({ path: row.nativeProposalRef?.path, sha256: row.nativeProposalRef?.sha256 }, selected.selection.documentRef) ||
+      row.currentSourceRef?.commit !== snapshot.commit || row.currentSourceRef?.path !== snapshot.sourcePath ||
+      row.currentSourceRef?.gitBlobSha1 !== snapshot.blob || row.currentSourceRef?.sha256 !== snapshot.sha256 ||
+      row.currentQuestionSha256 !== sha(JSON.stringify(snapshot.question)) || row.newMetadataApprovals !== 0 ||
+      row.newDifficultyJudgment !== false || row.newFullMathematicalQa !== false || row.newReview2 !== false || row.sourceWrites !== 0)
+    fail("normalized auxiliary application differs from original review");
+  const current = gitFile(ctx, witness.currentMainChecked, snapshot.sourcePath);
+  if (current.blob !== snapshot.blob || current.sha256 !== snapshot.sha256 ||
+      !Array.isArray(row.rendererAssets) || !equal(sorted(row.rendererAssets.map(r => r.path)), sorted(assets.map(r => r.path))) ||
+      row.rendererAssets.some(r => r.visuallyInspected !== true || !assets.some(a =>
+        a.path === r.path && a.sha256 === r.rawSha256 && a.gitBlobSha1 === r.gitBlobSha1)))
+    fail("original auxiliary current-source/renderer binding mismatch");
+  if (selected.type === "CONDITION") {
+    const approved = witness.approvedRegistryChanges?.filter(r => r.match?.conditionKey === choice.definition?.conditionKey);
+    if (row.decision !== "APPROVE_EXACT_CONDITION_APPLICATION" || row.key !== choice.definition?.conditionKey ||
+        choice.disposition !== "ADD_ONLY" || approved?.length !== 1 || !equal(approved[0], choice.registryChange))
+      fail("normalized condition definition differs from original review");
+  } else if (selected.type === "BOUNDARY") {
+    if (row.decision !== "APPROVE_EXISTING_TEMPLATE_BOUNDARY_REUSE" || row.problemTypeKey !== choice.problemTypeKey ||
+        row.templateKey !== choice.templateKey || choice.disposition !== "KEEP_REVIEWED_ACTIVE_PRIMARY")
+      fail("normalized boundary differs from original review");
+  } else fail("unsupported auxiliary review normalization");
+  return app.independentReviewRef;
+}
+
+function finalizeDisposition(ctx, proof, proposals) {
+  const isM3 = ctx.native.review.schemaVersion === "m3-s2-complete-semantic-review-v1";
+  if ((!isM3 && ctx.native.review.schemaVersion !== "m2-s2-meta-review-v1") ||
+      proof.schemaVersion !== "archive-independent-native-proposal-disposition-v1" ||
+      proof.status !== "NARROW_PROPOSALS_FINALIZED_REGISTRATION_PENDING" ||
+      proof.scope?.newFullMathematicalQa !== false || proof.scope?.newReview2Claims !== 0 ||
+      proof.scope?.newMetadataApprovals !== 0 || proof.scope?.newDifficultyJudgments !== 0 ||
+      proof.scope?.newSourceContentEdits !== 0 || ctx.spec.registryChangesRef ||
+      !equal(ctx.spec.proposalSelections, proposals.map(p => p.selection)))
+    fail("exact independently finalized native disposition scope required");
+  const app = oneRow(proof.applications, ctx, "sourceOrdinal");
+  exactNativeRef(ctx, app.nativeReviewRef);
+  if (!text(app.reviewer) || app.reviewer === ctx.native.reviewer || !text(app.reason) ||
+      app.nativeItemStableSha256 !== sha(stable(ctx.row)) || !equal(app.proposalSelections, ctx.spec.proposalSelections) ||
+      app.newMathematicalQa !== false || app.newMetadataApproval !== false || app.difficultyChanged !== false ||
+      !equal(app.nativeProtectedStudentFieldsChanges, [])) fail("native disposition application/reviewer mismatch");
+  const snapshot = sourceSnapshot(ctx, app.sourceSnapshot), assets = dispositionAssets(ctx, snapshot, app.rendererAssets);
+  const fieldNames = ["standardCourse", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey"];
+  if (!app.reviewedPrimaryContext || Object.keys(app.reviewedPrimaryContext).some(k => !fieldNames.includes(k)))
+    fail("exact disposition primary context required");
+  for (const field of fieldNames) if (!text(app.reviewedPrimaryContext[field]) || app.reviewedPrimaryContext[field] !== ctx.final[field])
+    fail(`disposition primary context mismatch: ${field}`);
+  const pt = ctx.final.problemTypeKey, parentBefore = ctx.canonicalBefore?.pt?.get(pt), parentAfter = ctx.canonicalAfter?.pt?.get(pt);
+  if (parentBefore?.status !== "ACTIVE" || !equal(parentBefore, parentAfter)) fail("disposition must preserve an existing ACTIVE primary parent");
+  if (!Array.isArray(app.decisions) || app.decisions.length !== proposals.length ||
+      !equal(app.decisions.map(d => d.selection), ctx.spec.proposalSelections)) fail("every exact proposal needs one disposition");
+  const fields = {}, definitions = [], decisions = [], independentReviews = [];
+  for (let index = 0; index < proposals.length; index += 1) {
+    const selected = proposals[index], choice = app.decisions[index], proposal = selected.proposal;
+    if (!text(choice.reason)) fail("proposal disposition reason missing");
+    if (isM3 && (["CONDITION", "BOUNDARY"].includes(selected.type) || app.independentReviewRef !== undefined))
+      independentReviews.push(independentAuxiliaryWitness(ctx, app, choice, selected, snapshot, assets));
+    if (selected.type === "BOUNDARY") {
+      const template = ctx.accepted.templateKey, before = ctx.canonicalBefore?.tpl?.get(template), after = ctx.canonicalAfter?.tpl?.get(template);
+      if (!isM3 || choice.disposition !== "KEEP_REVIEWED_ACTIVE_PRIMARY" || choice.definition || choice.registryChange ||
+          choice.problemTypeKey !== pt || ctx.accepted.problemTypeKey !== pt || choice.templateKey !== template ||
+          template !== ctx.final.templateKey || proposal.existingTemplate !== template || before?.status !== "ACTIVE" ||
+          before.parentProblemTypeKey !== pt || !equal(before, after)) fail("boundary disposition must preserve the exact reviewed ACTIVE primary");
+      decisions.push({ selection: selected.selection, disposition: choice.disposition, problemTypeKey: pt, templateKey: template,
+        problemTypeDefinitionSha256: sha(stable(parentBefore)), templateDefinitionSha256: sha(stable(before)) });
+      continue;
+    }
+    if (!["CC", "CONDITION", "TPL"].includes(selected.type) || !["ADD_ONLY", "REUSE_ACTIVE"].includes(choice.disposition))
+      fail("unsupported native proposal disposition");
+    if (selected.type === "TPL") {
+      const hasTemplate = Object.hasOwn(ctx.row.after, "templateKey"), match = ctx.row.activeDefinitionMatch;
+      if (isM3 || selected.kind !== "NEW_TPL" || choice.disposition !== "ADD_ONLY" ||
+          hasTemplate && ![null, ""].includes(ctx.row.after.templateKey) ||
+          !match || !Object.hasOwn(match, "templateKey") || match.templateKey !== null ||
+          !text(proposal.parent) || proposal.parent !== pt || match?.problemTypeKey !== pt || match?.problemTypeStatus !== "ACTIVE" ||
+          (Object.hasOwn(ctx.accepted, "problemTypeKey") && ctx.accepted.problemTypeKey !== pt) ||
+          choice.definition?.parentProblemTypeKey !== pt || fields.templateKey)
+        fail("M2 template disposition requires the exact native empty template and unchanged parent");
+      independentReviews.push(independentTemplateWitness(ctx, app, choice, selected, snapshot, assets, parentBefore));
+      definitions.push(exactDefinition(ctx, choice.registryChange, "templateKey", choice.definition));
+      fields.templateKey = choice.definition.templateKey;
+    } else {
+      if (!isM3) fail("v2 auxiliary dispositions require the M3 native schema");
+      const field = selected.type === "CC" ? "crossConceptKeys" : "conditionKeys", keyField = selected.type === "CC" ? "conceptKey" : "conditionKey",
+        base = nativeFieldBase(ctx, field), key = choice.definition?.[keyField];
+      if (!uniqueStrings(base) || !text(key) || base.includes(key) || fields[field]?.includes(key))
+        fail("disposition may only append an exact missing auxiliary key");
+      definitions.push(choice.disposition === "ADD_ONLY" ? exactDefinition(ctx, choice.registryChange, keyField, choice.definition) :
+        reusedDefinition(ctx, choice, keyField));
+      fields[field] = [...(fields[field] || base), key];
+    }
+    const finalizedKey = choice.definition.conceptKey || choice.definition.conditionKey || choice.definition.templateKey;
+    if (Object.hasOwn(proposal, "proposedKey") && proposal.proposedKey !== finalizedKey)
+      fail("finalized definition differs from the native proposed key");
+    decisions.push({ selection: selected.selection, disposition: choice.disposition,
+      key: finalizedKey });
+  }
+  return { fields, snapshot, assets, definitions, decisions, independentReviews, reviewer: app.reviewer };
 }
 
 function finalizeConcept(ctx, proof, proposals) {
@@ -319,14 +568,18 @@ export function validateNativeProposalFinalization(args) {
     if (proposals.length) fail("native semantic proposal requires explicit independent finalization");
     return technical.length ? { fields: {}, technicalBindings: technical } : null;
   }
-  const allowed = ["schemaVersion", "finalizationCommit", "finalizationRef", "registryChangesRef", "proposalMappingRef", "sourceBindingRef", "proposalIds"];
-  if (ctx.request.registrationMode || ctx.spec.schemaVersion !== "archive-native-proposal-finalization-v1" ||
+  const v2 = ctx.spec.schemaVersion === "archive-native-proposal-finalization-v2";
+  const allowed = v2 ? ["schemaVersion", "finalizationCommit", "finalizationRef", "proposalSelections"] :
+    ["schemaVersion", "finalizationCommit", "finalizationRef", "registryChangesRef", "proposalMappingRef", "sourceBindingRef", "proposalIds"];
+  if (ctx.request.registrationMode || (!v2 && ctx.spec.schemaVersion !== "archive-native-proposal-finalization-v1") ||
       Object.keys(ctx.spec).some(k => !allowed.includes(k)) || !SHA1.test(ctx.spec.finalizationCommit || "") ||
-      !uniqueStrings(ctx.spec.proposalIds) || !ctx.spec.proposalIds.length ||
-      !equal(sorted(ctx.spec.proposalIds), sorted(proposals.map(p => p.id))) || proposals.some(p => p.type === "UNSUPPORTED"))
+      !proposals.length || (v2 ? !equal(ctx.spec.proposalSelections, proposals.map(p => p.selection)) :
+        !uniqueStrings(ctx.spec.proposalIds) || !ctx.spec.proposalIds.length ||
+        !equal(sorted(ctx.spec.proposalIds), sorted(proposals.map(p => p.id)))) || proposals.some(p => p.type === "UNSUPPORTED"))
     fail("exact supported native proposal selection required");
   const proof = boundDocument(ctx, ctx.spec.finalizationRef);
-  const result = proof.schemaVersion === "archive-cross-concept-narrow-definition-finalization-v1" ? finalizeConcept(ctx, proof, proposals) :
+  const result = v2 ? finalizeDisposition(ctx, proof, proposals) :
+    proof.schemaVersion === "archive-cross-concept-narrow-definition-finalization-v1" ? finalizeConcept(ctx, proof, proposals) :
     proof.schemaVersion === "archive-independent-exact-template-finalization-review-v1" ? finalizeTemplate(ctx, proof, proposals) : null;
   if (!result) fail("unsupported independent finalization schema");
   for (const [field, value] of Object.entries(result.fields)) {
@@ -335,8 +588,8 @@ export function validateNativeProposalFinalization(args) {
   }
   const { question, ...snapshot } = result.snapshot;
   return { fields: result.fields, technicalBindings: technical, proof: { ...ctx.spec, reviewer: result.reviewer,
-    nativeAfterSha256: sha(stable(ctx.row.after)), nativeProposalBindings: proposals.map(p => ({ id: p.id, type: p.type,
-      proposalSha256: sha(stable(p.proposal)), documentRef: p.origin })),
+    nativeAfterSha256: sha(stable(ctx.row.after)), nativeProposalBindings: proposals.map(p => ({ ...(p.id === undefined ? {} : { id: p.id }), type: p.type,
+      proposalSha256: sha(stable(p.proposal)), documentRef: p.origin, ...(v2 ? { selection: p.selection } : {}) })),
     sourceSnapshot: snapshot, assetBindings: result.assets, definitions: result.definitions,
-    finalizedFields: result.fields, newMathematicalQa: false, newReview2Claims: 0 } };
+    ...(v2 ? { dispositions: result.decisions, independentReviewRefs: result.independentReviews } : {}), finalizedFields: result.fields, newMathematicalQa: false, newReview2Claims: 0 } };
 }

@@ -3353,6 +3353,265 @@ function proposalFinalizationFixture(t, kind = "CC", { omittedNativeCc = false, 
   return { ...f, kind, proof, registry, mapping, binding, proposal, definition, definitionPath, nativeBytes, nativeCommit, assetPath, updateFinalization };
 }
 
+function dispositionFixture(t, kind = "CC", { anonymous = true, noFigure = false, reuse = false, occupiedNativeTemplate = false,
+  auxiliaryWitness = ["CONDITION", "BOUNDARY"].includes(kind) } = {}) {
+  const f = reviewedSourceFixture(t, kind === "TPL" ? "m2-s2-meta-review-v1" : "m3-s2-complete-semantic-review-v1");
+  // The new lane reuses an already ACTIVE primary. It cannot introduce a new
+  // parent in the same operation as disposing of a native proposal.
+  for (const change of f.request.registryChanges) {
+    if (!change.collection) f.put(change.path, change.after);
+    else { const document = f.read(change.path), rows = change.collection === "$" ? document : document[change.collection];
+      rows.push(change.after); f.put(change.path, document); }
+  }
+  f.request.registryChanges = [];
+  f.review.examId = "E001";
+  const proposal = { ...(anonymous && kind !== "TPL" ? {} : { id: "E001-NATIVE-PROPOSAL" }),
+    type: kind === "CC" ? "NEW_CC_PROPOSAL" : kind === "CONDITION" ? "CONDITION_CANDIDATE" : kind === "TPL" ? "NEW_TPL" : "BOUNDARY_REVIEW",
+    definition: "원래 검토에서 제시한 정확한 의미", ordinal: 1, questionUid: "uid1",
+    ...(kind === "TPL" ? { parent: "PT_NEW" } : kind === "BOUNDARY" ? { existingTemplate: "TPL_NEW" } : {}) };
+  const nativeProposalPath = "docs/exact-native-proposals.json";
+  if (kind === "TPL") {
+    f.review.proposals = [proposal]; f.review.items[0].proposalRefs = [proposal.id];
+    if (!occupiedNativeTemplate) delete f.review.items[0].after.templateKey;
+    f.review.items[0].activeDefinitionMatch = { problemTypeKey: "PT_NEW", problemTypeStatus: "ACTIVE", templateKey: null };
+  } else {
+    f.put(nativeProposalPath, [proposal]); f.git("add", "--", nativeProposalPath);
+    f.review.artifactRefs = { proposals: { path: nativeProposalPath, sha256: hash(fs.readFileSync(path.join(f.root, nativeProposalPath))) } };
+  }
+  const assetPath = "archive/assets/reviewed-figure.svg", asset = '<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L1 1"/></svg>';
+  f.put(assetPath, asset); f.git("add", "--", assetPath);
+  if (noFigure) f.current.image = "";
+  f.writeBank(f.current);
+  Object.assign(f.item.after, { sourceFingerprint: f.sourceSha(f.current), contentFingerprint: f.bodySha(f.current) });
+  if (kind !== "TPL") {
+    f.review.sourceAfterBlob = f.git("hash-object", "-w", f.sourcePath);
+    f.review.sourceAfterSha256 = hash(fs.readFileSync(path.join(f.root, f.sourcePath)));
+  }
+  const nativeRef = f.updateReview(), nativeCommit = f.item.sourceReview.reviewCommit,
+    origin = kind === "TPL" ? { path: f.item.sourceReview.reviewPath, sha256: nativeRef.sha256 } : f.review.artifactRefs.proposals;
+  const selection = { documentRef: origin, index: 0, proposalSha256: hash(stable(proposal)), questionUid: "uid1", sourceOrdinal: 1,
+    ...(proposal.id ? { proposalId: proposal.id } : {}) };
+  const keyField = kind === "CONDITION" ? "conditionKey" : kind === "TPL" ? "templateKey" : "conceptKey",
+    field = kind === "CONDITION" ? "conditionKeys" : kind === "TPL" ? "templateKey" : "crossConceptKeys",
+    key = kind === "CONDITION" ? "COND_FINAL" : kind === "TPL" ? "TPL_FINAL" : "CC_FINAL",
+    collection = kind === "CONDITION" ? "conditions" : kind === "TPL" ? "templates" : "concepts",
+    definitionPath = `${CANON}/${kind === "CONDITION" ? "condition_registry.json" : kind === "TPL" ? "packs/new-course/taxonomy.json" : "concepts/new-concepts.json"}`;
+  const definition = { [keyField]: key, canonicalLabelKo: "좁게 확정한 정의", definition: proposal.definition, status: "ACTIVE", aliases: [],
+    supportingQuestionUids: [reuse ? "prior-reviewed-uid" : "uid1"], supportingItemCount: 1,
+    ...(kind === "CC" ? { ownerConceptShard: "NEW_CONCEPTS" } : kind === "CONDITION" ? { owner: "CONDITION_CORE" } : { ownerPack: "NEW_COURSE", parentProblemTypeKey: "PT_NEW" }) };
+  const registryChange = { path: definitionPath, collection, match: { [keyField]: key }, before: null, after: definition };
+  if (kind !== "BOUNDARY") {
+    if (reuse) { const document = f.read(definitionPath); document[collection].push(definition); f.put(definitionPath, document); }
+    else f.request.registryChanges = [{ ...registryChange, evidenceRefs: f.evidenceRefs }];
+  }
+  const choice = { selection, reason: "현재 원문과 원제안을 대조한 좁은 확정", ...(kind === "BOUNDARY" ?
+    { disposition: "KEEP_REVIEWED_ACTIVE_PRIMARY", problemTypeKey: "PT_NEW", templateKey: "TPL_NEW" } :
+    { disposition: reuse ? "REUSE_ACTIVE" : "ADD_ONLY", definition, ...(reuse ? { canonicalPath: definitionPath } : { registryChange }) }) };
+  const app = { examId: "E001", questionUid: "uid1", sourceOrdinal: 1, sourcePath: f.sourcePath, reviewer: "independent-current-reviewer", reason: "원제안의 정확한 의미와 현재 적용만 검토",
+    nativeReviewRef: { commit: nativeCommit, path: f.item.sourceReview.reviewPath, sha256: nativeRef.sha256 },
+    nativeItemStableSha256: hash(stable(f.review.items[0])), proposalSelections: [selection], newMathematicalQa: false,
+    newMetadataApproval: false, difficultyChanged: false, nativeProtectedStudentFieldsChanges: [],
+    sourceSnapshot: { commit: nativeCommit, sourcePath: f.sourcePath, blob: f.git("rev-parse", `${nativeCommit}:${f.sourcePath}`),
+      sha256: hash(fs.readFileSync(path.join(f.root, f.sourcePath))), questionSha256: hash(stable(f.current)) },
+    rendererAssets: noFigure ? [] : [{ path: assetPath, gitBlobSha1: f.git("rev-parse", `${nativeCommit}:${assetPath}`), sha256: hash(asset), visuallyInspected: true }],
+    reviewedPrimaryContext: Object.fromEntries(["standardCourse", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey"].map(k => [k, kind === "TPL" && k === "templateKey" ? key : f.item.after[k]])), decisions: [choice] };
+  const proof = { schemaVersion: "archive-independent-native-proposal-disposition-v1", status: "NARROW_PROPOSALS_FINALIZED_REGISTRATION_PENDING",
+    scope: { newFullMathematicalQa: false, newReview2Claims: 0, newMetadataApprovals: 0, newDifficultyJudgments: 0, newSourceContentEdits: 0 }, applications: [app] };
+  const independent = kind === "TPL" ? { schemaVersion: "archive-template-definition-independent-review-v1",
+    decision: "APPROVE_EXACT_DEFINITION_AND_SELECTED_APPLICATION", scope: "NARROW_NEW_TEMPLATE_DEFINITION_AND_ONE_EXISTING_REVIEWED_ITEM",
+    reviewer: app.reviewer, examId: app.examId, questionUid: app.questionUid, sourceOrdinal: app.sourceOrdinal, nativeReview: app.nativeReviewRef,
+    originalProposal: { id: proposal.id, type: proposal.type, sha256: selection.proposalSha256 },
+    proposedDefinition: structuredClone(definition), proposedDefinitionCanonicalSha256: hash(stable(definition)),
+    parentProblemTypeKey: "PT_NEW", definitionOwnerPack: "NEW_COURSE", currentMainChecked: nativeCommit,
+    sourceAndAssetsStillMatchCurrentMain: true, sourceSnapshots: [{ path: f.sourcePath, blob: app.sourceSnapshot.blob,
+      sha256: app.sourceSnapshot.sha256, questionSha256: app.sourceSnapshot.questionSha256 }],
+    rendererBindings: app.rendererAssets.map(r => ({ path: r.path, sha256: r.sha256, visuallyInspected: true })),
+    approvedSupportingQuestionUids: ["uid1"], newProblemTypes: 0, newTemplatesAuthorizedForOfficialRegistration: 1,
+    newCrossConcepts: 0, newConditions: 0, newMetadataApprovals: 0, newDifficultyApprovals: 0,
+    existingDefinitionsChanged: 0, sourceWrites: 0, canonicalWrites: 0, fullExamQaClaimed: false,
+    officialCompilerResolverConsumerStillRequired: true } : auxiliaryWitness ? {
+      schemaVersion: "archive-independent-proposal-condition-boundary-finalization-v1",
+      decision: "APPROVE_EXACT_TWO_CONDITIONS_AND_ONE_EXISTING_TEMPLATE_BOUNDARY", reviewer: app.reviewer,
+      currentMainChecked: nativeCommit, newMetadataApprovals: 0, newDifficultyApprovals: 0, newFullExamQa: false,
+      newReview2: false, existingDefinitionsModified: 0, newCrossConceptDefinitions: 0, newTemplateDefinitions: 0,
+      sourceWrites: 0, canonicalWrites: 0, officialCompilerResolverAndConsumerStillRequired: true,
+      approvedRegistryChanges: kind === "CONDITION" ? [structuredClone(registryChange)] : [],
+      rows: [{ examId: app.examId, questionUid: app.questionUid, sourceOrdinal: app.sourceOrdinal,
+        nativeProposal: structuredClone(proposal), proposalJsonSha256: hash(JSON.stringify(proposal)),
+        nativeMetaRef: app.nativeReviewRef, nativeProposalRef: { commit: nativeCommit, ...origin },
+        currentSourceRef: { commit: nativeCommit, path: f.sourcePath, gitBlobSha1: app.sourceSnapshot.blob, sha256: app.sourceSnapshot.sha256 },
+        currentQuestionSha256: hash(JSON.stringify(f.current)), newMetadataApprovals: 0, newDifficultyJudgment: false,
+        newFullMathematicalQa: false, newReview2: false, sourceWrites: 0,
+        rendererAssets: app.rendererAssets.map(r => ({ path: r.path, gitBlobSha1: r.gitBlobSha1, rawSha256: r.sha256, visuallyInspected: true })),
+        ...(kind === "CONDITION" ? { decision: "APPROVE_EXACT_CONDITION_APPLICATION", key } :
+          { decision: "APPROVE_EXISTING_TEMPLATE_BOUNDARY_REUSE", problemTypeKey: "PT_NEW", templateKey: "TPL_NEW" }) }],
+    } : null;
+  const proofPath = "docs/exact-disposition.json";
+  const updateFinalization = ({ omitIndependentRef = false } = {}) => {
+    const extraRefs = [];
+    if (independent && !omitIndependentRef) { const p = "docs/original-independent-template-review.json"; f.put(p, independent);
+      app.independentReviewRef = { path: p, sha256: hash(fs.readFileSync(path.join(f.root, p))) }; extraRefs.push(app.independentReviewRef); }
+    else delete app.independentReviewRef;
+    f.put(proofPath, proof); f.git("add", "--", proofPath, ...extraRefs.map(r => r.path));
+    f.git("-c", "user.name=Independent disposition reviewer", "-c", "user.email=disposition@example.invalid", "commit", "--allow-empty", "-qm", "Bind current exact proposal disposition");
+    const proofRef = { path: proofPath, sha256: hash(fs.readFileSync(path.join(f.root, proofPath))) };
+    f.item.sourceReview.proposalFinalization = { schemaVersion: "archive-native-proposal-finalization-v2", finalizationCommit: f.git("rev-parse", "HEAD"), finalizationRef: proofRef, proposalSelections: [selection] };
+    f.item.evidenceRefs = [...f.evidenceRefs, nativeRef, proofRef, ...extraRefs]; f.request.approval.evidenceRefs = [...f.item.evidenceRefs];
+  };
+  updateFinalization();
+  if (kind !== "BOUNDARY") { f.current[field] = kind === "TPL" ? key : [...f.current[field], key]; f.item.after[field] = structuredClone(f.current[field]); f.writeBank(f.current); }
+  return { ...f, kind, proof, app, choice, independent, definition, definitionPath, proposal, selection, assetPath, nativeCommit, nativeBytes: fs.readFileSync(path.join(f.root, "docs/native-review.json")), updateFinalization };
+}
+
+test("v2 exact dispositions bind anonymous M3 CC/Condition and unchanged boundaries, and M2's explicitly empty native template", t => {
+  for (const kind of ["CC", "CONDITION", "BOUNDARY", "TPL"]) {
+    const f = dispositionFixture(t, kind), source = fs.readFileSync(path.join(f.root, f.sourcePath));
+    assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).totalQuestions, 1);
+    assert.deepEqual(fs.readFileSync(path.join(f.root, "docs/native-review.json")), f.nativeBytes);
+    assert.deepEqual(fs.readFileSync(path.join(f.root, f.sourcePath)), source);
+    assert.deepEqual(f.read(META).records[1], f.hold);
+    const p = f.read(f.receiptPath).fingerprintRepairs[0].sourceReview.proposalFinalization;
+    assert.equal(p.newMathematicalQa, false); assert.equal(p.newReview2Claims, 0);
+    assert.deepEqual(p.nativeProposalBindings[0].selection, f.selection);
+    assert.equal(Object.hasOwn(p.nativeProposalBindings[0], "id"), kind === "TPL");
+    assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+  }
+});
+
+test("an exact M3 auxiliary definition may be reused without rewriting its historical supporting cohort", t => {
+  for (const kind of ["CC"]) {
+    const f = dispositionFixture(t, kind, { reuse: true }), bytes = fs.readFileSync(path.join(f.root, f.definitionPath));
+    registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+    assert.deepEqual(fs.readFileSync(path.join(f.root, f.definitionPath)), bytes);
+    assert.equal(f.read(f.receiptPath).fingerprintRepairs[0].sourceReview.proposalFinalization.definitions[0].newDefinition, false);
+  }
+  const textOnly = dispositionFixture(t, "CONDITION", { noFigure: true });
+  assert.equal(registerReviewedExamV2({ root: textOnly.root, request: textOnly.request }).totalQuestions, 1);
+  const unsupportedConditionReuse = dispositionFixture(t, "CONDITION", { reuse: true });
+  assert.throws(() => registerReviewedExamV2({ root: unsupportedConditionReuse.root, request: unsupportedConditionReuse.request }), /normalized condition definition differs/);
+});
+
+test("v2 disposition selection cannot invent a historical ID, omit proposals, or alter exact document/index/UID bindings", t => {
+  for (const mutate of [
+    f => { f.selection.proposalId = "invented-id"; }, f => { f.selection.index = 1; },
+    f => { f.selection.proposalSha256 = "a".repeat(64); }, f => { f.selection.documentRef.sha256 = "a".repeat(64); },
+    f => { f.selection.questionUid = "uid2"; }, f => { f.selection.sourceOrdinal = 2; },
+    f => { f.proof.applications[0].proposalSelections = []; }, f => { f.app.decisions = []; },
+  ]) {
+    const f = dispositionFixture(t); mutate(f); f.updateFinalization();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /native proposal finalization:|native proposal document SHA/);
+  }
+  const absent = dispositionFixture(t); delete absent.item.sourceReview.proposalFinalization;
+  assert.throws(() => registerReviewedExamV2({ root: absent.root, request: absent.request }), /exact native ID/);
+});
+
+test("v2 disposition preserves immutable native/source/renderer/reviewer and scope safeguards", t => {
+  for (const mutate of [
+    f => { f.app.reviewer = "native-author"; }, f => { f.app.nativeItemStableSha256 = "a".repeat(64); },
+    f => { f.app.nativeReviewRef.sha256 = "a".repeat(64); }, f => { f.app.sourceSnapshot.blob = "a".repeat(40); },
+    f => { f.app.sourceSnapshot.sha256 = "a".repeat(64); }, f => { f.app.sourceSnapshot.questionSha256 = "a".repeat(64); },
+    f => { f.app.rendererAssets = []; }, f => { f.app.rendererAssets[0].visuallyInspected = false; },
+    f => { f.app.rendererAssets[0].sha256 = "a".repeat(64); }, f => { f.app.rendererAssets.push({ ...f.app.rendererAssets[0] }); },
+    f => { f.app.reviewedPrimaryContext.templateKey = "OTHER_TPL"; }, f => { f.app.difficultyChanged = true; },
+    f => { f.proof.scope.newFullMathematicalQa = true; }, f => { f.proof.scope.newMetadataApprovals = 1; },
+    f => { f.app.decisions[0].disposition = "AUTOMATICALLY_ACCEPT"; },
+    f => { f.app.decisions[0].registryChange.before = {}; },
+  ]) {
+    const f = dispositionFixture(t); mutate(f); f.updateFinalization();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /native proposal finalization:/);
+  }
+  const asset = dispositionFixture(t); asset.put(asset.assetPath, '<svg xmlns="http://www.w3.org/2000/svg"><text>changed</text></svg>');
+  assert.throws(() => registerReviewedExamV2({ root: asset.root, request: asset.request }), /renderer bytes changed/);
+  const body = dispositionFixture(t); body.current.solution = "different unreviewed solution"; body.writeBank(body.current);
+  assert.throws(() => registerReviewedExamV2({ root: body.root, request: body.request }), /source fingerprint|student payload/);
+});
+
+test("v2 disposition cannot delete auxiliary keys, replace a known native template or turn a boundary into new classification", t => {
+  const deleted = dispositionFixture(t); deleted.current.crossConceptKeys = ["CC_FINAL"]; deleted.item.after.crossConceptKeys = ["CC_FINAL"]; deleted.writeBank(deleted.current);
+  assert.throws(() => registerReviewedExamV2({ root: deleted.root, request: deleted.request }), /finalized value must bind/);
+  const occupied = dispositionFixture(t, "TPL", { occupiedNativeTemplate: true });
+  assert.throws(() => registerReviewedExamV2({ root: occupied.root, request: occupied.request }), /native empty template/);
+  const boundary = dispositionFixture(t, "BOUNDARY"); boundary.choice.templateKey = "OTHER"; boundary.updateFinalization();
+  assert.throws(() => registerReviewedExamV2({ root: boundary.root, request: boundary.request }), /normalized boundary differs from original review/);
+  const renamed = dispositionFixture(t, "CONDITION"); renamed.choice.definition.conditionKey = "COND_OTHER"; renamed.updateFinalization();
+  assert.throws(() => registerReviewedExamV2({ root: renamed.root, request: renamed.request }), /registry after identity mismatch/);
+});
+
+test("normalized M2 template applications are bound to the original independent review, exact single UID, owner and definition", t => {
+  for (const mutate of [
+    f => { f.independent.reviewer = "different-reviewer"; },
+    f => { f.independent.proposedDefinition.definition = "broadened unreviewed repeated-centroid construction"; },
+    f => { f.independent.originalProposal.sha256 = "a".repeat(64); },
+    f => { f.independent.nativeReview = { ...f.independent.nativeReview, sha256: "a".repeat(64) }; },
+    f => { f.independent.questionUid = "uid2"; },
+    f => { f.independent.approvedSupportingQuestionUids.push("uid2"); },
+    f => { f.independent.definitionOwnerPack = "OTHER_PACK"; },
+    f => { f.independent.currentMainChecked = "a".repeat(40); },
+    f => { f.independent.rendererBindings = []; },
+    f => { f.independent.newDifficultyApprovals = 1; },
+    f => { f.independent.fullExamQaClaimed = true; },
+  ]) {
+    const f = dispositionFixture(t, "TPL"); mutate(f); f.updateFinalization();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /native proposal finalization:/);
+  }
+  const unbound = dispositionFixture(t, "TPL"); unbound.item.evidenceRefs = unbound.item.evidenceRefs.filter(r => r.path !== unbound.app.independentReviewRef.path);
+  assert.throws(() => registerReviewedExamV2({ root: unbound.root, request: unbound.request }), /bind approval and item/);
+});
+
+test("normalized M3 conditions and boundary dispositions preserve the original independent current-source judgment", t => {
+  for (const kind of ["CONDITION", "BOUNDARY"]) {
+    const f = dispositionFixture(t, kind, { auxiliaryWitness: true });
+    assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
+    const proof = f.read(f.receiptPath).fingerprintRepairs[0].sourceReview.proposalFinalization;
+    assert.deepEqual(proof.independentReviewRefs, [f.app.independentReviewRef]);
+    assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+  }
+  for (const mutate of [
+    f => { f.independent.reviewer = "different-reviewer"; },
+    f => { f.independent.rows.push(structuredClone(f.independent.rows[0])); },
+    f => { f.independent.rows[0].nativeProposal.definition = "unreviewed condition"; },
+    f => { f.independent.rows[0].proposalJsonSha256 = "a".repeat(64); },
+    f => { f.independent.rows[0].nativeMetaRef = { ...f.independent.rows[0].nativeMetaRef, sha256: "a".repeat(64) }; },
+    f => { f.independent.rows[0].nativeProposalRef.sha256 = "a".repeat(64); },
+    f => { f.independent.rows[0].currentSourceRef.gitBlobSha1 = "a".repeat(40); },
+    f => { f.independent.rows[0].currentQuestionSha256 = "a".repeat(64); },
+    f => { f.independent.rows[0].rendererAssets[0].rawSha256 = "a".repeat(64); },
+    f => { f.independent.currentMainChecked = "a".repeat(40); },
+    f => { f.independent.approvedRegistryChanges[0].after.definition = "widened condition"; },
+    f => { f.independent.rows[0].key = "COND_OTHER"; },
+    f => { f.independent.newMetadataApprovals = 1; },
+    f => { f.independent.rows[0].newDifficultyJudgment = true; },
+  ]) {
+    const f = dispositionFixture(t, "CONDITION", { auxiliaryWitness: true }); mutate(f); f.updateFinalization();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /native proposal finalization:/);
+  }
+  const boundary = dispositionFixture(t, "BOUNDARY", { auxiliaryWitness: true });
+  boundary.independent.rows[0].templateKey = "TPL_OTHER"; boundary.updateFinalization();
+  assert.throws(() => registerReviewedExamV2({ root: boundary.root, request: boundary.request }), /normalized boundary/);
+  const unbound = dispositionFixture(t, "CONDITION", { auxiliaryWitness: true });
+  unbound.item.evidenceRefs = unbound.item.evidenceRefs.filter(r => r.path !== unbound.app.independentReviewRef.path);
+  assert.throws(() => registerReviewedExamV2({ root: unbound.root, request: unbound.request }), /bind approval and item/);
+});
+
+test("M3 condition and boundary normalization cannot remove the original independent review reference", t => {
+  for (const kind of ["CONDITION", "BOUNDARY"]) {
+    const f = dispositionFixture(t, kind); f.updateFinalization({ omitIndependentRef: true });
+    assert.equal(f.app.independentReviewRef, undefined);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /SHA-bound finalization evidence required/);
+  }
+});
+
+test("a different Git source path cannot lend an identical student payload to a finalized application", t => {
+  const f = dispositionFixture(t), borrowedPath = "archive/exams/other-reviewed-copy.js",
+    bytes = execFileSync("git", ["show", `${f.nativeCommit}:${f.sourcePath}`], { cwd: f.root });
+  f.put(borrowedPath, bytes); f.git("add", "--", borrowedPath);
+  f.git("-c", "user.name=Fixture reviewer", "-c", "user.email=fixture@example.invalid", "commit", "-qm", "Copy the exact old source under a different path");
+  Object.assign(f.app.sourceSnapshot, { commit: f.git("rev-parse", "HEAD"), sourcePath: borrowedPath,
+    blob: f.git("hash-object", borrowedPath), sha256: hash(bytes) });
+  f.updateFinalization();
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /exact request source path/);
+});
+
 test("independent native CC/TPL finalization registers only the exact proposal without rewriting native review or the omitted HOLD", t => {
   for (const kind of ["CC", "TPL"]) {
     const f = proposalFinalizationFixture(t, kind), source = fs.readFileSync(path.join(f.root, f.sourcePath));
@@ -3448,6 +3707,61 @@ function activeReuseProposalFixture(t, kind, { install = true } = {}) {
   f.updateReview();
   return { ...f, proposal };
 }
+
+function projectionNoteFixture(t) {
+  const f = activeReuseProposalFixture(t, "REUSE_ACTIVE_ADD_CROSSWALK"), row = f.review.items[0];
+  row.primaryMethod = row.decisiveStep;
+  row.debts = [{ type: "PROJECTION_BINDING_PENDING", curriculum: "2022", reason: "EXACT_ACTIVE_BINDING_PENDING",
+    mappedProblemTypeKey: "PT_NEW", mappedTemplateKeys: ["TPL_NEW"] }];
+  const proposal = { ordinal: 1, questionUid: "uid1", status: "PENDING_CODEX_REGISTRATION_OR_SOURCE_REPAIR",
+    primaryMethod: row.primaryMethod, decisiveStep: row.decisiveStep, debts: structuredClone(row.debts) },
+    proposalPath = "docs/native-projection-notes.json";
+  delete f.review.proposals;
+  const updateProjectionNote = () => {
+    f.put(proposalPath, [proposal]); f.git("add", "--", proposalPath);
+    f.review.artifactRefs = { "proposals.json": { path: proposalPath, sha256: hash(fs.readFileSync(path.join(f.root, proposalPath))) } };
+    f.updateReview();
+  };
+  updateProjectionNote();
+  return { ...f, proposal, updateProjectionNote };
+}
+
+test("the proposals.json alias binds exact historical projection notes without claiming that another curriculum's binding was resolved", t => {
+  const f = projectionNoteFixture(t);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
+  const binding = f.read(f.receiptPath).fingerprintRepairs[0].sourceReview.technicalProposalBindings[0];
+  assert.equal(binding.kind, "HISTORICAL_PROJECTION_BINDING_NOTE");
+  assert.deepEqual(binding.declaredCurricula, ["2022"]);
+  assert.equal(binding.historicalBindingsResolved, false);
+  assert.equal(binding.newDefinition, false);
+  assert.deepEqual(f.read(META).records[1], f.hold);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+});
+
+test("historical projection aliases reject ambiguous documents, unknown debts and mismatched native or ACTIVE primary values", t => {
+  for (const mutate of [
+    f => { f.proposal.primaryMethod = "unreviewed rationale"; },
+    f => { f.proposal.debts[0].mappedProblemTypeKey = "PT_OTHER"; },
+    f => { f.proposal.debts[0].mappedTemplateKeys = ["TPL_OTHER"]; },
+    f => { f.proposal.debts[0].curriculum = "UNKNOWN"; },
+    f => { f.proposal.debts[0].type = "NEW_TPL_PROPOSAL"; f.review.items[0].debts = structuredClone(f.proposal.debts); },
+    f => { f.proposal.debts.push({ type: "UNKNOWN_REVIEW_DEBT" }); f.review.items[0].debts = structuredClone(f.proposal.debts); },
+    f => { f.proposal.newTemplate = "TPL_UNREVIEWED"; },
+    f => { f.proposal.ordinal = 2; },
+  ]) {
+    const f = projectionNoteFixture(t); mutate(f); f.updateProjectionNote();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /native proposal finalization:|source reassessment:/);
+  }
+  const ambiguous = projectionNoteFixture(t);
+  ambiguous.review.artifactRefs.proposals = ambiguous.review.artifactRefs["proposals.json"]; ambiguous.updateReview();
+  assert.throws(() => registerReviewedExamV2({ root: ambiguous.root, request: ambiguous.request }), /ambiguous native proposal document aliases/);
+  const drift = projectionNoteFixture(t);
+  drift.review.artifactRefs["proposals.json"].sha256 = "a".repeat(64); drift.updateReview();
+  assert.throws(() => registerReviewedExamV2({ root: drift.root, request: drift.request }), /native proposal document SHA mismatch/);
+  const binding = projectionNoteFixture(t);
+  binding.put(`${CANON}/packs/new-course/bindings.json`, { status: "ACTIVE", bindings: [] });
+  assert.throws(() => registerReviewedExamV2({ root: binding.root, request: binding.request }), /binding/);
+});
 
 test("native ACTIVE crosswalk proposals, including no-ID rows, bind unchanged canonical definitions without claiming new finalization", t => {
   for (const kind of ["EXISTING_ACTIVE_CROSSWALK_CONNECTION", "REUSE_ACTIVE_ADD_CROSSWALK", "RPM_LEAF_GAP_ACTIVE_TEMPLATE_REUSE", "EXISTING_ACTIVE_LINK_GAP", "RPM_LEAF_LINK_PROPOSAL"]) {

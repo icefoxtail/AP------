@@ -1,0 +1,585 @@
+{
+  "schemaVersion": "archive-narrow-figure-change-independent-review-v1",
+  "reviewer": {
+    "owner": "/root/registrar_repair",
+    "role": "independent narrow figure comparison; no source/figure authorship for these changes"
+  },
+  "createdAt": "2026-11-15T06:52:40.598021+00:00",
+  "scope": "E062 Q12 and E064 Q9/Q19 only; before/current problem asset, unchanged solution asset and original source text/choices/answer/solution comparison",
+  "beforeCommit": "6b916d9042f5c76e628d7ff201e524d9114da65b",
+  "currentCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+  "inputEvidence": [
+    {
+      "path": "m3-pending-repair-20261115/renderer-assets-local.json",
+      "sha256": "0b38a4bcb351e127d1afc425d2a597a692e6f8b3fac99ecadbfdccee4560ff63"
+    },
+    {
+      "path": "m3-pending-repair-20261115/selected-source-protected-audit.json",
+      "sha256": "15d1efff407c76ed09a8ff04ef2f020100be2e556f5c1947d5ba4251df1f9195"
+    }
+  ],
+  "method": [
+    "직접 원 PNG·현재 SVG 렌더·유지된 해설 SVG 렌더 9개를 읽어 점/선/각/길이/표시 의미를 대조했다.",
+    "실제 immutable Git commit:path의 source와 assets를 확인했고 모든 source VM 행을 입력 audit의 before/current 값과 완전히 대조했다.",
+    "각 asset의 Git blob SHA1 및 raw SHA256, source raw SHA256, 문항 JSON SHA256를 독립 재계산했다.",
+    "현재 SVG 좌표를 읽어 필요한 각도 또는 현/높이 비율의 수치 일관성을 확인했다."
+  ],
+  "counts": {
+    "reviewedUidCount": 3,
+    "narrowFigurePass": 3,
+    "narrowFigureHold": 0,
+    "newMetadataApprovals": 0,
+    "newReview2Approvals": 0,
+    "newDifficultyApprovals": 0,
+    "sourceEdits": 0,
+    "requestEdits": 0
+  },
+  "assertions": {
+    "studentTextChoicesAnswerSolutionUnchanged": true,
+    "onlyQuestionFieldsChangedAreImageAndLayoutTag": true,
+    "originalAndCurrentAssetBytesBoundToImmutableGit": true,
+    "unchangedSolutionAssetsChecked": true,
+    "notAFullExamR1R2OrReview2Approval": true,
+    "writerAndConsumerNotRunByThisReview": true
+  },
+  "rows": [
+    {
+      "examId": "E062",
+      "ordinal": 12,
+      "questionUid": "qid_v1_d267bbd637cfa2b930042abaa379773da85ee2eac4c3a464b8635e84ef39a29b",
+      "sources": {
+        "before": {
+          "commit": "6b916d9042f5c76e628d7ff201e524d9114da65b",
+          "path": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "gitBlobSha": "91cca1df1871589e3d3638b7075ef150b8317859",
+          "rawSha256": "4f0adc96afcd726c67dddfa5d573a7f18b55d90efe583f6f05edb0ded138b0c2",
+          "questionOrdinal": 12,
+          "questionStableSha256": "04b5a19ca0e933f844cbfa73a95316f93065f21c4c4b0dcd7deb2d5c5f59e8ba",
+          "questionJsonSha256": "ab5922b0c4341e008236038ffe3b01c7a0b6431909e0b8052aa7ccbf3bcb4ada",
+          "bankCount": 24,
+          "questionHashAlgorithm": "SHA256(JSON.stringify(question)) / SHA256(JSON.stringify(recursive-key-sorted-question)) as explicitly named"
+        },
+        "current": {
+          "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+          "path": "archive/exams/original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+          "gitBlobSha": "74cd5f82f3b8ee148633a8b23465047730ce750d",
+          "rawSha256": "0dd16518c2e5e01314184a4d66aa553b7765aac0c7ea875a2bf2cd78ef39c6be",
+          "questionOrdinal": 12,
+          "questionStableSha256": "c0c4af7c3fb1ceb1fcbcd16c8750cce29324e46cbda7d3ffeb9707c751edd8ab",
+          "questionJsonSha256": "55ade7fc7be0cb75965bc2231ca4292ad3001e63e43053a5ec1b1eacd2d5ef0a",
+          "bankCount": 24,
+          "questionHashAlgorithm": "SHA256(JSON.stringify(question)) / SHA256(JSON.stringify(recursive-key-sorted-question)) as explicitly named"
+        }
+      },
+      "assets": {
+        "before": [
+          {
+            "path": "archive/assets/images/20_신흥중_2학기_기말_중3_기출/q12-solution.svg",
+            "gitBlobSha": "9ac9ce6c1794e9341217e373a4ac0add7001c17b",
+            "rawSha256": "13b8478accb6eae7c327e7604fc0eb30bfb53c3e31a1b3ae0bc2bf0514135607",
+            "bytes": 29547,
+            "reviewedRenderedSha256": "284e7f3e4a2e507be4c51c48e7dff85c98648066d68da9afde0bd0a8e9d7e714",
+            "reviewedRenderedPath": "/workspace/scratch/c8f1b0bfb4fa/m3-pending-repair-20261115/assets/9ac9ce6c1794e9341217e373a4ac0add7001c17b.rendered.png",
+            "gitCommitPathVerified": true
+          },
+          {
+            "path": "archive/assets/images/20_신흥중_2학기_기말_중3_기출/q12.png",
+            "gitBlobSha": "07cd76d713006ade63579de71dc03db8ea673b69",
+            "rawSha256": "2c0259c2db046552e294bb3ff2f5368da1992110a0f144566baa33d847f9bab4",
+            "bytes": 30466,
+            "reviewedRenderedSha256": "2c0259c2db046552e294bb3ff2f5368da1992110a0f144566baa33d847f9bab4",
+            "reviewedRenderedPath": "/workspace/scratch/c8f1b0bfb4fa/m3-pending-repair-20261115/assets/07cd76d713006ade63579de71dc03db8ea673b69.png",
+            "gitCommitPathVerified": true
+          }
+        ],
+        "current": [
+          {
+            "path": "archive/assets/images/20_신흥중_2학기_기말_중3_기출/q12-problem-v2.svg",
+            "gitBlobSha": "945e3a23ceea59bd1aafb809e97175efc999ea97",
+            "rawSha256": "f980a30903c1355fdf7e5650436fb8f517474fb7235fc5cf4773e0319bfbd177",
+            "bytes": 3489,
+            "reviewedRenderedSha256": "d51c72717694d69ef389787c25b03acba22edbe13e6c24627e8ee35e42f0248b",
+            "reviewedRenderedPath": "/workspace/scratch/c8f1b0bfb4fa/m3-pending-repair-20261115/assets/945e3a23ceea59bd1aafb809e97175efc999ea97.rendered.png",
+            "gitCommitPathVerified": true
+          },
+          {
+            "path": "archive/assets/images/20_신흥중_2학기_기말_중3_기출/q12-solution.svg",
+            "gitBlobSha": "9ac9ce6c1794e9341217e373a4ac0add7001c17b",
+            "rawSha256": "13b8478accb6eae7c327e7604fc0eb30bfb53c3e31a1b3ae0bc2bf0514135607",
+            "bytes": 29547,
+            "reviewedRenderedSha256": "284e7f3e4a2e507be4c51c48e7dff85c98648066d68da9afde0bd0a8e9d7e714",
+            "reviewedRenderedPath": "/workspace/scratch/c8f1b0bfb4fa/m3-pending-repair-20261115/assets/9ac9ce6c1794e9341217e373a4ac0add7001c17b.rendered.png",
+            "gitCommitPathVerified": true
+          }
+        ]
+      },
+      "changedFields": [
+        "image",
+        "layoutTag"
+      ],
+      "preservedFields": {
+        "content": {
+          "stableSha256": "42ca5e10fa2aba91a2f0e88b21500efe27bb444ecbeca536857b528402fbb508",
+          "unchanged": true
+        },
+        "choices": {
+          "stableSha256": "aa84e7e0e14a40a078bb1265a70229fd5719416e4d5829eb687d58716b308683",
+          "unchanged": true
+        },
+        "answer": {
+          "stableSha256": "dfde05a3668030e99ca64d8d4ae5f6b64c7a87cee61c0ba43904b92ef210191d",
+          "unchanged": true
+        },
+        "solution": {
+          "stableSha256": "bd647a3e71e7258fcb4c8a91f6e8b4b7a8eb35cf3446fd794bc711b685d99533",
+          "unchanged": true
+        },
+        "solutionImage": {
+          "stableSha256": "b0e5891020aa2c85d3f1934fed682e12fa002ac99ce96f3a469b6dd782577d58",
+          "unchanged": true
+        },
+        "solutionImageAlt": {
+          "stableSha256": "abe081ec0100dcc8ae650a7689595437fe2e834041cbe7fc21ece8ce6c812f6c",
+          "unchanged": true
+        },
+        "solutionImageCaption": {
+          "stableSha256": "5ed411216e79fc684e1f5d531225f2cc39e93dedad8b913939da90e8a05e1a90",
+          "unchanged": true
+        },
+        "level": {
+          "stableSha256": "3c522783788580fa942f4ab774374d0b38a5f0912f225684a79bbefef371cd9e",
+          "unchanged": true
+        },
+        "difficultyBucket": {
+          "stableSha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+          "unchanged": true
+        },
+        "difficultyConfidence": {
+          "stableSha256": "b57c4299afe3cda154124bdb96ceaf618a9d8d9cd8d2c8f6580ff26faa5fe5ca",
+          "unchanged": true
+        },
+        "difficultyBoundaryFlag": {
+          "stableSha256": "c44e6dd700593104019ffce7eeda189212379ba13862b09d70cab34c513210d9",
+          "unchanged": true
+        },
+        "legacyLevelCompatibility": {
+          "stableSha256": "5e7a1c4cc73d750e2db6584f9302151ef13ded93196d1041633b218a1c91d8b6",
+          "unchanged": true
+        },
+        "problemTypeKey": {
+          "stableSha256": "d000883e92b18340d80a630fedfe08765ed369f6b32539cb9960f53d1b857bb6",
+          "unchanged": true
+        },
+        "templateKey": {
+          "stableSha256": "51b5605bc4d730c033f794e5df478ebbbe0ae74ff4bf460060bade0f30c6e68b",
+          "unchanged": true
+        },
+        "crossConceptKeys": {
+          "stableSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        "conditionKeys": {
+          "stableSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        "integrationPattern": {
+          "stableSha256": "24f374f20d2a497e7f0ff2617670ca5d221c2cd752895686f7cc89dfb9a08a64",
+          "unchanged": true
+        }
+      },
+      "originalAuditQuestionHashes": {
+        "before": "ab5922b0c4341e008236038ffe3b01c7a0b6431909e0b8052aa7ccbf3bcb4ada",
+        "current": "55ade7fc7be0cb75965bc2231ca4292ad3001e63e43053a5ec1b1eacd2d5ef0a"
+      },
+      "sourceAuditQuestionJsonHashesVerified": true,
+      "renderedAssetReview": {
+        "originalProblemPng": true,
+        "currentProblemSvg": true,
+        "unchangedSolutionSvg": true
+      },
+      "visualFinding": "원 PNG와 현재 SVG에서 원의 다섯 점 A,C,B,D,E의 순서, 중심 O, OA·OB, EA·EC, DC·DB 및 각 표시가 같은 의미를 가진다. 108°는 중심각 AOB, 32°는 원주각 CDB, x는 원주각 AEC에 붙어 있다. 현재 문제 SVG는 정답이나 계산된 호의 크기를 추가하지 않았다.",
+      "mathematicalCheck": "호 ACB=108°, 호 CB=2×32°=64°이므로 호 AC=44°. 같은 호 AC의 원주각 AEC는 22°이며 기존 선택지 ②와 해설이 그대로 성립한다.",
+      "solutionAssetFinding": "기존 해설 SVG의 108° 중심각, 호 CB=64°와 호 AC=44° 및 각 x 표시는 현재 문제와 일치한다. 해설 SVG, alt, caption의 바이트/문자열은 변경되지 않았다.",
+      "svgCoordinateCheck": {
+        "center": [
+          316,
+          243
+        ],
+        "radiusPx": 168,
+        "AOBDegrees": 107.99998789415281,
+        "CDBDegrees": 32.0000034479682,
+        "AECDegrees": 21.99999442441891,
+        "roundingToleranceDegrees": 0.0001
+      },
+      "historicalNarrativeNote": "source.visualEvidence에 PNG crop을 유지했다고 적힌 과거 문구는 현재 SVG를 입증하는 근거로 사용하지 않았다. 이번 current commit:path·raw SHA 대조와 직접 렌더 검토가 현재 그림의 근거다.",
+      "result": "NARROW_FIGURE_CHANGE_PASS",
+      "difficultyDisposition": "기존 level 및 난도 4필드는 정확히 불변이다. 풀이 단계의 추가·삭제를 발견하지 않아 이번 그림 교체로 인한 난도 변경을 요구하지 않는다. 새 독립 난도 승인이나 전 문항 QA를 주장하지 않는다.",
+      "sourceAndRequestFilesModified": false,
+      "externalRendererDependencyCount": 0
+    },
+    {
+      "examId": "E064",
+      "ordinal": 9,
+      "questionUid": "qid_v1_d0f13bd8543fdafbae919916b56c59fb9d1adea669e334aff42d5e79636575cb",
+      "sources": {
+        "before": {
+          "commit": "6b916d9042f5c76e628d7ff201e524d9114da65b",
+          "path": "archive/exams/original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
+          "gitBlobSha": "0ab4d00cc0a19fef6c57d44d0df9498bb0814006",
+          "rawSha256": "5d72e0ed94356ad8d56184ba59acfd42c711063101b712272e2b4a87d43c61eb",
+          "questionOrdinal": 9,
+          "questionStableSha256": "d6bcf2fb6e5998963101fe7cb107612ccf532249596e079a1b07f29bba1bb056",
+          "questionJsonSha256": "447c6e720ab584e503ad997f321cb3befcb649019a800d9bc3973aac5b23ec2d",
+          "bankCount": 22,
+          "questionHashAlgorithm": "SHA256(JSON.stringify(question)) / SHA256(JSON.stringify(recursive-key-sorted-question)) as explicitly named"
+        },
+        "current": {
+          "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+          "path": "archive/exams/original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
+          "gitBlobSha": "185604b351ffaea4a729f02b9e03595da29f5681",
+          "rawSha256": "b50a6b683a6d80c43280fbee0121830d808b4000224527ca251a15d228d29079",
+          "questionOrdinal": 9,
+          "questionStableSha256": "8140565452be589a9ddf7caf78a95c269530d0610661ed7739a56542ce2c3a25",
+          "questionJsonSha256": "22887499ee0cb4ce0763a7618f0d5830643524bb4d6b9c96f50a18b3d573c50c",
+          "bankCount": 22,
+          "questionHashAlgorithm": "SHA256(JSON.stringify(question)) / SHA256(JSON.stringify(recursive-key-sorted-question)) as explicitly named"
+        }
+      },
+      "assets": {
+        "before": [
+          {
+            "path": "archive/assets/images/20_이수중_2학기_기말_중3_기출/q09.png",
+            "gitBlobSha": "9a920f7632a567fe20a7a470fbb04fc0bc2bc63e",
+            "rawSha256": "b8ce7eb4dea90183aba0a7039b6bc9a207605e3ad7a9aa3198f2506628bc6a46",
+            "bytes": 16888,
+            "reviewedRenderedSha256": "b8ce7eb4dea90183aba0a7039b6bc9a207605e3ad7a9aa3198f2506628bc6a46",
+            "reviewedRenderedPath": "/workspace/scratch/c8f1b0bfb4fa/m3-pending-repair-20261115/assets/9a920f7632a567fe20a7a470fbb04fc0bc2bc63e.png",
+            "gitCommitPathVerified": true
+          },
+          {
+            "path": "archive/assets/images/20_이수중_2학기_기말_중3_기출/q9-solution.svg",
+            "gitBlobSha": "5ad2140febf5e3fc35dca00ccfd7128978db6057",
+            "rawSha256": "c9fcb8d7b67f73e4647d69c2631cadc008c00555ff0f367825675294ce05e984",
+            "bytes": 22115,
+            "reviewedRenderedSha256": "3fd900ce691b439d353e40fc680d6c171becce63877a62a0471896e913b33949",
+            "reviewedRenderedPath": "/workspace/scratch/c8f1b0bfb4fa/m3-pending-repair-20261115/assets/5ad2140febf5e3fc35dca00ccfd7128978db6057.rendered.png",
+            "gitCommitPathVerified": true
+          }
+        ],
+        "current": [
+          {
+            "path": "archive/assets/images/20_이수중_2학기_기말_중3_기출/q9-problem-v2.svg",
+            "gitBlobSha": "2471f60e94f5e4f2393bd8ce13237401bae3f504",
+            "rawSha256": "2518c6db88f08213356080ace08b520a71564bd1f4aa88bc5d5e1b0584c34634",
+            "bytes": 2821,
+            "reviewedRenderedSha256": "9694e918310ec888dbea6f7ab5824a6b11e62d2b4e1eacddcf1b8dfa246fbff4",
+            "reviewedRenderedPath": "/workspace/scratch/c8f1b0bfb4fa/m3-pending-repair-20261115/assets/2471f60e94f5e4f2393bd8ce13237401bae3f504.rendered.png",
+            "gitCommitPathVerified": true
+          },
+          {
+            "path": "archive/assets/images/20_이수중_2학기_기말_중3_기출/q9-solution.svg",
+            "gitBlobSha": "5ad2140febf5e3fc35dca00ccfd7128978db6057",
+            "rawSha256": "c9fcb8d7b67f73e4647d69c2631cadc008c00555ff0f367825675294ce05e984",
+            "bytes": 22115,
+            "reviewedRenderedSha256": "3fd900ce691b439d353e40fc680d6c171becce63877a62a0471896e913b33949",
+            "reviewedRenderedPath": "/workspace/scratch/c8f1b0bfb4fa/m3-pending-repair-20261115/assets/5ad2140febf5e3fc35dca00ccfd7128978db6057.rendered.png",
+            "gitCommitPathVerified": true
+          }
+        ]
+      },
+      "changedFields": [
+        "image",
+        "layoutTag"
+      ],
+      "preservedFields": {
+        "content": {
+          "stableSha256": "4669a9b0948532bdbecc392bd83f81916d5b8f2ca1806a42571fa01c2ca2f2af",
+          "unchanged": true
+        },
+        "choices": {
+          "stableSha256": "b4fc232da2feae831c50d32d34e33fa1fa184843711cdef2d29a43e452732021",
+          "unchanged": true
+        },
+        "answer": {
+          "stableSha256": "d41ea6521f53fb3dfa10cf72e2932f4405d9c999fa422cdc840d25d57e90dd34",
+          "unchanged": true
+        },
+        "solution": {
+          "stableSha256": "617ecf4e66d62ca4987c4ee24f9e839ea3884965da68c686052e9a1380785eb8",
+          "unchanged": true
+        },
+        "solutionImage": {
+          "stableSha256": "f04684baab5c38f987ca5af3e20c859fa17217ea2944e588525dfc20350621b7",
+          "unchanged": true
+        },
+        "solutionImageAlt": {
+          "stableSha256": "a22a37640435ca1942dceab3729101a768f6ed8757b180b4ba5ac79f10597c86",
+          "unchanged": true
+        },
+        "solutionImageCaption": {
+          "stableSha256": "ac1365f61c2f09dc4a170a27cf12181706f508229764fe4a1aa46c7bb6554013",
+          "unchanged": true
+        },
+        "level": {
+          "stableSha256": "3c522783788580fa942f4ab774374d0b38a5f0912f225684a79bbefef371cd9e",
+          "unchanged": true
+        },
+        "difficultyBucket": {
+          "stableSha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+          "unchanged": true
+        },
+        "difficultyConfidence": {
+          "stableSha256": "b57c4299afe3cda154124bdb96ceaf618a9d8d9cd8d2c8f6580ff26faa5fe5ca",
+          "unchanged": true
+        },
+        "difficultyBoundaryFlag": {
+          "stableSha256": "c44e6dd700593104019ffce7eeda189212379ba13862b09d70cab34c513210d9",
+          "unchanged": true
+        },
+        "legacyLevelCompatibility": {
+          "stableSha256": "5e7a1c4cc73d750e2db6584f9302151ef13ded93196d1041633b218a1c91d8b6",
+          "unchanged": true
+        },
+        "problemTypeKey": {
+          "stableSha256": "d000883e92b18340d80a630fedfe08765ed369f6b32539cb9960f53d1b857bb6",
+          "unchanged": true
+        },
+        "templateKey": {
+          "stableSha256": "51b5605bc4d730c033f794e5df478ebbbe0ae74ff4bf460060bade0f30c6e68b",
+          "unchanged": true
+        },
+        "crossConceptKeys": {
+          "stableSha256": "9773bec39f56c5bd4faec590a91490d076e402486be3a1e4ae8da4673f80b45e",
+          "unchanged": true
+        },
+        "conditionKeys": {
+          "stableSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        "integrationPattern": {
+          "stableSha256": "24f374f20d2a497e7f0ff2617670ca5d221c2cd752895686f7cc89dfb9a08a64",
+          "unchanged": true
+        }
+      },
+      "originalAuditQuestionHashes": {
+        "before": "447c6e720ab584e503ad997f321cb3befcb649019a800d9bc3973aac5b23ec2d",
+        "current": "22887499ee0cb4ce0763a7618f0d5830643524bb4d6b9c96f50a18b3d573c50c"
+      },
+      "sourceAuditQuestionJsonHashesVerified": true,
+      "renderedAssetReview": {
+        "originalProblemPng": true,
+        "currentProblemSvg": true,
+        "unchangedSolutionSvg": true
+      },
+      "visualFinding": "원 PNG와 현재 SVG 모두 A–O–C가 지름 위에 있고 B는 아래쪽 원주, D는 위쪽 원주에 있다. A의 AC·AB 사이 25°, D의 DA·DB 사이 x, 그리고 현 CD의 연결 관계가 보존된다. 현재 문제 SVG에 BC 보조선이나 65° 정답이 추가되지 않았다.",
+      "mathematicalCheck": "AC가 지름이므로 ∠ABC=90°. ∠ACB=180°−90°−25°=65°이며 C와 D가 현 AB의 같은 쪽에 있으므로 ∠ADB=∠ACB=65°. 기존 선택지 ④와 해설이 그대로 성립한다.",
+      "solutionAssetFinding": "유지된 해설 SVG는 풀이용 BC를 추가하고 B의 직각과 C·D의 같은 현 AB에 대한 각을 표시한다. 이는 원문 및 현재 문제의 조건과 모순되지 않으며 해설 SVG, alt, caption은 변경되지 않았다.",
+      "svgCoordinateCheck": {
+        "center": [
+          308,
+          239
+        ],
+        "radiusPx": 165,
+        "CABDegrees": 24.999990655667904,
+        "ADBDegrees": 65.00000528022916,
+        "ABCDegrees": 89.99999856140731,
+        "roundingToleranceDegrees": 0.0001
+      },
+      "result": "NARROW_FIGURE_CHANGE_PASS",
+      "difficultyDisposition": "기존 level 및 난도 4필드는 정확히 불변이다. 풀이 단계의 추가·삭제를 발견하지 않아 이번 그림 교체로 인한 난도 변경을 요구하지 않는다. 새 독립 난도 승인이나 전 문항 QA를 주장하지 않는다.",
+      "sourceAndRequestFilesModified": false,
+      "externalRendererDependencyCount": 0
+    },
+    {
+      "examId": "E064",
+      "ordinal": 19,
+      "questionUid": "qid_v1_e2633929122014f08f73ba83ed1cbfe7cab09fca29ddf8b6c64f4849b52c7dc2",
+      "sources": {
+        "before": {
+          "commit": "6b916d9042f5c76e628d7ff201e524d9114da65b",
+          "path": "archive/exams/original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
+          "gitBlobSha": "0ab4d00cc0a19fef6c57d44d0df9498bb0814006",
+          "rawSha256": "5d72e0ed94356ad8d56184ba59acfd42c711063101b712272e2b4a87d43c61eb",
+          "questionOrdinal": 19,
+          "questionStableSha256": "f7826c9c96c79b83bedc74f8718eccb7a081d8861d1a7c175552ad138370b39f",
+          "questionJsonSha256": "0c682aff5774ac4d56b2e486e039b1213c99eb91478720f9dd628e16cffdc8e7",
+          "bankCount": 22,
+          "questionHashAlgorithm": "SHA256(JSON.stringify(question)) / SHA256(JSON.stringify(recursive-key-sorted-question)) as explicitly named"
+        },
+        "current": {
+          "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+          "path": "archive/exams/original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
+          "gitBlobSha": "185604b351ffaea4a729f02b9e03595da29f5681",
+          "rawSha256": "b50a6b683a6d80c43280fbee0121830d808b4000224527ca251a15d228d29079",
+          "questionOrdinal": 19,
+          "questionStableSha256": "6563be40703f51adc19bcd1323045376e5d5ebfaa516411b8596a0c0c640f2eb",
+          "questionJsonSha256": "e80f55dc8669591555e05ed03a0bb1ff6be368392e9a4692c0366dc4e1f6e6aa",
+          "bankCount": 22,
+          "questionHashAlgorithm": "SHA256(JSON.stringify(question)) / SHA256(JSON.stringify(recursive-key-sorted-question)) as explicitly named"
+        }
+      },
+      "assets": {
+        "before": [
+          {
+            "path": "archive/assets/images/20_이수중_2학기_기말_중3_기출/q19-solution.svg",
+            "gitBlobSha": "809bf60052cfbeb2ada7ea3391ca89ef0f227dd5",
+            "rawSha256": "c90a7536e09f977f7e6f8b904a5a9d8641188d55640326327a107caf16a619ee",
+            "bytes": 32979,
+            "reviewedRenderedSha256": "56191b74f2201e34afd3484e94b0a09f4174a629427b827e68fcffecbd06e48a",
+            "reviewedRenderedPath": "/workspace/scratch/c8f1b0bfb4fa/m3-pending-repair-20261115/assets/809bf60052cfbeb2ada7ea3391ca89ef0f227dd5.rendered.png",
+            "gitCommitPathVerified": true
+          },
+          {
+            "path": "archive/assets/images/20_이수중_2학기_기말_중3_기출/q19.png",
+            "gitBlobSha": "52d745b371ee667242a40ba91eaddb50163afcc8",
+            "rawSha256": "b30d4b8255254a279f38519288ca3a8a6b21755ce71acf9860393459d7139d48",
+            "bytes": 53671,
+            "reviewedRenderedSha256": "b30d4b8255254a279f38519288ca3a8a6b21755ce71acf9860393459d7139d48",
+            "reviewedRenderedPath": "/workspace/scratch/c8f1b0bfb4fa/m3-pending-repair-20261115/assets/52d745b371ee667242a40ba91eaddb50163afcc8.png",
+            "gitCommitPathVerified": true
+          }
+        ],
+        "current": [
+          {
+            "path": "archive/assets/images/20_이수중_2학기_기말_중3_기출/q19-problem-v2.svg",
+            "gitBlobSha": "414dc44bd1bc8f0f35c4fa4cefa6483289c493f8",
+            "rawSha256": "d20f6cd41e4924ade7e7aa6498ddcc10953ac953a6e641d4ec550f2ed6a82984",
+            "bytes": 3410,
+            "reviewedRenderedSha256": "57064a5c11ee343deab910326d5f2f034810fd2c3e651c225bc760b1e2b2090c",
+            "reviewedRenderedPath": "/workspace/scratch/c8f1b0bfb4fa/m3-pending-repair-20261115/assets/414dc44bd1bc8f0f35c4fa4cefa6483289c493f8.rendered.png",
+            "gitCommitPathVerified": true
+          },
+          {
+            "path": "archive/assets/images/20_이수중_2학기_기말_중3_기출/q19-solution.svg",
+            "gitBlobSha": "809bf60052cfbeb2ada7ea3391ca89ef0f227dd5",
+            "rawSha256": "c90a7536e09f977f7e6f8b904a5a9d8641188d55640326327a107caf16a619ee",
+            "bytes": 32979,
+            "reviewedRenderedSha256": "56191b74f2201e34afd3484e94b0a09f4174a629427b827e68fcffecbd06e48a",
+            "reviewedRenderedPath": "/workspace/scratch/c8f1b0bfb4fa/m3-pending-repair-20261115/assets/809bf60052cfbeb2ada7ea3391ca89ef0f227dd5.rendered.png",
+            "gitCommitPathVerified": true
+          }
+        ]
+      },
+      "changedFields": [
+        "image",
+        "layoutTag"
+      ],
+      "preservedFields": {
+        "content": {
+          "stableSha256": "6ae3cbab6f890c4be68c3d286ef84e27e22afb13729ab23017dd5efdd81f08eb",
+          "unchanged": true
+        },
+        "choices": {
+          "stableSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        "answer": {
+          "stableSha256": "48323e07d0a287d3a0c4e9c56cf2608d332c6c960c041fa073c5b2c1e5ef4ac0",
+          "unchanged": true
+        },
+        "solution": {
+          "stableSha256": "dbdf9f3938b6d557c67e12b67a16d7a132ca1f01061dc4245a1228ce37ba2e19",
+          "unchanged": true
+        },
+        "solutionImage": {
+          "stableSha256": "6ec85df45c579df5e91320469e58ef0404f4dc86ed68554770557e2ec13b475e",
+          "unchanged": true
+        },
+        "solutionImageAlt": {
+          "stableSha256": "57b551a0dd000b257d4ae754a9d05a6dae6414e027c23e6054b325dfa94cf29e",
+          "unchanged": true
+        },
+        "solutionImageCaption": {
+          "stableSha256": "43ad3d62c268183fcc405d95eaede8b25a09f4e8dee370e25887a651d1b33a8d",
+          "unchanged": true
+        },
+        "level": {
+          "stableSha256": "3c522783788580fa942f4ab774374d0b38a5f0912f225684a79bbefef371cd9e",
+          "unchanged": true
+        },
+        "difficultyBucket": {
+          "stableSha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+          "unchanged": true
+        },
+        "difficultyConfidence": {
+          "stableSha256": "b57c4299afe3cda154124bdb96ceaf618a9d8d9cd8d2c8f6580ff26faa5fe5ca",
+          "unchanged": true
+        },
+        "difficultyBoundaryFlag": {
+          "stableSha256": "c44e6dd700593104019ffce7eeda189212379ba13862b09d70cab34c513210d9",
+          "unchanged": true
+        },
+        "legacyLevelCompatibility": {
+          "stableSha256": "5e7a1c4cc73d750e2db6584f9302151ef13ded93196d1041633b218a1c91d8b6",
+          "unchanged": true
+        },
+        "problemTypeKey": {
+          "stableSha256": "9b02ad280251faa0a57d21b0160c45b9bcc4966e1f2c493c32abcaa44cfa5957",
+          "unchanged": true
+        },
+        "templateKey": {
+          "stableSha256": "b4bb634fb74b147e852b0676b0ba65f5c2422c2736f547dd799c507cbd0450c1",
+          "unchanged": true
+        },
+        "crossConceptKeys": {
+          "stableSha256": "0a4c98d351d954a78a8670bff240f0ec42f0c6522fbe08e168520a920b4e0453",
+          "unchanged": true
+        },
+        "conditionKeys": {
+          "stableSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        "integrationPattern": {
+          "stableSha256": "24f374f20d2a497e7f0ff2617670ca5d221c2cd752895686f7cc89dfb9a08a64",
+          "unchanged": true
+        }
+      },
+      "originalAuditQuestionHashes": {
+        "before": "0c682aff5774ac4d56b2e486e039b1213c99eb91478720f9dd628e16cffdc8e7",
+        "current": "e80f55dc8669591555e05ed03a0bb1ff6be368392e9a4692c0366dc4e1f6e6aa"
+      },
+      "sourceAuditQuestionJsonHashesVerified": true,
+      "renderedAssetReview": {
+        "originalProblemPng": true,
+        "currentProblemSvg": true,
+        "unchangedSolutionSvg": true
+      },
+      "visualFinding": "원 PNG의 접시 조각, 현 AB, 중점 M, 가까운 원호 위 C, AM=BM=9cm 및 CM=3cm가 현재 SVG에 그대로 표현되어 있다. 파손 외곽의 장식·질감은 단순화되었으나 문제의 길이·직각·점의 위치 관계를 바꾸지 않는다. 중심 O나 반지름15cm는 문제 그림에 새로 드러내지 않았다.",
+      "mathematicalCheck": "현의 수직이등분선 위 중심을 O, OM=d라 하면 C–M–O의 위치 관계로 r=d+3. 직각삼각형 OMA에서 r²=d²+9²이므로 6d+9=81, d=12, r=15cm. 기존 서술형 정답 및 해설과 같다.",
+      "solutionAssetFinding": "유지된 해설 SVG의 전체 원과 별도 O–M–C 선분도는 OM=d, MC=3, OC=r 및 AM=BM=9를 나타낸다. 현재 문제 SVG와 같은 기하 관계이며 해설 SVG, alt, caption은 변경되지 않았다.",
+      "svgCoordinateCheck": {
+        "A": [
+          146,
+          202
+        ],
+        "M": [
+          344,
+          202
+        ],
+        "B": [
+          542,
+          202
+        ],
+        "C": [
+          344,
+          136
+        ],
+        "impliedCircleCenter": [
+          344,
+          466
+        ],
+        "radiusPx": 330,
+        "halfChordPx": 198,
+        "sagittaPx": 66,
+        "pixelsPerCm": 22,
+        "radiusCm": 15,
+        "radiusSquaredMinusCenterDistanceSquared": 39204,
+        "halfChordSquared": 39204
+      },
+      "result": "NARROW_FIGURE_CHANGE_PASS",
+      "difficultyDisposition": "기존 level 및 난도 4필드는 정확히 불변이다. 풀이 단계의 추가·삭제를 발견하지 않아 이번 그림 교체로 인한 난도 변경을 요구하지 않는다. 새 독립 난도 승인이나 전 문항 QA를 주장하지 않는다.",
+      "sourceAndRequestFilesModified": false,
+      "externalRendererDependencyCount": 0
+    }
+  ]
+}

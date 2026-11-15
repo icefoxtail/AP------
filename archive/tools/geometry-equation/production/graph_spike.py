@@ -108,8 +108,9 @@ def _produce(plan):
         features=plan.get('trigFeatures',{})
         if plan.get('function') in {'SIN','COS'}:critical.extend(float(Fraction(row['x'])) for row in features.get('phasePoints',[]))
         elif features.get('referencePoint'):critical.append(float(Fraction(features['referencePoint']['x'])))
-    if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_DISPLAY_WINDOW_PI_v1':
-        critical.extend(float(Fraction(x))*math.pi for x in plan['trigDisplayFeatures']['extrema'])
+    if plan['family']=='trigonometric' and plan.get('overviewPolicy') in ('TRIGONOMETRIC_DISPLAY_WINDOW_PI_v1','TRIGONOMETRIC_DISPLAY_WINDOW_X_v1'):
+        factor=1 if plan['overviewPolicy']=='TRIGONOMETRIC_DISPLAY_WINDOW_X_v1' else math.pi
+        critical.extend(float(Fraction(x))*factor for x in plan['trigDisplayFeatures']['extrema'])
     breaks=[]
     if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':
         features=plan.get('trigIntervalFeatures',{});factor=math.pi if features.get('axisUnit')=='PI' else 1.0
@@ -575,7 +576,7 @@ def _mc_row_y(row,x_value):
         value=sum(coefficient*x_value**power for power,coefficient in enumerate(n))/(d[0]+d[1]*x_value)
     elif kind=='EXPONENTIAL':
         amplitude,rate,offset=map(pp_exact_float,row['coefficients'])
-        value=offset+amplitude*int(row['base'])**(rate*(x_value-pp_exact_float(row['shiftX'])))
+        value=offset+amplitude*float(Fraction(row['base']))**(rate*(x_value-pp_exact_float(row['shiftX'])))
     elif kind=='SQRT':
         r=[pp_exact_float(value) for value in row['radicand']]
         value=pp_exact_float(row.get('offset','0'))+pp_exact_float(row.get('amplitude','1'))*math.sqrt(max(0.0,r[0]+r[1]*x_value))
