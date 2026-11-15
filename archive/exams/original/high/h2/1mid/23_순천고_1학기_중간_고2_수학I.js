@@ -371,7 +371,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q12",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 평행선과 두 로그곡선이 네 경계를 이루고, 그 안쪽을 옅게 칠했다.",
+    "solutionImageCaption": "두 로그곡선의 평행이동 길이는 √13이고 두 평행선 사이의 거리는 10/√13이다. 평행선과 나란한 단면의 길이가 일정하므로 두 길이를 곱하면 띠의 넓이가 된다. 넓이는 10, 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
