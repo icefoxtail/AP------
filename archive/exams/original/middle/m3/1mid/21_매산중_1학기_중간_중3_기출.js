@@ -117,7 +117,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "제곱근",
@@ -128,7 +128,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)",
+    "content": "다음 제곱근표에서 $\\sqrt{4.43}$의 값은 $a$이고, $\\sqrt{b}=2.076$일 때, $1000a-100b$의 값은? (4점)\n| $+$ | 0 | 1 | 2 | 3 | 4 |\n| :---: | :---: | :---: | :---: | :---: | :---: |\n| 4.2 | 2.049 | 2.052 | 2.054 | 2.057 | 2.059 |\n| 4.3 | 2.074 | 2.076 | 2.078 | 2.081 | 2.083 |\n| 4.4 | 2.098 | 2.100 | 2.102 | 2.105 | 2.107 |\n",
     "choices": [
       "893",
       "475",
@@ -142,7 +142,6 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/21_매산중_1학기_중간_중3_기출/q04.png",
     "imageAlt": "제곱근표: 4.2부터 4.4까지 행, 0부터 4까지 열의 제곱근 근삿값"
   },
   {
@@ -286,6 +285,10 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "solutionImage": "assets/images/21_매산중_1학기_중간_중3_기출/q9-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "같은 파란색으로 표시한 두 대각선의 길이가 모두 √2이다. B에서 왼쪽 P까지와 A에서 오른쪽 Q까지 같은 길이를 수직선에 옮겼다.",
+    "solutionImageCaption": "정사각형의 두 대각선은 √2이다. B에서 왼쪽으로 옮긴 P는 2−√2이고 A에서 오른쪽으로 옮긴 Q는 1+√2이다. 옳지 않은 것은 ①이다.",
     "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -294,7 +297,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "제곱근",
@@ -320,11 +323,15 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/21_매산중_1학기_중간_중3_기출/q09.png",
+    "image": "assets/images/21_매산중_1학기_중간_중3_기출/q9-problem-v2.svg",
     "imageAlt": "수직선 위의 한 변이 1인 정사각형 ABCD와 대각선, 점 P와 Q"
   },
   {
     "id": 10,
+    "solutionImage": "assets/images/21_매산중_1학기_중간_중3_기출/q10-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "수직선의 2와 3 사이에 √5가 있다. 파란 치수선은 √5와 왼쪽 정수 2 사이의 거리, 초록 치수선은 오른쪽 정수 3까지의 거리이다.",
+    "solutionImageCaption": "두 거리의 합은 (√5−2)+(3−√5)=1이다. 정답은 ①이다.",
     "level": "[중]",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",

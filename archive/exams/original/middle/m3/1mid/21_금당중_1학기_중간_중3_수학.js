@@ -218,23 +218,19 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "표"
       ],
       "wide": false,
-      "content": "<p>7. 아래 주어진 표는 $x$값에 따른 $x^2$의 값을 구해 놓은 것이다. $\\sqrt{5}$의 소수점 첫째자리 수는 $a$이고, $\\sqrt{6}$의 소수점 첫째자리수는 $b$이다. $a+b$의 값은? (4점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q07.png\" alt=\"x값과 그에 따른 x제곱의 값이 정리된 표 그림\" /></p>",
-      "question": "<p>7. 아래 주어진 표는 $x$값에 따른 $x^2$의 값을 구해 놓은 것이다. $\\sqrt{5}$의 소수점 첫째자리 수는 $a$이고, $\\sqrt{6}$의 소수점 첫째자리수는 $b$이다. $a+b$의 값은? (4점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q07.png\" alt=\"x값과 그에 따른 x제곱의 값이 정리된 표 그림\" /></p>",
+      "content": "<p>7. 아래 주어진 표는 $x$값에 따른 $x^2$의 값을 구해 놓은 것이다. $\\sqrt{5}$의 소수점 첫째자리 수는 $a$이고, $\\sqrt{6}$의 소수점 첫째자리수는 $b$이다. $a+b$의 값은? (4점)</p>\n| $x$ | $x^2$ |\n| :---: | :---: |\n| 2.1 | 4.41 |\n| 2.2 | 4.84 |\n| 2.3 | 5.29 |\n| 2.4 | 5.76 |\n| 2.5 | 6.25 |\n",
+      "question": "<p>7. 아래 주어진 표는 $x$값에 따른 $x^2$의 값을 구해 놓은 것이다. $\\sqrt{5}$의 소수점 첫째자리 수는 $a$이고, $\\sqrt{6}$의 소수점 첫째자리수는 $b$이다. $a+b$의 값은? (4점)</p>\n| $x$ | $x^2$ |\n| :---: | :---: |\n| 2.1 | 4.41 |\n| 2.2 | 4.84 |\n| 2.3 | 5.29 |\n| 2.4 | 5.76 |\n| 2.5 | 6.25 |\n",
       "choices": [
         "$5$",
         "$6$",
         "$9$",
         "$11$",
         "$15$"
-      ],
-      "image": "assets/images/21_금당중_1학기_중간_중3_수학/q07.png",
-      "images": [
-        "assets/images/21_금당중_1학기_중간_중3_수학/q07.png"
       ],
       "answer": "②",
       "solution": "[원문 조건 및 구할 대상]\n표에 제시된 $x$와 $x^2$의 값을 이용하여 $\\sqrt{5}$의 소수 첫째 자리 수 $a$와 $\\sqrt{6}$의 소수 첫째 자리 수 $b$를 구하고 $a+b$의 값을 계산한다.\n표 내용: $2.1^2=4.41$, $2.2^2=4.84$, $2.3^2=5.29$, $2.4^2=5.76$, $2.5^2=6.25$\n\n[핵심 발상/공식/보조선]\n$m^2 < k < n^2$이면 $m < \\sqrt{k} < n$이 성립함을 이용하여 $\\sqrt{5}$와 $\\sqrt{6}$의 범위를 소수 첫째 자리까지 확정한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $\\sqrt{5}$의 범위 및 $a$ 구하기\n표에서 $2.2^2 = 4.84$이고 $2.3^2 = 5.29$이다.\n$4.84 < 5 < 5.29$이므로\n$2.2 < \\sqrt{5} < 2.3$\n따라서 $\\sqrt{5} = 2.2\\dots$이므로 소수점 첫째 자리 수는\n$a = 2$\n\n2단계: $\\sqrt{6}$의 범위 및 $b$ 구하기\n표에서 $2.4^2 = 5.76$이고 $2.5^2 = 6.25$이다.\n$5.76 < 6 < 6.25$이므로\n$2.4 < \\sqrt{6} < 2.5$\n따라서 $\\sqrt{6} = 2.4\\dots$이므로 소수점 첫째 자리 수는\n$b = 4$\n\n3단계: $a+b$ 계산\n$a + b = 2 + 4 = 6$\n\n[경우 나눔 및 5개 선지 검토]\n① 5: 오답이다.\n② 6: 계산된 $a+b=6$과 정확히 일치하여 정답이다.\n③ 9, ④ 11, ⑤ 15: 오답이다.\n\n[명확한 결론]\n따라서 $a+b = 6$이므로 정답은 ②이다."
@@ -274,6 +270,10 @@ window.examData = {
     },
     {
       "id": 9,
+      "solutionImage": "assets/images/21_금당중_1학기_중간_중3_수학/q9-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "파란 OA와 OP는 같은 길이이다. 두 번째 직각삼각형은 파란 밑변 OP와 길이 1인 수직선 PB를 사용한다. 주황 OB의 길이를 OQ로 옮긴다.",
+      "solutionImageCaption": "단위 정사각형의 대각선과 같은 OP는 √2이다. BP=1이므로 OB²=2+1=3이다. Q가 원점의 오른쪽에 있으므로 Q가 나타내는 수는 √3이다.",
       "questionNumber": 9,
       "score": 4.0,
       "level": "중",
@@ -289,13 +289,13 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>9. 아래 그림과 같이 컴퍼스를 사용하여 원점 $\\text{O}$를 중심으로 하고 $\\overline{\\text{OA}}$의 길이를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $\\text{P}$라 하였다. 직각삼각형 $\\text{OBP}$에서 $\\overline{\\text{BP}}=1$이고, $\\overline{\\text{OB}}=\\overline{\\text{OQ}}$일 때, 점 $\\text{Q}$가 나타내는 수는? ($\\overline{\\text{OA}}$는 한 변의 길이가 $1$인 정사각형의 대각선이다) [4점]</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q09.png\" alt=\"원점 O에서 컴퍼스를 이용하여 수직선 위에 점 P와 Q를 작도한 그림\" /></p>",
-      "question": "<p>9. 아래 그림과 같이 컴퍼스를 사용하여 원점 $\\text{O}$를 중심으로 하고 $\\overline{\\text{OA}}$의 길이를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $\\text{P}$라 하였다. 직각삼각형 $\\text{OBP}$에서 $\\overline{\\text{BP}}=1$이고, $\\overline{\\text{OB}}=\\overline{\\text{OQ}}$일 때, 점 $\\text{Q}$가 나타내는 수는? ($\\overline{\\text{OA}}$는 한 변의 길이가 $1$인 정사각형의 대각선이다) [4점]</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q09.png\" alt=\"원점 O에서 컴퍼스를 이용하여 수직선 위에 점 P와 Q를 작도한 그림\" /></p>",
+      "content": "<p>9. 아래 그림과 같이 컴퍼스를 사용하여 원점 $\\text{O}$를 중심으로 하고 $\\overline{\\text{OA}}$의 길이를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $\\text{P}$라 하였다. 직각삼각형 $\\text{OBP}$에서 $\\overline{\\text{BP}}=1$이고, $\\overline{\\text{OB}}=\\overline{\\text{OQ}}$일 때, 점 $\\text{Q}$가 나타내는 수는? ($\\overline{\\text{OA}}$는 한 변의 길이가 $1$인 정사각형의 대각선이다) [4점]</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q9-problem-v2.svg\" alt=\"원점 O에서 컴퍼스를 이용하여 수직선 위에 점 P와 Q를 작도한 그림\" /></p>",
+      "question": "<p>9. 아래 그림과 같이 컴퍼스를 사용하여 원점 $\\text{O}$를 중심으로 하고 $\\overline{\\text{OA}}$의 길이를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $\\text{P}$라 하였다. 직각삼각형 $\\text{OBP}$에서 $\\overline{\\text{BP}}=1$이고, $\\overline{\\text{OB}}=\\overline{\\text{OQ}}$일 때, 점 $\\text{Q}$가 나타내는 수는? ($\\overline{\\text{OA}}$는 한 변의 길이가 $1$인 정사각형의 대각선이다) [4점]</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q9-problem-v2.svg\" alt=\"원점 O에서 컴퍼스를 이용하여 수직선 위에 점 P와 Q를 작도한 그림\" /></p>",
       "choices": [
         "$\\sqrt{2}$",
         "$\\sqrt{3}$",
@@ -303,9 +303,9 @@ window.examData = {
         "$\\sqrt{5}$",
         "$\\sqrt{6}$"
       ],
-      "image": "assets/images/21_금당중_1학기_중간_중3_수학/q09.png",
+      "image": "assets/images/21_금당중_1학기_중간_중3_수학/q9-problem-v2.svg",
       "images": [
-        "assets/images/21_금당중_1학기_중간_중3_수학/q09.png"
+        "assets/images/21_금당중_1학기_중간_중3_수학/q9-problem-v2.svg"
       ],
       "answer": "②",
       "solution": "[원문 조건 및 구할 대상]\n한 변의 길이가 1인 정사각형의 대각선 $\\overline{\\text{OA}}$를 반지름으로 하여 수직선 위에 점 $\\text{P}$를 잡고, 점 $\\text{P}$에서 수직인 선분 $\\overline{\\text{BP}}=1$을 그어 직각삼각형 $\\text{OBP}$를 만들었을 때, $\\overline{\\text{OQ}}=\\overline{\\text{OB}}$를 만족하는 점 $\\text{Q}$의 좌표를 구한다.\n\n[핵심 발상/공식/보조선]\n피타고라스 정리를 연속 적용하여 선분의 길이를 구한다.\n- 직각을 낀 두 변이 1, 1인 직각삼각형의 빗변: $\\sqrt{1^2+1^2} = \\sqrt{2}$\n- 직각을 낀 두 변이 $\\sqrt{2}, 1$인 직각삼각형의 빗변: $\\sqrt{(\\sqrt{2})^2+1^2} = \\sqrt{3}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 선분 $\\overline{\\text{OA}}$ 및 $\\overline{\\text{OP}}$의 길이 구하기\n한 변의 길이가 1인 정사각형의 대각선이므로\n$\\overline{\\text{OA}} = \\sqrt{1^2 + 1^2} = \\sqrt{2}$\n원점 $\\text{O}$를 중심으로 반지름 $\\overline{\\text{OA}}$인 호가 양의 수직선과 만나는 점이 $\\text{P}$이므로\n$\\overline{\\text{OP}} = \\overline{\\text{OA}} = \\sqrt{2}$\n점 $\\text{P}$가 나타내는 수는 $\\sqrt{2}$이다.\n\n2단계: 직각삼각형 $\\text{OBP}$에서 $\\overline{\\text{OB}}$의 길이 구하기\n$\\angle\\text{OPB} = 90^\\circ$, $\\overline{\\text{OP}} = \\sqrt{2}$, $\\overline{\\text{BP}} = 1$이므로\n$\\overline{\\text{OB}}^2 = \\overline{\\text{OP}}^2 + \\overline{\\text{BP}}^2 = (\\sqrt{2})^2 + 1^2 = 2 + 1 = 3$\n길이는 양수이므로\n$\\overline{\\text{OB}} = \\sqrt{3}$\n\n3단계: 점 $\\text{Q}$가 나타내는 수 구하기\n원점 $\\text{O}$를 중심으로 하고 반지름 $\\overline{\\text{OB}}$인 호가 양의 수직선과 만나는 점이 $\\text{Q}$이므로\n$\\overline{\\text{OQ}} = \\overline{\\text{OB}} = \\sqrt{3}$\n따라서 점 $\\text{Q}$가 나타내는 수는 $\\sqrt{3}$이다.\n\n[경우 나눔 및 5개 선지 검토]\n① $\\sqrt{2}$: 점 $\\text{P}$가 나타내는 수이다.\n② $\\sqrt{3}$: 계산된 점 $\\text{Q}$의 수와 정확히 일치하여 정답이다.\n③ 2, ④ $\\sqrt{5}$, ⑤ $\\sqrt{6}$: 오답이다.\n\n[명확한 결론]\n따라서 점 $\\text{Q}$가 나타내는 수는 $\\sqrt{3}$이므로 정답은 ②이다."
@@ -426,13 +426,13 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>13. 다음 그림과 같이 네 개의 정사각형 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$를 이어 붙여서 새로운 도형을 만들었다. 이 도형의 둘레의 길이는? ($\\text{A}$의 넓이는 $\\text{B}$의 넓이의 $2$배이고, $\\text{B}$의 넓이는 $\\text{C}$의 넓이의 $2$배이고, $\\text{C}$의 넓이는 $\\text{D}$의 넓이의 $2$배이며, $\\text{A}$의 넓이는 $8$이다.) (5점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q13.png\" alt=\"밑변이 한 직선 위에 나란히 이어 붙여진 4개의 정사각형 A, B, C, D 그림\" /></p>",
-      "question": "<p>13. 다음 그림과 같이 네 개의 정사각형 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$를 이어 붙여서 새로운 도형을 만들었다. 이 도형의 둘레의 길이는? ($\\text{A}$의 넓이는 $\\text{B}$의 넓이의 $2$배이고, $\\text{B}$의 넓이는 $\\text{C}$의 넓이의 $2$배이고, $\\text{C}$의 넓이는 $\\text{D}$의 넓이의 $2$배이며, $\\text{A}$의 넓이는 $8$이다.) (5점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q13.png\" alt=\"밑변이 한 직선 위에 나란히 이어 붙여진 4개의 정사각형 A, B, C, D 그림\" /></p>",
+      "content": "<p>13. 다음 그림과 같이 네 개의 정사각형 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$를 이어 붙여서 새로운 도형을 만들었다. 이 도형의 둘레의 길이는? ($\\text{A}$의 넓이는 $\\text{B}$의 넓이의 $2$배이고, $\\text{B}$의 넓이는 $\\text{C}$의 넓이의 $2$배이고, $\\text{C}$의 넓이는 $\\text{D}$의 넓이의 $2$배이며, $\\text{A}$의 넓이는 $8$이다.) (5점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q13-problem-v2.svg\" alt=\"밑변이 한 직선 위에 나란히 이어 붙여진 4개의 정사각형 A, B, C, D 그림\" /></p>",
+      "question": "<p>13. 다음 그림과 같이 네 개의 정사각형 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$를 이어 붙여서 새로운 도형을 만들었다. 이 도형의 둘레의 길이는? ($\\text{A}$의 넓이는 $\\text{B}$의 넓이의 $2$배이고, $\\text{B}$의 넓이는 $\\text{C}$의 넓이의 $2$배이고, $\\text{C}$의 넓이는 $\\text{D}$의 넓이의 $2$배이며, $\\text{A}$의 넓이는 $8$이다.) (5점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q13-problem-v2.svg\" alt=\"밑변이 한 직선 위에 나란히 이어 붙여진 4개의 정사각형 A, B, C, D 그림\" /></p>",
       "choices": [
         "$4\\sqrt{2}+8$",
         "$6\\sqrt{2}+6$",
@@ -440,12 +440,16 @@ window.examData = {
         "$10\\sqrt{2}+6$",
         "$12\\sqrt{2}+4$"
       ],
-      "image": "assets/images/21_금당중_1학기_중간_중3_수학/q13.png",
+      "image": "assets/images/21_금당중_1학기_중간_중3_수학/q13-problem-v2.svg",
       "images": [
-        "assets/images/21_금당중_1학기_중간_중3_수학/q13.png"
+        "assets/images/21_금당중_1학기_중간_중3_수학/q13-problem-v2.svg"
       ],
       "answer": "④",
-      "solution": "[원문 조건 및 구할 대상]\n연속하여 2배씩 넓이가 작아지는 네 정사각형 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$를 일직선 상에 이어 붙인 도형의 전체 둘레의 길이를 구한다.\n$\\text{A}$의 넓이는 8이다.\n\n[핵심 발상/공식/보조선]\n정사각형의 넓이가 $S$이면 한 변의 길이는 $\\sqrt{S}$이다.\n도형의 전체 둘레는 밑변의 합, 윗변의 합, 왼쪽 끝 세로변, 오른쪽 끝 세로변, 그리고 각 정사각형 사이의 높이 차이(단차)의 합으로 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 각 정사각형의 넓이와 한 변의 길이 구하기\n- $\\text{A}$의 넓이: $8 \\implies a = \\sqrt{8} = 2\\sqrt{2}$\n- $\\text{B}$의 넓이: $8 \\div 2 = 4 \\implies b = \\sqrt{4} = 2$\n- $\\text{C}$의 넓이: $4 \\div 2 = 2 \\implies c = \\sqrt{2}$\n- $\\text{D}$의 넓이: $2 \\div 2 = 1 \\implies d = \\sqrt{1} = 1$\n\n2단계: 둘레를 구성하는 선분들의 합 계산\n- 밑변의 합: $a + b + c + d = 2\\sqrt{2} + 2 + \\sqrt{2} + 1 = 3\\sqrt{2} + 3$\n- 윗변의 합: $a + b + c + d = 3\\sqrt{2} + 3$\n- 왼쪽 끝 세로변: $a = 2\\sqrt{2}$\n- 오른쪽 끝 세로변: $d = 1$\n- 정사각형 사이의 계단형 세로변(단차)의 합:\n$(a - b) + (b - c) + (c - d) = a - d = 2\\sqrt{2} - 1$\n\n3단계: 전체 둘레의 길이 합산\n$\\text{둘레} = (3\\sqrt{2} + 3) + (3\\sqrt{2} + 3) + 2\\sqrt{2} + 1 + (2\\sqrt{2} - 1)$\n$= (3\\sqrt{2} + 3\\sqrt{2} + 2\\sqrt{2} + 2\\sqrt{2}) + (3 + 3 + 1 - 1)$\n$= 10\\sqrt{2} + 6$\n\n[경우 나눔 및 5개 선지 검토]\n①, ②, ③, ⑤: 오답이다.\n④ $10\\sqrt{2}+6$: 정확히 계산된 둘레와 일치하여 정답이다.\n\n[명확한 결론]\n따라서 이 도형의 둘레의 길이는 $10\\sqrt{2}+6$이므로 정답은 ④이다."
+      "solution": "[원문 조건 및 구할 대상]\n연속하여 2배씩 넓이가 작아지는 네 정사각형 $\\text{A}, \\text{B}, \\text{C}, \\text{D}$를 일직선 상에 이어 붙인 도형의 전체 둘레의 길이를 구한다.\n$\\text{A}$의 넓이는 8이다.\n\n[핵심 발상/공식/보조선]\n정사각형의 넓이가 $S$이면 한 변의 길이는 $\\sqrt{S}$이다.\n도형의 전체 둘레는 밑변의 합, 윗변의 합, 왼쪽 끝 세로변, 오른쪽 끝 세로변, 그리고 각 정사각형 사이의 높이 차이(단차)의 합으로 계산한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 각 정사각형의 넓이와 한 변의 길이 구하기\n- $\\text{A}$의 넓이: $8 \\implies a = \\sqrt{8} = 2\\sqrt{2}$\n- $\\text{B}$의 넓이: $8 \\div 2 = 4 \\implies b = \\sqrt{4} = 2$\n- $\\text{C}$의 넓이: $4 \\div 2 = 2 \\implies c = \\sqrt{2}$\n- $\\text{D}$의 넓이: $2 \\div 2 = 1 \\implies d = \\sqrt{1} = 1$\n\n2단계: 둘레를 구성하는 선분들의 합 계산\n- 밑변의 합: $a + b + c + d = 2\\sqrt{2} + 2 + \\sqrt{2} + 1 = 3\\sqrt{2} + 3$\n- 윗변의 합: $a + b + c + d = 3\\sqrt{2} + 3$\n- 왼쪽 끝 세로변: $a = 2\\sqrt{2}$\n- 오른쪽 끝 세로변: $d = 1$\n- 정사각형 사이의 계단형 세로변(단차)의 합:\n$(a - b) + (b - c) + (c - d) = a - d = 2\\sqrt{2} - 1$\n\n3단계: 전체 둘레의 길이 합산\n$\\text{둘레} = (3\\sqrt{2} + 3) + (3\\sqrt{2} + 3) + 2\\sqrt{2} + 1 + (2\\sqrt{2} - 1)$\n$= (3\\sqrt{2} + 3\\sqrt{2} + 2\\sqrt{2} + 2\\sqrt{2}) + (3 + 3 + 1 - 1)$\n$= 10\\sqrt{2} + 6$\n\n[경우 나눔 및 5개 선지 검토]\n①, ②, ③, ⑤: 오답이다.\n④ $10\\sqrt{2}+6$: 정확히 계산된 둘레와 일치하여 정답이다.\n\n[명확한 결론]\n따라서 이 도형의 둘레의 길이는 $10\\sqrt{2}+6$이므로 정답은 ④이다.",
+      "solutionImage": "assets/images/21_금당중_1학기_중간_중3_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 네 정사각형에 색을 달리 주었다. 위쪽 치수선에서 각각의 한 변의 길이를 읽고, 내부에서 맞닿는 길이는 바깥 둘레에서 제외한다.",
+      "solutionImageCaption": "맞닿은 변은 2, √2, 1이다. 각각을 두 번 빼면 전체 둘레는 10√2+6이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
@@ -482,6 +486,10 @@ window.examData = {
     },
     {
       "id": 15,
+      "solutionImage": "assets/images/21_금당중_1학기_중간_중3_수학/q15-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "위의 짧은 b와 긴 a를 더한 전체 가로를 a+b라고 아래에 표시했다. 오른쪽에 a−b 높이가 표시되어 있다.",
+      "solutionImageCaption": "두 사다리꼴을 합치면 가로는 a+b, 높이는 a−b이다. 전체 넓이는 (a+b)(a−b)=a²−b²이다.",
       "questionNumber": 15,
       "score": 4.0,
       "level": "하",
@@ -497,13 +505,13 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 1,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>15. 아래 그림과 같이 합동인 두 사다리꼴을 이어 붙여 만든 직사각형의 넓이는? (4점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q15.png\" alt=\"윗변 a, 아랫변 b인 사다리꼴 2개를 엇갈려 이어 붙여 만든 가로 a+b, 세로 a-b 직사각형 그림\" /></p>",
-      "question": "<p>15. 아래 그림과 같이 합동인 두 사다리꼴을 이어 붙여 만든 직사각형의 넓이는? (4점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q15.png\" alt=\"윗변 a, 아랫변 b인 사다리꼴 2개를 엇갈려 이어 붙여 만든 가로 a+b, 세로 a-b 직사각형 그림\" /></p>",
+      "content": "<p>15. 아래 그림과 같이 합동인 두 사다리꼴을 이어 붙여 만든 직사각형의 넓이는? (4점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q15-problem-v2.svg\" alt=\"윗변 a, 아랫변 b인 사다리꼴 2개를 엇갈려 이어 붙여 만든 가로 a+b, 세로 a-b 직사각형 그림\" /></p>",
+      "question": "<p>15. 아래 그림과 같이 합동인 두 사다리꼴을 이어 붙여 만든 직사각형의 넓이는? (4점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q15-problem-v2.svg\" alt=\"윗변 a, 아랫변 b인 사다리꼴 2개를 엇갈려 이어 붙여 만든 가로 a+b, 세로 a-b 직사각형 그림\" /></p>",
       "choices": [
         "$ab$",
         "$a^2+b^2$",
@@ -511,9 +519,9 @@ window.examData = {
         "$a^2+2ab+b^2$",
         "$a^2-2ab+b^2$"
       ],
-      "image": "assets/images/21_금당중_1학기_중간_중3_수학/q15.png",
+      "image": "assets/images/21_금당중_1학기_중간_중3_수학/q15-problem-v2.svg",
       "images": [
-        "assets/images/21_금당중_1학기_중간_중3_수학/q15.png"
+        "assets/images/21_금당중_1학기_중간_중3_수학/q15-problem-v2.svg"
       ],
       "answer": "③",
       "solution": "[원문 조건 및 구할 대상]\n합동인 두 사다리꼴을 붙여서 만든 직사각형의 넓이를 $a, b$에 관한 식으로 나타낸 것을 고른다.\n\n[핵심 발상/공식/보조선]\n합차 공식 $(a+b)(a-b) = a^2 - b^2$의 기하학적 증명 도형이다.\n직사각형의 가로의 길이는 $a+b$, 세로의 길이는 $a-b$이다.\n직사각형의 넓이는 $\\text{가로} \\times \\text{세로} = (a+b)(a-b)$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 직사각형의 가로와 세로 길이 확인\n- 가로의 길이: $a + b$\n- 세로의 길이: $a - b$\n\n2단계: 직사각형의 넓이 계산\n$\\text{넓이} = (a+b)(a-b) = a^2 - b^2$\n(한 변의 길이가 $a$인 정사각형에서 한 변의 길이가 $b$인 정사각형을 잘라낸 영역을 두 사다리꼴로 나누어 재배열한 직사각형 넓이와 동일함)\n\n[경우 나눔 및 5개 선지 검토]\n① $ab$, ② $a^2+b^2$: 오답이다.\n③ $a^2-b^2$: 합차 공식을 이용한 넓이와 완벽히 일치하여 정답이다.\n④ $(a+b)^2$, ⑤ $(a-b)^2$: 오답이다.\n\n[명확한 결론]\n따라서 만들어진 직사각형의 넓이는 $a^2-b^2$이므로 정답은 ③이다."
@@ -535,13 +543,13 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>16. 그림과 같이 한변이 길이가 각각 $x, y$인 두 정사각형이 있다. $x+y=8$이고, $xy=14$일 때, 두 정사각형의 넓이의 합은? (5점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q16.png\" alt=\"한 변의 길이가 각각 x, y인 두 정사각형 그림\" /></p>",
-      "question": "<p>16. 그림과 같이 한변이 길이가 각각 $x, y$인 두 정사각형이 있다. $x+y=8$이고, $xy=14$일 때, 두 정사각형의 넓이의 합은? (5점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q16.png\" alt=\"한 변의 길이가 각각 x, y인 두 정사각형 그림\" /></p>",
+      "content": "<p>16. 그림과 같이 한변이 길이가 각각 $x, y$인 두 정사각형이 있다. $x+y=8$이고, $xy=14$일 때, 두 정사각형의 넓이의 합은? (5점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q16-problem-v2.svg\" alt=\"한 변의 길이가 각각 x, y인 두 정사각형 그림\" /></p>",
+      "question": "<p>16. 그림과 같이 한변이 길이가 각각 $x, y$인 두 정사각형이 있다. $x+y=8$이고, $xy=14$일 때, 두 정사각형의 넓이의 합은? (5점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q16-problem-v2.svg\" alt=\"한 변의 길이가 각각 x, y인 두 정사각형 그림\" /></p>",
       "choices": [
         "$36$",
         "$40$",
@@ -549,12 +557,16 @@ window.examData = {
         "$48$",
         "$50$"
       ],
-      "image": "assets/images/21_금당중_1학기_중간_중3_수학/q16.png",
+      "image": "assets/images/21_금당중_1학기_중간_중3_수학/q16-problem-v2.svg",
       "images": [
-        "assets/images/21_금당중_1학기_중간_중3_수학/q16.png"
+        "assets/images/21_금당중_1학기_중간_중3_수학/q16-problem-v2.svg"
       ],
       "answer": "①",
-      "solution": "[원문 조건 및 구할 대상]\n한 변의 길이가 각각 $x, y$인 두 정사각형에서 $x+y=8$, $xy=14$일 때, 두 정사각형의 넓이의 합 $x^2 + y^2$을 구한다.\n\n[핵심 발상/공식/보조선]\n곱셈 공식의 변형 공식 $x^2 + y^2 = (x+y)^2 - 2xy$를 적용한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 두 정사각형의 넓이의 합 식 수립\n한 변이 $x$인 정사각형의 넓이: $x^2$\n한 변이 $y$인 정사각형의 넓이: $y^2$\n두 넓이의 합: $x^2 + y^2$\n\n2단계: 곱셈 공식의 변형 대입 및 계산\n$x^2 + y^2 = (x+y)^2 - 2xy$\n$x+y = 8$, $xy = 14$를 대입하면\n$x^2 + y^2 = 8^2 - 2 \\times 14 = 64 - 28 = 36$\n\n[경우 나눔 및 5개 선지 검토]\n① 36: 계산된 값 36과 일치하여 정답이다.\n② 40, ③ 42, ④ 48, ⑤ 50: 오답이다.\n\n[명확한 결론]\n따라서 두 정사각형의 넓이의 합은 36이므로 정답은 ①이다."
+      "solution": "[원문 조건 및 구할 대상]\n한 변의 길이가 각각 $x, y$인 두 정사각형에서 $x+y=8$, $xy=14$일 때, 두 정사각형의 넓이의 합 $x^2 + y^2$을 구한다.\n\n[핵심 발상/공식/보조선]\n곱셈 공식의 변형 공식 $x^2 + y^2 = (x+y)^2 - 2xy$를 적용한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 두 정사각형의 넓이의 합 식 수립\n한 변이 $x$인 정사각형의 넓이: $x^2$\n한 변이 $y$인 정사각형의 넓이: $y^2$\n두 넓이의 합: $x^2 + y^2$\n\n2단계: 곱셈 공식의 변형 대입 및 계산\n$x^2 + y^2 = (x+y)^2 - 2xy$\n$x+y = 8$, $xy = 14$를 대입하면\n$x^2 + y^2 = 8^2 - 2 \\times 14 = 64 - 28 = 36$\n\n[경우 나눔 및 5개 선지 검토]\n① 36: 계산된 값 36과 일치하여 정답이다.\n② 40, ③ 42, ④ 48, ⑤ 50: 오답이다.\n\n[명확한 결론]\n따라서 두 정사각형의 넓이의 합은 36이므로 정답은 ①이다.",
+      "solutionImage": "assets/images/21_금당중_1학기_중간_중3_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 파랑 x 정사각형과 주황 y 정사각형 사이에 같은 크기의 초록 직사각형 두 개가 있는 배열이다.",
+      "solutionImageCaption": "전체는 (x+y)²이고 초록 두 조각은 2xy이다. 두 정사각형의 넓이의 합은 8²−2×14=36이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -690,6 +702,10 @@ window.examData = {
     },
     {
       "id": 21,
+      "solutionImage": "assets/images/21_금당중_1학기_중간_중3_수학/q21-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "파란 AB의 가로와 세로는 4칸과 2칸, 초록 CD의 가로와 세로는 2칸과 1칸이다. 두 길이를 각각 중심 A와 C에서 수직선으로 옮겼다.",
+      "solutionImageCaption": "(1) 가로와 세로의 차로 AB=2√5, CD=√5이다. (2) 각각 오른쪽으로 옮기면 P는 −5+2√5, Q는 1+√5이다. (3) (1+√5)−(−5+2√5)=6−√5이다.",
       "questionNumber": 21,
       "score": 6.0,
       "level": "중",
@@ -705,18 +721,18 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "서술형",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "서술형",
         "도형"
       ],
       "wide": false,
-      "content": "<p>[서술형1] 다음 그림은 한 눈금의 길이가 $1$인 모눈종이에 두 선분 $\\text{AB}$와 $\\text{CD}$를 그린 후, $\\overline{\\text{AB}}=\\overline{\\text{AP}}$, $\\overline{\\text{CD}}=\\overline{\\text{CQ}}$가 되도록 수직선 위에 두 점 $\\text{P}$와 $\\text{Q}$를 정한 것이다. 물음에 답하시오. (6점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/s01.png\" alt=\"모눈종이 위 선분 AB, CD와 수직선 위 점 P, Q의 작도 그림\" /></p><p>(1) $\\overline{\\text{AB}}, \\overline{\\text{CD}}$의 길이를 각각 구하시오. (2점)</p><p>(2) 점 $\\text{P}, \\text{Q}$가 나타내는 수를 각각 구하시오. (2점)</p><p>(3) (2)를 이용하여 $\\overline{\\text{PQ}}$의 길이를 구하는 식을 세우고, $\\overline{\\text{PQ}}$의 길이를 구하시오. (2점)</p>",
-      "question": "<p>[서술형1] 다음 그림은 한 눈금의 길이가 $1$인 모눈종이에 두 선분 $\\text{AB}$와 $\\text{CD}$를 그린 후, $\\overline{\\text{AB}}=\\overline{\\text{AP}}$, $\\overline{\\text{CD}}=\\overline{\\text{CQ}}$가 되도록 수직선 위에 두 점 $\\text{P}$와 $\\text{Q}$를 정한 것이다. 물음에 답하시오. (6점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/s01.png\" alt=\"모눈종이 위 선분 AB, CD와 수직선 위 점 P, Q의 작도 그림\" /></p><p>(1) $\\overline{\\text{AB}}, \\overline{\\text{CD}}$의 길이를 각각 구하시오. (2점)</p><p>(2) 점 $\\text{P}, \\text{Q}$가 나타내는 수를 각각 구하시오. (2점)</p><p>(3) (2)를 이용하여 $\\overline{\\text{PQ}}$의 길이를 구하는 식을 세우고, $\\overline{\\text{PQ}}$의 길이를 구하시오. (2점)</p>",
+      "content": "<p>[서술형1] 다음 그림은 한 눈금의 길이가 $1$인 모눈종이에 두 선분 $\\text{AB}$와 $\\text{CD}$를 그린 후, $\\overline{\\text{AB}}=\\overline{\\text{AP}}$, $\\overline{\\text{CD}}=\\overline{\\text{CQ}}$가 되도록 수직선 위에 두 점 $\\text{P}$와 $\\text{Q}$를 정한 것이다. 물음에 답하시오. (6점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q21-problem-v2.svg\" alt=\"모눈종이 위 선분 AB, CD와 수직선 위 점 P, Q의 작도 그림\" /></p><p>(1) $\\overline{\\text{AB}}, \\overline{\\text{CD}}$의 길이를 각각 구하시오. (2점)</p><p>(2) 점 $\\text{P}, \\text{Q}$가 나타내는 수를 각각 구하시오. (2점)</p><p>(3) (2)를 이용하여 $\\overline{\\text{PQ}}$의 길이를 구하는 식을 세우고, $\\overline{\\text{PQ}}$의 길이를 구하시오. (2점)</p>",
+      "question": "<p>[서술형1] 다음 그림은 한 눈금의 길이가 $1$인 모눈종이에 두 선분 $\\text{AB}$와 $\\text{CD}$를 그린 후, $\\overline{\\text{AB}}=\\overline{\\text{AP}}$, $\\overline{\\text{CD}}=\\overline{\\text{CQ}}$가 되도록 수직선 위에 두 점 $\\text{P}$와 $\\text{Q}$를 정한 것이다. 물음에 답하시오. (6점)</p><p><img src=\"assets/images/21_금당중_1학기_중간_중3_수학/q21-problem-v2.svg\" alt=\"모눈종이 위 선분 AB, CD와 수직선 위 점 P, Q의 작도 그림\" /></p><p>(1) $\\overline{\\text{AB}}, \\overline{\\text{CD}}$의 길이를 각각 구하시오. (2점)</p><p>(2) 점 $\\text{P}, \\text{Q}$가 나타내는 수를 각각 구하시오. (2점)</p><p>(3) (2)를 이용하여 $\\overline{\\text{PQ}}$의 길이를 구하는 식을 세우고, $\\overline{\\text{PQ}}$의 길이를 구하시오. (2점)</p>",
       "choices": [],
-      "image": "assets/images/21_금당중_1학기_중간_중3_수학/s01.png",
+      "image": "assets/images/21_금당중_1학기_중간_중3_수학/q21-problem-v2.svg",
       "images": [
-        "assets/images/21_금당중_1학기_중간_중3_수학/s01.png"
+        "assets/images/21_금당중_1학기_중간_중3_수학/q21-problem-v2.svg"
       ],
       "answer": "(1) $\\overline{\\text{AB}}=2\\sqrt{5}, \\; \\overline{\\text{CD}}=\\sqrt{5}\n(2) \\text{P}: -5+2\\sqrt{5}, \\; \\text{Q}: 1+\\sqrt{5}\n(3) 식: $(1+\\sqrt{5})-(-5+2\\sqrt{5})$, 답: $6-\\sqrt{5}$",
       "solution": "[원문 조건 및 구할 대상]\n한 눈금의 길이가 1인 모눈종이 위에 두 선분 $\\text{AB}$와 $\\text{CD}$가 주어지고, $\\overline{\\text{AB}}=\\overline{\\text{AP}}$, $\\overline{\\text{CD}}=\\overline{\\text{CQ}}$가 되도록 수직선 위에 점 $\\text{P}$와 $\\text{Q}$를 잡을 때:\n(1) 두 선분 $\\overline{\\text{AB}}$와 $\\overline{\\text{CD}}$의 길이\n(2) 두 점 $\\text{P}, \\text{Q}$가 나타내는 수\n(3) (2)를 이용하여 $\\overline{\\text{PQ}}$의 길이를 구하는 식과 그 값\n을 서술형 풀이과정과 함께 단계별로 구한다.\n\n[핵심 발상/공식/보조선]\n- 모눈종이 위에서 선분을 빗변으로 하는 직각삼각형을 찾아 피타고라스 정리($c = \\sqrt{a^2 + b^2}$)를 적용하여 선분의 길이를 구한다.\n- 수직선 위의 점 $a$를 중심으로 하고 반지름의 길이가 $r$인 원의 호를 그려 수직선과 만나는 점의 좌표는:\n  * 오른쪽으로 내렸을 때: $a + r$\n  * 왼쪽으로 내렸을 때: $a - r$\n- 수직선 위의 두 점 사이의 거리는 (큰 좌표) - (작은 좌표)이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: (1) 선분 $\\overline{\\text{AB}}$와 $\\overline{\\text{CD}}$의 길이 구하기\n- 선분 $\\text{AB}$를 빗변으로 하는 직각삼각형의 가로의 길이는 점 $\\text{A}(-5)$에서 점 $\\text{B}$의 $x$좌표인 $-1$까지 $4$칸이고, 세로의 길이는 $2$칸이다.\n  피타고라스 정리에 의해:\n  $\\overline{\\text{AB}} = \\sqrt{4^2 + 2^2} = \\sqrt{16 + 4} = \\sqrt{20} = 2\\sqrt{5}$\n- 선분 $\\text{CD}$를 빗변으로 하는 직각삼각형의 가로의 길이는 점 $\\text{C}(1)$에서 점 $\\text{D}$의 $x$좌표인 $3$까지 $2$칸이고, 세로의 길이는 $1$칸이다.\n  피타고라스 정리에 의해:\n  $\\overline{\\text{CD}} = \\sqrt{2^2 + 1^2} = \\sqrt{4 + 1} = \\sqrt{5}$\n\n2단계: (2) 점 $\\text{P}$와 $\\text{Q}$가 나타내는 수 구하기\n- 점 $\\text{P}$는 점 $\\text{A}(-5)$를 중심으로 하고 반지름이 $\\overline{\\text{AB}} = 2\\sqrt{5}$인 원을 그려 수직선의 오른쪽으로 회전시킨 점이므로:\n  $\\text{P}$가 나타내는 수는 $-5 + 2\\sqrt{5}$이다.\n- 점 $\\text{Q}$는 점 $\\text{C}(1)$을 중심으로 하고 반지름이 $\\overline{\\text{CD}} = \\sqrt{5}$인 원을 그려 수직선의 오른쪽으로 회전시킨 점이므로:\n  $\\text{Q}$가 나타내는 수는 $1 + \\sqrt{5}$이다.\n\n3단계: (3) 선분 $\\overline{\\text{PQ}}$의 길이를 구하는 식과 값 계산하기\n점 $\\text{Q}$가 점 $\\text{P}$보다 오른쪽에 위치하므로 두 점 사이의 거리는 점 $\\text{Q}$의 좌표에서 점 $\\text{P}$의 좌표를 뺀 값이다.\n- 식: $\\overline{\\text{PQ}} = (1 + \\sqrt{5}) - (-5 + 2\\sqrt{5})$\n- 계산:\n  $\\overline{\\text{PQ}} = 1 + \\sqrt{5} + 5 - 2\\sqrt{5} = (1 + 5) + (\\sqrt{5} - 2\\sqrt{5}) = 6 - \\sqrt{5}$\n\n[조건 적합성 검토]\n$2\\sqrt{5} \\approx 4.472$이므로 점 $\\text{P}$의 좌표는 $-5 + 4.472 = -0.528$로 $-1$과 $0$ 사이에 위치하여 그림과 일치한다.\n$\\sqrt{5} \\approx 2.236$이므로 점 $\\text{Q}$의 좌표는 $1 + 2.236 = 3.236$으로 $3$과 $4$ 사이에 위치하여 그림과 일치한다.\n따라서 $\\overline{\\text{PQ}} = 3.236 - (-0.528) = 3.764 = 6 - 2.236$이 되어 기하학적 위치와 계산 결과가 정확히 일치한다.\n\n[명확한 결론]\n따라서 구하는 답은 다음과 같다:\n(1) $\\overline{\\text{AB}} = 2\\sqrt{5}, \\; \\overline{\\text{CD}} = \\sqrt{5}$\n(2) $\\text{P}: -5 + 2\\sqrt{5}, \\; \\text{Q}: 1 + \\sqrt{5}$\n(3) 식: $(1 + \\sqrt{5}) - (-5 + 2\\sqrt{5})$, 답: $6 - \\sqrt{5}$"

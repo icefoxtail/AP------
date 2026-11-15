@@ -315,6 +315,10 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중3_기출/q9-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "C에서 만나는 수평선과 수직선의 길이는 각각 2와 1이다. 같은 파란색 BA와 BP는 원호에서 같은 반지름이다.",
+    "solutionImageCaption": "BA²=2²+1²=5이다. P는 B=3에서 왼쪽으로 반지름 √5만큼 떨어져 있으므로 3−√5이다. 정답은 ④이다.",
     "score": 4,
     "level": "중",
     "category": "수직선과 제곱근",
@@ -324,14 +328,14 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "수직선과 제곱근",
       "무리수의 위치"
     ],
     "wide": false,
-    "content": "수직선 위의 두 점 $B$, $C$가 나타내는 수는 각각 $3$, $5$이다. 선분 $BC$에 수직이고 수직선 위쪽에 있는 선분 $CA$의 길이는 $1$이다. 점 $B$를 중심으로 하고 $BA$를 반지름으로 하는 원이 수직선과 만나는 두 점 중, $B$의 왼쪽에 있는 점을 $P$라 하자. 점 $P$가 나타내는 수를 고르시오. (4점)<br><br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q09_alive_problem.svg\">",
+    "content": "수직선 위의 두 점 $B$, $C$가 나타내는 수는 각각 $3$, $5$이다. 선분 $BC$에 수직이고 수직선 위쪽에 있는 선분 $CA$의 길이는 $1$이다. 점 $B$를 중심으로 하고 $BA$를 반지름으로 하는 원이 수직선과 만나는 두 점 중, $B$의 왼쪽에 있는 점을 $P$라 하자. 점 $P$가 나타내는 수를 고르시오. (4점)<br><br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_기출/q9-problem-v2.svg\">",
     "choices": [
       "$1-\\sqrt{5}$",
       "$2-\\sqrt{5}$",
@@ -340,7 +344,7 @@ window.questionBank = [
       "$5-\\sqrt{5}$"
     ],
     "answer": "④",
-    "solution": "$BC=5-3=2$이고 $CA=1$이다.\n$\\triangle BCA$는 $C$에서 직각이므로 피타고라스 정리에 따라\n$BA^2=BC^2+CA^2=2^2+1^2=5$이다.\n따라서 $BA=\\sqrt5$이고, 이것이 중심 $B$인 원의 반지름이다.\n$B$가 나타내는 수는 $3$이고 $P$는 $B$의 왼쪽 교점이므로\n$P=3-\\sqrt5$이다.\n따라서 정답은 ④이다.<br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q09_alive_solution.svg\" alt=\"수직선에서 피타고라스 정리로 구한 길이와 점 P\">",
+    "solution": "$BC=5-3=2$이고 $CA=1$이다.\n$\\triangle BCA$는 $C$에서 직각이므로 피타고라스 정리에 따라\n$BA^2=BC^2+CA^2=2^2+1^2=5$이다.\n따라서 $BA=\\sqrt5$이고, 이것이 중심 $B$인 원의 반지름이다.\n$B$가 나타내는 수는 $3$이고 $P$는 $B$의 왼쪽 교점이므로\n$P=3-\\sqrt5$이다.\n따라서 정답은 ④이다.<br>",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
@@ -510,6 +514,10 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중3_기출/q14-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "사다리꼴에서 초록 윗변을 t, 같은 색 아랫변을 3t로 표시했다. 주황 높이 h는 오른쪽 정사각형 한 변과 같은 길이이다. 두 영역의 넓이는 각각 300 cm²이다.",
+    "solutionImageCaption": "정사각형에서 h=10√3이다. 두 밑변을 t와 3t로 놓으면 2th=300이다. 윗변은 5√3 cm, 아랫변은 15√3 cm이다.",
     "score": 5,
     "level": "상",
     "category": "혼합 계산",
@@ -535,7 +543,7 @@ window.questionBank = [
       "윗변 $\\frac{\\sqrt{3}}{2}$, 아랫변 $\\frac{3\\sqrt{3}}{2}$"
     ],
     "answer": "①",
-    "solution": "정사각형의 한 변이 사다리꼴의 높이 $h$이므로 $h^2=300$이다.\n$h>0$이므로 $h=\\sqrt{300}=10\\sqrt3\\,\\text{cm}$이다.\n윗변을 $t$라 하면 아랫변은 $3t$이다.\n사다리꼴의 넓이가 $300$이므로 $\\frac{t+3t}{2}h=300$, 즉 $2th=300$이다.\n$t=\\frac{150}{h}=\\frac{150}{10\\sqrt3}=5\\sqrt3$이다.\n아랫변은 $3t=15\\sqrt3$이므로 정답은 ①이다.<br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q14_solution.svg\" alt=\"높이와 밑변의 비를 표시한 사다리꼴 및 정사각형 넓이 풀이\">",
+    "solution": "정사각형의 한 변이 사다리꼴의 높이 $h$이므로 $h^2=300$이다.\n$h>0$이므로 $h=\\sqrt{300}=10\\sqrt3\\,\\text{cm}$이다.\n윗변을 $t$라 하면 아랫변은 $3t$이다.\n사다리꼴의 넓이가 $300$이므로 $\\frac{t+3t}{2}h=300$, 즉 $2th=300$이다.\n$t=\\frac{150}{h}=\\frac{150}{10\\sqrt3}=5\\sqrt3$이다.\n아랫변은 $3t=15\\sqrt3$이므로 정답은 ①이다.<br>",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -921,6 +929,10 @@ window.questionBank = [
   },
   {
     "id": 25,
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중3_기출/q25-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "가로 5x+3y와 세로 x−2y가 각각 직사각형의 두 이웃한 변이다. 두 변의 길이를 합한 뒤 두 배 하면 둘레이다.",
+    "solutionImageCaption": "넓이를 (5x+3y)(x−2y)로 인수분해하면 세로가 x−2y이다. 둘레는 2((5x+3y)+(x−2y))=12x+2y cm이다.",
     "score": 5,
     "level": "중",
     "category": "인수분해 공식",
@@ -930,17 +942,17 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "인수분해 공식",
       "이차식"
     ],
     "wide": false,
-    "content": "[서술형 4] 오른쪽은 넓이가 $(5x^2-7xy-6y^2)\\,\\text{cm}^2$인 직사각형 모양의 그림이다. 이 그림의 가로의 길이가 $(5x+3y)\\,\\text{cm}$일 때, 이 그림의 둘레의 길이를 구하시오. (5점)<br><br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q25.png\">",
+    "content": "[서술형 4] 오른쪽은 넓이가 $(5x^2-7xy-6y^2)\\,\\text{cm}^2$인 직사각형 모양의 그림이다. 이 그림의 가로의 길이가 $(5x+3y)\\,\\text{cm}$일 때, 이 그림의 둘레의 길이를 구하시오. (5점)<br><br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_기출/q25-problem-v2.svg\">",
     "choices": [],
     "answer": "12x+2y",
-    "solution": "넓이 식을 가운데 항을 나누어 인수분해한다.\n$5x^2-7xy-6y^2=5x^2-10xy+3xy-6y^2$\n$=5x(x-2y)+3y(x-2y)$\n$=(5x+3y)(x-2y)$이다.\n직사각형의 넓이는 가로와 세로의 곱이다. 가로가 $5x+3y$이므로 세로는 $x-2y$ cm이다.\n둘레는 $2[(5x+3y)+(x-2y)]=12x+2y$ cm이다.\n따라서 정답은 $12x+2y$ cm이다.<br><img src=\"assets/images/21_풍덕중_1학기_중간_중3_수학/q25_solution.svg\" alt=\"직사각형 넓이식을 가운데 항을 나누어 인수분해한 뒤 둘레를 계산\">",
+    "solution": "넓이 식을 가운데 항을 나누어 인수분해한다.\n$5x^2-7xy-6y^2=5x^2-10xy+3xy-6y^2$\n$=5x(x-2y)+3y(x-2y)$\n$=(5x+3y)(x-2y)$이다.\n직사각형의 넓이는 가로와 세로의 곱이다. 가로가 $5x+3y$이므로 세로는 $x-2y$ cm이다.\n둘레는 $2[(5x+3y)+(x-2y)]=12x+2y$ cm이다.\n따라서 정답은 $12x+2y$ cm이다.<br>",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
