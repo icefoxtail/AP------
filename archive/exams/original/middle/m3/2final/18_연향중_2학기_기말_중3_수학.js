@@ -90,7 +90,7 @@ window.questionBank = [
       "id": 3,
       "layoutTag": "fullwidth",
       "score": 4,
-      "question": "다음 그림과 같이 꼭짓점이 A, B, C, D의 순서로 놓인 한 변의 길이가 1인 정사각형 ABCD에, 점 B를 중심으로 반지름이 1인 사분원의 호 AC가 내접한다. 점 P는 호 AC 위에 있고, 직선 BP와 선분 CD의 교점을 R이라 하자. 점 P에서 직선 BC에 내린 수선의 발을 Q라 하자. ∠PBQ=40°일 때, QC/PR의 값과 같은 것은?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q3-problem-visual-v2.svg\" alt=\"한 변이 1인 정사각형 ABCD 안에 B를 중심으로 한 사분원이 있다. B에서 밑변과 40도를 이루는 선은 호 AC 위의 P를 지나 오른쪽 변 위의 R에 닿는다. Q는 P에서 밑변으로 내린 수선의 발이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "question": "다음 그림과 같이 꼭짓점이 A, B, C, D의 순서로 놓인 한 변의 길이가 1인 정사각형 ABCD에, 점 B를 중심으로 반지름이 1인 사분원의 호 AC가 내접한다. 점 P는 호 AC 위에 있고, 직선 BP와 선분 CD의 교점을 R이라 하자. 점 P에서 직선 BC에 내린 수선의 발을 Q라 하자. ∠PBQ=40°일 때, QC/PR의 값과 같은 것은?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q3-problem-label-gap.svg\" alt=\"한 변이 1인 정사각형 ABCD 안에 B를 중심으로 한 사분원이 있다. B에서 밑변과 40도를 이루는 선은 호 AC 위의 P를 지나 오른쪽 변 위의 R에 닿는다. Q는 P에서 밑변으로 내린 수선의 발이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$\\sin 50^\\circ$",
         "$\\cos 50^\\circ$",
@@ -532,7 +532,7 @@ window.questionBank = [
       "id": 13,
       "layoutTag": "fullwidth",
       "score": 4,
-      "question": "다음 그림과 같이 한 원 위의 점이 A, B, D, C 순서로 놓여 있다. 원 밖의 점 P를 지나는 두 할선의 점 순서는 각각 P-A-B와 P-C-D이고, 현 AD와 CB의 교점은 Q이다. 작은 호 AC와 작은 호 BD의 길이의 비가 1:3이고, ∠APC=50°일 때, ∠BQD의 크기는?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"외부의 P에서 각각 P-A-B와 P-C-D 순서로 두 할선이 지나간다. P에서 두 할선이 이루는 각은 50도이다. 현 AD와 CB가 Q에서 교차하며 작은 호 AC와 BD의 길이비는 1 대 3이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "question": "다음 그림과 같이 한 원 위의 점이 A, B, D, C 순서로 놓여 있다. 원 밖의 점 P를 지나는 두 할선의 점 순서는 각각 P-A-B와 P-C-D이고, 현 AD와 CB의 교점은 Q이다. 작은 호 AC와 작은 호 BD의 길이의 비가 1:3이고, ∠APC=50°일 때, ∠BQD의 크기는?(4점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q13-problem-label-gap.svg\" alt=\"외부의 P에서 각각 P-A-B와 P-C-D 순서로 두 할선이 지나간다. P에서 두 할선이 이루는 각은 50도이다. 현 AD와 CB가 Q에서 교차하며 작은 호 AC와 BD의 길이비는 1 대 3이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$80^\\circ$",
         "$85^\\circ$",
@@ -665,7 +665,7 @@ window.questionBank = [
       "id": 16,
       "layoutTag": "fullwidth",
       "score": 5,
-      "question": "다음 그림과 같이 원 밖의 점 X에서 직선 X-A-Y는 원에 A에서 접하고, 선분 YB도 원에 B에서 접한다. 직선 X-D-B는 원과 D, B의 순서로 만나며, 원 위의 점은 D, C, B, A 순서로 놓여 있다(C는 A를 포함하지 않는 호 DB 위의 점이다). ∠DBA=25°, ∠BXA=35°이고 x=∠AYB, y=∠DCB일 때, x+y의 크기는?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"수평인 직선 XAY와 사선 YB는 원에 각각 A와 B에서 닿는다. X에서 D를 거쳐 B를 향하는 할선이 지나간다. X에서 35도, B에서 25도이며 Y와 C의 각은 x와 y이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "question": "다음 그림과 같이 원 밖의 점 X에서 직선 X-A-Y는 원에 A에서 접하고, 선분 YB도 원에 B에서 접한다. 직선 X-D-B는 원과 D, B의 순서로 만나며, 원 위의 점은 D, C, B, A 순서로 놓여 있다(C는 A를 포함하지 않는 호 DB 위의 점이다). ∠DBA=25°, ∠BXA=35°이고 x=∠AYB, y=∠DCB일 때, x+y의 크기는?(5점)<br><img src=\"assets/images/18_연향중_2학기_기말_중3_수학/q16-problem-label-gap.svg\" alt=\"수평인 직선 XAY와 사선 YB는 원에 각각 A와 B에서 닿는다. X에서 D를 거쳐 B를 향하는 할선이 지나간다. X에서 35도, B에서 25도이며 Y와 C의 각은 x와 y이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$145^\\circ$",
         "$150^\\circ$",
