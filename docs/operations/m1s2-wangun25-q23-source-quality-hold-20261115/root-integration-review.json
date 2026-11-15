@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "root-source-quality-hold-integration-review-v1",
+  "basisHead": "1cd62d4e0f957cfd786c66f79cc79c5267c5021b",
+  "rootReadCompleteFiles": [
+    "archive/tools/source-quality-holds.mjs",
+    "tests/archive-source-quality-holds.test.mjs",
+    "tests/helpers/source-quality-hold-fixture.mjs",
+    "docs/architecture/source-quality-holds-v1.md"
+  ],
+  "rootReadAllSharedPatchHunks": true,
+  "exactCurrentBaseCASAll11SharedFiles": true,
+  "appliedMinimalPatchesMatchFrozenProposals": true,
+  "initialLedgerSelectedUIDCount": 1,
+  "decision": "Project the explicit exact-edition unresolved Q23 source-condition hold into Basic, Advanced and VERIFIED selection. Preserve original source, current integrity/publication status, identity, all native approval history and recorded D5. No generic release or new semantic authority is granted.",
+  "focusedTests": {
+    "newContractTestsPassed": 17,
+    "existingSyntheticPRProofAndPagesTestsPassed": 33,
+    "existingLocalIncompleteFixtureFailures": 8,
+    "remainingGate": "REQUIRED_INTEGRATED_PR_CI"
+  },
+  "actualBoundedProofSha256": "332e2f88f4ddd09ef33d6eccaca5d26ce4d337b140b8f1ca0c1cf1be6bb32885",
+  "actualBoundedProofScope": {
+    "sourceQuestions": 24,
+    "heldUIDs": 1,
+    "otherQuestionsPreserved": 23,
+    "protectedRawFiles": 36,
+    "verificationShardPaths": 3
+  },
+  "sourceIntegrityAndPublicationUnchanged": true,
+  "basicAfter": "REJECT_SOURCE_ISSUE",
+  "advancedAfter": false,
+  "verifiedAfter": false,
+  "directAndGeneralAndRecordedDifficultyPreserved": true,
+  "productionFallbacksOrAssertionWaivers": 0,
+  "globalMathReviewRepeated": 0,
+  "actualWriterAndPages": "NOT_RUN",
+  "status": "ROOT_ACCEPTED_FOR_REQUIRED_INTEGRATED_PR_CI"
+}

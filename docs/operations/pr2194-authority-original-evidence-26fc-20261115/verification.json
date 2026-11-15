@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-pr2194-authority-original-evidence-verification-v1",
+  "status": "PASS_BOUNDED_LOCAL_CI_REPAIR",
+  "baseHead": "a42719e8c667a6ae860ba68801aa330ad9c6f6cc",
+  "rootIntegrationMain": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+  "failedCi": {
+    "runId": 43766422388,
+    "jobId": 132972470808,
+    "failedSuite": "tests/archive-native-authority-correction.test.mjs",
+    "failedOriginalTest": 28,
+    "error": "PR_NATIVE_PREVIEW:EVIDENCE_REQUIRED",
+    "logSha256": "8d024a5ef39abec58f2dcc1887d852bb9a302e9f06cc7c242f7b3a0cf2e35362"
+  },
+  "cause": "Recursive evidence staging treated the exact unsupported original receipt of an explicit authority withdrawal as reusable positive native approval evidence.",
+  "change": {
+    "collectorOnly": true,
+    "allowedTerminal": "Only authorityCorrection.originalReceiptRef with exact path and SHA in an explicit typed authority withdrawal; approval evidenceRefs may be absent or an empty array.",
+    "malformedNonArrayEvidence": "REJECTED",
+    "nonemptyOriginalEvidence": "ALL_EXISTING_RECURSIVE_CHECKS_RETAINED",
+    "ordinaryPositiveNativeEvidence": "NONEMPTY_REQUIRED",
+    "topLevelApprovalAndItemEvidence": "NONEMPTY_REQUIRED",
+    "officialRegistrarAuthorityValidation": "UNCHANGED",
+    "newApprovals": 0
+  },
+  "changedFiles": [
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "beforeGitBlob": "b98c0d118dff3942b821d92ffc83c0e9052b278a",
+      "beforeSha256": "664f16ac87d52e90578de3f81fa6e9046701b4cd4ba10ed86d56e5108031b3df",
+      "gitBlob": "8876abfa884c6bd71118a844736d4432cc9d2d3f",
+      "sha256": "27f0543102517103bba7cf33707ede7ccfdd207055bec8af8354a1e60bb274ea",
+      "bytes": 65049
+    },
+    {
+      "path": "tests/archive-native-authority-correction.test.mjs",
+      "beforeGitBlob": "60474b8ea68ea6a2b72549fbe10a00ea176c172f",
+      "beforeSha256": "c2e7d1a8f6b9d6bc8956e4d3b93b5d77f4057283e47dfa398f1d790c5111e10b",
+      "gitBlob": "d8e58ed721ba54088f07b3ca3448afca59b4fb21",
+      "sha256": "6abdae303ee8c50c19e3d2941119f93601c01e5c8dd0ce4f896e7c2195f86eee",
+      "bytes": 22649
+    },
+    {
+      "path": "tests/archive-pr-native-preview.test.mjs",
+      "beforeGitBlob": "f89c6021e72c361e21f718964968e82c41a5f502",
+      "beforeSha256": "df6ad23d19074e35d9b0a6057e04cf58bedcffcee08062c72da0ace50c989980",
+      "gitBlob": "174e387765b14c06c55c9913100d454e49446f72",
+      "sha256": "c446517e10efe86db4a4e93ef9515a3a88c2ed38979520d99eb7d85cf74a4bbb",
+      "bytes": 109594
+    }
+  ],
+  "validation": {
+    "existingSuites": {
+      "authorityCorrection": 28,
+      "preview": 131
+    },
+    "newBoundaryCases": 16,
+    "totalTests": 175,
+    "passed": 175,
+    "failed": 0,
+    "authority": {
+      "path": "authority-after-final.tap",
+      "sha256": "22134b8bc238568dba9f54298a03c6e1c7ccb7494963dd7c1cbfa34715c0b51d",
+      "bytes": 8658,
+      "tests": 42,
+      "pass": 42,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "preview": {
+      "path": "preview-after.tap",
+      "sha256": "3c83475359e20d2ae1cd3eae1191d6ab19f11666733b5e50774c50a22216c65f",
+      "bytes": 31762,
+      "tests": 133,
+      "pass": 133,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "beforeOriginal28": {
+      "path": "before-original28.tap",
+      "sha256": "09425058e14afb77e72fdcc45375d2deeb0c0554075499c0b112070a6f33d889",
+      "bytes": 1714
+    },
+    "afterOriginal28": {
+      "path": "after-original28-candidate-attempt1.tap",
+      "sha256": "1e45fb816d717cccba5b781a72522fcfaef811bd17c148634e3267e87d06bf98",
+      "bytes": 226
+    },
+    "original28CompletedOfficialWriteAndValidHold": true,
+    "additionalLedgerFixtureHydrationRequired": false,
+    "malformedNullObjectRefused": true,
+    "differentReceiptOrWrongOriginalPathShaRefused": true,
+    "nonemptyMissingHashFixedGitCycleRefused": true,
+    "ordinaryPositiveAbsentOrEmptyRefused": true,
+    "topLevelAndItemEmptyRefused": true
+  },
+  "reusedEvidence": {
+    "codeAtCommit": "a42719e8c667a6ae860ba68801aa330ad9c6f6cc",
+    "evidenceLocationKind": "LOCAL_IMMUTABLE_PROOFS_NOT_PUBLISHED_AT_CODE_COMMIT",
+    "localFull23ShadowSha256": "e2c88e8b0485f4f1857084d271ffab15ce660d47947620a726da02e905acbb23",
+    "localVerificationSha256": "e2f562137b89cd0a2f2ecf8982cab715336864cb2218d39e1b3af394b892aaed",
+    "sourceManifestSha256": "0883216385cc91b423ef629ad62f33aa62ae677f0cd51eded5312f57617780cc",
+    "scope": "Existing positive FULL23 path remains unchanged because no withdrawal original-receipt exception is supplied.",
+    "rerun": false
+  },
+  "inputIntegrity": {
+    "exactBaseImportedCodeFiles": 55,
+    "unchangedNonCandidateCodeFiles": 52,
+    "scope": "Synthetic temporary test inputs only; no live source, canonical or consumed requests modified."
+  },
+  "notRun": {
+    "newRemoteCi": "ROOT_REQUIRED",
+    "productionWriter": "NOT_RUN",
+    "productionConsumer": "NOT_RERUN",
+    "pages": "NOT_RUN",
+    "newMathematicalOrSemanticReview": "NOT_RUN"
+  },
+  "patchSha256": "6293492cc89915bd478139cc865b4a8e5a2b16d851ad476678a318e087fe7796",
+  "revision": 2,
+  "replacesLocalVerificationSha256": "db9b5d234888a939898a890e4f4451ed1f4eb41668c5ca5d6a36db3fc773c200"
+}
