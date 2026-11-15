@@ -944,7 +944,7 @@ window.questionBank = [
     "solution": "직선 $y=f(x)$는 원점을 지나고 $x$축의 양의 방향과 $60^\\circ$를 이루므로 기울기가 $\\tan60^\\circ=\\sqrt{3}$이다.\n$\\Rightarrow f(x)=\\sqrt{3}x$\n역함수: $y=\\sqrt{3}x$에서 $x=\\dfrac{y}{\\sqrt{3}}$이므로 $g(x)=\\dfrac{x}{\\sqrt{3}}$\n직선 $m:\\ y=g(x-k)+k=\\dfrac{x-k}{\\sqrt{3}}+k$ ㉠\n[점 $A$] ㉠과 $y=x$의 교점: $x=\\dfrac{x-k}{\\sqrt{3}}+k$\n양변에 $\\sqrt{3}$을 곱하면 $\\sqrt{3}x=x-k+\\sqrt{3}k$\n$(\\sqrt{3}-1)x=(\\sqrt{3}-1)k$ $\\Rightarrow x=k$, 따라서 $A(k,k)$\n[점 $B$] ㉠과 $y=\\sqrt{3}x$의 교점: $\\sqrt{3}x=\\dfrac{x-k}{\\sqrt{3}}+k$\n양변에 $\\sqrt{3}$을 곱하면 $3x=x-k+\\sqrt{3}k$ $\\Rightarrow 2x=(\\sqrt{3}-1)k$\n$x=\\dfrac{(\\sqrt{3}-1)k}{2},\\ y=\\sqrt{3}x=\\dfrac{(3-\\sqrt{3})k}{2}$\n따라서 $B\\left(\\dfrac{(\\sqrt{3}-1)k}{2},\\ \\dfrac{(3-\\sqrt{3})k}{2}\\right)$\n[넓이] 원점 $O$, $A(x_1,y_1)$, $B(x_2,y_2)$로 이루어진 삼각형의 넓이는 $\\dfrac{1}{2}\\left|x_1y_2-x_2y_1\\right|$이다.\n$\\dfrac{1}{2}\\left|k\\times\\dfrac{(3-\\sqrt{3})k}{2}-\\dfrac{(\\sqrt{3}-1)k}{2}\\times k\\right|$\n$=\\dfrac{k^2}{4}\\left|(3-\\sqrt{3})-(\\sqrt{3}-1)\\right|=\\dfrac{k^2}{4}(4-2\\sqrt{3})=\\dfrac{(2-\\sqrt{3})k^2}{2}$\n넓이가 $16-8\\sqrt{3}=8(2-\\sqrt{3})$이므로 $\\dfrac{(2-\\sqrt{3})k^2}{2}=8(2-\\sqrt{3})$\n$\\Rightarrow k^2=16$, $k>0$이므로 $k=4$\n그림에서 $k=4$이면 $A(4,4)$, $B(-2+2\\sqrt{3},\\ 6-2\\sqrt{3})$이다.\n따라서 정답은 ③이다.",
     "points": 4.6,
     "image": "assets/images/24_금당고_2학기_기말_고1_유사/q17.svg",
-    "imageSize": "large",
+    "imageSize": "tall",
     "imageAlt": "원점을 지나는 직선 y=f(x), 직선 y=x, 직선 y=g(x-k)+k, 교점 A, B와 삼각형 OAB",
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_유사/q17-solution.svg",
     "solutionImageAlt": "직선 y=√3x, y=x, y=(x-4)/√3+4와 교점 A(4,4), B(-2+2√3,6-2√3), 삼각형 OAB",

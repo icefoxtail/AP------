@@ -746,6 +746,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "$A$에서 첫 번째 원의 접점까지의 길이를 $t$라 둔다.\n$B$쪽 접선 길이: $30 - t$\n$C$쪽 접선 길이: $24 - (30 - t) = t - 6$\n\n두 번째 원의 $D$쪽 접선 길이: $20 - (t - 6) = 26 - t$\n$AD = t + (26 - t) = 26$\n\n세 번째 원의 $E$쪽 접선 길이: $14 - (26 - t) = t - 12$\n네 번째 원의 $F$쪽 접선 길이: $10 - (t - 12) = 22 - t$\n$AF = t + (22 - t) = 22$\n\n$AD + AF = 26 + 22 = 48$\n\n정답은 ⑤이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q18.svg",
+    "imageSize": "full",
+
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_유사/q18-solution.svg",
     "solutionImageAlt": "연속 내접원 접선 계산",
     "solutionImageCaption": "공통접선의 연속 대입으로 AD=26, AF=22를 얻는다.",
@@ -947,7 +949,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$12\\,\\mathrm{cm}^2$",
     "solution": "접선과 반지름은 수직이므로 $OM \\perp AB$이고 $OM = 4\\,\\mathrm{cm}$이다.\n큰 원의 반지름 $OB = 5\\,\\mathrm{cm}$이다.\n\n직각삼각형 $OMB$에서 피타고라스 정리에 의해\n$BM = \\sqrt{OB^2 - OM^2} = \\sqrt{5^2 - 4^2} = 3\\,\\mathrm{cm}$\n\n원의 중심에서 현에 내린 수선은 현을 이등분하므로\n$AB = 2BM = 6\\,\\mathrm{cm}$\n\n$\\triangle OAB = \\dfrac{1}{2} \\times AB \\times OM$\n$= \\dfrac{1}{2} \\times 6 \\times 4 = 12\\,\\mathrm{cm}^2$\n\n정답은 $12\\,\\mathrm{cm}^2$이다.",
-    "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q23.svg",
+    "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q23-display-v2.svg",
+    "imageSize": "full",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_유사/q23-solution.svg",
     "solutionImageAlt": "동심원 현의 접선과 삼각형 OAB",
     "solutionImageCaption": "BM=3, AB=6을 구하고 삼각형 OAB 넓이 12를 도출한다.",

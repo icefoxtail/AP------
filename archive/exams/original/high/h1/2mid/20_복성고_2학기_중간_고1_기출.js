@@ -992,7 +992,7 @@ window.questionBank = [
     "sourceArchiveFile": "original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js",
     "questionUid": "qid_v1_a509bd2c0ec2e7fa40fff1a16563f9b8a8dfd836a6ed68dbefe422bb0bd70708",
     "provenance": {"sourceId":"2020|복성고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_복성고_2학기_중간_고1_기출.js","sourceOrdinal":18,"sourceQid":18,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_복성고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"6f24308db3e51cbbeb6b31c5a8e34de0ce4b3e4ac6b4716bcecb7e7c30e11465","sourceInputJsSha256":"b388aaffa16f9d01b6c105800cb8235d7384e5222be0b49af394b8f53c3f2091","sourcePage":3},
-    "image": "assets/images/20_복성고_2학기_중간_고1_기출/q18-problem.svg",
+    "image": "assets/images/20_복성고_2학기_중간_고1_기출/q18-problem-readable-v3.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/20_복성고_2학기_중간_고1_기출/q18-solution.svg",
     "solutionImageAlt": "A(3,3), B(−6,−6), 교점 P, Q와 반지름 3인 원 OQL",

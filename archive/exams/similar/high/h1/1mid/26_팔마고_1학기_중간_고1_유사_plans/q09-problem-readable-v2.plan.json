@@ -1,0 +1,236 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "axisSqueeze": true,
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "breakpoints": [],
+    "family": "piecewise-polynomial",
+    "formula": "-x^2/2+4",
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "7/2"
+        },
+        {
+          "id": "B",
+          "x": "-1",
+          "y": "7/2"
+        },
+        {
+          "id": "C",
+          "x": "-1",
+          "y": "-1"
+        },
+        {
+          "id": "D",
+          "x": "1",
+          "y": "-1"
+        }
+      ],
+      "polygons": [
+        {
+          "fill": "LIGHT",
+          "id": "R",
+          "points": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        }
+      ]
+    },
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "-1/2"
+        ]
+      }
+    ],
+    "plotHeightLimit": 240,
+    "referenceCurves": [
+      {
+        "coefficients": [
+          "-2",
+          "0",
+          "1"
+        ],
+        "id": "g",
+        "intersectionX": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V1",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "id": "V2",
+        "x": 0,
+        "y": -2
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.7386127875258306,
+      2.7386127875258306
+    ],
+    "viewport": [
+      -5.25,
+      5.25,
+      -3.875,
+      7.375
+    ],
+    "shapeIntent": "OVERVIEW",
+    "overviewPolicy": "PIECEWISE_POLYNOMIAL_OVERVIEW_v1",
+    "piecewisePolynomialFeatures": {
+      "schemaVersion": "PIECEWISE_POLYNOMIAL_FEATURES_v1",
+      "pieces": [
+        {
+          "coefficients": [
+            "4",
+            "0",
+            "-1/2"
+          ],
+          "interval": [
+            null,
+            null
+          ],
+          "drawInterval": [
+            -2.7386127875258306,
+            2.7386127875258306
+          ]
+        }
+      ],
+      "corners": [],
+      "extrema": [
+        {
+          "x": "0",
+          "y": "4",
+          "kind": "MAX"
+        }
+      ],
+      "intersections": [],
+      "referenceCurves": [
+        {
+          "id": "g",
+          "coefficients": [
+            "-2",
+            "0",
+            "1"
+          ],
+          "drawInterval": [
+            -2.7386127875258306,
+            2.7386127875258306
+          ]
+        }
+      ],
+      "curveIntersections": [
+        {
+          "curveId": "g",
+          "points": [
+            {
+              "x": "-2",
+              "xValue": -2,
+              "yValue": 2
+            },
+            {
+              "x": "2",
+              "xValue": 2,
+              "yValue": 2
+            }
+          ]
+        }
+      ]
+    },
+    "equalUnits": true,
+    "axisRatio": 0.5,
+    "plotCanvas": {
+      "width": 448,
+      "height": 240
+    },
+    "overlaysFeatures": {
+      "schemaVersion": "GRAPH_OVERLAYS_FEATURES_v1",
+      "points": [
+        {
+          "id": "A",
+          "x": 1,
+          "y": 3.5,
+          "xExact": "1",
+          "yExact": "7/2"
+        },
+        {
+          "id": "B",
+          "x": -1,
+          "y": 3.5,
+          "xExact": "-1",
+          "yExact": "7/2"
+        },
+        {
+          "id": "C",
+          "x": -1,
+          "y": -1,
+          "xExact": "-1",
+          "yExact": "-1"
+        },
+        {
+          "id": "D",
+          "x": 1,
+          "y": -1,
+          "xExact": "1",
+          "yExact": "-1"
+        }
+      ],
+      "lines": [],
+      "segments": [],
+      "guides": [],
+      "polygons": [
+        {
+          "id": "R",
+          "points": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D"
+  },
+  "caption": "위로 볼록한 포물선과 아래로 볼록한 포물선 사이에 y축에 대칭인 직사각형 ABCD가 놓여 있다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "A, B는 y=-x^2/2+4 위, C, D는 y=x^2-2 위에 있고 A는 제1사분면, D는 제4사분면이다.",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.referenceCurves",
+        "graphPlan.overlays.points"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직사각형 ABCD의 꼭짓점 위치(예시로 가로 반폭 1)와 두 포물선의 위치 관계를 보여 준다."
+  ],
+  "sourceQuote": "다음 그림과 같이 직사각형 $ABCD$의 두 꼭짓점 $A, B$는"
+}

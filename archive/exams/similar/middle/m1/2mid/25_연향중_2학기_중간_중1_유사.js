@@ -36,6 +36,7 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q01-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q01-solution.plan.json",
+    "imageSize": "full",
     "image": "assets/images/25_연향중_2학기_중간_중1_유사/q01.svg"
   },
   {
@@ -107,7 +108,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q03-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q03-solution.plan.json",
-    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q03.svg"
+    "imageSize": "full",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q03-display-v2.svg"
   },
   {
     "id": 4,
@@ -180,7 +182,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q05-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q05-solution.plan.json",
-    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q05.svg"
+    "imageSize": "full",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q05-native-readable.svg"
   },
   {
     "id": 6,
@@ -287,7 +290,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q08-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q08-solution.plan.json",
-    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q08.svg"
+    "imageSize": "full",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q08-native-readable.svg"
   },
   {
     "id": 9,
@@ -396,7 +400,7 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q11-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q11-solution.plan.json",
-    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q11.svg"
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q11-display-v2.svg"
   },
   {
     "id": 12,
@@ -508,7 +512,7 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q14-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q14-solution.plan.json",
-    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q14.svg"
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q14-display-v2.svg"
   },
   {
     "id": 15,
@@ -545,7 +549,7 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q15-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q15-solution.plan.json",
-    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q15.svg"
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q15-display-v2.svg"
   },
   {
     "id": 16,
@@ -821,7 +825,8 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q23-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q23-solution.plan.json",
-    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q23.svg"
+    "imageSize": "full",
+    "image": "assets/images/25_연향중_2학기_중간_중1_유사/q23-problem-v2.svg"
   },
   {
     "id": 24,
@@ -854,6 +859,7 @@ window.questionBank = [
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q24-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사_plans/q24-solution.plan.json",
+    "imageSize": "full",
     "image": "assets/images/25_연향중_2학기_중간_중1_유사/q24.svg"
   }
 ];

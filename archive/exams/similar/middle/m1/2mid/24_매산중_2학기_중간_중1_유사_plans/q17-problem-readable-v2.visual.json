@@ -1,0 +1,278 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/24_매산중_2학기_중간_중1_유사.js",
+  "questionId": 17,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "O",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "L",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": {
+                "coordinates": [
+                  {
+                    "kind": "integer",
+                    "value": "-5"
+                  },
+                  {
+                    "kind": "integer",
+                    "value": "0"
+                  }
+                ]
+              },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "N",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "50"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "W",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "105"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "S",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "230"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            },
+            {
+              "id": "T",
+              "op": "POLAR_POINT",
+              "inputs": [
+                "O",
+                "R"
+              ],
+              "args": {
+                "length": {
+                  "kind": "integer",
+                  "value": "5"
+                },
+                "angleDeg": {
+                  "kind": "integer",
+                  "value": "285"
+                },
+                "turn": "CCW"
+              },
+              "outputType": "POINT",
+              "factRole": "DERIVED_INTERMEDIATE"
+            }
+          ]
+        },
+        "displayPoints": [
+          "O",
+          "R",
+          "L",
+          "N",
+          "W",
+          "S",
+          "T"
+        ],
+        "displaySegments": [
+          {
+            "id": "sOR",
+            "refs": [
+              "O",
+              "R"
+            ]
+          },
+          {
+            "id": "sOL",
+            "refs": [
+              "O",
+              "L"
+            ]
+          },
+          {
+            "id": "sON",
+            "refs": [
+              "O",
+              "N"
+            ]
+          },
+          {
+            "id": "sOW",
+            "refs": [
+              "O",
+              "W"
+            ]
+          },
+          {
+            "id": "sOS",
+            "refs": [
+              "O",
+              "S"
+            ]
+          },
+          {
+            "id": "sOT",
+            "refs": [
+              "O",
+              "T"
+            ]
+          }
+        ],
+        "coordinateCanvas": {
+          "width": 640,
+          "height": 440
+        },
+        "caption": "세 직선이 점 O에서 만나고 세 각의 크기가 표시된 그림",
+        "hiddenPointNames": [
+          "R",
+          "L",
+          "N",
+          "W",
+          "S",
+          "T"
+        ],
+        "hiddenPointStyle": "NONE",
+        "planeMarks": {
+          "angles": [
+            {
+              "id": "a",
+              "refs": [
+                "W",
+                "O",
+                "L"
+              ],
+              "value": 75,
+              "label": "2x+15",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "b",
+              "refs": [
+                "R",
+                "O",
+                "N"
+              ],
+              "value": 50,
+              "label": "x+20",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "c",
+              "refs": [
+                "S",
+                "O",
+                "T"
+              ],
+              "value": 55,
+              "label": "55",
+              "style": "ARC",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "displayLines": [],
+        "displayCircles": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 26,
+        "displayScale": 0.48,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

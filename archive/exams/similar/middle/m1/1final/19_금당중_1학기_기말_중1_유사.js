@@ -672,7 +672,8 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 중 그림과 같은 그래프 위의 점이 <u>아닌</u> 것은?",
-    "image": "assets/images/19_금당중_1학기_기말_중1_유사/q18.svg",
+    "image": "assets/images/19_금당중_1학기_기말_중1_유사/q18-native-graph.svg",
+    "imageSize": "full",
     "choices": [
       "$(6, 4)$",
       "$(-3, -2)$",
@@ -789,6 +790,7 @@ window.questionBank = [
     ],
     "wide": true,
     "content": "[서술형 1] 아래 그림과 같이 한 변의 길이가 $10\\text{ cm}$인 정사각형에서 가로와 세로의 길이를 각각 $2x\\text{ cm}$, $(x+2)\\text{ cm}$ 줄였더니 색칠한 직사각형이 되었다. 다음 물음에 답하시오. [5점]\n(1) 색칠한 직사각형의 가로와 세로의 길이를 $x$를 사용한 식으로 각각 구하시오.\n(2) 색칠한 직사각형의 둘레의 길이를 $x$를 사용한 식으로 구하시오.",
+    "imageSize": "full",
     "image": "assets/images/19_금당중_1학기_기말_중1_유사/q21.svg",
     "choices": [],
     "answer": "(1) 가로: (10-2x) cm, 세로: (8-x) cm (2) (36-6x) cm",

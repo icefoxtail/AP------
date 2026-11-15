@@ -87,7 +87,8 @@ $180^\\circ-118^\\circ=62^\\circ$이다.
 그림에서 $\\angle a$의 동위각은 이 두 각이므로 그 합은
 $62^\\circ+52^\\circ=114^\\circ$이다.
 따라서 정답은 ②이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q02.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q02-problem-readable-v2.svg",
+    "imageSize": "full"
   },
   {
     "id": 3,
@@ -176,7 +177,7 @@ $q$와 $n$이 만나는 점에서 오른쪽 아래 각은 $93^\\circ$이다.
 그림의 ㉠~㉤ 작도 순서도 ⑤의 순서와 일치하지 않는다.
 
 따라서 옳은 것은 ①, ④이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q04.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q04-display-v2.svg"
   },
   {
     "id": 5,
@@ -297,7 +298,7 @@ $q$와 $n$이 만나는 점에서 오른쪽 아래 각은 $93^\\circ$이다.
 - $a+b$가 아닌 $a$ 또는 $b$ 하나만 구한다.
 
 따라서 정답은 ④이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q06.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q06-display-v2.svg"
   },
   {
     "id": 7,
@@ -457,7 +458,7 @@ $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
 - 합동식의 대응 순서를 확인하지 않고 ∠BDC를 ∠DAE와 같다고 판단하지 않는다.
 
 따라서 정답은 ⑤이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q09.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q09-display-v2.svg"
   },
   {
     "id": 10,
@@ -581,7 +582,7 @@ $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
 압력과 부피는 모두 양수이므로 $k>0$이고, 그래프는 제1사분면에서 $x$의 값이 커질수록 $y$의 값이 작아지는 곡선이다.
 ①, ④는 정비례 관계의 그래프이고 ②는 증가하는 곡선, ③은 감소하는 직선이므로 반비례 관계를 나타내지 못한다.
 따라서 알맞은 그래프는 ⑤이므로 정답은 ⑤이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q12.svg",
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q12-display-v2.svg",
     "imageSize": "tall",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q12-solution.svg",
     "solutionImageSize": "medium"
@@ -646,7 +647,7 @@ $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
 - $-5=-\\frac{1}{4}r$를 풀 때 $r$의 부호를 잘못 쓴다.
 
 따라서 정답은 ③이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q13.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q13-display-v2.svg"
   },
   {
     "id": 14,
@@ -1060,7 +1061,7 @@ $12=3-6c$, $-6c=9$, $c=-\\dfrac32$이다.
 - 이웃한 각의 합을 $360^\\circ$로 쓴다.
 
 따라서 답은$x=12$,$y=27$이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q21.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q21-display-v2.svg"
   },
   {
     "id": 22,
@@ -1099,7 +1100,7 @@ $B$가 $y=\\dfrac{b}{x}$ 위에 있으므로
 따라서 $-10=\\dfrac{b}{-9}$에서 $b=90$이다.
 
 따라서 $ab=\\dfrac49\\times90=40$이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q22.svg",
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q22-display-v2.svg",
     "imageSize": "large"
   },
   {

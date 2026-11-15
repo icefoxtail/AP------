@@ -549,6 +549,8 @@ window.questionBank = [
     "id": 17,
     "content": "그림에서 점 $I$는 $\\triangle ABC$의 내심이다. $\\triangle ABC$의 둘레의 길이가 $22\\text{cm}$이고 $\\overline{AD}=4\\text{cm}$, $\\overline{DB}=5\\text{cm}$일 때, $\\overline{EC}$의 길이를 구하면? [4점]",
     "image": "assets/images/20_풍덕중_1학기_중간_중2_기출/q17-repair-master.svg",
+    "imageSize": "full",
+    "imageSize": "full",
     "choices": [
       "$1\\text{cm}$",
       "$1.2\\text{cm}$",
