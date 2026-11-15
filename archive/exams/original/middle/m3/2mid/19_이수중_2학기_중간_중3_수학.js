@@ -51,6 +51,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q01",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "대푯값과 산포도의 구별, 평균과분산의 독립성, 표준편차의 제곱근정의와 극단값에 대한 평균의 민감도를 진술별로 판정한다.",
+    "decisiveStep": "대푯값과 산포도의 구별, 평균과분산의 독립성, 표준편차의 제곱근정의와 극단값에 대한 평균의 민감도를 진술별로 판정한다."
   },
   {
     "id": 2,
@@ -101,6 +109,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q02",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "8개 자료를 정렬하고 네번째23과 다섯번째26의 평균24.5를 중앙값으로 구한다.",
+    "decisiveStep": "8개 자료를 정렬하고 네번째23과 다섯번째26의 평균24.5를 중앙값으로 구한다."
   },
   {
     "id": 3,
@@ -151,6 +167,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q03",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "0·1·2·3의 도수가 각각2로 모두 같음을 확인하고 현 원문이 채택한 같은도수에서는 최빈값없음 규칙을 적용한다.",
+    "decisiveStep": "0·1·2·3의 도수가 각각2로 모두 같음을 확인하고 현 원문이 채택한 같은도수에서는 최빈값없음 규칙을 적용한다."
   },
   {
     "id": 4,
@@ -194,17 +218,29 @@ window.questionBank = [
     "integrationPattern": null,
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceCurriculum": "2009",
     "sourceGrade": "M3",
     "sourceExamId": "19_이수중_2학기_중간_중3_수학",
     "uid": "19_이수중_2학기_중간_중3_수학:q04",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "편차합0으로 정호의 누락편차2를 구하고 평균179에 더해 실제키181을 복원한다.",
+    "decisiveStep": "편차합0으로 정호의 누락편차2를 구하고 평균179에 더해 실제키181을 복원한다."
   },
   {
     "id": 5,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "세 반의 평균은 같은 점선에 있다. 양 끝 막대와 가운데 막대의 높이를 비교해 평균에서 떨어진 학생 수를 읽는다.",
+    "solutionImageCaption": "세 반 모두 평균은 5권이다. 분산은 A 2, B 13/5, C 6/5이고 옳은 것은 ③, ④이다.",
     "sourceQid": 5,
     "score": 4,
     "level": "중",
@@ -216,7 +252,7 @@ window.questionBank = [
     "standardUnit": "통계",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "대푯값과 산포도",
@@ -225,7 +261,7 @@ window.questionBank = [
       "표준편차"
     ],
     "wide": false,
-    "content": "다음은 $\\mathrm{A, B, C}$ 세 반 학생들이 가지고 있는 공책의 권수를 조사하여 나타낸 막대그래프이다. 다음에서 옳은 것을 모두 고르면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q05.png\" />",
+    "content": "다음은 $\\mathrm{A, B, C}$ 세 반 학생들이 가지고 있는 공책의 권수를 조사하여 나타낸 막대그래프이다. 다음에서 옳은 것을 모두 고르면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q5-problem-v3.svg\" alt=\"A반, B반, C반 각각의 가로축은 공책 권수 3부터 7까지이다. 각 그래프에서 세로축의 숫자는 해당 권수를 가진 학생 수를 나타낸다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$\\mathrm{C}$ 반의 평균이 가장 높다.",
       "$\\mathrm{A}$ 반의 표준편차가 가장 작다.",
@@ -244,7 +280,7 @@ window.questionBank = [
     "crossConceptKeys": null,
     "conditionKeys": null,
     "integrationPattern": null,
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -254,9 +290,21 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q05",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "세 대칭분포의 공통평균5를 확인하고 중심밀집도 또는 가중편차제곱으로 분산순서C<A<B를 판단하여 복수 진술을 고른다.",
+    "decisiveStep": "세 대칭분포의 공통평균5를 확인하고 중심밀집도 또는 가중편차제곱으로 분산순서C<A<B를 판단하여 복수 진술을 고른다."
   },
   {
     "id": 6,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "평균 9를 기준으로 쌓은 점들의 위치를 표시했다. 왼쪽 7과 8에는 주황 점, 평균과 같은 9에는 회색 점, 오른쪽 10에는 파란 점이 있다.",
+    "solutionImageCaption": "절댓값의 합은 2×1+1×2+0×3+1×4=8이다. 10이라고 한 ④가 옳지 않다.",
     "sourceQid": 6,
     "score": 5,
     "level": "중",
@@ -306,6 +354,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q06",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "자료평균9를 구하고 편차 절댓값합8과 제곱합10을 구별해 분산·표준편차·편차합계 진술을 검증한다.",
+    "decisiveStep": "자료평균9를 구하고 편차 절댓값합8과 제곱합10을 구별해 분산·표준편차·편차합계 진술을 검증한다."
   },
   {
     "id": 7,
@@ -358,9 +414,21 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q07",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "표에 이미 계산된 가중편차제곱합2000과총도수16을 나누어 분산125를 얻고 양의 제곱근5√5로 표준편차를 구한다.",
+    "decisiveStep": "표에 이미 계산된 가중편차제곱합2000과총도수16을 나누어 분산125를 얻고 양의 제곱근5√5로 표준편차를 구한다."
   },
   {
     "id": 8,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "직각 아래의 주황 세로변과 위쪽 초록 가로변이 만나고 그 맞은편 파랑 변에 7을 표시했다.",
+    "solutionImageCaption": "x²=7²−(√33)²=16이므로 x=4이다. 정답은 ①이다.",
     "sourceQid": 8,
     "score": 4,
     "level": "하",
@@ -372,7 +440,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "피타고라스 정리",
@@ -380,7 +448,7 @@ window.questionBank = [
       "변의길이"
     ],
     "wide": false,
-    "content": "다음 직각삼각형에서 $x$값을 구하면?(4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q08.png\" />",
+    "content": "다음 직각삼각형에서 $x$값을 구하면?(4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q8-problem-v3.svg\" alt=\"왼쪽 위가 직각이다. 가로 길이는 √33이고, 파랑 빗변은 7이다. 남은 주황 세로 길이는 x이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "4",
       "12",
@@ -409,6 +477,14 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q08",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "빗변7과 다른직각변√33의 제곱차로 x²16을 얻고 양의 길이4를 선택한다.",
+    "decisiveStep": "빗변7과 다른직각변√33의 제곱차로 x²16을 얻고 양의 길이4를 선택한다."
   },
   {
     "id": 9,
@@ -449,7 +525,7 @@ window.questionBank = [
     "crossConceptKeys": null,
     "conditionKeys": null,
     "integrationPattern": null,
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -459,9 +535,21 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q09",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "각 보기의 최대변제곱과 나머지두변 제곱합을 비교하여 직각삼각형인 두보기를 고른다.",
+    "decisiveStep": "각 보기의 최대변제곱과 나머지두변 제곱합을 비교하여 직각삼각형인 두보기를 고른다."
   },
   {
     "id": 10,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "네 모서리 쪽 직각삼각형을 색으로 구분했다. 이웃한 두 직각삼각형은 O에서 나오는 짧은 변 하나를 공유한다.",
+    "solutionImageCaption": "CD²=AD²+BC²−AB²=25+16−9=32이므로 CD=4√2 cm이다. 정답은 ②이다.",
     "sourceQid": 10,
     "score": 4,
     "level": "중",
@@ -473,7 +561,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "피타고라스 정리의 활용",
@@ -481,7 +569,7 @@ window.questionBank = [
       "사각형"
     ],
     "wide": false,
-    "content": "다음 그림 $\\square\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AC}}\\perp\\overline{\\mathrm{BD}}$일 때, $\\overline{\\mathrm{CD}}$의 길이를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q10.png\" />",
+    "content": "다음 그림 $\\square\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AC}}\\perp\\overline{\\mathrm{BD}}$일 때, $\\overline{\\mathrm{CD}}$의 길이를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q10-problem-v3.svg\" alt=\"사각형의 네 변은 AB가 3, BC가 4, AD가 5, CD가 x cm이다. 두 대각선은 O에서 직각으로 만난다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$4\\sqrt{3}$",
       "$4\\sqrt{2}$",
@@ -510,9 +598,21 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q10",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "직교대각선으로 생기는 네 직각삼각형의 피타고라스식을 합차하여 공통 제곱항을 소거하고 CD²=AD²+BC²-AB²를 얻는다.",
+    "decisiveStep": "직교대각선으로 생기는 네 직각삼각형의 피타고라스식을 합차하여 공통 제곱항을 소거하고 CD²=AD²+BC²-AB²를 얻는다."
   },
   {
     "id": 11,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "큰 삼각형 ABC와 작은 주황 AHC는 C의 각을 같이 쓴다. 오른쪽 작은 빗변과 큰 삼각형의 빗변을 비교한다.",
+    "solutionImageCaption": "닮음에서 6²=BC×4이므로 BC=9이다. 따라서 AB=√(9²−6²)=3√5 cm이고 정답은 ③이다.",
     "sourceQid": 11,
     "score": 4,
     "level": "중",
@@ -524,7 +624,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "피타고라스 정리의 활용",
@@ -532,7 +632,7 @@ window.questionBank = [
       "피타고라스정리"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{CH}}=4\\,\\mathrm{cm}$이고, $\\overline{\\mathrm{AH}}\\perp\\overline{\\mathrm{BC}}$일 때, $\\overline{\\mathrm{AB}}$의 길이는? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q11.png\" />",
+    "content": "오른쪽 그림과 같이 $\\angle\\mathrm{A}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{CH}}=4\\,\\mathrm{cm}$이고, $\\overline{\\mathrm{AH}}\\perp\\overline{\\mathrm{BC}}$일 때, $\\overline{\\mathrm{AB}}$의 길이는? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q11-problem-v3.svg\" alt=\"A가 직각이고 H는 빗변 BC 위의 수선의 발이다. AC는 6 cm, CH는 4 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$3\\sqrt{2}\\,\\mathrm{cm}$",
       "$3\\sqrt{3}\\,\\mathrm{cm}$",
@@ -561,9 +661,21 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q11",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "빗변수선으로 생기는 두 직각삼각형의 AA닮음에서 AC²=BC·CH로 빗변9를 구하고 피타고라스로 AB를 구한다.",
+    "decisiveStep": "빗변수선으로 생기는 두 직각삼각형의 AA닮음에서 AC²=BC·CH로 빗변9를 구하고 피타고라스로 AB를 구한다."
   },
   {
     "id": 12,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "주황 수선 AD 양쪽의 두 초록 밑변에 같은 눈금을 표시했다. 각 반쪽 밑변은 a의 절반이다.",
+    "solutionImageCaption": "BD=CD=a/2에서 (가)는 a²/4이고, 높이 (나)는 √3a/2이다. 정답은 ②이다.",
     "sourceQid": 12,
     "score": 4,
     "level": "하",
@@ -575,7 +687,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "피타고라스 정리의 활용",
@@ -584,7 +696,7 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 한 변의 길이가 $a$인 정삼각형 $\\mathrm{ABC}$의 넓이 $\\mathrm{S}$를 구하는 과정이다. (가), (나)에 알맞은 것을 차례대로 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q12.png\" /><br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0;\">꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{D}$라고 하면<br>$\\overline{\\mathrm{BD}}=\\overline{\\mathrm{CD}}$<br>$\\triangle\\mathrm{ABD}$에서 $a^2 = h^2 + [\\text{ (가) }]$이므로<br>$h = \\sqrt{a^2 - [\\text{ (가) }]} = [\\text{ (나) }] $<br>따라서 정삼각형의 넓이 $\\mathrm{S}$는<br>$\\mathrm{S} = \\dfrac{1}{2} a \\times [\\text{ (나) }] = \\dfrac{\\sqrt{3}}{4} a^2$</div>",
+    "content": "다음 그림과 같이 한 변의 길이가 $a$인 정삼각형 $\\mathrm{ABC}$의 넓이 $\\mathrm{S}$를 구하는 과정이다. (가), (나)에 알맞은 것을 차례대로 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q12-problem-v3.svg\" alt=\"정삼각형 ABC의 한 변은 a이다. A에서 높이 h를 내리면 밑변 위의 D에서 직각으로 만난다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"><br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0;\">꼭짓점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{D}$라고 하면<br>$\\overline{\\mathrm{BD}}=\\overline{\\mathrm{CD}}$<br>$\\triangle\\mathrm{ABD}$에서 $a^2 = h^2 + [\\text{ (가) }]$이므로<br>$h = \\sqrt{a^2 - [\\text{ (가) }]} = [\\text{ (나) }] $<br>따라서 정삼각형의 넓이 $\\mathrm{S}$는<br>$\\mathrm{S} = \\dfrac{1}{2} a \\times [\\text{ (나) }] = \\dfrac{\\sqrt{3}}{4} a^2$</div>",
     "choices": [
       "$\\dfrac{a^2}{4}, \\dfrac{3}{4}a$",
       "$\\dfrac{a^2}{4}, \\dfrac{\\sqrt{3}}{2}a$",
@@ -603,7 +715,7 @@ window.questionBank = [
     "crossConceptKeys": null,
     "conditionKeys": null,
     "integrationPattern": null,
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -613,9 +725,21 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q12",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "정삼각형 높이가 밑변을 이등분함을 사용해 (a/2)²를 피타고라스식에 넣고 양의제곱근으로 높이를 구하여 제시된넓이 유도의 빈칸을 완성한다.",
+    "decisiveStep": "정삼각형 높이가 밑변을 이등분함을 사용해 (a/2)²를 피타고라스식에 넣고 양의제곱근으로 높이를 구하여 제시된넓이 유도의 빈칸을 완성한다."
   },
   {
     "id": 13,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "가로 변화량 3과 세로 변화량 4를 서로 다른 색의 점선으로 표시했다. 실제 거리는 파랑 빗변이다.",
+    "solutionImageCaption": "PQ=√(3²+4²)=5이다. 정답은 ⑤이다.",
     "sourceQid": 13,
     "score": 4,
     "level": "하",
@@ -627,7 +751,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "피타고라스 정리의 활용",
@@ -635,7 +759,7 @@ window.questionBank = [
       "두점사이거리"
     ],
     "wide": false,
-    "content": "다음 좌표평면에서 두 점 $\\mathrm{P}(-2, -1), \\mathrm{Q}(1, 3)$ 사이의 거리를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q13.png\" />",
+    "content": "다음 좌표평면에서 두 점 $\\mathrm{P}(-2, -1), \\mathrm{Q}(1, 3)$ 사이의 거리를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q13-problem-v3.svg\" alt=\"P는 (−2, −1), Q는 (1, 3)이다. 얇은 눈금과 축 위에서 두 점을 잇는 파란 선분을 그렸다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$\\sqrt{21}$",
       "$\\sqrt{22}$",
@@ -664,9 +788,21 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q13",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "두 점의 좌표차3·4를 직각변으로 읽고 피타고라스로 거리5를 구한다.",
+    "decisiveStep": "두 점의 좌표차3·4를 직각변으로 읽고 피타고라스로 거리5를 구한다."
   },
   {
     "id": 14,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "주황 세로 선분 y는 30도 각의 맞은편에 있고, 초록 가로 선분 x는 30도 각과 직각 사이에 놓인다. 파란 선분은 빗변이다.",
+    "solutionImageCaption": "y=5이고 x=√(10²−5²)=5√3이다. 따라서 x+y=5(√3+1) cm이며 정답은 ①이다.",
     "sourceQid": 14,
     "score": 4,
     "level": "하",
@@ -678,7 +814,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "피타고라스 정리의 활용",
@@ -686,7 +822,7 @@ window.questionBank = [
       "변의길이"
     ],
     "wide": false,
-    "content": "다음 그림에서 $x+y$의 길이를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q14.png\" />",
+    "content": "다음 그림에서 $x+y$의 길이를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q14-problem-v3.svg\" alt=\"왼쪽 각은 30도이다. 아래 가로변은 x, 오른쪽 세로변은 y, 파랑 빗변은 10 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$5(\\sqrt{3}+1)\\,\\mathrm{cm}$",
       "$\\dfrac{1}{2}(\\sqrt{3}+1)\\,\\mathrm{cm}$",
@@ -705,7 +841,7 @@ window.questionBank = [
     "crossConceptKeys": null,
     "conditionKeys": null,
     "integrationPattern": null,
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -715,9 +851,20 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q14",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "30도 맞은편변이 빗변의 절반인 특수각 길이비로 y=5를 얻고 나머지직각변x=5√3을 구해 합한다.",
+    "decisiveStep": "30도 맞은편변이 빗변의 절반인 특수각 길이비로 y=5를 얻고 나머지직각변x=5√3을 구해 합한다."
   },
   {
     "id": 15,
+    "solutionImageSize": "full",
+    "solutionImageAlt": "마을 B를 도로 아래 B′에 반사했다. 도로 위 L을 기준으로 LB와 LB′가 같아 각각 같은 초록 한 눈금을 표시했다.",
+    "solutionImageCaption": "B를 반사해 A에서 B′까지 펴면 가로가 8 km, 세로가 6 km이다. 최단 거리는 10 km이고 정답은 ②이다.",
     "sourceQid": 15,
     "score": 4,
     "level": "중",
@@ -729,7 +876,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "피타고라스 정리의 활용",
@@ -737,7 +884,7 @@ window.questionBank = [
       "대칭"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 직선 도로에서 $4\\,\\mathrm{km}$ 떨어진 지점에 $\\mathrm{A}$ 마을이 있고, $2\\,\\mathrm{km}$ 떨어진 지점에 $\\mathrm{B}$ 마을이 있다. 두 마을에 이르는 거리의 합이 최소가 되도록 도로변에 도서관을 만들려고 한다. $\\mathrm{A}$ 마을에서 도서관을 거쳐 $\\mathrm{B}$ 마을로 가는 최단 거리를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q15.png\" />",
+    "content": "다음 그림과 같이 직선 도로에서 $4\\,\\mathrm{km}$ 떨어진 지점에 $\\mathrm{A}$ 마을이 있고, $2\\,\\mathrm{km}$ 떨어진 지점에 $\\mathrm{B}$ 마을이 있다. 두 마을에 이르는 거리의 합이 최소가 되도록 도로변에 도서관을 만들려고 한다. $\\mathrm{A}$ 마을에서 도서관을 거쳐 $\\mathrm{B}$ 마을로 가는 최단 거리를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q15-problem-v3.svg\" alt=\"두 마을은 같은 쪽에 있고 도로에서 각각 4 km와 2 km 떨어져 있다. 도로 위 두 수선의 발 사이의 거리는 8 km이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$8\\,\\mathrm{km}$",
       "$10\\,\\mathrm{km}$",
@@ -760,16 +907,28 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q15_solution.svg",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q15-solution-v2.svg",
     "sourceCurriculum": "2009",
     "sourceGrade": "M3",
     "sourceExamId": "19_이수중_2학기_중간_중3_수학",
     "uid": "19_이수중_2학기_중간_중3_수학:q15",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "B마을을 도로 반대편으로 반사해 두구간의합을 AB′직선으로 환원하고 수평8·수직거리합6에 피타고라스를 적용한다.",
+    "decisiveStep": "B마을을 도로 반대편으로 반사해 두구간의합을 AB′직선으로 환원하고 수평8·수직거리합6에 피타고라스를 적용한다."
   },
   {
     "id": 16,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "파랑 삼각형 바깥의 세 직각삼각형을 다른 색으로 구분했다. 모눈에서 밑변과 높이를 읽어 각각의 넓이를 구한다.",
+    "solutionImageCaption": "바깥 정사각형 넓이 16에서 6, 4, 1을 빼면 5이다. 정답은 ⑤이다.",
     "sourceQid": 16,
     "score": 4,
     "level": "중",
@@ -781,7 +940,7 @@ window.questionBank = [
     "standardUnit": "평면도형의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "평면도형의 측정",
@@ -789,7 +948,7 @@ window.questionBank = [
       "도형의넓이"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 모눈종이 위에 $\\triangle\\mathrm{ABC}$가 그려져 있다. 그림에서 아래쪽 변 위의 꼭짓점은 B이다. 모눈 한 칸의 길이가 1일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q16.png\" />",
+    "content": "오른쪽 그림과 같이 모눈종이 위에 $\\triangle\\mathrm{ABC}$가 그려져 있다. 그림에서 아래쪽 변 위의 꼭짓점은 B이다. 모눈 한 칸의 길이가 1일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q16-problem-v3.svg\" alt=\"한 칸이 1인 모눈에서 A는 왼쪽 변, B는 아래쪽 변, C는 오른쪽 위 꼭짓점이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$\\sqrt{21}$",
       "$\\sqrt{22}$",
@@ -818,9 +977,21 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q16",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "모눈 외곽4×4정사각형에서 목표삼각형 바깥의 세 직각삼각형 넓이6·4·1을 빼5를 구한다.",
+    "decisiveStep": "모눈 외곽4×4정사각형에서 목표삼각형 바깥의 세 직각삼각형 넓이6·4·1을 빼5를 구한다."
   },
   {
     "id": 17,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "세 반원의 겹치는 활꼴은 옅은 보라색이다. 두 작은 반원에서 그 활꼴을 빼면 주황 두 조각, 큰 반원에서 빼면 초록 삼각형이 남는다.",
+    "solutionImageCaption": "두 작은 반원의 합과 큰 반원이 같은 넓이이다. 공통 활꼴을 빼면 주황 부분의 넓이는 12×5/2=30 cm²이며 정답은 ①이다.",
     "sourceQid": 17,
     "score": 4,
     "level": "중",
@@ -832,7 +1003,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "피타고라스 정리의 활용",
@@ -840,7 +1011,7 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 직각삼각형 $\\mathrm{ABC}$의 세 변을 각각 지름으로 하는 반원을 그린 것이다. $\\overline{\\mathrm{AB}}=12\\,\\mathrm{cm}$, $\\overline{\\mathrm{AC}}=5\\,\\mathrm{cm}$일 때, 색칠한 부분의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q17.png\" />",
+    "content": "다음 그림과 같이 직각삼각형 $\\mathrm{ABC}$의 세 변을 각각 지름으로 하는 반원을 그린 것이다. $\\overline{\\mathrm{AB}}=12\\,\\mathrm{cm}$, $\\overline{\\mathrm{AC}}=5\\,\\mathrm{cm}$일 때, 색칠한 부분의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q17-problem-v3.svg\" alt=\"직각삼각형의 세 변 위에 반원을 하나씩 그렸다. 큰 파란 반원 밖, 두 작은 반원 안의 주황 부분이 색칠되어 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$30\\,\\mathrm{cm}^2$",
       "$45\\,\\mathrm{cm}^2$",
@@ -869,9 +1040,21 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q17",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "피타고라스의 변제곱관계를 반원넓이합으로 옮기고 두 공통활꼴을 제거해 두 루네의 넓이합이 직각삼각형넓이30임을 도출한다.",
+    "decisiveStep": "피타고라스의 변제곱관계를 반원넓이합으로 옮기고 두 공통활꼴을 제거해 두 루네의 넓이합이 직각삼각형넓이30임을 도출한다."
   },
   {
     "id": 18,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "밑면의 파랑 대각선과 길이 10인 모서리가 직각을 이룬다. 주황 빨대가 지나는 공간대각선은 그 맞은편이다.",
+    "solutionImageCaption": "밑면 대각선은 5√2 cm이고 가장 긴 공간대각선은 √(50+100)=5√6 cm이다. 정답은 ③이다.",
     "sourceQid": 18,
     "score": 4,
     "level": "하",
@@ -883,14 +1066,14 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "피타고라스 정리의 활용",
       "공간대각선"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 세 모서리의 길이가 각각 $5\\,\\mathrm{cm}, 5\\,\\mathrm{cm}, 10\\,\\mathrm{cm}$인 직육면체 모양의 우유 팩이 있다. 빨대를 어느 방향으로 꽂아도 우유 팩 속에 빠지지 않게 하려면 빨대의 길이는 최소 몇 $\\mathrm{cm}$이상 되어야 하는지 최솟값을 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q18.png\" />",
+    "content": "오른쪽 그림과 같이 세 모서리의 길이가 각각 $5\\,\\mathrm{cm}, 5\\,\\mathrm{cm}, 10\\,\\mathrm{cm}$인 직육면체 모양의 우유 팩이 있다. 빨대를 어느 방향으로 꽂아도 우유 팩 속에 빠지지 않게 하려면 빨대의 길이는 최소 몇 $\\mathrm{cm}$이상 되어야 하는지 최솟값을 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q18-problem-v3.svg\" alt=\"우유 팩의 밑면 정사각형에서 서로 만나는 두 모서리의 길이가 5 cm이다. 밑면과 윗면을 잇는 오른쪽 세로 모서리의 길이는 10 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$10\\,\\mathrm{cm}$",
       "$12\\,\\mathrm{cm}$",
@@ -911,17 +1094,29 @@ window.questionBank = [
     "integrationPattern": null,
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceCurriculum": "2009",
     "sourceGrade": "M3",
     "sourceExamId": "19_이수중_2학기_중간_중3_수학",
     "uid": "19_이수중_2학기_중간_중3_수학:q18",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "직육면체 안의 최장선분을 공간대각선으로 해석하고 세 모서리 제곱합150의 제곱근으로 빨대의 한계길이를 구한다.",
+    "decisiveStep": "직육면체 안의 최장선분을 공간대각선으로 해석하고 세 모서리 제곱합150의 제곱근으로 빨대의 한계길이를 구한다."
   },
   {
     "id": 19,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "밑면 대각선의 절반인 HC와 높이 OH가 직각이다. 파란 빗변 OC는 옆면 모서리 6 cm와 같다.",
+    "solutionImageCaption": "HC=2√2 cm에서 높이는 2√7 cm이다. 부피는 (1/3)×4²×2√7=32√7/3 cm³이고 정답은 ①이다.",
     "sourceQid": 19,
     "score": 4,
     "level": "중",
@@ -933,7 +1128,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "피타고라스 정리의 활용",
@@ -941,7 +1136,7 @@ window.questionBank = [
       "부피"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 밑면은 한 변의 길이가 $4\\,\\mathrm{cm}$인 정사각형이고 옆면의 모서리의 길이가 $6\\,\\mathrm{cm}$인 정사각뿔의 부피를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q19.png\" />",
+    "content": "다음 그림과 같이 밑면은 한 변의 길이가 $4\\,\\mathrm{cm}$인 정사각형이고 옆면의 모서리의 길이가 $6\\,\\mathrm{cm}$인 정사각뿔의 부피를 구하면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q19-problem-v3.svg\" alt=\"정사각뿔의 밑면 한 변 길이는 4 cm이고 꼭짓점 O에서 C로 잇는 옆 모서리 길이는 6 cm이다. H는 밑면 정사각형의 중심이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$\\dfrac{32\\sqrt{7}}{3}\\,\\mathrm{cm}^3$",
       "$2\\sqrt{7}\\,\\mathrm{cm}^3$",
@@ -970,9 +1165,21 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q19",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "밑면 반대각선2√2와 옆모서리6으로 피타고라스 높이2√7을 구한 뒤 사각뿔 부피공식에 밑넓이16과 높이를 넣는다.",
+    "decisiveStep": "밑면 반대각선2√2와 옆모서리6으로 피타고라스 높이2√7을 구한 뒤 사각뿔 부피공식에 밑넓이16과 높이를 넣는다."
   },
   {
     "id": 20,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "연속된 5 mm 간격으로 여섯 운동화 치수를 배열했다. 245 mm 위에 파란 점이 다섯 개로 가장 많이 쌓여 있다.",
+    "solutionImageCaption": "가장 자주 등장하는 값인 최빈값이 적합하다. 가장 많이 주문할 치수는 245 mm이다.",
     "sourceQid": 20,
     "score": 5,
     "level": "하",
@@ -1005,19 +1212,31 @@ window.questionBank = [
     "crossConceptKeys": null,
     "conditionKeys": null,
     "integrationPattern": null,
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceCurriculum": "2009",
     "sourceGrade": "M3",
     "sourceExamId": "19_이수중_2학기_중간_중3_수학",
     "uid": "19_이수중_2학기_중간_중3_수학:q20",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "최다판매치수에 대응하는 주문계획이라는 목적에서 최빈값을 선택하고 치수별도수로245mm가5켤레임을 확인해 이유와 주문치수를 제시한다.",
+    "decisiveStep": "최다판매치수에 대응하는 주문계획이라는 목적에서 최빈값을 선택하고 치수별도수로245mm가5켤레임을 확인해 이유와 주문치수를 제시한다."
   },
   {
     "id": 21,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "두 줄에서 계급값 15, 25, 35, 45가 세로로 정렬된다. 평균 32의 위치는 같은 보라 점선이며 A모둠에 양 끝의 점이 더 많다.",
+    "solutionImageCaption": "두 모둠의 평균은 32이다. A의 분산 161이 B의 분산 81보다 커서 A모둠이 더 많이 흩어져 있다.",
     "sourceQid": 21,
     "score": 6,
     "level": "중",
@@ -1051,7 +1270,7 @@ window.questionBank = [
     "crossConceptKeys": null,
     "conditionKeys": null,
     "integrationPattern": null,
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -1061,9 +1280,21 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q21",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "각 계급값을 대표로 두고 두집단의 가중평균32와 가중분산161·81을 계산하여 더흩어진A를 판정한다.",
+    "decisiveStep": "각 계급값을 대표로 두고 두집단의 가중평균32와 가중분산161·81을 계산하여 더흩어진A를 판정한다."
   },
   {
     "id": 22,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "아래 P에서 보라 Q와 파랑 R로, Q에서 두 보라 계열의 S와 T로, R에서 두 파랑 계열의 U와 V로 넓이가 나뉜다.",
+    "solutionImageCaption": "R=80−54=26, T=54−44=10이고 U+V=R이다. 따라서 T+U+V=36이다.",
     "sourceQid": 22,
     "score": 5,
     "level": "중",
@@ -1075,7 +1306,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "단답형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "단답형",
       "피타고라스 정리의 활용",
@@ -1083,7 +1314,7 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "content": "[서답형 3] 다음 그림과 같이 직각삼각형과 그 세변을 각각 한 변으로 하는 정사각형을 계속이어 붙여 그린 나무모양의 그림을 '피타고라스의 나무'라고 부른다. $\\mathrm{P, Q, S}$의 넓이가 각각 80, 54, 44일 때, $\\mathrm{T+U+V}$의 넓이를 구하시오. (5점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/s03.png\" />",
+    "content": "[서답형 3] 다음 그림과 같이 직각삼각형과 그 세변을 각각 한 변으로 하는 정사각형을 계속이어 붙여 그린 나무모양의 그림을 '피타고라스의 나무'라고 부른다. $\\mathrm{P, Q, S}$의 넓이가 각각 80, 54, 44일 때, $\\mathrm{T+U+V}$의 넓이를 구하시오. (5점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q22-problem-v3.svg\" alt=\"아래 정사각형 P 위에서 Q와 R이 갈라진다. Q 위에는 S와 T가, R 위에는 U와 V가 각각 두 직각변에 붙는다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [],
     "answer": "36",
     "solution": "각 문자는 해당 정사각형의 넓이를 나타낸다.\n직각삼각형에 피타고라스 정리를 적용하면\n$P=Q+R$\n$R=P-Q$\n$R=80-54$\n$R=26$\n왼쪽 작은 직각삼각형에서\n$Q=S+T$\n$T=Q-S$\n$T=54-44$\n$T=10$\n오른쪽 작은 직각삼각형에서\n$R=U+V$\n$U+V=26$\n따라서\n$T+U+V=10+26$\n$T+U+V=36$\n답은 $36$이다.",
@@ -1106,9 +1337,21 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q22",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "각 직각삼각형에서 정사각형넓이 관계P=Q+R,Q=S+T,R=U+V를 세워 원하는합을 P-S로 환원한다.",
+    "decisiveStep": "각 직각삼각형에서 정사각형넓이 관계P=Q+R,Q=S+T,R=U+V를 세워 원하는합을 P-S로 환원한다."
   },
   {
     "id": 23,
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "전개도의 주황 원호와 원뿔 밑면의 주황 둘레가 대응한다. 꼭짓점을 지나는 단면에서 파랑 모선, 보라 높이, 초록 반지름의 관계를 읽는다.",
+    "solutionImageCaption": "호의 길이 12π가 밑면 둘레이므로 r=6 cm이다. 높이는 3√5 cm, 부피는 36√5π cm³이다.",
     "sourceQid": 23,
     "score": 7,
     "level": "중",
@@ -1120,7 +1363,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "피타고라스 정리의 활용",
@@ -1129,7 +1372,7 @@ window.questionBank = [
       "부피"
     ],
     "wide": false,
-    "content": "[서답형 4] 오른쪽 그림의 원뿔의 전개도로 원뿔을 만들었다. 물음에 답하시오.(7점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/s04.png\" /><br>(1) 밑면의 반지름의 길이를 구하시오. (2점)<br>(2) 원뿔의 높이를 구하시오. (3점)<br>(3) 원뿔의 부피를 구하시오. (2점)",
+    "content": "[서답형 4] 오른쪽 그림의 원뿔의 전개도로 원뿔을 만들었다. 물음에 답하시오.(7점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q23-problem-v3.svg\" alt=\"옆면은 반지름 9 cm, 중심각 240도인 부채꼴이다. 오른쪽 아래의 원은 밑면이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"><br>(1) 밑면의 반지름의 길이를 구하시오. (2점)<br>(2) 원뿔의 높이를 구하시오. (3점)<br>(3) 원뿔의 부피를 구하시오. (2점)",
     "choices": [],
     "answer": "(1) $6\\,\\mathrm{cm}$ (2) $3\\sqrt{5}\\,\\mathrm{cm}$ (3) $36\\sqrt{5}\\pi\\,\\mathrm{cm^3}$",
     "solution": "부채꼴의 반지름은 $9$ cm, 중심각은 $240^\\circ$이다.\n부채꼴의 호의 길이는 밑면 원의 둘레와 같다.\n$\\text{호의 길이}=2\\pi\\cdot9\\cdot\\dfrac{240}{360}$\n$=18\\pi\\cdot\\dfrac{2}{3}$\n$=12\\pi$\n밑면 반지름을 $r$이라 하면\n$2\\pi r=12\\pi$\n$r=6$ cm\n원뿔의 높이를 $h$라 하면 모선, 높이, 밑면 반지름이 직각삼각형을 이룬다.\n$h^2+6^2=9^2$\n$h^2+36=81$\n$h^2=81-36$\n$h^2=45$\n$h=\\sqrt{45}$\n$h=\\sqrt{9\\cdot5}$\n$h=3\\sqrt5$ cm\n원뿔의 부피는\n$V=\\dfrac13\\pi r^2h$\n$V=\\dfrac13\\pi\\cdot6^2\\cdot3\\sqrt5$\n$V=\\dfrac13\\pi\\cdot36\\cdot3\\sqrt5$\n$V=36\\sqrt5\\pi$ cm$^3$\n따라서 (1) $6$ cm, (2) $3\\sqrt5$ cm, (3) $36\\sqrt5\\pi$ cm$^3$이다.",
@@ -1152,5 +1395,13 @@ window.questionBank = [
     "uid": "19_이수중_2학기_중간_중3_수학:q23",
     "metaStatus": "EVIDENCE_DEBT",
     "metaStatusReasonRef": "CUMULATIVE_REVIEW.json#curriculumClassification.evidenceDebt"
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "전개도 부채꼴호를 밑면원주와 같게 두어 반지름6을 구하고 모선9와 피타고라스로 높이를 얻어 원뿔 부피를 계산한다.",
+    "decisiveStep": "전개도 부채꼴호를 밑면원주와 같게 두어 반지름6을 구하고 모선9와 피타고라스로 높이를 얻어 원뿔 부피를 계산한다."
   }
 ];

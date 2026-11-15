@@ -1,0 +1,3535 @@
+{
+  "schemaVersion": "archive-4slot-candidate-promotion-proposal-v1",
+  "status": "AWAITING_ROOT_INDEPENDENT_DEFINITION_REVIEW",
+  "dictionaryWriteOwner": "/root/m1_release",
+  "dictionaryBase": "term-dict-v1.5-2026-11-04",
+  "newIdsUnassigned": true,
+  "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+  "currentSourceCommit": "af2e85c36d590178e2deb5f64858c0a8f142d755",
+  "scope": "Promote six already-authored and independently sampled method concepts; preserve original candidate meaning and existing registered E016 Q8 values.",
+  "sourceMutation": 0,
+  "semanticApprovalMutation": 0,
+  "terms": [
+    {
+      "term": "접선길이의성질",
+      "difference": "접선의길이(448)는 외부점과 접점 사이 길이라는 대상이다. 이 후보는 동일한 외부점에서 그은 두 접선의 길이가 같다는 관계를 식에 사용하는 정리다.",
+      "existingIds": [
+        448,
+        118
+      ],
+      "existingTerms": [
+        {
+          "id": 118,
+          "ko": "접선",
+          "en": [
+            "TANGENT"
+          ],
+          "synonyms": [],
+          "kind": "대상",
+          "kindDetail": null,
+          "sourceKeys": [
+            "PT_CIRCLE_TANGENT",
+            "TM_TANGENT_LENGTH",
+            "TM_TANGENT_AT_POINT",
+            "PT_GEO_CONIC_TANGENT",
+            "PT_TANGENT_DERIVATIVE"
+          ],
+          "usageInKeys": 21,
+          "usageInItems": 0,
+          "addedDuringItems": false
+        },
+        {
+          "id": 448,
+          "ko": "접선의길이",
+          "en": [
+            "TANGENT_LENGTH"
+          ],
+          "synonyms": [],
+          "kind": "대상",
+          "kindDetail": null,
+          "parent": "접선",
+          "status": "ACTIVE",
+          "sourceKeys": [],
+          "usageInKeys": 0,
+          "usageInItems": 0,
+          "addedDuringItems": false,
+          "note": "원 밖의 한 점에서 접점까지의 선분 길이",
+          "sources": [
+            "curriculum-2015"
+          ]
+        }
+      ],
+      "originalCandidateDefinitions": [
+        {
+          "term": "접선길이의성질",
+          "en": [
+            "EQUAL_TANGENTS_FROM_EXTERNAL_POINT"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "접선의길이",
+          "note": "원 밖의 같은 점에서 그은 두 접선 길이가 같다는 성질을 길이 식으로 사용한다."
+        },
+        {
+          "en": [
+            "EQUAL_TANGENTS_FROM_EXTERNAL_POINT"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "접선의길이",
+          "note": "원 밖의 같은 점에서 그은 두 접선 길이가 같다는 성질을 길이 식으로 사용한다.",
+          "term": "접선길이의성질"
+        }
+      ],
+      "support": [
+        {
+          "examId": "E001",
+          "sourceOrdinal": 17,
+          "questionUid": "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "f8e33cfbde7bb315ca96946c2242f6b8d70fc96b24ac721624a3b26423a99c5f",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "에 그은 두 접선의 길이는 같다. $AD=18$, $AB",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 외부점에서 그은 접선 길이를 연결해 BE와 CE, 이어 BC를 정한 뒤 두 변과 60°의 삼각형 넓이를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": true,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E001",
+          "sourceOrdinal": 20,
+          "questionUid": "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "a64501c5a42311ecd71596ebd2f236fd97f277b177d66ffb6404e4b92074fc54",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "접선 길이 성질에서 $BE=BD=5$, $CF=",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 길이의 같음으로 세 변을 x+5, x+12, 17로 나타내고 피타고라스의 양수해에서 내접반지름을 정한 뒤 세 중심거리를 합한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 17,
+          "questionUid": "qid_v1_54ad11846cf70bd3571b22e27e2dbd7de5f03a717a20f044bfd1a239cac81b33",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "8de565fe764227d4912ce6cc292b7a98cedf83016862f9de045dd59acdc41161",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "에 그은 두 접선의 길이는 같으므로\n$PA=PB$이다.\n",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 외부점의 두 접선 길이가 같아 이등변삼각형임을 얻고 꼭짓각50°에서 밑각을 정한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 18,
+          "questionUid": "qid_v1_279883466c1aec34c93b17b543afdd398e9ea98425f362430a69d328cbb55267",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "6c7171ed1bb363d053410da72fb5e35cc45d0621921815642facedecf3333c06",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "으므로 $DT=DU=6$이다.\n\n$EC=x$라 하면 $B",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형의 접원에서 접선 길이를 옮겨 DE=12−x를 만들고 직각삼각형의 피타고라스로 EC를 정해 넓이를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 20,
+          "questionUid": "qid_v1_62a0312d26282ef5b5060d609ff9cf383686000a79c24a7e80c67a01b612809e",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "b00eddc1b5127bfd76222f3f9433b4d5e36b705649de77c80356dedf0a96e384",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "으므로\n$DC=DA=3\\,\\mathrm{cm}$이다.\n점",
+            "evidenceType": "IMPLIED",
+            "justification": "접선 동일길이에서 DC:CE=1:3을 얻고 C를 지나는 평행선으로 만든 닮은 삼각형의 높이차 비로 CF를 결정한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E013",
+          "sourceOrdinal": 18,
+          "questionUid": "qid_v1_1b26e51d0cc3a45a0fdf392ac9e184709c0ee0832d8a8d9727a929585d0f7a4b",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "616446569f78c62f6a6f9c7bae4baba76c8c18f6",
+          "currentQFULL": "765b5ab38a34c6ea178df593698a9f7b548330fbbc993a19d79c83cd519e5484",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E013.4slot.json",
+          "sourceReviewSha256": "6dacb8b70e4c9197a0b1097dffe05c87f14c9c6a0e57003d2ba9c883c838a670",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "점까지의 두 접선의 길이는 서로 같다.\n\n세 변의 길이가",
+            "evidenceType": "IMPLIED",
+            "justification": "외접삼각형의 세 꼭짓점에서 동일 접선 길이를 대응하여 세 변을 두 길이의 합으로 적고 합·차로 목표 접선길이를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E013",
+          "sourceOrdinal": 19,
+          "questionUid": "qid_v1_ae0f586504d29100366a1c1e8c13d376b7a941eb7fd8c0794e6d4880f09b7fd7",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "616446569f78c62f6a6f9c7bae4baba76c8c18f6",
+          "currentQFULL": "957792bf6a13273a91b560c22fcd5d25b49ee04ec88ae024646dd9055905205c",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E013.4slot.json",
+          "sourceReviewSha256": "6dacb8b70e4c9197a0b1097dffe05c87f14c9c6a0e57003d2ba9c883c838a670",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "에 그은 두 접선의 길이는 서로 같다.\n\n따라서\n$AD=",
+            "evidenceType": "IMPLIED",
+            "justification": "동일 접선 길이로 DC=x+5를 만들고 두 수직 높이의 차5−x를 갖는 직각삼각형에서 피타고라스 식을 세운다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E013",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_0ccaa24dc139ce4cf597356d5d1003afa0b37e8b9f5a0155fd7d0fddfc68acf1",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "616446569f78c62f6a6f9c7bae4baba76c8c18f6",
+          "currentQFULL": "619830874a63343558444f463af6c1980a4b51b7fa65b9e921a46ebaaa507499",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E013.4slot.json",
+          "sourceReviewSha256": "6dacb8b70e4c9197a0b1097dffe05c87f14c9c6a0e57003d2ba9c883c838a670",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "에 그은 두 접선의 길이는 같으므로\n$AP=BP$이다.\n",
+            "evidenceType": "IMPLIED",
+            "justification": "접점에서 생긴 직각삼각형의sin·cos로 두 변을 구하고 동일 접선길이와 반지름으로 합동인 두 삼각형 넓이를 합한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E013",
+          "sourceOrdinal": 25,
+          "questionUid": "qid_v1_9d02f48df27640bc11ee8b1e79d9facb54437e6e9e16bf68bf0afa098268c5bb",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "616446569f78c62f6a6f9c7bae4baba76c8c18f6",
+          "currentQFULL": "742ba11faeaa3bb3d4ad0d973d8b273d4ad28a4f334752b0e69c125680392c8c",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E013.4slot.json",
+          "sourceReviewSha256": "6dacb8b70e4c9197a0b1097dffe05c87f14c9c6a0e57003d2ba9c883c838a670",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "에 그은 두 접선의 길이는 서로 같다.\n\n$PA=PB=8",
+            "evidenceType": "IMPLIED",
+            "justification": "세 외부점의 동일 접선길이를 순서대로 옮기고 전체길이에서 부분길이를 빼서 PD를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 18,
+          "questionUid": "qid_v1_d20e5fb44065d096b9131a559220b2bb48e1cfc62ea67c162a04b132df167149",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "b47c2c425f034f0cd2824e16b0fecfe84cce6f5ca8f6d1b7ed32863811395833",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "같은 점에서 원에 그은 두 접선의 길이는 같으므로\n$AF=AE=6$\n$BF=BG=12-6=6$이다.\n또\n$DE=AD-AE=18-6=12$이므로 $DI=DE=12$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행한 두 접선 사이 거리를 지름으로 읽고 동일 접선길이 조각을 옮긴 뒤 삼각형 둘레식에서 미지접선조각이 소거됨을 이용한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_a70f2e2989e65c7cc9b68cec040af2ffd699f03af0d7f62061cd0ac7b5d29575",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "29d5a919a04c4cc6d77137eefa6203a38e5c31ef2fdb4ca28de26f7fcadcec1b",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "같은 점에서 원에 그은 두 접선의 길이는 같다.\n따라서\n$AD=AE$, $BD=BF$, $CE=CF$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "세 외부점의 같은 접선 길이를 옮겨 삼각형 둘레를 AD+AE로 다시 묶고 주어진 접선 길이의 두 배로 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E028",
+          "sourceOrdinal": 16,
+          "questionUid": "qid_v1_b5db42055bd2b3bf6625d23f9bad19cfa6e55b7025e701a2abc6bb215bf708dd",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e6e7701f84ae6730849cc882982db36ca9ffa9f4",
+          "currentQFULL": "5c3f2a94addbc345dd326c525889483408e9d0ccb2aba4aa1cb6c1f94cdfd101",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E028.4slot.json",
+          "sourceReviewSha256": "15625518dfab52cd0535203c8c4b9211c1bd1a5b6c9bc07476345c522badbc2f",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "$AD=AF=2$이다.\n따라서\n$BD=AB-AD=4$이므로\n$BE=4$이고, $CF=AC-AF=3$이므로\n$CE=3$이다.\n그러므로\n$BC=BE+CE=4+3=7\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 꼭짓점에서 두 접선의 길이가 같음을 차례로 적용해 BE와 CE를 구한 뒤 BC를 더한다."
+          },
+          "needsThisPromotionForNonemptyMethod": true,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E028",
+          "sourceOrdinal": 20,
+          "questionUid": "qid_v1_f0fae6e4811f93eff8f17c4ffa0d1ede0917587ad651ea204321572c3a528452",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e6e7701f84ae6730849cc882982db36ca9ffa9f4",
+          "currentQFULL": "eff33dddff3d3eb525e2c42e567abb7f6223320f1322753b50bb0f7e1ae821d2",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E028.4slot.json",
+          "sourceReviewSha256": "15625518dfab52cd0535203c8c4b9211c1bd1a5b6c9bc07476345c522badbc2f",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "점 $D$에서 그은 접선이므로\n$DE=DA=10$이다.\n따라서\n$CE=CD-DE=4$이고, 점 $C$에서 그은 접선이므로\n$CB=CE=4$이다.\n$AD$와 $BC$는 지름 $AB$에 수직이므로 서로 평행하다.\n두 수직변의 길이 차는 $10-4=6$이고 가로 거리는 $AB$이다.\n따라서\n$AB^2+6^2=14^2$, 즉 $AB^2=160$이므로\n$AB=4\\sqrt{10}\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부점의 접선 등길이로 CB=4를 정하고 평행한 접선들의 길이 차6을 이용한 직각삼각형에서 지름AB를 피타고라스로 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 17,
+          "questionUid": "qid_v1_44ed308ed76ae6884c5a3ca3f8ef0b753188a01fd5a72da4f37a6e29b9a9c567",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "a9f25a806704368d0e3906e821c03a25043a1bd6b89af10dc086ff16cd069711",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "한 점에서 원에 그은 두 접선의 길이는 같다. 따라서 A에서의 접선 AD=AF=3, C에서의 접선 CF=CE이다. AC=AF+FC=9이므로 FC=9−3=6, 따라서 CE=6이다. B에서 그은 접선의 길이가 같아 BD=BE=7이다.\n그러므로 x=BC=BE+EC=7+6=13. 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 꼭짓점에서의 두 접선 조각을 대응시키고 한 변의 차로 남은 조각을 구한 뒤 목표 삼각형 변의 두 조각을 합한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 18,
+          "questionUid": "qid_v1_6ca08a6cb282b4c44c282ad11bfd4660a94b4bc205771a9c5207d2ca711f51a4",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "5a0578ffb31d65e66d8be2043e1dfb715c302ff2f136e239eb3a011b6527db1d",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "내접원의 접점 E,F,G에서 같은 꼭짓점으로 그은 접선 길이는 같다. 따라서 AE=AG, BE=BF, CF=CG이다.\nAB=AE+BE=6, BC=BF+FC=7, AC=AG+GC=9이므로 AB+BC−AC=2BE이다. 따라서 BE=BF=(6+7−9)/2=2 cm이다.\nPQ가 원에 접하는 점을 T라 하자. P와 Q에서 그은 접선 길이가 각각 같으므로 PE=PT, QF=QT이다. 또 P,Q는 B와 E,F 사이에 있으므로 PB=BE−PE, BQ=BF−QF이고 PQ=PT+QT=PE+QF이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 삼각형의 세 변으로 한 꼭짓점의 두 접선 길이를 정하고 새 접선의 등길이 조각을 소거하여 잘린 삼각형 둘레의 불변 합을 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 19,
+          "questionUid": "qid_v1_2fcf3d457839b26755108b4af16c450a6531061a5121c781c3094ef154b85c22",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "2f0057446553d38f8e30a8b7afed288ae4966cca56d10e7ea16a0003a0ceba60",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "접선길이의성질",
+            "src": "solution",
+            "quote": "원에 외접하는 사각형에서는 마주 보는 변의 길이의 합이 같다. AD=y라 하면 AB+CD=BC+AD에서 AB+4=6+y이므로 AB=y+2이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외접사각형의 마주 보는 변 합으로 두 미지변을 연결하고 직각사다리꼴의 밑변 차·높이로 피타고라스 식을 세워 목표 변을 복원한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        }
+      ],
+      "supportUidCount": 16,
+      "nonemptyMethodBlockedUids": [
+        "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+        "qid_v1_b5db42055bd2b3bf6625d23f9bad19cfa6e55b7025e701a2abc6bb215bf708dd"
+      ]
+    },
+    {
+      "term": "삼각형넓이공식",
+      "difference": "넓이(213)는 측정량이고 삼각형(158)은 도형이다. 이 후보는 밑변×높이/2 또는 두 변과 끼인각의 사인으로 삼각형 넓이를 계산하는 공식을 방법으로 명시한다. 사인법칙(196)과 코사인법칙(197)은 변·각 관계를 구하는 다른 정리다.",
+      "existingIds": [
+        213,
+        158,
+        196,
+        197
+      ],
+      "existingTerms": [
+        {
+          "id": 158,
+          "ko": "삼각형",
+          "en": [
+            "TRIANGLE"
+          ],
+          "synonyms": [],
+          "kind": "대상",
+          "kindDetail": null,
+          "sourceKeys": [
+            "TPL_AREA_POINT",
+            "TPL_AREA_DIRECT",
+            "TPL_AREA_SECTION",
+            "PT_COORD_CENTROID",
+            "TM_CIRCLE_INCIRCLE"
+          ],
+          "usageInKeys": 62,
+          "usageInItems": 4,
+          "addedDuringItems": false
+        },
+        {
+          "id": 196,
+          "ko": "사인법칙",
+          "en": [
+            "SINE_LAW"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "kindDetail": null,
+          "sourceKeys": [
+            "PT_H22A_05_SINE_LAW",
+            "TPL_H22A_05_SINE_LAW_109",
+            "TPL_H22A_05_SINE_LAW_110"
+          ],
+          "usageInKeys": 3,
+          "usageInItems": 0,
+          "addedDuringItems": false
+        },
+        {
+          "id": 197,
+          "ko": "코사인법칙",
+          "en": [
+            "COSINE_LAW"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "kindDetail": null,
+          "sourceKeys": [
+            "PT_H22A_05_COSINE_LAW",
+            "TPL_H22A_05_COSINE_LAW_111",
+            "TPL_H22A_05_COSINE_LAW_112"
+          ],
+          "usageInKeys": 3,
+          "usageInItems": 0,
+          "addedDuringItems": false
+        },
+        {
+          "id": 213,
+          "ko": "넓이",
+          "en": [
+            "AREA"
+          ],
+          "synonyms": [
+            "면적"
+          ],
+          "kind": "대상",
+          "kindDetail": "양(구할 수 있는 값)",
+          "sourceKeys": [
+            "TPL_AREA_POINT",
+            "TPL_AREA_DIRECT",
+            "TPL_AREA_SECTION",
+            "PT_M1_TRAPEZOID_AREA",
+            "PT_AREA_BISECTING_LINE"
+          ],
+          "usageInKeys": 39,
+          "usageInItems": 6,
+          "addedDuringItems": false
+        }
+      ],
+      "originalCandidateDefinitions": [
+        {
+          "term": "삼각형넓이공식",
+          "en": [
+            "TRIANGLE_AREA_FORMULA"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "넓이",
+          "note": "밑변과 높이 또는 두 변과 끼인각의 사인으로 삼각형 넓이를 산출하는 결정 방법. 기존 넓이 용어는 목표량이므로 공식 적용과 구분한다."
+        },
+        {
+          "en": [
+            "TRIANGLE_AREA_FORMULA"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "넓이",
+          "note": "밑변과 높이 또는 두 변과 끼인각의 사인으로 삼각형 넓이를 산출하는 결정 방법. 기존 넓이 용어는 목표량이므로 공식 적용과 구분한다.",
+          "term": "삼각형넓이공식"
+        }
+      ],
+      "support": [
+        {
+          "examId": "E001",
+          "sourceOrdinal": 6,
+          "questionUid": "qid_v1_99715774e895ed62bf2d40572626df5348e2c23f66db9a84c87a382853a6c8b9",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "380b2308fb8bf687aa463341a323d78b66c459262b8f97094c4eba64f29408b0",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$이다.\n사각형의 넓이는 $[ABD]+[BCD]$이므로\n",
+            "evidenceType": "IMPLIED",
+            "justification": "공통 대각선 BD를 tan60°로 구하고 45° 직각삼각형의 등변 관계를 이어서 두 삼각형 넓이를 합한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E001",
+          "sourceOrdinal": 11,
+          "questionUid": "qid_v1_9bdc3e6b81038ca4b03e08cb1dde57537405e799aa7b8fa888acb28a584b319e",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "6af6ac111f2d35e1106910ddd00a09d5506da67377a9927fb78a22998f6d8adc",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "삼각형의 넓이 공식에 대입하면\n$3\\sqrt3=\\dfra",
+            "evidenceType": "IMPLIED",
+            "justification": "넓이와 두 변 사이의 사인 관계에서 AC를 먼저 구하고, 수선을 내려 CH·AH·BH를 정한 후 피타고라스로 BC를 얻는다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E001",
+          "sourceOrdinal": 13,
+          "questionUid": "qid_v1_258ac8b815c64e7956d4d63116168b9cebc123aae2147051bf86dfaa992141ac",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "34c666ec94a32a995b1c8a78193d0c7b2bb9a2d05f08f011119758e2904013ab",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "BD]=\\dfrac12(4\\sqrt2)^2\\sin120^",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선 BD로 나눈 두 삼각형에 두 변과 끼인각의 넓이 공식을 각각 적용하고 근호식을 정리해 합한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E001",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "d2e00d910a5c09c91f852990fcd5f2492219280b0bb23aad4a43900e05e7e214",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "러므로\n$[OCD]=\\dfrac12(4\\sqrt7)(6)",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름·중심거리로 반현을 구하고 같은 현의 중심거리도 같음을 써 삼각형 OCD의 밑변과 높이를 확정한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E001",
+          "sourceOrdinal": 17,
+          "questionUid": "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "f8e33cfbde7bb315ca96946c2242f6b8d70fc96b24ac721624a3b26423a99c5f",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "(BC)\\sin60^\\circ=\\dfrac12(15)(8",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 외부점에서 그은 접선 길이를 연결해 BE와 CE, 이어 BC를 정한 뒤 두 변과 60°의 삼각형 넓이를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": true,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E001",
+          "sourceOrdinal": 23,
+          "questionUid": "qid_v1_693599656600a299f1a8a6719ebeee5a484e2739e4c0819b51709350b3ca5833",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "9323c96730f3f869d152e1a3423edb4387d5155c341bae42a21d05d67b169464",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": " 하자. 삼각형의 넓이 공식으로\n[△ABC]=1/2·AB",
+            "evidenceType": "IMPLIED",
+            "justification": "두 삼각형 넓이에 공통 끼인각의 sin을 써 넓이비를 두 변의 비의 곱으로 바꾸고 주어진 넓이에 3/2를 곱한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 9,
+          "questionUid": "qid_v1_51da12b13c9a61f7ca85495c82d0432bbcd6dfa7e6bbcf5154d2d2802b809d7b",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "25c4d3d80366b344416c089b0c260b1b9cdac2c80623a0fb936b6ab064e13145",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "두 변 $AB$, $BC$와 그 끼인각 $B$를",
+            "evidenceType": "IMPLIED",
+            "justification": "두 주어진 변과 끼인각의 사인으로 삼각형 넓이를 직접 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 10,
+          "questionUid": "qid_v1_b9615c6b1c214e23271e9efd37238a3a5c3e1bde638739d38c4e2f7070b5a414",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "a775315d90be12fd7b6025a200ce36f909a06b4dfd5a4f6368210783f08b2a91",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "imes EH=\\dfrac32$이므로\n$EH=\\dfrac",
+            "evidenceType": "IMPLIED",
+            "justification": "정사각형의 남는 삼각형 넓이를 구하고 그 넓이로 새 수선의 길이를 복원한 뒤 피타고라스와 tan 정의로 각 사이의 비를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 18,
+          "questionUid": "qid_v1_279883466c1aec34c93b17b543afdd398e9ea98425f362430a69d328cbb55267",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "6c7171ed1bb363d053410da72fb5e35cc45d0621921815642facedecf3333c06",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "러므로\n$[DEC]=\\dfrac12\\times DC\\ti",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형의 접원에서 접선 길이를 옮겨 DE=12−x를 만들고 직각삼각형의 피타고라스로 EC를 정해 넓이를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 19,
+          "questionUid": "qid_v1_e845b26b4e7f8961dbfa059f13f631d4007d7f66691a32af73d9559b6b94753c",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "489f8640e97f9ec3a66d1dfa52f54ffb5de3573f7a00e2f3e124587cad600360",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$이므로 세 작은 삼각형의 넓이를 더하면\n$54=18r$",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 빗변과 넓이를 구하고 내심에서 세 변의 거리가 같음을 이용한 세 삼각형 넓이 합 S=rs로 내접반지름을 구한다. 접선 길이 성질을 사용하지 않는다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_78d7e7475b76236e3af828b09edc3464bcb9e6ed44756c0a0fb9d4d6bd2e5fdd",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "e7cfa86f6af549ca533bdbcdd03e74b4d48732b2ed8a55ebea2510839983c3d1",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "이다.\n\n사각형 $PAOB$의 넓이는\n$2\\times\\d",
+            "evidenceType": "IMPLIED",
+            "justification": "접선과 반지름의 직각 및 RHS 합동에서 외부각의 이등분을 얻고 삼각비로 반지름을 정한 다음 사각형 넓이에서 부채꼴 넓이를 뺀다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E012",
+          "sourceOrdinal": 11,
+          "questionUid": "qid_v1_92b13ad02eb38a3298d946d6b4d38e45bffb39c50974272174814424f27891d1",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "a8217545e4239ee00f607ec701d9e853a2c51847",
+          "currentQFULL": "3e9673e91c4fd9d5da65a21e421cf05b50d3ddac1c477ba07cd68e8431e10fa9",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E012.4slot.json",
+          "sourceReviewSha256": "06abf1b11d5830ac1f08fb93f37067cae4ddedd7b96c8d9f9e9b5250e09c7129",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "삼각형의 넓이 공식",
+            "evidenceType": "NAMED"
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E013",
+          "sourceOrdinal": 23,
+          "questionUid": "qid_v1_42e6667be8df1c261747d3b70538e38dbbc42c9d1eb3edb2a885329090c49b35",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "616446569f78c62f6a6f9c7bae4baba76c8c18f6",
+          "currentQFULL": "a1235da55ce399a070b30c69cce4bd2888c6d4af9d8eb92206f6436d755f3aa2",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E013.4slot.json",
+          "sourceReviewSha256": "6dacb8b70e4c9197a0b1097dffe05c87f14c9c6a0e57003d2ba9c883c838a670",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "므로\n\n$[ACD]\n=\\dfrac12\\times12\\ti",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선을 첫 직각삼각형의 사인으로 복원한 뒤 두 삼각형의 넓이를 각각 구하고 더하여 사각형넓이를 얻는다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E013",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_0ccaa24dc139ce4cf597356d5d1003afa0b37e8b9f5a0155fd7d0fddfc68acf1",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "616446569f78c62f6a6f9c7bae4baba76c8c18f6",
+          "currentQFULL": "619830874a63343558444f463af6c1980a4b51b7fa65b9e921a46ebaaa507499",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E013.4slot.json",
+          "sourceReviewSha256": "6dacb8b70e4c9197a0b1097dffe05c87f14c9c6a0e57003d2ba9c883c838a670",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "이는\n\n$2\\times\\dfrac12\\times8\\tim",
+            "evidenceType": "IMPLIED",
+            "justification": "접점에서 생긴 직각삼각형의sin·cos로 두 변을 구하고 동일 접선길이와 반지름으로 합동인 두 삼각형 넓이를 합한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E016",
+          "sourceOrdinal": 5,
+          "questionUid": "qid_v1_d0f9397aece429dd55993e1b92bbb446b87d844b3dc767650d11c678c454cec0",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/24_왕운중_2학기_기말_중3_수학.js",
+          "currentSourceBlobSha1": "e4d7cfc5a68f644773b9d3c7922b312c3c9b7c56",
+          "currentQFULL": "92b6f238ae4d047c2671f7d94078a7d277637cfe59ab4b1ac4bb8a2fb2d595ee",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E016.4slot.json",
+          "sourceReviewSha256": "a956402ac8289131ed9234e7252ac4bfaaab6b5b28eee3691364dd36761c0c22",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "두 변의 길이 변화율을 곱하면 넓이의 비이므로 ",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 끼인각 B를 공유하는 두 변 AB와 BC의 변화율 곱이 넓이 변화율임을 이용해 1.2(1−x/100)=0.9를 세운다. AB는 빗변이며 두 직각변을 바꾼 상황이 아니다. 실제 해설은 삼각비를 사용하지 않는다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": true
+        },
+        {
+          "examId": "E016",
+          "sourceOrdinal": 6,
+          "questionUid": "qid_v1_6d5704f87901ff0b3622034b0ecaba563fd271b31c5898530133f49a43960ebf",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/24_왕운중_2학기_기말_중3_수학.js",
+          "currentSourceBlobSha1": "e4d7cfc5a68f644773b9d3c7922b312c3c9b7c56",
+          "currentQFULL": "e47a50f6fbc78534d9efb478443f5b2815122418546094cc28d6ff77f84171da",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E016.4slot.json",
+          "sourceReviewSha256": "a956402ac8289131ed9234e7252ac4bfaaab6b5b28eee3691364dd36761c0c22",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "짓이다.\n넓이는 $\\frac12\\cdot8\\cdot5\\c",
+            "evidenceType": "IMPLIED",
+            "justification": "어떤 변을 밑변으로 잡는지에 따라 대응 높이의sin45° 계수를 구별하고 두 변과끼인각으로 넓이를 직접 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": true
+        },
+        {
+          "examId": "E018",
+          "sourceOrdinal": 11,
+          "questionUid": "qid_v1_861c4adf5ccda2b04d1f2b53a995f023a6f6cba1ae3e87eee366099e647fb26d",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "59018dea625537382166dde0fd97200f7eda4837",
+          "currentQFULL": "66fcc57c62c73fa500b8ef978f8b8ccac600d28de8bdb07da1e1abf466a736d9",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E018.4slot.json",
+          "sourceReviewSha256": "7884fb2361381674228ce4d5491562a76271263eb0173cb6a3423cdbf8b28aeb",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$\\dfrac12\\times AD\\times DF",
+            "evidenceType": "IMPLIED",
+            "justification": "겹친 작은 삼각형의 밑변을 큰 45도 삼각형에서 정하고 30도 탄젠트로 높이를 얻어 넓이를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E018",
+          "sourceOrdinal": 13,
+          "questionUid": "qid_v1_32c8608ad82c5fafe0d02cc716756c9a42b7cf1d8a4a44de9bc6a06676ab9463",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "59018dea625537382166dde0fd97200f7eda4837",
+          "currentQFULL": "075620c48cbd008a17c190c20499831cb6f350201176381d2450cde61ca9aa4c",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E018.4slot.json",
+          "sourceReviewSha256": "7884fb2361381674228ce4d5491562a76271263eb0173cb6a3423cdbf8b28aeb",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$6=\\dfrac12\\cdot BN\\cdot MH$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 중점을 잇는 이등변삼각형의 넓이를 구한 뒤 다른 밑변의 높이로 환산하고 피타고라스로 코사인의 분자를 복원한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 9,
+          "questionUid": "qid_v1_7835270d9b131fb5e49415098e950079a211f6cdbf0d82b3934a2436e054ed9a",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "cf1ac21e5eb05b4d550dcfb244d01c83dfb17aed292555c4b5806b099f594aca",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "그러므로\n$AB=AD+DB=4+4\\sqrt3$이고,\n$\\triangle ABC$의 넓이는\n$\\dfrac12\\cdot(4+4\\sqrt3)\\cdot4$\n$=8(\\sqrt3+1)\\,\\mathrm{cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형내각합으로45°를 찾고 보조 수선을 그어30°와45°의 두 직각삼각형에서 밑변과높이를 만들어 넓이를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 13,
+          "questionUid": "qid_v1_25c7a6f96303eaa85b941ec574e332e678a473d6fc0ea9a36e448cf0ccc8c6b1",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "49de89e294346a1d0010dc1e06be9e782a8a472540327578134624129055419d",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "두 넓이의 합이 $8\\sqrt3$이므로\n$x\\sqrt3+2x\\sqrt3=8\\sqrt3$\n$3x=8$\n$x=\\dfrac83$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각이등분으로60°인 두 삼각형을 얻고 삼각비로 표현한 세 넓이의 합 관계에 AP를 미지수로 넣어 길이를 역산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 19,
+          "questionUid": "qid_v1_e4cdcc335b86bc3b3e649a63474085b132647ffde9e09f245728cdc1bf8b156c",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "89dfad6d82737313a3cb41bb262ca11868a08e9125e08442b728e28ab9fb43a7",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "따라서 $\\triangle PAB$의 넓이는\n$\\dfrac12\\cdot AP\\cdot h$\n$=\\dfrac12\\cdot4\\cdot\\dfrac{3\\sqrt3}{2}$\n$=3\\sqrt3$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주점을 중심에 포개는 접기로 정삼각형 두 개를 찾아 중심각120°를 만들고 원주각60°를 거쳐 삼각비로 넓이를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 20,
+          "questionUid": "qid_v1_1fe640371ed53750b26b3c317c36c27b0da8f82b275504fe20831cbad80f0c34",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "580498b0fb58a4c7ba50c379248e3de76cd3ee3ddfdc48faed7261902d7a4bc8",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "내접원의 반지름을 $r$라 하자.\n세 변을 밑변으로 하고 높이가 모두 $r$인 세 삼각형의 넓이를 더하면\n$54=\\dfrac12r(9+12+15)$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스로 빗변과 삼각형 넓이를 구한 뒤 내심의 세 변 등거리 r을 높이로 하는 넓이 합에서 내접반지름을 구한다. 접선 등길이는 사용하지 않는다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 21,
+          "questionUid": "qid_v1_35a828fa8f181e904573d498adf82b9723fab55cfc5a0d4d43488350d75c90b2",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "1ad3aba3be4b4caf297fbfbc5939d422a0bc7a2e50db54aee8d3bbd420258748",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$[\\triangle BCE]=\\dfrac12\\cdot6\\cdot2\\sqrt3=6\\sqrt3$\n$[\\triangle EHD]=\\dfrac12(6-2\\sqrt3)(2\\sqrt3-2)=8\\sqrt3-12$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 정사각형의 수직변에서30°와60°를 옮겨 두 삼각형의 높이를 구하고 원정사각형에서 두 넓이를 뺀다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 23,
+          "questionUid": "qid_v1_73b8510d5fc947e981a8a6170487ffe099ee4aa46cc8d1c84de1a1a64ed794a0",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "944e1dabaa786d6f1f71785972563b24fd79cc2de7a585ef5d382367df58a632",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "따라서 넓이는\n$\\dfrac12\\cdot6\\cdot3\\sqrt3$\n$=9\\sqrt3\\,\\mathrm{cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심거리 세 개가 같아 세 현이 같음을 확정하고 정삼각형의 높이를 피타고라스로 구해 넓이를 산출한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E021",
+          "sourceOrdinal": 22,
+          "questionUid": "qid_v1_740048efa639c596f616b7d3bbca023b4e3a6826f40132f120519014362346e6",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "1a4a89c909cd5c5936f573882492b52cc4cf579b",
+          "currentQFULL": "cedd7fbdeed8d7ca0266ae96ce6995093cac3d09bac8831db0d4d3f7172d59cf",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E021.4slot.json",
+          "sourceReviewSha256": "cb4f928c6c3cda505263b8d302d65f12bb51a011b3b4781c34a55901fbb0fd74",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$[\\triangle AOB]=\\dfrac12\\times3\\times2=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱으로 꼭짓점 좌표를 구하고 y절편을 읽어 축 위 밑변과 꼭짓점의 수평거리로 넓이를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E025",
+          "sourceOrdinal": 17,
+          "questionUid": "qid_v1_8ff3dfe897385c93112cbbb140d74f9d8f2a218a9e76c18a923b24a9c6b112b8",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "f1fbd586018519c2ff4c11342bc8347f6da3c774",
+          "currentQFULL": "df0dcbb9613a838fac7572d9adc090b82ec781a486e38fb9171a0e806677e981",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E025.4slot.json",
+          "sourceReviewSha256": "5c23ef557c0c169b093c2440a224be0c3f7737de58fcbdbb244a11a05666e7be",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "삼각형 $ABC$의 세 변의 길이는 $9,11,4$이므로\n반둘레는\n$s=\\dfrac{9+11+4}{2}=12$이다.\n내접원의 반지름을 $r$라 하면\n삼각형의 넓이는\n$[ABC]=sr=12r$이다.\n\n문제의 바깥 원의 반지름을 $R$라 하자.\n이 원은 두 변 $AB,AC$의 연장선과 변 $BC$에 접하므로\n삼각형의 넓이를 접선으로 나누어 보면\n$[ABC]=\\dfrac12(AB+AC-BC)R$이다.\n따라서\n$[ABC]=\\dfrac12(9+11-4)R=8R$이다.\n\n같은 삼각형의 넓이이므로\n$12r=8R$이다.\n따라서\n$r:R=8:12=2:3$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내접원과 바깥 접원의 반지름을 각 변까지의 같은 높이로 사용하여 같은 삼각형 넓이를12r과8R로 나타내고 비를 구한다. 접선 등길이 계산은 사용하지 않는다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": true
+        },
+        {
+          "examId": "E025",
+          "sourceOrdinal": 21,
+          "questionUid": "qid_v1_82d18262065792d036c2659bccea11e9959b335de14577df1772cc2e38a79a68",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "f1fbd586018519c2ff4c11342bc8347f6da3c774",
+          "currentQFULL": "379cf809cf5da09a05a2897c31a4b2131676fbccd24d6064af47553ab9369e97",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E025.4slot.json",
+          "sourceReviewSha256": "5c23ef557c0c169b093c2440a224be0c3f7737de58fcbdbb244a11a05666e7be",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$[\\triangle CDE]=\\dfrac{1}{2}\\times12\\times5=30$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행 접선 사이 거리에서 반지름을 구하고 접선 등길이로 EC=x+9와 ED=9-x를 만든 뒤 피타고라스 방정식으로 목표 삼각형 넓이를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": true
+        },
+        {
+          "examId": "E027",
+          "sourceOrdinal": 6,
+          "questionUid": "qid_v1_e0af58aa0e394d86cbe141a46f124ed14e7d92fef7bbd202f0fbac98bfc92efd",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "20ed1e3f2f2eae91ce8b4830c634072dc822165b",
+          "currentQFULL": "80372d9910daedb10f97385ace8d98bddfbb005f7289af8b95159b5eaeebc9e5",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E027.4slot.json",
+          "sourceReviewSha256": "838c393e71a5469f9e56b2900bc63cae5cc8e1d5c4159b5ca1a5ae4c8983eec6",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$[\\triangle ABC]=\\dfrac12\\times7\\times10=35$",
+            "evidenceType": "IMPLIED",
+            "justification": "이차식의 두 근을 x절편으로 구해 밑변을 정하고 y절편을 높이로 삼각형 넓이를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E027",
+          "sourceOrdinal": 12,
+          "questionUid": "qid_v1_410374f66b4e556a33930c31fb5f22c87feab975a7fdf6b1a86c11d67e99dcee",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "20ed1e3f2f2eae91ce8b4830c634072dc822165b",
+          "currentQFULL": "781b335d504a815f6caf740ec9d8406a100ebf7b1a04512fb2947d4cc99d2413",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E027.4slot.json",
+          "sourceReviewSha256": "838c393e71a5469f9e56b2900bc63cae5cc8e1d5c4159b5ca1a5ae4c8983eec6",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$\\dfrac12\\times BC\\times AD$",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 높이를 공유하는 두 직각삼각형에서 밑변과 빗변을 삼각비로 구한 후 넓이식의 진위를 확인한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E027",
+          "sourceOrdinal": 16,
+          "questionUid": "qid_v1_ed8c659723c152cd673b945ea1ee3f6cd440496d8b5d45972715b8817a436534",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "20ed1e3f2f2eae91ce8b4830c634072dc822165b",
+          "currentQFULL": "575b95d02b8c2b17544c3e7f91c5cbef10449345d62f96014ae59d57195dc24d",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E027.4slot.json",
+          "sourceReviewSha256": "838c393e71a5469f9e56b2900bc63cae5cc8e1d5c4159b5ca1a5ae4c8983eec6",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$\\dfrac12\\times AC\\times BC$",
+            "evidenceType": "IMPLIED",
+            "justification": "빗변 c로 두 직각변을 사인·코사인으로 표현한 다음 둘레와 넓이식에 넣어 진술을 판정한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E027",
+          "sourceOrdinal": 17,
+          "questionUid": "qid_v1_42d1f2f9e596cee800e9e27d3cf64d7b72aa538a304c27bcabd0c2ab55c8cb65",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "20ed1e3f2f2eae91ce8b4830c634072dc822165b",
+          "currentQFULL": "25a5caa2598ae8e9146b7b846426e32a970033755579680bbcc2af33f63a6d3f",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E027.4slot.json",
+          "sourceReviewSha256": "838c393e71a5469f9e56b2900bc63cae5cc8e1d5c4159b5ca1a5ae4c8983eec6",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$\\dfrac12\\times3\\times2=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 삼각형에서 사인으로 높이를 만들고 밑변과 곱해 넓이를 구한다. 둔각은 보각의 예각으로 높이를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E027",
+          "sourceOrdinal": 19,
+          "questionUid": "qid_v1_a4106036235b3eef539123ae337e7b98be5da922e6fb49e50d3cee85f2ee45d6",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "20ed1e3f2f2eae91ce8b4830c634072dc822165b",
+          "currentQFULL": "849deb2f9a35979dac0469bc17c0d0bcf6b2b0828df6a4947e81076cb0f2bc2e",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E027.4slot.json",
+          "sourceReviewSha256": "838c393e71a5469f9e56b2900bc63cae5cc8e1d5c4159b5ca1a5ae4c8983eec6",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$\\dfrac12\\times8\\times10\\times\\dfrac12=20$",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선의 이등분 성질로 네 삼각형의 두 변을 정하고 삼각비 넓이를 계산하여 네 배 한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E027",
+          "sourceOrdinal": 22,
+          "questionUid": "qid_v1_b2459b7bdd888ac20deb5238711cdeab16bff250a9e5f9b580e615c38b2728a3",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "20ed1e3f2f2eae91ce8b4830c634072dc822165b",
+          "currentQFULL": "653f436f221d6f1beca3f36341fc8c40b10dd5ba04b3786f0771786438280d88",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E027.4slot.json",
+          "sourceReviewSha256": "838c393e71a5469f9e56b2900bc63cae5cc8e1d5c4159b5ca1a5ae4c8983eec6",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$[\\triangle DB'X]=\\dfrac12\\times\\sqrt3\\times\\dfrac32=\\dfrac{3\\sqrt3}{4}$",
+            "evidenceType": "IMPLIED",
+            "justification": "회전된 꼭짓점의 수평·수직 거리를 삼각비로 구하고 겹친 사각형을 두 삼각형으로 나누어 교점의 길이와 넓이를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E027",
+          "sourceOrdinal": 25,
+          "questionUid": "qid_v1_73e76e3491461fbec691af78dfa34d8b9136708fca52ee0f21bb4982f92e076c",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "20ed1e3f2f2eae91ce8b4830c634072dc822165b",
+          "currentQFULL": "5335565aeb1c023f919acd1cb150fadf900b7933d840dcbda983f1b32361d4f9",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E027.4slot.json",
+          "sourceReviewSha256": "838c393e71a5469f9e56b2900bc63cae5cc8e1d5c4159b5ca1a5ae4c8983eec6",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$[\\triangle ADF]=\\dfrac12\\times AD\\times DF$",
+            "evidenceType": "IMPLIED",
+            "justification": "첫 직각삼각형에서 AD를 사인으로 구하고 다른 삼각형에서 읽은 30°를 겹친 직각삼각형에 적용해 DF와 넓이를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E028",
+          "sourceOrdinal": 11,
+          "questionUid": "qid_v1_1c2bc8d09671077119a3b1413455123a40412e5232561eeee8fe7bead26d2c7d",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e6e7701f84ae6730849cc882982db36ca9ffa9f4",
+          "currentQFULL": "4481011b90cb7e5e42fef1317d68f54b0c2b12f56c17d57b4a4eb8b74a2b2521",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E028.4slot.json",
+          "sourceReviewSha256": "15625518dfab52cd0535203c8c4b9211c1bd1a5b6c9bc07476345c522badbc2f",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "둔각을 직접 삼각비에 넣지 않고 수선을 내려 예각 $60^\\circ$인 직각삼각형을 만든다.\n$AB$의 $A$ 쪽 연장선과 $AC$가 이루는 각은 $180^\\circ-120^\\circ=60^\\circ$이다.\n따라서 밑변 $AB$에 대한 높이는 $2\\sin60^\\circ=2\\times\\dfrac{\\sqrt3}{2}=\\sqrt3\\,\\mathrm{cm}$이다.\n그러므로 넓이는 $\\dfrac12\\times3\\times\\sqrt3=\\dfrac{3\\sqrt3}{2}\\,\\mathrm{cm^2}$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "둔각120도의 바깥쪽에 수선을 내려60도인 직각삼각형을 구성하고 sin으로 높이를 구해 삼각형 넓이를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E028",
+          "sourceOrdinal": 19,
+          "questionUid": "qid_v1_dd7e975ddeb63d1c416534dd51dc690c6dfb6e35e3d576bf8364b504e84a2440",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e6e7701f84ae6730849cc882982db36ca9ffa9f4",
+          "currentQFULL": "9930473d964fd0da6aac9b26b94c97d5649c6483cbe6e3dfc0506c9d5230a8fb",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E028.4slot.json",
+          "sourceReviewSha256": "15625518dfab52cd0535203c8c4b9211c1bd1a5b6c9bc07476345c522badbc2f",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "$AC=\\sqrt{13^2-12^2}=5\\,\\mathrm{cm}$이다.\n삼각형의 넓이는 $\\dfrac12\\times5\\times12=30\\,\\mathrm{cm^2}$이고 반둘레는 $\\dfrac{5+12+13}{2}=15\\,\\mathrm{cm}$이다.\n내접원의 반지름을 $r$라 하면 넓이 $=r\\times$ 반둘레이므로\n$30=15r$이므로\n$r=2$이다.\n원 $I$의 넓이는 $\\pi r^2=4\\pi\\,\\mathrm{cm^2}$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "피타고라스로 세 번째 변을 구한 뒤 내접원의 반지름을 각 변까지의 같은 높이로 사용한 넓이=r×반둘레에서 r을 정하고 원의 넓이를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E039",
+          "sourceOrdinal": 13,
+          "questionUid": "qid_v1_b6e5f368cf83959e3272b54748011f9611d1d649f283e0ca923dfa5ad47987d0",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "57c98287dcd2472a3af730185d65e848f8286aa1",
+          "currentQFULL": "c323272db62fceb9f9d970996a1a6dfa71c7a223b0090d55f8bca4edaa350307",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E039.4slot.json",
+          "sourceReviewSha256": "676d2429a8e8c47284e85884ae839483a7f54e2dc718c706091c70a002d5a034",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "[풀이] 대각선 $\\overline{AC}$로 사각형을 $\\triangle ABC$와 $\\triangle ACD$로 나눈다. 첫째 삼각형에서 $BC=2\\sqrt3$, $AB=4$, $\\angle ABC=150^\\circ$이다. 두 직선 $AB$, $BC$가 이루는 예각은 $30^\\circ$이므로 $A$에서 직선 $BC$에 내린 수선의 길이는 $4\\sin30^\\circ=2$이다. 따라서 $\\triangle ABC$의 넓이는 $\\frac12\\cdot2\\sqrt3\\cdot2=2\\sqrt3$이다. 둘째 삼각형은 밑변을 $AD=8$로 잡는다. $CD=6$, $\\angle ADC=60^\\circ$이므로 $C$에서 $AD$에 내린 높이는 $6\\sin60^\\circ=3\\sqrt3$이다. 따라서 $\\triangle ACD$의 넓이는 $\\frac12\\cdot8\\cdot3\\sqrt3=12\\sqrt3$이다. 두 넓이의 합은 $14\\sqrt3\\,\\mathrm{cm}^2$이므로 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선으로 사각형을 두 삼각형으로 나누고 각각의 높이를 사인으로 만들어 두 넓이를 더한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E039",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_fc14d651d9f0b7a54f59560ba0b936c466c1085a3362e914a9d21c5818757157",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "57c98287dcd2472a3af730185d65e848f8286aa1",
+          "currentQFULL": "d13e513f84e4642f885d6146f70c9e3ed7bca262a9c5127eb9fc7f9e0444ac0f",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E039.4slot.json",
+          "sourceReviewSha256": "676d2429a8e8c47284e85884ae839483a7f54e2dc718c706091c70a002d5a034",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "[풀이] 색칠한 부분은 부채꼴 $AOC$와 삼각형 $OCB$로 나뉜다. $\\angle ABC=30^\\circ$는 호 $AC$를 보는 원주각이므로 $\\angle AOC=60^\\circ$이고, 부채꼴의 넓이는 $\\frac{60}{360}\\pi\\cdot6^2=6\\pi$이다. $A,O,B$가 한 직선 위에 있으므로 $\\angle OBC=\\angle ABC=30^\\circ$이다. 또 $OB=OC=6$이므로 $\\triangle OBC$는 이등변삼각형이다. $O$에서 $BC$에 내린 수선의 발을 $H$라 하자. 직각삼각형 $OBH$와 $OCH$는 빗변이 같고 $OH$를 공유하므로 합동이며, 따라서 $BH=HC$이다. 직각삼각형 $OBH$에서 $BH=6\\cos30^\\circ=3\\sqrt3$, $OH=6\\sin30^\\circ=3$이다. 따라서 $BC=2BH=6\\sqrt3$이고, $\\triangle OCB$의 넓이는 $\\frac12\\cdot6\\sqrt3\\cdot3=9\\sqrt3$이다. 전체 넓이는 $6\\pi+9\\sqrt3\\,\\mathrm{cm}^2$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주각에서 중심각을 구해 부채꼴 넓이를 얻고, 두 반지름의 합동 직각삼각형에서 sin·cos로 밑변과 높이를 구해 삼각형 넓이를 더한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E039",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_2082be11603f67eebe2cf4e2928a6a10a7c8ce9dbc424728f88ccb852384a980",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "57c98287dcd2472a3af730185d65e848f8286aa1",
+          "currentQFULL": "0fac32ee29e9a8f4682a5ac76d844be52f2fd517c1f39e3c2e10cddfe41c3fac",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E039.4slot.json",
+          "sourceReviewSha256": "676d2429a8e8c47284e85884ae839483a7f54e2dc718c706091c70a002d5a034",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "[풀이] 그림에서 접었을 때 변 $AB$와 $BC$가 서로 포개지는 대응변이므로 접기는 길이를 보존하여 $AB=BC$이다. 직사각형의 세로 길이 $6\\,\\mathrm{cm}$는 삼각형 $ABC$에서 $A$에서 $BC$에 내린 높이 $AH=6$이다. $\\angle ABC=45^\\circ$이고 $AH\\perp BC$이므로 직각삼각형 $ABH$는 이등변삼각형이다. 따라서 $BH=AH=6$, $AB=6\\sqrt2$이고, $BC=AB=6\\sqrt2$이다. 그러므로 삼각형 $ABC$의 넓이는 $\\frac12\\cdot BC\\cdot AH=\\frac12\\cdot6\\sqrt2\\cdot6=18\\sqrt2\\,\\mathrm{cm}^2$이다. 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접기에서 보존되는 두 변의 상등과45° 이등변직각삼각형으로 밑변6√2를 복원하고 주어진 높이6으로 넓이를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E039",
+          "sourceOrdinal": 22,
+          "questionUid": "qid_v1_c82b8d79aae8c49d53abfde0745607c56c252f8c9a65020921f3e2d5b375f219",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "57c98287dcd2472a3af730185d65e848f8286aa1",
+          "currentQFULL": "d044ef040b5ba5c9c5d2e5c105e425c3d582069337cfe7a5f7f45149537fc8af",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E039.4slot.json",
+          "sourceReviewSha256": "676d2429a8e8c47284e85884ae839483a7f54e2dc718c706091c70a002d5a034",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "[풀이] $C$에서 $AB$에 내린 수선의 발을 $H$라 하자. $BC=5$, $\\angle B=60^\\circ$이므로 $CH=5\\sin60^\\circ=\\frac{5\\sqrt3}{2}$이다. 넓이 식에서 $10\\sqrt3=\\frac12\\cdot AB\\cdot\\frac{5\\sqrt3}{2}=\\frac{5\\sqrt3}{4}AB$이므로 $AB=8$이다. 또 $BH=5\\cos60^\\circ=\\frac52$이다. $\\angle B$가 예각이고 $AB>BH$이므로 $H$는 선분 $AB$ 위에 있으며, $AH=AB-BH=8-\\frac52=\\frac{11}{2}$이다. 직각삼각형 $ACH$에서 $AC^2=AH^2+CH^2=\\frac{121}{4}+\\frac{75}{4}=49$이므로 $AC=7\\,\\mathrm{cm}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "sin60°로 높이를 구해 넓이식에서 밑변을 역산하고 cos60°의 사영 길이를 빼서 만든 직각삼각형에 피타고라스를 적용한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 12,
+          "questionUid": "qid_v1_b99b0f71bc2323fadccc5dbd5380caaa6606493596ffd79bb9c1b17fba42cc2f",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "42a2dd0b6345b06dbbac7db8b5f3e5c98a3f4cbb35463ee2805c6fba1eb220f7",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "정사각형의 대각선 BD는 대칭축이다. BE=BF이므로 반사대칭에 의해 BD가 ∠EBF를 이등분하고, ∠EBD=15°이다. 정사각형의 대각선은 ∠ABD=45°를 이등분하므로 ∠ABE=45°−15°=30°이다.\nBE=BF=t라 하면 △EBF의 넓이에서 (1/2)t²sin30°=3/2이므로 t²=6이다. 직각삼각형 ABE에서 AB=t cos30°=√6·√3/2=3√2/2이다.\n정사각형의 넓이는 AB²=9/2 cm²이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 넓이3/2=(1/2)t²sin30°에서 같은 두 변의 길이를 역산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 20,
+          "questionUid": "qid_v1_49b61fc4641e1e17b49a21c9e8550d81ae36417be842a9d9f377f7630980b9fa",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "3b96f4d5e75e3a2b0c397434bc6e66f3e3f00ac7af8c88002f15b305dd199fdc",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "OA=OB=AB=6이므로 △OAB는 정삼각형이고 ∠AOB=60°이다. 또한 OB=OC=BC=6이므로 △OBC도 정삼각형이고 ∠BOC=60°이다. P,Q는 각각 현 AB, BC의 중점이므로 OP⊥AB, OQ⊥BC이다.\n직각삼각형 OPA에서 OP²=OA²−AP²=6²−3²=27이므로 OP=3√3이다. 같은 방법으로 OQ=3√3이다. 두 중심각의 이등분선이므로 ∠POQ=30°+30°=60°이다.\n넓이=1/2×OP×OQ×sin60°=1/2×27×√3/2=27√3/4. 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "앞서 복원한 두 변과 끼인각으로(1/2)ab sinθ를 적용해 목표 넓이를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 21,
+          "questionUid": "qid_v1_2199ad76092d11984fcaa1a8967e62dfc3eb5a1fcf4806ba3f77af93c493b5f3",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "391324cc4231d85567d3ce83691b1d3da19cf8d27a0575ef914c1ab2da64c8c9",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "C는 AB의 중점이고 AC=CB=12이므로 두 원의 반지름은 6이다. A, O, C, O′, B가 AB 위에 있고, AO′=AC+CO′=12+6=18이다.\nAP는 원 O′의 접선이므로 O′P⊥AP. θ=∠O′AP라 하자. 직각삼각형 AO′P에서 O′P=6, AO′=18이므로 sinθ=6/18=1/3이다. 피타고라스 정리로 AP²=18²−6²=288, AP=12√2이므로 cosθ=AP/AO′=2√2/3이다.\n원 O에서 현 AQ에 내린 수선의 발을 H라 하자. OH⊥AQ이므로 H는 AQ의 중점이다. A, O, O′가 AB 위에 있고 A, H, Q, P가 한 직선 위에 있으므로 ∠OAH=∠O′AP=θ이다. 따라서 AH=OA cosθ=6×2√2/3=4√2이고 AQ=2AH=8√2이다.\n∠OAQ=θ이므로 △AOQ의 넓이는 1/2×AO×AQ×sinθ=1/2×6×8√2×1/3=8√2이다. 정답은 ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "앞서 복원한 두 변과 끼인각으로(1/2)ab sinθ를 적용해 목표 넓이를 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_6f71c5715ae1f8a7a1af9d57fc02ff8644583d311e67dee18fb8b3d5c2a199c3",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "e3a224c9da70665046966c0faa0cb441bf26445a452d5cf72e601b7d9c87fe2b",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "(2) 접기 전 A를 지나는 테이프 가장자리와 BC는 서로 평행하고, 두 가장자리 사이의 수직 거리는 폭인 2 cm이다. 따라서 A에서 BC에 내린 수선의 발을 H라 하면 AH=2 cm이다. △ABH에서 ∠ABH=45°이므로 sin45°=AH/AB, AB=2/(√2/2)=2√2 cm이다. (1)에서 ∠A=∠C이므로 AB=BC이다. 따라서 △ABC의 넓이는 1/2×BC×AH=1/2×2√2×2=2√2 cm²이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접기 대칭과 평행선으로 두 각이 같음을 얻고 종이 폭을 높이로 해석하여 사인으로 밑변을 복원한 다음 삼각형 넓이를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        }
+      ],
+      "supportUidCount": 44,
+      "nonemptyMethodBlockedUids": [
+        "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618"
+      ]
+    },
+    {
+      "term": "현의수직이등분성질",
+      "difference": "현(154)과 수직이등분선(178)은 대상이다. 이 후보는 중심에서 현에 내린 수선이 현을 이등분하고 현의 수직이등분선이 중심을 지난다는 원의 정리를 방법으로 명시한다.",
+      "existingIds": [
+        154,
+        178
+      ],
+      "existingTerms": [
+        {
+          "id": 154,
+          "ko": "현",
+          "en": [
+            "CHORD"
+          ],
+          "synonyms": [],
+          "kind": "대상",
+          "kindDetail": null,
+          "sourceKeys": [
+            "TM_CIRCLE_CHORD_LENGTH",
+            "TM_CIRCLE_CHORD_DIVISION",
+            "TM_CIRCLE_CHORD_PERP_BISECTOR",
+            "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+            "TM_TANGENT_CONTACT_CHORD_LENGTH"
+          ],
+          "usageInKeys": 7,
+          "usageInItems": 0,
+          "addedDuringItems": false
+        },
+        {
+          "id": 178,
+          "ko": "수직이등분선",
+          "en": [
+            "PERP_BISECTOR"
+          ],
+          "synonyms": [],
+          "kind": "대상",
+          "kindDetail": null,
+          "sourceKeys": [
+            "TPL_LINE_PERP_BISECTOR",
+            "TM_CIRCLE_CHORD_PERP_BISECTOR"
+          ],
+          "usageInKeys": 2,
+          "usageInItems": 0,
+          "addedDuringItems": false
+        }
+      ],
+      "originalCandidateDefinitions": [
+        {
+          "term": "현의수직이등분성질",
+          "en": [
+            "PERPENDICULAR_FROM_CENTER_BISECTS_CHORD"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "현",
+          "note": "원의 중심에서 현에 내린 수선이 현을 이등분하며 현의 수직이등분선이 중심을 지난다는 성질의 적용."
+        },
+        {
+          "en": [
+            "PERPENDICULAR_FROM_CENTER_BISECTS_CHORD"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "현",
+          "note": "원의 중심에서 현에 내린 수선이 현을 이등분하며 현의 수직이등분선이 중심을 지난다는 성질의 적용.",
+          "term": "현의수직이등분성질"
+        }
+      ],
+      "support": [
+        {
+          "examId": "E001",
+          "sourceOrdinal": 3,
+          "questionUid": "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "8da0b762aeb6caeb63e1d8fec6dbcd58f12096606adc6d92bc09d5dc2ae58317",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": " 수선은 현을 이등분한다. 따라서 현의 절반은 $12\\r",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선이 현을 이등분함을 적용하여 12와 9로 반지름을 구하고 원주로 연결한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E001",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_bac3c1fdf12dedd4e1ce4354cd4abec4861860ee41c7ab7b489dbdd0f06af761",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "59cb3c2bb24897204914654b1c7800f4ae6f4ea4d59a8c290005b3404e9114fc",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "$이고, 현의 절반은 $9$이다.\n직각삼각형에서 $r^2",
+            "evidenceType": "IMPLIED",
+            "justification": "현이 반지름을 수직이등분하므로 중심거리가 r/2이고, 반현 9와 반지름 r의 직각삼각형 관계를 세운다. 최종 결정은 중심거리·현 길이의 피타고라스 식이다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E001",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "d2e00d910a5c09c91f852990fcd5f2492219280b0bb23aad4a43900e05e7e214",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": " 수선은 현을 이등분한다. 직각삼각형 $OMA$에서 $O",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름·중심거리로 반현을 구하고 같은 현의 중심거리도 같음을 써 삼각형 OCD의 밑변과 높이를 확정한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E001",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "5e8a62c15338cc22e445d7909fee9f707de6f53827b241ee28cd376be6cc68ba",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "에 대해 수직이등분선을 작도한 뒤, 두 수직이등분선의 교",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 두 현의 수직이등분선 교점으로 중심을 작도하고, 반지름·공통변·직각의 RHS 합동으로 현의 이등분 성질을 설명한다."
+          },
+          "needsThisPromotionForNonemptyMethod": true,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 13,
+          "questionUid": "qid_v1_3a591ad156bc97789d5e4932c310f519bc57523ffafc6cd0652dfe5bbf4de3bd",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "2afabfd8b34240c86685de49e9808d459c11a7ef364a05729277a7be6ba30bb9",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": " 수선은 현을 이등분한다.\n현의 길이가 $8\\,\\math",
+            "evidenceType": "IMPLIED",
+            "justification": "반현4와 중심거리3의 직각삼각형에서 반지름 x를 피타고라스로 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_959eb1a13f8bcb8316dcbc03b9fee21b2bb8242a320626316afb7291a055c358",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "36a63a5ac10cd8b927597964c1730789d03cf1c967b56dad5249a16c3c80741a",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": " 따라\n$AM=BM=6\\,\\mathrm{cm}$이다.\n\n",
+            "evidenceType": "IMPLIED",
+            "justification": "현 이등분으로 반현6을 정하고 중심거리 r−2와 반지름 r의 피타고라스 식을 세워 r을 복원한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 23,
+          "questionUid": "qid_v1_613e50e6ae0e3974bb02b71a644360feaacedbd8d055e75fa6822905d52ba6e1",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "1102c227523d82242db3e72dbbace44c6a5b5287b1065b10f85eeb792c425d8a",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "의 현의 수직이등분선은 항상 원의 중심을 지난다.\n\n한 ",
+            "evidenceType": "IMPLIED",
+            "justification": "원호 위의 세 점으로 두 현을 잡고 두 현의 수직이등분선 교점이 원의 중심임을 사용해 어느 조각에서도 복원할 수 있음을 설명한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E013",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_4a89faa9f12e4f22727a2514a844d4da8946b96dccfb6b755cc8cfdcb78286e0",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "616446569f78c62f6a6f9c7bae4baba76c8c18f6",
+          "currentQFULL": "82e125025e15007824332f75bc1a4f63f654d8de4ffaa62b54fd0a1232464724",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E013.4slot.json",
+          "sourceReviewSha256": "6dacb8b70e4c9197a0b1097dffe05c87f14c9c6a0e57003d2ba9c883c838a670",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": " 수선은 현을 이등분하므로 반쪽 길이는 $4$이다.\n\n원",
+            "evidenceType": "IMPLIED",
+            "justification": "현을 이등분한 반현과 중심거리로 반지름을 복원하고 동일 반지름을 위쪽 현의 직각삼각형에 적용해 중심거리를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E013",
+          "sourceOrdinal": 16,
+          "questionUid": "qid_v1_5928d66b0592db4a39a219dd1e5f84c133ef1b5b34f0547acd109066f2ac4686",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "616446569f78c62f6a6f9c7bae4baba76c8c18f6",
+          "currentQFULL": "c19d048340b10c3cd7dbf62ec279795f216b27dbf2b633e71ea2e77522be8975",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E013.4slot.json",
+          "sourceReviewSha256": "6dacb8b70e4c9197a0b1097dffe05c87f14c9c6a0e57003d2ba9c883c838a670",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "은 선은 현에 수직이므로\n$OD\\perp AB$이다.\n또",
+            "evidenceType": "IMPLIED",
+            "justification": "반현6과 중심거리r−3의 직각삼각형에서 r²=(r−3)²+36을 세워 반지름을 구하고 원둘레로 바꾼다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E016",
+          "sourceOrdinal": 8,
+          "questionUid": "qid_v1_96c10ad609f238f6a9e08299530c954fa5ab240dd76b72803a159ef5434228ed",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/24_왕운중_2학기_기말_중3_수학.js",
+          "currentSourceBlobSha1": "e4d7cfc5a68f644773b9d3c7922b312c3c9b7c56",
+          "currentQFULL": "4ef2629a0f6a74521e6b1cfc323cf189d240254e4604c4bf04639b0f621ca7ee",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E016.4slot.json",
+          "sourceReviewSha256": "a956402ac8289131ed9234e7252ac4bfaaab6b5b28eee3691364dd36761c0c22",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "CN$.\n현은 중심에서 내린 수선에 의해 이등분되므로 $",
+            "evidenceType": "IMPLIED",
+            "justification": "RHS 합동으로 반현 두 개가 같음을 보인 뒤 중심의 수선이 현을 이등분함을 써 전체현의 같음을 결론내린다."
+          },
+          "needsThisPromotionForNonemptyMethod": true,
+          "currentRuntimeRegistered": true
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_6f536ec14b23bd64ae8c5a163cbe8ed09a677ff7a6858c33b4aa76870bbf9fee",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "1a570f8570dd11d88bd84995103b8dee08e6fe768fb50a7fe1a69e04581283b3",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "원의 중심에서 현에 내린 수선은 그 현을 이등분한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현으로 내린 수선이 현을 이등분함을 확인하고 삼각형 중점연결정리를 적용하여 항상성립하는 네 진술과 아닌 하나를 구별한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_b207ae5e08f97f03c78b9c6543dd2b911c3c41b232604de0b91915dab1a5f0e6",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "86662f21190c9dde942dd57d55fc7f3135b08b5a5e0d32f8f94aae1192e23785",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "아래 현은 중심에서 내린 수선에 의해 이등분되고, 그 절반의 길이가 $5\\,\\mathrm{cm}$이다.\n따라서 아래 현의 길이는\n$5+5=10\\,\\mathrm{cm}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심거리가 같은 두 현은 같고 중심수선이 현을 이등분한다는 성질로 반현5를두배하여 옮긴다."
+          },
+          "needsThisPromotionForNonemptyMethod": true,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 16,
+          "questionUid": "qid_v1_e619e81e58f114e10a57ebc9a0e1b4ab3249f6426d22270568d760b8f759aa97",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "bcb52e93d3289f07059ff78f2f045ea2e671876583b212643c2901c10f4eb484",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "작은 원의 접선 $AB$에 중심 $O$에서 내린 수선의 발을 $M$이라 하자.\n접선과 반지름은 수직이므로 $OM=r$이고, 중심에서 큰 원의 현 $AB$에 내린 수선은 현을 이등분하므로 $AM=BM$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 원의 넓이차에서 R²−r²를 구하고 작은원접선의 중심거리가r임을 이용해 큰원의 반현을 피타고라스로 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E025",
+          "sourceOrdinal": 1,
+          "questionUid": "qid_v1_8eef3617c70d09f0257f7671e71067c6c33adc0a11d2a77c126c05c1c309d846",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "f1fbd586018519c2ff4c11342bc8347f6da3c774",
+          "currentQFULL": "d79171c6ae8e91582cc86f78bd2c2c89cc6ef80ba27c9f3861f68909f2419b06",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E025.4slot.json",
+          "sourceReviewSha256": "5c23ef557c0c169b093c2440a224be0c3f7737de58fcbdbb244a11a05666e7be",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "중심에서 현에 내린 수선은 현을 이등분한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 수직이등분 성질로 반현의 등길이를 옮기고 반지름·직각을 결합해 RHS합동을 확인한 뒤 잘못된 대응점 순서를 판정한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": true
+        },
+        {
+          "examId": "E025",
+          "sourceOrdinal": 12,
+          "questionUid": "qid_v1_5eb43a7628af75cee63c1bd9bc16bfd89d40b6bb9287ec1e8e8b93ddf6b3db7f",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "f1fbd586018519c2ff4c11342bc8347f6da3c774",
+          "currentQFULL": "17f63acb02a4486a1bf80f48ed527baf44f78145249eb88d0b839373b3f7b420",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E025.4slot.json",
+          "sourceReviewSha256": "5c23ef557c0c169b093c2440a224be0c3f7737de58fcbdbb244a11a05666e7be",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "$M$은 현 $AB$의 중점이므로 $OM\\perp AB$이고 $\\angle AOM=60^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주각에서 중심각120도를 구하고 현의 중점 수선과60도 직각삼각형의 변비로 반지름을 복원해 호의 길이를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": true
+        },
+        {
+          "examId": "E028",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_ee7791fdddb3e5c607b53ef75dc5b2495ed5476e0857b3436a722674f42a019c",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e6e7701f84ae6730849cc882982db36ca9ffa9f4",
+          "currentQFULL": "86e53385fa00c36efa7fde79658fd4c7f477d01c30b51ea4a12014ddcc07d803",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E028.4slot.json",
+          "sourceReviewSha256": "15625518dfab52cd0535203c8c4b9211c1bd1a5b6c9bc07476345c522badbc2f",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "원의 중심에서 현에 내린 수선은 현을 이등분한다.\n$M$은 현 $AB$의 중점이므로\n$AM=5$이다.\n직각삼각형 $OMA$에서 $x=OA=\\sqrt{OM^2+AM^2}=\\sqrt{5^2+5^2}=5\\sqrt2$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선으로 반현5를 정하고 중심거리5와 피타고라스로 반지름 x를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E028",
+          "sourceOrdinal": 17,
+          "questionUid": "qid_v1_3a334d205c223836aeff05b1e73c1accb72dbfebbf2fb11abb3b49f301c23867",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e6e7701f84ae6730849cc882982db36ca9ffa9f4",
+          "currentQFULL": "47ac05670920f6640f665d78616f7722fb818981f033367c7ebbfdfccbda5cb2",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E028.4slot.json",
+          "sourceReviewSha256": "15625518dfab52cd0535203c8c4b9211c1bd1a5b6c9bc07476345c522badbc2f",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "접은 선 $AB$는 길이 $10$인 선분의 수직이등분선이므로 원의 중심에서 $AB$까지의 거리는 $5$이다.\n중심에서 현에 내린 수선은 현을 이등분하므로 현의 절반은 $\\sqrt{10^2-5^2}=5\\sqrt3$이다.\n따라서\n$AB=2\\times5\\sqrt3=10\\sqrt3$이다.\n따라서 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접는 선이 원주점과 중심을 잇는 선분의 수직이등분선임을 이용해 중심거리5를 만들고 반현의 피타고라스 관계로 현AB를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E030",
+          "sourceOrdinal": 17,
+          "questionUid": "qid_v1_1c3edd999db0ccf0a8cd56313b325b228c929ee70f91e1e7fe2ee30a9a633756",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "943c542c12689433ddd0c338914e4aed71b32373",
+          "currentQFULL": "da940aa37aa294e8765984afb702624f98a1445eda7238a48ae0cf293f590c35",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E030.4slot.json",
+          "sourceReviewSha256": "15c9541a0646565cdd25c77f9fec928c7570f8dec67b0cd4d750f9744d8ec60d",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "$O$에서 $AB$에 내린 수선의 발을 $M$이라 하면 $BM=3$, $\\angle BOM=60^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 중심에서 현에 내린 수선이 현을 이등분하여 반현BM=3을 만드는 단계다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E031",
+          "sourceOrdinal": 9,
+          "questionUid": "qid_v1_67b0bcca5a05a41ba083429d2bd9074e93e919795187bebe7f93f6714243a29f",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "db9d8f8e429c432d45deefd517432c0de1097284",
+          "currentQFULL": "1081f21d655f44e897c27d66e8d8abe35deda3b6939095865618b4f5dd9172de",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E031.4slot.json",
+          "sourceReviewSha256": "39a87b53e75da8e57fc76effe27ff8891ea4597b9193ab467a89cc85c1798eef",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "원의 반지름은 $5\\rm\\,cm$이고, 길이가 $8\\rm\\,cm$인 현의 절반은 $4\\rm\\,cm$이다.<br>중심에서 현에 내린 수선은 현을 이등분하므로 $x^2+4^2=5^2$이다.<br>$x=3$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 수직이등분으로 반현4를 정하고 반지름5와 피타고라스에서 중심거리x를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E032",
+          "sourceOrdinal": 1,
+          "questionUid": "qid_v1_591b7da905fb1096580e24b5e2177af6b2d91ae8345d5f3f64ce64ef7389ab56",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "610bd58be3be6a7cbc1b218edcd003a3b9540166",
+          "currentQFULL": "030d599736a6db37f9737d5809cd2cf5ba6ac76963e0b050f0579a9a2e96c36c",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E032.4slot.json",
+          "sourceReviewSha256": "3805e91ffdd07c99cad7f8d9cb902235fd625a738ef4a0d8f0087552062a3fac",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 원의 중심에서 현의 중점까지 이은 선분은 현과 수직이므로 직각삼각형을 만든다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E032",
+          "sourceOrdinal": 2,
+          "questionUid": "qid_v1_2515124ea3df7ccd339ec3f8fd63d36d7b99c191d835abcb7d87ceda83dc00dd",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "610bd58be3be6a7cbc1b218edcd003a3b9540166",
+          "currentQFULL": "325bbe068c7021aea91d98c24d20cbc9b083b240886fbf75c7178e782f600a48",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E032.4slot.json",
+          "sourceReviewSha256": "3805e91ffdd07c99cad7f8d9cb902235fd625a738ef4a0d8f0087552062a3fac",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분하고, 같은 원의 반지름은 서로 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E032",
+          "sourceOrdinal": 4,
+          "questionUid": "qid_v1_67598608037fbc106b773f2da0bfa142ca0e72bb7d95d9c998263f2f60ff23b2",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "610bd58be3be6a7cbc1b218edcd003a3b9540166",
+          "currentQFULL": "905e71d832894a33bd5970ac289c0b3277951e2615c1fefd94d4dd7e9515ead2",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E032.4slot.json",
+          "sourceReviewSha256": "3805e91ffdd07c99cad7f8d9cb902235fd625a738ef4a0d8f0087552062a3fac",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하고, 길이가 같은 현은 중심에서의 거리도 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E032",
+          "sourceOrdinal": 18,
+          "questionUid": "qid_v1_4cc23117a4c07a00f19a570d5e20ff96f7ba309cce759e05631547d20e5d6f6b",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "610bd58be3be6a7cbc1b218edcd003a3b9540166",
+          "currentQFULL": "1e08bca53c33c8fc1536fc784928b51a0efd2466465fa83af0f775de9e787a64",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E032.4slot.json",
+          "sourceReviewSha256": "3805e91ffdd07c99cad7f8d9cb902235fd625a738ef4a0d8f0087552062a3fac",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하며, 그림의 $2\\rm\\,cm$를 이용해 중심에서 현까지의 거리를 반지름으로 나타낸다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E036",
+          "sourceOrdinal": 1,
+          "questionUid": "qid_v1_cf0add391777da84e8067a8e4acaca5d6d5f153b47ddd0b64ec168ae9b7ab82d",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "acd1315040b5dcf076d3d554d546c52eaf09006b",
+          "currentQFULL": "0affa5e298d470fcb48a3ecdb2f48d9396cb11707fead652c91055aa47687f28",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E036.4slot.json",
+          "sourceReviewSha256": "f663f99dfa61e9f9d0fd82f957042c0b7548e819f60db900f5eb0d36b27fe4ed",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분한다.\n$AB=24$이므로 $AM=12$이고, $OM=5$이다.\n직각삼각형 $AOM$에서 $AO^2=AM^2+OM^2=12^2+5^2=169$이다.\n따라서 $x=AO=13$이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선으로 반현12를 얻고 중심거리5와 피타고라스로 반지름을 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E036",
+          "sourceOrdinal": 4,
+          "questionUid": "qid_v1_fd6b92171ede3658846eece797a3e3d1fe13d5861b61a557e623dba35f5ecb0a",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "acd1315040b5dcf076d3d554d546c52eaf09006b",
+          "currentQFULL": "d11d500623fe3cde20a999b9fc0b2d4b800def312ccded04e907f5bc3abfcc54",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E036.4slot.json",
+          "sourceReviewSha256": "f663f99dfa61e9f9d0fd82f957042c0b7548e819f60db900f5eb0d36b27fe4ed",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분한다.\n$OD\\perp AB$이므로 $AD=BD=6$이다. 반지름을 $r$라 하면 $OC=r$이고 $CD=4$이므로 $OD=OC-CD=r-4$이다.\n직각삼각형 $ODB$에서 빗변은 $OB=r$이고 두 직각변은 $OD=r-4$, $BD=6$이다. 따라서\n$r^2=6^2+(r-4)^2=36+r^2-8r+16$이다.\n양변에서 $r^2$을 없애면 $8r=52$이므로 $r=\\dfrac{13}{2}$이다.\n원의 둘레는 $2\\pi r=2\\pi\\times\\dfrac{13}{2}=13\\pi\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름을r, 중심에서 현까지의 거리를r−4로 두고 반현6과 피타고라스식을 세워 반지름을 복원한 뒤 둘레를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E037",
+          "sourceOrdinal": 20,
+          "questionUid": "qid_v1_1a6094e525fe4e3de039dd44ed9273df5be58d4327690d6526e5c2c09df414b6",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_동산중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "b03172589e65030113086e3823b0d77d36fb095b",
+          "currentQFULL": "84063d559b45aecc95b31265182b759cdc442be81d35541e4aeee5dfc6d38750",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E037.4slot.json",
+          "sourceReviewSha256": "9ea74fa76ad3e2ca9f4c55b44705a662032cecc47c0be426a928bf3384309276",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "첫째 그림의 직각 표시에서 \\(OM\\perp AB\\)이므로 중심에서 현에 내린 수선은 현을 이등분한다. 따라서 반현은 \\(24\\div2=12\\)이고, 직각삼각형 OMA에서 \\(x^2=OM^2+AM^2=5^2+12^2=169\\), 즉 \\(x=13\\)이다. 둘째 그림에서 \\(OM=4, AM=5\\)이므로 반지름의 제곱은 \\(OA^2=4^2+5^2=41\\)이다. 또 \\(ON\\perp CD\\)이므로 N은 현 CD의 중점이고 \\(ND=10\\div2=5\\). 직각삼각형 OND에서 \\(y^2=ON^2=41-5^2=16\\), 따라서 \\(y=4\\)이다. 그러므로 \\(x+y=17\\)이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "각 중심 수선이 현을 이등분한다는 성질로 반현을 정하고 두 그림 각각에서 피타고라스로 반지름 또는 중심거리를 구하여 합한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E040",
+          "sourceOrdinal": 13,
+          "questionUid": "qid_v1_c382839ac33d8a0c6d2b73aaca6034ba086376545fd24d7b13893296443c64cd",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_연향중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "77714fd7bd3e78f4bd3b85ad79069606ff8fc88f",
+          "currentQFULL": "b95f26662d98c55647c46c91699738a21b8758639950c7ddae7e06933ecf0b61",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E040.4slot.json",
+          "sourceReviewSha256": "7dfd1bd5d9f82b52baec29b2fe87fe2a4751c0f4f4cc96514651e8ae9dd5c891",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "원의 중심에서 현에 내린 수선은 현을 이등분하고, 현의 수직이등분선은 중심을 지난다. 다만 현의 아무 이등분선이나 중심을 지나는 것은 아니다.<br>나머지 네 문장은 원의 현·접선 성질이다. 따라서 옳지 않은 것은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원의 중심을 지나는 것은 현의 임의 이등분선이 아니라 수직이등분선이라는 필수조건을 직접 구별한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E040",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_3d7f42fbf8053ac597d86230cf1ea0c48f6f2b482f89f6ad5da268edb0c2305f",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_연향중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "77714fd7bd3e78f4bd3b85ad79069606ff8fc88f",
+          "currentQFULL": "3763b393cf13f980f78bace215df193eb139777b5232e15a5b50aa454266a5a4",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E040.4slot.json",
+          "sourceReviewSha256": "7dfd1bd5d9f82b52baec29b2fe87fe2a4751c0f4f4cc96514651e8ae9dd5c891",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "원의 중심에서 현에 내린 수선은 현을 이등분한다. 따라서 길이 16 cm인 현의 반은 8 cm이다.<br>중심에서 현까지의 수선 길이가 6 cm이므로 반지름 $x$는 직각삼각형의 빗변이다.<br>$x^2=6^2+8^2=100$이므로 $x=10$ cm이다. ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현에 내린 수선으로 반현8을 얻고 중심거리6과 반현8의 직각삼각형에서 반지름을 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E040",
+          "sourceOrdinal": 16,
+          "questionUid": "qid_v1_cdcee05138a5dd044e7a970649c533503ae1d4982f3d55d5fa774e2382fd0cc5",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_연향중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "77714fd7bd3e78f4bd3b85ad79069606ff8fc88f",
+          "currentQFULL": "28bc341f69a8e9193aae8a9d0285d374f026d0867d4209034a2905b720aefe8e",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E040.4slot.json",
+          "sourceReviewSha256": "7dfd1bd5d9f82b52baec29b2fe87fe2a4751c0f4f4cc96514651e8ae9dd5c891",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "원의 중심에서 현에 내린 수선은 현을 이등분하므로 $AM=\\dfrac12 AB$, $CN=\\dfrac12 CD$이다. 따라서 $AM=CN$이다.<br>$OA$와 $OC$는 모두 반지름이므로 $OA=OC$이다. 두 직각삼각형 $OAM$, $OCN$은 빗변과 한 변이 각각 같아 RHS 합동이다.<br>따라서 ㉮ $\\dfrac12$, ㉯ 반지름, ㉰ RHS인 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 현의 반을 대응시키고 같은 원의 반지름을 빗변으로 보아 두 직각삼각형의 RHS 합동을 채워 중심거리의 같음을 설명한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E041",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_00087892a62266c1b4b27f5c1484e3ffde2462af32dfc88523f6b53fd79ab619",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_이수중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "fb5a1ac76700aee9503463ed8fef255a60ac757a",
+          "currentQFULL": "cf73925ad609ab3ca936f281fbe8911e1af0e251e5ee21cfb1c10f3852a06bcd",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E041.4slot.json",
+          "sourceReviewSha256": "883172e769897fafde689ff0f3dc5c8c0ee19cd05b250dee04b507576a0842b9",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "③ 중심에서 현에 내린 수선은 그 현을 이등분하므로 옳다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현·지름·중심수선·같은거리현·접선 개수의 성질을 각 진술에 대조한다. 결정적으로 원 밖 한 점의 접선은 두 개이므로 무수히 많다는⑤가 틀리다. 원주각·중심각의 각 관계를 사용하는 문항이 아니다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E041",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_e8e8ffa203c5e595e23fd5a270360c5f6254a6c4d1b519bde822c905dc01aa0f",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_이수중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "fb5a1ac76700aee9503463ed8fef255a60ac757a",
+          "currentQFULL": "65f37e785f07728d428f5d8584ae4534fa87416962b78dd4b7dd142760b0dd6e",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E041.4slot.json",
+          "sourceReviewSha256": "883172e769897fafde689ff0f3dc5c8c0ee19cd05b250dee04b507576a0842b9",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[풀이] 중심에서 현에 내린 수선은 현을 이등분하므로 $AC=CB$이다. 직각삼각형 $OCA$에서",
+            "evidenceType": "IMPLIED",
+            "justification": "주어진 중심수선이 현을 이등분한다는 성질을 적용한 뒤 반지름6과 중심거리3으로 반현을 피타고라스 계산하고 두 배 한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E041",
+          "sourceOrdinal": 16,
+          "questionUid": "qid_v1_1064034be78c52c010ec58d886da29aa28ba1ed032fe41dd6d9fd0e4ac579342",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_이수중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "fb5a1ac76700aee9503463ed8fef255a60ac757a",
+          "currentQFULL": "f2a3d37844d84d7501f742001309ae8c98cbc15d0de69b35e5fc174035324257",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E041.4slot.json",
+          "sourceReviewSha256": "883172e769897fafde689ff0f3dc5c8c0ee19cd05b250dee04b507576a0842b9",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[조건 정리] 반지름 $OA=8\\,\\mathrm{cm}$, 현 $AB=12\\,\\mathrm{cm}$이고, 중심에서 현에 내린 수선은 현을 이등분한다.\n[풀이] $M$을 중심에서 $AB$에 내린 수선의 발이라 하면 $AM=6$이다. 직각삼각형 $OAM$에서",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름8과 현12에서 반현6을 구하고 중심거리의 제곱을 피타고라스 차로 정한다. 기존 현의 수직이등분 성질 TPL은 실제 첫 단계를 나타내므로 유지한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E041",
+          "sourceOrdinal": 19,
+          "questionUid": "qid_v1_41c403aee3a7eca734db7a632f42139e8d6abf4217478b4113a1f1693d951ee2",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_이수중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "fb5a1ac76700aee9503463ed8fef255a60ac757a",
+          "currentQFULL": "bf86f80ef444270583897629e8ee6bb798e8451d47b3d1e434933ff002395ee2",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E041.4slot.json",
+          "sourceReviewSha256": "883172e769897fafde689ff0f3dc5c8c0ee19cd05b250dee04b507576a0842b9",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "[풀이] 중심에서 현에 내린 수선은 현을 이등분한다. 직각삼각형 $OMA$에서",
+            "evidenceType": "IMPLIED",
+            "justification": "한 현의 반현을 반지름5와 중심거리2√3으로 구한 뒤 두 중심거리가 같으므로 현CD도 같은 길이임을 이용한다. 중점 성질만이 아니라 동일거리 현 길이 관계가 결정적이다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 13,
+          "questionUid": "qid_v1_0a98886ec4b809c6dde1f2b7a17b4042fd24697330122c93f8e0fda42fb7442a",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "3d40bbf74d2d3cc99f0291c2834c5df380fb9c2cc40a306c914ef32db2f03136",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "OD⊥AB이고 D가 AB의 중점이므로 AD=DB=3 cm, 따라서 AB=6 cm이다. 세 변이 모두 6 cm이므로 둘레는 18 cm이다. 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 세 현에 이르는 거리가 같아 세 현이 같음을 정하고 한 현의 중점 조건으로 변을 복원하여 둘레를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_7094d9f0c18fd0a0b77560c5c05b7ff7cfcfdade2f1f66c880ab188313b6d62c",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "34476161c7deb986f34883358b2f2a604fb9b196d80aaea29fd66e170da5ecdf",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "왼쪽 원에서 반지름은 5 cm, 중심에서 현까지의 거리는 3 cm이다. 중심에서 현에 내린 수선은 현을 반으로 나누므로 반현의 길이는 √(5²−3²)=4 cm이고 x=8 cm이다.\n오른쪽 그림에서 중심 O에서 윗현에 내린 수선의 발은 윗현을 이등분한다. 표시된 3 cm는 윗현의 한쪽 반현 길이이므로 윗현의 길이는 2×3=6 cm이다. 중심에서 윗현과 아랫현까지의 거리가 같으므로 두 현의 길이도 같아 y=6 cm이다.\nx+y=8+6=14이므로 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 그림에서 표시된 반현을 전체 현으로 바꿀 때 중심의 수선이 현을 이등분하는 성질을 사용한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 16,
+          "questionUid": "qid_v1_4b52ba92c597f9ce2db88cb5eb0a9cb7e056b36af55795e5a9dfd11176f36f4c",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "13bf81590e0f2f5ba168807ce4db0d6ac524de1c2fda28079f9c5ec5cce2c9d0",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "접으면 원의 중심 O는 접는 선 AB에 대하여 대칭인 점 O′로 옮겨진다. 접힌 원호가 O를 지나므로 OO′는 원의 반지름과 같아 8 cm이다. 접는 선 AB는 OO′의 수직이등분선이므로 중심 O에서 AB까지의 거리는 8/2=4 cm이다.\n중심에서 현 AB에 내린 수선은 AB를 이등분한다. 반현 길이를 t라 하면 t²+4²=8²이므로 t=4√3 cm이다. 따라서 AB=2t=8√3 cm이고 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접힌 원호가 원래 중심을 지난다는 조건을 반사된 중심 간 거리로 옮겨 중심과 접는 현의 거리를 정하고 반현에 피타고라스를 적용한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 20,
+          "questionUid": "qid_v1_49b61fc4641e1e17b49a21c9e8550d81ae36417be842a9d9f377f7630980b9fa",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "3b96f4d5e75e3a2b0c397434bc6e66f3e3f00ac7af8c88002f15b305dd199fdc",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "OA=OB=AB=6이므로 △OAB는 정삼각형이고 ∠AOB=60°이다. 또한 OB=OC=BC=6이므로 △OBC도 정삼각형이고 ∠BOC=60°이다. P,Q는 각각 현 AB, BC의 중점이므로 OP⊥AB, OQ⊥BC이다.\n직각삼각형 OPA에서 OP²=OA²−AP²=6²−3²=27이므로 OP=3√3이다. 같은 방법으로 OQ=3√3이다. 두 중심각의 이등분선이므로 ∠POQ=30°+30°=60°이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 반지름과 현으로 두 정삼각형을 확인하고 현 중점의 수선·중심각 이등분에서 두 길이와 끼인각을 복원하여 삼각형 넓이를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 21,
+          "questionUid": "qid_v1_2199ad76092d11984fcaa1a8967e62dfc3eb5a1fcf4806ba3f77af93c493b5f3",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "391324cc4231d85567d3ce83691b1d3da19cf8d27a0575ef914c1ab2da64c8c9",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "원 O에서 현 AQ에 내린 수선의 발을 H라 하자. OH⊥AQ이므로 H는 AQ의 중점이다. A, O, O′가 AB 위에 있고 A, H, Q, P가 한 직선 위에 있으므로 ∠OAH=∠O′AP=θ이다. 따라서 AH=OA cosθ=6×2√2/3=4√2이고 AQ=2AH=8√2이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "큰 원의 접선 직각삼각형에서 sin·cos를 구하고 같은 방향의 작은 원 현을 수직이등분하여 길이를 복원한 뒤 사인 넓이로 연결한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 25,
+          "questionUid": "qid_v1_e7910d6bd1e0429ed9eea6cef8deea42a3d2ce71b6d416795f741306a9e852b5",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "4d94692f4b3f774ce19bec0fbde49eedd54686e78ea328891c892ecbacaae160",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "(1) 원의 중심은 원의 각 현의 수직이등분선 위에 있으므로 서로 다른 두 현의 수직이등분선이 만나는 점이 원의 중심이다.\n(2) AB=16 cm이고 M은 현 AB의 중점이므로 AM=8 cm이다. 중심 O는 현 AB의 수직이등분선 CM 위에 있으며, 그림에서 M은 C와 O 사이에 있다. 반지름 OC=r, CM=4 cm이므로 OM=OC−CM=r−4이다. 직각삼각형 OMA에서 OA=r이므로 r²=OM²+AM²=(r−4)²+8²이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 현의 수직이등분선 교점으로 중심을 찾는 원리를 설명하고, 반현과 원호 높이로 중심거리 r−4를 표현해 피타고라스 식에서 반지름을 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E043",
+          "sourceOrdinal": 5,
+          "questionUid": "qid_v1_18dcf5665687c258ed5db13eadaf77555d1df88d3245f59e3dd3b212ec2dafd9",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "9deab677a813cf0f99e6a0cc9e1658268a61550e",
+          "currentQFULL": "0cf7b85323866428c4068a51fc1d86d00a2e2fc18c7c94ceb0ed14c0c9bd48b4",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E043.4slot.json",
+          "sourceReviewSha256": "bf17d4960133d975060b541d9201afc1d4f78fd05075e8b2076a6e94c6986da6",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "중심에서 현에 내린 수선은 현을 이등분한다. 첫 현의 반은 5이고 중심에서 현까지 거리는 4이므로 반지름의 제곱은 5²+4²=41이다. 같은 원의 다른 현도 반은 5이고 중심거리 x이므로 x²+5²=41, 따라서 x=4 cm이다. ③이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 현으로 내린 수선의 이등분으로 반현5를 얻고 피타고라스로 반지름제곱41을 구한 뒤 다른 현의 중심거리 x를 복원한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E043",
+          "sourceOrdinal": 18,
+          "questionUid": "qid_v1_6f1ced7a6cd85f97b6a5e09a36b25ae4f974cde110d0fd0e556f909ded9560ac",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "9deab677a813cf0f99e6a0cc9e1658268a61550e",
+          "currentQFULL": "5deb4fd35eb9edd36d0672bd2556b08292c8f61d2f54a37c7e37611d3228cb25",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E043.4slot.json",
+          "sourceReviewSha256": "bf17d4960133d975060b541d9201afc1d4f78fd05075e8b2076a6e94c6986da6",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "O에서 접는 선 AB까지의 거리를 d라 하자. 작은 호 AB의 중점 P는 O와 AB를 잇는 수직선 위의 원주점이므로 OP=6이고, AB와 P 사이 거리는 6−d이다. 접은 뒤 P가 O로 옮겨지므로 접는 선은 P와 O의 수직이등분선이다. 따라서 P와 O에서 AB까지 거리가 같아 d=6−d, d=3이다. 중심에서 현에 내린 수선은 현을 이등분하므로 (AB/2)²+3²=6², AB/2=3√3이다. 따라서 AB=6√3 cm, ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "접기에서 호 중점 P와 중심 O가 대응하므로 접는 선까지의 거리가 같아 d=6−d가 된다. 중심거리3과 반지름6으로 반현을 구해 두 배 한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E043",
+          "sourceOrdinal": 19,
+          "questionUid": "qid_v1_f52d8a8e9aeb6536fe3b6fa8cc5f2ebe2416fbd81020f3eb93937172e7ae1804",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "9deab677a813cf0f99e6a0cc9e1658268a61550e",
+          "currentQFULL": "6756572f4abb48255c55877ea61be0e59d5aab201c6259580e5fee12bf6c367d",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E043.4slot.json",
+          "sourceReviewSha256": "bf17d4960133d975060b541d9201afc1d4f78fd05075e8b2076a6e94c6986da6",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "삼각형 ABP의 넓이는 밑변 AB와 P에서 AB까지의 높이로 계산한다. 그림에서 AB=8 cm이고 중심 O에서 현 AB까지의 거리는 √(6²−4²)=2√5 cm이다. 원주 위의 P를 가장 멀리 놓으면 높이는 6+2√5 cm이다. 따라서 넓이의 최댓값은 (1/2)×8×(6+2√5)=4(6+2√5) cm², ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반현4·반지름6으로 중심에서 현까지의 거리를 구하고, 고정 밑변 AB에 대한 높이가 최대가 되는 반대쪽 원주점을 선택해 반지름과 중심거리를 더한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E043",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_14bce2db289434a8f25fc38d853821fb39b422fbac067bd55b9a5537e73b385e",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "9deab677a813cf0f99e6a0cc9e1658268a61550e",
+          "currentQFULL": "49bbb16962765b6dfb351bdde31950ef7b3a9c0ce3d0d11fbfef7ff8138e4db8",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E043.4slot.json",
+          "sourceReviewSha256": "bf17d4960133d975060b541d9201afc1d4f78fd05075e8b2076a6e94c6986da6",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "(1) $OD$, $OE$, $OF$는 중심 $O$에서 세 현 $AB$, $BC$, $CA$에 내린 수선의 길이이다. 같은 원에서 중심으로부터 같은 거리에 있는 현은 길이가 같으므로 $AB=BC=CA$이다. 따라서 $\\triangle ABC$는 정삼각형이다.<br>(2) 그림에서 $AB=10\\,\\mathrm{cm}$이다. 중심에서 현에 내린 수선은 현을 이등분하므로<br>$AD=\\dfrac{AB}2=5\\,\\mathrm{cm}$이다.<br>(3) 직각삼각형 $AOD$와 $AOF$는 빗변 $AO$가 공통이고 $OD=OF$이므로 합동이다. 따라서 $AO$는 $\\angle BAC=60^\\circ$를 이등분하여 $\\angle DAO=30^\\circ$이다.<br>$\\cos30^\\circ=\\dfrac{AD}{AO}=\\dfrac5{AO}$이므로<br>$AO=\\dfrac{10}{\\sqrt3}=\\dfrac{10\\sqrt3}3\\,\\mathrm{cm}$이다.<br>(4) 원의 넓이는<br>$\\pi AO^2=\\pi\\left(\\dfrac{10\\sqrt3}3\\right)^2=\\dfrac{100\\pi}3\\,\\mathrm{cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 중심거리의 세 현이 같아 정삼각형임을 보이고, 현을 이등분해AD=5를 얻는다. RHS 합동으로30도 반각을 만든 뒤 코사인으로 반지름을 구해 원 넓이로 연결한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E046",
+          "sourceOrdinal": 22,
+          "questionUid": "qid_v1_d43950eb8a22074e6518dd8ac547397f263c1e451417a369ee03b5a0cc940f6d",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/21_매산중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "95a671a17b80b6fcd14540d6aed7e876b6d07137",
+          "currentQFULL": "8952fc30bb3767e73833674e71b793e363ce53fa3ca67a9aea3a9d4a3b1a7024",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E046.4slot.json",
+          "sourceReviewSha256": "965fa0c4a55ae3a6fe37d3a2f72f3160bf312026bd1f8a6ca590155f60c5fbca",
+          "methodEvidence": {
+            "term": "현의수직이등분성질",
+            "src": "solution",
+            "quote": "중심에서 현에 내린 수선은 현을 이등분하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "중심수선OD가 현BC를 이등분한다는 실제 보조관계이다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        }
+      ],
+      "supportUidCount": 44,
+      "nonemptyMethodBlockedUids": [
+        "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+        "qid_v1_96c10ad609f238f6a9e08299530c954fa5ab240dd76b72803a159ef5434228ed",
+        "qid_v1_b207ae5e08f97f03c78b9c6543dd2b911c3c41b232604de0b91915dab1a5f0e6"
+      ]
+    },
+    {
+      "term": "RHS합동",
+      "difference": "합동(193)은 상위 방법이고 합동조건(723)의 현행 note는 SSS/SAS/ASA이며 synonym은 SAS다. RHS는 두 직각삼각형의 빗변과 다른 한 변이 같은 특수 합동 조건이며 별도 leaf로 유지한다.",
+      "existingIds": [
+        193,
+        723
+      ],
+      "existingTerms": [
+        {
+          "id": 193,
+          "ko": "합동",
+          "en": [
+            "CONGRUENCE"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "kindDetail": null,
+          "sourceKeys": [
+            "PT_M1_CONGRUENCE_INVARIANTS",
+            "PT_M1_CONGRUENCE_UNIQUENESS",
+            "PT_RIGHT_TRIANGLE_CONGRUENCE",
+            "PT_M1_CONGRUENCE_DATA_TRANSFER",
+            "TPL_M1_CONGRUENCE_INVARIANTS_CORE"
+          ],
+          "usageInKeys": 17,
+          "usageInItems": 0,
+          "addedDuringItems": false
+        },
+        {
+          "id": 723,
+          "ko": "합동조건",
+          "en": [
+            "CONGRUENCE_CONDITION"
+          ],
+          "synonyms": [
+            "SAS"
+          ],
+          "kind": "방법",
+          "kindDetail": null,
+          "parent": "합동",
+          "status": "ACTIVE",
+          "sourceKeys": [],
+          "usageInKeys": 0,
+          "usageInItems": 0,
+          "addedDuringItems": false,
+          "note": "SSS, SAS, ASA 합동조건",
+          "sources": [
+            "split-v1.5-2026-11-04"
+          ]
+        }
+      ],
+      "originalCandidateDefinitions": [
+        {
+          "term": "RHS합동",
+          "en": [
+            "RHS_CONGRUENCE"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "합동",
+          "note": "두 직각삼각형의 빗변과 다른 한 변이 각각 같음을 근거로 하는 합동 조건."
+        }
+      ],
+      "support": [
+        {
+          "examId": "E001",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "5e8a62c15338cc22e445d7909fee9f707de6f53827b241ee28cd376be6cc68ba",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "RHS합동",
+            "src": "solution",
+            "quote": "같으므로 RHS 합동이다. 대응하는 변이 같아 AM=BM",
+            "evidenceType": "IMPLIED",
+            "justification": "서로 다른 두 현의 수직이등분선 교점으로 중심을 작도하고, 반지름·공통변·직각의 RHS 합동으로 현의 이등분 성질을 설명한다."
+          },
+          "needsThisPromotionForNonemptyMethod": true,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_78d7e7475b76236e3af828b09edc3464bcb9e6ed44756c0a0fb9d4d6bd2e5fdd",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "e7cfa86f6af549ca533bdbcdd03e74b4d48732b2ed8a55ebea2510839983c3d1",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "RHS합동",
+            "src": "solution",
+            "quote": "통이므로\n두 직각삼각형 $OAP$, $OBP$는 합동이다",
+            "evidenceType": "IMPLIED",
+            "justification": "접선과 반지름의 직각 및 RHS 합동에서 외부각의 이등분을 얻고 삼각비로 반지름을 정한 다음 사각형 넓이에서 부채꼴 넓이를 뺀다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E013",
+          "sourceOrdinal": 20,
+          "questionUid": "qid_v1_03d625a6a8c7bfefeb10b9d01602b30986891a6f7ed9219f397b72999cb2737f",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "616446569f78c62f6a6f9c7bae4baba76c8c18f6",
+          "currentQFULL": "35249b5aeff0c56818bda882711ba06706223672daa5eaa1bc659fe1ab437f41",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E013.4slot.json",
+          "sourceReviewSha256": "6dacb8b70e4c9197a0b1097dffe05c87f14c9c6a0e57003d2ba9c883c838a670",
+          "methodEvidence": {
+            "term": "RHS합동",
+            "src": "solution",
+            "quote": "O$이며\nRHS 합동을 이용한다.\n\n빈칸 ③에는 $OA=",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름과 접선의 수직, 공통 빗변, 두 반지름의 같음을 이용한 RHS 합동 증명에서 근거 칸을 판정한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E016",
+          "sourceOrdinal": 8,
+          "questionUid": "qid_v1_96c10ad609f238f6a9e08299530c954fa5ab240dd76b72803a159ef5434228ed",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/24_왕운중_2학기_기말_중3_수학.js",
+          "currentSourceBlobSha1": "e4d7cfc5a68f644773b9d3c7922b312c3c9b7c56",
+          "currentQFULL": "4ef2629a0f6a74521e6b1cfc323cf189d240254e4604c4bf04639b0f621ca7ee",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E016.4slot.json",
+          "sourceReviewSha256": "a956402ac8289131ed9234e7252ac4bfaaab6b5b28eee3691364dd36761c0c22",
+          "methodEvidence": {
+            "term": "RHS합동",
+            "src": "solution",
+            "quote": "N$으로 RHS 합동이므로 $AM=CN$.\n현은 중심에서",
+            "evidenceType": "IMPLIED",
+            "justification": "RHS 합동으로 반현 두 개가 같음을 보인 뒤 중심의 수선이 현을 이등분함을 써 전체현의 같음을 결론내린다."
+          },
+          "needsThisPromotionForNonemptyMethod": true,
+          "currentRuntimeRegistered": true
+        },
+        {
+          "examId": "E025",
+          "sourceOrdinal": 1,
+          "questionUid": "qid_v1_8eef3617c70d09f0257f7671e71067c6c33adc0a11d2a77c126c05c1c309d846",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "f1fbd586018519c2ff4c11342bc8347f6da3c774",
+          "currentQFULL": "d79171c6ae8e91582cc86f78bd2c2c89cc6ef80ba27c9f3861f68909f2419b06",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E025.4slot.json",
+          "sourceReviewSha256": "5c23ef557c0c169b093c2440a224be0c3f7737de58fcbdbb244a11a05666e7be",
+          "methodEvidence": {
+            "term": "RHS합동",
+            "src": "solution",
+            "quote": "중심에서 현에 내린 수선은 현을 이등분한다.\n따라서 $AM=BM$, $CN=DN$이고, $DN=AM$이므로 $BM=CN$이다.\n또 $OB=OC=OD$는 모두 반지름이며 $OM\\perp AB$, $ON\\perp CD$이다.\n그래서 $\\triangle OBM$과 $\\triangle OCN$은 $O\\leftrightarrow O$, $B\\leftrightarrow C$, $M\\leftrightarrow N$의 순서로 합동이다.\n①의 $\\triangle OBM\\equiv\\triangle DON$은 대응 순서가 맞지 않으므로 잘못된 표시이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현의 수직이등분 성질로 반현의 등길이를 옮기고 반지름·직각을 결합해 RHS합동을 확인한 뒤 잘못된 대응점 순서를 판정한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": true
+        }
+      ],
+      "supportUidCount": 5,
+      "nonemptyMethodBlockedUids": [
+        "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+        "qid_v1_96c10ad609f238f6a9e08299530c954fa5ab240dd76b72803a159ef5434228ed"
+      ]
+    },
+    {
+      "term": "같은현의중심거리",
+      "difference": "현(154)은 선분 대상이고 중심각(724)은 각이다. 이 후보는 한 원에서 같은 길이의 현과 그 현까지의 중심 거리가 같은 관계를 이용하는 정리다.",
+      "existingIds": [
+        154,
+        724
+      ],
+      "existingTerms": [
+        {
+          "id": 154,
+          "ko": "현",
+          "en": [
+            "CHORD"
+          ],
+          "synonyms": [],
+          "kind": "대상",
+          "kindDetail": null,
+          "sourceKeys": [
+            "TM_CIRCLE_CHORD_LENGTH",
+            "TM_CIRCLE_CHORD_DIVISION",
+            "TM_CIRCLE_CHORD_PERP_BISECTOR",
+            "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+            "TM_TANGENT_CONTACT_CHORD_LENGTH"
+          ],
+          "usageInKeys": 7,
+          "usageInItems": 0,
+          "addedDuringItems": false
+        },
+        {
+          "id": 724,
+          "ko": "중심각",
+          "en": [
+            "CENTRAL_ANGLE"
+          ],
+          "synonyms": [],
+          "kind": "대상",
+          "kindDetail": null,
+          "parent": "각",
+          "status": "ACTIVE",
+          "sourceKeys": [],
+          "usageInKeys": 0,
+          "usageInItems": 0,
+          "addedDuringItems": false,
+          "note": "원의 중심에서 두 반지름이 이루는 각",
+          "sources": [
+            "split-v1.5-2026-11-04"
+          ]
+        }
+      ],
+      "originalCandidateDefinitions": [
+        {
+          "term": "같은현의중심거리",
+          "en": [
+            "EQUAL_CHORDS_EQUAL_CENTER_DISTANCE"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "현",
+          "note": "한 원에서 같은 길이의 현이 중심에서 같은 거리에 있다는 성질로 거리를 옮기는 단계."
+        },
+        {
+          "en": [
+            "EQUAL_CHORDS_EQUAL_CENTER_DISTANCE"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "현",
+          "note": "한 원에서 같은 길이의 현이 중심에서 같은 거리에 있다는 성질로 거리를 옮기는 단계.",
+          "term": "같은현의중심거리"
+        },
+        {
+          "en": [
+            "EQUAL_CHORDS_EQUAL_CENTER_DISTANCE"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "현",
+          "note": "한 원에서 같은 길이의 현은 중심거리가 같고, 중심거리가 같은 현은 길이가 같다는 동치 성질로 현길이 또는 거리를 옮기는 단계. 기존 같은현의중심거리 후보의 역방향 적용도 같은 정리로 재사용한다.",
+          "term": "같은현의중심거리"
+        },
+        {
+          "en": [
+            "EQUAL_CHORDS_EQUAL_CENTER_DISTANCE"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "현",
+          "note": "한 원에서 두 현의 길이가 같을 조건과 중심에서 두 현까지의 거리가 같을 조건이 동치라는 성질을 사용한다. 이 시험지에서는 같은 중심거리에서 현의 상등을 얻는 방향을 사용한다.",
+          "term": "같은현의중심거리"
+        },
+        {
+          "en": [
+            "EQUAL_CHORDS_EQUAL_CENTER_DISTANCE"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "현",
+          "note": "한 원에서 같은 길이의 현은 중심거리가 같고, 중심거리가 같은 현은 길이가 같다는 동치 정리. 같은현의중심거리 후보를 역방향에도 같은 의미로 재사용한다.",
+          "term": "같은현의중심거리"
+        }
+      ],
+      "support": [
+        {
+          "examId": "E001",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "d2e00d910a5c09c91f852990fcd5f2492219280b0bb23aad4a43900e05e7e214",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": " 거리도 같은 길이의 현이므로 $6$이다. 그러므로\n$[",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름·중심거리로 반현을 구하고 같은 현의 중심거리도 같음을 써 삼각형 OCD의 밑변과 높이를 확정한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E001",
+          "sourceOrdinal": 16,
+          "questionUid": "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+          "currentQFULL": "53fff04cd06630729defb1b026d1ca987f5af50ceab69ea96abc17611df6f52e",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E001.4slot.json",
+          "sourceReviewSha256": "774a423ff2370e3dac96bda679b68457a62025705d315d57447231b57da5e08c",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "두 현은 중심에서 같은 거리에 있고 중심을 사이에 둔다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 길이의 평행 현 쌍이 중심에서 같은 거리에 있음을 써 중심거리를 5와 3으로 정하고, 반지름과 목표 반현에 피타고라스를 차례로 적용한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_6377390a036884a114da2d38588443a733bbf318de7093d7b9c839035ffa33bf",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "89be15d51e6b37d36a7b7a2e369bca01360cfd96fdae042715d54ee00f5a5a32",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "중심에서 같은 거리에 있는 현의 길이는 같다.\n$OD=O",
+            "evidenceType": "IMPLIED",
+            "justification": "세 현의 중심거리가 같아 정삼각형임을 확정하고 정삼각형 중심의 중선2:1 관계에서 외접반지름을 구해 원 넓이로 연결한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E010",
+          "sourceOrdinal": 16,
+          "questionUid": "qid_v1_4c961e589d87566c41f6e3cfcc3a174bb5930dc7eed0145681625ec9778bde59",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+          "currentQFULL": "817e8800e63991631457c9d269eae211af016487888baf966fcce78f1ce15ba1",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E010.4slot.json",
+          "sourceReviewSha256": "480d34546d0a378b3d5af71a5ec1f3201437dcbb43695d9ab40d891bd3fe0120",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "에 있는 현의 길이는 같으므로\n$DE=FG=HJ$이다.\n",
+            "evidenceType": "IMPLIED",
+            "justification": "내심에서 세 변까지의 거리가 같으므로 해당 세 현이 같은 중심거리를 갖고 길이가 같음을 적용한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E013",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_8765b3924331c8d21b6cfc3c5ff1c15ab16687f6aaf5d2182bfcda9f2f858b68",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "616446569f78c62f6a6f9c7bae4baba76c8c18f6",
+          "currentQFULL": "b5dac7a3ff8f41d0246b1b52e6f91be81aa1ce834e08293ee89212645acdc8e1",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E013.4slot.json",
+          "sourceReviewSha256": "6dacb8b70e4c9197a0b1097dffe05c87f14c9c6a0e57003d2ba9c883c838a670",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "은\n원의 중심 $O$에서 모두 같은 거리에 있다.\n\n따라",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 길이의 현이 중심에서 같은 거리에 있다는 성질로 현의 중점들이 같은 원 위에 놓임을 설명한다."
+          },
+          "needsThisPromotionForNonemptyMethod": true,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E013",
+          "sourceOrdinal": 17,
+          "questionUid": "qid_v1_d31ea1633e462022d48c6d01cf9720fcc450905b62bbf5a1768f19bf8e6da0fd",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "616446569f78c62f6a6f9c7bae4baba76c8c18f6",
+          "currentQFULL": "26368958fc91d5a0c16552f13f496522393986b59eb334b252af7b02a3f09228",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E013.4slot.json",
+          "sourceReviewSha256": "6dacb8b70e4c9197a0b1097dffe05c87f14c9c6a0e57003d2ba9c883c838a670",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "에 내린 수선의 길이가 서로 같으므로\n두 현의 길이도 서",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 두 현까지 거리가 같아 두 현이 같음을 얻고 이등변삼각형의 밑각을 계산한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_b207ae5e08f97f03c78b9c6543dd2b911c3c41b232604de0b91915dab1a5f0e6",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "86662f21190c9dde942dd57d55fc7f3135b08b5a5e0d32f8f94aae1192e23785",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "한 원에서 중심으로부터 같은 거리에 있는 두 현의 길이는 같다.\n그림에서 두 현까지의 중심거리가 모두 $4\\,\\mathrm{cm}$이므로 두 현의 길이는 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심거리가 같은 두 현은 같고 중심수선이 현을 이등분한다는 성질로 반현5를두배하여 옮긴다."
+          },
+          "needsThisPromotionForNonemptyMethod": true,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E019",
+          "sourceOrdinal": 23,
+          "questionUid": "qid_v1_73b8510d5fc947e981a8a6170487ffe099ee4aa46cc8d1c84de1a1a64ed794a0",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "5f78a11b7ea78f6c9c9c0f33c572db47260427eb",
+          "currentQFULL": "944e1dabaa786d6f1f71785972563b24fd79cc2de7a585ef5d382367df58a632",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E019.4slot.json",
+          "sourceReviewSha256": "ed43ec39c6fbe9deb7d9dcc26b670a55c63885942e106bfa2782f84906898d8d",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "$OL$, $OM$, $ON$은 각각 현 $BC$, $AB$, $AC$에 내린 수선이고 그 길이가 모두 같다.\n한 원에서 중심으로부터 같은 거리에 있는 현의 길이는 같으므로\n$BC=AB=AC$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심거리 세 개가 같아 세 현이 같음을 확정하고 정삼각형의 높이를 피타고라스로 구해 넓이를 산출한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E028",
+          "sourceOrdinal": 18,
+          "questionUid": "qid_v1_bbe02e6833be413735e75692b08d1b8f551d00fe6d23f02be5aff507e9fb92c6",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "e6e7701f84ae6730849cc882982db36ca9ffa9f4",
+          "currentQFULL": "0c5eec13cf54876ae4684acc48978e7f9bbcce7d335933545e4d3fd63cb2ae95",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E028.4slot.json",
+          "sourceReviewSha256": "15625518dfab52cd0535203c8c4b9211c1bd1a5b6c9bc07476345c522badbc2f",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "중심에서 두 현까지의 거리가 같으므로 $AB=AC$이다.\n따라서\n$\\angle B=\\angle C=55^\\circ$이고\n$\\angle A=70^\\circ$이다.\n사각형 $AMON$에서 $\\angle AMO=\\angle ANO=90^\\circ$이므로\n$\\angle MON=360^\\circ-70^\\circ-90^\\circ-90^\\circ=110^\\circ$이다.\n따라서 정답은 ①이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 중심거리에서 두 현AB와AC가 같음을 얻고 이등변삼각형의 각과 사각형 내각합으로 MON을 구한다. 원주각 정리는 사용하지 않는다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E032",
+          "sourceOrdinal": 4,
+          "questionUid": "qid_v1_67598608037fbc106b773f2da0bfa142ca0e72bb7d95d9c998263f2f60ff23b2",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "610bd58be3be6a7cbc1b218edcd003a3b9540166",
+          "currentQFULL": "905e71d832894a33bd5970ac289c0b3277951e2615c1fefd94d4dd7e9515ead2",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E032.4slot.json",
+          "sourceReviewSha256": "3805e91ffdd07c99cad7f8d9cb902235fd625a738ef4a0d8f0087552062a3fac",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "따라서 $AB=12\\rm\\,cm$이고 $CD=12\\rm\\,cm$이다. 같은 길이의 현이므로 중심 $O$에서 현 $CD$까지의 거리도 $8\\rm\\,cm$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E040",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_5cca5a262e77d249758f266c7108cbeedd908035c9aa6e7cbd066ab14cdda7b3",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_연향중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "77714fd7bd3e78f4bd3b85ad79069606ff8fc88f",
+          "currentQFULL": "b50a837e1ec33bfd4a6c3e797c6a3dfd858b71fd30883d542a22ce008219b03d",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E040.4slot.json",
+          "sourceReviewSha256": "7dfd1bd5d9f82b52baec29b2fe87fe2a4751c0f4f4cc96514651e8ae9dd5c891",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "원의 중심에서 두 현 $AB$, $AC$까지의 거리가 같으므로 두 현의 길이가 같다. 따라서 $AB=AC$이고 밑각 $B=C=70^\\circ$이다.<br>$\\angle A=180^\\circ-70^\\circ-70^\\circ=40^\\circ$이므로 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림에서 두 현까지의 중심거리가 같은 표시를 읽어 현AB=AC를 얻고 이등변의 같은 밑각과 내각합으로 꼭짓각을 정한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E041",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_00087892a62266c1b4b27f5c1484e3ffde2462af32dfc88523f6b53fd79ab619",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_이수중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "fb5a1ac76700aee9503463ed8fef255a60ac757a",
+          "currentQFULL": "cf73925ad609ab3ca936f281fbe8911e1af0e251e5ee21cfb1c10f3852a06bcd",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E041.4slot.json",
+          "sourceReviewSha256": "883172e769897fafde689ff0f3dc5c8c0ee19cd05b250dee04b507576a0842b9",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "④ 중심에서 같은 거리에 있는 두 현은 길이가 같으므로 옳다.",
+            "evidenceType": "IMPLIED",
+            "justification": "현·지름·중심수선·같은거리현·접선 개수의 성질을 각 진술에 대조한다. 결정적으로 원 밖 한 점의 접선은 두 개이므로 무수히 많다는⑤가 틀리다. 원주각·중심각의 각 관계를 사용하는 문항이 아니다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E041",
+          "sourceOrdinal": 19,
+          "questionUid": "qid_v1_41c403aee3a7eca734db7a632f42139e8d6abf4217478b4113a1f1693d951ee2",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_이수중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "fb5a1ac76700aee9503463ed8fef255a60ac757a",
+          "currentQFULL": "bf86f80ef444270583897629e8ee6bb798e8451d47b3d1e434933ff002395ee2",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E041.4slot.json",
+          "sourceReviewSha256": "883172e769897fafde689ff0f3dc5c8c0ee19cd05b250dee04b507576a0842b9",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "따라서 $AB=2AM=2\\sqrt{13}$이다. 또 중심에서 같은 거리에 있는 두 현의 길이는 같으므로 $AB=CD$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "한 현의 반현을 반지름5와 중심거리2√3으로 구한 뒤 두 중심거리가 같으므로 현CD도 같은 길이임을 이용한다. 중점 성질만이 아니라 동일거리 현 길이 관계가 결정적이다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E041",
+          "sourceOrdinal": 20,
+          "questionUid": "qid_v1_9096cae3ffb85bc6bd00b112b923f4f44cccde8c082baf4ffcbd139683c40f4f",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_이수중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "fb5a1ac76700aee9503463ed8fef255a60ac757a",
+          "currentQFULL": "9e3c7b5dcba021a0b120303e6ac5eb9e1e3ff041356ae94823e2c6c1c1d73b60",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E041.4slot.json",
+          "sourceReviewSha256": "883172e769897fafde689ff0f3dc5c8c0ee19cd05b250dee04b507576a0842b9",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "[핵심 성질] 중심에서 현까지의 거리가 같은 두 현의 길이는 같다.\n[풀이] $OM=ON$이므로 현 $AB$와 현 $AC$의 길이가 같다. 따라서 삼각형 $ABC$는 $AB=AC$인 이등변삼각형이고 밑각은 $\\angle B=\\angle C$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "그림의 중심수선거리OM=ON에서 현AB=AC를 얻고 이등변삼각형의 같은 밑각과 내각합으로 목표B를 정한다. 원주각 정리가 아니라 같은거리 현 성질이 Primary다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 13,
+          "questionUid": "qid_v1_0a98886ec4b809c6dde1f2b7a17b4042fd24697330122c93f8e0fda42fb7442a",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "3d40bbf74d2d3cc99f0291c2834c5df380fb9c2cc40a306c914ef32db2f03136",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "OD, OE, OF는 각각 원의 중심 O에서 현 AB, BC, CA에 내린 수선이다. 중심에서 현에 내린 수선은 현을 이등분하고, 중심에서 같은 거리에 있는 현의 길이는 같다. OD=OE=OF이므로 AB=BC=CA이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "중심에서 세 현에 이르는 거리가 같아 세 현이 같음을 정하고 한 현의 중점 조건으로 변을 복원하여 둘레를 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 14,
+          "questionUid": "qid_v1_7094d9f0c18fd0a0b77560c5c05b7ff7cfcfdade2f1f66c880ab188313b6d62c",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "34476161c7deb986f34883358b2f2a604fb9b196d80aaea29fd66e170da5ecdf",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "오른쪽 그림에서 중심 O에서 윗현에 내린 수선의 발은 윗현을 이등분한다. 표시된 3 cm는 윗현의 한쪽 반현 길이이므로 윗현의 길이는 2×3=6 cm이다. 중심에서 윗현과 아랫현까지의 거리가 같으므로 두 현의 길이도 같아 y=6 cm이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "왼쪽은 중심거리·반지름에서 피타고라스로 현을 구하고 오른쪽은 현의 이등분과 같은 중심거리로 현을 구한 뒤 두 값을 더한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E042",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_b76139bfb7984f50237b24fca836c3d1ed2f890c3e86dbd709c49db6ec7185f4",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+          "currentQFULL": "dac287127fc61fc0c5b3876bf4b5c1e10d0164384369907d4e4ac37fee096a70",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E042.4slot.json",
+          "sourceReviewSha256": "5525a55b2299d4f702e130858b2b38ede47b25021cadcc7b87469fd136ec3f99",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "OM과 ON은 각각 중심에서 현 AB, BC에 내린 수선이며 OM=ON이다. 중심에서 같은 거리에 있는 현의 길이는 같으므로 AB=BC이고, 따라서 중심각 ∠AOB=∠BOC라 하자.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 중심거리의 두 현과 중심각이 같음을 이용하고 수선의 각이등분으로 주어진 각을 중심각에 대응시킨 뒤 원주각을 구한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E043",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_14bce2db289434a8f25fc38d853821fb39b422fbac067bd55b9a5537e73b385e",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+          "currentSourceBlobSha1": "9deab677a813cf0f99e6a0cc9e1658268a61550e",
+          "currentQFULL": "49bbb16962765b6dfb351bdde31950ef7b3a9c0ce3d0d11fbfef7ff8138e4db8",
+          "reviewedPayloadUnchanged": false,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E043.4slot.json",
+          "sourceReviewSha256": "bf17d4960133d975060b541d9201afc1d4f78fd05075e8b2076a6e94c6986da6",
+          "methodEvidence": {
+            "term": "같은현의중심거리",
+            "src": "solution",
+            "quote": "(1) $OD$, $OE$, $OF$는 중심 $O$에서 세 현 $AB$, $BC$, $CA$에 내린 수선의 길이이다. 같은 원에서 중심으로부터 같은 거리에 있는 현은 길이가 같으므로 $AB=BC=CA$이다. 따라서 $\\triangle ABC$는 정삼각형이다.<br>(2) 그림에서 $AB=10\\,\\mathrm{cm}$이다. 중심에서 현에 내린 수선은 현을 이등분하므로<br>$AD=\\dfrac{AB}2=5\\,\\mathrm{cm}$이다.<br>(3) 직각삼각형 $AOD$와 $AOF$는 빗변 $AO$가 공통이고 $OD=OF$이므로 합동이다. 따라서 $AO$는 $\\angle BAC=60^\\circ$를 이등분하여 $\\angle DAO=30^\\circ$이다.<br>$\\cos30^\\circ=\\dfrac{AD}{AO}=\\dfrac5{AO}$이므로<br>$AO=\\dfrac{10}{\\sqrt3}=\\dfrac{10\\sqrt3}3\\,\\mathrm{cm}$이다.<br>(4) 원의 넓이는<br>$\\pi AO^2=\\pi\\left(\\dfrac{10\\sqrt3}3\\right)^2=\\dfrac{100\\pi}3\\,\\mathrm{cm}^2$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "같은 중심거리의 세 현이 같아 정삼각형임을 보이고, 현을 이등분해AD=5를 얻는다. RHS 합동으로30도 반각을 만든 뒤 코사인으로 반지름을 구해 원 넓이로 연결한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        }
+      ],
+      "supportUidCount": 18,
+      "nonemptyMethodBlockedUids": [
+        "qid_v1_8765b3924331c8d21b6cfc3c5ff1c15ab16687f6aaf5d2182bfcda9f2f858b68",
+        "qid_v1_b207ae5e08f97f03c78b9c6543dd2b911c3c41b232604de0b91915dab1a5f0e6"
+      ]
+    },
+    {
+      "term": "원밖두할선이이루는각",
+      "difference": "각(174)·호(155)·원주각(200)은 각각의 대상이다. 이 후보는 외부 교점에서 만나는 두 할선의 끼인각을 먼 호와 가까운 호의 차의 절반으로 계산하는 정리다.",
+      "existingIds": [
+        174,
+        155,
+        200
+      ],
+      "existingTerms": [
+        {
+          "id": 155,
+          "ko": "호",
+          "en": [
+            "ARC"
+          ],
+          "synonyms": [
+            "원호"
+          ],
+          "kind": "대상",
+          "kindDetail": null,
+          "sourceKeys": [
+            "TPL_SECTOR_RADIUS_FROM_AREA_ARC",
+            "TPL_SECTOR_CENTRAL_ANGLE_ARC_RADIUS",
+            "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+            "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+          ],
+          "usageInKeys": 4,
+          "usageInItems": 0,
+          "addedDuringItems": false
+        },
+        {
+          "id": 174,
+          "ko": "각",
+          "en": [
+            "ANGLE"
+          ],
+          "synonyms": [],
+          "kind": "대상",
+          "kindDetail": null,
+          "sourceKeys": [
+            "PT_LINE_ANGLE_BISECTOR",
+            "TPL_H22A_05_SINE_LAW_110",
+            "PT_CIRCLE_ANGLE_RELATIONS",
+            "TPL_GEO_SPACE_LINES_ANGLE",
+            "PT_M1_PARALLELISM_CONVERSE"
+          ],
+          "usageInKeys": 51,
+          "usageInItems": 1,
+          "addedDuringItems": false
+        },
+        {
+          "id": 200,
+          "ko": "원주각",
+          "en": [
+            "INSCRIBED_ANGLE"
+          ],
+          "synonyms": [],
+          "kind": "대상",
+          "kindDetail": null,
+          "sourceKeys": [
+            "PT_CIRCLE_ANGLE_RELATIONS",
+            "TPL_CIRCLE_ANGLE_COMPOSITE",
+            "TPL_CIRCLE_ANGLE_CENTER_ARC",
+            "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+            "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+          ],
+          "usageInKeys": 9,
+          "usageInItems": 0,
+          "addedDuringItems": false
+        }
+      ],
+      "originalCandidateDefinitions": [
+        {
+          "term": "원밖두할선이이루는각",
+          "en": [
+            "ANGLE_OF_TWO_SECANTS_OUTSIDE_CIRCLE"
+          ],
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "각",
+          "note": "원 밖 한 점에서 그은 두 할선의 끼인각은 먼 호와 가까운 호 각 차의 절반이다."
+        },
+        {
+          "term": "원밖두할선이이루는각",
+          "en": "ANGLE_OF_TWO_SECANTS",
+          "synonyms": [],
+          "kind": "방법",
+          "parent": "각",
+          "note": "원 밖 한 점에서 그은 두 할선의 각은 먼 호와 가까운 호의 차의 절반이다."
+        }
+      ],
+      "support": [
+        {
+          "examId": "E024",
+          "sourceOrdinal": 22,
+          "questionUid": "qid_v1_b9ae345d31f803b666a40b6279c38434fffcb803f58d6c0e56dcd064fd21a379",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "a6e4e04e2219632eadafe10e3b0a5846f9160651",
+          "currentQFULL": "c9a7584b1881579ba555aa9c37894799384c2dfd9d230e9556205c6e2df368c4",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E024.4slot.json",
+          "sourceReviewSha256": "eb509aa254f361dce9a7ed58101241456924bcdd9ab2016870f256fdcf104e80",
+          "methodEvidence": {
+            "term": "원밖두할선이이루는각",
+            "src": "solution",
+            "quote": "원 밖의 점 $P$에서 두 할선 $PAB$, $PCD$가 이루는 각은 먼 두 호와 가까운 두 호의 차의 절반이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "원 밖 한 점에서 그은 두 할선의 끼인각은 먼 호와 가까운 호 각 차의 절반이다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": true
+        },
+        {
+          "examId": "E026",
+          "sourceOrdinal": 6,
+          "questionUid": "qid_v1_0a7025d89e1caabf56470c51070a2f439c7d252439c67cafc44f039f035ce825",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "7b5c6d1fae683cc269ab87dbbe81d116d137c510",
+          "currentQFULL": "fa5459150482893d2508224c2a351c32e7c96966e897cfea50e3ec7297ea4d52",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E026.4slot.json",
+          "sourceReviewSha256": "fd0525577dd0539f64af52a6616805927224b6f26d47368590f6cdb104ffbd9e",
+          "methodEvidence": {
+            "term": "원밖두할선이이루는각",
+            "src": "solution",
+            "quote": "원 밖의 점 $P$에서 그은 두 할선이 이루는 각의 크기는\n먼 두 호와 가까운 두 호의 크기 차의 절반이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원 밖 공통점의 두 할선각을 두 대응 호의 차의 절반으로 적용한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E032",
+          "sourceOrdinal": 10,
+          "questionUid": "qid_v1_e67c9f7101932ac3e5afca14c41045941187380e9ff1e05a748de39eda1a1be7",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "610bd58be3be6a7cbc1b218edcd003a3b9540166",
+          "currentQFULL": "cf2f968752b77e54bf8f5f9f154dbf761a8e9624e9cd1b335318fa03f84d1478",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E032.4slot.json",
+          "sourceReviewSha256": "3805e91ffdd07c99cad7f8d9cb902235fd625a738ef4a0d8f0087552062a3fac",
+          "methodEvidence": {
+            "term": "원밖두할선이이루는각",
+            "src": "solution",
+            "quote": "호 $BD$의 크기를 $u$, 호 $AC$의 크기를 $v$라 하자. 원 밖의 점 $P$에서 두 할선이 이루는 각이 $40^\\circ$이므로 $u-v=80^\\circ$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E034",
+          "sourceOrdinal": 7,
+          "questionUid": "qid_v1_314a8cfbc2af2bb915ea297000052dfa05669dc2eb27ec597156626c820397b2",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "fc0c618f376e8fe025612b5f629b0c0bf2617e30",
+          "currentQFULL": "3a939df7230d47e7bdff36ce51ff8bfdc38fb040cc80fc35a6b33db4558dac7f",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E034.4slot.json",
+          "sourceReviewSha256": "c6967f085928cc016daa332af347e0c3e50f6c6c521aec87938a564dd91c9fc2",
+          "methodEvidence": {
+            "term": "원밖두할선이이루는각",
+            "src": "solution",
+            "quote": "[키포인트] 원 밖의 두 할선이 이루는 각은 두 호의 크기 차의 절반이다.\n$\\wideparen{AB}=360^\\circ\\times\\dfrac25=144^\\circ$, $\\wideparen{CD}=360^\\circ\\times\\dfrac1{10}=36^\\circ$이다.\n따라서 $x=\\dfrac{144^\\circ-36^\\circ}{2}=54^\\circ$이고 정답은 ⑤이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주에 대한 두 호의 비율을 각각 각도로 바꾸고 원 밖 두 할선의 각은 호의 차의 절반이라는 정리를 직접 적용한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E034",
+          "sourceOrdinal": 9,
+          "questionUid": "qid_v1_7a5833ac5d37d022a6e5491e026b6905e36ce9af61437cd7e93700646f61c876",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "fc0c618f376e8fe025612b5f629b0c0bf2617e30",
+          "currentQFULL": "9197b810abfc4cf4f7517fe7b12dee3bdf797da2988bb42c553ae7749b3f5a7e",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E034.4slot.json",
+          "sourceReviewSha256": "c6967f085928cc016daa332af347e0c3e50f6c6c521aec87938a564dd91c9fc2",
+          "methodEvidence": {
+            "term": "원밖두할선이이루는각",
+            "src": "solution",
+            "quote": "[키포인트] 두 외부 할선각을 호의 차로 나타내고 원 전체의 호와 함께 연립한다.\n호 $AD,DC,CB,BA$를 각각 $a,b,c,d$라 하면 $\\angle E=48^\\circ$에서 $d-b=96^\\circ$, $\\angle F=30^\\circ$에서 $c-a=60^\\circ$이다.\n또 $a+b+c+d=360^\\circ$이므로 $2(a+b)+156^\\circ=360^\\circ$, 따라서 $a+b=102^\\circ$이다.\n$\\angle x=\\angle ABC$는 호 $\\wideparen{ADC}$를 보므로 $x=51^\\circ$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부 할선각을 네 호의 차 방정식으로 표현하고 전체360도와 연립하여 필요한 호의 합만 복원한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E036",
+          "sourceOrdinal": 6,
+          "questionUid": "qid_v1_92dbc18597901219782653edbccef4d3be1a43bd9cd4e1637593deccd26763a1",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "acd1315040b5dcf076d3d554d546c52eaf09006b",
+          "currentQFULL": "9b512e681e8cb7e77a58757c3d296ba5850551736a75b412636a9ceac665d95b",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E036.4slot.json",
+          "sourceReviewSha256": "f663f99dfa61e9f9d0fd82f957042c0b7548e819f60db900f5eb0d36b27fe4ed",
+          "methodEvidence": {
+            "term": "원밖두할선이이루는각",
+            "src": "solution",
+            "quote": "[키포인트] 원 밖의 한 점에서 그은 두 할선이 이루는 각은 두 호의 크기의 차의 절반이다.\n반원 $AB$의 호의 크기는 $180^\\circ$이고, $\\angle COD=50^\\circ$이므로 호 $CD$의 크기는 $50^\\circ$이다.\n따라서 $x=\\dfrac{180^\\circ-50^\\circ}{2}=65^\\circ$이다.\n따라서 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "반원의 호180°와 중심각이 정하는 호50°의 차를 구하고 원 밖 두 할선각의 절반 관계를 적용한다."
+          },
+          "needsThisPromotionForNonemptyMethod": true,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E047",
+          "sourceOrdinal": 7,
+          "questionUid": "qid_v1_aa5b8c3e6e1710864f370f4caa9893d2a8529ac6c3eb38e4c24d45ecc1a26d6f",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/21_신흥중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "6c568df0d60a185adf679cae7553f966f6848aeb",
+          "currentQFULL": "8b2fe98f16c59a98cf60b490219ff83ba7269c687e7577236693a69c4587fcc1",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E047.4slot.json",
+          "sourceReviewSha256": "5b30def7e852fd086829022e0851eb3d88d091979139108c7ee4949bd0f3edb8",
+          "methodEvidence": {
+            "term": "원밖두할선이이루는각",
+            "src": "solution",
+            "quote": "점 $E$에서 만나는 두 할선이 이루는 각으로부터\n$\\widehat{AB}-\\widehat{CD}=2\\times36^\\circ=72^\\circ$이다.\n\n점 $F$에서 만나는 두 할선에 대해서는\n$\\widehat{BC}-\\widehat{AD}=2\\times46^\\circ=92^\\circ$이다.\n\n두 식을 더하면\n$(\\widehat{AB}+\\widehat{BC})-(\\widehat{CD}+\\widehat{AD})=164^\\circ$이다.\n네 호의 합은 $360^\\circ$이므로\n$\\widehat{AB}+\\widehat{BC}=262^\\circ$,\n$\\widehat{CD}+\\widehat{AD}=98^\\circ$이다.\n\n$x=\\angle ABC$는 호 $ADC$를 보는 원주각이므로\n$x=\\dfrac{98^\\circ}{2}=49^\\circ$이다.\n정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "두 외부 할선각을 호의 차 식 두 개로 바꾸어 합하고 전체 호360도와 함께 목표 호 ADC를 정한 뒤 원주각의 절반 관계를 적용한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": false
+        },
+        {
+          "examId": "E051",
+          "sourceOrdinal": 9,
+          "questionUid": "qid_v1_5fc2dbe71d366916d2bf221cc55b7a2ba9483341724ac094d8df7f9d96cbfc9a",
+          "slot": "method",
+          "sourcePath": "archive/exams/original/middle/m3/2final/21_팔마중_2학기_기말_중3_기출.js",
+          "currentSourceBlobSha1": "adc82974ccee718995602dc877c190e09099dda4",
+          "currentQFULL": "77780a10ee8bac5612d55ddde8b74e7d13dbd95defa8b5d41196fb64669412d9",
+          "reviewedPayloadUnchanged": true,
+          "sourceReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "sourceReviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E051.4slot.json",
+          "sourceReviewSha256": "c5a2542c38ae52c8b8ebecd06ba05d3285dbf0615e764601cd827d23e021c042",
+          "methodEvidence": {
+            "term": "원밖두할선이이루는각",
+            "src": "solution",
+            "quote": "호 $AB,BC,CD,DA$의 크기를 각각 $a,b,c,d$라 하자.\n$\\angle B=55^\\circ$이므로\n$c+d=2\\times55^\\circ=110^\\circ$이다.\n점 $Q$에서 만나는 두 할선의 바깥각은 두 호의 차의 절반이다.\n따라서\n$a-c=2\\times37^\\circ=74^\\circ$이다.\n네 호의 합은 $360^\\circ$이므로\n$a+c+2d=(a-c)+2(c+d)=74^\\circ+220^\\circ=294^\\circ$이다.\n따라서\n$b-d=(a+b+c+d)-(a+c+2d)=360^\\circ-294^\\circ=66^\\circ$이다.\n점 $P$에서 만나는 두 할선의 바깥각은 호 $BC$와 호 $AD$의 차의 절반이다.\n따라서\n$x=\\dfrac{b-d}{2}=33^\\circ$이다.\n그러므로 정답은 ②이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "원주각에서c+d를, 한 외부 할선각에서a−c를 구한다. 이 두 식과 전체 호360도를 선형 결합해b−d를 남긴 뒤 다른 외부 할선각으로 반감한다."
+          },
+          "needsThisPromotionForNonemptyMethod": false,
+          "currentRuntimeRegistered": true
+        }
+      ],
+      "supportUidCount": 8,
+      "nonemptyMethodBlockedUids": [
+        "qid_v1_92dbc18597901219782653edbccef4d3be1a43bd9cd4e1637593deccd26763a1"
+      ]
+    }
+  ]
+}

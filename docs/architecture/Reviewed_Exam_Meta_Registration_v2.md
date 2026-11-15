@@ -44,7 +44,236 @@ node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --requ
 - 일부 문항을 등록하려면 최상위에 `"scope": "PARTIAL_UIDS"`를 넣고 `items`에 대상 UID만 적는다. `expectedQuestionCount`는 실제 시험지 전체 문항 수다. 빈 요청, 시험지 밖 UID, 중복 UID·순번, UID와 순번의 불일치는 거부한다.
 - `expectedSourceBlobSha1`에는 현재 원본 blob을 적는다. 부분 요청에서 `after.sourceFingerprint`를 제출할 때는 항목에 `"rebind": { "priorSourceBlobSha1": "...", "priorContentFingerprint": "..." }`가 필요하다. 해당 과거 blob이 실행 환경의 Git에 있어야 한다.
 - 등록기는 과거 blob의 같은 순번 문항에서 원본·내용 지문을 다시 계산한다. 보관된 원본 지문은 과거 또는 현재 판본과 맞아야 하며, 발문·보기·그림 참조의 내용 지문이 달라지면 거부한다. 기존 `before`·`after` 지문과 `identityBefore` 검사도 유지한다. 전체 요청은 기존 방식 그대로 처리하며 `rebind`를 명시하면 같은 추가 검사를 받는다.
-- 부분 영수증의 `totalQuestions`와 `appliedRecords`는 요청 UID만 센다. `scope`와 `partialUidCount`가 추가되며, 재실행과 소비자 검사도 이 UID 범위를 사용한다.
+- 부분 영수증의 `totalQuestions`와 `appliedRecords`는 요청 UID만 센다. `scope`, `partialUidCount`, 원시험 분모인 `expectedQuestionCount`가 추가되며, 재실행과 소비자 검사도 이 UID 범위를 사용한다.
+- AutoMeta는 부분 영수증의 원시험 분모·선택 UID 집합·각 순번과 지문을 실제 source/identity에 대조하고 UID로 현재 행을 찾는다. 원본 바이트, 승인 근거, 현재 metadata/runtime까지 모두 일치할 때만 기존 native 승인을 유지하며, 생략한 UID에 이 승인을 확대하지 않는다. 전체 등록 영수증은 기존 형식을 유지한다.
+- AutoMeta cursor 이후 해설만 수리한 경우에는 `PARTIAL_UIDS` `FINAL_QA` 영수증의 해당 UID `fingerprintRepairs`가 이전 metadata/identity 지문, 현재 두 지문, `rebind`의 실제 과거 Git blob과 정확히 연결되어야 한다. 과거 blob의 같은 순번이 cursor의 학생 payload와 같고 `solution` 외 학생 필드가 모두 그대로인 경우만 이미 발급된 승인을 재사용한다. 변경된 발문·보기·정답·그림·표시번호나 빠진/다른 UID의 수리 증거는 이 경로로 승인하지 않는다.
+- 원본 `questionUid`에 남은 `파일 basename|양의 원번호` 형식은 별도 좁은 어댑터로만 읽는다. 실제 bank의 번호·alias가 유일하고 identity records 및 canonical UID/파일+순번/파일+원번호/legacyQKey lookup이 모두 같은 UID를 가리켜야 한다. 상충하는 표시번호나 임의의 unknown/canonical UID는 계속 거부한다. 원본 alias는 수정하지 않고, 등록·영수증·Runtime에는 canonical UID를 사용한다.
+
+### 현재 원본을 실제로 검토한 부분 지문 수리 `item.sourceReview`
+
+현재 source의 발문·그림 등이 이미 검토되었지만 metadata/identity 지문만 그 이전 판본에 남아 있으면,
+내용 불변을 요구하는 `rebind`로 처리하지 않는다. `FINAL_QA` 메타 요청의 `PARTIAL_UIDS` 항목은 다음처럼
+원래 검토 파일과 검토 Git commit을 명시할 수 있다. `sourceReview`와 `rebind`/`approval.sourceRebind`는 함께 쓰지 않는다.
+
+```json
+{
+  "sourceReview": {
+    "schemaVersion": "archive-reviewed-source-reassessment-v1",
+    "reviewCommit": "40자리 실제 검토 commit",
+    "reviewPath": "그 commit 안의 원래 검토 JSON 경로",
+    "reviewRef": { "path": "현재 checkout의 수정하지 않은 원검토 JSON 사본", "sha256": "실바이트 SHA-256" }
+  }
+}
+```
+
+`reviewRef`는 승인과 해당 item의 `evidenceRefs`에 모두 포함한다. 등록기는 현재 사본과 실제 Git commit의
+원검토 바이트가 같은지 검사한다. 임의의 지문·검토 완료 문장이나 다시 만든 승인 JSON으로 대체할 수 없다.
+지원하는 native 입력은 `m3-s2-complete-semantic-review-v1`, `m2-s1-meta-review-v1`, `m2-s2-meta-review-v1`이다.
+M3는 `sourceAfterBlob`/`sourceAfterSha256`가 그 검토 commit의 실제 source와 일치해야 한다.
+M2는 `baseSha`의 실제 source blob과 `sourceGitBlobSha`를 대조하고, 검토 commit의 source도 별도로 읽는다.
+source 객체·검토 commit을 읽을 수 없는 실행 환경은 거절한다. writer/CI의 전체 Git history 및 원검토 branch 참조를 보존한다.
+
+원검토의 전체 문항 수·UID·순번이 유일해야 하며 대상 행은 확정된 의미 판정과 실제 `decisiveStep`/`after`를 제공해야 한다.
+M2의 `REGISTRATION_PENDING` 표기만으로 확정 필드를 버리지는 않으며 `rpmDecision`·`fieldReview`·`after`·`finalDifficulty`를 직접 읽는다.
+명시적인 원문·해설·그림·난도 hold, 미확정 판정, 원검토와 다른 요청값은 거절한다. 일반 FINAL_QA는 최종 메타 행을 다시 등록하므로
+원검토가 확정한 등록기 지원 의미·난도 필드가 `final`에서 모두 일치해야 한다. 검토된 PT/TPL 교정을 `after`에서 생략하여 옛값을
+재승인할 수 없다. L1~L4 표시명은 기존 정본 검증을 계속 받으며, 등록기 계약 밖의 native 보조 필드는 임의로 생성하지 않는다.
+교육과정·과목 식별자는 현재 원본이나 기존 메타의 명시값을 유지하며 원검토가 명시한 값과도 일치해야 한다.
+
+`primaryMethod`/`decisiveStep`을 운반할 때는 native `after`, native 항목의 같은 필드, 검토 commit source의 같은 필드 순으로
+실제 값을 찾는다. 요청 `after`와 source에 선언된 값, 최종 metadata는 그 값과 완전히 같아야 한다. native에 별도 `primaryMethod`가
+없으면 원검토 `decisiveStep` 문자열을 source와 요청의 두 필드에 그대로 실은 경우만 허용하며, 영수증에는
+`NATIVE_DECISIVE_STEP_VERBATIM`으로 기록한다. 별도 주풀이 판정이나 새 독립 검수로 기록하지 않는다. `rationaleBindings`는
+각 값의 출처와 SHA를 보존하며, 요청에서 필드를 빼서 상충하는 기존 rationale를 유지하는 경우는 거절한다.
+
+`rpmPrimaryId`/`rpmPrimaryPath`/`rpmL1~rpmL4`도 native `after`의 확정값 또는 검토 commit의 source에 이미 있고 현재 source와
+완전히 같은 값만 운반한다. `rpmBindings`에는 출처와 정렬 JSON 값의 SHA를 기록한다. 새 `rpmPrimaryId` 입력은 source의
+명시값과 같아야 하고, 현행 crosswalk의 유일한 record ID·교육과정/과목·RPM 경로 및 LOCKED master의 실제 경로와 일치해야 한다.
+다른 별칭 경로·flat 필드와의 충돌도 거절한다. 영수증 `rpmPrimaryBindings`는 두 정본 파일의 SHA와
+`authorityUse: RPM_PATH_PROVENANCE_ONLY`, `selectsPtTpl: false`를 보존한다. 이 ID는 RPM 경로의 출처이며,
+단일 crosswalk TPL을 새 의미 판정으로 강제하지 않는다. 원검토가 확정한 PT/TPL과 현재 ACTIVE 정의·TPL 부모·정확한 과정 바인딩의
+기존 검증은 별도로 유지한다. RPM 경로 운반은 신규 키·binding 또는 수학 검토를 생성하지 않는다.
+
+발문 별칭·원번호·보기·정답·해설·그림/SVG 참조·레이아웃 등 학생 payload를 실제 검토 source와 현재 source에서 직접 대조한다.
+검토 이후의 해설 수리나 그림 변경을 과거 검토로 승인하지 않는다. 현재 blob, `before`/`after` 두 지문 및 `identityBefore`의
+기존 검사는 그대로 수행한다. metadata 지문은 현재와 맞고 identity만 오래된 경우에도 이 검토 결속과 기존 메타/정본 검증이 필요하다.
+원본 JS를 쓰지 않으며 생략한 UID는 그대로 둔다. 영수증은 검토 schema/commit/경로/SHA·source blob·UID·학생 payload SHA와
+`newMathematicalQa: false`를 보존한다. 이 경로가 새 수학 독립 검수나 REVIEW2 2회 통과를 생성하지 않는다.
+
+#### 원 의미 검토와 이후 그림 검토를 각각 결속하는 `rendererProof`
+
+M3 원검토 이후 그림이 바뀌었고 실제 metadata/identity 지문은 원검토보다도 오래된 경우에는
+`sourceReview.rendererProof`를 명시할 수 있다. 원 `reviewCommit`·`reviewPath`·`reviewRef`와 native `after`는
+그대로 유지하고, 원검토의 학생 payload가 보존된 그림 변경 직전 source, 독립 시각 검토를 마친 현재 source,
+각 시점의 실제 asset 바이트를 별도로 검사한다. 요청의 `before` 또는 `identityBefore`를 그림 변경 직전 지문으로
+바꾸지 않는다. 기존 첫 등록 그림 재사용 계약과도 별도인 명시적 경로다.
+
+```json
+{
+  "rendererProof": {
+    "schemaVersion": "archive-reviewed-current-renderer-continuity-v1",
+    "reviewCommit": "독립 그림 원문과 manifest가 실제 존재하는 40자리 commit",
+    "reviewRef": { "path": "결속 manifest JSON", "sha256": "원시 SHA-256" }
+  }
+}
+```
+
+manifest는 `archive-reviewed-renderer-continuity-evidence-v1`,
+`NATIVE_SEMANTIC_REUSE_WITH_INDEPENDENT_CURRENT_RENDERER` 범위를 명시한다. 원시험 분모, 선택 UID·순번,
+원검토 commit/경로/SHA와 native item SHA, 그림 변경 전·후 같은 source 경로의 commit/blob/원시 SHA/문항 SHA,
+실제 독립 검토 원문 참조가 필요하다. manifest와 원문 참조는 승인과 선택 item의 `evidenceRefs` 양쪽에 포함한다.
+모든 JSON은 로컬 사본과 명시한 Git commit의 실제 바이트가 같아야 한다. 새 전체 QA·REVIEW2 횟수·메타 및 난도
+판정은 각각 false 또는 0으로 기록한다. 현재 `PARTIAL_UIDS` `FINAL_QA`의 원 M3 검토만 지원하며,
+`rebind`, `sourceRebind`, 별도 `registrationMode`, `proposalFinalization`을 함께 사용하지 않는다.
+
+등록기는 원검토와 그림 변경 직전 source의 학생 payload가 같은지, 변경 직전부터 현재 snapshot까지의 전체
+문항 필드 차이가 허용된 그림 필드뿐인지 직접 검사한다. `content`는 img src 교체만 허용한다. 현재 작업 source의
+학생 payload는 독립 검토 snapshot과 같아야 한다. 별도로 운반하는 governed metadata는 기존 native `after`·
+현행 정본·난도·source parity 검사를 그대로 받는다. 발문 조건, 보기, 정답, 해설, 원번호 또는 메타 판정을
+그림 변경으로 처리할 수 없다.
+
+정규화된 PASS 문장만 읽지 않고 지원하는 독립 작성 원문을 직접 대조한다. 원문에 결속된 모든 이전·현재
+renderer 자산은 해당 source가 참조하는 전체 집합과 일치해야 하며, Git blob과 SHA뿐 아니라 현재 파일의
+실제 바이트도 같아야 한다. 같은 경로의 자산이 원검토와 그림 변경 직전 사이에 바뀐 경우도 거절한다.
+외부 SVG 의존 경로는 허용하지 않는다. 명시적인 해설 그림 정정 원문은 승인된 선 노드 제거·설명 교체만
+바이트 단위로 재현하며, source의 지정된 그림/alt 외 필드와 다른 문항은 모두 보존해야 한다.
+
+영수증은 `sourceReview.rendererContinuity`에 두 source snapshot, 원검토·독립검토 참조, 실제 자산 SHA,
+변경된 renderer 필드와 학생 payload SHA를 남긴다. 동일 요청 재실행도 이 명시적 proof가 있는 항목은
+원래 before 값, 현재 정본 정의, 모든 독립 근거·자산을 다시 검사하고 저장된 전체 sourceReview proof와
+정확히 비교한다. source JS가 그대로인 asset-only 변경이나 영수증 proof 삭제도 거절한다.
+
+공식 writer는 `<requestId>.renderer-binding.json` 보조 증거를 함께 생성한다. schema는
+`archive-reviewed-renderer-binding-v1`이며 실제 request SHA·source blob/raw SHA·원시험 분모·부분 선택 수와
+그림 대상 UID/순번별 전체 sourceReview 및 fingerprint repair의 정렬 JSON SHA를 저장한다. 이 경로는
+그림 대상 metadata/runtime의 `approvalEvidence`에만 추가되고, 원 영수증의 `outputDigests`에 실제 파일 SHA로
+결속된다. 원 before·identityBefore도 전체 repair SHA에 포함한다. 재실행은 보조 파일·digest·선택 집합·현재 승인
+evidence를 모두 검사한다. 따라서 영수증의 renderer proof와 manifest 참조가 함께 누락되어도 이미 승인된 행에
+남아 있는 typed 증거 경로를 기준으로 거부할 수 있다. 다른 문항과 기존 일반/첫 그림 재사용 영수증은 바꾸지 않는다.
+
+#### 원검토의 CC·TPL 제안을 별도 독립 정의 검토로 확정
+
+원검토에 남은 의미 제안은 `REGISTRATION_PENDING`이라는 상태만 지우거나 `native.after`를 다시 써서 승인하지 않는다.
+`sourceReview.proposalFinalization`은 원 native proposal의 정확한 ID와 별도 독립 정의 검토를 결속한다.
+지원 범위는 `m2-s2-meta-review-v1`의 CC 추가, `m3-s2-complete-semantic-review-v1`의 빈 TPL 확정이다.
+미등록 PT, 다른 종류의 의미 제안, 새로운 학생 내용이나 난도 판정에는 적용하지 않는다. 실제 exact binding과 공식 영수증을
+기다리는 기술 부채는 기존 정본 등록기로 해결하며, 미확정 의미 제안이 있는 행을 FINAL_QA로 조용히 재승인할 수 없다.
+M2 `TERM` 제안은 별도 4슬롯 용어 계약의 대상이며 이 메타 등록기의 필드 허용 목록으로 등록되지 않는다.
+M3의 `EXISTING_ACTIVE_CROSSWALK_CONNECTION`, `REUSE_ACTIVE_ADD_CROSSWALK`, `EXISTING_ACTIVE_LINK_GAP`,
+`RPM_LEAF_LINK_PROPOSAL`, `RPM_LEAF_GAP_ACTIVE_TEMPLATE_REUSE`는 원 native.after와 제안이 같은 기존 PT/TPL을 명시하고, 등록 전·후의 정본 정의가
+모두 ACTIVE·동일하며 TPL 부모도 맞을 때만 기술적 연결 부채로 분리한다. 무ID 재사용 행도 원 proposal 문서/행 SHA와
+지원 UID·순번으로 결속한다. 기존 정본이 없거나 이번 요청에서 정의를 바꾸는 경우, 추가 CC·Condition 의미 제안이 남은
+경우는 이 경로로 통과할 수 없다. 최종 과정 exact binding 검증은 그대로 수행하고 `technicalProposalBindings`에 기록한다.
+이는 새 RPM 잎을 등록하거나 의미 경계 교차검토를 대신하지 않는다. `BOUNDARY_REVIEW`는 별도 확정 근거 없이 해소하지 않는다.
+
+```json
+{
+  "proposalFinalization": {
+    "schemaVersion": "archive-native-proposal-finalization-v1",
+    "finalizationCommit": "원격에서 보존하는 독립 증거의 실제 Git commit",
+    "finalizationRef": { "path": "독립 정의 검토 JSON 경로", "sha256": "실바이트 SHA-256" },
+    "proposalIds": ["원 native의 정확한 proposal ID"],
+    "registryChangesRef": { "path": "CC 등록 변경 제안 JSON 경로", "sha256": "실바이트 SHA-256" }
+  }
+}
+```
+
+모든 ref 경로는 `finalizationCommit`의 같은 경로에 있는 원문과 현재 checkout에서 바이트가 같아야 하며 승인 및 item의
+`evidenceRefs` 양쪽에 포함한다. TPL은 `registryChangesRef` 대신 `proposalMappingRef`와 `sourceBindingRef`를 사용한다.
+CC 증거는 `archive-cross-concept-narrow-definition-finalization-v1` 및
+`archive-reviewed-cross-concept-registry-change-proposal-v1`을, TPL 증거는
+`archive-independent-exact-template-finalization-review-v1`,
+`archive-m3s2-exact-type-finalization-review-request-v1`,
+`archive-exact-template-finalization-source-binding-v1`을 그대로 결속한다.
+
+등록기는 원검토 commit의 실제 proposal 문서·SHA, 지원 UID/순번, native item 전체, 현재 학생 payload와 독립 검토의
+source commit/blob/원문 SHA·문항 SHA를 대조한다. 로컬 과거 검토 commit 표기를 원격 commit으로 바꾸지 않는다.
+별도 published-source binding이 그 과거 증거의 정확한 source blob/SHA와 실제 접근 가능한 commit을 연결해야 한다.
+문항 그림과 해설 그림 등 renderer 자산은 원 native commit·독립 검토 source commit·현재 파일 바이트가 모두 같아야 한다.
+지원하지 않는 자산 형태, 외부 URL, 변경된 같은 경로의 그림은 거절한다.
+
+CC는 native가 확정한 기존 배열을 순서까지 유지하고 독립 검토가 그 UID에 확정한 키만 추가한다. native `after`에 CC 배열이
+생략되었으면 검토 commit과 검토 baseline에 명시된 동일 배열이 있어야 한다. TPL은 native의 빈 값을 같은 승인 PT 아래의
+정확한 제안 키로만 채운다. 확정 정의는 `before: null`인 add-only registryChanges 또는 현재 설치된 완전히 같은 정본 행과
+일치해야 한다. 다른 정의를 치환하거나, 별도 지원 UID까지 자동 승인하거나, 기존 CC를 삭제할 수 없다.
+
+확정 필드는 요청 `after`·현재 source·최종 metadata에 모두 명시적으로 일치해야 하며, 그 밖의 native 확정 필드·현재
+ACTIVE 정의·TPL 부모·exact 과정 binding 검증은 유지한다. 원 native 문서는 수정하지 않고 검증된 필드만 내부 승인값에
+추가한다. 영수증에는 원 native.after SHA, proposal 문서/행 SHA, 독립 증거 commit/ref, source/asset 결속 및 확정 필드를
+별도로 보존한다. 이 증거가 새 수학 QA나 REVIEW2 승인으로 바뀌지 않는다.
+
+#### ID가 없는 원제안과 현재의 좁은 정의 판정
+
+`archive-native-proposal-finalization-v2`는 위 v1을 대체하지 않는 별도 명시 계약이다. 원제안에 ID가 없으면 새 ID를
+만들지 않고, 원문 문서의 SHA·배열 index·canonical JSON SHA·지원 UID·원번호의 정확한 tuple로 결속한다. 원래 ID가
+있으면 그 ID도 일치해야 한다. 선택한 UID의 모든 의미 제안과 `proposalSelections` 및 독립 검토의 `decisions`가
+순서까지 일치해야 하며, 모르는 제안 종류나 미처리 의미 부채를 누락해서 통과시킬 수 없다.
+
+```json
+{
+  "proposalFinalization": {
+    "schemaVersion": "archive-native-proposal-finalization-v2",
+    "finalizationCommit": "원격에서 보존하는 실제 독립 증거 commit",
+    "finalizationRef": { "path": "finalized-applications.json의 저장 경로", "sha256": "실바이트 SHA-256" },
+    "proposalSelections": [{
+      "documentRef": { "path": "원 native proposal 문서 경로", "sha256": "원문 SHA-256" },
+      "index": 0,
+      "proposalSha256": "원제안 canonical JSON SHA-256",
+      "questionUid": "정확한 지원 UID",
+      "sourceOrdinal": 1
+    }]
+  }
+}
+```
+
+독립 증거는 `archive-independent-native-proposal-disposition-v1`이며, 전체 수학 QA·REVIEW2·metadata·난도·학생 내용의
+신규 승인을 주장하지 않는다. 실제 원 native item 전체 SHA, 검토자 분리, 현재 source의 Git/blob/raw SHA·문항 SHA와
+원 native 대비 학생 payload 불변, 현재 모든 renderer 자산의 원 Git/raw SHA 및 실제 시각 검토 범위를 검사한다.
+`sourceSnapshot.sourcePath`는 요청의 `archive/exams/` 원본 경로와 정확히 같아야 하며, 학생 내용이 같은 다른 파일의
+snapshot을 빌려 결속할 수 없다.
+텍스트만 있는 문항은 실제 renderer 목록도 비어 있을 때만 빈 자산 목록을 허용한다. 다른 최종 주분류 PT를 새로
+만들거나 기존 ACTIVE 부모 정의를 바꾸는 요청은 이 계약으로 처리하지 않는다.
+
+- M3의 명시된 CC/Condition 제안은 독립 검토가 확정한 키만 기존 native 배열 끝에 추가한다. `ADD_ONLY`는 정확한
+  `before: null` 정의 요청 또는 이미 설치된 같은 정의와 결속한다. CC의 `REUSE_ACTIVE`는 변경 전부터 존재하고 변경
+  후에도 동일한 ACTIVE 정본 행과 결속한다. 다른 검토에서 확정된 CC를 재사용할 때 그 정의의 기존 지원 UID 집합을
+  고쳐 쓰지 않는다.
+- M3 `BOUNDARY_REVIEW`는 별도 독립 판정으로 원 native와 동일한 기존 ACTIVE PT/TPL을 유지하는 경우만 허용한다.
+  분류값을 추가하거나 변경하는 승인이 아니며, 원래 CC·Condition·integrationPattern·난도는 그대로 검사한다.
+- M2 `NEW_TPL`은 원 native의 명시 ID, `after.templateKey`의 부재/null/빈값 및
+  `activeDefinitionMatch.templateKey: null`, 이미 ACTIVE인 동일 부모를 모두 요구한다. 현재 source의 포괄적인 TPL을
+  원검토가 승인한 값으로 오인하지 않는다. 원 독립 검토의 정확한 한 UID·정의·소유 pack·부모와 원 source/assets를
+  `independentReviewRef`로 직접 대조하며, 정규화 문서만 작성해 원 검토의 범위를 넓힐 수 없다.
+
+M3 Condition/경계 application은 `independentReviewRef`가 필수이며 원문·현재 source·renderer 및 정확한 승인 정의/기존
+주분류 판정을 직접 검사한다. ref 삭제로 원 독립 검토 검사를 생략하는 fallback은 없다. 이 ref와 모든 부속 ref는 실제 `finalizationCommit`의 같은 경로 및
+로컬 바이트가 같아야 하고 approval/item 양쪽 evidenceRefs에 들어 있어야 한다. 영수증에 원 독립 ref와 정확한 disposition을
+남긴다. 원 native의 내용/해설/난도 HOLD, before/identity/source 지문, 과정 exact binding, 공식 writer와 Consumer 검사는
+계속 적용된다.
+
+M3 C그룹의 `artifactRefs["proposals.json"]`도 원 Git SHA로 읽는다. `proposals`와 두 이름이 동시에 있으면 모호성으로
+거절한다. 무형식 wrapper 중 원 UID/원번호·두 풀이 근거·debts 전체가 native와 같고, debts가 정확한
+`PROJECTION_BINDING_PENDING`이며 동일 ACTIVE PT/TPL을 가리키는 경우만 과거 기술 메모로 분리한다. 영수증의
+`declaredCurricula`는 원 제안의 교육과정을 그대로 보존하고 `historicalBindingsResolved: false`로 기록한다. 현재 2015
+등록이 원 2022 비교 메모의 바인딩까지 해결했다고 주장하지 않으며, 알 수 없는 debt·새 필드·다른 분류는 거절한다.
+
+### 승인 메타를 보존하는 identity 지문만의 수리
+
+현재 metadata의 두 지문이 실제 source와 이미 일치하고 identity 지문만 오래된 경우, v2 요청에
+`"registrationMode": "IDENTITY_FINGERPRINT_ONLY"`와 `"scope": "PARTIAL_UIDS"`를 명시한다. `FINAL_QA`와 위 `sourceReview`의
+동일한 실제 원검토·Git·UID·현재 학생 payload 결속이 필요하다. 등록 정본 변경은 허용하지 않는다.
+
+- 각 item의 `before`/`after`에는 현재 metadata와 정확히 같은 `sourceFingerprint`와 `contentFingerprint` 두 필드만 쓴다.
+  현재 metadata에 기존 승인 상태가 있어야 하고, `identityBefore.sourceFingerprint`에는 실제 오래된 identity 값을 적는다.
+  임의의 의미값·난도·후보·typeHold 변경이나 이미 일치하는 identity의 불필요한 수리는 거절한다.
+- 공식 writer는 `question_identity_map.json`의 해당 지문과 수리 영수증만 쓴다. 원본 JS, metadata 전체 바이트·승인 상태·남은 hold,
+  Runtime 및 정본은 보존한다. 이 모드에서는 원검토의 새 의미값을 등록하지 않으며 승인 수가 증가하지 않는다.
+- 영수증 schema는 `archive-reviewed-identity-fingerprint-repair-v1`이고 `metadataRegistrationStatus: PRESERVED_WITHOUT_NEW_APPROVAL`,
+  `metadataChanged: false`, `newMetadataApprovals: 0` 및 metadata 전후 SHA를 보존한다. 일반 의미 등록 영수증으로 해석하지 않는다.
+  두 번째 파일 쓰기가 실패하면 identity 쓰기도 되돌린다.
+- 재실행은 해당 UID/현재 source·metadata 두 지문/identity/영수증의 일치를 다시 검사한다. 별도 승인 요청이 나중에 변경한 비지문 메타는
+  이 수리 영수증이 소유하지 않는다. `--verify-projection`은 실제 resolver와 학생용 ProblemBankMeta 검색에서 UID와 두 지문을 확인하고,
+  새 의미 승인 없이 수리된 source binding만 검증한다. 기존 소비자 충돌은 면제하지 않는다.
 
 ### Generated 확장 키(EXT-*) — 사용은 허용, 정본 승격 없음 (2026-11-02)
 
@@ -80,6 +309,8 @@ PT/TPL에는 확장 키를 받지 않는다. 확장 키는 정본 registry·comp
 - 기존 Runtime 행은 `metadataRevision`/`approvalEvidence`만 다르게 재사용한다. 갱신되는 것은 메타 행의 `metadataRevision`·`approvalEvidence`와 새 영수증·Runtime 행뿐이며,
   `metadataApprovalType`, `fieldStatus`, `tagConfidence`, EVIDENCE_DEBT는 등록 당시 그대로 둔다(새 의미 검수를 했다고 기록하지 않는다).
 - 요청 근거로 승인 시점 바이트와 현재 바이트를 문항별로 비교한 `*.review.json`을 둔다(바뀐 필드 목록, 문항별 fingerprint 일치).
+- `PARTIAL_UIDS` 재결속은 이전 영수증도 `PARTIAL_UIDS`/`FINAL_QA`이고 전체 시험 분모와 선택 UID·ordinal 집합이 정확히 같을 때만 허용한다. 이전 Git source blob이 실제 존재하며 선택 문항 전체 객체(표시 번호·렌더러 필드·명시 메타 포함)가 현재와 같아야 한다. 같은 파일의 다른 문항 변경으로 깨진 파일 해시만 다시 결속한다.
+  이전 영수증의 선택 identity/runtime는 현재와 완전히 같아야 하고, 비선택 UID·HOLD는 변경하지 않는다. 기존 `metaFoundationPackVersion`·승인 종류·fieldStatus를 유지하며 결과·영수증·replay에 `newMetadataApprovals: 0`, `preservedMetadataApprovals: 선택 수`를 구분해 기록한다. 이전 FULL 또는 다른 승인 종류를 PARTIAL 재결속으로 변환하지 않는다.
 
 ### `META_PIPELINE_AUDIT` 승인 유형
 
@@ -116,6 +347,8 @@ SOP v1.2의 기존 원본에 예전 단원 네임스페이스가 남아 있으�
 - legacy/rich/key-only `META_PIPELINE_AUDIT` 입력은 1~5 `difficultyBucket`이나 `IntegrationPattern`을 판정하지 않는다. 새 sourceDrive flat v3 예외는 audit와 paired classification이 UID별 동일한 1~5 bucket, confidence, reason을 명시하므로 해당 bucket/confidence를 메타 provenance `approved_meta_pipeline_audit`로 바인딩한다. 이 경우에도 level에서 bucket을 계산하지 않는다. IntegrationPattern이 source schema에서 빠지고 production JS에도 없으면 manifest의 transport sentinel `NONE`만으로 값을 만들지 말고, 기존값은 보존하고 값이 없는 UID는 `unreviewedFields`에 `EVIDENCE_DEBT`로 남긴다. 기존 legacy bucket이 숫자형 1~5가 아니고 audit에서도 bucket 근거가 없으며 production JS에도 유효한 bucket이 없을 때만 정확한 `before`로 결속하여 `after: null`로 지우고 debt를 기록한다.
 - Consumer가 요구하는 L1/L2는 evidence-bound `.parent-labels.json`으로 현재 `basic-scope-parent-links.json`의 정확한 curriculum/course/unit/subunit 부모에서 가져온다. `courseKey` 별칭을 쓸 때는 해당 별칭이 ACTIVE owner pack의 `standardCourses`에 있어야 한다. standardUnit label을 부모 L1로 대체하지 않는다.
 - `targetParentRef`는 canonical master의 원래 scope와 parent row를 그대로 SHA 결속한다. course 대조에는 기존 Archive2 master projection과 같은 `수학_상 → 수학(상)`, `수학_하 → 수학(하)` 두 별칭만 정규화하며 curriculum·원래 master row·단원·L1/L2 검증은 유지한다.
+- `PARTIAL_UIDS FINAL_QA`의 명시 `targetParentRef.nativeSourceReview` (`archive-native-reviewed-parent-v1`)는 엄격한 source reassessment를 이미 통과한 M2 S2 원검토가 `after.rpmPrimaryPath`, `rpmL1/rpmL2`, curriculum 및 PT/TPL을 직접 확정한 경우에 한해 그 부모를 운반한다. `reviewCommit/reviewPath/reviewRef`, UID/ordinal, 원 `rpmRecordId`의 SHA-bound `middle2.json` 행을 모두 정확 결속하고, 현재 master의 같은 curriculum/course/부모/리프 및 현재 ACTIVE exact unit/subunit/PT binding·TPL parent·owner scope를 별도로 검증한다. 이 경로의 원 crosswalk는 `DIRECT_BINDING_GAP/MISSING`인 과거 참조로 보존되며 ACTIVE 승인으로 취급하지 않는다. 같은 요청의 registry 변경, basic/semantic/다른 parent adapter 혼합, 기존 binding의 명시 L1/L2와 충돌, native-after 대신 현재 source에서만 추측한 부모는 거부한다. 기존 unit/subunit·정의·crosswalk 파일을 바꾸지 않으며 수학 검수 승인을 생성하지 않는다. 영수증의 `nativeParentBindings`는 원 item·현재 exact ACTIVE tuple과 부모를 기록하고 재실행 때 immutable source review·현재 부모·영수증 증거를 다시 확인한다. 옵트인이 없는 기존 parent 경로는 그대로 유지한다.
+- L2 대조에는 `resolve()`가 선택한 정확한 ACTIVE 교육과정·과목·단원·세부단원·PT binding의 `subUnitLabelKo`도 정본 표시명으로 인정한다. 다른 binding의 별칭이나 요청이 임의 제공한 라벨은 사용하지 않으며, SHA 결속한 master의 교육과정·scope·L1/L2 검증은 그대로 유지한다.
 - 표준단원 표시명과 RPM 부모명이 다른 경우 `targetParentRef.crosswalkRef: {path, sha256, recordId}`로 정확한 ACTIVE_REFERENCE crosswalk 행을 함께 결속할 수 있다. 해당 행의 교육과정·과목·ACTIVE PT/TPL과 canonical master L1/L2가 모두 일치해야 한다. 문항 단원은 기존 ACTIVE binding과 감사 입력으로 계속 검증하며, 이 참조로 정본 정의나 binding을 재정의하지 않는다.
 - crosswalk의 과목이 `M3-2` 같은 학기 별칭이면 문항 `courseKey`와 정확히 같고 ACTIVE binding owner pack의 `standardCourses`에 실제로 선언된 경우에만 수용한다. 과목 표시명과 별칭의 교환으로 교육과정·PT/TPL·부모의 일치 검사를 생략하지 않는다.
 - 이전 `META_PIPELINE_AUDIT` 등록에서 PT 의미가 아니라 exact ACTIVE binding의 부모 L2만 잘못 연결된 경우, `parentBindingCorrectionRef`가 가리키는 SHA-bound 증거와 현재 binding의 정확한 before/after, 그 binding의 전체 supporting UID, 정본 부모 근거를 함께 제시하면 L2만 정정할 수 있다. 정정은 부모 경로를 바로잡는 범위로 제한하고 PT/TPL/CrossConcept 정의·키·supporting UID 및 학생용 payload는 바꾸지 않으며, 영향을 받는 모든 UID를 같은 N/N 요청에 포함한다. 정본 compiler가 owner pack patch version을 갱신한다.
@@ -143,6 +376,7 @@ SOP_v1.2 approval v4의 매니페스트 바인딩은 answer/questionType/choices
 기존 필드가 없으면 `before` 값은 `null`이다. source JS에도 존재하는 값은 정확히 같아야 한다.
 기존 source/identity fingerprint와 UID/ordinal도 일치해야 한다.
 `level`은 하/중/상, `difficultyBucket`은 정수 1~5로 독립 검증한다.
+원본이 명시적으로 가진 역사적 `level: null` 또는 `level: "중상"`은 `FINAL_QA`에서 원값을 그대로 보존할 수 있다. 이 경로는 원본과 요청의 level, 정수 1~5 bucket, high/medium/low confidence, 유효한 boundary가 모두 같고 양쪽 `legacyLevelCompatibility`가 `UNKNOWN`일 때만 허용한다. level 필드 누락, 새 임의 표시명, 미확정 bucket, REVIEW2로의 승인 종류 변경은 이 예외로 승인하지 않는다. 기존 UID·원본 SHA·fingerprint·검토 증거·정본 바인딩 검사는 동일하다. source-only 검색 인덱스가 명시적 null level을 빈 문자열로 내보낸 경우에도 같은 원본의 위 조건을 다시 검증하며 등록 메타와 runtime의 원값은 null로 유지한다.
 기존 승인 L1~L4를 정본으로부터 바꾸는 경우에도 해당 필드의 `before`가 필요하다.
 L1/L2는 binding의 명시적 L1/L2를 우선하고, 기존 구조에서는 표준단원/세부단원 master label을 사용한다.
 RPM 전용 값은 `rpmL1~rpmL4`, `rpmPrimaryPath`, 의미 근거 필드로 별도 보존한다.
@@ -224,9 +458,141 @@ workflow에는 `::error` 주석과 요약 표가 남는다. 거절은 run을 실
 이 구현은 Consumer 엔진을 재설계하거나 Pages와의 기존 writer 구조를 변경하지 않는다.
 정본 등록/정적 값 검증과 학생 화면·출시 완료를 구분해 보고한다.
 
+## 기존 감사 승인과 검토 난도의 원본 재결속 (2026-11-15)
+
+이미 유효한 전체 시험 감사 영수증이 있고, 원본 메타 운반 또는 별도로 검토된 해설 수리 때문에 전체 JS 해시가 바뀐 경우에만
+기존 v2 요청의 approval.type: META_PIPELINE_AUDIT와
+approval.sourceRebind.schemaVersion: archive-native-audit-preservation-v1을 사용한다.
+일반 FINAL_QA/REVIEW2 승인으로 전환하지 않는다. 기본 범위는 전체 시험이며,
+같은 원 전체 감사에서 일부 UID만 그대로 보존할 때는 명시적으로 `scope: PARTIAL_UIDS`를 사용한다.
+
+- requestPath는 해당 요청의 inbox 경로다. priorCommit의 실제 Git commit에서 priorReceiptRef의 raw SHA와 원본 blob/SHA를 대조한다.
+  이전 영수증의 metadata, identity, runtime UID/ordinal 집합은 원시험 전체 분모와 같아야 한다.
+  부분 보존도 `expectedQuestionCount`는 현재 원본 전체 문항 수이며, 요청 item은 원 전체 감사의 정확한 UID/ordinal 부분집합이어야 한다.
+  빈 집합, 중복, 범위 밖 순번, 다른 UID, 부분 영수증을 prior로 삼는 요청은 거부한다.
+  prior가 이미 발급된 **전체 감사 보존 영수증**인 경우에는 원 감사까지 역사 검증을 이어서 수행한다.
+  각 단계의 정확한 Git source와 영수증, 봉인된 request/D5, 모든 metadata·identity·runtime 결과를
+  동일 보존 planner로 재현해야 한다. 현재 revision/evidence를 무시하거나 최초 감사 값으로 되돌리지 않는다.
+  소비되어 해당 Git tree에 실제로 없는 request/D5 inbox만 그 영수증의 봉인본을 사용한다.
+  원 D5 외 근거 파일이 없거나 Git 파일의 SHA가 다르면 거부하고, 순환·16단계 초과 이력도 거부한다.
+  현재 D5의 before는 바로 이전 보존 영수증의 실제 승인값이며, 전체 원시험 분모와 기존 검토 after를 유지한다.
+- 모든 item은 before: {}, after: {}이며 registryChanges는 없다. 원래 감사 종류, 분류키·부모·승인 필드 상태,
+  review_required, source_unreviewed, EVIDENCE_DEBT, 선택 가능 상태를 그대로 보존한다.
+- difficultyRequestRef는 동일 source blob과 전체 UID를 대상으로 이미 적용된 공식 reviewed-correction D5 요청의 경로/raw SHA다.
+  해당 요청의 근거 SHA, 원래 metadata before, 실제 source 지문, 승인된 네 난도 필드의 after를 모두 대조한다.
+  먼저 D5를 적용하고 그 결과를 보존 영수증에 결속한다. legacy level은 바꾸지 않는다.
+- 원본의 기본 분류키와 난도 표기는 기존 승인값과 같아야 한다. 표시명은 같은 ACTIVE master key의 정확한 label로만 운반할 수 있고,
+  category와 standardUnitOrder 변화도 같은 단원 정본과 SHA-bound 순서 문서로 검증한다. 임의 별칭·새 분류·새 풀이 근거를 허용하지 않는다.
+- 해설이 바뀐 UID는 solutionRepair: { ref, reviewCommit, reviewPath }로 별도의 immutable
+  archive-source-solution-repair-v1 / NARROW_REPAIR_REVIEWED 근거를 제공한다.
+  UID/ordinal, 독립 검토자, before/after 해설 SHA, 실제 두 Git 원본, 현재 원본을 대조하고
+  해설 외 학생용 필드와 표시 번호가 모두 같아야만 full fingerprint를 갱신한다.
+  새 시험지 QA나 고급 분류 승인을 부여하지 않는다.
+- 영수증은 newMetadataApprovals: 0, preservedMetadataApprovals: N, 실제 해설 지문 수리 수를 따로 기록한다.
+  부분 보존에서 N은 선택 UID 수이며 `scope`, `partialUidCount`, `totalQuestions`와 일치한다.
+  `expectedQuestionCount`에는 전체 시험 분모를 별도로 보존한다. 적용 metadata/identity/runtime와 재실행 검증은
+  정확히 선택한 UID에만 한정하고 선택 밖 행은 바꾸지 않는다. 원 전체 감사 및 D5 correction/gemini/proof의 전체 문항 검증은 줄이지 않는다.
+  성공한 inbox가 소비된 이후에도 검증할 수 있도록 원 요청 객체와 D5 입력의 정확한 raw UTF-8를 영수증에 봉인한다.
+  원 요청의 stable digest와 D5 raw SHA를 다시 검증하며, 현재 파일이 남아 있으면 봉인 사본으로 파일 변조를 숨길 수 없다.
+- AutoMeta는 위 증거, 현재 source/identity/metadata/runtime, ACTIVE PT/TPL과 exact binding을 다시 검증해 기존 승인만 재사용한다.
+  감사가 남긴 null IntegrationPattern과 명시 debt는 그대로 유지한다. D5 재실행도 같은 보존 영수증이 실제 해설 지문 수리까지
+  입증할 때만 새 full fingerprint를 인정한다. 근거·UID·분모·승인 종류·debt·재결속 내역 중 하나라도 달라지면 거부한다.
+- 과거 `meta-pipeline-audit-approval-v2`가 남긴 `approved_subunit_concept_partial` tag, `reviewStatus` 미기재,
+  일곱 분류 필드의 `approved_meta_pipeline_audit`와 난도의 `approved_source`라는 정확한 상태 조합도 보존할 수 있다.
+  이 경우 원본은 네 D5 필드 외에 한 필드도 바꿀 수 없고, 해설 수리도 함께 적용하지 않는다.
+  당시 source의 빈 보조 분류와 승인 sidecar가 달랐다면, immutable prior source와 승인 영수증에서 각각 확인한
+  기존 관계만 유지한다. 새 source 값으로 덮거나 비어 있던 QA 상태를 추가하지 않는다.
+  현재 metadata/identity/runtime는 기존 승인 전체와 공식 D5 결과에 정확히 일치해야 하며,
+  재결속 후에도 원 승인 종류·상태·fieldStatus·pack version을 유지하고 새 승인 수는 0이다.
+- 위 과거 상태에서 원 audit의 L1/L2와 이미 게시된 기본 부모 투영이 달랐던 경우에만
+  `sourceRebind.consumerParentRef`로 `archive-native-audit-consumer-parent-preservation-v1` 근거를 명시할 수 있다.
+  근거는 동일 원 영수증·원본이 존재하는 `priorConsumerCommit`, 그 commit의 `basic-scope-parent-links.json` blob/SHA,
+  동일 원 승인 metadata 전체행, UID별 full/body 지문과 정확한 기본 키·교육과정·과목·부모를 결속한다.
+  현재 Consumer도 같은 승인 assignment, 현재 metadata revision, 원 승인 근거, 동일 UID/지문/키를 가져야 하며
+  실제 canonical 기본 부모 검증을 다시 통과해야 한다. 이 경우 L1/L2의 화면 값은 그 기존 투영과 비교하고,
+  raw 승인 L1/L2는 기존 runtime과 비교해 그대로 보존한다. PT/TPL·나머지 값과 ACTIVE binding 검증은 유지한다.
+  새 부모 승인, 라벨만 같은 다른 키, 지문·분모·정본 근거 변조는 허용하지 않는다.
+  부분 보존의 parent witness도 선택한 UID 안에서 실제 근거가 필요한 행만 포함한다. witness의
+  `expectedQuestionCount`는 원 전체 분모를 유지하며, 선택 밖 다른 승인 UID의 부모를 끼워 넣으면 거부한다.
+
+## 검토된 그림 교체 뒤 native 승인 재사용 (2026-11-15)
+
+`native-reviewed-figure-reuse.mjs`는 공식 PARTIAL_UIDS FINAL_QA 등록이 이미 끝났지만
+AutoMeta의 이전 원본 cursor에 PNG 또는 옛 해설 그림이 남아 있을 때만, 현재 영수증의 승인을 그대로 재사용한다.
+새 등록 모드나 내용 변경의 일반 허용 경로를 만들지 않는다. 성공 결과는 `ALREADY_REGISTERED`이며
+metadata·identity·runtime·source를 쓰지 않고 기존 승인 종류·revision·부모·fieldStatus를 유지한다.
+
+- current sourceReview는 immutable native 문서의 `NARROW_CURRENT_FIGURE_CONTINUITY_ONLY` 범위를 가져야 한다.
+  실제 `reviewCommit:reviewPath`, local reviewRef SHA, nativeSchemaVersion을 범위 분기 전에 대조한다.
+  scope/schema와 local SHA를 함께 바꾸더라도 일반 승인 경로로 빠질 수 없다.
+  sourceReview가 없는 기존 영수증과 정상 Git-bound 일반 재판정의 별도 local-copy 경로는 유지한다.
+- 현재 원본 전체 blob/raw SHA 및 UID/ordinal 분모, 실제 이전 Git 원본의 학생 payload와
+  AutoMeta previous payload, 원 pending 요청의 의미·난도 after 값, 원 native 의미 판정을 결속한다.
+  기존 재판정 helper로 현재 영수증의 sourceReview proof도 다시 재현한다.
+  이미 current 원본에 도달한 cursor도 동일한 그림 근거를 계속 검증한다.
+- 문항 전체에서 허용하는 차이는 검토된 image/solutionImage·그림 표시 필드와 layoutTag뿐이다.
+  content에서는 동일 `<img>`의 quoted `src` 경로 교체만 허용한다. 발문, 선택지, 정답, 해설,
+  HTML alt 속성, 번호, 점수, 분류·난도 등 나머지 값이 바뀌면 거부한다.
+- 독립 그림 검토의 네 명시 schema에서 정확한 UID/ordinal, 전체 before/current 문항 SHA,
+  원본 blob/raw SHA와 narrow PASS를 읽는다. 원 renderer inventory와 원·현재 모든 참조 asset의
+  Git blob/raw SHA가 일치해야 하며, 현재 파일 bytes도 매번 확인한다.
+  같은 경로에서 나중에 바뀐 asset, 누락·추가 asset, 외부 SVG 의존성, 미지원 asset object/inline SVG를 거부한다.
+  immutable Git bytes는 cache할 수 있지만 현재 source/metadata/identity/runtime 및 local evidence/asset 확인은 생략하지 않는다.
+- 이 경로는 새 전체 수학 QA, REVIEW2, 난도 판단 또는 고급 메타 승인을 부여하지 않는다.
+  기존 solution-only 재결속과 일반 native receipt의 ACTIVE 정본·정확 binding·현재 runtime 검증은 유지한다.
+  실제 build, projection, Changed-UID Consumer 및 main 등록·배포는 별도 게이트다.
+
+`tests/archive-main-merge-meta.test.mjs`는 image/본문 img/solutionImage-only의 정상 경로와
+원문·답·해설·독립 검토·원 pending 값·renderer inventory·same-path asset·scope/schema 위조를 검증한다.
+cursor가 이미 current와 같거나 Git cache가 채워진 뒤에도 변조를 거부하며,
+`tests/archive-main-meta-batch-replay.test.mjs`의 기존 배치 재실행 계약을 함께 유지한다.
+
+## 기본 승인과 명시적 PT/TPL hold의 AutoMeta 보존 (2026-11-15)
+
+기존 `approved_partial_with_explicit_holds` 행에 PT 또는 TPL의
+`fieldStatus: manual_review_pending`이 남아 있으면, 다른 요청이 ACTIVE binding을 추가해도
+일반 main-merge 등록이 그 미결 값을 채우거나 기존 기본 승인·fieldStatus를 덮지 않는다.
+유효한 native receipt 재사용을 먼저 검사하고, 일반 producer의 원래 UID·지문·ACTIVE·난도·근거
+검증을 통과한 뒤에도 이 행은 `SUPPLEMENT_PENDING / EXPLICIT_PARTIAL_REVIEW_HOLD`로 남는다.
+기존 metadata·identity·runtime·학생 원본은 쓰지 않으며 새 승인 또는 hold 해소를 주장하지 않는다.
+해당 미결 필드를 실제 검토한 명시적 등록은 기존 reviewed 경로에서 별도로 수행한다.
+
+registry SHA가 바뀌면 pending 원본을 다시 평가하는 동작과 일반 미승인 행의 main-merge 등록,
+valid native reuse 및 stale native 거부 계약은 유지한다. 배치 회귀는 실제 registry 변화 뒤
+부분 승인 행의 전체 metadata를 보존하고 다른 미승인 UID만 등록되는지, 같은 배치 재실행이
+동일 선택과 pending 사유를 유지하는지 확인한다.
+
+## 부분 FINAL_QA 원본 보존 영수증의 AutoMeta 재사용
+
+`approval.sourceRebind.priorReceiptRef`로 원본 파일만 다시 결속한 `PARTIAL_UIDS` 영수증은
+기존 그림·해설 검토 근거를 없애지 않는다. AutoMeta는 SHA로 결속된 원 영수증까지 이어서 확인한다.
+각 연결에서 시험·원본 경로·전체 분모·선택 UID와 순번이 같고, 실제 Git 원본의 선택 문항 전체 객체가
+같아야 한다. metadata와 runtime은 revision 및 새 영수증 경로를 추가한 evidence 목록 외 모든 값이
+동일해야 하며, identity는 전체 객체가 동일해야 한다. 새 승인·registry 변경·fingerprint repair는 허용하지 않는다.
+
+원 영수증에 도달하면 그 영수증의 실제 Git source와 기존 승인값으로 기존 native 검증기를 다시 실행한다.
+이전 pending cursor를 그대로 대조하며, 원래 독립 그림 검토·renderer sidecar·현재 자산 바이트·원검토
+proof 검증을 생략하지 않는다. cursor가 이미 current여도 원 solution-only repair는 원 prior Git 문항으로
+다시 검증한다. 이 경로는 새로운 학생 내용 변경이나 의미 승인을 허가하지 않고 기존 영수증을 재사용한다.
+
+잘못된 prior SHA, 선택 집합·다른 선택 문항 변경, 승인 상태·값·근거 삭제, 자산 변조, 순환 또는 64단계를
+넘는 연결은 거절한다. 명시적인 부분 보존 근거가 검증에 실패하면 일반 main-merge producer로 내려가
+기존 승인을 덮지 않고 `NATIVE_SOURCE_PRESERVATION_REVALIDATION_FAILED`로 남긴다.
+최신 보존 영수증 자체가 누락되거나 정상적인 현재 등록 객체가 아니어도, metadata/runtime에 남은
+revision과 원 영수증·evidence append 관계를 확인하여 producer 우회를 차단한다. JSON 파싱 성공만으로
+정상 영수증으로 간주하지 않으며, 실제 source의 Git/raw SHA와 전체 분모까지 일치해야 한다.
+기존 FULL 보존과 typed source-review/renderer sidecar 계약은 별도로 그대로 유지한다.
+
 ## 검증
 
 `node --test tests/archive-reviewed-exam-registration-v2.test.mjs`는 격리된 임시 저장소에서
 중등 전 학년·고등 과목·미등록 미래 과목, 실제 Git 정본과의 확장 결합, 24 UID 보존,
 키 교체/수정/폐기/삭제, UID·근거·before·binding 오류, 재실행을 확인한다.
 순천고 실제 24 UID의 의미 승인이나 운영 등록 결과를 대신하지 않는다. SOP_v1.2 approval v4는 `META_AUDIT_ATOMIC_PACKAGE` + `COURIER_INTAKE_MANIFEST`의 UID/ordinal/PT/TPL/CC/단원 parity, corrective review 발췌의 실제 source 포함, 현재/원본 선언 SHA의 독립 결속, visual evidence 실제 상태, Condition 증거 부재 시 fail-closed, template inflation 미합성, 원본 바이트 불변을 검증한다. 두 네이티브 JSON만으로는 등록되지 않으며, 위 evidence contract가 모두 갖춰진 뒤에만 v4 등록이 성립한다.
+
+
+### Immutable native KEEP primary continuity
+
+A partial source reassessment may restore a primary tuple omitted from a native M2 KEEP delta only after the existing independent CC finalization has verified the exact primary context. Both immutable source snapshots, the current question, the explicit request and final metadata must agree. The native ACTIVE PT/TPL match and one exact curriculum binding are required. The unchanged current ACTIVE PT and template must both already name the selected UID among their supporting questions.
+
+The continuity proof may carry the two primary keys, an unchanged empty condition list and an unchanged integration value. It cannot add conditions, change primary definitions, infer a new curriculum, settle a hold or replace a native semantic decision. Optional source semantic-status fields are not promoted through this path. Official canonical binding, resolver, projection and typed Consumer gates still apply.

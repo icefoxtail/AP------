@@ -99,3 +99,29 @@ test('base exponential and pair reach ARCHIVE_BOUND through renderPlan',{timeout
     assert.ok(fs.existsSync(path.join(out,`${name}-solution.svg`)));
   }
 });
+
+test('Suncheon Girls Q18 names exact inverse curves while leaving the default evaluated labels intact',async()=>{
+  const stock=pair();
+  const curves=stock.graphPlan.curves.map(curve=>({...curve,formulaLabel:'NAME'}));
+  const named={...stock,graphPlan:{...stock.graphPlan,curves}};
+  const baseline=await framed(stock);
+  const candidate=await framed(named);
+  assert.deepEqual(candidate.model,baseline.model);
+  const observed=await pythonWorker({action:'modelBinding',graphPlan:candidate.plan.graphPlan,svg:candidate.model.svg,
+    transform:candidate.model.transform},{script:observer});
+  assert.equal(observed.result.status,'PASS',JSON.stringify(observed.result));
+  const spec=specFor(candidate.plan,candidate.model,'q18');
+  assert.deepEqual(spec.objects.filter(o=>o.id.startsWith('formula-')).map(o=>[o.id,o.text,o.nearCurve]),
+    [['formula-f','f(x)','f'],['formula-g','g(x)','g']]);
+  const normal=specFor(baseline.plan,baseline.model,'baseline');
+  assert.match(normal.objects.find(o=>o.id==='formula-g').text,/sqrt\(3\)/);
+  const makeLabel=(id,glyphs)=>'<g id="formula-'+id+'">'+glyphs.map(code=>'<path data-c="'+code+'"/>').join('')+'</g>';
+  const both=makeLabel('f',['66','28','78','29'])+makeLabel('g',['67','28','78','29']);
+  const finalLike=candidate.model.svg.replace('</svg>',both+'</svg>');
+  const check=svg=>pythonWorker({action:'graphAudit',graphPlan:candidate.plan.graphPlan,svg,transform:candidate.model.transform},{script:observer});
+  assert.equal((await check(finalLike)).result.status,'PASS');
+  const numeric=finalLike.replace('data-c="67"','data-c="33"');
+  assert.ok((await check(numeric)).result.errors.includes('EXP_LOG_PAIR_NAME_LABEL_MISMATCH:g'));
+  assert.equal(await frameError({...named.graphPlan,curves:[{...curves[0],formulaLabel:'3'},curves[1]]}),
+    'EXP_LOG_PAIR_FORMULA_LABEL_INVALID:f');
+});

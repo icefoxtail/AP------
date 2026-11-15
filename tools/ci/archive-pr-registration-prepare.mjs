@@ -7,7 +7,8 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { loadPatterns } from './push-touches-paths.mjs';
-import { selectNativeRequests, applyNativeRequests, emptyNativePreview } from './archive-pr-native-preview.mjs';
+import { selectNativeRequests, selectPendingNativeRequests, pendingNativeRequestPaths, applyNativeRequests,
+  verifyNativeRequests, nativeOutputManifest, emptyNativePreview } from './archive-pr-native-preview.mjs';
 
 const SHA = /^[0-9a-f]{40}$/i;
 const INPUTS = [
@@ -51,17 +52,19 @@ export function preparePrRegistration({ root = process.cwd(), eventName, event, 
   let paths;
   try { paths = git(['diff', '--name-only', '--no-renames', '-z', baseSha, headSha, '--']).split('\0').filter(Boolean); }
   catch { paths = null; }
-  const report = { baseSha, inputHeadSha, headSha, changedPathCount: paths?.length ?? null };
-  if (!registrationInputsChanged(paths)) {
+  const pendingPaths = eventName === 'push' ? pendingNativeRequestPaths({ root, headSha }) : [];
+  const requests = eventName === 'pull_request'
+    ? selectNativeRequests({ root, baseSha, headSha }) : selectPendingNativeRequests({ root, headSha });
+  const report = { baseSha, inputHeadSha, headSha, changedPathCount: paths?.length ?? null,
+    ...(eventName === 'push' ? { pendingRequestPaths: pendingPaths } : {}) };
+  if (!registrationInputsChanged(paths) && !pendingPaths.length && !requests.length) {
     return { ...report, state: 'NO_OP', reason: 'no registration input changed in the fixed source snapshot' };
   }
   // This command is for a disposable CI checkout. Never overwrite local unfinished work.
   if (git(['status', '--porcelain', '-z', '--untracked-files=all']).length) throw new Error('temporary registration preparation requires a clean CI checkout');
   const nativePreview = emptyNativePreview();
-  if (eventName === 'pull_request') {
-    nativePreview.requests = selectNativeRequests({ root, baseSha, headSha });
-    nativePreview.plans = applyNativeRequests({ root, requests: nativePreview.requests, run });
-  }
+  nativePreview.requests = requests;
+  nativePreview.plans = applyNativeRequests({ root, requests: nativePreview.requests, run });
   run(process.execPath, ['archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs', '--write'], root, true);
   if (nativePreview.requests.length) run(process.execPath, ['archive/tools/meta-foundation/compile-meta-foundation.mjs', '--write'], root, true);
   // Match the official reviewed-meta writer's bounded fixed-point recovery.
@@ -74,6 +77,13 @@ export function preparePrRegistration({ root = process.cwd(), eventName, event, 
     console.warn('::warning title=Archive registration first generation failed::Repeating the official builder once in the same temporary checkout; all validation gates remain required.');
     run('python3', ['archive/build_db.py'], root, true);
   }
+  if (eventName === 'push' && nativePreview.requests.length) {
+    // PR proof production verifies these after its remaining generation steps.
+    // Main has no outer PR proof, so its preview must check the actual projected
+    // values and typed Consumer here before the ordinary test suite proceeds.
+    nativePreview.checks = verifyNativeRequests({ root, requests: nativePreview.requests, run });
+    nativePreview.outputs = nativeOutputManifest(root, nativePreview.plans);
+  }
   if (git(['rev-parse', '--verify', 'HEAD']).trim() !== headSha) throw new Error('temporary preparation must not create or change a commit');
   const generated = [...new Set([
     ...git(['diff', '--name-only', '-z', 'HEAD', '--']).split('\0'),
@@ -83,7 +93,7 @@ export function preparePrRegistration({ root = process.cwd(), eventName, event, 
   const nativePaths = new Set(nativePreview.plans.flatMap(plan => plan.plannedPaths));
   const unexpected = generated.filter(file => !nativePaths.has(file) && !allowed.some(re => re.test(file.normalize('NFC'))));
   if (unexpected.length) throw new Error(`registration preparation changed non-derived files: ${unexpected.join(', ')}`);
-  return { ...report, state: 'PREPARED', reason: paths ? 'registration input changed' : 'scope unavailable; conservative registration build', generatedPaths: generated, nativePreview };
+  return { ...report, state: 'PREPARED', reason: pendingPaths.length ? 'fixed main snapshot has pending native registration' : paths ? 'registration input changed' : 'scope unavailable; conservative registration build', generatedPaths: generated, nativePreview };
 }
 
 function main() {

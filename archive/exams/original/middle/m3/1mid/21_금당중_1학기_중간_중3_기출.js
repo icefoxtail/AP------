@@ -287,7 +287,11 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "content": "아래 그림과 같이 컴퍼스를 사용하여 원점 $O$를 중심으로 하고 $\\overline{OA}$의 길이를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $P$라 하였다. 직각삼각형 $OBP$에서 $\\overline{BP}=1$이고, $\\overline{OB}=\\overline{OQ}$일 때, 점 $Q$가 나타내는 수는? (단, $\\overline{OA}$는 한 변의 길이가 $1$인 정사각형의 대각선이다.) [4점]<br><svg width=\"230\" height=\"120\" viewBox=\"0 0 230 120\" xmlns=\"http://www.w3.org/2000/svg\" style=\"display:block;width:100%;max-width:350px;height:auto\"><line x1=\"8\" y1=\"90\" x2=\"218\" y2=\"90\" stroke=\"black\" stroke-width=\"1.2\"/><polygon points=\"8,90 14,87 14,93\" fill=\"black\"/><line x1=\"30\" y1=\"90\" x2=\"30\" y2=\"60\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"30\" y1=\"60\" x2=\"60\" y2=\"60\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"60\" y1=\"60\" x2=\"60\" y2=\"90\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"30\" y1=\"90\" x2=\"60\" y2=\"60\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"30\" y1=\"90\" x2=\"72.426\" y2=\"60\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"72.426\" y1=\"60\" x2=\"72.426\" y2=\"90\" stroke=\"black\" stroke-width=\"0.9\" stroke-dasharray=\"3 2\"/><path d=\"M60 60 A42.426 42.426 0 0 1 72.426 90\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/><path d=\"M72.426 60 A51.962 51.962 0 0 1 81.962 90\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/><text x=\"26\" y=\"103\" font-size=\"10px\" font-family=\"serif\">O</text><text x=\"28\" y=\"115\" font-size=\"10px\" font-family=\"serif\">0</text><text x=\"57\" y=\"55\" font-size=\"10px\" font-family=\"serif\">A</text><text x=\"73\" y=\"55\" font-size=\"10px\" font-family=\"serif\">B</text><text x=\"57\" y=\"103\" font-size=\"10px\" font-family=\"serif\">1</text><text x=\"69\" y=\"84\" font-size=\"10px\" font-family=\"serif\">P</text><text x=\"82\" y=\"103\" font-size=\"10px\" font-family=\"serif\">Q</text></svg>",
+    "solutionImage": "assets/images/21_금당중_1학기_중간_중3_기출/q9-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "파란 OA와 OP는 같은 길이이다. 두 번째 직각삼각형은 파란 밑변 OP와 길이 1인 수직선 PB를 사용한다. 주황 OB의 길이를 OQ로 옮긴다.",
+    "solutionImageCaption": "단위 정사각형의 대각선과 같은 OP는 √2이다. BP=1이므로 OB²=2+1=3이다. Q가 원점의 오른쪽에 있으므로 Q가 나타내는 수는 √3이다.",
+    "content": "아래 그림과 같이 컴퍼스를 사용하여 원점 $O$를 중심으로 하고 $\\overline{OA}$의 길이를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $P$라 하였다. 직각삼각형 $OBP$에서 $\\overline{BP}=1$이고, $\\overline{OB}=\\overline{OQ}$일 때, 점 $Q$가 나타내는 수는? (단, $\\overline{OA}$는 한 변의 길이가 $1$인 정사각형의 대각선이다.) [4점]<br><img src=\"assets/images/21_금당중_1학기_중간_중3_기출/q9-problem-v2.svg\" alt=\"회색 정사각형의 대각선 OA와 수직선의 OP를 파랑으로 표시했다. P 위의 B까지 길이는 1이고, 주황 선 OB를 수직선 위 Q로 옮긴다.\">",
     "choices": [
       "$\\sqrt{2}$",
       "$\\sqrt{3}$",
@@ -303,7 +307,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "제곱근",
@@ -426,7 +430,7 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "content": "다음 그림과 같이 네 개의 정사각형 $A, B, C, D$를 이어 붙여서 새로운 도형을 만들었다. 이 도형의 둘레의 길이는? (단, $A$의 넓이는 $B$의 넓이의 $2$배, $B$는 $C$의 $2$배, $C$는 $D$의 $2$배이며 $A$의 넓이는 $8$이다.) [5점]<br><svg width=\"170\" height=\"110\" viewBox=\"0 0 170 110\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"10\" y=\"42.088\" width=\"50.912\" height=\"50.912\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/><rect x=\"60.912\" y=\"57\" width=\"36\" height=\"36\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/><rect x=\"96.912\" y=\"67.544\" width=\"25.456\" height=\"25.456\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/><rect x=\"122.368\" y=\"75\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/><text x=\"35.456\" y=\"71\" font-size=\"10px\" font-family=\"serif\" text-anchor=\"middle\">A</text><text x=\"78.912\" y=\"78\" font-size=\"10px\" font-family=\"serif\" text-anchor=\"middle\">B</text><text x=\"109.64\" y=\"84\" font-size=\"8px\" font-family=\"serif\" text-anchor=\"middle\">C</text><text x=\"131.368\" y=\"87\" font-size=\"8px\" font-family=\"serif\" text-anchor=\"middle\">D</text></svg>",
+    "content": "다음 그림과 같이 네 개의 정사각형 $A, B, C, D$를 이어 붙여서 새로운 도형을 만들었다. 이 도형의 둘레의 길이는? (단, $A$의 넓이는 $B$의 넓이의 $2$배, $B$는 $C$의 $2$배, $C$는 $D$의 $2$배이며 $A$의 넓이는 $8$이다.) [5점]<br><img src=\"assets/images/21_금당중_1학기_중간_중3_기출/q13-problem-v2.svg\" alt=\"파랑 A부터 초록 B, 주황 C, 보라 D 순서다. 네 정사각형의 아래쪽 변은 한 직선 위에 있다.\">",
     "choices": [
       "$4\\sqrt{2}+8$",
       "$6\\sqrt{2}+6$",
@@ -442,7 +446,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "제곱근",
@@ -458,7 +462,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_금당중_1학기_중간_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 정사각형에 색을 달리 주었다. 위쪽 치수선에서 각각의 한 변의 길이를 읽고, 내부에서 맞닿는 길이는 바깥 둘레에서 제외한다.",
+    "solutionImageCaption": "맞닿은 변은 2, √2, 1이다. 각각을 두 번 빼면 전체 둘레는 10√2+6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -496,7 +504,11 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "content": "아래 그림과 같이 합동인 두 사다리꼴을 이어 붙여 만든 직사각형의 넓이는? (단, 사다리꼴의 윗변은 $a$, 아랫변은 $b$, 높이는 $a-b$이다.) [4점]<br><svg width='160' height='120' viewBox='0 0 160 120'><rect x='20' y='30' width='120' height='60' fill='none' stroke='black' stroke-dasharray='4'/><line x1='70' y1='30' x2='90' y2='90' stroke='black'/><text x='45' y='25' font-size='10'>a</text><text x='105' y='25' font-size='10'>b</text><text x='145' y='65' font-size='10'>a-b</text></svg>",
+    "solutionImage": "assets/images/21_금당중_1학기_중간_중3_기출/q15-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "위의 짧은 b와 긴 a를 더한 전체 가로를 a+b라고 아래에 표시했다. 오른쪽에 a−b 높이가 표시되어 있다.",
+    "solutionImageCaption": "두 사다리꼴을 합치면 가로는 a+b, 높이는 a−b이다. 전체 넓이는 (a+b)(a−b)=a²−b²이다.",
+    "content": "아래 그림과 같이 합동인 두 사다리꼴을 이어 붙여 만든 직사각형의 넓이는? (단, 사다리꼴의 윗변은 $a$, 아랫변은 $b$, 높이는 $a-b$이다.) [4점]<br><img src=\"assets/images/21_금당중_1학기_중간_중3_기출/q15-problem-v2.svg\" alt=\"파랑과 주황 사다리꼴이 빗변을 맞대어 직사각형을 이룬다. 위쪽 두 밑변에는 각각 b와 a, 오른쪽 높이에는 a−b가 표시되어 있다.\">",
     "choices": [
       "$2ab$",
       "$a^2+b^2$",
@@ -512,7 +524,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "다항식",
@@ -531,7 +543,7 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "content": "그림과 같이 한 변의 길이가 각각 $x, y$인 두 정사각형이 있다. $x+y=8, xy=14$일 때, 두 정사각형의 넓이의 합은? [5점]<br><svg width='160' height='120' viewBox='0 0 160 120'><rect x='20' y='40' width='50' height='50' fill='none' stroke='black'/><rect x='70' y='60' width='30' height='30' fill='none' stroke='black'/><text x='40' y='35' font-size='12'>x</text><text x='80' y='55' font-size='12'>y</text></svg>",
+    "content": "그림과 같이 한 변의 길이가 각각 $x, y$인 두 정사각형이 있다. $x+y=8, xy=14$일 때, 두 정사각형의 넓이의 합은? [5점]<br><img src=\"assets/images/21_금당중_1학기_중간_중3_기출/q16-problem-v2.svg\" alt=\"왼쪽 파랑 정사각형의 한 변은 x, 오른쪽 주황 정사각형의 한 변은 y이다.\">",
     "choices": [
       "$36$",
       "$40$",
@@ -547,7 +559,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "다항식",
@@ -564,7 +576,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/21_금당중_1학기_중간_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 파랑 x 정사각형과 주황 y 정사각형 사이에 같은 크기의 초록 직사각형 두 개가 있는 배열이다.",
+    "solutionImageCaption": "전체는 (x+y)²이고 초록 두 조각은 2xy이다. 두 정사각형의 넓이의 합은 8²−2×14=36이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -706,6 +722,10 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "solutionImage": "assets/images/21_금당중_1학기_중간_중3_기출/q21-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "파란 AB의 가로와 세로는 4칸과 2칸, 초록 CD의 가로와 세로는 2칸과 1칸이다. 두 길이를 각각 중심 A와 C에서 수직선으로 옮겼다.",
+    "solutionImageCaption": "(1) 가로와 세로의 차로 AB=2√5, CD=√5이다. (2) 각각 오른쪽으로 옮기면 P는 −5+2√5, Q는 1+√5이다. (3) (1+√5)−(−5+2√5)=6−√5이다.",
     "level": "중",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
@@ -714,7 +734,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "제곱근",
@@ -726,7 +746,7 @@ window.questionBank = [
       "좌표"
     ],
     "wide": false,
-    "content": "다음 그림은 한 눈금의 길이가 $1$인 모눈종이에 두 선분 $AB$와 $CD$를 그린 후, $\\overline{AB}=\\overline{AP}$, $\\overline{CD}=\\overline{CQ}$가 되도록 수직선 위에 두 점 $P$와 $Q$를 정한 것이다. 물음에 답하시오.\n\n(1) $\\overline{AB}, \\overline{CD}$의 길이를 각각 구하시오.\n(2) 점 $P, Q$가 나타내는 수를 각각 구하시오.\n(3) (2)를 이용하여 $\\overline{PQ}$의 길이를 구하는 식을 세우고, $\\overline{PQ}$의 길이를 구하시오.\n<svg width=\"280\" height=\"130\" viewBox=\"0 0 280 130\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"수직선과 점 P, Q 및 작도한 호\">\n  <defs>\n    <pattern id=\"grid\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"#e0e0e0\" stroke-width=\"0.5\"/>\n    </pattern>\n  </defs>\n  <rect x=\"10\" y=\"10\" width=\"260\" height=\"80\" fill=\"url(#grid)\" />\n  <line x1=\"10\" y1=\"90\" x2=\"270\" y2=\"90\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow_r)\" marker-start=\"url(#arrow_l)\"/>\n  <line x1=\"50\" y1=\"90\" x2=\"130\" y2=\"50\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <line x1=\"170\" y1=\"90\" x2=\"210\" y2=\"70\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <path d=\"M 130,50 A 89.44,89.44 0 0 1 139.44,90\" fill=\"none\" stroke=\"black\" stroke-width=\"1\" stroke-dasharray=\"2,2\"/>\n  <path d=\"M 210,70 A 44.72,44.72 0 0 1 214.72,90\" fill=\"none\" stroke=\"black\" stroke-width=\"1\" stroke-dasharray=\"2,2\"/>\n  <text x=\"50\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">-5</text>\n  <text x=\"70\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">-4</text>\n  <text x=\"90\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">-3</text>\n  <text x=\"110\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">-2</text>\n  <text x=\"130\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">-1</text>\n  <text x=\"150\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">O</text>\n  <text x=\"170\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">1</text>\n  <text x=\"190\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">2</text>\n  <text x=\"210\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">3</text>\n  <text x=\"230\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">4</text>\n  <text x=\"250\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">5</text>\n  <text x=\"265\" y=\"98\" font-size=\"9px\" font-family=\"serif\">x</text>\n  <text x=\"45\" y=\"88\" font-size=\"9px\" font-family=\"serif\">A</text>\n  <text x=\"125\" y=\"48\" font-size=\"9px\" font-family=\"serif\">B</text>\n  <text x=\"165\" y=\"88\" font-size=\"9px\" font-family=\"serif\">C</text>\n  <text x=\"205\" y=\"68\" font-size=\"9px\" font-family=\"serif\">D</text>\n  <text x=\"138\" y=\"119\" font-size=\"10px\" font-family=\"serif\">P</text>\n  <text x=\"215\" y=\"119\" font-size=\"10px\" font-family=\"serif\">Q</text>\n  <defs>\n    <marker id=\"arrow_r\" markerWidth=\"6\" markerHeight=\"6\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker>\n    <marker id=\"arrow_l\" markerWidth=\"6\" markerHeight=\"6\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M6,0 L6,6 L0,3 z\" fill=\"black\"/></marker>\n  </defs>\n</svg>",
+    "content": "다음 그림은 한 눈금의 길이가 $1$인 모눈종이에 두 선분 $AB$와 $CD$를 그린 후, $\\overline{AB}=\\overline{AP}$, $\\overline{CD}=\\overline{CQ}$가 되도록 수직선 위에 두 점 $P$와 $Q$를 정한 것이다. 물음에 답하시오.\n\n(1) $\\overline{AB}, \\overline{CD}$의 길이를 각각 구하시오.\n(2) 점 $P, Q$가 나타내는 수를 각각 구하시오.\n(3) (2)를 이용하여 $\\overline{PQ}$의 길이를 구하는 식을 세우고, $\\overline{PQ}$의 길이를 구하시오.\n<img src=\"assets/images/21_금당중_1학기_중간_중3_기출/q21-problem-v2.svg\" alt=\"파란 AB와 원호가 점 P를 정하고, 초록 CD와 원호가 점 Q를 정한다. 수직선에서 A는 −5, C는 1이고 모눈 한 칸의 길이는 1이다.\">",
     "choices": [],
     "answer": "(1) $\\overline{AB}=2\\sqrt{5}$, $\\overline{CD}=\\sqrt{5}$ (2) $P: -5+2\\sqrt{5}$, $Q: 1+\\sqrt{5}$ (3) $6-\\sqrt{5}$",
     "solution": "[키포인트] 모눈의 가로·세로 변화량으로 두 선분의 길이를 구하고, 그 길이를 수직선의 이동량으로 사용한다.\n(1) $A$에서 $B$까지 가로로 $4$, 세로로 $2$만큼 차이가 나므로\n$AB=\\sqrt{4^2+2^2}=\\sqrt{20}=2\\sqrt5$이다.\n$C$에서 $D$까지는 가로로 $2$, 세로로 $1$만큼 차이가 나므로\n$CD=\\sqrt{2^2+1^2}=\\sqrt5$이다.\n\n(2) 점 $A$가 나타내는 수는 $-5$이고 $AP=AB=2\\sqrt5$이므로\n$P=-5+2\\sqrt5$이다.\n점 $C$가 나타내는 수는 $1$이고 $CQ=CD=\\sqrt5$이므로\n$Q=1+\\sqrt5$이다.\n\n(3) $P<Q$이므로\n$PQ=Q-P$이다.\n$PQ=(1+\\sqrt5)-(-5+2\\sqrt5)\n=6-\\sqrt5$이다.",

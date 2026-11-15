@@ -1149,6 +1149,24 @@
     const sourceJsShaByFile = new Map((catalog?.sourceHashes || []).map(([file, sha]) =>
       [normalizeFile(file), text(sha).toLowerCase()],
     ));
+    // sourceHashes remain normalized text hashes for browser loading. The
+    // additive raw-byte entries cover BOM/CRLF files; unlisted sources use the
+    // same hash in both contracts. Legacy catalogs retain their old behavior.
+    const sourceRawShaByFile = new Map(sourceJsShaByFile);
+    if (Object.hasOwn(catalog || {}, "sourceRawHashes")) {
+      if (!Array.isArray(catalog.sourceRawHashes))
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "catalog raw source hashes are invalid");
+      const seenRawSources = new Set();
+      for (const entry of catalog.sourceRawHashes) {
+        if (!Array.isArray(entry) || entry.length !== 2 || typeof entry[0] !== "string" ||
+            !sourceJsShaByFile.has(normalizeFile(entry[0])) || seenRawSources.has(normalizeFile(entry[0])) ||
+            !SHA256.test(text(entry[1])))
+          throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "catalog raw source hash entry is invalid");
+        const file = normalizeFile(entry[0]);
+        seenRawSources.add(file);
+        sourceRawShaByFile.set(file, text(entry[1]).toLowerCase());
+      }
+    }
     const master = resources[CANONICAL_MASTER_PATH];
     const projectionPolicy = resources["data/archive2-canonical-projection-policy.json"];
     const links = resources["data/basic-scope-parent-links.json"];
@@ -1298,7 +1316,7 @@
           !text(receipt.approval.approvedBy) || receipt.approval.type === "REVIEW2" && receipt.approval.reviewPassCount !== 2 ||
           !Array.isArray(receipt.appliedRecords) || receipt.totalQuestions !== receipt.appliedRecords.length ||
           new Set(receipt.appliedRecords.map(r => r.questionUid)).size !== receipt.totalQuestions ||
-          !SHA256.test(text(receipt.sourceRawSha256)) || text(receipt.sourceRawSha256) !== sourceJsShaByFile.get(normalizeFile(receipt.sourceArchiveFile))) continue;
+          !SHA256.test(text(receipt.sourceRawSha256)) || text(receipt.sourceRawSha256) !== sourceRawShaByFile.get(normalizeFile(receipt.sourceArchiveFile))) continue;
       for (const accepted of receipt.appliedRecords) {
         const uid = text(accepted.questionUid), source = sourceRecords.get(uid), meta = source?.metadataAssignmentEvidence;
         const overlays = (overlaysByUid.get(uid) || []).filter(row => normalizeFile(row.sourceArchiveFile) === normalizeFile(receipt.sourceArchiveFile) && Number(row.sourceOrdinal) === Number(accepted.sourceOrdinal));

@@ -9,8 +9,10 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const { loadExam } = require('../tools/4slot/exam-items.cjs');
+const runtime = require('../tools/4slot/build-4slot-runtime.cjs');
 
 const root = path.resolve(__dirname, '..');
+const identities = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/question_identity_map.json'), 'utf8')).records;
 
 // The legacy examData.questions source also exposes the same objects as questionBank.
 // Its stem field is `question`, not `content`; ensure the adapter preserves those stems.
@@ -24,9 +26,16 @@ const SLOTS = ['given', 'goal', 'method', 'condition'];
 const DICT_BY_VERSION = {
   'term-dict-v1.3-2026-11-03': 'docs/architecture/4slot/term-dictionary-v1.3.json',
   'term-dict-v1.4-2026-11-03': 'docs/architecture/4slot/term-dictionary-v1.4.json',
-  'term-dict-v1.5-2026-11-04': 'docs/architecture/4slot/term-dictionary-v1.5.json'
+  'term-dict-v1.5-2026-11-04': 'docs/architecture/4slot/term-dictionary-v1.5.json',
+  'term-dict-v1.6-2026-11-15': 'docs/architecture/4slot/term-dictionary-v1.6.json'
 };
 const FORMATS = ['단일 정답', '옳은 것 고르기', '옳지 않은 것 고르기', '보기(ㄱㄴㄷ) 판정', '보기 판정', '빈칸 채우기', '단답', '서술', '증명', '소문항 묶음'];
+const v15 = JSON.parse(fs.readFileSync(path.join(root, DICT_BY_VERSION['term-dict-v1.5-2026-11-04']), 'utf8'));
+const v16 = JSON.parse(fs.readFileSync(path.join(root, DICT_BY_VERSION['term-dict-v1.6-2026-11-15']), 'utf8'));
+assert.deepStrictEqual(v16.terms.slice(0, v15.terms.length), v15.terms, 'v1.6 must preserve every previous term, definition and alias');
+assert.ok(v16.terms.slice(v15.terms.length).every(t => t.id > Math.max(...v15.terms.map(x => x.id))), 'new term IDs must be append-only');
+assert.strictEqual(new Set(v16.terms.map(t => t.id)).size, v16.terms.length, 'dictionary IDs must be unique');
+assert.strictEqual(v16.terms.find(t => t.id === 750).ko, '문자식의연산기호생략', 'reviewed method candidate retains its exact concept');
 
 function walk(dir) {
   const out = [];
@@ -109,6 +118,15 @@ for (const file of files) {
   const isStale = gitBlob(examFile) !== d.sourceGitBlobSha;
   let exam;
   try { exam = loadExam(examFile); } catch (e) { bad('cannot load exam: ' + e.message); continue; }
+  // Explicit native holds keep the full denominator and all ordinary slot checks.
+  // A hold must name the existing canonical UID/ordinal and the exact original review.
+  const nativeBank = runtime.loadBank(fs.readFileSync(examFile));
+  for (const it of d.items.filter(x => Object.prototype.hasOwnProperty.call(x, 'registrationHold'))) {
+    const index = exam.findIndex(q => Number(q.ordinal) === it.ordinal);
+    const ids = identities.filter(r => r.sourceArchiveFile === d.sourceArchiveFile && r.sourceOrdinal === index + 1);
+    if (index < 0 || ids.length !== 1) { bad(`#${it.ordinal}: explicit hold identity missing or ambiguous`); continue; }
+    for (const error of runtime.validateRegistrationHold(root, d, it, ids[0], {q: nativeBank[index], ordinal: index + 1})) bad(`#${it.ordinal}: ${error}`);
+  }
   const examOrds = exam.map(q => Number(q.ordinal));
   const missing = examOrds.filter(o => !ords.has(o));
   const extra = [...ords].filter(o => !examOrds.includes(o));

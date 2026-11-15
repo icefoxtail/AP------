@@ -95,6 +95,59 @@ test('the figure spec: one shared scale, a row per set, labels for every end and
   assert.throws(()=>numberLineSpec({capability:'number-line-v1',numberLine:p275},{...model,variable:'y'}),code('NUMBER_LINE_MODEL_MISMATCH'));
 });
 
+test('SET row palette opt-in preserves the solved sets, shared scale, labels and marker shapes',()=>{
+  const colored={...p231,rows:[{...p231.rows[0],color:'BLUE'},{...p231.rows[1],color:'WARM'},p231.rows[2]]};
+  const plan=numberLine=>({capability:'number-line-v1',numberLine});
+  const baseModel=solveNumberLineFigure(p231),coloredModel=solveNumberLineFigure(colored);
+  const baseSpec=numberLineSpec(plan(p231),baseModel),coloredSpec=numberLineSpec(plan(colored),coloredModel);
+  for(const [base,accented] of [[baseModel,coloredModel],[baseSpec,coloredSpec]]){
+    assert.deepEqual(accented.rows.map(row=>row.color),['BLUE','WARM',undefined]);
+    assert.deepEqual({...accented,rows:accented.rows.map(({color,...row})=>row)},base);
+  }
+  for(const color of ['blue','#1f5fa8','',null,false,[],{}]){
+    assert.throws(()=>solveNumberLineFigure({...colored,rows:[{...colored.rows[0],color},...colored.rows.slice(1)]}),code('NUMBER_LINE_SET_COLOR_INVALID'));
+  }
+  assert.throws(()=>solveNumberLineFigure({...colored,rows:[...colored.rows.slice(0,2),{kind:'RESULT',color:'ROSE'}]}),code('NUMBER_LINE_ROWS_INVALID'));
+  assert.throws(()=>solveNumberLineFigure({rows:[{...division.rows[0],color:'GREEN'}]}),code('NUMBER_LINE_ROWS_INVALID'));
+  assert.throws(()=>solveNumberLineFigure({rows:[set({...colored.rows[0].pieces[0],color:'VIOLET'})]}),code('NUMBER_LINE_PIECE_INVALID'));
+});
+
+test('SET row palette uses the real SVG strokes and keeps hollow endpoints, labels and axes',async()=>{
+  const numberLine={...p231,rows:[{...p231.rows[0],color:'BLUE'},{...p231.rows[1],color:'WARM',integerPoints:true},p231.rows[2]]};
+  const plan={capability:'number-line-v1',numberLine};
+  const identity=assetIdentity('21_강남여고_1학기_기말_고1_기출|10','SOLUTION_VISUAL','decisive-relation');
+  const composed=await composeNumberLinePanel({plan,model:solveNumberLineFigure(numberLine),identity,typographyPolicy:{baseFontPx:20,displayScale:1,fontFloorCssPx:11}});
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS');
+  assert.equal(composed.renderedLayout.status,'PASS');
+  const attribute=(id,name)=>new RegExp(`(id="${id}"[^>]*?\b${name}=")([^"]*)"`);
+  const read=(id,name)=>composed.svg.match(attribute(id,name))?.[2];
+  assert.equal(read('r1-band-1','stroke'),'#1f5fa8');
+  assert.equal(read('r1-band-2','stroke'),'#1f5fa8');
+  assert.equal(read('r1-end-1-hi','stroke'),'#1f5fa8');
+  assert.equal(read('r1-end-1-hi','fill'),'#fff');
+  assert.equal(read('r1-end-1-hi','data-state'),'OPEN');
+  assert.equal(read('r2-end-1-hi','stroke'),'#b85c00');
+  assert.equal(read('r2-end-1-hi','fill'),'#b85c00');
+  assert.equal(read('r2-end-1-hi','data-state'),'CLOSED');
+  assert.equal(read('r2-int-3','fill'),'#111');
+  assert.equal(read('r3-band-1','stroke'),'#111');
+  const inspect=async(id,name,change,expected)=>{
+    const mutated=composed.svg.replace(attribute(id,name),(_match,head,value)=>head+change(value)+'"');
+    assert.notEqual(mutated,composed.svg);
+    const response=await pythonWorker({numberLine,svg:mutated},{script:observer});
+    assert.equal(response.status,'OK');
+    assert.ok(response.result.errors.includes(expected),JSON.stringify(response.result));
+  };
+  await inspect('r1-band-1','stroke',()=> '#b85c00','NL_BAND_COLOR:r1-band-1');
+  await inspect('r2-end-1-hi','stroke',()=> '#111','NL_ENDPOINT_COLOR:r2-end-1-hi');
+  await inspect('r1-end-1-hi','fill',()=> '#1f5fa8','NL_ENDPOINT_STATE:r1-end-1-hi');
+  await inspect('r2-axis','stroke',()=> '#b85c00','NL_AXIS_COLOR:2');
+  await inspect('r2-tick-0','stroke',()=> '#b85c00','NL_TICK_COLOR:r2-tick-0');
+  await inspect('r2-int-3','stroke',()=> '#b85c00','NL_INTEGER_COLOR:3');
+  await inspect('r2-end-1-hi','cx',value=>String(Number(value)+8),'NL_ENDPOINT_POSITION:r2-end-1-hi');
+});
+
 test('the figure composes, and the independent observer catches a wrong dot, band, label or integer',async()=>{
   const plan={capability:'number-line-v1',numberLine:p275},model=solveNumberLineFigure(p275);
   const identity=assetIdentity('25_매산여고_1학기_기말_고1_기출c|16','SOLUTION_VISUAL','decisive-relation');

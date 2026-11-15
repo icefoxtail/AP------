@@ -318,7 +318,7 @@ window.questionBank = [
       "오류찾기"
     ],
     "wide": false,
-    "solution": "① $a^{2}\\times a^{4}=a^{2+4}=a^{6}$\n② $a^{6}\\div a^{8}=a^{6-8}=a^{-2}=\\frac{1}{a^{2}}$\n③ $x^{3}\\times x^{2}\\div x=x^{3+2-1}=x^{4}$\n④ $(x^{3})^{2}\\div x^{2}=x^{6}\\div x^{2}=x^{4}$ 이므로 $x^{3}$이 아닙니다.\n⑤ $x^{3}\\div x^{2}\\times (x^{2})^{2}=x^{3-2+4}=x^{5}$\n따라서 잘못된 것은 ④입니다.",
+    "solution": "① $a^{2}\\times a^{4}=a^{2+4}=a^{6}$\n② $a^{6}\\div a^{8}=\\frac{a^6}{a^8}=\\frac{1}{a^{8-6}}=\\frac{1}{a^{2}}$\n③ $x^{3}\\times x^{2}\\div x=x^{3+2-1}=x^{4}$\n④ $(x^{3})^{2}\\div x^{2}=x^{6}\\div x^{2}=x^{4}$ 이므로 $x^{3}$이 아닙니다.\n⑤ $x^{3}\\div x^{2}\\times (x^{2})^{2}=x^{3-2+4}=x^{5}$\n따라서 잘못된 것은 ④입니다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -818,8 +818,8 @@ window.questionBank = [
     "wide": false,
     "solution": "$-2(x-5a)\\le7a+3$\n$-2x+10a\\le7a+3$\n$-2x\\le-3a+3$\n양변을 $-2$로 나누면\n$x\\ge\\frac{3a-3}{2}$\n이 부등식을 만족하는 음의 정수가 존재하지 않으려면 해의 최솟값이 $-1$보다 커야 하므로\n$\\frac{3a-3}{2}>-1$\n$3a-3>-2$\n$3a>1$\n$a>\\frac{1}{3}$\n따라서 $a$의 범위는 $a>\\frac{1}{3}$입니다.",
     "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -849,15 +849,15 @@ window.questionBank = [
     "wide": false,
     "solution": "어떤 수를 $x$라 하면\n$5(x-3)\\le2x+3$\n$5x-15\\le2x+3$\n$3x\\le18$\n$x\\le6$\n자연수는 $1,2,3,4,5,6$이므로 개수는 $6$개입니다.",
     "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 25,
     "category": "일차부등식",
-    "content": "정국이가 집에서 $16km$ 떨어진 편의점에 가는데, 처음에는 $5km/h$로 뛰다가 중간에 차를 타고 $60km/h$로 갔다. 집에서 편의점까지 $1$시간 이내에 도착하려면 집에서 걸어간 최대 거리는 몇 $km$인지 구하시오. [5점]",
+    "content": "정국이가 집에서 $16km$ 떨어진 편의점에 가는데, 처음에는 $5km/h$로 뛰다가 중간에 차를 타고 $60km/h$로 갔다. 집에서 편의점까지 $1$시간 이내에 도착하려면 처음에 뛴 최대 거리는 몇 $km$인지 구하시오. [5점]",
     "choices": [],
     "answer": "4km",
     "originalCategory": "일차부등식",
@@ -878,7 +878,7 @@ window.questionBank = [
       "최댓값"
     ],
     "wide": false,
-    "solution": "처음에 간 거리를 $xkm$라 하면, 차를 타고 간 거리는 $(16-x)km$입니다.\n따라서 걸린 시간은\n$\\frac{x}{5}+\\frac{16-x}{60}\\le1$\n양변에 $60$을 곱하면\n$12x+16-x\\le60$\n$11x\\le44$\n$x\\le4$\n따라서 집에서 간 최대 거리는 $4km$입니다.",
+    "solution": "처음에 뛴 거리를 $xkm$라 하면, 차를 타고 간 거리는 $(16-x)km$입니다.\n따라서 걸린 시간은\n$\\frac{x}{5}+\\frac{16-x}{60}\\le1$\n양변에 $60$을 곱하면\n$12x+16-x\\le60$\n$11x\\le44$\n$x\\le4$\n따라서 처음에 뛴 최대 거리는 $4km$입니다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",

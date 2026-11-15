@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "m1-operational-core-release-v1",
+  "baseMainSha": "bd4ab14f37d8dd9c4c86f244cba3451e32c56a5a",
+  "scope": [
+    "M1-S1 explicit finalized difficulty corrections",
+    "M1-S2 reviewed basic parent corrections"
+  ],
+  "productionStatus": "NOT_YET_REGISTERED_PENDING_MAIN_WRITER",
+  "sourceStudentPayloadChanges": 0,
+  "requestCount": 6,
+  "uniqueUids": 7,
+  "m1s1": {
+    "difficultyRegistrationRequested": 4,
+    "newFullSemanticApproval": 0,
+    "assignmentPending": 4,
+    "fourSlotRegistrationInThisPacket": 0
+  },
+  "m1s2": {
+    "basicParentCorrectionsRequested": 3,
+    "difficultyRequestsBoundToParentCorrection": 3,
+    "existingFullApprovalPreserved": 1,
+    "unsupportedTypeWithdrawnToExplicitHold": 1,
+    "unregisteredTypeHoldPreserved": 1,
+    "newFullSemanticApprovals": 0,
+    "rpmExactLeafApprovals": 0,
+    "fourSlotRegistrationInThisPacket": 0
+  },
+  "isolatedVerification": {
+    "officialRegistrationWrite": "PASS_6_REQUESTS_7_UID",
+    "archiveBuild": "PASS",
+    "projection": "PASS_7_UID",
+    "changedUidConsumer": "PASS_7_OF_7",
+    "focusedRegistrarTests": "PASS_26_OF_26",
+    "assignmentPendingDoesNotMeanFullSemanticApproval": true
+  },
+  "evidence": [
+    {
+      "path": "docs/operations/m1-operational-core-20261115/isolated-combined-consumer.json",
+      "sha256": "6db9bc59e53dda07d4e55d6edd9669e26545eb248c6390fad63d8f4af81ce7b8"
+    },
+    {
+      "path": "docs/operations/m1-operational-core-20261115/isolated-combined-projection.json",
+      "sha256": "6540983fff5f29ff4406df748bcf0803382e88bcfd72a4dc18eef1fa3e43e9ca"
+    },
+    {
+      "path": "docs/operations/m1-operational-core-20261115/isolated-combined-registration-write.json",
+      "sha256": "8313358db1c8654d73add4748a6f088da9780c93e6c47289ad3510ca80abef82"
+    }
+  ],
+  "remaining": [
+    "Root performs PR CI, merge, official main registration, per-UID Consumer, Pages and remote readback.",
+    "Four-slot publication, M1 semantic/binding debt and #1971 residual are separate packets; this receipt does not claim their completion."
+  ]
+}

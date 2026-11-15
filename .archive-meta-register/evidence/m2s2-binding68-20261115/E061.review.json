@@ -1,0 +1,493 @@
+{
+  "schemaVersion": "archive-native-metadata-closeout-evidence-v1",
+  "scope": "METADATA_FINALIZATION_ONLY",
+  "newMathematicalQa": false,
+  "review2PassClaimed": false,
+  "sourceArchiveFile": "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+  "sourceBlobSha1": "ac943413b2fb0d30a284fb3f30cf5ced35f3170a",
+  "sourceSha256": "1a27a8466e7cee17ce98e9f4411d90c3aa73e4fbf49940c0dfbaf57f872a13c1",
+  "expectedQuestionCount": 23,
+  "nativeReview": {
+    "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+    "path": "archive/data/meta-review/m2-s2-20261114/exams/E061/review.json",
+    "sha256": "1d69d020b06c17a4b8422a7c8f5b302207d8308ef990c840a1f400eceb7dac41",
+    "schemaVersion": "m2-s2-meta-review-v1",
+    "reviewer": "A",
+    "sourceGitBlobSha": "38d0c278eb66be4a84f853e738bb39c1c9498d72",
+    "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22"
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_92fd3e1e5938e2f0ebe45473c23476a0b2a66b28a37d0d03e20c50786d769367",
+      "sourceOrdinal": 4,
+      "decision": "CORRECT",
+      "primaryMethod": "두 절편을 밑변과 높이로 읽어 삼각형 넓이",
+      "decisiveStep": "x절편과 y절편의 좌표를 구하고 축 위 길이의 절댓값을 곱해 반으로 나눈다.",
+      "after": {
+        "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "함수식을 축 위 교점으로 바꾸는 표준 전처리 뒤 넓이공식을 적용한다."
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 넓이: 두 절편을 밑변과 높이로 읽어 삼각형 넓이",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "함수식을 축 위 교점으로 바꾸는 표준 전처리 뒤 넓이공식을 적용한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "definition": "함수 그래프와 점·선·거리·넓이·격자점 등 도형적 관계를 함께 분석하는 문제 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "4083065ccc13f6190d401b54e88cfa5e464c9dc88fd82650a85c08bec14e6555",
+      "currentMetadataSourceFingerprint": "e2b96063d92aeadcb10b94960016929f5c248d98db3fcbc7bfc5dfd8927bfca9",
+      "currentSourceFingerprint": "e2b96063d92aeadcb10b94960016929f5c248d98db3fcbc7bfc5dfd8927bfca9",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "d74d514c26fb75399b2c7f76ca9053525baa021e8285ac89766306953d917355",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/19_풍덕중_2학기_기말_중2_기출/q4-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "78769299ab132ad27bbd4baf9bf0c74c703ef167",
+          "currentBlob": "78769299ab132ad27bbd4baf9bf0c74c703ef167",
+          "rawSha256": "9ef05782bd940b404a2271bf525cc7fb55eed9c8fc9bbf9b650da29e590a4e95",
+          "bytes": 29481,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ca976e00631f592fd32407c2f5fee77dab34a0343c0347e549c2040baccad9f1",
+      "sourceOrdinal": 5,
+      "decision": "CORRECT",
+      "primaryMethod": "절편·기울기·통과점의 기본 성질 판정",
+      "decisiveStep": "x절편은y=0 대입으로 구하고 계수 부호와 점 대입으로 각 주장을 대조한다.",
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "각 선지를 절편·기울기·좌표대입의 기본 성질에 직접 비교한다. 선지 수 자체는 전략 부담이 아니다."
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프(1) > 일차함수의 그래프 > 기울기·절편: 절편·기울기·통과점의 기본 성질 판정",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "각 선지를 절편·기울기·좌표대입의 기본 성질에 직접 비교한다. 선지 수 자체는 전략 부담이 아니다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "definition": "대칭성·위치관계·그래프의 형태 등 함수 그래프의 성질을 판정하는 문제 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "a32cce19ee4d57149103a84310f0390b8829eca77e3fe521017d9184a36e0b51",
+      "currentMetadataSourceFingerprint": "6e0459b2d1b601d214f0af88c23eb19e1dc42e818ba8348fd6d91aff92d56939",
+      "currentSourceFingerprint": "6e0459b2d1b601d214f0af88c23eb19e1dc42e818ba8348fd6d91aff92d56939",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "951a1269812aa718fbfabc64f69ed2da6e0094232b08755b632a626d71270601",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/19_풍덕중_2학기_기말_중2_기출/q5-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "f3bef1c5ca2a05f0362865793fc713bab72472f6",
+          "currentBlob": "f3bef1c5ca2a05f0362865793fc713bab72472f6",
+          "rawSha256": "bb226a08e76a57c48fd8174d9a110819530f6f84534e4bcd40b161d3ba9b0e9c",
+          "bytes": 31588,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fd76918f3911c90d3736a3a59078702e752b1ca62a3506f0a81fb5a82357d7c1",
+      "sourceOrdinal": 6,
+      "decision": "CORRECT",
+      "primaryMethod": "원래 그래프의 계수 부호를 새 함수로 전이",
+      "decisiveStep": "실제 그래프에서a>0,b<0을 읽고 새 식의 음의 기울기와 음의 절편으로 통과 사분면을 판정한다.",
+      "after": {
+        "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B23"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "원래 식의 -b와 새 식의 -a를 한 번씩 부호 전환하는 익숙한 해석이다."
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프(1) > 일차함수의 그래프 > 기울기·절편: 원래 그래프의 계수 부호를 새 함수로 전이",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "원래 식의 -b와 새 식의 -a를 한 번씩 부호 전환하는 익숙한 해석이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "definition": "함수 그래프가 지나는 사분면 또는 다른 함수와의 사분면 관계를 판정하는 문제 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "87da66d5a24a707c9bd8fb2ee9fcd0a186e381b8975b94a62f7c37ac450cd898",
+      "currentMetadataSourceFingerprint": "0050237cab1d3894ed8f15d7a4258a813ef9b759c99395ce6c962aab051fc963",
+      "currentSourceFingerprint": "0050237cab1d3894ed8f15d7a4258a813ef9b759c99395ce6c962aab051fc963",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "0e91cce2eb1cc01ce8a745750818e4664e6a2ad341fa8f4b25a9e35437537163",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/19_풍덕중_2학기_기말_중2_기출/q06.png",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "f259b542cd49de8d5bfb7f36339fb9722862e86c",
+          "currentBlob": "f259b542cd49de8d5bfb7f36339fb9722862e86c",
+          "rawSha256": "cb400566b1a46a91cf70ad48458e2bdfbd9dd84c9ad789d7d52bb3498ec63e13",
+          "bytes": 105498,
+          "identical": true
+        },
+        {
+          "path": "archive/assets/images/19_풍덕중_2학기_기말_중2_기출/q6-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "36480bcac74489a966ccc1c414d9d802100d3a57",
+          "currentBlob": "36480bcac74489a966ccc1c414d9d802100d3a57",
+          "rawSha256": "70454bcd8393607d5b9307e53db6a4f82bb04363f725bd1a3b55a0901e6ed12b",
+          "bytes": 47246,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7a61006ceeef0168041b3718ebb3eb910d1eb0fcee0cabfeb295e7815e23b80c",
+      "sourceOrdinal": 8,
+      "decision": "CORRECT",
+      "primaryMethod": "선행 직선의 x절편과 평행 기울기로 새 직선",
+      "decisiveStep": "첫 직선에y=0을 넣어 통과점을 얻고 평행 조건의 기울기2로 새 식을 만든다.",
+      "after": {
+        "templateKey": "TPL_LINE_POINT_SLOPE",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "crossConceptKeys": [
+          "CC_AXIS_INTERCEPT",
+          "CC_PARALLEL_LINES"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "축 위 교점과 평행 기울기를 각각 읽어 한 점·기울기 표준식에 넣는 전처리이다."
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 그 그래프(2) > 식 구하기 > 기울기와 한 점으로 식 구하기: 선행 직선의 x절편과 평행 기울기로 새 직선",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "한 점·기울기 TPL에 직접 주어지지 않은 통과점과 기울기를 축 교점 및 평행 조건에서 먼저 구성한다.",
+        "condition": "NOT_APPLICABLE: 기하·수치 설정은 4칸에 기록했다. 미지수·해·후보값의 값·부호·범위로 해를 선택하는 별도 canonical Condition 없음.",
+        "integration": "첫 직선에y=0을 넣어 통과점을 얻고 평행 조건의 기울기2로 새 식을 만든다.",
+        "difficulty": "축 위 교점과 평행 기울기를 각각 읽어 한 점·기울기 표준식에 넣는 전처리이다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "definition": "주어진 점, 기울기, 평행·수직 조건 또는 선행 계산으로 얻은 정보를 이용하여 직선의 방정식을 결정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "942d59a1dd119b3b2ff0d1e4b7fcf4bbe71ca40df3f3f63b537f148e77e21b73",
+      "currentMetadataSourceFingerprint": "1fe9e14f63ad5d14465610948fec99fee376b64eaf43a8fb01c1ad76128aeb6a",
+      "currentSourceFingerprint": "1fe9e14f63ad5d14465610948fec99fee376b64eaf43a8fb01c1ad76128aeb6a",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "problemTypeKey": "PT_LINE_RELATION",
+        "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "569aa347b80ee66fc1fae0b0e3f855f4bcd32ba52c10375e91eac864467046ef",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/19_풍덕중_2학기_기말_중2_기출/q8-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "2a1bed8c2327ba44fda740b6da83603efed44e14",
+          "currentBlob": "2a1bed8c2327ba44fda740b6da83603efed44e14",
+          "rawSha256": "050da9ca8aade68f49bccf2c9f24c96646802d1bf0d1de3441eb79e95a999611",
+          "bytes": 46632,
+          "identical": true
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c60e0d0e47f33fe610dda1482a19a87739fa0a6da1b4b261ae313d1d36d9bae4",
+      "sourceOrdinal": 22,
+      "decision": "CORRECT",
+      "primaryMethod": "무한히 많은 교점을 두 직선 일치로 판정",
+      "decisiveStep": "두 방정식이 상수항까지 같은 배수일 때 같은 직선임을 적용해계수를 비교한다.",
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyBoundaryFlag": "B12"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "무한히 많은 교점을 같은 직선이라는 조건으로 한 번 바꾼 뒤 표준 계수 비교를 한다."
+      },
+      "fieldReview": {
+        "classification": "일차함수 > 일차함수와 일차방정식의 관계 > 두 직선의 관계 > 두 직선의 평행·일치: 무한히 많은 교점을 두 직선 일치로 판정",
+        "binding": "ACTIVE 키와 후보 정의 의미 대조 완료. source 교육과정 binding 또는 정확한 정의 등록은 별도 대기. 공식 Resolver 독립 solution 증거는 미제출.",
+        "crossConcept": "추가 CC 없음: 기록한 결정 단계가 선택한 Primary 풀이 골격 안에 포함된다.",
+        "condition": "원문의 정수 조건은4칸에 보존한다. 동일한 직선의 계수 비교로 유일하게 정해진4,2에서 정수성으로 후보를 추가 제거하지 않아 COND_INTEGER는 미적용한다.",
+        "integration": "Primary taxonomy 내부 단계만으로 해결한다.",
+        "difficulty": "무한히 많은 교점을 같은 직선이라는 조건으로 한 번 바꾼 뒤 표준 계수 비교를 한다.",
+        "fourSlot": "실제 발문·보기·기존 해설에서 조건과 결정 방법을 판독하고 exact quote를 새로 확인함."
+      },
+      "registrationDebt": [
+        {
+          "type": "LINK_MISSING",
+          "problemTypeKey": "PT_LINE_RELATION",
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "definition": "평행, 수직, 일치 또는 교점 존재 여부와 같은 직선 사이의 위치 관계를 판정하거나 그 조건으로 매개변수를 결정하는 유형.",
+          "reason": "선택한 ACTIVE PT의 해당 교육과정·단원·세부단원 binding 부재를 현행 compiled bindings와 대조함."
+        },
+        {
+          "type": "RESOLVER_PROOF_PENDING",
+          "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+        }
+      ],
+      "currentProtectedSourceMatchesReviewed": true,
+      "protectedSourceSha256": "2b8971ad24139ca2bc0056cb28c228b91b9d05bfa392443408f058bf1cadfda1",
+      "currentMetadataSourceFingerprint": "0edd105f9b20ed4027da014c649363695e5397c055fcc83c4df13479a8fa5406",
+      "currentSourceFingerprint": "0edd105f9b20ed4027da014c649363695e5397c055fcc83c4df13479a8fa5406",
+      "currentBefore": {
+        "level": null,
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "problemTypeKey": "PT_LINE_RELATION",
+        "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "L3": null,
+        "L4": null,
+        "L1": null,
+        "L2": null
+      },
+      "nativeItemSha256": "5e3512d329870fa683c00645de45db7ffda7369df9eea70f5813a96801d7537b",
+      "rendererInputs": [
+        {
+          "path": "archive/assets/images/19_풍덕중_2학기_기말_중2_기출/q22-solution.svg",
+          "nativeCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeBlob": "b5fb31b2762403a45f782a1c5270500aa7e08f3a",
+          "currentBlob": "b5fb31b2762403a45f782a1c5270500aa7e08f3a",
+          "rawSha256": "db2713b70683d6e01c8153559f2712658fa8966c451cb45e154ad148763af9c0",
+          "bytes": 34165,
+          "identical": true
+        }
+      ]
+    }
+  ],
+  "currentSourceCommit": "42686af77e264aece5c9683f3e1f77baa55da4a1",
+  "first69Baseline": {
+    "kind": "LOCAL_VERIFIED_DERIVED_SNAPSHOT_NOT_ACTUAL_MAIN",
+    "inputCommit": "3c52fd7c23d937f81e0220ae3244c861416a6c3d",
+    "proofSha256": "e200b7cf8745209417f5507ffb9ef702eed75adda60709fad2a8e3910d547d4d",
+    "metadataSha256": "03a882a75028c2227195eeee63f356e2fc8f6c5dcd79a56dba703d1abf5c7a9d",
+    "identitySha256": "5e1823b3bc7b6cc20338b667330c29acd779bbe3bfb4af8002cbcdfd74211e88"
+  },
+  "priorCandidateRequest": {
+    "path": ".archive-meta-register/inbox/m2s2-binding-20261115-E061.json",
+    "sha256": "e55843a049387fadc2a25188ea917e96b26668ec3908439f36afb7a166d7a6ad"
+  },
+  "selectedQuestionCount": 5,
+  "excludedQuestionUids": [],
+  "semanticDebtAudit": {
+    "sha256": "fac37f5559c4318213bdcf546a9780c13db627207e7624729e09a0c2a9b37648",
+    "newDefinitionPendingSelected": 0
+  }
+}

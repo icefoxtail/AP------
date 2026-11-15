@@ -266,7 +266,11 @@ var examData = window.examData = {
         "18\\pi"
       ],
       "answer": "②",
-      "solution": "$u=\\dfrac{x-\\pi}{4}$라 놓으면 $y=2\\sin u$이고\n$0\\le x\\le10\\pi$에서 $-\\dfrac\\pi4\\le u\\le\\dfrac{9\\pi}{4}$이다.\n직선 $y=1$과 만나는 곳에서는\n$2\\sin u=1$, 즉 $\\sin u=\\dfrac12$이다.\n이 구간에서 가능한 값은\n$u=\\dfrac\\pi6,\\ \\dfrac{5\\pi}{6},\\ \\dfrac{13\\pi}{6}$이다.\n$x=4u+\\pi$를 이용하면 교점의 $x$좌표는\n$\\dfrac{5\\pi}{3},\\ \\dfrac{13\\pi}{3},\\ \\dfrac{29\\pi}{3}$이다.\n따라서 두 교점 사이의 가장 긴 밑변은\n$\\dfrac{29\\pi}{3}-\\dfrac{5\\pi}{3}=8\\pi$이다.\n삼각형의 넓이를 최대로 하려면 점 $P$의 직선 $y=1$까지의 거리가 최대여야 한다.\n곡선의 최솟값은 $-2$이고, 이는 $u=\\dfrac{3\\pi}{2}$일 때 실제로 나타난다.\n따라서 직선 $y=1$과의 최대 거리는 $1-(-2)=3$이다.\n그러므로 삼각형의 넓이의 최댓값은\n$\\dfrac12\\cdot8\\pi\\cdot3=12\\pi$이다.\n따라서 정답은 ②이다."
+      "solution": "$u=\\dfrac{x-\\pi}{4}$라 놓으면 $y=2\\sin u$이고\n$0\\le x\\le10\\pi$에서 $-\\dfrac\\pi4\\le u\\le\\dfrac{9\\pi}{4}$이다.\n직선 $y=1$과 만나는 곳에서는\n$2\\sin u=1$, 즉 $\\sin u=\\dfrac12$이다.\n이 구간에서 가능한 값은\n$u=\\dfrac\\pi6,\\ \\dfrac{5\\pi}{6},\\ \\dfrac{13\\pi}{6}$이다.\n$x=4u+\\pi$를 이용하면 교점의 $x$좌표는\n$\\dfrac{5\\pi}{3},\\ \\dfrac{13\\pi}{3},\\ \\dfrac{29\\pi}{3}$이다.\n따라서 두 교점 사이의 가장 긴 밑변은\n$\\dfrac{29\\pi}{3}-\\dfrac{5\\pi}{3}=8\\pi$이다.\n삼각형의 넓이를 최대로 하려면 점 $P$의 직선 $y=1$까지의 거리가 최대여야 한다.\n곡선의 최솟값은 $-2$이고, 이는 $u=\\dfrac{3\\pi}{2}$일 때 실제로 나타난다.\n따라서 직선 $y=1$과의 최대 거리는 $1-(-2)=3$이다.\n그러므로 삼각형의 넓이의 최댓값은\n$\\dfrac12\\cdot8\\pi\\cdot3=12\\pi$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "assets/images/21_금당고_1학기_기말_고2_수학I/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: f(x)로 표시한 사인곡선, y=1의 수평선과 세 교점, 곡선의 최솟값을 나타낸 그래프.",
+      "solutionImageCaption": "세 교점 중 x좌표가 가장 작은 점과 큰 점 사이의 밑변은 8π다. 곡선의 최솟값 −2와 y=1 사이의 높이는 3이므로 삼각형 넓이의 최댓값을 구한다. 정답은 12π이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -284,7 +288,11 @@ var examData = window.examData = {
       "solution": "$AP=PQ$이고 $OA=OP=OQ$이므로 점 $O$와 점 $P$는 선분 $AQ$의 수직이등분선 위에 있다.\n따라서 $OP$는 이등변삼각형 $APQ$의 꼭짓각 $\\angle APQ=\\theta$를 이등분하여\n$\\angle APO=\\dfrac\\theta2$이다.\n삼각형 $AOP$에서 $OA=OP$이므로 밑각도 같아\n$\\angle OAP=\\dfrac\\theta2$이다.\n삼각형의 내각의 합으로부터\n$\\angle AOP=\\pi-\\dfrac\\theta2-\\dfrac\\theta2=\\pi-\\theta$이다.\n그러므로\n$f(\\theta)=\\pi-\\theta$이다.\n코사인법칙을 삼각형 $AOP$에 적용하면\n$PA^2=OA^2+OP^2-2\\cdot OA\\cdot OP\\cos(\\pi-\\theta)$\n$=1^2+1^2-2\\cos(\\pi-\\theta)$\n$=2+2\\cos\\theta$이다.\n따라서 $g(\\theta)=2+2\\cos\\theta$이고,\n$f\\left(\\dfrac\\pi3\\right)=\\dfrac{2\\pi}{3}$,\n$g\\left(\\dfrac\\pi3\\right)=2+2\\cdot\\dfrac12=3$이다.\n따라서\n$f\\left(\\dfrac\\pi3\\right)g\\left(\\dfrac\\pi3\\right)=\\dfrac{2\\pi}{3}\\cdot3=2\\pi$이다.\n따라서 정답은 ⑤이다.",
       "images": [
         "assets/images/21_금당고_1학기_기말_고2_수학I/q17.png"
-      ]
+      ],
+      "solutionImage": "assets/images/21_금당고_1학기_기말_고2_수학I/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 예: 단위원 위 A, P, Q와 중심 O를 표시했다. AP=PQ이고 OP가 P의 60° 각을 두 같은 반각으로 나누며 중심각 AOP=120°다.",
+      "solutionImageCaption": "예: θ=60°일 때 OP가 ∠APQ를 이등분하고 ∠AOP=120°이다. 일반적으로 원주각 관계에서 f(θ)=π−θ이고, 코사인법칙에서 g(θ)=2+2cos θ이다. 정답은 ⑤, 2π이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,

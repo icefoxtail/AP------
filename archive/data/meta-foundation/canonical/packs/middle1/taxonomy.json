@@ -4,7 +4,7 @@
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
   "problemTypeCount": 95,
-  "templateCount": 213,
+  "templateCount": 214,
   "problemTypes": [
     {
       "problemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
@@ -9203,6 +9203,24 @@
       "observedConditionKeys": [],
       "observedIntegrationPatterns": [
         "NONE"
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_UNIT_QUANTITY_AND_EVALUATION",
+      "parentProblemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "canonicalLabelKo": "단위량을 이용한 수량식과 식의 값",
+      "definition": "기준량당 수량을 단위량으로 환산하여 여러 문자량의 총량식을 세우고, 주어진 문자 값으로 그 식의 값을 구한다.",
+      "internalSkeleton": "기준량의 수량을 단위량으로 환산한다 → 각 문자량과 단위량을 곱해 총량식을 만든다 → 제시된 값을 그 식에 대입하여 총량을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "SEQUENTIAL"
       ]
     }
   ],

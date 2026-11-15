@@ -31,7 +31,16 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "꼭지각 이등분선의 수직이등분과 합동",
+    "decisiveStep": "밑변 수직이등분선 위의 점에서 두 밑변 끝까지 거리는 같지만 꼭짓점까지 거리는 정해지지 않는다."
   },
   {
     "id": 2,
@@ -63,7 +72,18 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_CHAINED_ISOSCELES",
+    "primaryMethod": "연속 이등변삼각형의 각 추적",
+    "decisiveStep": "한 각을 t로 두고 인접한 네 이등변삼각형 및 일직선 관계를 연결해 목표각 식을 결합한다."
   },
   {
     "id": 3,
@@ -96,7 +116,20 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRIANGLE",
+      "CC_ISOSCELES_CONVERSE",
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "RHS 합동으로 길이를 옮긴 뒤 직각이등변 넓이",
+    "decisiveStep": "공통 빗변과 같은 한 변으로 DE=CE를 얻고 45도 두 각에서 DB=DE로 옮겨 넓이를 구한다."
   },
   {
     "id": 4,
@@ -128,7 +161,16 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "외심의 같은 반지름으로 각 관계",
+    "decisiveStep": "반지름이 만드는 세 이등변삼각형의 밑각을 정리하고 전체 내각합으로 목표각을 얻는다."
   },
   {
     "id": 5,
@@ -160,7 +202,16 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "외심과 내심의 두 각 성질",
+    "decisiveStep": "외심의 같은 반지름 각과 내심의 반각 관계를 각각 구해 합한다."
   },
   {
     "id": 6,
@@ -192,7 +243,18 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "내심의 반각과 평행선 각 이동",
+    "decisiveStep": "주어진 두 각을 평행선을 따라 원래 밑각의 절반으로 옮겨 전체 꼭짓각을 계산한다."
   },
   {
     "id": 7,
@@ -222,7 +284,18 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+    "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+    "primaryMethod": "평행사변형 판정 조건 진위",
+    "decisiveStep": "각·변·평행·대각선 조건을 대조하고 서로 다른 대각선 조각끼리의 등호가 판정 조건이 아님을 가린다."
   },
   {
     "id": 8,
@@ -254,7 +327,18 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+    "templateKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+    "primaryMethod": "평행사변형 내부점의 반대 넓이 합",
+    "decisiveStep": "두 대변 위 삼각형 넓이 합이 전체의 절반이라는 관계로 네 번째 넓이를 뺀다."
   },
   {
     "id": 9,
@@ -286,7 +370,16 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "마름모의 대각선 이등분각과 이웃각",
+    "decisiveStep": "대각선이 나눈 각을 두 배한 뒤 이웃한 각을 구하고 같은 변의 길이를 더한다."
   },
   {
     "id": 10,
@@ -318,7 +411,16 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "정사각형 대각선의 대칭과 각",
+    "decisiveStep": "한쪽 삼각형의 각을 구하고 대각선 대칭으로 목표각에 옮긴다."
   },
   {
     "id": 11,
@@ -351,7 +453,18 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+    "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+    "primaryMethod": "정사각형 두 배치의 ASA 합동과 넓이 교환",
+    "decisiveStep": "대각선의 등거리와 두 직각의 각 관계로 삼각형 두 개를 합동으로 보이고 겹친 넓이를 한 중심 삼각형으로 옮긴다."
   },
   {
     "id": 12,
@@ -383,7 +496,16 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "사각형 포함 관계의 추가 조건",
+    "decisiveStep": "각 화살표의 앞 사각형에 추가한 조건으로 뒤 사각형을 보장하는지 판정한다."
   },
   {
     "id": 13,
@@ -415,7 +537,16 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "닮음 대응 순서와 대응변비",
+    "decisiveStep": "닮음 순서에 맞는 한 쌍의 변의 비를 다른 대응변의 비에 그대로 옮긴다."
   },
   {
     "id": 14,
@@ -447,7 +578,16 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "닮은 직육면체의 대응 모서리비",
+    "decisiveStep": "두 직육면체의 대응 방향을 맞추고 같은 닮음비로 두 모서리 길이를 환산한다."
   },
   {
     "id": 15,
@@ -479,7 +619,16 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "공통각과 두 변 비의 SAS 닮음",
+    "decisiveStep": "겹친 두 삼각형에서 공통각을 끼는 두 변 비를 맞추어 닮음을 정하고 대응변을 구한다."
   },
   {
     "id": 16,
@@ -511,7 +660,16 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "주어진 두 각의 AA 닮음",
+    "decisiveStep": "각 대응 순서를 정하고 한 변이 두 삼각형에서 맡는 대응 역할로 비례식을 세운다."
   },
   {
     "id": 17,
@@ -543,7 +701,16 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "중점연결정리로 둘레 절반",
+    "decisiveStep": "각 중점연결선이 대응변 절반임을 적용해 세 변의 합을 반으로 줄인다."
   },
   {
     "id": 18,
@@ -575,7 +742,16 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "여러 소삼각형의 평행 선분비",
+    "decisiveStep": "같은 꼭짓점에서 나온 세 직선의 밑변 분할비로 x를 구하고 전체 닮음비로 남은 y를 얻는다."
   },
   {
     "id": 19,
@@ -607,7 +783,16 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "primaryMethod": "여러 평행선의 전체·부분 대응비",
+    "decisiveStep": "각 그림에서 전체와 부분 차로 대응 구간을 맞추어 두 비례식을 푼다."
   },
   {
     "id": 20,
@@ -640,7 +825,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+    "templateKey": "",
+    "primaryMethod": "각 이등분선 조건의 직접 오류 판정",
+    "decisiveStep": "제시된 설명 첫 등호가 나눈 두 각의 같음이어야 함을 확인해 잘못 쓴 각 이름을 찾는다."
   },
   {
     "id": 21,
@@ -666,7 +862,19 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN",
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "수선으로 만든 두 삼각형의 RHA 합동",
+    "decisiveStep": "서로 수직인 두 쌍의 방향에서 같은 예각을 만들고 같은 빗변으로 합동을 얻어 변 길이를 옮긴 뒤 넓이를 계산한다."
   },
   {
     "id": 22,
@@ -692,7 +900,19 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA",
+      "CC_CIRCLE_CIRCUMFERENCE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "직각삼각형 외접반지름과 내심 높이",
+    "decisiveStep": "빗변 중점으로 외접반지름을, 같은 내심 높이의 넓이 분할로 내접반지름을 구해 두 원 넓이를 합한다."
   },
   {
     "id": 23,
@@ -718,7 +938,18 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [
+      "CC_ANGLE_BISECTOR_PROPERTY"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평행사변형의 각과 이등분각",
+    "decisiveStep": "엇각으로 주어진 각을 꼭짓점에 옮겨 두 배한 뒤 이웃각을 뺀다."
   },
   {
     "id": 24,
@@ -745,6 +976,17 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_CONGRUENCE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "대각선 조건으로 숨은 마름모 판정",
+    "decisiveStep": "ASA 합동으로 다른 대각선도 이등분됨을 보인 뒤 수직인 두 대각선에서 마름모를 판정하여 둘레를 얻는다."
   }
 ];

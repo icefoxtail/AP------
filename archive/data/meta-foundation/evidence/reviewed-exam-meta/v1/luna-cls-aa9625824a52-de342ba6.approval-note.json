@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-aa9625824a52-de342ba6",
+  "sourceArchiveFile": "original/high/h1/1mid/22_복성고_1학기_중간_고1_기출.js",
+  "createdAt": "2026-11-14T12:09:47.799Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "9e8e635f6bfefb11287da7a7f499206013ae5e7e",
+  "sourceBlobSha1": "b464b2e487854ecc4f4a832d0849d8f2b1fca738",
+  "ledgers": [
+    {
+      "role": "pass1",
+      "source": "A-out/ledgers/22_복성고_1학기_중간_고1_기출.js.json",
+      "sourceSha256": "6855335763c64b12c22e2a8c6524e3e038dde2dbc5b49edc5b77a958a1590160",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aa9625824a52-de342ba6.pass1-ledger.json",
+      "repoSha256": "6855335763c64b12c22e2a8c6524e3e038dde2dbc5b49edc5b77a958a1590160",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass2",
+      "source": "A2-out/ledgers/22_복성고_1학기_중간_고1_기출.json",
+      "sourceSha256": "219c48f3b0d6e4c02959127f6593b2426e87480ade699d37785038c6144ab6a4",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aa9625824a52-de342ba6.pass2-ledger.json",
+      "repoSha256": "219c48f3b0d6e4c02959127f6593b2426e87480ade699d37785038c6144ab6a4",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/t/ledgers/shard-1-p3-high1-mathup-exam-022.json",
+      "sourceSha256": "db4f9616aeaae9318e21dba2d915105efcb8cc3bdd5e1a4d364233df09d66447",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aa9625824a52-de342ba6.pass3-ledger.json",
+      "repoSha256": "db4f9616aeaae9318e21dba2d915105efcb8cc3bdd5e1a4d364233df09d66447",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/l/ledgers/luna-pass3-shard4-094-bokseong-high1-mathi-upper.json",
+      "sourceSha256": "95bfcd37911c0642245344177dd777784ec2b7ee42e9b1215259cd1ed1067729",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-aa9625824a52-de342ba6.pass3-ledger-2.json",
+      "repoSha256": "95bfcd37911c0642245344177dd777784ec2b7ee42e9b1215259cd1ed1067729",
+      "lineEndingNormalized": false
+    }
+  ],
+  "fieldSources": {
+    "registered": 143,
+    "agree": 41,
+    "p3": 14
+  },
+  "itemSources": {
+    "registered+agree": 8,
+    "registered": 6,
+    "registered+p3": 2,
+    "registered+agree+p3": 1
+  },
+  "typeHoldQuestions": 11,
+  "idWarnings": []
+}

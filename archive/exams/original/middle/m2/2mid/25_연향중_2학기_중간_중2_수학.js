@@ -34,7 +34,16 @@ window.questionBank=[
     "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q1-solution.svg",
     "solutionImageAlt": "해설 그림: 좌표평면에 원점 O와 y축의 눈금 2, 4가 있고, 점 (4,0), (4,2), (4,4)를 지나는 세로 직선 x=4가 식 라벨과 함께 그려져 있다.",
     "solutionImageCaption": "방정식 x=4의 해는 x좌표가 4인 점 (4,y) 전체이므로 점 (4,0), (4,2), (4,4)가 모두 직선 x=4 위에 놓인다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "x좌표가 일정한 점의 집합",
+    "decisiveStep": "x=4인 모든 점이 y축에 평행한 직선임을 읽어 주어진 점·평행축 설명과 맞춘다."
   },
   {
     "id": 2,
@@ -70,8 +79,17 @@ window.questionBank=[
     "solutionImageAlt": "해설 그림: 윗변과 아랫변이 평행한 사다리꼴에서 왼쪽 다리 양 끝의 두 내각이 호 한 개와 호 두 개로 표시되고 '두 각의 합 180°'가 적혀 있으며, 오른쪽 다리는 비스듬히 기울어 있다.",
     "solutionImageCaption": "윗변과 아랫변이 평행한 사다리꼴에서 한 다리 양 끝의 두 내각의 합이 180°이다.",
     "solutionImageSize": "medium",
-    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_QUADRILATERAL_CRITERIA"
+    "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+    "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "primaryMethod": "평행사변형 판정의 불충분 조건",
+    "decisiveStep": "이웃각 하나의 합180°는 한 쌍 평행만 보장하므로 두 쌍 조건과 구별한다."
   },
   {
     "id": 3,
@@ -102,7 +120,17 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "교점 좌표의 두 방정식 동시 만족",
+    "decisiveStep": "주어진 x좌표를 첫 식에 넣어 y좌표를 얻고 그 교점 전체를 둘째 식에 넣어 계수를 정한다."
   },
   {
     "id": 4,
@@ -137,7 +165,20 @@ window.questionBank=[
     "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q4-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 좌표평면에 평행한 두 직선이 그려져 있다. 위쪽 직선은 y=2x-1이고 y축과 (0,-1)에서 만난다. 아래쪽 직선은 y=2x-3/2이고 y축과 (0,-3/2)에서 만난다. 두 직선은 기울기 2가 같고 y절편이 달라 만나지 않으므로 해가 없다.",
     "solutionImageCaption": "평행 조건 -a=2에서 a=-2이다. 이때 두 직선 y=2x-1과 y=2x-3/2는 기울기가 같고 y절편 (0,-1), (0,-3/2)가 달라 만나지 않으므로 해가 없다. 정답 ③",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_RELATION_PARALLEL_PARAMETER",
+    "problemTypeKey": "PT_LINE_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "해가 없는 연립방정식의 서로 다른 평행선",
+    "decisiveStep": "두 직선의 기울기는 같게 하고 절편은 다름을 확인한다."
   },
   {
     "id": 5,
@@ -172,7 +213,21 @@ window.questionBank=[
     "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 기울기가 음수이고 x절편과 y절편이 모두 음수인 직선 x+ay-b=0이 좌표평면에 그려져 있고, 두 절편이 축 위의 점으로 표시되어 있다.",
     "solutionImageCaption": "a>0, b<0일 때 직선 x+ay-b=0은 기울기가 음수이고 x절편 b와 y절편 b/a가 모두 음수이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_POSITIVE",
+      "COND_NEGATIVE"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "계수 부호로 기울기·절편 부호와 사분면",
+    "decisiveStep": "식을 y형태로 고쳐 음의 기울기와 두 음의 절편으로 빠지는 사분면을 판단한다."
   },
   {
     "id": 6,
@@ -207,7 +262,21 @@ window.questionBank=[
     "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 세 직선 x=0, x+y-4=0, 3x-y-4=0이 이루는 삼각형이 옅게 칠해져 있고, 꼭짓점 (0,4), (0,-4), (2,2)와 꼭짓점 (2,2)에서 직선 x=0까지의 높이 2를 나타내는 점선이 표시되어 있다.",
     "solutionImageCaption": "세 직선으로 둘러싸인 삼각형의 꼭짓점은 (0,4), (0,-4), (2,2)이고 꼭짓점 (2,2)에서 직선 x=0까지의 거리는 2이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_AREA_DIRECT",
+    "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+    "crossConceptKeys": [
+      "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
+      "CC_INTERCEPTS"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "세 교점 좌표의 삼각형 넓이",
+    "decisiveStep": "두 y절편을 밑변 끝점으로 잡고 두 직선의 교점 x좌표를 높이로 읽는다."
   },
   {
     "id": 7,
@@ -246,7 +315,16 @@ window.questionBank=[
     "solutionImageCaption": "각의 이등분선 위의 점 P에서 두 변에 내린 수선의 발 A, B에 대해 ∠POA=∠POB, OP는 공통, ∠OAP=∠OBP=90°이다.",
     "solutionImageSize": "medium",
     "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-    "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE"
+    "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "공통 빗변과 한 예각의 RHA 판정",
+    "decisiveStep": "수선 두 개와 공통 빗변을 확인하여 제시된 SAS가 아니라 RHA임을 구별한다."
   },
   {
     "id": 8,
@@ -286,7 +364,16 @@ window.questionBank=[
     "solutionImageCaption": "O가 AC, BC의 수직이등분선 위에 있으므로 OA=OC, OB=OC이고 OA=OB=OC이다.",
     "solutionImageSize": "medium",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
-    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "수직이등분선 교점의 꼭짓점 등거리",
+    "decisiveStep": "두 수직이등분선에서 얻은 등거리를 연결하여 셋째 수직이등분선과 이등변 관계를 판정한다."
   },
   {
     "id": 9,
@@ -325,7 +412,16 @@ window.questionBank=[
     "solutionImageCaption": "내심 I에서 ∠BIC=130°이고 외심 O에서 OA=OB=OC이다.",
     "solutionImageSize": "medium",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
-    "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED"
+    "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "내심 반각에서 외심의 등거리각으로 연결",
+    "decisiveStep": "내심각으로 A각을 정한 뒤 외심의 두 이등변삼각형 각과 한 점의360°를 연결한다."
   },
   {
     "id": 10,
@@ -364,7 +460,18 @@ window.questionBank=[
     "solutionImageCaption": "중심각의 비 4:6:5에서 세 중심각을 구하고 꼭짓점 C의 두 밑각을 나타낸 그림.",
     "solutionImageSize": "medium",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
-    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+    "crossConceptKeys": [
+      "CC_RATIO_AND_PROPORTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "중심각 비례배분 후 외심각",
+    "decisiveStep": "한 점의360°를 주어진 비로 나누고 각 중심각의 이등변 밑각을 더한다."
   },
   {
     "id": 11,
@@ -402,8 +509,17 @@ window.questionBank=[
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F를 표시한 그림. AD=AF=4cm, BD=BE=5cm를 같은 눈금으로 나타내고 CE=CF를 x로 나타냈다.",
     "solutionImageCaption": "접점에서 꼭짓점까지의 길이가 같다: AF=AD=4cm, BE=BD=5cm, CE=CF=x.",
     "solutionImageSize": "medium",
-    "problemTypeKey": "PT_TRIANGLE_CENTERS",
-    "templateKey": "TPL_TRIANGLE_INCENTER"
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_LENGTH",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyConfidence": "high",
+    "primaryMethod": "내접원의 같은 접선 길이와 삼각형 둘레",
+    "decisiveStep": "각 꼭짓점에서 두 접선 길이가 같음을 써 세 변을 표현하고 전체 둘레에서 남은 접선 길이를 정한다."
   },
   {
     "id": 12,
@@ -442,7 +558,18 @@ window.questionBank=[
     "solutionImageCaption": "D에서 AB에 내린 수선 DH는 DC와 같은 6cm이다.",
     "solutionImageSize": "medium",
     "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
-    "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE"
+    "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "각 이등분선 위 점의 두 변까지 거리",
+    "decisiveStep": "밑변 AB에 대한 새 높이를 내린 뒤 이등분선의 같은 거리로 그 높이를 주어진 CD와 같게 놓는다."
   },
   {
     "id": 13,
@@ -477,7 +604,16 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "primaryMethod": "마름모의 대각선과 꼭짓각 이등분",
+    "decisiveStep": "대각선이 나누는 서로 다른 꼭짓각의 절반이 항상 같지는 않음을 구별한다."
   },
   {
     "id": 14,
@@ -516,7 +652,18 @@ window.questionBank=[
     "solutionImageCaption": "∠D=72°를 DE가 이등분하여 ∠ADE=36°이고 ∠AED=90°이다.",
     "solutionImageSize": "medium",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+    "crossConceptKeys": [
+      "CC_ANGLE_BISECTOR_PROPERTY"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평행사변형 이웃각과 반각",
+    "decisiveStep": "이웃각180°에서 D각을 구하고 이등분선과 직각을 이어 목표각을 보완한다."
   },
   {
     "id": 15,
@@ -550,8 +697,17 @@ window.questionBank=[
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+    "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+    "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "difficultyConfidence": "high",
+    "primaryMethod": "계통도의 추가 충분조건",
+    "decisiveStep": "각 화살표의 출발 도형에 이미 있는 성질과 새로 필요한 성질을 구별한다."
   },
   {
     "id": 16,
@@ -590,7 +746,18 @@ window.questionBank=[
     "solutionImageCaption": "접어 겹친 선분 EF가 ∠AEC를 54°씩 나누고 ∠EFD=∠GFE이다",
     "solutionImageSize": "medium",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+    "crossConceptKeys": [
+      "CC_PAPER_FOLDING_ANGLES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "primaryMethod": "직사각형 접기의 대칭각",
+    "decisiveStep": "접는 선의 각 이등분과 평행변을 이용해 접기 전 각을 정하고 접힌 대응각으로 옮긴다."
   },
   {
     "id": 17,
@@ -627,7 +794,16 @@ window.questionBank=[
     "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q17-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 BC 위의 점 P에서 BP:PC=3:2이고 △ABC의 넓이가 75cm²임을 BC 아래 치수선 옆에 적고, 꼭짓점 A에서 BC에 내린 공통 높이와 △ABP, △APC를 서로 다른 색으로 칠해 나타낸 그림.",
     "solutionImageCaption": "높이가 같은 두 삼각형의 넓이비는 밑변의 비 3:2이다",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "같은 높이인 삼각형의 밑변비와 넓이비",
+    "decisiveStep": "공통 꼭짓점에서 한 직선으로 내린 높이가 같으므로 전체 넓이를 밑변 분할비대로 나눈다."
   },
   {
     "id": 18,
@@ -666,7 +842,18 @@ window.questionBank=[
     "solutionImageCaption": "합동인 두 직각삼각형으로 AD=CE=8cm, AE=DB=6cm, DE=14cm를 얻는다",
     "solutionImageSize": "medium",
     "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-    "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE"
+    "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+    "crossConceptKeys": [
+      "CC_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "primaryMethod": "RHA 합동의 대응요소와 넓이 판단",
+    "decisiveStep": "같은 빗변·한 예각으로 두 직각삼각형을 합동시켜 길이를 교환하고 사다리꼴 넓이까지 판정한다."
   },
   {
     "id": 19,
@@ -705,7 +892,18 @@ window.questionBank=[
     "solutionImageCaption": "외심 O는 AB의 중점이고 내심 I에서 세 변까지의 거리 r은 같다",
     "solutionImageSize": "medium",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
-    "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED"
+    "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+    "crossConceptKeys": [
+      "CC_CIRCLE_CIRCUMFERENCE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "직각삼각형 외접반지름과 넓이분할 내접반지름",
+    "decisiveStep": "외심은 빗변 중점으로, 내심은 동일 거리 높이의 세 넓이 합으로 반지름을 얻고 원의 둘레로 바꾼다."
   },
   {
     "id": 20,
@@ -735,16 +933,28 @@ window.questionBank=[
     "answer": "④",
     "solution": "이등변삼각형의 밑각과 평행선·맞꼭지각을 이용해 $DF$를 구한다.\n$BE=BF$이므로 $\\angle BEF=\\angle EFB$이다. $AB\\parallel CD$이고 $E,F,C$가 한 직선 위에 있으므로 $\\angle BEF=\\angle DCF$이다.\n또한 $EC$와 $BD$가 $F$에서 만나므로 $\\angle EFB=\\angle DFC$이다.\n따라서 $\\angle DCF=\\angle DFC$이므로 $DF=DC=18$이다. $BD=BF+FD=12+18=30$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_중간_중2_수학/q20.png",
-    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
-    "subUnit": "사각형의 성질",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 마름모 ABCD에서 AB 위의 점 E와 대각선 BD 위의 점 F를 잡아 BE=BF=12, BC=18을 표시하고, ∠BEF, ∠EFB, ∠DFC, ∠DCF가 같음을 호 표시로 나타내며 DF=DC=18을 두 눈금과 길이로 표시한 그림.",
     "solutionImageCaption": "네 각 ∠BEF, ∠EFB, ∠DFC, ∠DCF가 같으므로 DF=DC이다",
     "solutionImageSize": "medium",
-    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "templateKey": "TPL_ISOSCELES_CONVERSE",
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINE_ANGLES",
+      "CC_RHOMBUS_PROPERTIES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "primaryMethod": "같은 각으로 새 이등변삼각형 판정",
+    "decisiveStep": "BE=BF의 밑각을 평행선·맞꼭지각으로 옮겨 DCF의 두 각을 같게 만들고 DF=DC를 얻는다."
   },
   {
     "id": 21,
@@ -773,7 +983,18 @@ window.questionBank=[
     "solutionImage": "assets/images/25_연향중_2학기_중간_중2_수학/q21-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 x+y-5=0, -3x+y+7=0과 두 직선의 교점 (3,2)를 표시하고, 세 번째 직선 ax+y+4=0이 첫째 직선과 평행한 경우, 둘째 직선과 평행한 경우, 두 직선의 교점을 지나는 경우의 세 위치를 한 좌표평면에 그린 그림. 서로 평행한 두 직선에는 같은 개수의 화살표가 표시되어 있다.",
     "solutionImageCaption": "세 번째 직선이 평행하거나 교점을 지나면 삼각형이 만들어지지 않는다",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "templateKey": "TPL_INTERSECTION_TRIANGLE_FORMATION",
+    "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "primaryMethod": "세 직선의 삼각형 퇴화 조건 분류",
+    "decisiveStep": "한 쌍 평행인 두 경우와 세 직선이 한 점에서 만나는 경우를 빠짐없이 나눈다."
   },
   {
     "id": 22,
@@ -806,7 +1027,16 @@ window.questionBank=[
     "solutionImageCaption": "AB=AC인 이등변삼각형에서 두 밑각이 같고 CD가 ∠C를 이등분함을 표시한 그림이다.",
     "solutionImageSize": "medium",
     "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-    "templateKey": "TPL_ISOSCELES_BASE_ANGLES"
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "이등변 밑각과 밑각 이등분",
+    "decisiveStep": "두 밑각이 같음을 적용한 뒤 작은 삼각형에 반각과 내각합을 쓴다."
   },
   {
     "id": 23,
@@ -839,6 +1069,15 @@ window.questionBank=[
     "solutionImageCaption": "정사각형의 대각선 성질과 ∠BEO=65°에서 꼭짓점 B의 세 각 y, 25°, 45°의 관계를 표시한 그림이다.",
     "solutionImageSize": "medium",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "primaryMethod": "정사각형 대각선의 길이·직각·반각",
+    "decisiveStep": "같은 대각선의 반 길이로 x를 정하고 대각선 수직과45°반각으로 작은 각을 빼서 y를 구한다."
   }
 ];

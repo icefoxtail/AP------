@@ -35,6 +35,10 @@ const tests = includeQuarantined
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/archive-reviewed-parent-correction.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-parent-correction.test.mjs']
+  },
+  {
     label: 'tests/archive2-registration-contracts.test.mjs',
     args: ['--test', 'tests/archive2-registration-contracts.test.mjs']
   },
@@ -59,8 +63,20 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-pr-registration-prepare.test.mjs']
   },
   {
+    label: 'tests/archive-pr-native-preview.test.mjs',
+    args: ['--test', 'tests/archive-pr-native-preview.test.mjs']
+  },
+  {
+    label: 'tests/archive-reviewed-native-scope-fields.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
+  },
+  {
     label: 'tests/archive-main-merge-meta.test.mjs',
     args: ['--test', 'tests/archive-main-merge-meta.test.mjs']
+  },
+  {
+    label: 'tests/archive-main-meta-batch-replay.test.mjs',
+    args: ['--test', 'tests/archive-main-meta-batch-replay.test.mjs']
   },
   {
     label: 'tests/item-4slot-runtime.test.cjs',
@@ -229,6 +245,14 @@ const requiredCommands = [
   {
     label: 'tests/archive-reviewed-apply-bridge.test.mjs',
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
+  },
+  {
+    label: 'tests/archive-reviewed-native-parent.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-native-parent.test.mjs']
+  },
+  {
+    label: 'tests/archive-native-replay-registry-context.test.mjs',
+    args: ['--test', 'tests/archive-native-replay-registry-context.test.mjs']
   },
   {
     label: 'tests/archive-saved-papers-runtime.mjs',
@@ -455,23 +479,26 @@ if (args.length) {
   if (runScopedTests({ root, scopeFile: args[1], availableCommands })) return;
 }
 
-// The pre-step below (archive/tools/build-archive2-catalog.mjs) regenerates
-// committed Archive2 canonical artifacts. While the post-merge "sync
-// registration artifacts" bot commit is pending they are stale, so a run used to
+// The pre-step below regenerates the catalog and its runtime readiness receipt
+// together. While the post-merge registration bot commit is pending they are
+// stale, so a run used to
 // leave a dirty tree. The guard puts back ONLY these pre-step outputs, and only
 // when they were clean before the run and nobody changed them since the
 // pre-step wrote them; anything else is merely reported (see
 // tools/lib/test-output-guard.js). The build tool exports no path list, so the
-// paths it writes are listed here explicitly; keep in sync with its
-// fs.writeFileSync targets. APMATH_KEEP_TEST_OUTPUT=1 turns the guard off.
+// catalog paths it writes are listed here explicitly; keep in sync with its
+// fs.writeFileSync targets. The readiness writer's exact outputs are shared
+// with its preparation helper. APMATH_KEEP_TEST_OUTPUT=1 turns the guard off.
 const { createOutputGuard } = require('./lib/test-output-guard.js');
+const { prepareArchiveTestProjection, READINESS_OUTPUT_FILES } = require('./lib/archive-test-projection.js');
 const outputGuard = createOutputGuard({
   root,
   outputFiles: [
     'archive/data/archive2-canonical-input-manifest.json',
     'archive/data/archive2-catalog.json',
     'archive/data/archive2-item-review-overrides.json',
-    'archive/data/archive2-source-verification-index.json'
+    'archive/data/archive2-source-verification-index.json',
+    ...READINESS_OUTPUT_FILES
   ],
   outputPrefixes: ['archive/data/archive2-source-verification/'],
   keep: process.env.APMATH_KEEP_TEST_OUTPUT === '1'
@@ -484,18 +511,12 @@ process.on('SIGTERM', () => process.exit(143));
 // Source-verification tests exercise generated canonical artifacts. Build them
 // from the checked-out source tree so code-only pull requests do not depend on
 // already-committed shard outputs.
-const canonicalProjectionBuild = localRegistrationPrepared ? null : spawnSync(process.execPath, [
-  'archive/tools/build-archive2-catalog.mjs'
-], {
-  cwd: root,
-  stdio: 'inherit',
-  timeout: 120000
-});
-outputGuard.afterPrestep();
-if (canonicalProjectionBuild?.error) console.error(canonicalProjectionBuild.error.message);
-if (canonicalProjectionBuild && (canonicalProjectionBuild.status !== 0 || canonicalProjectionBuild.error)) {
-  console.error('Failed to build canonical Archive2 test projection.');
-  process.exit(1);
+try {
+  if (!localRegistrationPrepared) prepareArchiveTestProjection({ root });
+} finally {
+  // A failed generator may also have written an output. Snapshot those bytes
+  // so the guard can restore only our untouched changes on either exit path.
+  outputGuard.afterPrestep();
 }
 
 let passed = 0;

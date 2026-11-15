@@ -1,0 +1,72 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CYLINDER",
+      "radius": 1,
+      "height": 3
+    },
+    {
+      "id": "s2",
+      "kind": "CONE",
+      "radius": 2,
+      "height": 2.25
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "bottom",
+      "label": "a"
+    },
+    {
+      "solid": "s1",
+      "height": true,
+      "label": "3a"
+    },
+    {
+      "solid": "s2",
+      "radius": "bottom",
+      "label": "2a"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "label": "h"
+    }
+  ],
+  "solidCaption": {
+    "text": "물의 부피가 같은 원기둥과 원뿔"
+  },
+  "caption": "반지름 a, 높이 3a인 원기둥의 물을 반지름 2a, 높이 h인 원뿔에 부어 가득 채운다.",
+  "accessibilityDescription": "원기둥에는 반지름 a와 높이 3a가, 원뿔에는 반지름 2a와 높이 h가 표시되어 있고 두 입체의 부피가 같다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름 a, 높이 3a인 원기둥",
+      "mappedTo": [
+        "solids[0]",
+        "dims[0]",
+        "dims[1]"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "반지름 2a, 높이 h인 원뿔",
+      "mappedTo": [
+        "solids[1]",
+        "dims[2]",
+        "dims[3]"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "원기둥의 물을 원뿔에 부어 가득 채우므로 두 입체의 부피가 같다",
+      "mappedTo": "solidCaption"
+    }
+  ],
+  "newVisualInformation": [
+    "원기둥과 원뿔의 부피 보존 관계 및 각 반지름·높이 라벨"
+  ]
+}

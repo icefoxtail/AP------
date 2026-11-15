@@ -3,6 +3,10 @@ window.examUid = "20_이수중_2학기_중간_중3_수학";
 window.questionBank = [
   {
     "id": 1,
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q1-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "기준각 A에 붙은 초록 변 AB와 파란 빗변 AC로 코사인 비를 읽는다. 주황 BC는 A의 맞은편이다.",
+    "solutionImageCaption": "cos A=AB/AC=12/13이므로 정답은 ②이다.",
     "score": 4,
     "level": "하",
     "category": "삼각비",
@@ -18,14 +22,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림의 직각삼각형 $\\mathrm{ABC}$에서 삼각비의 값으로 옳은 것은? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q01.png\" />",
+    "content": "다음 그림의 직각삼각형 $\\mathrm{ABC}$에서 삼각비의 값으로 옳은 것은? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q1-problem-v2.svg\" />",
     "choices": [
       "$\\sin A = \\frac{12}{13}$",
       "$\\cos A = \\frac{12}{13}$",
@@ -79,9 +83,17 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     }
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "primaryMethod": "빗변·대변·인접변을 구별하여 각별 삼각비 판정",
+    "decisiveStep": "AC=13, AB=12, BC=5에서 cos A=12/13이다. 나머지 선택지는 sin A=5/13, tan A=5/12, cos C=5/13, tan C=12/5와 다르다."
   },
   {
     "id": 2,
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q2-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "B의 맞은편 AC는 주황이고 이웃한 변 BC는 초록이다. 두 변을 비교해 파란 빗변을 구할 수 있다.",
+    "solutionImageCaption": "tan B=AC/BC=2/3이므로 BC=12 cm이다. 피타고라스 정리에 따라 AB=4√13 cm이고 정답은 ⑤이다.",
     "score": 4,
     "level": "중",
     "category": "삼각비",
@@ -97,14 +109,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 $\\angle \\mathrm{C} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}} = 8\\,\\mathrm{cm}$, $\\tan B = \\frac{2}{3}$일 때, $\\overline{\\mathrm{AB}}$의 길이는? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q02.png\" />",
+    "content": "오른쪽 그림과 같이 $\\angle \\mathrm{C} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}} = 8\\,\\mathrm{cm}$, $\\tan B = \\frac{2}{3}$일 때, $\\overline{\\mathrm{AB}}$의 길이는? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q2-problem-v2.svg\" />",
     "choices": [
       "$2\\sqrt{13}\\,\\mathrm{cm}$",
       "$12\\,\\mathrm{cm}$",
@@ -115,7 +127,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "tan B=AC/BC=2/3이고 AC=8이므로 2에 해당하는 길이가 8이다. 따라서 BC=12이다. 피타고라스 정리로 AB²=AC²+BC²=8²+12²=64+144=208=16·13이므로 AB=4√13 cm이다. 따라서 ⑤이다.",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "주어진 tan 비로 나머지 한 변을 구하고 피타고라스 정리로 빗변을 구한다.",
@@ -162,9 +174,17 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     }
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "primaryMethod": "탄젠트로 한 직각변을 정한 뒤 피타고라스로 빗변 계산",
+    "decisiveStep": "8/BC=2/3이므로 BC=12이다. AB²=8²+12²=208에서 AB=4√13이다."
   },
   {
     "id": 3,
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q3-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "60도의 맞은편은 √3인 주황 변이다. 빗변은 길이 2인 파란 변이다.",
+    "solutionImageCaption": "sin 60°는 60°의 맞은편을 빗변으로 나눈 √3/2이다. ④가 옳지 않다.",
     "score": 4,
     "level": "하",
     "category": "삼각비",
@@ -240,6 +260,10 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     }
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "primaryMethod": "특수각의 알려진 삼각비 값과 선택지 대조",
+    "decisiveStep": "sin60°는 √3/2이고 1/2가 아니다. sin0=0, cos30=√3/2, tan45=1, cos90=0은 참이다."
   },
   {
     "id": 4,
@@ -318,9 +342,16 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     }
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "primaryMethod": "30°와60°의 특수값 대입",
+    "decisiveStep": "sin30=1/2, tan30=1/√3, cos60=1/2이므로 1/2−1+1/2=0이다."
   },
   {
     "id": 5,
+    "solutionImageSize": "full",
+    "solutionImageAlt": "왼쪽 작은 삼각형과 오른쪽 작은 삼각형에 다른 색을 썼다. 아래 빗변과 두 직각 표지가 닮음을 보여 준다.",
+    "solutionImageCaption": "AB=6 cm이다. 닮음으로 x=∠C, y=∠B이다. sin x=cos y=6/10이므로 합은 6/5, 정답은 ③이다.",
     "score": 4,
     "level": "중",
     "category": "삼각비",
@@ -336,14 +367,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AH}} \\perp \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{BC}} = 10\\,\\mathrm{cm}$, $\\overline{\\mathrm{AC}} = 8\\,\\mathrm{cm}$일 때, $\\sin x + \\cos y$의 값은? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q05.png\" />",
+    "content": "다음 그림과 같이 $\\angle \\mathrm{A} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AH}} \\perp \\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{BC}} = 10\\,\\mathrm{cm}$, $\\overline{\\mathrm{AC}} = 8\\,\\mathrm{cm}$일 때, $\\sin x + \\cos y$의 값은? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q5-problem-v2.svg\" />",
     "choices": [
       "$\\frac{4}{5}$",
       "$1$",
@@ -355,7 +386,7 @@ window.questionBank = [
     "solution": "직각삼각형 ABC에서 AB²+AC²=BC²이므로 AB²+8²=10², AB=6이다. △ABH와 △ABC는 각각 H와 A가 직각이고, ∠BAH=∠ACB이므로 닮음이다. 따라서 sin x=sin∠C=AB/BC=6/10=3/5이다. 또 △AHC와 △ABC가 닮음이므로 y=∠B이고 cos y=AB/BC=3/5이다. 합은 3/5+3/5=6/5이므로 ③이다.",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "피타고라스 정리, 닮음으로 각을 대응시키고 두 삼각비를 더한다.",
     "levelReason": "중: 피타고라스 정리, 닮음으로 각을 대응시키고 두 삼각비를 더한다.",
@@ -375,10 +406,7 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN",
-      "CC_SIMILARITY"
-    ],
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_TRIANGLE_SIMILARITY_AA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
@@ -402,10 +430,18 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q05-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q5-solution-v2.svg"
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "primaryMethod": "높이로 나뉜 닮은 직각삼각형의 각을 큰 삼각형에 대응",
+    "decisiveStep": "AB=√(10²−8²)=6이고 x=∠C, y=∠B이므로 sin x=cos y=6/10, 합은6/5이다."
   },
   {
     "id": 6,
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "직각을 만드는 두 변이 같은 초록 눈금이다. 나머지 예각도 45도이므로 두 직각변의 길이가 같다.",
+    "solutionImageCaption": "BC=AC=8이므로 AB²=128, AB=8√2이다. 정답은 ⑤이다.",
     "score": 4,
     "level": "하",
     "category": "삼각비",
@@ -421,14 +457,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 $\\angle \\mathrm{C} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}} = 8$, $\\angle \\mathrm{B} = 45^\\circ$일 때, $\\overline{\\mathrm{AB}}$의 길이는? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q06.png\" />",
+    "content": "다음 그림과 같이 $\\angle \\mathrm{C} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}} = 8$, $\\angle \\mathrm{B} = 45^\\circ$일 때, $\\overline{\\mathrm{AB}}$의 길이는? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q6-problem-v2.svg\" />",
     "choices": [
       "$4\\sqrt{2}$",
       "$5\\sqrt{2}$",
@@ -458,11 +494,9 @@ window.questionBank = [
       "l4": "30°·45°·60°"
     },
     "rpmSemanticStatus": "FINAL",
-    "problemTypeKey": "PT_TRIG_RATIO",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_PYTHAGOREAN"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
@@ -486,9 +520,16 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     }
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "primaryMethod": "45° 직각삼각형의 같은 두 직각변과 빗변 관계",
+    "decisiveStep": "A=B=45°이므로 BC=AC=8이다. AB²=8²+8²=128에서 AB=8√2이다."
   },
   {
     "id": 7,
+    "solutionImageSize": "full",
+    "solutionImageAlt": "왼쪽 30도와 오른쪽 45도 삼각형을 다른 색 면으로 구분했다. 오른쪽에서 AH와 HC는 같은 초록 눈금이다.",
+    "solutionImageCaption": "∠B=30°이다. BH=√3·AH, HC=AH이므로 10=(√3+1)AH이다. AH=5(√3−1) cm, 정답은 ④이다.",
     "score": 4,
     "level": "중",
     "category": "삼각비",
@@ -504,14 +545,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 $\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AH}} \\perp \\overline{\\mathrm{BC}}$이고, $\\angle \\mathrm{BAC} = 105^\\circ$, $\\angle \\mathrm{ACB} = 45^\\circ$, $\\overline{\\mathrm{BC}} = 10\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{AH}}$의 길이를 구하면? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q07.png\" />",
+    "content": "다음 그림과 같은 $\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AH}} \\perp \\overline{\\mathrm{BC}}$이고, $\\angle \\mathrm{BAC} = 105^\\circ$, $\\angle \\mathrm{ACB} = 45^\\circ$, $\\overline{\\mathrm{BC}} = 10\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{AH}}$의 길이를 구하면? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q7-problem-v2.svg\" />",
     "choices": [
       "$2\\sqrt{3}$",
       "$2\\sqrt{3} + 1$",
@@ -521,9 +562,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "삼각형의 내각의 합으로 ∠B=180°−105°−45°=30°이다. △ABH에서 ∠B=30°인 30°-60°-90° 삼각형이므로 BH=√3·AH이다. △AHC는 ∠H=90°, ∠C=45°라서 AH=HC이다. BC=BH+HC=10이므로 (√3+1)AH=10. AH=10/(√3+1)=10(√3−1)/2=5(√3−1) cm이다. 따라서 ④이다.",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "높이 보조선을 그어 두 특수직각삼각형을 만들고 길이를 합친 뒤 식을 유리화한다.",
     "levelReason": "중: 높이 보조선을 그어 두 특수직각삼각형을 만들고 길이를 합친 뒤 식을 유리화한다.",
@@ -542,8 +583,8 @@ window.questionBank = [
     },
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "crossConceptKeys": [],
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
@@ -565,10 +606,17 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q07-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q7-solution-v2.svg"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "primaryMethod": "두 특수각 삼각형의 밑변을 높이 하나로 표현하여 합산",
+    "decisiveStep": "∠B=30°이므로 BH=√3h, ∠C=45°이므로 HC=h이다. (√3+1)h=10에서 h=5(√3−1)이다."
   },
   {
     "id": 8,
+    "solutionImageSize": "full",
+    "solutionImageAlt": "초록 선분 BC와 CD가 같은 길이이다. 첫째 직각삼각형의 세로와 둘째 직각삼각형의 공통 밑변으로 파란 빗변 BD를 비교한다.",
+    "solutionImageCaption": "BC=AB tan 60°=3이다. 45도 직각삼각형에서 CD=BC=3이므로 BD=3√2, 정답은 ①이다.",
     "score": 4,
     "level": "중",
     "category": "삼각비",
@@ -584,14 +632,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "오른쪽 그림에서 $\\angle \\mathrm{A} = 60^\\circ$, $\\angle \\mathrm{D} = 45^\\circ$이고 $\\overline{\\mathrm{AB}} = \\sqrt{3}$일 때, $\\overline{\\mathrm{BD}}$의 길이는? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q08.png\" />",
+    "content": "오른쪽 그림에서 $\\angle \\mathrm{A} = 60^\\circ$, $\\angle \\mathrm{D} = 45^\\circ$이고 $\\overline{\\mathrm{AB}} = \\sqrt{3}$일 때, $\\overline{\\mathrm{BD}}$의 길이는? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q8-problem-v2.svg\" />",
     "choices": [
       "$3\\sqrt{2}$",
       "$2\\sqrt{3}$",
@@ -602,7 +650,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "그림에서 ∠B=90°이고 ∠A=60°이다. tan 60°=BC/AB이므로 √3=BC/√3, 따라서 BC=3이다. △BCD에서는 ∠C=90°, ∠D=45°이므로 ∠B=45°이고 BC=CD=3이다. 피타고라스 정리로 BD²=BC²+CD²=3²+3²=18이므로 BD=3√2이다. 따라서 ①이다.",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "두 직각삼각형에서 각과 변을 순차적으로 구하고 마지막에 피타고라스 정리를 쓴다.",
@@ -623,9 +671,7 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
-    ],
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_ISOSCELES_TRIANGLE"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
@@ -649,10 +695,18 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q08-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q8-solution-v2.svg"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "primaryMethod": "공통변 BC를 특수각으로 구한 후 다른 직각삼각형의 빗변 계산",
+    "decisiveStep": "tan60°=BC/√3에서 BC=3이다. BCD는45° 직각삼각형이므로 CD=3, BD=√18=3√2이다."
   },
   {
     "id": 9,
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "주황 영역 OAB와 오른쪽 초록 선분 CD를 비교한다. x와 y는 색을 달리해 표시한 직각삼각형의 두 예각이다.",
+    "solutionImageCaption": "sin x=AB, cos x=OB, sin y=OB, cos y=AB이고 tan x=CD이다. cos y=OB라고 한 ②가 옳지 않다.",
     "score": 4,
     "level": "중",
     "category": "삼각비",
@@ -668,14 +722,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "아래 그림은 반지름의 길이가 $1$인 사분원이다. 다음 중 삼각비의 값을 변의 길이로 나타낸 것으로 옳지 않은 것은? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q09.png\" />",
+    "content": "아래 그림은 반지름의 길이가 $1$인 사분원이다. 다음 중 삼각비의 값을 변의 길이로 나타낸 것으로 옳지 않은 것은? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q9-problem-v2.svg\" />",
     "choices": [
       "$\\sin x = \\overline{\\mathrm{AB}}$",
       "$\\cos y = \\overline{\\mathrm{OB}}$",
@@ -686,7 +740,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "반지름 OA=OD=1이다. △OAB에서 ∠B=90°이므로 sin x=AB/OA=AB, cos x=OB/OA=OB이다. 또 x와 y는 서로 여각이므로 sin y=cos x=OB이고 cos y=sin x=AB이다. △ODC는 D에서 직각이고 OD=1, ∠O=x이므로 tan x=CD/OD=CD이다. 그러므로 cos y=OB라고 한 ②만 옳지 않다.",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "단위원·직각삼각형·여각 관계를 그림에서 구분한다.",
@@ -707,9 +761,9 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_COMPLEMENTARY_ANGLE_TRIG"],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
     "metaDebtFields": [],
     "mappingStatus": "DIRECT_ACTIVE",
@@ -729,9 +783,17 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     }
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "primaryMethod": "반지름1의 삼각비 길이 표현과 여각 관계를 함께 판정",
+    "decisiveStep": "sin x=AB, cos x=OB, sin y=cos x=OB이고 cos y=sin x=AB이다. 접선 삼각형에서 tan x=CD이다. 따라서②만 틀린다."
   },
   {
     "id": 10,
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "주황 사선이 단위 사분원과 만나는 점 A에서 왼쪽 y축까지 파란 가로 점선을 이었다. 오른쪽 초록 접선으로 이어지는 더 높은 수평 안내선과 구분된다.",
+    "solutionImageCaption": "반지름은 1이므로 55도 방향에서 sin 55°는 점 A의 세로 좌표 0.8192이다. 정답은 ④이다.",
     "score": 4,
     "level": "하",
     "category": "삼각비",
@@ -747,14 +809,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "다음 오른쪽 그림은 반지름의 길이가 $1$인 사분원을 좌표평면에 나타낸 것이다. 이를 이용하여 $\\sin 55^\\circ$의 값을 구하면? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q10.png\" />",
+    "content": "다음 오른쪽 그림은 반지름의 길이가 $1$인 사분원을 좌표평면에 나타낸 것이다. 이를 이용하여 $\\sin 55^\\circ$의 값을 구하면? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q10-problem-v2.svg\" />",
     "choices": [
       "$0$",
       "$1$",
@@ -808,9 +870,17 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     }
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "primaryMethod": "단위 사분원의 세로좌표를 사인값으로 읽기",
+    "decisiveStep": "OA=1이므로 sin55°=AB/OA=AB이다. 그림의A의 세로좌표0.8192가 답이다."
   },
   {
     "id": 11,
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "주황 세로 변이 초록 밑변보다 길다. 60도의 맞은편 길이를 이웃한 변의 길이와 비교한다.",
+    "solutionImageCaption": "예를 들어 tan 60°=√3>1이므로 탄젠트의 최댓값이 1이라는 ②는 틀리다.",
     "score": 4,
     "level": "중",
     "category": "삼각비",
@@ -842,10 +912,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "A=60°일 때 tan A=√3>1이므로 tan A의 최댓값이 1이라는 ②의 주장은 틀리다. 또 A=90°에서는 tan A가 정의되지 않는다.",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": "UNKNOWN",
+    "difficultyConfidence": "UNKNOWN",
+    "difficultyBoundaryFlag": "UNKNOWN",
+    "legacyLevelCompatibility": "UNKNOWN",
     "difficultyReason": "정의역 끝점에서 tan이 정의되지 않음을 점검하고 보기의 최대값 주장을 판단한다.",
     "levelReason": "중: 정의역 끝점에서 tan이 정의되지 않음을 점검하고 보기의 최대값 주장을 판단한다.",
     "sourceQid": 11,
@@ -865,7 +935,7 @@ window.questionBank = [
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_RANGE"],
     "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
     "metaDebtFields": [],
@@ -886,6 +956,10 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     }
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "primaryMethod": "탄젠트의 범위에 대한 반례로 거짓 진술 확인",
+    "decisiveStep": "A=60°는 제시 범위 안이고 tan60°=√3>1이므로②의 최대1 주장은 거짓이다. 다만90°에서tan이 정의되지 않아⑤의 끝점 문구는 모호하다."
   },
   {
     "id": 12,
@@ -904,7 +978,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
@@ -912,7 +986,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "다음 삼각비의 표를 이용하여 $\\sin 12^\\circ + \\cos 15^\\circ - \\tan 11^\\circ$의 값을 구하면? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q12.png\" />",
+    "content": "다음 삼각비의 표를 이용하여 $\\sin 12^\\circ + \\cos 15^\\circ - \\tan 11^\\circ$의 값을 구하면? (4점)\n| 각도 | 사인(sin) | 코사인(cos) | 탄젠트(tan) |\n| :---: | :---: | :---: | :---: |\n| $11^\\circ$ | 0.1908 | 0.9816 | 0.1944 |\n| $12^\\circ$ | 0.2079 | 0.9781 | 0.2126 |\n| $13^\\circ$ | 0.2250 | 0.9744 | 0.2309 |\n| $14^\\circ$ | 0.2419 | 0.9703 | 0.2493 |\n| $15^\\circ$ | 0.2588 | 0.9659 | 0.2679 |\n",
     "choices": [
       "$0.2588$",
       "$0.9794$",
@@ -922,10 +996,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "표에서 sin 12°=0.2079, cos 15°=0.9659, tan 11°=0.1944이다. 따라서 0.2079+0.9659−0.1944=0.9794이다. 정답은 ②이다.",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "삼각비 표에서 세 값을 찾아 덧셈·뺄셈한다.",
     "levelReason": "중: 삼각비 표에서 세 값을 찾아 덧셈·뺄셈한다.",
     "sourceQid": 12,
@@ -966,9 +1040,17 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     }
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "primaryMethod": "삼각비표의 행·열을 맞추어 값 대입",
+    "decisiveStep": "표의 sin12°=0.2079, cos15°=0.9659, tan11°=0.1944를 넣으면0.9794이다."
   },
   {
     "id": 13,
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "파란 빗변 AC가 실제 비탈길이다. C에서 수평면까지 내려가는 주황 BC가 15도에서 보는 맞은편 변이다.",
+    "solutionImageCaption": "높이 차는 AC·sin 15°=200 sin 15° m이므로 정답은 ①이다.",
     "score": 4,
     "level": "하",
     "category": "삼각비",
@@ -984,14 +1066,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 수평면에 대하여 $15^\\circ$ 기울어진 비탈길 위에 두 지점 $\\mathrm{A}$, $\\mathrm{C}$가 있다. 두 지점 $\\mathrm{A}$, $\\mathrm{C}$ 사이의 거리가 $200\\,\\mathrm{m}$일 때, $\\mathrm{C}$ 지점은 $\\mathrm{A}$ 지점보다 몇 $\\mathrm{m}$ 높은지 구하는 식으로 알맞은 것은? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q13.png\" />",
+    "content": "오른쪽 그림과 같이 수평면에 대하여 $15^\\circ$ 기울어진 비탈길 위에 두 지점 $\\mathrm{A}$, $\\mathrm{C}$가 있다. 두 지점 $\\mathrm{A}$, $\\mathrm{C}$ 사이의 거리가 $200\\,\\mathrm{m}$일 때, $\\mathrm{C}$ 지점은 $\\mathrm{A}$ 지점보다 몇 $\\mathrm{m}$ 높은지 구하는 식으로 알맞은 것은? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q13-problem-v2.svg\" />",
     "choices": [
       "$200\\sin 15^\\circ$",
       "$200\\cos 15^\\circ$",
@@ -1045,9 +1127,16 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     }
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "primaryMethod": "비탈길을 빗변으로 보는 직각삼각형에서 사인으로 높이차 표현",
+    "decisiveStep": "AC=200은 빗변이고 높이차h는15°의 대변이므로 sin15°=h/200, h=200sin15°이다."
   },
   {
     "id": 14,
+    "solutionImageSize": "full",
+    "solutionImageAlt": "A의 눈높이를 기준으로 윗부분의 직각삼각형과 아랫부분의 직각삼각형을 다른 색으로 칠했다. 각 높이를 합한다.",
+    "solutionImageCaption": "D에서 위로 40√3 m, 아래로 40 m이다. √3=1.7을 적용하면 두 높이 합은 108 m이고 정답은 ⑤이다.",
     "score": 4,
     "level": "중",
     "category": "삼각비",
@@ -1063,14 +1152,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 $40\\,\\mathrm{m}$ 떨어진 우체국과 백화점이 있다. 우체국의 옥상 $\\mathrm{A}$에서 백화점의 옥상 $\\mathrm{B}$를 올려다본 각의 크기가 $60^\\circ$이고, $\\mathrm{C}$ 지점을 내려다본 각의 크기는 $45^\\circ$일 때, 백화점의 높이를 구하면? (4점)<br>(단, $\\sqrt{2} = 1.4$, $\\sqrt{3} = 1.7$로 계산하시오)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q14.png\" />",
+    "content": "오른쪽 그림과 같이 $40\\,\\mathrm{m}$ 떨어진 우체국과 백화점이 있다. 우체국의 옥상 $\\mathrm{A}$에서 백화점의 옥상 $\\mathrm{B}$를 올려다본 각의 크기가 $60^\\circ$이고, $\\mathrm{C}$ 지점을 내려다본 각의 크기는 $45^\\circ$일 때, 백화점의 높이를 구하면? (4점)<br>(단, $\\sqrt{2} = 1.4$, $\\sqrt{3} = 1.7$로 계산하시오)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q14-problem-v2.svg\" />",
     "choices": [
       "$40\\,\\mathrm{m}$",
       "$88\\,\\mathrm{m}$",
@@ -1080,8 +1169,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "수평 거리를 40 m라 한다. A에서 백화점 밑 C를 내려다보는 각이 45°이므로 A와 C의 높이 차는 40 tan45°=40 m이다. A와 B의 높이 차는 올려다보는 각 60°에서 40 tan60°=40√3 m이다. 백화점 높이는 두 차의 합 40+40√3이다. √3=1.7을 쓰면 40(1+1.7)=108 m이므로 ⑤이다.",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "앙각·부각을 두 직각삼각형으로 나누어 높이 차를 구해 합친다.",
@@ -1101,10 +1190,10 @@ window.questionBank = [
     },
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
     "metaDebtFields": [],
     "mappingStatus": "FAMILY_ACTIVE",
@@ -1124,10 +1213,18 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q14-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q14-solution-v2.svg"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "primaryMethod": "앙각과 부각으로 나눈 두 높이차를 더하기",
+    "decisiveStep": "아래쪽 높이40tan45=40, 위쪽 높이40tan60=40√3이다. 합40(1+1.7)=108m이다."
   },
   {
     "id": 15,
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "수평선 위의 삼각형에서 20도의 맞은편이 주황이다. 초록 지면을 기준으로 낮은 눈높이 부분과 나무의 두 높이를 구분했다.",
+    "solutionImageCaption": "높이 차는 10 tan 20°이다. 주어진 근삿값을 사용해 3.6+1.6=5.2 m이며 정답은 ③이다.",
     "score": 4,
     "level": "중",
     "category": "삼각비",
@@ -1143,14 +1240,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 나무로부터 $10\\,\\mathrm{m}$ 떨어진 $\\mathrm{A}$지점에서 나무 꼭대기 $\\mathrm{C}$지점을 올려다본 각의 크기가 $20^\\circ$이다. 사람의 눈높이가 $1.6\\,\\mathrm{m}$일 때, 이 나무의 높이를 구하면? (4점)<br>(단, $\\sin 20^\\circ = 0.34$, $\\cos 20^\\circ = 0.94$, $\\tan 20^\\circ = 0.36$으로 계산하시오.)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q15.png\" />",
+    "content": "다음 그림과 같이 나무로부터 $10\\,\\mathrm{m}$ 떨어진 $\\mathrm{A}$지점에서 나무 꼭대기 $\\mathrm{C}$지점을 올려다본 각의 크기가 $20^\\circ$이다. 사람의 눈높이가 $1.6\\,\\mathrm{m}$일 때, 이 나무의 높이를 구하면? (4점)<br>(단, $\\sin 20^\\circ = 0.34$, $\\cos 20^\\circ = 0.94$, $\\tan 20^\\circ = 0.36$으로 계산하시오.)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q15-problem-v2.svg\" />",
     "choices": [
       "$4.7\\,\\mathrm{m}$",
       "$4.9\\,\\mathrm{m}$",
@@ -1161,7 +1258,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "수평 거리 10 m, 올려다보는 각 20°이므로 눈높이와 나무 꼭대기 사이의 높이 차를 h라 하면 tan20°=h/10이다. 주어진 tan20°=0.36으로부터 h=10·0.36=3.6 m이다. 나무 높이는 눈높이 1.6 m를 더해 3.6+1.6=5.2 m이므로 ③이다.",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "tan으로 시선 높이차를 구하고 눈높이를 더한다.",
@@ -1184,7 +1281,7 @@ window.questionBank = [
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
     "metaDebtFields": [],
     "mappingStatus": "FAMILY_ACTIVE",
@@ -1204,9 +1301,16 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     }
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "primaryMethod": "탄젠트로 눈높이 위의 높이를 구해 관측 높이 추가",
+    "decisiveStep": "h=10tan20=3.6m이고 나무 높이는h+1.6=5.2m이다."
   },
   {
     "id": 16,
+    "solutionImageSize": "full",
+    "solutionImageAlt": "주황 수선 CH를 내려 30도 직각삼각형을 만들었다. 수선은 30도의 맞은편이고 AC가 빗변이다.",
+    "solutionImageCaption": "CH=6 sin 30°=3 cm이므로 넓이는 1/2×8×3=12 cm²이고 정답은 ④이다.",
     "score": 4,
     "level": "중",
     "category": "삼각비",
@@ -1222,14 +1326,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 8\\,\\mathrm{cm}$, $\\overline{\\mathrm{AC}} = 6\\,\\mathrm{cm}$, $\\angle \\mathrm{A} = 30^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이는? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q16.png\" />",
+    "content": "다음 그림과 같은 삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}} = 8\\,\\mathrm{cm}$, $\\overline{\\mathrm{AC}} = 6\\,\\mathrm{cm}$, $\\angle \\mathrm{A} = 30^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이는? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q16-problem-v2.svg\" />",
     "choices": [
       "$\\frac{3\\sqrt{2}}{2}$",
       "$\\frac{3\\sqrt{3}}{4}$",
@@ -1239,10 +1343,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "C에서 AB에 수선을 내려 발을 H라 한다. △ACH에서 AC=6은 빗변이고 ∠A=30°이므로 CH는 30°의 맞은편 변이다. 30°-60°-90° 삼각형의 짧은 변은 빗변의 절반이므로 CH=3 cm이다. 삼각형 넓이는 1/2·AB·CH=1/2·8·3=12 cm²이므로 ④이다.",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "보조 높이를 특수각으로 구한 뒤 삼각형 넓이식을 사용한다.",
     "levelReason": "중: 보조 높이를 특수각으로 구한 뒤 삼각형 넓이식을 사용한다.",
     "sourceQid": 16,
@@ -1260,12 +1364,10 @@ window.questionBank = [
     },
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
     "metaDebtFields": [
       "crossConceptCurriculumBinding"
@@ -1287,10 +1389,17 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q16-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q16-solution-v2.svg"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "primaryMethod": "끼인각30°로 높이를 내려 삼각형 넓이 계산",
+    "decisiveStep": "CH=6sin30=3이고 넓이(1/2)×8×3=12cm²이다."
   },
   {
     "id": 17,
+    "solutionImageSize": "full",
+    "solutionImageAlt": "푸른 대각선 AC를 밑변으로 삼고 B와 D에서 보라 높이를 내렸다. 주황 대각선이 둘로 나뉘며 작은 삼각형 네 개의 영역을 비교한다.",
+    "solutionImageCaption": "네 삼각형을 더한 넓이는 1/2·AC·BD·sin45°=30√2 cm²이다. 정답은 ⑤이다.",
     "score": 4,
     "level": "중",
     "category": "삼각비",
@@ -1306,14 +1415,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "객관식",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "삼각비",
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 두 대각선의 길이가 각각 $12\\,\\mathrm{cm}$, $10\\,\\mathrm{cm}$이고, 두 대각선이 이루는 각의 크기가 $45^\\circ$인 $\\square\\mathrm{ABCD}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q17.png\" />",
+    "content": "다음 그림과 같이 두 대각선의 길이가 각각 $12\\,\\mathrm{cm}$, $10\\,\\mathrm{cm}$이고, 두 대각선이 이루는 각의 크기가 $45^\\circ$인 $\\square\\mathrm{ABCD}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q17-problem-v2.svg\" />",
     "choices": [
       "$15\\,\\mathrm{cm}^2$",
       "$15\\sqrt{2}\\,\\mathrm{cm}^2$",
@@ -1323,8 +1432,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "두 대각선이 만나는 점을 O라 하고 AC를 네 삼각형의 밑변으로 나누어 넓이를 더한다. 각 삼각형의 높이는 해당 BD 조각의 길이에 sin45°를 곱한 값이다. 네 넓이의 합은 1/2·(AO+OC)·(BO+OD)·sin45°=1/2·AC·BD·sin45°이다. 따라서 1/2·12·10·(√2/2)=30√2 cm²이다. ⑤이다.",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "대각선으로 나뉜 네 삼각형의 넓이를 합쳐 곱셈식으로 묶는다.",
@@ -1345,11 +1454,9 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
     "metaDebtFields": [
       "crossConceptCurriculumBinding"
@@ -1371,10 +1478,17 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q17-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q17-solution-v2.svg"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "primaryMethod": "대각선으로 나뉜 삼각형 넓이합을 두 대각선 곱으로 묶기",
+    "decisiveStep": "네 삼각형의 합은(1/2)(AO+OC)(BO+OD)sin45=(1/2)×12×10×√2/2=30√2이다."
   },
   {
     "id": 18,
+    "solutionImageSize": "full",
+    "solutionImageAlt": "파란 대각선 AC 위쪽의 삼각형과 아래쪽 삼각형을 다른 색으로 표시했다. 밑변 BC와 연장한 AD 각각에 수선을 내려 높이를 구한다.",
+    "solutionImageCaption": "AH=3√3 cm이고 CE=2 cm이다. 두 삼각형 넓이 12√3와 2√3을 더하면 14√3 cm², 정답은 ③이다.",
     "score": 4,
     "level": "중",
     "category": "삼각비",
@@ -1408,7 +1522,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "주어진 조건 AB=6, BC=8, ∠ABC=60°, AD=2√3, DC=4, ∠ADC=150°로 계산한다. A에서 BC에 수선 AH를 내리면 △ABH에서 AB=6은 빗변이고 ∠ABH=60°이므로 30°-60°-90°의 비에서 AH=3√3이다. △ABC의 넓이는 1/2·8·3√3=12√3이다. 다음으로 AD를 D 너머로 연장하고 C에서 그 직선에 내린 수선의 발을 E라 한다. ∠CDE=30°이고 △CDE의 빗변 DC=4이므로 30°-60°-90°의 짧은 변 CE=2이다. △ADC의 넓이는 1/2·AD·CE=1/2·2√3·2=2√3이다. 사각형 넓이는 12√3+2√3=14√3 cm²이므로 ③이다.",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "두 삼각형을 각각 보조 수선으로 나누어 넓이를 구하고 합친다. q18은 source 표기 복구가 아닌 명시 ALIVE 조건에 대한 대체 풀이.",
@@ -1429,11 +1543,9 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_PT_TPL_WITH_CROSSCONCEPT_BINDING_DEBT",
     "metaDebtFields": [
       "crossConceptCurriculumBinding"
@@ -1456,10 +1568,18 @@ window.questionBank = [
       "noH22IdentityClaim": true
     },
     "sourceDefect": "원본 q18 그림의 좌측 AB 길이표기가 캔버스 밖에서 잘려 판독 불가. source-js 및 PNG는 보존하고, 명시 조건을 제시한 ALIVE 대체를 사용.",
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q18-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q18-solution-v2.svg"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "primaryMethod": "대각선으로 두 삼각형을 나누고 둔각 쪽 높이는 연장선에서 구하기",
+    "decisiveStep": "ABC의높이6sin60=3√3으로넓이12√3, ADC는sin150=sin30이어서높이4sin30=2와넓이2√3이다. 합14√3이다."
   },
   {
     "id": 19,
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "A의 맞은편 BC가 주황, A에 붙은 변 AB가 초록이다. A와 C에서 각 변이 하는 역할을 비교할 수 있다.",
+    "solutionImageCaption": "sin A=cos C=3/5이고 tan A=3/4이므로 합은 39/20이다.",
     "score": 7,
     "level": "중",
     "category": "삼각비",
@@ -1475,7 +1595,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "서답형",
       "삼각비",
@@ -1483,14 +1603,14 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서답형 1] 오른쪽 그림과 같이 $\\angle \\mathrm{B} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\sin A + \\cos C + \\tan A$의 값을 구하시오. (7점)<br>(풀이 과정과 답을 쓰시오. 부분 점수 있음)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/s01.png\" />",
+    "content": "[서답형 1] 오른쪽 그림과 같이 $\\angle \\mathrm{B} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\sin A + \\cos C + \\tan A$의 값을 구하시오. (7점)<br>(풀이 과정과 답을 쓰시오. 부분 점수 있음)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q19-problem-v2.svg\" />",
     "choices": [],
     "answer": "39/20",
     "solution": "그림에서 직각삼각형 ABC의 빗변 AC=5, AB=4, BC=3이다. sin A=BC/AC=3/5, cos C=BC/AC=3/5, tan A=BC/AB=3/4이다. 따라서 합은 3/5+3/5+3/4=6/5+3/4=24/20+15/20=39/20이다.",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "직각삼각형의 3-4-5 변으로 세 삼각비를 계산해 분수를 더한다.",
     "levelReason": "중: 직각삼각형의 3-4-5 변으로 세 삼각비를 계산해 분수를 더한다.",
     "sourceQid": 19,
@@ -1531,9 +1651,16 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     }
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "primaryMethod": "세 변이 주어진 직각삼각형에서 각별 삼각비를 직접 합산",
+    "decisiveStep": "sinA=3/5, cosC=3/5, tanA=3/4이므로6/5+3/4=39/20이다."
   },
   {
     "id": 20,
+    "solutionImageSize": "full",
+    "solutionImageAlt": "45도 삼각형에서 밑변 DC와 높이 CA는 같은 초록 두 눈금이다. 파랑 큰 삼각형의 밑변에서 DC를 뺀 부분이 BD이다.",
+    "solutionImageCaption": "DC=4, BC=4√3이므로 BD=4(√3−1)이다.",
     "score": 7,
     "level": "중",
     "category": "삼각비",
@@ -1543,13 +1670,13 @@ window.questionBank = [
     "standardUnitKey": "M3-05",
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "standardSubUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "서답형",
       "삼각비",
@@ -1557,12 +1684,12 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서답형 2] 다음 그림에서 $\\angle \\mathrm{ABC} = 30^\\circ$, $\\angle \\mathrm{ADC} = 45^\\circ$, $\\angle \\mathrm{ACD} = 90^\\circ$, $\\overline{\\mathrm{AC}} = 4$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하시오. (7점)<br>(풀이 과정과 답을 쓰시오. 부분 점수 있음)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/s02.png\" />",
+    "content": "[서답형 2] 다음 그림에서 $\\angle \\mathrm{ABC} = 30^\\circ$, $\\angle \\mathrm{ADC} = 45^\\circ$, $\\angle \\mathrm{ACD} = 90^\\circ$, $\\overline{\\mathrm{AC}} = 4$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하시오. (7점)<br>(풀이 과정과 답을 쓰시오. 부분 점수 있음)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q20-problem-v2.svg\" />",
     "choices": [],
     "answer": "4(√3−1) cm",
     "solution": "△ADC에서 ∠ACD=90°, ∠ADC=45°이므로 ∠DAC=45°이고 두 직각변이 같다. 따라서 DC=AC=4이다. △ABC는 C에서 직각이고 ∠B=30°이며 AC=4는 30°의 맞은편 변이다. 30°-60°-90°의 변의 비로 BC=4√3이다. 그림에서 D는 B와 C 사이에 있으므로 BD=BC−DC=4√3−4=4(√3−1) cm이다.",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "30°-60°-90°와 45°-45°-90°에서 길이를 구해 빼야 한다.",
@@ -1582,10 +1709,10 @@ window.questionBank = [
     },
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
     "metaDebtFields": [],
     "mappingStatus": "DIRECT_ACTIVE",
@@ -1605,10 +1732,17 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q20-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q20-solution-v2.svg"
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "primaryMethod": "공통 높이4의 두 특수각 삼각형 밑변 차로 거리 계산",
+    "decisiveStep": "ADC의45°등변관계로DC=4, ABC의30°변비로BC=4√3이다. D가B와C사이에있으므로BD=4√3−4이다."
   },
   {
     "id": 21,
+    "solutionImageSize": "full",
+    "solutionImageAlt": "A에서 물 위의 선분 BC에 내린 수선의 발 H가 두 직각삼각형을 나눈다. 오른쪽 45도 삼각형에서는 AH와 HC가 같은 길이이다.",
+    "solutionImageCaption": "∠C=45°이다. BH=500 m, AH=HC=500√3 m이므로 다리 길이는 500(1+√3) m이다.",
     "score": 7,
     "level": "상",
     "category": "삼각비",
@@ -1624,7 +1758,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "questionType": "서술형",
-    "layoutTag": "figure",
+    "layoutTag": "fullwidth",
     "tags": [
       "서답형",
       "삼각비",
@@ -1632,14 +1766,14 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서답형 3] 다음 그림과 같이 두 지점 $\\mathrm{B}$, $\\mathrm{C}$ 잇는 다리를 건설하려고 한다. $\\overline{\\mathrm{AB}} = 1000\\,\\mathrm{m}$, $\\angle \\mathrm{ABC} = 60^\\circ$, $\\angle \\mathrm{BAC} = 75^\\circ$일 때, 두 지점 $\\mathrm{B}$, $\\mathrm{C}$ 사이의 거리를 구하시오. (7점)<br>(풀이 과정과 답을 쓰시오. 부분 점수 있음)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/s03.png\" />",
+    "content": "[서답형 3] 다음 그림과 같이 두 지점 $\\mathrm{B}$, $\\mathrm{C}$ 잇는 다리를 건설하려고 한다. $\\overline{\\mathrm{AB}} = 1000\\,\\mathrm{m}$, $\\angle \\mathrm{ABC} = 60^\\circ$, $\\angle \\mathrm{BAC} = 75^\\circ$일 때, 두 지점 $\\mathrm{B}$, $\\mathrm{C}$ 사이의 거리를 구하시오. (7점)<br>(풀이 과정과 답을 쓰시오. 부분 점수 있음)<br><img src=\"assets/images/20_이수중_2학기_중간_중3_수학/q21-problem-v2.svg\" />",
     "choices": [],
     "answer": "500(1+√3) m",
     "solution": "∠C=180°−60°−75°=45°이다. A에서 BC에 수선을 내려 발을 H라 한다. △ABH에서 AB=1000 m는 빗변이고 ∠B=60°이므로 30°-60°-90°의 변의 비에서 BH=500 m, AH=500√3 m이다. △AHC는 H가 직각이고 C=45°이므로 HC=AH=500√3 m이다. 따라서 BC=BH+HC=500+500√3=500(1+√3) m이다.",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "difficultyReason": "각의 합, 30°-60°-90°와 45°-45°-90° 두 삼각형의 길이를 구해 합친다.",
     "levelReason": "상: 각의 합, 30°-60°-90°와 45°-45°-90° 두 삼각형의 길이를 구해 합친다.",
     "sourceQid": 21,
@@ -1657,8 +1791,8 @@ window.questionBank = [
     },
     "rpmSemanticStatus": "FINAL",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-    "crossConceptKeys": [],
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
@@ -1680,10 +1814,17 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q21-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q21-solution-v2.svg"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "primaryMethod": "보조 높이를 내려 두 특수각 삼각형의 밑변 합으로 강폭 계산",
+    "decisiveStep": "∠C=45°이다. AB1000과B60°에서BH=500, AH=500√3이고 HC=AH이다. BC=500(1+√3)m이다."
   },
   {
     "id": 22,
+    "solutionImageSize": "full",
+    "solutionImageAlt": "건물 면을 따라 눈높이와 꼭대기 사이 구간을 주황으로 표시했다. 장비 위치와 같은 높이에 그은 수평선에 시선의 각을 표시했다.",
+    "solutionImageCaption": "수평거리 d, 기구의 지면에서의 높이 h, 시선의 앙각 θ를 재면 건물 높이는 H=h+d tan θ이다.",
     "score": 7,
     "level": "중",
     "category": "삼각비",
@@ -1710,8 +1851,8 @@ window.questionBank = [
     "choices": [],
     "answer": "H=h+d tanθ",
     "solution": "건물 밑을 C, 꼭대기를 T, 관측자의 눈 또는 클리노미터 위치를 A라 한다. 줄자로 수평한 지면에서 건물 밑 C까지의 수평 거리 d를 재고, 클리노미터로 수평선과 꼭대기 방향 시선 AT 사이의 앙각 θ를 잰다. 기구의 높이(눈높이) h도 잰다. 건물이 수직이고 지면이 수평이라고 보면 직각삼각형에서 tanθ=(건물 높이 H−h)/d이다. 따라서 H=h+d tanθ이다. 거리 d, 각 θ, 기구 높이 h를 실제로 측정해 이 식에 넣으면 건물 높이를 구할 수 있다.",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "측정 가능한 거리·앙각·기구 높이를 모델링해 tan 식을 구성한다.",
@@ -1734,7 +1875,7 @@ window.questionBank = [
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaStatus": "2015_ACTIVE_CROSSWALK_CANDIDATE",
     "metaDebtFields": [],
     "mappingStatus": "FAMILY_ACTIVE",
@@ -1754,6 +1895,10 @@ window.questionBank = [
       "displayOnly": true,
       "noH22IdentityClaim": true
     },
-    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q22-solution.svg"
+    "solutionImage": "assets/images/20_이수중_2학기_중간_중3_수학/q22-solution-v2.svg"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "primaryMethod": "수평거리·앙각·기구높이를 측정하여 탄젠트 모델 세우기",
+    "decisiveStep": "건물이수직·지면이수평일때tanθ=(H−h)/d이다. 줄자로d와h, 클리노미터로θ를 재어H=h+d tanθ를 구하면된다."
   }
 ];

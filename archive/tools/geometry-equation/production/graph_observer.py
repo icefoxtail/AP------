@@ -1389,7 +1389,104 @@ def logarithmic_base_overview_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':expected_features,'monotonicity':expected_features['monotonicity'],'curvePoints':len(points),'boundaryApproachGapCssPx':gap,'referenceMarker':marker,'mathMethod':'EXACT_POSITIVE_BASE_AND_INDEPENDENT_BASE_LOGARITHM_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'LOGARITHMIC_SOURCE_SCHEMA_INVALID']}
 
-def exp_log_pair_overview_audit(plan,svg,transform):
+def _exp_log_pair_name_errors(plan,root,model):
+    errors=[]
+    for curve in plan.get('curves',[]):
+        if 'formulaLabel' not in curve:continue
+        ident=curve.get('id','')
+        if curve['formulaLabel']!='NAME' or not re.fullmatch('[A-Za-z]',ident):
+            errors.append('EXP_LOG_PAIR_FORMULA_LABEL_INVALID:'+ident)
+            continue
+        labels=[node for node in root.iter() if node.get('id')=='formula-'+ident]
+        if model:
+            if labels:errors.append('EXP_LOG_PAIR_NAME_LABEL_IN_MODEL:'+ident)
+            continue
+        expected=_ov_label_codes(ident+'(x)')
+        glyphs=_ov_glyph_codes(labels[0]) if len(labels)==1 else []
+        if len(glyphs)!=len(expected) or any(code not in allowed for code,allowed in zip(glyphs,expected)):
+            errors.append('EXP_LOG_PAIR_NAME_LABEL_MISMATCH:'+ident)
+    return errors
+
+def _exp_log_pair_reference_name_errors(root,owner):
+    nodes=list(root.iter())
+    names=[node for node in nodes if node.get('id')==owner+'-name'
+           or node.get('data-owner')==owner and node.get('data-label-kind')=='POINT_NAME']
+    if len(names)!=1 or names[0].get('id')!=owner+'-name' or names[0].get('data-owner')!=owner or names[0].get('data-label-kind')!='POINT_NAME':
+        return ['EXP_LOG_PAIR_REFERENCE_NAME_OWNER_MISMATCH:'+owner]
+    glyphs=_ov_glyph_codes(names[0])
+    if len(glyphs)!=1 or glyphs[0] not in _ov_label_codes(owner)[0]:
+        return ['EXP_LOG_PAIR_REFERENCE_NAME_TEXT_MISMATCH:'+owner]
+    dots={node.get('id'):node for node in nodes if node.tag.split('}')[-1]=='circle' and node.get('data-role')=='point'}
+    box=_region_label_box({owner+'-name':names[0]},owner+'-name')
+    dot=dots.get(owner)
+    position_error='EXP_LOG_PAIR_REFERENCE_NAME_POSITION_MISMATCH:'+owner
+    if dot is None or box is None or not all(math.isfinite(value) for value in box) or min(box[2:])<=0:
+        return [position_error]
+    centre=lambda node:(float(node.get('cx')),float(node.get('cy')))
+    own=centre(dot)
+    if not all(math.isfinite(value) for value in own):return [position_error]
+    leader=next((node for node in nodes if node.get('data-role')=='leader' and node.get('data-owner-label')==owner+'-name'),None)
+    if leader is None:
+        distance=_ov_point_box_distance(own,box)
+        if distance>OV_COORDINATE_LABEL_OWN_MAX_PX or any(_ov_point_box_distance(centre(node),box)+.5<distance for ident,node in dots.items() if ident!=owner):
+            return [position_error]
+    else:
+        start=(float(leader.get('x1')),float(leader.get('y1')))
+        end=(float(leader.get('x2')),float(leader.get('y2')))
+        x,y,w,h=box
+        corners=[(x,y),(x+w,y),(x+w,y+h),(x,y+h)]
+        edge_distance=min(_ov_point_segment_distance(end,a,b) for a,b in zip(corners,corners[1:]+corners[:1]))
+        if (leader.get('data-owner')!=owner or not all(math.isfinite(value) for value in (*start,*end))
+            or math.dist(start,own)>float(dot.get('r') or 0)+OV_LEADER_TOLERANCE_PX or edge_distance>OV_LEADER_TOLERANCE_PX):
+            return [position_error]
+    return []
+
+def _exp_log_pair_reference_label_errors(plan,root,model,expected_rows):
+    errors=[]
+    for curve in plan.get('curves',[]):
+        ident=curve.get('id','')
+        name_only=curve.get('referenceLabelMode')=='NAME'
+        if 'referenceLabelMode' in curve and (not name_only or curve.get('formulaLabel')!='NAME' or 'referenceLabelPoint' not in curve):
+            errors.append('EXP_LOG_PAIR_REFERENCE_LABEL_MODE_INVALID:'+ident)
+            continue
+        if 'referenceLabelPoint' not in curve:continue
+        owner=curve['referenceLabelPoint']
+        code='EXP_LOG_PAIR_REFERENCE_LABEL_POINT_MISMATCH:'+ident
+        if not isinstance(owner,str) or not re.fullmatch('[A-Z]',owner):
+            errors.append('EXP_LOG_PAIR_REFERENCE_LABEL_POINT_INVALID:'+ident)
+            continue
+        points=(plan.get('overlays') or {}).get('points',[])
+        owners=[point for point in points if point.get('id')==owner]
+        show_coordinates=not name_only
+        if (len(owners)!=1 or owners[0].get('coordinates') is not show_coordinates or owners[0].get('unnamed',False) is not False
+            or owners[0].get('marker','FILLED')!='FILLED'):
+            errors.append(code)
+            continue
+        k=_piecewise_rational(curve['coefficients'][1],code)
+        if curve['family']=='exponential-affine':
+            x=_piecewise_rational(curve.get('shiftX','0'),code)
+            y=sum(_piecewise_rational(curve['coefficients'][index],code) for index in (0,2))
+        else:
+            x=(1-_piecewise_rational(curve['coefficients'][2],code))/k
+            y=_piecewise_rational(curve['coefficients'][3],code)
+        row=next((row for row in expected_rows if row['id']==ident),None)
+        if (row is None or row['referencePoint']['x']!=str(x) or row['referencePoint']['y']!=str(y)
+            or _piecewise_rational(owners[0].get('x'),code)!=x or _piecewise_rational(owners[0].get('y'),code)!=y):
+            errors.append(code)
+        if any(node.get('id')=='reference-'+ident+'-value' for node in root.iter()):
+            errors.append('EXP_LOG_PAIR_REFERENCE_LABEL_NOT_SUPPRESSED:'+ident)
+        if name_only:
+            if any(node.get('id')==owner+'-coordinates' or (node.get('data-owner')==owner and node.get('data-label-kind') in ('COORDINATE_LABEL','EQUATION_LABEL')) for node in root.iter()):
+                errors.append('EXP_LOG_PAIR_REFERENCE_COORDINATES_NOT_SUPPRESSED:'+owner)
+            if not model:
+                errors.extend(_exp_log_pair_reference_name_errors(root,owner))
+        elif not model:
+            labels=[node for node in root.iter() if node.get('id')==owner+'-coordinates']
+            if len(labels)!=1 or labels[0].get('data-owner')!=owner or labels[0].get('data-label-kind') not in ('COORDINATE_LABEL','EQUATION_LABEL'):
+                errors.append('EXP_LOG_PAIR_REFERENCE_OVERLAY_LABEL_MISSING:'+owner)
+    return errors
+
+def exp_log_pair_overview_audit(plan,svg,transform,model=False):
     errors=[];unsupported=[]
     try:
         features=plan.get('expLogPairFeatures');policy=plan.get('expLogPairPolicy')
@@ -1465,6 +1562,8 @@ def exp_log_pair_overview_audit(plan,svg,transform):
                     if abs(a[1]-a[0])*yscale>.35 or abs(b[1]-b[0])*yscale>.35:errors.append('EXP_LOG_PAIR_IDENTITY_LINE_POSITION_MISMATCH')
                     if node.get('stroke-dasharray') not in {'4 3','4,3'}:errors.append('EXP_LOG_PAIR_IDENTITY_LINE_MUST_BE_DASHED')
         elif identity_nodes:errors.append('EXP_LOG_PAIR_UNEXPECTED_IDENTITY_LINE')
+        errors.extend(_exp_log_pair_name_errors(plan,root,model))
+        errors.extend(_exp_log_pair_reference_label_errors(plan,root,model,expected_rows))
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
         return {'status':status,'errors':sorted(set(errors+unsupported)),'curves':[{key:value for key,value in row.items() if not key.startswith('_')} for row in expected_rows],'curveBranches':{key:len(value) for key,value in branches.items()},'identityLine':features.get('identityLine') is True,'mathMethod':'EXACT_BASES_AND_INDEPENDENT_MODEL_RECOMPUTATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'EXP_LOG_PAIR_SOURCE_SCHEMA_INVALID']}
@@ -4066,12 +4165,14 @@ def _trig_v2_interval_expected(plan):
         steps=max(4000,int(1600*max(1e-9,(x1-x0)/period_radians)))
         for row in plan.get('referenceLines') or []:
             if not isinstance(row,dict) or not isinstance(row.get('id'),str):raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+            marker=row.get('intersectionMarker')
+            if 'intersectionMarker' in row and marker!='OPEN':raise ValueError('TRIG_LINE_INTERSECTION_MARKER_INVALID:'+row['id'])
             color=row.get('color')
             if color is not None and color not in GRAPH_COLOR_LINES:raise ValueError('TRIG_LINE_COLOR_INVALID:'+row['id'])
             if 'x' in row:   # x=c: the one place the curve meets it, when c is inside the interval
                 at=_piecewise_rational(row['x'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']);xr=float(at)*(math.pi if axis_unit=='PI' else 1.0)
                 inside=(xr>x0+1e-12 if states[0]=='OPEN' else xr>=x0-1e-12) and (xr<x1-1e-12 if states[1]=='OPEN' else xr<=x1+1e-12)
-                lines.append({'id':row['id'],'kind':'VERTICAL','at':at,'slope':None,'intercept':None,'claim':row.get('intersectionCount'),'x':[xr] if inside else [],'color':color,'endCrossing':row.get('endCrossing') is True})
+                lines.append({'id':row['id'],'kind':'VERTICAL','at':at,'slope':None,'intercept':None,'claim':row.get('intersectionCount'),'x':[xr] if inside else [],'color':color,'intersectionMarker':marker,'endCrossing':row.get('endCrossing') is True})
                 continue
             if 'y' in row:slope=Fraction(0);intercept=_trig_v2_level(row['y'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
             else:slope=_piecewise_rational(row.get('slope'),'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']);intercept=_piecewise_rational(row.get('intercept'),'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
@@ -4094,7 +4195,7 @@ def _trig_v2_interval_expected(plan):
             eps=mpmath.mpf(10)**-12
             kept=[r for r in unique if (r>lo_f+eps if states[0]=='OPEN' else r>=lo_f-eps) and (r<hi_f-eps if states[1]=='OPEN' else r<=hi_f+eps)]
             if row.get('endCrossing') is not True and any((states[0]=='CLOSED' and abs(r-lo_f)<=eps) or (states[1]=='CLOSED' and abs(r-hi_f)<=eps) for r in kept):raise ValueError('TRIG_LINE_THROUGH_INTERVAL_END:'+row['id'])
-            lines.append({'id':row['id'],'kind':'HORIZONTAL' if 'y' in row else 'SLANTED','at':None,'slope':slope,'perPi':per_pi,'intercept':intercept,'claim':row.get('intersectionCount'),'x':[float(r) for r in kept],'color':color,'endCrossing':row.get('endCrossing') is True})
+            lines.append({'id':row['id'],'kind':'HORIZONTAL' if 'y' in row else 'SLANTED','at':None,'slope':slope,'perPi':per_pi,'intercept':intercept,'claim':row.get('intersectionCount'),'x':[float(r) for r in kept],'color':color,'intersectionMarker':marker,'endCrossing':row.get('endCrossing') is True})
     if plan.get('keyPoints') is not None and not isinstance(plan.get('keyPoints'),bool):raise ValueError('INVALID_TRIG_KEY_POINTS')
     if plan.get('keyPoints') is True and function not in {'SIN','COS'}:raise ValueError('TRIG_KEY_POINTS_REQUIRE_SIN_COS')
     key_rows=_trig_v2_key_rows(spec,lo,hi,states) if plan.get('keyPoints') is True else []
@@ -4102,6 +4203,8 @@ def _trig_v2_interval_expected(plan):
     ticks=_trig_v2_tick_multiples(plan,kind,x0,x1)
     f=S.lambdify(x,expression,'mpmath')
     features={'schemaVersion':'TRIGONOMETRIC_INTERVAL_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'axisUnit':axis_unit,'amplitude':str(a),'midline':str(c),'sourceInterval':{'kind':kind,'lo':str(lo),'hi':str(hi),'states':states},'lines':[({'id':row['id'],'kind':row['kind'],'x':str(row['at']),'intersections':[{'x':point,'y':float(f(mpmath.mpf(point)))} for point in row['x']]} if row['kind']=='VERTICAL' else {'id':row['id'],'kind':row['kind'],'slope':str(row['slope']),'intercept':str(row['intercept']),'intersections':[{'x':point,'y':float(row['slope'])/(math.pi if row['perPi'] else 1)*point+float(row['intercept'])} for point in row['x']]}) for row in lines],'keyPoints':key_rows,'poles':pole_rows}
+    for feature,line in zip(features['lines'],lines):
+        if line['intersectionMarker']=='OPEN':feature['intersectionMarker']='OPEN'
     if spec['absolute']:features['absolute']=True;features['cusps']=_trig_v2_cusp_rows(spec,lo,hi)
     policy={'schemaVersion':'TRIGONOMETRIC_INTERVAL_POLICY_v2','markerRadiusIntrinsicPx':3.2,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':40,'minimumAmplitudeCssPx':20,'minimumPoleApproachGapCssPx':2}
     pole_boundaries={pole['boundary'] for pole in pole_rows if 'boundary' in pole}
@@ -4308,7 +4411,7 @@ def trig_axis_crossing_pair_audit(plan,svg,transform,model):
                 'axisCrossingPi':str(crossing),'curvePoints':counts}
     except (KeyError,TypeError,ValueError,ZeroDivisionError,OverflowError,ET.ParseError) as error:
         return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIG_AXIS_CROSSING_PAIR_SOURCE_INVALID']}
-def _trig_display_window_ticks(root, transform, x_values, y_values):
+def _trig_display_window_ticks(root, transform, x_values, y_values, pi_ticks=True):
     nodes=[node for node in root.iter() if node.get('data-role')=='tick']
     labels=[node for node in root.iter() if node.get('data-label-kind')=='TICK_LABEL']
     if len(nodes)!=len(x_values)+len(y_values) or len(labels)!=len(nodes):
@@ -4316,8 +4419,9 @@ def _trig_display_window_ticks(root, transform, x_values, y_values):
     errors=[]
     for axis, values in (('x',x_values),('y',y_values)):
         for value in values:
-            target=float(value)*(math.pi if axis=='x' else 1)
-            expected_text=_trig_pi_tick_text(value) if axis=='x' else str(value).replace('-','−')
+            as_pi=axis=='x' and pi_ticks
+            target=float(value)*(math.pi if as_pi else 1)
+            expected_text=_trig_pi_tick_text(value) if as_pi else str(value).replace('-','−')
             painted_text=_ov_label_codes(expected_text.replace('−','-'))
             sign=1 if axis=='x' else -1
             pos=transform['originX' if axis=='x' else 'originY']+sign*target*transform['s'+axis]
@@ -4346,25 +4450,36 @@ def trig_display_window_audit(plan, svg, transform, model):
     errors=[]
     try:
         spec=_trig_v2_spec(plan)
+        plain=plan.get('overviewPolicy')=='TRIGONOMETRIC_DISPLAY_WINDOW_X_v1'
         if (plan.get('sourceDomain')!={'kind':'ALL_REALS'} or spec['function'] not in ('SIN','COS')
-            or any(key in plan for key in ('ratePi','phase','absolute','axisTickPiStep','referenceLines','keyPoints','overlays','axisTitles'))):
+            or spec['rateHasPi']!=plain or not spec['phaseHasPi']
+            or any(key in plan for key in ('phase','absolute','axisTickPiStep','referenceLines','keyPoints','overlays','axisTitles'))
+            or (plain and 'displayWindowPi' in plan)):
             raise ValueError('TRIG_DISPLAY_WINDOW_SOURCE_INVALID')
         if 'showOriginLabel' in plan and plan['showOriginLabel'] is not True:raise ValueError('TRIG_DISPLAY_ORIGIN_LABEL_INVALID')
-        window=plan['displayWindowPi']
-        if not isinstance(window,list) or len(window)!=2:
-            raise ValueError('TRIG_DISPLAY_WINDOW_PI_INVALID')
-        lo,hi=(_piecewise_rational(value,'TRIG_DISPLAY_WINDOW_PI_INVALID') for value in window)
+        window=plan['displayWindowX' if plain else 'displayWindowPi']
+        code='TRIG_DISPLAY_WINDOW_X_INVALID' if plain else 'TRIG_DISPLAY_WINDOW_PI_INVALID'
+        if not isinstance(window,list) or len(window)!=2:raise ValueError(code)
+        lo,hi=(_piecewise_rational(value,code) for value in window)
         if not lo<0<hi or max(abs(lo),abs(hi))>100 or not Fraction(1,4)<=(hi-lo)/_trig_v2_period(spec)<=TRIG_V2_MAX_PERIODS:
-            raise ValueError('TRIG_DISPLAY_WINDOW_PI_INVALID')
-        if plan.get('axisTickPi') is not True:
+            raise ValueError(code)
+        if (plain and plan.get('axisTickPi') is not None and plan.get('axisTickPi') is not False) or (not plain and plan.get('axisTickPi') is not True):
             raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
-        x0,x1=float(lo)*math.pi,float(hi)*math.pi
-        x_ticks=_trig_v2_tick_multiples(plan,'INTERVAL_PI',x0,x1)
+        factor=1 if plain else math.pi
+        x0,x1=float(lo)*factor,float(hi)*factor
+        if plain:
+            values=plan.get('axisTickValues')
+            if not isinstance(values,dict) or set(values)!={'x','y'} or not all(isinstance(values[axis],list) for axis in values):
+                raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+            x_ticks=[_piecewise_rational(value,'INVALID_TRIG_AXIS_TICK_VALUES') for value in values['x']]
+            if any(not value or not lo<value<hi for value in x_ticks):raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+        else:
+            x_ticks=_trig_v2_tick_multiples(plan,'INTERVAL_PI',x0,x1)
         ys=[_piecewise_rational(value,'INVALID_TRIG_AXIS_TICK_VALUES') for value in plan['axisTickValues']['y']]
         a,c,rate,phase=(spec[key] for key in ('a','c','rate','phase'))
         low,high=min(0.0,float(c-abs(a))),max(0.0,float(c+abs(a)))
         span=max(1.,high-low)
-        ypad=.42*span
+        ypad=(.16 if plain else .42)*span
         xpad=max(.1*(x1-x0),.5)
         left=max(xpad,max(1.0,abs(x0)))
         expected_window=[x0-left,x1+xpad,low-ypad,high+ypad]
@@ -4384,13 +4499,14 @@ def trig_display_window_audit(plan, svg, transform, model):
         if abs(points[0][0]-x0)*scale_x>.35 or abs(points[-1][0]-x1)*scale_x>.35:
             errors.append('TRIG_DISPLAY_CURVE_RANGE_MISMATCH')
         f=math.sin if spec['function']=='SIN' else math.cos
+        angular_rate=float(rate)*(math.pi if plain else 1)
         def exact_curve(x):
-            return float(a)*f(float(rate)*x+float(phase)*math.pi)+float(c)
+            return float(a)*f(angular_rate*x+float(phase)*math.pi)+float(c)
         if any(abs(y-exact_curve(x))*scale_y>.35 for x,y in points):
             errors.append('TRIG_WRONG_FUNCTION_CURVE')
         for (ax,ay),(bx,by) in zip(points,points[1:]):
             step=bx-ax
-            if step<=0 or abs(float(a*rate*rate))*step**2*scale_y/8>.7:
+            if step<=0 or abs(float(a)*angular_rate**2)*step**2*scale_y/8>.7:
                 errors.append('TRIG_DISPLAY_CURVE_SAMPLING_MISMATCH')
                 break
             if abs((ay+by)/2-exact_curve((ax+bx)/2))*scale_y>.35:
@@ -4404,7 +4520,7 @@ def trig_display_window_audit(plan, svg, transform, model):
             t=(k+shift-phase)/rate
             if lo<t<hi:extrema[t]=c+a*(-1 if k%2 else 1)
         for value,y in extrema.items():
-            if not any(abs(x-float(value)*math.pi)*scale_x<=.35 and abs(h-float(y))*scale_y<=.35 for x,h in points):
+            if not any(abs(x-float(value)*factor)*scale_x<=.35 and abs(h-float(y))*scale_y<=.35 for x,h in points):
                 errors.append('TRIG_DISPLAY_EXTREMUM_NOT_SAMPLED:'+str(value))
         if any(node.get('data-role') in ('interval-endpoint','trig-key-point','point') or
                (node.get('id') or '').startswith(('interval-','period-label','formula')) for node in root.iter()):
@@ -4421,7 +4537,7 @@ def trig_display_window_audit(plan, svg, transform, model):
             for value in values:
                 level=extrema.get(value) if axis=='x' else value if value in (c-abs(a),c+abs(a)) else None
                 if value not in ticks or not level:raise ValueError('TRIG_DISPLAY_GUIDE_NOT_AT_EXTREMUM')
-                x=float(value)*math.pi;y=float(level)
+                x=float(value)*factor;y=float(level)
                 expected_guides.append(((x,0.),(x,y)) if axis=='x' else ((0.,y),(x1,y)))
         strokes=[node for node in root.iter() if (node.get('id') or '').startswith('trig-window-guide-')]
         if model:
@@ -4434,7 +4550,7 @@ def trig_display_window_audit(plan, svg, transform, model):
                 attr,position=('y',transform['originY']) if horizontal else ('x',transform['originX'])
                 if any(abs(float(axis.get(attr+i,'inf'))-position)*transform['displayScale']>.35 for i in ('1','2')):
                     errors.append('TRIG_DISPLAY_AXES_MISMATCH')
-            errors.extend(_trig_display_window_ticks(root,transform,x_ticks,ys))
+            errors.extend(_trig_display_window_ticks(root,transform,x_ticks,ys,pi_ticks=not plain))
             if len(strokes)!=len(expected_guides):errors.append('TRIG_DISPLAY_GUIDE_INVENTORY_MISMATCH')
             for i, expected in enumerate(expected_guides):
                 one=[node for node in strokes if node.get('id')=='trig-window-guide-'+str(i)]
@@ -4462,7 +4578,7 @@ def trig_display_window_audit(plan, svg, transform, model):
                 if box is None or not (0<=ox-box[0]-box[2]<=50 and 0<=box[1]-oy<=50):
                     errors.append('TRIG_DISPLAY_ORIGIN_LABEL_MOVED')
         return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),
-                'windowPi':window,'sourceDomain':'ALL_REALS','curvePoints':len(points)}
+                'windowX' if plain else 'windowPi':window,'sourceDomain':'ALL_REALS','curvePoints':len(points)}
     except (KeyError,TypeError,ValueError,ZeroDivisionError,OverflowError,ET.ParseError) as error:
         return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIG_DISPLAY_SOURCE_INVALID']}
 
@@ -4542,6 +4658,14 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
             marker_ids=[node.get('id') for node in root.iter() if node.get('data-role')=='interval-endpoint']
             expected_ids=['interval-endpoint-'+side for side,y in zip(('start','end'),want['endY']) if y is not None]
             if sorted(marker_ids,key=str)!=sorted(expected_ids):errors.append('TRIG_TAN_INTERVAL_MARKER_INVENTORY_MISMATCH')
+        if 'hideIntervalEndLabels' in plan:
+            hidden=plan['hideIntervalEndLabels']
+            if (not isinstance(hidden,list) or not 1<=len(hidden)<=2
+                or any(side not in ('START','END') for side in hidden) or len(set(hidden))!=len(hidden)):
+                raise ValueError('TRIG_HIDE_INTERVAL_END_LABELS_INVALID')
+            for side in hidden:
+                if any(node.get('id')=='interval-'+side.lower()+'-label' for node in root.iter()):
+                    errors.append('TRIG_HIDDEN_INTERVAL_END_LABEL_PRESENT:'+side.lower())
         frozen=features.get('lines');frozen_ids=[row.get('id') for row in frozen] if isinstance(frozen,list) else None
         if frozen_ids!=[row['id'] for row in want['lines']]:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
         detail=[];all_marks=[]
@@ -4562,6 +4686,7 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
                     except (ValueError,TypeError):level_same=False
                     if frozen[index].get('slope')!=str(row['slope']) or not level_same or frozen[index].get('kind')!=row['kind'] or (frozen[index].get('perPi') is True)!=row['perPi']:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
                 if frozen[index].get('color')!=row['color']:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
+                if frozen[index].get('intersectionMarker')!=row['intersectionMarker']:errors.append('TRIG_INTERSECTION_MARKER_INVENTORY_MISMATCH:'+row['id'])
             node=line_nodes.get('line-'+row['id'])
             if node is None:errors.append('TRIG_LINE_MISSING:'+row['id'])
             else:
@@ -4575,12 +4700,25 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
                         if xs and not (min(p1[0],p2[0])<=min(xs)+x_tol and max(p1[0],p2[0])>=max(xs)-x_tol):errors.append('TRIG_LINE_DOES_NOT_SPAN_CROSSINGS:'+row['id'])
                     errors.extend(_ov_color_errors(node,row['color'],'TRIG_LINE_COLOR_MISMATCH:'+row['id']))
                 except (TypeError,ValueError):errors.append('TRIG_LINE_INVALID:'+row['id'])
-            dots=[node_id for node_id in circles if node_id and node_id.startswith('intersection-'+row['id']+'-')]
+            dots=[node for node in root.iter() if node.tag.split('}')[-1]=='circle' and (node.get('id') or '').startswith('intersection-'+row['id']+'-')]
             if len(dots)!=count:errors.append('TRIG_INTERSECTION_DOT_COUNT_MISMATCH:'+row['id'])
             for k,(tx,ty) in enumerate(zip(xs,ys),1):
-                got=read_circle('intersection-'+row['id']+'-'+str(k))
-                if got is None or abs(got[0]-tx)*xscale>.35 or abs(got[1]-ty)*yscale>.35:errors.append('TRIG_INTERSECTION_DOT_MISSING:'+row['id']+'-'+str(k))
-                elif row['color'] is not None:errors.extend(_ov_dot_look_errors(got[2],False,row['color'],'TRIG_INTERSECTION_DOT_COLOR_MISMATCH:'+row['id']+'-'+str(k)))
+                ident=row['id']+'-'+str(k)
+                got=read_circle('intersection-'+ident)
+                if got is None or not all(map(math.isfinite,got[:2])) or abs(got[0]-tx)*xscale>.35 or abs(got[1]-ty)*yscale>.35:
+                    errors.append('TRIG_INTERSECTION_DOT_MISSING:'+ident)
+                    continue
+                dot=got[2];opened=row['intersectionMarker']=='OPEN'
+                code=('TRIG_INTERSECTION_DOT_MARKER_MISMATCH:' if opened or row['color'] is None else 'TRIG_INTERSECTION_DOT_COLOR_MISMATCH:')+ident
+                errors.extend(_ov_dot_look_errors(dot,opened,row['color'],code))
+                if opened:
+                    radius=float(dot.get('r','nan'))
+                    if (not math.isfinite(radius) or abs(radius-want['policy']['markerRadiusIntrinsicPx'])>1e-6
+                        or dot.get('data-role')!='point' or any(dot.get(attr) is not None for attr in
+                        ('display','visibility','opacity','fill-opacity','stroke-opacity','style','transform','clip-path','mask'))):
+                        errors.append(code)
+                    elif 2*radius*transform['displayScale']<3:
+                        unsupported.append('TRIG_INTERSECTION_OPEN_MARKER_BELOW_PROFILE_FLOOR:'+ident)
             all_marks.extend(zip(xs,ys));detail.append({'id':row['id'],'kind':row['kind'],'crossings':count,'x':xs})
         for row in want['cusps']:
             xc=float(Fraction(row['x']))*(math.pi if want['axisUnit']=='PI' else 1.0)
@@ -4696,7 +4834,7 @@ def trigonometric_period_v2_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':features,'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_INDEPENDENT_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
-MC_FREE_KINDS=('LINE','RATIONAL','SQRT')
+MC_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL')
 MC_EXACT_PATTERN=r'-?\d+(?:/\d+)?'
 
 def _mc_obs_fraction(value,code):
@@ -4728,6 +4866,18 @@ def _mc_obs_free(entry,ident):
         if curve['d'][1]==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
         pole=-curve['d'][0]/curve['d'][1]
         if sum(coefficient*pole**power for power,coefficient in enumerate(curve['n']))==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
+    elif kind=='EXPONENTIAL':
+        raw_base=entry.get('base')
+        if not isinstance(raw_base,str) or not re.fullmatch(r'[1-9]\d{0,3}(?:/[1-9]\d{0,3})?',raw_base):
+            raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
+        base=Fraction(raw_base)
+        if str(base)!=raw_base or base==1 or max(base.numerator,base.denominator)>1000:
+            raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
+        coefficients=entry.get('coefficients')
+        if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError(code)
+        a,k,c=[_mc_obs_fraction(value,code) for value in coefficients]
+        if not a or not k:raise ValueError(code)
+        curve.update({'base':base,'c':[a,k,c],'shiftX':_mc_obs_fraction(entry.get('shiftX','0'),code)})
     else:
         curve['r']=_mc_obs_pair(entry,'radicand',code)
         if curve['r'][1]==0:raise ValueError(code)
@@ -4771,6 +4921,9 @@ def _mc_obs_y_plain(curve,x_value):
     if kind=='SQRT':
         radicand=curve['r'][0]+curve['r'][1]*x_value
         return None if radicand<0 else float(curve['o'])+float(curve['a'])*math.sqrt(float(radicand))
+    if kind=='EXPONENTIAL':
+        a,k,c=curve['c']
+        return float(c)+float(a)*math.exp(math.log(curve['base'])*float(k*(x_value-curve['shiftX'])))
     f0,f1,f2=curve['f']
     return f0+f1*x_value+f2*x_value*x_value
 
@@ -4796,7 +4949,7 @@ def _mc_obs_inverse_definition(source,ident):
         return {'kind':'Y_OF_X','coefficients':[o*o*q2-c0/c1,-2*o*q2,q2]}
     return None
 
-MC_REGION_FIELDS={'id','between','under','from','to','halfPlane','and','fill','label'}
+MC_REGION_FIELDS={'id','between','under','from','to','halfPlane','and','fill','label','integerColumns'}
 
 def _mc_region_expected(plan,entry,by_id,viewport):
     """(G18c) One declared region rebuilt from the plan's own fields: ('BETWEEN',names,start,end,[upper,lower]) with the upper / lower fixed by this observer's own
@@ -4847,7 +5000,73 @@ def _mc_region_expected(plan,entry,by_id,viewport):
     order=[0,1] if signs=={True} else [1,0]
     return ('BETWEEN',[names[order[0]],names[order[1]]],start,end,[lambda x_value,c=boundaries[order[0]]:value(c,x_value),lambda x_value,c=boundaries[order[1]]:value(c,x_value)])
 
-def multi_curve_region_errors(plan,transform,root,by_id,features):
+def _mc_obs_integer_columns(region_id,curves,left,right):
+    error='GRAPH_REGION_INTEGER_COLUMNS_INVALID:'+region_id
+    if (any(not curve or curve['kind']!='EXPONENTIAL' or curve['base'].denominator!=1 for curve in curves)
+        or len({(curve['base'],curve['c'][1]) for curve in curves})!=1
+        or left.denominator!=1 or right.denominator!=1 or not 2<=right-left+1<=8):
+        raise ValueError(error)
+    rows=[]
+    for x in range(int(left),int(right)+1):
+        values=[]
+        for curve in curves:
+            a,k,c=(S.Rational(term.numerator,term.denominator) for term in curve['c'])
+            shift=curve['shiftX']
+            exponent=k*(x-S.Rational(shift.numerator,shift.denominator))
+            if not exponent.is_Integer:raise ValueError(error)
+            values.append(c+a*S.Integer(curve['base'])**exponent)
+        low,high=values
+        if low>=high:raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
+        count=int(S.floor(high)-S.ceiling(low)+1)
+        if not 1<=count<=9999:raise ValueError(error)
+        rows.append({'x':x,'lower':str(low),'upper':str(high),'count':count})
+    return rows
+
+def _mc_integer_column_artwork(region_id,root,transform,columns,model):
+    errors=[];ox,oy,sx,sy,scale=(transform[key] for key in ('originX','originY','sx','sy','displayScale'))
+    prefix='region-'+region_id+'-guide-'
+    nodes=[node for node in root.iter() if (node.get('id') or '').startswith(prefix)]
+    expected_ids=[]
+    by_id={node.get('id'):node for node in nodes}
+    def line_matches(node,style,target):
+        if node is None or node.tag.split('}')[-1]!='line':return False
+        if tuple(node.get(key) for key in ('data-role','stroke','stroke-dasharray'))!=style:return False
+        actual=[float(node.get(key,'inf')) for key in ('x1','y1','x2','y2')]
+        return all(abs(a-b)*scale<=.35 for a,b in zip(actual,target))
+    for index,row in enumerate(columns):
+        x=row['x'];guide_id=prefix+str(x)
+        low,high=map(Fraction,(row['lower'],row['upper']))
+        want_x=ox+sx*x;want_low=oy-sy*float(low);want_high=oy-sy*float(high)
+        interior=0<index<len(columns)-1
+        style=('guide','#8a8a8a','2 4') if interior else ('line','#111',None)
+        halves=[(guide_id,want_low,want_high)]
+        if interior and low<0<high:
+            halves=[(guide_id,want_low,oy),(guide_id+'-upper',oy,want_high)]
+        for ident,start_y,end_y in halves:
+            expected_ids.append(ident)
+            if not line_matches(by_id.get(ident),style,(want_x,start_y,want_x,end_y)):
+                errors.append('GRAPH_REGION_INTEGER_COLUMN_GEOMETRY:'+ident)
+        label_id=guide_id+'-count';label=by_id.get(label_id);text=str(row['count'])
+        expected_ids.append(label_id)
+        if label is None:continue
+        box=_region_label_box(by_id,label_id)
+        if model:
+            shown=label.tag.split('}')[-1]=='text' and ''.join(label.itertext()).strip()==text
+        else:
+            glyphs=_ov_glyph_codes(label);codes=_ov_label_codes(text)
+            shown=len(glyphs)==len(codes) and all(glyph in allowed for glyph,allowed in zip(glyphs,codes))
+        if not shown:errors.append('GRAPH_REGION_INTEGER_COLUMN_COUNT:'+guide_id)
+        if box is None or abs(box[0]+box[2]/2-want_x)>.4*sx or box[1]+box[3]>=want_high:
+            errors.append('GRAPH_REGION_INTEGER_COLUMN_OWNER:'+guide_id)
+    if sorted(node.get('id') for node in nodes)!=sorted(expected_ids):
+        errors.append('GRAPH_REGION_INTEGER_COLUMN_INVENTORY:'+region_id)
+    if not model:
+        axes=[node for node in root.iter() if node.get('data-role')=='axis' and node.get('data-axis')=='x']
+        if len(axes)!=1 or any(not abs(float(axes[0].get(key,'inf'))-oy)*scale<=.35 for key in ('y1','y2')):
+            errors.append('GRAPH_REGION_INTEGER_COLUMN_X_AXIS:'+region_id)
+    return errors
+
+def multi_curve_region_errors(plan,transform,root,by_id,features,model=False):
     """(G18c) Independent check of graphPlan.regions on a multi-curve figure: each region is rebuilt from the plan's own fields; the fill path in the FINAL SVG must follow
     both boundary curves between from and to (or fill exactly the frame piece of a half-plane), be painted beneath every stroke, carry the declared fill, hold its label
     inside, and no undeclared fill may be drawn. The frozen rows must say the same."""
@@ -4869,7 +5088,15 @@ def multi_curve_region_errors(plan,transform,root,by_id,features):
         region_id=entry.get('id')
         if not isinstance(region_id,str):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
         declared_ids.add(region_id)
-        try:expected=_mc_region_expected(plan,entry,by_id,plan['viewport'])
+        try:
+            expected=_mc_region_expected(plan,entry,by_id,plan['viewport'])
+            columns=None
+            if 'integerColumns' in entry:
+                if (entry['integerColumns'] is not True or 'between' not in entry or expected[0]!='BETWEEN'
+                    or entry.get('label') is not None):
+                    raise ValueError('GRAPH_REGION_INTEGER_COLUMNS_INVALID:'+region_id)
+                upper,lower=expected[1]
+                columns=_mc_obs_integer_columns(region_id,[by_id.get(lower),by_id.get(upper)],expected[2],expected[3])
         except (ValueError,KeyError,TypeError,ZeroDivisionError) as error:
             errors.append(str(error) if isinstance(error,ValueError) and str(error).startswith('GRAPH_REGION') else 'GRAPH_REGION_INVENTORY_MISMATCH:'+region_id);continue
         fill=entry.get('fill','LIGHT')
@@ -4877,7 +5104,8 @@ def multi_curve_region_errors(plan,transform,root,by_id,features):
         row=frozen_by.get(region_id)
         if row is None:errors.append('GRAPH_REGION_INVENTORY_MISMATCH:'+region_id)
         else:
-            same=row.get('fill')==fill and row.get('label')==entry.get('label') and row.get('kind')==expected[0]
+            same=(row.get('fill')==fill and row.get('label')==entry.get('label')
+                  and row.get('kind')==expected[0] and row.get('integerColumns')==columns)
             try:
                 if expected[0]=='BETWEEN':
                     same=same and row.get('upper')==expected[1][0] and row.get('lower')==expected[1][1] and _pp_same(_pp_exact(row.get('from')),expected[2]) and _pp_same(_pp_exact(row.get('to')),expected[3])
@@ -4915,6 +5143,8 @@ def multi_curve_region_errors(plan,transform,root,by_id,features):
                 band=max(abs(yu-yl),1e-9)
                 if not _region_inside(polygon,(x,(yu+yl)/2)):errors.append('GRAPH_REGION_INTERIOR_MISSING:'+region_id)
                 if _region_inside(polygon,(x,yu+max(4*ytol,GRAPH_REGION_OUTSIDE*band))) or _region_inside(polygon,(x,yl-max(4*ytol,GRAPH_REGION_OUTSIDE*band))):errors.append('GRAPH_REGION_OUTSIDE_BOUNDARY:'+region_id)
+        if columns is not None:
+            errors.extend(_mc_integer_column_artwork(region_id,root,transform,columns,model))
         mine=order[id(node)]
         if any(order[id(other)]<mine and (other.tag.split('}')[-1] in {'line','circle','polyline','polygon'} or (other.tag.split('}')[-1]=='path' and other.get('data-mark')!='graph-region')) for other in root.iter()):
             errors.append('GRAPH_REGION_NOT_BENEATH_STROKES:'+region_id)
@@ -5036,7 +5266,7 @@ def rational_region_errors(plan,transform,root):
                 if found:break
     return sorted(set(errors))
 
-def multi_curve_audit(plan,svg,transform):
+def multi_curve_audit(plan,svg,transform,model=False):
     """Independent multi-curve audit: every curve and branch is rebuilt from the plan's exact definitions, the frozen
     inventory is compared, and every final SVG polyline tagged CURVE_<id>[_POS|_NEG|_L|_R] is checked against the recomputed
     curve, its draw interval, its branch side, its endpoints and each segment midpoint. The frozen sampling expression is
@@ -5068,6 +5298,7 @@ def multi_curve_audit(plan,svg,transform):
             if entry.get('inverseOf') is not None:
                 source=by_id.get(entry['inverseOf'])
                 if source is None or source.get('inverse') or source.get('abs'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+                if kind=='EXPONENTIAL':raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
                 definition=_mc_obs_inverse_definition(source,ident) if source['kind'] in MC_FREE_KINDS else None
                 if definition is None:
                     # a quadratic half: its inverse is a square root (own derivation, exact)
@@ -5094,6 +5325,11 @@ def multi_curve_audit(plan,svg,transform):
                 curve=_mc_obs_free(entry,ident);curve['look']=look;curve['inverse']=False;curve['entry']=entry
                 (lo,hi),curve['domainStates']=_mc_obs_domain(entry,ident)
                 curve['interval']=(lo,hi);branches=[{'side':'FUNCTION','xInterval':(lo,hi),'yInterval':None}]
+                if kind=='EXPONENTIAL':
+                    if any(abs(x)>10**6 or abs(curve['c'][1]*(x-curve['shiftX']))>64 for x in (lo,hi)):
+                        raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
+                    if any(abs(_mc_obs_y_plain(curve,x))>10**8 for x in (lo,hi)):
+                        raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
                 if kind=='RATIONAL':
                     pole=-curve['d'][0]/curve['d'][1]
                     if lo<pole<hi:branches=[{'side':'LEFT','xInterval':(lo,pole),'yInterval':None},{'side':'RIGHT','xInterval':(pole,hi),'yInterval':None}]
@@ -5162,6 +5398,9 @@ def multi_curve_audit(plan,svg,transform):
                 if not list_same(row.get('coefficients'),curve['c']):same=False
             elif kind=='RATIONAL':
                 if not list_same(row.get('numerator'),curve['n']) or not list_same(row.get('denominator'),curve['d']):same=False
+            elif kind=='EXPONENTIAL':
+                if (row.get('base')!=str(curve['base']) or not list_same(row.get('coefficients'),curve['c'])
+                    or not list_same([row.get('shiftX')],[curve['shiftX']])):same=False
             elif kind=='SQRT':
                 if not list_same(row.get('radicand'),curve['r']) or not list_same([row.get('amplitude','1')],[curve['a']]) or not list_same([row.get('offset','0')],[curve['o']]):same=False
             if kind=='X_OF_Y' and row.get('branch','BOTH')!=curve['branch']:same=False
@@ -5224,7 +5463,7 @@ def multi_curve_audit(plan,svg,transform):
                 widths[tag]=(width_value if width_value is not None else 0.0,look.get('weight')=='BOLD')
                 if any(right[0]<=left[0] for left,right in zip(points,points[1:])):errors.append('MULTI_CURVE_CURVE_NOT_INCREASING_X:'+tag)
                 if any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('MULTI_CURVE_CURVE_CROSSES_INTERVAL:'+tag)
-                clipped_ok=kind in MC_FREE_KINDS or curve.get('inverse')   # a LINE, RATIONAL, SQRT or an inverse may be cut off by the frame; a quadratic arc never is
+                clipped_ok=kind in ('LINE','RATIONAL','SQRT') or curve.get('inverse')   # a LINE, RATIONAL, SQRT or an inverse may be cut off by the frame; a quadratic arc never is
                 # coverage: each end is at the interval end, or (a free curve) where the frame cuts it off
                 for end_point,want in ((points[0],start),(points[-1],end)):
                     at_end=abs(end_point[0]-want)<=x_tol
@@ -5402,7 +5641,7 @@ def multi_curve_audit(plan,svg,transform):
             if (node.get('data-curve')!=curve_id or node.get('data-endpoint')!=which or node.get('data-state')!=state
                 or node.get('fill')!=('#111' if state=='CLOSED' else '#fff') or node.get('stroke')!='black' or abs(radius-4)>1e-6 or abs(stroke_width-1)>1e-6
                 or abs(got[0]-want_x)*sx*display>.35 or abs(got[1]-want_y)*sy*display>.35):errors.append('MULTI_CURVE_DOMAIN_ENDPOINT_MISMATCH:'+ident)
-        errors.extend(multi_curve_region_errors(plan,transform,root,by_id,features))   # (G18c) shaded regions
+        errors.extend(multi_curve_region_errors(plan,transform,root,by_id,features,model))   # (G18c) shaded regions
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
         return {'status':status,'errors':sorted(set(errors+unsupported)),'curveCount':len(curves),'branchCount':sum(len(curve['branches']) for curve in curves),'mathMethod':'INDEPENDENT_EXACT_COEFFICIENTS_AND_FINAL_SVG_POLYLINES'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError) as error:
@@ -5505,7 +5744,7 @@ def _audit_family(plan,svg,transform,model=False):
     if plan.get('family')=='piecewise-discontinuous':
         return piecewise_discontinuous_audit(plan,svg,transform)
     if plan.get('family')=='multi-curve':
-        return multi_curve_audit(plan,svg,transform)
+        return multi_curve_audit(plan,svg,transform,model)
     if plan.get('family')=='piecewise-affine' and plan.get('shapeIntent')=='OVERVIEW':
         return piecewise_affine_overview_audit(plan,svg,transform)
     if plan.get('family')=='exponential-affine' and plan.get('shapeIntent')=='OVERVIEW':
@@ -5515,11 +5754,12 @@ def _audit_family(plan,svg,transform,model=False):
         if plan.get('overviewPolicy')=='LOGARITHMIC_BASE_OVERVIEW_v1':return logarithmic_base_overview_audit(plan,svg,transform)
         return logarithmic_affine_overview_audit(plan,svg,transform)
     if plan.get('family')=='exp-log-pair' and plan.get('shapeIntent')=='OVERVIEW':
-        return exp_log_pair_overview_audit(plan,svg,transform)
+        return exp_log_pair_overview_audit(plan,svg,transform,model)
     if plan.get('family')=='trigonometric' and plan.get('shapeIntent')=='OVERVIEW':
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_AXIS_CROSSING_PAIR_v1':
             return trig_axis_crossing_pair_audit(plan,svg,transform,model)
-        if plan.get('overviewPolicy')=='TRIGONOMETRIC_DISPLAY_WINDOW_PI_v1':return trig_display_window_audit(plan,svg,transform,model)
+        if plan.get('overviewPolicy') in ('TRIGONOMETRIC_DISPLAY_WINDOW_PI_v1','TRIGONOMETRIC_DISPLAY_WINDOW_X_v1'):
+            return trig_display_window_audit(plan,svg,transform,model)
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v1':return trigonometric_interval_audit(plan,svg,transform)
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':return trigonometric_interval_v2_audit(plan,svg,transform)
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_PERIODIC_OVERVIEW_v2':return trigonometric_period_v2_audit(plan,svg,transform)
@@ -6002,7 +6242,7 @@ def multi_curve_label_audit(plan,svg,transform):
     rows=[row for row in (inventory.get('curves') if isinstance(inventory,dict) else None) or []
           if isinstance(row,dict) and isinstance(row.get('id'),str)]
     all_vertical_parabolas=len(rows)>1 and all(row.get('kind')=='Y_OF_X' for row in rows)
-    owned={row.get('id') for row in rows if all_vertical_parabolas or row.get('kind') in ('LINE','RATIONAL','SQRT')}
+    owned={row.get('id') for row in rows if all_vertical_parabolas or row.get('kind') in MC_FREE_KINDS}
     suffixes={'FUNCTION':('',''),'LEFT':('_L','-left'),'RIGHT':('_R','-right'),
               'POSITIVE':('_POS','-positive'),'NEGATIVE':('_NEG','-negative')}
     branch_owners={}

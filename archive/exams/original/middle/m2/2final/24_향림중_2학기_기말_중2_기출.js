@@ -43,7 +43,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImageAlt": "해설 그림: 마름모 ABCD에서 대각선 AC와 BD가 O에서 만나고 AB=6cm, AO=3cm이다. AO와 OC가 같은 길이(파랑), ∠ABO=∠CBO=30°(초록), ∠ABC=60°, ∠BCD=120°이며 AC가 ∠BCD를 이등분한다(보라 두 각).",
     "solutionImageCaption": "AC=2AO=6cm이고 AC가 ∠BCD=120°를 이등분하므로 ∠OCD=60°이다(정답 ②).",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "마름모 대각선의 이등분과 각 이등분",
+    "decisiveStep": "대각선 반 길이를 두 배 하고 이웃각의 보각을 다시 이등분한다."
   },
   {
     "id": 2,
@@ -51,8 +53,8 @@ window.questionBank = [
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
@@ -72,22 +74,24 @@ window.questionBank = [
     "solution": "평행한 두 직선 사이의 거리는 일정하므로 밑변이 같은 두 삼각형의 넓이가 같음을 이용한다.\n그림에서 $B,C,E$는 한 직선 위에 있다. $AC\\parallel DE$이므로 $\\triangle ACD$와 $\\triangle ACE$는 밑변 $AC$가 같고 높이도 같다.\n따라서 $\\triangle ACE=\\triangle ACD=10\\rm\\,cm^2$이다.\n$\\triangle ABE=\\triangle ABC+\\triangle ACE$이므로\n$16+10=26\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q2-solution-v2.svg",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q2.png",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: B, C, E가 한 직선 위에 있고 AC∥DE인 그림. 왼쪽은 △ACD(파랑, 10)와 △ABC(주황, 16), 오른쪽은 평행선 때문에 넓이가 같은 △ACE(파랑, 10)를 보여 준다.",
     "solutionImageCaption": "△ABE=△ABC+△ACE=16+10=26 cm²이다. 정답 ③.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "평행선 사이의 등적변형 후 넓이 합",
+    "decisiveStep": "같은 밑변 AC와 평행선 사이의 높이로 ACD를 ACE로 바꾸고 ABC와 합친다."
   },
   {
     "id": 3,
@@ -118,20 +122,25 @@ window.questionBank = [
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q3.png",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
-    "problemTypeKey": "",
-    "templateKey": "",
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+    "crossConceptKeys": [
+      "CC_ISOSCELES_TRAPEZOID",
+      "CC_AREA"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 등변사다리꼴 ABCD(AD=4, BC=10, AB=DC=5)에 두 수선을 점선으로 그어 양 끝의 합동인 직각삼각형을 같은 색으로 칠하고, 가로 3, 3과 가운데 4를 표시했다.",
     "solutionImageCaption": "높이 h는 h²+3²=5²에서 4 cm이므로 넓이는 (4+10)/2×4=28 cm²이어서 정답은 ①이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "등변사다리꼴의 높이에 피타고라스 적용",
+    "decisiveStep": "밑변 차의 절반을 직각변으로 읽어 높이를 구한 뒤 사다리꼴 넓이에 대입한다."
   },
   {
     "id": 4,
@@ -160,13 +169,15 @@ window.questionBank = [
     "solution": "직사각형의 대각선과 두 변으로 이루어진 직각삼각형에 피타고라스 정리를 적용한다.\n그림에서 $AC=25\\rm\\,cm$, $BC=24\\rm\\,cm$이므로 $AB^2+24^2=25^2$이다.\n따라서 $AB^2=625-576=49$이므로 $AB=7\\rm\\,cm$이다.\n직사각형의 둘레는 $2(24+7)=62\\rm\\,cm$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q4-solution-v2.svg",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q4.png",
-    "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
-    "subUnit": "피타고라스 정리",
-    "problemTypeKey": "",
-    "templateKey": "",
-    "crossConceptKeys": [],
+    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+    "subUnit": "피타고라스 정리의 활용",
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+    "crossConceptKeys": [
+      "CC_PERIMETER"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -175,7 +186,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 직사각형의 대각선 AC=25cm, BC=24cm, 직각삼각형 ABC(파랑)의 직각 표시와 AB=7cm(주황)를 나타냈다.",
     "solutionImageCaption": "AB²=25²−24²=49이므로 AB=7cm이고 둘레는 2(24+7)=62cm이다. 정답 ①.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "직사각형 대각선과 한 변으로 나머지 변",
+    "decisiveStep": "대각선25와 변24를 제곱 관계에 대입하고 두 변의 합을 두 배 한다."
   },
   {
     "id": 5,
@@ -211,7 +224,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -256,14 +269,16 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: △ABC에서 DE∥BC이므로 작은 삼각형 ADE(파랑)가 △ABC와 닮음이다. AD=5, DB=3(AB=8), BC=8, DE=x이고 평행선은 같은 초록 화살표로 표시했다.",
     "solutionImageCaption": "DE:BC=AD:AB=5:8이므로 DE=8×5/8=5 cm이다. 정답 ②.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "삼각형 내부 평행선의 기본 비례",
+    "decisiveStep": "부분5와3을 합한 전체8에 대한 비5:8을 평행한 두 변에 적용한다."
   },
   {
     "id": 7,
@@ -292,13 +307,16 @@ window.questionBank = [
     "solution": "합동으로 연장선의 길이를 먼저 구한 뒤, 교차하는 두 직선에서 생기는 닮음을 이용한다.\n$\\triangle ABE\\equiv\\triangle DCF$이므로 대응변에서 $BE=CF$이다.\n$BC=6\\rm\\,cm$, $CE=2\\rm\\,cm$이므로 $BE=8\\rm\\,cm$이고, 따라서 $CF=8\\rm\\,cm$이다. 그러므로 $BF=CF-BC=2\\rm\\,cm$이다.\n따라서 $FE=FB+BC+CE=2+6+2=10\\rm\\,cm$이다.\n$AD\\parallel FE$, $A,G,E$가 한 직선 위, $D,G,F$가 한 직선 위이므로 $\\triangle ADG\\sim\\triangle EFG$이다. 따라서 $DG:GF=AD:FE=6:10=3:5$이다.\n또 직각삼각형 $DCF$에서 $DC=6$, $CF=8$이므로 $DF=10\\rm\\,cm$이다. 따라서 $DG=10\\times\\dfrac{3}{3+5}=\\dfrac{15}{4}\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q7-solution-v2.svg",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q7.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+    "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
     "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_TRIANGLE_CONGRUENCE",
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -307,7 +325,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 정사각형 ABCD(한 변 6)와 BC의 연장선 위의 F, E(BF=CE=2)에서 FE=10을 보이고, 닮은 △ADG(파랑)와 △EFG(주황)를 칠했다. 오른쪽에는 직각삼각형 DCF(6, 8, 10)를 따로 그렸다.",
     "solutionImageCaption": "DG:GF=AD:FE=3:5이고 DF=10이므로 DG=10×3/8=15/4 cm이어서 정답은 ⑤이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "교차하는 닮은 삼각형의 분할비",
+    "decisiveStep": "합동으로 FE를 복원하고 AD:FE로 DG:GF를 얻어 피타고라스로 구한 DF를 분할한다."
   },
   {
     "id": 8,
@@ -338,11 +358,13 @@ window.questionBank = [
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q8.png",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
-    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+    "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINES_RATIO"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -351,7 +373,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AD(∠A의 이등분선, 파랑 두 각), BE(∠B의 이등분선, 주황 두 각), DE∥AB(초록)를 나타내고 AB=6, AC=12, AE=4, CE=8, BC=12, BD:DC=1:2를 표시했다.",
     "solutionImageCaption": "BD:DC=1:2이므로 DC=(2/3)×12=8cm이다. 정답 ④.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "두 각 이등분선의 대변 분할비",
+    "decisiveStep": "첫 이등분선의 비를 평행선 비례로 CE에 전달하고 둘째 이등분선의 비로 BC와 DC를 정한다."
   },
   {
     "id": 9,
@@ -395,7 +419,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 세 평행선 l, m, n과 두 직선이 만난다. 같은 색 선분(파랑 AB와 DE, 주황 BC와 EF)이 서로 대응하고 AB=20, BC=15, DE=16, EF=12이다.",
     "solutionImageCaption": "20:15=16:EF에서 EF=12cm이므로 DF=16+12=28cm이다(정답 ②).",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "세 평행선의 대응 분할비",
+    "decisiveStep": "AB:BC=DE:EF로 부분EF를 구한 뒤 DE와 합해 전체DF를 구한다."
   },
   {
     "id": 10,
@@ -427,19 +453,21 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AD=DE=EB=5(파랑 눈금), DF∥EG∥BC(초록 화살표)이다. H는 DC의 중점(주황 눈금)이고 EH=9, EG=12, BC=18을 적었다.",
     "solutionImageCaption": "GH=EG−EH=12−9=3 cm이다. 정답 ④.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "서로 다른 두 삼각형의 평행선 비례",
+    "decisiveStep": "큰 삼각형에서 EG를 구하고 DBC에서 중점선 EH를 구하여 두 길이의 차를 취한다."
   },
   {
     "id": 11,
@@ -468,10 +496,10 @@ window.questionBank = [
     "solution": "사다리꼴의 두 대각선 교점에서는 평행한 두 밑변의 길이비만큼 대각선이 나뉜다.\n$AB\\parallel DC$이므로 $\\triangle ABE\\sim\\triangle CDE$이고 $BE:DE=AB:DC=6:8=3:4$이다.\n$\\triangle ABE$와 $\\triangle ADE$는 밑변 $BE$, $DE$가 같은 직선 $BD$ 위에 있고 점 $A$에서 그 직선까지의 높이가 같으므로 넓이비도 $3:4$이다.\n따라서 $12:[\\triangle ADE]=3:4$이므로 $[\\triangle ADE]=16\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q11-solution-v2.svg",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q11.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "problemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+    "templateKey": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -483,7 +511,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 사다리꼴 ABCD에서 AB∥DC, AB=6, DC=8이고 닮은 △ABE(파랑, 12 cm²)와 △CDE(주황)를 칠했다. 오른쪽에는 BD 위에 BE:DE=3:4로 나뉜 △ABE와 △ADE가 높이를 공유하는 모습을 따로 그렸다.",
     "solutionImageCaption": "BE:DE=6:8=3:4이고 높이가 같으므로 12:△ADE=3:4에서 △ADE=16 cm²이어서 정답은 ③이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "사다리꼴 대각선 분할비와 옆 삼각형 넓이",
+    "decisiveStep": "평행 밑변의 비로 BE:DE를 구하고 공통 높이의 ABE와 ADE 넓이비에 적용한다."
   },
   {
     "id": 12,
@@ -512,13 +542,15 @@ window.questionBank = [
     "solution": "두 중선을 이용하여 무게중심의 $2:1$ 분할 성질을 적용한다.\n$E$는 $AC$의 중점이므로 $BE$는 중선이고, $D$는 $AB$의 중점이므로 $CD$도 중선이다. 따라서 두 중선의 교점 $G$는 삼각형의 무게중심이다.\n무게중심은 중선을 꼭짓점 쪽과 중점 쪽의 비가 $2:1$이 되도록 나누므로 $BG:GE=2:1$이다. $GE=5\\rm\\,cm$이므로 $BE=15\\rm\\,cm$이다.\n또 $AB=AC$인 이등변삼각형에서는 대칭인 두 중선 $BE$, $CD$의 길이가 같으므로 $CD=15\\rm\\,cm$이다.\n따라서 $CG=\\dfrac23CD=10\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q12-solution-v2.svg",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q12.png",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+    "subUnit": "삼각형의 무게중심의 성질",
     "problemTypeKey": "PT_COORD_CENTROID",
-    "templateKey": "TPL_CENTROID_REVERSE",
-    "crossConceptKeys": [],
+    "templateKey": "TPL_CENTROID_APPLICATION",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_CONGRUENCE"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -527,7 +559,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 이등변삼각형 ABC에서 D, E는 AB, AC의 중점(같은 길이 눈금), 두 중선 BE, CD(주황)의 교점 G가 무게중심이고, 오른쪽에 중선 BE를 펴서 BG=10, GE=5, BE=15cm를 표시했다.",
     "solutionImageCaption": "BG:GE=2:1이므로 BE=15cm이고 CD=BE=15cm이다. CG=(2/3)×15=10cm이므로 정답 ⑤.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "이등변삼각형의 같은 중선과 무게중심",
+    "decisiveStep": "2:1로 BE를 얻고 이등변삼각형의 대칭인 두 중선 동등을 거쳐 CG를 구한다."
   },
   {
     "id": 13,
@@ -556,14 +590,16 @@ window.questionBank = [
     "solution": "중점연결선과 무게중심의 위치를 같은 높이 기준으로 비교한다.\n$D$, $E$가 각각 $AC$, $AB$의 중점이므로 $DE\\parallel BC$이다. $BC$의 중점을 $M$이라 하고 $AM$과 $DE$의 교점을 $N$이라 하자.\n$DE$는 중점연결선이므로 $N$은 $AM$의 중점이어서 $AN=\\dfrac12AM$이다.\n또 $G$는 두 중선 $BD$, $CE$의 교점인 무게중심이므로 $AG=\\dfrac23AM$이다. 따라서 $GN=\\dfrac23AM-\\dfrac12AM=\\dfrac16AM$이다.\n$\\triangle ADE$와 $\\triangle GDE$는 밑변 $DE$가 같고, 그 밑변에 대한 높이의 비가 $AN:GN=\\dfrac12:\\dfrac16=3:1$이다.\n따라서 넓이의 비는 $3:1$이므로 구하는 값은 $3$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q13-solution-v2.svg",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q13.png",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+    "subUnit": "삼각형의 무게중심의 성질",
     "problemTypeKey": "PT_COORD_CENTROID",
     "templateKey": "TPL_CENTROID_APPLICATION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_MIDPOINT"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
-    "difficultyBucket": 4,
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -571,7 +607,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 D, E는 AC, AB의 중점이고 G는 BD와 CE의 교점이다. 중선 AM을 같은 길이(보라 동그라미) 6칸으로 나누면 AN은 3칸, NG는 1칸이고, △ADE(주황)와 △GDE(파랑)는 밑변 DE가 같다.",
     "solutionImageCaption": "높이의 비 AN:GN=3:1이므로 △ADE:△GDE=3이다(정답 ②).",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "중점선과 무게중심 높이의 차",
+    "decisiveStep": "제3중선 위의 중점선 위치1/2와 무게중심 위치2/3의 차를 같은 밑변의 높이비로 읽는다."
   },
   {
     "id": 14,
@@ -598,8 +636,8 @@ window.questionBank = [
     "solution": "서로 겹치지 않는 두 경우의 수는 더한다.\n고기만두를 고르는 경우는 $3$가지이고, 김치만두를 고르는 경우는 $4$가지이다.\n따라서 고기만두 또는 김치만두 중 하나를 고르는 경우의 수는 $3+4=7$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+    "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -608,7 +646,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "primaryMethod": "서로 배타적인 선택 수의 합",
+    "decisiveStep": "한 개를 고를 때 고기와 김치의 선택 수3과4만 더한다."
   },
   {
     "id": 15,
@@ -638,8 +678,13 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
     "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "conditionKeys": [
+      "COND_RANGE",
+      "COND_DISTINCT_DIGITS",
+      "COND_PARITY_POSITION",
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -649,7 +694,9 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q15-solution.svg",
     "solutionImageAlt": "해설 그림: 일의 자리가 0, 2, 4인 경우로 나눈 두 자리 짝수 수형도. 일의 자리 0에 10, 20, 30, 40, 2에 12, 32, 42, 4에 14, 24, 34가 달린다.",
     "solutionImageCaption": "짝수는 4+3+3=10가지이다. 정답 ③",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "끝자리 짝수와 앞자리0 금지의 배열",
+    "decisiveStep": "일의 자리가0인지2·4인지 나누고 이미 쓴 숫자와 십의 자리0을 제외한다."
   },
   {
     "id": 16,
@@ -680,17 +727,19 @@ window.questionBank = [
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q16.png",
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+    "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "primaryMethod": "직행과 경유 경로의 합·곱",
+    "decisiveStep": "직행 경로와 B를 경유하는 두 단계의 경로 수를 따로 세어 합한다."
   },
   {
     "id": 17,
@@ -715,13 +764,16 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "서로 다른 두 주사위의 결과를 순서쌍으로 보고 눈의 차가 $0$, $1$, $2$인 경우를 센다.\n전체 경우의 수는 $6\\times6=36$이다.\n두 눈의 차가 $0$인 경우는 $6$가지, 차가 $1$인 경우는 $10$가지, 차가 $2$인 경우는 $8$가지이다.\n따라서 조건을 만족하는 경우는 $6+10+8=24$가지이고, 확률은 $\\dfrac{24}{36}=\\dfrac23$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
     "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -731,7 +783,9 @@ window.questionBank = [
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 6×6 주사위 순서쌍 표에서 눈의 차 0인 대각선(짙은 회색 6칸), 차 1인 두 줄(옅은 회색 10칸), 차 2인 두 줄(짙은 회색 8칸)이 칠해져 있고 흰 칸은 차가 3 이상이다.",
     "solutionImageCaption": "색칠한 24칸이 차가 2 이하인 칸이다: 짙은 대각선 6칸은 차 0, 옅은 10칸은 차 1, 그 바깥 짙은 8칸은 차 2이고 흰 칸은 제외이다. 6+10+8=24가지이므로 확률은 24/36=2/3이다. 정답 ①",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "두 눈의 차에 따른 순서쌍 분류",
+    "decisiveStep": "차0,1,2의 허용 순서쌍을 나누어 센 뒤 전체36과 비교한다."
   },
   {
     "id": 18,
@@ -768,7 +822,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "primaryMethod": "명시된 독립시행의 두 번 성공",
+    "decisiveStep": "서로 영향을 주지 않는 두 시행의 성공 확률0.9를 곱한다."
   },
   {
     "id": 19,
@@ -800,19 +856,23 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-    "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+    "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_NONZERO"
+    ],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImageAlt": "해설 그림: 원판 A(1, 2)에서 갈라져 원판 B(1, 2, 3)로 이어지는 6가지 숫자쌍 수형도. 두 수가 같은 (1,1), (2,2) 두 경로가 굵은 선과 동그라미로 표시되어 있다(가지 확률은 표시하지 않음).",
     "solutionImageCaption": "전체 6가지는 각각 1/2×1/3=1/6로 같은 가능성이고 그중 두 수가 같은 경우가 2가지이므로 다른 경우는 4가지이고 확률은 4/6=2/3이다. 정답 ④",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "같은 숫자쌍의 여사건",
+    "decisiveStep": "전체6쌍 중 같은 숫자인2쌍을 제외하여 서로 다름의 확률을 구한다."
   },
   {
     "id": 20,
@@ -841,15 +901,22 @@ window.questionBank = [
     "subUnit": "확률의 뜻과 성질",
     "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
     "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
-    "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "crossConceptKeys": [
+      "CC_NUMBER_DIVISOR_MULTIPLE"
+    ],
+    "conditionKeys": [
+      "COND_RANGE",
+      "COND_DIVISIBILITY"
+    ],
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "primaryMethod": "서로 다른 주머니의 독립 추출",
+    "decisiveStep": "각 유한 범위에서 지정 배수의 비율을 구해 두 독립 추출의 확률을 곱한다."
   },
   {
     "id": 21,
@@ -876,12 +943,14 @@ window.questionBank = [
     "imageSize": "large",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
-    "problemTypeKey": "",
-    "templateKey": "",
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+    "crossConceptKeys": [
+      "CC_CONE_VOLUME"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
-    "difficultyBucket": 3,
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -889,7 +958,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: ∠C=90°이고 AB=13, BC=5, AC=12인 직각삼각형 ABC와 회전축 l, 그리고 이를 회전해 생기는 반지름 5, 높이 12인 원뿔을 나란히 그린 그림이다.",
     "solutionImageCaption": "부피는 (1/3)×π×5²×12=100π cm³이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "원뿔 높이를 공급하는 직각삼각형 변 길이",
+    "decisiveStep": "직각삼각형의 나머지 변을 구하고 회전축에 따른 원뿔 높이로 읽어 부피에 대입한다."
   },
   {
     "id": 22,
@@ -924,12 +995,14 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: AB∥EF∥DC인 그림. △CEF(파랑)는 △CAB와, △BEF(주황)는 △BDC와 닮음이며 같은 색 변이 대응한다. AB=20, EF=12, BF=10, FC=x, DC=y이다.",
     "solutionImageCaption": "△CEF∽△CAB에서 12:20=x:(x+10)이므로 x=15, △BEF∽△BDC에서 12:y=10:25이므로 y=30이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "교차 선분에 생기는 두 쌍의 비례",
+    "decisiveStep": "CEF와 CAB에서 x를 정하고 BEF와 BDC에서 얻은 비에 전체BC를 사용하여 y를 정한다."
   },
   {
     "id": 23,
@@ -962,7 +1035,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "primaryMethod": "주어진 확률에서 미지 구성 개수 역산",
+    "decisiveStep": "미지 흰 공 수를 분자와 전체 개수에 동시에 넣어 확률식을 세우고 역으로 개수를 구한다."
   },
   {
     "id": 24,
@@ -983,22 +1058,24 @@ window.questionBank = [
     "choices": [],
     "answer": "$38.4\\%$",
     "solution": "하루에 저녁 운동을 할 확률과 하지 않을 확률을 이용해 하루만 운동하는 경우를 나눈다.\n하루에 운동을 할 확률은 $20\\%=0.2$, 운동을 하지 않을 확률은 $80\\%=0.8$이다.\n3일 중 하루만 운동하는 경우는 운동하는 날이 첫째 날, 둘째 날, 셋째 날인 $3$가지이다.\n각 경우의 확률은 $0.2\\times0.8\\times0.8=0.128$이므로, 구하는 확률은 $3\\times0.128=0.384$이다.\n따라서 구하는 확률은 $38.4\\%$이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 성질",
     "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
     "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/24_향림중_2학기_기말_중2_기출/q24-solution.svg",
     "solutionImageAlt": "해설 그림: 1일, 2일, 3일마다 운동 1/5, 안 함 4/5로 갈라지는 8경로 수형도. 하루만 운동하는 세 경로가 굵은 선과 동그라미로 표시되어 있다.",
     "solutionImageCaption": "하루만 운동하는 세 경로(운동·안 함·안 함, 안 함·운동·안 함, 안 함·안 함·운동)의 확률은 각각 0.2×0.8×0.8=0.128이므로 3×0.128=0.384, 즉 38.4%이다. (그림의 1/5=0.2, 4/5=0.8)",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "primaryMethod": "세 날 중 성공 한 번의 위치 분류",
+    "decisiveStep": "운동한 날의 세 위치를 나누고 기존 해설이 가정한 독립에서 각 확률을 곱해 더한다."
   }
 ];

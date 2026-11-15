@@ -132,7 +132,11 @@ window.questionBank = [
       "assets/images/20_매산고_1학기_기말_고2_수학I/q08.png"
     ],
     "answer": "③",
-    "solution": "$\\triangle PAB$에서 $\\angle PAB=90^\\circ$, $\\angle ABP=30^\\circ$, $PA=4$이므로\n$\\tan30^\\circ=\\dfrac{PA}{AB}$,\n$AB=\\dfrac4{1/\\sqrt3}=4\\sqrt3$이다.\n$\\triangle PAC$에서도 $\\angle PAC=90^\\circ$, $\\angle ACP=45^\\circ$이므로 두 직각변이 같아 $AC=PA=4$이다.\n이제 $\\triangle ABC$에서 끼인각 $\\angle BAC=30^\\circ$이므로 코사인법칙을 쓰면\n$BC^2=AB^2+AC^2-2(AB)(AC)\\cos30^\\circ$\n$=(4\\sqrt3)^2+4^2-2(4\\sqrt3)(4)\\dfrac{\\sqrt3}{2}=48+16-48=16$이다.\n길이는 양수이므로 $BC=4$cm이고 정답은 ③이다."
+    "solution": "$\\triangle PAB$에서 $\\angle PAB=90^\\circ$, $\\angle ABP=30^\\circ$, $PA=4$이므로\n$\\tan30^\\circ=\\dfrac{PA}{AB}$,\n$AB=\\dfrac4{1/\\sqrt3}=4\\sqrt3$이다.\n$\\triangle PAC$에서도 $\\angle PAC=90^\\circ$, $\\angle ACP=45^\\circ$이므로 두 직각변이 같아 $AC=PA=4$이다.\n이제 $\\triangle ABC$에서 끼인각 $\\angle BAC=30^\\circ$이므로 코사인법칙을 쓰면\n$BC^2=AB^2+AC^2-2(AB)(AC)\\cos30^\\circ$\n$=(4\\sqrt3)^2+4^2-2(4\\sqrt3)(4)\\dfrac{\\sqrt3}{2}=48+16-48=16$이다.\n길이는 양수이므로 $BC=4$cm이고 정답은 ③이다.",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽에 분리해 그린 두 면 중 △PAB에는 파란 변 AB=4√3이, △P₁A₁C에는 주황 변 A₁C와 P₁A₁의 같은 길이 4가 보인다. 아래쪽 △ABC에는 ∠BAC=30°가 표시되고 BC에는 값이 없다.",
+    "solutionImageCaption": "두 직각 단면에서 AB=4√3, AC=4를 얻는다. 밑면 삼각형 ABC에 코사인법칙을 적용한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -214,7 +218,11 @@ window.questionBank = [
       "assets/images/20_매산고_1학기_기말_고2_수학I/q13.png"
     ],
     "answer": "⑤",
-    "solution": "넓이의 비 $S_1:S_2=3:5$에서 두 삼각형은 밑변이 각각 $BD,DC$이고 높이가 같으므로 $BD:DC=3:5$이다.\n각의 이등분선 정리에 따라 $AB:AC=BD:DC=3:5$이므로 $AC=10$에서 $AB=6$이다.\n$AD:BD=\\sqrt5:\\sqrt3$이므로 $AD=\\sqrt5t$, $BD=\\sqrt3t$라 두자.\n$\\triangle ABD$에 코사인법칙을 적용하고 $\\cos\\theta=4/\\sqrt{30}$을 대입하면\n$3t^2=6^2+5t^2-2\\cdot6\\cdot\\sqrt5t\\cdot\\dfrac4{\\sqrt{30}}$\n$3t^2=36+5t^2-8\\sqrt6t$,\n$t^2-4\\sqrt6t+18=0$이다.\n이를 인수분해하면 $(t-\\sqrt6)(t-3\\sqrt6)=0$이므로 $t=\\sqrt6$ 또는 $3\\sqrt6$이다.\n$AB>AD$ 조건에서 $6>\\sqrt5t$이어야 한다. $t=3\\sqrt6$이면 $AD=3\\sqrt{30}>6$이므로 제외하고, $t=\\sqrt6$이면 $AD=\\sqrt{30}<6$이므로 가능하다.\n따라서 $AD=\\sqrt{30}$이다. $0<\\theta<\\pi/2$이므로\n$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\dfrac{16}{30}}=\\sqrt{\\dfrac7{15}}$.\n$S_1=\\dfrac12\\cdot6\\cdot\\sqrt{30}\\cdot\\sqrt{\\dfrac7{15}}=3\\sqrt{14}$이고 $S_1:S_2=3:5$이므로 $S_2=5\\sqrt{14}$이다.\n따라서 정답은 ⑤이다."
+    "solution": "넓이의 비 $S_1:S_2=3:5$에서 두 삼각형은 밑변이 각각 $BD,DC$이고 높이가 같으므로 $BD:DC=3:5$이다.\n각의 이등분선 정리에 따라 $AB:AC=BD:DC=3:5$이므로 $AC=10$에서 $AB=6$이다.\n$AD:BD=\\sqrt5:\\sqrt3$이므로 $AD=\\sqrt5t$, $BD=\\sqrt3t$라 두자.\n$\\triangle ABD$에 코사인법칙을 적용하고 $\\cos\\theta=4/\\sqrt{30}$을 대입하면\n$3t^2=6^2+5t^2-2\\cdot6\\cdot\\sqrt5t\\cdot\\dfrac4{\\sqrt{30}}$\n$3t^2=36+5t^2-8\\sqrt6t$,\n$t^2-4\\sqrt6t+18=0$이다.\n이를 인수분해하면 $(t-\\sqrt6)(t-3\\sqrt6)=0$이므로 $t=\\sqrt6$ 또는 $3\\sqrt6$이다.\n$AB>AD$ 조건에서 $6>\\sqrt5t$이어야 한다. $t=3\\sqrt6$이면 $AD=3\\sqrt{30}>6$이므로 제외하고, $t=\\sqrt6$이면 $AD=\\sqrt{30}<6$이므로 가능하다.\n따라서 $AD=\\sqrt{30}$이다. $0<\\theta<\\pi/2$이므로\n$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\dfrac{16}{30}}=\\sqrt{\\dfrac7{15}}$.\n$S_1=\\dfrac12\\cdot6\\cdot\\sqrt{30}\\cdot\\sqrt{\\dfrac7{15}}=3\\sqrt{14}$이고 $S_1:S_2=3:5$이므로 $S_2=5\\sqrt{14}$이다.\n따라서 정답은 ⑤이다.",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_수학I/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 영역은 △ABD(S₁), 주황 영역은 △ACD(S₂)이다. AD가 ∠A를 이등분하며 두 삼각형은 BC에 대한 높이를 공유한다. 변 AB는 6, AC는 10, BD는 3√2, DC는 5√2이다.",
+    "solutionImageCaption": "같은 높이를 이용해 넓이비를 BD:DC로 바꾸고, 각의 이등분선 정리로 AB:AC를 구한다. 정답은 5√14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -280,7 +288,11 @@ window.questionBank = [
       "assets/images/20_매산고_1학기_기말_고2_수학I/q18.png"
     ],
     "answer": "19",
-    "solution": "$\\overline{BF}\\perp\\overline{DC}$가 되도록 $B$에서 $DC$에 내린 수선의 발을 $F$라 하자.\n$\\triangle BCF$에서 $BC=8$, $\\angle BCF=\\angle BCD=30^\\circ$이므로\n$BF=8\\sin30^\\circ=4$, $FC=8\\cos30^\\circ=4\\sqrt3$이다.\n$DC=4(1+\\sqrt3)$이므로 $DF=DC-FC=4$이다. 따라서 직각삼각형 $BDF$는 두 직각변이 $4$인 이등변삼각형이고,\n$BD=4\\sqrt2$, $\\angle BDC=\\angle BDF=45^\\circ$이다.\n그림에서 $DB$가 $\\angle ADC$ 안쪽에 있으므로 $\\angle ADB=105^\\circ-45^\\circ=60^\\circ$이다.\n대각선 $BD$로 다각형을 두 삼각형 $BCD$, $ABD$로 나누면\n$[BCD]=\\dfrac12\\cdot8\\cdot4(1+\\sqrt3)\\sin30^\\circ=8+8\\sqrt3$,\n$[ABD]=\\dfrac12\\cdot3\\cdot4\\sqrt2\\sin60^\\circ=3\\sqrt6$이다.\n따라서 다각형의 넓이는 $8+8\\sqrt3+3\\sqrt6$이고, $a=8$, $b=8$, $c=3$이므로 $a+b+c=19$이다."
+    "solution": "$\\overline{BF}\\perp\\overline{DC}$가 되도록 $B$에서 $DC$에 내린 수선의 발을 $F$라 하자.\n$\\triangle BCF$에서 $BC=8$, $\\angle BCF=\\angle BCD=30^\\circ$이므로\n$BF=8\\sin30^\\circ=4$, $FC=8\\cos30^\\circ=4\\sqrt3$이다.\n$DC=4(1+\\sqrt3)$이므로 $DF=DC-FC=4$이다. 따라서 직각삼각형 $BDF$는 두 직각변이 $4$인 이등변삼각형이고,\n$BD=4\\sqrt2$, $\\angle BDC=\\angle BDF=45^\\circ$이다.\n그림에서 $DB$가 $\\angle ADC$ 안쪽에 있으므로 $\\angle ADB=105^\\circ-45^\\circ=60^\\circ$이다.\n대각선 $BD$로 다각형을 두 삼각형 $BCD$, $ABD$로 나누면\n$[BCD]=\\dfrac12\\cdot8\\cdot4(1+\\sqrt3)\\sin30^\\circ=8+8\\sqrt3$,\n$[ABD]=\\dfrac12\\cdot3\\cdot4\\sqrt2\\sin60^\\circ=3\\sqrt6$이다.\n따라서 다각형의 넓이는 $8+8\\sqrt3+3\\sqrt6$이고, $a=8$, $b=8$, $c=3$이므로 $a+b+c=19$이다.",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 다각형 ABCD는 대각선 BD로 파란 △BCD와 주황 △ABD로 나뉜다. F는 DC 위에서 BF를 내린 수선의 발이고, BF와 DF에는 같은 눈금이 있다. D의 각은 60°와 45°로 나뉜다.",
+    "solutionImageCaption": "BF=DF=4로 BD=4√2와 ∠ADB=60°를 얻는다. 두 삼각형의 넓이를 더한다. 정답은 19이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -292,7 +304,11 @@ window.questionBank = [
       "assets/images/20_매산고_1학기_기말_고2_수학I/q19.png"
     ],
     "answer": "(-1,0)\\cup(0,\\frac{1}{8})",
-    "solution": "$t=2\\cos x$라 두면 $0\\le t\\le2$일 때만 $f(t)$가 정의된다. 그래프의 첫 번째 봉우리에서 $f(t)=1$이 되는 두 값은 선분의 방정식으로 구한다.\n$(0,0)$과 $(1,3)$을 잇는 선분에서는 $f(t)=3t$이므로 $3t=1$에서 $t=\\dfrac13$이다.\n$(1,3)$과 $(2,\\dfrac12)$를 잇는 선분의 기울기는 $\\dfrac{\\frac{1}{2}-3}{2-1}=-\\dfrac52$이므로 $f(t)=3-\\dfrac52(t-1)$이다. $f(t)=1$을 대입하면 $t=\\dfrac95$이다.\n그래프의 오른쪽 작은 봉우리에서 $f(t)=1$인 값은 모두 $t>2$이므로 $t=2\\cos x$의 범위와 맞지 않는다. 따라서 유효한 값은 $t=\\dfrac13,\\dfrac95$뿐이다. 각각 $\\cos x=\\dfrac16,\\dfrac9{10}$은 $0<x<2\\pi$에서 각각 두 근을 가지므로 $\\alpha=4$이다.\n다음 식은\n$2\\cos^2x+\\sin x-2=2(1-\\sin^2x)+\\sin x-2=-2\\sin^2x+\\sin x$로 정리된다.\n$u=\\sin x$라 하면 $-2u^2+u=k$, 즉 $2u^2-u+k=0$이고 두 근은 $u=\\dfrac{1\\pm\\sqrt{1-8k}}4$이다.\n서로 다른 두 $u$를 얻으려면 판별식이 양수여야 하므로 $k<\\dfrac18$이다. 두 근이 모두 $-1<u<1$에 있으려면 큰 근이 $1$보다 작아야 한다.\n$\\dfrac{1+\\sqrt{1-8k}}4<1$에서 $\\sqrt{1-8k}<3$, 즉 $k>-1$을 얻는다. 이때 작은 근도 $-1$보다 크다.\n단, $k=0$이면 두 근은 $u=0,\\dfrac12$이다. 열린 구간 $0<x<2\\pi$에서 $\\sin x=0$은 $x=\\pi$ 한 개뿐이고 $\\sin x=\\dfrac12$는 두 개이므로 서로 다른 근은 3개라서 제외한다.\n$k=-1$에서는 큰 근이 $u=1$이 되어 3개, $k=\\dfrac18$에서는 중근 $u=\\dfrac14$만 생겨 2개이므로 이 값들도 제외한다.\n따라서 구하는 범위는 $-1<k<0$ 또는 $0<k<\\dfrac18$이다."
+    "solution": "$t=2\\cos x$라 두면 $0\\le t\\le2$일 때만 $f(t)$가 정의된다. 그래프의 첫 번째 봉우리에서 $f(t)=1$이 되는 두 값은 선분의 방정식으로 구한다.\n$(0,0)$과 $(1,3)$을 잇는 선분에서는 $f(t)=3t$이므로 $3t=1$에서 $t=\\dfrac13$이다.\n$(1,3)$과 $(2,\\dfrac12)$를 잇는 선분의 기울기는 $\\dfrac{\\frac{1}{2}-3}{2-1}=-\\dfrac52$이므로 $f(t)=3-\\dfrac52(t-1)$이다. $f(t)=1$을 대입하면 $t=\\dfrac95$이다.\n그래프의 오른쪽 작은 봉우리에서 $f(t)=1$인 값은 모두 $t>2$이므로 $t=2\\cos x$의 범위와 맞지 않는다. 따라서 유효한 값은 $t=\\dfrac13,\\dfrac95$뿐이다. 각각 $\\cos x=\\dfrac16,\\dfrac9{10}$은 $0<x<2\\pi$에서 각각 두 근을 가지므로 $\\alpha=4$이다.\n다음 식은\n$2\\cos^2x+\\sin x-2=2(1-\\sin^2x)+\\sin x-2=-2\\sin^2x+\\sin x$로 정리된다.\n$u=\\sin x$라 하면 $-2u^2+u=k$, 즉 $2u^2-u+k=0$이고 두 근은 $u=\\dfrac{1\\pm\\sqrt{1-8k}}4$이다.\n서로 다른 두 $u$를 얻으려면 판별식이 양수여야 하므로 $k<\\dfrac18$이다. 두 근이 모두 $-1<u<1$에 있으려면 큰 근이 $1$보다 작아야 한다.\n$\\dfrac{1+\\sqrt{1-8k}}4<1$에서 $\\sqrt{1-8k}<3$, 즉 $k>-1$을 얻는다. 이때 작은 근도 $-1$보다 크다.\n단, $k=0$이면 두 근은 $u=0,\\dfrac12$이다. 열린 구간 $0<x<2\\pi$에서 $\\sin x=0$은 $x=\\pi$ 한 개뿐이고 $\\sin x=\\dfrac12$는 두 개이므로 서로 다른 근은 3개라서 제외한다.\n$k=-1$에서는 큰 근이 $u=1$이 되어 3개, $k=\\dfrac18$에서는 중근 $u=\\dfrac14$만 생겨 2개이므로 이 값들도 제외한다.\n따라서 구하는 범위는 $-1<k<0$ 또는 $0<k<\\dfrac18$이다.",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_수학I/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선의 반닫힌 구간 0≤t<2 안에 f(t)=1인 두 점 t=1/3과 t=9/5가 표시되어 있다.",
+    "solutionImageCaption": "유효한 두 t값은 각각 두 x값에 대응해 α=4이다. 이어서 u=sin x로 두고 식의 해 개수를 비교한다. 정답은 (-1,0)∪(0,1/8)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

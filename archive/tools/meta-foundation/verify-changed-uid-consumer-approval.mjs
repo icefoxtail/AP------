@@ -39,8 +39,11 @@ import { createRequire } from "node:module";
 import { isDeepStrictEqual } from "node:util";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { loadResolvedConsumerCatalog } from "./reviewed-exam-registration-v2.mjs";
+import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
+import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
+import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
+import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
 const require = createRequire(import.meta.url);
@@ -55,6 +58,13 @@ const SCHEMA = {
   BASIC_REBIND: "archive-basic-scope-rebind-request-v1",
 };
 const GENERATED_INDEX = "archive/data/generated-lite-consumer/v1/index.json";
+const RECEIPTS = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/";
+// Full metadata, identity and runtime records are checked by the official v2
+// replay below. These are the approved values exposed by the canonical page;
+// legacy labels/level remain bound to their exact native runtime instead of
+// being relabelled as the canonical basic projection.
+const PRESERVED_CONSUMER_FIELDS = ["curriculumKey", "courseKey", "standardCourse", "standardUnitKey", "subUnitKey",
+  "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "difficultyBucket"];
 // Fields the page can filter on; used for the final "UID is returned by the page query" proof.
 const QUERY_FIELDS = ["standardCourse", "standardUnitKey", "subUnitKey", "L1", "L2", "L3", "L4", "nativeL1", "nativeL2", "nativeL3", "nativeL4",
   "problemTypeKey", "templateKey", "integrationPattern", "difficultyBucket"];
@@ -132,6 +142,54 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
   }
   if (schema === SCHEMA.PINPOINT || schema === SCHEMA.V2) {
     if (!Array.isArray(doc.items) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "request needs sourceArchiveFile and items[]");
+    if (schema === SCHEMA.V2 && doc.registrationMode !== undefined) {
+      if (doc.registrationMode !== "IDENTITY_FINGERPRINT_ONLY" || doc.scope !== "PARTIAL_UIDS" ||
+          doc.approval?.type !== "FINAL_QA" || doc.approval.metadataReviewed !== true ||
+          !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 || !doc.items.length ||
+          doc.items.length > doc.expectedQuestionCount || doc.registryChanges?.length || doc.approval.sourceRebind)
+        fail("INVALID_REQUEST", "identity repair requires its explicit scope and creates no metadata approval");
+      const rows = doc.items.map(item => {
+        if (!item.questionUid || !Number.isSafeInteger(item.sourceOrdinal) || item.sourceOrdinal < 1 || item.sourceOrdinal > doc.expectedQuestionCount ||
+            [item.before, item.after].some(values => !values || Array.isArray(values) || Object.keys(values).sort().join(",") !== "contentFingerprint,sourceFingerprint") ||
+            !same(item.before, item.after) || Object.values(item.after).some(value => !/^[a-f0-9]{64}$/.test(value || "")) ||
+            !/^[a-f0-9]{64}$/.test(item.identityBefore?.sourceFingerprint || "") ||
+            item.identityBefore.sourceFingerprint === item.after.sourceFingerprint)
+          fail("INVALID_REQUEST", "identity repair must preserve exact current metadata fingerprints");
+        return { ordinal: item.sourceOrdinal, uid: item.questionUid, unchanged: false, expect: item.after };
+      });
+      if (new Set(rows.map(r => r.uid)).size !== rows.length || new Set(rows.map(r => r.ordinal)).size !== rows.length)
+        fail("INVALID_REQUEST", "identity repair UID/ordinal scope is ambiguous");
+      return { kind: "identity-fingerprint-repair", exam: doc.examUid || doc.sourceArchiveFile,
+        sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, expectedQuestionCount: doc.expectedQuestionCount, rows };
+    }
+    if (schema === SCHEMA.V2 && doc.approval?.sourceRebind !== undefined) {
+      const audit = doc.approval.type === "META_PIPELINE_AUDIT" &&
+        doc.approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
+      const partial = doc.scope === "PARTIAL_UIDS";
+      if ((!audit && doc.approval.type !== "FINAL_QA") || !doc.approval.sourceRebind ||
+          typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
+          (!audit && doc.approval.sourceRebind.schemaVersion !== undefined) ||
+          doc.approval.metadataReviewed !== true || doc.registryChanges?.length ||
+          (doc.scope !== undefined && !partial) ||
+          !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(doc.requestId || "") ||
+          !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 ||
+          !doc.items.length || doc.items.length > doc.expectedQuestionCount ||
+          (!partial && doc.items.length !== doc.expectedQuestionCount))
+        fail("INVALID_REQUEST", "native approval preservation requires its exact existing approval and selected scope");
+      const rows = doc.items.map(item => {
+        if (!item?.questionUid || !Number.isSafeInteger(item.sourceOrdinal) || item.sourceOrdinal < 1 ||
+            item.sourceOrdinal > doc.expectedQuestionCount ||
+            [item.before, item.after].some(values => !values || typeof values !== "object" || Array.isArray(values) || Object.keys(values).length) ||
+            item.identityBefore !== undefined || item.rebind !== undefined || item.sourceReview !== undefined || item.typeHold !== undefined)
+          fail("INVALID_REQUEST", "native approval preservation cannot change values or add another registration mode");
+        return { ordinal: item.sourceOrdinal, uid: item.questionUid, unchanged: false, gated: true };
+      });
+      if (new Set(rows.map(r => r.uid)).size !== rows.length || new Set(rows.map(r => r.ordinal)).size !== rows.length)
+        fail("INVALID_REQUEST", "native approval preservation UID/ordinal scope is ambiguous");
+      return { kind: "native-approval-preservation", approvalType: doc.approval.type, exam: doc.examUid || doc.sourceArchiveFile,
+        sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1,
+        expectedQuestionCount: doc.expectedQuestionCount, request: doc, rows };
+    }
     const rows = doc.items.map(item => {
       if (!item?.after || typeof item.after !== "object") fail("INVALID_REQUEST", `item #${item?.sourceOrdinal} has no after`);
       // A row whose after equals its before (and repairs no identity fingerprint) changes nothing: skipped, but counted.
@@ -148,7 +206,15 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
   }
   if (schema === SCHEMA.BASIC_REBIND || schema === SCHEMA.BASIC_PARENT_CORRECTION) {
     const correction = schema === SCHEMA.BASIC_PARENT_CORRECTION;
+    const preservation = doc.approval?.sourceReview !== undefined;
     if (!Array.isArray(doc.items) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "rebind request needs sourceArchiveFile and items[]");
+    if (preservation && (correction || doc.approval.sourceReview?.schemaVersion !== BASIC_PRESERVATION_SCHEMA ||
+        doc.approval.type !== "BASIC_SCOPE_REBIND" || doc.scope !== undefined || doc.registrationMode !== undefined ||
+        !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 || !doc.items.length ||
+        doc.items.length > doc.expectedQuestionCount || new Set(doc.items.map(i => i.questionUid)).size !== doc.items.length ||
+        new Set(doc.items.map(i => i.sourceOrdinal)).size !== doc.items.length || doc.items.some(i => !Number.isSafeInteger(i.sourceOrdinal)
+          || i.sourceOrdinal < 1 || i.sourceOrdinal > doc.expectedQuestionCount || !i.questionUid || !i.basicParent)))
+      fail("INVALID_REQUEST", "basic preservation requires its exact selected scope");
     // A rebind changes no metadata value: the claim is only that the question is approved again in the consumer
     // (gated: canonical assignment APPROVED/PASS) and is bound to the current bytes (both fingerprints).
     const rows = doc.items.map(item => {
@@ -159,7 +225,9 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       } : {}, fingerprint: item.after.sourceFingerprint,
         bodyFingerprint: item.after.contentFingerprint, unchanged: false, gated: true };
     });
-    return { kind: correction ? "basic-parent-correction" : "basic-scope-rebind", approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
+    return { kind: preservation ? "basic-approval-preservation" : correction ? "basic-parent-correction" : "basic-scope-rebind",
+      approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
+      ...(preservation ? { request: doc, expectedQuestionCount: doc.expectedQuestionCount } : {}),
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
   }
   if (schema === SCHEMA.NONPT) {
@@ -253,7 +321,7 @@ export function loadConsumer(root) {
   }
   const runtimePacks = new Map((catalog.metaFoundationRuntime?.packs || []).map(pack => [pack.packId, pack]));
   return {
-    ProblemBankMeta, inventory,
+    ProblemBankMeta, inventory, catalog,
     resolvedBySource: new Map(records.map(r => [`${normalizeFile(r.sourceFile)}#${Number(r.sourceOrdinal)}`, r])),
     pageByUid: new Map(inventory.map(r => [r.uid, r])),
     runtimeByUid, runtimePacks,
@@ -282,9 +350,10 @@ function checkRow(consumer, unit, row) {
   if (row.bodyFingerprint !== undefined && row.bodyFingerprint !== resolved.assignmentFingerprint)
     return { ...out, reason: "BODY_FINGERPRINT_MISMATCH", detail: `request ${row.bodyFingerprint} != consumer assignmentFingerprint ${resolved.assignmentFingerprint}` };
   if (row.fullFingerprint !== undefined && row.fullFingerprint !== resolved.sourceFingerprint) out.solverOnlyRevision = true;
+  // REVIEW2 may also register a judged tag/difficulty value over the exam file's inline value; the registrar records the source value in receipt.sourceValueOverrides.
   // REVIEW2 (two independent judgments): the exam file's own review annotation (e.g. SELF_CHECKED) differs from the registrar-forced
   // reviewed_pass by design; it is kept in the exam file and is not a metadata conflict. Every other conflicting field still refuses.
-  const blockingConflicts = (resolved.metadataConflicts || []).filter(f => !(unit.approvalType === "REVIEW2" && f === "reviewStatus"));
+  const blockingConflicts = (resolved.metadataConflicts || []).filter(f => !(unit.approvalType === "REVIEW2" && (f === "reviewStatus" || REVIEW2_SOURCE_OVERRIDE_FIELDS.includes(f))));
   if (blockingConflicts.length)
     return { ...out, reason: "METADATA_CONFLICT", detail: blockingConflicts.join(",") };
   const evidence = resolved.assignmentEvidence;
@@ -343,6 +412,73 @@ function checkRow(consumer, unit, row) {
   return out;
 }
 
+function preservedNativeRows(root, unit, consumer) {
+  const count = unit.rows.length, request = unit.request;
+  // This is the real read-only registrar, not a second implementation of its
+  // preservation contract. It verifies source/Git/evidence, the original audit
+  // (or FINAL_QA) approval, full current metadata/identity/runtime and replay.
+  const proof = registerReviewedExamV2({ root, request, write: false, verifyProjection: true });
+  if (proof.status !== "PASS" || proof.requestId !== request.requestId || proof.totalQuestions !== count ||
+      proof.replay !== true || !Array.isArray(proof.plannedPaths) || proof.plannedPaths.length ||
+      proof.consumerSearchStatus !== "STATIC_VALUES_VERIFIED" || proof.newMetadataApprovals !== 0 ||
+      proof.preservedMetadataApprovals !== count ||
+      (request.scope === "PARTIAL_UIDS" ? proof.scope !== request.scope || proof.partialUidCount !== count ||
+        proof.expectedQuestionCount !== unit.expectedQuestionCount : proof.scope !== undefined || proof.partialUidCount !== undefined))
+    throw Error("native approval preservation replay/scope mismatch");
+  const receiptPath = RECEIPTS + request.requestId + ".json";
+  const receipt = JSON.parse(fs.readFileSync(path.join(root, receiptPath), "utf8"));
+  if (receipt.newMetadataApprovals !== 0 || receipt.preservedMetadataApprovals !== count ||
+      receipt.totalQuestions !== count || receipt.approval?.type !== unit.approvalType ||
+      !same(receipt.approval.sourceRebind, request.approval.sourceRebind) ||
+      loadBank(root, unit.sourceFile).length !== unit.expectedQuestionCount)
+    throw Error("native approval preservation receipt/denominator mismatch");
+  for (const records of [receipt.appliedRecords, receipt.runtimeRecords]) {
+    if (!Array.isArray(records) || records.length !== count || new Set(records.map(r => r.questionUid)).size !== count ||
+        new Set(records.map(r => r.sourceOrdinal)).size !== count || records.some(record =>
+          record.sourceArchiveFile !== unit.sourceFile || record.metadataApprovalType !== unit.approvalType ||
+          !unit.rows.some(row => row.uid === record.questionUid && row.ordinal === record.sourceOrdinal)))
+      throw Error("native approval preservation receipt UID/ordinal scope mismatch");
+  }
+  const byUid = new Map(receipt.appliedRecords.map(record => [record.questionUid, record]));
+  for (const record of receipt.runtimeRecords) {
+    const actual = consumer.runtimeByUid.get(record.questionUid) || [];
+    if (actual.length !== 1 || !same(actual[0], record))
+      throw Error("native approval preservation consumer runtime drift: " + record.questionUid);
+  }
+  return unit.rows.map(row => {
+    const record = byUid.get(row.uid);
+    if (PRESERVED_CONSUMER_FIELDS.some(field => !own(record, field)) ||
+        !/^[a-f0-9]{64}$/.test(record.sourceFingerprint || "") || !/^[a-f0-9]{64}$/.test(record.contentFingerprint || ""))
+      throw Error("native approval preservation accepted values missing: " + row.uid);
+    return { ...row, expect: Object.fromEntries(PRESERVED_CONSUMER_FIELDS.map(field => [field, record[field]])),
+      fingerprint: record.sourceFingerprint, bodyFingerprint: record.contentFingerprint };
+  });
+}
+
+function preservedBasicRows(root, unit, consumer) {
+  const request = unit.request, count = unit.rows.length;
+  const proof = registerBasicScopeRebind({ root, request, verifyProjection: true });
+  if (proof.status !== "PASS" || proof.requestId !== request.requestId || proof.replay !== true ||
+      proof.consumerSearchStatus !== "STATIC_VALUES_VERIFIED" || proof.totalQuestions !== count ||
+      proof.expectedQuestionCount !== unit.expectedQuestionCount || proof.newMetadataApprovals !== 0 || proof.advancedApprovals !== 0 ||
+      proof.metadataValuesChanged !== false || proof.preservedMetadataApprovals !== count || !same(proof.plannedPaths, []))
+    throw Error("basic preservation official replay/scope mismatch");
+  const metadata = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8"));
+  return unit.rows.map(row => {
+    const matches = metadata.records.filter(r => r.questionUid === row.uid);
+    if (matches.length !== 1 || consumer.runtimeByUid.has(row.uid)) throw Error("basic preservation current metadata/runtime scope mismatch");
+    const item = request.items.find(i => i.questionUid === row.uid), record = matches[0];
+    // The official replay above checks the entire protected metadata/identity
+    // row. The current canonical resolver and actual page query below must
+    // additionally retain this exact existing basic parent and byte binding.
+    return { ...row, expect: {
+      curriculumKey: item.basicParent.curriculumKey, courseKey: item.basicParent.courseKey,
+      L1: item.basicParent.L1, L2: item.basicParent.L2,
+      standardCourse: record.standardCourse, standardUnitKey: record.standardUnitKey, subUnitKey: record.subUnitKey,
+    } };
+  });
+}
+
 export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scopedPaths = [] }) {
   let mainSha = "UNKNOWN";
   try { mainSha = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim(); } catch { /* not a git checkout */ }
@@ -368,7 +504,7 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
   for (const { file, unit } of units) {
     const summary = { file, kind: unit.kind, exam: unit.exam, sourceFile: unit.sourceFile, changed: 0, checked: 0, passed: 0, skippedUnchanged: 0 };
     result.exams.push(summary);
-    const rows = unit.rows.filter(r => !r.unchanged);
+    let rows = unit.rows.filter(r => !r.unchanged);
     summary.skippedUnchanged = unit.rows.length - rows.length;
     summary.changed = rows.length;
     result.counts.skippedUnchanged += summary.skippedUnchanged;
@@ -392,6 +528,50 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
       }
     }
     if (!sourceBound) continue;
+    if (unit.kind === "native-approval-preservation") {
+      summary.approvalCreated = false; summary.newMetadataApprovals = 0;
+      summary.preservedMetadataApprovals = 0; summary.approvalType = unit.approvalType;
+      summary.expectedQuestionCount = unit.expectedQuestionCount;
+      try { rows = preservedNativeRows(root, unit, consumer); }
+      catch (error) {
+        summary.checked = rows.length; result.counts.checked += rows.length;
+        result.failures.push({ exam: unit.exam, qid: rows[0]?.ordinal ?? "-", uid: rows[0]?.uid ?? "-",
+          reason: "NATIVE_PRESERVATION_MISMATCH", detail: error.message });
+        continue;
+      }
+    }
+    if (unit.kind === "basic-approval-preservation") {
+      summary.approvalCreated = false; summary.newMetadataApprovals = 0; summary.advancedApprovals = 0;
+      summary.preservedMetadataApprovals = 0; summary.expectedQuestionCount = unit.expectedQuestionCount;
+      try { rows = preservedBasicRows(root, unit, consumer); }
+      catch (error) {
+        summary.checked = rows.length; result.counts.checked += rows.length;
+        result.failures.push({ exam: unit.exam, qid: rows[0]?.ordinal ?? "-", uid: rows[0]?.uid ?? "-",
+          reason: "BASIC_PRESERVATION_MISMATCH", detail: error.message });
+        continue;
+      }
+    }
+    if (unit.kind === "identity-fingerprint-repair") {
+      summary.checked = rows.length; result.counts.checked += rows.length;
+      summary.approvalCreated = false; summary.newMetadataApprovals = 0;
+      try {
+        if (loadBank(root, unit.sourceFile).length !== unit.expectedQuestionCount) throw Error("identity repair source denominator mismatch");
+        const identities = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_identity_map.json"), "utf8")).records;
+        const bindings = rows.map(row => {
+          const matches = identities.filter(id => id.questionUid === row.uid);
+          if (matches.length !== 1 || matches[0].sourceArchiveFile !== unit.sourceFile || matches[0].sourceOrdinal !== row.ordinal ||
+              matches[0].sourceFingerprint !== row.expect.sourceFingerprint) throw Error(`identity repair current identity mismatch: ${row.uid}`);
+          return { questionUid: row.uid, sourceArchiveFile: unit.sourceFile, sourceOrdinal: row.ordinal, ...row.expect };
+        });
+        const proof = verifyIdentityFingerprintConsumer(root, bindings, consumer.catalog);
+        summary.identityBindings = proof.identityBindings;
+        summary.passed = rows.length; result.counts.passed += rows.length;
+      } catch (error) {
+        result.failures.push({ exam: unit.exam, qid: rows[0]?.ordinal ?? "-", uid: rows[0]?.uid ?? "-",
+          reason: "IDENTITY_BINDING_MISMATCH", detail: error.message });
+      }
+      continue;
+    }
     if (unit.kind === "binding-course-correction") {
       // This operation creates no approval. Its gate is exact preservation of
       // every runtime consumer in the pack, including existing non-approvals.
@@ -418,6 +598,7 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
       if (checked.solverOnlyRevision) result.solverOnlyRevisions.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid });
       if (checked.unobserved?.length) result.unobservedFields.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid, fields: checked.unobserved });
     }
+    if (["native-approval-preservation", "basic-approval-preservation"].includes(unit.kind)) summary.preservedMetadataApprovals = summary.passed;
   }
   if (result.failures.length || result.counts.checked !== result.counts.changed) result.status = "FAIL";
   return result;
@@ -425,11 +606,11 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
 
 export function renderSummary(result) {
   const c = result.counts;
-  const preservation = result.exams.some(e => e.kind === "binding-course-correction");
+  const preservation = result.exams.some(e => ["binding-course-correction", "identity-fingerprint-repair", "native-approval-preservation", "basic-approval-preservation"].includes(e.kind));
   const lines = [preservation ? "### Changed-UID consumer verification" : "### Changed-UID effective consumer approval", ""];
   if (result.status === "PASS") {
     lines.push(`PASS: changed ${c.passed}/${c.changed} ${preservation ? "verified" : "approved"} (checked ${c.checked}, skippedUnchanged ${c.skippedUnchanged}), main \`${result.mainSha}\`.`);
-    if (preservation) lines.push("Binding-course corrections preserve existing consumer state and create no metadata or exam approval.");
+    if (preservation) lines.push("Preservation operations verify existing consumer state and create no new metadata or exam approval.");
   } else {
     lines.push(`FAIL: changed ${c.changed}, checked ${c.checked}, passed ${c.passed}, skippedUnchanged ${c.skippedUnchanged}, main \`${result.mainSha}\`.`, "",
       "| exam | QID | UID | reason |", "| --- | --- | --- | --- |");
@@ -438,6 +619,12 @@ export function renderSummary(result) {
   for (const e of result.exams) lines.push("", `- ${e.kind} \`${e.exam}\`: changed ${e.changed}, checked ${e.checked}, passed ${e.passed}, skippedUnchanged ${e.skippedUnchanged}`);
   for (const e of result.exams.filter(e => e.kind === "binding-course-correction"))
     lines.push(`  Preserved runtime consumers: ${e.preservedRuntimeUids ?? 0}; new approvals: 0.`);
+  for (const e of result.exams.filter(e => e.kind === "identity-fingerprint-repair"))
+    lines.push(`  Verified identity bindings: ${e.identityBindings ?? 0}; new approvals: 0.`);
+  for (const e of result.exams.filter(e => e.kind === "native-approval-preservation"))
+    lines.push(`  Preserved ${e.approvalType} approvals: ${e.preservedMetadataApprovals ?? 0}; new approvals: 0; source questions: ${e.expectedQuestionCount}.`);
+  for (const e of result.exams.filter(e => e.kind === "basic-approval-preservation"))
+    lines.push(`  Preserved basic approvals: ${e.preservedMetadataApprovals ?? 0}; new approvals: 0; advanced approvals: 0; source questions: ${e.expectedQuestionCount}.`);
   if (result.assignmentPending?.length) {
     const byExam = new Map();
     for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);
@@ -467,7 +654,9 @@ function main() {
   }
   console.log(JSON.stringify(result, null, 2));
   if (opt.summary) fs.appendFileSync(opt.summary, renderSummary(result), "utf8");
-  process.exit(result.status === "PASS" ? 0 : 1);
+  // stdout can be a pipe (the PR proof parses this JSON). Allow its queued
+  // writes to drain before exiting; process.exit() can truncate large batches.
+  process.exitCode = result.status === "PASS" ? 0 : 1;
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();

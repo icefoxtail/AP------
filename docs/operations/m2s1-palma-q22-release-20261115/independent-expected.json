@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "status": "FROZEN_BEFORE_CANDIDATE_VIEW",
+  "reviewMode": "A_ONLY_NEW_ASSET",
+  "exam": "21_팔마중_1학기_중간_중2_기출",
+  "ordinal": 22,
+  "source": {
+    "path": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+    "sha256": "73e7dca45980a7e405e540a14afd9d8394bb71a351129c9f1826a5abcb5fd3d3",
+    "question": "반지름 a, 높이 3a인 원기둥의 물을 반지름 2a인 원뿔에 부었을 때 가득 찼다면, 이 원뿔의 높이 h를 a에 관한 식으로 나타내시오.",
+    "answer": "9a/4",
+    "solutionFacts": [
+      "V_cylinder = π·a²·3a = 3πa³",
+      "V_cone = (1/3)·π·(2a)²·h = (4/3)πa²h",
+      "The cylinder's water fills the cone, so 3πa³ = (4/3)πa²h.",
+      "Since a > 0, cancellation gives h = 9a/4."
+    ],
+    "sourceProblemImage": "No image field is present on this item."
+  },
+  "expected": {
+    "visualPurpose": "Make the volume-preserving transfer from the cylinder to the cone and the four supplied/unknown dimensions legible.",
+    "geometry": [
+      {
+        "owner": "water source",
+        "solid": "CYLINDER",
+        "radius": "a",
+        "height": "3a",
+        "orientation": "upright, with a vertical axis"
+      },
+      {
+        "owner": "filled vessel",
+        "solid": "CONE",
+        "radius": "2a",
+        "height": "h",
+        "orientation": "upright, with a vertical axis"
+      }
+    ],
+    "decisiveRelation": "The cylinder is emptied into the cone until full, so V_cylinder = V_cone; equivalently 3πa³ = (4/3)πa²h.",
+    "labelOwners": [
+      { "label": "a", "owner": "cylinder base radius", "binding": "from the cylinder base center to its circular rim; must not indicate the diameter" },
+      { "label": "3a", "owner": "cylinder height", "binding": "the cylinder's axial distance between its two bases" },
+      { "label": "2a", "owner": "cone base radius", "binding": "from the cone base center to its circular rim; must not indicate the diameter" },
+      { "label": "h", "owner": "cone height", "binding": "the cone's axial distance from its base plane to its apex" }
+    ],
+    "captionExpectation": "The accessible description should identify both solids and their equal-volume transfer. The source item caption is '물의 부피 보존: 3πa³ = (4/3)πa²h'. Alt text must not expose the answer.",
+    "answerLeakage": "The target value h = 9a/4 is the conclusion and must not appear as a diagram label or in alt text. The requested A-only review permits A PASS/FAIL/MISSING only; do not assign B or better."
+  },
+  "frozenAt": "2026-11-15T08:28:58Z",
+  "candidateViewed": false
+}

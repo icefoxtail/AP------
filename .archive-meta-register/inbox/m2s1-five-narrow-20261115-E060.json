@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "producer": "/root/m2s1_release; gemini is the existing envelope name, not an author claim",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "m2s1-five-narrow-20261115-E060",
+    "createdAt": "2026-11-15T00:00:00Z",
+    "sourceArchiveFile": "original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+    "latestBlobSha": "5cd005567bde291b5073a9f045353063567d8bc3",
+    "items": [
+      {
+        "ordinal": 17,
+        "questionUid": "qid_v1_a56794b5a26f767353d163c1477947b4fa866c8fd79827ec740fab17ba54f37e",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "User-authorized release. Exact five current-source clarifications independently verified by /root/m3s2_release; five prior accepted numeric difficulty judgments retained. No source status change, advanced metadata, REVIEW2 or full-exam mathematical QA approval.",
+    "evidencePath": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/E060.json",
+    "evidenceSha256": "9914afd93776af7942020f36145881dbd1bcda3fd5a026bf5358ea71fa601223",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+        "ordinal": 17,
+        "questionUid": "qid_v1_a56794b5a26f767353d163c1477947b4fa866c8fd79827ec740fab17ba54f37e",
+        "before": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "4a797ae47be20f646824c497841803cf351e88be0a88fbdd5b90c93f21941af0",
+          "contentFingerprint": "c4854ba4338310c63f93c80d0c919f873f208002d6150782115919c76068b9de"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "a1ea6b0465524bd493b513236e3076bef193c8b1f30f5ebb64375ca5fba4a318",
+        "contentFingerprint": "1662c3fdac84c55ac22bc6b328c473b7f253fb3a8b43a7b119ee6a626e65362b",
+        "staleSourceBinding": true,
+        "refreshBinding": false,
+        "decision": "CORRECT",
+        "reason": "마름모 판정 조건을 다섯 보기에서 구별한다. 단수형 발문이나 저장 정답과 해설은 복수 ②/⑤이며 이 표현 부채를 보존한다.\nCurrent narrow source repair: The stored answer and all five option arguments already identify ② and ⑤. Clarify selection of all such options, and correct the explanation so a rectangle is not claimed to exclude a rhombus in the square case. The visible diagram identifies B, C and the diagonal intersection O; clipped upper labels are not used to invent any length or angle. Existing accepted numeric difficulty and confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created."
+      }
+    ]
+  }
+}

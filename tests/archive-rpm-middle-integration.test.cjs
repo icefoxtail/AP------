@@ -96,3 +96,49 @@ test('explicit original and raw source curriculum outrank the middle-school year
   assert.equal(Unified.classify(original).entry.originalCurriculum, '2015');
   assert.equal(Unified.classify(original).entry.rpmParentStatus, 'OUT_OF_SCOPE');
 });
+
+test('a pending reviewed parent correction cannot browse under a stale unverified metadata parent', () => {
+  // Exact regression identity and fingerprint transition from the reviewed M1 Q13
+  // parent correction. No source content, approval or canonical record is changed.
+  const currentFingerprint = 'c63aa7ce8096ae25542432a35c8598cb8a3ca3411187d7672a01e056f163096e';
+  const oldFingerprint = '29930a5dd53e3f66a9073eabaedd2a073cd499d922e31d73294c80ad83b2da09';
+  const source = {
+    sourceFile: 'original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js',
+    id: 13, sourceOrdinal: 13, sourceQuestionNo: '13',
+    questionUid: 'qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e',
+    sourceGrade: '중1', curriculumKey: '2022', courseKey: 'M1-2',
+    standardUnitKey: 'M1-05', standardUnit: '기본도형', subUnitKey: 'M1-05-POSITION_RELATION',
+  };
+  const record = {
+    ...source, standardUnitKey: '', standardUnit: '', subUnitKey: '',
+    legacyStandardUnitKey: source.standardUnitKey, legacyStandardUnit: source.standardUnit,
+    legacySubUnitKey: source.subUnitKey, sourceFingerprint: currentFingerprint,
+    metadataAssignmentEvidence: { sourceFingerprint: oldFingerprint },
+    unverifiedTaxonomy: { curriculumKey: '2022', courseKey: 'M1-2',
+      L1: '입체도형', L2: '다면체와 회전체', L3: '다면체', L4: '각기둥·각뿔' },
+  };
+  const before = JSON.stringify(record), currentUnit = UnitCore.classifyRecord(source, 'm1').unitKey;
+  assert.equal(currentUnit, 'RPM22-M1-L1-05');
+  assert.equal(Unified.classify(record).entry.unitKey, currentUnit);
+  assert.equal(UnitCore.resolveRpmParent(record, 'm1').basis, undefined,
+    'the obsolete unverified parent is not an authority for the changed source');
+  assert.equal(JSON.stringify(record), before);
+
+  // Exact or unavailable bindings keep the existing legacy-parent behavior.
+  for (const evidence of [{ sourceFingerprint: currentFingerprint }, {}, undefined]) {
+    const sameOrUnknown = { ...record, metadataAssignmentEvidence: evidence };
+    assert.equal(UnitCore.resolveRpmParent(sameOrUnknown, 'm1').basis, 'UNVERIFIED_PARENT');
+    assert.equal(Unified.classify(sameOrUnknown).entry.unitKey, 'RPM22-M1-L1-07');
+  }
+  const noCurrentFingerprint = { ...record, sourceFingerprint: '' };
+  assert.equal(UnitCore.resolveRpmParent(noCurrentFingerprint, 'm1').basis, 'UNVERIFIED_PARENT');
+
+  // Reviewed explicit RPM evidence is resolved as before, even if a separate
+  // unverified fallback is stale. An explicit conflict remains a refusal.
+  const explicit = { ...record, rpmPrimaryPath: { curriculum: '2022', scope: 'M1-2', L1: '입체도형', L2: '다면체와 회전체' } };
+  assert.equal(UnitCore.resolveRpmParent(explicit, 'm1').basis, 'RPM_PRIMARY_PATH');
+  assert.equal(Unified.classify(explicit).entry.unitKey, 'RPM22-M1-L1-07');
+  const conflict = { ...explicit, rpmMetadata: { curriculumKey: '2022', courseKey: 'M1-2', L1: '기본 도형', L2: '위치 관계' } };
+  assert.equal(UnitCore.resolveRpmParent(conflict, 'm1').status, 'AMBIGUOUS');
+  assert.equal(UnitCore.resolveRpmParent(conflict, 'm1').reason, 'RPM_EVIDENCE_PATH_CONFLICT');
+});

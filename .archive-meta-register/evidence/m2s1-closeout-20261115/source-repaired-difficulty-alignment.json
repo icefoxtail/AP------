@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "archive-source-consumer-alignment-v1",
+  "basis": "Actual changed-UID consumer preflight and immutable accepted review",
+  "changes": [
+    {
+      "sourcePath": "archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "ordinal": 22,
+      "before": {
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "difficultyBoundaryFlag": "B34"
+      },
+      "reason": "Preserve the accepted final difficulty after the solution bound correction."
+    },
+    {
+      "sourcePath": "archive/exams/original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+      "ordinal": 8,
+      "before": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23"
+      },
+      "reason": "Align the source with the accepted final difficulty when releasing the corrected equation-source wording."
+    }
+  ]
+}

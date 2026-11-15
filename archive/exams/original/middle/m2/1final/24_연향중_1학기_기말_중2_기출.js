@@ -204,7 +204,7 @@ window.questionBank = [
   },
   {
     "id": 7,
-    "level": "상",
+    "level": "중",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
     "standardCourse": "중2 수학",
@@ -476,7 +476,7 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "level": "상",
+    "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
     "standardCourse": "중2 수학",
@@ -580,7 +580,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "level": "상",
+    "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
     "standardCourse": "중2 수학",
@@ -614,7 +614,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "level": "상",
+    "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
     "standardCourse": "중2 수학",
@@ -651,7 +651,7 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "level": "상",
+    "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
     "standardCourse": "중2 수학",
@@ -682,7 +682,7 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "level": "상",
+    "level": "중",
     "category": "연립일차방정식",
     "originalCategory": "연립일차방정식",
     "standardCourse": "중2 수학",
@@ -710,7 +710,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "level": "상",
+    "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
     "standardCourse": "중2 수학",
@@ -738,7 +738,7 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "level": "상",
+    "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
     "standardCourse": "중2 수학",
@@ -760,8 +760,8 @@ window.questionBank = [
     "answer": "(1) $y=-9x+45$ (2) $y=-3x+27$ (3) 3분 후",
     "solution": "물통 $A$의 그래프는\n\n$(0,45)$, $(5,0)$\n\n을 지난다.\n\n기울기는\n\n$\\dfrac{0-45}{5-0}=-9$이므로\n\n$y=-9x+45$이다.\n\n물통 $B$의 그래프는\n\n$(0,27)$, $(9,0)$\n\n을 지난다.\n\n기울기는\n\n$\\dfrac{0-27}{9-0}=-3$이므로\n\n$y=-3x+27$이다.\n\n두 물통에 남은 물의 양이 같을 때\n\n$-9x+45=-3x+27$\n\n$18=6x$\n\n$x=3$이다.\n\n따라서 (1) $y=-9x+45$, (2) $y=-3x+27$, (3) 3분 후이다.",
     "image": "assets/images/24_연향중_1학기_기말_중2_기출/q23.png",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

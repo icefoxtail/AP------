@@ -167,3 +167,115 @@ test('the independent observer passes the model SVG and rejects a changed invent
   assert.equal(badCurve.status,'OK');assert.equal(badCurve.result.status,'FAIL');
   assert.match(JSON.stringify(badCurve.result.errors),/MULTI_CURVE_WRONG_CURVE:CURVE_top/);
 });
+
+test('Maesan Q14 retains its exact exponential and quadratic on one frame', async()=>{
+  const plan={capability:'multi-curve-figure-v1',caption:'지수함수와 이차함수의 비교',graphPlan:{
+    family:'multi-curve',viewport:[0,2.4,-.4,4.7],axisTitles:{x:'t'},
+    curves:[
+      {id:'exp',kind:'EXPONENTIAL',base:'2',coefficients:['1','1','0'],domain:['1','2'],label:'2^t',color:'BLUE',weight:'BOLD'},
+      {id:'quad',kind:'Y_OF_X',coefficients:['0','0','1'],domain:['1','2'],label:'t^2',color:'WARM',style:'DASHED'},
+    ],
+    axisTickValues:{x:['1','2'],y:['4']},
+    overlays:{points:[{id:'P',x:'2',y:'4',unnamed:true,coordinates:true}]},
+  }};
+  const send=async(payload,options)=>{
+    const reply=await pythonWorker(payload,options);
+    assert.equal(reply.status,'OK',JSON.stringify(reply.result));
+    return reply.result;
+  };
+  const {graphPlan}=await send({action:'frame_graph',graphPlan:plan.graphPlan});
+  const model=await send({action:'graph',graphPlan});
+  const spec=specFor({...plan,graphPlan},model,'q14');
+  assert.deepEqual(spec.objects.filter(row=>row.kind==='FUNCTION_GRAPH').map(row=>[row.branch,row.domain]),
+    [['CURVE_exp',[1,2]],['CURVE_quad',[1,2]]]);
+  assert.deepEqual(spec.objects.find(row=>row.id==='P').at,[2,4]);
+  for(const [,tag,values] of model.svg.matchAll(/data-branch="(CURVE_\w+)" points="([^"]+)"/g)){
+    const points=values.split(' ').map(pair=>pair.split(',').map(Number));
+    const [x,y]=points.at(-1);
+    const {sx,sy,originX,originY}=model.transform;
+    assert.ok(Math.abs(x-(originX+2*sx))<1e-6,tag);
+    assert.ok(Math.abs(y-(originY-4*sy))<1e-6,tag);
+  }
+  const independent=svg=>send({action:'modelBinding',graphPlan,svg,transform:model.transform},{script:observerScript});
+  assert.equal((await independent(model.svg)).status,'PASS');
+  const shifted=model.svg.replace(/(data-branch="CURVE_exp" points=")([-\d.]+),([-\d.]+)/,
+    (_all,head,x,y)=>head+x+','+(Number(y)+3));
+  assert.ok((await independent(shifted)).errors.includes('MULTI_CURVE_WRONG_CURVE:CURVE_exp'));
+
+  for(const [change,code] of [
+    [{base:'1'},'MULTI_CURVE_EXPONENTIAL_BASE_INVALID:exp'],
+    [{domain:undefined},'MULTI_CURVE_DOMAIN_INVALID:exp'],
+    [{coefficients:['1','-1','0'],domain:['-100','1']},'MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:exp'],
+  ]){
+    const graphPlan={...plan.graphPlan,curves:[{...plan.graphPlan.curves[0],...change},plan.graphPlan.curves[1]]};
+    if(change.domain===undefined&&Object.hasOwn(change,'domain'))delete graphPlan.curves[0].domain;
+    const reply=await pythonWorker({action:'frame_graph',graphPlan});
+    assert.equal(reply.result.code,code,JSON.stringify(reply.result));
+  }
+});
+
+test('Maesan Q24 observes exact region columns without plotting the individual integer points',async()=>{
+  const graphPlan={
+    family:'multi-curve',viewport:[0,7.6,-135,120],axisScale:{x:32,y:1},
+    curves:[
+      {id:'f',kind:'EXPONENTIAL',base:'2',coefficients:['1','1','3'],shiftX:'1',domain:['4','7']},
+      {id:'g',kind:'EXPONENTIAL',base:'2',coefficients:['-1','1','15/2'],domain:['4','7']},
+    ],
+    axisTickValues:{x:['4','5','6','7'],y:[]},
+    regions:[{id:'band',between:['f','g'],from:'4',to:'7',fill:'LIGHT',integerColumns:true}],
+  };
+  const call=async(payload,options)=>{
+    const response=await pythonWorker(payload,options);
+    assert.equal(response.status,'OK',JSON.stringify(response.result));
+    return response.result;
+  };
+  const framed=(await call({action:'frame_graph',graphPlan})).graphPlan;
+  const model=await call({action:'graph',graphPlan:framed});
+  const expected=[
+    {x:4,lower:'-17/2',upper:'11',count:20},{x:5,lower:'-49/2',upper:'19',count:44},
+    {x:6,lower:'-113/2',upper:'35',count:92},{x:7,lower:'-241/2',upper:'67',count:188},
+  ];
+  assert.deepEqual(framed.multiCurveFeatures.regions[0].integerColumns,expected);
+  assert.doesNotMatch(model.svg,/<circle\b|>344</);
+  const spec=specFor({capability:'multi-curve-figure-v1',graphPlan:framed,caption:'두 지수함수 사이의 정수점'},model,'q24');
+  const columns=spec.objects.filter(({id,kind})=>id.startsWith('region-band-guide-')&&kind==='SEGMENT');
+  assert.deepEqual(columns.map(row=>[row.from[0],row.guide??false]),[[4,false],[5,true],[5,true],[6,true],[6,true],[7,false]]);
+  assert.deepEqual(columns.filter(row=>row.from[0]===5).map(row=>[row.from[1],row.to[1]]),[[-24.5,0],[0,19]]);
+  const audit=svg=>call({action:'modelBinding',graphPlan:framed,svg,transform:model.transform},{script:observerScript});
+  assert.equal((await audit(model.svg)).status,'PASS');
+  const wrongNumber=model.svg.replace('>44</text>','>344</text>');
+  assert.ok((await audit(wrongNumber)).errors.includes('GRAPH_REGION_INTEGER_COLUMN_COUNT:region-band-guide-5'));
+  const wrongWall=model.svg.replace(/(id="region-band-guide-7"[^>]*y2=")([^"]+)/,
+    (_all,before,number)=>before+(Number(number)-3));
+  assert.ok((await audit(wrongWall)).errors.includes('GRAPH_REGION_INTEGER_COLUMN_GEOMETRY:region-band-guide-7'));
+  const wrongRate={...graphPlan,curves:[graphPlan.curves[0],{...graphPlan.curves[1],coefficients:['-1/128','2','15/2']}]};
+  const refused=await pythonWorker({action:'frame_graph',graphPlan:wrongRate});
+  assert.equal(refused.result.code,'GRAPH_REGION_INTEGER_COLUMNS_INVALID:band');
+});
+
+test('Maesan Q12 uses an exact rational base for the nonnegative sampled years',async()=>{
+  const graphPlan={family:'multi-curve',viewport:[0,12,0,3],axisScale:{x:1,y:3},
+    axisTickValues:{x:['10','12'],y:['1','2']},axisTitles:{x:'n',y:'비율'},
+    curves:[{id:'ratio',kind:'EXPONENTIAL',base:'107/100',coefficients:['1','1','0'],domain:['0','12'],label:'r(n)'},
+      {id:'double',kind:'LINE',coefficients:['2','0'],domain:['0','12'],label:'y=2'}],
+  };
+  const framed=await pythonWorker({action:'frame_graph',graphPlan});
+  assert.equal(framed.status,'OK',JSON.stringify(framed.result));
+  const selected=framed.result.graphPlan;
+  assert.equal(selected.multiCurveFeatures.curves[0].base,'107/100');
+  const model=await pythonWorker({action:'graph',graphPlan:selected});
+  assert.equal(model.status,'OK',JSON.stringify(model.result));
+  const plan={capability:'multi-curve-figure-v1',graphPlan:selected,caption:'농도 비율과 두 배 기준'};
+  const spec=specFor(plan,model.result,'q12');
+  const curves=spec.objects.filter(row=>row.kind==='FUNCTION_GRAPH');
+  assert.deepEqual(curves.map(row=>row.domain),[[0,12],[0,12]]);
+  assert.ok(curves[0].expression.includes('ln(107/100)'));
+  assert.equal(spec.objects.find(row=>row.id==='curve-ratio-equation').text,'r(n)');
+  const check=await pythonWorker({action:'modelBinding',graphPlan:selected,svg:model.result.svg,transform:model.result.transform},{script:observerScript});
+  assert.equal(check.result.status,'PASS',JSON.stringify(check.result));
+  for(const base of ['1','1.07','214/200','1/1001']){
+    const curves=[{...graphPlan.curves[0],base},graphPlan.curves[1]];
+    const rejected=await pythonWorker({action:'frame_graph',graphPlan:{...graphPlan,curves}});
+    assert.equal(rejected.result.code,'MULTI_CURVE_EXPONENTIAL_BASE_INVALID:ratio');
+  }
+});

@@ -29,7 +29,18 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "상황을 식으로 바꾸어 이변수 일차식 판정",
+    "decisiveStep": "삼각형 넓이 조건을 xy=28로 나타내어 미지수 곱항이 있는 이차식을 선별한다."
   },
   {
     "id": 2,
@@ -59,7 +70,18 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "이변수 일차식의 자연수해 열거",
+    "decisiveStep": "한 변수의 양수 범위를 정하고 다른 변수도 자연수가 되는 후보만 남긴다."
   },
   {
     "id": 3,
@@ -89,7 +111,18 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE",
+    "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 해의 대입으로 계수와 좌표 순차 결정",
+    "decisiveStep": "완전한 순서쌍에서 a를 구한 뒤 p가 있는 두 번째 순서쌍을 완성된 방정식에 넣는다."
   },
   {
     "id": 4,
@@ -120,7 +153,18 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 1,
+    "difficultyBoundaryFlag": "B12",
+    "primaryMethod": "계수 배수와 부호로 소거 연산 선택",
+    "decisiveStep": "한 변수의 계수가 반대가 되는 합과 같아지는 차의 두 조합을 선택한다."
   },
   {
     "id": 5,
@@ -150,7 +194,18 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_H1_SYSTEM_DIRECT",
+    "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "괄호 정리 후 가감법으로 공통해",
+    "decisiveStep": "첫 식의 괄호와 상수를 정리하고 y계수를 반대로 만들어 더한 뒤 되대입한다."
   },
   {
     "id": 6,
@@ -180,7 +235,18 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_H1_SYSTEM_DIRECT",
+    "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "연립방정식의 해를 별도식 계수에 전달",
+    "decisiveStep": "주어진 두 식에서 x,y를 구하고 세 번째 조건에 넣어 k를 정한다."
   },
   {
     "id": 7,
@@ -210,7 +276,17 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 1,
+    "difficultyBoundaryFlag": "B12",
+    "primaryMethod": "대입 소거 후 남은 식의 계수",
+    "decisiveStep": "y=x-2를 다른 식에 넣어 x항을 모으고 결과4x=1의 계수를 읽는다."
   },
   {
     "id": 8,
@@ -240,7 +316,18 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_H1_SYSTEM_DIRECT",
+    "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "분모·소수 제거 후 가감법",
+    "decisiveStep": "두 식을 정수계수로 바꾸고 같은 y계수를 빼 공통해를 구한 뒤 두 해의 곱을 계산한다."
   },
   {
     "id": 9,
@@ -270,7 +357,17 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "difficultyBucket": 2,
+    "difficultyBoundaryFlag": "B23",
+    "primaryMethod": "무수히 많은 해의 전 계수비 일치",
+    "decisiveStep": "상수항비로 한 식의 배수를 정하고 두 미지수 계수가 동시에 일치하도록 a,b를 정한다."
   },
   {
     "id": 10,
@@ -301,7 +398,18 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 종류 수량과 총액에서 단가 복원",
+    "decisiveStep": "자료의 두 구매 조건을 두 단가의 연립식으로 만들고 필요한 재구매액에 대입한다."
   },
   {
     "id": 11,
@@ -331,7 +439,16 @@ window.questionBank = [
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 1,
+    "difficultyBoundaryFlag": "B12",
+    "primaryMethod": "주어진 함수의 입력과 함숫값 양방향 계산",
+    "decisiveStep": "알려진 입력에서 a를 계산하고 주어진 출력1을 식에 같게 놓아 입력b를 복원한다."
   },
   {
     "id": 12,
@@ -361,10 +478,21 @@ window.questionBank = [
     "solution": "두 각이 각각 같은 삼각형의 닮음을 이용한다.\n$\\angle A=\\angle DEC$이고 $\\angle ACB=\\angle ECD$이므로 $\\triangle ABC\\sim\\triangle EDC$이다.\n$AC=AD+DC=2+6=8$ cm이고, 대응변의 비는 $AC:EC=8:4=2:1$이다.\n따라서 $BC:DC=2:1$이므로 $BC=2\\times6=12$ cm이다.\n$BE=BC-EC=12-4=8$ cm이므로 정답은 ④이다.",
     "image": "assets/images/23_금당중_2학기_중간_중2_수학/q12.png",
     "solutionImage": "assets/images/23_금당중_2학기_중간_중2_수학/q12-solution.svg",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+    "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B23",
+    "primaryMethod": "공통각과 뒤바뀐 대응의 AA 닮음",
+    "decisiveStep": "전체AC를 구하고 A↔E,C↔C 대응의2:1비로 BC를 얻어 EC를 뺀다."
   },
   {
     "id": 13,
@@ -397,7 +525,18 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN_THEOREM"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "동일 삼각형 넓이의 두 표현에서 높이",
+    "decisiveStep": "피타고라스로 빗변5를 얻고 직각변으로 구한 넓이6을 빗변·높이의 곱과 같게 놓는다."
   },
   {
     "id": 14,
@@ -430,7 +569,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "primaryMethod": "평행선의 부분·전체 비",
+    "decisiveStep": "AE와EC를 더한AC를 구성하고 AD/AB=AE/AC에 대입한다."
   },
   {
     "id": 15,
@@ -463,7 +613,20 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [
+      "CC_PERIMETER"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "세 중점연결선의 길이 합",
+    "decisiveStep": "원삼각형 세 변의 절반씩을 더하여 중점삼각형 둘레를 구한다."
   },
   {
     "id": 16,
@@ -496,7 +659,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINES_RATIO"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyBoundaryFlag": "B34",
+    "primaryMethod": "공통 높이의 넓이비로 교점 분할비 역산",
+    "decisiveStep": "중점이 만든 넓이를 S의 분수로 표현하고 공통 높이의 넓이비r를 두 삼각형에 적용해 합으로r=3을 정한 뒤 중점선의 CD길이를 결합한다."
   },
   {
     "id": 17,
@@ -529,7 +703,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "교차 닮음의 비를 내부 평행선에 전달",
+    "decisiveStep": "첫 닮음의BE:ED를BE:BD로 바꾸고 두 번째 닮음의EF:DC에 적용한다."
   },
   {
     "id": 18,
@@ -559,10 +744,21 @@ window.questionBank = [
     "solution": "무게중심은 중선을 $2:1$로 나누므로 밑변에 대한 높이도 같은 비로 줄어든다.\n$D$는 $BC$의 중점이다. $G$는 $\\triangle ABC$의 무게중심이므로 $G$에서 $BC$까지의 높이는 $A$에서 $BC$까지의 높이의 $\\dfrac13$이다.\n또 $G'$은 $\\triangle GBC$의 무게중심이므로 $G'$에서 $BC$까지의 높이는 $G$에서 $BC$까지의 높이의 $\\dfrac13$, 즉 원래 높이의 $\\dfrac19$이다.\n$BD=\\dfrac12BC$이므로\n$[G'BD]=\\dfrac12\\times\\dfrac12BC\\times\\dfrac19h=\\dfrac1{18}[ABC]$이다.\n$[G'BD]=6$이므로 $[ABC]=18\\times6=108$ cm$^2$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_금당중_2학기_중간_중2_수학/q18.png",
     "solutionImage": "assets/images/23_금당중_2학기_중간_중2_수학/q18-solution.svg",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+    "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "primaryMethod": "두 번의 무게중심 높이비와 넓이",
+    "decisiveStep": "높이를1/3씩 두 번 축소하고 중점 밑변1/2과 결합해 원래 넓이를 복원한다."
   },
   {
     "id": 19,
@@ -592,10 +788,20 @@ window.questionBank = [
     "solution": "두 무게중심이 같은 중선 위에서 선분을 나누는 비를 이용한다.\n$G$는 $\\triangle ABC$의 무게중심이므로 $AG:GD=2:1$이다.\n$G'$은 $\\triangle GBC$의 무게중심이므로 $GG':G'D=2:1$이다.\n$GG'=4$ cm이므로 $G'D=2$ cm, 따라서 $GD=GG'+G'D=6$ cm이다.\n$AG:GD=2:1$이므로 $AG=12$ cm이다.\n따라서 $AD=AG+GD=12+6=18$ cm이므로 정답은 ②이다.",
     "image": "assets/images/23_금당중_2학기_중간_중2_수학/q19.png",
     "solutionImage": "assets/images/23_금당중_2학기_중간_중2_수학/q19-solution.svg",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+    "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "difficultyBucket": 2,
+    "difficultyBoundaryFlag": "B23",
+    "primaryMethod": "연속 무게중심의 중선2:1 길이 복원",
+    "decisiveStep": "작은 중선의GG′:G′D=2:1로GD를 얻고 큰 중선의AG:GD=2:1로AD를 구한다."
   },
   {
     "id": 20,
@@ -626,7 +832,20 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M2_PYTHAGOREAN_CONVERSE",
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_INEQUALITY"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 1,
+    "difficultyBoundaryFlag": "B12",
+    "primaryMethod": "가장 긴 변의 제곱으로 직각 판정",
+    "decisiveStep": "후보 세 길이의 가장 긴 변 제곱을 다른 둘의 제곱합과 비교하고 삼각형 불성립 후보도 제외한다."
   },
   {
     "id": 21,
@@ -659,7 +878,20 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+    "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "반원 넓이합에서 공통 영역을 제거",
+    "decisiveStep": "제곱합으로 두 작은 반원과 큰 반원의 넓이 같음을 얻고 공통영역을 빼 두 초승달 부분을 원삼각형 넓이로 바꾼다."
   },
   {
     "id": 22,
@@ -685,7 +917,20 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_H1_SYSTEM_DIRECT",
+    "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+    "crossConceptKeys": [
+      "CC_RECTANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "회전 배치의 두 높이를 연립 모델로 표현",
+    "decisiveStep": "긴변과짧은변의 세로 반복을 읽어3x-2y와x+3y 두 관계를 만들고 공통해를 면적에 사용한다."
   },
   {
     "id": 23,
@@ -709,7 +954,19 @@ window.questionBank = [
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+    "crossConceptKeys": [
+      "CC_SPEED_DISTANCE_TIME"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBoundaryFlag": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "휴식을 뺀 두 속력 구간의 거리·시간 연립 모델",
+    "decisiveStep": "총거리를 두 이동거리의 합으로 두고 휴식을 제외한 실제 이동시간을 거리/속력의 합으로 표현해 구한다."
   },
   {
     "id": 24,
@@ -736,7 +993,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "primaryMethod": "두 내부 평행선의 비율 연결",
+    "decisiveStep": "작은 ADF/ABE에서 얻은AD:AB를 ADE/ABC에 전달하여 AC를 구하고 AE를 뺀다."
   },
   {
     "id": 25,
@@ -760,9 +1028,23 @@ window.questionBank = [
     "solution": "$F,E,D$는 각 변의 중점이고, 무게중심과 중점연결정리를 함께 이용한다.\n$G$는 무게중심이므로 $AG:GD=2:1$이다.\n$F,E$는 각각 $AB,AC$의 중점이므로 $FE\\parallel BC$이고, $H$는 $AD$의 중점이다. 따라서 $AH:HD=1:1$이다.\n$AD$를 6등분하면 $AH=3$, $AG=4$, $GD=2$에 해당하므로 $HG=AG-AH=1$이다.\n따라서 $AH:HG:GD=3:1:2$이다.\n\n전체 $\\triangle ABC$의 넓이를 12라 하고, $A$에서 $BC$까지의 높이를 $h$라 하자.\n$\\triangle AFE\\sim\\triangle ABC$이고 닮음비가 $1:2$이므로 $[AFE]=3$이다.\n$G$에서 $BC$까지의 높이는 $\\dfrac h3$이므로 $[GBC]=\\dfrac13[ABC]=4$이다.\n또 $FE\\parallel BC$이고 $F,E$가 중점이므로 $FE$는 높이 $h$의 절반인 위치에 있다.\n따라서 $G$와 $FE$ 사이의 높이는 $\\dfrac h2-\\dfrac h3=\\dfrac h6$이다.\n$FE=\\dfrac12BC$이므로\n$[FGE]=\\dfrac12\\times\\dfrac12BC\\times\\dfrac h6=\\dfrac1{12}[ABC]=1$이다.\n따라서 $[AFE]:[FGE]:[GBC]=3:1:4$이다.",
     "image": "assets/images/23_금당중_2학기_중간_중2_수학/q25.png",
     "solutionImage": "assets/images/23_금당중_2학기_중간_중2_수학/q25-solution.svg",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+    "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "templateKey": "TPL_CENTROID_APPLICATION",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINES_RATIO",
+      "CC_SIMILAR_FIGURES_AREA_VOLUME"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBucket": 3,
+    "difficultyBoundaryFlag": "B34",
+    "primaryMethod": "중점선과 무게중심 높이의 차로 길이·넓이비",
+    "decisiveStep": "중선의1/2와2/3위치를 비교해HG를 얻고FE의절반밑변과1/6높이차로 내부넓이를 정한다."
   }
 ];

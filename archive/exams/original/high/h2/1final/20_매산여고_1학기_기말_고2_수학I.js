@@ -152,7 +152,11 @@ window.questionBank = [  {
       "assets/images/20_매산여고_1학기_기말_고2_수학I/q10.png"
     ],
     "answer": "①",
-    "solution": "각의 이등분선 정리에 따라\n$BD:DC=AB:AC=8:4=2:1$이다.\n$DC=t$라 하면 $BD=2t$이다.\n$AD=x$라 두면 $\\angle BAD=\\angle CAD=60^\\circ$이다.\n삼각형 $ABD$에서 코사인 법칙을 쓰면\n$(2t)^2=x^2+8^2-2\\cdot x\\cdot8\\cos60^\\circ$\n$4t^2=x^2+64-8x$이다.\n삼각형 $ACD$에서도\n$t^2=x^2+4^2-2\\cdot x\\cdot4\\cos60^\\circ$\n$t^2=x^2+16-4x$이다.\n두 번째 식의 양변에 $4$를 곱해 첫 번째 식의 왼쪽과 맞추면\n$4t^2=4x^2+64-16x$이다.\n따라서\n$x^2+64-8x=4x^2+64-16x$\n$3x^2-8x=0$\n$x(3x-8)=0$이다.\n$AD=x>0$이므로\n$x=\\frac83$이다.\n\n그러므로 정답은 ①이다."
+    "solution": "각의 이등분선 정리에 따라\n$BD:DC=AB:AC=8:4=2:1$이다.\n$DC=t$라 하면 $BD=2t$이다.\n$AD=x$라 두면 $\\angle BAD=\\angle CAD=60^\\circ$이다.\n삼각형 $ABD$에서 코사인 법칙을 쓰면\n$(2t)^2=x^2+8^2-2\\cdot x\\cdot8\\cos60^\\circ$\n$4t^2=x^2+64-8x$이다.\n삼각형 $ACD$에서도\n$t^2=x^2+4^2-2\\cdot x\\cdot4\\cos60^\\circ$\n$t^2=x^2+16-4x$이다.\n두 번째 식의 양변에 $4$를 곱해 첫 번째 식의 왼쪽과 맞추면\n$4t^2=4x^2+64-16x$이다.\n따라서\n$x^2+64-8x=4x^2+64-16x$\n$3x^2-8x=0$\n$x(3x-8)=0$이다.\n$AD=x>0$이므로\n$x=\\frac83$이다.\n\n그러므로 정답은 ①이다.",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 각의 이등분선 AD가 △ABC를 두 개의 60° 삼각형으로 나눈다.",
+    "solutionImageCaption": "AD는 120°를 두 60°로 나눈다. 각의 이등분선 정리로 BD:DC=2:1을 얻고, 두 삼각형에 코사인법칙을 적용해 AD를 구한다. 정답은 ①, 8/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -168,7 +172,11 @@ window.questionBank = [  {
     ],
     "images": [],
     "answer": "④",
-    "solution": "$t=\\cos x$라 두면 $-1\\le t\\le1$이다.\n주어진 식의 왼쪽은\n$t^2-3t+8-a$\n$=\\left(t-\\frac32\\right)^2+\\frac{23}{4}-a$이다.\n$-1\\le t\\le1$에서 $t$는 $\\frac32$보다 작으므로\n$\\left(t-\\frac32\\right)^2$의 최솟값은 $t=1$일 때의 $\\frac14$이다.\n따라서 전체 식의 최솟값은\n$\\frac14+\\frac{23}{4}-a=6-a$이다.\n모든 $x$에서 부등식이 성립하려면\n$6-a\\ge0$이어야 한다.\n따라서 $a\\le6$이고, 최댓값은 $6$이다.\n\n그러므로 정답은 ④이다."
+    "solution": "$t=\\cos x$라 두면 $-1\\le t\\le1$이다.\n주어진 식의 왼쪽은\n$t^2-3t+8-a$\n$=\\left(t-\\frac32\\right)^2+\\frac{23}{4}-a$이다.\n$-1\\le t\\le1$에서 $t$는 $\\frac32$보다 작으므로\n$\\left(t-\\frac32\\right)^2$의 최솟값은 $t=1$일 때의 $\\frac14$이다.\n따라서 전체 식의 최솟값은\n$\\frac14+\\frac{23}{4}-a=6-a$이다.\n모든 $x$에서 부등식이 성립하려면\n$6-a\\ge0$이어야 한다.\n따라서 $a\\le6$이고, 최댓값은 $6$이다.\n\n그러므로 정답은 ④이다.",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: t=cos x∈[-1,1]에서 g(t)=t²−3t+8의 그래프를 본다.",
+    "solutionImageCaption": "t=cos x로 두면 닫힌 구간 −1≤t≤1에서 포물선이 감소해 오른쪽 끝에서 최솟값을 갖는다. 모든 x에서 부등식이 성립하려면 a가 그 최솟값 이하여야 한다. 정답은 ④, 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -186,7 +194,11 @@ window.questionBank = [  {
       "assets/images/20_매산여고_1학기_기말_고2_수학I/q12.png"
     ],
     "answer": "③",
-    "solution": "나무가 지면에 수직이므로 $\\angle PQB=90^\\circ$이다.\n삼각형 $AQB$에서\n$\\angle QAB=75^\\circ$, $\\angle QBA=60^\\circ$이므로\n$\\angle AQB=45^\\circ$이다.\n사인 법칙으로\n$\\frac{AQ}{\\sin60^\\circ}=\\frac{AB}{\\sin45^\\circ}$이다.\n$AB=30$을 대입하면\n$AQ=30\\cdot\\frac{\\sqrt3/2}{\\sqrt2/2}=15\\sqrt6$이다.\n직각삼각형 $AQP$에서 $\\angle PAQ=30^\\circ$이므로\n$\\tan30^\\circ=\\frac{PQ}{AQ}$이다.\n따라서\n$PQ=AQ\\tan30^\\circ$\n$=15\\sqrt6\\cdot\\frac1{\\sqrt3}$\n$=15\\sqrt2\\text{ m}$이다.\n\n그러므로 정답은 ③이다."
+    "solution": "나무가 지면에 수직이므로 $\\angle PQB=90^\\circ$이다.\n삼각형 $AQB$에서\n$\\angle QAB=75^\\circ$, $\\angle QBA=60^\\circ$이므로\n$\\angle AQB=45^\\circ$이다.\n사인 법칙으로\n$\\frac{AQ}{\\sin60^\\circ}=\\frac{AB}{\\sin45^\\circ}$이다.\n$AB=30$을 대입하면\n$AQ=30\\cdot\\frac{\\sqrt3/2}{\\sqrt2/2}=15\\sqrt6$이다.\n직각삼각형 $AQP$에서 $\\angle PAQ=30^\\circ$이므로\n$\\tan30^\\circ=\\frac{PQ}{AQ}$이다.\n따라서\n$PQ=AQ\\tan30^\\circ$\n$=15\\sqrt6\\cdot\\frac1{\\sqrt3}$\n$=15\\sqrt2\\text{ m}$이다.\n\n그러므로 정답은 ③이다.",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 관측 삼각형에서 구한 AQ를 직각삼각형에 옮겨 나무의 높이를 구한다.",
+    "solutionImageCaption": "위쪽 관측 삼각형에서 사인법칙으로 AQ=15√6 m를 구한다. 이 길이를 아래쪽 직각삼각형에 옮겨 30°의 탄젠트로 나무의 높이를 구한다. 정답은 ③, 15√2 m이다.",
+    "solutionImageSize": "full"
   },  {
     "id": 13,
     "questionNumber": 13,
@@ -233,7 +245,11 @@ window.questionBank = [  {
     ],
     "images": [],
     "answer": "②",
-    "solution": "$\\sin\\left(\\frac\\pi2+x\\right)=\\cos x$이므로 방정식은\n$\\sin(\\pi\\cos x)=0$이 된다.\n$\\sin y=0$일 필요충분조건은 $y=k\\pi$ ($k$는 정수)이므로\n$\\pi\\cos x=k\\pi$,\n$\\cos x=k$이다.\n$0\\le x<\\pi$에서 $\\cos x$의 값은 $1$부터 $-1$에 가까워지며 $-1$은 되지 않는다.\n이 구간에서 정수인 코사인 값은 $1$과 $0$이다.\n$\\cos x=1$이면 $x=0$이고,\n$\\cos x=0$이면 $x=\\frac\\pi2$이다.\n따라서 모든 근의 합은\n$0+\\frac\\pi2=\\frac\\pi2$이다.\n\n그러므로 정답은 ②이다."
+    "solution": "$\\sin\\left(\\frac\\pi2+x\\right)=\\cos x$이므로 방정식은\n$\\sin(\\pi\\cos x)=0$이 된다.\n$\\sin y=0$일 필요충분조건은 $y=k\\pi$ ($k$는 정수)이므로\n$\\pi\\cos x=k\\pi$,\n$\\cos x=k$이다.\n$0\\le x<\\pi$에서 $\\cos x$의 값은 $1$부터 $-1$에 가까워지며 $-1$은 되지 않는다.\n이 구간에서 정수인 코사인 값은 $1$과 $0$이다.\n$\\cos x=1$이면 $x=0$이고,\n$\\cos x=0$이면 $x=\\frac\\pi2$이다.\n따라서 모든 근의 합은\n$0+\\frac\\pi2=\\frac\\pi2$이다.\n\n그러므로 정답은 ②이다.",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 0≤x<π에서 cos x가 정수 수준 −1, 0, 1을 만나는 위치를 확인한다.",
+    "solutionImageCaption": "코사인값이 정수인 점을 찾는다. 왼쪽 끝과 안쪽 교점은 포함하고, 오른쪽 열린 끝은 제외한다. 두 해의 합은 π/2이므로 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -249,7 +265,11 @@ window.questionBank = [  {
     ],
     "images": [],
     "answer": "③",
-    "solution": "ㄱ. $-\\frac\\pi2\\le x\\le\\frac\\pi2$에서 $0\\le\\cos x\\le1$이므로\n$0\\le2\\cos x\\le2$이다.\n따라서 $[2\\cos x]$의 값은 $0,1,2$이고 치역은 $\\{0,1,2\\}$이다.\nㄱ은 참이다.\n\nㄴ. $\\cos(-x)=\\cos x$이므로\n$f(-x)=[2\\cos(-x)]=[2\\cos x]=f(x)$이다.\n따라서 그래프는 직선 $x=0$에 대하여 대칭이다.\nㄴ은 참이다.\n\nㄷ. $1\\le[2\\cos x]<2$이려면\n$1\\le2\\cos x<2$이어야 한다.\n왼쪽 부등식은 $-\\frac\\pi3\\le x\\le\\frac\\pi3$을 뜻하고,\n오른쪽 부등식은 $x\\ne0$을 뜻한다. 실제 범위는\n$-\\frac\\pi3\\le x<0$ 또는 $0<x\\le\\frac\\pi3$이다.\n따라서 보기의 닫힌 구간과 같지 않아 ㄷ은 거짓이다.\n\n옳은 것은 ㄱ, ㄴ이므로 정답은 ③이다."
+    "solution": "ㄱ. $-\\frac\\pi2\\le x\\le\\frac\\pi2$에서 $0\\le\\cos x\\le1$이므로\n$0\\le2\\cos x\\le2$이다.\n따라서 $[2\\cos x]$의 값은 $0,1,2$이고 치역은 $\\{0,1,2\\}$이다.\nㄱ은 참이다.\n\nㄴ. $\\cos(-x)=\\cos x$이므로\n$f(-x)=[2\\cos(-x)]=[2\\cos x]=f(x)$이다.\n따라서 그래프는 직선 $x=0$에 대하여 대칭이다.\nㄴ은 참이다.\n\nㄷ. $1\\le[2\\cos x]<2$이려면\n$1\\le2\\cos x<2$이어야 한다.\n왼쪽 부등식은 $-\\frac\\pi3\\le x\\le\\frac\\pi3$을 뜻하고,\n오른쪽 부등식은 $x\\ne0$을 뜻한다. 실제 범위는\n$-\\frac\\pi3\\le x<0$ 또는 $0<x\\le\\frac\\pi3$이다.\n따라서 보기의 닫힌 구간과 같지 않아 ㄷ은 거짓이다.\n\n옳은 것은 ㄱ, ㄴ이므로 정답은 ③이다.",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_수학I/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: t=2x/π로 두면 g(t)=f(πt/2)=[2cos(πt/2)]의 대칭 계단 그래프이다.",
+    "solutionImageCaption": "계단 그래프는 세 함숫값을 갖고 좌우대칭이다. 가운데 t=0에서는 함숫값이 2라서 값이 1인 구간이 끊어진다. 옳은 것은 ㄱ, ㄴ이므로 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -308,6 +328,8 @@ window.questionBank = [  {
     "questionNumber": 21,
     "questionType": "서술형",
     "content": "삼각형 $ABC$에서 $a=7$, $b=9$, $c=6$일 때, 다음 물음에 답하라. [7점] (부분점수 있음.)\n\n1) $\\cos B$의 값을 구하여라. [3점]\n\n2) 삼각형 $ABC$의 넓이를 구하여라. [4점]",
+    "image": "assets/images/20_매산여고_1학기_기말_고2_수학I/q21-problem.svg",
+    "imageAlt": "삼각형 ABC에서 AB=6, BC=7, CA=9를 나타낸다.",
     "choices": [],
     "images": [],
     "answer": "1) $\\cos B=\\frac1{21}$, 2) $2\\sqrt{110}$",

@@ -1,0 +1,287 @@
+{
+  "schemaVersion": "m2-s2-root-acceptance-v1",
+  "examId": "E060",
+  "owner": "C",
+  "reviewer": "ROOT",
+  "taskId": "f6a2e848-c26c-44b4-8455-652a976d788c",
+  "baseSha": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "sourceGitBlobSha": "257830b3e8d6f32ed765bd715bf1abdc63a2449f",
+  "sourceSha256": "c811e96904015a8719de5baa01d775bdeaae7cffbd86ce41f8659440d54c9b49",
+  "reviewSha256": "6da67ff3becb9dc186c55fcd4002a10fa83479b5aa490d00b4daebb4fc30e73c",
+  "fourSlotSha256": "271057b90110c051d3a743723079db4f6e3f84d5f46abe9a6386e9a6a891de61",
+  "independentSampleSha256": "dc6526433ad8af0c6fe5f6b99cf961cf65bca39a7d869f24a19012de80be9406",
+  "sampleInputVersionsPreserved": true,
+  "sampleDeltaResolutionScope": "The original independent report is preserved; only its named repairs and subsequently recorded metadata/difficulty adjudications were accepted against the final artifacts. The final four-slot corrections have exact current-source quotes.",
+  "sourceUnchanged": true,
+  "freshFullMathematicalReverification": false,
+  "registrationExecuted": false,
+  "productionInboxSubmitted": false,
+  "semanticReviewStatus": "PRO_REVIEW_COMPLETE_WITH_UNRESOLVED",
+  "operationalStatus": "SOURCE_EVIDENCE_AND_REGISTRATION_PENDING",
+  "unresolvedItems": [
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_80e416719b9c305445c7ca0a408aa6b501a43c2cbb0c1d13dd9fb717b6e23111",
+      "fields": [
+        "rpmRecordId",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "level",
+        "sourceCondition"
+      ]
+    }
+  ],
+  "sampleReviewer": "ROOT",
+  "sampleOrdinals": [
+    3,
+    14,
+    20
+  ],
+  "sampleResolution": [
+    {
+      "scope": "Author-independent final artifact readback; only listed compatibility statuses subsequently adjudicated, with no slot-content change.",
+      "inputReviewSha256": "26d506fe9c6e0a4bab8c01ebe4d17107d1e25d0c5c07b4f5fc7cb9698847caac",
+      "finalReviewSha256": "6da67ff3becb9dc186c55fcd4002a10fa83479b5aa490d00b4daebb4fc30e73c",
+      "independentSampleSha256": "dc6526433ad8af0c6fe5f6b99cf961cf65bca39a7d869f24a19012de80be9406",
+      "adjudicatedCompatibilityOrdinals": [
+        1,
+        4,
+        8,
+        9,
+        13,
+        16
+      ],
+      "resolvedRepairs": []
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "중",
+      "reason": "명시된 무게중심의 중선2:1과기본넓이성질을보기와직접대조한다. 서로다른중선의절대길이는같지않다는기본구분이며1/B12를수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 2,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "두 무게중심이 모두 주어져 같은높이1/3을반복하고밑변절반을곱하는표준중첩이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 3,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "원문에는좌표가없으며해설이임의A=(u,v)를선택해두중심의같은성분을소거한다. 좌표모형선택이있어3/B23을수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 4,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "넓이를변의제곱으로읽어피타고라스와삼각형넓이를연결한다.하문자열과2의인접차이를수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 5,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "붙어있는두밑변을합친후이미명시된두직각삼각형에피타고라스를차례로적용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 6,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "정사각형의가로합12+x를표현하는한전처리후피타고라스관계를쓴다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 7,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "주어진세변의제곱합을직접대조하는판정이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 8,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "상",
+      "reason": "네반원과외접원의넓이를표현한뒤겹친원호부분이상쇄되는분해를선택한다.3/B34를수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 9,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "입체모서리최단경로를서로다른세방향의순서로바꾸는한모형해석이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 10,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "세동전의각상한과금액식을함께만족시키도록큰동전수를분기하고가능한작은동전쌍을열거한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 11,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "표에서음료2종과다른메뉴7종을그대로합·곱의법칙에넣는기본형이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 12,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "주사위유한범위를y별로대입하여허용되는x를세는정형부등식해석이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 13,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "악수한번을순서없는두사람선택으로바꾸고중복을제거하는표준모형이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 14,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "일직선세점은삼각형이아님을반영해어느선에서두점을선택할지두경우로분류한다.조합곱과합의분기기준선택이있어3을수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 15,
+      "decision": "ACCEPT",
+      "bucket": 1,
+      "level": "하",
+      "reason": "작은범위의서로겹치지않는두배수목록을직접세어전체카드수로나눈다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 16,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "하",
+      "reason": "복원조건을해석하여두사건의각확률을구한뒤독립곱을쓴다.하문자열과2의차이를수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 17,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "그림의인접관계를읽으면B,A,C,D순서별선택수가정해지고지정색경우도같은곱으로계산된다.별도경우분기가없어2를수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 18,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "적어도두눈일치를모두다른여사건으로바꾸고6·5·4를세는익숙한표준전환이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 19,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "비인접을직접세지않고이웃하는두사람묶음을선택해여사건으로연결하는두선택이있어3/B23을수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 20,
+      "decision": "HOLD",
+      "bucket": "UNKNOWN",
+      "level": null,
+      "reason": "원문은주변확률만주고독립은해설에서추가한다.두결합사건을확정할수없으므로UNKNOWN과등록차단을유지하고2는추가가정하의후보로만둔다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "HOLD"
+    },
+    {
+      "ordinal": 21,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "명시된두무게중심에중선2:1을연속적용한뒤한직선의길이를합하는정형구조이다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 22,
+      "decision": "ACCEPT",
+      "bucket": 3,
+      "level": "중",
+      "reason": "미지변이빗변인지다른변인지구별해가능한두피타고라스식을선택해야한다.3/B23을수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 23,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "같은숫자반복허용과백의자리0불가를반영하며소문항이일의자리홀짝경우를이미분리한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    },
+    {
+      "ordinal": 24,
+      "decision": "ACCEPT",
+      "bucket": 2,
+      "level": "중",
+      "reason": "두복권의동일가격·당첨금조건에서순서없는두수조합과한수선택을확률로옮겨비교한다.정형비교2를수용한다.",
+      "independentReviewer": "ROOT",
+      "independentDecision": "ACCEPT"
+    }
+  ],
+  "sourceContentHolds": [
+    {
+      "ordinal": 20,
+      "reason": "해설모델에 대한 후보 메타이며, 필수 원문 조건이 복구되기 전 완전 메타판정으로 보지 않는다.",
+      "metadataJudgmentUnresolved": true
+    }
+  ],
+  "notes": [
+    "Root accepted the author-independent focused difficulty rechecks and three-item four-slot sample against exact final input hashes. Normal items were not re-solved.",
+    "Insufficient source evidence remains explicitly blocked and is excluded from fully judged counts; common registration remains outside this task."
+  ]
+}

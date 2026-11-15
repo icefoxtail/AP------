@@ -296,9 +296,12 @@ def _fit_overview_family(plan):
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
     if 'axisScale' in plan and plan.get('family') not in ('piecewise-polynomial','multi-curve'):raise ValueError('AXIS_SCALE_UNSUPPORTED_FAMILY')   # (G18c) a multi-curve figure may stretch y too (horizontal lines a unit apart need room for their labels)
     if 'displayWindow' in plan and plan.get('family')!='rational':raise ValueError('DISPLAY_WINDOW_UNSUPPORTED_FAMILY')
+    if 'displayWindowX' in plan and plan.get('family')!='trigonometric':raise ValueError('TRIG_DISPLAY_WINDOW_FIELD_UNSUPPORTED')
     if 'formulaAt' in plan and plan.get('family')!='rational':raise ValueError('FORMULA_AT_UNSUPPORTED_FAMILY')
     if 'asymptoteOnly' in plan and plan.get('family')!='rational':raise ValueError('ASYMPTOTE_ONLY_REQUIRES_RATIONAL')
     if 'pairedAxisCrossing' in plan and plan.get('family')!='trigonometric':raise ValueError('TRIG_AXIS_CROSSING_PAIR_SOURCE_INVALID')
+    if 'hideIntervalEndLabels' in plan and plan.get('family')!='trigonometric':
+        raise ValueError('TRIG_HIDE_INTERVAL_END_LABELS_REQUIRES_V2')
     if plan.get('family')=='rational':return _with_label_options(plan,_fit_rational_overview(plan))
     if plan.get('family')=='sqrt-affine':
         if 'displaySize' in plan and plan['displaySize']!='full':raise ValueError('SQRT_DISPLAY_SIZE_INVALID')
@@ -1182,10 +1185,18 @@ def _fit_logarithmic_base_overview(plan):
 
 def _exp_log_curve_spec(row,index,code):
     if not isinstance(row,dict):raise ValueError(code)
-    allowed={'id','family','base','coefficients','sourceDomain','shiftX'}
+    allowed={'id','family','base','coefficients','sourceDomain','shiftX','formulaLabel','referenceLabelPoint','referenceLabelMode'}
     if set(row)-allowed:raise ValueError(code)
     curve_id=row.get('id')
     if not isinstance(curve_id,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',curve_id):raise ValueError(code+'_ID_INVALID')
+    if 'formulaLabel' in row and (row['formulaLabel']!='NAME' or len(curve_id)!=1):
+        raise ValueError('EXP_LOG_PAIR_FORMULA_LABEL_INVALID:'+curve_id)
+    if 'referenceLabelPoint' in row:
+        point=row['referenceLabelPoint']
+        if not isinstance(point,str) or not re.fullmatch('[A-Z]',point):
+            raise ValueError('EXP_LOG_PAIR_REFERENCE_LABEL_POINT_INVALID:'+curve_id)
+    if 'referenceLabelMode' in row and (row['referenceLabelMode']!='NAME' or row.get('formulaLabel')!='NAME' or 'referenceLabelPoint' not in row):
+        raise ValueError('EXP_LOG_PAIR_REFERENCE_LABEL_MODE_INVALID:'+curve_id)
     family=row.get('family')
     if family not in {'exponential-affine','logarithmic-affine'}:raise ValueError(code+'_FAMILY_UNSUPPORTED')
     base=exp_log_base(row.get('base'),'EXP_LOG_PAIR') or natural_exp_log_base()
@@ -1266,6 +1277,17 @@ def _fit_exp_log_pair_overview(plan):
     low=center-half;high=center+half
     viewport=[lo,hi,low,high]
     if not all(math.isfinite(value) and abs(value)<=1e8 for value in viewport):raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
+    for source,curve in zip(rows,feature_rows):
+        if 'referenceLabelPoint' not in source:continue
+        code='EXP_LOG_PAIR_REFERENCE_LABEL_POINT_MISMATCH:'+curve['id']
+        overlays=plan.get('overlays')
+        points=overlays.get('points',[]) if isinstance(overlays,dict) else []
+        owners=[point for point in points if isinstance(point,dict) and point.get('id')==source['referenceLabelPoint']] if isinstance(points,list) else []
+        show_coordinates=source.get('referenceLabelMode')!='NAME'
+        if (len(owners)!=1 or owners[0].get('coordinates') is not show_coordinates or owners[0].get('unnamed',False) is not False
+            or owners[0].get('marker','FILLED')!='FILLED'
+            or not all(_piecewise_fraction(owners[0].get(axis),code)==Fraction(curve['referencePoint'][axis]) for axis in ('x','y'))):
+            raise ValueError(code)
     features={'schemaVersion':'EXP_LOG_PAIR_FEATURES_v1','identityLine':identity,'curves':feature_rows,'sampleBoundaryArgument':'1/8'}
     policy={'schemaVersion':'EXP_LOG_PAIR_POLICY_v1','identityLinePolicy':'DASHED_4_3' if identity else 'NONE','referenceMarkerRadiusIntrinsicPx':4,'minimumReferenceMarkerDiameterCssPx':3,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':32,'minimumAsymptoteSeparationCssPx':2}
     fitted={**plan,'domain':[lo,hi],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'EXP_LOG_PAIR_OVERVIEW_v1','expLogPairFeatures':features,'expLogPairPolicy':policy,'equalUnits':True,'axisRatio':1}
@@ -1317,7 +1339,7 @@ def _fit_logarithmic_affine_overview(plan):
 TRIG_INTERVAL_MAX_PERIODS=12
 TRIG_INTERVAL_MAX_CROSSINGS=40
 
-TRIG_LINE_ROW_KEYS={'id','y','x','slope','intercept','intersectionCount','color','endCrossing','perPi'}
+TRIG_LINE_ROW_KEYS={'id','y','x','slope','intercept','intersectionCount','intersectionMarker','color','endCrossing','perPi'}
 TRIG_LINE_COLORS=('BLUE','WARM','GREEN','ROSE','VIOLET')   # the colour-group palette of the function curves and overlay lines (visual_engine/palette.py)
 
 def trig_level(value,code):
@@ -1343,13 +1365,15 @@ def trig_line_specs(plan,code='TRIG_LINE'):
         count=row.get('intersectionCount')
         if isinstance(count,bool) or not isinstance(count,int) or not 0<=count<=TRIG_INTERVAL_MAX_CROSSINGS:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_INVALID:'+row['id'])
         if set(row)-TRIG_LINE_ROW_KEYS:raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+        marker=row.get('intersectionMarker')
+        if 'intersectionMarker' in row and marker!='OPEN':raise ValueError('TRIG_LINE_INTERSECTION_MARKER_INVALID:'+row['id'])
         color=row.get('color')
         if color is not None and color not in TRIG_LINE_COLORS:raise ValueError('TRIG_LINE_COLOR_INVALID:'+row['id'])
         end_crossing=row.get('endCrossing')
         if end_crossing is not None and not isinstance(end_crossing,bool):raise ValueError('TRIG_LINE_END_CROSSING_INVALID:'+row['id'])
         per_pi=row.get('perPi')
         if per_pi is not None and (not isinstance(per_pi,bool) or 'slope' not in row):raise ValueError('TRIG_LINE_FORM_INVALID:'+row['id'])   # perPi: the slope is measured per pi of x (y=2x/(n*pi) is slope 2/n per pi)
-        common={'id':row['id'],'claim':count,'color':color,'endCrossing':end_crossing is True,'vertical':False,'perPi':per_pi is True}
+        common={'id':row['id'],'claim':count,'marker':marker,'color':color,'endCrossing':end_crossing is True,'vertical':False,'perPi':per_pi is True}
         if 'x' in row:
             if 'y' in row or 'slope' in row or 'intercept' in row:raise ValueError('TRIG_LINE_FORM_INVALID:'+row['id'])
             if count>1:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_INVALID:'+row['id'])
@@ -1600,6 +1624,11 @@ def trig_pi_ticks(plan,kind,x0,x1,span=None):
     return sorted(set(multiples)|set(regular))
 
 def _fit_trigonometric_interval_v2(plan,spec):
+    if 'hideIntervalEndLabels' in plan:
+        hidden=plan['hideIntervalEndLabels']
+        if (not isinstance(hidden,list) or not 1<=len(hidden)<=2
+            or any(side not in ('START','END') for side in hidden) or len(set(hidden))!=len(hidden)):
+            raise ValueError('TRIG_HIDE_INTERVAL_END_LABELS_INVALID')
     function=spec['function'];a=spec['a'];rate=spec['rate'];c=spec['c']
     kind,lo,hi,states=trig_interval_v2_source(plan)
     if kind=='INTERVAL' and not spec['rateHasPi']:raise ValueError('TRIG_INTERVAL_REQUIRES_RATE_PI')
@@ -1638,6 +1667,7 @@ def _fit_trigonometric_interval_v2(plan,spec):
             if line['perPi']:row['perPi']=True
             if line['color'] is not None:row['color']=line['color']
             if line['endCrossing']:row['endCrossing']=True
+            if line['marker'] is not None:row['intersectionMarker']=line['marker']
             rows.append(row)
         if plan.get('keyPoints') is True:
             key_rows=trig_key_points(spec,lo,hi,states);ys.extend(float(Fraction(row['y'])) for row in key_rows)
@@ -1786,31 +1816,43 @@ TRIG_DISPLAY_WINDOW_POLICY='TRIGONOMETRIC_DISPLAY_WINDOW_PI_v1'
 def _fit_trig_display_window(plan):
     if plan.get('sourceDomain')!={'kind':'ALL_REALS'} or plan.get('function') not in ('SIN','COS'):
         raise ValueError('TRIG_DISPLAY_WINDOW_REQUIRES_ALL_REAL_SINE_COSINE')
-    if any(key in plan for key in ('ratePi','phase','absolute','axisTickPiStep','referenceLines','keyPoints','overlays','axisTitles')):
+    plain='displayWindowX' in plan
+    if (any(key in plan for key in ('phase','absolute','axisTickPiStep','referenceLines','keyPoints','overlays','axisTitles'))
+        or (plain and ('displayWindowPi' in plan or plan.get('ratePi') is None))
+        or (not plain and 'ratePi' in plan)):
         raise ValueError('TRIG_DISPLAY_WINDOW_FIELD_UNSUPPORTED')
     if 'showOriginLabel' in plan and plan['showOriginLabel'] is not True:
         raise ValueError('TRIG_DISPLAY_ORIGIN_LABEL_INVALID')
-    raw=plan['displayWindowPi']
-    if not isinstance(raw,list) or len(raw)!=2:
-        raise ValueError('TRIG_DISPLAY_WINDOW_PI_INVALID')
-    lo,hi=(_piecewise_fraction(value,'TRIG_DISPLAY_WINDOW_PI_INVALID') for value in raw)
-    if not lo<0<hi or max(abs(lo),abs(hi))>100:
-        raise ValueError('TRIG_DISPLAY_WINDOW_PI_INVALID')
+    key='displayWindowX' if plain else 'displayWindowPi'
+    code='TRIG_DISPLAY_WINDOW_X_INVALID' if plain else 'TRIG_DISPLAY_WINDOW_PI_INVALID'
+    raw=plan[key]
+    if not isinstance(raw,list) or len(raw)!=2:raise ValueError(code)
+    lo,hi=(_piecewise_fraction(value,code) for value in raw)
+    if not lo<0<hi or max(abs(lo),abs(hi))>100:raise ValueError(code)
     spec=trig_spec(plan)
     period=trig_axis_period(spec)
     if not Fraction(1,4)<=(hi-lo)/period<=TRIG_INTERVAL_MAX_PERIODS:
         raise ValueError('TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED')
-    if plan.get('axisTickPi') is not True:
+    if (plain and plan.get('axisTickPi') is not None and plan.get('axisTickPi') is not False) or (not plain and plan.get('axisTickPi') is not True):
         raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
     if plan.get('displaySize') not in (None,'medium','full'):
         raise ValueError('TRIG_DISPLAY_SIZE_INVALID')
-    x0,x1=float(lo)*math.pi,float(hi)*math.pi
-    ticks=trig_pi_ticks(plan,'INTERVAL_PI',x0,x1)
+    factor=1 if plain else math.pi
+    x0,x1=float(lo)*factor,float(hi)*factor
+    if plain:
+        values=plan.get('axisTickValues')
+        if not isinstance(values,dict) or set(values)!={'x','y'} or not all(isinstance(values[axis],list) for axis in values):
+            raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+        ticks=[_piecewise_fraction(value,'INVALID_TRIG_AXIS_TICK_VALUES') for value in values['x']]
+        if any(not value or not lo<value<hi for value in ticks):raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+    else:
+        ticks=trig_pi_ticks(plan,'INTERVAL_PI',x0,x1)
     y_ticks=[_piecewise_fraction(value,'INVALID_TRIG_AXIS_TICK_VALUES') for value in plan['axisTickValues']['y']]
     a,c=spec['a'],spec['c']
     low,high=min(0.0,float(c-abs(a))),max(0.0,float(c+abs(a)))
     span=max(1.0,high-low)
-    ypad=.42*span
+    # A tighter ordinary-unit frame separates O from the nearby y tick without changing the curve crop.
+    ypad=(.16 if plain else .42)*span
     if (len(ticks)!=len(set(ticks)) or len(y_ticks)!=len(set(y_ticks))
         or any(not value or not low-ypad<float(value)<high+ypad for value in y_ticks)):
         raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
@@ -1837,24 +1879,32 @@ def _fit_trig_display_window(plan):
             if axis=='y' and (value not in y_ticks or value not in (c-abs(a),c+abs(a))):
                 raise ValueError('TRIG_DISPLAY_GUIDE_NOT_AT_EXTREMUM')
             guides.append({'axis':axis,'value':str(value),'level':str(extrema[value] if axis=='x' else value)})
-    features={'windowPi':raw,'extrema':[str(x) for x in extrema],'guides':guides}
+    features={'windowX' if plain else 'windowPi':raw,'extrema':[str(x) for x in extrema],'guides':guides}
+    policy='TRIGONOMETRIC_DISPLAY_WINDOW_X_v1' if plain else TRIG_DISPLAY_WINDOW_POLICY
     fitted={**plan,'domain':[x0,x1],'viewport':viewport,'shapeIntent':'OVERVIEW',
-            'overviewPolicy':TRIG_DISPLAY_WINDOW_POLICY,'trigDisplayFeatures':features}
-    return {'graphPlan':fitted,'policy':TRIG_DISPLAY_WINDOW_POLICY,'sourceDomainPreserved':True,'displayOnly':True,
+            'overviewPolicy':policy,'trigDisplayFeatures':features}
+    return {'graphPlan':fitted,'policy':policy,'sourceDomainPreserved':True,'displayOnly':True,
             'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
 def _fit_trigonometric_overview(plan):
+    if 'hideIntervalEndLabels' in plan:
+        source=plan.get('sourceDomain')
+        if (not isinstance(source,dict) or source.get('kind') not in ('INTERVAL','INTERVAL_PI')
+            or any(key in plan for key in ('pairedAxisCrossing','displayWindowPi','displayWindowX'))):
+            raise ValueError('TRIG_HIDE_INTERVAL_END_LABELS_REQUIRES_V2')
     if 'pairedAxisCrossing' in plan:return _fit_trig_axis_crossing_pair(plan)
     function=plan.get('function')
     if function not in {'SIN','COS','TAN'}:raise ValueError('UNSUPPORTED_TRIGONOMETRIC_FUNCTION')
-    if 'displayWindowPi' in plan:return _fit_trig_display_window(plan)
+    if 'displayWindowPi' in plan or 'displayWindowX' in plan:return _fit_trig_display_window(plan)
     if 'displayGuides' in plan or 'showOriginLabel' in plan:raise ValueError('TRIG_DISPLAY_LABELS_REQUIRE_WINDOW')
     source=plan.get('sourceDomain')
     if isinstance(source,dict) and source.get('kind') in {'INTERVAL_PI','INTERVAL'}:
         legacy=source.get('kind')=='INTERVAL_PI' and plan.get('ratePi') is None and plan.get('phase') is None and plan.get('axisTickPi') is None and plan.get('keyPoints') is not True and function in {'SIN','COS'}
         # the additive fields (absolute value, stepped pi ticks, display size, line colour / vertical / surd level / end crossing) live on the general interval form only
         legacy=legacy and plan.get('absolute') is None and plan.get('axisTickPiStep') is None and plan.get('displaySize') is None and not any(isinstance(row,dict) and (set(row)-{'id','y','slope','intercept','intersectionCount'} or (isinstance(row.get('y'),str) and 'sqrt' in row['y'])) for row in (plan.get('referenceLines') if isinstance(plan.get('referenceLines'),list) else []))
-        if legacy:return _fit_trigonometric_interval(plan,function)
+        if legacy:
+            if 'hideIntervalEndLabels' in plan:raise ValueError('TRIG_HIDE_INTERVAL_END_LABELS_REQUIRES_V2')
+            return _fit_trigonometric_interval(plan,function)
         return _fit_trigonometric_interval_v2(plan,trig_spec(plan))
     if plan.get('referenceLines') is not None:raise ValueError('TRIG_REFERENCE_LINES_REQUIRE_INTERVAL_PI')
     if plan.get('absolute') is not None:raise ValueError('TRIG_ABSOLUTE_REQUIRES_INTERVAL')
@@ -4285,9 +4335,9 @@ MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plot
 # G18a: besides the two quadratic kinds a curve may be LINE (y=c0+c1*x), RATIONAL (y=(a0+a1*x)/(d0+d1*x)) or SQRT (y=offset+amplitude*sqrt(c0+c1*x)), each with
 # its own look (color, weight, style, label, hideLabels), or the inverse of another curve (inverseOf). These kinds are not bounded by their own shape, so the
 # author names the window (graphPlan.viewport = [xmin,xmax,ymin,ymax]) and a curve is clipped to the frame built around that window.
-MULTI_CURVE_KINDS=('Y_OF_X','X_OF_Y','LINE','RATIONAL','SQRT')
-MULTI_CURVE_FREE_KINDS=('LINE','RATIONAL','SQRT')
-MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch','abs'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain','domainStates','abs'},'RATIONAL':{'numerator','denominator','domain','domainStates','abs'},'SQRT':{'radicand','amplitude','offset','domain','domainStates','abs'}}
+MULTI_CURVE_KINDS=('Y_OF_X','X_OF_Y','LINE','RATIONAL','SQRT','EXPONENTIAL')
+MULTI_CURVE_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL')
+MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch','abs'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain','domainStates','abs'},'RATIONAL':{'numerator','denominator','domain','domainStates','abs'},'SQRT':{'radicand','amplitude','offset','domain','domainStates','abs'},'EXPONENTIAL':{'base','coefficients','shiftX','domain','domainStates'}}
 MULTI_CURVE_LOOK_KEYS={'id','kind','label','color','weight','style','hideLabel','hideLabels','inverseOf','emphasis'}
 # G18a-4: emphasis:[{from?,to?,color?,fromState?,toState?}] draws only that x stretch of the curve heavier and in a colour, with an open or closed end dot (states OPEN | CLOSED | NONE);
 # domain may be written {from,to} as well as [from,to] (the curve is then not drawn outside it).
@@ -4432,11 +4482,39 @@ def mc_value(curve,x_value):
         den=curve['denominator'][0]+curve['denominator'][1]*x_value
         if den==0:return None
         value=float(mc_rational_value(curve,x_value))
+    elif kind=='EXPONENTIAL':
+        amplitude,rate,offset=curve['coefficients']
+        value=float(amplitude)*curve['base']**float(rate*(x_value-curve['shiftX']))+float(offset)
     else:
         radicand=curve['radicand'][0]+curve['radicand'][1]*x_value
         if radicand<0:return None
         value=float(curve['offset'])+float(curve['amplitude'])*math.sqrt(float(radicand))
     return abs(value) if curve.get('abs') else value
+
+def _mc_exponential_curve(entry,ident):
+    value=entry.get('base')
+    try:
+        if not isinstance(value,str) or not re.fullmatch(r'[1-9]\d{0,3}(?:/[1-9]\d{0,3})?',value):raise ValueError()
+        base=exp_log_base(value,'MULTI_CURVE_EXPONENTIAL')
+        if base is None or base['kind'] not in ('INTEGER','RATIONAL'):raise ValueError()
+        base=Fraction(base['text'])
+        if str(base)!=value or max(base.numerator,base.denominator)>1000:raise ValueError()
+    except ValueError:
+        raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident) from None
+    raw=entry.get('coefficients')
+    code='MULTI_CURVE_COEFFICIENT_INVALID:'+ident
+    if not isinstance(raw,list) or len(raw)!=3:raise ValueError(code)
+    coefficients=[_mc_fraction(value,code) for value in raw]
+    if not coefficients[0] or not coefficients[1]:raise ValueError(code)
+    if 'domain' not in entry:raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+    interval=_mc_interval_fractions(entry['domain'],'MULTI_CURVE_DOMAIN_INVALID:'+ident)
+    shift=_mc_fraction(entry.get('shiftX','0'),code)
+    curve={'kind':'EXPONENTIAL','base':base,'coefficients':coefficients,'shiftX':shift,'interval':interval}
+    if any(abs(x)>10**6 or abs(coefficients[1]*(x-shift))>64 for x in interval):
+        raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
+    if any(abs(mc_value(curve,x))>10**8 for x in interval):
+        raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
+    return curve
 
 def _mc_free_curve(entry,ident,kind,window,look):
     """LINE / RATIONAL / SQRT from its own fields; the draw interval is the author's domain or the window's."""
@@ -4459,6 +4537,8 @@ def _mc_free_curve(entry,ident,kind,window,look):
             if curve['numerator'][2]==0 or entry.get('abs') is True:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)   # a zero x^2 coefficient is a linear numerator; |f| of an oblique rational is not drawn
             if curve['numerator'][0]+curve['numerator'][1]*pole+curve['numerator'][2]*pole*pole==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
         elif curve['numerator'][0]+curve['numerator'][1]*pole==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
+    elif kind=='EXPONENTIAL':
+        curve.update(_mc_exponential_curve(entry,ident))
     else:
         raw=entry.get('radicand')
         if not isinstance(raw,list) or len(raw)!=2:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
@@ -4532,6 +4612,7 @@ def multi_curve_source(plan):
             source=by_id.get(inverse_of) if isinstance(inverse_of,str) else None
             if source is None or source.get('inverseOf') is not None:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
             if 'kind' in entry and entry['kind'] not in MULTI_CURVE_KINDS:raise ValueError('MULTI_CURVE_KIND_INVALID:'+ident)
+            if entry.get('kind')=='EXPONENTIAL':raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
             curve=_mc_inverse_curve(entry,ident,source,_mc_look(entry,ident,True))
             curve['intervalGiven']='domain' in entry
             if 'domain' in entry:curve['interval']=_mc_interval_fractions(entry['domain'],'MULTI_CURVE_DOMAIN_INVALID:'+ident)
@@ -4555,6 +4636,7 @@ def multi_curve_source(plan):
         if set(entry)-MULTI_CURVE_LOOK_KEYS-MULTI_CURVE_KIND_KEYS[kind]:raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
         look=_mc_look(entry,ident,free)
         if free:
+            if kind=='EXPONENTIAL' and window is None:raise ValueError('MULTI_CURVE_WINDOW_REQUIRED:'+ident)
             curve=_mc_free_curve(entry,ident,kind,window,look)
             if 'interval' not in curve:
                 if window is None:raise ValueError('MULTI_CURVE_WINDOW_REQUIRED:'+ident)
@@ -4690,6 +4772,10 @@ def _mc_row(curve):
             if curve.get('abs'):horizontal=abs(horizontal)   # the asymptote of |f| is |h|
             lo,hi=curve['interval']
             row['asymptotes']={'vertical':{'x':_mc_text(pole),'drawn':bool(lo<=pole<=hi and pole!=0)},'horizontal':{'y':_mc_text(horizontal),'drawn':bool(horizontal!=0)}}
+        elif kind=='EXPONENTIAL':
+            row['base']=str(curve['base'])
+            row['coefficients']=[_mc_text(value) for value in curve['coefficients']]
+            row['shiftX']=_mc_text(curve['shiftX'])
         else:
             row['radicand']=[_mc_text(value) for value in curve['radicand']];row['amplitude']=_mc_text(curve['amplitude']);row['offset']=_mc_text(curve['offset'])
             boundary=-curve['radicand'][0]/curve['radicand'][1];lo,hi=curve['interval']
@@ -4708,7 +4794,7 @@ def _mc_row(curve):
     return row
 
 # ---- (G18c) shaded regions of a multi-curve figure: between two drawn curves, under a curve, or a half-plane / quadrant piece that runs to the frame ----
-MULTI_CURVE_REGION_FIELDS={'id','between','under','from','to','halfPlane','and','fill','label'}
+MULTI_CURVE_REGION_FIELDS={'id','between','under','from','to','halfPlane','and','fill','label','integerColumns'}
 MULTI_CURVE_MAX_REGIONS=4
 MULTI_CURVE_HALF_PLANE_OPS=('<','<=','>','>=')
 MULTI_CURVE_REGION_SAMPLES=41
@@ -4732,6 +4818,29 @@ def _mc_region_boundary(curve,ident,region_id,start,end):
     if curve['kind']=='RATIONAL':
         pole=-curve['denominator'][0]/curve['denominator'][1]
         if start<=pole<=end:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+ident)
+
+def _mc_integer_columns(region_id, curves, start, end):
+    # Same base and rate make the difference a constant plus one monotone exponential.
+    # Exact positivity at both walls therefore proves the upper/lower order throughout.
+    code='GRAPH_REGION_INTEGER_COLUMNS_INVALID:'+region_id
+    if (any(curve=='axis' or curve['kind']!='EXPONENTIAL' or curve['base'].denominator!=1 for curve in curves)
+        or len({(curve['base'],curve['coefficients'][1]) for curve in curves})!=1
+        or start.denominator!=1 or end.denominator!=1 or not 2<=end-start+1<=8):
+        raise ValueError(code)
+    columns=[]
+    for x in range(int(start),int(end)+1):
+        values=[]
+        for curve in curves:
+            a,k,c=curve['coefficients']
+            exponent=k*(x-curve['shiftX'])
+            if exponent.denominator!=1:raise ValueError(code)
+            values.append(a*Fraction(curve['base'])**int(exponent)+c)
+        lower,upper=values
+        if lower>=upper:raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
+        count=math.floor(upper)-math.ceil(lower)+1
+        if not 1<=count<=9999:raise ValueError(code)
+        columns.append({'x':x,'lower':str(lower),'upper':str(upper),'count':count})
+    return columns
 
 def _mc_regions(plan,curves,viewport):
     """The frozen rows of graphPlan.regions (G18c): BETWEEN {upper,lower,from,to} (two curves, or a curve and 'axis'), or HALF_PLANE {box} (a quadrant piece cut by
@@ -4758,6 +4867,8 @@ def _mc_regions(plan,curves,viewport):
         if len(shapes)!=1:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
         row={'id':region_id,'fill':fill}
         if label is not None:row['label']=label
+        if 'integerColumns' in entry and (entry['integerColumns'] is not True or shapes[0]!='between' or label is not None):
+            raise ValueError('GRAPH_REGION_INTEGER_COLUMNS_INVALID:'+region_id)
         if shapes[0]=='halfPlane':
             if 'from' in entry or 'to' in entry:raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
             sides=[entry['halfPlane']]
@@ -4802,6 +4913,7 @@ def _mc_regions(plan,curves,viewport):
         if len(signs)>1:raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
         upper,lower=(names[0],names[1]) if signs=={True} else (names[1],names[0])
         row.update({'kind':'BETWEEN','upper':upper,'lower':lower,'from':_mc_text(start),'to':_mc_text(end)})
+        if entry.get('integerColumns') is True:row['integerColumns']=_mc_integer_columns(region_id,[by_id.get(lower,'axis'),by_id.get(upper,'axis')],start,end)
         rows.append(row)
     return rows
 

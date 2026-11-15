@@ -873,11 +873,13 @@ window.questionBank = [
     "problemTypeKey": "PT_LCM_APPLICATION",
     "templateKey": "TPL_LCM_APPLICATION_SHIFTED_REMAINDER",
     "crossConceptKeys": [],
-    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   }
 ];

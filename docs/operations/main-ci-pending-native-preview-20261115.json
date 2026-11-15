@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "archive-main-pending-native-projection-repair-v1",
+  "inputMain": "22d5b2fa1c09eec588c434a16c41ae197e946c80",
+  "parentLocalCommit": "9b7e48b929c98d2c2cccb99bd03773e6d82a928c",
+  "problem": {
+    "failedJobs": [
+      132711545633,
+      132715490837
+    ],
+    "assertion": "tests/archive2-unified-units.test.js:163 strict unit equality remains unchanged",
+    "sourceFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+    "sourceOrdinal": 15,
+    "cause": "Full fallback discarded prepareProjection; the full test prestep rebuilt the catalog from current sources but left question-index at the old registration snapshot."
+  },
+  "changes": [
+    "Use registration input paths even when bounded scope falls back to full.",
+    "Bind the pending flat inbox inventory to the exact HEAD commit and recompute it when reading the scope.",
+    "Push previews validate and apply all fixed pending native requests through existing official writers before the official builder, then require projection and typed Consumer success.",
+    "PR previews retain changed-request-only ownership; unsupported pending main schemas, stale or missing source/evidence, changed UID scope and non-derived writes remain fatal."
+  ],
+  "verification": {
+    "regressionTests": {
+      "nativePreviewAndPrepare": 61,
+      "ciScope": 18,
+      "existingPrProof": 16,
+      "total": 95,
+      "pass": 95,
+      "fail": 0,
+      "skip": 0
+    },
+    "actualPendingSelection": {
+      "requests": 96,
+      "selectedItemsIncludingMultipleRequests": 1813,
+      "sourceFiles": 93,
+      "kinds": {
+        "identityFingerprintRepair": 1,
+        "difficulty5": 58,
+        "nativeApprovalPreservation": 2,
+        "reviewedExamV2": 35
+      },
+      "changedPrRequestsAtSameSnapshot": 0,
+      "allRequestSourceEvidenceGitAndRawSHAValidation": true,
+      "wholeSourceDenominatorsAndSelectedOrdinalChecks": true,
+      "writerOrBuildExecutedForAll96": false
+    },
+    "actualBuiltQuestion": {
+      "uid": "qid_v1_1dc1057cd4dbcb6103a7a7699e21fd7f59e3c289cc36329aa735e6e84e9055f0",
+      "mainSourceBlob": "c27e7c94543446f4a65e9c493159f79e0f2f0cec",
+      "fixtureSourceBlob": "0b274e50f77fd082ba0980337a099c72d8df2fff",
+      "targetWholeQuestionExact": true,
+      "otherQuestionChangesOutsideThisClaim": [
+        6,
+        18
+      ],
+      "wholeQuestionSha256": "a4585482d0ed01d19ec90186f601044b363d554b357539b4bb2a633ad0edbdda",
+      "newCatalogAndIndexUnit": "RPM22-M2-L1-03",
+      "oldCatalogAndIndexUnit": "RPM22-M2-L1-04",
+      "sourceWasNotChangedByThisRepair": true
+    },
+    "productionRegistrationOrDeploymentClaim": false
+  },
+  "evidence": [
+    {
+      "path": "evidence/main-ci-scope-failure-jobs.json",
+      "sha256": "07bd8900cabde094e7901337a43ddb32c390f0ebbaf4a1b57b2be5ef1b2a99be"
+    },
+    {
+      "path": "evidence/main-ci-unified-stale-preliminary.json",
+      "sha256": "d7e27fb1654350054c2aa83fd09f71c64444b616d0b19b156b3324235eae9964"
+    },
+    {
+      "path": "evidence/main-ci-unified-stale-production.json",
+      "sha256": "1060f418a692248a19cb960a30842ddea1c8900ec292ca9056b1069aa9fb1e13"
+    },
+    {
+      "path": "evidence/main-ci-unified-stale-fixed-pair.json",
+      "sha256": "c5e6d05b5c91e607fcbf2d4463fdee757a10ffece6a378e58b4ba77e7ee9f82c"
+    },
+    {
+      "path": "evidence/main-ci-fixed-pending96-selection.json",
+      "sha256": "4606401f5fab9fac794365195e017ffdd33f823b207933544c83ccb145b8b529"
+    },
+    {
+      "path": "m3-ci-projection/main-pending-preview-tests.log",
+      "sha256": "2cc1885b68f111e51aec684a045c8a3281ab080d0bc44157e4984c631f5e3b2d"
+    },
+    {
+      "path": "m3-ci-projection/main-pending-scope-tests.log",
+      "sha256": "a05f3731eb1ed86d87703d1b234eaa694438a10d7bae5e82833bd1d8f22e6b85"
+    },
+    {
+      "path": "m3-ci-projection/main-pending-pr-proof-tests.log",
+      "sha256": "5d25cbcf79b73c676bb89badc14d03f4c06c2950c77f40bda256df0cb29118cf"
+    }
+  ]
+}

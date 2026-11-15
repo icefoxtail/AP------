@@ -70,6 +70,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "각 변량의 일차변환2x-3에서 합과 평균이 같은 일차변환을 따름을 적용해 새 평균9를 구한다.",
+    "decisiveStep": "각 변량의 일차변환2x-3에서 합과 평균이 같은 일차변환을 따름을 적용해 새 평균9를 구한다."
   },
   {
     "id": 2,
@@ -109,10 +117,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceFidelity": "SOURCE_BYTES_PRESERVED",
     "semanticMetaEvidence": {
       "curriculumContext": "2019학년도 시행 당시 2009 개정 교육과정; 2022 개정 대응을 추측하지 않음",
@@ -140,6 +148,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "8개 매출을 정렬한 뒤 네 번째110과 다섯 번째120의 평균을 중앙값으로 구한다.",
+    "decisiveStep": "8개 매출을 정렬한 뒤 네 번째110과 다섯 번째120의 평균을 중앙값으로 구한다."
   },
   {
     "id": 3,
@@ -179,10 +195,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceFidelity": "SOURCE_BYTES_PRESERVED",
     "semanticMetaEvidence": {
       "curriculumContext": "2019학년도 시행 당시 2009 개정 교육과정; 2022 개정 대응을 추측하지 않음",
@@ -208,9 +224,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "24개 자료의 값별 빈도를 세어 가장5번 나타난6을 최빈값으로 정한다.",
+    "decisiveStep": "24개 자료의 값별 빈도를 세어 가장5번 나타난6을 최빈값으로 정한다."
   },
   {
     "id": 4,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q4-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "6시간은 두 점, 7시간은 세 점, 8시간은 네 점, 9시간은 한 점이 있다. 7과 8 사이에서 평균과 중앙값의 위치를 짚었다.",
+    "solutionImageCaption": "평균 7.4, 중앙값 7.5, 최빈값 8이므로 a<b<c이다. 정답은 ①이다.",
     "score": 4.0,
     "level": "중",
     "category": "통계",
@@ -248,7 +276,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -281,6 +309,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "평균7.4·짝수개 중앙값7.5·최빈값8을 각각 계산한 뒤 크기를 비교한다.",
+    "decisiveStep": "평균7.4·짝수개 중앙값7.5·최빈값8을 각각 계산한 뒤 크기를 비교한다."
   },
   {
     "id": 5,
@@ -351,6 +387,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "편차0인C의 기록8로 평균을 정하고 A와E의 편차를 각각 더해 두 원자료의 합을 구한다.",
+    "decisiveStep": "편차0인C의 기록8로 평균을 정하고 A와E의 편차를 각각 더해 두 원자료의 합을 구한다."
   },
   {
     "id": 6,
@@ -390,10 +434,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceFidelity": "SOURCE_BYTES_PRESERVED",
     "semanticMetaEvidence": {
       "curriculumContext": "2019학년도 시행 당시 2009 개정 교육과정; 2022 개정 대응을 추측하지 않음",
@@ -422,6 +466,14 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "평균6을 구한 뒤 다섯 편차의 제곱평균으로 분산0.4를 계산한다.",
+    "decisiveStep": "평균6을 구한 뒤 다섯 편차의 제곱평균으로 분산0.4를 계산한다."
   },
   {
     "id": 7,
@@ -461,10 +513,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceFidelity": "SOURCE_BYTES_PRESERVED",
     "semanticMetaEvidence": {
       "curriculumContext": "2019학년도 시행 당시 2009 개정 교육과정; 2022 개정 대응을 추측하지 않음",
@@ -493,9 +545,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "표의 평균이 가장 큰4반을 우수, 표준편차가 가장 작은3반을 고른 반으로 선택한다.",
+    "decisiveStep": "표의 평균이 가장 큰4반을 우수, 표준편차가 가장 작은3반을 고른 반으로 선택한다."
   },
   {
     "id": 8,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "왼쪽 표적과 오른쪽 점수별 배열을 비교한다. 10점은 두 발, 9점은 한 발, 8점은 네 발, 7점은 한 발이다.",
+    "solutionImageCaption": "평균은 8.5점이다. 여덟 편차를 제곱해 더하면 8이고, 표준편차는 1점이다. 정답은 ①이다.",
     "score": 4.0,
     "level": "중",
     "category": "통계",
@@ -506,14 +570,14 @@ window.questionBank = [
     "standardUnit": "자료의 산포도",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "표준편차",
       "도수표 작성",
       "그림에서 자료 읽기"
     ],
     "wide": false,
-    "content": "어느 양궁 선수가 8번의 활을 쏘아 다음 그림과 같은 결과를 얻었다. 이때, 이 선수가 얻은 점수의 표준편차는? (4점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q08.png\" />",
+    "content": "어느 양궁 선수가 8번의 활을 쏘아 다음 그림과 같은 결과를 얻었다. 이때, 이 선수가 얻은 점수의 표준편차는? (4점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q8-problem-v3.svg\" alt=\"가운데에서 밖으로 10점, 9점, 8점, 7점 구역을 다른 색으로 그렸다. 검은 점은 화살이 꽂힌 위치이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "1점",
       "1.2점",
@@ -532,7 +596,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -565,9 +629,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "표적의 각 띠에서10점2발·9점1발·8점4발·7점1발을 읽어 도수표로 옮기고 가중평균8.5와 편차제곱평균1의 제곱근을 계산한다.",
+    "decisiveStep": "표적의 각 띠에서10점2발·9점1발·8점4발·7점1발을 읽어 도수표로 옮기고 가중평균8.5와 편차제곱평균1의 제곱근을 계산한다."
   },
   {
     "id": 9,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q9-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "정사각형 세 개의 넓이를 각 한 변의 제곱으로 읽는다. 가운데 직각삼각형의 두 직각변은 초록과 주황이다.",
+    "solutionImageCaption": "BC²=54−36=18이고 AC=6 cm이다. 삼각형의 넓이는 9√2 cm²이며 정답은 ④이다.",
     "score": 4.0,
     "level": "중",
     "category": "기하",
@@ -578,7 +654,7 @@ window.questionBank = [
     "standardUnit": "직각삼각형의 성질",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "피타고라스 정리",
       "직각삼각형",
@@ -586,7 +662,7 @@ window.questionBank = [
       "삼각형의 넓이"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 직각삼각형 $\\mathrm{ABC}$의 세 변을 각각 한 변으로 하는 세 개의 정사각형을 그린 것이다. $\\square\\mathrm{ACHI}=36\\,\\mathrm{cm}^2$, $\\square\\mathrm{ADEB}=54\\,\\mathrm{cm}^2$일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q09.png\" />",
+    "content": "다음 그림과 같이 직각삼각형 $\\mathrm{ABC}$의 세 변을 각각 한 변으로 하는 세 개의 정사각형을 그린 것이다. $\\square\\mathrm{ACHI}=36\\,\\mathrm{cm}^2$, $\\square\\mathrm{ADEB}=54\\,\\mathrm{cm}^2$일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q9-problem-v3.svg\" alt=\"AB 아래의 파란 정사각형 넓이는 54 cm², AC 왼쪽의 초록 정사각형은 36 cm²이다. 나머지 정사각형은 BC에 붙어 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$3\\sqrt{2}\\,\\mathrm{cm}^2$",
       "$6\\sqrt{2}\\,\\mathrm{cm}^2$",
@@ -605,7 +681,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -637,9 +713,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "세 변 위 정사각형 넓이를 제곱길이로 읽어 BC²=54-36을 구하고 두 직각변의 곱으로 삼각형넓이를 계산한다.",
+    "decisiveStep": "세 변 위 정사각형 넓이를 제곱길이로 읽어 BC²=54-36을 구하고 두 직각변의 곱으로 삼각형넓이를 계산한다."
   },
   {
     "id": 10,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "30도에서 바라본 맞은편 변을 주황, 이웃한 직각변을 초록, 빗변을 파랑으로 표시했다.",
+    "solutionImageCaption": "tan 30°=x/5=1/√3이므로 x=5√3/3이다. 정답은 ①이다.",
     "score": 3.0,
     "level": "중",
     "category": "기하",
@@ -650,7 +738,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "삼각비",
       "tan 30°",
@@ -658,7 +746,7 @@ window.questionBank = [
       "특수각"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=90^\\circ$, $\\angle\\mathrm{A}=30^\\circ$, $\\overline{\\mathrm{AB}}=5\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{BC}}=x\\,\\mathrm{cm}$의 값은? (3점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q10-quality-v4.svg\" alt=\"직각삼각형 ABC에서 B가 직각, A가 30도이며 AB는 5cm, BC는 xcm\" />",
+    "content": "다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=90^\\circ$, $\\angle\\mathrm{A}=30^\\circ$, $\\overline{\\mathrm{AB}}=5\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{BC}}=x\\,\\mathrm{cm}$의 값은? (3점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q10-problem-v3.svg\" alt=\"B는 직각이고 A의 각은 30도이다. 초록 AB는 5 cm, 주황 BC는 x cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$\\dfrac{5\\sqrt3}{3}\\,\\mathrm{cm}$",
       "$5\\,\\mathrm{cm}$",
@@ -713,9 +801,21 @@ window.questionBank = [
       "sourceFidelity": "UNKNOWN"
     },
     "visualDisposition": "원본 PNG는 별도 보존하고, 명시적 조건을 표시한 완결형 대체 SVG를 사용함."
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "현 대체문항의 직각·30도·이웃변5를 읽어 tan30°=x/5로 맞은편변을 구한다.",
+    "decisiveStep": "현 대체문항의 직각·30도·이웃변5를 읽어 tan30°=x/5로 맞은편변을 구한다."
   },
   {
     "id": 11,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "주황 직각삼각형 ACD에서 먼저 높이 15를 찾는다. 파랑 빗변 AB를 구할 때도 같은 높이와 밑변 전체를 쓴다.",
+    "solutionImageCaption": "AC=√(17²−8²)=15, BC=20이므로 AB=√(15²+20²)=25이다. 정답은 ⑤이다.",
     "score": 4.0,
     "level": "중",
     "category": "기하",
@@ -726,14 +826,14 @@ window.questionBank = [
     "standardUnit": "직각삼각형의 성질",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "피타고라스 정리",
       "직각삼각형",
       "길이 계산"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}\\perp\\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AD}}=17$, $\\overline{\\mathrm{BD}}=12$, $\\overline{\\mathrm{CD}}=8$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? (4점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q11.png\" />",
+    "content": "다음 그림과 같은 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}}\\perp\\overline{\\mathrm{BC}}$이고 $\\overline{\\mathrm{AD}}=17$, $\\overline{\\mathrm{BD}}=12$, $\\overline{\\mathrm{CD}}=8$일 때, $\\overline{\\mathrm{AB}}$의 길이를 구하면? (4점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q11-problem-v3.svg\" alt=\"D가 밑변 BC를 12와 8로 나눈다. D에서 A까지는 17이고 오른쪽 C가 직각이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "20",
       "21",
@@ -752,7 +852,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -785,9 +885,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "작은 직각삼각형에서AC15를 구하고 밑변분할12+8=20을 이용해 큰 직각삼각형의 빗변25를 구한다.",
+    "decisiveStep": "작은 직각삼각형에서AC15를 구하고 밑변분할12+8=20을 이용해 큰 직각삼각형의 빗변25를 구한다."
   },
   {
     "id": 12,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "다섯 선택지에서 왼쪽과 오른쪽 수가 같은지 비교한다. 값이 같은 첫째 줄과 넷째 줄을 초록색으로 표시했다.",
+    "solutionImageCaption": "①은 20=20, ④는 289=289가 성립한다. 직각삼각형인 것은 ①과 ④이다.",
     "score": 4.0,
     "level": "중",
     "category": "기하",
@@ -824,7 +936,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -856,9 +968,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "각 보기에서 가장 긴 변을 먼저 결정하고 그 제곱이 나머지 두 제곱합과 같은지 확인하여 두 정답을 고른다.",
+    "decisiveStep": "각 보기에서 가장 긴 변을 먼저 결정하고 그 제곱이 나머지 두 제곱합과 같은지 확인하여 두 정답을 고른다."
   },
   {
     "id": 13,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "네 모서리마다 초록 직각변 6과 주황 직각변 8, 파란 빗변 10이 반복된다. 같은 길이끼리 같은 색과 눈금이다.",
+    "solutionImageCaption": "안쪽 한 변은 10 cm이고 다른 직각변은 √(10²−6²)=8 cm이다. 바깥 넓이는 (6+8)²=196 cm²이며 정답은 ④이다.",
     "score": 4.0,
     "level": "중",
     "category": "기하",
@@ -869,14 +993,14 @@ window.questionBank = [
     "standardUnit": "도형의 넓이",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "정사각형",
       "넓이",
       "피타고라스 정리"
     ],
     "wide": false,
-    "content": "다음 그림에서 $\\square\\mathrm{EFGH}$는 정사각형이고, $\\overline{\\mathrm{AH}}=\\overline{\\mathrm{BE}}=\\overline{\\mathrm{CF}}=\\overline{\\mathrm{DG}}=6\\,\\mathrm{cm}$이다. $\\square\\mathrm{ABCD}$의 넓이가 $100\\,\\mathrm{cm}^2$일 때, $\\square\\mathrm{EFGH}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q13.png\" />",
+    "content": "다음 그림에서 $\\square\\mathrm{EFGH}$는 정사각형이고, $\\overline{\\mathrm{AH}}=\\overline{\\mathrm{BE}}=\\overline{\\mathrm{CF}}=\\overline{\\mathrm{DG}}=6\\,\\mathrm{cm}$이다. $\\square\\mathrm{ABCD}$의 넓이가 $100\\,\\mathrm{cm}^2$일 때, $\\square\\mathrm{EFGH}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q13-problem-v3.svg\" alt=\"바깥 정사각형 EFGH 안에 넓이 100 cm²인 정사각형 ABCD가 있다. 길이 6 cm인 네 구간에 같은 초록 눈금을 표시했다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$150\\,\\mathrm{cm}^2$",
       "$167\\,\\mathrm{cm}^2$",
@@ -895,7 +1019,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -927,9 +1051,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "안쪽 넓이100으로 한변10을 구하고 바깥 꼭짓점의 직각삼각형에서 나머지변8을 구해 바깥한변14와 넓이196을 얻는다.",
+    "decisiveStep": "안쪽 넓이100으로 한변10을 구하고 바깥 꼭짓점의 직각삼각형에서 나머지변8을 구해 바깥한변14와 넓이196을 얻는다."
   },
   {
     "id": 14,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "원을 반지름으로 나눈 여섯 영역 가운데 한 정삼각형을 짙게 표시했다. 파란 한 눈금 세 개는 모두 같은 길이다.",
+    "solutionImageCaption": "54√3=(3√3/2)s²이므로 s=6이고 반지름도 6이다. 둘레는 12π이며 정답은 ①이다.",
     "score": 5.0,
     "level": "중",
     "category": "기하",
@@ -940,7 +1076,7 @@ window.questionBank = [
     "standardUnit": "다각형과 원",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "정육각형",
       "원에 내접",
@@ -948,7 +1084,7 @@ window.questionBank = [
       "원둘레"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 넓이가 $54\\sqrt{3}$인 정육각형이 원에 내접해있다. 이 원의 둘레의 길이는? (5점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q14.png\" />",
+    "content": "오른쪽 그림과 같이 넓이가 $54\\sqrt{3}$인 정육각형이 원에 내접해있다. 이 원의 둘레의 길이는? (5점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q14-problem-v3.svg\" alt=\"파란 원의 둘레 위에 초록 정육각형의 여섯 꼭짓점이 놓인다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$12\\pi$",
       "$14\\pi$",
@@ -999,9 +1135,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "정육각형을 여섯 정삼각형으로 나누어 주어진넓이로 한변6을 복원하고 이것이 외접반지름임을 이용해 원주12π를 구한다.",
+    "decisiveStep": "정육각형을 여섯 정삼각형으로 나누어 주어진넓이로 한변6을 복원하고 이것이 외접반지름임을 이용해 원주12π를 구한다."
   },
   {
     "id": 15,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "중심 B의 60도 부채꼴을 두 색으로 나눴다. 오른쪽 삼각형 BDC를 빼면 왼쪽 주황 부분이 남는다.",
+    "solutionImageCaption": "부채꼴의 넓이는 24π, 삼각형 BDC의 넓이는 18√3이다. 색칠한 넓이는 24π−18√3 cm²이며 정답은 ②이다.",
     "score": 5.0,
     "level": "상",
     "category": "기하",
@@ -1012,7 +1160,7 @@ window.questionBank = [
     "standardUnit": "원의 성질과 도형의 넓이",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "접기",
       "수직이등분선",
@@ -1020,7 +1168,7 @@ window.questionBank = [
       "삼각형 넓이"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 반지름의 길이가 $12\\,\\mathrm{cm}$인 사분원을 $\\overline{\\mathrm{CD}}$를 접는 선으로 하여 점 $\\mathrm{B}$가 점 $\\mathrm{O}$에 오도록 접었다. 이때 색칠한 부분의 넓이를 구하면? (5점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q15.png\" />",
+    "content": "다음 그림과 같이 반지름의 길이가 $12\\,\\mathrm{cm}$인 사분원을 $\\overline{\\mathrm{CD}}$를 접는 선으로 하여 점 $\\mathrm{B}$가 점 $\\mathrm{O}$에 오도록 접었다. 이때 색칠한 부분의 넓이를 구하면? (5점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q15-problem-v3.svg\" alt=\"O가 중심인 사분원의 반지름은 12 cm이다. 선 CD로 접어 B를 O에 포갰을 때 호 OC와 두 곧은 변으로 둘러싸인 부분을 칠했다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$(16\\pi - 18\\sqrt{3})\\,\\mathrm{cm}^2$",
       "$(24\\pi - 18\\sqrt{3})\\,\\mathrm{cm}^2$",
@@ -1073,9 +1221,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "접는 선의 수직이등분 성질과 고정점C로 BOC가 정삼각형임을 확인하고 접힌 호의 중심B를 정확히 복원해60도 부채꼴에서 직각삼각형을 뺀다.",
+    "decisiveStep": "접는 선의 수직이등분 성질과 고정점C로 BOC가 정삼각형임을 확인하고 접힌 호의 중심B를 정확히 복원해60도 부채꼴에서 직각삼각형을 뺀다."
   },
   {
     "id": 16,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q16-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "A와 D에서 내린 높이로 사다리꼴을 세 부분으로 나눴다. 오른쪽 45도 삼각형에서 같은 길이에는 초록 한 눈금을 표시했다.",
+    "solutionImageCaption": "h/√3+h=9−3에서 h=9−3√3이다. 넓이는 18(3−√3) cm²이며 정답은 ⑤이다.",
     "score": 5.0,
     "level": "상",
     "category": "기하",
@@ -1086,7 +1246,7 @@ window.questionBank = [
     "standardUnit": "도형의 넓이",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "사다리꼴",
       "넓이",
@@ -1094,7 +1254,7 @@ window.questionBank = [
       "45-45-90 삼각형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$인 사다리꼴 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{B}=60^\\circ$, $\\angle\\mathrm{C}=45^\\circ$이고 $\\overline{\\mathrm{AD}}=3\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=9\\,\\mathrm{cm}$일 때, $\\square\\mathrm{ABCD}$의 넓이는? (5점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q16.png\" />",
+    "content": "다음 그림과 같이 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$인 사다리꼴 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{B}=60^\\circ$, $\\angle\\mathrm{C}=45^\\circ$이고 $\\overline{\\mathrm{AD}}=3\\,\\mathrm{cm}$, $\\overline{\\mathrm{BC}}=9\\,\\mathrm{cm}$일 때, $\\square\\mathrm{ABCD}$의 넓이는? (5점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q16-problem-v3.svg\" alt=\"사다리꼴의 윗변은 3 cm, 아랫변은 9 cm이고 B의 각은 60도, C의 각은 45도이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$8(3-\\sqrt{3})\\,\\mathrm{cm}^2$",
       "$4(2+\\sqrt{3})\\,\\mathrm{cm}^2$",
@@ -1113,10 +1273,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "sourceFidelity": "SOURCE_BYTES_PRESERVED",
     "semanticMetaEvidence": {
       "curriculumContext": "2019학년도 시행 당시 2009 개정 교육과정; 2022 개정 대응을 추측하지 않음",
@@ -1147,9 +1307,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "두 밑각의 특수각 길이비로 양쪽 수평길이를 h/√3,h로 나타내고 그 합이 밑변차6이라는 식에서 공통높이를 구하여 사다리꼴넓이를 계산한다.",
+    "decisiveStep": "두 밑각의 특수각 길이비로 양쪽 수평길이를 h/√3,h로 나타내고 그 합이 밑변차6이라는 식에서 공통높이를 구하여 사다리꼴넓이를 계산한다."
   },
   {
     "id": 17,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "A에서 이어지는 두 초록 변에는 같은 눈금을 표시했다. 각 변의 가로·세로 변화량을 옅은 점선 옆에 적었다.",
+    "solutionImageCaption": "AB=AC=10, BC=10√2이고 A가 직각이다. AC를 10√3이라고 한 ③이 옳지 않다.",
     "score": 4.0,
     "level": "중",
     "category": "기하",
@@ -1177,7 +1349,7 @@ window.questionBank = [
       "$\\triangle\\mathrm{ABC}$의 넓이는 50이다."
     ],
     "answer": "③",
-    "solution": "두 점 사이의 거리를 구해 각 문장을 확인한다.\n\n$AB=\\sqrt{(-1+7)^2+(-3-5)^2}$\n$=\\sqrt{6^2+(-8)^2}=10$이므로 ①은 옳다.\n\n$BC=\\sqrt{(1+1)^2+(11+3)^2}$\n$=\\sqrt{2^2+14^2}=\\sqrt{200}=10\\sqrt2$이므로 ②는 옳다.\n\n$CA=\\sqrt{(-7-1)^2+(5-11)^2}$\n$=\\sqrt{(-8)^2+(-6)^2}=10$이다. 따라서 $10\\sqrt3$이라고 한 ③은 옳지 않다.\n\nA에서 AB의 기울기는 $-8/6=-4/3$, AC의 기울기는 $6/8=3/4$이다. 두 기울기의 곱이 $-1$이므로 $\\angle A=90^\\circ$이고 ④는 옳다.\n넓이는 $\\dfrac12\\times10\\times10=50$이므로 ⑤도 옳다.\n\n정답은 ③이다.",
+    "solution": "좌표평면에서 각 선분의 양 끝점으로부터 가로·세로 방향의 선분을 그어 직각삼각형을 만들고 피타고라스 정리를 적용한다.\n$AB^2=6^2+8^2=100$이므로 $AB=10$이다.\n$BC^2=2^2+14^2=200$이므로 $BC=10\\sqrt2$이다.\n$CA^2=8^2+6^2=100$이므로 $CA=10$이다. 따라서 ①, ②는 옳고 $CA=10\\sqrt3$이라고 한 ③은 옳지 않다.\n또한 $AB^2+AC^2=100+100=200=BC^2$이므로 피타고라스 정리의 역에 따라 $\\angle A=90^\\circ$이다. 따라서 ④는 옳고, 삼각형의 넓이는 $\\dfrac12\\times10\\times10=50$이므로 ⑤도 옳다. 정답은 ③이다.",
     "subUnitKey": null,
     "subUnit": "두 점 사이의 거리와 직각삼각형",
     "subUnitConfidence": "historical_semantic_label_no_canonical_key",
@@ -1187,7 +1359,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -1220,9 +1392,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "좌표의가로세로차를 직각변으로 하여 피타고라스로세변을구하고 피타고라스역으로직각을판정한후 넓이와각보기를검증한다.",
+    "decisiveStep": "좌표의가로세로차를 직각변으로 하여 피타고라스로세변을구하고 피타고라스역으로직각을판정한후 넓이와각보기를검증한다."
   },
   {
     "id": 18,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "정면의 주황 면 대각선 BG와 공간을 지나는 파란 대각선 AG를 구분했다. 두 선을 직각삼각형에서 순서대로 구한다.",
+    "solutionImageCaption": "BG=√(6²+4²)=2√13, AG=√(8²+BG²)=2√29이므로 둘레는 8+2√13+2√29 cm이다. 정답은 ⑤이다.",
     "score": 5.0,
     "level": "중",
     "category": "기하",
@@ -1233,7 +1417,7 @@ window.questionBank = [
     "standardUnit": "입체도형의 길이",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "직육면체",
       "면대각선",
@@ -1241,7 +1425,7 @@ window.questionBank = [
       "피타고라스 정리"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 세 모서리의 길이가 각각 $6\\,\\mathrm{cm}, 8\\,\\mathrm{cm}, 4\\,\\mathrm{cm}$인 직육면체에서 $\\triangle\\mathrm{ABG}$의 둘레의 길이를 구하면? (5점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q18.png\" />",
+    "content": "다음 그림과 같이 세 모서리의 길이가 각각 $6\\,\\mathrm{cm}, 8\\,\\mathrm{cm}, 4\\,\\mathrm{cm}$인 직육면체에서 $\\triangle\\mathrm{ABG}$의 둘레의 길이를 구하면? (5점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q18-problem-v3.svg\" alt=\"직육면체의 모서리 세 방향의 길이는 6, 8, 4 cm이다. A·B·G를 잇는 삼각형을 파란색으로 칠했다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$8 + 2\\sqrt{29}\\,\\mathrm{cm}$",
       "$2\\sqrt{11} + 2\\sqrt{29}\\,\\mathrm{cm}$",
@@ -1260,7 +1444,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -1292,9 +1476,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "직육면체의 모서리AB8, 면대각선BG=√(6²+4²), 공간대각선AG=√(6²+8²+4²)를 구해 둘레를 합한다.",
+    "decisiveStep": "직육면체의 모서리AB8, 면대각선BG=√(6²+4²), 공간대각선AG=√(6²+8²+4²)를 구해 둘레를 합한다."
   },
   {
     "id": 19,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "공통 모서리 CD의 양쪽에 윗면과 옆면을 펼쳤다. 두 면의 주황 직선이 B에서 H까지 이어진다.",
+    "solutionImageCaption": "펼친 직사각형의 두 변은 4와 3+2=5이다. 대각선 길이는 √41 cm이며 정답은 ③이다.",
     "score": 4.0,
     "level": "중",
     "category": "기하",
@@ -1305,7 +1501,7 @@ window.questionBank = [
     "standardUnit": "입체도형의 길이",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "직육면체",
       "전개도",
@@ -1313,7 +1509,7 @@ window.questionBank = [
       "피타고라스 정리"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같은 직육면체의 꼭짓점 $\\mathrm{B}$에서 겉면을 따라 모서리 $\\mathrm{CD}$를 지나 꼭짓점 $\\mathrm{H}$에 이르는 최단 거리는? (4점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q19.png\" />",
+    "content": "오른쪽 그림과 같은 직육면체의 꼭짓점 $\\mathrm{B}$에서 겉면을 따라 모서리 $\\mathrm{CD}$를 지나 꼭짓점 $\\mathrm{H}$에 이르는 최단 거리는? (4점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q19-problem-v3.svg\" alt=\"직육면체의 윗면에서 B를 출발해 모서리 CD를 지난 뒤 H에 닿는다. 방향별 모서리 길이는 3, 4, 2 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$6\\,\\mathrm{cm}$",
       "$\\sqrt{38}\\,\\mathrm{cm}$",
@@ -1332,7 +1528,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -1365,9 +1561,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "지정모서리CD를 경계로 두 면을 펼쳐 수직길이합5와 모서리방향길이4로 직각삼각형을 만들고 최단거리√41을 구한다.",
+    "decisiveStep": "지정모서리CD를 경계로 두 면을 펼쳐 수직길이합5와 모서리방향길이4로 직각삼각형을 만들고 최단거리√41을 구한다."
   },
   {
     "id": 20,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "V, H, B를 지나는 평면으로 자르면 직각삼각형이 보인다. 초록 직각변 HB는 정사각형 대각선의 반이다.",
+    "solutionImageCaption": "HB=3√2 cm이고 VB=6 cm이다. 높이는 √(36−18)=3√2 cm이고 정답은 ①이다.",
     "score": 4.0,
     "level": "중",
     "category": "기하",
@@ -1378,14 +1586,14 @@ window.questionBank = [
     "standardUnit": "입체도형의 길이",
     "standardUnitOrder": null,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "정사각뿔",
       "밑면 중심",
       "피타고라스 정리"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 밑면의 한 변의 길이와 옆면의 한 모서리의 길이가 $6\\,\\mathrm{cm}$인 정사각뿔의 높이는? (4점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q20.png\" />",
+    "content": "오른쪽 그림과 같이 밑면의 한 변의 길이와 옆면의 한 모서리의 길이가 $6\\,\\mathrm{cm}$인 정사각뿔의 높이는? (4점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q20-problem-v3.svg\" alt=\"꼭짓점 V에서 밑면 가운데 H로 내려간 점선이 높이이다. 밑면 한 변과 옆 모서리의 길이가 6 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$3\\sqrt{2}$",
       "$\\sqrt{19}$",
@@ -1437,9 +1645,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "밑면 대각선의 절반3√2를 구하고 옆모서리6과 높이가 만드는 직각삼각형으로 높이3√2를 계산한다.",
+    "decisiveStep": "밑면 대각선의 절반3√2를 구하고 옆모서리6과 높이가 만드는 직각삼각형으로 높이3√2를 계산한다."
   },
   {
     "id": 21,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "위는 원래 평균과 한 변량의 예시이다. 아래는 모든 변량을 세 배하고 1을 더한 뒤이며, 평균과 그 변량 사이 거리가 세 배가 된다.",
+    "solutionImageCaption": "평균은 3×33+1=100이다. 평균에서의 거리가 모두 세 배가 되어 분산은 3²×3²=81이다.",
     "score": 7.0,
     "level": "중",
     "category": "통계",
@@ -1503,9 +1723,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "변량3x+1에서 평균을100으로 변환하고 표준편차를3배하여9로 얻은 뒤 분산81로 제곱한다.",
+    "decisiveStep": "변량3x+1에서 평균을100으로 변환하고 표준편차를3배하여9로 얻은 뒤 분산81로 제곱한다."
   },
   {
     "id": 22,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q22-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "왼쪽은 6과 8이 직각변이고 주황 빗변이 a이다. 오른쪽은 8이 빗변이고 주황 직각변이 a이다.",
+    "solutionImageCaption": "a가 빗변이면 a=10 cm이다. 8이 빗변이면 a=2√7 cm이다.",
     "score": 6.0,
     "level": "중",
     "category": "기하",
@@ -1569,9 +1801,21 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "미지변a가 빗변인 경우와8이 빗변인 경우를 나누어 피타고라스 관계를 풀고6이 빗변일 가능성은 최대변 조건으로 배제한다.",
+    "decisiveStep": "미지변a가 빗변인 경우와8이 빗변인 경우를 나누어 피타고라스 관계를 풀고6이 빗변일 가능성은 최대변 조건으로 배제한다."
   },
   {
     "id": 23,
+    "solutionImage": "assets/images/19_연향중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "접는 선 AC 양쪽의 같은 각과 평행선의 엇각을 표시했다. 그 결과 AE와 EC의 길이가 같아 두 곳에 같은 초록 눈금을 그렸다.",
+    "solutionImageCaption": "AD=8이고 AE=CE=25/4이므로 DE=7/4이다. 삼각형 CDE의 넓이는 21/4 cm²이다.",
     "score": 7.0,
     "level": "상",
     "category": "기하",
@@ -1582,7 +1826,7 @@ window.questionBank = [
     "standardUnit": "직각삼각형과 도형의 넓이",
     "standardUnitOrder": null,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "접기",
       "대칭",
@@ -1591,10 +1835,10 @@ window.questionBank = [
       "삼각형 넓이"
     ],
     "wide": false,
-    "content": "[서술형 3] 아래 그림과 같이 $\\overline{\\mathrm{AB}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\mathrm{cm}$인 직사각형 $\\mathrm{ABCD}$를 대각선 $\\mathrm{AC}$를 접는 선으로 하여 접었을 때, $\\triangle\\mathrm{CDE}$의 넓이를 구하면? (단, 풀이 과정을 자세히 써라.) (7점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/s03.png\" />",
+    "content": "[서술형 3] 아래 그림과 같이 $\\overline{\\mathrm{AB}}=6\\,\\mathrm{cm}$, $\\overline{\\mathrm{AC}}=10\\,\\mathrm{cm}$인 직사각형 $\\mathrm{ABCD}$를 대각선 $\\mathrm{AC}$를 접는 선으로 하여 접었을 때, $\\triangle\\mathrm{CDE}$의 넓이를 구하면? (단, 풀이 과정을 자세히 써라.) (7점)<br><img src=\"assets/images/19_연향중_2학기_중간_중3_수학/q23-problem-v3.svg\" alt=\"직사각형을 대각선 AC로 접었다. B는 B′로 옮겨갔으며 접힌 변 B′C가 윗변 AD와 E에서 만난다. 오른쪽의 삼각형 CDE를 칠했다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [],
     "answer": "$\\dfrac{21}{4}\\,\\mathrm{cm}^2$",
-    "solution": "직사각형에서 $AB=6$, 대각선 $AC=10$이므로 피타고라스 정리에 따라\n$BC=\\sqrt{10^2-6^2}=8$이다.\n좌표를 $B=(0,0)$, $A=(0,6)$, $C=(8,0)$, $D=(8,6)$으로 둔다.\n\n접은 뒤 점 $B$는 대각선 $AC$에 대하여 대칭인 점 $B'$로 옮겨진다. $AC$에 $B$에서 내린 수선의 발을 $O$라 하면 접는 선은 $BB'$의 수직이등분선이므로 $O$는 $BB'$의 중점이다.\n삼각형 $ABC$의 넓이는 $24$이고 밑변 $AC=10$이므로\n$\\dfrac12\\times10\\times BO=24$,\n$BO=\\dfrac{24}{5}$이다.\n$AC$의 방향은 $(8,-6)$이고 이에 수직인 방향은 $(3,4)$이므로 $BO$의 수평·수직 성분 비는 $3:4$이다. 따라서\n$O=\\left(\\dfrac35\\times\\dfrac{24}{5},\\dfrac45\\times\\dfrac{24}{5}\\right)=\\left(\\dfrac{72}{25},\\dfrac{96}{25}\\right)$,\n$B'=2O=\\left(\\dfrac{144}{25},\\dfrac{192}{25}\\right)$이다.\n\n접은 선분 $BC$는 $B'C$가 된다. 그림의 $E$는 $B'C$와 $AD$의 교점이고, $AD$는 $y=6$인 직선이다. $B'C$의 기울기는\n$\\dfrac{0-\\frac{192}{25}}{8-\\frac{144}{25}}=-\\dfrac{24}{7}$이다.\n따라서 $C=(8,0)$에서 $y=6$인 점의 $x$좌표는\n$6=-\\dfrac{24}{7}(x-8)$에서 $x=\\dfrac{25}{4}$이다. 즉 $E=\\left(\\dfrac{25}{4},6\\right)$이고\n$DE=8-\\dfrac{25}{4}=\\dfrac74$이다.\n\n$\\triangle CDE$는 $D$에서 직각이고 $CD=AB=6$이므로 넓이는\n$\\dfrac12\\times6\\times\\dfrac74=\\dfrac{21}{4}\\,\\mathrm{cm}^2$이다.",
+    "solution": "직각삼각형 $ABC$에서 $AB=6$, $AC=10$이므로 $BC=\\sqrt{10^2-6^2}=8$이다. 따라서 직사각형에서 $AD=8$, $CD=6$이다.\n접힌 점 $B$의 위치를 $B'$라 하면 접는 선 $AC$에 대하여 대응하는 각이 같으므로 $\\angle ACB'=\\angle ACB$이다. $C,E,B'$는 한 직선 위에 있으므로 $\\angle ACE=\\angle ACB$이다.\n또한 $AD\\parallel BC$이고 $E$가 $AD$ 위에 있으므로 엇각에 따라 $\\angle EAC=\\angle ACB$이다. 따라서 $\\angle ACE=\\angle EAC$이고, 삼각형 $AEC$는 $AE=CE$인 이등변삼각형이다.\n$AE=CE=x$라 하면 $DE=8-x$이다. 직각삼각형 $CDE$에서\n$x^2=6^2+(8-x)^2$이므로 $16x=100$, $x=25/4$이다. 따라서 $DE=8-25/4=7/4$이다.\n구하는 넓이는 $\\dfrac12\\times CD\\times DE=\\dfrac12\\times6\\times\\dfrac74=\\dfrac{21}{4}\\,\\mathrm{cm}^2$이다.",
     "subUnitKey": null,
     "subUnit": "접기와 좌표·수선",
     "subUnitConfidence": "historical_semantic_label_no_canonical_key",
@@ -1606,7 +1850,7 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "sourceFidelity": "SOURCE_BYTES_PRESERVED",
     "semanticMetaEvidence": {
@@ -1640,5 +1884,13 @@ window.questionBank = [
       "difficultyStatus": "ASSESSED_FROM_SOLUTION",
       "sourceFidelity": "SOURCE_BYTES_PRESERVED"
     }
+  ,
+    "conceptClusterKey": null,
+    "rpmPrimaryPath": null,
+    "rpmPrimaryId": null,
+    "rpmL3": null,
+    "rpmL4": null,
+    "primaryMethod": "접기전후대응각과평행선엇각으로AE=CE를정하고,직각삼각형CDE에서x²=6²+(8−x)²를풀어DE=7/4와넓이21/4를구한다.",
+    "decisiveStep": "접기전후대응각과평행선엇각으로AE=CE를정하고,직각삼각형CDE에서x²=6²+(8−x)²를풀어DE=7/4와넓이21/4를구한다."
   }
 ];

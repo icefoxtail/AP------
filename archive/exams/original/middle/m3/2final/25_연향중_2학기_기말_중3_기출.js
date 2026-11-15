@@ -35,6 +35,18 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImageAlt": "해설 그림: 같은 중심 O인 두 원에서 작은 원에 접하는 현 AB의 접점 M은 중점이라 AM=BM=6cm이고, 직각삼각형 OMA의 두 반지름 r, R로 색칠한 고리 영역을 나타낸다.",
     "solutionImageCaption": "R²−r²=36이므로 색칠한 부분의 넓이는 πR²−πr²=π(R²−r²)=36π cm²이다. 정답 ③."
+  ,
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "작은 원의 반지름을 큰 원의 현까지 거리로 놓고 반현 길이의 제곱이 두 반지름 제곱 차임을 이용해 고리 넓이를 구한다.",
+    "decisiveStep": "작은 원의 반지름을 큰 원의 현까지 거리로 놓고 반현 길이의 제곱이 두 반지름 제곱 차임을 이용해 고리 넓이를 구한다."
   },
   {
     "id": 2,
@@ -71,6 +83,18 @@ window.questionBank = [
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O에서 OM⊥AB, ON⊥AC이고 OM=ON인 것을 같은 길이 색으로, 그 결과 같아지는 현 AB=AC와 이등변삼각형의 밑각 ∠B=∠C를 색으로 묶어 표시한다.",
     "solutionImageCaption": "OM=ON이므로 두 현의 길이가 같아 AB=AC이고, △ABC는 꼭지각 ∠BAC=38°인 이등변삼각형이어서 밑각 ∠B=∠C이다. 따라서 x=(180°−38°)÷2=71°이고 정답은 ①이다."
+  ,
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "중심에서 같은 거리인 두 현이 같아 이등변삼각형이 된다는 점이 핵심이고 내각 합으로 밑각을 구한다.",
+    "decisiveStep": "중심에서 같은 거리인 두 현이 같아 이등변삼각형이 된다는 점이 핵심이고 내각 합으로 밑각을 구한다."
   },
   {
     "id": 3,
@@ -107,6 +131,18 @@ window.questionBank = [
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O에 내접하는 이등변삼각형 ABC. 중심 O에서 AB에 내린 수선 OD가 AB와 E에서 직각으로 만나고, AE=BE=3(같은 길이, 주황), OA=6이며 직각삼각형 OEA가 파랑으로 칠해져 있다.",
     "solutionImageCaption": "AE=BE=3, OA=6인 직각삼각형 OEA에서 OE²=6²−3²=27이므로 OE=3√3 (정답 ③)"
+  ,
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "중심에서 현에 내린 수선이 현을 이등분하므로 반현과 반지름으로 중심거리를 피타고라스 계산한다.",
+    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분하므로 반현과 반지름으로 중심거리를 피타고라스 계산한다."
   },
   {
     "id": 4,
@@ -143,6 +179,18 @@ window.questionBank = [
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 두 접선 PA, PB(같은 길이, 분홍)와 OP가 60°를 30°씩 둘로 나누고 접점 B에서 반지름 OB=3cm가 접선과 직각을 이루는 그림.",
     "solutionImageCaption": "한 점 P에서 원에 그은 두 접선의 길이는 같으므로 PA=PB이고, OP는 ∠APB를 이등분하므로 ∠BPO=30°이다. OB⊥PB이므로 tan30°=3/PB에서 PB=3√3 cm이고 PA+PB=6√3 cm이다. 정답 ⑤."
+  ,
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_LENGTH",
+    "crossConceptKeys": ["CC_TRIG_RATIO"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 접선의 동일 길이와 중심선의 각 이등분으로 30도 직각삼각형을 구성하고 접선 길이의 합을 얻는다.",
+    "decisiveStep": "두 접선의 동일 길이와 중심선의 각 이등분으로 30도 직각삼각형을 구성하고 접선 길이의 합을 얻는다."
   },
   {
     "id": 5,
@@ -179,6 +227,18 @@ window.questionBank = [
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원 O가 변과 만나는 접점 D, E, F가 있다. AF=AE=5, BF=BD=4, CE=CD=2인 접선의 길이가 같은 쌍이 각각 같은 색이다.",
     "solutionImageCaption": "같은 점에서 그은 접선의 길이는 같다. AF=AE=5, BF=BD=4, CE=CD=2이므로 BC=BD+DC=4+2=6cm이고 정답은 ④이다."
+  ,
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_LENGTH",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "세 꼭짓점의 접선 조각을 같은 길이끼리 옮겨 BC를 두 남은 접선 조각의 합으로 나타낸다.",
+    "decisiveStep": "세 꼭짓점의 접선 조각을 같은 길이끼리 옮겨 BC를 두 남은 접선 조각의 합으로 나타낸다."
   },
   {
     "id": 6,
@@ -215,6 +275,18 @@ window.questionBank = [
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD와 점 C에서의 접선 TT′이 있다. 호 AB와 호 BC는 76도로 같은 색이고 호 AD는 126도, 호 CD는 82도이며 각 BCA는 38도, 각 ACD는 63도, 접선과 현 CD가 이루는 각이 x이다.",
     "solutionImageCaption": "∠BCA=38°이므로 호 AB=호 BC=76°이고 ∠ACD=63°이므로 호 AD=126°이다. 호 CD=360°−(76°+76°+126°)=82°이고 접선과 현 CD가 이루는 각은 호 CD의 원주각과 같으므로 x=82°÷2=41°이다. 정답은 ①이다."
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "원주각에서 각 호의 크기를 복원하고 같은 호 조건으로 남은 호를 구한 다음 접선과 현의 각으로 반감한다.",
+    "decisiveStep": "원주각에서 각 호의 크기를 복원하고 같은 호 조건으로 남은 호를 구한 다음 접선과 현의 각으로 반감한다."
   },
   {
     "id": 7,
@@ -251,6 +323,18 @@ window.questionBank = [
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 위에서 호 AC와 호 BD를 같은 파랑으로 칠해 둘 다 60°임을 보이고, 두 현 AB, CD가 만나는 점 P에서 ∠APC를 따로 표시한다.",
     "solutionImageCaption": "∠APC=(호 AC+호 BD)÷2=(60°+60°)÷2=60°이다. 정답 ⑤."
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "같은 두 호가 보는 원주각을 이용해 원 안 두 현의 교각을 두 호의 합 절반으로 읽는다.",
+    "decisiveStep": "같은 두 호가 보는 원주각을 이용해 원 안 두 현의 교각을 두 호의 합 절반으로 읽는다."
   },
   {
     "id": 8,
@@ -287,6 +371,18 @@ window.questionBank = [
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O에서 ∠AOC=80°가 보는 호 AC 80°를 둘로 나눈 같은 길이의 호 AB, BC 40°를 같은 색으로, 호 AB와 BC를 보는 원주각 ∠APB, ∠BQC를 같은 색으로 표시한다.",
     "solutionImageCaption": "중심각 ∠AOC=80°이므로 호 AC=80°이고, 호 AB=호 BC=40°이다. ∠BQC는 호 BC를 보는 원주각(∠APB와도 같음)이므로 40°÷2=20°이고 정답은 ②이다."
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "주어진 중심각의 호를 같은 두 호로 나눈 뒤 그 절반인 원주각을 읽는다.",
+    "decisiveStep": "주어진 중심각의 호를 같은 두 호로 나눈 뒤 그 절반인 원주각을 읽는다."
   },
   {
     "id": 9,
@@ -323,6 +419,18 @@ window.questionBank = [
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O에 내접하는 사각형 ABCD와 반지름 OA, OB, OC(초록, 같은 길이). ∠BAO와 ∠ABO(80°)는 파랑, ∠BCO와 ∠OBC(25°)는 주황으로 묶였고 ∠ABC=55°가 표시되어 있다.",
     "solutionImageCaption": "∠ABC=∠ABO−∠OBC=80°−25°=55°이고 내접사각형의 마주 보는 각의 합은 180°이므로 ∠ADC=180°−55°=125° (정답 ④)"
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": null,
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "두 반지름 삼각형의 밑각에서 사각형 한 내각을 구하고 내접사각형의 대각 합 180도를 적용한다.",
+    "decisiveStep": "두 반지름 삼각형의 밑각에서 사각형 한 내각을 구하고 내접사각형의 대각 합 180도를 적용한다."
   },
   {
     "id": 10,
@@ -359,6 +467,18 @@ window.questionBank = [
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD에서 P, Q에서 두 할선이 만드는 ∠P=30°, ∠Q=40°와 네 호의 크기 a, d+80°, a+60°, d, 그리고 호 a와 d를 보는 원주각 x를 나타낸 그림.",
     "solutionImageCaption": "호 AB, BC, CD, DA를 a, b, c, d라 하면 P에서 30°=(c−a)/2이므로 c=a+60°, Q에서 40°=(b−d)/2이므로 b=d+80°이다. 네 호의 합이 360°이므로 a+d=110°이고 ∠x는 호 BAD를 보는 원주각이므로 x=(a+d)/2=55°이다. 정답 ③."
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_SIMULTANEOUS_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 외부 할선각으로 두 호의 차를 식으로 세우고 원 전체 호의 합과 결합해 목표 원주각이 보는 호의 합을 결정한다.",
+    "decisiveStep": "두 외부 할선각으로 두 호의 차를 식으로 세우고 원 전체 호의 합과 결합해 목표 원주각이 보는 호의 합을 결정한다."
   },
   {
     "id": 11,
@@ -395,6 +515,18 @@ window.questionBank = [
     "solutionImageLayout": "fullwidth",
     "solutionImageAlt": "해설 그림: 원 O의 접선 PA, PB가 P에서 만나 각 P는 50도이고 중심각 AOB는 130도이다. 점 C는 작은 호 AB 위에 있고 각 PAC는 호 AC의 절반, 각 PBC는 호 CB의 절반이다.",
     "solutionImageCaption": "∠P=50°이므로 작은 호 AB=130°이다. ∠PAC=½호 AC, ∠PBC=½호 BC이고 호 AC+호 BC=130°이므로 ∠PAC+∠PBC=65°이고 정답은 ④이다."
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 접선의 끼인각에서 작은 호의 중심각을 얻고 두 접현각의 합을 그 호의 절반으로 묶는다.",
+    "decisiveStep": "두 접선의 끼인각에서 작은 호의 중심각을 얻고 두 접현각의 합을 그 호의 절반으로 묶는다."
   },
   {
     "id": 12,
@@ -423,6 +555,18 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "짝수 개 자료를 정렬하여 가운데 두 값의 평균으로 중앙값을 결정한다.",
+    "decisiveStep": "짝수 개 자료를 정렬하여 가운데 두 값의 평균으로 중앙값을 결정한다."
   },
   {
     "id": 13,
@@ -455,6 +599,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 학생 11명이 본 영화 수의 점도표. 3편이 파란 점 3개로 가장 높고, 중앙값 b는 4, 평균 a는 5의 자리에 점선이 있다.",
     "solutionImageCaption": "점 하나가 학생 한 명이다. 3이 점 3개(파란 점)로 가장 많아 최빈값 c=3이다. 작은 쪽에서 6번째 값 4가 중앙값 b이고, 합 55÷11=5가 평균 a이다. 따라서 a>b>c이므로 정답은 ①이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "자료의 합·가운데 순서·최대 빈도로 평균·중앙값·최빈값을 구한 후 세 대푯값의 대소를 비교한다.",
+    "decisiveStep": "자료의 합·가운데 순서·최대 빈도로 평균·중앙값·최빈값을 구한 후 세 대푯값의 대소를 비교한다."
   },
   {
     "id": 14,
@@ -490,6 +646,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 수학 성적 줄기와 잎 그림. 작은 쪽 8번째 잎 76과 9번째 잎 80에 동그라미와 번호 8, 9가 있고, 줄기 8의 잎 0 세 개를 묶는 괄호 아래에 3이 쓰여 있다.",
     "solutionImageCaption": "16개이므로 중앙값 a는 8번째 76과 9번째 80의 평균 78이고, 가장 많이 나온 값 b는 80(3번)이므로 b−a=80−78=2이다. 정답은 ①이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "줄기와 잎에서 정렬 순서를 읽고 짝수 자료 중앙의 두 값과 최대 빈도값을 골라 차를 구한다.",
+    "decisiveStep": "줄기와 잎에서 정렬 순서를 읽고 짝수 자료 중앙의 두 값과 최대 빈도값을 골라 차를 구한다."
   },
   {
     "id": 15,
@@ -522,6 +690,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 자료 C의 점도표. 6과 10에 파란 점이 세 개씩 쌓여 있고 그 사이에는 점이 없으며, 가운데 8에 중앙값 점선이 있다.",
     "solutionImageCaption": "점 하나가 자료 하나이다. 6과 10이 각각 세 번씩 나타나므로(파란 점) 최빈값은 6, 10이다. 작은 순서로 3번째·4번째 값이 6, 10이므로 중앙값은 (6+10)÷2=8(점선)이다. 따라서 중앙값이 9라고 한 ⑤가 옳지 않으므로 정답은 ⑤이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "세 자료의 평균·중앙값·복수 최빈값을 정의에 따라 각각 확인해 거짓 설명을 고른다.",
+    "decisiveStep": "세 자료의 평균·중앙값·복수 최빈값을 정의에 따라 각각 확인해 거짓 설명을 고른다."
   },
   {
     "id": 16,
@@ -554,6 +734,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 주사위 눈 8개의 점도표. 1, 2, 3, 4, 7에는 점이 1개씩, 5에는 점이 3개 쌓여 있다.",
     "solutionImageCaption": "합 32로 평균은 4(ㄱ 옳음), 4와 5의 평균인 중앙값은 4.5(ㄴ 옳지 않음), 5가 3번 나와 최빈값은 5(ㄷ 옳음), 편차 제곱의 합 26으로 분산 13/4, 표준편차 √13/2(ㄹ 옳음)이다. 옳은 것은 ㄱ, ㄷ, ㄹ의 3개이므로 정답은 ④이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": ["CC_MEAN","CC_MEDIAN","CC_MODE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "대푯값 진술을 먼저 확인하고 평균에 대한 편차 제곱의 평균과 제곱근으로 표준편차 진술을 판단한다.",
+    "decisiveStep": "대푯값 진술을 먼저 확인하고 평균에 대한 편차 제곱의 평균과 제곱근으로 표준편차 진술을 판단한다."
   },
   {
     "id": 17,
@@ -582,6 +774,18 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "평균으로 미지 두 수의 합을 얻고 분산식을 전개한 뒤 그 합을 대입해 제곱합을 직접 결정한다.",
+    "decisiveStep": "평균으로 미지 두 수의 합을 얻고 분산식을 전개한 뒤 그 합을 대입해 제곱합을 직접 결정한다."
   },
   {
     "id": 18,
@@ -614,6 +818,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 점도표 두 개. 왼쪽은 변량 1, 2, 6과 평균 M=3의 점선, 오른쪽은 3씩 더한 4, 5, 9와 평균 M+3=6의 점선이며 각 점 위의 평균과의 차 -2, -1, +3은 두 그림이 같다.",
     "solutionImageCaption": "예: 변량 1, 2, 6의 평균이 M=3이고 각각 3을 더한 4, 5, 9의 평균은 M+3=6이다. 편차는 -2, -1, 3으로 그대로이므로 분산은 S²으로 변하지 않는다. 따라서 평균 M+3, 분산 S²이고 정답은 ②이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "모든 변량에 같은 수를 더하면 평균만 그만큼 이동하고 평균 기준 편차는 그대로여서 분산이 보존된다.",
+    "decisiveStep": "모든 변량에 같은 수를 더하면 평균만 그만큼 이동하고 평균 기준 편차는 그대로여서 분산이 보존된다."
   },
   {
     "id": 19,
@@ -651,6 +867,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 필기·실기 점수 산점도. 필기 85점 이상 영역과 실기 85점 이상 영역이 칠해져 있고 그 안의 점 8개에 동그라미가 있으며, 실기 90점 가로선이 그어져 있다.",
     "solutionImageCaption": "③은 필기 85점 이상 7명과 실기 85점 이상 중 나머지 1명을 합해 8명이므로 옳다. ⑤는 실기 90점 이상 6명의 필기 점수 85,90,90,95,95,100의 평균 92.5점이므로 옳다. ②는 5명으로 25%, ④는 3명으로 15%라 옳지 않다. 정답은 ③, ⑤이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "산점도의 각 점을 점수 범위의 교집합·합집합으로 분류해 도수·백분율·조건부 부분집합 평균을 비교한다.",
+    "decisiveStep": "산점도의 각 점을 점수 범위의 교집합·합집합으로 분류해 도수·백분율·조건부 부분집합 평균을 비교한다."
   },
   {
     "id": 20,
@@ -687,6 +915,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 수학·과학 성적 예시 산점도. 점들이 오른쪽 위로 띠 모양으로 모여 있고 점선 y=x 위쪽에 D, 아래쪽에 B, 띠의 오른쪽 위 끝에 A, 왼쪽 아래 끝에 C가 있다.",
     "solutionImageCaption": "예: 점선은 수학 점수와 과학 점수가 같은 곳이다. D는 점선 위쪽(왼쪽 위)에 있어 과학 성적이 수학 성적보다 높으므로 ‘수학 성적이 더 우수하다’고 한 ③이 옳지 않다. 따라서 정답은 ③이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "가로·세로 좌표의 대소로 각 학생 성적 진술을 판단하고 전체 점들의 상승 방향으로 양의 상관관계를 확인한다.",
+    "decisiveStep": "가로·세로 좌표의 대소로 각 학생 성적 진술을 판단하고 전체 점들의 상승 방향으로 양의 상관관계를 확인한다."
   },
   {
     "id": 21,
@@ -718,6 +958,18 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 원 O의 현 AB의 중점 M에서 CM이 AB에 수직이고 C, M, O가 한 직선 위에 있다. AM=BM=8cm가 같은 색, CM=4cm, OM=6cm, CA=4√5cm이며 OA와 OC는 같은 반지름으로 같은 색이다.",
     "solutionImageCaption": "△AMC에서 CM=4cm이고 직각삼각형 OMA에서 OM=6cm이므로 반지름 OC=6+4=10cm이다. 따라서 원 O의 넓이는 100πcm²이다."
+  ,
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "먼저 원주점에서 현까지 길이를 구하고 수직이등분선 위 중심의 위치를 x로 놓아 반지름 조건의 피타고라스 방정식을 세운다.",
+    "decisiveStep": "먼저 원주점에서 현까지 길이를 구하고 수직이등분선 위 중심의 위치를 x로 놓아 반지름 조건의 피타고라스 방정식을 세운다."
   },
   {
     "id": 22,
@@ -749,6 +1001,18 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 반지름 9cm인 원에서 호 AB는 파랑 120°, 호 CD는 주황 60°로 칠하고, 두 호 사이의 호 AC와 호 BD를 x, y로 표시해 P에서 만나는 할선의 각 30°와 함께 보여 준다.",
     "solutionImageCaption": "x+y=180°, x−y=60°에서 x=120°이므로 호 AC의 길이는 18π×120/360=6π cm이다."
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_SIMULTANEOUS_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "주어진 호 길이를 중심각으로 바꾸고 두 할선각의 호 차 조건과 전체 호의 합으로 필요한 호를 결정한다.",
+    "decisiveStep": "주어진 호 길이를 중심각으로 바꾸고 두 할선각의 호 차 조건과 전체 호의 합으로 필요한 호를 결정한다."
   },
   {
     "id": 23,
@@ -773,5 +1037,17 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "templateKey": null,
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "선형변환의 평균과 분산을 역으로 환원한 뒤 원자료 편차 제곱식을 전개해 원자료 제곱합을 구한다.",
+    "decisiveStep": "선형변환의 평균과 분산을 역으로 환원한 뒤 원자료 편차 제곱식을 전개해 원자료 제곱합을 구한다."
   }
 ];

@@ -1,0 +1,641 @@
+{
+  "schemaVersion": "archive-source-narrow-independent-crosscheck-v1",
+  "createdAt": "2026-11-15T01:15:52.403Z",
+  "reviewer": "/root/registrar_repair",
+  "scope": "Independent crosscheck of 22 specified solution/alt repairs against actual stems, choices, answers and images",
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "automaticMetadataApproval": false,
+  "proposalSha256": "f1ad5cae10923f8b4bcea820e52f053e36bc2887184f2dd64a7617b8aa7bef2c",
+  "baseCommit": "916bc54c8ada1a99a0a390f6fff891c97a45987d",
+  "sourceInspection": {
+    "files": 14,
+    "items": 22,
+    "changedFields": 23,
+    "unlistedQuestionOrFieldChanges": [],
+    "answerChanges": 0,
+    "imageFileChanges": 0,
+    "allBeforeAfterFieldHashesVerified": true
+  },
+  "fieldHashFormat": "sha256(JSON.stringify(fieldValue))",
+  "summary": {
+    "narrowRepairConfirmed": 20,
+    "additionalExplanationFixRequired": 1,
+    "sourceConditionEvidenceRequired": 1
+  },
+  "sourceConditionCounterexample": {
+    "examId": "E049",
+    "sourceOrdinal": 10,
+    "a": 8,
+    "b": 1,
+    "c": -6,
+    "d": 3,
+    "conclusion": "The displayed identity holds, but does not force the intended coefficient comparison. The missing natural-number condition must not be invented."
+  },
+  "inspectedAssets": [
+    {
+      "path": "archive/assets/images/20_신흥중_1학기_기말_중2_수학/q10.png",
+      "sha256": "de0e0869354f5b046f4fd983ad9c969e2a6b638587c702934d0bb6327c58aa30",
+      "baseCommitUnchanged": true,
+      "visuallyInspected": true
+    },
+    {
+      "path": "archive/assets/images/20_신흥중_1학기_기말_중2_수학/q14_1.png",
+      "sha256": "b5e05e20efdf34122a91fbce3cf13d038974b16033acf00e6a1e7d59f2992aa9",
+      "baseCommitUnchanged": true,
+      "visuallyInspected": true
+    },
+    {
+      "path": "archive/assets/images/20_신흥중_1학기_기말_중2_수학/q14_2.png",
+      "sha256": "be8485674744d7391739ae4d8e070ca64499abc4824a8d7e75775796e1487f08",
+      "baseCommitUnchanged": true,
+      "visuallyInspected": true
+    },
+    {
+      "path": "archive/assets/images/20_신흥중_1학기_기말_중2_수학/q14_3.png",
+      "sha256": "753e35ed76edc0de3c204e3473b97d147d72bfcbf01b634f57175824f9164b15",
+      "baseCommitUnchanged": true,
+      "visuallyInspected": true
+    },
+    {
+      "path": "archive/assets/images/20_신흥중_1학기_기말_중2_수학/q14_4.png",
+      "sha256": "dbb09f59bf5bfeb1f05765a12c47a753b34b7687071b4f00d623991fa7473323",
+      "baseCommitUnchanged": true,
+      "visuallyInspected": true
+    },
+    {
+      "path": "archive/assets/images/20_신흥중_1학기_기말_중2_수학/q14_5.png",
+      "sha256": "21f8a80122c429881c8e7a837a8ea9896f94eed00953202d28dc17259f3fc5ff",
+      "baseCommitUnchanged": true,
+      "visuallyInspected": true
+    },
+    {
+      "path": "archive/assets/images/19_연향중_1학기_기말_중2_수학/q19.png",
+      "sha256": "ccc08faf461f08e16e52665e1263bc3b9312a39845a8b3cc45faf922b83847c1",
+      "baseCommitUnchanged": true,
+      "visuallyInspected": true
+    },
+    {
+      "path": "archive/assets/images/21_매산중_1학기_기말_중2_수학/q17.png",
+      "sha256": "01662cbc9f9c86a9be73cd58180f36e10e6e3ead01e9b4eff271eaeff7a798cc",
+      "baseCommitUnchanged": true,
+      "visuallyInspected": true
+    }
+  ],
+  "rows": [
+    {
+      "examId": "E049",
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_abb6a08af167493e0bc079d8f4c3f20ca2eb59f985d307fca0498101f896b955",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "b133ebf8ce48e5d0f7f9e59a958431bd631a7937",
+      "afterSourceBlobSha": "31fc952200884ef9316a415371f8ef2a1bb7a255",
+      "beforeFieldSha256": {
+        "solution": "05446b46e9f4d128badbb71e95686837b7a6460ba7c2e043cf7c51f0998ce2d8"
+      },
+      "afterFieldSha256": {
+        "solution": "be55b039ed485160481526dc1e0e0fc1725d2ce8caee5df3d7afbc5464e54542"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "기약분모의 소인수로 실제 다섯 분수를 각각 판별했다. 수리된 선택지 순서와 결론이 현재 choices 및 answer와 일치한다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E049",
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_f5911d30917bd394d57148d30137f12abaec8702a5e005019a3090868db26730",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "b133ebf8ce48e5d0f7f9e59a958431bd631a7937",
+      "afterSourceBlobSha": "31fc952200884ef9316a415371f8ef2a1bb7a255",
+      "beforeFieldSha256": {
+        "solution": "27d25e9c0d1de4b688d91de8fc21c03f01e402119da4d96fa169983f057e1a75"
+      },
+      "afterFieldSha256": {
+        "solution": "d78b2cc44d0f41a1b02569f3e9d6b556b7d827ac22250a0cf467fccdd005293d"
+      },
+      "decision": "HOLD_SOURCE_CONDITION_EVIDENCE",
+      "independentCheck": "지수 전개에서 x의 지수가 3b라는 수정은 옳다. 그러나 실제 stem에는 a,b,c,d가 자연수라는 조건이 없다. c가 자유인 상태에서는 분모 상수만 비교해 b를 강제할 수 없으므로 원문 조건 근거가 필요하다.",
+      "difficultyAssessment": {
+        "action": "HOLD_UNTIL_SOURCE_CONDITION_SETTLED",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E049",
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_90c0f4ad9847c805767b6aa6036e42930ab78424b27c8dfc36d24bbf15d90a48",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "b133ebf8ce48e5d0f7f9e59a958431bd631a7937",
+      "afterSourceBlobSha": "31fc952200884ef9316a415371f8ef2a1bb7a255",
+      "beforeFieldSha256": {
+        "solution": "c4e4e6f8255885547cca9c49759b8a7773ba8954efcf74cffd5982fa39bae522"
+      },
+      "afterFieldSha256": {
+        "solution": "2144b4dfb31112a2d32509525c012d8791902d717d410b17156b98657087f341"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "괄호와 나눗셈을 실제 식 순서로 전개하여 두 동류항만 남음을 확인했다. 새 해설의 계수와 합이 원문에 부합한다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E050",
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_48e2cccdd167683e98ba18543f6c2a376b25ec632f52bb969fd9e940f513a488",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "61e92c85009e8256b4a1a3fd59c1339aaa829dc4",
+      "afterSourceBlobSha": "7c93afdb305606fd2260a0c919088a18a988b5ee",
+      "beforeFieldSha256": {
+        "solution": "d774173fb38e51c65a5a7c1ebf7755beb8ae2c54896dd350af7e9f16e14dc432"
+      },
+      "afterFieldSha256": {
+        "solution": "f2be24bde83444feafc9f5cdd0735bf3fe659240090f51f8c66fe2bd1c916b05"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "부등식 해의 방향과 경계 포함 여부를 직접 계산하고 실제 inline SVG 다섯 선택지를 렌더링하여 대조했다. 수정된 선택지 설명이 일치한다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E050",
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_2615ba4a228efef2fd43793a664c578553d5949657b3d97d4e15a8ca8066231d",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "61e92c85009e8256b4a1a3fd59c1339aaa829dc4",
+      "afterSourceBlobSha": "7c93afdb305606fd2260a0c919088a18a988b5ee",
+      "beforeFieldSha256": {
+        "solution": "cf397b3451d55d87d8e111b2243f6b5f5427b88ae3b32e6bb86e0d4d1e412563"
+      },
+      "afterFieldSha256": {
+        "solution": "4bfefef43c324b2ededfc55041eebb10f2d8a90d6ca2d1fb472289aadcd74f45"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "분모의 양의 거듭제곱을 양변에 곱하여 지수를 비교했다. 음의 지수 없이 같은 결론에 도달한다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E051",
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ee2b69b3cac444f730056374a7078069c0cebfc7d28288ca649acdc8da6a0a69",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_왕운중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "2096e77a2a38074955ab5f630b864da43d7ae788",
+      "afterSourceBlobSha": "ca6696cfda0af3138a2b04ea5226afb9290a08fe",
+      "beforeFieldSha256": {
+        "solution": "17bd4f69bdab777d82d56a3a2e3ca50a5569d13cd1462c7ac2269480460a44f4"
+      },
+      "afterFieldSha256": {
+        "solution": "c7fbbf9fb4aeac03f35e96068d3edf2d7ee82ac3285d096479779dd50a900f71"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "양쪽 부등식에 동일한 양수 배율과 상수 이동을 적용했다. 열린 상한보다 작은 최대 정수 선택이 타당하다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E052",
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_d36de1141c43e1d2adaaf23d68d1455f2737d042e22d9800a2b5d7a98c6fce41",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "d07e680fe49b577f06eb4ae522b6ce477c912e67",
+      "afterSourceBlobSha": "a3b23fe1a0ca990ccbee6d307afcb6d7b46cedff",
+      "beforeFieldSha256": {
+        "solution": "b5b0dd91d006c866a280748bbbac7ca003c1757496114fc3533ce0155f911349"
+      },
+      "afterFieldSha256": {
+        "solution": "17f4eaa995c24ae206a3c499f0b0903495d90d09be070c03e51882a3b6750965"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "현재 표기된 숫자열의 비순환 접두부와 반복 블록을 직접 분리했다. 수정된 접두부만 실제 숫자열과 일치한다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 1,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E052",
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_4e956e543e31bf16db816d85f99ab60587ba21a1a69f552da111b75e9b678855",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "d07e680fe49b577f06eb4ae522b6ce477c912e67",
+      "afterSourceBlobSha": "a3b23fe1a0ca990ccbee6d307afcb6d7b46cedff",
+      "beforeFieldSha256": {
+        "solution": "1c2c44e4a2592f5d33a215ef178ace4a97cb03ca8c9ff208bd9f903e10c70655"
+      },
+      "afterFieldSha256": {
+        "solution": "95c756a2148c917137b824ebd7d66f558a0a67f357d2e726d5b45a0bdc1b2a0f"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "소수 계수를 정수로 바꾸어 부등식을 풀었다. 해의 범위에서 최소 자연수를 고르는 마지막 단계가 정확하다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E055",
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_44165405091fab3caf36938fa61208cd8f1d3f36d4469be4606121204995b2d5",
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "54d49a68e8b2d3ab736da82a0d2af9395d436995",
+      "afterSourceBlobSha": "effa3d073447fda9bc26cc2a47b147cb57ce7712",
+      "beforeFieldSha256": {
+        "solution": "2094d31f97b17499c6f66c3c16f0497218b2f29b882cc198be7f5ece28b307dd"
+      },
+      "afterFieldSha256": {
+        "solution": "8f817d59b820f66414d1e674871022d95be1ea8b4be921b5ec71d8c2534b3dc4"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "실제 PNG에서 밑면 삼각형의 한 변과 그 변에 내린 높이를 확인했다. 직각삼각형이라고 단정하지 않은 수리와 입체 부피 계산이 정확하다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E055",
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_8a0c31c0eb1626db802d7415fd8d7230d4aceaff785b347b85eceaad2086c7d5",
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "choices",
+        "solution"
+      ],
+      "beforeSourceBlobSha": "54d49a68e8b2d3ab736da82a0d2af9395d436995",
+      "afterSourceBlobSha": "effa3d073447fda9bc26cc2a47b147cb57ce7712",
+      "beforeFieldSha256": {
+        "choices": "2ded8132da319bafa26560727f442d8542c99776ee93ffbdca3f87cdbd87d22e",
+        "solution": "defcb7cb7a456cb1da5b1adade8983e813b7d7b6c35ef3c8e2f5112682737362"
+      },
+      "afterFieldSha256": {
+        "choices": "e6f708b4dd73380069dc8db6fce95a953901658c93ff639fe967b71ab78c0120",
+        "solution": "e4d6a06b1556551f67231cf606a96f745ffaf6cef95abefce3353d23aa1768e8"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "실제 PNG 다섯 개의 경계 숫자, 닫힌 점과 빈 점, 진행 방향을 모두 대조했다. 선택지 변경은 alt에 한정되며 그림 경로와 이미지 bytes는 그대로다. 수정 alt 및 해설이 그림과 일치한다.",
+      "difficultyAssessment": {
+        "action": "IMAGE_ALT_RECHECK_COMPLETED_SAME_PROPOSED_BUCKET",
+        "proposedBucket": 1,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E059",
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_b3f78aa6d958659a31217d5deb04800b89c590414cd851f3242c96774ceaa9f0",
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_팔마중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "564f45eab507eb70d68716cffd122a4597252e10",
+      "afterSourceBlobSha": "61676d10b08e9d798ab7c26d1f78ef32e2dcc0f5",
+      "beforeFieldSha256": {
+        "solution": "e13cb4965371d13f82e8b0ee9b8f6f08dae19acf28e4ac7d409f9b0d7ced01f9"
+      },
+      "afterFieldSha256": {
+        "solution": "9504766fb04a4a61429d0f15bda03363f361e849863542b12a85a426f6903011"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "각 소수의 실제 반복 블록과 점 표기를 독립적으로 대응했다. 두 번째 선택지의 반복 블록을 바로잡은 설명이 성립한다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 1,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E059",
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_ca369fe43f9cb81fce2c9a7def6b0918028bac744497fad62576098fdfb35d65",
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_팔마중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "564f45eab507eb70d68716cffd122a4597252e10",
+      "afterSourceBlobSha": "61676d10b08e9d798ab7c26d1f78ef32e2dcc0f5",
+      "beforeFieldSha256": {
+        "solution": "b5caa3128e433a4199f013ae0c482c8dca58ed690987cb150acbb364096790f6"
+      },
+      "afterFieldSha256": {
+        "solution": "9b51b8e1461641b315bf685299344e604284afedecc3985e4553fd415eca22ef"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "주어진 해를 첫째 식과 둘째 식에 각각 대입하여 미지 상수를 구하고 원래 연립방정식에 재대입했다. 새 해설은 현재 조건과 일치한다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E061",
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_33c7f08ded5c8fa96043e841201466361777bed299e6fdf148ce294537401f11",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "e0263aa2ed587b298d9881fe0b49ff2d80e165f4",
+      "afterSourceBlobSha": "94a6036abff5dd49c68f1dda04c4370b43dfc058",
+      "beforeFieldSha256": {
+        "solution": "d1271d4b4e8080ad7349082884a5e66b5f5c8f737c87cd4ef04a0cb4cbc10cf3"
+      },
+      "afterFieldSha256": {
+        "solution": "739ce8e739d0c72f39bb8ac03ad5363251e8ecdf968746900b27d4b70bebaa20"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "다섯 단항식 계산을 각각 부호, 계수, 지수로 분리해 검산했다. 수정된 전체 선택지 해설이 실제 식과 일치한다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 1,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E062",
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_5c30cd9afdf9683b7e3d171368b561c3b4aad9112fedc413a64e0014c03de379",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "d4ef3b06eef401e568096a14ab7ba815cfcf4856",
+      "afterSourceBlobSha": "95cbd86ec5e1af0448d956dd11ce2f735de366a3",
+      "beforeFieldSha256": {
+        "solution": "582edacb099c6d52547e15e07ef0acf610b3ff8fc1c8fc69c3a8e4e6fe040c58"
+      },
+      "afterFieldSha256": {
+        "solution": "522f4cfc22d6a1c67d0705d7b527bb712597dae5e73c1c0e592f9f4f26bd4f0d"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "각 선택지의 두 식 배수와 덧셈·뺄셈을 직접 계산했다. y가 소거되는 선택지와 다른 선택지에 남는 항 설명이 정확하다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 1,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E063",
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_c724c934eb7df3527a47681ce10177a6d5f5d6165af62384787c366b781d324c",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "7e5f548e2690fef86f2e2bde4f3c520cc2117637",
+      "afterSourceBlobSha": "86ebc367a18ff7628ddf3088e0174fccea9e1dcc",
+      "beforeFieldSha256": {
+        "solution": "0de8c394fa65f4629121f0653aab67ce70c71719f7df83536fbd4d324e979c1b"
+      },
+      "afterFieldSha256": {
+        "solution": "b481132848ac04fca6d0910ff2493ffa2015d731a2dbfd0e853be6f3752d0eb9"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "각 식을 정리하여 실제로 남는 미지수와 차수를 확인했다. 교과의 미지수가 두 개인 일차방정식 판별에 맞게 설명이 정리됐다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E064",
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_56e70166e404b75ca05faeadf94b889236f582bb04ba9c995530298b0d12330d",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "3719786d498445a0c868208c94424793768b2d9b",
+      "afterSourceBlobSha": "3dc56770a63e5ac567f6b3fef5e6a019cc03424f",
+      "beforeFieldSha256": {
+        "solution": "fee02b7e137241ad6f501431495c1cc19b26247a8fc688be8b456d93fb88c2a8"
+      },
+      "afterFieldSha256": {
+        "solution": "5b1bd0fa80f4dbcf4bcdc2171fa27ac6d53b75798e7853275130329cd696c6c2"
+      },
+      "decision": "NEEDS_ONE_MORE_EXPLANATION_FIX",
+      "independentCheck": "동일 좌변으로 비교하는 새 부분은 b=0에서도 유효하다. 그러나 남은 선택지 설명 중 ④의 a≠-3은 a=-2를 포함하므로 기울기 조건을 만족하지 않는다고 단정할 수 없다. a=-2를 보장하지 않는다는 설명으로 추가 수정이 필요하다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E065",
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_25339208c6c5165ab6c27761092fa631b57c6556d078b6b181b79d0d89963ee5",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "bdc3f60bea0c7f03530b2ea81bbdf73156fd14aa",
+      "afterSourceBlobSha": "76c371302a0a2b38eb237a578c364a06db241d2c",
+      "beforeFieldSha256": {
+        "solution": "79ab71255910b81a849aebf374261069ce43b35b445701b069098640fe7bc70a"
+      },
+      "afterFieldSha256": {
+        "solution": "eba3e9fef996812c9b2e525d34f22654a068e9cee20f0832ae007fcf84d8ac66"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "상수항의 확정된 비율로 두 식의 배수를 비교했다. 미정 계수로 나누지 않고 두 방정식이 일치하는 조건을 도출했다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E065",
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_6eb9d9fd1fcbe1a0c4cf5338c66fd9d54fa2f5a567b3e484cb3460ef1b3e544e",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "bdc3f60bea0c7f03530b2ea81bbdf73156fd14aa",
+      "afterSourceBlobSha": "76c371302a0a2b38eb237a578c364a06db241d2c",
+      "beforeFieldSha256": {
+        "solution": "6a1f6b58a3ee2d9a9d28f213e5a8fb4925871532e03cdbc1d3dca31321cd95b6"
+      },
+      "afterFieldSha256": {
+        "solution": "cc9f9ff7807adc8b1b538ad5c88eb54198823338df9b37e09c874e29f2792f81"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "실제 PNG의 네 꼭짓점을 확인하고 대각선 중점 및 각 선택지 직선의 통과 여부를 검산했다. 수정된 좌표와 면적 이등분 판정이 정확하다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 3,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E068",
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_447bbb99124393e8bb53e108a7a531bb533437736e9f663b831ce59074a7f19e",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "94f6d0b5fff97426b5cc45ee90e001a127a928d7",
+      "afterSourceBlobSha": "14d2a0fedac69e86078d1098c14dd50b970e3f5f",
+      "beforeFieldSha256": {
+        "solution": "2b52e69eb528bd09b0bd5e61f2293cceab92b626cdf02d6443bf4e2021b10d02"
+      },
+      "afterFieldSha256": {
+        "solution": "fb94c0f18406f10dfca6df0e5c0ba31c78dc11b1c29ca6697d38123ed6c09f0b"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "다섯 거듭제곱 계산을 양의 지수와 분수로 다시 계산했다. 음의 지수 표기를 제거해도 수학적 값과 오답 판별이 보존된다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E075",
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_60d136d40490d26320ebf194f41d706006d1bd2aa5768f8f6c3512341a83e381",
+      "sourcePath": "archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "c27e7c94543446f4a65e9c493159f79e0f2f0cec",
+      "afterSourceBlobSha": "0b274e50f77fd082ba0980337a099c72d8df2fff",
+      "beforeFieldSha256": {
+        "solution": "7e4d949811e593a457c3c21e183c50fd3f1253d25720032e2603edf05070f328"
+      },
+      "afterFieldSha256": {
+        "solution": "7f17fffd6f1c78db5a408cd3f5a651f4c3ed710d6973b5c7c57599582d36aa70"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "상수항의 비율로 둘째 식 전체를 배수하여 첫째 식과 비교하고 확정된 계수를 재대입했다. 0일 수 있는 미정 식으로 나누지 않는 수리가 타당하다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E075",
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_cf84bf35f4720664d68008ccee6740917650f9f51e19bb4335eb21342d22c2d6",
+      "sourcePath": "archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "solution"
+      ],
+      "beforeSourceBlobSha": "c27e7c94543446f4a65e9c493159f79e0f2f0cec",
+      "afterSourceBlobSha": "0b274e50f77fd082ba0980337a099c72d8df2fff",
+      "beforeFieldSha256": {
+        "solution": "b4ff23ac97a49deb51ffc11757f86938a55adf29f13e611449a241114eb594dd"
+      },
+      "afterFieldSha256": {
+        "solution": "7b0752af96d0c476a56c605d4323aeac00611a1a216776b66a886b8dc590df41"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "현재 나이와 미래 나이를 각각 부등식으로 만들었다. 경계값을 분수 그대로 유지하면 자연수 나이 선택이 정확히 확정된다.",
+      "difficultyAssessment": {
+        "action": "NO_NEW_NUMERIC_REASSESSMENT_NEEDED_FOR_THIS_SOLUTION_CHANGE",
+        "proposedBucket": 2,
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    },
+    {
+      "examId": "E040",
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_670d367bd0fda423aa0897817e80a681a2c27d6bdbf29e462ad0ab82da5e44be",
+      "sourcePath": "archive/exams/original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js",
+      "changedFields": [
+        "content"
+      ],
+      "beforeSourceBlobSha": "20a34625713e72946bf17aade5135fc66724ca31",
+      "afterSourceBlobSha": "d646e6a4b4858d7738fe2b4cd9ec60b38a53a3ac",
+      "beforeFieldSha256": {
+        "content": "3bb94e09b9ab12acc2d514e29026c8e8dfc00a3b67349df60b217fbbd1d2b12a"
+      },
+      "afterFieldSha256": {
+        "content": "1fb9c1441432df464d2176b99f33480ed06d7b9dcab5fa06b2905b44dca3b182"
+      },
+      "decision": "NARROW_REPAIR_CONFIRMED",
+      "independentCheck": "실제 PNG의 출발점과 두 결승점 좌표를 직접 확인했다. 새 alt는 그림의 관측 좌표만 운반하고 잘못된 기울기와 교점의 답 노출을 제거한다. 현재 해설의 두 일차함수 교점 계산과 정답을 독립 검산했다.",
+      "difficultyAssessment": {
+        "action": "ACCESSIBLE_STEM_RECHECK_COMPLETED_SAME_PROPOSED_BUCKET",
+        "proposedBucket": 2,
+        "reason": "실제 그림과 새 alt 모두 두 일차함수의 교점이라는 동일한 정형 활용이다. 제안된 bucket 2를 이 좁은 변경 검토에서 지지한다. 전체 난도 프로토콜이나 confidence 상향을 대신하지 않는다.",
+        "officialEvidenceMustBindCurrentSource": true,
+        "existingConfidenceNotRaised": true
+      }
+    }
+  ]
+}

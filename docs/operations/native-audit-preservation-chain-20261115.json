@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "archive-native-audit-preservation-chain-verification-v1",
+  "date": "2026-11-15",
+  "codeScope": "Verified full audit-preservation prior to exact explicit PARTIAL_UIDS subset; original full audit and complete difficulty evidence remain mandatory.",
+  "newMetadataApprovals": 0,
+  "unitTests": {
+    "command": "node --test tests/archive-reviewed-exam-registration-v2.test.mjs",
+    "passed": 360,
+    "failed": 0,
+    "skipped": 0,
+    "logSha256": "fe147dab8fa304bd4249ccb2ddbe03a5fbf8aab5a1dd52895a4df00e62d1fc15"
+  },
+  "syntheticIntegration": {
+    "fullSourceQuestionCount": 24,
+    "selectedOrdinals": [
+      1,
+      24
+    ],
+    "normalAuditAndSourceApprovedPartialAudit": true,
+    "officialWriteReplayAutoMetaAndTypedConsumer": "PASS",
+    "unselectedMetadataRowsUnchanged": 22
+  },
+  "negativeRegressions": [
+    "current revision drift",
+    "current approval evidence drift",
+    "sealed difficulty SHA drift",
+    "historical approval status drift",
+    "historical debt drift",
+    "partial prior receipt",
+    "existing historical difficulty inbox drift",
+    "missing historical non-inbox evidence"
+  ],
+  "actualE029Prototype": {
+    "status": "LOCAL_PROTOTYPE_NOT_PRODUCTION",
+    "historicalCommit": "ee3212d7c4bea66c19182f9c77945e7e1c127208",
+    "historicalCommitPurpose": "Local immutable checkpoint of copied first69 official output after inbox consumption; this is not a main registration commit and must not be used in publishable requests.",
+    "priorReceiptRawSha256": "10a060c7e489670364db574cef765fd0070ec2d1365b5cea97a7035e4747e212",
+    "currentSourceGitBlobSha": "2f8eb613bcaa208b50a1846b9e80c74af7561434",
+    "expectedQuestionCount": 24,
+    "selectedUidCount": 13,
+    "newMetadataApprovals": 0,
+    "preservedMetadataApprovals": 13,
+    "wholeSourceDifficultyProjection": "PASS",
+    "exactDifficultyBindings": 24,
+    "changedDifficultyFields": 0,
+    "dryRun": "PASS",
+    "officialWrite": "PASS",
+    "replay": "PASS",
+    "actualConsumer": "NOT_RUN",
+    "nonselectedMetadataUnchanged": true,
+    "nonselectedRuntimeUnchanged": true,
+    "identityRawBytesUnchanged": true,
+    "sourceRawBytesUnchanged": true,
+    "upstreamMutations": 0,
+    "proofs": [
+      {
+        "name": "fixture.json",
+        "sha256": "9a697f68df59568b28dca52cb9d08a9ac08144084cbf435ee5f66cf239097971"
+      },
+      {
+        "name": "difficulty-before-rebind.json",
+        "sha256": "8cd34aa228d23a2f52758520425337463660015bd9d87d84c16c222ee8b29e92"
+      },
+      {
+        "name": "actual-d5-projection.json",
+        "sha256": "c63b095dcdc8bc92326b91b7c1cff718a26d8e0c701d3d36634ea9da8fe43aaf"
+      },
+      {
+        "name": "actual-dry.json",
+        "sha256": "5e61f786bbf338a841952c68c30f932da86b7cb6e9421a41fb7a24310821834e"
+      },
+      {
+        "name": "actual-write.json",
+        "sha256": "cd6ad94c291f3bdaeccd5022a1176426fad70d5c947cb94b59120f88a8a62452"
+      },
+      {
+        "name": "actual-replay.json",
+        "sha256": "b264e6543b0ce4bd56af6f3e97bd17853a4ef1cc775327b85854a36ef13f2cf1"
+      },
+      {
+        "name": "before-write-integrity.json",
+        "sha256": "fd6781b42d8465f81c4e51a5e22297cb50842a5df993b2f125c3ad37a8efe075"
+      },
+      {
+        "name": "after-write-integrity.json",
+        "sha256": "dac1063bdf46aee23ad9d00f05161ab904e3f2381562958975b6337d753f97bb"
+      }
+    ]
+  },
+  "guardrails": [
+    "Immediate-prior metadata revision and approval evidence must match exactly.",
+    "A historical full preservation is recursively replayed against its original immutable full audit and full-bank difficulty request.",
+    "Only an absent consumed difficulty inbox may use its SHA-bound raw receipt snapshot; existing Git files always win.",
+    "All other historical evidence must remain available in exact Git.",
+    "Partial prior receipts, cycles and chains deeper than the fixed limit are rejected.",
+    "Consumer parent witnesses remain restricted to selected UIDs."
+  ],
+  "productionReleaseClaim": false
+}

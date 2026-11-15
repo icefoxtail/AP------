@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "m1-four-slot-isolated-registration-proof-v1",
+  "scope": "36 M1 exams only; no whole-repository registration or remote deployment is claimed",
+  "baseCoreCommit": "b23d05fcfedeedd09b0a1dcb290631f6a730bd1c",
+  "counts": {
+    "files": 36,
+    "items": 854,
+    "registered": 853,
+    "pending": 1,
+    "withCandidates": 94,
+    "identityFingerprintHistorical": 694
+  },
+  "m1s1": {
+    "targetUidCount": 286,
+    "compactItems": 93,
+    "registered": 92,
+    "partialMethodHold": 1,
+    "sourceOnlyMethodHold": 193
+  },
+  "m1s2": {
+    "targetUidCount": 761,
+    "registered": 761,
+    "previouslyRegistered": 759,
+    "repairedFigureBinding": 2
+  },
+  "consumerVerified": 853,
+  "checkChanged": false,
+  "replayChanged": false,
+  "indexSha256": "d30f000843d2bbf7955d799110d5050c3d75fd4d9f8aad71da2cd35b5ddc84c3",
+  "inputDigest": "8640bb9aad7c1436968b6fad965f5c31552fcb3dbac283fb34f7c6ae069271a3",
+  "sourceMutation": 0,
+  "authoredSlotChanges": {
+    "candidateResolvedToReviewedDictionaryId": [
+      {
+        "uid": "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+        "slot": "method",
+        "termId": 750
+      }
+    ],
+    "otherSlotChanges": 0
+  },
+  "semanticApprovalMutation": 0,
+  "pending": [
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.4slot.json",
+      "ordinal": 7,
+      "reason": "EXPLICIT_REVIEW_HOLD:PARTIAL_METHOD_EVIDENCE_DEBT",
+      "questionUid": "qid_v1_93d23f09e6b4ba421810c56393949ce5910e7d0c7bf416ed78ea055842f93c2e",
+      "sourceArchiveFile": "original/middle/m1/1mid/19_연향중_1학기_중간_중1_기출.js",
+      "evidence": {
+        "commit": "b2572826f5d86102193b5d6a84635e192301795b",
+        "path": "docs/operations/m1-operational-closeout-20261115/evidence/19_연향중_1학기_중간_중1_기출.independent-review.json",
+        "nativePath": "docs/operations/m1-s1-meta-full-20261114/exams/19_연향중_1학기_중간_중1_기출/independent-review.json",
+        "sha256": "ed832a928386754cbec2f39a21653cc2fd9b28d6817112ab17cefa68b9b5fcde"
+      },
+      "nextAction": "원본의 최소 기약분수 도출·최소성 근거를 확보하여 기존 풀이와 4칸 method의 결정 단계를 문항 단위로 보완·재검한 뒤 보류 해제한다."
+    }
+  ],
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "dictionarySha256": "9d55b5f1172b13c3d05802b65963a18368d50b1659b31fa36aa52a27605e579d",
+  "tests": {
+    "runtimeRegression": {
+      "passed": 69,
+      "failed": 0
+    },
+    "allExistingAndNewCompactData": {
+      "files": 391,
+      "defects": 0,
+      "staleNotApprovedByTest": 314
+    }
+  }
+}

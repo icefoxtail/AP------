@@ -274,7 +274,11 @@ window.questionBank = [
     "problemVisualDisposition": "EXEMPT",
     "solutionVisualDisposition": "EXEMPT",
     "sourceVisualVerified": "NO_SOURCE_IMAGE",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_왕운중_1학기_기말_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 대칭축 x=−3 왼쪽의 파란 곡선은 오른쪽으로 갈수록 올라가고, 오른쪽 주황 곡선은 내려간다.",
+    "solutionImageCaption": "꼭짓점은 (−3,0)이고 x=−3의 왼쪽에서 증가한다. 증가 범위가 x>−3이라는 ⑤가 옳지 않다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -329,7 +333,11 @@ window.questionBank = [
     "problemVisualDisposition": "EXEMPT",
     "solutionVisualDisposition": "EXEMPT",
     "sourceVisualVerified": "NO_SOURCE_IMAGE",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_왕운중_1학기_기말_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선을 왼쪽으로 옮긴 초록 곡선은 위로 열린다. 주황 곡선은 아래로 열린다.",
+    "solutionImageCaption": "평행이동은 이차항의 계수를 바꾸지 않는다. 네 식의 계수는 3이고 y=−3x²+3만 −3이므로 서로 포개어질 수 없는 것은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -494,7 +502,11 @@ window.questionBank = [
     "problemVisualDisposition": "EXEMPT",
     "solutionVisualDisposition": "EXEMPT",
     "sourceVisualVerified": "NO_SOURCE_IMAGE",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_왕운중_1학기_기말_중3_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 주황 곡선은 원점을 지나고, 위로 열린 파란 곡선과 초록 곡선 사이에 놓인다. 두 경계 포물선의 오른쪽 가지 사이를 연하게 칠했다.",
+    "solutionImageCaption": "x≠0인 곳에서 계수가 2/3보다 크고 1보다 작아야 한다. 해당하는 식은 y=3x²/4이므로 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -549,7 +561,11 @@ window.questionBank = [
     "problemVisualDisposition": "EXEMPT",
     "solutionVisualDisposition": "EXEMPT",
     "sourceVisualVerified": "NO_SOURCE_IMAGE",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_왕운중_1학기_기말_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: x축 아래의 파란 포물선과 위의 주황 포물선이 x축에 대칭이다. x=−1에서 두 점을 세로 점선으로 이었다.",
+    "solutionImageCaption": "x=−1을 대입하면 a=−3/2이다. x축 대칭식의 이차항 계수는 b=3/2이므로 a−b=−3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -660,7 +676,11 @@ window.questionBank = [
     "problemVisualDisposition": "EXEMPT",
     "solutionVisualDisposition": "EXEMPT",
     "sourceVisualVerified": "NO_SOURCE_IMAGE",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_왕운중_1학기_기말_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직선의 y절편은 같다. 주황 직선은 색칠한 왼쪽 아래 사분면에 들어가고, 파란 직선은 들어가지 않는다.",
+    "solutionImageCaption": "대입하면 2a²−a−3=0에서 a=−1 또는 3/2이다. 양의 기울기는 제3사분면을 지나므로 조건에 맞는 a는 −1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -715,7 +735,11 @@ window.questionBank = [
     "problemVisualDisposition": "EXEMPT",
     "solutionVisualDisposition": "EXEMPT",
     "sourceVisualVerified": "NO_SOURCE_IMAGE",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_왕운중_1학기_기말_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점에서 x축으로 점선을 그었다. 주황색으로 표시한 오른쪽 곡선은 오른쪽으로 갈수록 내려간다.",
+    "solutionImageCaption": "이차항의 계수가 음수이고 꼭짓점의 x좌표는 1/2이다. 오른쪽 가지에서 감소하므로 x>1/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -728,13 +752,13 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "그래프와 식"
     ],
     "wide": false,
-    "content": "그래프의 식이 $y=a(x+p)^2$일 때, $a-p$의 값은? [4점]<br><br><img src=\"assets/images/21_왕운중_1학기_기말_중3_수학/q14.png\">",
+    "content": "그래프의 식이 $y=a(x+p)^2$일 때, $a-p$의 값은? [4점]<br><br><img src=\"assets/images/21_왕운중_1학기_기말_중3_수학/q14-problem-v2.svg\">",
     "choices": [
       "-4",
       "-3",
@@ -825,7 +849,11 @@ window.questionBank = [
     "problemVisualDisposition": "EXEMPT",
     "solutionVisualDisposition": "EXEMPT",
     "sourceVisualVerified": "NO_SOURCE_IMAGE",
-    "sourceMode": "ORIGINAL"
+    "sourceMode": "ORIGINAL",
+    "solutionImage": "assets/images/21_왕운중_1학기_기말_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 꼭짓점에서 왼쪽으로 이동한 뒤, 위쪽의 주황 꼭짓점까지 이동하는 순서를 두 선으로 표시했다. 두 포물선의 모양과 폭은 같다.",
+    "solutionImageCaption": "옮긴 꼭짓점은 (0,4)이고 이차항의 계수는 −4로 유지된다. a=−4, b=0, c=4이므로 합은 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -893,13 +921,13 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "y=ax²의 그래프"
     ],
     "wide": false,
-    "content": "이차함수 $y=ax^2$의 그래프가 오른쪽 그림의 ㉠과 같을 때, 다음 중 ㉡의 그래프로 적당한 것은? (단, $a$는 상수이다.) [5점]<br><br><img src=\"assets/images/21_왕운중_1학기_기말_중3_수학/q17.png\">",
+    "content": "이차함수 $y=ax^2$의 그래프가 오른쪽 그림의 ㉠과 같을 때, 다음 중 ㉡의 그래프로 적당한 것은? (단, $a$는 상수이다.) [5점]<br><br><img src=\"assets/images/21_왕운중_1학기_기말_중3_수학/q17-problem-v2.svg\">",
     "choices": [
       "$y=3ax^2$",
       "$y=\\frac{1}{3}ax^2$",
@@ -908,7 +936,8 @@ window.questionBank = [
       "$y=-3ax^2$"
     ],
     "answer": "③",
-    "solution": "원본 그래프에서 ㉠은 아래로 열리는 폭이 더 좁은 포물선이고 ㉡은 위로 열리는 폭이 더 넓은 포물선이다.\n$y=ax^2$가 ㉠이므로 $a<0$이다. ㉡은 위로 열려 계수가 양수여야 하므로 $a$의 부호를 반대로 바꾼 꼴이다.\n또 ㉡이 ㉠보다 넓으므로 계수의 절댓값은 더 작아야 한다.\n따라서 계수는 $-\\frac13a$이고, ㉡의 식은 $y=-\\frac13ax^2$이다.\n정답은 ③이다.\n<br><img src=\"assets/images/21_왕운중_1학기_기말_중3_수학/q17_solution_GRAPH_RELATIONSHIP_REPAIRED.svg\">",
+    "solutionImage": "assets/images/21_왕운중_1학기_기말_중3_수학/q17-solution-v2.svg",
+    "solution": "원본 그래프에서 ㉠은 아래로 열리는 폭이 더 좁은 포물선이고 ㉡은 위로 열리는 폭이 더 넓은 포물선이다.\n$y=ax^2$가 ㉠이므로 $a<0$이다. ㉡은 위로 열려 계수가 양수여야 하므로 $a$의 부호를 반대로 바꾼 꼴이다.\n또 ㉡이 ㉠보다 넓으므로 계수의 절댓값은 더 작아야 한다.\n따라서 계수는 $-\\frac13a$이고, ㉡의 식은 $y=-\\frac13ax^2$이다.\n정답은 ③이다.\n<br>",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -962,7 +991,10 @@ window.questionBank = [
         "renderQa": "CAIROSVG_RENDERED_VISUAL_QA_PASS_20261013"
       },
       "immutableSourceGitBlobSha": "c0cb0c1a5fec11d2a5e9876fbc03091408fdda31"
-    }
+    },
+    "solutionImageAlt": "해설 그림: 원점에서 같은 높이 차로 그은 짧은 파란 가로선은 ㉠의 폭이다. 주황 가로선은 ㉡의 더 넓은 폭을 나타낸다.",
+    "solutionImageCaption": "㉡의 계수는 a와 부호가 반대이고 절댓값이 더 작다. 이에 해당하는 식은 y=−ax²/3이고 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1021,6 +1053,10 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "solutionImage": "assets/images/21_왕운중_1학기_기말_중3_수학/q19-solution.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "물로켓의 파란 높이 그래프와 초록 기준선 사이에서, 높이가 250 m 이상인 부분을 주황으로 채웠다. 두 교점에서 가로 시간축으로 점선을 내렸다.",
+    "solutionImageCaption": "y≥250을 정리하면 (t−2)(t−10)≤0이다. 2초부터 10초까지이므로 머무는 시간은 8초이다.",
     "score": 4,
     "level": "중",
     "category": "이차방정식",
@@ -1267,13 +1303,13 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "거리·속력·기타"
     ],
     "wide": false,
-    "content": "서술형 3. 다음은 1단계는 사각형, 2단계는 오각형, 3단계는 육각형으로 각 단계마다 변의 개수를 전 단계보다 한 개씩 늘린 다각형과 대각선을 그린 것이다. 이때, 다각형의 변의 개수와 대각선의 개수의 합이 91개인 단계는 몇 단계인지 구하고, 그 풀이과정을 모두 서술하시오. (반드시, 이차방정식을 이용하여 풀이하세요.) [7점]<br><br><img src=\"assets/images/21_왕운중_1학기_기말_중3_수학/s03.png\">",
+    "content": "서술형 3. 다음은 1단계는 사각형, 2단계는 오각형, 3단계는 육각형으로 각 단계마다 변의 개수를 전 단계보다 한 개씩 늘린 다각형과 대각선을 그린 것이다. 이때, 다각형의 변의 개수와 대각선의 개수의 합이 91개인 단계는 몇 단계인지 구하고, 그 풀이과정을 모두 서술하시오. (반드시, 이차방정식을 이용하여 풀이하세요.) [7점]<br><br><img src=\"assets/images/21_왕운중_1학기_기말_중3_수학/q23-problem-v2.svg\">",
     "choices": [],
     "answer": "11단계",
     "solution": "1단계는 사각형이므로 $k$단계 다각형의 변의 수는 $n=k+3$이다.\n$n$각형에서 한 꼭짓점에서 그을 수 있는 대각선은 자기 자신과 이웃한 두 꼭짓점을 제외한 $n-3$개다.\n꼭짓점 $n$개에서 세면 $n(n-3)$개지만 한 대각선을 양 끝에서 두 번 세므로 실제 대각선은 $\\frac{n(n-3)}2$개다.\n변과 대각선 개수의 합은 $n+\\frac{n(n-3)}2=\\frac{n(n-1)}2$이다.\n주어진 조건에서 $\\frac{n(n-1)}2=91$이므로 $n^2-n-182=0$이다.\n$(n-14)(n+13)=0$이므로 다각형의 변의 수는 자연수 $n=14$이다.\n$n=k+3$이므로 $k=14-3=11$이다. 따라서 정답은 11단계이다.",
@@ -1328,6 +1364,10 @@ window.questionBank = [
         "canonicalSubUnit": "M3-03-QUADRATIC_EQUATION_WORD"
       },
       "immutableSourceGitBlobSha": "c0cb0c1a5fec11d2a5e9876fbc03091408fdda31"
-    }
+    },
+    "solutionImage": "assets/images/21_왕운중_1학기_기말_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 육각형에서 외곽의 파란 변과 A에서 이웃하지 않은 꼭짓점으로 이은 주황 대각선을 표시했다.",
+    "solutionImageCaption": "변과 대각선의 합은 n(n−1)/2이다. 이 값이 91이면 (n−14)(n+13)=0에서 n=14이며, 단계는 n−3=11이다.",
+    "solutionImageSize": "full"
   }
 ];

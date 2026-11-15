@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_NARROW_SOURCE_REPAIR",
+  "producer": "/root/m2s1_release",
+  "priorAcceptedReview": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E063/accepted-review.json",
+    "sha256": "dc6e8a1aab1abd4cd182035124545c7070d7ccca4998baccbf3c9c56b3ba0029"
+  },
+  "currentSourceBlobSha": "86ebc367a18ff7628ddf3088e0174fccea9e1dcc",
+  "narrowRepairEvidence": {
+    "authorProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-proposal-r2.json",
+      "sha256": "2c47a0ec73195f01abb86d4d31de45942405670bebbe71f5627766f9e4a3d935",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-followup-repair-proposals-r2.json"
+    },
+    "independentCrosscheck": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-independent-r2.json",
+      "sha256": "aca19626b875a1ce20470291122e867dca9aadfb030577dbd3bc9f82f0bf6ff7",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-narrow-independent-review-20261115-r2.json"
+    },
+    "authorPredecessor": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-proposal-r1.json",
+      "sha256": "f1ad5cae10923f8b4bcea820e52f053e36bc2887184f2dd64a7617b8aa7bef2c",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-followup-repair-proposals.json"
+    },
+    "independentPredecessor": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-independent-r1.json",
+      "sha256": "faa0a5bffe1f2c003a5ffb97c1162b0f14479cdf5690581983cf3f382be912b4",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-narrow-independent-review-20261115-r1.json"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 25,
+    "selectedQuestions": 1
+  },
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "newAdvancedMetadataApprovals": 0,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js",
+      "ordinal": 1,
+      "questionUid": "qid_v1_c724c934eb7df3527a47681ce10177a6d5f5d6165af62384787c366b781d324c",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "sourceFingerprint": "328297f9cdc26b5d61c3496fe3a86f452061573112dd71c9f408681e8e0ca27d",
+        "contentFingerprint": "b5dcc4497ebe2a68327241eb53203ed2ad2fec534ff4ca71fc0fc8d3c1638dc6"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "d34ec9af998d2c32b0e1106c9e496c0198ee60e0af1bbe8aad21025f85d16ed0",
+      "contentFingerprint": "b5dcc4497ebe2a68327241eb53203ed2ad2fec534ff4ca71fc0fc8d3c1638dc6",
+      "staleSourceBinding": false,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "다섯 등식을 정리해 남는 미지수와 차수를 판정한다. ㅁ의 기존해설 상수 전개 오류는 분류에 영향 없는 부채로 보존한다.\n후속 범위: Expand 2(x+y)-3 with constant -3, giving x-6=0; distinguish one-variable from two-variable linear equations. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다."
+    }
+  ]
+}

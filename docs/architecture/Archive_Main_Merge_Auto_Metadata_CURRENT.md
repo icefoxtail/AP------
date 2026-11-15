@@ -16,6 +16,7 @@
 - 소스에 없는 필드는 정상 sidecar를 지우지 않는다. 바뀐 필드만 새 소스 선언을 적용한다. 정확한 ACTIVE 과정/과목/단원/PT 바인딩, TPL 부모, CC/Condition 및 난이도 필드가 필요하다. 없는 키나 의미 근거를 발명하지 않는다.
 - 등록 가능한 UID는 진행하고 불가능한 UID는 원인과 입력 서명을 pending에 기록한다. 같은 입력의 같은 의미 결함을 매시간 재검하지 않으며 소스·관련 메타·registry가 바뀌면 재시도한다. 신규 누락 메타의 내용 작성은 여전히 의미 검토 작업이며 빈값을 승인 처리하지 않는다.
 - 동일 UID·source/메타·registry 판본은 동일 request ID다. 기존 요청 내용이 다르면 덮어쓰지 않는다. 영수증은 immutable, Consumer 검증 결과는 `last-verification.json`으로 분리한다.
+- 배치 상한은 실제 시도한 UID 수에 적용한다. 첫 쓰기의 report는 선택한 UID/ordinal과 이전 source commit, 처리 후 metadata/identity, source bytes, ACTIVE registry, 설정, 대기열/cursor 및 생성한 요청·영수증을 결속한다. `--replay-report`는 그 배치만 다시 공식 planner로 판정하고 새 적용·출력·대기열 변경이 모두 0인지 검사한다. 같은 pending 입력을 건너뛰고 다음 UID를 선택하는 일반 재호출은 다음 배치이며 재실행 검증으로 사용하지 않는다. 다음 배치는 영속 pending에 남고 이후 정상 writer가 처리한다.
 - 원본/비대상 메타 보존, UID별 sidecar/runtime/Consumer 값 대조, 두 번째 실행의 중복 없음이 통과한 뒤 생성물·대기열·cursor를 **한 커밋**으로 저장한다. 실패한 단계의 미검증 생성물과 cursor를 먼저 게시하지 않는다. 고급 메타·4slot 미완료는 상태를 명시하고 기존 독립 처리 정책을 유지하며, 공유 핵심 등록 실패는 publication readiness를 차단한다.
 - 기존 reviewed/AutoMeta concurrency group에서 직렬 실행한다. 병행 PR이 main을 전진시키면 기존 helper로 최신 main에서 재생성·재검증 후 최대 3회 비강제 push한다. 매 candidate의 정확한 parent..head에 기존 Git footprint 검사를 실행한다. 실행 증거와 단계별 실패를 남기며 시간별 catch-up이 마지막 영속 cursor부터 재시도한다.
 - 봇 push에 downstream push 이벤트를 기대하지 않는다. 실제 검증한 `registered_sha`를 `registered_main_sha` 입력으로 Pages에 한 번 전달한다. helper의 나중 `main_sha`와 혼동하지 않는다. 배포 성공은 별도 결과이며 등록 성공으로 추정하지 않는다.

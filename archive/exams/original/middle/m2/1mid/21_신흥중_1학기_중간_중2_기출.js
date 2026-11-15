@@ -99,7 +99,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "기약분수 상태에서 분모의 소인수가 $2, 5$뿐인지 확인함.\n① $\\frac{6}{7} \\implies$ 분모 소인수 $7$\n② $\\frac{9}{14} = \\frac{9}{2 \\times 7} \\implies$ 분모 소인수 $7$\n③ $\\frac{12}{33} = \\frac{4}{11} \\implies$ 분모 소인수 $11$\n④ $\\frac{21}{63} = \\frac{1}{3} \\implies$ 분모 소인수 $3$\n⑤ $\\frac{3}{20} = \\frac{3}{2^2 \\times 5} \\implies$ 분모 소인수 $2, 5$뿐임.\n$\\therefore$ ⑤",
+    "solution": "기약분수의 분모의 소인수가 $2$, $5$뿐인지 확인한다.\n① $\\frac{6}{7}$: 분모에 소인수 $7$이 있으므로 유한소수가 아니다.\n② $\\frac{9}{14}=\\frac{9}{2\\times7}$: 분모에 소인수 $7$이 있으므로 유한소수가 아니다.\n③ $\\frac{3}{20}=\\frac{3}{2^2\\times5}$: 기약분모의 소인수가 $2$, $5$뿐이므로 유한소수이다.\n④ $\\frac{12}{33}=\\frac{4}{11}$: 기약분모에 소인수 $11$이 있으므로 유한소수가 아니다.\n⑤ $\\frac{21}{63}=\\frac{1}{3}$: 기약분모에 소인수 $3$이 있으므로 유한소수가 아니다.\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -448,8 +448,8 @@ window.questionBank = [
     "wide": false,
     "solution": "⑤ $(-2xy)^2 \\times (-2x^2y)^3 = 4x^2y^2 \\times (-8x^6y^3) = -32x^8y^5$\n$\\therefore$ 계수의 부호가 양수로 표기된 ⑤번이 옳지 않음.",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -519,8 +519,8 @@ window.questionBank = [
     "wide": false,
     "solution": "$A = \\frac{2a^3}{6ab^2} = \\frac{a^2}{3b^2}$\n$A \\div B = \\frac{a^2}{3b^2} \\times \\frac{2}{3ab^2} = \\frac{2a^2}{9ab^4} = \\frac{2a}{9b^4}$\n$\\therefore \\frac{2a}{9b^4}$",
     "level": "중",
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -551,7 +551,7 @@ window.questionBank = [
       "중난도"
     ],
     "wide": false,
-    "solution": "중괄호 정리: $(3xy^3 - 2xy^3 + 8x^2y) \\div xy = (xy^3 + 8x^2y) \\div xy = y^2 + 8x$\n전체 식: $\\frac{A}{2}x^2 + 2Ax - (y^2 + 8x) = \\frac{A}{2}x^2 + (2A-8)x - y^2$\n$x$항이 소거되어야 하므로 $2A-8 = 0 \\implies A = 4$\n$\\implies 2x^2 - y^2$ (이때 $a=2, b=-1$)\n$\\therefore a+b = 1$",
+    "solution": "중괄호 안을 정리하면 $3xy^3-2y(xy^2-4x^2)=xy^3+8x^2y$이다.\n이를 $xy$로 나누면 $y^2+8x$이다.\n따라서 전체 식은\n$4x(\\frac{x}{2}+2)-(y^2+8x)=2x^2+8x-y^2-8x=2x^2-y^2$이다.\n$a=2$, $b=-1$이므로 $a+b=1$이다. 따라서 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -622,8 +622,8 @@ window.questionBank = [
     "wide": false,
     "solution": "문장의 수량 관계를 부등식 기호와 괄호에 맞게 옮긴다.\n① $3x-7<9$, ② $3x+5\\ge7$, ③ $600x\\le5000$, ④ $2x+4y>55$는 각각 문장을 바르게 나타낸다. ⑤에서 ‘$x$에서 4를 뺀 수의 2배’는 $2(x-4)$이고 ‘17보다 작지 않다’는 $\\ge17$이므로 $2(x-4)\\ge17$이어야 한다. 보기의 $2(x-4)>17$은 옳지 않다.\n⑤",
     "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
-    "subUnit": "일차부등식",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+    "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -693,8 +693,8 @@ window.questionBank = [
     "wide": false,
     "solution": "양변에 $6$을 곱함: $42 - 3(x+1) > 10(4x-9)$\n$42 - 3x - 3 > 40x - 90 \\implies 39 - 3x > 40x - 90$\n$129 > 43x \\implies x < 3$\n자연수 $x$는 $1, 2$임.\n$\\therefore$ 2개",
     "level": "중",
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
-    "subUnit": "일차부등식의 활용",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },

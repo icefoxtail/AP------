@@ -623,7 +623,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "그래프와 $y=\\dfrac12$의 교점에서 $\\sin x=\\dfrac12$이다.\n$0\\le x\\le2\\pi$에서 $x=\\dfrac\\pi6,\\dfrac{5\\pi}6$이므로 두 해의 합은 $\\pi$이다.\n정답은 ②이다.",
-    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학I/q10-solution-v2.svg",
     "level": "하",
     "category": "삼각함수",
     "originalCategory": "삼각함수",
@@ -671,7 +671,10 @@ window.questionBank = [
     "primaryMethod": "y=1/2와 그래프의 교점 두 x좌표를 더한다.",
     "semanticSourceScope": "PRIMARY",
     "semanticScopeRelation": "DIRECT",
-    "projectionStatus": "UNMATERIALIZED"
+    "projectionStatus": "UNMATERIALIZED",
+    "solutionImageAlt": "해설 그림: 0≤x≤2π에서 y=sin x와 주황 수평선 y=1/2가 x=π/6, 5π/6에서 교차한다.",
+    "solutionImageCaption": "두 해의 x좌표를 더한다. 정답은 π이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -1028,7 +1031,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$OP=p$라 하면 반원의 중심 $M$은 $OA$ 위에서 $OM=\\frac{p+3}{2}$, 반지름은 $\\frac{3-p}{2}$이다.\n$OB$와 $OA$의 각이 $\\pi/6$이고 반원이 $OB$에 접하므로\n$\\dfrac{p+3}{2}\\sin\\dfrac\\pi6=\\dfrac{3-p}{2}$이다. 따라서 $p=1$이고 반지름은 $1$이다.\n$S_1=\\dfrac12\\cdot3^2\\cdot\\dfrac\\pi6=\\dfrac{3\\pi}4$, $S_2=\\dfrac\\pi2$이므로 합은 $\\dfrac{5\\pi}4$이다. 정답은 ⑤이다.",
-    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학I/q16-solution.svg",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학I/q16-solution-v2.svg",
     "level": "상",
     "category": "삼각함수",
     "originalCategory": "삼각함수",
@@ -1076,7 +1079,10 @@ window.questionBank = [
     "primaryMethod": "접점에서 반원 중심까지 거리를 반지름과 같게 둔다.",
     "semanticSourceScope": "PRIMARY",
     "semanticScopeRelation": "DIRECT",
-    "projectionStatus": "UNMATERIALIZED"
+    "projectionStatus": "UNMATERIALIZED",
+    "solutionImageAlt": "해설 그림: 파란 호는 부채꼴 OAB, 주황 호는 지름 PA인 위쪽 반원의 경계이다. D에서 MD는 OB에 수직이고, OP=1, PA=2, MD=1이다.",
+    "solutionImageCaption": "반원의 접점과 반지름을 이용해 두 넓이를 더한다. 정답은 5π/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1153,6 +1159,7 @@ window.questionBank = [
     "imageSize": "tall",
     "imageAlt": "지수함수와 로그함수의 그래프 위의 A=(0,0), D=(1,1), B=(3,7), C=(3,2)와 두 삼각형 ADC, DBC",
     "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학I/q18-problem-replacement.svg",
+    "solutionImageAlt": "두 곡선 f(x)=2^x−1, g(x)=log₂(x+1), 점 A=(0,0), D=(1,1), B=(3,7), C=(3,2), 삼각형 ADC와 DBC 및 각각의 넓이 S₁, S₂를 나타낸다.",
     "choices": [
       "$\\dfrac{9}{2}$",
       "$\\dfrac{11}{2}$",

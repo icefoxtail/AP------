@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "VISUAL_REPAIR",
+  "examPath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+  "target": {
+    "ordinal": 22,
+    "scope": "solutionImage SVG only",
+    "revision": "r2"
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+        "sha256": "sha256:f659ef6e33bad3385c06ddc5b524b0ad57d8f3dda699daeda65654cb0d3b6fcb",
+        "gitBlobSha": "4d69b7bb178452d58e4daa9b9dd3b1d5340da654"
+      },
+      {
+        "path": "archive/exams/original/middle/m1/2final/23_왕운중_2학기_기말_중1_기출.js",
+        "sha256": "sha256:a77673bf922858760c76ae38f441219a73cb4bcedc1ea19825745c01318c724f",
+        "gitBlobSha": "5a882f85179ced5eff8e6389f4ee2fd6287b1152"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+        "qid": 12,
+        "solutionSha256": "sha256:73e89bebe065ab00400763ab24f9112e86ff3d096380f65b63971603fe65b4c2",
+        "solutionExcerpt": "원뿔의 반지름을 $r\\rm\\,cm$라 하자.\n모선의 길이는 그림에서 $12\\rm\\,cm$이다.\n\n원뿔의 옆넓이는 $\\pi rl$이므로\n$\\pi\\times r\\times12=72\\p",
+        "observation": "원뿔 옆넓이 πrl에서 모선 12cm를 대입해 반지름 6cm를 구하고, 밑넓이를 더해 겉넓이를 얻는다. 각 길이·면의 역할이 풀이 순서와 직접 연결된다."
+      },
+      {
+        "path": "archive/exams/original/middle/m1/2final/25_왕의중_2학기_기말_중1_기출.js",
+        "qid": 13,
+        "solutionSha256": "sha256:6aa812358784341bcc94eb88f4c19c16c95b1315167b8e4a81f3e821a9d3fdbc",
+        "solutionExcerpt": "공의 반지름을 $r\\rm\\,cm$라 하자.\n공이 원기둥의 옆면에 꼭 맞으므로 원기둥의 반지름도 $r$이다.\n공 3개가 세로로 쌓여 두 밑면에 접하므로 원기둥의 높이는 $6r$이다.",
+        "observation": "세 구가 원기둥에 꼭 맞으므로 공과 원기둥의 반지름이 r이고 원기둥 높이가 6r임을 먼저 확정한 뒤, 부피식으로 r을 구해 공 겉넓이로 간다."
+      },
+      {
+        "path": "archive/exams/original/middle/m1/2final/23_왕운중_2학기_기말_중1_기출.js",
+        "qid": 19,
+        "solutionSha256": "sha256:66bf9b45a29f74fc3bc7e49fe44226d88947d7c39df72d2d4e52c8a246e6e6b7",
+        "solutionExcerpt": "[키포인트] 공의 반지름을 $r$라 하면 케이스의 반지름은 $r$, 높이는 공의 지름 세 개의 합인 $6r$이다.\n원기둥의 부피가 $1296\\pi\\rm\\,cm^3$이므로\n$\\pi ",
+        "observation": "테니스 공 세 개가 꼭 맞는 원기둥에서 반지름 r과 높이 6r의 대응을 세우고 케이스 부피로 r을 결정한 다음 구의 부피를 계산한다. 원기둥·구의 관계와 중간값을 구조적으로 보인다."
+      },
+      {
+        "path": "archive/exams/original/middle/m1/2final/23_왕운중_2학기_기말_중1_기출.js",
+        "qid": 20,
+        "solutionSha256": "sha256:6589dd804152a8034c5b2fed20d64161fe862c258248fe0c87945a540ecae501",
+        "solutionExcerpt": "[키포인트] 직사각형이 회전축에서 떨어져 있으므로 속이 빈 원기둥 모양의 회전체가 생긴다.\n안쪽 반지름은 $2\\rm\\,cm$이다.\n직사각형의 가로가 $3\\rm\\,cm$이므로 바깥 ",
+        "observation": "회전한 직사각형이 속 빈 원기둥을 만든다는 구조를 먼저 밝히고 안팎 반지름·높이를 고정한 뒤 바깥 옆면, 안쪽 옆면, 두 고리 면의 넓이를 나눠 더한다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "axisObservations": {
+      "STUDENT_REPRODUCIBILITY": "풀이에서 도형 조건을 대응식에 옮기고 중간값을 거쳐 결론으로 가는 순서를 따라갈 수 있게 한다.",
+      "SMALL_BOARD_STRUCTURE": "관련 도형과 핵심 관계만 한 장에 두고 해설의 전체 문장을 그림으로 복사하지 않는다.",
+      "EXPLANATION_DENSITY": "원기둥·원뿔의 반지름과 높이, 같은 부피 관계만 보이며 불필요한 측정값이나 장식을 더하지 않는다.",
+      "VISUAL_SEMANTIC_PARITY": "각 치수 라벨을 해당 입체·치수선에 결속하고, 원기둥에서 물을 옮겨 원뿔을 채우는 관계를 나타낸다.",
+      "VISUAL_READABILITY": "치수 라벨이 서로 겹치지 않고 모바일·데스크톱 축소에서 도형과 값의 소유 관계가 분명해야 한다. 실제 렌더 확인은 ROOT 단계로 남긴다."
+    },
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "TARGETED_REPAIR",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR",
+    "qualityCompareCount": "NOT_RUN"
+  }
+}

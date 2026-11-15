@@ -567,7 +567,11 @@ window.questionBank = [
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
     "reviewStatus": "manual_review",
-    "decisiveStep": "로그 차이를 전하량 비율로 바꿔 같은 3초 간격의 곱셈비를 적용한다."
+    "decisiveStep": "로그 차이를 전하량 비율로 바꿔 같은 3초 간격의 곱셈비를 적용한다.",
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 시간축의 점 0, 3, 6, 9, 12 사이를 네 구간으로 나누어 각 길이를 3초로 표시한다.",
+    "solutionImageCaption": "로그 전하량은 시간에 대해 선형으로 변하므로 같은 3초 간격마다 전하량 비율이 같다. t=3에서 주어진 비율을 t=9 이후 한 간격에 적용한다. 정답은 a=⅓이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 12,
@@ -932,7 +936,11 @@ window.questionBank = [
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
     "reviewStatus": "manual_review",
-    "decisiveStep": "절댓값 로그를 m=8에서 나누어 정수 상한을 구하고, 겹치는 m=8 행은 한 번만 센다."
+    "decisiveStep": "절댓값 로그를 m=8에서 나누어 정수 상한을 구하고, 겹치는 m=8 행은 한 번만 센다.",
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 세 행에 n=1, n=2의 닫힌 m 범위와 n=3의 m=8 점을 표시한다. 마지막 행의 0 표시는 해가 아니라 축 원점 눈금이다.",
+    "solutionImageCaption": "a>1에서 로그 부등식을 n·max(m/8,8/m)≤3으로 바꾼다. n=1,2의 허용 범위와 n=3의 한 해를 행별로 표시했다. m=8이어도 n=1, 2, 3에서는 서로 다른 순서쌍이므로 각각 한 번씩 센다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
     {
     "number": 19,

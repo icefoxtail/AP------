@@ -135,12 +135,20 @@ test('technical group union uses registered Consumer, retry and gate commands wi
     (args.includes('archive/tools/build-archive2-catalog.mjs') && !args.includes('--package-only'))), 'no second shared registration build');
 });
 
+test('native proposal definition contracts remain selected for registration work', () => {
+  const command={label:'tests/archive-native-proposal-v3.test.js',args:['tests/archive-native-proposal-v3.test.js']};
+  const scope=classifyPaths(['tools/ci/archive-registration-writer.mjs']);
+  assert.equal(scope.mode,'archive-registration');
+  assert.deepEqual(selectTechnicalCommands(scope,[command]),[command]);
+});
+
 test('the production test registry retains its P2/P3 additions and supplies the scoped runner once', async () => {
   const text = read('tools/run-tests.js');
   const boundary = text.indexOf('\nif (args.length) {\n  const { runScopedTests }');
   assert.ok(boundary > text.indexOf('const requiredCommands = ['), 'scope selection follows the authoritative registry');
   assert.equal((text.match(/if \(runScopedTests\(/g) || []).length, 1);
-  assert.ok(boundary < text.indexOf('const canonicalProjectionBuild'), 'scoped execution does not first run the full catalog builder');
+  const fullProjection = text.indexOf('prepareArchiveTestProjection({ root })');
+  assert.ok(fullProjection > boundary, 'scoped execution returns before the full catalog/readiness preparation');
   // Evaluate only the real registry declarations. No test, builder or browser is
   // launched; the child_process stub makes accidental execution fail this test.
   const registry = await vm.runInNewContext(text.slice(0, boundary) +
@@ -149,8 +157,15 @@ test('the production test registry retains its P2/P3 additions and supplies the 
     require: name => name === 'child_process' ? { spawnSync() { throw Error('registry inspection must not execute commands'); } } : createRequire(import.meta.url)(name),
   });
   const names = registry.flatMap(command => command.args);
-  for (const file of ['tests/archive-registration-writer.test.mjs', 'tests/archive-single-writer-workflows.test.mjs', 'tests/archive-pages-release-identity.test.mjs']) {
+  const requiredRegistrationContracts = ['tests/archive-registration-writer.test.mjs', 'tests/archive-single-writer-workflows.test.mjs',
+    'tests/archive-pages-release-identity.test.mjs', 'tests/archive-pr-native-preview.test.mjs', 'tests/archive-main-meta-batch-replay.test.mjs',
+    'tests/archive-native-proposal-v3.test.js', 'tests/archive-reviewed-native-scope-fields.test.mjs',
+    'tests/archive-reviewed-native-retained-fields.test.js', 'tests/archive-reviewed-native-parent.test.mjs',
+    'tests/archive-native-replay-registry-context.test.mjs'];
+  for (const file of requiredRegistrationContracts) {
     assert.ok(names.includes(file), file);
+    assert.equal(registry.filter(command => command.args.includes(file)).length, 1,
+      `full CI runs this registration contract exactly once: ${file}`);
   }
   const meta = selectTechnicalCommands(classifyPaths([metadataFile]), registry);
   const registration = selectTechnicalCommands(classifyPaths(['tools/ci/archive-registration-writer.mjs']), registry);
@@ -162,7 +177,7 @@ test('the production test registry retains its P2/P3 additions and supplies the 
     assert.ok(commands.some(command => command.args.includes('tests/apms-result-clinic-uid-bridge.test.mjs')));
     assert.ok(!commands.some(command => command.args.some(arg => /geometry-equation\/tests\/verify-svg-coordinate-parity|solution-calibration-gate/.test(arg))));
   }
-  for (const file of ['tests/archive-registration-writer.test.mjs', 'tests/archive-single-writer-workflows.test.mjs', 'tests/archive-pages-release-identity.test.mjs']) {
+  for (const file of requiredRegistrationContracts) {
     assert.ok(registration.some(command => command.args.includes(file)), `new registration contract remains selected: ${file}`);
   }
   for (const file of TECHNICAL_INPUTS.registration.filter(file => file.startsWith('tests/'))) {
@@ -315,4 +330,34 @@ test('missing event identities and an unrelated PR base cannot become a scoped s
   assert.throws(() => planCiScope({ root: f.root, expectedSha: f.baseSha }), /does not match/);
   assert.throws(() => planCiScope({ root: f.root, eventName: 'pull_request', event: { pull_request: { base: { sha: 'a'.repeat(40) }, head: { sha: f.headSha } } } }));
   assert.equal(planCiScope({ root: f.root, eventName: 'workflow_dispatch' }).mode, 'full');
+});
+
+
+test('full fallback retains registration preparation for unknown Archive code, mixed content and unproved assets', () => {
+  for (const files of [
+    ['archive/tools/meta-foundation/native-audit-preservation.mjs', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
+    [source, asset], [source, 'shared/runtime.js'], [source], null,
+  ]) {
+    const classification = classifyPaths(files, { exists: () => false });
+    assert.equal(classification.mode, 'full');
+    assert.equal(scopeChecks({ ...classification, changedFiles: files, pendingRequestPaths: [] }).prepareProjection, true);
+  }
+  assert.equal(scopeChecks({ ...classifyPaths(['tests/unrelated.test.js']), changedFiles: ['tests/unrelated.test.js'], pendingRequestPaths: [] }).prepareProjection, false);
+});
+
+test('a later code-only main snapshot with pending requests prepares registration and seals the inventory in its scope', t => {
+  const f = fixture(t, { 'tests/unrelated.test.js': '// initial code' });
+  const pending = '.archive-meta-register/inbox/pending-native.json';
+  f.write(pending, '{}'); f.git('add', '--', pending); f.git('commit', '-qm', 'pending request');
+  const baseSha = f.git('rev-parse', 'HEAD');
+  f.write('tests/unrelated.test.js', '// later code'); f.git('add', '-u'); f.git('commit', '-qm', 'code-only main push');
+  const headSha = f.git('rev-parse', 'HEAD');
+  const plan = planCiScope({ root: f.root, eventName: 'push', event: { before: baseSha, after: headSha }, expectedSha: headSha });
+  assert.equal(plan.mode, 'full'); assert.deepEqual(plan.changedFiles, ['tests/unrelated.test.js']);
+  assert.deepEqual(plan.pendingRequestPaths, [pending]); assert.equal(plan.checks.prepareProjection, true);
+  const scopePath = path.join(f.root, 'scope.json'); fs.writeFileSync(scopePath, JSON.stringify(plan));
+  f.write('.archive-meta-register/inbox/untracked.json', '{}');
+  assert.deepEqual(readScope(scopePath, f.root).pendingRequestPaths, [pending], 'mutable files cannot enlarge the fixed queue');
+  fs.writeFileSync(scopePath, JSON.stringify({ ...plan, pendingRequestPaths: [] }));
+  assert.throws(() => readScope(scopePath, f.root), /no longer matches snapshot: pendingRequestPaths/);
 });

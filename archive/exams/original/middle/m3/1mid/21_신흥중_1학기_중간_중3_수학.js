@@ -142,6 +142,10 @@ window.examData = {
     },
     {
       "id": 5,
+      "solutionImage": "assets/images/21_신흥중_1학기_중간_중3_수학/q5-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "같은 파란 대각선의 길이는 모두 √2이다. A에서 오른쪽으로 P, B에서 왼쪽으로 Q까지 같은 거리를 표시했다.",
+      "solutionImageCaption": "P가 A보다 오른쪽 √2만큼 앞에 있어 A는 −2이다. 한 칸 오른쪽의 B는 −1이다. B에서 왼쪽으로 √2만큼 간 Q의 수는 −1−√2이다.",
       "questionNumber": 5,
       "score": 5.0,
       "level": "상",
@@ -157,13 +161,13 @@ window.examData = {
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "다음 그림과 같이 수직선 위에 한 변의 길이가 $1$인 정사각형 $\\mathrm{ABCD}$를 그렸다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AP}}$, $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{BQ}}$이고 점 $\\mathrm{P}$에 대응하는 수가 $\\sqrt{2}-2$일 때, 점 $\\mathrm{Q}$에 대응하는 수는?(5점)<br><img src=\"assets/images/21_신흥중_1학기_중간_중3_수학/q05.png\" alt=\"수직선 위에 한 변의 길이가 1인 정사각형 ABCD와 대각선 호 및 점 P, Q를 나타낸 그림\">",
-      "question": "다음 그림과 같이 수직선 위에 한 변의 길이가 $1$인 정사각형 $\\mathrm{ABCD}$를 그렸다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AP}}$, $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{BQ}}$이고 점 $\\mathrm{P}$에 대응하는 수가 $\\sqrt{2}-2$일 때, 점 $\\mathrm{Q}$에 대응하는 수는?(5점)<br><img src=\"assets/images/21_신흥중_1학기_중간_중3_수학/q05.png\" alt=\"수직선 위에 한 변의 길이가 1인 정사각형 ABCD와 대각선 호 및 점 P, Q를 나타낸 그림\">",
+      "content": "다음 그림과 같이 수직선 위에 한 변의 길이가 $1$인 정사각형 $\\mathrm{ABCD}$를 그렸다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AP}}$, $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{BQ}}$이고 점 $\\mathrm{P}$에 대응하는 수가 $\\sqrt{2}-2$일 때, 점 $\\mathrm{Q}$에 대응하는 수는?(5점)<br><img src=\"assets/images/21_신흥중_1학기_중간_중3_수학/q5-problem-v2.svg\" alt=\"수직선 위에 한 변의 길이가 1인 정사각형 ABCD와 대각선 호 및 점 P, Q를 나타낸 그림\">",
+      "question": "다음 그림과 같이 수직선 위에 한 변의 길이가 $1$인 정사각형 $\\mathrm{ABCD}$를 그렸다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AP}}$, $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{BQ}}$이고 점 $\\mathrm{P}$에 대응하는 수가 $\\sqrt{2}-2$일 때, 점 $\\mathrm{Q}$에 대응하는 수는?(5점)<br><img src=\"assets/images/21_신흥중_1학기_중간_중3_수학/q5-problem-v2.svg\" alt=\"수직선 위에 한 변의 길이가 1인 정사각형 ABCD와 대각선 호 및 점 P, Q를 나타낸 그림\">",
       "choices": [
         "$-2-\\sqrt{2}$",
         "$-1-\\sqrt{2}$",
@@ -172,7 +176,7 @@ window.examData = {
         "$\\sqrt{2}+2$"
       ],
       "images": [
-        "assets/images/21_신흥중_1학기_중간_중3_수학/q05.png"
+        "assets/images/21_신흥중_1학기_중간_중3_수학/q5-problem-v2.svg"
       ],
       "answer": "②",
       "solution": "[원문 조건 및 구할 대상]\n수직선 위에 밑변의 양 끝점이 점 $\\mathrm{A, B}$인 한 변의 길이 $1$인 정사각형 $\\mathrm{ABCD}$가 놓여 있다.\n$\\overline{\\mathrm{AC}}=\\overline{\\mathrm{AP}}$, $\\overline{\\mathrm{BD}}=\\overline{\\mathrm{BQ}}$이고 점 $\\mathrm{P}$에 대응하는 수가 $\\sqrt{2}-2$일 때, 점 $\\mathrm{Q}$에 대응하는 수를 구한다.\n\n[핵심 발상/공식/보조선]\n- 한 변의 길이가 $1$인 정사각형의 대각선의 길이는 피타고라스 정리에 의해:\n  $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BD}} = \\sqrt{1^2 + 1^2} = \\sqrt{2}$\n- 점 $\\mathrm{A}$를 중심으로 하고 반지름이 $\\overline{\\mathrm{AC}}=\\sqrt{2}$인 원호를 오른쪽으로 내려 수직선과 만난 점이 $\\mathrm{P}$이므로:\n  $\\text{점 } \\mathrm{P} = \\text{점 } \\mathrm{A} + \\sqrt{2}$\n- 점 $\\mathrm{B}$를 중심으로 하고 반지름이 $\\overline{\\mathrm{BD}}=\\sqrt{2}$인 원호를 왼쪽으로 내려 수직선과 만난 점이 $\\mathrm{Q}$이므로:\n  $\\text{점 } \\mathrm{Q} = \\text{점 } \\mathrm{B} - \\sqrt{2}$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 점 $\\mathrm{A}$의 좌표 구하기\n점 $\\mathrm{P}$의 좌표가 $\\sqrt{2}-2$이므로:\n$\\mathrm{A} + \\sqrt{2} = \\sqrt{2} - 2$\n양변에서 $\\sqrt{2}$를 빼면:\n$\\mathrm{A} = -2$\n\n2단계: 점 $\\mathrm{B}$의 좌표 구하기\n선분 $\\overline{\\mathrm{AB}}$는 한 변의 길이가 $1$인 정사각형의 밑변이고 점 $\\mathrm{B}$는 점 $\\mathrm{A}$의 오른쪽에 위치하므로:\n$\\mathrm{B} = \\mathrm{A} + 1 = -2 + 1 = -1$\n\n3단계: 점 $\\mathrm{Q}$의 좌표 구하기\n점 $\\mathrm{Q}$는 점 $\\mathrm{B}$에서 대각선 길이 $\\sqrt{2}$만큼 왼쪽으로 이동한 위치이므로:\n$\\mathrm{Q} = \\mathrm{B} - \\sqrt{2} = -1 - \\sqrt{2}$\n\n[경우 나눔 및 5개 선지 검토]\n① $-2-\\sqrt{2}$: 점 $\\mathrm{A}$에서 왼쪽으로 내렸을 때의 좌표 오답\n② $-1-\\sqrt{2}$: 계산 결과와 정확히 일치함 (정답)\n③ $-\\sqrt{2}$: 원점을 기준으로 오판한 오답\n④ $\\sqrt{2}+1$: 부호 방향 반대 오답\n⑤ $\\sqrt{2}+2$: 부호 및 기준점 오판 오답\n\n[명확한 결론]\n따라서 점 $\\mathrm{Q}$에 대응하는 수는 $-1-\\sqrt{2}$이므로 정답은 ②이다."
@@ -245,6 +249,10 @@ window.examData = {
     },
     {
       "id": 8,
+      "solutionImage": "assets/images/21_신흥중_1학기_중간_중3_수학/q8-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "파랑은 가로 둘레, 초록은 세로 둘레이다. 각 정사각형의 넓이는 안쪽에, 한 변의 길이는 윗변에 표시했다.",
+      "solutionImageCaption": "가로의 합은 2(3√2+4√2+7)이고 세로의 합은 2×7이다. 둘레는 (14√2+28) cm이다.",
       "questionNumber": 8,
       "score": 4.0,
       "level": "중",
@@ -260,13 +268,13 @@ window.examData = {
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "다음 그림과 같이 넓이가 각각 $18\\text{ cm}^2$, $32\\text{ cm}^2$, $49\\text{ cm}^2$인 세 정사각형을 이어 붙여 새로운 도형을 만들었다. 이 도형의 둘레의 길이는?(4점)<br><img src=\"assets/images/21_신흥중_1학기_중간_중3_수학/q08.png\" alt=\"넓이가 각각 18, 32, 49제곱센티미터인 세 정사각형을 이어 붙인 계단형 도형 그림\">",
-      "question": "다음 그림과 같이 넓이가 각각 $18\\text{ cm}^2$, $32\\text{ cm}^2$, $49\\text{ cm}^2$인 세 정사각형을 이어 붙여 새로운 도형을 만들었다. 이 도형의 둘레의 길이는?(4점)<br><img src=\"assets/images/21_신흥중_1학기_중간_중3_수학/q08.png\" alt=\"넓이가 각각 18, 32, 49제곱센티미터인 세 정사각형을 이어 붙인 계단형 도형 그림\">",
+      "content": "다음 그림과 같이 넓이가 각각 $18\\text{ cm}^2$, $32\\text{ cm}^2$, $49\\text{ cm}^2$인 세 정사각형을 이어 붙여 새로운 도형을 만들었다. 이 도형의 둘레의 길이는?(4점)<br><img src=\"assets/images/21_신흥중_1학기_중간_중3_수학/q8-problem-v2.svg\" alt=\"넓이가 각각 18, 32, 49제곱센티미터인 세 정사각형을 이어 붙인 계단형 도형 그림\">",
+      "question": "다음 그림과 같이 넓이가 각각 $18\\text{ cm}^2$, $32\\text{ cm}^2$, $49\\text{ cm}^2$인 세 정사각형을 이어 붙여 새로운 도형을 만들었다. 이 도형의 둘레의 길이는?(4점)<br><img src=\"assets/images/21_신흥중_1학기_중간_중3_수학/q8-problem-v2.svg\" alt=\"넓이가 각각 18, 32, 49제곱센티미터인 세 정사각형을 이어 붙인 계단형 도형 그림\">",
       "choices": [
         "$(6\\sqrt{3}+28)\\text{ cm}$",
         "$(14\\sqrt{2}+28)\\text{ cm}$",
@@ -275,7 +283,7 @@ window.examData = {
         "$(26\\sqrt{2}+28)\\text{ cm}$"
       ],
       "images": [
-        "assets/images/21_신흥중_1학기_중간_중3_수학/q08.png"
+        "assets/images/21_신흥중_1학기_중간_중3_수학/q8-problem-v2.svg"
       ],
       "answer": "②",
       "solution": "[원문 조건 및 구할 대상]\n넓이가 각각 $18\\text{ cm}^2, 32\\text{ cm}^2, 49\\text{ cm}^2$인 세 정사각형을 밑변이 일직선이 되도록 나란히 이어 붙여 만든 새로운 도형의 둘레의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n- 정사각형의 넓이가 $S$일 때, 한 변의 길이는 $\\sqrt{S}$이다.\n- 세 정사각형의 한 변의 길이를 각각 $s_1, s_2, s_3$ ($s_1 < s_2 < s_3$)이라 하자.\n- 둘레의 길이는 모든 가로 선분의 합과 모든 세로 선분의 합으로 나누어 계산한다:\n  * 가로 선분: 밑변 $(s_1+s_2+s_3)$ + 윗변들 $(s_1+s_2+s_3) = 2(s_1+s_2+s_3)$\n  * 세로 선분: 왼쪽 가장자리 $s_1$ + 오른쪽 가장자리 $s_3$ + 계단 부분 노출 선분 $(s_2-s_1) + (s_3-s_2) = 2s_3$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 세 정사각형의 한 변의 길이 구하기\n- 첫 번째 정사각형: $s_1 = \\sqrt{18} = \\sqrt{9 \\times 2} = 3\\sqrt{2}\\text{ cm}$\n- 두 번째 정사각형: $s_2 = \\sqrt{32} = \\sqrt{16 \\times 2} = 4\\sqrt{2}\\text{ cm}$\n- 세 번째 정사각형: $s_3 = \\sqrt{49} = 7\\text{ cm}$\n\n2단계: 가로 방향 선분의 길이 합\n- 밑면의 길이: $s_1 + s_2 + s_3 = 3\\sqrt{2} + 4\\sqrt{2} + 7 = 7\\sqrt{2} + 7$\n- 윗면들의 길이의 합: $s_1 + s_2 + s_3 = 7\\sqrt{2} + 7$\n- 가로 총합: $2 \\times (7\\sqrt{2} + 7) = 14\\sqrt{2} + 14$\n\n3단계: 세로 방향 선분의 길이 합\n- 가장 왼쪽 세로선: $s_1 = 3\\sqrt{2}$\n- 첫 번째와 두 번째 사이 노출 세로선: $s_2 - s_1 = 4\\sqrt{2} - 3\\sqrt{2} = \\sqrt{2}$\n- 두 번째와 세 번째 사이 노출 세로선: $s_3 - s_2 = 7 - 4\\sqrt{2}$\n- 가장 오른쪽 세로선: $s_3 = 7$\n- 세로 총합:\n  $s_1 + (s_2 - s_1) + (s_3 - s_2) + s_3 = s_3 + s_3 = 2s_3 = 2 \\times 7 = 14$\n\n4단계: 전체 둘레의 길이 합산하기\n둘레 = (가로 총합) + (세로 총합)\n$= (14\\sqrt{2} + 14) + 14 = 14\\sqrt{2} + 28\\text{ cm}$\n\n[경우 나눔 및 5개 선지 검토]\n① $(6\\sqrt{3}+28)\\text{ cm}$: $\\sqrt{18}$을 $3\\sqrt{3}$으로 오판한 오답\n② $(14\\sqrt{2}+28)\\text{ cm}$: 계산 결과와 정확히 일치함 (정답)\n③ $(12\\sqrt{3}+28)\\text{ cm}$: 오답\n④ $(20\\sqrt{2}+28)\\text{ cm}$: 겹치는 세로 선분을 잘못 더한 오답\n⑤ $(26\\sqrt{2}+28)\\text{ cm}$: 세 정사각형의 둘레를 단순히 합하여 계산한 오답\n\n[명확한 결론]\n따라서 이 도형의 둘레의 길이는 $(14\\sqrt{2}+28)\\text{ cm}$이므로 정답은 ②이다."
@@ -616,6 +624,10 @@ window.examData = {
     },
     {
       "id": 19,
+      "solutionImage": "assets/images/21_신흥중_1학기_중간_중3_수학/q19-solution.svg",
+      "solutionImageSize": "full",
+      "solutionImageAlt": "직사각형의 위쪽에 파란 정사각형 두 개와 초록 조각 세 개가 있다. 아래쪽에는 초록 조각 두 개와 주황 조각 세 개가 이어진다.",
+      "solutionImageCaption": "가로는 2x+3, 세로는 x+1이다. 둘레는 2((2x+3)+(x+1))=6x+8이다.",
       "questionNumber": 19,
       "score": 4.0,
       "level": "중",
@@ -631,13 +643,13 @@ window.examData = {
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "다음 그림과 같이 넓이가 각각 $x^2, x, 1$인 직사각형 $10$개를 겹치지 않게 이어 붙여 하나의 새로운 직사각형을 만들 때, 이 직사각형의 둘레의 길이는?(4점)<br><img src=\"assets/images/21_신흥중_1학기_중간_중3_수학/q19.png\" alt=\"넓이가 각각 x제곱 2개, x 5개, 1 3개인 직사각형 조각 10개 그림\">",
-      "question": "다음 그림과 같이 넓이가 각각 $x^2, x, 1$인 직사각형 $10$개를 겹치지 않게 이어 붙여 하나의 새로운 직사각형을 만들 때, 이 직사각형의 둘레의 길이는?(4점)<br><img src=\"assets/images/21_신흥중_1학기_중간_중3_수학/q19.png\" alt=\"넓이가 각각 x제곱 2개, x 5개, 1 3개인 직사각형 조각 10개 그림\">",
+      "content": "다음 그림과 같이 넓이가 각각 $x^2, x, 1$인 직사각형 $10$개를 겹치지 않게 이어 붙여 하나의 새로운 직사각형을 만들 때, 이 직사각형의 둘레의 길이는?(4점)<br><img src=\"assets/images/21_신흥중_1학기_중간_중3_수학/q19-problem-v2.svg\" alt=\"넓이가 각각 x제곱 2개, x 5개, 1 3개인 직사각형 조각 10개 그림\">",
+      "question": "다음 그림과 같이 넓이가 각각 $x^2, x, 1$인 직사각형 $10$개를 겹치지 않게 이어 붙여 하나의 새로운 직사각형을 만들 때, 이 직사각형의 둘레의 길이는?(4점)<br><img src=\"assets/images/21_신흥중_1학기_중간_중3_수학/q19-problem-v2.svg\" alt=\"넓이가 각각 x제곱 2개, x 5개, 1 3개인 직사각형 조각 10개 그림\">",
       "choices": [
         "$x+1$",
         "$3x+4$",
@@ -646,7 +658,7 @@ window.examData = {
         "$2x^2+5x+3$"
       ],
       "images": [
-        "assets/images/21_신흥중_1학기_중간_중3_수학/q19.png"
+        "assets/images/21_신흥중_1학기_중간_중3_수학/q19-problem-v2.svg"
       ],
       "answer": "④",
       "solution": "[원문 조건 및 구할 대상]\n넓이가 각각 $x^2, x, 1$인 직사각형 $10$개를 겹치지 않게 이어 붙여 하나의 새로운 직사각형을 만들 때, 이 직사각형의 둘레의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n- 그림에 제시된 직사각형 조각의 개수를 세어 전체 직사각형의 넓이를 다항식으로 나타낸다.\n- 전체 넓이 다항식을 두 일차식의 곱으로 인수분해하면 각각이 새로운 직사각형의 가로와 세로의 길이가 된다.\n- 둘레의 길이는 $2 \\times (\\text{가로} + \\text{세로})$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 조각의 개수 및 총 넓이 다항식 구하기\n그림에서:\n- 한 변의 길이가 $x$인 정사각형 (넓이 $x^2$): $2$개 $\\implies 2x^2$\n- 가로 $1$, 세로 $x$인 직사각형 (넓이 $x$): $5$개 $\\implies 5x$\n- 한 변의 길이가 $1$인 정사각형 (넓이 $1$): $3$개 $\\implies 3$\n총 조각의 수: $2 + 5 + 3 = 10$개\n새로 만든 직사각형의 총 넓이:\n$S = 2x^2 + 5x + 3$\n\n2단계: 인수분해를 통해 가로, 세로 길이 구하기\n이차다항식 $2x^2 + 5x + 3$을 인수분해하면:\n$2 = 2 \\times 1$, $3 = 3 \\times 1$에서 $(2 \\times 1) + (1 \\times 3) = 5$이므로,\n$2x^2 + 5x + 3 = (2x + 3)(x + 1)$\n따라서 새 직사각형의 가로와 세로의 길이는 각각 $2x+3$과 $x+1$이다.\n\n3단계: 직사각형의 둘레의 길이 계산하기\n둘레 $= 2 \\times [(\\text{가로}) + (\\text{세로})]$\n$= 2 \\times [(2x + 3) + (x + 1)]$\n$= 2 \\times (3x + 4)$\n$= 6x + 8$\n\n[경우 나눔 및 5개 선지 검토]\n① $x+1$: 한 변의 길이 (둘레 아님)\n② $3x+4$: 가로와 세로의 합 (둘레의 절반)\n③ $2x+3$: 다른 한 변의 길이 (둘레 아님)\n④ $6x+8$: 둘레의 길이 $2(3x+4)$ (정답)\n⑤ $2x^2+5x+3$: 직사각형의 넓이 (둘레 아님)\n\n[명확한 결론]\n따라서 이 직사각형의 둘레의 길이는 $6x+8$이므로 정답은 ④이다."

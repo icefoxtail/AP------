@@ -37,10 +37,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 2,
@@ -78,10 +78,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 3,
@@ -121,7 +121,7 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL"
   },
@@ -162,8 +162,8 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL"
   },
@@ -203,7 +203,7 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL"
@@ -244,8 +244,8 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL"
   },
@@ -285,8 +285,8 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL"
   },
@@ -533,8 +533,8 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL"
   },
@@ -618,7 +618,7 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 16,
@@ -737,7 +737,7 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL"
   },
@@ -818,10 +818,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 21,
@@ -854,8 +854,8 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL"
   },
@@ -890,10 +890,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 23,
@@ -929,10 +929,10 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 24,
@@ -965,8 +965,8 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 3,
-    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL"
   }

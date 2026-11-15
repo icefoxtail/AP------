@@ -1,3 +1,4 @@
+import {fileURLToPath} from 'node:url';
 import {objectSha,bytesSha} from '../../pipeline-core/canonical.mjs';
 import {composeConstructionCandidate} from './construction-candidate-svg-v1.mjs';
 import {specFor} from './phase2.mjs';
@@ -76,6 +77,16 @@ export function compositePanels(plan){
   const bad=reason=>{throw new Stop('COMPOSITE_PLAN_INVALID',{reason});};
   if(plan?.capability!==COMPOSITE_CAPABILITY||!Array.isArray(plan.panels))bad('PANELS');
   // Venn panels (set-diagram-figure-v1) form their own grid: all of them, 2 to 6, and nothing else. Codes carry the full name so a failed render shows them.
+  const linked=Object.hasOwn(plan,'linkedExpLogDetail');
+  if(linked){
+    const link=plan.linkedExpLogDetail;
+    const expected=['exp-log-pair-spike-v1','multi-curve-figure-v1'];
+    if(!link||typeof link!=='object'||Array.isArray(link)||Object.keys(link).sort().join(',')!=='bisector,midpoint,segment'
+      ||!Object.values(link).every(id=>typeof id==='string'&&/^[A-Z][A-Za-z0-9]{0,7}$/.test(id))
+      ||!['chain','columns','linearStack'].every(key=>plan[key]===undefined)
+      ||plan.panels.length!==2||plan.panels.some((panel,index)=>panel?.plan?.capability!==expected[index]||!panel.plan.graphPlan))
+      bad('LINKED_EXP_LOG_DETAIL_SCOPE');
+  }
   const linearStack=plan.linearStack===true;
   if(plan.linearStack!==undefined&&plan.linearStack!==true)bad('LINEAR_STACK_INVALID');
   if(linearStack&&(plan.chain!==undefined||plan.panels.length!==3||!plan.panels.every(p=>{
@@ -86,7 +97,7 @@ export function compositePanels(plan){
   // It cannot be mixed with another panel family or generalized to a different panel count here.
   const isMultiCurveCandidate=panel=>panel?.plan?.capability==='multi-curve-figure-v1'||panel?.plan?.graphPlan?.family==='multi-curve';
   const multiCurveCandidates=plan.panels.map(isMultiCurveCandidate),multiCurveStack=multiCurveCandidates.some(Boolean);
-  if(multiCurveStack){
+  if(multiCurveStack&&!linked){
     if(plan.chain!==undefined)bad('CHAIN');
     if(plan.panels.length!==2)bad('COMPOSITE_MULTI_CURVE_PANEL_COUNT');
     for(let index=0;index<plan.panels.length;index++){
@@ -184,7 +195,7 @@ export function compositePanels(plan){
     if(solid&&(plan.chain!==SOLID_CAPABILITY||plan.panels.length!==1))bad('SOLID_PANEL_PLACEMENT_'+index);
     // A number line (quadratic-inequality-chain-v1) is the last panel of a two-panel stack, under its quadratic graph.
     if(numberLine&&(three||index!==plan.panels.length-1||!panel.plan.numberLine||typeof panel.plan.numberLine!=='object'||Object.keys(panel.plan).some(key=>!['capability','numberLine','pointNames'].includes(key))))bad('NUMBER_LINE_PANEL_PLACEMENT_'+index);
-    if(!numberLine&&!solid&&(!panel?.plan||!['polynomial-spike-v1','piecewise-polynomial-spike-v1','piecewise-discontinuous-spike-v1',...(multiCurveStack?['multi-curve-figure-v1']:[])].includes(panel.plan.capability)||!panel.plan.graphPlan||typeof panel.plan.graphPlan!=='object'))bad('PANEL_PLAN_'+index);
+    if(!linked&&!numberLine&&!solid&&(!panel?.plan||!['polynomial-spike-v1','piecewise-polynomial-spike-v1','piecewise-discontinuous-spike-v1',...(multiCurveStack?['multi-curve-figure-v1']:[])].includes(panel.plan.capability)||!panel.plan.graphPlan||typeof panel.plan.graphPlan!=='object'))bad('PANEL_PLAN_'+index);
     if(numberLine||solid)return {index,plan:panel.plan,caption};
     // compositeHeader is the composite's own field: an author never writes it, and a two-panel stack keeps the standard formula header.
     if(!three&&Object.hasOwn(panel.plan.graphPlan,'compositeHeader'))bad('PANEL_COMPOSITE_HEADER_'+index);
@@ -195,7 +206,7 @@ export function compositePanels(plan){
     }
     return {index,plan:panel.plan,caption};
   });
-  if(grid||setGrid||statGrid)return checked;
+  if(linked||grid||setGrid||statGrid)return checked;
   const sharedLines=three&&!linearStack?(checked[0].plan.graphPlan.lines??[]).filter(line=>checked.every(item=>(item.plan.graphPlan.lines??[]).some(other=>lineKey(other)===lineKey(line)))).map(line=>line.id):[];
   // Two cubic/quartic cases: their long formula has no room inside the panel beside the y-axis, so each panel keeps its own plot and gains
   // an 80 px header band above it where the formula is written (overviewHeaderBand -> phase2 CUBIC_COMPOSITE_PANEL_CANVAS).
@@ -284,6 +295,15 @@ export function compositeAccessibleNames(plan){
   const title=text(plan?.caption)??'해설 도형',description=plan?.accessibilityDescription??DEFAULT_DESCRIPTION[plan?.chain]??DEFAULT_DESCRIPTION.plane;
   return `<title id="visual-title">${xmlText(title)}</title><desc id="visual-desc">${xmlText(description)}</desc>`;
 }
+const LINKED_DETAIL_OBSERVER=fileURLToPath(new URL('./graph-observer-worker.py',import.meta.url));
+export async function checkLinkedExpLogDetail(plan,svgs){
+  if(!plan.linkedExpLogDetail)return null;
+  const reply=await pythonWorker({action:'linkedExpLogDetail',plan,...(svgs===undefined?{}:{svgs})},{script:LINKED_DETAIL_OBSERVER});
+  if(reply.status!=='OK'||reply.result?.status!=='PASS')
+    throw new Stop('COMPOSITE_LINKED_DETAIL_INVALID',{code:reply.result?.code??'LINKED_EXP_LOG_DETAIL_INVALID'});
+  return reply.result;
+}
+
 export async function composeCompositeCandidate({plan,panels,identity,typographyPolicy,repairContext=null,browser}={}){
   const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,panelSpecSha256s:[],panelSvgSha256s:[],captionFragmentSha256s:[],sharedRowFragmentSha256s:[],svgSha256:null,renderedLayoutSha256:null};
   const state={svg:null,panels:[],renderedLayout:{status:'NOT_RUN'},layout:null};
@@ -292,6 +312,9 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
   const chrome=async()=>browser??(ownBrowser??=await launchBrowser());
   try{
     const checked=compositePanels(plan);
+    if(plan.linkedExpLogDetail&&identity?.surface!=='SOLUTION_VISUAL')
+      throw new Stop('COMPOSITE_LINKED_DETAIL_INVALID',{code:'LINKED_EXP_LOG_DETAIL_SOLUTION_ONLY'});
+    await checkLinkedExpLogDetail(plan);
     const panelLayout=compositePanelLayout(checked,plan);
     state.layout={kind:panelLayout.kind,columns:panelLayout.columns,rows:panelLayout.rows};
     if(!Array.isArray(panels)||panels.length!==checked.length||panels.some(panel=>!panel||typeof panel!=='object'||!panel.plan||!panel.model))throw new Stop('COMPOSITE_PANEL_MODELS_MISSING');
@@ -310,6 +333,11 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
       if(composed.status!=='COMPOSED')throw new Stop('COMPOSITE_PANEL_NOT_COMPOSED',{panel:panel.index,status:composed.status,detail:composed.detail});
       lineage.panelSpecSha256s.push(composed.lineage.specSha256);lineage.panelSvgSha256s.push(composed.lineage.svgSha256);
       parts.push({panel,svg:composed.svg,size:rootSize(composed.svg)});
+    }
+    if(plan.linkedExpLogDetail){
+      const observed=await checkLinkedExpLogDetail(plan,parts.map(part=>part.svg));
+      state.layout.linkedExpLogDetail=observed;
+      lineage.linkedDetailSha256=digest({observed,panelSvgSha256s:lineage.panelSvgSha256s},'linkedDetail');
     }
     // Captions: the math part as MathJax, the text part in the Korean outline font, side by side at the policy base font. In a three-panel
     // stack the panel's formula follows in the same row, a little apart, and the shared line equations are rows above the first caption.

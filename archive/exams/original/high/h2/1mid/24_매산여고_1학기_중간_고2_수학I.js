@@ -193,7 +193,10 @@ window.questionBank = [
     "sourceQid": 4,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q04-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직 점선의 오른쪽에서 감소하는 로그곡선과 곡선 위의 기준점 (-1, 3)을 나타낸다.",
+    "solutionImageCaption": "밑이 0과 1 사이이므로 정의역에서 감소한다. 진수가 0에 가까워지는 쪽으로 곡선은 수직 점선에 가까워진다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -243,7 +246,10 @@ window.questionBank = [
     "sourceQid": 5,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q05-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 수직 이동 전 h 곡선의 기준점과 x=0에서 y=5 점선에 만나는 모습이며, x<0에서 곡선이 기준선보다 위에 있다.",
+    "solutionImageCaption": "수직 이동 전 h(x)=(1/5)^(x−1)은 x<0에서 높이 5보다 크다. 이 경계 높이로 제3사분면을 피하는 가장 작은 수직 이동을 정한다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -296,7 +302,10 @@ window.questionBank = [
     "sourceQid": 6,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q06-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원문 그래프의 두 교점 중 왼쪽은 2와 3 사이의 r, 오른쪽은 5이다. 수직선에서 r과 5 사이가 f(x)<g(x)인 구간이며, 그 안의 자연수 후보 3과 4를 표시한다.",
+    "solutionImageCaption": "0<2/3<1이므로 주어진 부등식은 f(x)<g(x)와 같다. 원문 그래프에서 교점은 r∈(2,3), 5이고 두 교점 사이에서 성립한다. 자연수 후보는 3, 4이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -442,7 +451,10 @@ window.questionBank = [
     "sourceQid": 9,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q09-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: u=x/π로 환산한 두 범위가 수직선 두 줄에 놓여 있다. 위쪽 조건은 u=1/4에서 열리고, 아래쪽 조건은 u=2/3에서 닫힌다.",
+    "solutionImageCaption": "코사인은 [0,π)에서 감소하므로 각 기준값을 u=x/π의 범위로 바꾼다. 위 조건은 엄격부등식이고 아래 조건은 등호를 포함한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -592,7 +604,11 @@ window.questionBank = [
     "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
     "sourceQid": 12,
     "answerStatus": "generated_pending",
-    "solutionStatus": "generated_pending"
+    "solutionStatus": "generated_pending",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축은 연수 n, 세로축은 현재 농도 대비 비율이다. 파란 증가곡선이 주황 점선 두 배 기준을 지나며, 10과 12의 정수 눈금이 보인다.",
+    "solutionImageCaption": "현재 농도로 나누면 n년 뒤 비율은 (1.07)^n이다. 주어진 로그 근삿값은 n≥10.033…을 주므로 처음으로 조건을 만족하는 정수 연도를 고른다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -694,7 +710,10 @@ window.questionBank = [
     "sourceQid": 14,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q14-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t에서 1과 2 사이에 파란 2ᵗ 곡선이 주황 점선 t²보다 위에 있고, 두 곡선은 경계점 (2,4)에서 만난다.",
+    "solutionImageCaption": "t=logₐ x로 두면 1<t<2에서 0<logₐt<1<t<t²이다. 그림에서 2ᵗ>t²이고 a>2이므로 x=aᵗ>2ᵗ이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -792,7 +811,10 @@ window.questionBank = [
     "sourceQid": 16,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q16-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 0≤x<π에서 y=sin(2x−π/6)와 높이 −√3/2인 수평선은 x=3π/4와 x=11π/12에서 만난다.",
+    "solutionImageCaption": "u=2x−π/6로 치환하면 허용되는 각은 4π/3와 5π/3이다. 이를 x로 바꾸어 두 근의 위치를 확인하고 더한다. 정답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -1045,7 +1067,10 @@ window.questionBank = [
     "sourceQid": 21,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution-recovery.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간 [4,8]의 코사인 곡선은 x=4와 8에서 높이 3이며, x=5에서 높이 5의 최댓값, x=7에서 높이 1의 최솟값을 갖는다.",
+    "solutionImageCaption": "주어진 구간 [4,8]은 코사인 함수의 한 주기이며 중심선은 y=3이다. x=5에서 최댓값 5, x=7에서 최솟값 1을 얻는다. 이 위치와 값을 식에 대입한다. 정답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -1177,6 +1202,9 @@ window.questionBank = [
     "sourceQid": 24,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q24-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 푸른 증가곡선 f(x)와 주황 점선 감소곡선 g(x) 사이의 옅은 띠가 x=4,5,6,7 네 정수 열로 나뉘며, 각 열 위에 정수점 수가 표시된다.",
+    "solutionImageCaption": "수평선 조건에서 네 정수 n을 찾아 a=3, b=4, c=7을 정한다. x=4,5,6,7마다 두 곡선 사이의 정수 y를 센다. 네 열의 개수를 더한다. 정답은 344이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -4,6 +4,7 @@
 const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm');
 const crypto = require('node:crypto'), { execFileSync } = require('node:child_process');
 const consumer = require('../../archive/item-4slot.js');
+const rendererHold = require('./renderer-registration-hold.cjs');
 const { sourceNumber, sourceIdentityNumber } = require('./exam-items.cjs');
 const ROOT = path.resolve(__dirname, '../..');
 const INPUT = 'archive/data/item-4slot/';
@@ -18,7 +19,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
-const BUILDER_SHA = sha(fs.readFileSync(__filename));
+const BUILDER_SHA = sha(Buffer.concat([fs.readFileSync(__filename), fs.readFileSync(require.resolve('./renderer-registration-hold.cjs'))]));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -84,6 +85,59 @@ function validateItem(it, dict) {
   if(!Array.isArray(it.candidates)||it.candidates.some(x=>typeof x!=='string'))errors.push('CANDIDATES_INVALID');
   return errors;
 }
+// An explicit native review hold never waives slot validation or registers a row.
+// This route preserves the existing M1-S1 partial-method decision while the rest
+// of that complete exam denominator can register. It is not an empty-slot route.
+function validateRegistrationHold(root, d, it, id, cur) {
+  const h=it.registrationHold, errors=[];
+  if(!h||h.schemaVersion!=='4slot-native-review-hold-v1')return ['UNSUPPORTED_HOLD'];
+  if(h.questionUid!==id?.questionUid||h.sourceOrdinal!==cur?.ordinal||h.sourceQuestionNo!==sourceIdentityNumber(cur?.q||{})||h.ordinal!==it.ordinal)errors.push('HOLD_IDENTITY_MISMATCH');
+  if(typeof h.nextAction!=='string'||!h.nextAction.trim())errors.push('HOLD_NEXT_ACTION_MISSING');
+  if(h.reason==='SOURCE_RENDERER_CORRECTION_PENDING')return [...errors,...rendererHold.validate(root,d,it,id,cur,{safe,sha,blob,stable,payloadHash,identityHash,git,assetRefs})];
+  if(h.reason==='SOURCE_EVIDENCE_UNRESOLVED')return [...errors,...validateM2SourceHold(root,d,it,id,cur)];
+  if(h.reason!=='PARTIAL_METHOD_EVIDENCE_DEBT'||!/^original\/middle\/m1\/1(?:mid|final)\//.test(d.sourceArchiveFile))return [...errors,'UNSUPPORTED_HOLD'];
+  const e=h.evidence, native=d.evidence?.independentReview;
+  if(!e||!/^docs\/operations\/.+\.json$/.test(e.path||'')||!/^docs\/operations\/.+\.json$/.test(e.nativePath||'')||!/^([a-f0-9]{40})$/.test(e.commit||'')||!/^([a-f0-9]{64})$/.test(e.sha256||'')||native?.commit!==e.commit||native?.path!==e.nativePath||native?.sha256!==e.sha256)return [...errors,'HOLD_EVIDENCE_REFERENCE_INVALID'];
+  try {
+    const raw=fs.readFileSync(safe(root,e.path));
+    if(sha(raw)!==e.sha256)return [...errors,'HOLD_EVIDENCE_SHA_MISMATCH'];
+    const proof=JSON.parse(raw), samples=(proof.samples||[]).filter(s=>s.ordinal===it.ordinal);
+    if(proof.schemaVersion!=='m1-s1-independent-exam-review-v1'||proof.workKey!=='M1-S1-META-FULL'||proof.sourceArchiveFile!==d.sourceArchiveFile||proof.reviewer!==d.reviewedBy.agent||samples.length!==1||samples[0].questionUid!==id?.questionUid||samples[0].result!==h.reason||!String(samples[0].notes||'').trim())errors.push('HOLD_NATIVE_REVIEW_MISMATCH');
+  } catch { errors.push('HOLD_EVIDENCE_UNAVAILABLE'); }
+  return errors;
+}
+function validateM2SourceHold(root,d,it,id,cur) {
+  if(!/^original\/middle\/m2\/2(?:mid|final)\//.test(d.sourceArchiveFile))return ['UNSUPPORTED_HOLD_SCOPE'];
+  const h=it.registrationHold, refs=[['rootAcceptance','evidence'],['review','reviewEvidence'],['independentSample','independentEvidence'],['fourSlot','fourSlotEvidence']], proofs={}, errors=[];
+  for(const [key,field]of refs) {
+    const e=h[field], expected=d.evidence?.nativeHoldReview?.[key];
+    if(!e||!/^docs\/operations\/.+\.json$/.test(e.path||'')||!/^archive\/data\/meta-review\/m2-s2-20261114\/exams\/E\d{3}\/(?:root-acceptance|review|independent-sample|four-slot)\.json$/.test(e.nativePath||'')||!/^([a-f0-9]{40})$/.test(e.commit||'')||!/^([a-f0-9]{64})$/.test(e.sha256||'')||expected?.commit!==e.commit||expected?.path!==e.nativePath||expected?.sha256!==e.sha256||e.commit!==h.evidence?.commit)return ['HOLD_EVIDENCE_REFERENCE_INVALID:'+key];
+    try { const raw=fs.readFileSync(safe(root,e.path));if(sha(raw)!==e.sha256)return ['HOLD_EVIDENCE_SHA_MISMATCH:'+key];proofs[key]=JSON.parse(raw); }
+    catch { return ['HOLD_EVIDENCE_UNAVAILABLE:'+key]; }
+  }
+  const a=proofs.rootAcceptance,r=proofs.review,s=proofs.independentSample,f=proofs.fourSlot;
+  const sampleSchemas=new Set(['m2-s2-independent-sample-v1','m2-s2-meta-independent-sample-v1','m2-s2-independent-sample-review-v1']);
+  const sampleReviewer=s.reviewer||s.examiner||(s.schemaVersion==='m2-s2-independent-sample-review-v1'?s.owner:null);
+  if(a.schemaVersion!=='m2-s2-root-acceptance-v1'||r.schemaVersion!=='m2-s2-meta-review-v1'||!sampleSchemas.has(s.schemaVersion)||f.schemaVersion!=='archive-meta-4slot-v0'||a.semanticReviewStatus!=='PRO_REVIEW_COMPLETE_WITH_UNRESOLVED'||a.reviewer!=='ROOT'||!a.owner||a.owner===a.sampleReviewer||a.sampleReviewer!==sampleReviewer||s.author!==a.owner||r.owner!==a.owner)errors.push('HOLD_NATIVE_REVIEW_MISMATCH');
+  if(!a.examId||r.examId!==a.examId||s.examId!==a.examId||r.sourceArchiveFile!==d.sourceArchiveFile||f.sourceArchiveFile!==d.sourceArchiveFile||(s.sourceArchiveFile!=null&&s.sourceArchiveFile!==d.sourceArchiveFile)||!/^([a-f0-9]{40})$/.test(a.sourceGitBlobSha||'')||[r,s,f].some(p=>p.sourceGitBlobSha!==a.sourceGitBlobSha))errors.push('HOLD_NATIVE_SOURCE_MISMATCH');
+  if(a.reviewSha256!==h.reviewEvidence.sha256||a.fourSlotSha256!==h.fourSlotEvidence.sha256||a.independentSampleSha256!==h.independentEvidence.sha256)errors.push('HOLD_ROOT_ACCEPTANCE_HASH_MISMATCH');
+  const matches=rows=>(rows||[]).filter(x=>x.sourceOrdinal===cur.ordinal&&x.questionUid===id.questionUid), unresolved=matches(a.unresolvedItems), reviewed=matches(r.items), slots=matches(f.items);
+  const fieldKey=x=>stable(Array.isArray(x)?[...x].sort():null);
+  const sourceStates=new Set(['SOURCE_HOLD','SOURCE_VISUAL_HOLD','SOURCE_CORRESPONDENCE_UNSUPPORTED','SOURCE_VISUAL_INCOMPLETE','SOURCE_CONTENT_DEBT','SOURCE_VISUAL_LABEL_DEBT','SOURCE_VISUAL_CROPPED_REQUIRED_LENGTH','SOURCE_VISUAL_CROP','SOURCE_INDEPENDENCE_UNSUPPORTED','SOURCE_PROBABILITY_UNDERDETERMINED']);
+  if(unresolved.length!==1||reviewed.length!==1||slots.length!==1||reviewed[0].metadataRegistrationStatus!=='BLOCKED_SOURCE_EVIDENCE'||!sourceStates.has(reviewed[0].sourceContentStatus)||h.sourceContentStatus!==reviewed[0].sourceContentStatus||!Array.isArray(h.unresolvedFields)||!h.unresolvedFields.length||fieldKey(h.unresolvedFields)!==fieldKey(reviewed[0].unresolvedFields)||fieldKey(h.unresolvedFields)!==fieldKey(unresolved[0].fields))errors.push('HOLD_NATIVE_ITEM_MISMATCH');
+  return errors;
+}
+function holdEvidenceDigests(root,d) {
+  const out={};
+  for(const it of d.items)if(own(it,'registrationHold')) {
+    for(const field of ['evidence','reviewEvidence','independentEvidence','fourSlotEvidence','supersessionEvidence']) {
+      const rel=it.registrationHold?.[field]?.path;
+      if(typeof rel!=='string')continue;
+      try { out[rel]=sha(fs.readFileSync(safe(root,rel))); } catch { out[rel]=null; }
+    }
+  }
+  return out;
+}
 function dictionaries(root) {
   const out=new Map();
   for(const f of walk(safe(root,'docs/architecture/4slot')).filter(f=>/term-dictionary-v[0-9]+(?:\.[0-9]+)*\.json$/.test(f))) {
@@ -126,19 +180,20 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
     const rel=path.relative(root,full).split(path.sep).join('/'), raw=fs.readFileSync(full);
     observed.push([rel,sha(raw)]);
     let file={path:rel,compactSha256:sha(raw)}, d;
-    const fail=(reason,ordinal=null)=>pending.push({path:rel,...(ordinal==null?{}:{ordinal}),reason});
+    const fail=(reason,ordinal=null,detail={})=>pending.push({path:rel,...(ordinal==null?{}:{ordinal}),reason,...detail});
     try{
       if(!rel.endsWith('.4slot.json'))throw Error('UNSUPPORTED_INPUT_FILE');
       d=JSON.parse(raw);file.itemCount=Array.isArray(d.items)?d.items.length:0;const dict=dicts.get(d.dictionaryVersion), errors=validateCompact(d,rel,dict);
       if(errors.length)throw Error(errors.join('|'));
       const sf=safe(root,'archive/exams/'+d.sourceArchiveFile), sourceRaw=fs.readFileSync(sf), sourceBlob=blob(sourceRaw);
-      const bank=loadBank(sourceRaw), byNumber=sourceNumbers(bank), assetDigests=assetsFor(root,bank);
+      const bank=loadBank(sourceRaw), byNumber=sourceNumbers(bank), assetDigests=assetsFor(root,bank), holdDigests=holdEvidenceDigests(root,d);
       const relevantIdentity=bank.map((_,i)=>joins.get(`${d.sourceArchiveFile}#${i+1}`)||[]);
-      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests]));
+      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests]));
       const old=oldFiles.get(rel);
       file={...file,sourceArchiveFile:d.sourceArchiveFile,sourceGitBlobSha:d.sourceGitBlobSha,currentSourceBlobSha:sourceBlob,dictionaryVersion:d.dictionaryVersion,dictionarySha256:dict.sha256,reviewedBy:d.reviewedBy,evidence:d.evidence,inputHash,assetDigests,itemCount:d.items.length};
       observed.push(['archive/exams/'+d.sourceArchiveFile,sha(sourceRaw)],[dict.path,dict.sha256]);
       for(const [p,h]of Object.entries(assetDigests))if(h)observed.push([p,h]);
+      for(const [p,h]of Object.entries(holdDigests))if(h)observed.push([p,h]);
       // No repeated semantic review. Cached rows are re-used only for identical input bytes and identity joins.
       if(reuseCache&&old?.inputHash===inputHash&&previous?.schemaVersion===SCHEMA){
         files.push(old);records.push(...previous.records.filter(r=>r.compactPath===rel));pending.push(...previous.pending.filter(r=>r.path===rel));stats.reusedFiles++;continue;
@@ -189,6 +244,12 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
         // Changed local figure bytes invalidate only rows that reference that file; never discard other rows.
         const alteredAsset=oldSame&&assetRefs(cur.q).some(p=>own(baselineAssets,p)&&baselineAssets[p]!==assetDigests[p]);
         if(alteredAsset){fail('STALE_ASSET_BYTES',it.ordinal);continue;}
+        if(own(it,'registrationHold')) {
+          const errors=validateRegistrationHold(root,d,it,id,cur), h=it.registrationHold;
+          if(errors.length)fail('INVALID_REGISTRATION_HOLD:'+errors.join('|'),it.ordinal,{questionUid:id.questionUid});
+          else fail('EXPLICIT_REVIEW_HOLD:'+h.reason,it.ordinal,{questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,evidence:h.evidence,nextAction:h.nextAction});
+          continue;
+        }
         const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:sourceIdentityNumber(cur.q),sourceDisplayNumber:it.ordinal,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceUidBinding,identityFingerprintStatus,sourceBinding:sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',registrationStatus:'REGISTERED',independentReviewClaim:false};
         records.push(row);
       }
@@ -227,5 +288,5 @@ function run(root=ROOT,{write=false,check=false,report}={}) {
   if(report){fs.mkdirSync(path.dirname(path.resolve(report)),{recursive:true});fs.writeFileSync(report,JSON.stringify(result,null,2)+'\n');}
   return result;
 }
-module.exports={build,run,verify,loadBank,blob,sha,payloadHash,identityHash,validateItem,validateCompact,safe,OUTPUT,SCHEMA,SLOTS};
+module.exports={build,run,verify,loadBank,blob,sha,payloadHash,identityHash,validateItem,validateCompact,validateRegistrationHold,safe,OUTPUT,SCHEMA,SLOTS};
 if(require.main===module){try{const args=process.argv.slice(2),opt={};let root=ROOT;for(let i=0;i<args.length;i++){const a=args[i];if(a==='--write')opt.write=true;else if(a==='--check')opt.check=true;else if(a==='--report')opt.report=args[++i];else if(a==='--root')root=path.resolve(args[++i]);else throw Error('UNKNOWN_ARGUMENT:'+a);}if(opt.write&&opt.check)throw Error('WRITE_CHECK_MUTUALLY_EXCLUSIVE');console.log(JSON.stringify(run(root,opt),null,2));}catch(e){console.error(e.message);process.exitCode=1;}}

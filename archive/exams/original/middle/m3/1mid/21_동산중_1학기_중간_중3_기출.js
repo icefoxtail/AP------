@@ -70,7 +70,11 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_동산중_1학기_중간_중3_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 왼쪽 경계는 열린 점, 오른쪽 5는 닫힌 점이다. 범위 안의 자연수 위치를 같은 색 점으로 표시했다.",
+    "solutionImageCaption": "범위에 드는 자연수는 2, 3, 4, 5이다. 네 자연수의 합은 14이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -718,7 +722,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/21_동산중_1학기_중간_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 2와 3은 열린 양 끝이다. 그 사이의 X는 x의 위치를 보여 주기 위한 예이다. X에서 왼쪽 끝까지는 x−2, 오른쪽 끝까지는 3−x이다.",
+    "solutionImageCaption": "2<x<3이므로 두 거리는 x−2와 3−x이다. 앞에서 뒤를 빼면 2x−5이므로 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
