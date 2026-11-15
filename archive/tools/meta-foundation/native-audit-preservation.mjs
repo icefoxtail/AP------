@@ -83,9 +83,21 @@ function readRef(root, ref, refs) {
 export function isAuditPreservation(approval) {
   return approval?.type === "META_PIPELINE_AUDIT" && approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
 }
+// An older v2 audit retained the source's partial tag and omitted reviewStatus.
+// This exact status tuple is an existing approval, not a new reviewed_pass. Its
+// preservation path below permits only the four separately reviewed D5 fields.
+function isSourceApprovedPartialAudit(row) {
+  return row != null && !Object.hasOwn(row, "reviewStatus") && row.tagStatus === "approved_subunit_concept_partial" &&
+    equal(row.fieldStatus, {
+      standardUnit: "approved_meta_pipeline_audit", subUnit: "approved_meta_pipeline_audit",
+      concept: "approved_meta_pipeline_audit", problemType: "approved_meta_pipeline_audit",
+      template: "approved_meta_pipeline_audit", crossConcept: "approved_meta_pipeline_audit",
+      condition: "approved_meta_pipeline_audit", difficulty: "approved_source"
+    });
+}
 export function isPreservableAuditRecord(row) {
   return row?.metadataApprovalType === "META_PIPELINE_AUDIT" && row.metadataStatus === "approved_semantic_review" &&
-    row.reviewStatus === "review_required" && row.tagStatus === "review_required" &&
+    (row.reviewStatus === "review_required" && row.tagStatus === "review_required" || isSourceApprovedPartialAudit(row)) &&
     ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept"].every(k =>
       row.fieldStatus?.[k] === "approved_meta_pipeline_audit") &&
     !Object.values(row.fieldStatus || {}).includes("manual_review_pending") && row.metaFoundationStatus === "ACTIVE";
@@ -228,18 +240,28 @@ export function planPreservedAuditRecord(context, { current, identity, runtime, 
       PRESERVED_DIFFICULTY_FIELDS.some(k => !equal(change.before?.[k] ?? null, old[k] ?? null)))
     fail("difficulty correction is not the exact prior-to-current reviewed result: " + uid);
   const expected = { ...structuredClone(old), ...structuredClone(change.after) };
+  const sourceApprovedPartial = isSourceApprovedPartialAudit(old);
+  if (sourceApprovedPartial && (prior.approval.metaPipelineAudit.schemaVersion !== "meta-pipeline-audit-approval-v2" ||
+      request.approval.sourceRebind.solutionRepair))
+    fail("source-approved partial status requires its original v2 audit and difficulty-only source change");
   for (const key of Object.keys(change.after || {}))
     if (!PRESERVED_DIFFICULTY_FIELDS.includes(key)) fail("difficulty correction changes a non-difficulty value");
   if (!equal(pick(beforeQuestion, FIXED_STUDENT_FIELDS), pick(question, FIXED_STUDENT_FIELDS)))
     fail("student inputs or numbering changed: " + uid);
   for (const key of new Set([...Object.keys(beforeQuestion), ...Object.keys(question)]))
-    if (!equal(beforeQuestion[key], question[key]) && !TRANSPORT_FIELDS.has(key))
+    if (!equal(beforeQuestion[key], question[key]) &&
+        !(sourceApprovedPartial ? PRESERVED_DIFFICULTY_FIELDS.includes(key) : TRANSPORT_FIELDS.has(key)))
       fail("unreviewed source field changed: " + uid + "." + key);
   const unit = master.find(r => r.key === old.standardUnitKey && r.keyType === "standardUnitKey" && ["active", "ACTIVE"].includes(r.status));
   const sub = master.find(r => r.key === old.subUnitKey && r.keyType === "subUnitKey" && ["active", "ACTIVE"].includes(r.status));
   if (!unit || !sub || (sub.standardUnitKey || sub.parentKey) !== unit.key) fail("exact canonical basic keys missing");
   for (const key of SOURCE_VALUES) {
     if (!Object.hasOwn(question, key) || equal(question[key], expected[key])) continue;
+    // Old source placeholders can differ from the already approved sidecar.
+    // Keep that exact prior source/sidecar relationship; no changed source value,
+    // new classification, or altered approval/debt is accepted by this branch.
+    if (sourceApprovedPartial && !PRESERVED_DIFFICULTY_FIELDS.includes(key) &&
+        Object.hasOwn(beforeQuestion, key) && equal(question[key], beforeQuestion[key])) continue;
     if (key === "standardUnit" && question[key] === unit.labelKo || key === "subUnit" && question[key] === sub.labelKo) continue;
     fail("source/approved value mismatch: " + uid + "." + key);
   }
