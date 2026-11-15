@@ -24,6 +24,7 @@ const registrationContracts = [
   /^tests\/archive-(?:registration-|register-|single-writer-|main-(?:merge-meta|meta-batch-replay)\.|native-(?:proposal-|replay-registry-context\.)|pr-(?:registration-|native-preview\.)|pages-|package-only\.|reviewed-(?:apply-bridge\.|native-)|meta-backlog-)/,
   /^tests\/archive2-registration-contracts\.test\.mjs$/,
   /^tests\/(?:git-push-derived-with-retry\.|ci-signal-hygiene\.|run-tests-output-guard\.|apms-worker-deploy\.)/,
+  /^tests\/archive-basic-scope-rebind\.test\.mjs$/,
 ];
 const outputConsumers = [
   // Common output modules serve originals, Generated, saved papers and APMS

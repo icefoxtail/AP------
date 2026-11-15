@@ -44,6 +44,7 @@ import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
+import { NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_HOLD_REASON } from "./native-basic-hold-preservation.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
 const require = createRequire(import.meta.url);
@@ -208,7 +209,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     const correction = schema === SCHEMA.BASIC_PARENT_CORRECTION;
     const preservation = doc.approval?.sourceReview !== undefined;
     if (!Array.isArray(doc.items) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "rebind request needs sourceArchiveFile and items[]");
-    if (preservation && (correction || doc.approval.sourceReview?.schemaVersion !== BASIC_PRESERVATION_SCHEMA ||
+    if (preservation && (correction || ![BASIC_PRESERVATION_SCHEMA, NATIVE_BASIC_HOLD_SCHEMA].includes(doc.approval.sourceReview?.schemaVersion) ||
         doc.approval.type !== "BASIC_SCOPE_REBIND" || doc.scope !== undefined || doc.registrationMode !== undefined ||
         !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 || !doc.items.length ||
         doc.items.length > doc.expectedQuestionCount || new Set(doc.items.map(i => i.questionUid)).size !== doc.items.length ||
@@ -465,7 +466,16 @@ function preservedBasicRows(root, unit, consumer) {
   const metadata = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8"));
   return unit.rows.map(row => {
     const matches = metadata.records.filter(r => r.questionUid === row.uid);
-    if (matches.length !== 1 || consumer.runtimeByUid.has(row.uid)) throw Error("basic preservation current metadata/runtime scope mismatch");
+    if (matches.length !== 1) throw Error("basic preservation current metadata scope mismatch");
+    const runtime = consumer.runtimeByUid.get(row.uid) || [];
+    if (request.approval.sourceReview.schemaVersion === NATIVE_BASIC_HOLD_SCHEMA) {
+      const bindings = (proof.heldRuntimeBindings || []).filter(record => record.questionUid === row.uid);
+      const stableHash = value => crypto.createHash("sha256").update(JSON.stringify(value, (_, v) => v && typeof v === "object" && !Array.isArray(v)
+        ? Object.fromEntries(Object.keys(v).sort().map(key => [key, v[key]])) : v)).digest("hex");
+      if (bindings.length !== runtime.length || bindings.length > 1 || runtime.some(record => !bindings.some(binding => binding.recordSha256 === stableHash(record))) ||
+          !same((proof.metaOnlyHoldReasons || []).filter(record => record.questionUid === row.uid), [{ questionUid: row.uid, reason: NATIVE_BASIC_HOLD_REASON }]))
+        throw Error("basic preservation explicit held runtime drift");
+    } else if (runtime.length) throw Error("basic preservation current metadata/runtime scope mismatch");
     const item = request.items.find(i => i.questionUid === row.uid), record = matches[0];
     // The official replay above checks the entire protected metadata/identity
     // row. The current canonical resolver and actual page query below must

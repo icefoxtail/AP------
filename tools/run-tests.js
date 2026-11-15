@@ -442,6 +442,10 @@ const requiredCommands = [
   {
     label: 'apmath/playground/next/tools/label-sweep.test.mjs',
     args: ['--test', 'apmath/playground/next/tools/label-sweep.test.mjs']
+  },
+  {
+    label: 'tests/archive-basic-scope-rebind.test.mjs',
+    args: ['--test', 'tests/archive-basic-scope-rebind.test.mjs']
   }
 ];
 
