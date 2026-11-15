@@ -270,6 +270,8 @@ window.examData = {
     },
     {
       "id": 8,
+      "imageSize": "full",
+      "imageAlt": "왼쪽 정사각형은 B가 −1, D가 3에 있고 오른쪽 정사각형은 F가 4, H가 6에 있다. 컴퍼스로 옮긴 길이의 끝 P, Q, R, S를 수직선 위에 표시했다.",
       "number": 8,
       "questionNumber": 8,
       "type": "MULTIPLE_CHOICE",
@@ -284,7 +286,7 @@ window.examData = {
       "difficultyBucket": 3,
       "level": 3,
       "score": 4.0,
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "wide": false,
       "tags": [
         "중3",
@@ -292,12 +294,10 @@ window.examData = {
         "수직선 위의 점과 무리수"
       ],
       "hasVisual": true,
-      "image": "assets/images/16_부산엄궁중_1학기_중간_중3_수학/q08.png",
-      "images": [
-        "assets/images/16_부산엄궁중_1학기_중간_중3_수학/q08.png"
-      ],
+      "image": "assets/images/16_부산엄궁중_1학기_중간_중3_수학/q8-problem-visual-v2.svg",
+      "images": ["assets/images/16_부산엄궁중_1학기_중간_중3_수학/q8-problem-visual-v2.svg"],
       "accessibility": "수직선 위에 모눈 한 칸이 1인 정사각형 ABCD와 EFGH의 대각선 길이를 컴퍼스로 수직선에 옮겨 점 P, Q, S, R을 나타낸 기하 도판",
-      "question": "<p>8. 다음 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이다. $\\overline{\\mathrm{BA}} = \\overline{\\mathrm{BQ}}$, $\\overline{\\mathrm{DC}} = \\overline{\\mathrm{DP}}$, $\\overline{\\mathrm{FE}} = \\overline{\\mathrm{FS}}$, $\\overline{\\mathrm{HG}} = \\overline{\\mathrm{HR}}$일 때, 다음 중 옳지 않은 것은? [4.0점]</p><p><img src=\"assets/images/16_부산엄궁중_1학기_중간_중3_수학/q08.png\" alt=\"수직선 위에 모눈 한 칸이 1인 정사각형 ABCD와 EFGH의 대각선 길이를 컴퍼스로 수직선에 옮겨 점 P, Q, S, R을 나타낸 기하 도판\" /></p>",
+      "question": "<p>8. 다음 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이다. $\\overline{\\mathrm{BA}} = \\overline{\\mathrm{BQ}}$, $\\overline{\\mathrm{DC}} = \\overline{\\mathrm{DP}}$, $\\overline{\\mathrm{FE}} = \\overline{\\mathrm{FS}}$, $\\overline{\\mathrm{HG}} = \\overline{\\mathrm{HR}}$일 때, 다음 중 옳지 않은 것은? [4.0점]</p><p><img src=\"assets/images/16_부산엄궁중_1학기_중간_중3_수학/q8-problem-visual-v2.svg\" alt=\"왼쪽 정사각형은 B가 −1, D가 3에 있고 오른쪽 정사각형은 F가 4, H가 6에 있다. 컴퍼스로 옮긴 길이의 끝 P, Q, R, S를 수직선 위에 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "① $\\mathrm{P}$에 대응하는 수는 $3-\\sqrt{8}$",
         "② $\\mathrm{Q}$에 대응하는 수는 $-1+\\sqrt{8}$",
@@ -576,6 +576,8 @@ window.examData = {
     },
     {
       "id": 16,
+      "imageSize": "large",
+      "imageAlt": "−2, −1, 0, 1, 2, 3, 4를 나타낸 수직선에서 A는 −2와 −1 사이, B는 0과 1 사이, C는 2와 3 사이, D는 3과 4 사이에 차례로 있다.",
       "number": 16,
       "questionNumber": 16,
       "type": "MULTIPLE_CHOICE",
@@ -590,7 +592,7 @@ window.examData = {
       "difficultyBucket": 3,
       "level": 3,
       "score": 4.0,
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "wide": false,
       "tags": [
         "중3",
@@ -598,12 +600,10 @@ window.examData = {
         "수직선 위의 실수의 대소와 합"
       ],
       "hasVisual": true,
-      "image": "assets/images/16_부산엄궁중_1학기_중간_중3_수학/q16.png",
-      "images": [
-        "assets/images/16_부산엄궁중_1학기_중간_중3_수학/q16.png"
-      ],
+      "image": "assets/images/16_부산엄궁중_1학기_중간_중3_수학/q16-problem-visual-v2.svg",
+      "images": ["assets/images/16_부산엄궁중_1학기_중간_중3_수학/q16-problem-visual-v2.svg"],
       "accessibility": "수직선 위에 -2부터 4까지의 눈금과 네 점 A, B, C, D가 표시된 수직선 도판",
-      "question": "<p>16. 수직선 위의 네 점 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$에 대응하는 수를 보기에서 찾아 왼쪽에 있는 수부터 차례로 나열하였을 때, 가장 왼쪽에 있는 수와 가장 오른쪽에 있는 수의 합을 구하면? [4.0점]\n\n\n\n| 보기 |\n| :--- |\n| $\\sqrt{5}+1,\\quad \\sqrt{2}+1,\\quad 2-\\sqrt{2},\\quad 1-\\sqrt{5}$ |</p><p><img src=\"assets/images/16_부산엄궁중_1학기_중간_중3_수학/q16.png\" alt=\"수직선 위에 -2부터 4까지의 눈금과 네 점 A, B, C, D가 표시된 수직선 도판\" /></p>",
+      "question": "<p>16. 수직선 위의 네 점 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$에 대응하는 수를 보기에서 찾아 왼쪽에 있는 수부터 차례로 나열하였을 때, 가장 왼쪽에 있는 수와 가장 오른쪽에 있는 수의 합을 구하면? [4.0점]\n\n\n\n| 보기 |\n| :--- |\n| $\\sqrt{5}+1,\\quad \\sqrt{2}+1,\\quad 2-\\sqrt{2},\\quad 1-\\sqrt{5}$ |</p><p><img src=\"assets/images/16_부산엄궁중_1학기_중간_중3_수학/q16-problem-visual-v2.svg\" alt=\"−2, −1, 0, 1, 2, 3, 4를 나타낸 수직선에서 A는 −2와 −1 사이, B는 0과 1 사이, C는 2와 3 사이, D는 3과 4 사이에 차례로 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "① $2$",
         "② $3$",
@@ -630,7 +630,7 @@ window.examData = {
       "difficultyBucket": 1,
       "level": 1,
       "score": 3.0,
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "wide": false,
       "tags": [
         "중3",
@@ -638,12 +638,10 @@ window.examData = {
         "제곱근표의 이해와 활용"
       ],
       "hasVisual": true,
-      "image": "assets/images/16_부산엄궁중_1학기_중간_중3_수학/q17.png",
-      "images": [
-        "assets/images/16_부산엄궁중_1학기_중간_중3_수학/q17.png"
-      ],
+      "image": "",
+      "images": [],
       "accessibility": "3.1부터 3.3까지의 수와 소수 둘째 자리 0부터 3까지의 제곱근 값이 나열된 제곱근표 일부",
-      "question": "<p>17. 주어진 제곱근표의 일부를 보고 $\\sqrt{3.12}$의 값을 구하면? [3.0점]</p><p><img src=\"assets/images/16_부산엄궁중_1학기_중간_중3_수학/q17.png\" alt=\"3.1부터 3.3까지의 수와 소수 둘째 자리 0부터 3까지의 제곱근 값이 나열된 제곱근표 일부\" /></p>",
+      "question": "<p>17. 주어진 제곱근표의 일부를 보고 $\\sqrt{3.12}$의 값을 구하면? [3.0점]</p>\n\n| 수 | 0 | 1 | 2 | 3 | ⋯ |\n| --- | --- | --- | --- | --- | --- |\n| ⋮ | ⋮ | ⋮ | ⋮ | ⋮ | ⋮ |\n| 3.1 | 1.761 | 1.764 | 1.766 | 1.769 | ⋯ |\n| 3.2 | 1.789 | 1.792 | 1.794 | 1.797 | ⋯ |\n| 3.3 | 1.817 | 1.819 | 1.822 | 1.825 | ⋯ |\n\n",
       "choices": [
         "① $1.764$",
         "② $1.766$",
@@ -846,6 +844,8 @@ window.examData = {
     },
     {
       "id": 23,
+      "imageSize": "full",
+      "imageAlt": "큰 정사각형 한 변은 105 cm, 안쪽 빈 정사각형의 한 변은 95 cm이다. 두 정사각형 사이의 띠를 청록색으로 칠했다.",
       "number": 23,
       "questionNumber": 23,
       "type": "MULTIPLE_CHOICE",
@@ -860,7 +860,7 @@ window.examData = {
       "difficultyBucket": 2,
       "level": 2,
       "score": 4.0,
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "wide": false,
       "tags": [
         "중3",
@@ -868,12 +868,10 @@ window.examData = {
         "인수분해 공식을 이용한 수의 계산"
       ],
       "hasVisual": true,
-      "image": "assets/images/16_부산엄궁중_1학기_중간_중3_수학/q23.png",
-      "images": [
-        "assets/images/16_부산엄궁중_1학기_중간_중3_수학/q23.png"
-      ],
+      "image": "assets/images/16_부산엄궁중_1학기_중간_중3_수학/q23-problem-visual-v2.svg",
+      "images": ["assets/images/16_부산엄궁중_1학기_중간_중3_수학/q23-problem-visual-v2.svg"],
       "accessibility": "한 변이 105cm인 큰 정사각형 내부에서 한 변이 95cm인 작은 정사각형을 제외한 액자 형태의 테두리 영역 도판",
-      "question": "<p>23. 다음 도형에서 색칠한 부분의 넓이를 인수분해 공식을 이용하여 구하면? [4.0점]</p><p><img src=\"assets/images/16_부산엄궁중_1학기_중간_중3_수학/q23.png\" alt=\"한 변이 105cm인 큰 정사각형 내부에서 한 변이 95cm인 작은 정사각형을 제외한 액자 형태의 테두리 영역 도판\" /></p>",
+      "question": "<p>23. 다음 도형에서 색칠한 부분의 넓이를 인수분해 공식을 이용하여 구하면? [4.0점]</p><p><img src=\"assets/images/16_부산엄궁중_1학기_중간_중3_수학/q23-problem-visual-v2.svg\" alt=\"큰 정사각형 한 변은 105 cm, 안쪽 빈 정사각형의 한 변은 95 cm이다. 두 정사각형 사이의 띠를 청록색으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "① $1980$",
         "② $2000$",

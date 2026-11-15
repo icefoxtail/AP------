@@ -192,6 +192,10 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "왼쪽부터 넓이 x²인 같은 정사각형 두 개, 넓이 x인 같은 직사각형 세 개, 넓이 1인 작은 정사각형 하나를 늘어놓았다. 큰 정사각형의 변은 x, 직사각형의 변은 x와 1, 작은 정사각형의 변은 1이다.",
+    "image": "assets/images/17_대구교동중_1학기_중간_중3_수학/q11-problem-visual-v2.svg",
     "questionNumber": 11,
     "number": 11,
     "questionType": "객관식",
@@ -204,9 +208,7 @@ window.questionBank = [
       "④ $2x^2+3x+1$",
       "⑤ $4x^2+3x+1$"
     ],
-    "images": [
-      "assets/images/17_대구교동중_1학기_중간_중3_수학/q11.png"
-    ],
+    "images": ["assets/images/17_대구교동중_1학기_중간_중3_수학/q11-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 3.0
@@ -328,15 +330,17 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "정사각형 A, B, C가 큰 것부터 작은 것 순서로 왼쪽에서 오른쪽에 붙어 있다. 바닥은 한 직선에 있고 서로 맞닿은 경계는 점선이다.",
+    "image": "assets/images/17_대구교동중_1학기_중간_중3_수학/q19-problem-visual-v2.svg",
     "questionNumber": 19,
     "number": 19,
     "questionType": "서술형",
     "question": "【서술형 4】 그림에서 사각형 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$는 모두 정사각형이고, 각 정사각형의 넓이 사이에는 $\\mathrm{B}$는 $\\mathrm{C}$의 2배, $\\mathrm{A}$는 $\\mathrm{B}$의 2배인 관계가 있다. $\\mathrm{C}$의 넓이가 3이라고 할 때, 세 정사각형을 이어 붙여 만든 새로운 도형의 둘레의 길이를 풀이과정을 상세히 써서 구하시오. [10점]",
     "content": "【서술형 4】 그림에서 사각형 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$는 모두 정사각형이고, 각 정사각형의 넓이 사이에는 $\\mathrm{B}$는 $\\mathrm{C}$의 2배, $\\mathrm{A}$는 $\\mathrm{B}$의 2배인 관계가 있다. $\\mathrm{C}$의 넓이가 3이라고 할 때, 세 정사각형을 이어 붙여 만든 새로운 도형의 둘레의 길이를 풀이과정을 상세히 써서 구하시오. [10점]",
     "choices": [],
-    "images": [
-      "assets/images/17_대구교동중_1학기_중간_중3_수학/q19.png"
-    ],
+    "images": ["assets/images/17_대구교동중_1학기_중간_중3_수학/q19-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 10.0

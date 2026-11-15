@@ -244,6 +244,9 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "①과 ④는 꼭짓점이 x축의 양쪽 중 오른쪽에 있고 아래로 열리는 같은 모양이다. ②는 x축 음의 부분에 닿으며 위로 열리고, ③은 x축 양의 부분에 닿으며 위로 열린다. ⑤는 x축 음의 부분에 닿으며 아래로 열린다.",
     "questionNumber": 13,
     "number": 13,
     "questionType": "객관식",
@@ -256,13 +259,11 @@ window.questionBank = [
       "④",
       "⑤"
     ],
-    "images": [
-      "assets/images/17_경북환호여중_1학기_기말_중3_수학/q13.png"
-    ],
+    "images": ["assets/images/17_경북환호여중_1학기_기말_중3_수학/q13-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q13.png"
+    "image": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q13-problem-visual-v2.svg"
   },
   {
     "id": 14,
@@ -440,19 +441,20 @@ window.questionBank = [
   },
   {
     "id": 23,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "위로 열린 파란 포물선의 꼭짓점은 (2, −3)이다. 포물선이 세로축의 1을 지나는 곳과 꼭짓점을 표시했다.",
     "questionNumber": 23,
     "number": 23,
     "questionType": "서술형",
     "question": "[서술형2] 이차함수 $y=ax^2+bx+c$의 그래프가 아래 그림과 같을 때, 이 이차함수의 식을 구하여라. (단, $y=ax^2+bx+c$ 꼴로 나타내시오.) [4.0점]",
     "content": "[서술형2] 이차함수 $y=ax^2+bx+c$의 그래프가 아래 그림과 같을 때, 이 이차함수의 식을 구하여라. (단, $y=ax^2+bx+c$ 꼴로 나타내시오.) [4.0점]",
     "choices": [],
-    "images": [
-      "assets/images/17_경북환호여중_1학기_기말_중3_수학/q23.png"
-    ],
+    "images": ["assets/images/17_경북환호여중_1학기_기말_중3_수학/q23-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4.0,
-    "image": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q23.png"
+    "image": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q23-problem-visual-v2.svg"
   },
   {
     "id": 24,
