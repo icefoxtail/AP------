@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "archive-m3s2-first464-release-verification-v1",
+  "sourceCommit": "86b2992bd6d0d93075f4464523c8d16fd30a0b32",
+  "requestCommit": "86b2992bd6d0d93075f4464523c8d16fd30a0b32",
+  "registrarCodeCommit": "de2a947c7315da5b4b975fd83d29f990d1dd953d",
+  "rawSourceHashFixCommit": "11ebefa98cfc4f734a9db93c2df37bf27a2943a4",
+  "actualMainConflictCheck": "3406b3eac58ebb20b04e3b1bab14b5f8a36b0f3a",
+  "isolatedSandbox": true,
+  "fullSourceFileCount": 1228,
+  "generatedFilesWrittenOnlyInsideSandbox": true,
+  "registeredRequests": 35,
+  "projectionPassed": 35,
+  "projectionUidPassed": 464,
+  "projectionLanes": {
+    "canonical": 464,
+    "usableMetaLane": 0
+  },
+  "consumerStatus": "PASS",
+  "actualSelectionMetrics": {
+    "count": 464,
+    "generalUse": 464,
+    "difficultyUsable": 464,
+    "approvedMetaFacets": 464,
+    "strictAdvanced": 464,
+    "strictBasic": 440,
+    "strictBasicExclusions": {
+      "applicability": 24
+    }
+  },
+  "consumerCounts": {
+    "changed": 464,
+    "checked": 464,
+    "passed": 464,
+    "skippedUnchanged": 0
+  },
+  "failures": [],
+  "status": "PASS",
+  "scope": "35 official FINAL_QA metadata requests only. Reviewed source declarations for the remaining questions and separate figure/source/type followups do not count as completed native approval.",
+  "fullBuild": {
+    "command": "GIT_NO_LAZY_FETCH=1 python archive/build_db.py",
+    "runtimeCodeCommit": "de2a947c7315da5b4b975fd83d29f990d1dd953d",
+    "attempts": [
+      {
+        "attempt": 1,
+        "exitCode": 1,
+        "logPath": "/workspace/scratch/c8f1b0bfb4fa/m3s2/.tmp/m3s2-release/first464-legacy-full-build.log",
+        "sha256": "2ef621aa10ca73e55b5fe3f98309d6ca86025be3dd97694375f8f3a958959d24"
+      },
+      {
+        "attempt": 2,
+        "exitCode": 0,
+        "logPath": "/workspace/scratch/c8f1b0bfb4fa/m3s2/.tmp/m3s2-release/first464-legacy-full-build-2.log",
+        "sha256": "0eb31d5c4abee4353e712b81c83b44f525ddcd6f1696e6344d797492459e9959"
+      }
+    ],
+    "finalExitCode": 0,
+    "initialFailure": "First fresh run updated runtime source-readiness after the catalog; final readiness check rejected the changed middle-geometry runtime digest. Second full build reached the stable generated state and all required build checks passed."
+  },
+  "officialWriter": {
+    "requests": 35,
+    "passed": 35,
+    "registeredUids": 464,
+    "nativeReusePassed": 464,
+    "sourceFieldParityMismatches": 0
+  },
+  "proofRefs": [
+    {
+      "path": "docs/operations/m3-s2-release-20261115/first464-native-writer-auto-reuse.json",
+      "sha256": "193f0145c6c8c20282d4f92bf9ce6c50839cb6762cb9676823c96551cb8b3acc"
+    },
+    {
+      "path": "docs/operations/m3-s2-release-20261115/first464-consumer-result.json",
+      "sha256": "76e9fcc8520736e2e7c2e663a7c996141d36125cfbc0bc14c512e2f5e7085925"
+    },
+    {
+      "path": "docs/operations/m3-s2-release-20261115/first464-projection-result.json",
+      "sha256": "52447e43cea84e91444bd061f9c63e12969c9b6da79a4f814cfc7f7c355d21cb"
+    }
+  ],
+  "existingNativeApprovalContinuity": {
+    "receiptReferencedUids": 71,
+    "validNativeReceiptsOnActualMain": 0,
+    "validNativeApprovalLost": 0,
+    "newlyRestoredByFirstSubset": 39,
+    "existingAuditKind": "META_PIPELINE_AUDIT",
+    "evidence": "preexisting-native-approval-continuity.json"
+  },
+  "rawHashRecovery": {
+    "examId": "E063",
+    "uidCount": 11,
+    "sourceRawSha256": "24d864f8e37a3b2d8d10f45f7d80ed689b79b03c85b20042de74980c7196114b",
+    "normalizedSourceHashPreserved": "095e8a1d0d62ca8af01ad251330b333d66350dd548e861ddd3186111077e3116",
+    "actualCanonicalAndConsumerCount": 11
+  },
+  "limits": [
+    "No entire 1958-question quality PASS is asserted.",
+    "24 E042 rows preserve their declared CORE applicability: all are approved and directly selectable, while the strict basic DEFAULT_SCOPE selector excludes them. This scope distinction is retained explicitly.",
+    "Seven current-figure reassessments and the separate source/type repairs remain outside this first464 registration subset."
+  ],
+  "productionStatus": "AWAITING_SERIALIZED_REMOTE_CI_MERGE_WRITER_DEPLOYMENT",
+  "historicalLevelPreservation": {
+    "evidence": ".archive-meta-register/evidence/m3s2-e053-historical-level-preservation-20261115.json",
+    "sha256": "8c93dee939a7a337ce2cd37465ec9e8bdda675acbd344835244bccb8440f0a4f",
+    "restoredExactHistoricalLabels": 6,
+    "label": "중상",
+    "legacyCompatibility": "UNKNOWN",
+    "numericDifficultyJudgmentChanged": false,
+    "newFullMathematicalQa": false
+  },
+  "latestMainNoOverlapCheck": {
+    "commit": "f380aee0b8319c171d6cf2a9f96d2e29d31f28e7",
+    "fixtureMainBaseline": "3406b3eac58ebb20b04e3b1bab14b5f8a36b0f3a",
+    "targetSourceAndMetadataIdentityChanges": 0
+  },
+  "ciFacetRepair": {
+    "commit": "75e2a5cf222363fdbd860de92771fe57a1714f66",
+    "testsPassed": 18,
+    "productionCodeChanged": false,
+    "rootCommonPr": 2094,
+    "report": "docs/operations/m3-s2-release-20261115/first464-ci-facet-repair.json"
+  },
+  "sourceFileCountScope": "All .js files under the isolated archive/exams source tree; production source-bank counts remain those reported by the builder."
+}

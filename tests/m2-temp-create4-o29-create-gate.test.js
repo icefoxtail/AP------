@@ -1,11 +1,4 @@
-const { spawnSync } = require('child_process');
-const exam="archive/exams/original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js";
-const ev="archive/data/r2e-intake/m2/24_금당중_1학기_기말_중2_기출.create.physical-evidence.json";
-for (const args of [
-  ['archive/tools/solution-calibration-gate.mjs','--exam',exam,'--evidence',ev,'--stage','CREATE','--preflight'],
-  ['archive/tools/review-evidence-gate.mjs','--exam',exam,'--evidence',ev,'--stage','CREATE']
-]) {
-  const x=spawnSync(process.execPath,args,{stdio:'inherit'});
-  if(x.status!==0) process.exit(x.status||1);
-}
-console.log('M2 o29 CREATE canonical gates PASS');
+// Regression of the original CREATE judgment; current source release is
+// checked by the registration projection and changed-UID Consumer gates.
+const { runHistoricalCreateGates } = require('./helpers/historical-create-gates.cjs');
+runHistoricalCreateGates('m2-temp-create4-o29-create-gate');

@@ -30,6 +30,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "기본 포물선의 꼭짓점 (0,0)에 두 방향의 이동량을 더하여 새 좌표를 읽는다.",
+    "decisiveStep": "기본 포물선의 꼭짓점 (0,0)에 두 방향의 이동량을 더하여 새 좌표를 읽는다."
   },
   {
     "id": 2,
@@ -62,6 +74,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
+  ,
+    "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "그림의 꼭짓점으로 y=a(x+2)²를 놓고 y절편 한 점을 대입해 a를 정한다.",
+    "decisiveStep": "그림의 꼭짓점으로 y=a(x+2)²를 놓고 y절편 한 점을 대입해 a를 정한다."
   },
   {
     "id": 3,
@@ -92,6 +116,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "일반형을 완전제곱으로 고쳐 축과 꼭짓점을 읽고 축 왼쪽에서의 증가 진술을 확인한다.",
+    "decisiveStep": "일반형을 완전제곱으로 고쳐 축과 꼭짓점을 읽고 축 왼쪽에서의 증가 진술을 확인한다."
   },
   {
     "id": 4,
@@ -124,6 +160,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "그림에서 p,q를 꼭짓점 좌표로 읽고 y절편으로 a를 구하여 요구식을 계산한다.",
+    "decisiveStep": "그림에서 p,q를 꼭짓점 좌표로 읽고 y절편으로 a를 구하여 요구식을 계산한다."
   },
   {
     "id": 5,
@@ -156,6 +204,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 x절편으로 인수형을 놓고 y절편으로 배수를 정한 뒤 계수를 읽어 계산한다.",
+    "decisiveStep": "두 x절편으로 인수형을 놓고 y절편으로 배수를 정한 뒤 계수를 읽어 계산한다."
   },
   {
     "id": 6,
@@ -188,6 +248,18 @@ window.questionBank = [
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
+  ,
+    "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+    "templateKey": "TPL_AREA_DIRECT",
+    "crossConceptKeys": ["CC_QUADRATIC_FACTORIZATION"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "이차식의 두 근을 x절편으로 구해 밑변을 정하고 y절편을 높이로 삼각형 넓이를 계산한다.",
+    "decisiveStep": "이차식의 두 근을 x절편으로 구해 밑변을 정하고 y절편을 높이로 삼각형 넓이를 계산한다."
   },
   {
     "id": 7,
@@ -220,6 +292,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "계수의 부호를 먼저 읽은 뒤 계수 조합을 f(±1) 또는 4f(±1/2)로 바꾸어 그래프의 높이 부호로 진술을 판정한다.",
+    "decisiveStep": "계수의 부호를 먼저 읽은 뒤 계수 조합을 f(±1) 또는 4f(±1/2)로 바꾸어 그래프의 높이 부호로 진술을 판정한다."
   },
   {
     "id": 8,
@@ -253,6 +337,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "코사인으로 한 직각변을 구한 뒤 피타고라스로 나머지 변을 얻어 탄젠트로 바꾼다.",
+    "decisiveStep": "코사인으로 한 직각변을 구한 뒤 피타고라스로 나머지 변을 얻어 탄젠트로 바꾼다."
   },
   {
     "id": 9,
@@ -289,6 +385,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC에 BC=6 cm, AC=3 cm를 표시한다. BC 위 D에서 AB에 내린 수선 DE와 두 같은 파란 각 x, ∠BAC를 보인다.",
     "solutionImageCaption": "AB=3√5 cm이고 x=∠A이다. sin x=2√5/5, tan x=2이므로 sin x·tan x=4√5/5이다. 정답은 ②이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 직각삼각형의 여각으로 x=A를 보이고 빗변을 피타고라스로 구하여 그 각의 사인과 탄젠트를 곱한다.",
+    "decisiveStep": "두 직각삼각형의 여각으로 x=A를 보이고 빗변을 피타고라스로 구하여 그 각의 사인과 탄젠트를 곱한다."
   },
   {
     "id": 10,
@@ -325,6 +433,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 빗변 AB의 높이 CD. 파란색 x=∠ABC, 주황색 y=∠BAC를 대응시킨다. AC=6 cm, BC=12 cm.",
     "solutionImageCaption": "AB=6√5 cm이다. sin x=√5/5, sin y=2√5/5이므로 sin x+sin y=3√5/5이다. 정답은 ③이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "수선으로 나뉜 두 예각을 원래 삼각형의 여각과 대응시키고 빗변을 구하여 두 사인 값을 더한다.",
+    "decisiveStep": "수선으로 나뉜 두 예각을 원래 삼각형의 여각과 대응시키고 빗변을 구하여 두 사인 값을 더한다."
   },
   {
     "id": 11,
@@ -355,6 +475,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "특수각의 삼각비 값을 각각 대입하여 계산 결과의 일치를 확인한다.",
+    "decisiveStep": "특수각의 삼각비 값을 각각 대입하여 계산 결과의 일치를 확인한다."
   },
   {
     "id": 12,
@@ -384,13 +516,25 @@ window.questionBank = [
     "answer": "①",
     "solution": "$AD\\perp BC$이므로 두 삼각형 $ABD$, $ACD$는 모두 직각삼각형이다.\nㄱ. $\\angle ABD=45^\\circ$이므로 $\\triangle ABD$의 나머지 예각도 $45^\\circ$이다. 따라서 직각이등변삼각형이고 $BD=AD=5$이다.\n\nㄴ. $\\tan30^\\circ=\\dfrac{AD}{DC}$이므로\n$\\dfrac{\\sqrt3}{3}=\\dfrac5{DC}$\n$DC=5\\sqrt3$이다.\n따라서 $BC=BD+DC=5+5\\sqrt3$이다.\n\nㄷ. $\\sin30^\\circ=\\dfrac{AD}{AC}$이므로\n$\\dfrac12=\\dfrac5{AC}$\n$AC=10$이다. 따라서 ㄷ은 옳지 않다.\n\nㄹ. 삼각형 $ABC$의 넓이는\n$\\dfrac12\\times BC\\times AD$\n$=\\dfrac12\\times(5+5\\sqrt3)\\times5$\n$=\\dfrac{25(1+\\sqrt3)}2$이다. 따라서 ㄹ은 옳지 않다.\n그러므로 옳은 것은 ㄱ, ㄴ이고 정답은 ①이다.",
     "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q12-solution-v2.svg",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImageAlt": "해설 그림: 삼각형 ABC에서 AD는 BC에 수직이다. AD와 BD에 파란 한 눈금, 두 45° 각에 주황 표시를 하고 오른쪽 직각삼각형 ACD에 30°, DC=5√3 cm, AC=10 cm를 표시한다.",
     "solutionImageCaption": "BD=AD=5 cm이고 DC=5√3 cm이므로 BC=5+5√3 cm이다. AC=10 cm이다. 넓이는 1/2×(5+5√3)×5=25(1+√3)/2 cm²이므로 옳은 것은 ㄱ, ㄴ이다. 정답은 ①이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_ISOSCELES_RIGHT_TRIANGLE","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
+    "primaryMethod": "주어진 높이를 공유하는 두 직각삼각형에서 밑변과 빗변을 삼각비로 구한 후 넓이식의 진위를 확인한다.",
+    "decisiveStep": "주어진 높이를 공유하는 두 직각삼각형에서 밑변과 빗변을 삼각비로 구한 후 넓이식의 진위를 확인한다."
   },
   {
     "id": 13,
@@ -424,6 +568,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "사분원의 반지름을 직각삼각형의 이웃변으로 읽고 탄젠트 정의에서 목표 수선을 바로 표현한다.",
+    "decisiveStep": "사분원의 반지름을 직각삼각형의 이웃변으로 읽고 탄젠트 정의에서 목표 수선을 바로 표현한다."
   },
   {
     "id": 14,
@@ -454,6 +610,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "내각비와 내각합으로 A=30°를 얻고 tan·cos 관계로 식을 2tan A로 단순화하여 특수값을 대입한다.",
+    "decisiveStep": "내각비와 내각합으로 A=30°를 얻고 tan·cos 관계로 식을 2tan A로 단순화하여 특수값을 대입한다."
   },
   {
     "id": 15,
@@ -483,10 +651,22 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "$\\angle B=36^\\circ$를 기준으로 보면 $BC=12$는 이웃한 변이고 $AB=x$는 빗변이다.\n$\\cos36^\\circ=\\dfrac{BC}{AB}=\\dfrac{12}{x}$이므로\n$x=\\dfrac{12}{\\cos36^\\circ}$이다.\n또 $AC=y$는 맞은편 변이므로\n$\\tan36^\\circ=\\dfrac{AC}{BC}=\\dfrac{y}{12}$\n$y=12\\tan36^\\circ$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q15-solution.svg",
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "주어진 각의 이웃변을 기준으로 코사인과 탄젠트의 정의를 각각 써서 빗변과 맞은편 변을 표시한다.",
+    "decisiveStep": "주어진 각의 이웃변을 기준으로 코사인과 탄젠트의 정의를 각각 써서 빗변과 맞은편 변을 표시한다."
   },
   {
     "id": 16,
@@ -516,10 +696,22 @@ window.questionBank = [
     "answer": "②",
     "solution": "$AB=c$는 빗변이므로\n$\\cos A=\\dfrac{AC}{c},\\qquad \\sin A=\\dfrac{BC}{c}$이다.\n따라서\n$AC=c\\cos A,\\qquad BC=c\\sin A$이다.\n\nㄱ. $AC=c\\sin A$가 아니므로 옳지 않다.\nㄴ. $BC=c\\tan A$가 아니므로 옳지 않다.\nㄷ. 둘레는\n$c+c\\sin A+c\\cos A$이므로 옳다.\nㄹ. 넓이는\n$\\dfrac12\\times AC\\times BC$\n$=\\dfrac12c^2\\sin A\\cos A$이므로 옳지 않다.\n따라서 ㄷ만 옳고 정답은 ②이다.",
     "solutionImage": "assets/images/23_동산중_2학기_중간_중3_수학/q16-solution.svg",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "빗변 c로 두 직각변을 사인·코사인으로 표현한 다음 둘레와 넓이식에 넣어 진술을 판정한다.",
+    "decisiveStep": "빗변 c로 두 직각변을 사인·코사인으로 표현한 다음 둘레와 넓이식에 넣어 진술을 판정한다."
   },
   {
     "id": 17,
@@ -556,6 +748,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 밑변 6 cm인 ㄱ의 높이는 안쪽에, 밑변 3 cm인 ㄴ의 높이는 바깥쪽에 점선으로 내렸다. 두 수선의 발에 직각 표시가 있다.",
     "solutionImageCaption": "ㄱ의 넓이는 ½×6×5√3/2=15√3/2, ㄴ의 넓이는 ½×3×2=3이다. 답: ⑤.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "각 삼각형에서 사인으로 높이를 만들고 밑변과 곱해 넓이를 구한다. 둔각은 보각의 예각으로 높이를 계산한다.",
+    "decisiveStep": "각 삼각형에서 사인으로 높이를 만들고 밑변과 곱해 넓이를 구한다. 둔각은 보각의 예각으로 높이를 계산한다."
   },
   {
     "id": 18,
@@ -592,6 +796,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: AC=150m, ∠C=30°와 직각 A를 표시한 삼각형이다. AB는 값 없이 남긴다.",
     "solutionImageCaption": "AB=150tan30°=50√3m이다. 답: ③.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "직각삼각형에서 밑변과 관측각의 탄젠트를 곱해 두 지점의 거리를 바로 구한다.",
+    "decisiveStep": "직각삼각형에서 밑변과 관측각의 탄젠트를 곱해 두 지점의 거리를 바로 구한다."
   },
   {
     "id": 19,
@@ -625,6 +841,18 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_PARALLELOGRAM_PROPERTIES","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "대각선의 이등분 성질로 네 삼각형의 두 변을 정하고 삼각비 넓이를 계산하여 네 배 한다.",
+    "decisiveStep": "대각선의 이등분 성질로 네 삼각형의 두 변을 정하고 삼각비 넓이를 계산하여 네 배 한다."
   },
   {
     "id": 20,
@@ -658,6 +886,18 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "네 삼각형의 사인 넓이 합을 두 대각선 곱의 절반으로 묶은 뒤 주어진 넓이를 넣어 미지 대각선을 역산한다.",
+    "decisiveStep": "네 삼각형의 사인 넓이 합을 두 대각선 곱의 절반으로 묶은 뒤 주어진 넓이를 넣어 미지 대각선을 역산한다."
   },
   {
     "id": 21,
@@ -692,6 +932,18 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "탄젠트로 눈높이 위의 건물 높이를 구하고 눈높이를 더해 전체 높이를 구한다.",
+    "decisiveStep": "탄젠트로 눈높이 위의 건물 높이를 구하고 눈높이를 더해 전체 높이를 구한다."
   },
   {
     "id": 22,
@@ -728,6 +980,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 변 3cm인 정사각형을 A를 중심으로 30° 돌린 뒤 겹친 사각형 A-D-X-B′를 주황색으로 표시한다. B′에서 원래 변에 내린 두 수선도 함께 보인다.",
     "solutionImageCaption": "DX=√3cm이다. B′에서 AD와 DC에 내린 수선의 길이는 각각 3√3/2cm, 3/2cm이다. 두 직각삼각형의 넓이는 9√3/4와 3√3/4이므로 겹친 넓이는 3√3cm²이다. 답: ④.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_SQUARE_PROPERTIES","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "회전된 꼭짓점의 수평·수직 거리를 삼각비로 구하고 겹친 사각형을 두 삼각형으로 나누어 교점의 길이와 넓이를 계산한다.",
+    "decisiveStep": "회전된 꼭짓점의 수평·수직 거리를 삼각비로 구하고 겹친 사각형을 두 삼각형으로 나누어 교점의 길이와 넓이를 계산한다."
   },
   {
     "id": 23,
@@ -752,6 +1016,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+    "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "3을 묶어 완전제곱꼴로 바꾼 뒤 축과 꼭짓점 좌표를 읽고 지정된 합을 계산한다.",
+    "decisiveStep": "3을 묶어 완전제곱꼴로 바꾼 뒤 축과 꼭짓점 좌표를 읽고 지정된 합을 계산한다."
   },
   {
     "id": 24,
@@ -783,6 +1059,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: D가 AC의 중점인 직각삼각형. AB=8cm, ∠A=60°, C 직각, AD=DC의 같은 눈금과 BD=x를 표시한다.",
     "solutionImageCaption": "AC=ABcos60°=4cm이므로 CD=2cm이다. 직각삼각형 BCD에서 BD=√((4√3)²+2²)=2√13cm이다. 답: 2√13.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "삼각비로 두 직각변을 구하고 중점 조건으로 절반 길이를 얻어 다른 직각삼각형에 피타고라스를 적용한다.",
+    "decisiveStep": "삼각비로 두 직각변을 구하고 중점 조건으로 절반 길이를 얻어 다른 직각삼각형에 피타고라스를 적용한다."
   },
   {
     "id": 25,
@@ -814,5 +1102,17 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC와 ADE가 겹치며, 겹친 삼각형 ADF를 주황색으로 채우고 AD·DF와 45°·60°를 표시한다.",
     "solutionImageCaption": "AD=3√2/2cm이고 직각삼각형 ADF에서 DF=ADtan30°=√6/2cm이다. 따라서 [△ADF]=½·AD·DF=3√3/4cm²이다. 답: 3√3/4cm².",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "첫 직각삼각형에서 AD를 사인으로 구하고 다른 삼각형에서 읽은 30°를 겹친 직각삼각형에 적용해 DF와 넓이를 구한다.",
+    "decisiveStep": "첫 직각삼각형에서 AD를 사인으로 구하고 다른 삼각형에서 읽은 30°를 겹친 직각삼각형에 적용해 DF와 넓이를 구한다."
   }
 ];

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "m2s1-closeout-20261115-E035-identity",
+  "examUid": "22_연향중_1학기_기말_중2_기출",
+  "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+  "expectedSourceBlobSha1": "0049fe463e63005ee621b950814b26221e6132ba",
+  "expectedQuestionCount": 24,
+  "scope": "PARTIAL_UIDS",
+  "registrationMode": "IDENTITY_FINGERPRINT_ONLY",
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_M2S1_RELEASE_C8F1B0BFB4FA",
+    "evidenceRefs": [
+      {
+        "path": ".archive-meta-register/evidence/m2s1-closeout-20261115/E035-native-review.json",
+        "sha256": "8fe5dd9f13e2a2a47e9eb7ab24db66c02f1fcd9c90b29cd8ce325b79a87f8dcd"
+      }
+    ]
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_50ad9d7ca3a5a9b9bb98771d205ff88250f1de608f14e123d0ea1d3d1e26f758",
+      "sourceOrdinal": 19,
+      "before": {
+        "sourceFingerprint": "694c18c61569f43e7297df11458d256b65859c9b57ec1cf83154ab72b6eb695c",
+        "contentFingerprint": "b853f320378dd1ae3e3473e75d30adba8054c32c09bdc72b3677a533036b3af3"
+      },
+      "after": {
+        "sourceFingerprint": "694c18c61569f43e7297df11458d256b65859c9b57ec1cf83154ab72b6eb695c",
+        "contentFingerprint": "b853f320378dd1ae3e3473e75d30adba8054c32c09bdc72b3677a533036b3af3"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "bd952e25a3497b86788c74704346428a1a4bc3d436ece4294bc493d52bd2c9f4"
+      },
+      "reason": "Bind the stale identity to current approved metadata and the immutable reviewed current source.",
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m2s1-closeout-20261115/E035-native-review.json",
+          "sha256": "8fe5dd9f13e2a2a47e9eb7ab24db66c02f1fcd9c90b29cd8ce325b79a87f8dcd"
+        }
+      ],
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "reviewPath": "docs/operations/m2-s1-meta-full-20261114/exams/E035/accepted-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m2s1-closeout-20261115/E035-native-review.json",
+          "sha256": "8fe5dd9f13e2a2a47e9eb7ab24db66c02f1fcd9c90b29cd8ce325b79a87f8dcd"
+        }
+      }
+    }
+  ]
+}

@@ -35,6 +35,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 반지름 6cm인 원 O의 현 AB=8cm에 중심 O에서 내린 수선의 발 M이 있다. AM과 BM이 같은 색으로 4cm이고 삼각형 OAM은 OA=6cm인 직각삼각형이다.",
     "solutionImageCaption": "수선은 현을 이등분하므로 AM=BM=4cm이다. 직각삼각형 OAM에서 OM²=6²−4²=20이므로 OM=2√5cm이고 정답은 ③이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "중심에서 현에 내린 수선으로 반현을 정하고 반지름과 피타고라스로 중심거리를 구한다.",
+    "decisiveStep": "중심에서 현에 내린 수선으로 반현을 정하고 반지름과 피타고라스로 중심거리를 구한다."
   },
   {
     "id": 2,
@@ -70,6 +82,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 O의 접선 PA, PB가 있다. OA와 OB는 6cm로 같은 색이고 PA와 PB는 같은 색이며 OP=11cm이고 각 OBP는 직각이다.",
     "solutionImageCaption": "접점 B에서 OB⊥PB이고 OB=OA=6cm이므로 직각삼각형 OPB에서 PB²=11²−6²=85이다. 따라서 PB=√85cm이고 정답은 ④이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "접점 반지름과 접선의 수직으로 생긴 직각삼각형에 주어진 반지름·중심거리를 대입한다.",
+    "decisiveStep": "접점 반지름과 접선의 수직으로 생긴 직각삼각형에 주어진 반지름·중심거리를 대입한다."
   },
   {
     "id": 3,
@@ -105,6 +129,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 반원 O에 접하는 AD, DC, BC에서 DA=DE는 파랑 눈금, CB=CE는 주황 눈금으로 표시해 두 접선의 길이가 같고 AD+BC=CD=9cm임을 보여 준다.",
     "solutionImageCaption": "□ABCD의 둘레는 AB+BC+CD+DA=6+9+9=24cm이다. 정답 ①.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "같은 점의 접선 길이를 옮겨 두 세로변 합을 위쪽 접선 전체 길이와 같게 하고 지름을 더해 둘레를 구한다.",
+    "decisiveStep": "같은 점의 접선 길이를 옮겨 두 세로변 합을 위쪽 접선 전체 길이와 같게 하고 지름을 더해 둘레를 구한다."
   },
   {
     "id": 4,
@@ -140,6 +176,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원에 내접한 □ABCD에서 P, A, D와 P, B, C가 각각 한 직선 위에 있을 때 ∠P=35°, ∠ABC=95°, ∠ABP=85°, ∠PAB=60°, ∠DAB=120°를 표시하고 ∠PAB와 ∠BCD를 같은 색으로 묶는다.",
     "solutionImageCaption": "∠ABP=180°−95°=85°이므로 △PAB에서 ∠PAB=60°이고 ∠DAB=120°이다. □ABCD가 원에 내접하므로 대각의 합이 180°여서 ∠BCD=60°이다. P, B, C가 한 직선 위에 있어 ∠PCD=60°이고 정답은 ②이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": null,
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "외부 삼각형의 내각 합과 일직선 각으로 내접사각형 한 내각을 구한 뒤 대각의 보각 관계를 적용한다.",
+    "decisiveStep": "외부 삼각형의 내각 합과 일직선 각으로 내접사각형 한 내각을 구한 뒤 대각의 보각 관계를 적용한다."
   },
   {
     "id": 5,
@@ -175,6 +223,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 현 AB의 중점 D에서 AB에 수직인 선이 호의 꼭대기 C를 지나 중심 O까지 이어진다. AD=BD=5cm(같은 눈금), CD=1cm, OD=r−1cm, OA=r cm이고 직각삼각형 ODA가 파랗게 칠해져 있다.",
     "solutionImageCaption": "직각삼각형 ODA에서 r²=(r−1)²+5²이므로 2r=26, 원의 반지름은 r=13cm (정답 ③)",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "현의 수직이등분선에서 중심을 복원하고 중심거리 r−1과 반지름 r을 피타고라스 식으로 연결한다.",
+    "decisiveStep": "현의 수직이등분선에서 중심을 복원하고 중심거리 r−1과 반지름 r을 피타고라스 식으로 연결한다."
   },
   {
     "id": 6,
@@ -201,8 +261,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "image": "assets/images/24_연향중_2학기_기말_중3_기출/q6.png",
-    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-    "subUnit": "원주각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "삼각형 $ABC$에서\n$\\angle C=180^\\circ-60^\\circ-70^\\circ=50^\\circ$이다.\n원 $O$는 $\\triangle ABC$의 내접원이므로\n$OE\\perp BC$, $OF\\perp AC$이다.\n따라서 사각형 $OECF$에서\n$\\angle OEC=\\angle OFC=90^\\circ$이다.\n그러므로\n$\\angle EOF\n=360^\\circ-90^\\circ-90^\\circ-50^\\circ\n=130^\\circ$이다.\n또 $OE=OF$이므로 $\\triangle OEF$는 이등변삼각형이다.\n따라서\n$\\angle OEF=\\dfrac{180^\\circ-130^\\circ}{2}=25^\\circ$이다.\n$OE\\perp EC$이므로\n$x=90^\\circ-25^\\circ=65^\\circ$이다.\n따라서 정답은 ①이다.",
@@ -210,6 +270,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: △ABC의 내접원 O와 접점 D, E, F, 접점의 직각 표시, ∠A=60°, ∠B=70°, ∠C=50°, ∠EOF=130°, ∠OEF=25°와 ∠x를 나타낸 그림.",
     "solutionImageCaption": "∠C=180°−60°−70°=50°이다. OE⊥BC, OF⊥AC이므로 사각형 OECF에서 ∠EOF=360°−90°−90°−50°=130°이고, OE=OF이므로 ∠OEF=(180°−130°)÷2=25°이다. OE⊥EC이므로 ∠x=90°−25°=65°이다. 정답 ①.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": null,
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_ISOSCELES_TRIANGLE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "접점 반지름의 수직으로 중심각을 구하고 같은 반지름의 이등변삼각형 밑각을 얻어 접선과 현 사이 각을 구한다.",
+    "decisiveStep": "접점 반지름의 수직으로 중심각을 구하고 같은 반지름의 이등변삼각형 밑각을 얻어 접선과 현 사이 각을 구한다."
   },
   {
     "id": 7,
@@ -245,6 +317,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 O의 접선 PA, PB와 지름 AC가 있다. 각 BAC는 32도, 각 ABC는 직각, 각 ACB는 58도, 중심각 AOB는 116도이다.",
     "solutionImageCaption": "AC가 지름이므로 ∠ABC=90°이고 ∠ACB=58°이다. ∠AOB=2×58°=116°이고 ∠APB=180°−116°=64°이므로 정답은 ⑤이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "지름의 원주각에서 남은 내각을 구해 중심각으로 두 배 하고 두 접선 끼인각의 보각으로 바꾼다.",
+    "decisiveStep": "지름의 원주각에서 남은 내각을 구해 중심각으로 두 배 하고 두 접선 끼인각의 보각으로 바꾼다."
   },
   {
     "id": 8,
@@ -280,6 +364,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 O의 접선 PT에서 각 PTO는 직각이고 각 TPO=30도이다. OA와 OT는 반지름으로 같은 색이며 PA=6cm, OT=6cm, OP=12cm이다.",
     "solutionImageCaption": "직각삼각형 POT에서 ∠TPO=30°이므로 OT=½OP이다. OP=PA+OA=6+OT이므로 OP=12cm, OT=6cm이다. 따라서 PT=OP·cos30°=12×(√3/2)=6√3cm이고 정답은 ②이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_LENGTH",
+    "crossConceptKeys": ["CC_TRIG_RATIO"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "30도 직각삼각형에서 반지름이 중심거리의 절반임을 쓰고 원주까지 거리와 합쳐 중심거리를 먼저 정한다.",
+    "decisiveStep": "30도 직각삼각형에서 반지름이 중심거리의 절반임을 쓰고 원주까지 거리와 합쳐 중심거리를 먼저 정한다."
   },
   {
     "id": 9,
@@ -315,6 +411,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 직각삼각형 ABC의 내접원에서 꼭짓점별 접선 길이가 같은 세 쌍(CE=CF=3, AF=AD=6, BE=BD=9)을 주황·파랑·초록 눈금으로 보여 준다.",
     "solutionImageCaption": "내접원의 반지름은 r=3cm이므로 원의 넓이는 πr²=9π cm²이다. 정답 ④.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": null,
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "피타고라스로 남은 변을 구하고 내접원 접선 조각을 반지름으로 표현해 빗변 합에서 반지름을 결정한다.",
+    "decisiveStep": "피타고라스로 남은 변을 구하고 내접원 접선 조각을 반지름으로 표현해 빗변 합에서 반지름을 결정한다."
   },
   {
     "id": 10,
@@ -350,6 +458,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 지름 AB인 원 O에서 아래쪽 반원을 같은 크기의 호 네 개(각 45°)로 나누어 같은 색으로 표시하고, 호 DE와 CD를 보는 원주각 x, y를 같은 색으로 표시한다.",
     "solutionImageCaption": "AB가 지름이므로 호 AB=180°이고, 호 AC=CD=DE=EB=180°÷4=45°이다. ∠x와 ∠y는 각각 호 45°를 보는 원주각이므로 22.5°이고 x+y=45°이다. 정답은 ②이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "반원의 호 180도를 같은 네 호로 나눈 뒤 두 원주각을 각각 반감하여 합한다.",
+    "decisiveStep": "반원의 호 180도를 같은 네 호로 나눈 뒤 두 원주각을 각각 반감하여 합한다."
   },
   {
     "id": 11,
@@ -385,6 +505,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 O에 내접하는 삼각형 ABC, 지름 AQ, 꼭짓점 A에서 BC에 내린 수선 AH. 같은 호 AC의 원주각 ∠ABC와 ∠AQC는 초록, 닮음인 △ABH와 △AQC의 대응변 AB와 AQ는 파랑, AH와 AC는 주황으로 표시되어 있다.",
     "solutionImageCaption": "△ABH∽△AQC에서 AB:AQ=AH:AC이므로 16:AQ=5√3:10, AQ=32√3/3이고 반지름은 AQ의 절반인 16√3/3 (정답 ⑤)",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN","CC_TRIANGLE_SIMILARITY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "높이를 피타고라스로 구하고 지름의 직각 및 같은 호의 원주각으로 닮음을 만들어 지름을 역산한다.",
+    "decisiveStep": "높이를 피타고라스로 구하고 지름의 직각 및 같은 호의 원주각으로 닮음을 만들어 지름을 역산한다."
   },
   {
     "id": 12,
@@ -417,6 +549,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 자료 7개의 점도표. 1에 점 2개, 2에 점 1개, 4에 점 3개가 있고, 40의 점 1개는 축을 끊어 멀리 떨어진 곳에 있다.",
     "solutionImageCaption": "40처럼 다른 값에서 멀리 떨어진 값이 평균을 크게 끌어올린다. 중앙값은 4이고 평균은 56/7=8이므로 중앙값이 중심 경향을 더 잘 나타내는 것은 ③이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "한 자료의 극단값이 평균을 크게 바꾸는 반면 중앙값은 덜 변한다는 성질로 적절한 대푯값을 고른다.",
+    "decisiveStep": "한 자료의 극단값이 평균을 크게 바꾸는 반면 중앙값은 덜 변한다는 성질로 적절한 대푯값을 고른다."
   },
   {
     "id": 13,
@@ -448,6 +592,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "학생 수가 $50$명이므로 중앙값은\n크기순으로 나열했을 때 $25$번째와 $26$번째 값의 평균이다.\n표의 누적도수를 계산하면\n$5$시간 이하가 $3$명,\n$6$시간 이하가 $13$명,\n$7$시간 이하가 $25$명,\n$8$시간 이하가 $42$명이다.\n따라서\n$25$번째 값은 $7$시간,\n$26$번째 값은 $8$시간이다.\n그러므로\n$a=\\dfrac{7+8}{2}=7.5$이다.\n도수가 가장 큰 값은 $8$시간이므로\n$b=8$이다.\n따라서\n$a+b=7.5+8=15.5$이다.\n따라서 정답은 ⑤이다."
+  ,
+    "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "누적도수에서 25번째와 26번째 값을 읽어 중앙값을 정하고 최대 도수의 최빈값과 더한다.",
+    "decisiveStep": "누적도수에서 25번째와 26번째 값을 읽어 중앙값을 정하고 최대 도수의 최빈값과 더한다."
   },
   {
     "id": 14,
@@ -477,6 +633,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "회원들의 나이를 작은 순서대로\n$20,\\ x,\\ 27,\\ 27$이라 하자.\n평균이 $25$살이고 회원 수가 $4$명이므로\n나이의 합은\n$25\\times4=100$이다.\n따라서\n$20+x+27+27=100$이다.\n$x+74=100$이므로\n$x=26$이다.\n따라서 나이는\n$20,26,27,27$이다.\n자료가 $4$개이므로 중앙값은 가운데 두 값의 평균이어서\n$\\dfrac{26+27}{2}=26.5$살이다.\n따라서 정답은 ④이다."
+  ,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "최솟값·최빈값의 출현 횟수로 세 자료를 고정하고 평균으로 나머지 값을 구한 뒤 정렬 순서에서 중앙값을 구한다.",
+    "decisiveStep": "최솟값·최빈값의 출현 횟수로 세 자료를 고정하고 평균으로 나머지 값을 구한 뒤 정렬 순서에서 중앙값을 구한다."
   },
   {
     "id": 15,
@@ -510,6 +678,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 자료 4, 6, 7, 8, 8, 9, 10, 12를 값별로 점으로 쌓은 점도표에 평균 8을 세로 점선으로 표시한 그림. 8보다 작은 4, 6, 7은 파랑, 8보다 큰 9, 10, 12는 주황, 평균과 같은 8 두 개는 검정이다.",
     "solutionImageCaption": "점 하나가 자료 하나이다. 합 64÷8=8이 평균이고, 평균 점선보다 오른쪽(주황)인 9, 10, 12는 3개뿐이다. 편차 제곱의 합은 1+4+4+0+16+1+0+16=42이고 분산은 42÷8=21/4이다. 평균보다 큰 값이 4개라고 한 ②가 옳지 않으므로 정답은 ②이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "templateKey": null,
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평균을 구한 뒤 평균보다 큰 자료를 직접 세고 편차 제곱합·분산·표준편차 수치 진술을 확인한다.",
+    "decisiveStep": "평균을 구한 뒤 평균보다 큰 자료를 직접 세고 편차 제곱합·분산·표준편차 수치 진술을 확인한다."
   },
   {
     "id": 16,
@@ -541,6 +721,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "편차 합은 0. B의 편차를 x라 하면 9+x+3-7-2=0, x=-3.\n평균 15분이므로 B의 대기 시간은 12분. 정답 ④."
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "편차의 합 0으로 빠진 편차를 구하고 평균에 더해 원래 대기시간으로 환원한다.",
+    "decisiveStep": "편차의 합 0으로 빠진 편차를 구하고 평균에 더해 원래 대기시간으로 환원한다."
   },
   {
     "id": 17,
@@ -570,6 +762,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "먼저 (가)의 자료 \\(5,8,13,15,a\\)의 중앙값이 \\(8\\)이다.\n이미 \\(5<8<13<15\\)이므로 중앙값이 \\(8\\)이 되려면\n\\(a\\le8\\)이어야 한다.\n\n(나)의 자료는 \\(2,15,a,b,14\\)이고 중앙값이 \\(12\\)이다.\n\\(a\\le8\\)이므로 작은 두 값은 \\(2,a\\), 큰 두 값은 \\(14,15\\)가 된다.\n따라서 가운데 값인 \\(b\\)가 \\(12\\)이어야 한다.\n\n또 (나)의 평균은 \\(b-2=10\\)이므로\n\\(\\dfrac{2+15+a+12+14}{5}=10\\)이다.\n따라서\n\\(43+a=50\\),\n\\(a=7\\)이다.\n\n그러므로\n\\(a+b=7+12=19\\)이므로 정답은 ①이다."
+  ,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "첫 중앙값 조건으로 a의 위치를 제한하고 두 번째 중앙값으로 b를 고정한 뒤 b에 의존하는 평균식으로 a를 구한다.",
+    "decisiveStep": "첫 중앙값 조건으로 a의 위치를 제한하고 두 번째 중앙값으로 b를 고정한 뒤 b에 의존하는 평균식으로 a를 구한다."
   },
   {
     "id": 18,
@@ -597,8 +801,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "image": "assets/images/24_연향중_2학기_기말_중3_기출/q18.png",
-    "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
-    "subUnit": "통계 자료 해석",
+    "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+    "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "산점도에서 같은 듣기 점수를 가진 점의 개수를 세면 듣기 8점에 해당하는 점이 가장 많다.\n최빈값은 8점. 정답 ③.",
@@ -606,6 +810,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 읽기·듣기 점수 산점도에 듣기 8점 가로선이 그어져 있고, 그 선 위에 점 3개가 놓여 있다.",
     "solutionImageCaption": "듣기 점수별 점의 개수를 세면 8점이 3개로 가장 많으므로 최빈값은 8점이다. 정답은 ③이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "산점도에서 같은 듣기 좌표를 갖는 점의 도수를 세어 그 도수가 최대인 값을 최빈값으로 고른다.",
+    "decisiveStep": "산점도에서 같은 듣기 좌표를 갖는 점의 도수를 세어 그 도수가 최대인 값을 최빈값으로 고른다."
   },
   {
     "id": 19,
@@ -641,6 +857,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 응시자 15명의 읽기·듣기 점수 산점도에 세로선 x=8, 가로선 y=8을 긋고 오른쪽 위의 영역을 칠한 그림. 영역 안(경계 포함)의 네 점이 주황색으로 표시되어 있다.",
     "solutionImageCaption": "그림에서 읽은 점 15개이다. 세로선 x=8과 가로선 y=8의 오른쪽 위 영역(경계 포함)이 읽기와 듣기가 모두 8점 이상인 곳이고, 그 안의 주황 점 (8, 10), (8, 9), (10, 9), (9, 8)이 합격자이므로 합격자는 4명이다. 따라서 정답은 ④이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 점수가 모두 8점 이상인 영역의 점을 세어 합격 인원을 결정한다.",
+    "decisiveStep": "두 점수가 모두 8점 이상인 영역의 점을 세어 합격 인원을 결정한다."
   },
   {
     "id": 20,
@@ -677,6 +905,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 사회·과학 점수 산점도에 점선 y=x가 그어져 있고, 점선 위쪽에 점 4개가 있다.",
     "solutionImageCaption": "과학 점수가 사회 점수보다 높다는 것은 y>x이므로 점선 y=x의 위쪽 점 4개를 센다. 전체 15명 중 4명이므로 비율은 4/15이다. 정답은 ③이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "과학 점수가 사회 점수보다 크다는 조건을 y>x로 바꾸어 대각선 위쪽 점을 센 뒤 전체 대비 비율을 구한다.",
+    "decisiveStep": "과학 점수가 사회 점수보다 크다는 조건을 y>x로 바꾸어 대각선 위쪽 점을 센 뒤 전체 대비 비율을 구한다."
   },
   {
     "id": 21,
@@ -707,6 +947,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 한 변이 10인 정사각형 ABCD에서 AB, AD에 접하고 BC와 P, Q에서 만나는 원 O, 현 PQ의 중점 M, OM⊥BC와 BM=r, PM=r−2, OM=10−r, OP=r을 나타낸 그림.",
     "solutionImageCaption": "한 변은 BP+PC=10cm이다. 원이 AB, AD에 접하므로 BM=r, OM=10−r이고 PM=BM−BP=r−2이다. 직각삼각형 OMP에서 r²=(10−r)²+(r−2)²이므로 r=12−2√10이고, M이 PQ의 중점이므로 PQ=2PM=2(r−2)=20−4√10 cm이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY","CC_PYTHAGOREAN"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "접한 두 변까지 반지름 거리를 이용해 중심거리와 반현을 r의 식으로 나타내고 피타고라스 이차방정식의 기하적 해를 고른다.",
+    "decisiveStep": "접한 두 변까지 반지름 거리를 이용해 중심거리와 반현을 r의 식으로 나타내고 피타고라스 이차방정식의 기하적 해를 고른다."
   },
   {
     "id": 22,
@@ -737,6 +989,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 O 위의 네 점 A, B, C, D에서 호 AB, BC, CD는 모두 104도로 같은 색이다. 변 AB와 DC의 연장선이 E에서 만나 각 E는 28도, 각 EAD와 각 ADE는 76도, 각 FAD와 각 ADF는 52도이다.",
     "solutionImageCaption": "호 AB=BC=CD=104°이다. ∠EAD=∠ADE=76°이고 ∠FAD=∠ADF=52°이다. 삼각형 AFD에서 ∠AFD=180°−52°−52°=76°이다.",
     "solutionImageSize": "medium"
+  ,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "같은 세 호의 크기를 한 변수로 두고 외부 삼각형의 내각 합으로 그 호를 결정한 뒤 내부 교차 삼각형 각을 구한다.",
+    "decisiveStep": "같은 세 호의 크기를 한 변수로 두고 외부 삼각형의 내각 합으로 그 호를 결정한 뒤 내부 교차 삼각형 각을 구한다."
   },
   {
     "id": 23,
@@ -762,5 +1026,17 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solution": "자료는\n\\(2,\\ 2a,\\ a-1,\\ a+4,\\ a\\)이다.\n평균을 먼저 구하면\n\\(\\dfrac{2+2a+(a-1)+(a+4)+a}{5}=a+1\\)이다.\n\n평균이 \\(a+1\\)이므로 각 변량의 편차는 차례로\n\\(1-a,\\ a-1,\\ -2,\\ 3,\\ -1\\)이다.\n\n분산이 \\(4\\)이므로\n\\(\\dfrac{(1-a)^2+(a-1)^2+(-2)^2+3^2+(-1)^2}{5}=4\\)이다.\n따라서\n\\(\\dfrac{2(a-1)^2+14}{5}=4\\),\n\\(2(a-1)^2=6\\),\n\\((a-1)^2=3\\)이다.\n\n그러므로\n\\(a=1\\pm\\sqrt3\\)이다.\n\\(a\\)는 양수이고 \\(1-\\sqrt3<0\\)이므로\n\\(a=1+\\sqrt3\\)이다.\n\n따라서 평균은\n\\(a+1=2+\\sqrt3\\)이다."
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_POSITIVE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "평균을 a의 식으로 나타내 편차를 정리하고 분산의 이차식에서 a를 구한 뒤 양수 조건으로 가지를 고른다.",
+    "decisiveStep": "평균을 a의 식으로 나타내 편차를 정리하고 분산의 이차식에서 a를 구한 뒤 양수 조건으로 가지를 고른다."
   }
 ];

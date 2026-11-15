@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "archive-m2s1-native-preservation-closeout-v1",
+  "status": "LOCAL_VERIFICATION_PASS_PENDING_REMOTE_CI_AND_MAIN_REGISTRATION",
+  "reviewedDifficultyUidCount": 1299,
+  "identityOnlyUidCount": 1,
+  "preservedNativeAuditUidCount": 49,
+  "requestCount": 61,
+  "selectedConsumerRows": 1349,
+  "newAdvancedApprovals": 0,
+  "preservedApprovalKind": "META_PIPELINE_AUDIT",
+  "sourceCorrectionCommit": "d6c79fa54f67d11d8da6ebb27ecea1b70f123a06",
+  "requestInputCommit": "73e6b0cd99fc711e6cb9723a9aa0ba7c9632c581",
+  "commonCodeCommit": "72ccf932839856a986ca2dea6b8965660f0ab58f",
+  "consumerCodeCommit": "cfef84c853699dc614b7906abd3c9f24379de4c2",
+  "proofs": [
+    {
+      "path": "docs/operations/m2s1-closeout-20261115/native-preservation-consumer-proof.json",
+      "sha256": "464de8b823a061476b333cb9900516a407f45ebbbdbecece97fbf447af2d72c0"
+    },
+    {
+      "path": "docs/operations/m2s1-closeout-20261115/native-preservation-consumed-inbox-proof.json",
+      "sha256": "7ce3f73e5d45fb86993dc6794009cf9ece65418bff4d1bcf769243ce2614ca86"
+    }
+  ],
+  "preservedSourceReviewDebts": true,
+  "newSolutionFingerprintRepairs": 1,
+  "solutionFingerprintRepairScope": "E037 Q17 only; distinct from E035 Q19 identity-only input",
+  "sourceLegacyLevelCorrections": "E045 retains nine prior reviewed levels; new D5 unchanged. Q11/Q12 use the exact BASIC function context.",
+  "interpretation": "1349 is the sum of selected request rows; the 49 preserved audit rows are inside the 1299 reviewed difficulty UID set and are not additional unique questions. Earlier validation documents describe the 59-request D5/identity stage; these native-preservation proofs extend that stage to 61 requests.",
+  "requiredRemaining": [
+    "CI on the final composed PR",
+    "Actual registered-main receipt and selected UID verification",
+    "Exact registered snapshot Pages release"
+  ]
+}

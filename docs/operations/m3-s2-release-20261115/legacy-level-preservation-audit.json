@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "archive-m3s2-legacy-level-closeout-audit-v1",
+  "actualMainBaseline": "3406b3eac58ebb20b04e3b1bab14b5f8a36b0f3a",
+  "originalSourceBaseline": "0f985c4a242888c44a45db99b1a55c7ff32a1aa3",
+  "sourceCount": 83,
+  "questionCount": 1958,
+  "initialRawLevelChanges": 335,
+  "initialChanges": {
+    "newValueWhenAbsent": 306,
+    "confirmedSwappedFieldTypeRepair": 23,
+    "noncanonicalHistoricalStringNormalizationRequiringDisposition": 6
+  },
+  "restoredExactHistoricalStringCount": 6,
+  "remainingRawLevelChanges": 329,
+  "remainingExistingHistoricalLevelReclassifications": 0,
+  "remainingChangeKinds": {
+    "newValueWhereNoLevelWasRecorded": 306,
+    "explicitSwappedFieldTypeRepair": 23
+  },
+  "typeNormalizationEvidence": {
+    "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E056.difficulty-type-normalization-evidence.json",
+    "sha256": "37d0d255cc282db981c65d1e3c9dbeaa3d63d518a872a56c4db5321c6a813844",
+    "basis": "Raw numeric level and string difficultyBucket were inverted from initial source. Restore existing valid string to level; numeric bucket was separately judged, not a numeric-to-text bucket mapping."
+  },
+  "restorationEvidence": {
+    "path": ".archive-meta-register/evidence/m3s2-e053-historical-level-preservation-20261115.json",
+    "sha256": "8c93dee939a7a337ce2cd37465ec9e8bdda675acbd344835244bccb8440f0a4f"
+  },
+  "restoredRows": [
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_5fb6052e34bb1abf618509b097f7cd6d9909ce2ae3d92752e582eab082c23d2b",
+      "historicalSourceLevel": "중상",
+      "priorCandidateLevel": "중",
+      "finalLevel": "중상",
+      "priorCandidateCompatibility": "NORMAL",
+      "finalCompatibility": "UNKNOWN",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B23",
+      "bucketJudgmentUnchanged": true,
+      "studentPayloadUnchanged": true
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_064a62112d4ebbf3711db2bd012a799fcc2c89eb06538487606ce85919f24554",
+      "historicalSourceLevel": "중상",
+      "priorCandidateLevel": "중",
+      "finalLevel": "중상",
+      "priorCandidateCompatibility": "NORMAL",
+      "finalCompatibility": "UNKNOWN",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "bucketJudgmentUnchanged": true,
+      "studentPayloadUnchanged": true
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_248ce8639810ba146ddfae2af95cb30fa199cd57a8ee95aadf73225e8a61f63b",
+      "historicalSourceLevel": "중상",
+      "priorCandidateLevel": "중",
+      "finalLevel": "중상",
+      "priorCandidateCompatibility": "NORMAL",
+      "finalCompatibility": "UNKNOWN",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "bucketJudgmentUnchanged": true,
+      "studentPayloadUnchanged": true
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_3d45fab11d9c1dbce0f2bb36b02cb40198b26075009b834ca70aba7c7a5416bb",
+      "historicalSourceLevel": "중상",
+      "priorCandidateLevel": "중",
+      "finalLevel": "중상",
+      "priorCandidateCompatibility": "NORMAL",
+      "finalCompatibility": "UNKNOWN",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B23",
+      "bucketJudgmentUnchanged": true,
+      "studentPayloadUnchanged": true
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_7bebd96a1b3c12e9ebc7250baad13a29cb2a0af2fc574a95eece9d24c119744c",
+      "historicalSourceLevel": "중상",
+      "priorCandidateLevel": "중",
+      "finalLevel": "중상",
+      "priorCandidateCompatibility": "NORMAL",
+      "finalCompatibility": "UNKNOWN",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "bucketJudgmentUnchanged": true,
+      "studentPayloadUnchanged": true
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_10b861e5078f0d6b072a04dcadf7306c8a45f4a47cb0361a1166fc4a507427cd",
+      "historicalSourceLevel": "중상",
+      "priorCandidateLevel": "중",
+      "finalLevel": "중상",
+      "priorCandidateCompatibility": "NORMAL",
+      "finalCompatibility": "UNKNOWN",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "bucketJudgmentUnchanged": true,
+      "studentPayloadUnchanged": true
+    }
+  ],
+  "originalNativeReviewBytesUnchanged": true,
+  "newMathematicalQa": false,
+  "registrationValidation": {
+    "status": "PASS",
+    "sourceRequestCommit": "86b2992bd6d0d93075f4464523c8d16fd30a0b32",
+    "registrarCodeCommit": "de2a947c7315da5b4b975fd83d29f990d1dd953d",
+    "requests": 35,
+    "uids": 464,
+    "nativeReuse": 464,
+    "projection": 464,
+    "consumer": 464,
+    "evidence": "docs/operations/m3-s2-release-20261115/first464-release-verification.json"
+  }
+}

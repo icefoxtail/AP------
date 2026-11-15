@@ -30,6 +30,18 @@ window.questionBank = [
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+    "templateKey": "TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "도형과 속력 관계를 각각 y의 식으로 바꾸고 최고차항이 2차인지 확인하여 두 관계를 고른다.",
+    "decisiveStep": "도형과 속력 관계를 각각 y의 식으로 바꾸고 최고차항이 2차인지 확인하여 두 관계를 고른다."
   },
   {
     "id": 2,
@@ -60,6 +72,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_FUNCTION_VALUE",
+    "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "x=1을 함수식에 대입해 정해진 함숫값을 계산한다.",
+    "decisiveStep": "x=1을 함수식에 대입해 정해진 함숫값을 계산한다."
   },
   {
     "id": 3,
@@ -91,6 +115,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "그림의 1·4·9 배열을 제곱수 규칙으로 읽어 y=x²로 쓰고 계수를 비교한다.",
+    "decisiveStep": "그림의 1·4·9 배열을 제곱수 규칙으로 읽어 y=x²로 쓰고 계수를 비교한다."
   },
   {
     "id": 4,
@@ -126,6 +162,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 아래로 열린 y=−2/3x²와 x축 대칭인 y=2/3x², 공통 꼭짓점 O와 축 x=0.",
     "solutionImageCaption": "축은 x=0이고 두 곡선은 x축 대칭이므로 옳지 않은 설명은 ③, ④이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+    "templateKey": "TPL_M3_EVALUATE_PARABOLA_PROPERTIES_STATEMENTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "음의 계수인 기본 포물선의 축·볼록성·대칭·증감을 각 보기와 대조한다.",
+    "decisiveStep": "음의 계수인 기본 포물선의 축·볼록성·대칭·증감을 각 보기와 대조한다."
   },
   {
     "id": 5,
@@ -162,6 +210,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: a=−1인 예시이다. 같은 높이 y=−3에서 y=−3/2 x²와 예시 y=−x²의 폭을 비교한다.",
     "solutionImageCaption": "y=ax²의 계수는 −3/2보다 크고 0보다 작으므로 −3/2<a<0이다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "포물선의 열리는 방향에서 a<0을, 기준보다 넓은 폭에서 절댓값 상한을 얻어 결합한다.",
+    "decisiveStep": "포물선의 열리는 방향에서 a<0을, 기준보다 넓은 폭에서 절댓값 상한을 얻어 결합한다."
   },
   {
     "id": 6,
@@ -192,6 +252,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "꼭짓점형에서 축과 위치를 읽고 평행이동·대칭·증감·폭에 관한 설명을 검토한다.",
+    "decisiveStep": "꼭짓점형에서 축과 위치를 읽고 평행이동·대칭·증감·폭에 관한 설명을 검토한다."
   },
   {
     "id": 7,
@@ -222,6 +294,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "수직 평행이동을 상수 q의 덧셈으로 표현하고 주어진 점을 대입해 이동량을 구한다.",
+    "decisiveStep": "수직 평행이동을 상수 q의 덧셈으로 표현하고 주어진 점을 대입해 이동량을 구한다."
   },
   {
     "id": 8,
@@ -252,6 +336,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "꼭짓점형의 x−p 부호를 읽어 p와 q를 좌표로 답한다.",
+    "decisiveStep": "꼭짓점형의 x−p 부호를 읽어 p와 q를 좌표로 답한다."
   },
   {
     "id": 9,
@@ -286,6 +382,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 큰 포물선 두 개가 수평선 y=5에 대하여 대칭이고 꼭짓점은 같은 x좌표에 있다.",
     "solutionImageCaption": "대칭 조건에서 p=1, q=7이므로 p+q=8이다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "평행이동한 식의 같은 x에서 y좌표 합이 10이라는 대칭 조건을 적용해 새 식을 만들고 계수를 비교한다.",
+    "decisiveStep": "평행이동한 식의 같은 x에서 y좌표 합이 10이라는 대칭 조건을 적용해 새 식을 만들고 계수를 비교한다."
   },
   {
     "id": 10,
@@ -320,6 +428,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 사분면 조건을 나타내는 대표 포물선: 위로 열리고 꼭짓점은 제4사분면, y절편은 양수.",
     "solutionImageCaption": "a>0, p<0, q<0, ap²+q≥0이므로 ㄴ, ㄷ이 옳다. 정답은 ②이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_NONZERO"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "지나는 사분면과 빠진 제3사분면을 꼭짓점의 두 좌표·열림 방향·y절편의 부호 조건으로 역해석해 진술을 판정한다.",
+    "decisiveStep": "지나는 사분면과 빠진 제3사분면을 꼭짓점의 두 좌표·열림 방향·y절편의 부호 조건으로 역해석해 진술을 판정한다."
   },
   {
     "id": 11,
@@ -354,6 +474,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 꼭짓점을 원점으로 평행이동한 네 포물선이다. 각 패널에서 파랑과 주황, 실선과 점선으로 곡선을 구분한다.",
     "solutionImageCaption": "포물선을 평행이동해도 열리는 방향과 폭은 같다. 이차항 계수의 절댓값이 가장 큰 ㄱ이 가장 좁다. 원래 그래프에서 ㄱ과 ㄹ의 축은 모두 x=1이고, ㄷ의 꼭짓점은 (0,5)이므로 x축에 있지 않다. 정답은 ④이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "각 식의 꼭짓점·축·계수 절댓값을 읽어 볼록성·폭·사분면 진술을 비교한다.",
+    "decisiveStep": "각 식의 꼭짓점·축·계수 절댓값을 읽어 볼록성·폭·사분면 진술을 비교한다."
   },
   {
     "id": 12,
@@ -387,6 +519,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "완전제곱을 만들기 위해 넣고 뺀 상수를 바깥 음수와 함께 정리하여 부호가 틀린 빈칸을 찾는다.",
+    "decisiveStep": "완전제곱을 만들기 위해 넣고 뺀 상수를 바깥 음수와 함께 정리하여 부호가 틀린 빈칸을 찾는다."
   },
   {
     "id": 13,
@@ -417,6 +561,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "일반형을 완전제곱으로 묶어 꼭짓점을 얻고 같은 꼭짓점을 갖는 다른 식을 선택한다.",
+    "decisiveStep": "일반형을 완전제곱으로 묶어 꼭짓점을 얻고 같은 꼭짓점을 갖는 다른 식을 선택한다."
   },
   {
     "id": 14,
@@ -447,6 +603,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "왼쪽 이동을 x+1 대입으로, 위 이동을 +2로 반영한 뒤 식을 전개한다.",
+    "decisiveStep": "왼쪽 이동을 x+1 대입으로, 위 이동을 +2로 반영한 뒤 식을 전개한다."
   },
   {
     "id": 15,
@@ -480,6 +648,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
+  ,
+    "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+    "crossConceptKeys": ["CC_RECTANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "첫 꼭짓점으로 직사각형 높이를 정하고 넓이에서 두 꼭짓점의 수평거리를 얻어 두 번째 축 좌표와 계수를 연결한다.",
+    "decisiveStep": "첫 꼭짓점으로 직사각형 높이를 정하고 넓이에서 두 꼭짓점의 수평거리를 얻어 두 번째 축 좌표와 계수를 연결한다."
   },
   {
     "id": 16,
@@ -514,6 +694,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: y=3x²와 y=x²/3의 두 같은 높이 점쌍 사이에 각각 수평거리 6이 표시된다.",
     "solutionImageCaption": "두 경우에서 A의 x좌표는 ±3, ±3/2이므로 곱은 81/4이다. 정답은 ①이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_COORD_DISTANCE",
+    "templateKey": "TPL_DISTANCE_UNKNOWN",
+    "crossConceptKeys": ["CC_ABSOLUTE_VALUE_EQUATION"],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "같은 높이 조건에서 두 x좌표가 3배 또는 −3배임을 구하고 수평거리의 절댓값 방정식을 각 가지에 적용한다.",
+    "decisiveStep": "같은 높이 조건에서 두 x좌표가 3배 또는 −3배임을 구하고 수평거리의 절댓값 방정식을 각 가지에 적용한다."
   },
   {
     "id": 17,
@@ -550,6 +742,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 직각 B인 3-4-5 삼각형에서 각 A에 대한 맞은편·이웃변·빗변을 구분한다.",
     "solutionImageCaption": "cos A=AB/AC=4/5이다. 정답은 ③이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "사인으로 두 변의 3:5 비를 정하고 피타고라스로 남은 변을 얻어 코사인으로 바꾼다.",
+    "decisiveStep": "사인으로 두 변의 3:5 비를 정하고 피타고라스로 남은 변을 얻어 코사인으로 바꾼다."
   },
   {
     "id": 18,
@@ -583,6 +787,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": ["CC_TRIANGLE_SIMILARITY"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "공통 예각과 직각으로 닮음을 확인해 대응 길이를 옮기고 두 각 기준의 삼각비를 구별해 거짓 진술을 찾는다.",
+    "decisiveStep": "공통 예각과 직각으로 닮음을 확인해 대응 길이를 옮기고 두 각 기준의 삼각비를 구별해 거짓 진술을 찾는다."
   },
   {
     "id": 19,
@@ -619,6 +835,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 단위 정육면체에서 만든 직각삼각형 AEG: AE=1, EG=√2, 직각은 E, 각 x는 꼭짓점 G에 있다.",
     "solutionImageCaption": "tan x=AE/EG=1/√2=√2/2이다. 정답은 ⑤이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "정육면체 밑면 대각선과 공간 대각선을 피타고라스로 구하고 공간 직각삼각형의 삼각비를 읽는다.",
+    "decisiveStep": "정육면체 밑면 대각선과 공간 대각선을 피타고라스로 구하고 공간 직각삼각형의 삼각비를 읽는다."
   },
   {
     "id": 20,
@@ -649,6 +877,18 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "특수각의 사인·코사인·탄젠트 값을 주어진 식에 대입한다.",
+    "decisiveStep": "특수각의 사인·코사인·탄젠트 값을 주어진 식에 대입한다."
   },
   {
     "id": 21,
@@ -676,6 +916,18 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+    "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "꼭짓점으로 꼭짓점형을 놓고 y절편 한 점을 대입해 계수를 정한 뒤 전개하여 a,b,c를 읽는다.",
+    "decisiveStep": "꼭짓점으로 꼭짓점형을 놓고 y절편 한 점을 대입해 계수를 정한 뒤 전개하여 a,b,c를 읽는다."
   },
   {
     "id": 22,
@@ -706,6 +958,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 포물선의 꼭짓점 A와 y절편 B, 삼각형 AOB의 높이 AH=2와 밑변 OB=3.",
     "solutionImageCaption": "[AOB]=1/2×3×2=3이다. 정답은 3이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+    "templateKey": "TPL_M3_CALCULATE_TRIANGLE_AREA_FROM_VERTEX_AND_Y_INTERCEPT",
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "완전제곱으로 꼭짓점 좌표를 구하고 y절편을 읽어 축 위 밑변과 꼭짓점의 수평거리로 넓이를 계산한다.",
+    "decisiveStep": "완전제곱으로 꼭짓점 좌표를 구하고 y절편을 읽어 축 위 밑변과 꼭짓점의 수평거리로 넓이를 계산한다."
   },
   {
     "id": 23,
@@ -736,5 +1000,17 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 직각 B인 삼각형에서 AB=3, BC=2, 빗변 AC=√13을 나타낸다.",
     "solutionImageCaption": "sin A=2/√13=2√13/13, cos A=3/√13=3√13/13, tan A=2/3이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "crossConceptKeys": ["CC_PYTHAGOREAN"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 직각변으로 빗변을 피타고라스에서 구하고 각 A의 세 삼각비를 정의에 따라 쓴다.",
+    "decisiveStep": "두 직각변으로 빗변을 피타고라스에서 구하고 각 A의 세 삼각비를 정의에 따라 쓴다."
   }
 ];

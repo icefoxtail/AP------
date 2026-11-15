@@ -398,9 +398,9 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "stack",
+    "layoutTag": "fullwidth",
     "wide": false,
-    "content": "다음 그림과 같이 한 변의 길이가 $x$인 정오각형의 한 대각선의 길이가 1일 때, $x$의 값은? [5점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_수학/q09.png\">",
+    "content": "다음 그림과 같이 한 변의 길이가 $x$인 정오각형의 한 대각선의 길이가 1일 때, $x$의 값은? [5점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q9-problem-v2.svg\">",
     "choices": [
       "$\\frac{1+\\sqrt{5}}{4}$",
       "$\\frac{1+\\sqrt{5}}{2}$",
@@ -428,7 +428,7 @@ window.questionBank = [
     "rpmPrimaryId": "M3-RPM-039",
     "difficultyConfidence": "high",
     "sourceRef": "codex/scan-intake-deliverables-20261012:d139bc7848b2bb19a58f2dd8f20e084288b245cc",
-    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_수학/q09_solution.svg",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q9-solution-v2.svg",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [
@@ -440,7 +440,9 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageAlt": "정오각형의 대각선과 닮은 삼각형"
+    "solutionImageAlt": "해설 그림: BC는 길이가 1인 대각선이다. AB, AC, FC는 같은 파란 눈금이다. 파란 큰 삼각형과 주황 작은 삼각형을 비교한다.",
+    "solutionImageCaption": "정오각형의 각 관계에서 FC=AC=x이고 BF=1−x이다. 닮음에서 x:1=(1−x):x이므로 x²+x−1=0이다. 양의 해는 (√5−1)/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -552,9 +554,9 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "stack",
+    "layoutTag": "fullwidth",
     "wide": false,
-    "content": "다음 그림과 같이 원점을 꼭짓점으로 하고 점 $(3, -12)$를 지나는 그래프가 있다. 이 이차함수의 그래프와 $x$축에 서로 대칭인 그래프의 식은? [3점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_수학/q12.png\">",
+    "content": "다음 그림과 같이 원점을 꼭짓점으로 하고 점 $(3, -12)$를 지나는 그래프가 있다. 이 이차함수의 그래프와 $x$축에 서로 대칭인 그래프의 식은? [3점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q12-problem-v2.svg\">",
     "choices": [
       "$y=\\frac{1}{6}x^2$",
       "$y=\\frac{1}{3}x^2$",
@@ -589,7 +591,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 아래쪽 곡선 위의 P는 (3,−12)이다. 같은 x좌표의 주황 점 Q가 x축 위의 대칭점이다.",
+    "solutionImageCaption": "기존 식은 y=−4x²/3이다. x축 대칭은 y의 부호를 바꾸므로 대칭한 식은 y=4x²/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -603,9 +609,9 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "stack",
+    "layoutTag": "fullwidth",
     "wide": false,
-    "content": "다음 그림과 같이 각 변이 좌표축과 평행한 정사각형 $\\mathrm{ABCD}$에서 점 $\\mathrm{A, C}$는 이차함수 $y=x^2$의 그래프 위의 점이고, 점 $\\mathrm{B}$는 이차함수 $y=9x^2$의 그래프 위의 점이다. $\\square\\mathrm{ABCD}$가 제1사분면 위에 있을 때, 점 $\\mathrm{D}$의 좌표는? [5점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_수학/q13.png\">",
+    "content": "다음 그림과 같이 각 변이 좌표축과 평행한 정사각형 $\\mathrm{ABCD}$에서 점 $\\mathrm{A, C}$는 이차함수 $y=x^2$의 그래프 위의 점이고, 점 $\\mathrm{B}$는 이차함수 $y=9x^2$의 그래프 위의 점이다. $\\square\\mathrm{ABCD}$가 제1사분면 위에 있을 때, 점 $\\mathrm{D}$의 좌표는? [5점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q13-problem-v2.svg\">",
     "choices": [
       "$\\left(\\frac{3}{4}, \\frac{1}{4}\\right)$",
       "$\\left(\\frac{3}{4}, \\frac{3}{16}\\right)$",
@@ -633,7 +639,7 @@ window.questionBank = [
     "rpmPrimaryId": "M3-RPM-047",
     "difficultyConfidence": "high",
     "sourceRef": "codex/scan-intake-deliverables-20261012:d139bc7848b2bb19a58f2dd8f20e084288b245cc",
-    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_수학/q13_solution.svg",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q13-solution-v2.svg",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [
@@ -645,7 +651,9 @@ window.questionBank = [
     "integrationPattern": "INTERDEPENDENT",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageAlt": "두 포물선 위에 놓인 정사각형"
+    "solutionImageAlt": "해설 그림: 정사각형 왼쪽 변 AB의 위와 아래를 y축으로 이어 높이 차를 보인다. B와 C는 같은 높이이다.",
+    "solutionImageCaption": "A의 x좌표를 t라 하면 A와 B의 높이는 t²와 9t²이다. 한 변은 8t²이다. C의 x좌표가 양수이고 높이는 9t²이므로 x좌표는 3t이다. 8t²=3t−t에서 t=1/4이고 D=(3/4,1/16)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -659,9 +667,9 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "stack",
+    "layoutTag": "fullwidth",
     "wide": false,
-    "content": "다음 그림은 두 이차함수 $y=x^2$, $y=x^2+1$의 그래프이다. 색칠한 부분의 넓이는? [5점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_수학/q14.png\">",
+    "content": "다음 그림은 두 이차함수 $y=x^2$, $y=x^2+1$의 그래프이다. 색칠한 부분의 넓이는? [5점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q14-problem-v2.svg\">",
     "choices": [
       "$\\frac{1}{2}$",
       "1",
@@ -689,7 +697,7 @@ window.questionBank = [
     "rpmPrimaryId": "M3-RPM-049",
     "difficultyConfidence": "high",
     "sourceRef": "codex/scan-intake-deliverables-20261012:d139bc7848b2bb19a58f2dd8f20e084288b245cc",
-    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_수학/q14_solution.svg",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q14-solution-v2.svg",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [
@@ -701,7 +709,9 @@ window.questionBank = [
     "integrationPattern": "REINTERPRETATION",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageAlt": "같은 넓이의 곡선 부분을 평행이동하여 만든 평행사변형"
+    "solutionImageAlt": "해설 그림: 주황 영역 안에 세로 보조선을 그어 높이 1을 표시했다. 주황 영역은 x=1부터 2까지 이어진다.",
+    "solutionImageCaption": "같은 x에서 두 함수값의 차는 늘 1이다. 가로 길이도 2−1=1이므로 넓이는 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -751,7 +761,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: x좌표 2에 있는 파란 꼭짓점 V가 주황 직선 위에 놓여 있다.",
+    "solutionImageCaption": "꼭짓점은 (2,2a)이다. 직선에 x=2를 대입하면 2a=−2+4a이므로 a=1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -801,7 +815,11 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선은 아래로 열리고 꼭짓점 V에서 x축으로 점선을 그었다. A와 B는 x절편, 주황 I는 y절편이다.",
+    "solutionImageCaption": "식을 정리하면 y=−(x−2)²+9이다. 꼭짓점보다 왼쪽에서는 증가하고 오른쪽에서는 감소한다. x>−2인 구간 전체에서 감소한다는 설명은 틀렸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -849,7 +867,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 파랑 원래 포물선 위 P를 오른쪽과 위로 1만큼 옮기면 주황 포물선 위 점 Q가 된다. Q의 x좌표는 1이다.",
+    "solutionImageCaption": "이동 뒤의 x=1인 점은 이동 전 x=0인 점에서 출발한다. f(0)=−1에 1을 더하므로 k=0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -863,9 +885,9 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "stack",
+    "layoutTag": "fullwidth",
     "wide": false,
-    "content": "다음 그림과 같이 놀이기구의 레일의 모양은 포물선이다. $\\mathrm{O}$지점에서의 기둥의 높이는 $5\\text{ m}$이고, $\\mathrm{O}$지점에서 $4\\text{ m}$ 떨어진 곳의 기둥의 높이는 $7\\text{ m}$일 때, $\\mathrm{O}$지점에서 $8\\text{ m}$ 떨어진 곳의 기둥의 높이는? (단, 점 $\\mathrm{P}$는 포물선의 꼭짓점이다.) [5점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_수학/q18.png\">",
+    "content": "다음 그림과 같이 놀이기구의 레일의 모양은 포물선이다. $\\mathrm{O}$지점에서의 기둥의 높이는 $5\\text{ m}$이고, $\\mathrm{O}$지점에서 $4\\text{ m}$ 떨어진 곳의 기둥의 높이는 $7\\text{ m}$일 때, $\\mathrm{O}$지점에서 $8\\text{ m}$ 떨어진 곳의 기둥의 높이는? (단, 점 $\\mathrm{P}$는 포물선의 꼭짓점이다.) [5점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q18-problem-v2.svg\">",
     "choices": [
       "$11\\text{ m}$",
       "$13\\text{ m}$",
@@ -893,7 +915,7 @@ window.questionBank = [
     "rpmPrimaryId": "M3-RPM-054",
     "difficultyConfidence": "high",
     "sourceRef": "codex/scan-intake-deliverables-20261012:d139bc7848b2bb19a58f2dd8f20e084288b245cc",
-    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_수학/q18_solution.svg",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q18-solution-v2.svg",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
@@ -901,7 +923,9 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageAlt": "지면에서 포물선까지의 기둥 높이"
+    "solutionImageAlt": "해설 그림: 레일의 가장 낮은 높이 5 m에서 오른쪽으로 점선을 이었다. 4 m 지점은 이보다 2 m 높고, 바깥 기둥의 전체 높이는 h m이다.",
+    "solutionImageCaption": "y=ax²+5에서 x=4일 때 7이므로 a=1/8이다. x=8을 넣으면 높이는 13 m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -915,9 +939,9 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "stack",
+    "layoutTag": "fullwidth",
     "wide": false,
-    "content": "이차함수 $y=ax^2+bx+c$의 그래프가 아래 그림과 같을 때, 다음 중 옳지 <u>않은</u> 것은? (단, $a, b, c$는 상수이다.) [4점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_수학/q19.png\">",
+    "content": "이차함수 $y=ax^2+bx+c$의 그래프가 아래 그림과 같을 때, 다음 중 옳지 <u>않은</u> 것은? (단, $a, b, c$는 상수이다.) [4점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q19-problem-v2.svg\">",
     "choices": [
       "$ac<0$",
       "$ab>0$",
@@ -950,7 +974,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "REINTERPRETATION",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 열린 파란 예시 포물선의 꼭짓점 V는 x=−1에 있고 x=1의 주황 점 P는 x축 위이다. 세로 눈금은 표시하지 않았다.",
+    "solutionImageCaption": "위로 열리므로 a>0이다. 대칭축이 x=−1이어서 b=2a>0이고, y절편 c는 음수이다. x=1에서는 y>0이므로 a+b+c<0이라는 설명이 옳지 않다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1001,7 +1029,11 @@ window.questionBank = [
     ],
     "integrationPattern": "INTERDEPENDENT",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 포물선은 V를 공통 꼭짓점으로 한다. 파란 곡선의 y절편 P는 x축 아래이고 주황 곡선의 y절편 Q는 x축 위이다.",
+    "solutionImageCaption": "네 사분면을 지나려면 포물선은 위로 열려 a>0이고, x<0에서 음수인 y값이 있어야 하므로 y(0)=4a−5<0이다. 따라서 0<a<5/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1015,9 +1047,9 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "서술형",
-    "layoutTag": "stack",
+    "layoutTag": "fullwidth",
     "wide": false,
-    "content": "서술형 1. 다음 그림과 같이 모양과 크기가 같은 직사각형 모양의 타일 6개를 넓이가 $176\\text{ cm}^2$인 직사각형 모양의 공간에 빈틈없이 붙였더니 가로의 길이가 $2\\text{ cm}$인 직사각형 모양의 공간이 남았다. 이때 타일 한 개의 넓이를 구하시오. [8점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_수학/s01.png\">",
+    "content": "서술형 1. 다음 그림과 같이 모양과 크기가 같은 직사각형 모양의 타일 6개를 넓이가 $176\\text{ cm}^2$인 직사각형 모양의 공간에 빈틈없이 붙였더니 가로의 길이가 $2\\text{ cm}$인 직사각형 모양의 공간이 남았다. 이때 타일 한 개의 넓이를 구하시오. [8점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q21-problem-v2.svg\">",
     "choices": [],
     "answer": "28 cm²",
     "tags": [
@@ -1039,7 +1071,7 @@ window.questionBank = [
     "rpmPrimaryId": "M3-RPM-039",
     "difficultyConfidence": "high",
     "sourceRef": "codex/scan-intake-deliverables-20261012:d139bc7848b2bb19a58f2dd8f20e084288b245cc",
-    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_수학/q21_solution.svg",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q21-solution-v2.svg",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
@@ -1049,7 +1081,9 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageAlt": "합동인 직사각형 타일 여섯 개의 배열"
+    "solutionImageAlt": "해설 그림: 윗줄 전체 폭은 4w이다. 아랫줄에는 긴 변 h가 두 번 놓이고, 오른쪽 빈 너비는 2 cm이다.",
+    "solutionImageCaption": "두 줄의 가로가 같으므로 4w=2h+2이다. 전체 넓이 4w(w+h)=176을 함께 풀면 w=4, h=7이며 타일 한 개의 넓이는 28 cm²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1087,7 +1121,7 @@ window.questionBank = [
     "rpmPrimaryId": "M3-RPM-051",
     "difficultyConfidence": "high",
     "sourceRef": "codex/scan-intake-deliverables-20261012:d139bc7848b2bb19a58f2dd8f20e084288b245cc",
-    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_수학/q22_solution.svg",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q22-solution-v2.svg",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
@@ -1095,7 +1129,9 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageAlt": "꼭짓점과 두 대칭점을 지나는 이차함수의 그래프"
+    "solutionImageAlt": "해설 그림: 아래의 꼭짓점 V에서 양쪽 가지가 올라간다. y축 위 A와 반대편 B는 같은 높이에 놓여 있다.",
+    "solutionImageCaption": "y=(x−3)²/3−1로 고치면 꼭짓점은 (3,−1)이고 y절편은 2이다. (0,2)의 대칭점 (6,2)를 함께 찍어 위로 열린 포물선을 그린다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1109,9 +1145,9 @@ window.questionBank = [
     "standardUnit": "이차함수",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "stack",
+    "layoutTag": "fullwidth",
     "wide": false,
-    "content": "서술형 3. 다음 그림과 같이 이차함수 $y=3x^2+6x+a$의 그래프의 꼭짓점을 $\\mathrm{C}$, $x$축과의 교점을 각각 $\\mathrm{A, B}$라고 할 때, $\\overline{\\mathrm{AB}}=4$이다. $\\triangle\\mathrm{ABC}$의 넓이를 구하시오. (단, $a$는 수이다.) [7점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_수학/s03.png\">",
+    "content": "서술형 3. 다음 그림과 같이 이차함수 $y=3x^2+6x+a$의 그래프의 꼭짓점을 $\\mathrm{C}$, $x$축과의 교점을 각각 $\\mathrm{A, B}$라고 할 때, $\\overline{\\mathrm{AB}}=4$이다. $\\triangle\\mathrm{ABC}$의 넓이를 구하시오. (단, $a$는 수이다.) [7점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q23-problem-v2.svg\">",
     "choices": [],
     "answer": "24",
     "tags": [
@@ -1133,7 +1169,7 @@ window.questionBank = [
     "rpmPrimaryId": "M3-RPM-054",
     "difficultyConfidence": "high",
     "sourceRef": "codex/scan-intake-deliverables-20261012:d139bc7848b2bb19a58f2dd8f20e084288b245cc",
-    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_수학/q23_solution.svg",
+    "solutionImage": "assets/images/21_신흥중_1학기_기말_중3_기출/q23-solution-v2.svg",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [
@@ -1143,6 +1179,8 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImageAlt": "두 절편과 꼭짓점을 연결한 삼각형"
+    "solutionImageAlt": "해설 그림: 파란 포물선의 x절편 A와 B가 삼각형의 밑변이며 꼭짓점 C가 아래쪽에 있다. C에서 밑변으로 높이를 점선으로 나타낸다.",
+    "solutionImageCaption": "대칭축은 x=−1이고 AB=4이므로 두 x절편은 −3과 1이다. 식을 y=3(x+1)²−12로 쓰면 C의 높이가 x축에서 12이므로 넓이는 4×12÷2=24이다.",
+    "solutionImageSize": "full"
   }
 ];

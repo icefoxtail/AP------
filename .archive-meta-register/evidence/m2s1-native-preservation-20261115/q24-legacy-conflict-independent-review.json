@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "narrow-difficulty-legacy-conflict-adjudication-v1",
+  "reviewer": "GPT_ROOT_C8F1B0BFB4FA",
+  "scope": "E045 Q24 current difficulty and historical level compatibility only",
+  "sourceCommit": "d0c592f6948dce98a9716a59ee97e6182b9653dc",
+  "sourcePath": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+  "sourceBlobSha1": "535e870de2279b7664ce4558259c04a77e067e31",
+  "sourceOrdinal": 24,
+  "sourceImage": {
+    "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/s04.png",
+    "sha256": "3284ed0043ef60c20ebf57133649585175bc1e64b2f0fdac90e85adb318175dc"
+  },
+  "observed": {
+    "pointsA": [
+      [
+        0,
+        3
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "pointsB": [
+      [
+        0,
+        0
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "promptProvidesThreeSubquestions": true,
+    "computedMeetingTime": 15,
+    "commonPosition": 9
+  },
+  "decision": {
+    "reviewStatus": "PASS",
+    "historicalLevel": "상",
+    "preserveHistoricalLevel": true,
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT"
+  },
+  "reason": "The given marked points and three prompted substeps directly determine two linear functions and a single equality. There is no hidden strategy or extra case split. Bucket2 is appropriate with the B23 boundary; the historical high label is retained and its strong conflict is explicitly recorded rather than overwritten.",
+  "newAdvancedMetadataApproval": 0,
+  "fullExamReviewClaimed": false
+}
