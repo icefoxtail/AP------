@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "archive-reviewed-e004-local-validation-v1",
+  "status": "LOCAL_NATIVE_AND_CONSUMER_PASS_PRODUCTION_DEPENDENCY_PENDING",
+  "baseCommit": "318be2389960aac0810039f6d9ab3dba2fedab6b",
+  "requestPath": ".archive-meta-register/inbox/m2s2-e004-cc30-20261115.json",
+  "requestSha256": "56f5e13f6ae8e22f28623653556e8a96bf09654107ed4651c3c7d6e9144f69a5",
+  "sourcePath": "archive/exams/original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+  "sourceBlobSha1": "13faacf12d9a8c5f3b26f2730c022a53a9c362f6",
+  "questionUid": "qid_v1_8dfe8c3aa1929d687c8f83e0bc6b7b340304cc77c6bee69eed915d421e4a7920",
+  "localDependency": {
+    "kind": "LOCAL_OFFICIAL_REGISTRAR_FIXTURE_ONLY",
+    "requestPath": ".archive-meta-register/inbox/m2s2-binding68-20261115-E001.json",
+    "questionCount": 13,
+    "actualMainInstalled": false,
+    "generatedOutputsExcludedFromPublication": true
+  },
+  "dryRun": {
+    "status": "PASS",
+    "write": false,
+    "requestId": "m2s2-e004-cc30-20261115",
+    "approvalType": "FINAL_QA",
+    "totalQuestions": 1,
+    "scope": "PARTIAL_UIDS",
+    "partialUidCount": 1,
+    "expectedQuestionCount": 24,
+    "registryChangeCount": 1,
+    "runtimeMaterialized": 1,
+    "fingerprintRepairCount": 1,
+    "consumerSearchStatus": "NOT_RUN",
+    "replay": false,
+    "plannedPaths": [
+      "archive/data/meta-foundation/compiled/concept_registry.json",
+      "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "archive/data/meta-foundation/canonical/registry_index.json",
+      "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "archive/data/question_metadata.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e004-cc30-20261115.source-review-binding.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e004-cc30-20261115.json"
+    ]
+  },
+  "write": {
+    "status": "PASS",
+    "write": true,
+    "requestId": "m2s2-e004-cc30-20261115",
+    "approvalType": "FINAL_QA",
+    "totalQuestions": 1,
+    "scope": "PARTIAL_UIDS",
+    "partialUidCount": 1,
+    "expectedQuestionCount": 24,
+    "registryChangeCount": 1,
+    "runtimeMaterialized": 1,
+    "fingerprintRepairCount": 1,
+    "consumerSearchStatus": "NOT_RUN",
+    "replay": false,
+    "plannedPaths": [
+      "archive/data/meta-foundation/compiled/concept_registry.json",
+      "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "archive/data/meta-foundation/canonical/registry_index.json",
+      "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "archive/data/question_metadata.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e004-cc30-20261115.source-review-binding.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e004-cc30-20261115.json"
+    ]
+  },
+  "replay": {
+    "status": "PASS",
+    "requestId": "m2s2-e004-cc30-20261115",
+    "totalQuestions": 1,
+    "scope": "PARTIAL_UIDS",
+    "partialUidCount": 1,
+    "expectedQuestionCount": 24,
+    "replay": true,
+    "plannedPaths": [],
+    "consumerSearchStatus": "NOT_RUN",
+    "browserStatus": "NOT_RUN"
+  },
+  "consumer": {
+    "status": "PASS",
+    "requestId": "m2s2-e004-cc30-20261115",
+    "totalQuestions": 1,
+    "scope": "PARTIAL_UIDS",
+    "partialUidCount": 1,
+    "expectedQuestionCount": 24,
+    "replay": true,
+    "plannedPaths": [],
+    "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+    "browserStatus": "NOT_RUN",
+    "consumerLanes": {
+      "canonical": 1,
+      "usableMetaLane": 0
+    }
+  },
+  "changedUidConsumer": {
+    "status": "PASS",
+    "counts": {
+      "changed": 1,
+      "checked": 1,
+      "passed": 1,
+      "skippedUnchanged": 0
+    },
+    "failures": [],
+    "assignmentPending": []
+  },
+  "fullCatalog": {
+    "exams": 1211,
+    "questions": 28882,
+    "sourceShardCount": 1211,
+    "indexVersion": "0a5637f8eb8158c4546ef7c2ec6a9d3d777b63bff4d9faa467023ca01139bf5e",
+    "projectionVersion": "archive2-canonical-v1:d4cb43d2fe9e59378467853c00504697a74b8ec7a08a6e59602d175edeba9e37"
+  },
+  "writeBoundary": {
+    "comparisonBase": "after the local exact E001 provider write and before E004 write",
+    "selected": 1,
+    "outsideMetadata": 28889,
+    "outsideMetadataChanged": 0,
+    "identityUnchanged": true,
+    "outsideRuntime": 1422,
+    "outsideRuntimeChanged": 0,
+    "otherCanonicalConceptsUnchanged": true,
+    "replayOutputBytesIdentical": true
+  },
+  "shadow": {
+    "status": "NOT_RUN_AGAINST_ACTUAL_MAIN",
+    "reason": "Actual binding68 provider and E004 ten-UID prior registration receipts are not yet present. Final publication must rebind against those actual receipts before official immutable-HEAD shadow proof."
+  },
+  "actualMainRegistrationClaimed": false,
+  "browserStatus": "NOT_RUN",
+  "pagesStatus": "NOT_RUN",
+  "newMathematicalQa": false,
+  "independentTagTransportReview": {
+    "path": "docs/operations/m2s2-e004-cc30-20261115/independent-derived-tag-review.json",
+    "sha256": "6039a8b670f6a8d938ed4829bab362f2f9d54fcec21f45bc87a7c51277344ecc"
+  }
+}

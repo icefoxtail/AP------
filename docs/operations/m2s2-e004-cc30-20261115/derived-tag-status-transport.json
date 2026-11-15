@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "archive-registrar-derived-tag-status-transport-v1",
+  "status": "DERIVED_METADATA_TAG_SYNCHRONIZATION_ONLY",
+  "questionUid": "qid_v1_8dfe8c3aa1929d687c8f83e0bc6b7b340304cc77c6bee69eed915d421e4a7920",
+  "sourceOrdinal": 10,
+  "sourcePath": "archive/exams/original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+  "baseCommit": "318be2389960aac0810039f6d9ab3dba2fedab6b",
+  "sourceBeforeStatusTransportBlob": "97cdced7ca2a415f454e252818424a1a9c3ddbf2",
+  "sourceAfterStatusTransportBlob": "13faacf12d9a8c5f3b26f2730c022a53a9c362f6",
+  "fields": [
+    {
+      "field": "tagConfidence",
+      "before": "review_required",
+      "after": "approved_final_qa",
+      "origin": "OFFICIAL_FINAL_QA_REGISTRAR_OUTPUT"
+    },
+    {
+      "field": "tagStatus",
+      "before": "review_required",
+      "after": "reviewed_pass",
+      "origin": "OFFICIAL_FINAL_QA_REGISTRAR_OUTPUT"
+    }
+  ],
+  "approvalInput": {
+    "type": "FINAL_QA",
+    "requestId": "m2s2-e004-cc30-20261115",
+    "semanticAfterStableSha256": "7c00827d783ffe96af2dab024aab89dfcadc8f5d4d98851e730d9ae72793fe3f",
+    "evidenceRefs": [
+      {
+        "path": ".archive-meta-register/evidence/m2s2-e004-cc30-20261115/E004.native.json",
+        "sha256": "f7b2960edd58c9eb782fb5c2b5538f1f58e906e2f6dcfd9864d449352c53a0f4"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m2s2-e004-cc30-20261115/E004.root-acceptance.json",
+        "sha256": "aaa10ec536b1f51d9fff68fae2767491d77976b7ae9ce032a17631b509d6c8e5"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m2s2-cc7-definition-finalization-20261115.json",
+        "sha256": "8f6cbbfce02aa128a60b786b28e2eb5521405342b8d09ad2b42daa92ce3fdb00"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m2s2-cc7-registry-changes-proposal-20261115.json",
+        "sha256": "d8bf5d60e43628197bc3335d10c6522164ae991b29d1d10b5dc91773e4ad0ed4"
+      },
+      {
+        "path": "docs/operations/m2s2-e004-cc30-20261115/native-curriculum-provenance.json",
+        "sha256": "d136c8083fe8af6c57eaee32f1e2e8f011527bce40c14b93e2352c4ba073d296"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e004-cc30-20261115.parent-labels.json",
+        "sha256": "d7030c6cf088a8603d969c7db3c0ef3aafedc0d482741d2d12d4fa007dd8246f"
+      },
+      {
+        "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q10-solution.svg",
+        "sha256": "989b899cbbfaf2e13128df3764624e085709bce056abbe361fa85b8701551549"
+      },
+      {
+        "path": "archive/assets/images/26_팔마중_2학기_중간_중2_기출/q10.png",
+        "sha256": "597d81e15b68290582bb64acb444e459b7a0d54e78ddaf42c69ee56d6f278528"
+      }
+    ]
+  },
+  "derivationContract": {
+    "coreMetadataFields": "META_FIELDS + OPTIONAL_METADATA_FIELDS",
+    "nativeRequestValueFieldsExcludeStatus": true,
+    "reassessmentDerivedFieldsExcludeStatus": true,
+    "statusNotAuthoredByNativeReview": true,
+    "registrarConfidenceRule": "FINAL_QA -> approved_final_qa",
+    "registrarTagStatusRule": "no remaining manual field hold -> reviewed_pass",
+    "manualFieldHoldRemains": false,
+    "codeRefs": [
+      {
+        "path": "archive/archive2-core.js",
+        "sha256": "7541493a2f603248357ed953656184bbcf7643d87f5ac99134a0fad55552a0be"
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+        "sha256": "d356c200abb98fae827428831ca123df204cee7934781dfd2e27bd99478780cb"
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+        "sha256": "88f5134969a35cee3772454da854d7d8dc6c19b8a12a3043820d5a3f5aea1b21"
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-meta-value-fields.mjs",
+        "sha256": "ebce5ab16817840a87fa1a316719c17c850fe772a89e40cbc9004f3dae808e65"
+      }
+    ]
+  },
+  "localPreview": {
+    "receiptSha256": "51ea27b50a091a88250f7fd6cbc02afe148c68fa28f0a4c1838530466ec499ff",
+    "sourceBlobSha1": "97cdced7ca2a415f454e252818424a1a9c3ddbf2",
+    "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+    "actualProductionRegistration": false
+  },
+  "preservation": {
+    "newMathematicalQa": false,
+    "newReview2Claim": false,
+    "nativeApprovalMutation": 0,
+    "requestMeaningAfterMutation": 0,
+    "requestBeforeMutation": 0,
+    "sourceReviewStatusUnchanged": true,
+    "sourceReviewStatus": "review_required",
+    "allStudentPayloadsUnchanged": true,
+    "otherQuestionObjectsUnchanged": 23
+  },
+  "publicationGate": "WAIT_ACTUAL_BINDING68_AND_E004_TEN_PRESERVATION_RECEIPT"
+}
