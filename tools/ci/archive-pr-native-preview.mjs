@@ -20,6 +20,7 @@ export const NATIVE_BASIC_HOLD_SCHEMA = 'archive-basic-native-source-hold-preser
 export const NATIVE_BASIC_PARENT_SCHEMA = 'archive-reviewed-native-basic-parent-v1';
 const BASIC_REBIND_SCHEMA = 'archive-basic-scope-rebind-request-v1';
 const PARENT_CORRECTION_SCHEMA = 'archive-basic-parent-correction-request-v1';
+export const APPROVED_RENDERER_PRESERVATION_SCHEMA = 'archive-native-approved-renderer-preservation-v1';
 export const NATIVE_PREVIEW_HELPER = 'tools/ci/archive-pr-native-preview.mjs';
 const INBOX = '.archive-meta-register/inbox/';
 const REGISTRAR = 'archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs';
@@ -128,6 +129,25 @@ export function basicPreservationDescriptor(request) {
       || !/^[a-f0-9]{64}$/.test(row.sourceFingerprint || '') || !/^[a-f0-9]{64}$/.test(row.contentFingerprint || ''))
       || new Set(bindings.map(r => r.questionUid)).size !== bindings.length) fail('BASIC_PRESERVATION_BINDINGS');
   return { schemaVersion, bindings, ...(schemaVersion === NATIVE_BASIC_PARENT_SCHEMA ? { newBasicParent: true } : {}) };
+}
+
+// This descriptor selects a preservation lane; the official registrar still
+// replays the entire immutable FULL ancestor and authenticates every renderer.
+export function approvedRendererPreservationDescriptor(request) {
+  const spec=request.approval?.rendererPreservation;
+  if(spec===undefined)return undefined;
+  const empty=value=>value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).length===0;
+  const items=request.items;
+  if(request.schemaVersion!==NATIVE_REQUEST_SCHEMA||spec?.schemaVersion!==APPROVED_RENDERER_PRESERVATION_SCHEMA||
+    request.scope!=='PARTIAL_UIDS'||request.approval.type!=='FINAL_QA'||request.approval.metadataReviewed!==true||
+    !String(request.approval.approvedBy||'').trim()||request.approval.sourceRebind!==undefined||
+    request.approval.metaPipelineAudit!==undefined||request.registrationMode!==undefined||
+    request.registryChanges!==undefined&&(!Array.isArray(request.registryChanges)||request.registryChanges.length)||
+    !/^original\/middle\/m1\/2(?:mid|final)\/[^/]+\.js$/.test(request.sourceArchiveFile||'')||
+    !Array.isArray(items)||!items.length||items.some(item=>!empty(item.before)||!empty(item.after)||item.sourceReview!==undefined||
+      !['UNCHANGED_WHOLE_QUESTION_AND_ASSETS','INDEPENDENTLY_REVIEWED_IMAGE_CONTINUITY'].includes(item.preservationMode))||
+    !items.some(item=>item.preservationMode==='INDEPENDENTLY_REVIEWED_IMAGE_CONTINUITY'))fail('RENDERER_PRESERVATION_SCOPE');
+  return {schemaVersion:APPROVED_RENDERER_PRESERVATION_SCHEMA,selectedCount:items.length};
 }
 
 // Preserve the normal request order except where one exact audit-preservation
@@ -546,6 +566,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
     const correction = request.schemaVersion === PARENT_CORRECTION_SCHEMA;
     const authorityCorrection = isNativeAuthorityCorrection(request);
     const basicPreservation = basicPreservationDescriptor(request);
+    const rendererPreservation = approvedRendererPreservationDescriptor(request);
     if (!correction && !basicPreservation && request.schemaVersion !== NATIVE_REQUEST_SCHEMA) {
       // An unhandled main inbox must not be reported as a coherent projection.
       // PRs retain their existing ownership boundary for unrelated schemas.
@@ -606,9 +627,10 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
       ...(registryDependency ? { registryDependency } : {}),
+      ...(rendererPreservation ? { rendererPreservation } : {}),
       ...(authorityCorrection ? { kind: 'native-authority-withdrawal' } : basicPreservation ? { basicPreservation, kind: basicPreservation.newBasicParent ? 'basic-parent-registration' : 'basic-approval-preservation' }
         : correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }
-        : preservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type } : {}), source: { ...source, blobSha1 },
+        : preservation || rendererPreservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type } : {}), source: { ...source, blobSha1 },
       evidence: [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en')),
       receiptPath: `${RECEIPTS}${request.requestId}.json` });
   }

@@ -50,6 +50,8 @@ function importPrivatePartial({root,inputPath,reviewer,requestId,expectedCompact
  root=path.resolve(root);
  if(!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(requestId||'')||!reviewer||!['NONE'].includes(expectedCompactSha256)&&!P.SHA.test(expectedCompactSha256||''))P.fail('EXPLICIT_IMPORT_ARGUMENTS_REQUIRED');
  const raw=fs.readFileSync(inputPath),input=privateFile(root,{path:inputPath,sha256:P.sha(raw)}).data;
+ if(input.schemaVersion==='archive-4slot-root-reconciled-source-structure-append-input-v1')
+  return require('./private-source-structure-append.cjs').importPrivateSourceStructureAppend({root,input,inputRaw:raw,reviewer,requestId,expectedCompactSha256,compactItem,serialize,write,privateFile,gitBlobAtHead});
  const currentSourceInput=input.schemaVersion===CURRENT_INPUT_SCHEMA;
  if((!currentSourceInput&&input.schemaVersion!=='q22-accepted-private-vector-input-v1')||input.classification!=='PRIVATE_NOT_FOR_PUBLIC_GIT'||input.status!=='ACCEPTED_VECTOR_ONLY_PENDING_FORMAL_PARTIAL_SUBMISSION_CONTRACT'||input.newMathQa!==0||input.newSemanticApproval!==0||input.sourceChanges!==0||input.unsubmittedApprovals!==0||input.unsubmittedRegistrations!==0||!Array.isArray(input.items)||input.items.length!==1||input.candidates?.length!==0)P.fail('PRIVATE_ACCEPTED_INPUT_SCHEMA');
  const author=privateFile(root,{path:input.author?.candidatePath,sha256:input.author?.candidateSha256});
@@ -87,4 +89,8 @@ function importPrivatePartial({root,inputPath,reviewer,requestId,expectedCompact
  if(write){for(const [file,bytes]of [[receiptDest,receiptBytes],[dest,text]]){fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file+'.tmp',bytes);fs.renameSync(file+'.tmp',file);}}
  return {status:'PASS_PARTIAL_IMPORT',scope:P.SCOPE,expectedQuestionCount:bank.length,selected:1,unsubmitted:scope.unsubmitted.length,completeExam:false,write,replay:Boolean(previous),newSemanticApproval:0,sourceMutation:0,compact:{path:destPath,sha256:P.sha(text),bytes:Buffer.byteLength(text)},receipt:{path:receiptPath,sha256:P.sha(receiptBytes),bytes:Buffer.byteLength(receiptBytes)},validation:{fail:0,warn:validation.warn.length,quotes:validation.stats.quotes},output,publicReceipt:receipt};
 }
-module.exports={importPrivatePartial};
+function inspectPrivateSourceStructure({root,inputPath,reviewer,compactItem}){
+ root=path.resolve(root);const raw=fs.readFileSync(inputPath),input=privateFile(root,{path:inputPath,sha256:P.sha(raw)}).data;
+ return require('./private-source-structure-append.cjs').normalizeSourceStructure({root,input,inputRaw:raw,reviewer,compactItem,privateFile,gitBlobAtHead});
+}
+module.exports={importPrivatePartial,inspectPrivateSourceStructure};
