@@ -1,0 +1,346 @@
+{
+  "schemaVersion": "archive-m2s1-narrow-repair-proposals-v1",
+  "baseCommit": "84acbc50de7083d3c9b98c61275339e66cf84334",
+  "owner": "/root/m2s1_release",
+  "scope": "Six bounded display repairs and two verified false-positive source debts; preserve accepted difficulty and all unrelated semantic holds",
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "rows": [
+    {
+      "examId": "E006",
+      "ordinal": 4,
+      "questionUid": "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+      "decision": "PRIOR_DEBT_RECHECK_NO_SOURCE_CHANGE",
+      "reason": "The current stem already requires a concise repeating-block representation; the existing second choice is its minimal form. Equal numeric values in nonminimal forms do not invalidate this prompt.",
+      "changedFields": [],
+      "before": {},
+      "after": {},
+      "beforeFieldSha256": {},
+      "afterFieldSha256": {},
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E006/accepted-review.json",
+        "sha256": "5629706bc9916e953ace79bf2c21329f2e0ef6308d5083438335829d074e2248"
+      },
+      "finalDifficulty": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "비순환 한 자리와 순환 한 자리를 구분하는 직접 적용이다."
+      },
+      "beforeQuestionSha256": "8f0b8d0e8085d15ef29634a894f7d3b0dca2ca65208dadcfab40eb4dd88817d2",
+      "afterQuestionSha256": "8f0b8d0e8085d15ef29634a894f7d3b0dca2ca65208dadcfab40eb4dd88817d2",
+      "beforeSourceBlobSha": "8e98b5dc0bedbc52b3057c8930d891056acd913e",
+      "afterSourceBlobSha": "73da3004cc5601b6b3a16c5e012029740b0bee14"
+    },
+    {
+      "examId": "E006",
+      "ordinal": 7,
+      "questionUid": "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+      "decision": "NARROW_SOURCE_REPAIR",
+      "reason": "Restore only the three labels referenced by the existing ordered equations; retain every expression, number and answer.",
+      "changedFields": [
+        "sharedMaterial"
+      ],
+      "before": {
+        "sharedMaterial": "0.1727272…을 x라 하면 x=0.1727272…\n(가)의 양변에 ㄱ을 곱하면 ㄱx=1.727272…\n(가)의 양변에 ㄴ을 곱하면 ㄴx=172.727272…\n(다)에서 (나)를 변끼리 빼어 ㄷx=ㄹ, x=ㅁ"
+      },
+      "after": {
+        "sharedMaterial": "(가) 0.1727272…을 x라 하면 x=0.1727272…\n(나) (가)의 양변에 ㄱ을 곱하면 ㄱx=1.727272…\n(다) (가)의 양변에 ㄴ을 곱하면 ㄴx=172.727272…\n(다)에서 (나)를 변끼리 빼어 ㄷx=ㄹ, x=ㅁ"
+      },
+      "beforeFieldSha256": {
+        "sharedMaterial": "93f51daefd8befa3606e01215e02b3b0a8c7d447b107dac7edf13ce6c86c1fc1"
+      },
+      "afterFieldSha256": {
+        "sharedMaterial": "8b8dc591c95b8f4cc287ec90f1163af4c05ded8aa30ccc55a950ea73c4698f87"
+      },
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E006/accepted-review.json",
+        "sha256": "5629706bc9916e953ace79bf2c21329f2e0ef6308d5083438335829d074e2248"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "비순환1자리와 주기2자리에 따른 두 배수를 선택하고 약분하는 익숙한 다단계이다."
+      },
+      "beforeQuestionSha256": "1ad72b61931f33cca064442bc46ae238e16e49f88bc2c80ecbf349f99af95921",
+      "afterQuestionSha256": "ccae331ac8960652bcd39405cb8f48bb37847e99118a572ba0aa372e4fdbd295",
+      "beforeSourceBlobSha": "8e98b5dc0bedbc52b3057c8930d891056acd913e",
+      "afterSourceBlobSha": "73da3004cc5601b6b3a16c5e012029740b0bee14"
+    },
+    {
+      "examId": "E049",
+      "ordinal": 2,
+      "questionUid": "qid_v1_51ce3cdbc3bdb4b878e8a78f5781f951a40b140fa09c212407a27932b63f15ac",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+      "decision": "PRIOR_DEBT_RECHECK_NO_SOURCE_CHANGE",
+      "reason": "The solution explicitly compares only the first four decimal digits. Every shown prefix and the third-digit comparison selecting the second choice are correct; later digits of smaller options cannot change the maximum.",
+      "changedFields": [],
+      "before": {},
+      "after": {},
+      "beforeFieldSha256": {},
+      "afterFieldSha256": {},
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E049/accepted-review.json",
+        "sha256": "d6af5095a6c738c89f010ab23075e80f23bf022d8bac4f457c91faa58a5464f9"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "reason": "순환표현을앞자리로풀어처음다른자리에서비교",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "initialFreezeSourceOrdinal": 2,
+        "independentAdjudication": "Completed: adjacent mismatch accepted by the named independent reviewer and root."
+      },
+      "beforeQuestionSha256": "84eddc0af4f2a7f0de6ce56e49fb6f59bcd1b9a27899695afb9fff3b3ca65eb7",
+      "afterQuestionSha256": "84eddc0af4f2a7f0de6ce56e49fb6f59bcd1b9a27899695afb9fff3b3ca65eb7",
+      "beforeSourceBlobSha": "beb3c51c8b0b2200f46db99b43c718c23b1da453",
+      "afterSourceBlobSha": "beb3c51c8b0b2200f46db99b43c718c23b1da453"
+    },
+    {
+      "examId": "E052",
+      "ordinal": 21,
+      "questionUid": "qid_v1_a05ec52491fb1d0a3d64c34b464709f88613466ac24301d7ed7e58bf51818b68",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+      "decision": "NARROW_SOURCE_REPAIR",
+      "reason": "Remove five empty option placeholders, retaining the current response type, stem, answer and existing solution.",
+      "changedFields": [
+        "choices"
+      ],
+      "before": {
+        "choices": [
+          " ",
+          " ",
+          " ",
+          " ",
+          " "
+        ]
+      },
+      "after": {
+        "choices": []
+      },
+      "beforeFieldSha256": {
+        "choices": "8b0ff4878990fc2305298577f8e3a9eeecfdc0e8f92bad710bf687fffdb9987a"
+      },
+      "afterFieldSha256": {
+        "choices": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E052/accepted-review.json",
+        "sha256": "0c095a8404ee1f6862b877bbc2c467f08fcf15a72695f24d5d148d21220961b5"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "같은 거듭제곱의 반복합과 곱몫을 밑별 통합",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 21
+      },
+      "beforeQuestionSha256": "7eec31df3eed134ad576ebb3850f3ffff709981aa0c7e16730a7921bb9f8418f",
+      "afterQuestionSha256": "380f4c5eab33764189bccac0661060a8589ab17289998dc5aaeb20ec16d285e5",
+      "beforeSourceBlobSha": "a3b23fe1a0ca990ccbee6d307afcb6d7b46cedff",
+      "afterSourceBlobSha": "31db24d38d74e65fbd8f1e4980579b627b94a04c"
+    },
+    {
+      "examId": "E052",
+      "ordinal": 22,
+      "questionUid": "qid_v1_5aa254d1f76b8ae6353704697bceec5b89fed757d97dbcbe3666cc4733a5eee0",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+      "decision": "NARROW_SOURCE_REPAIR",
+      "reason": "Remove five empty option placeholders, retaining the current response type, stem, answer and existing solution.",
+      "changedFields": [
+        "choices"
+      ],
+      "before": {
+        "choices": [
+          " ",
+          " ",
+          " ",
+          " ",
+          " "
+        ]
+      },
+      "after": {
+        "choices": []
+      },
+      "beforeFieldSha256": {
+        "choices": "8b0ff4878990fc2305298577f8e3a9eeecfdc0e8f92bad710bf687fffdb9987a"
+      },
+      "afterFieldSha256": {
+        "choices": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E052/accepted-review.json",
+        "sha256": "0c095a8404ee1f6862b877bbc2c467f08fcf15a72695f24d5d148d21220961b5"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "두 입체 부피공식 등치로 높이문자식 역산",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 22
+      },
+      "beforeQuestionSha256": "231309e23a8c56acac16f0a0838b53aa15d32f6e2aa809076dae686d09d2b8e2",
+      "afterQuestionSha256": "4440f2c16a62e1cd54427b83f044389d60ec1707938b2f044494c03f37f88ba3",
+      "beforeSourceBlobSha": "a3b23fe1a0ca990ccbee6d307afcb6d7b46cedff",
+      "afterSourceBlobSha": "31db24d38d74e65fbd8f1e4980579b627b94a04c"
+    },
+    {
+      "examId": "E052",
+      "ordinal": 23,
+      "questionUid": "qid_v1_7bdd91965158153f36a0dcdc65813886e297ef226e070163dac9f92e73040609",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+      "decision": "NARROW_SOURCE_REPAIR",
+      "reason": "Remove five empty option placeholders, retaining the current response type, stem, answer and existing solution.",
+      "changedFields": [
+        "choices"
+      ],
+      "before": {
+        "choices": [
+          " ",
+          " ",
+          " ",
+          " ",
+          " "
+        ]
+      },
+      "after": {
+        "choices": []
+      },
+      "beforeFieldSha256": {
+        "choices": "8b0ff4878990fc2305298577f8e3a9eeecfdc0e8f92bad710bf687fffdb9987a"
+      },
+      "afterFieldSha256": {
+        "choices": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E052/accepted-review.json",
+        "sha256": "0c095a8404ee1f6862b877bbc2c467f08fcf15a72695f24d5d148d21220961b5"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "잘못된 다항식 차를 역산한 뒤 올바른 합",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 23
+      },
+      "beforeQuestionSha256": "ab29119187128865c6df0e6a78a99b63714fb4790b7d1fd65c44ac27dab995d7",
+      "afterQuestionSha256": "97dc97db3a80d454f70f68a0946315193451d444074dd026c43be07a84925d04",
+      "beforeSourceBlobSha": "a3b23fe1a0ca990ccbee6d307afcb6d7b46cedff",
+      "afterSourceBlobSha": "31db24d38d74e65fbd8f1e4980579b627b94a04c"
+    },
+    {
+      "examId": "E052",
+      "ordinal": 24,
+      "questionUid": "qid_v1_40078cc008bed4eb3627c56e67fb5dfdefdf8fa5b28795bd79528ea193adbba8",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+      "decision": "NARROW_SOURCE_REPAIR",
+      "reason": "Remove five empty option placeholders, retaining the current response type, stem, answer and existing solution.",
+      "changedFields": [
+        "choices"
+      ],
+      "before": {
+        "choices": [
+          " ",
+          " ",
+          " ",
+          " ",
+          " "
+        ]
+      },
+      "after": {
+        "choices": []
+      },
+      "beforeFieldSha256": {
+        "choices": "8b0ff4878990fc2305298577f8e3a9eeecfdc0e8f92bad710bf687fffdb9987a"
+      },
+      "afterFieldSha256": {
+        "choices": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E052/accepted-review.json",
+        "sha256": "0c095a8404ee1f6862b877bbc2c467f08fcf15a72695f24d5d148d21220961b5"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "reason": "고정회비와 권당요금을 엄격비교한 최소자연수",
+        "legacyLevelCompatibility": "NORMAL",
+        "initialFreezeSourceOrdinal": 24
+      },
+      "beforeQuestionSha256": "a16494aa64650c3d28ab6428d49804a936b7a9dc0f1b663aafa22056d79c464b",
+      "afterQuestionSha256": "452944882d96fa743b9744bbf6b7474f30effff1d7eb6b3155f7c16076bb9f11",
+      "beforeSourceBlobSha": "a3b23fe1a0ca990ccbee6d307afcb6d7b46cedff",
+      "afterSourceBlobSha": "31db24d38d74e65fbd8f1e4980579b627b94a04c"
+    },
+    {
+      "examId": "E053",
+      "ordinal": 23,
+      "questionUid": "qid_v1_e4002b19166a2e6a6f00744485e690a54463bf5f9440e538961b5fa5623bad83",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+      "decision": "NARROW_SOURCE_REPAIR",
+      "reason": "Remove five empty option placeholders, retaining the current response type, stem, answer and existing solution.",
+      "changedFields": [
+        "choices"
+      ],
+      "before": {
+        "choices": [
+          " ",
+          " ",
+          " ",
+          " ",
+          " "
+        ]
+      },
+      "after": {
+        "choices": []
+      },
+      "beforeFieldSha256": {
+        "choices": "8b0ff4878990fc2305298577f8e3a9eeecfdc0e8f92bad710bf687fffdb9987a"
+      },
+      "afterFieldSha256": {
+        "choices": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E053/amendments/unknown-legacy-compatibility-r1/accepted-review.json",
+        "sha256": "7c3cdee2b6f9ea86e9a1b80879d2e1d2c72ec32976fa58bd8380d54f945d572e"
+      },
+      "finalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "거듭제곱 전개 후 각 문자의 지수를 비교. 보기가 공백인 표현부채 유지"
+      },
+      "beforeQuestionSha256": "d6226fab1d0179fa818b4930b35deaf48d0a00cec24a71b380b83e7d176aea81",
+      "afterQuestionSha256": "ced19b187d2b40422a734784340b222ac451ec503f4eff493fa1079bd36434d1",
+      "beforeSourceBlobSha": "e116500e4a9058422c504574cfc893b305b9a806",
+      "afterSourceBlobSha": "a678e285b7dac921d761dde46b3b74389d763147"
+    }
+  ]
+}

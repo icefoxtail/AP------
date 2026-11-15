@@ -1,0 +1,604 @@
+{
+  "schemaVersion": "archive-m2s1-narrow-repair-proposal-v1",
+  "status": "PROPOSED_READ_ONLY_NOT_APPLIED",
+  "baseCommit": "6691f94dc63aa59b2e689a04dd357198439298cd",
+  "owner": "/root/m2s1_release",
+  "scope": "Five bounded wording/display/explanation clarifications from existing source and solution; no new missing-method authorship, source metadata status change, advanced metadata, REVIEW2 or full-exam QA approval.",
+  "rows": [
+    {
+      "examId": "E006",
+      "ordinal": 18,
+      "questionUid": "qid_v1_b9ace4bdb25323015b69a597a0aa9fae03d1c2f6cb1b524e4549a381e13ba62f",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+      "sourceBlobSha": "73da3004cc5601b6b3a16c5e012029740b0bee14",
+      "sourceRawSha256": "1e3666a5b3e2db96ab4ed3cfe97f93837f2434a1dd8afdcee706f36ba2da97de",
+      "sourceQuestionCount": 24,
+      "proposal": "Restore only the two step markers referenced by the stem, at the first and last transformations already described by the existing solution. Include both subtractions in the first-step explanation. Preserve all equations, choices, answer, source reviewStatus/manual_review, numeric difficulty and historical level. This is a current display repair, not a claim to recover original printed marker coordinates.",
+      "changedFields": [
+        "solution",
+        "sharedMaterial"
+      ],
+      "before": {
+        "solution": "첫 단계에서는 양변에서 4x를 빼므로 같은 식을 양변에서 빼도 부등호 방향이 변하지 않는 성질을 쓴다.\n마지막에는 양변을 -3으로 나누므로 부등호 방향이 바뀐다.\n따라서 사용한 성질은 (가),(다)이다.",
+        "sharedMaterial": "x+8<4x-1\nx-4x<-1-8\n-3x<-9\nx>3\n<보기>\n(가) 부등식의 양변에 같은 수를 더하거나 빼면 부등호 방향은 변하지 않는다.\n(나) 부등식의 양변에 같은 양수를 곱하거나 나누면 부등호 방향은 변하지 않는다.\n(다) 부등식의 양변에 같은 음수를 곱하거나 나누면 부등호 방향은 변한다."
+      },
+      "after": {
+        "solution": "첫 단계에서는 양변에서 4x와 8을 빼므로 같은 식을 양변에서 빼도 부등호 방향이 변하지 않는 성질을 쓴다.\n마지막에는 양변을 -3으로 나누므로 부등호 방향이 바뀐다.\n따라서 사용한 성질은 (가),(다)이다.",
+        "sharedMaterial": "x+8<4x-1\n↓ ㄱ\nx-4x<-1-8\n-3x<-9\n↓ ㄴ\nx>3\n<보기>\n(가) 부등식의 양변에 같은 수를 더하거나 빼면 부등호 방향은 변하지 않는다.\n(나) 부등식의 양변에 같은 양수를 곱하거나 나누면 부등호 방향은 변하지 않는다.\n(다) 부등식의 양변에 같은 음수를 곱하거나 나누면 부등호 방향은 변한다."
+      },
+      "beforeFieldSha256": {
+        "solution": "abee32912fcbfa5212fce83c27fe2638edf7c2386cd5dab3b7cb3a213beab959",
+        "sharedMaterial": "24c708fe177d93c1d94aa69cc2c15cd790e53401fac3f37b53cca2bf2bbe0c82"
+      },
+      "afterFieldSha256": {
+        "solution": "590645f866f6700aef461f27052f231958a5c6aa515f49de392e3380f135a99c",
+        "sharedMaterial": "6e80c12c1eae13e4c0223c368072675cbf4662e635a67a6379adacb05ebe6058"
+      },
+      "beforeQuestionSha256": "59952f27596ebea8cb977e8d8706c708a8a5fba70d9edaf6f612ebe697cd0a02",
+      "afterQuestionSha256": "f510da280b60e2b3a9ff3958d92a63a705d6a3c24f2b98aa81a969f16366b500",
+      "currentQuestion": {
+        "id": 18,
+        "sourceQuestionNo": 18,
+        "level": "중",
+        "category": "일차부등식",
+        "originalCategory": "부등식의 성질",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "공통자료"
+        ],
+        "wide": false,
+        "content": "다음 ㄱ과 ㄴ에 사용한 부등식의 성질을 보기에서 골라 차례대로 나열한 것으로 옳은 것을 고르시오.",
+        "choices": [
+          "(가),(나)",
+          "(가),(다)",
+          "(나),(다)",
+          "(다),(가)",
+          "(다),(나)"
+        ],
+        "answer": "②",
+        "solution": "첫 단계에서는 양변에서 4x를 빼므로 같은 식을 양변에서 빼도 부등호 방향이 변하지 않는 성질을 쓴다.\n마지막에는 양변을 -3으로 나누므로 부등호 방향이 바뀐다.\n따라서 사용한 성질은 (가),(다)이다.",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "subUnit": "일차부등식",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "tagConfidence": "medium",
+        "tagStatus": "manual_review",
+        "sourceType": "기출",
+        "imageStatus": "not_required",
+        "answerStatus": "verified",
+        "solutionStatus": "created",
+        "reviewStatus": "manual_review",
+        "sourceIdentityKey": "26_동산중_1학기_중간_중2_기출:q18",
+        "sourcePage": 3,
+        "sharedMaterial": "x+8<4x-1\nx-4x<-1-8\n-3x<-9\nx>3\n<보기>\n(가) 부등식의 양변에 같은 수를 더하거나 빼면 부등호 방향은 변하지 않는다.\n(나) 부등식의 양변에 같은 양수를 곱하거나 나누면 부등호 방향은 변하지 않는다.\n(다) 부등식의 양변에 같은 음수를 곱하거나 나누면 부등호 방향은 변한다."
+      },
+      "proposedQuestion": {
+        "id": 18,
+        "sourceQuestionNo": 18,
+        "level": "중",
+        "category": "일차부등식",
+        "originalCategory": "부등식의 성질",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "객관식",
+        "layoutTag": "grid",
+        "tags": [
+          "공통자료"
+        ],
+        "wide": false,
+        "content": "다음 ㄱ과 ㄴ에 사용한 부등식의 성질을 보기에서 골라 차례대로 나열한 것으로 옳은 것을 고르시오.",
+        "choices": [
+          "(가),(나)",
+          "(가),(다)",
+          "(나),(다)",
+          "(다),(가)",
+          "(다),(나)"
+        ],
+        "answer": "②",
+        "solution": "첫 단계에서는 양변에서 4x와 8을 빼므로 같은 식을 양변에서 빼도 부등호 방향이 변하지 않는 성질을 쓴다.\n마지막에는 양변을 -3으로 나누므로 부등호 방향이 바뀐다.\n따라서 사용한 성질은 (가),(다)이다.",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "subUnit": "일차부등식",
+        "subUnitConfidence": "category_or_cue_inferred",
+        "subUnitClassificationDepth": "complete_category",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "tagConfidence": "medium",
+        "tagStatus": "manual_review",
+        "sourceType": "기출",
+        "imageStatus": "not_required",
+        "answerStatus": "verified",
+        "solutionStatus": "created",
+        "reviewStatus": "manual_review",
+        "sourceIdentityKey": "26_동산중_1학기_중간_중2_기출:q18",
+        "sourcePage": 3,
+        "sharedMaterial": "x+8<4x-1\n↓ ㄱ\nx-4x<-1-8\n-3x<-9\n↓ ㄴ\nx>3\n<보기>\n(가) 부등식의 양변에 같은 수를 더하거나 빼면 부등호 방향은 변하지 않는다.\n(나) 부등식의 양변에 같은 양수를 곱하거나 나누면 부등호 방향은 변하지 않는다.\n(다) 부등식의 양변에 같은 음수를 곱하거나 나누면 부등호 방향은 변한다."
+      },
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E006/accepted-review.json",
+        "sha256": "5629706bc9916e953ace79bf2c21329f2e0ef6308d5083438335829d074e2248"
+      },
+      "priorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "한 줄 풀이가 아닌 두 단계의 연산과 부등호 변화를 각각 확인한다."
+      },
+      "sourceStatusPreserved": {
+        "reviewStatus": "manual_review",
+        "tagStatus": "manual_review"
+      },
+      "image": null
+    },
+    {
+      "examId": "E060",
+      "ordinal": 17,
+      "questionUid": "qid_v1_a56794b5a26f767353d163c1477947b4fa866c8fd79827ec740fab17ba54f37e",
+      "sourcePath": "archive/exams/original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+      "sourceBlobSha": "7ca00d0ad887419ea8d69fdf98e37886a5d237bf",
+      "sourceRawSha256": "374a5ce9ace84a04048db9dac77e595bc8d641bb7dfbe1d9cee4eefad45206a8",
+      "sourceQuestionCount": 25,
+      "proposal": "The stored answer and all five option arguments already identify ② and ⑤. Clarify selection of all such options, and correct the explanation so a rectangle is not claimed to exclude a rhombus in the square case. The visible diagram identifies B, C and the diagonal intersection O; clipped upper labels are not used to invent any length or angle.",
+      "changedFields": [
+        "content",
+        "solution",
+        "question"
+      ],
+      "before": {
+        "content": "<p>17. 평행사변형 $\\mathrm{ABCD}$가 마름모가 되는 조건이 아닌 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png\" alt=\"평행사변형 ABCD 그림\" class=\"question-image\" /></p>",
+        "solution": "[원문 조건 및 구할 대상]\n평행사변형이 마름모가 되기 위한 조건에 부합하지 않는 것을 고른다.\n\n[핵심 발상/공식]\n평행사변형이 마름모가 되는 조건은\n1) 이웃하는 두 변의 길이가 같다.\n2) 두 대각선이 서로 수직이다.\n3) 대각선이 내각을 이등분한다.\n두 대각선의 길이가 같거나 대각선 절반의 길이가 같은 것은 '직사각형'이 되는 조건이다.\n\n[연속 등식 및 중간 계산]\n1단계: ① $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}}$ : 이웃하는 두 변의 길이가 같으므로 마름모가 되는 조건이다.\n2단계: ② $\\angle\\mathrm{OAD} = \\angle\\mathrm{ODA}$ : $\\triangle\\mathrm{OAD}$가 이등변삼각형이 되어 $\\overline{\\mathrm{OA}} = \\overline{\\mathrm{OD}}$가 되므로, 대각선의 길이가 같아져 직사각형이 되는 조건이다. 따라서 마름모 조건이 아니다 (정답 후보 1).\n3단계: ③ $\\overline{\\mathrm{BD}} \\perp \\overline{\\mathrm{AC}}$ : 두 대각선이 직교하므로 마름모가 되는 조건이다.\n4단계: ④ $\\angle\\mathrm{OBA} = \\angle\\mathrm{OBC}$ : 대각선이 내각을 이등분하므로 마름모가 되는 조건이다.\n5단계: ⑤ $\\overline{\\mathrm{AO}} = \\overline{\\mathrm{BO}}$ : 평행사변형에서 $\\overline{\\mathrm{AO}} = \\overline{\\mathrm{CO}}, \\overline{\\mathrm{BO}} = \\overline{\\mathrm{DO}}$이므로 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BD}}$가 되어 대각선의 길이가 같은 직사각형이 되는 조건이다. 따라서 마름모 조건이 아니다 (정답 후보 2).\n\n[경우 나눔 및 선택지 검토]\n②번과 ⑤번은 모두 평행사변형이 마름모가 아닌 '직사각형'이 되는 조건이므로, 수학적으로 복수정답(②, ⑤)이다. 억지 정당화 없이 전 선지의 수학적 진위를 보존한다.\n\n[결론]\n따라서 정답은 ②, ⑤이다.",
+        "question": "<p>17. 평행사변형 $\\mathrm{ABCD}$가 마름모가 되는 조건이 아닌 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png\" alt=\"평행사변형 ABCD 그림\" class=\"question-image\" /></p>"
+      },
+      "after": {
+        "content": "<p>17. 평행사변형 $\\mathrm{ABCD}$가 마름모가 되는 조건이 아닌 것을 모두 고르시오. [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png\" alt=\"평행사변형 ABCD 그림\" class=\"question-image\" /></p>",
+        "solution": "[원문 조건 및 구할 대상]\n평행사변형이 마름모가 되기 위한 조건에 부합하지 않는 것을 고른다.\n\n[핵심 발상/공식]\n평행사변형이 마름모가 되는 조건은\n1) 이웃하는 두 변의 길이가 같다.\n2) 두 대각선이 서로 수직이다.\n3) 대각선이 내각을 이등분한다.\n두 대각선의 길이가 같거나 대각선 절반의 길이가 같은 것은 '직사각형'이 되는 조건이다.\n\n[연속 등식 및 중간 계산]\n1단계: ① $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}}$ : 이웃하는 두 변의 길이가 같으므로 마름모가 되는 조건이다.\n2단계: ② $\\angle\\mathrm{OAD} = \\angle\\mathrm{ODA}$ : $\\triangle\\mathrm{OAD}$가 이등변삼각형이 되어 $\\overline{\\mathrm{OA}} = \\overline{\\mathrm{OD}}$가 되므로, 대각선의 길이가 같아져 직사각형이 되는 조건이다. 따라서 마름모 조건이 아니다 (정답 후보 1).\n3단계: ③ $\\overline{\\mathrm{BD}} \\perp \\overline{\\mathrm{AC}}$ : 두 대각선이 직교하므로 마름모가 되는 조건이다.\n4단계: ④ $\\angle\\mathrm{OBA} = \\angle\\mathrm{OBC}$ : 대각선이 내각을 이등분하므로 마름모가 되는 조건이다.\n5단계: ⑤ $\\overline{\\mathrm{AO}} = \\overline{\\mathrm{BO}}$ : 평행사변형에서 $\\overline{\\mathrm{AO}} = \\overline{\\mathrm{CO}}, \\overline{\\mathrm{BO}} = \\overline{\\mathrm{DO}}$이므로 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BD}}$가 되어 대각선의 길이가 같은 직사각형이 되는 조건이다. 따라서 마름모 조건이 아니다 (정답 후보 2).\n\n[경우 나눔 및 선택지 검토]\n②번과 ⑤번은 평행사변형이 직사각형이 되는 조건이며, 마름모임을 보장하지 않는다. 따라서 조건에 해당하지 않는 것을 모두 고르면 ②, ⑤이다.\n\n[결론]\n따라서 정답은 ②, ⑤이다.",
+        "question": "<p>17. 평행사변형 $\\mathrm{ABCD}$가 마름모가 되는 조건이 아닌 것을 모두 고르시오. [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png\" alt=\"평행사변형 ABCD 그림\" class=\"question-image\" /></p>"
+      },
+      "beforeFieldSha256": {
+        "content": "c5e7eb4dd2ec94a14314080820d6f34281e657dee8272abf8b955636b16af086",
+        "solution": "53cc7497463f23b5b2f37f113604b30144e8da9b75d9dcfaa3795f354dce6992",
+        "question": "c5e7eb4dd2ec94a14314080820d6f34281e657dee8272abf8b955636b16af086"
+      },
+      "afterFieldSha256": {
+        "content": "9c3572a56744805a3a594096b149a9def47fbc7f13c782055762de609482fe26",
+        "solution": "9386356fa00af7bb01158cae1be723056bd517b8235db3a68b415ef19a6ba800",
+        "question": "9c3572a56744805a3a594096b149a9def47fbc7f13c782055762de609482fe26"
+      },
+      "beforeQuestionSha256": "d7d96a3142e0ed4c7d58921324517f1148b5c1830eae336a5cd1747add589f86",
+      "afterQuestionSha256": "e58a7992fb377b753d6394884c4f1fcf3e2e61e5843d78cd07579224a3b1e088",
+      "currentQuestion": {
+        "id": 17,
+        "score": 4,
+        "level": "중",
+        "category": "도형의 성질",
+        "originalCategory": "사각형의 성질",
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "complete_category",
+        "difficultyBucket": 2,
+        "questionType": "객관식",
+        "layoutTag": "vertical",
+        "tags": [
+          "도형"
+        ],
+        "wide": false,
+        "content": "<p>17. 평행사변형 $\\mathrm{ABCD}$가 마름모가 되는 조건이 아닌 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png\" alt=\"평행사변형 ABCD 그림\" class=\"question-image\" /></p>",
+        "choices": [
+          "$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}}$",
+          "$\\angle\\mathrm{OAD} = \\angle\\mathrm{ODA}$",
+          "$\\overline{\\mathrm{BD}} \\perp \\overline{\\mathrm{AC}}$",
+          "$\\angle\\mathrm{OBA} = \\angle\\mathrm{OBC}$",
+          "$\\overline{\\mathrm{AO}} = \\overline{\\mathrm{BO}}$"
+        ],
+        "answer": "②, ⑤",
+        "solution": "[원문 조건 및 구할 대상]\n평행사변형이 마름모가 되기 위한 조건에 부합하지 않는 것을 고른다.\n\n[핵심 발상/공식]\n평행사변형이 마름모가 되는 조건은\n1) 이웃하는 두 변의 길이가 같다.\n2) 두 대각선이 서로 수직이다.\n3) 대각선이 내각을 이등분한다.\n두 대각선의 길이가 같거나 대각선 절반의 길이가 같은 것은 '직사각형'이 되는 조건이다.\n\n[연속 등식 및 중간 계산]\n1단계: ① $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}}$ : 이웃하는 두 변의 길이가 같으므로 마름모가 되는 조건이다.\n2단계: ② $\\angle\\mathrm{OAD} = \\angle\\mathrm{ODA}$ : $\\triangle\\mathrm{OAD}$가 이등변삼각형이 되어 $\\overline{\\mathrm{OA}} = \\overline{\\mathrm{OD}}$가 되므로, 대각선의 길이가 같아져 직사각형이 되는 조건이다. 따라서 마름모 조건이 아니다 (정답 후보 1).\n3단계: ③ $\\overline{\\mathrm{BD}} \\perp \\overline{\\mathrm{AC}}$ : 두 대각선이 직교하므로 마름모가 되는 조건이다.\n4단계: ④ $\\angle\\mathrm{OBA} = \\angle\\mathrm{OBC}$ : 대각선이 내각을 이등분하므로 마름모가 되는 조건이다.\n5단계: ⑤ $\\overline{\\mathrm{AO}} = \\overline{\\mathrm{BO}}$ : 평행사변형에서 $\\overline{\\mathrm{AO}} = \\overline{\\mathrm{CO}}, \\overline{\\mathrm{BO}} = \\overline{\\mathrm{DO}}$이므로 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BD}}$가 되어 대각선의 길이가 같은 직사각형이 되는 조건이다. 따라서 마름모 조건이 아니다 (정답 후보 2).\n\n[경우 나눔 및 선택지 검토]\n②번과 ⑤번은 모두 평행사변형이 마름모가 아닌 '직사각형'이 되는 조건이므로, 수학적으로 복수정답(②, ⑤)이다. 억지 정당화 없이 전 선지의 수학적 진위를 보존한다.\n\n[결론]\n따라서 정답은 ②, ⑤이다.",
+        "question": "<p>17. 평행사변형 $\\mathrm{ABCD}$가 마름모가 되는 조건이 아닌 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png\" alt=\"평행사변형 ABCD 그림\" class=\"question-image\" /></p>"
+      },
+      "proposedQuestion": {
+        "id": 17,
+        "score": 4,
+        "level": "중",
+        "category": "도형의 성질",
+        "originalCategory": "사각형의 성질",
+        "standardCourse": "중2-2",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "complete_category",
+        "difficultyBucket": 2,
+        "questionType": "객관식",
+        "layoutTag": "vertical",
+        "tags": [
+          "도형"
+        ],
+        "wide": false,
+        "content": "<p>17. 평행사변형 $\\mathrm{ABCD}$가 마름모가 되는 조건이 아닌 것을 모두 고르시오. [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png\" alt=\"평행사변형 ABCD 그림\" class=\"question-image\" /></p>",
+        "choices": [
+          "$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}}$",
+          "$\\angle\\mathrm{OAD} = \\angle\\mathrm{ODA}$",
+          "$\\overline{\\mathrm{BD}} \\perp \\overline{\\mathrm{AC}}$",
+          "$\\angle\\mathrm{OBA} = \\angle\\mathrm{OBC}$",
+          "$\\overline{\\mathrm{AO}} = \\overline{\\mathrm{BO}}$"
+        ],
+        "answer": "②, ⑤",
+        "solution": "[원문 조건 및 구할 대상]\n평행사변형이 마름모가 되기 위한 조건에 부합하지 않는 것을 고른다.\n\n[핵심 발상/공식]\n평행사변형이 마름모가 되는 조건은\n1) 이웃하는 두 변의 길이가 같다.\n2) 두 대각선이 서로 수직이다.\n3) 대각선이 내각을 이등분한다.\n두 대각선의 길이가 같거나 대각선 절반의 길이가 같은 것은 '직사각형'이 되는 조건이다.\n\n[연속 등식 및 중간 계산]\n1단계: ① $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}}$ : 이웃하는 두 변의 길이가 같으므로 마름모가 되는 조건이다.\n2단계: ② $\\angle\\mathrm{OAD} = \\angle\\mathrm{ODA}$ : $\\triangle\\mathrm{OAD}$가 이등변삼각형이 되어 $\\overline{\\mathrm{OA}} = \\overline{\\mathrm{OD}}$가 되므로, 대각선의 길이가 같아져 직사각형이 되는 조건이다. 따라서 마름모 조건이 아니다 (정답 후보 1).\n3단계: ③ $\\overline{\\mathrm{BD}} \\perp \\overline{\\mathrm{AC}}$ : 두 대각선이 직교하므로 마름모가 되는 조건이다.\n4단계: ④ $\\angle\\mathrm{OBA} = \\angle\\mathrm{OBC}$ : 대각선이 내각을 이등분하므로 마름모가 되는 조건이다.\n5단계: ⑤ $\\overline{\\mathrm{AO}} = \\overline{\\mathrm{BO}}$ : 평행사변형에서 $\\overline{\\mathrm{AO}} = \\overline{\\mathrm{CO}}, \\overline{\\mathrm{BO}} = \\overline{\\mathrm{DO}}$이므로 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BD}}$가 되어 대각선의 길이가 같은 직사각형이 되는 조건이다. 따라서 마름모 조건이 아니다 (정답 후보 2).\n\n[경우 나눔 및 선택지 검토]\n②번과 ⑤번은 평행사변형이 직사각형이 되는 조건이며, 마름모임을 보장하지 않는다. 따라서 조건에 해당하지 않는 것을 모두 고르면 ②, ⑤이다.\n\n[결론]\n따라서 정답은 ②, ⑤이다.",
+        "question": "<p>17. 평행사변형 $\\mathrm{ABCD}$가 마름모가 되는 조건이 아닌 것을 모두 고르시오. [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png\" alt=\"평행사변형 ABCD 그림\" class=\"question-image\" /></p>"
+      },
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E060/accepted-review.json",
+        "sha256": "987fa830c94918405908246dc01e333e9c7fda5b5a98dca7cb6f8996728f9af7"
+      },
+      "priorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "마름모 판정 조건을 다섯 보기에서 구별한다. 단수형 발문이나 저장 정답과 해설은 복수 ②/⑤이며 이 표현 부채를 보존한다."
+      },
+      "sourceStatusPreserved": {
+        "reviewStatus": null,
+        "tagStatus": null
+      },
+      "image": {
+        "path": "archive/assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png",
+        "actualLocalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-validation/archive/assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png",
+        "sha256": "d95e4cd955c82b6173ca20254e08d13d1367ccbf65761b4f0a43caf8b6d226f7"
+      }
+    },
+    {
+      "examId": "E062",
+      "ordinal": 4,
+      "questionUid": "qid_v1_62b5e5984280ddc94fd0339bae7ffceee81b3ad632196cfe55e0c893a180e247",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+      "sourceBlobSha": "ab2227092fd4579e3022e5664394db1f2848ac34",
+      "sourceRawSha256": "8dc2b7ceffea4e39894a036cbb6c70f768bba90d637b3f79e3095671d925649f",
+      "sourceQuestionCount": 25,
+      "proposal": "Clarify that the simultaneous solution satisfies the third equation, exactly as already stated and solved in the existing explanation. Existing common solution (4,-4), coefficient -1, answer and numeric difficulty remain unchanged.",
+      "changedFields": [
+        "content",
+        "question"
+      ],
+      "before": {
+        "content": "<p>4. 연립방정식 $\\begin{cases} 2x-ay=4 \\\\ x-2y=12 \\end{cases}$의 해가 일차방정식 $3x+2y=4$의 해와 같을 때, 수 $a$의 값은? (4점)</p>",
+        "question": "<p>4. 연립방정식 $\\begin{cases} 2x-ay=4 \\\\ x-2y=12 \\end{cases}$의 해가 일차방정식 $3x+2y=4$의 해와 같을 때, 수 $a$의 값은? (4점)</p>"
+      },
+      "after": {
+        "content": "<p>4. 연립방정식 $\\begin{cases} 2x-ay=4 \\\\ x-2y=12 \\end{cases}$의 해가 일차방정식 $3x+2y=4$를 만족할 때, 수 $a$의 값은? (4점)</p>",
+        "question": "<p>4. 연립방정식 $\\begin{cases} 2x-ay=4 \\\\ x-2y=12 \\end{cases}$의 해가 일차방정식 $3x+2y=4$를 만족할 때, 수 $a$의 값은? (4점)</p>"
+      },
+      "beforeFieldSha256": {
+        "content": "818a242aedd02b9f193625644bac3784e9ea596759d54990452e5f7ecf5a1bea",
+        "question": "818a242aedd02b9f193625644bac3784e9ea596759d54990452e5f7ecf5a1bea"
+      },
+      "afterFieldSha256": {
+        "content": "d941635667921daaa2c63c70b4f8ed60c6027ee13e7d50376ef78ef38822fe1c",
+        "question": "d941635667921daaa2c63c70b4f8ed60c6027ee13e7d50376ef78ef38822fe1c"
+      },
+      "beforeQuestionSha256": "03beb38c72dd4eac68e89a50f2a3d9c6ed8ef837732d8df0d7165c2bb41a8d10",
+      "afterQuestionSha256": "649d2f1f753a9adb1c9c1098c3e0e85dbb63efb57598e0b15fe24cfd116b5159",
+      "currentQuestion": {
+        "id": 4,
+        "score": 4,
+        "level": "중",
+        "category": "연립일차방정식",
+        "originalCategory": "연립일차방정식",
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "complete_category",
+        "difficultyBucket": 2,
+        "questionType": "단답형",
+        "layoutTag": "grid",
+        "tags": [],
+        "wide": false,
+        "content": "<p>4. 연립방정식 $\\begin{cases} 2x-ay=4 \\\\ x-2y=12 \\end{cases}$의 해가 일차방정식 $3x+2y=4$의 해와 같을 때, 수 $a$의 값은? (4점)</p>",
+        "question": "<p>4. 연립방정식 $\\begin{cases} 2x-ay=4 \\\\ x-2y=12 \\end{cases}$의 해가 일차방정식 $3x+2y=4$의 해와 같을 때, 수 $a$의 값은? (4점)</p>",
+        "choices": [],
+        "answer": "$-1$",
+        "solution": "[원문 조건 및 구할 대상]\n연립방정식 $\\begin{cases} 2x - ay = 4 \\quad \\cdots \\text{㉠} \\\\ x - 2y = 12 \\quad \\cdots \\text{㉡} \\end{cases}$의 해가 $3x + 2y = 4$ (㉢)를 만족할 때, 상수 $a$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n연립방정식의 해는 세 일차방정식 ㉠, ㉡, ㉢을 모두 만족하므로, 미지수 $a$가 없는 두 온전한 일차방정식 ㉡과 ㉢을 연립하여 공통해 $(x, y)$를 먼저 구한 뒤 ㉠에 대입한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: ㉡과 ㉢ 연립\n$\\begin{cases} x - 2y = 12 \\quad \\cdots \\text{㉡} \\\\ 3x + 2y = 4 \\quad \\cdots \\text{㉢} \\end{cases}$\n두 식의 $y$ 계수의 절댓값이 2로 같고 부호가 반대이므로 변끼리 더한다:\n$(x - 2y) + (3x + 2y) = 12 + 4$\n$4x = 16 \\implies x = 4$\n\n2단계: $y$의 값 계산\n$x = 4$를 ㉡에 대입:\n$4 - 2y = 12$\n$-2y = 12 - 4 = 8 \\implies y = -4$\n따라서 공통해는 $(x, y) = (4, -4)$이다.\n\n3단계: 공통해를 ㉠식에 대입하여 $a$ 구하기\n$2(4) - a(-4) = 4$\n$8 + 4a = 4$\n$4a = 4 - 8 = -4$\n$a = -1$\n\n[조건 적합성 검토]\n단답형 문항으로 $a = -1$일 때 ㉠은 $2x + y = 4$가 되며, $(4, -4)$ 대입 시 $2(4) + (-4) = 4$로 온전히 성립함을 확인.\n\n[명확한 결론]\n따라서 수 $a$의 값은 $-1$이다."
+      },
+      "proposedQuestion": {
+        "id": 4,
+        "score": 4,
+        "level": "중",
+        "category": "연립일차방정식",
+        "originalCategory": "연립일차방정식",
+        "standardCourse": "중2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "subUnitConfidence": "high",
+        "subUnitClassificationDepth": "complete_category",
+        "difficultyBucket": 2,
+        "questionType": "단답형",
+        "layoutTag": "grid",
+        "tags": [],
+        "wide": false,
+        "content": "<p>4. 연립방정식 $\\begin{cases} 2x-ay=4 \\\\ x-2y=12 \\end{cases}$의 해가 일차방정식 $3x+2y=4$를 만족할 때, 수 $a$의 값은? (4점)</p>",
+        "question": "<p>4. 연립방정식 $\\begin{cases} 2x-ay=4 \\\\ x-2y=12 \\end{cases}$의 해가 일차방정식 $3x+2y=4$를 만족할 때, 수 $a$의 값은? (4점)</p>",
+        "choices": [],
+        "answer": "$-1$",
+        "solution": "[원문 조건 및 구할 대상]\n연립방정식 $\\begin{cases} 2x - ay = 4 \\quad \\cdots \\text{㉠} \\\\ x - 2y = 12 \\quad \\cdots \\text{㉡} \\end{cases}$의 해가 $3x + 2y = 4$ (㉢)를 만족할 때, 상수 $a$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n연립방정식의 해는 세 일차방정식 ㉠, ㉡, ㉢을 모두 만족하므로, 미지수 $a$가 없는 두 온전한 일차방정식 ㉡과 ㉢을 연립하여 공통해 $(x, y)$를 먼저 구한 뒤 ㉠에 대입한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: ㉡과 ㉢ 연립\n$\\begin{cases} x - 2y = 12 \\quad \\cdots \\text{㉡} \\\\ 3x + 2y = 4 \\quad \\cdots \\text{㉢} \\end{cases}$\n두 식의 $y$ 계수의 절댓값이 2로 같고 부호가 반대이므로 변끼리 더한다:\n$(x - 2y) + (3x + 2y) = 12 + 4$\n$4x = 16 \\implies x = 4$\n\n2단계: $y$의 값 계산\n$x = 4$를 ㉡에 대입:\n$4 - 2y = 12$\n$-2y = 12 - 4 = 8 \\implies y = -4$\n따라서 공통해는 $(x, y) = (4, -4)$이다.\n\n3단계: 공통해를 ㉠식에 대입하여 $a$ 구하기\n$2(4) - a(-4) = 4$\n$8 + 4a = 4$\n$4a = 4 - 8 = -4$\n$a = -1$\n\n[조건 적합성 검토]\n단답형 문항으로 $a = -1$일 때 ㉠은 $2x + y = 4$가 되며, $(4, -4)$ 대입 시 $2(4) + (-4) = 4$로 온전히 성립함을 확인.\n\n[명확한 결론]\n따라서 수 $a$의 값은 $-1$이다."
+      },
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E062/amendments/unknown-legacy-compatibility-r1/accepted-review.json",
+        "sha256": "aa144dd5bc383f7cb695e4aa22572d8ae48c5d9ee82849b94a67b76152d6f566"
+      },
+      "priorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "세식의공통해를 수치두식에서 먼저구해계수대입"
+      },
+      "sourceStatusPreserved": {
+        "reviewStatus": null,
+        "tagStatus": null
+      },
+      "image": null
+    },
+    {
+      "examId": "E068",
+      "ordinal": 25,
+      "questionUid": "qid_v1_6cd979a1423e4d663e4e49facfd678e59c598fa0ca9d44fd800ff9a568034890",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js",
+      "sourceBlobSha": "14d2a0fedac69e86078d1098c14dd50b970e3f5f",
+      "sourceRawSha256": "b8dfefd90d7327f87f6deda8a5589da87708315775d8cebbd69c50ee19074790",
+      "sourceQuestionCount": 25,
+      "proposal": "Use the first-segment movement name already given by the stem. Preserve both speeds, total distance, time bound, existing inequality and 4 km answer.",
+      "changedFields": [
+        "content",
+        "solution"
+      ],
+      "before": {
+        "content": "정국이가 집에서 $16km$ 떨어진 편의점에 가는데, 처음에는 $5km/h$로 뛰다가 중간에 차를 타고 $60km/h$로 갔다. 집에서 편의점까지 $1$시간 이내에 도착하려면 집에서 걸어간 최대 거리는 몇 $km$인지 구하시오. [5점]",
+        "solution": "처음에 간 거리를 $xkm$라 하면, 차를 타고 간 거리는 $(16-x)km$입니다.\n따라서 걸린 시간은\n$\\frac{x}{5}+\\frac{16-x}{60}\\le1$\n양변에 $60$을 곱하면\n$12x+16-x\\le60$\n$11x\\le44$\n$x\\le4$\n따라서 집에서 간 최대 거리는 $4km$입니다."
+      },
+      "after": {
+        "content": "정국이가 집에서 $16km$ 떨어진 편의점에 가는데, 처음에는 $5km/h$로 뛰다가 중간에 차를 타고 $60km/h$로 갔다. 집에서 편의점까지 $1$시간 이내에 도착하려면 처음에 뛴 최대 거리는 몇 $km$인지 구하시오. [5점]",
+        "solution": "처음에 뛴 거리를 $xkm$라 하면, 차를 타고 간 거리는 $(16-x)km$입니다.\n따라서 걸린 시간은\n$\\frac{x}{5}+\\frac{16-x}{60}\\le1$\n양변에 $60$을 곱하면\n$12x+16-x\\le60$\n$11x\\le44$\n$x\\le4$\n따라서 처음에 뛴 최대 거리는 $4km$입니다."
+      },
+      "beforeFieldSha256": {
+        "content": "84ec734fa6f738e742a40bd3fe8d08f2c94031c403e25eb32c826fe8e8738595",
+        "solution": "68d8223245d0d9f88a9439f471b3122a9d9e3e480b7dc961aab69f3a28a9a241"
+      },
+      "afterFieldSha256": {
+        "content": "9cc73969295ca9df6e338f463b0be830daebc7894f8e101f2252377ace35e934",
+        "solution": "a08cb38207f03fbf1957dedf8f792eb78a1ec9fbc3cef3eb45f202b104debd21"
+      },
+      "beforeQuestionSha256": "e165ffe069a4b75d97cfc5a37082e5131ebc815d1c8ffb48af60115fce00df2a",
+      "afterQuestionSha256": "5886c38a2eacd0778a397225e96669c25a0aae587f9f1f7b9addaa3077c10c7d",
+      "currentQuestion": {
+        "id": 25,
+        "category": "일차부등식",
+        "content": "정국이가 집에서 $16km$ 떨어진 편의점에 가는데, 처음에는 $5km/h$로 뛰다가 중간에 차를 타고 $60km/h$로 갔다. 집에서 편의점까지 $1$시간 이내에 도착하려면 집에서 걸어간 최대 거리는 몇 $km$인지 구하시오. [5점]",
+        "choices": [],
+        "answer": "4km",
+        "originalCategory": "일차부등식",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "",
+        "layoutTag": "grid",
+        "tags": [
+          "기출",
+          "단답형",
+          "서술형",
+          "활용",
+          "조건해석",
+          "일차부등식",
+          "거리속력시간",
+          "최댓값"
+        ],
+        "wide": false,
+        "solution": "처음에 간 거리를 $xkm$라 하면, 차를 타고 간 거리는 $(16-x)km$입니다.\n따라서 걸린 시간은\n$\\frac{x}{5}+\\frac{16-x}{60}\\le1$\n양변에 $60$을 곱하면\n$12x+16-x\\le60$\n$11x\\le44$\n$x\\le4$\n따라서 집에서 간 최대 거리는 $4km$입니다.",
+        "level": "중",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "proposedQuestion": {
+        "id": 25,
+        "category": "일차부등식",
+        "content": "정국이가 집에서 $16km$ 떨어진 편의점에 가는데, 처음에는 $5km/h$로 뛰다가 중간에 차를 타고 $60km/h$로 갔다. 집에서 편의점까지 $1$시간 이내에 도착하려면 처음에 뛴 최대 거리는 몇 $km$인지 구하시오. [5점]",
+        "choices": [],
+        "answer": "4km",
+        "originalCategory": "일차부등식",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "",
+        "layoutTag": "grid",
+        "tags": [
+          "기출",
+          "단답형",
+          "서술형",
+          "활용",
+          "조건해석",
+          "일차부등식",
+          "거리속력시간",
+          "최댓값"
+        ],
+        "wide": false,
+        "solution": "처음에 뛴 거리를 $xkm$라 하면, 차를 타고 간 거리는 $(16-x)km$입니다.\n따라서 걸린 시간은\n$\\frac{x}{5}+\\frac{16-x}{60}\\le1$\n양변에 $60$을 곱하면\n$12x+16-x\\le60$\n$11x\\le44$\n$x\\le4$\n따라서 처음에 뛴 최대 거리는 $4km$입니다.",
+        "level": "중",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E068/accepted-review.json",
+        "sha256": "49efb3d1ecadd90780e0db1984257bd73f12a40e113817df9e6695452648050e"
+      },
+      "priorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두 속력 구간의 거리합과 총시간상한 모델; 뛰다가와 걸어간거리 명칭혼용 부채"
+      },
+      "sourceStatusPreserved": {
+        "reviewStatus": null,
+        "tagStatus": null
+      },
+      "image": null
+    },
+    {
+      "examId": "E072",
+      "ordinal": 24,
+      "questionUid": "qid_v1_e7ba9c9b957c620ea66e9cdd90b580cd4ab7cb3083fdd634b8fc94eb743f51f3",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js",
+      "sourceBlobSha": "91b6cc4a4265cd035a37ce16bd940d7598c376e5",
+      "sourceRawSha256": "3d074cc0de9acf2f4d1cd86255c061ad6815764009a6da9f5b6fc186d84a006b",
+      "sourceQuestionCount": 24,
+      "proposal": "State the exact strict inequality x>80 already derived by the existing solution. Present the first integer-month bill, 81, explicitly as a conditional monthly-unit interpretation instead of silently imposing an unstated integer domain. Do not add a billing condition to the stem or alter the cost model.",
+      "changedFields": [
+        "answer",
+        "solution"
+      ],
+      "before": {
+        "answer": "81개월",
+        "solution": "사용 기간을 $x$개월이라 하면 구입 비용은 $240000+6000x$, 대여 비용은 $9000x$이다.\n구입이 더 저렴하려면 $240000+6000x<9000x$, 즉 $x>80$이다.\n따라서 81개월부터 구입이 더 저렴하다."
+      },
+      "after": {
+        "answer": "80개월 초과(월 단위로 계산하면 81개월부터)",
+        "solution": "사용 기간을 $x$개월이라 하면 구입 비용은 $240000+6000x$, 대여 비용은 $9000x$이다.\n구입이 더 저렴하려면 $240000+6000x<9000x$, 즉 $x>80$이다.\n따라서 사용 기간이 80개월을 초과하면 구입이 더 저렴하다. 월 단위로 계산할 때에는 81개월부터이다."
+      },
+      "beforeFieldSha256": {
+        "answer": "a888ad566e0d98907876265278b075059400ed84afe92f5136a637e344a86f1f",
+        "solution": "44ff8866761400104524c078e193fe96fd90f85c5e0f70a130d49ba5def4dfd5"
+      },
+      "afterFieldSha256": {
+        "answer": "d1a736a5fb78070b8c280a282754b995e01cf016ae74d037af5a69eeadc44e33",
+        "solution": "1c1e11a44205d3fd2c2feb5b7057cd1c7a06b8af1c2aa8c93658df63eb0bd337"
+      },
+      "beforeQuestionSha256": "39c77f2d9a31b039008770fb71712596c7889b54a51292af36c19f45151398d2",
+      "afterQuestionSha256": "b5defc78d0d7feb507c80be561bc2c3bc7e0274b08644eb1837a7dcd1325ed71",
+      "currentQuestion": {
+        "id": 24,
+        "category": "일차부등식",
+        "content": "정수기 구입비용(240,000원 + 월 6,000원)과 대여비용(월 9,000원)을 비교할 때, 구입이 더 저렴해지는 시점은? [5점]",
+        "choices": [],
+        "answer": "81개월",
+        "originalCategory": "일차부등식",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "단답형",
+        "layoutTag": "grid",
+        "tags": [
+          "기출",
+          "단답형",
+          "계산",
+          "활용",
+          "조건해석",
+          "일차부등식"
+        ],
+        "wide": false,
+        "solution": "사용 기간을 $x$개월이라 하면 구입 비용은 $240000+6000x$, 대여 비용은 $9000x$이다.\n구입이 더 저렴하려면 $240000+6000x<9000x$, 즉 $x>80$이다.\n따라서 81개월부터 구입이 더 저렴하다.",
+        "level": "중",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "proposedQuestion": {
+        "id": 24,
+        "category": "일차부등식",
+        "content": "정수기 구입비용(240,000원 + 월 6,000원)과 대여비용(월 9,000원)을 비교할 때, 구입이 더 저렴해지는 시점은? [5점]",
+        "choices": [],
+        "answer": "80개월 초과(월 단위로 계산하면 81개월부터)",
+        "originalCategory": "일차부등식",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "questionType": "단답형",
+        "layoutTag": "grid",
+        "tags": [
+          "기출",
+          "단답형",
+          "계산",
+          "활용",
+          "조건해석",
+          "일차부등식"
+        ],
+        "wide": false,
+        "solution": "사용 기간을 $x$개월이라 하면 구입 비용은 $240000+6000x$, 대여 비용은 $9000x$이다.\n구입이 더 저렴하려면 $240000+6000x<9000x$, 즉 $x>80$이다.\n따라서 사용 기간이 80개월을 초과하면 구입이 더 저렴하다. 월 단위로 계산할 때에는 81개월부터이다.",
+        "level": "중",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate"
+      },
+      "priorReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E072/accepted-review.json",
+        "sha256": "8b5bf25e980409edeaf3f10405406bd51cb3e52159d532c0f8d96e82095207ae"
+      },
+      "priorFinalDifficulty": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "reason": "두비용함수의엄격비교경계는정형이다.기존해설81개월은월단위정수청구관례에따른결론이며발문의연속시점과구별해조건부로보존한다."
+      },
+      "sourceStatusPreserved": {
+        "reviewStatus": null,
+        "tagStatus": null
+      },
+      "image": null
+    }
+  ]
+}
