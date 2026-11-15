@@ -994,7 +994,11 @@ window.questionBank = [
       "l4": "그래프 교점"
     },
     "primaryMethod": "점 좌표를 t로 나타내 AB=AD로 t를 구하고, BD와 높이로 삼각형 넓이를 계산한다.",
-    "projectionStatus": "DIRECT_BINDING_GAP"
+    "projectionStatus": "DIRECT_BINDING_GAP",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 감소 지수곡선 위에 점 A, B, D가 있다. 직선 AC 위에 A와 B, 수평선 BD 위에 B와 D가 있고, A에서 수평선에 내린 높이가 점선으로 표시되어 있다.",
+    "solutionImageCaption": "수평인 BD를 밑변으로 잡으면 A에서 BD까지의 거리가 높이다. 밑변 길이는 1이고 높이는 18이므로 삼각형의 넓이는 9이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 18,

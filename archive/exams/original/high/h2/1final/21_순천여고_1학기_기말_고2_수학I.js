@@ -837,9 +837,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_순천여고_1학기_기말_고2_수학I/q19-solution.svg",
-    "solutionImageAlt": "원 O, P-Q-C 일직선, 두 중심각과 삼각형 각 관계",
-    "solutionImageCaption": "사인법칙에 쓰는 각의 귀속을 확인한다.",
+    "solutionImage": "assets/images/21_순천여고_1학기_기말_고2_수학I/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원의 중심 O와 지름 AB, OB=BC 표시, P-Q-C 순서의 할선이 보인다. 중심각 2α, 2β와 대응 원주각 α, β, B의 보각 180°−α가 각의 꼭짓점에 맞춰 표시되고, P의 β각은 점선으로 연결된 위쪽 각 그림에 있다. 중심의 좁은 2β각 표시는 호에서 시작하는 지시선으로 연결한다.",
+    "solutionImageCaption": "예: 중심각에 대응하는 원주각과 삼각형 PBC의 각을 확인한다. 사인법칙으로 반지름을 구한다. 정답은 3이다.",
     "solutionImageSize": "full"
   },
   {
