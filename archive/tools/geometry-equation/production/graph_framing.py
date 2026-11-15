@@ -1185,12 +1185,16 @@ def _fit_logarithmic_base_overview(plan):
 
 def _exp_log_curve_spec(row,index,code):
     if not isinstance(row,dict):raise ValueError(code)
-    allowed={'id','family','base','coefficients','sourceDomain','shiftX','formulaLabel'}
+    allowed={'id','family','base','coefficients','sourceDomain','shiftX','formulaLabel','referenceLabelPoint'}
     if set(row)-allowed:raise ValueError(code)
     curve_id=row.get('id')
     if not isinstance(curve_id,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',curve_id):raise ValueError(code+'_ID_INVALID')
     if 'formulaLabel' in row and (row['formulaLabel']!='NAME' or len(curve_id)!=1):
         raise ValueError('EXP_LOG_PAIR_FORMULA_LABEL_INVALID:'+curve_id)
+    if 'referenceLabelPoint' in row:
+        point=row['referenceLabelPoint']
+        if not isinstance(point,str) or not re.fullmatch('[A-Z]',point):
+            raise ValueError('EXP_LOG_PAIR_REFERENCE_LABEL_POINT_INVALID:'+curve_id)
     family=row.get('family')
     if family not in {'exponential-affine','logarithmic-affine'}:raise ValueError(code+'_FAMILY_UNSUPPORTED')
     base=exp_log_base(row.get('base'),'EXP_LOG_PAIR') or natural_exp_log_base()
@@ -1271,6 +1275,16 @@ def _fit_exp_log_pair_overview(plan):
     low=center-half;high=center+half
     viewport=[lo,hi,low,high]
     if not all(math.isfinite(value) and abs(value)<=1e8 for value in viewport):raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
+    for source,curve in zip(rows,feature_rows):
+        if 'referenceLabelPoint' not in source:continue
+        code='EXP_LOG_PAIR_REFERENCE_LABEL_POINT_MISMATCH:'+curve['id']
+        overlays=plan.get('overlays')
+        points=overlays.get('points',[]) if isinstance(overlays,dict) else []
+        owners=[point for point in points if isinstance(point,dict) and point.get('id')==source['referenceLabelPoint']] if isinstance(points,list) else []
+        if (len(owners)!=1 or owners[0].get('coordinates') is not True or owners[0].get('unnamed',False) is not False
+            or owners[0].get('marker','FILLED')!='FILLED'
+            or not all(_piecewise_fraction(owners[0].get(axis),code)==Fraction(curve['referencePoint'][axis]) for axis in ('x','y'))):
+            raise ValueError(code)
     features={'schemaVersion':'EXP_LOG_PAIR_FEATURES_v1','identityLine':identity,'curves':feature_rows,'sampleBoundaryArgument':'1/8'}
     policy={'schemaVersion':'EXP_LOG_PAIR_POLICY_v1','identityLinePolicy':'DASHED_4_3' if identity else 'NONE','referenceMarkerRadiusIntrinsicPx':4,'minimumReferenceMarkerDiameterCssPx':3,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':32,'minimumAsymptoteSeparationCssPx':2}
     fitted={**plan,'domain':[lo,hi],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'EXP_LOG_PAIR_OVERVIEW_v1','expLogPairFeatures':features,'expLogPairPolicy':policy,'equalUnits':True,'axisRatio':1}
