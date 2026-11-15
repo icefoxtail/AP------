@@ -820,7 +820,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/21_매산여고_1학기_기말_고2_수학I/q19-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 정육각형 ABCDEF의 변 BC 중점 M과 삼각형 DME를 표시한다. MD=7, ME=√91, DE=2√7과 각 θ를 표시하며, 그림에는 구하는 코사인값을 쓰지 않는다.",
+    "solutionImageAlt": "해설 그림: 정육각형의 변 BC 중점 M과 삼각형 DME를 표시한다. MD=7, ME=√91, DE=2√7과 각 θ를 보여 준다.",
     "solutionImageCaption": "삼각형 DME에 코사인법칙을 적용하면 cosθ=8/√91=8√91/91이다. 정답은 8√91/91이다.",
     "solutionImageSize": "full"
   },
