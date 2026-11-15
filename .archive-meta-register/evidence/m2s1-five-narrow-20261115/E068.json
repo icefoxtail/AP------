@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_CURRENT_NARROW_REPAIR",
+  "producer": "/root/m2s1_release",
+  "currentSourceBlobSha": "f4e2584963196574e95f9b2faa03ece35e02316d",
+  "currentSourceRawSha256": "16b67e00511d4a6f5fe166e0f0210e0d8ef9c92be040c38b709c46f7aa746ce3",
+  "narrowEvidence": {
+    "sourceProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/source-proposal.json",
+      "sha256": "8a6339b83fe610749749ece281816b4acc4ed6783efa94342bc4a58809af7db6"
+    },
+    "sourceApplication": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/source-application.json",
+      "sha256": "b87270853a8252a0f157c3cccde227d298a55ed4114aef02adf347b6e6118ba0"
+    },
+    "independentReview": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/independent-review.json",
+      "sha256": "aeb275197932dffc28a7a53697e8f88fc4561962546fc05365915e5bd5d04ae3"
+    },
+    "currentReviewClosure": {
+      "path": ".archive-meta-register/evidence/m2s1-five-narrow-20261115/current-review-closure.json",
+      "sha256": "7d71187d1fc37bca64a491567ed055b93ddfbfcab0ad9c94ac8660845e3df2a5"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 25,
+    "selectedQuestions": 1
+  },
+  "newAdvancedMetadataApprovals": 0,
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js",
+      "ordinal": 25,
+      "questionUid": "qid_v1_6cd979a1423e4d663e4e49facfd678e59c598fa0ca9d44fd800ff9a568034890",
+      "before": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "sourceFingerprint": "827717b2c534ed08112e2b26983010d0a04bd51366abe24d9ca0317b62b02c35",
+        "contentFingerprint": "e0b27bc6780beda5c9957bb691c7cbce5bd36667d4f828bf672b6c368051f68c"
+      },
+      "after": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "827717b2c534ed08112e2b26983010d0a04bd51366abe24d9ca0317b62b02c35",
+      "contentFingerprint": "e0b27bc6780beda5c9957bb691c7cbce5bd36667d4f828bf672b6c368051f68c",
+      "staleSourceBinding": false,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "두 속력 구간의 거리합과 총시간상한 모델; 뛰다가와 걸어간거리 명칭혼용 부채\nCurrent narrow source repair: Use the first-segment movement name already given by the stem. Preserve both speeds, total distance, time bound, existing inequality and 4 km answer. Existing accepted numeric difficulty and confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created."
+    }
+  ],
+  "basicApprovalPreservation": {
+    "scope": "Existing basic approval only; numeric after values unchanged",
+    "newMetadataApprovals": 0,
+    "rows": [
+      {
+        "questionUid": "qid_v1_6cd979a1423e4d663e4e49facfd678e59c598fa0ca9d44fd800ff9a568034890",
+        "sourceOrdinal": 25,
+        "basicRequestRef": {
+          "path": ".archive-meta-register/inbox/m2s1-basic-preserve-20261115-E068.json",
+          "sha256": "94ad9e12bee0d554e99acca2faa23a206841ba764e80459fd4734f3345f7c09a"
+        },
+        "previousBefore": {
+          "sourceFingerprint": "3c29b6bc8cbb77ae303e4599e2c8b12022a021f188b351f60a8cbce3cf6ded25",
+          "contentFingerprint": "e864ea9402c7add91accac5af1dfe519a94db9be5eefb64c8cd930bd6a8dd56a"
+        },
+        "officialReboundBefore": {
+          "sourceFingerprint": "827717b2c534ed08112e2b26983010d0a04bd51366abe24d9ca0317b62b02c35",
+          "contentFingerprint": "e0b27bc6780beda5c9957bb691c7cbce5bd36667d4f828bf672b6c368051f68c"
+        }
+      }
+    ]
+  }
+}

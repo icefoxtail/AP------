@@ -1,0 +1,277 @@
+{
+  "schemaVersion": "archive-m2s1-remaining-binding-validation-v1",
+  "status": "PASS",
+  "scope": "Local official writer/build/projection/Consumer and bounded mutation checks for six display repairs, three unchanged-source debt closures and one exact existing PT/template binding; remote main and production remain separately gated.",
+  "basePacketCommit": "84acbc50de7083d3c9b98c61275339e66cf84334",
+  "codeCommits": {
+    "nativeRegistrar": "b83d93523356ac7b60672495598205898defeb49",
+    "difficultyRegistrar": "8cad85008d2d41234c7b025cbba7d6334ee50460",
+    "consumer": "b614157b4c6ba9dcd8d9a4222ba4f8a941e7da60"
+  },
+  "inputs": [
+    {
+      "path": ".archive-meta-register/inbox/m2s1-remaining-20261115-E006.json",
+      "sha256": "23cc803198beb595f43bb8046e87fef25b9280e9bb752bc7d6ebef9f0cc6d546",
+      "kind": "difficulty5-ratings",
+      "selectedQuestions": 2
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-remaining-20261115-E049.json",
+      "sha256": "81baf5726130694f8914950128fb237ee26797233cf1f09fffd2dcc3db56979d",
+      "kind": "difficulty5-ratings",
+      "selectedQuestions": 1
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-remaining-20261115-E052.json",
+      "sha256": "fee6c256b6abef8a28d6ef63daed405d81da2c9e31a26c012ac9be4cd2f8bbfc",
+      "kind": "difficulty5-ratings",
+      "selectedQuestions": 4
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-remaining-20261115-E053.json",
+      "sha256": "126cab0137a49547adbb71edd16710324d68644b1c45f7d6ebd7805329941d88",
+      "kind": "difficulty5-ratings",
+      "selectedQuestions": 1
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-remaining-20261115-E075.json",
+      "sha256": "50634f06df471a9358a15d196e94f3991a406a0da3f74659b73525bf118c5e5d",
+      "kind": "difficulty5-ratings",
+      "selectedQuestions": 1
+    },
+    {
+      "path": ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json",
+      "sha256": "823fa96d3ea6781d6d0b60126aa5ef4ef3472d3c882b2bd634052c5fdb338dfc",
+      "kind": "reviewed-exam-v2",
+      "selectedQuestions": 1
+    }
+  ],
+  "officialDifficultyDryRun": {
+    "requests": 5,
+    "passed": 5,
+    "failed": 0,
+    "questions": 9,
+    "apply": 9,
+    "already": 0,
+    "changedFields": 21
+  },
+  "officialDifficultyApply": {
+    "requests": 5,
+    "passed": 5,
+    "failed": 0,
+    "questions": 9,
+    "apply": 9,
+    "already": 0,
+    "changedFields": 21
+  },
+  "officialDifficultyProjection": {
+    "requests": 5,
+    "passed": 5,
+    "failed": 0,
+    "questions": 9,
+    "apply": 0,
+    "already": 0,
+    "changedFields": 0
+  },
+  "officialNativeRegistration": {
+    "dryRun": {
+      "status": "PASS",
+      "write": false,
+      "requestId": "m2s1-binding-20261115-E029-Q7",
+      "approvalType": "FINAL_QA",
+      "totalQuestions": 1,
+      "scope": "PARTIAL_UIDS",
+      "partialUidCount": 1,
+      "expectedQuestionCount": 23,
+      "registryChangeCount": 1,
+      "runtimeMaterialized": 1,
+      "fingerprintRepairCount": 1,
+      "consumerSearchStatus": "NOT_RUN",
+      "replay": false
+    },
+    "apply": {
+      "status": "PASS",
+      "write": true,
+      "requestId": "m2s1-binding-20261115-E029-Q7",
+      "approvalType": "FINAL_QA",
+      "totalQuestions": 1,
+      "scope": "PARTIAL_UIDS",
+      "partialUidCount": 1,
+      "expectedQuestionCount": 23,
+      "registryChangeCount": 1,
+      "runtimeMaterialized": 1,
+      "fingerprintRepairCount": 1,
+      "consumerSearchStatus": "NOT_RUN",
+      "replay": false
+    },
+    "projection": {
+      "status": "PASS",
+      "requestId": "m2s1-binding-20261115-E029-Q7",
+      "totalQuestions": 1,
+      "scope": "PARTIAL_UIDS",
+      "partialUidCount": 1,
+      "expectedQuestionCount": 23,
+      "replay": true,
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "browserStatus": "NOT_RUN",
+      "consumerLanes": {
+        "canonical": 1,
+        "usableMetaLane": 0
+      }
+    }
+  },
+  "officialBuild": {
+    "command": "python3 archive/build_db.py",
+    "exitCode": 0,
+    "registrationSync": "PASS",
+    "logSha256": "827c9c7aeae3a988fa06809db9e6957e96432412a02e3be1f7338fcf32633d9f"
+  },
+  "actualConsumer": {
+    "status": "PASS",
+    "counts": {
+      "changed": 10,
+      "checked": 10,
+      "passed": 10,
+      "skippedUnchanged": 0
+    },
+    "exams": [
+      {
+        "file": ".archive-meta-register/inbox/m2s1-remaining-20261115-E006.json",
+        "kind": "difficulty5-ratings",
+        "exam": "m2s1-remaining-20261115-E006",
+        "sourceFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+        "changed": 2,
+        "checked": 2,
+        "passed": 2,
+        "skippedUnchanged": 0
+      },
+      {
+        "file": ".archive-meta-register/inbox/m2s1-remaining-20261115-E049.json",
+        "kind": "difficulty5-ratings",
+        "exam": "m2s1-remaining-20261115-E049",
+        "sourceFile": "original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js",
+        "changed": 1,
+        "checked": 1,
+        "passed": 1,
+        "skippedUnchanged": 0
+      },
+      {
+        "file": ".archive-meta-register/inbox/m2s1-remaining-20261115-E052.json",
+        "kind": "difficulty5-ratings",
+        "exam": "m2s1-remaining-20261115-E052",
+        "sourceFile": "original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+        "changed": 4,
+        "checked": 4,
+        "passed": 4,
+        "skippedUnchanged": 0
+      },
+      {
+        "file": ".archive-meta-register/inbox/m2s1-remaining-20261115-E053.json",
+        "kind": "difficulty5-ratings",
+        "exam": "m2s1-remaining-20261115-E053",
+        "sourceFile": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+        "changed": 1,
+        "checked": 1,
+        "passed": 1,
+        "skippedUnchanged": 0
+      },
+      {
+        "file": ".archive-meta-register/inbox/m2s1-remaining-20261115-E075.json",
+        "kind": "difficulty5-ratings",
+        "exam": "m2s1-remaining-20261115-E075",
+        "sourceFile": "original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js",
+        "changed": 1,
+        "checked": 1,
+        "passed": 1,
+        "skippedUnchanged": 0
+      },
+      {
+        "file": ".archive-meta-register/inbox/m2s1-binding-20261115-E029-Q7.json",
+        "kind": "reviewed-exam-v2",
+        "exam": "23_연향중_1학기_기말_중2_기출",
+        "sourceFile": "original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+        "changed": 1,
+        "checked": 1,
+        "passed": 1,
+        "skippedUnchanged": 0
+      }
+    ],
+    "failures": 0,
+    "unobservedFields": 0,
+    "informationalDifficultyAssignmentMissing": [
+      {
+        "exam": "m2s1-remaining-20261115-E006",
+        "qid": 4,
+        "uid": "qid_v1_82071789f83b19b4ff88b149234ce3a327d57df2601deda2f0ad095950253a36",
+        "reason": "assignment_missing"
+      },
+      {
+        "exam": "m2s1-remaining-20261115-E006",
+        "qid": 7,
+        "uid": "qid_v1_e2d03a761e7153bbc199fd5c5fa1feb14e3fb641ab2b0f12831139bc97eb010c",
+        "reason": "assignment_missing"
+      },
+      {
+        "exam": "m2s1-remaining-20261115-E049",
+        "qid": 2,
+        "uid": "qid_v1_51ce3cdbc3bdb4b878e8a78f5781f951a40b140fa09c212407a27932b63f15ac",
+        "reason": "assignment_missing"
+      },
+      {
+        "exam": "m2s1-remaining-20261115-E052",
+        "qid": 21,
+        "uid": "qid_v1_a05ec52491fb1d0a3d64c34b464709f88613466ac24301d7ed7e58bf51818b68",
+        "reason": "assignment_missing"
+      },
+      {
+        "exam": "m2s1-remaining-20261115-E052",
+        "qid": 22,
+        "uid": "qid_v1_5aa254d1f76b8ae6353704697bceec5b89fed757d97dbcbe3666cc4733a5eee0",
+        "reason": "assignment_missing"
+      },
+      {
+        "exam": "m2s1-remaining-20261115-E052",
+        "qid": 23,
+        "uid": "qid_v1_7bdd91965158153f36a0dcdc65813886e297ef226e070163dac9f92e73040609",
+        "reason": "assignment_missing"
+      },
+      {
+        "exam": "m2s1-remaining-20261115-E052",
+        "qid": 24,
+        "uid": "qid_v1_40078cc008bed4eb3627c56e67fb5dfdefdf8fa5b28795bd79528ea193adbba8",
+        "reason": "assignment_missing"
+      },
+      {
+        "exam": "m2s1-remaining-20261115-E053",
+        "qid": 23,
+        "uid": "qid_v1_e4002b19166a2e6a6f00744485e690a54463bf5f9440e538961b5fa5623bad83",
+        "reason": "assignment_missing"
+      },
+      {
+        "exam": "m2s1-remaining-20261115-E075",
+        "qid": 20,
+        "uid": "qid_v1_4e4b33fd1c1101081e209f62e0a1c2d0706a1baf85b90b0ac26d98de5be6f556",
+        "reason": "assignment_missing"
+      }
+    ],
+    "nativeAssignmentPending": 0,
+    "rawResultSha256": "94719b7176d4715b369cb5373569029c2c33657c080585b8083ed671f3cae667"
+  },
+  "mutationIsolation": {
+    "path": "docs/operations/m2s1-remaining-20261115/mutation-isolation.json",
+    "sha256": "77524ddfdcb76ce7003cf13f4afcb592761623e9659601a7f0806a7592186f8a"
+  },
+  "newAdvancedMetadataApprovals": 1,
+  "newAdvancedApprovalUids": [
+    "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae"
+  ],
+  "difficultyOnlyAdvancedApprovals": 0,
+  "existingDefinitionsReused": true,
+  "newCanonicalBindings": 1,
+  "explicitE010RouteOutPreserved": true,
+  "acceptedDifficultyConfidenceRaised": false,
+  "newReview2OrFullExamQAClaimed": false,
+  "mainMergeStatus": "PENDING",
+  "mainRegistrationStatus": "PENDING",
+  "productionStatus": "PENDING"
+}

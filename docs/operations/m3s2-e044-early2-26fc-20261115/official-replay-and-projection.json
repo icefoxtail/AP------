@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "m3s2-e044-exact-replay-projection-v1",
+  "codeMain": "5cdb0fea82185a48cc19cf1e2945f3002fe1d9bb",
+  "registeredPredecessorMain": "a9ca41250739f7f43fcbfecbf4c54276cd72178a",
+  "manifestSha256": "e2a2a3df5e706432a448234df115331bf893bb11f396bf0484fef0d2bfe6f3bb",
+  "status": "OFFICIAL_REPLAY_AND_PROJECTION10_PASS",
+  "results": [
+    {
+      "requestId": "m3s2-e044-preserve-early2-26fc-20261115",
+      "uidCount": 8,
+      "result": {
+        "status": "PASS",
+        "requestId": "m3s2-e044-preserve-early2-26fc-20261115",
+        "totalQuestions": 8,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 8,
+        "expectedQuestionCount": 25,
+        "newMetadataApprovals": 0,
+        "preservedMetadataApprovals": 8,
+        "replay": true,
+        "plannedPaths": [],
+        "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+        "browserStatus": "NOT_RUN",
+        "consumerLanes": {
+          "canonical": 8,
+          "usableMetaLane": 0
+        }
+      }
+    },
+    {
+      "requestId": "m3s2-e044-early2-26fc-20261115",
+      "uidCount": 2,
+      "result": {
+        "status": "PASS",
+        "requestId": "m3s2-e044-early2-26fc-20261115",
+        "totalQuestions": 2,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 2,
+        "expectedQuestionCount": 25,
+        "replay": true,
+        "plannedPaths": [],
+        "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+        "browserStatus": "NOT_RUN",
+        "consumerLanes": {
+          "canonical": 2,
+          "usableMetaLane": 0
+        }
+      }
+    }
+  ],
+  "unchangedAfterReadOnlyReplay": [
+    {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "d3b59e2ba9501f15afd4608088bc10b7fc67e61ff19f7be98b16f4938a6e404a"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "sha256": "3aae22a29741ebcf3feb84356d990c0efb3d1a683a7d4df5641d87cc228a4ce1"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle3-v1.json",
+      "sha256": "1fb7706cd8fa99171bc950773508cebfef428eecdf48701a957f29473c53892c"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "sha256": "27dede17687f68b0071b2ff121796b0147bfbd336bbc4039b8152b8787762255"
+    }
+  ],
+  "newMathematicalReview": false,
+  "productionWrites": 0,
+  "remoteWrites": 0,
+  "actualRegistration": false
+}

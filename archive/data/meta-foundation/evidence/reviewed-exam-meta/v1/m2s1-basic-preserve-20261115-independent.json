@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-basic-scope-preservation-independent-review-v1",
+  "reviewer": "ROOT_INDEPENDENT",
+  "status": "PASS_FOR_EXACT_DECLARED_REPAIR_AND_EXISTING_BASIC_ONLY",
+  "inputSha256": "640b6a00a823d570d1d3be907ea186eb4722e86056b0adf603305f5e35df1cb3",
+  "parentAuthorityRawSha256": "102366bcfd5edc1c0bf42282c13208d2be80bfe96fd0b66122a2363a120358f8",
+  "rows": [
+    {
+      "uid": "qid_v1_40078cc008bed4eb3627c56e67fb5dfdefdf8fa5b28795bd79528ea193adbba8",
+      "questionUid": "qid_v1_40078cc008bed4eb3627c56e67fb5dfdefdf8fa5b28795bd79528ea193adbba8",
+      "sourceOrdinal": 24,
+      "sourcePath": "archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js",
+      "repairKind": "EMPTY_CHOICE_PLACEHOLDERS_ONLY",
+      "beforeQuestionSha256": "4551c9df9c4d3e07aa2473350a898c4ed79d9ba556e69200fb84259e69467afd",
+      "afterQuestionSha256": "5d8653effee617c087ccbbcfa00bd3695290690be1832383aa7212fb02155fa7",
+      "basicParent": {
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "일차부등식의 활용",
+        "grade": "중2"
+      },
+      "decision": "PRESERVE_EXISTING_BASIC_ONLY",
+      "newAdvancedApproval": false,
+      "verifiedCurrentSourceRawSha256": "fe3354f7db609f4ed10695c133ef231ac8d9f4c01bfcc9833b9b380eca167b37",
+      "priorCommit": "2ea8fb8b109921997e6764a3f85213d9d04b4364",
+      "repairBaseCommit": "994cbbaa62192d40454fe2ba522f0f8b05e0b58a",
+      "priorBodyBindingMatches": true,
+      "preexistingFullFingerprintDrift": true,
+      "reviewRationale": "Only whitespace-only choice placeholders are removed. The cost inequality, answer and solution remain identical and the existing linear-inequality parent still applies."
+    },
+    {
+      "uid": "qid_v1_6cd979a1423e4d663e4e49facfd678e59c598fa0ca9d44fd800ff9a568034890",
+      "questionUid": "qid_v1_6cd979a1423e4d663e4e49facfd678e59c598fa0ca9d44fd800ff9a568034890",
+      "sourceOrdinal": 25,
+      "sourcePath": "archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js",
+      "repairKind": "REVIEWED_KOREAN_TEXT_ONLY",
+      "beforeQuestionSha256": "e165ffe069a4b75d97cfc5a37082e5131ebc815d1c8ffb48af60115fce00df2a",
+      "afterQuestionSha256": "5886c38a2eacd0778a397225e96669c25a0aae587f9f1f7b9addaa3077c10c7d",
+      "basicParent": {
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "L1": "일차부등식과 연립일차방정식",
+        "L2": "일차부등식의 활용",
+        "grade": "중2"
+      },
+      "decision": "PRESERVE_EXISTING_BASIC_ONLY",
+      "newAdvancedApproval": false,
+      "verifiedCurrentSourceRawSha256": "16b67e00511d4a6f5fe166e0f0210e0d8ef9c92be040c38b709c46f7aa746ce3",
+      "priorCommit": "2ea8fb8b109921997e6764a3f85213d9d04b4364",
+      "repairBaseCommit": "994cbbaa62192d40454fe2ba522f0f8b05e0b58a",
+      "priorBodyBindingMatches": true,
+      "preexistingFullFingerprintDrift": false,
+      "reviewRationale": "The literal wording repairs consistently name the already stated initial running segment. All numerical conditions, math, answer, choices and images remain identical; the existing linear-inequality parent still applies."
+    }
+  ],
+  "scope": "Exact source repair and existing basic classification continuity only. No new difficulty or advanced approval. Official writer, projection and Consumer checks remain required."
+}

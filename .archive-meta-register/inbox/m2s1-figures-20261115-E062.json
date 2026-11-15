@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "producer": "/root/m2s1_release; gemini is the existing envelope name, not an author claim",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "m2s1-figures-20261115-E062",
+    "createdAt": "2026-11-15T00:00:00Z",
+    "sourceArchiveFile": "original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+    "latestBlobSha": "ff2f28b1abe9f01594afe8295b0c49c7eec5b124",
+    "items": [
+      {
+        "ordinal": 14,
+        "questionUid": "qid_v1_785177fab567013bf7332f21caa851a891cf095715d3679a9ee9891cb03ed750",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "ordinal": 21,
+        "questionUid": "qid_v1_5d3ae1e4b02cf8673e544b5f07cd23773e5029b731675aa85badc2dc4d67d056",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      },
+      {
+        "ordinal": 25,
+        "questionUid": "qid_v1_64b62553a4e8248d02d4c86f7dacfcb636a498b2acb39b641cac15c02455da77",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "User-authorized release; exact current figure/source repairs independently verified by /root and /root/m3s2_release. Six accepted difficulty judgments retained and five current-source numeric judgments explicitly approved; no advanced metadata or full-exam QA approval.",
+    "evidencePath": ".archive-meta-register/evidence/m2s1-figures-20261115/E062.json",
+    "evidenceSha256": "35b1573db84c1f39a94c57cafe4f1a6441f4fce998d320afc2e71bedf246d1d0",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+        "ordinal": 14,
+        "questionUid": "qid_v1_785177fab567013bf7332f21caa851a891cf095715d3679a9ee9891cb03ed750",
+        "before": {
+          "level": "중",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "b278b2b13180e1439bbe53cf9ec5647d0ab7c675e79c52fcca31a7e8d39d108a",
+          "contentFingerprint": "3c66f87405b231406d5351c615193c1e7dc44e4aab8b96805fd001e02e9ce9e9"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "23d42a1ac646462146725f0840c11c9710d6ba7b0c7b8972394fe2b5b5774043",
+        "contentFingerprint": "791f3755b8ed42529a624375ad1e5547bc1f00cf778a957e0db1d865e06d0523",
+        "staleSourceBinding": true,
+        "refreshBinding": false,
+        "decision": "CORRECT",
+        "reason": "그림의두절편으로기울기·식구성하는구조.실제그림과alt해설절편충돌\nCurrent narrow source repair: Use the actual x and y intercepts in q14.png. Correct the alt, answer and existing solution; retain the accepted difficulty and image bytes. The existing accepted numeric difficulty and low confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created."
+      },
+      {
+        "sourceArchiveFile": "original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+        "ordinal": 21,
+        "questionUid": "qid_v1_5d3ae1e4b02cf8673e544b5f07cd23773e5029b731675aa85badc2dc4d67d056",
+        "before": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "47e7328630958549acca606f8542de67c9e5867cf84c7beb6befaddf8b7b72e3",
+          "contentFingerprint": "a72e6ad23da9a9ddb0c6038f45d45872e9c69afa11aba5772d0fcb0c3298cb28"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "a3b386487fc00c9f71b87732f1d68e3f7e2fa5179b9c035e2397fdc5d0011214",
+        "contentFingerprint": "a72e6ad23da9a9ddb0c6038f45d45872e9c69afa11aba5772d0fcb0c3298cb28",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "decision": "CORRECT",
+        "reason": "두 직선의 격자점에서 기울기와 절편을 읽고 두 위치식을 같게 놓는 표준 연쇄이다. 가까운 두 기울기를 정확히 구별하는 표현 부담은 있으나 사용할 풀이법은 직접적이다. 현재 그래프에 대한 새 판정이며 B23 경계를 기록한다.\nCurrent narrow source repair: Read exact grid intersections from the current position graph and solve the two resulting linear equations. Remove the existing contradictory invented points and ten-minute claim. This is a fresh independently reviewed numeric difficulty decision on the corrected current source; the old UNKNOWN review is retained as history. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created."
+      },
+      {
+        "sourceArchiveFile": "original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+        "ordinal": 25,
+        "questionUid": "qid_v1_64b62553a4e8248d02d4c86f7dacfcb636a498b2acb39b641cac15c02455da77",
+        "before": {
+          "level": "중",
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "0a96940158e88c6a27402cdd279af855a4925869ed437f9f9773af893f63ca41",
+          "contentFingerprint": "fca04b9e4ab574998536a9905853b538ece5d5cddb5848f095660d98f8acf367"
+        },
+        "after": {
+          "difficultyBucket": 3,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B23",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "b2598d51e4d2159a14c14247da94cd91b2a585bab21167dbf416021791ceaeb9",
+        "contentFingerprint": "fca04b9e4ab574998536a9905853b538ece5d5cddb5848f095660d98f8acf367",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "decision": "CORRECT",
+        "reason": "직사각형대칭중심을이용한넓이이등분직선다섯개구성.실제그림좌표와해설충돌\nCurrent narrow source repair: Use the actual rectangle bounds and center in s03.png to repair the five existing example equations and explanation. Keep the accepted numeric difficulty/confidence. The existing accepted numeric difficulty and low confidence are preserved. No advanced metadata, REVIEW2 or full-exam mathematical QA approval is created."
+      }
+    ]
+  }
+}

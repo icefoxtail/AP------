@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-narrow-metadata-independent-crosscheck-v1",
+  "reviewer": "/root/registrar_repair",
+  "createdAt": "2026-11-15T01:29:16.339Z",
+  "examId": "E029",
+  "sourceOrdinal": 7,
+  "questionUid": "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+  "scope": "Current stem, image, existing solution and proposed PT/TPL/auxiliary metadata crosscheck",
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "officialResolverExecution": "NOT_RUN_BY_THIS_CROSSCHECK",
+  "source": {
+    "path": "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+    "sha256": "6b231624d183c4f4d4f45d96aff4d5de1e250667a3ca82276663efb4f51ec4f2",
+    "gitBlobSha1": "1dec9c46d4828f04f415d84eee03c2815af35fae",
+    "head": "916bc54c8ada1a99a0a390f6fff891c97a45987d"
+  },
+  "image": {
+    "path": "archive/assets/images/23_연향중_1학기_기말_중2_기출/q7.png",
+    "sha256": "659c49283678b41179395576173da3f7e6a145bd060734a3acaf8f06d9242203",
+    "visuallyInspected": true
+  },
+  "nativeReview": {
+    "path": "/workspace/scratch/14c2c64e43fb/m2-meta/docs/operations/m2-s1-meta-full-20261114/exams/E029/accepted-review.json",
+    "sha256": "f49dca98cbcb5432515ba2182848cf9c83c15c1c7b284942f5b26df5ec0b535b"
+  },
+  "canonicalDefinitions": {
+    "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+    "sha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_PARALLEL"
+  },
+  "decision": "NARROW_METADATA_INTERPRETATION_CONFIRMED",
+  "independentCheck": "그림의 x/y절편을 실제로 읽고 기울기를 계산했다. 평행 조건으로 첫 계수를 확정한 뒤 주어진 점을 대입하면 현 해설과 저장 답이 일치한다. 평행한 직선을 결정하는 단계가 핵심이므로 해당 ACTIVE TPL 정의에 직접 대응한다.",
+  "auxiliaryJudgment": {
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "reason": "그림에서 기울기 읽기, 평행 조건, 점 대입은 이 primary의 표준 절차이며 외부개념이나 별도 해 선택 조건이 없다."
+  },
+  "difficulty": {
+    "proposedBucket": 2,
+    "assessment": "제안 bucket2를 지지한다. 새 난도 writer 증거는 현재 source에 결속해야 한다."
+  },
+  "remainingGates": [
+    "Source currently declares TPL_LINE_MULTI_CONDITION and RPM059; transport the actual accepted RPM053/TPL_LINE_PARALLEL decision with exact source parity evidence.",
+    "Current official writer must validate the proposed exact curriculum/course/unit/subunit/PT binding and Consumer projection.",
+    "This crosscheck does not clear other UID holds or assert global mathematical QA."
+  ]
+}

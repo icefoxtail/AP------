@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+  "scope": "DIFFICULTY_ONLY_AFTER_NARROW_SOURCE_REPAIR",
+  "producer": "/root/m2s1_release",
+  "priorAcceptedReview": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E062/amendments/unknown-legacy-compatibility-r1/accepted-review.json",
+    "sha256": "aa144dd5bc383f7cb695e4aa22572d8ae48c5d9ee82849b94a67b76152d6f566"
+  },
+  "currentSourceBlobSha": "ff2f28b1abe9f01594afe8295b0c49c7eec5b124",
+  "narrowRepairEvidence": {
+    "authorProposal": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-proposal-r2.json",
+      "sha256": "2c47a0ec73195f01abb86d4d31de45942405670bebbe71f5627766f9e4a3d935",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-followup-repair-proposals-r2.json"
+    },
+    "independentCrosscheck": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-independent-r2.json",
+      "sha256": "aca19626b875a1ce20470291122e867dca9aadfb030577dbd3bc9f82f0bf6ff7",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-narrow-independent-review-20261115-r2.json"
+    },
+    "authorPredecessor": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-proposal-r1.json",
+      "sha256": "f1ad5cae10923f8b4bcea820e52f053e36bc2887184f2dd64a7617b8aa7bef2c",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-followup-repair-proposals.json"
+    },
+    "independentPredecessor": {
+      "path": ".archive-meta-register/evidence/m2s1-followup-20261115/source-repair-independent-r1.json",
+      "sha256": "faa0a5bffe1f2c003a5ffb97c1162b0f14479cdf5690581983cf3f382be912b4",
+      "originalPath": "/workspace/scratch/c8f1b0bfb4fa/m2s1-narrow-independent-review-20261115-r1.json"
+    }
+  },
+  "coverage": {
+    "examQuestionCount": 25,
+    "selectedQuestions": 1
+  },
+  "newFullMathematicalQa": false,
+  "review2Approval": false,
+  "newAdvancedMetadataApprovals": 0,
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js",
+      "ordinal": 3,
+      "questionUid": "qid_v1_5c30cd9afdf9683b7e3d171368b561c3b4aad9112fedc413a64e0014c03de379",
+      "before": {
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "sourceFingerprint": "ad7303b43ce5b682d1ac7c36f8b67774cbbaa877141e0214057072e37bb34989",
+        "contentFingerprint": "f125dd26e7dd2327ca028d098be84d1bbf85be28a4f88324bccf79c9f83fb9f1"
+      },
+      "after": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "sourceFingerprint": "c169568a190d13df5a4e596652e2d5e39046efb0f381811e7136750b70f11c2e",
+      "contentFingerprint": "f125dd26e7dd2327ca028d098be84d1bbf85be28a4f88324bccf79c9f83fb9f1",
+      "staleSourceBinding": false,
+      "refreshBinding": false,
+      "decision": "CORRECT",
+      "reason": "소거변수의 계수최소공배수로 배수와가감선택\n후속 범위: Only the fifth option eliminates x; the fourth addition leaves both variables. 독립 교차검토가 이 수리만 확인했다. 기존 수치 난도와 confidence를 그대로 재사용하며 전체 수학 QA·PT/TPL·RPM·보조 메타 승인을 만들지 않는다."
+    }
+  ]
+}
