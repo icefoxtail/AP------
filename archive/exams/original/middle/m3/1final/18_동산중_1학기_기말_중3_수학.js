@@ -137,8 +137,13 @@ window.examData = {
     },
     {
       "number": 10,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "폭을 x m라 두면 길을 제외한 넓이는 (30−x)(25−x)=594이다. x=3 또는 52에서 가능한 폭은 3 m이다. 정답은 ①이다.",
+      "solutionImageAlt": "가로 30 m, 세로 25 m인 직사각형 꽃밭에 가로로 뻗은 길과 오른쪽의 세로 길이 만난다. 네 구역이 녹색 꽃밭이다. 두 길의 겹친 부분은 주황색이다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q10-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 그림과 같이 가로의 길이가 $30\\text{m}$이고 세로의 길이가 $25\\text{m}$인 직사각형 모양의 꽃밭에 폭이 일정한 길을 만들었다. 길을 제외한 나머지 부분의 넓이가 $594\\text{m}^2$일 때, 길의 폭을 구하면? (4점)<br><br><img src=\"assets/images/18_동산중_1학기_기말_중3_수학/q10.png\" style=\"max-width: 260px; display: block; margin: 10px 0;\">",
+      "question": "다음 그림과 같이 가로의 길이가 $30\\text{m}$이고 세로의 길이가 $25\\text{m}$인 직사각형 모양의 꽃밭에 폭이 일정한 길을 만들었다. 길을 제외한 나머지 부분의 넓이가 $594\\text{m}^2$일 때, 길의 폭을 구하면? (4점)<br><br><img src=\"assets/images/18_동산중_1학기_기말_중3_수학/q10-problem-visual-v2.svg\" alt=\"가로 30 m, 세로 25 m인 직사각형 꽃밭에 가로로 뻗은 길과 오른쪽의 세로 길이 만난다. 네 구역이 녹색 꽃밭이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$3\\text{m}$",
         "$4\\text{m}$",
@@ -165,8 +170,13 @@ window.examData = {
     },
     {
       "number": 12,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "색칠한 넓이는 π[12²−x²−(12−x)²]/8이다. 8π와 같게 두면 x=4 또는 8이고 AC<BC이므로 4 cm이다. 정답은 ③이다.",
+      "solutionImageAlt": "A, C, B가 이 순서로 한 직선 위에 있다. AB에 접하는 큰 반원 아래에 AC와 CB를 각각 지름으로 하는 작은 반원 두 개가 있다. 그 사이 주황 부분을 칠했다. 세 반원의 지름을 12 cm, x, 12−x로 표시했다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q12-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 그림은 세 개의 반원으로 둘러싸인 도형이다. 옛 그리스의 구두장이가 사용한 칼과 모양이 비슷하여 '아벨로스'라고 불리우는 도형이다. $\\overline{\\mathrm{AB}}=12\\text{cm}$이고 색칠한 부분의 넓이가 $8\\pi\\text{cm}^2$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면? (단, $\\overline{\\mathrm{AC}} < \\overline{\\mathrm{BC}}$) (4점)<br><br><img src=\"assets/images/18_동산중_1학기_기말_중3_수학/q12.png\" style=\"max-width: 260px; display: block; margin: 10px 0;\">",
+      "question": "다음 그림은 세 개의 반원으로 둘러싸인 도형이다. 옛 그리스의 구두장이가 사용한 칼과 모양이 비슷하여 '아벨로스'라고 불리우는 도형이다. $\\overline{\\mathrm{AB}}=12\\text{cm}$이고 색칠한 부분의 넓이가 $8\\pi\\text{cm}^2$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면? (단, $\\overline{\\mathrm{AC}} < \\overline{\\mathrm{BC}}$) (4점)<br><br><img src=\"assets/images/18_동산중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"A, C, B가 이 순서로 한 직선 위에 있다. AB에 접하는 큰 반원 아래에 AC와 CB를 각각 지름으로 하는 작은 반원 두 개가 있다. 그 사이 주황 부분을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$2$",
         "$3$",
@@ -207,6 +217,10 @@ window.examData = {
     },
     {
       "number": 15,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=2x²의 꼭짓점은 (0,0)이다. 따라서 (1,2)를 꼭짓점이라고 한 ②가 옳지 않다.",
+      "solutionImageAlt": "파란 y=2x²가 위로 열리며 꼭짓점은 O이다. 같은 x=2에서 점 (2, 8)을 표시했다. 주황 점선 y=−2x²는 가로축 아래에 있고 두 그래프가 가로축에 대칭이다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q15-solution-visual-v2.svg",
       "score": 3.0,
       "question": "다음 중에서 이차함수 $y=2x^2$의 그래프에 대한 설명으로 옳지 <u>않은</u> 것은? (3점)",
       "choices": [
@@ -221,6 +235,10 @@ window.examData = {
     },
     {
       "number": 16,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "점 (2,1)에서 a=1/4이고 점 (4,b)에서 b=4이다. 따라서 ab=1이고 정답은 ③이다.",
+      "solutionImageAlt": "원점에서 올라가는 파란 포물선 위에 두 점 (2, 1), (4, b)가 있다. 각 점에서 녹색 점선을 좌표축까지 그렸다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q16-solution-visual-v2.svg",
       "score": 4.0,
       "question": "이차함수 $y=ax^2$의 그래프가 두 점 $(2, 1)$과 $(4, b)$를 지날 때, $ab$는? (4점)",
       "choices": [
@@ -235,6 +253,10 @@ window.examData = {
     },
     {
       "number": 17,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "폭은 x² 계수의 절댓값이 클수록 좁다. 절댓값 3이 가장 크므로 y=−3x²인 ⑤이다.",
+      "solutionImageAlt": "다섯 보기의 계수의 절댓값을 사용하여 포물선을 위로 열리게 놓았다. 같은 높이에서 파랑 곡선이 가장 좁고 주황과 초록은 그보다 넓다. 절댓값이 2인 두 식의 폭은 같다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q17-solution-visual-v2.svg",
       "score": 3.0,
       "question": "다음 이차함수 중 그래프의 폭이 가장 <u>좁은</u> 이차함수는? (3점)",
       "choices": [
@@ -249,6 +271,10 @@ window.examData = {
     },
     {
       "number": 18,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "옮긴 식 y=−2x²+q에 (2,−2)를 대입하면 −2=−8+q이므로 q=6이다. 정답은 ③이다.",
+      "solutionImageAlt": "파랑 y=−2x²는 꼭짓점이 원점이다. 주황 점선 포물선은 같은 폭이고 꼭짓점이 위로 올라갔다. 이동한 포물선 위의 점은 (2, −2)이다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q18-solution-visual-v2.svg",
       "score": 3.0,
       "question": "이차함수 $y=-2x^2$의 그래프를 $y$축의 방향으로 $q$만큼 평행이동하면 점 $(2, -2)$을 지날 때, $q$의 값을 구하면? (3점)",
       "choices": [
@@ -263,6 +289,10 @@ window.examData = {
     },
     {
       "number": 19,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "왼쪽으로 1만큼 옮긴 식은 y=3(x+1)²이다. x=−3에서 a=12이므로 정답은 ⑤이다.",
+      "solutionImageAlt": "파란 y=3x²와 왼쪽으로 1만큼 옮긴 주황 점선 포물선이다. 옮긴 포물선의 왼쪽 가지에 (−3, a)가 있다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q19-solution-visual-v2.svg",
       "score": 3.0,
       "question": "이차함수 $y=3x^2$의 그래프를 $x$축의 방향으로 $-1$만큼 평행이동하면 점 $(-3, a)$를 지날 때, $a$의 값을 구하면? (3점)",
       "choices": [
@@ -277,8 +307,13 @@ window.examData = {
     },
     {
       "number": 20,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "꼭짓점이 (2,−1)이므로 y=a(x−2)²−1이다. y절편 3에서 3=4a−1이어서 a=1이다. 식은 y=x²−4x+3이고 정답은 ③이다.",
+      "solutionImageAlt": "위로 열린 파란 포물선은 세로축의 3을 지나고 꼭짓점은 (2, −1)이다. 초록 점선이 꼭짓점에서 가로축의 2와 세로축의 −1을 잇는다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q20-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 포물선이 나타내는 이차함수의 식을 구하면? (4점)<br><br><img src=\"assets/images/18_동산중_1학기_기말_중3_수학/q20.png\" style=\"max-width: 220px; display: block; margin: 10px 0;\">",
+      "question": "다음 포물선이 나타내는 이차함수의 식을 구하면? (4점)<br><br><img src=\"assets/images/18_동산중_1학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"위로 열린 파란 포물선은 세로축의 3을 지나고 꼭짓점은 (2, −1)이다. 초록 점선이 꼭짓점에서 가로축의 2와 세로축의 −1을 잇는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$y=x^2+4x+3$",
         "$y=2x^2-4x+3$",
@@ -291,6 +326,10 @@ window.examData = {
     },
     {
       "number": 21,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "꼭짓점 (p,2p)가 y=x/2−3 위에 있으므로 2p=p/2−3에서 p=−2이다. 정답은 ②이다.",
+      "solutionImageAlt": "왼쪽 아래의 점은 두 직선 y=2x, y=x/2−3의 교점이다. 파란 포물선의 꼭짓점은 두 직선이 교차하는 점 (−2, −4)이다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q21-solution-visual-v2.svg",
       "score": 5.0,
       "question": "이차함수 $y=(x-p)^2+2p$의 그래프의 꼭짓점이 직선 $y=\\dfrac{1}{2}x-3$에 있을 때, 상수 $p$의 값을 구하면? (5점)",
       "choices": [
@@ -305,6 +344,10 @@ window.examData = {
     },
     {
       "number": 22,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "x<0 구간에서 y값은 x=0에 갈수록 커진다. 제2사분면을 지나지 않으려면 4a+5≤0이므로 a≤−5/4이다. 정답은 ②이다.",
+      "solutionImageAlt": "아래로 열린 두 포물선의 꼭짓점은 (2, 5)이다. 파란 경계 포물선은 원점을 지난다. 더 폭이 좁은 주황 포물선은 y축을 원점 아래에서 지난다. 그 옆의 옅은 영역은 제2사분면이다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q22-solution-visual-v2.svg",
       "score": 5.0,
       "question": "이차함수 $y=ax^2+bx+c$는 $x=2$에서 최댓값 $5$를 가진다. 이 함수의 그래프가 제$2$사분면을 지나지 않는다고 할 때, 상수 $a$의 값의 범위는? (5점)",
       "choices": [
@@ -327,14 +370,23 @@ window.examData = {
     },
     {
       "number": 24,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "AB:FC=BC:CD이고 AB=CD=1이다. 따라서 x(x−1)=1이다. x>1이므로 BC=(1+√5)/2이다.",
+      "solutionImageAlt": "큰 직사각형 ABCD 안에 작은 직사각형 FCDE가 있다. E와 F로 이은 세로선으로 두 부분을 나눴다. 왼쪽 AB와 아래 첫 구간 BF는 각각 1이고 밑변 BC를 x로 표시했다. 작은 직사각형의 가로 FC는 x−1이다. 길이가 1인 AB, BF, CD에 같은 색과 눈금을 썼다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q24-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "[서술형 2] 다음 그림에서 $\\square\\mathrm{ABCD}$와 $\\square\\mathrm{FCDE}$가 닮음일 때 $\\overline{\\mathrm{BC}}$의 길이를 구하시오. (4점)<br><br><img src=\"assets/images/18_동산중_1학기_기말_중3_수학/s02.png\" style=\"max-width: 280px; display: block; margin: 10px 0;\"><br><br>① 풀이과정 (3점)<br><br>② 정답 (1점)",
+      "question": "[서술형 2] 다음 그림에서 $\\square\\mathrm{ABCD}$와 $\\square\\mathrm{FCDE}$가 닮음일 때 $\\overline{\\mathrm{BC}}$의 길이를 구하시오. (4점)<br><br><img src=\"assets/images/18_동산중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"큰 직사각형 ABCD 안에 작은 직사각형 FCDE가 있다. E와 F로 이은 세로선으로 두 부분을 나눴다. 왼쪽 AB와 아래 첫 구간 BF는 각각 1이고 밑변 BC를 x로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br><br>① 풀이과정 (3점)<br><br>② 정답 (1점)",
       "choices": [],
       "answer": "$\\frac{1+\\sqrt{5}}{2}$",
       "solution": "그림에서 $AB=1,\\ BF=1,\\ BC=x$라 두면, $BC=BF+FC$이므로\n$FC=x-1$\n\n$ABCD\\sim FCDE$에서 대응하는 변은 $AB\\leftrightarrow FC$, $BC\\leftrightarrow CD$이다.\n직사각형에서 $AB=CD=1$이므로\n$\\frac{AB}{FC}=\\frac{BC}{CD}$\n$\\frac1{x-1}=\\frac{x}{1}$\n$x(x-1)=1$\n$x^2-x-1=0$\n\n근의 공식을 적용하면\n$x=\\frac{1\\pm\\sqrt5}{2}$\n\n길이이므로 $x>0$이고 $FC=x-1>0$이므로 $x>1$이다.\n따라서 $\\overline{BC}=x=\\frac{1+\\sqrt5}{2}$이다."
     },
     {
       "number": 25,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "두 식에서 x²의 계수는 모두 3이다. 두 포물선은 모두 아래로 볼록하고 폭이 같다.",
+      "solutionImageAlt": "위로 열린 두 포물선에 파랑 실선과 주황 점선을 썼다. 꼭짓점은 각각 (0, −3), (3, 0)이다. 두 곡선의 굽은 정도가 같다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q25-solution-visual-v2.svg",
       "score": 4.0,
       "question": "[서술형 3] 두 이차함수 $y=3x^2-3$, $y=3(x-3)^2$의 그래프의 공통점을 2가지 이상 나열하시오. (4점)",
       "choices": [],
@@ -343,6 +395,10 @@ window.examData = {
     },
     {
       "number": 26,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=a(x+2)²+7에 (1,−2)를 대입하면 a=−1이다. 전개하여 b=−4, c=3이므로 a−b−c=0이다.",
+      "solutionImageAlt": "파란 그래프의 최고점은 (−2, 7)이다. 오른쪽 가지에는 (1, −2)와 y절편 3이 있다.",
+      "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q26-solution-visual-v2.svg",
       "score": 6.0,
       "question": "[서술형 4] 이차함수 $y=ax^2+bx+c$의 그래프가 점 $(1, -2)$를 지나고 $x=-2$에서 최댓값 $7$을 가질 때, $a-b-c$의 값을 구하시오. (단, $a, b, c$는 상수) (6점)<br><br>① 풀이과정 (4점)<br><br>② 정답 (2점)",
       "choices": [],
