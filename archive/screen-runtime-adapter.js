@@ -376,6 +376,7 @@ function createArchiveScreenRuntime() {
                 outputUrl.searchParams.get('qpp') !== String(outputEnvelope.meta?.qpp || next.qpp) ||
                 (intent.type === 'MODE_CHANGE' && N.semanticDigest(outputEnvelope.meta?.printHeaderOptions || {}) !== N.semanticDigest(next.header || {})))
                 throw new Error('OUTPUT_MODE_TRANSACTION_MISMATCH');
+            url = outputUrl;
         }
         next.url = url.href;
         return N.copy(next);

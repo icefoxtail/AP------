@@ -474,6 +474,16 @@ async function printPreflight(page, before) {
         const result = await window.mixedFastHost.preflight();
         return { ok: result.ok, pages: result.pages, elapsedMs: performance.now() - started };
       }
+      // Match the original engine's safePrint barrier before the unchanged
+      // snapshot gates. The wait stays inside this measured preflight interval.
+      if (document.fonts?.ready) {
+        let fontTimer;
+        try {
+          await Promise.race([document.fonts.ready, new Promise(resolve => {
+            fontTimer = setTimeout(resolve, 5000);
+          })]);
+        } finally { clearTimeout(fontTimer); }
+      }
       const runtime = window.archiveScreenRuntime;
       const result = window.APArchiveSnapshotContract.preflight(runtime.activeSnapshot, runtime.committedCandidate);
       if (result.pass) window.bindArchiveRuntimePrintReadiness();

@@ -346,6 +346,17 @@ async function preflight(page) {
   return bounded(page.evaluate(async () => {
     try {
       if (window.mixedFastHost) { const result = await window.mixedFastHost.preflight(); return { ok: result.ok, pages: result.pages }; }
+      // Match safePrint's five-second font wait before the unchanged snapshot
+      // gates. A timeout still fails P11; layout drift still fails P15 and the
+      // before/after output comparison below.
+      if (document.fonts?.ready) {
+        let fontTimer;
+        try {
+          await Promise.race([document.fonts.ready, new Promise(resolve => {
+            fontTimer = setTimeout(resolve, 5000);
+          })]);
+        } finally { clearTimeout(fontTimer); }
+      }
       const runtime = window.archiveScreenRuntime;
       const result = window.APArchiveSnapshotContract.preflight(runtime.activeSnapshot, runtime.committedCandidate);
       if (result.pass) window.bindArchiveRuntimePrintReadiness();
