@@ -1,0 +1,1770 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m2/2mid/20_왕의중_2학기_중간_중2_수학.js",
+  "sourceGitBlobSha": "fd52a77661f6f854e1f141fba933c8bb7ed3e561",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "GPT_META_B",
+    "at": "2026-11-14",
+    "mode": "actual-item-read"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_a762d7fee2dc7bbac8cb7d757da140c6675c7ffec34e67c1055a67c3a28ced96",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "77ee1f7c9fab188ddb2e2a718d4b6b36d0cd6b925be43992af4061c3bf13e19f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b1cc267e81870892ff7cdd157d3ecbdd9d56e352983de8a009f6eaab0da0d904"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "두 직선이 평행하다는 뜻",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$\\dfrac{a}{5} = \\dfrac{2}{4}",
+            "evidenceType": "IMPLIED",
+            "justification": "평행조건을 두계수비의 상등식으로 세운다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "위치관계",
+            "src": "stem",
+            "quote": "그래프가 만나지 않을 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "상수항비는 이미 다르므로 x,y계수비를 같게 놓아 한 계수만 정한다.",
+      "reasons": {
+        "review": "한 개의 미정계수를 평행조건에 직접 대입하는 기본형이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_ec9365635d80db95c581d0354a1454fb09333358b984e4eb5496d36b667faf88",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8e895853b6e37636a19f69bd0f6c477314395b6bd032ce4acd16f7306208721d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "076ef201e80b42098f4d2a2e28b004e1cd375b9be3a66b55dcf78f1168c2879f"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식"
+          },
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "점 $(2, 1)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a - b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "$y$축에 평행한",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "점의 좌표를 대입",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$y$축에 평행"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "y축 평행에서 y의계수를0으로 놓고 주어진점으로 나머지계수를 정한다.",
+      "reasons": {
+        "review": "축평행의 의미를 계수조건으로 바꾸고 한 번 대입한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_1e12cfdfb30b9876d792946367b1ff9f41d40c9ac74558e829cf1142c624b1fe",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1670de4fa4df16139674c58dcbfeacf5d51881cc3d3067607c347a3591d0295a"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "32e3de59f180d125fcf3a9d231cbeaa57aa1ad568c6b69ff3017cb76a1bc1c3e"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "a814ab4c3cca36f2c4a759670ddf9d6482557f9ab44d58265559a84094de9027"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "두 일차방정식"
+          },
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "그래프가 오른쪽 그림"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a + b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "교점의 좌표",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "먼저 대입하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "교점이 $(3, 1)$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "실제그림의 교점(3,1)을 두식에 차례로 대입하여 a,b를 구한다.",
+      "reasons": {
+        "review": "그림의 좌표를 읽고 표준 대입을 두 번 연결한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_cd2ce05fe5bda36d99d07341441e04fcb84e26e5ce5f8c2ed815e699bce9563d",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "eb11231b291fdc653543dff8723efb2d26b8243af3075e9e10678570c2d949f4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "76339f2420783a6e8592727b15e4b2f618b38edce3e4fd2e1cfea5061ac4fc70"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "지나지 않는 사분면"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "by = -ax - c",
+            "evidenceType": "IMPLIED",
+            "justification": "y에관해 정리하여 계수와 절편을 확인한다."
+          },
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "기울기의 부호 판정",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "사분면 통과 여부 확인",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부호",
+            "src": "stem",
+            "quote": "$ab < 0$, $bc > 0$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "기울기−a/b는양수,y절편−c/b는음수임을 정해 지나지않는 사분면을 고른다.",
+      "reasons": {
+        "review": "일차방정식 정리와 두 부호추론 후 사분면을 읽는 정형 전처리이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_1c3c2bfd29e306cd7d27932176808446f88de7337a059c5552622f8fc98097cb",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9c09ee0edac41b44e26b5ed8bf83127de94acc92c4c72c7cb374e1308218b482"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f0d4f1cdf98fa02b2603a014d8b292cbfda9ace8c78c828c55b56ba8a2cb2215"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "20abe828d94a28011873ee436e487aa716d9d439f4b7b128398ab0c361d40d5d"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle\\text{ABC}$"
+          },
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "외각의 크기가 $60^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "외각",
+            "src": "solution",
+            "quote": "외각의 성질에 의하여",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "두 내각의 크기가 같다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "$\\angle\\text{C} = 30^\\circ$"
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "$\\overline{\\text{AB}} = 5\\text{ cm}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "외각60과 C30으로 A30을 구해 같은각의 대변길이를 옮긴다.",
+      "reasons": {
+        "review": "한 단계 각계산 뒤 이등변삼각형의 역을 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_4a67c206a7d0d9c1688ef7600f729948c29c2ec9bd0e0f72e983f0ae52f9d419",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "d6559f775c8dd6b3448fd47c5f665f640c1fbf931266052818d5b72385ab88d2"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e69a9fddbc307874999ac72099cfd200f38f48b09b10f89aeac8145367270086"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "98ef1088a7190ec0ff2e20de3194acfe033a8d012ab3e6cee44e490248e9e771"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직각이등변삼각형",
+            "src": "stem",
+            "quote": "직각이등변삼각형"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "수선의 발"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{DE}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "$\\text{RHA}$ 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "대응변의 길이가 같음",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{BD}} = 6\\text{ cm}$이고 $\\overline{\\text{CE}} = 4\\text{ cm}$"
+          },
+          {
+            "term": "일직선",
+            "src": "solution",
+            "quote": "선분 $\\overline{\\text{DE}}$ 위에"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "직각과 평각에서 예각일치를 확인해 두 수선길이를 DA,AE로 옮겨 더한다.",
+      "reasons": {
+        "review": "제공된 두직각삼각형의 표준 RHA 대응을 찾은 뒤 길이를 합한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_de3c3556767c35f25e26898f7bb39ee5977477585ffb63aeec18c78fcc6e1dea",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5e9fc7555b7e933243f3ede8595fd00f1f119806e4bed26d00ff31a70d3d63e0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b229311030aca1aac77d3de07dc09bfbf980fca9bd1f73b011cad7da44f4c73c"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "0737a9d6786c46822f987e5b3b76d78426111e0abc443a0df14b80051a9b9a53"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "세 변에 이르는 거리는 내접원의 반지름으로 모두 같다",
+            "evidenceType": "IMPLIED",
+            "justification": "세변까지의 수선거리가 같음을 판정한다."
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "세 내각의 이등분선의 교점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "$\\text{RHA}$ 합동",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "내린 수선의 발"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "같은변거리와 같은각,공통빗변 RHA를 사용하고 꼭짓점등거리의 일반화를 거부한다.",
+      "reasons": {
+        "review": "내심과 외심의 성질을 구별하고 주어진 직각삼각형쌍을 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_5ed62574a56d8a430b860555ecc84882f79c108e8f6c6a73ca30f59336023141",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "294db8e1036b7e5793870a7fb92bbf92615c8b359f753a19f4d25810dbf2eaa0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a1beba4e43b1f159dad5a080b1827b622ab4669e4528d7fbd365dd6afec69349"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "b40dd61258d63b4e9f781d13d6c6ed2b8e1cd77c147d640d4e7258ff7739b5dc"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형"
+          },
+          {
+            "term": "각이등분선",
+            "src": "stem",
+            "quote": "이등분선과"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "수직이등분선이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "$\\text{SAS}$ 합동",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AB}} = \\overline{\\text{AC}}$"
+          },
+          {
+            "term": "일직선",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AD}}$ 위에 한 점 $\\text{P}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "밑변의중점·수직과 SAS합동은 성립하지만 임의P의 세꼭짓점거리는 같지않음을 판단한다.",
+      "reasons": {
+        "review": "표준 꼭지각이등분선 성질을 여러 진술에 적용하는 정형 판정이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_17e6e3319761302b9053587dc754f990132c2d06a46c0c10972c498ac43d411a",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "4f553635a5994372ad928099371c9cc36f350351866ce82eb49748c350852a0b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "702f0ea48ba72b59a0b4d8e1a9fac2d792e13fef383454658ac0014ac7f2f8f4"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "6bf4a334e85c7621f689f3a19b236e51a767f24dc6593334932a1f4bc5c083c2"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직각이등변삼각형",
+            "src": "stem",
+            "quote": "직각이등변삼각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{DB}} + \\overline{\\text{DE}}$의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동조건",
+            "src": "solution",
+            "quote": "$\\text{RHS}$ 합동",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "직각이등변삼각형",
+            "src": "solution",
+            "quote": "$\\triangle\\text{EBD}$도 직각이등변삼각형",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AC}} = \\overline{\\text{AD}}$"
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$\\overline{\\text{AB}} \\perp \\overline{\\text{DE}}$"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{EC}} = 5\\text{ cm}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "그려진 AE를 공통빗변으로 DE=EC를 얻고 작은직각이등변삼각형의 DB=DE를 더한다.",
+      "reasons": {
+        "review": "RHS와 45도 등변을 차례로 연결하며 필요한 보조선은 그림에 주어져 있다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_a8a7223f1fc66d8142121c56270d8b2c57809709e46475bcb21e0077c82dc6ba",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "121fc6902b39cd466c2570dc471dde3eef648b2bc8548205b46efe1e85bad35c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "71dd7dcc8a7f12b036d6b79e943c41e226a3864a3de72eddf942964c0b476dbf"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "4ec130188e122784e0269443929fbd7efcf30d7e38070607033108ae0a940ab7"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\text{BIC}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "외심의 각의 성질",
+            "evidenceType": "IMPLIED",
+            "justification": "외심각이 해당삼각형내각의 두배임을 이용한다."
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "90^\\circ + \\dfrac{1}{2}\\angle\\text{A}",
+            "evidenceType": "IMPLIED",
+            "justification": "내심의두각이등분선으로 생긴각공식을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\text{BOC} = 100^\\circ$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "외심각의 절반인 A를 구해 내심각90+A/2에 대입한다.",
+      "reasons": {
+        "review": "두 표준 중심각관계를 직접 연결한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_806048a50a696f33239325ac5971069199abca670b3e7dbbbcace741edd7e5aa",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9341fb3bc203dfb4a9e662255ce5ec3f77d2537dea33a828fc4e61d30c2bf99b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "81c15d1f916d9b07dbc854f84c15f77d251ad21460cbd90aea8704ff09d5760a"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "e446bef4cda31f21b52efae8409a41193f7ef23070bb8463dfd9a5e3b83d1005"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle\\text{ACB}$의 크기"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례배분",
+            "src": "solution",
+            "quote": "비례배분",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "원주각",
+            "src": "solution",
+            "quote": "원주각(내각)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$\\angle\\text{AOB} : \\angle\\text{BOC} : \\angle\\text{COA} = 2 : 4 : 3$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "한바퀴360을2:4:3으로 배분한 뒤 목표원주각을 반으로 구한다.",
+      "reasons": {
+        "review": "비례배분 한 번을 선행한 외심각의 표준 활용이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_cdd09c93abc949055dcd2564e509b447baa9d03f3b1ce295d6a4d278eecbd393",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3d34abe42d725fc90586cf53a484feb6547b30dc0e006ad4c88fb2916e25379e"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1aa2433d86e0a1553aba67decfc82b0c817631572ee29d10e505c6896d2bee27"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "5d34adea051a2940bc44e77d66544ae5e38344a5602e1288671ec00b3632ba81"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심이고"
+          },
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "교점을 각각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "엇각",
+            "src": "solution",
+            "quote": "엇각의 크기가 같다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "각이등분선",
+            "src": "solution",
+            "quote": "세 내각의 이등분선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "각각 이등변삼각형",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행한 선을"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "엇각과 이등분각으로 DB=DI,EC=EI를 얻고 일반적으로 BI=CI는 아님을 판단한다.",
+      "reasons": {
+        "review": "표준 각이등분선·평행의 이등변 패턴을 두쪽에 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_50fa0867324c49c30942fd8c5b817e0a234d22edf2a57890bd50fc6c8b8b0869",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "68279479fe9c3031f994d4324899462e773359779665d408a933139e13a30612"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a8b85462db319ba0b8d3ec30d8934da45ad5b562e785798d6108cb0ab0bacf57"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "선택",
+            "src": "stem",
+            "quote": "코스 중 하나를 선택"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "경우의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱의법칙",
+            "src": "solution",
+            "quote": "곱의 법칙",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "창경궁, 경복궁, 덕수궁 중 한 곳"
+          },
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "구경한 다음"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "고궁3개 각각에 버스코스5개가 가능하여 선택수를 곱한다.",
+      "reasons": {
+        "review": "곱의법칙의 직접형이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_fdfc839f5adc63e95961aa61d6f4f18582e754abedf709b033e4dea714c0fd73",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "705452ca538c7f6c590be42436e226dd5d1be2e553450e8b09286b18b44b8706"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ac2ddfd8e7cc1e2aa597bb7339359a17b0120e6c1eff793631877af1081b9a5e"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "4명의 선수"
+          },
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "이긴 사람은 계속하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a - b$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "모델링",
+            "src": "solution",
+            "quote": "총 경기 수는 (탈락한 총 선수 수)와 정확히 일치",
+            "evidenceType": "IMPLIED",
+            "justification": "경기수와 탈락자수를 일대일로 연결한다."
+          },
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "최대 경기 수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "최솟값",
+            "src": "solution",
+            "quote": "최소 경기 수",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "비기는 경우는 없다"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "선수 전원을 탈락시킨"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "한경기한명탈락과 승자팀최대3명탈락을 이용해 경기수4와7을 정한다.",
+      "reasons": {
+        "review": "경기규칙을 탈락자수로 바꾸는 하나의 일정량 해석이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_6aab0e86fa6835f3b23c61f0b432f907eac4e58d4d9e580108ff574193bd4b19",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a61f06e844afe3d6784952bbdb1a911a52a64694d99b87ff220d2194a3d5d0e7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fdcca501d648bcc214593313a8f8d760289ba9eb5d79f08c6f7c4afb0b4ddbab"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "10원, 50원, 100원"
+          },
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "각각 5개씩"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "지불하는 방법의 경우의 수"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "개수를 기준으로 경우를 나누어",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "경우 ($100$원 3개 사용",
+            "evidenceType": "IMPLIED",
+            "justification": "100원개수에따른허용50원·10원개수의 쌍을열거한다."
+          },
+          {
+            "term": "합의법칙",
+            "src": "solution",
+            "quote": "총 경우의 수 합산",
+            "evidenceType": "IMPLIED",
+            "justification": "서로겹치지않는 세금액분기의 개수를 더한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "$0 \\le x, y, z \\le 5$"
+          },
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "음이 아닌 정수"
+          },
+          {
+            "term": "상등",
+            "src": "stem",
+            "quote": "350원을 지불"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "100원개수를1,2,3으로 나눈 뒤 50원과10원개수의 제한을 동시에 확인하여 합한다.",
+      "reasons": {
+        "review": "세 종류의 상한과 금액식에 맞는 분기기준을 정하고 빠짐없이 열거한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_ef21b8c46c8653f7a12db8687ec34bf681810a260bc2cae681217087e10e8eec",
+      "format": "옳은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f46ff388398b082aa352fd0d323e8d99da87914f051da1a2f6a6992c07f111b5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "55806d5baf2afcb4a5c6b07cc29940b60db51b12690731599e24fe1668b9746e"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "주사위 한 개를 던졌을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "확률이 0 이나 1 이 아닌 것"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률",
+            "src": "solution",
+            "quote": "절대로 일어날 수 없는 사건의 확률은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "30$의 약수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "배수",
+            "src": "solution",
+            "quote": "9$의 배수",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "$\\{1, 2, 3, 4, 5, 6\\}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "주사위1~6에 대한 각 술어를 확인해 일부눈만 만족하는 사건을 찾는다.",
+      "reasons": {
+        "review": "작은표본에 확률0과1의 정의를 직접 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_fbda725c4e6f582b3b3330d3ce10388024c0ed181f8d86d34c93c2c1433edbc3",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8502b8e003c5a457de49827cf2a89909ecaec5e8a72d8f68b41f87e775679abf"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fd43cbf92f2fb9c57326bb2778e712748d5f7883c3d4fbacb2544bc522c90b1d"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$\\dfrac{1}{3}$"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "사탕 한 개를 임의로 꺼낼 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "딸기 맛 또는 오렌지 맛일 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "확률의 덧셈정리",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배반사건",
+            "src": "solution",
+            "quote": "서로 배반사건"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "한개사탕의 두 배반맛 확률을 더한다.",
+      "reasons": {
+        "review": "확률덧셈정리를 주어진 두수에 직접 대입한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_b8539a3e0e472d0d66feff4f53782218c23b0e2dd0fc485a341c3328dca24e87",
+      "format": "옳지 않은 것 고르기",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "51e4817e4c6b0e8891b0ee0ca5ad1173a2cdbf0ee7579fca41e89a6663e23217"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "753d594bb1b9dc1a4dc72995c79e003eb7107af76b5a15f240a9216e4b49d001"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "choices",
+            "quote": "반드시 일어나는 사건의 확률"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "합의 법칙",
+            "evidenceType": "IMPLIED",
+            "justification": "배반사건의 확률은 합이라는 덧셈정리를 적용한다."
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건의 확률",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "배반사건",
+            "src": "choices",
+            "quote": "동시에 일어나지 않는 두 사건"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "필연·불가능·확률범위·여사건과 배반합에서 잘못된 곱셈 진술을 찾는다.",
+      "reasons": {
+        "review": "정의와 기본정리의 진술을 그대로 비교한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_c7dec3cb3d51a0145495c47d9ad9ecdb4f8496deca8b6190b62131a611e99de1",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "24230af695095a5c982e38c1399eca7a9cf611b20686b9dd8b6cd0062a9df48f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f2ed5852144b9547d897c32b47c680c756188ab8bc7e63ad12c158042726b0d4"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "주사위 한 개를 두 번 던져서"
+          },
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "$ax + b = 4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "해가 자연수일 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "x = \\dfrac{4 - b}{a}",
+            "evidenceType": "IMPLIED",
+            "justification": "방정식을 해에관해 정리한다."
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "각 $b$에 따른 $a$의 값 조사",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "3의 약수",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수학적확률",
+            "src": "solution",
+            "quote": "$P = \\dfrac{5}{36}$",
+            "evidenceType": "IMPLIED",
+            "justification": "허용순서쌍5개와전체36개의비이다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "해가 자연수"
+          },
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "주사위 눈"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "x=(4−b)/a가 양의정수가 되도록 b범위를 줄이고 각 분자의 약수를 센다.",
+      "reasons": {
+        "review": "방정식의 자연수해 조건을 표본쌍의 양수·나누어떨어짐 제약으로 전환한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_e00d7e23c46a1468b70b358ae7ccf2d1511974039c2571072d0f5ec79bf42af0",
+      "format": "단일 정답",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b52a061d1fe6510d6a938f52dcfc05dbade962ee290cd69894fc6a41784ae0de"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5d94a84ef1bbabfd5c3a851114fb1e6fed1c0e41b92a9d7b3e71201f751d7876"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$10\\,\\%$"
+          },
+          {
+            "term": "시행",
+            "src": "stem",
+            "quote": "토요일에 비가 올"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "이틀 모두 비가 오지 않을 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건의 확률",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "각 날의 비가 오지 않을 확률을 곱한다.",
+            "evidenceType": "IMPLIED",
+            "justification": "발문에없는 독립을 추가한 기존해설의 후보단계로만 보존한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "이틀 모두"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "기존해설 모형에서는 각 무강수확률을 구해 곱하지만 발문은 독립을 주지 않는다.",
+      "reasons": {
+        "review": "독립모형을 추가한 경우에만 표준 여사건곱의 난도2 후보이다."
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "sourceHold": {
+          "status": "INDEPENDENCE_ASSUMPTION_ABSENT",
+          "reason": "발문에 독립 또는 결합확률 조건이 없어 두사건의 결합확률과 유일정답을 확정할 수 없다. 기존해설의 독립곱은 추가가정이다."
+        },
+        "methodCandidateOnly": true
+      },
+      "judgmentStatus": "PARTIAL_SOURCE_EVIDENCE",
+      "unresolvedFields": [
+        "difficultyBucket",
+        "level",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "필수 독립 또는 결합확률 조건"
+      ]
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_2e6469be1e5556171fdd6eac6c431cbed8d373294ac331390538bbe162b23bca",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "221390c388560d1907a6451c1fd6f4b849e38fbcf06429d6e14629dfdb453746"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e8b75e95ff422c927571d86f70396a217829b95703e0d8b80bb79d368f63e6d4"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "좌표",
+            "src": "stem",
+            "quote": "두 점 $(5, a + 2)$와 $(-1, 3a - 6)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "상등",
+            "src": "solution",
+            "quote": "$y$좌표가 서로 같아야",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "일차방정식을 세워",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$x$축에 평행"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "x축에 평행하므로 두 y좌표를 같게 놓아 한 일차방정식을 푼다.",
+      "reasons": {
+        "review": "축평행성질 하나를 직접 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_054b0b59afa1d5fe210bf33c7bc6102bf70b26875c9b46e8babbb735c060b5aa",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "5b43877141271c1e4d1646bde3c7b6462ae1f5d24e86b57a8520a88e1dacada8"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "98958b95b462d88f97b048338f28567dc31ee3791f67ce17898bd8814df9dbcd"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "직선의방정식",
+            "src": "stem",
+            "quote": "세 직선 $x + y = 2$, $2x + 3y = 1$, $ax + 3ay = 8$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "수 $a$의 값"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립방정식",
+            "src": "solution",
+            "quote": "연립하여 교점",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "교점의 좌표를",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "한 점에서 만날 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "앞의 두식을 연립한 교점을 세번째식에 대입하여 계수를 정한다.",
+      "reasons": {
+        "review": "일점교차의 표준 교점계산→대입 경로이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_f9435015ee49286f29328d230d24f34d8cf585ef9492e1608607290a2ee94f53",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c45038b08d8f219e834dbc2c36f4e59871a879ec6b9c83565f881b812a49eb28"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "95d91958e4859ca47b7eb8f82875fd87a140dd0f14864091a5c296003dd1ff9b"
+        },
+        {
+          "scope": "QASSET",
+          "algo": "sha256",
+          "value": "e9b0adcfc11503463639f5f7c603af2e25a46ca40f676550814a932f9c766703"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "외심이다."
+          },
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레의 길이가 $20"
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "외접원의 둘레의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "등거리",
+            "src": "solution",
+            "quote": "세 꼭짓점에 이르는 거리는 외접원의 반지름",
+            "evidenceType": "IMPLIED",
+            "justification": "OB와OC가 같은 외접반지름임을 쓴다."
+          },
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$2R + 8 = 20$",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형둘레로 미지반지름의 방정식을 세운다."
+          },
+          {
+            "term": "원주",
+            "src": "solution",
+            "quote": "$l = 2\\pi R$",
+            "evidenceType": "IMPLIED",
+            "justification": "구한반지름으로 원주공식을 적용한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{\\text{BC}} = 8\\text{ cm}$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "OB=OC=R로 삼각형둘레식에서 R을 구하고 원주2πR을 계산한다.",
+      "reasons": {
+        "review": "등거리 반지름을 한 번 복원한 뒤 원주공식을 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_6083ec375d3b2a9f0e432de61c84a533c239a2b21aa5fe3f978d37416e3bc273",
+      "format": "서술",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e8d20200c437e863335e01767a17e85f1559ef65842314bfd3169326a3eb2ea7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "92965e2dd562d02ca4bada5d7db60d6a4490ea271df0ff64919a2ba7b26e17e8"
+        }
+      ],
+      "slots": {
+        "given": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "$\\dfrac{5}{6}$와 $\\dfrac{4}{5}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "하나만 알아맞힐 확률"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "두 가지 경우로 나뉜다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "여사건",
+            "src": "solution",
+            "quote": "여사건의 확률",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "확률의곱셈정리",
+            "src": "solution",
+            "quote": "각 경우의 확률은 곱의 법칙",
+            "evidenceType": "IMPLIED",
+            "justification": "독립이발문에없어 기존해설의 후보단계로만 남긴다."
+          },
+          {
+            "term": "확률의덧셈정리",
+            "src": "solution",
+            "quote": "합의 법칙을 적용한다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 배반경로의 확률을 합한다."
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "두 신호 중에서 하나만"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "A성공B실패와 A실패B성공을 더하는 기존모형이나 독립조건은 발문에 없다.",
+      "reasons": {
+        "review": "독립가정을 추가하면 여사건과 두 배반곱을 연결하는 정형구조이다."
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "sourceHold": {
+          "status": "INDEPENDENCE_ASSUMPTION_ABSENT",
+          "reason": "발문에 독립 또는 결합확률 조건이 없어 두사건의 결합확률과 유일정답을 확정할 수 없다. 기존해설의 독립곱은 추가가정이다."
+        },
+        "methodCandidateOnly": true
+      },
+      "judgmentStatus": "PARTIAL_SOURCE_EVIDENCE",
+      "unresolvedFields": [
+        "difficultyBucket",
+        "level",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "필수 독립 또는 결합확률 조건"
+      ]
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "sourceRead": true,
+    "allItemsRead": true,
+    "independentFullExamReview": false,
+    "independentReviewStatus": "PENDING_ROOT_CROSS_REVIEW"
+  }
+}

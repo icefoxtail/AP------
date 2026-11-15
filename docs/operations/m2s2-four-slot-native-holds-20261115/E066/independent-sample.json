@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "m2-s2-independent-sample-v1",
+  "examId": "E066",
+  "reviewer": "ROOT",
+  "author": "C",
+  "independent": true,
+  "sourceArchiveFile": "original/middle/m2/2final/18_연향중_2학기_기말_중2_수학.js",
+  "sourceGitBlobSha": "841b0b961ff12d3861ca509dabd06233aac9d3f4",
+  "reviewSha256": "bfb6332bad669553635d6872f0f5449de89b7246dc7bb513b49cb66c7c4a9a54",
+  "fourSlotSha256": "ffc3ad972982b227e846baafc25c7def0a16463c11e5fac4e233d86084ccaf6b",
+  "ordinals": [
+    3,
+    10,
+    13
+  ],
+  "items": [
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_ff3e0c3a8eb16e1e21d6e96321d3f0f8d0caba89237360365ac759b547571238",
+      "verdict": "PASS_WITH_REGISTRATION_DEBT",
+      "reason": "사각형·삼각형 given, 넓이 goal, 높이·등적변형·넓이비 method, 주어진 평행·2:3 condition을 실제 그림과 대조했다. 등적 목표치환의 방향을 선택하는 NEW_PT 후보와 원본RPM076/2022부모를 구분했다.",
+      "quotesExact": true,
+      "quoteCount": 8,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "sourceEvidenceUnresolved": false,
+      "resolvedRepairs": []
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_9b11302d3a7122d262c9372b1ba251d28d664d7c260d7df8fc9a8dbfe4bcfd24",
+      "verdict": "PASS_WITH_REGISTRATION_DEBT",
+      "reason": "마름모와 대각선 교점 given, 대각선길이 goal, 새 AF교점·두 합동·AA method를 구별했다. 원래 E-F-C 공선관계는 condition으로 정확 인용을 보강했다. 평행선길이비Primary와 합동·마름모CC의 순차 연결은 ACTIVE 정의에 부합한다.",
+      "quotesExact": true,
+      "quoteCount": 11,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "sourceEvidenceUnresolved": false,
+      "resolvedRepairs": [
+        "Q10 original E-F-C collinearity added to condition with exact solution quotation"
+      ]
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_fd38acbc6175aaf889113ee736396df076128e008d2984a3ff169bc4d2831fcf",
+      "verdict": "ACCEPT_PARTIAL_RECORD_ONLY",
+      "reason": "닮은 삼각형 given과 x+y goal은 확정 기록할 수 있으나 방법은 해설의 추가 대응가정 아래 후보이다. PARTIAL/UNKNOWN 차단을 수용한다. RATIO TPL은 길이 부분만 지원하므로 전체형 확정선택에서 제거하고 각도결합 NEW_TPL 조건부 제안으로 분리했다.",
+      "quotesExact": true,
+      "quoteCount": 6,
+      "imageViewed": true,
+      "fourSlotCriticalDefect": false,
+      "sourceEvidenceUnresolved": true,
+      "resolvedRepairs": [
+        "Q13 full-goal TPL selection separated from length-only template; conditional NEW_TPL proposal retained"
+      ]
+    }
+  ],
+  "difficultyRechecks": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_87d2214f7a04a922f430afb05f32f456e0113fcf1adfac0126d0440293a9ff78",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "보기의 직사각형 조건과 마름모 조건이 중복되는지 구별하고 두 조건을 동시에 확보하는 한 해석이므로2/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_56c5f277704364fcb88c70d76244b3349874a1fff9e5737d53ecb346de3d56c0",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "각 보기의 주어진 변·각을 RHS/RHA/ASA의 충분조건에 대응시키는 정형 판정이므로2/B12·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_ff3e0c3a8eb16e1e21d6e96321d3f0f8d0caba89237360365ac759b547571238",
+      "bucket": 3,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "목표 ADEC를 등적인 DEF로 옮기는 대상을 선택해야 주어진 BE:EF가 넓이비가 되므로3/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_3279cce749dd4487c04263a8eee4f9e467543247563217cadb85656b7cb3db4b",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "실제 외부 외심에서 두 밑각의 차를 읽고 각합을 적용하는 정형 연결이므로2/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_1db68682e8dab93e964780db8341789f55a0100e1025fc8aeb10bf507359309c",
+      "bucket": 3,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "직각들의 여각으로 RHA의 예각을 얻은 뒤 대응길이를 넓이 분할에 전달하므로3/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_0392252663f730e173df0e2826d0560b419f43c07abe42ca8b1ff51ac2b133dd",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "각 꼭짓점의 접선 조각을 같은 길이로 옮겨 전체9에서 부분4를 제외하는 순차 연결이므로2/B12·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_55a62a8f14901d99086cbada5d16a23129795e1f49fe4f738ae47bca124aa6b0",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "명시된 내각·외각 이등분선에 밑각과 반각을 순서대로 대입하므로2/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_c96d43d01cb2a63859229541f47b9ce02ce703052169689e03fa7dd62067684a",
+      "bucket": 1,
+      "proposedLevel": "하",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "보기의 기본 평행사변형 충분조건을 별도 구성 없이 직접 대조하므로1/B12·하 후보를 수용한다."
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_b0cab29f1489cf0ac97c7ee57470f4a3794ea581bb1be38c6d023ba6ead875a7",
+      "bucket": 3,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "원래 없는 밑변 중점을 도입하여 평행사변형과 정삼각형을 구성하는 선택이 있으므로3/B34·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_9b11302d3a7122d262c9372b1ba251d28d664d7c260d7df8fc9a8dbfe4bcfd24",
+      "bucket": 3,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "원래 없는 AF의 교점G를 만들고 SAS와ASA로 BG를 확보해야 교차 평행비를 쓸 수 있으므로3/B34·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_c6cb6183136b26778c4d5f6acf0c3f89ac994bdc999a2876c3536e7a15030d6a",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "명시된 두 중심과 이등변의 기본 각관계를 차례로 구해 차를 취하므로2/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_490130ca61d11494015508cd6a0fcc353afdbcc2d6fd9479fec1a84dc6e9ce9c",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "AE의 분점비를 두 평행 밑변에 대한 높이비로 읽고 넓이비에 옮기는 정형 해석이므로2/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_fd38acbc6175aaf889113ee736396df076128e008d2984a3ff169bc4d2831fcf",
+      "bucket": "UNKNOWN",
+      "proposedLevel": "중",
+      "decision": "ACCEPT_UNRESOLVED_SOURCE",
+      "reason": "실제 그림에는 각·변 대응을 고정할 표시나 ordered similarity 문장이 없고 해설이 ABC~DFE를 새로 가정한다. 최종UNKNOWN과 조건부2/중을 분리한 source-evidence HOLD를 수용한다."
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_63a147f1a8f3e15a6773187f3a071bb55a3479b445e9cd4befd3be5b1e9b7370",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "두 도형에 나뉜 길이를 닮음비로 한 도형에 옮긴 뒤 평행사변형 둘레에 적용하므로2/B12·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_f01e81ae97e68611f235766408cebc0508a77144ea07786cfd77c9c962ba9124",
+      "bucket": 3,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "접기의 길이·각 보존으로 원래 없던 AA 대응쌍을 찾아야 하므로3/B34·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_d0869c2c131acf9043de120b6c02134d8cf3874431a8e574358c32b1cfacb263",
+      "bucket": 3,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "부분BD를 복원한 뒤 BA가 서로 다른 두 쌍에 들어가는 중첩 SAS 대응을 선택하므로3/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_794a30ffb40d7c6f257dca14ce3ffac6c0dd840f02bf93fc89102bf846d34fd4",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "명시된 두 수선과 공통각의 AA에서 전체AB와 부분BD를 순서대로 계산하므로2/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_793a179a1eeecdb43f398d06022efb3de49a538aa574cf4b5c26cb1cee1eeda6",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "주어진 세 수직표시로 교차비를 전체비로 바꾸고 내부 평행비를 연이어 적용하므로2/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_66d895860d5a082cd07c467598004177f0215ad5d0fe60dd2ca088a64dd34956",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "이미 그려진 두 수선의 같은 사영비 식을 반복한 뒤 대각선 위 차를 취하므로2/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_d0ab5438d77f3d97e8632bc12184057b7eb23d9a60e10f0a89618d1fce056725",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "수선D와 DE=BD, FE평행AC가 모두 지정되어 사영비와 평행비의 순서를 따르므로2/B23·중 후보를 수용한다. 피타고라스 역은 발문의 직각을 재확인하는 불필요 단계다."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_f44b63013a71b15948888296c1530ed25cb36aae95fb77db5a46ad4f2da4e1dc",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "첫 소문항이 RHS 확인을 안내하여 그 대응변을 둘레 합에 대입하므로2/B12·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_f995b2b41c79ddecd0aa1ed7f83f8776010732dd6d147d320785f9f60dc618ce",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "직각삼각형 외접반지름과 내접반지름의 표준식을 원 넓이에 연결하므로2/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_c8c98a89e8372cfa912bc2229b9d46a1b6ee39d690650f5d512292df556fe042",
+      "bucket": 2,
+      "proposedLevel": "중",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "발문이 닮음을 요구하고 공통각과 등각이 명시되어 전체·부분 비례식 한 개를 세우므로2/B23·중 후보를 수용한다."
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_e5c360051dda591b4832020ec859c8fa31da6cc767f096f851abfef16471676f",
+      "bucket": 1,
+      "proposedLevel": "하",
+      "decision": "ACCEPT_NEW_LEVEL_CANDIDATE",
+      "reason": "명시된 교차 평행선과 대응부분길이9:6에 기본 비례식을 직접 적용하므로1/B12·하 후보를 수용한다."
+    }
+  ],
+  "sourceReadCoverage": {
+    "stemAndChoicesRead": 24,
+    "answersAndSolutionsRead": 24,
+    "requiredFiguresViewed": 22,
+    "viaMontages": [
+      "workers/C/images/E066/montage0.jpg",
+      "workers/C/images/E066/montage1.jpg"
+    ],
+    "freshFullMathematicalReverification": false
+  },
+  "definitionChecks": [
+    "PT_PARALLEL_SEGMENT_RATIO",
+    "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "PT_SIMILAR_FIGURES",
+    "TPL_SIMILAR_FIGURES_RATIO (partial only; not selected as whole-goal template)",
+    "CC_TRIANGLE_CONGRUENCE",
+    "CC_RHOMBUS_PROPERTIES"
+  ],
+  "criticalGoalMethodDefects": 0,
+  "fabricatedQuotes": 0,
+  "notes": [
+    "Every historical level is absent. Proposed levels are independent semantic candidates and are not applied as original values.",
+    "Q13 remains blocked; its candidate definition and supported numeric difficulty are conditional on recovery of source correspondence.",
+    "Unauthorized standardUnitOrder proposals were removed from all24 items; original source and normal fields remain unchanged."
+  ],
+  "reviewedAt": "2026-11-14T06:15:01.450354+00:00"
+}
