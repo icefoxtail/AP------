@@ -525,7 +525,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "밑변이 $4\\sqrt5\\text{ cm}$, 높이가 $2\\sqrt2\\text{ cm}$인 삼각형과 높이가 $\\sqrt5\\text{ cm}$, 가로가 $x\\text{ cm}$인 직사각형이 있다. 삼각형의 넓이가 직사각형의 넓이의 $\\sqrt2$배일 때, $x$의 값은? (5점)<br><img src=\"assets/images/22_연향중_1학기_중간_중3_수학/q10_replacement.svg\">",
+    "content": "밑변이 $4\\sqrt5\\text{ cm}$, 높이가 $2\\sqrt2\\text{ cm}$인 삼각형과 높이가 $\\sqrt5\\text{ cm}$, 가로가 $x\\text{ cm}$인 직사각형이 있다. 삼각형의 넓이가 직사각형의 넓이의 $\\sqrt2$배일 때, $x$의 값은? (5점)<br><img src=\"assets/images/22_연향중_1학기_중간_중3_수학/q10_replacement-figure-only.svg\">",
     "choices": [
       "$4\\sqrt{2}$",
       "$2\\sqrt{5}$",
@@ -571,7 +571,7 @@ window.questionBank = [
     "rpmBindingStatus": "DIRECT_BINDING_GAP",
     "learningDifficulty": "중",
     "solutionImage": "assets/images/22_연향중_1학기_중간_중3_기출c/q10-solution-v2.svg",
-    "problemImage": "assets/images/22_연향중_1학기_중간_중3_수학/q10_replacement.svg",
+    "problemImage": "assets/images/22_연향중_1학기_중간_중3_수학/q10_replacement-figure-only.svg",
     "solutionImageAlt": "해설 그림: 파란 삼각형에는 밑변 4√5 cm와 수직 높이 2√2 cm를, 주황 직사각형에는 가로 x cm와 높이 √5 cm를 표시한 개념도이다. 크기는 비례하지 않는다.",
     "solutionImageCaption": "삼각형 넓이는 ½·4√5·2√2=4√10 cm²이고 직사각형 넓이는 x√5 cm²이다. 4√10=√2·x√5이므로 x=4 cm, 정답은 ③이다.",
     "solutionImageSize": "full"

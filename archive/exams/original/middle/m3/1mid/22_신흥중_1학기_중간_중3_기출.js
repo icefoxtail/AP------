@@ -1034,7 +1034,7 @@ window.questionBank = [
       "RPM_CANDIDATE"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 넓이가 각각 $5\\text{ cm}^2$, $45\\text{ cm}^2$, $125\\text{ cm}^2$인 세 정사각형을 이어 붙여서 새로운 도형을 만들었다. 이 도형의 둘레의 길이를 구하면? (5점)<br><img src=\"assets/images/22_신흥중_1학기_중간_중3_수학/q19-display-v2.svg\">",
+    "content": "다음 그림과 같이 넓이가 각각 $5\\text{ cm}^2$, $45\\text{ cm}^2$, $125\\text{ cm}^2$인 세 정사각형을 이어 붙여서 새로운 도형을 만들었다. 이 도형의 둘레의 길이를 구하면? (5점)<br><img src=\"assets/images/22_신흥중_1학기_중간_중3_수학/q19-display-v2-figure-only.svg\">",
     "choices": [
       "$26\\sqrt{5}\\text{ cm}$",
       "$28\\sqrt{5}\\text{ cm}$",

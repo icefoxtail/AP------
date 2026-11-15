@@ -451,8 +451,7 @@ window.questionBank = [
       "결합법칙"
     ],
     "wide": false,
-    "content": "다음 계산 과정에서 ①~⑤에 들어갈 것으로 옳지 않은 것은?",
-    "image": "assets/images/23_동산중_1학기_중간_중1_유사/q12.svg",
+    "content": "다음 계산 과정에서 ①~⑤에 들어갈 것으로 옳지 않은 것은?\n\n<div class=\"note-box\">\n$$\n\\begin{aligned}\n&(-25)\\times(+7)\\times(-4)\\\\\n={}&(-25)\\times(-4)\\times(+7) && \\cdots\\ \\text{㉠}\\\\\n={}&\\{(-25)\\times(-4)\\}\\times(+7) && \\cdots\\ \\text{㉡}\\\\\n={}&\\text{㉢}\\times(+7)\\\\\n={}&\\text{㉣}\n\\end{aligned}\n$$\n</div>",
     "choices": [
       "㉠: 곱셈의 교환법칙",
       "㉡: 곱셈의 결합법칙",

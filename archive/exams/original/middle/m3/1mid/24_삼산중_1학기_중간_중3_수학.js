@@ -994,7 +994,7 @@ window.questionBank = [
     "provenance": "ALIVE_REPLACEMENT",
     "sourceMode": "ALIVE_REPLACEMENT",
     "score": 5,
-    "content": "넓이가 각각 $8,18,32\\,\\mathrm{cm}^2$인 정사각형 세 개가 있다. 각 정사각형의 한 변의 길이의 합을 구하면? [5점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q18-problem-label-layout-v2.svg\">",
+    "content": "넓이가 각각 $8,18,32\\,\\mathrm{cm}^2$인 정사각형 세 개가 있다. 각 정사각형의 한 변의 길이의 합을 구하면? [5점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q18-problem-label-layout-v2-figure-only.svg\">",
     "choices": [
       "$7\\sqrt2$",
       "$8\\sqrt2$",
@@ -1053,7 +1053,7 @@ window.questionBank = [
       "replacementReason": "original q18 had geometry PNG with unknown segment location; maintain radicals and geometry with a complete independent replacement",
       "replacementStage": "CREATE"
     },
-    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q18-problem-label-layout-v2.svg",
+    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q18-problem-label-layout-v2-figure-only.svg",
     "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q18-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 파랑·주황·초록 정사각형 안의 넓이 8, 18, 32와 아래의 한 변 길이 2√2, 3√2, 4√2를 짝지었다. 길이 단위는 cm, 넓이 단위는 제곱센티미터이다.",
     "solutionImageCaption": "세 정사각형의 한 변 길이는 2√2 cm, 3√2 cm, 4√2 cm이며, 그 합은 9√2 cm.",
@@ -1066,7 +1066,7 @@ window.questionBank = [
     "provenance": "ALIVE_REPLACEMENT",
     "sourceMode": "ALIVE_REPLACEMENT",
     "score": 5,
-    "content": "$x>2y>0$인 두 수 $x,y$에 대하여, 가로가 $x$, 세로가 $x-y$인 직사각형에서 한 변이 $y$인 정사각형 두 개를 겹치지 않게 잘라낸다. 남은 부분의 넓이를 인수분해한 식은? [5점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q19-problem-label-layout-v2.svg\">",
+    "content": "$x>2y>0$인 두 수 $x,y$에 대하여, 가로가 $x$, 세로가 $x-y$인 직사각형에서 한 변이 $y$인 정사각형 두 개를 겹치지 않게 잘라낸다. 남은 부분의 넓이를 인수분해한 식은? [5점]<br><img src=\"assets/images/24_삼산중_1학기_중간_중3_수학/q19-problem-label-layout-v2-figure-only.svg\">",
     "choices": [
       "$(x-y)(x+2y)$",
       "$(x+y)(x+2y)$",
@@ -1128,7 +1128,7 @@ window.questionBank = [
       "replacementReason": "original q19 geometric square arrangement not visually retrievable; preserve factored-area core with new self-contained diagram and constraints",
       "replacementStage": "CREATE"
     },
-    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q19-problem-label-layout-v2.svg",
+    "image": "assets/images/24_삼산중_1학기_중간_중3_수학/q19-problem-label-layout-v2-figure-only.svg",
     "solutionImage": "assets/images/24_삼산중_1학기_중간_중3_수학/q19-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 파란색과 주황색으로 나눈 남은 직사각형 조각을 색을 맞춰 재배치한다.",
     "solutionImageCaption": "파란 조각과 주황 조각을 옮겨 붙이면 가로 x+y, 세로 x−2y인 직사각형이 된다. 남은 넓이의 인수분해는 (x+y)(x−2y)이다. 정답은 ④이다.",

@@ -183,7 +183,7 @@ window.examData = {
       "id": "q05",
       "number": 5,
       "score": 4.0,
-      "question": "다음 그림과 같은 직각삼각형 $ABC$에서 $\\angle C=90^\\circ, \\angle A=30^\\circ, \\overline{AB}=4\\sqrt{3}\\text{ cm}$일 때, $\\overline{BC}$의 길이는? (4점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q05.svg\" alt=\"직각삼각형 ABC\" /></div>",
+      "question": "다음 그림과 같은 직각삼각형 $ABC$에서 $\\angle C=90^\\circ, \\angle A=30^\\circ, \\overline{AB}=4\\sqrt{3}\\text{ cm}$일 때, $\\overline{BC}$의 길이는? (4점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q05-figure-only.svg\" alt=\"직각삼각형 ABC\" /></div>",
       "choices": [
         "$\\sqrt{3}\\text{ cm}$",
         "$2\\sqrt{3}\\text{ cm}$",

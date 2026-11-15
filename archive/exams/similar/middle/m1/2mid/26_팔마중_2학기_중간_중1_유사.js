@@ -39,7 +39,7 @@ window.questionBank = [
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "두 직선 $AB$와 $CD$가 한 점 $O$에서 만날 때",
-    "caption": "두 직선 AB와 CD의 교차에서 맞꼭지각 a와 이웃각 b의 관계",
+    "caption": "두 직선이 이루는 각",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q01-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q01-solution.plan.json"
   },
@@ -361,7 +361,7 @@ window.questionBank = [
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "두 쌍의 평행선이 교차할 때 생기는 각 중 표시된 각",
-    "caption": "평행선 l, m과 p, q가 이루는 동위각 및 엇각을 이용한 각 x, y의 크기 계산",
+    "caption": "평행선과 교차하는 직선",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q09-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q09-solution.plan.json"
   },
@@ -402,7 +402,7 @@ window.questionBank = [
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "점 $P$를 지나고 직선 $l$에 평행한 직선을 작도하는 과정",
-    "caption": "동위각의 크기가 같음을 이용하여 점 P를 지나는 평행선을 작도하는 순서",
+    "caption": "직선과 점 P의 작도 그림",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q10-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q10-solution.plan.json"
   },
@@ -550,7 +550,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "points": 4,
-    "image": "assets/images/26_팔마중_2학기_중간_중1_유사/q14.svg",
+    "image": "assets/images/26_팔마중_2학기_중간_중1_유사/q14-figure-only.svg",
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
     "solution": "[키포인트] 두 변의 길이가 같을 때 삼각형의 합동 조건:\n- 나머지 한 변의 길이가 같으면 $SSS$ 합동\n- 두 변의 '끼인각'의 크기가 같으면 $SAS$ 합동\n\n문제에서 주어진 두 변은 $\\overline{AB} = \\overline{DE}$와 $\\overline{BC} = \\overline{EF}$입니다.\n두 변 $\\overline{AB}$와 $\\overline{BC}$의 끼인각은 $\\angle B$이고,\n두 변 $\\overline{DE}$와 $\\overline{EF}$의 끼인각은 $\\angle E$입니다.\n따라서 끼인각의 크기가 서로 같다는 조건인 $\\angle B = \\angle E$가 주어지면 두 삼각형은 $SAS$ 합동이 됩니다.\n(①, ②의 $\\angle A = \\angle D$나 $\\angle C = \\angle F$는 두 변의 끼인각이 아니므로 합동을 보장할 수 없습니다.)\n\n따라서 필요한 한 조건이 될 수 있는 것은 ④입니다.",
@@ -558,7 +558,7 @@ window.questionBank = [
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "두 삼각형 $ABC$와 $DEF$에서",
-    "caption": "두 변의 길이가 같은 두 삼각형이 SAS 합동이 되기 위한 끼인각 조건 판별",
+    "caption": "두 삼각형 ABC와 DEF",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q14-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q14-solution.plan.json"
   },
@@ -828,7 +828,7 @@ window.questionBank = [
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "삼각형의 외각의 성질을 이용하여",
-    "caption": "삼각형의 외각의 성질을 이용하여 각 x, y를 단계별로 구하는 과정",
+    "caption": "삼각형과 각 표시",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q21-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q21-solution.plan.json"
   },
@@ -864,7 +864,7 @@ window.questionBank = [
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "다음 그림에서 $x + y$의 값을 구하고 그 풀이과정을 서술하시오.",
-    "caption": "평각과 직각, 맞꼭지각의 성질을 이용한 미지수 x, y의 일차방정식 풀이",
+    "caption": "한 점에서 만나는 세 직선",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q22-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q22-solution.plan.json"
   },
@@ -931,7 +931,7 @@ window.questionBank = [
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "정사각형 $ABCD$의 대각선의 교점에 놓여 있을 때",
-    "caption": "두 정사각형의 회전 배치에서 삼각형 합동을 이용한 겹치는 색칠한 부분의 넓이 증명",
+    "caption": "두 정사각형과 색칠한 영역",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q24-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사_plans/q24-solution.plan.json"
   }

@@ -607,7 +607,7 @@ window.questionBank = [
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
     "solution": "[키포인트] 수직이등분선은 선분의 중점을 지나고 그 선분에 수직인 직선이다.\n증명 과정을 단계별로 확인하면:\n1) 직선 $l$이 $\\overline{AB}$를 이등분하므로 $\\overline{AM} = \\overline{BM}$이다. $\\implies$ (가)는 $\\overline{BM}$\n2) 직선 $l$이 $\\overline{AB}$에 수직이므로 $\\angle PMA = \\angle PMB = 90^\\circ$이다. $\\implies$ (나)는 $90^\\circ$\n3) $\\overline{PM}$은 두 삼각형에 공통인 변이다. $\\implies$ (다)는 공통\n4) 두 변의 길이와 그 끼인각의 크기가 각각 같으므로 SAS 합동이다. $\\implies$ (라)는 SAS\n5) 합동인 두 삼각형의 대응변의 길이는 같으므로 $\\overline{PA} = \\overline{PB}$이다. $\\implies$ (마)는 $\\overline{PB}$\n따라서 (라)에 ASA라고 표기한 ④가 옳지 않다.\n정답은 ④이다.",
-    "image": "assets/images/24_매산중_2학기_중간_중1_유사/q16.svg",
+    "image": "assets/images/24_매산중_2학기_중간_중1_유사/q16-figure-only.svg",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",

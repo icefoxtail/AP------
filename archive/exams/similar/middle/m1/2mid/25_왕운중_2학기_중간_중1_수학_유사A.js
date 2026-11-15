@@ -460,7 +460,7 @@ $y=\\angle Q=180^\\circ-112^\\circ-52^\\circ=16^\\circ$이다.
 - 합동식의 대응 순서를 확인하지 않고 ∠BDC를 ∠DAE와 같다고 판단하지 않는다.
 
 따라서 정답은 ⑤이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q09-display-v2.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q09-display-v2-figure-only.svg"
   },
   {
     "id": 10,
@@ -1011,7 +1011,7 @@ $12=3-6c$, $-6c=9$, $c=-\\dfrac32$이다.
 
 따라서 정답은 ③이다.`,
     "imageSize": "full",
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q20.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q20-figure-only.svg"
   },
   {
     "id": 21,
@@ -1142,7 +1142,7 @@ $\\triangle AOB\\equiv\\triangle DOC$ (SAS 합동)이다.
 $AB=12\\,\\mathrm{km}$이다.
 
 따라서 지점 $A$에서 집 $B$까지의 거리는 $12\\,\\mathrm{km}$이다.`,
-    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q23.svg"
+    "image": "assets/images/25_왕운중_2학기_중간_중1_수학_유사A/q23-figure-only.svg"
   },
   {
     "id": 24,

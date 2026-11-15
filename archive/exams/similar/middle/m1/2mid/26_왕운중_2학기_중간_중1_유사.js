@@ -474,7 +474,7 @@ window.questionBank = [
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "다음 그림에서 $l \\parallel m$이고 점 $O$는 두 선분",
-    "caption": "두 평행선 l과 m 사이에서 교점 O를 갖는 두 삼각형 AOC와 BOD의 합동 조건",
+    "caption": "두 평행선과 두 삼각형",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사_plans/q12-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사_plans/q12-solution.plan.json"
   },
@@ -832,7 +832,7 @@ window.questionBank = [
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "다음 그림과 같이 세 직선이 한 점 $O$에서 만날 때",
-    "caption": "한 점 O에서 만나는 세 직선에 의해 생기는 세 맞꼭지각의 크기 관계",
+    "caption": "한 점에서 만나는 세 직선",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사_plans/q21-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/26_왕운중_2학기_중간_중1_유사_plans/q21-solution.plan.json"
   },

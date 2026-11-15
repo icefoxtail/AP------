@@ -651,7 +651,7 @@ window.questionBank = [
     "sourceExamId": "21_금당중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 4.0,
-    "content": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle \\mathrm{BOC}$의 크기를 $x^\\circ$라고 할 때, 다음 설명 중 옳은 것을 모두 고르면? (정답 2개) ($0 \\le x^\\circ \\le 90^\\circ$)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q8-problem-v2.svg\" />",
+    "content": "오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle \\mathrm{BOC}$의 크기를 $x^\\circ$라고 할 때, 다음 설명 중 옳은 것을 모두 고르면? (정답 2개) ($0 \\le x^\\circ \\le 90^\\circ$)<br><img src=\"assets/images/21_금당중_2학기_중간_중3_수학/q8-problem-v2-figure-only.svg\" />",
     "choices": [
       "$x^\\circ$의 크기가 커질수록 $\\overline{{\\mathrm{{OB}}}}$의 길이가 커진다.",
       "$x^\\circ$의 크기가 커질수록 $\\overline{{\\mathrm{{OC}}}}$의 길이가 커진다.",

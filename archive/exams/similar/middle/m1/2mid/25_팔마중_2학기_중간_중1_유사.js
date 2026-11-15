@@ -283,7 +283,7 @@ window.questionBank = [
     "solutionStatus": "VERIFIED_PASS",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "정육면체에서 모서리 $AB$와 꼬인 위치에",
-    "caption": "정육면체에서 모서리 AB와 꼬인 위치 및 수직인 모서리의 관계",
+    "caption": "정육면체의 꼭짓점과 모서리",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q07-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q07-solution.plan.json"
   },
@@ -324,7 +324,7 @@ window.questionBank = [
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "두 직선 $l$과 $m$이 평행할 때",
-    "caption": "평행선 l과 m 사이에서 꺾인 선에 보조선을 그어 구하는 각 x",
+    "caption": "두 평행선 사이의 꺾인 선",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q08-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q08-solution.plan.json"
   },
@@ -480,7 +480,7 @@ window.questionBank = [
     "solutionStatus": "VERIFIED_PASS",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "가 되기 위해 필요한 조건으로 옳은 것은?",
-    "caption": "한 변과 한 각이 주어진 두 삼각형 ABC와 DEF의 합동 조건",
+    "caption": "두 삼각형 ABC와 DEF",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q12-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q12-solution.plan.json"
   },
@@ -601,7 +601,7 @@ window.questionBank = [
     "solutionStatus": "VERIFIED_PASS",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "두 선분 $AD$와 $BC$가 점 $O$에서",
-    "caption": "삼각형의 내각의 합을 이용하여 구하는 네 각 a, b, c, d의 합",
+    "caption": "점 O에서 만나는 두 선분",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q15-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q15-solution.plan.json"
   },
@@ -680,7 +680,7 @@ window.questionBank = [
     "solutionStatus": "VERIFIED_PASS",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "직선 $l$과 $m$이 평행하다.",
-    "caption": "평행선 l, m과 이등변삼각형 ADE를 이용한 각 AED의 크기 계산",
+    "caption": "두 평행선과 삼각형 ADE",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q17-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q17-solution.plan.json"
   },
@@ -799,7 +799,7 @@ window.questionBank = [
     "solutionStatus": "VERIFIED_PASS",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "정오각형의 한 꼭짓점이 직선 $l$ 위에",
-    "caption": "평행선 l, m과 정오각형의 외각 성질을 이용한 각 x의 크기 계산",
+    "caption": "두 직선과 정오각형",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q20-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q20-solution.plan.json"
   },
@@ -833,7 +833,7 @@ window.questionBank = [
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "두 선분 $AD$와 $BC$가 점 $O$에서",
-    "caption": "두 선분 AD, BC의 교점 O에서 맞꼭지각과 삼각형 내각의 합을 이용한 각 x의 계산",
+    "caption": "두 선분의 교점과 각",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q21-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q21-solution.plan.json"
   },
@@ -869,7 +869,7 @@ window.questionBank = [
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
     "sourceQuote": "합동인 삼각형을 기호 $\\equiv$를 사용하여",
-    "caption": "삼각형 ABC의 두 변에 붙인 정삼각형 ABD, ACE에서 나타나는 삼각형 ABE와 ADC의 SAS 합동",
+    "caption": "정삼각형 두 개를 붙인 삼각형",
     "problemPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q22-problem.plan.json",
     "solutionPlanRef": "archive/exams/similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사_plans/q22-solution.plan.json"
   },

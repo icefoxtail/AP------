@@ -2099,7 +2099,7 @@ window.questionBank = [
       "그래프 조건으로 식 구하기"
     ],
     "wide": false,
-    "content": "서술형 3. 아래 새 그래프는 $x$축과 $(-1,0)$, $(3,0)$에서 만나고 $y$축과 $(0,-3)$에서 만난다. 이 그래프를 나타내는 이차함수의 식을 $y=ax^2+bx+c$의 꼴로 구하고 과정을 쓰시오. [5점]<br><br><img src=\"assets/images/21_왕의중_1학기_기말_중3_수학/q23_problem.svg\">",
+    "content": "서술형 3. 아래 새 그래프는 $x$축과 $(-1,0)$, $(3,0)$에서 만나고 $y$축과 $(0,-3)$에서 만난다. 이 그래프를 나타내는 이차함수의 식을 $y=ax^2+bx+c$의 꼴로 구하고 과정을 쓰시오. [5점]<br><br><img src=\"assets/images/21_왕의중_1학기_기말_중3_수학/q23_problem-figure-only.svg\">",
     "choices": [],
     "answer": "$y=x^2-2x-3$",
     "solution": "$x$절편이 $-1,3$이므로 $y=ax^2+bx+c$에 대입하면 $a-b+c=0$, $9a+3b+c=0$이다.<br>$y$절편이 $-3$이므로 $(x,y)=(0,-3)$을 대입하여 $c=-3$이다.<br>따라서 두 식은 $a-b=3$, $9a+3b=3$이 된다. 둘째 식의 양변을 $3$으로 나누면 $3a+b=1$이다.<br>두 식 $a-b=3$, $3a+b=1$을 더하면 $4a=4$이므로 $a=1$이다.<br>$a-b=3$에 $a=1$을 대입하면 $1-b=3$이므로 $b=-2$이다.<br>$c=-3$이므로 구하는 이차함수는 $\\boxed{y=x^2-2x-3}$이다.",
@@ -2117,7 +2117,7 @@ window.questionBank = [
       "replacementStage": "CREATE",
       "originalQuestion": "서술형 3. 아래 그림과 같은 그래프를 나타내는 이차함수의 식을 $y=ax^2+bx+c$의 꼴로 나타내시오. [5점]<br><br><img src=\"assets/images/21_왕의중_1학기_기말_중3_수학/s03.png\">",
       "originalChoices": [],
-      "replacementQuestion": "서술형 3. 아래 새 그래프는 $x$축과 $(-1,0)$, $(3,0)$에서 만나고 $y$축과 $(0,-3)$에서 만난다. 이 그래프를 나타내는 이차함수의 식을 $y=ax^2+bx+c$의 꼴로 구하고 과정을 쓰시오. [5점]<br><br><img src=\"assets/images/21_왕의중_1학기_기말_중3_수학/q23_problem.svg\">",
+      "replacementQuestion": "서술형 3. 아래 새 그래프는 $x$축과 $(-1,0)$, $(3,0)$에서 만나고 $y$축과 $(0,-3)$에서 만난다. 이 그래프를 나타내는 이차함수의 식을 $y=ax^2+bx+c$의 꼴로 구하고 과정을 쓰시오. [5점]<br><br><img src=\"assets/images/21_왕의중_1학기_기말_중3_수학/q23_problem-figure-only.svg\">",
       "replacementChoices": []
     },
     "rpmPrimaryCandidateId": "M3-RPM-054",
@@ -2153,7 +2153,7 @@ window.questionBank = [
     "problemVisualTriage": "REQUIRED_NEW_GRAPH",
     "solutionVisualTriage": "REQUIRED",
     "solutionImage": "assets/images/21_왕의중_1학기_기말_중3_수학/q23_solution.svg",
-    "problemImage": "assets/images/21_왕의중_1학기_기말_중3_수학/q23_problem.svg",
+    "problemImage": "assets/images/21_왕의중_1학기_기말_중3_수학/q23_problem-figure-only.svg",
     "answerCardinality": "subjective_expression",
     "curriculum": "2015",
     "rpmPrimaryId": "M3-RPM-054",
