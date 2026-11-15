@@ -15,7 +15,7 @@ import { loadAuditPreservation } from "../archive/tools/meta-foundation/native-a
 import { buildReviewedSourceBinding, reviewedSourceBindingPath } from "../archive/tools/meta-foundation/reviewed-source-binding.mjs";
 import { verifyChangedUidConsumerApproval } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
 import canonical from "../archive/archive2-canonical.js";
-import { isAuditedPendingIntegrationRebindAllowed, isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, isSourceConditionEvidenceDebtAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, validateSourceConditionCorrections, validateSourceCrossConceptCorrections, validateTargetedAuditCorrections, validateTargetedRecoverySupplement, verifyConsumerValues, verifyIdentityFingerprintConsumer } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { collectSourceValueOverrides, isLegacyPathFormulaUid, legacyPathFormulaUids, isAuditedPendingIntegrationRebindAllowed, isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, isSourceConditionEvidenceDebtAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, validateSourceConditionCorrections, validateSourceCrossConceptCorrections, validateTargetedAuditCorrections, validateTargetedRecoverySupplement, verifyConsumerValues, verifyIdentityFingerprintConsumer } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 
 test("targeted audit correction preserves raw provenance and cannot merge canonical keys", () => {
   const ref = { path: "docs/audit-correction.json", sha256: "a".repeat(64) };
@@ -5307,4 +5307,58 @@ test('audit chain replays the exact historical output rather than ignoring prior
     assert.throws(() => registerReviewedExamV2({ root:f.root,request:f.request,write:true }), /audit preservation:/, name);
     assert.equal(fs.existsSync(path.join(f.root,f.registeredPath)),false);
   });
+});
+
+// ---- legacy path-formula source UIDs (decision 2026-11-15) ----------------------------------------------------------
+function legacyPathUid(prefix, source, ordinal) {
+  return "qid_v1_" + hash(`${prefix}${source}#${ordinal}`);
+}
+
+test("legacy path formulas: exams/ and archive/exams/ prefixed source UIDs are accepted, anything else is refused", t => {
+  const source = "fixture/exam.js";
+  assert.deepEqual(legacyPathFormulaUids(source, 1), [legacyPathUid("exams/", source, 1), legacyPathUid("archive/exams/", source, 1)]);
+  assert.equal(isLegacyPathFormulaUid(legacyPathUid("exams/", source, 1), source, 1), true);
+  assert.equal(isLegacyPathFormulaUid(legacyPathUid("archive/exams/", source, 1), source, 1), true);
+  // current formula, other ordinal, other file, other prefix and non-strings are not legacy aliases
+  assert.equal(isLegacyPathFormulaUid(legacyPathUid("", source, 1), source, 1), false);
+  assert.equal(isLegacyPathFormulaUid(legacyPathUid("exams/", source, 2), source, 1), false);
+  assert.equal(isLegacyPathFormulaUid(legacyPathUid("exams/", "fixture/other.js", 1), source, 1), false);
+  assert.equal(isLegacyPathFormulaUid(legacyPathUid("original/exams/", source, 1), source, 1), false);
+  assert.equal(isLegacyPathFormulaUid(undefined, source, 1), false);
+  for (const [prefix, ok] of [["exams/", true], ["archive/exams/", true], ["other/", false]]) {
+    const f = partialFixture(t), q = addLegacyAlias(f);
+    q.questionUid = legacyPathUid(prefix, "fixture/exam.js", 1); f.writeBank(q);
+    if (ok) assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).totalQuestions, 1);
+    else assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /source UID mismatch/);
+  }
+});
+
+// ---- REVIEW2 source-value overrides (decision 2026-11-15) ----------------------------------------------------------
+test("REVIEW2 overrides: differing tag/difficulty source values are collected per field; other approvals and unchanged values are not", () => {
+  const source = { tagStatus: "manual_review", tagConfidence: "reviewed", difficultyBucket: 1, difficultyConfidence: "", L3: "x" };
+  const final = { tagStatus: "reviewed_pass", tagConfidence: "independent_review2", difficultyBucket: 2, difficultyConfidence: "high", L3: "y" };
+  assert.deepEqual(collectSourceValueOverrides({ approvalType: "REVIEW2", questionUid: "u1", source, final }), [
+    { questionUid: "u1", field: "tagStatus", sourceValue: "manual_review", registeredValue: "reviewed_pass" },
+    { questionUid: "u1", field: "tagConfidence", sourceValue: "reviewed", registeredValue: "independent_review2" },
+    { questionUid: "u1", field: "difficultyBucket", sourceValue: 1, registeredValue: 2 }]);
+  assert.deepEqual(collectSourceValueOverrides({ approvalType: "FINAL_QA", questionUid: "u1", source, final }), []);
+  assert.deepEqual(collectSourceValueOverrides({ approvalType: "REVIEW2", questionUid: "u1", source: { tagStatus: "reviewed_pass" }, final }), []);
+});
+
+test("REVIEW2 overrides: consumer verification passes only for recorded REVIEW2 override fields", t => {
+  const { f, records, runtime, catalog } = registeredExtensionConsumer(t, ["tagStatus"]);
+  const review2 = structuredClone(records); review2[0].metadataApprovalType = "REVIEW2";
+  const uid = review2[0].questionUid;
+  const overrides = [{ questionUid: uid, field: "tagStatus", sourceValue: "manual_review", registeredValue: review2[0].tagStatus }];
+  assert.deepEqual(verifyConsumerValues(f.root, review2, runtime, catalog, { sourceValueOverrides: overrides }), { canonical: 1, usableMetaLane: 0 });
+  // not recorded -> still refused
+  assert.throws(() => verifyConsumerValues(f.root, review2, runtime, catalog), /Consumer metadata conflict/);
+  // not REVIEW2 -> still refused
+  assert.throws(() => verifyConsumerValues(f.root, records, runtime, catalog, { sourceValueOverrides: overrides }), /Consumer metadata conflict/);
+  // recorded for a different field -> a conflict on another field is still refused
+  const other = registeredExtensionConsumer(t, ["tagStatus", "templateKey"]);
+  const o2 = structuredClone(other.records); o2[0].metadataApprovalType = "REVIEW2";
+  assert.throws(() => verifyConsumerValues(other.f.root, o2, other.runtime, other.catalog, { sourceValueOverrides: overrides }), /Consumer metadata conflict/);
+  // registered value that no longer matches the record -> refused
+  assert.throws(() => verifyConsumerValues(f.root, review2, runtime, catalog, { sourceValueOverrides: [{ ...overrides[0], registeredValue: "other" }] }), /Consumer metadata conflict/);
 });
