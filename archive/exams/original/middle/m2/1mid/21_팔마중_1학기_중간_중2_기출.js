@@ -1543,11 +1543,7 @@ window.questionBank = [
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve RPM semantic without inventing PT/TPL.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
-    "solutionImage": "assets/images/21_팔마중_1학기_중간_중2_기출/q22-solution.svg",
-    "solutionImageAlt": "반지름 a, 높이 3a인 원기둥과 반지름 2a, 높이 h인 원뿔의 부피가 같음을 나타낸 해설 도형",
-    "solutionImageCaption": "물의 부피 보존: 3πa³ = (4/3)πa²h",
-    "solutionImageSize": "full"
+    "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
   },
   {
     "id": 23,
