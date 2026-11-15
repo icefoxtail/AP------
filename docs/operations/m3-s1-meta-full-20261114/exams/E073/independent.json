@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E073",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "39cabac6936b8ea743c6ea78f06dbaac0a86532e",
+  "inputHashes": {
+    "reviewSha256": "d0b8f8f1d5190e616482f42fde486434b45c5e47928d64e65660265c2a68951e",
+    "fourSlotSha256": "ff6f25f71178c3bfe49bdd07dbbd486d4d209906ff758e79758faa6c7dbb7b5c"
+  },
+  "sampledOrdinals": [
+    3,
+    18,
+    20
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_e29ebad8284be93bcf1d54236acc181caa4a0e0c81412a965a79c71442096f03",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제 source solution 공백 확인. 일차가 되는 매개변수의 발문기반차수2 후보는 타당하나 method[] 및 SOURCE_ONLY debt 유지. 같은 수치 타시험지 해설을 여기의 기존해설로 복사하지 않음."
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_a4d142f91af9e3afc5b88fd6df46eee4f20be5af1d2142fc382b8ec7f7faa95d",
+      "status": "PASS_WITH_DEBT",
+      "note": "최댓값3·축-2·제1사분면 불통과로 계수범위 해석3은 발문기반 후보로 수용. 기존해설 없음에 따른 method debt와 공식4칸 미완료상태 유지."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_c70de5d84d2a0e5cd3808ddca2a531f38e82e0a47946a373154657b5482cdff0",
+      "status": "PASS_WITH_DEBT",
+      "note": "실물 꼭짓점(1,-2),y절편1과 그림뒤6문항 확인. 마지막(6)은 새 곡선영역을 구성하고 등적재배치를 선택해야 하므로 동일구조 교차기준에 따라 part6=4·전체상4/B34 보완을 수용. SOURCE_ONLY method debt는 계속 유지하며 해설·수학PASS 아님."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/A/assets/E073/20-image-1.png",
+      "sha256": "818f58d67d09d1decf1a849f7de6041ae1ca62e72b6c7a2e6d7bf5612e45739e",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}

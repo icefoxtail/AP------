@@ -1,0 +1,1423 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "original/middle/m3/1final/19_서울가산중_1학기_기말_중3_수학.js",
+  "sourceGitBlobSha": "39cabac6936b8ea743c6ea78f06dbaac0a86532e",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "meta_a",
+    "owner": "M3_S1_RESUME_20261115_A",
+    "assignmentId": "M3-S1-META-FULL",
+    "at": "2026-11-15T00:08:14.472612+00:00"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_5b8a9095074e2933e427828e310e6a861f5ce761021c097b72b2bf92ea8cdc84",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bb24a4e5d8d7a370a83b8313890d94af5bc9dd9a8c098f8a136f36883a347de4"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bd4a2134b9ca0e59e5e6dcece6532e6e19fbb9c1e5c557d1b759ce9b70d4264f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "1. 이차방정식 $(x+6)(x-3)=0$의 해를 $a, b$라 할 때, $a+b$의 값을 구하면? [5.0점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "quote": "1. 이차방정식 $(x+6)(x-3)=0$의 해를 $a, b$라 할 때, $a+b$의 값을 구하면? [5.0점]",
+            "src": "stem",
+            "termId": 78
+          },
+          {
+            "term": "합",
+            "quote": "1. 이차방정식 $(x+6)(x-3)=0$의 해를 $a, b$라 할 때, $a+b$의 값을 구하면? [5.0점]",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "인수분해된 방정식의 근",
+        "condition": "두 인수를 각각0으로 두는 구조에서 근의 합을 읽는 문항이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_8f0cd712f0634af4ca79add82ac9efebc05e4d68318b03f477b2f3c19f1c82f6",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e60d9686499942117c2552e797fa5c7ff37dd43007fae20f689c3d09c84e42ab"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bcbc354cbdd4edfa3bfdc6ba530dde06a6707a8fcacfb92d5c8b0831938105ef"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "⑤ $x^2-10x=-25$",
+            "src": "choices",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "중근",
+            "quote": "2. 다음 중 중근을 가지는 이차방정식을 고르면? [5.0점]",
+            "src": "stem",
+            "termId": 444
+          },
+          {
+            "term": "판정",
+            "quote": "2. 다음 중 중근을 가지는 이차방정식을 고르면? [5.0점]",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "중근",
+            "quote": "2. 다음 중 중근을 가지는 이차방정식을 고르면? [5.0점]",
+            "src": "stem",
+            "termId": 444
+          }
+        ]
+      },
+      "reasons": {
+        "method": "중근의 제곱식 조건",
+        "condition": "각 방정식을 정리해 완전제곱식=0인 보기를 찾는 목표이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_e29ebad8284be93bcf1d54236acc181caa4a0e0c81412a965a79c71442096f03",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0d5fee3fe255c58f1efe0d3b49ff442628e42d23b2295dc75ce1a7ec93a6b79b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e132967bacf966799587db537f03d74c48bd435277268c1ed398559e83c59bf1"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "quote": "3. $(x-1)(4x+3)=(a-1)^2 x^2+x$가 $x$에 관한 일차방정식이 되도록 하는 $a$의 값을 모두 고르면? (정답 2개) [4.0점]",
+            "src": "stem",
+            "termId": 62
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "3. $(x-1)(4x+3)=(a-1)^2 x^2+x$가 $x$에 관한 일차방정식이 되도록 하는 $a$의 값을 모두 고르면? (정답 2개) [4.0점]",
+            "src": "stem",
+            "termId": 49
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "일차방정식",
+            "quote": "3. $(x-1)(4x+3)=(a-1)^2 x^2+x$가 $x$에 관한 일차방정식이 되도록 하는 $a$의 값을 모두 고르면? (정답 2개) [4.0점]",
+            "src": "stem",
+            "termId": 64
+          }
+        ]
+      },
+      "reasons": {
+        "method": "차수 감소 계수 조건",
+        "condition": "전개 후 이차항이 사라지고 일차항은 남는 a 조건을 정해야 한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_ab06585114478e5bd57c2fac13594af371cf55dd00adb126ae03b15dc81f354e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e5469a93d85cb678d946a9bba72bb63bf712d537b758d58127b573de1ace2e0d"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9c5b7891ddc81cbaa96fc5ff86c29647bc15926d7ff531246291039e2603927f"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "4. 이차방정식 $5x^2+ax+b=0$의 두 근이 $-2, 3$일 때, $ab$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "4. 이차방정식 $5x^2+ax+b=0$의 두 근이 $-2, 3$일 때, $ab$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "곱",
+            "quote": "4. 이차방정식 $5x^2+ax+b=0$의 두 근이 $-2, 3$일 때, $ab$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 287
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "두 근으로 계수 결정",
+        "condition": "최고차항5와 두 근 -2,3으로 인수형을 복원해 a,b를 정하는 구조이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_6d3a064a46a1486b1213ecc7fb4de4d5f56e547f2ff7d7088607bb989e081629",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8a5809295a0e97485e88bb55728fa2d8b235e589f36f91f857526e034d7986f7"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "60eecf878a78f90fdfba2429ef9aa2e95ff36c8f8198891536af31b1be01f7fb"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "5. 이차방정식 $\\dfrac{1}{3}x^2+x-1=0$의 근이 $x=\\dfrac{a \\pm \\sqrt{b}}{2}$일 때, $7a+b$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "5. 이차방정식 $\\dfrac{1}{3}x^2+x-1=0$의 근이 $x=\\dfrac{a \\pm \\sqrt{b}}{2}$일 때, $7a+b$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "식의값",
+            "quote": "5. 이차방정식 $\\dfrac{1}{3}x^2+x-1=0$의 근이 $x=\\dfrac{a \\pm \\sqrt{b}}{2}$일 때, $7a+b$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "분수 계수 방정식의 근",
+        "condition": "분모3을 제거한 후 근을 제시형과 비교하는 문항이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_5a6db6f18e78122311eb9dbff273e882d4f54a74bfe4a0ee9bf3432607a93847",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9e360686c523939a0267787f8dc10fa45fae655efac3679a30a9505900edc497"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "9e749980552317f572d57dbe86deaac6ffb550cebe37a2a9d8f1998a720f92ab"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "6. 이차방정식 $2x^2+8x-6=0$을 $(x+p)^2=q$의 꼴로 고칠 때, $p \\times q$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "6. 이차방정식 $2x^2+8x-6=0$을 $(x+p)^2=q$의 꼴로 고칠 때, $p \\times q$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "곱",
+            "quote": "6. 이차방정식 $2x^2+8x-6=0$을 $(x+p)^2=q$의 꼴로 고칠 때, $p \\times q$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 287
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "완전제곱식 변형",
+        "condition": "최고차계수2로 나누고 제곱을 완성해 p,q를 읽는 목표이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_7e1fdf4062b379a62213dd161502d279f6dbd154b1c601e2dd1f56c54d766b6a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1467c31ba0a577f3a22f699f0a8f5dabf0306bc57311ee794b4a0875a042c49b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "7a60e246d3cc004b51f8fb00f96dcceb705f0e84c1361e04ca1fea63fd5bac2b"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "7. 이차방정식 $x^2-5x-1=0$의 한 근을 $a$라고 할 때, $\\sqrt{a(a-5)} + \\dfrac{a^2-1}{a}$의 값을 구하면? [3.0점]",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "유리식",
+            "quote": "7. 이차방정식 $x^2-5x-1=0$의 한 근을 $a$라고 할 때, $\\sqrt{a(a-5)} + \\dfrac{a^2-1}{a}$의 값을 구하면? [3.0점]",
+            "src": "stem",
+            "termId": 38
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "quote": "7. 이차방정식 $x^2-5x-1=0$의 한 근을 $a$라고 할 때, $\\sqrt{a(a-5)} + \\dfrac{a^2-1}{a}$의 값을 구하면? [3.0점]",
+            "src": "stem",
+            "termId": 61
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "근의 관계로 식값 계산",
+        "condition": "a²-5a=1 관계를 근호와 분수식에 각각 사용하는 구조이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_bf14b5743b580fe20827e7e9c82d50591694f53d233f129cb6d286c56d65cd62",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cb1de63dfd29b438852f7335f0ff380f246236086a90c2eb55598481f46fca9f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "e3882890a1bbe76dad48f2bc96c329b540bb8ca0a408ca9fa12cbd50e0e83154"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "quote": "8. 가로와 세로의 길이가 각각 $7\\text{m}, 5\\text{m}$인 직사각형 모양의 꽃밭이 있다. 가로와 세로를 각각 $x\\text{m}$씩 더 늘였더니 꽃밭의 넓이는 처음보다 $28\\text{m}^2$만큼 더 넓어졌다. $x$를 구하는 식으로 맞는 것은? [5.0점]",
+            "src": "stem",
+            "termId": 165
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차방정식",
+            "quote": "8. 가로와 세로의 길이가 각각 $7\\text{m}, 5\\text{m}$인 직사각형 모양의 꽃밭이 있다. 가로와 세로를 각각 $x\\text{m}$씩 더 늘였더니 꽃밭의 넓이는 처음보다 $28\\text{m}^2$만큼 더 넓어졌다. $x$를 구하는 식으로 맞는 것은? [5.0점]",
+            "src": "stem",
+            "termId": 65
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "넓이 증가 방정식 세우기",
+        "condition": "증가한 변 7+x,5+x의 곱에서 원래넓이35를 빼는 목표이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_41ef7e61926dc0daac1b02a86a51a74b3f86a387bd9dedaed4e5965819cfc186",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "dcb1904514ade185529f02ccaac1b5f44477fa523b1b0aa246ae4438f834d813"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "a52e166eff0cae85ac532401363ba6c78a1c2acb5da8ddb9bbff6e45cedc2977"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "quote": "9. 어떤 자연수와 그 수보다 $4$만큼 더 작은 수와의 곱을 구하려다 잘못하여 $2$만큼 더 큰 수와의 곱을 구하였더니 $48$이 되었다. 처음에 구하려고 했던 두 수의 곱을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 1
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "quote": "9. 어떤 자연수와 그 수보다 $4$만큼 더 작은 수와의 곱을 구하려다 잘못하여 $2$만큼 더 큰 수와의 곱을 구하였더니 $48$이 되었다. 처음에 구하려고 했던 두 수의 곱을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 287
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "자연수",
+            "quote": "9. 어떤 자연수와 그 수보다 $4$만큼 더 작은 수와의 곱을 구하려다 잘못하여 $2$만큼 더 큰 수와의 곱을 구하였더니 $48$이 되었다. 처음에 구하려고 했던 두 수의 곱을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 1
+          }
+        ]
+      },
+      "reasons": {
+        "method": "잘못 계산한 수로 원래 곱 복원",
+        "condition": "자연수와2큰수의 곱48에서 원래 자연수를 정한 후4작은수와 곱해야 한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_ee81512fe58a4ff96b6c67ebb2b479e9417c7cfb16d3973efc8297f92b25bc46",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "2e6c40086336cfbac4935808c12a021e8bfffe2f228bf0002c7c95084905d671"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c8bd7c547af89266e98e0bc4bea510435afa78bf25aeda805fd89193c26b6fca"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "quote": "10. 길이가 $16\\text{cm}$인 끈을 두 도막으로 잘라서 정사각형 두 개를 만들었다. 만들어진 두 정사각형의 넓이의 비가 $1:3$일 때, 작은 정사각형의 한 변의 길이를 구하면? [3.0점]",
+            "src": "stem",
+            "termId": 166
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "quote": "10. 길이가 $16\\text{cm}$인 끈을 두 도막으로 잘라서 정사각형 두 개를 만들었다. 만들어진 두 정사각형의 넓이의 비가 $1:3$일 때, 작은 정사각형의 한 변의 길이를 구하면? [3.0점]",
+            "src": "stem",
+            "termId": 215
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "비",
+            "quote": "10. 길이가 $16\\text{cm}$인 끈을 두 도막으로 잘라서 정사각형 두 개를 만들었다. 만들어진 두 정사각형의 넓이의 비가 $1:3$일 때, 작은 정사각형의 한 변의 길이를 구하면? [3.0점]",
+            "src": "stem",
+            "termId": 289
+          }
+        ]
+      },
+      "reasons": {
+        "method": "둘레합과 넓이비의 길이 결정",
+        "condition": "두 정사각형 변의 합4와 제곱비1:3을 결합해 작은 변을 정하는 구조이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_106d549d7212de243d0bcf102558256e5e486d6a8ba016ea07e58f3332edf551",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "cbd5329741394d1515778a39ed302c3f5b50a41ecc4d8589e904dc7f5d936add"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "da6d329d8a8c7771b7c8d1dd6563a57cd1a22f307f2e5c43b356ec85470217ec"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "quote": "11. 이차방정식 $x^2-6x+8=0$의 두 해를 $a, b$라 할 때, 이차함수 $y=ax^2-bx$의 꼭짓점의 좌표를 구하면? (단, $a < b$) [4.0점]",
+            "src": "stem",
+            "termId": 65
+          },
+          {
+            "term": "이차함수",
+            "quote": "11. 이차방정식 $x^2-6x+8=0$의 두 해를 $a, b$라 할 때, 이차함수 $y=ax^2-bx$의 꼭짓점의 좌표를 구하면? (단, $a < b$) [4.0점]",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "꼭짓점",
+            "quote": "11. 이차방정식 $x^2-6x+8=0$의 두 해를 $a, b$라 할 때, 이차함수 $y=ax^2-bx$의 꼭짓점의 좌표를 구하면? (단, $a < b$) [4.0점]",
+            "src": "stem",
+            "termId": 311
+          },
+          {
+            "term": "좌표",
+            "quote": "11. 이차방정식 $x^2-6x+8=0$의 두 해를 $a, b$라 할 때, 이차함수 $y=ax^2-bx$의 꼭짓점의 좌표를 구하면? (단, $a < b$) [4.0점]",
+            "src": "stem",
+            "termId": 148
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "대소비교",
+            "quote": "11. 이차방정식 $x^2-6x+8=0$의 두 해를 $a, b$라 할 때, 이차함수 $y=ax^2-bx$의 꼭짓점의 좌표를 구하면? (단, $a < b$) [4.0점]",
+            "src": "stem",
+            "termId": 28
+          }
+        ]
+      },
+      "reasons": {
+        "method": "근을 함수 계수로 대입",
+        "condition": "두 근의 순서를 먼저 정한 뒤 이차함수 꼭짓점을 찾는 연결 문항이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_8a3a7e743f28c1e401cded63a174df3b30cd3e0c7b12c08fbac63d250c28915a",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "3b96bea2dac307f3555e313c1f29f9a0fbf01f07bb8a73548980f3ba47147883"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8612f575653de0478cfeb37bcebfa11f860b2bbecd67b10bb5e056df8f811f85"
+        }
+      ],
+      "format": "옳은 것 고르기",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "12. [12~14 공통문항] 다음 <보기>에서 그래프가 아래로 볼록한 것을 모두 고르면? [5.0점]\n<보기>\n① $y=4x^2$  ② $y=\\dfrac{1}{4}x^2$  ③ $y=-5x^2$  ④ $y=-4x^2$  ⑤ $y=-\\dfrac{1}{5}x^2$",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "quote": "12. [12~14 공통문항] 다음 <보기>에서 그래프가 아래로 볼록한 것을 모두 고르면? [5.0점]\n<보기>\n① $y=4x^2$  ② $y=\\dfrac{1}{4}x^2$  ③ $y=-5x^2$  ④ $y=-4x^2$  ⑤ $y=-\\dfrac{1}{5}x^2$",
+            "src": "stem",
+            "termId": 107
+          },
+          {
+            "term": "판정",
+            "quote": "12. [12~14 공통문항] 다음 <보기>에서 그래프가 아래로 볼록한 것을 모두 고르면? [5.0점]\n<보기>\n① $y=4x^2$  ② $y=\\dfrac{1}{4}x^2$  ③ $y=-5x^2$  ④ $y=-4x^2$  ⑤ $y=-\\dfrac{1}{5}x^2$",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "이차항 부호와 볼록성",
+        "condition": "양의 계수인 두 함수의 그래프를 선택하는 목표이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_20d604d7941db528dfb799eb75020770f71369445fe5acb1f7fc8ddb387c9459",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "da31767cab783d3461652c780d015d669912dffabe288ab579cbaa9cb05f21e5"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "798e7cbb5f34421c75130eb4e044cd24e58ddedddb7e5235f6c48ceb11a14b23"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "13. [12~14 공통문항] 다음 <보기>에서 그래프가 $x$축에 대하여 서로 대칭인 것을 고르면? [5.0점]\n<보기>\n① $y=4x^2$  ② $y=\\dfrac{1}{4}x^2$  ③ $y=-5x^2$  ④ $y=-4x^2$  ⑤ $y=-\\dfrac{1}{5}x^2$",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "quote": "13. [12~14 공통문항] 다음 <보기>에서 그래프가 $x$축에 대하여 서로 대칭인 것을 고르면? [5.0점]\n<보기>\n① $y=4x^2$  ② $y=\\dfrac{1}{4}x^2$  ③ $y=-5x^2$  ④ $y=-4x^2$  ⑤ $y=-\\dfrac{1}{5}x^2$",
+            "src": "stem",
+            "termId": 107
+          },
+          {
+            "term": "판정",
+            "quote": "13. [12~14 공통문항] 다음 <보기>에서 그래프가 $x$축에 대하여 서로 대칭인 것을 고르면? [5.0점]\n<보기>\n① $y=4x^2$  ② $y=\\dfrac{1}{4}x^2$  ③ $y=-5x^2$  ④ $y=-4x^2$  ⑤ $y=-\\dfrac{1}{5}x^2$",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "축대칭",
+            "quote": "13. [12~14 공통문항] 다음 <보기>에서 그래프가 $x$축에 대하여 서로 대칭인 것을 고르면? [5.0점]\n<보기>\n① $y=4x^2$  ② $y=\\dfrac{1}{4}x^2$  ③ $y=-5x^2$  ④ $y=-4x^2$  ⑤ $y=-\\dfrac{1}{5}x^2$",
+            "src": "stem",
+            "termId": 629
+          }
+        ]
+      },
+      "reasons": {
+        "method": "x축 대칭인 포물선",
+        "condition": "크기가 같고 부호가 반대인 두 계수의 그래프를 짝짓는 목표이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_37ea1bad61a36a3dfb129f5864c4584a78411090acc312189b23aa94edf6a571",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "33b28e528f9c1091a1df6432a62f6b467891a77a219908b41b6c5ebb9e13736f"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "8f48153ebff244e1c2b44cdcf6ca098cb07182e990efcd2a0715326c05151a54"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "14. [12~14 공통문항] 다음 <보기>에서 그래프의 폭이 가장 좁은 것을 고르면? [5.0점]\n<보기>\n① $y=4x^2$  ② $y=\\dfrac{1}{4}x^2$  ③ $y=-5x^2$  ④ $y=-4x^2$  ⑤ $y=-\\dfrac{1}{5}x^2$",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "quote": "14. [12~14 공통문항] 다음 <보기>에서 그래프의 폭이 가장 좁은 것을 고르면? [5.0점]\n<보기>\n① $y=4x^2$  ② $y=\\dfrac{1}{4}x^2$  ③ $y=-5x^2$  ④ $y=-4x^2$  ⑤ $y=-\\dfrac{1}{5}x^2$",
+            "src": "stem",
+            "termId": 107
+          },
+          {
+            "term": "판정",
+            "quote": "14. [12~14 공통문항] 다음 <보기>에서 그래프의 폭이 가장 좁은 것을 고르면? [5.0점]\n<보기>\n① $y=4x^2$  ② $y=\\dfrac{1}{4}x^2$  ③ $y=-5x^2$  ④ $y=-4x^2$  ⑤ $y=-\\dfrac{1}{5}x^2$",
+            "src": "stem",
+            "termId": 132
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "계수 절댓값과 폭",
+        "condition": "계수의 절댓값이 가장 큰 포물선의 폭이 가장 좁다는 성질을 묻는다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_0b0d1c7eced31da6c8842dd5d5380f3e2db621e8467835100d6144a2501a6245",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "fd21ec304bbca9d1f4e9f3e4d442dd1a179fe991fe100de7d5550fb89cee6e3c"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "0872c6c006381a03468d36d7d16021c74336724ca1999fc4d2bdef70985646b5"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "15. 이차함수 $f(x)=3x^2+2x+1$에 대하여 $f(0)+f(-1)$을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "quote": "15. 이차함수 $f(x)=3x^2+2x+1$에 대하여 $f(0)+f(-1)$을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 100
+          },
+          {
+            "term": "합",
+            "quote": "15. 이차함수 $f(x)=3x^2+2x+1$에 대하여 $f(0)+f(-1)$을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "함숫값의 합",
+        "condition": "두 입력0,-1을 함수식에 대입해 합을 구하는 목표이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_615e353beec0a0af5897decdf17198362cec8bb32bc5a7bda603ff0f38f8380d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "c13a6bc791c1403ef97abf728adf457eddb0d8524b5ee5f2cfc666b82bce35d0"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "6f38954a7fffd25405d16ce20bc5268ae53364c4d874e16c5dbb854133477385"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "16. 이차함수 $y=2x^2+4x-6$의 그래프가 $x$축과 만나는 두 점을 각각 $\\text{A}, \\text{B}$라 하고 꼭짓점을 $\\text{C}$라 할 때, $\\triangle\\text{ABC}$의 넓이를 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "삼각형",
+            "quote": "16. 이차함수 $y=2x^2+4x-6$의 그래프가 $x$축과 만나는 두 점을 각각 $\\text{A}, \\text{B}$라 하고 꼭짓점을 $\\text{C}$라 할 때, $\\triangle\\text{ABC}$의 넓이를 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 158
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "quote": "16. 이차함수 $y=2x^2+4x-6$의 그래프가 $x$축과 만나는 두 점을 각각 $\\text{A}, \\text{B}$라 하고 꼭짓점을 $\\text{C}$라 할 때, $\\triangle\\text{ABC}$의 넓이를 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 213
+          }
+        ],
+        "method": [],
+        "condition": []
+      },
+      "reasons": {
+        "method": "축교점·꼭짓점의 삼각형",
+        "condition": "두 근을 x축 밑변으로, 꼭짓점의 y좌표를 높이로 연결하는 구조이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_e3dc2f9480849f6c72f630f0d6b34c398b37621d6f73f0c5648c237d07a51c4e",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "345f05935e17176093de76f2b6cd3170c6e6a771dad5ae89c2ba03591a377c6b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "ff3e9c51785202d0c5214334316686a5d3022cacf326c62e0c2f63ec8212ec76"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "17. 이차함수 $y=ax^2+bx+c$의 그래프는 $x=-1$일 때, 최솟값 $2$를 가진다. 이 그래프의 $y$절편이 $6$이라고 할 때, $b$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "17. 이차함수 $y=ax^2+bx+c$의 그래프는 $x=-1$일 때, 최솟값 $2$를 가진다. 이 그래프의 $y$절편이 $6$이라고 할 때, $b$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 49
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "최솟값",
+            "quote": "17. 이차함수 $y=ax^2+bx+c$의 그래프는 $x=-1$일 때, 최솟값 $2$를 가진다. 이 그래프의 $y$절편이 $6$이라고 할 때, $b$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 128
+          }
+        ]
+      },
+      "reasons": {
+        "method": "꼭짓점과 절편으로 함수복원",
+        "condition": "꼭짓점(-1,2)와 y절편6으로 a를 정한 뒤 b를 읽는 구조이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_a4d142f91af9e3afc5b88fd6df46eee4f20be5af1d2142fc382b8ec7f7faa95d",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "1c42d64a0f08520c645fc3329017cbd84f665342963720408be91f5a70e1280b"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b7edec62637d1936438e53e796f9b97e74d79cef4c5c55842e645140f2999055"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "18. 이차함수 $y=ax^2+bx+c$는 최댓값이 $3$이고, 대칭축은 $x=-2$이다. 이차함수 $y=ax^2+bx+c$의 그래프가 제1사분면을 지나지 않는다고 할 때, $a$의 범위를 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 91
+          }
+        ],
+        "goal": [
+          {
+            "term": "미정계수",
+            "quote": "18. 이차함수 $y=ax^2+bx+c$는 최댓값이 $3$이고, 대칭축은 $x=-2$이다. 이차함수 $y=ax^2+bx+c$의 그래프가 제1사분면을 지나지 않는다고 할 때, $a$의 범위를 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "범위",
+            "quote": "18. 이차함수 $y=ax^2+bx+c$는 최댓값이 $3$이고, 대칭축은 $x=-2$이다. 이차함수 $y=ax^2+bx+c$의 그래프가 제1사분면을 지나지 않는다고 할 때, $a$의 범위를 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 297
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "사분면",
+            "quote": "18. 이차함수 $y=ax^2+bx+c$는 최댓값이 $3$이고, 대칭축은 $x=-2$이다. 이차함수 $y=ax^2+bx+c$의 그래프가 제1사분면을 지나지 않는다고 할 때, $a$의 범위를 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 149
+          },
+          {
+            "term": "최댓값",
+            "quote": "18. 이차함수 $y=ax^2+bx+c$는 최댓값이 $3$이고, 대칭축은 $x=-2$이다. 이차함수 $y=ax^2+bx+c$의 그래프가 제1사분면을 지나지 않는다고 할 때, $a$의 범위를 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 127
+          }
+        ]
+      },
+      "reasons": {
+        "method": "사분면 불통과 계수범위",
+        "condition": "꼭짓점(-2,3)·아래로 열림을 반영하고 x>0에서 양수가 되지 않는 경계를 찾아야 한다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_654dee4d52139c03f54e474f211ebf5bab35598b7dc3466b984ec730fec9b1af",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "df0f254d20e8cf1f93b45664d9ef4d66d90f42df8dfa0c5a7ef47238c127ecd1"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "bfea488904160e96a9910e897353c8101e32849b42d63df5927326c596cd0687"
+        }
+      ],
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "quote": "19. 차가 $6$인 두 수 중 그 곱이 최소가 되는 두 수를 $a, b$라 하자. $|a|+|b|$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 5
+          }
+        ],
+        "goal": [
+          {
+            "term": "절댓값",
+            "quote": "19. 차가 $6$인 두 수 중 그 곱이 최소가 되는 두 수를 $a, b$라 하자. $|a|+|b|$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 24
+          },
+          {
+            "term": "합",
+            "quote": "19. 차가 $6$인 두 수 중 그 곱이 최소가 되는 두 수를 $a, b$라 하자. $|a|+|b|$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 286
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "차",
+            "quote": "19. 차가 $6$인 두 수 중 그 곱이 최소가 되는 두 수를 $a, b$라 하자. $|a|+|b|$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 288
+          },
+          {
+            "term": "최솟값",
+            "quote": "19. 차가 $6$인 두 수 중 그 곱이 최소가 되는 두 수를 $a, b$라 하자. $|a|+|b|$의 값을 구하면? [4.0점]",
+            "src": "stem",
+            "termId": 128
+          }
+        ]
+      },
+      "reasons": {
+        "method": "두 수의 곱 최소 모델",
+        "condition": "차6을 이용해 곱을 한 변수의 이차식으로 나타낸 뒤 최소점의 두 수를 찾는 구조이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_c70de5d84d2a0e5cd3808ddca2a531f38e82e0a47946a373154657b5482cdff0",
+      "fingerprints": [
+        {
+          "scope": "QBODY",
+          "algo": "sha256-canonical-json-v1",
+          "value": "b54f8d4a0b020bd30653b9cd00476806ec8171c24feb061d534ceef6ccad02a9"
+        },
+        {
+          "scope": "QFULL",
+          "algo": "sha256-canonical-json-v1",
+          "value": "f3997a46099939222d995b35c1e228805db4c9e7517463d7d9e4c02d69cd1a4b"
+        }
+      ],
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "quote": "[서술형 1번] 아래의 이차함수 $y=ax^2+bx+c$의 그래프를 보고 물음에 답하여라. (1)번 ~ (6)번. [20.0점]\n(1) 꼭짓점의 좌표를 구하여라. [3.0점]\n(2) 축의 방정식을 구하여라. [3.0점]\n(3) 최댓값 또는 최솟값을 구하여라. [3.0점]\n(4) $a, b, c$의 값을 구하여라. (풀이과정을 쓰시오.) [6.0점]\n(5) 위에 주어진 이차함수 $y=ax^2+bx+c$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동하면 점 $(-3, k)$를 지난다. 이 때 $k$의 값을 구하여라. (풀이과정을 쓰시오.) [3.0점]\n(6) 위에 주어진 이차함수 $y=ax^2+bx+c$ 그래프의 $x \\le 1$ 부분과 이 부분을 $x$축 방향으로 $-3$만큼 평행이동 한 그래프 및 $y=1, y=-2$로 둘러싸인 부분의 넓이를 구하여라. (풀이과정을 쓰시오.) [2.0점]",
+            "src": "stem",
+            "termId": 91
+          },
+          {
+            "term": "그래프",
+            "quote": "[서술형 1번] 아래의 이차함수 $y=ax^2+bx+c$의 그래프를 보고 물음에 답하여라. (1)번 ~ (6)번. [20.0점]\n(1) 꼭짓점의 좌표를 구하여라. [3.0점]\n(2) 축의 방정식을 구하여라. [3.0점]\n(3) 최댓값 또는 최솟값을 구하여라. [3.0점]\n(4) $a, b, c$의 값을 구하여라. (풀이과정을 쓰시오.) [6.0점]\n(5) 위에 주어진 이차함수 $y=ax^2+bx+c$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동하면 점 $(-3, k)$를 지난다. 이 때 $k$의 값을 구하여라. (풀이과정을 쓰시오.) [3.0점]\n(6) 위에 주어진 이차함수 $y=ax^2+bx+c$ 그래프의 $x \\le 1$ 부분과 이 부분을 $x$축 방향으로 $-3$만큼 평행이동 한 그래프 및 $y=1, y=-2$로 둘러싸인 부분의 넓이를 구하여라. (풀이과정을 쓰시오.) [2.0점]",
+            "src": "stem",
+            "termId": 107
+          }
+        ],
+        "goal": [
+          {
+            "term": "꼭짓점",
+            "quote": "[서술형 1번] 아래의 이차함수 $y=ax^2+bx+c$의 그래프를 보고 물음에 답하여라. (1)번 ~ (6)번. [20.0점]\n(1) 꼭짓점의 좌표를 구하여라. [3.0점]\n(2) 축의 방정식을 구하여라. [3.0점]\n(3) 최댓값 또는 최솟값을 구하여라. [3.0점]\n(4) $a, b, c$의 값을 구하여라. (풀이과정을 쓰시오.) [6.0점]\n(5) 위에 주어진 이차함수 $y=ax^2+bx+c$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동하면 점 $(-3, k)$를 지난다. 이 때 $k$의 값을 구하여라. (풀이과정을 쓰시오.) [3.0점]\n(6) 위에 주어진 이차함수 $y=ax^2+bx+c$ 그래프의 $x \\le 1$ 부분과 이 부분을 $x$축 방향으로 $-3$만큼 평행이동 한 그래프 및 $y=1, y=-2$로 둘러싸인 부분의 넓이를 구하여라. (풀이과정을 쓰시오.) [2.0점]",
+            "src": "stem",
+            "termId": 311
+          },
+          {
+            "term": "축",
+            "quote": "[서술형 1번] 아래의 이차함수 $y=ax^2+bx+c$의 그래프를 보고 물음에 답하여라. (1)번 ~ (6)번. [20.0점]\n(1) 꼭짓점의 좌표를 구하여라. [3.0점]\n(2) 축의 방정식을 구하여라. [3.0점]\n(3) 최댓값 또는 최솟값을 구하여라. [3.0점]\n(4) $a, b, c$의 값을 구하여라. (풀이과정을 쓰시오.) [6.0점]\n(5) 위에 주어진 이차함수 $y=ax^2+bx+c$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동하면 점 $(-3, k)$를 지난다. 이 때 $k$의 값을 구하여라. (풀이과정을 쓰시오.) [3.0점]\n(6) 위에 주어진 이차함수 $y=ax^2+bx+c$ 그래프의 $x \\le 1$ 부분과 이 부분을 $x$축 방향으로 $-3$만큼 평행이동 한 그래프 및 $y=1, y=-2$로 둘러싸인 부분의 넓이를 구하여라. (풀이과정을 쓰시오.) [2.0점]",
+            "src": "stem",
+            "termId": 340
+          },
+          {
+            "term": "최솟값",
+            "quote": "[서술형 1번] 아래의 이차함수 $y=ax^2+bx+c$의 그래프를 보고 물음에 답하여라. (1)번 ~ (6)번. [20.0점]\n(1) 꼭짓점의 좌표를 구하여라. [3.0점]\n(2) 축의 방정식을 구하여라. [3.0점]\n(3) 최댓값 또는 최솟값을 구하여라. [3.0점]\n(4) $a, b, c$의 값을 구하여라. (풀이과정을 쓰시오.) [6.0점]\n(5) 위에 주어진 이차함수 $y=ax^2+bx+c$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동하면 점 $(-3, k)$를 지난다. 이 때 $k$의 값을 구하여라. (풀이과정을 쓰시오.) [3.0점]\n(6) 위에 주어진 이차함수 $y=ax^2+bx+c$ 그래프의 $x \\le 1$ 부분과 이 부분을 $x$축 방향으로 $-3$만큼 평행이동 한 그래프 및 $y=1, y=-2$로 둘러싸인 부분의 넓이를 구하여라. (풀이과정을 쓰시오.) [2.0점]",
+            "src": "stem",
+            "termId": 128
+          },
+          {
+            "term": "미정계수",
+            "quote": "[서술형 1번] 아래의 이차함수 $y=ax^2+bx+c$의 그래프를 보고 물음에 답하여라. (1)번 ~ (6)번. [20.0점]\n(1) 꼭짓점의 좌표를 구하여라. [3.0점]\n(2) 축의 방정식을 구하여라. [3.0점]\n(3) 최댓값 또는 최솟값을 구하여라. [3.0점]\n(4) $a, b, c$의 값을 구하여라. (풀이과정을 쓰시오.) [6.0점]\n(5) 위에 주어진 이차함수 $y=ax^2+bx+c$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동하면 점 $(-3, k)$를 지난다. 이 때 $k$의 값을 구하여라. (풀이과정을 쓰시오.) [3.0점]\n(6) 위에 주어진 이차함수 $y=ax^2+bx+c$ 그래프의 $x \\le 1$ 부분과 이 부분을 $x$축 방향으로 $-3$만큼 평행이동 한 그래프 및 $y=1, y=-2$로 둘러싸인 부분의 넓이를 구하여라. (풀이과정을 쓰시오.) [2.0점]",
+            "src": "stem",
+            "termId": 49
+          },
+          {
+            "term": "좌표",
+            "quote": "[서술형 1번] 아래의 이차함수 $y=ax^2+bx+c$의 그래프를 보고 물음에 답하여라. (1)번 ~ (6)번. [20.0점]\n(1) 꼭짓점의 좌표를 구하여라. [3.0점]\n(2) 축의 방정식을 구하여라. [3.0점]\n(3) 최댓값 또는 최솟값을 구하여라. [3.0점]\n(4) $a, b, c$의 값을 구하여라. (풀이과정을 쓰시오.) [6.0점]\n(5) 위에 주어진 이차함수 $y=ax^2+bx+c$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동하면 점 $(-3, k)$를 지난다. 이 때 $k$의 값을 구하여라. (풀이과정을 쓰시오.) [3.0점]\n(6) 위에 주어진 이차함수 $y=ax^2+bx+c$ 그래프의 $x \\le 1$ 부분과 이 부분을 $x$축 방향으로 $-3$만큼 평행이동 한 그래프 및 $y=1, y=-2$로 둘러싸인 부분의 넓이를 구하여라. (풀이과정을 쓰시오.) [2.0점]",
+            "src": "stem",
+            "termId": 148
+          },
+          {
+            "term": "넓이",
+            "quote": "[서술형 1번] 아래의 이차함수 $y=ax^2+bx+c$의 그래프를 보고 물음에 답하여라. (1)번 ~ (6)번. [20.0점]\n(1) 꼭짓점의 좌표를 구하여라. [3.0점]\n(2) 축의 방정식을 구하여라. [3.0점]\n(3) 최댓값 또는 최솟값을 구하여라. [3.0점]\n(4) $a, b, c$의 값을 구하여라. (풀이과정을 쓰시오.) [6.0점]\n(5) 위에 주어진 이차함수 $y=ax^2+bx+c$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동하면 점 $(-3, k)$를 지난다. 이 때 $k$의 값을 구하여라. (풀이과정을 쓰시오.) [3.0점]\n(6) 위에 주어진 이차함수 $y=ax^2+bx+c$ 그래프의 $x \\le 1$ 부분과 이 부분을 $x$축 방향으로 $-3$만큼 평행이동 한 그래프 및 $y=1, y=-2$로 둘러싸인 부분의 넓이를 구하여라. (풀이과정을 쓰시오.) [2.0점]",
+            "src": "stem",
+            "termId": 213
+          }
+        ],
+        "method": [],
+        "condition": [
+          {
+            "term": "범위",
+            "quote": "[서술형 1번] 아래의 이차함수 $y=ax^2+bx+c$의 그래프를 보고 물음에 답하여라. (1)번 ~ (6)번. [20.0점]\n(1) 꼭짓점의 좌표를 구하여라. [3.0점]\n(2) 축의 방정식을 구하여라. [3.0점]\n(3) 최댓값 또는 최솟값을 구하여라. [3.0점]\n(4) $a, b, c$의 값을 구하여라. (풀이과정을 쓰시오.) [6.0점]\n(5) 위에 주어진 이차함수 $y=ax^2+bx+c$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동하면 점 $(-3, k)$를 지난다. 이 때 $k$의 값을 구하여라. (풀이과정을 쓰시오.) [3.0점]\n(6) 위에 주어진 이차함수 $y=ax^2+bx+c$ 그래프의 $x \\le 1$ 부분과 이 부분을 $x$축 방향으로 $-3$만큼 평행이동 한 그래프 및 $y=1, y=-2$로 둘러싸인 부분의 넓이를 구하여라. (풀이과정을 쓰시오.) [2.0점]",
+            "src": "stem",
+            "termId": 297
+          }
+        ]
+      },
+      "reasons": {
+        "method": "한 그래프의 복원과 이동 활용",
+        "condition": "그림의 꼭짓점(1,-2)·절편1에서 함수를 복원하고 이동점·수평이동 곡선사이 넓이를 연결하는 여섯 소문항이다."
+      },
+      "judgedBy": {
+        "agent": "meta_a",
+        "owner": "M3_S1_RESUME_20261115_A",
+        "assignmentId": "M3-S1-META-FULL",
+        "at": "2026-11-15T00:08:14.472612+00:00"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "note": "저자 의미검토, root 독립 확인 대기"
+      },
+      "evidenceDebt": {
+        "status": "SOURCE_ONLY",
+        "kind": "METHOD_EVIDENCE_MISSING",
+        "scope": "method",
+        "reason": "원본 solution 공백. 후속 해설작성·방법 근거 결속 전 method는 빈 배열로 유지."
+      }
+    }
+  ],
+  "candidates": [],
+  "selfCheck": {
+    "status": "AUTHOR_CHECKED",
+    "independentReview": "PENDING_ROOT_SAMPLE"
+  },
+  "reviewedSourceBaseBlob": "39cabac6936b8ea743c6ea78f06dbaac0a86532e",
+  "independentReview": {
+    "schemaVersion": "integrated-meta-independent-review-v1",
+    "workKey": "M3-S1-META-FULL",
+    "examKey": "E073",
+    "author": "meta_a",
+    "reviewer": "meta_b",
+    "reviewedAt": "2026-11-15",
+    "reviewRun": "GPT_ROOT_E45FF6C78C51/B",
+    "status": "PASS_WITH_EXPLICIT_DEBTS",
+    "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+    "sourceBaseBlob": "39cabac6936b8ea743c6ea78f06dbaac0a86532e",
+    "inputHashes": {
+      "reviewSha256": "d0b8f8f1d5190e616482f42fde486434b45c5e47928d64e65660265c2a68951e",
+      "fourSlotSha256": "ff6f25f71178c3bfe49bdd07dbbd486d4d209906ff758e79758faa6c7dbb7b5c"
+    },
+    "sampledOrdinals": [
+      3,
+      18,
+      20
+    ],
+    "additionalReviewedOrdinals": [],
+    "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+    "findings": [
+      {
+        "ordinal": 3,
+        "questionUid": "qid_v1_e29ebad8284be93bcf1d54236acc181caa4a0e0c81412a965a79c71442096f03",
+        "status": "PASS_WITH_DEBT",
+        "note": "실제 source solution 공백 확인. 일차가 되는 매개변수의 발문기반차수2 후보는 타당하나 method[] 및 SOURCE_ONLY debt 유지. 같은 수치 타시험지 해설을 여기의 기존해설로 복사하지 않음."
+      },
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_a4d142f91af9e3afc5b88fd6df46eee4f20be5af1d2142fc382b8ec7f7faa95d",
+        "status": "PASS_WITH_DEBT",
+        "note": "최댓값3·축-2·제1사분면 불통과로 계수범위 해석3은 발문기반 후보로 수용. 기존해설 없음에 따른 method debt와 공식4칸 미완료상태 유지."
+      },
+      {
+        "ordinal": 20,
+        "questionUid": "qid_v1_c70de5d84d2a0e5cd3808ddca2a531f38e82e0a47946a373154657b5482cdff0",
+        "status": "PASS_WITH_DEBT",
+        "note": "실물 꼭짓점(1,-2),y절편1과 그림뒤6문항 확인. 마지막(6)은 새 곡선영역을 구성하고 등적재배치를 선택해야 하므로 동일구조 교차기준에 따라 part6=4·전체상4/B34 보완을 수용. SOURCE_ONLY method debt는 계속 유지하며 해설·수학PASS 아님."
+      }
+    ],
+    "assetReview": [
+      {
+        "path": "/workspace/scratch/e45ff6c78c51/workers/A/assets/E073/20-image-1.png",
+        "sha256": "818f58d67d09d1decf1a849f7de6041ae1ca62e72b6c7a2e6d7bf5612e45739e",
+        "status": "READ"
+      }
+    ],
+    "decisiveMethodOrGoalErrorsInSample": 0,
+    "inventedQuotesInSample": 0,
+    "mathematicalVerification": "NOT_PERFORMED",
+    "sharedRegistration": "NOT_PERFORMED",
+    "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+  }
+}
