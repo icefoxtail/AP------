@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E088",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E0C948452E80/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "dc5fba4ad5ba7fe69c8c1edd88c4aacb4b961e7e",
+  "inputHashes": {
+    "reviewSha256": "d457e05217fd6e09cd9fd44d7f743113a40da521f7dd74d60e5de955e094fb71",
+    "fourSlotSha256": "4bd3bd98b20854c8467b9b473a654c1ed65e7b68ae9c0bb3a3883ee45dc011f6"
+  },
+  "sampledOrdinals": [
+    4,
+    13,
+    20
+  ],
+  "additionalReviewedOrdinals": [],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_b567b73d0626a6a0f852f4d4570996379daa15f517fad9c94a02a165edb3c00f",
+      "status": "PASS",
+      "note": "실제 정사각형과 수직선에서 P<B<C<Q의 배치 및 대각선 BD=BQ,AC=CP를 확인. 기존해설은 피타고라스와 두 번의 좌표거리 계산으로 Q=2를 얻는다. 상등조건·RPM005/097·정형 난도2 수용."
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_a788b054dd67cb01d643ca2a2f6cebe16d0e423d54a83a817ae72e295baba137",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제 발문은 다음 그림을 참조하나 source hasVisual=false이며 이미지 참조가 없음을 확인. 기존해설의 부채꼴 중심=정사각형 꼭짓점은 원도형 증거로 확정할 수 없어 MISSING_REQUIRED_VISUAL_EVIDENCE debt 및 난도 UNKNOWN 보류가 타당."
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_b465dda67f5337f9a2744683db0ba80cb2d5e6f2b409e3cd97fa4ae5e4f5d80f",
+      "status": "PASS",
+      "note": "자연수 제한 아래 (x-2y)(x+y)=13으로 인수분해하고 양수 인수쌍을 선택하는 해설을 확인. 자연수 condition, 인수분해·약수·대소비교 method와 조건붙은 인수분해 RPM028/120, 난도3/B23 수용."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e45ff6c78c51/workers/A/assets/E088/04-question-1.png",
+      "sha256": "d176a8754d6a282702de0f9751f80bea506ca56a00bd26372cfbf8f77f97a31c",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}
