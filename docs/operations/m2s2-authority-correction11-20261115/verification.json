@@ -1,0 +1,96 @@
+{
+  "actualBefore": {
+    "authorityAccepted": 57,
+    "authorityUnsupported": 11,
+    "registeredBindingRequests": 10,
+    "registeredBindingUids": 68
+  },
+  "actualRegisteredMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "evidence": [
+    {
+      "path": "docs/operations/m2s2-authority-correction11-20261115/actual11-eligibility.json",
+      "sha256": "64ae5a41c6a4252e857df4e428062c4c73753d2e7fbfd06c885b8a4160dee213"
+    },
+    {
+      "path": "docs/operations/m2s2-authority-correction11-20261115/local-write11.json",
+      "sha256": "9b325347986b0864bd85d5bbd1eba8337b7940c6607065cbbf456dc8dcb841f1"
+    },
+    {
+      "path": "docs/operations/m2s2-authority-correction11-20261115/local-replay11.json",
+      "sha256": "6616f77a21430ba7ba23403aa19263eaf94d0d8ac7dfa54c92d65a06caedc256"
+    },
+    {
+      "path": "docs/operations/m2s2-authority-correction11-20261115/integrated-consumer11.json",
+      "sha256": "e8856a8a8bb831b5816120e246b00675bbce5ac1831e6fe0345086b46748ae79"
+    },
+    {
+      "path": "docs/operations/m2s2-authority-correction11-20261115/integrated-hold-guards11.json",
+      "sha256": "a058ed51b8d0a6bebfd18656be6f4ddd7c770faae018c13923dc6fd8c194bbfa"
+    },
+    {
+      "path": "docs/operations/m2s2-authority-correction11-20261115/accepted57-current-native-continuity.json",
+      "sha256": "0ca26bae1af52336f8e0da916ee9f2e584d8e6686ee39ab0fd9cf17bf636fa7f"
+    },
+    {
+      "path": "docs/operations/m2s2-authority-correction11-20261115/focused-tests-publication.tap",
+      "sha256": "66c3625bcd0ad1a5473472aa49c2dc6c97d8f34e298f3ad48962e5866818c575"
+    }
+  ],
+  "finalHelperSha256": "aa1b594bc02da817719524f3f589275adca500081f1c00452b93e21461414a4b",
+  "integrationPatchSha256": "4805b25bbb16753d52c1c5012e11f0051135d89050a685677d75fc17e62cefb5",
+  "localProposal": {
+    "accepted57AlreadyRegistered": 57,
+    "accepted57MetadataRuntimeIdentityExact": true,
+    "accepted57NativeReuse": 57,
+    "accepted57NewApply": 0,
+    "allMetadataDifficultyFourFieldsUnchanged": 28890,
+    "currentAuthorityHolds": 11,
+    "focusedRegressions": {
+      "failed": 0,
+      "passed": 28,
+      "tests": 28
+    },
+    "fourSlotChanges": 0,
+    "identityRawUnchanged": true,
+    "m2s2DifficultyFourFieldsUnchanged": 1604,
+    "manualOriginalSelectionPolicyPreserved": true,
+    "nativeHeldReuse": 0,
+    "newApprovals": 0,
+    "officialChangedUidConsumerPassed": 11,
+    "originalReceiptChanges": 0,
+    "originalSourceHold36Unchanged": true,
+    "originalTyped25Unchanged": true,
+    "otherRuntimeRowsUnchanged": true,
+    "outsideMetadataExact": 28879,
+    "plannerHeldApply": 0,
+    "protectedQ5Unchanged": true,
+    "requests": 4,
+    "runtimeRows": {
+      "MIDDLE2": {
+        "after": 61,
+        "before": 69,
+        "removed": 8
+      },
+      "MIDDLE_GEOMETRY": {
+        "after": 1442,
+        "before": 1445,
+        "removed": 3
+      }
+    },
+    "sharedBindingChanges": 0,
+    "sourceWrites": 0,
+    "v2ProjectionDispatcherPassed": 7,
+    "withdrawnUnsupportedApprovals": 11
+  },
+  "mainMerge": "NOT_RUN",
+  "newMathReview": false,
+  "pages": "NOT_RUN",
+  "prCI": "NOT_RUN",
+  "productionCorrection": "NOT_RUN",
+  "publicationNotes": "Original local evidence is immutable. Three public proof copies remove only private execution-location strings and retain the original raw SHA plus exact redaction pointers; all UID and verification facts are unchanged.",
+  "rootReviewRequired": true,
+  "schemaVersion": "m2s2-authority-withdrawal-public-verification-v1",
+  "status": "PASS_LOCAL_BOUNDARY_AWAITING_ROOT_SERIAL_INTEGRATION",
+  "testSha256": "c2e7d1a8f6b9d6bc8956e4d3b93b5d77f4057283e47dfa398f1d790c5111e10b",
+  "writerRun": 43741052412
+}

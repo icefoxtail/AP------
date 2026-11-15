@@ -9,6 +9,7 @@ import {execFileSync} from 'node:child_process';
 import {loadVerifiedHistoricalAuditSnapshot, isPreservableAuditRecord, isAuditPreservation} from './native-audit-preservation.mjs';
 import {validateReviewedAuditCrossConceptComponent, REASSESSED_STUDENT_FIELDS} from './reviewed-source-reassessment.mjs';
 import {loadActiveMetaRegistry} from './active-registry.mjs';
+import {readImmutableGitFiles} from './immutable-git-batch.mjs';
 
 export const AUDIT_CC_APPEND_SCHEMA = 'archive-audit-finalized-cc-append-v1';
 export const AUDIT_CC_BINDING_SCHEMA = 'archive-audit-finalized-cc-binding-v1';
@@ -153,6 +154,10 @@ export function loadAuditCcAppend({root,request,bytes,bank,canonicalBefore,canon
       !selected.crossConceptKeys.length || selected.crossConceptKeys.includes(component.addCrossConceptKey) ||
       selected.crossConceptApprovalComponents !== undefined) fail('one new CC must append to an exact existing audited array');
   const combined=[...selected.crossConceptKeys,component.addCrossConceptKey], assetMap=new Map();
+  const assetPaths=[...new Set(bank.flatMap(referencedAssets))], assetInputs=assetPaths.flatMap(p=>[
+    {commit:spec.priorCommit,path:p},...snapshot.sourceSnapshots.map(history=>({commit:history.commit,path:p}))]);
+  const assetBytes=readImmutableGitFiles(root,assetInputs), assetsPerPath=1+snapshot.sourceSnapshots.length;
+  const freshAssets=new Map(assetPaths.map((p,i)=>[p,assetBytes.slice(i*assetsPerPath,(i+1)*assetsPerPath)]));
   for (let i=0;i<bank.length;i++) {
     const old=prior.appliedRecords[i],oldQ=oldBank[i],q=bank[i],patch=request.items[i],id=identities.get(old.questionUid),rt=runtimes.get(old.questionUid);
     if (old.sourceOrdinal!==i+1 || patch.sourceOrdinal!==i+1 || !isPreservableAuditRecord(old) ||
@@ -173,10 +178,10 @@ export function loadAuditCcAppend({root,request,bytes,bank,canonicalBefore,canon
         fail('whole-source renderer references differ from the original audit history');
     for (const p of questionAssets) {
       if (!assetMap.has(p)) {
-        const original=git(root,['show',spec.priorCommit+':'+p]),current=fs.readFileSync(safe(root,p)),hash=sha(original);
+        const [original,...historicalBytes]=freshAssets.get(p),current=fs.readFileSync(safe(root,p)),hash=sha(original);
         if (sha(current)!==hash) fail('whole-source renderer bytes and explicit dependencies must remain unchanged');
-        const auditHistory=snapshot.sourceSnapshots.map(history=>{
-          const raw=git(root,['show',history.commit+':'+p]);
+        const auditHistory=snapshot.sourceSnapshots.map((history,historyIndex)=>{
+          const raw=historicalBytes[historyIndex];
           if (sha(raw)!==hash) fail('whole-source renderer bytes differ from the original audit history');
           return {commit:history.commit,receiptRef:history.receiptRef,sha256:hash,gitBlobSha1:blob(raw)};
         });
@@ -303,14 +308,14 @@ export function nativeAuditCcAppend({nativeSource,question,previous,current,iden
     try {
       const receipt=read(root,p);
       if (!isAuditCcAppend(receipt.approval)) continue;
+      const matches=receipt.appliedRecords.filter(r=>r.questionUid===current.questionUid);
+      if (matches.length!==1 || !same(matches[0],current)) fail('native current component row drift');
       const binding=read(root,auditCcBindingPath(receipt.requestId)),request=binding.requestSnapshot;
       if (p!==RECEIPTS+request?.requestId+'.json' || request.sourceArchiveFile!==current.sourceArchiveFile ||
           receipt.requestSha256!==sha(stable(request))) fail('native component request missing');
       const tables={pt:registry.problemTypes,tpl:registry.templates,cc:registry.concepts,cond:registry.conditions};
       const context=loadAuditCcAppend({root,request,bytes,bank,canonicalBefore:tables,canonicalAfter:tables});
       assertAuditCcAppendReceipt(context,receipt);
-      const matches=receipt.appliedRecords.filter(r=>r.questionUid===current.questionUid);
-      if (matches.length!==1 || !same(matches[0],current)) fail('native current component row drift');
       planAuditCcAppendRow(context,{current,identity,runtime:runtimeRecord,question,ordinal,receiptPath:p,replay:true});
       if (!same(pick(previous,REASSESSED_STUDENT_FIELDS),pick(question,REASSESSED_STUDENT_FIELDS)))
         fail('component operation cannot approve changed student input');

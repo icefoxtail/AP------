@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "middle-phase1-issued-authority-withdrawal-reconciliation-v1",
+  "decision": "OMIT_UNISSUED_PRESERVATION_OF_WITHDRAWN_NATIVE_AUTHORITY",
+  "questionUid": "qid_v1_597c1d90502bf1dc6d2e3e9ee64351d37581e18f323506d1a0697cd2a36ff8ef",
+  "sourceArchiveFile": "original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+  "sourceOrdinal": 6,
+  "omittedRequestId": "m2s2-follow6-preserve-20261115-E054",
+  "omittedUnissuedRequest": {
+    "path": ".archive-meta-register/evidence/middle-phase1-withdrawal-reconciliation-20261115/omitted-unissued-E054-preservation.json",
+    "sha256": "08f69e2aacbb779752c1ef37435170bd76207533de087b64885c07a2dadd4034",
+    "originalRemoteCommit": "ec367338e1aa40fb67919cb6cff8f96330ee6b1d",
+    "originalInboxPath": ".archive-meta-register/inbox/m2s2-follow6-preserve-20261115-E054.json"
+  },
+  "newAuthority": {
+    "commit": "e911426aaf5f0fa20550b6c9c5f1a4b0bdd006d9",
+    "path": ".archive-meta-register/evidence/m2s2-authority-correction-20261115/withdrawal-review.json",
+    "sha256": "38aff0dbfb29c051771f967db5e048a93fce333f4929c2b1f134f5762564dbdf",
+    "correctionRequestId": "m2s2-authority-hold-e054-26fc-20261115"
+  },
+  "strictCurrentRead": {
+    "localReportSha256": "a30fe103aad1c97f1768139d594d0864968789ba93df04f3b4a564c7cb9f3e08",
+    "preservationRequestItems": 1,
+    "q6WholeObjectUnchanged": true,
+    "separatelyApprovedQ21Retained": true,
+    "issuedRecovery81Affected": 0
+  },
+  "plannedOwnBatch": {
+    "previousRequests": 29,
+    "previousUniqueUids": 166,
+    "currentRequests": 28,
+    "currentUniqueUids": 165,
+    "newNativeUids": 25,
+    "existingPreservationUids": 58,
+    "crossConceptAppendUids": 1,
+    "issuedRecoveryUids": 81
+  },
+  "withdrawalMainReceipt": "NOT_YET_OBSERVED",
+  "actualOwnRegistration": "NOT_RUN",
+  "sourceWrites": 0,
+  "approvalChanges": 0,
+  "inboxRequestsRemoved": 1,
+  "M3S1Writes": 0,
+  "nextAction": "Refresh the exact run scope after immutable current-renderer requests and latest main registration are fixed; verify the issued withdrawal seal remains unchanged."
+}

@@ -157,13 +157,13 @@ window.examData = {
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "5. 다음 그림에서 모눈 한 칸은 한 변의 길이가 1인 정사각형이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BP}}$이다. 두 점 $\\mathrm{P}, \\mathrm{Q}$에 대응하는 수를 각각 $a, b$라고 할 때, $a+b$의 값은? [4.0점]<p><img src=\"assets/images/16_경북장흥중_1학기_중간_중3_수학/q05.png\" alt=\"수직선 위에 한 변의 길이가 1인 모눈과 직각이등변삼각형의 빗변을 반지름으로 하여 점 A, B를 중심으로 호를 그려 수직선과 만나는 점 P, Q가 표시된 그림\" /></p>",
-      "question": "5. 다음 그림에서 모눈 한 칸은 한 변의 길이가 1인 정사각형이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BP}}$이다. 두 점 $\\mathrm{P}, \\mathrm{Q}$에 대응하는 수를 각각 $a, b$라고 할 때, $a+b$의 값은? [4.0점]<p><img src=\"assets/images/16_경북장흥중_1학기_중간_중3_수학/q05.png\" alt=\"수직선 위에 한 변의 길이가 1인 모눈과 직각이등변삼각형의 빗변을 반지름으로 하여 점 A, B를 중심으로 호를 그려 수직선과 만나는 점 P, Q가 표시된 그림\" /></p>",
+      "content": "5. 다음 그림에서 모눈 한 칸은 한 변의 길이가 1인 정사각형이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BP}}$이다. 두 점 $\\mathrm{P}, \\mathrm{Q}$에 대응하는 수를 각각 $a, b$라고 할 때, $a+b$의 값은? [4.0점]<p><img src=\"assets/images/16_경북장흥중_1학기_중간_중3_수학/q5-problem-visual-v2.svg\" alt=\"모눈 위에 왼쪽과 오른쪽 정사각형이 한 부분에서 겹친다. A는 1, B는 2에 있다. B에서 C까지의 길이를 P로, A에서 D까지의 길이를 Q로 옮긴 두 호가 점선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "question": "5. 다음 그림에서 모눈 한 칸은 한 변의 길이가 1인 정사각형이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BP}}$이다. 두 점 $\\mathrm{P}, \\mathrm{Q}$에 대응하는 수를 각각 $a, b$라고 할 때, $a+b$의 값은? [4.0점]<p><img src=\"assets/images/16_경북장흥중_1학기_중간_중3_수학/q5-problem-visual-v2.svg\" alt=\"모눈 위에 왼쪽과 오른쪽 정사각형이 한 부분에서 겹친다. A는 1, B는 2에 있다. B에서 C까지의 길이를 P로, A에서 D까지의 길이를 Q로 옮긴 두 호가 점선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "① 3",
         "② $2\\sqrt{2}$",
@@ -171,9 +171,7 @@ window.examData = {
         "④ $3-\\sqrt{2}$",
         "⑤ $3+\\sqrt{2}$"
       ],
-      "images": [
-        "assets/images/16_경북장흥중_1학기_중간_중3_수학/q05.png"
-      ],
+      "images": ["assets/images/16_경북장흥중_1학기_중간_중3_수학/q5-problem-visual-v2.svg"],
       "answer": "①",
       "solution": "[원문 조건 및 구할 대상]\n수직선 위의 모눈 한 칸이 한 변의 길이가 1인 정사각형이고, $\\overline{\\mathrm{AD}}=\\overline{\\mathrm{AQ}}$, $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{BP}}$이다. 두 점 $\\mathrm{P}, \\mathrm{Q}$에 대응하는 수를 각각 $a, b$라고 할 때, $a+b$의 값을 구한다.\n\n[핵심 발상/공식/보조선]\n- 모눈 한 칸의 가로 1, 세로 1인 직각삼각형에서 피타고라스 정리에 의해 빗변의 길이는:\n  $\\sqrt{1^2 + 1^2} = \\sqrt{2}$.\n- 기준점 $x_0$에서 오른쪽으로 회전한 점의 좌표는 $x_0 + \\sqrt{2}$, 왼쪽으로 회전한 점의 좌표는 $x_0 - \\sqrt{2}$이다.\n- 수직선 위의 눈금 확인:\n  점 $\\mathrm{A}$의 좌표는 $1$, 점 $\\mathrm{B}$의 좌표는 $2$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 빗변의 길이 계산\n정사각형 모눈의 대각선인 선분 $\\mathrm{AD}$와 $\\mathrm{BC}$의 길이는:\n$\\overline{\\mathrm{AD}} = \\sqrt{1^2 + 1^2} = \\sqrt{2}$\n$\\overline{\\mathrm{BC}} = \\sqrt{1^2 + 1^2} = \\sqrt{2}$\n2단계: 점 $\\mathrm{P}$에 대응하는 수 $a$ 구하기\n점 $\\mathrm{P}$는 점 $\\mathrm{B}(2)$를 중심으로 하고 반지름이 $\\overline{\\mathrm{BC}}=\\sqrt{2}$인 호를 왼쪽으로 회전하여 수직선과 만나는 점이므로:\n$a = 2 - \\sqrt{2}$\n3단계: 점 $\\mathrm{Q}$에 대응하는 수 $b$ 구하기\n점 $\\mathrm{Q}$는 점 $\\mathrm{A}(1)$을 중심으로 하고 반지름이 $\\overline{\\mathrm{AD}}=\\sqrt{2}$인 호를 오른쪽으로 회전하여 수직선과 만나는 점이므로:\n$b = 1 + \\sqrt{2}$\n4단계: $a + b$ 계산하기\n$a + b = (2 - \\sqrt{2}) + (1 + \\sqrt{2})$\n$= 2 + 1 + (-\\sqrt{2} + \\sqrt{2})$\n$= 3$\n\n[경우 나눔 및 5개 선지 검토]\n① 3: 무리수 부분이 소거된 정확한 결과와 일치함 (정답)\n② $2\\sqrt{2}$: 무리수 성분 오답\n③ $2\\sqrt{5}$: 빗변 계산 오류 오답\n④ $3-\\sqrt{2}$: 오답\n⑤ $3+\\sqrt{2}$: 오답\n\n[명확한 결론]\n따라서 $a+b$의 값은 3이므로 정답은 ①이다."
     },
@@ -778,18 +776,16 @@ window.examData = {
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "questionType": "서술형",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "서술형",
         "도형"
       ],
       "wide": false,
-      "content": "【서술형4】 다음 그림과 같이 한 변의 길이가 $r\\mathrm{m}$인 정사각형 모양의 공원 주변에 폭이 $a\\mathrm{m}$인 산책로가 있다. 이 산책로의 한가운데를 지나는 선의 길이를 $l\\mathrm{m}$라고 할 때,\n① $l$을 $a, r$을 사용하여 나타내고(3점),\n② 이 산책로의 넓이를 $a, l$을 사용하여 나타내시오.(2점) [5점]<p><img src=\"assets/images/16_경북장흥중_1학기_중간_중3_수학/q24.png\" alt=\"한 변의 길이가 r인 정사각형 공원 둘레에 폭이 a인 직각 산책로가 둘러싸고 있고 산책로의 중앙을 지나는 점선 둘레 l이 표시된 기하 모델 다이어그램\" /></p>",
-      "question": "【서술형4】 다음 그림과 같이 한 변의 길이가 $r\\mathrm{m}$인 정사각형 모양의 공원 주변에 폭이 $a\\mathrm{m}$인 산책로가 있다. 이 산책로의 한가운데를 지나는 선의 길이를 $l\\mathrm{m}$라고 할 때,\n① $l$을 $a, r$을 사용하여 나타내고(3점),\n② 이 산책로의 넓이를 $a, l$을 사용하여 나타내시오.(2점) [5점]<p><img src=\"assets/images/16_경북장흥중_1학기_중간_중3_수학/q24.png\" alt=\"한 변의 길이가 r인 정사각형 공원 둘레에 폭이 a인 직각 산책로가 둘러싸고 있고 산책로의 중앙을 지나는 점선 둘레 l이 표시된 기하 모델 다이어그램\" /></p>",
+      "content": "【서술형4】 다음 그림과 같이 한 변의 길이가 $r\\mathrm{m}$인 정사각형 모양의 공원 주변에 폭이 $a\\mathrm{m}$인 산책로가 있다. 이 산책로의 한가운데를 지나는 선의 길이를 $l\\mathrm{m}$라고 할 때,\n① $l$을 $a, r$을 사용하여 나타내고(3점),\n② 이 산책로의 넓이를 $a, l$을 사용하여 나타내시오.(2점) [5점]<p><img src=\"assets/images/16_경북장흥중_1학기_중간_중3_수학/q24-problem-visual-v2.svg\" alt=\"두 정사각형 사이에 일정한 폭의 산책로가 있다. 안쪽 공원의 한 변에 r m, 띠를 가로지르는 길이에 a m를 적었다. 띠 한가운데의 정사각형 경계는 점선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "question": "【서술형4】 다음 그림과 같이 한 변의 길이가 $r\\mathrm{m}$인 정사각형 모양의 공원 주변에 폭이 $a\\mathrm{m}$인 산책로가 있다. 이 산책로의 한가운데를 지나는 선의 길이를 $l\\mathrm{m}$라고 할 때,\n① $l$을 $a, r$을 사용하여 나타내고(3점),\n② 이 산책로의 넓이를 $a, l$을 사용하여 나타내시오.(2점) [5점]<p><img src=\"assets/images/16_경북장흥중_1학기_중간_중3_수학/q24-problem-visual-v2.svg\" alt=\"두 정사각형 사이에 일정한 폭의 산책로가 있다. 안쪽 공원의 한 변에 r m, 띠를 가로지르는 길이에 a m를 적었다. 띠 한가운데의 정사각형 경계는 점선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
-      "images": [
-        "assets/images/16_경북장흥중_1학기_중간_중3_수학/q24.png"
-      ],
+      "images": ["assets/images/16_경북장흥중_1학기_중간_중3_수학/q24-problem-visual-v2.svg"],
       "answer": "① l = 4r + 4a (또는 4(r + a))\\n② al",
       "solution": "[원문 조건 및 구할 대상]\n한 변의 길이가 $r\\mathrm{m}$인 정사각형 공원 주변에 폭이 $a\\mathrm{m}$인 산책로가 있다. 이 산책로의 한가운데를 지나는 선의 길이를 $l\\mathrm{m}$라고 할 때,\n① $l$을 $a, r$을 사용하여 나타내고(3점),\n② 이 산책로의 넓이를 $a, l$을 사용하여 나타낸다(2점).\n\n[핵심 발상/공식/보조선]\n- 내부 정사각형 공원의 한 변의 길이는 $r$이다.\n- 산책로의 폭이 $a$이므로 외곽 전체 정사각형의 한 변의 길이는 $r + 2a$이다.\n- 산책로의 한가운데를 지나는 정사각형 선은 안쪽 경계로부터 양쪽으로 각각 $\\dfrac{a}{2}$만큼 떨어져 있으므로 한 변의 길이는 $r + 2 \\times \\dfrac{a}{2} = r + a$이다.\n- 산책로의 넓이는 (외곽 정사각형 넓이) - (내부 정사각형 넓이)이며, 합차공식으로 인수분해하여 $l$과 $a$의 곱으로 나타낸다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: ① $l$을 $a, r$로 나타내기 (3점)\n산책로의 한가운데를 지나는 정사각형의 한 변의 길이는:\n$r + \\dfrac{a}{2} + \\dfrac{a}{2} = r + a$\n정사각형의 둘레의 길이는 한 변의 길이의 4배이므로:\n$l = 4(r + a) = 4r + 4a$\n2단계: ② 산책로의 넓이를 $a, l$로 나타내기 (2점)\n외곽 정사각형의 한 변의 길이는 $r + a + a = r + 2a$이다.\n산책로의 넓이를 $S$라 하면:\n$S = (r + 2a)^2 - r^2$\n합차공식 $A^2 - B^2 = (A + B)(A - B)$를 적용하면:\n$S = \\{(r + 2a) + r\\}\\{(r + 2a) - r\\}$\n$= (2r + 2a) \\times 2a$\n$= 2(r + a) \\times 2a$\n$= a \\times 4(r + a)$\n$= a \\times (4r + 4a)$\n앞서 1단계에서 $l = 4(r + a) = 4r + 4a$이었으므로:\n$S = al$ (또는 $la$)\n\n(별해: 도형 분할을 통한 직관적 계산)\n산책로를 가로 $r$, 세로 $a$인 직사각형 4개와 네 모퉁이의 한 변의 길이가 $a$인 정사각형 4개로 나누면:\n$S = 4 \\times (ra) + 4 \\times a^2 = 4ar + 4a^2 = a(4r + 4a)$\n여기서 $l = 4r + 4a$이므로:\n$S = al$\n\n[조건 적합성 검토]\n서술형 단계별 검증:\n① 한 변의 길이 $r+a$ 및 둘레 $l = 4r + 4a$ (또는 $4(r+a)$) 도출 (3점)\n② 넓이 식 $S = (r+2a)^2 - r^2 = a(4r+4a) = al$ 도출 (2점)\n\n[명확한 결론]\n따라서 정답은 ① $l = 4r + 4a$ (또는 $4(r+a)$), ② $al$ 이다."
     }

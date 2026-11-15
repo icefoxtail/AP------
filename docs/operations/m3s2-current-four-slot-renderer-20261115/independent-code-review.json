@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "m3-current-renderer-negative-independent-code-review-v1",
+  "reviewedAt": "2026-11-15T21:52:03.172017+00:00",
+  "reviewer": "GPT_INDEPENDENT_M1_COMPACT_TRANSPORT",
+  "decision": "ACCEPT_SCOPED_CODE_WITH_ROOT_UNION_GATES",
+  "scope": "READ_ONLY_CODE_AND_AUTHOR_RESULT_REVIEW",
+  "codeCommit": "15a60863d6c2a46656a4cff35cf7e5bbc89e6f32",
+  "parentCommit": "c804abcaed01163d891139f2a35412987e5627ce",
+  "codeTree": "5004c88d3531795db44d64fae6e883d75a241a4a",
+  "files": [
+    {
+      "path": "docs/architecture/4slot-current-renderer-negative-hold-v1.md",
+      "sha256": "d34e0c89be71179ac93bfbae6b63f9f35ed5b459659495d9f6959f1d1bd09010",
+      "gitBlobSha1": "4d95ecf3cd7f55d00c1a841b40d6b2d153e38a11",
+      "liveExact": true
+    },
+    {
+      "path": "tests/item-4slot-current-renderer-negative-hold.test.cjs",
+      "sha256": "85171fe3727b8eb3aa53d69b2e48c6ac67b5d42fcc806027c4adad62d35df974",
+      "gitBlobSha1": "ad60632f66b0a84ecfc8f9846c3f8e9f8b4047ba",
+      "liveExact": true
+    },
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "sha256": "72489b4f0e65a02d2198c3649ccdd86ab1eb838f4cee1a61ba1db73dd6083da9",
+      "gitBlobSha1": "b3539e1b3ddbebd82d70aba21ca5d829fbe868ec",
+      "liveExact": true
+    },
+    {
+      "path": "tools/4slot/current-renderer-negative-hold.cjs",
+      "sha256": "d07958b4f2d26c538f2104c3f43767f8c9d919b1d961509380678a2f6b2a83f9",
+      "gitBlobSha1": "07ab1902565d49acbf728d681d2266f706f11233",
+      "liveExact": true
+    }
+  ],
+  "unchangedLegacyAndPartialHelpers": [
+    "tools/4slot/renderer-registration-hold.cjs",
+    "tools/4slot/partial-submission.cjs",
+    "tools/4slot/private-partial-import.cjs",
+    "tools/4slot/import-4slot.cjs",
+    "tools/4slot/validate-4slot.cjs",
+    "tools/4slot/exam-items.cjs",
+    "archive/item-4slot.js"
+  ],
+  "confirmedControls": [
+    "Full M3-S2 compact only, exactly one held UID, exact native full-vector reprojection and full source/UID/ordinal partition.",
+    "Original vectors, candidates, formats, reviewer and all other compact fields remain equal to the immutable prior compact.",
+    "Current source, dictionary, assets and carrier/continuity/independent negative evidence bind exact raw SHA and Git objects.",
+    "Held UID is withheld and excluded from active Consumer output; no release operation or new slot values exist.",
+    "Every changed retained row binds whole-question and exact changed-field hashes plus declared actual reading and all prior/current local renderer bytes.",
+    "Every unreviewed peer now preserves the whole question object as well as student payload and all local asset refs/bytes.",
+    "Negative evidence in actual HEAD --full-history ancestry remains an obligation after mutable markers or later committed proof deletion; unavailable Git context fails closed.",
+    "Negative inventory is cached only within one builder pass; full authority validation happens before runtime cache reuse.",
+    "Carrier/positive/negative live digests participate in input hash and observed-input recheck.",
+    "Legacy renderer hold/correction and private partial intake helper bytes remain unchanged; M3-S1 is outside the new scope."
+  ],
+  "resolvedFindings": [
+    {
+      "id": "M3-R1",
+      "finding": "Historical student field list omitted presentation hints/layout/captions, allowing a truthfully rebound unreviewed peer change.",
+      "resolution": "Require same(old,q) for every unreviewed peer with no metadata exception.",
+      "authorActualUntouchedWholeQuestionsExact": 24,
+      "truthfullyResealedNegativeFields": [
+        "imageAlt",
+        "imageSize",
+        "solutionImageCaption",
+        "tagStatus"
+      ],
+      "authorNegativeResult": "CURRENT_RENDERER_HOLD_UNREVIEWED_QUESTION_CHANGE",
+      "status": "CLOSED_IN_15A608"
+    }
+  ],
+  "authorEvidenceRead": {
+    "tests": {
+      "new": 47,
+      "existing": 169,
+      "totalPass": 216,
+      "fail": 0
+    },
+    "actualSources": 2,
+    "actualItems": 47,
+    "registered": 45,
+    "held": 2,
+    "replayChanged": false,
+    "indexSha256": "cc97d3a99220f2c184953ba53a6fa490043c54ad76be3068b67757f2b29e1a6d",
+    "sourceMutation": 0,
+    "semanticApprovalMutation": 0,
+    "refs": [
+      {
+        "path": ".tmp/current-negative-final-targeted-tests-v2.log",
+        "sha256": "7cbb9ab610c9ec83b14bd182161ee22e6a9605c43a14a443204103a627f867dd"
+      },
+      {
+        "path": ".tmp/current-negative-actual-write-v2.json",
+        "sha256": "6fe83d1e844138cb9204243c555c2e81e2a87f41a066197dab8b0868a8619011"
+      },
+      {
+        "path": ".tmp/current-negative-actual-replay-v2.json",
+        "sha256": "c421dbf996e80375a89ac723ae31c68a63965029168b99f633e85febd82887d2"
+      }
+    ],
+    "heldRows": [
+      {
+        "sourceArchiveFile": "original/middle/m3/2final/18_연향중_2학기_기말_중3_수학.js",
+        "ordinal": 7,
+        "questionUid": "qid_v1_7a1f776d1471829dce49b2ad6b9a42ddf3da374babd3fc910ffda620fff66bc0",
+        "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+        "evidence": {
+          "commit": "f89f2556de8f9913d432636abafbef8f12b3f64b",
+          "path": "docs/operations/m3s2-current-four-slot-renderer-20261115/e076-negative-hold-carrier.json",
+          "sha256": "f42375ed841d3407ac413d2a99a525e6ce5589260efe787868e503f939e11620"
+        }
+      },
+      {
+        "sourceArchiveFile": "original/middle/m3/2final/21_매산중_2학기_기말_중3_기출.js",
+        "ordinal": 21,
+        "questionUid": "qid_v1_8c99b0615e3e3f0d8df55ac3d62e72bca126b75a0528972017d6d87ef9067c55",
+        "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+        "evidence": {
+          "commit": "f89f2556de8f9913d432636abafbef8f12b3f64b",
+          "path": "docs/operations/m3s2-current-four-slot-renderer-20261115/e046-negative-hold-carrier.json",
+          "sha256": "24a57ff6bfe23878f668c03d9f6b45cdafbdd118e8d483728751847e08667914"
+        }
+      }
+    ]
+  },
+  "newSemanticApprovals": 0,
+  "newMathematicalQa": 0,
+  "newDifficultyJudgments": 0,
+  "newFourSlotValues": 0,
+  "independentImageViewsInThisCodeReview": 0,
+  "independentTestExecutionCount": 0,
+  "reviewerCodeOrDataWrites": 0,
+  "remoteWrites": 0,
+  "remainingScopedCodeBlockers": 0,
+  "rootIntegrationGates": [
+    "Exact final compact inputs and remote immutable proof refs must be preserved when integrated.",
+    "Combined runtime builder/Consumer and exact-head CI remain root-owned gates.",
+    "This review does not declare production registration or browser QA complete."
+  ],
+  "notes": "Author tests were read by exact raw log SHA and were not independently rerun. The earlier transient missing blob argument was resolved before the final code commit and is not an outstanding defect."
+}

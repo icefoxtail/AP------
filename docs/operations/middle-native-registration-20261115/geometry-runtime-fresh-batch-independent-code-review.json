@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "archive-geometry-runtime-fresh-batch-delta-independent-read-v1",
+  "reviewer": "/root/m1_compact_transport",
+  "baseCommit": "dfae300495deb62c951beca0ce3667de06bd07b9",
+  "reviewMode": "READ_ONLY_NO_EXECUTION",
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+      "sha256": "ee18d495185eeb4c6229acbcfa70f638899bf81c9b4470bbad7e0c1987bce399"
+    },
+    {
+      "path": "archive/tools/meta-foundation/immutable-git-batch.mjs",
+      "sha256": "2f7b6854ee76be8b949f4c80fd023b46f904b59d23750490c749c2ebd21faa04"
+    },
+    {
+      "path": "tests/meta-foundation-immutable-git-batch.test.mjs",
+      "sha256": "c5601ef515bad7d44d2d8b28db537b2a524096f614e296cd904020f12dc8ee3e"
+    }
+  ],
+  "blockingFindings": [],
+  "observations": [
+    "Fresh pre-state and recursive evidence hydration reads exact original commit regular-file bytes through the previously reviewed binary Git batch reader.",
+    "Each batch is fully decoded and checked for framing, order, type, size, object identity and Git blob hash before callback consumption. A new batch performs a new raw Git read.",
+    "Callback index preserves the caller input order including duplicates; hydration pairs pending paths with verified bytes before writing its disposable shadow.",
+    "Existing materialized and visited sets remain local to the original replay; directory entries are the only newly shared immutable inventory.",
+    "Recursive evidence discovery, exact receipt/hash comparisons, official registrar execution and whole-cohort native authority checks remain present and unchanged by this delta.",
+    "No new live-input, approval-decision or authority-validation result cache was added."
+  ],
+  "limitations": [
+    "Official runtime result remains separate; no independent performance PASS is asserted.",
+    "Independent review executed no tests, clone, census or registration. Author official runtime result is separate."
+  ],
+  "reviewedCommit": "14815a2c35c65e422e500dd00aae845704398c9f",
+  "reviewedTree": "fc877634eddf342dd9f2efa6e677579e7e8f3b35",
+  "finalCommitBytesEqual": true
+}

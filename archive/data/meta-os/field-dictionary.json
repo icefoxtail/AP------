@@ -799,6 +799,13 @@
       "note": "REVIEW2 등록기가 본칸에 적용하지 않고 따로 보존하는 판정 후보 객체. 허용 키는 standardUnitKey, subUnitKey, rpmPath, crossConceptKeys, conditionKeys, integrationPattern이며 각 키에는 {value, source} 후보의 비어 있지 않은 배열을 둔다. 단원·소단원 value는 키 문자열, rpmPath는 majorUnit·midUnit·l3·l4 문자열 객체, 연결 개념·조건은 중복 없는 키 배열, integrationPattern은 NONE, SEQUENTIAL, INTERDEPENDENT, REINTERPRETATION, CASE_BRANCH, DEEP_COMPOSITE 중 하나이다. source는 agree, p3, p4-luna, p4-sonnet, proposed-new, registered, source-js 중 출처 꼬리표이며 registered도 승인 상태를 뜻하지 않는다. 등록기는 정본 또는 철회되지 않은 받은 값 등록부와 대조하고 기존 후보를 지우거나 바꾸지 않고 중복 없이 추가한다. 후보 자체는 본칸의 별칭이나 승인 근거가 아니며 PT/TPL 등록, 정본 키 승격, canonical assignment 승인 또는 검색 필터의 실효값을 만들지 않는다. 본칸·fieldStatus·승인 영수증의 별도 검증을 유지한다."
     },
     {
+      "name": "crossConceptApprovalComponents",
+      "layer": "기록·증거",
+      "kind": "증거",
+      "sameMeaningAs": [],
+      "note": "기존 META_PIPELINE_AUDIT의 연결 개념을 보존하면서 별도로 확정된 연결 개념 하나를 추가한 출처 분리 객체. retained는 원 승인 종류·영수증·기존 키·원 행 해시를, appended는 추가 키·native 검토·확정 근거·구성요소 증명 해시를 묶는다. 등록기와 재사용 검증기가 실제 영수증 및 현재 값과 대조하며, 이 필드만으로 기존 분류를 FINAL_QA로 바꾸거나 새 수학 검수·난도 승인을 만들지 않는다. crossConceptKeys의 별칭이 아니다."
+    },
+    {
       "name": "approvalEvidence",
       "layer": "기록·증거",
       "kind": "증거",
@@ -1320,6 +1327,13 @@
       "note": "reviewFlag를 단 사유 문장(어떤 결함이 남았는지). 꼬리표의 근거이며 사용 문턱이 아님"
     },
     {
+      "name": "metadataAuthorityHold",
+      "layer": "보류·부채",
+      "kind": "상태",
+      "sameMeaningAs": [],
+      "note": "공식 native-authority-correction 등록기가 근거 없는 기존 FINAL_QA 권한을 철회한 뒤 남기는 archive-native-authority-hold-v1 객체. correctionRequestId, receiptPath, sealPath, reason(UNSUPPORTED_GENERIC_FINAL_QA), priorSemanticSha256, sourceHold(false)를 담는다. 정정 요청·불변 영수증·UID별 seal·현재 의미 상태와 identity가 함께 일치해야 유효하며, 손상된 보류도 승인으로 해석하지 않는다. 공식 v2 등록기와 AutoMeta는 별도의 명시적 권한 해결 없이 기존 승인을 재사용하거나 새 승격을 만들지 못하게 한다. 원문 자료 부족에 따른 sourceIssueHold와 다른 권한 보류이고, 기존 영수증·학생 원문·identity·D5를 바꾸거나 새 의미 승인을 뜻하지 않는다. 필드 또는 seal을 지운 사실만으로 해제되지 않는다."
+    },
+    {
       "name": "metaFoundationHoldReason",
       "layer": "보류·부채",
       "kind": "증거",
@@ -1401,6 +1415,13 @@
       "kind": "증거",
       "sameMeaningAs": [],
       "note": "상태를 그렇게 정한 이유(A/B 일치 등)"
+    },
+    {
+      "name": "sourceQualityHold",
+      "layer": "보류·부채",
+      "kind": "증거",
+      "sameMeaningAs": [],
+      "note": "archive-source-quality-hold-projection-v1 카탈로그 전용 근거 객체. source-quality-holds-v1 원장의 exact UID·시험지·순번·현재 원본 blob/raw SHA·원그림 SHA·기존 native 영수증·명시 EVIDENCE_PENDING 근거에 결속된 sourceIssueHold 투영을 설명한다. 원본 파일, 원본 무결성/게시 상태, 기존 native 승인과 D5를 변경하지 않으며 새 의미 승인이 아니다. 기본·고급 자동 선정과 VERIFIED 프로필에 동일 보류를 적용하고 일반 열람·기록 난도 이용은 보존한다. 별도의 명시 원자료 해결 근거 없이 자동 해제하지 않는다."
     }
   ]
 }

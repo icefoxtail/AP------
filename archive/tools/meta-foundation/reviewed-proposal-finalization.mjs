@@ -3,6 +3,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { finalizeM2NativeDisposition } from "./reviewed-m2-proposal-finalization.mjs";
+import { createImmutableGitMetadataLookup } from "./immutable-git-metadata.mjs";
 
 const fail = message => { throw new Error(`native proposal finalization: ${message}`); };
 const sha = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -26,8 +27,9 @@ function safePath(root, relative) {
   return full;
 }
 
+const immutableGitMetadata = createImmutableGitMetadataLookup();
 function git(root, args) {
-  try { return execFileSync("git", args, { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] }); }
+  try { return immutableGitMetadata(root, args, () => execFileSync("git", args, { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] })); }
   catch { fail("immutable Git object unavailable"); }
 }
 

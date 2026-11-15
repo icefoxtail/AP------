@@ -403,7 +403,11 @@ window.questionBank = [
     "sourceType": "original",
     "answerStatus": "created_pending_review",
     "solutionStatus": "created_pending_review",
-    "reviewStatus": "manual_review"
+    "reviewStatus": "manual_review",
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 반지름이 호의 길이와 부채꼴 넓이 공식에 함께 들어가며, 넓이를 호의 길이로 나누면 r/2가 된다.",
+    "solutionImageCaption": "호의 길이는 rθ=4π, 부채꼴 넓이는 ½r²θ=12π이다. 나누면 r/2=3이므로 r=6, θ=2π/3이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -497,7 +501,11 @@ window.questionBank = [
     "sourceType": "original",
     "answerStatus": "created_pending_review",
     "solutionStatus": "created_pending_review",
-    "reviewStatus": "manual_review"
+    "reviewStatus": "manual_review",
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 열린 범위를 각각 원 위의 경계 동경과 음영 부채꼴로 나타낸다.",
+    "solutionImageCaption": "3π/2<θ<2π이므로 θ는 제4사분면이고, 3π/4<θ/2<π이므로 θ/2는 제2사분면 일부에 있다. ㄱ·ㄷ이 참이므로 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -590,7 +598,10 @@ window.questionBank = [
     "answerStatus": "created_pending_review",
     "solutionStatus": "created_pending_review",
     "reviewStatus": "manual_review",
-    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I/q13-solution.svg"
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 지수곡선 y=2^x, y=8×2^x와 수평 경계 y=1, y=4 사이에서 가로 선분이 두 곡선을 길이 3으로 잇는다.",
+    "solutionImageCaption": "높이 y가 같을 때 두 x좌표의 차는 3이며 높이 구간은 y=1부터 y=4까지다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -822,7 +833,11 @@ window.questionBank = [
     "sourceType": "original",
     "answerStatus": "created_pending_review",
     "solutionStatus": "created_pending_review",
-    "reviewStatus": "manual_review"
+    "reviewStatus": "manual_review",
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간 [-1,1]의 수직선에서 왼쪽 끝 x=-1은 최댓값 위치, 오른쪽 끝 x=1은 최솟값 위치로 표시한다. 두 끝점은 포함되고 화살표는 x 증가 방향을 나타낸다. 함수값이나 최종 답은 쓰지 않는다.",
+    "solutionImageCaption": "합성함수는 닫힌 구간에서 감소하므로 양 끝점에서 최댓값과 최솟값이 각각 정해진다. 정답은 ⑤입니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1008,6 +1023,10 @@ window.questionBank = [
     "sourceType": "original",
     "answerStatus": "created_pending_review",
     "solutionStatus": "created_pending_review",
-    "reviewStatus": "manual_review"
+    "reviewStatus": "manual_review",
+    "solutionImage": "assets/images/23_복성고_1학기_중간_고2_수학I/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 수직선 행에 밑 b=|x+2|가 0과 1 사이인 두 구간 (-11/4,-2), (-2,-1)과 b>1인 구간 (-1,∞)을 표시한다. x=-11/4, -2, -1은 열린 끝점이며 x=-2에서는 밑이 0이다.",
+    "solutionImageCaption": "u=x+11/4를 진수, b=|x+2|를 밑으로 두면 0<b<1에서는 부등호가 뒤집혀 u≥b²이고, b>1에서는 u≤b²이다. 그림은 진수 양수와 밑 0·1 제외로 나뉘는 세 경우 구간만 보여 준다. 정답은 [-5/2,-2)∪(-2,-1)∪[-1/2,∞).",
+    "solutionImageSize": "full"
   }
 ];

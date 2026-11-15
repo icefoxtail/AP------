@@ -1,0 +1,310 @@
+{
+  "schemaVersion": "m3s2-current-four-slot-runtime-verification-v1",
+  "sourceBase": "e911426aaf5f0fa20550b6c9c5f1a4b0bdd006d9",
+  "codeCommit": "15a60863d6c2a46656a4cff35cf7e5bbc89e6f32",
+  "reviewCommit": "be5b2984bb76e49fdd6dc14179712658fa9d1c53",
+  "negativeCarrierCommit": "f89f2556de8f9913d432636abafbef8f12b3f64b",
+  "status": "LOCAL_PASS_WITH_TWO_EXPLICIT_HOLDS",
+  "officialMainRegistration": "PENDING_ROOT_UNION",
+  "fullUnionBuilder": "NOT_RUN_BY_THIS_AGENT",
+  "sourceMutation": 0,
+  "assetMutation": 0,
+  "identityMutation": 0,
+  "originalFourSlotMutation": 0,
+  "reviewedByMutation": 0,
+  "newSemanticApprovals": 0,
+  "newDifficultyApprovals": 0,
+  "newMathQa": 0,
+  "counts": {
+    "fullCompacts": 16,
+    "fullQuestions": 377,
+    "previouslyStale": 51,
+    "retainedExistingValuesAfterCurrentReview": 49,
+    "currentRendererHeld": 2,
+    "registeredExistingValues": 375,
+    "eligibleCompacts": 14,
+    "eligiblePreviousStale": 28,
+    "negativeCompacts": 2,
+    "negativeFullQuestions": 47,
+    "negativeRegistered": 45,
+    "negativeHeld": 2
+  },
+  "consumer": {
+    "verifiedExistingVectors": 375,
+    "heldUidActive": 0,
+    "indexSha256": "ed6b334b4c0f4c09462a505221a2a88e3ec6a98fe010262a0de4aba472f9fc92",
+    "method": "official builder verify plus exact per-item Consumer comparison"
+  },
+  "regression": {
+    "passed": 216,
+    "failed": 0,
+    "skipped": 0,
+    "logSha256": "7cbb9ab610c9ec83b14bd182161ee22e6a9605c43a14a443204103a627f867dd",
+    "covered": [
+      "immutable negative ancestry including deleted evidence",
+      "combined removal of all new compact markers",
+      "full-file original native vector equality",
+      "retained actual-review and exact asset coverage",
+      "unreviewed whole-question and binary asset equality",
+      "truthfully rebound but unreviewed presentation metadata refusal",
+      "legacy corrected renderer and partial submission compatibility"
+    ]
+  },
+  "unchangedPeers": {
+    "studentPayloadExact": 326,
+    "wholeQuestionExact": 325,
+    "existingMetadataOnlyChange": [
+      {
+        "examId": "E054",
+        "ordinal": 7,
+        "fields": [
+          "courseKey"
+        ],
+        "studentPayloadAndAssetsUnchanged": true
+      }
+    ],
+    "negativeFilePeersWholeQuestionExact": 24
+  },
+  "currentLocalAssetCount": 591,
+  "existingAssetLimitations": [
+    {
+      "examId": "E055",
+      "ordinal": 6,
+      "path": "archive/assets/replacements/q06_tan_segment.png",
+      "classification": "PREEXISTING_DANGLING_REFERENCE_NOT_REPAIRED",
+      "priorAlsoUnavailable": true,
+      "newAssetApproval": false
+    }
+  ],
+  "excludedExistingHold": {
+    "examId": "E066",
+    "ordinal": 15,
+    "changed": false
+  },
+  "artifacts": [
+    {
+      "path": ".tmp/current-negative-actual-dry.json",
+      "sha256": "6890885814a94ec94f9bb75d1b4b894057f64430d7587559ff5c426370c59baf",
+      "counts": {
+        "files": 2,
+        "items": 47,
+        "registered": 45,
+        "pending": 2,
+        "withCandidates": 14,
+        "identityFingerprintHistorical": 1
+      },
+      "changed": true
+    },
+    {
+      "path": ".tmp/current-negative-actual-write-v2.json",
+      "sha256": "6fe83d1e844138cb9204243c555c2e81e2a87f41a066197dab8b0868a8619011",
+      "counts": {
+        "files": 2,
+        "items": 47,
+        "registered": 45,
+        "pending": 2,
+        "withCandidates": 14,
+        "identityFingerprintHistorical": 1
+      },
+      "changed": true
+    },
+    {
+      "path": ".tmp/current-negative-actual-replay-v2.json",
+      "sha256": "c421dbf996e80375a89ac723ae31c68a63965029168b99f633e85febd82887d2",
+      "counts": {
+        "files": 2,
+        "items": 47,
+        "registered": 45,
+        "pending": 2,
+        "withCandidates": 14,
+        "identityFingerprintHistorical": 1
+      },
+      "changed": false
+    },
+    {
+      "path": ".tmp/current-all16-dry.json",
+      "sha256": "bc57d8eef7fecdda362f251faa99a9c196d1f5fef7f1ba777fdd761ba35ba488",
+      "counts": {
+        "files": 16,
+        "items": 377,
+        "registered": 375,
+        "pending": 2,
+        "withCandidates": 28,
+        "identityFingerprintHistorical": 163
+      },
+      "changed": true
+    },
+    {
+      "path": ".tmp/current-all16-write.json",
+      "sha256": "bf364c3fd92de6e10cfc4b30043add6f3c9a9c16aa1e60c15aa5aef18956a54a",
+      "counts": {
+        "files": 16,
+        "items": 377,
+        "registered": 375,
+        "pending": 2,
+        "withCandidates": 28,
+        "identityFingerprintHistorical": 163
+      },
+      "changed": true
+    },
+    {
+      "path": ".tmp/current-all16-replay.json",
+      "sha256": "09aaadfe69e438d018023e2bd8c2b676f05e39cc83781251f6c8326bfab6c61d",
+      "counts": {
+        "files": 16,
+        "items": 377,
+        "registered": 375,
+        "pending": 2,
+        "withCandidates": 28,
+        "identityFingerprintHistorical": 163
+      },
+      "changed": false
+    }
+  ],
+  "files": [
+    {
+      "examId": "E082",
+      "path": "archive/data/item-4slot/original/middle/m3/2final/15_신흥중_2학기_기말_중3_수학.4slot.json",
+      "sha256": "af526cc8801d8d1cbcb4946fc81d7f9e7c4e2bfeb4708d530d442e9d5a41015a",
+      "full": 24,
+      "retainedChanged": 1,
+      "held": 0,
+      "unchanged": 23
+    },
+    {
+      "examId": "E076",
+      "path": "archive/data/item-4slot/original/middle/m3/2final/18_연향중_2학기_기말_중3_수학.4slot.json",
+      "sha256": "60cd224e6b823883dcff5115f49d9e4ce7f32d82d951c139c97f0a7f3ff1e473",
+      "full": 23,
+      "retainedChanged": 21,
+      "held": 1,
+      "unchanged": 1
+    },
+    {
+      "examId": "E064",
+      "path": "archive/data/item-4slot/original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.4slot.json",
+      "sha256": "9b594f29cbd01a885883c97a969589d79f5779f4703a9e32d1e392249113f889",
+      "full": 22,
+      "retainedChanged": 1,
+      "held": 0,
+      "unchanged": 21
+    },
+    {
+      "examId": "E046",
+      "path": "archive/data/item-4slot/original/middle/m3/2final/21_매산중_2학기_기말_중3_기출.4slot.json",
+      "sha256": "eb0b8eae867f777c7fe90f625ff6ca9f7e15e4dca63dd3123657fed3fb401279",
+      "full": 24,
+      "retainedChanged": 0,
+      "held": 1,
+      "unchanged": 23
+    },
+    {
+      "examId": "E048",
+      "path": "archive/data/item-4slot/original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.4slot.json",
+      "sha256": "6b056a0dca855fa0a230243c2089a77b2f5f6578fb009e02b49cebcfe44b472f",
+      "full": 21,
+      "retainedChanged": 1,
+      "held": 0,
+      "unchanged": 20
+    },
+    {
+      "examId": "E051",
+      "path": "archive/data/item-4slot/original/middle/m3/2final/21_팔마중_2학기_기말_중3_기출.4slot.json",
+      "sha256": "47c835190cc958158b6d0bf99e8ffc0b5dadf8f511a11171173bbb0bf095ae32",
+      "full": 25,
+      "retainedChanged": 1,
+      "held": 0,
+      "unchanged": 24
+    },
+    {
+      "examId": "E017",
+      "path": "archive/data/item-4slot/original/middle/m3/2final/24_풍덕중_2학기_기말_중3_수학.4slot.json",
+      "sha256": "713bb93acf6decb649df2c38d8b73cb5e220448927cde8c9d6022ba04f457c8f",
+      "full": 23,
+      "retainedChanged": 3,
+      "held": 0,
+      "unchanged": 20
+    },
+    {
+      "examId": "E007",
+      "path": "archive/data/item-4slot/original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.4slot.json",
+      "sha256": "d534a3fe0a58f2d4955bde978145032087ff631f9f653cbd506845736b8eeef5",
+      "full": 24,
+      "retainedChanged": 2,
+      "held": 0,
+      "unchanged": 22
+    },
+    {
+      "examId": "E053",
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.4slot.json",
+      "sha256": "2619c6273521101d66fb0064b0be9619e7ce3193e0720d6adc207a004014611f",
+      "full": 24,
+      "retainedChanged": 2,
+      "held": 0,
+      "unchanged": 22
+    },
+    {
+      "examId": "E054",
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/21_동산중_2학기_중간_중3_수학.4slot.json",
+      "sha256": "2472d0be57a1301ce758c87a4444dc8dc28d88fda730b88ba8273aee498a5d08",
+      "full": 25,
+      "retainedChanged": 3,
+      "held": 0,
+      "unchanged": 22
+    },
+    {
+      "examId": "E055",
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/21_매산중_2학기_중간_중3_수학.4slot.json",
+      "sha256": "db1ac7e257bf8468c6b13cf6f517c0515527e47cad7b6888d4b29ce44f3b2795",
+      "full": 24,
+      "retainedChanged": 2,
+      "held": 0,
+      "unchanged": 22
+    },
+    {
+      "examId": "E056",
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/21_신흥중_2학기_중간_중3_수학.4slot.json",
+      "sha256": "ecde21d743b5c214fbb31ffe4bb49469cf88020a00cea74598d659d76a72eef2",
+      "full": 23,
+      "retainedChanged": 1,
+      "held": 0,
+      "unchanged": 22
+    },
+    {
+      "examId": "E038",
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/22_매산중_2학기_중간_중3_수학.4slot.json",
+      "sha256": "87cf425c7a92149f239042cdb989e044f84337f30508d7fc8c37255c3c225291",
+      "full": 24,
+      "retainedChanged": 2,
+      "held": 0,
+      "unchanged": 22
+    },
+    {
+      "examId": "E019",
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.4slot.json",
+      "sha256": "d7bd4d63152ea563bae7705c4d2d13dac7ac362ec0fc155380717e0bf80a0dce",
+      "full": 24,
+      "retainedChanged": 1,
+      "held": 0,
+      "unchanged": 23
+    },
+    {
+      "examId": "E001",
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.4slot.json",
+      "sha256": "87e66d9c5ad7c3d2e8a4f148f55c0622b8b3b4e2f209d267de7f6db0deb6f8d1",
+      "full": 24,
+      "retainedChanged": 7,
+      "held": 0,
+      "unchanged": 17
+    },
+    {
+      "examId": "E002",
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/26_왕운중_2학기_중간_중3_기출.4slot.json",
+      "sha256": "d7f0c6efa92fbddc1353eca68d8b574b2c9aef3a478bf5cb77cfa16141e1c4ca",
+      "full": 23,
+      "retainedChanged": 1,
+      "held": 0,
+      "unchanged": 22
+    }
+  ]
+}

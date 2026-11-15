@@ -1793,6 +1793,44 @@ test("a binding for another course alias of the same unit and PT does not change
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: edit, write: true }), /out-of-scope approved UID: unrelated/);
 });
 
+for (const position of [0, 1, 2]) test(`indexed outside binding retains exact course authority at insertion position ${position}`, t => {
+  const f = fixture(t), bindingsPath = `${CANON}/packs/new-course/bindings.json`;
+  const change = f.request.registryChanges.find(c => c.path === bindingsPath), exact = structuredClone(change.after.bindings[0]);
+  const ordered = [{ ...exact, standardCourse: "다른 과정 A" }, { ...exact, standardCourse: "다른 과정 B" }];
+  ordered.splice(position, 0, exact); change.after.bindings = ordered;
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const meta = f.read(META), outside = { ...meta.records[0], questionUid: "unrelated", sourceArchiveFile: "other.js" };
+  meta.records.push(outside); f.put(META, meta);
+  const next = { ...f.request, requestId: `binding-index-unrelated-${position}`,
+    registryChanges: [{ path: `${CANON}/condition_registry.json`, collection: "conditions", match: { conditionKey: "COND_UNUSED" },
+      before: null, after: { conditionKey: "COND_UNUSED", canonicalLabelKo: "사용 전 조건", definition: "근거", status: "ACTIVE" }, evidenceRefs: f.evidenceRefs }],
+    items: [{ ...f.request.items[0], before: Object.fromEntries(Object.keys(f.request.items[0].after).map(k => [k, meta.records[0][k] ?? null])) }] };
+  const authorityFiles = ["archive/exams/fixture/exam.js", "archive/data/question_identity_map.json", bindingsPath,
+    "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json"];
+  const snapshot = paths => paths.map(p => [p, hash(fs.readFileSync(path.join(f.root, p)))]);
+  const beforeAuthority = snapshot(authorityFiles);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: next, write: true }).status, "PASS");
+  assert.deepEqual(f.read(META).records.find(r => r.questionUid === "unrelated"), outside);
+  assert.deepEqual(snapshot(authorityFiles), beforeAuthority);
+  const installed = f.read(bindingsPath).bindings.find(b => b.standardCourse === exact.standardCourse);
+  const edit = { ...next, requestId: `binding-index-exact-drift-${position}`, registryChanges: [{ path: bindingsPath, collection: "bindings",
+    match: { curriculum: installed.curriculum, standardCourse: installed.standardCourse, standardUnitKey: installed.standardUnitKey,
+      subUnitKey: installed.subUnitKey, problemTypeKey: installed.problemTypeKey }, before: installed,
+    after: { ...installed, L2: "changed outside authority" }, evidenceRefs: f.evidenceRefs }] };
+  const all = [...authorityFiles, META, "archive/data/meta-foundation/runtime/new-course-v1.json"], beforeRejected = snapshot(all);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: edit, write: true }), /out-of-scope approved UID: unrelated/);
+  assert.deepEqual(snapshot(all), beforeRejected);
+});
+
+test("indexed outside binding cannot hide a duplicate exact tuple before writes", t => {
+  const f = fixture(t), change = f.request.registryChanges.find(c => c.path.endsWith("/bindings.json"));
+  change.after.bindings.push(structuredClone(change.after.bindings[0]));
+  const before = fs.readFileSync(path.join(f.root, META));
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /duplicate binding/i);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, META)), before);
+  assert.equal(fs.existsSync(path.join(f.root, `${CANON}/packs/new-course/pack.json`)), false);
+});
+
 test("META_PIPELINE_AUDIT canonical promotions do not treat unrelated pending rows as approved consumers", t => {
   const f = fixture(t);
   attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });

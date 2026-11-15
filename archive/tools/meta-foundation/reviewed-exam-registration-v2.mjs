@@ -20,6 +20,8 @@ import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from 
 import { loadActiveMetaRegistry } from "./active-registry.mjs";
 import { AUDIT_CC_APPEND_SCHEMA, isAuditCcAppend, isExplicitAuditCcAppendRequest, loadAuditCcAppend,
   planAuditCcAppendRow, buildAuditCcAppendBinding, auditCcAppendSummary, assertAuditCcAppendReceipt } from "./audited-cross-concept-append.mjs";
+import { activeBindingContext } from "./auto-register-merged-source.mjs";
+import { loadApprovedRendererPreservation, planApprovedRendererRecord, buildApprovedRendererBinding, verifyApprovedRendererReceipt } from "./native-approved-renderer-preservation.mjs";
 import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 import { isExplicitSourceSubsetRebind, isFullSourceSubsetRebind, validateExplicitSourceSubsetEvidence, preservedSourceEvidence, priorSourceIdentityContext, replayOriginalFullFinalQa } from "./source-subset-preservation.mjs";
@@ -27,6 +29,8 @@ import { nativeReviewReceipt } from "./auto-register-merged-source.mjs";
 import { isOriginalFinalQaRendererPreservation, loadOriginalFinalQaRendererPreservation, planOriginalRendererPreservedRow,
   buildOriginalRendererBinding, assertOriginalRendererReceipt } from "./original-finalqa-renderer-preservation.mjs";
 import { isIssuedSourceBindingRecovery, registerIssuedSourceBindingRecovery } from "./issued-source-binding-recovery.mjs";
+
+import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, nativeAuthorityHoldState, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
 
 const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
@@ -2112,6 +2116,15 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (isIssuedSourceBindingRecovery(req?.approval?.sourceRebind))
     return registerIssuedSourceBindingRecovery({ root, request: req, write, verifyProjection });
   if (req.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2") fail("request schema mismatch");
+  if (isNativeAuthorityCorrection(req)) {
+    if (write && verifyProjection) fail("authority correction write and projection must be separate");
+    const result = registerNativeAuthorityCorrection({ root, request: req, write });
+    if (!verifyProjection) return result;
+    if (!result.replay) fail("authority correction projection requires its applied receipt");
+    const proof = verifyNativeAuthorityCorrectionConsumer({ root, request: req, catalog: loadResolvedConsumerCatalog(root) });
+    return { ...result, consumerSearchStatus: "AUTHORITY_WITHDRAWAL_VERIFIED",
+      consumerLanes: { authorityHolds: proof.checkedAuthorityHolds, newMetadataApprovals: 0 } };
+  }
   if (req.registrationMode !== undefined && req.registrationMode !== "IDENTITY_FINGERPRINT_ONLY") fail("unsupported registration mode");
   if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(req.requestId || "")) fail("valid requestId required");
   requireText(req.examUid, "examUid");
@@ -2147,6 +2160,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   vm.runInContext(bytes.toString("utf8"), ctx, { timeout: 5000 });
   const bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
   if (!Array.isArray(bank) || !Number.isInteger(req.expectedQuestionCount) || bank.length !== req.expectedQuestionCount || !bank.length) fail("source denominator mismatch");
+  const approvedRendererRequested = Object.hasOwn(req.approval, "rendererPreservation");
   const auditPreservationRequested = isAuditPreservation(req.approval);
   const auditCcAppendRequested = isAuditCcAppend(req.approval);
   if (req.approval.sourceRebind?.schemaVersion === AUDIT_CC_APPEND_SCHEMA && !isExplicitAuditCcAppendRequest(req))
@@ -2178,13 +2192,18 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         fail(`UID/source ordinal mismatch: ${item.questionUid}`);
     }
   }
+  for (const uid of targetUids) {
+    const row = metadataByUid.get(uid);
+    if (nativeAuthorityHoldState({ root, current: row, identity: ids.get(uid), source, ordinal: row?.sourceOrdinal }))
+      fail("authority withdrawal requires a separate explicit resolution: " + uid);
+  }
   if (req.approval.sourceRebind && req.items.some(item => item.rebind !== undefined))
     fail("item rebind cannot be combined with approval.sourceRebind");
   if (req.items.some(item => item.sourceReview !== undefined &&
       (!partial || req.approval.type !== "FINAL_QA" || req.approval.sourceRebind || item.rebind !== undefined)))
     fail("source reassessment requires an exclusive PARTIAL_UIDS FINAL_QA fingerprint repair");
   const scopeFields = partial ? { scope: req.scope, partialUidCount: patches.size, expectedQuestionCount: req.expectedQuestionCount } : {};
-  const preservationFields = req.approval.sourceRebind ? { newMetadataApprovals: 0, preservedMetadataApprovals: patches.size } : {};
+  const preservationFields = req.approval.sourceRebind || approvedRendererRequested ? { newMetadataApprovals: 0, preservedMetadataApprovals: patches.size } : {};
   const requestSha256 = digest(stable(req));
   const receiptPath = `${RECEIPTS}/${req.requestId}.json`;
   const rendererPatches = req.items.filter(patch => patch.sourceReview?.rendererProof !== undefined);
@@ -2226,7 +2245,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         assertPreservedAuditRepair(previous, kept);
       }
     }
-    if (partial && req.approval.sourceRebind) {
+    if (partial && (req.approval.sourceRebind || approvedRendererRequested)) {
       if (previous.newMetadataApprovals !== 0 || previous.preservedMetadataApprovals !== patches.size)
         fail("partial source rebind approval count drift");
       if (previous.sourceArchiveFile !== source || previous.sourceBlobSha1 !== blob || previous.sourceRawSha256 !== digest(bytes))
@@ -2345,7 +2364,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (priorParents.length !== parentPatches.length || priorParents.some(proof =>
       parentPatches.filter(patch => patch.questionUid === proof.questionUid && patch.sourceOrdinal === proof.sourceOrdinal).length !== 1))
       fail("registered native parent proof inventory drift");
-    for (const record of previous.approval?.sourceRebind ? [] : previous.appliedRecords.filter(r => !isTypeHoldRecord(r))) {
+    for (const record of previous.approval?.sourceRebind || approvedRendererRequested ? [] : previous.appliedRecords.filter(r => !isTypeHoldRecord(r))) {
       const r = resolve(record, currentTables, { allowConditionDebt: metaPipelineAudit?.conditionDebtUids.includes(record.questionUid) });
       const patch = patches.get(record.questionUid);
       let parentSourceReview = null;
@@ -2369,6 +2388,19 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     const runtimeDocuments = fs.readdirSync(safePath(root, "archive/data/meta-foundation/runtime")).filter(n => n.endsWith(".json") && n !== "runtime-bridge-receipt.json").map(n => read(`archive/data/meta-foundation/runtime/${n}`));
     const allRuntime = runtimeDocuments.flatMap(doc => doc.records || []);
     let preservedSourceRegistry;
+    if (approvedRendererRequested) {
+      preservedSourceRegistry = loadActiveMetaRegistry(root);
+      const first = previous.appliedRecords[0], runtime = allRuntime.find(row => row.questionUid === first.questionUid);
+      const nativeSource = { root, bytes, blobSha1: blob, bank: JSON.parse(JSON.stringify(bank)), runtimeRecord: runtime,
+        runtimeStatus: "ACTIVE", identityMap: identity, identityByJoin: new Map(identity.records.map(row => [`${row.sourceArchiveFile}#${row.sourceOrdinal}`, row])) };
+      if (verifyApprovedRendererReceipt({ receipt: previous, nativeSource, current: first, identity: ids.get(first.questionUid),
+        ordinal: first.sourceOrdinal, previous: nativeSource.bank[first.sourceOrdinal - 1], registry: preservedSourceRegistry,
+        revalidateLeaf: ancestor => {
+          const context = activeBindingContext({ candidate: ancestor.current, check: { curriculum: ancestor.current.curriculum || ancestor.current.curriculumKey },
+            registry: preservedSourceRegistry, runtimeOwner: ancestor.current.metaFoundationPackId });
+          return context.reason ? null : nativeReviewReceipt({ ...ancestor, registry: preservedSourceRegistry, ...context });
+        } }) !== true) fail("registered approved renderer proof cannot replay");
+    }
     for (const record of previous.runtimeRecords) {
       const found = allRuntime.filter(r => r.questionUid === record.questionUid);
       if (found.length !== 1 || !eq(found[0], record)) fail(`registered runtime drift: ${record.questionUid}`);
@@ -2424,11 +2456,18 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (req.registryChanges?.length) {
     for (const row of metadata.records.filter(r => !targetUids.has(r.questionUid) && approved(r))) {
       const signature = t => {
+        // lookup() already rejects duplicate exact tuples. Reuse that index,
+        // then retain the original strict predicate (including absent keys).
+        const curriculum = row.curriculum || row.curriculumKey, course = row.standardCourse || row.courseKey;
+        const binding = t.bindings.get(stable([curriculum, course, row.standardUnitKey, row.subUnitKey ?? null, row.problemTypeKey]));
+        const exactBinding = binding && binding.curriculum === curriculum && binding.standardCourse === course &&
+          binding.standardUnitKey === row.standardUnitKey && (binding.subUnitKey ?? null) === (row.subUnitKey ?? null) &&
+          binding.problemTypeKey === row.problemTypeKey;
         const refs = [t.pt.get(row.problemTypeKey), t.tpl.get(row.templateKey), t.master.get(row.standardUnitKey), t.master.get(row.subUnitKey),
           ...(row.crossConceptKeys || []).map(k => t.cc.get(k)), ...(row.conditionKeys || []).map(k => t.cond.get(k)),
           // A binding is looked up by its exact standardCourse (see resolve()); a binding for another course alias
           // (e.g. "중3 수학" next to "중3-1") is not a consumer of this row and must not count as a change of it.
-          ...[...t.bindings.values()].filter(b => b.curriculum === (row.curriculum || row.curriculumKey) && b.standardCourse === (row.standardCourse || row.courseKey) && b.standardUnitKey === row.standardUnitKey && (b.subUnitKey ?? null) === (row.subUnitKey ?? null) && b.problemTypeKey === row.problemTypeKey)];
+          ...(exactBinding ? [binding] : [])];
         return stable(refs);
       };
       if (signature(beforeTables) !== signature(tables)) fail(`registry change affects out-of-scope approved UID: ${row.questionUid}`);
@@ -2470,6 +2509,14 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     revalidateLeaf: context => nativeReviewReceipt({ source, registry: originalRendererRegistry, ...context }) }) : null;
   const rebindPrior = req.approval.sourceRebind && !auditPreservation && !auditCcAppend && !originalRenderer ? loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, priorBanks, read, evidenceRefs }) : null;
   let rebindSourceRegistry;
+  const approvedRendererRegistry = approvedRendererRequested ? loadActiveMetaRegistry(root) : null;
+  const approvedRenderer = approvedRendererRequested ? loadApprovedRendererPreservation({ root, request: req, bytes,
+    bank: JSON.parse(JSON.stringify(bank)), identityMap: identity, registry: approvedRendererRegistry,
+    revalidateLeaf: ancestor => {
+      const context = activeBindingContext({ candidate: ancestor.current, check: { curriculum: ancestor.current.curriculum || ancestor.current.curriculumKey },
+        registry: approvedRendererRegistry, runtimeOwner: ancestor.current.metaFoundationPackId });
+      return context.reason ? null : nativeReviewReceipt({ ...ancestor, registry: approvedRendererRegistry, ...context });
+    } }) : null;
   for (let i = 0; i < bank.length; i++) {
     const current = rows[i], patch = patches.get(current.questionUid);
     if (partial && !patch) continue;
@@ -2510,6 +2557,20 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const rt = runtimes.get(packId).data;
       rt.records = rt.records.filter(r => r.questionUid !== current.questionUid); rt.records.push(kept.runtimeAfter); touched.add(packId);
       Object.assign(current, kept.final); applied.push(structuredClone(kept.final)); runtimeRecords.push(kept.runtimeAfter);
+      continue;
+    }
+    if (approvedRenderer) {
+      const owner = owners.get(current.questionUid), runtime = runtimes.get(owner)?.data.records.find(row => row.questionUid === current.questionUid);
+      const resolved = resolve(current, tables);
+      if (!runtime || owner !== current.metaFoundationPackId || owner !== resolved.pack.meta.packId ||
+        current.L3 !== resolved.pt.canonicalLabelKo || current.L4 !== resolved.tpl.canonicalLabelKo)
+        fail("approved renderer ACTIVE owner or labels mismatch");
+      const kept = planApprovedRendererRecord(approvedRenderer, { current, identity: id, runtime, ordinal: i + 1, receiptPath });
+      if (!eq(id, kept.identityAfter)) { Object.assign(id, kept.identityAfter); identityChanged = true; }
+      appliedIdentityRecords.push(structuredClone(kept.identityAfter)); fingerprintRepairs.push(kept.fingerprintRepair);
+      const rt = runtimes.get(owner).data;
+      rt.records = rt.records.filter(row => row.questionUid !== current.questionUid); rt.records.push(kept.runtimeAfter);
+      touched.add(owner); Object.assign(current, kept.final); applied.push(structuredClone(kept.final)); runtimeRecords.push(kept.runtimeAfter);
       continue;
     }
     if (auditPreservation) {
@@ -2910,7 +2971,13 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (fs.existsSync(full) && fs.readFileSync(full, "utf8") !== text) fail("audit CC binding already contains different evidence");
     plan.output.set(auditCcAppend.bindingPath, text);
   }
-  const outputDigests = [...plan.output].filter(([file, text]) => file !== META && (file === rendererBindingPath || file === sourceBindingPath || file === originalRendererBindingPath || file === auditCcAppend?.bindingPath || !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text)).map(([file, text]) => ({ path: file, sha256: digest(text) }));
+  const approvedRendererBinding = approvedRenderer ? buildApprovedRendererBinding(approvedRenderer) : null;
+  if (approvedRendererBinding) {
+    const full = safePath(root, approvedRenderer.bindingPath), text = json(approvedRendererBinding);
+    if (fs.existsSync(full) && fs.readFileSync(full, "utf8") !== text) fail("approved renderer binding evidence already differs");
+    plan.output.set(approvedRenderer.bindingPath, text);
+  }
+  const outputDigests = [...plan.output].filter(([file, text]) => file !== META && (file === rendererBindingPath || file === sourceBindingPath || file === originalRendererBindingPath || file === auditCcAppend?.bindingPath || file === approvedRenderer?.bindingPath || !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text)).map(([file, text]) => ({ path: file, sha256: digest(text) }));
   const receipt = { schemaVersion: "archive-reviewed-exam-meta-registration-v2", requestId: req.requestId, requestSha256,
     examUid: req.examUid, sourceArchiveFile: source, sourceBlobSha1: blob, sourceRawSha256: digest(bytes), approval: req.approval,
     ...(auditCcAppend ? { metaPipelineAudit: structuredClone(auditCcAppend.prior.metaPipelineAudit),
@@ -2921,6 +2988,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         requestSnapshot: structuredClone(req),
         difficultyRequestSnapshot: { ...auditPreservation.difficultyRef, rawUtf8: auditPreservation.difficultyBytes.toString("utf8") },
         solutionFingerprintRepairs: fingerprintRepairs.length, newMetadataApprovals: 0, preservedMetadataApprovals: applied.length } } : {}),
+    ...(approvedRendererBinding ? { approvedRendererPreservation: approvedRendererBinding } : {}),
     ...(rpmPrimaryBindings.length ? { rpmPrimaryBindings } : {}),
     ...(nativeParentBindings.length ? { nativeParentBindings } : {}),
     ...(sourceValueOverrides.length ? { sourceValueOverrides } : {}),

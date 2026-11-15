@@ -365,7 +365,7 @@ window.questionBank = [
   {
     "id": 9,
     "questionType": "객관식",
-    "content": "$10 < x < 1000$인 실수 $x$에 대하여 $\\log\\frac{1}{x}$과 $\\log\\frac{1}{x^3}$의 차가 정수가 되도록 하는 모든 $x$의 값은 곱은? [4.1점]",
+    "content": "$10 < x < 1000$인 실수 $x$에 대하여 $\\log\\frac{1}{x}$과 $\\log\\frac{1}{x^3}$의 차가 정수가 되도록 하는 모든 $x$의 값의 곱은? [4.1점]",
     "choices": [
       "10^4",
       "10^{\\frac{9}{2}}",

@@ -265,13 +265,13 @@ window.examData = {
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "8. 다음 그림에서 $1-\\sqrt{2}$에 대응하는 점을 구하면? (3점) [3.0점]\n(단, 모눈 한 칸은 한 변의 길이가 1인 정사각형이다.)\n\n<p><img src=\"assets/images/16_왕의중_1학기_중간_중3_수학/q08.png\" class=\"question-img\" alt=\"수직선 위의 정수 점과 한 변의 길이가 1인 직각삼각형 원호로 점 A, B, C, D, E를 나타낸 그림\"></p>",
-      "question": "8. 다음 그림에서 $1-\\sqrt{2}$에 대응하는 점을 구하면? (3점) [3.0점]\n(단, 모눈 한 칸은 한 변의 길이가 1인 정사각형이다.)\n\n<p><img src=\"assets/images/16_왕의중_1학기_중간_중3_수학/q08.png\" class=\"question-img\" alt=\"수직선 위의 정수 점과 한 변의 길이가 1인 직각삼각형 원호로 점 A, B, C, D, E를 나타낸 그림\"></p>",
+      "content": "8. 다음 그림에서 $1-\\sqrt{2}$에 대응하는 점을 구하면? (3점) [3.0점]\n(단, 모눈 한 칸은 한 변의 길이가 1인 정사각형이다.)\n\n<p><img src=\"assets/images/16_왕의중_1학기_중간_중3_수학/q8-problem-visual-v2.svg\" alt=\"−2부터 2까지 1칸씩 있는 모눈에서 다섯 사선을 원호로 수직선까지 옮겼다. 교점의 글자는 왼쪽부터 A, B, C, D, E이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "question": "8. 다음 그림에서 $1-\\sqrt{2}$에 대응하는 점을 구하면? (3점) [3.0점]\n(단, 모눈 한 칸은 한 변의 길이가 1인 정사각형이다.)\n\n<p><img src=\"assets/images/16_왕의중_1학기_중간_중3_수학/q8-problem-visual-v2.svg\" alt=\"−2부터 2까지 1칸씩 있는 모눈에서 다섯 사선을 원호로 수직선까지 옮겼다. 교점의 글자는 왼쪽부터 A, B, C, D, E이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "① 점 A",
         "② 점 B",
@@ -279,9 +279,7 @@ window.examData = {
         "④ 점 D",
         "⑤ 점 E"
       ],
-      "images": [
-        "assets/images/16_왕의중_1학기_중간_중3_수학/q08.png"
-      ],
+      "images": ["assets/images/16_왕의중_1학기_중간_중3_수학/q8-problem-visual-v2.svg"],
       "answer": "②",
       "solution": "[원문 조건 및 구할 대상]\n수직선과 모눈종이 그림에서 실수의 값 $1-\\sqrt{2}$에 대응하는 점을 찾는다.\n조건: 모눈 한 칸은 한 변의 길이가 1인 정사각형이다.\n\n[핵심 발상/공식/보조선]\n1. 피타고라스 정리에 의해 밑변과 높이가 1인 직각삼각형의 빗변의 길이는 $\\sqrt{1^2+1^2} = \\sqrt{2}$이다.\n2. 수직선 위의 기준점 $1$을 컴퍼스의 중심으로 하고 빗변 $\\sqrt{2}$를 반지름으로 하여 원호를 그릴 때:\n   - 기준점 $1$에서 오른쪽으로 원호를 내리면 $1+\\sqrt{2}$에 대응한다.\n   - 기준점 $1$에서 왼쪽으로 원호를 내리면 $1-\\sqrt{2}$에 대응한다.\n3. $\\sqrt{2} \\approx 1.414$이므로 $1-\\sqrt{2} \\approx 1 - 1.414 = -0.414$이다. 즉, $-1$과 $0$ 사이에 위치하는 점을 찾는다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 수치 근사값 범위 확인\n$1 < \\sqrt{2} < 2$\n$-2 < -\\sqrt{2} < -1$\n$-1 < 1-\\sqrt{2} < 0$\n\n2단계: 수직선 상의 5개 점 위치 전수 분석\n- 점 $\\mathrm{A}$: $-2$보다 왼쪽에 위치함 (약 $-2.4$)\n- 점 $\\mathrm{B}$: $-1$과 $0$ 사이에 위치하며 기준점 $1$에서 왼쪽으로 $\\sqrt{2}$만큼 떨어진 점임 ($1-\\sqrt{2} \\approx -0.414$)\n- 점 $\\mathrm{C}$: $0$과 $1$ 사이에 위치함\n- 점 $\\mathrm{D}$: $1$과 $2$ 사이에 위치함\n- 점 $\\mathrm{E}$: $2$보다 오른쪽에 위치하며 기준점 $1$에서 오른쪽으로 $\\sqrt{2}$만큼 떨어진 점임 ($1+\\sqrt{2} \\approx 2.414$)\n따라서 $1-\\sqrt{2}$에 대응하는 점은 점 $\\mathrm{B}$이다.\n\n[경우 나눔 및 5개 선지 검토]\n① 점 A: $-2$보다 작으므로 오답\n② 점 B: $-1$과 $0$ 사이의 수 $1-\\sqrt{2}$에 정확히 대응함 (정답)\n③ 점 C: 양수 영역에 위치하므로 오답\n④ 점 D: 1보다 큰 수이므로 오답\n⑤ 점 E: $1+\\sqrt{2}$에 대응하므로 오답\n\n[명확한 결론]\n따라서 $1-\\sqrt{2}$에 대응하는 점은 ② 점 B이다."
     },
@@ -302,13 +300,13 @@ window.examData = {
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "9. 오른쪽 그림에서 모눈 한 칸은 한 변의 길이가 1인 정사각형이다. $\\overline{AB}=\\overline{AF}, \\overline{AD}=\\overline{AE}$일 때, 다음 중 옳지 않은 것은? [4.0점]\n\n<p><img src=\"assets/images/16_왕의중_1학기_중간_중3_수학/q09.png\" class=\"question-img\" alt=\"수직선 위의 점 A를 한 꼭짓점으로 하는 정사각형 ABCD와 원호로 수직선 위에 점 E, F를 나타낸 그림\"></p>",
-      "question": "9. 오른쪽 그림에서 모눈 한 칸은 한 변의 길이가 1인 정사각형이다. $\\overline{AB}=\\overline{AF}, \\overline{AD}=\\overline{AE}$일 때, 다음 중 옳지 않은 것은? [4.0점]\n\n<p><img src=\"assets/images/16_왕의중_1학기_중간_중3_수학/q09.png\" class=\"question-img\" alt=\"수직선 위의 점 A를 한 꼭짓점으로 하는 정사각형 ABCD와 원호로 수직선 위에 점 E, F를 나타낸 그림\"></p>",
+      "content": "9. 오른쪽 그림에서 모눈 한 칸은 한 변의 길이가 1인 정사각형이다. $\\overline{AB}=\\overline{AF}, \\overline{AD}=\\overline{AE}$일 때, 다음 중 옳지 않은 것은? [4.0점]\n\n<p><img src=\"assets/images/16_왕의중_1학기_중간_중3_수학/q9-problem-visual-v2.svg\" alt=\"점 A가 수직선에서 1에 있다. 정사각형의 변 AD의 길이는 왼쪽 E, AB의 길이는 오른쪽 F로 옮겼다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
+      "question": "9. 오른쪽 그림에서 모눈 한 칸은 한 변의 길이가 1인 정사각형이다. $\\overline{AB}=\\overline{AF}, \\overline{AD}=\\overline{AE}$일 때, 다음 중 옳지 않은 것은? [4.0점]\n\n<p><img src=\"assets/images/16_왕의중_1학기_중간_중3_수학/q9-problem-visual-v2.svg\" alt=\"점 A가 수직선에서 1에 있다. 정사각형의 변 AD의 길이는 왼쪽 E, AB의 길이는 오른쪽 F로 옮겼다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "① $\\square\\text{ABCD}$의 넓이는 5이다.",
         "② 점 $E$에 대응하는 수는 $-\\sqrt{5}$이다.",
@@ -316,9 +314,7 @@ window.examData = {
         "④ $\\overline{AF}=\\sqrt{5}=\\overline{AE}$",
         "⑤ 점 $F$에 대응하는 수는 $1+\\sqrt{5}$이다."
       ],
-      "images": [
-        "assets/images/16_왕의중_1학기_중간_중3_수학/q09.png"
-      ],
+      "images": ["assets/images/16_왕의중_1학기_중간_중3_수학/q9-problem-visual-v2.svg"],
       "answer": "②",
       "solution": "[원문 조건 및 구할 대상]\n모눈 한 칸이 1인 직교격자 위에 그려진 $\\square\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AF}}, \\overline{\\mathrm{AD}}=\\overline{\\mathrm{AE}}$일 때, 선지 중 옳지 않은 것을 고른다.\n조건: 점 $\\mathrm{A}$의 수직선 상 좌표는 $1$이다.\n\n[핵심 발상/공식/보조선]\n1. 직각삼각형의 피타고라스 정리로 정사각형의 한 변의 길이를 구한다:\n   밑변이 1칸, 높이가 2칸인 직각삼각형의 빗변 $\\overline{\\mathrm{AB}} = \\sqrt{1^2+2^2} = \\sqrt{5}$.\n2. 정사각형의 넓이 구하는 두 가지 방법:\n   - 방법 1 (한 변의 제곱): $(\\sqrt{5})^2 = 5$\n   - 방법 2 (외접 정사각형 차분): 가로 3, 세로 3인 큰 정사각형 넓이(9)에서 네 모퉁이의 직각삼각형 넓이 $4 \\times \\left(\\dfrac{1}{2} \\times 1 \\times 2\\right) = 4$를 빼면 $9 - 4 = 5$.\n3. 수직선 위의 점의 좌표: 기준점이 $1$이므로\n   - 우측 회전 점 $\\mathrm{F}$: $1 + \\sqrt{5}$\n   - 좌측 회전 점 $\\mathrm{E}$: $1 - \\sqrt{5}$\n\n[연속 등식 및 충분한 중간 계산]\n- ① $\\square\\mathrm{ABCD}$의 넓이: $(\\sqrt{5})^2 = 5$ (참)\n- ② 점 $\\mathrm{E}$에 대응하는 수: 기준점 $1$에서 왼쪽으로 $\\sqrt{5}$만큼 이동한 점이므로 $1-\\sqrt{5}$이다. 선지 ②의 $-\\sqrt{5}$는 기준점 $1$을 반영하지 않았으므로 거짓이다. (거짓, 정답)\n- ③ $\\overline{\\mathrm{BC}}=\\overline{\\mathrm{AB}}$: 정사각형의 이웃하는 두 변이므로 길이가 $\\sqrt{5}$로 서로 같다. (참)\n- ④ $\\overline{\\mathrm{AF}}=\\sqrt{5}=\\overline{\\mathrm{AE}}$: 반지름이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AD}}=\\sqrt{5}$인 원호이므로 참이다.\n- ⑤ 점 $\\mathrm{F}$에 대응하는 수: 기준점 $1$에서 오른쪽으로 $\\sqrt{5}$만큼 이동한 점이므로 $1+\\sqrt{5}$이다. (참)\n\n[경우 나눔 및 5개 선지 검토]\n① $\\square\\text{ABCD}$의 넓이는 5이다: 피타고라스 정리에 의해 참\n② 점 $E$에 대응하는 수는 $-\\sqrt{5}$이다: 올바른 좌표는 $1-\\sqrt{5}$이므로 거짓 (옳지 않은 것, 정답)\n③ $\\overline{BC}=\\overline{AB}$이다: 정사각형의 성질로 참\n④ $\\overline{AF}=\\sqrt{5}=\\overline{AE}$: 원호의 반지름으로 참\n⑤ 점 $F$에 대응하는 수는 $1+\\sqrt{5}$이다: 기준점 1에서 우측 이동이므로 참\n\n[명확한 결론]\n따라서 옳지 않은 것은 ②이다."
     },

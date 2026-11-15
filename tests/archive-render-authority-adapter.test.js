@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 const { readPrintRenderAuthorityFixture } = require('./helpers/print-render-authority-fixtures.cjs');
 const root = path.join(__dirname, '..');
 const engine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
@@ -15,7 +16,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /src="render-authority\.js\?v=20261014-svg-alt-1"/);
   assert.match(engine, /src="data\/svg-accessibility-index\.js\?v=20261014\.1"/);
   assert.match(engine, /src="svg-accessibility\.js\?v=20261014\.1"/);
-  assert.match(engine, /archive2-preview-mobile\.css\?v=20261114-svg-problem-2/);
+  assert.match(engine, /archive2-preview-mobile\.css\?v=20261116-mobile-figure-1/);
   assert.match(engine, /canonicalData: \[\]/);
   assert.match(engine, /AppState\.canonicalData = buildArchiveCanonicalData\(sourceArchiveFile\)/);
   assert.match(engine, /renderAuthorityDualRun/);
@@ -74,6 +75,22 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /const authority = requestedAuthority \|\| 'shared'/);
   assert.match(engine, /solutionAuthority/);
   assert.match(engine, /injectQrToLastExamPage\(area, ctx\);[\s\S]{0,80}injectSubmitQrToLastExamPage\(area, ctx\);/);
+});
+
+test('direct mobile problem flow admits only explicitly marked inline images through the raster path', () => {
+  const css = fs.readFileSync(path.join(root, 'archive', 'archive2-preview-mobile.css'), 'utf8');
+  const mobile = css.slice(css.indexOf('/* Direct problem sheets'));
+  assert.match(mobile, /@media screen and \(max-width: 640px\)/);
+  assert.match(mobile, /html:not\(\[data-archive2-context\]\):has\(#qpp-display\)\[data-ap-render-ready="true"\]\s+#print-area:has\(\.page-exam-frame\)/);
+  assert.match(mobile, /svg:not\(mjx-container svg, \.katex svg\)/);
+  assert.match(mobile, /\.q-box \.q-content img\[data-archive-mobile-figure="true"\]:not\(\[hidden\]\)/);
+  assert.doesNotMatch(mobile, /:has\(\.q-box \.q-content img\)/);
+  const mixed = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'utf8');
+  assert.match(mixed, /archive2-preview-mobile\.css\?v=20261116-mobile-figure-1/);
+  const wrapSource = engine.slice(engine.indexOf('function wrapLatex('), engine.indexOf('function normalizeSolutionLineBreaks('));
+  const wrapLatex = vm.runInNewContext('(' + wrapSource.trim() + ')');
+  const marked = '<img src="assets/images/example/q12.png" class="exam-img" alt="그림" data-archive-mobile-figure="true">';
+  assert.equal(wrapLatex('그림을 본다.<br>' + marked), '그림을 본다.<br>' + marked);
 });
 
 test('Archive solution executor is a DOM transaction module with injected engine dependencies', () => {

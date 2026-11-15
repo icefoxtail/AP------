@@ -6,7 +6,7 @@ import crypto from 'node:crypto';
 import {auditedCcAppendFixture,materializeAuditConsumerInputs} from './helpers/audited-cc-append-fixture.mjs';
 import {registerReviewedExamV2} from '../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs';
 import {nativeReviewReceipt,planQuestion} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
-import {auditCcBindingPath,isExplicitAuditCcAppendRequest,hasAuditCcAppendClaim} from '../archive/tools/meta-foundation/audited-cross-concept-append.mjs';
+import {auditCcBindingPath,isExplicitAuditCcAppendRequest,hasAuditCcAppendClaim,nativeAuditCcAppend} from '../archive/tools/meta-foundation/audited-cross-concept-append.mjs';
 import {selectNativeRequests,selectPendingNativeRequests,rederiveNativePlans,nativeOutputManifest} from '../tools/ci/archive-pr-native-preview.mjs';
 import {verifyChangedUidConsumerApproval} from '../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs';
 const META='archive/data/question_metadata.json',IDENTITY='archive/data/question_identity_map.json',RUNTIME='archive/data/meta-foundation/runtime/new-course-v1.json';
@@ -33,6 +33,19 @@ test('audited CC append preserves the actual full audit and adds exactly one ind
  assert.equal(binding.records.length,24);assert.equal(binding.records.filter(r=>r.appendedCrossConceptKeys.length).length,1);
  const replay=registerReviewedExamV2({root:f.root,request:f.request,write:true});assert.equal(replay.replay,true);assert.deepEqual(replay.plannedPaths,[]);
  for(let n=1;n<=24;n++){const a=native(f,n);assert.equal(nativeReviewReceipt(a),f.registeredPath);assert.equal(planQuestion(a).status,'ALREADY_REGISTERED');}
+});
+
+test('audited CC native receipt row mismatch rejects before component loading while valid reuse still loads authority',t=>{
+ const f=auditedCcAppendFixture(t);registerReviewedExamV2({root:f.root,request:f.request,write:true});
+ const a=native(f),args={...a,ownerPack:a.pt.ownerPack},target=path.join(f.root,auditCcBindingPath(f.request.requestId));
+ const read=fs.readFileSync;let componentReads=0;
+ fs.readFileSync=function(file,...rest){if(String(file)===target)componentReads++;return read.call(this,file,...rest);};
+ try {
+  assert.equal(nativeAuditCcAppend({...args,current:{...args.current,metadataRevision:args.current.metadataRevision+':changed'}}),null);
+  assert.equal(componentReads,0);
+  assert.equal(nativeAuditCcAppend(args),f.registeredPath);
+  assert(componentReads>0,'valid reuse must still load and authenticate the complete component');
+ } finally {fs.readFileSync=read;}
 });
 
 const badInputs=[
@@ -213,11 +226,32 @@ test('restoring the entire actual old audit remains valid native reuse after a r
 test('audited CC has exact changed, pending and inherited preview selection and official shadow outputs',t=>{
  const f=auditedCcAppendFixture(t);assert.equal(isExplicitAuditCcAppendRequest(f.request),true);
  const requests=selectNativeRequests({root:f.root,baseSha:f.finalCommit,headSha:f.head});assert.equal(requests.length,1);assert.equal(requests[0].questionCount,3);
+ const consumed='.archive-meta-register/inbox/preserved-difficulty.json';
+ assert.equal(fs.existsSync(path.join(f.root,consumed)),false);
+ assert.equal(requests[0].evidence.some(ref=>ref.path===consumed),false,'a historical replay must not recreate a consumed inbox request');
  assert.deepEqual(selectPendingNativeRequests({root:f.root,headSha:f.head}),requests);
  const calls=[],shadow=rederiveNativePlans({root:f.root,requests,run:(_binary,args,root)=>{assert.notEqual(root,f.root);calls.push(args.includes('--write')?'write':'dry');const request=JSON.parse(fs.readFileSync(path.join(root,args[args.indexOf('--request')+1]),'utf8'));return JSON.stringify(registerReviewedExamV2({root,request,write:args.includes('--write')}));}});
  assert.deepEqual(calls,['dry','write']);const written=registerReviewedExamV2({root:f.root,request:f.request,write:true});assert.deepEqual(shadow.outputs,nativeOutputManifest(f.root,shadow.plans));assert(shadow.outputs.some(r=>r.path===auditCcBindingPath(f.request.requestId)));
  f.put('later-code-only.txt','synthetic code');const later=f.checkpoint('synthetic code-only follow-up');const inherited=selectNativeRequests({root:f.root,baseSha:f.head,headSha:later});assert.equal(inherited.length,1);
  assert.equal(inherited[0].kind,'native-approval-preservation');assert.equal(written.preservedMetadataApprovals,3);
+});
+
+test('audited CC preview cannot borrow a prior receipt absent from its exact declared historical commit',t=>{
+ const f=auditedCcAppendFixture(t),original=fs.readFileSync(path.join(f.root,f.priorPath));
+ fs.unlinkSync(path.join(f.root,f.priorPath));
+ const missing=f.checkpoint('synthetic history without the claimed prior receipt');
+ fs.writeFileSync(path.join(f.root,f.priorPath),original);f.request.approval.sourceRebind.priorCommit=missing;f.save();
+ const head=f.checkpoint('synthetic truthful current bytes with a false historical receipt binding');
+ assert.deepEqual(fs.readFileSync(path.join(f.root,f.priorPath)),original);
+ assert.throws(()=>selectNativeRequests({root:f.root,baseSha:f.finalCommit,headSha:head}),/HISTORICAL_AUDIT_RECEIPT_NOT_FIXED/);
+ assert.equal(fs.existsSync(path.join(f.root,f.registeredPath)),false);
+});
+
+test('audited CC exact historical receipt does not waive ordinary current approval evidence',t=>{
+ const f=auditedCcAppendFixture(t);fs.unlinkSync(path.join(f.root,f.nativePath));
+ const head=f.checkpoint('synthetic missing current native approval evidence');
+ assert.throws(()=>selectNativeRequests({root:f.root,baseSha:f.finalCommit,headSha:head}),/MISSING_FILE/);
+ assert.equal(fs.existsSync(path.join(f.root,f.registeredPath)),false);
 });
 
 test('audited CC reaches actual canonical and changed-UID Consumers without promoting audit status',t=>{

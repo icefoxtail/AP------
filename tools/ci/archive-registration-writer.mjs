@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { sourceQualityHoldDependencyPaths } from '../../archive/tools/source-quality-holds.mjs';
 // One preparation transaction for the existing registration producers. This script never commits or pushes.
 // Each successful lane stages its allowlisted output. Native `git diff`/reset guards then see that index as
 // their baseline; a single final push helper commits the consistent result, requests and cursors together.
@@ -99,7 +100,7 @@ export function nativeLanes(root,runScope=resolveSemanticRunScope(root)) {
     'tools/ci/archive-pages-registration-derive.sh','archive/archive2-core.js','archive/archive2-canonical.js',
     'archive/problem-bank-meta.js','archive/meta-foundation-runtime.js','archive/mixer-selector.js',
     'archive/archive2-source.js','archive/unit-past-exams-core.js'];
-  const registration=['archive/exams/','archive/data/question_identity_map.json','archive/data/question_metadata.json',
+  const registration=[...sourceQualityHoldDependencyPaths(root),'archive/exams/','archive/data/question_identity_map.json','archive/data/question_metadata.json',
     'archive/data/meta-foundation/','archive/data/master_tables/','archive/data/r2e-intake/',
     'archive/data/basic-scope-source-links.json','archive/data/basic-scope-parent-groups.json',
     'archive/data/textbook-source-manifest-v1.json','archive/data/basic-scope-parent-links.json',

@@ -42,6 +42,7 @@ import { fileURLToPath } from "node:url";
 import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
 import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
 import { isExplicitAuditCcAppendRequest } from "./audited-cross-concept-append.mjs";
+import { APPROVED_RENDERER_PRESERVATION } from "./native-approved-renderer-preservation.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
@@ -51,6 +52,8 @@ import { isExplicitSourceSubsetRebind } from "./source-subset-preservation.mjs";
 import { isExplicitIssuedSourceBindingRecoveryRequest } from "./issued-source-binding-recovery.mjs";
 import { isOriginalFinalQaRendererPreservation, isExplicitOriginalRendererRequest } from "./original-finalqa-renderer-preservation.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
+
+import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
 
 const require = createRequire(import.meta.url);
 const SCHEMA = {
@@ -148,11 +151,19 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
   }
   if (schema === SCHEMA.PINPOINT || schema === SCHEMA.V2) {
     if (!Array.isArray(doc.items) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "request needs sourceArchiveFile and items[]");
+    if (isNativeAuthorityCorrection(doc)) {
+      if (doc.scope !== "PARTIAL_UIDS" || doc.approval?.type !== "AUTHORITY_CORRECTION" || doc.approval.metadataReviewed !== false ||
+          !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 || !doc.items.length ||
+          doc.registryChanges?.length || doc.approval.sourceRebind) fail("INVALID_REQUEST", "explicit authority withdrawal scope required");
+      return { kind: "native-authority-withdrawal", exam: doc.examUid, sourceFile: doc.sourceArchiveFile,
+        expectedBlob: doc.expectedSourceBlobSha1, expectedQuestionCount: doc.expectedQuestionCount, request: doc,
+        rows: doc.items.map(item => ({ ordinal: item.sourceOrdinal, uid: item.questionUid, unchanged: false })) };
+    }
     if (schema === SCHEMA.V2 && doc.registrationMode !== undefined) {
       if (doc.registrationMode !== "IDENTITY_FINGERPRINT_ONLY" || doc.scope !== "PARTIAL_UIDS" ||
           doc.approval?.type !== "FINAL_QA" || doc.approval.metadataReviewed !== true ||
           !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 || !doc.items.length ||
-          doc.items.length > doc.expectedQuestionCount || doc.registryChanges?.length || doc.approval.sourceRebind)
+          doc.items.length > doc.expectedQuestionCount || doc.registryChanges?.length || doc.approval.sourceRebind || doc.approval.rendererPreservation !== undefined)
         fail("INVALID_REQUEST", "identity repair requires its explicit scope and creates no metadata approval");
       const rows = doc.items.map(item => {
         if (!item.questionUid || !Number.isSafeInteger(item.sourceOrdinal) || item.sourceOrdinal < 1 || item.sourceOrdinal > doc.expectedQuestionCount ||
@@ -168,15 +179,20 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       return { kind: "identity-fingerprint-repair", exam: doc.examUid || doc.sourceArchiveFile,
         sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, expectedQuestionCount: doc.expectedQuestionCount, rows };
     }
-    if (schema === SCHEMA.V2 && doc.approval?.sourceRebind !== undefined) {
+    if (schema === SCHEMA.V2 && (doc.approval?.sourceRebind !== undefined || doc.approval?.rendererPreservation !== undefined)) {
       const auditCcAppend = isExplicitAuditCcAppendRequest(doc);
       const audit = doc.approval.type === "META_PIPELINE_AUDIT" &&
         doc.approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
       const partial = doc.scope === "PARTIAL_UIDS", subset = isExplicitSourceSubsetRebind(doc.approval.sourceRebind);
       const originalRenderer = isOriginalFinalQaRendererPreservation(doc.approval.sourceRebind), recovery = isExplicitIssuedSourceBindingRecoveryRequest(doc);
-      if ((!audit && !auditCcAppend && doc.approval.type !== "FINAL_QA") || !doc.approval.sourceRebind ||
-          typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
-          (!audit && !auditCcAppend && doc.approval.sourceRebind.schemaVersion !== undefined && !subset && !originalRenderer && !recovery) || (subset || originalRenderer || recovery) && !partial ||
+      const renderer = doc.approval.rendererPreservation !== undefined;
+      const rendererValid = renderer && partial && doc.approval.sourceRebind === undefined &&
+        doc.approval.rendererPreservation?.schemaVersion === APPROVED_RENDERER_PRESERVATION;
+      if ((!audit && !auditCcAppend && doc.approval.type !== "FINAL_QA") ||
+          (renderer ? !rendererValid : !doc.approval.sourceRebind ||
+            typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
+            (!audit && !auditCcAppend && doc.approval.sourceRebind.schemaVersion !== undefined && !subset && !originalRenderer && !recovery)) ||
+          (subset || originalRenderer || recovery) && !partial ||
           originalRenderer && !isExplicitOriginalRendererRequest(doc) ||
           doc.approval.metadataReviewed !== true || !auditCcAppend && doc.registryChanges?.length ||
           (doc.scope !== undefined && !partial) ||
@@ -440,6 +456,7 @@ function preservedNativeRows(root, unit, consumer) {
   if (receipt.newMetadataApprovals !== 0 || receipt.preservedMetadataApprovals !== count ||
       receipt.totalQuestions !== count || receipt.approval?.type !== unit.approvalType ||
       !same(receipt.approval.sourceRebind, request.approval.sourceRebind) ||
+      !same(receipt.approval.rendererPreservation, request.approval.rendererPreservation) ||
       loadBank(root, unit.sourceFile).length !== unit.expectedQuestionCount)
     throw Error("native approval preservation receipt/denominator mismatch");
   for (const records of [receipt.appliedRecords, receipt.runtimeRecords]) {
@@ -549,6 +566,24 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
       }
     }
     if (!sourceBound) continue;
+    if (unit.kind === "native-authority-withdrawal") {
+      summary.checked = rows.length; result.counts.checked += rows.length;
+      summary.approvalCreated = false; summary.newMetadataApprovals = 0; summary.withdrawnMetadataApprovals = 0;
+      summary.expectedQuestionCount = unit.expectedQuestionCount;
+      try {
+        const replay = registerNativeAuthorityCorrection({ root, request: unit.request, write: false });
+        if (replay.status !== "PASS" || replay.replay !== true || replay.newMetadataApprovals !== 0 ||
+            replay.totalQuestions !== rows.length || replay.plannedPaths.length) throw Error("authority withdrawal replay mismatch");
+        const proof = verifyNativeAuthorityCorrectionConsumer({ root, request: unit.request, catalog: consumer.catalog });
+        summary.passed = rows.length; result.counts.passed += rows.length;
+        summary.withdrawnMetadataApprovals = proof.withdrawnMetadataApprovals;
+        summary.authorityHolds = proof.checkedAuthorityHolds;
+      } catch (error) {
+        result.failures.push({ exam: unit.exam, qid: rows[0]?.ordinal ?? "-", uid: rows[0]?.uid ?? "-",
+          reason: "AUTHORITY_WITHDRAWAL_MISMATCH", detail: error.message });
+      }
+      continue;
+    }
     if (unit.kind === "native-approval-preservation") {
       summary.approvalCreated = false; summary.newMetadataApprovals = 0;
       summary.preservedMetadataApprovals = 0; summary.approvalType = unit.approvalType;
@@ -634,11 +669,11 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
 
 export function renderSummary(result) {
   const c = result.counts;
-  const preservation = result.exams.some(e => ["binding-course-correction", "identity-fingerprint-repair", "native-approval-preservation", "basic-approval-preservation"].includes(e.kind));
+  const preservation = result.exams.some(e => ["binding-course-correction", "identity-fingerprint-repair", "native-approval-preservation", "basic-approval-preservation", "native-authority-withdrawal"].includes(e.kind));
   const lines = [preservation ? "### Changed-UID consumer verification" : "### Changed-UID effective consumer approval", ""];
   if (result.status === "PASS") {
     lines.push(`PASS: changed ${c.passed}/${c.changed} ${preservation ? "verified" : "approved"} (checked ${c.checked}, skippedUnchanged ${c.skippedUnchanged}), main \`${result.mainSha}\`.`);
-    if (preservation) lines.push("Preservation operations verify existing consumer state and create no new metadata or exam approval.");
+    if (preservation) lines.push("These operations verify consumer state and create no new metadata or exam approval.");
   } else {
     lines.push(`FAIL: changed ${c.changed}, checked ${c.checked}, passed ${c.passed}, skippedUnchanged ${c.skippedUnchanged}, main \`${result.mainSha}\`.`, "",
       "| exam | QID | UID | reason |", "| --- | --- | --- | --- |");
@@ -655,6 +690,8 @@ export function renderSummary(result) {
     lines.push(`  Preserved basic approvals: ${e.preservedMetadataApprovals ?? 0}; new approvals: 0; advanced approvals: 0; source questions: ${e.expectedQuestionCount}.`);
   for (const e of result.exams.filter(e => e.kind === "basic-parent-registration"))
     lines.push(`  New basic parent approvals: ${e.newBasicParentApprovals ?? 0}; preserved prior parents: 0; advanced approvals: 0; source questions: ${e.expectedQuestionCount}.`);
+  for (const e of result.exams.filter(e => e.kind === "native-authority-withdrawal"))
+    lines.push(`  Unsupported approvals withdrawn: ${e.withdrawnMetadataApprovals ?? 0}; explicit authority holds: ${e.authorityHolds ?? 0}; new approvals: 0.`);
   if (result.assignmentPending?.length) {
     const byExam = new Map();
     for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);

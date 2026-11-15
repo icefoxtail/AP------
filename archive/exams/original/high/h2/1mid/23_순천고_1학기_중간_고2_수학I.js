@@ -59,12 +59,17 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q02",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 (3, 2)를 지나는 증가 지수곡선이 왼쪽에서 수평 점근선 y=1을 나타내는 점선에 위쪽으로 다가가는 그림.",
+    "solutionImageCaption": "기본 지수함수를 오른쪽으로 3, 위쪽으로 1만큼 옮기면 점근선은 y=1이고 치역은 y>1이다. 정답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
     "questionType": "객관식",
-    "content": "오른쪽 그림은 함수 $y=\\log_{\\frac{1}{2}}x$의 그래프와 직선 $y=x$이다. 이때 실수 $a$의 값은? [3.5점]<br><div class=\"exam-img-box\"><img src=\"assets/images/23_순천고_1학기_중간_고2_수학I/q03-engine-upgrade.svg\" class=\"exam-img\"></div>",
+    "content": "오른쪽 그림은 함수 $y=\\log_{\\frac{1}{2}}x$의 그래프와 직선 $y=x$이다. 이때 실수 $a$의 값은? [3.5점]<br><div class=\"exam-img-box\"><img src=\"assets/images/23_순천고_1학기_중간_고2_수학I/q03-engine-upgrade.svg\" alt=\"로그함수 y=log 밑 1/2 x와 직선 y=x의 그래프. 점선은 같은 높이 y=1과 y=1/2에서 두 그래프의 점을 이어, 구하는 x좌표를 a로 나타낸다.\" class=\"exam-img\"></div>",
+    "layoutTag": "fullwidth",
     "choices": [
       "$\\frac{1}{2}$",
       "$\\frac{2}{3}$",
@@ -302,7 +307,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q10",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 기준 로그곡선 위 P=(2,2)를 Q=(3,2)로 오른쪽 1만큼 옮긴 선분과, Q에서 R=(3,4)로 y값을 두 배로 한 수직 선분이 표시되어 있다.",
+    "solutionImageCaption": "ㄱ은 log_b(2−3x)=log_b3+log_b(2/3−x)로 평행·대칭이동과 수직이동, ㄴ은 역함수와 y축 대칭, ㄷ은 역함수의 평행이동으로 얻는다. ㄹ은 오른쪽 1 이동 뒤 y값을 2배로 늘려야 하므로 평행이동·대칭이동만으로는 얻을 수 없다. 정답은 ㄱ, ㄴ, ㄷ인 ④.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -366,7 +375,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q12",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 평행선과 두 로그곡선이 네 경계를 이루고, 그 안쪽을 옅게 칠했다.",
+    "solutionImageCaption": "두 로그곡선의 평행이동 길이는 √13이고 두 평행선 사이의 거리는 10/√13이다. 평행선과 나란한 단면의 길이가 일정하므로 두 길이를 곱하면 띠의 넓이가 된다. 넓이는 10, 정답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -462,7 +475,11 @@ window.questionBank = [
     ],
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q15",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: t≥0에서 대표 아래로 열린 포물선 F(t)와 수평선 F(t)=2, 4, 8이 표시되어 있다. 예시 곡선은 4<F최댓값<8인 모양이며 실제 자연수 a의 답 후보를 나타내지 않는다. y=2는 양의 t에서 한 교점, y=4는 두 교점, y=8은 교점이 없다. 각 양의 t 교점은 원래 변수 x=−t와 x=t 두 입력에 대응한다.",
+    "solutionImageCaption": "예: 4<F최댓값<8인 대표 포물선에서 F(t)=2는 양의 t에서 한 점, F(t)=4는 두 점, F(t)=8은 만나지 않는다. 양의 t 교점은 원래 x=±t의 두 입력에 대응한다. 원문에서 모든 자연수 a의 값의 합은 7이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -554,7 +571,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q18",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 증가하는 로그곡선이 원 C와 왼쪽 아래 P 및 오른쪽 위 Q에서 만난다. 두 점을 이은 지름 PQ의 중점 M은 x축 위의 원 중심이다.",
+    "solutionImageCaption": "지름의 중점으로 두 교점의 x좌표 합과 y좌표 합을 구한다. y좌표 합을 로그의 곱 성질에 적용하면 두 x좌표의 곱도 정해진다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -587,7 +608,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q19",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 n=6에서 중심 O와 M_6가 같은 반지름 2√2인 두 원을 정한다. 중심선 위의 N_6는 가까운 점, F_6는 먼 점이고, O에서의 거리는 각각 4√2와 8√2이다. 그림은 일반 n의 두 극단 거리를 설명하는 예시이다.",
+    "solutionImageCaption": "예: 합에 포함된 n=6에서 두 원의 반지름은 2√2이고 중심거리는 6√2이다. 중심선 위의 가까운 점과 먼 점에서 OP는 각각 4√2, 8√2이다. 일반 n≥5에서는 OP의 최솟값과 최댓값이 √2(n−2), √2(n+2)이다. 접점의 반지름과 접선은 직각이므로 sin∠AP_nO=2√2/OP이고, 따라서 f(n)=4/(n²−4)=1/(n−2)−1/(n+2)이다. n=6,8,…,18 합은 14/45이므로 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -621,7 +646,7 @@ window.questionBank = [
     "content": "서답형 2. (서술형) 그림과 같이 함수 $y=3^{-x}$의 그래프 위의 점 $\\mathrm{A}$에 대하여 점 $\\mathrm{A}$에서 $x$축에 내린 수선의 발을 $\\mathrm{B}$라 하자. 선분 $\\mathrm{AB}$를 한 변으로 하고 $x$축 위의 점 $\\mathrm{C}$의 $x$좌표가 점 $\\mathrm{B}$의 $x$좌표보다 작도록 정사각형 $\\mathrm{ABCD}$를 그린다. 직선 $\\mathrm{CD}$와 함수 $y=3^{-x}$의 그래프가 만나는 점을 $\\mathrm{E}$라 하고, 삼각형 $\\mathrm{EDA}$의 넓이를 $S_1$, 정사각형 $\\mathrm{ABCD}$의 넓이를 $S_2$라 하자. $2S_2 = 3S_1$일 때, 점 $\\mathrm{A}$의 $x$좌표는 $\\log_3(\\log_a 3)$이다. $a$의 값을 구하는 풀이과정과 답을 서술하시오. [부분 점수 있음, 7점] [7점]<br><div class=\"exam-img-box\"><img src=\"assets/images/23_순천고_1학기_중간_고2_수학I/q21.png\" class=\"exam-img\"></div>",
     "choices": [],
     "answer": "$7/3$",
-    "solution": "<p>$A=(t,h)$라 하면 $h=3^{-t}>0$입니다. 정사각형의 한 변은 $h$이므로 $B=(t,0)$, $C=(t-h,0)$, $D=(t-h,h)$입니다.</p><p>곡선과 $CD$의 교점 $E$의 높이는 $3^{-(t-h)}=h3^h$입니다. 따라서 $S_2=h^2$, $S_1=\\frac12h(h3^h-h)=\\frac12h^2(3^h-1)$입니다.</p><p>$2S_2=3S_1$에서 $2=\\frac32(3^h-1)$, $3^h=\\frac{7}{3}$, $h=\\log_3(\\frac{7}{3})$입니다.</p><p>$h=3^{-t}$이므로 $t=\\log_3(\\frac{1}{h})=\\log_3(\\log_{\\frac{7}{3}}3)$입니다. 문제의 $t=\\log_3(\\log_a3)$와 비교하면 <b>$a=\\frac{7}{3}$</b>입니다.</p>",
+    "solution": "<p>$A=(t,h)$라 하면 $h=3^{-t}>0$입니다. 정사각형의 한 변은 $h$이므로 $B=(t,0)$, $C=(t-h,0)$, $D=(t-h,h)$입니다.</p><p>곡선과 $CD$의 교점 $E$의 높이는 $3^{-(t-h)}=h3^h$입니다. 따라서 $S_2=h^2$, $S_1=\\frac12h(h3^h-h)=\\frac12h^2(3^h-1)$입니다.</p>\n\nA의 x좌표를 $t$라 두자. 원래 그림의 삼각형 $EDA$에서 $DA$가 밑변이고 $ED$가 높이이다.\n\n| 그림 속 대상 | 결정 관계 |\n| --- | --- |\n| 정사각형 한 변 | $AB=AD=h=3^{-t}>0$ |\n| 왼쪽의 세 점 | $x_C=x_D=x_E=t-h$ |\n| 교점의 높이 | $y_E=3^{-(t-h)}=h\\,3^h$ |\n| 삼각형의 높이 | $ED=y_E-h=h(3^h-1)$ |\n| 정사각형 넓이 | $S_2=h^2$ |\n| 삼각형 넓이 | $S_1=\\frac{1}{2}h\\cdot ED=\\frac{1}{2}h^2(3^h-1)$ |\n| 주어진 넓이 조건 | $2S_2=3S_1$ |\n\n<p>$2S_2=3S_1$에서 $2=\\frac32(3^h-1)$, $3^h=\\frac{7}{3}$, $h=\\log_3(\\frac{7}{3})$입니다.</p><p>$h=3^{-t}$이므로 $t=\\log_3(\\frac{1}{h})=\\log_3(\\log_{\\frac{7}{3}}3)$입니다. 문제의 $t=\\log_3(\\log_a3)$와 비교하면 <b>$a=\\frac{7}{3}$</b>입니다.</p>",
     "standardUnitKey": "H15-M1-03",
     "subUnitKey": null,
     "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
@@ -667,6 +692,10 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q22",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 제1사분면의 파란 곡선 y=7/x와 녹색 점선 y=x가 점 P에서 만난다. P의 두 좌표는 같으므로 원점에서 P로 향하는 동경은 대각선 방향이다.",
+    "solutionImageCaption": "두 좌표가 같은 곡선 위의 점에서 두 삼각함수의 값이 같아진다. 정답은 $\\sqrt2$이다.",
+    "solutionImageSize": "full"
   }
 ];

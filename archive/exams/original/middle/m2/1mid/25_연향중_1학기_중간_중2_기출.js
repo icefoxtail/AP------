@@ -775,10 +775,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "course": "중2 수학",
-    "solutionImage": "assets/images/25_연향중_1학기_중간_중2_기출/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 수직선 두 줄이다. 위 줄은 첫째 부등식의 해 x<2를 열린 점 2와 왼쪽으로 칠한 선으로 나타냈다. 아래 줄에는 둘째 부등식을 풀어 얻은 해의 끝점 5a/4를 점 P로 나타냈고, 점 P는 2와 같은 위치에 있다. 0도 표시했다.",
-    "solutionImageCaption": "첫째 부등식의 해 x<2의 끝점 2와 둘째 부등식을 풀어 얻은 해 x<5a/4의 끝점 5a/4를 같은 수직선 위에 놓은 그림이다. 점 P는 5a/4의 위치이고 두 끝점이 같은 자리에 있다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_연향중_1학기_중간_중2_기출/q19-solution-visual-v2.svg",
+    "solutionImageAlt": "수직선의 2는 빈 점이고 왼쪽으로 화살표가 있다. 같은 경계점을 5a/4라고도 표시했다.",
+    "solutionImageCaption": "첫째 해는 x<2, 둘째 해는 x<5a/4이다. 두 해가 같으므로 5a/4=2에서 a=8/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -894,6 +894,8 @@ window.questionBank = [
   },
   {
     "id": 23,
+    "imageSize": "full",
+    "imageAlt": "수직선의 −1에서 닫힌 점으로 시작해서 오른쪽 위 방향으로 이어진다.",
     "level": "중",
     "category": "서술형 3. 수직선과 부등식의 해",
     "originalCategory": "서술형 3. 수직선과 부등식의 해",
@@ -902,7 +904,7 @@ window.questionBank = [
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "일차부등식",
@@ -911,7 +913,7 @@ window.questionBank = [
       "계수결정"
     ],
     "wide": false,
-    "image": "assets/images/25_연향중_1학기_중간_중2_기출/q23.png",
+    "image": "assets/images/25_연향중_1학기_중간_중2_기출/q23-problem-visual-v2.svg",
     "content": "다음 그림은 일차부등식 $4x-2 \\le -ax+b$의 해를 수직선 위에 나타낸 것이다. 이때, $a+b$의 값을 구하는 풀이 과정과 답을 쓰시오. (단, $a$와 $b$는 상수이고 $a < -4$이다.) [7점]",
     "choices": [],
     "answer": "-6",

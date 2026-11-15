@@ -83,7 +83,7 @@
 | 필드 | 누락 수 |
 |------|--------:|
 | id | 0 |
-| content | 1521 |
+| content | 1496 |
 | choices(배열) | 28 |
 | level | 2367 |
 | standardUnit | 1985 |
@@ -96,10 +96,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 4061 |
-| content <img> | 1158 |
+| q.image 보유 | 4057 |
+| content <img> | 1170 |
 | content <svg> | 37 |
-| content <table> | 388 |
-| 시각요소 보유(hasImage=true) | 5459 |
+| content <table> | 390 |
+| 시각요소 보유(hasImage=true) | 5469 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).

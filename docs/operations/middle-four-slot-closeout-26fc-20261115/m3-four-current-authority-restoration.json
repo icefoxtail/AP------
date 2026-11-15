@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "root-m3-four-compact-current-authority-restoration-v1",
+  "actualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "candidateHead": "f8ac8829a3ae6b13dbba7cd51649e24da826d8a0",
+  "priorReviewed2147Head": "fb12e711ce6aadf4ec3db6095b61bee950bdc4c1",
+  "priorRestorationPR": 2167,
+  "priorRestorationHead": "d409d54678a061979f99fe20f5e9e23b60a2ce2c",
+  "currentCasSha256": "93d167babb742ad3dd189ae305f1053c2f5c2c6185a7922539f42d41913b7fe3",
+  "rootCheckedPriorCheckpointRevisions": [
+    23,
+    24
+  ],
+  "rootCheckedLivePRs": [
+    2129,
+    2147,
+    2167
+  ],
+  "rootVerifiedCurrentAndCandidateRawBytes": true,
+  "rows": [
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.4slot.json",
+      "actualCompactGitBlobSha1": "247ac448d6e5c0280f5848479a05373a49812086",
+      "restorationGitBlobSha1": "9c412ecc13eba6decb2014609542d45e6bcf7239",
+      "currentSourceGitBlobSha1": "27507fb6237748fd5349fded2a72d37ee9d5155c",
+      "restoredSourceReviewBaseline": "4daf3b4a4122e4ea240850c9112c842a6e638dc2",
+      "itemCount": 25
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.4slot.json",
+      "actualCompactGitBlobSha1": "b2453b2e4b4d6dd8e932a7dca348d374dfb9ab4c",
+      "restorationGitBlobSha1": "82c68324715f5193e2d9ddad6a3be8b0f318af07",
+      "currentSourceGitBlobSha1": "36c738026dc11bd0483ece6039154d43e624eafc",
+      "restoredSourceReviewBaseline": "520de1cdd995c7325717747a8cefc601be472fde",
+      "itemCount": 23
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_연향중_2학기_중간_중3_수학.4slot.json",
+      "actualCompactGitBlobSha1": "9a0137e3674483ad2240c7708a855758ea374288",
+      "restorationGitBlobSha1": "517ddd3d994ad3062a20734a784c61b8109673d6",
+      "currentSourceGitBlobSha1": "c9f3a961daaec567ae496962c960602e6bff6b01",
+      "restoredSourceReviewBaseline": "9ba790d98eacd9bb6eacbfd3f5fb9c2d9f95c945",
+      "itemCount": 23
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_이수중_2학기_중간_중3_수학.4slot.json",
+      "actualCompactGitBlobSha1": "3372ccd4b2d4a0d89d8b39f1d4ad949ce9be3885",
+      "restorationGitBlobSha1": "eb5765658673fe2d851b895d650733145c2f312c",
+      "currentSourceGitBlobSha1": "1541c19f60a194cc4feb25388690bd2bb9f3dfd6",
+      "restoredSourceReviewBaseline": "5ac4271db664be2341c412d711dc8aba7bc87575",
+      "itemCount": 23
+    }
+  ],
+  "decision": "Retain the previously approved minimum restoration. The current compact bytes are exactly the earlier owner-review-only declarations, with no new dedicated independent review on these exact linked surfaces. Restore the reviewed source baseline and remove only that unsupported rebind declaration; retain all94 vectors, reviewers, sources and graphics.",
+  "scope": {
+    "itemCount": 94,
+    "currentActualRegistered": 93,
+    "currentActualStale": 1,
+    "expectedRegisteredAfterRestoration": 23,
+    "expectedHeldAfterRestoration": 71,
+    "expectedRegistrationWithdrawal": 70,
+    "actualPostMergeCount": "NOT_RUN"
+  },
+  "evidenceBoundary": "The linked owner review explicitly says MERGED_SOURCE_OWNER_REVIEW and newIndependentVisualReview:false. This does not establish that the figures are wrong or that a valid later independent artifact cannot exist elsewhere. E074 current source differs from its owner-review source and remains a separate exact-edition debt.",
+  "nextAction": "Re-release held rows when exact current independent renderer and native quote/asset evidence is available. Preserve the source payloads and existing vectors. Do not merge the standalone2167 packet again.",
+  "newMathReview": 0,
+  "newSemanticApproval": 0,
+  "native81PackRepairDoesNotAuthorizeTheseBindings": true
+}

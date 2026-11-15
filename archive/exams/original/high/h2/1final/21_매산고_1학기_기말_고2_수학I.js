@@ -499,7 +499,11 @@ window.questionBank = [
     },
     "layoutTag": "grid",
     "wide": false,
-    "sourceIdentityFingerprint": "135f441006703a1786a763d8ed2bca015dbad512a0555d77420987e7deed4566"
+    "sourceIdentityFingerprint": "135f441006703a1786a763d8ed2bca015dbad512a0555d77420987e7deed4566",
+    "solutionImage": "assets/images/21_매산고_1학기_기말_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위의 삼각형 ABC와 아래쪽 정사각형 BDEC가 보인다. AC와 AD로 둘러싸인 영역과 ABC, BCD, ABD의 넓이 영역을 구분한다.",
+    "solutionImageCaption": "B=(0,0), C=(15,0), D=(0,−15)로 놓으면 A=(41/5,8√21/5)이다. [ADC]=[ABC]+[BCD]−[ABD]=51+12√21이므로 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -594,7 +598,11 @@ window.questionBank = [
     },
     "layoutTag": "grid",
     "wide": false,
-    "sourceIdentityFingerprint": "2d3fb0350d6fe9901fd068ca12b29d1cc3866eba1c78b28f6ab4ddbd1bbc219b"
+    "sourceIdentityFingerprint": "2d3fb0350d6fe9901fd068ca12b29d1cc3866eba1c78b28f6ab4ddbd1bbc219b",
+    "solutionImage": "assets/images/21_매산고_1학기_기말_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 변 길이가 7, 3, 5인 삼각형과 두 원을 그렸다. 외접원 반지름은 R=7√3/3이다. 내접원 중심 I에서 변 BC의 접점 U로 내린 반지름은 BC에 수직이다. 오른쪽에 두 점선으로 IU를 연결해 확대하고 r=√3/2를 표시했다.",
+    "solutionImageCaption": "반둘레 s=15/2, 삼각형 넓이 Δ=15√3/4이다. R=7√3/3, r=√3/2이므로 두 원 사이 넓이는 π(R²−r²)이다. 정답은 187π/12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

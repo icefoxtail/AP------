@@ -162,11 +162,14 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "원점 O 오른쪽의 A에서 수직으로 올라가 직선 위 P에 닿는다. 직선과 y축이 만나는 B 높이는 2이다. 점 P, B, O, A를 이은 사다리꼴을 칠했다.",
     "questionNumber": 9,
     "number": 9,
     "questionType": "객관식",
-    "question": "9. 아래 그림과 같이 직선 $y = \\frac{2}{3}x + 2$위의 한 점 $\\text{P}$에서 $x$축에 내린 수선의 발을 $\\text{A}$라고 하자. 점 $\\text{P}$가 제 1사분면 위의 점이고, $\\square\\text{PBOA}$의 넓이가 24이다. 점 $\\text{P}$의 좌표가 $(a, b)$일 때, $a + b$의 값은? [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q09.png\">",
-    "content": "9. 아래 그림과 같이 직선 $y = \\frac{2}{3}x + 2$위의 한 점 $\\text{P}$에서 $x$축에 내린 수선의 발을 $\\text{A}$라고 하자. 점 $\\text{P}$가 제 1사분면 위의 점이고, $\\square\\text{PBOA}$의 넓이가 24이다. 점 $\\text{P}$의 좌표가 $(a, b)$일 때, $a + b$의 값은? [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q09.png\">",
+    "question": "9. 아래 그림과 같이 직선 $y = \\frac{2}{3}x + 2$위의 한 점 $\\text{P}$에서 $x$축에 내린 수선의 발을 $\\text{A}$라고 하자. 점 $\\text{P}$가 제 1사분면 위의 점이고, $\\square\\text{PBOA}$의 넓이가 24이다. 점 $\\text{P}$의 좌표가 $(a, b)$일 때, $a + b$의 값은? [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q9-problem-visual-v2.svg\" alt=\"원점 O 오른쪽의 A에서 수직으로 올라가 직선 위 P에 닿는다. 직선과 y축이 만나는 B 높이는 2이다. 점 P, B, O, A를 이은 사다리꼴을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "9. 아래 그림과 같이 직선 $y = \\frac{2}{3}x + 2$위의 한 점 $\\text{P}$에서 $x$축에 내린 수선의 발을 $\\text{A}$라고 하자. 점 $\\text{P}$가 제 1사분면 위의 점이고, $\\square\\text{PBOA}$의 넓이가 24이다. 점 $\\text{P}$의 좌표가 $(a, b)$일 때, $a + b$의 값은? [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q9-problem-visual-v2.svg\" alt=\"원점 O 오른쪽의 A에서 수직으로 올라가 직선 위 P에 닿는다. 직선과 y축이 만나는 B 높이는 2이다. 점 P, B, O, A를 이은 사다리꼴을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "① 12",
       "② $\\frac{41}{3}$",
@@ -174,13 +177,11 @@ window.questionBank = [
       "④ 17",
       "⑤ $\\frac{55}{3}$"
     ],
-    "images": [
-      "assets/images/17_대구오성중_1학기_기말_중3_수학/q09.png"
-    ],
+    "images": ["assets/images/17_대구오성중_1학기_기말_중3_수학/q9-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4.6,
-    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q09.png"
+    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q9-problem-visual-v2.svg"
   },
   {
     "id": 10,
@@ -324,38 +325,32 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "choiceColumns": 2,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "위로 열린 파란 곡선의 꼭짓점은 y축의 오른쪽에 있다. 곡선이 x축을 y축 양쪽에서 지나며 y축과 만나는 점은 x축 아래이다.",
     "questionNumber": 17,
     "number": 17,
     "questionType": "객관식",
-    "question": "17. 이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같을 때, 이차함수 $y = cx^2 + ax - b$의 그래프는? [3.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17.png\">",
-    "content": "17. 이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같을 때, 이차함수 $y = cx^2 + ax - b$의 그래프는? [3.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17.png\">",
-    "choices": [
-      "① <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17_1.png\">",
-      "② <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17_2.png\">",
-      "③ <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17_3.png\">",
-      "④ <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17_4.png\">",
-      "⑤ <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17_5.png\">"
-    ],
-    "images": [
-      "assets/images/17_대구오성중_1학기_기말_중3_수학/q17.png",
-      "assets/images/17_대구오성중_1학기_기말_중3_수학/q17_1.png",
-      "assets/images/17_대구오성중_1학기_기말_중3_수학/q17_2.png",
-      "assets/images/17_대구오성중_1학기_기말_중3_수학/q17_3.png",
-      "assets/images/17_대구오성중_1학기_기말_중3_수학/q17_4.png",
-      "assets/images/17_대구오성중_1학기_기말_중3_수학/q17_5.png"
-    ],
+    "question": "17. 이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같을 때, 이차함수 $y = cx^2 + ax - b$의 그래프는? [3.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"위로 열린 파란 곡선의 꼭짓점은 y축의 오른쪽에 있다. 곡선이 x축을 y축 양쪽에서 지나며 y축과 만나는 점은 x축 아래이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "17. 이차함수 $y = ax^2 + bx + c$의 그래프가 오른쪽 그림과 같을 때, 이차함수 $y = cx^2 + ax - b$의 그래프는? [3.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"위로 열린 파란 곡선의 꼭짓점은 y축의 오른쪽에 있다. 곡선이 x축을 y축 양쪽에서 지나며 y축과 만나는 점은 x축 아래이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "choices": ["① <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-choice-1-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선이다. 꼭짓점은 y축 왼쪽과 x축 위에 있고 y축과 만나는 높이는 양수이다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","② <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-choice-2-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선이다. 꼭짓점은 y축 오른쪽과 x축 위에 있고 y축과 만나는 높이는 양수이다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","③ <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-choice-3-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선이다. 꼭짓점은 y축 오른쪽이며 y축과 만나는 점은 x축 아래에 있다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","④ <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-choice-4-problem-visual-v2.svg\" alt=\"위로 열린 파란 포물선이다. 꼭짓점은 y축 왼쪽이며 y축과 만나는 점은 x축 위에 있다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","⑤ <img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q17-choice-5-problem-visual-v2.svg\" alt=\"위로 열린 파란 포물선이다. 꼭짓점은 y축 오른쪽이며 y축과 만나는 점은 x축 위에 있다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">"],
+    "images": ["assets/images/17_대구오성중_1학기_기말_중3_수학/q17-problem-visual-v2.svg","assets/images/17_대구오성중_1학기_기말_중3_수학/q17_1.png","assets/images/17_대구오성중_1학기_기말_중3_수학/q17_2.png","assets/images/17_대구오성중_1학기_기말_중3_수학/q17_3.png","assets/images/17_대구오성중_1학기_기말_중3_수학/q17_4.png","assets/images/17_대구오성중_1학기_기말_중3_수학/q17_5.png"],
     "answer": "",
     "solution": "",
     "score": 3.8,
-    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q17.png"
+    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"
   },
   {
     "id": 18,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "아래로 열린 파란 포물선의 꼭짓점은 A이고 왼쪽 x절편은 B이다. C는 세로절편이다. A, B, O, C를 이은 사각형 영역을 녹색으로 칠했다.",
     "questionNumber": 18,
     "number": 18,
     "questionType": "객관식",
-    "question": "18. 이차함수 $y = -x^2 - 2x + 3$의 그래프에서 꼭짓점을 $\\text{A}$, $x$축의 음의 부분과의 교점을 $\\text{B}$, $y$축과의 교점을 $\\text{C}$라 할 때, 사각형 $\\text{ABOC}$의 넓이는? (단, 점 $\\text{O}$는 원점이다.) [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q18.png\">",
-    "content": "18. 이차함수 $y = -x^2 - 2x + 3$의 그래프에서 꼭짓점을 $\\text{A}$, $x$축의 음의 부분과의 교점을 $\\text{B}$, $y$축과의 교점을 $\\text{C}$라 할 때, 사각형 $\\text{ABOC}$의 넓이는? (단, 점 $\\text{O}$는 원점이다.) [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q18.png\">",
+    "question": "18. 이차함수 $y = -x^2 - 2x + 3$의 그래프에서 꼭짓점을 $\\text{A}$, $x$축의 음의 부분과의 교점을 $\\text{B}$, $y$축과의 교점을 $\\text{C}$라 할 때, 사각형 $\\text{ABOC}$의 넓이는? (단, 점 $\\text{O}$는 원점이다.) [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q18-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선의 꼭짓점은 A이고 왼쪽 x절편은 B이다. C는 세로절편이다. A, B, O, C를 이은 사각형 영역을 녹색으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "18. 이차함수 $y = -x^2 - 2x + 3$의 그래프에서 꼭짓점을 $\\text{A}$, $x$축의 음의 부분과의 교점을 $\\text{B}$, $y$축과의 교점을 $\\text{C}$라 할 때, 사각형 $\\text{ABOC}$의 넓이는? (단, 점 $\\text{O}$는 원점이다.) [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q18-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선의 꼭짓점은 A이고 왼쪽 x절편은 B이다. C는 세로절편이다. A, B, O, C를 이은 사각형 영역을 녹색으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "① $\\frac{15}{2}$",
       "② $\\frac{19}{2}$",
@@ -363,21 +358,22 @@ window.questionBank = [
       "④ $\\frac{25}{2}$",
       "⑤ $\\frac{27}{2}$"
     ],
-    "images": [
-      "assets/images/17_대구오성중_1학기_기말_중3_수학/q18.png"
-    ],
+    "images": ["assets/images/17_대구오성중_1학기_기말_중3_수학/q18-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4.6,
-    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q18.png"
+    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q18-problem-visual-v2.svg"
   },
   {
     "id": 19,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "파란 포물선이 정사각형의 위쪽 점 A와 D를 지난다. 아래쪽 B와 C는 x축 위에 있고 B의 x좌표는 2이다. 곡선은 원점도 지난다.",
     "questionNumber": 19,
     "number": 19,
     "questionType": "객관식",
-    "question": "19. 아래 그림은 이차함수 $y = a(x - p)^2 + q$의 그래프와 한 변의 길이가 2인 정사각형 $\\text{ABCD}$를 그린 것이다. 포물선이 정사각형의 두 꼭짓점 $\\text{A, D}$를 지나고, 점 $\\text{B}$의 좌표가 $(2, 0)$일 때, $a + p + q$의 값은? [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q19.png\">",
-    "content": "19. 아래 그림은 이차함수 $y = a(x - p)^2 + q$의 그래프와 한 변의 길이가 2인 정사각형 $\\text{ABCD}$를 그린 것이다. 포물선이 정사각형의 두 꼭짓점 $\\text{A, D}$를 지나고, 점 $\\text{B}$의 좌표가 $(2, 0)$일 때, $a + p + q$의 값은? [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q19.png\">",
+    "question": "19. 아래 그림은 이차함수 $y = a(x - p)^2 + q$의 그래프와 한 변의 길이가 2인 정사각형 $\\text{ABCD}$를 그린 것이다. 포물선이 정사각형의 두 꼭짓점 $\\text{A, D}$를 지나고, 점 $\\text{B}$의 좌표가 $(2, 0)$일 때, $a + p + q$의 값은? [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q19-problem-visual-v2.svg\" alt=\"파란 포물선이 정사각형의 위쪽 점 A와 D를 지난다. 아래쪽 B와 C는 x축 위에 있고 B의 x좌표는 2이다. 곡선은 원점도 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "19. 아래 그림은 이차함수 $y = a(x - p)^2 + q$의 그래프와 한 변의 길이가 2인 정사각형 $\\text{ABCD}$를 그린 것이다. 포물선이 정사각형의 두 꼭짓점 $\\text{A, D}$를 지나고, 점 $\\text{B}$의 좌표가 $(2, 0)$일 때, $a + p + q$의 값은? [4.6점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q19-problem-visual-v2.svg\" alt=\"파란 포물선이 정사각형의 위쪽 점 A와 D를 지난다. 아래쪽 B와 C는 x축 위에 있고 B의 x좌표는 2이다. 곡선은 원점도 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "① 1",
       "② 3",
@@ -385,13 +381,11 @@ window.questionBank = [
       "④ 7",
       "⑤ 9"
     ],
-    "images": [
-      "assets/images/17_대구오성중_1학기_기말_중3_수학/q19.png"
-    ],
+    "images": ["assets/images/17_대구오성중_1학기_기말_중3_수학/q19-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4.6,
-    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q19.png"
+    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q19-problem-visual-v2.svg"
   },
   {
     "id": 20,
@@ -435,11 +429,14 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "파란 위로 열린 포물선 위 P와 주황 점선 직선 위 Q를 가로선으로 연결했다. 포물선의 y절편은 −2이다.",
     "questionNumber": 22,
     "number": 22,
     "questionType": "객관식",
-    "question": "22. 아래 그림과 같이 이차함수 $y = x^2 - 2x - 2$의 그래프 위의 한 점 $\\text{P}$에서 $x$축에 평행한 직선을 그어 직선 $y = 2x - 8$과 만나는 점을 $\\text{Q}$라 하자. 선분 $\\text{PQ}$의 길이가 최소가 되는 점 $\\text{Q}$의 좌표를 $(a, b)$라 할 때, $ab$의 값은? [4.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q22.png\">",
-    "content": "22. 아래 그림과 같이 이차함수 $y = x^2 - 2x - 2$의 그래프 위의 한 점 $\\text{P}$에서 $x$축에 평행한 직선을 그어 직선 $y = 2x - 8$과 만나는 점을 $\\text{Q}$라 하자. 선분 $\\text{PQ}$의 길이가 최소가 되는 점 $\\text{Q}$의 좌표를 $(a, b)$라 할 때, $ab$의 값은? [4.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q22.png\">",
+    "question": "22. 아래 그림과 같이 이차함수 $y = x^2 - 2x - 2$의 그래프 위의 한 점 $\\text{P}$에서 $x$축에 평행한 직선을 그어 직선 $y = 2x - 8$과 만나는 점을 $\\text{Q}$라 하자. 선분 $\\text{PQ}$의 길이가 최소가 되는 점 $\\text{Q}$의 좌표를 $(a, b)$라 할 때, $ab$의 값은? [4.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q22-problem-visual-v2.svg\" alt=\"파란 위로 열린 포물선 위 P와 주황 점선 직선 위 Q를 가로선으로 연결했다. 포물선의 y절편은 −2이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "22. 아래 그림과 같이 이차함수 $y = x^2 - 2x - 2$의 그래프 위의 한 점 $\\text{P}$에서 $x$축에 평행한 직선을 그어 직선 $y = 2x - 8$과 만나는 점을 $\\text{Q}$라 하자. 선분 $\\text{PQ}$의 길이가 최소가 되는 점 $\\text{Q}$의 좌표를 $(a, b)$라 할 때, $ab$의 값은? [4.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q22-problem-visual-v2.svg\" alt=\"파란 위로 열린 포물선 위 P와 주황 점선 직선 위 Q를 가로선으로 연결했다. 포물선의 y절편은 −2이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "① $-8$",
       "② $-6$",
@@ -447,21 +444,22 @@ window.questionBank = [
       "④ $-2$",
       "⑤ $-1$"
     ],
-    "images": [
-      "assets/images/17_대구오성중_1학기_기말_중3_수학/q22.png"
-    ],
+    "images": ["assets/images/17_대구오성중_1학기_기말_중3_수학/q22-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4.8,
-    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q22.png"
+    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q22-problem-visual-v2.svg"
   },
   {
     "id": 23,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "삼각형 ABC의 A에서 가로 밑변 BC에 내린 수선 AH의 길이는 4이다. 밑변은 H에서 12와 4로 나뉜다. 직사각형 PQRS의 위쪽 두 점은 두 사선, 아래쪽 두 점은 밑변에 있다.",
     "questionNumber": 23,
     "number": 23,
     "questionType": "객관식",
-    "question": "23. 아래 그림과 같은 $\\triangle\\text{ABC}$에서 $\\overline{\\text{AH}} = 4, \\overline{\\text{BH}} = 12, \\overline{\\text{CH}} = 4$일 때, $\\triangle\\text{ABC}$에 내접하는 직사각형 $\\text{PQRS}$의 넓이가 최대일 때, 직사각형 $\\text{PQRS}$의 둘레의 길이는? [4.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q23.png\">",
-    "content": "23. 아래 그림과 같은 $\\triangle\\text{ABC}$에서 $\\overline{\\text{AH}} = 4, \\overline{\\text{BH}} = 12, \\overline{\\text{CH}} = 4$일 때, $\\triangle\\text{ABC}$에 내접하는 직사각형 $\\text{PQRS}$의 넓이가 최대일 때, 직사각형 $\\text{PQRS}$의 둘레의 길이는? [4.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q23.png\">",
+    "question": "23. 아래 그림과 같은 $\\triangle\\text{ABC}$에서 $\\overline{\\text{AH}} = 4, \\overline{\\text{BH}} = 12, \\overline{\\text{CH}} = 4$일 때, $\\triangle\\text{ABC}$에 내접하는 직사각형 $\\text{PQRS}$의 넓이가 최대일 때, 직사각형 $\\text{PQRS}$의 둘레의 길이는? [4.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q23-problem-visual-v2.svg\" alt=\"삼각형 ABC의 A에서 가로 밑변 BC에 내린 수선 AH의 길이는 4이다. 밑변은 H에서 12와 4로 나뉜다. 직사각형 PQRS의 위쪽 두 점은 두 사선, 아래쪽 두 점은 밑변에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "23. 아래 그림과 같은 $\\triangle\\text{ABC}$에서 $\\overline{\\text{AH}} = 4, \\overline{\\text{BH}} = 12, \\overline{\\text{CH}} = 4$일 때, $\\triangle\\text{ABC}$에 내접하는 직사각형 $\\text{PQRS}$의 넓이가 최대일 때, 직사각형 $\\text{PQRS}$의 둘레의 길이는? [4.8점]<br><img src=\"assets/images/17_대구오성중_1학기_기말_중3_수학/q23-problem-visual-v2.svg\" alt=\"삼각형 ABC의 A에서 가로 밑변 BC에 내린 수선 AH의 길이는 4이다. 밑변은 H에서 12와 4로 나뉜다. 직사각형 PQRS의 위쪽 두 점은 두 사선, 아래쪽 두 점은 밑변에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "① 10",
       "② 14",
@@ -469,13 +467,11 @@ window.questionBank = [
       "④ 18",
       "⑤ 20"
     ],
-    "images": [
-      "assets/images/17_대구오성중_1학기_기말_중3_수학/q23.png"
-    ],
+    "images": ["assets/images/17_대구오성중_1학기_기말_중3_수학/q23-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4.8,
-    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q23.png"
+    "image": "assets/images/17_대구오성중_1학기_기말_중3_수학/q23-problem-visual-v2.svg"
   },
   {
     "id": 24,

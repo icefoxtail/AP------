@@ -618,7 +618,8 @@
   }
   function advancedEligible(record, options = {}) {
     const authority = options.canonicalAuthority || options.catalog?.canonicalAuthority;
-    return record.sourceIntegrityStatus === "VERIFIED" && record.sourceStatus === "VERIFIED" &&
+    return record.sourceIssueHold !== true &&
+      record.sourceIntegrityStatus === "VERIFIED" && record.sourceStatus === "VERIFIED" &&
       Boolean(canonical?.validateAdvancedAssignment?.(record, authority)?.ok) &&
       (advancedAuthority(record) !== "mf" || !record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED") &&
       !(record.metadataConflicts || []).some(field => ["L3", "L4", "problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));

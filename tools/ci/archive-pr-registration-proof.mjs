@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { sourceQualityHoldDependencyPaths } from '../../archive/tools/source-quality-holds.mjs';
 // The CI runner's data-only registration verdict, reused by run-tests on the same
 // runner. This does not certify Chrome or modify a remote ref.
 import fs from 'node:fs';
@@ -111,7 +112,7 @@ export function prRegistrationProofNeeded(changedFiles) {
 export function registrationProofFingerprints(root = process.cwd(), nativeRequests = []) {
   const rows = treeRows(root), present = new Set(rows.map(row => row.path));
   if (REQUIRED_FILES.some(file => !present.has(file))) throw Error('REGISTRATION_PROOF_DEPENDENCY_MISSING');
-  const nativeInputs = new Set(nativeRequests.flatMap(r => [r.path, r.source.path, ...r.evidence.map(e => e.path)]));
+  const nativeInputs = new Set([...sourceQualityHoldDependencyPaths(root), ...nativeRequests.flatMap(r => [r.path, r.source.path, ...r.evidence.map(e => e.path)])]);
   const inputs = rows.filter(row => (isInput(row.path) || nativeInputs.has(row.path)) && !isChecker(row.path));
   const checkers = rows.filter(row => isChecker(row.path));
   return { inputDigest: hash(JSON.stringify(inputs)), checkerDigest: hash(JSON.stringify(checkers)),

@@ -14,10 +14,13 @@ import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from '.
 import { validateIssuedSourceBindingRecovery } from './issued-source-binding-recovery.mjs';
 import { hasReviewedReceiptLineage, reviewedSourceBindingPath } from './reviewed-source-binding.mjs';
 import { nativeOriginalFinalQaRendererRebind,hasOriginalFinalQaRendererClaim } from './original-finalqa-renderer-preservation.mjs';
+import { hasApprovedRendererPreservationClaim, verifyApprovedRendererReceipt } from './native-approved-renderer-preservation.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 import { nativeAuditCcAppend, hasExplicitAuditCcAppendClaim, hasAuditCcAppendClaim } from './audited-cross-concept-append.mjs';
 import {resolveSemanticRunScope,semanticRunScopeProof,assertSemanticRunScopeProof,excludesSemanticSource} from './semantic-run-scope.mjs';
+
+import { nativeAuthorityHoldState } from './native-authority-correction.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -165,6 +168,7 @@ function preservedAuditReceipt({nativeSource,question,previous,current,identity,
 // ALREADY_REGISTERED also leaves the native metadata revision, runtime and RPM parent untouched.
 export function nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack=pt?.ownerPack}) {
   if(!nativeSource||!previous)return null;
+  if(nativeAuthorityHoldState({root:nativeSource.root,current,identity,source,ordinal}))return null;
   const studentUnchanged=equal(pick(previous,STUDENT),pick(question,STUDENT));
   const {root,bytes,blobSha1,bank,runtimeRecord,runtimeStatus}=nativeSource;
   if(!Buffer.isBuffer(bytes)||!Array.isArray(bank)||!equal(bank[ordinal-1],question)
@@ -214,6 +218,17 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||registeredIdentity[0].sourceOrdinal!==ordinal||registeredIdentity[0].sourceFingerprint!==identity.sourceFingerprint
         ||!equal(registeredIdentity[0].sourceQuestionNo,identity.sourceQuestionNo)
         ||current.metadataRevision!==`meta-foundation:${ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
+      if(Object.hasOwn(approval,'rendererPreservation')||Object.hasOwn(receipt,'approvedRendererPreservation')||
+        hasApprovedRendererPreservationClaim({root,current,runtimeRecord})) {
+        const kept=verifyApprovedRendererReceipt({receipt,nativeSource,current,identity,ordinal,previous,registry,
+          revalidateLeaf:ancestor=>{
+            const context=activeBindingContext({candidate:ancestor.current,check:{curriculum:ancestor.current.curriculum||ancestor.current.curriculumKey},
+              registry,runtimeOwner:ancestor.current.metaFoundationPackId});
+            return context.reason?null:nativeReviewReceipt({...ancestor,registry,...context});
+          }});
+        if(kept!==true)continue;
+        return receiptPath;
+      }
       if(validateIssuedSourceBindingRecovery(receipt,nativeSource,question,identity,ordinal,current)===true)return receiptPath;
       const originalRenderer=nativeOriginalFinalQaRendererRebind({receipt,nativeSource,previous,question,identity,ordinal,current,registry,
         revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor}),
@@ -237,7 +252,15 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       if(preservedSource===true)return receiptPath;
       const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
       const reviewedRenderer=nativeReviewedRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
-      if(reviewedFigure!==true&&reviewedRenderer!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      // M2 presentation transport has its own revalidated immutable prefigure
+      // view. An older cursor must match that whole student payload exactly;
+      // the presence of a marker or witness alone cannot exempt a change.
+      const m2Proofs=receipt.fingerprintRepairs?.filter(repair=>repair.questionUid===identity.questionUid&&repair.sourceOrdinal===ordinal)
+        .map(repair=>repair.sourceReview?.m2RendererContinuity).filter(Boolean)||[];
+      const reviewedM2Renderer=reviewedSource===true&&m2Proofs.length===1&&
+        m2Proofs[0].schemaVersion==='archive-reviewed-m2-current-renderer-continuity-v1'&&
+        m2Proofs[0].nativeStudentPayloadSha256===hash(pick(previous,REASSESSED_STUDENT_FIELDS));
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&!reviewedM2Renderer&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }
@@ -270,6 +293,8 @@ export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
 export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
   if (!identity || !current || identity.questionUid!==current.questionUid || identity.sourceArchiveFile!==source || current.sourceArchiveFile!==source || Number(identity.sourceOrdinal)!==ordinal || Number(current.sourceOrdinal)!==ordinal) return reject('UID_JOIN_MISMATCH');
+  const authorityHold=nativeAuthorityHoldState({root:nativeSource?.root,current,identity,source,ordinal});
+  if(authorityHold)return reject(authorityHold.reason);
   if (q.questionUid && q.questionUid!==identity.questionUid && !isUnambiguousLegacySourceUidAlias({question:q,
     sourceArchiveFile:source,sourceOrdinal:ordinal,identityRecord:identity,
     identityMap:nativeSource?.identityMap,bank:nativeSource?.bank})) return reject('SOURCE_UID_CONFLICT');
@@ -338,6 +363,8 @@ export function planQuestion({question:q, previous, current, identity, registry,
     return reject('AUDITED_CC_COMPONENT_REVALIDATION_FAILED');
   if(nativeSource&&hasOriginalFinalQaRendererClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
     return reject('ORIGINAL_FINAL_QA_RENDERER_REVALIDATION_FAILED');
+  if(nativeSource&&hasApprovedRendererPreservationClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
+    return reject('NATIVE_APPROVED_RENDERER_PRESERVATION_REVALIDATION_FAILED');
   if(nativeSource&&hasNativeReviewedSourceClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
     return reject('NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED');
   if(nativeSource&&hasNativeSourcePreservationClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord,nativeSource}))

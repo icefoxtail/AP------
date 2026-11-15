@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "geometry-runtime-readonly-perf-proposals-v1",
+  "reviewer": "/root/audit_m2",
+  "productionEdits": 0,
+  "testExecutions": 0,
+  "profileRef": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-geometry-runtime-perf/.tmp/geometry-standalone-profile.json",
+    "sha256": "aaa4180cc231bccff2cf6d7b4c8a695fb567eddafc4a61c01dbf4e0bcf124330",
+    "elapsedMs": 297128.47445100005,
+    "complete": false
+  },
+  "fixedCodeBase": "14815a2c35c65e422e500dd00aae845704398c9f",
+  "staticReviews": [
+    {
+      "commit": "2c8e3450db21b430b2daf45f5f891386f1534df4",
+      "files": 4,
+      "result": "NO_BLOCKING_FINDING_STATIC_READ_ONLY",
+      "checks": [
+        "Only successful full-SHA commit/path names cached; raw Git blob reads and hashes unchanged.",
+        "Symbolic refs, malformed/error results excluded; root+args key; private Buffer copies; bounded 4096 entries."
+      ]
+    },
+    {
+      "commit": "acf9322362c63f3e3a5b23bd6868977e3d515191",
+      "files": 1,
+      "result": "NO_BLOCKING_FINDING_STATIC_READ_ONLY",
+      "checks": [
+        "One pre-registration identity parse; pre/post snapshots remain distinct.",
+        "Pure join/status Maps built once per cohort; every original native/reassessed whole-cohort call unchanged.",
+        "Historical peer verifier copies the incoming Map before historical overrides."
+      ]
+    }
+  ],
+  "measured": {
+    "git": {
+      "git:hash-object": {
+        "count": 52,
+        "ms": 1852.0735520000494
+      },
+      "git:rev-parse": {
+        "count": 1253,
+        "ms": 38761.32421899942
+      },
+      "git:show": {
+        "count": 168,
+        "ms": 15578.438584
+      },
+      "git:cat-file": {
+        "count": 697,
+        "ms": 50989.800887000456
+      },
+      "git:ls-tree": {
+        "count": 27,
+        "ms": 1367.6785270000946
+      },
+      "git:clone": {
+        "count": 4,
+        "ms": 279.8503350000301
+      },
+      "git:update-ref": {
+        "count": 4,
+        "ms": 130.8976549999952
+      },
+      "git:--literal-pathspecs": {
+        "count": 116,
+        "ms": 4785.898040999964
+      }
+    },
+    "jsonParse": {
+      "count": 23044,
+      "ms": 29496.844232999523
+    },
+    "jsonStringify": {
+      "count": 734140,
+      "ms": 39970.732651004146
+    },
+    "peakRssBytes": 2423029760,
+    "coldOriginalRegistrationsCompleted": 4,
+    "prerequisiteRegistrationsCompleted": 12,
+    "largeMetadataSerializationMs": 15192.34,
+    "measurementLimit": "Interrupted profile only. Categories can overlap and instrumentation has overhead; these are not an end-to-end performance guarantee."
+  },
+  "minimalRecommendation": "Measure 2c8e plus acf once with the unchanged official 300-second gate before expanding the change.",
+  "furtherCandidatesOnlyIfConcreteResidual": [
+    {
+      "priority": 1,
+      "entrypoint": "archive/tools/meta-foundation/immutable-git-batch.mjs::decodeImmutableGitBatch / forEachImmutableGitFile",
+      "proposal": "For hydration only, validate the complete bounded batch first into byte-offset descriptors, then consume Buffer subarrays without the intermediate Buffer.from copy per object. Keep the existing allocating readImmutableGitFiles API.",
+      "observedReason": "Current hydration receives the whole cat-file output plus a second full copy of every decoded blob. The 297s profile reached 2.42GB RSS; avoiding that simultaneous extra copy can reduce memory pressure without skipping a raw read.",
+      "requiredBoundaries": [
+        "All header/order/type/size/object-SHA/trailing-byte checks finish before the first consumer callback.",
+        "No retained byte cache or approval result cache. Fresh cat-file invocation and original whole-cohort replays remain.",
+        "A corrupted final object must cause zero callbacks, preserving existing all-batch validation behavior."
+      ],
+      "expectedGain": "Unmeasured; do not claim a time saving before the official rerun."
+    },
+    {
+      "priority": 2,
+      "entrypoint": "archive/tools/meta-foundation/immutable-git-batch.mjs::readFiles",
+      "proposal": "Within one invocation only, deduplicate exact objectId+size body requests after validating every commit/path regular-file directory entry; map verified fresh bytes back to original input order.",
+      "observedReason": "Audit append asks for identical unchanged assets at multiple source snapshots. Each current call repeats fresh bytes for the same immutable object.",
+      "requiredBoundaries": [
+        "Every commit/path anchor and mode is still checked.",
+        "No cross-call byte or authority reuse.",
+        "Missing/symlink/path drift/object mismatch still rejects the entire input."
+      ],
+      "expectedGain": "Likely smaller than the primary rev-parse and index fixes; not measured."
+    }
+  ],
+  "doNotOptimizeBySkipping": [
+    "The 12 prerequisite official registrations and 4 original whole-cohort registrations caused 15.19s of large metadata serialization, but their outputs feed exact replay comparisons. Do not substitute a cached approval or omit those registrations.",
+    "Do not apply the count-bounded exact-JSON parser cache to all large metadata/identity/runtime documents; 128 large entries can worsen RSS.",
+    "Do not replace live raw/hash checks with mtime/stat keys, mark partial replay complete, or raise the 300-second gate."
+  ],
+  "logNote": "geometry-standalone-run.log is empty; detailed evidence is the frozen profile JSON."
+}

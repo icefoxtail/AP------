@@ -1946,3 +1946,15 @@ for(const [name,change]of [
   const f=approvedBindingVersionFixture(t);assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
   change(f);const result=planQuestion(f);assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
 });
+
+for(const [name,relative]of [
+  ['canonical','archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json'],
+  ['master','archive/data/master_tables/js_archive_tag_master.json']
+])test('exact JSON parsing reuse still rechecks changed current '+name+' bytes',t=>{
+  const f=typedSourceReviewFixture(t),full=path.join(f.nativeSource.root,relative),raw=fs.readFileSync(full);
+  assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
+  fs.writeFileSync(full,name==='master'?'{':'{"problemTypes":[],"templates":[]}');
+  const changed=planQuestion(f);assert.equal(changed.status,'SUPPLEMENT_PENDING');
+  assert.deepEqual(changed.reasons,['NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED']);assert.equal(changed.final,undefined);
+  fs.writeFileSync(full,raw);assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
+});

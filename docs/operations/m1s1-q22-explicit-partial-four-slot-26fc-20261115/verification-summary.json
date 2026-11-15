@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "explicit-partial-four-slot-local-verification-v1",
+  "status": "PASS_LOCAL_SELECTED_ONE_UNSUBMITTED_TWENTY_FOUR",
+  "basisMain": "c1d9dda6fd6be0dd63b10c8b52157546c108714f",
+  "sourceArchiveFile": "original/middle/m1/1mid/17_\uae08\ub2f9\uc911_1\ud559\uae30_\uc911\uac04_\uc9111_\uc218\ud559.js",
+  "sourceGitBlobSha": "76531f23979e1670aedce8b34b88a9e8b17c6537",
+  "questionUid": "qid_v1_1934da63ea59df9402fef2edde153824c6e1ace9dba0c14b14af3052349d15e6",
+  "sourceOrdinal": 22,
+  "wholeSourceDenominator": 25,
+  "selectedCount": 1,
+  "unsubmittedCount": 24,
+  "completeExam": false,
+  "privateIntake": {
+    "actualAuthorAndIndependentReviewFilesRead": true,
+    "independentCurrentSourceReviewSha256": "b23a58d96f1dea8a73e2c5abe70064350dc26f0ed491b9e37a2bde0e3dacc896",
+    "acceptedPrivateInputSha256": "df64d560f4fb53556538409469a60725ff65982979a6f0cff2cd5a71704c7288",
+    "literalQuoteChecks": 7,
+    "selectedValidationFailures": 0,
+    "singleMethodWarningCount": 1,
+    "rawPrivateTextInPublicArtifacts": 0
+  },
+  "codeIndependentReview": {
+    "decision": "ACCEPT_FOR_SCOPED_EXECUTION",
+    "sha256": "e7cf000da49d53a47042c65274d095f3b31a0e74bad0b15d177df7b6d853adac"
+  },
+  "regression": {
+    "existingAndNewRuntimeTests": 96,
+    "pass": 96,
+    "fail": 0,
+    "originalFullSubmissionMissingFailures": 24,
+    "partialPartitionValidationFailures": 0
+  },
+  "localImport": {
+    "status": "PASS_PARTIAL_IMPORT",
+    "scope": "PARTIAL_UIDS",
+    "expectedQuestionCount": 25,
+    "selected": 1,
+    "unsubmitted": 24,
+    "completeExam": false,
+    "write": true,
+    "replay": false,
+    "newSemanticApproval": 0,
+    "sourceMutation": 0,
+    "compact": {
+      "path": "archive/data/item-4slot/original/middle/m1/1mid/17_\uae08\ub2f9\uc911_1\ud559\uae30_\uc911\uac04_\uc9111_\uc218\ud559.4slot.json",
+      "sha256": "ab0e21f52866026708346036cf928470cd834f40b658727a225a464d23cb73f8",
+      "bytes": 4169
+    },
+    "receipt": {
+      "path": "archive/data/item-4slot-receipts/v1/m1s1-geumdang17-q22-four-slot-26fc-20261115.json",
+      "sha256": "540d1f24cb0bc9d1dd8e8df9ffec8ced79a34a001cbe8207d9d816314534ca7f",
+      "bytes": 8481
+    },
+    "validation": {
+      "fail": 0,
+      "warn": 1,
+      "quotes": 7
+    }
+  },
+  "runtime": {
+    "status": "PASS_WITH_SUPPLEMENTS",
+    "counts": {
+      "files": 1,
+      "items": 1,
+      "registered": 1,
+      "pending": 24,
+      "withCandidates": 0,
+      "identityFingerprintHistorical": 0
+    },
+    "indexSha256": "199ec7a75c3cd777e92521b71efd1a546c58c3168bf0351912016356e2b75eb8",
+    "inputDigest": "e2fb55dae3faba37abe5c756dde1f8d28f8718e41de0cd0ed0edb808a9f6fe09"
+  },
+  "consumer": {
+    "registered": 1,
+    "getSelected": 1,
+    "hasTermChecks": 7,
+    "findQueries": 8,
+    "unsubmittedGetAbsent": 24,
+    "unsubmittedPostingAbsent": 168
+  },
+  "preservation": {
+    "sourceAndIdentityByteIdentical": true,
+    "answerAndSolutionStillEmpty": true,
+    "unsubmittedRegistrations": 0,
+    "newSemanticApproval": 0,
+    "newMathQa": 0,
+    "sourceChanges": 0,
+    "exactReplay": true
+  },
+  "production": {
+    "mainRegistration": "NOT_RUN",
+    "difficultyRegistration": "NOT_RUN",
+    "nativeSemanticApproval": "NOT_ISSUED",
+    "pages": "NOT_RUN"
+  },
+  "verificationDigests": {
+    "code-v1-manifest.json": "77514ada15a75b5fd1c4988e6b779f14b20b154850cf961ae681345897ff8ab0",
+    "actual-q22-input-cas.json": "c6b2c5ea2dff7914322f636e34ea99343c04ea40f76da100a75c6136ab99fb6c",
+    "actual-q22-import-dry.json": "31fc0661bf276a425b659b48f71a8519183ced274078359212a5b3917aa1a256",
+    "actual-q22-local-verification.json": "2a235b72d1573be98f6594903eaee4f01d2f10af571aa0156a6a4aa425812bee",
+    "actual-q22-data-test.log": "cde2171d3a57178bcdeaf14e0f3ceb12be951f27a3d4d1f028e7a1ceaf30ab52",
+    "runtime-tests-v1.tap": "9b57f5f6a3d900ac0878c78126f111864caa3456f5a5187c1908a7087a546c4e"
+  }
+}

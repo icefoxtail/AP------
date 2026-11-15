@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "geometry-runtime-performance-independent-code-review-v1",
+  "reviewer": "/root/m1_compact_transport",
+  "reviewedAtUtc": "2026-11-15T22:18:59.687992+00:00",
+  "decision": "SCOPED_CODE_READ_ACCEPTED_FINAL_AUTHOR_VALIDATION_PENDING",
+  "reviewedWorktree": "/workspace/scratch/987d4bf32f40/AP-geometry-runtime-cache-code",
+  "reviewedFiles": [
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+      "sha256": "cf689ababee89d125ccf0a0391370b9a387b96dab4f380e3f2d339866c6eb486",
+      "bytes": 20776
+    },
+    {
+      "path": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+      "sha256": "8a15eba02657a7072417d7c7651c96435eb04f663431632ed6b8298d3db09557",
+      "bytes": 53948
+    },
+    {
+      "path": "archive/tools/meta-foundation/exact-json-byte-parser.mjs",
+      "sha256": "6e956c40e45d09d4cef3cbcdc7e96e6bdf93d211a44026b9723b5abb3b5062b8",
+      "bytes": 1063
+    },
+    {
+      "path": "archive/tools/meta-foundation/immutable-git-batch.mjs",
+      "sha256": "3dd3f9af2323278af4ec8c3690d8a4bdee5daee628e8c48c0ec142c9ef5e232d",
+      "bytes": 4087
+    },
+    {
+      "path": "archive/tools/meta-foundation/audited-cross-concept-append.mjs",
+      "sha256": "221d9dfafd1e3f512aeea8a0640b90fe88e9122a78ea04f761f2a02e9573f7dc",
+      "bytes": 34468
+    }
+  ],
+  "productionFileCount": 5,
+  "findings": [],
+  "checks": [
+    {
+      "area": "Recovery replay",
+      "observation": "New directory metadata map is local to one replayOriginal invocation and one root. Keys require exact immutable 40-character commit SHA; path safety and regular blob mode remain required. Every bytes call still executes git show; no raw-byte or permission result cache was added."
+    },
+    {
+      "area": "Current tables",
+      "observation": "Every invocation rereads the live index, canonical and compiled inputs and master bytes. Digest checks run before their values are used. Canonical parsing reuses the exact bytes already read and authenticated in that invocation, and falls back to a fresh safe-path read for other requested canonical files."
+    },
+    {
+      "area": "JSON byte parser",
+      "observation": "Only exact SHA256 plus raw Buffer.equals hits share a deeply frozen JSON value. Stored input bytes are copied, changed/malformed bytes are reparsed, nested values are recursively frozen, cache is bounded. No approval result is stored."
+    },
+    {
+      "area": "Immutable batch reader",
+      "observation": "Each invocation validates exact commit identity and literal exact regular-file mode/type/path inventory, obtains fresh cat-file --batch frames, validates requested frame order, declared size, object ID, missing/trailing/truncated output and recalculated Git blob SHA1, and returns copies. Duplicate requests preserve distinct ordered raw frames. No process-global batch cache exists."
+    },
+    {
+      "area": "Audit CC append",
+      "observation": "Only immutable asset I/O changes to one fresh batch per invocation. Every cohort source/identity/metadata/runtime/evidence relation, each live asset SHA256, every historical asset SHA256, nested SVG restriction and row evidence binding remains checked. No full-cohort validation or current-state check was removed."
+    }
+  ],
+  "authorTestsRead": [
+    "tests/meta-foundation-exact-json-byte-parser.test.mjs",
+    "tests/meta-foundation-immutable-git-batch.test.mjs",
+    "tests/archive-main-merge-meta.test.mjs exact changed-current canonical/master negative additions"
+  ],
+  "testsExecutedByReviewer": 0,
+  "cloneOrCensusExecutedByReviewer": 0,
+  "productionWritesByReviewer": 0,
+  "authorityChanges": 0,
+  "profileRef": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-geometry-runtime-perf/.tmp/geometry-cache-profile.json",
+    "sha256": "4d9bfea74b7e7fd665d17d01720c356c909d93c0fdbf118c307b1959c952468a",
+    "elapsedMs": 297970.52612899995
+  },
+  "profileObservedCause": {
+    "auditCcAssetShowCalls": 4026,
+    "auditCcAssetShowSecondsApprox": 141.916,
+    "recoveryHydrateShowCalls": 361,
+    "interpretation": "Observed caller stacks establish repeated immutable asset reads inside loadAuditCcAppend as the dominant show cost of this profiled attempt. This is not a completed performance pass."
+  },
+  "remaining": [
+    "Author official same-timeout runtime result and targeted validation must complete."
+  ],
+  "finalCodeCommit": "dfae300495deb62c951beca0ce3667de06bd07b9",
+  "finalCodeTree": "edbaaea9f553048df6f17d835eae1152fe08a886",
+  "finalProductionByteIdentityVerified": true
+}

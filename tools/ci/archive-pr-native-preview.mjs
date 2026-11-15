@@ -24,6 +24,7 @@ export const NATIVE_BASIC_HOLD_SCHEMA = 'archive-basic-native-source-hold-preser
 export const NATIVE_BASIC_PARENT_SCHEMA = 'archive-reviewed-native-basic-parent-v1';
 const BASIC_REBIND_SCHEMA = 'archive-basic-scope-rebind-request-v1';
 const PARENT_CORRECTION_SCHEMA = 'archive-basic-parent-correction-request-v1';
+export const APPROVED_RENDERER_PRESERVATION_SCHEMA = 'archive-native-approved-renderer-preservation-v1';
 export const NATIVE_PREVIEW_HELPER = 'tools/ci/archive-pr-native-preview.mjs';
 const INBOX = '.archive-meta-register/inbox/';
 const REGISTRAR = 'archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs';
@@ -35,6 +36,8 @@ const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const eq = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 const fail = reason => { throw Error(`PR_NATIVE_PREVIEW:${reason}`); };
 const sorted = values => [...new Set(values)].sort();
+
+import { AUTHORITY_CORRECTION_MODE, isNativeAuthorityCorrection, authorityHoldSealPath } from '../../archive/tools/meta-foundation/native-authority-correction.mjs';
 
 export function nativeCommand(program, args, root) {
   const r = spawnSync(program, args, { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
@@ -130,6 +133,25 @@ export function basicPreservationDescriptor(request) {
       || !/^[a-f0-9]{64}$/.test(row.sourceFingerprint || '') || !/^[a-f0-9]{64}$/.test(row.contentFingerprint || ''))
       || new Set(bindings.map(r => r.questionUid)).size !== bindings.length) fail('BASIC_PRESERVATION_BINDINGS');
   return { schemaVersion, bindings, ...(schemaVersion === NATIVE_BASIC_PARENT_SCHEMA ? { newBasicParent: true } : {}) };
+}
+
+// This descriptor selects a preservation lane; the official registrar still
+// replays the entire immutable FULL ancestor and authenticates every renderer.
+export function approvedRendererPreservationDescriptor(request) {
+  const spec=request.approval?.rendererPreservation;
+  if(spec===undefined)return undefined;
+  const empty=value=>value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).length===0;
+  const items=request.items;
+  if(request.schemaVersion!==NATIVE_REQUEST_SCHEMA||spec?.schemaVersion!==APPROVED_RENDERER_PRESERVATION_SCHEMA||
+    request.scope!=='PARTIAL_UIDS'||request.approval.type!=='FINAL_QA'||request.approval.metadataReviewed!==true||
+    !String(request.approval.approvedBy||'').trim()||request.approval.sourceRebind!==undefined||
+    request.approval.metaPipelineAudit!==undefined||request.registrationMode!==undefined||
+    request.registryChanges!==undefined&&(!Array.isArray(request.registryChanges)||request.registryChanges.length)||
+    !/^original\/middle\/m1\/2(?:mid|final)\/[^/]+\.js$/.test(request.sourceArchiveFile||'')||
+    !Array.isArray(items)||!items.length||items.some(item=>!empty(item.before)||!empty(item.after)||item.sourceReview!==undefined||
+      !['UNCHANGED_WHOLE_QUESTION_AND_ASSETS','INDEPENDENTLY_REVIEWED_IMAGE_CONTINUITY'].includes(item.preservationMode))||
+    !items.some(item=>item.preservationMode==='INDEPENDENTLY_REVIEWED_IMAGE_CONTINUITY'))fail('RENDERER_PRESERVATION_SCOPE');
+  return {schemaVersion:APPROVED_RENDERER_PRESERVATION_SCHEMA,selectedCount:items.length};
 }
 
 // Preserve the normal request order except where one exact audit-preservation
@@ -607,6 +629,66 @@ export function selectPendingNativeRequests({ root, headSha }) {
   return selectFixedNativeRequests({ root, headSha, files: pendingNativeRequestPaths({ root, headSha }), rejectUnsupported: true });
 }
 
+// Preserving an issued native approval replays its complete ancestor receipt.
+// Include that receipt's explicit SHA-bound approval inputs in the same fixed
+// manifest, so the independent shadow receives the documents too. This stages
+// inputs only; the official registrar still authenticates every approval.
+function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, historicalAuditReceipt } = {}) {
+  const refs = new Map(), active = new Set();
+  const visit = item => {
+    if (!/^[a-f0-9]{64}$/.test(item?.sha256 || '')) fail('EVIDENCE_SHA');
+    safe(root, item.path);
+    if (active.has(item.path)) fail(`EVIDENCE_CYCLE:${item.path}`);
+    const known = refs.get(item.path);
+    if (known) {
+      if (known.sha256 !== item.sha256) fail(`EVIDENCE_DRIFT:${item.path}`);
+      return;
+    }
+    const ref = fileRef(root, item.path);
+    if (ref.sha256 !== item.sha256) fail(`EVIDENCE_DRIFT:${ref.path}`);
+    if (sha(gitBytes(root, `${headSha}:${ref.path}`)) !== ref.sha256) fail(`EVIDENCE_NOT_FIXED:${ref.path}`);
+    refs.set(ref.path, ref);
+    const nativeReceipt = ref.path.startsWith(RECEIPTS)
+      && !ref.path.slice(RECEIPTS.length).includes('/') && ref.path.endsWith('.json');
+    if (!nativeReceipt) return;
+    let receipt;
+    try { receipt = JSON.parse(fs.readFileSync(safe(root, ref.path), 'utf8')); }
+    catch { fail(`EVIDENCE_JSON:${ref.path}`); }
+    if (receipt?.schemaVersion !== 'archive-reviewed-exam-meta-registration-v2') return;
+    // An explicitly typed CC append authenticates this complete prior audit
+    // from priorCommit in the official registrar. Its old inbox inputs have
+    // already been consumed and must not be recreated in the current inbox.
+    // Only the exact prior receipt may use that immutable replay boundary;
+    // ordinary native receipts keep the recursive live-input staging below.
+    if (historicalAuditReceipt?.path === ref.path && historicalAuditReceipt.sha256 === ref.sha256) {
+      if (!/^[a-f0-9]{40}$/.test(historicalAuditReceipt.commit || '') ||
+          receipt.approval?.type !== 'META_PIPELINE_AUDIT')
+        fail('HISTORICAL_AUDIT_RECEIPT_NOT_FIXED');
+      let historical;
+      try { historical = gitBytes(root, `${historicalAuditReceipt.commit}:${ref.path}`); }
+      catch { fail('HISTORICAL_AUDIT_RECEIPT_NOT_FIXED'); }
+      if (sha(historical) !== ref.sha256) fail('HISTORICAL_AUDIT_RECEIPT_NOT_FIXED');
+      return;
+    }
+    const nestedRefs = receipt.approval?.evidenceRefs;
+    // An authority withdrawal binds its unsupported original receipt as the
+    // object being corrected, not as proof of a reusable native approval.
+    // Only that exact path/SHA may terminate without approval evidence. If
+    // evidence is present, retain every ordinary recursive validation below.
+    const withdrawnOriginal = withdrawnReceiptRef?.path === ref.path && withdrawnReceiptRef.sha256 === ref.sha256;
+    if (withdrawnOriginal && (nestedRefs === undefined || Array.isArray(nestedRefs) && !nestedRefs.length)) return;
+    if (!Array.isArray(nestedRefs) || !nestedRefs.length) fail('EVIDENCE_REQUIRED');
+    active.add(ref.path);
+    for (const nested of nestedRefs) visit(nested);
+    active.delete(ref.path);
+  };
+  for (const list of lists) {
+    if (!Array.isArray(list) || !list.length) fail('EVIDENCE_REQUIRED');
+    for (const item of list) visit(item);
+  }
+  return [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en'));
+}
+
 function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, inherited = new Map(), inheritedBindingProviders = new Map(), inheritedReassessments = new Map() }) {
   const requests = [];
   for (const file of files) {
@@ -619,7 +701,9 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       continue;
     }
     const correction = request.schemaVersion === PARENT_CORRECTION_SCHEMA;
+    const authorityCorrection = isNativeAuthorityCorrection(request);
     const basicPreservation = basicPreservationDescriptor(request);
+    const rendererPreservation = approvedRendererPreservationDescriptor(request);
     if (!correction && !basicPreservation && request.schemaVersion !== NATIVE_REQUEST_SCHEMA) {
       // An unhandled main inbox must not be reported as a coherent projection.
       // PRs retain their existing ownership boundary for unrelated schemas.
@@ -637,7 +721,10 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
           (isExplicitSourceSubsetRebind(request.approval.sourceRebind) || isOriginalFinalQaRendererPreservation(request.approval.sourceRebind) || isExplicitIssuedSourceBindingRecoveryRequest(request)) && partialFinalQaPreservation(request))))) fail('PRESERVATION_SCOPE');
     const partial = !correction && request.scope === 'PARTIAL_UIDS';
     if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');
-    if (request.registrationMode !== undefined && (correction || !partial || request.registrationMode !== 'IDENTITY_FINGERPRINT_ONLY')) fail('REGISTRATION_MODE');
+    if (request.registrationMode !== undefined && (correction || !partial ||
+        !['IDENTITY_FINGERPRINT_ONLY', AUTHORITY_CORRECTION_MODE].includes(request.registrationMode))) fail('REGISTRATION_MODE');
+    if (authorityCorrection && (request.approval?.type !== 'AUTHORITY_CORRECTION' || request.approval.metadataReviewed !== false ||
+        request.registryChanges?.length || request.approval.sourceRebind)) fail('AUTHORITY_WITHDRAWAL_SCOPE');
     if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(request.requestId || '')) fail('REQUEST_ID');
     if (!Number.isSafeInteger(request.expectedQuestionCount) || request.expectedQuestionCount < 1) fail('QUESTION_COUNT');
     if (!Array.isArray(request.items) || !request.items.length || request.items.length > request.expectedQuestionCount
@@ -648,19 +735,12 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
         || new Set(selectedItems.map(i => i.questionUid)).size !== selectedItems.length
         || new Set(selectedItems.map(i => i.sourceOrdinal)).size !== selectedItems.length) fail('SELECTED_UID_SCOPE');
     selectedItems.sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
-    const refs = new Map();
-    for (const list of [request.approval?.evidenceRefs, ...(request.items || []).map(i => i.evidenceRefs),
+    const evidence = fixedNativeEvidence(root, headSha, [request.approval?.evidenceRefs, ...(request.items || []).map(i => i.evidenceRefs),
       ...(request.registryChanges || []).map(i => i.evidenceRefs),
-      ...(correction ? [[request.difficultyEvidence]] : [])]) {
-      if (!Array.isArray(list) || !list.length) fail('EVIDENCE_REQUIRED');
-      for (const item of list) {
-        if (!/^[a-f0-9]{64}$/.test(item.sha256 || '')) fail('EVIDENCE_SHA');
-        const ref = fileRef(root, item.path);
-        if (ref.sha256 !== item.sha256 || refs.has(ref.path) && !eq(refs.get(ref.path), ref)) fail(`EVIDENCE_DRIFT:${ref.path}`);
-        if (sha(gitBytes(root, `${headSha}:${ref.path}`)) !== ref.sha256) fail(`EVIDENCE_NOT_FIXED:${ref.path}`);
-        refs.set(ref.path, ref);
-      }
-    }
+      ...(correction ? [[request.difficultyEvidence]] : [])],
+      { withdrawnReceiptRef: authorityCorrection ? request.authorityCorrection?.originalReceiptRef : undefined,
+        historicalAuditReceipt: auditCcAppend ? { ...request.approval.sourceRebind.priorReceiptRef,
+          commit: request.approval.sourceRebind.priorCommit } : undefined });
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
     const source = fileRef(root, sourcePath), blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
     if (blobSha1 !== request.expectedSourceBlobSha1 || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
@@ -681,10 +761,11 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(sourceRebind ? { sourceRebind } : {}),
       ...(registryDependency ? { registryDependency } : {}),
       ...(definitionDependency ? { definitionDependency } : {}),
-      ...(basicPreservation ? { basicPreservation, kind: basicPreservation.newBasicParent ? 'basic-parent-registration' : 'basic-approval-preservation' }
+      ...(rendererPreservation ? { rendererPreservation } : {}),
+      ...(authorityCorrection ? { kind: 'native-authority-withdrawal' } : basicPreservation ? { basicPreservation, kind: basicPreservation.newBasicParent ? 'basic-parent-registration' : 'basic-approval-preservation' }
         : correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }
-        : preservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type } : {}), source: { ...source, blobSha1 },
-      evidence: [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en')),
+        : preservation || rendererPreservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type } : {}), source: { ...source, blobSha1 },
+      evidence,
       receiptPath: `${RECEIPTS}${request.requestId}.json` });
   }
   if (new Set(requests.map(r => r.requestId)).size !== requests.length) fail('DUPLICATE_REQUEST_ID');
@@ -729,6 +810,8 @@ function resultScopeMatches(result, request) {
     if (result.scope !== request.scope || result.partialUidCount !== request.questionCount
         || result.expectedQuestionCount !== request.sourceQuestionCount) return false;
   } else if (result.scope !== undefined || result.partialUidCount !== undefined) return false;
+  if (request.kind === 'native-authority-withdrawal' &&
+      (result.newMetadataApprovals !== 0 || result.withdrawnMetadataApprovals !== request.questionCount)) return false;
   if (request.kind === 'native-approval-preservation' &&
       (result.newMetadataApprovals !== 0 || result.preservedMetadataApprovals !== request.questionCount)) return false;
   if (request.kind === 'basic-approval-preservation' &&
@@ -747,6 +830,11 @@ function planPaths(result, request) {
   const paths = sorted(result.plannedPaths);
   if (paths.length !== result.plannedPaths.length || paths.some(file => !file.startsWith('archive/data/'))) fail('OUTPUT_SCOPE');
   for (const file of paths) safe('/', file);
+  if (request.kind === 'native-authority-withdrawal' && !result.replay) {
+    const required = [METADATA, request.receiptPath, ...request.selectedItems.map(item => authorityHoldSealPath(item.questionUid))];
+    if (required.some(file => !paths.includes(file)) || paths.some(file => !required.includes(file) &&
+        !/^archive\/data\/meta-foundation\/runtime\/[a-z0-9-]+-v1\.json$/.test(file))) fail('AUTHORITY_WITHDRAWAL_OUTPUT_SCOPE');
+  }
   if (request.kind === 'difficulty5-ratings') {
     if (!eq(paths, result.replay ? [] : [METADATA])) fail('DIFFICULTY_OUTPUT_SCOPE');
   } else if (['basic-approval-preservation', 'basic-parent-registration'].includes(request.kind)) {
@@ -810,7 +898,7 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
     const result = registrar(root, request, run, ['--verify-projection']);
     const identityOnly = request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY';
     if (!resultScopeMatches(result, request) || result.replay !== true
-        || result.consumerSearchStatus !== (identityOnly ? 'IDENTITY_BINDINGS_VERIFIED'
+        || result.consumerSearchStatus !== (request.kind === 'native-authority-withdrawal' ? 'AUTHORITY_WITHDRAWAL_VERIFIED' : identityOnly ? 'IDENTITY_BINDINGS_VERIFIED'
           : request.kind === 'difficulty5-ratings' ? 'STATIC_DIFFICULTY_VALUES_VERIFIED' : 'STATIC_VALUES_VERIFIED')
         || identityOnly && (result.consumerLanes?.identityBindings !== request.questionCount
           || result.consumerLanes?.newMetadataApprovals !== 0)) fail('PROJECTION_NOT_VERIFIED');
@@ -830,6 +918,9 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
         return exams.length !== 1 || exams[0].kind !== (r.kind || 'reviewed-exam-v2')
           || r.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' && (exams[0].newMetadataApprovals !== 0
             || exams[0].approvalCreated !== false || exams[0].identityBindings !== r.questionCount)
+          || r.kind === 'native-authority-withdrawal' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
+            || exams[0].withdrawnMetadataApprovals !== r.questionCount || exams[0].authorityHolds !== r.questionCount
+            || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)
           || r.kind === 'native-approval-preservation' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
             || exams[0].preservedMetadataApprovals !== r.questionCount || exams[0].approvalType !== r.preservedApprovalType
             || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-m3s2-current-four-slot-renderer-negative-review-v1",
+  "scope": "EXISTING_FOUR_SLOT_VECTOR_CURRENT_RENDERER_NEGATIVE_ONLY",
+  "decision": "WITHHOLD_CURRENT_RENDERER",
+  "reviewer": "GPT_ROOT_META_PLAN_20261115",
+  "transportAuthor": "/root/audit_m2",
+  "reviewedAtUtc": "2026-11-15T22:10:23.350Z",
+  "heldUidCount": 1,
+  "newSemanticApprovals": 0,
+  "newDifficultyApprovals": 0,
+  "newMathQa": 0,
+  "newSlotValues": 0,
+  "sourceWrites": 0,
+  "assetWrites": 0,
+  "rows": [
+    {
+      "questionUid": "qid_v1_41da48beb49a52e512cce60877073cedbe5bb65081e7e9ecdee6eb03d04fb57d",
+      "sourceArchiveFile": "original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "ordinal": 16,
+      "sourceRef": {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/exams/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "27507fb6237748fd5349fded2a72d37ee9d5155c",
+        "sha256": "fc2bd3344cfefa91f456b715b4a21deafd033fd27be2920a758b2debd5e253a6"
+      },
+      "priorCompactRef": {
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/data/item-4slot/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.4slot.json",
+        "gitBlobSha1": "9c412ecc13eba6decb2014609542d45e6bcf7239",
+        "sha256": "5092b803f7704ca974d1102a6c43d6fdbb463d696960cfeebc6dabb2784b68ed"
+      },
+      "compactItemSha256": "b8208cc9d729e0f70d1d9d7ce5644108ec363e31266a7f73a236d33619051005",
+      "studentPayloadSha256": "5c6952f98956c40249eae06288ec5c50d6ea5bb61c5b8e48d919119b7fd8e94f",
+      "sourceFingerprint": "7e346558c575f0b55420f342bedf632f736df712be6449a6b109b79e9bf87abb",
+      "wholeQuestionSha256": "e84e69c24cd8f0f555d6f618368328fb1626380e14aa9afeb7fdd744965ea169",
+      "incorrectRenderer": {
+        "role": "solutionImage",
+        "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+        "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q16-solution.svg",
+        "gitBlobSha1": "8156c9584bbf28bf2c5c6221c4cd463bb0ace0c1",
+        "sha256": "a513a39a0be62c651448dc7ac310c61d206dd39c4e36323a00399ee7bf19d137",
+        "visuallyInspected": true
+      },
+      "currentAssets": [
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q16-problem-v3.svg",
+          "gitBlobSha1": "6bf2da58ff9e8b9e791f08d68b96ef5f33c3f8b5",
+          "sha256": "02448b6e0dae047b903ad1b3c2dd36d29104fdea9e5080fb0b801c7dd268ab98",
+          "visuallyInspected": true
+        },
+        {
+          "commit": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+          "path": "archive/assets/images/19_동산중_2학기_중간_중3_수학/q16-solution.svg",
+          "gitBlobSha1": "8156c9584bbf28bf2c5c6221c4cd463bb0ace0c1",
+          "sha256": "a513a39a0be62c651448dc7ac310c61d206dd39c4e36323a00399ee7bf19d137",
+          "visuallyInspected": true
+        }
+      ],
+      "inspection": {
+        "stemRead": true,
+        "solutionRead": true,
+        "existingFourSlotsRead": true,
+        "actualRendererRead": true,
+        "browser": "NOT_RUN"
+      },
+      "classification": "CURRENT_RENDERER_AMBIGUITY",
+      "decision": "WITHHOLD_CURRENT_RENDERER",
+      "observed": "현행 발문·기존 해설·사전 이름으로 해석한 네 칸과 이전 PNG·현 문제 SVG·현 풀이 SVG를 실제로 읽고 비교했다. 발문과 기존 해설은 전체 AE에 길이를 부여하지만 현 문제와 풀이의 길이 표기 지시선은 H가 나누는 A–H 부분을 가리킨다. 이전 PNG는 전체 A–E 치수선을 표시한다. 현 풀이의 전체 AE 색 강조만으로 부분 구간과 전체 구간의 표기 대상을 명확히 구분하기 어려워 현 렌더 연결을 보류한다. 이는 새 계산 오류 판정이나 새 정답·네 칸 값·난도 승인이 아니다. 별도의 표기 정정과 정확한 새 자산 검증 전까지 이 UID를 등록하지 않는다."
+    }
+  ]
+}

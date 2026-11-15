@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "middle-native-current-main-integration-reconciliation-v1",
+  "observedAt": "2026-11-15T21:57:15.414836+00:00",
+  "actualMain": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+  "integrationCodeHead": "88b2e7dcd50f03d61438c56b725bd2902b1f4c8e",
+  "otherOwnerWriter": {
+    "runId": 43760905246,
+    "inputSha": "6ae73180f9d7d07681dc127736ebd7f104bc99a6",
+    "persistedSha": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+    "workflowConclusion": "success",
+    "persistedReportSha256": "42d846a4c372d9426e5d0584252f3ef4e53f536c5cc9c8a9cedd8febbea24ff2",
+    "publishable": true,
+    "registrationReady": true,
+    "remainingSemanticState": "REGISTRATION_PARTIAL",
+    "appliedRequests": 4,
+    "withdrawnUidCount": 11,
+    "currentHoldStateVerifiedUidCount": 11,
+    "receipts": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-authority-hold-e012-26fc-20261115.json",
+        "sha256": "313deb7c868c2d9f2293c11d32fd164d250d8ee8618493828e748f22e4a4fd2b",
+        "withdrawnMetadataApprovals": 1
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-authority-hold-e048-26fc-20261115.json",
+        "sha256": "e3fdaaabcd9ee75f40e25969695ac53bb144797530f24508eebad1ecd4453f46",
+        "withdrawnMetadataApprovals": 7
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-authority-hold-e054-26fc-20261115.json",
+        "sha256": "05638912babff9d233b510ee1f36d34d8c71cfbe99eccbe386e549dfa8213e0a",
+        "withdrawnMetadataApprovals": 1
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-authority-hold-e061-26fc-20261115.json",
+        "sha256": "67ed0d5914d4b4db33fdfb2c9498980e308d86ef0aac093bfe303a7b4b2cc78f",
+        "withdrawnMetadataApprovals": 2
+      }
+    ]
+  },
+  "ownBatch": {
+    "requests": 28,
+    "uniqueUids": 165,
+    "newNativeUids": 25,
+    "existingPreservationUids": 58,
+    "crossConceptAppendUids": 1,
+    "issuedRecoveryUids": 81,
+    "omittedUnissuedWithdrawnUidCount": 1,
+    "mainRegistrations": 0,
+    "latestMainInboxEmpty": true,
+    "runScopePath": ".archive-meta-register/auto/run-scopes/middle-registration-20261115-phase1.json",
+    "runScopeRawSha256": "af5cc2cb6f2c7ae486f2413d4131b16015108b1fdf429347b02065beb1d0a623"
+  },
+  "currentMainHoldGuards": [
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "statement": "if(nativeAuthorityHoldState({root:nativeSource.root,current,identity,source,ordinal}))return null;"
+    },
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "statement": "const authorityHold=nativeAuthorityHoldState({root:nativeSource?.root,current,identity,source,ordinal});"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "statement": "if (nativeAuthorityHoldState({ root, current: row, identity: ids.get(uid), source, ordinal: row?.sourceOrdinal }))"
+    }
+  ],
+  "m2RendererIntegration": {
+    "independentCodeReviewSha256": "ded10376ad2cb02b1b7c1cd15f0a472171b7517c4b930fc9df3cf5775b825dad",
+    "rootTests": {
+      "passed": 79,
+      "failed": 0,
+      "skipped": 0,
+      "logSha256": "96da6b77cf11017dcd8b34dd169ea7b13de8f9efb4e7a120c0f55eef160f0fc3"
+    },
+    "code": [
+      {
+        "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+        "sha256": "654856172640629592f1e9a120884082a3f298587af469744d89a760cc8594bd"
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+        "sha256": "193cb8c21e259548f667daf45e7511f57ccdd481af1596ff4bf0eb03e80b816c"
+      }
+    ]
+  },
+  "fieldDictionaryRepair": {
+    "field": "crossConceptApprovalComponents",
+    "classification": "EVIDENCE_ONLY",
+    "path": "archive/data/meta-os/field-dictionary.json",
+    "sha256": "c926d38f101697b72dbbf61de22800d530b42cb759b8360807af7afe063ce465",
+    "existingTestsPassed": 13,
+    "failed": 0,
+    "logSha256": "dba06e3a9d0c74d24da5ec8432da143f348efb8173d4a61139bada6aa67ba43d"
+  },
+  "historicalPrCi": {
+    "runId": 43758570407,
+    "headSha": "ec367338e1aa40fb67919cb6cff8f96330ee6b1d",
+    "registrationProofSha256": "52a87fb262bdfc04cf3d996e890db82f068fadf2c4343c613e5dd43ff0648096",
+    "registrationDataProof": "PASS",
+    "nativeRequests": 29,
+    "nativeProjection": "PASS",
+    "nativeConsumer": "PASS",
+    "testFilesPassed": 353,
+    "testFilesFailed": 2,
+    "failures": [
+      "META_OS_FIELD_DICTIONARY_MISSING_CROSS_CONCEPT_APPROVAL_COMPONENTS",
+      "MIDDLE_GEOMETRY_RUNTIME_NOT_COMPLETED_WITHIN_CONFIGURED_300_SECONDS"
+    ],
+    "isCurrent165Validation": false
+  },
+  "currentGeometryDiagnostic": {
+    "code": 1,
+    "elapsedSeconds": 6.545,
+    "reason": "Current main derived outputs precede this unissued 81-UID binding recovery; first historical native verification is null. This does not reproduce the historical timeout.",
+    "isPerformancePass": false
+  },
+  "M3S1ProductionWrites": 0,
+  "ownProductionRegistration": "NOT_RUN",
+  "nextAction": "Integrate the current M3 compact evidence, measure the actual historical runtime bottleneck, and run fresh exact-input CI before merging."
+}

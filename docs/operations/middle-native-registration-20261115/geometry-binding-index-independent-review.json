@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "root-independent-performance-change-review-v1",
+  "author": "/root/audit_m3",
+  "reviewer": "GPT_ROOT_META_PLAN_20261115",
+  "commit": "dac2710d080e8687676756410a266a3300314539",
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "709da9752326854f5efd3a2ef816646ed9fff5cbfd65ef566535d76cbb5e674e"
+    },
+    {
+      "path": "archive/tools/meta-foundation/audited-cross-concept-append.mjs",
+      "sha256": "ddcd4ff9c017324a21318cbd6d3f6efb333bf9f3c8c61afca74898e49f840eec"
+    },
+    {
+      "path": "tests/archive-reviewed-exam-registration-v2.test.mjs",
+      "sha256": "fc9a39fd961a8abd0659f4318119bd8f3c802345d6b6e722e6f1ebe8b395d7fe"
+    },
+    {
+      "path": "tests/archive-audited-cc-append.test.mjs",
+      "sha256": "c9f8e6b4b0794e20b8d9e6434065b329abed90df002ee0f5d678c0617ecfc662"
+    }
+  ],
+  "blockingFindings": 0,
+  "findings": [],
+  "checks": [
+    "Existing lookup() unique ACTIVE 5-tuple binding map replaces repeated whole-array filter; original strict equality remains including null/undefined distinctions.",
+    "Outside approved UID complete definition and binding signature comparison remains before writes.",
+    "Existing exact current receipt row comparison moves before expensive CC context loading; all valid-case authority checks remain.",
+    "Synthetic order/duplicate/outside authority immutability and valid/negative CC branches inspected."
+  ],
+  "authorTests": {
+    "pass": 50,
+    "fail": 0,
+    "rootExecuted": false
+  },
+  "official300AfterChange": "RUNNING",
+  "previousOfficial300": "FAIL_TIMEOUT_WITH_RESOURCES_AVAILABLE",
+  "assertionChanges": 0,
+  "timeoutChanges": 0,
+  "approvalVerdictCaching": false,
+  "sourceAssetChanges": 0
+}

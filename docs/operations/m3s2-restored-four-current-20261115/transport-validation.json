@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "m3s2-restored-four-compact-validation-v1",
+  "status": "PASS_WITH_ONE_EXPLICIT_RENDERER_HOLD",
+  "scope": "FOUR_FULL_COMPACTS_ONLY_NOT_A_GLOBAL_CENSUS",
+  "validatedAtUtc": "2026-11-15T22:18:57.464Z",
+  "base": "b967d9fe4ded4c389416b567d4c98d8bfd9433d6",
+  "proofCommit": "03e3a1ea6e30a5ab17bf28be91498efa09be5c19",
+  "carrierCommit": "3950e61bc07bcff8c0a74ad21fe188fac4af6c67",
+  "codeRefs": [
+    {
+      "commit": "15a60863d6c2a46656a4cff35cf7e5bbc89e6f32",
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "sha256": "72489b4f0e65a02d2198c3649ccdd86ab1eb838f4cee1a61ba1db73dd6083da9"
+    },
+    {
+      "commit": "15a60863d6c2a46656a4cff35cf7e5bbc89e6f32",
+      "path": "tools/4slot/current-renderer-negative-hold.cjs",
+      "sha256": "d07958b4f2d26c538f2104c3f43767f8c9d919b1d961509380678a2f6b2a83f9"
+    }
+  ],
+  "inputManifestSha256": "72fd930135a4192debdce366f9e639a9348f2dbb4dfc8130bc8974b93bbc447e",
+  "counts": {
+    "files": 4,
+    "items": 94,
+    "registered": 93,
+    "pending": 1,
+    "withCandidates": 0,
+    "identityFingerprintHistorical": 55
+  },
+  "verification": {
+    "schemaVersion": "archive-item-4slot-runtime-v1",
+    "status": "PASS_WITH_SUPPLEMENTS",
+    "verified": 93,
+    "pending": 1,
+    "indexSha256": "3e6b11246061a79b0fe62f77397bf5a955b69130b2e5ea0dd2346ed5989b323c",
+    "sourceMutation": 0,
+    "semanticApprovalMutation": 0
+  },
+  "consumer": {
+    "verified": 93,
+    "postingsVerified": 686,
+    "heldUid": "qid_v1_41da48beb49a52e512cce60877073cedbe5bb65081e7e9ecdee6eb03d04fb57d",
+    "heldUidVisible": false
+  },
+  "pendingItems": [
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.4slot.json",
+      "ordinal": 16,
+      "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+      "questionUid": "qid_v1_41da48beb49a52e512cce60877073cedbe5bb65081e7e9ecdee6eb03d04fb57d",
+      "sourceArchiveFile": "original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.js",
+      "evidence": {
+        "commit": "3950e61bc07bcff8c0a74ad21fe188fac4af6c67",
+        "path": "docs/operations/m3s2-restored-four-current-20261115/e072-negative-hold-carrier.json",
+        "sha256": "0a8e27bdb3ef2d0613944be0df2e341e86f5950ecf8350646621de66795a5ca0"
+      },
+      "nextAction": "Keep this exact UID pending until the current AE versus AH length-callout ambiguity is separately corrected and the exact new renderer and existing four-slot continuity are explicitly verified."
+    }
+  ],
+  "replay": {
+    "byteIdentical": true,
+    "indexSha256": "3e6b11246061a79b0fe62f77397bf5a955b69130b2e5ea0dd2346ed5989b323c",
+    "secondVerification": {
+      "schemaVersion": "archive-item-4slot-runtime-v1",
+      "status": "PASS_WITH_SUPPLEMENTS",
+      "verified": 93,
+      "pending": 1,
+      "indexSha256": "3e6b11246061a79b0fe62f77397bf5a955b69130b2e5ea0dd2346ed5989b323c",
+      "sourceMutation": 0,
+      "semanticApprovalMutation": 0
+    },
+    "cacheStats": {
+      "revalidatedFiles": 0,
+      "reusedFiles": 4
+    }
+  },
+  "perFile": [
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.4slot.json",
+      "status": "SUPPLEMENT_PENDING",
+      "itemCount": 25,
+      "compactSha256": "2051cb290e98eba06933a8f2a30149aa1ef4549bd29eab25b6a5d4497690c35b"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.4slot.json",
+      "status": "REGISTERED",
+      "itemCount": 23,
+      "compactSha256": "5326fd67b3fb263730a41a43d13421561c7f179e504e1cafafd5824778cc326e"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_연향중_2학기_중간_중3_수학.4slot.json",
+      "status": "REGISTERED",
+      "itemCount": 23,
+      "compactSha256": "b71a0d530d5d87235e0db764109922900173a273d89c67237d74c184bc913287"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_이수중_2학기_중간_중3_수학.4slot.json",
+      "status": "REGISTERED",
+      "itemCount": 23,
+      "compactSha256": "1cd94527b88d63e4b977f5697d0102f127e468ebf813b97620c26673cde5a394"
+    }
+  ],
+  "originalVectorBoundaries": [
+    {
+      "examId": "E072",
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_동산중_2학기_중간_중3_수학.4slot.json",
+      "fullCount": 25,
+      "vectorsUnchanged": true,
+      "reviewedByUnchanged": true,
+      "existingEvidencePreserved": true
+    },
+    {
+      "examId": "E073",
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.4slot.json",
+      "fullCount": 23,
+      "vectorsUnchanged": true,
+      "reviewedByUnchanged": true,
+      "existingEvidencePreserved": true
+    },
+    {
+      "examId": "E074",
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_연향중_2학기_중간_중3_수학.4slot.json",
+      "fullCount": 23,
+      "vectorsUnchanged": true,
+      "reviewedByUnchanged": true,
+      "existingEvidencePreserved": true
+    },
+    {
+      "examId": "E075",
+      "path": "archive/data/item-4slot/original/middle/m3/2mid/19_이수중_2학기_중간_중3_수학.4slot.json",
+      "fullCount": 23,
+      "vectorsUnchanged": true,
+      "reviewedByUnchanged": true,
+      "existingEvidencePreserved": true
+    }
+  ],
+  "sourceRawUnchanged": 4,
+  "referencedCurrentAssetBytesUnchanged": 123,
+  "sourceMutation": 0,
+  "assetMutation": 0,
+  "slotMutation": 0,
+  "reviewedByMutation": 0,
+  "m3s1Mutation": 0,
+  "newSemanticApprovals": 0,
+  "newDifficultyApprovals": 0,
+  "newMathQa": 0,
+  "generatedRuntimeWrites": 0,
+  "mainRegistration": "NOT_RUN",
+  "pages": "NOT_RUN_FOR_THIS_PACKET"
+}

@@ -1,0 +1,966 @@
+{
+  "schemaVersion": "m1s2-latest-main-conflict-resolution-read-v1",
+  "reviewer": "/root/m1_compact_transport",
+  "createdAtUtc": "2026-11-15T23:06:53.972751+00:00",
+  "oursCommit": "fa00e79ae4fc3cafe3d6ace9dbb30c35f1276e06",
+  "incomingCommit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+  "scope": "READ_ONLY_SEVEN_CONFLICT_PATHS_AND_SELECTED_SIX_SOURCE_ASSET_INTERSECTION",
+  "sourceWrites": 0,
+  "compactWrites": 0,
+  "assetWrites": 0,
+  "freshVisualReview": false,
+  "mathApproval": 0,
+  "slotApproval": 0,
+  "builderRun": false,
+  "consumerRun": false,
+  "counts": {
+    "compactFiles": 6,
+    "preservedItems": 142,
+    "itemAdditionsWithinSix": 0,
+    "itemRemovalsWithinSix": 0,
+    "itemValueChangesWithinSix": 0,
+    "changedStudentPayloads": 25,
+    "existingIncomingRendererObservations": 26,
+    "existingSizeOnlyObservation": 1,
+    "assetDeltaRelativeToOurs": 3
+  },
+  "mainProofRef": {
+    "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+    "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/renderer-continuity26.json",
+    "sha256": "cde54a37f135c4fed0f44e8adcb507339d2c46aadef43bab84aea150fc2fa3b9",
+    "gitBlobSha1": "53001eb9a11b6d62acad8b8df6895a1b773404a1"
+  },
+  "independentProofRefs": [
+    {
+      "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+      "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c",
+      "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+      "gitBlobSha1": "448c7b2093112ca8778574063b4cf8ac68813320",
+      "bytes": 52298
+    },
+    {
+      "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/repaired-three-independent-review.json",
+      "sha256": "d46b1b42ad46fc3329e961a36a50cfe3f19151236d6c00ab63cfdedb0e85850a",
+      "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+      "gitBlobSha1": "f101701cf8a0d734e6252697f6219799b83ed2b4",
+      "bytes": 7954
+    },
+    {
+      "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/r03-v2-independent-review.json",
+      "sha256": "0de469e6bc2cd53370534df558e5ef4466e028757a8134044187a2fb6b0f3246",
+      "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+      "gitBlobSha1": "d46829e8c8a2b378d0d686b442721690c9dfa7e3",
+      "bytes": 3773
+    },
+    {
+      "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/q4-size-contract-proof.json",
+      "sha256": "a479959e9fc193955316c3da144eaacef365d25f1a5b3c1c86358af3e4d6ab0a",
+      "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+      "gitBlobSha1": "c18cca71cf3e1e2b37254fb41750d1331713d529",
+      "bytes": 1560
+    },
+    {
+      "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/asset-source-user-boundary.json",
+      "sha256": "9bb90eea455d01362cc4b9f7bc63a63ac9f59292002854e76322487f8bdcd3a5",
+      "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+      "gitBlobSha1": "4897f7a7a601e0b9494c22b45ff5c4ed5f7b4880",
+      "bytes": 3503
+    }
+  ],
+  "compactResolutions": [
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.4slot.json",
+      "stages": {
+        "1": {
+          "gitBlobSha1": "2dd7a0b7c4a3ca79d87396075b545a1d14b6c015",
+          "sha256": "e921ca36c150e9a04d0923e9554a58265a3ef67e5bbb7de6c6e19f18a6efc148",
+          "bytes": 5311
+        },
+        "2": {
+          "gitBlobSha1": "ddb39ea95a936ea0aabe67f983ea9fb9d3538534",
+          "sha256": "28d0b005fffd0b4b15667f3512b6ead466d29d703a1bcd7894bab7fd2861b19f",
+          "bytes": 5966
+        },
+        "3": {
+          "gitBlobSha1": "4655b2dbe08eaa61df1a5aed0df421dd454631bf",
+          "sha256": "15dcd796b78e63d5aa5fa1f13862d16e0ff4c85f8c2e51360a18053d90ffe616",
+          "bytes": 10183
+        }
+      },
+      "itemCount": 24,
+      "unchangedAllItemsSha256": "b5983bfc9fd7d38b419fafac0c4156d74a7fa8e75700e2863f2fc3cd21ac66d8",
+      "currentSourceGitBlobSha": "7ba426edb3313a96934a6d2a81f87b8f7b39fe6f",
+      "currentSourceSha256": "34a84f8aa5133e13cd8593131f37e1a495c1ca5abd17f4b9e2628e8be7dc0f28",
+      "reviewedPayloadOrdinals": [
+        10,
+        17,
+        22,
+        23
+      ],
+      "checks": {
+        "allThreeStageItemsEqual": true,
+        "allThreeReviewerRecordsEqual": true,
+        "oursIncomingSourceBindingEqual": true,
+        "currentSourceRawBound": true,
+        "priorCompactBound": true,
+        "fullCount": true,
+        "itemsHashBound": true,
+        "originalEvidenceHashBound": true,
+        "originalReviewerHashBound": true,
+        "changedPayloadOrdinalsBound": true,
+        "zeroNewVectorJudgments": true
+      },
+      "resolution": "TAKE_STAGE3_EXACT"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.4slot.json",
+      "stages": {
+        "1": {
+          "gitBlobSha1": "e974aed39b87c90fc5e251cdc10d083ff6b0ec81",
+          "sha256": "be787e9623c3d2635f36afef309239d1b5266eaa43dd38f38df75d5ccd4d4d45",
+          "bytes": 7677
+        },
+        "2": {
+          "gitBlobSha1": "d45850ba3307d2eea29c10550418f4041835ec92",
+          "sha256": "296d47f8f2f408fa945d6fc010e3bdc2267b49254039ffc5031526e72eeddd7d",
+          "bytes": 8332
+        },
+        "3": {
+          "gitBlobSha1": "97daae1900686987a78256d46d5d987efbb21978",
+          "sha256": "3650bf86d51620643858f6d907fa9536addb3c5f4f60fa7b22706bb41fdb3a4d",
+          "bytes": 8575
+        }
+      },
+      "itemCount": 22,
+      "unchangedAllItemsSha256": "822718eec8a036dd2957d8ab06b8312fbe387cc9b8cec9466ea5af97c8ebb369",
+      "currentSourceGitBlobSha": "e7f146729a388c4314557eca0437ace9328e602b",
+      "currentSourceSha256": "167c126120aa555b9719a4007d5aaaea3e21d9e7610da4d9b4fc082473d76469",
+      "reviewedPayloadOrdinals": [
+        2,
+        3,
+        4,
+        5,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        18,
+        22
+      ],
+      "checks": {
+        "allThreeStageItemsEqual": true,
+        "allThreeReviewerRecordsEqual": true,
+        "oursIncomingSourceBindingEqual": true,
+        "currentSourceRawBound": true,
+        "priorCompactBound": true,
+        "fullCount": true,
+        "itemsHashBound": true,
+        "originalEvidenceHashBound": true,
+        "originalReviewerHashBound": true,
+        "changedPayloadOrdinalsBound": true,
+        "zeroNewVectorJudgments": true
+      },
+      "resolution": "TAKE_STAGE3_EXACT"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.4slot.json",
+      "stages": {
+        "1": {
+          "gitBlobSha1": "97b90ee4c480e18a7c239e0eed3c4844bd58d53d",
+          "sha256": "d35a30b3f17b5f0be222499f5b1af732ba0f7aecf6988c01add6383bc7926977",
+          "bytes": 8039
+        },
+        "2": {
+          "gitBlobSha1": "25aec97843e4fcb5c66d004b6a157306b94c08c1",
+          "sha256": "53b5c8829304d099ef7215dea3fec5c09fa5342159b7bb4b1b63e2f658944dce",
+          "bytes": 8700
+        },
+        "3": {
+          "gitBlobSha1": "9577b7b4461acbfc53395919d21d0708793269a5",
+          "sha256": "0ff14ab626c02333d0f33b7aa0f15f70134f4288e4a87f4753203565313a09a0",
+          "bytes": 8961
+        }
+      },
+      "itemCount": 24,
+      "unchangedAllItemsSha256": "57f7d2b07f958cc1f4bac2745b9d351b2949adcc0f4ecc2f79b3d7763cb60de2",
+      "currentSourceGitBlobSha": "ba6316465285f754a1187b31b7e1389f4785f119",
+      "currentSourceSha256": "3b8ce8574c8a5921e5c233bab5c20b3ec8ebe15999e64a4ba9454d679e78d155",
+      "reviewedPayloadOrdinals": [
+        19
+      ],
+      "checks": {
+        "allThreeStageItemsEqual": true,
+        "allThreeReviewerRecordsEqual": true,
+        "oursIncomingSourceBindingEqual": true,
+        "currentSourceRawBound": true,
+        "priorCompactBound": true,
+        "fullCount": true,
+        "itemsHashBound": true,
+        "originalEvidenceHashBound": true,
+        "originalReviewerHashBound": true,
+        "changedPayloadOrdinalsBound": true,
+        "zeroNewVectorJudgments": true
+      },
+      "resolution": "TAKE_STAGE3_EXACT"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.4slot.json",
+      "stages": {
+        "1": {
+          "gitBlobSha1": "ee993bd48cf0519bddbf4b9255d6ad175d9942ed",
+          "sha256": "f04f8f02e13860353b6391ffe7ce7b643092f9797f541af2e108f850727e5feb",
+          "bytes": 3842
+        },
+        "2": {
+          "gitBlobSha1": "fec9c11df79f97d02ad19e3bfd2170e38606285f",
+          "sha256": "55c1b3320089cec6c1df8e99073a8a6e7d9c4dbb222ed942078441f2a36fac3c",
+          "bytes": 4497
+        },
+        "3": {
+          "gitBlobSha1": "ea27a32e1add8fd2168c0d89aa7b46a1646e869e",
+          "sha256": "8333acfa606b992b4c173354ebe891fdd7b4ad1cf8bdd5c696f401af834117f7",
+          "bytes": 8230
+        }
+      },
+      "itemCount": 24,
+      "unchangedAllItemsSha256": "78f4b7ea4f671233dd6a38185a6e4175021a4e27fc6cf627de8c5c828d9ca2f8",
+      "currentSourceGitBlobSha": "45015ef635b0aa12613fbcc88b663f1ce6896aa5",
+      "currentSourceSha256": "b2a098faf76f9f7f78bb18ad00759982ea4d82653a431c3e9557eaf7e1ef1f95",
+      "reviewedPayloadOrdinals": [
+        14
+      ],
+      "checks": {
+        "allThreeStageItemsEqual": true,
+        "allThreeReviewerRecordsEqual": true,
+        "oursIncomingSourceBindingEqual": true,
+        "currentSourceRawBound": true,
+        "priorCompactBound": true,
+        "fullCount": true,
+        "itemsHashBound": true,
+        "originalEvidenceHashBound": true,
+        "originalReviewerHashBound": true,
+        "changedPayloadOrdinalsBound": true,
+        "zeroNewVectorJudgments": true
+      },
+      "resolution": "TAKE_STAGE3_EXACT"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.4slot.json",
+      "stages": {
+        "1": {
+          "gitBlobSha1": "bbcde9bc3b80722acfb513979afcdf7cf994b0f6",
+          "sha256": "5f741aa9a2cb0f54c0a4417fe5a37323922a662b95c3e6514ad603cdf78ab470",
+          "bytes": 4744
+        },
+        "2": {
+          "gitBlobSha1": "76428699503ea44791fde62d87e0f8bdd31e85f8",
+          "sha256": "0564bc014f32b9cf1ff4e8b755d0c0af3af265498699c25bf4487096bbd239f2",
+          "bytes": 5402
+        },
+        "3": {
+          "gitBlobSha1": "c844841d79706cc613d93833214a0bcfa7a8434c",
+          "sha256": "98aa8bc510aefa048e660f83ebe5fcaa14cdbef42cb2e6c49039dd7c19a28e39",
+          "bytes": 9469
+        }
+      },
+      "itemCount": 25,
+      "unchangedAllItemsSha256": "1708fe12baf0f2e28aa216a22aa33f6d3d7874cd6015dcf36102252748902b69",
+      "currentSourceGitBlobSha": "8eaed2dd898a09894e9f1120469211db8f9e8b3f",
+      "currentSourceSha256": "687e2164a4bae8538dc7d80bee412c5201a562521cf197f3aff20b137af8cc09",
+      "reviewedPayloadOrdinals": [
+        6
+      ],
+      "checks": {
+        "allThreeStageItemsEqual": true,
+        "allThreeReviewerRecordsEqual": true,
+        "oursIncomingSourceBindingEqual": true,
+        "currentSourceRawBound": true,
+        "priorCompactBound": true,
+        "fullCount": true,
+        "itemsHashBound": true,
+        "originalEvidenceHashBound": true,
+        "originalReviewerHashBound": true,
+        "changedPayloadOrdinalsBound": true,
+        "zeroNewVectorJudgments": true
+      },
+      "resolution": "TAKE_STAGE3_EXACT"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.4slot.json",
+      "stages": {
+        "1": {
+          "gitBlobSha1": "539ca3fb7e75131db1e9295c663fa5b0abbef12b",
+          "sha256": "5dae6bb456dc52efd41751d8bc375bbe726b08ca4dcb228be338e9cceecf76c8",
+          "bytes": 8529
+        },
+        "2": {
+          "gitBlobSha1": "275c545303b72c868f6988b557de2dd9dc516d98",
+          "sha256": "7f22e236381926ebe27e589b12e88654129db65fdc8defb830337cc26b7c44f8",
+          "bytes": 9187
+        },
+        "3": {
+          "gitBlobSha1": "946e1fab90f1f2a6a6ff05fb57495af83689bb26",
+          "sha256": "a872707390a2462d33c521b58060810c6c761378615fb5f11f0c16d20ee8a3cf",
+          "bytes": 9439
+        }
+      },
+      "itemCount": 23,
+      "unchangedAllItemsSha256": "836a2bd0a3e912a1f84ecc4671e7431cb3a624e75566c47bd8b488387769d724",
+      "currentSourceGitBlobSha": "cbde723f9381c328d9b3ebffa244cc1c1c05b5d4",
+      "currentSourceSha256": "e9a5cfccb9a5ec170e2c2e0fdacd32081967eda785be31e447304962d5c6eb80",
+      "reviewedPayloadOrdinals": [
+        1,
+        14,
+        15,
+        19,
+        21,
+        23
+      ],
+      "checks": {
+        "allThreeStageItemsEqual": true,
+        "allThreeReviewerRecordsEqual": true,
+        "oursIncomingSourceBindingEqual": true,
+        "currentSourceRawBound": true,
+        "priorCompactBound": true,
+        "fullCount": true,
+        "itemsHashBound": true,
+        "originalEvidenceHashBound": true,
+        "originalReviewerHashBound": true,
+        "changedPayloadOrdinalsBound": true,
+        "zeroNewVectorJudgments": true
+      },
+      "resolution": "TAKE_STAGE3_EXACT"
+    }
+  ],
+  "assetResolution": {
+    "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q21-readable-v3.svg",
+    "stages": {
+      "1": {
+        "gitBlobSha1": "52b5b33d2a551db21e3010f14a124e152b5dee3d",
+        "sha256": "024712754861bb7faa1a3e6f7b7f80402b25fb48dbdb235653394cfbd72aac9c",
+        "bytes": 26868
+      },
+      "2": {
+        "gitBlobSha1": "f4c9f75174bbd256cbf0e47b4cd8baa39de3ce0d",
+        "sha256": "f7bf73a256a8abeb3c9094fe48d5549f320576ba44ba73a94bf13a1bc62dd492",
+        "bytes": 26868
+      },
+      "3": {
+        "gitBlobSha1": "41a2a83084528d370eacbbecb64f8d6bb5145b27",
+        "sha256": "8b0d13ef731b1456ae453168ccbf0078b1847a9a5a6f025152d56b0d1dd828b7",
+        "bytes": 26858
+      }
+    },
+    "resolution": "TAKE_STAGE3_EXACT",
+    "exactExistingWitnessCase": "R25",
+    "structuralObservation": "Both revisions retain the corrected arc owner and same arc geometry. Incoming uses reversed point order and adds leader/label placement changes. Text content is unchanged. No new rendered-image or mathematical decision is asserted."
+  },
+  "selectedReferencedAssetDeltas": [
+    {
+      "sourceArchiveFile": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+      "sourceOrdinal": 22,
+      "ordinal": 22,
+      "path": "archive/assets/images/24_왕운중_2학기_기말_중1_수학/q22-quality-v4.svg",
+      "oursSHA": "0b00f0ff1bfedf5c17a5329957435831383a65e09dcff99994c021a2fe8523db",
+      "incomingSHA": "d7159109e03f1f64c31d4e02d271558d6a512807b4898d0a5ab48e0832c5b61b"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 15,
+      "ordinal": 15,
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q15-readable-v3.svg",
+      "oursSHA": "ca433da11766de347c0a22161dcbb44138b6d7ab0abaefdcabc0a9c26e4f8369",
+      "incomingSHA": "74d5cb473ae967343b542b581b54a0cb49a0d7271305051f366fa153e6a10116"
+    },
+    {
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 21,
+      "ordinal": 21,
+      "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q21-readable-v3.svg",
+      "oursSHA": "f7bf73a256a8abeb3c9094fe48d5549f320576ba44ba73a94bf13a1bc62dd492",
+      "incomingSHA": "8b0d13ef731b1456ae453168ccbf0078b1847a9a5a6f025152d56b0d1dd828b7"
+    }
+  ],
+  "existingWitnessBindings": [
+    {
+      "case": "R01",
+      "questionUid": "qid_v1_59ff6faafe76a9119b6d204f42d8cd7c7986b063138d367ec3a27544b6692c23",
+      "sourceArchiveFile": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+      "sourceOrdinal": 10,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/24_왕운중_2학기_기말_중1_수학/q10-readable-v3.svg",
+        "gitBlobSha1": "345a922714db7404bdefc5aefd0dde5efe89e9f2",
+        "sha256": "f3aff5d7509541698e2db431d9a26f9d5772dbdc6e48776064c6f0e1c7b5d982"
+      },
+      "currentStudentPayloadSha256": "8ee1f83bed9899f89b43edfe48a24ff5ebf31f9c443a1a67e40e2a957439bbe4",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R02",
+      "questionUid": "qid_v1_dbfbdf2800303f350ea162510f61b7c91188e97f5dd7c181fa3f95fc9bf14134",
+      "sourceArchiveFile": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+      "sourceOrdinal": 17,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/24_왕운중_2학기_기말_중1_수학/q17-student-replacement-label-layout-v2.svg",
+        "gitBlobSha1": "3e9b0bca4f15735fdf9aa0a1cfc7ac2aa3a1a719",
+        "sha256": "ec66edd17c3b7db27576a93b70eccf3bfeabf87c7daa8be8f6eb2974a456c121"
+      },
+      "currentStudentPayloadSha256": "e43d39a917e9458e2d131476d363d2ecaaf60b296bfe40d95c9cddc9cb70a307",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R03",
+      "questionUid": "qid_v1_01d555a93b8196f2408df534415082df5cc58a82058bc219f8a12565728ff9b0",
+      "sourceArchiveFile": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+      "sourceOrdinal": 22,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/24_왕운중_2학기_기말_중1_수학/q22-quality-v4.svg",
+        "gitBlobSha1": "7d3c9ae32c900b0875be02fc5706292980271a4e",
+        "sha256": "d7159109e03f1f64c31d4e02d271558d6a512807b4898d0a5ab48e0832c5b61b"
+      },
+      "currentStudentPayloadSha256": "77678106be7174749a36451d0a0daee90cf6d41d22c01d153ebcc350527a08e5",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/r03-v2-independent-review.json",
+        "sha256": "0de469e6bc2cd53370534df558e5ef4466e028757a8134044187a2fb6b0f3246"
+      },
+      "existingDecision": "ACCEPT_SOURCE_GROUNDED_REPAIRED_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R04",
+      "questionUid": "qid_v1_3c95ffbe52da26793d611831f28128ef3b00182a14d8bf29d52c0da8fa426b15",
+      "sourceArchiveFile": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+      "sourceOrdinal": 23,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/24_왕운중_2학기_기말_중1_수학/s03-student-display-v2.svg",
+        "gitBlobSha1": "0989b658085e260395a729b344f20e42d20e0e90",
+        "sha256": "071f907e0443d97105f25b91a71a3f33cadaea93dd5e318e4bfb9f7ed751415c"
+      },
+      "currentStudentPayloadSha256": "f8f832b20dd572d3a0b5c5e7e39a4d55ac041e4031869f011f39d9ec8985842d",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R05",
+      "questionUid": "qid_v1_f320a049a39dbb6a68f435d4db4f1a3db457d09416a75cb0d7acbf8b770a3b42",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 2,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_신흥중_2학기_기말_중1_기출/q02-readable-v3.svg",
+        "gitBlobSha1": "a31503d5321ff429c6a3097e89e02c5584fa00f7",
+        "sha256": "d78f15b4e687f1b879aa3268dd447639df59fa1d39f63431cab74b674cd0316d"
+      },
+      "currentStudentPayloadSha256": "d01fb4e63ca4e50aef14e1f245792147368fa8e9849b562ff1f8d6e4109f1cb9",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R06",
+      "questionUid": "qid_v1_227d071b1b30bcc85a761c668eb3ab85463c613375b74650d9dffd6f9fce710f",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 3,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_신흥중_2학기_기말_중1_기출/q03-engine-upgrade.svg",
+        "gitBlobSha1": "220bc4613624bc2039776be803b7bc8ac87719d7",
+        "sha256": "1c32a1d3c0b2405eee7cd107def59777da435b937eed3c6ce183e9aaafe18e33"
+      },
+      "currentStudentPayloadSha256": "3cd85ce6799c77d93646fb4e3f349f8339c3552d3cdb08208b1f732c9e1225fa",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R07",
+      "questionUid": "qid_v1_4a61da1de2a708a641ed0e404b9c0e25fd1a5089a5ee2584f4012ffdd4ffd830",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 4,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_신흥중_2학기_기말_중1_기출/q04-audit-rework.svg",
+        "gitBlobSha1": "ee4696ba63838a794e8a7fc4d427223252d69bf3",
+        "sha256": "13a38c4ec1b02083112a6b8b0dd3e3a0ab85ab85e002e1f93119599a6ad0583f"
+      },
+      "currentStudentPayloadSha256": "f200894ce00d58f5399be088b530bbc09b1b544473b2dd65eeb4842e1f7f9f74",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R08",
+      "questionUid": "qid_v1_c9b805de1d91a8937841d64ee255a1aa56feb0a9cb3ab2fa41903a320c20f6bb",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 5,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_신흥중_2학기_기말_중1_기출/q05-readable-v3.svg",
+        "gitBlobSha1": "a9f9cc00ec0489ffaf3488d8774c0e1c81c6de40",
+        "sha256": "018864c88204355e2b72b52ef91e1111a05f7dc752af67991213950edc155426"
+      },
+      "currentStudentPayloadSha256": "cce0dad2acedab3aef6b82436f223d47d17bdfd33b163a95a67adc8902dc6a45",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R09",
+      "questionUid": "qid_v1_7f1508985f954b4684a38af885210a4b082c190b28a7b5b73878397d5254b447",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 9,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_신흥중_2학기_기말_중1_기출/q09-quality-v4.svg",
+        "gitBlobSha1": "af79b8dce76ce3d29d1292eaf59e709925666f43",
+        "sha256": "0a307fbc8c2a336dc9894c41256642308e5106bccae3e880c0f4d22712deee99"
+      },
+      "currentStudentPayloadSha256": "0dea1dd09529196c34d88bb17b0566948333e2249ce0a1e8667c2822804e83c0",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R10",
+      "questionUid": "qid_v1_6e809002bdaa470c9a6f1ad1bb29c2c47d0eb5b1104ca57be910e2612d228acd",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 10,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_신흥중_2학기_기말_중1_기출/q10-readable-v3.svg",
+        "gitBlobSha1": "5a80429a948df92ed5bb423b3f7d5f1654b515e2",
+        "sha256": "895aaa51d9520c5f251fe13389034cac65929c82e0514cdcd0895275480b128b"
+      },
+      "currentStudentPayloadSha256": "0a1f7ba7e52cd0d1ce69f7e9d71943270c4cfcf51208e465766fe8ace45f6d0a",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R11",
+      "questionUid": "qid_v1_9b255183b0666a2ebf8a67be6395f0b35f2370e0a5a5f71c830d5b30c6281704",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 11,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_신흥중_2학기_기말_중1_기출/q11-quality-v4.svg",
+        "gitBlobSha1": "57c75b57e7d08f5af4fc2b2b2d48b7ea1ae1a0f6",
+        "sha256": "3ddef88eb792087e788c208db5138e8ff79dc56362c15b0ac8abe3a918931aff"
+      },
+      "currentStudentPayloadSha256": "35afbd881dea1c04d0ea3cd5746f3ccb80566e5ffb0e01bcf4d8e9a7064f98cf",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R12",
+      "questionUid": "qid_v1_020d35b211bcbee2cb7b69376158544ba3aa9e7f12c9f46824bcc880d82a4674",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 12,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_신흥중_2학기_기말_중1_기출/q12-readable-v3.svg",
+        "gitBlobSha1": "3c6e88b15ebaad48a6b7d2b5082fd04c3a7aac93",
+        "sha256": "97be7aae81d559846cda5389a44cd7cc74c57888052ca2968146cc7888db7101"
+      },
+      "currentStudentPayloadSha256": "9b5dad689eb2f93c290eeba6e0ef47ed072367f324f37e3237efa28ae3ed6ecc",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R13",
+      "questionUid": "qid_v1_02cb6ef122ea2b913df6fc267367d703d7ee28851b4e1a05a44144303998ae1e",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 13,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_신흥중_2학기_기말_중1_기출/q13-readable-v3.svg",
+        "gitBlobSha1": "acf3acd1f1cd6b972987f11595fca69a1bb1e954",
+        "sha256": "439aa96ad49427b1c0ff36f6511e85d71f66a5189c74a8dabff8cf6aefe45971"
+      },
+      "currentStudentPayloadSha256": "82b151a9ac53e2b02c75fa8adc4e85cc8fafc09faa6f3ec807a95cda34e4f724",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R14",
+      "questionUid": "qid_v1_0c87dd836064c920dd0191832491bd97efa9af234df569f28fe1de26c1e2d249",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 15,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_신흥중_2학기_기말_중1_기출/q15-figure-only.svg",
+        "gitBlobSha1": "bbcacdbe3dc300bccd1e8d022c3df567d5403584",
+        "sha256": "6ea27ebaa9b460267c3758d55676cf1968565c214d45eac99ff702485a9e33cf"
+      },
+      "currentStudentPayloadSha256": "9023b9246590414d00a20b1d13ac693c72b0790b0bd0b17c59156adf98748c22",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R15",
+      "questionUid": "qid_v1_406d02dc7bc87e604c2f0f355d8e90db9c0627ffd4efc67592e9992ce21002ce",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 18,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_신흥중_2학기_기말_중1_기출/q18-readable-v3.svg",
+        "gitBlobSha1": "9f72c28cd9113b58d69e4fc72320462d24e3e5e4",
+        "sha256": "06c988ddf4facb85d0c3fb1fa6badb9bbe20a9d0be53b43be1deef736e275db0"
+      },
+      "currentStudentPayloadSha256": "f21bf18f6beaf8405eb98d2b1a2740c1b22b296af5e122fbcb65c3126c2ca0bb",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R16",
+      "questionUid": "qid_v1_16e41519e0db01be6d1e8b456f156330e91028771ac2f1148e5f07a80f8bad24",
+      "sourceArchiveFile": "original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+      "sourceOrdinal": 22,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_신흥중_2학기_기말_중1_기출/q22-figure-only.svg",
+        "gitBlobSha1": "c2161fead1cae559c41af99f25a4e75b3973ea6b",
+        "sha256": "73549bbd77496665a57069eb47e0d25ffa4dd0209495b69349779f07bdeb923e"
+      },
+      "currentStudentPayloadSha256": "4a8b91ca3c761c0206765ed368b704134068a154a609232923669eeccf8d0476",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R17",
+      "questionUid": "qid_v1_0cd9ae0269d77bfb381dc0736954a12eec26a1854b5e624a60f06fbef790e633",
+      "sourceArchiveFile": "original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 19,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/24_매산중_2학기_중간_중1_기출/q19-quality-v4.svg",
+        "gitBlobSha1": "0288a74a322b44815f2cf8614418b723e757305d",
+        "sha256": "413e67ec698c749aec3cde69513adeae0c6dae85894a48a282a595ee8e39e463"
+      },
+      "currentStudentPayloadSha256": "281f4d4708f4ed4bfda27cf14c012e85b315b8192a7b0c28afe8b1f777983e97",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R18",
+      "questionUid": "qid_v1_2cfa18c1f4ffb7ed65d11c0c643a0bf8aaa2da3ea2bd2097fae7f7167ad5cda3",
+      "sourceArchiveFile": "original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js",
+      "sourceOrdinal": 14,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_왕의중_2학기_중간_중1_수학/q14-quality-v4.svg",
+        "gitBlobSha1": "5a91a0262fdc6f98673f8e3b845f4d7461f04487",
+        "sha256": "10cc4f3672a8159f61de4c2dea403fd649e50dd99dfe161a0211cae0b54b9906"
+      },
+      "currentStudentPayloadSha256": "a6bbf9af068407734f3680cdefdc047a21f74b02b6ad746649d68e1598b81690",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R19",
+      "questionUid": "qid_v1_1ea07d7bc401d3f7661720a4cf03a386d49fccc7cb071ac311f7ba449ee71910",
+      "sourceArchiveFile": "original/middle/m1/2mid/25_풍덕중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 6,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/25_풍덕중_2학기_중간_중1_기출/q06-readable-v3.svg",
+        "gitBlobSha1": "4bfe1cce834899f2840d994af182b1a5544a653d",
+        "sha256": "68d0944b1772982245d3a6b34ee3fd80144e17dcd3433279902c5a554bf1cee0"
+      },
+      "currentStudentPayloadSha256": "729169c63fc40fbf48ce1f381bd6fd668438ae1de41b36dfdfb8990e3265a17b",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R20",
+      "questionUid": "qid_v1_04eec2165bbc177b619ab9ca935330f6fd60a9906437f50a36f56aa18de7c95a",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 1,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q01-audit-rework.svg",
+        "gitBlobSha1": "4cf1592a64b28577722a8b53b0ce9b34c3194b91",
+        "sha256": "6bc69afb6ba7c4cbe03df16d062b3261f92ef60ded48bb146a5204bdb023ea8e"
+      },
+      "currentStudentPayloadSha256": "4f8fa27190b068289c4901c4c5a29d4dd58b8ebfbe12b44cb0da634c448a7cfd",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R21",
+      "questionUid": "qid_v1_347acf016e50757f50f493be205035c52686071e612c8f9ee44312d8f7e5e785",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 4,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q004_question-v2.svg",
+        "gitBlobSha1": "1a4c53906cc5a4c04d3c56b1eb6738176cbbf364",
+        "sha256": "410aa9e3fd4a3bcc5685e7c1dcd11767cf4a8fc3ad6b9a082aaf0b1a7e79b56c"
+      },
+      "currentStudentPayloadSha256": "0fa3aac6fb208c27501ea9ac6a9efb3563008aa03dbffba7eb4538f77877055a",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_SIZE_EFFECT_ONLY",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R22",
+      "questionUid": "qid_v1_976adc004f55751504e0f92aafd1b6ec3f45c9e42af13b0a2b49c2a9f080ca0c",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 14,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q14-native-readable.svg",
+        "gitBlobSha1": "e2ca83d9bfec412b109270cb86eaa9e5f06bfd37",
+        "sha256": "3e62433dabeba9d5a2b1bccac0ad4602ac411188038a7259c808ba428dd388a3"
+      },
+      "currentStudentPayloadSha256": "59f16555e234cb78b68c85b1a03c49002c4a147683772b229de346bf55091c2d",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R23",
+      "questionUid": "qid_v1_da359e1af270778eaba94a76f15ea85954775c38c2df5aee986dc8ca22deba1f",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 15,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q15-readable-v3.svg",
+        "gitBlobSha1": "18e56e1919233564b0d12fa2c1df4d914fa766da",
+        "sha256": "74d5cb473ae967343b542b581b54a0cb49a0d7271305051f366fa153e6a10116"
+      },
+      "currentStudentPayloadSha256": "8b642537cbede8f762a502b7b477564d46e80e990fd37e1e6465fff9eb60a361",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/repaired-three-independent-review.json",
+        "sha256": "d46b1b42ad46fc3329e961a36a50cfe3f19151236d6c00ab63cfdedb0e85850a"
+      },
+      "existingDecision": "ACCEPT_REPAIRED_CURRENT_RENDERER_CONTINUITY",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R24",
+      "questionUid": "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 19,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q019_stemleaf-readable-v2.svg",
+        "gitBlobSha1": "1a1f1598fe311a7bd99b3b27937cf0cc928707fc",
+        "sha256": "2d5d99cc23b85e5f18c973251e107ce80518f629a5f96bba0301957307aac798"
+      },
+      "currentStudentPayloadSha256": "3da823423509153533dc7186741f3ba2a245a0275513ed15ee25c4f07e0fb927",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/repaired-three-independent-review.json",
+        "sha256": "d46b1b42ad46fc3329e961a36a50cfe3f19151236d6c00ab63cfdedb0e85850a"
+      },
+      "existingDecision": "ACCEPT_REPAIRED_CURRENT_RENDERER_CONTINUITY",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R25",
+      "questionUid": "qid_v1_9fdaf44f2d5156120df8007115c8393404e618be363a73a3c372357ab0a185fa",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 21,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q21-readable-v3.svg",
+        "gitBlobSha1": "41a2a83084528d370eacbbecb64f8d6bb5145b27",
+        "sha256": "8b0d13ef731b1456ae453168ccbf0078b1847a9a5a6f025152d56b0d1dd828b7"
+      },
+      "currentStudentPayloadSha256": "72cd1c332e1c49182ec18c795c87b3c60ea5ab536aeb4124975ef8192936276b",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/repaired-three-independent-review.json",
+        "sha256": "d46b1b42ad46fc3329e961a36a50cfe3f19151236d6c00ab63cfdedb0e85850a"
+      },
+      "existingDecision": "ACCEPT_REPAIRED_CURRENT_RENDERER_CONTINUITY",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    },
+    {
+      "case": "R26",
+      "questionUid": "qid_v1_48d2321fd14aa0bb4e7cca39b2c8699e2dd65c8fd5b21a533f635435552ec03a",
+      "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 23,
+      "currentAsset": {
+        "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+        "path": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q23-equilateral-v3.svg",
+        "gitBlobSha1": "ef4062af8861086f548ff7a59a4ba7207c5d1455",
+        "sha256": "423c9fdd38a01b63826537e49395375228fa21641ad3bf1c01bc42dfca87bd18"
+      },
+      "currentStudentPayloadSha256": "bd100cd96584b7099c863fb82eb693f0a11835ba31c0ef58e6ede7d5dbc28aa0",
+      "independentEvidence": {
+        "path": "docs/operations/m1s2-renderer-four-slot-continuity-26fc-20261115/initial-independent-current-review26.json",
+        "sha256": "5a11a9f346c1c58e6a8be9b5a4a921d909826ad626d123492a03e38da6a5268c"
+      },
+      "existingDecision": "ACCEPT_NARROW_CURRENT_RENDERER",
+      "canonicalUidExact": true,
+      "currentAssetBytesExact": true,
+      "currentPayloadExact": true,
+      "newVisualObservationByThisReviewer": false
+    }
+  ],
+  "nativeApprovalBoundary": {
+    "currentNative16CandidateUnchanged": true,
+    "assetReferencesIntoNative16": 0,
+    "nativeRenderer7SeparateAdapter": "NOT_IN_THIS_FOUR_SLOT_PACKET"
+  },
+  "remainingRootAction": "Resolve with exact incoming six compacts and q21 asset; preserve other incoming additions. Keep original scoped proof bytes historical. Verify actual main native writer receipt before dropping superseded W23 requests; this four-slot proof explicitly does not approve native renderer7."
+}

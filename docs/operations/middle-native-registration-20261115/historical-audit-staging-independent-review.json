@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "independent-code-read-v1",
+  "reviewer": "audit_m3",
+  "commit": "311e792503b5c4421705018a28e11ffb8efe89dd",
+  "status": "PASS_SCOPED_READ",
+  "blockingFindings": [],
+  "files": [
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "sha256": "0eb4dd0399b0f71235d425f2b31469a526ab6ad62ee0a458f52c3d5bd7a6b58e"
+    },
+    {
+      "path": "tests/archive-audited-cc-append.test.mjs",
+      "sha256": "623e366b85b07e75de1e48a660e3bbc8736439dc60174d0d3d81c83991e7ed20"
+    },
+    {
+      "path": "docs/operations/audit-finalized-cc-append-v1.md",
+      "sha256": "c963dc413151db1f560f8d6e5979608cb51620d57a8d3993e31bc3f0529eacac"
+    }
+  ],
+  "scope": [
+    "Exact typed audit CC append only; live and HEAD receipt SHA checks precede historical-boundary comparison",
+    "Declared historical commit must carry identical prior receipt bytes",
+    "No recursive waiver for ordinary or unrelated current native evidence",
+    "Full historical audit/D5 replay, whole-cohort and current native/asset authority validation remain in official registrar"
+  ],
+  "authorTests": {
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "log": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/ecb-merge/cc-historical-staging-regression.log",
+    "sha256": "e79f647e504f9553ad745ed9a91a1eb17ed6effc4a7a775627302212a744846d"
+  },
+  "independentExecution": 0,
+  "productionEdits": 0,
+  "performanceClaim": false
+}

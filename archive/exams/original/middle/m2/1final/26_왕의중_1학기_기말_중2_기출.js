@@ -600,6 +600,8 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "imageSize": "full",
+    "imageAlt": "파란 직선은 오른쪽으로 갈수록 높아진다. 세로축은 원점 아래에서, 가로축은 원점 오른쪽에서 만난다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -608,7 +610,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차방정식그래프",
@@ -626,7 +628,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "일반형을 $y=-\\dfrac abx-\\dfrac1b$로 바꾸고 실제 그래프의 기울기와 $y$절편 부호를 읽는다.\n원본 그래프는 오른쪽 위로 올라가므로 기울기 $-\\dfrac ab>0$이다. 또 $y$축과 원점 아래에서 만나므로 $-\\dfrac1b<0$, 따라서 $b>0$이다.\n$b>0$이고 $-\\dfrac ab>0$이려면 $a<0$이다.\n$a<0,b>0$이므로 정답은 ③이다.",
-    "image": "assets/images/26_왕의중_1학기_기말_중2_기출/q16.png",
+    "image": "assets/images/26_왕의중_1학기_기말_중2_기출/q16-problem-visual-v2.svg",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -640,6 +642,8 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "imageSize": "tall",
+    "imageAlt": "파란 실선 l은 가로축 −3과 세로축 3을 지난다. 주황 점선 m은 가로축 9와 세로축 9를 지난다. 교점의 가로좌표에는 a, 세로좌표에는 b가 적혀 있다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -648,7 +652,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차방정식그래프",
@@ -667,7 +671,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "원본 그래프에서 두 직선의 절편을 읽어 각각의 식을 세운다.\n직선 $m$은 $(0,9)$와 $(9,0)$을 지나므로 $y=-x+9$, 즉 $x+y=9$이다.\n직선 $l$은 $(-3,0)$과 $(0,3)$을 지나므로 기울기 1, 식은 $y=x+3$, 즉 $x-y=-3$이다.\n두 직선의 교점은 이 두 식을 동시에 만족한다.\n$\\begin{cases}x+y=9\\\\x-y=-3\\end{cases}$이므로 정답은 ①이다.",
-    "image": "assets/images/26_왕의중_1학기_기말_중2_기출/q17.png",
+    "image": "assets/images/26_왕의중_1학기_기말_중2_기출/q17-problem-visual-v2.svg",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",

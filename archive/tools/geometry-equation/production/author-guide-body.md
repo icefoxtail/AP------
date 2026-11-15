@@ -311,6 +311,14 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 사인·코사인의 각속도가 `ratePi`일 때는 같은 전체 실수 정의역을 유지하고 `displayWindowX:["-3/5","23/4"]`처럼 일반 x 단위의 표시 범위를 지정한다. `axisTickValues`에도 일반 x 값을 넣는다. `displayWindowPi`와 `axisTickPi`를 함께 쓰지 않는다. 기존 `displayGuides`와 `showOriginLabel`을 쓸 수 있다.
 
+### 3-7c. 원본 PNG를 따르는 문자 지수·로그 개형
+
+문제의 본문 그림에 연결된 원본 PNG에 숫자 밑이 정해지지 않은 두 곡선과 직선이 있는 경우, 공식 문제 그림 명령에서 'source-exp-log-schematic-v1' 계획을 쓸 수 있다. 현재 범위는 원문에 있는 y=a^(x−1), y=log_a(x−1), y=−x+c와 A, B, C, O의 관계다. c는 발문의 양의 정수다.
+
+- 계획에 capability, sourceAsset, sourceSha256, paths, labelOrigins를 쓴다. sourceAsset은 해당 문항 본문에 직접 연결된 PNG이며 SHA-256은 원본 파일의 것이다. decoder는 8비트 비인터레이스 흑백/RGB PNG만 받는다.
+- paths는 xAxis, yAxis, secant(각 두 점), exponential, logarithm(각 6~64점)이다. 점쌍은 수학 좌표가 아니라 **원본 픽셀의 정수 좌표**다. 전체 선을 따라 잉크를 대조하고, A/B의 두 교차와 C/O를 다시 계산한다. 가로축·세로축은 수평/수직으로 정리한다.
+- labelOrigins에 O, A, B, C, x, y, exp, log, line, schematic의 위쪽 왼쪽 위치를 준다. 함수식은 원문에서만 읽고 그림에 개형을 표시한다. 밑 수치, 점의 수치 좌표, 눈금, 사용자 입력 SVG나 새 식은 지원하지 않는다. 기존 글꼴·충돌·잘림 검사는 같은 경로에서 실행한다.
+
 ### 3-8. 중학교 평면도형: 각·선분·호 표식이 있는 축 없는 그림 (`PLANE_FIGURE_v1`, `planeMarks`)
 
 - **plan 최상위 `caption`은 필수다.** 평면도형·좌표 도형(`construction-spike-v1`)도 `caption`(한 문장, 정답·숨긴 점 이름 없이)이 있어야 하고, 없으면 `SPEC_ERROR`/`PLAN_CAPTION_REQUIRED`(path `caption`)로 거절된다. 숨긴 점(`hiddenPointNames`)의 이름을 caption에 쓰면 `HIDDEN_POINT_NAMED_IN_TEXT:<id>`이다. publish.json의 caption(풀이 요약+정답)과는 별개다. 이유: 금당고 14개 그림이 caption 없이 `NON_JSON_VALUE`(spec.title 미정의)로 거절됐다.

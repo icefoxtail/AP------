@@ -12,6 +12,7 @@ import { loadActiveMetaRegistry } from './active-registry.mjs';
 import { hasReviewedReceiptLineage, reviewedSourceBindingItems, reviewedSourceBindingPath } from './reviewed-source-binding.mjs';
 import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 import { validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
+import { readImmutableGitFiles, forEachImmutableGitFile } from './immutable-git-batch.mjs';
 
 export const ISSUED_SOURCE_BINDING_RECOVERY_SCHEMA = 'archive-native-issued-source-binding-recovery-v1';
 const PROOF_SCHEMA = 'archive-issued-source-binding-recovery-proof-v1';
@@ -74,6 +75,46 @@ function gitBytes(root, commit, relative) {
   const mode = git(root, ['ls-tree', commit, '--', relative]).toString().split(' ')[0];
   if (!['100644', '100755'].includes(mode)) fail('immutable regular file required');
   return git(root, ['show', `${commit}:${relative}`]);
+}
+// One immutable replay pass can share directory entries, never file bytes or
+// verification results. Every read below still obtains the actual Git blob.
+function immutableReplayFiles(root) {
+  const directories = new Map();
+  function directory(commit) {
+    if (!SHA1.test(commit || '')) fail('immutable commit SHA required');
+    if (!directories.has(commit)) {
+      if (git(root, ['rev-parse', '--verify', `${commit}^{commit}`]).toString().trim() !== commit) fail('exact commit required');
+      const entries = new Map();
+      for (const entry of git(root, ['ls-tree', '-r', '-z', commit]).toString('utf8').split('\0').filter(Boolean)) {
+        const tab = entry.indexOf('\t'), [mode, type, object] = entry.slice(0, tab).split(' '), relative = entry.slice(tab + 1);
+        if (tab < 0 || !SHA1.test(object || '') || entries.has(relative)) fail('invalid immutable directory entry');
+        entries.set(relative, {mode, type});
+      }
+      directories.set(commit, entries);
+    }
+    return directories.get(commit);
+  }
+  function file(commit, relative) {
+    safePath(root, relative);
+    const entry = directory(commit).get(relative);
+    if (!entry || entry.type !== 'blob' || !['100644', '100755'].includes(entry.mode)) fail('immutable regular file required');
+    return entry;
+  }
+  return {
+    paths: commit => [...directory(commit).keys()],
+    bytes(commit, relative) {
+      file(commit,relative);
+      return git(root, ['show', `${commit}:${relative}`]);
+    },
+    many(commit, relatives) {
+      relatives.forEach(relative => file(commit,relative));
+      return readImmutableGitFiles(root,relatives.map(p=>({commit,path:p})));
+    },
+    forEach(commit, relatives, consume) {
+      relatives.forEach(relative => file(commit,relative));
+      forEachImmutableGitFile(root,relatives.map(p=>({commit,path:p})),consume);
+    }
+  };
 }
 function bankOf(raw, count) {
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
@@ -144,20 +185,21 @@ function assetPaths(bank, items) {
 // Git inputs. Every caller still rereads current evidence, assets, canonical
 // tables and the supplied/current cohort. No cached live-state permission exists.
 const replayCache = new Map();
-function bindingPrerequisites(root, originalRef, issuedRef, issued, allPaths) {
+function bindingPrerequisites(immutableFiles, originalRef, issuedRef, issued, allPaths) {
   const packs = new Set(issued.appliedRecords.map(row => row.metaFoundationPackId)), paths = new Set([...packs].map(id =>
     `archive/data/meta-foundation/canonical/packs/${id.toLowerCase().replaceAll('_','-')}/bindings.json`));
   const selected = new Set(issued.appliedRecords.map(row => row.questionUid)), result = [];
-  for (const relative of [...allPaths].filter(p => p.startsWith('.archive-meta-register/inbox/') && p.endsWith('.json')).sort()) {
-    if (relative === originalRef.path) continue;
-    const raw = gitBytes(root, originalRef.commit, relative), request = JSON.parse(raw), changes = request.registryChanges;
+  const candidates=[...allPaths].filter(p => p.startsWith('.archive-meta-register/inbox/') && p.endsWith('.json') && p!==originalRef.path).sort();
+  const candidateBytes=immutableFiles.many(originalRef.commit,candidates);
+  for (const [i,relative] of candidates.entries()) {
+    const raw = candidateBytes[i], request = JSON.parse(raw), changes = request.registryChanges;
     if (!Array.isArray(changes) || !changes.some(change => paths.has(change.path))) continue;
     if (request.schemaVersion !== 'archive-reviewed-exam-meta-register-request-v2' || request.scope !== 'PARTIAL_UIDS' ||
         request.approval?.type !== 'FINAL_QA' || request.approval.sourceRebind || request.registrationMode !== undefined ||
         !Array.isArray(request.items) || request.items.some(row => selected.has(row.questionUid)) ||
         changes.some(change => !paths.has(change.path) || change.collection !== 'bindings' || change.before !== null || change.after?.status !== 'ACTIVE'))
       fail('only disjoint original additive binding prerequisites are supported');
-    const p = receiptPath(request.requestId), issuedRaw = gitBytes(root, issuedRef.commit, p), prior = JSON.parse(issuedRaw);
+    const p = receiptPath(request.requestId), issuedRaw = immutableFiles.bytes(issuedRef.commit, p), prior = JSON.parse(issuedRaw);
     inventory(prior);
     if (prior.requestSha256 !== sha(stable(request)) || prior.requestId !== request.requestId ||
         !same(prior.approval, request.approval) || !same(prior.registryChanges, changes)) fail('prerequisite lacks its exact issued request/receipt');
@@ -196,8 +238,9 @@ function liveAuthorityRefs(root,original,bank,prerequisites) {
 function replayOriginal(root, originalRef, issuedRef) {
   const key = stable([fs.realpathSync(root), originalRef, issuedRef]);
   if (replayCache.has(key)) return replayCache.get(key);
-  const originalRaw = gitBytes(root, originalRef.commit, originalRef.path);
-  const issuedRaw = gitBytes(root, issuedRef.commit, issuedRef.path);
+  const immutableFiles = immutableReplayFiles(root);
+  const originalRaw = immutableFiles.bytes(originalRef.commit, originalRef.path);
+  const issuedRaw = immutableFiles.bytes(issuedRef.commit, issuedRef.path);
   if (sha(originalRaw) !== originalRef.sha256 || sha(issuedRaw) !== issuedRef.sha256) fail('immutable original request/issued receipt digest mismatch');
   const original = JSON.parse(originalRaw), issued = JSON.parse(issuedRaw), old = inventory(issued);
   if (originalRef.path !== `.archive-meta-register/inbox/${original.requestId}.json` || issuedRef.path !== receiptPath(original.requestId) ||
@@ -216,30 +259,32 @@ function replayOriginal(root, originalRef, issuedRef) {
       [...old.records.values(), ...old.runtimes.values()].some(row => row.approvalEvidence.includes(bindingPath))) fail('only missing issued durable bindings are recoverable');
   try { git(root, ['cat-file', '-e', `${issuedRef.commit}:${bindingPath}`]); fail('issued binding already exists'); }
   catch (error) { if (String(error.message).includes('issued binding already exists')) throw error; }
-  const sourcePath = `archive/exams/${original.sourceArchiveFile}`, sourceRaw = gitBytes(root, originalRef.commit, sourcePath);
+  const sourcePath = `archive/exams/${original.sourceArchiveFile}`, sourceRaw = immutableFiles.bytes(originalRef.commit, sourcePath);
   if (blob(sourceRaw) !== issued.sourceBlobSha1 || sha(sourceRaw) !== issued.sourceRawSha256 ||
-      !sourceRaw.equals(gitBytes(root, issuedRef.commit, sourcePath))) fail('issued source differs from original pre-write source');
+      !sourceRaw.equals(immutableFiles.bytes(issuedRef.commit, sourcePath))) fail('issued source differs from original pre-write source');
   const bank = bankOf(sourceRaw, issued.expectedQuestionCount);
   const shadow = fs.mkdtempSync(path.join(os.tmpdir(), 'issued-source-binding-replay-'));
   try {
     git(root, ['clone', '--quiet', '--shared', '--no-checkout', '--local', root, shadow]);
     git(shadow, ['update-ref', 'HEAD', originalRef.commit]);
-    const allPaths = new Set(git(root, ['ls-tree', '-r', '--name-only', '-z', originalRef.commit]).toString().split('\0').filter(Boolean));
-    const prerequisites = bindingPrerequisites(root, originalRef, issuedRef, issued, allPaths);
+    const allPaths = new Set(immutableFiles.paths(originalRef.commit));
+    const prerequisites = bindingPrerequisites(immutableFiles, originalRef, issuedRef, issued, allPaths);
     const materialized = new Map();
-    const putGit = relative => {
-      if (materialized.has(relative)) return;
-      const raw = gitBytes(root, originalRef.commit, relative), full = safePath(shadow, relative);
-      fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, raw);
-      materialized.set(relative, sha(raw));
+    const putMany = relatives => {
+      const pending=[...new Set(relatives)].filter(relative=>!materialized.has(relative));
+      immutableFiles.forEach(originalRef.commit,pending,(raw,i)=>{
+        const relative=pending[i],full=safePath(shadow,relative);
+        fs.mkdirSync(path.dirname(full),{recursive:true});fs.writeFileSync(full,raw);
+        materialized.set(relative,sha(raw));
+      });
     };
-    for (const relative of allPaths) if ([META, IDENTITY, MASTER, 'archive/data/meta-os/received-values.json'].includes(relative) ||
+    putMany([...allPaths].filter(relative => [META, IDENTITY, MASTER, 'archive/data/meta-os/received-values.json'].includes(relative) ||
         relative.startsWith('archive/data/meta-foundation/canonical/') || relative.startsWith('archive/data/meta-foundation/compiled/') ||
-        relative.startsWith(RUNTIME) || relative === 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json') putGit(relative);
+        relative.startsWith(RUNTIME) || relative === 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json'));
     const queue = [originalRef.path,sourcePath, ...refsOf(original).map(ref => ref.path), ...assetPaths(bank, original.items)];
     for (const prerequisite of prerequisites) {
       const request = prerequisite.request, p = `archive/exams/${request.sourceArchiveFile}`;
-      const currentBank = bankOf(gitBytes(root, originalRef.commit, p), request.expectedQuestionCount);
+      const currentBank = bankOf(immutableFiles.bytes(originalRef.commit, p), request.expectedQuestionCount);
       queue.push(prerequisite.requestRef.path,p,...refsOf(request).map(ref => ref.path),...assetPaths(currentBank,request.items));
     }
     const discover = value => {
@@ -248,12 +293,15 @@ function replayOriginal(root, originalRef, issuedRef) {
       else if (value && typeof value === 'object') Object.values(value).forEach(discover);
     };
     const visited = new Set();
-    for (let i = 0; i < queue.length; i++) {
-      const relative = queue[i]; if (visited.has(relative)) continue; visited.add(relative); putGit(relative);
-      if (relative.endsWith('.json') && relative !== META && relative !== IDENTITY && !relative.startsWith(RUNTIME)) discover(read(shadow, relative));
+    for (let i = 0; i < queue.length;) {
+      const pending=[];
+      while(i<queue.length) {const relative=queue[i++];if(visited.has(relative))continue;visited.add(relative);pending.push(relative);}
+      putMany(pending);
+      for(const relative of pending)if (relative.endsWith('.json') && relative !== META && relative !== IDENTITY && !relative.startsWith(RUNTIME)) discover(read(shadow, relative));
     }
-    const preMetadata = byUid(read(shadow, META).records, 'pre-write metadata'), preIdentity = byUid(read(shadow, IDENTITY).records, 'pre-write identity');
-    const preIdentityDoc=read(shadow,IDENTITY),preRuntime=byUid(runtimeDocuments(shadow).flatMap(doc=>doc.records||[]),'pre-write runtime');
+    const preIdentityDoc=read(shadow,IDENTITY);
+    const preMetadata = byUid(read(shadow, META).records, 'pre-write metadata'), preIdentity = byUid(preIdentityDoc.records, 'pre-write identity');
+    const preRuntime=byUid(runtimeDocuments(shadow).flatMap(doc=>doc.records||[]),'pre-write runtime');
     for (const item of original.items) {
       const before = preMetadata.get(item.questionUid), identity = preIdentity.get(item.questionUid);
       if (!before || !identity || before.sourceArchiveFile !== original.sourceArchiveFile || before.sourceOrdinal !== item.sourceOrdinal ||
@@ -287,7 +335,7 @@ function replayOriginal(root, originalRef, issuedRef) {
       ref.path !== IDENTITY && !ref.path.startsWith(RUNTIME) && ref.path !== `${RECEIPTS}${original.requestId}.renderer-binding.json`))
       fail('original replay output scope changed');
     for (const ref of issued.outputDigests || []) if (ref.path.endsWith('.renderer-binding.json') &&
-      (!bytes(shadow, ref.path).equals(gitBytes(root, issuedRef.commit, ref.path)) || sha(bytes(shadow, ref.path)) !== ref.sha256))
+      (!bytes(shadow, ref.path).equals(immutableFiles.bytes(issuedRef.commit, ref.path)) || sha(bytes(shadow, ref.path)) !== ref.sha256))
       fail('issued renderer proof differs from official replay');
     delete normalized.outputDigests;
     const withoutOutputs = structuredClone(issued); delete withoutOutputs.outputDigests;
@@ -305,6 +353,11 @@ function replayOriginal(root, originalRef, issuedRef) {
     if(sha(priorSource)!==prior.sourceRawSha256)fail('original native authority source bytes changed');
     const omit=(row,keys)=>Object.fromEntries(Object.entries(row).filter(([key])=>!keys.includes(key)));
     const derivedMeta=['sourceFingerprint','contentFingerprint','metadataRevision','approvalEvidence','metaFoundationPackVersion'];
+    // Build indexes once from this replay's fresh pre/post snapshots. Each UID
+    // still undergoes the complete native checks below; no verdict is reused.
+    const identityByJoin=new Map(identityDoc.records.map(r=>[`${r.sourceArchiveFile}#${r.sourceOrdinal}`,r]));
+    const preIdentityByJoin=new Map(preIdentityDoc.records.map(r=>[`${r.sourceArchiveFile}#${r.sourceOrdinal}`,r]));
+    const runtimeStatusByPack=new Map(runtimeDocs.map(doc=>[doc.packId,doc.status]));
     for (const row of strict.appliedRecords) {
       const ordinal = row.sourceOrdinal, question = bank[ordinal - 1], runtime = strictState.runtimes.get(row.questionUid);
       const before=priorState.records.get(row.questionUid),beforeRuntime=priorState.runtimes.get(row.questionUid),beforeIdentity=priorState.identities.get(row.questionUid);
@@ -316,10 +369,9 @@ function replayOriginal(root, originalRef, issuedRef) {
         fail('original fingerprint-only issuance changed a semantic approval or identity');
       const nativeSource = { root: shadow, bytes: sourceRaw, blobSha1: issued.sourceBlobSha1, bank,
         runtimeRecord: runtime, runtimeStatus: runtimeDocs.find(doc => doc.records?.some(r => r.questionUid === row.questionUid))?.status,
-        identityMap: identityDoc, identityByJoin: new Map(identityDoc.records.map(r => [`${r.sourceArchiveFile}#${r.sourceOrdinal}`, r])),
-        runtimeStatusByPack: new Map(runtimeDocs.map(doc => [doc.packId, doc.status])) };
+        identityMap: identityDoc, identityByJoin, runtimeStatusByPack };
       const originalNativeSource={...nativeSource,bytes:priorSource,blobSha1:prior.sourceBlobSha1,bank:priorBank,runtimeRecord:beforeRuntime,
-        identityMap:preIdentityDoc,identityByJoin:new Map(preIdentityDoc.records.map(r=>[`${r.sourceArchiveFile}#${r.sourceOrdinal}`,r]))};
+        identityMap:preIdentityDoc,identityByJoin:preIdentityByJoin};
       if (nativeReviewReceipt({ nativeSource:originalNativeSource, question:priorBank[ordinal-1], previous:priorBank[ordinal-1], current:before, identity:beforeIdentity,
         source: original.sourceArchiveFile, ordinal, pt: registry.problemTypes.get(row.problemTypeKey),
         tpl: registry.templates.get(row.templateKey), registry, ownerPack: row.metaFoundationPackId }) !== priorRef.path)

@@ -29,3 +29,13 @@ The feature tests issue synthetic original audits and preservation receipts thro
 ## Production preparation
 
 After code acceptance, bind a production request to the latest main source, actual prior receipt and current metadata/runtime. Recheck same-source pending inputs before publication, because changing one metadata array changes the whole source blob. Preserve the original receipts and immutable native/finalization documents. Publish generated registration outputs only through the existing writer, then verify actual registration and Consumer results separately from local validation.
+## PR staging of an already consumed original audit
+
+The typed append's exact `priorReceiptRef` is checked against both current raw
+bytes and the full immutable `priorCommit`. The preview stages that receipt and
+the current explicit evidence; its official registrar replay authenticates the
+complete historical audit and difficulty authority from the original snapshot.
+Historical inbox requests already consumed by that snapshot are not restored to
+the current inbox. This boundary applies only to the exact prior receipt of an
+`archive-audit-finalized-cc-append-v1` request. All ordinary native receipt chains
+and all current approval inputs retain recursive byte and fixed-HEAD checks.

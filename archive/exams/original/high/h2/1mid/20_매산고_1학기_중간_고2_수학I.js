@@ -486,8 +486,7 @@ window.questionBank = [
     "id": 7,
     "questionType": "객관식",
     "score": 4.2,
-    "image": "assets/images/20_매산고_1학기_중간_고2_수학I/q07.png",
-    "content": "7. 함수 $y=3^{-x+1}-2$의 그래프를 옳게 그린 것을 고르면? [4.2점]\n<p><img src=\"assets/images/20_매산고_1학기_중간_고2_수학I/q07.png\" class=\"question-img\" alt=\"문제 7 보기 그림\"></p>",
+    "content": "7. 함수 $y=3^{-x+1}-2$의 그래프를 옳게 그린 것을 고르면? [4.2점]",
     "choices": [
       "<img src=\"assets/images/20_매산고_1학기_중간_고2_수학I/q07_1.png\" class=\"choice-img\" alt=\"보기 1\">",
       "<img src=\"assets/images/20_매산고_1학기_중간_고2_수학I/q07_2.png\" class=\"choice-img\" alt=\"보기 2\">",
@@ -1196,7 +1195,7 @@ window.questionBank = [
       }
     },
     "solutionImage": "assets/images/20_매산고_1학기_중간_고2_수학I/q15-solution.svg",
-    "solutionImageAlt": "해설에서 결정한 삼각함수 그래프 관계",
+    "solutionImageAlt": "해설 그림: 좌표평면에 x=1 위의 점 A, B와 점 C를 그려 삼각형 ABC를 나타낸다. 수직 선분 AB의 길이는 L+1/2이고, C에서 AB까지의 수평 거리는 2/3이다.",
     "solutionImageCaption": "AB 길이와 C에서 AB까지의 수평거리를 사용한다.",
     "solutionImageSize": "850x360",
     "standardCourse": "수학I",
@@ -1602,6 +1601,10 @@ window.questionBank = [
       "최댓값"
     ],
     "wide": false,
-    "decisiveStep": "로그값 n별 수평선 교점 수를 세고 꼭짓값과 a+b를 최적화한다."
+    "decisiveStep": "로그값 n별 수평선 교점 수를 세고 꼭짓값과 a+b를 최적화한다.",
+    "solutionImage": "assets/images/20_매산고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 예시 포물선 Q(x)=−x²+16과 수평선 y=2, 4, 8, 16이 표시되어 있다. 앞의 세 높이에서는 각각 두 점에서 만나고, y=16에서는 꼭짓점 V(0,16)에서 접한다.",
+    "solutionImageCaption": "예: 꼭짓점 높이가 16인 아래로 열린 포물선에서 y=2, 4, 8은 두 점에서 만나고 y=16은 접한다. 원문 조건으로 구한 a+b의 최댓값은 17이다.",
+    "solutionImageSize": "full"
   }
 ];

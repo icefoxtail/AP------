@@ -5,6 +5,8 @@ const fs = require('node:fs'), path = require('node:path'), vm = require('node:v
 const crypto = require('node:crypto'), { execFileSync } = require('node:child_process');
 const consumer = require('../../archive/item-4slot.js');
 const rendererHold = require('./renderer-registration-hold.cjs');
+const currentRendererHold = require('./current-renderer-negative-hold.cjs');
+const partial = require('./partial-submission.cjs');
 const { sourceNumber, sourceIdentityNumber } = require('./exam-items.cjs');
 const ROOT = path.resolve(__dirname, '../..');
 const INPUT = 'archive/data/item-4slot/';
@@ -19,7 +21,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
-const BUILDER_SHA = sha(Buffer.concat([fs.readFileSync(__filename), fs.readFileSync(require.resolve('./renderer-registration-hold.cjs'))]));
+const BUILDER_SHA = sha(Buffer.concat([fs.readFileSync(__filename), fs.readFileSync(require.resolve('./renderer-registration-hold.cjs')), fs.readFileSync(require.resolve('./partial-submission.cjs')), fs.readFileSync(require.resolve('./current-renderer-negative-hold.cjs')), fs.readFileSync(require.resolve('./import-4slot.cjs')), fs.readFileSync(require.resolve('./validate-4slot.cjs')), fs.readFileSync(require.resolve('./exam-items.cjs'))]));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -65,7 +67,9 @@ function validateCompact(d, rel, dict) {
   if(!/^[a-f0-9]{40}$/.test(d.sourceGitBlobSha||''))errors.push('SOURCE_BLOB_MISSING');
   if(!dict)errors.push('DICTIONARY_VERSION_UNKNOWN');
   if(!d.reviewedBy||!String(d.reviewedBy.agent||'').trim()||!d.reviewedBy.at||!Array.isArray(d.reviewedBy.sampled))errors.push('REVIEW_REFERENCE_MISSING');
-  if(!d.evidence||['branch','commit','path'].some(k=>typeof d.evidence[k]!=='string'||!d.evidence[k].trim()))errors.push('EVIDENCE_REFERENCE_MISSING');
+  if(partial.hasScope(d)) {
+    if(d.scope!==partial.SCOPE||d.evidence?.schemaVersion!==partial.EVIDENCE_SCHEMA)errors.push('PARTIAL_SCOPE_OR_EVIDENCE_INVALID');
+  } else if(!d.evidence||['branch','commit','path'].some(k=>typeof d.evidence[k]!=='string'||!d.evidence[k].trim()))errors.push('EVIDENCE_REFERENCE_MISSING');
   if(!Array.isArray(d.items)||!d.items.length)errors.push('ITEMS_EMPTY');
   if(d.evidence?.nativeHoldReview?.rendererCorrection&&(!Array.isArray(d.items)||d.items.filter(it=>it.registrationHold?.reason===rendererHold.REASON).length!==1))errors.push('RENDERER_HOLD_ONE_UID_REQUIRED');
   return errors;
@@ -89,11 +93,12 @@ function validateItem(it, dict) {
 // An explicit native review hold never waives slot validation or registers a row.
 // This route preserves the existing M1-S1 partial-method decision while the rest
 // of that complete exam denominator can register. It is not an empty-slot route.
-function validateRegistrationHold(root, d, it, id, cur) {
+function validateRegistrationHold(root, d, it, id, cur, {currentRendererNegativeValidated=false}={}) {
   const h=it.registrationHold, errors=[];
-  if(!h||h.schemaVersion!=='4slot-native-review-hold-v1')return ['UNSUPPORTED_HOLD'];
+  if(!h||!['4slot-native-review-hold-v1',currentRendererHold.HOLD_SCHEMA].includes(h.schemaVersion))return ['UNSUPPORTED_HOLD'];
   if(h.questionUid!==id?.questionUid||h.sourceOrdinal!==cur?.ordinal||h.sourceQuestionNo!==sourceIdentityNumber(cur?.q||{})||h.ordinal!==it.ordinal)errors.push('HOLD_IDENTITY_MISMATCH');
   if(typeof h.nextAction!=='string'||!h.nextAction.trim())errors.push('HOLD_NEXT_ACTION_MISSING');
+  if(h.schemaVersion===currentRendererHold.HOLD_SCHEMA)return [...errors,...(currentRendererNegativeValidated&&h.reason===currentRendererHold.REASON?[]:['CURRENT_RENDERER_HOLD_FILE_NOT_VALIDATED'])];
   if(h.reason==='SOURCE_RENDERER_CORRECTION_PENDING')return [...errors,...rendererHold.validate(root,d,it,id,cur,{safe,sha,blob,stable,payloadHash,identityHash,git,assetRefs,loadBank})];
   if(h.reason==='SOURCE_EVIDENCE_UNRESOLVED')return [...errors,...validateM2SourceHold(root,d,it,id,cur)];
   if(h.reason!=='PARTIAL_METHOD_EVIDENCE_DEBT'||!/^original\/middle\/m1\/1(?:mid|final)\//.test(d.sourceArchiveFile))return [...errors,'UNSUPPORTED_HOLD'];
@@ -131,7 +136,7 @@ function validateM2SourceHold(root,d,it,id,cur) {
 function holdEvidenceDigests(root,d) {
   const out={};
   for(const it of d.items)if(own(it,'registrationHold')) {
-    for(const field of ['evidence','reviewEvidence','independentEvidence','fourSlotEvidence','supersessionEvidence']) {
+    for(const field of ['evidence','reviewEvidence','independentEvidence','fourSlotEvidence','supersessionEvidence',...currentRendererHold.directFields]) {
       const rel=it.registrationHold?.[field]?.path;
       if(typeof rel!=='string')continue;
       try { out[rel]=sha(fs.readFileSync(safe(root,rel))); } catch { out[rel]=null; }
@@ -174,6 +179,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
   const identity=fs.existsSync(identityPath)?JSON.parse(fs.readFileSync(identityPath,'utf8')):{records:[]};
   const joins=new Map(), uidUses=new Map();
   for(const r of identity.records||[]){const key=`${r.sourceArchiveFile}#${r.sourceOrdinal}`;if(!joins.has(key))joins.set(key,[]);joins.get(key).push(r);uidUses.set(r.questionUid,(uidUses.get(r.questionUid)||0)+1);}
+  const currentNegativeObligation=currentRendererHold.createObligationReader(root,{safe,sha,blob,stable});
   const oldFiles=new Map((previous?.files||[]).map(f=>[f.path,f]));
   const records=[], files=[], pending=[], observed=[], stats={revalidatedFiles:0,reusedFiles:0};
   const inputs=walk(safe(root,INPUT.slice(0,-1)));
@@ -188,11 +194,23 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       if(errors.length)throw Error(errors.join('|'));
       const sf=safe(root,'archive/exams/'+d.sourceArchiveFile), sourceRaw=fs.readFileSync(sf), sourceBlob=blob(sourceRaw);
       const bank=loadBank(sourceRaw), byNumber=sourceNumbers(bank), assetDigests=assetsFor(root,bank), holdDigests=holdEvidenceDigests(root,d);
+      // Validate the public receipt and the complete canonical partition before cache reuse.
+      // The receipt contains no private prose; all quote spans are checked against public source bytes.
+      const scope=partial.hasScope(d)?partial.publicEvidence(root,d,{bank,identity,sourceRaw,dictPath:dict.path}):null;
+      // A current negative intake may advance the file binding only after its entire
+      // original vector, reviewed changes, unchanged peers and two independent proofs
+      // validate. This gate precedes cache reuse; the held UID never becomes active.
+      const obligation=currentNegativeObligation(d,sourceBlob);
+      if(obligation.errors.length)throw Error(obligation.errors.join('|'));
+      const currentNegative=currentRendererHold.has(d);
+      if(currentNegative){const errors=currentRendererHold.validateFile(root,d,{safe,sha,blob,stable,payloadHash,identityHash,assetRefs,loadBank,dictionary:dict,identity,studentFields:STUDENT});if(errors.length)throw Error(errors.join('|'));}
       const relevantIdentity=bank.map((_,i)=>joins.get(`${d.sourceArchiveFile}#${i+1}`)||[]);
-      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests]));
+      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests,scope?.evidenceDigests||null,obligation.digest]));
       const old=oldFiles.get(rel);
       file={...file,sourceArchiveFile:d.sourceArchiveFile,sourceGitBlobSha:d.sourceGitBlobSha,currentSourceBlobSha:sourceBlob,dictionaryVersion:d.dictionaryVersion,dictionarySha256:dict.sha256,reviewedBy:d.reviewedBy,evidence:d.evidence,inputHash,assetDigests,itemCount:d.items.length};
+      if(scope)file={...file,scope:partial.SCOPE,expectedQuestionCount:bank.length,selectedCount:scope.selected.length,unsubmittedCount:scope.unsubmitted.length,completeExam:false};
       observed.push(['archive/exams/'+d.sourceArchiveFile,sha(sourceRaw)],[dict.path,dict.sha256]);
+      if(scope)for(const ref of scope.evidenceDigests)observed.push([ref.path,ref.sha256]);
       for(const [p,h]of Object.entries(assetDigests))if(h)observed.push([p,h]);
       for(const [p,h]of Object.entries(holdDigests))if(h)observed.push([p,h]);
       // No repeated semantic review. Cached rows are re-used only for identical input bytes and identity joins.
@@ -246,15 +264,16 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
         const alteredAsset=oldSame&&assetRefs(cur.q).some(p=>own(baselineAssets,p)&&baselineAssets[p]!==assetDigests[p]);
         if(alteredAsset){fail('STALE_ASSET_BYTES',it.ordinal);continue;}
         if(own(it,'registrationHold')) {
-          const errors=validateRegistrationHold(root,d,it,id,cur), h=it.registrationHold;
+          const errors=validateRegistrationHold(root,d,it,id,cur,{currentRendererNegativeValidated:currentNegative}), h=it.registrationHold;
           if(errors.length)fail('INVALID_REGISTRATION_HOLD:'+errors.join('|'),it.ordinal,{questionUid:id.questionUid});
-          else fail('EXPLICIT_REVIEW_HOLD:'+h.reason,it.ordinal,{questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,evidence:h.evidence,nextAction:h.nextAction});
+          else fail('EXPLICIT_REVIEW_HOLD:'+h.reason,it.ordinal,{questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,evidence:h.evidence||h.currentRendererNegativeEvidence,nextAction:h.nextAction});
           continue;
         }
         const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:sourceIdentityNumber(cur.q),sourceDisplayNumber:it.ordinal,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceUidBinding,identityFingerprintStatus,sourceBinding:sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',registrationStatus:'REGISTERED',independentReviewClaim:false};
         records.push(row);
       }
-      for(const n of byNumber.keys())if(!seen.has(n))fail('FOUR_SLOT_ITEM_MISSING',n);
+      if(scope)for(const row of scope.unsubmitted)fail('NOT_SUBMITTED',row.displayNumber,{questionUid:row.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:row.sourceOrdinal,sourceQuestionNo:row.sourceQuestionNo});
+      else for(const n of byNumber.keys())if(!seen.has(n))fail('FOUR_SLOT_ITEM_MISSING',n);
       file.baselinePayloadHashes=baselineHashes;
       file.status=pending.some(r=>r.path===rel)?'SUPPLEMENT_PENDING':'REGISTERED';files.push(file);
     }catch(e){file.status='SUPPLEMENT_PENDING';files.push(file);fail(e.code==='ENOENT'?'SOURCE_OR_INPUT_MISSING':e.message);}

@@ -4,7 +4,7 @@ window.questionBank = [
     "id": 1,
     "questionNumber": 1,
     "questionType": "객관식",
-    "content": "오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=4, \\overline{\\mathrm{BC}}=5, \\angle\\mathrm{B}=120^\\circ$일 때, 사각형 $\\mathrm{ABCD}$의 넓이는? [3.6점]<br><br><img src=\"assets/images/21_순천여고_1학기_기말_고2_수학I/q01.png\" class=\"question-img\">",
+    "content": "오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=4, \\overline{\\mathrm{BC}}=5, \\angle\\mathrm{B}=120^\\circ$일 때, 사각형 $\\mathrm{ABCD}$의 넓이는? [3.6점]<br><br><img src=\"assets/images/21_순천여고_1학기_기말_고2_수학I/q01-problem-full-c-v1.svg\" alt=\"변 AB가 4, 변 BC가 5이고 각 B가 120°인 평행사변형 ABCD.\" class=\"question-img\">",
     "choices": [
       "10",
       "10\\sqrt{2}",
@@ -43,7 +43,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_순천여고_1학기_기말_고2_수학I/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 A에서 BC의 직선에 내린 높이 AH=2√3을 보인다. H는 B의 왼쪽에 있고 H에서 직각을 이룬다.",
+    "solutionImageCaption": "A에서 BC의 연장선에 내린 높이 AH를 이용해 넓이 공식을 확인한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -474,7 +478,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_순천여고_1학기_기말_고2_수학I/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 각각 30°와 45°의 고도각을 가진 두 직각 단면에서 높이 h와 밑변이 표시되고, 아래 그림에는 변 AC=√3h, BC=h, ∠C=30°인 지면 삼각형 ABC가 보인다.",
+    "solutionImageCaption": "두 직각삼각형에서 AC=√3h, BC=h를 얻는다. 이를 지면 삼각형 ABC에 옮겨 코사인법칙을 적용한다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
     {
     "id": 12,
@@ -837,9 +845,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_순천여고_1학기_기말_고2_수학I/q19-solution.svg",
-    "solutionImageAlt": "원 O, P-Q-C 일직선, 두 중심각과 삼각형 각 관계",
-    "solutionImageCaption": "사인법칙에 쓰는 각의 귀속을 확인한다.",
+    "solutionImage": "assets/images/21_순천여고_1학기_기말_고2_수학I/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원의 중심 O와 지름 AB, OB=BC 표시, P-Q-C 순서의 할선이 보인다. 중심각 2α, 2β와 대응 원주각 α, β, B의 보각 180°−α가 각의 꼭짓점에 맞춰 표시되고, P의 β각은 점선으로 연결된 위쪽 각 그림에 있다. 중심의 좁은 2β각 표시는 호에서 시작하는 지시선으로 연결한다.",
+    "solutionImageCaption": "예: 중심각에 대응하는 원주각과 삼각형 PBC의 각을 확인한다. 사인법칙으로 반지름을 구한다. 정답은 3이다.",
     "solutionImageSize": "full"
   },
   {
@@ -927,7 +935,7 @@ window.questionBank = [
     "content": "[서술형 2] 수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여 다음 조건을 만족시킨다.<br><br>가) $a_{2n} = a_n + 1$<br>나) $a_{2n+1} = 2a_n - 1$<br>다) $a_1 = a$<br><br>$a_{10} = 10$일 때, $\\sum_{n=1}^{31} a_n$의 값을 구하려고 한다. 다음 물음에 답하여라. [7.0점]<br><br>(1) $a_2 + a_3$과 $a_4 + a_5 + a_6 + a_7$을 각각 $a$에 관한 식으로 표현하시오. [2.0점]<br><br>(2) $a_{10} = 10$임을 이용하여 $a$값을 구하시오. [2.0점]<br><br>(3) $\\sum_{n=1}^{31} a_n$의 값을 구하고 그 과정을 서술하시오. [3.0점]",
     "choices": [],
     "answer": "484",
-    "solution": "(1) 주어진 점화식은 한 항 $a_n$에서 짝수 번호 항 $a_{2n}=a_n+1$과 홀수 번호 항 $a_{2n+1}=2a_n-1$을 만드는 규칙이다.\n$a_2=a+1$, $a_3=2a-1$이므로 $a_2+a_3=3a$이다.\n또 $a_4=a_2+1=a+2$, $a_5=2a_2-1=2a+1$, $a_6=a_3+1=2a$, $a_7=2a_3-1=4a-3$이므로 $a_4+a_5+a_6+a_7=9a$이다.\n(2) $10=2\\cdot5$이므로 $a_{10}=a_5+1$이고, $a_5=2a_2-1=2(a+1)-1=2a+1$이다. 따라서 $a_{10}=2a+2=10$에서 $a=4$이다.\n(3) 핵심은 같은 부모 $a_n$에서 만들어지는 두 자식의 합이다. $a_{2n}+a_{2n+1}=(a_n+1)+(2a_n-1)=3a_n$이므로, 번호 묶음 $1$, $2\\sim3$, $4\\sim7$, $8\\sim15$, $16\\sim31$의 합은 앞 묶음의 정확히 $3$배다.\n첫 묶음의 합이 $a$이므로 전체 합은 $a+3a+9a+27a+81a=121a=121\\cdot4=484$이다.",
+    "solution": "(1) 주어진 점화식은 한 항 $a_n$에서 짝수 번호 항 $a_{2n}=a_n+1$과 홀수 번호 항 $a_{2n+1}=2a_n-1$을 만드는 규칙이다.\n\n| 현재 층의 항 번호 | 다음 층의 항 번호 |\n| --- | --- |\n| $1$ | $2\\sim3$ |\n| $2\\sim3$ | $4\\sim7$ |\n| $4\\sim7$ | $8\\sim15$ |\n| $8\\sim15$ | $16\\sim31$ |\n\n$a_{10}$으로 가는 분기 경로는 $a_1\\to a_2\\to a_5\\to a_{10}$이다.\n\n$a_2=a+1$, $a_3=2a-1$이므로 $a_2+a_3=3a$이다.\n또 $a_4=a_2+1=a+2$, $a_5=2a_2-1=2a+1$, $a_6=a_3+1=2a$, $a_7=2a_3-1=4a-3$이므로 $a_4+a_5+a_6+a_7=9a$이다.\n(2) $10=2\\cdot5$이므로 $a_{10}=a_5+1$이고, $a_5=2a_2-1=2(a+1)-1=2a+1$이다. 따라서 $a_{10}=2a+2=10$에서 $a=4$이다.\n(3) 핵심은 같은 부모 $a_n$에서 만들어지는 두 자식의 합이다. $a_{2n}+a_{2n+1}=(a_n+1)+(2a_n-1)=3a_n$이므로, 번호 묶음 $1$, $2\\sim3$, $4\\sim7$, $8\\sim15$, $16\\sim31$의 합은 앞 묶음의 정확히 $3$배다.\n첫 묶음의 합이 $a$이므로 전체 합은 $a+3a+9a+27a+81a=121a=121\\cdot4=484$이다.",
     "level": "상",
     "category": "수학적 귀납법",
     "originalCategory": "수학적 귀납법",
@@ -996,9 +1004,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/21_순천여고_1학기_기말_고2_수학I/q23-solution.svg",
-    "solutionImageAlt": "원에 내접한 삼각형과 현 AC에서 가장 먼 점 P 및 최대 높이",
-    "solutionImageCaption": "현 AC에서 가장 먼 점에서 높이는 반지름 4와 중심거리 2의 합이다.",
+    "solutionImage": "assets/images/21_순천여고_1학기_기말_고2_수학I/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 첫 그림에서 파란 △OAB의 넓이는 S1=4, 주황 △OCA의 넓이는 S2=4√3이며 표시된 각은 45°, 60°, 75°이다. 둘째 그림은 AC=4√3의 중점 M, OM=2, 원의 반지름 4와 가장 먼 점 P를 보여 높이 PM=6임을 나타낸다.",
+    "solutionImageCaption": "현 BC로 각 A를 정하고 넓이 조건으로 B와 C를 결정한다. 현 AC에 내린 수선과 원 위의 가장 먼 점에서 높이는 6이다. 정답은 12√3이다.",
     "solutionImageSize": "full"
   }
 ];

@@ -8,6 +8,7 @@ import { captionText, compositePanels, composeCompositeCandidate, isSetPanel, is
 import { composeEllipseFigure, solveEllipseFigure } from './ellipse-figure-v1.mjs';
 import { composeSolidFigurePanel, solveSolidFigure } from './solid-figure-v1.mjs';
 import { composeProblemPresentation } from './problem-figure-presentation.mjs';
+import { SOURCE_SCHEMATIC_CAPABILITY, composeSourceSchematic } from './source-schematic-figure.mjs';
 import { loadBank } from '../build-visual-render-matrix.mjs';
 import { repoRoot, launchBrowser } from '../visual-browser-runtime.mjs';
 
@@ -28,9 +29,10 @@ for (const { slot, plan, typography } of config.figures) {
   seen.add(slot);
   if (!plan?.capability) throw Error('Missing figure plan: ' + slot);
   if (presentationCapabilities.has(plan.capability)) continue;
-  if (!['set-diagram-figure-v1', 'composite-panels-v1', 'ellipse-figure-v1', 'solid-figure-v1'].includes(plan.capability)
+  if (!['set-diagram-figure-v1', 'composite-panels-v1', 'ellipse-figure-v1', 'solid-figure-v1', SOURCE_SCHEMATIC_CAPABILITY].includes(plan.capability)
     && !plan.graphPlan && !plan.mathPlan) throw Error('Unsupported problem figure plan: ' + plan.capability);
   if (plan.capability === 'set-diagram-figure-v1') checkSetDiagramPlan(plan);
+  if (plan.capability === SOURCE_SCHEMATIC_CAPABILITY && !['body', 'image'].includes(slot)) throw Error('Schematic requires a body image slot');
   if (typeof typography?.baseFontPx !== 'number' || typeof typography?.displayScale !== 'number') throw Error('Typography is required: ' + slot);
 }
 
@@ -51,6 +53,9 @@ async function constructionModel(plan) {
 
 async function composeProblem(plan, identity, typographyPolicy, browser) {
   const context = { identity, typographyPolicy, browser };
+  if (plan.capability === SOURCE_SCHEMATIC_CAPABILITY) {
+    return composeSourceSchematic(plan, { repoRoot, question, identity, typography: typographyPolicy, browser });
+  }
   if (plan.capability === 'set-diagram-figure-v1') {
     return composeSetDiagramFigure({ ...context, plan, model: checkSetDiagramPlan(plan) });
   }

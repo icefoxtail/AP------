@@ -8,6 +8,8 @@ import { validateNativeProposalFinalization } from "./reviewed-proposal-finaliza
 import { validateReviewedCurrentRendererContinuity } from "./reviewed-current-renderer-continuity.mjs";
 import { bindReviewedNativeScopeFields } from "./reviewed-native-scope-fields.mjs";
 import { validateReviewedNativeRetainedFields } from "./reviewed-native-retained-fields.mjs";
+import { validateM2CurrentRendererContinuity } from "./reviewed-m2-current-renderer-continuity.mjs";
+import { createImmutableGitMetadataLookup } from "./immutable-git-metadata.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -49,8 +51,9 @@ function repositoryPath(root, relative) {
   return full;
 }
 
+const immutableGitMetadata = createImmutableGitMetadataLookup();
 function git(root, args) {
-  try { return execFileSync("git", args, { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] }); }
+  try { return immutableGitMetadata(root, args, () => execFileSync("git", args, { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] })); }
   catch { fail("review commit or bound Git object unavailable"); }
 }
 
@@ -209,8 +212,15 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   const rendererContinuity = patch.sourceReview.rendererProof === undefined ? null :
     validateReviewedCurrentRendererContinuity({ root, request, patch, native: loaded, row,
       question, studentPayload, bankFromBytes, cache });
-  if (!rendererContinuity && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
+  const m2Renderer = patch.sourceReview.m2RendererProof === undefined ? null :
+    validateM2CurrentRendererContinuity({ root, request, patch, native: loaded, row,
+      question, studentPayload, bankFromBytes, cache });
+  if (!rendererContinuity && !m2Renderer && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
       !equal(payload, studentPayload(committedBank[ordinal - 1])))) fail("current student payload differs from the reviewed source");
+  // Only the authenticated frozen request's exact prefigure object can be used
+  // as this M2 presentation view. Its metadata is equal to the live object; the
+  // existing finalization/retention validators still supply every approved value.
+  const semanticQuestion = m2Renderer?.semanticQuestion || question;
   validateNativePerItemSourceEvidence(loaded, row, ordinal);
   const accepted = { ...row.after };
   for (const key of DIFFICULTY_FIELDS) if (Object.hasOwn(row.finalDifficulty || {}, key)) {
@@ -220,7 +230,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   const identityOnly = request.registrationMode === "IDENTITY_FINGERPRINT_ONLY";
   const proposalFinalization = identityOnly && patch.sourceReview.proposalFinalization === undefined ? null :
     validateNativeProposalFinalization({ root, request, patch, native: loaded, row,
-      accepted, question, final, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
+      accepted, question: semanticQuestion, final, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
   if (proposalFinalization) Object.assign(accepted, proposalFinalization.fields);
   const unchangedPrimary = identityOnly ? null : bindUnchangedReviewedPrimary({ native: loaded, row, accepted,
     patch, question, final, canonicalBefore, canonicalAfter, proposalFinalization });
@@ -229,7 +239,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     accepted, question, final, canonicalBefore, canonicalAfter, cache });
   if (scopeFieldBindings) Object.assign(accepted, scopeFieldBindings.fields);
   const retainedNativeFields = validateReviewedNativeRetainedFields({ root, request, patch, native: loaded, row,
-    accepted, question, final, canonicalBefore, canonicalAfter, studentPayload, studentFields: REASSESSED_STUDENT_FIELDS, bankFromBytes, cache });
+    accepted, question: semanticQuestion, final, canonicalBefore, canonicalAfter, studentPayload, studentFields: REASSESSED_STUDENT_FIELDS, bankFromBytes, cache });
   if (retainedNativeFields) Object.assign(accepted, retainedNativeFields.fields);
   const rationaleBindings = {};
   if (!identityOnly) for (const field of ["primaryMethod", "decisiveStep"]) {
@@ -297,6 +307,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     reviewCommitSourceBlobSha1: loaded.committedBlob, questionUid: patch.questionUid, sourceOrdinal: ordinal,
     reviewer: loaded.reviewer, decision, studentPayloadSha256: sha256(stable(payload)),
     ...(rendererContinuity ? { rendererContinuity } : {}),
+    ...(m2Renderer ? { m2RendererContinuity: m2Renderer.proof } : {}),
     ...(Object.keys(rationaleBindings).length ? { rationaleBindings } : {}),
     ...(Object.keys(rpmBindings).length ? { rpmBindings } : {}),
     ...(unchangedPrimary ? { unchangedPrimaryBindings: unchangedPrimary.proof } : {}),

@@ -6,6 +6,7 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { loadCanonical } from './compile-meta-foundation.mjs';
+import { createExactJsonByteParser } from './exact-json-byte-parser.mjs';
 import { validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
 import { validateNativeReviewedParent } from './reviewed-native-parent.mjs';
 import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
@@ -14,6 +15,7 @@ import { REVIEWED_SOURCE_BINDING_OPT_INS, hasReviewedReceiptLineage, reviewedSou
 import { restoreReviewedReplayCanonicalBefore } from './reviewed-replay-registry-context.mjs';
 import { isSourceSubsetRebind, validateSourceSubsetEvidence, preservedSourceEvidence } from './source-subset-preservation.mjs';
 import { isIssuedSourceBindingRecovery, validateIssuedSourceBindingRecovery } from './issued-source-binding-recovery.mjs';
+import { hasImmutableM2CurrentRendererClaim } from './reviewed-m2-current-renderer-continuity.mjs';
 
 const RECEIPTS = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const INDEX = 'archive/data/meta-foundation/canonical/registry_index.json';
@@ -60,6 +62,7 @@ function unique(rows, key, label) {
 // A durable marker must also stop the ordinary producer fallback if the native
 // receipt itself is missing, changed or no longer passes its earlier checks.
 export function hasNativeReviewedSourceClaim({root, current, runtimeRecord}) {
+  if (hasImmutableM2CurrentRendererClaim({root,current,runtimeRecord})) return true;
   if (markers(current).length || markers(runtimeRecord).length) return true;
   const candidates=new Set([current,runtimeRecord].flatMap(row=>Array.isArray(row?.approvalEvidence)?row.approvalEvidence:[]));
   for (const row of [current,runtimeRecord]) {
@@ -97,18 +100,21 @@ export function hasNativeReviewedSourceClaim({root, current, runtimeRecord}) {
   return false;
 }
 
+const parseCurrentTable = createExactJsonByteParser();
 function currentTables(root, registry) {
-  if (registry?.status !== 'ACTIVE' || !same(read(root, INDEX), registry.files?.index)) fail('current ACTIVE registry changed');
-  // Never memoize current bytes. The immutable Git review cache below does not
-  // exempt current assets, witnesses, master data or canonical files from reads.
+  const currentBytes=new Map([[INDEX,bytes(root,INDEX)]]);
+  if (registry?.status !== 'ACTIVE' || !same(parseCurrentTable(currentBytes.get(INDEX)), registry.files?.index)) fail('current ACTIVE registry changed');
+  // Read and authenticate every live file on every call. Only parsing of exact
+  // equal bytes is shared; no witness, asset, registry or approval check is cached.
   for (const entry of [...registry.files.index.canonicalSources, ...registry.files.index.compiledArtifacts]) {
-    const actual = sha(Buffer.from(bytes(root, entry.path).toString('utf8').replaceAll('\r\n', '\n')));
+    const raw=bytes(root,entry.path);currentBytes.set(entry.path,raw);
+    const actual = sha(Buffer.from(raw.toString('utf8').replaceAll('\r\n', '\n')));
     if (actual !== String(entry.sha256).replace(/^sha256:/, '')) fail('current registry digest mismatch');
   }
-  const canonical = loadCanonical(p => read(root, p));
+  const canonical = loadCanonical(p => parseCurrentTable(currentBytes.get(p) ?? bytes(root,p)));
   return { pt:registry.problemTypes, tpl:registry.templates, cc:registry.concepts, cond:registry.conditions,
     packs:unique(canonical.packs, p => p.meta.packId, 'pack'),
-    master:unique(read(root, MASTER).filter(r => ['standardUnitKey','subUnitKey'].includes(r.keyType)), r => r.key, 'master'),
+    master:unique(parseCurrentTable(bytes(root,MASTER)).filter(r => ['standardUnitKey','subUnitKey'].includes(r.keyType)), r => r.key, 'master'),
     bindings:unique(registry.bindingRows.filter(r=>r.status==='ACTIVE'), r => stable([r.curriculum,r.standardCourse,r.standardUnitKey,r.subUnitKey??null,r.problemTypeKey]), 'binding') };
 }
 

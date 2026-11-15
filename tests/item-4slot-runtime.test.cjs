@@ -106,3 +106,67 @@ function nativeM2SourceHold(f) {
 test('M2 native unresolved source evidence remains pending while its valid neighbor registers',t=>{const f=fixture(t),h=nativeM2SourceHold(f),x=mod.build(f.root).index;assert.equal(x.counts.items,2);assert.equal(x.counts.registered,1);assert.equal(x.pending[0].reason,'EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED');assert.equal(x.records[0].questionUid,uid(2));});
 for(const fault of ['accepted-item','unlisted-item','wrong-source','self-review','fields','uid','missing-proof','root-hash'])test('M2 native hold refuses '+fault+' without approving the row',t=>{const f=fixture(t),h=nativeM2SourceHold(f);if(fault==='accepted-item')h.review.items[0].metadataRegistrationStatus='REGISTERED';if(fault==='unlisted-item')h.acceptance.unresolvedItems=[];if(fault==='wrong-source')h.review.sourceArchiveFile='original/middle/m3/1mid/forbidden.js';if(fault==='self-review'){h.independent.examiner='A';h.acceptance.sampleReviewer='A';}if(fault==='fields')h.review.items[0].unresolvedFields=['unrelated'];if(fault==='uid')h.review.items[0].questionUid=uid(2);h.save();if(fault==='missing-proof')fs.rmSync(path.join(f.root,h.h.reviewEvidence.path));if(fault==='root-hash'){h.acceptance.reviewSha256='0'.repeat(64);const raw=JSON.stringify(h.acceptance);f.save(h.h.evidence.path,raw);h.h.evidence.sha256=mod.sha(raw);f.data.evidence.nativeHoldReview.rootAcceptance.sha256=h.h.evidence.sha256;f.save(h.p,f.data);}const x=mod.build(f.root).index;assert.equal(x.counts.registered,1);assert.match(x.pending[0].reason,/INVALID_REGISTRATION_HOLD/);assert.equal(x.records[0].questionUid,uid(2));});
 test('M2 hold cannot waive an empty goal or method',t=>{const f=fixture(t),h=nativeM2SourceHold(f);f.data.items[0].method=[];h.save();assert.match(mod.build(f.root).index.pending[0].reason,/REQUIRED_SLOT_EMPTY:method/);});
+
+// The private intake is exercised with synthetic text only. The author and the
+// independent review are real files outside the repository, not hash-only claims.
+const partial=require('../tools/4slot/partial-submission.cjs');
+const importer=require('../tools/4slot/import-4slot.cjs');
+const validator=require('../tools/4slot/validate-4slot.cjs');
+function privatePartialFixture(t) {
+ const f=fixture(t),privateDir=fs.mkdtempSync(path.join(os.tmpdir(),'four-slot-private-'));
+ t.after(()=>fs.rmSync(privateDir,{recursive:true,force:true}));
+ fs.rmSync(path.join(f.root,rel));
+ f.dict.dictionaryVersion='term-dict-v1.6-2026-11-15';
+ f.bank[0].content='Find x using method';f.sync();
+ const dictPath='docs/architecture/4slot/term-dictionary-v1.6.json';f.save(dictPath,f.dict);
+ execFileSync('git',['init','-q',f.root]);execFileSync('git',['-C',f.root,'add','.']);
+ execFileSync('git',['-C',f.root,'-c','user.name=Test','-c','user.email=test@example.invalid','commit','-qm','public source and dictionary']);
+ const item={questionUid:uid(1),sourceOrdinal:1,sourceQuestionNo:1,format:'단일 정답',slots:{given:[{term:'x',src:'stem',quote:'x'}],goal:[{term:'x',src:'stem',quote:'Find x'}],method:[{term:'method',src:'stem',quote:'using method',evidenceType:'IMPLIED',justification:'Synthetic private role explanation.'}],condition:[]}};
+ const compact={ordinal:1,format:item.format,given:[1],goal:[1],method:[3],condition:[],candidates:[]};
+ const candidate={author:'fixture-author',authoredAtUtc:'2026-11-15T00:00:00Z',provisionalItem:item,canonicalTermIdVector:{given:[1],goal:[1],method:[3],condition:[]},vectorSha256:'a'.repeat(64)};
+ const review={schemaVersion:'q22-private-independent-current-source-vector-review-v2',author:candidate.author,reviewer:'fixture-reviewer',reviewedAtUtc:'2026-11-15T01:00:00Z',decision:partial.DECISION,candidateSha256:null,vectorSha256:candidate.vectorSha256,questionUid:uid(1),sourceOrdinal:1,sourceBlob:mod.blob(f.js()),dictionaryBlob:mod.blob(fs.readFileSync(path.join(f.root,dictPath))),scope:{sourceExamDenominator:2,reviewedVectorCount:1,unsubmittedCount:1,otherUidApprovals:0},approvalBoundaries:{fourSlotVectorReviewAccepted:true,fullSemanticFinalQaIssued:false,nativeMetadataApprovalIssued:false,newMathQa:0,sourceChanges:0},validatorBoundary:{currentSourceQuoteChecks:3,sourceQuoteFailures:0},quoteChecks:partial.SLOTS.flatMap(s=>item.slots[s].map((e,i)=>({candidateEntryPointer:`/provisionalItem/slots/${s}/${i}`,quoteSha256:mod.sha(e.quote),literalPresent:true})))};
+ const input={schemaVersion:'q22-accepted-private-vector-input-v1',classification:'PRIVATE_NOT_FOR_PUBLIC_GIT',status:'ACCEPTED_VECTOR_ONLY_PENDING_FORMAL_PARTIAL_SUBMISSION_CONTRACT',sourceArchiveFile:source,sourceGitBlobSha:review.sourceBlob,sourceRawSha256:mod.sha(f.js()),dictionaryVersion:f.dict.dictionaryVersion,dictionaryGitBlob:review.dictionaryBlob,sourceDenominator:2,selected:[{questionUid:uid(1),sourceOrdinal:1}],unsubmitted:[{questionUid:uid(2),sourceOrdinal:2,reason:'UNSUBMITTED_NO_APPROVAL_NO_REGISTRATION'}],items:[item],candidates:[],author:{identity:candidate.author},independentReview:{identity:review.reviewer,decision:review.decision,reviewedAtUtc:review.reviewedAtUtc},publicCompactItem:{},newMathQa:0,newSemanticApproval:0,sourceChanges:0,unsubmittedApprovals:0,unsubmittedRegistrations:0};
+ function privateSave(name,doc){const file=path.join(privateDir,name),raw=JSON.stringify(doc)+'\n';fs.writeFileSync(file,raw);return{path:file,sha256:mod.sha(raw)};}
+ function savePrivate(){const a=privateSave('candidate.json',candidate);input.author.candidatePath=a.path;input.author.candidateSha256=a.sha256;review.candidateSha256=a.sha256;Object.assign(input.independentReview,privateSave('review.json',review));Object.assign(input.publicCompactItem,privateSave('compact-item.json',compact));return privateSave('accepted-input.json',input).path;}
+ const inputPath=savePrivate(),args={root:f.root,inputPath,reviewer:review.reviewer,requestId:'synthetic-partial',expectedCompactSha256:'NONE'};
+ const submit=(options={})=>importer.importPrivatePartial({...args,...options});
+ const submission=()=>({schemaVersion:'archive-meta-4slot-v0',sourceArchiveFile:source,sourceGitBlobSha:input.sourceGitBlobSha,dictionaryVersion:input.dictionaryVersion,judgedBy:{agent:candidate.author,at:candidate.authoredAtUtc},items:input.items,candidates:[],selfCheck:{},scope:partial.SCOPE,expectedQuestionCount:input.sourceDenominator,selected:input.selected.map(r=>({...r,sourceQuestionNo:String(f.bank[r.sourceOrdinal-1]?.id)})),unsubmitted:input.unsubmitted.map(({reason,...r})=>({...r,sourceQuestionNo:String(f.bank[r.sourceOrdinal-1]?.id)}))});
+ return {...f,privateDir,inputPath,input,candidate,review,item,compact,args,submit,submission,savePrivate,dictPath};
+}
+test('full coverage remains strict while an explicit canonical partial partition validates only its selection',t=>{
+ const f=privatePartialFixture(t),d=f.submission(),full=structuredClone(d);for(const k of ['scope','expectedQuestionCount','selected','unsubmitted'])delete full[k];
+ assert.ok(validator.validateData(full,{root:f.root}).fail.includes('#2 missing'));
+ const v=validator.validateData(d,{root:f.root});assert.deepEqual(v.fail,[]);assert.equal(v.stats.unsubmitted,1);assert.equal(v.stats.completeExam,false);
+});
+test('private import emits safe IDs and spans; unsubmitted rows are absent from every consumer operation',t=>{
+ const f=privatePartialFixture(t),sourceBefore=fs.readFileSync(path.join(f.root,'archive/exams/'+source)),identityBefore=fs.readFileSync(path.join(f.root,'archive/data/question_identity_map.json'));
+ const dry=f.submit();assert.equal(dry.write,false);assert.equal(fs.existsSync(path.join(f.root,rel)),false);
+ const r=f.submit({write:true}),x=mod.build(f.root).index,api=consumer.createIndex(x);assert.equal(r.selected,1);assert.equal(r.completeExam,false);assert.equal(x.counts.items,1);assert.equal(x.counts.registered,1);assert.equal(x.counts.pending,1);assert.equal(x.files[0].expectedQuestionCount,2);assert.equal(x.files[0].completeExam,false);assert.equal(x.files[0].status,'SUPPLEMENT_PENDING');assert.equal(x.pending[0].reason,'NOT_SUBMITTED');assert.equal(x.pending[0].questionUid,uid(2));assert.equal(mod.verify(x).status,'PASS_WITH_SUPPLEMENTS');
+ assert.deepEqual(api.get(uid(1)).method,[3]);assert.equal(api.get(uid(2)),null);assert.equal(api.hasTerm(uid(2),'method',3,f.dict.dictionaryVersion),false);assert.deepEqual(api.find({method:[3]},{dictionaryVersion:f.dict.dictionaryVersion}).map(x=>x.questionUid),[uid(1)]);
+ const published=fs.readFileSync(path.join(f.root,r.compact.path),'utf8')+fs.readFileSync(path.join(f.root,r.receipt.path),'utf8');for(const literal of ['Synthetic private role explanation.','using method','Find x',f.privateDir])assert.equal(published.includes(literal),false);
+ assert.deepEqual(fs.readFileSync(path.join(f.root,'archive/exams/'+source)),sourceBefore);assert.deepEqual(fs.readFileSync(path.join(f.root,'archive/data/question_identity_map.json')),identityBefore);
+ assert.equal(f.submit({expectedCompactSha256:r.compact.sha256,write:true}).replay,true);
+ assert.throws(()=>f.submit({write:true}),/COMPACT_CAS_MISMATCH/);
+});
+for(const fault of ['duplicate','missing','superset','wrong-uid','wrong-number','denominator','extra-item'])test('explicit partial partition refuses '+fault,t=>{
+ const f=privatePartialFixture(t),d=f.submission();if(fault==='duplicate')d.unsubmitted[0]={...d.selected[0]};if(fault==='missing')d.unsubmitted=[];if(fault==='superset')d.unsubmitted.push({questionUid:uid(3),sourceOrdinal:3,sourceQuestionNo:'3'});if(fault==='wrong-uid')d.selected[0].questionUid=uid(9);if(fault==='wrong-number')d.selected[0].sourceQuestionNo='2';if(fault==='denominator')d.expectedQuestionCount=3;if(fault==='extra-item')d.items.push({...d.items[0],questionUid:uid(2),sourceOrdinal:2});
+ assert.ok(validator.validateData(d,{root:f.root}).fail.some(x=>x.startsWith('PARTIAL_4SLOT:')));
+});
+for(const fault of ['reviewer','self-review','quote-hash','vector','review-scope','missing-review','private-inside-repo','source-drift','dictionary-drift'])test('private intake refuses '+fault+' before writing a compact',t=>{
+ const f=privatePartialFixture(t),options={write:true};
+ if(fault==='reviewer')options.reviewer='other-reviewer';if(fault==='self-review'){f.review.author=f.review.reviewer;f.candidate.author=f.review.reviewer;f.input.author.identity=f.review.reviewer;f.savePrivate();}if(fault==='quote-hash'){f.review.quoteChecks[0].quoteSha256='0'.repeat(64);f.savePrivate();}if(fault==='vector'){f.candidate.canonicalTermIdVector.method=[2];f.savePrivate();}if(fault==='review-scope'){f.review.approvalBoundaries.fourSlotVectorReviewAccepted=false;f.savePrivate();}if(fault==='missing-review')fs.rmSync(f.input.independentReview.path);if(fault==='private-inside-repo'){const p=path.join(f.root,'private.json');fs.copyFileSync(f.inputPath,p);options.inputPath=p;}if(fault==='source-drift'){f.bank[0].content+=' changed';f.sync();}if(fault==='dictionary-drift'){f.dict.terms[2].ko='changed';f.save(f.dictPath,f.dict);}
+ assert.throws(()=>f.submit(options));assert.equal(fs.existsSync(path.join(f.root,rel)),false);
+});
+test('an explicit matching CAS cannot replace a different existing compact or immutable receipt',t=>{
+ const f=privatePartialFixture(t),r=f.submit({write:true}),p=path.join(f.root,rel),other=JSON.stringify({...r.output,reviewedBy:{...r.output.reviewedBy,agent:'another-reviewer'}});fs.writeFileSync(p,other);
+ assert.throws(()=>f.submit({write:true,expectedCompactSha256:mod.sha(other)}),/EXISTING_COMPACT_CONFLICT/);assert.equal(fs.readFileSync(p,'utf8'),other);
+ fs.rmSync(p);fs.appendFileSync(path.join(f.root,r.receipt.path),' ');assert.throws(()=>f.submit({write:true}),/EXISTING_RECEIPT_CONFLICT/);
+});
+for(const fault of ['receipt-sha','quote-span','vector','reviewer','unsubmitted','raw-prose','source-drift','dictionary-drift'])test('runtime rechecks public partial evidence and rejects '+fault+' even with a cached index',t=>{
+ const f=privatePartialFixture(t),r=f.submit({write:true});mod.run(f.root,{write:true});const d=r.output,receipt=r.publicReceipt;
+ if(fault==='receipt-sha')fs.appendFileSync(path.join(f.root,r.receipt.path),' ');
+ else if(fault==='source-drift'){f.bank[0].content+=' changed';f.sync();}
+ else if(fault==='dictionary-drift'){f.dict.terms[2].ko='changed';f.save(f.dictPath,f.dict);}
+ else {if(fault==='quote-span')receipt.items[0].quoteBindings[0].offsetCodepoints++;if(fault==='vector')d.items[0].method=[2];if(fault==='reviewer')receipt.acceptance.reviewer='another-reviewer';if(fault==='unsubmitted')d.unsubmitted[0].questionUid=uid(9);if(fault==='raw-prose')receipt.privateQuote='not allowed';const raw=JSON.stringify(receipt)+'\n';f.save(r.receipt.path,raw);d.evidence.receipt.sha256=mod.sha(raw);f.save(rel,importer.serialize(d));}
+ const x=mod.build(f.root).index;assert.equal(x.counts.registered,0);assert.match(x.pending[0].reason,/PARTIAL_4SLOT:/);assert.equal(consumer.createIndex(x).get(uid(1)),null);
+});
