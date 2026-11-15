@@ -118,3 +118,33 @@ test('an empty queue replays as no work with no state mutation',async t=>{
   const replay=await f.replay();assert.equal(replay.replayed,0);assert.equal(replay.replayVerified,true);
   assert.deepEqual(replay.plannedPaths,[]);assert.deepEqual(f.bytes(statePath),before);
 });
+
+test('a new registry binding retries pending source without replacing a partial basic approval or clearing its holds',async t=>{
+  const f=fixture(t,{count:2,max:2,pending:()=>false});
+  const metadata=f.read(metaPath),held=metadata.records[0];
+  Object.assign(held,{metadataStatus:'approved_partial_with_explicit_holds',
+    tagStatus:'approved_subunit_concept_partial',metadataRevision:'original-basic-review',
+    approvalEvidence:['review/original-basic-classification.json'],
+    fieldStatus:{standardUnit:'approved_source',subUnit:'approved_source',concept:'approved_classification',
+      difficulty:'approved_source',problemType:'manual_review_pending',template:'manual_review_pending'}});
+  f.put(metaPath,metadata);
+  const heldBefore=structuredClone(held),sourceBefore=f.bytes('archive/exams/'+source),identityBefore=f.bytes(identityPath);
+  const bindings=f.read(compiled+'/curriculum_bindings.json');
+  f.put(compiled+'/curriculum_bindings.json',{...bindings,bindings:[]});f.refreshRegistry();
+  const beforeBinding=await f.first();assert.equal(beforeBinding.applied,0);assert.equal(beforeBinding.pending,2);
+  const signatureBefore=f.read(statePath).pending[source+'#1'].attemptSignature;
+  f.put(compiled+'/curriculum_bindings.json',bindings);f.refreshRegistry();
+  const registered=await f.first();
+  assert.equal(registered.applied,1,'the ordinary unreviewed second UID still uses the existing producer');
+  const kept=registered.results.find(r=>r.questionUid===f.uid(1));
+  assert.equal(kept.status,'SUPPLEMENT_PENDING');assert.deepEqual(kept.reasons,['EXPLICIT_PARTIAL_REVIEW_HOLD']);
+  assert.equal(kept.requestId,undefined);assert.equal(kept.receiptPath,undefined);
+  assert.notEqual(f.read(statePath).pending[source+'#1'].attemptSignature,signatureBefore);
+  assert.deepEqual(f.read(metaPath).records[0],heldBefore);
+  assert.deepEqual(f.bytes('archive/exams/'+source),sourceBefore);assert.deepEqual(f.bytes(identityPath),identityBefore);
+  const runtime=f.read('archive/data/meta-foundation/runtime/middle3-v1.json');
+  assert.deepEqual(runtime.records.map(r=>r.questionUid),[f.uid(2)]);
+  const replay=await f.replay();assert.equal(replay.replayVerified,true);assert.equal(replay.replayed,2);
+  assert.equal(replay.results.find(r=>r.questionUid===f.uid(1)).status,'SUPPLEMENT_PENDING');
+  assert.deepEqual(replay.plannedPaths,[]);assert.deepEqual(f.read(metaPath).records[0],heldBefore);
+});

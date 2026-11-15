@@ -440,6 +440,21 @@ metadata·identity·runtime·source를 쓰지 않고 기존 승인 종류·revis
 cursor가 이미 current와 같거나 Git cache가 채워진 뒤에도 변조를 거부하며,
 `tests/archive-main-meta-batch-replay.test.mjs`의 기존 배치 재실행 계약을 함께 유지한다.
 
+## 기본 승인과 명시적 PT/TPL hold의 AutoMeta 보존 (2026-11-15)
+
+기존 `approved_partial_with_explicit_holds` 행에 PT 또는 TPL의
+`fieldStatus: manual_review_pending`이 남아 있으면, 다른 요청이 ACTIVE binding을 추가해도
+일반 main-merge 등록이 그 미결 값을 채우거나 기존 기본 승인·fieldStatus를 덮지 않는다.
+유효한 native receipt 재사용을 먼저 검사하고, 일반 producer의 원래 UID·지문·ACTIVE·난도·근거
+검증을 통과한 뒤에도 이 행은 `SUPPLEMENT_PENDING / EXPLICIT_PARTIAL_REVIEW_HOLD`로 남는다.
+기존 metadata·identity·runtime·학생 원본은 쓰지 않으며 새 승인 또는 hold 해소를 주장하지 않는다.
+해당 미결 필드를 실제 검토한 명시적 등록은 기존 reviewed 경로에서 별도로 수행한다.
+
+registry SHA가 바뀌면 pending 원본을 다시 평가하는 동작과 일반 미승인 행의 main-merge 등록,
+valid native reuse 및 stale native 거부 계약은 유지한다. 배치 회귀는 실제 registry 변화 뒤
+부분 승인 행의 전체 metadata를 보존하고 다른 미승인 UID만 등록되는지, 같은 배치 재실행이
+동일 선택과 pending 사유를 유지하는지 확인한다.
+
 ## 검증
 
 `node --test tests/archive-reviewed-exam-registration-v2.test.mjs`는 격리된 임시 저장소에서

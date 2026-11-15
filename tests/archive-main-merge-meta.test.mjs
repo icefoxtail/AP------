@@ -36,6 +36,29 @@ test('runtime owner is not silently moved',()=>{const f=fixture();f.runtimeOwner
 test('missing semantic rationale is not synthesized',()=>{const f=fixture();delete f.question.decisiveStep;assert.deepEqual(planQuestion(f).reasons,['SOURCE_SEMANTIC_RATIONALE_MISSING']);});
 test('unknown difficulty is retained as debt',()=>{const f=fixture();f.question.difficultyBucket='UNKNOWN';assert.ok(planQuestion(f).reasons.includes('DIFFICULTY_INCOMPLETE'));});
 test('unchanged approved values keep independent review provenance',()=>{const f=fixture();f.previous=structuredClone(f.question);f.current={...f.current,problemTypeKey:'PT_ROOT',templateKey:'TPL_ROOT',metadataStatus:'approved_semantic_review',reviewStatus:'reviewed_pass',metadataApprovalType:'REVIEW2'};const r=planQuestion(f);assert.equal(r.final.reviewStatus,'reviewed_pass');assert.equal(r.final.metadataApprovalType,'REVIEW2');assert.equal(r.preserveReview,true);});
+for(const [label,held,caughtUp] of [
+  ['both type fields',['problemType','template'],false],
+  ['problem type only',['problemType'],false],
+  ['template only',['template'],false],
+  ['unchanged pending source',['problemType','template'],true],
+])test('partial basic approval keeps its explicit '+label+' hold when ACTIVE binding becomes available',()=>{
+  const f=fixture();
+  if(caughtUp)f.previous=structuredClone(f.question);
+  Object.assign(f.current,{metadataStatus:'approved_partial_with_explicit_holds',
+    tagStatus:'approved_subunit_concept_partial',metadataRevision:'original-basic-review',
+    approvalEvidence:['review/original-basic-classification.json'],
+    fieldStatus:{standardUnit:'approved_source',subUnit:'approved_source',concept:'approved_classification',
+      difficulty:'approved_source',...Object.fromEntries(held.map(k=>[k,'manual_review_pending']))}});
+  const before=JSON.stringify({question:f.question,previous:f.previous,current:f.current,identity:f.identity});
+  const binding=f.registry.bindingRows;f.registry.bindingRows=[];
+  assert.equal(planQuestion(f).status,'SUPPLEMENT_PENDING');
+  f.registry.bindingRows=binding;
+  const result=planQuestion(f);
+  assert.equal(result.status,'SUPPLEMENT_PENDING');
+  assert.deepEqual(result.reasons,['EXPLICIT_PARTIAL_REVIEW_HOLD']);
+  assert.equal(result.final,undefined);assert.equal(result.nativeReviewReceipt,undefined);
+  assert.equal(JSON.stringify({question:f.question,previous:f.previous,current:f.current,identity:f.identity}),before);
+});
 function nativeReviewFixture(t,{omitFields=[],questionOverrides={},officialValidator=false,ordinal=1,globalQuestionNo=ordinal}={}) {
   const f=fixture(),dir=fs.mkdtempSync(path.join(os.tmpdir(),'auto-meta-native-review-'));
   t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
