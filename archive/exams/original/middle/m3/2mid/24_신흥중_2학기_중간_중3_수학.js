@@ -39,6 +39,17 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 각 A를 기준으로 직각삼각형의 굵은 빗변 AB는 17, 밑변 AC는 15, 점선으로 그린 맞은편 변 BC는 8이다.",
     "solutionImageCaption": "각을 바꾸어도 빗변은 그대로이고 맞은편 변과 이웃한 변의 역할은 바뀐다. 정답 ①, ③.",
     "solutionImageSize": "full"
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1,
+    "primaryMethod": "각A와각B의 맞은편·이웃한 변·빗변을 구별하여sin과tan을 뒤집어 쓴 두 선지를 찾는다.",
+    "decisiveStep": "각A와각B의 맞은편·이웃한 변·빗변을 구별하여sin과tan을 뒤집어 쓴 두 선지를 찾는다."
   },
   {
     "id": 2,
@@ -72,11 +83,22 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
     "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q2-solution.svg",
     "solutionImageAlt": "해설 그림: 밑변 6, 높이 8, 빗변 10의 직각삼각형이다. 밑변과 높이 및 빗변과 안쪽 점선이 각각 수직이며, 각 x와 y에 같은 호를 표시했다.",
     "solutionImageCaption": "각 x와 y가 같아 두 삼각비를 길이 6, 8, 10인 같은 삼각형에서 읽을 수 있다. 정답 ②.",
     "solutionImageSize": "full"
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": ["CC_PYTHAGOREAN_THEOREM","CC_PERPENDICULAR"],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "primaryMethod": "피타고라스로 큰 삼각형의 빗변을 복원하고 서로 수직인 두 직선쌍의 각을 이동하여y=x로 만들어 삼각비를 합한다.",
+    "decisiveStep": "피타고라스로 큰 삼각형의 빗변을 복원하고 서로 수직인 두 직선쌍의 각을 이동하여y=x로 만들어 삼각비를 합한다."
   },
   {
     "id": 3,
@@ -109,6 +131,17 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1,
+    "primaryMethod": "30°·45°·0°·90°의 삼각비 표준값을 그대로 대입하여 식의 값을 계산한다.",
+    "decisiveStep": "30°·45°·0°·90°의 삼각비 표준값을 그대로 대입하여 식의 값을 계산한다."
   },
   {
     "id": 4,
@@ -141,8 +174,19 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_SLOPE","CC_LINE_EQUATION"],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "오른쪽으로 내려가는 직선의 음의 기울기를tan60°의 절댓값으로 정하고 y절편4를 결합해 직선식을 구한다.",
+    "decisiveStep": "오른쪽으로 내려가는 직선의 음의 기울기를tan60°의 절댓값으로 정하고 y절편4를 결합해 직선식을 구한다."
   },
   {
     "id": 5,
@@ -175,6 +219,17 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION"
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": ["CC_RADICAL_ABSOLUTE_VALUE"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "0<x<45°로sin과cos의 부호·크기관계를 정하고 제곱근제곱을 절댓값으로 풀어 식을 간단히 한다.",
+    "decisiveStep": "0<x<45°로sin과cos의 부호·크기관계를 정하고 제곱근제곱을 절댓값으로 풀어 식을 간단히 한다."
   },
   {
     "id": 6,
@@ -209,6 +264,17 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1,
+    "primaryMethod": "단위 사분원 그림에서 주어진 삼각비 수치를 읽어tan55°에서cos35°를 뺀다.",
+    "decisiveStep": "단위 사분원 그림에서 주어진 삼각비 수치를 읽어tan55°에서cos35°를 뺀다."
   },
   {
     "id": 7,
@@ -240,7 +306,18 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+    "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION"
+  ,
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": ["CC_CROSS_MULTIPLICATION_FACTORIZATION"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "이차식을 인수분해한 두 근 중 예각의sin 범위에 맞는 근을 고르고 cos·tan을sin으로 정리한다.",
+    "decisiveStep": "이차식을 인수분해한 두 근 중 예각의sin 범위에 맞는 근을 고르고 cos·tan을sin으로 정리한다."
   },
   {
     "id": 8,
@@ -279,6 +356,17 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 같은 높이 AC에 대해 왼쪽 B의 30도와 가운데 E의 60도에서 각각 밑변을 재는 두 직각삼각형이다. BE는 6, EC는 x이다.",
     "solutionImageCaption": "큰 삼각형의 밑변은 6+x, 작은 삼각형의 밑변은 x이고 높이는 같다. 정답 ④.",
     "solutionImageSize": "full"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "primaryMethod": "공통높이AC를 두 관측각의tan으로 각각 나타내고 두 밑변의 길이차6을 이용한 같은높이 식으로x를 정한다.",
+    "decisiveStep": "공통높이AC를 두 관측각의tan으로 각각 나타내고 두 밑변의 길이차6을 이용한 같은높이 식으로x를 정한다."
   },
   {
     "id": 9,
@@ -317,6 +405,17 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 점 C에서 밑변 AB로 수선을 내려 두 직각삼각형을 만들었다. 높이 CD는 4이고 AD와 같으며, BD는 4√3이다.",
     "solutionImageCaption": "밑변은 BD와 AD를 합한 길이이고 수직 높이는 CD이다. 정답 ⑤.",
     "solutionImageSize": "full"
+  ,
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B34",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 3,
+    "primaryMethod": "삼각형내각합으로45°를 찾고 보조 수선을 그어30°와45°의 두 직각삼각형에서 밑변과높이를 만들어 넓이를 계산한다.",
+    "decisiveStep": "삼각형내각합으로45°를 찾고 보조 수선을 그어30°와45°의 두 직각삼각형에서 밑변과높이를 만들어 넓이를 계산한다."
   },
   {
     "id": 10,
@@ -352,6 +451,17 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "primaryMethod": "탑의 공통높이에서 두 수평거리를tan으로 나타내고 거리합10의 식을 정리한 과정을 빈칸과 대조한다.",
+    "decisiveStep": "탑의 공통높이에서 두 수평거리를tan으로 나타내고 거리합10의 식을 정리한 과정을 빈칸과 대조한다."
   },
   {
     "id": 11,
@@ -390,6 +500,17 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 손에서 올려다본 각은 40도이고 연줄은 40 m이다.",
     "solutionImageCaption": "손 높이와 손에서 연까지의 높이차를 더한다. 정답 ②.",
     "solutionImageSize": "full"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "연줄의 길이에sin40°를 곱해 손에서의 높이차를 얻고 손높이를 더한 뒤 지정된 자리로 반올림한다.",
+    "decisiveStep": "연줄의 길이에sin40°를 곱해 손에서의 높이차를 얻고 손높이를 더한 뒤 지정된 자리로 반올림한다."
   },
   {
     "id": 12,
@@ -423,12 +544,23 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 빗변 5인 직각삼각형에서 각 B는 42도, 각 A는 48도다. 두 각에서 바라보는 변 AC를 굵게 표시했다.",
     "solutionImageCaption": "AC는 42°에서 맞은편 변, 48°에서 이웃한 변이다. 정답 ①, ⑤.",
     "solutionImageSize": "full"
+  ,
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B12",
+    "conceptClusterKey": "TRIG_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 2,
+    "primaryMethod": "같은 목표변AC를 한 예각의 맞은편변sin과 다른 예각의 이웃변cos로 각각 표현해 두 식을 고른다.",
+    "decisiveStep": "같은 목표변AC를 한 예각의 맞은편변sin과 다른 예각의 이웃변cos로 각각 표현해 두 식을 고른다."
   },
   {
     "id": 13,
@@ -467,6 +599,17 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 각 A의 이등분선 AP를 굵은 밑변으로 표시했다. 점 B와 C에서 이 밑변을 포함한 직선으로 내린 높이는 각각 2√3과 4√3이다.",
     "solutionImageCaption": "두 삼각형의 넓이를 공통 밑변 AP와 두 높이로 나타내어 더한다. 정답 ②.",
     "solutionImageSize": "full"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 4,
+    "primaryMethod": "각이등분으로60°인 두 삼각형을 얻고 삼각비로 표현한 세 넓이의 합 관계에 AP를 미지수로 넣어 길이를 역산한다.",
+    "decisiveStep": "각이등분으로60°인 두 삼각형을 얻고 삼각비로 표현한 세 넓이의 합 관계에 AP를 미지수로 넣어 길이를 역산한다."
   },
   {
     "id": 14,
@@ -503,6 +646,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원에 내접한 삼각형에서 OM과 ON이 각각 두 현에 수직이고, 두 현의 각 절반에 같은 눈금이 있다. 두 중점을 잇는 MN은 BC와 평행하다.",
     "solutionImageCaption": "M, N은 서로 다른 두 현의 중점이므로 MN은 BC와 평행하고 길이는 BC의 절반이다. 정답 ⑤.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_MIDPOINT"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "중심에서 현으로 내린 수선이 현을 이등분함을 확인하고 삼각형 중점연결정리를 적용하여 항상성립하는 네 진술과 아닌 하나를 구별한다.",
+    "decisiveStep": "중심에서 현으로 내린 수선이 현을 이등분함을 확인하고 삼각형 중점연결정리를 적용하여 항상성립하는 네 진술과 아닌 하나를 구별한다."
   },
   {
     "id": 15,
@@ -539,6 +695,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 중심 O에서 굵은 현과 다른 현까지의 점선 수선 길이가 모두 4 cm이다. 다른 현의 한쪽 5 cm에 같은 길이 눈금을 표시했다.",
     "solutionImageCaption": "한 현은 길이 5 cm인 두 부분으로 나뉘고, 두 현은 중심에서 같은 거리에 있다. 정답 ③.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 1,
+    "primaryMethod": "중심거리가 같은 두 현은 같고 중심수선이 현을 이등분한다는 성질로 반현5를두배하여 옮긴다.",
+    "decisiveStep": "중심거리가 같은 두 현은 같고 중심수선이 현을 이등분한다는 성질로 반현5를두배하여 옮긴다."
   },
   {
     "id": 16,
@@ -575,6 +744,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 작은 원에 접하는 현 AB의 중점 M에서 직각 표시가 있다. 두 반지름 OA와 OM은 각각 R과 r이고, 반현 AM과 MB에는 같은 눈금이 있다.",
     "solutionImageCaption": "AM의 제곱은 큰 반지름과 작은 반지름의 제곱 차이다. 정답 ③.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_CIRCLE_CIRCUMFERENCE","CC_CIRCLE_TANGENT_PROPERTY","CC_PYTHAGOREAN_THEOREM"],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "primaryMethod": "두 원의 넓이차에서 R²−r²를 구하고 작은원접선의 중심거리가r임을 이용해 큰원의 반현을 피타고라스로 구한다.",
+    "decisiveStep": "두 원의 넓이차에서 R²−r²를 구하고 작은원접선의 중심거리가r임을 이용해 큰원의 반현을 피타고라스로 구한다."
   },
   {
     "id": 17,
@@ -608,6 +790,19 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q17-solution.svg"
+  ,
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": null,
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_PYTHAGOREAN_THEOREM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "접점의 직각과 PO=PB+r를 이용해피타고라스의 두 변에 같은r을 넣고 반지름을 구한다.",
+    "decisiveStep": "접점의 직각과 PO=PB+r를 이용해피타고라스의 두 변에 같은r을 넣고 반지름을 구한다."
   },
   {
     "id": 18,
@@ -645,6 +840,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 사각형의 네 접점 E, F, G, I를 표시했다. 점 D에서 나온 접선 두 개와 점 H에서 나온 접선 두 개에 서로 다른 표시를 붙였다.",
     "solutionImageCaption": "DH는 12+x, HC는 12−x이므로 두 변을 더하면 x가 사라진다. 정답 ④.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": null,
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "difficultyBoundaryFlag": "B34",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyConfidence": "medium",
+    "difficultyBucket": 3,
+    "primaryMethod": "평행한 두 접선 사이 거리를 지름으로 읽고 동일 접선길이 조각을 옮긴 뒤 삼각형 둘레식에서 미지접선조각이 소거됨을 이용한다.",
+    "decisiveStep": "평행한 두 접선 사이 거리를 지름으로 읽고 동일 접선길이 조각을 옮긴 뒤 삼각형 둘레식에서 미지접선조각이 소거됨을 이용한다."
   },
   {
     "id": 19,
@@ -678,21 +886,32 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q19-solution.svg",
     "solutionImageAlt": "해설 그림: 접은 선 AB의 서로 반대쪽에 있는 중심 O와 접기 전의 원 위 점 Q를 잇는다. 두 정삼각형에서 중심각 AOB는 120도이고 원주각 APB는 60도이다.",
     "solutionImageCaption": "같은 호를 보는 원주각의 크기는 중심각의 절반이다. 정답 ②.",
     "solutionImageSize": "full"
+  ,
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
+    "crossConceptKeys": ["CC_GEOMETRIC_FOLDING","CC_EQUILATERAL_TRIANGLE","CC_TRIG_RATIO"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 4,
+    "primaryMethod": "원주점을 중심에 포개는 접기로 정삼각형 두 개를 찾아 중심각120°를 만들고 원주각60°를 거쳐 삼각비로 넓이를 계산한다.",
+    "decisiveStep": "원주점을 중심에 포개는 접기로 정삼각형 두 개를 찾아 중심각120°를 만들고 원주각60°를 거쳐 삼각비로 넓이를 계산한다."
   },
   {
     "id": 20,
     "level": "중",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
-    "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-06",
-    "standardUnit": "원의 성질",
-    "standardUnitOrder": 6,
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -711,14 +930,27 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "먼저 빗변의 길이를 구한다.\n$AB=\\sqrt{9^2+12^2}=\\sqrt{225}=15\\,\\mathrm{cm}$이다.\n\n$\\triangle ABC$의 넓이는\n$\\dfrac12\\cdot9\\cdot12=54\\,\\mathrm{cm}^2$이다.\n\n내접원의 반지름을 $r$라 하자.\n세 변을 밑변으로 하고 높이가 모두 $r$인 세 삼각형의 넓이를 더하면\n$54=\\dfrac12r(9+12+15)$이다.\n\n$54=18r$\n$r=3\\,\\mathrm{cm}$이다.\n\n따라서 정답은 ①이다.",
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_신흥중_2학기_중간_중3_수학/q20-solution.svg",
     "solutionImageAlt": "해설 그림: 내접원 중심 O와 세 꼭짓점을 연결한다. 세 접점으로 내린 점선 반지름은 모두 같은 길이이며 각 변과 수직이다.",
     "solutionImageCaption": "세 변을 각각 밑변으로 삼으면 높이가 모두 반지름인 삼각형 세 개의 넓이 합이 54 cm²이다. 정답 ①.",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "conceptClusterKey": "TRIANGLE_PROPERTIES",
+    "crossConceptKeys": ["CC_PYTHAGOREAN_THEOREM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "피타고라스로 빗변과 삼각형 넓이를 구한 뒤 내심의 세 변 등거리 r을 높이로 하는 넓이 합에서 내접반지름을 구한다. 접선 등길이는 사용하지 않는다.",
+    "decisiveStep": "피타고라스로 빗변과 삼각형 넓이를 구한 뒤 내심의 세 변 등거리 r을 높이로 하는 넓이 합에서 내접반지름을 구한다. 접선 등길이는 사용하지 않는다."
   },
   {
     "id": 21,
@@ -741,8 +973,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$48-14\\sqrt3\\,\\mathrm{cm}^2$",
     "solution": "$\\angle ABC=90^\\circ$이고 $\\angle ABE=60^\\circ$이므로\n$\\angle EBC=30^\\circ$이다.\n\n직각삼각형 $BCE$에서\n$\\tan30^\\circ=\\dfrac{CE}{BC}$이므로\n$\\dfrac1{\\sqrt3}=\\dfrac{CE}{6}$\n$CE=2\\sqrt3$이다.\n따라서\n$DE=DC-CE=6-2\\sqrt3$이다.\n\n정사각형 $BEFG$에서 $BE\\perp EF$이다.\n$BE$가 수평선과 $30^\\circ$를 이루므로 $EF$는 수평선과 $60^\\circ$를 이룬다.\n직각삼각형 $DHE$에서\n$\\tan60^\\circ=\\dfrac{DE}{HD}$이므로\n$HD=\\dfrac{6-2\\sqrt3}{\\sqrt3}=2\\sqrt3-2$이다.\n\n$[\\triangle BCE]=\\dfrac12\\cdot6\\cdot2\\sqrt3=6\\sqrt3$\n$[\\triangle EHD]=\\dfrac12(6-2\\sqrt3)(2\\sqrt3-2)=8\\sqrt3-12$이다.\n\n따라서 색칠한 부분의 넓이는\n$6^2-6\\sqrt3-(8\\sqrt3-12)$\n$=48-14\\sqrt3\\,\\mathrm{cm}^2$이다.",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -751,6 +983,17 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 정사각형 ABCD에서 삼각형 BCE와 DHE의 빗변을 굵게 표시했다. BC는 6 cm, CE는 2√3, DH는 2√3−2이다.",
     "solutionImageCaption": "큰 정사각형의 넓이에서 두 직각삼각형의 넓이를 뺀다. 정답 48−14√3 cm².",
     "solutionImageSize": "full"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_PERPENDICULAR"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 4,
+    "primaryMethod": "두 정사각형의 수직변에서30°와60°를 옮겨 두 삼각형의 높이를 구하고 원정사각형에서 두 넓이를 뺀다.",
+    "decisiveStep": "두 정사각형의 수직변에서30°와60°를 옮겨 두 삼각형의 높이를 구하고 원정사각형에서 두 넓이를 뺀다."
   },
   {
     "id": 22,
@@ -783,6 +1026,17 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 지면 위 B와 D가 10 m 떨어져 있다. B의 30도와 D의 45도에서 같은 꼭대기 A를 보며, 밑변 DC와 건물 높이 AC는 같은 눈금으로 표시했다.",
     "solutionImageCaption": "45° 쪽의 밑변은 높이와 같고, 30° 쪽의 밑변은 여기에 10 m를 더한 길이다. 정답 5√3+5 m.",
     "solutionImageSize": "full"
+  ,
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+    "crossConceptKeys": ["CC_LINEAR_EQUATIONS"],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "primaryMethod": "공통 건물높이를45°에서 수평거리와 같게 놓고30°에서 전체거리10+x를 써 하나의 방정식으로 높이를 결정한다.",
+    "decisiveStep": "공통 건물높이를45°에서 수평거리와 같게 놓고30°에서 전체거리10+x를 써 하나의 방정식으로 높이를 결정한다."
   },
   {
     "id": 23,
@@ -814,6 +1068,19 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 중심에서 정삼각형의 각 변까지 같은 길이의 수선을 표시했다. 점 A에서 밑변 중점 L로 내린 높이는 점선을 이었고 BL은 3 cm이다.",
     "solutionImageCaption": "삼각형 ABC가 정삼각형이므로 밑변 반쪽과 피타고라스 정리로 높이를 구한다. 정답 9√3 cm².",
     "solutionImageSize": "full"
+  ,
+    "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": ["CC_EQUILATERAL_TRIANGLE","CC_PYTHAGOREAN_THEOREM","CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 3,
+    "primaryMethod": "중심거리 세 개가 같아 세 현이 같음을 확정하고 정삼각형의 높이를 피타고라스로 구해 넓이를 산출한다.",
+    "decisiveStep": "중심거리 세 개가 같아 세 현이 같음을 확정하고 정삼각형의 높이를 피타고라스로 구해 넓이를 산출한다."
   },
   {
     "id": 24,
@@ -844,5 +1111,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 삼각형의 변 BC가 원과 만나는 점은 F이다. B에서 그은 접선 BD와 BF, C에서 그은 접선 CE와 CF는 각각 같은 눈금을 갖는다.",
     "solutionImageCaption": "삼각형의 둘레에서 BF와 FC를 BD와 CE로 바꾸면 AD와 AE의 합이 된다. 정답 22 cm.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": null,
+    "conceptClusterKey": "CIRCLE_LINE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBucket": 2,
+    "primaryMethod": "세 외부점의 같은 접선 길이를 옮겨 삼각형 둘레를 AD+AE로 다시 묶고 주어진 접선 길이의 두 배로 계산한다.",
+    "decisiveStep": "세 외부점의 같은 접선 길이를 옮겨 삼각형 둘레를 AD+AE로 다시 묶고 주어진 접선 길이의 두 배로 계산한다."
   }
 ];

@@ -37,6 +37,16 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 O의 중심각 AOB와, 점 C를 포함하지 않는 큰 호 AB 및 원주각 x를 보여 주는 그림",
     "solutionImageCaption": "파란 중심각 ∠AOB=100°이므로 점 C를 포함하지 않는 큰 호 AB(주황)는 360°−100°=260°이다. 원주각 x는 이 큰 호의 절반이다. 정답은 130°이다.",
     "solutionImageSize": "full"
+  ,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "점C를 포함하지 않는 큰 호를 360°에서 작은 중심각을 빼서 구하고 그 절반을 원주각으로 취한다.",
+    "decisiveStep": "점C를 포함하지 않는 큰 호를 360°에서 작은 중심각을 빼서 구하고 그 절반을 원주각으로 취한다."
   },
   {
     "id": 2,
@@ -74,6 +84,16 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 반원 O의 지름 AB와 접선 BP에서 각 α가 같은 두 각, 그리고 각의 이등분선 PD와 맞꼭지각 110°를 두 그림으로 보여 주는 그림",
     "solutionImageCaption": "∠CAB=α라 하면 AB가 지름이므로 ∠ACB=90°이고 접선과 현의 각으로 ∠CBP=α(빨강)이다. 따라서 ∠APB=90°−α이고 PD가 이를 이등분한다. 맞꼭지각 ∠BEP=∠CED=110°를 삼각형 BEP에 쓰면 α=50°이다. 정답은 50°이다.",
     "solutionImageSize": "full"
+  ,
+    "crossConceptKeys": ["CC_ANGLE_BISECTOR_PROPERTY","CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "지름직각과 접현각으로 삼각형의 각을 α로 표현하고 이등분선과 맞꼭지각을 연결한 일차식에서 목표각을 정한다.",
+    "decisiveStep": "지름직각과 접현각으로 삼각형의 각을 α로 표현하고 이등분선과 맞꼭지각을 연결한 일차식에서 목표각을 정한다."
   },
   {
     "id": 3,
@@ -111,6 +131,16 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 두 접선의 각, 중심각 AOB와 같은 작은 호 AB를 보는 원주각 x를 보여 주는 그림",
     "solutionImageCaption": "접점에서 반지름은 접선에 수직이므로 사각형 O, A, P, B에서 ∠AOB=180°−40°=140°(파랑)이므로 작은 호 AB(주황)도 140°이다. 원주각 x(빨강)는 이 호의 중심각의 절반이다. 정답은 70°이다.",
     "solutionImageSize": "full"
+  ,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 접선 사이 각의 보각으로 중심각을 구한 뒤 그 절반을 같은 호의 원주각으로 구한다.",
+    "decisiveStep": "두 접선 사이 각의 보각으로 중심각을 구한 뒤 그 절반을 같은 호의 원주각으로 구한다."
   },
   {
     "id": 4,
@@ -143,11 +173,21 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "templateKey": null,
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 A, B, C, D와 연장선의 교점 P, 마주 보는 각 쌍과 각 x를 보여 주는 그림",
     "solutionImageCaption": "내접사각형의 마주 보는 각의 합은 180°이므로 ∠BAD=180°−105°=75°이다(파랑 쌍). 삼각형 ABP의 두 각이 75°, 80°이므로 나머지 각 x는 180°−75°−80°=25°이다. 정답은 25°이다.",
     "solutionImageSize": "full"
+  ,
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "원에 내접한 사각형의 대각 합180°에서 한 각을 구하고 연장선 삼각형의 내각합으로 목표각을 구한다.",
+    "decisiveStep": "원에 내접한 사각형의 대각 합180°에서 한 각을 구하고 연장선 삼각형의 내각합으로 목표각을 구한다."
   },
   {
     "id": 5,
@@ -180,11 +220,21 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
     "solutionImage": "assets/images/22_연향중_2학기_기말_중3_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 접선 PT, 현 TC·TA와 같은 크기의 각 쌍, 삼각형 PCT의 각 x를 보여 주는 그림",
     "solutionImageCaption": "∠ABT=112°(파랑)이므로 접선과 현의 각과 원에 내접한 사각형의 성질로 ∠PCT=112°이다. 접선 PT와 현 TC가 이루는 각 ∠PTC는 ∠CAT와 같은 36°(초록)이다. 삼각형 PCT에서 x=180°−112°−36°=32°이다. 정답은 32°이다.",
     "solutionImageSize": "full"
+  ,
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "큰 호를 보는 원주각에서 다른 원주각의 보각을 정하고 접현각으로 외부 삼각형의 한 각을 얻어 내각합을 적용한다.",
+    "decisiveStep": "큰 호를 보는 원주각에서 다른 원주각의 보각을 정하고 접현각으로 외부 삼각형의 한 각을 얻어 내각합을 적용한다."
   },
   {
     "id": 6,
@@ -222,6 +272,16 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 지름 AB, 접선 CP, 30°로 같은 세 각과 변 BC를 보여 주는 그림",
     "solutionImageCaption": "AB가 지름이므로 ∠ACB=90°이고 ∠BAC=30°, AB=10에서 BC=5이다. 접선과 현의 각으로 ∠BCP=30°이고 삼각형 BCP에서 ∠BPC=30°이므로(초록, 같은 크기) BP=BC이다. 정답은 5이다.",
     "solutionImageSize": "full"
+  ,
+    "crossConceptKeys": ["CC_TRIG_RATIO","CC_ISOSCELES_CONVERSE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "지름직각과30° 길이비로 BC를 구한 뒤 접현각을 외부삼각형에 옮겨 두 각이 같은 사실에서 BP=BC를 얻는다.",
+    "decisiveStep": "지름직각과30° 길이비로 BC를 구한 뒤 접현각을 외부삼각형에 옮겨 두 각이 같은 사실에서 BP=BC를 얻는다."
   },
   {
     "id": 7,
@@ -250,6 +310,18 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "자료를 정렬하고 짝수개 중앙의 두 값의 평균을 취한다.",
+    "decisiveStep": "자료를 정렬하고 짝수개 중앙의 두 값의 평균을 취한다."
   },
   {
     "id": 8,
@@ -278,6 +350,18 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "짝수개의 중앙값은 두 중앙 자료의 평균임을 정의와 대조해 다섯번째 하나라는 진술을 배제한다.",
+    "decisiveStep": "짝수개의 중앙값은 두 중앙 자료의 평균임을 정의와 대조해 다섯번째 하나라는 진술을 배제한다."
   },
   {
     "id": 9,
@@ -306,6 +390,18 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "값별 빈도를 세어 공동 최대빈도인 두 값을 모두 최빈값으로 선택한다.",
+    "decisiveStep": "값별 빈도를 세어 공동 최대빈도인 두 값을 모두 최빈값으로 선택한다."
   },
   {
     "id": 10,
@@ -334,6 +430,18 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "산포도의 크기와 자료가 평균 주변에 모인 정도가 반대로 서술된 진술을 찾는다.",
+    "decisiveStep": "산포도의 크기와 자료가 평균 주변에 모인 정도가 반대로 서술된 진술을 찾는다."
   },
   {
     "id": 11,
@@ -364,6 +472,18 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "편차합0으로 빠진 편차를 결정한 뒤 편차 제곱의 평균을 분산으로 계산한다.",
+    "decisiveStep": "편차합0으로 빠진 편차를 결정한 뒤 편차 제곱의 평균을 분산으로 계산한다."
   },
   {
     "id": 12,
@@ -392,6 +512,18 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "주어진 평균에는2배 후1더하기를, 표준편차에는2배만 적용하여 두 결과의 합을 구한다.",
+    "decisiveStep": "주어진 평균에는2배 후1더하기를, 표준편차에는2배만 적용하여 두 결과의 합을 구한다."
   },
   {
     "id": 13,
@@ -428,6 +560,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 두 차례 점수의 산점도에서 2차 점수가 1차 점수보다 높은 학생의 점을 직선 y=x 위쪽에서 주황색으로 표시한 그림",
     "solutionImageCaption": "2차 점수가 1차 점수보다 높은 조건은 y>x이다. 동점인 경계선을 제외하고 위쪽의 주황색 점에 동그라미를 치면 7개이다. 정답은 7명이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 점수 대소 조건을 y>x로 옮겨 대각선 위쪽의 점을 센다.",
+    "decisiveStep": "두 점수 대소 조건을 y>x로 옮겨 대각선 위쪽의 점을 센다."
   },
   {
     "id": 14,
@@ -463,6 +607,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 두 차례 점수의 산점도에서 두 점수의 합이 36 이상인 점을 직선 x+y=36 위쪽에서 주황색으로 표시한 그림",
     "solutionImageCaption": "두 점수의 평균이 18점 이상이면 x+y≥36이다. 경계선 위와 위쪽의 주황색 점에 동그라미를 치면 6개이고 전체 20명 중 30%이다. 정답은 30%이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": ["CC_MEAN","CC_LINEAR_INEQUALITIES"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 점수 평균18이상을 좌표합36이상으로 바꾸어 해당 점의 개수를 전체20명으로 나눈다.",
+    "decisiveStep": "두 점수 평균18이상을 좌표합36이상으로 바꾸어 해당 점의 개수를 전체20명으로 나눈다."
   },
   {
     "id": 15,
@@ -498,6 +654,18 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 청결도와 안전성 산점도에서 청결도가 2 이하인 점을 직선 x=2 왼쪽에서 주황색으로 표시한 그림",
     "solutionImageCaption": "청결도가 2점 이하인 주황색 점은 7개이고 안전성 점수는 4, 2, 1, 2, 3, 4, 5이다. 합 21을 7로 나누면 평균이 나온다. 정답은 3점이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": ["CC_MEAN"],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "가로축 값이2이하인 점만 고른 후 그 세로축 값의 평균을 구한다.",
+    "decisiveStep": "가로축 값이2이하인 점만 고른 후 그 세로축 값의 평균을 구한다."
   },
   {
     "id": 16,
@@ -529,6 +697,18 @@ window.questionBank = [
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "오른쪽으로 갈수록 내려가는 점의 추세를 음의 상관으로 읽고 그에 맞는 생활자료 관계를 고른다.",
+    "decisiveStep": "오른쪽으로 갈수록 내려가는 점의 추세를 음의 상관으로 읽고 그에 맞는 생활자료 관계를 고른다."
   },
   {
     "id": 17,
@@ -560,6 +740,18 @@ window.questionBank = [
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "전체 산점도의 음의 상관 추세를 읽고, 표시점E가 컴퓨터 사용시간이 긴 편이면서 수면시간이 특히 짧아 그 추세가 가장 뚜렷하다는 상대 위치를 해석한다.",
+    "decisiveStep": "전체 산점도의 음의 상관 추세를 읽고, 표시점E가 컴퓨터 사용시간이 긴 편이면서 수면시간이 특히 짧아 그 추세가 가장 뚜렷하다는 상대 위치를 해석한다."
   },
   {
     "id": 18,
@@ -588,6 +780,18 @@ window.questionBank = [
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "각 상황에서 두 변량이 함께 변하는 뚜렷한 경향이 있는지 대조하여 상관 없는 상황을 고른다.",
+    "decisiveStep": "각 상황에서 두 변량이 함께 변하는 뚜렷한 경향이 있는지 대조하여 상관 없는 상황을 고른다."
   },
   {
     "id": 19,
@@ -620,6 +824,16 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 공통접선과 두 원에서 접선과 현의 각을 쓰는 큰 원 그림, E에서 작은 원에 그은 같은 길이의 두 접선을 쓰는 작은 원 그림",
     "solutionImageCaption": "큰 원에서 접선과 현의 각으로 ∠EAC=∠CBA=30°(초록)이고 y=∠BCA=∠BAT'=70°(파랑)이다. 삼각형 AEC에서 ∠AEC=40°이다. E에서 작은 원에 그은 두 접선의 길이가 같으므로 EA=ED이고 ∠EAD=70°이어서 x=∠CAD=70°−30°이다. 정답은 30°이다.",
     "solutionImageSize": "full"
+  ,
+    "crossConceptKeys": ["CC_ISOSCELES_TRIANGLE","CC_TRIANGLE_ANGLE_SUM"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "큰 원의 접현각을 공통접선 교점의 각으로 전달하고 작은 원의 두 접선이 같은 길이임으로 얻은 이등변삼각형에서 목표 각의 차를 구한다.",
+    "decisiveStep": "큰 원의 접현각을 공통접선 교점의 각으로 전달하고 작은 원의 두 접선이 같은 길이임으로 얻은 이등변삼각형에서 목표 각의 차를 구한다."
   },
   {
     "id": 20,
@@ -645,6 +859,18 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": ["CC_QUADRATIC_EQUATION"],
+    "conditionKeys": ["COND_POSITIVE"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "primaryMethod": "문자 자료의 평균과 편차를 a로 나타내 분산 방정식을 세우고 이차방정식의 두 근 중 양수를 선택한다.",
+    "decisiveStep": "문자 자료의 평균과 편차를 a로 나타내 분산 방정식을 세우고 이차방정식의 두 근 중 양수를 선택한다."
   },
   {
     "id": 21,
@@ -676,5 +902,17 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 수학·영어 점수 산점도에서 모두 90점 이상인 점(파랑), 두 점수의 차가 가장 큰 점(주황), 수학 점수가 더 높은 점(초록)을 세 그림으로 나누어 보여 주는 그림",
     "solutionImageCaption": "수학 점수와 영어 점수가 모두 90점 이상인 파란 점은 3개이다. 두 점수의 차가 가장 큰 점은 주황 점, 수학 30점 영어 70점이다. 수학 점수가 영어 점수보다 높은 초록 점(x>y)은 5개이므로 20명 중 25%이다. 정답은 a=3, b=30, c=25이다.",
     "solutionImageSize": "full"
+  ,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_RANGE","COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "primaryMethod": "두 점수90이상 점의 수, 점수차가 최대인 점의 가로좌표, x>y 점의 비율을 각각 그림에서 읽는다.",
+    "decisiveStep": "두 점수90이상 점의 수, 점수차가 최대인 점의 가로좌표, x>y 점의 비율을 각각 그림에서 읽는다."
   }
 ];

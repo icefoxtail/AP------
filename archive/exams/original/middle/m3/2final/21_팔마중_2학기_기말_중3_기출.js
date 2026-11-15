@@ -47,6 +47,10 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원 O 위의 두 점 A, B와 중심 O를 이은 중심각 140도, 큰 호 AB를 보는 점 P의 원주각 x",
     "solutionImageCaption": "중심각이 140°이므로 점 P가 보는 반대쪽 큰 호는 360°−140°=220°이다. 원주각은 같은 호의 중심각의 절반이므로 x는 220°의 절반이다. 정답은 ⑤ 110°이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "주어진 중심각140도의 나머지 큰 호220도를 읽고 그 호에 대한 원주각의 절반 관계를 적용한다.",
+    "decisiveStep": "주어진 중심각140도의 나머지 큰 호220도를 읽고 그 호에 대한 원주각의 절반 관계를 적용한다."
   },
   {
     "id": 2,
@@ -94,6 +98,10 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원에서 호 AB 5cm가 보는 원주각 20도와 호 AB와 호 BC를 합친 호 AC가 보는 원주각 x",
     "solutionImageCaption": "20°인 원주각이 보는 호 AB는 5cm이고 호 BC는 10cm이므로 x가 보는 호 AC는 15cm이다. 같은 원에서 원주각의 크기는 호의 길이에 비례하므로 20°의 3배가 x이다. 정답은 ③ 60°이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "20도 원주각의 대응 호5cm와 목표각의 대응 호15cm를 비교하여 호길이와 원주각의 비례로 목표각을 정한다.",
+    "decisiveStep": "20도 원주각의 대응 호5cm와 목표각의 대응 호15cm를 비교하여 호길이와 원주각의 비례로 목표각을 정한다."
   },
   {
     "id": 3,
@@ -127,10 +135,10 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-    "crossConceptKeys": [],
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM"],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -141,6 +149,10 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 지름 AC와 직각 표시 ∠ADC, 30도인 ∠DAC, 같은 호 AD를 보는 두 원주각 ∠ACD와 x",
     "solutionImageCaption": "AC는 지름이므로 ∠ADC=90°이다. 삼각형 ACD에서 ∠ACD=180°−90°−30°=60°이다. ∠ACD와 x는 같은 호 AD를 보는 원주각이므로 크기가 같다. 정답은 ② 60°이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "지름 AC에 대한 직각 ADC를 만들고 삼각형 ACD의 내각합에서 ACD=60도를 얻은 뒤 같은 호 AD의 원주각 ABD에 옮긴다.",
+    "decisiveStep": "지름 AC에 대한 직각 ADC를 만들고 삼각형 ACD의 내각합에서 ACD=60도를 얻은 뒤 같은 호 AD의 원주각 ABD에 옮긴다."
   },
   {
     "id": 4,
@@ -178,16 +190,20 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
     "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q4-solution.svg",
     "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D와 두 현 AC, BD의 교점 P, 호 AB 68도(파랑), 호 CD 136도(주황), ∠ADB 34도와 각 x=∠DPC",
     "solutionImageCaption": "∠ADB=34°이므로 호 AB는 2×34°=68°이고, 호 CD는 호 AB의 2배인 136°이다. ∠x는 호 CD를 마주 보고 그 맞꼭지각은 호 AB를 마주 보므로 x는 두 호의 합 68°+136°의 절반이다. 정답은 ④ 102°이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "원주각34도로 호 AB68도를 구하고 명시된2배 관계로 CD136도를 얻은 뒤 두 호 합의 절반으로 내부교각을 구한다.",
+    "decisiveStep": "원주각34도로 호 AB68도를 구하고 명시된2배 관계로 CD136도를 얻은 뒤 두 호 합의 절반으로 내부교각을 구한다."
   },
   {
     "id": 5,
@@ -225,16 +241,20 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
     "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q5-solution.svg",
     "solutionImageAlt": "해설 그림: 접선 AT 위의 접점 A와 원 위의 점 B, C로 이루어진 삼각형, 호 AC 128도와 같은 길이의 호 AB, BC",
     "solutionImageCaption": "∠ABC=64°이므로 호 AC는 128°이고, 나머지 두 호의 합은 232°이다. AB=BC이므로 호 AB와 호 BC는 각각 116°이다. 원주각 ∠ACB는 호 AB의 절반이고, 접선과 현이 이루는 각 ∠BAT는 그 호에 대한 원주각과 같다. 정답은 ③ 58°이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "원주각64도의 호AC를 제외한 나머지232도를 같은 두 현 AB·BC의 호로 반분하고, 그 호의 원주각을 접현각 BAT에 대응한다.",
+    "decisiveStep": "원주각64도의 호AC를 제외한 나머지232도를 같은 두 현 AB·BC의 호로 반분하고, 그 호의 원주각을 접현각 BAT에 대응한다."
   },
   {
     "id": 6,
@@ -269,19 +289,23 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_SUPPLEMENTARY_ANGLES"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
     "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q6-solution.svg",
     "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD와 원 위의 점 E, 같은 호 AE를 보는 두 원주각 35도와 y, 바깥각 x",
     "solutionImageCaption": "∠ABE와 ∠ADE는 같은 호 AE를 보는 원주각이므로 y=35°이다. 원에 내접하는 사각형 ABCD에서 ∠ABC=180°−70°=110°이고, x는 그 바깥각이므로 x=70°이다. 따라서 x+y=105°이다. 정답은 ② 105°이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "같은 호 AE의 원주각으로 y를 정하고 내접사각형의 대각 합에서 ABC를 구한 뒤 이웃한 바깥각 x로 바꾸어 두 각을 합한다.",
+    "decisiveStep": "같은 호 AE의 원주각으로 y를 정하고 내접사각형의 대각 합에서 ABC를 구한 뒤 이웃한 바깥각 x로 바꾸어 두 각을 합한다."
   },
   {
     "id": 7,
@@ -314,11 +338,11 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": "PT_CIRCLE_TANGENT",
-    "templateKey": "TM_TANGENT_LENGTH",
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+    "crossConceptKeys": ["CC_INSCRIBED_ANGLE"],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -329,6 +353,10 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 점 P에서 원 O에 그은 두 접선과 접점 A, B, 원 위의 점 Q, 큰 호 230도와 중심각 130도",
     "solutionImageCaption": "∠AQB=115°가 보는 호는 점 Q를 포함하지 않는 큰 호이므로 230°이다. 작은 호 AB는 360°−230°=130°이고 중심각 ∠AOB도 130°이다. 사각형 PAOB에서 ∠PAO=∠PBO=90°이므로 x=180°−130°이다. 정답은 ① 50°이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "둔각 원주각115도가 보는 큰 호230도를 작은 호130도로 바꾸고, 두 접선이 이루는 각180도−130도를 구한다.",
+    "decisiveStep": "둔각 원주각115도가 보는 큰 호230도를 작은 호130도로 바꾸고, 두 접선이 이루는 각180도−130도를 구한다."
   },
   {
     "id": 8,
@@ -357,25 +385,29 @@ window.questionBank = [
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_TRIG_RATIO","CC_TRIANGLE_AREA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
     "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 지름 AB와 접점 T에서의 접선, 직각삼각형 ABT의 직각과 30도, 60도 각, 변 AB와 BT의 길이",
     "solutionImageCaption": "AB는 지름이므로 ∠ATB=90°이다. 접선과 현이 이루는 각 ∠ATP=30°는 ∠ABT와 같으므로 ∠BAT=60°이다. 직각삼각형 ABT에서 AT=4√3, BT=12이므로 직각을 낀 두 변의 곱의 절반이 넓이이다. 정답은 ⑤ 24√3이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "지름의 원주각으로 직각 ATB, 접현각으로 ABT=30도를 정한 후 직각삼각형의 사인비로 두 직각변을 구해 넓이를 계산한다.",
+    "decisiveStep": "지름의 원주각으로 직각 ATB, 접현각으로 ABT=30도를 정한 후 직각삼각형의 사인비로 두 직각변을 구해 넓이를 계산한다."
   },
   {
     "id": 9,
@@ -410,19 +442,23 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_VARIABLE_ELIMINATION"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed.",
     "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q9-solution.svg",
     "solutionImageAlt": "해설 그림: 원 위의 네 점 A, B, C, D와 두 바깥점 P, Q, 색으로 구분한 네 호 AB, BC, CD, DA 및 주어진 각 55도, 37도",
     "solutionImageCaption": "그림에서 호 AB(파랑), BC(초록), CD(주황), DA(분홍)의 크기를 각각 a, b, c, d라 한다. ∠B=55°에서 c+d=110°이고, ∠Q=37°에서 a−c=74°이다. 네 호의 합이 360°이므로 b−d=66°이다. 점 P에서의 각 x는 호 BC와 호 DA의 차의 절반이다. 정답은 ② 33°이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "원주각에서c+d를, 한 외부 할선각에서a−c를 구한다. 이 두 식과 전체 호360도를 선형 결합해b−d를 남긴 뒤 다른 외부 할선각으로 반감한다.",
+    "decisiveStep": "원주각에서c+d를, 한 외부 할선각에서a−c를 구한다. 이 두 식과 전체 호360도를 선형 결합해b−d를 남긴 뒤 다른 외부 할선각으로 반감한다."
   },
   {
     "id": 10,
@@ -454,15 +490,15 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "metaDebtFields": [
       "problemTypeKey",
       "templateKey"
@@ -470,6 +506,10 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "NO_VISUAL_REQUIRED",
     "visualEvidence": "Text-only item; no visual asset is required."
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "미지 한 자료를 넣어도7의 빈도가 가장 크므로 최빈값7을 정하고, 평균도7이라는 조건을 총합의 일차식으로 옮겨x를 복원한다.",
+    "decisiveStep": "미지 한 자료를 넣어도7의 빈도가 가장 크므로 최빈값7을 정하고, 평균도7이라는 조건을 총합의 일차식으로 옮겨x를 복원한다."
   },
   {
     "id": 11,
@@ -501,15 +541,15 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "metaDebtFields": [
       "problemTypeKey",
       "templateKey"
@@ -517,6 +557,10 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "NO_VISUAL_REQUIRED",
     "visualEvidence": "Text-only item; no visual asset is required."
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "완전한 두 자료를 각각 정렬하고 홀수7개의 가운데 한 값, 짝수8개의 가운데 두 값 평균을 중앙값으로 구한 뒤 더한다.",
+    "decisiveStep": "완전한 두 자료를 각각 정렬하고 홀수7개의 가운데 한 값, 짝수8개의 가운데 두 값 평균을 중앙값으로 구한 뒤 더한다."
   },
   {
     "id": 12,
@@ -548,15 +592,15 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "metaDebtFields": [
       "problemTypeKey",
       "templateKey"
@@ -564,6 +608,10 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "NO_VISUAL_REQUIRED",
     "visualEvidence": "Text-only item; no visual asset is required."
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "각 보기에서 가장 자주 나타나는 값과 동률인 값들을 확인해 제시된 최빈값 진술과 대조한다. 숫자 자료와 색 이름 자료 모두 같은 빈도 정의로 판정한다.",
+    "decisiveStep": "각 보기에서 가장 자주 나타나는 값과 동률인 값들을 확인해 제시된 최빈값 진술과 대조한다. 숫자 자료와 색 이름 자료 모두 같은 빈도 정의로 판정한다."
   },
   {
     "id": 13,
@@ -595,15 +643,15 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "metaDebtFields": [
       "problemTypeKey",
       "templateKey"
@@ -611,6 +659,10 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "NO_VISUAL_REQUIRED",
     "visualEvidence": "Text-only item; no visual asset is required."
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "평균7로a+b=20을 얻고 최빈값4의 빈도 조건으로 두 누락값4,16을 복원한 뒤 짝수 자료의 중앙값을 구해 요구한 식에 대입한다.",
+    "decisiveStep": "평균7로a+b=20을 얻고 최빈값4의 빈도 조건으로 두 누락값4,16을 복원한 뒤 짝수 자료의 중앙값을 구해 요구한 식에 대입한다."
   },
   {
     "id": 14,
@@ -642,14 +694,14 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "metaDebtFields": [
       "problemTypeKey",
@@ -658,6 +710,10 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "NO_VISUAL_REQUIRED",
     "visualEvidence": "Text-only item; no visual asset is required."
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "첫 중앙값a 조건으로21≤a≤26을 만들고 둘째 중앙값23 조건의a≥23과 교집합을 취해 자연수23~26을 합한다.",
+    "decisiveStep": "첫 중앙값a 조건으로21≤a≤26을 만들고 둘째 중앙값23 조건의a≥23과 교집합을 취해 자연수23~26을 합한다."
   },
   {
     "id": 15,
@@ -689,7 +745,7 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": null,
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -705,6 +761,10 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "MARKDOWN_TABLE_PRESERVED_DUPLICATE_IMAGE_REMOVED",
     "visualEvidence": "The exact student Markdown table in content contains the same A–E row and deviation row as the native PDF and assigned PNG; official engine code renders q-content, then an independent image block only when image is nonempty. Removed the redundant q15 image field; underlying question characters, table cells/order, choices, and asset bytes are unchanged."
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "편차합0으로D의 편차를 구하고 알려진D의 앉은키에서 평균을 복원한다. 각 원자료와 평균 아래의 개수·두 학생의 차를 보기에 대조한다.",
+    "decisiveStep": "편차합0으로D의 편차를 구하고 알려진D의 앉은키에서 평균을 복원한다. 각 원자료와 평균 아래의 개수·두 학생의 차를 보기에 대조한다."
   },
   {
     "id": 16,
@@ -741,10 +801,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "metaDebtFields": [
       "problemTypeKey",
       "templateKey"
@@ -752,6 +812,10 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "NO_VISUAL_REQUIRED",
     "visualEvidence": "Text-only item; no visual asset is required."
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "완전한 다섯 자료의 평균16을 구하고 편차 제곱의 평균48 및 그 제곱근으로 표준편차를 직접 계산한다.",
+    "decisiveStep": "완전한 다섯 자료의 평균16을 구하고 편차 제곱의 평균48 및 그 제곱근으로 표준편차를 직접 계산한다."
   },
   {
     "id": 17,
@@ -790,8 +854,8 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "metaDebtFields": [
       "problemTypeKey",
       "templateKey"
@@ -799,6 +863,10 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "NO_VISUAL_REQUIRED",
     "visualEvidence": "Text-only item; no visual asset is required."
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "원래 평균6과분산10에서 세 자료의 합18 및 편차제곱합30을 구하고,3과9를 더해도 평균6임을 확인한 뒤 새 편차 제곱을 합산한다.",
+    "decisiveStep": "원래 평균6과분산10에서 세 자료의 합18 및 편차제곱합30을 구하고,3과9를 더해도 평균6임을 확인한 뒤 새 편차 제곱을 합산한다."
   },
   {
     "id": 18,
@@ -833,13 +901,13 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_DENOMINATOR_RATIONALIZATION"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "metaDebtFields": [
       "problemTypeKey",
       "templateKey"
@@ -847,6 +915,10 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "두 반의 평균7이 같음을 이용해 각 반 표준편차 제곱에 학생 수를 곱한 편차제곱합20과60을 합치고 전체30명으로 나눈 뒤 제곱근을 정리한다.",
+    "decisiveStep": "두 반의 평균7이 같음을 이용해 각 반 표준편차 제곱에 학생 수를 곱한 편차제곱합20과60을 합치고 전체30명으로 나눈 뒤 제곱근을 정리한다."
   },
   {
     "id": 19,
@@ -874,19 +946,19 @@ window.questionBank = [
     "standardUnitKey": "M3-07",
     "standardUnit": "통계",
     "standardUnitOrder": 7,
-    "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
-    "subUnit": "통계 자료 해석",
+    "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+    "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_MULTIPLICATION_FORMULAS"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "metaDebtFields": [
       "problemTypeKey",
       "templateKey"
@@ -894,6 +966,10 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "NO_VISUAL_REQUIRED",
     "visualEvidence": "Text-only item; no visual asset is required."
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "평균으로a+b=5를 구하고 분산으로두 미지 편차의 제곱합5를 만든다. 완전제곱식 전개로 편차의 곱을 얻어a+b를 다시 대입해ab를 정한다.",
+    "decisiveStep": "평균으로a+b=5를 구하고 분산으로두 미지 편차의 제곱합5를 만든다. 완전제곱식 전개로 편차의 곱을 얻어a+b를 다시 대입해ab를 정한다."
   },
   {
     "id": 20,
@@ -942,6 +1018,10 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "SOURCE_IMAGE_PRESERVED_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "The source PDF page and its assigned crop/SVG were visually compared. The original student diagram, table or plot remains in image; no solution-only SVG is needed."
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "하강 산점도의 음의 상관 방향을 읽고 위도·기온과 이동거리·남은 연료의 실제 변수 경향에 대응하여 두 진술을 선택한다.",
+    "decisiveStep": "하강 산점도의 음의 상관 방향을 읽고 위도·기온과 이동거리·남은 연료의 실제 변수 경향에 대응하여 두 진술을 선택한다."
   },
   {
     "id": 21,
@@ -977,7 +1057,7 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
@@ -994,6 +1074,10 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 1학기 성적과 2학기 성적의 산점도 20개 점, 대각선 y=x와 그 위쪽의 파란 점 8개",
     "solutionImageCaption": "대각선 y=x보다 위쪽에 있는 점은 2학기 성적이 1학기보다 오른 학생이다. 파란 점 8개가 그 점이므로 전체 20명 중 8명이다. 비율은 20분의 8, 곧 5분의 2이다. 정답은 ④ 5분의 2이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "2학기y가1학기x보다 큰 점을y=x 위에서8개 골라 전체20명에 대한 비율을 계산한다.",
+    "decisiveStep": "2학기y가1학기x보다 큰 점을y=x 위에서8개 골라 전체20명에 대한 비율을 계산한다."
   },
   {
     "id": 22,
@@ -1035,6 +1119,10 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 원에 내접하는 정오각형 ABCDE에서 호 CD에 대한 중심각 72도와 세 원주각 CAD, CBD, CED",
     "solutionImageCaption": "정오각형의 꼭짓점은 원을 5등분하므로 호 CD의 중심각은 360°÷5=72°이다. 호 CD에 대한 원주각은 C, D가 아닌 꼭짓점 A, B, E에서 만든 ∠CAD, ∠CBD, ∠CED이다. 이 세 원주각은 같은 호를 보므로 크기가 같고 중심각의 절반이다. 정답은 (1) ∠CAD, ∠CBD, ∠CED (2) 36°이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "정오각형의 동일한 다섯 호에서CD의 중심각72도를 구하고, 나머지 세 꼭짓점에서CD를 보는 원주각을 찾아 중심각의 절반으로 계산한다.",
+    "decisiveStep": "정오각형의 동일한 다섯 호에서CD의 중심각72도를 구하고, 나머지 세 꼭짓점에서CD를 보는 원주각을 찾아 중심각의 절반으로 계산한다."
   },
   {
     "id": 23,
@@ -1057,13 +1145,13 @@ window.questionBank = [
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_TRIANGLE_ANGLE_SUM","CC_SUPPLEMENTARY_ANGLES"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
@@ -1076,6 +1164,10 @@ window.questionBank = [
     "solutionImageAlt": "해설 그림: 지름 BC의 연장선과 접선 PA가 만나는 점 P, 접선과 현 AB가 이루는 각 68도, 직각 BAC와 각 x",
     "solutionImageCaption": "BC는 지름이므로 ∠BAC=90°이다. 접선과 현 AB가 이루는 각 68°는 같은 호의 원주각 ∠ACB와 같다. 삼각형 ABC에서 ∠ABC=180°−90°−68°=22°이고, ∠PAB=180°−68°=112°이다. 삼각형 PAB의 내각의 합에서 x를 구한다. 정답은 46°이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "지름의 원주각90도와 접현각68도로 ABC의 남은 각22도를 구한다. 접선의 반대 방향 보각112도를 만들어 삼각형 PAB의 내각합으로 목표각을 정한다.",
+    "decisiveStep": "지름의 원주각90도와 접현각68도로 ABC의 남은 각22도를 구한다. 접선의 반대 방향 보각112도를 만들어 삼각형 PAB의 내각합으로 목표각을 정한다."
   },
   {
     "id": 24,
@@ -1102,9 +1194,9 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+    "crossConceptKeys": ["CC_STEM_AND_LEAF_PLOT"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
@@ -1116,13 +1208,16 @@ window.questionBank = [
       "templateKey"
     ],
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
-    "decisiveStep": "A=14, B=16, C=15+20=35이므로 A+B-C=14+16-35=-5이다.",
+    "decisiveStep": "줄기와 잎에서열두 원자료를 복원해 평균14와짝수 중앙값16 및 복수 최빈값15·20을 구하고, 최빈값의 합35를 요구된 결합식에 대입한다.",
     "visualDisposition": "NATIVE_SOURCE_CHART_ONLY_CROP_NO_SOLUTION_SVG_REQUIRED",
     "visualEvidence": "Chart-only crop compared against native PDF page 5; title, key, stem row and all twelve leaves are preserved exactly, with duplicate prompt text and repeated subquestion removed from the image.",
     "solutionImage": "assets/images/21_팔마중_2학기_기말_중3_기출/q24-solution.svg",
     "solutionImageAlt": "해설 그림: 윗몸일으키기 횟수 12개를 나타낸 줄기와 잎 그림, 가운데 두 값 강조",
     "solutionImageCaption": "자료를 작은 순서로 쓰면 1, 2, 3, 11, 15, 15, 17, 18, 20, 20, 21, 25이다. 자료가 12개이므로 가운데 두 값인 6번째와 7번째 값(동그라미)의 평균이 중앙값이다. 평균은 합 168을 12로 나눈 값이고, 최빈값은 두 번씩 나타나는 15와 20이다. 정답은 -5이다.",
     "solutionImageSize": "full"
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "줄기와 잎에서열두 원자료를 복원해 평균14와짝수 중앙값16 및 복수 최빈값15·20을 구하고, 최빈값의 합35를 요구된 결합식에 대입한다."
   },
   {
     "id": 25,
@@ -1164,5 +1259,9 @@ window.questionBank = [
     "metaDebtReason": "현재 중3 통계 의미 분류는 M3-07에서 유지하되, exact ACTIVE PT/TPL projection이 확인되지 않아 null projection debt로 기록한다.",
     "visualDisposition": "NO_VISUAL_REQUIRED",
     "visualEvidence": "Text-only item; no visual asset is required."
+  ,
+    "curriculum": "2015",
+    "primaryMethod": "기호 자료 네 개의 평균식을a+2로 정리하고 각 변량에서 평균을 빼 공통a를 소거한다. 얻은 수치 편차−3,0,1,2로 분산을 계산한다.",
+    "decisiveStep": "기호 자료 네 개의 평균식을a+2로 정리하고 각 변량에서 평균을 빼 공통a를 소거한다. 얻은 수치 편차−3,0,1,2로 분산을 계산한다."
   }
 ];
