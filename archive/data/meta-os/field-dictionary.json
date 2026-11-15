@@ -792,6 +792,13 @@
       "note": "이 줄을 만든 등록 경로·판의 이름(95종)"
     },
     {
+      "name": "fieldCandidates",
+      "layer": "기록·증거",
+      "kind": "증거",
+      "sameMeaningAs": [],
+      "note": "REVIEW2 등록기가 본칸에 적용하지 않고 따로 보존하는 판정 후보 객체. 허용 키는 standardUnitKey, subUnitKey, rpmPath, crossConceptKeys, conditionKeys, integrationPattern이며 각 키에는 {value, source} 후보의 비어 있지 않은 배열을 둔다. 단원·소단원 value는 키 문자열, rpmPath는 majorUnit·midUnit·l3·l4 문자열 객체, 연결 개념·조건은 중복 없는 키 배열, integrationPattern은 NONE, SEQUENTIAL, INTERDEPENDENT, REINTERPRETATION, CASE_BRANCH, DEEP_COMPOSITE 중 하나이다. source는 agree, p3, p4-luna, p4-sonnet, proposed-new, registered, source-js 중 출처 꼬리표이며 registered도 승인 상태를 뜻하지 않는다. 등록기는 정본 또는 철회되지 않은 받은 값 등록부와 대조하고 기존 후보를 지우거나 바꾸지 않고 중복 없이 추가한다. 후보 자체는 본칸의 별칭이나 승인 근거가 아니며 PT/TPL 등록, 정본 키 승격, canonical assignment 승인 또는 검색 필터의 실효값을 만들지 않는다. 본칸·fieldStatus·승인 영수증의 별도 검증을 유지한다."
+    },
+    {
       "name": "approvalEvidence",
       "layer": "기록·증거",
       "kind": "증거",

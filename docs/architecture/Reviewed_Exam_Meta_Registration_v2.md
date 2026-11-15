@@ -218,6 +218,7 @@ SOP_v1.2 approval v4의 매니페스트 바인딩은 answer/questionType/choices
 기존 필드가 없으면 `before` 값은 `null`이다. source JS에도 존재하는 값은 정확히 같아야 한다.
 기존 source/identity fingerprint와 UID/ordinal도 일치해야 한다.
 `level`은 하/중/상, `difficultyBucket`은 정수 1~5로 독립 검증한다.
+원본이 명시적으로 가진 역사적 `level: null` 또는 `level: "중상"`은 `FINAL_QA`에서 원값을 그대로 보존할 수 있다. 이 경로는 원본과 요청의 level, 정수 1~5 bucket, high/medium/low confidence, 유효한 boundary가 모두 같고 양쪽 `legacyLevelCompatibility`가 `UNKNOWN`일 때만 허용한다. level 필드 누락, 새 임의 표시명, 미확정 bucket, REVIEW2로의 승인 종류 변경은 이 예외로 승인하지 않는다. 기존 UID·원본 SHA·fingerprint·검토 증거·정본 바인딩 검사는 동일하다. source-only 검색 인덱스가 명시적 null level을 빈 문자열로 내보낸 경우에도 같은 원본의 위 조건을 다시 검증하며 등록 메타와 runtime의 원값은 null로 유지한다.
 기존 승인 L1~L4를 정본으로부터 바꾸는 경우에도 해당 필드의 `before`가 필요하다.
 L1/L2는 binding의 명시적 L1/L2를 우선하고, 기존 구조에서는 표준단원/세부단원 master label을 사용한다.
 RPM 전용 값은 `rpmL1~rpmL4`, `rpmPrimaryPath`, 의미 근거 필드로 별도 보존한다.
@@ -298,6 +299,34 @@ workflow에는 `::error` 주석과 요약 표가 남는다. 거절은 run을 실
 기존 Consumer의 canonical 범위·Runtime 입력 목록이 새 분류를 지원하는지 별도 확인해야 한다.
 이 구현은 Consumer 엔진을 재설계하거나 Pages와의 기존 writer 구조를 변경하지 않는다.
 정본 등록/정적 값 검증과 학생 화면·출시 완료를 구분해 보고한다.
+
+## 기존 감사 승인과 검토 난도의 원본 재결속 (2026-11-15)
+
+이미 유효한 전체 시험 감사 영수증이 있고, 원본 메타 운반 또는 별도로 검토된 해설 수리 때문에 전체 JS 해시가 바뀐 경우에만
+기존 v2 요청의 approval.type: META_PIPELINE_AUDIT와
+approval.sourceRebind.schemaVersion: archive-native-audit-preservation-v1을 사용한다.
+일반 FINAL_QA/REVIEW2 등록이나 부분 등록으로 전환하지 않는다.
+
+- requestPath는 해당 요청의 inbox 경로다. priorCommit의 실제 Git commit에서 priorReceiptRef의 raw SHA와 원본 blob/SHA를 대조한다.
+  이전 영수증, metadata, identity, runtime, 요청의 UID/ordinal 집합은 원시험 전체 분모와 같아야 한다.
+- 모든 item은 before: {}, after: {}이며 registryChanges는 없다. 원래 감사 종류, 분류키·부모·승인 필드 상태,
+  review_required, source_unreviewed, EVIDENCE_DEBT, 선택 가능 상태를 그대로 보존한다.
+- difficultyRequestRef는 동일 source blob과 전체 UID를 대상으로 이미 적용된 공식 reviewed-correction D5 요청의 경로/raw SHA다.
+  해당 요청의 근거 SHA, 원래 metadata before, 실제 source 지문, 승인된 네 난도 필드의 after를 모두 대조한다.
+  먼저 D5를 적용하고 그 결과를 보존 영수증에 결속한다. legacy level은 바꾸지 않는다.
+- 원본의 기본 분류키와 난도 표기는 기존 승인값과 같아야 한다. 표시명은 같은 ACTIVE master key의 정확한 label로만 운반할 수 있고,
+  category와 standardUnitOrder 변화도 같은 단원 정본과 SHA-bound 순서 문서로 검증한다. 임의 별칭·새 분류·새 풀이 근거를 허용하지 않는다.
+- 해설이 바뀐 UID는 solutionRepair: { ref, reviewCommit, reviewPath }로 별도의 immutable
+  archive-source-solution-repair-v1 / NARROW_REPAIR_REVIEWED 근거를 제공한다.
+  UID/ordinal, 독립 검토자, before/after 해설 SHA, 실제 두 Git 원본, 현재 원본을 대조하고
+  해설 외 학생용 필드와 표시 번호가 모두 같아야만 full fingerprint를 갱신한다.
+  새 시험지 QA나 고급 분류 승인을 부여하지 않는다.
+- 영수증은 newMetadataApprovals: 0, preservedMetadataApprovals: N, 실제 해설 지문 수리 수를 따로 기록한다.
+  성공한 inbox가 소비된 이후에도 검증할 수 있도록 원 요청 객체와 D5 입력의 정확한 raw UTF-8를 영수증에 봉인한다.
+  원 요청의 stable digest와 D5 raw SHA를 다시 검증하며, 현재 파일이 남아 있으면 봉인 사본으로 파일 변조를 숨길 수 없다.
+- AutoMeta는 위 증거, 현재 source/identity/metadata/runtime, ACTIVE PT/TPL과 exact binding을 다시 검증해 기존 승인만 재사용한다.
+  감사가 남긴 null IntegrationPattern과 명시 debt는 그대로 유지한다. D5 재실행도 같은 보존 영수증이 실제 해설 지문 수리까지
+  입증할 때만 새 full fingerprint를 인정한다. 근거·UID·분모·승인 종류·debt·재결속 내역 중 하나라도 달라지면 거부한다.
 
 ## 검증
 
