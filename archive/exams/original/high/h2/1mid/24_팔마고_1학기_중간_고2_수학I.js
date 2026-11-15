@@ -495,9 +495,9 @@ window.questionBank = [
     "sourceQid": 11,
     "questionUid": "qid_v1_57f4b7be21cc0c97c55cbf09d0d8e8e4df124ff25736adebcaf3ed8777ad3102",
     "integrationReason": "Translate y-axis symmetry into a congruence, restrict the angle, and maximize arc length.",
-    "solutionImage": "assets/images/24_팔마고_1학기_중간_고2_수학I/q11-solution.svg",
-    "solutionImageAlt": "y축에 대한 대칭으로 가능한 두 후보 각도 36도와 108도를 비교한 동경 그림",
-    "solutionImageCaption": "두 후보에서 θ와 4θ의 동경이 y축 대칭이며, 더 큰 중심각은 108도이다.",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고2_수학I/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 반지름 5인 부채꼴에서 y축 대칭인 두 동경 후보를 비교한다. 후보는 θ=36°와 θ=108°이며, 두 번째에서 4θ=432°는 72°와 같은 동경이다.",
+    "solutionImageCaption": "대칭 조건을 만족하는 θ는 36°와 108°다. 더 큰 중심각은 108°이므로 호의 길이 최댓값은 5·3π/5=3π이다. 정답은 3π이다.",
     "solutionImageSize": "full"
   },
   {
@@ -593,9 +593,9 @@ window.questionBank = [
     "sourceArchiveFile": "archive/exams/original/high/h2/1mid/24_팔마고_1학기_중간_고2_수학I.js",
     "sourceQid": 13,
     "questionUid": "qid_v1_c33e4b54f2eb714acf2b8c7e2466f425951f1ab62157242b784c123699153757",
-    "solutionImage": "assets/images/24_팔마고_1학기_중간_고2_수학I/q13-solution.svg",
-    "solutionImageAlt": "반원에서 호 BP의 중심각으로 현 AP의 길이와 부채꼴 APQ의 중심각을 연결한 도형",
-    "solutionImageCaption": "호 BP가 정하는 60°, 현 AP= AQ, 그리고 부채꼴 중심각 30°를 확인한다.",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고2_수학I/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB=8인 반원에서 호 BP=4π/3, AP=AQ, 중심각 BOP=60°와 부채꼴 APQ의 각 30°를 표시한다. 구하는 넓이는 그림에 없다.",
+    "solutionImageCaption": "호 BP=4π/3에서 중심각 60°를 구하고, AP=AQ인 삼각형에서 부채꼴 APQ의 중심각은 30°다. 따라서 부채꼴 넓이는 4π이며 정답은 4π이다.",
     "solutionImageSize": "full",
     "integrationReason": "Use arc length for central angle, chord geometry for AP, then sector area."
   },
@@ -747,9 +747,9 @@ window.questionBank = [
     "sourceQid": 16,
     "questionUid": "qid_v1_17dbe315f19c71fdb9458d7c144c790915db850444df3013a51e0aa6bf280127",
     "integrationReason": "Check the two requested intersection intervals separately.",
-    "solutionImage": "assets/images/24_팔마고_1학기_중간_고2_수학I/q16-solution.svg",
-    "solutionImageAlt": "k=12인 예시에서 지수함수 곡선과 로그함수 곡선이 지정된 두 구간에서 만나는 그래프",
-    "solutionImageCaption": "이 그래프는 k=12인 한 예시이며, 전체 k의 개수는 풀이의 끝점 부등식으로 정한다.",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고2_수학I/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 첫 줄은 0<x<1에서 7<k<32, 둘째 줄은 1<x<2에서 7<k<30인 열린 범위를 나타낸다.",
+    "solutionImageCaption": "두 구간의 끝점 비교로 허용되는 k 범위를 각각 나타낸다. 정답은 ②이다.",
     "solutionImageSize": "full"
   },
   {
