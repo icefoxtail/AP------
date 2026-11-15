@@ -5,6 +5,11 @@ import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import {validateReviewedSourceReassessment} from './reviewed-source-reassessment.mjs';
+import {REVIEWED_META_VALUE_FIELDS} from './reviewed-meta-value-fields.mjs';
+import {nativeReviewedRendererRebind} from './native-reviewed-renderer-reuse.mjs';
+import {reviewedRendererBindingPath} from './reviewed-current-renderer-continuity.mjs';
+import {assertReviewedPackVersionLineage} from './reviewed-pack-version-lineage.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a-f0-9]{64}$/;
@@ -16,6 +21,7 @@ const blob=bytes=>crypto.createHash('sha1').update(`blob ${bytes.length}\0`).upd
 const fail=message=>{throw Error(`native preserved source reuse: ${message}`);};
 const receiptPath=id=>{if(!ID.test(id||''))fail('invalid receipt identity');return RECEIPTS+id+'.json';};
 const nativePath=p=>typeof p==='string'&&p.startsWith(RECEIPTS)&&p.endsWith('.json')&&ID.test(p.slice(RECEIPTS.length,-5));
+const reviewCaches=new Map(),reviewedFields=new Set(REVIEWED_META_VALUE_FIELDS);
 
 function safePath(root,relative) {
   if(typeof relative!=='string'||!relative||path.isAbsolute(relative)||relative.includes('\\')||
@@ -152,7 +158,173 @@ function gitSource(root,sourceBlob,rawSha,expectedCount) {
 const unchanged=row=>Object.fromEntries(Object.entries(row).filter(([key])=>!['metadataRevision','approvalEvidence'].includes(key)));
 const absentOrEmpty=value=>value===undefined||Array.isArray(value)&&value.length===0;
 
-export function nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,revalidateLeaf}) {
+// An ordinary fingerprint reassessment may cite its prior native receipt as
+// evidence. That reference remains a fail-closed claim until the actual native
+// review replays; it does not by itself make the new receipt source-only. Keep
+// explicit preservation markers authoritative, and do not accept a repair flag
+// as a substitute for immutable review/source/proof equality.
+function ordinaryReviewedReassessment({receipt,nativeSource,question,identity,ordinal,current,registry,reviewedContainerCarry=false}) {
+  if(Object.hasOwn(receipt.approval,'sourceRebind')||Object.hasOwn(receipt,'newMetadataApprovals')||
+    Object.hasOwn(receipt,'preservedMetadataApprovals')||!absentOrEmpty(receipt.registryChanges)||
+    !absentOrEmpty(receipt.nativeParentBindings)||!Array.isArray(receipt.fingerprintRepairs))return false;
+  const repairs=receipt.fingerprintRepairs.filter(row=>row.questionUid===identity.questionUid);
+  if(repairs.length!==1)return false;
+  const repair=repairs[0],proof=repair.sourceReview;
+  const fingerprintKeys=['contentFingerprint','sourceFingerprint'];
+  if(repair.sourceOrdinal!==ordinal||repair.rebind!==undefined||
+    !same(Object.keys(repair.metadataBefore||{}).sort(),fingerprintKeys)||
+    !same(Object.keys(repair.identityBefore||{}),['sourceFingerprint'])||
+    !same(Object.keys(repair.after||{}).sort(),fingerprintKeys)||
+    ![...Object.values(repair.metadataBefore),...Object.values(repair.identityBefore),...Object.values(repair.after)].every(value=>SHA256.test(value||''))||
+    repair.after.sourceFingerprint!==current.sourceFingerprint||repair.after.contentFingerprint!==current.contentFingerprint||
+    repair.after.sourceFingerprint!==identity.sourceFingerprint||proof?.schemaVersion!=='archive-reviewed-source-reassessment-v1')return false;
+  const root=fs.realpathSync(nativeSource.root);
+  const refs=receipt.approval.evidenceRefs.filter(ref=>nativePath(ref?.path));
+  if(refs.length!==1)return false;
+  const ref=refs[0],bytes=readBytes(root,ref.path);
+  if(sha(bytes)!==ref.sha256)fail('ordinary reassessment prior receipt digest changed');
+  const prior=JSON.parse(bytes),old=selected(prior,identity.questionUid,ordinal);
+  if(ref.path!==receiptPath(prior.requestId)||prior.requestId===receipt.requestId||prior.examUid!==receipt.examUid||
+    prior.sourceArchiveFile!==receipt.sourceArchiveFile||prior.expectedQuestionCount!==receipt.expectedQuestionCount||
+    // Copying the ancestor's existing review into a damaged source-only receipt
+    // is not a new immutable reassessment of the changed source container.
+    !reviewedContainerCarry&&proof.rendererContinuity===undefined&&(proof.reviewedSourceBlobSha1===prior.sourceBlobSha1||proof.reviewCommitSourceBlobSha1===prior.sourceBlobSha1)||
+    !same(repair.metadataBefore,{sourceFingerprint:old.row.sourceFingerprint,contentFingerprint:old.row.contentFingerprint})||
+    repair.identityBefore.sourceFingerprint!==old.identity.sourceFingerprint)return false;
+  const without=(row,keys)=>Object.fromEntries(Object.entries(row).filter(([key])=>!keys.includes(key)));
+  const metadataKeys=['sourceFingerprint','contentFingerprint','metadataRevision','approvalEvidence'];
+  const runtimeKeys=[...metadataKeys,'approvedSourceFingerprint'];
+  if(assertReviewedPackVersionLineage({root,current,runtime:nativeSource.runtimeRecord,
+    prior:old.row,priorRuntime:old.runtime,priorReceiptRef:ref,registry})){
+    metadataKeys.push('metaFoundationPackVersion');runtimeKeys.push('metaFoundationPackVersion');
+  }
+  let rendererBinding=null;
+  if(proof.rendererContinuity!==undefined) {
+    const currentSource=proof.rendererContinuity?.currentSourceRef;
+    if(currentSource?.path!=='archive/exams/'+receipt.sourceArchiveFile||
+      currentSource.gitBlobSha1!==receipt.sourceBlobSha1||currentSource.sha256!==receipt.sourceRawSha256||
+      prior.sourceBlobSha1===receipt.sourceBlobSha1)
+      fail('ordinary renderer reassessment must bind this exact new source container');
+    if(nativeReviewedRendererRebind(receipt,nativeSource,question,question,identity,ordinal,current,registry)!==true)
+      fail('ordinary renderer reassessment lacks a verified current proof');
+    rendererBinding=reviewedRendererBindingPath(receipt.requestId);
+  }
+  const appended=row=>[...new Set([...row.approvalEvidence,receiptPath(receipt.requestId),...(rendererBinding?[rendererBinding]:[])])];
+  if(!same(without(current,metadataKeys),without(old.row,metadataKeys))||
+    !same(without(identity,['sourceFingerprint']),without(old.identity,['sourceFingerprint']))||
+    !same(without(nativeSource.runtimeRecord,runtimeKeys),without(old.runtime,runtimeKeys))||
+    !same(current.approvalEvidence,appended(old.row))||!same(nativeSource.runtimeRecord.approvalEvidence,appended(old.runtime)))
+    fail('ordinary reassessment changed an existing approved value or provenance');
+  // The renderer verifier reproduced the entire original native/source review,
+  // current independent asset proof and typed sidecar. Only that issued sidecar
+  // may accompany the new receipt in this otherwise unchanged approval.
+  if(rendererBinding)return true;
+  if(!reviewCaches.has(root))reviewCaches.set(root,new Map());
+  const canonical=registry?{pt:registry.problemTypes,tpl:registry.templates}:undefined;
+  const result=validateReviewedSourceReassessment({root,
+    request:{scope:receipt.scope,approval:receipt.approval,sourceArchiveFile:receipt.sourceArchiveFile,
+      expectedQuestionCount:receipt.expectedQuestionCount},
+    patch:{questionUid:identity.questionUid,sourceOrdinal:ordinal,before:repair.metadataBefore,
+      identityBefore:repair.identityBefore,after:repair.after,evidenceRefs:receipt.approval.evidenceRefs,
+      sourceReview:{schemaVersion:proof.schemaVersion,reviewCommit:proof.reviewCommit,reviewPath:proof.reviewPath,reviewRef:proof.reviewRef}},
+    metadata:{...current,...repair.metadataBefore},question,final:current,canonicalBefore:canonical,canonicalAfter:canonical,
+    supportedFields:reviewedFields,cache:reviewCaches.get(root)});
+  if(!same(result,proof))fail('ordinary reassessment differs from its immutable native proof');
+  return true;
+}
+
+// This is the existing registrar rebind form, restricted here to an unchanged
+// whole question in a complete renderer cohort. It transports no new native
+// decision, metadata value, identity value or approval kind.
+function unchangedApprovedRebindMember({patch,row,runtime,identity,oldRow,oldRuntime,oldIdentity,prior,receipt,root,priorReceiptRef,registry}) {
+  const fingerprints={sourceFingerprint:oldRow.sourceFingerprint,contentFingerprint:oldRow.contentFingerprint};
+  const moved=assertReviewedPackVersionLineage({root,current:row,runtime,prior:oldRow,priorRuntime:oldRuntime,priorReceiptRef,registry});
+  const approved=value=>Object.fromEntries(Object.entries(unchanged(value)).filter(([key])=>!moved||key!=='metaFoundationPackVersion'));
+  if(!same(Object.keys(patch).sort(),['after','identityBefore','metadataBefore','questionUid','rebind','sourceOrdinal'])||
+    !Object.values(fingerprints).every(value=>SHA256.test(value||''))||
+    !same(patch.metadataBefore,fingerprints)||!same(patch.after,fingerprints)||
+    !same(patch.identityBefore,{sourceFingerprint:oldIdentity.sourceFingerprint})||
+    !same(patch.rebind,{priorSourceBlobSha1:prior.sourceBlobSha1,priorContentFingerprint:oldRow.contentFingerprint})||
+    !same(approved(row),approved(oldRow))||!same(approved(runtime),approved(oldRuntime))||
+    !same(identity,oldIdentity))return false;
+  const appended=before=>[...new Set([...before.approvalEvidence,receiptPath(receipt.requestId)])];
+  return same(row.approvalEvidence,appended(oldRow))&&same(runtime.approvalEvidence,appended(oldRuntime));
+}
+
+// A mixed current-renderer reassessment retains the exact prior selected cohort.
+// Its unchanged members still use their original native verifier and actual old
+// Git question; only the changed members receive the current renderer witness.
+// This does not permit a subset source-only receipt or a copied old renderer.
+function unchangedMemberOfRendererReassessment({receipt,nativeSource,question,identity,ordinal,current,registry,state,revalidateLeaf}) {
+  if(Object.hasOwn(receipt.approval,'sourceRebind')||Object.hasOwn(receipt,'newMetadataApprovals')||
+    Object.hasOwn(receipt,'preservedMetadataApprovals')||!absentOrEmpty(receipt.registryChanges)||
+    !absentOrEmpty(receipt.nativeParentBindings)||!Array.isArray(receipt.fingerprintRepairs))return false;
+  const root=fs.realpathSync(nativeSource.root),bindingPath=reviewedRendererBindingPath(receipt.requestId);
+  const rendererClaimed=receipt.fingerprintRepairs.some(r=>r.sourceReview?.rendererContinuity!==undefined)||
+    receipt.outputDigests?.some(row=>row.path===bindingPath)||
+    [...state.records.values(),...state.runtimes.values()].some(row=>row.approvalEvidence?.includes(bindingPath))||
+    fs.existsSync(safePath(root,bindingPath))||receipt.approval.evidenceRefs.some(ref=>{
+      const bytes=readBytes(root,ref.path);if(sha(bytes)!==ref.sha256)fail('mixed renderer evidence changed');
+      let doc;try{doc=JSON.parse(bytes);}catch{return false;}
+      return doc?.schemaVersion==='archive-reviewed-renderer-continuity-evidence-v1'&&
+        doc.sourceArchiveFile===receipt.sourceArchiveFile&&Array.isArray(doc.items)&&doc.items.some(row=>
+          row.currentSourceRef?.path==='archive/exams/'+receipt.sourceArchiveFile&&
+          row.currentSourceRef.gitBlobSha1===receipt.sourceBlobSha1&&row.currentSourceRef.sha256===receipt.sourceRawSha256);
+    });
+  if(!rendererClaimed)return false;
+  const repairs=unique(receipt.fingerprintRepairs,'reassessment repair');
+  if(repairs.get(identity.questionUid)?.sourceReview?.rendererContinuity!==undefined)return false;
+  const refs=receipt.approval.evidenceRefs.filter(ref=>nativePath(ref?.path));
+  if(refs.length!==1||!SHA256.test(refs[0].sha256||''))fail('mixed reassessment requires one exact prior receipt');
+  const raw=readBytes(root,refs[0].path);if(sha(raw)!==refs[0].sha256)fail('mixed reassessment prior receipt changed');
+  const prior=JSON.parse(raw),old=selected(prior,identity.questionUid,ordinal);
+  if(refs[0].path!==receiptPath(prior.requestId)||prior.requestId===receipt.requestId||prior.examUid!==receipt.examUid||
+    prior.sourceArchiveFile!==receipt.sourceArchiveFile||prior.expectedQuestionCount!==receipt.expectedQuestionCount||
+    prior.partialUidCount!==receipt.partialUidCount||prior.sourceBlobSha1===receipt.sourceBlobSha1||
+    !same([...old.records.keys()].sort(),[...state.records.keys()].sort())||
+    !same([...repairs.keys()].sort(),[...state.records.keys()].sort()))fail('mixed reassessment must retain the entire prior selected cohort');
+  const beforeSource=gitSource(root,prior.sourceBlobSha1,prior.sourceRawSha256,prior.expectedQuestionCount);
+  if(!same(question,beforeSource.bank[ordinal-1]))return false;
+  let currentRendererCount=0;
+  for(const [uid,row]of state.records) {
+    const oldRow=old.records.get(uid),patch=repairs.get(uid),q=nativeSource.bank[row.sourceOrdinal-1];
+    if(row.sourceOrdinal!==oldRow.sourceOrdinal||patch.sourceOrdinal!==row.sourceOrdinal)
+      fail('mixed reassessment ordinal changed');
+    const renderer=patch.sourceReview?.rendererContinuity!==undefined;
+    if(!renderer&&!same(q,beforeSource.bank[row.sourceOrdinal-1]))fail('changed member lacks a current renderer review');
+    const retained=!renderer&&patch.sourceReview===undefined&&patch.rebind!==undefined;
+    const verified=retained?unchangedApprovedRebindMember({patch,row,runtime:state.runtimes.get(uid),
+      identity:state.identities.get(uid),oldRow,oldRuntime:old.runtimes.get(uid),oldIdentity:old.identities.get(uid),prior,receipt,
+      root,priorReceiptRef:refs[0],registry}):
+      ordinaryReviewedReassessment({receipt,nativeSource:{...nativeSource,runtimeRecord:state.runtimes.get(uid)},
+        question:q,identity:state.identities.get(uid),ordinal:row.sourceOrdinal,current:row,registry,reviewedContainerCarry:!renderer});
+    if(!verified)fail('mixed reassessment member lacks an exact approved-value continuation');
+    if(renderer)currentRendererCount++;
+  }
+  if(!currentRendererCount)fail('mixed reassessment has no current renderer witness');
+  // The unchanged member is checked inside the complete old receipt. Restore
+  // only that receipt's selected identities for its historical verifier: a
+  // changed renderer peer legitimately has a different current fingerprint.
+  // The current identity cohort was already compared to these exact old rows.
+  const identityByJoin=new Map(nativeSource.identityByJoin||[]);
+  for(const row of old.identities.values())identityByJoin.set(`${row.sourceArchiveFile}#${row.sourceOrdinal}`,row);
+  const identityMap=nativeSource.identityMap?{...nativeSource.identityMap,
+    records:nativeSource.identityMap.records.map(row=>old.identities.get(row.questionUid)||row)}:undefined;
+  const previousContext={nativeSource:{...nativeSource,...beforeSource,runtimeRecord:old.runtime,identityByJoin,
+      ...(identityMap?{identityMap}:{})},
+    question:beforeSource.bank[ordinal-1],current:old.row,identity:old.identity};
+  if(revalidateLeaf(previousContext)!==refs[0].path)fail('unchanged mixed member original native approval cannot replay');
+  const priorRepairs=(prior.fingerprintRepairs||[]).filter(row=>row.questionUid===identity.questionUid);
+  if(priorRepairs.length>1)fail('ambiguous unchanged member original repair');
+  if(priorRepairs[0]?.rebind!==undefined) {
+    const original=gitSource(root,priorRepairs[0].rebind.priorSourceBlobSha1,undefined,prior.expectedQuestionCount);
+    if(revalidateLeaf({...previousContext,previous:original.bank[ordinal-1]})!==refs[0].path)
+      fail('unchanged member original solution repair cannot replay');
+  }
+  return true;
+}
+
+export function nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,registry,revalidateLeaf}) {
   if(!isPartialNativeSourcePreservation(receipt,nativeSource.root))return null;
   const root=fs.realpathSync(nativeSource.root),runtime=nativeSource.runtimeRecord;
   if(!same(JSON.parse(readBytes(root,receiptPath(receipt.requestId))),receipt))fail('current receipt bytes differ from supplied receipt');
@@ -161,8 +333,15 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     !Buffer.isBuffer(source.bytes)||!Array.isArray(source.bank)||!same(source.bank[ordinal-1],question)||
     source.bank.length!==receipt.expectedQuestionCount||blob(source.bytes)!==source.blobSha1||
     receipt.sourceBlobSha1!==source.blobSha1||receipt.sourceRawSha256!==sha(source.bytes))fail('current receipt differs from actual state');
+  if(unchangedMemberOfRendererReassessment({receipt,nativeSource,question,identity,ordinal,current,registry,state,revalidateLeaf}))return true;
+  // null preserves the ordinary native/student guards; this is not permission
+  // to reuse changed student content or skip a renderer/typed-source verifier.
+  if(ordinaryReviewedReassessment({receipt,nativeSource,question,identity,ordinal,current,registry}))return null;
   const seen=new Set();
-  while(isPartialNativeSourcePreservation(cursor,root)) {
+  while(isPartialNativeSourcePreservation(cursor,root)&&!ordinaryReviewedReassessment({receipt:cursor,nativeSource:source,
+    question:source.bank[ordinal-1],identity:state.identity,ordinal,current:state.row,registry})) {
+    if(unchangedMemberOfRendererReassessment({receipt:cursor,nativeSource:source,question:source.bank[ordinal-1],
+      identity:state.identity,ordinal,current:state.row,registry,state,revalidateLeaf}))break;
     if(seen.has(cursor.requestId)||seen.size>=64)fail('source-rebind cycle or depth exceeded');
     seen.add(cursor.requestId);evidence(root,cursor.approval.evidenceRefs);
     const spec=cursor.approval.sourceRebind,ref=spec?.priorReceiptRef;

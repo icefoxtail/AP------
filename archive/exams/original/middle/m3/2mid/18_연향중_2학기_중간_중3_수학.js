@@ -733,7 +733,7 @@ window.examData = {
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q20-solution-visual-v2.svg",
       "layoutTag": "fullwidth",
       "score": 5,
-      "question": "다음 그림과 같이 모선의 길이가 $12\\,\\mathrm{cm}$, 밑면의 반지름의 길이가 $2\\,\\mathrm{cm}$인 원뿔에서 점 $\\mathrm{M}$은 모선 $\\overline{\\mathrm{OB}}$의 중점이다. 점 $\\mathrm{B}$에서 꼭짓점 $\\mathrm{O}$를 지나지 않고 원뿔의 옆면을 정확히 한 바퀴 돌아 점 $\\mathrm{M}$에 이르는 경로 중 가장 짧은 길이는?(5점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q20-problem-visual-v2.svg\" alt=\"원뿔의 꼭짓점 O에서 밑면 둘레의 B까지 길이는 12 cm이다. 밑면 중심 H에서 B까지의 반지름은 2 cm이다. M은 OB의 중점이다. 주황 경로는 B에서 출발해 옆면을 한 바퀴 돌아 M에 이른다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+      "question": "다음 그림과 같이 모선의 길이가 $12\\,\\mathrm{cm}$, 밑면의 반지름의 길이가 $2\\,\\mathrm{cm}$인 원뿔에서 점 $\\mathrm{M}$은 모선 $\\overline{\\mathrm{OB}}$의 중점이다. 점 $\\mathrm{B}$에서 꼭짓점 $\\mathrm{O}$를 지나지 않고 원뿔의 옆면을 정확히 한 바퀴 돌아 점 $\\mathrm{M}$에 이르는 경로 중 가장 짧은 길이는?(5점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q20-problem-label-gap.svg\" alt=\"원뿔의 꼭짓점 O에서 밑면 둘레의 B까지 길이는 12 cm이다. 밑면 중심 H에서 B까지의 반지름은 2 cm이다. M은 OB의 중점이다. 주황 경로는 B에서 출발해 옆면을 한 바퀴 돌아 M에 이른다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$6\\sqrt{2}\\,\\mathrm{cm}$",
         "$6\\sqrt{3}\\,\\mathrm{cm}$",

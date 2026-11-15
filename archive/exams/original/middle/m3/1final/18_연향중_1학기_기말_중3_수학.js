@@ -81,6 +81,10 @@ window.examData = {
     },
     {
       "number": 6,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "f(−1)=f(5)이므로 축은 x=2이다. f(1)=0이고 x=1의 대칭점은 x=3이므로 근은 1과 3이다. 정답은 ⑤이다.",
+      "solutionImageAlt": "한 예로 그린 포물선에서 x가 −1과 5인 두 점은 같은 높이다. 가로 중점 x=2가 대칭축이다. x절편 1과 3은 이 축 양쪽에 있다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q6-solution-visual-v2.svg",
       "score": 5.0,
       "question": "이차함수 $f(x)=ax^2+bx+c$에 대하여 $f(-1)=f(5)$이고, $f(1)=0$일 때, 이차방정식 $ax^2+bx+c=0$의 해를 구하여라. (단, $a, b, c$는 상수, $a \\ne 0$) (5점)",
       "choices": [
@@ -123,8 +127,13 @@ window.examData = {
     },
     {
       "number": 9,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "두 도로의 넓이는 40x와 30x이고 겹친 넓이는 x²이다. 따라서 1200−(40x+30x−x²)=600에서 가능한 폭은 10 m이다. 정답은 ①이다.",
+      "solutionImageAlt": "가로 40 m, 세로 30 m인 땅에 수평 도로와 비스듬한 도로가 만난다. 수평 도로의 세로 폭과 비스듬한 도로의 가로 폭을 각각 x m로 표시했다. 도로 밖 네 부분이 녹색이다. 두 길의 겹친 부분은 주황색이다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q9-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 그림과 같이 가로, 세로의 길이가 각각 $40\\,\\text{m}, 30\\,\\text{m}$인 직사각형 모양의 땅에 폭이 $x\\,\\text{m}$로 일정한 도로를 만들었다. 도로를 제외한 땅의 넓이가 $600\\,\\text{m}^2$일 때, 도로의 폭을 구하여라. (4점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q09.png\" style=\"max-width: 320px; display: block; margin: 10px 0;\">",
+      "question": "다음 그림과 같이 가로, 세로의 길이가 각각 $40\\,\\text{m}, 30\\,\\text{m}$인 직사각형 모양의 땅에 폭이 $x\\,\\text{m}$로 일정한 도로를 만들었다. 도로를 제외한 땅의 넓이가 $600\\,\\text{m}^2$일 때, 도로의 폭을 구하여라. (4점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q9-problem-visual-v2.svg\" alt=\"가로 40 m, 세로 30 m인 땅에 수평 도로와 비스듬한 도로가 만난다. 수평 도로의 세로 폭과 비스듬한 도로의 가로 폭을 각각 x m로 표시했다. 도로 밖 네 부분이 녹색이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$10\\,\\text{m}$",
         "$15\\,\\text{m}$",
@@ -137,6 +146,10 @@ window.examData = {
     },
     {
       "number": 10,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "50x−5x²=105를 풀면 (x−3)(x−7)=0이다. 처음 높이 105 m를 지난 것은 3초 후이므로 정답은 ②이다.",
+      "solutionImageAlt": "가로축은 시간(초), 세로축은 높이(m)를 나타낸다. 파란 포물선과 높이 105 m의 수평선은 3초와 7초에 만난다. 두 교점에서 각각 가로축에 수직으로 점선을 내렸다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q10-solution-visual-v2.svg",
       "score": 4.0,
       "question": "지상에서 초속 $50\\,\\text{m}$로 똑바로 위로 던져 올린 물체의 $x$초 후의 높이는 $(50x-5x^2)\\,\\text{m}$라고 한다. 이 물체가 처음으로 지면으로부터의 높이가 $105\\,\\text{m}$인 지점을 지나는 것은 던져 올린 지 몇 초 후인가? (4점)",
       "choices": [
@@ -165,8 +178,13 @@ window.examData = {
     },
     {
       "number": 12,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "a>b>0이고 x축 대칭에서 d=−a, c=−b이다. 네 계수의 합은 0이고 곱은 a²b²>0이다. 옳은 것은 ㄱ, ㄷ이므로 정답은 ②이다.",
+      "solutionImageAlt": "같은 색의 포물선 두 개는 x축에 서로 대칭이다. 좁은 파랑 쌍은 위가 y=ax², 아래가 y=dx²이다. 넓은 주황 쌍은 위가 y=bx², 아래가 y=cx²이다. 같은 높이에서 두 색의 가로 폭을 점선으로 비교했다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q12-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "아래 그림과 같이 이차함수 $y=ax^2$과 $y=dx^2$, $y=bx^2$과 $y=cx^2$의 그래프는 각각 $x$축에 서로 대칭이다. 다음 &lt;보기&gt; 중 옳은 것을 모두 골라라. (4점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q12.png\" style=\"max-width: 300px; display: block; margin: 10px 0;\"><br><br>&lt;보기&gt;<br>ㄱ. $a+b+c+d=0$<br>ㄴ. $|b| > |d|$<br>ㄷ. $abcd > 0$<br>ㄹ. $a, b, c, d$ 중 가장 큰 값은 $b$이다.",
+      "question": "아래 그림과 같이 이차함수 $y=ax^2$과 $y=dx^2$, $y=bx^2$과 $y=cx^2$의 그래프는 각각 $x$축에 서로 대칭이다. 다음 &lt;보기&gt; 중 옳은 것을 모두 골라라. (4점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"같은 색의 포물선 두 개는 x축에 서로 대칭이다. 좁은 파랑 쌍은 위가 y=ax², 아래가 y=dx²이다. 넓은 주황 쌍은 위가 y=bx², 아래가 y=cx²이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br><br>&lt;보기&gt;<br>ㄱ. $a+b+c+d=0$<br>ㄴ. $|b| > |d|$<br>ㄷ. $abcd > 0$<br>ㄹ. $a, b, c, d$ 중 가장 큰 값은 $b$이다.",
       "choices": [
         "ㄱ",
         "ㄱ, ㄷ",
@@ -179,6 +197,10 @@ window.examData = {
     },
     {
       "number": 13,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=−3(x−1)²+9에서 (1,9), (−1/2,9/4), (−1,−3), (3,−3)은 차례로 네 사분면에 놓인다. 따라서 정답은 ⑤이다.",
+      "solutionImageAlt": "아래로 열린 그래프가 x축을 y축 양쪽에서 가로지른다. 네 사분면마다 초록 점을 하나씩 표시했다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q13-solution-visual-v2.svg",
       "score": 4.0,
       "question": "다음 이차함수의 그래프 중 모든 사분면을 지나는 것은? (4점)",
       "choices": [
@@ -193,6 +215,10 @@ window.examData = {
     },
     {
       "number": 14,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "왼쪽으로 2, 아래로 3만큼 평행이동하면 y=(x+2)²/2−3이다. 정답은 ②이다.",
+      "solutionImageAlt": "파란 y=x²/2의 꼭짓점은 원점이고, 이동한 주황 포물선의 꼭짓점은 (−2, −3)이다. 두 포물선의 폭은 같다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q14-solution-visual-v2.svg",
       "score": 3.0,
       "question": "다음 이차함수가 나타내는 그래프 중에서 $y=\\dfrac{1}{2}x^2$의 그래프를 꼭짓점의 좌표가 $(-2, -3)$이 되도록 평행이동한 것은? (3점)",
       "choices": [
@@ -207,8 +233,13 @@ window.examData = {
     },
     {
       "number": 15,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "x좌표를 t라 하면 PQ=(2t+3)−(−4t²−1)=4(t+1/4)²+15/4이다. t=−1/4에서 최솟값 15/4를 가지므로 정답은 ④이다.",
+      "solutionImageAlt": "주황색 점선은 직선 y=2x+3이고, 파란 그래프는 아래로 열린 포물선 y=−4x²−1이다. 같은 x에서 P와 Q를 수직선으로 이었다. t=−1/4에서 잰 세로 길이는 초록 실선이다. 양옆의 옅은 세로선과 비교할 수 있다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q15-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "다음 그림과 같이 이차함수 $y=-4x^2-1$의 그래프 위의 한 점 $\\mathrm{P}$에서 $y$축과 평행한 직선을 그어 직선 $y=2x+3$과 만나는 점을 $\\mathrm{Q}$라고 하자. 이때, $\\overline{\\mathrm{PQ}}$의 길이의 최솟값을 구하여라. (5점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q15.png\" style=\"max-width: 300px; display: block; margin: 10px 0;\">",
+      "question": "다음 그림과 같이 이차함수 $y=-4x^2-1$의 그래프 위의 한 점 $\\mathrm{P}$에서 $y$축과 평행한 직선을 그어 직선 $y=2x+3$과 만나는 점을 $\\mathrm{Q}$라고 하자. 이때, $\\overline{\\mathrm{PQ}}$의 길이의 최솟값을 구하여라. (5점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q15-problem-visual-v2.svg\" alt=\"주황색 점선은 직선 y=2x+3이고, 파란 그래프는 아래로 열린 포물선 y=−4x²−1이다. 같은 x에서 P와 Q를 수직선으로 이었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$\\dfrac{1}{4}$",
         "$\\dfrac{1}{16}$",
@@ -221,8 +252,13 @@ window.examData = {
     },
     {
       "number": 16,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "주어진 그래프는 위로 열려 a>0이고, 원점을 지나므로 c=0이다. 축 b/(2a)가 y축 왼쪽이므로 b<0이다. 구하는 y=bx²+a는 아래로 열리고 꼭짓점 (0,a)가 x축보다 높으므로 정답은 ②이다.",
+      "solutionImageAlt": "왼쪽은 주어진 위로 열린 포물선이다. 원점과 왼쪽 꼭짓점으로부터 a>0, b<0, c=0이다. 오른쪽의 구하는 포물선은 y축에 대칭이며 꼭짓점이 x축보다 높고 아래로 열린다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q16-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "이차함수 $y=ax^2-bx-c$의 그래프가 아래 그림과 같을 때, 다음 중 이차함수 $y=bx^2+cx+a$의 그래프로 알맞은 것은? (4점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q16.png\" style=\"max-width: 480px; display: block; margin: 10px 0;\">",
+      "question": "이차함수 $y=ax^2-bx-c$의 그래프가 아래 그림과 같을 때, 다음 중 이차함수 $y=bx^2+cx+a$의 그래프로 알맞은 것은? (4점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"위의 주어진 포물선은 원점을 지나고 꼭짓점이 y축 왼쪽에 있으며 위로 열린다. 아래 ①과 ②는 y축 대칭이며 꼭짓점이 x축 위에 있다. ①은 위로, ②는 아래로 열린다. ③·④·⑤는 원점을 지나며 꼭짓점이 차례로 오른쪽 아래, 오른쪽 위, 왼쪽 위에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "①",
         "②",
@@ -235,6 +271,10 @@ window.examData = {
     },
     {
       "number": 17,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=−9(x−1)²+8의 꼭짓점에서 오른쪽으로 갈수록 y가 감소한다. 따라서 x>1이고 정답은 ④이다.",
+      "solutionImageAlt": "꼭짓점은 (1, 8)이다. y값이 감소하는 오른쪽 가지를 주황으로 표시했다. 왼쪽 가지는 파랑이다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q17-solution-visual-v2.svg",
       "score": 4.0,
       "question": "이차함수 $y=-9x^2+18x-1$의 그래프가 $x$의 값이 증가할 때, $y$의 값은 감소하는 $x$의 값의 범위는? (4점)",
       "choices": [
@@ -249,6 +289,10 @@ window.examData = {
     },
     {
       "number": 18,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=2x²−4x+2=2(x−1)²이다. 꼭짓점 (1,0)과 축 x=1에서 옳은 것은 ①, ②이다.",
+      "solutionImageAlt": "파란 포물선의 꼭짓점은 원점이다. 오른쪽으로 1만큼 옮긴 주황색 점선 포물선의 꼭짓점은 (1, 0)이다. 두 그래프는 위로 열린다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q18-solution-visual-v2.svg",
       "score": 4.0,
       "question": "이차함수 $y=2x^2-4x+2$의 그래프에 대한 설명으로 옳은 것을 모두 고르면? (정답 2개) (4점)",
       "choices": [
@@ -263,6 +307,10 @@ window.examData = {
     },
     {
       "number": 19,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=a(x−2)²+5에 (0,1)을 대입하면 a=−1이다. 전개하면 y=−x²+4x+1이므로 정답은 ③이다.",
+      "solutionImageAlt": "아래로 열린 파란 포물선의 꼭짓점 (2, 5)가 위쪽에 있다. 같은 곡선과 세로축은 점 (0, 1)에서 만난다. 꼭짓점을 지나는 초록 세로 점선이 대칭축이다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q19-solution-visual-v2.svg",
       "score": 4.0,
       "question": "$x=2$일 때 최댓값 $5$를 갖고, $y$축과 만나는 점의 $y$좌표가 $1$인 포물선을 그래프로 하는 이차함수의 식은? (4점)",
       "choices": [
@@ -277,8 +325,13 @@ window.examData = {
     },
     {
       "number": 20,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "A의 x좌표를 u, C의 x좌표를 v라 두면 v²=4u²이므로 v=2u이다. 정사각형에서 v−u=v²−u²이므로 v+u=1이다. 따라서 B=(2/3, 1/9)이고 정답은 ①이다.",
+      "solutionImageAlt": "원점에서 올라가는 두 포물선의 오른쪽 가지가 보인다. 파란 y=x² 위에 A와 C, 주황색 점선 y=4x² 위에 D가 있다. 각 변이 좌표축과 평행한 정사각형 ABCD의 B는 오른쪽 아래이다. A에서 x축의 u로, B와 C에서 x축의 v로 이어지는 점선을 그렸다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q20-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "다음 그림에서 사각형 $\\mathrm{ABCD}$는 정사각형이고, 각 변은 각각 $x$축, $y$축에 평행하다. 두 점 $\\mathrm{A, C}$는 포물선 $y=x^2$ 위의 점이고 점 $\\mathrm{D}$는 포물선 $y=4x^2$ 위의 점이다. 이때 점 $\\mathrm{B}$의 좌표를 구하여라. (단, 점 $\\mathrm{A}$의 $x$좌표는 양수이다.) (5점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q20.png\" style=\"max-width: 300px; display: block; margin: 10px 0;\">",
+      "question": "다음 그림에서 사각형 $\\mathrm{ABCD}$는 정사각형이고, 각 변은 각각 $x$축, $y$축에 평행하다. 두 점 $\\mathrm{A, C}$는 포물선 $y=x^2$ 위의 점이고 점 $\\mathrm{D}$는 포물선 $y=4x^2$ 위의 점이다. 이때 점 $\\mathrm{B}$의 좌표를 구하여라. (단, 점 $\\mathrm{A}$의 $x$좌표는 양수이다.) (5점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"원점에서 올라가는 두 포물선의 오른쪽 가지가 보인다. 파란 y=x² 위에 A와 C, 주황색 점선 y=4x² 위에 D가 있다. 각 변이 좌표축과 평행한 정사각형 ABCD의 B는 오른쪽 아래이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
         "$\\left(\\dfrac{2}{3}, \\dfrac{1}{9}\\right)$",
         "$\\left(\\dfrac{1}{3}, \\dfrac{1}{7}\\right)$",
@@ -299,6 +352,10 @@ window.examData = {
     },
     {
       "number": 22,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "아래로 3만큼 이동한 그래프는 y=−(x−4)²+k+13이다. x축과 만나지 않으려면 가장 큰 값이 0보다 작아야 하므로 k<−13이다.",
+      "solutionImageAlt": "아래로 열린 그래프의 꼭짓점 높이는 k+13이다. 위쪽의 x축은 곡선 전체보다 높고 축 x=4를 초록 점선으로 표시했다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q22-solution-visual-v2.svg",
       "score": 7.0,
       "question": "[서술형 2] 이차함수 $y=-x^2+8x+k$의 그래프를 $y$축의 방향으로 $-3$만큼 평행이동 하였더니 $x$축과 만나지 않았다. 이때 수 $k$의 값의 범위를 구하시오. [7점]",
       "choices": [],
@@ -307,6 +364,10 @@ window.examData = {
     },
     {
       "number": 23,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "x에 대해 완전제곱하면 최솟값은 m=−a²/4−2a이다. 다시 정리하면 m=−(a+4)²/4+4이고 최댓값은 a=−4일 때 4이다.",
+      "solutionImageAlt": "가로축은 계수 a, 세로축은 함수의 최솟값 m이다. 아래로 열린 포물선에서 꼭짓점 (−4, 4)를 파란 점으로 표시했다.",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q23-solution-visual-v2.svg",
       "score": 7.0,
       "question": "[서술형 3] 이차함수 $y=x^2-ax-2a$의 최솟값이 $m$일 때, $m$의 최댓값과 그때의 $a$의 값을 구하여라. [7점]",
       "choices": [],
