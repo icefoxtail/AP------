@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { finalizeM2NativeDisposition } from "./reviewed-m2-proposal-finalization.mjs";
 
 const fail = message => { throw new Error(`native proposal finalization: ${message}`); };
 const sha = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -109,9 +110,11 @@ function nativeProposals(ctx) {
       technical.push(validateActiveReuse(ctx, { id, kind, proposal, origin })); continue;
     }
     if (["BINDING", "EXACT_BINDING", "LINK", "LINK_MISSING"].includes(kind)) continue;
-    const v2 = ctx.spec?.schemaVersion === "archive-native-proposal-finalization-v2";
+    const v3 = ctx.spec?.schemaVersion === "archive-native-proposal-finalization-v3";
+    const v2 = ctx.spec?.schemaVersion === "archive-native-proposal-finalization-v2" || v3;
     if (!text(id) && !v2) fail("selected semantic proposal requires an exact native ID");
     let type = ["CC", "NEW_CC", "CROSS_CONCEPT"].includes(kind) ? "CC" : ["TPL", "NEW_TPL", "NEW_TEMPLATE"].includes(kind) ? "TPL" : "UNSUPPORTED";
+    if (v3 && native.review.schemaVersion === "m2-s2-meta-review-v1" && kind === "NEW_PT") type = "PT";
     if (v2 && native.review.schemaVersion === "m3-s2-complete-semantic-review-v1") {
       if (["NEW_CROSS_CONCEPT_PROPOSAL", "NEW_CROSSCONCEPT", "NEW_CC_PROPOSAL", "CROSS_CONCEPT_DEFINITION_GAP"].includes(kind)) type = "CC";
       if (["CONDITION_CANDIDATE", "NEW_CONDITION"].includes(kind)) type = "CONDITION";
@@ -242,7 +245,7 @@ function assetBindings(ctx, snapshot, primary) {
 }
 
 function exactDefinition(ctx, change, keyField, definition) {
-  const collection = { conceptKey: "concepts", conditionKey: "conditions", templateKey: "templates" }[keyField], key = definition?.[keyField];
+  const collection = { conceptKey: "concepts", conditionKey: "conditions", templateKey: "templates", problemTypeKey: "problemTypes" }[keyField], key = definition?.[keyField];
   if (!text(key) || definition.status !== "ACTIVE" || !text(definition.canonicalLabelKo) || !text(definition.definition) ||
       !uniqueStrings(definition.supportingQuestionUids) || !definition.supportingQuestionUids.includes(ctx.patch.questionUid) ||
       definition.supportingItemCount !== definition.supportingQuestionUids.length ||
@@ -560,7 +563,8 @@ function finalizeTemplate(ctx, proof, proposals) {
 
 // The original native review remains immutable. A second independently authored,
 // Git-bound definition review can settle only the proposal explicitly supported by
-// this UID; it cannot supply a new stem, solution, difficulty, PT or native verdict.
+// this UID; it cannot supply a new stem, solution, difficulty or native verdict.
+// A new PT is confined to the separately witnessed v3 unresolved NEW_PT route.
 export function validateNativeProposalFinalization(args) {
   const ctx = { ...args, spec: args.patch.sourceReview.proposalFinalization };
   const { selected: proposals, technical } = nativeProposals(ctx);
@@ -568,7 +572,8 @@ export function validateNativeProposalFinalization(args) {
     if (proposals.length) fail("native semantic proposal requires explicit independent finalization");
     return technical.length ? { fields: {}, technicalBindings: technical } : null;
   }
-  const v2 = ctx.spec.schemaVersion === "archive-native-proposal-finalization-v2";
+  const v3 = ctx.spec.schemaVersion === "archive-native-proposal-finalization-v3";
+  const v2 = ctx.spec.schemaVersion === "archive-native-proposal-finalization-v2" || v3;
   const allowed = v2 ? ["schemaVersion", "finalizationCommit", "finalizationRef", "proposalSelections"] :
     ["schemaVersion", "finalizationCommit", "finalizationRef", "registryChangesRef", "proposalMappingRef", "sourceBindingRef", "proposalIds"];
   if (ctx.request.registrationMode || (!v2 && ctx.spec.schemaVersion !== "archive-native-proposal-finalization-v1") ||
@@ -578,7 +583,10 @@ export function validateNativeProposalFinalization(args) {
         !equal(sorted(ctx.spec.proposalIds), sorted(proposals.map(p => p.id)))) || proposals.some(p => p.type === "UNSUPPORTED"))
     fail("exact supported native proposal selection required");
   const proof = boundDocument(ctx, ctx.spec.finalizationRef);
-  const result = v2 ? finalizeDisposition(ctx, proof, proposals) :
+  const result = v3 ? finalizeM2NativeDisposition(ctx, proof, proposals, {
+    fail, sha, stable, equal, text, uniqueStrings, sorted, safePath, gitFile, boundDocument,
+    exactNativeRef, oneRow, sourceSnapshot, dispositionAssets, exactDefinition, reusedDefinition, nativeFieldBase,
+  }) : v2 ? finalizeDisposition(ctx, proof, proposals) :
     proof.schemaVersion === "archive-cross-concept-narrow-definition-finalization-v1" ? finalizeConcept(ctx, proof, proposals) :
     proof.schemaVersion === "archive-independent-exact-template-finalization-review-v1" ? finalizeTemplate(ctx, proof, proposals) : null;
   if (!result) fail("unsupported independent finalization schema");
