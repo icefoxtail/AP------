@@ -344,7 +344,7 @@ window.questionBank = [
     "id": 8,
     "score": 3.6,
     "type": "multiple_choice",
-    "question": "다음 <보기>의 함수의 그래프 중 함수 $y=\\log_3 x$의 그래프를 평행이동 또는 대칭이동하여 겹쳐지는 것을 모두 고르면?\n\n<div class=\"quote-box\">\n<center><b>&lt;보 기&gt;</b></center>\nㄱ. $y=\\log_3 (x-1)$<br>\nㄴ. $y=\\log_3 6x$<br>\nㄷ. $y=\\log_3 x^3$<br>\nㄹ. $y=3^{-(x+2)}$\n</div>",
+    "question": "다음 <보기>의 함수의 그래프 중 함수 $y=\\log_3 x$의 그래프를 $x$축 또는 $y$축에 대하여 대칭이동하거나 평행이동하여 겹쳐지는 것을 모두 고르면?",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",
@@ -361,7 +361,7 @@ window.questionBank = [
       "로그함수의 그래프와 평행이동",
       "그래프"
     ],
-    "content": "다음 <보기>의 함수의 그래프 중 함수 $y=\\log_3 x$의 그래프를 평행이동 또는 대칭이동하여 겹쳐지는 것을 모두 고르면?\n\n<div class=\"quote-box\">\n<center><b>&lt;보 기&gt;</b></center>\nㄱ. $y=\\log_3 (x-1)$<br>\nㄴ. $y=\\log_3 6x$<br>\nㄷ. $y=\\log_3 x^3$<br>\nㄹ. $y=3^{-(x+2)}$\n</div>",
+    "content": "다음 <보기>의 함수의 그래프 중 함수 $y=\\log_3 x$의 그래프를 $x$축 또는 $y$축에 대하여 대칭이동하거나 평행이동하여 겹쳐지는 것을 모두 고르면?",
     "level": "중",
     "category": "로그함수의 그래프와 평행이동",
     "originalCategory": "지수함수와 로그함수",
@@ -843,7 +843,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "sourceQid": 17,
-    "questionUid": "qid_v1_4ee17ab06b3388dd510f2fdf442d91076ed999661572bb0e2d748b916eff0d77"
+    "questionUid": "qid_v1_4ee17ab06b3388dd510f2fdf442d91076ed999661572bb0e2d748b916eff0d77",
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 모양 예시인 정육면체에서 파란 삼각형 AFC의 세 변 AF, FC, CA에 같은 길이 표시를 했다.",
+    "solutionImageCaption": "정육면체의 한 변을 s라 하면 AF=FC=CA=s√2이므로 △AFC는 정삼각형이다. s=2^(5/3)에서 넓이는 √3·2^(7/3)이고 p=7, q=3이다. 정답은 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1011,7 +1015,7 @@ window.questionBank = [
     "question": "서답형 1. (서술형) 다음 부등식을 푸시오.\n\n$$(x+2)^{x^2-20} < (x+2)^{-x^2+6x} \\quad (\\text{단, } x > -2)$$",
     "choices": [],
     "answer": "$-1<x<5$",
-    "solution": "조건 $x>-2$에서 밑 $x+2$는 양수이고, $x=-1$이면 밑이 1이 되어 양변이 같으므로 해가 아니다.\n$-2<x<-1$에서는 $0<x+2<1$이므로 지수함수 $y=(x+2)^t$는 지수 $t$가 작을수록 값이 크다.\n따라서 $x^2-20<-x^2+6x$이어야 한다. 정리하면 $2(x-5)(x+2)<0$인데 $-2<x<-1$에서 성립하지 않는다.\n$x>-1$에서는 $x+2>1$이므로 지수 비교 방향이 그대로이다.\n$2x^2-6x-20<0$, 즉 $(x-5)(x+2)<0$에서 $-2<x<5$를 얻는다. 여기에 $x>-1$을 적용하면 $-1<x<5$이다.\n따라서 해는 $-1<x<5$이다.",
+    "solution": "조건 $x>-2$에서 밑 $x+2>0$이다. $x=-1$이면 밑이 1이므로 양변이 같아 부등식을 만족하지 않는다.\n$-2<x<-1$이면 $0<x+2<1$이므로 밑이 1보다 작은 거듭제곱의 비교 방향이 바뀐다. $L=x^2-20$, $R=-x^2+6x$라 하면 부등식이 성립하려면 $L>R$이어야 한다.\n$L-R=2(x-5)(x+2)$인데, 이 구간에서는 $x-5<0$, $x+2>0$이므로 $L-R<0$이다. 따라서 이 구간에는 해가 없다.\n$x>-1$이면 $x+2>1$이므로 지수의 비교 방향이 그대로이다. $L<R$, 즉 $2(x-5)(x+2)<0$에서 $-2<x<5$를 얻는다. 여기에 $x>-1$을 적용하면 $-1<x<5$이다.\n따라서 해는 $-1<x<5$이다.",
     "page": 5,
     "tags": [
       "수학I",
