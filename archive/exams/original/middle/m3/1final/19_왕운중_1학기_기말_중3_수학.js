@@ -137,8 +137,13 @@ window.examData = {
     },
     {
       "number": 10,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "π(8+x)²−64π=57π에서 양수 해는 x=3 cm이다. 정답은 ②이다.",
+      "solutionImageAlt": "안쪽 원은 파랑, 두 원 사이 늘어난 부분은 주황이다. 바깥쪽 반지름 전체는 8+x이다.",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q10-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "오른쪽 그림과 같이 반지름의 길이가 $8\\,\\text{cm}$인 원에서 반지름의 길이를 $x\\,\\text{cm}$만큼 늘였더니 넓이가 $57\\pi\\,\\text{cm}^2$만큼 더 늘었다. 이때 $x$의 값을 구하면? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q10.png\" style=\"max-width: 260px; display: block; margin: 10px 0;\">",
+      "question": "오른쪽 그림과 같이 반지름의 길이가 $8\\,\\text{cm}$인 원에서 반지름의 길이를 $x\\,\\text{cm}$만큼 늘였더니 넓이가 $57\\pi\\,\\text{cm}^2$만큼 더 늘었다. 이때 $x$의 값을 구하면? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q10-problem-v3.svg\" alt=\"파란 안쪽 원의 반지름은 8 cm이다. 오른쪽에서 주황으로 표시한 x cm만큼 바깥 원의 반지름이 더 크다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$2$",
         "$3$",
@@ -179,6 +184,10 @@ window.examData = {
     },
     {
       "number": 13,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "x>0에서 제4사분면을 지나지 않으려면 y절편이 0 이상이어야 한다. 9a−4≥0에서 a≥4/9이고 정답은 ④이다.",
+      "solutionImageAlt": "꼭짓점이 같은 두 파란색과 주황색 곡선을 그렸다. 파란 경계 곡선은 원점을 지나고 주황 곡선은 오른쪽 아래 색칠한 영역을 지난다.",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q13-solution.svg",
       "score": 4.0,
       "question": "이차함수 $y=ax^2+bx+c$는 $x=-3$일 때, 최솟값이 $-4$이다. 이 함수의 그래프가 제 $4$ 사분면을 지나지 않을 때, 상수 $a$값의 범위는? (4점)",
       "choices": [
@@ -193,6 +202,10 @@ window.examData = {
     },
     {
       "number": 14,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "y=−(x−1)²+k+1이므로 k+1=6이고 k=5이다. 정답은 ②이다.",
+      "solutionImageAlt": "아래로 열린 포물선의 주황 꼭짓점과 파란 세로축 교점의 높이 차이는 1이다.",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q14-solution.svg",
       "score": 4.5,
       "question": "이차함수 $y=-x^2+2x+k$의 최댓값이 $6$일 때, 상수 $k$의 값은? [4.5점]",
       "choices": [
@@ -207,8 +220,13 @@ window.examData = {
     },
     {
       "number": 15,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "교점은 (−1,1), (3,9)이다. 삼각형 넓이는 3×1/2+3×3/2=6이고 정답은 ⑤이다.",
+      "solutionImageAlt": "세로축 위의 점에서 삼각형을 두 조각으로 나눴다. 두 삼각형의 공통 밑변이 세로 3, 그 밑변까지의 거리가 각각 가로 1과 3이다.",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q15-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 그림과 같이 이차함수 $y=x^2$의 그래프와 일차함수 $y=2x+3$의 그래프가 두 점 $\\mathrm{A, B}$에서 만날 때, $\\triangle\\mathrm{AOB}$의 넓이는? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q15.png\" style=\"max-width: 300px; display: block; margin: 10px 0;\">",
+      "question": "다음 그림과 같이 이차함수 $y=x^2$의 그래프와 일차함수 $y=2x+3$의 그래프가 두 점 $\\mathrm{A, B}$에서 만날 때, $\\triangle\\mathrm{AOB}$의 넓이는? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q15-problem-v3.svg\" alt=\"파랑 포물선과 주황 직선이 A와 B에서 만난다. A와 B에서 원점으로 연결한 주황 영역은 삼각형 AOB이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$1$",
         "$3$",
@@ -221,6 +239,10 @@ window.examData = {
     },
     {
       "number": 16,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "모든 식이 y=ax² 꼴이라 공통 대칭축은 y축이다. x축이라고 한 ⑤가 옳지 않다.",
+      "solutionImageAlt": "대표인 파랑 y=2x²와 아래 주황 y=−2x²가 원점에서 만난다. 두 곡선의 공통 대칭축은 세로 점선이다.",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q16-solution.svg",
       "score": 4.0,
       "question": "다음 이차함수들의 그래프에 대한 설명으로 옳지 않은 것은? (4점)<br><br>ㄱ. $y=\\dfrac{1}{3}x^2$ \\quad ㄴ. $y=-\\dfrac{2}{3}x^2$ \\quad ㄷ. $y=2x^2$<br>ㄹ. $y=-2x^2$ \\quad ㅁ. $y=\\dfrac{3}{2}x^2$ \\quad ㅂ. $y=-3x^2$",
       "choices": [
@@ -235,6 +257,10 @@ window.examData = {
     },
     {
       "number": 17,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "x=0이면 ax²와 bx가 모두 0이므로 어떤 이차함수 y=ax²+bx+c도 (0,c)를 지난다. 정답은 ③이다.",
+      "solutionImageAlt": "파란 예시 포물선이 세로축을 지나는 주황 점을 표시했다. 이 점에서는 가로 좌표가 0이어서 높이는 상수항 c이다.",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q17-solution.svg",
       "score": 4.0,
       "question": "이차함수 $y=ax^2+bx+c(a \\ne 0)$의 그래프에 대한 설명 중 옳은 것은? (4점)",
       "choices": [
@@ -249,8 +275,13 @@ window.examData = {
     },
     {
       "number": 18,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "a>0, b>0이므로 위로 열리며 축이 x=−b/(2a)<0이고 y절편 ab>0이다. 가능한 그림은 ⑤이다.",
+      "solutionImageAlt": "왼쪽 예시 직선은 오른쪽으로 올라가고 세로축 위에서 만난다. 오른쪽 예시는 포물선이 위로 열리고 꼭짓점이 세로축 왼쪽에 있다.",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q18-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "일차함수 $y=ax+b$의 그래프가 아래 그림과 같을 때, $y=ax^2+bx+ab$의 그래프로 가능한 것은? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q18.png\" style=\"max-width: 420px; display: block; margin: 10px 0;\">",
+      "question": "일차함수 $y=ax+b$의 그래프가 아래 그림과 같을 때, $y=ax^2+bx+ab$의 그래프로 가능한 것은? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q18-problem-v3.svg\" alt=\"위쪽 직선은 오른쪽으로 올라가고 세로축의 위쪽에서 만난다. 아래의 다섯 포물선은 열리는 방향과 꼭짓점 위치가 서로 다르다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "①",
         "②",
@@ -263,6 +294,10 @@ window.examData = {
     },
     {
       "number": 19,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "계수 비교에서 a=1, p=−4, q=7이다. a+p+q=4이고 정답은 ②이다.",
+      "solutionImageAlt": "위에는 가로축에 서로 대칭인 파랑 모형과 주황 모형이 있다. 아래에서는 주황 모형의 꼭짓점을 왼쪽과 위로 이동했다.",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q19-solution.svg",
       "score": 4.0,
       "question": "이차함수 $y=ax^2(a \\ne 0)$의 그래프를 $x$축에 대하여 대칭시킨 후 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $q$만큼 평행이동한 포물선의 식이 $y=-x^2+px+3$이다. 이때, $a+p+q$의 값은? (4점)",
       "choices": [
@@ -277,8 +312,13 @@ window.examData = {
     },
     {
       "number": 20,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "점 (3,5)를 y=ax²에 대입하면 5=9a이다. y=(5/9)x²이고 정답은 ④이다.",
+      "solutionImageAlt": "색과 한 눈금이 같은 두 수직 선분의 길이는 각각 5이다. 오른쪽 점에서 주황 가로 3과 세로 5를 읽는다.",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q20-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "다음 이차함수 그래프의 식은? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q20.png\" style=\"max-width: 320px; display: block; margin: 10px 0;\">",
+      "question": "다음 이차함수 그래프의 식은? (4점)<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q20-problem-v3.svg\" alt=\"파랑 포물선은 원점이 꼭짓점이다. 좌우 가로 눈금 −3과 3에서 높이 5의 수평선에 닿는다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
       "choices": [
         "$y=\\dfrac{5}{3}x^2$",
         "$y=\\dfrac{25}{9}x^2$",
@@ -299,14 +339,23 @@ window.examData = {
     },
     {
       "number": 22,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "3(10−t)²/2=24에서 t=6이고 P=(6,18)이다. 아래 넓이 54는 위 넓이 24의 9/4배이다.",
+      "solutionImageAlt": "위 주황 삼각형의 가로 길이는 10−t, 세로 길이는 3(10−t)이다. 아래 파란 삼각형의 가로와 세로는 t, 3t이다.",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q22-solution.svg",
+      "layoutTag": "fullwidth",
       "score": 6.0,
-      "question": "[서술형 2] 오른쪽 그림과 같이 일차함수 $y=3x$의 그래프 위에 두 점 $\\mathrm{A, P}$가 있다. 두 점 $\\mathrm{A, P}$에서 $x$축 위에 내린 수선의 발을 각각 $\\mathrm{C, Q}$라 하고, 점 $\\mathrm{P}$에서 $\\overline{\\mathrm{AC}}$에 내린 수선의 발을 $\\mathrm{R}$라고 하자. 점 $\\mathrm{A}$의 좌표가 $(10, 30)$일 때, 다음 물음에 답하여라. [총 6점]<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/s02.png\" style=\"max-width: 260px; display: block; margin: 10px 0;\"><br><br>(1) $\\triangle\\mathrm{APR}$의 넓이가 $24$일 때, 점 $\\mathrm{P}$의 좌표를 구하는 과정을 서술하시오. [4점]<br><br>(2) $\\triangle\\mathrm{POQ}$의 넓이는 $\\triangle\\mathrm{APR}$의 넓이의 몇 배인지 그 과정을 서술하시오. [2점]",
+      "question": "[서술형 2] 오른쪽 그림과 같이 일차함수 $y=3x$의 그래프 위에 두 점 $\\mathrm{A, P}$가 있다. 두 점 $\\mathrm{A, P}$에서 $x$축 위에 내린 수선의 발을 각각 $\\mathrm{C, Q}$라 하고, 점 $\\mathrm{P}$에서 $\\overline{\\mathrm{AC}}$에 내린 수선의 발을 $\\mathrm{R}$라고 하자. 점 $\\mathrm{A}$의 좌표가 $(10, 30)$일 때, 다음 물음에 답하여라. [총 6점]<br><br><img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q22-problem-v3.svg\" alt=\"직선 y=3x 위의 A와 P에서 아래로 내리면 C와 Q가 된다. P의 높이에서 가로로 간 점 R은 세로 AC 위에 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"><br><br>(1) $\\triangle\\mathrm{APR}$의 넓이가 $24$일 때, 점 $\\mathrm{P}$의 좌표를 구하는 과정을 서술하시오. [4점]<br><br>(2) $\\triangle\\mathrm{POQ}$의 넓이는 $\\triangle\\mathrm{APR}$의 넓이의 몇 배인지 그 과정을 서술하시오. [2점]",
       "choices": [],
       "answer": "(1) $P=(6,18)$, (2) $\\dfrac94$배",
       "solution": "$P$가 $y=3x$ 위에 있으므로 $P=(t,3t)$라 두자. 그림에서 $0<t<10$이다.\n$R$은 $x=10$인 선분 $AC$ 위의 수선의 발이므로 $R=(10,3t)$이다.\n따라서 $AR=30-3t=3(10-t)$, $PR=10-t$이다.\n$\\triangle APR$의 넓이가 $24$이므로 $\\dfrac12\\cdot3(10-t)(10-t)=24$,\n$(10-t)^2=16$이다.\n$0<t<10$이므로 $10-t=4$, 따라서 $t=6$이고 $P=(6,18)$이다.\n또 $Q=(6,0)$이므로 $\\triangle POQ$의 넓이는 $\\dfrac12\\cdot6\\cdot18=54$이다.\n$\\dfrac{54}{24}=\\dfrac94$이므로 $\\triangle POQ$의 넓이는 $\\triangle APR$ 넓이의 $\\dfrac94$배이다."
     },
     {
       "number": 23,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "꼭짓점의 x좌표가 2이므로 직선에 넣으면 y=−11이다. k−8=−11에서 k=−3이고 최솟값은 −11이다.",
+      "solutionImageAlt": "파란 포물선의 가장 낮은 주황 점까지 세로 점선을 그렸다. 그 점은 같은 가로 눈금에서 초록 직선 위에 놓인다.",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q23-solution.svg",
       "score": 5.0,
       "question": "[서술형 3] 이차함수 $y=2x^2-8x+k$의 그래프의 꼭지점이 직선 $y=-3x-5$ 위에 있을 때, 상수 $k$의 값과 이 이차함수의 최솟값을 구하는 과정을 서술하시오. [총 5점]",
       "choices": [],
@@ -315,11 +364,15 @@ window.examData = {
     },
     {
       "number": 24,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "꼭짓점은 (−1,3), 대칭축은 x=−1이다. y축을 지나는 (0,0)의 대칭점은 (−2,0)이다.",
+      "solutionImageAlt": "아래로 열린 파란 포물선의 양쪽 가지를 그렸다. 주황 꼭짓점을 지나는 보라 점선과 그 양쪽의 같은 거리인 두 교점을 표시했다.",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중3_수학/q24-solution.svg",
       "score": 5.0,
       "question": "[서술형 4] 다음 이차함수 $y=-3x^2-6x$에 대하여 다음 물음의 과정을 서술하고 답하시오. [총 5점]<br><br>1) 꼭지점 [2점]<br><br>2) 축의 방정식 [1점]<br><br>3) $y$축과 만나는 점을 이용하여 그래프를 그리세요. [2점]",
       "choices": [],
       "answer": "꼭짓점 $(-1,3)$, 축 $x=-1$; 아래로 열린 그래프는 $(0,0)$과 $(-2,0)$을 지난다.",
-      "solution": "완전제곱식으로 바꾸면 $y=-3x^2-6x=-3(x+1)^2+3$이다. 따라서 꼭짓점은 $(-1,3)$이고 축은 $x=-1$이다.\n그래프는 계수 $-3<0$이므로 아래로 열린다. $y$축과 만나는 점은 $x=0$을 대입해 $y=0$이므로 $(0,0)$이다. 이 점은 축 $x=-1$에 대칭인 점 $(-2,0)$과 짝을 이룬다.\n꼭짓점과 두 점을 좌표평면에 표시하고 대칭축을 기준으로 아래로 열린 포물선을 그린다.\n<img src=\"assets/images/19_왕운중_1학기_기말_중3_수학/q24_solution_graph.svg\" alt=\"아래로 열린 y=-3x²-6x의 포물선. 꼭짓점은 (-1,3), 축은 x=-1, 그래프가 x축과 만나는 점은 (-2,0), (0,0)이고 y축과 만나는 점은 (0,0)이다.\" style=\"max-width: 480px; display: block; margin: 10px 0;\">"
+      "solution": "완전제곱식으로 바꾸면 $y=-3x^2-6x=-3(x+1)^2+3$이다. 따라서 꼭짓점은 $(-1,3)$이고 축은 $x=-1$이다.\n그래프는 계수 $-3<0$이므로 아래로 열린다. $y$축과 만나는 점은 $x=0$을 대입해 $y=0$이므로 $(0,0)$이다. 이 점은 축 $x=-1$에 대칭인 점 $(-2,0)$과 짝을 이룬다.\n꼭짓점과 두 점을 좌표평면에 표시하고 대칭축을 기준으로 아래로 열린 포물선을 그린다.\n"
     }
   ]
 };
