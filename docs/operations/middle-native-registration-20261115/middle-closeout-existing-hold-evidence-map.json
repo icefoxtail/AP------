@@ -1,0 +1,374 @@
+{
+  "schemaVersion": "middle-closeout-existing-hold-evidence-map-v1",
+  "mode": "READ_ONLY_PREPARATION",
+  "preparedAtHead": "ae9cf910ed51aa17723a930bcf6f6a32a8f3046a",
+  "finalActualMain": null,
+  "currentOutstandingCount": null,
+  "knownHistoricalItems": 10,
+  "currentCompletionClaim": false,
+  "references": {
+    "held9Snapshot": {
+      "commit": "c7b0ff53b8526bb1257510be820f3bda4f355915",
+      "path": "docs/operations/m2s2-follow6-20261115/held-nine-current-authority.json",
+      "sha256": "4bb784ad39364ee6e5e12771620a37a7333cebe5c73333912ead8ecc6195b846",
+      "evidenceMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "meaning": "Historical actual-main comparison only; not a current closeout result."
+    },
+    "follow6Readme": {
+      "commit": "c7b0ff53b8526bb1257510be820f3bda4f355915",
+      "path": "docs/operations/m2s2-follow6-20261115/README.md",
+      "sha256": "eaec801cebd8ac492dafbb943a01a6ec43e9e1cd1b03a21be4ffb5bbae6a952a",
+      "section": "Retained holds"
+    },
+    "retainedE015": {
+      "commit": "7be7d9908427cca28b6d6cabfea19d30ba6d7d83",
+      "path": ".archive-meta-register/evidence/m2s2-retained-primary-finalization-20261115/m3-four-existing-primary.json",
+      "sha256": "7a17926507216647352baaf38a25d92e9830846d56522f2011034248b8696209",
+      "scope": "EXISTING_PRIMARY_RETENTION_ONLY",
+      "allowedRetentionFields": [
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys"
+      ]
+    },
+    "retainedE021": {
+      "commit": "7002fc542a0f1685e1b4029e7b8473ad5495c662",
+      "path": ".archive-meta-register/evidence/m2s2-retained-primary-finalization-20261115/root-e021-q8.json",
+      "sha256": "6854d7d94595ad1d342cff54ce1e2a5b6483a94ad4d5a132887e3d18ff5d48f8",
+      "scope": "EXISTING_PRIMARY_RETENTION_ONLY",
+      "allowedRetentionFields": [
+        "problemTypeKey",
+        "templateKey",
+        "crossConceptKeys",
+        "conditionKeys"
+      ]
+    },
+    "follow9Finalization": {
+      "commit": "e083e32e6c4ecf4808401275e6520064d4436c8e",
+      "path": ".archive-meta-register/evidence/m2s2-follow9-definition-finalization-20261115/finalized-disposition.json",
+      "sha256": "03dad491bc50c7f47d495370706107d6802f85806dbc324b5f802f4005612ed6",
+      "scope": "Exact native proposals and selected applications; not a new source original-curriculum approval."
+    },
+    "cc7Finalization": {
+      "commit": "1bd67bd03dfc299d371ea0e9ee55677bf4e9052a",
+      "path": ".archive-meta-register/evidence/m2s2-cc7-definition-finalization-20261115.json",
+      "sha256": "8f6cbbfce02aa128a60b786b28e2eb5521405342b8d09ad2b42daa92ce3fdb00",
+      "sourceCurriculumBoundary": "Source curriculum is not inferred or changed; each official request must use its own verified provenance."
+    },
+    "e020ExistingReadOnlyReport": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m3-compact-current-closeout/.tmp/e020-consumer-boundary-readonly.json",
+      "sha256": "c7d8e08e9f82824149d52e222f8e742b5d4a770cc36ca67bb6591423c82f7440",
+      "evidenceMain": "c1d9dda6fd6be0dd63b10c8b52157546c108714f",
+      "fullRegistrationConsumer": "NOT_RUN",
+      "meaning": "Existing official policy predicate probe plus code reading; not a full registration or new review."
+    }
+  },
+  "rows": [
+    {
+      "semester": "M2-S2",
+      "examId": "E015",
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_3c72535bb4d43798192918e723d32bd646b2415bde8c5e8ad872b445496b7bfd",
+      "sourcePath": "archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+      "finalActualMain": null,
+      "finalStatus": "NOT_RECHECKED_ON_FINAL_ACTUAL_MAIN",
+      "historicalActualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "historicalMetadataStatus": "approved_partial_with_explicit_holds",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/review.json",
+        "sha256": "1e0f586ce7f097f5838b82d751f9029030515a710ecc0974de2336e307a770c0"
+      },
+      "directNativeCurriculum": null,
+      "directOriginalCurriculum": null,
+      "evidenceRefs": [
+        "held9Snapshot",
+        "follow6Readme",
+        "retainedE015"
+      ],
+      "newReviewPerformed": false,
+      "sourceMutation": 0,
+      "otherUnverifiedGates": "UNKNOWN: no new complete registrar/Consumer run or authority search was performed for this held item.",
+      "existingApprovedScope": "The exact existing PT/TPL/CC/condition retention is already independently approved; curriculum is outside its allowed fields.",
+      "confirmedBoundary": "ORIGINAL_CURRICULUM_PROVENANCE_NOT_ESTABLISHED_BY_THE_REFERENCED_APPROVALS",
+      "nextRequiredWork": "Locate and explicitly bind the source original-curriculum provenance for this UID. If absent, obtain a narrow authorized scope decision; do not derive it from filename/year/RPM context. Reuse the existing retained-primary approval unchanged, then rebuild exact current source/metadata before and run official registration/Consumer.",
+      "notTheBlocker": "The existing-primary retention decision itself is not missing."
+    },
+    {
+      "semester": "M2-S2",
+      "examId": "E015",
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_76b2be613350f59166e128170c6f38b6150078c9ed44e727733d5de0bbf76942",
+      "sourcePath": "archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+      "finalActualMain": null,
+      "finalStatus": "NOT_RECHECKED_ON_FINAL_ACTUAL_MAIN",
+      "historicalActualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "historicalMetadataStatus": "approved_partial_with_explicit_holds",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/review.json",
+        "sha256": "1e0f586ce7f097f5838b82d751f9029030515a710ecc0974de2336e307a770c0"
+      },
+      "directNativeCurriculum": null,
+      "directOriginalCurriculum": null,
+      "evidenceRefs": [
+        "held9Snapshot",
+        "follow6Readme",
+        "retainedE015"
+      ],
+      "newReviewPerformed": false,
+      "sourceMutation": 0,
+      "otherUnverifiedGates": "UNKNOWN: no new complete registrar/Consumer run or authority search was performed for this held item.",
+      "existingApprovedScope": "The exact existing PT/TPL/CC/condition retention is already independently approved; curriculum is outside its allowed fields.",
+      "confirmedBoundary": "ORIGINAL_CURRICULUM_PROVENANCE_NOT_ESTABLISHED_BY_THE_REFERENCED_APPROVALS",
+      "nextRequiredWork": "Locate and explicitly bind the source original-curriculum provenance for this UID. If absent, obtain a narrow authorized scope decision; do not derive it from filename/year/RPM context. Reuse the existing retained-primary approval unchanged, then rebuild exact current source/metadata before and run official registration/Consumer.",
+      "notTheBlocker": "The existing-primary retention decision itself is not missing."
+    },
+    {
+      "semester": "M2-S2",
+      "examId": "E015",
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_944a8e2657646dc03aa3d569fe594e1bc8c08bdb9ec9009ba41f56427c5ecb17",
+      "sourcePath": "archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+      "finalActualMain": null,
+      "finalStatus": "NOT_RECHECKED_ON_FINAL_ACTUAL_MAIN",
+      "historicalActualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "historicalMetadataStatus": "approved_partial_with_explicit_holds",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/review.json",
+        "sha256": "1e0f586ce7f097f5838b82d751f9029030515a710ecc0974de2336e307a770c0"
+      },
+      "directNativeCurriculum": null,
+      "directOriginalCurriculum": null,
+      "evidenceRefs": [
+        "held9Snapshot",
+        "follow6Readme",
+        "follow9Finalization"
+      ],
+      "newReviewPerformed": false,
+      "sourceMutation": 0,
+      "otherUnverifiedGates": "UNKNOWN: no new complete registrar/Consumer run or authority search was performed for this held item.",
+      "existingApprovedScope": "The e083 exact definition/reuse application is independently finalized; a contextual RPM or definition curriculum scope is not by itself source original-curriculum provenance.",
+      "confirmedBoundary": "ORIGINAL_CURRICULUM_PROVENANCE_NOT_ESTABLISHED_BY_THE_REFERENCED_APPROVALS",
+      "nextRequiredWork": "Bind explicit accepted source original-curriculum evidence for this UID, or obtain the narrow authorized scope decision if it cannot be recovered. Keep the finalized definition/application values unchanged; install/reuse them through the official registrar with current before/source binding and Consumer verification.",
+      "notTheBlocker": "Do not reclassify the already finalized definition as unapproved, and do not fill curriculum merely to pass the validator."
+    },
+    {
+      "semester": "M2-S2",
+      "examId": "E021",
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_578b266e333c0ea050c38aafdfde77f81cf8e73f130666f72bc08f15fee3e242",
+      "sourcePath": "archive/exams/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+      "finalActualMain": null,
+      "finalStatus": "NOT_RECHECKED_ON_FINAL_ACTUAL_MAIN",
+      "historicalActualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "historicalMetadataStatus": "approved_partial_with_explicit_holds",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E021/review.json",
+        "sha256": "271659418186e8f3e0bb54b8ddadd6fc853327c947177d67be4f544786ac5558"
+      },
+      "directNativeCurriculum": null,
+      "directOriginalCurriculum": null,
+      "evidenceRefs": [
+        "held9Snapshot",
+        "follow6Readme",
+        "retainedE021"
+      ],
+      "newReviewPerformed": false,
+      "sourceMutation": 0,
+      "otherUnverifiedGates": "UNKNOWN: no new complete registrar/Consumer run or authority search was performed for this held item.",
+      "existingApprovedScope": "The exact existing PT/TPL/CC/condition retention is already independently approved; curriculum is outside its allowed fields.",
+      "confirmedBoundary": "ORIGINAL_CURRICULUM_PROVENANCE_NOT_ESTABLISHED_BY_THE_REFERENCED_APPROVALS",
+      "nextRequiredWork": "Locate and explicitly bind the source original-curriculum provenance for this UID. If absent, obtain a narrow authorized scope decision; do not derive it from filename/year/RPM context. Reuse the existing retained-primary approval unchanged, then rebuild exact current source/metadata before and run official registration/Consumer.",
+      "notTheBlocker": "The existing-primary retention decision itself is not missing."
+    },
+    {
+      "semester": "M2-S2",
+      "examId": "E021",
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_d0b9c1fa0603907bf60d4cc4504d2747a03ff23046d96526a083511f9f734547",
+      "sourcePath": "archive/exams/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+      "finalActualMain": null,
+      "finalStatus": "NOT_RECHECKED_ON_FINAL_ACTUAL_MAIN",
+      "historicalActualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "historicalMetadataStatus": "approved_partial_with_explicit_holds",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E021/review.json",
+        "sha256": "271659418186e8f3e0bb54b8ddadd6fc853327c947177d67be4f544786ac5558"
+      },
+      "directNativeCurriculum": null,
+      "directOriginalCurriculum": null,
+      "evidenceRefs": [
+        "held9Snapshot",
+        "follow6Readme",
+        "cc7Finalization"
+      ],
+      "newReviewPerformed": false,
+      "sourceMutation": 0,
+      "otherUnverifiedGates": "UNKNOWN: no new complete registrar/Consumer run or authority search was performed for this held item.",
+      "existingApprovedScope": "The CC7 exact CC_CONE_LATERAL_AREA definition/application is finalized and existing CC preservation is required.",
+      "confirmedBoundary": "CC_FINALIZATION_EXPLICITLY_REQUIRES_SEPARATE_SOURCE_CURRICULUM_PROVENANCE",
+      "nextRequiredWork": "Establish the original-curriculum provenance required by the CC7 sourceCurriculumHandling contract, and bind the existing-primary authority required by the official request. The current report does not establish that second gate; record UNKNOWN until checked. Preserve the previously approved CC set and add only the exact finalized CC.",
+      "notTheBlocker": "A reviewedPrimaryContext or activeDefinitionMatch candidate alone is not a new final primary approval."
+    },
+    {
+      "semester": "M2-S2",
+      "examId": "E048",
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_69f5f572e65435ddbb310ce81278e9a301b36aba92b7ca2cacec3c8d65f8c1f1",
+      "sourcePath": "archive/exams/original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js",
+      "finalActualMain": null,
+      "finalStatus": "NOT_RECHECKED_ON_FINAL_ACTUAL_MAIN",
+      "historicalActualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "historicalMetadataStatus": "registration_pending_semantic_review",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E048/review.json",
+        "sha256": "46aa00f1f280e826326b1ae62227a660947232e8eea1bbe5bc7ca659a80dd047"
+      },
+      "directNativeCurriculum": null,
+      "directOriginalCurriculum": null,
+      "evidenceRefs": [
+        "held9Snapshot",
+        "follow6Readme",
+        "follow9Finalization"
+      ],
+      "newReviewPerformed": false,
+      "sourceMutation": 0,
+      "otherUnverifiedGates": "UNKNOWN: no new complete registrar/Consumer run or authority search was performed for this held item.",
+      "existingApprovedScope": "The e083 exact definition/reuse application is independently finalized; a contextual RPM or definition curriculum scope is not by itself source original-curriculum provenance.",
+      "confirmedBoundary": "ORIGINAL_CURRICULUM_PROVENANCE_NOT_ESTABLISHED_BY_THE_REFERENCED_APPROVALS",
+      "nextRequiredWork": "Bind explicit accepted source original-curriculum evidence for this UID, or obtain the narrow authorized scope decision if it cannot be recovered. Keep the finalized definition/application values unchanged; install/reuse them through the official registrar with current before/source binding and Consumer verification.",
+      "notTheBlocker": "Do not reclassify the already finalized definition as unapproved, and do not fill curriculum merely to pass the validator."
+    },
+    {
+      "semester": "M2-S2",
+      "examId": "E052",
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_eddc33cba6efb30d346b546fa8321806fa1a9cc1c79920e2bbb374341ad204cc",
+      "sourcePath": "archive/exams/original/middle/m2/2final/20_팔마중_2학기_기말_중2_기출.js",
+      "finalActualMain": null,
+      "finalStatus": "NOT_RECHECKED_ON_FINAL_ACTUAL_MAIN",
+      "historicalActualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "historicalMetadataStatus": "registration_pending_semantic_review",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E052/review.json",
+        "sha256": "b8a2d07916f13068082e4a294b5aab6579e454226c0beab3ea413055b9b15c50"
+      },
+      "directNativeCurriculum": null,
+      "directOriginalCurriculum": "2015",
+      "evidenceRefs": [
+        "held9Snapshot",
+        "follow6Readme",
+        "cc7Finalization"
+      ],
+      "newReviewPerformed": false,
+      "sourceMutation": 0,
+      "otherUnverifiedGates": "UNKNOWN: no new complete registrar/Consumer run or authority search was performed for this held item.",
+      "existingApprovedScope": "Accepted native explicitly records originalCurriculum=2015; CC7 finalizes the selected concept addition without creating new metadata approval.",
+      "confirmedBoundary": "RETAINED_PRIMARY_AUTHORITY_BOUNDARY_RECORDED_IN_FROZEN_FOLLOW6_REPORT",
+      "nextRequiredWork": "Obtain or locate an explicit independent existing-primary retention decision for the exact UID/PT/TPL and its canonical binding, preserving original native evidence. Then apply the already finalized CC addition through the official registrar and Consumer. Do not treat CC7 reviewedPrimaryContext as that decision.",
+      "notTheBlocker": "Original-curriculum absence is not the recorded blocker: native originalCurriculum=2015 is present."
+    },
+    {
+      "semester": "M2-S2",
+      "examId": "E054",
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_8f34f90323c1111974d47bbdbdeadcd5f0b39ad60bbde43d0e8802438a815c95",
+      "sourcePath": "archive/exams/original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+      "finalActualMain": null,
+      "finalStatus": "NOT_RECHECKED_ON_FINAL_ACTUAL_MAIN",
+      "historicalActualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "historicalMetadataStatus": "registration_pending_semantic_review",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E054/review.json",
+        "sha256": "ea3628937a25c718fa53acbea1628c56cfcbc95e4f8047d9c416d23866205880"
+      },
+      "directNativeCurriculum": null,
+      "directOriginalCurriculum": null,
+      "evidenceRefs": [
+        "held9Snapshot",
+        "follow6Readme",
+        "follow9Finalization"
+      ],
+      "newReviewPerformed": false,
+      "sourceMutation": 0,
+      "otherUnverifiedGates": "UNKNOWN: no new complete registrar/Consumer run or authority search was performed for this held item.",
+      "existingApprovedScope": "The e083 exact definition/reuse application is independently finalized; a contextual RPM or definition curriculum scope is not by itself source original-curriculum provenance.",
+      "confirmedBoundary": "ORIGINAL_CURRICULUM_PROVENANCE_NOT_ESTABLISHED_BY_THE_REFERENCED_APPROVALS",
+      "nextRequiredWork": "Bind explicit accepted source original-curriculum evidence for this UID, or obtain the narrow authorized scope decision if it cannot be recovered. Keep the finalized definition/application values unchanged; install/reuse them through the official registrar with current before/source binding and Consumer verification.",
+      "notTheBlocker": "Do not reclassify the already finalized definition as unapproved, and do not fill curriculum merely to pass the validator."
+    },
+    {
+      "semester": "M2-S2",
+      "examId": "E058",
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_9d910d2bf5e2d195e25dd27d89ec5d4fb40c23145756682a8364528000479431",
+      "sourcePath": "archive/exams/original/middle/m2/2final/19_동산중_2학기_기말_중2_기출.js",
+      "finalActualMain": null,
+      "finalStatus": "NOT_RECHECKED_ON_FINAL_ACTUAL_MAIN",
+      "historicalActualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+      "historicalMetadataStatus": "registration_pending_semantic_review",
+      "nativeReviewRef": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E058/review.json",
+        "sha256": "9e408cc29001c8ac306980b67f9e145febc335d6a6471561cbf0f3c709e47d2b"
+      },
+      "directNativeCurriculum": null,
+      "directOriginalCurriculum": "2015",
+      "evidenceRefs": [
+        "held9Snapshot",
+        "follow6Readme",
+        "cc7Finalization"
+      ],
+      "newReviewPerformed": false,
+      "sourceMutation": 0,
+      "otherUnverifiedGates": "UNKNOWN: no new complete registrar/Consumer run or authority search was performed for this held item.",
+      "existingApprovedScope": "Accepted native explicitly records originalCurriculum=2015; CC7 finalizes the selected concept addition without creating new metadata approval.",
+      "confirmedBoundary": "RETAINED_PRIMARY_AUTHORITY_BOUNDARY_RECORDED_IN_FROZEN_FOLLOW6_REPORT",
+      "nextRequiredWork": "Obtain or locate an explicit independent existing-primary retention decision for the exact UID/PT/TPL and its canonical binding, preserving original native evidence. Then apply the already finalized CC addition through the official registrar and Consumer. Do not treat CC7 reviewedPrimaryContext as that decision.",
+      "notTheBlocker": "Original-curriculum absence is not the recorded blocker: native originalCurriculum=2015 is present."
+    },
+    {
+      "semester": "M3-S2",
+      "examId": "E020",
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_cf508756ee75298ff7a497d8fab531106eca4845540fce0b75cfb04534ecf7ea",
+      "sourcePath": "archive/exams/original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+      "finalActualMain": null,
+      "finalStatus": "NOT_RECHECKED_ON_FINAL_ACTUAL_MAIN",
+      "nativeReviewRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E020.meta.json",
+        "sha256": "9b338ff94652802127ce9c78d048275bafea963640422e0f6b0869830890430d"
+      },
+      "existingApprovedScope": "Explicit native tuple is M1-2 / 중1 수학 / M1-06 / M1-06-PLANE_FIGURE_MEASURE on an M3 source.",
+      "confirmedBoundary": "OFFICIAL_POLICY_PREDICATE_REJECTS_CROSS_GRADE_TUPLE_WITHOUT_EXPLICIT_SEMANTIC_BINDING_AUTHORITY",
+      "historicalPredicateReasons": [
+        "course_namespace_invalid",
+        "assignment_target_mismatch"
+      ],
+      "nextRequiredWork": "Obtain the explicit approved cross-grade relationship and exact target M3 tuple/RPM binding (PREREQUISITE_LOWER_GRADE plus semantic and target RPM provenance), or an authorized correction of the final tuple. Then issue a fresh official request and run its full Consumer gate. Do not invent the M3 target or widen the course allowlist.",
+      "notTheBlocker": "usableMetaLane display alone cannot satisfy the changed-UID canonical approval gate.",
+      "evidenceRefs": [
+        "e020ExistingReadOnlyReport"
+      ],
+      "fullRegistrationConsumer": "NOT_RUN",
+      "newReviewPerformed": false,
+      "sourceMutation": 0
+    }
+  ],
+  "rules": [
+    "Recheck final actual main and exact issued authority before marking an item still held or resolved.",
+    "These are concrete previously recorded boundaries, not proof that no other evidence can exist.",
+    "No new mathematical/difficulty/semantic approval is created here.",
+    "E052 Q6 and E058 Q9 must never be classified as missing original curriculum.",
+    "Additional unresolved gates remain UNKNOWN until supported by exact current evidence."
+  ]
+}
