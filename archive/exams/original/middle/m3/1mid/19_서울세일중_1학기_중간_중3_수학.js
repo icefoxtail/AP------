@@ -203,6 +203,11 @@ window.examData = {
     },
     {
       "id": 7,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "화단의 두 변은 4√2 m, 5√3 m이다. 넓이는 20√6 m²이며 정답은 ④이다.",
+      "solutionImageAlt": "주황 화단의 세로는 초록밭의 한 변이다. 화단의 가로는 아래 파란 밭의 한 변과 같은 두 눈금이다.",
+      "solutionImage": "assets/images/19_서울세일중_1학기_중간_중3_수학/q7-solution.svg",
+      "imageSize": "large",
       "questionNumber": 7,
       "score": 4,
       "level": "중",
@@ -218,13 +223,13 @@ window.examData = {
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>7. 오른쪽 그림과 같이 넓이가 $32\\,\\text{m}^2$, $75\\,\\text{m}^2$인 두 정사각형 모양의 밭에 이웃한 화단의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q07.png\" alt=\"넓이가 각각 32제곱미터와 75제곱미터인 두 정사각형에 이웃한 직사각형 모양의 화단 그림\" /></p>",
-      "question": "<p>7. 오른쪽 그림과 같이 넓이가 $32\\,\\text{m}^2$, $75\\,\\text{m}^2$인 두 정사각형 모양의 밭에 이웃한 화단의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q07.png\" alt=\"넓이가 각각 32제곱미터와 75제곱미터인 두 정사각형에 이웃한 직사각형 모양의 화단 그림\" /></p>",
+      "content": "<p>7. 오른쪽 그림과 같이 넓이가 $32\\,\\text{m}^2$, $75\\,\\text{m}^2$인 두 정사각형 모양의 밭에 이웃한 화단의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q7-problem-v3.svg\" alt=\"초록 왼쪽 밭은 넓이 32 m²인 정사각형이다. 파란 아래쪽 밭은 넓이 75 m²인 정사각형이고 주황 화단이 두 변을 공유한다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p>",
+      "question": "<p>7. 오른쪽 그림과 같이 넓이가 $32\\,\\text{m}^2$, $75\\,\\text{m}^2$인 두 정사각형 모양의 밭에 이웃한 화단의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q7-problem-v3.svg\" alt=\"초록 왼쪽 밭은 넓이 32 m²인 정사각형이다. 파란 아래쪽 밭은 넓이 75 m²인 정사각형이고 주황 화단이 두 변을 공유한다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p>",
       "choices": [
         "$4\\sqrt{2}\\,\\text{m}^2$",
         "$5\\sqrt{3}\\,\\text{m}^2$",
@@ -232,9 +237,9 @@ window.examData = {
         "$20\\sqrt{6}\\,\\text{m}^2$",
         "$25\\sqrt{3}\\,\\text{m}^2$"
       ],
-      "image": "assets/images/19_서울세일중_1학기_중간_중3_수학/q07.png",
+      "image": "assets/images/19_서울세일중_1학기_중간_중3_수학/q7-problem-v3.svg",
       "images": [
-        "assets/images/19_서울세일중_1학기_중간_중3_수학/q07.png"
+        "assets/images/19_서울세일중_1학기_중간_중3_수학/q7-problem-v3.svg"
       ],
       "answer": "④",
       "solution": "[원문 조건 및 구할 대상]\n넓이가 각각 $32\\,\\text{m}^2$와 $75\\,\\text{m}^2$인 두 정사각형에 맞닿아 있는 직사각형 모양 화단의 넓이를 구한다.\n\n[핵심 발상/공식/보조선]\n- 정사각형의 한 변의 길이는 $\\sqrt{\\text{넓이}}$이다.\n- 화단의 세로 길이는 왼쪽 정사각형의 한 변의 길이와 같고, 가로 길이는 아래쪽 정사각형의 한 변의 길이와 같다.\n- 화단의 넓이 $=$ 가로 $\\times$ 세로\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 두 정사각형의 한 변의 길이 구하기\n- 넓이가 $32\\,\\text{m}^2$인 정사각형의 한 변의 길이:\n  $\\sqrt{32} = \\sqrt{16 \\times 2} = 4\\sqrt{2}\\,\\text{m}$\n- 넓이가 $75\\,\\text{m}^2$인 정사각형의 한 변의 길이:\n  $\\sqrt{75} = \\sqrt{25 \\times 3} = 5\\sqrt{3}\\,\\text{m}$\n\n2단계: 화단의 가로와 세로 길이 파악\n그림에서 화단은 직사각형이며,\n세로의 길이는 $4\\sqrt{2}\\,\\text{m}$, 가로의 길이는 $5\\sqrt{3}\\,\\text{m}$이다.\n\n3단계: 화단의 넓이 계산\n$\\text{넓이} = (4\\sqrt{2}) \\times (5\\sqrt{3}) = (4 \\times 5) \\times (\\sqrt{2} \\times \\sqrt{3}) = 20\\sqrt{6}\\,\\text{m}^2$\n\n[경우 나눔 및 5개 선지 검토]\n① $4\\sqrt{2}\\,\\text{m}^2$: 왼쪽 정사각형의 한 변의 길이이다.\n② $5\\sqrt{3}\\,\\text{m}^2$: 아래쪽 정사각형의 한 변의 길이이다.\n③ $20\\sqrt{2}\\,\\text{m}^2$: 오답\n④ $20\\sqrt{6}\\,\\text{m}^2$: 계산된 화단 넓이와 정확히 일치한다.\n⑤ $25\\sqrt{3}\\,\\text{m}^2$: 오답\n\n[명확한 결론]\n따라서 화단의 넓이는 ④ $20\\sqrt{6}\\,\\text{m}^2$이다."
@@ -476,6 +481,11 @@ window.examData = {
     },
     {
       "id": 15,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "(2x+3)²−1=(2x+2)(2x+4)=(x+2)(4x+4)이므로 B의 가로는 4x+4이다. 정답은 ②이다.",
+      "solutionImageAlt": "파란 긴 직사각형을 돌려 아래 초록 띠와 이어 붙였다. 이때 가로는 원래 한 변에 1을 더한 길이이고 높이는 1을 빼서 얻는다.",
+      "solutionImage": "assets/images/19_서울세일중_1학기_중간_중3_수학/q15-solution.svg",
+      "imageSize": "large",
       "questionNumber": 15,
       "score": 5,
       "level": "상",
@@ -491,13 +501,13 @@ window.examData = {
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>15. 다음 그림에서 도형 $\\text{A}$는 한 변의 길이가 $2x+3$인 정사각형에서 한 변의 길이가 $1$인 정사각형을 잘라낸 도형이고, 도형 $\\text{B}$는 세로의 길이가 $x+2$인 직사각형이다. 두 도형 $\\text{A}, \\text{B}$의 넓이가 같을 때, 직사각형 $\\text{B}$의 가로의 길이를 구하면? [5점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q15.png\" alt=\"한 변의 길이가 2x+3인 정사각형에서 한 변의 길이가 1인 정사각형을 잘라낸 도형 A와 세로가 x+2인 직사각형 B 그림\" /></p>",
-      "question": "<p>15. 다음 그림에서 도형 $\\text{A}$는 한 변의 길이가 $2x+3$인 정사각형에서 한 변의 길이가 $1$인 정사각형을 잘라낸 도형이고, 도형 $\\text{B}$는 세로의 길이가 $x+2$인 직사각형이다. 두 도형 $\\text{A}, \\text{B}$의 넓이가 같을 때, 직사각형 $\\text{B}$의 가로의 길이를 구하면? [5점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q15.png\" alt=\"한 변의 길이가 2x+3인 정사각형에서 한 변의 길이가 1인 정사각형을 잘라낸 도형 A와 세로가 x+2인 직사각형 B 그림\" /></p>",
+      "content": "<p>15. 다음 그림에서 도형 $\\text{A}$는 한 변의 길이가 $2x+3$인 정사각형에서 한 변의 길이가 $1$인 정사각형을 잘라낸 도형이고, 도형 $\\text{B}$는 세로의 길이가 $x+2$인 직사각형이다. 두 도형 $\\text{A}, \\text{B}$의 넓이가 같을 때, 직사각형 $\\text{B}$의 가로의 길이를 구하면? [5점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q15-problem-v3.svg\" alt=\"파란 도형 A는 한 변이 2x+3인 정사각형에서 한 변 1인 작은 정사각형을 떼어냈다. 주황 도형 B의 세로는 x+2이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p>",
+      "question": "<p>15. 다음 그림에서 도형 $\\text{A}$는 한 변의 길이가 $2x+3$인 정사각형에서 한 변의 길이가 $1$인 정사각형을 잘라낸 도형이고, 도형 $\\text{B}$는 세로의 길이가 $x+2$인 직사각형이다. 두 도형 $\\text{A}, \\text{B}$의 넓이가 같을 때, 직사각형 $\\text{B}$의 가로의 길이를 구하면? [5점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q15-problem-v3.svg\" alt=\"파란 도형 A는 한 변이 2x+3인 정사각형에서 한 변 1인 작은 정사각형을 떼어냈다. 주황 도형 B의 세로는 x+2이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p>",
       "choices": [
         "$2x-2$",
         "$4x+4$",
@@ -505,9 +515,9 @@ window.examData = {
         "$4x-4$",
         "$x+4$"
       ],
-      "image": "assets/images/19_서울세일중_1학기_중간_중3_수학/q15.png",
+      "image": "assets/images/19_서울세일중_1학기_중간_중3_수학/q15-problem-v3.svg",
       "images": [
-        "assets/images/19_서울세일중_1학기_중간_중3_수학/q15.png"
+        "assets/images/19_서울세일중_1학기_중간_중3_수학/q15-problem-v3.svg"
       ],
       "answer": "②",
       "solution": "[원문 조건 및 구할 대상]\n도형 $\\text{A}$는 한 변의 길이가 $2x+3$인 정사각형에서 한 변의 길이가 $1$인 정사각형을 잘라낸 도형이다.\n도형 $\\text{B}$는 세로의 길이가 $x+2$인 직사각형이다.\n두 도형의 넓이가 서로 같을 때, 직사각형 $\\text{B}$의 가로의 길이를 구한다.\n\n[핵심 발상/공식/보조선]\n- 도형 $\\text{A}$의 넓이 $= (2x+3)^2 - 1^2$\n- 합차 공식을 이용하여 인수분해한다: $A^2 - B^2 = (A-B)(A+B)$\n- 직사각형 $\\text{B}$의 넓이 $=$ (가로) $\\times$ (세로) $= (\\text{가로}) \\times (x+2)$\n- 두 넓이를 같다고 두고 가로의 길이를 구한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 도형 $\\text{A}$의 넓이를 구하고 인수분해하기\n$\\text{넓이}(\\text{A}) = (2x+3)^2 - 1^2$\n합차 공식을 적용하면:\n$= \\{(2x+3) + 1\\}\\{(2x+3) - 1\\}$\n$= (2x+4)(2x+2)$\n공통인수를 묶어내면:\n$= 2(x+2) \\times 2(x+1) = 4(x+2)(x+1)$\n$= (x+2)(4x+4)$\n\n2단계: 직사각형 $\\text{B}$의 가로의 길이 구하기\n$\\text{넓이}(\\text{B}) = (\\text{가로}) \\times (x+2)$\n$\\text{넓이}(\\text{A}) = \\text{넓이}(\\text{B})$이므로:\n$(\\text{가로}) \\times (x+2) = (4x+4)(x+2)$\n양변을 $x+2$로 나누면:\n$\\text{가로} = 4x+4$\n\n[경우 나눔 및 5개 선지 검토]\n① $2x-2$: 오답\n② $4x+4$: 계산된 가로의 길이와 일치한다.\n③ $2x+2$: $2(x+1)$로 $2$가 덜 곱해진 형태\n④ $4x-4$: 부호 오류\n⑤ $x+4$: 오답\n\n[명확한 결론]\n따라서 직사각형 $\\text{B}$의 가로의 길이는 ② $4x+4$이다."
@@ -543,6 +553,11 @@ window.examData = {
     },
     {
       "id": 17,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "a=−2−√2, b=−2+√2이다. a²−b²=(a+b)(a−b)=(−4)(−2√2)=8√2이다.",
+      "solutionImageAlt": "가로와 세로가 1인 직각삼각형의 빗변을 보였다. 이 같은 길이 √2를 −2의 왼쪽 A와 오른쪽 B에 옮겼다.",
+      "solutionImage": "assets/images/19_서울세일중_1학기_중간_중3_수학/q17-solution.svg",
+      "imageSize": "large",
       "questionNumber": 17,
       "score": 8,
       "level": "중",
@@ -558,18 +573,18 @@ window.examData = {
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "questionType": "서술형",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "서술형",
         "도형"
       ],
       "wide": false,
-      "content": "<p>&lt;서술형 2&gt;<br/>오른쪽 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이다. 점 $\\text{A}, \\text{B}$에 대응하는 수를 각각 $a, b$라 할 때, 다음을 구하시오. [8점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q17.png\" alt=\"모눈종이 위 정사각형의 꼭짓점을 중심으로 원호를 그려 수직선 위에 점 A와 B를 대응시킨 그림\" /></p><p>(1) $a$와 $b$의 값을 구하시오. ($a, b$ 각각 2점) [4점]</p><p>(2) $a^2-b^2$의 값을 인수분해공식을 이용하여 구하시오. [4점]</p>",
-      "question": "<p>&lt;서술형 2&gt;<br/>오른쪽 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이다. 점 $\\text{A}, \\text{B}$에 대응하는 수를 각각 $a, b$라 할 때, 다음을 구하시오. [8점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q17.png\" alt=\"모눈종이 위 정사각형의 꼭짓점을 중심으로 원호를 그려 수직선 위에 점 A와 B를 대응시킨 그림\" /></p><p>(1) $a$와 $b$의 값을 구하시오. ($a, b$ 각각 2점) [4점]</p><p>(2) $a^2-b^2$의 값을 인수분해공식을 이용하여 구하시오. [4점]</p>",
+      "content": "<p>&lt;서술형 2&gt;<br/>오른쪽 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이다. 점 $\\text{A}, \\text{B}$에 대응하는 수를 각각 $a, b$라 할 때, 다음을 구하시오. [8점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q17-problem-v3.svg\" alt=\"수직선의 −2 위에 기울어진 파란 정사각형이 있다. 밑 꼭짓점에서 그린 같은 반지름의 두 호가 A와 B를 지목한다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p><p>(1) $a$와 $b$의 값을 구하시오. ($a, b$ 각각 2점) [4점]</p><p>(2) $a^2-b^2$의 값을 인수분해공식을 이용하여 구하시오. [4점]</p>",
+      "question": "<p>&lt;서술형 2&gt;<br/>오른쪽 그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이다. 점 $\\text{A}, \\text{B}$에 대응하는 수를 각각 $a, b$라 할 때, 다음을 구하시오. [8점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q17-problem-v3.svg\" alt=\"수직선의 −2 위에 기울어진 파란 정사각형이 있다. 밑 꼭짓점에서 그린 같은 반지름의 두 호가 A와 B를 지목한다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p><p>(1) $a$와 $b$의 값을 구하시오. ($a, b$ 각각 2점) [4점]</p><p>(2) $a^2-b^2$의 값을 인수분해공식을 이용하여 구하시오. [4점]</p>",
       "choices": [],
-      "image": "assets/images/19_서울세일중_1학기_중간_중3_수학/q17.png",
+      "image": "assets/images/19_서울세일중_1학기_중간_중3_수학/q17-problem-v3.svg",
       "images": [
-        "assets/images/19_서울세일중_1학기_중간_중3_수학/q17.png"
+        "assets/images/19_서울세일중_1학기_중간_중3_수학/q17-problem-v3.svg"
       ],
       "answer": "(1) $a = -2-\\sqrt{2}$, $b = -2+\\sqrt{2}$\n(2) $8\\sqrt{2}$",
       "solution": "[원문 조건 및 구할 대상]\n모눈 한 칸이 $1$인 정사각형 위에서 수직선 위의 점 $-2$를 중심으로 한 변의 길이가 $\\sqrt{2}$인 정사각형의 대각선/변을 회전하여 수직선과 만나는 점 $\\text{A}, \\text{B}$에 대응하는 수 $a, b$를 구하고, 인수분해 공식을 이용하여 $a^2 - b^2$의 값을 구한다. [총 8점]\n\n[핵심 발상/공식/보조선]\n- 가로 $1$, 세로 $1$인 직각삼각형의 빗변의 길이는 피타고라스 정리에 의해 $\\sqrt{1^2+1^2} = \\sqrt{2}$이다.\n- 점 $-2$에서 시작하여 왼쪽으로 $\\sqrt{2}$만큼 떨어진 점: $a = -2 - \\sqrt{2}$\n- 점 $-2$에서 시작하여 오른쪽으로 $\\sqrt{2}$만큼 떨어진 점: $b = -2 + \\sqrt{2}$\n- 합차 인수분해 공식: $a^2 - b^2 = (a+b)(a-b)$\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 소문항 (1) $a$와 $b$의 값 구하기 (4점)\n회전하는 선분의 길이는 밑변 $1$, 높이 $1$인 직각삼각형의 빗변이므로 $\\sqrt{1^2+1^2} = \\sqrt{2}$이다.\n기준점은 수직선 위의 $-2$이므로:\n- 점 $\\text{A}$는 $-2$에서 왼쪽 방향으로 호를 내린 점이므로:\n  $a = -2 - \\sqrt{2}$\n- 점 $\\text{B}$는 $-2$에서 오른쪽 방향으로 호를 내린 점이므로:\n  $b = -2 + \\sqrt{2}$\n\n2단계: 소문항 (2) $a^2 - b^2$의 값 인수분해공식으로 구하기 (4점)\n합차 공식 $a^2 - b^2 = (a+b)(a-b)$를 적용한다.\n- $a + b = (-2 - \\sqrt{2}) + (-2 + \\sqrt{2}) = -4$\n- $a - b = (-2 - \\sqrt{2}) - (-2 + \\sqrt{2}) = -2\\sqrt{2}$\n따라서:\n$a^2 - b^2 = (a+b)(a-b) = (-4) \\times (-2\\sqrt{2}) = 8\\sqrt{2}$\n\n[조건 적합성 검토]\n서술형 문항으로, 기준점 $-2$로부터의 거리 계산과 인수분해 공식을 활용한 전개 과정이 모두 논리적으로 완결되었다.\n\n[명확한 결론]\n따라서 정답은\n(1) $a = -2-\\sqrt{2}$, $b = -2+\\sqrt{2}$\n(2) $8\\sqrt{2}$이다."
@@ -634,6 +649,11 @@ window.examData = {
     },
     {
       "id": 20,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "부피는 8π(17.5²−12.5²)=8π×5×30=1200π cm³이다.",
+      "solutionImageAlt": "입체 아래의 고리 그림에서 큰 원의 넓이에서 작은 원을 뺀다. 주황 고리를 높이 8 cm만큼 쌓으면 원기둥 입체가 된다.",
+      "solutionImage": "assets/images/19_서울세일중_1학기_중간_중3_수학/q20-solution.svg",
+      "imageSize": "large",
       "questionNumber": 20,
       "score": 6,
       "level": "상",
@@ -649,18 +669,18 @@ window.examData = {
       "subUnitConfidence": "high",
       "subUnitClassificationDepth": "complete_category",
       "questionType": "서술형",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "서술형",
         "도형"
       ],
       "wide": false,
-      "content": "<p>&lt;서술형 5&gt;<br/>오른쪽 그림과 같이 가운데가 뚫린 원기둥 모양의 입체도형이 있다. 이 입체도형의 부피를 구하시오. [6점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q20.png\" alt=\"안쪽 반지름 12.5cm, 바깥쪽 반지름 17.5cm, 높이 8cm인 가운데가 뚫린 원기둥 모양 입체도형 그림\" /></p>",
-      "question": "<p>&lt;서술형 5&gt;<br/>오른쪽 그림과 같이 가운데가 뚫린 원기둥 모양의 입체도형이 있다. 이 입체도형의 부피를 구하시오. [6점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q20.png\" alt=\"안쪽 반지름 12.5cm, 바깥쪽 반지름 17.5cm, 높이 8cm인 가운데가 뚫린 원기둥 모양 입체도형 그림\" /></p>",
+      "content": "<p>&lt;서술형 5&gt;<br/>오른쪽 그림과 같이 가운데가 뚫린 원기둥 모양의 입체도형이 있다. 이 입체도형의 부피를 구하시오. [6점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q20-problem-v3.svg\" alt=\"가운데가 뚫린 원기둥이다. 주황 바깥 반지름은 17.5 cm, 파란 안쪽 반지름은 12.5 cm, 세로 높이는 8 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p>",
+      "question": "<p>&lt;서술형 5&gt;<br/>오른쪽 그림과 같이 가운데가 뚫린 원기둥 모양의 입체도형이 있다. 이 입체도형의 부피를 구하시오. [6점]</p><p><img src=\"assets/images/19_서울세일중_1학기_중간_중3_수학/q20-problem-v3.svg\" alt=\"가운데가 뚫린 원기둥이다. 주황 바깥 반지름은 17.5 cm, 파란 안쪽 반지름은 12.5 cm, 세로 높이는 8 cm이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p>",
       "choices": [],
-      "image": "assets/images/19_서울세일중_1학기_중간_중3_수학/q20.png",
+      "image": "assets/images/19_서울세일중_1학기_중간_중3_수학/q20-problem-v3.svg",
       "images": [
-        "assets/images/19_서울세일중_1학기_중간_중3_수학/q20.png"
+        "assets/images/19_서울세일중_1학기_중간_중3_수학/q20-problem-v3.svg"
       ],
       "answer": "$1200\\pi\\,\\text{cm}^3$ (또는 $1200\\pi$)",
       "solution": "[원문 조건 및 구할 대상]\n바깥쪽 밑면의 반지름이 $17.5\\,\\text{cm}$, 안쪽 밑면의 반지름이 $12.5\\,\\text{cm}$, 높이가 $8\\,\\text{cm}$인 가운데가 뚫린 원기둥 모양 입체도형의 부피를 구한다. [6점]\n\n[핵심 발상/공식/보조선]\n- 입체도형의 부피 $= (\\text{큰 원기둥의 부피}) - (\\text{작은 원기둥의 부피})$\n- 부피 공식: $V = \\pi R^2 h - \\pi r^2 h = \\pi h (R^2 - r^2)$\n- 인수분해 공식 $R^2 - r^2 = (R+r)(R-r)$을 적용하여 계산을 간결하고 정확하게 수행한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 부피 식 세우기\n바깥쪽 반지름 $R = 17.5\\,\\text{cm}$, 안쪽 반지름 $r = 12.5\\,\\text{cm}$, 높이 $h = 8\\,\\text{cm}$이다.\n$\\text{부피} = \\pi \\times 17.5^2 \\times 8 - \\pi \\times 12.5^2 \\times 8$\n공통인수 $8\\pi$로 묶으면:\n$= 8\\pi (17.5^2 - 12.5^2)$\n\n2단계: 합차 인수분해 공식 적용하기\n$17.5^2 - 12.5^2 = (17.5 + 12.5)(17.5 - 12.5)$\n- $17.5 + 12.5 = 30$\n- $17.5 - 12.5 = 5$\n따라서:\n$17.5^2 - 12.5^2 = 30 \\times 5 = 150$\n\n3단계: 최종 부피 계산하기\n$\\text{부피} = 8\\pi \\times 150 = 1200\\pi\\,\\text{cm}^3$\n\n[조건 적합성 검토]\n서술형 문항으로, 원기둥 부피 공식 및 인수분해 공식을 활용한 중간 계산 과정이 모두 명확히 기재되었다.\n\n[명확한 결론]\n따라서 이 입체도형의 부피는 $1200\\pi\\,\\text{cm}^3$이다."
