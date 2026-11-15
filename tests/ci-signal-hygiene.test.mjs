@@ -119,6 +119,8 @@ test("ci.yml: scoped execution retains the existing blocking gates for their aff
     "node --test tests/archive-cold-evidence.test.mjs tests/evidence-authority-v1.test.mjs tests/archive-analysis-recovery.test.mjs",
     "node tools/check-git-growth.mjs --base \"$base_ref\" --head HEAD", "run: node tools/run-tests.js", "timeout-minutes: 120"
   ]) assert.ok(ci.includes(needle), needle);
+  assert.match(ci.slice(ci.indexOf("\n  plan:\n"),ci.indexOf("\n  test:\n")), /\n    timeout-minutes: 5\n/);
+  assert.match(ci.slice(ci.indexOf("\n  test:\n")), /\n    timeout-minutes: 120\n/);
 });
 
 test("ci.yml: skills verification uses the exact PR event base while non-PR runs check their tested commit", () => {

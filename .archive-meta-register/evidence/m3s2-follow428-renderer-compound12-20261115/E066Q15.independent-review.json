@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "archive-narrow-solution-renderer-correction-independent-review-v1",
+  "createdAt": "2026-11-15T08:37:12.879Z",
+  "reviewer": "GPT_ROOT_C8F1B0BFB4FA",
+  "decision": "APPROVE_EXACT_RENDERER_CORRECTION_AND_ALT_ONLY",
+  "examId": "E066",
+  "questionUid": "qid_v1_9d287c6ad59d90578b2325f24c150e2a0b1c91fec9fd81031ce40604ea6cfce6",
+  "sourceOrdinal": 15,
+  "scope": "Independent comparison of the native problem PNG, current problem/solution SVG and proposed solution SVG. Correct only false equality marks and the associated descriptive text.",
+  "proposalRef": {
+    "sha256": "114bfb4e45624efa8538417cbdb8847ee5b3b5b818648ec3c6ccd90ee18976d0"
+  },
+  "beforeSourceRef": {
+    "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+    "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+    "gitBlobSha1": "b5d867ed7bd83f03b1b6793dc5802de2cdcaf3ee",
+    "sha256": "3b6bc45e707e83a850030888cd58808949c5a8bd92b2a8fae2bb22089160446b"
+  },
+  "proposedSourceRef": {
+    "path": "archive/exams/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+    "gitBlobSha1": "5c695bf61364b38e401b7755054cb76e4ae411fd",
+    "sha256": "3ae4d5db6f8abe46839848456ae5221ce5597d3cff1d0cb669bc08ad6073d061"
+  },
+  "beforeQuestionStableSha256": "d08eb8417a56bac8e012c58420ee2aa224eb05e0553723aa23cb604e19f94ece",
+  "afterQuestionStableSha256": "b1305c5a3bb2a368e7442e6396f94d37892a70a0825c596f211e3ae53eb414e5",
+  "changedSourceFields": [
+    "solutionImage",
+    "solutionImageAlt"
+  ],
+  "sourceQuestionCount": 21,
+  "unselectedQuestionsUnchanged": 20,
+  "assetBefore": {
+    "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+    "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q15-solution.svg",
+    "gitBlobSha1": "542cd7f733c3a0ff5ca1f96429048eec9d6c389f",
+    "sha256": "a7d936aa5160f64c9e54fcffc07929d444de783f3f4adbff90b3d68754334b40"
+  },
+  "assetAfter": {
+    "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q15-solution-v2.svg",
+    "gitBlobSha1": "176513b4572856889f4bb565d145451fa516ab07",
+    "sha256": "9976965327c27b4611c3eac25ac6ef8f23ccc54285aafe6ad0cbe9a3ebe23715"
+  },
+  "exactRemovedNodes": [
+    "<line x1=\"327.2400\" y1=\"298.1800\" x2=\"335.6400\" y2=\"286.9800\" stroke=\"#205d9c\" stroke-width=\"2.5\" stroke-linecap=\"round\" />",
+    "<line x1=\"334.4400\" y1=\"303.5800\" x2=\"342.8400\" y2=\"292.3800\" stroke=\"#205d9c\" stroke-width=\"2.5\" stroke-linecap=\"round\" />",
+    "<line x1=\"253.0000\" y1=\"274.7000\" x2=\"267.0000\" y2=\"274.7000\" stroke=\"#205d9c\" stroke-width=\"2.5\" stroke-linecap=\"round\" />",
+    "<line x1=\"253.0000\" y1=\"283.7000\" x2=\"267.0000\" y2=\"283.7000\" stroke=\"#205d9c\" stroke-width=\"2.5\" stroke-linecap=\"round\" />"
+  ],
+  "descriptionBefore": "중심에서 현으로 내린 수선으로 현이 둘로 나뉜다. 초록 AM과 MB는 같은 길이이고, 파랑 OB와 OC는 같은 반지름이다.",
+  "descriptionAfter": "중심에서 현에 내린 수선은 현을 이등분하므로 AM=MB이다. OB와 OC는 반지름이고 OM=OC−CM이다.",
+  "allOtherSvgBytesUnchanged": true,
+  "rendererInputs": [
+    {
+      "phase": "native",
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q15.png",
+      "gitBlobSha1": "58683dd77c4b8da6aa85ee3a30535dff2f98e063",
+      "sha256": "947426847d8a8b766b3c09eed53a32ba0f82480f6af90a5ac7385f8109864713",
+      "visuallyInspected": true
+    },
+    {
+      "phase": "current",
+      "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+      "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q15-problem-v2.svg",
+      "gitBlobSha1": "e6f83de8b0e4f47248b21e4a63f95a82944787c9",
+      "sha256": "62cf775435eb306dd62e1cd562066e6de159f338d97d3586b68b5f08a8e9f191",
+      "visuallyInspected": true
+    },
+    {
+      "phase": "current",
+      "commit": "bcdf7d30682dd83f72d07acf2dd04710298e74ff",
+      "path": "archive/assets/images/20_연향중_2학기_중간_중3_수학/q15-solution.svg",
+      "gitBlobSha1": "542cd7f733c3a0ff5ca1f96429048eec9d6c389f",
+      "sha256": "a7d936aa5160f64c9e54fcffc07929d444de783f3f4adbff90b3d68754334b40",
+      "visuallyInspected": true
+    }
+  ],
+  "beforeContactSheetSha256": "86a1cbd007f05c6ae484670d15623b43ac6da1656676dbafdee3627247dfff0e",
+  "proposedRenderSha256": "11e715014718996fa6b0cf35f6596c227aa09b1da5359c865d10ff21ca3fca22",
+  "visualFinding": "The old solution marks OM and OB with identical double ticks even though OM is only part of radius OC. The proposed SVG removes those four tick lines, preserves the correct AM=MB marks, perpendicular marker, BM=6 and CM=3, and keeps all remaining geometry unchanged. The new alt and SVG description correctly distinguish OB=OC from OM=OC−CM.",
+  "narrowConsistencyCheck": {
+    "equation": "r²=(r−3)²+6²",
+    "radius": 7.5,
+    "OM": 4.5,
+    "OB": 7.5,
+    "circumference": "15π",
+    "existingAnswerUnchanged": true,
+    "fullQuestionQa": false
+  },
+  "firstReleasePreservation": {
+    "selectedUidCount": 9,
+    "selectedOrdinals": [
+      1,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      18,
+      20
+    ],
+    "wholeQuestionsUnchanged": true,
+    "changedAssetIntersection": [],
+    "wholeSourceReceiptRebindRequired": true
+  },
+  "sourceWrites": 0,
+  "requestWrites": 0,
+  "metadataApprovalsAdded": 0,
+  "difficultyJudgmentsAdded": 0,
+  "fullMathematicalQa": false,
+  "newReviewPassCount": 0,
+  "actualProductionRegistrationClaimed": false
+}

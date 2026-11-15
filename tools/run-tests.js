@@ -30,6 +30,11 @@ const tests = includeQuarantined
   ? files
   : files.filter(name => !quarantined.has(name));
 
+// These two complete suites exceeded the old 60-second child limit in CI.
+// Keep a finite per-command limit in both the full and scoped runners.
+const jsTestTimeout = file => file === 'archive2-compose-scope.test.js' ? 180000
+  : file === 'meta-foundation-middle-geometry-runtime.test.js' ? 300000 : 60000;
+
 // Keep the SVG semantic regression outside the legacy CommonJS-only glob.
 // CI invokes this runner, so both the verifier syntax gate and its ESM test
 // become blocking checks on every normal test run.
@@ -72,7 +77,8 @@ const requiredCommands = [
   },
   {
     label: 'tests/archive-main-merge-meta.test.mjs',
-    args: ['--test', 'tests/archive-main-merge-meta.test.mjs']
+    args: ['--test', 'tests/archive-main-merge-meta.test.mjs'],
+    timeout: 300000
   },
   {
     label: 'tests/archive-main-meta-batch-replay.test.mjs',
@@ -85,6 +91,10 @@ const requiredCommands = [
   {
     label: 'tests/item-4slot-runtime.test.cjs',
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m3-renderer-hold.test.cjs',
+    args: ['--test', 'tests/item-4slot-m3-renderer-hold.test.cjs']
   },
   {
     label: 'tests/archive-registration-writer.test.mjs',
@@ -489,8 +499,8 @@ if (args.length) {
   // existing test-name filters, timeouts and quarantine policy verbatim.
   const availableCommands = [
     ...tests.map(file => ({ label: `tests/${file}`, args: [`tests/${file}`],
-      timeout: file === 'archive2-compose-scope.test.js' ? 180000 : 60000 })),
-    ...requiredCommands.map(command => ({ ...command, timeout: 60000 })),
+      timeout: jsTestTimeout(file) })),
+    ...requiredCommands.map(command => ({ ...command, timeout: command.timeout ?? 60000 })),
   ];
   if (runScopedTests({ root, scopeFile: args[1], availableCommands })) return;
 }
@@ -546,7 +556,7 @@ for (const file of tests) {
     cwd: root,
     stdio: 'inherit',
     // Full canonical Compose inventory now covers all grades and runtime packs.
-    timeout: file === 'archive2-compose-scope.test.js' ? 180000 : 60000
+    timeout: jsTestTimeout(file)
   });
 
   if (result.status === 0) {
@@ -567,7 +577,7 @@ for (const command of requiredCommands) {
   const result = spawnSync(process.execPath, command.args, {
     cwd: root,
     stdio: 'inherit',
-    timeout: 60000
+    timeout: command.timeout ?? 60000
   });
   if (result.status === 0) {
     passed += 1;

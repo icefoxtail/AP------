@@ -13,6 +13,7 @@ import {REVIEWED_META_VALUE_FIELDS} from './reviewed-meta-value-fields.mjs';
 import {nativeReviewedRendererRebind} from './native-reviewed-renderer-reuse.mjs';
 import {reviewedRendererBindingPath} from './reviewed-current-renderer-continuity.mjs';
 import {isIssuedSourceBindingRecovery,hasIssuedSourceBindingRecoveryMarker} from './issued-source-binding-recovery.mjs';
+import {assertReviewedPackVersionLineage} from './reviewed-pack-version-lineage.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a-f0-9]{64}$/;
@@ -207,6 +208,10 @@ function ordinaryReviewedReassessment({receipt,nativeSource,question,identity,or
   const without=(row,keys)=>Object.fromEntries(Object.entries(row).filter(([key])=>!keys.includes(key)));
   const metadataKeys=['sourceFingerprint','contentFingerprint','metadataRevision','approvalEvidence'];
   const runtimeKeys=[...metadataKeys,'approvedSourceFingerprint'];
+  if(assertReviewedPackVersionLineage({root,current,runtime:nativeSource.runtimeRecord,
+    prior:old.row,priorRuntime:old.runtime,priorReceiptRef:ref,registry})){
+    metadataKeys.push('metaFoundationPackVersion');runtimeKeys.push('metaFoundationPackVersion');
+  }
   let rendererBinding=null;
   if(proof.rendererContinuity!==undefined) {
     const currentSource=proof.rendererContinuity?.currentSourceRef;
@@ -252,14 +257,16 @@ function ordinaryReviewedReassessment({receipt,nativeSource,question,identity,or
 // This is the existing registrar rebind form, restricted here to an unchanged
 // whole question in a complete renderer cohort. It transports no new native
 // decision, metadata value, identity value or approval kind.
-function unchangedApprovedRebindMember({patch,row,runtime,identity,oldRow,oldRuntime,oldIdentity,prior,receipt}) {
+function unchangedApprovedRebindMember({patch,row,runtime,identity,oldRow,oldRuntime,oldIdentity,prior,receipt,root,priorReceiptRef,registry}) {
   const fingerprints={sourceFingerprint:oldRow.sourceFingerprint,contentFingerprint:oldRow.contentFingerprint};
+  const moved=assertReviewedPackVersionLineage({root,current:row,runtime,prior:oldRow,priorRuntime:oldRuntime,priorReceiptRef,registry});
+  const approved=value=>Object.fromEntries(Object.entries(unchanged(value)).filter(([key])=>!moved||key!=='metaFoundationPackVersion'));
   if(!same(Object.keys(patch).sort(),['after','identityBefore','metadataBefore','questionUid','rebind','sourceOrdinal'])||
     !Object.values(fingerprints).every(value=>SHA256.test(value||''))||
     !same(patch.metadataBefore,fingerprints)||!same(patch.after,fingerprints)||
     !same(patch.identityBefore,{sourceFingerprint:oldIdentity.sourceFingerprint})||
     !same(patch.rebind,{priorSourceBlobSha1:prior.sourceBlobSha1,priorContentFingerprint:oldRow.contentFingerprint})||
-    !same(unchanged(row),unchanged(oldRow))||!same(unchanged(runtime),unchanged(oldRuntime))||
+    !same(approved(row),approved(oldRow))||!same(approved(runtime),approved(oldRuntime))||
     !same(identity,oldIdentity))return false;
   const appended=before=>[...new Set([...before.approvalEvidence,receiptPath(receipt.requestId)])];
   return same(row.approvalEvidence,appended(oldRow))&&same(runtime.approvalEvidence,appended(oldRuntime));
@@ -308,7 +315,8 @@ function unchangedMemberOfRendererReassessment({receipt,nativeSource,question,id
     if(!renderer&&!same(q,beforeSource.bank[row.sourceOrdinal-1]))fail('changed member lacks a current renderer review');
     const retained=!renderer&&patch.sourceReview===undefined&&patch.rebind!==undefined;
     const verified=retained?unchangedApprovedRebindMember({patch,row,runtime:state.runtimes.get(uid),
-      identity:state.identities.get(uid),oldRow,oldRuntime:old.runtimes.get(uid),oldIdentity:old.identities.get(uid),prior,receipt}):
+      identity:state.identities.get(uid),oldRow,oldRuntime:old.runtimes.get(uid),oldIdentity:old.identities.get(uid),prior,receipt,
+      root,priorReceiptRef:refs[0],registry}):
       ordinaryReviewedReassessment({receipt,nativeSource:{...nativeSource,runtimeRecord:state.runtimes.get(uid)},
         question:q,identity:state.identities.get(uid),ordinal:row.sourceOrdinal,current:row,registry,reviewedContainerCarry:!renderer});
     if(!verified)fail('mixed reassessment member lacks an exact approved-value continuation');

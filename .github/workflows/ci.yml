@@ -249,3 +249,12 @@ jobs:
         env:
           ARCHIVE_PR_REGISTRATION_PROOF: ${{ steps.registration_proof.outputs.proof_file }}
         run: node tools/run-tests.js --ci-scope "$RUNNER_TEMP/archive-ci-scope.json"
+
+      - name: Preserve exact PR registration proof for review
+        if: always() && github.event_name == 'pull_request' && steps.registration_scope.outputs.needed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-pr-registration-proof-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-pr-registration-proof/proof.json
+          if-no-files-found: warn
+          retention-days: 14
