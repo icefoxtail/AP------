@@ -269,7 +269,7 @@ test('중1·중2·중3 catalog은 각 학년의 표시 단원으로 분류한다
     { sourceFile: 'original/middle/m3/1mid/fixture.js', id: 3, standardUnitKey: 'M22-3-01', question_uid: 'm3' }
   ];
 
-  for (const [profileId, unitKey] of [['m1', 'M22-1-01'], ['m2', 'M22-2-01'], ['m3', 'M22-3-01']]) {
+  for (const [profileId, unitKey] of [['m1', 'RPM22-M1-L1-01'], ['m2', 'RPM22-M2-L1-01'], ['m3', 'RPM22-M3-L1-01']]) {
     const catalog = core.buildCatalog(index, { profileId });
     assert.equal(catalog.scannedCount, 1, profileId);
     assert.equal(catalog.classifiedCount, 1, profileId);

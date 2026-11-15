@@ -3,10 +3,12 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import crypto from "node:crypto";
 import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { verifyChangedUidConsumerApproval, renderSummary } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
 import { loadResolvedConsumerCatalog, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import canonical from "../archive/archive2-canonical.js";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const checker = path.join(repo, "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs");
@@ -77,16 +79,51 @@ test("bindings: body fingerprint, source blob and unsupported schemas fail; pinp
   assert.equal(out.failures.find(f => f.reason === "UNSUPPORTED_REQUEST_SCHEMA").uid, "-");
 });
 
-// Historical whole-exam v2 request (FINAL_QA, L1..L4 + PT/TPL + fingerprints). It stays an extra PASS case only
-// while that commit is reachable and main still holds the values it registered.
-const historic = (() => {
-  try { return execFileSync("git", ["show", "b5d98a987:.archive-meta-register/inbox/gangnam25-probstat-finalqa-meta-20261021.json"], { cwd: repo, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }); } catch { return null; }
-})();
-test("historical Gangnam v2 request: reviewed L1..L4 are the effective consumer values", { skip: historic ? false : "commit b5d98a987 not available in this clone" }, t => {
-  const file = write(tmp(t), "gangnam.json", JSON.parse(historic));
-  const out = verifyChangedUidConsumerApproval({ root: repo, requestPaths: [file] });
+// Freeze the historical request with the source and approved 24-UID consumer inputs it describes.
+// Comparing its old blob to mutable production main tested later edits, not the v2 consumer contract.
+// Keep the real resolver/page index and digest-bound manifest; no production guard is mocked or waived.
+function historicalConsumerFixture(t) {
+  const fixture = JSON.parse(fs.readFileSync(path.join(repo, "tests/fixtures/archive-gangnam-v2-consumer.json"), "utf8"));
+  const root = tmp(t), hash = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
+  const put = (relative, bytes) => {
+    const destination = path.resolve(root, relative);
+    fs.mkdirSync(path.dirname(destination), { recursive: true });
+    fs.writeFileSync(destination, bytes);
+    return destination;
+  };
+  const source = put(`archive/exams/${fixture.request.sourceArchiveFile}`, fixture.sourceText);
+  put("archive/data/generated-lite-consumer/v1/index.json", JSON.stringify({ records: [] }));
+  const files = Object.entries(fixture.resources).map(([relative, value]) => {
+    const bytes = JSON.stringify(value);
+    put(`archive/${relative}`, bytes);
+    return { path: relative, sha256: hash(bytes) };
+  });
+  const manifest = { schemaVersion: "archive2-canonical-input-manifest-v1", resolverVersion: canonical.RESOLVER_VERSION,
+    projectionVersion: "archive2-canonical-v1:" + hash(canonical.projectionManifestPayload(files, canonical.RESOLVER_VERSION)), files };
+  put("archive/data/archive2-canonical-input-manifest.json", JSON.stringify(manifest));
+  return { root, source, request: fixture.request, file: put("gangnam.json", JSON.stringify(fixture.request)) };
+}
+
+test("fixed whole-exam v2 request: all 24 reviewed L1..L4 and PT/TPL values reach the consumer", t => {
+  const { root, file } = historicalConsumerFixture(t);
+  const out = verifyChangedUidConsumerApproval({ root, requestPaths: [file] });
   assert.deepEqual(out.failures, []);
   assert.deepEqual(out.counts, { changed: 24, checked: 24, passed: 24, skippedUnchanged: 0 });
+});
+
+test("fixed whole-exam v2 request: later source bytes and altered approved values are refused", t => {
+  const { root, source, file, request } = historicalConsumerFixture(t);
+  const changed = structuredClone(request);
+  changed.items[6].after.L4 += " (altered)";
+  const wrong = verifyChangedUidConsumerApproval({ root, requestPaths: [write(root, "wrong-label.json", changed)] });
+  assert.deepEqual(wrong.counts, { changed: 24, checked: 24, passed: 23, skippedUnchanged: 0 });
+  assert.equal(wrong.failures.length, 1);
+  assert.equal(wrong.failures[0].reason, "VALUE_MISMATCH");
+  assert.equal(wrong.failures[0].qid, 7);
+  fs.appendFileSync(source, "\n// source revised after the bound review\n");
+  const stale = verifyChangedUidConsumerApproval({ root, requestPaths: [file] });
+  assert.deepEqual(stale.counts, { changed: 24, checked: 0, passed: 0, skippedUnchanged: 0 });
+  assert.deepEqual(stale.failures.map(f => f.reason), ["SOURCE_BLOB_MISMATCH"]);
 });
 
 test("META_PIPELINE L3/L4 and level are verified against the active Meta Foundation runtime", t => {

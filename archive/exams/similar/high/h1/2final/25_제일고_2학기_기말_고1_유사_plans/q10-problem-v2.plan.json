@@ -1,0 +1,84 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "X",
+        "elements": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        }
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        }
+      }
+    ],
+    "arrowGroups": [
+      {
+        "name": "f",
+        "from": "X",
+        "to": "Y"
+      }
+    ]
+  },
+  "caption": "집합 X에서 X로 가는 함수 f의 대응도이다.",
+  "sourceConditions": [
+    "f(0)=2, f(1)=0, f(2)=3, f(3)=1"
+  ],
+  "newVisualInformation": [
+    "문제에서 주어진 대응관계를 표현한다."
+  ]
+}

@@ -62,7 +62,7 @@
       this.lessonIndex = 0; // 지금 재생 중인(또는 마지막으로 재생한) 해설이 그 장면의 몇 번째인지
       this._entrySig = '';
       this._pinsSig = '';
-      this.manual = urlParam('manual') === '1';
+      this.manual = urlParam('manual') === '1' || !!lab._g7LearningEntry;
       this.explored = this.manual || this._readExplored();
       this._build();
       this._wrap();
@@ -71,7 +71,7 @@
       // #…&play=1 : 해설 링크로 열면 장면을 연 뒤 바로 재생(그 밖에는 자동 재생하지 않음)
       // play=1 은 첫 해설, play=2·3·4 는 그 번째 해설, play=<label>(예: play=부피)은 그 이름의 해설
       const pv = urlParam('play');
-      if (pv && !lab.teach) {
+      if (pv && !lab.teach && !lab._g7LearningEntry) {
         requestAnimationFrame(() => setTimeout(() => {
           const k = this._playParam(pv, lab.index);
           if (this.state === 'idle' && k >= 0) this.play(lab.index, k);

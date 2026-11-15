@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "m1-s2-independent-sample-review-v1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "reviewer": "GPT_A2_54CB21AF3005",
+  "author": "A1",
+  "exam": "archive/exams/original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js",
+  "sample": [
+    6,
+    21,
+    23
+  ],
+  "reviewBasis": "current JS stem/choices/reused solution plus each actual source image inspected; author 4-slot after IDs compared against v1.5 dictionary; no new full-exam QA",
+  "sourceGitBlobSha": "a053171ed56b07af3795ff5097983e84bd441ccb",
+  "reviewedArtifact": "docs/operations/m1-s2-meta-b01-a-20261114/a1-exam2.review.json",
+  "reviewedArtifactSha256": "6ef533b69b18642ff33721bb6a9d5ce92b2e4e7e47c77ce1e6389639c81ec9aa",
+  "items": [
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_76bd5d12df09268493b1f61107cacb61746c366839eba4339034447ac95951e6",
+      "verdict": "PASS",
+      "sourceImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q6.png",
+      "visualInspected": true,
+      "fourSlot": {
+        "given": [
+          724
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          723,
+          158,
+          741
+        ],
+        "condition": [
+          346
+        ]
+      },
+      "rationale": "원그림의 같은 중심각을 전제로 호의 비와 부채꼴 넓이 비를 대조하고, 두 반지름과 끼인각으로 SAS 합동을 확인한 뒤 두 현의 상등 및 삼각형 세 변 길이 관계를 사용한다. 기존 given 중심각, goal 판정, method 합동조건/삼각형/비례, condition 상등은 모두 실제 문제와 연결된다.",
+      "difficultyIndependentJudgment": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "adjudication": "A1 bucket4→3에 동의, 기존 level상 보존",
+        "reason": "원/부채꼴의 기본 비례, SAS, 세 변 관계를 연결하지만 보조선 발상이나 비정형 분기 없이 주어진 각과 반지름을 표준 순서로 이용한다. 세 가지 개념 연결은 중상3이며 배점5 또는 선택지 개수만으로4가 되지 않는다."
+      },
+      "advisory": {
+        "class": "DICTIONARY_TERM_GAP",
+        "term": "삼각형의 세 변의 길이 관계",
+        "slot": "method",
+        "exactQuote": "삼각형의 두 변의 길이의 합은 나머지 한 변보다 크므로",
+        "action": "기존 method 삼각형은 실제 객체여서 허위값은 아니나 결정적 측면을 더 정확히 구분하는 위 용어를 공통 후보 요청에 병기. 신규 id 생성 금지.",
+        "excludedTerm": {
+          "id": 76,
+          "ko": "삼각부등식",
+          "reason": "정본의 영문 의미가 TRIGONOMETRIC_INEQUALITY라 이 기하 세 변 관계와 다르다."
+        }
+      },
+      "substantiveErrors": []
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_382314a3713c9d61ec63b7c54dde290271cd467b42c1e9c58d3dd7274790b554",
+      "verdict": "PASS",
+      "sourceImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q21.png",
+      "visualInspected": true,
+      "fourSlot": {
+        "given": [
+          159
+        ],
+        "goal": [
+          174
+        ],
+        "method": [
+          159,
+          406,
+          714
+        ],
+        "condition": [
+          346
+        ]
+      },
+      "rationale": "실제 원그림에 AB=AC=CD인 동일 눈금과 D의 각 및 B,A,D의 공선 배치가 보인다. 두 이등변삼각형에서 밑각과 내각합을 차례로 계산하고 평각으로 외각을 결정한다. given 이등변삼각형, goal 각, method 이등변삼각형/평각/내각이 맞으며 condition 상등 추가가 동일변 전제를 복원한다.",
+      "difficultyIndependentJudgment": {
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+        "adjudication": "A1 bucket4→3에 동의, 기존 level상 보존",
+        "reason": "두 이등변삼각형의 각을 연결하는 여러 단계가 필요하지만 같은변 표시와 공선점이 모두 주어져 추론 경로가 고정된다. 추가 보조선, 별도 경우분기, 비정형 발상이 없는 표준 연속 각 추론이므로3이다."
+      },
+      "substantiveErrors": []
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_378417836e32662281c15dd16fae018a76dfb486b235ebe1d91c4a6041f4f3fc",
+      "verdict": "PASS",
+      "sourceImage": "assets/images/25_왕운중_2학기_기말_중1_기출/q23.png",
+      "visualInspected": true,
+      "fourSlot": {
+        "given": [
+          603
+        ],
+        "goal": [
+          218
+        ],
+        "method": [
+          219,
+          64
+        ],
+        "condition": [
+          346
+        ]
+      },
+      "rationale": "두 직육면체에 같은 양의 물이 든 조건을 이용해 부피를 같게 놓고 높이를 구한다. given 직육면체, goal 높이, method 부피/일차방정식, condition 상등이 실제 객체·목표·계산·전제를 정확히 담는다.",
+      "difficultyIndependentJudgment": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "adjudication": "조건부 해설기준 추정2는 최종 적용하지 않음. root의 원그림 재확인 후 기존4/상 유지·EVIDENCE_PENDING 판정 수용",
+        "reason": "이미 검증된 기존 해설의 첫 그릇 물높이 해석을 재사용하면 밑넓이×높이로 양쪽 부피를 같게 놓는 한 번의 일차식이다. 전체높이와 물높이를 구별하는 전형적 도식 해석 이후 기본 공식 적용이며 어려운 결합·경우 분기는 없다.",
+        "applicationStatus": "NOT_APPLIED_EVIDENCE_PENDING"
+      },
+      "evidenceQualification": "원본 q23.png를 직접 확인했으나 1/3이라는 수치나 명시적 등분눈금은 뚜렷하게 보이지 않는다. 이 검토의 난이도 판정은 보존 대상인 기존 해설이 명시한 1/3 물높이 해석을 재사용한다. 따라서 작성근거의 명시된 비율이라는 표현은 기존 해설의 물높이 해석으로 정확히 한정할 것. 기존 답·해설·이미지를 수정하거나 전수 수학 QA를 반복하지 않는다.",
+      "substantiveErrors": [],
+      "difficultyFinalAdjudication": {
+        "by": "root",
+        "level": "상",
+        "difficultyBucket": 4,
+        "decision": "KEEP_SOURCE_PENDING_EVIDENCE",
+        "gapType": "EVIDENCE_PENDING",
+        "reason": "원본 도해에서 1/3 수치 또는 등분을 확인하지 못했고 기울어진 그릇과 수면 관계의 해석이 남으므로 현재근거로 단순 직접대입 난이도2를 확정하지 않는다. 기존 문제·정답·해설·이미지 보존.",
+        "fourSlotScope": "기존 해설을 재사용한 core 표본 판정만 PASS; 문제 정확도 전체 PASS를 의미하지 않음."
+      }
+    }
+  ],
+  "summary": {
+    "sampled": 3,
+    "passed": 3,
+    "substantiveErrors": 0,
+    "nonBlockingDictionaryGap": 1,
+    "evidenceWordingQualification": 1,
+    "fakeQuotesFound": 0,
+    "wholeExamRepeatRequired": false,
+    "difficultyEvidencePendingOrdinals": [
+      23
+    ]
+  },
+  "scopeLimit": "4slot 독립 3표본 및 지정 난이도만 확인. 전수 PT/TPL·배포 또는 원그림의 새 품질 PASS를 뜻하지 않음."
+}

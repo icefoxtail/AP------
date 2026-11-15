@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "m1s2-scoped-publication-hold-v1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "owner": "GPT_ROOT_54CB21AF3005_A",
+  "status": "SEMANTIC_CORRECTION_CONFIRMED_PUBLICATION_DEFERRED",
+  "responsibleRole": "COORDINATOR_ONLY",
+  "sourcePath": "archive/exams/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+  "sourceOrdinal": 13,
+  "questionUid": "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
+  "verifiedMain": {
+    "commit": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+    "sourceBlob": "9d635c26109d3c088e55bd0529884611457d0433"
+  },
+  "reviewedCorrectionSnapshot": {
+    "commit": "a4e8b1c6972161e71262bef93e434a0bb8021b97",
+    "sourceBlob": "99cd522479988a1a968228e3d86cd26bfd1d5f3e",
+    "sourcePath": "archive/exams/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+    "reviewPath": "docs/operations/m1-s2-meta-b01-a-20261114/a2-exam3.review.json"
+  },
+  "publicationSourceBlob": "5ea211ca5907ad3706105b7f88f593fbc511c151",
+  "publicationSourceSha256": "6cc54bc6f90556abde5937530f491ca81fdbd20300d671afb1f2137110b440b6",
+  "retainedLegacyPublicationFields": {
+    "standardUnitKey": "M1-07",
+    "standardUnit": "입체도형의 성질",
+    "standardUnitOrder": 7,
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형"
+  },
+  "confirmedCorrectionPendingPublication": {
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계"
+  },
+  "meaning": "공간의 직선·평면 위치관계가 주개념이다. 기존 입체도형 부모를 올바른 판정으로 인정하지 않는다. 의미 검토 GAP/RPM_LEAF_GAP과 올바른 M1-05 교정안을 유지하고, 공식 shared-parent 재등록 전까지 5개 게시 필드만 현재 main 값으로 보류한다.",
+  "independentCorrectionsRetained": {
+    "integrationPattern": "NONE",
+    "validExistingPtTplPreserved": true,
+    "reviewedFourSlotPreserved": true
+  },
+  "cause": {
+    "ciRun": 43533869947,
+    "job": 132258033470,
+    "test": "tests/archive2-unified-units.test.js:137",
+    "actual": "RPM22-M1-L1-07",
+    "expected": "RPM22-M1-L1-05",
+    "scopedDiagnostic": "95 compared; only Q13 differs",
+    "currentMetadataAndRuntime": "M1-07 / M1-07-SOLID_FIGURE",
+    "officialRouteLimits": [
+      "native-v2 requires all 24 items; Q4/Q20/Q21 have separate exact-binding gaps",
+      "basic-scope-rebind permits only fingerprint rebinding",
+      "AutoMeta first fails old identity fingerprint and then missing binding L1/L2",
+      "EXISTING_TARGET_UPDATE requires separate whole-exam R1/R2/R3 proof and is not dispatched by current PR/main inbox"
+    ],
+    "desiredPtTplAndExactBinding": "EXISTING_ACTIVE; no new PT/TPL or binding claimed necessary for Q13",
+    "existingParentCandidates": [
+      "기본 도형 / 위치 관계",
+      "기본 도형 / 기본 도형"
+    ],
+    "reviewedParentSelection": "기본 도형 / 위치 관계"
+  },
+  "protectedPayloadChanges": 0,
+  "semanticDecision": "GAP",
+  "existingGapType": "RPM_LEAF_GAP",
+  "nextAction": "총괄이 증거에 결속된 공식 parent/fingerprint 전환 경로로 metadata·identity·runtime을 함께 갱신하고 기존 unified consistency 검사를 통과시킨 뒤 보류된 5개 source 게시 필드를 적용한다. 나머지 94문항과 Q13 독립 메타 검토를 재시작하지 않는다."
+}

@@ -221,6 +221,19 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual(leader['from'],[100,160])
         self.assertTrue(Box(**result['labels'][0]['box']).x<=leader['to'][0]<=Box(**result['labels'][0]['box']).right)
         self.assertAlmostEqual(leader['to'][1],Box(**result['labels'][0]['box']).bottom)
+    def test_axis_tick_on_the_circle_gets_an_outward_leader(self):
+        tick={'id':'tick-x-6','kind':'line','role':'tick','axis':'x','value':6,'geometry':[(160,96),(160,104)]}
+        axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,100),(240,100)]}
+        circle={'id':'source-circle','kind':'circle','geometry':(100,100,60)}
+        item=label('tick-x-6-label',(160,100),'6','TICK_LABEL',0,tickId='tick-x-6',tickAxis='x',tickValue=6,tickDisplayValue='6')
+        # The large numeral cannot fit in either normal position beside this tangent circle.
+        result=layout([item],[tick,axis,circle],Box(0,0,240,200),measurements={item['id']:(30,18)},require_measurements=True)
+        self.assertEqual(result['status'],'PASS',result['unresolved'])
+        self.assertEqual(result['labels'][0]['placement'],'OWNER_BOUND_TICK_LEADER')
+        leader=result['leaders'][0]
+        self.assertEqual(leader['from'],[160,100])
+        self.assertGreater(leader['to'][0],160)
+
     def test_a_vertical_overlay_line_through_a_tick_moves_the_number_to_an_owner_leader(self):
         # G5b: the line x=2 runs through the tick and the number's two axis-normal places; with the fallback opted in the number keeps its tick on a leader.
         tick={'id':'tick-x-2','kind':'line','role':'tick','axis':'x','value':2,'geometry':[(100,156),(100,164)]}

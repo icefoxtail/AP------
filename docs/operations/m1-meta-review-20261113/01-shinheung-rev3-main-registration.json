@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "m1-meta-review-main-registration-observation-v1",
+  "observedAt": "2026-11-13 15:05:02 UTC",
+  "scope": "READ_ONLY_MAIN_WRITER_AND_FINAL_CONSUMER_EVIDENCE",
+  "repository": "icefoxtail/AP------",
+  "pr": 1964,
+  "requestId": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
+  "requestRawSha256": "bd2b3223b3e45a920f2f57707fd9ea37621b13a550f6125edc66edfd3057826f",
+  "requestCanonicalSha256": "bd2014fead23196d068ad24de8529364cd81be83b4cd00dab898a2664798df50",
+  "requestHashContract": "reviewed-exam-registration-v2.mjs stable JSON with recursively sorted object keys, then SHA256; raw and canonical request hashes are intentionally distinct and both verified.",
+  "workflow": {
+    "id": 43443059116,
+    "name": "Archive Main Auto Metadata",
+    "path": ".github/workflows/archive-main-auto-meta.yml",
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43443059116",
+    "eventHead": "c9b908a0025c6d32b1add22b47543035e14b8784",
+    "actualPreparedInputSha": "208ab1649ad0e201e5b05917c259269dc545b0d0",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 131945363207,
+        "name": "register",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 131945365199,
+        "name": "test",
+        "status": "completed",
+        "conclusion": "skipped"
+      }
+    ],
+    "startedAt": "2026-11-13T14:28:38Z",
+    "completedAt": "2026-11-13T14:58:45Z"
+  },
+  "persistence": {
+    "result": "PUSHED",
+    "attempts": 2,
+    "mainSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+    "registeredSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+    "logTimestamp": "2026-11-13T14:58:32.3730698Z"
+  },
+  "receipt": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+    "metadataRegistrationStatus": "REGISTERED",
+    "totalQuestions": 24,
+    "appliedRecords": 24,
+    "runtimeRecords": 24,
+    "registryChanges": 17,
+    "fingerprintRepairs": 24,
+    "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+    "consumerSearchStatusAtReceiptCreation": "NOT_RUN",
+    "sourceArchiveFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "sourceBlobSha1": "a8de75bc9cc2b6a4479866d75b8ebec637404a04",
+    "sourceRawSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+    "rawFile": "01-rev3-main-registration.receipt.json",
+    "rawSha256": "aea5a3bb228638586c4a36c3eb4d1e8528d76d5a3787a0f52bcac8ab2f2c9054"
+  },
+  "finalConsumer": {
+    "proof": "Completed writer reviewedFinal-1.log; this gate ran after semantic AutoMeta on the staged final tree.",
+    "stagedTreeHead": "208ab1649ad0e201e5b05917c259269dc545b0d0",
+    "persistedSnapshot": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4",
+    "status": "PASS",
+    "counts": {
+      "changed": 24,
+      "checked": 24,
+      "passed": 24,
+      "skippedUnchanged": 0
+    },
+    "failureCount": 0,
+    "unobservedFieldCount": 0,
+    "assignmentPendingCount": 0,
+    "requestCount": 1,
+    "rawFile": "01-rev3-main-final-consumer.json",
+    "rawSha256": "cfe2f070dbb0f588d235f5bf50d989d4ed937723368f3a891ce0143aef6f376e",
+    "requestCopySha256": "bd2b3223b3e45a920f2f57707fd9ea37621b13a550f6125edc66edfd3057826f"
+  },
+  "automaticLane": {
+    "artifactReportStatus": "REGISTERED_WITH_SUPPLEMENTS",
+    "globalApplied": 0,
+    "targetEntriesObserved": 0,
+    "scopeNote": "No target source/UID entry is present in this global report; do not infer a target-specific pending or applied status. The separate final consumer gate checks all 24 target rows after the lane."
+  },
+  "artifact": {
+    "id": 14048074998,
+    "name": "archive-main-registration-43443059116-1",
+    "sizeBytes": 258939,
+    "zipSha256": "00e3f0b5139e223e78f9b3d2281b9f7833e7bb8401526e31148e5d34459493c8",
+    "localFile": "01-rev3-main-writer-evidence-43443059116.zip",
+    "inspectionFile": "01-rev3-main-writer-artifact-inspection.json",
+    "inspectionSha256": "68d5a59e0bb47ca0481a2717c14f80afd8582efdf297dde7cdaa4dd774a4a6e1"
+  },
+  "nextWriter": {
+    "id": 43444692701,
+    "eventHead": "208ab1649ad0e201e5b05917c259269dc545b0d0",
+    "status": "in_progress",
+    "conclusion": null,
+    "runStartedAt": "2026-11-13T14:38:44Z",
+    "updatedAt": "2026-11-13T14:58:47Z",
+    "currentSteps": [
+      {
+        "number": 6,
+        "name": "Prepare only changed native registration lanes in one transaction",
+        "status": "in_progress",
+        "conclusion": null
+      }
+    ],
+    "observedMainSha": "cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4"
+  },
+  "limitations": [
+    "Metadata registration and consumer evidence do not assert renewed R1/R2/R3 or mathematical Final QA.",
+    "RPM evidence debt remains Q8/Q10; the parent owns exact latest-main RPM and operational closure verification.",
+    "A subsequent main writer is active; this report pins registration to cb3e9ecd54a16ee0e87c354df1e9c9a61d2dd2c4."
+  ]
+}

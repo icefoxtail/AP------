@@ -1,0 +1,355 @@
+{
+  "schemaVersion": "m1-main-writer-final-observation-v1",
+  "observedAt": "2026-11-13T19:50:46.236234+00:00",
+  "status": "ACTUAL_MAIN_WRITER_PALMA24_VERIFIED",
+  "pullRequest": {
+    "number": 1969,
+    "url": "https://github.com/icefoxtail/AP------/pull/1969",
+    "state": "MERGED",
+    "headSha": "e5860a968cc65f4e8817dc8492c14959f8d9b7d1",
+    "mergeSha": "e25ceabf2c977b667d2b7a3740ab8ef50670f781",
+    "registeredBaseSha": "738af248bd62813a572ac81725892b3f12ee2beb"
+  },
+  "writer": {
+    "runId": 43493276504,
+    "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43493276504",
+    "jobId": 132119704696,
+    "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43493276504/job/132119704696",
+    "eventHead": "e25ceabf2c977b667d2b7a3740ab8ef50670f781",
+    "status": "completed",
+    "conclusion": "success",
+    "completionObservedAt": "2026-11-13T19:50:07.554Z",
+    "steps": [
+      {
+        "name": "Prepare only changed native registration lanes in one transaction",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6
+      },
+      {
+        "name": "Persist verified lanes, native cursors and receipts once with race-safe regeneration",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7
+      },
+      {
+        "name": "Bind the persisted snapshot before any publication handoff",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 8
+      },
+      {
+        "name": "Dispatch the exact registered snapshot through the single Pages entrypoint",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 9
+      },
+      {
+        "name": "Report incomplete required registration without publishing",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 10
+      },
+      {
+        "name": "Upload registration evidence including isolated failures and no-op decisions",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 11
+      }
+    ],
+    "pushEvidence": {
+      "logLine": 1794,
+      "text": "2026-11-13T19:47:46.9836288Z [single Archive registration writer] result=PUSHED attempts=1 main_sha=bf35b7e13417b033ee167117d567a9f0262712d6 registered_sha=bf35b7e13417b033ee167117d567a9f0262712d6",
+      "attempts": 1,
+      "mainSha": "bf35b7e13417b033ee167117d567a9f0262712d6",
+      "registeredSha": "bf35b7e13417b033ee167117d567a9f0262712d6"
+    },
+    "remoteMainObserved": "bf35b7e13417b033ee167117d567a9f0262712d6"
+  },
+  "artifact": {
+    "id": 14070938799,
+    "name": "archive-main-registration-43493276504-1",
+    "createdAt": "2026-11-13T19:47:57Z",
+    "localPath": "/workspace/scratch/933015cd0a4f/m1-review/.tmp/m1-meta-review/03-palma-main-writer-43493276504.zip",
+    "bytes": 258019,
+    "entryCount": 49,
+    "sha256": "5704b4888270bb05b74e213974259f600b09e88987d56192cabe0311345ca2e1",
+    "githubDigestMatchesLocal": true,
+    "downloadMethod": "github_download_workflow_artifact"
+  },
+  "requestResult": {
+    "requestId": "m1-palma-2026-mid-meta-review-20261113",
+    "rawRequestSha256": "c59a32637f1fc578152a94297844500f4b4ca65b891757830aaf3264b2feb5f5",
+    "canonicalRequestSha256": "7eabd34d965a39395f9121a14f037c70deb4f69ec9910d14fd647c73695cb0d4",
+    "requestHashSemantics": "receipt.requestSha256 is the canonical stable-JSON SHA; raw file SHA is recorded separately.",
+    "expectedSourceBlobSha1": "2b8411c03707eaa39fdf0159e3de448d459da181",
+    "expectedQuestionCount": 24,
+    "requestItems": 24,
+    "registryChanges": 7,
+    "appliedCount": 1,
+    "rejectedCount": 0,
+    "pendingCount": 0,
+    "archivedRequest": {
+      "entry": "native/archive-meta-register-pass/requests/m1-palma-2026-mid-meta-review-20261113.json",
+      "sha256": "c59a32637f1fc578152a94297844500f4b4ca65b891757830aaf3264b2feb5f5",
+      "bytes": 125924
+    },
+    "evidence": [
+      {
+        "entry": "native/archive-meta-register-pass/applied.txt",
+        "sha256": "ac1b06536fa4bc1f99eab1b9aa6f635d3c0e639a241d68c86bb026128decc375",
+        "bytes": 73,
+        "lines": [
+          ".archive-meta-register/inbox/m1-palma-2026-mid-meta-review-20261113.json"
+        ]
+      },
+      {
+        "entry": "native/archive-meta-register-pass/rejected.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "lines": []
+      },
+      {
+        "entry": "native/archive-meta-register-pass/pending.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "lines": []
+      }
+    ]
+  },
+  "finalPostAutoMetaConsumer": {
+    "entry": "reviewedFinal-1.log",
+    "sha256": "b70591acaafa88da584efacc009f10d8959d7530f6f210f2e95f04b8f7754083",
+    "bytes": 738,
+    "status": "PASS",
+    "counts": {
+      "changed": 24,
+      "checked": 24,
+      "passed": 24,
+      "skippedUnchanged": 0
+    },
+    "failures": 0,
+    "unobservedFields": 0,
+    "solverOnlyRevisions": 0,
+    "assignmentPending": 0,
+    "exam": "26_팔마중_2학기_중간_중1_기출",
+    "sourceFile": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+    "workingTreeHeadAtVerification": "e25ceabf2c977b667d2b7a3740ab8ef50670f781",
+    "bindingExplanation": "Final Consumer ran on the registered staged data after the semantic/AutoMeta lane. The PUSHED log and persisted inputSha bind that verified snapshot to actual main bf35b7e13417b033ee167117d567a9f0262712d6.",
+    "initialPreflight": {
+      "entry": "native/archive-meta-register-pass/consumer-preflight-1.json",
+      "sha256": "05d6fe4dbc2285193d7c6e1c74b87a53de2f79831d12fcef2d2ddba8b7fa3cc4",
+      "bytes": 672,
+      "status": "PASS",
+      "counts": {
+        "changed": 24,
+        "checked": 24,
+        "passed": 24,
+        "skippedUnchanged": 0
+      },
+      "scope": "Intermediate preflight; not the final post-AutoMeta proof."
+    },
+    "prepareReport": {
+      "entry": "report.json",
+      "sha256": "a7f05065aff717b4e00266bdaeb8bfedd65c5b0709ecd60417829961b3f31510",
+      "bytes": 6189,
+      "inputSha": "e25ceabf2c977b667d2b7a3740ab8ef50670f781",
+      "status": "PREPARED_WITH_PENDING",
+      "safeToPersist": true,
+      "registrationReady": true,
+      "publishable": true,
+      "sourceMutation": 0,
+      "independentReviewClaim": false,
+      "lanes": [
+        {
+          "id": "reviewed",
+          "status": "VERIFIED",
+          "finalChecked": true,
+          "needsContinuation": false
+        },
+        {
+          "id": "semantic",
+          "status": "VERIFIED",
+          "needsContinuation": true
+        },
+        {
+          "id": "shared",
+          "status": "VERIFIED",
+          "needsContinuation": false
+        },
+        {
+          "id": "generated",
+          "status": "VERIFIED",
+          "needsContinuation": false
+        },
+        {
+          "id": "reviewedFinal",
+          "status": "VERIFIED",
+          "reason": "FINAL_CONSUMER"
+        },
+        {
+          "id": "studentIndexes",
+          "status": "VERIFIED",
+          "needsContinuation": false
+        },
+        {
+          "id": "fourSlot",
+          "status": "VERIFIED",
+          "needsContinuation": false
+        }
+      ]
+    }
+  },
+  "persistedSnapshot": {
+    "mainSha": "bf35b7e13417b033ee167117d567a9f0262712d6",
+    "treeSha": "31bb7763bb56018167279ad094dd787989129f75",
+    "entry": "persisted/report.json",
+    "sha256": "fa8b48a42adc167d07457f3ac678401e432e81face0bb2ce881565e7596bb392",
+    "bytes": 2500,
+    "inputSha": "bf35b7e13417b033ee167117d567a9f0262712d6",
+    "globalStatus": "REGISTRATION_PARTIAL",
+    "registrationReady": true,
+    "publishable": true,
+    "lanes": [
+      {
+        "id": "reviewed",
+        "status": "VERIFIED_REUSED",
+        "needed": false
+      },
+      {
+        "id": "semantic",
+        "status": "NEEDS_REGISTRATION",
+        "needed": true
+      },
+      {
+        "id": "shared",
+        "status": "VERIFIED_REUSED",
+        "needed": false
+      },
+      {
+        "id": "generated",
+        "status": "VERIFIED_REUSED",
+        "needed": false
+      },
+      {
+        "id": "studentIndexes",
+        "status": "VERIFIED_REUSED",
+        "needed": false
+      },
+      {
+        "id": "fourSlot",
+        "status": "VERIFIED_REUSED",
+        "needed": false
+      }
+    ],
+    "interpretation": "Global REGISTRATION_PARTIAL is the optional semantic continuation; the reviewed lane is VERIFIED_REUSED, and this Palma request was applied without rejection or pending."
+  },
+  "globalAutoMetaObservation": {
+    "entry": "native/archive-main-auto-meta/report.json",
+    "sha256": "0494592b99128b598810e45a26a279d99b90c23156880c0defdd58a34e1c61e6",
+    "bytes": 35714,
+    "status": "REGISTERED_WITH_SUPPLEMENTS",
+    "head": "e25ceabf2c977b667d2b7a3740ab8ef50670f781",
+    "base": "6df44f7141f5b7b2aa91004a22d0b620a2f2b1d2",
+    "applied": 0,
+    "pending": 7168,
+    "studentFilesChanged": 0,
+    "unrelatedMetadataChanged": 0,
+    "reportedResults": 100,
+    "palmaTargetEntries": 0,
+    "interpretation": "Do not infer Palma per-target ALREADY_REGISTERED or pending status from global counts or capped results. Final Consumer24 provides the target preservation proof."
+  },
+  "actualGitReceiptAndSource": {
+    "gitSnapshot": "bf35b7e13417b033ee167117d567a9f0262712d6",
+    "treeSha": "31bb7763bb56018167279ad094dd787989129f75",
+    "receiptPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-palma-2026-mid-meta-review-20261113.json",
+    "receiptRawSha256": "174a337a8e6aaca46c897c7d3fbbc6bccbc0c30072b81a2e9781373aaa4c1fdd",
+    "receiptBlobSha1": "dd4c578cbef2c1a08d5adaf051b10f3fb0e8419b",
+    "remoteApiAndFetchedGitRawIdentical": true,
+    "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+    "requestId": "m1-palma-2026-mid-meta-review-20261113",
+    "requestCanonicalSha256": "7eabd34d965a39395f9121a14f037c70deb4f69ec9910d14fd647c73695cb0d4",
+    "metadataRegistrationStatus": "REGISTERED",
+    "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+    "totalQuestions": 24,
+    "appliedRecords": 24,
+    "appliedIdentityRecords": 24,
+    "runtimeRecords": 24,
+    "registryChanges": 7,
+    "fingerprintRepairEntries": 24,
+    "fingerprintBoundary": "The receipt lists requested fingerprint application records; this is not a count of different baseline errors. The local minimal protection report separately observed four changed identity fingerprints.",
+    "uniqueUids": 24,
+    "allRecordsSourceOrdinalValid": true,
+    "sourcePath": "archive/exams/original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+    "sourceRawSha256": "1fa5adbc46ef6180400a4666c4328bb2d2b6655d059e660291ccf550803332c7",
+    "sourceBlobSha1": "2b8411c03707eaa39fdf0159e3de448d459da181",
+    "receiptSourceHashesMatchGit": true,
+    "inboxConsumed": true,
+    "approvalType": "FINAL_QA",
+    "approvalScope": "Completed metadata review; no independent math QA assertion.",
+    "immutableApprovalEvidenceChecked": 8,
+    "immutableApprovalEvidenceMatched": 8,
+    "immutableApprovalEvidence": [
+      {
+        "path": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+        "expectedSha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18",
+        "actualSha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18",
+        "matches": true
+      },
+      {
+        "path": "docs/operations/m1-meta-review-20261113/03-palma-figure-read-evidence.json",
+        "expectedSha256": "6311607aa46ddde6861e853dc6771b4316be2f79a028088eff99089d3d2e35da",
+        "actualSha256": "6311607aa46ddde6861e853dc6771b4316be2f79a028088eff99089d3d2e35da",
+        "matches": true
+      },
+      {
+        "path": "docs/operations/m1-meta-review-20261113/03-palma-candidate-independent-check.json",
+        "expectedSha256": "207fbf6858edf9860d7b7fb228df18b22faff66c980a9f7f5ac67fb46f6cfd3b",
+        "actualSha256": "207fbf6858edf9860d7b7fb228df18b22faff66c980a9f7f5ac67fb46f6cfd3b",
+        "matches": true
+      },
+      {
+        "path": "docs/operations/m1-meta-review-20261113/03-palma-ledger-independent-check.json",
+        "expectedSha256": "f603ffdeb76df11b1cddde9f29dbd695921bc5077e10c82d53a891d152df1b3d",
+        "actualSha256": "f603ffdeb76df11b1cddde9f29dbd695921bc5077e10c82d53a891d152df1b3d",
+        "matches": true
+      },
+      {
+        "path": "docs/operations/m1-meta-review-20261113/03-palma-native-registration-plan.json",
+        "expectedSha256": "42b247724e3f76889f249bc9afc9d23937083f8bcdfcfa605efda5c9db35af60",
+        "actualSha256": "42b247724e3f76889f249bc9afc9d23937083f8bcdfcfa605efda5c9db35af60",
+        "matches": true
+      },
+      {
+        "path": "docs/operations/m1-meta-review-20261113/03-palma-crosswalk-plan.json",
+        "expectedSha256": "f9d0589290dc0d4f2d177d8a4116e4647064f005b765df2a44214d7b9b21adca",
+        "actualSha256": "f9d0589290dc0d4f2d177d8a4116e4647064f005b765df2a44214d7b9b21adca",
+        "matches": true
+      },
+      {
+        "path": "docs/operations/m1-meta-review-20261113/03-palma-native-binding-impact.json",
+        "expectedSha256": "c08a9905975a22b3649c5407f2bfc423147ee4e839055d5207fe510762ec445f",
+        "actualSha256": "c08a9905975a22b3649c5407f2bfc423147ee4e839055d5207fe510762ec445f",
+        "matches": true
+      },
+      {
+        "path": "docs/operations/m1-meta-review-20261113/03-palma-q01-q08-native-bridge-check.json",
+        "expectedSha256": "94d2016e28094cd447f10b54a01485bbab7b418842f47c63c36c376cfae9df51",
+        "actualSha256": "94d2016e28094cd447f10b54a01485bbab7b418842f47c63c36c376cfae9df51",
+        "matches": true
+      }
+    ]
+  },
+  "boundaries": {
+    "sourceCanonicalGitIndexApiMutations": 0,
+    "testsOrRegistrationsRerun": 0,
+    "nextExamStarted": false,
+    "newMathQaClaim": false,
+    "rawQuestionsAnswersSolutionsCopiedIntoReport": false,
+    "actualPagesDeploymentInspected": false,
+    "pagesEvidenceScope": "Exact registered snapshot handoff status recorded from the writer; no claim about the resulting Pages deployment.",
+    "outsidePalmaConsumerRevalidation": "Not executed by this monitoring task; parent owns the separate direct-impact checks.",
+    "operationalCloseoutOwner": "root",
+    "futureMainUnchangedClaim": false
+  }
+}

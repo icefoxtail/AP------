@@ -1,0 +1,935 @@
+{
+  "schemaVersion": "parallel-candidate-conflict-memo-v1",
+  "recordedAt": "2026-11-13T16:04:05.530394+00:00",
+  "status": "READ_ONLY_COMPARISON_CLOSED_ROOT_REV3_CONFIRMED",
+  "owner": "GPT_META_AUTHORITY_933015CD0A4F",
+  "candidateRefs": [
+    {
+      "owner": "GPT_ROOT_933015CD0A4F",
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/docs/operations/m1-meta-review-20261113/02-wangun-semantic-review-rev2.json",
+      "sha256": "dec35a46e5418c3f2280134d9cdd7ae076e328d74f6fa69a63cebf9f3f5b764e",
+      "state": "ROOT_CONFIRMED_METADATA_SEMANTICS_PREPARATION_PENDING_DEPENDENCY"
+    },
+    {
+      "owner": "GPT_ROOT_BF50408FB63B",
+      "path": "/workspace/scratch/bf50408fb63b/m1-closeout/docs/operations/m1-s2-meta-closeout-20261113-bf/03-wangun-semantic-review-r2.json",
+      "sha256": "5b01d1ac9958fda44d6e09c091bdfc79512ff03fdc434ab1340024f0e0c74bae",
+      "state": "PREPARED_NOT_REGISTERED"
+    }
+  ],
+  "concurrency": {
+    "otherTaskJoined": false,
+    "otherTreeChanged": false,
+    "otherCandidateAdopted": false,
+    "rootReportedLatestOtherInstruction": "Other owner explicitly withholds Wangun source/request publication and standalone course correction; own Wangun may proceed.",
+    "awcrEvidenceRef": {
+      "path": ".tmp/m1-meta-review/02-concurrent-task-r12.raw.json",
+      "sha256": "2e96a4426d684f2aadba5a60eecd9111762b9eea9f884a4908e39d7032f707c2"
+    },
+    "preparedActiveFlagsAreNotRegistrationEvidence": true
+  },
+  "identityComparison": {
+    "method": "Explicit sourceOrdinal maps, not array positions.",
+    "ordinals": 23,
+    "uniqueOtherUids": 23,
+    "uidMismatches": 0,
+    "sharedBaselineSourceSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
+    "otherPreparedSourceSha256": "2cc35979ea1dce7e1171cc25c5d7b5c41b6a2018fda2e82ba431b3f6337512e4",
+    "otherStudentPayloadIndependentlyChecked": false
+  },
+  "summary": {
+    "questionsWithSemanticFieldDifferences": 17,
+    "sameNativeUnitSubunitForAll23": true,
+    "equivalentNewPtTplNamePairs": 4,
+    "rpmDebtRetainedByRoot": [
+      2,
+      3,
+      4,
+      16
+    ],
+    "rootConfirmedChangesRecordedInRev3": [
+      7,
+      11,
+      20
+    ]
+  },
+  "priorityConflicts": [
+    {
+      "sourceOrdinal": 2,
+      "difference": "RPM leaf debt versus new direct bridge to M1-RPM-185. Native PT/TPL, CC_TRIANGLE_INEQUALITY and NONE agree.",
+      "assessment": "Other candidate establishes tool-role judgment but does not provide an exact tool-role RPM leaf; common chapter or the operation named in a tool statement does not establish a segment/angle-transfer solution.",
+      "rootDisposition": "KEEP_OUR_EXPLICIT_RPM_DEBT",
+      "needsNewMathReview": false
+    },
+    {
+      "sourceOrdinal": 7,
+      "difference": "Our new M1 graph-property PT/TPL versus existing FUNCTIONS_GRAPHS pair; REINTERPRETATION versus SEQUENTIAL.",
+      "assessment": "Existing active PT has sourceUnits M1-04 and existing M1 graph bindings, so reuse is supported beyond a merely generic label match. Coordinate product is reinterpreted as rectangle area.",
+      "rootDisposition": "REUSE_EXISTING_FUNCTIONS_GRAPHS_PT_TPL_KEEP_REINTERPRETATION",
+      "followup": "Add only missing 2022 중1 수학 / M1-04 / M1-04-GRAPH_RELATION binding and owner pack M1-1 alias, plus exact RPM170 bridge. Do not route to the existing coordinate-plane binding."
+    },
+    {
+      "sourceOrdinal": 11,
+      "difference": "Existing GENERAL_SIDE_TRANSFER versus a new PARALLELOGRAM_MIDPOINT_AUDIT template; auxiliary concepts differ.",
+      "assessment": "Existing definition specifically obtains SAS through sums of collinear pieces. Its proof-check alias resolves to that same canonical row and is not an independent broader definition. The actual audit requires two pairs of auxiliary congruent triangles and distinguishing guaranteed quadrilateral properties.",
+      "rootDisposition": "NEW_TEMPLATE_UNDER_EXISTING_PT",
+      "rootSelectedTemplate": "TPL_M1_CONGRUENCE_DATA_TRANSFER_PARALLELOGRAM_MIDPOINT_AUDIT",
+      "recommendedCrossConceptKeys": [
+        "CC_SEGMENT_MIDPOINT",
+        "CC_PARALLELOGRAMS",
+        "CC_RHOMBUS_PROPERTIES"
+      ],
+      "conceptRoles": [
+        "Midpoints supply half-length sides to the congruence conditions.",
+        "The given parallelogram supplies opposite-side equality and parallelism.",
+        "The four-equal-sides condition determines whether the rhombus claim is guaranteed."
+      ],
+      "excludedConcept": "CC_PARALLELOGRAM_PROPERTIES: its diagonal-specific definition is not the method used here."
+    },
+    {
+      "sourceOrdinal": 19,
+      "difference": "Same native PT/TPL, same RPM223, same SEQUENTIAL; other candidate additionally tags CC_STEM_AND_LEAF_PLOT.",
+      "assessment": "This is an auxiliary representation-tag boundary, not a different primary type or leaf. Frequency-class counting is already retained. Add the stem/leaf CC only if the agreed claim-audit policy treats decoding that representation as a required independent concept; no new key is needed.",
+      "rootDisposition": "ROOT_KEEPS_PRIOR_CC_FREQUENCY_DISTRIBUTION_TABLE_ONLY"
+    },
+    {
+      "sourceOrdinal": 20,
+      "difference": "STEM_LEAF_AUDIT versus existing STEM_LEAF_TO_FREQUENCY_TABLE; other candidate also tags CC_MODE.",
+      "assessment": "The decisive maximum-frequency-class judgment requires assigning individual observations to specified class intervals. Counting leaves under their original stems is insufficient when class intervals subdivide those stems. The frequency-table template exactly describes that conversion and audit.",
+      "rootDisposition": "REUSE_EXISTING_STEM_LEAF_TO_FREQUENCY_TABLE_RPM227_UNCHANGED",
+      "recommendedCrossConceptKeys": [
+        "CC_PERCENTAGE_CALCULATION",
+        "CC_MODE"
+      ],
+      "conceptRoles": [
+        "A percentage statement is independently audited.",
+        "A conditional mode statement is independently audited; mode is not supplied by the chosen class-conversion template."
+      ]
+    }
+  ],
+  "newTypeNamingCollisions": [
+    {
+      "sourceOrdinal": 1,
+      "ours": {
+        "problemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+        "templateKey": "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY"
+      },
+      "other": {
+        "problemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_SEQUENCE",
+        "templateKey": "TPL_M1_TRIANGLE_CONSTRUCTION_SEQUENCE_SIDE_ENDPOINT_ANGLES"
+      },
+      "keysCurrentlyAbsent": [
+        "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+        "PT_M1_TRIANGLE_CONSTRUCTION_SEQUENCE",
+        "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY",
+        "TPL_M1_TRIANGLE_CONSTRUCTION_SEQUENCE_SIDE_ENDPOINT_ANGLES"
+      ],
+      "semanticSkeleton": "Construction order constrained by whether the required vertex has already been located.",
+      "recommendation": "Use one reviewed native PT/TPL pair and one exact bridge; do not register both names for the same skeleton. Other final definition payload was not adopted."
+    },
+    {
+      "sourceOrdinal": 10,
+      "ours": {
+        "problemTypeKey": "PT_M1_INVERSE_PROPORTION_WORK_APPLICATION",
+        "templateKey": "TPL_M1_INVERSE_PROPORTION_WORK_APPLICATION_REMAINING_WORK_RESOURCE_COUNT"
+      },
+      "other": {
+        "problemTypeKey": "PT_M1_INVERSE_PROPORTION_WORK_RATE",
+        "templateKey": "TPL_M1_INVERSE_PROPORTION_WORK_RATE_REMAINING_WORK"
+      },
+      "keysCurrentlyAbsent": [
+        "PT_M1_INVERSE_PROPORTION_WORK_APPLICATION",
+        "PT_M1_INVERSE_PROPORTION_WORK_RATE",
+        "TPL_M1_INVERSE_PROPORTION_WORK_APPLICATION_REMAINING_WORK_RESOURCE_COUNT",
+        "TPL_M1_INVERSE_PROPORTION_WORK_RATE_REMAINING_WORK"
+      ],
+      "semanticSkeleton": "Total work minus completed work, remaining time, then additional resources.",
+      "recommendation": "Use one reviewed native PT/TPL pair and one exact bridge; do not register both names for the same skeleton. Other final definition payload was not adopted."
+    },
+    {
+      "sourceOrdinal": 14,
+      "ours": {
+        "problemTypeKey": "PT_M1_INVERSE_PROPORTION_REGION_POINT_COUNT",
+        "templateKey": "TPL_M1_INVERSE_PROPORTION_REGION_POINT_COUNT_STRICT_BELOW_NATURAL_POINTS"
+      },
+      "other": {
+        "problemTypeKey": "PT_M1_INVERSE_PROPORTION_REGION_LATTICE_COUNT",
+        "templateKey": "TPL_M1_INVERSE_PROPORTION_REGION_LATTICE_COUNT_STRICT_BELOW"
+      },
+      "keysCurrentlyAbsent": [
+        "PT_M1_INVERSE_PROPORTION_REGION_POINT_COUNT",
+        "PT_M1_INVERSE_PROPORTION_REGION_LATTICE_COUNT",
+        "TPL_M1_INVERSE_PROPORTION_REGION_POINT_COUNT_STRICT_BELOW_NATURAL_POINTS",
+        "TPL_M1_INVERSE_PROPORTION_REGION_LATTICE_COUNT_STRICT_BELOW"
+      ],
+      "semanticSkeleton": "Strictly below an inverse-proportion curve, count positive integer coordinate pairs.",
+      "recommendation": "Use one reviewed native PT/TPL pair and one exact bridge; do not register both names for the same skeleton. Other final definition payload was not adopted."
+    },
+    {
+      "sourceOrdinal": 22,
+      "ours": {
+        "problemTypeKey": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+        "templateKey": "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION"
+      },
+      "other": {
+        "problemTypeKey": "PT_M1_PROPORTION_COORDINATE_SEGMENT",
+        "templateKey": "TPL_M1_PROPORTION_COORDINATE_SEGMENT_RATIO_AND_FOOT"
+      },
+      "keysCurrentlyAbsent": [
+        "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+        "PT_M1_PROPORTION_COORDINATE_SEGMENT",
+        "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION",
+        "TPL_M1_PROPORTION_COORDINATE_SEGMENT_RATIO_AND_FOOT"
+      ],
+      "semanticSkeleton": "Common coordinate gives two endpoints; divide the horizontal segment by ratio and project to an axis.",
+      "recommendation": "Use one reviewed native PT/TPL pair and one exact bridge; do not register both names for the same skeleton. Other final definition payload was not adopted."
+    }
+  ],
+  "remainingBoundedDifferences": [
+    {
+      "ordinals": [
+        4
+      ],
+      "difference": "Other proposes a new SKEW_EDGE_SELECTION template; our existing SKEW_EDGE_COUNT uses the same intersect/parallel elimination skeleton.",
+      "disposition": "Root retains existing template; selection versus count output alone does not justify a new type."
+    },
+    {
+      "ordinals": [
+        9,
+        13
+      ],
+      "difference": "Our SEQUENTIAL versus other NONE within the same parallel-angle transfer templates.",
+      "disposition": "Metadata-only integration-policy difference; use frozen reading to decide whether an independent concept actually feeds a later step. Do not repeat source/math review."
+    },
+    {
+      "ordinals": [
+        10,
+        14
+      ],
+      "difference": "Same intended new mathematical skeletons, but work application is SEQUENTIAL versus NONE, and region counting is SEQUENTIAL versus REINTERPRETATION.",
+      "disposition": "Resolve canonical integration semantics along with the single selected new definition; step count alone is insufficient."
+    },
+    {
+      "ordinals": [
+        16
+      ],
+      "difference": "Broad CC_SPATIAL_POSITION_RELATION versus narrower CC_SKEW_LINES; both retain RPM debt.",
+      "disposition": "Not adopted; can be resolved from already reviewed statements, with no new native key."
+    },
+    {
+      "ordinals": [
+        17
+      ],
+      "difference": "Our RPM224 (mode), CC[], NONE versus other RPM223 (median), CC_MODE, SEQUENTIAL under the same constraint-reconstruction template.",
+      "disposition": "Root explicitly retains the prior independently reviewed decision; candidate disagreement alone does not establish a canonical mismatch. No further semantic repeat or adoption is requested."
+    },
+    {
+      "ordinals": [
+        18
+      ],
+      "difference": "Our DEFINITION_CLAIM_AUDIT versus other MEDIAN_ORDER_STATISTIC under the same existing PT/RPM223.",
+      "disposition": "Root explicitly retains the prior independently reviewed decision; candidate disagreement alone does not establish a canonical mismatch. No further semantic repeat or adoption is requested."
+    },
+    {
+      "ordinals": [
+        21
+      ],
+      "difference": "Other adds CC_STRAIGHT_ANGLE and SEQUENTIAL; our existing angle-equation template already explicitly combines vertical and straight-angle equations.",
+      "disposition": "Potential double-tagging of an internal primary step; do not adopt solely because the term occurs."
+    },
+    {
+      "ordinals": [
+        22,
+        23
+      ],
+      "difference": "Q22 ratio-allocation versus internal-division CC; Q23 other adds equilateral and straight-angle CC to triangle-angle-sum.",
+      "disposition": "Auxiliary scope differences remain listed; no additional new PT/TPL is justified by these CC names."
+    }
+  ],
+  "canonicalQ7": {
+    "packPath": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
+    "packSha256": "596991fe2f530699fbed8a7b90becd6b0ed4710e0bbda771b825a707614f4d12",
+    "packId": "FUNCTIONS_GRAPHS",
+    "packVersion": "1.0.11",
+    "canonicalStatus": "ACTIVE",
+    "ownerPack": "FUNCTIONS_GRAPHS",
+    "curricula": [
+      "2015",
+      "2022"
+    ],
+    "standardCourses": [
+      "수학(하)",
+      "공통수학2",
+      "중1 수학",
+      "대수",
+      "수학I",
+      "미적분I"
+    ],
+    "ownedStandardUnitDomains": [
+      "H15-M1-06",
+      "H15-SB-03",
+      "H15-SB-04",
+      "H15-SB-05",
+      "H22-A-02",
+      "H22-A-03",
+      "H22-A-04",
+      "H22-C2-07",
+      "H22-C2-08",
+      "H22-C2-09",
+      "H22-M1-04",
+      "M1-04"
+    ],
+    "problemType": {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+      "sha256": "a2fcbf92e38dd452e86149b946817a5eb2ec8cad5dada09a6f3fecb87705a456",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "canonicalLabelKo": "함수 그래프의 성질",
+      "definition": "대칭성·위치관계·그래프의 형태 등 함수 그래프의 성질을 판정하는 문제 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "sourceUnits": [
+        "M1-04"
+      ],
+      "supportingItemCount": 24
+    },
+    "template": {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+      "sha256": "a2fcbf92e38dd452e86149b946817a5eb2ec8cad5dada09a6f3fecb87705a456",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "canonicalLabelKo": "함수 그래프의 성질 판정",
+      "definition": "`함수 그래프의 성질` 안에서 '함수 그래프의 성질 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+      "internalSkeleton": "함수 그래프의 성질 판정",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 21
+    },
+    "currentM1Bindings": [
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+        "curriculum": "2015",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "status": "ACTIVE",
+        "ownerPack": "FUNCTIONS_GRAPHS",
+        "supportingItemCount": 2
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "status": "ACTIVE",
+        "ownerPack": "FUNCTIONS_GRAPHS",
+        "supportingItemCount": 1
+      }
+    ],
+    "missingTargetBinding": {
+      "curriculum": "2022",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-04",
+      "subUnitKey": "M1-04-GRAPH_RELATION",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES"
+    },
+    "M1_1CourseAliasPresent": false
+  },
+  "canonicalQ11": {
+    "existingTemplate": {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "sha256": "2f9845932532aa9c01c0a26fbce8a6547ca44e46a10cb1f2a76ef3c710016c44",
+      "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
+      "parentProblemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+      "canonicalLabelKo": "합동인 삼각형의 대응 관계 적용 — 대응변 이동",
+      "definition": "Two collinear segment sums convert the short equal parts into equal longer sides, leaving the included angle to complete SAS.",
+      "aliases": [
+        "TPL_M1_EQUAL_CONNECTOR_AND_PARALLEL_SIDE_ANGLES",
+        "TPL_M1_SAS_FROM_COLLINEAR_SEGMENT_SUMS",
+        "TPL_PERPENDICULAR_BISECTOR_SAS_PROOF_CHECK"
+      ],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 3,
+      "internalSkeletonAbstract": "Add collinear segment pieces to obtain equal longer sides, then use their included angle to establish SAS."
+    },
+    "aliases": [
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/aliases.json",
+        "row": {
+          "alias": "TPL_M1_EQUAL_CONNECTOR_AND_PARALLEL_SIDE_ANGLES",
+          "canonicalKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
+          "canonicalKind": "template",
+          "source": "MIDDLE1_GLOBAL_COMPRESSION",
+          "status": "ACTIVE"
+        }
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/aliases.json",
+        "row": {
+          "alias": "TPL_M1_SAS_FROM_COLLINEAR_SEGMENT_SUMS",
+          "canonicalKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
+          "canonicalKind": "template",
+          "source": "MIDDLE1_GLOBAL_COMPRESSION",
+          "status": "ACTIVE"
+        }
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/aliases.json",
+        "row": {
+          "alias": "TPL_PERPENDICULAR_BISECTOR_SAS_PROOF_CHECK",
+          "canonicalKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
+          "canonicalKind": "template",
+          "source": "MIDDLE1_GLOBAL_COMPRESSION",
+          "status": "ACTIVE"
+        }
+      }
+    ],
+    "aliasInferenceLimit": "An ACTIVE alias proves identity resolution to the existing canonical row; it does not override that row definition or prove a different solution skeleton."
+  },
+  "canonicalQ20": {
+    "templates": [
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "sha256": "2f9845932532aa9c01c0a26fbce8a6547ca44e46a10cb1f2a76ef3c710016c44",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "parentProblemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "canonicalLabelKo": "줄기·잎 그림의 자료 해석",
+        "definition": "줄기별 잎의 수와 자료 순서를 읽어 전체 도수, 최댓값·최솟값, 최빈값 또는 순위를 확인한다.",
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "supportingItemCount": 3
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "sha256": "2f9845932532aa9c01c0a26fbce8a6547ca44e46a10cb1f2a76ef3c710016c44",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE",
+        "parentProblemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "canonicalLabelKo": "줄기·잎 자료를 도수분포표로 옮기기",
+        "definition": "줄기와 잎 그림의 관측값을 계급별로 분류해 도수를 세고 표의 누락값 및 계급표기를 검토한다.",
+        "internalSkeleton": "각 잎을 원자료 값으로 읽고 정해진 계급구간에 하나씩 배치한다. 계급별 도수와 총도수, 계급 경계를 확인해 표와 선택지를 검증한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "supportingItemCount": 1
+      }
+    ],
+    "actualAuditAbstract": "Re-bin the stem/leaf observations into the stated class intervals, compare class frequencies, and separately audit percentage and mode statements. No answer or numerical data reproduced."
+  },
+  "auxiliaryConceptAuthority": [
+    {
+      "key": "CC_SEGMENT_MIDPOINT",
+      "path": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "sha256": "61026eefaae21ab74f6b7a23ddbd20b27f43ccdb921105ebe75dc3909147c83e",
+      "canonicalLabelKo": "선분의 중점",
+      "definition": "선분 위의 한 점이 양 끝점으로부터 같은 거리에 있을 때 선분의 길이를 이등분하는 성질",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "CC_PARALLELOGRAMS",
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "sha256": "3c24c543d18345e8144bd013064666c0a29afa8138e7007ccb209dea5c210837",
+      "canonicalLabelKo": "평행사변형",
+      "definition": "두 쌍의 대변이 각각 평행한 사각형.",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "CC_RHOMBUS_PROPERTIES",
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "sha256": "3c24c543d18345e8144bd013064666c0a29afa8138e7007ccb209dea5c210837",
+      "canonicalLabelKo": "마름모의 성질",
+      "definition": "네 변의 길이가 모두 같고 두 대각선이 서로를 수직이등분하며 꼭지각을 이등분한다",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "CC_PERCENTAGE_CALCULATION",
+      "path": "archive/data/meta-foundation/canonical/concepts/statistics-concepts.json",
+      "sha256": "73c06dc2d1cb46fe7a178fd8609fcfdbbe2959be4d921ab489ab4dcd8442a657",
+      "canonicalLabelKo": "백분율과 비율 계산",
+      "definition": "전체 도수에 대한 특정 계급이나 범주의 도수 비율에 100을 곱하여 백분율(%)을 구하는 연산",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "CC_MODE",
+      "path": "archive/data/meta-foundation/canonical/concepts/statistics-concepts.json",
+      "sha256": "73c06dc2d1cb46fe7a178fd8609fcfdbbe2959be4d921ab489ab4dcd8442a657",
+      "canonicalLabelKo": "최빈값",
+      "definition": "자료에서 가장 많이 나타나는 값, 즉 도수가 가장 큰 변량.",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "CC_STEM_AND_LEAF_PLOT",
+      "path": "archive/data/meta-foundation/canonical/concepts/statistics-concepts.json",
+      "sha256": "73c06dc2d1cb46fe7a178fd8609fcfdbbe2959be4d921ab489ab4dcd8442a657",
+      "canonicalLabelKo": "줄기와 잎 그림",
+      "definition": "변량을 줄기와 잎으로 구분하여 자료의 분포와 개별 변량 값을 순서대로 나타내는 통계 표",
+      "status": "ACTIVE"
+    },
+    {
+      "key": "CC_FREQUENCY_DISTRIBUTION_TABLE",
+      "path": "archive/data/meta-foundation/canonical/concepts/statistics-concepts.json",
+      "sha256": "73c06dc2d1cb46fe7a178fd8609fcfdbbe2959be4d921ab489ab4dcd8442a657",
+      "canonicalLabelKo": "도수분포표와 계급의 도수",
+      "definition": "자료를 일정한 간격의 계급으로 나누고 각 계급에 속하는 변량의 개수(도수)와 총합 관계를 해석하는 표",
+      "status": "ACTIVE"
+    }
+  ],
+  "allOrdinalDifferences": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_04eec2165bbc177b619ab9ca935330f6fd60a9906437f50a36f56aa18de7c95a",
+      "semanticDifferences": {
+        "problemTypeKey": {
+          "ours": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER",
+          "other": "PT_M1_TRIANGLE_CONSTRUCTION_SEQUENCE"
+        },
+        "templateKey": {
+          "ours": "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_ASA_VERTEX_DEPENDENCY",
+          "other": "TPL_M1_TRIANGLE_CONSTRUCTION_SEQUENCE_SIDE_ENDPOINT_ANGLES"
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-190-CONSTRUCTION-ORDER-20261113",
+        "other": "M1-RPM-190-WANGUN-ASA-SEQUENCE-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1",
+      "semanticDifferences": {
+        "rpmPrimaryPath": {
+          "ours": null,
+          "other": {
+            "majorUnit": "기본 도형",
+            "midUnit": "작도와 합동",
+            "l3": "기본 작도",
+            "l4": "선분·각의 이동"
+          }
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": null,
+        "other": "M1-RPM-185-WANGUN-TOOL-USAGE-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_bab52ee228bcefba5cba3c3e098437496cea2050c01904e3da3ab63c81581df2",
+      "semanticDifferences": {},
+      "crosswalkRecordIds": {
+        "ours": null,
+        "other": null
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_347acf016e50757f50f493be205035c52686071e612c8f9ee44312d8f7e5e785",
+      "semanticDifferences": {
+        "templateKey": {
+          "ours": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT",
+          "other": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_SELECTION"
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": null,
+        "other": null
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_489c87bbd253da2356fd202dd5103c28eccd0de434e4fd6995a7063d92b55575",
+      "semanticDifferences": {},
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-190-UNIQUENESS-CONSTRUCTION-20261113",
+        "other": "M1-RPM-190-WANGUN-ASA-UNIQUENESS-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_66b8bd71d68a153b6a7bdb56ff3536201ca5b0b7ca68e82b7a120b47ba8ce55b",
+      "semanticDifferences": {},
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-167-DIRECT-TABLE-20261113",
+        "other": "M1-RPM-167-WANGUN-DIRECT-TABLE-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_13c5c93007955b679fe9896938511efccef68cb26e5450a54e1a98a5ac61b59e",
+      "semanticDifferences": {
+        "problemTypeKey": {
+          "ours": "PT_M1_PROPORTION_GRAPH_PROPERTY_JUDGMENT",
+          "other": "PT_FUNCTION_GRAPH_PROPERTIES"
+        },
+        "templateKey": {
+          "ours": "TPL_M1_PROPORTION_GRAPH_PROPERTY_JUDGMENT_COMPARISON_WITH_RECTANGLE_AREA",
+          "other": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+        },
+        "integrationPattern": {
+          "ours": "REINTERPRETATION",
+          "other": "SEQUENTIAL"
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-170-GRAPH-PROPERTY-20261113",
+        "other": "M1-RPM-170-WANGUN-GRAPH-PROPERTIES-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_be5c74c260f54fd3283324a100fa4c69a1f876580f99076a1caa364716f6b497",
+      "semanticDifferences": {},
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-169-INVERSE-SUBSTITUTION-20261113",
+        "other": "M1-RPM-169-WANGUN-INVERSE-POINT-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_a86218e4f1d4036989c499fc2e0a19036ff858458049473da7a544394ca9bcbb",
+      "semanticDifferences": {
+        "integrationPattern": {
+          "ours": "SEQUENTIAL",
+          "other": "NONE"
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-177-TRANSFER-DIRECT-20261113",
+        "other": "M1-RPM-177-TRANSFER-DIRECT-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab",
+      "semanticDifferences": {
+        "problemTypeKey": {
+          "ours": "PT_M1_INVERSE_PROPORTION_WORK_APPLICATION",
+          "other": "PT_M1_INVERSE_PROPORTION_WORK_RATE"
+        },
+        "templateKey": {
+          "ours": "TPL_M1_INVERSE_PROPORTION_WORK_APPLICATION_REMAINING_WORK_RESOURCE_COUNT",
+          "other": "TPL_M1_INVERSE_PROPORTION_WORK_RATE_REMAINING_WORK"
+        },
+        "integrationPattern": {
+          "ours": "SEQUENTIAL",
+          "other": "NONE"
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-172-REMAINING-WORK-20261113",
+        "other": "M1-RPM-172-WANGUN-REMAINING-WORK-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d",
+      "semanticDifferences": {
+        "templateKey": {
+          "ours": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
+          "other": "TPL_M1_CONGRUENCE_DATA_TRANSFER_PARALLELOGRAM_MIDPOINT_AUDIT"
+        },
+        "crossConceptKeys": {
+          "ours": [
+            "CC_SEGMENT_MIDPOINT"
+          ],
+          "other": [
+            "CC_SEGMENT_MIDPOINT",
+            "CC_PARALLELOGRAMS",
+            "CC_RHOMBUS_PROPERTIES"
+          ]
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-192-GENERAL-SIDE-TRANSFER-20261113",
+        "other": "M1-RPM-192-WANGUN-MIDPOINT-CONGRUENCE-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_e0bf633136ca14fc3f3192b62eec9bdffa4227f3153aae3edb2e8d4b3a443532",
+      "semanticDifferences": {},
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-193-CONSTRUCTION-CRITERION-20261113",
+        "other": "M1-RPM-193-WANGUN-ASA-CRITERION-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_ffce93ef42912eb61d142ffaadaf7bf56869adece6a6ed9beade2e717d08600b",
+      "semanticDifferences": {
+        "integrationPattern": {
+          "ours": "SEQUENTIAL",
+          "other": "NONE"
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-177-TRANSFER-BENT-20261113",
+        "other": "M1-RPM-177-TRANSFER-BENT-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_976adc004f55751504e0f92aafd1b6ec3f45c9e42af13b0a2b49c2a9f080ca0c",
+      "semanticDifferences": {
+        "problemTypeKey": {
+          "ours": "PT_M1_INVERSE_PROPORTION_REGION_POINT_COUNT",
+          "other": "PT_M1_INVERSE_PROPORTION_REGION_LATTICE_COUNT"
+        },
+        "templateKey": {
+          "ours": "TPL_M1_INVERSE_PROPORTION_REGION_POINT_COUNT_STRICT_BELOW_NATURAL_POINTS",
+          "other": "TPL_M1_INVERSE_PROPORTION_REGION_LATTICE_COUNT_STRICT_BELOW"
+        },
+        "integrationPattern": {
+          "ours": "SEQUENTIAL",
+          "other": "REINTERPRETATION"
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-172-REGION-NATURAL-POINTS-20261113",
+        "other": "M1-RPM-172-WANGUN-STRICT-LATTICE-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "qid_v1_da359e1af270778eaba94a76f15ea85954775c38c2df5aee986dc8ca22deba1f",
+      "semanticDifferences": {},
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-177-ALTERNATE-POSITION-20261113",
+        "other": "M1-RPM-177-WANGUN-ALTERNATE-POSITION-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_883588b373d439a971a7895ded9819b72d753b886850f4d6b614a70fe1c94dd6",
+      "semanticDifferences": {
+        "crossConceptKeys": {
+          "ours": [
+            "CC_SPATIAL_POSITION_RELATION",
+            "CC_PARALLEL_LINE_ANGLES"
+          ],
+          "other": [
+            "CC_SKEW_LINES",
+            "CC_PARALLEL_LINE_ANGLES"
+          ]
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": null,
+        "other": null
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_5fc1c99bd44c3aa0d8a579b57b9dc692129f8f7aafa66734154c979f307196f2",
+      "semanticDifferences": {
+        "crossConceptKeys": {
+          "ours": [],
+          "other": [
+            "CC_MODE"
+          ]
+        },
+        "integrationPattern": {
+          "ours": "NONE",
+          "other": "SEQUENTIAL"
+        },
+        "rpmPrimaryPath": {
+          "ours": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "최빈값"
+          },
+          "other": {
+            "majorUnit": "통계",
+            "midUnit": "대푯값",
+            "l3": "중앙값과 최빈값",
+            "l4": "중앙값"
+          }
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-224",
+        "other": "M1-RPM-223-CONSTRAINT-20261113-BF"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_6d302cad46fda4208bcacf6d853e9198738cc18e26c98f8e011bdad9672ef9f3",
+      "semanticDifferences": {
+        "templateKey": {
+          "ours": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+          "other": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC"
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-223-DEFINITION-AUDIT-20261113",
+        "other": "M1-RPM-223-MEDIAN-20261113-BF"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_3d56afccf7e200f169c308fe861e597fcba46e5cab6d7c7376be5f7359b3ff26",
+      "semanticDifferences": {
+        "crossConceptKeys": {
+          "ours": [
+            "CC_FREQUENCY_DISTRIBUTION_TABLE"
+          ],
+          "other": [
+            "CC_STEM_AND_LEAF_PLOT",
+            "CC_FREQUENCY_DISTRIBUTION_TABLE"
+          ]
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-223-MEDIAN-RECONSTRUCTION-20261113",
+        "other": "M1-RPM-223-CONSTRAINT-20261113-BF"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_3e86de14da10d8992dbc19f6545babb8e7d87c7f9a579cc79ecb29757262426e",
+      "semanticDifferences": {
+        "templateKey": {
+          "ours": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+          "other": "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE"
+        },
+        "crossConceptKeys": {
+          "ours": [
+            "CC_PERCENTAGE_CALCULATION"
+          ],
+          "other": [
+            "CC_PERCENTAGE_CALCULATION",
+            "CC_MODE"
+          ]
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-227-STEM-LEAF-CLASS-AUDIT-20261113",
+        "other": "M1-RPM-227-STEM-TABLE-20261113-BF"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_9fdaf44f2d5156120df8007115c8393404e618be363a73a3c372357ab0a185fa",
+      "semanticDifferences": {
+        "crossConceptKeys": {
+          "ours": [],
+          "other": [
+            "CC_STRAIGHT_ANGLE"
+          ]
+        },
+        "integrationPattern": {
+          "ours": "NONE",
+          "other": "SEQUENTIAL"
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-176-VERTICAL-ANGLE-EQUATION-20261113",
+        "other": "M1-RPM-176-ANGLE-EQUATION-20261113-BF"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_42849e0c412ae8bf1f70e578c0ccbce121008daaf975b9bcbed49176badc79b4",
+      "semanticDifferences": {
+        "problemTypeKey": {
+          "ours": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+          "other": "PT_M1_PROPORTION_COORDINATE_SEGMENT"
+        },
+        "templateKey": {
+          "ours": "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION",
+          "other": "TPL_M1_PROPORTION_COORDINATE_SEGMENT_RATIO_AND_FOOT"
+        },
+        "crossConceptKeys": {
+          "ours": [
+            "CC_RATIO_AND_PROPORTION"
+          ],
+          "other": [
+            "CC_INTERNAL_DIVISION"
+          ]
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-172-HORIZONTAL-DIVISION-20261113",
+        "other": "M1-RPM-172-WANGUN-COORDINATE-DIVISION-20261113"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_48d2321fd14aa0bb4e7cca39b2c8699e2dd65c8fd5b21a533f635435552ec03a",
+      "semanticDifferences": {
+        "crossConceptKeys": {
+          "ours": [
+            "CC_TRIANGLE_ANGLE_SUM"
+          ],
+          "other": [
+            "CC_EQUILATERAL_TRIANGLE",
+            "CC_TRIANGLE_ANGLE_SUM",
+            "CC_STRAIGHT_ANGLE"
+          ]
+        }
+      },
+      "crosswalkRecordIds": {
+        "ours": "M1-RPM-192-CORRESPONDENCE-20261113",
+        "other": "M1-RPM-192-CORRESPONDENCE-20261113"
+      }
+    }
+  ],
+  "followupBeforeWangunPublication": [
+    "Root semantic revision3 now records the confirmed changes and auxiliary decisions.",
+    "Refresh the native and crosswalk plans from rev3; do not apply the frozen rev2 plans without regenerating them.",
+    "Choose one new PT/TPL naming family for each of Q1/Q10/Q14/Q22; other task candidates are not registrations.",
+    "Add only the missing Q7 exact binding; retain its existing canonical FUNCTIONS_GRAPHS owner and add the precise M1-1 owner-pack alias if that owner supplies the binding.",
+    "Keep Q2/Q3/Q4/Q16 RPM leaf debt; do not inherit the other candidate RPM185 bridge.",
+    "Continue the separate binding-spelling correction and one-owner request publication; no automatic adoption of other candidate source/ACTIVE flags."
+  ],
+  "workScope": {
+    "sourceOrCanonicalOrTrackedFilesChanged": false,
+    "otherTreeOrGitOrIndexOrApiWrites": false,
+    "fullR1R2R3Run": false,
+    "newSourceReading": "Only Q11 and Q20 prompt/choices/solution text for requested concrete auxiliary audit, with no solving; Q7 existing assigned reading reused.",
+    "rawQuestionAnswerSolutionInMemo": false
+  },
+  "evidenceRefs": [
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/docs/operations/m1-meta-review-20261113/02-wangun-semantic-review-rev2.json",
+      "sha256": "dec35a46e5418c3f2280134d9cdd7ae076e328d74f6fa69a63cebf9f3f5b764e"
+    },
+    {
+      "path": "/workspace/scratch/bf50408fb63b/m1-closeout/docs/operations/m1-s2-meta-closeout-20261113-bf/03-wangun-semantic-review-r2.json",
+      "sha256": "5b01d1ac9958fda44d6e09c091bdfc79512ff03fdc434ab1340024f0e0c74bae"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/.tmp/m1-meta-review/02-wangun-bank.json",
+      "sha256": "d8a81208e3bc3f041a50b2c6ba65c5e82af05fd5c3248e9c85491fd3a3ee9481"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "sha256": "2f9845932532aa9c01c0a26fbce8a6547ca44e46a10cb1f2a76ef3c710016c44"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/meta-foundation/canonical/packs/middle1/aliases.json",
+      "sha256": "422eadccd96aac0451555aecf69be61bd0405ec4964036fd6eba9c5ccbb16801"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
+      "sha256": "596991fe2f530699fbed8a7b90becd6b0ed4710e0bbda771b825a707614f4d12"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+      "sha256": "a2fcbf92e38dd452e86149b946817a5eb2ec8cad5dada09a6f3fecb87705a456"
+    },
+    {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+      "sha256": "834ecd3fb6580fe00a73c02c5beba552bbb0bbba10e19d0e374d62cadbb79d2c"
+    }
+  ],
+  "rootAdjudicationRef": {
+    "path": "docs/operations/m1-meta-review-20261113/02-wangun-semantic-review-rev3.json",
+    "sha256": "51ddd9c4af3dbbdca744eb883627fbeff615239946d715a1b14a3171b574d090"
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학_유사A.js",
+  "questionId": 7,
+  "figures": [
+    {
+      "slot": "image",
+      "plan": {
+        "capability": "composite-panels-v1",
+        "columns": 1,
+        "panels": [
+          {
+            "caption": {
+              "text": "△PQR"
+            },
+            "plan": {
+              "capability": "construction-spike-v1",
+              "mathPlan": {
+                "schemaVersion": "construction-spike-v1",
+                "realization": {
+                  "recipeId": "PLANE_FIGURE_v1",
+                  "unit": "source-length",
+                  "reflectionEquivalent": false
+                },
+                "nodes": [
+                  {
+                    "id": "P",
+                    "op": "SOURCE_POINT",
+                    "inputs": [],
+                    "args": {
+                      "coordinates": [
+                        {
+                          "kind": "rational",
+                          "numerator": "0",
+                          "denominator": "2500"
+                        },
+                        {
+                          "kind": "rational",
+                          "numerator": "0",
+                          "denominator": "2500"
+                        }
+                      ]
+                    },
+                    "outputType": "POINT",
+                    "factRole": "GIVEN"
+                  },
+                  {
+                    "id": "Q",
+                    "op": "SOURCE_POINT",
+                    "inputs": [],
+                    "args": {
+                      "coordinates": [
+                        {
+                          "kind": "rational",
+                          "numerator": "22500",
+                          "denominator": "2500"
+                        },
+                        {
+                          "kind": "rational",
+                          "numerator": "0",
+                          "denominator": "2500"
+                        }
+                      ]
+                    },
+                    "outputType": "POINT",
+                    "factRole": "GIVEN"
+                  },
+                  {
+                    "id": "R",
+                    "op": "SOURCE_POINT",
+                    "inputs": [],
+                    "args": {
+                      "coordinates": [
+                        {
+                          "kind": "rational",
+                          "numerator": "-2949",
+                          "denominator": "2500"
+                        },
+                        {
+                          "kind": "rational",
+                          "numerator": "7295",
+                          "denominator": "2500"
+                        }
+                      ]
+                    },
+                    "outputType": "POINT",
+                    "factRole": "GIVEN"
+                  }
+                ]
+              },
+              "displayPoints": [
+                "P",
+                "Q",
+                "R"
+              ],
+              "displaySegments": [
+                {
+                  "id": "PQ",
+                  "refs": [
+                    "P",
+                    "Q"
+                  ]
+                },
+                {
+                  "id": "QR",
+                  "refs": [
+                    "Q",
+                    "R"
+                  ]
+                },
+                {
+                  "id": "RP",
+                  "refs": [
+                    "R",
+                    "P"
+                  ]
+                }
+              ],
+              "planeMarks": {
+                "angles": [
+                  {
+                    "id": "angle-R-52",
+                    "refs": [
+                      "P",
+                      "R",
+                      "Q"
+                    ],
+                    "value": 52,
+                    "label": "52",
+                    "arcs": 1,
+                    "style": "ARC",
+                    "factRole": "GIVEN"
+                  },
+                  {
+                    "id": "angle-Q-y",
+                    "refs": [
+                      "P",
+                      "Q",
+                      "R"
+                    ],
+                    "label": "y°",
+                    "labelKind": "MATH",
+                    "arcs": 1,
+                    "style": "SECTOR",
+                    "factRole": "GIVEN",
+                    "arcScale": "PROPORTIONAL"
+                  }
+                ],
+                "expressionLabels": [
+                  {
+                    "id": "PQ-label",
+                    "ownerSegment": "PQ",
+                    "text": "x",
+                    "factRole": "GIVEN",
+                    "side": "LEFT"
+                  }
+                ]
+              },
+              "coordinateCanvas": {
+                "width": 625,
+                "height": 320
+              },
+              "newVisualInformation": []
+            }
+          },
+          {
+            "caption": {
+              "text": "△STU"
+            },
+            "plan": {
+              "capability": "construction-spike-v1",
+              "mathPlan": {
+                "schemaVersion": "construction-spike-v1",
+                "realization": {
+                  "recipeId": "PLANE_FIGURE_v1",
+                  "unit": "source-length",
+                  "reflectionEquivalent": false
+                },
+                "nodes": [
+                  {
+                    "id": "S",
+                    "op": "SOURCE_POINT",
+                    "inputs": [],
+                    "args": {
+                      "coordinates": [
+                        {
+                          "kind": "rational",
+                          "numerator": "0",
+                          "denominator": "2500"
+                        },
+                        {
+                          "kind": "rational",
+                          "numerator": "0",
+                          "denominator": "2500"
+                        }
+                      ]
+                    },
+                    "outputType": "POINT",
+                    "factRole": "GIVEN"
+                  },
+                  {
+                    "id": "T",
+                    "op": "SOURCE_POINT",
+                    "inputs": [],
+                    "args": {
+                      "coordinates": [
+                        {
+                          "kind": "rational",
+                          "numerator": "22500",
+                          "denominator": "2500"
+                        },
+                        {
+                          "kind": "rational",
+                          "numerator": "0",
+                          "denominator": "2500"
+                        }
+                      ]
+                    },
+                    "outputType": "POINT",
+                    "factRole": "GIVEN"
+                  },
+                  {
+                    "id": "U",
+                    "op": "SOURCE_POINT",
+                    "inputs": [],
+                    "args": {
+                      "coordinates": [
+                        {
+                          "kind": "rational",
+                          "numerator": "-2949",
+                          "denominator": "2500"
+                        },
+                        {
+                          "kind": "rational",
+                          "numerator": "7295",
+                          "denominator": "2500"
+                        }
+                      ]
+                    },
+                    "outputType": "POINT",
+                    "factRole": "GIVEN"
+                  }
+                ]
+              },
+              "displayPoints": [
+                "S",
+                "T",
+                "U"
+              ],
+              "displaySegments": [
+                {
+                  "id": "ST",
+                  "refs": [
+                    "S",
+                    "T"
+                  ]
+                },
+                {
+                  "id": "TU",
+                  "refs": [
+                    "T",
+                    "U"
+                  ]
+                },
+                {
+                  "id": "US",
+                  "refs": [
+                    "U",
+                    "S"
+                  ]
+                }
+              ],
+              "planeMarks": {
+                "angles": [
+                  {
+                    "id": "angle-S-112",
+                    "refs": [
+                      "U",
+                      "S",
+                      "T"
+                    ],
+                    "value": 112,
+                    "label": "112",
+                    "arcs": 1,
+                    "style": "ARC",
+                    "factRole": "GIVEN"
+                  }
+                ],
+                "expressionLabels": [
+                  {
+                    "id": "ST-label",
+                    "ownerSegment": "ST",
+                    "text": "9",
+                    "factRole": "GIVEN",
+                    "side": "LEFT"
+                  }
+                ]
+              },
+              "coordinateCanvas": {
+                "width": 625,
+                "height": 320
+              },
+              "newVisualInformation": []
+            }
+          }
+        ],
+        "caption": "합동인 두 삼각형 PQR과 STU",
+        "sourceConditions": [
+          "The prompt states triangle PQR ≡ triangle STU.",
+          "The source drawing labels side PQ as x and ST as 9.",
+          "The source drawing gives angle R=52°, angle S=112°, and y=angle Q."
+        ],
+        "newVisualInformation": []
+      },
+      "typography": {
+        "schemaVersion": "REQUESTED_PROFILE_TYPOGRAPHY_v1",
+        "baseFontPx": 43,
+        "displayScale": 0.48,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

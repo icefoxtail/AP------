@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "m1s2-independent-three-sample-v1",
+  "reviewer": "/root/meta_c",
+  "author": "/root/meta_a",
+  "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+  "readOrder": "SOURCE_CONTENT_SOLUTION_AND_Q2_Q10_FIGURES_BEFORE_AUTHOR_SLOTS",
+  "sampled": [
+    2,
+    10,
+    16
+  ],
+  "scope": "THREE_QUESTIONS_SEMANTIC_METADATA_ONLY_NOT_R1_R2",
+  "status": "ACCEPTED_AFTER_MINOR_CORRECTIONS",
+  "boundInputs": {
+    "source": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/sources/archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sha256": "1766eb75c93d272c89d57289fde6d0aceac6f0113186a103144ef5d2074564c8"
+    },
+    "raw": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/26_왕운중_2학기_중간_중1_기출/raw.4slot.json",
+      "sha256": "c3b32ef65aae2fb7f995d8bc1e6996f7fe6b48f506e9b66859bfac794dbcfd77"
+    },
+    "review": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/26_왕운중_2학기_중간_중1_기출/review.json",
+      "sha256": "f91c07bf25a22ba2a3e5cf8e037b1afdc17a17dcf10bdd8863b47e18b75863f6"
+    },
+    "compact": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/compact/archive/data/item-4slot/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.4slot.json",
+      "sha256": "a5db1f57c65b300f234456f826390d1f85e5e457e8ec4ca30507488ca0a037fd"
+    }
+  },
+  "images": [
+    {
+      "ordinal": 2,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/wangun26-q2.png",
+      "sha256": "b58f6f825d8f6837d3c8f385dbc1397fd433f93abaa4f34b1576403749726340",
+      "actualView": true
+    },
+    {
+      "ordinal": 10,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/wangun26-q10.png",
+      "sha256": "787d1658dfeee238e4930288e215262049764725e0a733bbe1ef99d18c7f5718",
+      "actualView": true
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1",
+      "metadataVerdict": "ACCEPT",
+      "difficultyVerdict": "KEEP_BUCKET2_LEVEL_LOW_AND_SET_BORDERLINE_ACCEPTABLE",
+      "difficultyReason": "도구 역할과 퇴화 삼각형 조건이라는 익숙한 두 정의를 각 진술에 적용한다.2가 타당하고 낮은 기존level은 인접 경계 안정성 규칙으로 보존 가능하다. NORMAL 표시는 부정확하여 BORDERLINE_ACCEPTABLE로 고친다.",
+      "fourSlotVerdict": "ACCEPT_REVISED",
+      "recommendations": [
+        {
+          "slot": "given",
+          "operation": "ADD",
+          "term": "삼각형",
+          "src": "choices",
+          "quote": "이등변삼각형도 작도할 수 있어."
+        }
+      ],
+      "appliedChanges": [
+        {
+          "slot": "method",
+          "operation": "REPLACE_WITH_CANDIDATE",
+          "before": "삼각부등식",
+          "after": "삼각형의세변조건",
+          "src": "solution",
+          "quote": "두 변 길이의 합이 나머지 한 변보다 커야",
+          "evidenceType": "IMPLIED",
+          "justification": "삼각형의 존재 조건으로 최장변이 나머지 두 변의 합보다 작아야 한다.",
+          "reason": "현 사전 id76 삼각부등식은 en TRIGONOMETRIC_INEQUALITY 및 PT_TRIGONOMETRIC_INEQUALITY에서 온 삼각함수 부등식이다. 세변 조건으로 사용하면 서로 다른 단원을 잘못 합친다. 후보 parent 삼각형으로 등록할 것."
+        }
+      ],
+      "integrationAdjudication": {
+        "final": "NONE",
+        "reason": "보기별 독립 진위 판단은 경우·범위·조건에 따른 풀이 분기와 다르므로 CASE_BRANCH 권고를 철회하고 exact-source 기존 판정 및 root 재판정에 따라 NONE을 보존한다.",
+        "rootDecision": "2026-11-14"
+      }
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab",
+      "metadataVerdict": "ACCEPT",
+      "difficultyVerdict": "KEEP_BUCKET2_LEVEL_LOW_AND_SET_BORDERLINE_ACCEPTABLE",
+      "difficultyReason": "작업량=기계수×시간을 정하고 이미 마친 일을 제외한 뒤 남은 일의 기계수를 나누는 익숙한 응용이다.2를 유지하고 기존하와 인접 mismatch만 BORDERLINE_ACCEPTABLE로 바로잡는다.",
+      "fourSlotVerdict": "ACCEPT_REVISED",
+      "recommendations": [
+        {
+          "slot": "method",
+          "operation": "ADD",
+          "term": "분할",
+          "src": "solution",
+          "quote": "처음 5시간 동안 한 작업량",
+          "evidenceType": "IMPLIED",
+          "justification": "전체 작업을 이미 한 부분과 남은 부분으로 나누어 남은 양의 불변량을 만든다."
+        }
+      ],
+      "appliedChanges": [
+        {
+          "slot": "condition",
+          "operation": "ADD",
+          "term": "일정",
+          "src": "stem",
+          "quote": "똑같은 기계",
+          "reason": "모든 기계의 효율이 같아야 기계수×시간 모형이 성립한다. 발문에서 명시된 조건이다."
+        },
+        {
+          "slot": "method",
+          "operation": "REMOVE",
+          "term": "차",
+          "reason": "추가기계를 구하는 마지막 뺄셈은 사칙계산 단계여서 method의 결정개념에 넣지 않는다. goal 개수 및 불변량·반비례가 의미를 보존한다."
+        }
+      ]
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_883588b373d439a971a7895ded9819b72d753b886850f4d6b614a70fe1c94dd6",
+      "metadataVerdict": "ACCEPT_SEMANTIC_JUDGMENT_REGISTRATION_PENDING",
+      "rpmVerdict": "ACCEPT_NO_FORCED_SINGLE_LEAF",
+      "difficultyVerdict": "KEEP_BUCKET3_LEVEL_MIDDLE",
+      "fourSlotVerdict": "ACCEPT_REVISED",
+      "reason": "단일 도형의 각 계산이 아니라 평각·맞꼭지각·꼬인 위치·수직이등분선·평행선 동위각의 전제조건을 함께 판단한다. 단일 RPM leaf를 억지로 대입하지 않는 판정이 타당하다.",
+      "appliedChanges": [
+        {
+          "slot": "method",
+          "operation": "REPLACE_BROAD_DEFINITION_WITH_CONCRETE_TERMS",
+          "before": "정의",
+          "terms": [
+            {
+              "term": "평각",
+              "src": "solution",
+              "quote": "평각은 $180^\\circ$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "맞꼭지각",
+              "src": "solution",
+              "quote": "항상 맞꼭지각인 것은 아니므로",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "동위각",
+              "src": "solution",
+              "quote": "동위각은 두 직선이 평행할 때 서로 같으므로",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "평행",
+              "src": "solution",
+              "quote": "두 직선이 평행할 때",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "reason": "현재 정의·꼬인위치·수직이등분선만으로는 각 관련 세 진술의 결정 단계를 구별할 수 없다. 복합판정 문항이므로 method4개 초과는 실내용에 근거한다."
+        }
+      ]
+    }
+  ],
+  "previousBoundInputs": {
+    "source": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/sources/archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+      "sha256": "c79551504949aee9ee09f5a8e2bf74898f7b7204d54a035a3e4b2acc7d808129"
+    },
+    "raw": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/26_왕운중_2학기_중간_중1_기출/raw.4slot.json",
+      "sha256": "cdc2046273820cc1865830ce1379beb1e57a20e9e56587fb77e20126255484c5"
+    },
+    "review": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/reviews/26_왕운중_2학기_중간_중1_기출/review.json",
+      "sha256": "b25c57de4cb85d1f5c82a30c092ab3a34f7b5192414dc0eb8e1eebc9aa415023"
+    },
+    "compact": {
+      "path": "/workspace/scratch/64695b8ede31/agent-a/compact/archive/data/item-4slot/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.4slot.json",
+      "sha256": "d6587697145bd3f6b2683c5cbfbdfb5f7106a62a11cb7507e35e8785de6f2897"
+    }
+  },
+  "revision": 3,
+  "readback": {
+    "at": "2026-11-14",
+    "sourceReparsed": true,
+    "rawSlotsReread": true,
+    "threeSampleOnly": true
+  },
+  "technicalReadbacks": [
+    {
+      "kind": "SECTION10_SAME_QUOTE_PARENT_COMPLETION",
+      "status": "PASS",
+      "sourceBytesUnchanged": true,
+      "semanticVerdictUnchanged": true,
+      "changedSlotsVerified": [
+        {
+          "ordinal": 2,
+          "slot": "method",
+          "candidate": "삼각형의세변조건",
+          "addedParent": "삼각형",
+          "dictionaryId": 158,
+          "src": "solution",
+          "quote": "두 변 길이의 합이 나머지 한 변보다 커야"
+        },
+        {
+          "ordinal": 5,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "내각의 합"
+        },
+        {
+          "ordinal": 23,
+          "slot": "method",
+          "candidate": "내각의합",
+          "addedParent": "내각",
+          "dictionaryId": 714,
+          "src": "solution",
+          "quote": "\\angle APB=120^\\circ"
+        }
+      ],
+      "bound": {
+        "sourceGitBlobSha": "b2b36387b6d2cf3ac4e623d932c4de98266d1a36",
+        "sourceSha256": "1766eb75c93d272c89d57289fde6d0aceac6f0113186a103144ef5d2074564c8",
+        "rawPath": "/workspace/scratch/64695b8ede31/agent-a/reviews/26_왕운중_2학기_중간_중1_기출/raw.4slot.json",
+        "rawSha256": "c3b32ef65aae2fb7f995d8bc1e6996f7fe6b48f506e9b66859bfac794dbcfd77",
+        "reviewSha256": "f91c07bf25a22ba2a3e5cf8e037b1afdc17a17dcf10bdd8863b47e18b75863f6",
+        "compactSha256": "a5db1f57c65b300f234456f826390d1f85e5e457e8ec4ca30507488ca0a037fd"
+      }
+    }
+  ]
+}

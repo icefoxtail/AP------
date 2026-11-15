@@ -199,7 +199,11 @@ window.questionBank = [
       "examUid": "21_제일고_1학기_기말_고2_수학I",
       "sourceQid": 4,
       "sourceJsSha256": "b73ae437b1071dabdd25504d3159962cebccb953f4fedcf961f4821d98926e97"
-    }
+    },
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_수학I/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 APB에서 AB=20 m는 45°의 맞은편이고 AP는 60°의 맞은편이다. A, B, P의 각은 75°, 60°, 45°다.",
+    "solutionImageCaption": "삼각형의 내각의 합에서 ∠APB=45°임을 구하고, 사인법칙으로 변 AP와 AB의 비를 세운다. 정답은 10√6 m이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -741,7 +745,11 @@ window.questionBank = [
       "examUid": "21_제일고_1학기_기말_고2_수학I",
       "sourceQid": 15,
       "sourceJsSha256": "b73ae437b1071dabdd25504d3159962cebccb953f4fedcf961f4821d98926e97"
-    }
+    },
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 AIG에서 AI=√5, IG=√5, AG=2√3을 각 변에 표시하고 I의 각호를 그렸다.",
+    "solutionImageCaption": "정육면체의 앞면과 밑면에서 각각 피타고라스 정리를 써서 AI=IG=√5를 얻고, 공간대각선은 AG=2√3이다. 이 세 변으로 ∠AIG에 코사인법칙을 적용한다. 정답은 −1/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

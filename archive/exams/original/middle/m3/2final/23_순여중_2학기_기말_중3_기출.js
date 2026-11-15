@@ -32,7 +32,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q1-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q1-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 첫 원에서 105° 원주각이 보는 큰 호와 중심의 x, 둘째 원에서 같은 호를 보는 60° 중심각과 x 원주각을 나란히 보인다.",
+    "solutionImageCaption": "첫 중심각은 360°−2×105°=150°이고 둘째 원주각은 60°÷2=30°이다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -65,7 +68,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q2-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 위의 E에서 현 BD를 보는 60°와 중심 O에서 호 CD를 보는 70°를 표시한다. 호 BC의 50°와 원주각 x의 대응을 읽을 수 있다.",
+    "solutionImageCaption": "∠BOC=120°−70°=50°이므로 x=25°이다. 따라서 x=100°라고 한 설명 ⑤가 옳지 않다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -98,7 +104,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q3-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 호의 비 3:4:5, 호 BC의 중심각 120°, 그 호를 보는 원주각 x를 표시한 원.",
+    "solutionImageCaption": "호 BC는 원의 4/12이므로 중심각은 120°이고 원주각 x=60°이다. 답: ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -165,7 +174,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q5-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접하는 사각형 ABCD에서 대각선 BD가 삼각형 BCD를 만든다. 주어진 각은 30°, 70°이고 미지각은 x, y이다.",
+    "solutionImageCaption": "삼각형 BCD의 내각합과 내접사각형의 마주 보는 각 관계를 차례로 적용한다. x=80°, y=100°이다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -198,7 +210,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q6-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 원 그림을 나누어 표시한다. 첫 내접사각형에는 100°, 70°, x, y가 있고 둘째에는 내각 60°, 외각 95°, 미지각 x,y가 있다.",
+    "solutionImageCaption": "첫 그림은 x=110°, y=80°이고 둘째 그림은 x=95°, y=60°이다. 답: ④.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -231,7 +246,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q7-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 사각형 ABCD의 변을 연장해 F와 E에서 만난다. 외부각 50°, 20°와 내부각 A, C, D를 표시하고 B의 미지각은 x로 둔다.",
+    "solutionImageCaption": "삼각형 FAD에서 A+D=230°, 삼각형 CDE에서 C+D=200°이고 A+C=180°이다. 따라서 D=125°, x=180°−125°=55°이므로 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -264,7 +282,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q8-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 오각형 ABCDE와 중심 O. 115°, 100°, 중심각 x와 같은 호 BC를 보는 원주각을 표시한다.",
+    "solutionImageCaption": "∠BAE=115°에서 호 BAE=130°이고 ∠CDE=100°에서 호 CBAE=200°이다. 따라서 작은 호 BC=70°, x=70°, 그 원주각은 35°이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -297,7 +318,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q9-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원에서 AC를 지름, AT를 A의 접선으로 표시한다. 두 직각 관계와 같은 호 CB를 보는 파란 원주각, 접선·현에서 이어지는 주황 원주각을 보인다.",
+    "solutionImageCaption": "∠CAT=∠CPA=90°이고 같은 호 CB를 보는 원주각은 같다. 접선과 현의 성질로 ∠BAT=∠BPA이다. 따라서 옳지 않은 설명은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -330,7 +354,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q10-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 접선 그림을 위아래로 보인다. 첫 그림은 ∠ABC=120°와 미지각 x, 둘째 그림은 접선-현 각 40°, ∠ACB=80°, 미지각 x를 표시한다.",
+    "solutionImageCaption": "접선-현 각의 성질과 삼각형 내각합으로 두 x를 차례로 구하면 120°, 60°이다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -396,7 +423,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q12-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: A에서 접하는 AQ와 지름 BC가 원 안에 표시되고 두 선의 연장 교점은 P이다. 주어진 각 55°와 미지각 x,y의 위치를 보인다.",
+    "solutionImageCaption": "접선-현 정리로 x=35°, 삼각형 ABP에서 y=20°이므로 x+y=55°이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -428,7 +458,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 치수별로 점을 쌓았고 가장 많은 점이 쌓인 치수를 파란색으로 강조한다.",
+    "solutionImageCaption": "치수 95가 다섯 번 나와 최빈값은 95이다. 따라서 옳은 설명은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -460,7 +494,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 값 7이 한 곳에 두 번 쌓인다. 두 가운데 순서를 읽을 수 있다.",
+    "solutionImageCaption": "정렬했을 때 넷째 값은 6이고 다섯째 값은 7이다. 두 값의 평균인 6.5가 중앙값이고 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -556,7 +594,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균선에서 왼쪽과 오른쪽에 있는 자료의 편차를 부호와 함께 표시한다.",
+    "solutionImageCaption": "전체는 56회이고 나머지 일곱 값의 합은 46회이므로 x=10이다. 편차 제곱의 합 40을 학생 수 8로 나눈 분산은 5이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -588,7 +630,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 평균에서 같은 거리의 두 자료는 각각 같은 색이며 편차는 부호를 포함한다.",
+    "solutionImageCaption": "평균이 4이므로 편차는 −2,1,2,−1,0이다. 분산은 편차 제곱의 합 10을 5로 나눈 2이고 표준편차는 √2이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -654,7 +700,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 점수가 같은 점선보다 위쪽인 점은 파란색으로 강조하고, 점선 위의 동점은 검은색으로 남겼다.",
+    "solutionImageCaption": "실기 점수가 더 높은 점은 (40,55)와 (65,75)이다. 10명 중 2명이므로 20%이며 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -681,7 +731,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q21-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원 O에 내접한 사각형 ABCD와 중심에서 각 꼭짓점으로 향하는 선분, 마주 보는 각이 보는 서로 보완하는 두 호를 나타낸 그림이다.",
+    "solutionImageCaption": "두 보완 호의 중심각을 절반씩 보는 원주각의 관계를 적용한다. ∠A+∠C=180°, ∠B+∠D=180°.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -708,7 +761,10 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q22-solution.svg"
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 지름 BC와 접선 PT, 접점 T의 62도 각, 지름에 의해 생긴 직각, 같은 호 TC를 보는 두 파란 원주각을 표시한 원 그림이다.",
+    "solutionImageCaption": "접선-현각과 지름의 원주각으로 x를 구하고, 같은 호 TC의 원주각 관계로 y를 정한다. ∠x=28°, ∠y=28°.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -734,7 +790,11 @@ window.questionBank = [
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순여중_2학기_기말_중3_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에서 가운데 점 앞에 9세와 14세가 있고, 가운데 점 뒤에는 18세 두 명이 있다.",
+    "solutionImageCaption": "다섯 명의 나이 합 74세에서 9, 15, 18, 18을 빼면 나머지는 14세이다. 따라서 중앙값은 15세이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

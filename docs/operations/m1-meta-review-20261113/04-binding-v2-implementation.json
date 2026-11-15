@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "binding-course-correction-v2-implementation-review-v1",
+  "status": "CODE_READY_SCOPED_TESTS_PASSED_ACTUAL_REGISTRATION_PENDING_ROOT",
+  "owner": "/root/exam_reviewer",
+  "createdAt": "2026-11-13T20:52:24.827652+00:00",
+  "worktree": "/workspace/scratch/933015cd0a4f/m1-dongsan-binding-bridge",
+  "baselineMain": "bf35b7e13417b033ee167117d567a9f0262712d6",
+  "head": "bf35b7e13417b033ee167117d567a9f0262712d6",
+  "committed": false,
+  "published": false,
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "sha256": "44d356cd06ecf48a3a3bf2d0dfa828336fc4ed95a021f61006a99d3b44e45ace",
+      "bytes": 36002
+    },
+    {
+      "path": "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs",
+      "sha256": "ccba13a19ce5f62ece21f59078670cee6e4666a883cd06c537cf684d173421a3",
+      "bytes": 22419
+    },
+    {
+      "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "sha256": "308d71c196e4fb70cf7917ffbc2523c44579ad220b4782d83032d6245bf75591",
+      "bytes": 32064
+    },
+    {
+      "path": "tools/ci/reviewed-meta-register-pass.sh",
+      "sha256": "9c65aa43a5521368dbc7b700c6a915e13a27ba3e6fbcfed4ab12713ae77a5215",
+      "bytes": 9524
+    },
+    {
+      "path": "tests/archive-binding-course-correction.test.mjs",
+      "sha256": "9210af6b4fb162ec80f17d3307d7ddb26fa7f84c4f886c18b2e9a0d9287f3e78",
+      "bytes": 38223
+    },
+    {
+      "path": "docs/operations/binding-course-correction-v1.md",
+      "sha256": "2f3e7f544119c113a3a657c5bf5685fb1f94e56ff8aa3930be3ba8c28c610cd9",
+      "bytes": 8116
+    },
+    {
+      "path": "docs/operations/binding-course-correction-v2.md",
+      "sha256": "b12af9027d3a93b39484b73760f0fa9e4d77b53b3da9e97c6eedb9bc7503ffb9",
+      "bytes": 6000
+    }
+  ],
+  "patch": {
+    "path": ".tmp/binding-course-bridge/binding-course-correction-v2.patch",
+    "sha256": "7f101ea6ea9c28b1776b96b244bfdcea38f6cbe10b610b3e3f69642d6c587f48",
+    "bytes": 53809
+  },
+  "design": {
+    "oneExistingBindingOnly": true,
+    "onlyFieldChange": "standardCourse literal 中1 수학 -> 중1 수학",
+    "v1SchemaAndSingleSourceBehaviorPreserved": true,
+    "v2Sources": "Derived from exact old/new metadata/runtime tuple union and binding support UIDs; no caller allowlist",
+    "provenance": "Every derived source raw/blob/count and each affected metadata/identity/runtime row plus indexed compact R2 proof",
+    "postReplay": "Re-derive source and UID closure; refuse omitted protected source/proof inputs",
+    "consumer": "Exact official resolved/page semantic snapshot for entire MIDDLE1 runtime pack; all other runtime files protected by raw hashes",
+    "writes": "One binding field, one patch version envelope, deterministic compiled/index artifacts, distinct no-approval receipt",
+    "pipeline": "Same dispatcher/projection/final gate; one aggregate requestId unit for refusal attribution",
+    "ordinaryReviewedExamV2Guard": "UNCHANGED",
+    "nativePreview": "UNSUPPORTED_AS_WITH_V1; no preview PASS claimed"
+  },
+  "tests": {
+    "dedicatedFinal": {
+      "passed": 66,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "report": "focused-tests-final.json"
+    },
+    "legacyAssignmentMarkerCase": {
+      "passed": 1,
+      "failed": 0,
+      "report": "direct-regressions.json"
+    },
+    "legacySourceBindingCase": {
+      "initial": "FAIL: SOURCE_UNREADABLE due to sparse checkout missing an existing test source",
+      "resolution": "Materialized exact baseline Git blob into this isolated worktree, without content/index changes",
+      "retryPassed": 1,
+      "retryFailed": 0,
+      "report": "consumer-source-binding-retry.json"
+    },
+    "refusalCollector": {
+      "passed": 2,
+      "failed": 0,
+      "exitCode": 0,
+      "report": "direct-regressions.json"
+    },
+    "gitDiffCheck": "PASS",
+    "registerPassShellSyntax": "PASS",
+    "fullSuite": "NOT_RUN",
+    "actualProductionRequest": "ROOT_OWNED_NOT_CREATED_HERE",
+    "actualIsolatedRegistrationAndConsumer": "ROOT_OWNED_NOT_RUN_HERE",
+    "mathR1R2R3": "NOT_RUN"
+  },
+  "testArtifacts": [
+    {
+      "path": ".tmp/binding-course-bridge/focused-tests.json",
+      "sha256": "81efd3e36136b7626e11191ce7851c676a18d6562f34cccfed7745053f31d5d7",
+      "bytes": 309
+    },
+    {
+      "path": ".tmp/binding-course-bridge/focused-tests.log",
+      "sha256": "f14f10de5d45765fae4dbc8d1c521246a9be253120e1b7edadd30faa06ced592",
+      "bytes": 4757
+    },
+    {
+      "path": ".tmp/binding-course-bridge/focused-tests-final.json",
+      "sha256": "05018460ecd879699432b64f5c5483b6142e6d0743cbdd5ff81eaadf60cec370",
+      "bytes": 351
+    },
+    {
+      "path": ".tmp/binding-course-bridge/focused-tests-final.log",
+      "sha256": "eab9fd77517334653cabc8f4c96674ed9a0ebff740940b4df3e023285d1121b0",
+      "bytes": 4756
+    },
+    {
+      "path": ".tmp/binding-course-bridge/direct-regressions.json",
+      "sha256": "e12fae2641e72b7faf2645e422ba90e92d801493e59b7d47bb8208da553574e5",
+      "bytes": 855
+    },
+    {
+      "path": ".tmp/binding-course-bridge/consumer-routing-regression.log",
+      "sha256": "423b9fb0f830ea4cda19aad7d90531872616826f5ad977eb073929ec8df4c697",
+      "bytes": 1729
+    },
+    {
+      "path": ".tmp/binding-course-bridge/consumer-refusal-regression.log",
+      "sha256": "64af3bc7a740d2f59426d7408a6e5caf4e25b98c9a5fa036b69ebac32f38ca7d",
+      "bytes": 324
+    },
+    {
+      "path": ".tmp/binding-course-bridge/consumer-source-binding-retry.json",
+      "sha256": "7940b38531f206bd0ea9a6b6da8165fe1ce309374335f7956e5b2d54ef4c605e",
+      "bytes": 459
+    },
+    {
+      "path": ".tmp/binding-course-bridge/consumer-source-binding-retry.log",
+      "sha256": "acc6d61eb22a0b1c182d16bb63b23320a79eac9247595b9bc40614244102f5ad",
+      "bytes": 251
+    },
+    {
+      "path": ".tmp/binding-course-bridge/test-fixture-materialization.json",
+      "sha256": "431bf42a80aedfac7643d7a3dc282a7ab0ee18ed0f510e80b7d21b4cce285bc9",
+      "bytes": 420
+    }
+  ],
+  "preservation": {
+    "canonicalSourceDataChanges": 0,
+    "questionPayloadChanges": 0,
+    "approvalRecordChanges": 0,
+    "rootBranchIndexMutations": 0,
+    "remoteChanges": 0
+  },
+  "knownLimits": [
+    "Tests use explicit synthetic Consumer dependency for transaction/routing negative cases. Live whole-pack Consumer preservation remains a separate root-owned gate.",
+    "The existing source-binding regression first failed because its immutable main fixture was not materialized by sparse checkout; original failure retained."
+  ]
+}

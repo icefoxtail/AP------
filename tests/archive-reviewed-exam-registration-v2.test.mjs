@@ -1049,6 +1049,47 @@ test("META_PIPELINE_AUDIT accepts an exact canonical parent at the audited subun
   assert.equal(result.totalQuestions, 1);
 });
 
+function parentOnlyWhitespaceFixture(t, midUnit) {
+  const f = fixture(t);
+  f.q.standardUnit = "기본도형";
+  f.q.subUnit = "점·선·면과 각";
+  Object.assign(f.request.items[0].after, { standardUnit: f.q.standardUnit, subUnit: f.q.subUnit });
+  for (const change of f.request.registryChanges.filter(change => change.path === "archive/data/master_tables/js_archive_tag_master.json")) {
+    change.after.labelKo = change.after.keyType === "standardUnitKey" ? f.q.standardUnit : f.q.subUnit;
+  }
+  const binding = f.request.registryChanges.find(change => change.path.endsWith("/bindings.json")).after.bindings[0];
+  binding.L1 = f.q.standardUnit;
+  assert.equal(Object.hasOwn(binding, "L2"), false);
+  syncFixtureSource(f);
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true, targetCanonicalParent: true });
+  const item = f.request.items[0], parent = item.targetParentRef;
+  parent.midUnit = midUnit;
+  item.after.L2 = midUnit;
+  const master = f.read(parent.path);
+  master.records[0].midUnit = midUnit;
+  f.put(parent.path, master);
+  const sha256 = hash(fs.readFileSync(path.join(f.root, parent.path)));
+  for (const refs of [f.request.approval.evidenceRefs, item.evidenceRefs]) {
+    refs.find(ref => ref.path === parent.path).sha256 = sha256;
+  }
+  assert.equal(parent.crosswalkRef, undefined);
+  return f;
+}
+
+test("canonical parent-only label accepts native whitespace differences while preserving exact master labels", t => {
+  const f = parentOnlyWhitespaceFixture(t, "기본 도형");
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.totalQuestions, 1);
+  const row = f.read(META).records[0];
+  assert.equal(row.L1, "기본도형");
+  assert.equal(row.L2, "기본 도형");
+});
+
+test("canonical parent-only label rejects a different evidence-bound parent despite whitespace normalization", t => {
+  const f = parentOnlyWhitespaceFixture(t, "평면 도형");
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /canonical target parent mismatch/);
+});
+
 test("canonical parent accepts the existing master scope alias 수학_상 for 수학(상)", t => {
   const f = fixture(t, "수학(상)", "2015");
   attachMetaPipelineAudit(f, { targetCanonicalParent: true, targetCanonicalScope: "수학_상" });

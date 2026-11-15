@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "M1S2_CROSS_WORKER_SAMPLE_v1",
+  "assignmentId": "M1S2-20261114-B01-A",
+  "reviewer": "GPT_ROOT_54CB21AF3005_A/A1",
+  "author": "A2",
+  "exam": "archive/exams/original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js",
+  "sourceGitBlobSha": "41a1af8a2c96078e25abb51489fde8857699b926",
+  "sampleOrdinals": [
+    8,
+    18,
+    23
+  ],
+  "additionalDifficultyOrdinal": [
+    16
+  ],
+  "sourceRead": "Q8/Q18/Q23 actual stems, choices, answers and solutions directly read for 4slot sample; Q16 read only for independent difficulty decision. Q8 and Q16 original PNGs directly inspected. No full-exam duplicate review.",
+  "items": [
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_8431ee3bd4df3895ef8ca1fd54fc7136761c1396d5c27350bbb29e3ccff96191",
+      "fourSlotVerdict": "PASS",
+      "reason": "정비례 그래프의 두 표시 좌표를 실제로 읽어 비례상수를 먼저 정하고 다른 좌표를 복원한다. given정비례/그래프, goal값, method정비례/대입이 이 결정 단계를 정확히 덮으며 잘못된 부호·순서 해석이 없다.",
+      "goalMethodWrong": false,
+      "fabricatedQuote": false
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_067dc2c69b264cd8714ce78a0c0ade967111edaeabac40074373499ce2f957cc",
+      "fourSlotVerdict": "PASS_WITH_DECLARED_DICTIONARY_GAPS",
+      "reason": "자연수 이등변삼각형의 둘레식에서 세 변 성립 부등식과 양의 자연수 범위를 잡고 후보를 열거한 뒤 정삼각형을 제외하는 실제 구조를 보존했다. 사전에 없는 정확한 삼각형 세 변 관계와 정삼각형 제외를 후보로 선언하고 다른 개념의 ID를 대입하지 않았다.",
+      "goalMethodWrong": false,
+      "fabricatedQuote": false,
+      "difficultyIndependentVerdict": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "level": "중",
+        "levelAction": "KEEP",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "reason": "둘레식 하나의 직접 계산으로 끝나지 않는다. 같게 둘 두 변을 변수화하고 삼각형 존재 부등식과 남은 변의 양의 자연수 조건을 결합해 정수 범위를 정한 뒤 최초의 서로 다름 조건을 다시 적용해 정삼각형 후보를 제거한다. 정수·존재성·후보제거가 풀이 중심이므로 rubric4에 부합하며 익숙한 유형이라는 점에서 B34/기존중 경계를 허용한다."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_4449ad0a401e744e39838df6077b897146763b5bbb3750a66c6747134db68357",
+      "fourSlotVerdict": "PASS",
+      "reason": "합동과 직각은 이미 주어진 조건이다. 넓이에서 빠진 직각변 길이를 역산하고 합동의 대응변으로 옮기는 단계가 method에 정확히 있으며 합동을 새로 증명하는 SSS/SAS/ASA를 넣지 않았다.",
+      "goalMethodWrong": false,
+      "fabricatedQuote": false
+    }
+  ],
+  "additionalDifficultyReview": [
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_ea46f9d463fb4f1aeeb7e5deaba6d5c2f91db952029ace8ad4f31b92ab3b5138",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "level": "상",
+      "levelAction": "KEEP",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "reason": "그림의 평행한 윗변·아랫변에서 각을 옮기고 접은 선의 각이등분을 인식한 뒤 한 평각 식을 적용하는 표준 세 단계다. 각 보존을 어느 선에 적용할지 선택이 필요해2보다3이 맞지만 반복분기·숨은 길이·후보제거가 없어4로 올릴 근거는 부족하다. 기존상은 도형해석 부담에 의한 인접경계로 보존할 수 있다."
+    }
+  ],
+  "summary": {
+    "sampleSize": 3,
+    "coreGoalMethodFailures": 0,
+    "fabricatedQuoteCount": 0,
+    "minorCorrections": [],
+    "dictionaryGapOrdinals": [
+      18
+    ],
+    "sampleGate": "PASS",
+    "difficultyRecheck": "Q16 bucket3 and Q18 bucket4 both independently supported; legacy levels retained with BORDERLINE_ACCEPTABLE"
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "schemaVersion": "m1s2-native-semantic-proposal-v1",
+  "taskId": "71f4352e-fbe1-4533-b390-86232a5cd287",
+  "owner": "GPT_ROOT_64695B8EDE31",
+  "baselineMain": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "status": "DRAFT_OUTSIDE_PRODUCTION_INBOX",
+  "sharedRegistryChanged": false,
+  "sourceNewUnregisteredKeysInserted": false,
+  "priorityOrder": [
+    "EXISTING_KEY_REUSE",
+    "EXISTING_DEFINITION_OR_BINDING_REPAIR",
+    "NEW_TEMPLATE",
+    "NEW_PROBLEM_TYPE"
+  ],
+  "curriculumPolicy": "지원 문항의 원본 교육과정·exact ACTIVE binding은 문항별 근거에서 확인한다. 2015를2022로 일괄변환하지 않는다. 같은 PT의 팩 소유자와 실제 binding행 ownerPack의 일치를 강제하지 않는다.",
+  "rpmPolicy": "출판사 RPM leaf 공백과 native PT/TPL의 정의 공백을 구분한다. 의미가 맞지 않는 근처 RPM leaf를 강제로 채우지 않는다.",
+  "notApproval": "모든 제안은 의미 판단과 등록 요청이며 ACTIVE 등록·운영 품질 PASS를 선언하지 않는다.",
+  "group": "statistics",
+  "proposals": [
+    {
+      "proposalId": "S01",
+      "group": "statistics",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_TEMPLATE",
+      "proposedLabel": "자료의 목적과 이상치를 고려한 대푯값 선택",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "existingProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "자료의 척도·활용 목적·값의 분포와 극단값 영향을 확인하여 평균·중앙값·최빈값 중 대표성을 가장 잘 나타내는 값을 선택하고 그 이유를 판정한다.",
+      "distinctionFromNearbyTypes": "정해진 평균·중앙값·최빈값의 수치 계산이나 정의 진술만 확인하는 유형과 구분한다. 빈도가 가장 큰 범주를 실제 목적에 맞게 선택하는 경우도 포함한다.",
+      "existingReuseAssessment": "대푯값이라는 PT와 RPM 부모는 유효하나 계산형 TPL로 선택 이유를 표현할 수 없다. 동일한 새 자식 한 개로 관련 학교 문항을 묶는다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 11,
+          "questionUid": "qid_v1_1d43773f9f7ec557e5f3adb3f76341b0b74d66a77caec88d748a25e2bbc6deb9",
+          "sourceBlob": "7fa31dc3fcad754266b01b1a8b427e1688a096c9",
+          "sourceSha256": "e510391ad961220d562f863fccfc706b06a52d00c6c477e1bf2dad80c0aac2a6",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_풍덕중_2학기_기말_중1_기출.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_INTERPRETATION",
+            "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+            "templateKey": null
+          }
+        },
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 23,
+          "questionUid": "qid_v1_458f376173dfd6cdeb7c629af8174a320c60714058b898a4ad4025338e386c59",
+          "sourceBlob": "7fa31dc3fcad754266b01b1a8b427e1688a096c9",
+          "sourceSha256": "e510391ad961220d562f863fccfc706b06a52d00c6c477e1bf2dad80c0aac2a6",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_풍덕중_2학기_기말_중1_기출.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_INTERPRETATION",
+            "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+            "templateKey": null
+          }
+        },
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_신흥중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 22,
+          "questionUid": "qid_v1_16e41519e0db01be6d1e8b456f156330e91028771ac2f1148e5f07a80f8bad24",
+          "sourceBlob": "0a77205c399aac9fe07380d3eb6a2dd824a0c850",
+          "sourceSha256": "9d5cf115c22f2e49d0f93454fb9baa90d4691bd6b98afe25b93fbe729956ed18",
+          "origin": "CURRENT_AUTHOR_REVIEW",
+          "priorReviewCommit": null,
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/new-reviews/25_신흥중_2학기_기말_중1_기출-review.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/25_신흥중_2학기_기말_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/independent/25_신흥중_2학기_기말_중1_기출-supplement-1.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_INTERPRETATION",
+            "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_CENTRAL_TENDENCY",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "평균·중앙값·최빈값을 계산·비교하고 대푯값 조건으로 자료의 누락값을 복원한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    },
+    {
+      "proposalId": "S02",
+      "group": "statistics",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "FORMALIZE_EXISTING_NONACTIVE_CANDIDATE",
+      "proposedLabel": "계급으로 묶인 자료에서 정확히 알 수 있는 정보의 한계",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "existingProblemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "계급별 도수만 주어진 자료에서 전체 수·계급 폭·구간 도수 등 확정 가능한 정보와 계급 내부의 정확한 관측값·개별 순위값 등 식별할 수 없는 정보를 구별한다.",
+      "distinctionFromNearbyTypes": "누락 도수를 등식으로 복원하는 계산형, 각 관측값을 보존하는 줄기와 잎 그림, 평균의 근삿값 계산과 구별한다.",
+      "existingReuseAssessment": "기존 source에 있는 TPL_M1_GROUPED_FREQUENCY_INFORMATION_EXACT_VALUE_LIMIT는 현재 ACTIVE registry에 없다. 유사 정의로 덮지 않고 이 후보 의미를 공식 자식으로 등록한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 15,
+          "questionUid": "qid_v1_28d7376166e6a937115c0df620e99642833540d909a2128b663c3430fd937a6d",
+          "sourceBlob": "7fa31dc3fcad754266b01b1a8b427e1688a096c9",
+          "sourceSha256": "e510391ad961220d562f863fccfc706b06a52d00c6c477e1bf2dad80c0aac2a6",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_풍덕중_2학기_기말_중1_기출.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+            "templateKey": "TPL_M1_GROUPED_FREQUENCY_INFORMATION_EXACT_VALUE_LIMIT"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "The item uses a percentage condition and known class frequency to determine an omitted grouped-table frequency.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다.",
+      "nonActiveHistoricalCandidate": "TPL_M1_GROUPED_FREQUENCY_INFORMATION_EXACT_VALUE_LIMIT",
+      "sourcePolicy": "기존 미등록 key의 존재를 공개 부채로 남긴다. 이번 작업이 새 ACTIVE key로 등록한 것은 아니다."
+    },
+    {
+      "proposalId": "S03",
+      "group": "statistics",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "EXISTING_TEMPLATE_DEFINITION_GENERALIZATION",
+      "proposedLabel": "도수분포표·다각형의 계급과 구간 비율 진술 검토",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "existingProblemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+      "definition": "도수분포표 또는 도수분포다각형에서 계급 수·폭·도수와 전체 도수를 읽고, 기준 미만 또는 지정 구간에 해당하는 계급을 선택해 누적 도수·백분율 및 관련 진술을 검토한다.",
+      "distinctionFromNearbyTypes": "미지 도수를 복원하는 과제나 서로 다른 모집단의 상대도수를 비교·통합하는 과제와 구분한다. 계급 내부의 정확한 개별값은 추정하지 않는다.",
+      "existingReuseAssessment": "기존 FREQUENCY_AUDIT의 하위구간 도수합 구조와 alias가 실제 사용 범위를 지지하므로 기존 가족과 자식의 설명을 정합화한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 17,
+          "questionUid": "qid_v1_c95b03832a0d77169051750ff04e194afcc58c074c34d9dade75f1e2cf59ece3",
+          "sourceBlob": "7fa31dc3fcad754266b01b1a8b427e1688a096c9",
+          "sourceSha256": "e510391ad961220d562f863fccfc706b06a52d00c6c477e1bf2dad80c0aac2a6",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_풍덕중_2학기_기말_중1_기출.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+            "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT"
+          }
+        },
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 19,
+          "questionUid": "qid_v1_355e74d9f609e333c2940cdb78799a0b31689ad41d5e1a7ad02c251d863c1d7d",
+          "sourceBlob": "58499a15b018c4bc13d4e90c9dd630f6a458fe2b",
+          "sourceSha256": "8cc308a21291e188aa5648f9fd39e6a33b0e2b96c4084474aad37c3755ead85e",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "a4e8b1c6972161e71262bef93e434a0bb8021b97",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_연향중_2학기_기말_중1_기출.json",
+            "docs/operations/m1-s2-meta-full-20261114/followups/25-yeonhyang-final-q19.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "problemTypeKey": null,
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "The item uses a percentage condition and known class frequency to determine an omitted grouped-table frequency.",
+          "definitionOwnerPack": "MIDDLE1"
+        },
+        {
+          "key": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "Select all bins fully below a threshold and add their frequencies.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다.",
+      "followupRef": "docs/operations/m1-s2-meta-full-20261114/followups/25-yeonhyang-final-q19.json",
+      "proposedParentDefinition": "도수분포표·히스토그램·도수분포다각형의 계급과 도수를 읽어 필요한 합·비율·누적 위치와 통계 진술을 판정한다."
+    },
+    {
+      "proposalId": "S04",
+      "group": "statistics",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_TEMPLATE",
+      "proposedLabel": "알려진 전체 도수와 상대도수로 계급 도수 계산",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "existingProblemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "전체 자료 수가 주어진 상태에서 대상 계급의 상대도수 또는 백분율을 읽어 전체 수와 곱하여 해당 계급의 실제 도수를 구한다.",
+      "distinctionFromNearbyTypes": "도수와 상대도수로 미지의 전체 수부터 복원하는 POPULATION_RECONSTRUCTION, 두 집단의 실제 수 비교, 여러 계급 합과 구분한다.",
+      "existingReuseAssessment": "전체가 이미 알려진 직접 변환을 미지 전체 복원 TPL에 억지로 넣지 않고 같은 PT의 별도 자식으로 둔다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 18,
+          "questionUid": "qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e",
+          "sourceBlob": "7fa31dc3fcad754266b01b1a8b427e1688a096c9",
+          "sourceSha256": "e510391ad961220d562f863fccfc706b06a52d00c6c477e1bf2dad80c0aac2a6",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_풍덕중_2학기_기말_중1_기출.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_INTERPRETATION",
+            "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+            "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "줄기·잎으로 정리된 자료에서 한 나이 구간의 상대도수를 백분율로 구한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다.",
+      "proposedParentDefinition": "자료의 부분 도수·전체 도수·상대도수 사이의 관계를 이용하여 수와 비율을 변환하고 필요한 구간 또는 집단을 해석한다."
+    },
+    {
+      "proposalId": "S05",
+      "group": "statistics",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "NEW_TEMPLATE",
+      "proposedLabel": "서로 다른 두 집단을 합친 상대도수",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "existingProblemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": null,
+      "definition": "각 집단의 전체 수와 동일 계급의 상대도수로 실제 도수를 구하고, 그 도수들의 합을 전체 인원 합으로 나누어 통합 집단의 상대도수를 구한다.",
+      "distinctionFromNearbyTypes": "집단 크기가 다르면 상대도수의 단순 평균이 아니다. 실제 인원의 대소만 비교하는 GROUP_COUNT_COMPARISON 및 한 집단 안에서 여러 계급을 합하는 CLASS_GROUP_SUM과 구분한다.",
+      "existingReuseAssessment": "두 모집단을 통합하는 가중 구조를 표현하는 정확한 기존 자식이 없어 신규 TPL로 제안한다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+          "sourceOrdinal": 24,
+          "questionUid": "qid_v1_d558a727a4b5d2c1b2f9a5397039f787bccfc4524326cd63f7e4dae4e261006d",
+          "sourceBlob": "78149d953d4b2678d763e76dfd21e96d31ee0c9a",
+          "sourceSha256": "67da552ef6f77f75350447d21ad5bddf74f3cbeb7d9d5f1bbac02ec216dc6952",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "c789bb0ad92f7dc9cb163374ecf6c9892bbb4a20",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/24_왕운중_2학기_기말_중1_수학.json"
+          ],
+          "storedPrimary": {
+            "curriculum": null,
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_INTERPRETATION",
+            "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+            "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON"
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "줄기·잎으로 정리된 자료에서 한 나이 구간의 상대도수를 백분율로 구한다.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    }
+  ]
+}

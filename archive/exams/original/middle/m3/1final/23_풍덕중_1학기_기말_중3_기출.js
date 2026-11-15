@@ -205,7 +205,8 @@ window.questionBank = [
       "$y$절편은 6이다."
     ],
     "answer": "②",
-    "solution": "f(x)=2(x+1)^2+4에서 계수가 양수이므로 그래프는 위로 열리고, 꼭짓점은 (-1,4), 대칭축은 x=-1이다. x=0을 대입하면 f(0)=2(1)^2+4=6이므로 y절편은 6이다. 또 y=2x^2의 그래프를 왼쪽으로 1, 위로 4만큼 평행이동한 것이다. 따라서 ①·③·④·⑤는 참이고, 꼭짓점을 (1,4)라 한 ②만 거짓이다. 정답 ②.\n<br><img src=\"assets/images/23_풍덕중_1학기_기말_중3_수학/q05_solution_AUDITED_REPAIR.svg\">",
+    "solution": "f(x)=2(x+1)^2+4에서 계수가 양수이므로 그래프는 위로 열리고, 꼭짓점은 (-1,4), 대칭축은 x=-1이다. x=0을 대입하면 f(0)=2(1)^2+4=6이므로 y절편은 6이다. 또 y=2x^2의 그래프를 왼쪽으로 1, 위로 4만큼 평행이동한 것이다. 따라서 ①·③·④·⑤는 참이고, 꼭짓점을 (1,4)라 한 ②만 거짓이다. 정답 ②.\n",
+    "solutionImage": "assets/images/23_풍덕중_1학기_기말_중3_기출/q5-solution-v2.svg",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수 y=ax²+bx+c의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -220,7 +221,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "UNKNOWN",
     "sourceMode": "AUDITED_REPAIR",
-    "sourceQid": 5
+    "sourceQid": 5,
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선의 꼭짓점 V(-1,4)와 y축 교점 Y(0,6)를 표시한다.",
+    "solutionImageCaption": "꼭짓점은 (-1,4), y절편은 6이므로 보기 ②의 꼭짓점 좌표가 틀렸다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -441,7 +445,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "UNKNOWN",
     "sourceMode": "ORIGINAL",
-    "sourceQid": 10
+    "sourceQid": 10,
+    "solutionImage": "assets/images/23_풍덕중_1학기_기말_중3_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 위로 열린 포물선을 x축에 비추면 보라색 아래로 열린 포물선이 된다. 보라색 꼭짓점을 왼쪽과 위로 옮긴 자리에 주황 곡선이 있다.",
+    "solutionImageCaption": "파란 그래프를 x축에 대칭이동하면 y=−2x²이다. 왼쪽으로 3, 위로 4만큼 옮긴 주황 그래프의 식은 y=−2(x+3)²+4이므로 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -486,7 +494,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "UNKNOWN",
     "sourceMode": "ORIGINAL",
-    "sourceQid": 11
+    "sourceQid": 11,
+    "solutionImage": "assets/images/23_풍덕중_1학기_기말_중3_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 주황 포물선의 두 x절편이 −1과 3이고, 두 점 가운데를 지나가는 대칭축은 x=1이다. y절편과 꼭짓점도 표시했다.",
+    "solutionImageCaption": "꼭짓점은 (1,4), 대칭축은 x=1, y절편은 3이다. x절편은 −1과 3이므로 ③이 틀렸다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -531,7 +543,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "UNKNOWN",
     "sourceMode": "ORIGINAL",
-    "sourceQid": 12
+    "sourceQid": 12,
+    "solutionImage": "assets/images/23_풍덕중_1학기_기말_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란 포물선의 두 x절편이 2와 6이며 그 가운데의 세로 점선이 꼭짓점을 지난다.",
+    "solutionImageCaption": "두 x절편 2와 6의 중간인 x=4가 대칭축이다. x=4를 식에 대입하면 y=−4이므로 꼭짓점은 (4,−4)이고 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -561,7 +577,8 @@ window.questionBank = [
       "$y=2(x+1)^2-3$"
     ],
     "answer": "⑤",
-    "solution": "원본 그래프에서 꼭짓점 (−1,−3)과 y절편 (0,−1)을 읽는다. y=a(x+1)²−3에 (0,−1)을 대입하면 a=2. y=2(x+1)²−3. ⑤.\n<br><img src=\"assets/images/23_풍덕중_1학기_기말_중3_수학/q13_solution_GEOMETRY_DRAFT.svg\">",
+    "solution": "원본 그래프에서 꼭짓점 (−1,−3)과 y절편 (0,−1)을 읽는다. y=a(x+1)²−3에 (0,−1)을 대입하면 a=2. y=2(x+1)²−3. ⑤.\n",
+    "solutionImage": "assets/images/23_풍덕중_1학기_기말_중3_기출/q13-solution-v2.svg",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수와 그 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -576,7 +593,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "UNKNOWN",
     "sourceMode": "ORIGINAL",
-    "sourceQid": 13
+    "sourceQid": 13,
+    "solutionImageAlt": "해설 그림: 위로 열린 포물선에서 꼭짓점 V(-1,-3)과 y축 교점 Y(0,-1)을 표시한다.",
+    "solutionImageCaption": "꼭짓점이 (-1,-3), y절편이 -1인 포물선의 식은 y=2(x+1)^2−3이다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -606,7 +626,8 @@ window.questionBank = [
       "$(-1, \\frac{9}{2})$"
     ],
     "answer": "①",
-    "solution": "원본 그래프 x절편은 −2와 1이고 y절편은 4이다. y=a(x+2)(x−1)에서 x=0 ⇒ −2a=4 ⇒ a=−2. 축 x=(−2+1)/2=−1/2, 꼭짓점 y=−2(3/2)(−3/2)=9/2. ①.\n<br><img src=\"assets/images/23_풍덕중_1학기_기말_중3_수학/q14_solution_GEOMETRY_DRAFT.svg\">",
+    "solution": "원본 그래프 x절편은 −2와 1이고 y절편은 4이다. y=a(x+2)(x−1)에서 x=0 ⇒ −2a=4 ⇒ a=−2. 축 x=(−2+1)/2=−1/2, 꼭짓점 y=−2(3/2)(−3/2)=9/2. ①.\n",
+    "solutionImage": "assets/images/23_풍덕중_1학기_기말_중3_기출/q14-solution-v2.svg",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수 y=ax²+bx+c의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -621,7 +642,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "UNKNOWN",
     "sourceMode": "ORIGINAL",
-    "sourceQid": 14
+    "sourceQid": 14,
+    "solutionImageAlt": "해설 그림: 아래로 열린 포물선이 x축의 −2, 1과 y축의 4에서 만나는 개형을 표시한다.",
+    "solutionImageCaption": "그래프의 x절편은 −2와 1, y절편은 4이다. 이 포물선의 꼭짓점은 (−1/2, 9/2)이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -666,7 +690,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "UNKNOWN",
     "sourceMode": "ORIGINAL",
-    "sourceQid": 15
+    "sourceQid": 15,
+    "solutionImage": "assets/images/23_풍덕중_1학기_기말_중3_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 위에는 A와 C 사이의 포물선 영역을 왼쪽 파랑과 오른쪽 주황으로 구분했다. 아래에는 같은 x에서 세로 높이가 각각 같은 두 삼각형을 같은 색으로 표시했다.",
+    "solutionImageCaption": "오른쪽의 세로 간격은 16−8x, 왼쪽은 16+8x이다. 따라서 양쪽을 밑변이 각각 2이고 높이가 16인 삼각형으로 비교할 수 있다. 넓이의 합은 32이므로 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -798,7 +826,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "UNKNOWN",
     "sourceMode": "ORIGINAL",
-    "sourceQid": 18
+    "sourceQid": 18,
+    "solutionImage": "assets/images/23_풍덕중_1학기_기말_중3_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 정오각형 A, B, C, D, E의 두 대각선 AC와 BE 및 교점 P, 색으로 구분한 같은 각과 같은 길이 표식.",
+    "solutionImageCaption": "정오각형에서 AP=1이고 PC=BC이다. 닮음비를 이용하면 x²=x+1이며 x는 양수이므로 답: (1+√5)/2, ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -828,7 +860,8 @@ window.questionBank = [
       "<img src=\"assets/images/23_풍덕중_1학기_기말_중3_수학/q19_5.png\">"
     ],
     "answer": "①",
-    "solution": "원본 직선 y=b가 x축 위쪽이므로 b>0. 직선 y=ax+c는 우상향해 a>0, y절편이 x축 아래라 c<0. 따라서 y=ax²+bx+c는 위로 볼록, 꼭짓점 x=−b/(2a)<0, y절편 음수이며 x축과 두 번 만난다. 선택지 원본 PNG 전수 대조 결과 ①.\n<br><img src=\"assets/images/23_풍덕중_1학기_기말_중3_수학/q19_solution_GEOMETRY_DRAFT.svg\">",
+    "solution": "원본 직선 y=b가 x축 위쪽이므로 b>0. 직선 y=ax+c는 우상향해 a>0, y절편이 x축 아래라 c<0. 따라서 y=ax²+bx+c는 위로 볼록, 꼭짓점 x=−b/(2a)<0, y절편 음수이며 x축과 두 번 만난다. 선택지 원본 PNG 전수 대조 결과 ①.\n",
+    "solutionImage": "assets/images/23_풍덕중_1학기_기말_중3_기출/q19-solution-v2.svg",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수 y=ax²+bx+c의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -843,7 +876,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "UNKNOWN",
     "sourceMode": "ORIGINAL",
-    "sourceQid": 19
+    "sourceQid": 19,
+    "solutionImageAlt": "해설 그림: 예시 계수의 그래프에서 y=b는 파랑 수평선, y=ax+c는 초록 직선, y=ax²+bx+c는 주황 위로 열린 포물선이다.",
+    "solutionImageCaption": "a>0, b>0, c<0이므로 목표 포물선은 위로 열리고 y절편은 음수이며 축은 y축 왼쪽이다. 답: ①.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -873,7 +909,8 @@ window.questionBank = [
       "12"
     ],
     "answer": "③",
-    "solution": "첫 번째 이차함수는 y=2x²−2이므로 꼭짓점 A=(0,−2)이다. 두 번째 이차함수는 y=−2(x−4)²+2이므로 꼭짓점 B=(4,2)이다. 직선 y=2와 y축의 교점은 C=(0,2)이다. AC는 y축 위의 선분이므로 길이 2−(−2)=4이고, BC는 수평 선분이므로 길이 4이다. AC⊥BC이므로 삼각형 ABC의 넓이는 (1/2)×4×4=8이다. 정답 ③.\n<br><img src=\"assets/images/23_풍덕중_1학기_기말_중3_수학/q20_alive_solution.svg\">",
+    "solution": "첫 번째 이차함수는 y=2x²−2이므로 꼭짓점 A=(0,−2)이다. 두 번째 이차함수는 y=−2(x−4)²+2이므로 꼭짓점 B=(4,2)이다. 직선 y=2와 y축의 교점은 C=(0,2)이다. AC는 y축 위의 선분이므로 길이 2−(−2)=4이고, BC는 수평 선분이므로 길이 4이다. AC⊥BC이므로 삼각형 ABC의 넓이는 (1/2)×4×4=8이다. 정답 ③.\n",
+    "solutionImage": "assets/images/23_풍덕중_1학기_기말_중3_기출/q20-solution-v2.svg",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수 y=ax²+bx+c의 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -888,7 +925,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "UNKNOWN",
     "sourceMode": "ALIVE_REPLACEMENT",
-    "sourceQid": 20
+    "sourceQid": 20,
+    "solutionImageAlt": "해설 그림: 파란 포물선의 꼭짓점 A와 주황 포물선의 꼭짓점 B, y축의 C를 이으면 푸른 삼각형이 된다. 가로 CB와 세로 CA는 C에서 직각으로 만난다.",
+    "solutionImageCaption": "A=(0,−2), B=(4,2), C=(0,2)이므로 AC=4, CB=4이다. 삼각형의 넓이는 (1/2)·4·4=8이므로 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -965,7 +1005,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "UNKNOWN",
     "sourceMode": "ORIGINAL",
-    "sourceQid": 22
+    "sourceQid": 22,
+    "solutionImage": "assets/images/23_풍덕중_1학기_기말_중3_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 하나의 파란 포물선 위에 주황 점 (−1,6), (0,3), (1,4)가 있다. 두 점과 y절편을 함께 사용해 계수를 구한다.",
+    "solutionImageCaption": "y절편 3이므로 y=ax²+bx+3으로 놓는다. x=1과 x=−1을 대입하면 a+b=1, a−b=3이다. 이를 풀면 y=2x²−x+3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

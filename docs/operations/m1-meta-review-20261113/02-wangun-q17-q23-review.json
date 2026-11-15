@@ -1,0 +1,491 @@
+{
+  "schemaVersion": "existing-exam-semantic-review-part-v1",
+  "status": "READ_COMPLETE_CANDIDATE_DECISIONS",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "baselineMain": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+  "source": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+  "sourceRawSha256": "165bed044a8d530ce79a03ceee5b29d8ea21e068295ae1fd75419a5ae2fbef37",
+  "sourceGitBlob": "76377173ecb0ba989188561bbefac2afb3232479",
+  "metadataOnlyReview": true,
+  "mathFinalQaPerformed": false,
+  "fullR1R2R3Rerun": false,
+  "items": [
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_be5c74c260f54fd3283324a100fa4c69a1f876580f99076a1caa364716f6b497",
+      "reviewedBy": "GPT_ROOT_933015CD0A4F",
+      "readCoverage": {
+        "prompt": true,
+        "choicesOrSubparts": true,
+        "solution": true,
+        "actualRenderedFiguresViewed": "NOT_APPLICABLE",
+        "figures": []
+      },
+      "coreMethod": "유일 최빈값 조건과 정렬 순서로 누락 자료를 복원한 뒤 중앙값을 읽는다. 결정 단계는 최빈값 조건의 복원이다.",
+      "decision": "CORRECT_METADATA_OR_EXACT_BINDING",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "rpmPrimaryRecordId": "M1-RPM-223",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "중앙값과 최빈값",
+          "l4": "중앙값"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CONSTRAINT_RECONSTRUCTION"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "rpmPrimaryRecordId": "M1-RPM-224",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "중앙값과 최빈값",
+          "l4": "최빈값"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "reason": "기존 CONSTRAINT_RECONSTRUCTION은 유지한다. 출력이 중앙값이라는 이유로 최빈값을 이용한 핵심 복원을 중앙값 계산 leaf에만 두지 않는다. 기존 224 DIRECT가 정확한 native pair를 연결한다.",
+      "unresolved": "Not yet applied or verified by official registration"
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_c57da4ba1098bc858461c9928cef484c1e81bccf587ef91075d59ab2199264b1",
+      "reviewedBy": "GPT_ROOT_933015CD0A4F",
+      "readCoverage": {
+        "prompt": true,
+        "choicesOrSubparts": true,
+        "solution": true,
+        "actualRenderedFiguresViewed": "NOT_APPLICABLE",
+        "figures": []
+      },
+      "coreMethod": "도수표에서 누적 순위와 최빈 변량을 읽어 중앙값·최빈값의 정의에 관한 진술을 판정한다.",
+      "decision": "CORRECT_METADATA_OR_EXACT_BINDING",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+        "rpmPrimaryRecordId": "M1-RPM-223",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "중앙값과 최빈값",
+          "l4": "중앙값"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CLAIM_AUDIT"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+        "rpmPrimaryRecordId": "M1-RPM-223",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "중앙값과 최빈값",
+          "l4": "중앙값"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "reason": "정의 진술 검토 템플릿은 표의 구체 자료에 정의를 적용하는 구조를 포함하므로 유지한다. 실제 해설의 결정 단계는 가운데 두 순위가 속한 자료값 확인이며 RPM223 유지, 정확 TPL bridge만 추가한다.",
+      "unresolved": "Not yet applied or verified by official registration"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_da359e1af270778eaba94a76f15ea85954775c38c2df5aee986dc8ca22deba1f",
+      "reviewedBy": "GPT_ROOT_933015CD0A4F",
+      "readCoverage": {
+        "prompt": true,
+        "choicesOrSubparts": true,
+        "solution": true,
+        "actualRenderedFiguresViewed": true,
+        "figures": [
+          {
+            "ordinal": 19,
+            "role": "question",
+            "sourcePath": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q019_stemleaf.svg",
+            "sourceSha256": "5e6d7210f127ba0b48b3be749bbae98583f36cd284d811895de286c2c57abd7c",
+            "renderPath": ".tmp/m1-meta-review/02-wangun-render/q19-question.png"
+          },
+          {
+            "ordinal": 19,
+            "role": "solution",
+            "sourcePath": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q19-solution-v2.svg",
+            "sourceSha256": "1ee1dd887ba6efd2d0bc4e54c746e03604d7f96871e86795e813837f347bda6c",
+            "renderPath": ".tmp/m1-meta-review/02-wangun-render/q19-solution.png"
+          }
+        ]
+      },
+      "coreMethod": "정렬된 줄기와 잎에서 중앙 두 관측값을 특정하고 중앙값 조건을 식으로 바꾸어 미지 잎의 합을 복원한다. 별도로 계급별 도수를 읽어 요구값과 결합한다.",
+      "decision": "CORRECT_METADATA_OR_EXACT_BINDING",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE",
+        "rpmPrimaryRecordId": "M1-RPM-231",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "분포 해석",
+          "l4": "히스토그램·그래프 해석"
+        },
+        "crossConceptKeys": [
+          "PT_M1_CENTRAL_TENDENCY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "subUnit": "자료의 해석",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "rpmPrimaryRecordId": "M1-RPM-223",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "대푯값",
+          "l3": "중앙값과 최빈값",
+          "l4": "중앙값"
+        },
+        "crossConceptKeys": [
+          "CC_FREQUENCY_DISTRIBUTION_TABLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "reason": "줄기와 잎이라는 외형으로 히스토그램 leaf231에 두지 않는다. 단순 도수표 옮기기는 미지잎 합을 결정하는 중앙값 제약을 담지 못한다. native 자료복원 재사용 + 중앙값223 exact bridge가 필요하다.",
+      "unresolved": "Q19/Q20 primary choice awaits independent comparison; new/bridge changes not yet registered"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_e0bf633136ca14fc3f3192b62eec9bdffa4227f3153aae3edb2e8d4b3a443532",
+      "reviewedBy": "GPT_ROOT_933015CD0A4F",
+      "readCoverage": {
+        "prompt": true,
+        "choicesOrSubparts": true,
+        "solution": true,
+        "actualRenderedFiguresViewed": true,
+        "figures": [
+          {
+            "ordinal": 19,
+            "role": "question",
+            "sourcePath": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q019_stemleaf.svg",
+            "sourceSha256": "5e6d7210f127ba0b48b3be749bbae98583f36cd284d811895de286c2c57abd7c",
+            "renderPath": ".tmp/m1-meta-review/02-wangun-render/q19-question.png"
+          },
+          {
+            "ordinal": 20,
+            "role": "solution",
+            "sourcePath": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q20-solution.svg",
+            "sourceSha256": "93d1ec9c39b724406af9d2dc98524b46a38fed3c989bf4af3730813fd05c326f",
+            "renderPath": ".tmp/m1-meta-review/02-wangun-render/q20-solution.png"
+          }
+        ]
+      },
+      "coreMethod": "같은 줄기와 잎 자료를 계급 경계로 다시 나누어 도수를 비교하고 계급·자료 개수·비율·최빈값 진술을 점검한다.",
+      "decision": "CORRECT_METADATA_OR_EXACT_BINDING",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "rpmPrimaryRecordId": "M1-RPM-231",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "분포 해석",
+          "l4": "히스토그램·그래프 해석"
+        },
+        "crossConceptKeys": [
+          "PT_M1_DATA_CATEGORY_PERCENTAGE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CLAIM_AUDIT"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-08",
+        "standardUnit": "자료의 정리와 해석",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "rpmPrimaryRecordId": "M1-RPM-227",
+        "rpmPrimaryPath": {
+          "majorUnit": "통계",
+          "midUnit": "도수분포표와 상대도수",
+          "l3": "도수분포표",
+          "l4": "계급·도수"
+        },
+        "crossConceptKeys": [
+          "CC_PERCENTAGE_CALCULATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "reason": "native STEM_LEAF_AUDIT는 유지한다. 결정 단계인 계급별 도수 비교에 맞춰231 그래프해석에서227 계급·도수로 연결한다. shared Q19 question figure까지 실제 읽었다.",
+      "unresolved": "Q19/Q20 primary choice awaits independent comparison; new/bridge changes not yet registered"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_e4bb8690f6be4fd6e671583a743a1ecf03d39dd72f79adfbf0f5adc1375bdf1d",
+      "reviewedBy": "GPT_ROOT_933015CD0A4F",
+      "readCoverage": {
+        "prompt": true,
+        "choicesOrSubparts": true,
+        "solution": true,
+        "actualRenderedFiguresViewed": true,
+        "figures": [
+          {
+            "ordinal": 21,
+            "role": "question",
+            "sourcePath": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q021_question-v2.svg",
+            "sourceSha256": "7ebc353f309fa031aec1f2e77349ddd89a57e8c285aaa313d39200ab1f2bee2d",
+            "renderPath": ".tmp/m1-meta-review/02-wangun-render/q21-question.png"
+          },
+          {
+            "ordinal": 21,
+            "role": "solution",
+            "sourcePath": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q21-solution-v2.svg",
+            "sourceSha256": "5009f12236ece074a347640c76658958c626fde405504c61799d51b3c1aca4ce",
+            "renderPath": ".tmp/m1-meta-review/02-wangun-render/q21-solution.png"
+          }
+        ]
+      },
+      "coreMethod": "맞꼭지각을 한 직선의 반대쪽으로 옮겨 인접한 각들의 합을 평각으로 세우고 미지수를 결정한다.",
+      "decision": "CORRECT_METADATA_OR_EXACT_BINDING",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+        "rpmPrimaryRecordId": "M1-RPM-176",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "각",
+          "l4": "맞꼭지각"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "EQUATION"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+        "rpmPrimaryRecordId": "M1-RPM-176",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "기본 도형",
+          "l3": "각",
+          "l4": "맞꼭지각"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE"
+      },
+      "reason": "현재 PT/TPL의 핵심인 맞꼭지각 이동과 평각 방정식이 실제 사용되므로 유지한다. 예시의 별도 수직 기준각은 이 문항의 필수 조건이 아니며 새 템플릿을 만들지 않는다.176 exact bridge만 추가한다.",
+      "unresolved": "Not yet applied or verified by official registration"
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_fac60a43c600971e9c4fab3777b0163a99a3cf70e7435087bf1c115666752dab",
+      "reviewedBy": "GPT_ROOT_933015CD0A4F",
+      "readCoverage": {
+        "prompt": true,
+        "choicesOrSubparts": true,
+        "solution": true,
+        "actualRenderedFiguresViewed": true,
+        "figures": [
+          {
+            "ordinal": 22,
+            "role": "question",
+            "sourcePath": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q022_question-v2.svg",
+            "sourceSha256": "8df0f15a7c37d9bca4ea42eb9c43b459f426c17d185f0c3f1e667cba6b242719",
+            "renderPath": ".tmp/m1-meta-review/02-wangun-render/q22-question.png"
+          },
+          {
+            "ordinal": 22,
+            "role": "solution",
+            "sourcePath": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q22-solution-v3.svg",
+            "sourceSha256": "d4fcd2eb64bbd98e5c24a1db23f4a7c4eaeec273d8f2b92da541249fbfcf6846",
+            "renderPath": ".tmp/m1-meta-review/02-wangun-render/q22-solution.png"
+          }
+        ]
+      },
+      "coreMethod": "두 정비례식에 공통 세로좌표를 대입해 가로좌표를 구하고, 수평 선분 길이와 비례배분으로 분할점 좌표를 구한 뒤 축으로 투영한다.",
+      "decision": "CORRECT_METADATA_OR_EXACT_BINDING",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "rpmPrimaryRecordId": "M1-RPM-172",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "관계 해석",
+          "l4": "정비례·반비례 활용"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "standardUnit": "좌표평면과 그래프",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "problemTypeKey": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+        "templateKey": "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION",
+        "rpmPrimaryRecordId": "M1-RPM-172",
+        "rpmPrimaryPath": {
+          "majorUnit": "좌표평면과 그래프",
+          "midUnit": "정비례와 반비례",
+          "l3": "관계 해석",
+          "l4": "정비례·반비례 활용"
+        },
+        "crossConceptKeys": [
+          "CC_RATIO_AND_PROPORTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "reason": "기존 M1 값대입·상수계산/사분면/정사각형 넓이 템플릿은 이 좌표→수평선분 비례배분→축투영 구조를 담지 못한다. 고등 내분점 공식 유형으로 우회하지 않는다. 최소 새 M1 PT/TPL 및 graph-relation binding, 기존RPM172 exact supplement 필요.",
+      "unresolved": "Not yet applied or verified by official registration"
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_ffce93ef42912eb61d142ffaadaf7bf56869adece6a6ed9beade2e717d08600b",
+      "reviewedBy": "GPT_ROOT_933015CD0A4F",
+      "readCoverage": {
+        "prompt": true,
+        "choicesOrSubparts": true,
+        "solution": true,
+        "actualRenderedFiguresViewed": true,
+        "figures": [
+          {
+            "ordinal": 23,
+            "role": "question",
+            "sourcePath": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q023_question-v2.svg",
+            "sourceSha256": "47288ce5fd80c00d7d4fe1b430a9481ad2b26dfe6b20bf1b06f8d04912c41257",
+            "renderPath": ".tmp/m1-meta-review/02-wangun-render/q23-question.png"
+          },
+          {
+            "ordinal": 23,
+            "role": "solution",
+            "sourcePath": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q23-solution-v5.svg",
+            "sourceSha256": "2b7c02011d0f494926b6e5d4128868d0684dda30af44d8b4baf81c63205f60ff",
+            "renderPath": ".tmp/m1-meta-review/02-wangun-render/q23-solution.png"
+          }
+        ]
+      },
+      "coreMethod": "정삼각형의 같은 변·각과 주어진 선분 일치로 보조 삼각형의 SAS 합동을 보인 뒤 대응각을 옮겨 교점의 각을 결정한다.",
+      "decision": "CORRECT_METADATA_OR_EXACT_BINDING",
+      "before": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+        "rpmPrimaryRecordId": "M1-RPM-192",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동"
+        },
+        "crossConceptKeys": [
+          "PT_M1_TRIANGLE_ANGLE_CHASE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "proposed": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+        "rpmPrimaryRecordId": "M1-RPM-192-CORRESPONDENCE-20261113",
+        "rpmPrimaryPath": {
+          "majorUnit": "기본 도형",
+          "midUnit": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동"
+        },
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL"
+      },
+      "reason": "합동 조건 이름 선택이 아니라 합동을 이용한 대응각 전달이 목표다. 이미 첫 시험지에서 확인된 정확 PT/TPL/construct binding/192 supplement를 재사용한다. 예시 수치가 다르다는 이유로 신설하지 않는다.",
+      "unresolved": "Not yet applied or verified by official registration"
+    }
+  ],
+  "nativeProposal": {
+    "ownerPack": "MIDDLE1",
+    "problemTypeKey": "PT_M1_PROPORTIONAL_GRAPH_SEGMENT_DIVISION",
+    "canonicalLabelKo": "정비례 그래프의 좌표와 선분 분할",
+    "definition": "정비례식과 공통 좌표 조건으로 점의 좌표를 결정하고, 같은 좌표축에 평행한 선분의 길이와 비례배분으로 분할점의 위치를 구한다.",
+    "templateKey": "TPL_M1_PROPORTIONAL_GRAPH_HORIZONTAL_DIVISION_AXIS_PROJECTION",
+    "templateLabelKo": "공통 세로좌표의 선분 분할과 축 투영",
+    "templateDefinition": "두 정비례식에 공통 세로좌표를 대입하여 두 점의 가로좌표를 구한 뒤, 수평 선분의 길이와 분할비로 내분점을 정하고 x축에 내린 수선의 발을 읽는다.",
+    "internalSkeleton": "공통 y값 대입 → 각 x값 결정 → 가로좌표 차이로 선분 길이 → 주어진 비에 따른 가로 이동량 → 분할점 좌표 → 세로좌표를 0으로 바꾼 축 위 점."
+  }
+}

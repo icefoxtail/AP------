@@ -92,6 +92,7 @@ test('the lab shell loads common navigation only for explicit portal or preview 
       document: {
         currentScript: { src: 'https://school.test/AP------/apmath/playground/next/kit/apl-shell.js' },
         getElementById: () => null, createElement: () => ({ dataset: {} }),
+        addEventListener() {},
         head: { appendChild: node => added.push(node) }
       }
     };

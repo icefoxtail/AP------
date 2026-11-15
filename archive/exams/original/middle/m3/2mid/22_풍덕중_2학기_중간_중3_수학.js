@@ -251,7 +251,11 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "현의 수직이등분 성질로 반현과 중심거리를 연결하고, 피타고라스 정리로 반지름과 다른 현의 중심거리를 순서대로 구한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 원의 두 현에 내린 수선의 발에서 주황 한 눈금의 네 반현이 모두 같다. 주어진 중심거리 4 cm와 구하는 x, 반현 5 cm와 현 10 cm를 나타낸다.",
+    "solutionImageCaption": "같은 원에서 5 cm인 반현과 반지름으로 만든 두 직각삼각형은 합동이다. 따라서 다른 중심거리 x도 4 cm이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -301,7 +305,11 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "주개념 하나의 निर्णायक 단계로 해결하며 독립된 보조 개념 연결은 기록하지 않았다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P에서 그은 두 접선 PA와 PB는 파랑과 같은 눈금으로 묶이고, 각 접점에는 반지름과 접선의 직각이 보인다.",
+    "solutionImageCaption": "원 밖의 한 점에서 그은 두 접선의 길이는 같다. PA=5 cm이므로 PB=x=5 cm이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -351,7 +359,11 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "주개념 하나의 निर्णायक 단계로 해결하며 독립된 보조 개념 연결은 기록하지 않았다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P의 파란 접선쌍은 PA와 PB, 점 Q의 주황 접선쌍은 BQ와 QC이다. 직선상 P, B, Q의 전체 길이 12 cm와 PA=7 cm가 주어진다.",
+    "solutionImageCaption": "PA=PB=7 cm이다. PQ=12 cm이므로 BQ=12−7=5 cm이다. 같은 꼭짓점 Q에서의 접선 QC=BQ이므로 x=5 cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -401,7 +413,11 @@ window.questionBank = [
       "subConcept": "삼각비의 뜻·값·활용",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "주개념 하나의 निर्णायक 단계로 해결하며 독립된 보조 개념 연결은 기록하지 않았다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 높이 AH에 기대어 파랑 60도 직각삼각형과 주황 45도 직각이등변삼각형을 그린다. 파란 빗변 AB는 6 cm이고 주황의 두 직각변은 같다.",
+    "solutionImageCaption": "AH=6sin60°=3√3 cm이다. 각 HAC가 45°이므로 AC=AH/cos45°=3√6 cm이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -504,7 +520,11 @@ window.questionBank = [
       "subConcept": "삼각비의 뜻·값·활용",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "삼각비로 평행사변형의 높이를 구한 뒤, 평행사변형 넓이 조건을 적용해 변의 길이를 결정한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형의 밑변 BC 위에 내린 수선이 높이 h이다. A와 C의 150도는 주황색, B의 30도는 파란색이다.",
+    "solutionImageCaption": "∠B=30°이므로 높이 h=xsin30°=x/2이다. 넓이는 6×(x/2)=24 cm²이므로 x=8 cm이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -556,7 +576,11 @@ window.questionBank = [
       "subConcept": "삼각비로 직각삼각형의 변을 구한 뒤 선분 길이를 구하기",
       "conditionsUsed": "AB=3√3, ∠A=30°, ∠B=90°로부터 BC와 AC를 구하고, CD가 ∠C의 이등분선임을 마지막 선분비 계산에 사용한다.",
       "integrationPatternExplanation": "30° 삼각비로 두 변의 길이를 구한 뒤, 보조 개념인 각의 이등분선 정리로 AD:DB를 구하는 순차 결합이다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: B가 직각이고 A는 30도다. C의 두 각을 같은 색으로 표시해 CD가 이등분선임을 드러내고, 하나의 밑변 AB를 두 조각으로 나눈다.",
+    "solutionImageCaption": "△ABC는 30°–60°–90°이므로 BC=3 cm, AC=6 cm이다. 각의 이등분선 정리에서 AD:DB=AC:CB=2:1이므로 AD=2√3 cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -606,7 +630,11 @@ window.questionBank = [
       "subConcept": "삼각비의 뜻·값·활용",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "주개념 하나의 निर्णायक 단계로 해결하며 독립된 보조 개념 연결은 기록하지 않았다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 원뿔의 축을 포함하는 단면을 오른쪽 직각삼각형으로 떼었다. 빗변은 모선 6 cm, 밑면 쪽 각은 30도, 주황 수직변은 높이 h이고 파랑 가로변은 반지름 r이다.",
+    "solutionImageCaption": "모선은 6 cm이고 높이는 6sin30°=3 cm, 반지름은 6cos30°=3√3 cm이다. 원뿔의 부피는 27π cm³이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -658,7 +686,11 @@ window.questionBank = [
       "subConcept": "삼각비의 값 구하기",
       "conditionsUsed": "이등변삼각형의 30° 꼭짓각을 이등분해 15°를 확인한 뒤, tan30°와 각의 이등분선 정리를 보조 삼각형에 적용한다.",
       "integrationPatternExplanation": "30°의 삼각비를 사용해 보조 직각삼각형의 변을 정하고, 각의 이등분선 정리로 15°의 탄젠트를 구하는 순차 결합이다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: AB와 AC가 각각 3 cm인 이등변삼각형에서 C에서 AB에 수선을 내려 H를 잡는다. 파랑 삼각형에는 30도, 주황 삼각형에는 C의 15도와 H의 직각이 있다.",
+    "solutionImageCaption": "AH=3cos30°, CH=3sin30°이다. △BCH에서 ∠BCH=15°이므로 tan15°=BH/CH=(3−3√3/2)/(3/2)=2−√3이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -708,7 +740,11 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "주개념 하나의 निर्णायक 단계로 해결하며 독립된 보조 개념 연결은 기록하지 않았다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형의 원에 닿는 네 점은 P, Q, R, S이다. 같은 꼭짓점에서 그은 두 접선은 같은 색과 눈금이다. 파랑은 D, 주황은 E에서 그은 두 접선이다.",
+    "solutionImageCaption": "DP=DS=7 cm이고 ER=ES이다. 따라서 DE와 EC를 더하면 ER의 길이가 상쇄되어 14 cm이고, DC=6 cm를 더하면 둘레는 20 cm이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -758,7 +794,11 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "주개념 하나의 निर्णायक 단계로 해결하며 독립된 보조 개념 연결은 기록하지 않았다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 7 cm, 8 cm, 9 cm 위에 접점 P, Q, R이 있다. 꼭짓점 A의 파랑 한 눈금, B의 주황 두 눈금, C의 초록 세 눈금 쌍이 각각 같다.",
+    "solutionImageCaption": "세 꼭짓점에서 접점까지의 길이를 각각 u, v, w로 두면 u+v=7, u+w=8, v+w=9이다. 따라서 2w=10이고 CR=5 cm이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -860,7 +900,11 @@ window.questionBank = [
       "subConcept": "삼각비의 뜻·값·활용",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "피타고라스 정리로 AB를 구한 뒤, 직각삼각형에서 여각 관계와 사인비로 cos x를 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직각삼각형 ABC와 ADE는 A에서 같은 각을 공유하고 C와 E가 각각 직각이다. 작은 삼각형의 D에 x를 표시했다.",
+    "solutionImageCaption": "A의 각을 α라고 하면 x=90°−α이므로 cos x=sin α이다. 전체 직각삼각형의 빗변은 √(15²+8²)=17이므로 cos x=8/17이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -912,7 +956,11 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "접기에서 수직이등분선이 되는 성질로 중심과 현 사이 거리를 정한 뒤, 피타고라스 정리와 현의 이등분 성질로 AB를 구한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 보라색 원호의 가운데 P를 파란 수직선을 따라 중심 O로 접는다. 접는 선 AB가 그 중점 H를 지나고, 같은 파랑 한 눈금은 OH=HP, 주황 두 눈금은 AH=HB이다.",
+    "solutionImageCaption": "OP=6 cm이며 접어서 P가 O와 겹치므로 OH=HP=3 cm이다. 반현 HB=√(6²−3²)=3√3 cm이므로 AB=6√3 cm이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -965,7 +1013,11 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "현과 중심의 관계 및 피타고라스 정리로 중심-현 거리를 구한 뒤, 삼각형 넓이식으로 원주점 P에서의 최댓값을 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 현 AB는 8 cm이고, 중심 O에서 내린 수선은 H에서 현을 반으로 나눈다. P가 현에서 가장 멀 때, 파란 높이 PH가 원의 중심을 지난다.",
+    "solutionImageCaption": "반현 AH=4 cm이므로 직각삼각형 AHO에서 OH=√(6²−4²)=2√5 cm이다. 현에서 가장 먼 점까지의 높이는 PH=6+2√5 cm이므로 최대 넓이는 4(6+2√5) cm²이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1015,7 +1067,11 @@ window.questionBank = [
       "subConcept": "삼각비의 뜻·값·활용",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "주개념 하나의 निर्णायक 단계로 해결하며 독립된 보조 개념 연결은 기록하지 않았다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 높이에서 이동한 두 헬리콥터 위치 A와 B, 배 바로 위 C를 수평선에 놓았다. A에서의 30도 시선은 파랑, B에서의 60도 시선은 주황이고 C에서 배 D까지는 수직이다.",
+    "solutionImageCaption": "AC=h√3, BC=h/√3이다. 두 거리의 차 AB는 3 km이므로 BC=1.5 km이다. 분속 1.5 km로 BC를 이동하면 60초가 더 걸린다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1065,7 +1121,11 @@ window.questionBank = [
       "subConcept": "삼각비를 이용한 직각삼각형 길이 연쇄 계산",
       "conditionsUsed": "합동으로 각의 대응을 확인한 뒤 BC=6, ∠DBC=30°를 사용해 BD와 DC를 구하고, 두 교차선의 30° 각 관계로 BE를 결정한다.",
       "integrationPatternExplanation": "30° 삼각비로 합동인 직각삼각형의 변을 구하고, 교점에서 만들어진 이등변삼각형과 직각삼각비로 DE를 연쇄 계산한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직각삼각형의 공통 빗변은 6 cm이며 겹치는 삼각형 BEC의 밑각은 둘 다 30도이다. E에서 내린 수선이 BC를 이등분하고 구하는 선분 ED를 주황으로 표시했다.",
+    "solutionImageCaption": "∆BEC에서 BH=3 cm이고 BE=3/cos30°=2√3 cm이다. ∆DBC에서 BD=6cos30°=3√3 cm이므로 DE=BD−BE=√3 cm이다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1197,7 +1257,11 @@ window.questionBank = [
       "subConcept": "중심에서 같은 거리에 있는 현의 길이와 현의 이등분",
       "conditionsUsed": "O가 외심이고 OD=OE=OF이며, 그림에서 D,E,F가 각 변에 내린 수선의 발인 점을 사용한다. 10 cm는 원본에서 AB의 길이로 확인했다.",
       "integrationPatternExplanation": "중심-현 거리로 세 변의 길이가 같음을 확인하고, 현의 수직이등분 및 30° 삼각비로 반지름과 넓이를 구한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 원에 내접한 삼각형 ABC와 중심 O, 같은 색으로 표시한 세 수선 OD·OE·OF 및 여섯 반현. 꼭짓점 A의 30° 두 부분은 분리된 호로 나타냈다.",
+    "solutionImageCaption": "AB=10 cm이다. OD=OE=OF이므로 AB=BC=CA이고 △ABC는 정삼각형이다. 따라서 AD=5 cm, AO=10√3/3 cm, 넓이는 100π/3 cm². 답: (1) 정삼각형, (2) 5 cm, (3) 10√3/3 cm, (4) 100π/3 cm².",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -1243,6 +1307,10 @@ window.questionBank = [
       "subConcept": "원의 현·접선의 성질",
       "conditionsUsed": "원본의 수치·도형 조건을 풀이에 직접 사용한다.",
       "integrationPatternExplanation": "접선의 길이 성질로 DC를 6+x로 나타내고, 피타고라스 정리를 적용해 x를 구한다."
-    }
+    },
+    "solutionImage": "assets/images/22_풍덕중_2학기_중간_중3_수학/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB가 있는 반원 O와 접선 AD, BC, DC, 세 접점 A, B, E. 파랑은 AD=DE, 주황은 BC=CE를 나타낸다.",
+    "solutionImageCaption": "D에서 AD=DE=6 cm이고 C에서 CB=CE이다. 피타고라스 관계로 CB=8/3 cm. 답: 8/3 cm.",
+    "solutionImageSize": "full"
   }
 ];

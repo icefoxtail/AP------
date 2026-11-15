@@ -575,7 +575,10 @@ window.questionBank = [
     ],
     "metaDebtReason": "M3 RPM semantics recorded; active problemType/template binding remains unverified, so no PT/TPL is asserted.",
     "problemImage": "assets/images/24_이수중_1학기_중간_중3_수학/q10.png",
-    "solutionImage": "assets/images/24_이수중_1학기_중간_중3_수학/q10_solution.svg"
+    "solutionImage": "assets/images/24_이수중_1학기_중간_중3_기출c/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 변 1인 정사각형의 대각선 √2를 수직선의 2에서 왼쪽으로 옮긴다. 보기 번호 없이 0과 1 사이의 hit점을 표시한다.",
+    "solutionImageCaption": "정사각형의 대각선 길이는 √2이고, 이 길이를 2에서 왼쪽으로 옮긴다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -694,7 +697,10 @@ window.questionBank = [
     ],
     "metaDebtReason": "M3 RPM semantics recorded; active problemType/template binding remains unverified, so no PT/TPL is asserted.",
     "problemImage": "assets/images/24_이수중_1학기_중간_중3_수학/q12.png",
-    "solutionImage": "assets/images/24_이수중_1학기_중간_중3_수학/q12_solution.svg"
+    "solutionImage": "assets/images/24_이수중_1학기_중간_중3_기출c/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 정사각형의 면적 18, 32, 49 cm²가 표시된 계단 경계. 세 수평 대응쌍은 각각 다른 색과 1·2·3눈금으로, 세로 경계는 따뜻한 색으로 구분한다.",
+    "solutionImageCaption": "변의 길이는 3√2, 4√2, 7 cm이다. 수평 길이 합은 2(7√2+7), 수직 길이 합은 14 cm이므로 둘레는 14√2+28 cm이다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

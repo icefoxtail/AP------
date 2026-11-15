@@ -40,7 +40,16 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-114",
+    "rpmPrimaryPath": {
+      "majorUnit": "소인수분해",
+      "midUnit": "소인수분해",
+      "l3": "소수와 합성수",
+      "l4": "소수·합성수 판별"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 2,
@@ -78,11 +87,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_PRIME_COMPOSITE_CLAIM_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-115",
+    "rpmPrimaryPath": {
+      "majorUnit": "소인수분해",
+      "midUnit": "소인수분해",
+      "l3": "소수와 합성수",
+      "l4": "소수의 성질 활용"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 3,
@@ -119,11 +137,11 @@ window.questionBank = [
     "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -159,11 +177,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_PRIME_FACTORIZATION_JUDGMENT_FACTORIZATION_CLAIM_AUDIT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-116",
+    "rpmPrimaryPath": {
+      "majorUnit": "소인수분해",
+      "midUnit": "소인수분해",
+      "l3": "소인수분해",
+      "l4": "자연수의 소인수분해"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 5,
@@ -200,11 +227,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_PRIME_FACTOR_STRUCTURE_FACTOR_SET_COMPARE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-116",
+    "rpmPrimaryPath": {
+      "majorUnit": "소인수분해",
+      "midUnit": "소인수분해",
+      "l3": "소인수분해",
+      "l4": "자연수의 소인수분해"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 6,
@@ -241,11 +277,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_CORE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-117",
+    "rpmPrimaryPath": {
+      "majorUnit": "소인수분해",
+      "midUnit": "소인수분해",
+      "l3": "소인수분해",
+      "l4": "소인수분해를 이용한 약수의 구조"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 7,
@@ -281,12 +326,23 @@ window.questionBank = [
     "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
     "templateKey": "TPL_M1_PRIME_FACTOR_STRUCTURE_ORDERED_FACTOR_STRUCTURE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
     "integrationPattern": "CASE_BRANCH",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-116",
+    "rpmPrimaryPath": {
+      "majorUnit": "소인수분해",
+      "midUnit": "소인수분해",
+      "l3": "소인수분해",
+      "l4": "자연수의 소인수분해"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 8,
@@ -315,15 +371,19 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "두 수가 서로소이면 최대공약수가 $1$이므로, 공통인 소인수를 갖지 않아야 한다.\n$25=5^2$이므로 $25$와 서로소인 수는 $5$를 소인수로 갖지 않는 수, 즉 $5$의 배수가 아닌 수이다.\n두 자리 자연수는 $10$부터 $99$까지 $99-10+1=90$개이다.\n이 중 $5$의 배수는 $10,15,20,\\cdots,95$이므로 $\\dfrac{95-10}{5}+1=18$개이다.\n따라서 $25$와 서로소인 두 자리 자연수는 $90-18=72$개이므로 정답은 ④이다.",
-    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-    "subUnit": "소인수분해",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_COPRIME_TEST_AND_COUNT",
     "templateKey": "TPL_M1_COPRIME_TEST_AND_COUNT_CORE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE",
+      "COND_COPRIME_TO_FIXED_INTEGER"
+    ],
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
@@ -357,19 +417,30 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "최대공약수는 각 소인수의 지수 중 작은 것, 최소공배수는 큰 것을 택한 값이다.\n$42=2 \\times 3 \\times 7$, $54=2 \\times 3^3$이다.\n$\\square=2^x \\times 3^y \\times 7^z$ 꼴이라 하자.\n최소공배수가 $378=2 \\times 3^3 \\times 7$이므로 $\\square$는 $378$의 약수이어야 하고, $x \\le 1$, $y \\le 3$, $z \\le 1$이다.\n최대공약수가 $6=2 \\times 3$이므로 $\\square$는 $6$의 배수이어야 하고, $x \\ge 1$, $y \\ge 1$이다.\n따라서 $x=1$이고 $y$는 $1,2,3$ 중 하나, $z$는 $0,1$ 중 하나이므로 후보는 $6$, $42$, $18$, $126$, $54$, $378$의 $6$개이다.\n이때 세 자연수는 서로 달라야 하므로 $42$와 $54$는 제외한다.\n따라서 $\\square$가 될 수 있는 수는 $6$, $18$, $126$, $378$의 $4$개이므로 정답은 ③이다.",
-    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-    "subUnit": "소인수분해",
+    "subUnitKey": "M1-01-GCD_LCM",
+    "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
     "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_THIRD_CANDIDATE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
     "integrationPattern": "CASE_BRANCH",
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-124",
+    "rpmPrimaryPath": {
+      "majorUnit": "소인수분해",
+      "midUnit": "최대공약수와 최소공배수",
+      "l3": "최대공약수·최소공배수의 활용",
+      "l4": "나누어떨어짐 조건"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 10,
@@ -410,7 +481,16 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-126",
+    "rpmPrimaryPath": {
+      "majorUnit": "정수와 유리수",
+      "midUnit": "정수와 유리수",
+      "l3": "수 체계",
+      "l4": "양수·음수 분류"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 11,
@@ -447,11 +527,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_RATIONAL_PROPERTY_JUDGMENT_CORE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-127",
+    "rpmPrimaryPath": {
+      "majorUnit": "정수와 유리수",
+      "midUnit": "정수와 유리수",
+      "l3": "수 체계",
+      "l4": "정수와 유리수의 포함 관계"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 12,
@@ -490,7 +579,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -502,7 +591,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_동산중_2학기_중간_중1_수학/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선 위에 -4부터 +4까지 정수 눈금이 있고 -3과 -2 사이, +3과 +4 사이는 3등분, -1과 0 사이는 4등분, +1과 +2 사이는 2등분한 눈금이 있다. 눈금 위에 점 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ이 찍혀 있고 ㄷ은 -3/4, ㄹ은 3/2, ㅁ은 10/3이라고 적혀 있다.",
     "solutionImageCaption": "수직선에서 -3과 -2 사이를 3등분한 눈금 한 칸은 1/3이므로 ㄴ은 -3에서 오른쪽으로 한 칸 간 점이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": "M1-RPM-128",
+    "rpmPrimaryPath": {
+      "majorUnit": "정수와 유리수",
+      "midUnit": "정수와 유리수",
+      "l3": "수직선과 대소 관계",
+      "l4": "수직선 위의 수"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 13,
@@ -539,7 +637,7 @@ window.questionBank = [
     "templateKey": "TPL_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY_CORE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -547,7 +645,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_동산중_2학기_중간_중1_수학/q13-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선에 원점 0과 원점에서 같은 거리에 있는 두 점 -a, a를 나타내고, 두 점 사이의 거리 10을 괄호로 표시했다.",
     "solutionImageCaption": "절댓값이 같고 부호가 다른 두 수는 원점에서 같은 거리에 있다. 두 수를 -a, a라 하면 두 점 -a와 a 사이의 거리는 10이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": "M1-RPM-131",
+    "rpmPrimaryPath": {
+      "majorUnit": "정수와 유리수",
+      "midUnit": "정수와 유리수",
+      "l3": "절댓값",
+      "l4": "절댓값 조건으로 수 찾기"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 14,
@@ -584,7 +691,7 @@ window.questionBank = [
     "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -592,7 +699,16 @@ window.questionBank = [
     "solutionImage": "assets/images/25_동산중_2학기_중간_중1_수학/q14-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선 위에 -7, -2, 0에 대응하는 점이 찍혀 있고 -7에 대응하는 점이 -2에 대응하는 점보다 왼쪽에 있다.",
     "solutionImageCaption": "수직선 위에서 -7에 대응하는 점은 -2에 대응하는 점보다 왼쪽에 있으므로 -7<-2이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "rpmPrimaryRecordId": "M1-RPM-129",
+    "rpmPrimaryPath": {
+      "majorUnit": "정수와 유리수",
+      "midUnit": "정수와 유리수",
+      "l3": "수직선과 대소 관계",
+      "l4": "유리수의 대소 비교"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 15,
@@ -629,11 +745,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-134",
+    "rpmPrimaryPath": {
+      "majorUnit": "정수와 유리수",
+      "midUnit": "정수와 유리수의 계산",
+      "l3": "덧셈과 뺄셈",
+      "l4": "덧셈·뺄셈 혼합"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 16,
@@ -674,7 +799,16 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-133",
+    "rpmPrimaryPath": {
+      "majorUnit": "정수와 유리수",
+      "midUnit": "정수와 유리수의 계산",
+      "l3": "덧셈과 뺄셈",
+      "l4": "부호가 있는 수의 뺄셈"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 17,
@@ -711,11 +845,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_SIGNED_CHANGE_MODEL_SIGNED_RELATIVE_CHANGE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-134",
+    "rpmPrimaryPath": {
+      "majorUnit": "정수와 유리수",
+      "midUnit": "정수와 유리수의 계산",
+      "l3": "덧셈과 뺄셈",
+      "l4": "덧셈·뺄셈 혼합"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 18,
@@ -757,7 +900,16 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-133",
+    "rpmPrimaryPath": {
+      "majorUnit": "정수와 유리수",
+      "midUnit": "정수와 유리수의 계산",
+      "l3": "덧셈과 뺄셈",
+      "l4": "부호가 있는 수의 뺄셈"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 19,
@@ -794,11 +946,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-137",
+    "rpmPrimaryPath": {
+      "majorUnit": "정수와 유리수",
+      "midUnit": "정수와 유리수의 계산",
+      "l3": "곱셈과 나눗셈",
+      "l4": "곱셈·나눗셈 혼합"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 20,
@@ -839,7 +1000,16 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-135",
+    "rpmPrimaryPath": {
+      "majorUnit": "정수와 유리수",
+      "midUnit": "정수와 유리수의 계산",
+      "l3": "곱셈과 나눗셈",
+      "l4": "부호가 있는 수의 곱셈"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "RPM_ONLY"
   },
   {
     "id": 21,
@@ -876,8 +1046,10 @@ window.questionBank = [
     "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
     "templateKey": "TPL_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS_CORE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
+    "conditionKeys": [
+      "COND_INEQUALITY_CONSTRAINT"
+    ],
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
@@ -911,8 +1083,10 @@ window.questionBank = [
     "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
     "templateKey": "TPL_M1_PRIME_FACTOR_STRUCTURE_CONSTRAINED_NUMBER_RECOVERY",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -952,11 +1126,20 @@ window.questionBank = [
     "templateKey": "TPL_M1_RECOVER_VALUE_BY_INVERSE_OPERATION_CORRECT_OPERATION_ERROR",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "rpmPrimaryRecordId": "M1-RPM-134",
+    "rpmPrimaryPath": {
+      "majorUnit": "정수와 유리수",
+      "midUnit": "정수와 유리수의 계산",
+      "l3": "덧셈과 뺄셈",
+      "l4": "덧셈·뺄셈 혼합"
+    },
+    "rpmScope": "M1-1",
+    "rpmCrosswalkStatus": "DIRECT_ACTIVE"
   },
   {
     "id": 24,
@@ -986,8 +1169,10 @@ window.questionBank = [
     "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
     "templateKey": "TPL_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS_CORE",
     "crossConceptKeys": [],
-    "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
+    "conditionKeys": [
+      "COND_INEQUALITY_CONSTRAINT"
+    ],
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",

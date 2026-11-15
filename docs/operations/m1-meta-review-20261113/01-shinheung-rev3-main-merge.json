@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "existing-exam-rev3-main-merge-checkpoint-v1",
+  "observedAt": "2026-11-13T14:30:19.590910+00:00",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "owner": "GPT_ROOT_933015CD0A4F",
+  "exam": "2026 신흥중 중1 2학기 중간",
+  "questionCount": 24,
+  "pr": {
+    "number": 1964,
+    "url": "https://github.com/icefoxtail/AP------/pull/1964",
+    "headSha": "7dfc3fdea598c56c2d07f8db5c74bc9b71e2386d",
+    "merged": true,
+    "mergedAt": "2026-11-13T14:28:35Z",
+    "mergeCommitSha": "c9b908a0025c6d32b1add22b47543035e14b8784",
+    "treeSha": "e8a233eb8d12b9dd514bf4d977fc33e9d209737e"
+  },
+  "remoteMain": {
+    "sha": "c9b908a0025c6d32b1add22b47543035e14b8784",
+    "treeSha": "e8a233eb8d12b9dd514bf4d977fc33e9d209737e",
+    "verification": "FETCHED_REMOTE_MAIN_AND_BOUND_SOURCE_REQUEST_BYTES_VERIFIED_BY_ROOT"
+  },
+  "source": {
+    "path": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "blobSha1": "a8de75bc9cc2b6a4479866d75b8ebec637404a04",
+    "rawSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+    "changedByRev3": false
+  },
+  "request": {
+    "id": "m1-shinheung-2026-mid-meta-review-20261113-rev3",
+    "path": ".archive-meta-register/inbox/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+    "rawSha256": "bd2b3223b3e45a920f2f57707fd9ea37621b13a550f6125edc66edfd3057826f",
+    "canonicalSha256": "bd2014fead23196d068ad24de8529364cd81be83b4cd00dab898a2664798df50",
+    "items": 24,
+    "registryChanges": 17
+  },
+  "ci": {
+    "status": "SUCCESS",
+    "workflows": 4,
+    "jobs": 6,
+    "evidencePath": "01-shinheung-rev3-ci.json",
+    "sha256": "7efc6460fc988f7bc002c70eed21022f0b3dcf6045c334ac9b12ab7d2a12ae31",
+    "coverage": "Does not execute reviewed inbox or post-reviewed AutoMeta; not production registration proof."
+  },
+  "autoMetaDirectImpact": {
+    "evidencePath": "01-shinheung-rev3-autometa-plan.json",
+    "sha256": "acfb7b89f7f72aabb31bffd38e34e379385920c6a520025ccfd95b88900ecf47",
+    "scope": "ISOLATED_READONLY_PLAN_ON_EXACT_APPLIED_REV3",
+    "baselineMain": "2dd58ebe1abb9123206782979f4ac23e3b891c49",
+    "concurrentPr": 1963,
+    "concurrentPrHead": "bf87023732ce9c2df135ed51d374fb8803fa24e7",
+    "bothVersions": {
+      "questions": 24,
+      "supplementPending": 24,
+      "apply": 0,
+      "proposedFinal": 0,
+      "nativeReceiptReuse": 0,
+      "approvalReset": 0,
+      "parentChange": 0,
+      "inputMemoryUnchanged": true,
+      "trackedInputChanges": 0
+    },
+    "callerInputsConfirmed": {
+      "cursor": "afefac26892e29f8930a1deff0c3a655d7e803a9",
+      "targetPriorPending": 0,
+      "targetPilotOverrides": 0,
+      "targetPriorAutoMetaReceipts": 0,
+      "metadataAndRuntimeEqualNativeReceipt": 24
+    },
+    "interpretation": "Existing strict guards reject these exact AutoMeta inputs before mutation. PR1963 is not established as a prerequisite and was not merged by this task. REVIEW_REQUIRED in the probe means the expected native-reuse path was not reached, not a Consumer or native approval failure.",
+    "sourceAndDifficultyFieldsChanged": false,
+    "fullWriterExecuted": false
+  },
+  "mainWriter": {
+    "runId": 43443059116,
+    "url": "https://github.com/icefoxtail/AP------/actions/runs/43443059116",
+    "jobId": 131945363207,
+    "headSha": "c9b908a0025c6d32b1add22b47543035e14b8784",
+    "status": "IN_PROGRESS",
+    "lastObservedAt": "2026-11-13T14:29:24Z",
+    "observedStep": "checkout",
+    "actualRequestReceipt": "NOT_YET_OBSERVED"
+  },
+  "operational": {
+    "state": "REV3_MERGED_WAITING_MAIN_REGISTRATION",
+    "completedExams": 0,
+    "totalExams": 44,
+    "actualRemoteMainConsumer": "NOT_YET_VERIFIED_REV3",
+    "actualRpmSolutionResolver": "NOT_RUN_UNVERIFIED_SOLUTION",
+    "rpmOnlyDebtOrdinals": [
+      8,
+      10
+    ],
+    "q8RpmParent": "LEGACY_PARENT_AMBIGUOUS_PRESERVED",
+    "nextAction": "Verify exact rev3 main registration receipt, all 24 final native Consumers and actual RPM parent mappings, remote SHA, then close exam 1 and begin Wangun."
+  },
+  "verificationBoundary": {
+    "fullR1R2R3Rerun": false,
+    "studentPayloadChanged": false,
+    "mathFinalQaClaimed": false,
+    "manualProductionWriterInvoked": false
+  }
+}

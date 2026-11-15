@@ -453,7 +453,7 @@ window.questionBank = [
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "solutionImage": "assets/images/23_연향중_1학기_중간_중3_수학/q07_solution.svg",
+    "solutionImage": "assets/images/23_연향중_1학기_중간_중3_기출/q7-solution-v2.svg",
     "difficultyBucket": 2,
     "problemTypeKey": "PT_SIMILAR_FIGURES",
     "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
@@ -486,7 +486,10 @@ window.questionBank = [
       "learningLevel": "중",
       "assessmentBucket": 2,
       "rationale": "작은 삼각형:사다리꼴 넓이비 1:4를 전체 삼각형 대비 1:5로 바꾸고 닮음에서 대응변비의 제곱을 취한다. 두 단계는 표준적이며 B23 경계의 bucket 2다.",
-    }
+    },
+    "solutionImageAlt": "해설 그림: 평행선 DE와 BC가 만든 작은 삼각형과 사다리꼴을 파랑·주황으로 나누고, 넓이비 1:4를 표시한다.",
+    "solutionImageCaption": "넓이비 1:4에서 작은 삼각형과 전체 삼각형의 넓이비는 1:5다. 닮은 삼각형의 대응변 비는 넓이비의 제곱근이므로 DE:BC=1:√5이다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -518,7 +521,7 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "solutionImage": "assets/images/23_연향중_1학기_중간_중3_수학/q08_solution.svg",
+    "solutionImage": "assets/images/23_연향중_1학기_중간_중3_기출/q8-solution-v2.svg",
     "difficultyBucket": 3,
     "problemTypeKey": null,
     "templateKey": null,
@@ -555,7 +558,10 @@ window.questionBank = [
       "learningLevel": "중",
       "assessmentBucket": 3,
       "rationale": "모눈 좌표차로 AB=√5를 피타고라스 정리로 구한 뒤 원의 양 교점을 2±√5로 놓고 주장들을 검사한다. 기하에서 수직선 값으로 이어지는 구조 때문에 bucket 3, B23 경계다.",
-    }
+    },
+    "solutionImageAlt": "해설 그림: A=2에서 모눈 대각선 AB를 반지름으로 옮겨 AB=AP=AQ의 같은 길이와 좌우 교점 P, Q를 나타낸다.",
+    "solutionImageCaption": "AB=√5이므로 P=2+√5, Q=2−√5이다. 두 수의 곱은 (2+√5)(2−√5)=−1이므로 1이라는 설명이 옳지 않다. 답: ⑤.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -1070,7 +1076,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "solutionImage": "assets/images/23_연향중_1학기_중간_중3_수학/q16_solution.svg",
+    "solutionImage": "assets/images/23_연향중_1학기_중간_중3_기출/q16-solution-v2.svg",
     "difficultyBucket": 4,
     "problemTypeKey": null,
     "templateKey": null,
@@ -1108,7 +1114,10 @@ window.questionBank = [
       "learningLevel": "상",
       "assessmentBucket": 4,
       "rationale": "그림의 오목한 도형을 바깥 직사각형에서 3×√5 직사각형에서 √2 정사각형을 뺀 계단 부분을 빼는 구조로 읽어야 한다. 두 근호 넓이의 상쇄 뒤 같은 넓이의 정사각형 변을 구하므로 bucket 4, B34 경계다.",
-    }
+    },
+    "solutionImageAlt": "해설 그림: 바깥 직사각형의 치수와 파랑 나머지, 주황 ㄴ자 부분, 초록 한 변 √2인 정사각형을 구분한 그림.",
+    "solutionImageCaption": "바깥 넓이는 (√3+√15)√15=15+3√5이고, 빠지는 ㄴ자 넓이는 3√5−2이므로 도형의 넓이는 17이다. 같은 넓이인 정사각형의 한 변은 √17이다. 답: ②.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

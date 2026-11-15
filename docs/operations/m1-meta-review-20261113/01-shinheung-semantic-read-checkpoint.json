@@ -1,0 +1,491 @@
+{
+  "schemaVersion": "exam-semantic-read-checkpoint-v1",
+  "state": "PARTIAL_NOT_APPROVED",
+  "sourceArchiveFile": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+  "sourceBlob": "c36139a90e9bcd378577ece8f891423bee6b0a19",
+  "sourceSha256": "1bac8b9ef1d47f88ac66c69cf6c3299e708321d10cf84f073fca0c1a20bc4564",
+  "baselineMain": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+  "reason": "User prioritized the six-book RPM L1/L2 taxonomy update before continuing exam review.",
+  "completedExams": 0,
+  "pending": [
+    "Compare all 24 source-based meanings with the revised canonical classification and exact RPM leaf.",
+    "Confirm all candidate corrections; preserve original data.",
+    "Run directly affected validations; PR, merge and verify remote main."
+  ],
+  "sourceReadSegments": [
+    {
+      "sourceArchiveFile": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+      "phase": "FROZEN_BEFORE_META_COMPARE",
+      "coverage": "1-12",
+      "visualRead": "problem PNG 10 and solution SVG 9 viewed; q5 has no image",
+      "items": [
+        {
+          "ordinal": 1,
+          "primaryMethod": "시작점과 뻗는 방향이 같은 반직선 찾기",
+          "semanticSubunit": "점선면/기본 도형",
+          "rpmMeaning": "반직선의 표현과 일치"
+        },
+        {
+          "ordinal": 2,
+          "primaryMethod": "평행선 동위각과 이웃각으로 두 각의 차를 구한다",
+          "semanticSubunit": "동위각과 엇각",
+          "rpmMeaning": "평행선에서 각의 크기"
+        },
+        {
+          "ordinal": 3,
+          "primaryMethod": "사다리꼴의 도형 성질 증명이 아니라 표시된 직선의 평행·수직·교점과 수선의 발을 구분한다",
+          "semanticSubunit": "위치 관계",
+          "rpmMeaning": "평면에서 두 직선의 위치 관계"
+        },
+        {
+          "ordinal": 4,
+          "primaryMethod": "같은 반지름과 길이를 옮기는 원호로 동위각을 복사해 평행선을 작도한다",
+          "semanticSubunit": "작도와 합동",
+          "rpmMeaning": "기본 작도/평행선의 작도"
+        },
+        {
+          "ordinal": 5,
+          "primaryMethod": "한 꼭짓점 대각선 수로 n을 정한 후 전체 대각선 수를 센다",
+          "semanticSubunit": "다각형",
+          "rpmMeaning": "대각선 개수"
+        },
+        {
+          "ordinal": 6,
+          "primaryMethod": "같은 원에서 중심각의 비와 호 길이의 비가 같음을 적용한다",
+          "semanticSubunit": "원과 부채꼴",
+          "rpmMeaning": "부채꼴의 성질/중심각과 호의 길이"
+        },
+        {
+          "ordinal": 7,
+          "primaryMethod": "두 중점과 AB:BC를 써 연결된 선분 MN을 표현한다",
+          "semanticSubunit": "점선면/기본 도형",
+          "rpmMeaning": "선분의 길이/중점"
+        },
+        {
+          "ordinal": 8,
+          "primaryMethod": "잘린 정육면체의 모서리를 기준선 MQ와 수직·평행·동일평면·꼬인 위치로 나눈다",
+          "semanticSubunit": "위치 관계",
+          "rpmMeaning": "공간에서 두 직선의 위치 관계"
+        },
+        {
+          "ordinal": 9,
+          "primaryMethod": "꺾이는 점을 지나는 보조 평행선으로 엇각을 옮겨 각의 합을 구한다",
+          "semanticSubunit": "동위각과 엇각",
+          "rpmMeaning": "평행선 사이 꺾인 선/보조선"
+        },
+        {
+          "ordinal": 10,
+          "primaryMethod": "세 변의 관계 및 두 변과 끼인각·한 변과 양 끝각 조건으로 삼각형이 하나로 정해지는지 판별한다",
+          "semanticSubunit": "작도와 합동",
+          "rpmMeaning": "삼각형의 결정 조건"
+        },
+        {
+          "ordinal": 11,
+          "primaryMethod": "둘레가 고정된 자연수 세 변을 중복 없이 열거하고 삼각형 부등식을 적용한다",
+          "semanticSubunit": "작도와 합동",
+          "rpmMeaning": "삼각형의 세 변의 길이 관계"
+        },
+        {
+          "ordinal": 12,
+          "primaryMethod": "정삼각형의 등변과 끼인각으로 두 삼각형의 SAS 합동을 보이고 대응변·대응각을 찾는다",
+          "semanticSubunit": "작도와 합동",
+          "rpmMeaning": "삼각형의 합동 조건과 활용"
+        }
+      ]
+    },
+    {
+      "schema": "m1-semantic-review-v1",
+      "exam_path": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+      "baseline_sha": "a6708a849faca7ccfd438937138d7e88bd5ee23c",
+      "reviewer": "exam_reviewer",
+      "ordinal_range": [
+        13,
+        24
+      ],
+      "frozen_before_existing_metadata_read": true,
+      "scope": "Metadata semantic reading only; no R1/R2/R3 execution; no content mutation.",
+      "frozen_at_utc": "2026-11-13T08:32:34.528612+00:00",
+      "items": [
+        {
+          "ordinal": 13,
+          "id": 13,
+          "core_method": "정오각형·정팔각형의 내각과 외각을 계산하고 빈 공간의 사각형 내각합에 연결한다.",
+          "decisive_step": "정다각형의 한 내각·외각 및 복합 도형 각의 합",
+          "semantic_target": {
+            "unit": "평면도형",
+            "subunit": "다각형",
+            "detail": "정다각형의 내각과 외각 / 내각과 외각의 활용"
+          },
+          "notes": "합동을 사용하지 않는다.",
+          "read_fields": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ],
+          "visual_evidence": [
+            {
+              "field": "image",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q13.png",
+              "sha256": "b5c9fe020e076528c3bb4ae40d11829dcc9761eb5fd14212c2bd48f49f44a4ec",
+              "viewed": true,
+              "rendered_for_view": null
+            },
+            {
+              "field": "solutionImage",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q13-solution.svg",
+              "sha256": "e55bc84595f888cb4e67736e94caad9e95c2aeaaa1b7a6a09b818d031ecb6717",
+              "viewed": true,
+              "rendered_for_view": ".tmp/m1-meta-review/assets-reviewer/q13-solution.png"
+            }
+          ]
+        },
+        {
+          "ordinal": 14,
+          "id": 14,
+          "core_method": "한 외각으로 변의 개수를 구한 뒤 다각형의 내각의 합을 구한다.",
+          "decisive_step": "외각 45도로 정팔각형을 특정하고 내각합 공식 적용",
+          "semantic_target": {
+            "unit": "평면도형",
+            "subunit": "다각형",
+            "detail": "정다각형의 내각과 외각"
+          },
+          "notes": "",
+          "read_fields": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ],
+          "visual_evidence": []
+        },
+        {
+          "ordinal": 15,
+          "id": 15,
+          "core_method": "반지름의 같음과 평행선 각 관계로 중심각을 표현한 뒤 같은 원에서 호의 길이와 중심각이 비례함을 이용한다.",
+          "decisive_step": "중심각과 호의 길이 사이의 비례식",
+          "semantic_target": {
+            "unit": "평면도형",
+            "subunit": "원과 부채꼴",
+            "detail": "중심각과 호의 길이의 관계"
+          },
+          "notes": "평행선과 이등변삼각형은 중심각 결정의 보조 수단이다.",
+          "read_fields": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ],
+          "visual_evidence": [
+            {
+              "field": "image",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q15.png",
+              "sha256": "3a59390a1bac2f8bbff47c1911a8cc9d9d9bc911e3154cae9a6e8c4a66d7ef15",
+              "viewed": true,
+              "rendered_for_view": null
+            },
+            {
+              "field": "solutionImage",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q15-solution.svg",
+              "sha256": "5587e0d2805254f1d61c751dc91493473d7209aa5d7e2326602a637df16c9599",
+              "viewed": true,
+              "rendered_for_view": ".tmp/m1-meta-review/assets-reviewer/q15-solution.png"
+            }
+          ]
+        },
+        {
+          "ordinal": 16,
+          "id": 16,
+          "core_method": "이등변삼각형과 같은 반지름으로 부채꼴의 중심각을 구한 뒤 넓이를 계산한다.",
+          "decisive_step": "반지름과 중심각을 확정하여 부채꼴 넓이 적용",
+          "semantic_target": {
+            "unit": "평면도형",
+            "subunit": "원과 부채꼴",
+            "detail": "부채꼴의 넓이"
+          },
+          "notes": "기존 해설은 독해만 했으며 수학 재검증이나 교육과정 적합성 판정은 수행하지 않는다.",
+          "read_fields": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ],
+          "visual_evidence": [
+            {
+              "field": "image",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q16.png",
+              "sha256": "3f7867bc13b2af6f36fc0ddf9976b10ef7afd19f6e936154e259400171813e7b",
+              "viewed": true,
+              "rendered_for_view": null
+            },
+            {
+              "field": "solutionImage",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q16-solution.svg",
+              "sha256": "83280e05b80198b929c8935824bd9b5a5a42925ae4525de12e2b7812d55e7006",
+              "viewed": true,
+              "rendered_for_view": ".tmp/m1-meta-review/assets-reviewer/q16-solution.png"
+            }
+          ]
+        },
+        {
+          "ordinal": 17,
+          "id": 17,
+          "core_method": "공간에서 직선·평면의 평행, 수직, 꼬인 위치를 구별하고 항상 성립하는 관계를 고른다.",
+          "decisive_step": "직선과 직선 및 직선과 평면의 위치 관계의 반례 가능성",
+          "semantic_target": {
+            "unit": "기본 도형",
+            "subunit": "위치 관계",
+            "detail": "공간에서 직선과 평면의 위치 관계"
+          },
+          "notes": "입체도형 부피·겉넓이 계산이 아니다.",
+          "read_fields": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ],
+          "visual_evidence": [
+            {
+              "field": "solutionImage",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q17-solution.svg",
+              "sha256": "b3e1350e177b550a4554e56b01c7d0e5b99c04a5274e24402bb73a14ddfb7651",
+              "viewed": true,
+              "rendered_for_view": ".tmp/m1-meta-review/assets-reviewer/q17-solution.png"
+            }
+          ]
+        },
+        {
+          "ordinal": 18,
+          "id": 18,
+          "core_method": "두 정삼각형에서 같은 변과 같은 끼인각을 찾아 삼각형 ACD와 BCE의 SAS 합동을 얻고 대응각을 옮겨 각을 계산한다.",
+          "decisive_step": "SAS 합동에 의한 대응각의 같음",
+          "semantic_target": {
+            "unit": "기본 도형",
+            "subunit": "작도와 합동",
+            "detail": "삼각형의 합동의 활용"
+          },
+          "notes": "정삼각형 외형 때문에 다각형으로 보내면 핵심 합동 연결을 잃는다.",
+          "read_fields": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ],
+          "visual_evidence": [
+            {
+              "field": "image",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q18.png",
+              "sha256": "e59e42bd252bce1452e8ff04031d4df10cd4e8e3c1dc1aa788d1f8ed0733864a",
+              "viewed": true,
+              "rendered_for_view": null
+            },
+            {
+              "field": "solutionImage",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q18-solution.svg",
+              "sha256": "5ff3626edfd11a7fff2ea497f5591ab950599b906c4c7f422cc04edc3cef88b3",
+              "viewed": true,
+              "rendered_for_view": ".tmp/m1-meta-review/assets-reviewer/q18-solution.png"
+            }
+          ]
+        },
+        {
+          "ordinal": 19,
+          "id": 19,
+          "core_method": "교차한 선분의 맞꼭지각과 삼각형 및 사각형의 내각의 합을 결합해 표시된 각들의 합을 구한다.",
+          "decisive_step": "복합 다각형을 삼각형과 사각형으로 분해한 내각합 관계",
+          "semantic_target": {
+            "unit": "평면도형",
+            "subunit": "다각형",
+            "detail": "삼각형·다각형의 내각과 외각의 활용"
+          },
+          "notes": "합동 관계가 필요하지 않다.",
+          "read_fields": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ],
+          "visual_evidence": [
+            {
+              "field": "image",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q19.png",
+              "sha256": "cdd2fa0c33120040aa147246f65e249c1f257dd6f859b883d00fff1ccda36e93",
+              "viewed": true,
+              "rendered_for_view": null
+            },
+            {
+              "field": "solutionImage",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q19-solution.svg",
+              "sha256": "96f18bb1f8327cbb17f8b0d7c6a3120c2eee2af21fb5ecdc1319259088b5fb7a",
+              "viewed": true,
+              "rendered_for_view": ".tmp/m1-meta-review/assets-reviewer/q19-solution.png"
+            }
+          ]
+        },
+        {
+          "ordinal": 20,
+          "id": 20,
+          "core_method": "직사각형 모서리를 돌아가는 줄의 남은 길이를 각 부채꼴의 반지름으로 두고 염소가 움직이는 영역의 넓이를 합한다.",
+          "decisive_step": "여러 부채꼴의 넓이 합과 남은 반지름",
+          "semantic_target": {
+            "unit": "평면도형",
+            "subunit": "원과 부채꼴",
+            "detail": "부채꼴의 넓이의 활용"
+          },
+          "notes": "직사각형은 장애물이며 핵심 계산은 부채꼴이다.",
+          "read_fields": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ],
+          "visual_evidence": [
+            {
+              "field": "image",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q20.png",
+              "sha256": "b04ba6815c0bd08ad8e77808d648b3c1f936abbbcd2726e11a31d87587e5c071",
+              "viewed": true,
+              "rendered_for_view": null
+            },
+            {
+              "field": "solutionImage",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q20-solution.svg",
+              "sha256": "6186baf9a2662b32eb95a796de56638370128363d80198d38e88eae15ad1e815",
+              "viewed": true,
+              "rendered_for_view": ".tmp/m1-meta-review/assets-reviewer/q20-solution.png"
+            }
+          ]
+        },
+        {
+          "ordinal": 21,
+          "id": 21,
+          "core_method": "한 직선 위 두 인접 선분의 중점을 기준으로 길이를 절반씩 나누고 두 중점 사이의 거리를 더한다.",
+          "decisive_step": "선분의 중점과 길이의 관계",
+          "semantic_target": {
+            "unit": "기본 도형",
+            "subunit": "점·선·면과 각",
+            "detail": "선분의 길이 / 중점"
+          },
+          "notes": "비는 길이를 표현하는 도구이며 닮음이나 좌표 유형이 아니다.",
+          "read_fields": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ],
+          "visual_evidence": [
+            {
+              "field": "solutionImage",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q21-solution.svg",
+              "sha256": "e1a4413c01a11c4643084441232cba20d7c5265e24ebc75e40386ec52488144c",
+              "viewed": true,
+              "rendered_for_view": ".tmp/m1-meta-review/assets-reviewer/q21-solution.png"
+            }
+          ]
+        },
+        {
+          "ordinal": 22,
+          "id": 22,
+          "core_method": "주어진 삼등분 관계를 인접각의 합으로 표현하고 일직선 위의 각의 합을 이용한다.",
+          "decisive_step": "평각 180도와 인접한 각의 합",
+          "semantic_target": {
+            "unit": "기본 도형",
+            "subunit": "점·선·면과 각",
+            "detail": "각의 크기"
+          },
+          "notes": "삼등분은 주어진 관계이며 작도 문제가 아니다.",
+          "read_fields": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ],
+          "visual_evidence": [
+            {
+              "field": "image",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q22.png",
+              "sha256": "b6b4613a0af854d81a7f89f7a7de0c482baad2b9bcd96cd5a389e56b8ef42e34",
+              "viewed": true,
+              "rendered_for_view": null
+            },
+            {
+              "field": "solutionImage",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q22-solution.svg",
+              "sha256": "c278ce19644177c0b2f46529a9192c5ae8b5f428f1159734f24dc56f26ce4b8e",
+              "viewed": true,
+              "rendered_for_view": ".tmp/m1-meta-review/assets-reviewer/q22-solution.png"
+            }
+          ]
+        },
+        {
+          "ordinal": 23,
+          "id": 23,
+          "core_method": "같은 반지름 세 변으로 정삼각형을 알아내어 부채꼴 중심각을 정하고 두 호 및 중첩 부채꼴 영역의 둘레와 넓이를 계산한다.",
+          "decisive_step": "두 부채꼴과 겹치는 삼각형의 넓이 및 호의 길이",
+          "semantic_target": {
+            "unit": "평면도형",
+            "subunit": "원과 부채꼴",
+            "detail": "색칠한 부분의 둘레와 넓이 / 부채꼴의 활용"
+          },
+          "notes": "정삼각형의 성질은 보조이고 삼각형 두 개의 합동 판정이 아니다.",
+          "read_fields": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ],
+          "visual_evidence": [
+            {
+              "field": "image",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q23.png",
+              "sha256": "2360b2a5adcf8442a8d4ea9538b113f1a28ad2917541546f0bf7d6b7225b90d5",
+              "viewed": true,
+              "rendered_for_view": null
+            },
+            {
+              "field": "solutionImage",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q23-solution.svg",
+              "sha256": "c80c6b3bb11e974b400260341094d42a2ec61a2bade894eb9aeaf1d7c21f6c2d",
+              "viewed": true,
+              "rendered_for_view": ".tmp/m1-meta-review/assets-reviewer/q23-solution.png"
+            }
+          ]
+        },
+        {
+          "ordinal": 24,
+          "id": 24,
+          "core_method": "정삼각형의 같은 두 변과 같은 끼인각에 주어진 BD=CE를 결합해 ABD와 BCE의 SAS 합동을 보이고 대응각으로 각의 합을 구한다.",
+          "decisive_step": "SAS 합동 조건의 직접 제시와 대응각 활용",
+          "semantic_target": {
+            "unit": "기본 도형",
+            "subunit": "작도와 합동",
+            "detail": "삼각형의 합동 / 삼각형의 합동의 활용"
+          },
+          "notes": "다각형 분류는 핵심 합동 유형을 놓친다.",
+          "read_fields": [
+            "content",
+            "choices",
+            "answer",
+            "solution"
+          ],
+          "visual_evidence": [
+            {
+              "field": "image",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q24.png",
+              "sha256": "73a55f4af696d1ffbaf35f57a47694a3d235063a6d322d1fed7fb20aec0f1283",
+              "viewed": true,
+              "rendered_for_view": null
+            },
+            {
+              "field": "solutionImage",
+              "source_path": "archive/assets/images/26_신흥중_2학기_중간_중1_기출/q24-solution.svg",
+              "sha256": "cb0b5f14f30a749d64bbed34f76f6272c08a1d11cbfc7d51ca184b34005b8ad1",
+              "viewed": true,
+              "rendered_for_view": ".tmp/m1-meta-review/assets-reviewer/q24-solution.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

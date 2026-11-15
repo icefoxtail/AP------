@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "m1s2-native-semantic-proposal-v1",
+  "taskId": "71f4352e-fbe1-4533-b390-86232a5cd287",
+  "owner": "GPT_ROOT_64695B8EDE31",
+  "baselineMain": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+  "status": "DRAFT_OUTSIDE_PRODUCTION_INBOX",
+  "sharedRegistryChanged": false,
+  "sourceNewUnregisteredKeysInserted": false,
+  "priorityOrder": [
+    "EXISTING_KEY_REUSE",
+    "EXISTING_DEFINITION_OR_BINDING_REPAIR",
+    "NEW_TEMPLATE",
+    "NEW_PROBLEM_TYPE"
+  ],
+  "curriculumPolicy": "지원 문항의 원본 교육과정·exact ACTIVE binding은 문항별 근거에서 확인한다. 2015를2022로 일괄변환하지 않는다. 같은 PT의 팩 소유자와 실제 binding행 ownerPack의 일치를 강제하지 않는다.",
+  "rpmPolicy": "출판사 RPM leaf 공백과 native PT/TPL의 정의 공백을 구분한다. 의미가 맞지 않는 근처 RPM leaf를 강제로 채우지 않는다.",
+  "notApproval": "모든 제안은 의미 판단과 등록 요청이며 ACTIVE 등록·운영 품질 PASS를 선언하지 않는다.",
+  "group": "algebra",
+  "proposals": [
+    {
+      "proposalId": "A01",
+      "group": "algebra",
+      "status": "SEMANTIC_DECIDED_REGISTRATION_PENDING",
+      "decision": "EXISTING_TEMPLATE_DEFINITION_GENERALIZATION",
+      "proposedLabel": "정비례의 대응값으로 상수와 다른 좌표 계산",
+      "parent": {
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "existingProblemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "proposedProblemTypeLabel": null
+      },
+      "existingTemplateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+      "definition": "정비례의 한 대응쌍으로 비례상수를 구하고 같은 관계를 사용하여 미지의 대응값이나 그 값들의 식을 계산한다. 주어진 대응쌍은 표 또는 좌표 그래프에서 읽을 수 있다.",
+      "distinctionFromNearbyTypes": "반비례의 곱 불변량을 사용하는 INVERSE_POINT_SUBSTITUTION 및 두 그래프의 상수를 각각 비교하는 TWO_GRAPH_CONSTANTS와 구분한다.",
+      "existingReuseAssessment": "현재 자식의 정의는 표의 세 미지수 곱에 과도하게 한정되지만 실제 supporting evidence에는 그래프 좌표를 대입한 값 계산도 있다. 기존 자식의 정의를 일반화하여 재사용하고 중복 새 TPL을 만들지 않는다.",
+      "support": [
+        {
+          "sourcePath": "archive/exams/original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js",
+          "sourceOrdinal": 8,
+          "questionUid": "qid_v1_8431ee3bd4df3895ef8ca1fd54fc7136761c1396d5c27350bbb29e3ccff96191",
+          "sourceBlob": "654aa51206cc7eed297cf3c75acc221f1209b25d",
+          "sourceSha256": "f6fbfe5c1872e2c381e927c727f9b60d67102108390364497e2e890437705698",
+          "origin": "EXACT_PRIOR_REVIEW_REUSED",
+          "priorReviewCommit": "a4e8b1c6972161e71262bef93e434a0bb8021b97",
+          "reviewRefs": [
+            "docs/operations/m1-s2-meta-full-20261114/reused/25_왕의중_2학기_중간_중1_수학.json"
+          ],
+          "storedPrimary": {
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-04",
+            "subUnitKey": "M1-04-GRAPH_RELATION",
+            "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+            "templateKey": null
+          }
+        }
+      ],
+      "canonicalRefs": [
+        {
+          "key": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "Find direct- and inverse-proportion constants from plotted points.",
+          "definitionOwnerPack": "MIDDLE1"
+        },
+        {
+          "key": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+          "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+          "sha256": "aed55d9c799c96fbe296caa1df659c62c127e377629a00a9a55793a3d19f723e",
+          "status": "ACTIVE",
+          "definition": "Find a, solve p,q,r, then multiply.",
+          "definitionOwnerPack": "MIDDLE1"
+        }
+      ],
+      "registrationAction": "총괄/Codex가 중복 조정 후 정본 정의·정확한 교육과정 binding·필요한 RPM crosswalk를 등록한다. 이 제안의 식별자는 ACTIVE PT/TPL key가 아니며 source에 새 키를 삽입하지 않는다."
+    }
+  ]
+}

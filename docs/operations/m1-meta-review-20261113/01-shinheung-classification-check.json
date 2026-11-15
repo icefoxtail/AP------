@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "status": "METADATA_CLASSIFICATION_CHECKED",
+  "scope": "FIRST_EXAM_METADATA_CLASSIFICATION_ONLY",
+  "planPath": ".tmp/m1-meta-review/01-crosswalk-plan.json",
+  "planSha256": "3d3a04356b021cafef025738393ca30e3b86445d3fb246c97663dcec878d50a4",
+  "registryDraftPath": ".tmp/m1-meta-review/01-native-registry-changes.draft.json",
+  "registryDraftSha256": "a2d2274bacd277d00f96f110d16310f6c410aa9ed31c4ac5a03dc1ababa901de",
+  "utilityPath": ".tmp/m1-meta-review/01-crosswalk-apply.mjs",
+  "utilitySha256": "e7cf7643268899bd92496fed8c1fc90d8e55af353cb49712a9b3872347f456c0",
+  "overlay": {
+    "status": "PROVISIONAL_REGISTRY_OVERLAY",
+    "changes": 17,
+    "counts": {
+      "problemTypes": 2,
+      "templates": 4,
+      "bindings": 8,
+      "nativeCatalogRows": 2,
+      "packScopes": 1
+    },
+    "baseRegistrySha": "sha256:de22bdfbf9bd87c7497e45df184c9e2e70c8f2fe5f092f5994eab844281f5c51",
+    "changesSha256": "6b1cc82ec4b73157d4dc2dc5b9593b2885a4578bb9be71c35c73b24796b57ce6",
+    "sealable": false,
+    "productionRegistryWritten": false,
+    "solutionVerificationClaimed": false
+  },
+  "classification": {
+    "status": "METADATA_CLASSIFICATION_CHECKED",
+    "exactRows": 22,
+    "rpmDebtRows": 2,
+    "actualResolverProof": "NOT_RUN_UNVERIFIED_SOLUTION",
+    "solutionVerificationClaimed": false,
+    "sealable": false,
+    "sharedRegistryChanged": false,
+    "results": [
+      {
+        "sourceOrdinal": 1,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-173-BINDING-20261113",
+        "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 2,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-177-TRANSFER-DIRECT-20261113",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 3,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-179-BINDING-20261113",
+        "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
+        "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 4,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-185-CONSTRUCTION-20261113",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 5,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-198",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 6,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-202",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\"]",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingOwnerPack": "MIDDLE_GEOMETRY"
+      },
+      {
+        "sourceOrdinal": 7,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-174-MIDPOINT-20261113",
+        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 9,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-177-TRANSFER-BENT-20261113",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 11,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-188-SIDE-FEASIBILITY-20261113",
+        "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 12,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-192-CORRESPONDENCE-20261113",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 13,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-196-SHARED-SIDE-EXTENSION-20261113",
+        "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_SHARED_SIDE_EXTENSION_AUDIT",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 14,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-196",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 15,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-202",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\"]",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingOwnerPack": "MIDDLE_GEOMETRY"
+      },
+      {
+        "sourceOrdinal": 16,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-203",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\"]",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingOwnerPack": "MIDDLE_GEOMETRY"
+      },
+      {
+        "sourceOrdinal": 17,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-181-SPATIAL-CLAIM-20261113",
+        "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"위치 관계\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 18,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-192-CORRESPONDENCE-20261113",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 19,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-197-CROSSING-ANGLE-SUM-20261113",
+        "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"다각형\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 20,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-206",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\"]",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingOwnerPack": "MIDDLE_GEOMETRY"
+      },
+      {
+        "sourceOrdinal": 21,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-174-MIDPOINT-20261113",
+        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 22,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-175-STRAIGHT-ANGLE-PARTITION-20261113",
+        "templateKey": "TPL_M1_STRAIGHT_ANGLE_PARTITION_ADJACENT_RATIO_SUM",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"기본 도형\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 23,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-206",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"평면도형\",\"원과 부채꼴\"]",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingOwnerPack": "MIDDLE_GEOMETRY"
+      },
+      {
+        "sourceOrdinal": 24,
+        "status": "METADATA_CLASSIFICATION_CHECKED",
+        "crosswalkRecordId": "M1-RPM-192-CORRESPONDENCE-20261113",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+        "effectiveParentKey": "[\"2022\",\"M1-2\",\"기본 도형\",\"작도와 합동\"]",
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      }
+    ],
+    "debts": [
+      {
+        "sourceOrdinal": 8,
+        "status": "EVIDENCE_DEBT_NATIVE_KEYS_CHECKED",
+        "rpmRecordId": null,
+        "rpmPath": null,
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      },
+      {
+        "sourceOrdinal": 10,
+        "status": "EVIDENCE_DEBT_NATIVE_KEYS_CHECKED",
+        "rpmRecordId": null,
+        "rpmPath": null,
+        "canonicalOwnerPack": "MIDDLE1",
+        "bindingOwnerPack": "MIDDLE1"
+      }
+    ]
+  },
+  "protectedSourceHashes": {
+    "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json": "89915840cb668a4c2c4e6fbf118e33525142c13499d69d9ad6a126eb2de058b3",
+    "archive/data/master_tables/js_archive_tag_master.json": "f57bf7d99fa862f1f72681db28fe590f61ccb54292b45561bbcd4fdef014e333",
+    "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json": "bf6f246cb89cba1435b8ed9dab2dfbcd9b207e8ce679a8c101e435831d402c5a",
+    "archive/data/meta-foundation/canonical/packs/middle1/bindings.json": "9525ee32adc119529577dda4e36085024111c43074930273bff7c3c535077028",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json": "88f4638304b1622086c19e116bd8b0e51fb4559f043e76915f81410408ccc536",
+    "archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json": "6128cf2c8c863f132d6c9d8b51804aff9ba636ce5cdbaf99f41217962aec40ab",
+    "archive/rpm-middle-toc.js": "d8cd9a57dec29ae2b3539cb6f5829050b5485184dbdc4c96b8b0771ac63290e0"
+  },
+  "protectedSourcesUnchanged": true,
+  "mathQualityPassClaimed": false,
+  "productionApplied": false
+}

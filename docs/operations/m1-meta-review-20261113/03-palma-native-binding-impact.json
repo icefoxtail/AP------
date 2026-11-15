@@ -1,0 +1,1795 @@
+{
+  "schemaVersion": "palma-exact-native-binding-impact-v1",
+  "recordedAt": "2026-11-13T18:41:32.156699+00:00",
+  "status": "READ_ONLY_BINDING_SCOPE_CHECK_COMPLETE",
+  "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb",
+  "semanticAuthority": {
+    "path": "docs/operations/m1-meta-review-20261113/03-palma-semantic-review.json",
+    "sha256": "0621f824a750a0067d378c29387a407f919c9d690875c0c857b620818e10af18",
+    "questionUidCount": 24,
+    "curriculumBasis": {
+      "curriculum": "2022",
+      "sourceExamYear": 2026,
+      "basis": "User-supplied current 2022 RPM authority for the 2026 middle1 source. Baseline metadata curriculum fields are absent; this is an explicit reviewed assignment, not a claim that the baseline already held 2022.",
+      "noOlder2015SourceRetagging": true
+    }
+  },
+  "summary": {
+    "targetItems": 24,
+    "reuseExistingActiveBindingItems": 21,
+    "missingExactBindingOrdinals": [
+      19,
+      21,
+      24
+    ],
+    "additionalMissingBindingOrdinals": [],
+    "wholePackScopeChangesRequired": 0,
+    "existingDefinitionEditsRequired": 0,
+    "outsideApprovedExactConsumers": 0,
+    "outsideCurrentExactMetadataConsumers": 0,
+    "exactRuntimeConsumers": 0
+  },
+  "officialGuard": {
+    "authority": {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "blobSha1": "2d6f40082bf6f97cfbb93ec853fc39f5028833ff",
+      "sha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    "approvedPredicate": "row.reviewStatus === \"reviewed_pass\" || String(row.metadataStatus || \"\").startsWith(\"approved_\")",
+    "bindingSignature": "curriculum||curriculumKey, standardCourse||courseKey, standardUnitKey, null-equivalent subUnitKey, problemTypeKey; exact values, no curriculum inference or alias normalization",
+    "lines": [
+      25,
+      1551,
+      1595,
+      1599,
+      1605,
+      1880,
+      1885,
+      1888
+    ],
+    "expectedFailureIfNewBindingTouchesApprovedOutsideUid": "registry change affects out-of-scope approved UID: <questionUid>",
+    "noTemplateFilter": "The binding signature is PT-level. All existing templates under that PT were included in the metadata/runtime exact-tuple scan."
+  },
+  "scopeReuse": {
+    "ownerPack": "MIDDLE1",
+    "currentPackVersion": "1.0.7",
+    "curricula": [
+      "2015",
+      "2022"
+    ],
+    "standardCourses": [
+      "중1 수학",
+      "M1-2",
+      "M1-1"
+    ],
+    "ownedStandardUnitDomains": [
+      "M1-01",
+      "M1-02",
+      "M1-03",
+      "M1-04",
+      "M1-05",
+      "M1-06",
+      "M1-07",
+      "M1-08"
+    ],
+    "noPackScopeOrExistingRowMutation": true
+  },
+  "itemBindingCoverage": [
+    {
+      "ordinal": 1,
+      "questionUid": "qid_v1_aeac61cf463b156ee3a77b9a0bf56197226b0f30293b013e4a435086e8a0bbd4",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "877b17c696f51241634ebad916967baf4e8a4c18878f0f1e395262bbc22c7ee0"
+      ]
+    },
+    {
+      "ordinal": 2,
+      "questionUid": "qid_v1_9b4acc2d19a0bf5b24044439b7a93d16cc01ed5491d251519cc48235ff223db8",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "3fdcf3eaf2e6e1c3e26706c0bf4a7bc31a32d0dd245e16155929f4726ae43a39"
+      ]
+    },
+    {
+      "ordinal": 3,
+      "questionUid": "qid_v1_dca5b1495c2fdb8706ba4ee7b2620c8703bc1467a10a19d8c165a07b3464a976",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "89cc3882278177b760dd18aa843a0b27d17384b92a567ef31b7366dc6ff5f4e2"
+      ]
+    },
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_ad89956ceb68957e2871b30660000826f0e00d6ebb4a1a1e1b5c03261aff25a7",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "877b17c696f51241634ebad916967baf4e8a4c18878f0f1e395262bbc22c7ee0"
+      ]
+    },
+    {
+      "ordinal": 5,
+      "questionUid": "qid_v1_df3befa3fc3ac768ecd2db63406ae2b97508965f814eff8565d7901660ecb74e",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "7f5f50837e7799e3ad2563994a56f47093c5383d6cf6b98e64950294c89f50bb"
+      ]
+    },
+    {
+      "ordinal": 6,
+      "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "83a0e5a7c218597a74b7f380b9fa312af0379529f550e5766c71b9fe6dc87486"
+      ]
+    },
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_6a23d2b43c9a6f7c1a1c175c6bb121d0a9f8c623f12711e85f5ab8c798abc556",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "dd497b2f94db1e6a2cbd199928fd109f13e7b06e56d41552845a98ecdc416948"
+      ]
+    },
+    {
+      "ordinal": 8,
+      "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "83a0e5a7c218597a74b7f380b9fa312af0379529f550e5766c71b9fe6dc87486"
+      ]
+    },
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_690710e7ac7ec4e05e9fc07e1a1f468bb8147e84a5427104e530607a1f962e42",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "0a0c6105165255a115f0f65fc33b519074b39b0852cf7e6e576dca3662ca919c"
+      ]
+    },
+    {
+      "ordinal": 10,
+      "questionUid": "qid_v1_9b6c9e1f6b039fc6c4335114abd1392fd7ee680a60d038c0cda3f9a896ee7102",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "9b64aab718cf86d3d92f1ea37899c36e5f197dea78b566704f7793a831160231"
+      ]
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_5394e91945cd93b47b3a1306dd912ec5c2b51d2621fae8dec5cda82bbd64c205",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_TRIANGLE_CONSTRUCTION_ORDER"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "12446b806d9824dba3200db73220d6b4f379f7fa79bfbd86d8f5b052f82c2bfe"
+      ]
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_af907e6247a0fd85a870e048c96666ec886ef2d1057b98c14d958c1fdea72ce9",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "6eaa26a0bc904b663d88ed23c5b10f65105efe09f00154831317a2441e56af27"
+      ]
+    },
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_f68009c211068d63c42d9641a37dcc7826e42d90dc8001fc7f74e03db9a51ac4",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "7363d75b7b57b97b390bc8cddd9d8c31a40a19269572b59ca5f23f2c49c83549"
+      ]
+    },
+    {
+      "ordinal": 14,
+      "questionUid": "qid_v1_eabe9270f247372c1649ff25c772e848daf06c69f7e6dfa889d21cb1f5ded39d",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "6eaa26a0bc904b663d88ed23c5b10f65105efe09f00154831317a2441e56af27"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_a49a108502b32e9910d324e69bd4b50fe60d4732208de0275e0f40e284af6676",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "f851562745f7b299b0e968f5d6cbbd4db2549e6023c10e287385fe29700a07cb"
+      ]
+    },
+    {
+      "ordinal": 16,
+      "questionUid": "qid_v1_24a00b1861775852d97237d6ff2bab7fbf8b523fde92649c50d5bb6aeab4fc2f",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "f851562745f7b299b0e968f5d6cbbd4db2549e6023c10e287385fe29700a07cb"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_8ddd54f26e647cf88c553a1f15133ae63dea7b6233caaa68e0194f88351c273b",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "f851562745f7b299b0e968f5d6cbbd4db2549e6023c10e287385fe29700a07cb"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_3ffc1c4b696a4ef7c2ba59b1d37004134fc05ff0ce0212d0b55acd689ff8fce7",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "f851562745f7b299b0e968f5d6cbbd4db2549e6023c10e287385fe29700a07cb"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM"
+      },
+      "activeBindingCount": 0,
+      "bindingPaths": [],
+      "ownerPacks": [],
+      "scopeValid": [],
+      "matchedBindingSha256": []
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_5ff9229265ef4aef481e014c3565592c9726b89f9ff8d2714b81fe3e3b097064",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "0a0c6105165255a115f0f65fc33b519074b39b0852cf7e6e576dca3662ca919c"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_b7a4e9fe41cebbe2f68649f03fbb6c7fde5a0ac4ff88c2b9ff08a3bce63966eb",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE"
+      },
+      "activeBindingCount": 0,
+      "bindingPaths": [],
+      "ownerPacks": [],
+      "scopeValid": [],
+      "matchedBindingSha256": []
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_4fde7f4e5f3ba55ede413c85c7e48572ee8b2c26bf5add8a27cf71bac14fd139",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "877b17c696f51241634ebad916967baf4e8a4c18878f0f1e395262bbc22c7ee0"
+      ]
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_2222cce621e720b3998c49bb63edb0c8ddb93f85655114d1630ec3daf7b9f832",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT"
+      },
+      "activeBindingCount": 1,
+      "bindingPaths": [
+        "archive/data/meta-foundation/canonical/packs/middle1/bindings.json"
+      ],
+      "ownerPacks": [
+        "MIDDLE1"
+      ],
+      "scopeValid": [
+        true
+      ],
+      "matchedBindingSha256": [
+        "f851562745f7b299b0e968f5d6cbbd4db2549e6023c10e287385fe29700a07cb"
+      ]
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_175a477a1b54c46883e3a4dc79848a6308d2f6b6d8adedd2445b0c7fad15e67f",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA"
+      },
+      "activeBindingCount": 0,
+      "bindingPaths": [],
+      "ownerPacks": [],
+      "scopeValid": [],
+      "matchedBindingSha256": []
+    }
+  ],
+  "newBindings": [
+    {
+      "ordinal": 19,
+      "questionUid": "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM"
+      },
+      "exactExistingActiveBindingCount": 0,
+      "proposedAddOnlyBinding": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "collection": "bindings",
+        "match": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE",
+          "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM"
+        },
+        "before": null,
+        "after": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE",
+          "problemTypeKey": "PT_M1_STAR_POLYGON_ANGLE_SUM",
+          "supportingItemCount": 1,
+          "supportingQuestionUids": [
+            "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f"
+          ],
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1",
+          "L1": "평면도형",
+          "L2": "다각형"
+        }
+      },
+      "matchingMetadataRows": [],
+      "matchingOutOfPalmaApprovedRows": [],
+      "matchingRuntimeRows": [],
+      "counts": {
+        "allMetadataSamePt": 0,
+        "metadataExactTuple": 0,
+        "outOfPalmaExactTuple": 0,
+        "outOfPalmaApprovedExactTuple": 0,
+        "runtimeExactTuple": 0,
+        "runtimeSamePt": 0
+      },
+      "existingOtherParentBindings": [],
+      "samePtMetadataOtherTuples": [],
+      "outsideApprovedSignatureChanges": [],
+      "sharedDefinitionChangeNeeded": false,
+      "directExistingOutsideConsumerImpact": "NONE_BY_EXACT_SIGNATURE"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_b7a4e9fe41cebbe2f68649f03fbb6c7fde5a0ac4ff88c2b9ff08a3bce63966eb",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE"
+      },
+      "exactExistingActiveBindingCount": 0,
+      "proposedAddOnlyBinding": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "collection": "bindings",
+        "match": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE"
+        },
+        "before": null,
+        "after": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "supportingItemCount": 1,
+          "supportingQuestionUids": [
+            "qid_v1_b7a4e9fe41cebbe2f68649f03fbb6c7fde5a0ac4ff88c2b9ff08a3bce63966eb"
+          ],
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1",
+          "L1": "평면도형",
+          "L2": "다각형"
+        }
+      },
+      "matchingMetadataRows": [],
+      "matchingOutOfPalmaApprovedRows": [],
+      "matchingRuntimeRows": [],
+      "counts": {
+        "allMetadataSamePt": 19,
+        "metadataExactTuple": 0,
+        "outOfPalmaExactTuple": 0,
+        "outOfPalmaApprovedExactTuple": 0,
+        "runtimeExactTuple": 0,
+        "runtimeSamePt": 11
+      },
+      "existingOtherParentBindings": [
+        {
+          "bindingPath": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+          "binding": {
+            "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-BASIC_FIGURE",
+            "supportingItemCount": 8,
+            "supportingQuestionUids": [
+              "qid_v1_126e7ef54bd47ab404addcb3a3ca0492dd2e95e2db006410b625ba686f021b86",
+              "qid_v1_1bc464e0d6f0a8b7e36149efecc79397709aa137fec9820972a2f190214fe8db",
+              "qid_v1_6c85e970e17ed288d81c2496c4f401932f77ea1d530f9e5b67652812a12c7878",
+              "qid_v1_8fd3c9e74df936eeabc207ad02f66d0857fc61e35826cbf9040cd22dee3647bd",
+              "qid_v1_aae8e3d02ffa5d8a77541dd8e9171a112a28ea80b86f80c4f2d7ebeda5f8f994",
+              "qid_v1_c065365a17e7cd338f660ae98e70c5b74ed99c5d57a3fc6978b7caa882acc6f7",
+              "qid_v1_ee9ddf2b5976c985c3b07fb0a418ac3cbcda1a214e92b7bdcec4776f37714eb4",
+              "qid_v1_f8150d3bea94636e21612c20d7ae47cac09a0b57d50763d25ed12e98ee1c14e6"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1"
+          },
+          "exactMetadataConsumerCount": 8,
+          "outOfPalmaConsumerCount": 8,
+          "outOfPalmaApprovedCount": 8,
+          "outOfPalmaApprovedQuestionUids": [
+            "qid_v1_126e7ef54bd47ab404addcb3a3ca0492dd2e95e2db006410b625ba686f021b86",
+            "qid_v1_1bc464e0d6f0a8b7e36149efecc79397709aa137fec9820972a2f190214fe8db",
+            "qid_v1_6c85e970e17ed288d81c2496c4f401932f77ea1d530f9e5b67652812a12c7878",
+            "qid_v1_8fd3c9e74df936eeabc207ad02f66d0857fc61e35826cbf9040cd22dee3647bd",
+            "qid_v1_aae8e3d02ffa5d8a77541dd8e9171a112a28ea80b86f80c4f2d7ebeda5f8f994",
+            "qid_v1_c065365a17e7cd338f660ae98e70c5b74ed99c5d57a3fc6978b7caa882acc6f7",
+            "qid_v1_ee9ddf2b5976c985c3b07fb0a418ac3cbcda1a214e92b7bdcec4776f37714eb4",
+            "qid_v1_f8150d3bea94636e21612c20d7ae47cac09a0b57d50763d25ed12e98ee1c14e6"
+          ],
+          "runtimeExactConsumerCount": 2,
+          "bindingChangePlanned": false
+        },
+        {
+          "bindingPath": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+          "binding": {
+            "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-BASIC_FIGURE",
+            "supportingItemCount": 2,
+            "supportingQuestionUids": [
+              "qid_v1_382314a3713c9d61ec63b7c54dde290271cd467b42c1e9c58d3dd7274790b554",
+              "qid_v1_cbad75c4eb55bd19cf1de16ffa0a5259b1f9730cb717f5a7e9817720db19bc15"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1"
+          },
+          "exactMetadataConsumerCount": 3,
+          "outOfPalmaConsumerCount": 3,
+          "outOfPalmaApprovedCount": 3,
+          "outOfPalmaApprovedQuestionUids": [
+            "qid_v1_382314a3713c9d61ec63b7c54dde290271cd467b42c1e9c58d3dd7274790b554",
+            "qid_v1_4bb877da6e4bb5441e18c36687a9f0bbc01eab3d19cac457cc3cb7ef799342b8",
+            "qid_v1_cbad75c4eb55bd19cf1de16ffa0a5259b1f9730cb717f5a7e9817720db19bc15"
+          ],
+          "runtimeExactConsumerCount": 3,
+          "bindingChangePlanned": false
+        }
+      ],
+      "samePtMetadataOtherTuples": [
+        {
+          "questionUid": "qid_v1_126e7ef54bd47ab404addcb3a3ca0492dd2e95e2db006410b625ba686f021b86",
+          "sourceArchiveFile": "original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 8,
+          "curriculum": "2015",
+          "curriculumKey": "2015",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-2",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+          "L1": "기본도형",
+          "L2": "점·선·면과 각",
+          "reviewStatus": "reviewed_pass",
+          "metadataStatus": "approved_r2e_final",
+          "defaultSelectable": true,
+          "officialV2Approved": true,
+          "rowSha256": "c68211e85b5c9a2feb01b0bd18e76003ce50d439c359a96cd3ea07678eb7521a"
+        },
+        {
+          "questionUid": "qid_v1_1bc464e0d6f0a8b7e36149efecc79397709aa137fec9820972a2f190214fe8db",
+          "sourceArchiveFile": "original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 24,
+          "curriculum": "2015",
+          "curriculumKey": "2015",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-2",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "reviewStatus": "reviewed_pass",
+          "metadataStatus": "approved_full",
+          "defaultSelectable": true,
+          "officialV2Approved": true,
+          "rowSha256": "16cfaaf2db83554fae2dfb5295cb51dd88f2a6df2fea027c0e82241e595e5d25"
+        },
+        {
+          "questionUid": "qid_v1_2939f7623628bff14dea84de79957efc758a0e7c1de29bd8caa2123e269e4023",
+          "sourceArchiveFile": "similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사.js",
+          "sourceOrdinal": 21,
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+          "reviewStatus": "review_required",
+          "metadataStatus": "registration_pending_semantic_review",
+          "officialV2Approved": false,
+          "rowSha256": "4e6a1b7af33c0d76387564d8fe9a29189cb24b192ffa996fd3a8fe4c7d386ed2"
+        },
+        {
+          "questionUid": "qid_v1_34cc84b82cc5f9a3dba17539aac6c13d8074df4e18db2a2354054c3806531069",
+          "sourceArchiveFile": "similar/middle/m1/2mid/24_매산중_2학기_중간_중1_유사.js",
+          "sourceOrdinal": 17,
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+          "reviewStatus": "review_required",
+          "metadataStatus": "registration_pending_semantic_review",
+          "officialV2Approved": false,
+          "rowSha256": "3139e96f8b9f27c258666545f2e403746699111dcc05967b55ece026a7e74849"
+        },
+        {
+          "questionUid": "qid_v1_382314a3713c9d61ec63b7c54dde290271cd467b42c1e9c58d3dd7274790b554",
+          "sourceArchiveFile": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 21,
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-2",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_CHAINED_ISOSCELES",
+          "L1": "기본도형",
+          "L2": "점·선·면과 각",
+          "reviewStatus": "reviewed_pass",
+          "metadataStatus": "approved_r2e_final",
+          "defaultSelectable": true,
+          "officialV2Approved": true,
+          "rowSha256": "1ead6a6cddcbb496224640bdac12471c730908b8b8e8a4996658c38d6f5bed4c"
+        },
+        {
+          "questionUid": "qid_v1_4bb877da6e4bb5441e18c36687a9f0bbc01eab3d19cac457cc3cb7ef799342b8",
+          "sourceArchiveFile": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 3,
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-2",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+          "L1": "기본도형",
+          "L2": "점·선·면과 각",
+          "reviewStatus": "reviewed_pass",
+          "metadataStatus": "approved_r2e_final",
+          "defaultSelectable": true,
+          "officialV2Approved": true,
+          "rowSha256": "c2cc3b0831f5cf089153c5c27bcf71589a3467706d54f5978ee270008fb7129e"
+        },
+        {
+          "questionUid": "qid_v1_6c85e970e17ed288d81c2496c4f401932f77ea1d530f9e5b67652812a12c7878",
+          "sourceArchiveFile": "original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 17,
+          "curriculum": "2015",
+          "curriculumKey": "2015",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-2",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "reviewStatus": "reviewed_hold",
+          "metadataStatus": "approved_full_with_selectability_hold",
+          "defaultSelectable": true,
+          "officialV2Approved": true,
+          "rowSha256": "b01627b80d94db3737d65983ef7acef41af1ea5ae0516038e58c454d2e624094"
+        },
+        {
+          "questionUid": "qid_v1_868fde324e31af9aeb43032f4bd4516fb82aa261f108c80e1b7eeaf4f0324faf",
+          "sourceArchiveFile": "similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사.js",
+          "sourceOrdinal": 21,
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-06",
+          "standardUnit": "평면도형의 성질",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE",
+          "subUnit": "다각형과 원",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+          "reviewStatus": "review_required",
+          "metadataStatus": "registration_pending_semantic_review",
+          "officialV2Approved": false,
+          "rowSha256": "859e85ba606686804da6e6659087389c161e2855e352408ff73072e55943f0bc"
+        },
+        {
+          "questionUid": "qid_v1_8fd3c9e74df936eeabc207ad02f66d0857fc61e35826cbf9040cd22dee3647bd",
+          "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 19,
+          "curriculum": "2015",
+          "curriculumKey": "2015",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-2",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "reviewStatus": "reviewed_hold",
+          "metadataStatus": "approved_full_with_selectability_hold",
+          "defaultSelectable": true,
+          "officialV2Approved": true,
+          "rowSha256": "686283a8a544f28171975cef111c168d74594e2dce3e2c9f042da408b10c2037"
+        },
+        {
+          "questionUid": "qid_v1_a508989832169497ca08f52b4da683a7d063dc81b5cb621f46a26ad34ee1789d",
+          "sourceArchiveFile": "similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사2.js",
+          "sourceOrdinal": 21,
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+          "reviewStatus": "review_required",
+          "metadataStatus": "registration_pending_semantic_review",
+          "officialV2Approved": false,
+          "rowSha256": "2ddaa6c956e6a3cf3e96890ffc89e2bb59dc955abb75cc3fcb165e2ebf6fffc1"
+        },
+        {
+          "questionUid": "qid_v1_aae8e3d02ffa5d8a77541dd8e9171a112a28ea80b86f80c4f2d7ebeda5f8f994",
+          "sourceArchiveFile": "original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 16,
+          "curriculum": "2015",
+          "curriculumKey": "2015",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-2",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "reviewStatus": "reviewed_pass",
+          "metadataStatus": "approved_full",
+          "defaultSelectable": true,
+          "officialV2Approved": true,
+          "rowSha256": "94d973a546e0dcf1d40979ba5c85d38f4b9090b289dfc572a473830ebb93ae11"
+        },
+        {
+          "questionUid": "qid_v1_b7a4e9fe41cebbe2f68649f03fbb6c7fde5a0ac4ff88c2b9ff08a3bce63966eb",
+          "sourceArchiveFile": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 21,
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+          "reviewStatus": "review_required",
+          "metadataStatus": "registration_pending_semantic_review",
+          "officialV2Approved": false,
+          "rowSha256": "dd7abdcf8b3c760db03cde594707c3e4269b5a5fb8266619e6bd6fb661eacc50"
+        },
+        {
+          "questionUid": "qid_v1_c065365a17e7cd338f660ae98e70c5b74ed99c5d57a3fc6978b7caa882acc6f7",
+          "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 5,
+          "curriculum": "2015",
+          "curriculumKey": "2015",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-2",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "reviewStatus": "reviewed_hold",
+          "metadataStatus": "approved_full_with_selectability_hold",
+          "defaultSelectable": true,
+          "officialV2Approved": true,
+          "rowSha256": "91230d013c308b1773b2e70eb62c7e9cc1a813ad11c415abda99f3eca25124bc"
+        },
+        {
+          "questionUid": "qid_v1_c4ab92547b0ae2ddcb1ec9648ac7f90331b65c2e6446696e1459b6a00581ca50",
+          "sourceArchiveFile": "similar/middle/m1/2mid/25_팔마중_2학기_중간_중1_유사.js",
+          "sourceOrdinal": 15,
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-06",
+          "standardUnit": "평면도형의 성질",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE",
+          "subUnit": "다각형과 원",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+          "reviewStatus": "review_required",
+          "metadataStatus": "registration_pending_semantic_review",
+          "officialV2Approved": false,
+          "rowSha256": "e78e8af2c5b245df8991262a938cd0dbcc02577029d62a053a69e816840838f6"
+        },
+        {
+          "questionUid": "qid_v1_cbad75c4eb55bd19cf1de16ffa0a5259b1f9730cb717f5a7e9817720db19bc15",
+          "sourceArchiveFile": "original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 1,
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-2",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+          "L1": "기본도형",
+          "L2": "점·선·면과 각",
+          "reviewStatus": "reviewed_pass",
+          "metadataStatus": "approved_r2e_final",
+          "defaultSelectable": true,
+          "officialV2Approved": true,
+          "rowSha256": "06e0601f6820c6df176af3512e973bea59938c786f05fcb4c0534b26a1c4febb"
+        },
+        {
+          "questionUid": "qid_v1_e9a2d345b8dd9ecd502fa5d644bdb632da7d705d5dc5e1c8ea0ce6f2a333bfbd",
+          "sourceArchiveFile": "similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사.js",
+          "sourceOrdinal": 19,
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-06",
+          "standardUnit": "평면도형의 성질",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE",
+          "subUnit": "다각형과 원",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+          "reviewStatus": "review_required",
+          "metadataStatus": "registration_pending_semantic_review",
+          "officialV2Approved": false,
+          "rowSha256": "1cbb9d646554fb9d4ffc648b57b3dfe8ccb6d6d8d8dac095b68674c44432cd0b"
+        },
+        {
+          "questionUid": "qid_v1_ec6db1f6d07bf8a877ac851a08ec019c8b12617c0e44adc7bf1df903bf43acc2",
+          "sourceArchiveFile": "similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사2.js",
+          "sourceOrdinal": 19,
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-06",
+          "standardUnit": "평면도형의 성질",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE",
+          "subUnit": "다각형과 원",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+          "reviewStatus": "review_required",
+          "metadataStatus": "registration_pending_semantic_review",
+          "officialV2Approved": false,
+          "rowSha256": "54bdadaeaf3dc16eefd39dc064e01993324fe245e99db8b9f8d8162f32468896"
+        },
+        {
+          "questionUid": "qid_v1_ee9ddf2b5976c985c3b07fb0a418ac3cbcda1a214e92b7bdcec4776f37714eb4",
+          "sourceArchiveFile": "original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js",
+          "sourceOrdinal": 22,
+          "curriculum": "2015",
+          "curriculumKey": "2015",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-2",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+          "L1": "기본도형",
+          "L2": "점·선·면과 각",
+          "reviewStatus": "reviewed_pass",
+          "metadataStatus": "approved_r2e_final",
+          "defaultSelectable": true,
+          "officialV2Approved": true,
+          "rowSha256": "f7aec2e596fb8e10f744d473a048888a7b14043ab14b3fc81fbb7e4b726033c8"
+        },
+        {
+          "questionUid": "qid_v1_f8150d3bea94636e21612c20d7ae47cac09a0b57d50763d25ed12e98ee1c14e6",
+          "sourceArchiveFile": "original/middle/m1/2mid/23_신흥중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 18,
+          "curriculum": "2015",
+          "curriculumKey": "2015",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-2",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "subUnit": "점·선·면과 각",
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_CHAINED_ISOSCELES",
+          "L1": "기본 도형",
+          "L2": "기본 도형",
+          "reviewStatus": "reviewed_pass",
+          "metadataStatus": "approved_full",
+          "defaultSelectable": true,
+          "officialV2Approved": true,
+          "rowSha256": "93bea9b37bab9785a00c3643b5e597ba349dee5ae7275c7f78a0eb1293e28744"
+        }
+      ],
+      "outsideApprovedSignatureChanges": [],
+      "sharedDefinitionChangeNeeded": false,
+      "directExistingOutsideConsumerImpact": "NONE_BY_EXACT_SIGNATURE"
+    },
+    {
+      "ordinal": 24,
+      "questionUid": "qid_v1_175a477a1b54c46883e3a4dc79848a6308d2f6b6d8adedd2445b0c7fad15e67f",
+      "exactTuple": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA"
+      },
+      "exactExistingActiveBindingCount": 0,
+      "proposedAddOnlyBinding": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+        "collection": "bindings",
+        "match": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA"
+        },
+        "before": null,
+        "after": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+          "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+          "supportingItemCount": 1,
+          "supportingQuestionUids": [
+            "qid_v1_175a477a1b54c46883e3a4dc79848a6308d2f6b6d8adedd2445b0c7fad15e67f"
+          ],
+          "status": "ACTIVE",
+          "ownerPack": "MIDDLE1",
+          "L1": "기본 도형",
+          "L2": "작도와 합동"
+        }
+      },
+      "matchingMetadataRows": [],
+      "matchingOutOfPalmaApprovedRows": [],
+      "matchingRuntimeRows": [],
+      "counts": {
+        "allMetadataSamePt": 5,
+        "metadataExactTuple": 0,
+        "outOfPalmaExactTuple": 0,
+        "outOfPalmaApprovedExactTuple": 0,
+        "runtimeExactTuple": 0,
+        "runtimeSamePt": 1
+      },
+      "existingOtherParentBindings": [
+        {
+          "bindingPath": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+          "binding": {
+            "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-POSITION_RELATION",
+            "supportingItemCount": 1,
+            "supportingQuestionUids": [
+              "qid_v1_9c648fe8e985af08e260cc06bde504a2d65e296cf1139d81723717bcf202549e"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1"
+          },
+          "exactMetadataConsumerCount": 1,
+          "outOfPalmaConsumerCount": 1,
+          "outOfPalmaApprovedCount": 1,
+          "outOfPalmaApprovedQuestionUids": [
+            "qid_v1_9c648fe8e985af08e260cc06bde504a2d65e296cf1139d81723717bcf202549e"
+          ],
+          "runtimeExactConsumerCount": 0,
+          "bindingChangePlanned": false
+        }
+      ],
+      "samePtMetadataOtherTuples": [
+        {
+          "questionUid": "qid_v1_175a477a1b54c46883e3a4dc79848a6308d2f6b6d8adedd2445b0c7fad15e67f",
+          "sourceArchiveFile": "original/middle/m1/2mid/26_팔마중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 24,
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "subUnit": "위치 관계",
+          "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+          "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+          "reviewStatus": "review_required",
+          "metadataStatus": "registration_pending_semantic_review",
+          "officialV2Approved": false,
+          "rowSha256": "46eed4c36e050640d80600db8895f95f55aed5afdfde688a75610419e5789f79"
+        },
+        {
+          "questionUid": "qid_v1_91835ecf53a12674b640fa846dab2e095fa280473a69fc16842aa856ba22c89e",
+          "sourceArchiveFile": "similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",
+          "sourceOrdinal": 24,
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "subUnit": "위치 관계",
+          "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+          "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+          "reviewStatus": "review_required",
+          "metadataStatus": "registration_pending_semantic_review",
+          "officialV2Approved": false,
+          "rowSha256": "6d92be146a981897c4e5cf68fc65d416f7b7b0276c636d76fa6b20b7f3188933"
+        },
+        {
+          "questionUid": "qid_v1_9c648fe8e985af08e260cc06bde504a2d65e296cf1139d81723717bcf202549e",
+          "sourceArchiveFile": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+          "sourceOrdinal": 24,
+          "curriculum": "2022",
+          "curriculumKey": "2022",
+          "standardCourse": "중1 수학",
+          "courseKey": "M1-2",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "subUnit": "위치 관계",
+          "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+          "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+          "L1": "기본 도형",
+          "L2": "작도와 합동",
+          "reviewStatus": "reviewed_hold",
+          "metadataStatus": "approved_full_with_selectability_hold",
+          "defaultSelectable": true,
+          "officialV2Approved": true,
+          "rowSha256": "cb9337302049dff9895f6e71e42ef02caa0bc98cfff6e429b2d1c1cc1a8eef1f"
+        },
+        {
+          "questionUid": "qid_v1_bc3c8887f61ff9c5567be5de3b14e4bd2169fd525ade0e6f8e5d789506293f6a",
+          "sourceArchiveFile": "similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사2.js",
+          "sourceOrdinal": 24,
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "subUnit": "위치 관계",
+          "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+          "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+          "reviewStatus": "review_required",
+          "metadataStatus": "registration_pending_semantic_review",
+          "officialV2Approved": false,
+          "rowSha256": "245885aa2772eca7de298beacf85f5023078b6a9c82057906762f837ae5ad8c5"
+        },
+        {
+          "questionUid": "qid_v1_ebc9b146848a61d6f52d5797a4ba75e1624b35206885a15fad0b75b43b57e58a",
+          "sourceArchiveFile": "similar/middle/m1/2mid/26_팔마중_2학기_중간_중1_유사.js",
+          "sourceOrdinal": 24,
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "standardUnit": "기본도형",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "subUnit": "위치 관계",
+          "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+          "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+          "reviewStatus": "review_required",
+          "metadataStatus": "registration_pending_semantic_review",
+          "officialV2Approved": false,
+          "rowSha256": "d1fd9605cc2644e6e066480d91ed3b6fd888261d8ecf5675a7d4882c656df419"
+        }
+      ],
+      "outsideApprovedSignatureChanges": [],
+      "sharedDefinitionChangeNeeded": false,
+      "directExistingOutsideConsumerImpact": "NONE_BY_EXACT_SIGNATURE"
+    }
+  ],
+  "scan": {
+    "metadataRowsStreamed": 28890,
+    "metadataSnapshot": {
+      "path": "archive/data/question_metadata.json",
+      "blobSha1": "7e4883ea60d73968bdbc8d2405ebb6937f6711c4",
+      "sha256": "474dc195ce71730ba33f2c10aca329a01e9488fd9427916b45da14ae0f2f7e9e",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    "runtimeFilesChecked": 17,
+    "runtimeRowsStreamed": 6584,
+    "samePtMetadataRowsRetained": 24,
+    "samePtRuntimeRowsRetained": 12,
+    "allInputsMatchPinnedMainBlob": true,
+    "runtimeSnapshots": [
+      {
+        "path": "archive/data/meta-foundation/runtime/algebra-2022-v1.json",
+        "blobSha1": "9d432747c8f7ceae187296a1c105c411461488fe",
+        "sha256": "f0815609ab134bc69f86c318032f3be19be33260c372c0554f8ed421d28d298c",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/derivative-v1.json",
+        "blobSha1": "5f1b68d3680ff031a53c873939f0e198844fa80c",
+        "sha256": "eed7219e7991de43d41b74bda71ad0eb6eaa93f4be03a21d7c8ae335c586cc86",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json",
+        "blobSha1": "744d2a1fc87d88d6b1c9b14ddfbaef5d390bdc93",
+        "sha256": "b41f6fbd015af882647a863e8c9d0ffd515f6bb52d78f495226cee262588b2f6",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+        "blobSha1": "8cc13bb74270ce68f119aec69fe89ea6b72d024d",
+        "sha256": "aef8bbb561544f47e4a3f77a6c0884dfb6c761114960b34ab0ac7a20d7477873",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+        "blobSha1": "7ae77769a58ae4b494323ccc0cae82d6e98560bb",
+        "sha256": "b4002030ca438d48891291178bc3b844031c6aee7615423a054938b6dbb7733c",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/geometry-v1.json",
+        "blobSha1": "ad8b73867dc4731a840d516bb3de1dd2fdb80a2f",
+        "sha256": "086b7af881c888fcd8622fc2fa8c1325e08e646e2dbf23981e7a0cc32fd14959",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/h1-foundation-v1.json",
+        "blobSha1": "3a8e84d5030f861669aa271e7f631adecc3cb62e",
+        "sha256": "e8aa55f44fce8739605e4c2d31d1ea413f14ab917ea447b47807018aaf38c033",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/h1-original-source-v1.json",
+        "blobSha1": "cff2c222c8e371eb55f66b8578a28db0b4bd1b90",
+        "sha256": "08d04537134cdb893cebc14ec88cf35ff06e10bbbb39e1d3b2e2fa1512e8aaa9",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/integral-calculus-v1.json",
+        "blobSha1": "7e30642b331dd969df259e019f6134cfb2c1183d",
+        "sha256": "c8976b8e61ea0d7d76b74b5f343c7471c8932802525c1e71ab05a49255462e84",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/limit-continuity-v1.json",
+        "blobSha1": "e305a34db250cea79fa4ba8dab6002ee733f0c59",
+        "sha256": "d748bafa3923a1c1344253cb6701acbd97b7139a39d29d0aaf2090c899b42760",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "blobSha1": "1e1875d502537d5d5e503c315d30ded4a99472df",
+        "sha256": "a30aa5bf76476fee5c1ebb7295ea53561030fcd3f4ac2488be23ab917e5c20ea",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "blobSha1": "409845657b3888d323be721a7c345a4bc5cbd4cc",
+        "sha256": "f7bf73fd7ea3bd143a8d3f4120a402837e3cfe0923b678bd936a0802ef10f0b2",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+        "blobSha1": "73a85105e604e475034b92af74cacac46a224f8d",
+        "sha256": "7b2c33e080267539725efbb8089ed6f1cb2263150b610612403b0be5fa216dd8",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle3-v1.json",
+        "blobSha1": "3afc6f712f7e31b6d1ab5ee5928411566ca48eaa",
+        "sha256": "636e6c7dc9248639a649d746e744b1430fa4c3a3e05da86a5895d155685cff30",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/probability-statistics-v1.json",
+        "blobSha1": "c577dd9525165e0abd1476dbb1c71b1b6af8f165",
+        "sha256": "6a0cb8ce17ef2e59b12d381a85db4cd8590ac878f5d557a33640274cde5d9cec",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+        "blobSha1": "48ffe4bd8e3a063982bb9cf9daf0205dc12256f3",
+        "sha256": "76835dfb6bcefe0362ed364a01b16eebb115af4f39273253b7fe9236cc2591a7",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/trigonometry-v1.json",
+        "blobSha1": "1003a81b2a8844ef77cdfb0a6ae620dec082aa69",
+        "sha256": "99d70fb0cf7344c8291757052d40ef06312989cf4e584fcb8a87c4f97353ae9a",
+        "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+      }
+    ]
+  },
+  "selectionAndParentConclusion": "The proposed bindings match only the three new exact 2022 native tuples. Existing other-parent bindings and their rows remain identical; no matching outside approved metadata or runtime row means these additions do not directly reroute an existing outside UID under the official exact lookup. Parent labels for the new target rows come from their evidence-bound RPM targetParentRef, with the proposed binding L1/L2 also matching that same parent. This is a bounded static impact check, not an executed Consumer or official registration result.",
+  "limitations": [
+    "No source/year-derived curriculum was substituted into the approved-consumer guard; missing curriculum remains missing in that scan.",
+    "No whole-pack scope addition, shared definition edit, full Consumer run or R1/R2/R3 performed.",
+    "No global catalog selection claim is made; if metadata, bindings or scope changes before registration, refresh only changed input evidence.",
+    "Current protected17/first-exam/second-exam Consumer snapshots were not rerun; exact new-binding tuple scope was checked independently."
+  ],
+  "evidenceRefs": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/bindings.json",
+      "blobSha1": "10de34c1675f86ba59ebd0552e2e7b930fa8d219",
+      "sha256": "d659538f5253bd081706c299b82ac5814ba3cb85e64420a8a282ab042adbf61c",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/pack.json",
+      "blobSha1": "f64e577df865d743ab55675d7ddb3a1ef2b8e531",
+      "sha256": "6457d8d5956a4da6b6b78eed0d271e440b1ed398438a7b29c708e4fd3617c591",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/taxonomy.json",
+      "blobSha1": "04c4d2771f925e7d5d07add939528bdbe4441f43",
+      "sha256": "1aa1dcd5faa83efcb0ec211c631f935ca2e1c604bb41b58fd30ae977cd420f2b",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "blobSha1": "43787d9a0db21270bc724eb6809cd1bcc81ea004",
+      "sha256": "ff59576b8df6c016103841234f0bc64bdfcc16ac875df2f23f8d299b4ff66330",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/pack.json",
+      "blobSha1": "5453ad4713d3528ae813ef8891518e741d06ce15",
+      "sha256": "f9f334947ab521a168c27eac76c3d87a25e9e31a2af9c8f88fa50ef4a1bed427",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+      "blobSha1": "36df7a6afc8d919743b256fb87af88428bae1081",
+      "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/bindings.json",
+      "blobSha1": "f31d642f743e0f97fbeb68d37e44ef863d15d97d",
+      "sha256": "2a2b9d2cdf3d5b2cdbf27279d85d69b392f70e5706d073b8ed92bf2a4ea13160",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/pack.json",
+      "blobSha1": "ca185cea2d48e0f7837fc5b8f1591d7b28b9e935",
+      "sha256": "14be7fac9251ae3b58994a942651080877b740f2dbe1eb6ce2a0dde0782e8ff2",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/taxonomy.json",
+      "blobSha1": "2c9b670ef99fa5a418320a9146e06c6a3d5029db",
+      "sha256": "6cdb69282a67115935134e5d6d7632c51fa9e26126ae4a45e1a1ef48813b471f",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+      "blobSha1": "37d7cc4ba8c1b5356f51d27d183b25db1b9ce023",
+      "sha256": "e881896df6f8ae5a5728876e1fcb0dffecb9e9bdc01f7e50f10f842eaffb826e",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
+      "blobSha1": "8f4681aa70523ae547e2a5f1c13a76c7bfd7b66c",
+      "sha256": "eb7f9aadc04019ca36c4c0255fa46f84a5a5de52d031e5fe5e71665a51a97c2c",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+      "blobSha1": "73466c5d547b14ade63df5975925f24a018641e4",
+      "sha256": "a2fcbf92e38dd452e86149b946817a5eb2ec8cad5dada09a6f3fecb87705a456",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/bindings.json",
+      "blobSha1": "28c9a1639425ca1b8f4375da6612d15c7f5f94f7",
+      "sha256": "35302a5b1448feea34bb03ee24c9b7059a7f84dd9510fb19274250f39fab29ad",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/pack.json",
+      "blobSha1": "843cb169deed88fb9d9642fa334608c4f842d755",
+      "sha256": "dac68a99e092fe1170a1fe002e4de14ae232328ff03b33b7fd73979dcc026082",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+      "blobSha1": "dea309fa49338a2228c0828f660578e075fec7f9",
+      "sha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/bindings.json",
+      "blobSha1": "0d8bb6f228a4d468f403543f9bdcf2892d284e56",
+      "sha256": "af843d20885e448ea5a730d3c8a7a5e8b21abf93c45d5658f4b6aa5e9ab3b1f7",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/pack.json",
+      "blobSha1": "bcb6f0552ef27e1b899772c8fc52d171bb407ca0",
+      "sha256": "2b560ef0db7ec3aad0178a73d60c1cf6de7e267855708865bb67d890e7c20610",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/taxonomy.json",
+      "blobSha1": "6e94b45321ef28b1edfff81bbc486ae4ff1c07ff",
+      "sha256": "bc6a43a4b941af7891014d311396da352ceac53c30adf54ea1e111cbb7fc4d85",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/bindings.json",
+      "blobSha1": "ec72c9d6c616382ebca4d6a7392df8e04db15619",
+      "sha256": "7c2334d36cd2eee4eb90f6962d4301317fcde385a9cb88f1c1e15a10f75ae9f8",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/pack.json",
+      "blobSha1": "acec75b3bc83998d0e803ffe70d632afdcb3de7c",
+      "sha256": "0f8cf7afcd3aca9d7c7a96e966803144d1642f5bf2bad99e505d30f287505b85",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+      "blobSha1": "9468b6883b83f47d618d3576e8e2ff2227748edf",
+      "sha256": "f86de5514f0412339a7ecd4c726263cf84db28d961fcfe24d95644802c5cf4ef",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/bindings.json",
+      "blobSha1": "e2a47d81ddbc5c531ea53b22feb049c2c82d12f7",
+      "sha256": "ab37bbce702c73d28dd14415d6ba7fe1cb55c42417162f97f497b277f3da9379",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/pack.json",
+      "blobSha1": "7f4b99b2fbcc7088be9e013ecf44e5de2df0e520",
+      "sha256": "60cbdccb978bafbf4edf1bf04e081fb39970a0334c827079957e3ba6cd796648",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/taxonomy.json",
+      "blobSha1": "8f3eb8a74d70e267ff37a66b20c17fc50d74cbeb",
+      "sha256": "533eb7222eb313e034fddb8e3034653dc8763472ab232c988d10d54a36ecea4a",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+      "blobSha1": "9b3d0cb40054198b34d36db2f7c5ad2512a94c2a",
+      "sha256": "b6fdbe6d462617c257673cb6cb23ad24abdd6993c753979d34e2e54db8a2f71e",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/pack.json",
+      "blobSha1": "6d5e8b79cacba5a6d9cc2ba72c5a4666a986b938",
+      "sha256": "91c6493661c00809e6b1c613f886ac4eb37289558abe8274b3929f5c2cb577ca",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+      "blobSha1": "b6d279a2913aac0a754b9bfb4ccf3bb74c437cc5",
+      "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "blobSha1": "dd4b573c8b6a9cb0a90211f26034124ad6378379",
+      "sha256": "50605f20f9f4a37f186ee79c983db4631b4e8922cb7dfedf791722b37497ffe4",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/pack.json",
+      "blobSha1": "f415d54096b82524af8f81f2354b878c5ab1a080",
+      "sha256": "b9337290842da013fddda2afe899361232be1428d3395ee25e355459c9358f24",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+      "blobSha1": "a103610df452c6158936251920f05bb73559395b",
+      "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "blobSha1": "61a284f88b6ac153a99e24d387ac91ce2ba9c01e",
+      "sha256": "83f10a0787289d40a896f6118015d224b3672ebac059121f59bb7d31a500a83d",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+      "blobSha1": "42a81006dd1d2ceb1d4588e2377d145103fd9b41",
+      "sha256": "7219c146593318da0046765a106098882e92c649f0e2242ae4dad86442a97b0b",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "blobSha1": "fe8a9e23dbcd98b7057035a8bde22bb81893564f",
+      "sha256": "1c2e5c465e9f2efa5a3f77298e7ad9b6424211e90bc2281a5560f4ab01065ba2",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "blobSha1": "e4750e5b5ff60e816b21ef35dba679a3f7627604",
+      "sha256": "485ab5537f98f2229a93e10db69e74e5b23c8903db0b8459bc910e8b69f62fbd",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+      "blobSha1": "40d252efd1fa6c616b81afb8a5b03bfa49974a75",
+      "sha256": "c081a326d25d22656380a0361f646100c409f2ed65bc726ca4f503032a3d982a",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "blobSha1": "6fb79bc249b910b39eabc8b7bd4d53cb1ab947aa",
+      "sha256": "2a78e103a87399acd95e605209ce0960a1e8fc05bcbe576fc64d82803fb99b0e",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+      "blobSha1": "8f2167c118cadb452ef744ccd90ab483a232805a",
+      "sha256": "6a70842eea515775860fdfc627817cc1ca79f6930b0e474cb807bbc5fe2d0367",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+      "blobSha1": "21191207d98fa91351febba475a46f3b1e6095f7",
+      "sha256": "6856acd77851a76a6d538549f432888722758e479926b0527a102bfcccf71832",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/taxonomy.json",
+      "blobSha1": "363101b2cf987e71e80526a7e720cbd2dbce4527",
+      "sha256": "234121a8177fe104ef9c3decce046395ee4069a28b81624efdb39984d2a6eff4",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/bindings.json",
+      "blobSha1": "681fd64918717925b3f3886ab7687d5958529a8d",
+      "sha256": "9754ff2e0a58cecfa6828a204fb00b989cb68e7f30f3c58d35d29d51338c3a55",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/pack.json",
+      "blobSha1": "a97bf01aba05014e7b159209dc74cdabb553af43",
+      "sha256": "65808f7f2b8bfb7b1ef1be9d35e2fd2395541a27fd75015e9fa5cef54f2b1b93",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+      "blobSha1": "2d671f23a174047286ceda021d773d3f7922f94f",
+      "sha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json",
+      "blobSha1": "f2dff82d1079c18cbb37ed2c49d49e88b373f52f",
+      "sha256": "ca1523d9fc65cd2b37c7b4cd99203e1785b231b4c09bc30a9cd7d9b3e86bf685",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/pack.json",
+      "blobSha1": "05da3e5f047afd21fe923dd2e6eef7174d14db2e",
+      "sha256": "52be86bc7ee036677c6a2359fa991c0a95362cb0730814be1230b6aa647a3c99",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json",
+      "blobSha1": "aac8ee94fd982755358eefc936cff50fec2d1601",
+      "sha256": "d47934ac1d6729dd42f434e19bf49b47e5175c4125d496541c88ef90946b8ec1",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json",
+      "blobSha1": "9f650c46d1b42a7b05951465dc5c124e1b0ac963",
+      "sha256": "5d11705a488f3de996a1a0be10154168748299015052e6d5e1b19d7037817fb9",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/pack.json",
+      "blobSha1": "f888794056a183bcfe55759b738dfae35f30f4e3",
+      "sha256": "19198198adf5cee0fda38708ae71313272d60a854afeb71a750fa0a41945b552",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+      "blobSha1": "0dff04fc3f75a1d93a9f8c2a4f83f8165fe63421",
+      "sha256": "f39e9445169d2c0f42d38a4bd1e3c41219e7e03f28b9a41ab4d76542f638e520",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/bindings.json",
+      "blobSha1": "f0da1e32a7f1ffc539595abf3844deffecb7e37c",
+      "sha256": "ba5f1e2fa976ef7434fae7e461b1228df6f5b0ce07043e1448a291e6233b9149",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/pack.json",
+      "blobSha1": "cb7c91719a432bf6d6f447d7f9d35cd5eb7eaa3e",
+      "sha256": "71a532845d684687fd85992737452fda79537804ddc5d7aad72eb4d3fc0a091f",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/taxonomy.json",
+      "blobSha1": "3496603694ec3ec27e952bb869eab4ae75371bfe",
+      "sha256": "e00d94231656f828f82df3e4523135aaf420c4cd1cf3b577b964a864608226da",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "blobSha1": "2d6f40082bf6f97cfbb93ec853fc39f5028833ff",
+      "sha256": "997347340a7dbd1ae05c1f70935aa23a125b9bd7aad3a08a463bd2fb85af55f1",
+      "boundMain": "738af248bd62813a572ac81725892b3f12ee2beb"
+    }
+  ],
+  "noChanges": {
+    "source": true,
+    "canonical": true,
+    "runtime": true,
+    "trackedDocs": true,
+    "gitIndexAndRefs": true,
+    "api": true
+  }
+}

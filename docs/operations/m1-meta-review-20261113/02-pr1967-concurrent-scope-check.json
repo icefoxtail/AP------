@@ -1,0 +1,700 @@
+{
+  "schemaVersion": "exam-metadata-concurrent-pr-scope-check-v1",
+  "status": "READ_ONLY_SCOPE_CHECK_COMPLETE",
+  "observedAt": "2026-11-13T16:36:56.129Z",
+  "inspectedPullRequest": {
+    "number": 1967,
+    "url": "https://github.com/icefoxtail/AP------/pull/1967",
+    "state": "open",
+    "merged": false,
+    "draft": false,
+    "head": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+    "headParent": "281b83f0326edcdb9dbfb5f121c03f068d7aad20",
+    "base": "main",
+    "apiBaseSha": "57bd2b9c4a1d028c531a1dee86446fedd895e62d",
+    "mergeableObservations": [
+      false,
+      true
+    ],
+    "latestMergeable": true,
+    "headUnchangedAcrossTwoApiReads": true,
+    "changedFileCount": 10,
+    "changedPaths": [
+      ".archive-meta-register/inbox/m1-shinheung-meta-closeout-20261113-bf-r1.json",
+      "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+      "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "docs/operations/m1-s2-meta-closeout-20261113-bf/01-shinheung-rationale-review.json",
+      "docs/operations/m1-s2-meta-closeout-20261113-bf/02-shinheung-auxiliary-review.json",
+      "docs/operations/m1-s2-meta-closeout-20261113-bf/09-shinheung-only-metadata-approval-r2.json",
+      "docs/operations/m1-s2-meta-closeout-20261113-bf/10-shinheung-only-source-integration.json",
+      "docs/operations/m1-s2-meta-closeout-20261113-bf/11-shinheung-classification-audit-ledger.json",
+      "docs/operations/m1-s2-meta-closeout-20261113-bf/12-shinheung-native-preflight.json",
+      "tests/archive-main-merge-meta.test.mjs"
+    ],
+    "apiMethods": [
+      "get_pr_info",
+      "list_pr_changed_filenames"
+    ],
+    "ownerTaskAdopted": false
+  },
+  "latestRemoteMain": {
+    "sha": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+    "method": "git ls-remote origin refs/heads/main",
+    "observedTwiceSame": true,
+    "objectReadAvailable": true,
+    "shinheungSource": {
+      "gitRef": "51cfb3f6fdaf3600ad06aa298d109093ad0b6b45",
+      "rawSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+      "gitBlobSha1": "a8de75bc9cc2b6a4479866d75b8ebec637404a04"
+    },
+    "sourceStillOurHistoricalCloseoutBytes": true,
+    "refreshRequiredBeforeFutureRegistration": true
+  },
+  "sourceDelta": {
+    "path": "archive/exams/original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "before": {
+      "gitRef": "281b83f0326edcdb9dbfb5f121c03f068d7aad20",
+      "rawSha256": "ed814badbe74c42dc9c1908ad8094fbf9bbe2f3fed7c6cfdafbf2cac88e6b4ef",
+      "gitBlobSha1": "a8de75bc9cc2b6a4479866d75b8ebec637404a04"
+    },
+    "after": {
+      "gitRef": "a52b2d5d440a9f03eb6a22f8a11cb84df045a6f2",
+      "rawSha256": "2f1ab79eba940498b5c575ad1509a038b3f2dabd390823177635d83937fe4b56",
+      "gitBlobSha1": "f1a73e96053d17564b42672415ca6bfc5b73cb2c"
+    },
+    "questions": 24,
+    "changedQuestions": 24,
+    "changedFieldValues": 56,
+    "fieldCounts": {
+      "integrationPattern": 18,
+      "integrationReason": 24,
+      "crossConceptKeys": 10,
+      "primaryMethod": 1,
+      "decisiveStep": 2,
+      "conditionKeys": 1
+    },
+    "fieldOrdinals": {
+      "integrationPattern": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        14,
+        15,
+        16,
+        17,
+        20,
+        21,
+        22
+      ],
+      "integrationReason": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "crossConceptKeys": [
+        2,
+        10,
+        12,
+        13,
+        15,
+        16,
+        18,
+        19,
+        23,
+        24
+      ],
+      "primaryMethod": [
+        3
+      ],
+      "decisiveStep": [
+        3,
+        6
+      ],
+      "conditionKeys": [
+        11
+      ]
+    },
+    "studentDataChangedQuestions": 0,
+    "allOtherParsedFieldsSha256Before": "a4ebcbbaf8a12d98bb2a01a1ad91f7d8013a3791928502d3898d2dce25c5fdda",
+    "allOtherParsedFieldsSha256After": "a4ebcbbaf8a12d98bb2a01a1ad91f7d8013a3791928502d3898d2dce25c5fdda",
+    "allOtherParsedFieldsUnchanged": true,
+    "examTitleUnchanged": true,
+    "difficultyUnchanged24": true,
+    "sourceReviewStatusUnchanged24": true,
+    "tagStatusAndConfidenceUnchanged24": true,
+    "nativeHierarchyPtTplAndRpmKeysUnchanged24": true,
+    "assetFilesChangedInPr": 0,
+    "changes": [
+      {
+        "sourceOrdinal": 1,
+        "changedFields": [
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "NONE"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 2,
+        "changedFields": [
+          "crossConceptKeys",
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "crossConceptKeys": {
+            "before": [],
+            "after": [
+              "CC_STRAIGHT_ANGLE"
+            ]
+          },
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "SEQUENTIAL"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 3,
+        "changedFields": [
+          "integrationPattern",
+          "primaryMethod",
+          "decisiveStep",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "NONE"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 4,
+        "changedFields": [
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "SEQUENTIAL"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 5,
+        "changedFields": [
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "NONE"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 6,
+        "changedFields": [
+          "integrationPattern",
+          "decisiveStep",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "NONE"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 7,
+        "changedFields": [
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "NONE"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 8,
+        "changedFields": [
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "SEQUENTIAL",
+            "after": "NONE"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 9,
+        "changedFields": [
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "NONE"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 10,
+        "changedFields": [
+          "crossConceptKeys",
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "crossConceptKeys": {
+            "before": [],
+            "after": [
+              "CC_TRIANGLE_INEQUALITY",
+              "CC_TRIANGLE_ANGLE_SUM"
+            ]
+          },
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "CASE_BRANCH"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 11,
+        "changedFields": [
+          "conditionKeys",
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "conditionKeys": {
+            "before": [],
+            "after": [
+              "COND_NATURAL_NUMBER",
+              "COND_RANGE"
+            ]
+          },
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "CASE_BRANCH"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 12,
+        "changedFields": [
+          "crossConceptKeys",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "crossConceptKeys": {
+            "before": [],
+            "after": [
+              "CC_EQUILATERAL_TRIANGLE"
+            ]
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 13,
+        "changedFields": [
+          "crossConceptKeys",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "crossConceptKeys": {
+            "before": [],
+            "after": [
+              "CC_ANGLE_RELATIONS"
+            ]
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 14,
+        "changedFields": [
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "NONE"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 15,
+        "changedFields": [
+          "crossConceptKeys",
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "crossConceptKeys": {
+            "before": [],
+            "after": [
+              "CC_PARALLEL_LINE_ANGLES",
+              "CC_ISOSCELES_TRIANGLE"
+            ]
+          },
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "SEQUENTIAL"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 16,
+        "changedFields": [
+          "crossConceptKeys",
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "crossConceptKeys": {
+            "before": [],
+            "after": [
+              "CC_ISOSCELES_TRIANGLE"
+            ]
+          },
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "SEQUENTIAL"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 17,
+        "changedFields": [
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "NONE"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 18,
+        "changedFields": [
+          "crossConceptKeys",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "crossConceptKeys": {
+            "before": [],
+            "after": [
+              "CC_EQUILATERAL_TRIANGLE",
+              "CC_TRIANGLE_ANGLE_SUM"
+            ]
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 19,
+        "changedFields": [
+          "crossConceptKeys",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "crossConceptKeys": {
+            "before": [],
+            "after": [
+              "CC_VERTICAL_ANGLES"
+            ]
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 20,
+        "changedFields": [
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "SEQUENTIAL",
+            "after": "NONE"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 21,
+        "changedFields": [
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "NONE"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 22,
+        "changedFields": [
+          "integrationPattern",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "integrationPattern": {
+            "before": "DIRECT",
+            "after": "NONE"
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 23,
+        "changedFields": [
+          "crossConceptKeys",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "crossConceptKeys": {
+            "before": [],
+            "after": [
+              "CC_EQUILATERAL_TRIANGLE",
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      {
+        "sourceOrdinal": 24,
+        "changedFields": [
+          "crossConceptKeys",
+          "integrationReason"
+        ],
+        "auxiliaryChanges": {
+          "crossConceptKeys": {
+            "before": [],
+            "after": [
+              "CC_EQUILATERAL_TRIANGLE",
+              "CC_TRIANGLE_ANGLE_SUM"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "sourceEnumCorrection": {
+    "authority": {
+      "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+      "sha256": "11889c08f041e0ac9ed3e131c3119369d51fb53d3704eaa637482894190d24cf"
+    },
+    "allowed": [
+      "NONE",
+      "SEQUENTIAL",
+      "INTERDEPENDENT",
+      "REINTERPRETATION",
+      "CASE_BRANCH",
+      "DEEP_COMPOSITE"
+    ],
+    "beforeCounts": {
+      "DIRECT": 16,
+      "SEQUENTIAL": 8
+    },
+    "afterCounts": {
+      "NONE": 12,
+      "SEQUENTIAL": 10,
+      "CASE_BRANCH": 2
+    },
+    "invalidBeforeOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      14,
+      15,
+      16,
+      17,
+      21,
+      22
+    ],
+    "invalidAfterOrdinals": [],
+    "validToValidChangedOrdinals": [
+      8,
+      20
+    ],
+    "finding": "The existing DIRECT values are actually removed; this conclusion comes from source values and canonical enums, not the PR title. Q8/Q20 additionally change valid SEQUENTIAL to NONE."
+  },
+  "request": {
+    "path": ".archive-meta-register/inbox/m1-shinheung-meta-closeout-20261113-bf-r1.json",
+    "requestId": "m1-shinheung-meta-closeout-20261113-bf-r1",
+    "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+    "rawSha256": "d5eaebc7e756eb076078e685649bbcd87eefaef7b7f7e4f54a1b5a28ef1f6c55",
+    "canonicalStableJsonSha256": "e8368cd95a8e5820ec4fa312bbeb6adc1f0d10f32564f52f7a84e4816a7671c1",
+    "sourceArchiveFile": "original/middle/m1/2mid/26_신흥중_2학기_중간_중1_기출.js",
+    "expectedSourceBlobSha1": "f1a73e96053d17564b42672415ca6bfc5b73cb2c",
+    "expectedSourceMatchesHeadBlob": true,
+    "expectedQuestionCount": 24,
+    "itemCount": 24,
+    "uniqueUidCount": 24,
+    "sourceOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "registryChangesCount": 0,
+    "approvalType": "FINAL_QA",
+    "metadataReviewed": true,
+    "deltaEqualsSource": true,
+    "exactCrosswalkParentRefCount": 22,
+    "parentOnlyDebtOrdinals": [
+      8,
+      10
+    ],
+    "crosswalkEvidence": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "expectedSha256": [
+        "f43c66b50f9b7bb188114f6105cc173ad1e5895f0aa403a902e27510738fb8da"
+      ],
+      "currentMainSha256": "f43c66b50f9b7bb188114f6105cc173ad1e5895f0aa403a902e27510738fb8da"
+    }
+  },
+  "autoMetaDirectCodeChange": {
+    "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+    "headSha256": "4ffb982960da1c72aca906dc8977d76b1f2a37d9f63debe187559ce7a62a1f9f",
+    "functions": {
+      "activeBindingContext": 112,
+      "nativeReviewReceipt": 59,
+      "planQuestion": 135
+    },
+    "effect": "Exact ACTIVE binding.ownerPack, falling back to PT owner only when absent, selects runtime owner/version and native receipt revision. Cross-pack PT/TPL definitions remain required ACTIVE under a matching definition owner. Binding-owner canonical document/version/curriculum/standardCourse/courseKey scope and existing runtime owner are checked.",
+    "shinheungQ3": "GEOMETRY_EQUATIONS defines PT/TPL; the MIDDLE1 binding owns native runtime. This is the concrete interaction stated by the request owner and implemented by the diff.",
+    "futureWangunImpact": "Shared AutoMeta code changes can affect post-reviewed native reuse. If this code merges before Wangun, final target23 Consumer/native-reuse evidence must use that actual code; this audit did not execute it.",
+    "testsChanged": "tests/archive-main-merge-meta.test.mjs",
+    "testsExecutedByThisAudit": false
+  },
+  "concurrency": {
+    "sourceOrRequestPathOverlapWithWangun": false,
+    "sharedNativeRegistryDefinitionsSubmitted": 0,
+    "courseTransaction": {
+      "currentMainReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-proportion-course-spelling-20261113.binding-course-correction.json",
+        "sha256": "6533efaaeb1684991b992e10153d7db9eb09790f762b906093df72f3bb37beb6",
+        "requestId": "m1-proportion-course-spelling-20261113",
+        "status": "CORRECTED_EXISTING_BINDING",
+        "approvalCreated": false,
+        "packVersionAfter": "1.0.6",
+        "protectedFileCount": 104
+      },
+      "courseInboxCount": 0,
+      "samePassRiskActiveAtObservedMain": false,
+      "conditionalRisk": "If a course correction and a reviewed exam were applied in the same pass, the exam can change global metadata/identity/runtime raw hashes protected by the correction. The correction verifies those after the shared rebuild. A prior completed/consumed correction receipt is historical evidence, not a permanent prohibition on later approved changes.",
+      "evidence": [
+        "register-binding-course-correction.mjs:facts() binds all compiler inputs, metadata, identity, runtime packs",
+        "register-binding-course-correction.mjs:checkReceiptFiles() checks protected/output hashes and exact runtime records",
+        "tools/ci/reviewed-meta-register-pass.sh:sorted inbox applications precede shared rebuild and per-request projection checks"
+      ]
+    },
+    "crosswalkHashDependency": {
+      "activeFrozenReference": true,
+      "sharedPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "expectedSha256": "f43c66b50f9b7bb188114f6105cc173ad1e5895f0aa403a902e27510738fb8da",
+      "wangunPlan": {
+        "path": "docs/operations/m1-meta-review-20261113/02-wangun-crosswalk-plan-rev2.json",
+        "sha256": "1e7b6fc674c644f790ec7531efa45d5669d55cf9fc9076a040f963dbcd01239b",
+        "state": "FINAL_DRAFT_NOT_APPLIED",
+        "appendRows": 15
+      },
+      "conditionalFailure": "Wangun additions change this whole-file hash. If applied first, Shinheung initial evidence validation fails; if both apply in one pass, Shinheung later replay/projection can fail after the shared change. Exact nonoverlapping question UIDs do not remove this dependency.",
+      "codeEvidence": {
+        "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+        "function": "registerReviewedExamV2",
+        "evidenceCheckLines": "1801-1812",
+        "replayBranchLine": 1841,
+        "description": "Every item evidence raw SHA is checked before the receipt/replay/verifyProjection branch."
+      },
+      "recommendedSequence": "Allow the Shinheung owner to close its request/writer first, then generate Wangun evidence from fresh main. Otherwise the owning task must refresh its own frozen request. No other-owner request is edited here."
+    }
+  },
+  "boundaries": {
+    "prClaimsOfTestsOrPreflightNotIndependentlyRerun": true,
+    "readOnlySourceVmUsedForStructuralDiff": true,
+    "noSemanticReread": true,
+    "noMathQa": true,
+    "noR1R2R3": true,
+    "noSourceCanonicalOrTrackedEdits": true,
+    "noGitIndexOrApiWrites": true,
+    "noCommentsOrMerges": true,
+    "noApprovalCreated": true,
+    "firstCloseoutRemainsHistoricalVerifiedSnapshot": true,
+    "actualPrRegistrationNotClaimed": true
+  },
+  "nextAction": "Root refreshes main and concurrent PR/writer status before Wangun registration; use current corrected binding and avoid a same-pass frozen crosswalk evidence collision."
+}

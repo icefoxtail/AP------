@@ -222,7 +222,7 @@
   }
   const coord=[];
   coord.push(make({
-    id:'coord-order',tier:'concept',title:'순서쌍과 두 좌표축',types:['A01'],
+    id:'coord-order',tier:'concept',title:'순서쌍과 두 좌표축',types:['A01'],grid:{step:1},axes:{tickStep:1},nativeFocus:{x:[-5,5],y:[-5,5]},shortFocus:{x:[-5,5],y:[-5,5]},
     vars:{x:V('점의 가로 좌표',3,-5,5),y:V('점의 세로 좌표',2,-5,5)},
     model:v=>({P:P(v.x,v.y)}),question:()=> '점 P를 움직여 보세요. 순서쌍의 첫째 수와 둘째 수는 무엇을 나타낼까요?',
     guide:'노란 점 P를 움직여 두 좌표와 축까지의 보조선을 비교하세요.',
@@ -232,7 +232,7 @@
     verify:(v,m)=>[!close(m.P.x,v.x)&&'가로 좌표 불일치',!close(m.P.y,v.y)&&'세로 좌표 불일치'].filter(Boolean)
   }));
   coord.push(make({
-    id:'quadrants-boundary',tier:'concept',title:'사분면과 축 위의 점',types:['A04'],
+    id:'quadrants-boundary',tier:'concept',title:'사분면과 축 위의 점',types:['A04'],grid:{step:1},axes:{tickStep:1},nativeFocus:{x:[-5,5],y:[-5,5]},shortFocus:{x:[-5,5],y:[-5,5]},
     vars:{x:V('점의 가로 좌표',-3,-5,5),y:V('점의 세로 좌표',2,-5,5)},
     presets:[{label:'축 위로',values:{x:0,y:3}},{label:'원점으로',values:{x:0,y:0}},{label:'다른 위치',values:{x:4,y:-2}}],
     model:v=>({P:P(v.x,v.y),q:quadrant(P(v.x,v.y))}),
@@ -243,7 +243,7 @@
     verify:(v,m)=>[(v.x===0||v.y===0)&&m.q!=='어느 사분면에도 속하지 않음'&&'축 위 사분면 오분류'].filter(Boolean)
   }));
   coord.push(make({
-    id:'point-move',tier:'concept',title:'좌표평면 위 점의 이동',source:{kind:'supplement',types:[],refs:[],label:'좌표 이동 개념 보충',reason:'수집 기출에 적합한 직접 조작 장면이 없어 좌표의 변화를 보충합니다.'},
+    id:'point-move',tier:'concept',title:'좌표평면 위 점의 이동',grid:{step:1},axes:{tickStep:1},source:{kind:'supplement',types:[],refs:[],label:'좌표 이동 개념 보충',reason:'수집 기출에 적합한 직접 조작 장면이 없어 좌표의 변화를 보충합니다.'},
     vars:{ax:V('출발점 가로',-2,-4,2),ay:V('출발점 세로',1,-3,3),dx:V('가로 이동량',4,-4,4),dy:V('세로 이동량',-3,-4,4)},
     model:v=>({A:P(v.ax,v.ay),B:P(v.ax+v.dx,v.ay+v.dy)}),focus:(v,m)=>M.box([m.A,m.B],{pad:2,minSpan:10}),
     question:(v,m)=>T`점 $A${xy(m.A)}$를 가로로 $${F(v.dx)}$, 세로로 $${F(v.dy)}$만큼 옮깁니다. 도착점 B를 확인하세요.`,
@@ -285,23 +285,25 @@
     verify:(v,m)=>[m.h<-.0001||m.h>4.0001?'물높이 범위 오류':false,!close(m.height(m.total),4)&&'완료높이 불일치'].filter(Boolean)
   }));
   coord.push(make({
-    id:'read-coordinates',tier:'basic',title:'점의 좌표를 읽기',types:['A01'],
+    id:'read-coordinates',tier:'basic',title:'점의 좌표를 읽기',types:['A01'],grid:{step:1},axes:{tickStep:1},nativeFocus:{x:[-5,5],y:[-5,5]},shortFocus:{x:[-5,5],y:[-5,5]},
     vars:{x:V('점의 가로 위치',4,-5,5,1,true),y:V('점의 세로 위치',3,-5,5,1,true)},presets:[{label:'다른 위치',values:{x:-3,y:2}},{label:'축 위의 점',values:{x:0,y:-4}}],
     model:v=>({P:P(v.x,v.y)}),question:()=> '그림의 점 P의 좌표를 순서쌍으로 나타내세요.',guide:'점을 움직여 새 문제를 만들고 가로·세로 순서대로 좌표를 읽으세요.',
     steps:(v,m)=>['P에서 두 축에 보조선을 내려요.',T`가로축에서 $${F(v.x)}$를 읽어요.`,T`세로축에서 $${F(v.y)}$를 읽어요.`,T`따라서 $P${xy(m.P)}$예요.`],answer:(v,m)=>T`$P${xy(m.P)}$`,
     draw:(b,v,m,c)=>{M.drag(b,c,'P',m.P,{x:'x',y:'y',label:'P'});if(c.step>=1)M.projection(b,m.P);}
   }));
   coord.push(make({
-    id:'axis-pair',tier:'basic',title:'축 위의 점과 같은 순서쌍',types:['A02','A03'],state:{mode:0},
+    id:'axis-pair',tier:'basic',title:'축 위의 점과 같은 순서쌍',types:['A02','A03'],state:{mode:0},grid:{step:1},axes:{tickStep:1},
     vars:{a:V('조건 바꾸기',3,1,5,1,true),b:V('둘째 조건 바꾸기',2,1,5,1,true)},presets:[{label:'좌표축 조건',values:{mode:0,a:3,b:2}},{label:'같은 순서쌍',values:{mode:1,a:2,b:1}},{label:'새로운 조건',values:{a:4,b:3}}],
     model:v=>({A:P(2*v.a,0),B:P(0,-2*v.b),Q:P(3*v.a,2*v.b+2)}),focus:(v,m)=>M.box(v.mode?[m.Q]:[m.A,m.B],{minSpan:12,pad:2}),
+    nativeFocus:(v,m)=>M.box(v.mode?[m.Q]:[m.A,m.B],{minSpan:10,pad:2}),
+    shortFocus:(v,m)=>M.box(v.mode?[m.Q]:[m.A,m.B],{minSpan:10,pad:2}),
     question:v=>v.mode?T`$(3a,2b+2)=(${F(4*v.a)}-a,-2b+${F(4*v.b+2)})$일 때 $a,b$를 구하세요.`:T`$A(2a,a-${F(v.a)})$는 x축, $B(b-${F(v.b)},-2b)$는 y축 위에 있습니다. $a,b$를 구하세요.`,
     guide:'조건 프리셋을 바꾸어 축의 0인 좌표와 순서쌍의 같은 성분을 비교하세요.',
     steps:v=>v.mode?['같은 순서쌍은 같은 위치의 수가 같아요.',T`첫째 성분에서 $3a=${F(4*v.a)}-a$예요.`,T`둘째 성분에서 $2b+2=-2b+${F(4*v.b+2)}$예요.`,T`$a=${F(v.a)},\ b=${F(v.b)}$예요.`]:['x축 위의 점은 세로 좌표가 0이에요.',T`$a-${F(v.a)}=0$을 세워요.`,T`y축 위에서는 $b-${F(v.b)}=0$이에요.`,T`$a=${F(v.a)},\ b=${F(v.b)}$예요.`],
     answer:v=>T`$a=${F(v.a)},\ b=${F(v.b)}$`,draw:(b,v,m,c)=>{if(v.mode){M.point(b,m.Q,'두 순서쌍');if(c.step)M.projection(b,m.Q);}else{b.seg(O,m.A,{color:'sky',width:3});b.seg(O,m.B,rose);M.point(b,m.A,'A');M.point(b,m.B,'B',{color:'rose'});if(c.step>=1){M.label(b,P(m.A.x,0),'y=0',{dy:23});M.label(b,P(0,m.B.y),'x=0',{dx:32,dy:14});}}}
   }));
   coord.push(make({
-    id:'axis-distance',tier:'basic',title:'점과 좌표축 사이의 거리',types:['A06'],vars:{x:V('점의 가로 좌표',5,-5,5),y:V('점의 세로 좌표',4,-5,5)},model:v=>({P:P(v.x,v.y),dx:Math.abs(v.x),dy:Math.abs(v.y)}),
+    id:'axis-distance',tier:'basic',title:'점과 좌표축 사이의 거리',types:['A06'],grid:{step:1},axes:{tickStep:1},nativeFocus:{x:[-5,5],y:[-5,5]},shortFocus:{x:[-5,5],y:[-5,5]},vars:{x:V('점의 가로 좌표',5,-5,5),y:V('점의 세로 좌표',4,-5,5)},model:v=>({P:P(v.x,v.y),dx:Math.abs(v.x),dy:Math.abs(v.y)}),
     question:(v,m)=>T`$P${xy(m.P)}$에서 x축까지, y축까지의 거리를 각각 구하세요.`,guide:'점을 다른 사분면으로 옮겨도 거리가 음수가 되지 않는 이유를 보세요.',
     steps:(v,m)=>['축과 수직인 가장 짧은 선분을 그어요.',T`x축까지의 거리는 $|${F(v.y)}|=${F(m.dy)}$예요.`,T`y축까지의 거리는 $|${F(v.x)}|=${F(m.dx)}$예요.`,'거리는 0 이상이므로 좌표의 절댓값을 써요.'],answer:(v,m)=>T`x축까지 $${F(m.dy)}$, y축까지 $${F(m.dx)}$`,
     draw:(b,v,m,c)=>{b.seg(m.P,P(v.x,0),{color:'amber',width:3});b.seg(m.P,P(0,v.y),{color:'rose',width:3});M.drag(b,c,'P',m.P,{x:'x',y:'y',label:'P'});if(c.solved){M.label(b,P(v.x,v.y/2),N(m.dy),{dx:15,color:'amber'});M.label(b,P(v.x/2,v.y),N(m.dx),{dy:-15,color:'rose'});}},
@@ -323,7 +325,7 @@
     draw:(b,v,m,c)=>{m.changes.forEach((y,x)=>M.point(b,P(x,y),'',{r:4,color:x===v.week?'amber':'sky'}));if(c.step>=1)M.projection(b,m.P);if(c.step>=3)M.label(b,P(3,2),'기준 몸무게 9kg',{color:'muted'});},verify:(v,m)=>[!close(m.actual-m.P.y,9)&&'기준값 불일치'].filter(Boolean)
   }));
   coord.push(make({
-    id:'quantity-table',tier:'basic',title:'상황·표·순서쌍 연결',types:['A12'],vars:{count:V('공고문의 수(장)',3,1,6)},model:v=>({P:P(v.count,v.count+1),points:Array.from({length:6},(_,i)=>P(i+1,i+2))}),focus:{x:[-1,8],y:[-1,9]},axes:{xLabel:'공고문(장)',yLabel:'압정(개)'},
+    id:'quantity-table',tier:'basic',title:'상황·표·순서쌍 연결',types:['A12'],vars:{count:V('공고문의 수(장)',3,1,6)},model:v=>({P:P(v.count,v.count+1),points:Array.from({length:6},(_,i)=>P(i+1,i+2))}),focus:{x:[-1,8],y:[-1,9]},grid:{step:1},axes:{xLabel:'공고문(장)',yLabel:'압정(개)',tickStep:1},
     question:v=>T`공고문 한 장에 압정 2개가 필요하고, 이어 붙일 때마다 압정을 1개 추가합니다. 공고문 $${F(v.count)}$장에 필요한 압정 수를 구하세요.`,
     guide:'장 수를 바꾸어 표에 해당하는 점을 확인하세요. 공고문은 자연수 장만 셉니다.',
     steps:()=>['처음 한 장에는 압정 2개가 필요해요.','한 장을 더할 때마다 압정 1개가 늘어요.','공고문 수보다 압정 수가 항상 1개 많아요.','두 양의 관계는 y=x+1이에요.'],answer:(v,m)=>T`압정 $${F(m.P.y)}$개 · 순서쌍 $${xy(m.P)}$`,
@@ -341,7 +343,7 @@
     verify:(v,m)=>[m.q!=='제2사분면'&&'부호 추론 오류',v.mode&&(m.a+m.b>=0||m.a*m.b<=0)&&'합·곱 조건 오류'].filter(Boolean)
   }));
   coord.push(make({
-    id:'coordinate-area',tier:'advanced',title:'좌표로 구하는 도형의 넓이',types:['A07'],state:{mode:0},vars:{width:V('가로 간격',4,2,10,1,true),height:V('왼쪽 세로 길이',5,4,8,1,true)},
+    id:'coordinate-area',tier:'advanced',title:'좌표로 구하는 도형의 넓이',types:['A07'],state:{mode:0},grid:{step:1},axes:{tickStep:1},vars:{width:V('가로 간격',4,2,10,1,true),height:V('왼쪽 세로 길이',5,4,8,1,true)},
     presets:[{label:'삼각형',values:{mode:0,width:4,height:5}},{label:'사다리꼴',values:{mode:1,width:10,height:7}}],
     model:v=>{const left=-1,bottom=-1,A=P(left,bottom+v.height),B=P(left,bottom),C=P(left+v.width,bottom),D=P(left+v.width,bottom+3),Q=P(left+v.width,0);return {A,B,C,D,Q,area:v.mode?(v.height+3)*v.width/2:v.width*v.height/2};},
     focus:(v,m)=>M.box([m.A,m.B,m.C,m.D],{pad:2,minSpan:10}),

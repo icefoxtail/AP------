@@ -327,7 +327,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "primaryMethod": "0<a<3으로 부호를 판단하고 √(t²)=|t|를 쓴다.",
-    "decisiveStep": "|3-a|+|a|=(3-a)+a=3."
+    "decisiveStep": "|3-a|+|a|=(3-a)+a=3.",
+    "solutionImage": "assets/images/22_풍덕중_1학기_중간_중3_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 0과 3이 열린 끝점인 구간을 나타낸다. a의 정확한 위치는 특정하지 않는다.",
+    "solutionImageCaption": "0<a<3이므로 |3−a|+|a|=(3−a)+a=3이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -364,7 +368,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "primaryMethod": "1<√2<2를 이용해 모든 수를 정렬한다.",
-    "decisiveStep": "1-√2<1/2<1<√2<5-√2."
+    "decisiveStep": "1-√2<1/2<1<√2<5-√2.",
+    "solutionImage": "assets/images/22_풍덕중_1학기_중간_중3_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 주어진 다섯 수를 정확한 위치에 표시한 수직선이다.",
+    "solutionImageCaption": "1−√2<1/2<1<√2<5−√2이므로 세 번째 수는 1이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -471,7 +479,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "MULTI_STEP_COUPLING",
     "primaryMethod": "겉넓이 2(ab+bc+ca)에 변 길이를 대입하고 근호를 정리한다.",
-    "decisiveStep": "2(√10+5√5+8√2)=2√10+10√5+16√2."
+    "decisiveStep": "2(√10+5√5+8√2)=2√10+10√5+16√2.",
+    "solutionImage": "assets/images/22_풍덕중_1학기_중간_중3_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 직육면체의 세 방향 길이는 각각 √2, √5, 3+√10이다. 세 종류의 직사각형 면이 다른 색으로 나타난다.",
+    "solutionImageCaption": "겉넓이는 마주 보는 세 면 쌍의 넓이를 더한 2{√2·√5+√5(3+√10)+√2(3+√10)}이다. 이를 정리하면 2√10+10√5+16√2이며 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -717,11 +729,11 @@ window.questionBank = [
     "category": "인수분해",
     "content": "$x^2$의 계수가 2인 어떤 이차식을 민준이는 상수항을 잘못 보고 $(x-2)(2x-3)$으로 인수분해 하였고, 민서는 일차항의 계수를 잘못 보고 $(x+3)(2x+1)$로 인수분해 하였다. 처음 이차식을 바르게 인수분해 한 것은?",
     "choices": [
-      "$(x-3)(2x-1)",
-      "$(x+3)(2x-1)",
-      "$(x+3)(2x+1)",
-      "$(x-3)(2x+1)",
-      "$(x+3)(2x-2)"
+      "$(x-3)(2x-1)$",
+      "$(x+3)(2x-1)$",
+      "$(x+3)(2x+1)$",
+      "$(x-3)(2x+1)$",
+      "$(x+3)(2x-2)$"
     ],
     "answer": "1",
     "solution": "민준이는 상수항만 잘못 보았으므로\n$(x-2)(2x-3)=2x^2-7x+6$에서 원래 식의 일차항은 $-7x$이다.\n민서는 일차항의 계수만 잘못 보았으므로\n$(x+3)(2x+1)=2x^2+7x+3$에서 원래 식의 상수항은 3이다.\n따라서 원래 식은 $2x^2-7x+3=(2x-1)(x-3)$이다.\n$\\therefore$ ①",
@@ -750,7 +762,7 @@ window.questionBank = [
   {
     "id": 20,
     "category": "제곱근과 실수",
-    "content": "다음 그림과 같이 가로의 길이가 $24cm$, 세로의 길이가 $xcm$인 직사각형 $ABCD$와 넓이가 같은 정사각형이 있다. 직사각형과 정사각형의 각 변의 길이는 모두 자연수일 때, 넓이가 가장 작은 정사각형의 한 변의 길이를 구하면?<div style=\"text-align:center; margin:12px 0;\"><svg width=\"300\" height=\"120\" viewBox=\"0 0 300 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"30\" width=\"120\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"80\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">24cm</text><text x=\"10\" y=\"63\" text-anchor=\"middle\" font-size=\"12\">xcm</text><text x=\"80\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">직사각형 ABCD</text><rect x=\"200\" y=\"30\" width=\"60\" height=\"60\" fill=\"none\" stroke=\"#000\" stroke-width=\"1.5\"/><text x=\"230\" y=\"105\" text-anchor=\"middle\" font-size=\"12\">한 변</text><text x=\"230\" y=\"25\" text-anchor=\"middle\" font-size=\"12\">정사각형</text></svg></div>",
+    "content": "다음 그림과 같이 가로의 길이가 $24cm$, 세로의 길이가 $xcm$인 직사각형 $ABCD$와 넓이가 같은 정사각형이 있다. 직사각형과 정사각형의 각 변의 길이는 모두 자연수일 때, 넓이가 가장 작은 정사각형의 한 변의 길이를 구하면?<div style=\"text-align:center; margin:12px 0;\"><img src=\"assets/images/22_풍덕중_1학기_중간_중3_기출/q20-problem-v2.svg\" alt=\"가로 24센티미터와 세로 x센티미터인 직사각형 ABCD\"></div>",
     "choices": [
       "12",
       "10",
@@ -782,6 +794,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "MULTI_STEP_COUPLING",
     "primaryMethod": "s²=24x와 소인수 짝수 지수 조건에서 최소 s를 찾는다.",
-    "decisiveStep": "24=2³×3이므로 최소 s=12이고 x=6."
+    "decisiveStep": "24=2³×3이므로 최소 s=12이고 x=6.",
+    "solutionImage": "assets/images/22_풍덕중_1학기_중간_중3_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형의 변 24 cm와 x cm, 한 변 s cm인 정사각형의 같은 넓이를 파란색으로 표시한 모식도이다.",
+    "solutionImageCaption": "정사각형의 변을 s라 하면 s²=24x이다. 24=2³×3이므로 자연수 s의 최소는 12이고 이때 x=6도 자연수이다. 따라서 정사각형 한 변의 길이는 12 cm, 정답은 ①이다.",
+    "solutionImageSize": "full"
   }
 ];

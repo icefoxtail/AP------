@@ -1,0 +1,299 @@
+{
+  "schemaVersion": "m1s2-independent-three-sample-plus-difficulty-v1",
+  "revision": 2,
+  "reviewer": "/root/meta_c",
+  "author": "/root/meta_b",
+  "sourceArchiveFile": "original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.js",
+  "sourceGitBlobSha": "2ca2ad4a59528586fbfaa0edb46de1a6f7d8080e",
+  "sampled": [
+    7,
+    17,
+    20
+  ],
+  "difficultySupplement": [
+    4,
+    11,
+    12,
+    15,
+    23
+  ],
+  "readOrder": "SOURCE_CONTENT_SOLUTION_AND_ORIGINAL_IMAGES_BEFORE_AUTHOR_SLOTS",
+  "scope": "THREE_QUESTIONS_ALL_META_AND_FIVE_DIFFICULTY_SUPPLEMENT_NOT_R1_R2",
+  "status": "PASS_THREE_SAMPLES_AND_FIVE_DIFFICULTY_SUPPLEMENTS_AFTER_MINOR_CORRECTIONS",
+  "boundInputs": {
+    "source": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/sources/archive/exams/original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.js",
+      "sha256": "6ea854115d78485666cf7291e6719a0e8edb08c4a0a3d48cdb6df50b555ee95d"
+    },
+    "review": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/reviews/24_매산중_2학기_중간_중1_기출/review.json",
+      "sha256": "326ee1f13de71380771f2c2cc653b076860e8340c1ebcd95931c2db3b1c7820c"
+    },
+    "raw": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/reviews/24_매산중_2학기_중간_중1_기출/full.4slot.json",
+      "sha256": "95e61b97328eb6f1039c3eabcf9aa475423a677f081a870a62cc9ca6e75649eb"
+    },
+    "compact": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/compact/archive/data/item-4slot/original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.4slot.json",
+      "sha256": "d4cc095f2271a555063ac5899a7acc92e2e708d865ccf937361bd608c1b74b44"
+    },
+    "proposal": {
+      "path": "/workspace/scratch/64695b8ede31/agent-b/reviews/24_매산중_2학기_중간_중1_기출/proposal.json",
+      "sha256": "bea2df7b85af6ebb186e432afd37d2b525feb42d19a3d21e7531c8102baf9f70"
+    }
+  },
+  "images": [
+    {
+      "ordinal": 4,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/maesan24-q4-image.png",
+      "sha256": "726c27067ce5c9a8132c9b9e708cccd3b7ceb59b184e78aeab7855d6a9ef28f3",
+      "actualView": true
+    },
+    {
+      "ordinal": 7,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/maesan24-q7-image.png",
+      "sha256": "ef3169618e583e3ebb51f5b1862205d49cae0821728292b7f0c76fed42a48539",
+      "actualView": true
+    },
+    {
+      "ordinal": 11,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/maesan24-q11-image.png",
+      "sha256": "f75bca1390f418995d515aa2124d765bb63cb466496a1a351bc6754d1959c513",
+      "actualView": true
+    },
+    {
+      "ordinal": 15,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/maesan24-q15-image.png",
+      "sha256": "913fe192cdfc38effa213d49ad39dba63e72e7f0fd3bc4c552c4115e54feb986",
+      "actualView": true
+    },
+    {
+      "ordinal": 17,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/maesan24-q17-image.png",
+      "sha256": "08989ed8468a748963d29a81f4b70ad0a7232d83ede4b51a7c54df1fd7adcb7c",
+      "actualView": true
+    },
+    {
+      "ordinal": 20,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/maesan24-q20-image.png",
+      "sha256": "f42794d191d6f359292fac6b82253e04ecba5e9f8a029e69d48880c0e4388cf0",
+      "actualView": true
+    },
+    {
+      "ordinal": 23,
+      "path": "/workspace/scratch/64695b8ede31/agent-c/cross/maesan24-q23-image.png",
+      "sha256": "518537681e70ecb6681b3b31aa26f295c0c01bb064efe6239d9d86ce2ea31db0",
+      "actualView": true
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 7,
+      "questionUid": "qid_v1_3cd854ea4a712a9475c3e3acc967b65c510dfcffbef214f3920b6d4dc1b16d19",
+      "metadataVerdict": "ACCEPT_EXISTING_PT_NEW_TPL_WITH_PARENT_AND_INTEGRATION_CORRECTION",
+      "reason": "수선·수선의 발·점과 직선 사이의 거리 정의를 여러 진술에 대조하는 유형이다. 지정한 한 수선분의 표시 길이를 직접 읽는 CORE와는 풀이 골격이 달라 기존 PT 아래 CLAIM_AUDIT 제안이 적절하다. 공식2015 RPM071의 L2는 위치 관계이고 machine parent도 M1-05-POSITION_RELATION이다.",
+      "requiredMetadataChanges": [
+        {
+          "field": "subUnitKey",
+          "before": "M1-05-BASIC_FIGURE",
+          "after": "M1-05-POSITION_RELATION",
+          "reason": "수직과 거리의 공식2015 RPM 부모에 맞추고 exact binding 누락은 등록대기로 별도 표시한다."
+        },
+        {
+          "field": "integrationPattern",
+          "before": "SEQUENTIAL",
+          "after": "NONE",
+          "reason": "각 보기의 독립 정의 판정은 주분류 내부의 처리이며 이전 보기의 산출값을 다음 단계로 전달하는 융합이 아니다."
+        }
+      ],
+      "definitionProposal": "PT 정의를 점과 직선 사이의 거리를 수선분으로 해석하고 수선·수선의 발·거리 진술을 판정하는 유형으로 일반화한다. 기존 CORE는 직접 길이 읽기로 유지하고 새 CLAIM_AUDIT와 구별한다.",
+      "difficultyVerdict": "KEEP_BUCKET2_LEVEL_HIGH_STRONG_CONFLICT_CONFIRMED",
+      "difficultyReason": "원그림의 직각 표시를 수선과 거리의 정의에 대응시키는 표준 해석이다. 복수 보기나5점이라는 응답 형식으로4를 부여할 근거가 없다. 2/B23 판단을 지지하되 기존상과 강한 차이는 BORDERLINE_ACCEPTABLE로 완화하지 않는다.",
+      "fourSlotVerdict": "ACCEPT_WITH_SPECIFIC_METHOD_NORMALIZATION",
+      "requiredFourSlotChanges": [
+        {
+          "slot": "method",
+          "before": "거리",
+          "after": "점과직선사이의거리",
+          "quoteSource": "solution",
+          "quote": "거리와 수선의 뜻으로",
+          "evidenceType": "IMPLIED",
+          "reason": "원보기는 점F와직선AB, 점C와직선AD의 거리를 명시한다. 원그림 직접 확인에 근거하여 결정 개념의 가장 구체적인 기존 용어462를 쓴다."
+        }
+      ],
+      "finalMetadataVerdict": "ACCEPTED_AFTER_REQUESTED_CORRECTIONS",
+      "finalFourSlotVerdict": "ACCEPTED"
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_02bdb9b9c1d6e3e3c616f3ae5a57f51a04c3bc92699c9ccfdde3f308ad0a67c3",
+      "metadataVerdict": "ACCEPT_STAR_TURNING_TEMPLATE_WITH_NATIVE_BINDING_DEBT",
+      "reason": "실제 그림은 네 수치각과 두 미지각이 표시된 여섯 꼭짓점의 교차 닫힌 경로이다. 별 경로 전체 회전과 표시각 보각의 관계라는 ACTIVE STAR/TURNING_ANGLE_TOTAL 구조를 적용할 수 있다. 내부점 두 삼각형 TPL은 맞지 않으며2015 exactbinding과leaf 누락을 등록대기로 유지한다.",
+      "requiredMetadataChanges": [
+        {
+          "field": "standardUnitOrder",
+          "before": 5,
+          "after": 6,
+          "reason": "standardUnitKey M1-06 및 평면도형 부모와 순서를 일치시킨다."
+        }
+      ],
+      "difficultyVerdict": "KEEP_BUCKET3_LEVEL_HIGH_BORDERLINE_ACCEPTABLE",
+      "difficultyReason": "교차 경로의 전체각 관계를 한 번 선택한 뒤 알려진 네 각을 제거한다. 원그림 구조 해석이 필요하나 여러 독립 비정형 구성을 연결하는4단계까지는 요구하지 않는다. 상/3 인접 예외를 수용한다.",
+      "fourSlotVerdict": "MINOR_CORRECTION_REQUIRED",
+      "requiredFourSlotChanges": [
+        {
+          "slot": "goal",
+          "action": "ADD",
+          "term": "각",
+          "quoteSource": "stem",
+          "quote": "$\\angle x+\\angle y$",
+          "reason": "합의 대상이 각임을 goal에 명시한다."
+        },
+        {
+          "slot": "method",
+          "action": "REMOVE_GENERIC_DUPLICATES",
+          "terms": [
+            "합",
+            "각"
+          ],
+          "keep": [
+            "회전각"
+          ],
+          "reason": "회전각이 결정 관계를 덮으며 합·각의 추가는 일상적인 덧셈과 대상을 중복할 뿐이다. 하나의 방법은 원그림과 기존 해설을 재읽은 단일 관계 적용 예외로 수용한다.",
+          "finalTreatment": "합 제거, 회전각 후보 유지. 각은 현행계약§10에 따른 같은 quote의 부모 병기로 유지하며 독립 방법으로 세지 않는다."
+        }
+      ],
+      "givenAssessment": "원본문이 그림만 지시하고 도형명이 텍스트에 없으므로 각 given을 허용하되 구체적인 별 교차경로는 primaryReason 및 실제 이미지 증거에 결속한다.",
+      "finalMetadataVerdict": "ACCEPTED_AFTER_REQUESTED_CORRECTIONS",
+      "finalFourSlotVerdict": "ACCEPTED"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "qid_v1_bed0ed241c60f7113af6f352452463081394e4163ea43eafccc7857b53f5168b",
+      "metadataVerdict": "ACCEPT_NEW_TPL_UNDER_EXISTING_TRIANGLE_ANGLE_CONDITION",
+      "reason": "내각과 외각 각각의2:1 분할을 두 미지각으로 표현하고 두 삼각형의 내각합에서 공통 차를 전달한다. 세 내각의 전체비 분배와 이등분선 TPL 또는 단일 교차점 맞꼭지각비 TPL과 구별되므로 새 INTERIOR_EXTERIOR_RATIO_TRANSFER 제안이 적절하다. 주분류 내부 내외각 계산으로NONE을 수용한다.",
+      "requiredMetadataChanges": [
+        {
+          "field": "standardUnitOrder",
+          "before": 5,
+          "after": 6,
+          "reason": "M1-06 부모와 순서를 일치시킨다."
+        }
+      ],
+      "difficultyVerdict": "KEEP_BUCKET3_LEVEL_HIGH_BORDERLINE_ACCEPTABLE",
+      "difficultyReason": "두 분할비를 미지수로 정리하고 동일한 차를 두 삼각형에서 연결하는 익숙한 각 관계의 연쇄이다. 표기와 해설 길이로4로 올리지 않는다. 상/3을 인접 허용한다.",
+      "fourSlotVerdict": "MINOR_CORRECTION_REQUIRED",
+      "requiredFourSlotChanges": [
+        {
+          "slot": "given",
+          "term": "삼각형",
+          "quoteSource": "solution",
+          "quote": "$\\triangle ABC$에서",
+          "reason": "기존 단일각60도 인용보다 실제 삼각형을 지시하는 직접 quote로 대상을 결속한다."
+        },
+        {
+          "slot": "method",
+          "before": "내각",
+          "after": "내각의합",
+          "quoteSource": "solution",
+          "quote": "$60^\\circ+3t+(180^\\circ-3s)=180^\\circ$",
+          "evidenceType": "IMPLIED",
+          "reason": "대상인 내각 대신 사용한 내각합 성질을 표시한다. 사전의 내각의합 alias를 확인하고 없으면 후보로 보존한다."
+        },
+        {
+          "slot": "method",
+          "action": "ADD",
+          "term": "평각",
+          "quoteSource": "solution",
+          "quote": "$B,C,E$가 한 직선 위이므로",
+          "evidenceType": "IMPLIED",
+          "reason": "외각 분할을 내각으로 연결하는180도 관계를 덮는다."
+        },
+        {
+          "slot": "condition",
+          "term": "비",
+          "quoteSource": "stem",
+          "quote": "$\\angle ABD=2\\angle DBC$, $\\angle ACD=2\\angle DCE$",
+          "reason": "주어진 두 비를 함께 정확 인용한다."
+        }
+      ],
+      "finalMetadataVerdict": "ACCEPTED_AFTER_REQUESTED_CORRECTIONS",
+      "finalFourSlotVerdict": "ACCEPTED"
+    }
+  ],
+  "difficultyOnly": [
+    {
+      "ordinal": 4,
+      "questionUid": "qid_v1_2b4931047bdbd2f493b0a4d0cff3f6de4726964ab4134ca290ccdf200a484a95",
+      "verdict": "KEEP_BUCKET1_LEVEL_MIDDLE_BORDERLINE_ACCEPTABLE",
+      "reason": "입체를 새로 구성하지 않고 표시된 모서리의 양 끝점과 연결된 모서리를 읽는 직접 관계 판정이다. 중/1 인접 예외를 수용한다."
+    },
+    {
+      "ordinal": 11,
+      "questionUid": "qid_v1_b5eb8305a7eabfec1ca3a8c8ee8c7ef57c763f2bdfe3db97002c040e80a18a2b",
+      "verdict": "KEEP_BUCKET2_LEVEL_LOW_BORDERLINE_ACCEPTABLE",
+      "reason": "평행선의 동위각·엇각 및 맞꼭지각을 한 번 추적하여 같은 각 묶음을 판별한다. 하/2의 인접 예외를 수용한다."
+    },
+    {
+      "ordinal": 12,
+      "questionUid": "qid_v1_dd82101dfcf64a7a6dbaf5267f9347947bb3281e4c1275b4bc4b24b69caf0cfa",
+      "verdict": "KEEP_BUCKET2_LEVEL_LOW_BORDERLINE_ACCEPTABLE",
+      "reason": "가장 긴 변9라는 방향성 있는 조건을 세변조건4+x>9로 해석하고 경계값을 배제한다. 조건 해석이 있는 표준 적용으로2를 보존하고 하/2를 인접 허용한다."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_a1a90308af82ee31394cb64c4dc042a6c653970e818db50445f9fbfcfad8d4fc",
+      "verdict": "KEEP_BUCKET3_LEVEL_HIGH_BORDERLINE_ACCEPTABLE",
+      "reason": "평면 전개도를 접은 후 특정 모서리의 공간 위치와 각 면의 만남 여부를 추적하는 공간 표현 전환이 필요하다. 상/3 인접 예외로 보존한다."
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_05be83079494ba6b1850ceab4979d35664fcb1604dce907d16aa7515eeadbcff",
+      "verdict": "KEEP_BUCKET3_LEVEL_HIGH_BORDERLINE_ACCEPTABLE",
+      "reason": "정사각형 조건과 주어진 두 길이로SAS 합동을 확보한 다음 대응각과 평각으로 목표각합에 전달하는 표준 전이이다. 서술형이고 두 단계라는 이유만으로4를 부여하지 않는다."
+    }
+  ],
+  "contentDebt": [
+    {
+      "ordinal": 7,
+      "scope": "CONTENT_SOLUTION_PREMISE_REVIEW_SEPARATE",
+      "note": "원그림에는 AF와CD의 수직, DE와BE의 수직은 표시되어 있지만 ㄱ에서 요구한 F와AB의 수선 거리 연결을 바로 보장하는 AF⊥AB 또는 AB∥CD 표시가 보이지 않는다. 기존 해설은 ㄱ 성립을 선언만 한다. 원본·해설 수정 없이 별도 내용 검수 대상으로 남긴다."
+    },
+    {
+      "ordinal": 17,
+      "scope": "EXPLANATION_PRECISION_DEBT_SEPARATE",
+      "note": "기존 해설은 다섯 꼭짓점이라고 쓰지만 원그림의 표시각은 여섯이다. 360도는 이 경로의 표시각합이며 모든 닫힌 경로의 총회전각을360도로 일반화하면 안 된다. 현재 TPL 정의는 실제 회전횟수와 보각을 구별하므로 의미 분류의 타당성과 해설 품질을 분리한다."
+    }
+  ],
+  "registryCheck": {
+    "consulted": [
+      "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "docs/architecture/4slot/term-dictionary-v1.5.json"
+    ],
+    "nativeExactPassNotClaimedForNullTemplates": true,
+    "noRegistryMutation": true
+  },
+  "finalReadback": {
+    "status": "ACCEPTED",
+    "metadataCorrectionsRead": true,
+    "fullSampleQuotesVerified": true,
+    "allDifficultyOrdinals": [
+      4,
+      7,
+      11,
+      12,
+      15,
+      17,
+      20,
+      23
+    ],
+    "sourceGitBlobSha": "2ca2ad4a59528586fbfaa0edb46de1a6f7d8080e",
+    "rawSha256": "95e61b97328eb6f1039c3eabcf9aa475423a677f081a870a62cc9ca6e75649eb",
+    "notes": [
+      "Q7의 STRONG_CONFLICT는 독립재검 후에도 역사적 불일치 표시로 유지한다.",
+      "Q17 후보 회전각과 동일칸 부모 각의 병기는 §10 필수 규칙에 부합한다.",
+      "source의 원문·해설은 수정하지 않았으며 Q7과Q17 내용부채는 메타와 분리했다."
+    ]
+  }
+}

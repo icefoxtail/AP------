@@ -505,7 +505,10 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_풍덕중_2학기_중간_중3_수학/q16-solution.svg"
+    "solutionImage": "assets/images/23_풍덕중_2학기_중간_중3_수학/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 원래 삼각형의 같은 두 변, 연결점 D를 넣었을 때 같은 세 선분, 서로 떼어 같은 방향으로 놓은 두 닮은 삼각형의 대응을 색과 표식으로 읽는다.",
+    "solutionImageCaption": "△ABC에서 ∠B=∠C=72°. D를 잡아 ∠DBC=36°로 두면 ∠ABD=∠BAD=36°이므로 AD=BD. 또 △BCD에서 ∠BDC=∠BCD=72°이므로 BD=BC=4. 따라서 AD=BD=BC=4, DC=s−4이고 △ABC∼△BCD이다. s/4=4/(s−4)에서 s=2+2√5. 그러므로 cos72°=2/s=(√5−1)/4이며 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -569,7 +572,11 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_2학기_중간_중3_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형의 두 같은 변은 파란색 눈금으로 표시했다. 높이 AH 위의 O에서 접점 H까지 주황색 선분의 길이는 내접원의 반지름 r이다.",
+    "solutionImageCaption": "AH=1, BH=√3이고 파란 두 변의 길이는 각각 2이다. 삼각형 넓이 √3과 한 변씩의 길이 합을 사용하면 r(2+√3)=√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -601,7 +608,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 모서리가 6인 정사면체에서 H는 밑면의 무게중심, M은 CD의 중점이다. 푸른 단면 ABH에서 AH와 BH는 수직이다.",
+    "solutionImageCaption": "밑면의 중선 BM은 3√3이고 BH는 그 길이의 2/3이다. 단면 ABH의 피타고라스 관계로 정사면체의 높이 AH를 구한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -710,7 +721,11 @@ window.questionBank = [
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_2학기_중간_중3_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 반원의 호 BC와 현 BC 사이를 파랗게, 삼각형 BOC를 주황으로 칠했다. 두 영역을 더하면 중심각 150도의 부채꼴이다.",
+    "solutionImageCaption": "파란 활꼴은 중심각이 150°인 부채꼴에서 주황 삼각형을 뺀 부분이다. 주황 삼각형의 밑변은 OB=6, 높이는 CH=3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
@@ -737,6 +752,10 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_2학기_중간_중3_수학/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 굴뚝의 옆면을 펼친 직사각형에서 파란 가로는 밑면 원둘레, 초록 세로는 높이, 주황 대각선 AB는 한 바퀴 도는 계단 경로이다.",
+    "solutionImageCaption": "직사각형의 가로는 밑면의 원둘레 40π m이고 세로는 굴뚝 높이 30π m이다. 한 바퀴 도는 계단은 펼친 옆면에서 대각선 AB가 된다.",
+    "solutionImageSize": "full"
   }
 ];

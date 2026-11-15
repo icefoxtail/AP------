@@ -1,0 +1,1180 @@
+{
+  "schemaVersion": "rpm-parent-placement-audit-v1",
+  "state": "READ_ONLY_EVIDENCE_COMPLETE_PENDING_ROOT_ACCEPTANCE",
+  "preparedAtUtc": "2026-11-13T09:46:25.565124+00:00",
+  "reviewer": "exam_reviewer",
+  "scope": "2022 M1-1 and M1-2 L3-to-L1/L2 placement only",
+  "baseAuthority": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+  },
+  "counts": {
+    "L3Total": 57,
+    "associatedL4Total": 119,
+    "M1-1": {
+      "L3": 29,
+      "L4": 59
+    },
+    "M1-2": {
+      "L3": 28,
+      "L4": 60
+    },
+    "L3KeepParent": 55,
+    "L3MoveParent": 2,
+    "L4AffectedByParentMove": 4,
+    "additionalParentMovesBeyondPreviouslyReportedFourLeaves": 0
+  },
+  "finding": "Only the already reported exchange of 평행선과 각 and 수직과 거리 parents is supported as a clear parent-placement correction. All other reviewed M1 L3 topics remain under their existing official chapter parent.",
+  "sources": [
+    {
+      "book": "M1-1",
+      "officialPdfUrl": "https://file.airklass.biz/imath/9ac944e2-b53c-49d2-9358-18f39e940413/22%EA%B0%9C%EC%A0%95%20RPM%20%EC%A4%91%ED%95%99%20%EC%88%98%ED%95%991-1_%EC%A0%95%EB%8B%B5%EB%B0%8F%ED%92%80%EC%9D%B4.pdf",
+      "pdfSha256": "43394ba96b0a2266e264a85716f7dfa7711a1b350e8c70522fcb0420799414ce",
+      "chapterRanges1BasedPdf": [
+        {
+          "L2": "소인수분해",
+          "fromPage": 2,
+          "toPage": 8
+        },
+        {
+          "L2": "최대공약수와 최소공배수",
+          "fromPage": 9,
+          "toPage": 18
+        },
+        {
+          "L2": "정수와 유리수",
+          "fromPage": 19,
+          "toPage": 26
+        },
+        {
+          "L2": "정수와 유리수의 계산",
+          "fromPage": 27,
+          "toPage": 41
+        },
+        {
+          "L2": "문자의 사용과 식의 계산",
+          "fromPage": 42,
+          "toPage": 54
+        },
+        {
+          "L2": "일차방정식의 풀이",
+          "fromPage": 55,
+          "toPage": 63
+        },
+        {
+          "L2": "일차방정식의 활용",
+          "fromPage": 64,
+          "toPage": 75
+        },
+        {
+          "L2": "좌표와 그래프",
+          "fromPage": 76,
+          "toPage": 80
+        },
+        {
+          "L2": "정비례와 반비례",
+          "fromPage": 81,
+          "toPage": 93
+        }
+      ],
+      "supplementaryAnswerPagesExcludedFromBoundaryInference": {
+        "fromPage": 94,
+        "reason": "The numbered main chapter sequence has ended; later supplementary answers repeat earlier chapter material."
+      }
+    },
+    {
+      "book": "M1-2",
+      "officialPdfUrl": "https://file.airklass.biz/imath/881fe4b1-a884-4f93-8348-cfb58542b5ce/22%EA%B0%9C%EC%A0%95_%EC%A4%91%EB%93%B1RPM1-2_%EC%A0%95%EB%8B%B5.pdf",
+      "pdfSha256": "69b5c9638dbb21d12081fd7d4f190cab8d3b546071ffd2cd3ad8eba0014ba898",
+      "chapterRanges1BasedPdf": [
+        {
+          "L2": "기본 도형",
+          "fromPage": 2,
+          "toPage": 8
+        },
+        {
+          "L2": "위치 관계",
+          "fromPage": 9,
+          "toPage": 19
+        },
+        {
+          "L2": "작도와 합동",
+          "fromPage": 20,
+          "toPage": 27
+        },
+        {
+          "L2": "다각형",
+          "fromPage": 28,
+          "toPage": 39
+        },
+        {
+          "L2": "원과 부채꼴",
+          "fromPage": 40,
+          "toPage": 49
+        },
+        {
+          "L2": "다면체와 회전체",
+          "fromPage": 50,
+          "toPage": 58
+        },
+        {
+          "L2": "입체도형의 겉넓이와 부피",
+          "fromPage": 59,
+          "toPage": 70
+        },
+        {
+          "L2": "대푯값",
+          "fromPage": 71,
+          "toPage": 75
+        },
+        {
+          "L2": "도수분포표와 상대도수",
+          "fromPage": 76,
+          "toPage": 85
+        }
+      ],
+      "supplementaryAnswerPagesExcludedFromBoundaryInference": {
+        "fromPage": 86,
+        "reason": "The numbered main chapter sequence has ended; later supplementary answers repeat earlier chapter material."
+      }
+    }
+  ],
+  "rows": [
+    {
+      "scope": "M1-1",
+      "L1": "소인수분해",
+      "L3": "소수와 합성수",
+      "baseL2": "소인수분해",
+      "officialParentL2": "소인수분해",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-114",
+        "M1-RPM-115"
+      ],
+      "evidencePdfPages": [
+        3
+      ],
+      "basis": "소수와 합성수의 판별을 다루는 소인수분해 장"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "소인수분해",
+      "L3": "소인수분해",
+      "baseL2": "소인수분해",
+      "officialParentL2": "소인수분해",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-116",
+        "M1-RPM-117"
+      ],
+      "evidencePdfPages": [
+        3,
+        4
+      ],
+      "basis": "자연수의 소인수분해와 인수·약수 구조"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "소인수분해",
+      "L3": "약수의 개수",
+      "baseL2": "소인수분해",
+      "officialParentL2": "소인수분해",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-118",
+        "M1-RPM-119"
+      ],
+      "evidencePdfPages": [
+        5,
+        7
+      ],
+      "basis": "소인수의 지수로 약수 개수를 계산하는 구조"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "소인수분해",
+      "L3": "공약수와 최대공약수",
+      "baseL2": "최대공약수와 최소공배수",
+      "officialParentL2": "최대공약수와 최소공배수",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-120",
+        "M1-RPM-121"
+      ],
+      "evidencePdfPages": [
+        10
+      ],
+      "basis": "공약수 및 최대공약수 계산"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "소인수분해",
+      "L3": "공배수와 최소공배수",
+      "baseL2": "최대공약수와 최소공배수",
+      "officialParentL2": "최대공약수와 최소공배수",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-122",
+        "M1-RPM-123"
+      ],
+      "evidencePdfPages": [
+        11,
+        12
+      ],
+      "basis": "공배수 및 최소공배수 계산"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "소인수분해",
+      "L3": "최대공약수·최소공배수의 활용",
+      "baseL2": "최대공약수와 최소공배수",
+      "officialParentL2": "최대공약수와 최소공배수",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-124",
+        "M1-RPM-125"
+      ],
+      "evidencePdfPages": [
+        14,
+        15
+      ],
+      "basis": "주기·동시 출발 및 묶음 조건을 공약수·공배수로 처리"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "정수와 유리수",
+      "L3": "수 체계",
+      "baseL2": "정수와 유리수",
+      "officialParentL2": "정수와 유리수",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-126",
+        "M1-RPM-127"
+      ],
+      "evidencePdfPages": [
+        19,
+        20
+      ],
+      "basis": "양수·음수 및 정수·유리수 분류"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "정수와 유리수",
+      "L3": "수직선과 대소 관계",
+      "baseL2": "정수와 유리수",
+      "officialParentL2": "정수와 유리수",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-128",
+        "M1-RPM-129"
+      ],
+      "evidencePdfPages": [
+        21,
+        22
+      ],
+      "basis": "수직선 위치와 수의 크기 비교"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "정수와 유리수",
+      "L3": "절댓값",
+      "baseL2": "정수와 유리수",
+      "officialParentL2": "정수와 유리수",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-130",
+        "M1-RPM-131"
+      ],
+      "evidencePdfPages": [
+        21,
+        23
+      ],
+      "basis": "원점으로부터 거리와 절댓값 조건"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "정수와 유리수",
+      "L3": "덧셈과 뺄셈",
+      "baseL2": "정수와 유리수의 계산",
+      "officialParentL2": "정수와 유리수의 계산",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-132",
+        "M1-RPM-133",
+        "M1-RPM-134"
+      ],
+      "evidencePdfPages": [
+        27,
+        29,
+        30
+      ],
+      "basis": "부호 있는 수의 덧셈·뺄셈"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "정수와 유리수",
+      "L3": "곱셈과 나눗셈",
+      "baseL2": "정수와 유리수의 계산",
+      "officialParentL2": "정수와 유리수의 계산",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-135",
+        "M1-RPM-136",
+        "M1-RPM-137"
+      ],
+      "evidencePdfPages": [
+        32,
+        34,
+        35
+      ],
+      "basis": "부호 있는 수의 곱셈·나눗셈"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "정수와 유리수",
+      "L3": "혼합 계산",
+      "baseL2": "정수와 유리수의 계산",
+      "officialParentL2": "정수와 유리수의 계산",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-138",
+        "M1-RPM-139"
+      ],
+      "evidencePdfPages": [
+        36,
+        40
+      ],
+      "basis": "거듭제곱과 괄호를 포함한 혼합 연산 순서"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "문자와 식",
+      "L3": "문자의 사용",
+      "baseL2": "문자의 사용과 식의 계산",
+      "officialParentL2": "문자의 사용과 식의 계산",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-140",
+        "M1-RPM-141"
+      ],
+      "evidencePdfPages": [
+        42,
+        44
+      ],
+      "basis": "수량을 문자식으로 나타내고 연산 기호를 생략"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "문자와 식",
+      "L3": "식의 값",
+      "baseL2": "문자의 사용과 식의 계산",
+      "officialParentL2": "문자의 사용과 식의 계산",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-142",
+        "M1-RPM-143"
+      ],
+      "evidencePdfPages": [
+        45,
+        46
+      ],
+      "basis": "주어진 값을 대입하여 식의 값 계산"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "문자와 식",
+      "L3": "일차식",
+      "baseL2": "문자의 사용과 식의 계산",
+      "officialParentL2": "문자의 사용과 식의 계산",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-144",
+        "M1-RPM-145"
+      ],
+      "evidencePdfPages": [
+        43,
+        47
+      ],
+      "basis": "일차식·계수·상수항·동류항 판별"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "문자와 식",
+      "L3": "일차식의 계산",
+      "baseL2": "문자의 사용과 식의 계산",
+      "officialParentL2": "문자의 사용과 식의 계산",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-146",
+        "M1-RPM-147"
+      ],
+      "evidencePdfPages": [
+        49,
+        50,
+        52
+      ],
+      "basis": "일차식의 동류항을 정리하고 괄호를 처리"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "문자와 식",
+      "L3": "등식과 방정식",
+      "baseL2": "일차방정식의 풀이",
+      "officialParentL2": "일차방정식의 풀이",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-148",
+        "M1-RPM-149"
+      ],
+      "evidencePdfPages": [
+        55,
+        57
+      ],
+      "basis": "방정식의 해와 등식의 성질"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "문자와 식",
+      "L3": "일차방정식의 풀이",
+      "baseL2": "일차방정식의 풀이",
+      "officialParentL2": "일차방정식의 풀이",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-150",
+        "M1-RPM-151"
+      ],
+      "evidencePdfPages": [
+        58,
+        59
+      ],
+      "basis": "이항 및 분수·소수 계수의 일차방정식 풀이"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "문자와 식",
+      "L3": "해와 조건",
+      "baseL2": "일차방정식의 풀이",
+      "officialParentL2": "일차방정식의 풀이",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-152",
+        "M1-RPM-153"
+      ],
+      "evidencePdfPages": [
+        60,
+        61,
+        63
+      ],
+      "basis": "해가 주어진 방정식의 계수 조건 처리"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "문자와 식",
+      "L3": "수와 관계",
+      "baseL2": "일차방정식의 활용",
+      "officialParentL2": "일차방정식의 활용",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-154",
+        "M1-RPM-155"
+      ],
+      "evidencePdfPages": [
+        64,
+        66
+      ],
+      "basis": "수·나이·개수 관계를 미지수의 방정식으로 구성"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "문자와 식",
+      "L3": "속력·시간·거리",
+      "baseL2": "일차방정식의 활용",
+      "officialParentL2": "일차방정식의 활용",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-156",
+        "M1-RPM-157"
+      ],
+      "evidencePdfPages": [
+        68,
+        69
+      ],
+      "basis": "거리·시간 관계로 일차방정식 구성"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "문자와 식",
+      "L3": "농도와 비율",
+      "baseL2": "일차방정식의 활용",
+      "officialParentL2": "일차방정식의 활용",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-158",
+        "M1-RPM-159"
+      ],
+      "evidencePdfPages": [
+        70,
+        71
+      ],
+      "basis": "소금 양 및 백분율 관계를 미지수의 방정식으로 구성"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "문자와 식",
+      "L3": "도형 활용",
+      "baseL2": "일차방정식의 활용",
+      "officialParentL2": "일차방정식의 활용",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-160"
+      ],
+      "evidencePdfPages": [
+        67,
+        73
+      ],
+      "basis": "둘레·넓이 관계로 일차방정식 구성"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "문자와 식",
+      "L3": "생활 속 관계식",
+      "baseL2": "일차방정식의 활용",
+      "officialParentL2": "일차방정식의 활용",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-161",
+        "M1-RPM-162"
+      ],
+      "evidencePdfPages": [
+        71,
+        72,
+        74
+      ],
+      "basis": "요금·가격·인원 배치의 과부족을 방정식으로 구성"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "좌표평면과 그래프",
+      "L3": "좌표평면",
+      "baseL2": "좌표와 그래프",
+      "officialParentL2": "좌표와 그래프",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-163",
+        "M1-RPM-164"
+      ],
+      "evidencePdfPages": [
+        76,
+        77,
+        80
+      ],
+      "basis": "좌표 읽기 및 축 대칭 좌표"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "좌표평면과 그래프",
+      "L3": "그래프",
+      "baseL2": "좌표와 그래프",
+      "officialParentL2": "좌표와 그래프",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-165",
+        "M1-RPM-166"
+      ],
+      "evidencePdfPages": [
+        78,
+        80
+      ],
+      "basis": "상황의 변화를 그래프로 표현·해석"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "좌표평면과 그래프",
+      "L3": "정비례",
+      "baseL2": "정비례와 반비례",
+      "officialParentL2": "정비례와 반비례",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-167",
+        "M1-RPM-168"
+      ],
+      "evidencePdfPages": [
+        81,
+        82,
+        84
+      ],
+      "basis": "정비례 식과 그래프"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "좌표평면과 그래프",
+      "L3": "반비례",
+      "baseL2": "정비례와 반비례",
+      "officialParentL2": "정비례와 반비례",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-169",
+        "M1-RPM-170"
+      ],
+      "evidencePdfPages": [
+        81,
+        82,
+        85
+      ],
+      "basis": "반비례 식과 그래프"
+    },
+    {
+      "scope": "M1-1",
+      "L1": "좌표평면과 그래프",
+      "L3": "관계 해석",
+      "baseL2": "정비례와 반비례",
+      "officialParentL2": "정비례와 반비례",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-171",
+        "M1-RPM-172"
+      ],
+      "evidencePdfPages": [
+        87,
+        90
+      ],
+      "basis": "정비례·반비례의 그래프에서 식을 찾고 관계 해석"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "기본 도형",
+      "L3": "점·선·면",
+      "baseL2": "기본 도형",
+      "officialParentL2": "기본 도형",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-173",
+        "M1-RPM-174"
+      ],
+      "evidencePdfPages": [
+        2,
+        4,
+        7
+      ],
+      "basis": "직선·반직선·선분과 중점·길이"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "기본 도형",
+      "L3": "각",
+      "baseL2": "기본 도형",
+      "officialParentL2": "기본 도형",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-175",
+        "M1-RPM-176"
+      ],
+      "evidencePdfPages": [
+        3,
+        5,
+        6
+      ],
+      "basis": "각의 크기와 맞꼭지각"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "기본 도형",
+      "L3": "평행선과 각",
+      "baseL2": "기본 도형",
+      "officialParentL2": "위치 관계",
+      "status": "MOVE_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-177",
+        "M1-RPM-178"
+      ],
+      "evidencePdfPages": [
+        9,
+        10,
+        11
+      ],
+      "basis": "위치 관계 장 안에서 동위각·엇각 및 평행 조건을 명시"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "기본 도형",
+      "L3": "평면에서의 위치 관계",
+      "baseL2": "위치 관계",
+      "officialParentL2": "위치 관계",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-179",
+        "M1-RPM-180"
+      ],
+      "evidencePdfPages": [
+        9,
+        10,
+        16
+      ],
+      "basis": "평면의 점·직선 및 교차·평행 관계"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "기본 도형",
+      "L3": "공간에서의 위치 관계",
+      "baseL2": "위치 관계",
+      "officialParentL2": "위치 관계",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-181",
+        "M1-RPM-182"
+      ],
+      "evidencePdfPages": [
+        9,
+        12,
+        17
+      ],
+      "basis": "공간의 직선·평면 및 평면끼리의 관계"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "기본 도형",
+      "L3": "수직과 거리",
+      "baseL2": "위치 관계",
+      "officialParentL2": "기본 도형",
+      "status": "MOVE_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-183",
+        "M1-RPM-184"
+      ],
+      "evidencePdfPages": [
+        3,
+        6,
+        8
+      ],
+      "basis": "기본 도형 장 안에서 수선의 발과 점-직선 거리를 명시"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "기본 도형",
+      "L3": "기본 작도",
+      "baseL2": "작도와 합동",
+      "officialParentL2": "작도와 합동",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-185",
+        "M1-RPM-186",
+        "M1-RPM-187"
+      ],
+      "evidencePdfPages": [
+        20,
+        21
+      ],
+      "basis": "자·컴퍼스의 역할과 선분·각의 복사 작도"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "기본 도형",
+      "L3": "삼각형의 작도",
+      "baseL2": "작도와 합동",
+      "officialParentL2": "작도와 합동",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-188",
+        "M1-RPM-189",
+        "M1-RPM-190"
+      ],
+      "evidencePdfPages": [
+        20,
+        22,
+        23
+      ],
+      "basis": "주어진 변·각 자료로 삼각형을 작도하거나 유일성을 판단"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "기본 도형",
+      "L3": "삼각형의 합동",
+      "baseL2": "작도와 합동",
+      "officialParentL2": "작도와 합동",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-191",
+        "M1-RPM-192",
+        "M1-RPM-193"
+      ],
+      "evidencePdfPages": [
+        23,
+        24,
+        26
+      ],
+      "basis": "SSS·SAS·ASA 및 합동의 대응 관계"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "평면도형",
+      "L3": "다각형의 내각과 외각",
+      "baseL2": "다각형",
+      "officialParentL2": "다각형",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-194",
+        "M1-RPM-195",
+        "M1-RPM-196"
+      ],
+      "evidencePdfPages": [
+        28,
+        29,
+        34
+      ],
+      "basis": "다각형의 내각·외각과 정다각형의 각"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "평면도형",
+      "L3": "삼각형·다각형의 각",
+      "baseL2": "다각형",
+      "officialParentL2": "다각형",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-197",
+        "M1-RPM-198"
+      ],
+      "evidencePdfPages": [
+        30,
+        31,
+        33
+      ],
+      "basis": "삼각형과 다각형의 각 계산 및 대각선 수"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "평면도형",
+      "L3": "정다각형",
+      "baseL2": "다각형",
+      "officialParentL2": "다각형",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-199",
+        "M1-RPM-200"
+      ],
+      "evidencePdfPages": [
+        28,
+        35,
+        37
+      ],
+      "basis": "정다각형의 성질과 각 조건에 따른 변 수"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "평면도형",
+      "L3": "원과 부채꼴의 기본",
+      "baseL2": "원과 부채꼴",
+      "officialParentL2": "원과 부채꼴",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-201",
+        "M1-RPM-202"
+      ],
+      "evidencePdfPages": [
+        40,
+        41,
+        42
+      ],
+      "basis": "중심각·호·현의 관계와 호 길이"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "평면도형",
+      "L3": "부채꼴의 넓이",
+      "baseL2": "원과 부채꼴",
+      "officialParentL2": "원과 부채꼴",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-203",
+        "M1-RPM-204"
+      ],
+      "evidencePdfPages": [
+        41,
+        43,
+        44
+      ],
+      "basis": "중심각 및 호 길이를 이용한 부채꼴 넓이"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "평면도형",
+      "L3": "복합도형",
+      "baseL2": "원과 부채꼴",
+      "officialParentL2": "원과 부채꼴",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-205",
+        "M1-RPM-206"
+      ],
+      "evidencePdfPages": [
+        45,
+        47,
+        49
+      ],
+      "basis": "부채꼴이 포함된 도형의 둘레·넓이 결합"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "입체도형",
+      "L3": "다면체",
+      "baseL2": "다면체와 회전체",
+      "officialParentL2": "다면체와 회전체",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-207",
+        "M1-RPM-208"
+      ],
+      "evidencePdfPages": [
+        50,
+        51
+      ],
+      "basis": "각기둥·각뿔 등 다면체의 구성 요소"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "입체도형",
+      "L3": "정다면체",
+      "baseL2": "다면체와 회전체",
+      "officialParentL2": "다면체와 회전체",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-209",
+        "M1-RPM-210"
+      ],
+      "evidencePdfPages": [
+        53,
+        54
+      ],
+      "basis": "정다면체의 종류와 구성 요소 관계"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "입체도형",
+      "L3": "회전체",
+      "baseL2": "다면체와 회전체",
+      "officialParentL2": "다면체와 회전체",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-211",
+        "M1-RPM-212"
+      ],
+      "evidencePdfPages": [
+        55,
+        57
+      ],
+      "basis": "회전체를 만들고 단면의 모양을 판단"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "입체도형",
+      "L3": "기둥의 겉넓이와 부피",
+      "baseL2": "입체도형의 겉넓이와 부피",
+      "officialParentL2": "입체도형의 겉넓이와 부피",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-213",
+        "M1-RPM-214"
+      ],
+      "evidencePdfPages": [
+        59,
+        61,
+        62
+      ],
+      "basis": "기둥의 전개도·겉넓이·부피 계산"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "입체도형",
+      "L3": "뿔의 겉넓이와 부피",
+      "baseL2": "입체도형의 겉넓이와 부피",
+      "officialParentL2": "입체도형의 겉넓이와 부피",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-215",
+        "M1-RPM-216"
+      ],
+      "evidencePdfPages": [
+        60,
+        63,
+        64
+      ],
+      "basis": "뿔의 겉넓이·부피 계산"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "입체도형",
+      "L3": "구",
+      "baseL2": "입체도형의 겉넓이와 부피",
+      "officialParentL2": "입체도형의 겉넓이와 부피",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-217",
+        "M1-RPM-218"
+      ],
+      "evidencePdfPages": [
+        60,
+        65,
+        66
+      ],
+      "basis": "구의 겉넓이·부피 계산"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "입체도형",
+      "L3": "복합입체도형",
+      "baseL2": "입체도형의 겉넓이와 부피",
+      "officialParentL2": "입체도형의 겉넓이와 부피",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-219",
+        "M1-RPM-220"
+      ],
+      "evidencePdfPages": [
+        62,
+        66,
+        68,
+        69
+      ],
+      "basis": "자르거나 구멍 낸 복합입체의 면적·부피 처리"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "통계",
+      "L3": "평균",
+      "baseL2": "대푯값",
+      "officialParentL2": "대푯값",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-221",
+        "M1-RPM-222"
+      ],
+      "evidencePdfPages": [
+        71,
+        72,
+        73
+      ],
+      "basis": "평균 계산과 평균 조건의 미지수"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "통계",
+      "L3": "중앙값과 최빈값",
+      "baseL2": "대푯값",
+      "officialParentL2": "대푯값",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-223",
+        "M1-RPM-224"
+      ],
+      "evidencePdfPages": [
+        71,
+        72,
+        74
+      ],
+      "basis": "자료를 정렬하여 중앙값·최빈값 판단"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "통계",
+      "L3": "대푯값의 선택",
+      "baseL2": "대푯값",
+      "officialParentL2": "대푯값",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-225",
+        "M1-RPM-226"
+      ],
+      "evidencePdfPages": [
+        74,
+        75
+      ],
+      "basis": "극단값과 자료의 성격에 맞는 대푯값 선택·비교"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "통계",
+      "L3": "도수분포표",
+      "baseL2": "도수분포표와 상대도수",
+      "officialParentL2": "도수분포표와 상대도수",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-227",
+        "M1-RPM-228"
+      ],
+      "evidencePdfPages": [
+        76,
+        77,
+        78
+      ],
+      "basis": "계급·도수 및 도수분포표 구성"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "통계",
+      "L3": "상대도수",
+      "baseL2": "도수분포표와 상대도수",
+      "officialParentL2": "도수분포표와 상대도수",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-229",
+        "M1-RPM-230"
+      ],
+      "evidencePdfPages": [
+        77,
+        80,
+        81
+      ],
+      "basis": "상대도수 계산과 비율 비교"
+    },
+    {
+      "scope": "M1-2",
+      "L1": "통계",
+      "L3": "분포 해석",
+      "baseL2": "도수분포표와 상대도수",
+      "officialParentL2": "도수분포표와 상대도수",
+      "status": "KEEP_PARENT",
+      "crosswalkRecordIds": [
+        "M1-RPM-231",
+        "M1-RPM-232"
+      ],
+      "evidencePdfPages": [
+        79,
+        83,
+        84
+      ],
+      "basis": "히스토그램·분포 그래프 해석 및 집단 분포 비교"
+    }
+  ],
+  "method": {
+    "officialSixBookHeadingEvidenceReused": {
+      "path": "/workspace/scratch/933015cd0a4f/m1-review/.tmp/rpm-official-research/official-book-headings.json",
+      "sha256": "92f4282174d928b2430679aa6fd2ac1443030428c420532e1bb0961f687c3d5c"
+    },
+    "checks": [
+      "Compared each existing M1 L3 topic and associated L4 labels with the actual concept/method appearing inside an official chapter range.",
+      "For topics reused in multiple chapters (ratio, salt concentration, geometry, graphs), distinguished the role: expression/substitution, equation modelling, graph interpretation, or proportional relation.",
+      "Confirmed the four changed leaves through PDF page images: M1-2 p3/p6 under 기본 도형 and p9/p10/p11 under 위치 관계."
+    ],
+    "notClaimed": [
+      "This does not assert that every frozen L3/L4 label is a verbatim printed RPM heading.",
+      "This does not approve or re-solve any archived exam or rerun R1/R2/R3.",
+      "All 119 leaves are included for parent coverage; their exact printed type existence or canonical PT/TPL routing is outside this audit."
+    ]
+  },
+  "leafEvidenceLimitations": [
+    {
+      "recordIds": [
+        "M1-RPM-186",
+        "M1-RPM-187"
+      ],
+      "note": "Basic construction is clearly in 작도와 합동. Direct printed type evidence for the specific perpendicular-bisector and angle-bisector construction leaf labels was not identified in the official answer PDF; this is not evidence to move them to another parent."
+    }
+  ],
+  "mutations": {
+    "examSource": false,
+    "metadata": false,
+    "canonical": false,
+    "code": false
+  },
+  "nextAction": "Metadata authority owner applies only confirmed parent-layer changes; root verifies the generated helper and merged SHA."
+}

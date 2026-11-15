@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "m1-existing-meta-pr-dependency-readonly-review-v1",
+  "reviewer": "GPT_ROOT_933015CD0A4F_CHECKPOINT",
+  "taskId": "f46ac6a5-f2f7-4ae1-a0af-5806b87de808",
+  "scope": "Read-only independent review of PR1965 guard boundaries, exact-head CI and published Wangun source/request work overlap.",
+  "repository": "icefoxtail/AP------",
+  "pr": {
+    "number": 1965,
+    "url": "https://github.com/icefoxtail/AP------/pull/1965",
+    "state": "open",
+    "merged": false,
+    "draft": false,
+    "headBranch": "review/m1-binding-course-correction-20261113-bf",
+    "headSha": "0f65b93e4d8656c6f8c0710d64bd510e11228a89",
+    "baseSha": "208ab1649ad0e201e5b05917c259269dc545b0d0",
+    "mergeable": true,
+    "changedFiles": 8,
+    "additions": 897,
+    "deletions": 6
+  },
+  "observedMain": {
+    "sha": "33f26c795e7a86fc3b63737996c6885cff4c7bba",
+    "tree": "44e7715767ee751eb7ef31b0ad9b548be082fea5"
+  },
+  "decision": {
+    "codeReview": "NO_GUARD_RELAXATION_FOUND_IN_REVIEWED_DIFF",
+    "integration": "BLOCKED_BY_EXACT_HEAD_CI_FAILURE",
+    "actualBindingCorrection": "NOT_RUN",
+    "actualCorrectionConsumerParity": "NOT_RUN",
+    "newTestsRunByThisReview": 0,
+    "scopeLimit": "Static implementation and existing CI evidence review; neither a live correction proof nor a mathematical review."
+  },
+  "changedFiles": [
+    "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+    "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs",
+    "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+    "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+    "docs/operations/binding-course-correction-v1.md",
+    "tests/archive-binding-course-correction.test.mjs",
+    "tests/archive-reviewed-exam-registration-v2.test.mjs",
+    "tools/ci/reviewed-meta-register-pass.sh"
+  ],
+  "dependency": {
+    "exam": "2026 Wangun M1 2mid",
+    "questionOrdinal": 6,
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "curriculum": "2022",
+    "standardUnitKey": "M1-04",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "beforeStandardCourse": "中1 수학",
+    "afterStandardCourse": "중1 수학",
+    "ownerPack": "MIDDLE1",
+    "bindingStatus": "ACTIVE",
+    "supportingUid": "qid_v1_9a70f8dfb14b04696845323d046dedded271684fd020f1c73fd3d7f3a800dffc",
+    "canonicalBindingsRawSha256": "1404a9bcb5fe1387a2deafbaaf8fe135bef3613580670a46fd3d3252fd6e12de",
+    "requiredSequence": "Standalone spelling correction based on clean latest main and existing preserved source; confirm official post-build/full-pack Consumer preservation, then derive Wangun ordinary v2 request from the corrected main."
+  },
+  "safeguards": [
+    {
+      "file": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "functions": [
+        "validateCorrection",
+        "validateRequestShape"
+      ],
+      "finding": "Only one existing ACTIVE MIDDLE1 2015/2022 binding literal course spelling can differ. Arbitrary registryChanges, approvals, items, second correction and all other row-field changes are refused."
+    },
+    {
+      "file": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "functions": [
+        "facts",
+        "validateRequest"
+      ],
+      "finding": "Impact union is independently derived from exact old/new tuple metadata/runtime consumers and supporting UIDs. All affected consumers must belong to one existing source, already use corrected spelling and unchanged ACTIVE PT/TPL/unit/subunit, and carry matching metadata/identity/runtime/historical indexed R2 proof. Foreign, missing, unapproved, old-spelling and duplicate cases fail."
+    },
+    {
+      "file": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "functions": [
+        "facts",
+        "plan",
+        "registerBindingCourseCorrection"
+      ],
+      "finding": "Current source question numbers/curriculum/native tuple and whole-exam denominators are bound. Canonical/runtime versions must already match. All compiler inputs are cached before asynchronous Consumer read and raw hashes rechecked before write. Allowed outputs are one row spelling, one patch envelope increment, deterministic compiled/index files and distinct receipt; write failures restore outputs."
+    },
+    {
+      "file": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "functions": [
+        "checkReceiptFiles"
+      ],
+      "finding": "Post-verification reconstructs before documents and regenerates deterministic outputs, derives exact protected/output sets, and refuses a receipt that hides metadata/identity/source/proof bytes or arbitrary output/index mutations."
+    },
+    {
+      "file": "archive/tools/meta-foundation/register-binding-course-correction.mjs",
+      "functions": [
+        "captureBindingCourseConsumers",
+        "verifyBindingCourseCorrectionWithConsumer"
+      ],
+      "finding": "Official resolved/page semantic and approval/selection state is compared for every MIDDLE1 runtime UID. Missing assignment/pending state remains part of the before snapshot. No current approval is fabricated; version envelope is intentionally separate."
+    },
+    {
+      "file": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "functions": [
+        "deriveUnit",
+        "verifyChangedUidConsumerApproval",
+        "renderSummary"
+      ],
+      "finding": "Only the new exact schema uses the preservation check. Ordinary request checkRow logic is unchanged. The new request is counted as checked, never skipped, and failures become VALUE_MISMATCH. Output explicitly states zero new approvals."
+    },
+    {
+      "file": "tools/ci/reviewed-meta-register-pass.sh",
+      "finding": "New schema participates in existing projection verification and shared per-request/final Consumer refusal gates. Dedicated test suite is added for correction requests; no skip or weakened assertion was introduced."
+    },
+    {
+      "file": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "function": "labelsFor",
+      "finding": "Only canonical L2 label equality uses existing compact NFC/whitespace normalization. Master membership, curriculum/course/scope, explicit L1 and exact-type parent logic remain. Existing out-of-scope consumer guard has no diff."
+    },
+    {
+      "file": "tests/archive-binding-course-correction.test.mjs",
+      "finding": "Synthetic Consumer fixtures cover one-row bounds, no writes, foreign/old-spelling consumer refusal, stale hashes, source mismatch, full-runtime selection/approval drift, rollback, concurrent compiler changes, receipt hidden-protection/output mutations and exact version increment."
+    },
+    {
+      "file": "tests/archive-reviewed-exam-registration-v2.test.mjs",
+      "finding": "New parent-only tests accept whitespace-equivalent master label while preserving canonical spelling and reject a different evidence-bound parent."
+    }
+  ],
+  "ci": {
+    "headSha": "0f65b93e4d8656c6f8c0710d64bd510e11228a89",
+    "workflows": [
+      {
+        "id": 43447892492,
+        "name": "Problem Bank Shared Meta",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 43447892823,
+        "name": "Archive Main Auto Metadata",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 43447892488,
+        "name": "Archive2 Runtime Guard",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 43447892741,
+        "name": "CI",
+        "status": "completed",
+        "conclusion": "failure"
+      }
+    ],
+    "jobTotals": {
+      "success": 5,
+      "failure": 1,
+      "skipped": 1
+    },
+    "failingRun": 43447892741,
+    "failingJob": 131962144628,
+    "failingStep": "Run tests",
+    "testFileTotals": {
+      "passed": 335,
+      "failed": 1,
+      "knownFailed": 0,
+      "total": 336,
+      "quarantinedSkipped": 8
+    },
+    "failure": {
+      "test": "tests/meta-foundation-middle-geometry-runtime.test.js",
+      "line": 69,
+      "uid": "qid_v1_73d4da5316f252d9835ecaa3d66a8b1eb09a4d7ed5c6aa07e8d20327466ec136",
+      "actual": "FINAL_QA",
+      "expected": "META_PIPELINE_AUDIT",
+      "exam": "2026 Shinheung M1 2mid",
+      "ordinal": 20,
+      "testBlobSha1": "2e411d384fc408fdd6a34d629b42b647fa9d2f91",
+      "sameTestBlobOnObservedMain": true,
+      "receiptProof": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-shinheung-2026-mid-meta-review-20261113-rev3.json",
+      "receiptRawSha256": "aea5a3bb228638586c4a36c3eb4d1e8528d76d5a3787a0f52bcac8ab2f2c9054",
+      "evidence": "Applied and runtime record19 in registered rev3 receipt both specify FINAL_QA. Existing test assumes all current/additional reviewed rows use META_PIPELINE_AUDIT. That test is absent from this PR diff. No baseline rerun performed."
+    },
+    "priorDescriptionFailure": "PR body describes an older Gangnam source-blob fixture failure; it is distinct from the current exact-head failure.",
+    "browserEvidence": "Runtime Guard actual 50-question output Chrome and current-middle RPM Chrome jobs succeeded; Shared Meta Chrome jobs also succeeded. These are not a live spelling-correction proof.",
+    "dedicatedFixtureEvidence": "PR body declares 39/39 dedicated fixtures and 163/163 v2 suite locally. This review read their code but did not rerun or independently certify those local claims. Current retrieved CI logs did not expose those named test cases.",
+    "noRerun": true
+  },
+  "publishedOverlap": {
+    "exactWangunSource": "archive/exams/original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
+    "sourceBlobOnPrHead": "76377173ecb0ba989188561bbefac2afb3232479",
+    "sourceBlobOnPriorVerifiedMain": "76377173ecb0ba989188561bbefac2afb3232479",
+    "sourceUnchanged": true,
+    "directChangedSourceFiles": 0,
+    "directChangedRequests": 0,
+    "directProductionCanonicalChanges": 0,
+    "declaredScope": "PR1965 explicitly names Shinheung24 and Wangun23 as its dependency work and cites Wangun Q16 parent-only whitespace failure, showing overlapping examination/investigation intent.",
+    "inspectedDocs": [
+      {
+        "ref": "0f65b93e4d8656c6f8c0710d64bd510e11228a89",
+        "path": "docs/operations/binding-course-correction-v1.md",
+        "finding": "Generic separate spelling correction procedure; no actual Wangun source/request edit-in-progress claim."
+      },
+      {
+        "ref": "0f65b93e4d8656c6f8c0710d64bd510e11228a89",
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf/04-native-approval-preservation.json",
+        "blobSha1": "3464bfe0cef6d14f802b755c3e94e77079f87fc2",
+        "declaredOwner": "GPT_ROOT_BF50408FB63B",
+        "finding": "Only file in that remote directory. Earlier native-approval reuse work; production registration/main integration/actual Consumer NOT_RUN. No Wangun23 source/request edit declaration."
+      },
+      {
+        "ref": "bf87023732ce9c2df135ed51d374fb8803fa24e7",
+        "branch": "review/m1-native-approval-preserve-20261113-bf",
+        "path": "docs/operations/m1-s2-meta-closeout-20261113-bf",
+        "finding": "Same single 04-native-approval-preservation.json file; no additional Wangun source/request work declaration."
+      },
+      {
+        "ref": "0f65b93e4d8656c6f8c0710d64bd510e11228a89",
+        "path": "docs/operations/m1-meta-review-20261113/HANDOFF.md",
+        "blobSha1": "13d2cfb023fe5dccffb4d89be7563fc01321e5b7",
+        "finding": "Inherited root task snapshot before first exam close; instructs proceeding to Wangun only afterward. Not evidence of BF source editing ownership."
+      }
+    ],
+    "prCommentsObserved": 0,
+    "conclusion": "No published source/request edit overlap found at this head; shared exam investigation intent exists. Unpublished/local work cannot be determined from these remote records. Do not take over another task."
+  },
+  "actionsNotPerformed": [
+    "merge",
+    "registration request generation",
+    "registrar execution",
+    "Consumer execution",
+    "tests",
+    "Git mutation",
+    "tracked file edit",
+    "next-exam question-content inspection"
+  ],
+  "observedAtUtc": "2026-11-13T15:34:13.032525+00:00"
+}

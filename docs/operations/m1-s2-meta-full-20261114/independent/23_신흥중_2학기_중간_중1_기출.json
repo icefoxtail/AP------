@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "m1-s2-independent-sample-review-v1",
+  "reviewer": "meta-a",
+  "author": "meta-c",
+  "revision": 1,
+  "sourceArchiveFile": "original/middle/m1/2mid/23_신흥중_2학기_중간_중1_기출.js",
+  "sampled": [
+    15,
+    16,
+    25
+  ],
+  "status": "ACCEPTED_AFTER_GOAL_AND_2015_PARENT_CORRECTIONS_WITH_CONTENT_DEBT",
+  "candidateSourceBlob": "b291feb9517ad79d343d8b73354d42382755f1a5",
+  "candidateSourceRawSha256": "fa6a4cc4b442ee878dda6df9563b7c04bb52e2f73e7fee20dd4e4e481e65137f",
+  "raw4slotSha256": "aebae91f2b3da28a7bc9379e11bd904d79b46b264e556493c5b918ad74af3ae5",
+  "authorReviewSha256": "07228fcc749c87e684a7499574ab171df7aade76651a57e7c61d1b8af88396b9",
+  "compactSha256": "db3ecd7491493ed1a18feddd3d66590b5926c394bacc230123eb6b616b688818",
+  "readOrder": "SOURCE_CONTENT_SOLUTION_AND_ORIGINAL_FIGURES_BEFORE_AUTHOR_METADATA_AND_SLOTS",
+  "directReads": [
+    "current source content/choices/solution",
+    "Q16 solution SVG and Q25 original PNG/solution SVG actual view",
+    "official PT/TPL whole definitions, aliases, supporting UIDs, ACTIVE bindings",
+    "official2015 RPM080 and CC_AREA definition",
+    "author 4slot and definition/content-debt proposals",
+    "post-correction source parent/key/name, goals and exact bindings"
+  ],
+  "figureEvidence": [
+    {
+      "path": "archive/assets/images/23_신흥중_2학기_중간_중1_기출/q16-solution.svg",
+      "local": "/workspace/scratch/64695b8ede31/agent-a/cross/23-shinheung-mid-images/q16-solution.png",
+      "sha256": "5745ee5b7dd3e2be7f5e5af046a0d135c95846e2ed0351d7c901be3bc33ef036",
+      "blob": "20dd6f5054ee87e9013662487ab65e6fecb9be61"
+    },
+    {
+      "path": "archive/assets/images/23_신흥중_2학기_중간_중1_기출/q25.png",
+      "local": "/workspace/scratch/64695b8ede31/agent-a/cross/23-shinheung-mid-images/q25.png",
+      "sha256": "c7ecdf02283aacfb58f7f438410e879a6bcda3cd1a547f05c8bbac28cdb5df72",
+      "blob": "c4166b251a0bb02db4b3cdb83a9cb50baa786a57"
+    },
+    {
+      "path": "archive/assets/images/23_신흥중_2학기_중간_중1_기출/q25-solution.svg",
+      "local": "/workspace/scratch/64695b8ede31/agent-a/cross/23-shinheung-mid-images/q25-solution.png",
+      "sha256": "d24d3e3de172c1d4f79a0141e4c0142efbad850ef8aebe44761aa0e4c857a12d",
+      "blob": "5adea5af0ba26c9bc45ee7673ff1e334a258be5d"
+    }
+  ],
+  "items": [
+    {
+      "ordinal": 15,
+      "verdict": "ACCEPT_EXISTING_TYPE_AND_BUCKET2",
+      "meaning": "변·각 자료별로 삼각형의 존재성과 유일성을 대조한다. 세변의 퇴화 조건, SSA, 세 각만 있는 조건, 두 각의 합180도를 배제하고 한 변과 양 끝각을 선택하는 표준 판정이다.",
+      "difficulty": {
+        "legacyLevel": "중",
+        "beforeBucket": 4,
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "compatibility": "NORMAL",
+        "reason": "보기를 구별할 개념은 여러 개이나 새로운 도형 구성이나 전략 선택을 요구하지 않는다. 기본 조건의 직접 해석과 대조인2가 맞고 4를 유지할 구조화 근거가 없다."
+      },
+      "nativeReason": "ACTIVE UNIQUE_TRIANGLE_DATA의 SSA/ASA/SSS/각 자료 비교 정의와 지원UID가 정확히 맞는다. 혼합 유일조건 비교를 한 SSS/SAS/ASA RPM leaf로 축약하지 않은 leaf gap은 유지한다.",
+      "fourSlotVerdict": "ACCEPT_AFTER_GOAL_OBJECT_COMPLETION",
+      "fourSlotReadback": {
+        "slot": "goal",
+        "term": "삼각형",
+        "quote": "$\\triangle ABC$",
+        "src": "stem"
+      },
+      "integrationVerdict": "NONE 수용. 보기별 독립 조건 비교는 수학적 경우분기와 구별하고 primary 내부 존재·유일성 판정에 CC를 중복하지 않는다.",
+      "questionUid": "qid_v1_af8a6a168a716088962558d0621f9a59fcde9f4c4df662768bf67b2acb034cd8",
+      "registryReadback": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+        "ptActive": true,
+        "tplActive": true,
+        "templateParentMatches": true,
+        "exactSupportingUid": true,
+        "sourceCurriculumField": null,
+        "resolvedCurriculum": "2015",
+        "curriculumResolutionAuthority": "archive/tools/meta-foundation/active-registry.mjs curriculumForQuestion with exact sourceArchiveFile",
+        "exactBindingIdentity": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "ownerPack": "MIDDLE1"
+        },
+        "exactBindingCount": 1
+      }
+    },
+    {
+      "ordinal": 16,
+      "verdict": "ACCEPT_EXISTING_TYPE_AND_BUCKET2",
+      "meaning": "한 변과 한 각이 고정된 상황에 변 또는 각 자료를 보태어 SAS와 ASA를 완성하는 경우를 고른다. 실제 해설그림의 SSA 두 교점과 SAS·ASA 도식을 확인했다.",
+      "difficulty": {
+        "legacyLevel": "중",
+        "beforeBucket": 4,
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "compatibility": "NORMAL",
+        "reason": "추가 자료가 표준 합동조건을 만드는지 대조하며, 두 각에서 남은 각을 보완하는 정도의 익숙한 해석이다. 비정형 조건 구성 없이 같은 유일조건 TPL의 전형이므로2를 지지한다."
+      },
+      "nativeReason": "UNIQUE_TRIANGLE_DATA의 ADDITIONAL_CONDITION_SELECTION 및 FIXED_SIDE_ADDITIONAL_DATA_UNIQUENESS aliases와 지원UID가 일치하므로 새TPL은 필요 없다.",
+      "fourSlotVerdict": "ACCEPT_AFTER_GOAL_OBJECT_COMPLETION",
+      "fourSlotReadback": {
+        "slot": "goal",
+        "term": "삼각형",
+        "quote": "$\\triangle ABC$",
+        "src": "stem"
+      },
+      "integrationVerdict": "NONE 수용. 현재 유일조건 판정 primary에 포함된 표준 내각 보완을 별도 CC로 떼지 않는다.",
+      "contentDebtDisposition": "ㄹ의 B,C와 AC를 ASA로 연결할 때 A를 내각합으로 보완하는 설명 및 ㄱ 제외 설명이 생략된 내용 부채는 메타 판정과 분리하여 보존한다.",
+      "questionUid": "qid_v1_91460875b8b6cb92937900a31440caa73b7d535b43d23ea67bb2556b593720cb",
+      "registryReadback": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+        "ptActive": true,
+        "tplActive": true,
+        "templateParentMatches": true,
+        "exactSupportingUid": true,
+        "sourceCurriculumField": null,
+        "resolvedCurriculum": "2015",
+        "curriculumResolutionAuthority": "archive/tools/meta-foundation/active-registry.mjs curriculumForQuestion with exact sourceArchiveFile",
+        "exactBindingIdentity": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "ownerPack": "MIDDLE1"
+        },
+        "exactBindingCount": 1
+      }
+    },
+    {
+      "ordinal": 25,
+      "verdict": "ACCEPT_EXISTING_ALIAS_REUSE_WITH_DEFINITION_AND_CONTENT_DEBT",
+      "meaning": "정사각형의 대각선·직각을 활용하여 회전 배치의 두 보조 삼각형 ASA 합동을 증명하고 겹친 사각형 넓이와 연결하는 복합 목표이다. 원PNG의 실제 두 소문항과 비직사각형인 겹친 사각형을 직접 확인했다.",
+      "difficulty": {
+        "legacyLevel": "상",
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "compatibility": "NORMAL",
+        "reason": "회전 배치에서 대응각을 구성하고 합동인 부분을 겹친 영역의 넓이 관계로 전환해야 한다. 지정된 합동 증명 후 단순 밑변 길이 치환으로 끝나는 23금당Q24와 달리 영역의 분해·대응을 해석해야 하므로4/B34를 유지한다. 해설의 잘못된 정사각형 가정을 쉬운 공식 대입으로 간주하여 낮추지 않는다."
+      },
+      "nativeReason": "현재 SQUARE_CONGRUENCE_TRANSFER의 문장 정의는 SAS와 목표각으로 좁지만 alias ASA_CONGRUENCE_IN_OVERLAPPING_SQUARES 및 exact 지원UID가 이 문제를 이미 수용한다. 기존 키를 재사용하고 정사각형의 SAS 또는 ASA 대응관계라는 정의 일반화를 정본 담당에게 넘기는 것이 새TPL보다 타당하다.",
+      "rpmVerdict": "공식2015 RPM080 ASA 합동의 의미 경로를 보존하되 그 native pair가 CONGRUENCE_CRITERION_SELECTION이므로 현재 DATA_TRANSFER pair와의 exact projection 공백은 등록부채로 구별한다.",
+      "fourSlotVerdict": "ACCEPT_WITH_EXPLICIT_SOURCE_SOLUTION_DEBT",
+      "integrationVerdict": "ACTIVE CC_AREA의 도형·영역 넓이 의미를 합동 뒤 별도 목표에 적용하는 SEQUENTIAL을 수용한다. 정사각형 성질은 primary에 포함되어 CC 중복이 아니다.",
+      "contentDebtDisposition": {
+        "kind": "FALSE_GEOMETRIC_PREMISE_IN_SOLUTION",
+        "sourceQuote": "그림에서 OHCI는 한 변이 4 cm인 정사각형",
+        "observedIssue": "원그림과 해설그림 모두 H·I의 내각은 직각이 아니므로 OHCI가 정사각형이라는 전제가 성립하지 않는다.",
+        "metadataLimit": "4칸 method 정사각형의 인용은 유효한 원래 정사각형 ABCD의 성질로 한정되어 있다. 뒤의 넓이 목표·CC 분류를 수용해도 학생 해설 전체의 수학적 품질 PASS를 뜻하지 않는다.",
+        "sourceChanged": false
+      },
+      "questionUid": "qid_v1_bf6f71e848237887a135461e9cb5292a204545ac7e196eacc475b1b3025a7394",
+      "registryReadback": {
+        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER",
+        "ptActive": true,
+        "tplActive": true,
+        "templateParentMatches": true,
+        "exactSupportingUid": true,
+        "sourceCurriculumField": null,
+        "resolvedCurriculum": "2015",
+        "curriculumResolutionAuthority": "archive/tools/meta-foundation/active-registry.mjs curriculumForQuestion with exact sourceArchiveFile",
+        "exactBindingIdentity": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+          "ownerPack": "MIDDLE1"
+        },
+        "exactBindingCount": 1
+      }
+    }
+  ],
+  "parentAdjudication": {
+    "final": "2015 M1-05-BASIC_FIGURE",
+    "authority": "Root same-curriculum adjudication following RPM_MIDDLE_2022_PARENTS.md §1/§5 and official2015 RPM072–080",
+    "separation": "RPM L2 작도와 합동 및2022 CONSTRUCTION_CONGRUENCE 의미 참조는 review에 별도 보존하며 source machine parent를2022로 이관하지 않는다.",
+    "falseBindingGapsRemoved": true
+  },
+  "validation": {
+    "sampleDirectQuoteChecks": 22,
+    "sampleDirectQuoteFailures": 0,
+    "officialFullRawQuotes": 195,
+    "officialFullRawFailures": 0,
+    "protectedFieldChangesAcrossExam": []
+  },
+  "sourceModifiedByReviewer": false,
+  "mathFullR1R2Performed": false
+}

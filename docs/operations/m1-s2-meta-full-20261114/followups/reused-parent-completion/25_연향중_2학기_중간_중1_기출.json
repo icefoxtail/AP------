@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "m1s2-reused-candidate-parent-completion-v1",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+  "sourceBlob": "99cd522479988a1a968228e3d86cd26bfd1d5f3e",
+  "status": "INDEPENDENTLY_ACCEPTED_REMOTE_RAW_VERIFIED",
+  "scope": "ADDITIVE_SECTION10_CANONICAL_PARENT_ONLY",
+  "oldRaw": {
+    "kind": "GIT_COMMIT_EXACT_BYTES",
+    "commit": "63284976c941c9c3bebd56b7f5d2abc8b6b617d7",
+    "path": "archive-work/4slot-annotate-v1/out/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.4slot.json",
+    "sha256": "06c3b40c0124163d4ee3822ca9e28a880aeaf0c29d4f9c56579d8460283296b2",
+    "bytes": 48193
+  },
+  "raw4slot": {
+    "url": "https://drive.google.com/file/d/1-olu7c2Zg8OMVkrKlk7abn6BVGQI3aSy/view?usp=drivesdk",
+    "fileId": "1-olu7c2Zg8OMVkrKlk7abn6BVGQI3aSy",
+    "sha256": "e31eb8f188c6ddc6230783bcd19919f084cfcbb13557d3b17ee119588a99ccf6",
+    "readbackVerified": true,
+    "originalSourceBlob": "99cd522479988a1a968228e3d86cd26bfd1d5f3e",
+    "protectedPayloadSame": true
+  },
+  "additions": [
+    {
+      "ordinal": 18,
+      "questionUid": "qid_v1_fdc2c11452f888f0c7e935b40eee4f284b64de7f0344a354b368d8fd841da5f6",
+      "slot": "method",
+      "candidate": "삼각형의 세 변의 길이 관계",
+      "parent": "삼각형",
+      "parentId": 158
+    }
+  ],
+  "validation": {
+    "fail": [],
+    "warn": [
+      "#1 only 2 distinct terms",
+      "#1 method has 1 term",
+      "#2 only 4 distinct terms",
+      "#6 only 4 distinct terms",
+      "#8 only 4 distinct terms",
+      "#9 only 3 distinct terms",
+      "#11 only 4 distinct terms",
+      "#14 only 2 distinct terms",
+      "#14 method has 1 term",
+      "#15 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 24,
+      "examItems": 24,
+      "quotes": 163
+    }
+  },
+  "rawSemanticDiff": {
+    "addedEntries": 1,
+    "removedEntries": 0,
+    "modifiedExistingEntries": 0,
+    "candidateDeclarationsChanged": 0,
+    "otherPropertiesChanged": 0,
+    "reversionDeepEqual": true,
+    "oldCanonicalSerializationAlreadyMatched": true
+  },
+  "compactDiff": [
+    {
+      "ordinal": 18,
+      "slot": "method",
+      "before": [
+        294
+      ],
+      "after": [
+        294,
+        158
+      ],
+      "addedTermId": 158,
+      "addedCanonicalTerm": "삼각형"
+    }
+  ],
+  "independentTechnicalReview": {
+    "reviewer": "GPT_ROOT_64695B8EDE31",
+    "author": "/root/meta_b",
+    "status": "ACCEPTED",
+    "scope": "Four added canonical-parent entries only; actual current stem/choices/existing solution read for the three affected items; prior full review and three-item samples reused.",
+    "items": [
+      {
+        "ordinal": 18,
+        "questionUid": "qid_v1_fdc2c11452f888f0c7e935b40eee4f284b64de7f0344a354b368d8fd841da5f6",
+        "slot": "method",
+        "parent": "삼각형",
+        "parentId": 158,
+        "decision": "ACCEPT_CANONICAL_PARENT_SAME_SLOT",
+        "reason": "세 변으로 삼각형의 존재를 판단하는 기존 인용은 상위 개념 삼각형의 병기를 직접 뒷받침한다."
+      }
+    ]
+  },
+  "priorSamplesPreserved": true,
+  "studentPayloadChanges": 0,
+  "sourceUnchanged": true,
+  "authorReceiptSha256": "a64361606c56b0f678d134b638be2b1d4aefc3a5899df79596534a8b994d4095"
+}

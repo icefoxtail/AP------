@@ -10,6 +10,8 @@
 
 권위 우선순위: 사용자 현재 지시 > 적용 역할/캠페인 정본 > `docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md`(의미/증거) 및 RPM LOCKED/마스터 > 본 연결 계약(진입/프로젝션) > Git 과거 사례·crosswalk의 예전 GAP. 본 문서는 새 메타 레지스트리를 생성하지 않는다.
 
+2022 중학의 현재 L1/L2와 기존 LOCKED base 경로의 호환은 [RPM 2022 중학 부모 정본·호환 계약](../rules/01_CANONICAL/taxonomy/rpm-middle-2022/RPM_MIDDLE_2022_PARENTS.md)을 참조한다.
+
 ## 1. 서로 다른 두 층
 
 - **수학적 의미(사람/AI 판정 + 정본 검증):** 현재 과정/표준단원과 세부단원, RPM Primary L1/L2/L3/L4, 실제 결정 단계 `primaryMethod`/`decisiveStep`, Primary 바깥에서 정답에 기여한 `crossConceptKeys[]`, 실제 조건 `conditionKeys[]`, 복합 사고 `integrationPattern`. 수학 교육과정 밖 공식·미분법으로 풀이를 정당화하지 않는다.

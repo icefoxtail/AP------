@@ -1,0 +1,90 @@
+{
+  "sourcePath": "archive/exams/original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js",
+  "questionId": 16,
+  "figures": [
+    {
+      "slot": "body",
+      "plan": {
+        "capability": "composite-panels-v1",
+        "caption": "정사각기둥과 서로 직교하는 정사각기둥 세 개",
+        "accessibilityDescription": "[그림 1] 밑면의 두 변은 각각 x, 높이는 y인 정사각기둥. [그림 2] 같은 중심에서 가로, 세로, 높이 방향으로 만나는 정사각기둥 세 개. 그림은 비율의 예시이다.",
+        "sourceConditions": [
+          {
+            "id": "c1",
+            "condition": "밑면의 두 변의 길이는 x이고 높이는 y이다. 세 정사각기둥의 중앙이 겹치고 서로 수직이다.",
+            "mappedTo": "panels"
+          }
+        ],
+        "newVisualInformation": [],
+        "panels": [
+          {
+            "caption": {
+              "text": "[그림 1]"
+            },
+            "plan": {
+              "capability": "solid-figure-v1",
+              "solids": [
+                {
+                  "kind": "PRISM",
+                  "base": {
+                    "kind": "RECT",
+                    "width": 2,
+                    "depth": 2
+                  },
+                  "height": 7,
+                  "names": "........"
+                }
+              ],
+              "dims": [
+                {
+                  "edge": [
+                    "#b0",
+                    "#b1"
+                  ],
+                  "label": "x",
+                  "side": "BOTTOM"
+                },
+                {
+                  "edge": [
+                    "#b1",
+                    "#b2"
+                  ],
+                  "label": "x",
+                  "side": "RIGHT"
+                },
+                {
+                  "edge": [
+                    "#b0",
+                    "#t0"
+                  ],
+                  "label": "y",
+                  "side": "LEFT"
+                }
+              ]
+            }
+          },
+          {
+            "caption": {
+              "text": "[그림 2]"
+            },
+            "plan": {
+              "capability": "solid-figure-v1",
+              "solids": [
+                {
+                  "kind": "ORTHOGONAL_SQUARE_PRISM_UNION",
+                  "side": 2,
+                  "length": 7
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "typography": {
+        "baseFontPx": 24,
+        "displayScale": 0.5,
+        "fontFloorCssPx": 11
+      }
+    }
+  ]
+}

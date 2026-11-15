@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "m1s2-four-slot-reviewed-delta-v1",
+  "sourceArchiveFile": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+  "sourceBeforeBlob": "4c672d14973ebf4a5364ebbe33fdce6ce6fbf82f",
+  "sourceAfterBlob": "78149d953d4b2678d763e76dfd21e96d31ee0c9a",
+  "reviewer": "GPT_ROOT_90C1D51583CA_C",
+  "authorReviewRef": "docs/operations/m1s2-meta-b01-c-20261114/c1/24-wangun-final.review.json",
+  "independentRecheckRef": "docs/operations/m1s2-meta-b01-c-20261114/c2/24-wangun-change-recheck.json",
+  "sampleRef": "docs/operations/m1s2-meta-b01-c-20261114/c1_2-independent-sample.json",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "items": [
+    {
+      "ordinal": 3,
+      "slot": "goal",
+      "before": [
+        328
+      ],
+      "after": [
+        328,
+        129
+      ],
+      "reason": "요구한 n은 변 자체가 아니라 변의 개수이므로 개수(129)를 보강한다."
+    },
+    {
+      "ordinal": 7,
+      "slot": "given",
+      "before": [
+        708,
+        724
+      ],
+      "after": [
+        708,
+        724,
+        155
+      ],
+      "reason": "길이가 주어진 호가 원주와 비례를 세우는 직접 자료이므로 given에 호(155)를 보강한다."
+    },
+    {
+      "ordinal": 10,
+      "slot": "given",
+      "before": [
+        620
+      ],
+      "after": [
+        152,
+        620
+      ],
+      "reason": "최신 그림은 큰 원 전체의 외곽이 경계다. 반원만 있는 given에 원(152)을 보강하여 현행 그림의 전체 원/반원 구분을 보존한다."
+    },
+    {
+      "ordinal": 12,
+      "slot": "method",
+      "before": [
+        711,
+        219,
+        220
+      ],
+      "after": [
+        711,
+        288,
+        219,
+        220
+      ],
+      "reason": "속 빈 입체의 부피는 원기둥 두 부피의 차다. 기본 원기둥 공식만 보이는 기존 method에 차(288)를 넣어 구멍을 반영한다."
+    },
+    {
+      "ordinal": 16,
+      "slot": "given",
+      "before": [
+        413
+      ],
+      "after": [
+        170
+      ],
+      "reason": "보기 전체는 다면체이고 일부가 정다면체가 아니므로 given의 정다면체 단정은 다면체(170)로 정정한다. 방법은 수학적 경우 분기가 아니라 정다면체의 정의 검토다."
+    },
+    {
+      "ordinal": 16,
+      "slot": "method",
+      "before": [
+        413,
+        293
+      ],
+      "after": [
+        369,
+        413
+      ],
+      "reason": "보기 전체는 다면체이고 일부가 정다면체가 아니므로 given의 정다면체 단정은 다면체(170)로 정정한다. 방법은 수학적 경우 분기가 아니라 정다면체의 정의 검토다."
+    },
+    {
+      "ordinal": 22,
+      "slot": "goal",
+      "before": [
+        288
+      ],
+      "after": [
+        213,
+        286,
+        288
+      ],
+      "reason": "요구량은 넓이들의 합과 차인데 기존 goal은 차만, method는 부채꼴과 합만 있어 목표량 넓이와 실제 감산을 보강한다."
+    },
+    {
+      "ordinal": 22,
+      "slot": "method",
+      "before": [
+        156,
+        286
+      ],
+      "after": [
+        156,
+        213,
+        286,
+        288
+      ],
+      "reason": "요구량은 넓이들의 합과 차인데 기존 goal은 차만, method는 부채꼴과 합만 있어 목표량 넓이와 실제 감산을 보강한다."
+    },
+    {
+      "ordinal": 23,
+      "slot": "method",
+      "before": [
+        219,
+        653
+      ],
+      "after": [
+        219,
+        288,
+        653
+      ],
+      "reason": "남은 물의 부피를 구하는 결정 단계가 전체 원기둥에서 구들의 부피를 빼는 것이므로 차(288)를 보강한다."
+    },
+    {
+      "ordinal": 24,
+      "slot": "method",
+      "before": [
+        732,
+        267
+      ],
+      "after": [
+        732,
+        286,
+        267
+      ],
+      "reason": "집단별 실제 도수와 각 집단 전체 인원을 합쳐야 하므로 합(286)을 명시한다. 서로 다른 집단의 비율을 그대로 더하거나 평균내는 구조와 구별한다."
+    }
+  ],
+  "unchangedItems": 16,
+  "candidateTermsAdded": 0
+}
