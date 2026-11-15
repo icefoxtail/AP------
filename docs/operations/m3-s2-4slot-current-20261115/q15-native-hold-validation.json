@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "m3s2-exact-renderer-hold-validation-v1",
+  "status": "PASS_LOCAL_WITH_ONE_EXPLICIT_RENDERER_HOLD",
+  "basePrHead": "74901a67ace9b0eb3e626a95be89b8da04051ead",
+  "immutableProofCommit": "991a51af26f6130e5187e672a53054417a5214a6",
+  "immutableProofTree": "81eeb471c39b4b531a810a7a17d0990b407c5803",
+  "immutableProofSha256": "b19d81dc6cd4706380672433afd64e5fc420206f2281be299758406eab43b8fc",
+  "currentSourceBlobSha1": "b5d867ed7bd83f03b1b6793dc5802de2cdcaf3ee",
+  "heldUid": "qid_v1_9d287c6ad59d90578b2325f24c150e2a0b1c91fec9fd81031ce40604ea6cfce6",
+  "heldOrdinal": 15,
+  "existingSlotsPreserved": true,
+  "runtimeRegressionTests": {
+    "passed": 92,
+    "failed": 0,
+    "newM3Cases": 23,
+    "unchangedM1M2AndBaselineCases": 69
+  },
+  "actualE066": {
+    "counts": {
+      "files": 1,
+      "items": 21,
+      "registered": 20,
+      "pending": 1,
+      "withCandidates": 0,
+      "identityFingerprintHistorical": 18
+    },
+    "consumer": {
+      "schemaVersion": "archive-item-4slot-runtime-v1",
+      "status": "PASS_WITH_SUPPLEMENTS",
+      "verified": 20,
+      "pending": 1,
+      "indexSha256": "f19e2e3ea642d4dcb4dcb5e9d08bb110520d63c8f1b8023aba5d3b88afc43dda",
+      "sourceMutation": 0,
+      "semanticApprovalMutation": 0
+    },
+    "pending": [
+      {
+        "path": "archive/data/item-4slot/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.4slot.json",
+        "ordinal": 15,
+        "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+        "questionUid": "qid_v1_9d287c6ad59d90578b2325f24c150e2a0b1c91fec9fd81031ce40604ea6cfce6",
+        "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "evidence": {
+          "commit": "991a51af26f6130e5187e672a53054417a5214a6",
+          "path": "docs/operations/m3-s2-4slot-current-20261115/q15-registration-hold.json",
+          "sha256": "b19d81dc6cd4706380672433afd64e5fc420206f2281be299758406eab43b8fc"
+        },
+        "nextAction": "Publish and read back the source owner correction and independent immutable evidence, then rebind E066 to the corrected current source and remove only this exact renderer hold. Preserve all other reviewed slot values and existing metadata approvals."
+      }
+    ]
+  },
+  "scopedDataGate": {
+    "command": "node tests/item-4slot-data.test.cjs",
+    "fixture": "Only the exact E066 compact; unchanged official data gate and dictionaries.",
+    "result": "item-4slot-data: 1 file(s) checked, 0 defects"
+  },
+  "allM3S2": {
+    "counts": {
+      "files": 83,
+      "items": 1958,
+      "registered": 1957,
+      "pending": 1,
+      "withCandidates": 134,
+      "identityFingerprintHistorical": 1043
+    },
+    "consumer": {
+      "schemaVersion": "archive-item-4slot-runtime-v1",
+      "status": "PASS_WITH_SUPPLEMENTS",
+      "verified": 1957,
+      "pending": 1,
+      "indexSha256": "619798a55dac99710839a07cd41ccb5af51010c39ee36e47dceda7150583a89a",
+      "sourceMutation": 0,
+      "semanticApprovalMutation": 0
+    },
+    "pending": [
+      {
+        "path": "archive/data/item-4slot/original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.4slot.json",
+        "ordinal": 15,
+        "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+        "questionUid": "qid_v1_9d287c6ad59d90578b2325f24c150e2a0b1c91fec9fd81031ce40604ea6cfce6",
+        "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+        "evidence": {
+          "commit": "991a51af26f6130e5187e672a53054417a5214a6",
+          "path": "docs/operations/m3-s2-4slot-current-20261115/q15-registration-hold.json",
+          "sha256": "b19d81dc6cd4706380672433afd64e5fc420206f2281be299758406eab43b8fc"
+        },
+        "nextAction": "Publish and read back the source owner correction and independent immutable evidence, then rebind E066 to the corrected current source and remove only this exact renderer hold. Preserve all other reviewed slot values and existing metadata approvals."
+      }
+    ],
+    "existing1957RuntimeRowsByteEquivalent": true,
+    "stats": {
+      "revalidatedFiles": 83,
+      "reusedFiles": 0
+    },
+    "verificationScope": "Technical registration/projection only; no repeated mathematical review."
+  },
+  "sourceWrites": 0,
+  "sharedRegistryWrites": 0,
+  "metadataApprovalChanges": 0,
+  "difficultyApprovalChanges": 0,
+  "existingPrHeadWrites": 0,
+  "mainRegistration": "NOT_RUN",
+  "pages": "NOT_RUN",
+  "nextAction": "Root includes the immutable proof commit as an ancestor of the #2123 integration commit, adds the new validator helper and restored exact compact row, runs PR CI, then owns main merge and actual writer/Consumer/Pages readback."
+}

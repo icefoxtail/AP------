@@ -1,0 +1,517 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "m3s2-figure-reassessment-20261115-e053",
+  "examUid": "21_금당중_2학기_중간_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "45c81f4c1e0e1d7d42a2d8ad17bc96219e2f46a5",
+  "expectedQuestionCount": 24,
+  "scope": "PARTIAL_UIDS",
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_ROOT_12FB47B9B1B3",
+    "evidenceRefs": [
+      {
+        "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+        "sha256": "c6bb079e69f6276920f2d8efe8f80bd3546f5301ffe157f5dc6c15c83533a31e"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+        "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      {
+        "path": "docs/operations/m3-s2-release-20261115/E053.current-figure-review.json",
+        "sha256": "d46beb78457213236a199e1469a713d026233eb674144916bea15aa7803b8002"
+      }
+    ]
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_3357fd243a5db407de3f6bfa9a346d747e1e75679e29b829eb342fa05755b9c6",
+      "sourceOrdinal": 4,
+      "before": {
+        "curriculum": null,
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "rpmPrimaryId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "sourceFingerprint": "26280c84da6b680a8aeb48ac147153df749cff5754093ef2cbca203bb8c1e437",
+        "contentFingerprint": "3ae0f41a6b75a2e9fff6397d1bd0dcdfff34b51bfeedaa9fb2e6da55a553e696"
+      },
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "crossConceptKeys": [
+          "CC_RIGHT_TRIANGLE_SIMILARITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryId": "M3-RPM-055",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "sin·cos·tan"
+        },
+        "rpmL3": "삼각비의 뜻",
+        "rpmL4": "sin·cos·tan",
+        "primaryMethod": "현 해설의 AA 닮음 BCD∼BAC로 AB=BC²/BD를 먼저 복원한 다음 sinA=BC/AB를 계산한다. 목표가 길이 아닌 삼각비이므로 DIRECT_MEASURE에서 GEOMETRIC_DERIVATION으로 교정한다.",
+        "decisiveStep": "현 해설의 AA 닮음 BCD∼BAC로 AB=BC²/BD를 먼저 복원한 다음 sinA=BC/AB를 계산한다. 목표가 길이 아닌 삼각비이므로 DIRECT_MEASURE에서 GEOMETRIC_DERIVATION으로 교정한다.",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "sourceFingerprint": "c57beca876217225f068b31045de893f47048e09f8f061e984c2368820dfb84d",
+        "contentFingerprint": "5914cc5a16de32b31880289afc27e842b9bfb83a03397d7eb4a3880caf65b4bb"
+      },
+      "reason": "Current-source FINAL_QA reassessment of E053 #4: 닮음으로 빗변을 구한 뒤 sin의 정의를 적용한다. M3-05/TRIG_RATIO 및 RPM 삼각비의 뜻/sin·cos·tan이 목표이고, CC_RIGHT_TRIANGLE_SIMILARITY가 실제 보조 개념이다. 익숙한 닮음→정의의 순차 적용이므로 bucket2를 유지한다. Actual selected-question calculation and current problem/solution asset inspection are bound to the native evidence; unchanged accepted semantic and difficulty decisions are retained.",
+      "identityBefore": {
+        "sourceFingerprint": "26280c84da6b680a8aeb48ac147153df749cff5754093ef2cbca203bb8c1e437"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c60cd2c699f7f01d436c4cac4606a6900a6f2b7d",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+          "sha256": "c6bb079e69f6276920f2d8efe8f80bd3546f5301ffe157f5dc6c15c83533a31e"
+        }
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+        "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+          "sha256": "c6bb079e69f6276920f2d8efe8f80bd3546f5301ffe157f5dc6c15c83533a31e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+          "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": "docs/operations/m3-s2-release-20261115/E053.current-figure-review.json",
+          "sha256": "d46beb78457213236a199e1469a713d026233eb674144916bea15aa7803b8002"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ec0c7e5d18f9d5ae587ebc6e996c294efe56dff023af9fdc26c06adaa7465814",
+      "sourceOrdinal": 11,
+      "before": {
+        "curriculum": null,
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "rpmPrimaryId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "sourceFingerprint": "33c76bfe9e576f698d78717a906356c93c5ef2803ddf971513379e505b253272",
+        "contentFingerprint": "1ad25347dcc26b91cea35536e6d37acd3f0a327464dff534643b1f0fda080114"
+      },
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryId": "M3-RPM-059",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비",
+          "l3": "삼각비와 길이",
+          "l4": "직각삼각형의 변"
+        },
+        "rpmL3": "삼각비와 길이",
+        "rpmL4": "직각삼각형의 변",
+        "primaryMethod": "빗변c와 각A가 주어져 두 직각변을 c cosA,c sinA로 직접 표현한다.",
+        "decisiveStep": "빗변c와 각A가 주어져 두 직각변을 c cosA,c sinA로 직접 표현한다.",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "sourceFingerprint": "fc2fc79493ea3e9eea331ece45c563e3b3b44961aa6bb577d9be6d02a55d141d",
+        "contentFingerprint": "79e2574ebd6adde24addaadc9f31fb17ca48a20aea7d7bea28d78b7ba145f189"
+      },
+      "reason": "Current-source FINAL_QA reassessment of E053 #11: 주어진 빗변과 각으로 이웃변·맞은편변을 직접 표현한다. M3-05/TRIG_RATIO 및 RPM 삼각비와 길이/직각삼각형의 변을 유지한다. 추가 개념·특수 조건이 없고 직접 정의 적용이므로 CC=[], condition=[], integration=NONE, bucket1을 유지한다. Actual selected-question calculation and current problem/solution asset inspection are bound to the native evidence; unchanged accepted semantic and difficulty decisions are retained.",
+      "identityBefore": {
+        "sourceFingerprint": "33c76bfe9e576f698d78717a906356c93c5ef2803ddf971513379e505b253272"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c60cd2c699f7f01d436c4cac4606a6900a6f2b7d",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+          "sha256": "c6bb079e69f6276920f2d8efe8f80bd3546f5301ffe157f5dc6c15c83533a31e"
+        }
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+        "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+          "sha256": "c6bb079e69f6276920f2d8efe8f80bd3546f5301ffe157f5dc6c15c83533a31e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+          "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": "docs/operations/m3-s2-release-20261115/E053.current-figure-review.json",
+          "sha256": "d46beb78457213236a199e1469a713d026233eb674144916bea15aa7803b8002"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e2b38c9883111b002725b9d0609fbaed012fb0a1a5ea66185417097babf7e41d",
+      "sourceOrdinal": 15,
+      "before": {
+        "curriculum": null,
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원의 성질",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "rpmPrimaryId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "sourceFingerprint": "4be4a18a1c4f54d5400174cfe5a4be4a3a5c1ab33386486fc0920cb812d00826",
+        "contentFingerprint": "2e6bdf3cb5d6e2daebfc03ccf8808917185e58b6930747e3825ce7dc94443451"
+      },
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryId": "M3-RPM-069",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이"
+        },
+        "rpmL3": "원의 중심과 현",
+        "rpmL4": "중심거리와 현의 길이",
+        "primaryMethod": "중심의 현 수직이등분 성질과 같은 중심거리↔같은 현의 길이를 각각 확인한다. 두 반지름만 같고 중심거리는 미지정이므로 각이 같다는 보기는 일반적으로 성립하지 않는다.",
+        "decisiveStep": "중심의 현 수직이등분 성질과 같은 중심거리↔같은 현의 길이를 각각 확인한다. 두 반지름만 같고 중심거리는 미지정이므로 각이 같다는 보기는 일반적으로 성립하지 않는다.",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "sourceFingerprint": "46726a3a50773df4c84c46542d005aec2c93a62af9c8ae4de65a47c4bb72d7e2",
+        "contentFingerprint": "71795e2ae1af3cf3ba7130362d836dd14e0630548789abe52756b4ce278bac51"
+      },
+      "reason": "Current-source FINAL_QA reassessment of E053 #15: 원의 중심에서 현에 내린 수선, 중심거리와 현 길이의 동치가 판단 핵심이다. M3-06/CIRCLE_LINE 및 RPM 원의 중심과 현/중심거리와 현의 길이를 유지한다. 현 해설에서 두 방향에 피타고라스 정리를 명시 사용하므로 CC_PYTHAGOREAN/SEQUENTIAL을 유지한다. 익숙한 기본 성질의 보기 판단으로 bucket2를 유지한다. Actual selected-question calculation and current problem/solution asset inspection are bound to the native evidence; unchanged accepted semantic and difficulty decisions are retained.",
+      "identityBefore": {
+        "sourceFingerprint": "4be4a18a1c4f54d5400174cfe5a4be4a3a5c1ab33386486fc0920cb812d00826"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c60cd2c699f7f01d436c4cac4606a6900a6f2b7d",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+          "sha256": "c6bb079e69f6276920f2d8efe8f80bd3546f5301ffe157f5dc6c15c83533a31e"
+        }
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+        "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+          "sha256": "c6bb079e69f6276920f2d8efe8f80bd3546f5301ffe157f5dc6c15c83533a31e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+          "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": "docs/operations/m3-s2-release-20261115/E053.current-figure-review.json",
+          "sha256": "d46beb78457213236a199e1469a713d026233eb674144916bea15aa7803b8002"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6b154792603079aabc87099a8ee36edb8179a21d8f380accd3d7049fa8219f1f",
+      "sourceOrdinal": 20,
+      "before": {
+        "curriculum": null,
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원의 성질",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "rpmPrimaryId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "sourceFingerprint": "697b8c1b1255e542868101472c1e82642348e900faa5f0a55c359186277c73a0",
+        "contentFingerprint": "d05d56a97bc0109ceddb64bdd2f4cb3e584b70ea2c55b1d5745f34dd5f91abde"
+      },
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryId": "M3-RPM-072",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기"
+        },
+        "rpmL3": "원의 접선",
+        "rpmL4": "접선 조건으로 길이 구하기",
+        "primaryMethod": "내접원의 각 꼭짓점에서 등접선을 전달해 세 변7,8,9를 복원하고 둘레를 구한다.",
+        "decisiveStep": "내접원의 각 꼭짓점에서 등접선을 전달해 세 변7,8,9를 복원하고 둘레를 구한다.",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "sourceFingerprint": "925e2f922a410e7e7d409082968167f9f898f318212885fd0ef60b4e9d7b4bef",
+        "contentFingerprint": "1f43854d82adca9b276abde5c35e07c05139f57b85bb7fcb4eab7b8752dd1513"
+      },
+      "reason": "Current-source FINAL_QA reassessment of E053 #20: 내접원의 각 꼭짓점에서 그은 두 접선 길이가 같음을 세 변에 적용하고 둘레를 합산한다. M3-06/CIRCLE_LINE 및 RPM 원의 접선/접선 조건으로 길이 구하기를 유지한다. 추가 횡단 개념이나 조건 키는 없으며 SEQUENTIAL, bucket2가 실제 풀이와 일치한다. ALIVE_REPLACEMENT 출처를 보존한다. Actual selected-question calculation and current problem/solution asset inspection are bound to the native evidence; unchanged accepted semantic and difficulty decisions are retained.",
+      "identityBefore": {
+        "sourceFingerprint": "697b8c1b1255e542868101472c1e82642348e900faa5f0a55c359186277c73a0"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c60cd2c699f7f01d436c4cac4606a6900a6f2b7d",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+          "sha256": "c6bb079e69f6276920f2d8efe8f80bd3546f5301ffe157f5dc6c15c83533a31e"
+        }
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+        "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+          "sha256": "c6bb079e69f6276920f2d8efe8f80bd3546f5301ffe157f5dc6c15c83533a31e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+          "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": "docs/operations/m3-s2-release-20261115/E053.current-figure-review.json",
+          "sha256": "d46beb78457213236a199e1469a713d026233eb674144916bea15aa7803b8002"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_24d1de5cbf0526bfb3505eae85b10e66e6db85cf8228d3280bb15b01cf07ef4a",
+      "sourceOrdinal": 23,
+      "before": {
+        "curriculum": null,
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원의 성질",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+        "crossConceptKeys": [
+          "M3-RPM-069"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "rpmPrimaryId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "sourceFingerprint": "25fcf05534a635b952e79622dccc43b6956d99859fb96b3c57ce2edb72bf8dcc",
+        "contentFingerprint": "60949deef7ad66d32a84cfd510cb43a5ff2b6d75b0e2c236a2ea38fc0238eedd"
+      },
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryId": "M3-RPM-069",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이"
+        },
+        "rpmL3": "원의 중심과 현",
+        "rpmL4": "중심거리와 현의 길이",
+        "primaryMethod": "소문항(1)은 중심수선이 현14를 이등분해7,(2)는 같은 중심거리4의 두 현이 같아5임을 직접 적용한다. 기존 CC의 M3-RPM-069는 등록 개념키가 아니며 동일 주제의 핵심이므로 제거한다.",
+        "decisiveStep": "소문항(1)은 중심수선이 현14를 이등분해7,(2)는 같은 중심거리4의 두 현이 같아5임을 직접 적용한다. 기존 CC의 M3-RPM-069는 등록 개념키가 아니며 동일 주제의 핵심이므로 제거한다.",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "sourceFingerprint": "520fdee068b911f946c3589e1e8e6735da909b9968e88c883fd554cfca0c52bb",
+        "contentFingerprint": "0c2fd5a656e46dd9511437b0302cc484af4f06cbad9b1543b28c4e20b6dae882"
+      },
+      "reason": "Current-source FINAL_QA reassessment of E053 #23: 두 소문항은 각각 중심수선의 현 이등분과 같은 중심거리의 현 길이 같음을 직접 적용한다. M3-06/CIRCLE_LINE 및 RPM 원의 중심과 현/중심거리와 현의 길이를 유지한다. 두 독립 소문항이므로 CC=[], condition=[], integration=NONE, 직접 적용 bucket1을 유지한다. 기존 level=중, confidence=medium, B12 및 BORDERLINE_ACCEPTABLE은 기존 유효 경계판정을 보존한다. Actual selected-question calculation and current problem/solution asset inspection are bound to the native evidence; unchanged accepted semantic and difficulty decisions are retained.",
+      "identityBefore": {
+        "sourceFingerprint": "25fcf05534a635b952e79622dccc43b6956d99859fb96b3c57ce2edb72bf8dcc"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c60cd2c699f7f01d436c4cac4606a6900a6f2b7d",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+          "sha256": "c6bb079e69f6276920f2d8efe8f80bd3546f5301ffe157f5dc6c15c83533a31e"
+        }
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+        "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E053.current-source-review.json",
+          "sha256": "c6bb079e69f6276920f2d8efe8f80bd3546f5301ffe157f5dc6c15c83533a31e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+          "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": "docs/operations/m3-s2-release-20261115/E053.current-figure-review.json",
+          "sha256": "d46beb78457213236a199e1469a713d026233eb674144916bea15aa7803b8002"
+        }
+      ]
+    }
+  ]
+}

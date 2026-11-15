@@ -6,6 +6,7 @@ import crypto from 'node:crypto';
 import { REASSESSED_STUDENT_FIELDS, validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
 import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
 import { reviewedRendererBindingPath, buildReviewedRendererBinding } from './reviewed-current-renderer-continuity.mjs';
+import { REVIEWED_RPM_FIELDS } from './reviewed-rpm-provenance.mjs';
 
 const fail = message => { throw Error(`native reviewed renderer reuse: ${message}`); };
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -107,10 +108,18 @@ export function nativeReviewedRendererRebind(receipt, nativeSource, previous, qu
   // Re-run the original native decision and renderer witness against the exact
   // registered current values; no stale fingerprint is treated as a new review.
   const canonical = registry ? {pt:registry.problemTypes, tpl:registry.templates} : undefined;
+  const replayAfter = { ...repair.after };
+  for (const [bindings, allowed] of [[proof.rationaleBindings, ['primaryMethod', 'decisiveStep']],
+    [proof.rpmBindings, REVIEWED_RPM_FIELDS]]) {
+    for (const field of Object.keys(bindings || {})) {
+      if (!allowed.includes(field) || !Object.hasOwn(current, field)) fail('unsupported native value binding');
+      replayAfter[field] = current[field];
+    }
+  }
   const reproduced = validateReviewedSourceReassessment({root,
     request:{scope:receipt.scope, approval:receipt.approval, sourceArchiveFile:receipt.sourceArchiveFile,
       expectedQuestionCount:receipt.expectedQuestionCount},
-    patch:{questionUid:identity.questionUid, sourceOrdinal:ordinal, after:repair.after,
+    patch:{questionUid:identity.questionUid, sourceOrdinal:ordinal, after:replayAfter,
       sourceReview:{schemaVersion:proof.schemaVersion, reviewCommit:proof.reviewCommit, reviewPath:proof.reviewPath,
         reviewRef:proof.reviewRef, rendererProof:{schemaVersion:renderer.schemaVersion,
           reviewCommit:renderer.reviewCommit, reviewRef:renderer.reviewRef}}, evidenceRefs:receipt.approval.evidenceRefs},
@@ -118,7 +127,15 @@ export function nativeReviewedRendererRebind(receipt, nativeSource, previous, qu
     canonicalBefore:canonical, canonicalAfter:canonical, supportedFields, cache});
   if (!equal(reproduced, proof)) fail('native renderer reassessment proof differs');
   const priorPayloadSha = sha(stable(payload(previous)));
-  if (![renderer.nativeStudentPayloadSha256, renderer.currentStudentPayloadSha256].includes(priorPayloadSha))
-    fail('previous student payload is neither the immutable native source nor the reviewed current renderer');
+  const allowedPrevious = [renderer.nativeStudentPayloadSha256, renderer.currentStudentPayloadSha256];
+  const correctionInput = reproduced.rendererContinuity.independentlyReviewedCorrectionInput;
+  if (correctionInput !== undefined) {
+    if (correctionInput.schemaVersion !== 'archive-inspected-renderer-correction-input-v1' ||
+        correctionInput.scope !== 'CORRECTION_INPUT_ONLY' || !SHA256.test(correctionInput.studentPayloadSha256 || ''))
+      fail('unsupported independently inspected correction input');
+    allowedPrevious.push(correctionInput.studentPayloadSha256);
+  }
+  if (!allowedPrevious.includes(priorPayloadSha))
+    fail('previous student payload is not an immutable native, current or independently inspected correction input');
   return true;
 }

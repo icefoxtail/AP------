@@ -13,6 +13,8 @@ import {nativeReviewedFigureRebind} from '../archive/tools/meta-foundation/nativ
 import {nativeReviewedRendererRebind} from '../archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs';
 import {REVIEWED_META_VALUE_FIELDS} from '../archive/tools/meta-foundation/reviewed-meta-value-fields.mjs';
 import {reviewedRendererBindingPath,buildReviewedRendererBinding} from '../archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs';
+import {reviewedSourceBindingPath,buildReviewedSourceBinding} from '../archive/tools/meta-foundation/reviewed-source-binding.mjs';
+import {hasNativeReviewedSourceClaim,validateNativeReviewedSourceReuse} from '../archive/tools/meta-foundation/native-reviewed-source-reuse.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source='original/middle/m3/1mid/fixture.js',uid='qid_v1_'+'a'.repeat(64);
 function fixture() {
@@ -854,4 +856,164 @@ test('compound reuse follows the writer value contract without approving native 
   assert.equal(f.current.standardUnitOrder,undefined);
   assert.equal(f.verifyCompound(),true);assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
   assert.equal(f.current.standardUnitOrder,undefined);
+});
+
+function typedSourceReviewFixture(t) {
+  const f=nativeReviewFixture(t,{ordinal:2,questionOverrides:{id:2,standardCourse:'중2 수학',courseKey:'M2-2',
+    standardUnitKey:'M2-06',subUnitKey:'M2-06-RATIO'},officialValidator:true});
+  const dir=f.nativeSource.root,sha=v=>crypto.createHash('sha256').update(v).digest('hex');
+  const stable=v=>JSON.stringify(v,(_,x)=>x&&typeof x==='object'&&!Array.isArray(x)?Object.fromEntries(Object.keys(x).sort().map(k=>[k,x[k]])):x);
+  const put=(p,v)=>{const full=path.join(dir,p);fs.mkdirSync(path.dirname(full),{recursive:true});fs.writeFileSync(full,typeof v==='string'?v:JSON.stringify(v,null,2)+'\n');return{path:p,sha256:sha(fs.readFileSync(full))};};
+  const git=(...args)=>execFileSync('git',args,{cwd:dir,encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
+  git('init','-q');git('config','user.name','Synthetic review');git('config','user.email','synthetic@example.invalid');
+  f.source='original/middle/m2/2final/typed-source-fixture.js';
+  const owner='MIDDLE_GEOMETRY',packPath='archive/data/meta-foundation/canonical/packs/middle-geometry';
+  for(const rows of [f.receipt.appliedRecords,f.receipt.runtimeRecords,f.receipt.appliedIdentityRecords])for(const row of rows){
+    row.sourceArchiveFile=f.source;
+    if(row.sourceIdentity)row.sourceIdentity=f.source+'#'+row.sourceOrdinal;
+    if(row.metaFoundationPackId){row.metaFoundationPackId=owner;row.metadataRevision=`meta-foundation:${owner}@1.0.0:exam-final_qa-v2:${f.receipt.requestId}`;}
+  }
+  f.current=f.receipt.appliedRecords[1];f.identity=f.receipt.appliedIdentityRecords[1];
+  const plainCurrent=f.receipt.appliedRecords[0],plainIdentity=f.receipt.appliedIdentityRecords[0],plainRuntime=f.receipt.runtimeRecords[0];
+  f.nativeSource.runtimeRecord=f.receipt.runtimeRecords[1];f.runtimeOwner=owner;
+  f.nativeSource.identityByJoin=new Map(f.receipt.appliedIdentityRecords.map(r=>[f.source+'#'+r.sourceOrdinal,r]));
+  const pt={problemTypeKey:'PT_ROOT',canonicalLabelKo:'Root',status:'ACTIVE',ownerPack:owner,supportingQuestionUids:[uid]},
+    tpl={templateKey:'TPL_ROOT',canonicalLabelKo:'Root test',status:'ACTIVE',ownerPack:owner,parentProblemTypeKey:'PT_ROOT',supportingQuestionUids:[uid]},
+    binding={curriculum:'2015',standardCourse:'중2 수학',standardUnitKey:'M2-06',subUnitKey:'M2-06-RATIO',problemTypeKey:'PT_ROOT',status:'ACTIVE',ownerPack:owner,L1:'Reviewed RPM parent',L2:'Reviewed RPM middle'};
+  const pack={packId:owner,packVersion:'1.0.0',canonicalStatus:'ACTIVE',curricula:['2015'],standardCourses:['중2 수학','M2-2']};
+  const entries=[put(packPath+'/pack.json',pack),put(packPath+'/taxonomy.json',{problemTypes:[pt],templates:[tpl]}),
+    put(packPath+'/bindings.json',{bindings:[binding]}),put(packPath+'/aliases.json',{aliases:[]}),
+    put('archive/data/meta-foundation/canonical/condition_registry.json',{conditions:[]})];
+  const index={status:'ACTIVE',activePacks:[{id:owner,version:'1.0.0',status:'ACTIVE'}],activeConceptShards:[],canonicalSources:entries,compiledArtifacts:[]};
+  put('archive/data/meta-foundation/canonical/registry_index.json',index);
+  const master=[{key:'M2-06',keyType:'standardUnitKey',status:'active',labelKo:'도형의 닮음'},
+    {key:'M2-06-RATIO',keyType:'subUnitKey',status:'active',parentKey:'M2-06',labelKo:'선분비'}];
+  put('archive/data/master_tables/js_archive_tag_master.json',master);
+  Object.assign(f.registry,{root:dir,files:{index},problemTypes:new Map([['PT_ROOT',pt]]),templates:new Map([['TPL_ROOT',tpl]]),
+    bindingRows:[binding],activePacks:new Map([[owner,index.activePacks[0]]])});
+  f.registry.bindings=new Set(['2015\0M2-06\0M2-06-RATIO\0PT_ROOT']);
+  const sourcePath='archive/exams/'+f.source,rpmPath='archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json';
+  put(sourcePath,f.nativeSource.bytes.toString());
+  const rpmRef=put(rpmPath,{records:[{id:'M2-RPM-TEST',curriculum:'2015',scope:'M2-2',standardUnitKey:'M2-06',subUnitKey:'M2-06-RATIO'}]});
+  git('add','.');git('commit','-qm','Synthetic immutable reviewed source');
+  const base=git('rev-parse','HEAD'),sourceBlob=git('rev-parse',base+':'+sourcePath);
+  const after=Object.fromEntries(REVIEWED_META_VALUE_FIELDS.filter(k=>Object.hasOwn(f.current,k)&&!['problemTypeKey','templateKey'].includes(k)).map(k=>[k,f.current[k]]));
+  const native={schemaVersion:'m2-s2-meta-review-v1',sourceArchiveFile:f.source,baseSha:base,sourceGitBlobSha:sourceBlob,owner:'native-reviewer',reviewedQuestionCount:2,
+    items:f.receipt.appliedRecords.map(row=>({questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal,rpmDecision:'KEEP',rpmRecordId:'M2-RPM-TEST',decisiveStep:f.question.decisiveStep,
+      after,proposalRefs:[],registrationDebt:[],fieldReview:{classification:'기존 주유형 유지',binding:'정확한 기존 ACTIVE binding 대조',difficulty:'확정 난도 유지'},
+      activeDefinitionMatch:{problemTypeKey:'PT_ROOT',templateKey:'TPL_ROOT',problemTypeStatus:'ACTIVE',templateStatus:'ACTIVE',templateParent:'PT_ROOT',
+        exactBindings:[Object.fromEntries(['curriculum','standardCourse','standardUnitKey','subUnitKey','problemTypeKey','status'].map(k=>[k,binding[k]]))]}})),proposals:[]};
+  const reviewRef=put('review/native-source.json',native);git('add','.');git('commit','-qm','Synthetic native decision');
+  const patch={questionUid:uid,sourceOrdinal:2,before:{problemTypeKey:null,templateKey:null,sourceFingerprint:'b'.repeat(64),contentFingerprint:'c'.repeat(64)},
+    after:{problemTypeKey:'PT_ROOT',templateKey:'TPL_ROOT',sourceFingerprint:sourceFingerprint(f.question),contentFingerprint:contentFingerprint(f.question)},
+    identityBefore:{sourceFingerprint:'b'.repeat(64)},evidenceRefs:[reviewRef,rpmRef],sourceReview:{schemaVersion:'archive-reviewed-source-reassessment-v1',
+      reviewCommit:git('rev-parse','HEAD'),reviewPath:reviewRef.path,reviewRef,retainedFields:{schemaVersion:'archive-reviewed-native-retained-fields-v1',fields:['problemTypeKey','templateKey']}}};
+  const request={schemaVersion:'archive-reviewed-exam-meta-register-request-v2',requestId:f.receipt.requestId,examUid:f.receipt.examUid,scope:'PARTIAL_UIDS',
+    sourceArchiveFile:f.source,expectedSourceBlobSha1:sourceBlob,expectedQuestionCount:2,registryChanges:[],items:[patch],
+    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'fixture-reviewer',evidenceRefs:[reviewRef,rpmRef]}};
+  const tables={pt:f.registry.problemTypes,tpl:f.registry.templates,cc:new Map(),cond:new Map(),master:new Map(master.map(r=>[r.key,r])),
+    bindings:new Map([[stable(['2015','중2 수학','M2-06','M2-06-RATIO','PT_ROOT']),binding]])};
+  const proof=validateReviewedSourceReassessment({root:dir,request,patch,metadata:{...f.current,...patch.before},question:f.question,final:f.current,
+    supportedFields:new Set(REVIEWED_META_VALUE_FIELDS),canonicalBefore:tables,canonicalAfter:tables});
+  const bindingPath=reviewedSourceBindingPath(request.requestId);
+  for(const row of [f.current,f.nativeSource.runtimeRecord])row.approvalEvidence.push(bindingPath);
+  Object.assign(f.receipt,{sourceArchiveFile:f.source,scope:'PARTIAL_UIDS',partialUidCount:1,totalQuestions:1,expectedQuestionCount:2,
+    requestSha256:sha(stable(request)),approval:request.approval,registryChanges:[],appliedRecords:[f.current],appliedIdentityRecords:[f.identity],runtimeRecords:[f.nativeSource.runtimeRecord],
+    fingerprintRepairs:[{questionUid:uid,sourceOrdinal:2,metadataBefore:{sourceFingerprint:patch.before.sourceFingerprint,contentFingerprint:patch.before.contentFingerprint},
+      identityBefore:patch.identityBefore,after:{sourceFingerprint:sourceFingerprint(f.question),contentFingerprint:contentFingerprint(f.question)},sourceReview:proof}]});
+  f.receipt.outputDigests=[put(bindingPath,buildReviewedSourceBinding({request,...f.receipt}))];f.saveReceipt();
+  return Object.assign(f,{put,git,sha,stable,request,bindingPath,sourcePath,reviewPath:reviewRef.path,plainCurrent,plainIdentity,plainRuntime});
+}
+function typedSourceAncestor(f) {
+  const priorPath=f.receiptPath,priorRef={path:priorPath,sha256:f.sha(fs.readFileSync(path.join(f.nativeSource.root,priorPath)))};
+  f.git('hash-object','-w',f.sourcePath);
+  f.nativeSource.bank[0].primaryMethod='unselected source metadata changed';
+  const raw=Buffer.from('window.questionBank='+JSON.stringify(f.nativeSource.bank)+';\n');f.put(f.sourcePath,raw.toString());
+  f.nativeSource.bytes=raw;f.nativeSource.blobSha1=crypto.createHash('sha1').update(`blob ${raw.length}\0`).update(raw).digest('hex');
+  const nextId='typed-source-rebind',nextPath=priorPath.replace(f.receipt.requestId+'.json',nextId+'.json');
+  for(const row of [f.current,f.nativeSource.runtimeRecord]){row.metadataRevision=`meta-foundation:MIDDLE_GEOMETRY@1.0.0:exam-final_qa-v2:${nextId}`;row.approvalEvidence.push(nextPath);}
+  f.receipt={...structuredClone(f.receipt),requestId:nextId,sourceBlobSha1:f.nativeSource.blobSha1,sourceRawSha256:f.sha(raw),
+    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'preserve existing approval',evidenceRefs:[priorRef],sourceRebind:{priorReceiptRef:priorRef}},
+    fingerprintRepairs:[],outputDigests:[],newMetadataApprovals:0,preservedMetadataApprovals:1,
+    appliedRecords:[f.current],runtimeRecords:[f.nativeSource.runtimeRecord]};
+  f.receiptPath=nextPath;f.saveReceipt=()=>f.put(nextPath,f.receipt);f.saveReceipt();return f;
+}
+test('typed native source review revalidates a consumed request without altering its approval',t=>{
+  const f=typedSourceReviewFixture(t),before=JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.nativeSource.bank]);
+  assert.equal(validateNativeReviewedSourceReuse(f.receipt,f.nativeSource,f.question,f.identity,f.ordinal,f.current,f.registry),true);
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  assert.equal(JSON.stringify([f.current,f.identity,f.nativeSource.runtimeRecord,f.nativeSource.bank]),before);
+});
+for(const [name,mutate] of [
+  ['sidecar removed',f=>fs.unlinkSync(path.join(f.nativeSource.root,f.bindingPath))],
+  ['sidecar digest removed',f=>{f.receipt.outputDigests=[];}],
+  ['repair and native evidence both removed',f=>{f.receipt.fingerprintRepairs=[];f.receipt.approval.evidenceRefs=f.receipt.approval.evidenceRefs.filter(r=>r.path!==f.reviewPath);}],
+  ['sidecar selected UID changed',f=>{const p=JSON.parse(fs.readFileSync(path.join(f.nativeSource.root,f.bindingPath)));p.records[0].questionUid='other';f.put(f.bindingPath,p);}],
+  ['before fingerprint changed',f=>{f.receipt.fingerprintRepairs[0].metadataBefore.sourceFingerprint='e'.repeat(64);}],
+  ['native decision bytes changed',f=>f.put(f.reviewPath,{unreviewed:true})],
+  ['current definition bytes changed',f=>f.put('archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json',{problemTypes:[],templates:[]})],
+  ['receipt missing',f=>{fs.unlinkSync(path.join(f.nativeSource.root,f.receiptPath));f.saveReceipt=()=>{};}],
+  ['all row markers and receipt proofs erased but sidecar output remains',f=>{
+    for(const row of [f.current,f.nativeSource.runtimeRecord])row.approvalEvidence=row.approvalEvidence.filter(p=>p!==f.bindingPath);
+    f.receipt.fingerprintRepairs=[];
+  }],
+  ['all markers, proofs and digest erased but exact sidecar file remains',f=>{
+    for(const row of [f.current,f.nativeSource.runtimeRecord])row.approvalEvidence=row.approvalEvidence.filter(p=>p!==f.bindingPath);
+    f.receipt.fingerprintRepairs=[];f.receipt.outputDigests=[];
+  }],
+  ['all markers, proofs and sidecar file erased but output digest remains',f=>{
+    for(const row of [f.current,f.nativeSource.runtimeRecord])row.approvalEvidence=row.approvalEvidence.filter(p=>p!==f.bindingPath);
+    f.receipt.fingerprintRepairs=[];fs.unlinkSync(path.join(f.nativeSource.root,f.bindingPath));
+  }],
+  ['selected count changed',f=>{f.receipt.partialUidCount=2;}],
+])test('typed source reuse refuses '+name+' and cannot fall back to MAIN_MERGE',t=>{
+  const f=typedSourceReviewFixture(t);assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');mutate(f);f.saveReceipt();
+  const out=planQuestion(f);assert.equal(out.status,'SUPPLEMENT_PENDING');assert.deepEqual(out.reasons,['NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED']);assert.equal(out.final,undefined);
+});
+test('a valid typed source review does not authorize unrelated student changes across the cursor',t=>{
+  const f=typedSourceReviewFixture(t);f.previous.answer='unreviewed previous answer';
+  assert.equal(planQuestion(f).status,'SUPPLEMENT_PENDING');assert.equal(planQuestion(f).nativeReviewReceipt,undefined);
+});
+test('a mixed partial receipt does not impose another selected UID source-review opt-in on a plain row',t=>{
+  const f=typedSourceReviewFixture(t);
+  f.request.items.unshift({questionUid:f.plainIdentity.questionUid,sourceOrdinal:1,before:{},after:{},evidenceRefs:f.request.approval.evidenceRefs});
+  f.receipt.requestSha256=f.sha(f.stable(f.request));f.receipt.partialUidCount=2;f.receipt.totalQuestions=2;
+  f.receipt.appliedRecords.unshift(f.plainCurrent);f.receipt.appliedIdentityRecords.unshift(f.plainIdentity);f.receipt.runtimeRecords.unshift(f.plainRuntime);
+  f.receipt.outputDigests=[f.put(f.bindingPath,buildReviewedSourceBinding({request:f.request,...f.receipt}))];f.saveReceipt();
+  f.ordinal=1;f.current=f.plainCurrent;f.identity=f.plainIdentity;f.nativeSource.runtimeRecord=f.plainRuntime;
+  f.question=structuredClone(f.nativeSource.bank[0]);f.previous=structuredClone(f.question);
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  assert.equal(validateNativeReviewedSourceReuse(f.receipt,f.nativeSource,f.question,f.identity,f.ordinal,f.current,f.registry),null);
+});
+test('source-only rebind retains its original typed source-review witness obligations',t=>{
+  const f=typedSourceAncestor(typedSourceReviewFixture(t));
+  assert.equal(validateNativeReviewedSourceReuse(f.receipt,f.nativeSource,f.question,f.identity,f.ordinal,f.current,f.registry),true);
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
+  f.put(f.reviewPath,{unreviewed:true});assert.equal(planQuestion(f).status,'SUPPLEMENT_PENDING');
+});
+for(const [name,mutate] of [
+  ['wrong prior receipt SHA',f=>{f.receipt.approval.sourceRebind.priorReceiptRef.sha256='e'.repeat(64);}],
+  ['unregistered new approval',f=>{f.receipt.newMetadataApprovals=1;}],
+  ['missing original sidecar',f=>fs.unlinkSync(path.join(f.nativeSource.root,f.bindingPath))],
+])test('typed source-review ancestor refuses '+name,t=>{
+  const f=typedSourceAncestor(typedSourceReviewFixture(t));mutate(f);f.saveReceipt();
+  assert.equal(planQuestion(f).status,'SUPPLEMENT_PENDING');assert.equal(planQuestion(f).final,undefined);
+});
+test('an explicit prior receipt detects typed ancestry after all inherited row provenance is erased',t=>{
+  const f=typedSourceAncestor(typedSourceReviewFixture(t));
+  for(const row of [f.current,f.nativeSource.runtimeRecord])row.approvalEvidence=[f.receiptPath];
+  f.saveReceipt();
+  assert.equal(hasNativeReviewedSourceClaim({root:f.nativeSource.root,current:f.current,runtimeRecord:f.nativeSource.runtimeRecord}),true);
+  const out=planQuestion(f);assert.equal(out.status,'SUPPLEMENT_PENDING');assert.equal(out.final,undefined);
+  f.put(f.reviewPath,{unreviewed:true});
+  assert.equal(planQuestion(f).status,'SUPPLEMENT_PENDING');
+});
+test('an explicit receipt ancestry with no typed source review preserves the plain native path',t=>{
+  const f=typedSourceReviewFixture(t);
+  for(const row of [f.current,f.nativeSource.runtimeRecord])row.approvalEvidence=row.approvalEvidence.filter(p=>p!==f.bindingPath);
+  f.receipt.fingerprintRepairs=[];f.receipt.outputDigests=[];fs.unlinkSync(path.join(f.nativeSource.root,f.bindingPath));f.saveReceipt();
+  typedSourceAncestor(f);
+  assert.equal(hasNativeReviewedSourceClaim({root:f.nativeSource.root,current:f.current,runtimeRecord:f.nativeSource.runtimeRecord}),false);
+  assert.equal(validateNativeReviewedSourceReuse(f.receipt,f.nativeSource,f.question,f.identity,f.ordinal,f.current,f.registry),null);
+  assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
 });

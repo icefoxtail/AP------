@@ -1,0 +1,232 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "m3s2-figure-reassessment-20261115-e059",
+  "examUid": "21_팔마중_2학기_중간_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_팔마중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "c5052114fffa6b91945546126bd26dbbe72e3d1c",
+  "expectedQuestionCount": 25,
+  "scope": "PARTIAL_UIDS",
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_ROOT_12FB47B9B1B3",
+    "evidenceRefs": [
+      {
+        "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E059.current-source-review.json",
+        "sha256": "7ab8a427eef4dc9869ebdcf9e6ae212962698be146e8083880bc4488ba73e92e"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+        "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      {
+        "path": "docs/operations/m3-s2-release-20261115/E059.current-figure-review.json",
+        "sha256": "46e7b46487a04b428004d62101240a1ebe78e2acc11d3c72d49a442c9cb7aa5a"
+      }
+    ]
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_c812e2456354808ae65b1b06816b10bc6504418e1f30698f62dd1e5640052459",
+      "sourceOrdinal": 9,
+      "before": {
+        "curriculum": null,
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+        "crossConceptKeys": [
+          "CC_RIGHT_TRIANGLE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "rpmPrimaryId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "sourceFingerprint": "0b720895e6570a5bcea15dce0923b49621a660e6c738465c8ed2fcb2a649b148",
+        "contentFingerprint": "6cd07e44e531127edfab32298743b8182d379b0c5d5f4861870bc3c2ae342e4a"
+      },
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "rpmPrimaryId": "M3-RPM-065",
+        "rpmPrimaryPath": {
+          "majorUnit": "삼각비",
+          "midUnit": "삼각비의 활용",
+          "l3": "복합도형",
+          "l4": "보조선 활용"
+        },
+        "rpmL3": "복합도형",
+        "rpmL4": "보조선 활용",
+        "primaryMethod": "삼각형내각합으로 C45°를 얻고 B에서 AC로 내린 높이를 AB200과60°로 복원한 뒤 BC를 구한다.",
+        "decisiveStep": "삼각형내각합으로 C45°를 얻고 B에서 AC로 내린 높이를 AB200과60°로 복원한 뒤 BC를 구한다.",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "sourceFingerprint": "d5eb4c7af16c6a16ef9377f7ff640758437abdbc21c598a1d807c2c40196ff83",
+        "contentFingerprint": "bb5c7387117c8bf620515c1a10fa3c27bac6d7851717ec514442cfa680b3bc48"
+      },
+      "reason": "Current-source FINAL_QA reassessment of E059 #9: 보조선으로 두 직각삼각형을 연결하는 삼각비의 활용이 핵심이므로 M3-RPM-065(삼각비/삼각비의 활용/복합도형/보조선 활용)를 KEEP. 먼저 C의 각을 얻는 CC_TRIANGLE_ANGLE_SUM과 SEQUENTIAL이 맞다. 별도 정의역·경우 조건 키는 필요하지 않아 conditionKeys=[]를 유지한다. Actual selected-question calculation and current problem/solution asset inspection are bound to the native evidence; unchanged accepted semantic and difficulty decisions are retained.",
+      "identityBefore": {
+        "sourceFingerprint": "0b720895e6570a5bcea15dce0923b49621a660e6c738465c8ed2fcb2a649b148"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c60cd2c699f7f01d436c4cac4606a6900a6f2b7d",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E059.current-source-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E059.current-source-review.json",
+          "sha256": "7ab8a427eef4dc9869ebdcf9e6ae212962698be146e8083880bc4488ba73e92e"
+        }
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+        "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E059.current-source-review.json",
+          "sha256": "7ab8a427eef4dc9869ebdcf9e6ae212962698be146e8083880bc4488ba73e92e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+          "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": "docs/operations/m3-s2-release-20261115/E059.current-figure-review.json",
+          "sha256": "46e7b46487a04b428004d62101240a1ebe78e2acc11d3c72d49a442c9cb7aa5a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_357b8db2a86ab986cc1ea7b75abd1eef0597719cf4fefe36e753851f1c0334db",
+      "sourceOrdinal": 15,
+      "before": {
+        "curriculum": null,
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 4,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "rpmPrimaryId": null,
+        "rpmPrimaryPath": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "sourceFingerprint": "132aef1e17de6ae5ed83f1ae8b51013b3389524b34251a976932330df7803f60",
+        "contentFingerprint": "59082fd73fcb80cb5a976966271eacfbf35c73f26b6d2a8211d0c8cca4a1b02c"
+      },
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-06",
+        "standardUnit": "원의 성질",
+        "subUnitKey": "M3-06-CIRCLE_LINE",
+        "subUnit": "원과 직선",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_LINE_SYMMETRY_REFLECTION",
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "rpmPrimaryId": "M3-RPM-069",
+        "rpmPrimaryPath": {
+          "majorUnit": "원의 성질",
+          "midUnit": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이"
+        },
+        "rpmL3": "원의 중심과 현",
+        "rpmL4": "중심거리와 현의 길이",
+        "primaryMethod": "접힌 호가 원중심을 지나는 반사조건에서 현까지 중심거리6을 복원하고 반지름12의 반현을 피타고라스로 구한다.",
+        "decisiveStep": "접힌 호가 원중심을 지나는 반사조건에서 현까지 중심거리6을 복원하고 반지름12의 반현을 피타고라스로 구한다.",
+        "curriculumKey": "2015",
+        "courseKey": "M3-2",
+        "sourceFingerprint": "28f09c8156387c1ebb5790eb760949c65874c25daec344ba9c3df3d70a0b8cf5",
+        "contentFingerprint": "951ba1e731f7d0a08220c28f19ef79259a10cc9d1d2f5db61842a266f413db28"
+      },
+      "reason": "Current-source FINAL_QA reassessment of E059 #15: 접기 대칭으로 중심거리를 복원한 뒤 중심-현 직각삼각형을 사용하는 구조이므로 M3-RPM-069(원의 성질/원과 직선/원의 중심과 현/중심거리와 현의 길이), CC_LINE_SYMMETRY_REFLECTION·CC_PYTHAGOREAN 및 SEQUENTIAL의 의미는 KEEP. PT/TPL 신규 의미판정은 FINAL QA 범위 밖이며 현행 canonical crosswalk의 owner binding gap은 기술 상태로 별도 보고한다. Actual selected-question calculation and current problem/solution asset inspection are bound to the native evidence; unchanged accepted semantic and difficulty decisions are retained.",
+      "identityBefore": {
+        "sourceFingerprint": "132aef1e17de6ae5ed83f1ae8b51013b3389524b34251a976932330df7803f60"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c60cd2c699f7f01d436c4cac4606a6900a6f2b7d",
+        "reviewPath": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E059.current-source-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E059.current-source-review.json",
+          "sha256": "7ab8a427eef4dc9869ebdcf9e6ae212962698be146e8083880bc4488ba73e92e"
+        }
+      },
+      "basicScopeParentRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+        "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m3s2-seven-reassessment-20261115/E059.current-source-review.json",
+          "sha256": "7ab8a427eef4dc9869ebdcf9e6ae212962698be146e8083880bc4488ba73e92e"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-release-20261115.parent-labels.json",
+          "sha256": "ce77f99c95cf4291e92ba0a34a5180f9d2614db966274e4a48bbdda7aab3a5dc"
+        },
+        {
+          "path": "docs/operations/m3-s2-release-20261115/E059.current-figure-review.json",
+          "sha256": "46e7b46487a04b428004d62101240a1ebe78e2acc11d3c72d49a442c9cb7aa5a"
+        }
+      ]
+    }
+  ]
+}

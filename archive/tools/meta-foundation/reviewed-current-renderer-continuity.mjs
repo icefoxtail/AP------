@@ -175,7 +175,7 @@ function independentWitness(ctx, ref, prefigure, current, nativeSource) {
   if (!text(doc.reviewer) || doc.reviewer === ctx.native.reviewer) fail('independent reviewer required');
   const nativeQuestion = nativeSource.question, selectedFields = ['content', 'choices', 'answer', 'solution', 'id',
     'level', 'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility'];
-  let beforeAssets, currentAssets, finding, baseline = nativeSource;
+  let beforeAssets, currentAssets, finding, correctionInput, baseline = nativeSource;
   if (doc.schemaVersion === 'archive-independent-narrow-renderer-review-v1') {
     const row = uniqueRow(doc.rows, uid, ordinal);
     if (doc.status !== 'PASS_NARROW_CURRENT_RENDERER_REVIEW' || doc.currentSourceCommit !== current.ref.commit ||
@@ -257,14 +257,20 @@ function independentWitness(ctx, ref, prefigure, current, nativeSource) {
     beforeAssets = doc.rendererInputs?.filter(a => a.phase === 'native');
     const inspectedCurrent = doc.rendererInputs?.filter(a => a.phase === 'current');
     if (![...(beforeAssets || []), ...(inspectedCurrent || [])].every(r => r.visuallyInspected === true)) fail('corrective renderer visual inspection missing');
-    verifyAssets(ctx, inspectedCurrent, before);
+    const inspectedAssets = verifyAssets(ctx, inspectedCurrent, before);
+    // This is the exact inspected input to the correction, not an alternative
+    // semantic authority. A later AutoMeta cursor may point at this snapshot.
+    correctionInput = { schemaVersion: 'archive-inspected-renderer-correction-input-v1',
+      scope: 'CORRECTION_INPUT_ONLY', sourceRef: before.ref,
+      studentPayloadSha256: sha(stable(ctx.studentPayload(before.question))), rendererAssets: inspectedAssets };
     currentAssets = inspectedCurrent.filter(a => a.path !== oldAsset.path).concat([{ ...newAsset, commit: current.ref.commit, visuallyInspected: true }]);
     finding = doc.visualFinding;
   } else fail('unsupported independently authored renderer review schema');
   if (!text(finding)) fail('independent visual finding missing');
   return { reviewer: doc.reviewer, independentReviewRef: ref, findingSha256: sha(finding),
     beforeAssets: verifyAssets(ctx, beforeAssets, baseline, { alsoCommit: ctx.native.spec.reviewCommit }),
-    currentAssets: verifyAssets(ctx, currentAssets, current, { live: true }) };
+    currentAssets: verifyAssets(ctx, currentAssets, current, { live: true }),
+    ...(correctionInput ? { independentlyReviewedCorrectionInput: correctionInput } : {}) };
 }
 
 export function validateReviewedCurrentRendererContinuity(args) {

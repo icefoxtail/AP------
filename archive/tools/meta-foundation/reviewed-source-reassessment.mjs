@@ -6,6 +6,8 @@ import { execFileSync } from "node:child_process";
 import { REVIEWED_RPM_FIELDS } from "./reviewed-rpm-provenance.mjs";
 import { validateNativeProposalFinalization } from "./reviewed-proposal-finalization.mjs";
 import { validateReviewedCurrentRendererContinuity } from "./reviewed-current-renderer-continuity.mjs";
+import { bindReviewedNativeScopeFields } from "./reviewed-native-scope-fields.mjs";
+import { validateReviewedNativeRetainedFields } from "./reviewed-native-retained-fields.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -220,6 +222,12 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   const unchangedPrimary = identityOnly ? null : bindUnchangedReviewedPrimary({ native: loaded, row, accepted,
     patch, question, final, canonicalBefore, canonicalAfter, proposalFinalization });
   if (unchangedPrimary) Object.assign(accepted, unchangedPrimary.fields);
+  const scopeFieldBindings = bindReviewedNativeScopeFields({ request, patch, native: loaded, row,
+    accepted, question, final, canonicalBefore, canonicalAfter, cache });
+  if (scopeFieldBindings) Object.assign(accepted, scopeFieldBindings.fields);
+  const retainedNativeFields = validateReviewedNativeRetainedFields({ root, request, patch, native: loaded, row,
+    accepted, question, final, canonicalBefore, canonicalAfter, studentPayload, studentFields: REASSESSED_STUDENT_FIELDS, bankFromBytes, cache });
+  if (retainedNativeFields) Object.assign(accepted, retainedNativeFields.fields);
   const rationaleBindings = {};
   if (!identityOnly) for (const field of ["primaryMethod", "decisiveStep"]) {
     if (!Object.hasOwn(patch.after, field) && !Object.hasOwn(question, field)) continue;
@@ -276,6 +284,8 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     ...(Object.keys(rationaleBindings).length ? { rationaleBindings } : {}),
     ...(Object.keys(rpmBindings).length ? { rpmBindings } : {}),
     ...(unchangedPrimary ? { unchangedPrimaryBindings: unchangedPrimary.proof } : {}),
+    ...(scopeFieldBindings ? { scopeFieldBindings: scopeFieldBindings.proof } : {}),
+    ...(retainedNativeFields ? { retainedNativeFields: retainedNativeFields.proof } : {}),
     ...(proposalFinalization?.proof ? { proposalFinalization: proposalFinalization.proof } : {}),
     ...(proposalFinalization?.technicalBindings?.length ? { technicalProposalBindings: proposalFinalization.technicalBindings } : {}),
     scope: identityOnly ? "IDENTITY_BINDING_ONLY" : "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false };

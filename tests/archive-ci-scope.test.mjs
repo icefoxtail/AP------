@@ -159,7 +159,9 @@ test('the production test registry retains its P2/P3 additions and supplies the 
   const names = registry.flatMap(command => command.args);
   const requiredRegistrationContracts = ['tests/archive-registration-writer.test.mjs', 'tests/archive-single-writer-workflows.test.mjs',
     'tests/archive-pages-release-identity.test.mjs', 'tests/archive-pr-native-preview.test.mjs', 'tests/archive-main-meta-batch-replay.test.mjs',
-    'tests/archive-native-proposal-v3.test.js'];
+    'tests/archive-native-proposal-v3.test.js', 'tests/archive-reviewed-native-scope-fields.test.mjs',
+    'tests/archive-reviewed-native-retained-fields.test.js', 'tests/archive-reviewed-native-parent.test.mjs',
+    'tests/archive-native-replay-registry-context.test.mjs'];
   for (const file of requiredRegistrationContracts) {
     assert.ok(names.includes(file), file);
     assert.equal(registry.filter(command => command.args.includes(file)).length, 1,
