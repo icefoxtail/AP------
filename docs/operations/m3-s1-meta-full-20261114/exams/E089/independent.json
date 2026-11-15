@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E089",
+  "status": "ACCEPTED_SAMPLED_WITH_DECLARED_DEBTS",
+  "author": "meta_b",
+  "reviewer": "meta_c",
+  "owner": "GPT_ROOT_E0C948452E80/C",
+  "at": "2026-11-15T06:04:45.211928+00:00",
+  "sourceArchiveFile": "original/middle/m3/1mid/18_연향중_1학기_중간_중3_수학.js",
+  "sourceBlob": "1020a2ac56c449fdc272c1564b2c5b86c669f325",
+  "inputs": {
+    "review": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E089.review.json",
+      "sha256": "57435421c18ae07f2f3fdf86a3ec33856b014ab4408bb256d5a1768f6bfe592f"
+    },
+    "fourSlot": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E089.4slot.json",
+      "sha256": "d80ff940abde7fd4403974a0038c79d4fabba66b581d30e7446b80bd1b643d0f"
+    },
+    "sourceInput": {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/E089.input.json",
+      "sha256": "466d9206fbcee161d32b9875249d8498da9ce01b2d4d6e661063bbe241dd7704"
+    }
+  },
+  "sampledOrdinals": [
+    8,
+    16,
+    22
+  ],
+  "findings": [
+    {
+      "ordinal": 8,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 원문 images 배열의 참조와 실제 q08 그림을 확인했다. A0,B1,C2 및 대각선 회전의 p,q 위치 뒤 역수 차를 계산하는 결합으로 RPM005/097과 유리화 보조개념, bucket3 후보를 수용한다. source 이미지참조가 없다는 잘못된 author 문구가 최종패킷에서 제거된 것을 확인했다. 해설공백은 유지한다."
+    },
+    {
+      "ordinal": 16,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "자연수·200~300 범위·나누어떨어짐 조건을 실제 발문과4칸에서 확인했다. 2의거듭제곱 구조를 합차인수분해와 연결해야 하는 수치활용 bucket3 후보 및 RPM026/118이 타당하다. 실제 해설이 공백이므로 방법을 완성한 것처럼 기록하지 않았다."
+    },
+    {
+      "ordinal": 22,
+      "status": "ACCEPTED_WITH_DECLARED_DEBTS",
+      "note": "실제 images 배열과 q22 그림에서 큰정사각형A 오른쪽 위B·아래C 분할을 확인했다. 두 넓이의 자연수 제곱조건으로 변을 정하고 차길이를 써서B넓이에 연결하는 후보판정이 타당하다. 잘못된 orphan 참조부채가 제거됐으며 SOURCE_ONLY와 정확leaf공백은 남아 있다."
+    }
+  ],
+  "viewedAssets": [
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E089/08-unbound.png",
+      "sha256": "c7843d6e6fe98d4d2d2e347f02c1783030fb02b8b52c82e560df47e63890373a"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/B/assets/E089/22-unbound.png",
+      "sha256": "ae0b8b4b6f500ce52dfbeede83d81c6a1f9d1203b52cc16e9e94527a7e1eeb86"
+    }
+  ],
+  "additionalContentObservations": [],
+  "scope": "METADATA_ONLY: sampled source stems, choices, existing solutions/actual blanks, author judgments and exact 4slot quotes directly compared. No full-exam rereview or mathematical PASS asserted. Source-only missing-method failures remain open.",
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sourceMutation": "NONE"
+}

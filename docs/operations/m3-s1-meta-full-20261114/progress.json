@@ -11,8 +11,8 @@
     "exams": 115,
     "questions": 2750,
     "canonicalUids": 2750,
-    "reviewedExams": 88,
-    "reviewedQuestions": 2091
+    "reviewedExams": 89,
+    "reviewedQuestions": 2114
   },
   "duplicateUids": [],
   "exams": [
@@ -8923,9 +8923,57 @@
       ],
       "solutionCount": 0,
       "existing4slot": null,
-      "status": "PENDING",
+      "status": "REVIEWED_WITH_EVIDENCE_DEBT",
       "assignedTo": "meta_b",
-      "nextAction": "SEMANTIC_REVIEW"
+      "nextAction": "CODEX_SOURCE_BOUND_FINALIZATION_AND_REGISTRATION_REVIEW",
+      "reviewVersion": "M3-S1-META-FULL-v1",
+      "sourceFinalBlob": "1020a2ac56c449fdc272c1564b2c5b86c669f325",
+      "reviewer": "meta_b",
+      "independentReviewer": "meta_c",
+      "integratedBy": "GPT_ROOT_E0C948452E80",
+      "sampledOrdinals": [
+        8,
+        16,
+        22
+      ],
+      "evidencePath": "docs/operations/m3-s1-meta-full-20261114/exams/E089",
+      "checks": {
+        "fourSlotFail": 23,
+        "fourSlotWarn": 22,
+        "protectedFields": "PASS",
+        "activeAuxiliary": "PASS"
+      },
+      "sourceChangedItems": 0,
+      "sourceChangedFields": 0,
+      "contentDebtCount": 23,
+      "typeProposalCount": 24,
+      "evidenceDebtOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "undecidedDifficultyOrdinals": [],
+      "difficultyPolicyDebtOrdinals": []
     },
     {
       "key": "E090",
@@ -10678,7 +10726,7 @@
       "nextAction": "SEMANTIC_REVIEW"
     }
   ],
-  "nextAction": "CONTINUE_E089_AND_PENDING_ONLY",
+  "nextAction": "CONTINUE_E090_AND_PENDING_ONLY",
   "resumedAt": "2026-11-14T23:58:38.098191+00:00",
   "authorityMainChecked": "22d5b2fa1c09eec588c434a16c41ae197e946c80",
   "resumeAuthority": {
@@ -10694,8 +10742,8 @@
     "predecessorRevision": 6,
     "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
   },
-  "updatedAt": "2026-11-15T06:04:05.851287+00:00",
-  "lastPublishedHeadBeforeCurrent": "4d9ffc4481e240caea410717b8431e11ddb95367",
+  "updatedAt": "2026-11-15T06:05:43.176122+00:00",
+  "lastPublishedHeadBeforeCurrent": "1d71cded86f18d4f0883587b251f1efb6ed158ed",
   "resumeHistory": [
     {
       "basis": "EXPLICIT_USER_DIRECTION_TO_RESUME_DESPITE_UNCONFIRMED_STALE_RUNNING",
@@ -10722,15 +10770,15 @@
       "predecessorRawSha256": "43115599ec1da243a37e9a68f0ad70361d51fba14c9b8d9f79c59b78b7ed23ff"
     }
   ],
-  "lastCompletedExam": "E088",
-  "nextIncompleteExam": "E089",
-  "remainingExams": 27,
-  "remainingQuestions": 659,
-  "lastVerifiedRemoteHeadBeforeCurrent": "4d9ffc4481e240caea410717b8431e11ddb95367",
+  "lastCompletedExam": "E089",
+  "nextIncompleteExam": "E090",
+  "remainingExams": 26,
+  "remainingQuestions": 636,
+  "lastVerifiedRemoteHeadBeforeCurrent": "1d71cded86f18d4f0883587b251f1efb6ed158ed",
   "externalCheckpoint": {
-    "revision": 11,
-    "sha256": "9d9998945b6f28e9fe8769949bc7bab56df25a6c0fbbb16a3ad49f915721ed76",
-    "fileId": "1e7ynIuzXDhfeZaM0fD62yPOd8VrAD2OX",
+    "revision": 12,
+    "sha256": "d020c5bf9e13e8312e08abe438dbf37e1f419e17de3848335c7fe10510cece85",
+    "fileId": "1oUQuUYjWVY94Q6eZ0zYIoZWdFduoyxDe",
     "state": "VERIFIED_PREVIOUS_CHECKPOINT_CURRENT_SYNC_PENDING"
   },
   "workers": {
@@ -10800,24 +10848,32 @@
   },
   "unsavedArtifacts": [
     {
-      "examKey": "E089",
-      "sourceBlob": "1020a2ac56c449fdc272c1564b2c5b86c669f325",
-      "questionCount": 23,
+      "examKey": "E090",
+      "sourceBlob": "60aa7dc0b83ad27ec87efbdf45f0530fbcba6992",
+      "questionCount": 25,
       "artifacts": [
         {
-          "worker": "B",
-          "kind": "review",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E089.review.json",
-          "bytes": 179132,
-          "sha256": "57435421c18ae07f2f3fdf86a3ec33856b014ab4408bb256d5a1768f6bfe592f",
+          "worker": "A",
+          "kind": "independent",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E090.independent.json",
+          "bytes": 3025,
+          "sha256": "fe823a0fcb57c959cbf02eb020808a44ea608fd25674c2f525c9ccc4dc75ba5c",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         },
         {
-          "worker": "B",
+          "worker": "C",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/C/E090.review.json",
+          "bytes": 248748,
+          "sha256": "64e8013a36baf4b256f8b10aad41695a35dae2a7ad9fc44fa5cf0723037eaf6c",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "C",
           "kind": "4slot",
-          "path": "/workspace/scratch/e0c948452e80/workers/B/E089.4slot.json",
-          "bytes": 54273,
-          "sha256": "d80ff940abde7fd4403974a0038c79d4fabba66b581d30e7446b80bd1b643d0f",
+          "path": "/workspace/scratch/e0c948452e80/workers/C/E090.4slot.json",
+          "bytes": 159652,
+          "sha256": "92eb17dbe060b343f601c154f43457c2aaf98795d221778124bd78255674583e",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],
@@ -10872,8 +10928,8 @@
           "worker": "B",
           "kind": "4slot",
           "path": "/workspace/scratch/e0c948452e80/workers/B/E092.4slot.json",
-          "bytes": 77233,
-          "sha256": "c1ea4ad4c2c77e98dc30e2cd3a12a0ba811f3c4c850348dcfa50e3a18928ee64",
+          "bytes": 77236,
+          "sha256": "20ec58bb5f289fbabd4616b6539c16122dac1c5faf5d7e9513e6abf4d81eb5e0",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],
@@ -10952,16 +11008,16 @@
           "worker": "A",
           "kind": "review",
           "path": "/workspace/scratch/e0c948452e80/workers/A/E100.review.json",
-          "bytes": 154908,
-          "sha256": "9cb1b803ec193c5c094d9518b339b138153b8c17565592f667785732dcf9dd9c",
+          "bytes": 153955,
+          "sha256": "8da2f4176c16ece29b37a38c283043f35a00dc111d8ff1b2df000c95c43763a3",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         },
         {
           "worker": "A",
           "kind": "4slot",
           "path": "/workspace/scratch/e0c948452e80/workers/A/E100.4slot.json",
-          "bytes": 52522,
-          "sha256": "fea365396285ab21f38db24a22f322ffc9cf99ad23bf13a83b2398b929bfb1da",
+          "bytes": 52535,
+          "sha256": "48b0822ae7962be57076cc8858c6c4e789314d3f95593b38ca6793ea5a96fa9f",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         },
         {
@@ -10984,16 +11040,40 @@
           "worker": "A",
           "kind": "review",
           "path": "/workspace/scratch/e0c948452e80/workers/A/E103.review.json",
-          "bytes": 144220,
-          "sha256": "89770d6cc57fbc1b49eefdeef7e45896ae6ca410761fb888b30b08d2ebd37dc3",
+          "bytes": 144278,
+          "sha256": "188fa066bf9d9615371ee0967a206907757260ffdc142f19c981a03ee4e11081",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         },
         {
           "worker": "A",
           "kind": "4slot",
           "path": "/workspace/scratch/e0c948452e80/workers/A/E103.4slot.json",
-          "bytes": 60228,
-          "sha256": "71508749669c239d52ca68bb3bf979cba8eb9d6c9d8fa5f9d92a2ba4fb965f54",
+          "bytes": 60691,
+          "sha256": "213e0d698b283303fd524a2c6fe98031f790341002d51d4bb9078b121d0208af",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        }
+      ],
+      "nextAction": "VERIFY_SOURCE_AND_ARTIFACT_HASHES_THEN_FINISH_ONLY_MISSING_CHECKS"
+    },
+    {
+      "examKey": "E106",
+      "sourceBlob": "d9bf372f4e6c0fc171fa380104c3051f205f7c17",
+      "questionCount": 21,
+      "artifacts": [
+        {
+          "worker": "A",
+          "kind": "review",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E106.review.json",
+          "bytes": 155893,
+          "sha256": "51909f55ea9db95db5985eb411af189da501f33e42c6641070f69ef758c82b84",
+          "state": "LOCAL_ONLY_NOT_COUNTED"
+        },
+        {
+          "worker": "A",
+          "kind": "4slot",
+          "path": "/workspace/scratch/e0c948452e80/workers/A/E106.4slot.json",
+          "bytes": 135433,
+          "sha256": "1084cc9f8a8802039aa921a464400b0ffbb5a7695140bee219b7414304c60f6d",
           "state": "LOCAL_ONLY_NOT_COUNTED"
         }
       ],
