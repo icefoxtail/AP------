@@ -207,7 +207,13 @@
       add(record.rpmMetadata, "RPM_METADATA_PATH");
       add(record.basicAssignment, "BASIC_ASSIGNMENT", true);
       if (record.L1 || record.L2) add(record, "METADATA_PARENT", true);
-      if (record.unverifiedTaxonomy) add(record.unverifiedTaxonomy, "UNVERIFIED_PARENT", true);
+      // A source correction can reach browsing before its reviewed metadata is
+      // registered. The old unverified parent must not override that source's
+      // current unit; exact RPM evidence above keeps its own resolution rules.
+      const metadataFingerprint = text(record.metadataAssignmentEvidence?.sourceFingerprint);
+      const sourceFingerprint = text(record.sourceFingerprint);
+      const staleMetadata = metadataFingerprint && sourceFingerprint && metadataFingerprint !== sourceFingerprint;
+      if (record.unverifiedTaxonomy && !staleMetadata) add(record.unverifiedTaxonomy, "UNVERIFIED_PARENT", true);
       // Compare all explicit RPM evidence before choosing a path. Stored legacy
       // parents are deliberately excluded: a base/effective parent difference is
       // expected during browsing and does not alter the original classification.
