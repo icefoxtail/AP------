@@ -657,7 +657,11 @@ window.questionBank = [
     },
     "layoutTag": "grid",
     "wide": false,
-    "sourceIdentityFingerprint": "f027df925235fa05ac14ab065a182810e4fff8efdc17d7159f1b6d0599103937"
+    "sourceIdentityFingerprint": "f027df925235fa05ac14ab065a182810e4fff8efdc17d7159f1b6d0599103937",
+    "solutionImage": "assets/images/21_매산고_1학기_기말_고2_수학I/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 0부터 2π까지 사인곡선과 y=1/2, y=1 수평선, 두 선 사이의 정의 가능 구간.",
+    "solutionImageCaption": "두 근호의 조건을 t=sin x로 모으면 1/2≤sin x≤1이다. 그래프에서 정의역은 [π/6,5π/6]이고, t=3/4에서 두 근호의 값이 같아 합이 최대가 된다. 양끝에서는 최솟값을 얻는다. 정답은 √2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

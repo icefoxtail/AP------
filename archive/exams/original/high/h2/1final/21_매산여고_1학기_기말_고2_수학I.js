@@ -263,7 +263,7 @@ window.questionBank = [
     "id": 7,
     "questionNumber": 7,
     "questionType": "객관식",
-    "content": "지름의 길이가 $\\sqrt{2}$인 원에 내접하는 삼각형 $\\mathrm{ABC}$가 있다. $\\sin A + \\sin B + \\sin C = \\frac{5\\sqrt{2}}{2}$일 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하면? [3.8점]",
+    "content": "지름의 길이가 $2$인 원에 내접하는 삼각형 $\\mathrm{ABC}$가 있다. $\\sin A + \\sin B + \\sin C = \\frac{5}{2}$일 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하면? [3.8점]",
     "choices": [
       "1",
       "2",
@@ -272,7 +272,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "⑤",
-    "solution": "원의 지름이 $\\sqrt2$이므로 외접원의 반지름 $R=\\sqrt2/2$이다.\n사인법칙 $a/\\sin A=b/\\sin B=c/\\sin C=2R$에서\n$a+b+c=2R(\\sin A+\\sin B+\\sin C)$이다.\n주어진 값을 대입하면\n$a+b+c=\\sqrt2\\cdot\\frac{5\\sqrt2}{2}=5$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "삼각형의 세 각의 합은 $\\pi$이다. $A=B=t$, $C=\\pi-2t$인 이등변삼각형을 생각하고 $\\pi/4\\le t\\le\\pi/3$로 둔다. 이때\n$\\sin A+\\sin B+\\sin C=2\\sin t+\\sin2t$이다.\n$t=\\pi/4$이면 이 값은 $1+\\sqrt2<5/2$이고, $t=\\pi/3$이면 $3\\sqrt3/2>5/2$이다. 이 값은 $t$에 대해 연속이므로 중간값 정리에 따라 합이 $5/2$인 삼각형이 존재한다.\n지름이 $2$이므로 외접반지름은 $R=1$이다. 사인법칙에서 세 변의 합은\n$a+b+c=2R(\\sin A+\\sin B+\\sin C)=2\\cdot1\\cdot\\frac52=5$이다. 따라서 정답은 ⑤이다.",
     "level": "중",
     "category": "삼각함수의 관계",
     "originalCategory": "삼각함수의 뜻과 값",
@@ -736,19 +736,19 @@ window.questionBank = [
     "id": 18,
     "questionNumber": 18,
     "questionType": "객관식",
-    "content": "$\\cos 2\\theta = \\frac{\\sqrt{3}}{2}$인 실수 $\\theta$에 대하여 그림과 같이 $\\overline{\\mathrm{AB}}=5, \\overline{\\mathrm{AD}}=2, \\angle\\mathrm{ABC}=\\theta, \\angle\\mathrm{CAB}=3\\theta$인 삼각형 $\\mathrm{ABC}$가 있다. 선분 $\\mathrm{BC}$ 위에 점 $\\mathrm{D}$를 $\\angle\\mathrm{DAC}=\\theta$가 되도록 잡고, 선분 $\\mathrm{AC}$ 위에 점 $\\mathrm{E}$를 $\\angle\\mathrm{EDC}=\\theta$가 되도록 잡는다. 삼각형 $\\mathrm{ADE}$의 넓이를 $S$라 할 때, $20S$의 값을 구하면? (단, $0 < \\theta < \\frac{\\pi}{4}$) [4.5점]<br><br><img src=\"assets/images/21_매산여고_1학기_기말_고2_수학I/q18.png\" class=\"question-img\">",
+    "content": "$\\cos 2\\theta = \\frac{\\sqrt{3}}{2}$인 실수 $\\theta$에 대하여 그림과 같이 $\\overline{\\mathrm{AD}}=2, \\angle\\mathrm{ABC}=\\theta, \\angle\\mathrm{CAB}=3\\theta$인 삼각형 $\\mathrm{ABC}$가 있다. 선분 $\\mathrm{BC}$ 위에 점 $\\mathrm{D}$를 $\\angle\\mathrm{DAC}=\\theta$가 되도록 잡고, 선분 $\\mathrm{AC}$ 위에 점 $\\mathrm{E}$를 $\\angle\\mathrm{EDC}=\\theta$가 되도록 잡는다. 삼각형 $\\mathrm{ADE}$의 넓이를 $S$라 할 때, $20S$의 값을 구하면? (단, $0 < \\theta < \\frac{\\pi}{4}$) [4.5점]<br><br><img src=\"assets/images/21_매산여고_1학기_기말_고2_수학I/q18-content-correction.svg\" class=\"question-img\" alt=\"삼각형 ABC에서 D는 BC 위, E는 AC 위에 있고 AD=2이다. ∠ABC, ∠DAC, ∠EDC는 θ, ∠CAB는 3θ로 표시한다.\">",
     "choices": [
       "5",
       "6",
-      "7",
+      "$10(\\sqrt{3}-1)$",
       "8",
       "9"
     ],
     "images": [
-      "assets/images/21_매산여고_1학기_기말_고2_수학I/q18.png"
+      "assets/images/21_매산여고_1학기_기말_고2_수학I/q18-content-correction.svg"
     ],
-    "answer": "",
-    "solution": "원본 조건을 먼저 대조한다. $0<\\theta<\\pi/4$와 $\\cos2\\theta=\\sqrt3/2$에서 $2\\theta=30^\\circ$, $\\theta=15^\\circ$이다.\n$D$는 $BC$ 위에 있으므로 삼각형 $ABD$에서 $\\angle BAD=\\angle BAC-\\angle DAC=3\\theta-\\theta=30^\\circ$이고 $\\angle ABD=15^\\circ$이다.\n따라서 $\\angle ADB=135^\\circ$이다.\n사인법칙으로 $\\frac{AD}{\\sin15^\\circ}=\\frac{AB}{\\sin135^\\circ}$이므로\n$AD=5\\frac{\\sin15^\\circ}{\\sin135^\\circ}=\\frac52(\\sqrt3-1)\\approx1.8301$이어야 한다.\n그러나 원문은 $AD=2$라고 제시한다. 두 조건이 양립하지 않으므로 삼각형이 존재하지 않는다.\n따라서 현재 원본만으로는 $S$와 정답 선택지를 확정할 수 없다. 원본 PDF 확인이 필요하다.",
+    "answer": "③",
+    "solution": "주어진 범위에서 $\\cos2\\theta=\\sqrt3/2$이므로 $2\\theta=30^\\circ$, $\\theta=15^\\circ$이다. 따라서 $\\angle CAB=45^\\circ$, $\\angle ABC=15^\\circ$, $\\angle ACB=120^\\circ$이다.\n$D$가 $BC$ 위에 있고 $\\angle DAC=\\theta$이므로 $\\angle BAD=45^\\circ-15^\\circ=30^\\circ$이다. 삼각형 $ABD$에서 $\\angle ADB=180^\\circ-30^\\circ-15^\\circ=135^\\circ$이다. $DB$와 $DC$는 반대 방향이므로 $\\angle ADC=45^\\circ$이다.\n$\\angle EDC=15^\\circ$이므로 $\\angle ADE=45^\\circ-15^\\circ=30^\\circ$이다. $E$가 $AC$ 위에 있으므로 $\\angle DAE=15^\\circ$이고, 삼각형 $ADE$에서 $\\angle AED=135^\\circ$이다.\n사인법칙으로 $\\frac{AE}{\\sin30^\\circ}=\\frac{AD}{\\sin135^\\circ}$이므로 $AE=2\\cdot\\frac{1/2}{\\sqrt2/2}=\\sqrt2$이다.\n$S=\\frac12\\cdot AD\\cdot AE\\cdot\\sin\\angle DAE=\\frac12\\cdot2\\cdot\\sqrt2\\cdot\\sin15^\\circ=\\frac{\\sqrt3-1}{2}$이다. 따라서 $20S=10(\\sqrt3-1)$이므로 정답은 ③이다.",
     "level": "상",
     "category": "삼각함수의 관계",
     "originalCategory": "삼각함수의 뜻과 값",
@@ -757,7 +757,7 @@ window.questionBank = [
     "standardUnit": "삼각함수의 뜻과 값",
     "standardUnitOrder": 5,
     "layoutTag": "grid",
-    "wide": false,
+    "wide": true,
     "tags": [
       "객관식",
       "삼각함수의 뜻과 값",
