@@ -550,10 +550,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_진남중_1학기_중간_중2_기출/q14-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 밑면이 한 변 2a²b인 정사각형인 직육면체이다. 색칠한 밑면의 두 변에 2a²b, 옆모서리에 높이 h가 적혀 있고, 그림 위에 부피 V=8a⁵b³이 쓰여 있다.",
-    "solutionImageCaption": "밑면(색칠)이 한 변 2a²b인 정사각형이고 높이가 h, 부피가 8a⁵b³인 직육면체이며, 변의 비율은 모양만 나타낸 것이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_진남중_1학기_중간_중2_기출/q14-solution-visual-v2.svg",
+    "solutionImageAlt": "정사각형 밑면의 앞 변과 오른쪽 변에 같은 눈금과 2a²b 치수가 있다. 밑면에서 윗면까지 수직 거리 h를 표시했다.",
+    "solutionImageCaption": "밑넓이는 (2a²b)²=4a⁴b²이다. 주어진 부피를 밑넓이로 나누면 높이는 2ab이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -788,10 +788,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_진남중_1학기_중간_중2_기출/q20-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에서 -11≤x≤3 구간에만 그려진 오른쪽 아래로 내려가는 직선 y=-x/3+1/3이다. 왼쪽 끝점은 (-11, 4)이고 오른쪽 끝점은 (3, -2/3)이며 오른쪽 끝점에 최솟값 b가 표시되어 있다. 최댓값 4는 x=-11에서, 최솟값 b=-2/3은 x=3에서 생긴다.",
-    "solutionImageCaption": "a<0이므로 x=-11에서 최댓값 4를 가져 1/3-11a=4, a=-1/3이다. x=3에서 최솟값 b=-2/3이고 a-b=1/3이다. 정답 ①",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_진남중_1학기_중간_중2_기출/q20-solution-visual-v2.svg",
+    "solutionImageAlt": "가로축의 −11에서 함수값은 4이고, 가로축의 3에서 함수값은 −2/3이다. 두 점 사이의 직선은 내려가고 양 끝을 모두 포함한다.",
+    "solutionImageCaption": "최댓값 4는 x=−11에서 나오므로 a=−1/3이다. x=3의 최솟값은 b=−2/3이므로 a−b=1/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

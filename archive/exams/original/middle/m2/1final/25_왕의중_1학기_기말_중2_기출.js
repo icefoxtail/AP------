@@ -235,6 +235,8 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "imageSize": "full",
+    "imageAlt": "같은 벽돌 아홉 장을 돌려 직사각형 ABCD를 만들었다. 위쪽은 세로로 놓인 다섯 장, 아래쪽은 가로로 놓인 네 장이다.",
     "level": "상",
     "category": "연립일차방정식의 활용",
     "originalCategory": "",
@@ -243,7 +245,7 @@ window.questionBank = [
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "연립일차방정식",
@@ -263,7 +265,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "벽돌 1장의 짧은 변을 $x\\text{ cm}$, 긴 변을 $y\\text{ cm}$라 하자.\n그림에서 위쪽의 짧은 변 $5$개가 아래쪽의 긴 변 $4$개와 같은 길이이므로\n$5x=4y$이다.\n\n큰 직사각형의 가로는 $4y$, 세로는 $x+y$이다.\n둘레가 $87\\text{ cm}$이므로\n$2\\{4y+(x+y)\\}=87$,\n즉 $2x+10y=87$이다.\n\n$5x=4y$에서 $y=\\dfrac54x$이다.\n이를 둘레 식에 대입하면\n$2x+10\\times\\dfrac54x=87$,\n$\\dfrac{29}{2}x=87$이므로 $x=6$이다.\n따라서 $y=\\dfrac54\\times6=7.5$이다.\n\n벽돌 1장의 넓이는\n$xy=6\\times7.5=45\\text{ cm}^2$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q8.png",
+    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q8-problem-visual-v2.svg",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -406,6 +408,8 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "imageSize": "tall",
+    "imageAlt": "오르막 직선은 세로축 B와 가로축 C를, 내리막 직선은 세로축 A와 가로축 D를 지난다.",
     "level": "상",
     "category": "일차함수와 그래프",
     "originalCategory": "",
@@ -414,7 +418,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -434,15 +438,15 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "그림에서 $y=\\dfrac32x+a$의 $y$절편은 $B$이므로 $a<0$이고,\n$y=-\\dfrac23x+b$의 $y$절편은 $A$이므로 $b>0$이다.\n따라서\n$\\overline{AO}=b$, $\\overline{OB}=-a$이다.\n\n$\\overline{AO}:\\overline{OB}=2:3$이므로\n$b:(-a)=2:3$,\n즉 $b=-\\dfrac23a$이다.\n\n$y=\\dfrac32x+a$의 $x$절편은 $-\\dfrac23a=b$이고,\n$y=-\\dfrac23x+b$의 $x$절편은 $\\dfrac32b$이다.\n그림에서 두 $x$절편 사이의 거리가 $2$이므로\n$\\dfrac32b-b=2$이다.\n따라서 $\\dfrac12b=2$에서 $b=4$이다.\n\n$b=-\\dfrac23a$이므로 $a=-6$이고\n$a+b=-6+4=-2$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q13.png",
+    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q13-problem-visual-v2.svg",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=3/2x-6과 y=-2/3x+4, y절편 A(0,4)와 B(0,-6), x절편 C(4,0)와 D(6,0)을 나타내고 AO:OB=2:3, CD=2를 표시한 그림이다.",
-    "solutionImageCaption": "y축과 만나는 점 A, B와 x축과 만나는 점 C, D에서 AO:OB=2:3, CD=2이므로 b=4, a=-6이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q13-solution-visual-v2.svg",
+    "solutionImageAlt": "오르막 직선은 세로축 B와 가로축 C를, 내리막 직선은 세로축 A와 가로축 D를 지난다. A=(0,4), B=(0,−6), C=(4,0), D=(6,0)이다.",
+    "solutionImageCaption": "AO:OB=2:3과 CD=2를 함께 적용하면 세로축 절편은 −6과 4다. 따라서 a+b=−2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -478,13 +482,14 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q14-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 일차함수 y=-3/4x-3의 그래프와 기울기가 같은 직선 y=-3/4x+3이 점선으로 함께 그려진 좌표평면 그림이다. 점선 옆에 그 식이 지시선과 함께 적혀 있고, 실선 위의 세 점 옆에 좌표가 적혀 있다.",
-    "solutionImageCaption": "일차함수 y=-3/4x-3의 그래프와 y=-3/4x+3의 그래프를 함께 그린 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q14-solution-visual-v2.svg",
+    "solutionImageAlt": "파란 직선은 (−8,3), (−4,0), (0,−3)을 지난다. 주황 점선과 기울기가 같고 세로축 절편은 다르다.",
+    "solutionImageCaption": "파란 직선은 두 축의 음의 쪽에서 만나고 오른쪽 아래로 내려간다. 오른쪽 아래 제4사분면도 지난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
+    "imageAlt": "내리막 직선이 가로축의 −3에서, 세로축의 −6에서 각각 만난다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "",
@@ -493,7 +498,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -512,8 +517,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "그림에서 직선의 $x$절편은 $-3$, $y$절편은 $-6$이다.\n따라서 직선은 두 점 $(-3,0)$, $(0,-6)$을 지난다.\n\n기울기는\n$\\dfrac{-6-0}{0-(-3)}=-2$이므로\n직선의 식은\n$y=-2x-6$이다.\n\n보기의 점을 대입하면 ①, ②, ③, ④는 이 식을 만족한다.\n그러나 $x=2$이면\n$y=-2\\times2-6=-10$이므로 $(2,-8)$은 그래프 위의 점이 아니다.\n\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q15.png",
-    "imageSize": "medium",
+    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q15-problem-visual-v2.svg",
+    "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -552,13 +557,14 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q16-solution.svg",
-    "solutionImageAlt": "해설 그림: 직선 y=-2x+6이 x절편 (3,0), y절편 (0,6)을 지나고, 기울기가 같은 직선 y=-2x+5가 함께 그려진 좌표평면 그림이다.",
-    "solutionImageCaption": "기울기가 y=-2x+5의 그래프와 같고 x절편이 3인 직선은 y=-2x+6이며, y절편은 6이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q16-solution-visual-v2.svg",
+    "solutionImageAlt": "파란 직선은 y=−2x+6이고 가로축 (3,0)을 지난다. 주황 점선 y=−2x+5와 평행하다. 왼쪽 아래 영역을 옅게 칠했다.",
+    "solutionImageCaption": "두 직선의 기울기는 −2로 같다. 파란 직선은 두 양의 절편을 지나므로 제3사분면을 지나지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
+    "imageAlt": "A는 (3,9), B는 (7,5)이다. 두 점의 가로좌표와 세로좌표는 연한 점선으로 축과 연결됐다.",
     "level": "상",
     "category": "일차함수와 그래프",
     "originalCategory": "",
@@ -567,7 +573,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -587,19 +593,20 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "모든 직선 $y=ax+1$은 점 $P(0,1)$을 지난다.\n그림에서 $A=(3,9)$, $B=(7,5)$이다.\n\n직선 $PA$의 기울기는\n$\\dfrac{9-1}{3-0}=\\dfrac83$이고,\n직선 $PB$의 기울기는\n$\\dfrac{5-1}{7-0}=\\dfrac47$이다.\n\n점 $P$에서 그은 직선이 선분 $AB$와 만나려면 기울기 $a$가 두 경계 기울기 사이에 있어야 하므로\n$\\dfrac47\\le a\\le\\dfrac83$이다.\n\n이 범위에 있는 정수는 $1,2$ 두 개이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q17.png",
-    "imageSize": "medium",
+    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q17-problem-visual-v2.svg",
+    "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q17-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표평면에 점 P(0,1), A(3,9), B(7,5)가 있고 선분 AB와 삼각형 PAB가 옅게 칠해져 있다. 점 P를 지나는 두 경계 직선 PA(y=8/3x+1, 기울기 8/3)와 PB(y=4/7x+1, 기울기 4/7)가 선분 밖까지 연장되어 있다. 직선 y=ax+1이 선분 AB와 만나려면 4/7≤a≤8/3이어야 한다.",
-    "solutionImageCaption": "직선 y=ax+1은 a의 값에 관계없이 점 P(0,1)을 지난다. 선분 AB와 만나려면 PA의 기울기 8/3과 PB의 기울기 4/7 사이여야 하므로 4/7≤a≤8/3이고, 정수 a는 1, 2의 2개이다. 정답 ②",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q17-solution-visual-v2.svg",
+    "solutionImageAlt": "A는 (3,9), B는 (7,5)이다. 두 점을 (0,1)에 각각 이은 직선이 기울기의 상한과 하한이다.",
+    "solutionImageCaption": "P=(0,1)에서 출발하는 직선의 기울기는 4/7 이상 8/3 이하다. 이 범위의 정수는 1과 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
+    "imageAlt": "가로 18 cm, 세로 10 cm인 직사각형 ABCD에서 P는 B에서 C 쪽으로 움직인다. D와 P를 이었다.",
     "level": "상",
     "category": "일차함수의 활용",
     "originalCategory": "",
@@ -608,7 +615,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -629,8 +636,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "점 $P$가 출발한 지 $x$초 후라고 하자.\n초속 $2\\text{ cm}$로 움직이므로\n$\\overline{BP}=2x\\text{ cm}$이다.\n\n사각형 $ABPD$는 평행한 두 변의 길이가\n$\\overline{AD}=18\\text{ cm}$,\n$\\overline{BP}=2x\\text{ cm}$이고\n높이가 $\\overline{AB}=10\\text{ cm}$인 사다리꼴이다.\n\n따라서 넓이는\n$\\dfrac12(18+2x)\\times10=90+10x$이다.\n이 넓이가 $130$이므로\n$90+10x=130$,\n$x=4$이다.\n\n따라서 출발한 지 $4$초 후이고 정답은 ①이다.",
-    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q18.png",
-    "imageSize": "small",
+    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q18-problem-visual-v2.svg",
+    "imageSize": "full",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -642,6 +649,7 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "imageAlt": "오르막 직선이 원점 왼쪽에서 가로축을, 원점 위에서 세로축을 가로지른다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "",
@@ -650,7 +658,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차방정식의그래프",
@@ -668,8 +676,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "일차방정식\n$ax+by+c=0$\n을 $y$에 대하여 정리하면\n$y=-\\dfrac abx-\\dfrac cb$이다.\n\nㄱ. 그림의 직선은 오른쪽 위로 향하므로 기울기가 양수이다. 따라서 $-\\dfrac ab>0$이고 $ab<0$이므로 참이다.\n\nㄴ. $y$절편이 양수이므로 $-\\dfrac cb>0$이고 $bc<0$이다. 따라서 $bc>0$은 거짓이다.\n\nㄷ. $a$와 $b$가 서로 다른 부호이고 $c$와 $b$도 서로 다른 부호이므로 $a$와 $c$는 같은 부호이다. 따라서 $ac>0$은 참이다.\n\n옳은 것은 ㄱ, ㄷ이므로 정답은 ④이다.",
-    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q19.png",
-    "imageSize": "medium",
+    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q19-problem-visual-v2.svg",
+    "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -707,10 +715,10 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 직선 x+y-4=0, 2x-3y+2=0이 점 (2,2)에서 만나고 x축과 (-1,0), (4,0)에서 만난다. 이 세 점을 꼭짓점으로 하는 삼각형을 색칠하고 높이 2를 점선으로 나타냈다.",
-    "solutionImageCaption": "두 직선과 x축으로 둘러싸인 삼각형의 꼭짓점 (-1,0), (4,0), (2,2)와 높이 2를 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q20-solution-visual-v2.svg",
+    "solutionImageAlt": "파란 직선 x+y−4=0은 (4,0)을, 주황 점선 2x−3y+2=0은 (−1,0)을 지난다. 두 직선이 만나는 (2,2)에서 가로축으로 내린 선의 길이는 2이다.",
+    "solutionImageCaption": "가로축 위의 밑변 길이는 5이고 높이는 2이다. 삼각형의 넓이는 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -739,10 +747,10 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 직선 y=ax-6과 x축, y축으로 둘러싸인 직각삼각형을 색칠하고 넓이 18, 밑변 -6/a, 높이 6을 표시한 그림이다. 위치는 개형이다.",
-    "solutionImageCaption": "직선 y=ax-6(a<0)과 두 축으로 둘러싸인 직각삼각형의 밑변 -6/a, 높이 6, 넓이 18을 나타낸 그림이다(위치는 개형).",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q21-solution-visual-v2.svg",
+    "solutionImageAlt": "보라색 내리막 직선은 가로축의 6/a와 세로축의 −6을 지난다. 원점과 두 절편으로 이루어진 삼각형을 칠했다.",
+    "solutionImageCaption": "밑변은 −6/a, 높이는 6이다. 넓이 −18/a가 18이므로 a=−1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -799,13 +807,14 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q23-solution.svg",
-    "solutionImageAlt": "해설 그림: 수평선 y=-8과 원점을 지나는 직선 y=-8x를 한 좌표평면에 그린 그림으로, 두 직선 모두 제1사분면을 지나지 않는다.",
-    "solutionImageCaption": "a=-1일 때의 수평선 y=-8과 a=7일 때의 직선 y=-8x는 모두 제1사분면을 지나지 않는다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q23-solution-visual-v2.svg",
+    "solutionImageAlt": "a=−1의 청록 실선은 y=−8이고 a=7의 보라 점선은 y=−8x이다. 두 경계 직선은 오른쪽 위에 칠한 제1사분면을 지나지 않는다.",
+    "solutionImageCaption": "기울기가 0 이하이려면 a≥−1, 세로축 절편이 0 이하이려면 a≤7이다. 이 두 조건을 함께 만족하는 정수는 9개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
+    "imageAlt": "가로축과 세로축에 같은 단위 간격의 격자가 있는 빈 좌표평면이다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "",
@@ -814,7 +823,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "일차방정식의그래프",
@@ -828,15 +837,15 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{35}{2}$",
     "solution": "(1)\n주어진 네 일차방정식을 각각 정리하면\n$x=2$, $x=-\\dfrac32$, $y=-3$, $y=2$이다.\n따라서 좌표평면에 $x=2$, $x=-\\dfrac32$인 두 수직선과\n$y=-3$, $y=2$인 두 수평선을 그리면 된다.\n\n(2)\n두 수직선 사이의 거리는\n$2-\\left(-\\dfrac32\\right)=\\dfrac72$이고,\n두 수평선 사이의 거리는\n$2-(-3)=5$이다.\n네 직선으로 둘러싸인 도형은 가로 $\\dfrac72$, 세로 $5$인 직사각형이다.\n\n따라서 넓이는\n$\\dfrac72\\times5=\\dfrac{35}{2}$이다.",
-    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q24.png",
-    "imageSize": "large",
+    "image": "assets/images/25_왕의중_1학기_기말_중2_기출/q24-problem-visual-v2.svg",
+    "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q24-solution.svg",
-    "solutionImageAlt": "해설 그림: 네 직선 x-2=0, 2x+3=0, y+3=0, -3y+6=0이 둘러싸는 직사각형을 색칠하고 가로 7/2, 세로 5를 표시한 그림이다.",
-    "solutionImageCaption": "네 직선으로 둘러싸인 직사각형의 가로 7/2와 세로 5를 나타낸 그림이다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_왕의중_1학기_기말_중2_기출/q24-solution-visual-v2.svg",
+    "solutionImageAlt": "x=−3/2와 x=2의 세로선, y=2와 y=−3의 가로선이 직사각형을 만든다.",
+    "solutionImageCaption": "가로 길이는 2−(−3/2)=7/2, 세로 길이는 2−(−3)=5이다. 넓이는 35/2이다.",
+    "solutionImageSize": "full"
   }
 ];

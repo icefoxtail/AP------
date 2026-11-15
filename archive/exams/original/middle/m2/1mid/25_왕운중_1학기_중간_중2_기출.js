@@ -521,6 +521,8 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "imageSize": "tall",
+    "imageAlt": "원뿔 꼭짓점에서 아래 원의 중심으로 내린 점선의 길이는 5x이다. 밑면의 뒤 반원은 점선, 앞쪽 바깥선은 실선이다.",
     "level": "중",
     "category": "단항식의 계산",
     "originalCategory": "14. 도형의 부피 역산",
@@ -529,7 +531,7 @@ window.questionBank = [
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형",
@@ -541,7 +543,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 그림과 같이 높이가 $5x$이고 부피가 $15x^2y^2$인 원뿔의 밑넓이를 구하면?",
-    "image": "assets/images/25_왕운중_1학기_중간_중2_기출/q14.png",
+    "image": "assets/images/25_왕운중_1학기_중간_중2_기출/q14-problem-visual-v2.svg",
     "choices": [
       "$3xy^2$",
       "$3xy$",
@@ -561,13 +563,15 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "course": "중2 수학",
-    "solutionImage": "assets/images/25_왕운중_1학기_중간_중2_기출/q14-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 높이가 5x인 원뿔을 그린 그림이다. 꼭짓점에서 밑면의 중심까지 점선으로 높이 5x를 나타내고 그 발에 직각 표시가 있으며, 밑면은 연하게 색칠하고 S라고 적었다. 위에 높이 5x, 부피 15x²y²가 적혀 있고 밑면의 크기는 임의의 비율로 그렸다.",
-    "solutionImageCaption": "높이가 5x이고 부피가 15x²y²인 원뿔이다. 색칠한 밑면의 넓이 S를 구한다. 밑면의 크기는 임의의 비율로 그렸다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중2_기출/q14-solution-visual-v2.svg",
+    "solutionImageAlt": "원뿔 꼭짓점에서 아래 원의 중심으로 내린 점선의 길이는 5x이다. 밑면의 뒤 반원은 점선, 앞쪽 바깥선은 실선이다. 밑면의 넓이를 S로 두었다.",
+    "solutionImageCaption": "밑넓이를 S라고 두면 부피는 S×5x/3이다. 주어진 부피와 같다고 놓아 밑넓이 9xy²를 얻는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
+    "imageSize": "tall",
+    "imageAlt": "위에는 차중량제한이라고 적혀 있다. 아래 흰 바탕 원형 표지 안에 5.5 t가 표시돼 있다.",
     "level": "하",
     "category": "일차부등식의 활용",
     "originalCategory": "15. 부등식의 해석",
@@ -576,7 +580,7 @@ window.questionBank = [
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차부등식",
@@ -585,7 +589,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음은 차 중량 제한을 나타내는 표지판이다. 이를 부등식으로 옳게 나타낸 것을 고르면? (3점)<br>⇒ 차량의 총 무게 $x$톤이 5.5톤 이하이어야 한다.",
-    "image": "assets/images/25_왕운중_1학기_중간_중2_기출/q15.png",
+    "image": "assets/images/25_왕운중_1학기_중간_중2_기출/q15-problem-visual-v2.svg",
     "choices": [
       "$x < 5.5$",
       "$x \\le 5.5$",
@@ -794,10 +798,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "course": "중2 수학",
-    "solutionImage": "assets/images/25_왕운중_1학기_중간_중2_기출/q20-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 수직선에 -2, -1, 0, 1, 2를 나타내고, x<n을 만족하는 값은 채운 점, 만족하지 않는 값은 빈 점으로 그렸다. 눈금 n의 위치를 문자로 표시했다.",
-    "solutionImageCaption": "x-1-n<-1은 x<n이다. 주어진 값 -2, -1, 0, 1, 2 중 x<n을 만족하는 값은 채운 점, 만족하지 않는 값은 빈 점으로 나타내고, 눈금 n의 위치를 표시했다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중2_기출/q20-solution-visual-v2.svg",
+    "solutionImageAlt": "수직선의 −2, −1, 0은 청록으로 채운 점이고 1, 2는 빈 점이다. 가능한 위치의 한 예로, 0과 1 사이에 점 n을 세로 점선으로 표시했다.",
+    "solutionImageCaption": "부등식은 x<n이다. 예처럼 0은 참이고 1은 거짓이어야 하므로 구하는 범위는 0<n≤1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
