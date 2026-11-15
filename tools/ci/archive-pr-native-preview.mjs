@@ -9,6 +9,7 @@ import crypto from 'node:crypto';
 import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
 import { isExplicitSourceSubsetRebind, isFullSourceSubsetRebind, sourceSubsetEvidencePath, fullSourceSubsetEvidencePath } from '../../archive/tools/meta-foundation/source-subset-preservation.mjs';
+import { isExplicitAuditCcAppendRequest } from '../../archive/tools/meta-foundation/audited-cross-concept-append.mjs';
 import { isOriginalFinalQaRendererPreservation,isExplicitOriginalRendererRequest } from '../../archive/tools/meta-foundation/original-finalqa-renderer-preservation.mjs';
 
 export const NATIVE_PREVIEW_SCHEMA = 'archive-pr-native-preview/v1';
@@ -318,7 +319,7 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     // an ordinary inherited request into an eligible preservation request.
     const raw = gitBytes(root, `${headSha}:${file}`);
     let request; try { request = JSON.parse(raw); } catch { continue; }
-    if (!partialFinalQaPreservation(request)) continue;
+    if (!partialFinalQaPreservation(request) && !isExplicitAuditCcAppendRequest(request)) continue;
     if (!raw.equals(gitBytes(root, `${baseSha}:${file}`))) fail(`INHERITED_REQUEST_CHANGED:${file}`);
     inherited.set(file, { baseSha, requestSha256: sha(raw) });
     files.push(file);
@@ -361,11 +362,12 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       continue;
     }
     const sourceRebind = auditPreservationDependency(request, file);
+    const auditCcAppend = isExplicitAuditCcAppendRequest(request);
     const registryDependency = nativeRegistryDependencyDescriptor(request);
     const preservation = request.approval?.sourceRebind !== undefined;
     if (preservation && (correction || request.registrationMode !== undefined ||
         !request.approval.sourceRebind || typeof request.approval.sourceRebind !== 'object' || Array.isArray(request.approval.sourceRebind) ||
-        !(sourceRebind || request.approval.type === 'FINAL_QA' && (request.approval.sourceRebind.schemaVersion === undefined ||
+        !(sourceRebind || auditCcAppend || request.approval.type === 'FINAL_QA' && (request.approval.sourceRebind.schemaVersion === undefined ||
           (isExplicitSourceSubsetRebind(request.approval.sourceRebind) || isOriginalFinalQaRendererPreservation(request.approval.sourceRebind)) && partialFinalQaPreservation(request))))) fail('PRESERVATION_SCOPE');
     const partial = !correction && request.scope === 'PARTIAL_UIDS';
     if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');

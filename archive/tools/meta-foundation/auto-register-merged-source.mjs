@@ -15,6 +15,7 @@ import { hasReviewedReceiptLineage } from './reviewed-source-binding.mjs';
 import { nativeOriginalFinalQaRendererRebind,hasOriginalFinalQaRendererClaim } from './original-finalqa-renderer-preservation.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
+import { nativeAuditCcAppend, hasExplicitAuditCcAppendClaim, hasAuditCcAppendClaim } from './audited-cross-concept-append.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -167,8 +168,13 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
   if(!Buffer.isBuffer(bytes)||!Array.isArray(bank)||!equal(bank[ordinal-1],question)
     ||!/^[a-f0-9]{40}$/.test(blobSha1||'')||!runtimeRecord||runtimeStatus!=='ACTIVE'
     ||String(runtimeRecord.sourceQuestionNo??'')!==String(question.sourceQuestionNo??question.id??''))return null;
-  if(current.metadataApprovalType==='META_PIPELINE_AUDIT')
+  if(current.metadataApprovalType==='META_PIPELINE_AUDIT') {
+    const component = nativeAuditCcAppend({nativeSource,question,previous,current,identity,ordinal,registry,pt,tpl,ownerPack});
+    if(component)return component;
+    if(hasExplicitAuditCcAppendClaim({root,current,runtimeRecord}))return null;
     return preservedAuditReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,ownerPack});
+  }
+  if(hasExplicitAuditCcAppendClaim({root,current,runtimeRecord}))return null;
   if(!['FINAL_QA','REVIEW2'].includes(current.metadataApprovalType)||current.reviewStatus!=='reviewed_pass'
     ||!String(current.metadataStatus||'').startsWith('approved_')||current.tagStatus!=='reviewed_pass'
     ||current.sourceFingerprint!==sourceFingerprint(question)||current.contentFingerprint!==contentFingerprint(question)
@@ -316,6 +322,8 @@ export function planQuestion({question:q, previous, current, identity, registry,
       }
     }
   }
+  if(nativeSource&&hasAuditCcAppendClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord,nativeSource}))
+    return reject('AUDITED_CC_COMPONENT_REVALIDATION_FAILED');
   if(nativeSource&&hasOriginalFinalQaRendererClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
     return reject('ORIGINAL_FINAL_QA_RENDERER_REVALIDATION_FAILED');
   if(nativeSource&&hasNativeReviewedSourceClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))

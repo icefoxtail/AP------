@@ -41,6 +41,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
 import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
+import { isExplicitAuditCcAppendRequest } from "./audited-cross-concept-append.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
@@ -165,15 +166,16 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
         sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, expectedQuestionCount: doc.expectedQuestionCount, rows };
     }
     if (schema === SCHEMA.V2 && doc.approval?.sourceRebind !== undefined) {
+      const auditCcAppend = isExplicitAuditCcAppendRequest(doc);
       const audit = doc.approval.type === "META_PIPELINE_AUDIT" &&
         doc.approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
       const partial = doc.scope === "PARTIAL_UIDS", subset = isExplicitSourceSubsetRebind(doc.approval.sourceRebind);
       const originalRenderer = isOriginalFinalQaRendererPreservation(doc.approval.sourceRebind);
-      if ((!audit && doc.approval.type !== "FINAL_QA") || !doc.approval.sourceRebind ||
+      if ((!audit && !auditCcAppend && doc.approval.type !== "FINAL_QA") || !doc.approval.sourceRebind ||
           typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
-          (!audit && doc.approval.sourceRebind.schemaVersion !== undefined && !subset && !originalRenderer) || (subset || originalRenderer) && !partial ||
+          (!audit && !auditCcAppend && doc.approval.sourceRebind.schemaVersion !== undefined && !subset && !originalRenderer) || (subset || originalRenderer) && !partial ||
           originalRenderer && !isExplicitOriginalRendererRequest(doc) ||
-          doc.approval.metadataReviewed !== true || doc.registryChanges?.length ||
+          doc.approval.metadataReviewed !== true || !auditCcAppend && doc.registryChanges?.length ||
           (doc.scope !== undefined && !partial) ||
           !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(doc.requestId || "") ||
           !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 ||
