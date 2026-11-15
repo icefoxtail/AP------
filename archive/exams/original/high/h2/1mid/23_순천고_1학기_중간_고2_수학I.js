@@ -307,7 +307,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q10",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 기준 로그곡선 위 P=(2,2)를 Q=(3,2)로 오른쪽 1만큼 옮긴 선분과, Q에서 R=(3,4)로 y값을 두 배로 한 수직 선분이 표시되어 있다.",
+    "solutionImageCaption": "ㄱ은 log_b(2−3x)=log_b3+log_b(2/3−x)로 평행·대칭이동과 수직이동, ㄴ은 역함수와 y축 대칭, ㄷ은 역함수의 평행이동으로 얻는다. ㄹ은 오른쪽 1 이동 뒤 y값을 2배로 늘려야 하므로 평행이동·대칭이동만으로는 얻을 수 없다. 정답은 ㄱ, ㄴ, ㄷ인 ④.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -567,7 +571,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q18",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 증가하는 로그곡선이 원 C와 왼쪽 아래 P 및 오른쪽 위 Q에서 만난다. 두 점을 이은 지름 PQ의 중점 M은 x축 위의 원 중심이다.",
+    "solutionImageCaption": "지름의 중점으로 두 교점의 x좌표 합과 y좌표 합을 구한다. y좌표 합을 로그의 곱 성질에 적용하면 두 x좌표의 곱도 정해진다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -680,6 +688,10 @@ window.questionBank = [
     ],
     "integrationPattern": "NONE",
     "sourceQuestionRef": "23_순천고_1학기_중간_고2_수학I:q22",
-    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED"
+    "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_수학I/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 제1사분면의 파란 곡선 y=7/x와 녹색 점선 y=x가 점 P에서 만난다. P의 두 좌표는 같으므로 원점에서 P로 향하는 동경은 대각선 방향이다.",
+    "solutionImageCaption": "두 좌표가 같은 곡선 위의 점에서 두 삼각함수의 값이 같아진다. 정답은 $\\sqrt2$이다.",
+    "solutionImageSize": "full"
   }
 ];
