@@ -227,7 +227,11 @@ window.questionBank = [
       "63"
     ],
     "answer": "③",
-    "solution": "$O$를 선분 $AB$의 중점이라 하고 선분 $OC$를 그으면, 구하는 부분은 부채꼴 $COB$와 삼각형 $AOC$로 나뉩니다.<br>반원의 반지름은 $6$이고, 호 $CB$의 중심각은 $\\frac{2\\pi}{6}=\\frac\\pi3$입니다. 따라서 부채꼴 $COB$의 넓이는 $\\frac12\\cdot6^2\\cdot\\frac\\pi3=6\\pi$입니다.<br>$A,O,B$는 한 직선 위에 있고 $\\angle BOC=\\frac\\pi3$이므로 $\\angle AOC=\\pi-\\frac\\pi3=\\frac{2\\pi}{3}$입니다. $OA=OC=6$이므로 삼각형 $AOC$의 넓이는 $\\frac12\\cdot6^2\\sin\\frac{2\\pi}{3}=9\\sqrt3$입니다.<br>따라서 구하는 넓이는 $6\\pi+9\\sqrt3$이고, $a=6$, $b=9$이므로 $ab=54$입니다. 정답은 ③입니다."
+    "solution": "$O$를 선분 $AB$의 중점이라 하고 선분 $OC$를 그으면, 구하는 부분은 부채꼴 $COB$와 삼각형 $AOC$로 나뉩니다.<br>반원의 반지름은 $6$이고, 호 $CB$의 중심각은 $\\frac{2\\pi}{6}=\\frac\\pi3$입니다. 따라서 부채꼴 $COB$의 넓이는 $\\frac12\\cdot6^2\\cdot\\frac\\pi3=6\\pi$입니다.<br>$A,O,B$는 한 직선 위에 있고 $\\angle BOC=\\frac\\pi3$이므로 $\\angle AOC=\\pi-\\frac\\pi3=\\frac{2\\pi}{3}$입니다. $OA=OC=6$이므로 삼각형 $AOC$의 넓이는 $\\frac12\\cdot6^2\\sin\\frac{2\\pi}{3}=9\\sqrt3$입니다.<br>따라서 구하는 넓이는 $6\\pi+9\\sqrt3$이고, $a=6$, $b=9$이므로 $ab=54$입니다. 정답은 ③입니다.",
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고2_수학I/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽 반원에 A, B, C와 지름 AB의 중점 O가 표시되어 있다. OC가 내부 영역을 부채꼴 COB와 삼각형 AOC로 나누며, 부채꼴 COB는 회색, 삼각형 AOC는 연한 주황색이다. 중심각 BOC는 60°, AOC는 120°이다.",
+    "solutionImageCaption": "O를 AB의 중점으로 두고 OC를 그으면 목표 넓이는 부채꼴 COB와 삼각형 AOC의 합이다. 호 CB의 중심각은 60°이므로 두 넓이는 6π와 9√3, 따라서 a=6, b=9, ab=54이다. 정답은 ③.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
