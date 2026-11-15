@@ -14,6 +14,8 @@ import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from '.
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 
+import { nativeAuthorityHoldState } from './native-authority-correction.mjs';
+
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
 const META = 'archive/data/question_metadata.json';
@@ -160,6 +162,7 @@ function preservedAuditReceipt({nativeSource,question,previous,current,identity,
 // ALREADY_REGISTERED also leaves the native metadata revision, runtime and RPM parent untouched.
 export function nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack=pt?.ownerPack}) {
   if(!nativeSource||!previous)return null;
+  if(nativeAuthorityHoldState({root:nativeSource.root,current,identity,source,ordinal}))return null;
   const studentUnchanged=equal(pick(previous,STUDENT),pick(question,STUDENT));
   const {root,bytes,blobSha1,bank,runtimeRecord,runtimeStatus}=nativeSource;
   if(!Buffer.isBuffer(bytes)||!Array.isArray(bank)||!equal(bank[ordinal-1],question)
@@ -243,6 +246,8 @@ export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
 export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
   if (!identity || !current || identity.questionUid!==current.questionUid || identity.sourceArchiveFile!==source || current.sourceArchiveFile!==source || Number(identity.sourceOrdinal)!==ordinal || Number(current.sourceOrdinal)!==ordinal) return reject('UID_JOIN_MISMATCH');
+  const authorityHold=nativeAuthorityHoldState({root:nativeSource?.root,current,identity,source,ordinal});
+  if(authorityHold)return reject(authorityHold.reason);
   if (q.questionUid && q.questionUid!==identity.questionUid && !isUnambiguousLegacySourceUidAlias({question:q,
     sourceArchiveFile:source,sourceOrdinal:ordinal,identityRecord:identity,
     identityMap:nativeSource?.identityMap,bank:nativeSource?.bank})) return reject('SOURCE_UID_CONFLICT');

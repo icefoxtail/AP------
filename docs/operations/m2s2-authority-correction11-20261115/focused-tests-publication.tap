@@ -1,0 +1,36 @@
+✔ withdrawal dry/write/replay restores finite prior semantics while preserving source, identity, difficulty and outside rows (371.490694ms)
+✔ refuses current metadata drift without writes (132.701572ms)
+✔ refuses identity drift without writes (129.632577ms)
+✔ refuses runtime drift without writes (129.347611ms)
+✔ refuses source drift without writes (72.340208ms)
+✔ refuses after-value injection without writes (199.489963ms)
+✔ refuses registry mutation without writes (148.672557ms)
+✔ refuses ordinary approval masquerade without writes (326.400683ms)
+✔ refuses duplicate target without writes (181.737362ms)
+✔ refuses empty partition without writes (95.732829ms)
+✔ refuses non-withheld UID substitution without writes (93.621221ms)
+✔ refuses wrong source ordinal without writes (133.609099ms)
+✔ refuses forged prior state hash without writes (136.823058ms)
+✔ refuses reviewer mismatch without writes (92.470917ms)
+✔ refuses original receipt altered without writes (88.019704ms)
+✔ refuses consumed request altered without writes (95.088618ms)
+✔ refuses pre-existing authority: priorApproved (135.914346ms)
+✔ refuses pre-existing authority: priorRuntime (122.748227ms)
+✔ refuses pre-existing authority: nativeAfter (130.547688ms)
+✔ persistent hold is fail-closed after metadata marker removal (215.278591ms)
+✔ persistent hold is fail-closed after metadata marker and UID seal removal (222.073176ms)
+✔ persistent hold is fail-closed after old approval restored with immutable hold evidence after both marker removals (207.963948ms)
+✔ persistent hold is fail-closed after approval restored without separate release (537.142491ms)
+✔ persistent hold is fail-closed after seal removed (211.941504ms)
+✔ persistent hold is fail-closed after correction receipt altered (212.907169ms)
+✔ write failure restores every touched file and does not leave a correction receipt (142.329385ms)
+✔ production AutoMeta refuses a correction hold and removed markers before any source promotion (121.782065ms)
+✔ fixed Git PR preview selects and applies the typed withdrawal with exact UID/output scope (566.06118ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5428.351224

@@ -66,6 +66,21 @@
 4. 커밋·PR: compact 파일만 커밋한다. 시험지 JS, `question_metadata.json`, 등록기, catalog는 건드리지 않는다. PR을 만들고 **PR의 CI가 전부 녹색일 때만** 병합한다([공유 데이터 고정값](../agents/common.md)). 이유: 병합 뒤 main CI가 깨지면 다른 세션의 배포가 막힌다.
 5. 이 병합은 Pages 사이트 패키지에 영향이 없다(§1). 배포 결과는 따로 기록한다.
 
+### 5-1. 독립 수용된 단일 벡터의 명시적 부분제출
+
+계약 §11-7의 별도 수납 경로다. 일반 전체 시험지 import의 검수·coverage 검사는 바꾸지 않는다. 비공개 작성물과 독립 수용 문서는 저장소 밖에서 보존하고, 공개 Git에는 아래 도구가 만든 ID-only compact와 안전한 영수증만 올린다.
+
+1. 현재 main의 source·사전·canonical UID/ordinal 전체 분모를 고정한다. 실제 작성 원문, 독립 검토 원문, 수용된 compact 벡터를 가리키는 비공개 `q22-accepted-private-vector-input-v1`을 준비한다. 독립 검토 결정은 `ACCEPT_CURRENT_SOURCE_QUOTE_AND_UNCHANGED_FOUR_SLOT_VECTOR_ROLE`이고 작성자와 검토자가 달라야 한다. 기존 승인 문서를 직접 읽는 단계이며 새 수학 검토나 다른 문항의 승인을 만들지 않는다.
+2. 저장소 루트에서 먼저 아래 명령으로 검사한다. `<private-input>`은 실제 저장소 밖 파일 경로다. `NONE`은 해당 compact가 없음을 뜻한다.
+
+   ```sh
+   node tools/4slot/import-4slot.cjs --accepted-private-input <private-input> --reviewer <독립검토자> --request-id <고유ID> --expected-compact-sha256 NONE --dry-run
+   ```
+
+3. 정확한 `selected`/`unsubmitted` 분할과 source·dictionary·quote·vector·reviewer 검사가 통과한 후 같은 명령의 `--dry-run`만 빼서 수납한다. 재실행은 `NONE` 대신 실제 compact SHA256을 주며, 바이트가 같은 출력만 허용한다. 다른 compact가 있으면 중단하고 소유자를 조정한다. 기존 내용의 부분 덮어쓰기는 이 경로가 지원하지 않는다.
+4. 출력되는 공개 파일은 compact와 `archive/data/item-4slot-receipts/v1/<고유ID>.json`뿐이다. 작성자 원문, 인용 문자열, 비공개 review 파일을 복사하거나 PR에 첨부하지 않는다. 공개 영수증의 reviewer/decision/input digest/허용 범위를 확인하고, compact의 receipt SHA가 실제 파일과 같은지 재조회한다.
+5. 공식 `validate-4slot`, `item-4slot-data` 및 runtime builder/consumer를 필요한 범위에 실행한다. `NOT_SUBMITTED`는 등록 성공 수에 넣지 않는다. 25문항 중 1문항이면 1등록/24미제출/전체 완료 아님으로 보고한다. 공개 CI는 현재 source의 span 해시를 검증하므로 비공개 파일이나 Drive 접근을 요구하지 않는다. PR CI, 실제 main 등록 인덱스, Pages 반영은 각각 별도 결과로 기록한다.
+
 ## 6. 보고 형식 (짧게)
 
 - 검수한 시험지 수, 표본으로 본 문항 번호(시험지별), 반려한 시험지와 사유.

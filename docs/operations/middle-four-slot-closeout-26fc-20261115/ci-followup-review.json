@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "root-pr2190-bounded-ci-followup-review-v1",
+  "basisHead": "f8ac8829a3ae6b13dbba7cd51649e24da826d8a0",
+  "actualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "actualFailure": {
+    "runId": 43750658446,
+    "jobId": 132923673812,
+    "passed": 352,
+    "failed": 3,
+    "excerptSha256": "8c9870f4f9550cdb1e2f9d23652f23ea24e17fe00399ea22ae9e1de94f23e5ff"
+  },
+  "rootCompleteDiffReview": true,
+  "changes": [
+    "Copy the two exact production dependencies required by the isolated preview fixture.",
+    "Define metadataAuthorityHold in the field dictionary with its authority withdrawal and immutable seal semantics; retain all audit rules.",
+    "Give only the 126-case archive-main-merge-meta suite a 180000ms deadline in both scoped and full runner paths; other required commands retain 60000ms."
+  ],
+  "boundedValidation": {
+    "twoOriginalFailuresReproduced": true,
+    "isolationDistinctTestsPassed": 37,
+    "auditDistinctTestsPassed": 13,
+    "localFixtureGap": "The first isolation attempt passed36 and lacked four read-only workflow fixtures for one wiring case. After loading the exact f8 files, only that case was rerun and passed.",
+    "localTwoSuiteProofSha256": "6c7d44eeb114a6d174bfa8fdacb0d71a8c04e93b77e8fc7e7b18a8dd8c92d8d8",
+    "priorDisjoint43And83TestsPassed": true,
+    "priorCombinedExecutionTimeMs": 109298.032819,
+    "actualOldDeadlineElapsedMs": 60036,
+    "runnerSyntaxAndSingleOverrideCheck": "PASS",
+    "complete126RerunBeforePR": false
+  },
+  "preservation": {
+    "assertionsRemoved": 0,
+    "testsRemoved": 0,
+    "auditRulesRelaxed": 0,
+    "sourcesChanged": 0,
+    "registrationReplayed": 0,
+    "mathReviewRepeated": 0,
+    "metadataAndDifficultyWrites": 0
+  },
+  "status": "ROOT_ACCEPTED_FOR_PR_CI",
+  "actualNewHeadCI": "NOT_RUN",
+  "actualMainRegistration": "NOT_RUN"
+}

@@ -5,6 +5,7 @@
 // 경고(종료코드 0, 다시 보기): goal 방법어, 용어 4개 이하, method 1개, 같은 4칸 문항, method의 사칙연산.
 const fs = require('fs'), path = require('path');
 const { loadExam, itemLookup } = require('./exam-items.cjs');
+const partial = require('./partial-submission.cjs');
 
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
 const DEFAULT_DICT = 'docs/architecture/4slot/term-dictionary-v1.6.json';
@@ -48,12 +49,17 @@ function validateData(d, opts = {}) {
     if (d.sourceGitBlobSha && d.sourceGitBlobSha !== blob) warn.push(`sourceGitBlobSha ${d.sourceGitBlobSha} != current exam blob ${blob}`);
   } catch { /* 시험지를 읽지 못하면 위에서 이미 FAIL */ }
   let byOrd; try { byOrd = itemLookup(exam); } catch(e) { return { fail:[e.message], warn, stats:{items:(d.items||[]).length,examItems:exam.length,quotes:0} }; }
+  let scope = null;
+  if (partial.hasScope(d)) {
+    try { scope = partial.partition(root, d); partial.selectedItems(d, scope); }
+    catch (e) { return { fail:[...fail,e.message], warn, stats:{items:(d.items||[]).length,examItems:exam.length,quotes:0} }; }
+  }
   const cand = new Map((d.candidates || []).map(c => [norm(c.term), c]));
   for (const c of d.candidates || []) for (const k of ['term', 'en', 'synonyms', 'kind', 'parent', 'note', 'usedIn']) if (!(k in c)) fail.push(`candidate ${c.term} missing ${k}`);
   for (const c of d.candidates || []) if (lut.has(norm(c.term))) warn.push(`candidate ${c.term} is already in dictionary (${lut.get(norm(c.term)).ko})`);
   const seen = new Set(), vecs = new Map(); let quotes = 0;
   for (const it of d.items || []) {
-    const o = String(it.sourceOrdinal), q = byOrd.get(o);
+    const o = String(it.sourceOrdinal), q = scope ? exam[it.sourceOrdinal - 1] : byOrd.get(o);
     if (!q) { fail.push(`#${o} not in exam`); continue; }
     if (seen.has(String(q.ordinal))) fail.push(`#${o} duplicated`); seen.add(String(q.ordinal));
     if (!FORMATS.includes(it.format)) fail.push(`#${o} bad format ${it.format}`);
@@ -88,8 +94,9 @@ function validateData(d, opts = {}) {
     if ((sl.method || []).length === 1) warn.push(`#${o} method has 1 term`);
     const key = [...v].sort().join(','); if (vecs.has(key)) warn.push(`#${o} same 4-slot set as #${vecs.get(key)}`); else vecs.set(key, o);
   }
-  for (const q of exam) if (!seen.has(String(q.ordinal))) fail.push(`#${q.ordinal} missing`);
-  return { fail, warn, stats: { items: (d.items || []).length, examItems: exam.length, quotes } };
+  for (const q of scope ? scope.selected.map(row => exam[row.sourceOrdinal - 1]) : exam) if (!seen.has(String(q.ordinal))) fail.push(`#${q.ordinal} missing`);
+  return { fail, warn, stats: { items: (d.items || []).length, examItems: exam.length, quotes,
+    ...(scope ? {scope:partial.SCOPE,unsubmitted:scope.unsubmitted.length,completeExam:false} : {}) } };
 }
 
 module.exports = { validateData, buildLookup, loadDict, norm, REPO_ROOT, DEFAULT_DICT, DICT_FILES, OK_DICT_VERSIONS, FORMATS, SLOTS };

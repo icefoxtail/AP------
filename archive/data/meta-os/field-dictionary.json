@@ -1320,6 +1320,13 @@
       "note": "reviewFlag를 단 사유 문장(어떤 결함이 남았는지). 꼬리표의 근거이며 사용 문턱이 아님"
     },
     {
+      "name": "metadataAuthorityHold",
+      "layer": "보류·부채",
+      "kind": "상태",
+      "sameMeaningAs": [],
+      "note": "공식 native-authority-correction 등록기가 근거 없는 기존 FINAL_QA 권한을 철회한 뒤 남기는 archive-native-authority-hold-v1 객체. correctionRequestId, receiptPath, sealPath, reason(UNSUPPORTED_GENERIC_FINAL_QA), priorSemanticSha256, sourceHold(false)를 담는다. 정정 요청·불변 영수증·UID별 seal·현재 의미 상태와 identity가 함께 일치해야 유효하며, 손상된 보류도 승인으로 해석하지 않는다. 공식 v2 등록기와 AutoMeta는 별도의 명시적 권한 해결 없이 기존 승인을 재사용하거나 새 승격을 만들지 못하게 한다. 원문 자료 부족에 따른 sourceIssueHold와 다른 권한 보류이고, 기존 영수증·학생 원문·identity·D5를 바꾸거나 새 의미 승인을 뜻하지 않는다. 필드 또는 seal을 지운 사실만으로 해제되지 않는다."
+    },
+    {
       "name": "metaFoundationHoldReason",
       "layer": "보류·부채",
       "kind": "증거",
