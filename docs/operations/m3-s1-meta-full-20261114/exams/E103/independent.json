@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "integrated-meta-independent-review-v1",
+  "workKey": "M3-S1-META-FULL",
+  "examKey": "E103",
+  "author": "meta_a",
+  "reviewer": "meta_b",
+  "reviewedAt": "2026-11-15",
+  "reviewRun": "GPT_ROOT_E0C948452E80/B",
+  "status": "PASS_WITH_EXPLICIT_DEBTS",
+  "scope": "METADATA_ONLY_INDEPENDENT_SAMPLE_AND_EXCEPTIONS",
+  "sourceBaseBlob": "d288e88a3d3f9d4635ee120f08fd0f10af2739e8",
+  "inputHashes": {
+    "reviewSha256": "9951aaa8cf4aa53247ce1b9317cecf12af02a03ee50a63b6171a0fa257533405",
+    "fourSlotSha256": "6dc58f899ceeacac4b49aac18fcb4034540b106e961d09e71c150b8db3d0caeb"
+  },
+  "sampledOrdinals": [
+    13,
+    17,
+    21
+  ],
+  "additionalReviewedOrdinals": [
+    15
+  ],
+  "basis": "위험·IMPLIED·불확실 중심 3문항 표본의 실제 발문·선택지·기존해설과 4칸 의미를 독립 대조. 필요한 아래 그림만 직접 관측. 전수 수학검증 아님.",
+  "findings": [
+    {
+      "ordinal": 13,
+      "questionUid": "qid_v1_3a112b63749ab25be899f972bec6b8789137bdb53088f4f11efe67290cd26972",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제직선은양의기울기·양의y절편이므로-bx²+a는아래로열리고양의꼭짓점높이인그래프다. 원그림과5개선택그림을모두관측하여부호전달RPM053부모맥락·bucket2후보수용. 해설공백SOURCE_ONLY debt보존."
+    },
+    {
+      "ordinal": 17,
+      "questionUid": "qid_v1_7db8be32e5fb2808f56c5cf3961bbaecfcaff9d3ab44b19de3c3461840fc7f3e",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제AB수평,BC수직과두포물선을확인. B(t,t²)에서가로2t와세로(5/3)t²의지정비를쓰는표준개념결합이다. 독립경계검토후비정형전략부담없는중/bucket3/B34로조정된최신본수용. 명시대칭/비/사분면/평행조건과SOURCE_ONLY debt보존."
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "qid_v1_8e1ca2d3826ab5ea15b8526d261d9986ffdc1b62f0d985297be9ed77d04c9348",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제그림의꼭짓점(2,0),y절편4로포물선을복원한뒤같은높이10의두x좌표차를구하는목표를확인. 독립요청후상등조건추가와bucket3후보수용. method는해설없는상태로SOURCE_ONLY debt보존."
+    },
+    {
+      "ordinal": 15,
+      "questionUid": "qid_v1_c19d66d5502cf0e829a0fc6c79b627ef232a9c83828df49d8827911cb85d0f67",
+      "status": "PASS_WITH_DEBT",
+      "note": "실제 발문은 처음 직사각형과 넓이가 같아질 때까지의 초 단위 시간을 목표로 한다. 경과시간 CANDIDATE의 정의와 정확한 발문 인용을 확인했다. 해설 없는 SOURCE_ONLY와 method 공란을 보존하며 벡터 시점 term686 오분류를 제거했다. 신규 용어 등록 대기 debt 유지."
+    }
+  ],
+  "assetReview": [
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E103/13-content-1.png",
+      "sha256": "7b36858390f0bdb437750913d2c013c731f54ad7e51ea2cc83bf75c5c5b2751a",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E103/13-choices-2.png",
+      "sha256": "15d7325f72dc801637c84ce2c46106bfa8c8f46ca1bd5d95c30a846f5889eac8",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E103/13-choices-3.png",
+      "sha256": "cb0d385f1311b6d822bedf0abd98f281032dc1d16e60e1c54bff661bb95bd602",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E103/13-choices-4.png",
+      "sha256": "87cf133823a64d693a11add7a4f9d6f4de9cc4ec15d384093e148b046e84db51",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E103/13-choices-5.png",
+      "sha256": "104a4dcb6b4fc19c242df5010ba5daa717c45f6f42e62afa44c423003a52b3e0",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E103/13-choices-6.png",
+      "sha256": "d577c87c78603914382b4217db99a57c4d26a2eb8b22b09e24d65eea4e66f7f0",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E103/17-content-1.png",
+      "sha256": "6a82732e5aebfb02f9455a44bfaeb343999f075a6eb2a9d56ee42e1d6cdb7f79",
+      "status": "READ"
+    },
+    {
+      "path": "/workspace/scratch/e0c948452e80/workers/A/assets/E103/21-content-1.png",
+      "sha256": "9a20f0063758fe62a69219e685c14d478434eb7ee031df96634e555d3c230f38",
+      "status": "READ"
+    }
+  ],
+  "decisiveMethodOrGoalErrorsInSample": 0,
+  "inventedQuotesInSample": 0,
+  "mathematicalVerification": "NOT_PERFORMED",
+  "sharedRegistration": "NOT_PERFORMED",
+  "nextAction": "ROOT_SOURCE_PROTECTION_MACHINE_VALIDATION_AND_BRANCH_INTEGRATION"
+}
