@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "archive-reviewed-source-metadata-materialization-v1",
+  "materializationId": "root9-unchanged3-d711-20261116",
+  "baseCommit": "d7111057c89ad4f4a418e2805eeeb1b04447f99f",
+  "transportProfile": "M2_NATIVE_PROPOSAL_V3",
+  "identityRef": {
+    "path": "archive/data/question_identity_map.json",
+    "sha256": "ec6938bd2ad20bad6242fb24f2be84c563ae047abd0e01bffec32e48e9d454f5",
+    "blobSha1": "24c9016c5910d188c5665f2f837d47dbd6ae3e77"
+  },
+  "requestRefs": [
+    {
+      "path": ".archive-meta-register/inbox/root9-unchanged3-d711-20261116-e048.json",
+      "blobSha1": "a383afd0506041219c4abaeee822ced5a5c579c2",
+      "sha256": "2334383da8bc2c4d213c9502fa7f6a54e3b5c99d34d95f8afca4be9e74144d37"
+    },
+    {
+      "path": ".archive-meta-register/inbox/root9-unchanged3-d711-20261116-e054.json",
+      "blobSha1": "d0ca763d90df2445f0c6f588d3e7cfacd9fba0e8",
+      "sha256": "a4c1b5e855c34b3046f4a64f81cc03d732ff3fe29cec890a55cab443e9edd26c"
+    }
+  ],
+  "outputScope": [
+    "archive/exams/original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js",
+    "archive/exams/original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js"
+  ],
+  "files": [
+    {
+      "path": "archive/exams/original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js",
+      "before": {
+        "blobSha1": "fd8f9f3f0e125700f0af4d404e6c69c3b7d3dc41",
+        "sha256": "2ac6f218f9643d830892f80e6fb27d3f830f981a05b45018cb0aeb11d11bc48e"
+      },
+      "after": {
+        "blobSha1": "9d319f2a3e8549bd6773b40ef671e138cdbba2ce",
+        "sha256": "d45a744d44cbe99dde6428b6a5bae554a20010f02b4cf3e866dece9135a574b7"
+      },
+      "expectedQuestionCount": 24,
+      "changes": [
+        {
+          "questionUid": "qid_v1_69f5f572e65435ddbb310ce81278e9a301b36aba92b7ca2cacec3c8d65f8c1f1",
+          "sourceOrdinal": 14,
+          "requestIndex": 0,
+          "metadataFields": [
+            {
+              "field": "templateKey",
+              "beforePresent": true,
+              "afterPresent": true,
+              "before": "TPL_CENTROID_APPLICATION",
+              "after": "TPL_CENTROID_NESTED_MEDIAN_AREA_PARTITION"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+      "before": {
+        "blobSha1": "186a00403ca79166df1ed8a109725db7fb37574f",
+        "sha256": "1a381196c3fce41ff54d5184409e8dbe2c8f41277761961b97930657c6652ffd"
+      },
+      "after": {
+        "blobSha1": "3980a559392e179caa4697b060eb72b168f69c99",
+        "sha256": "cfad1ad91766f9a4cd6d61581f38c4e6998111dfb72431fd483ae3b1604d018f"
+      },
+      "expectedQuestionCount": 24,
+      "changes": [
+        {
+          "questionUid": "qid_v1_8f34f90323c1111974d47bbdbdeadcd5f0b39ad60bbde43d0e8802438a815c95",
+          "sourceOrdinal": 10,
+          "requestIndex": 1,
+          "metadataFields": [
+            {
+              "field": "templateKey",
+              "beforePresent": true,
+              "afterPresent": true,
+              "before": "TPL_SIMILAR_FIGURES_RATIO",
+              "after": "TPL_SIMILAR_FIGURES_CORRESPONDENCE_STATEMENT_JUDGMENT"
+            }
+          ]
+        },
+        {
+          "questionUid": "qid_v1_1aec65323b67a1377ca15e06b1b46a47bab4d42539a048255feba31465af3c7b",
+          "sourceOrdinal": 21,
+          "requestIndex": 1,
+          "metadataFields": [
+            {
+              "field": "problemTypeKey",
+              "beforePresent": true,
+              "afterPresent": true,
+              "before": "PT_QUADRILATERAL_PROPERTIES",
+              "after": "PT_M2_PARALLELOGRAM_OPPOSITE_SIDES_PROOF"
+            },
+            {
+              "field": "templateKey",
+              "beforePresent": true,
+              "afterPresent": true,
+              "before": "TPL_QUADRILATERAL_PROPERTIES",
+              "after": "TPL_M2_PARALLELOGRAM_OPPOSITE_SIDES_DIAGONAL_ASA"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
