@@ -66,8 +66,8 @@ window.questionBank = [
       "원의 성질"
     ],
     "image": "assets/images/21_신흥중_2학기_기말_중3_기출/q02.png",
-    "decisiveStep": "중심에서 현 BC에 수선 OM을 내려 BM=5/2를 얻고, 원주각·중심각과 반각 관계로 BOM=A임을 사용해 직각삼각형 OBM에서 사인비로 반지름 OB를 구한다.",
-    "primaryMethod": "중심에서 현 BC에 수선 OM을 내려 BM=5/2를 얻고, 원주각·중심각과 반각 관계로 BOM=A임을 사용해 직각삼각형 OBM에서 사인비로 반지름 OB를 구한다.",
+    "decisiveStep": "BM=BC/2=5/2와 ∠BOM=∠A를 이용해 sin A=BM/OB에 주어진5/8을 대입한다.",
+    "primaryMethod": "중심에서 현에 내린 수선의 이등분과 원주각 관계를 이용해 직각삼각형의 사인비로 반지름 계산",
     "questionType": "객관식",
     "level": "중",
     "difficultyBucket": 2,
@@ -96,7 +96,9 @@ window.questionBank = [
     "solutionImageCaption": "중심 O에서 현 BC에 수선 OM을 내리면 BM은 BC의 절반인 2분의 5cm이고, 중심각의 성질로 ∠BOM=∠A이다. 직각삼각형 OBM에서 sin A=(2분의 5)/R=8분의 5이므로 R=4이다. 정답은 4cm이다.",
     "solutionImageSize": "full"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,

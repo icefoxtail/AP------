@@ -31,7 +31,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 제곱근의 정의와 성질을 이해한다.\n\nㄱ. $\\sqrt{16}$은 $16$의 양의 제곱근이므로 $4$이다. (거짓)\nㄴ. $\\sqrt{(-2)^2} = \\sqrt{4} = 2$이다. (참)\nㄷ. 제곱하여 $9$가 되는 수는 $3$과 $-3$이므로 $9$의 제곱근은 $\\pm 3$이다. (참)\nㄹ. $\\sqrt{16}=4$이므로, $\\sqrt{16}$의 제곱근은 $4$의 제곱근인 $\\pm 2$이다. (거짓)\n따라서 옳은 것은 ㄴ, ㄷ이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -67,7 +67,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] $\\sqrt{100a} = 10\\sqrt{a}$ 성질을 이용한다.\n\n$\\sqrt{320} = \\sqrt{3.2 \\times 100}$ 임을 알 수 있다.\n$= \\sqrt{3.2} \\times \\sqrt{100} = 10\\sqrt{3.2}$ 이다.\n주어진 $\\sqrt{3.2} = 1.789$를 대입하면,\n$10 \\times 1.789 = 17.89$ 이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -210,7 +210,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] $\\sqrt{A^2} = |A|$ 임을 이용하고 $A$의 부호에 따라 근호를 벗긴다.\n\n$a < 0$이므로 각 항의 내부 부호를 판별한다.\n1. $-4a$: $a$가 음수이므로 $-4a$는 양수이다. $\\therefore \\sqrt{(-4a)^2} = -4a$\n2. $3a$ ($\\sqrt{9a^2}=\\sqrt{(3a)^2}$): $a$가 음수이므로 $3a$는 음수이다. $\\therefore \\sqrt{(3a)^2} = -(3a) = -3a$\n3. $-a$: $a$가 음수이므로 $-a$는 양수이다. $\\therefore \\sqrt{(-a)^2} = -a$\n\n식을 정리하면:\n$(-4a) - (-3a) + (-a) = -4a + 3a - a = -2a$\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -246,7 +246,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 정사각형의 넓이는 $(\\text{한 변의 길이})^2$이다.\n\n- 첫 번째 화단의 넓이: $(\\sqrt{5})^2 = 5 \\text{m}^2$\n- 두 번째 화단의 넓이: $2^2 = 4 \\text{m}^2$\n두 넓이의 합은 $5 + 4 = 9 \\text{m}^2$ 이다.\n\n새로 만든 정사각형 화단의 넓이가 $9 \\text{m}^2$이므로 한 변의 길이를 $x$라 하면\n$x^2 = 9$\n길이는 양수이므로 $x = 3$m 이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -283,7 +283,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 수직선은 유리수와 무리수를 합친 실수 전체의 집합으로 완전히 메워진다.\n\n① $\\sqrt{5}$와 $\\sqrt{6}$ 사이에는 무수히 많은 무리수가 존재한다. (참)\n② 임의의 두 유리수 사이에는 항상 유리수가 존재한다. (참)\n③ 유리수와 무리수는 조밀성이 있어 두 수 사이에는 무수히 많은 유리수가 있다. (참)\n④ 수직선은 실수(유리수+무리수)에 대응하므로 무리수만으로는 수직선을 완전히 메울 수 없다. (거짓)\n⑤ 두 유리수 사이에는 무수히 많은 무리수가 존재한다. (참)\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -683,7 +683,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 변수의 부호를 판별하여 절댓값 또는 근호를 벗긴다.\n\n$ab < 0$이므로 $a, b$의 부호는 서로 다르다.\n$a > b$이므로 $a$는 양수($a > 0$), $b$는 음수($b < 0$)이다.\n1. $b-a$: (음수) - (양수) = 음수 $\\implies \\sqrt{(b-a)^2} = -(b-a) = a-b$\n2. $-3a$: (음수) $\\times$ (양수) = 음수 $\\implies \\sqrt{(-3a)^2} = -(-3a) = 3a$\n3. $-2b$: (음수) $\\times$ (음수) = 양수 $\\implies \\sqrt{(-2b)^2} = -2b$\n4. $|ab|$: $ab$가 음수이므로 $|ab| = -ab$\n\n총합: $(a-b) + 3a + (-2b) + (-ab) = 4a - 3b - ab$\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -749,7 +749,7 @@ window.questionBank = [
     "answer": "$\\frac{1}{6}$",
     "solution": "[키포인트] $\\sqrt{n}$이 자연수가 되려면 $n$이 제곱수여야 한다.\n\n$\\sqrt{48ab} = \\sqrt{2^4 \\times 3 \\times ab} = 4\\sqrt{3ab}$\n이 값이 자연수가 되려면 $3ab$가 제곱수여야 하므로, $ab$는 $3 \\times k^2$ 꼴이어야 한다.\n주사위 눈의 곱 $ab$는 $1$부터 $36$까지 가능하다.\n1. $k=1 \\implies ab=3$: $(1,3), (3,1)$ (2가지)\n2. $k=2 \\implies ab=12$: $(2,6), (6,2), (3,4), (4,3)$ (4가지)\n3. $k=3 \\implies ab=27$: $(a,b)$ 중 곱이 27인 주사위 눈 조합 없음 (최대 $6 \\times 6 = 36$이지만 27은 $3 \\times 9$이므로 주사위에서 불가능)\n총 경우의 수는 $2 + 4 = 6$가지이다.\n전체 경우의 수는 $6 \\times 6 = 36$이므로\n확률은 $\\frac{6}{36} = \\frac{1}{6}$이다.\n\n따라서 정답은 $\\frac{1}{6}$이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

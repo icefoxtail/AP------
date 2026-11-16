@@ -13,6 +13,7 @@ const partial = require('./partial-submission.cjs');
 const existingRenderer = require('./rebind-existing-renderer-v2.cjs');
 const registeredRenderer = require('./registered-renderer-continuity.cjs');
 const existingVector = require('./existing-registered-vector-continuity.cjs');
+const originalSourceError = require('./original-source-error-hold.cjs');
 const { sourceNumber, sourceIdentityNumber } = require('./exam-items.cjs');
 const ROOT = path.resolve(__dirname, '../..');
 const INPUT = 'archive/data/item-4slot/';
@@ -27,7 +28,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
-const BUILDER_SHA = sha(Buffer.concat([fs.readFileSync(__filename), fs.readFileSync(require.resolve('./renderer-registration-hold.cjs')), fs.readFileSync(require.resolve('./partial-submission.cjs')), fs.readFileSync(require.resolve('./metadata-registration-hold.cjs')), fs.readFileSync(require.resolve('./verify-hold-metadata-replay.mjs')), fs.readFileSync(require.resolve('./current-renderer-negative-hold.cjs')), fs.readFileSync(require.resolve('./current-renderer-negative-hold-v2.cjs')), fs.readFileSync(require.resolve('./m2s2-current-continuity.cjs')), fs.readFileSync(require.resolve('./m2s2-current-repair-closure.cjs')), fs.readFileSync(require.resolve('./m2s2-exact-display-repair-closure.cjs')), fs.readFileSync(require.resolve('./m2s2-imported-current-continuity.cjs')), fs.readFileSync(require.resolve('./m2s2-imported-native-vector-amendment.cjs')), fs.readFileSync(require.resolve('./m2s2-imported-issued-metadata-continuity.cjs')), fs.readFileSync(require.resolve('./import-4slot.cjs')), fs.readFileSync(require.resolve('./validate-4slot.cjs')), fs.readFileSync(require.resolve('./exam-items.cjs')), fs.readFileSync(require.resolve('./registered-renderer-continuity.cjs')), fs.readFileSync(registeredRenderer.worker), fs.readFileSync(require.resolve('./rebind-existing-renderer-v2.cjs')), fs.readFileSync(require.resolve('./existing-registered-vector-continuity.cjs')), fs.readFileSync(require.resolve('./existing-registered-vector-ui.cjs'))]));
+const BUILDER_SHA = sha(Buffer.concat([fs.readFileSync(__filename), fs.readFileSync(require.resolve('./renderer-registration-hold.cjs')), fs.readFileSync(require.resolve('./partial-submission.cjs')), fs.readFileSync(require.resolve('./metadata-registration-hold.cjs')), fs.readFileSync(require.resolve('./verify-hold-metadata-replay.mjs')), fs.readFileSync(require.resolve('./current-renderer-negative-hold.cjs')), fs.readFileSync(require.resolve('./current-renderer-negative-hold-v2.cjs')), fs.readFileSync(require.resolve('./m2s2-current-continuity.cjs')), fs.readFileSync(require.resolve('./m2s2-current-repair-closure.cjs')), fs.readFileSync(require.resolve('./m2s2-repaired-issued-metadata-continuity.cjs')), fs.readFileSync(require.resolve('./m2s2-exact-display-repair-closure.cjs')), fs.readFileSync(require.resolve('./m2s2-imported-current-continuity.cjs')), fs.readFileSync(require.resolve('./m2s2-imported-native-vector-amendment.cjs')), fs.readFileSync(require.resolve('./m2s2-imported-issued-metadata-continuity.cjs')), fs.readFileSync(require.resolve('./import-4slot.cjs')), fs.readFileSync(require.resolve('./validate-4slot.cjs')), fs.readFileSync(require.resolve('./exam-items.cjs')), fs.readFileSync(require.resolve('./registered-renderer-continuity.cjs')), fs.readFileSync(registeredRenderer.worker), fs.readFileSync(require.resolve('./rebind-existing-renderer-v2.cjs')), fs.readFileSync(require.resolve('./existing-registered-vector-continuity.cjs')), fs.readFileSync(require.resolve('./existing-registered-vector-ui.cjs')), fs.readFileSync(require.resolve('./original-source-error-hold.cjs'))]));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -229,6 +230,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       const currentImportedM2=m2ImportedContinuity.has(d);
       if(currentImportedM2){const errors=m2ImportedContinuity.validateFile(root,d,{safe,sha,blob,stable,payloadHash,identityHash,assetRefs,loadBank,dictionary:dict,identity,studentFields:STUDENT,m2ImportedObligation:importedObligation,m2DisplayRepairObligation:displayObligation});if(errors.length)throw Error(errors.join('|'));}
       const relevantIdentity=bank.map((_,i)=>joins.get(`${d.sourceArchiveFile}#${i+1}`)||[]);
+      const originalSourceHoldScope=d.sourceArchiveFile===originalSourceError.SOURCE||relevantIdentity.flat().some(r=>originalSourceError.isSubject(r));
       const continuities=rendererContinuities.get(d.sourceArchiveFile)||[],continuityDigests=continuities.flatMap(e=>e.digests);
       const vectorEntries=vectorContinuities.get(d.sourceArchiveFile)||[],vectorDigests=vectorEntries.flatMap(e=>e.digests);
       const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests,scope?.evidenceDigests||null,scope?.contractSha256||null,rendererScope?.evidenceDigests||null,continuityDigests,vectorDigests,obligation.digest,m2Obligation.digest,importedObligation.digest,displayObligation.digest]));
@@ -248,7 +250,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       // No repeated semantic review. Cached rows are re-used only for identical input bytes and identity joins.
       // The explicit metadata continuation also depends on the issued receipt,
       // metadata and runtime. Always replay that one negative decision live.
-      if(reuseCache&&!vectorEntries.length&&!oldVectorClaims.length&&!d.items.some(it=>rendererHold.hasMetadataClaim(d,it))&&old?.inputHash===inputHash&&previous?.schemaVersion===SCHEMA){
+      if(reuseCache&&!originalSourceHoldScope&&!vectorEntries.length&&!oldVectorClaims.length&&!d.items.some(it=>rendererHold.hasMetadataClaim(d,it))&&old?.inputHash===inputHash&&previous?.schemaVersion===SCHEMA){
         files.push(old);records.push(...previous.records.filter(r=>r.compactPath===rel));pending.push(...previous.pending.filter(r=>r.path===rel));stats.reusedFiles++;continue;
       }
       stats.revalidatedFiles++;
@@ -270,6 +272,14 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
         const ids=joins.get(`${d.sourceArchiveFile}#${cur.ordinal}`)||[], id=ids[0];
         if(ids.length!==1||!/^qid_v1_[a-f0-9]{64}$/.test(id?.questionUid||'')||uidUses.get(id.questionUid)!==1){fail('IDENTITY_JOIN_MISSING_OR_DUPLICATE',it.ordinal);continue;}
         if(id.status!=null&&id.status!=='VERIFIED'){fail('IDENTITY_STATE_INVALID',it.ordinal);continue;}
+        if(originalSourceError.isSubject({questionUid:id.questionUid,source:d.sourceArchiveFile,ordinal:cur.ordinal})){
+          try{
+            const hold=originalSourceError.verify(root,{identity});observed.push(...hold.observed);
+            file.originalSourceErrorHold={questionUid:id.questionUid,sourceOrdinal:cur.ordinal,...hold.projection};
+            fail('EXPLICIT_REVIEW_HOLD:'+hold.reason,it.ordinal,{questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQualityHold:hold.projection});
+          }catch(e){fail(e.message,it.ordinal,{questionUid:id.questionUid});}
+          continue;
+        }
         let vectorContinuation=null;
         const selectedVectors=vectorEntries.filter(e=>e.questionUid===id.questionUid||e.sourceOrdinal===cur.ordinal);
         const priorVectorClaim=oldVectorClaims.some(r=>r.questionUid===id.questionUid||r.sourceOrdinal===cur.ordinal);
@@ -350,6 +360,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
 }
 function serialize(x){return JSON.stringify(x)+'\n';}
 function verify(index) {
+  for(const row of index.records)originalSourceError.assertNotSubject(row);
   const api=consumer.createIndex(index);
   if(api.size!==index.records.length)throw Error('CONSUMER_COUNT_MISMATCH');
   for(const row of index.records){const actual=api.get(row.questionUid);if(stable(actual)!==stable(row))throw Error('CONSUMER_VALUE_MISMATCH');

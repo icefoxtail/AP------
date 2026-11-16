@@ -37,14 +37,16 @@ const plain = r => ({commit:r?.commit,path:r?.path,sha256:r?.sha256});
 const utc = s => typeof s==='string' && /^\d{4}-\d\d-\d\dT.*(?:Z|\+00:00)$/.test(s) && Number.isFinite(Date.parse(s));
 const hasLegacy = d => own(d.evidence,GROUP) || (d.items || []).some(i => i.registrationHold?.schemaVersion===HOLD_SCHEMA || own(i.registrationHold,'m2ContinuityCarrier'));
 const repairClosure = () => require('./m2s2-current-repair-closure.cjs');
+const issuedRepairMetadata = () => require('./m2s2-repaired-issued-metadata-continuity.cjs');
 const displayRepair = () => require('./m2s2-exact-display-repair-closure.cjs');
-const has = d => hasLegacy(d) || repairClosure().has(d) || displayRepair().hasFor(d,'CURRENT_V1');
+const has = d => issuedRepairMetadata().has(d) || hasLegacy(d) || repairClosure().has(d) || displayRepair().hasFor(d,'CURRENT_V1');
 const inScope = d => /^original\/middle\/m2\/2(?:mid|final)\//.test(d.sourceArchiveFile || '');
 const gitBytes = (root,args) => execFileSync('git',['-C',root,'-c','core.quotepath=false',...args],{timeout:30000,maxBuffer:32*1024*1024,stdio:['ignore','pipe','pipe']});
 
 // This pass-local immutable inventory records obligations, never successful
 // approval results. Full ancestry includes witnesses removed by a merge commit.
 function createObligationReader(root,{safe,sha,blob,stable}) {
+  const metadataObligation=issuedRepairMetadata().createObligationReader(root,{safe,sha,blob,stable});
   let loaded=false, failure=null, entries=[];
   function load() {
     if(loaded) return;
@@ -84,7 +86,7 @@ function createObligationReader(root,{safe,sha,blob,stable}) {
       }
     } catch { failure='M2_CURRENT_CONTINUITY_HISTORY_UNAVAILABLE'; }
   }
-  return d => {
+  const originalObligation=d => {
     if(!inScope(d)) return {required:false,errors:[],digest:null};
     load();
     if(failure) return {required:true,errors:[failure],digest:null};
@@ -98,6 +100,7 @@ function createObligationReader(root,{safe,sha,blob,stable}) {
     const successor=repairClosure().has(d)||displayRepair().hasFor(d,'CURRENT_V1');
     return {required:true,errors:(hasLegacy(d)&&covered)||successor?[]:['M2_CURRENT_CONTINUITY_OBLIGATION_REQUIRED'],digest:sha(stable(found)),...(successor?{entries:found}:{} )};
   };
+  return d=>{const prior=originalObligation(d),metadata=metadataObligation(d);return {...prior,required:prior.required||metadata.required||false,errors:[...prior.errors,...metadata.errors],digest:metadata.digest===null?prior.digest:sha(stable([prior.digest,metadata.digest])),...(metadata.required?{metadataEntries:metadata.entries||[]}:{} )};};
 }
 
 function evidenceDigests(root,d,{safe,sha}) {
@@ -105,7 +108,7 @@ function evidenceDigests(root,d,{safe,sha}) {
   for(const r of Object.values(refs||{})) if(r?.path) {
     try { out[r.path]=sha(fs.readFileSync(safe(root,r.path))); } catch { out[r.path]=null; }
   }
-  return {...out,...repairClosure().evidenceDigests(root,d,{safe,sha})};
+  return {...out,...repairClosure().evidenceDigests(root,d,{safe,sha}),...issuedRepairMetadata().evidenceDigests(root,d,{safe,sha})};
 }
 
 function validateLegacyFile(root,d,hp,historicalCommit=null,historicalReads=null) {
@@ -383,6 +386,7 @@ function validateHistoricalFile(root,reference,hp) {
 }
 
 function validateFile(root,d,hp) {
+  if(issuedRepairMetadata().has(d))return issuedRepairMetadata().validateFile(root,d,hp,(r,ref,h)=>repairClosure().validateHistoricalFile(r,ref,h,validateHistoricalFile));
   if(displayRepair().has(d)) return displayRepair().validateFile(root,d,hp,validateHistoricalFile);
   if(repairClosure().has(d)) return repairClosure().validateFile(root,d,hp,validateHistoricalFile);
   return validateLegacyFile(root,d,hp);

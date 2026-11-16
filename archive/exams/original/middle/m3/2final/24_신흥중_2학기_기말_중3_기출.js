@@ -46,7 +46,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 호의 중심각120도와 원주각의1:2관계를 바로 적용한다.",
-    "decisiveStep": "같은 호의 중심각120도와 원주각의1:2관계를 바로 적용한다."
+    "decisiveStep": "같은 호의 중심각120도와 원주각의1:2관계를 바로 적용한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -136,7 +139,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원주각60도가 보는 호120도에서 중심각90도의 호를 빼고 남은 호의 절반으로 APB를 정한다.",
-    "decisiveStep": "원주각60도가 보는 호120도에서 중심각90도의 호를 빼고 남은 호의 절반으로 APB를 정한다."
+    "decisiveStep": "원주각60도가 보는 호120도에서 중심각90도의 호를 빼고 남은 호의 절반으로 APB를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -183,7 +189,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 원주각이 보는 큰 호의 합이 전체 원주와 공통 호 BC의 합임을 찾아 두 미지각의 합을 직접 구한다.",
-    "decisiveStep": "두 원주각이 보는 큰 호의 합이 전체 원주와 공통 호 BC의 합임을 찾아 두 미지각의 합을 직접 구한다."
+    "decisiveStep": "두 원주각이 보는 큰 호의 합이 전체 원주와 공통 호 BC의 합임을 찾아 두 미지각의 합을 직접 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -230,7 +239,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "19도 원주각의 호를 두 배로 읽고 호의 중점과 지름의 반원 관계를 연결하여 남은 호의 원주각을 정한다.",
-    "decisiveStep": "19도 원주각의 호를 두 배로 읽고 호의 중점과 지름의 반원 관계를 연결하여 남은 호의 원주각을 정한다."
+    "decisiveStep": "19도 원주각의 호를 두 배로 읽고 호의 중점과 지름의 반원 관계를 연결하여 남은 호의 원주각을 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -277,7 +289,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 원주각을 대응 중심각으로 바꾸고 같은 원의 호 길이와 중심각 비례로 미지 호의 길이를 정한다.",
-    "decisiveStep": "두 원주각을 대응 중심각으로 바꾸고 같은 원의 호 길이와 중심각 비례로 미지 호의 길이를 정한다."
+    "decisiveStep": "두 원주각을 대응 중심각으로 바꾸고 같은 원의 호 길이와 중심각 비례로 미지 호의 길이를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -324,7 +339,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "접선현각으로 x를 얻어 같은 꼭짓점의 각에 더한 뒤 내접사각형 대각의 보각으로 y를 구해 차를 낸다.",
-    "decisiveStep": "접선현각으로 x를 얻어 같은 꼭짓점의 각에 더한 뒤 내접사각형 대각의 보각으로 y를 구해 차를 낸다."
+    "decisiveStep": "접선현각으로 x를 얻어 같은 꼭짓점의 각에 더한 뒤 내접사각형 대각의 보각으로 y를 구해 차를 낸다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -371,7 +389,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름의 원주각과 접선현각으로 BCD의 두 각을 같게 만든 뒤 이등변 조건과30도 직각삼각형의 변비로 AD를 정한다.",
-    "decisiveStep": "지름의 원주각과 접선현각으로 BCD의 두 각을 같게 만든 뒤 이등변 조건과30도 직각삼각형의 변비로 AD를 정한다."
+    "decisiveStep": "지름의 원주각과 접선현각으로 BCD의 두 각을 같게 만든 뒤 이등변 조건과30도 직각삼각형의 변비로 AD를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -418,7 +439,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "C를 지나는 지름을 보조선으로 만들고 같은 호의 원주각과 두 직각으로 AA닮음을 확보하여 비례식으로 지름을 복원한다.",
-    "decisiveStep": "C를 지나는 지름을 보조선으로 만들고 같은 호의 원주각과 두 직각으로 AA닮음을 확보하여 비례식으로 지름을 복원한다."
+    "decisiveStep": "C를 지나는 지름을 보조선으로 만들고 같은 호의 원주각과 두 직각으로 AA닮음을 확보하여 비례식으로 지름을 복원한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -938,7 +962,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "호의 비를 세 중심각으로 배분하고 중심과 꼭짓점을 이은 삼각형들의 높이·현을 특수각의 삼각비로 복원하여 세 넓이를 합한다.",
-    "decisiveStep": "호의 비를 세 중심각으로 배분하고 중심과 꼭짓점을 이은 삼각형들의 높이·현을 특수각의 삼각비로 복원하여 세 넓이를 합한다."
+    "decisiveStep": "호의 비를 세 중심각으로 배분하고 중심과 꼭짓점을 이은 삼각형들의 높이·현을 특수각의 삼각비로 복원하여 세 넓이를 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -972,7 +999,7 @@ window.questionBank = [
   ,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
     "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY"],
+    "crossConceptKeys": ["CC_CIRCLE_TANGENT_PROPERTY","CC_POLYGON_INTERIOR_ANGLE_SUM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
@@ -980,7 +1007,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "54도 원주각을108도 중심각으로 바꾸고 접점의 두 직각을 사각형 내각합에서 빼 두 접선의 끼인각을 구한다.",
-    "decisiveStep": "54도 원주각을108도 중심각으로 바꾸고 접점의 두 직각을 사각형 내각합에서 빼 두 접선의 끼인각을 구한다."
+    "decisiveStep": "54도 원주각을108도 중심각으로 바꾸고 접점의 두 직각을 사각형 내각합에서 빼 두 접선의 끼인각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,

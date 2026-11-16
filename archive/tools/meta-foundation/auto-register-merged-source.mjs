@@ -1,3 +1,4 @@
+import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 // Main-merge metadata registration. It applies declared metadata, never invents a semantic review.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -174,6 +175,7 @@ function preservedAuditReceipt({nativeSource,question,previous,current,identity,
 // pending cursor. Reuse its byte-bound native receipt, never the approval flags alone. Returning
 // ALREADY_REGISTERED also leaves the native metadata revision, runtime and RPM parent untouched.
 export function nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack=pt?.ownerPack}) {
+  if(originalSourceError.isSubject({questionUid:current?.questionUid||identity?.questionUid,source,ordinal}))return null;
   if(!nativeSource||!previous)return null;
   if(nativeAuthorityHoldState({root:nativeSource.root,current,identity,source,ordinal}))return null;
   const studentUnchanged=equal(pick(previous,STUDENT),pick(question,STUDENT));
@@ -325,6 +327,7 @@ export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
 export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource, canonicalParentRetry}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
   if (!identity || !current || identity.questionUid!==current.questionUid || identity.sourceArchiveFile!==source || current.sourceArchiveFile!==source || Number(identity.sourceOrdinal)!==ordinal || Number(current.sourceOrdinal)!==ordinal) return reject('UID_JOIN_MISMATCH');
+  if(originalSourceError.isSubject({questionUid:identity.questionUid,source,ordinal}))return reject(originalSourceError.REASON);
   const authorityHold=nativeAuthorityHoldState({root:nativeSource?.root,current,identity,source,ordinal});
   if(authorityHold)return reject(authorityHold.reason);
   if(canonicalParentRetry&&['FINAL_QA','REVIEW2','META_PIPELINE_AUDIT'].includes(current.metadataApprovalType))return reject('CANONICAL_PARENT_RETRY:NATIVE_AUTHORITY_NOT_SUPPORTED');

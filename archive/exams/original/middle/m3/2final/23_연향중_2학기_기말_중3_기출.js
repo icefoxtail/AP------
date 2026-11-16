@@ -86,7 +86,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "주어진 원주각이 큰 호를 본다는 것을 읽어 호를 두 배 한 뒤 전체360도에서 빼 작은 중심각을 정한다.",
-    "decisiveStep": "주어진 원주각이 큰 호를 본다는 것을 읽어 호를 두 배 한 뒤 전체360도에서 빼 작은 중심각을 정한다."
+    "decisiveStep": "주어진 원주각이 큰 호를 본다는 것을 읽어 호를 두 배 한 뒤 전체360도에서 빼 작은 중심각을 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -133,7 +136,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름을 보는 원주각을 직각으로 정하고 삼각형 내각 합에서 남은 각을 뺀다.",
-    "decisiveStep": "지름을 보는 원주각을 직각으로 정하고 삼각형 내각 합에서 남은 각을 뺀다."
+    "decisiveStep": "지름을 보는 원주각을 직각으로 정하고 삼각형 내각 합에서 남은 각을 뺀다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -227,7 +233,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접선과 평행 현의 엇각 및 접현각을 같은 x로 두어 삼각형 내각 합에서 x를 구한다.",
-    "decisiveStep": "접선과 평행 현의 엇각 및 접현각을 같은 x로 두어 삼각형 내각 합에서 x를 구한다."
+    "decisiveStep": "접선과 평행 현의 엇각 및 접현각을 같은 x로 두어 삼각형 내각 합에서 x를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -274,7 +283,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원둘레의 분수로 두 호의 각을 정하고 내부 교차현 각이 두 호의 합의 절반임을 적용한다.",
-    "decisiveStep": "원둘레의 분수로 두 호의 각을 정하고 내부 교차현 각이 두 호의 합의 절반임을 적용한다."
+    "decisiveStep": "원둘레의 분수로 두 호의 각을 정하고 내부 교차현 각이 두 호의 합의 절반임을 적용한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -321,7 +333,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "두 원주각이 보는 호의 합에 전체 원과 한 호가 겹쳐 포함됨을 알아내어 그 합을 반감한다.",
-    "decisiveStep": "두 원주각이 보는 호의 합에 전체 원과 한 호가 겹쳐 포함됨을 알아내어 그 합을 반감한다."
+    "decisiveStep": "두 원주각이 보는 호의 합에 전체 원과 한 호가 겹쳐 포함됨을 알아내어 그 합을 반감한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -368,7 +383,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "깨진 호의 점을 지나는 지름을 보조선으로 만들고 지름의 직각과 같은 호 원주각으로 닮음을 얻어 지름을 역산한다.",
-    "decisiveStep": "깨진 호의 점을 지나는 지름을 보조선으로 만들고 지름의 직각과 같은 호 원주각으로 닮음을 얻어 지름을 역산한다."
+    "decisiveStep": "깨진 호의 점을 지나는 지름을 보조선으로 만들고 지름의 직각과 같은 호 원주각으로 닮음을 얻어 지름을 역산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -908,7 +926,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "내접사각형 대각의 보각으로 한 각을 얻고 삼각형 내각 합을 거쳐 접현각으로 목표각을 옮긴다.",
-    "decisiveStep": "내접사각형 대각의 보각으로 한 각을 얻고 삼각형 내각 합을 거쳐 접현각으로 목표각을 옮긴다."
+    "decisiveStep": "내접사각형 대각의 보각으로 한 각을 얻고 삼각형 내각 합을 거쳐 접현각으로 목표각을 옮긴다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -950,7 +971,10 @@ window.questionBank=[
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "내부 교차현의 두 호 합과 외부 할선의 두 호 차를 연립하여 작은 호를 구하고 원주각으로 반감한다.",
-    "decisiveStep": "내부 교차현의 두 호 합과 외부 할선의 두 호 차를 연립하여 작은 호를 구하고 원주각으로 반감한다."
+    "decisiveStep": "내부 교차현의 두 호 합과 외부 할선의 두 호 차를 연립하여 작은 호를 구하고 원주각으로 반감한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,

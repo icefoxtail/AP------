@@ -46,7 +46,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다.",
-    "decisiveStep": "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다."
+    "decisiveStep": "중심과 현의 중점을 이으면 수직이므로 막대기 절반4와 반지름6으로 직각삼각형의 나머지 변 d를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -95,7 +98,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다.",
-    "decisiveStep": "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다."
+    "decisiveStep": "같은 현을 각각 이등분하여 AM=CN을 얻고 같은 반지름 OA=OC와 RHS 합동으로 거리를 증명한다. 결론 OM=ON의 선사용과 반지름·현 조각의 잘못된 대응을 구별한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -142,7 +148,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중심에서 두 현까지의 같은 거리를 AB=AC로 옮긴 뒤 이등변삼각형의 두 밑각과 내각합으로 목표각을 구한다.",
-    "decisiveStep": "중심에서 두 현까지의 같은 거리를 AB=AC로 옮긴 뒤 이등변삼각형의 두 밑각과 내각합으로 목표각을 구한다."
+    "decisiveStep": "중심에서 두 현까지의 같은 거리를 AB=AC로 옮긴 뒤 이등변삼각형의 두 밑각과 내각합으로 목표각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -189,7 +198,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다.",
-    "decisiveStep": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다."
+    "decisiveStep": "반지름10과 수선거리8로 현의 절반6을 얻고 AB=CD를 이용해 밑변12와 높이8을 다른 현의 삼각형으로 옮겨 넓이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -236,7 +248,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "세 꼭짓점에서 그은 두 접선의 길이가 같아 접선 조각9·7·12가 각각 두 번 나타나므로 그 합의 두 배로 둘레를 정한다.",
-    "decisiveStep": "세 꼭짓점에서 그은 두 접선의 길이가 같아 접선 조각9·7·12가 각각 두 번 나타나므로 그 합의 두 배로 둘레를 정한다."
+    "decisiveStep": "세 꼭짓점에서 그은 두 접선의 길이가 같아 접선 조각9·7·12가 각각 두 번 나타나므로 그 합의 두 배로 둘레를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -283,7 +298,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접선과 반지름의 수직·두 접선의 대칭으로30도 직각삼각형을 만들고 tan30으로 반지름을 얻는다. 접선 사이 각60으로 중심각120을 구해 부채꼴 넓이에 연결한다.",
-    "decisiveStep": "접선과 반지름의 수직·두 접선의 대칭으로30도 직각삼각형을 만들고 tan30으로 반지름을 얻는다. 접선 사이 각60으로 중심각120을 구해 부채꼴 넓이에 연결한다."
+    "decisiveStep": "접선과 반지름의 수직·두 접선의 대칭으로30도 직각삼각형을 만들고 tan30으로 반지름을 얻는다. 접선 사이 각60으로 중심각120을 구해 부채꼴 넓이에 연결한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -330,7 +348,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "큰 원 네 중심의 정사각형에서 중심까지의 반대각선 길이를 구하고, 큰 원과 작은 원이 외접하므로 그 거리를 두 반지름의 합1+r로 나타낸다.",
-    "decisiveStep": "큰 원 네 중심의 정사각형에서 중심까지의 반대각선 길이를 구하고, 큰 원과 작은 원이 외접하므로 그 거리를 두 반지름의 합1+r로 나타낸다."
+    "decisiveStep": "큰 원 네 중심의 정사각형에서 중심까지의 반대각선 길이를 구하고, 큰 원과 작은 원이 외접하므로 그 거리를 두 반지름의 합1+r로 나타낸다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -377,7 +398,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "주어진 원주각50의 호AD를100으로 바꾸고 지름의 반원180에서 빼 호DC를 구한 뒤 그 호의 원주각으로 되돌린다.",
-    "decisiveStep": "주어진 원주각50의 호AD를100으로 바꾸고 지름의 반원180에서 빼 호DC를 구한 뒤 그 호의 원주각으로 되돌린다."
+    "decisiveStep": "주어진 원주각50의 호AD를100으로 바꾸고 지름의 반원180에서 빼 호DC를 구한 뒤 그 호의 원주각으로 되돌린다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -472,7 +496,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다.",
-    "decisiveStep": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다."
+    "decisiveStep": "외부 두 할선의 각으로 두 호의 차를, 내부 두 현의 각으로 같은 두 호의 합을 얻어 연립한 뒤 목표 호의 절반을 원주각으로 읽는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -613,7 +640,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "내접사각형의 맞은각으로75를 얻고 삼각형 DBC의 내각합으로65를 구한 뒤 접선과 현BC의 각을 같은 호의 원주각과 대응한다.",
-    "decisiveStep": "내접사각형의 맞은각으로75를 얻고 삼각형 DBC의 내각합으로65를 구한 뒤 접선과 현BC의 각을 같은 호의 원주각과 대응한다."
+    "decisiveStep": "내접사각형의 맞은각으로75를 얻고 삼각형 DBC의 내각합으로65를 구한 뒤 접선과 현BC의 각을 같은 호의 원주각과 대응한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 14,
@@ -660,7 +690,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "두 원주각이 보는 서로 다른 호를 합하면 원 전체에 호BC가 한 번 중복됨을 읽어2(x+y)=360+60으로 목표 합을 직접 구성한다.",
-    "decisiveStep": "두 원주각이 보는 서로 다른 호를 합하면 원 전체에 호BC가 한 번 중복됨을 읽어2(x+y)=360+60으로 목표 합을 직접 구성한다."
+    "decisiveStep": "두 원주각이 보는 서로 다른 호를 합하면 원 전체에 호BC가 한 번 중복됨을 읽어2(x+y)=360+60으로 목표 합을 직접 구성한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 15,
@@ -707,7 +740,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중심을 지나는 할선에서 지름CB를 확인해 직각CTB를 만들고, 접선 방향의70을 삼각형 내각110으로 바꾼 뒤 접현각 대응과 내각합으로 외부각x를 구한다.",
-    "decisiveStep": "중심을 지나는 할선에서 지름CB를 확인해 직각CTB를 만들고, 접선 방향의70을 삼각형 내각110으로 바꾼 뒤 접현각 대응과 내각합으로 외부각x를 구한다."
+    "decisiveStep": "중심을 지나는 할선에서 지름CB를 확인해 직각CTB를 만들고, 접선 방향의70을 삼각형 내각110으로 바꾼 뒤 접현각 대응과 내각합으로 외부각x를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 16,
@@ -750,7 +786,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중심에서 현에 내린 수선으로 생긴 두 직각삼각형에 같은 반지름과 공통변을 대응시켜 RHS 합동을 확인하고 현의 두 조각이 같음을 설명한다.",
-    "decisiveStep": "중심에서 현에 내린 수선으로 생긴 두 직각삼각형에 같은 반지름과 공통변을 대응시켜 RHS 합동을 확인하고 현의 두 조각이 같음을 설명한다."
+    "decisiveStep": "중심에서 현에 내린 수선으로 생긴 두 직각삼각형에 같은 반지름과 공통변을 대응시켜 RHS 합동을 확인하고 현의 두 조각이 같음을 설명한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 17,
@@ -792,7 +831,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 현의 수직이등분선은 각각 원의 중심을 지나므로 그 교점을 중심으로 지정한다.",
-    "decisiveStep": "두 현의 수직이등분선은 각각 원의 중심을 지나므로 그 교점을 중심으로 지정한다."
+    "decisiveStep": "두 현의 수직이등분선은 각각 원의 중심을 지나므로 그 교점을 중심으로 지정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 18,
@@ -834,7 +876,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다.",
-    "decisiveStep": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다."
+    "decisiveStep": "그림의 현 반길이4와 활꼴 높이2를 이용해 중심거리x−2를 만든 뒤 직각삼각형의 피타고라스 식에서 제곱항을 소거하여 반지름을 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 19,
@@ -919,7 +964,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름AD와 현CD를 보조선으로 택해 접선·반지름의 직각과 반원의 원주각을 만들고 두 둔각을90도와 같은 호BD의 원주각의 합으로 나타내어 증명한다.",
-    "decisiveStep": "지름AD와 현CD를 보조선으로 택해 접선·반지름의 직각과 반원의 원주각을 만들고 두 둔각을90도와 같은 호BD의 원주각의 합으로 나타내어 증명한다."
+    "decisiveStep": "지름AD와 현CD를 보조선으로 택해 접선·반지름의 직각과 반원의 원주각을 만들고 두 둔각을90도와 같은 호BD의 원주각의 합으로 나타내어 증명한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 21,

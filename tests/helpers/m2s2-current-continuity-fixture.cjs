@@ -8,7 +8,7 @@ const source='original/middle/m2/2mid/current-continuity-fixture.js',sp='archive
 const dictPath='docs/architecture/4slot/term-dictionary-v1.5.json',dir='docs/operations/m2-current-fixture/';
 const zero=()=>Object.fromEntries(continuity.ZERO.map(k=>[k,0]));
 const inspection=()=>({stemRead:true,solutionRead:true,allFourSlotsRead:true,actualRendererRead:true});
-function fixture(t,{multiAssets=false,noPriorHeldAsset=false,repairReady=false,displayPng=null,displayClarificationSvg=null}={}) {
+function fixture(t,{multiAssets=false,noPriorHeldAsset=false,repairReady=false,displayPng=null,displayClarificationSvg=null,nativeAfterByOrdinal=null}={}) {
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'m2-current-continuity-'));
   t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
   const save=(p,v)=>{const f=path.join(root,p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,typeof v==='string'||Buffer.isBuffer(v)?v:JSON.stringify(v));};
@@ -33,6 +33,7 @@ function fixture(t,{multiAssets=false,noPriorHeldAsset=false,repairReady=false,d
   const nativePath=np+'four-slot.json',reviewPath=np+'review.json',acceptPath=np+'root-acceptance.json',samplePath=np+'independent-sample.json';
   const native={schemaVersion:'archive-meta-4slot-v0',sourceArchiveFile:source,sourceGitBlobSha:mod.blob(js(before)),dictionaryVersion:dict.dictionaryVersion,judgedBy:{agent:'original-author'},items:before.map((q,i)=>({sourceOrdinal:i+1,questionUid:uid(i+1),format:items[i].format,slots:{given:[{term:'fixture given'}],goal:[{term:'fixture goal'}],method:[{term:'fixture method'}],condition:[]}})),candidates:[],selfCheck:{}};
   const nativeReview={schemaVersion:'m2-s2-meta-review-v1',examId:'E999',owner:'original-author',sourceArchiveFile:source,sourceGitBlobSha:native.sourceGitBlobSha,items:before.map((_,i)=>({sourceOrdinal:i+1,questionUid:uid(i+1),...(repairReady&&i===2?{primaryMethod:'Existing synthetic method',decisiveStep:'Existing synthetic step'}:{})}))};
+  if(nativeAfterByOrdinal)for(const item of nativeReview.items)if(Object.hasOwn(nativeAfterByOrdinal,item.sourceOrdinal))item.after=structuredClone(nativeAfterByOrdinal[item.sourceOrdinal]);
   const sample={schemaVersion:'m2-s2-independent-sample-v1',examId:'E999',author:'original-author',reviewer:'original-independent',sourceGitBlobSha:native.sourceGitBlobSha};
   const identity={records:before.map((q,i)=>({questionUid:uid(i+1),sourceArchiveFile:source,sourceOrdinal:i+1,sourceQuestionNo:String(q.id),sourceFingerprint:mod.identityHash(q),status:'VERIFIED'}))};
   const svg='<svg xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="4" r="2"/></svg>';

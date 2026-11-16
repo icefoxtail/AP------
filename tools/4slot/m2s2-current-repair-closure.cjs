@@ -50,12 +50,14 @@ function evidenceDigests(root,d,{safe,sha}) {
   return out;
 }
 
-function validateFile(root,d,hp,replayHistorical) {
+function validateCore(root,d,hp,replayHistorical,historicalCommit=null,historicalReads=null) {
   const {safe,sha,blob,stable,payloadHash,assetRefs,loadBank,identity}=hp;
   const fail=s=>{throw Error('M2_CURRENT_REPAIR_'+s);};
   const same=(a,b)=>stable(a)===stable(b);
   const keys=(x,ks)=>{if(!x||typeof x!=='object'||Array.isArray(x)||!same(Object.keys(x).sort(),[...ks].sort()))fail('FIELDS');};
-  const rawLive=p=>{const f=safe(root,p);if(!fs.lstatSync(f).isFile()||fs.lstatSync(f).isSymbolicLink())fail('LIVE_REGULAR_FILE');return fs.readFileSync(f);};
+  // Historical replay reads the literal prior snapshot. Ordinary validation
+  // keeps its exact live source/evidence requirement; no external skip flag.
+  const rawLive=p=>{let raw;if(historicalCommit){raw=rawAt(historicalCommit,p);}else{const f=safe(root,p);if(!fs.lstatSync(f).isFile()||fs.lstatSync(f).isSymbolicLink())fail('LIVE_REGULAR_FILE');raw=fs.readFileSync(f);}if(historicalReads&&DOC.test(p))historicalReads.set(p,{commit:historicalCommit,path:p,gitBlobSha1:blob(raw),sha256:sha(raw)});return raw;};
   function rawAt(commit,p){
     if(!GIT.test(commit||''))fail('COMMIT');safe(root,p);
     const entry=git(root,'ls-tree','-z','--full-tree',commit,'--',p).toString();
@@ -81,6 +83,7 @@ function validateFile(root,d,hp,replayHistorical) {
     if(!UID.test(s.questionUid||'')||!Number.isSafeInteger(s.sourceOrdinal)||s.sourceOrdinal<1||!Number.isSafeInteger(s.ordinal)||s.ordinal<1||typeof s.sourceQuestionNo!=='string')fail('SELECTED');
     const replay=replayHistorical(root,p.historicalCompactRef,hp);
     if(replay.errors.length)fail('HISTORICAL_V1:'+replay.errors.join('|'));
+    if(historicalReads)for(const r of replay.requiredLiveEvidence||[])historicalReads.set(r.path,r);
     const historical=replay.document,legacyGroup=historical.evidence[OLD_GROUP];
     if(historical.sourceArchiveFile!==d.sourceArchiveFile||!same(d.evidence[OLD_GROUP],legacyGroup))fail('HISTORICAL_GROUP');
     // Original negative witnesses stay live and immutable. Historical source and
@@ -204,4 +207,21 @@ function validateFile(root,d,hp,replayHistorical) {
   }catch(error){return [String(error.message).startsWith('M2_CURRENT_')?error.message:'M2_CURRENT_REPAIR_EVIDENCE_UNAVAILABLE'];}
 }
 
-module.exports={GROUP,SCHEMA,SCOPE,OWNER_SCHEMA,OBSERVATION_SCHEMA,PROPOSAL_SCHEMA,ZERO,has,evidenceDigests,validateFile};
+function validateFile(root,d,hp,replayHistorical){return validateCore(root,d,hp,replayHistorical);}
+function validateHistoricalFile(root,reference,hp,replayHistorical){
+  try{
+    const {safe,sha,blob,stable}=hp;
+    if(!reference||stable(Object.keys(reference).sort())!==stable([...REF4].sort())||!GIT.test(reference.commit||'')||!SHA.test(reference.sha256||'')||!GIT.test(reference.gitBlobSha1||'')||!COMPACT.test(reference.path||''))throw Error('REFERENCE');
+    safe(root,reference.path);
+    const entry=git(root,'ls-tree','-z','--full-tree',reference.commit,'--',reference.path).toString();
+    const match=/^100644 blob ([a-f0-9]{40})\t([^\0]+)\0$/.exec(entry);
+    if(!match||match[2]!==reference.path||match[1]!==reference.gitBlobSha1)throw Error('MODE');
+    const raw=git(root,'show',reference.commit+':'+reference.path);
+    if(sha(raw)!==reference.sha256||blob(raw)!==reference.gitBlobSha1)throw Error('BYTES');
+    const document=JSON.parse(raw);
+    if(!has(document)||Object.hasOwn(document.evidence||{},'currentM2RepairMetadataContinuity')||Object.hasOwn(document.evidence||{},'currentM2DisplayRepairClosure'))throw Error('ORIGINAL_REPAIR_REQUIRED');
+    const reads=new Map(),errors=validateCore(root,document,hp,replayHistorical,reference.commit,reads);
+    return {errors,document,requiredLiveEvidence:[...reads.values()].sort((a,b)=>a.path.localeCompare(b.path,'en'))};
+  }catch{return {errors:['M2_CURRENT_REPAIR_HISTORICAL_INPUT_INVALID'],document:null,requiredLiveEvidence:[]};}
+}
+module.exports={GROUP,SCHEMA,SCOPE,OWNER_SCHEMA,OBSERVATION_SCHEMA,PROPOSAL_SCHEMA,ZERO,has,evidenceDigests,validateFile,validateHistoricalFile};

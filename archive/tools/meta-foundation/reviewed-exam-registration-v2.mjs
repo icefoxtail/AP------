@@ -1,3 +1,4 @@
+import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -2203,6 +2204,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   }
   for (const uid of targetUids) {
     const row = metadataByUid.get(uid);
+    originalSourceError.assertNotSubject({ questionUid: uid, source, ordinal: row?.sourceOrdinal });
     if (nativeAuthorityHoldState({ root, current: row, identity: ids.get(uid), source, ordinal: row?.sourceOrdinal }))
       fail("authority withdrawal requires a separate explicit resolution: " + uid);
   }

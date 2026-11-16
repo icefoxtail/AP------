@@ -42,6 +42,18 @@ const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.t
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/item-4slot-m2s2-repaired-issued-metadata.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-repaired-issued-metadata.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-repaired-issued-metadata-authority.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-repaired-issued-metadata-authority.test.cjs']
+  },
+  ...['^cold ', '^(?:warm |committed removal)'].map((pattern,index)=>({
+    label: `tests/item-4slot-m2s2-repaired-issued-metadata-history.test.cjs [${index+1}/2]`,
+    args: ['--test','--test-name-pattern',pattern,'tests/item-4slot-m2s2-repaired-issued-metadata-history.test.cjs']
+  })),
+  {
     label: 'tests/archive-issued-rpm-evidence-continuity.test.mjs',
     args: ['--test', 'tests/archive-issued-rpm-evidence-continuity.test.mjs']
   },
@@ -175,6 +187,10 @@ const requiredCommands = [
   {
     label: 'tests/archive-source-quality-holds.test.mjs',
     args: ['--test', 'tests/archive-source-quality-holds.test.mjs']
+  },
+  {
+    label: 'tests/archive-m2s1-original-source-error-hold.test.cjs',
+    args: ['--test', 'tests/archive-m2s1-original-source-error-hold.test.cjs']
   },
   {
     label: 'tests/archive-native-authority-correction.test.mjs',
