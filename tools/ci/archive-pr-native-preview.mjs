@@ -267,6 +267,15 @@ function attachGeometryPackVersionDependencies({ root, headSha, requests, cache 
   return requests;
 }
 
+// The main writer shares this exact dependency context with the PR selector.
+// Keep the cache private and bind both caller graphs to the checkout snapshot.
+export function attachNativeRegistryVersionDependencies({ root, headSha, requests }) {
+  if (!requests.some(r => r.registryDependency?.geometryPackProvider)) return requests;
+  if (!/^[a-f0-9]{40}$/.test(headSha || '') || git(root, 'rev-parse', 'HEAD').trim() !== headSha)
+    fail('REGISTRY_VERSION_CONTEXT');
+  return attachGeometryPackVersionDependencies({ root, headSha, requests, cache: new Map() });
+}
+
 function geometryPackVersionDependencies(requests) {
   const providers = [], consumers = [], dependencies = new Map();
   let fixedContext;
@@ -1138,6 +1147,158 @@ export function nativeOutputManifest(root, plans) {
   return sorted(plans.flatMap(p => p.plannedPaths)).map(file => fileRef(root, file));
 }
 
+// The existing family3 validator authenticates this request -> wrapper -> UI
+// chain and then reads the captured renderer files from the live checkout.
+// Recreate only those read-only inputs in the private initial-state shadow.
+// This stages bytes; it does not replace any Native, UI or approval validator.
+const SHADOW_UI_TECHNICAL = 'docs/operations/m2-problem21-continuity-20261116/student-ui-technical-v1.json';
+const SHADOW_UI_FAMILY = [
+  ['original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js', 24, 'qid_v1_3c72535bb4d43798192918e723d32bd646b2415bde8c5e8ad872b445496b7bfd', 7],
+  ['original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js', 24, 'qid_v1_76b2be613350f59166e128170c6f38b6150078c9ed44e727733d5de0bbf76942', 8],
+  ['original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js', 23, 'qid_v1_9a0686ad7215cc2afff66c158131fd343a64bd2111f30341df6b8383aaba1b7c', 6],
+];
+const shadowUiReadonlyPath = file => file === 'archive/engine.html'
+  || /^archive\/[A-Za-z0-9_-]+\.(?:js|css)$/.test(file)
+  || /^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(file)
+  || /^archive\/vendor\/(?:html2canvas|qrious|nanum-myeongjo|ap-enclosed-latin|mathjax|mathjax-tex-font)\/[A-Za-z0-9_./-]+\.(?:js|css|woff2|json)$/.test(file)
+  || file === 'archive/data/svg-accessibility-index.js'
+  || /^apmath\/(?:css\/student-navigation\.css|js\/student-navigation\.js)$/.test(file);
+
+export function hydrateFixedNativeServedInputs({ root, shadow, headSha, requests }) {
+  if (!/^[a-f0-9]{40}$/.test(headSha || '') || git(root, 'rev-parse', 'HEAD').trim() !== headSha
+      || path.resolve(root) === path.resolve(shadow)) fail('SHADOW_LIVE_HEAD');
+  const blobs = new Map(), staged = new Map(), checked = new Set();
+  const regularBlob = (commit, file) => {
+    if (!/^[a-f0-9]{40}$/.test(commit || '')) fail('SHADOW_LIVE_COMMIT');
+    safe(root, file);
+    const key = `${commit}:${file}`;
+    if (!blobs.has(key)) {
+      const entry = spawnSync('git', ['ls-tree', '-z', commit, '--', file], { cwd: root, encoding: 'utf8',
+        env: { ...process.env, GIT_NO_LAZY_FETCH: '1', GIT_OPTIONAL_LOCKS: '0' }, maxBuffer: 1024 * 1024 });
+      const match = !entry.error && entry.status === 0 && /^(100644|100755) blob ([a-f0-9]{40})\t([^\0]+)\0$/.exec(entry.stdout);
+      if (!match || match[3] !== file) fail(`SHADOW_LIVE_REGULAR_BLOB:${file}`);
+      blobs.set(key, match[2]);
+    }
+    return blobs.get(key);
+  };
+  const pinned = (commit, ref) => {
+    if (!ref || !/^[a-f0-9]{64}$/.test(ref.sha256 || '')) fail('SHADOW_LIVE_REF');
+    const blobSha1 = regularBlob(commit, ref.path);
+    if (regularBlob(headSha, ref.path) !== blobSha1) fail(`SHADOW_LIVE_HEAD_DRIFT:${ref.path}`);
+    const raw = gitBytes(root, `${headSha}:${ref.path}`);
+    if (sha(raw) !== ref.sha256 || ref.gitBlobSha1 !== undefined && ref.gitBlobSha1 !== blobSha1
+        || ref.bytes !== undefined && ref.bytes !== raw.length || raw.length > 8 * 1024 * 1024)
+      fail(`SHADOW_LIVE_DIGEST:${ref.path}`);
+    const live = fileRef(root, ref.path);
+    if (live.sha256 !== ref.sha256 || live.sizeBytes !== raw.length) fail(`SHADOW_LIVE_WORKTREE_DRIFT:${ref.path}`);
+    return { raw, ref: { path: ref.path, gitBlobSha1: blobSha1, sha256: ref.sha256, bytes: raw.length } };
+  };
+  const fiveRef = ref => {
+    if (!objectKeys(ref, ['commit', 'path', 'gitBlobSha1', 'sha256', 'bytes'])
+        || !/^[a-f0-9]{40}$/.test(ref.commit || '') || !/^[a-f0-9]{40}$/.test(ref.gitBlobSha1 || '')
+        || !/^[a-f0-9]{64}$/.test(ref.sha256 || '') || !Number.isSafeInteger(ref.bytes) || ref.bytes < 1)
+      fail('SHADOW_LIVE_REF');
+    safe(root, ref.path);
+    return Object.fromEntries(['commit', 'path', 'gitBlobSha1', 'sha256', 'bytes'].map(key => [key, ref[key]]));
+  };
+  const add = ref => {
+    ref = fiveRef(ref);
+    if (!shadowUiReadonlyPath(ref.path)) fail(`SHADOW_LIVE_PATH:${ref.path}`);
+    const prior = staged.get(ref.path);
+    if (prior) {
+      if (!eq(prior.expected, ref)) fail(`SHADOW_LIVE_MIXED_REF:${ref.path}`);
+      return;
+    }
+    staged.set(ref.path, { ...pinned(ref.commit, ref), expected: ref });
+  };
+  for (const selected of requests) {
+    if (!flatInboxPath(selected.path)) fail('SHADOW_LIVE_REQUEST');
+    const raw = gitBytes(root, `${headSha}:${selected.path}`), request = parsed(raw.toString('utf8'));
+    const marked = (request.items || []).filter(item => Object.hasOwn(item.sourceReview || {}, 'm2Family3ProblemContinuity'));
+    if (!marked.length) continue;
+    if (sha(raw) !== selected.sha256 || raw.length !== selected.sizeBytes || request.requestId !== selected.requestId
+        || request.schemaVersion !== NATIVE_REQUEST_SCHEMA || request.scope !== 'PARTIAL_UIDS'
+        || request.approval?.type !== 'FINAL_QA' || request.approval.metadataReviewed !== true
+        || Object.hasOwn(request.approval, 'sourceRebind') || Object.hasOwn(request, 'registrationMode')
+        || !Array.isArray(request.registryChanges) || request.registryChanges.length || marked.length !== request.items.length
+        || selected.source.path !== `archive/exams/${request.sourceArchiveFile}`
+        || !eq([...selected.selectedItems].sort((a, b) => a.sourceOrdinal - b.sourceOrdinal),
+          marked.map(item => ({ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal })).sort((a, b) => a.sourceOrdinal - b.sourceOrdinal))
+        || marked.some(item => !SHADOW_UI_FAMILY.some(([source, count, uid, ordinal]) =>
+          request.sourceArchiveFile === source && request.expectedQuestionCount === count
+          && item.questionUid === uid && item.sourceOrdinal === ordinal))) fail('SHADOW_LIVE_REQUEST');
+    const bound = (item, ref) => {
+      const narrow = { path: ref.path, sha256: ref.sha256 };
+      if (![request.approval.evidenceRefs, item.evidenceRefs].every(refs => Array.isArray(refs)
+          && refs.filter(value => objectKeys(value, ['path', 'sha256'])
+            && value.path === narrow.path && value.sha256 === narrow.sha256).length === 1)
+          || !Array.isArray(selected.evidence) || selected.evidence.filter(value => value.path === ref.path
+            && value.sha256 === ref.sha256).length !== 1) fail('SHADOW_LIVE_UNBOUND_INVENTORY');
+    };
+    for (const item of marked) {
+      const spec = item.sourceReview.m2Family3ProblemContinuity;
+      if (!objectKeys(spec, ['schemaVersion', 'reviewCommit', 'reviewRef'])
+          || spec.schemaVersion !== 'archive-m2-family3-problem-continuity-v1'
+          || !objectKeys(spec.reviewRef, ['path', 'sha256'])
+          || !/^docs\/operations\/m2-family3-problem-continuity-20261116\/binding-e0(?:15|17)-v1\.json$/.test(spec.reviewRef.path || ''))
+        fail('SHADOW_LIVE_PROFILE');
+      bound(item, spec.reviewRef);
+      const wrapper = parsed(pinned(spec.reviewCommit, spec.reviewRef).raw.toString('utf8'));
+      if (wrapper.schemaVersion !== 'archive-m2-family3-problem-continuity-binding-v1'
+          || wrapper.scope !== 'EXACT_M2_E017_Q6_E015_Q7_Q8_PROBLEM_DISPLAY'
+          || wrapper.sourceArchiveFile !== request.sourceArchiveFile || !Array.isArray(wrapper.selectedQuestionUids)
+          || !eq([...wrapper.selectedQuestionUids].sort(), marked.map(row => row.questionUid).sort())) fail('SHADOW_LIVE_PROFILE');
+      const ref = fiveRef(wrapper.studentUiTechnicalRef);
+      if (ref.path !== SHADOW_UI_TECHNICAL) fail('SHADOW_LIVE_PROFILE');
+      bound(item, ref);
+      const technical = parsed(pinned(ref.commit, ref).raw.toString('utf8'));
+      if (checked.has(ref.sha256)) continue;
+      checked.add(ref.sha256);
+      if (technical.schemaVersion !== 'archive-m2-problem24-student-ui-preview-v1'
+          || technical.status !== 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING'
+          || !/^[a-f0-9]{40}$/.test(technical.checkoutCommit || '')
+          || !Array.isArray(technical.items) || technical.items.length !== 24
+          || !Array.isArray(technical.servedFiles) || technical.servedFiles.length !== 98
+          || new Set(technical.servedFiles.map(value => value.path)).size !== 98
+          || !Array.isArray(technical.studentFontResources) || technical.studentFontResources.length !== 40)
+        fail('SHADOW_LIVE_INVENTORY');
+      const dynamic = new Set([METADATA]);
+      for (const row of technical.items) {
+        if (typeof row.sourceRef?.path !== 'string' || !row.sourceRef.path.startsWith('archive/exams/original/middle/m2/'))
+          fail('SHADOW_LIVE_DYNAMIC_SCOPE');
+        safe(root, row.sourceRef.path); dynamic.add(row.sourceRef.path);
+      }
+      for (const served of technical.servedFiles) {
+        fiveRef(served);
+        if (served.commit !== technical.checkoutCommit) fail('SHADOW_LIVE_CAPTURE_COMMIT');
+        if (!dynamic.has(served.path)) add(served);
+      }
+      const fontIds = new Set();
+      for (const font of technical.studentFontResources) {
+        if (font.status !== 200 || font.commit !== technical.checkoutCommit || !/^[a-f0-9]{64}$/.test(font.resourceId || '')
+            || fontIds.has(font.resourceId) || !['STYLESHEET', 'FONT'].includes(font.kind)) fail('SHADOW_LIVE_FONT');
+        fontIds.add(font.resourceId);
+        const exact = Object.fromEntries(['commit', 'path', 'gitBlobSha1', 'sha256', 'bytes'].map(key => [key, font[key]]));
+        if (!technical.servedFiles.some(served => eq(fiveRef(served), exact))) fail('SHADOW_LIVE_FONT');
+        add(exact);
+      }
+    }
+  }
+  const result = [];
+  for (const [file, { raw, ref }] of [...staged].sort(([a], [b]) => a.localeCompare(b, 'en'))) {
+    const full = safe(shadow, file);
+    if (fs.existsSync(full)) {
+      const current = fileRef(shadow, file);
+      if (current.sha256 !== ref.sha256 || current.sizeBytes !== ref.bytes) fail(`SHADOW_LIVE_EXISTING_DRIFT:${file}`);
+    } else {
+      fs.mkdirSync(path.dirname(full), { recursive: true });
+      fs.writeFileSync(full, raw, { flag: 'wx', mode: 0o600 });
+    }
+    result.push({ ...ref, headSha });
+  }
+  return result;
+}
+
 // Re-derive the *initial* official plan from the immutable Git input. A replay
 // on the post-state returns plannedPaths:[] and cannot authenticate a new
 // allowlist. This shadow has independent bytes; verify-local never writes its
@@ -1172,6 +1333,7 @@ export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
       fs.mkdirSync(path.dirname(full), { recursive: true });
       fs.writeFileSync(full, gitBytes(root, `HEAD:${file}`));
     }
+    hydrateFixedNativeServedInputs({ root, shadow, headSha: git(root, 'rev-parse', 'HEAD').trim(), requests });
     const plans = applyNativeRequests({ root: shadow, requests, run, scriptRoot: root, guard: false });
     return { plans, outputs: nativeOutputManifest(shadow, plans) };
   } finally { fs.rmSync(shadow, { recursive: true, force: true }); }

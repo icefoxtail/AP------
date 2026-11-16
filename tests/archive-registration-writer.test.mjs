@@ -272,6 +272,62 @@ test('unexpected original writes, old receipt edits and sealed entry rewrites fa
   }
 });
 
+test('reviewed geometry compiler outputs stage with exact path boundaries and roll back on lane failure',async t=>{
+  const repoRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+  const outputPatterns=read(repoRoot,'tools/ci/archive-meta-register-commit.paths').split(/\r?\n/)
+    .map(s=>s.trim()).filter(s=>s&&!s.startsWith('#'));
+  const geometryRoot='archive/data/meta-foundation/evidence/geometry-equations/v1/';
+  const compilerOutputs=[geometryRoot+'global_integrity_audit.json',geometryRoot+'promotion_receipt.json'];
+  const setup=sub=>{
+    const f=fixture(sub),reviewed=f.lanes.find(l=>l.id==='reviewed');
+    reviewed.outputs=[...outputPatterns,...reviewed.outputs];
+    for(const rel of compilerOutputs)write(f.root,rel,{fixtureOnly:true,packVersion:'1.0.2'});
+    commit(f.root,'seed existing derived geometry compiler outputs');
+    const execute=async ctx=>{
+      await f.execute(ctx);
+      if(ctx.lane.id==='reviewed')for(const rel of compilerOutputs)
+        write(ctx.root,rel,{fixtureOnly:true,packVersion:'1.0.3'});
+    };
+    return {...f,execute};
+  };
+  await t.test('the existing compiler output pair is staged, fingerprinted and invalidated after drift',async sub=>{
+    const f=setup(sub),oldReceipt=read(f.root,reviewedReceipt),head=git(f.root,'rev-parse','HEAD');
+    const result=await prepareRegistration({...f.options,execute:f.execute});
+    assert.equal(result.status,'PREPARED');assert.equal(result.safeToPersist,true);
+    for(const rel of compilerOutputs){
+      assert.ok(result.changedPaths.includes(rel));
+      assert.equal(JSON.parse(git(f.root,'show',':'+rel)).packVersion,'1.0.3');
+    }
+    assert.equal(git(f.root,'rev-parse','HEAD'),head,'preparation does not persist a commit');
+    assert.equal(read(f.root,reviewedReceipt),oldReceipt,'old reviewed approval receipt stays immutable');
+    commit(f.root,'registered orchestration fixture');
+    assert.equal(checkRegistration(f.options).needed,false);
+    write(f.root,compilerOutputs[0],{fixtureOnly:true,packVersion:'changed-after-registration'});
+    commit(f.root,'derived output drift');
+    assert.equal(checkRegistration(f.options).lanes.find(l=>l.id==='reviewed').needed,true);
+  });
+  await t.test('a failed reviewed producer restores the prior pair and leaves no pair staged',async sub=>{
+    const f=setup(sub),before=compilerOutputs.map(rel=>read(f.root,rel));
+    const result=await prepareRegistration({...f.options,execute:async ctx=>{
+      await f.execute(ctx);if(ctx.lane.id==='reviewed')throw Error('FIXTURE_COMPILER_FAILURE');
+    }});
+    assert.equal(result.lanes.find(l=>l.id==='reviewed').status,'FAILED');
+    for(const [i,rel] of compilerOutputs.entries()){
+      assert.equal(read(f.root,rel),before[i]);assert.ok(!result.changedPaths.includes(rel));
+    }
+  });
+  for(const rel of [geometryRoot+'unrelated_evidence.json',
+    'archive/data/meta-foundation/evidence/high1/v1/promotion_receipt.json']){
+    await t.test('unlisted evidence remains rejected: '+rel,async sub=>{
+      const f=setup(sub);
+      await assert.rejects(prepareRegistration({...f.options,execute:async ctx=>{
+        await f.execute(ctx);if(ctx.lane.id==='reviewed')write(ctx.root,rel,{fixtureOnly:true});
+      }}),/UNEXPECTED_REVIEWED_PATHS/);
+      assert.equal(fs.existsSync(path.join(f.root,STATE)),false);
+    });
+  }
+});
+
 test('recovery check is read-only, detects output drift, and refuses a dirty snapshot',async t=>{
   const f=fixture(t);
   assert.equal(checkRegistration(f.options).publishable,false,'unregistered snapshot is not evidence');
