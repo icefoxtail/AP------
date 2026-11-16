@@ -415,3 +415,39 @@ test('UI checkout continuity retains live asset refusal after successful issuanc
   const f=fixture(t,splitOptions),out=f.run();assert.ok(selected(out));fs.appendFileSync(path.join(f.root,NEW_SOL),' ');const next=f.run(out);
   assert.equal(selected(next),undefined);assert.match(next.pending.find(r=>r.ordinal===1).reason,/LIVE_BYTES_CHANGED/);
 });
+
+function bareBrOptions(markup){return{content:true,current:bank=>{
+  bank[0].content=bank[0].content.replace('<div>',markup+'<div>');
+}};}
+for(const markup of ['<br>','<br/>','<br />','<br \t/>','<BR/>'])test('bare br reviewed image wrapper preserves original vector and caught-up replay: '+JSON.stringify(markup),t=>{
+  const f=fixture(t,bareBrOptions(markup)),beforeMd=fs.readFileSync(path.join(f.root,MD)),beforeId=fs.readFileSync(path.join(f.root,ID));
+  const carrier=path.join(f.root,route.DIR+'/'+uid(1)+'.json'),carrierRaw=fs.readFileSync(carrier);let sameCurrentWithoutCarrier;
+  fs.unlinkSync(carrier);try{sameCurrentWithoutCarrier=f.run();}finally{fs.writeFileSync(carrier,carrierRaw);}
+  assert.equal(selected(sameCurrentWithoutCarrier),undefined);
+  const out=f.run();assert.ok(selected(out));assert.deepEqual(vector(selected(out)),vector(selected(f.prior)));
+  assert.equal(builder.verify(out).verified,3);assert.deepEqual(f.run(out),out);
+  assert.deepEqual(out.records.filter(r=>r.questionUid!==uid(1)),sameCurrentWithoutCarrier.records.filter(r=>r.questionUid!==uid(1)));
+  assert.deepEqual(fs.readFileSync(path.join(f.root,MD)),beforeMd);assert.deepEqual(fs.readFileSync(path.join(f.root,ID)),beforeId);
+});
+for(const markup of [
+  '<br class="synthetic">','<br id="synthetic"/>','<br title="synthetic"/>',
+  '<br onclick="synthetic()">','<br onload="synthetic()"/>','<br style="height:1px">',
+  '<br data-synthetic/>','<br disabled>','<br / >','</br>','<br >',
+  '<hr>','<span></span>','<script></script>','<div>Synthetic added text</div>',
+  '<br>Synthetic added text','Synthetic prefix<br/>','<br>&nbsp;'
+])test('bare br extension refuses fully resealed attributes, other tags, or text: '+JSON.stringify(markup),t=>{
+  refuses(t,bareBrOptions(markup),/INLINE_NON_IMAGE_MARKUP/);
+});
+test('bare br wrapper cannot conceal another student field change',t=>refuses(t,{content:true,current:bank=>{
+  bank[0].content=bank[0].content.replace('<div>','<br><div>');bank[0].choices[0]+=' synthetic change';
+}},/UNREVIEWABLE_FIELD_CHANGE/));
+test('bare br wrapper still requires exact declared UTF8 span bytes',t=>refuses(t,{...bareBrOptions('<br>'),doc:d=>{
+  d.inlineEdits[0].afterSha256=sha('different synthetic span');
+}},/INLINE_EDIT_BINDING/));
+test('bare br wrapper cannot turn an independently held actual UI into acceptance',t=>refuses(t,{
+  ...bareBrOptions('<br/>'),visual:v=>{v.records[0].decision='HOLD';}
+},/EXISTING_VECTOR_UI_VISUAL_CASE_BINDING/));
+test('bare br wrapper missing carrier remains refused on the caught-up cursor',t=>{
+  const f=fixture(t,bareBrOptions('<br />')),out=f.run();assert.ok(selected(out));fs.unlinkSync(path.join(f.root,route.DIR+'/'+uid(1)+'.json'));
+  const next=f.run(out);assert.equal(selected(next),undefined);assert.match(next.pending.find(r=>r.ordinal===1).reason,/EXISTING_REGISTERED_VECTOR_CLAIM_MISSING_OR_MIXED/);
+});

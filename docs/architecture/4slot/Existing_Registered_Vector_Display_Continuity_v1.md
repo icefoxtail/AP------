@@ -103,3 +103,17 @@ font, and independent visual-review requirements still apply. The diagnostic
 frame hash records why this capture profile exists; it is not a visual
 acceptance or registration authority.
 
+## Attribute-free line break within an exact image edit
+
+An `IMAGE_MARKUP_ONLY` edit may also contain an attribute-free `<br>`, `<br/>`,
+or self-closing `br` with ASCII whitespace before `/`. Tag case is insensitive,
+as for the existing image-wrapper grammar. A closing `</br>`, attributes,
+event handlers, styles, unrelated tags, entities, and non-image text remain
+outside this grammar. This addition covers the already independently observed
+E009 Q17 image-wrapper insertion; it does not normalize or rewrite any source.
+
+The exact UTF-8 edit intervals and hashes, unchanged bytes outside the declared
+spans, original native and registered vector, full identity inventory, current
+metadata, complete assets, and actual independent UI evidence remain mandatory.
+The original image-transcription contract is unchanged.
+

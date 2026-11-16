@@ -205,7 +205,8 @@ function inlineEdits(edits,before,after,kind,priorProblemAssets,reader) {
       if(e.transcriptionAssetRef!==null)fail('INLINE_KIND_MIXED');
       // Only exact declared edit spans are inspected. No normalized question is
       // passed to an authority checker or used as a replacement source payload.
-      const markup=s=>/^(?:\s|<\/?(?:img|div)\b[^<>]*>)*$/iu.test(s);
+      // The reviewed E009 wrapper also contains an attribute-free line break.
+      const markup=s=>/^(?:\s|<\/?(?:img|div)\b[^<>]*>|<br(?:[ \t\r\n]*\/)?>)*$/iu.test(s);
       if(!markup(b.subarray(bs,be).toString('utf8'))||!markup(a.subarray(as,ae).toString('utf8')))fail('INLINE_NON_IMAGE_MARKUP');
     } else {
       if(!priorProblemAssets.some(r=>sameRef(r,e.transcriptionAssetRef)))fail('TRANSCRIPTION_ORIGINAL_ASSET');
