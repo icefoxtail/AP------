@@ -366,7 +366,9 @@ function passFixture(t, behaviors, { buildFailOnce = false } = {}) {
     for (const pattern of [staticImports, staticRequires]) for (const match of text.matchAll(pattern))
       copyModule(path.posix.join(path.posix.dirname(rel), match[1]));
   };
-  for (const rel of ['tools/ci/reviewed-meta-register-pass.sh', 'tools/ci/register-reviewed-meta-requests.mjs', 'tools/ci/archive-pr-native-preview.mjs', 'tools/ci/collect-reviewed-consumer-refusals.mjs', 'tools/ci/archive-meta-register-commit.paths', 'archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs',
+  // The pass runs build_db through the real wrapper (tools/ci/archive-registration-build-db.mjs). Without the cache
+  // variables it must fall through to the original `python archive/build_db.py` and keep its exit code.
+  for (const rel of ['tools/ci/reviewed-meta-register-pass.sh', 'tools/ci/archive-registration-build-db.mjs', 'tools/ci/register-reviewed-meta-requests.mjs', 'tools/ci/archive-pr-native-preview.mjs', 'tools/ci/collect-reviewed-consumer-refusals.mjs', 'tools/ci/archive-meta-register-commit.paths', 'archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs',
     'archive/tools/meta-foundation/native-authority-correction.mjs', 'archive/tools/meta-foundation/reviewed-runtime-summary.mjs'])
     put(rel, read(rel));
   copyModule('tools/ci/archive-pr-native-preview.mjs');
