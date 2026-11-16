@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "m2s2-public4-source-cc-currentc57-r3-20261116-e015",
+  "sourceArchiveFile": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+  "scope": "PARTIAL_UIDS",
+  "expectedQuestionCount": 24,
+  "expectedSourceBlobSha1": "f14aefb3ab99ed6df2badef820a0878e97c6f488",
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_ROOT_C8F1B0BFB4FA",
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/review.json",
+        "sha256": "1e0f586ce7f097f5838b82d751f9029030515a710ecc0974de2336e307a770c0"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m2s2-follow9-definition-finalization-20261115/finalized-disposition.json",
+        "sha256": "03dad491bc50c7f47d495370706107d6802f85806dbc324b5f802f4005612ed6"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m2s2-follow9-definition-finalization-20261115/root-independent-review.json",
+        "sha256": "7cc3a2e4fc451cc7f567e9883e70377787bcd3a85ad217217b9731cc66650503"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_944a8e2657646dc03aa3d569fe594e1bc8c08bdb9ec9009ba41f56427c5ecb17",
+      "sourceOrdinal": 10,
+      "before": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": null
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "crossConceptKeys": [
+          "CC_INTERIOR_RAY_CIRCLE_INTERSECTION_UNIQUENESS"
+        ]
+      },
+      "identityBefore": {
+        "sourceFingerprint": "6213909bfa042a6411a26f706c47aa5edc297cdf9ab6fad63bf8a0cc77a72d31"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "reviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E015/review.json",
+        "reviewRef": {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/review.json",
+          "sha256": "1e0f586ce7f097f5838b82d751f9029030515a710ecc0974de2336e307a770c0"
+        },
+        "proposalFinalization": {
+          "schemaVersion": "archive-native-proposal-finalization-v3",
+          "finalizationCommit": "e083e32e6c4ecf4808401275e6520064d4436c8e",
+          "finalizationRef": {
+            "path": ".archive-meta-register/evidence/m2s2-follow9-definition-finalization-20261115/finalized-disposition.json",
+            "sha256": "03dad491bc50c7f47d495370706107d6802f85806dbc324b5f802f4005612ed6"
+          },
+          "proposalSelections": [
+            {
+              "documentRef": {
+                "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/review.json",
+                "sha256": "1e0f586ce7f097f5838b82d751f9029030515a710ecc0974de2336e307a770c0"
+              },
+              "index": 1,
+              "proposalSha256": "b88099f79838947bb1fcce97c7980255a7dcb548c609b3cf62141709280102ba",
+              "questionUid": "qid_v1_944a8e2657646dc03aa3d569fe594e1bc8c08bdb9ec9009ba41f56427c5ecb17",
+              "sourceOrdinal": 10,
+              "proposalId": "C-E015-CC-RAY-CIRCLE"
+            }
+          ]
+        }
+      },
+      "reason": "Materialize only this original Native v3 CC append. Existing student fields and unselected questions remain unchanged.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/review.json",
+          "sha256": "1e0f586ce7f097f5838b82d751f9029030515a710ecc0974de2336e307a770c0"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-follow9-definition-finalization-20261115/finalized-disposition.json",
+          "sha256": "03dad491bc50c7f47d495370706107d6802f85806dbc324b5f802f4005612ed6"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-follow9-definition-finalization-20261115/root-independent-review.json",
+          "sha256": "7cc3a2e4fc451cc7f567e9883e70377787bcd3a85ad217217b9731cc66650503"
+        }
+      ]
+    }
+  ],
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "collection": "concepts",
+      "match": {
+        "conceptKey": "CC_INTERIOR_RAY_CIRCLE_INTERSECTION_UNIQUENESS"
+      },
+      "before": null,
+      "after": {
+        "conceptKey": "CC_INTERIOR_RAY_CIRCLE_INTERSECTION_UNIQUENESS",
+        "canonicalLabelKo": "원 내부점에서 시작한 반직선과 원의 교점 유일성",
+        "definition": "원의 내부점에서 시작하는 한 반직선은 원과 정확히 한 점에서 만난다. 따라서 그 반직선 위의 두 점이 모두 해당 원 위에 있으면 두 점은 일치한다.",
+        "ownerConceptShard": "PLANE_GEOMETRY",
+        "status": "ACTIVE",
+        "aliases": [],
+        "sourceUnits": [
+          "M2-05"
+        ],
+        "legacyKeys": [],
+        "taxonomyRefs": [
+          "PT_QUADRILATERAL_PROPERTIES"
+        ],
+        "curriculumRefs": [
+          "2015:중2 수학:M2-05"
+        ],
+        "supportingQuestionUids": [
+          "qid_v1_944a8e2657646dc03aa3d569fe594e1bc8c08bdb9ec9009ba41f56427c5ecb17"
+        ],
+        "supportingItemCount": 1,
+        "evidenceProvenance": [
+          {
+            "source": "M2S2_NATIVE_PROPOSAL_NARROW_FINALIZATION_20261115",
+            "questionUid": "qid_v1_944a8e2657646dc03aa3d569fe594e1bc8c08bdb9ec9009ba41f56427c5ecb17",
+            "nativeReviewRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/data/meta-review/m2-s2-20261114/exams/E015/review.json",
+              "sha256": "1e0f586ce7f097f5838b82d751f9029030515a710ecc0974de2336e307a770c0"
+            },
+            "sourceOrdinal": 10,
+            "newMathematicalQa": false
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m2s2-follow9-definition-finalization-20261115/finalized-disposition.json",
+          "sha256": "03dad491bc50c7f47d495370706107d6802f85806dbc324b5f802f4005612ed6"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m2s2-follow9-definition-finalization-20261115/root-independent-review.json",
+          "sha256": "7cc3a2e4fc451cc7f567e9883e70377787bcd3a85ad217217b9731cc66650503"
+        }
+      ]
+    }
+  ]
+}
