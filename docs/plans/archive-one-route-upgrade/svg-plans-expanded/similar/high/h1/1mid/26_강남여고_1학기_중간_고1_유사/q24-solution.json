@@ -1,0 +1,160 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "a²+b²=c²이므로 C가 직각이다. BC=a, CA=b, AB=c=17/2이며 해설에서 ab=30을 얻는다. 넓이의 최종 값은 쓰지 않는다.",
+  "accessibilityDescription": "a²+b²=c²이므로 C가 직각이다. BC=a, CA=b, AB=c=17/2이며 해설에서 ab=30을 얻는다. 넓이의 최종 값은 쓰지 않는다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "15",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "lab0",
+        "ownerSegment": "AB",
+        "text": "\\frac{17}{2}",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lab1",
+        "ownerSegment": "BC",
+        "text": "a",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lab2",
+        "ownerSegment": "CA",
+        "text": "b",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "rightC",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "value": 90,
+        "label": "90",
+        "style": "SECTOR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 520
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형4] 삼각형 $ABC$의 세 변의 길이 $a$, $b$, $c$가 다음 조건을 만족시킨다.<br>(가) $2c=17$, $a-b=\\dfrac72$<br>(나) $(a+b+c)(a+b-c)=2ab$<br>삼각형 $ABC$의 넓이를 구하는 풀이 과정과 답을 쓰시오. (6점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "relation",
+      "condition": "제곱합 관계가 직각을 뜻함을 시각화하여 a와b가 넓이 계산의 밑변·높이임을 확인한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "제곱합 관계가 직각을 뜻함을 시각화하여 a와b가 넓이 계산의 밑변·높이임을 확인한다."
+  ]
+}
