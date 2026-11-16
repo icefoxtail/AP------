@@ -8,6 +8,7 @@ const {buildLookup} = require('./validate-4slot.cjs');
 const {sourceNumber, sourceIdentityNumber} = require('./exam-items.cjs');
 const originalSourceError=require('./original-source-error-hold.cjs');
 const {verifyUi, DECISION} = require('./existing-registered-vector-ui.cjs');
+const {verifyOriginalTextSolutionFigure} = require('./existing-original-text-solution3.cjs');
 const DIR = '.archive-meta-register/4slot-existing-vector-continuity';
 const SCHEMA = 'archive-four-slot-existing-registered-vector-continuity-v1';
 const REVIEW_SCHEMA = 'archive-independent-existing-four-slot-display-review-v1';
@@ -355,14 +356,17 @@ function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loa
   let inlineKind='NONE',uiCases=0,uiTiles=0;
   for(const surface of surfaces) {
     const review=unique(doc.displayReviews,x=>x.surface===surface,'DISPLAY_SURFACE');
-    const continuedCheckout=own(review,'uiCheckoutContinuity');
-    exact(review,['surface','independentRef','technicalRef','visualRef',...(continuedCheckout?['uiCheckoutContinuity']:[])],'DISPLAY_REFS');
+    const continuedCheckout=own(review,'uiCheckoutContinuity'),originalTextFigure=own(review,'originalTextSolutionFigure');
+    exact(review,['surface','independentRef','technicalRef','visualRef',...(continuedCheckout?['uiCheckoutContinuity']:[]),
+      ...(originalTextFigure?['originalTextSolutionFigure']:[])],'DISPLAY_REFS');
     const keys=surface==='PROBLEM'?PROBLEM_ASSETS:SOLUTION_ASSETS;
     const oldPaths=new Set(sourceRefs(p.q,keys)),newPaths=new Set(sourceRefs(cur.q,keys));
     const surfaceRefs=(all,paths)=>{const map=new Map(all.map(r=>[r.path,r])),pending=[...paths],seen=new Set();while(pending.length){const p=pending.shift();if(seen.has(p))continue;seen.add(p);const r=map.get(p);if(!r)fail('SURFACE_ASSET');pending.push(...nestedAssets(reader.read(r),p));}return all.filter(r=>seen.has(r.path));};
     const priorAssets=surfaceRefs(doc.priorAssets,oldPaths),currentAssets=surfaceRefs(doc.currentAssets,newPaths);
-    if(!priorAssets.length||!currentAssets.length)fail('DISPLAY_ASSET_REQUIRED');
     const binding=displayBinding(doc,p.q,cur.q,changes,surface,priorAssets,currentAssets);
+    if(originalTextFigure)verifyOriginalTextSolutionFigure({claim:review.originalTextSolutionFigure,binding,
+      priorQuestion:p.q,currentQuestion:cur.q,nativeItemSha256:doc.nativeItemSha256});
+    else if(!priorAssets.length||!currentAssets.length)fail('DISPLAY_ASSET_REQUIRED');
     const row=validateReview(reader,review.independentRef,binding);
     if(surface==='PROBLEM')inlineKind=row.contentEditKind;
     else if(row.contentEditKind!=='NONE')fail('SOLUTION_CONTENT_EDIT');
@@ -370,7 +374,7 @@ function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loa
     const currentUi={sourceRef:doc.currentSourceRef,assetRefs:currentAssets};
     const capturedUi=continuedCheckout?verifyUiCheckoutContinuity(reader,review.uiCheckoutContinuity,
       {technical,questionUid:doc.questionUid,sourceOrdinal:doc.sourceOrdinal,surface,...currentUi}):currentUi;
-    const ui=verifyUi({technical,visual,technicalRef:review.technicalRef,readRef:ref=>reader.read(ref),
+    const ui=verifyUi({technical,visual,technicalRef:review.technicalRef,readRef:ref=>reader.read(ref),readLiveRef:ref=>reader.read(ref,true),
       questionUid:doc.questionUid,sourceOrdinal:doc.sourceOrdinal,surface,...capturedUi});
     uiCases+=ui.logicalCases;uiTiles+=ui.originalTiles;
   }

@@ -18,7 +18,9 @@ import { validateM2ProblemRendererContinuity } from "./reviewed-m2-problem-rende
 import { validateReviewedM2CcRendererContinuity } from "./reviewed-m2-cc-renderer-continuity.mjs";
 import { validateM2E017RhsContinuity } from "./reviewed-m2-e017-rhs-continuity.mjs";
 import { validateM2ProblemRenderer21Continuity } from "./reviewed-m2-problem21-continuity.mjs";
+import { validateM2Family3ProblemContinuity } from "./reviewed-m2-family3-problem-continuity.mjs";
 import { validateM2E023SolutionDisplayContinuity } from "./reviewed-m2-e023-solution-display-continuity.mjs";
+import { validateM3Q5CompleteGivenApplication, M3_Q5_COMPLETE_GIVEN_SCHEMA } from "./reviewed-m3-e052-q5-complete-given.mjs";
 import { bindReviewedM2NativeRpmCourse } from "./reviewed-m2-native-rpm-course.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
@@ -207,6 +209,22 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       kind !== "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA";
   })) fail("native review retains an explicit source/content/difficulty hold");
   const payload = studentPayload(question);
+  const q5CompleteGiven = validateM3Q5CompleteGivenApplication({ root, request, patch, native: loaded, row,
+    metadata, question, final, canonicalBefore, canonicalAfter, studentPayload, cache });
+  if (q5CompleteGiven) {
+    const inner = validateReviewedSourceReassessment({ root, request, patch: q5CompleteGiven.normalizedPatch,
+      metadata, question: q5CompleteGiven.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
+      issuedSourceReview, cache });
+    if (q5CompleteGiven.proof.schemaVersion !== M3_Q5_COMPLETE_GIVEN_SCHEMA ||
+        inner.proposalFinalization?.schemaVersion !== "archive-native-proposal-finalization-v2" ||
+        !inner.proposalFinalization.nativeProposalBindings?.length ||
+        inner.proposalFinalization.nativeProposalBindings.some(binding => binding.type !== "CC") ||
+        !inner.proposalFinalization.definitions?.length ||
+        inner.proposalFinalization.definitions.some(definition => definition.collection !== "concepts"))
+      fail("Q5 complete-given bridge requires the original complete Native and CC finalizer");
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)), q5CompleteGivenApplication: {
+      ...q5CompleteGiven.proof, replayedOriginalSourceReviewSha256: sha256(stable(inner)) } };
+  }
   const e017Rhs = validateM2E017RhsContinuity({ root, request, patch, native: loaded, row,
     question, studentPayload, bankFromBytes });
   if (e017Rhs) {
@@ -215,6 +233,17 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       issuedSourceReview, cache });
     return { ...inner, studentPayloadSha256: sha256(stable(payload)), e017RhsContinuity: {
       ...e017Rhs.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
+  }
+  const m2Family3 = validateM2Family3ProblemContinuity({ root, request, patch, native: loaded, row,
+    question, bankFromBytes, cache });
+  if (m2Family3) {
+    // Preserve the existing retained-fields/scope options. The ordinary Native
+    // recursion still checks every non-display value and the current parent.
+    const inner = validateReviewedSourceReassessment({ root, request, patch: m2Family3.normalizedPatch,
+      metadata, question: m2Family3.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
+      issuedSourceReview, cache });
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)), m2Family3ProblemContinuity: {
+      ...m2Family3.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
   }
   // Both witnesses read the same real source before either comparison view is
   // composed. Each owns a closed, disjoint set of display fields. The recursive
