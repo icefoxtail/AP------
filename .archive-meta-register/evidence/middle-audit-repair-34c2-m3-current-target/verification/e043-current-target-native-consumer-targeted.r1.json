@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "unit25-q11-full-native-consumer-targeted-check-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "reviewer": "GPT_ROOT_0A70543C4CE8",
+  "questionUid": "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+  "sourceOrdinal": 11,
+  "status": "PASS",
+  "cases": [
+    {
+      "name": "exact-current-typed-Q11-full-native-consumer",
+      "status": "PASS",
+      "actualReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-q11-target34c2-r1-20261116.json"
+    },
+    {
+      "name": "unreviewed-previous-payload-is-rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "unsupported-typed-current-application-is-rejected",
+      "status": "PASS",
+      "reason": "native reviewed renderer reuse: renderer binding differs from the exact native receipt"
+    },
+    {
+      "name": "missing-typed-source-binding-provenance-is-rejected",
+      "status": "PASS"
+    }
+  ],
+  "sourceReceiptAndSelectedRowsUnchanged": true,
+  "selectedReadSet": {
+    "sourceRawSha256": "4cbc1c0e817966fd40a1e87b13c1c66f890b67757282ddbb9953f9588d9e4247",
+    "receiptRawSha256": "082b89a8abf51271964279a9c84f1fd76e85257eb80f663e3405299ba45d63f1",
+    "metadataRow": "90b9d910f33ab023ae178264bd9256e1c31ab2e814bf92a7688345b38361b02b",
+    "identityRow": "25d1b491e1a3a986000784c7e6616f2eac700b55d9fc0bb1aa2424c9ec0fa78d",
+    "runtimeRow": "21d49682d1a3f5b3b14388aae1d19401942e2e55787acf45c88bacfe3562a7e7"
+  },
+  "candidateCode": {
+    "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+    "sha256": "bc70d6a59522e8529377823fdcebc46a02171511ad2fd961c7923d7f2fc15b75"
+  },
+  "receiptRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-q11-target34c2-r1-20261116.json",
+    "sha256": "082b89a8abf51271964279a9c84f1fd76e85257eb80f663e3405299ba45d63f1"
+  },
+  "newMeaningApprovals": 0,
+  "registrarInvocations": 0,
+  "passingCohortReruns": 0,
+  "oldFocusedTestReruns": 0,
+  "productionWrites": 0,
+  "actualRemoteWriter": "NOT_RUN_FOR_CURRENT_APPLICATION"
+}
