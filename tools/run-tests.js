@@ -96,6 +96,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-native-issued-rpm-history.test.mjs']
   },
   {
+    label: 'tests/archive-reviewed-m2-cc-renderer.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-m2-cc-renderer.test.mjs']
+  },
+  {
     label: 'tests/archive-reviewed-native-scope-fields.test.mjs',
     args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
   },
@@ -119,6 +123,10 @@ const requiredCommands = [
   {
     label: 'tests/item-4slot-public-reviewed-rebind.test.cjs',
     args: ['--test', 'tests/item-4slot-public-reviewed-rebind.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-existing-renderer-v2.test.cjs',
+    args: ['--test', 'tests/item-4slot-existing-renderer-v2.test.cjs']
   },
   {
     label: 'tests/item-4slot-m3-renderer-hold.test.cjs',

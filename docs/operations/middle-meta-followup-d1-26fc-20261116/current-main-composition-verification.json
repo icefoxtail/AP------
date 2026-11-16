@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "middle-d1d2-c858-composition-verification-v1",
+  "status": "LOCAL_READY_FOR_ROOT_INTEGRATION",
+  "currentMain": "c8582e3f664476fe2bcc537f882c608ea9470327",
+  "files": 47,
+  "changedCandidateFiles": 1,
+  "unchangedCandidateFiles": 46,
+  "changedPath": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+  "expectedBeforeGitBlobSha1": "2756a9da7244cedb34b40b78f225ffa13a39b0c4",
+  "candidateGitBlobSha1": "ac3d0520ea5b0c5a6b20168a6338719fc0700100",
+  "candidateSha256": "58d183bb7b5a49622b1f39291fa5e5809eff859b68b8149bc731ebfccbedf05a",
+  "composition": {
+    "conflictCount": 1,
+    "resolution": "Union of the existing prerequisite-application import and original M2 CC-renderer import only. All remaining hunks merged without manual logic changes.",
+    "removeOriginalDDeltaReconstructsCurrentExactly": true,
+    "removeCurrentDeltaReconstructsPriorDExactly": true,
+    "strictDeltaProofSha256": "f08a2b0c4c9737b53d134062d80ad6c68dda8ef0b4bbea0b21ff566e302d45ec",
+    "currentToCandidatePatchSha256": "44007c6fe488cdb519ea227d030053216a4fe2c54fafe5b47bc82c63e5dd2764",
+    "priorDToCandidatePatchSha256": "b18a7dd2ccf2d34336d7342023dc2451960e554643d7a79ca969f960d1025629"
+  },
+  "validation": {
+    "newCurrentScope": {
+      "tests": 22,
+      "passed": 22,
+      "failed": 0,
+      "logSha256": "5788167434c49c49d11134b64bcafdd3fd00ce3e0375b02c22d51c190db4a74f",
+      "resultSha256": "939db138cf0d978a54ad0d766ee8e8ca237ffe24ba34445635502d1ca30c6aeb"
+    },
+    "reusedPriorScope": {
+      "tests": 88,
+      "reexecuted": false,
+      "resultSha256": "d2b61215b5c7b0ee444c291a0c7c1ac877a212a0ce2a4493bfea3fa06b7b4d05"
+    },
+    "codeInputManifestSha256": "f8a4554cbd1c79a40838078fb211ce8c58ad371bf4e36c85f0c11b358c85ee0e"
+  },
+  "preserved": {
+    "currentPrerequisiteApplicationStrictGuards": true,
+    "originalDRendererAndCcFinalizationGuards": true,
+    "currentM2S1DefinitionGuards": true,
+    "currentRationaleAndRetainedScopeGuards": true,
+    "cPrefixThreeFilesExactPriorBytes": true,
+    "sourceRequestApprovalRegistryBytesChanged": 0
+  },
+  "separateWork": {
+    "q17HistoryCode": "NOT_INCLUDED_ROOT_COMPOSITION_REQUIRED",
+    "q7HistoryDiagnosis": "OUT_OF_SCOPE",
+    "activeSixRetryRequests": "EXCLUDED_UNTIL_FINAL_DEFINITIONS_REGISTERED"
+  },
+  "actualRegistration": "NOT_RUN",
+  "actualConsumer": "NOT_RUN",
+  "actualPages": "NOT_RUN",
+  "newMathApproval": 0,
+  "remoteWrites": 0,
+  "sharedFilesChanged": 0
+}

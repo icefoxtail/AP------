@@ -779,3 +779,49 @@ receipt; all protected metadata values, type HOLD and runtime values remain
 unchanged. It reports one preserved BASIC approval and zero new metadata,
 difficulty, mathematical, REVIEW2 or four-slot approvals. Full parent/catalog
 closure and consumed typed Consumer validation remain required before release.
+
+## Immutable M2 CC finalization with a separately reviewed current renderer
+
+A `PARTIAL_UIDS` / `FINAL_QA` source reassessment may explicitly carry
+`sourceReview.m2CcRendererProof` with schema
+`archive-reviewed-m2-cc-renderer-continuity-v1`. This is a separate, bounded M2
+S2 CC contract. The ordinary native reassessment and the M3 renderer contract
+remain unchanged; their prohibition on combining unrelated finalizations and
+renderer reviews remains in force. Registration modes, source-only preservation,
+M3 renderer proofs, template/condition finalization and newly proposed values
+cannot be combined through this M2 bridge.
+
+The SHA-bound immutable composition document names the original accepted request
+and source, the native review, the exact current Git source and a separate
+independent renderer review. The original request's selected UID/ordinal inventory,
+semantic after values, registry change, definition and support remain exact. The
+original proposal finalizer runs unchanged against the original accepted source
+question and old assets. Its original source snapshot, application, definition,
+primary-image witness and ADD_ONLY checks must all pass. The old image is never
+represented as the new image.
+
+A second gate binds the independent review to both complete question hashes and
+complete old/current asset inventories. The current question must equal the
+reviewed current Git question with only the original accepted `crossConceptKeys`,
+`curriculumKey` and `courseKey` transported. All other non-renderer fields, including
+stem, choices, answer and solution text, remain equal. Only the explicitly reviewed
+`image`, `imageAlt`, `imageSize`, `layoutTag`, `solutionImage`, `solutionImageAlt` and
+`solutionImageCaption` differences are supported. Local and immutable asset hashes,
+regular-file/path safety and self-contained SVG dependencies remain mandatory.
+The bridge issues no new mathematical, difficulty or definition judgment.
+
+The existing source-review sidecar stores the complete typed request. Registrar
+replay and native reuse re-run both gates and compare the complete reproduced
+proof with the issued proof. Removing or changing the bridge cannot fall back to
+an ordinary review of the old payload. AutoMeta may accept a changed pending
+cursor only after that production verification returns true and the dedicated M2
+cursor gate confirms the exact original or current student payload and original
+finalization digest. A general source-review success is not a student-change
+exception. Same-path asset drift, arbitrary earlier cursors, changed answers,
+missing evidence and altered approvals remain failures.
+
+All local old/current assets and composition/independent witnesses must be explicit
+SHA-bound request evidence. Original source/request/native/finalization commits
+must be reachable in the release history for fixed Git validation. An official
+scoped registrar, native reuse, Consumer and replay result is required separately
+from an independent renderer PASS.
