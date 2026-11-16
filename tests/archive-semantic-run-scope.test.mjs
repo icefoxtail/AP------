@@ -6,7 +6,9 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {SEMANTIC_RUN_SCOPE_DIR,SEMANTIC_RUN_SCOPE_SCHEMA,M3S1_SOURCE_PREFIXES,resolveSemanticRunScope,
-  semanticRunScopeProof,captureExcludedSemanticRows,assertExcludedSemanticRowsUnchanged} from '../archive/tools/meta-foundation/semantic-run-scope.mjs';
+  semanticRunScopeProof,captureExcludedSemanticRows,assertExcludedSemanticRowsUnchanged,
+  captureExcludedSemanticRowsAtHead,beginSemanticRunScopeGuard,finishSemanticRunScopeGuard,verifySemanticRunScopeGuardProof,
+  executeFourSlotScopeCheck,recordFourSlotScopeCheck} from '../archive/tools/meta-foundation/semantic-run-scope.mjs';
 
 const sha=value=>crypto.createHash('sha256').update(value).digest('hex');
 const descriptor=SEMANTIC_RUN_SCOPE_DIR+'fixture-phase1.json';
@@ -98,4 +100,100 @@ for(const [name,mutate]of [
 ])test('excluded guard rejects '+name,t=>{
   const f=fixture(t),scope=resolveSemanticRunScope(f.root),before=captureExcludedSemanticRows(f.root,scope);
   mutate(f);assert.throws(()=>assertExcludedSemanticRowsUnchanged(f.root,scope,before),/EXCLUDED_ROW_MUTATION/);
+});
+
+// Producer-orchestration fixtures only. The real full builder/check/replay and
+// Consumer remain the fixed shell command's responsibility in integration CI.
+function rekeyFixture(t){
+  const f=fixture(t),index=f.read(four);
+  Object.assign(index,{schemaVersion:'archive-item-4slot-runtime-v1',builderSha256:'a'.repeat(64),inputDigest:'b'.repeat(64),
+    counts:{files:1,items:2,registered:1,pending:1}});
+  index.files[0].path='archive/data/item-4slot/'+source.replace(/\.js$/,'.4slot.json');index.files[0].inputHash='c'.repeat(64);
+  f.put(four,index);f.commit();
+  const scope=resolveSemanticRunScope(f.root),before=captureExcludedSemanticRows(f.root,scope);
+  const next=structuredClone(index);next.builderSha256='d'.repeat(64);next.inputDigest='e'.repeat(64);next.files[0].inputHash='f'.repeat(64);
+  const work=path.join(f.root,'transient','archive-four-slot');
+  const reports=()=>{
+    const current=f.read(four),digest=sha(fs.readFileSync(path.join(f.root,four)));
+    for(const [i,name]of ['report.json','verify.json','replay.json'].entries()){
+      f.put(path.relative(f.root,path.join(work,name)),{schemaVersion:current.schemaVersion,status:current.pending.length?'PASS_WITH_SUPPLEMENTS':'PASS',
+        verified:current.records.length,pending:current.pending.length,indexSha256:digest,sourceMutation:0,semanticApprovalMutation:0,
+        counts:current.counts,inputDigest:current.inputDigest,output:four,write:i===0,changed:i===0});
+    }
+  };
+  const lane={id:'fourSlot',commands:[{program:'bash',args:['tools/ci/archive-four-slot-pass.sh']}]};
+  const checked=async({index=next,editReports,execute,customLane}={})=>{
+    f.put(four,index);
+    return executeFourSlotScopeCheck({root:f.root,scope,lane:customLane||lane,env:{RUNNER_TEMP:path.dirname(work)},execute:async env=>{
+      reports();if(editReports)editReports();
+      if(execute)return execute(env);
+      recordFourSlotScopeCheck(f.root,work,env.ARCHIVE_FOUR_SLOT_CHECK_NONCE);return {fixture:'success'};
+    }});
+  };
+  return {...f,index,next,scope,before,work,reports,lane,checked};
+}
+
+test('fresh full-pass capability permits only a changed-builder cache rekey, with exact/semantic results separated',async t=>{
+  const f=rekeyFixture(t),pass=await f.checked();
+  const result=assertExcludedSemanticRowsUnchanged(f.root,f.scope,f.before,pass);
+  assert.equal(result.semanticUnchanged,true);assert.equal(result.exactRowsUnchanged,false);assert.equal(result.unchanged,false);
+  assert.equal(result.cacheRekey.changedFileCount,1);assert.deepEqual(result.cacheRekey.paths,[f.index.files[0].path]);
+  assert.equal(result.cacheRekey.checkedIndexSha256,sha(fs.readFileSync(path.join(f.root,four))));
+  assert.notEqual(result.beforeDigest,result.afterDigest);
+});
+
+test('request booleans, serialized capabilities and an absent producer do not authorize rekeying',async t=>{
+  const f=rekeyFixture(t);f.put(four,f.next);
+  assert.throws(()=>assertExcludedSemanticRowsUnchanged(f.root,f.scope,f.before),/EXCLUDED_ROW_MUTATION/);
+  assert.throws(()=>assertExcludedSemanticRowsUnchanged(f.root,f.scope,f.before,{checkedFourSlotPass:{verified:true,indexSha256:sha(fs.readFileSync(path.join(f.root,four)))}}),/CHECK_INDEX_DRIFT/);
+  const pass=await f.checked();
+  assert.throws(()=>assertExcludedSemanticRowsUnchanged(f.root,f.scope,f.before,JSON.parse(JSON.stringify(pass))),/CHECK_INDEX_DRIFT/);
+});
+
+for(const [name,mutate,error]of [
+  ['same builder inputHash tamper',d=>{d.builderSha256='a'.repeat(64);},/BUILDER_UNCHANGED/],
+  ['missing inputHash',d=>{delete d.files[0].inputHash;},/REKEY_FILE_INVALID/],
+  ['malformed inputHash',d=>{d.files[0].inputHash='not-a-hash';},/REKEY_FILE_INVALID/],
+  ['file status',d=>{d.files[0].status='PENDING';},/EXCLUDED_ROW_MUTATION/],
+  ['file new field',d=>{d.files[0].extra=true;},/EXCLUDED_ROW_MUTATION/],
+  ['file source binding',d=>{d.files[0].sourceGitBlobSha='1'.repeat(40);},/EXCLUDED_ROW_MUTATION/],
+  ['record classification',d=>{d.records[0].method=[999];},/EXCLUDED_ROW_MUTATION/],
+  ['pending reason',d=>{d.pending[0].reason='different';},/EXCLUDED_ROW_MUTATION/],
+])test('even a fresh checked pass rejects excluded '+name,async t=>{
+  const f=rekeyFixture(t);mutate(f.next);const pass=await f.checked();
+  assert.throws(()=>assertExcludedSemanticRowsUnchanged(f.root,f.scope,f.before,pass),error);
+});
+
+for(const file of [meta,identity,runtime])test('cache rekey does not excuse another protected table: '+file,async t=>{
+  const f=rekeyFixture(t),pass=await f.checked(),d=f.read(file);d.records[0].value='changed';f.put(file,d);
+  assert.throws(()=>assertExcludedSemanticRowsUnchanged(f.root,f.scope,f.before,pass),/EXCLUDED_ROW_MUTATION/);
+});
+
+test('the checked index bytes must still be identical at the final persist guard',async t=>{
+  const f=rekeyFixture(t),pass=await f.checked();fs.appendFileSync(path.join(f.root,four),' ');
+  assert.throws(()=>assertExcludedSemanticRowsUnchanged(f.root,f.scope,f.before,pass),/CHECK_INDEX_DRIFT/);
+});
+
+test('failed, missing, stale and differently configured producer executions mint no capability',async t=>{
+  const f=rekeyFixture(t);
+  await assert.rejects(f.checked({execute:env=>{recordFourSlotScopeCheck(f.root,f.work,env.ARCHIVE_FOUR_SLOT_CHECK_NONCE);throw Error('lane failed after reports');}}),/lane failed/);
+  await assert.rejects(f.checked({execute:()=>({verified:true})}),/ENOENT/);
+  await assert.rejects(f.checked({execute:()=>{recordFourSlotScopeCheck(f.root,f.work,'0'.repeat(64));return {};}}),/CHECK_BINDING_DRIFT/);
+  await assert.rejects(f.checked({editReports:()=>{const p=path.relative(f.root,path.join(f.work,'verify.json')),d=f.read(p);d.changed=true;f.put(p,d);}}),/CHECK_NOT_COMPLETE/);
+  const different=await f.checked({customLane:{id:'fourSlot',commands:[]},execute:()=>({verified:true})});
+  assert.equal(different.checkedFourSlotPass,undefined);
+  assert.throws(()=>assertExcludedSemanticRowsUnchanged(f.root,f.scope,f.before,different),/EXCLUDED_ROW_MUTATION/);
+});
+
+test('read-only local proof validation re-reads immutable excluded rows and rejects a forged summary',t=>{
+  const f=fixture(t),scope=resolveSemanticRunScope(f.root),handle=beginSemanticRunScopeGuard(f.root);
+  assert.deepEqual(captureExcludedSemanticRowsAtHead(f.root,scope),captureExcludedSemanticRows(f.root,scope));
+  const proof=finishSemanticRunScopeGuard(f.root,handle);
+  assert.deepEqual(verifySemanticRunScopeGuardProof(f.root,proof),proof);
+  assert.throws(()=>finishSemanticRunScopeGuard(f.root,JSON.parse(JSON.stringify(handle))),/PRIVATE_GUARD_REQUIRED/);
+  assert.throws(()=>verifySemanticRunScopeGuardProof(f.root,undefined),/GUARD_PROOF_DRIFT/);
+  const d=f.read(meta);d.records[0].value='tampered after proof';f.put(meta,d);
+  const forged={binding:semanticRunScopeProof(scope),excludedRows:{active:true,semanticUnchanged:true,exactRowsUnchanged:true}};
+  assert.throws(()=>verifySemanticRunScopeGuardProof(f.root,forged),/EXCLUDED_ROW_MUTATION/);
+  assert.throws(()=>finishSemanticRunScopeGuard(f.root,handle),/EXCLUDED_ROW_MUTATION/);
 });

@@ -7,7 +7,8 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { preparePrRegistration } from './archive-pr-registration-prepare.mjs';
+import { preparePrRegistration, completePrRegistrationSemanticScope } from './archive-pr-registration-prepare.mjs';
+import { verifySemanticRunScopeGuardProof } from '../../archive/tools/meta-foundation/semantic-run-scope.mjs';
 import { loadPatterns } from './push-touches-paths.mjs';
 import { NATIVE_PREVIEW_HELPER, selectNativeRequests, emptyNativePreview, verifyNativeRequests,
   nativeOutputManifest, validateNativePreview } from './archive-pr-native-preview.mjs';
@@ -218,7 +219,8 @@ function keys(object, expected) {
 }
 
 function validateProof(proof, context, fingerprints) {
-  keys(proof, ['schemaVersion', 'scope', 'status', 'context', 'producer', 'inputs', 'preparation', 'checks', 'outputs', 'nativePreview']);
+  keys(proof, ['schemaVersion', 'scope', 'status', 'context', 'producer', 'inputs', 'preparation', 'checks', 'outputs', 'nativePreview',
+    ...(Object.hasOwn(proof || {}, 'semanticRunScope') ? ['semanticRunScope'] : [])]);
   if (proof.schemaVersion !== PROOF_SCHEMA || proof.scope !== 'registration-data-only' || proof.status !== 'PASS') throw Error('REGISTRATION_PROOF_NOT_PASS');
   keys(proof.context, Object.keys(context));
   if (Object.entries(context).some(([key, value]) => proof.context[key] !== value)) throw Error('REGISTRATION_PROOF_CONTEXT_MISMATCH');
@@ -274,9 +276,10 @@ export function producePrRegistrationProof({ root = process.cwd(), event, expect
   const generated = guardSnapshot(root, expectedSha, true, nativePaths);
   checks.push({ id: 'derived-scope', outcome: 'success' });
   if (JSON.stringify(outputInventory(root, nativePaths)) !== JSON.stringify(outputs)) throw Error('REGISTRATION_VALIDATOR_CHANGED_OUTPUT');
+  const semanticRunScope = completePrRegistrationSemanticScope(root, prepared);
   const proof = { schemaVersion: PROOF_SCHEMA, scope: 'registration-data-only', status: 'PASS', context,
     producer: { workflowPath: CI_WORKFLOW_PATH, jobName: 'test', runId, runAttempt }, inputs,
-    preparation: { state: prepared.state, generatedPathCount: generated.length, catalogStabilized }, checks, outputs, nativePreview };
+    preparation: { state: prepared.state, generatedPathCount: generated.length, catalogStabilized }, checks, outputs, nativePreview, semanticRunScope };
   validateProof(proof, context, registrationProofFingerprints(root, selectNativeRequests({ root, baseSha: context.baseSha, headSha: context.checkoutSha })));
   return proof;
 }
@@ -295,8 +298,9 @@ export function validateLocalRegistrationProof({ root = process.cwd(), event, ex
       || (runAttempt !== undefined && proof.producer.runAttempt !== runAttempt)) throw Error('REGISTRATION_PROOF_RUN_MISMATCH');
   if (proof.preparation.state !== 'PREPARED') throw Error('REGISTRATION_CATALOG_NOT_PREPARED');
   if (JSON.stringify(outputInventory(root, nativePaths)) !== JSON.stringify(proof.outputs)) throw Error('REGISTRATION_PROOF_OUTPUT_MISMATCH');
+  const semanticRunScope = verifySemanticRunScopeGuardProof(root, proof.semanticRunScope);
   return { reusable: true, scope: proof.scope, checkoutSha: expectedSha, outputDigest: proof.outputs.digest,
-    catalogAndPackagePrepared: true };
+    catalogAndPackagePrepared: true, semanticRunScope };
 }
 
 function outputFile(root, value) {

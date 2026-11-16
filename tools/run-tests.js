@@ -43,6 +43,17 @@ const requiredCommands = [
     label: 'tests/archive-issued-rpm-evidence-continuity.test.mjs',
     args: ['--test', 'tests/archive-issued-rpm-evidence-continuity.test.mjs']
   },
+  // The complete exact-repair fixture is split without changing any assertion.
+  // All names are covered once; each command retains the ordinary 60s budget.
+  ...[
+    '^(?:an exact approved repair|closed repair|truthfully rebound input|warm live repair rejects old-raw-negative$)',
+    '^(?:independent observation|warm live repair rejects (?:peer-asset|vector)$)',
+    '^(?:cold live repair|warm live repair rejects identity$)',
+    '^(?:warm live repair rejects (?!(?:old-raw-negative|peer-asset|vector|identity)$)|a committed)',
+  ].map((pattern, index) => ({
+    label: `tests/item-4slot-m2s2-current-repair-closure.test.cjs [${index + 1}/4]`,
+    args: ['--test', '--test-name-pattern', pattern, 'tests/item-4slot-m2s2-current-repair-closure.test.cjs'],
+  })),
   {
     label: 'tests/item-4slot-m2s2-current-continuity.test.cjs',
     args: ['--test', 'tests/item-4slot-m2s2-current-continuity.test.cjs']
@@ -50,6 +61,34 @@ const requiredCommands = [
   {
     label: 'tests/item-4slot-m2s2-imported-current-continuity.test.cjs',
     args: ['--test', 'tests/item-4slot-m2s2-imported-current-continuity.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-exact-display-repair.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-exact-display-repair.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-display-repair-evidence.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-display-repair-evidence.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-display-repair-history.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-display-repair-history.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-display-repair-markup.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-display-repair-markup.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-native-vector-amendment.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-native-vector-amendment.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-native-authority.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-native-authority.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-native-observer-v1.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-native-observer-v1.test.cjs']
   },
   {
     label: 'tests/archive-m2-provider-current-renderer.test.mjs',
@@ -159,6 +198,14 @@ const requiredCommands = [
   {
     label: 'tests/archive-reviewed-native-scope-fields.test.mjs',
     args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
+  },
+  {
+    label: 'tests/archive-source-delta.test.mjs',
+    args: ['--test', 'tests/archive-source-delta.test.mjs']
+  },
+  {
+    label: 'archive/tools/meta-foundation/source-delta-report.mjs syntax',
+    args: ['--check', 'archive/tools/meta-foundation/source-delta-report.mjs']
   },
   {
     label: 'tests/archive-main-merge-meta.test.mjs',

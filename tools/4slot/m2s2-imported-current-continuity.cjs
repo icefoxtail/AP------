@@ -6,6 +6,8 @@ const {execFileSync}=require('node:child_process');
 const {compactItem}=require('./import-4slot.cjs');
 const {buildLookup,validateData}=require('./validate-4slot.cjs');
 const {sourceNumber,sourceIdentityNumber}=require('./exam-items.cjs');
+const nativeAmendment=require('./m2s2-imported-native-vector-amendment.cjs');
+const displayRepair=()=>require('./m2s2-exact-display-repair-closure.cjs');
 const CARRIER_SCHEMA='m2-s2-imported-current-four-slot-continuity-v1';
 const HOLD_SCHEMA='4slot-m2s2-imported-current-renderer-hold-v1';
 const SCOPE='KEEP_EXACT_IMPORTED_M2S2_VECTOR_NO_METADATA_APPROVAL';
@@ -27,13 +29,14 @@ const PRESENTATION=new Set(['image','imageAlt','imageSize','layoutTag','solution
 const METADATA=new Set(['conditionKeys','crossConceptKeys','curriculum','decisiveStep','difficultyBoundaryFlag','difficultyBucket','difficultyConfidence','integrationPattern','legacyLevelCompatibility','primaryMethod','problemTypeKey','rpmL1','rpmL2','rpmL3','rpmL4','rpmPrimaryPath','standardUnit','standardUnitKey','subUnit','subUnitKey','templateKey']);
 const OVERLAY=new Set(['courseKey','curriculumKey','crossConceptKeys']);
 const own=(o,k)=>Object.hasOwn(o||{},k);
-const has=d=>own(d.evidence,GROUP)||(d.items||[]).some(i=>i.registrationHold?.schemaVersion===HOLD_SCHEMA||own(i.registrationHold,'m2ImportedCarrier'));
+const has=d=>displayRepair().hasFor(d,'IMPORTED_NATIVE_AMENDMENT')||nativeAmendment.has(d)||own(d.evidence,GROUP)||(d.items||[]).some(i=>i.registrationHold?.schemaVersion===HOLD_SCHEMA||own(i.registrationHold,'m2ImportedCarrier'));
 const inScope=d=>/^original\/middle\/m2\/2final\//.test(d.sourceArchiveFile||'');
 const git=(root,args)=>execFileSync('git',['-C',root,'-c','core.quotepath=false',...args],{timeout:30000,maxBuffer:32*1024*1024,stdio:['ignore','pipe','pipe']});
 
 // Only immutable claim discovery is cached per build. This is not an approval
 // cache. Full HEAD ancestry retains the obligation after deletion or a merge.
 function createObligationReader(root,{safe,sha,blob,stable}) {
+  const successorObligation=nativeAmendment.createObligationReader(root,{safe,sha,blob,stable});
   let loaded=false,failed=false,claims=[];
   function load(){
     if(loaded)return;loaded=true;
@@ -53,19 +56,21 @@ function createObligationReader(root,{safe,sha,blob,stable}) {
       }
     }catch{failed=true;}
   }
-  return d=>{
+  const originalObligation=d=>{
     if(!inScope(d))return {errors:[],digest:null};load();
     if(failed)return {errors:['M2_IMPORTED_CONTINUITY_HISTORY_UNAVAILABLE'],digest:null};
     const found=claims.filter(x=>x.sourceArchiveFile===d.sourceArchiveFile);if(!found.length)return {errors:[],digest:null};
     const held=(d.items||[]).map(i=>i.registrationHold).filter(h=>h?.schemaVersion===HOLD_SCHEMA);
     const covered=found.flatMap(x=>x.heldRows).every(r=>held.some(h=>TUPLE.every(k=>h[k]===r[k])));
-    return {errors:has(d)&&covered?[]:['M2_IMPORTED_CONTINUITY_OBLIGATION_REQUIRED'],digest:sha(stable(found))};
+    const successor=displayRepair().hasFor(d,'IMPORTED_NATIVE_AMENDMENT');
+    return {required:true,errors:has(d)&&covered||successor?[]:['M2_IMPORTED_CONTINUITY_OBLIGATION_REQUIRED'],digest:sha(stable(found)),...(successor?{entries:found}:{})};
   };
+  return d=>{const prior=originalObligation(d),next=successorObligation(d);return {required:prior.required||next.required||false,errors:[...prior.errors,...next.errors],digest:next.digest===null?prior.digest:sha(stable([prior.digest,next.digest])),...(displayRepair().hasFor(d,'IMPORTED_NATIVE_AMENDMENT')?{originalEntries:prior.entries||[],amendmentEntries:next.entries||[]}:{} )};};
 }
 function evidenceDigests(root,d,{safe,sha}){
-  const out={};for(const r of Object.values(d.evidence?.[GROUP]||{}))if(r?.path){try{out[r.path]=sha(fs.readFileSync(safe(root,r.path)));}catch{out[r.path]=null;}}return out;
+  const out=nativeAmendment.evidenceDigests(root,d,{safe,sha});for(const r of Object.values(d.evidence?.[GROUP]||{}))if(r?.path){try{out[r.path]=sha(fs.readFileSync(safe(root,r.path)));}catch{out[r.path]=null;}}return out;
 }
-function validateFile(root,d,hp){
+function validateLegacyFile(root,d,hp,historicalCommit=null,historicalReads=null){
   if(!has(d))return [];
   const {safe,sha,blob,stable,payloadHash,identityHash,assetRefs,loadBank,dictionary,identity,studentFields}=hp;
   const fail=s=>{throw Error('M2_IMPORTED_CONTINUITY_'+s);},same=(a,b)=>stable(a)===stable(b);
@@ -75,12 +80,14 @@ function validateFile(root,d,hp){
   const exactRef=(a,b)=>REF4.every(k=>a?.[k]===b?.[k]);
   const exactAssets=(a,b)=>Array.isArray(a)&&Array.isArray(b)&&same(a.map(r=>stable(REF4.map(k=>r?.[k]))).sort(),b.map(r=>stable(REF4.map(k=>r?.[k]))).sort());
   const plain=r=>({commit:r.commit,path:r.path,sha256:r.sha256});
+  // Only the closed literal-snapshot adapter below selects historical bytes.
+  const localBytes=p=>{safe(root,p);const raw=historicalCommit?git(root,['show',historicalCommit+':'+p]):fs.readFileSync(safe(root,p));if(historicalReads&&DOC.test(p))historicalReads.set(p,{commit:historicalCommit,path:p,gitBlobSha1:blob(raw),sha256:sha(raw)});return raw;};
   function immutable(r,pattern,{local=false,full=false}={}){
     keys(r,full?REF4:['commit','path','sha256']);
     if(!GIT.test(r.commit||'')||!SHA.test(r.sha256||'')||!pattern.test(r.path||''))fail('REFERENCE');safe(root,r.path);
     let b;try{b=git(root,['show',r.commit+':'+r.path]);}catch{fail('IMMUTABLE_UNAVAILABLE');}
     if(sha(b)!==r.sha256||full&&blob(b)!==r.gitBlobSha1)fail('IMMUTABLE_BYTES');
-    if(local){let live;try{live=fs.readFileSync(safe(root,r.path));}catch{fail('LIVE_UNAVAILABLE');}if(!b.equals(live))fail('LIVE_BYTES');}
+    if(local){let live;try{live=localBytes(r.path);}catch{fail('LIVE_UNAVAILABLE');}if(!b.equals(live))fail('LIVE_BYTES');}
     return b;
   }
   function staticSvg(raw,depth=0){
@@ -262,4 +269,25 @@ function validateFile(root,d,hp){
     return [];
   }catch(e){return [String(e.message).startsWith('M2_IMPORTED_CONTINUITY_')?e.message:'M2_IMPORTED_CONTINUITY_INVALID'];}
 }
-module.exports={CARRIER_SCHEMA,HOLD_SCHEMA,SCOPE,GROUP,REASON,ZERO,METADATA,OVERLAY,has,createObligationReader,evidenceDigests,validateFile};
+// Historical evidence is a literal immutable compact plus its complete original
+// contract. It cannot independently authorize the current source.
+function validateHistoricalFile(root,reference,hp){
+  try{
+    const {safe,sha,blob,stable}=hp;
+    if(!reference||stable(Object.keys(reference).sort())!==stable([...REF4].sort())||!GIT.test(reference.commit||'')||!SHA.test(reference.sha256||'')||!GIT.test(reference.gitBlobSha1||'')||!COMPACT.test(reference.path||''))throw Error('REFERENCE');
+    safe(root,reference.path);const raw=git(root,['show',reference.commit+':'+reference.path]);
+    if(sha(raw)!==reference.sha256||blob(raw)!==reference.gitBlobSha1)throw Error('BYTES');
+    const document=JSON.parse(raw);
+    if(Object.hasOwn(document.evidence||{},'currentM2DisplayRepairClosure'))throw Error('NOT_ORIGINAL');
+    if(nativeAmendment.has(document))return nativeAmendment.validateHistoricalFile(root,reference,hp,validateHistoricalFile);
+    if(!Object.hasOwn(document.evidence||{},GROUP))throw Error('ORIGINAL_REQUIRED');
+    const reads=new Map(),errors=validateLegacyFile(root,document,hp,reference.commit,reads);
+    return {errors,document,requiredLiveEvidence:[...reads.values()].sort((a,b)=>a.path.localeCompare(b.path,'en'))};
+  }catch{return {errors:['M2_IMPORTED_CONTINUITY_HISTORICAL_INPUT_INVALID'],document:null,requiredLiveEvidence:[]};}
+}
+function validateFile(root,d,hp){
+  if(displayRepair().has(d))return displayRepair().validateFile(root,d,hp,validateHistoricalFile);
+  if(nativeAmendment.has(d))return nativeAmendment.validateFile(root,d,hp,validateFile);
+  return validateLegacyFile(root,d,hp);
+}
+module.exports={CARRIER_SCHEMA,HOLD_SCHEMA,SCOPE,GROUP,REASON,ZERO,METADATA,OVERLAY,has,createObligationReader,evidenceDigests,validateFile,validateHistoricalFile};

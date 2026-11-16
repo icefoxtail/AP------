@@ -142,6 +142,73 @@ test('producer uses the existing preparation once, verifies all required data ch
   assert.equal(validateLocalRegistrationProof({ ...f.options(), proof, runId: 41, runAttempt: 1 }).reusable, true);
 });
 
+function scopedProofFixture(t){
+  const f=fixture(t),source='original/middle/m3/1mid/excluded.js';
+  const meta='archive/data/question_metadata.json',identity='archive/data/question_identity_map.json';
+  const runtime='archive/data/meta-foundation/runtime/middle3-v1.json',four='archive/data/item-4slot-index.json';
+  const put=(file,value)=>f.write(file,JSON.stringify(value)+'\n');
+  const row={questionUid:'excluded_uid',sourceArchiveFile:source,sourceOrdinal:1,value:'preserved'};
+  for(const file of [meta,identity,runtime])put(file,{records:[row]});
+  put(four,{records:[row],pending:[],files:[{path:'archive/data/item-4slot/'+source.replace(/\.js$/,'.4slot.json'),inputHash:'a'.repeat(64)}],builderSha256:'b'.repeat(64)});
+  const inbox='.archive-meta-register/inbox/fixture-other-schema.json';put(inbox,{schemaVersion:'fixture-other-schema'});
+  put('.archive-meta-register/auto/run-scopes/proof-phase1.json',{schemaVersion:'archive-semantic-run-scope-v1',scopeId:'fixture-pr-scope',phase:'phase1',
+    excludedSourcePrefixes:['original/middle/m3/1final/','original/middle/m3/1mid/'],
+    inboxBindings:[{path:inbox,sha256:sha256(fs.readFileSync(path.join(f.root,inbox)))}]});
+  const allow='tools/ci/archive-pages-registration.paths';f.write(allow,fs.readFileSync(path.join(f.root,allow),'utf8')+meta+'\n'+identity+'\n'+four+'\n');
+  f.git('add','-A');f.git('commit','-qm','scope proof fixture');
+  const headSha=f.git('rev-parse','HEAD');f.event.pull_request.head.sha=headSha;
+  const run=(program,args)=>{
+    const output=f.run(program,args);
+    if(program==='python3'){
+      put('archive/data/meta-foundation/runtime/new.json',{records:[],projection:'fresh'});
+      const file='archive/data/archive2-canonical-input-manifest.json',d=JSON.parse(fs.readFileSync(path.join(f.root,file),'utf8'));
+      for(const row of d.files)row.sha256=sha256(fs.readFileSync(path.join(f.root,'archive',row.path)));
+      put(file,d);
+    }
+    return output;
+  };
+  const options=()=>({...f.options(),expectedSha:headSha});
+  const produce=extra=>producePrRegistrationProof({...options(),runId:41,runAttempt:1,run,...extra});
+  return {...f,put,meta,identity,runtime,four,run,options,produce};
+}
+
+test('active PR proof binds the private pre-native snapshot and verify-local independently checks HEAD rows',t=>{
+  const f=scopedProofFixture(t),proof=f.produce();
+  assert.equal(proof.semanticRunScope.binding.active,true);
+  assert.equal(proof.semanticRunScope.excludedRows.exactRowsUnchanged,true);
+  const verified=validateLocalRegistrationProof({...f.options(),proof});
+  assert.equal(verified.reusable,true);assert.equal(verified.semanticRunScope.excludedRows.semanticUnchanged,true);
+  for(const mutate of [p=>{delete p.semanticRunScope;},p=>{p.semanticRunScope={verified:true};},p=>{p.semanticRunScope.binding.active=false;},
+    p=>{p.semanticRunScope.excludedRows.beforeDigest='0'.repeat(64);}]){
+    const forged=clone(proof);mutate(forged);
+    assert.throws(()=>validateLocalRegistrationProof({...f.options(),proof:forged}),/GUARD_PROOF_DRIFT/);
+  }
+});
+
+test('catalog stabilization cannot mutate excluded rows after the preparation guard has passed',t=>{
+  const f=scopedProofFixture(t);let stabilized=false;
+  assert.throws(()=>f.produce({run:(program,args)=>{
+    const output=f.run(program,args);
+    if(program==='python3')f.put('archive/data/meta-foundation/runtime/new.json',{records:[],projection:'needs stabilization'});
+    if(args[0]==='archive/tools/build-archive2-catalog.mjs'){
+      stabilized=true;const d=JSON.parse(fs.readFileSync(path.join(f.root,f.meta),'utf8'));d.records[0].value='changed in final catalog';f.put(f.meta,d);
+    }
+    return output;
+  }}),/EXCLUDED_ROW_MUTATION/);
+  assert.equal(stabilized,true);
+});
+
+test('PR proof cannot infer a four-slot cache exception from its declared builder hash or success fields',t=>{
+  const f=scopedProofFixture(t);
+  assert.throws(()=>f.produce({run:(program,args)=>{
+    const output=f.run(program,args);
+    if(program==='python3'){
+      const d=JSON.parse(fs.readFileSync(path.join(f.root,f.four),'utf8'));d.builderSha256='c'.repeat(64);d.files[0].inputHash='d'.repeat(64);d.verified=true;f.put(f.four,d);
+    }
+    return output;
+  }}),/EXCLUDED_ROW_MUTATION/);
+});
+
 test('final runtime readiness changes cause only the necessary catalog stabilization', t => {
   const f = fixture(t);
   const proof = f.produce({ run: (program, args) => {

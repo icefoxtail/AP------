@@ -165,6 +165,11 @@ choosing a merge result that omits an issued witness does not release a held
 UID or make a body transcription ordinary. Missing Git/history fails closed.
 Later correction or release needs its own explicit approved contract.
 
+The separate [exact native PNG and first solution line repair successor](4slot-m2s2-exact-native-rhs-repair-closure-v1.md)
+replays this literal historical contract and its negative witness before
+validating its narrowly approved current repair. It does not change ordinary
+v1 hold behavior or permit marker removal to release a UID.
+
 All proof digests and the obligation inventory enter the builder fingerprint.
 The helper enters BUILDER_SHA. Mutable current source, proof and asset bytes
 are rechecked before cache reuse. No approval-result cache or stale-payload

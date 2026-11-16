@@ -7,7 +7,7 @@ import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,STATE} from '../tools/ci/archive-registration-writer.mjs';
-import {resolveSemanticRunScope,semanticRunScopeProof} from '../archive/tools/meta-foundation/semantic-run-scope.mjs';
+import {resolveSemanticRunScope,semanticRunScopeProof,recordFourSlotScopeCheck} from '../archive/tools/meta-foundation/semantic-run-scope.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
 // replaced by small deterministic writers; their existing suites and real Actions remain separate evidence.
@@ -162,6 +162,50 @@ test('active writer rejects a changed HEAD before persist even when its scope bi
   }return result;};
   await assert.rejects(prepareRegistration({...f.options,execute}),/SEMANTIC_RUN_SCOPE_HEAD_DRIFT/);
   const report=readJson(f.work,'report.json');assert.equal(report.safeToPersist,false);assert.equal(report.status,'FINAL_GATE_FAILED');
+});
+
+function rekeyWriterFixture(t){
+  const f=scopedWriterFixture(t),old=readJson(f.root,f.four);
+  Object.assign(old,{schemaVersion:'archive-item-4slot-runtime-v1',builderSha256:'a'.repeat(64),inputDigest:'b'.repeat(64),
+    counts:{files:1,items:1,registered:1,pending:0},files:[{path:'archive/data/item-4slot/'+f.excludedSource.replace(/\.js$/,'.4slot.json'),
+      inputHash:'c'.repeat(64),status:'REGISTERED',itemCount:1}]});
+  write(f.root,f.four,old);
+  f.lanes.find(l=>l.id==='shared').outputs=f.lanes.find(l=>l.id==='shared').outputs.filter(p=>p!==f.four);
+  const fourLane=f.lanes.find(l=>l.id==='fourSlot');fourLane.outputs.push(f.four);
+  fourLane.commands=[{program:'bash',args:['tools/ci/archive-four-slot-pass.sh']}];
+  commit(f.root,'bound rekey fixture');
+  const execute=async(ctx,{fail=false,omitProof=false,tamperIndex=false}={})=>{
+    const result=await f.execute(ctx);
+    if(ctx.lane.id==='fourSlot'){
+      const index=structuredClone(old);index.builderSha256='d'.repeat(64);index.inputDigest='e'.repeat(64);index.files[0].inputHash='f'.repeat(64);write(f.root,f.four,index);
+      const work=path.join(ctx.env.RUNNER_TEMP,'archive-four-slot'),digest=hash(read(f.root,f.four));
+      for(const [i,name]of ['report.json','verify.json','replay.json'].entries())write(work,name,{
+        schemaVersion:index.schemaVersion,status:'PASS',indexSha256:digest,inputDigest:index.inputDigest,counts:index.counts,
+        verified:1,pending:0,sourceMutation:0,semanticApprovalMutation:0,output:f.four,write:i===0,changed:i===0});
+      if(!omitProof)recordFourSlotScopeCheck(f.root,work,ctx.env.ARCHIVE_FOUR_SLOT_CHECK_NONCE);
+      if(tamperIndex)fs.appendFileSync(path.join(f.root,f.four),' ');
+      if(fail)throw Error('fixture full pass failed');
+    }
+    return result;
+  };
+  return {...f,old,execute,options:{...f.options,execute}};
+}
+
+test('active writer persists checked cache rekey while every excluded registration row remains exact',async t=>{
+  const f=rekeyWriterFixture(t),result=await prepareRegistration(f.options);
+  assert.equal(result.safeToPersist,true);assert.equal(result.lanes.find(l=>l.id==='fourSlot').status,'VERIFIED');
+  assert.equal(result.excludedScopeGuard.semanticUnchanged,true);assert.equal(result.excludedScopeGuard.exactRowsUnchanged,false);
+  assert.equal(result.excludedScopeGuard.cacheRekey.changedFileCount,1);
+  assert.equal(result.excludedScopeGuard.cacheRekey.checkedIndexSha256,hash(read(f.root,f.four)));
+});
+
+for(const mode of ['fail','omitProof','tamperIndex'])test('a '+mode+' four-slot execution never authorizes a writer cache rekey',async t=>{
+  const f=rekeyWriterFixture(t),result=await prepareRegistration({...f.options,execute:ctx=>f.execute(ctx,{[mode]:true})});
+  assert.equal(result.lanes.find(l=>l.id==='fourSlot').status,'FAILED');
+  assert.deepEqual(readJson(f.root,f.four),f.old,'failed independent lane restores its original index');
+  assert.equal(result.excludedScopeGuard.exactRowsUnchanged,true);assert.equal(result.excludedScopeGuard.cacheRekey,null);
+  assert.ok(readJson(f.root,STATE).blockedLanes.includes('fourSlot'));
+  assert.equal(result.status,'PREPARED_WITH_FAILURES','the existing optional-lane policy is retained; no new index is certified');
 });
 
 test('new source fixture: one staged transaction joins source, UID, consumer, cursor and receipt',async t=>{

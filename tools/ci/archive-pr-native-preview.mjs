@@ -14,6 +14,7 @@ import { isExplicitIssuedSourceBindingRecoveryRequest } from '../../archive/tool
 import { isExplicitAuditCcAppendRequest } from '../../archive/tools/meta-foundation/audited-cross-concept-append.mjs';
 import { isOriginalFinalQaRendererPreservation,isExplicitOriginalRendererRequest } from '../../archive/tools/meta-foundation/original-finalqa-renderer-preservation.mjs';
 import { verifyIssuedRpmEvidenceContinuity } from '../../archive/tools/meta-foundation/issued-rpm-evidence-continuity.mjs';
+import { beginSemanticRunScopeGuard, finishSemanticRunScopeGuard } from '../../archive/tools/meta-foundation/semantic-run-scope.mjs';
 
 export const NATIVE_PREVIEW_SCHEMA = 'archive-pr-native-preview/v1';
 export const NATIVE_REQUEST_SCHEMA = 'archive-reviewed-exam-meta-register-request-v2';
@@ -1032,7 +1033,10 @@ function planPaths(result, request) {
   return paths;
 }
 
-export function applyNativeRequests({ root, requests, run = nativeCommand, scriptRoot = root, guard = true }) {
+export function applyNativeRequests({ root, requests, run = nativeCommand, scriptRoot = root, guard = true, semanticGuard }) {
+  // The same guard runs in the producer and immutable shadow. The older `guard`
+  // option controls dirty-path accounting only, never semantic exclusions.
+  const scopeGuard = semanticGuard ?? beginSemanticRunScopeGuard(root);
   const plans = [];
   for (const request of orderNativeRequests(requests)) {
     const before = guard ? dirtySnapshot(root) : null;
@@ -1045,6 +1049,7 @@ export function applyNativeRequests({ root, requests, run = nativeCommand, scrip
     verifyInheritedReassessmentValues(root, request);
     plans.push({ requestPath: request.path, replay: dryRun.replay, plannedPaths: paths });
   }
+  finishSemanticRunScopeGuard(root, scopeGuard);
   return plans;
 }
 
@@ -1157,7 +1162,7 @@ export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
     // Renderer/source reviews revalidate the live asset bytes, including assets
     // reached through an older receipt. Recreate that immutable input tree too;
     // never copy current worktree bytes or share mutable asset inodes.
-    const restore = ['archive/data', 'archive/assets', 'docs/rules/01_CANONICAL/taxonomy']
+    const restore = ['archive/data', 'archive/assets', 'docs/rules/01_CANONICAL/taxonomy', '.archive-meta-register/auto/state.json']
       .filter(file => git(root, 'ls-tree', 'HEAD', '--', file).trim());
     // Data plus assets can exceed the child-process memory buffer. Stream Git's
     // exact archive into a private temporary file, removed with this shadow.

@@ -35,7 +35,10 @@ const KINDS = new Set(['RENDERER_PRESENTATION_CONTINUITY','ANNOTATION_ONLY_REMOV
 const own = (o,k) => Object.hasOwn(o || {},k);
 const plain = r => ({commit:r?.commit,path:r?.path,sha256:r?.sha256});
 const utc = s => typeof s==='string' && /^\d{4}-\d\d-\d\dT.*(?:Z|\+00:00)$/.test(s) && Number.isFinite(Date.parse(s));
-const has = d => own(d.evidence,GROUP) || (d.items || []).some(i => i.registrationHold?.schemaVersion===HOLD_SCHEMA || own(i.registrationHold,'m2ContinuityCarrier'));
+const hasLegacy = d => own(d.evidence,GROUP) || (d.items || []).some(i => i.registrationHold?.schemaVersion===HOLD_SCHEMA || own(i.registrationHold,'m2ContinuityCarrier'));
+const repairClosure = () => require('./m2s2-current-repair-closure.cjs');
+const displayRepair = () => require('./m2s2-exact-display-repair-closure.cjs');
+const has = d => hasLegacy(d) || repairClosure().has(d) || displayRepair().hasFor(d,'CURRENT_V1');
 const inScope = d => /^original\/middle\/m2\/2(?:mid|final)\//.test(d.sourceArchiveFile || '');
 const gitBytes = (root,args) => execFileSync('git',['-C',root,'-c','core.quotepath=false',...args],{timeout:30000,maxBuffer:32*1024*1024,stdio:['ignore','pipe','pipe']});
 
@@ -89,7 +92,11 @@ function createObligationReader(root,{safe,sha,blob,stable}) {
     if(!found.length) return {required:false,errors:[],digest:null};
     const held=(d.items||[]).filter(i=>i.registrationHold?.schemaVersion===HOLD_SCHEMA).map(i=>i.registrationHold);
     const covered=found.filter(r=>r.kind==='NEGATIVE').every(r=>held.some(h=>TUPLE.every(k=>h[k]===r[k])));
-    return {required:true,errors:has(d)&&covered?[]:['M2_CURRENT_CONTINUITY_OBLIGATION_REQUIRED'],digest:sha(stable(found))};
+    // A successor marker is not approval. Pass every immutable obligation to its
+    // mandatory full-file validator, which must close the exact negative tuple.
+    // Ordinary v1 files retain the original hold requirement.
+    const successor=repairClosure().has(d)||displayRepair().hasFor(d,'CURRENT_V1');
+    return {required:true,errors:(hasLegacy(d)&&covered)||successor?[]:['M2_CURRENT_CONTINUITY_OBLIGATION_REQUIRED'],digest:sha(stable(found)),...(successor?{entries:found}:{} )};
   };
 }
 
@@ -98,24 +105,27 @@ function evidenceDigests(root,d,{safe,sha}) {
   for(const r of Object.values(refs||{})) if(r?.path) {
     try { out[r.path]=sha(fs.readFileSync(safe(root,r.path))); } catch { out[r.path]=null; }
   }
-  return out;
+  return {...out,...repairClosure().evidenceDigests(root,d,{safe,sha})};
 }
 
-function validateFile(root,d,hp) {
-  if(!has(d)) return [];
+function validateLegacyFile(root,d,hp,historicalCommit=null,historicalReads=null) {
+  if(!hasLegacy(d)) return [];
   const {safe,sha,blob,stable,payloadHash,identityHash,assetRefs,loadBank,dictionary,identity,studentFields}=hp;
   const fail=s=>{throw Error('M2_CURRENT_CONTINUITY_'+s);};
   const same=(a,b)=>stable(a)===stable(b);
   const keys=(o,ks)=>{if(!o||typeof o!=='object'||Array.isArray(o)||!same(Object.keys(o).sort(),[...ks].sort())) fail('FIELDS');};
   const zero=o=>{if(ZERO.some(k=>o[k]!==0)) fail('NO_NEW_APPROVAL');};
   const ordinals=a=>Array.isArray(a)&&a.every(n=>Number.isSafeInteger(n)&&n>0)&&new Set(a).size===a.length&&same(a,[...a].sort((x,y)=>x-y));
+  // Only validateHistoricalFile supplies this immutable snapshot. The ordinary
+  // validator still reads each live file. No caller-supplied reader/skip flag.
+  const localBytes=p=>{safe(root,p);const raw=historicalCommit?gitBytes(root,['show',historicalCommit+':'+p]):fs.readFileSync(safe(root,p));if(historicalReads&&/^docs\/operations\/.+\.json$/.test(p))historicalReads.set(p,{commit:historicalCommit,path:p,gitBlobSha1:blob(raw),sha256:sha(raw)});return raw;};
   function immutable(ref,pattern,{local=false,fields=['commit','path','sha256']}={}) {
     keys(ref,fields);
     if(!GIT.test(ref.commit||'')||!SHA.test(ref.sha256||'')||!pattern.test(ref.path||'')) fail('REFERENCE');
     safe(root,ref.path);
     let raw;try{raw=gitBytes(root,['show',ref.commit+':'+ref.path]);}catch{fail('IMMUTABLE_UNAVAILABLE');}
     if(sha(raw)!==ref.sha256||own(ref,'gitBlobSha1')&&(!GIT.test(ref.gitBlobSha1||'')||blob(raw)!==ref.gitBlobSha1)) fail('IMMUTABLE_BYTES');
-    if(local) {let b;try{b=fs.readFileSync(safe(root,ref.path));}catch{fail('LIVE_UNAVAILABLE');}if(!b.equals(raw))fail('LIVE_BYTES');}
+    if(local) {let b;try{b=localBytes(ref.path);}catch{fail('LIVE_UNAVAILABLE');}if(!b.equals(raw))fail('LIVE_BYTES');}
     return raw;
   }
   function staticSvg(raw,depth=0) {
@@ -278,7 +288,7 @@ function validateFile(root,d,hp) {
         if(!same(old,q)||payloadHash(old)!==payloadHash(q)||!same(assetRefs(old),assetRefs(q))) fail('UNOBSERVED_ROW');
         for(const ap of assetRefs(q)) {
           const priorAsset=gitBytes(root,['show',p.priorSourceRef.commit+':'+ap]), currentAsset=gitBytes(root,['show',p.sourceRef.commit+':'+ap]);
-          if(!priorAsset.equals(currentAsset)||!currentAsset.equals(fs.readFileSync(safe(root,ap)))) fail('UNOBSERVED_ASSET');
+          if(!priorAsset.equals(currentAsset)||!currentAsset.equals(localBytes(ap))) fail('UNOBSERVED_ASSET');
         }
         continue;
       }
@@ -356,4 +366,26 @@ function validateFile(root,d,hp) {
   }
 }
 
-module.exports={CARRIER_SCHEMA,REVIEW_SCHEMA,ROOT_SCHEMA,RAW_REVIEW_SCHEMA,RAW_ROOT_SCHEMA,HOLD_SCHEMA,REASON,SCOPE,ROOT_SCOPE,GROUP,ZERO,has,inScope,createObligationReader,evidenceDigests,validateFile};
+// Replay the literal issued v1 compact and its complete original inputs. This
+// result is historical evidence, never a current-source approval by itself.
+function validateHistoricalFile(root,reference,hp) {
+  try {
+    const {safe,sha,blob,stable}=hp;
+    if(!reference||stable(Object.keys(reference).sort())!==stable([...REF4].sort())||!GIT.test(reference.commit||'')||!SHA.test(reference.sha256||'')||!GIT.test(reference.gitBlobSha1||'')||!COMPACT.test(reference.path||'')) throw Error('REFERENCE');
+    safe(root,reference.path);
+    const raw=gitBytes(root,['show',reference.commit+':'+reference.path]);
+    if(sha(raw)!==reference.sha256||blob(raw)!==reference.gitBlobSha1) throw Error('BYTES');
+    const document=JSON.parse(raw);
+    if(!hasLegacy(document)||repairClosure().has(document)||displayRepair().has(document)) throw Error('ORIGINAL_V1_REQUIRED');
+    const reads=new Map(),errors=validateLegacyFile(root,document,hp,reference.commit,reads);
+    return {errors,document,requiredLiveEvidence:[...reads.values()].sort((a,b)=>a.path.localeCompare(b.path,'en'))};
+  } catch {return {errors:['M2_CURRENT_CONTINUITY_HISTORICAL_INPUT_INVALID'],document:null};}
+}
+
+function validateFile(root,d,hp) {
+  if(displayRepair().has(d)) return displayRepair().validateFile(root,d,hp,validateHistoricalFile);
+  if(repairClosure().has(d)) return repairClosure().validateFile(root,d,hp,validateHistoricalFile);
+  return validateLegacyFile(root,d,hp);
+}
+
+module.exports={CARRIER_SCHEMA,REVIEW_SCHEMA,ROOT_SCHEMA,RAW_REVIEW_SCHEMA,RAW_ROOT_SCHEMA,HOLD_SCHEMA,REASON,SCOPE,ROOT_SCOPE,GROUP,ZERO,has,inScope,createObligationReader,evidenceDigests,validateFile,validateHistoricalFile};

@@ -11,7 +11,7 @@ import vm from 'node:vm';
 import {execFileSync, spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {checkStagedRegistrationWhitespace} from './archive-registration-whitespace.mjs';
-import {SEMANTIC_RUN_SCOPE_DIR,resolveSemanticRunScope,semanticRunScopeProof,assertSemanticRunScopeProof,excludesSemanticSource,captureExcludedSemanticRows,assertExcludedSemanticRowsUnchanged} from '../../archive/tools/meta-foundation/semantic-run-scope.mjs';
+import {SEMANTIC_RUN_SCOPE_DIR,resolveSemanticRunScope,semanticRunScopeProof,assertSemanticRunScopeProof,excludesSemanticSource,captureExcludedSemanticRows,assertExcludedSemanticRowsUnchanged,executeFourSlotScopeCheck} from '../../archive/tools/meta-foundation/semantic-run-scope.mjs';
 
 export const VERSION = 'archive-registration-writer-v1';
 export const STATE = '.archive-meta-register/auto/writer-state.json';
@@ -326,7 +326,7 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
     GITHUB_STEP_SUMMARY:path.join(work,'native-step-summary.md'),
     NODE_OPTIONS:env.NODE_OPTIONS||'--max-old-space-size=6144'};
   fs.mkdirSync(writerEnv.RELEASE_EVIDENCE_DIR,{recursive:true});
-  let sharedPassed=true,finalChecked=false;
+  let sharedPassed=true,finalChecked=false,checkedFourSlotPass;
   const environmentFor=(lane,record,rows=indexRows(root))=>{
     if(!lane.scopedInputs)return writerEnv;
     const scopedInputDigest=fingerprint(rows,lane.scopedInputs);
@@ -407,12 +407,15 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
     const started=Date.now();
     try {
       const executionEnv=environmentFor(lane,record,current);
-      const result=await execute({root,work,lane,env:executionEnv,prior:laneState});
+      const checked=await executeFourSlotScopeCheck({root,scope:runScope,lane,env:executionEnv,
+        execute:env=>execute({root,work,lane,env,prior:laneState})});
+      const result=checked.result;
       const files=unstaged(root);guardFiles(files,lane.outputs,lane.id.toUpperCase());stage(root,files);
       checkPreserved(root,before,initialSeals);
       Object.assign(record,{status:'VERIFIED',durationMs:Date.now()-started,changedCount:files.length,advisories:result?.advisories||[],
         verifiedInputDigest:inputFingerprint(indexRows(root),lane),verifiedOutputDigest:fingerprint(indexRows(root),lane.outputs),
         needsContinuation:lane.continuation?lane.continuation({root,env:executionEnv}):false});
+      if(lane.id==='fourSlot')checkedFourSlotPass=checked.checkedFourSlotPass;
     } catch(error) {
       // Unexpected source writes are never waived or hidden behind lane isolation.
       if(/^UNEXPECTED_|^IMMUTABLE_|^EXISTING_CROSSWALK/.test(error.message))throw error;
@@ -449,7 +452,7 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
     const currentScope=resolveSemanticRunScope(root);
     if(currentScope.active&&currentScope.head!==inputSha)throw Error('SEMANTIC_RUN_SCOPE_HEAD_DRIFT');
     assertSemanticRunScopeProof(report.semanticRunScope,currentScope);
-    report.excludedScopeGuard=assertExcludedSemanticRowsUnchanged(root,currentScope,excludedBefore);
+    report.excludedScopeGuard=assertExcludedSemanticRowsUnchanged(root,currentScope,excludedBefore,{checkedFourSlotPass});
     report.whitespace=checkStagedRegistrationWhitespace(root);
     checkPreserved(root,before,initialSeals);
   } catch(error) {
