@@ -1,17 +1,38 @@
 'use strict';
 
-// Closed SVG7 problem transport. Only the two exact zero-choice items may use
-// the two-role capture. All other items retain the unchanged shared capture.
+// Closed SVG7 problem transport: the original two zero-choice cases and one
+// exact E045 Q15 whose five choices are already embedded in its problem image.
+// All other items retain the unchanged shared capture.
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const shared = require('./check-reviewed-problem-renderer-browser.cjs');
 const SELF_PATH = 'tools/m2s1-svg7-problem-capture.cjs';
 const MANIFEST_PATH = 'tests/fixtures/archive-m2s1-svg7-problem-ui.json';
-const MANIFEST_SHA256 = '0aafc564c490b1b8d843d9e94f6e9bbf42ec1e1114d6e36a5e3045d98cee8ae2';
+const MANIFEST_SHA256 = '3dec5bc59d43ace8fef4289d7ff2d208637e204dee4176491a4ebe0ac50926c0';
 const COMMON_PATH = 'tools/check-reviewed-problem-renderer-browser.cjs';
 const COMMON_SHA256 = 'e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673';
 const EMPTY_CLASS_SHA256 = 'eecddef10cc4a80d3bd980d8a114244d6c2c6422131f2d0492d4428a94ab7674';
 const TWO_ROLE_KEYS = Object.freeze(['E045-Q24', 'E048-Q24']);
+const EMBEDDED_CHOICE_KEY = 'E045-Q15';
+const EMBEDDED_CHOICE_BINDING_SHA256 = '9f6108faf898cac852032c2e14268dcc84017a2beda1a1ea2cebd9319ee7243b';
+function assertEmbeddedChoiceRow(row) {
+  assert(row?.key === EMBEDDED_CHOICE_KEY && row.questionUid === 'qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569' &&
+    row.sourceOrdinal === 15 && row.expectedBankCount === 24 && row.choiceCount === 5 &&
+    row.sourcePath === 'archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js' &&
+    row.questionSha256 === '2db11d3dcd68f9aaf35c5d68e69d30f2e550ed3b42b956797fc81b41a62365fb' &&
+    row.embeddedChoiceBinding && shared.sha256(shared.stable(row.embeddedChoiceBinding)) === EMBEDDED_CHOICE_BINDING_SHA256,
+    'UI_SVG7_EXACT_EMBEDDED_CHOICE_CASE');
+  return row.embeddedChoiceBinding;
+}
+function assertEmbeddedChoiceFrame(row, frame) {
+  const binding = assertEmbeddedChoiceRow(row), c = frame?.choiceState;
+  assert(c && c.choiceCount === 5 && c.allChoicesNonemptyStrings === true && c.ownEmbeddedFlag === true && c.embeddedFlagValue === true &&
+    c.nestedEmbeddedFlag === false && c.choicesSha256 === binding.choicesSha256,
+    'UI_SVG7_EMBEDDED_CHOICE_SOURCE_STATE');
+  assert(frame.questionNumber === row.sourceOrdinal && frame.bankCount === row.expectedBankCount, 'UI_SVG7_FRAME_SCOPE');
+  return assertRoleFrame(frame, 0);
+}
+const checkedRoles = (frame, embeddedRow) => embeddedRow === undefined ? assertTwoRoleFrame(frame) : assertEmbeddedChoiceFrame(embeddedRow, frame);
 const { TILE_SCHEMA, TILE_LIMIT, TILE_OVERLAP, assertTileCoverage } = shared;
 const finiteRect = rect => rect && ['x', 'y', 'width', 'height'].every(key => Number.isFinite(rect[key]));
 const checkedRect = rect => { assert(finiteRect(rect) && rect.width > 0 && rect.height > 0, 'UI_CAPTURE_RECT'); return rect; };
@@ -34,6 +55,12 @@ function checkedSvg7Scope(manifestBytes, item, viewport, surface, mode) {
 function captureRoute(row, frame) {
   assert(frame && frame.mode === 'exam' && frame.solutionNodes === 0 && frame.sourcePageMatched === true && frame.targetAssetMatched === true &&
     frame.questionNumber === row.sourceOrdinal && frame.bankCount === row.expectedBankCount, 'UI_SVG7_FRAME_SCOPE');
+  if (row.key === EMBEDDED_CHOICE_KEY) {
+    assert(frame.visibleDirectNodeCount === 2, 'UI_SVG7_EMBEDDED_CHOICES_EXTRA_DIRECT_ROLE');
+    assertEmbeddedChoiceFrame(row, frame);
+    return 'EXACT_EMBEDDED_CHOICES';
+  }
+  assert(row.embeddedChoiceBinding === undefined, 'UI_SVG7_UNSUPPORTED_EMBEDDED_CHOICE_CASE');
   if (frame.visibleDirectNodeCount >= 3) return 'UNCHANGED_SHARED';
   assert(frame.visibleDirectNodeCount === 2 && TWO_ROLE_KEYS.includes(row.key) && row.choiceCount === 0, 'UI_SVG7_TWO_ROLE_EXACT_ZERO_CHOICES');
   assertTwoRoleFrame(frame);
@@ -70,6 +97,13 @@ async function measureProblemRoles(image, expected) {
   const nodes = [...box.childNodes], media = [...box.querySelectorAll('img,svg,math,mjx-container')], bodyElements = [...document.querySelectorAll('body *')];
   check(nodes.length <= 128 && media.length <= 256 && bodyElements.length <= 30000 && box.outerHTML.length <= 2000000, 'UI_ROLE_DIAGNOSTIC_LIMIT');
   const initialDomSha256 = await digest(box.outerHTML), initialScroll = { x: scrollX, y: scrollY }, initialViewport = { width: innerWidth, height: innerHeight };
+  const sourceQuestion = AppState.data[expected.ordinal - 1];
+  check(sourceQuestion && Array.isArray(sourceQuestion.choices), 'UI_ROLE_DIAGNOSTIC_CHOICES');
+  const choiceState = { choiceCount: sourceQuestion.choices.length,
+    allChoicesNonemptyStrings: sourceQuestion.choices.every(value => typeof value === 'string' && value.trim().length > 0),
+    ownEmbeddedFlag: Object.hasOwn(sourceQuestion, 'choicesEmbeddedInImage'), embeddedFlagValue: sourceQuestion.choicesEmbeddedInImage ?? null,
+    nestedEmbeddedFlag: sourceQuestion.sourcePayload?.choicesEmbeddedInImage === true,
+    choicesSha256: await digest(JSON.stringify(sourceQuestion.choices)) };
   const knownClasses = ['q-header', 'q-head', 'q-num', 'q-content', 'q-image', 'q-choices', 'choices', 'choice', 'q-space', 'answer-space', 'work-space', 'workspace'];
   const knownTags = ['DIV', 'SPAN', 'IMG', 'P', 'SECTION', 'TABLE', 'OL', 'UL', 'SVG', 'MATH', 'MJX-CONTAINER'];
   const directNodes = [];
@@ -116,11 +150,12 @@ async function measureProblemRoles(image, expected) {
     numberCount: numbers.length, visibleNumberCount: numbers.filter(node => state(node).visible).length,
     contentCount: contents.length, visibleContentCount: contents.filter(node => state(node).visible).length,
     directNodeCount: directNodes.length, visibleDirectNodeCount: directNodes.filter(node => node.visible).length,
-    directNodes, mediaNodes, obstructions, hitTestSamples, foreignContentHits,
+    directNodes, mediaNodes, obstructions, hitTestSamples, foreignContentHits, choiceState,
     domSha256: initialDomSha256, inputUnchanged: true, cssWrites: 0, domWrites: 0, viewportChanges: 0, scrollOperations: 0 };
 }
 
-function assertTwoRoleFrame(frame) {
+function assertTwoRoleFrame(frame) { return assertRoleFrame(frame, 1); }
+function assertRoleFrame(frame, expectedEmptyNodes) {
   assert(frame?.schemaVersion === 'archive-problem-role-frame-v1' && frame.mode === 'exam' && frame.solutionNodes === 0 &&
     frame.sourcePageMatched === true && frame.targetAssetMatched === true, 'UI_TWO_ROLE_SURFACE');
   assert(frame.readiness === 'RENDER_READY' && frame.feedbackIdle === true, 'UI_CAPTURE_RENDER_STATE');
@@ -160,7 +195,7 @@ function assertTwoRoleFrame(frame) {
     'UI_TWO_ROLE_UNSAFE_EMPTY_NODE');
     emptyNodes++;
   }
-  assert.equal(emptyNodes, 1, 'UI_TWO_ROLE_EMPTY_NODE_INVENTORY');
+  assert.equal(emptyNodes, expectedEmptyNodes, 'UI_TWO_ROLE_EMPTY_NODE_INVENTORY');
   assert(Array.isArray(frame.mediaNodes) && frame.mediaNodes.length === content.mediaCount && frame.mediaNodes.length <= 256 &&
     frame.mediaNodes.every((node, index) => node.index === index), 'UI_TWO_ROLE_MEDIA_INVENTORY');
   const images = frame.mediaNodes.filter(node => node.kind === 'IMG');
@@ -180,15 +215,15 @@ function assertTwoRoleFrame(frame) {
   return { number, content, visible, emptyNodes };
 }
 
-function twoRoleContentClip(frame) {
-  const { visible } = assertTwoRoleFrame(frame), box = frame.question;
+function twoRoleContentClip(frame, embeddedRow) {
+  const { visible } = checkedRoles(frame, embeddedRow), box = frame.question;
   const top = Math.max(box.y, Math.min(...visible.map(node => node.rect.y)) - 2);
   const bottom = Math.min(box.y + box.height, Math.max(...visible.map(node => node.rect.y + node.rect.height)) + 2);
   return checkedRect({ x: box.x, y: top, width: box.width, height: bottom - top });
 }
 
-function intervals(frame) {
-  const clip = twoRoleContentClip(frame), viewport = frame.viewport;
+function intervals(frame, embeddedRow) {
+  const clip = twoRoleContentClip(frame, embeddedRow), viewport = frame.viewport;
   assert(clip.x >= 0 && clip.x + clip.width <= viewport.width, 'UI_PROBLEM_HORIZONTAL_CLIP');
   const blocked = frame.obstructions.filter(rect => rect.x < clip.x + clip.width && rect.x + rect.width > clip.x)
     .map(rect => [Math.max(0, rect.y - 8), Math.min(viewport.height, rect.y + rect.height + 8)]).filter(([from, to]) => to > from).sort((a, b) => a[0] - b[0]);
@@ -198,8 +233,8 @@ function intervals(frame) {
   return { clip, free };
 }
 
-function planTwoRoleTiles(frame) {
-  const { clip, free } = intervals(frame), capacity = Math.max(0, ...free.map(([from, to]) => to - from));
+function planTwoRoleTiles(frame, embeddedRow) {
+  const { clip, free } = intervals(frame, embeddedRow), capacity = Math.max(0, ...free.map(([from, to]) => to - from));
   assert(capacity > 0 && (clip.height <= capacity || capacity >= TILE_OVERLAP * 2), 'UI_SCROLL_TILE_VISIBLE_AREA');
   const tiles = []; let start = 0;
   while (true) {
@@ -209,29 +244,29 @@ function planTwoRoleTiles(frame) {
   return { tiles, capacity, coverage: assertTileCoverage(clip.height, tiles) };
 }
 
-function tileClip(frame, tile) {
-  const full = twoRoleContentClip(frame), span = tile.relativeInterval;
+function tileClip(frame, tile, embeddedRow) {
+  const full = twoRoleContentClip(frame, embeddedRow), span = tile.relativeInterval;
   assert(Array.isArray(span) && span.length === 2 && span.every(Number.isFinite) && span[0] >= 0 && span[1] <= full.height && span[1] > span[0], 'UI_SCROLL_TILE_RANGE');
   return checkedRect({ x: full.x, y: full.y + span[0], width: full.width, height: span[1] - span[0] });
 }
 
-function planTwoRoleScroll(frame, tile) {
-  const { free } = intervals(frame), clip = tileClip(frame, tile), fits = free.filter(([from, to]) => to - from >= clip.height);
+function planTwoRoleScroll(frame, tile, embeddedRow) {
+  const { free } = intervals(frame, embeddedRow), clip = tileClip(frame, tile, embeddedRow), fits = free.filter(([from, to]) => to - from >= clip.height);
   assert(fits.length > 0, 'UI_SCROLL_TILE_DOES_NOT_FIT');
   const clear = fits.find(([from, to]) => clip.y >= from && clip.y + clip.height <= to);
   const selected = clear || fits.sort((a, b) => (b[1] - b[0]) - (a[1] - a[0]))[0];
   return { scrollByY: clear ? 0 : clip.y - selected[0], safeInterval: selected, clip };
 }
 
-function assertTwoRoleTileCapture(frame, tile) {
-  const clip = tileClip(frame, tile), viewport = frame.viewport;
+function assertTwoRoleTileCapture(frame, tile, embeddedRow) {
+  const clip = tileClip(frame, tile, embeddedRow), viewport = frame.viewport;
   assert(clip.x >= 0 && clip.y >= 0 && clip.x + clip.width <= viewport.width && clip.y + clip.height <= viewport.height, 'UI_SCROLL_TILE_OUTSIDE_VIEWPORT');
   assert(frame.obstructions.every(rect => !overlaps(clip, rect)), 'UI_CAPTURE_OBSCURED'); return clip;
 }
 
-function documentFrame(frame) {
-  const roles = assertTwoRoleFrame(frame), convert = rect => ({ x: rect.x + frame.scroll.x, y: rect.y + frame.scroll.y, width: rect.width, height: rect.height });
-  return { question: convert(frame.question), content: convert(twoRoleContentClip(frame)), children: roles.visible.map(node => convert(node.rect)), image: convert(frame.image),
+function documentFrame(frame, embeddedRow) {
+  const roles = checkedRoles(frame, embeddedRow), convert = rect => ({ x: rect.x + frame.scroll.x, y: rect.y + frame.scroll.y, width: rect.width, height: rect.height });
+  return { question: convert(frame.question), content: convert(twoRoleContentClip(frame, embeddedRow)), children: roles.visible.map(node => convert(node.rect)), image: convert(frame.image),
     media: frame.mediaNodes.map(node => ({ kind: node.kind, rect: convert(node.rect) })), viewport: frame.viewport, questionNumber: frame.questionNumber,
     roles: frame.directNodes.map(({ rect, ...node }) => node) };
 }
@@ -252,29 +287,29 @@ async function measuredRoles(target, measurementArgs) {
     new Promise((_resolve, reject) => { timer = setTimeout(() => reject(new Error('UI_TWO_ROLE_MEASUREMENT_TIMEOUT')), 15000); })]).finally(() => clearTimeout(timer));
 }
 
-async function captureTwoRoleTiles(page, target, file, firstFrame, measurementArgs) {
+async function captureTwoRoleTiles(page, target, file, firstFrame, measurementArgs, embeddedRow) {
   const measure = () => measuredRoles(target, measurementArgs);
-  let frame = firstFrame; const original = documentFrame(frame), originalDomSha256 = frame.domSha256, scrollBefore = frame.scroll;
-  const plan = planTwoRoleTiles(frame), tiles = [];
+  let frame = firstFrame; const original = documentFrame(frame, embeddedRow), originalDomSha256 = frame.domSha256, scrollBefore = frame.scroll;
+  const plan = planTwoRoleTiles(frame, embeddedRow), tiles = [];
   for (const tile of plan.tiles) {
     let scrollOperations = 0;
     for (let attempt = 0; attempt < 3; attempt++) {
-      const step = planTwoRoleScroll(frame, tile); if (Math.abs(step.scrollByY) < 0.5) break;
+      const step = planTwoRoleScroll(frame, tile, embeddedRow); if (Math.abs(step.scrollByY) < 0.5) break;
       await page.evaluate(delta => window.scrollBy({ top: delta, left: 0, behavior: 'instant' }), step.scrollByY);
       await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
       scrollOperations++; frame = await measure();
     }
     assert.equal(frame.domSha256, originalDomSha256, 'UI_PROBLEM_DOM_CHANGED_DURING_SCROLL');
-    assert.deepEqual(documentFrame(frame), original, 'UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED');
-    const clip = assertTwoRoleTileCapture(frame, tile), hits = await target.evaluate(inspectHits, clip);
+    assert.deepEqual(documentFrame(frame, embeddedRow), original, 'UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED');
+    const clip = assertTwoRoleTileCapture(frame, tile, embeddedRow), hits = await target.evaluate(inspectHits, clip);
     assert(hits.samples > 0 && hits.outsideQuestion === 0, 'UI_CAPTURE_FOREIGN_CONTENT');
     const tileFile = file.replace(/\.png$/, '') + `-tile-${String(tile.tileIndex).padStart(2, '0')}.png`;
     await page.screenshot({ path: tileFile, clip, fullPage: false, caret: 'initial', timeout: 15000 });
     const after = await measure();
-    assert.deepEqual(assertTwoRoleTileCapture(after, tile), clip, 'UI_CAPTURE_GEOMETRY_CHANGED');
+    assert.deepEqual(assertTwoRoleTileCapture(after, tile, embeddedRow), clip, 'UI_CAPTURE_GEOMETRY_CHANGED');
     assert.deepEqual(after.scroll, frame.scroll, 'UI_CAPTURE_SCROLLED');
     assert.equal(after.domSha256, originalDomSha256, 'UI_PROBLEM_DOM_CHANGED_DURING_CAPTURE');
-    assert.deepEqual(documentFrame(after), original, 'UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED');
+    assert.deepEqual(documentFrame(after, embeddedRow), original, 'UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED');
     const afterHits = await target.evaluate(inspectHits, clip);
     assert(afterHits.samples > 0 && afterHits.outsideQuestion === 0, 'UI_CAPTURE_FOREIGN_CONTENT');
     tiles.push({ ...tile, filename: path.basename(tileFile), clip, scroll: after.scroll, scrollOperations, feedbackIdle: true,
@@ -288,7 +323,7 @@ async function captureTwoRoleTiles(page, target, file, firstFrame, measurementAr
     foreignContentHits: 0, cssWrites: 0, domWrites: 0, viewportChanges: 0, compositeImageCreated: false };
 }
 
-async function captureClosedSvg7ProblemTiles({ root, expectedCommit, item, viewport, surface, mode, page, target, file }) {
+async function captureClosedSvg7ProblemTiles({ root, expectedCommit, item, viewport, surface, mode, page, target, file, onInitialFrame }) {
   assert(path.isAbsolute(file) && file.endsWith('.png') && !path.resolve(file).startsWith(path.resolve(root) + path.sep), 'UI_OUTPUT_OUTSIDE_CHECKOUT_REQUIRED');
   const reader = shared.createGitReader(root, expectedCommit), manifestBytes = reader.read(MANIFEST_PATH);
   const scope = checkedSvg7Scope(manifestBytes, item, viewport, surface, mode), row = scope.row;
@@ -306,17 +341,21 @@ async function captureClosedSvg7ProblemTiles({ root, expectedCommit, item, viewp
   const measurementArgs = { ordinal: row.sourceOrdinal, bankCount: row.expectedBankCount, width: viewport.width, height: viewport.height, sourcePath: row.sourcePath, assetPath: row.assetPath };
   const first = await measuredRoles(target, measurementArgs);
   assert(first.viewport.width === viewport.width && first.viewport.height === viewport.height, 'UI_SVG7_FRAME_VIEWPORT');
+  if (onInitialFrame !== undefined) { assert.equal(typeof onInitialFrame, 'function'); onInitialFrame(structuredClone(first)); }
   const route = captureRoute(row, first);
   let capture;
   if (route === 'UNCHANGED_SHARED') capture = await shared.captureProblemTiles(page, target, file);
   else {
-    capture = await captureTwoRoleTiles(page, target, file, first, measurementArgs);
+    const embeddedRow = route === 'EXACT_EMBEDDED_CHOICES' ? row : undefined;
+    capture = await captureTwoRoleTiles(page, target, file, first, measurementArgs, embeddedRow);
     capture.closedProblemRoles = { schemaVersion: 'archive-m2s1-svg7-two-direct-roles-v1', key: row.key, questionUid: row.questionUid, sourceOrdinal: row.sourceOrdinal,
       manifestRef, sourceRef, assetRef, helperRef, initialFrameSha256: shared.sha256(shared.stable(first)), numberRoleCount: 1, contentRoleCount: 1,
-      targetImageCount: 1, emptyZeroHeightNodeCount: 1, expectedChoiceCount: 0, originalSharedHelperUnchanged: true };
+      targetImageCount: 1, emptyZeroHeightNodeCount: embeddedRow ? 0 : 1, expectedChoiceCount: embeddedRow ? 5 : 0, originalSharedHelperUnchanged: true,
+      ...(embeddedRow ? { schemaVersion: 'archive-m2s1-svg7-embedded-image-choices-v1', embeddedChoiceBinding: embeddedRow.embeddedChoiceBinding,
+        choiceState: first.choiceState } : {}) };
   }
   for (const ref of [manifestRef, captureHelperRef, helperRef, sourceRef, assetRef]) assert.deepEqual(reader.ref(ref.path), ref, 'UI_INPUT_CHANGED_DURING_RUN');
   return capture;
 }
-module.exports = { SELF_PATH, MANIFEST_PATH, MANIFEST_SHA256, COMMON_PATH, COMMON_SHA256, TWO_ROLE_KEYS, checkedSvg7Scope, captureRoute,
+module.exports = { SELF_PATH, MANIFEST_PATH, MANIFEST_SHA256, COMMON_PATH, COMMON_SHA256, TWO_ROLE_KEYS, EMBEDDED_CHOICE_KEY, assertEmbeddedChoiceRow, assertEmbeddedChoiceFrame, checkedSvg7Scope, captureRoute,
   assertTwoRoleFrame, twoRoleContentClip, planTwoRoleTiles, planTwoRoleScroll, assertTwoRoleTileCapture, measureProblemRoles, captureClosedSvg7ProblemTiles };

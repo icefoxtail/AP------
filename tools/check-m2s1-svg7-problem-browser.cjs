@@ -7,6 +7,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
 const vm = require('node:vm');
+const cp = require('node:child_process');
 const H = require('./check-reviewed-problem-renderer-browser.cjs');
 const A = require('./m2s1-svg7-problem-capture.cjs');
 const { stable, sha256, gitBlob, createGitReader, studentFontResourcePath, checkedStudentFontRefs, FONT_DIR, FONT_STYLESHEET,
@@ -16,14 +17,14 @@ const CHECKER_PATH = 'tools/check-m2s1-svg7-problem-browser.cjs';
 const SHARED_CHECKER_PATH = 'tools/check-reviewed-problem-renderer-browser.cjs';
 const SHARED_CHECKER_SHA256 = 'e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673';
 const ROLE_CAPTURE_PATH = 'tools/m2s1-svg7-problem-capture.cjs';
-const ROLE_CAPTURE_SHA256 = 'ee1f5755ce0f866a7910ef26787cdeb052251cecdfb4c351f1aa7675d588d2e0';
+const ROLE_CAPTURE_SHA256 = 'c0c8bfdf260333d3cfa7cff433dea3e0f5856eb0d02eb2ccd9a852f6e92e2996';
 const IDENTITY_PATH = 'archive/data/question_identity_map.json';
 const SCHEMA = 'archive-m2s1-svg7-problem-ui-preview-v1';
 const FONT_FAMILY = 'Nanum Myeongjo';
 const SHA1 = /^[a-f0-9]{40}$/;
 const SHA256 = /^[a-f0-9]{64}$/;
-const EXPECTED_MANIFEST_SHA256 = '084e768817160aa044d5733ee239cb38cfa424ed8885f386b3bbcdb94d7d5b8a';
-const EXPECTED_ITEMS_SHA256 = '9abb9277a06d0a76613952c4259ac392bde195425b8d6c03cf70cd7d842136f4';
+const EXPECTED_MANIFEST_SHA256 = '0078b2e25ff644db5ead8dbcb73dc2e221ece00037a5af4c59c5fb509e246bae';
+const EXPECTED_ITEMS_SHA256 = '662d07832951ac56a241dd4b028e7b13989fc47100fb0d9594a0e7fba81535d9';
 const VIEWPORTS = Object.freeze([{ name: 'desktop', width: 1365, height: 1000 }, { name: 'mobile', width: 390, height: 844 }]);
 const SEALED = 'SEALED_PUBLIC_SOURCE_CANDIDATE';
 const ownSnapshot = (question, fields) => Object.fromEntries(fields.map(field => [field,
@@ -64,8 +65,9 @@ function checkoutEvidence(actualCommit, env = process.env) {
   return { expectedCheckoutCommit: expectedCommit, actualCheckoutCommit: actualCommit, githubEventCommit: env.GITHUB_SHA ?? null };
 }
 function loadQuestions(bytes) {
-  const sandbox = { window: {} };
-  vm.runInNewContext(bytes.toString('utf8'), sandbox, { timeout: 1500, filename: 'svg7-source.js', contextCodeGeneration: { strings: false, wasm: false } });
+  const sandbox = vm.createContext(Object.create(null), { codeGeneration: { strings: false, wasm: false } });
+  vm.runInContext('globalThis.window = Object.create(null);', sandbox, { timeout: 1500 });
+  vm.runInContext(bytes.toString('utf8'), sandbox, { timeout: 1500, filename: 'svg7-source.js' });
   const bank = sandbox.window.questionBank ?? sandbox.questionBank ?? sandbox.window.examData?.questions ?? sandbox.examData?.questions;
   assert(Array.isArray(bank), 'UI_SVG7_BANK_REQUIRED');
   return bank;
@@ -81,6 +83,13 @@ function assertBoundQuestion(item, question) {
   const inline = [...question.content.matchAll(/<img\b[^>]*\bsrc\s*=\s*(['"])(.*?)\1/gi)].map(match => match[2]);
   assert.deepEqual(inline, [item.assetPath.slice('archive/'.length)], 'UI_SVG7_SINGLE_INLINE_IMAGE');
   assert(Array.isArray(question.choices) && question.choices.length === item.choiceCount, 'UI_SVG7_CHOICE_COUNT');
+  if (item.key === A.EMBEDDED_CHOICE_KEY) {
+    const binding = A.assertEmbeddedChoiceRow(item);
+    assert(Object.hasOwn(question, 'choicesEmbeddedInImage') && question.choicesEmbeddedInImage === true &&
+      question.sourcePayload?.choicesEmbeddedInImage !== true && question.choices.every(value => typeof value === 'string' && value.trim().length > 0) &&
+      sha256(stable(question.choices)) === binding.choicesSha256, 'UI_SVG7_BOUND_EMBEDDED_CHOICES');
+  } else assert(item.embeddedChoiceBinding === undefined && question.choicesEmbeddedInImage !== true && question.sourcePayload?.choicesEmbeddedInImage !== true,
+    'UI_SVG7_UNSUPPORTED_EMBEDDED_CHOICES');
 }
 function readBound(reader, ref, code) {
   const bytes = reader.read(ref.path);
@@ -88,6 +97,37 @@ function readBound(reader, ref, code) {
   assert.equal(sha256(bytes), ref.sha256, code);
   assert.equal(bytes.length, ref.bytes, code);
   return bytes;
+}
+function readHistoricalBound(reader, ref) {
+  ownKeys(ref, ['commit', 'path', 'gitBlobSha1', 'sha256', 'bytes'], 'UI_SVG7_ORIGINAL_REF');
+  assert(SHA1.test(ref.commit) && SHA1.test(ref.gitBlobSha1) && SHA256.test(ref.sha256) && Number.isSafeInteger(ref.bytes) && ref.bytes > 0 &&
+    typeof ref.path === 'string' && !path.posix.isAbsolute(ref.path) && path.posix.normalize(ref.path) === ref.path &&
+    !ref.path.includes('\\') && !ref.path.split('/').some(part => part === '.' || part === '..'), 'UI_SVG7_ORIGINAL_REF');
+  const git = args => cp.execFileSync('git', ['-C', reader.root, ...args], { maxBuffer: 4 * 1024 * 1024,
+    env: { ...process.env, GIT_NO_LAZY_FETCH: '1', GIT_OPTIONAL_LOCKS: '0' }, stdio: ['ignore', 'pipe', 'pipe'] });
+  assert.equal(git(['rev-parse', '--verify', ref.commit + '^{commit}']).toString().trim(), ref.commit, 'UI_SVG7_ORIGINAL_COMMIT');
+  assert.equal(git(['ls-tree', '-z', ref.commit, '--', ref.path]).toString(), `100644 blob ${ref.gitBlobSha1}\t${ref.path}\0`, 'UI_SVG7_ORIGINAL_REGULAR_BLOB');
+  const bytes = git(['cat-file', 'blob', ref.gitBlobSha1]);
+  assert(gitBlob(bytes) === ref.gitBlobSha1 && sha256(bytes) === ref.sha256 && bytes.length === ref.bytes, 'UI_SVG7_ORIGINAL_BYTES');
+  return bytes;
+}
+function validateEmbeddedOriginal(reader, item, question, staticRow) {
+  const binding = A.assertEmbeddedChoiceRow(item);
+  assert.deepEqual(binding.beforeSourceRef, staticRow.beforeSourceRef, 'UI_SVG7_ORIGINAL_STATIC_JOIN');
+  assert.equal(binding.beforeQuestionSha256, staticRow.wholeQuestionBeforeSha256, 'UI_SVG7_ORIGINAL_STATIC_JOIN');
+  assert.deepEqual(binding.oldAssetRef, staticRow.oldAssetRef, 'UI_SVG7_ORIGINAL_STATIC_JOIN');
+  const bank = loadQuestions(readHistoricalBound(reader, binding.beforeSourceRef));
+  assert.equal(bank.length, item.expectedBankCount, 'UI_SVG7_ORIGINAL_BANK');
+  const old = bank[item.sourceOrdinal - 1];
+  assert(sha256(stable(old)) === binding.beforeQuestionSha256 && String(old.id ?? old.number) === String(item.sourceOrdinal), 'UI_SVG7_ORIGINAL_QUESTION');
+  assert(old.choicesEmbeddedInImage === true && Object.hasOwn(old, 'choicesEmbeddedInImage') && old.sourcePayload?.choicesEmbeddedInImage !== true &&
+    sha256(stable(old.choices)) === binding.choicesSha256 && stable(old.choices) === stable(question.choices), 'UI_SVG7_ORIGINAL_EMBEDDED_CHOICES');
+  readHistoricalBound(reader, binding.oldAssetRef);
+  const beforeOther = { ...old }, afterOther = { ...question }; delete beforeOther.content; delete afterOther.content;
+  assert.deepEqual(JSON.parse(stable(beforeOther)), JSON.parse(stable(afterOther)), 'UI_SVG7_ORIGINAL_NON_URI_FIELDS');
+  const beforeUri = binding.oldAssetRef.path.slice('archive/'.length), afterUri = item.assetPath.slice('archive/'.length);
+  assert(typeof old.content === 'string' && old.content.split(beforeUri).length === 2 && old.content.replace(beforeUri, afterUri) === question.content,
+    'UI_SVG7_ORIGINAL_SINGLE_URI_REPLACEMENT');
 }
 function preflight(reader, manifest) {
   requireSealedManifest(manifest);
@@ -117,6 +157,7 @@ function preflight(reader, manifest) {
     assert(transport && staticRow && transport.questionUid === item.questionUid && staticRow.questionUid === item.questionUid &&
       transport.sourceOrdinal === item.sourceOrdinal && staticRow.sourceOrdinal === item.sourceOrdinal &&
       transport.afterWholeQuestionSha256 === item.questionSha256 && staticRow.contentAfterSha256 === item.contentSha256, 'UI_SVG7_STATIC_TRANSPORT_JOIN');
+    if (item.key === A.EMBEDDED_CHOICE_KEY) validateEmbeddedOriginal(reader, item, questions[item.sourceOrdinal - 1], staticRow);
     const asset = readBound(reader, { path: item.assetPath, gitBlobSha1: item.assetGitBlobSha1, sha256: item.assetSha256, bytes: item.assetBytes }, 'UI_SVG7_ASSET_DRIFT');
     for (const [target, field] of [['path', 'assetPath'], ['gitBlobSha1', 'assetGitBlobSha1'], ['sha256', 'assetSha256'], ['bytes', 'assetBytes']])
       assert.equal(staticRow.newAssetRef[target], item[field], 'UI_SVG7_STATIC_ASSET_JOIN');
@@ -161,13 +202,21 @@ function assertCompletedResults(results, inputs, manifest, artifacts) {
     assert.deepEqual(capture.coverage, H.assertTileCoverage(capture.content.height, capture.tiles), 'UI_SVG7_COMPLETE_COVERAGE');
     if (capture.visibleChildren === 2) {
       const roles = capture.closedProblemRoles;
-      assert(A.TWO_ROLE_KEYS.includes(item.key) && item.choiceCount === 0 && roles?.schemaVersion === 'archive-m2s1-svg7-two-direct-roles-v1' &&
-        roles.key === item.key && roles.questionUid === item.questionUid && roles.sourceOrdinal === item.sourceOrdinal &&
-        roles.expectedChoiceCount === 0 && roles.numberRoleCount === 1 && roles.contentRoleCount === 1 && roles.targetImageCount === 1 &&
-        roles.emptyZeroHeightNodeCount === 1 && roles.originalSharedHelperUnchanged === true && SHA256.test(roles.initialFrameSha256), 'UI_SVG7_COMPLETED_TWO_ROLES');
+      assert(roles && roles.key === item.key && roles.questionUid === item.questionUid && roles.sourceOrdinal === item.sourceOrdinal &&
+        roles.numberRoleCount === 1 && roles.contentRoleCount === 1 && roles.targetImageCount === 1 &&
+        roles.originalSharedHelperUnchanged === true && SHA256.test(roles.initialFrameSha256), 'UI_SVG7_COMPLETED_TWO_ROLES');
+      if (item.key === A.EMBEDDED_CHOICE_KEY) {
+        const binding = A.assertEmbeddedChoiceRow(item), state = roles.choiceState;
+        assert(roles.schemaVersion === 'archive-m2s1-svg7-embedded-image-choices-v1' && roles.expectedChoiceCount === 5 && roles.emptyZeroHeightNodeCount === 0 &&
+          state?.choiceCount === 5 && state.allChoicesNonemptyStrings === true && state.ownEmbeddedFlag === true && state.embeddedFlagValue === true &&
+          state.nestedEmbeddedFlag === false && state.choicesSha256 === binding.choicesSha256, 'UI_SVG7_COMPLETED_EMBEDDED_CHOICES');
+        assert.deepEqual(roles.embeddedChoiceBinding, binding, 'UI_SVG7_COMPLETED_EMBEDDED_CHOICES');
+      } else assert(A.TWO_ROLE_KEYS.includes(item.key) && item.choiceCount === 0 && roles.schemaVersion === 'archive-m2s1-svg7-two-direct-roles-v1' &&
+        roles.expectedChoiceCount === 0 && roles.emptyZeroHeightNodeCount === 1 && !Object.hasOwn(roles, 'embeddedChoiceBinding') && !Object.hasOwn(roles, 'choiceState'),
+        'UI_SVG7_COMPLETED_TWO_ROLES');
       assert.deepEqual(roles.sourceRef, item.sourceRef, 'UI_SVG7_COMPLETED_TWO_ROLES');
       assert.deepEqual(roles.assetRef, item.assetRef, 'UI_SVG7_COMPLETED_TWO_ROLES');
-    } else assert(Number.isInteger(capture.visibleChildren) && capture.visibleChildren >= 3 && !Object.hasOwn(capture, 'closedProblemRoles'), 'UI_SVG7_UNCHANGED_SHARED_CAPTURE');
+    } else assert(item.key !== A.EMBEDDED_CHOICE_KEY && Number.isInteger(capture.visibleChildren) && capture.visibleChildren >= 3 && !Object.hasOwn(capture, 'closedProblemRoles'), 'UI_SVG7_UNCHANGED_SHARED_CAPTURE');
     for (const tile of capture.tiles) {
       assert(tile.feedbackIdle === true && tile.obstructionsIntersectingClip === 0 && tile.foreignContentHits === 0 && tile.hitTestSamples > 0 && tile.domSha256 === capture.domSha256, 'UI_SVG7_UNOBSTRUCTED_ORIGINAL_TILE');
     }
@@ -204,6 +253,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
   const { refs: fontRefs, weights: fontWeights, licenseRef: fontLicenseRef } = checkedStudentFontRefs(reader);
   const served = new Map(), mirrored = new Map(), studentFontResources = new Map(), failures = [], results = [];
   let activeCase = null;
+  const roleDiagnostics = [];
   fs.mkdirSync(out, { recursive: true });
   const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_SUPPORTED_CHROME', checkoutCommit: reader.commit,
     manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), captureHelperRef, roleCaptureHelperRef, ...inputs,
@@ -219,7 +269,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     if (status === 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING') assertCompletedResults(results, inputs, manifest, screenshotArtifacts);
     const proof = { ...proofBase, status, ...(code ? { failureCode: code, activeCase } : {}), expectedLogicalCases: manifest.expectedCases,
       completedLogicalCases: results.length, screenshotArtifactCount: screenshotArtifacts.length, screenshotArtifacts,
-      results, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
+      results, roleDiagnostics, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
       studentFontResources: [...studentFontResources.values()], externalFontResources: [], failures };
     fs.writeFileSync(path.join(out, 'technical-proof.json'), JSON.stringify(proof, null, 2) + '\n');
     return proof;
@@ -330,7 +380,9 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
           const box = target.locator('xpath=ancestor::div[contains(concat(" ",normalize-space(@class)," ")," q-box ")][1]');
           assert.equal(await box.count(), 1, 'UI_UNIQUE_PROBLEM_BOX');
           const screenshotPath = `${item.key}-${viewport.name}.png`;
-          const capture = await A.captureClosedSvg7ProblemTiles({ root, expectedCommit, item, viewport, surface: 'PROBLEM', mode: 'exam', page, target, file: path.join(out, screenshotPath) });
+          const capture = await A.captureClosedSvg7ProblemTiles({ root, expectedCommit, item, viewport, surface: 'PROBLEM', mode: 'exam', page, target, file: path.join(out, screenshotPath),
+            onInitialFrame: frame => { assert(roleDiagnostics.length < 14, 'UI_SVG7_DIAGNOSTIC_LIMIT');
+              roleDiagnostics.push({ key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, viewport: viewport.name, frame }); } });
           const geometry = await target.evaluate(image => {
             const box = image.closest('.q-box'), a = image.getBoundingClientRect(), b = box.getBoundingClientRect();
             return { naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
@@ -389,7 +441,7 @@ async function main() {
     newParentApprovals: 0, releaseGate: proof.releaseGate }));
 }
 module.exports = { MANIFEST_PATH, CHECKER_PATH, SHARED_CHECKER_PATH, SHARED_CHECKER_SHA256, ROLE_CAPTURE_PATH, ROLE_CAPTURE_SHA256, IDENTITY_PATH, SCHEMA,
-  EXPECTED_MANIFEST_SHA256, EXPECTED_ITEMS_SHA256, VIEWPORTS, SEALED, ownSnapshot, validateManifest, requireSealedManifest, checkoutEvidence, loadQuestions, assertBoundQuestion, readBound, preflight, assertTechnicalState, assertCompletedResults, checkedOutput };
+  EXPECTED_MANIFEST_SHA256, EXPECTED_ITEMS_SHA256, VIEWPORTS, SEALED, ownSnapshot, validateManifest, requireSealedManifest, checkoutEvidence, loadQuestions, assertBoundQuestion, readBound, readHistoricalBound, validateEmbeddedOriginal, preflight, assertTechnicalState, assertCompletedResults, checkedOutput };
 if (require.main === module) main().catch(error => {
   const message = String(error?.message || ''), code = message.split('\n')[0];
   console.error(JSON.stringify({ schemaVersion: SCHEMA, status: 'FAIL', newParentApprovals: 0,
