@@ -1,0 +1,522 @@
+{
+  "schemaVersion": "archive-independent-proposal-condition-boundary-finalization-v1",
+  "createdAt": "2026-11-15T07:48:12.383Z",
+  "reviewer": "GPT_ROOT_C8F1B0BFB4FA",
+  "author": "m3s2_release",
+  "decision": "APPROVE_EXACT_TWO_CONDITIONS_AND_ONE_EXISTING_TEMPLATE_BOUNDARY",
+  "currentMainChecked": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+  "inputRef": {
+    "path": "m3-follow428-definition-finalization/review-inputs.json",
+    "sha256": "645462ec59bb8c7eabb27a03f682e5966b352ab36097edfe0d967b0f2ea711eb"
+  },
+  "definitionDraftRef": {
+    "path": "m3-follow428-definition-finalization/two-condition-definition-draft.json",
+    "sha256": "982685d485f93d8eb887a99d2fb5eeb26c94ffdfc18455daea2fec065022b047"
+  },
+  "rows": [
+    {
+      "examId": "E001",
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+      "nativeProposal": {
+        "ordinal": 8,
+        "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+        "type": "CONDITION_CANDIDATE",
+        "term": "특정 각 값 제외",
+        "definition": "예각의 특정 값을 제외하여 동치인 삼각비 표현의 중복을 피하는 제한",
+        "distinction": "0 배제 COND_NONZERO와 달리 45° 등 특정 비영값을 배제함",
+        "parent": "Condition",
+        "searchedGlobalActive": true,
+        "existingNearest": [
+          "COND_NONZERO",
+          "COND_RANGE"
+        ],
+        "status": "UNREGISTERED_NOT_INSERTED"
+      },
+      "proposalJsonSha256": "eae8b00bc7cb410a8839ce074bfa4b0da99f5d26f922c81f03fbc07fde6893dd",
+      "nativeMetaRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+        "gitBlobSha1": "51ae30285dc40d83c1e090938b491a1fa3efc72b",
+        "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9"
+      },
+      "nativeProposalRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.proposals.json",
+        "gitBlobSha1": "2965163cedff515998a1366f8dcd1dea838ca557",
+        "sha256": "3bfceaeaccaaa79e8b06912de334d13920ea4cc4ff05cf3b9195c6cb88f6e3e4"
+      },
+      "nativeSourceRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+        "gitBlobSha1": "4773ec14eba0aae468f03b1bb49be889ce396676",
+        "sha256": "02bd3217c941d49ae32c43897025fee80d2e01d5a33eabafa6a3a0a876f86980"
+      },
+      "currentSourceRef": {
+        "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+        "path": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+        "gitBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+        "sha256": "616a36936b61a7885e83b4c0702a09006f759819bc8abb03e23b6455672dba98"
+      },
+      "nativeQuestionSha256": "ea1e5e0d594d8940a48a9e9be4dafb240d9d4272438bb8eb74524e578b37407e",
+      "currentQuestionSha256": "e230ad568e3b9bea215fb4cb277a8add84a42620c43d894063d7642f5e0e9c3c",
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/26_삼산중_2학기_중간_중3_기출/q8_question-v2.svg",
+          "gitBlobSha1": "8981c33c7075e718ddd11ccb7baae8182b377910",
+          "rawSha256": "d8cc56cdd1466b324ffddd98fed8f6f2c628f2904acf69185cba3422a09aa657",
+          "renderSha256": "739d95ea6c7b422cbb4465a35e985445abc67f3e7ed39ee7771b2bcafa489243",
+          "visuallyInspected": true
+        },
+        {
+          "path": "archive/assets/images/26_삼산중_2학기_중간_중3_기출/q8-solution.svg",
+          "gitBlobSha1": "43594268c480d2ce0061a8b9751abc1efb91f234",
+          "rawSha256": "6c1176eb7549a84c96c2ecd4c209f5a6d4934630400ddcf60375fbbbccf056bf",
+          "renderSha256": "b476664739a398d4705b6c12cfa0f39697543dba0038d6fc62ec26f7dd1475b5",
+          "visuallyInspected": true
+        }
+      ],
+      "decision": "APPROVE_EXACT_CONDITION_APPLICATION",
+      "key": "COND_EXCLUDED_ANGLE_VALUE",
+      "finding": "AB is the hypotenuse and BC is opposite A, so BC=sqrt(13)*sin(a). At the explicitly excluded acute angle 45 degrees, sin(a)=cos(a) and choices 1 and 4 coincide. The exclusion therefore prevents duplicate correct expressions. It is a specific interior-angle exclusion, not merely nonzero or an interval bound.",
+      "newMetadataApprovals": 0,
+      "newDifficultyJudgment": false,
+      "newFullMathematicalQa": false,
+      "newReview2": false,
+      "sourceWrites": 0
+    },
+    {
+      "examId": "E001",
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
+      "nativeProposal": {
+        "ordinal": 19,
+        "questionUid": "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
+        "type": "BOUNDARY_REVIEW",
+        "parent": "M3-RPM-069",
+        "existingTemplate": "TM_CIRCLE_CHORD_LENGTH",
+        "definition": "현의 길이 복원 뒤 삼각형과 부채꼴 영역을 합·차로 계산",
+        "distinction": "원 그림 때문이 아니라 해설에서 AP=12를 복원해야 두 삼각형 넓이가 확정됨. 기존 TPL_CIRCLE_ANGLE_SECTOR_MEASURE는 부채꼴 계산의 보조 경로로 보존 가능",
+        "searchedGlobalActive": true,
+        "action": "후속 교차검토에서 현길이/복합넓이 경계 확인; 신규 키 삽입 없음"
+      },
+      "proposalJsonSha256": "17e4b4cdbdded44f4f0091247637f02584042912bc9115628b2738a80549534e",
+      "nativeMetaRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+        "gitBlobSha1": "51ae30285dc40d83c1e090938b491a1fa3efc72b",
+        "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9"
+      },
+      "nativeProposalRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.proposals.json",
+        "gitBlobSha1": "2965163cedff515998a1366f8dcd1dea838ca557",
+        "sha256": "3bfceaeaccaaa79e8b06912de334d13920ea4cc4ff05cf3b9195c6cb88f6e3e4"
+      },
+      "nativeSourceRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+        "gitBlobSha1": "4773ec14eba0aae468f03b1bb49be889ce396676",
+        "sha256": "02bd3217c941d49ae32c43897025fee80d2e01d5a33eabafa6a3a0a876f86980"
+      },
+      "currentSourceRef": {
+        "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+        "path": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+        "gitBlobSha1": "6386f28c0ba6b78593605159f3a239e9dd1fb800",
+        "sha256": "616a36936b61a7885e83b4c0702a09006f759819bc8abb03e23b6455672dba98"
+      },
+      "nativeQuestionSha256": "a418ab9013b3d54058a0c862983e77e28040fdc804217a277c95377dc0852d81",
+      "currentQuestionSha256": "c8dbfb8312922f49afaca0bce52da6383e9590081cb28f6ea7138a582e316d38",
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/26_삼산중_2학기_중간_중3_기출/q19_question-v2.svg",
+          "gitBlobSha1": "3f44b189c6dc9276d01882f574e9d1b649822018",
+          "rawSha256": "64a5fe49cc0b2b3323ede2c2bf621f5ec759e7dbe4ce0098e7450808ea98d8ce",
+          "renderSha256": "8b5aa9ea3f0baf3b9d032f198207efe61c8c6745fa185ada4f2f3545614b52c0",
+          "visuallyInspected": true
+        },
+        {
+          "path": "archive/assets/images/26_삼산중_2학기_중간_중3_기출/q19-solution.svg",
+          "gitBlobSha1": "5a55736a216087889e8c38661226a7f09089cc7b",
+          "rawSha256": "4882d6d2d43064164b6af60b0c36f88015ed3223214c0451b345da733c40ba8f",
+          "renderSha256": "f0869d73f5fe2fd57dd48864262b1787364021ba5ee734fda16485efa22a64a1",
+          "visuallyInspected": true
+        }
+      ],
+      "decision": "APPROVE_EXISTING_TEMPLATE_BOUNDARY_REUSE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "finding": "The existing solution reconstructs chord AP from radius 4*sqrt(3) and perpendicular centre distance 2*sqrt(3), giving AP=12. This determines both triangles of area 12*sqrt(3). The remaining sector has central angle120 and area16*pi; subtracting these from the equilateral triangle area64*sqrt(3) gives40*sqrt(3)-16*pi. The native primary chord-length classification fits the exact active definition, whose scope includes using a chord-length condition. The equilateral-triangle, Pythagorean and sector-area CCs support the subsequent composition; SEQUENTIAL is retained. No new template or parent definition is needed.",
+      "newMetadataApprovals": 0,
+      "newDifficultyJudgment": false,
+      "newFullMathematicalQa": false,
+      "newReview2": false,
+      "sourceWrites": 0
+    },
+    {
+      "examId": "E011",
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_3b4595999c22c82e40420fa1d0d09f36072fd9c9c779ef54e115324d30a86c5b",
+      "nativeProposal": {
+        "id": "B-E011-COND_SPECIFIED_APPROXIMATIONS",
+        "kind": "NEW_CONDITION",
+        "proposedKey": "COND_SPECIFIED_APPROXIMATIONS",
+        "definition": "계산에 사용할 근삿값이 문제에서 지정되어 있어 실제 정확값이나 다른 반올림값 대신 그 수치로 계산해야 한다.",
+        "internalSkeleton": "지정 근삿값 확인 → 동일 수치로 대입 → 결과 비교",
+        "distinguishFrom": {
+          "COND_RANGE": "허용 변수 구간이 아니라 수치 계산의 대입값을 고정한다."
+        },
+        "parentProblemTypeKey": null,
+        "supportOrdinals": [
+          9,
+          10
+        ],
+        "supportingQuestionUids": [
+          "qid_v1_3b4595999c22c82e40420fa1d0d09f36072fd9c9c779ef54e115324d30a86c5b",
+          "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c"
+        ],
+        "globalActiveSearch": {
+          "searchedAllActive": true,
+          "registryPath": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "exactMatch": false
+        },
+        "sourceWritePolicy": "제안 키는 등록 전 source/inbox에 넣지 않는다."
+      },
+      "proposalJsonSha256": "2bab672c421388d3b414bbc78a8bcd2d107bae8604e812ee74bd159e75a27ae8",
+      "nativeMetaRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+        "gitBlobSha1": "56db3a206e31cec5d8f30fa3747ced8e024247f1",
+        "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+      },
+      "nativeProposalRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+        "gitBlobSha1": "916667e3288af29cf22ea478abf27c5f3675a6dc",
+        "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+      },
+      "nativeSourceRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "edc111d0c12dd9136d2f61b835fa79fd8a2e232d",
+        "sha256": "45c08dc22433166bed130aef991c4453abed6be926cdee6453925184ecb95049"
+      },
+      "currentSourceRef": {
+        "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+        "path": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "56f0bbf80029562f4c1b2877d075146d4fdb267b",
+        "sha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+      },
+      "nativeQuestionSha256": "1abc0bcd6b719ed673abb9f95f64acdd0a6c95e91dbc709f83e6c750fd4d2ff1",
+      "currentQuestionSha256": "c74ee70ec175ef17247099855864c8bf5148d10a2b85db7af5299a3866842a35",
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q9.png",
+          "gitBlobSha1": "b7cd5e7f253739925972bde8ed4f30f3677875e0",
+          "rawSha256": "4c818d952c7e17b2abb84c73da85b35836c7b97cfc94c9d92d6c4b43d22acb2b",
+          "renderSha256": "4c818d952c7e17b2abb84c73da85b35836c7b97cfc94c9d92d6c4b43d22acb2b",
+          "visuallyInspected": true
+        }
+      ],
+      "decision": "APPROVE_EXACT_CONDITION_APPLICATION",
+      "key": "COND_SPECIFIED_APPROXIMATIONS",
+      "finding": "The original PNG gives AB=9, angle B=34 degrees, a=AC and b=BC. The expressly prescribed values give a=9*0.56=5.04 and b=9*0.83=7.47, hence a+b=12.51, matching choice2. The condition concerns using these supplied approximations in arithmetic; it does not constrain the range of a variable.",
+      "newMetadataApprovals": 0,
+      "newDifficultyJudgment": false,
+      "newFullMathematicalQa": false,
+      "newReview2": false,
+      "sourceWrites": 0
+    },
+    {
+      "examId": "E011",
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c",
+      "nativeProposal": {
+        "id": "B-E011-COND_SPECIFIED_APPROXIMATIONS",
+        "kind": "NEW_CONDITION",
+        "proposedKey": "COND_SPECIFIED_APPROXIMATIONS",
+        "definition": "계산에 사용할 근삿값이 문제에서 지정되어 있어 실제 정확값이나 다른 반올림값 대신 그 수치로 계산해야 한다.",
+        "internalSkeleton": "지정 근삿값 확인 → 동일 수치로 대입 → 결과 비교",
+        "distinguishFrom": {
+          "COND_RANGE": "허용 변수 구간이 아니라 수치 계산의 대입값을 고정한다."
+        },
+        "parentProblemTypeKey": null,
+        "supportOrdinals": [
+          9,
+          10
+        ],
+        "supportingQuestionUids": [
+          "qid_v1_3b4595999c22c82e40420fa1d0d09f36072fd9c9c779ef54e115324d30a86c5b",
+          "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c"
+        ],
+        "globalActiveSearch": {
+          "searchedAllActive": true,
+          "registryPath": "archive/data/meta-foundation/compiled/condition_registry.json",
+          "exactMatch": false
+        },
+        "sourceWritePolicy": "제안 키는 등록 전 source/inbox에 넣지 않는다."
+      },
+      "proposalJsonSha256": "2bab672c421388d3b414bbc78a8bcd2d107bae8604e812ee74bd159e75a27ae8",
+      "nativeMetaRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+        "gitBlobSha1": "56db3a206e31cec5d8f30fa3747ced8e024247f1",
+        "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+      },
+      "nativeProposalRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+        "gitBlobSha1": "916667e3288af29cf22ea478abf27c5f3675a6dc",
+        "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+      },
+      "nativeSourceRef": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "edc111d0c12dd9136d2f61b835fa79fd8a2e232d",
+        "sha256": "45c08dc22433166bed130aef991c4453abed6be926cdee6453925184ecb95049"
+      },
+      "currentSourceRef": {
+        "commit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+        "path": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "56f0bbf80029562f4c1b2877d075146d4fdb267b",
+        "sha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+      },
+      "nativeQuestionSha256": "649f9d428c0441609f13c52acda91a954ff0e23a972f92374e103a03f2162a4e",
+      "currentQuestionSha256": "af88955d6787711feb3b188ac8ef3d0b5913c3b5c7881f521f1b0eb2ab95511b",
+      "rendererAssets": [
+        {
+          "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q10.png",
+          "gitBlobSha1": "c020ddd292027ef9f963a8dc14711a5da4847512",
+          "rawSha256": "3bf6ff0e8275ad37d8932e38554dbb73ad0312f95dd8e1678fd19d761bc76bc1",
+          "renderSha256": "3bf6ff0e8275ad37d8932e38554dbb73ad0312f95dd8e1678fd19d761bc76bc1",
+          "visuallyInspected": true
+        },
+        {
+          "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q10-solution.svg",
+          "gitBlobSha1": "b7a2275c09587aa227f517e805f04ca58bea131d",
+          "rawSha256": "aa126663e758ca433ca1d60c353e4cfe4517ae18e206ba0a9e9bc527e2a6becf",
+          "renderSha256": "67924a798208af7a6d4eb268b7f2bde9a6b26a4447d5525999b3e7438c208005",
+          "visuallyInspected": true
+        }
+      ],
+      "decision": "APPROVE_EXACT_CONDITION_APPLICATION",
+      "key": "COND_SPECIFIED_APPROXIMATIONS",
+      "finding": "The original PNG and solution SVG distinguish horizontal distance50 from the1.5 eye-height offset. Using the expressly supplied tan38=0.78 gives39 above eye level, then40.5 total, matching choice5. The supplied approximation is a computation rule independent of the sequential height-offset method.",
+      "newMetadataApprovals": 0,
+      "newDifficultyJudgment": false,
+      "newFullMathematicalQa": false,
+      "newReview2": false,
+      "sourceWrites": 0
+    }
+  ],
+  "approvedRegistryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "collection": "conditions",
+      "match": {
+        "conditionKey": "COND_EXCLUDED_ANGLE_VALUE"
+      },
+      "before": null,
+      "after": {
+        "conditionKey": "COND_EXCLUDED_ANGLE_VALUE",
+        "canonicalLabelKo": "특정 예각 값 제외",
+        "definition": "문제에서 특정 예각 값을 제외하도록 명시하여, 그 각에서 서로 다른 삼각비 표현이 같은 값을 갖는 경우를 배제하는 조건.",
+        "aliases": [],
+        "owner": "CONDITION_CORE",
+        "status": "ACTIVE",
+        "sourceEligibility": "ORIGINAL_EXAM",
+        "supportingQuestionUids": [
+          "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74"
+        ],
+        "supportingItemCount": 1,
+        "evidenceProvenance": [
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+            "sourceOrdinal": 8,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+              "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.proposals.json",
+              "sha256": "3bfceaeaccaaa79e8b06912de334d13920ea4cc4ff05cf3b9195c6cb88f6e3e4"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+            "currentSourceRawSha256": "616a36936b61a7885e83b4c0702a09006f759819bc8abb03e23b6455672dba98"
+          }
+        ]
+      }
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "collection": "conditions",
+      "match": {
+        "conditionKey": "COND_SPECIFIED_APPROXIMATIONS"
+      },
+      "before": null,
+      "after": {
+        "conditionKey": "COND_SPECIFIED_APPROXIMATIONS",
+        "canonicalLabelKo": "지정된 근삿값 사용",
+        "definition": "계산에 사용할 근삿값이 문제에서 지정되어 있어 실제 정확값이나 다른 반올림값 대신 그 수치로 계산해야 한다.",
+        "aliases": [],
+        "owner": "CONDITION_CORE",
+        "status": "ACTIVE",
+        "sourceEligibility": "ORIGINAL_EXAM",
+        "supportingQuestionUids": [
+          "qid_v1_3b4595999c22c82e40420fa1d0d09f36072fd9c9c779ef54e115324d30a86c5b",
+          "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c"
+        ],
+        "supportingItemCount": 2,
+        "evidenceProvenance": [
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_3b4595999c22c82e40420fa1d0d09f36072fd9c9c779ef54e115324d30a86c5b",
+            "sourceOrdinal": 9,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+              "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+              "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+            "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+          },
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c",
+            "sourceOrdinal": 10,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+              "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+              "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+            "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+          }
+        ]
+      }
+    }
+  ],
+  "existingGlobalConditionRegistry": {
+    "commit": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+    "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+    "sha256": "3dacd35e12f9c49283f7c14f8aa99c61dba1cb9ac14b5e86dee9d2a80d452208",
+    "activeCount": 57,
+    "exactKeyAndLabelCollisions": 0
+  },
+  "existingCanonicalConditionRegistry": {
+    "commit": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+    "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "sha256": "8c60ebb19670c12491b7259e90530d3b64c16e1252bb691e5b69d1670a16f617"
+  },
+  "nearestDefinitions": [
+    {
+      "key": "COND_NONZERO",
+      "distinction": "0을 배제하는 조건이며 특정한 비영 예각45° 배제와 다름."
+    },
+    {
+      "key": "COND_RANGE",
+      "distinction": "허용 구간/범위 조건으로서 지정된 수치 대입값을 고정하는 조건과 다르며 원 제안이 별도 특정각 제외를 명시."
+    },
+    {
+      "key": "COND_RESTRICTED_INTERVAL",
+      "distinction": "지정 유한구간의 제한이며 허용 구간 내부 한 각 값 제외와 구별."
+    }
+  ],
+  "existingBoundaryAuthority": {
+    "commit": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+    "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+    "sha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458",
+    "parent": {
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "canonicalLabelKo": "원과 직선",
+      "definition": "원과 직선의 위치 관계, 교점, 현, 거리 조건을 구하거나 판정하는 문제유형.",
+      "aliases": [],
+      "internalDescription": "원과 직선 semantic problem family",
+      "supportingQuestionUids": [
+        "qid_v1_0aaf7b07e325554d90511974b098ef3ed54be960c248a2a0356f9d96bdd05092",
+        "qid_v1_140c246d8642e9415e666a7bda6464375d0ae7834f97ab6b41316f59eae0d1f7",
+        "qid_v1_1da8ffcbefa5371c4036906957d7b0659d02fcadc18ccfb3417c11d853e1866b",
+        "qid_v1_200d92bc0556f5f3ee9c95db7d7389e8116e05cb4a01cfb519ff35379ae63500",
+        "qid_v1_29171910470c6a5e841f8c6b67c20cb135f649ac53296ac892d467395bd2e051",
+        "qid_v1_293854007307c2d69f1c1f7aa64b26a1311d47251dcb5ab9eea8a4486241204b",
+        "qid_v1_29c2bcfd6b1c750fedcfef604cc0428a96119d038c6c7466e24b140be88f8882",
+        "qid_v1_2d324b63161761d876a58767cbd013f6238747235bb02c0e3a42136dbb1c6f1c",
+        "qid_v1_31de80696c574424896947ae5c931a93a045943a9f7fa94edce88307e207808e",
+        "qid_v1_35eaba599a897f5b789da435420f3c58d936a2c19a8fc2f38f62cb0485b9a2a0",
+        "qid_v1_3648d9c122d0d70723bf7e277aa9871d706388a77bafb408200d455170210ed3",
+        "qid_v1_4846779a566947ac2e51d606c3991aa5f535db1ddaab67225e78acdd8cd57aff",
+        "qid_v1_4968bf7d2d0aff322c8698c2728b621d07bde9af3a181fc7cda4f93884821c72",
+        "qid_v1_4e064599a5c4a99b561b10d5571423e1e8edb4e0968fda945dd44b7e577696bf",
+        "qid_v1_598536c5ccdf614048f6560b28642782afde98585f94f868b94bbeed855693a2",
+        "qid_v1_5b902822d286819e4c1fd1562603fce054be0ddae33057ce012d61dd708f5a38",
+        "qid_v1_5f0eedd669a0c0f2aecd40a20ed3b761ac21c70d41ac0a2d485f74d0f74532b8",
+        "qid_v1_634c975fd831f8ca5cc0f83c25e63ddc96a2e3df3bec71ade1bab80069931675",
+        "qid_v1_731546a00cbcc181ebe1101d0df5ba06e576b97682f7b9d0db1f3edf4680d604",
+        "qid_v1_7867b21d27d521bc7769b302ef521094a5fe04c9df7297e8da65a40fa577df47",
+        "qid_v1_7cabe3d419d5ac72199a5bf59d44072c0e4f57bd7f88cd1ba3e7a77f7cea6339",
+        "qid_v1_85112ba102de21df92ceb2dc415b8bb4c4c7fbcde121508939b8998442fd813e",
+        "qid_v1_8700b5aeb354fd89caf4b59e445031ee73bbefda9aa7c7caa2e1369a0d034763",
+        "qid_v1_ab6bb658269e231bfec16e35c4c23bf0767e927f1b9a0d2815381f20d16f443c",
+        "qid_v1_b10cb4d1948add6ec2e160746039bf2d674c51f436bd770d1ad3c62022066526",
+        "qid_v1_b258331b27351886e43f6dd6a446f56656b3c1e2cf56ae6f04e5c8b2ac74d28b",
+        "qid_v1_b2860eb5887ca5a93e907c4357378ba91ebe093dbd6d95fe764736214e531582",
+        "qid_v1_c09b25f13242b61ebc2723d92c51066e85c6eca69f32a08a509a6657229a7ff7",
+        "qid_v1_c2696f2bcdc98ac2cdb6a30feb6aad5847860a5c965a795d48aff0321f2ec759",
+        "qid_v1_c8d8e1346f53bf8cd8a47684242e46f2db1cd1068f33e32f1c5b4cbaf2eb12a5",
+        "qid_v1_d4e424c451c3e9b3eaf277ed1796ec5acb268b4263d02a56ae52325e8e45db33",
+        "qid_v1_e322bfa20e99433c8b47e138d4c66e35f430c94ed847d8ba3f41bb77e92a71fc",
+        "qid_v1_f0aa7f1c5363e7be2bf27b04c0787a0bcb35d73f6a724bfa76b6dfd7d20e15eb"
+      ],
+      "supportingItemCount": 33,
+      "sourceUnit": "CIRCLE_EQUATION",
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS"
+    },
+    "template": {
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "canonicalLabelKo": "현의 길이",
+      "definition": "원과 직선이 만드는 현의 길이를 구하거나 현의 길이 조건을 이용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "원과 직선이 만드는 현의 길이를 구하거나 현의 길이 조건을 이용하는 유형.",
+      "parentProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "supportingQuestionUids": [
+        "qid_v1_293854007307c2d69f1c1f7aa64b26a1311d47251dcb5ab9eea8a4486241204b",
+        "qid_v1_29c2bcfd6b1c750fedcfef604cc0428a96119d038c6c7466e24b140be88f8882",
+        "qid_v1_2d324b63161761d876a58767cbd013f6238747235bb02c0e3a42136dbb1c6f1c",
+        "qid_v1_598536c5ccdf614048f6560b28642782afde98585f94f868b94bbeed855693a2",
+        "qid_v1_731546a00cbcc181ebe1101d0df5ba06e576b97682f7b9d0db1f3edf4680d604",
+        "qid_v1_7cabe3d419d5ac72199a5bf59d44072c0e4f57bd7f88cd1ba3e7a77f7cea6339",
+        "qid_v1_c09b25f13242b61ebc2723d92c51066e85c6eca69f32a08a509a6657229a7ff7",
+        "qid_v1_e322bfa20e99433c8b47e138d4c66e35f430c94ed847d8ba3f41bb77e92a71fc"
+      ],
+      "supportingItemCount": 8,
+      "sourceUnit": "CIRCLE_EQUATION",
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS"
+    }
+  },
+  "newConditionDefinitions": 2,
+  "newCrossConceptDefinitions": 0,
+  "newTemplateDefinitions": 0,
+  "existingDefinitionsModified": 0,
+  "newMetadataApprovals": 0,
+  "newDifficultyApprovals": 0,
+  "newFullExamQa": false,
+  "newReview2": false,
+  "sourceWrites": 0,
+  "canonicalWrites": 0,
+  "officialCompilerResolverAndConsumerStillRequired": true
+}

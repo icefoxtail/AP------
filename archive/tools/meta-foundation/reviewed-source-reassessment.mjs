@@ -257,13 +257,16 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       origin = "CURRENT_DEFINITION_APPLICATION_UNCHANGED_NATIVE_SOURCE";
     } else if (Object.hasOwn(accepted, field)) { value = accepted[field]; origin = "NATIVE_AFTER"; }
     else if (text(row[field])) { value = row[field]; origin = "NATIVE_ITEM_FIELD"; }
-    else if (text(committedBank[ordinal - 1][field])) { value = committedBank[ordinal - 1][field]; origin = "REVIEW_COMMIT_SOURCE_FIELD"; }
-    else if (field === "primaryMethod" && [patch.after.primaryMethod, patch.after.decisiveStep,
+    else if (field === "primaryMethod" && !equal(committedBank[ordinal - 1][field], row.decisiveStep) &&
+      [patch.after.primaryMethod, patch.after.decisiveStep,
       question.primaryMethod, question.decisiveStep].every(v => equal(v, row.decisiveStep))) {
       // This schema's reviewed decisive step may be carried verbatim as both rationale
-      // fields. It is not a separately authored method judgment or new mathematical QA.
+      // fields, including when the review commit still carries an older source method.
+      // Keep already-matching source provenance stable for issued receipts. This is
+      // not a separately authored method judgment or new mathematical QA.
       value = row.decisiveStep; origin = "NATIVE_DECISIVE_STEP_VERBATIM";
-    } else if (field === "primaryMethod" && review.schemaVersion === "m3-s2-complete-semantic-review-v1" &&
+    } else if (text(committedBank[ordinal - 1][field])) { value = committedBank[ordinal - 1][field]; origin = "REVIEW_COMMIT_SOURCE_FIELD"; }
+    else if (field === "primaryMethod" && review.schemaVersion === "m3-s2-complete-semantic-review-v1" &&
       Object.keys(patch.after).length === 2 && ["sourceFingerprint", "contentFingerprint"].every(key => Object.hasOwn(patch.after, key)) &&
       metadata.metadataApprovalType === "FINAL_QA" && metadata.reviewStatus === "reviewed_pass" &&
       metadata.tagStatus === "reviewed_pass" && String(metadata.metadataStatus || "").startsWith("approved_") &&
