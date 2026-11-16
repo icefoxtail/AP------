@@ -1137,6 +1137,83 @@
     return "";
   }
 
+
+  // This is a display repair scope, not an approval source. The parent was issued
+  // in m2s2-centroid2-current-v2-26fc-20261115-E023 after the existing parent-labels
+  // evidence was checked. Every use still requires a current, verified receipt.
+  const ISSUED_PARENT_DISPLAY_SCOPE = Object.freeze({
+    qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3: Object.freeze({
+      sourceFile: "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+      sourceOrdinal: 21,
+      grade: "중2", curriculumKey: "2015", courseKey: "M2-2",
+      standardUnitKey: "M2-05", subUnitKey: "M2-05-TRIANGLE_PROPERTIES",
+      L1: "삼각형의 성질", L2: "삼각형의 외심과 내심",
+    }),
+  });
+
+  function issuedParentDisplayProjection({ source, record, assignment, issued, scopeParents, canonicalParents }) {
+    const uid = text(record.questionUid), scope = ISSUED_PARENT_DISPLAY_SCOPE[uid];
+    const meta = source.metadataAssignmentEvidence;
+    if (!scope || !issued || issued.assignment !== assignment || issued.approvalType !== "FINAL_QA" ||
+        source.metaProjectionStatus !== "DISPLAY_PROJECTION_UNAVAILABLE" ||
+        source.metaProjectionFailureReason !== "DISPLAY_PROJECTION_PARENT_AMBIGUOUS" || source.metaProjection != null ||
+        source.sourceIssueHold === true || source.semanticDisposition === "HOLD" ||
+        Object.values(source.metaFieldEvidence || {}).some(evidence =>
+          ["EVIDENCE_DEBT", "STALE", "INVALID", "HOLD", "PENDING", "UNKNOWN"].includes(evidence?.status)) ||
+        source.sourceStatus !== "VERIFIED" || source.sourceIntegrityStatus !== "VERIFIED" || source.identityStatus !== "VERIFIED" ||
+        normalizeFile(source.sourceFile) !== scope.sourceFile || Number(source.sourceOrdinal) !== scope.sourceOrdinal ||
+        text(record.sourceGrade) !== scope.grade || text(meta?.questionUid) !== uid ||
+        normalizeFile(meta?.sourceFile) !== scope.sourceFile || Number(meta?.sourceOrdinal) !== scope.sourceOrdinal ||
+        text(assignment.questionUid) !== uid || normalizeFile(assignment.sourceFile) !== scope.sourceFile ||
+        Number(assignment.sourceOrdinal) !== scope.sourceOrdinal || assignment.metadataApprovalType !== "FINAL_QA" ||
+        assignment.metadataStatus !== "approved_semantic_review" || meta?.metadataStatus !== assignment.metadataStatus ||
+        !SHA256.test(text(source.sourceFingerprint)) || meta?.sourceFingerprint !== source.sourceFingerprint ||
+        assignment.reviewEvidence?.reviewedSourceFingerprint !== source.sourceFingerprint ||
+        !SHA256.test(text(source.assignmentFingerprint)) || meta?.assignmentFingerprint !== source.assignmentFingerprint ||
+        assignment.assignmentFingerprint !== source.assignmentFingerprint ||
+        text(source.metadataRevision) !== text(meta?.metadataRevision) || text(assignment.metadataRevision) !== text(meta?.metadataRevision) ||
+        !["standardUnit", "subUnit"].every(field => meta?.fieldStatus?.[field] === "approved_final_qa" &&
+          assignment.fieldStatus?.[field] === "approved_final_qa") ||
+        Object.values(meta?.fieldStatus || {}).includes("manual_review_pending") ||
+        !Array.isArray(meta?.evidenceRefs) || !meta.evidenceRefs.includes("archive/" + issued.reference) ||
+        !SHA256.test(issued.sha256) || !SHA256.test(issued.sourceRawSha256) ||
+        ["curriculumKey", "courseKey", "standardUnitKey", "subUnitKey", "L1", "L2"].some(field =>
+          text(assignment[field]) !== scope[field] || text(record[field]) !== scope[field])) return null;
+
+    // Preserve the ordinary exact-subunit-first/fallback candidate set. Only
+    // the already-issued tuple may disambiguate it; no default is removed.
+    const units = scopeParents.filter(row => text(row.grade) === scope.grade &&
+      text(row.curriculumKey) === scope.curriculumKey && text(row.courseKey) === scope.courseKey &&
+      text(row.standardUnitKey) === scope.standardUnitKey);
+    const exact = units.filter(row => text(row.subUnitKey) === scope.subUnitKey);
+    const candidates = exact.length ? exact : units.filter(row => !text(row.subUnitKey));
+    const parents = candidates.filter(row => text(row.L1) === scope.L1 && text(row.L2) === scope.L2);
+    const masterParents = canonicalParents.filter(row => ["grade", "curriculumKey", "courseKey", "L1", "L2"]
+      .every(field => text(row[field]) === scope[field]));
+    if (candidates.length < 2 || parents.length !== 1 || masterParents.length !== 1 ||
+        ["standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit"].some(field => !text(assignment[field]))) return null;
+
+    return {
+      projectionStatus: "DISPLAY_ONLY_SOURCE_BOUND", displayOnly: true,
+      ...Object.fromEntries(["curriculumKey", "courseKey", "standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "L1", "L2"]
+        .map(field => [field, assignment[field]])),
+      evidenceByField: { ...(source.metaFieldEvidence || {}),
+        ...Object.fromEntries(["standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit"]
+          .map(field => [field, { status: assignment.fieldStatus[field.startsWith("subUnit") ? "subUnit" : "standardUnit"] }])) },
+      sourceBinding: {
+        questionUid: uid, sourceFile: scope.sourceFile, sourceOrdinal: scope.sourceOrdinal,
+        sourceFingerprint: source.sourceFingerprint, assignmentFingerprint: source.assignmentFingerprint,
+        bindingMode: "EXACT", metadataRevision: meta.metadataRevision, evidenceRefs: [...meta.evidenceRefs],
+        sourceJsSha256: record.currentSourceJsSha256, sourceRawSha256: issued.sourceRawSha256,
+      },
+      parentBinding: {
+        standardUnitKey: scope.standardUnitKey, matchedSubUnitKey: exact.length ? scope.subUnitKey : "",
+        resolution: "ISSUED_FINAL_QA_EXACT_PARENT", L1: scope.L1, L2: scope.L2,
+        reference: issued.reference, sha256: issued.sha256,
+      },
+    };
+  }
+
   function resolveCatalog({
     assignmentEvidence = {},
     versionBundle,
@@ -1308,6 +1385,7 @@
     // FINAL_QA, REVIEW2, and META_PIPELINE_AUDIT registrations retain their own approval provenance.
     // A byte-bound v2 receipt supplies assignments only for its exact current
     // source, approved metadata, and ACTIVE runtime record; no R2 override is fabricated.
+    const issuedDisplayParentsByUid = new Map();
     const registrationPaths = reviewedRegistrationProofPaths(overlayPacks);
     for (const path of registrationPaths) {
       const receipt = resources[path], receiptSha = text(versionBundle.files[path]?.sha256);
@@ -1362,6 +1440,18 @@
           reviewEvidence: { status: "PASS", reference: path, sha256: receiptSha, approvalType: receipt.approval.type, reviewedSourceFingerprint: accepted.sourceFingerprint } };
         canonicalAuthority.assignmentsByUid[uid] = [assignment];
         canonicalAuthority.advancedAssignmentsByUid[uid] = [assignment];
+        if (ISSUED_PARENT_DISPLAY_SCOPE[uid] && receipt.approval.type === "FINAL_QA" &&
+            overlay.metadataRevision === accepted.metadataRevision && overlay.metadataApprovalType === "FINAL_QA" &&
+            overlay.metadataApprovalType === accepted.metadataApprovalType && overlay.metadataStatus === accepted.metadataStatus &&
+            Array.isArray(accepted.approvalEvidence) && accepted.approvalEvidence.length > 0 &&
+            JSON.stringify(overlay.approvalEvidence) === JSON.stringify(accepted.approvalEvidence) &&
+            JSON.stringify(meta.evidenceRefs) === JSON.stringify(accepted.approvalEvidence) &&
+            JSON.stringify(overlay.fieldStatus) === JSON.stringify(accepted.fieldStatus)) {
+          const verified = issuedDisplayParentsByUid.get(uid) || [];
+          verified.push({ assignment, approvalType: receipt.approval.type, reference: path,
+            sha256: receiptSha, sourceRawSha256: receipt.sourceRawSha256 });
+          issuedDisplayParentsByUid.set(uid, verified);
+        }
       }
     }
     for (const source of catalog.records) {
@@ -1623,6 +1713,15 @@
             if (Object.keys(rpmMetadata).length) record.metadataAssignmentEvidence = { ...record.metadataAssignmentEvidence, rpmMetadata };
           }
           record.assignmentEvidence = candidate.assignmentEvidence || assignmentRows[0] || null;
+          const issuedParents = issuedDisplayParentsByUid.get(uid) || [];
+          const displayProjection = issuedParentDisplayProjection({ source, record,
+            assignment: candidate.assignmentEvidence, issued: issuedParents.length === 1 ? issuedParents[0] : null,
+            scopeParents: links.records || [], canonicalParents: uniqueParents });
+          if (displayProjection) {
+            record.metaProjection = displayProjection;
+            record.metaProjectionStatus = displayProjection.projectionStatus;
+            record.metaProjectionFailureReason = "";
+          }
         }
       } else {
         record.canonicalAssignmentReasons = assignmentResult.reasons;

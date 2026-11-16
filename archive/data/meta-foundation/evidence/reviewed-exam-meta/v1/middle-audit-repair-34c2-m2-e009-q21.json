@@ -1,0 +1,554 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "middle-audit-repair-34c2-m2-e009-q21",
+  "requestSha256": "ed57d403a37430f1722c2cae687dc5f4968233bff5039d717957b9febe827aa7",
+  "examUid": "25_연향중_1학기_기말_중2_기출",
+  "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+  "sourceBlobSha1": "a5addb0951dcd0892cde2e21e3bc23b080c9a5bc",
+  "sourceRawSha256": "10aee6984c88c649e6df3571d9c16bccd812076643b98a75270c1a67d1692737",
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_ROOT_0A70543C4CE8",
+    "evidenceRefs": [
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E009.accepted-review.json",
+        "sha256": "691e36be8fb22796e164e43de699f1e82dc93313e841a7ca7e2e5bb5db628cd5"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e009-q21-definition-approval.json",
+        "sha256": "c9d99644f099ba12d73de983d9e38ea2080bfc566c6f18de3c2ec300ea052046"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e009-q21-independent-definition-application-review.json",
+        "sha256": "b1b1f482f721f47d0cce8e12703c0fc1647e26e9879c49a2936ba29d7cc6dfee"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e009-q21-current-definition-application-binding.json",
+        "sha256": "ce6cb2776b5baa8233ad82a36eec8cd43330a6645973b9262ac8042cafa77a4c"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e009-q21-current-source-delta-verification.json",
+        "sha256": "dd61f4c31a5c963ed3a27d6b14691b8743e6108179cb71666969dd2a002fd27b"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "d8bee9e806e3481432b94a02c1ff95ee22bf3dbe71c66cb73d162dabddde2542"
+      }
+    ]
+  },
+  "rpmPrimaryBindings": [
+    {
+      "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+      "sourceOrdinal": 21,
+      "recordId": "M2-RPM-157",
+      "crosswalkRef": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "d8bee9e806e3481432b94a02c1ff95ee22bf3dbe71c66cb73d162dabddde2542"
+      },
+      "masterRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      },
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식의 활용",
+        "l3": "수와 개수",
+        "l4": "개수·가격"
+      },
+      "authorityUse": "RPM_PATH_PROVENANCE_ONLY",
+      "selectsPtTpl": false
+    }
+  ],
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+        "parentProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "canonicalLabelKo": "알려진 단위량과 수량 교환 차이의 연립식",
+        "definition": "알려진 두 단위량과 두 수량의 합 및 두 수량을 서로 바꾼 가중합의 차이를 이용해 연립일차방정식을 세우고 수량을 구한다.",
+        "internalSkeleton": "DEFINE_TWO_QUANTITIES_TOTAL_COUNT_EQUATION_SWAP_WEIGHTED_TOTALS_DIFFERENCE_SOLVE_LINEAR_SYSTEM",
+        "status": "ACTIVE",
+        "ownerPack": "H1_FOUNDATION",
+        "aliases": [],
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "CURRENT_M2_AUDIT_REPAIR_34C2_EXACT_TEMPLATE_APPROVAL",
+            "nativeReview": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E009.accepted-review.json",
+            "nativeSourceOrdinal": 21,
+            "approvedBy": "GPT_ROOT_0A70543C4CE8",
+            "approvalScope": "DEFINITION_AND_EXACT_UID_SEMANTIC_APPLICATION; OFFICIAL_REGISTRY_WRITE_PENDING"
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e009-q21-definition-approval.json",
+          "sha256": "c9d99644f099ba12d73de983d9e38ea2080bfc566c6f18de3c2ec300ea052046"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "problemTypeKey": "PT_H1_EQUATION_APPLICATION"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "ownerPack": "MIDDLE2",
+        "subUnitLabelKo": "연립일차방정식의 활용",
+        "L1": "연립일차방정식",
+        "L2": "연립일차방정식의 활용",
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e"
+        ],
+        "supportingItemCount": 1
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e009-q21-definition-approval.json",
+          "sha256": "c9d99644f099ba12d73de983d9e38ea2080bfc566c6f18de3c2ec300ea052046"
+        }
+      ]
+    }
+  ],
+  "appliedRecords": [
+    {
+      "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+      "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceFingerprint": "e3497d1d0521f2a53f217be2ef8b2d8eeea1c69149ce83c79bcc24a51fc722a7",
+      "contentFingerprint": "5ea3b334f9335102b29448a688b26da1f5ad1fa62af6f77a8e9d7b5e6990e056",
+      "standardCourse": "중2",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "연립일차방정식",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "subUnit": "연립일차방정식의 활용",
+      "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
+      "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+      "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+      "difficultyBucket": 3,
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE2@1.0.10:exam-final_qa-v2:middle-audit-repair-34c2-m2-e009-q21",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase1/pilot/review/high-confidence-semantic-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e009-q21.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e009-q21.source-review-binding.json"
+      ],
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "primaryMethod": "개수·가격 조건으로 연립방정식 구성",
+      "decisiveStep": "x+y=10,x-y=2",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "courseKey": "M2-1",
+      "rpmPrimaryId": "M2-RPM-157",
+      "rpmPrimaryPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식의 활용",
+        "l3": "수와 개수",
+        "l4": "개수·가격"
+      },
+      "rpmL1": "연립일차방정식",
+      "rpmL2": "연립일차방정식의 활용",
+      "rpmL3": "수와 개수",
+      "rpmL4": "개수·가격",
+      "L1": "연립일차방정식",
+      "L2": "연립일차방정식의 활용",
+      "L3": "방정식의 활용",
+      "L4": "알려진 단위량과 수량 교환 차이의 연립식",
+      "reviewStatus": "reviewed_pass",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE2",
+      "metaFoundationPackVersion": "1.0.10",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
+    }
+  ],
+  "appliedIdentityRecords": [
+    {
+      "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+      "legacyQKey": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js_21",
+      "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceFingerprint": "e3497d1d0521f2a53f217be2ef8b2d8eeea1c69149ce83c79bcc24a51fc722a7"
+    }
+  ],
+  "fingerprintRepairs": [
+    {
+      "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+      "sourceOrdinal": 21,
+      "metadataBefore": {
+        "sourceFingerprint": "64c94dc79a335c50d8ae7d97b510bddc46b4687f15a5c057d103f9866a15b14c",
+        "contentFingerprint": "655602d1763fe8abf7d945174a0f64b773dde8c38dcedc8c6dcc319ca238aacf"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "64c94dc79a335c50d8ae7d97b510bddc46b4687f15a5c057d103f9866a15b14c"
+      },
+      "after": {
+        "sourceFingerprint": "e3497d1d0521f2a53f217be2ef8b2d8eeea1c69149ce83c79bcc24a51fc722a7",
+        "contentFingerprint": "5ea3b334f9335102b29448a688b26da1f5ad1fa62af6f77a8e9d7b5e6990e056"
+      },
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "nativeSchemaVersion": "m2-s1-meta-review-v1",
+        "reviewCommit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "reviewPath": "docs/operations/m2-s1-meta-full-20261114/exams/E009/accepted-review.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E009.accepted-review.json",
+          "sha256": "691e36be8fb22796e164e43de699f1e82dc93313e841a7ca7e2e5bb5db628cd5"
+        },
+        "reviewedSourceBlobSha1": "a1ad1dce4f166a0beac29247801ebbe07ddca0be",
+        "reviewedSourceSha256": "a2e6f12b42cb170bdb340895f4fde201f6da0afc69bb6a90faee7ea9f74e8c66",
+        "reviewCommitSourceBlobSha1": "e6c34e611a22373144ab3a91c3c7aa55d2f7c9d5",
+        "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+        "sourceOrdinal": 21,
+        "reviewer": "C",
+        "decision": "CORRECT",
+        "studentPayloadSha256": "4a279f6141bb9bbe5725fc86478cc985ca17e9ae6c3060343bb75f05079a5c35",
+        "rationaleBindings": {
+          "primaryMethod": {
+            "origin": "CURRENT_DEFINITION_APPLICATION_UNCHANGED_NATIVE_SOURCE",
+            "valueSha256": "668e46db12afb25a1220dea94f9d049663bb41f68a642dacc7039a1770d1654a"
+          },
+          "decisiveStep": {
+            "origin": "CURRENT_DEFINITION_APPLICATION_UNCHANGED_NATIVE_SOURCE",
+            "valueSha256": "593523d02b213843ad67bac8741b3cc185c0e75f4bbf2bc60d8fbd2a62a2f2df"
+          }
+        },
+        "rpmBindings": {
+          "rpmPrimaryId": {
+            "origin": "CURRENT_DEFINITION_APPLICATION_NATIVE_RPM_ALIAS",
+            "valueSha256": "1bef4628623f59ba42c8c78b2dbd61a3ca7438c4bdee8c5fb14dbbeefd0a281b"
+          },
+          "rpmPrimaryPath": {
+            "origin": "REVIEW_COMMIT_SOURCE_FIELD",
+            "valueSha256": "fb9cd983d764295e2e9d69c6e59304355973a07ed81b3a766d6113305c787753"
+          },
+          "rpmL1": {
+            "origin": "CURRENT_DEFINITION_APPLICATION_NATIVE_RPM_ALIAS",
+            "valueSha256": "14904527056aedb05f4129e9e230bdd0dc08b598caee18d0561262e35f8dbc57"
+          },
+          "rpmL2": {
+            "origin": "CURRENT_DEFINITION_APPLICATION_NATIVE_RPM_ALIAS",
+            "valueSha256": "a6eed3b23db6e6f9cb309477de0e8d3f57b0e4128fd45fe5fa786be303f025eb"
+          },
+          "rpmL3": {
+            "origin": "REVIEW_COMMIT_SOURCE_FIELD",
+            "valueSha256": "5bfc7c065dbf800b6f050f41ad9f387f46977911781f20bde9d728699495adfa"
+          },
+          "rpmL4": {
+            "origin": "REVIEW_COMMIT_SOURCE_FIELD",
+            "valueSha256": "8484752b4331935863e51ac7585fbcf9e7f0a65bfc4bd405970d4db31cc92182"
+          }
+        },
+        "currentDefinitionApplication": {
+          "schemaVersion": "archive-m2s1-current-definition-application-v1",
+          "evidenceCommit": "582433a2c81fd6bfbb3a426c4951da4aa8f8f250",
+          "definitionApprovalRef": {
+            "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e009-q21-definition-approval.json",
+            "sha256": "c9d99644f099ba12d73de983d9e38ea2080bfc566c6f18de3c2ec300ea052046"
+          },
+          "independentReviewRef": {
+            "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e009-q21-independent-definition-application-review.json",
+            "sha256": "b1b1f482f721f47d0cce8e12703c0fc1647e26e9879c49a2936ba29d7cc6dfee"
+          },
+          "applicationRef": {
+            "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e009-q21-current-definition-application-binding.json",
+            "sha256": "ce6cb2776b5baa8233ad82a36eec8cd43330a6645973b9262ac8042cafa77a4c"
+          },
+          "nativeReviewRef": {
+            "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+            "path": "docs/operations/m2-s1-meta-full-20261114/exams/E009/accepted-review.json",
+            "sha256": "691e36be8fb22796e164e43de699f1e82dc93313e841a7ca7e2e5bb5db628cd5"
+          },
+          "nativeItemStableSha256": "edd00f05f732d00535f92de4132bdad9c47c42937b1a1a4ef3f323f85be10968",
+          "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+          "sourceOrdinal": 21,
+          "expectedQuestionCount": 23,
+          "nativeAfterChanged": false,
+          "nativeProposalFabricated": false,
+          "nativeProposalRefs": [],
+          "nativeSupportingProposalCount": 0,
+          "sourceBeforeRef": {
+            "commit": "d511d4f82d3da2224cc43f8ff26f30469b436af3",
+            "path": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+            "blobSha1": "3d0454c4851e2d3c8c135feccf1e2c46f8497ba4",
+            "sha256": "a6278784f9f7ba32805df5f91c920c711d6502a265004cd064d1bb859f4a8192"
+          },
+          "currentSourceRef": {
+            "commit": "582433a2c81fd6bfbb3a426c4951da4aa8f8f250",
+            "path": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+            "blobSha1": "a5addb0951dcd0892cde2e21e3bc23b080c9a5bc",
+            "sha256": "10aee6984c88c649e6df3571d9c16bccd812076643b98a75270c1a67d1692737",
+            "questionStableSha256": "533b98b0b45caecc1b18857a8583e5b0d250bd70f178103d46c76efb97d6f70f"
+          },
+          "studentPayloadSha256": "4a279f6141bb9bbe5725fc86478cc985ca17e9ae6c3060343bb75f05079a5c35",
+          "rootDefinitionReviewer": "GPT_ROOT_0A70543C4CE8",
+          "independentApplicationReviewer": "GPT_M3_34C2",
+          "parentDefinitionSha256": "a8dbc843c26baddb2bb9bc393be04d58c3b7af417ab40ed09b751422f5ea7aa1",
+          "templateDefinitionSha256": "f771fa8bd71cba2b3e5a926f4ab021146914bd965f277819990a30ec76300b01",
+          "exactActiveBindingSha256": "5ac85b2119ebbac9f6debc2f0f0c3c7e46c0b2d27568b9cc258cbd0a761d928d",
+          "sourceMetadataDelta": {
+            "set": {
+              "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+              "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+              "rpmPrimaryId": "M2-RPM-157",
+              "rpmL1": "연립일차방정식",
+              "rpmL2": "연립일차방정식의 활용",
+              "courseKey": "M2-1",
+              "integrationPattern": "NONE"
+            },
+            "remove": {
+              "projectionStatus": "RPM_ONLY",
+              "ownerPack": null,
+              "nullReason": "RPM_ONLY: no exact target-scope ACTIVE PT/TPL pair; null explicit.",
+              "projectionReason": "middle2 RPM crosswalk mapping=RPM_ONLY; bindingStatus=NO_ACTIVE_MAPPING."
+            }
+          },
+          "fieldSha256": {
+            "problemTypeKey": "41fd7121c76e459dc2bf8a19cfb4cbf0045923d126a6c8b743d84d85e6f418f1",
+            "templateKey": "2ebec8cf5d0143b2fe490a7146235b0492e7d106f85f53db05d85c50c87925d2",
+            "standardCourse": "06863939e19697da679ccd3261ae8355f10e92640cee2d7239b13b2bcdcb7e34",
+            "primaryMethod": "8eec573001d4df056284a2f06e128ed4ccf8654f839745b0520620ead48a2ac8",
+            "decisiveStep": "73b33b4bd821146f6563aff44adfaafd79aa542e5f1b8ba4d64cfb61e07bc5e7",
+            "rpmPrimaryId": "1bef4628623f59ba42c8c78b2dbd61a3ca7438c4bdee8c5fb14dbbeefd0a281b",
+            "rpmL1": "14904527056aedb05f4129e9e230bdd0dc08b598caee18d0561262e35f8dbc57",
+            "rpmL2": "a6eed3b23db6e6f9cb309477de0e8d3f57b0e4128fd45fe5fa786be303f025eb",
+            "courseKey": "c5899730400a655ba5677e73c546e6d63f65617f087283fed08a62dac90a786d"
+          },
+          "retainedRationaleOrigin": "CURRENT_DEFINITION_APPLICATION_UNCHANGED_NATIVE_SOURCE",
+          "nativeRpmAliasOrigin": "CURRENT_DEFINITION_APPLICATION_NATIVE_RPM_ALIAS",
+          "retainedStandardCourseOrigin": "UNCHANGED_NATIVE_AND_CURRENT_SOURCE_EXACT_BINDING",
+          "nativeRpmAuthority": {
+            "nativeRef": {
+              "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+              "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+              "sha256": "924ae2c0b02dbf29784551eaa90c63e27a5d6de39ab5cb65b563f59e6e2c0c39",
+              "recordId": "M2-RPM-157",
+              "recordSha256": "8acbb7d49e11664c27222a40398b62746b9cb94d9fb79f28441fcbb3480dd3c5"
+            },
+            "currentCrosswalkRecords": {
+              "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+              "recordId": "M2-RPM-157",
+              "recordSha256": "8acbb7d49e11664c27222a40398b62746b9cb94d9fb79f28441fcbb3480dd3c5",
+              "directRecordId": "M2-RPM-157-SWAPPED-QUANTITIES-34C2",
+              "directRecordSha256": "6590441fe9185976078e4a0c71a33704912eaa65d50df72a9af3e54c5a69e1a5"
+            },
+            "currentMasterLeaf": {
+              "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+              "curriculum": "2022",
+              "scope": "M2-1",
+              "rpmPath": {
+                "majorUnit": "연립일차방정식",
+                "midUnit": "연립일차방정식의 활용",
+                "l3": "수와 개수",
+                "l4": "개수·가격"
+              },
+              "leafSha256": "49d511d74f33bb4584eb5deabfd9226fb299d74899d19fbf30ce1aa9c0509116"
+            },
+            "authorityUse": "RPM_PATH_PROVENANCE_ONLY",
+            "selectsPtTpl": false
+          },
+          "newTemplateDefinitions": 1,
+          "newBindings": 1,
+          "existingDefinitionChanges": 0,
+          "newMathematicalQa": false,
+          "newSourceQualityApproval": false,
+          "newDifficultyJudgment": false,
+          "unselectedUidApproval": false
+        },
+        "scope": "METADATA_SOURCE_BINDING_ONLY",
+        "newMathematicalQa": false
+      }
+    }
+  ],
+  "runtimeRecords": [
+    {
+      "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+      "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceFingerprint": "e3497d1d0521f2a53f217be2ef8b2d8eeea1c69149ce83c79bcc24a51fc722a7",
+      "contentFingerprint": "5ea3b334f9335102b29448a688b26da1f5ad1fa62af6f77a8e9d7b5e6990e056",
+      "standardCourse": "중2",
+      "standardUnitKey": "M2-03",
+      "standardUnit": "연립일차방정식",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "subUnit": "연립일차방정식의 활용",
+      "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
+      "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+      "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+      "difficultyBucket": 3,
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE2@1.0.10:exam-final_qa-v2:middle-audit-repair-34c2-m2-e009-q21",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase1/pilot/review/high-confidence-semantic-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e009-q21.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e009-q21.source-review-binding.json"
+      ],
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "primaryMethod": "개수·가격 조건으로 연립방정식 구성",
+      "decisiveStep": "x+y=10,x-y=2",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "courseKey": "M2-1",
+      "rpmPrimaryId": "M2-RPM-157",
+      "rpmPrimaryPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식의 활용",
+        "l3": "수와 개수",
+        "l4": "개수·가격"
+      },
+      "rpmL1": "연립일차방정식",
+      "rpmL2": "연립일차방정식의 활용",
+      "rpmL3": "수와 개수",
+      "rpmL4": "개수·가격",
+      "L1": "연립일차방정식",
+      "L2": "연립일차방정식의 활용",
+      "L3": "방정식의 활용",
+      "L4": "알려진 단위량과 수량 교환 차이의 연립식",
+      "reviewStatus": "reviewed_pass",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE2",
+      "metaFoundationPackVersion": "1.0.10",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js#21",
+      "approvedSourceFingerprint": "e3497d1d0521f2a53f217be2ef8b2d8eeea1c69149ce83c79bcc24a51fc722a7",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    }
+  ],
+  "outputDigests": [
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "0457dbec4ece803a0c2db84673137a1895fe141799161214accf144bef2fb145"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "f40f92002e8807fb9aad48a4233e7315128da27719b82d2280b09b023606b6a2"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "sha256": "6e1d3ec757f709035273482b2b84dc0ffe17dc7f6cb82fb816a914d848d4f968"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/registry_index.json",
+      "sha256": "6fac7ad8041bbcfa213f731d255bef17ec8241c9182154f68ac896f30390a878"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+      "sha256": "032655c756d35f2d01cbf6a23adf172f88b5ddf26e5bb4989e9a44d4732973a0"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+      "sha256": "d7a52f9742db1d31d03dbc023adaab12bc2384c77981ff1f20ce7339d4419310"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/pack.json",
+      "sha256": "b7a246c893268d5aee4da3c0856c3dd7e97864871cbec18b01defd668702ccad"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+      "sha256": "20a0a9dfbc1f8b48e277085d84d0babbce7ba400e05600ef1113e8569c2e9e0c"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+      "sha256": "4b6232b9e26f9a69b75fa77376d27c67106d268e99bcfcd1c0b1ed25cd82edcd"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "sha256": "6d94db6e9e2b32fa9efde4e471de9dcd874532d7c336e4ddd6d5b9c8476a68d1"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e009-q21.source-review-binding.json",
+      "sha256": "d3c2f44b1f0723dd4644f28748aff86955f712e4804c0ea8fd4d14883ceb0b1f"
+    }
+  ],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

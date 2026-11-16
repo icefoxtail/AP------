@@ -7,6 +7,8 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 
 construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDescription`은 그림의 점·도형 관계를 설명하는 짧은 한국어 평문 한 줄(공백만은 불가, 500자 이하)이다. 지정하면 SVG의 접근성 `<desc>`에 XML 이스케이프하여 전달한다. 정답은 넣지 않는다. 생략하면 기존 기본 설명과 SVG 출력은 그대로 유지된다. composite-panels·number-line-figure·solid-figure·quadratic-inequality-chain도 같은 선택 필드를 받는다: 엔진이 루트 `role="img"`와 `<title>`(plan `caption`)·`<desc>`(`accessibilityDescription`, 생략하면 그림 종류별 기본 문장: 수직선 "수직선 위에 범위를 나타낸 그림이다.", 입체도형 "입체도형과 주어진 길이·위치를 나타낸 그림이다.", 이차부등식 그래프+수직선 "그래프로 조건을 나타낸 그림이다.", 그 밖의 composite는 위 기본 문장)를 직접 쓰므로 렌더 뒤에 접근성 보완 스크립트(a11y.sh)를 돌릴 필요가 없다. 이미 들어 있으면 그 스크립트는 `METADATA_ALREADY_PRESENT`로 거절되어 무해하다.
 
+`ellipse-figure-v1`의 일반 타원·포물선·쌍곡선에도 `accessibilityDescription`을 쓸 수 있다. 새 학생용 그림에는 곡선·점·선분이 보여 주는 관계를 한 줄, 500자 이내로 적고 `caption`에 짧은 제목을 쓴다. 이 필드를 지정하면 엔진이 제목·설명과 고유 라벨 ID를 렌더하고 독립 관측기가 확인한다. 수학 조건과 도형의 좌표는 그대로 계산한다.
+
 ## 1. 순서
 
 1. 문항(발문, 보기, 정답)과 풀이를 먼저 완성한다. 모든 값을 직접 풀어 확인한다.
@@ -323,6 +325,12 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 - paths에는 xAxis, yAxis, secant, logOriginal, logShifted의 원본 픽셀 좌표를 준다. 두 로그곡선 모두 증가하고 오목해야 한다. A와 B는 직선과 두 축이 만나는 점, P와 Q는 각 로그곡선과 직선이 만나는 점이며 O는 두 축의 교차다. 원본과 같이 직선 위에 A, P, Q, B 순서로 있어야 한다.
 - labelOrigins에는 O, A, B, P, Q, x, y, logOriginal, logShifted, line, schematic을 준다. 그림 파일에서 잘린 식도 발문을 근거로 조판한다. 개형 위에는 풀이 수치, 점 좌표, 눈금을 표시하지 않는다.
+
+문자 밑 지수·로그곡선에 수평선과 수직선을 그어 사각형의 꼭짓점을 얻는 문제에는 `source-exp-log-orthogonal-guides-schematic-v1`을 쓴다. 발문에 밑이 1보다 큰 같은 문자, 양의 정수만큼 위로 옮긴 지수식과 오른쪽으로 옮긴 로그식, 그리고 두 축 교점 A/B로부터 C/D를 만드는 관계가 있어야 한다.
+
+- `paths`에는 `xAxis`, `yAxis`, `exponential`, `logarithm`의 원본 픽셀 좌표만 준다. O는 두 축의 교차다. 지수곡선과 세로축이 A, 로그곡선과 가로축이 B에서 만난다. A에서 수평인 `AC`와 B에서 수직인 `BD` 및 사각형 `ABCD`는 두 곡선과 두 축에서 계산하고 원본 잉크에 대조한다.
+- `view:{width,height}`는 원본과 같은 픽셀 단위를 쓴다. 폭은 원본의 70%부터 전체 폭까지이며 확인한 축과 획을 잘라낼 수 없다. 높이는 원본 높이부터 최대 128픽셀 아래까지다. 아래의 새 여백은 잘렸던 점 이름 자리로 쓸 수 있다. `labelOrigins`에는 O, A, B, C, D, x, y, exp, log, schematic을 준다.
+- 발문의 두 식과 개형 표시는 유지한다. 풀이에서 얻은 밑, 점의 수치 좌표, 눈금은 쓰지 않는다. SVG 역검증과 실제 글꼴·겹침 검사는 기존 문제 개형과 같은 경로에서 실행한다.
 
 ### 3-8. 중학교 평면도형: 각·선분·호 표식이 있는 축 없는 그림 (`PLANE_FIGURE_v1`, `planeMarks`)
 

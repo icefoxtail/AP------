@@ -7,6 +7,9 @@ import { REASSESSED_STUDENT_FIELDS, validateReviewedSourceReassessment } from '.
 import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
 import { reviewedRendererBindingPath, buildReviewedRendererBinding } from './reviewed-current-renderer-continuity.mjs';
 import { REVIEWED_RPM_FIELDS } from './reviewed-rpm-provenance.mjs';
+import { validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
+import { readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
+import { readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
 
 const fail = message => { throw Error(`native reviewed renderer reuse: ${message}`); };
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -29,11 +32,13 @@ function safePath(root, relative) {
   return full;
 }
 
-function claimedRows(receipt, root, identity, ordinal, cache) {
+function claimedRows(receipt, root, identity, ordinal, cache, historicalContext, solutionHistory) {
   const claims = [];
   for (const ref of receipt.approval.evidenceRefs || []) {
     if (!SHA256.test(ref.sha256 || '')) fail('SHA-bound approval evidence required');
-    const bytes = fs.readFileSync(safePath(root, ref.path));
+    const bytes = solutionHistory ? readIssuedSolutionRpmHistoricalEvidence(solutionHistory, receipt, ref)
+      : historicalContext ? readIssuedRpmHistoricalEvidence(historicalContext, receipt, ref)
+        : fs.readFileSync(safePath(root, ref.path));
     if (sha(bytes) !== ref.sha256) fail('current evidence bytes changed');
     const key = `renderer-reuse-claim:${ref.sha256}`;
     if (!cache.has(key)) {
@@ -71,9 +76,12 @@ function verifyRendererBinding(receipt, root, bindingPath) {
 // null preserves the old receipt contracts. A claimed compound review must be
 // revalidated even after the pending cursor catches up to the current question.
 export function nativeReviewedRendererRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (nativeSource.issuedRpmHistoryContext && nativeSource.issuedSolutionRpmHistoryContext)
+    fail('multiple historical contexts are not supported');
   const root = fs.realpathSync(nativeSource.root);
   if (!caches.has(root)) caches.set(root, new Map());
-  const cache = caches.get(root), claims = claimedRows(receipt, root, identity, ordinal, cache);
+  const cache = caches.get(root), claims = claimedRows(receipt, root, identity, ordinal, cache,
+    nativeSource.issuedRpmHistoryContext, nativeSource.issuedSolutionRpmHistoryContext);
   const bindingPath = reviewedRendererBindingPath(receipt.requestId);
   const registeredBinding = current.approvalEvidence?.includes(bindingPath);
   const selected = (receipt.fingerprintRepairs || []).filter(r => r.questionUid === identity.questionUid);
@@ -121,7 +129,18 @@ export function nativeReviewedRendererRebind(receipt, nativeSource, previous, qu
       if (!registeredRationale) replayAfter[field] = current[field];
     }
   }
-  const reproduced = validateReviewedSourceReassessment({root,
+  // A typed current-target application keeps the exact original request and its
+  // add-only replay-before context in the writer-issued source-review sidecar.
+  // Its validator reproduces and compares the complete issued proof, including
+  // the renderer seal. Do not replace that request with the legacy projection.
+  // Revalidate here as well so standalone adapter calls retain the same guards.
+  let reproduced;
+  if (proof.currentTargetApplication !== undefined) {
+    if (proof.currentTargetApplication?.schemaVersion !== 'archive-m3s2-current-target-application-v1' ||
+        validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true)
+      fail('current-target renderer requires its exact issued source-review binding');
+    reproduced = proof;
+  } else reproduced = validateReviewedSourceReassessment({root,
     request:{scope:receipt.scope, approval:receipt.approval, sourceArchiveFile:receipt.sourceArchiveFile,
       expectedQuestionCount:receipt.expectedQuestionCount},
     patch:{questionUid:identity.questionUid, sourceOrdinal:ordinal, after:replayAfter,

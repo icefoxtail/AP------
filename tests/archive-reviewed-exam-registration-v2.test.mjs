@@ -10,8 +10,11 @@ import { registerDifficulty5 } from "../archive/tools/meta-foundation/register-d
 import { planQuestion as planAutoQuestion, sourceFingerprint as auditSourceFingerprint, contentFingerprint as auditContentFingerprint, loadBank as loadSourceBank } from "../archive/tools/meta-foundation/auto-register-merged-source.mjs";
 import { validateActiveMetaFields, loadActiveMetaRegistry } from "../archive/tools/meta-foundation/active-registry.mjs";
 import { nativeReviewedRendererRebind } from "../archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs";
+import { validateNativeReviewedSourceReuse } from "../archive/tools/meta-foundation/native-reviewed-source-reuse.mjs";
+import { verifyRegisteredRendererContinuity } from "../tools/4slot/registered-renderer-continuity.mjs";
 import { buildReviewedRendererBinding } from "../archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs";
 import { loadAuditPreservation } from "../archive/tools/meta-foundation/native-audit-preservation.mjs";
+import { auditSourceBindingPath } from "../archive/tools/meta-foundation/native-audit-source-preservation.mjs";
 import { buildReviewedSourceBinding, reviewedSourceBindingPath } from "../archive/tools/meta-foundation/reviewed-source-binding.mjs";
 import { verifyChangedUidConsumerApproval } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
 import canonical from "../archive/archive2-canonical.js";
@@ -261,7 +264,7 @@ test("partial missing-array projection rejects reordering an explicit source tag
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /source\/approved metadata parity/);
 });
 
-function fixture(t, course = "중1 수학", curriculum = "2022") {
+function fixture(t, course = "중1 수학", curriculum = "2022", source = "fixture/exam.js", unitKey = "UNIT_NEW", subKey = "SUB_NEW") {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "archive-meta-v2-"));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const put = (p, value) => { const full = path.join(root, p); fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, typeof value === "string" ? value : j(value)); };
@@ -269,14 +272,13 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   put("docs/approval.json", { approved: true, meaning: "fixture reviewed definitions" });
   const evidenceRefs = [{ path: "docs/approval.json", sha256: hash(fs.readFileSync(path.join(root, "docs/approval.json"))) }];
   const q = { id: 1, content: "학생용 지문", choices: ["1", "2"], answer: "1", solution: "학생용 해설", image: "",
-    standardCourse: course, standardUnitKey: "UNIT_NEW", standardUnit: "새 단원", subUnitKey: "SUB_NEW", subUnit: "새 세부단원",
+    standardCourse: course, standardUnitKey: unitKey, standardUnit: "새 단원", subUnitKey: subKey, subUnit: "새 세부단원",
     level: "중", problemTypeKey: "PT_NEW", templateKey: "TPL_NEW", crossConceptKeys: ["CC_NEW"], conditionKeys: ["COND_NEW"], integrationPattern: "NONE", difficultyBucket: 3 };
-  const source = "fixture/exam.js";
   const text = `window.questions = ${JSON.stringify([q])};\n`;
   put(`archive/exams/${source}`, text);
   const fingerprint = hash(JSON.stringify({ content: q.content, choices: q.choices, answer: q.answer, solution: q.solution, image: q.image }));
   const current = { questionUid: "uid1", sourceArchiveFile: source, sourceOrdinal: 1, sourceFingerprint: fingerprint,
-    standardCourse: course, standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW", reviewStatus: "review_required" };
+    standardCourse: course, standardUnitKey: unitKey, subUnitKey: subKey, reviewStatus: "review_required" };
   put(META, { records: [current], counts: {} });
   put("archive/data/question_identity_map.json", { records: [{ ...current }] });
   put(`${CANON}/registry_index.json`, { activePacks: [], activeConceptShards: [], conditionRegistry: { id: "CONDITION_CORE", version: "1", status: "ACTIVE" }, canonicalSources: [{ path: `${CANON}/condition_registry.json` }],
@@ -289,13 +291,13 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   const base = `${CANON}/packs/new-course`;
   change(`${CANON}/registry_index.json`, "activePacks", { id: "NEW_COURSE" }, null, { id: "NEW_COURSE", version: "1.0.0", status: "ACTIVE" });
   change(`${base}/pack.json`, null, null, null, { schemaVersion: "meta-foundation-pack-v1", packId: "NEW_COURSE", packVersion: "1.0.0", canonicalStatus: "ACTIVE", curricula: [curriculum], standardCourses: [course] });
-  change(`${base}/taxonomy.json`, null, null, null, { status: "ACTIVE", problemTypes: [{ problemTypeKey: "PT_NEW", canonicalLabelKo: "새 유형", definition: "검수된 유형 의미", ownerPack: "NEW_COURSE", status: "ACTIVE", sourceUnit: "UNIT_NEW", supportingQuestionUids: ["uid1"], supportingItemCount: 1 }], templates: [{ templateKey: "TPL_NEW", canonicalLabelKo: "새 풀이 구조", definition: "검수된 풀이 구조", parentProblemTypeKey: "PT_NEW", status: "ACTIVE", sourceUnit: "UNIT_NEW", supportingQuestionUids: ["uid1"], supportingItemCount: 1 }] });
-  change(`${base}/bindings.json`, null, null, null, { status: "ACTIVE", bindings: [{ curriculum, standardCourse: course, standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW", problemTypeKey: "PT_NEW", status: "ACTIVE" }] });
+  change(`${base}/taxonomy.json`, null, null, null, { status: "ACTIVE", problemTypes: [{ problemTypeKey: "PT_NEW", canonicalLabelKo: "새 유형", definition: "검수된 유형 의미", ownerPack: "NEW_COURSE", status: "ACTIVE", sourceUnit: unitKey, supportingQuestionUids: ["uid1"], supportingItemCount: 1 }], templates: [{ templateKey: "TPL_NEW", canonicalLabelKo: "새 풀이 구조", definition: "검수된 풀이 구조", parentProblemTypeKey: "PT_NEW", status: "ACTIVE", sourceUnit: unitKey, supportingQuestionUids: ["uid1"], supportingItemCount: 1 }] });
+  change(`${base}/bindings.json`, null, null, null, { status: "ACTIVE", bindings: [{ curriculum, standardCourse: course, standardUnitKey: unitKey, subUnitKey: subKey, problemTypeKey: "PT_NEW", status: "ACTIVE" }] });
   change(`${base}/aliases.json`, null, null, null, { aliases: [] });
   change(`${CANON}/registry_index.json`, "activeConceptShards", { id: "NEW_CONCEPTS" }, null, { id: "NEW_CONCEPTS", version: "1.0.0", status: "ACTIVE" });
   change(`${CANON}/concepts/new-concepts.json`, null, null, null, { shardId: "NEW_CONCEPTS", shardVersion: "1.0.0", concepts: [{ conceptKey: "CC_NEW", canonicalLabelKo: "새 추가 개념", definition: "추가 개념 근거", supportingQuestionUids: ["uid1"], supportingItemCount: 1, status: "ACTIVE" }] });
   change(`${CANON}/condition_registry.json`, "conditions", { conditionKey: "COND_NEW" }, null, { conditionKey: "COND_NEW", canonicalLabelKo: "새 조건", definition: "조건 근거", status: "ACTIVE" });
-  for (const row of [{ key: "UNIT_NEW", keyType: "standardUnitKey", labelKo: "새 단원", status: "active" }, { key: "SUB_NEW", keyType: "subUnitKey", parentKey: "UNIT_NEW", standardUnitKey: "UNIT_NEW", labelKo: "새 세부단원", status: "active" }]) change("archive/data/master_tables/js_archive_tag_master.json", "$", { key: row.key }, null, row);
+  for (const row of [{ key: unitKey, keyType: "standardUnitKey", labelKo: "새 단원", status: "active" }, { key: subKey, keyType: "subUnitKey", parentKey: unitKey, standardUnitKey: unitKey, labelKo: "새 세부단원", status: "active" }]) change("archive/data/master_tables/js_archive_tag_master.json", "$", { key: row.key }, null, row);
   const after = { ...Object.fromEntries(Object.entries(q).filter(([k]) => !["id", "content", "choices", "answer", "solution", "image"].includes(k))), curriculum, curriculumKey: curriculum, courseKey: course, rpmSemanticStatus: "FINAL", rpmL3: "reviewed-rpm-l3", rpmL4: "reviewed-rpm-l4" };
   const request = { schemaVersion: "archive-reviewed-exam-meta-register-request-v2", requestId: "test-new-course", examUid: "exam1", sourceArchiveFile: source, expectedSourceBlobSha1: blob(text), expectedQuestionCount: 1,
     approval: { type: "FINAL_QA", metadataReviewed: true, approvedBy: "fixture-reviewer", evidenceRefs }, registryChanges: changes,
@@ -2819,8 +2821,8 @@ test("fieldCandidates rpmPath is accepted when the path is a leaf of the locked 
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /rpmPath not in RPM master or received registry/);
 });
 
-function partialFixture(t) {
-  const f = fixture(t);
+function partialFixture(t, course, curriculum, source, completeActiveMetadata = false) {
+  const f = completeActiveMetadata ? fixture(t, "중2 수학", "2022", source, "M2-01", "M2-01-FIXTURE") : fixture(t, course, curriculum, source);
   const hold = { questionUid: "uid2", sourceArchiveFile: f.request.sourceArchiveFile, sourceOrdinal: 2,
     sourceFingerprint: "legacy-fingerprint", reviewStatus: "manual_review", metadataStatus: "approved_partial_with_explicit_holds",
     fieldStatus: { problemType: "manual_review_pending", template: "manual_review_pending" }, problemTypeKey: "", templateKey: null };
@@ -2930,8 +2932,8 @@ test("partial source rebind cannot add a held neighbour or change a selected ren
   assert.throws(() => registerReviewedExamV2({ root: changed.root, request: changed.request }), /must not change values/);
 });
 
-function itemRebindFixture(t) {
-  const f = partialFixture(t);
+function itemRebindFixture(t, completeActiveMetadata = false) {
+  const f = partialFixture(t, undefined, undefined, undefined, completeActiveMetadata);
   const sourceSha = q => hash(JSON.stringify({ content: q.content, choices: q.choices, answer: q.answer, solution: q.solution, image: q.image }));
   const bodySha = q => hash(JSON.stringify({ content: q.content, choices: q.choices, image: q.image }));
   const git = (...args) => execFileSync("git", args, { cwd: f.root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
@@ -3117,13 +3119,18 @@ test("partial UID Consumer verification sees only applied records from the recei
   assert.throws(() => verifyConsumerValues(f.root, f.read(META).records, receipt.runtimeRecords, catalog), /Consumer UID missing\/mismatch: uid2/);
 });
 
-function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1", mutateReview = () => {}) {
-  const f = itemRebindFixture(t);
+function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1", mutateReview = () => {}, completeActiveMetadata = false) {
+  const f = itemRebindFixture(t, completeActiveMetadata);
   const git = (...args) => execFileSync("git", args, { cwd: f.root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
   const commit = () => { git("add", "--", f.sourcePath, "docs/native-review.json");
     git("-c", "user.name=Fixture reviewer", "-c", "user.email=fixture@example.invalid", "commit", "--allow-empty", "-qm", "Reviewed current source");
     return git("rev-parse", "HEAD"); };
   Object.assign(f.current, { content: "실제 재검토한 새 발문", image: "assets/reviewed-figure.svg" });
+  if (completeActiveMetadata) {
+    const difficulty = { difficultyConfidence: 'high', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL' };
+    Object.assign(f.current, difficulty); Object.assign(f.item.after, difficulty);
+    for (const key of Object.keys(difficulty)) f.item.before[key] = f.read(META).records[0][key] ?? null;
+  }
   const bytes = f.writeBank(f.current), sourceBlob = git("hash-object", "-w", f.sourcePath);
   Object.assign(f.item.after, { sourceFingerprint: f.sourceSha(f.current), contentFingerprint: f.bodySha(f.current) });
   const after = structuredClone(f.item.after);
@@ -3162,8 +3169,8 @@ function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1", 
   return { ...f, git, review, updateReview };
 }
 
-function rendererContinuityFixture(t, schema = 'm3-s2-complete-semantic-review-v1', mutateReview) {
-  const f = reviewedSourceFixture(t, schema, mutateReview);
+function rendererContinuityFixture(t, schema = 'm3-s2-complete-semantic-review-v1', mutateReview, completeActiveMetadata = false) {
+  const f = reviewedSourceFixture(t, schema, mutateReview, completeActiveMetadata);
   const oldAssetPath = "archive/assets/reviewed-figure.svg", assetPath = "archive/assets/current-figure.svg";
   f.put(oldAssetPath, '<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L1 1"/></svg>');
   f.git("add", "--", oldAssetPath);
@@ -3248,8 +3255,8 @@ function correctiveRendererContinuityFixture(t) {
 }
 
 function rendererV2Fixture(t, { insertions = false, transformContainer = value => value, extraDelta = {},
-  nativeSchema = 'm3-s2-complete-semantic-review-v1', mutateReview } = {}) {
-  const f = rendererContinuityFixture(t, nativeSchema, mutateReview), previous = structuredClone(f.nativeQuestion);
+  nativeSchema = 'm3-s2-complete-semantic-review-v1', mutateReview, completeActiveMetadata = false } = {}) {
+  const f = rendererContinuityFixture(t, nativeSchema, mutateReview, completeActiveMetadata), previous = structuredClone(f.nativeQuestion);
   const secondAsset = 'archive/assets/current-relic.svg';
   f.put(secondAsset, '<svg xmlns="http://www.w3.org/2000/svg"><circle r="2"/></svg>');
   Object.assign(f.current, { imageAlt: 'The two given radii and perpendicular foot', imageSize: 'full' }, extraDelta);
@@ -3349,6 +3356,65 @@ test('m2-s2 renderer continuation preserves independent source, reviewer and ass
   }
   const unsupported = rendererV2Fixture(t, { nativeSchema: 'm2-s1-meta-review-v1' });
   assert.throws(() => registerReviewedExamV2({ root: unsupported.root, request: unsupported.request }), /exclusive native-semantic/);
+});
+
+function fourSlotRendererFixture(t) {
+  const f=rendererV2Fixture(t,{nativeSchema:'m2-s2-meta-review-v1',completeActiveMetadata:true});
+  const index=f.read(`${CANON}/registry_index.json`);index.status='ACTIVE';
+  index.canonicalSources.push({path:`${CANON}/metadata_rules.json`});f.put(`${CANON}/registry_index.json`,index);
+  f.put(`${CANON}/metadata_rules.json`,{status:'ACTIVE',integrationPatterns:['NONE']});
+  const conditions=f.read(`${CANON}/condition_registry.json`);conditions.status='ACTIVE';f.put(`${CANON}/condition_registry.json`,conditions);
+  registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const compactPath='archive/data/item-4slot/'+f.request.sourceArchiveFile.replace(/\.js$/,'.4slot.json');
+  const item={ordinal:1,format:'단일 정답',given:[],goal:[1],method:[2],condition:[],candidates:[]};
+  const compact={schemaVersion:'archive-meta-4slot-compact-v1',sourceArchiveFile:f.request.sourceArchiveFile,
+    sourceGitBlobSha:f.manifest.items[0].prefigureSourceRef.gitBlobSha1,dictionaryVersion:'1.0',
+    reviewedBy:{agent:'existing-slot-reviewer',at:'2026-11-15',sampled:[1]},
+    evidence:{branch:'existing-native-review',commit:f.item.sourceReview.reviewCommit,path:'docs/existing-slots.json'},items:[item]};
+  f.put(compactPath,compact);
+  const dictionaryPath='docs/architecture/4slot/term-dictionary-v1.0.json';
+  f.put(dictionaryPath,{dictionaryVersion:'1.0',terms:[{id:1,ko:'값',status:'ACTIVE'},{id:2,ko:'계산',status:'ACTIVE'}]});
+  const ref=p=>({path:p,sha256:hash(fs.readFileSync(path.join(f.root,p)))});
+  const sidecarPath='.archive-meta-register/4slot-renderer-continuity/fixture.json';
+  const doc={schemaVersion:'archive-four-slot-registered-renderer-continuity-v1',scope:'EXISTING_VECTOR_ONLY',
+    sourceArchiveFile:f.request.sourceArchiveFile,questionUid:'uid1',sourceOrdinal:1,sourceQuestionNo:'1',sourceDisplayNumber:1,
+    compactRef:ref(compactPath),compactItemSha256:hash(stable(item)),dictionaryRef:ref(dictionaryPath),
+    currentSourceRef:{...ref(f.sourcePath),gitBlobSha1:blob(fs.readFileSync(path.join(f.root,f.sourcePath)))},
+    receiptRef:ref(f.receiptPath),rendererBindingRef:ref(f.receiptPath.replace(/\.json$/,'.renderer-binding.json')),
+    independentReviewRef:ref(f.independentPath),newFourSlotApprovals:0,newMathematicalQa:false};
+  f.put(sidecarPath,doc);
+  return {...f,compactPath,compact,item,dictionaryPath,sidecarPath,doc,ref};
+}
+test('four-slot registered renderer continuity reuses only the exact issued receipt and unchanged vector',t=>{
+  const f=fourSlotRendererFixture(t),before=fs.readFileSync(path.join(f.root,f.compactPath));
+  const result=verifyRegisteredRendererContinuity(f.root,f.sidecarPath);
+  assert.deepEqual(result,{status:'PASS',questionUid:'uid1',sourceOrdinal:1,sourceBinding:'REGISTERED_RENDERER_CONTINUITY',independentReviewClaim:false,newFourSlotApprovals:0});
+  assert.deepEqual(fs.readFileSync(path.join(f.root,f.compactPath)),before);
+  const child=JSON.parse(execFileSync(process.execPath,[fileURLToPath(new URL('../tools/4slot/registered-renderer-continuity.mjs',import.meta.url)),f.root,f.sidecarPath],{encoding:'utf8'}));
+  assert.deepEqual(child,result);
+  assert.equal(verifyRegisteredRendererContinuity(f.root,f.sidecarPath).status,'PASS');
+});
+test('four-slot registered renderer continuity rejects drift without weakening the native proof',async t=>{
+  for(const [name,mutate,error]of[
+    ['changed vector',f=>{f.compact.items[0].method=[1];f.put(f.compactPath,f.compact);},/BOUND_FILE_CHANGED/],
+    ['changed dictionary',f=>f.put(f.dictionaryPath,{dictionaryVersion:'1.0',terms:[]}),/BOUND_FILE_CHANGED/],
+    ['unregistered receipt',f=>fs.rmSync(path.join(f.root,f.receiptPath)),/ENOENT/],
+    ['changed independent witness',f=>{f.independent.reviewer='someone else';f.put(f.independentPath,f.independent);},/BOUND_FILE_CHANGED/],
+    ['changed asset',f=>f.put(f.assetPath,'<svg/>'),/live renderer bytes changed/],
+    ['wrong UID',f=>{f.doc.questionUid='uid2';f.put(f.sidecarPath,f.doc);},/SELECTED_RENDERER_PROOF_REQUIRED/],
+    ['wrong ordinal',f=>{f.doc.sourceOrdinal=2;f.put(f.sidecarPath,f.doc);},/SOURCE_NUMBER_MISMATCH/],
+    ['new slot approval claim',f=>{f.doc.newFourSlotApprovals=1;f.put(f.sidecarPath,f.doc);},/CLOSED_CONTINUITY_SCOPE/],
+    ['current metadata changed',f=>{const m=f.read(META);m.records[0].difficultyBucket=5;f.put(META,m);},/REGISTERED_METADATA_DRIFT/],
+    ['inactive current registry',f=>{const r=f.read(CANON+'/registry_index.json');r.status='INACTIVE';f.put(CANON+'/registry_index.json',r);},/CURRENT_ACTIVE_BINDING_REQUIRED/],
+    ...['missing','inactive','changed'].map(kind=>['current runtime '+kind,f=>{
+      const directory='archive/data/meta-foundation/runtime';
+      for(const name of fs.readdirSync(path.join(f.root,directory))){const p=directory+'/'+name,r=f.read(p),row=r.records?.find(x=>x.questionUid==='uid1');if(!row)continue;
+        if(kind==='missing')r.records=r.records.filter(x=>x.questionUid!=='uid1');else if(kind==='inactive')r.status='INACTIVE';else row.templateKey='UNREVIEWED';f.put(p,r);
+      }
+    },/CURRENT_RUNTIME_/]),
+    ['current source changed',f=>{f.current.solution+=' changed';f.writeBank(f.current);},/CURRENT_SOURCE_CHANGED/],
+    ['held compact item',f=>{f.item.registrationHold={reason:'SOURCE_EVIDENCE_UNRESOLVED'};f.put(f.compactPath,f.compact);f.doc.compactRef=f.ref(f.compactPath);f.doc.compactItemSha256=hash(stable(f.item));f.put(f.sidecarPath,f.doc);},/EXACT_UNHELD_VECTOR_REQUIRED/],
+  ])await t.test(name,t=>{const f=fourSlotRendererFixture(t);mutate(f);assert.throws(()=>verifyRegisteredRendererContinuity(f.root,f.sidecarPath),error);});
 });
 
 test('renderer v2 fingerprint-only reuse preserves the issued registered rationale origin and RPM proof', t => {
@@ -4242,6 +4308,12 @@ function activeReuseProposalFixture(t, kind, { install = true } = {}) {
     if (kind === "EXISTING_ACTIVE_LINK_GAP") Object.assign(proposal, { existingTemplate: "TPL_NEW", parent: "PT_NEW" });
     else Object.assign(proposal, { reuseTemplate: "TPL_NEW", registrationStatus: "PROPOSAL_ONLY_NOT_INSERTED" });
   }
+  if (kind === "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP") {
+    delete proposal.supportOrdinals;
+    Object.assign(proposal, { kind, historicalSourceRpm: "M3-RPM-059", currentExactRpm: "M2-RPM-182",
+      existingActiveProblemType: "PT_NEW", existingActiveTemplate: "TPL_NEW", newProblemTypeRequired: false,
+      newTemplateRequired: false, reason: "Original publisher leaf remains missing; reuse the existing semantic definition.", owner: "native-release-owner" });
+  }
   f.review.proposals = [proposal, { type: "REUSE_ACTIVE_ADD_CROSSWALK", supportingQuestionUids: ["uid2"] }];
   f.updateReview();
   return { ...f, proposal };
@@ -4343,6 +4415,25 @@ test("technical reuse cannot create a definition, change a parent, disguise sema
   assert.throws(() => registerReviewedExamV2({ root: semantic.root, request: semantic.request }), /selected semantic proposal requires an exact native ID/);
 });
 
+test("original publisher parent and leaf debt reuses only unchanged ACTIVE definitions and preserves the unresolved debt", t => {
+  const f = activeReuseProposalFixture(t, "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP");
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
+  const proof = f.read(f.receiptPath).fingerprintRepairs[0].sourceReview.technicalProposalBindings[0];
+  assert.equal(proof.newDefinition, false); assert.equal(proof.newMathematicalQa, false);
+  assert.equal(proof.originalPublisherParentAndLeafResolved, false);
+  assert.equal(proof.currentCurriculumBindingResolution, "NOT_ASSERTED");
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+  for (const delta of [{ existingActiveProblemType: "PT_OTHER" }, { existingActiveTemplate: "TPL_OTHER" },
+    { newProblemTypeRequired: true }, { newTemplateRequired: true }, { newTemplateRequired: undefined },
+    { newDefinition: "unreviewed" }]) {
+    const bad = activeReuseProposalFixture(t, "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP");
+    Object.assign(bad.proposal, delta); bad.updateReview();
+    assert.throws(() => registerReviewedExamV2({ root: bad.root, request: bad.request }), /original publisher gap/);
+  }
+  const fresh = activeReuseProposalFixture(t, "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP", { install: false });
+  assert.throws(() => registerReviewedExamV2({ root: fresh.root, request: fresh.request }), /unchanged pre-existing ACTIVE/);
+});
+
 test("finalization retains exact immutable evidence and dual approval/item binding", t => {
   for (const kind of ["CC", "TPL"]) {
     const f = proposalFinalizationFixture(t, kind), spec = f.item.sourceReview.proposalFinalization;
@@ -4435,6 +4526,200 @@ function carryReviewedRationale(f, primaryMethod = f.review.items[0].primaryMeth
   return { primaryMethod, decisiveStep };
 }
 
+function metadataRationaleContinuityFixture(t, { assetBytes, choiceAsset = false } = {}) {
+  const f = partialFixture(t, '중2 수학', '2015', 'original/middle/m2/2mid/native-rationale-fixture.js');
+  const middleParent = value => {
+    for (const [key, child] of Object.entries(value)) {
+      if (child && typeof child === 'object') middleParent(child);
+      else if (child === 'UNIT_NEW') value[key] = 'M2-05';
+      else if (child === 'SUB_NEW') value[key] = 'M2-05-TRIANGLE';
+    }
+  };
+  middleParent(f.q); middleParent(f.request);
+  for (const [key, value] of Object.entries({ difficultyConfidence: 'high', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL' })) {
+    f.q[key] = value; f.request.items[0].after[key] = value; f.request.items[0].before[key] = null;
+  }
+  const index = f.read(`${CANON}/registry_index.json`); index.status = 'ACTIVE';
+  index.canonicalSources.push({ path: `${CANON}/metadata_rules.json` }); f.put(`${CANON}/registry_index.json`, index);
+  f.put(`${CANON}/metadata_rules.json`, { status: 'ACTIVE', integrationPatterns: ['NONE'] });
+  f.put(`${CANON}/condition_registry.json`, { ...f.read(`${CANON}/condition_registry.json`), status: 'ACTIVE' });
+  const git = (...args) => execFileSync('git', args, { cwd: f.root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
+  const commit = () => { git('add', '.'); git('-c', 'user.name=Rationale fixture', '-c', 'user.email=rationale@example.invalid', 'commit', '-qm', 'Immutable native rationale'); return git('rev-parse', 'HEAD'); };
+  const assetPath = 'archive/assets/rationale-fixture.svg';
+  f.put(assetPath, assetBytes ?? '<svg xmlns="http://www.w3.org/2000/svg"><path id="line" d="M0 0L1 1"/><use href="#line"/></svg>');
+  if (choiceAsset) f.q.choices = ['<img src="assets/rationale-fixture.svg">', '2'];
+  else f.q.image = 'assets/rationale-fixture.svg';
+  f.writeBank();
+  const pack = f.request.registryChanges.find(change => change.path.endsWith('/pack.json'));
+  pack.after.standardCourses.push('M2-2');
+  f.request.registryChanges.find(change => change.path.endsWith('/taxonomy.json')).after.templates[0].ownerPack = 'NEW_COURSE';
+  f.request.items[0].after.courseKey = 'M2-2';
+  const metadata = f.read(META), identities = f.read('archive/data/question_identity_map.json');
+  for (const doc of [metadata, identities]) {
+    middleParent(doc);
+    doc.records[0].sourceFingerprint = auditSourceFingerprint(f.q);
+    for (const row of doc.records) row.sourceQuestionNo = row.sourceOrdinal;
+  }
+  f.put(META, metadata); f.put('archive/data/question_identity_map.json', identities);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  git('init', '-q'); const baseSha = commit(), sourceGitBlobSha = git('rev-parse', `${baseSha}:${f.sourcePath}`);
+  const nativeBefore = structuredClone(f.q), originalId = f.request.requestId, item = f.request.items[0];
+  const nativeAfter = structuredClone(item.after), native = { schemaVersion: 'm2-s2-meta-review-v1',
+    sourceArchiveFile: f.request.sourceArchiveFile, baseSha, sourceGitBlobSha, owner: 'immutable-native-reviewer', reviewedQuestionCount: 2,
+    items: [{ questionUid: 'uid1', sourceOrdinal: 1, rpmDecision: 'CORRECT', after: nativeAfter,
+      primaryMethod: '원 검토에서 명시한 방법', decisiveStep: '원 검토에서 명시한 결정 단계',
+      fieldReview: { classification: '기존 ACTIVE 분류 확인', difficulty: '기존 난도 확인' }, contentDebt: [], registrationDebt: [] },
+      { questionUid: 'uid2', sourceOrdinal: 2, rpmDecision: 'UNRESOLVED', after: {}, decisiveStep: '선택 밖 보류' }] };
+  const nativePath = 'docs/native-rationale-review.json'; f.put(nativePath, native);
+  const reviewCommit = commit(), nativeRef = { path: nativePath, sha256: hash(fs.readFileSync(path.join(f.root, nativePath))) };
+  const current = { ...nativeBefore, curriculum: '2015', courseKey: 'M2-2',
+    reviewStatus: 'reviewed_pass', tagStatus: 'reviewed_pass', tagConfidence: 'approved_final_qa' };
+  f.writeBank(current);
+  f.request.requestId = 'native-rationale-continuity'; f.request.registryChanges = [];
+  const beforeDoc = f.read(META), before = beforeDoc.records[0], identity = f.read('archive/data/question_identity_map.json').records[0];
+  const parentPath = `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${f.request.requestId}.parent-labels.json`;
+  const parent = { questionUid: 'uid1', sourceArchiveFile: f.request.sourceArchiveFile, sourceOrdinal: 1,
+    curriculumKey: '2015', courseKey: '중2 수학', standardUnitKey: before.standardUnitKey, subUnitKey: before.subUnitKey,
+    L1: before.L1, L2: before.L2 };
+  f.put(parentPath, { schemaVersion: 'archive-meta-pipeline-parent-label-evidence-v1', sourcePath: META,
+    sourceSha256: hash(fs.readFileSync(path.join(f.root, META))), records: [parent] });
+  const parentRef = { path: parentPath, sha256: hash(fs.readFileSync(path.join(f.root, parentPath))) };
+  item.after = { ...nativeAfter, primaryMethod: native.items[0].primaryMethod, decisiveStep: native.items[0].decisiveStep,
+    L1: before.L1, L2: before.L2, sourceFingerprint: auditSourceFingerprint(current), contentFingerprint: auditContentFingerprint(current) };
+  item.before = Object.fromEntries(Object.keys(item.after).map(key => [key, before[key] ?? null]));
+  item.identityBefore = { sourceFingerprint: identity.sourceFingerprint };
+  item.basicScopeParentRef = parentRef; item.evidenceRefs = [nativeRef, parentRef];
+  item.sourceReview = { schemaVersion: 'archive-reviewed-source-reassessment-v1', reviewCommit, reviewPath: nativePath,
+    reviewRef: nativeRef, rationaleContinuity: { schemaVersion: 'archive-native-rationale-continuity-v1' } };
+  f.request.approval.evidenceRefs = [nativeRef, parentRef];
+  const receiptPath = `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${f.request.requestId}.json`;
+  const params = (previous = nativeBefore) => {
+    const bytes = fs.readFileSync(path.join(f.root, f.sourcePath)), bank = loadSourceBank(bytes.toString());
+    const md = f.read(META), identityMap = f.read('archive/data/question_identity_map.json');
+    const current = md.records.find(row => row.questionUid === 'uid1'), identity = identityMap.records.find(row => row.questionUid === 'uid1');
+    const runtime = f.read('archive/data/meta-foundation/runtime/new-course-v1.json');
+    return { question: bank[0], previous, current, identity, source: f.request.sourceArchiveFile, ordinal: 1,
+      registry: loadActiveMetaRegistry(f.root), validate: validateActiveMetaFields, runtimeOwner: runtime.packId,
+      nativeSource: { root: f.root, bytes, blobSha1: blob(bytes), bank, identityMap,
+        identityByJoin: new Map(identityMap.records.map(row => [`${row.sourceArchiveFile}#${row.sourceOrdinal}`, row])),
+        runtimeRecord: runtime.records.find(row => row.questionUid === 'uid1'), runtimeStatus: runtime.status } };
+  };
+  const plan = previous => planAutoQuestion(params(previous));
+  return { ...f, git, item, native, nativePath, nativeBefore, current, parentPath, receiptPath, assetPath, originalId, beforeDoc, plan, params };
+}
+
+test('native metadata rationale continuity issues a durable opt-in and reuses old and caught-up cursors', t => {
+  const f = metadataRationaleContinuityFixture(t), source = fs.readFileSync(path.join(f.root, f.sourcePath));
+  const nativeBytes = fs.readFileSync(path.join(f.root, f.nativePath));
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).replay, true);
+  const receipt = f.read(f.receiptPath), proof = receipt.fingerprintRepairs[0].sourceReview.rationaleContinuity;
+  assert.equal(proof.scope, 'ISSUED_NATIVE_RATIONALE_REUSE_ONLY');
+  assert.equal(proof.rendererAssets.length, 1);
+  assert.equal(proof.sourceRationaleFieldsAdded, false);
+  assert.deepEqual(proof.sourceMetadataFields, ['courseKey', 'curriculum', 'reviewStatus', 'tagConfidence', 'tagStatus', 'templateKey',
+    'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility']);
+  const sidecar = reviewedSourceBindingPath(f.request.requestId);
+  for (const row of [receipt.appliedRecords[0], receipt.runtimeRecords[0]]) assert.ok(row.approvalEvidence.includes(sidecar));
+  const args = f.params();
+  assert.equal(args.registry.status, 'ACTIVE', JSON.stringify(args.registry.errors));
+  assert.equal(validateNativeReviewedSourceReuse(receipt, args.nativeSource, args.question, args.identity, args.ordinal, args.current, args.registry), true);
+  const before = JSON.stringify([f.read(META), f.read('archive/data/question_identity_map.json')]);
+  for (const previous of [f.nativeBefore, f.current]) {
+    const result = f.plan(previous); assert.equal(result.status, 'ALREADY_REGISTERED', JSON.stringify(result));
+    assert.equal(result.nativeReviewReceipt, f.receiptPath); assert.equal(result.final, undefined);
+  }
+  assert.equal(JSON.stringify([f.read(META), f.read('archive/data/question_identity_map.json')]), before);
+  assert.deepEqual(f.read(META).records[1], f.beforeDoc.records[1]);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.sourcePath)), source);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.nativePath)), nativeBytes);
+});
+
+test('native metadata rationale continuity refuses mixed options, scope, invented rationale and source changes', async t => {
+  for (const [name, mutate, expected] of [
+    ['unknown option', f => { f.item.sourceReview.rationaleContinuity.allowMissing = true; }, /native rationale continuity/],
+    ['wrong schema', f => { f.item.sourceReview.rationaleContinuity.schemaVersion += '-other'; }, /native rationale continuity/],
+    ['explicit null option', f => { f.item.sourceReview.rationaleContinuity = null; }, /native rationale continuity/],
+    ['renderer mix', f => { f.item.sourceReview.rendererProof = {}; }, /renderer continuity|native rationale continuity/],
+    ['identity-only mode', f => { f.request.registrationMode = 'IDENTITY_FINGERPRINT_ONLY'; }, /identity|rationale|unchanged/],
+    ['FULL scope', f => { delete f.request.scope; }, /FULL|count|denominator|partial|total/],
+    ['changed native method', f => { f.item.after.primaryMethod += ' invented'; }, /source reassessment/],
+    ['changed native step', f => { f.item.after.decisiveStep += ' invented'; }, /source reassessment/],
+    ['new source rationale', f => { f.current.primaryMethod = f.item.after.primaryMethod; f.writeBank(f.current); }, /native rationale continuity/],
+    ['explicit null source rationale', f => { f.current.primaryMethod = null; f.writeBank(f.current); }, /current source rationale differs from native evidence: primaryMethod/],
+    ['new source field', f => { f.current.editorialNote = 'unreviewed'; f.writeBank(f.current); }, /native rationale continuity/],
+    ['new answer', f => { f.current.answer = '2'; f.writeBank(f.current); f.item.after.sourceFingerprint = auditSourceFingerprint(f.current); }, /source reassessment/],
+    ['wrong parent UID', f => { const p = f.read(f.parentPath); p.records[0].questionUid = 'other'; f.put(f.parentPath, p); }, /evidence|SHA|sha|rationale/],
+  ]) await t.test(name, t => {
+    const f = metadataRationaleContinuityFixture(t); mutate(f);
+    const before = fs.readFileSync(path.join(f.root, META));
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), expected);
+    assert.deepEqual(fs.readFileSync(path.join(f.root, META)), before);
+  });
+});
+
+test('native metadata rationale continuity checks live witnesses, assets and durable markers after issuance', async t => {
+  for (const [name, mutate] of [
+    ['same-path asset drift after warm cache', f => { f.put(f.assetPath, '<svg><text>changed</text></svg>'); }],
+    ['missing native evidence', f => { fs.unlinkSync(path.join(f.root, f.nativePath)); }],
+    ['changed parent evidence', f => { f.put(f.parentPath, {}); }],
+    ['sidecar removed', f => { fs.unlinkSync(path.join(f.root, reviewedSourceBindingPath(f.request.requestId))); }],
+    ['rationale proof deleted', f => { const r = f.read(f.receiptPath); delete r.fingerprintRepairs[0].sourceReview.rationaleContinuity; f.put(f.receiptPath, r); }],
+    ['coordinated proof and row markers deleted', f => {
+      const marker = reviewedSourceBindingPath(f.request.requestId), r = f.read(f.receiptPath);
+      delete r.fingerprintRepairs[0].sourceReview.rationaleContinuity;
+      for (const p of [META, 'archive/data/meta-foundation/runtime/new-course-v1.json']) {
+        const d = f.read(p); d.records.find(x => x.questionUid === 'uid1').approvalEvidence = d.records.find(x => x.questionUid === 'uid1').approvalEvidence.filter(x => x !== marker); f.put(p, d);
+      }
+      for (const rows of [r.appliedRecords, r.runtimeRecords]) rows[0].approvalEvidence = rows[0].approvalEvidence.filter(x => x !== marker);
+      f.put(f.receiptPath, r);
+    }],
+  ]) await t.test(name, t => {
+    const f = metadataRationaleContinuityFixture(t); registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+    assert.equal(f.plan().status, 'ALREADY_REGISTERED'); mutate(f);
+    for (const previous of [f.nativeBefore, f.current]) {
+      const result = f.plan(previous); assert.equal(result.status, 'SUPPLEMENT_PENDING', JSON.stringify(result));
+      assert.equal(result.final, undefined); assert.equal(result.nativeReviewReceipt, undefined);
+    }
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /rationale|renderer|evidence|sidecar|proof|digest|registration|metadata|source-review[- ]binding/i);
+  });
+});
+
+test('native metadata rationale continuity closes immutable SVG dependencies and nested choice assets', async t => {
+  for (const assetBytes of ['<svg><image href=external.svg /></svg>', '<svg><image href="external.svg" /></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg" xml:base="https://example.invalid/unbound.svg"><use href="#shape"/></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg"><style>.shape{fill:u\\72l(https://example.invalid/unbound.svg#paint)}</style></svg>']) {
+    await t.test('immutable unsupported SVG dependency', t => {
+      const f = metadataRationaleContinuityFixture(t, { assetBytes });
+      const before = fs.readFileSync(path.join(f.root, META));
+      assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /unsupported SVG dependency/);
+      assert.deepEqual(fs.readFileSync(path.join(f.root, META)), before);
+    });
+  }
+  await t.test('choice-only image is validated again after cache warming', t => {
+    const f = metadataRationaleContinuityFixture(t, { choiceAsset: true });
+    registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+    assert.equal(f.plan().status, 'ALREADY_REGISTERED');
+    f.put(f.assetPath, '<svg><path d="M0 0L2 2"/></svg>');
+    for (const previous of [f.nativeBefore, f.current]) assert.equal(f.plan(previous).status, 'SUPPLEMENT_PENDING');
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /current renderer bytes changed/);
+  });
+});
+
+test('native metadata rationale continuity does not authorize unrelated old-cursor changes or ordinary reuse', async t => {
+  const f = metadataRationaleContinuityFixture(t); registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  for (const delta of [{ curriculum: '2022' }, { courseKey: 'M3-2' }, { difficultyBucket: 5 },
+    { templateKey: 'OTHER' }, { primaryMethod: 'old arbitrary method' }, { solution: 'different old solution' }, { extra: true }]) {
+    const result = f.plan({ ...f.nativeBefore, ...delta });
+    assert.equal(result.status, 'SUPPLEMENT_PENDING', JSON.stringify(result)); assert.equal(result.final, undefined);
+  }
+  const plain = metadataRationaleContinuityFixture(t); delete plain.item.sourceReview.rationaleContinuity;
+  registerReviewedExamV2({ root: plain.root, request: plain.request, write: true });
+  assert.deepEqual(plain.plan().reasons, ['SOURCE_SEMANTIC_RATIONALE_MISSING']);
+  assert.equal(plain.plan(plain.current).status, 'ALREADY_REGISTERED');
+});
+
 test("native decisive step can be carried verbatim with explicit provenance without inventing a separate method review", t => {
   const f = reviewedSourceFixture(t), values = carryReviewedRationale(f);
   registerReviewedExamV2({ root: f.root, request: f.request, write: true });
@@ -4446,6 +4731,66 @@ test("native decisive step can be carried verbatim with explicit provenance with
   assert.equal(proof.newMathematicalQa, false);
   for (const row of [receipt.appliedRecords[0], receipt.runtimeRecords[0]])
     for (const [field, value] of Object.entries(values)) assert.equal(row[field], value);
+});
+
+function reviewedRationaleWithOlderSource(t) {
+  const f = reviewedSourceFixture(t);
+  const bytes = f.writeBank({ ...f.current, primaryMethod: "검토 이전 원본의 주풀이", decisiveStep: "검토 이전 원본의 결정 단계" });
+  f.review.sourceAfterBlob = f.git("hash-object", "-w", f.sourcePath);
+  f.review.sourceAfterSha256 = hash(bytes);
+  f.updateReview();
+  return { ...f, values: carryReviewedRationale(f) };
+}
+
+test("verbatim native rationale takes precedence over an older source method and survives official replay", t => {
+  const f = reviewedRationaleWithOlderSource(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read(f.receiptPath), proof = receipt.fingerprintRepairs[0].sourceReview;
+  assert.deepEqual(proof.rationaleBindings.primaryMethod, {
+    origin: "NATIVE_DECISIVE_STEP_VERBATIM", valueSha256: hash(f.values.primaryMethod),
+  });
+  assert.equal(proof.rationaleBindings.decisiveStep.origin, "NATIVE_ITEM_FIELD");
+  assert.equal(proof.newMathematicalQa, false);
+  for (const row of [receipt.appliedRecords[0], receipt.runtimeRecords[0]])
+    for (const [field, value] of Object.entries(f.values)) assert.equal(row[field], value);
+  const replay = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(replay.replay, true);
+  assert.deepEqual(replay.plannedPaths, []);
+});
+
+test("verbatim native rationale rejects any one of the four mismatched declarations", t => {
+  for (const target of ["request", "source"]) for (const field of ["primaryMethod", "decisiveStep"]) {
+    const f = reviewedRationaleWithOlderSource(t);
+    if (target === "request") f.item.after[field] = "독립 근거 없는 다른 설명";
+    else f.writeBank({ ...f.current, ...f.values, [field]: "독립 근거 없는 다른 설명" });
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /primaryMethod|decisiveStep/);
+    assert.equal(fs.existsSync(path.join(f.root, f.receiptPath)), false);
+  }
+});
+
+test("already-matching committed rationale keeps its source provenance for receipt compatibility", t => {
+  const f = reviewedRationaleWithOlderSource(t);
+  f.review.sourceAfterBlob = f.git("hash-object", "-w", f.sourcePath);
+  f.review.sourceAfterSha256 = hash(fs.readFileSync(path.join(f.root, f.sourcePath)));
+  f.updateReview();
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.deepEqual(f.read(f.receiptPath).fingerprintRepairs[0].sourceReview.rationaleBindings.primaryMethod, {
+    origin: "REVIEW_COMMIT_SOURCE_FIELD", valueSha256: hash(f.values.primaryMethod),
+  });
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).replay, true);
+});
+
+test("explicit native after and item methods still outrank verbatim decisive-step transport", t => {
+  for (const location of ["after", "item"]) {
+    const f = reviewedRationaleWithOlderSource(t);
+    if (location === "after") f.review.items[0].after.primaryMethod = "별도로 확정된 native 주풀이";
+    else f.review.items[0].primaryMethod = "별도로 확정된 native 주풀이";
+    f.review.sourceAfterBlob = f.git("hash-object", "-w", f.sourcePath);
+    f.review.sourceAfterSha256 = hash(fs.readFileSync(path.join(f.root, f.sourcePath)));
+    f.updateReview();
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /primaryMethod/);
+    assert.equal(fs.existsSync(path.join(f.root, f.receiptPath)), false);
+  }
 });
 
 test("native explicit rationale and committed source rationale retain their distinct provenance", t => {
@@ -4766,7 +5111,7 @@ function expandOriginalAuditInputs(f, count) {
 }
 
 function auditedSourcePreservationFixture(t, { solution = false, legacySourceAudit = false, consumerParent = false,
-  consumerCatalog = false, questionCount = 1, selectedOrdinals = null } = {}) {
+  consumerCatalog = false, questionCount = 1, selectedOrdinals = null, choiceRenderer = false } = {}) {
   const f = fixture(t, '중2 수학', '2015');
   legacySourceAudit ||= consumerParent;
   const canonicalSource = consumerParent || consumerCatalog;
@@ -4781,6 +5126,14 @@ function auditedSourcePreservationFixture(t, { solution = false, legacySourceAud
   for (const change of f.request.registryChanges)
     for (const row of change.after?.templates || []) row.ownerPack = 'NEW_COURSE';
   for (const p of [META, 'archive/data/question_identity_map.json']) f.put(p, knownUnit(f.read(p)));
+  if (choiceRenderer) {
+    f.q.choices[0] = '<img src="assets/images/audit-choice.svg">';
+    f.put('archive/assets/images/audit-choice.svg', typeof choiceRenderer === 'string' ? choiceRenderer
+      : '<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L1 1"/></svg>\n');
+    for (const p of [META, 'archive/data/question_identity_map.json']) {
+      const doc = f.read(p); doc.records[0].sourceFingerprint = auditSourceFingerprint(f.q); f.put(p, doc);
+    }
+  }
   const sourcePath = 'archive/exams/' + f.request.sourceArchiveFile;
   if (legacySourceAudit) {
     f.q.crossConceptKeys = [];
@@ -4911,6 +5264,158 @@ function auditedSourcePreservationFixture(t, { solution = false, legacySourceAud
   };
   return { ...f, request, prior, old, beforeQuestion, beforeBank, bank, sourcePath, registeredPath, save, difficulty, native, ref, checkpoint, projectedParent };
 }
+
+function auditFullSourceOnlyFixture(t, { questionCount = 4, selected = [1, 3], superseded = [], choiceRenderer = false } = {}) {
+  const f = auditedSourcePreservationFixture(t, { questionCount, choiceRenderer, legacySourceAudit: true });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const fullReceiptPath = f.registeredPath, fullReceipt = f.read(fullReceiptPath);
+  // Model later, separate approvals only as protected fixture state. They are
+  // deliberately ineligible for reuse of this earlier FULL audit receipt.
+  for (const p of [META, 'archive/data/meta-foundation/runtime/new-course-v1.json']) {
+    const doc = f.read(p);
+    for (const r of doc.records) if (superseded.includes(r.sourceOrdinal)) {
+      r.metadataApprovalType = 'FINAL_QA'; r.metadataRevision = 'fixture-later-reviewed-state';
+    }
+    f.put(p, doc);
+  }
+  const priorCommit = f.checkpoint('published full preservation and any later approvals');
+  const sourceBefore = fs.readFileSync(path.join(f.root, f.sourcePath));
+  f.put(f.sourcePath, sourceBefore.toString() + '// unrelated whole-source revision\n');
+  const requestId = 'audit-source-only', requestPath = '.archive-meta-register/inbox/' + requestId + '.json';
+  const ref = f.ref(fullReceiptPath);
+  const request = { schemaVersion: 'archive-reviewed-exam-meta-register-request-v2', requestId,
+    examUid: fullReceipt.examUid, sourceArchiveFile: fullReceipt.sourceArchiveFile,
+    expectedSourceBlobSha1: blob(fs.readFileSync(path.join(f.root, f.sourcePath))), expectedQuestionCount: questionCount,
+    scope: 'PARTIAL_UIDS', registryChanges: [],
+    approval: { type: 'META_PIPELINE_AUDIT', metadataReviewed: true, approvedBy: 'source-only-preservation',
+      metaPipelineAudit: fullReceipt.approval.metaPipelineAudit, evidenceRefs: [ref],
+      sourceRebind: { schemaVersion: 'archive-native-audit-source-preservation-v1', requestPath, priorCommit, priorReceiptRef: ref } },
+    items: selected.map(n => ({ questionUid: fullReceipt.appliedRecords.find(r => r.sourceOrdinal === n).questionUid,
+      sourceOrdinal: n, before: {}, after: {}, reason: 'Keep exactly the still-current original audit', evidenceRefs: [ref] })) };
+  const save = () => f.put(requestPath, request); save();
+  const native = (ordinal = selected[0], caughtUp = false) => {
+    const args = f.native(ordinal); args.nativeSource.bytes = fs.readFileSync(path.join(f.root, f.sourcePath));
+    args.nativeSource.blobSha1 = blob(args.nativeSource.bytes);
+    args.nativeSource.bank = loadSourceBank(args.nativeSource.bytes.toString());
+    args.question = args.nativeSource.bank[ordinal - 1];
+    if (caughtUp) args.previous = structuredClone(args.question);
+    return args;
+  };
+  return { ...f, request, requestPath, save, native, fullReceiptPath, fullReceipt, sourceBefore,
+    registeredPath: 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/' + requestId + '.json',
+    bindingPath: auditSourceBindingPath(requestId) };
+}
+
+function auditSourceTreeBytes(root) {
+  const visit = relative => fs.readdirSync(path.join(root, relative), { withFileTypes: true })
+    .filter(e => e.name !== '.git').sort((a, b) => a.name.localeCompare(b.name, 'en'))
+    .flatMap(e => e.isDirectory() ? visit(path.join(relative, e.name))
+      : [[path.join(relative, e.name), hash(fs.readFileSync(path.join(root, relative, e.name)))]]);
+  return visit('');
+}
+
+test('source-only audit subset replays the entire FULL24 and preserves twelve still-current approvals without D5', t => {
+  const f = auditFullSourceOnlyFixture(t, { questionCount: 24, selected: Array.from({ length: 12 }, (_, i) => i + 1),
+    superseded: Array.from({ length: 11 }, (_, i) => i + 14), choiceRenderer: true });
+  const selected = new Set(f.request.items.map(r => r.questionUid));
+  const files = [META, 'archive/data/question_identity_map.json', 'archive/data/meta-foundation/runtime/new-course-v1.json'];
+  const before = files.map(p => f.read(p)), source = fs.readFileSync(path.join(f.root, f.sourcePath));
+  const full = fs.readFileSync(path.join(f.root, f.fullReceiptPath));
+  assert.equal(f.fullReceipt.appliedRecords.length, 24);
+  const dry = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(dry.totalQuestions, 12); assert.equal(dry.newMetadataApprovals, 0);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read(f.registeredPath);
+  assert.equal(receipt.auditPreservation.priorFullCount, 24);
+  assert.equal(receipt.auditPreservation.publicCurrentAuthorityUids.length, 13);
+  assert.equal(receipt.auditPreservation.newDifficultyApprovals, 0);
+  assert.equal(receipt.preservedMetadataApprovals, 12); assert.deepEqual(receipt.fingerprintRepairs, []);
+  assert.equal(receipt.auditPreservation.difficultyRequestRef, undefined);
+  for (const p of files) assert.deepEqual(f.read(p).records.filter(r => !selected.has(r.questionUid)),
+    before[files.indexOf(p)].records.filter(r => !selected.has(r.questionUid)));
+  assert.deepEqual(f.read(files[1]), before[1], 'identity document is byte-semantically unchanged');
+  for (const row of receipt.appliedRecords) {
+    const old = before[0].records.find(r => r.questionUid === row.questionUid);
+    assert.equal(row.metadataRevision, `meta-foundation:${old.metaFoundationPackId}@${old.metaFoundationPackVersion}:exam-meta_pipeline_audit-v2:source-only-v1:${f.request.requestId}`,
+      'retain the existing catalog/parent audited-sidecar authority family and an explicit preservation marker');
+    for (const key of new Set([...Object.keys(old), ...Object.keys(row)]))
+      if (!['metadataRevision', 'approvalEvidence'].includes(key)) assert.deepEqual(row[key], old[key], key);
+  }
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.sourcePath)), source);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, f.fullReceiptPath)), full);
+  fs.rmSync(path.join(f.root, f.requestPath));
+  fs.rmSync(path.join(f.root, f.fullReceipt.auditPreservation.requestSnapshot.approval.sourceRebind.requestPath));
+  fs.rmSync(path.join(f.root, f.fullReceipt.auditPreservation.requestSnapshot.approval.sourceRebind.difficultyRequestRef.path));
+  const replay = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(replay.replay, true); assert.deepEqual(replay.plannedPaths, []);
+  for (const ordinal of f.request.items.map(r => r.sourceOrdinal)) for (const caught of [false, true]) {
+    const p = planAutoQuestion(f.native(ordinal, caught));
+    assert.equal(p.status, 'ALREADY_REGISTERED', JSON.stringify(p));
+    assert.equal(p.nativeReviewReceipt, f.registeredPath); assert.equal(p.newMetadataApprovals, 0);
+  }
+});
+
+test('source-only audit subset refuses changed authority, original proof, source, D5 and current state before any write', async t => {
+  const cases = [
+    ['full scope', f => { delete f.request.scope; }],
+    ['original audit approval type', f => { f.request.approval.type = 'FINAL_QA'; }],
+    ['new D5', f => { f.request.approval.sourceRebind.difficultyRequestRef = f.fullReceipt.auditPreservation.difficultyRequestRef; }],
+    ['semantic after', f => { f.request.items[0].after.templateKey = 'TPL_NEW'; }],
+    ['registry change', f => { f.request.registryChanges = [{ before: null, after: {} }]; }],
+    ['wrong immutable commit', f => { f.request.approval.sourceRebind.priorCommit = 'a'.repeat(40); }],
+    ['changed original receipt', f => { const d = f.read(f.fullReceiptPath); d.newMetadataApprovals = 24; f.put(f.fullReceiptPath, d); }],
+    ['selected UID outside prior', f => { f.request.items[0].questionUid = 'another-uid'; }],
+    ['ordinal outside source', f => { f.request.items[0].sourceOrdinal = 9; }],
+    ['superseded public row', f => { const row = f.fullReceipt.appliedRecords.find(r => r.sourceOrdinal === 4); f.request.items[0] = { ...f.request.items[0], questionUid: row.questionUid, sourceOrdinal: 4 }; }],
+    ['selected whole question metadata', f => { const bank = structuredClone(f.bank); bank[0].tagStatus = 'new'; f.put(f.sourcePath, 'window.questions=' + JSON.stringify(bank) + ';'); f.request.expectedSourceBlobSha1 = blob(fs.readFileSync(path.join(f.root, f.sourcePath))); }],
+    ['selected whole question answer', f => { const bank = structuredClone(f.bank); bank[0].answer = 'changed'; f.put(f.sourcePath, 'window.questions=' + JSON.stringify(bank) + ';'); f.request.expectedSourceBlobSha1 = blob(fs.readFileSync(path.join(f.root, f.sourcePath))); }],
+    ['current metadata authority', f => { const d = f.read(META); d.records[0].fieldStatus.problemType = 'manual_review_pending'; f.put(META, d); }],
+    ['current identity', f => { const p = 'archive/data/question_identity_map.json', d = f.read(p); d.records[0].sourceQuestionNo = 'wrong'; f.put(p, d); }],
+    ['current runtime', f => { const p = 'archive/data/meta-foundation/runtime/new-course-v1.json', d = f.read(p); d.records.find(r => r.sourceOrdinal === 1).difficultyBucket = 5; f.put(p, d); }],
+    ['same-path choice asset', f => { f.put('archive/assets/images/audit-choice.svg', '<svg/>'); }],
+    ['missing choice asset', f => { fs.rmSync(path.join(f.root, 'archive/assets/images/audit-choice.svg')); }],
+  ];
+  for (const [label, mutate] of cases) await t.test(label, child => {
+    const f = auditFullSourceOnlyFixture(child, { superseded: [4], choiceRenderer: true }); mutate(f); f.save();
+    const before = auditSourceTreeBytes(f.root); assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }));
+    assert.deepEqual(auditSourceTreeBytes(f.root), before);
+  });
+});
+
+test('source-only audit issued sidecar, provenance and renderer drift fail closed during replay and Native reuse', async t => {
+  const cases = [
+    ['receipt proof removed', f => { const d = f.read(f.registeredPath); delete d.auditPreservation; f.put(f.registeredPath, d); }],
+    ['sidecar missing', f => { fs.rmSync(path.join(f.root, f.bindingPath)); }],
+    ['sidecar request changed', f => { const d = f.read(f.bindingPath); d.requestSnapshot.items[0].after.difficultyBucket = 5; f.put(f.bindingPath, d); }],
+    ['sidecar plus source-only claim removed', f => { const d = f.read(f.registeredPath); delete d.approval.sourceRebind; delete d.auditPreservation; f.put(f.registeredPath, d); fs.rmSync(path.join(f.root, f.bindingPath)); }],
+    ['same-path asset changed', f => { f.put('archive/assets/images/audit-choice.svg', '<svg/>'); }],
+    ['new approval count', f => { const d = f.read(f.registeredPath); d.newMetadataApprovals = 1; f.put(f.registeredPath, d); }],
+    ['metadata marker removed', f => { const d = f.read(META); d.records[0].approvalEvidence = d.records[0].approvalEvidence.filter(r => r !== f.bindingPath); f.put(META, d); }],
+    ['runtime marker removed', f => { const p = 'archive/data/meta-foundation/runtime/new-course-v1.json', d = f.read(p); d.records.find(r => r.sourceOrdinal === 1).approvalEvidence = d.records.find(r => r.sourceOrdinal === 1).approvalEvidence.filter(r => r !== f.bindingPath); f.put(p, d); }],
+  ];
+  for (const [label, mutate] of cases) await t.test(label, child => {
+    const f = auditFullSourceOnlyFixture(child, { choiceRenderer: true });
+    registerReviewedExamV2({ root: f.root, request: f.request, write: true }); mutate(f);
+    const before = auditSourceTreeBytes(f.root);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }));
+    for (const caught of [false, true]) {
+      const plan = planAutoQuestion(f.native(1, caught));
+      assert.equal(plan.status, 'SUPPLEMENT_PENDING', JSON.stringify(plan));
+      assert.equal(plan.final, undefined); assert.equal(plan.nativeReviewReceipt, undefined);
+    }
+    assert.deepEqual(auditSourceTreeBytes(f.root), before);
+  });
+});
+
+test('source-only audit rejects preexisting external or unquoted SVG dependencies even when Git bytes match', async t => {
+  for (const svg of ['<svg><image href=external.svg /></svg>', '<svg><image href="external.svg" /></svg>',
+    '<svg><style>path{fill:url(https://example.invalid/external.svg)}</style></svg>']) await t.test(svg, child => {
+    const f = auditFullSourceOnlyFixture(child, { choiceRenderer: svg });
+    const before = auditSourceTreeBytes(f.root);
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /SVG/);
+    assert.deepEqual(auditSourceTreeBytes(f.root), before);
+  });
+});
 
 function preservedAuditParentConsumerFixture(t) {
   const f = auditedSourcePreservationFixture(t, { consumerParent: true });

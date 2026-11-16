@@ -381,3 +381,120 @@ test('CLI requires exact trusted commits and one explicit mode, and emits only t
   assert.equal(pass.status, 0, pass.stderr); assert.equal(JSON.parse(pass.stdout).candidateSourceWrites, 0);
   assert.doesNotMatch(pass.stdout, /Protected|explanation/); assert.equal(fs.existsSync(f.outputRoot), false);
 });
+
+function m2PrimaryV3Fixture(t, { mutateNative, mutateWitness, mutateProof, mutateRequest, mutateOperations, profile = 'M2_NATIVE_PROPOSAL_V3' } = {}) {
+  const f = fixture(t);
+  f.manifest.transportProfile = profile;
+  const stable = value => JSON.stringify(value, (_, v) => v && !Array.isArray(v) && typeof v === 'object'
+    ? Object.fromEntries(Object.keys(v).sort().map(k => [k, v[k]])) : v);
+  const nativePath = 'docs/native-m2-primary-review.json';
+  const finalPath = '.archive-meta-register/evidence/m2-primary-finalization.json';
+  const witnessPath = '.archive-meta-register/evidence/m2-primary-independent.json';
+  const nativeCopy = '.archive-meta-register/evidence/m2-primary-native.json';
+  const rpmPath = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json';
+  const rpm = { id: 'RPM_PRIMARY_FIXTURE', curriculum: '2015', scope: 'M2-2', ownerPack: 'MIDDLE_GEOMETRY', rpmPath: { l3: 'Synthetic proof' } };
+  const rpmBytes = json({ records: [rpm] });
+  const primary = { standardCourse: '중2 수학', standardUnitKey: 'M2-05', subUnitKey: 'M2-05-QUADRILATERAL_PROPERTIES',
+    problemTypeKey: 'PT_NEW_PROOF', templateKey: 'TPL_NEW_PROOF' };
+  const proposal = { id: 'NEW-PRIMARY-1', type: 'NEW_PT', parent: `${rpm.id} / ${rpm.rpmPath.l3}`, supportingQuestionUids: [UID] };
+  const native = { schemaVersion: 'm2-s2-meta-review-v1', examId: 'E054', sourceArchiveFile: f.sourceFile, reviewedQuestionCount: 2,
+    proposals: [proposal], items: [{ questionUid: UID, sourceOrdinal: 1, rpmRecordId: rpm.id, proposalRefs: [proposal.id], after: {},
+      activeDefinitionMatch: { problemTypeKey: null, templateKey: null, problemTypeStatus: null, templateStatus: null,
+        templateParent: null, exactBindings: [] } }] };
+  mutateNative?.(native);
+  const nativeBytes = json(native);
+  f.put(nativePath, nativeBytes); f.put(rpmPath, rpmBytes); f.git('add', nativePath, rpmPath);
+  f.git('commit', '-qm', 'immutable synthetic native primary proposal');
+  const nativeCommit = f.git('rev-parse', 'HEAD');
+  const selection = { documentRef: { path: nativePath, sha256: sha(nativeBytes) }, index: 0,
+    proposalSha256: sha(stable(native.proposals[0])), questionUid: UID, sourceOrdinal: 1, proposalId: proposal.id };
+  const pt = { problemTypeKey: primary.problemTypeKey, status: 'ACTIVE', ownerPack: rpm.ownerPack, labelKo: 'Synthetic proof' };
+  const tpl = { templateKey: primary.templateKey, parentProblemTypeKey: pt.problemTypeKey, status: 'ACTIVE', ownerPack: rpm.ownerPack };
+  const match = { problemTypeKey: pt.problemTypeKey, curriculum: rpm.curriculum,
+    standardCourse: primary.standardCourse, standardUnitKey: primary.standardUnitKey, subUnitKey: primary.subUnitKey };
+  const binding = { ...match, status: 'ACTIVE', ownerPack: rpm.ownerPack, supportingQuestionUids: [UID], supportingItemCount: 1 };
+  const taxonomy = 'archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json';
+  const choice = { selection, disposition: 'ADD_ONLY', problemTypeDefinition: pt, definition: tpl, binding,
+    problemTypeRegistryChange: { path: taxonomy, collection: 'problemTypes', match: { problemTypeKey: pt.problemTypeKey }, before: null, after: pt },
+    registryChange: { path: taxonomy, collection: 'templates', match: { templateKey: tpl.templateKey }, before: null, after: tpl },
+    bindingRegistryChange: { path: taxonomy.replace('taxonomy.json', 'bindings.json'), collection: 'bindings', match, before: null, after: binding } };
+  const scope = { newFullMathematicalQa: false, newReview2Claims: 0, newMetadataApprovals: 0, newDifficultyJudgments: 0, newSourceContentEdits: 0 };
+  const app = { examId: native.examId, questionUid: UID, sourceOrdinal: 1, sourcePath: f.sourcePath,
+    nativeReviewRef: { commit: nativeCommit, path: nativePath, sha256: sha(nativeBytes) }, nativeItemStableSha256: sha(stable(native.items[0])),
+    proposalSelections: [selection], sourceSnapshot: { commit: nativeCommit, path: f.sourcePath, sha256: sha(f.before) }, rendererAssets: [],
+    reviewedPrimaryContext: primary, decisions: [choice], reviewer: 'Independent synthetic reviewer', reason: 'Exact unresolved primary proposal',
+    newMathematicalQa: false, newMetadataApproval: false, difficultyChanged: false, nativeProtectedStudentFieldsChanges: [] };
+  const witness = { schemaVersion: 'archive-independent-m2-native-definition-finalization-v1',
+    decision: 'APPROVE_EXACT_NEW_DEFINITIONS_AND_REUSE_APPLICATIONS', reviewer: app.reviewer,
+    ...scope, existingDefinitionsModified: 0, sourceWrites: 0, canonicalWrites: 0,
+    officialCompilerResolverConsumerStillRequired: true, actualMainRegistrationClaimed: false, currentMainChecked: nativeCommit,
+    approvedRegistryChanges: [choice.registryChange, choice.problemTypeRegistryChange, choice.bindingRegistryChange],
+    rows: [{ ...app, nativeProposal: native.proposals[0], proposalSelection: selection, nativeAfter: native.items[0].after,
+      nativeActiveDefinitionMatch: native.items[0].activeDefinitionMatch, decision: choice,
+      nativeRpmContext: { path: rpmPath, sha256: sha(rpmBytes), record: rpm }, protectedPayloadFieldsUnchanged: true,
+      newFullMathematicalQa: false, newReview2: false, newDifficultyJudgment: false, sourceWrites: 0 }] };
+  mutateWitness?.(witness);
+  const witnessBytes = json(witness), witnessRef = { path: witnessPath, sha256: sha(witnessBytes) };
+  app.independentReviewRef = witnessRef;
+  const proof = { schemaVersion: 'archive-independent-m2-native-proposal-disposition-v1',
+    status: 'NARROW_PROPOSALS_FINALIZED_REGISTRATION_PENDING', scope, applications: [app] };
+  mutateProof?.(proof);
+  const proofBytes = json(proof), finalRef = { path: finalPath, sha256: sha(proofBytes) };
+  f.put(finalPath, proofBytes); f.put(witnessPath, witnessBytes); f.git('add', finalPath, witnessPath);
+  f.git('commit', '-qm', 'immutable synthetic independent primary finalization');
+  const finalizationCommit = f.git('rev-parse', 'HEAD'), nativeRef = { path: nativeCopy, sha256: sha(nativeBytes) };
+  const refs = [nativeRef, finalRef, witnessRef];
+  f.request.approval.evidenceRefs = refs;
+  const item = f.request.items[0]; Object.assign(item.after, primary); item.evidenceRefs = refs;
+  item.sourceReview = { schemaVersion: 'archive-reviewed-source-reassessment-v1', reviewCommit: nativeCommit,
+    reviewPath: nativePath, reviewRef: nativeRef, proposalFinalization: { schemaVersion: 'archive-native-proposal-finalization-v3',
+      finalizationCommit, finalizationRef: finalRef, proposalSelections: [selection] } };
+  f.request.registryChanges = [choice.registryChange, choice.problemTypeRegistryChange, choice.bindingRegistryChange]
+    .map(c => ({ ...structuredClone(c), evidenceRefs: [finalRef, witnessRef] }));
+  mutateRequest?.(f.request);
+  const operations = ['templateKey', 'problemTypeKey'].map(field => ({ field,
+    beforePresent: Object.hasOwn(f.bank[0], field), before: f.bank[0][field] ?? null, afterPresent: true, after: primary[field] }));
+  mutateOperations?.(operations);
+  f.setOperations(operations);
+  return f;
+}
+
+test('M2 named v3 profile transports an exact independently finalized unresolved PT and paired template only', t => {
+  const f = m2PrimaryV3Fixture(t), result = f.invoke({ write: true });
+  assert.equal(SOURCE_METADATA_FIELDS.includes('problemTypeKey'), false);
+  assert.equal(SOURCE_METADATA_FIELDS.length, 10);
+  assert.equal(result.newApprovals, 0); assert.equal(result.protectedStudentChanges, 0);
+  assert.equal(result.legacyOrDifficultyChanges, 0); assert.equal(result.remoteWrites, 0);
+  assert.deepEqual(fs.readFileSync(path.join(f.outputRoot, f.sourcePath)), f.afterBytes);
+  assert.deepEqual(fs.readFileSync(path.join(f.repoRoot, f.sourcePath)), f.before);
+});
+
+for (const [label, options, error] of [
+  ['default profile primary change', { profile: undefined }, /FIELD_SCOPE/],
+  ['flag without original source review', { mutateRequest: r => { delete r.items[0].sourceReview; } }, /M2_V3_PRIMARY_REF/],
+  ['wrong finalization version', { mutateRequest: r => { r.items[0].sourceReview.proposalFinalization.schemaVersion = 'archive-native-proposal-finalization-v2'; } }, /M2_V3_PRIMARY_REF/],
+  ['unknown finalization field', { mutateRequest: r => { r.items[0].sourceReview.proposalFinalization.override = true; } }, /M2_V3_PRIMARY_SPEC_SHAPE/],
+  ['wrong original proposal hash', { mutateRequest: r => { r.items[0].sourceReview.proposalFinalization.proposalSelections[0].proposalSha256 = 'e'.repeat(64); } }, /M2_V3_NATIVE_NEW_PT/],
+  ['a previously decided native primary', { mutateNative: n => { n.items[0].after.problemTypeKey = 'PT_OLD'; } }, /M2_V3_NATIVE_PRIMARY_ALREADY_DECIDED/],
+  ['nonempty original ACTIVE match', { mutateNative: n => { n.items[0].activeDefinitionMatch.problemTypeKey = 'PT_OLD'; } }, /M2_V3_NATIVE_PRIMARY_ALREADY_DECIDED/],
+  ['different proposal type', { mutateNative: n => { n.proposals[0].type = 'CC'; } }, /M2_V3_NATIVE_NEW_PT/],
+  ['new approval in the independent witness', { mutateWitness: w => { w.newMetadataApprovals = 1; } }, /M2_V3_INDEPENDENT_SCOPE/],
+  ['changed original proposal in witness', { mutateWitness: w => { w.rows[0].nativeProposal = { ...w.rows[0].nativeProposal, parent: 'different' }; } }, /M2_V3_ORIGINAL_WITNESS/],
+  ['wrong original native RPM scope', { mutateWitness: w => { w.rows[0].nativeRpmContext = { ...w.rows[0].nativeRpmContext,
+    record: { ...w.rows[0].nativeRpmContext.record, scope: 'M3-2' } }; } }, /M2_V3_NATIVE_RPM_SCOPE/],
+  ['different primary in final application', { mutateProof: p => { p.applications[0].reviewedPrimaryContext = { ...p.applications[0].reviewedPrimaryContext, problemTypeKey: 'PT_OTHER' }; } }, /M2_V3_PRIMARY_APPLICATION/],
+  ['missing independent review reference', { mutateRequest: r => { r.items[0].evidenceRefs = r.items[0].evidenceRefs.slice(0, 2); } }, /M2_V3_EVIDENCE_UNBOUND/],
+  ['missing paired template operation', { mutateOperations: ops => { ops.splice(0, 1); } }, /M2_V3_PRIMARY_OWNER_OR_BINDING/],
+  ['missing primary registry definition', { mutateRequest: r => { r.registryChanges = r.registryChanges.filter(c => c.collection !== 'problemTypes'); } }, /M2_V3_EXACT_REGISTRY_CHANGE/],
+  ['different definition owner', { mutateRequest: r => { r.registryChanges.find(c => c.collection === 'problemTypes').after.ownerPack = 'OTHER'; } }, /M2_V3_EXACT_REGISTRY_CHANGE/],
+  ['different binding curriculum', { mutateRequest: r => { r.registryChanges.find(c => c.collection === 'bindings').after.curriculum = '2022'; } }, /M2_V3_EXACT_REGISTRY_CHANGE/],
+  ['unbound registry evidence', { mutateRequest: r => { r.registryChanges[0].evidenceRefs = []; } }, /M2_V3_EXACT_REGISTRY_CHANGE/],
+  ['duplicate requested primary definition', { mutateRequest: r => { r.registryChanges.push(structuredClone(r.registryChanges.find(c => c.collection === 'problemTypes'))); } }, /M2_V3_EXACT_REGISTRY_CHANGE/],
+  ['unrelated source field under the profile', { mutateOperations: ops => { ops.push({ field: 'difficultyBucket', beforePresent: true, before: 2, afterPresent: true, after: 3 }); } }, /FIELD_SCOPE/],
+]) test(`M2 named v3 primary transport rejects ${label}`, t => {
+  const f = m2PrimaryV3Fixture(t, options);
+  if (label === 'default profile primary change') delete f.manifest.transportProfile;
+  assert.throws(() => f.invoke({ write: true }), error);
+  assert.equal(fs.existsSync(f.outputRoot), false);
+  assert.deepEqual(fs.readFileSync(path.join(f.repoRoot, f.sourcePath)), f.before);
+});

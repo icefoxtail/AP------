@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 95,
-  "templateCount": 214,
+  "problemTypeCount": 96,
+  "templateCount": 216,
   "problemTypes": [
     {
       "problemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
@@ -2985,6 +2985,21 @@
       "supportingItemCount": 1,
       "supportingQuestionUids": [
         "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+      "canonicalLabelKo": "유한 목록의 소수 개수",
+      "definition": "명시적으로 주어진 유한 자연수 목록의 각 원소를 소수의 정의로 분류하고 소수인 원소의 개수를 구한다. 연속 구간의 모든 자연수를 조사하는 유형과 구분한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "sourceUnits": [
+        "M1-01"
+      ],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c"
       ]
     }
   ],
@@ -9217,6 +9232,42 @@
       "supportingItemCount": 1,
       "supportingQuestionUids": [
         "qid_v1_dc7d5e140f3b814c3d1558a40a2e506c23cb92da180c68a4e0fecbd52507726e"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "SEQUENTIAL"
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE",
+      "parentProblemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+      "canonicalLabelKo": "유한 목록의 소수 판별 후 개수 계산",
+      "definition": "명시적으로 주어진 유한 자연수 목록의 각 원소를 소수의 정의로 분류하고 소수인 원소의 개수를 구한다. 연속 구간의 모든 자연수를 조사하는 유형과 구분한다.",
+      "internalSkeleton": "명시된 유한 자연수 목록에서 1을 제외한다 → 각 원소가 1과 자기 자신만을 약수로 가지는지 판별한다 → 소수로 판정된 원소의 개수를 센다. 목록에 없는 중간 수는 조사 대상에 넣지 않는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "NONE"
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_ROTATED_CENTER_OVERLAP",
+      "parentProblemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+      "canonicalLabelKo": "중심에 놓인 정사각형 꼭짓점의 회전 겹침 넓이",
+      "definition": "한 정사각형의 중심에 다른 정사각형의 한 꼭짓점이 놓이고 그 두 변이 인접한 두 변을 만날 때, 중심과 교점을 연결한 두 삼각형의 ASA 합동을 증명한 뒤 합동인 조각의 넓이를 옮겨 겹친 사각형의 넓이를 구한다. 겹친 사각형 자체를 정사각형으로 가정하지 않는다.",
+      "internalSkeleton": "정사각형 대각선의 이등분·직각 성질로 같은 중심거리와 45도 각을 확인한다 → 두 직각에서 공통각을 빼 중심각의 같음을 보인다 → ASA 합동을 증명한다 → 겹침 영역의 두 삼각형 중 하나를 합동인 조각으로 바꾸어 원 정사각형의 중심과 한 변이 만드는 삼각형의 넓이로 환원한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_bf6f71e848237887a135461e9cb5292a204545ac7e196eacc475b1b3025a7394"
       ],
       "observedConditionKeys": [],
       "observedIntegrationPatterns": [

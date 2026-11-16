@@ -144,8 +144,9 @@ window.examData = {
     },
     {
       "id": 11,
+      "layoutTag": "fullwidth",
       "score": 3.0,
-      "question": "<p>11. 다음 그림과 같은 평행사변형 $\\text{ABCD}$에서 $x+y$의 값은? [3점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q11.png\" class=\"question-image\" /></p>",
+      "question": "<p>11. 다음 그림과 같은 평행사변형 $\\text{ABCD}$에서 $x+y$의 값은? [3점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q11-problem-visual-v2.svg\" alt=\"길이 5와 x는 평행사변형의 마주 보는 변이다. 오른쪽 위에는 65°, 왼쪽 아래에는 y°를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$65$",
         "$70$",
@@ -158,8 +159,9 @@ window.examData = {
     },
     {
       "id": 12,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "<p>12. 다음 사각형 중에서 평행사변형은 모두 몇 개인가? [4점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q12.png\" class=\"question-image\" /></p>",
+      "question": "<p>12. 다음 사각형 중에서 평행사변형은 모두 몇 개인가? [4점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q12-problem-visual-v2.svg\" alt=\"첫 줄은 각 60°와 130°인 도형, 양쪽 길이가 5와 7인 도형이다. 둘째 줄은 마주 보는 길이가 6과 5인 도형 및 5와 4인 도형이다. 셋째 줄은 대각선에 12, 10, 5, 6이 적힌 도형과 교점에서 110° 및 네 개의 같은 눈금이 표시된 도형이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "1개",
         "2개",
@@ -172,8 +174,9 @@ window.examData = {
     },
     {
       "id": 13,
+      "layoutTag": "fullwidth",
       "score": 3.0,
-      "question": "<p>13. 다음 그림과 같이 평행사변형 $\\text{ABCD}$에서 $\\angle\\text{B}$의 이등분선이 변 $\\text{CD}$의 연장선과 만나는 점을 $\\text{E}$라고 하자. $\\overline{\\text{AB}}=7, \\overline{\\text{BC}}=10$일 때, $\\overline{\\text{DE}}$의 길이는? [3점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q13.png\" class=\"question-image\" /></p>",
+      "question": "<p>13. 다음 그림과 같이 평행사변형 $\\text{ABCD}$에서 $\\angle\\text{B}$의 이등분선이 변 $\\text{CD}$의 연장선과 만나는 점을 $\\text{E}$라고 하자. $\\overline{\\text{AB}}=7, \\overline{\\text{BC}}=10$일 때, $\\overline{\\text{DE}}$의 길이는? [3점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q13-problem-visual-v2.svg\" alt=\"AB는 7, BC는 10이다. B의 내각을 이등분하는 선이 CD의 연장선에서 E와 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$1.5$",
         "$2$",
@@ -186,8 +189,9 @@ window.examData = {
     },
     {
       "id": 14,
+      "layoutTag": "fullwidth",
       "score": 3.0,
-      "question": "<p>14. 평행사변형 $\\text{ABCD}$의 두변을 연장하여 $\\overline{\\text{BC}}=\\overline{\\text{CE}}, \\overline{\\text{DC}}=\\overline{\\text{CF}}$가 되는 평행사변형 $\\text{BFED}$에서, $\\overline{\\text{BF}}=4, \\overline{\\text{FE}}=6$일 때, $\\overline{\\text{AO}}$와 $\\overline{\\text{BO}}$의 길이의 합은? [3점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q14.png\" class=\"question-image\" /></p>",
+      "question": "<p>14. 평행사변형 $\\text{ABCD}$의 두변을 연장하여 $\\overline{\\text{BC}}=\\overline{\\text{CE}}, \\overline{\\text{DC}}=\\overline{\\text{CF}}$가 되는 평행사변형 $\\text{BFED}$에서, $\\overline{\\text{BF}}=4, \\overline{\\text{FE}}=6$일 때, $\\overline{\\text{AO}}$와 $\\overline{\\text{BO}}$의 길이의 합은? [3점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q14-problem-visual-v2.svg\" alt=\"BC와 CE는 같은 길이이며 DC와 CF도 서로 같다. BF는 4, FE는 6이다. O는 AC와 BD가 만나는 점이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$3$",
         "$4$",
@@ -200,8 +204,9 @@ window.examData = {
     },
     {
       "id": 15,
+      "layoutTag": "fullwidth",
       "score": 3.0,
-      "question": "<p>15. 평행사변형 $\\text{ABCD}$의 네 내각의 이등분선의 교점을 각각 $\\text{E, F, G, H}$라 하자. 이때 $\\square\\text{EFGH}$는 어떤 사각형인가? [3점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q15.png\" class=\"question-image\" /></p>",
+      "question": "<p>15. 평행사변형 $\\text{ABCD}$의 네 내각의 이등분선의 교점을 각각 $\\text{E, F, G, H}$라 하자. 이때 $\\square\\text{EFGH}$는 어떤 사각형인가? [3점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2.svg\" alt=\"평행사변형의 A, B, C, D에서 출발하는 이등분선을 네 가지 색으로 구분하였다. 교차점이 E, F, G, H이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "평행사변형",
         "직사각형",
@@ -214,8 +219,9 @@ window.examData = {
     },
     {
       "id": 16,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "<p>16. 다음 그림의 $\\square\\text{ABCD}$가 마름모일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q16.png\" class=\"question-image\" /></p>",
+      "question": "<p>16. 다음 그림의 $\\square\\text{ABCD}$가 마름모일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q16-problem-visual-v2.svg\" alt=\"위쪽 꼭짓점 A와 아래쪽 C, 왼쪽 B와 오른쪽 D를 각각 이었다. B의 위쪽 각은 30°이다. O의 왼쪽 위에 x, D의 왼쪽 위에 y를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$100^\\circ$",
         "$110^\\circ$",
@@ -256,8 +262,9 @@ window.examData = {
     },
     {
       "id": 19,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "<p>19. 다음 그림 &lt;보기&gt;는 여러 가지 사각형 사이의 관계를 나타낸 것이다. (1)과 (2)에 알맞은 조건을 모두 고르면 ? (정답 2개) [4점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q19.png\" class=\"question-image\" /></p>",
+      "question": "<p>19. 다음 그림 &lt;보기&gt;는 여러 가지 사각형 사이의 관계를 나타낸 것이다. (1)과 (2)에 알맞은 조건을 모두 고르면 ? (정답 2개) [4점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q19-problem-visual-v2.svg\" alt=\"왼쪽은 평행사변형, 가운데 위는 대각선이 그려진 직사각형, 가운데 아래는 마름모, 오른쪽은 정사각형이다. 왼쪽에서 마름모로 가는 칸은 (1), 직사각형에서 정사각형으로 가는 칸은 (2)이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$\\overline{\\text{AB}}=\\overline{\\text{AD}}$",
         "$\\angle\\text{A}=90^\\circ$",
@@ -270,8 +277,9 @@ window.examData = {
     },
     {
       "id": 20,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "<p>20. 다음 그림과 같이 $\\angle\\text{ABD}=\\angle\\text{CBD}=\\angle\\text{DAC}$인 평행사변형 $\\text{ABCD}$에서 두 대각선이 만나는 점을 $\\text{O}$라 할 때, 다음 중 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q20.png\" class=\"question-image\" /></p>",
+      "question": "<p>20. 다음 그림과 같이 $\\angle\\text{ABD}=\\angle\\text{CBD}=\\angle\\text{DAC}$인 평행사변형 $\\text{ABCD}$에서 두 대각선이 만나는 점을 $\\text{O}$라 할 때, 다음 중 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q20-problem-visual-v2.svg\" alt=\"평행사변형 ABCD의 대각선 AC와 BD는 O에서 만난다. ABD, CBD, DAC 세 각에 같은 색의 호를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$\\angle\\text{B}=60^\\circ, \\angle\\text{C}=120^\\circ, \\angle\\text{D}=60^\\circ$",
         "$\\angle\\text{A}+\\angle\\text{B}=180^\\circ, \\angle\\text{A}=\\angle\\text{C}$",
@@ -284,8 +292,9 @@ window.examData = {
     },
     {
       "id": 21,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "<p>21. 다음 그림에서 $l // m$, $\\overline{\\text{AE}} // \\overline{\\text{DC}}$일 때, $\\square\\text{ABED}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q21.png\" class=\"question-image\" /></p>",
+      "question": "<p>21. 다음 그림에서 $l // m$, $\\overline{\\text{AE}} // \\overline{\\text{DC}}$일 때, $\\square\\text{ABED}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q21-problem-visual-v2.svg\" alt=\"위쪽 l과 아래쪽 m 사이 높이는 6 cm이다. 아래에서 B와 E 사이는 10 cm, E와 C 사이는 4 cm이다. AE와 DC가 서로 평행하다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$36\\text{ cm}^2$",
         "$38\\text{ cm}^2$",
@@ -298,8 +307,9 @@ window.examData = {
     },
     {
       "id": 22,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "<p>22. $\\overline{\\text{AD}} // \\overline{\\text{BC}}$인 사다리꼴 $\\text{ABCD}$에서 다음 그림과 같이 $\\triangle\\text{DBC}=27\\text{ cm}^2$, $\\overline{\\text{OD}}:\\overline{\\text{OB}}=1:2$ 일 때, $\\triangle\\text{ABO}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q22.png\" class=\"question-image\" /></p>",
+      "question": "<p>22. $\\overline{\\text{AD}} // \\overline{\\text{BC}}$인 사다리꼴 $\\text{ABCD}$에서 다음 그림과 같이 $\\triangle\\text{DBC}=27\\text{ cm}^2$, $\\overline{\\text{OD}}:\\overline{\\text{OB}}=1:2$ 일 때, $\\triangle\\text{ABO}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q22-problem-visual-v2.svg\" alt=\"사다리꼴에서 윗변 AD와 아랫변 BC가 평행하다. 보라색 BD와 청록색 AC는 O에서 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$9\\text{ cm}^2$",
         "$12\\text{ cm}^2$",
@@ -328,24 +338,27 @@ window.examData = {
     },
     {
       "id": 25,
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "<p>&lt;서술형 3&gt; 다음 그림의 $\\square\\text{ABCD}$가 다음 주어진 조건을 만족시키면 평행사변형이 된다. 평행사변형이 되는 조건 중 어떤 조건을 만족하는지 쓰시오. (평행사변형의 조건에 해당되지 않는 것은 평행사변형이 아님이라고 쓰시오)</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/s03.png\" class=\"question-image\" /></p><p>(1) $\\angle\\text{A}=80^\\circ, \\angle\\text{B}=100^\\circ, \\angle\\text{C}=80^\\circ, \\angle\\text{D}=100^\\circ$ [1점]</p><p>(2) $\\overline{\\text{AO}}=5\\text{ cm}, \\overline{\\text{BO}}=3\\text{ cm}, \\overline{\\text{CO}}=5\\text{ cm}, \\overline{\\text{DO}}=3\\text{ cm}$ [1점]</p><p>(3) $\\overline{\\text{AB}}=7\\text{ cm}, \\overline{\\text{BC}}=9\\text{ cm}, \\overline{\\text{CD}}=7\\text{ cm}, \\overline{\\text{AD}}=9\\text{ cm}$ [1점]</p><p>(4) $\\angle\\text{ABD}=\\angle\\text{BDC}=40^\\circ, \\overline{\\text{AD}}=7\\text{ cm}, \\overline{\\text{BC}}=7\\text{ cm}$ [1점]</p><p>(5) $\\overline{\\text{AB}} // \\overline{\\text{DC}}, \\angle\\text{A}=110^\\circ, \\angle\\text{B}=70^\\circ$ [1점]</p>",
+      "question": "<p>&lt;서술형 3&gt; 다음 그림의 $\\square\\text{ABCD}$가 다음 주어진 조건을 만족시키면 평행사변형이 된다. 평행사변형이 되는 조건 중 어떤 조건을 만족하는지 쓰시오. (평행사변형의 조건에 해당되지 않는 것은 평행사변형이 아님이라고 쓰시오)</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q25-problem-visual-v2.svg\" alt=\"사각형의 대각선 AC와 BD가 점 O에서 만난다. 주어진 조건을 비교할 수 있도록 대각선만 각각 다른 색으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) $\\angle\\text{A}=80^\\circ, \\angle\\text{B}=100^\\circ, \\angle\\text{C}=80^\\circ, \\angle\\text{D}=100^\\circ$ [1점]</p><p>(2) $\\overline{\\text{AO}}=5\\text{ cm}, \\overline{\\text{BO}}=3\\text{ cm}, \\overline{\\text{CO}}=5\\text{ cm}, \\overline{\\text{DO}}=3\\text{ cm}$ [1점]</p><p>(3) $\\overline{\\text{AB}}=7\\text{ cm}, \\overline{\\text{BC}}=9\\text{ cm}, \\overline{\\text{CD}}=7\\text{ cm}, \\overline{\\text{AD}}=9\\text{ cm}$ [1점]</p><p>(4) $\\angle\\text{ABD}=\\angle\\text{BDC}=40^\\circ, \\overline{\\text{AD}}=7\\text{ cm}, \\overline{\\text{BC}}=7\\text{ cm}$ [1점]</p><p>(5) $\\overline{\\text{AB}} // \\overline{\\text{DC}}, \\angle\\text{A}=110^\\circ, \\angle\\text{B}=70^\\circ$ [1점]</p>",
       "choices": [],
       "answer": "",
       "solution": ""
     },
     {
       "id": 26,
+      "layoutTag": "fullwidth",
       "score": 3.0,
-      "question": "<p>&lt;서술형 4&gt; 다음 그림과 같은 평행사변형 $\\text{ABCD}$가 주어진 조건을 만족시키면 어떤 사각형이 되는지 쓰시오.</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/s04.png\" class=\"question-image\" /></p><p>(1) $\\overline{\\text{AB}}=\\overline{\\text{BC}}$ [1점]</p><p>(2) $\\overline{\\text{AC}}=\\overline{\\text{BD}}$ [1점]</p><p>(3) $\\angle\\text{A}=90^\\circ, \\overline{\\text{AB}}=\\overline{\\text{BC}}$ [1점]</p>",
+      "question": "<p>&lt;서술형 4&gt; 다음 그림과 같은 평행사변형 $\\text{ABCD}$가 주어진 조건을 만족시키면 어떤 사각형이 되는지 쓰시오.</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q26-problem-visual-v2.svg\" alt=\"오른쪽으로 비스듬한 평행사변형의 네 꼭짓점은 A, B, C, D이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) $\\overline{\\text{AB}}=\\overline{\\text{BC}}$ [1점]</p><p>(2) $\\overline{\\text{AC}}=\\overline{\\text{BD}}$ [1점]</p><p>(3) $\\angle\\text{A}=90^\\circ, \\overline{\\text{AB}}=\\overline{\\text{BC}}$ [1점]</p>",
       "choices": [],
       "answer": "",
       "solution": ""
     },
     {
       "id": 27,
+      "layoutTag": "fullwidth",
       "score": 3.0,
-      "question": "<p>&lt;서술형 5&gt; 다음 그림에서 평행사변형 $\\text{ABCD}$의 변 $\\text{AD}$의 중점은 $\\text{M}$이다. $\\overline{\\text{MB}}=\\overline{\\text{MC}}$ 일 때 사각형 $\\text{ABCD}$에 대한 성질을 설명하고자 한다. 다음물음에 답하시오.</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/s05.png\" class=\"question-image\" /></p><p>(1) 사각형 $\\text{ABCD}$는 어떤 사각형인가? [1점]</p><p>(2) 위 사각형 $\\text{ABCD}$의 성질 두 가지를 쓰시오 [2점]</p>",
+      "question": "<p>&lt;서술형 5&gt; 다음 그림에서 평행사변형 $\\text{ABCD}$의 변 $\\text{AD}$의 중점은 $\\text{M}$이다. $\\overline{\\text{MB}}=\\overline{\\text{MC}}$ 일 때 사각형 $\\text{ABCD}$에 대한 성질을 설명하고자 한다. 다음물음에 답하시오.</p><p><img src=\"assets/images/21_풍덕중_1학기_기말_중2_수학/q27-problem-visual-v2.svg\" alt=\"AM과 MD, MB와 MC가 각각 같은 길이라는 조건을 서로 다른 색과 같은 개수의 눈금으로 표시했다. 사각형의 기울기는 원본과 같은 개략도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) 사각형 $\\text{ABCD}$는 어떤 사각형인가? [1점]</p><p>(2) 위 사각형 $\\text{ABCD}$의 성질 두 가지를 쓰시오 [2점]</p>",
       "choices": [],
       "answer": "",
       "solution": ""

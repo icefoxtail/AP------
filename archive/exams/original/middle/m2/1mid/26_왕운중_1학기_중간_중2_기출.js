@@ -724,8 +724,8 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "LINEAR_INEQUALITY",
-    "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
-    "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+    "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+    "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -737,7 +737,23 @@ window.questionBank=[
     "imageStatus": "none",
     "answerStatus": "draft",
     "solutionStatus": "draft",
-    "reviewStatus": "pending"
+    "reviewStatus": "pending",
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "primaryMethod": "부등식동치와음수곱의부등호반전판정",
+    "decisiveStep": "a<b로돌린뒤-3곱하면방향이>로바뀜.",
+    "rpmPrimaryId": "M2-RPM-136",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차부등식",
+      "midUnit": "일차부등식",
+      "l3": "부등식의 성질",
+      "l4": "부등식의 성질"
+    },
+    "rpmL1": "일차부등식",
+    "rpmL2": "일차부등식",
+    "rpmL3": "부등식의 성질",
+    "rpmL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-136"
   },
   {
     "id": 18,
@@ -767,10 +783,12 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "LINEAR_INEQUALITY",
-    "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
-    "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+    "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+    "templateKey": "TPL_H1_LINEAR_INEQUALITY_ALL_SOLUTIONS_SIGN",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_NEGATIVE"
+    ],
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
@@ -784,7 +802,23 @@ window.questionBank=[
     "solutionImage": "assets/images/26_왕운중_1학기_중간_중2_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선 두 줄: 위는 해가 모두 음수인 범위 x<0(끝점 0은 속이 빈 점), 아래는 a=-7일 때 해집합 x≤0(끝점 0은 속이 찬 점)을 보여 준다.",
     "solutionImageCaption": "a=-7일 때 해집합 x≤(2/3)(a+7)은 x≤0이고 끝점 0은 음수가 아니므로, 모든 해가 음수이려면 끝점이 0보다 작아야 한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "primaryMethod": "해의최대경계를음수조건과결합하여매개변수범위결정",
+    "decisiveStep": "x≤(2/3)(a+7)의최대해가0보다작아야함.",
+    "rpmPrimaryId": "M2-RPM-141",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차부등식",
+      "midUnit": "일차부등식",
+      "l3": "해의 조건",
+      "l4": "계수 조건"
+    },
+    "rpmL1": "일차부등식",
+    "rpmL2": "일차부등식",
+    "rpmL3": "해의 조건",
+    "rpmL4": "계수 조건",
+    "rpmPrimaryRecordId": "M2-RPM-141"
   },
   {
     "id": 19,
@@ -814,10 +848,12 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "LINEAR_INEQUALITY",
-    "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
-    "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+    "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+    "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
@@ -827,7 +863,11 @@ window.questionBank=[
     "imageStatus": "none",
     "answerStatus": "draft",
     "solutionStatus": "draft",
-    "reviewStatus": "pending"
+    "reviewStatus": "pending",
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "primaryMethod": "복잡한부등식풀이후정수해의최소값결정",
+    "decisiveStep": "x>-15이므로최소정수는-14."
   },
   {
     "id": 20,
@@ -857,10 +897,12 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "LINEAR_INEQUALITY",
-    "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
-    "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+    "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+    "templateKey": "TPL_H1_INDEPENDENT_INEQUALITIES_LEAST_INTEGER_SUM",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
@@ -870,7 +912,11 @@ window.questionBank=[
     "imageStatus": "none",
     "answerStatus": "draft",
     "solutionStatus": "draft",
-    "reviewStatus": "pending"
+    "reviewStatus": "pending",
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "primaryMethod": "각부등식의최소정수해를독립결정하여합최소화",
+    "decisiveStep": "각각x>-4,x>4에서a최소-3,b최소5."
   },
   {
     "id": 21,

@@ -983,12 +983,8 @@ window.questionBank = [
     },
     "rpmL3": "수와 관계",
     "rpmL4": "나이·개수 관계",
-    "projectionStatus": "BINDING_PENDING",
-    "ownerPack": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "nullReason": "Accepted prerequisite RPM M1-RPM-042 is RPM_ONLY / NO_ACTIVE_MAPPING. Exact ACTIVE PT/TPL binding in the preserved M2 target namespace remains unconfirmed.",
-    "projectionReason": "Canonical prerequisite RPM path remains intact. Target M2 namespace and L1/L2 are held separately in targetNamespace; absent source target fields remain proposal only. Target scoped binding is unconfirmed.",
+    "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+    "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
     "semanticBoundaryReason": null,
     "boundaryStatus": "NONE",
     "targetNamespace": {
@@ -1000,7 +996,11 @@ window.questionBank = [
       "midUnit": "연립일차방정식",
       "rpmEffectiveParentKey": null,
       "provenance": "SOURCE_EXPLICIT_PRESERVED"
-    }
+    },
+    "rpmPrimaryId": "M1-RPM-042",
+    "rpmL1": "문자와 식",
+    "rpmL2": "일차방정식의 활용",
+    "courseKey": "M2-1"
   },
   {
     "id": 15,

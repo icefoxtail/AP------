@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "small-m2-current-four-slot-literal-validation-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "scope": "CHANGED_UID_VALIDATION_PROJECTION_NOT_INTAKE_OR_RECEIPT",
+  "examId": "E005",
+  "selectedOrdinals": [
+    9,
+    11,
+    13,
+    16
+  ],
+  "questionUids": [
+    "qid_v1_7e294a1ec376c861cd42e750d7417e33933e6039f14d32085b32f4e28361e20d",
+    "qid_v1_170d1c6f1d2c566b2e81de4df9950abf99ec244cf12a0446923eb33afbccfa3e",
+    "qid_v1_db8f23f486179ddd8204782d9440d3a5bcf2fa00621d489683c93b6ade9da418",
+    "qid_v1_87213f474732065b6e067ead2809e851f1ec915b172853dc95eeeee70e571ce1"
+  ],
+  "sourceRef": {
+    "path": "archive/exams/original/middle/m2/1final/26_팔마중_1학기_기말_중2_기출.js",
+    "beforeGitBlobSha1": "e414020080447f74606475d6ae43cbf34b439f33",
+    "beforeRawSha256": "56dd98459b889cf7015778a5bbad060f74b79d688d583b903a1816739bffef89",
+    "currentGitBlobSha1": "d9ea121b0bcd44d34a29f0b5492c816a341bd578",
+    "currentRawSha256": "d2221412893d1d1dede2268ea341eb85718d4d8229b5dc1cf8fd567e2475ff64"
+  },
+  "nativeFourSlotRef": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E005/accepted-four-slot.json",
+    "sha256": "5bb6dacc7bd2722275e029c9642a62e811350718f6f7244e37e6c61c6f7d4ab2",
+    "sourceGitBlobSha": "e414020080447f74606475d6ae43cbf34b439f33"
+  },
+  "dictionaryRef": {
+    "path": "docs/architecture/4slot/term-dictionary-v1.5.json",
+    "sha256": "c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be",
+    "version": "term-dict-v1.5-2026-11-04"
+  },
+  "validation": {
+    "fail": [],
+    "warn": [
+      "#13 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 4,
+      "examItems": 24,
+      "quotes": 23,
+      "scope": "PARTIAL_UIDS",
+      "unsubmitted": 20,
+      "completeExam": false
+    }
+  },
+  "allExistingVectorsUnchanged": true,
+  "allExistingMethodsUnchanged": true,
+  "allNormalGivenConditionBlankSetsPreserved": true,
+  "candidateTermNamesPreserved": true,
+  "newTermOrVectorJudgments": 0,
+  "newFullMathematicalQa": 0,
+  "repositoryWrites": 0
+}

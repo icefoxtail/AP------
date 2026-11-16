@@ -1,3 +1,4 @@
+import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -10,8 +11,11 @@ import { loadCanonical, buildCompiled, compiledOutputs, buildRegistryIndex } fro
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 import { computeLegacyCompat, registerDifficulty5 } from "./register-difficulty5.mjs";
 import { AUDIT_PRESERVATION_SCHEMA, isAuditPreservation, loadAuditPreservation, planPreservedAuditRecord, assertAuditPreservationReceipt, assertPreservedAuditRepair, readPreservedAuditEvidence, preservedAuditConsumerParent } from "./native-audit-preservation.mjs";
+import { AUDIT_SOURCE_PRESERVATION_SCHEMA, auditSourcePreservationSummary, auditSourceBindingPath, buildAuditSourceBinding } from "./native-audit-source-preservation.mjs";
 import { validateReviewedSourceReassessment } from "./reviewed-source-reassessment.mjs";
 import { validateNativeReviewedParent } from "./reviewed-native-parent.mjs";
+import { checkedM2FinalizedParent } from "./reviewed-m2-finalized-scope-parent.mjs";
+import { validateReviewedRetainedScopeParent } from "./reviewed-retained-scope-transport.mjs";
 import { REVIEWED_SOURCE_FIELDS, REVIEWED_META_VALUE_FIELDS } from "./reviewed-meta-value-fields.mjs";
 import { reviewedRendererBindingPath, buildReviewedRendererBinding } from "./reviewed-current-renderer-continuity.mjs";
 import { REVIEWED_SOURCE_BINDING_OPT_INS, reviewedSourceBindingItems, reviewedSourceBindingPath, buildReviewedSourceBinding } from "./reviewed-source-binding.mjs";
@@ -21,6 +25,7 @@ import { loadActiveMetaRegistry } from "./active-registry.mjs";
 import { activeBindingContext, nativeReviewReceipt } from "./auto-register-merged-source.mjs";
 import { loadApprovedRendererPreservation, planApprovedRendererRecord, buildApprovedRendererBinding, verifyApprovedRendererReceipt } from "./native-approved-renderer-preservation.mjs";
 import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
+import { preparePrerequisiteExistingRpmAuthority } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 
 import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, nativeAuthorityHoldState, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
@@ -1816,8 +1821,11 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob,
     // Its canonical subunit display label is a context-bound alias, not a new parent rule.
     const canonicalMidLabels = [resolved.binding.L2, resolved.binding.subUnitLabelKo, resolved.sub?.labelKo, resolved.unit.labelKo].filter(Boolean);
     let exactTypeParent = false;
-    const nativeParent = ref.nativeSourceReview === undefined ? null :
-      validateNativeReviewedParent({ root, request, patch, row, resolved, sourceReview });
+    if (ref.nativeSourceReview !== undefined && ref.retainedScopeParent !== undefined) fail("ambiguous typed target parent carrier");
+    const nativeParent = ref.nativeSourceReview !== undefined
+      ? validateNativeReviewedParent({ root, request, patch, row, resolved, sourceReview })
+      : validateReviewedRetainedScopeParent({ request, patch, row, resolved, sourceReview });
+    const finalizedParent = checkedM2FinalizedParent({ request, patch, row, resolved, sourceReview });
     if (ref.crosswalkRef) {
       const cross = ref.crosswalkRef;
       if (!/^archive\/data\/meta-foundation\/crosswalks\/rpm-primary-v1\.0\/[a-z0-9-]+\.json$/.test(cross.path || "") ||
@@ -1836,7 +1844,7 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob,
       exactTypeParent = true;
     }
     if (!matches.length || ref.curriculum !== resolved.curriculum || compact(masterCourse) !== compact(row.courseKey || resolved.course) ||
-        !canonicalMidLabels.some(label => compact(label) === compact(ref.midUnit)) && !exactTypeParent && !nativeParent || resolved.binding.L1 && ref.majorUnit !== resolved.binding.L1) fail("canonical target parent mismatch");
+        !canonicalMidLabels.some(label => compact(label) === compact(ref.midUnit)) && !exactTypeParent && !nativeParent && !finalizedParent || resolved.binding.L1 && ref.majorUnit !== resolved.binding.L1) fail("canonical target parent mismatch");
     if (nativeParent) onNativeParent?.(nativeParent);
     return { ...labels, L1: ref.majorUnit, L2: ref.midUnit };
   };
@@ -2147,7 +2155,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (!Array.isArray(bank) || !Number.isInteger(req.expectedQuestionCount) || bank.length !== req.expectedQuestionCount || !bank.length) fail("source denominator mismatch");
   const approvedRendererRequested = Object.hasOwn(req.approval, "rendererPreservation");
   const auditPreservationRequested = isAuditPreservation(req.approval);
-  if (req.approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA && !auditPreservationRequested)
+  if ([AUDIT_PRESERVATION_SCHEMA, AUDIT_SOURCE_PRESERVATION_SCHEMA].includes(req.approval.sourceRebind?.schemaVersion) && !auditPreservationRequested)
     fail("audit source rebind must retain META_PIPELINE_AUDIT approval type");
   const metaPipelineAudit = auditPreservationRequested ? null : validateMetaPipelineAudit({ root, approval: req.approval, source, sourceBytes: bytes, sourceBlobSha1: blob,
     bank, expectedQuestionCount: req.expectedQuestionCount, items: req.items, registryChanges: req.registryChanges || [],
@@ -2175,6 +2183,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   }
   for (const uid of targetUids) {
     const row = metadataByUid.get(uid);
+    originalSourceError.assertNotSubject({ questionUid: uid, source, ordinal: row?.sourceOrdinal });
     if (nativeAuthorityHoldState({ root, current: row, identity: ids.get(uid), source, ordinal: row?.sourceOrdinal }))
       fail("authority withdrawal requires a separate explicit resolution: " + uid);
   }
@@ -2191,6 +2200,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const rendererBindingPath = rendererPatches.length ? reviewedRendererBindingPath(req.requestId) : null;
   const sourceBindingPatches = reviewedSourceBindingItems(req), sourceBindingUids = new Set(sourceBindingPatches.map(patch => patch.questionUid));
   const sourceBindingPath = sourceBindingPatches.length ? reviewedSourceBindingPath(req.requestId) : null;
+  const auditBindingPath = req.approval.sourceRebind?.schemaVersion === AUDIT_SOURCE_PRESERVATION_SCHEMA ? auditSourceBindingPath(req.requestId) : null;
   const receiptFull = safePath(root, receiptPath);
   const previous = fs.existsSync(receiptFull) ? read(receiptPath) : null;
   if (previous && previous.requestSha256 !== requestSha256) fail("requestId reused with different content");
@@ -2202,7 +2212,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       assertAuditPreservationReceipt(previous, req, bytes, bank.length);
       const context = loadAuditPreservation({ root, request: req, bytes, bank });
       preservedAudit = context;
-      registerDifficulty5({ root, request: context.difficulty, verifyProjection: true });
+      if (context.sourceOnly !== true) registerDifficulty5({ root, request: context.difficulty, verifyProjection: true });
       const replayTables = lookup(registryPlan(root, [], evidenceRefs));
       const allRuntime = fs.readdirSync(safePath(root, "archive/data/meta-foundation/runtime"))
         .filter(n => n.endsWith(".json") && n !== "runtime-bridge-receipt.json")
@@ -2250,6 +2260,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     } else if ([...previous.appliedRecords, ...previous.runtimeRecords].some(record =>
       record.approvalEvidence?.includes(reviewedSourceBindingPath(req.requestId))))
       fail("registered source-review binding marker has no explicit opt-in");
+    const replayBeforeTables = sourceBindingPatches.some(patch => patch.sourceReview?.proposalFinalization !== undefined ||
+      patch.sourceReview?.scopeFieldBinding !== undefined || patch.sourceReview?.currentDefinitionApplication !== undefined ||
+      patch.sourceReview?.prerequisiteExistingApplication !== undefined || patch.sourceReview?.currentTargetApplication !== undefined)
+      ? restoreReviewedReplayCanonicalBefore({ request: req, currentTables, root }) : currentTables;
     // A renderer can change without changing its referencing JS source. Re-run only
     // the explicitly opted-in compound proof on replay, including all immutable
     // review/assets and the original before values; ordinary native receipts keep
@@ -2281,7 +2295,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
             record.sourceFingerprint !== checked.sourceFingerprint || ids.get(patch.questionUid)?.sourceFingerprint !== checked.sourceFingerprint)
           fail("registered renderer computed fingerprint drift");
         const proof = validateReviewedSourceReassessment({ root, request: req, patch, metadata: before, question, final: record,
-          supportedFields: valueFields, canonicalBefore: currentTables, canonicalAfter: currentTables, cache: replaySourceReviewCache });
+          supportedFields: valueFields, canonicalBefore: replayBeforeTables, canonicalAfter: currentTables, cache: replaySourceReviewCache });
         if (!eq(proof, repair.sourceReview)) fail("registered renderer source review proof drift");
         replaySourceReviewContext.set(patch.questionUid, proof);
       }
@@ -2297,9 +2311,6 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         patch.questionUid === repair.questionUid && patch.sourceOrdinal === repair.sourceOrdinal).length !== 1))
         fail(`registered explicit source review ${requestKey} inventory drift`);
     }
-    const replayBeforeTables = sourceBindingPatches.some(patch => patch.sourceReview?.proposalFinalization !== undefined ||
-      patch.sourceReview?.scopeFieldBinding !== undefined)
-      ? restoreReviewedReplayCanonicalBefore({ request: req, currentTables, root }) : currentTables;
     for (const patch of sourceBindingPatches) {
       const repairs = (previous.fingerprintRepairs || []).filter(repair => repair.questionUid === patch.questionUid && repair.sourceOrdinal === patch.sourceOrdinal);
       const record = previous.appliedRecords.find(row => row.questionUid === patch.questionUid), repair = repairs[0];
@@ -2315,11 +2326,13 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
           ids.get(patch.questionUid)?.sourceFingerprint !== checked.sourceFingerprint)
         fail("registered explicit source review computed fingerprint drift");
       const proof = validateReviewedSourceReassessment({ root, request: req, patch, metadata: before, question, final: record,
-        supportedFields: valueFields, canonicalBefore: replayBeforeTables, canonicalAfter: currentTables, cache: replaySourceReviewCache });
+        supportedFields: valueFields, canonicalBefore: replayBeforeTables, canonicalAfter: currentTables,
+        issuedSourceReview: repair.sourceReview, cache: replaySourceReviewCache });
       if (!eq(proof, repair.sourceReview)) fail("registered explicit source review proof drift");
       replaySourceReviewContext.set(patch.questionUid, proof);
     }
-    const parentPatches = req.items.filter(patch => patch.targetParentRef?.nativeSourceReview !== undefined);
+    const parentPatches = req.items.filter(patch => patch.targetParentRef?.nativeSourceReview !== undefined ||
+      patch.targetParentRef?.retainedScopeParent !== undefined);
     const priorParents = previous.nativeParentBindings || [];
     if (priorParents.length !== parentPatches.length || priorParents.some(proof =>
       parentPatches.filter(patch => patch.questionUid === proof.questionUid && patch.sourceOrdinal === proof.sourceOrdinal).length !== 1))
@@ -2327,14 +2340,16 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     for (const record of previous.approval?.sourceRebind || approvedRendererRequested ? [] : previous.appliedRecords.filter(r => !isTypeHoldRecord(r))) {
       const r = resolve(record, currentTables, { allowConditionDebt: metaPipelineAudit?.conditionDebtUids.includes(record.questionUid) });
       const patch = patches.get(record.questionUid);
-      let parentSourceReview = null;
-      if (patch.targetParentRef?.nativeSourceReview !== undefined) {
+      let parentSourceReview = patch.targetParentRef?.finalizedScopeParent !== undefined
+        ? replaySourceReviewContext.get(patch.questionUid) : null;
+      if (patch.targetParentRef?.nativeSourceReview !== undefined || patch.targetParentRef?.retainedScopeParent !== undefined) {
         const repairs = (previous.fingerprintRepairs || []).filter(repair => repair.questionUid === patch.questionUid &&
           repair.sourceOrdinal === patch.sourceOrdinal);
         if (repairs.length !== 1 || !repairs[0].sourceReview) fail("registered native parent source review missing");
         parentSourceReview = replaySourceReviewContext.get(patch.questionUid) || validateReviewedSourceReassessment({ root, request: req, patch,
           metadata: { ...record, ...patch.before }, question: JSON.parse(JSON.stringify(bank[patch.sourceOrdinal - 1])), final: record,
-          supportedFields: valueFields, canonicalBefore: currentTables, canonicalAfter: currentTables, cache: replaySourceReviewCache });
+          supportedFields: valueFields, canonicalBefore: currentTables, canonicalAfter: currentTables,
+          issuedSourceReview: repairs[0].sourceReview, cache: replaySourceReviewCache });
         if (!eq(parentSourceReview, repairs[0].sourceReview)) fail("registered native parent source review drift");
         replaySourceReviewContext.set(patch.questionUid, parentSourceReview);
       }
@@ -2436,7 +2451,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   // Source-only rebind (2026-11-02): re-bind an already registered receipt to changed source bytes without
   // touching any metadata value. The prior receipt (SHA-bound) must equal the current metadata row for row.
   const auditPreservation = auditPreservationRequested ? loadAuditPreservation({ root, request: req, bytes, bank }) : null;
-  if (auditPreservation) registerDifficulty5({ root, request: auditPreservation.difficulty, verifyProjection: true });
+  if (auditPreservation && auditPreservation.sourceOnly !== true)
+    registerDifficulty5({ root, request: auditPreservation.difficulty, verifyProjection: true });
   const rebindPrior = req.approval.sourceRebind && !auditPreservation ? loadSourceRebindPrior({ root, req, source, bytes, bank, rows, ids, priorBanks, read, evidenceRefs }) : null;
   let rebindSourceRegistry;
   const approvedRendererRegistry = approvedRendererRequested ? loadActiveMetaRegistry(root) : null;
@@ -2550,8 +2566,11 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (!Object.hasOwn(patch.before, field)) fail(`before required: ${current.questionUid}.${field}`);
     }
     const final = { ...current, ...structuredClone(patch.after) };
+    const prerequisiteRpmAuthority = preparePrerequisiteExistingRpmAuthority({ root, request: req, patch, question: q, final,
+      canonicalBefore: beforeTables || tables, canonicalAfter: tables, cache: sourceReviewCache });
     if (Object.hasOwn(patch.after, "rpmPrimaryId")) {
-      const provenance = validateRpmPrimaryProvenance({ root, question: q, final, cache: sourceReviewCache });
+      const provenance = validateRpmPrimaryProvenance({ root, question: q, final, cache: sourceReviewCache,
+        prerequisiteAuthority: prerequisiteRpmAuthority });
       if (provenance) rpmPrimaryBindings.push({ questionUid: current.questionUid, sourceOrdinal: i + 1, ...provenance });
     }
     if (patch.fieldCandidates !== undefined) {
@@ -2839,11 +2858,17 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (fs.existsSync(full) && fs.readFileSync(full, "utf8") !== text) fail("approved renderer binding evidence already differs");
     plan.output.set(approvedRenderer.bindingPath, text);
   }
-  const outputDigests = [...plan.output].filter(([file, text]) => file !== META && (file === rendererBindingPath || file === sourceBindingPath || file === approvedRenderer?.bindingPath || !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text)).map(([file, text]) => ({ path: file, sha256: digest(text) }));
+  if (auditBindingPath) {
+    const text = json(buildAuditSourceBinding(auditPreservation)), full = safePath(root, auditBindingPath);
+    if (fs.existsSync(full) && fs.readFileSync(full, "utf8") !== text) fail("audit source binding path already contains different evidence");
+    plan.output.set(auditBindingPath, text);
+  }
+  const outputDigests = [...plan.output].filter(([file, text]) => file !== META && (file === rendererBindingPath || file === sourceBindingPath || file === approvedRenderer?.bindingPath || file === auditBindingPath || !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text)).map(([file, text]) => ({ path: file, sha256: digest(text) }));
   const receipt = { schemaVersion: "archive-reviewed-exam-meta-registration-v2", requestId: req.requestId, requestSha256,
     examUid: req.examUid, sourceArchiveFile: source, sourceBlobSha1: blob, sourceRawSha256: digest(bytes), approval: req.approval,
     ...(auditPreservation ? { metaPipelineAudit: structuredClone(auditPreservation.prior.metaPipelineAudit),
-      auditPreservation: { schemaVersion: req.approval.sourceRebind.schemaVersion, preservedApprovalType: "META_PIPELINE_AUDIT",
+      auditPreservation: auditPreservation.sourceOnly === true ? auditSourcePreservationSummary(auditPreservation)
+      : { schemaVersion: req.approval.sourceRebind.schemaVersion, preservedApprovalType: "META_PIPELINE_AUDIT",
         difficultyRequestRef: req.approval.sourceRebind.difficultyRequestRef,
         requestSnapshot: structuredClone(req),
         difficultyRequestSnapshot: { ...auditPreservation.difficultyRef, rawUtf8: auditPreservation.difficultyBytes.toString("utf8") },

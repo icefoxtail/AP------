@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "archive-m3-reviewed-renderer-reuse-limits-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "nativeEvidence": {
+    "path": ".archive-meta-register/evidence/m3s2-audit-e043-native1-20261116/E043.meta.json",
+    "sha256": "a1c1734e1c8ea17f2f940a254ce4bdf3ff3addf0ea34847bbd02be1e8555a43e"
+  },
+  "independentSampleEvidence": {
+    "path": ".archive-meta-register/evidence/m3s2-audit-e043-native1-20261116/E043.independent.json",
+    "sha256": "08e9160916e3a46892c505a42b7b0c22f55cc444d443231b75098ef49e007036"
+  },
+  "nativeIndependentSampleStatus": "PASS",
+  "currentPublishedCommit": "53c9c1a5891700247b5825b72eaff8a9cca077ed",
+  "currentRendererSnapshotCommit": "0f985c4a242888c44a45db99b1a55c7ff32a1aa3",
+  "note": "currentSourceRef는 실제 Git에 존재한 그림 개정 후·native 메타 포트 전 source이다. 현재 main의 학생 payload/asset와 exact 일치하며, 현행 source의 메타값은 별도 native sourceReview가 검증한다.",
+  "noNewSourceQualityApproval": true,
+  "noNewFullMathematicalQa": true,
+  "newDefinitionCount": 0,
+  "rows": [
+    {
+      "questionUid": "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546",
+      "sourceOrdinal": 11,
+      "liveSourceRef": {
+        "commit": "53c9c1a5891700247b5825b72eaff8a9cca077ed",
+        "path": "archive/exams/original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "9deab677a813cf0f99e6a0cc9e1658268a61550e",
+        "sha256": "5946ecad2af30aea1562df1f148410fe7f8ed5bbc561a8cc1af31ea88c26ff6b",
+        "questionSha256": "0f0731168b2b6e0303eb5a579b6b7a713a031cf9e28045f5c51d36933a0dfa89"
+      },
+      "historicalRendererStudentPayloadSha256": "5c780bf16d18383548959c886fbead2d62a1edececa50507358ef4a5070700b2",
+      "liveStudentPayloadSha256": "5c780bf16d18383548959c886fbead2d62a1edececa50507358ef4a5070700b2",
+      "nativeRationaleAndPublishedCurriculum": [
+        {
+          "field": "curriculum",
+          "currentValue": "2015",
+          "nativeAfterPresent": false,
+          "nativeBeforeValue": null,
+          "nativeOriginalCurriculum": null,
+          "nativeProvenance": {
+            "status": "UNSPECIFIED",
+            "comparisonPathCurriculum": "2015",
+            "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+          },
+          "status": "EXISTING_PUBLISHED_SOURCE_VALUE_ONLY_NOT_NATIVE_ORIGINAL_CURRICULUM_APPROVAL"
+        },
+        {
+          "field": "primaryMethod",
+          "currentValue": "30·60·90도 직각삼각형의 고정 변비로 BC=3, AC=6을 얻은 뒤 각의 이등분선 정리로 AD:DB=AC:CB=2:1을 세운다. 목표 길이를 결정하는 주전략은 일반 삼각형의 각의 이등분선 정리이며 실제 sin/cos/tan 계산은 없다.",
+          "currentValueSha256": "7c0dc2cca830a1142964ea683c699f263b15b8aaeeba60fd582fe0b0719aae78",
+          "nativeOriginPath": "items[ordinal=11].decisiveStep",
+          "nativeValue": "30·60·90도 직각삼각형의 고정 변비로 BC=3, AC=6을 얻은 뒤 각의 이등분선 정리로 AD:DB=AC:CB=2:1을 세운다. 목표 길이를 결정하는 주전략은 일반 삼각형의 각의 이등분선 정리이며 실제 sin/cos/tan 계산은 없다.",
+          "nativeAfterPresent": false,
+          "nativeItemFieldPresent": false,
+          "exactEqual": true,
+          "newReviewJudgment": false
+        },
+        {
+          "field": "decisiveStep",
+          "currentValue": "30·60·90도 직각삼각형의 고정 변비로 BC=3, AC=6을 얻은 뒤 각의 이등분선 정리로 AD:DB=AC:CB=2:1을 세운다. 목표 길이를 결정하는 주전략은 일반 삼각형의 각의 이등분선 정리이며 실제 sin/cos/tan 계산은 없다.",
+          "currentValueSha256": "7c0dc2cca830a1142964ea683c699f263b15b8aaeeba60fd582fe0b0719aae78",
+          "nativeOriginPath": "items[ordinal=11].decisiveStep",
+          "nativeValue": "30·60·90도 직각삼각형의 고정 변비로 BC=3, AC=6을 얻은 뒤 각의 이등분선 정리로 AD:DB=AC:CB=2:1을 세운다. 목표 길이를 결정하는 주전략은 일반 삼각형의 각의 이등분선 정리이며 실제 sin/cos/tan 계산은 없다.",
+          "nativeAfterPresent": false,
+          "nativeItemFieldPresent": true,
+          "exactEqual": true,
+          "newReviewJudgment": false
+        }
+      ],
+      "preservedDebts": [
+        {
+          "type": "ORIGINAL_EXACT_LEAF_GAP",
+          "detail": "원본2015 M2-061은 이등변삼각형 꼭짓각 이등분선,063/064/066은 수직이등분선·외심·내심,089/091~096은 닮음·평행선 길이비로 일반 삼각형의 각의 이등분선 변비 정리와 exact가 다르다. 옛M3-059 삼각비의 활용은 실제 해설의 최종 주전략이 아니므로 보존 강제하지 않는다."
+        },
+        {
+          "type": "CURRENT2022_BINDING_GAP",
+          "detail": "M2-RPM-182의 일반 이등분선 native 정의는 ACTIVE이지만 해당2022 정확 context binding은 대기 중이다."
+        }
+      ],
+      "sourceHoldFieldsNotChanged": true,
+      "newExactRpmLeafResolution": false,
+      "newCurrent2022Binding": false,
+      "contactRef": {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/E043-q11-contact.png",
+        "sha256": "10f8a945a7516951199490f87d6aa76d6d7f9ee4382c362ecd7bf8f6c8d184a3"
+      }
+    },
+    {
+      "questionUid": "qid_v1_1c949738b805dde02e2b4c00c1fa2bc1caa6943fc4a0a14bbc6597669c5cc8ea",
+      "sourceOrdinal": 13,
+      "liveSourceRef": {
+        "commit": "53c9c1a5891700247b5825b72eaff8a9cca077ed",
+        "path": "archive/exams/original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+        "gitBlobSha1": "9deab677a813cf0f99e6a0cc9e1658268a61550e",
+        "sha256": "5946ecad2af30aea1562df1f148410fe7f8ed5bbc561a8cc1af31ea88c26ff6b",
+        "questionSha256": "cded06b98d285727c3847fc952fd90e1687d7b3d5c5c02bd0d63218ffcc25fa1"
+      },
+      "historicalRendererStudentPayloadSha256": "d36523a5e295ec8e6ab57061e4b9427e2a4014908ba7eb22787076e2fac0d64a",
+      "liveStudentPayloadSha256": "d36523a5e295ec8e6ab57061e4b9427e2a4014908ba7eb22787076e2fac0d64a",
+      "nativeRationaleAndPublishedCurriculum": [
+        {
+          "field": "curriculum",
+          "currentValue": "2015",
+          "nativeAfterPresent": false,
+          "nativeBeforeValue": null,
+          "nativeOriginalCurriculum": null,
+          "nativeProvenance": {
+            "status": "UNSPECIFIED",
+            "comparisonPathCurriculum": "2015",
+            "note": "비교용 RPM 경로의 교육과정과 source 원본교육과정 명시 여부를 구분한다."
+          },
+          "status": "EXISTING_PUBLISHED_SOURCE_VALUE_ONLY_NOT_NATIVE_ORIGINAL_CURRICULUM_APPROVAL"
+        },
+        {
+          "field": "primaryMethod",
+          "currentValue": "30도 꼭짓각의 이등변삼각형에서 밑각75도를 얻고 C에서 AB에 수선을 내려30도 삼각비로 AH·CH를 복원한다. 남은 BH와 CH의 비가15도의 탄젠트가 된다.",
+          "currentValueSha256": "288ab83d3ba4f02d34ca26ff73849e8403140b9af8a2b14db0252ad15cdfc29f",
+          "nativeOriginPath": "items[ordinal=13].decisiveStep",
+          "nativeValue": "30도 꼭짓각의 이등변삼각형에서 밑각75도를 얻고 C에서 AB에 수선을 내려30도 삼각비로 AH·CH를 복원한다. 남은 BH와 CH의 비가15도의 탄젠트가 된다.",
+          "nativeAfterPresent": false,
+          "nativeItemFieldPresent": false,
+          "exactEqual": true,
+          "newReviewJudgment": false
+        },
+        {
+          "field": "decisiveStep",
+          "currentValue": "30도 꼭짓각의 이등변삼각형에서 밑각75도를 얻고 C에서 AB에 수선을 내려30도 삼각비로 AH·CH를 복원한다. 남은 BH와 CH의 비가15도의 탄젠트가 된다.",
+          "currentValueSha256": "288ab83d3ba4f02d34ca26ff73849e8403140b9af8a2b14db0252ad15cdfc29f",
+          "nativeOriginPath": "items[ordinal=13].decisiveStep",
+          "nativeValue": "30도 꼭짓각의 이등변삼각형에서 밑각75도를 얻고 C에서 AB에 수선을 내려30도 삼각비로 AH·CH를 복원한다. 남은 BH와 CH의 비가15도의 탄젠트가 된다.",
+          "nativeAfterPresent": false,
+          "nativeItemFieldPresent": true,
+          "exactEqual": true,
+          "newReviewJudgment": false
+        }
+      ],
+      "preservedDebts": [
+        {
+          "type": "EXISTING_ACTIVE_CROSSWALK_CONNECTION",
+          "detail": "GLOBAL ACTIVE 정의가 실제 결정 골격과 맞으며 이 RPM 문맥의 정밀 TPL 연결은 출고 담당에게 인계한다."
+        },
+        {
+          "type": "RESOLVER_SOLUTION_PROVENANCE",
+          "detail": "Actual Resolver blocked because existing independently verified final solution provenance is absent; read-only compatibility inspection only."
+        }
+      ],
+      "sourceHoldFieldsNotChanged": true,
+      "newExactRpmLeafResolution": false,
+      "newCurrent2022Binding": false,
+      "contactRef": {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/E043-q13-contact.png",
+        "sha256": "c4f5274d3fe5ea1b680131650b3e784f20fbec1a0e9081907901d8b281643fc0"
+      }
+    }
+  ]
+}

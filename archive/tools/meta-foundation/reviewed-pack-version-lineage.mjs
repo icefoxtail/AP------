@@ -11,6 +11,8 @@ const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA=/^[a-f0-9]{64}$/;
 const VERSION=/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
 const KEYS=['curriculum','problemTypeKey','standardCourse','standardUnitKey','subUnitKey'];
+const OWNER=/^[A-Z][A-Z0-9_]*$/, TEMPLATE=/^TPL_[A-Z0-9_]+$/;
+const slug=id=>id.toLowerCase().replaceAll('_','-');
 const stable=v=>JSON.stringify(v,(_,x)=>x&&typeof x==='object'&&!Array.isArray(x)
   ?Object.fromEntries(Object.keys(x).sort().map(k=>[k,x[k]])):x);
 const same=(a,b)=>stable(a)===stable(b);
@@ -45,6 +47,26 @@ function selectedAuthority(current,registry,issuedBindings,currentBindings,issue
     fail('selected exact binding or owner changed since issued version');
 }
 
+function companionRegistryAuthority(w,registry){
+  const active=registry.activePacks?.get(w.owner);
+  if(active?.id!==w.owner||active.status!=='ACTIVE'||active.version!==w.version||
+    !same(registry.templates?.get(w.template.templateKey),w.template)||
+    !same(registry.problemTypes?.get(w.parent.problemTypeKey),w.parent))
+    fail('companion current ACTIVE definition or owner changed');
+}
+function ownerDocuments(d,id){
+  const {pack,taxonomy,bindings,aliases}=d;
+  if(pack?.packId!==id||pack.ownerPack!==id||pack.canonicalStatus!=='ACTIVE'||
+    taxonomy?.status!=='ACTIVE'||bindings?.status!=='ACTIVE'||
+    !Array.isArray(taxonomy.problemTypes)||!Array.isArray(taxonomy.templates)||
+    !Array.isArray(bindings.bindings)||!Array.isArray(aliases?.aliases)||
+    taxonomy.problemTypeCount!==taxonomy.problemTypes.length||taxonomy.templateCount!==taxonomy.templates.length||
+    bindings.bindingCount!==bindings.bindings.length||pack.problemTypeCount!==taxonomy.problemTypes.length||
+    pack.templateCount!==taxonomy.templates.length||pack.bindingCount!==bindings.bindings.length||pack.aliasCount!==aliases.aliases.length)
+    fail('companion canonical owner document authority mismatch');
+  version(pack.packVersion);
+}
+
 export function assertReviewedPackVersionLineage({root,current,runtime,prior,priorRuntime,priorReceiptRef,registry}){
   if(current.metaFoundationPackVersion===prior.metaFoundationPackVersion&&
     runtime.metaFoundationPackVersion===priorRuntime.metaFoundationPackVersion)return false;
@@ -66,7 +88,8 @@ export function assertReviewedPackVersionLineage({root,current,runtime,prior,pri
   const key=[root,head,id,prior.metaFoundationPackVersion,current.metaFoundationPackVersion,active.version,priorReceiptRef.sha256].join('\0');
   const old=cache.get(key);
   if(old&&old.inputs.every(([p,d])=>fs.existsSync(safe(root,p))&&sha(fs.readFileSync(safe(root,p)))===d)){
-    selectedAuthority(current,registry,old.issuedBindings,old.bindings,old.issuedCompiled,old.compiled,id);return true;
+    selectedAuthority(current,registry,old.issuedBindings,old.bindings,old.issuedCompiled,old.compiled,id);
+    for(const witness of old.companionWitnesses||[])companionRegistryAuthority(witness,registry);return true;
   }
   const inputs=new Map(),read=p=>{const b=fs.readFileSync(safe(root,p));inputs.set(p,sha(b));return b;};
   const parse=p=>JSON.parse(read(p));
@@ -110,7 +133,24 @@ export function assertReviewedPackVersionLineage({root,current,runtime,prior,pri
     if(!found)fail('issued pack version lacks immutable canonical history');
   }
   selectedAuthority(current,registry,issuedBindings,bindings,issuedCompiled,compiled,id);
-  const candidates=new Map();
+  // A mixed transaction may add exact templates to another existing owner.
+  // Every non-target change must enter this closed lane; it is never ignored.
+  const candidates=new Map(),baselineProviders=[],companionOwners=new Map(),companionWitnesses=[];
+  const companionOwner=owner=>{
+    if(companionOwners.has(owner))return companionOwners.get(owner);
+    const ownerBase=`${CANON}/packs/${slug(owner)}`,docs={};
+    for(const name of ['pack','taxonomy','bindings','aliases']){
+      const p=`${ownerBase}/${name}.json`;docs[name]=parse(p);
+      const refs=index.canonicalSources?.filter(r=>r.path===p);
+      if(refs?.length!==1||String(refs[0].sha256).replace(/^sha256:/,'')!==inputs.get(p))
+        fail('companion canonical input digest mismatch');
+    }
+    ownerDocuments(docs,owner);
+    const entries=index.activePacks?.filter(r=>r.id===owner),sources=compiled.sourcePacks?.filter(r=>r.packId===owner);
+    if(entries?.length!==1||entries[0].status!=='ACTIVE'||entries[0].version!==docs.pack.packVersion||
+      sources?.length!==1||sources[0].version!==docs.pack.packVersion)fail('companion indexed owner version mismatch');
+    const value={owner,base:ownerBase,docs,steps:[]};companionOwners.set(owner,value);return value;
+  };
   for(const [label,p]of Object.entries(live.generatedFrom)){
     if(!label.startsWith('reviewedExam_')||typeof p!=='string'||!p.startsWith(RECEIPTS)||!p.endsWith('.json'))continue;
     const raw=read(p),r=JSON.parse(raw);
@@ -118,7 +158,7 @@ export function assertReviewedPackVersionLineage({root,current,runtime,prior,pri
     const owned=(r.appliedRecords||[]).filter(row=>row.metaFoundationPackId===id);
     const versions=[...new Set(owned.map(row=>row.metaFoundationPackVersion))];
     if(versions.length!==1)fail('binding registrar issued pack version ambiguous');
-    const v=version(versions[0]);if(!same(v.slice(0,2),from.slice(0,2))||v[2]<=from[2]||v[2]>issued[2])continue;
+    const v=version(versions[0]);if(!same(v.slice(0,2),from.slice(0,2))||v[2]<from[2]||v[2]>issued[2])continue;
     if(!ID.test(r.requestId||'')||label!=='reviewedExam_'+r.requestId||p!==RECEIPTS+r.requestId+'.json'||
       r.schemaVersion!=='archive-reviewed-exam-meta-registration-v2'||r.metadataRegistrationStatus!=='REGISTERED'||
       r.approval?.type!=='FINAL_QA'||r.approval.metadataReviewed!==true||!String(r.approval.approvedBy||'').trim()||
@@ -128,17 +168,47 @@ export function assertReviewedPackVersionLineage({root,current,runtime,prior,pri
         r.runtimeRecords.filter(rt=>rt.questionUid===row.questionUid&&rt.metaFoundationPackId===id&&
           rt.metaFoundationPackVersion===versions[0]&&rt.metadataRevision===row.metadataRevision).length!==1))
       fail('exact registered binding lineage receipt required');
-    for(const c of r.registryChanges)if(c.path!==bindingPath||c.collection!=='bindings'||c.before!==null||
-      !same(Object.keys(c.match||{}).sort(),KEYS)||c.after?.status!=='ACTIVE'||
-      KEYS.some(k=>typeof c.match[k]!=='string'||!c.match[k]||c.after[k]!==c.match[k]))
-      fail('only exact add-only ACTIVE bindings can establish patch lineage');
+    const row={receipt:r,path:p,raw,version:versions[0],bindingChanges:[],companions:[]};
+    // A prior-version provider is an already issued baseline authority, not a
+    // new permission for its registry operations in the post-prior chain.
+    if(v[2]===from[2]){baselineProviders.push(row);continue;}
+    for(const c of r.registryChanges){
+      // Older issued bindings inherit ownership from this verified canonical pack path.
+      if(c.path===bindingPath&&c.collection==='bindings'&&c.before===null&&
+        same(Object.keys(c.match||{}).sort(),KEYS)&&c.after?.status==='ACTIVE'&&
+        (!Object.hasOwn(c.after,'ownerPack')||c.after.ownerPack===id)&&
+        KEYS.every(k=>typeof c.match[k]==='string'&&c.match[k]&&c.after[k]===c.match[k])){
+        row.bindingChanges.push(c);continue;
+      }
+      const owner=c.after?.ownerPack,key=c.after?.templateKey,parentKey=c.after?.parentProblemTypeKey;
+      if(c.collection!=='templates'||c.before!==null||!OWNER.test(owner||'')||owner===id||
+        c.path!==`${CANON}/packs/${slug(owner)}/taxonomy.json`||!TEMPLATE.test(key||'')||
+        !same(c.match,{templateKey:key})||c.after.status!=='ACTIVE')
+        fail('only target bindings and exact cross-owner ACTIVE template additions can establish patch lineage');
+      const authority=companionOwner(owner),templates=authority.docs.taxonomy.templates.filter(t=>t.templateKey===key),
+        parents=authority.docs.taxonomy.problemTypes.filter(t=>t.problemTypeKey===parentKey),
+        compiledTemplates=compiled.templates?.filter(t=>t.templateKey===key),compiledParents=compiled.problemTypes?.filter(t=>t.problemTypeKey===parentKey);
+      if(templates.length!==1||!same(templates[0],c.after)||parents.length!==1||parents[0].status!=='ACTIVE'||
+        parents[0].ownerPack!==owner||compiledTemplates?.length!==1||!same(compiledTemplates[0],c.after)||
+        compiledParents?.length!==1||!same(compiledParents[0],parents[0])||
+        !owned.some(record=>record.templateKey===key&&record.problemTypeKey===parentKey&&
+          r.runtimeRecords.some(rt=>rt.questionUid===record.questionUid&&rt.templateKey===key&&rt.problemTypeKey===parentKey)&&
+          r.registryChanges.some(b=>b.path===bindingPath&&b.collection==='bindings'&&
+            KEYS.every(k=>same(b.after?.[k],record[k])))))
+        fail('companion template must be exact current authority and an issued target binding application');
+      const witness={owner,version:authority.docs.pack.packVersion,template:c.after,parent:parents[0]};
+      companionRegistryAuthority(witness,registry);companionWitnesses.push(witness);row.companions.push(c);
+    }
+    if(!row.bindingChanges.length)fail('target add-only binding step required');
     if(candidates.has(v[2]))fail('ambiguous binding version provider');
-    candidates.set(v[2],{receipt:r,path:p,raw,version:versions[0]});
+    candidates.set(v[2],row);
+    for(const owner of new Set(row.companions.map(c=>c.after.ownerPack)))companionOwners.get(owner).steps.push(row);
   }
   const beforePack=structuredClone(issuedPack),beforeBindings=structuredClone(issuedBindings),chain=[],states=new Map();
+  states.set(sha(json(beforePack)),{patch:issued[2],bindingsSha256:sha(json(beforeBindings))});
   for(let patch=issued[2];patch>from[2];patch--){
     const row=candidates.get(patch);if(!row)fail('binding version step missing');
-    const r=row.receipt,changes=r.registryChanges;
+    const r=row.receipt,changes=row.bindingChanges;
     if(sha(json(beforePack))!==digestEntry(r,packPath)||sha(json(beforeBindings))!==digestEntry(r,bindingPath))
       fail('registered canonical version output does not reproduce');
     if(changes.length>beforeBindings.bindings.length||!same(beforeBindings.bindings.slice(-changes.length),changes.map(c=>c.after)))
@@ -152,40 +222,124 @@ export function assertReviewedPackVersionLineage({root,current,runtime,prior,pri
     states.set(sha(json(beforePack)),{patch:patch-1,bindingsSha256:sha(json(beforeBindings))});
     chain.push(row);
   }
-  // A later batch need not have existed in the first batch's inbox. Each step
-  // must have an immutable request at a reconstructed earlier canonical state;
-  // the original prior receipt must also exist at its exact original version.
-  let priorAnchored=false;const anchored=new Set();
+  // Reproduce all companion outputs from one genuine earlier owner snapshot.
+  // Intermediate versions in a writer batch need not be standalone commits;
+  // each complete taxonomy/pack output must still match its issued digest.
+  const companionAt=commit=>{
+    const historicalIndex=JSON.parse(git('show',`${commit}:${CANON}/registry_index.json`));
+    if(historicalIndex.status!=='ACTIVE')fail('companion historical index must be ACTIVE');
+    for(const authority of companionOwners.values()){
+      const docs={};
+      for(const name of ['pack','taxonomy','bindings','aliases']){
+        const p=`${authority.base}/${name}.json`,bytes=git('show',`${commit}:${p}`);docs[name]=JSON.parse(bytes);
+        const refs=historicalIndex.canonicalSources?.filter(r=>r.path===p);
+        if(refs?.length!==1||String(refs[0].sha256).replace(/^sha256:/,'')!==sha(bytes))
+          fail('companion immutable canonical input digest mismatch');
+      }
+      ownerDocuments(docs,authority.owner);
+      const entry=historicalIndex.activePacks?.filter(r=>r.id===authority.owner);
+      if(entry?.length!==1||entry[0].status!=='ACTIVE'||entry[0].version!==docs.pack.packVersion)
+        fail('companion immutable owner version mismatch');
+      for(const row of [...authority.steps].sort((a,b)=>version(a.version)[2]-version(b.version)[2])){
+        for(const c of row.companions.filter(c=>c.after.ownerPack===authority.owner)){
+          const parents=docs.taxonomy.problemTypes.filter(p=>p.problemTypeKey===c.after.parentProblemTypeKey);
+          if(docs.taxonomy.templates.some(t=>t.templateKey===c.after.templateKey)||parents.length!==1||
+            !same(parents[0],registry.problemTypes.get(c.after.parentProblemTypeKey)))
+            fail('companion immutable template absence or unchanged parent required');
+          docs.taxonomy.templates.push(structuredClone(c.after));
+        }
+        docs.taxonomy.problemTypeCount=docs.taxonomy.problemTypes.length;
+        docs.taxonomy.templateCount=docs.taxonomy.templates.length;
+        Object.assign(docs.pack,{problemTypeCount:docs.taxonomy.problemTypes.length,templateCount:docs.taxonomy.templates.length,
+          bindingCount:docs.bindings.bindings.length,aliasCount:docs.aliases.aliases.length});
+        const v=version(docs.pack.packVersion);docs.pack.packVersion=`${v[0]}.${v[1]}.${v[2]+1}`;
+        for(const name of ['pack','taxonomy'])if(sha(json(docs[name]))!==digestEntry(row.receipt,`${authority.base}/${name}.json`))
+          fail('companion registered canonical output does not reproduce');
+      }
+    }
+  };
+  const authenticateRequest=(commit,row)=>{
+    const r=row.receipt,requestPath=`.archive-meta-register/inbox/${r.requestId}.json`,request=JSON.parse(git('show',`${commit}:${requestPath}`));
+    if(request.schemaVersion!=='archive-reviewed-exam-meta-register-request-v2'||sha(stable(request))!==r.requestSha256||
+      request.requestId!==r.requestId||request.sourceArchiveFile!==r.sourceArchiveFile||
+      request.expectedSourceBlobSha1!==r.sourceBlobSha1||request.expectedQuestionCount!==r.expectedQuestionCount||
+      !same(request.registryChanges,r.registryChanges)||!same(request.approval,r.approval)||
+      !same(request.items.map(x=>[x.questionUid,x.sourceOrdinal]).sort(),r.appliedRecords.map(x=>[x.questionUid,x.sourceOrdinal]).sort()))
+      fail('immutable binding request differs from issued receipt');
+    const source=git('show',`${commit}:archive/exams/${r.sourceArchiveFile}`);
+    if(blob(source)!==r.sourceBlobSha1||sha(source)!==r.sourceRawSha256)fail('immutable binding source differs from issued receipt');
+    const refs=[...(request.approval.evidenceRefs||[]),...request.items.flatMap(i=>i.evidenceRefs||[]),
+      ...request.registryChanges.flatMap(c=>c.evidenceRefs||[])];
+    if(!refs.length)fail('immutable binding evidence required');
+    for(const ref of refs)if(!SHA.test(ref?.sha256||'')||sha(git('show',`${commit}:${ref.path}`))!==ref.sha256)
+      fail('immutable binding evidence differs from registered authority');
+  };
+  // A same-version provider may establish a prior issued within a larger batch.
+  // Its original published receipt and request remain separate from the actual
+  // prior approval, which may itself be an ordinary or source-only receipt.
+  const fromPackDigest=sha(json(beforePack)),fromBindingDigest=sha(json(beforeBindings));
+  const providers=baselineProviders.filter(({receipt})=>{
+    if(digestEntry(receipt,packPath)!==fromPackDigest)return false;
+    // A pack-only receipt without a bindings output cannot supply a midbatch anchor.
+    if(!receipt.outputDigests.some(d=>d.path===bindingPath)&&
+      !receipt.registryChanges.some(c=>c.path===bindingPath))return false;
+    return digestEntry(receipt,bindingPath)===fromBindingDigest;
+  });
+  if(providers.length>1)fail('ambiguous prior-version canonical output provider');
+  const provider=providers[0],publishedCompanions=new Set();
+  let priorAnchored=false,providerPublished=false,providerRequestAnchored=false,
+    companionAnchored=companionOwners.size===0;const anchored=new Set(),batchAnchored=new Set();
+  const requestsAnchored=()=>chain.every(row=>anchored.has(row.receipt.requestId)||
+    providerPublished&&providerRequestAnchored&&batchAnchored.has(row.receipt.requestId));
   for(const commit of candidatesAt){
     try{
-      const state=states.get(sha(git('show',`${commit}:${packPath}`)));
+      const packBytes=git('show',`${commit}:${packPath}`),historicalPack=JSON.parse(packBytes),state=states.get(sha(packBytes));
+      if(provider&&!providerRequestAnchored){
+        const v=version(historicalPack.packVersion);
+        if(historicalPack.packId===id&&historicalPack.ownerPack===id&&historicalPack.canonicalStatus==='ACTIVE'&&
+          same(v.slice(0,2),from.slice(0,2))&&v[2]<from[2])try{
+          authenticateRequest(commit,provider);providerRequestAnchored=true;
+          // The first post-prior request can share the provider's pre-batch
+          // input commit when the prior version itself was never persisted.
+          // These anchors count only after that provider's exact published
+          // output has established the reconstructed prior canonical state.
+          for(const row of chain)try{authenticateRequest(commit,row);batchAnchored.add(row.receipt.requestId);}
+          catch{/* Not every later batch request must already exist here. */}
+        }catch{/* A different genuine pre-provider ancestor may contain its immutable request. */}
+      }
       if(!state||sha(git('show',`${commit}:${bindingPath}`))!==state.bindingsSha256||
         sha(git('show',`${commit}:${base}/taxonomy.json`))!==sha(issuedTaxonomy)||
         sha(git('show',`${commit}:${base}/aliases.json`))!==sha(issuedAliases))continue;
-      if(state.patch===from[2]&&sha(git('show',`${commit}:${priorReceiptRef.path}`))===priorReceiptRef.sha256)priorAnchored=true;
-      for(const {receipt:r,version:issuedVersion}of chain){
-        if(anchored.has(r.requestId)||version(issuedVersion)[2]<=state.patch)continue;
-        try{
-        const requestPath=`.archive-meta-register/inbox/${r.requestId}.json`,request=JSON.parse(git('show',`${commit}:${requestPath}`));
-        if(request.schemaVersion!=='archive-reviewed-exam-meta-register-request-v2'||sha(stable(request))!==r.requestSha256||
-          request.requestId!==r.requestId||request.sourceArchiveFile!==r.sourceArchiveFile||
-          request.expectedSourceBlobSha1!==r.sourceBlobSha1||request.expectedQuestionCount!==r.expectedQuestionCount||
-          !same(request.registryChanges,r.registryChanges)||!same(request.approval,r.approval)||
-          !same(request.items.map(x=>[x.questionUid,x.sourceOrdinal]).sort(),r.appliedRecords.map(x=>[x.questionUid,x.sourceOrdinal]).sort()))
-          fail('immutable binding request differs from issued receipt');
-        const source=git('show',`${commit}:archive/exams/${r.sourceArchiveFile}`);
-        if(blob(source)!==r.sourceBlobSha1||sha(source)!==r.sourceRawSha256)fail('immutable binding source differs from issued receipt');
-        const refs=[...(request.approval.evidenceRefs||[]),...request.items.flatMap(i=>i.evidenceRefs||[]),
-          ...request.registryChanges.flatMap(c=>c.evidenceRefs||[])];
-        if(!refs.length)fail('immutable binding evidence required');
-        for(const ref of refs)if(!SHA.test(ref?.sha256||'')||sha(git('show',`${commit}:${ref.path}`))!==ref.sha256)
-          fail('immutable binding evidence differs from registered authority');
-        anchored.add(r.requestId);
-        }catch{/* This step may belong to a different immutable registration batch. */}
+      const priorPresent=()=>sha(git('show',`${commit}:${priorReceiptRef.path}`))===priorReceiptRef.sha256;
+      if(state.patch===from[2]&&priorPresent())priorAnchored=true;
+      if(provider&&state.patch>from[2]&&!providerPublished)try{
+        if(priorPresent()&&sha(git('show',`${commit}:${provider.path}`))===sha(provider.raw)){
+          if(sha(read(priorReceiptRef.path))!==priorReceiptRef.sha256)fail('current prior receipt raw differs from immutable authority');
+          const publishedCompiled=JSON.parse(git('show',`${commit}:archive/data/meta-foundation/compiled/taxonomy_registry.json`));
+          if(publishedCompiled.status!=='DERIVED_READ_ONLY'||publishedCompiled.sourcePacks?.filter(p=>
+            p.packId===id&&p.version===`${from[0]}.${from[1]}.${state.patch}`).length!==1)
+            fail('published higher pack snapshot compiled authority mismatch');
+          selectedAuthority(current,registry,beforeBindings,bindings,publishedCompiled,compiled,id);providerPublished=true;
+        }
+      }catch{/* A published higher state must contain both exact original receipts and selected authority. */}
+      for(const row of chain)if(row.companions.length&&state.patch>=version(row.version)[2])try{
+        if(sha(git('show',`${commit}:${row.path}`))===sha(row.raw))publishedCompanions.add(row.receipt.requestId);
+      }catch{/* A companion is accepted only with its exact official receipt on real ancestry. */}
+      if(!companionAnchored&&[...companionOwners.values()].every(owner=>owner.steps.every(row=>state.patch<version(row.version)[2])))try{
+        companionAt(commit);companionAnchored=true;
+      }catch{/* Missing, modified or non-add-only companion outputs cannot establish this anchor. */}
+      for(const row of chain){
+        if(anchored.has(row.receipt.requestId)||version(row.version)[2]<=state.patch)continue;
+        try{authenticateRequest(commit,row);anchored.add(row.receipt.requestId);}
+        catch{/* This step may belong to a different immutable registration batch. */}
       }
-      if(priorAnchored&&anchored.size===chain.length)break;
-    }catch{/* Try another actual ancestor; absent or mismatched Git authority never grants reuse. */}
+      if((priorAnchored||providerPublished&&providerRequestAnchored)&&requestsAnchored()&&
+        companionAnchored&&publishedCompanions.size===chain.filter(row=>row.companions.length).length)break;
+    }catch{/* Actual ancestry, canonical bytes and original authority are mandatory; no missing-state fallback. */}
   }
-  if(!priorAnchored||anchored.size!==chain.length)fail('complete binding lineage lacks immutable prior/request authority');
-  cache.set(key,{inputs:[...inputs],issuedBindings,bindings,issuedCompiled,compiled});return true;
+  if(!(priorAnchored||providerPublished&&providerRequestAnchored)||!requestsAnchored())
+    fail('complete binding lineage lacks immutable prior/request authority');
+  if(!companionAnchored||publishedCompanions.size!==chain.filter(row=>row.companions.length).length)
+    fail('complete companion transaction lacks immutable canonical and issued receipt authority');
+  cache.set(key,{inputs:[...inputs],issuedBindings,bindings,issuedCompiled,compiled,companionWitnesses});return true;
 }

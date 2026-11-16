@@ -32,15 +32,15 @@
     },
     {
       "packId": "MIDDLE_GEOMETRY",
-      "version": "1.0.8"
+      "version": "1.0.11"
     },
     {
       "packId": "MIDDLE1",
-      "version": "1.0.10"
+      "version": "1.0.12"
     },
     {
       "packId": "H1_FOUNDATION",
-      "version": "1.0.6"
+      "version": "1.0.10"
     },
     {
       "packId": "H1_ORIGINAL_SOURCE",
@@ -68,11 +68,11 @@
     },
     {
       "packId": "MIDDLE2",
-      "version": "1.0.6"
+      "version": "1.0.11"
     }
   ],
-  "problemTypeCount": 433,
-  "templateCount": 999,
+  "problemTypeCount": 434,
+  "templateCount": 1007,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -9206,6 +9206,21 @@
       "supportingItemCount": 1,
       "supportingQuestionUids": [
         "qid_v1_a3738a81ecbee75089fb4d496f5436036e5b21d934498b9a9f02636003f5931f"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+      "canonicalLabelKo": "유한 목록의 소수 개수",
+      "definition": "명시적으로 주어진 유한 자연수 목록의 각 원소를 소수의 정의로 분류하고 소수인 원소의 개수를 구한다. 연속 구간의 모든 자연수를 조사하는 유형과 구분한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "sourceUnits": [
+        "M1-01"
+      ],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c"
       ]
     },
     {
@@ -26758,6 +26773,93 @@
       }
     },
     {
+      "templateKey": "TPL_ISOSCELES_PROPERTY_STATEMENT_JUDGMENT",
+      "parentProblemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "canonicalLabelKo": "이등변삼각형 성질의 적용 대상 진술 판정",
+      "definition": "이등변삼각형의 정의·역과 꼭지각 이등분선의 성질을 각 진술의 대상에 대조하고, 밑각 이등분선까지 수직이등분 성질을 잘못 확장한 주장을 구별한다.",
+      "internalSkeleton": "진술의 각과 대변 대상을 확인한다 → 이등변삼각형의 정의·역·꼭지각 이등분선 성질의 적용 범위를 대조한다 → 일반적으로 보장되지 않는 진술을 판정한다.",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "status": "ACTIVE",
+      "aliases": [],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_c44b869578422235c076e993f43ba01014e75d35e3af7a5555d7eaf5104b0dae"
+      ],
+      "supportingItemCount": 1,
+      "evidenceProvenance": [
+        {
+          "source": "M2S2_NATIVE_PROPOSAL_NARROW_FINALIZATION_20261115",
+          "questionUid": "qid_v1_c44b869578422235c076e993f43ba01014e75d35e3af7a5555d7eaf5104b0dae",
+          "nativeReviewRef": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E028/review.json",
+            "sha256": "acf29cb30ad11c85978806fd8112d4ffa7628ffdfd4953803f2fd87a1cc302a9"
+          },
+          "sourceOrdinal": 2,
+          "newMathematicalQa": false
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "canonicalLabelKo": "원에 내접하는 사각형의 대각 관계",
+      "definition": "원에 내접하는 사각형의 대각의 합180도 또는 외각과 내대각이 같다는 관계로 미지각이나 각의 결합값을 정한다.",
+      "internalSkeleton": "대각 쌍을 정한다 → 보각식을 쓴다 → 목표 각 또는 결합값을 구한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_7e22ca89dcf5c2f0233abf9095940d2d5d076efe87f6082910c62bbd768a4354",
+        "qid_v1_94efc9c51bf25d22e5ac9b1e3006705e72341f2652ad155375ece9e102123347",
+        "qid_v1_1c1c8ab990d5b4c5935d17b0acd0426564b75cd37bd1039b6a74ff81fae8d5d3",
+        "qid_v1_26ba5f84c88b65529515252ee9a59dea9045f235aa88303f93ef47b8c8808074",
+        "qid_v1_15868fb06caee7d7b9cbc5f6179f64550c398c130d0e327777407a9319a90a26"
+      ],
+      "supportingItemCount": 5,
+      "evidenceProvenance": [
+        {
+          "source": "M3_S2_REVIEWED_NEW_TEMPLATE_PROPOSAL_20261114",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "examId": "E005",
+          "proposalId": "B-E005-TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+          "supportingQuestionUids": [
+            "qid_v1_7e22ca89dcf5c2f0233abf9095940d2d5d076efe87f6082910c62bbd768a4354"
+          ]
+        },
+        {
+          "source": "M3_S2_REVIEWED_NEW_TEMPLATE_PROPOSAL_20261114",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "examId": "E023",
+          "proposalId": "B-E023-REUSE-TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+          "supportingQuestionUids": [
+            "qid_v1_94efc9c51bf25d22e5ac9b1e3006705e72341f2652ad155375ece9e102123347",
+            "qid_v1_1c1c8ab990d5b4c5935d17b0acd0426564b75cd37bd1039b6a74ff81fae8d5d3"
+          ]
+        },
+        {
+          "source": "M3_S2_REVIEWED_NEW_TEMPLATE_PROPOSAL_20261114",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "examId": "E017",
+          "proposalId": "B-E017-REUSE-TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+          "supportingQuestionUids": [
+            "qid_v1_26ba5f84c88b65529515252ee9a59dea9045f235aa88303f93ef47b8c8808074"
+          ]
+        },
+        {
+          "source": "M3_S2_REVIEWED_NEW_TEMPLATE_PROPOSAL_20261114",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "examId": "E035",
+          "proposalId": "B-E035-REUSE-1",
+          "supportingQuestionUids": [
+            "qid_v1_15868fb06caee7d7b9cbc5f6179f64550c398c130d0e327777407a9319a90a26"
+          ]
+        }
+      ]
+    },
+    {
       "templateKey": "TPL_ABSOLUTE_VALUE_SIGN_EXTREMES_CORE",
       "parentProblemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
       "canonicalLabelKo": "절댓값 조건에서 가능한 극값 — 기본 풀이 골격",
@@ -32992,6 +33094,42 @@
       ]
     },
     {
+      "templateKey": "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE",
+      "parentProblemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+      "canonicalLabelKo": "유한 목록의 소수 판별 후 개수 계산",
+      "definition": "명시적으로 주어진 유한 자연수 목록의 각 원소를 소수의 정의로 분류하고 소수인 원소의 개수를 구한다. 연속 구간의 모든 자연수를 조사하는 유형과 구분한다.",
+      "internalSkeleton": "명시된 유한 자연수 목록에서 1을 제외한다 → 각 원소가 1과 자기 자신만을 약수로 가지는지 판별한다 → 소수로 판정된 원소의 개수를 센다. 목록에 없는 중간 수는 조사 대상에 넣지 않는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "NONE"
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_ROTATED_CENTER_OVERLAP",
+      "parentProblemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+      "canonicalLabelKo": "중심에 놓인 정사각형 꼭짓점의 회전 겹침 넓이",
+      "definition": "한 정사각형의 중심에 다른 정사각형의 한 꼭짓점이 놓이고 그 두 변이 인접한 두 변을 만날 때, 중심과 교점을 연결한 두 삼각형의 ASA 합동을 증명한 뒤 합동인 조각의 넓이를 옮겨 겹친 사각형의 넓이를 구한다. 겹친 사각형 자체를 정사각형으로 가정하지 않는다.",
+      "internalSkeleton": "정사각형 대각선의 이등분·직각 성질로 같은 중심거리와 45도 각을 확인한다 → 두 직각에서 공통각을 빼 중심각의 같음을 보인다 → ASA 합동을 증명한다 → 겹침 영역의 두 삼각형 중 하나를 합동인 조각으로 바꾸어 원 정사각형의 중심과 한 변이 만드는 삼각형의 넓이로 환원한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_bf6f71e848237887a135461e9cb5292a204545ac7e196eacc475b1b3025a7394"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "SEQUENTIAL"
+      ]
+    },
+    {
       "templateKey": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL",
       "parentProblemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
       "canonicalLabelKo": "절댓값의 직접 구간 변환",
@@ -35482,6 +35620,80 @@
       "supportingItemCount": 1,
       "supportingQuestionUids": [
         "qid_v1_3cbe209b4db777494d3e9b753ca9a05d6df74af44f6ce15f2ee9d3ac2fac5187"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_ALL_SOLUTIONS_SIGN",
+      "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "canonicalLabelKo": "일차부등식의 전체 해 부호 조건",
+      "definition": "일차부등식의 해집합을 비어 있지 않은 한쪽 반직선으로 나타낸 뒤, 모든 해가 지정한 양수 또는 음수 영역에 속하도록 해의 방향과 유한 경계의 부호·포함 여부를 비교하여 매개변수 조건을 정한다.",
+      "internalSkeleton": "ISOLATE_VARIABLE_IDENTIFY_HALF_LINE_COMPARE_SIGN_BOUNDARY_AND_ENDPOINT_INCLUSION",
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "aliases": [],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_a4b3418a5df90ae608ef84ba58fe6f667ea8dabb8c4f0ba10140bb31d04ba3b4"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CURRENT_M2_AUDIT_REPAIR_34C2_EXACT_TEMPLATE_APPROVAL",
+          "nativeReview": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E007.accepted-review.json",
+          "nativeSourceOrdinal": 18,
+          "approvedBy": "GPT_ROOT_0A70543C4CE8",
+          "approvalScope": "DEFINITION_AND_EXACT_UID_SEMANTIC_APPLICATION; OFFICIAL_REGISTRY_WRITE_PENDING"
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+      "parentProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+      "canonicalLabelKo": "알려진 단위량과 수량 교환 차이의 연립식",
+      "definition": "알려진 두 단위량과 두 수량의 합 및 두 수량을 서로 바꾼 가중합의 차이를 이용해 연립일차방정식을 세우고 수량을 구한다.",
+      "internalSkeleton": "DEFINE_TWO_QUANTITIES_TOTAL_COUNT_EQUATION_SWAP_WEIGHTED_TOTALS_DIFFERENCE_SOLVE_LINEAR_SYSTEM",
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "aliases": [],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "CURRENT_M2_AUDIT_REPAIR_34C2_EXACT_TEMPLATE_APPROVAL",
+          "nativeReview": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E009.accepted-review.json",
+          "nativeSourceOrdinal": 21,
+          "approvedBy": "GPT_ROOT_0A70543C4CE8",
+          "approvalScope": "DEFINITION_AND_EXACT_UID_SEMANTIC_APPLICATION; OFFICIAL_REGISTRY_WRITE_PENDING"
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION",
+      "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "canonicalLabelKo": "일차부등식의 가장 작은 정수해",
+      "definition": "일차부등식의 해집합을 유한한 하한을 갖는 비어 있지 않은 반직선으로 나타낸 뒤, 경계의 포함 여부를 반영하여 그 해집합에 속하는 가장 작은 정수를 정한다.",
+      "internalSkeleton": "ISOLATE_VARIABLE_IDENTIFY_LOWER_BOUND_AND_INCLUSION_SELECT_LEAST_ADMISSIBLE_INTEGER",
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "aliases": [],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_INDEPENDENT_INEQUALITIES_LEAST_INTEGER_SUM",
+      "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "canonicalLabelKo": "독립된 부등식의 최소 정수해 합",
+      "definition": "서로 독립된 두 일차부등식에서 각각 유한한 하한과 경계의 포함 여부를 구하고, 각 해집합에 속하는 가장 작은 정수를 독립적으로 선택하여 그 두 정수의 합의 최솟값을 정한다.",
+      "internalSkeleton": "SOLVE_TWO_INDEPENDENT_INEQUALITIES_SELECT_EACH_LEAST_INTEGER_ADD_INDEPENDENT_MINIMA",
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "aliases": [],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0"
       ]
     },
     {

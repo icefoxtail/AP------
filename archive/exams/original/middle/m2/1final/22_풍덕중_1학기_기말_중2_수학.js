@@ -48,12 +48,12 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>2. 다음 삼각형의 넓이가 $6x^2y^3-3x^2y^2$이고 밑변의 길이가 $\\dfrac32x^2y$일 때, 높이를 옳게 구한 것은? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q02.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 2번 원본 그림\" /></p>",
+      "content": "<p>2. 다음 삼각형의 넓이가 $6x^2y^3-3x^2y^2$이고 밑변의 길이가 $\\dfrac32x^2y$일 때, 높이를 옳게 구한 것은? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q2-problem-visual-v2.svg\" alt=\"삼각형 안에 넓이 6x²y³−3x²y²가 쓰여 있다. 아래쪽 밑변의 길이는 세로 분수 3/2와 x²y의 곱이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$8y-4$",
         "$4y-1$",
@@ -80,12 +80,12 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>3. 다음 직사각형에서 선분 $AE$를 접어서 삼각형 $AEF$를 만들었다고 할 때 색칠한 삼각형 $AEF$의 넓이를 옳게 구한 것은? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q03.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 3번 원본 그림\" /></p>",
+      "content": "<p>3. 다음 직사각형에서 선분 $AE$를 접어서 삼각형 $AEF$를 만들었다고 할 때 색칠한 삼각형 $AEF$의 넓이를 옳게 구한 것은? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2.svg\" alt=\"가로가 2b이고 세로가 3a인 직사각형이다. 오른쪽 변 위 E와 A를 접는 선으로 그렸다. 접혀서 D가 옮겨지는 F를 표시하고 삼각형 AEF만 청록으로 칠했다. CE는 2/3 b이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$6ab-b^2$",
         "$6ab-\\dfrac43b^2$",
@@ -322,12 +322,12 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>11. 평행사변형 $ABCD$의 둘레의 길이는 $48\\text{cm}$이고 $\\overline{AB}:\\overline{AD}=3:5$일 때, $\\overline{AB}$의 길이는? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q11.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 11번 원본 그림\" /></p>",
+      "content": "<p>11. 평행사변형 $ABCD$의 둘레의 길이는 $48\\text{cm}$이고 $\\overline{AB}:\\overline{AD}=3:5$일 때, $\\overline{AB}$의 길이는? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q11-problem-visual-v2.svg\" alt=\"윗변 AD와 아랫변 BC가 서로 평행하다. A와 D는 위, B와 C는 아래에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$7\\text{cm}$",
         "$9\\text{cm}$",
@@ -354,12 +354,12 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>12. 평행사변형 $ABCD$에서 $\\overline{AE}$와 $\\overline{DF}$가 각각 $\\angle A$, $\\angle D$의 이등분선일 때, $\\overline{EF}$의 길이는? [3점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q12.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 12번 원본 그림\" /></p>",
+      "content": "<p>12. 평행사변형 $ABCD$에서 $\\overline{AE}$와 $\\overline{DF}$가 각각 $\\angle A$, $\\angle D$의 이등분선일 때, $\\overline{EF}$의 길이는? [3점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q12-problem-visual-v2.svg\" alt=\"윗변 AD는 9 cm, 왼쪽 변 AB는 6 cm이다. A에서 아랫변의 E로 향하는 이등분선은 청록, D에서 아랫변의 F로 향하는 이등분선은 보라색이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$2\\text{cm}$",
         "$2.5\\text{cm}$",
@@ -386,10 +386,10 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 1,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [],
       "wide": false,
-      "content": "<p>13. $ABCD$가 평행사변형이 되지 <u>않는</u> 것은? [4점]<p>(단, 점 $O$는 두 대각선의 교점이다.)</p></p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q13.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 13번 원본 그림\" /></p>",
+      "content": "<p>13. $ABCD$가 평행사변형이 되지 <u>않는</u> 것은? [4점]<p>(단, 점 $O$는 두 대각선의 교점이다.)</p></p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q13-problem-visual-v2.svg\" alt=\"사각형 ABCD에서 대각선 AC와 BD가 O에서 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$\\angle ABC=\\angle BCD,\\ \\overline{AB}=\\overline{DC}$",
         "$\\overline{AB}=\\overline{DC},\\ \\overline{BC}=\\overline{AD}$",
@@ -416,12 +416,12 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 1,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>14. 넓이가 $68\\text{cm}^2$인 평행사변형 $ABCD$의 내부의 한 점 $P$에 대하여 $\\triangle ABP=24\\text{cm}^2$일 때, $\\triangle CDP$의 넓이는? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q14.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 14번 원본 그림\" /></p>",
+      "content": "<p>14. 넓이가 $68\\text{cm}^2$인 평행사변형 $ABCD$의 내부의 한 점 $P$에 대하여 $\\triangle ABP=24\\text{cm}^2$일 때, $\\triangle CDP$의 넓이는? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q14-problem-visual-v2.svg\" alt=\"평행사변형 내부의 P를 네 꼭짓점과 이었다. 오른쪽 삼각형 CDP만 연한 청록으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$10\\text{cm}^2$",
         "$12\\text{cm}^2$",
@@ -448,10 +448,10 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [],
       "wide": false,
-      "content": "<p>15. 평행사변형 $\\text{ABCD}$의 네 내각의 이등분선의 교점으로 만들어진 사각형 $\\text{EFGH}$에 대한 설명으로 옳지 <u>않은</u> 것은?</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q15.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 15번 원본 그림\" /></p>",
+      "content": "<p>15. 평행사변형 $\\text{ABCD}$의 네 내각의 이등분선의 교점으로 만들어진 사각형 $\\text{EFGH}$에 대한 설명으로 옳지 <u>않은</u> 것은?</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2.svg\" alt=\"평행사변형 ABCD의 네 꼭짓점에서 내각의 이등분선을 그렸다. 안쪽 네 교점은 왼쪽 E, 아래 F, 오른쪽 G, 위 H 순서다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "한 내각의 크기가 직각이다.",
         "두 쌍의 대변의 길이가 각각 같다.",
@@ -478,10 +478,10 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 1,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [],
       "wide": false,
-      "content": "<p>16. 평행사변형 $ABCD$에서 다음 중 $ABCD$가 직사각형이 되는 조건이 <u>아닌</u> 것은? (정답 2개) [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q16.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 16번 원본 그림\" /></p>",
+      "content": "<p>16. 평행사변형 $ABCD$에서 다음 중 $ABCD$가 직사각형이 되는 조건이 <u>아닌</u> 것은? (정답 2개) [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q16-problem-visual-v2.svg\" alt=\"평행사변형 ABCD에서 대각선 AC와 BD가 O에서 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$\\overline{AB}=\\overline{AD}$",
         "$\\angle A=90^\\circ$",
@@ -508,12 +508,12 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>17. 마름모 $\\text{ABCD}$에서 두 대각선의 교점을 $\\text{O}$라 할 때, $\\angle x + \\angle y$의 값은?</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q17.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 17번 원본 그림\" /></p>",
+      "content": "<p>17. 마름모 $\\text{ABCD}$에서 두 대각선의 교점을 $\\text{O}$라 할 때, $\\angle x + \\angle y$의 값은?</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q17-problem-visual-v2.svg\" alt=\"가로 대각선 BD와 세로 대각선 AC는 O에서 교차한다. B에서 BA와 BO 사이가 y, C에서 CB와 CO 사이가 x, D에서 DA와 DO 사이는 25°다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$75^\\circ$",
         "$80^\\circ$",
@@ -540,12 +540,12 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>18. 그림과 같이 $\\angle ABD=\\angle ACD=\\angle CAD$인 평행사변형 $ABCD$는 어떤 사각형인가? [3점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q18.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 18번 원본 그림\" /></p>",
+      "content": "<p>18. 그림과 같이 $\\angle ABD=\\angle ACD=\\angle CAD$인 평행사변형 $ABCD$는 어떤 사각형인가? [3점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q18-problem-visual-v2.svg\" alt=\"평행사변형 ABCD의 대각선은 O에서 만난다. 문제에서 같다고 한 각 ABD, ACD, CAD를 같은 갈색 호로 나타낸 개략도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "등변사다리꼴",
         "마름모",
@@ -602,12 +602,12 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>20. $\\overline{AD}\\parallel\\overline{BC}$인 사다리꼴 $ABCD$에서 $\\triangle DBC=35\\text{cm}^2$, $\\overline{OD}:\\overline{OB}=2:3$일 때, $\\triangle ABO$의 넓이는? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q20.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 20번 원본 그림\" /></p>",
+      "content": "<p>20. $\\overline{AD}\\parallel\\overline{BC}$인 사다리꼴 $ABCD$에서 $\\triangle DBC=35\\text{cm}^2$, $\\overline{OD}:\\overline{OB}=2:3$일 때, $\\triangle ABO$의 넓이는? [4점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q20-problem-visual-v2.svg\" alt=\"AD와 BC가 서로 나란하며 두 대각선 AC와 BD가 O에서 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$13\\text{cm}^2$",
         "$14\\text{cm}^2$",
@@ -634,12 +634,12 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>21. $\\square ABCD$의 넓이와 $\\triangle ABE$의 넓이가 같기 위한 조건은? [3점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q21.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 21번 원본 그림\" /></p>",
+      "content": "<p>21. $\\square ABCD$의 넓이와 $\\triangle ABE$의 넓이가 같기 위한 조건은? [3점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q21-problem-visual-v2.svg\" alt=\"B, C, E는 같은 밑변 위에 있다. 사각형 ABCD와 삼각형 ABE의 선분을 구분하고 CD와 AE의 교점 P를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$\\overline{AC}\\parallel\\overline{DE}$",
         "$\\overline{AC}=\\overline{DE}$",
@@ -666,13 +666,13 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "서술형",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형",
         "서술형"
       ],
       "wide": false,
-      "content": "<p>[서술형 1] 오른쪽 직사각형 $ABCD$를 선분 $AB$와 선분 $BC$를 각각 축으로 하여 1회전시킬 때 생기는 두 회전체의 부피를 각각 $P,Q$라고 하자. 이때 $\\dfrac{P}{Q}$를 구하시오. [5점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q22.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 22번 원본 그림\" /></p>",
+      "content": "<p>[서술형 1] 오른쪽 직사각형 $ABCD$를 선분 $AB$와 선분 $BC$를 각각 축으로 하여 1회전시킬 때 생기는 두 회전체의 부피를 각각 $P,Q$라고 하자. 이때 $\\dfrac{P}{Q}$를 구하시오. [5점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q22-problem-visual-v2.svg\" alt=\"직사각형의 세로변 AB는 4a이고 가로변 AD는 3b이다. 회전축으로 쓰는 AB와 BC를 각각 파란색과 청록으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "$\\dfrac{3b}{4a}$",
       "solution": "[키포인트] 직사각형을 한 변을 축으로 한 바퀴 회전시키면 원기둥이 되고, 부피는 $\\pi r^2h$이다.\n1단계: $AB=4a$, $BC=3b$이다. $AB$를 축으로 회전한 원기둥은 반지름 $3b$, 높이 $4a$이므로 $P=\\pi(3b)^2(4a)=36\\pi ab^2$.\n2단계: $BC$를 축으로 회전한 원기둥은 반지름 $4a$, 높이 $3b$이므로 $Q=\\pi(4a)^2(3b)=48\\pi a^2b$.\n3단계: $\\frac{P}{Q}=\\frac{36\\pi ab^2}{48\\pi a^2b}=\\frac{3b}{4a}$.",
@@ -719,12 +719,12 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 1,
       "questionType": "서술형",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "서술형"
       ],
       "wide": false,
-      "content": "<p>[서술형 3] 사각형 $ABCD$가 평행사변형이 되는 조건 5가지를 수학적 기호를 사용하여 나타내시오. [5점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q24.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 24번 원본 그림\" /></p>",
+      "content": "<p>[서술형 3] 사각형 $ABCD$가 평행사변형이 되는 조건 5가지를 수학적 기호를 사용하여 나타내시오. [5점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q24-problem-visual-v2.svg\" alt=\"사각형 ABCD의 대각선 AC와 BD가 교점 O에서 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "(1) $AB\\parallel CD$, $AD\\parallel BC$; (2) $AB=CD$, $AD=BC$; (3) $\\angle A=\\angle C$, $\\angle B=\\angle D$; (4) $AO=OC$, $BO=OD$; (5) $AB\\parallel CD$, $AB=CD$ (또는 $AD\\parallel BC$, $AD=BC$)",
       "solution": "[키포인트] 사각형이 평행사변형이 되는 다섯 가지 판정 조건을 정리한다.\n① 두 쌍의 대변이 각각 평행하다: $AB\\parallel CD$, $AD\\parallel BC$.\n② 두 쌍의 대변의 길이가 각각 같다: $AB=CD$, $AD=BC$.\n③ 두 쌍의 대각의 크기가 각각 같다: $\\angle A=\\angle C$, $\\angle B=\\angle D$.\n④ 두 대각선이 서로를 이등분한다: $AO=OC$, $BO=OD$.\n⑤ 한 쌍의 대변이 평행하고 길이도 같다: $AB\\parallel CD$, $AB=CD$ (또는 $AD\\parallel BC$, $AD=BC$).",
@@ -745,13 +745,13 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "서술형",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형",
         "서술형"
       ],
       "wide": false,
-      "content": "<p>[서술형 4] 일반적인 사각형에 조건이 하나씩 덧붙여져 여러 가지 사각형이 되는 과정을 나타낸 것이다. 각 도형의 뜻에 맞도록 ①~⑤에 각각 알맞은 조건을 쓰시오. [5점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q25.png\" alt=\"22_풍덕중_1학기_기말_중2_수학 25번 원본 그림\" /></p>",
+      "content": "<p>[서술형 4] 일반적인 사각형에 조건이 하나씩 덧붙여져 여러 가지 사각형이 되는 과정을 나타낸 것이다. 각 도형의 뜻에 맞도록 ①~⑤에 각각 알맞은 조건을 쓰시오. [5점]</p><p><img src=\"assets/images/22_풍덕중_1학기_기말_중2_수학/q25-problem-visual-v2.svg\" alt=\"사다리꼴에서 평행사변형으로 가는 화살표는 ①이다. 평행사변형에서 마름모와 직사각형으로 가는 화살표는 각각 ②와 ③이며, 마름모와 직사각형에서 정사각형으로 가는 화살표는 각각 ④와 ⑤이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "① 다른 한 쌍의 대변도 평행하다. ② 이웃하는 두 변의 길이가 같다. ③ 한 내각의 크기가 직각이다. ④ 한 내각의 크기가 직각이다. ⑤ 이웃하는 두 변의 길이가 같다.",
       "solution": "[키포인트] 도형의 흐름을 따라 직전 사각형에 어떤 조건이 추가되어 다음 사각형이 되는지 구별한다.\n① 사다리꼴→평행사변형: 다른 한 쌍의 대변도 평행하다.\n② 평행사변형→마름모: 이웃하는 두 변의 길이가 같다(또는 두 대각선이 수직이다).\n③ 평행사변형→직사각형: 한 내각이 직각이다(또는 두 대각선의 길이가 같다).\n④ 마름모→정사각형: 한 내각이 직각이다(또는 두 대각선의 길이가 같다).\n⑤ 직사각형→정사각형: 이웃하는 두 변의 길이가 같다(또는 두 대각선이 서로 수직이다).",

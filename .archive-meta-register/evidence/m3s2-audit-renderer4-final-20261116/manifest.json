@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "archive-m3-audit-renderer4-registration-unit-manifest-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "immutableRendererProofCommit": "689fa6379fa2dec544890d83af186f64d127d763",
+  "nativeReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+  "status": "OFFICIAL_CHANGED_UID_DRYRUN_PASS",
+  "counts": {
+    "requests": 3,
+    "uniqueUids": 4,
+    "newPrimaryDefinitions": 0,
+    "newFullMathematicalQa": 0,
+    "newSemanticReviewRounds": 0,
+    "sourceEdits": 0,
+    "compactEdits": 0,
+    "registryChanges": 0
+  },
+  "requests": [
+    {
+      "requestId": "m3s2-audit-e038-renderer2-20261116",
+      "requestRef": {
+        "path": ".archive-meta-register/inbox/m3s2-audit-e038-renderer2-20261116.json",
+        "sha256": "cb0acd0d45f1d07577e7b70e97e3fb833d66457554bed5511d2b011b38b19ef9"
+      },
+      "sourceArchiveFile": "original/middle/m3/2mid/22_매산중_2학기_중간_중3_수학.js",
+      "expectedSourceBlobSha1": "52fc0c0797b95e8cd99b8abb3f960794f873ca45",
+      "expectedQuestionCount": 24,
+      "selectedUidCount": 2,
+      "items": [
+        {
+          "questionUid": "qid_v1_83cda756e3fe5ea56759246f839cd121b901b92a992c7ca2ea63821eacf43007",
+          "sourceOrdinal": 14
+        },
+        {
+          "questionUid": "qid_v1_3b04294258c4b0f7ae456e5fcccb100fa7bc4b83d554603410b84b4b19053c2d",
+          "sourceOrdinal": 24
+        }
+      ],
+      "dryrunRef": {
+        "path": ".archive-meta-register/evidence/m3s2-audit-renderer4-final-20261116/e038-renderer2-dryrun.json",
+        "sha256": "4a1a797586e4e89f8ff1aa3bd85abf6a18c8029f8b44f6f7f61e7d2c8e7512c4"
+      },
+      "status": "PASS",
+      "write": false,
+      "consumerSearchStatus": "NOT_RUN"
+    },
+    {
+      "requestId": "m3s2-audit-e043-renderer1-20261116",
+      "requestRef": {
+        "path": ".archive-meta-register/inbox/m3s2-audit-e043-renderer1-20261116.json",
+        "sha256": "e2cd15a634f50b190c068dc9d5cffb211d1d288ce668fe3b8d366c680e7dd88a"
+      },
+      "sourceArchiveFile": "original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+      "expectedSourceBlobSha1": "9deab677a813cf0f99e6a0cc9e1658268a61550e",
+      "expectedQuestionCount": 25,
+      "selectedUidCount": 1,
+      "items": [
+        {
+          "questionUid": "qid_v1_1c949738b805dde02e2b4c00c1fa2bc1caa6943fc4a0a14bbc6597669c5cc8ea",
+          "sourceOrdinal": 13
+        }
+      ],
+      "dryrunRef": {
+        "path": ".archive-meta-register/evidence/m3s2-audit-renderer4-final-20261116/e043-renderer1-dryrun.json",
+        "sha256": "b1d5ac6ea60ce73f693e9d5a3f82beae2230e5046d66b39b47051f9b1537dca3"
+      },
+      "status": "PASS",
+      "write": false,
+      "consumerSearchStatus": "NOT_RUN"
+    },
+    {
+      "requestId": "m3s2-audit-e043-q11-native1-20261116",
+      "requestRef": {
+        "path": ".archive-meta-register/inbox/m3s2-audit-e043-q11-native1-20261116.json",
+        "sha256": "d7561971058e0b294fceffafb4301d5a5332599e48660e318061d5bd61932205"
+      },
+      "sourceArchiveFile": "original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+      "expectedSourceBlobSha1": "9deab677a813cf0f99e6a0cc9e1658268a61550e",
+      "expectedQuestionCount": 25,
+      "selectedUidCount": 1,
+      "items": [
+        {
+          "questionUid": "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546",
+          "sourceOrdinal": 11
+        }
+      ],
+      "dryrunRef": {
+        "path": ".archive-meta-register/evidence/m3s2-audit-renderer4-final-20261116/e043-q11-native1-dryrun.json",
+        "sha256": "3b741f937e90c184ee8bc41dba43aa816ba37d571b51fffcf51d0c5cdcf7d4c6"
+      },
+      "status": "PASS",
+      "write": false,
+      "consumerSearchStatus": "NOT_RUN"
+    }
+  ],
+  "remainingLimits": [
+    "E043 Q11 original publisher parent/leaf is unresolved and current2022 binding resolution is NOT_ASSERTED. The typed native proposal branch carries only the exact already reviewed ACTIVE PT/TPL.",
+    "Original crop and final-solution provenance limitations remain in each immutable native-reuse-limits document.",
+    "Stored remote registration, canonical consumer, four-slot derivation, and student deployment are separate root verification stages; this manifest makes no PASS claim for unexecuted stages."
+  ],
+  "remoteWriterReceipt": "NOT_YET_READ",
+  "canonicalConsumer": "NOT_RUN_BY_THIS_DRYRUN",
+  "studentDeployment": "NOT_RUN",
+  "codeAtManifestFinalization": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs",
+      "sha256": "98c416216dc754a1b5d144a81741adf2ccba62c487f1d4c7fadba0a107332c83"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-proposal-finalization.mjs",
+      "sha256": "633cb4c1b28325720821ba3f8f5037ea0a6749b6ed319c5bc3e13abf7e76a12d"
+    }
+  ],
+  "dryrunCodeScopeNote": "E038/Q13 used the existing renderer/native path before the Q11-only proposal adapter change. Q11 was then executed after that closed branch was added. The listed code hashes identify manifest-finalization bytes; they are not represented as one shared test-run SHA for all three invocations."
+}

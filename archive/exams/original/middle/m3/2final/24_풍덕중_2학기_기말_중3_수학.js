@@ -1115,3 +1115,8 @@ window.questionBank = [
     "decisiveStep": "대각의 두 원주각이 보는 호가 원 전체를 이룬다는 이유로 대각합180도를 설명하고 주어진130도를 뺀다."
   }
 ];
+
+// Reuse the immutable native review and independently finalized exact metadata application.
+(function () {
+  Object.assign(window.questionBank[22], {"templateKey":"TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES","courseKey":"M3-2"});
+})();

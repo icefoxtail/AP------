@@ -232,8 +232,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$n$각형의 대각선 수는\n$\\dfrac{n(n-3)}2$개이다.\n따라서\n$\\dfrac{n(n-3)}2=90$,\n$n^2-3n-180=0$이다.\n인수분해하면\n$(n-15)(n+12)=0$이다.\n다각형의 변의 수는 양수이므로 $n=15$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
-    "subUnit": "이차방정식의 활용",
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },

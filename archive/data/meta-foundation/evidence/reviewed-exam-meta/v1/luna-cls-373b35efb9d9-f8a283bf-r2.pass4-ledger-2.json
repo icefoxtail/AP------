@@ -1,0 +1,49 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:48:06.061+00:00",
+ "sourceArchiveFile": "original/high/h1/2final/23_금당고_2학기_기말_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 14,
+   "chosenFrom": "pass2",
+   "resolutionReason": "(a-2b-2c)/a=(-2a+b-2c)/b=(-2a-2b+c)/c의 공통값 k로 세 식을 더해 a+b+c=0인 경우와 a=b=c인 경우로 나눠 식의 값 -3, 6의 합 3을 구하는 대칭식 연립 문제이다.",
+   "choiceTableUsed": "H1-수학(상).json",
+   "rpmPath": {
+    "majorUnit": "방정식과 부등식",
+    "midUnit": "여러 가지 방정식",
+    "l3": "연립방정식",
+    "l4": "대칭식 활용"
+   },
+   "integrationPattern": "CASE_BRANCH"
+  },
+  {
+   "ordinal": 6,
+   "chosenFrom": "new",
+   "resolutionReason": "1/(1×2)+...+1/(9×10)을 1/k-1/(k+1)로 쪼개 중간 항을 소거해 9/10을 얻는 부분분수 변형이며 표에는 유리식 부분분수 항목이 없어 l4를 새로 제안한다.",
+   "choiceTableUsed": "H1-공통수학2.json",
+   "rpmPath": {
+    "majorUnit": "함수",
+    "midUnit": "유리함수",
+    "l3": "",
+    "l4": ""
+   },
+   "integrationPattern": "SEQUENTIAL",
+   "hold": "신규 제안: 유리함수 아래 유리식의 계산 및 부분분수 항목이 표에 없음.",
+   "proposedNew": {
+    "rpmPath.l3": {
+     "value": "유리식의 계산",
+     "label": "유리식의 사칙연산",
+     "parent": "함수 > 유리함수",
+     "why": "가장 가까운 '유리함수의 활용'은 식 결정·최대최소·교점이라 부분분수로 쪼개는 식 계산과 맞지 않는다."
+    },
+    "rpmPath.l4": {
+     "value": "부분분수 변형",
+     "label": "부분분수로 나누기",
+     "parent": "함수 > 유리함수 > 유리식의 계산",
+     "why": "가장 가까운 '식 결정'은 그래프 조건으로 식을 정하는 것이고, 이 문항은 1/(k(k+1))을 두 분수의 차로 바꾸는 것이다."
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "archive-independent-exact-template-finalization-review-v1",
+  "reviewer": "GPT_ROOT_C8F1B0BFB4FA",
+  "decision": "APPROVE_ADD_ONLY_EXACT_TEMPLATE_FINALIZATION",
+  "scope": "Only the named exact-template definition and the five identified existing native proposals. Existing native after.templateKey remains historical; no new full mathematical QA or automatic advanced approval is asserted.",
+  "reviewRequest": {
+    "path": "m3s2/.tmp/m3s2-release/inscribed-quadrilateral-type-finalization-review.json",
+    "sha256": "e51aa994458e76fd7ca7c17c09f7aa0ed38117357e9349491b16a305e93badaa"
+  },
+  "sourceCommit": "f4184db13387a42e74dde274753329a672fbefe7",
+  "globalRegistry": {
+    "commit": "8ed71e59c4731cd9da6209b15b2acd62cfcd65c3",
+    "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "sha256": "07f0cd405ec6ba572399d02bf41ab296cb8e34f7617c1c95dc23b5b416bfb7ab",
+    "activeProblemTypes": 433,
+    "activeTemplates": 998,
+    "allActiveDefinitionsAndAliasesSearched": true,
+    "exactExistingTemplateOrAliasFound": false,
+    "neighboringActiveKeys": [
+      "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+      "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER"
+    ],
+    "distinction": "CENTER_ARC concerns arc/central/inscribed-angle ratios; COMPOSITE requires a chain of multiple circle relationships; TANGENT_CHORD, SECTOR_MEASURE, DEFINITION_CLAIM_AUDIT and ARC_PERIMETER have other decisive operations. The five selected questions use opposite angles of one cyclic quadrilateral as the decisive operation."
+  },
+  "targetTemplateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+  "registryChange": {
+    "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+    "collection": "templates",
+    "match": {
+      "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES"
+    },
+    "before": null,
+    "after": {
+      "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "canonicalLabelKo": "원에 내접하는 사각형의 대각 관계",
+      "definition": "원에 내접하는 사각형의 대각의 합180도 또는 외각과 내대각이 같다는 관계로 미지각이나 각의 결합값을 정한다.",
+      "internalSkeleton": "대각 쌍을 정한다 → 보각식을 쓴다 → 목표 각 또는 결합값을 구한다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_7e22ca89dcf5c2f0233abf9095940d2d5d076efe87f6082910c62bbd768a4354",
+        "qid_v1_94efc9c51bf25d22e5ac9b1e3006705e72341f2652ad155375ece9e102123347",
+        "qid_v1_1c1c8ab990d5b4c5935d17b0acd0426564b75cd37bd1039b6a74ff81fae8d5d3",
+        "qid_v1_26ba5f84c88b65529515252ee9a59dea9045f235aa88303f93ef47b8c8808074",
+        "qid_v1_15868fb06caee7d7b9cbc5f6179f64550c398c130d0e327777407a9319a90a26"
+      ],
+      "supportingItemCount": 5,
+      "evidenceProvenance": [
+        {
+          "source": "M3_S2_REVIEWED_NEW_TEMPLATE_PROPOSAL_20261114",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "examId": "E005",
+          "proposalId": "B-E005-TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+          "supportingQuestionUids": [
+            "qid_v1_7e22ca89dcf5c2f0233abf9095940d2d5d076efe87f6082910c62bbd768a4354"
+          ]
+        },
+        {
+          "source": "M3_S2_REVIEWED_NEW_TEMPLATE_PROPOSAL_20261114",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "examId": "E023",
+          "proposalId": "B-E023-REUSE-TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+          "supportingQuestionUids": [
+            "qid_v1_94efc9c51bf25d22e5ac9b1e3006705e72341f2652ad155375ece9e102123347",
+            "qid_v1_1c1c8ab990d5b4c5935d17b0acd0426564b75cd37bd1039b6a74ff81fae8d5d3"
+          ]
+        },
+        {
+          "source": "M3_S2_REVIEWED_NEW_TEMPLATE_PROPOSAL_20261114",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "examId": "E017",
+          "proposalId": "B-E017-REUSE-TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+          "supportingQuestionUids": [
+            "qid_v1_26ba5f84c88b65529515252ee9a59dea9045f235aa88303f93ef47b8c8808074"
+          ]
+        },
+        {
+          "source": "M3_S2_REVIEWED_NEW_TEMPLATE_PROPOSAL_20261114",
+          "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+          "examId": "E035",
+          "proposalId": "B-E035-REUSE-1",
+          "supportingQuestionUids": [
+            "qid_v1_15868fb06caee7d7b9cbc5f6179f64550c398c130d0e327777407a9319a90a26"
+          ]
+        }
+      ]
+    }
+  },
+  "rows": [
+    {
+      "examId": "E005",
+      "ordinal": 2,
+      "questionUid": "qid_v1_7e22ca89dcf5c2f0233abf9095940d2d5d076efe87f6082910c62bbd768a4354",
+      "sourcePath": "archive/exams/original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+      "sourceBlobSha1": "7d32038189c13bf1ce57daff903dc9e1fd06d318",
+      "sourceSha256": "2e540de05e710c9c1991ec370061e96418cf774c69b9e1e7ab77e926a3c02538",
+      "questionSha256": "59803d2277fe0d6d51d2ebec57ed4446b6f7618f56f04a5020a5a204b444ad25",
+      "nativeReview": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E005.meta.json",
+        "sha256": "2ef9faa444bac6d0258d30691a40247caf94f728159dcedbb180b4e43d1a911b"
+      },
+      "imagePath": "archive/assets/images/25_신흥중_2학기_기말_중3_기출/q2.png",
+      "imageSha256": "a1b10cf2ba145949e41e46d3a56eaf1b716743457fd299eecd9fda70196f4754",
+      "imageViewedByRoot": true,
+      "decision": "EXACT_TEMPLATE_SUPPORTED",
+      "rationale": "The image shows opposite pairs (62°, x) and (82°, y). Two direct supplementary-angle equations give x=118°, y=98°, x−y=20°. This is the proposed exact skeleton."
+    },
+    {
+      "examId": "E023",
+      "ordinal": 5,
+      "questionUid": "qid_v1_94efc9c51bf25d22e5ac9b1e3006705e72341f2652ad155375ece9e102123347",
+      "sourcePath": "archive/exams/original/middle/m3/2final/23_순천여중_2학기_기말_중3_기출.js",
+      "sourceBlobSha1": "fff3a98ca3a542b4b524e2bca932e337735fff55",
+      "sourceSha256": "22a1635768bd83321607f37332160f59435f8719711070f1a208004f70149b4a",
+      "questionSha256": "988ffe0ba034efda46d25dd2990eeb1f9a3da1b55fe0f1ae9b0dcb2dbf7be6c3",
+      "nativeReview": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E023.meta.json",
+        "sha256": "eccccd6d85d264936ed6f7d5bff1e2779d6cb993ba471b090df04c09813fd375"
+      },
+      "imagePath": "archive/assets/images/23_순천여중_2학기_기말_중3_기출/q5.png",
+      "imageSha256": "83e22da34484ebb1240711fbdc9ba3aa86ea4298af6011219ea79fa64e212587",
+      "imageViewedByRoot": true,
+      "decision": "EXACT_TEMPLATE_SUPPORTED",
+      "rationale": "The triangle BCD supplies x=180°−30°−70°=80°. The decisive cyclic-quadrilateral relation gives y=180°−x=100°. The triangle angle sum is a preparatory step; this is not a chain of distinct circle theorems."
+    },
+    {
+      "examId": "E023",
+      "ordinal": 6,
+      "questionUid": "qid_v1_1c1c8ab990d5b4c5935d17b0acd0426564b75cd37bd1039b6a74ff81fae8d5d3",
+      "sourcePath": "archive/exams/original/middle/m3/2final/23_순천여중_2학기_기말_중3_기출.js",
+      "sourceBlobSha1": "fff3a98ca3a542b4b524e2bca932e337735fff55",
+      "sourceSha256": "22a1635768bd83321607f37332160f59435f8719711070f1a208004f70149b4a",
+      "questionSha256": "a978d73f4a2aae20fdadb6a57b23b13cc469393b3c6dd3f47f5816f502264a01",
+      "nativeReview": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E023.meta.json",
+        "sha256": "eccccd6d85d264936ed6f7d5bff1e2779d6cb993ba471b090df04c09813fd375"
+      },
+      "imagePath": "archive/assets/images/23_순천여중_2학기_기말_중3_기출/q6.png",
+      "imageSha256": "7eec918c8be4ccd56a4fe444852c1646e7042e60a0007d86bf5931185792dc78",
+      "imageViewedByRoot": true,
+      "decision": "EXACT_TEMPLATE_SUPPORTED",
+      "rationale": "The first diagram gives opposite-angle equations x+70°=180° and y+100°=180°. In the second, the exterior angles equal the opposite interior angles, giving x=95°, y=60°. Both diagrams implement the proposed definition."
+    },
+    {
+      "examId": "E017",
+      "ordinal": 23,
+      "questionUid": "qid_v1_26ba5f84c88b65529515252ee9a59dea9045f235aa88303f93ef47b8c8808074",
+      "sourcePath": "archive/exams/original/middle/m3/2final/24_풍덕중_2학기_기말_중3_수학.js",
+      "sourceBlobSha1": "66c4b936639266c2fe7209d86a9983c7ca05e74f",
+      "sourceSha256": "f8ce09df1943691c5bed1b9ea3a9c3c66096dbd2d4c05a67784b25d0e818a1d1",
+      "questionSha256": "a20391f05580175d635d2b12188304707dc188bf0c9740159b6e946e96ad8c83",
+      "nativeReview": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E017.meta.json",
+        "sha256": "bd0eca3b50372ffb1608829ff8b01a35f38d0e272008d62a3d8ba12be3d0c59d"
+      },
+      "imagePath": "archive/assets/images/24_풍덕중_2학기_기말_중3_수학/s04.png",
+      "imageSha256": "f12dd157c3fbae5b4d96a182119c73f80a6d827fd2b21bcda6074210e681d4e1",
+      "imageViewedByRoot": true,
+      "decision": "EXACT_TEMPLATE_SUPPORTED",
+      "rationale": "The stem explicitly states cyclic quadrilateral ABCD and angle B=130°. The requested proof uses the two opposite intercepted arcs, which sum to 360°, so opposite inscribed angles sum to 180° and D=50°. The scanned image is cropped on the left; the complete textual givens determine this relation independently of the crop."
+    },
+    {
+      "examId": "E035",
+      "ordinal": 3,
+      "questionUid": "qid_v1_15868fb06caee7d7b9cbc5f6179f64550c398c130d0e327777407a9319a90a26",
+      "sourcePath": "archive/exams/original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+      "sourceBlobSha1": "0868b01fa40d00480b2750d1a01451c671b446ab",
+      "sourceSha256": "1e80630b4c69523178411072284834282abfbc576eff6e38d0a3bbb2abcdc74f",
+      "questionSha256": "6c8caa434453fda553e40d28f116a2a067559fa4b7ecd219f52434a639162952",
+      "nativeReview": {
+        "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "path": "docs/operations/m3-s2-meta-full-20261114/exams/E035.meta.json",
+        "sha256": "09a2366601ddf6989f6dbf294de0819d39b126845e0bc633ac102a65fb049324"
+      },
+      "imagePath": "archive/assets/images/22_풍덕중_2학기_기말_중3_기출/q3.png",
+      "imageSha256": "d323282465cff777d7b5662304d646c6bdbd9fe031758b200b12779921c0cc70",
+      "imageViewedByRoot": true,
+      "decision": "EXACT_TEMPLATE_SUPPORTED",
+      "rationale": "The image shows angle B=120° and the right-angle mark at A. Opposite pairs yield x=60°, y=90°, exactly the proposed supplementary-angle skeleton."
+    }
+  ],
+  "conditions": [
+    "Official add-only registry writer and exact curriculum/context binding validation remain required.",
+    "RPM semantic placement and PT/template identity must remain independently checked; no one-to-one RPM-to-template inference.",
+    "Do not convert this narrow review into a claim of new full mathematical QA.",
+    "Do not widen the selected five UID scope or change source answers, solutions, historical levels or auxiliary classifications."
+  ]
+}

@@ -13,7 +13,8 @@ function readProjection() {
     const bytes = Buffer.from(fs.readFileSync(path.resolve(archiveDir, row.path), 'utf8').replace(/^\uFEFF/, '').replace(/\r\n/g, '\n'));
     const actualSha = crypto.createHash('sha256').update(bytes).digest('hex');
     if (actualSha !== row.sha256) throw new Error('Archive2 test input digest mismatch: ' + row.path);
-    resources[row.path] = JSON.parse(bytes.toString('utf8'));
+    // Digest-only source/renderer evidence is part of the commitment, not a JSON resolver resource.
+    if (row.path.endsWith('.json')) resources[row.path] = JSON.parse(bytes.toString('utf8'));
     files[row.path] = { sha256: row.sha256 };
   }
   const sorted = manifest.files.map(row => ({ path: row.path, sha256: row.sha256.toLowerCase() }))

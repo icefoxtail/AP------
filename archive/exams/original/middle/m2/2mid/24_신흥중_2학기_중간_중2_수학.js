@@ -807,9 +807,6 @@ window.questionBank=[
   },
   {
     "id": 19,
-    "solutionImageSize": "full",
-    "solutionImageCaption": "같은 호 AC를 보는 중심각은 원주각의 두 배이다. 따라서 ∠AOC=100°이다.",
-    "solutionImageAlt": "삼각형 ABC에서 B의 각은 50도이다. 외심 O에서 A와 C로 선을 이었다. 그 사이의 중심각을 표시했다. 원주각 B와 중심각 AOC를 청록색으로 표시하고 호 AC를 굵게 그렸다.",
     "imageSize": "tall",
     "imageAlt": "삼각형 ABC에서 B의 각은 50도이다. 외심 O에서 A와 C로 선을 이었다. 그 사이의 중심각을 표시했다.",
     "level": "중",
@@ -836,7 +833,7 @@ window.questionBank=[
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q19-solution-visual-v2.svg",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q19-solution.svg",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "crossConceptKeys": [],

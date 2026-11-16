@@ -15,6 +15,7 @@ export const NATIVE_REQUEST_SCHEMA = 'archive-reviewed-exam-meta-register-reques
 export const DIFFICULTY_REQUEST_SCHEMA = 'archive-difficulty5-register-request-v1';
 const DIFFICULTY_CORRECTION_SCHEMA = 'archive-difficulty5-reviewed-correction-v1';
 export const AUDIT_PRESERVATION_SCHEMA = 'archive-native-audit-preservation-v1';
+export const AUDIT_SOURCE_PRESERVATION_SCHEMA = 'archive-native-audit-source-preservation-v1';
 export const BASIC_PRESERVATION_SCHEMA = 'archive-basic-scope-current-source-preservation-v1';
 export const NATIVE_BASIC_HOLD_SCHEMA = 'archive-basic-native-source-hold-preservation-v1';
 export const NATIVE_BASIC_PARENT_SCHEMA = 'archive-reviewed-native-basic-parent-v1';
@@ -82,12 +83,12 @@ function parsed(result) {
 
 function selectDifficulty(root, file, request, headSha) {
   const payload = request.gemini, correction = request.reviewedCorrection;
-  const ordinary = correction === undefined;
+  const ordinary = !Object.hasOwn(request, 'reviewedCorrection');
   if (payload?.schemaVersion !== 'v1' || !ordinary && (correction?.schemaVersion !== DIFFICULTY_CORRECTION_SCHEMA
       || typeof correction.approvalRef !== 'string' || !correction.approvalRef.trim())) fail('DIFFICULTY_APPROVAL');
   // Ordinary requests use the existing registrar's payload ID, including Korean.
   // It identifies ratings only; it never becomes a native approval receipt path.
-  if (ordinary ? typeof payload.requestId !== 'string' || !payload.requestId.trim() || /[\r\n\0]/.test(payload.requestId)
+  if (ordinary ? typeof payload.requestId !== 'string' || !payload.requestId.trim() || /[\x00-\x1f\x7f]/.test(payload.requestId)
       : !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(payload.requestId || '')) fail('REQUEST_ID');
   if (!Array.isArray(payload.items) || !payload.items.length) fail('QUESTION_COUNT');
   const selectedItems = payload.items.map(item => ({ questionUid: item?.questionUid, sourceOrdinal: item?.ordinal }));
@@ -175,6 +176,33 @@ export function auditPreservationDependency(request, file) {
       || spec.requestPath !== file)) fail('AUDIT_DEPENDENCY_SCOPE');
   if (!audit && spec?.difficultyRequestRef !== undefined) fail('AUDIT_DEPENDENCY_SCOPE');
   return audit ? { schemaVersion: AUDIT_PRESERVATION_SCHEMA, difficultyRequestRef: spec.difficultyRequestRef } : undefined;
+}
+
+// This opt-in preserves a proper subset of an immutable FULL audit after only
+// disjoint source metadata changes. It has no D5 dependency or new approval.
+// The official registrar still replays the FULL authority, current selected
+// state, whole questions, renderer bytes and typed issued sidecar.
+function auditSourcePreservationDescriptor(request, file) {
+  const spec = request.approval?.sourceRebind;
+  if (spec?.schemaVersion !== AUDIT_SOURCE_PRESERVATION_SCHEMA) return undefined;
+  const ref = spec.priorReceiptRef;
+  if (request.schemaVersion !== NATIVE_REQUEST_SCHEMA || request.scope !== 'PARTIAL_UIDS'
+      || request.registrationMode !== undefined || request.approval.type !== 'META_PIPELINE_AUDIT'
+      || request.approval.metadataReviewed !== true || typeof request.approval.approvedBy !== 'string'
+      || !request.approval.approvedBy.trim() || !Array.isArray(request.registryChanges) || request.registryChanges.length
+      || !objectKeys(spec, ['schemaVersion', 'requestPath', 'priorCommit', 'priorReceiptRef'])
+      || spec.requestPath !== file || !/^[a-f0-9]{40}$/.test(spec.priorCommit || '')
+      || !objectKeys(ref, ['path', 'sha256']) || typeof ref.path !== 'string'
+      || !ref.path.startsWith(RECEIPTS) || ref.path.slice(RECEIPTS.length).includes('/')
+      || !ref.path.endsWith('.json') || !/^[a-f0-9]{64}$/.test(ref.sha256 || '')
+      || !Array.isArray(request.items) || !request.items.length || request.items.length >= request.expectedQuestionCount
+      || request.items.some(item => !emptyObject(item.before) || !emptyObject(item.after)
+        || Object.keys(item).some(key => !['questionUid', 'sourceOrdinal', 'before', 'after', 'reason', 'evidenceRefs'].includes(key))
+        || typeof item.reason !== 'string' || !item.reason.trim()
+        || !item.evidenceRefs?.some(evidence => eq(evidence, ref)))
+      || !request.approval.evidenceRefs?.some(evidence => eq(evidence, ref))) fail('AUDIT_SOURCE_PRESERVATION_SCOPE');
+  safe('/', ref.path);
+  return { schemaVersion: spec.schemaVersion, priorCommit: spec.priorCommit, priorReceiptRef: { ...ref } };
 }
 
 const REGISTRY_DEPENDENCY_SCHEMA = 'archive-native-active-binding-dependency-v1';
@@ -566,23 +594,118 @@ export function selectPendingNativeRequests({ root, headSha }) {
   return selectFixedNativeRequests({ root, headSha, files: pendingNativeRequestPaths({ root, headSha }), rejectUnsupported: true });
 }
 
+// A source-only FINAL_QA preservation does not re-author the RPM crosswalk
+// recorded by its issued receipt. Permit only that historical RPM reference,
+// with its exact published receipt/cohort and unchanged current RPM records.
+// Other evidence still has to equal HEAD. The official registrar, Native and
+// Consumer checks remain responsible for approval and whole-source continuity.
+function historicalPreservedRpmEvidence(root, headSha, context, item, currentRef, cache) {
+  const { request, priorRef, receipt } = context;
+  const reject = suffix => fail(`PRESERVED_RPM_HISTORY_${suffix}`);
+  if (!partialFinalQaPreservation(request)
+      || !/^archive\/data\/meta-foundation\/crosswalks\/rpm-primary-v1\.0\/middle[123]\.json$/.test(item.path || '')
+      || !eq(request.approval.sourceRebind.priorReceiptRef, priorRef)) return null;
+  const count = request.items.length;
+  if (receipt.schemaVersion !== 'archive-reviewed-exam-meta-registration-v2'
+      || receipt.metadataRegistrationStatus !== 'REGISTERED' || receipt.approval?.type !== 'FINAL_QA'
+      || receipt.approval.metadataReviewed !== true || !String(receipt.approval.approvedBy || '').trim()
+      || priorRef.path !== `${RECEIPTS}${receipt.requestId}.json`
+      || receipt.examUid !== request.examUid || receipt.sourceArchiveFile !== request.sourceArchiveFile
+      || receipt.scope !== 'PARTIAL_UIDS' || receipt.totalQuestions !== count || receipt.partialUidCount !== count
+      || receipt.expectedQuestionCount !== request.expectedQuestionCount || !/^[a-f0-9]{64}$/.test(receipt.requestSha256 || '')
+      || !/^[a-f0-9]{40}$/.test(receipt.sourceBlobSha1 || '') || !/^[a-f0-9]{64}$/.test(receipt.sourceRawSha256 || '')
+      || receipt.sourceBlobSha1 === request.expectedSourceBlobSha1
+      || ![receipt.appliedRecords, receipt.appliedIdentityRecords, receipt.runtimeRecords, receipt.rpmPrimaryBindings]
+        .every(rows => Array.isArray(rows) && rows.length === count && new Set(rows.map(r => r.questionUid)).size === count))
+    reject('PRIOR_SCOPE');
+  if (sha(gitBytes(root, receipt.sourceBlobSha1)) !== receipt.sourceRawSha256) reject('PRIOR_SOURCE');
+  const runtimePaths = (receipt.outputDigests || []).filter(row =>
+    /^archive\/data\/meta-foundation\/runtime\/[a-z0-9_-]+\.json$/.test(row.path || '')).map(row => row.path);
+  if (runtimePaths.length !== 1) reject('RUNTIME_SCOPE');
+  const metadata = fixedJson(root, headSha, METADATA, cache), identity = fixedJson(root, headSha, 'archive/data/question_identity_map.json', cache);
+  const runtime = fixedJson(root, headSha, runtimePaths[0], cache);
+  if (runtime.value?.status !== 'ACTIVE' || runtime.value.generatedFrom?.[`reviewedExam_${receipt.requestId}`] !== priorRef.path)
+    reject('RUNTIME_BINDING');
+  for (const selected of request.items) {
+    const uid = selected.questionUid, previous = oneUid(receipt.appliedRecords, uid);
+    const oldIdentity = oneUid(receipt.appliedIdentityRecords, uid), oldRuntime = oneUid(receipt.runtimeRecords, uid);
+    const binding = oneUid(receipt.rpmPrimaryBindings, uid);
+    if (!previous || !oldIdentity || !oldRuntime || !binding
+        || !eq(previous, oneUid(metadata.value.records, uid)) || !eq(oldIdentity, oneUid(identity.value.records, uid))
+        || !eq(oldRuntime, oneUid(runtime.value.records, uid)) || previous.metadataApprovalType !== 'FINAL_QA'
+        || previous.metadataStatus !== 'approved_semantic_review' || previous.metaFoundationStatus !== 'ACTIVE'
+        || previous.defaultSelectable !== true || !previous.approvalEvidence?.includes(priorRef.path)
+        || [previous, oldIdentity, oldRuntime].some(row => row.sourceArchiveFile !== request.sourceArchiveFile
+          || row.sourceOrdinal !== selected.sourceOrdinal) || binding.sourceOrdinal !== selected.sourceOrdinal
+        || binding.recordId !== previous.rpmPrimaryId || binding.authorityUse !== 'RPM_PATH_PROVENANCE_ONLY'
+        || binding.selectsPtTpl !== false || !/^[A-Za-z0-9_-]+$/.test(binding.recordId || '')) reject('EXISTING_APPROVAL');
+  }
+  const bindings = receipt.rpmPrimaryBindings.filter(binding => eq(binding.crosswalkRef, item));
+  if (!bindings.length) reject('REFERENCE_NOT_ISSUED');
+  // A commit touching this exact receipt must be a HEAD ancestor and must bind
+  // both its current immutable bytes and the historical crosswalk bytes.
+  const history = spawnSync('git', ['log', '--format=%H', '--max-count=64', headSha, '--', priorRef.path],
+    { cwd: root, encoding: 'utf8', timeout: 10000, maxBuffer: 64 * 1024, env: { ...process.env, GIT_NO_LAZY_FETCH: '1' } });
+  if (history.error || history.status !== 0) reject('GIT_HISTORY');
+  let historical;
+  for (const commit of history.stdout.trim().split(/\s+/).filter(Boolean)) {
+    if (!/^[a-f0-9]{40}$/.test(commit)) reject('GIT_HISTORY');
+    try {
+      if (sha(gitBytes(root, `${commit}:${priorRef.path}`)) !== priorRef.sha256) continue;
+      const bytes = gitBytes(root, `${commit}:${item.path}`);
+      if (sha(bytes) !== item.sha256) continue;
+      historical = { commit, bytes }; break;
+    } catch { /* Missing or differently issued history cannot authorize reuse. */ }
+  }
+  if (!historical) reject('IMMUTABLE_REFERENCE');
+  let before, current;
+  try { before = JSON.parse(historical.bytes); current = JSON.parse(gitBytes(root, `${headSha}:${item.path}`)); }
+  catch { reject('CROSSWALK_JSON'); }
+  if ([before, current].some(doc => doc.schemaVersion !== 'rpm-primary-active-crosswalk-v1'
+      || doc.status !== 'ACTIVE_REFERENCE' || !Array.isArray(doc.records)
+      || doc.records.some(row => typeof row?.id !== 'string' || !row.id)
+      || new Set(doc.records.map(row => row.id)).size !== doc.records.length)
+      || before.grade !== current.grade || item.path !== `archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle${String(before.grade).slice(1)}.json`)
+    reject('CROSSWALK_SCOPE');
+  const selectedRecords = [];
+  for (const binding of bindings) {
+    const oldRows = before.records.filter(row => row.id === binding.recordId), currentRows = current.records.filter(row => row.id === binding.recordId);
+    if (oldRows.length !== 1 || currentRows.length !== 1 || !eq(oldRows[0], currentRows[0])
+        || oldRows[0].curriculum !== binding.curriculum || oldRows[0].scope !== binding.scope
+        || !eq(oldRows[0].rpmPath, binding.rpmPath)) reject('SELECTED_RECORD_CHANGED');
+    selectedRecords.push({ questionUid: binding.questionUid, sourceOrdinal: binding.sourceOrdinal,
+      recordId: binding.recordId, recordSha256: sha(JSON.stringify(oldRows[0])) });
+  }
+  return { priorReceiptRef: priorRef, historicalRef: { ...item, commit: historical.commit,
+    gitBlobSha1: crypto.createHash('sha1').update(`blob ${historical.bytes.length}\0`).update(historical.bytes).digest('hex') },
+    currentRef, selectedRecords,
+    baselineDigests: { metadata: metadata.sha256, identity: identity.sha256, runtime: runtime.sha256 } };
+}
+
 // Preserving an issued native approval replays its complete ancestor receipt.
 // Include that receipt's explicit SHA-bound approval inputs in the same fixed
 // manifest, so the independent shadow receives the documents too. This stages
 // inputs only; the official registrar still authenticates every approval.
-function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef } = {}) {
-  const refs = new Map(), active = new Set();
-  const visit = item => {
+function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, auditSourceAncestor, preservationRequest, historicalRpmEvidence = [] } = {}) {
+  const refs = new Map(), active = new Set(), historyCache = new Map();
+  const visit = (item, context = null) => {
     if (!/^[a-f0-9]{64}$/.test(item?.sha256 || '')) fail('EVIDENCE_SHA');
     safe(root, item.path);
     if (active.has(item.path)) fail(`EVIDENCE_CYCLE:${item.path}`);
     const known = refs.get(item.path);
     if (known) {
-      if (known.sha256 !== item.sha256) fail(`EVIDENCE_DRIFT:${item.path}`);
+      if (known.sha256 !== item.sha256 && !(context && historicalRpmEvidence.some(row =>
+        eq(row.priorReceiptRef, context.priorRef) && eq(row.historicalRef.path, item.path) && row.historicalRef.sha256 === item.sha256)))
+        fail(`EVIDENCE_DRIFT:${item.path}`);
       return;
     }
     const ref = fileRef(root, item.path);
-    if (ref.sha256 !== item.sha256) fail(`EVIDENCE_DRIFT:${ref.path}`);
+    if (ref.sha256 !== item.sha256) {
+      const historical = context && historicalPreservedRpmEvidence(root, headSha, context, item, ref, historyCache);
+      if (!historical) fail(`EVIDENCE_DRIFT:${ref.path}`);
+      if (sha(gitBytes(root, `${headSha}:${ref.path}`)) !== ref.sha256) fail(`EVIDENCE_NOT_FIXED:${ref.path}`);
+      refs.set(ref.path, ref); historicalRpmEvidence.push(historical); return;
+    }
     if (sha(gitBytes(root, `${headSha}:${ref.path}`)) !== ref.sha256) fail(`EVIDENCE_NOT_FIXED:${ref.path}`);
     refs.set(ref.path, ref);
     const nativeReceipt = ref.path.startsWith(RECEIPTS)
@@ -591,6 +714,31 @@ function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef } = {})
     let receipt;
     try { receipt = JSON.parse(fs.readFileSync(safe(root, ref.path), 'utf8')); }
     catch { fail(`EVIDENCE_JSON:${ref.path}`); }
+    if (auditSourceAncestor && eq(auditSourceAncestor.priorReceiptRef, { path: ref.path, sha256: ref.sha256 })) {
+      // Only this typed source-only audit uses a historical FULL authority.
+      // Its registrar replays the entire prior graph from immutable Git,
+      // including consumed inbox snapshots. Those historical bytes must not
+      // be substituted with today's source or canonical files in the shadow.
+      let priorBytes;
+      try { priorBytes = gitBytes(root, `${auditSourceAncestor.priorCommit}:${ref.path}`); }
+      catch { fail('AUDIT_SOURCE_PRIOR_GIT'); }
+      if (sha(priorBytes) !== ref.sha256) fail('AUDIT_SOURCE_PRIOR_GIT');
+      const priorRequest = receipt?.auditPreservation?.requestSnapshot;
+      if (receipt?.schemaVersion !== 'archive-reviewed-exam-meta-registration-v2'
+          || receipt.metadataRegistrationStatus !== 'REGISTERED' || receipt.scope !== undefined
+          || receipt.partialUidCount !== undefined || receipt.registrationMode !== undefined
+          || receipt.approval?.type !== 'META_PIPELINE_AUDIT'
+          || receipt.approval.sourceRebind?.schemaVersion !== AUDIT_PRESERVATION_SCHEMA
+          || receipt.requestId !== path.posix.basename(ref.path, '.json')
+          || receipt.sourceArchiveFile !== auditSourceAncestor.sourceArchiveFile
+          || receipt.examUid !== auditSourceAncestor.examUid || receipt.totalQuestions !== auditSourceAncestor.expectedQuestionCount
+          || receipt.newMetadataApprovals !== 0 || receipt.preservedMetadataApprovals !== receipt.totalQuestions
+          || priorRequest?.schemaVersion !== NATIVE_REQUEST_SCHEMA || priorRequest.scope !== undefined
+          || priorRequest.requestId !== receipt.requestId || priorRequest.sourceArchiveFile !== receipt.sourceArchiveFile
+          || priorRequest.expectedQuestionCount !== receipt.totalQuestions || priorRequest.approval?.type !== 'META_PIPELINE_AUDIT'
+          || !Array.isArray(priorRequest.items) || priorRequest.items.length !== receipt.totalQuestions) fail('AUDIT_SOURCE_PRIOR_FULL');
+      return;
+    }
     if (receipt?.schemaVersion !== 'archive-reviewed-exam-meta-registration-v2') return;
     const nestedRefs = receipt.approval?.evidenceRefs;
     // An authority withdrawal binds its unsupported original receipt as the
@@ -601,7 +749,10 @@ function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef } = {})
     if (withdrawnOriginal && (nestedRefs === undefined || Array.isArray(nestedRefs) && !nestedRefs.length)) return;
     if (!Array.isArray(nestedRefs) || !nestedRefs.length) fail('EVIDENCE_REQUIRED');
     active.add(ref.path);
-    for (const nested of nestedRefs) visit(nested);
+    const priorRef = preservationRequest?.approval?.sourceRebind?.priorReceiptRef;
+    const priorContext = partialFinalQaPreservation(preservationRequest) && eq(priorRef, { path: ref.path, sha256: ref.sha256 })
+      ? { request: preservationRequest, priorRef, receipt } : null;
+    for (const nested of nestedRefs) visit(nested, priorContext);
     active.delete(ref.path);
   };
   for (const list of lists) {
@@ -633,11 +784,12 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       continue;
     }
     const sourceRebind = auditPreservationDependency(request, file);
+    const auditSourcePreservation = auditSourcePreservationDescriptor(request, file);
     const registryDependency = nativeRegistryDependencyDescriptor(request);
     const preservation = request.approval?.sourceRebind !== undefined;
     if (preservation && (correction || request.registrationMode !== undefined ||
         !request.approval.sourceRebind || typeof request.approval.sourceRebind !== 'object' || Array.isArray(request.approval.sourceRebind) ||
-        !(sourceRebind || request.approval.type === 'FINAL_QA' && request.approval.sourceRebind.schemaVersion === undefined))) fail('PRESERVATION_SCOPE');
+        !(sourceRebind || auditSourcePreservation || request.approval.type === 'FINAL_QA' && request.approval.sourceRebind.schemaVersion === undefined))) fail('PRESERVATION_SCOPE');
     const partial = !correction && request.scope === 'PARTIAL_UIDS';
     if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');
     if (request.registrationMode !== undefined && (correction || !partial ||
@@ -654,10 +806,14 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
         || new Set(selectedItems.map(i => i.questionUid)).size !== selectedItems.length
         || new Set(selectedItems.map(i => i.sourceOrdinal)).size !== selectedItems.length) fail('SELECTED_UID_SCOPE');
     selectedItems.sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
+    const historicalRpmEvidence = [];
     const evidence = fixedNativeEvidence(root, headSha, [request.approval?.evidenceRefs, ...(request.items || []).map(i => i.evidenceRefs),
       ...(request.registryChanges || []).map(i => i.evidenceRefs),
       ...(correction ? [[request.difficultyEvidence]] : [])],
-      { withdrawnReceiptRef: authorityCorrection ? request.authorityCorrection?.originalReceiptRef : undefined });
+      { preservationRequest: request, historicalRpmEvidence,
+        withdrawnReceiptRef: authorityCorrection ? request.authorityCorrection?.originalReceiptRef : undefined,
+        auditSourceAncestor: auditSourcePreservation ? { ...auditSourcePreservation,
+          sourceArchiveFile: request.sourceArchiveFile, examUid: request.examUid, expectedQuestionCount: request.expectedQuestionCount } : undefined });
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
     const source = fileRef(root, sourcePath), blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
     if (blobSha1 !== request.expectedSourceBlobSha1 || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
@@ -676,6 +832,8 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(partial ? { scope: request.scope } : {}),
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
+      ...(auditSourcePreservation ? { auditSourcePreservation } : {}),
+      ...(historicalRpmEvidence.length ? { historicalRpmEvidence } : {}),
       ...(registryDependency ? { registryDependency } : {}),
       ...(rendererPreservation ? { rendererPreservation } : {}),
       ...(authorityCorrection ? { kind: 'native-authority-withdrawal' } : basicPreservation ? { basicPreservation, kind: basicPreservation.newBasicParent ? 'basic-parent-registration' : 'basic-approval-preservation' }
