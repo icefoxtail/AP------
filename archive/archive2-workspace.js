@@ -585,8 +585,7 @@
     previewOutputEnvelope = null,
     candidateRecords = [],
     replacementIndex = -1,
-    classRows = [],
-    rosterRows = [];
+    classRows = [];
   function session() {
     try {
       return JSON.parse(localStorage.getItem("APMATH_SESSION") || "null");
@@ -3168,9 +3167,10 @@
     const rows = kids.filter(child => child.count > 0 || state.scopes.includes(child.key) ||
       !["none", "other"].includes(child.childKind)).map(child => {
       const on = parentOn || state.scopes.includes(child.key);
-      const zero = child.count === 0 && !on;
+      const zero = child.count === 0 && !state.scopes.includes(child.key);
       const cls = `scope-item scope-sub${parentOn ? " is-implied" : ""}${zero ? " is-zero" : ""}`;
-      const off = state.sealed || parentOn || zero ? "disabled" : "";
+      // 대단원이 체크된 채로도 중단원 하나를 풀 수 있다(나머지 중단원이 그대로 남는다).
+      const off = state.sealed || zero ? "disabled" : "";
       return `<div class="${cls}" data-scope-sub="${esc(child.key)}"><label class="check"><input type="checkbox" data-scope="${esc(child.key)}" ${on ? "checked" : ""} ${off}><span class="scope-name">${esc(child.label)}${parentOn ? ' <span class="scope-hint">대단원에 포함됨</span>' : ""}</span></label><small>${child.count}문항</small></div>`;
     }).join("");
     return `<div class="scope-unit is-open">${head}<div class="scope-subs" data-scope-subs="${esc(s.key)}">${rows}</div></div>`;
@@ -3289,7 +3289,7 @@
       : record.L4);
   function renderDerivedComposition() {
     const sourceTitle = state.derivationSource?.parentDisplayName || "저장한 시험지";
-    return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>원본 저장 시험지의 고정된 범위</h2></div><p class="muted">원본 ${esc(sourceTitle)}의 범위와 ${state.selected.length}문항으로 새 문제지를 만들었습니다. 문항 교체와 출력 설정을 바꿔 새 시험지로 저장할 수 있습니다.</p><p class="muted">바꾸지 않은 문항은 저장 당시 내용 그대로 사용합니다. 원래 저장한 시험지는 바뀌지 않습니다.</p></section>`;
+    return `<section class="compose-composition cz-derived"><h2 class="cz-derived-title">원본 저장 시험지의 고정된 범위</h2><p class="muted">원본 ${esc(sourceTitle)}의 범위와 ${state.selected.length}문항으로 새 문제지를 만들었습니다. 문항 교체와 출력 설정을 바꿔 새 시험지로 저장할 수 있습니다.</p><p class="muted">바꾸지 않은 문항은 저장 당시 내용 그대로 사용합니다. 원래 저장한 시험지는 바뀌지 않습니다.</p></section>`;
   }
   // ---- 문제지 만들기 한 화면 (2026-11-10) -----------------------------------------------------------------
   // 왼쪽은 조건(renderPrimary·renderScopes·renderComposition), 오른쪽은 결과와 마무리(renderResult). 로직(선택 엔진·저장·
@@ -3743,8 +3743,8 @@
           a.subjectLabel, otherGrade].filter(Boolean);
       const lifecycle = [
         a.isCancelled ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
-        a.replacementAssignmentId ? `<span class="history-state-chip">대체됨 · ${esc(a.replacementAssignmentId)}</span>` : "",
-        a.replacesAssignmentId ? `<span class="history-state-chip">대체본 · 원본 ${esc(a.replacesAssignmentId)}</span>` : "",
+        a.replacementAssignmentId ? `<span class="history-state-chip">대체됨</span>` : "",
+        a.replacesAssignmentId ? `<span class="history-state-chip">다른 출제를 대체한 출제</span>` : "",
         a.isReviewOnly ? `<span class="history-state-chip review-only">열람 전용${a.reviewOnlyCount === null ? "" : ` · ${a.reviewOnlyCount}명`}</span>` : "",
       ].filter(Boolean).join("");
       const pdfLabel = a.pdfReady ? "" : a.pdfStatus === "failed"
@@ -4034,8 +4034,8 @@
     const summary = state.recentRows.find((row) => row.id === assignmentId);
     const lifecycle = [
       a.cancelled_at ? '<span class="history-state-chip cancelled">취소됨</span>' : "",
-      summary?.replacementAssignmentId ? `<span class="history-state-chip">대체됨 · ${esc(summary.replacementAssignmentId)}</span>` : "",
-      summary?.replacesAssignmentId ? `<span class="history-state-chip">대체본 · 원본 ${esc(summary.replacesAssignmentId)}</span>` : "",
+      summary?.replacementAssignmentId ? `<span class="history-state-chip">대체됨</span>` : "",
+      summary?.replacesAssignmentId ? `<span class="history-state-chip">다른 출제를 대체한 출제</span>` : "",
       (summary?.reviewOnlyCount || 0) > 0 ? `<span class="history-state-chip review-only">열람 전용 · ${summary.reviewOnlyCount}명</span>` : "",
     ].filter(Boolean).join("");
     const studentStatus = (student) => student.session_id
@@ -4247,10 +4247,10 @@
       fmt = (n) => Number(n || 0).toLocaleString(),
       composeScope = state.healthComposeScope,
       rows = healthExclusionRows(h.exclusionReasons);
-    return `<div class="intro"><div><h1>데이터 상태</h1><p class="muted">전체 자료, 자동출제 승인 범위, 문제지 만들기 범위를 구분합니다. 제외 사유는 서로 중복될 수 있습니다.</p></div>${button("health-export", "진단 JSON 내보내기")}</div><div class="metrics">${[
+    return `<div class="intro"><div><h1>데이터 상태</h1><p class="muted">전체 자료, 검수까지 끝난 범위, 문제지 만들기 범위를 구분합니다. 제외 사유는 서로 중복될 수 있습니다.</p></div>${button("health-export", "진단 JSON 내보내기")}</div><div class="metrics">${[
       ["시험", h.exams],
       ["전체 문항", h.questions],
-      ["자동출제 승인", h.automatic],
+      ["검수까지 끝난 문항", h.automatic],
       ["문제지 만들기 범위에 포함", composeScope],
       ...(state.healthUnified
         ? [["단원에 배치", state.healthUnified.unit], ["단원 미분류로 제공", state.healthUnified.unclassified], ["학년 근거 없어 제외", state.healthUnified.unplaced]]
@@ -4263,14 +4263,14 @@
       )
       .join(
         "",
-      )}</div><section class="panel"><h2>자동출제 승인 제외 근거</h2><table class="health-table"><tbody>${rows.length
+      )}</div><section class="panel"><h2>검수까지 끝난 문항에서 빠진 이유</h2><table class="health-table"><tbody>${rows.length
       ? rows
           .map(
             ({ code, count, label }) =>
               `<tr><th>${label ? `${esc(label)} <span class="muted">(${esc(code)})</span>` : esc(code)}</th><td>${fmt(count)}${total ? ` <span class="muted">· ${((count / total) * 100).toFixed(1)}%</span>` : ""}</td></tr>`,
           )
           .join("")
-      : '<tr><th>제외 사유 없음</th><td>0</td></tr>'}</tbody></table><div class="callout">자동출제 승인은 단원 분류와 검수까지 모두 승인된 문항입니다(엄격한 승인 지표이며 사용 조건이 아닙니다). 문제지 만들기는 원본 식별·무결성이 확인된 모든 문항을 제공합니다. 원본에 대한 검수·품질 표시(보류 표시 등)와 메타데이터 검수 대기는 사용을 막지 않고 별도 검수 라인에서 처리합니다. 미분류는 보류와 다른 상태이며 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않습니다.</div><div class="callout">${state.healthUnified ? `교육과정 통합 표시: 문제지 만들기는 2015·2022 개정 문항을 2022 개정 단원 기준 하나의 목록으로 묶어 보여줍니다. 묶음은 표시와 선택에만 적용하며 문항의 원본 교육과정·키·메타데이터는 바꾸지 않습니다. 원본 교육과정은 세부 조건에서 고를 수 있습니다. 단원 근거가 없는 문항은 학년·과목별 ‘단원 미분류’로 제공합니다.${Object.entries(state.healthUnified.unplacedReasons).map(([code, count]) => ` ${esc(UNPLACED_REASON_LABELS[code] || code)} ${fmt(count)}개는 학년이 없어 학년별 목록에 넣지 못했습니다.`).join("")} ` : ""}교육과정 간 연결 검수(엄격한 승인 지표): 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a> · <a href="data/archive2-unified-unit-policy.json" target="_blank">통합 표시 정책</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>문항 목록 버전 ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>${renderUnlinkedSimilar()}`;
+      : '<tr><th>제외 사유 없음</th><td>0</td></tr>'}</tbody></table><div class="callout">검수까지 끝난 문항은 단원 분류와 검수가 모두 끝난 문항입니다(엄격한 기준이며 사용 조건이 아닙니다). 문제지 만들기는 원본 식별·무결성이 확인된 모든 문항을 제공합니다. 원본에 대한 검수·품질 표시(보류 표시 등)와 메타데이터 검수 대기는 사용을 막지 않고 별도 검수 라인에서 처리합니다. 미분류는 보류와 다른 상태이며 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않습니다.</div><div class="callout">${state.healthUnified ? `교육과정 통합 표시: 문제지 만들기는 2015·2022 개정 문항을 2022 개정 단원 기준 하나의 목록으로 묶어 보여줍니다. 묶음은 표시와 선택에만 적용하며 문항의 원본 교육과정·키·메타데이터는 바꾸지 않습니다. 원본 교육과정은 세부 조건에서 고를 수 있습니다. 단원 근거가 없는 문항은 학년·과목별 ‘단원 미분류’로 제공합니다.${Object.entries(state.healthUnified.unplacedReasons).map(([code, count]) => ` ${esc(UNPLACED_REASON_LABELS[code] || code)} ${fmt(count)}개는 학년이 없어 학년별 목록에 넣지 못했습니다.`).join("")} ` : ""}교육과정 간 연결 검수(엄격한 승인 지표): 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a> · <a href="data/archive2-unified-unit-policy.json" target="_blank">통합 표시 정책</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>문항 목록 버전 ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>${renderUnlinkedSimilar()}`;
   }
   // Similar sets whose original exam could not be told for certain (see archive2-similar.js).
   function renderUnlinkedSimilar() {
@@ -5049,70 +5049,6 @@
       popup?.close();
       throw e;
     }
-  }
-  async function targets() {
-    if (state.receipts.length)
-      throw new Error(
-        "확정 회차의 대상은 변경할 수 없습니다. 다음 회차를 시작하세요.",
-      );
-    try {
-      const data = await api("/qr-classes");
-      classRows = data.classes || data.data || [];
-      if (!Array.isArray(classRows)) classRows = [];
-      rosterRequestSeq++;
-      rosterLoading = false;
-      rosterRows = [];
-      showDialog(
-        "출제 대상 학생",
-        `<label>반<select id="target-class" aria-label="반">${options(
-          classRows.map((r) => ({
-            value: r.id,
-            label: r.name || r.class_name || r.id,
-          })),
-          state.classId,
-          "반 선택",
-        )}</select></label><div id="target-roster"><p class="muted">반을 선택하면 현재 명단을 불러옵니다.</p></div>${button("target-apply", "선택한 학생 적용", 'class="primary"')}`,
-      );
-      if (state.classId) await loadRoster(state.classId);
-    } catch (e) {
-      showDialog(
-        "교사 로그인",
-        `<p>${esc(teacherErrorMessage(e))}</p><a href="../apmath/" target="_blank" rel="noopener">선생님 로그인</a><p class="muted">로그인 후 이 창으로 돌아와 학생 선택을 다시 누르세요.</p>`,
-      );
-    }
-  }
-  // Only the newest class selection may fill the roster; a slow answer for an earlier class
-  // must never show (or apply) that class's students under the class now selected.
-  let rosterRequestSeq = 0;
-  let rosterLoading = false;
-  async function loadRoster(id) {
-    const seq = ++rosterRequestSeq;
-    rosterRows = [];
-    const box = $("target-roster");
-    if (!id) {
-      rosterLoading = false;
-      if (box) box.innerHTML = '<p class="muted">반을 선택하면 현재 명단을 불러옵니다.</p>';
-      return;
-    }
-    rosterLoading = true;
-    if (box) box.innerHTML = '<p class="muted">명단을 불러오는 중입니다.</p>';
-    let data;
-    try {
-      data = await api(
-        "/class-exam-assignments/roster?class_id=" + encodeURIComponent(id),
-      );
-    } catch (error) {
-      if (seq !== rosterRequestSeq) return;
-      rosterLoading = false;
-      if (box) box.innerHTML = '<p class="muted">명단을 불러오지 못했습니다. 반을 다시 선택해 주세요.</p>';
-      throw error;
-    }
-    if (seq !== rosterRequestSeq) return;
-    rosterLoading = false;
-    rosterRows = Array.isArray(data.students) ? data.students : [];
-    if (!$("target-roster")) return;
-    $("target-roster").innerHTML =
-      `<div class="actions" style="margin-top:12px">${button("target-all", "전체 선택", 'class="small"')}</div><div class="roster">${rosterRows.map((s, i) => `<label class="check"><input type="checkbox" data-target-index="${i}" aria-label="${esc(s.name)}" ${state.studentIds.includes(s.id) ? "checked" : ""}>${esc(s.name)} <span class="muted">${esc(s.school_name || "")}</span></label>`).join("")}</div>`;
   }
   async function assign() {
     if (!state.studentIds.length || !state.classId)
@@ -6141,27 +6077,6 @@
       } else if (a === "output-mode") {
         state.outputMode = b.dataset.mode;
         render();
-      } else if (a === "targets") await targets();
-      else if (a === "target-all")
-        $("target-roster")
-          .querySelectorAll("input[type=checkbox]")
-          .forEach((i) => {
-            i.checked = true;
-          });
-      else if (a === "target-apply") {
-        if (rosterLoading) {
-          status("학생 명단을 불러오는 중입니다. 잠시 뒤 다시 눌러 주세요.", true);
-          return;
-        }
-        state.classId = $("target-class").value;
-        const selected = [
-          ...$("target-roster").querySelectorAll("input:checked"),
-        ].map((i) => rosterRows[Number(i.dataset.targetIndex)]);
-        state.studentIds = selected.map((s) => s.id);
-        state.studentLabels = selected.map((s) => s.name);
-        $("modal").close();
-        scheduleSave();
-        await refreshHistory();
       } else if (a === "targets-clear") {
         if (state.sealed) return;
         state.studentIds = [];
@@ -6316,7 +6231,18 @@
         const legacyPaths = scope?.unified ? [] : scope?.paths || [];
         // 대단원을 고르면 그 안의 중단원 키는 뺀다(대단원이 전체를 포함한다).
         const ownChildren = (scope?.children || []).map((child) => child.key);
-        state.scopes = el.checked
+        // 대단원이 체크된 채로 중단원 하나를 풀면, 대단원 체크는 "나머지 중단원 전부(+ 중단원 미지정)"로 바뀐다.
+        const checkedParent = !el.checked && !scope
+          ? (displayedScopes || scopeOptions()).find((item) => scopeIsSelected(item) &&
+              (item.children || []).some((child) => child.key === el.dataset.scope))
+          : null;
+        if (checkedParent) {
+          const keep = checkedParent.children.filter((child) => child.key !== el.dataset.scope && child.count > 0).map((child) => child.key);
+          state.scopes = [
+            ...state.scopes.filter((x) => x !== checkedParent.key && !(!checkedParent.unified && checkedParent.paths.includes(x))),
+            ...keep,
+          ];
+        } else state.scopes = el.checked
           ? [
               ...state.scopes.filter((x) => !legacyPaths.includes(x) && !ownChildren.includes(x)),
               el.dataset.scope,
@@ -6351,8 +6277,7 @@
         $("original-issue-frame")?.contentWindow?.setArchive2OriginalQpp?.(
           value,
         );
-      } else if (el.id === "target-class") await loadRoster(el.value);
-      else if (el.id === "qpp") {
+      } else if (el.id === "qpp") {
         if (state.sealed) return;
         state.qpp = Number(el.value);
         state.prepared = [];

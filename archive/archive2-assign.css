@@ -373,6 +373,30 @@ dialog.assign-panel .assign-link:hover { color: var(--brand-hover); }
   align-items: center;
   column-gap: 8px;
 }
+/* "학생 개별 선택": 반을 고른 바로 아래에 보이는 알약 단추(작은 밑줄 링크는 교사가 찾지 못했다). */
+.assign-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin: 4px 0 2px;
+  padding: 0 18px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.assign-pill:hover {
+  background: var(--chip);
+  color: var(--ink);
+}
+.assign-pill[aria-expanded="true"] {
+  background: var(--chip);
+}
 .assign-roster-error {
   margin: 0 0 8px 32px;
   color: var(--danger);

@@ -14,7 +14,7 @@ const fallbackFixture = fs.readFileSync(path.resolve(__dirname, 'fixtures', 'uni
 
 test('단원별 기출 페이지는 승인 메타데이터와 출력·출제 모듈을 연결하고 새 틀로 바로 시작한다', () => {
   assert.match(html, /question-meta\.js/);
-  assert.match(html, /unit-past-exams\.css\?v=20261116-unit-source-1/);
+  assert.match(html, /unit-past-exams\.css\?v=20261116-polish-1/);
   // question-index.js is parsed only after the table skeleton is painted: the page preloads it and loads it from the runtime.
   assert.match(html, /<link rel="preload" as="script" href="question-index\.js\?v=20261110a">/);
   assert.doesNotMatch(html, /<script[^>]*src="question-index\.js/);
@@ -28,7 +28,7 @@ test('단원별 기출 페이지는 승인 메타데이터와 출력·출제 모
   assert.ok(html.indexOf('question-meta.js') < html.indexOf('meta-foundation-runtime.js'));
   assert.match(html, /archive2-core\.js\?v=20261111-one-lane-difficulty-1/);
   assert.match(html, /unit-past-exams-core\.js\?v=20261116-unit-source-1/);
-  assert.match(html, /unit-past-exams\.js\?v=20261116-unit-source-1/);
+  assert.match(html, /unit-past-exams\.js\?v=20261116-polish-1/);
   // Every heavy script is deferred; only the asset base, the login rule and the menu run while the page is parsed.
   for (const script of html.match(/<script[^>]*src="[^"]+"[^>]*>/g)) {
     if (/archive-asset-base|archive2-session|archive2-navigation/.test(script)) assert.doesNotMatch(script, /defer/, script);

@@ -480,6 +480,11 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
 
     const GRADE_COLORED = new Set(['중1', '중2', '중3', '고1', '고2', '고3']);
 
+    // 카드 범위 설명에서 단원 코드 "(M1-01)", "(H22-C-06~09)"는 화면에 보이지 않게 한다(교사가 모르는 내부 코드).
+    function plainScopeText(text) {
+      return String(text || '').replace(/\s*\((?:[A-Z]\d*)(?:-[A-Z0-9]+)+(?:~\d+)?\)/g, '');
+    }
+
     function renderMeta(pack) {
       return [
         `<span class="meta-badge primary"${GRADE_COLORED.has(pack.grade) ? ` data-grade="${escapeHTML(pack.grade)}"` : ''}>${escapeHTML(pack.grade || '학년 미정')}</span>`,
@@ -586,7 +591,7 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
               <div class="card-type-chip">시험지</div>
             </div>
             <button class="card-main-title action-btn paper-title" type="button" data-action="preview" data-pack-id="${escapeHTML(pack.id)}">${escapeHTML(pack.title)}</button>
-            <div class="card-sub-title">${escapeHTML(pack.scopeLabel || pack.unitLabel || '범위 확인 필요')}</div>
+            <div class="card-sub-title">${escapeHTML(plainScopeText(pack.scopeLabel || pack.unitLabel) || '범위 확인 필요')}</div>
             <div class="card-meta-line">${renderMeta(pack)}</div>
             <div class="dx-row">${renderDifficultyChips(pack.difficultyMix)}</div>
             <div class="card-sub-title skill-line">유형: ${escapeHTML(countObj(pack.skillMix))}</div>

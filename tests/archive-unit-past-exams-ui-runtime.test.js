@@ -430,6 +430,13 @@ test('학교 지정: 학교 검색·칩, 숫자가 그 학교·연도 문항 수
   html = cond(runtime);
   assert.match(html, /class="ug-chip"[^>]*aria-label="광양고 빼기/, '고른 학교는 칩으로 쌓인다');
   assert.match(html, /조건 1개 · 바꾸기/);
+  // 고른 뒤 "마침"을 누르면 검색 칸·목록이 "학교 1곳 · 바꾸기" 한 줄로 접히고, 바꾸기로 다시 펼친다.
+  api.gridSchoolEdit(false);
+  html = cond(runtime);
+  assert.match(html, /class="ug-cond-schools is-folded"[\s\S]*학교 1곳[\s\S]*광양고[\s\S]*바꾸기/);
+  assert.doesNotMatch(html, /id="ug-school-q"/, '접힌 줄에는 검색 칸이 없다');
+  api.gridSchoolEdit(true);
+  assert.match(cond(runtime), /id="ug-school-q"/);
   assert.match(bar(runtime), /3문항 · 1권/, '표·요약이 광양고 문항 수로 바뀐다');
   assert.match(runtime.getElement('ug-sum').innerHTML, /광양고 · 다항식의 연산/);
   assert.match(runtime.getElement('ug-filter-note').textContent, /광양고 조건의 문항 수/);
@@ -491,8 +498,12 @@ test('조건(학교·연도·시험·학기·묶기)이 주소와 저장에 남�
   await runtime.window.UnitPastExams.init();
   const html = runtime.getElement('unit-content').innerHTML;
   assert.match(html, /조건 4개 · 바꾸기/);
-  assert.match(html, /class="ug-chip"[^>]*aria-label="순천고 빼기/);
-  assert.match(html, /class="ug-chip"[^>]*aria-label="광양고 빼기/);
+  assert.match(html, /class="ug-cond-schools is-folded"[\s\S]*학교 2곳[\s\S]*순천고, 광양고/, '다시 열면 고른 학교는 한 줄로 접혀 있다');
+  runtime.window.UnitPastExams.gridSchoolEdit(true);
+  const edit = cond(runtime);
+  assert.match(edit, /class="ug-chip"[^>]*aria-label="순천고 빼기/);
+  assert.match(edit, /class="ug-chip"[^>]*aria-label="광양고 빼기/);
+  runtime.window.UnitPastExams.gridSchoolEdit(false);
   assert.match(html, /class="ug-cond-range"/);
   assert.match(html, /gridSetSrc\('group','school'\)[^>]*>학교별로 한 권씩/);
   assert.match(html, /<details class="ug-options" id="ug-opts" open>/, '학교가 2곳 이상이면 묶기가 있는 접이식이 펼쳐진다');

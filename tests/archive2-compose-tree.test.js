@@ -311,6 +311,33 @@ test('마크업: 기본은 접힘(자식 줄 없음), 펼치면 중단원·0문�
   assert.match(partial, /data-scope-partial/);
 });
 
+test('대단원이 체크된 채로 중단원 하나를 풀면 나머지 중단원 전부(+ 미지정)가 남는다: 고른 문항 수 = 대단원 - 그 중단원', async () => {
+  Tree.setGroups(groupsDoc);
+  const h = harness();
+  const { w } = h;
+  w.state.filters = { grade: '중1' };
+  w.state.scopes = [];
+  const parent = w.scopeOptions().filter(scope => scope.children?.some(child => child.childKind === 'chapter' && child.count > 0))
+    .sort((a, b) => b.count - a.count)[0];
+  const released = parent.children.find(child => child.childKind === 'chapter' && child.count > 0 && child.count < parent.count);
+  assert.ok(released, '풀 수 있는 중단원');
+  await h.check(parent.key, true);
+  assert.equal(w.pool().length, parent.count);
+  // 체크된 대단원 아래 중단원 줄은 고를 수 있다(예전에는 잠겨 있었다).
+  await h.click({ action: 'scope-expand', scopeKey: parent.key });
+  const row = w.renderScopes().split('<div class="').find(chunk => chunk.includes(`data-scope-sub="${released.key}"`)) || '';
+  assert.doesNotMatch(row, /<input type="checkbox"[^>]*disabled>/, '대단원이 체크돼도 중단원 줄은 잠기지 않는다');
+  await h.check(released.key, false);
+  const keys = [...w.state.scopes];
+  assert.ok(!keys.includes(parent.key), '대단원 체크는 풀린다');
+  assert.ok(!keys.includes(released.key));
+  const others = parent.children.filter(child => child.key !== released.key && child.count > 0);
+  assert.deepEqual([...keys].sort(), others.map(child => child.key).sort(), '나머지 중단원 전부(+ 중단원 미지정)');
+  assert.equal(w.pool().length, parent.count - released.count, '고른 문항 수는 대단원 - 그 중단원');
+  const uids = new Set(w.request().filters.scopeQuestionUids);
+  for (const uid of released.scopeQuestionUids) assert.ok(!uids.has(uid), '푼 중단원 문항은 빠진다');
+});
+
 test('전체 선택·모두·연속 범위는 대단원 키만 만들고 자식 키는 남기지 않는다', async () => {
   Tree.setGroups(groupsDoc);
   const h = harness();

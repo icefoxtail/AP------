@@ -118,47 +118,6 @@ label.check {
 .skip:focus {
   top: 0;
 }
-.appbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  min-height: 66px;
-  background: white;
-  border-bottom: 1px solid var(--line);
-  padding: 10px 28px;
-}
-.brand {
-  font-size: 20px;
-  font-weight: 800;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.brand span {
-  font-size: 12px;
-  color: var(--accent);
-  vertical-align: top;
-}
-.appbar nav {
-  display: flex;
-  gap: 5px;
-  flex: 1;
-}
-.appbar nav button {
-  border-color: transparent;
-  background: none;
-  white-space: nowrap;
-}
-.appbar nav button.active {
-  color: var(--navy);
-  background: var(--chip);
-}
-.legacy {
-  font-size: 12px;
-  white-space: nowrap;
-}
 .status {
   min-height: 32px;
   padding: 7px 30px;
@@ -263,11 +222,6 @@ p {
   justify-content: space-between;
   align-items: center;
   margin: 24px 0 12px;
-  gap: 12px;
-}
-.exam-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 .exam {
@@ -414,11 +368,6 @@ p {
   border-bottom: 1px solid var(--line-soft);
   font-size: 13px;
 }
-.summary-number {
-  font-size: 32px;
-  font-weight: 800;
-  margin: 10px 0;
-}
 .callout {
   padding: 12px 14px;
   border: 1px solid var(--warn);
@@ -436,10 +385,6 @@ p {
 .callout.good {
   border-color: var(--good);
   background: var(--good-bg);
-}
-.review-pass {
-  color: var(--good);
-  font-weight: 700;
 }
 .preview {
   width: 100%;
@@ -573,24 +518,8 @@ dialog::backdrop {
   .filters {
     grid-template-columns: repeat(6, minmax(100px, 1fr));
   }
-  .exam-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 @media (max-width: 1000px) {
-  .appbar {
-    gap: 12px;
-    padding: 10px 16px;
-    flex-wrap: wrap;
-  }
-  .appbar nav {
-    order: 3;
-    flex-basis: 100%;
-    overflow: auto;
-  }
-  .legacy {
-    margin-left: auto;
-  }
   main {
     padding: 22px 16px 90px;
   }
@@ -604,11 +533,6 @@ dialog::backdrop {
     position: static;
     order: -1;
   }
-  .inspector .summary-panel {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-  }
   .preview {
     height: 700px;
   }
@@ -617,14 +541,6 @@ dialog::backdrop {
   }
 }
 @media (max-width: 600px) {
-  .brand {
-    font-size: 18px;
-  }
-  .appbar nav button {
-    font-size: 12px;
-    padding: 8px 10px;
-    min-height: 38px;
-  }
   .filters {
     grid-template-columns: 1fr 1fr;
   }
@@ -637,7 +553,6 @@ dialog::backdrop {
   .intro .actions {
     margin-top: 14px;
   }
-  .exam-list,
   .scope-list {
     grid-template-columns: 1fr;
   }
@@ -650,9 +565,6 @@ dialog::backdrop {
   }
   .floating .actions {
     width: 100%;
-  }
-  .inspector .summary-panel {
-    display: block;
   }
   .composition {
     display: block;
@@ -691,28 +603,6 @@ dialog::backdrop {
 .panel > .resultbar {
   margin-top: 10px;
   margin-bottom: 12px;
-}
-.callout:has(.review-pass) {
-  border-color: var(--good);
-  background: var(--good-bg);
-}
-/* Compact teaching workspace: document first, controls grouped by purpose. */
-.appbar {
-  min-height: 56px;
-  padding: 8px 24px;
-  gap: 28px;
-}
-.brand {
-  font-size: 18px;
-  letter-spacing: -0.65px;
-}
-.appbar nav {
-  gap: 2px;
-}
-.appbar nav button {
-  padding: 7px 12px;
-  font-size: 13px;
-  border-radius: var(--radius-field);
 }
 .status {
   min-height: 27px;
@@ -807,11 +697,6 @@ button.small {
   font-weight: 750;
   border-bottom-color: var(--navy);
 }
-.summary-number {
-  font-size: 28px;
-  line-height: 1.2;
-  margin: 12px 0 15px;
-}
 .summary-line {
   font-size: 12px;
   padding: 7px 0;
@@ -819,16 +704,6 @@ button.small {
 .callout {
   font-size: 12px;
   padding: 10px 12px;
-}
-.plan-panel {
-  padding: 11px 14px !important;
-  font-size: 12px;
-}
-.plan-panel[open] {
-  padding: 16px !important;
-}
-.plan-panel[open] > summary {
-  margin-bottom: 18px;
 }
 .paper-panel {
   padding: 0 !important;
@@ -916,13 +791,6 @@ button.small {
 .header-fields .check {
   font-size: 12px;
 }
-.exam-list {
-  display: block;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-field);
-  overflow: hidden;
-}
 .exam {
   display: grid;
   grid-template-columns: 205px minmax(0, 1fr) 92px 188px;
@@ -952,32 +820,11 @@ button.small {
   justify-content: flex-start;
   gap: 5px;
 }
-.exam-range .inline {
-  font-size: 12px;
-  gap: 9px;
-}
 .exam .range {
   font-size: 12px;
   line-height: 1.6;
   min-height: 0;
   margin: 5px 0 0;
-  color: var(--muted);
-}
-.exam-count {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-}
-.exam-count > strong {
-  font-size: 17px;
-  font-variant-numeric: tabular-nums;
-  font-weight: 650;
-}
-.exam-count small {
-  font-size: 12px;
-  font-weight: 500;
-  margin-left: 3px;
   color: var(--muted);
 }
 .exam .actions {
@@ -1025,9 +872,6 @@ button.small {
 .metric strong {
   font-size: 25px;
 }
-.mobile-actions {
-  display: none;
-}
 #content[inert] {
   opacity: 0.65;
   cursor: progress;
@@ -1058,45 +902,15 @@ button.small {
     order: 1;
     position: static;
   }
-  .appbar {
-    padding: 8px 16px;
-    gap: 10px;
-  }
-  .appbar nav {
-    order: 3;
-    flex-basis: 100%;
-    gap: 2px;
-  }
   .status {
     padding: 5px 16px;
   }
   main {
     padding: 16px 14px calc(84px + var(--archive2-mobile-bottom-nav-offset, 0px));
   }
-  .mobile-actions {
-    display: flex;
-    gap: 8px;
-    position: fixed;
-    bottom: var(--archive2-mobile-bottom-nav-offset, 0px);
-    left: 0;
-    right: 0;
-    z-index: 15;
-    background: #fffffff5;
-    border-top: 1px solid var(--line);
-    padding: 10px 14px;
-    padding-bottom: 10px;
-  }
-  .mobile-actions button {
-    flex: 1;
-    font-size: 12px;
-    min-height: 44px;
-  }
   .preview {
     height: 650px;
     min-height: 0;
-  }
-  .inspector .summary-panel {
-    display: block;
   }
   .intro {
     gap: 12px;
@@ -1119,17 +933,6 @@ button.small {
     grid-template-columns: 1fr 75px;
     gap: 9px 12px;
     padding: 13px 14px;
-  }
-  .exam-identity {
-    grid-column: 1;
-  }
-  .exam-count {
-    grid-column: 2;
-    grid-row: 1;
-    align-items: flex-end;
-  }
-  .exam-range {
-    grid-column: 1/-1;
   }
   .exam .actions {
     grid-column: 1/-1;
@@ -1227,25 +1030,11 @@ input,
 select {
   min-width: 0;
 }
-.delivery-progress {
-  border-top: 1px solid var(--line);
-  margin-top: 16px;
-  padding-top: 12px;
-}
-.delivery-progress h3 {
-  font-size: 14px;
-}
 .assignment-students .recent-row {
   display: grid;
   grid-template-columns: 1fr auto auto;
   gap: 16px;
   padding: 12px 0;
-}
-.appbar > .legacy {
-  font-size: 12px;
-  background: none;
-  border: 0;
-  min-height: 32px;
 }
 .original-output {
   flex-basis: 100%;
@@ -1294,38 +1083,6 @@ select {
   height: 290px;
   min-height: 290px;
 }
-.mobile-sheet-close {
-  display: none;
-}
-@media (max-width: 700px) {
-  .inspector.mobile-open {
-    position: fixed;
-    inset: auto 8px calc(72px + var(--archive2-mobile-bottom-nav-offset, 0px));
-    max-height: 72vh;
-    overflow: auto;
-    z-index: 40;
-    box-shadow:
-      0 0 0 100vmax #17171c44,
-      0 6px 28px #17171c33;
-    border-radius: var(--radius-card);
-    background: white;
-  }
-  .inspector.mobile-open .mobile-sheet-close {
-    display: block;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    margin-left: auto;
-    background: white;
-  }
-  .inspector.mobile-open .panel {
-    margin: 0;
-  }
-  .mobile-actions button {
-    font-size: 12px;
-    padding: 9px 10px;
-  }
-}
 @media (max-width: 600px) {
   .original-output .header-fields {
     grid-template-columns: 1fr 1fr;
@@ -1340,31 +1097,9 @@ select {
   .assignment-students .recent-row > a {
     grid-column: 1/-1;
   }
-  .appbar > .legacy {
-    font-size: 12px;
-  }
   .original-issue-dialog .header-fields input {
     min-height: 44px;
   }
-}
-.exam .exam-title {
-  display: inline;
-  padding: 0;
-  min-height: 0;
-  border: 0;
-  background: none;
-  font: inherit;
-  font-weight: 700;
-  color: var(--ink);
-  text-align: left;
-  cursor: pointer;
-}
-.exam .exam-title:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.exam-count > .muted {
-  font-size: 12px;
 }
 .exam {
   grid-template-columns: 190px minmax(0, 1fr) 75px 270px;
@@ -1459,10 +1194,7 @@ select {
  .original-issue-toolbar > .actions { width:100%; }
  .original-issue-toolbar > .actions button { flex:1; }
  #original-preview-frame { height:60vh; min-height:300px; }
- .exam-title { text-align:left; }
 }
-
-.finder-filters > summary { font-size:12px; margin-bottom:12px; cursor:pointer; }
 
 .material-switch { display:flex; gap:6px; margin-bottom:16px; }
 .material-switch [aria-pressed=true] { color:white; background:var(--ink); border-color:var(--ink); }
@@ -1482,61 +1214,6 @@ select {
 .finder-surface :focus-visible {
   outline: 3px solid var(--finder-focus);
   outline-offset: 2px;
-}
-.finder-panel {
-  padding: 16px;
-}
-.finder-search-zone {
-  display: grid;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-.finder-search-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 8px;
-}
-.finder-search-box {
-  min-width: 0;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  gap: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-field);
-  background: var(--surface);
-  color: var(--ink-2);
-  overflow: hidden;
-}
-.finder-search-box:focus-within {
-  outline: 3px solid var(--finder-focus);
-  outline-offset: 2px;
-}
-.finder-search-box > span {
-  width: 40px;
-  flex: none;
-  text-align: center;
-  font-size: 18px;
-  color: var(--muted);
-}
-.finder-search-box input {
-  min-width: 0;
-  height: 100%;
-  flex: 1;
-  border: 0;
-  border-radius: 0;
-  padding: 0 12px 0 0;
-  background: transparent;
-  color: var(--ink);
-  font-size: 13px;
-  outline: 0;
-}
-.finder-search-box input:focus-visible {
-  outline: 0;
-}
-.finder-search-submit {
-  min-width: 64px;
-  min-height: 44px;
 }
 .finder-active-zone {
   display: flex;
@@ -1580,14 +1257,6 @@ select {
   text-underline-offset: 3px;
   white-space: nowrap;
 }
-.finder-filter-core {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px 12px;
-  align-items: end;
-  padding-top: 10px;
-  border-top: 1px solid var(--line-soft);
-}
 .finder-field {
   min-width: 0;
   display: grid;
@@ -1610,42 +1279,6 @@ select {
   color: var(--ink);
   font-size: 13px;
 }
-.finder-detail-filters {
-  margin-top: 10px;
-}
-.finder-detail-filters > summary {
-  display: none;
-  min-height: 44px;
-  align-items: center;
-  color: var(--ink-2);
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  list-style: none;
-}
-.finder-detail-filters > summary::-webkit-details-marker {
-  display: none;
-}
-/* Drawn chevron (no text-symbol icons). */
-.finder-detail-filters > summary::after {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-left: 9px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(45deg) translate(-2px, -2px);
-}
-.finder-detail-filters[open] > summary::after {
-  transform: rotate(225deg) translate(-2px, -2px);
-}
-.finder-filter-detail {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1.7fr 1fr;
-  gap: 10px 12px;
-  align-items: end;
-}
 .finder-year-range {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -1655,18 +1288,6 @@ select {
 .finder-year-range b {
   color: var(--muted);
   font-weight: 600;
-}
-.finder-results-wrap {
-  container-type: inline-size;
-}
-.finder-surface .exam-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  overflow: visible;
 }
 .finder-surface .exam {
   min-width: 0;
@@ -1694,19 +1315,6 @@ select {
   background: var(--selected);
   box-shadow: 0 0 0 1px var(--ink);
 }
-.finder-surface .exam-identity {
-  grid-area: identity;
-  min-width: 0;
-}
-.finder-surface .exam-count {
-  grid-area: count;
-  align-items: flex-end;
-  gap: 4px;
-}
-.finder-surface .exam-range {
-  grid-area: range;
-  min-width: 0;
-}
 .finder-surface .exam .actions {
   grid-area: actions;
   display: grid;
@@ -1715,9 +1323,6 @@ select {
   padding: 10px 0 0;
   margin: 0;
   border-top: 1px solid var(--line-soft);
-}
-.finder-surface .exam .finder-card-actions {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 .finder-card-more {
   position: relative;
@@ -1780,38 +1385,12 @@ select {
 .finder-surface .exam h2 {
   margin: 7px 0 0;
 }
-.finder-surface .exam .exam-title {
-  min-height: 0;
-  padding: 0;
-  font-size: 16px;
-  line-height: 1.35;
-  font-weight: 750;
-}
-.finder-surface .exam-range .inline {
-  gap: 7px;
-  font-size: 13px;
-  color: var(--ink-2);
-}
-.finder-surface .exam-range .inline strong {
-  color: var(--ink);
-}
 .finder-surface .exam .range {
   min-height: 0;
   margin: 5px 0 0;
   color: var(--ink-2);
   font-size: 13px;
   line-height: 1.55;
-}
-.finder-surface .exam-count > strong {
-  color: var(--ink);
-  font-size: 17px;
-  font-weight: 750;
-}
-.finder-surface .exam-count small,
-.finder-surface .exam-count > .muted {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 650;
 }
 .finder-surface .exam .actions button {
   min-width: 0;
@@ -1825,26 +1404,11 @@ select {
   background: var(--ink);
   color: var(--surface);
 }
-.finder-resultbar {
-  margin-top: 18px;
-}
-.finder-resultbar > strong {
-  font-size: 14px;
-}
-.finder-resultbar .muted {
-  color: var(--ink-2);
-  font-size: 12px;
-}
 .finder-selection-bar {
   border: 1px solid var(--line);
 }
 @container (min-width: 1072px) {
   .finder-surface .exam-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (max-width: 1240px) and (min-width: 701px) {
-  .finder-filter-detail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1869,42 +1433,6 @@ select {
     padding-inline: 10px;
     white-space: nowrap;
   }
-  .finder-panel {
-    padding: 10px;
-  }
-  .finder-panel .material-switch {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6px;
-    margin-bottom: 8px;
-  }
-  .finder-panel .material-switch button {
-    min-width: 0;
-    min-height: 44px;
-    padding: 6px 5px;
-    font-size: 12px;
-  }
-  .finder-search-zone {
-    gap: 6px;
-    margin-bottom: 6px;
-  }
-  .finder-search-row {
-    grid-template-columns: minmax(0, 1fr) 52px;
-    gap: 6px;
-  }
-  .finder-search-box {
-    height: 44px;
-  }
-  .finder-search-box input {
-    font-size: 14px;
-  }
-  .finder-search-submit {
-    width: 52px;
-    min-width: 52px;
-    min-height: 44px;
-    padding: 0;
-    font-size: 13px;
-  }
   .finder-active-zone {
     align-items: flex-start;
     gap: 6px;
@@ -1920,11 +1448,6 @@ select {
     padding: 0 2px;
     font-size: 13px;
   }
-  .finder-filter-core {
-    grid-template-columns: 1fr 1fr;
-    gap: 6px 9px;
-    padding-top: 7px;
-  }
   .finder-course {
     grid-column: 1/-1;
   }
@@ -1939,50 +1462,21 @@ select {
     min-height: 44px;
     font-size: 13px;
   }
-  .finder-detail-filters {
-    margin-top: 7px;
-    padding-top: 7px;
-    border-top: 1px solid var(--line-soft);
-  }
-  .finder-detail-filters > summary {
-    display: flex;
-    min-height: 44px;
-  }
-  .finder-filter-detail {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 9px;
-    margin-top: 7px;
-  }
   .finder-school,
   .finder-year,
   .finder-family {
     grid-column: 1/-1;
   }
-  .finder-resultbar {
-    margin-top: 12px;
-    margin-bottom: 8px;
-    align-items: flex-start;
-  }
-  .finder-resultbar .muted {
-    display: none;
-  }
   .finder-surface .exam {
     padding: 13px;
     gap: 7px 9px;
   }
-  .finder-surface .exam .exam-title {
-    font-size: 15px;
-  }
-  .finder-surface .exam-range .inline,
   .finder-surface .exam .range {
     font-size: 13px;
   }
   .finder-surface .exam .actions {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 6px;
-  }
-  .finder-surface .exam .finder-card-actions {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
   .finder-surface .exam .actions button {
     min-height: 44px;
@@ -2031,12 +1525,6 @@ select {
       104px + var(--archive2-mobile-bottom-nav-offset, 0px)
     );
   }
-}
-
-/* Compose decision order. Existing filter, scope, and selection handlers remain owners. */
-body[data-archive-view="compose"] .compose-setup {
-  padding: 0;
-  overflow: hidden;
 }
 body[data-archive-view="compose"] .compose-step {
   padding: 16px;
@@ -2092,6 +1580,14 @@ body[data-archive-view="compose"] .compose-range > .resultbar h2 {
 body[data-archive-view="compose"] .compose-composition > .compose-step-head {
   margin-bottom: 14px;
 }
+/* 수정본 만들기: 원본 범위 안내(번호 칸 없이 제목 한 줄). */
+.cz-derived .cz-derived-title {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+.cz-derived p {
+  margin: 0 0 6px;
+}
 body[data-archive-view="compose"] .compose-detail {
   margin: 16px 0;
   padding: 11px 12px;
@@ -2111,10 +1607,6 @@ body[data-archive-view="compose"] .compose-taxonomy {
   border-top: 1px solid var(--line);
   font-size: 12px;
 }
-body[data-archive-view="compose"] .compose-create-bar {
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-}
 @media (max-width: 600px) {
   body[data-archive-view="compose"] .compose-step {
     padding: 14px;
@@ -2127,23 +1619,6 @@ body[data-archive-view="compose"] .compose-create-bar {
   }
   body[data-archive-view="compose"] .compose-range .scope-list {
     grid-template-columns: 1fr;
-  }
-  body[data-archive-view="compose"] .workspace > div > .compose-composition > .compose-create-bar {
-    position: fixed;
-    z-index: 14;
-    left: 0;
-    right: 0;
-    bottom: var(--archive2-mobile-bottom-nav-offset, 0px);
-    margin: 0;
-    padding: 10px 14px;
-    background: var(--surface);
-    box-shadow: 0 -4px 14px #17171c18;
-  }
-  body[data-archive-view="compose"] .compose-create-bar button {
-    min-height: 44px;
-  }
-  body[data-archive-view="compose"] .mobile-actions {
-    bottom: calc(var(--archive2-mobile-bottom-nav-offset, 0px) + 2px);
   }
 }
 
@@ -2163,16 +1638,6 @@ body[data-archive-view="compose"] .compose-create-bar {
 }
 .saved-paper-more {
   position: relative;
-}
-.saved-paper-back {
-  min-height: 44px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  text-decoration: underline;
-  cursor: pointer;
 }
 .button-like {
   display: inline-flex;
@@ -2291,14 +1756,6 @@ body[data-archive-view="compose"] .compose-create-bar {
 .compose-saved-continuity-more > summary { min-height: 44px; padding: 0 10px; display: flex; align-items: center; border: 1px solid var(--line); border-radius: var(--radius-field); cursor: pointer; }
 .compose-saved-continuity-more > div { position: absolute; z-index: 20; top: calc(100% + 4px); right: 0; min-width: 170px; padding: 6px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); box-shadow: 0 8px 22px #17171c24; }
 .compose-saved-continuity-more button { width: 100%; min-height: 44px; text-align: left; }
-@media (max-width: 1000px) {
-  .mobile-actions > .mobile-saved-paper-assign {
-    flex: 1;
-    min-height: 44px;
-    font-size: 12px;
-  }
-}
-
 
 /* S7 simple compose: difficulty is a primary control, extra conditions stay in 세부 조건. */
 body[data-archive-view="compose"] .compose-subject-note {
@@ -2316,20 +1773,6 @@ body[data-archive-view="compose"] .compose-difficulty > p {
 }
 body[data-archive-view="compose"] .compose-detail > summary .badge {
   margin-left: 8px;
-}
-@media (min-width: 601px) {
-  /* 학년 and 과목 share one row; 범위 uses the full width below. */
-  body[data-archive-view="compose"] .compose-setup {
-    display: grid;
-    grid-template-columns: minmax(150px, 280px) minmax(190px, 1fr);
-  }
-  body[data-archive-view="compose"] .compose-setup > .compose-subject {
-    border-top: 0;
-  }
-  body[data-archive-view="compose"] .compose-setup > .compose-range,
-  body[data-archive-view="compose"] .compose-setup > .callout {
-    grid-column: 1 / -1;
-  }
 }
 
 /* ---- 빠른 평가 (5분 테스트 / 소단원 평가 / 중단원 평가 / 종합평가), 2026-11-16 ---------------------------------
@@ -2856,10 +2299,6 @@ body[data-archive-view="compose"] .compose-detail > summary .badge {
 .grade-h2 { --grade: var(--grade-h2); }
 .grade-h3 { --grade: var(--grade-h3); }
 .grade-none { --grade: var(--ink); }
-.badge.grade-badge {
-  background: var(--grade);
-  color: #fff;
-}
 
 /* Page frame */
 main {
@@ -2914,28 +2353,6 @@ dialog::backdrop {
 .pager span {
   font-weight: 700;
 }
-
-/* Search boxes: ink-outlined pills with a pill button beside them */
-.finder-search-row {
-  gap: 10px;
-}
-.finder-search-box {
-  height: 52px;
-  border: 2px solid var(--ink);
-  border-radius: 26px;
-  padding-left: 20px;
-}
-.finder-search-box input {
-  min-height: 0;
-  height: 100%;
-  padding: 0 18px 0 0;
-  font-size: 17px;
-}
-.finder-search-submit {
-  min-width: 84px;
-  min-height: 52px;
-  border-radius: 26px;
-}
 .finder-chip {
   min-height: 32px;
   border: 0;
@@ -2976,27 +2393,6 @@ dialog::backdrop {
 .finder-surface .exam:hover {
   background: var(--surface);
   border-color: var(--control-line);
-}
-.finder-surface .exam .exam-title {
-  min-height: 0;
-  /* the title is a text-style button; the padding gives it a 44px hit area without moving the layout */
-  padding: 10px 0;
-  margin: -10px 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--ink);
-  font-size: 17px;
-}
-.finder-surface .exam .exam-title:hover {
-  background: transparent;
-  color: var(--brand-ink);
-}
-.finder-surface .exam-count > strong {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 22px;
-  color: var(--ink);
 }
 .finder-surface .exam .actions {
   border-top: 1px solid var(--line-soft);
@@ -3049,8 +2445,7 @@ dialog::backdrop {
 .floating button:hover {
   background: var(--chip);
 }
-.saved-library-back,
-.saved-paper-back {
+.saved-library-back {
   min-height: 44px;
   padding: 0 4px;
   border: 0;
@@ -3061,8 +2456,7 @@ dialog::backdrop {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.saved-library-back:hover,
-.saved-paper-back:hover {
+.saved-library-back:hover {
   background: transparent;
   color: var(--brand-hover);
 }
@@ -3084,10 +2478,6 @@ dialog::backdrop {
   font-family: var(--font-display);
   font-weight: 400;
   font-size: 30px;
-}
-.summary-number {
-  font-family: var(--font-display);
-  font-weight: 400;
 }
 .compose-step-number {
   border-radius: var(--radius-field);
@@ -3389,17 +2779,6 @@ body[data-archive-view="compose"] .compose-step-number {
   .status.error {
     margin: 12px 16px 0;
   }
-  .finder-search-box {
-    height: 52px;
-  }
-  .finder-search-submit {
-    width: 72px;
-    min-width: 72px;
-    min-height: 52px;
-  }
-  .finder-search-row {
-    grid-template-columns: minmax(0, 1fr) 72px;
-  }
   .finder-surface .exam .actions button {
     padding: 0 2px;
     font-size: 14px;
@@ -3416,13 +2795,6 @@ body[data-archive-view="compose"] .compose-step-number {
 h1 .badge {
   font-family: var(--font-body);
   font-weight: 700;
-}
-.summary-number small,
-.finder-surface .exam-count > strong small {
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 14px;
-  margin-left: 4px;
 }
 body[data-archive-view="compose"] .compose-step-number {
   font-family: var(--font-body);
@@ -3933,10 +3305,6 @@ body[data-archive-view="compose"] .compose-step-number {
 .history-class {
   color: var(--ink);
   font-weight: 700;
-}
-.history-id {
-  color: var(--muted);
-  font-size: 13px;
 }
 @container exam-rows (min-width: 560px) {
   .exam-row.saved-row {
@@ -5017,6 +4385,13 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
   min-width: 0;
   overflow-wrap: anywhere;
 }
+/* 단원·중단원 이름은 본문 작은 글자(14px)로 읽힌다(2026-11-16, 예전 12px). */
+.cz-scope .scope-item label {
+  font-size: 14px;
+}
+.cz-scope .scope-item small {
+  font-size: 13px;
+}
 .cz-scope .scope-item .scope-expand {
   flex: 0 0 auto;
   display: inline-flex;
@@ -5101,7 +4476,7 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
   display: block;
   margin-top: 2px;
   color: var(--ink-2);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
 }
 

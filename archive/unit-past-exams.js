@@ -30,8 +30,43 @@
   function isTeacherSession() {
     return Boolean(window.Archive2Session?.isTeacher(getSession()));
   }
+  // 실패 안내는 맨 위 줄에만 두면 표 아래쪽에서 누른 교사가 못 본다. 화면에 고정된 닫을 수 있는 알림으로도 띄운다
+  // (문제지 만들기 화면의 오류 알림과 같은 모양, 코드·영어 문구는 그대로 보이지 않게 한다).
+  let errorToastEl = null;
+  function hideErrorToast() {
+    if (errorToastEl && errorToastEl.parentNode) errorToastEl.parentNode.removeChild(errorToastEl);
+  }
+  function showErrorToast(message) {
+    try {
+      if (!errorToastEl) {
+        const box = document.createElement('div');
+        box.className = 'error-toast';
+        box.setAttribute('role', 'alert');
+        const text = document.createElement('p');
+        text.className = 'error-toast-text';
+        const close = document.createElement('button');
+        close.type = 'button';
+        close.className = 'error-toast-close';
+        close.setAttribute('aria-label', '오류 알림 닫기');
+        close.textContent = '닫기';
+        close.addEventListener('click', hideErrorToast);
+        box.append(text, close);
+        errorToastEl = box;
+      }
+      errorToastEl.firstChild.textContent = message;
+      hideErrorToast();
+      (document.querySelector('dialog[open]') || document.body).appendChild(errorToastEl);
+    } catch (e) { console.warn('[unit-past] error alert unavailable:', e); }
+  }
   function setStatus(message, isError = false) {
     const el = document.getElementById('unit-status');
+    if (isError) {
+      const raw = String(message ?? '');
+      const stripped = raw.replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, '');
+      message = /[가-힣]/.test(stripped) ? stripped : '작업을 처리하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.';
+      if (message !== raw) console.warn('[unit-past] error text replaced for display:', raw);
+    }
+    if (isError && message) showErrorToast(message); else hideErrorToast();
     if (!el) return;
     el.textContent = message || '';
     el.classList.toggle('is-loading', false);
@@ -1029,7 +1064,7 @@
   const G = {
     profileId: '', course: '', cells: new Set(), checked: new Set(), open: new Set(), typeOff: new Set(), tree: null, entry: null, typeRows: [],
     amount: 'all', perCell: 10, order: 'recent',
-    src: gridDefaultSrc(), sourceFilter: null, schoolQuery: '', schoolRows: [], schoolLabels: new Map(), condOpen: false,
+    src: gridDefaultSrc(), sourceFilter: null, schoolQuery: '', schoolEdit: false, schoolRows: [], schoolLabels: new Map(), condOpen: false,
     view: 'grid', counts: {}, showNone: false, result: null, catalogs: new Map(), saved: new Map(), papersPushed: false, editing: '', editPushed: false
   };
 
@@ -1638,7 +1673,16 @@
     else if (rows.length > shown.length) hint = `${rows.length - shown.length}곳이 더 있습니다. 이름을 더 입력해 주세요.`;
     return `${items}${hint ? `<li class="ug-school-hint">${escapeHtml(hint)}</li>` : ''}`;
   }
+  // 학교를 고른 뒤에는 PC에서 "학교 3곳 · 바꾸기" 한 줄로 접는다(검색 칸과 목록이 표를 밀어내지 않게).
+  // 고르는 중(G.schoolEdit)이거나 아직 고른 학교가 없을 때만 펼쳐 둔다. 휴대폰 시트 안에서는 늘 펼쳐 둔다.
+  function gridSchoolFoldedHtml() {
+    const names = G.src.schools.map(gridSchoolLabel);
+    const shown = names.slice(0, 3).map(escapeHtml).join(', ');
+    const more = names.length > 3 ? ` 외 ${names.length - 3}곳` : '';
+    return `<div class="ug-cond-schools is-folded"><p class="ug-fold-text"><strong>학교 ${names.length}곳</strong><span class="ug-fold-names">${shown}${more}</span></p><button type="button" class="ug-fold-btn" data-focus="sf" aria-expanded="false" onclick="UnitPastExams.gridSchoolEdit(true)">바꾸기</button></div>`;
+  }
   function gridSchoolPanelHtml() {
+    if (G.src.schools.length && !G.schoolEdit && !gridIsPhone()) return gridSchoolFoldedHtml();
     const counts = new Map(gridSchoolOptions().map(row => [row.key, row.count]));
     const chips = G.src.schools.map((key, index) => {
       const label = gridSchoolLabel(key);
@@ -1646,7 +1690,7 @@
       const note = n === undefined ? '이 학년에는 이 학교 기출이 없습니다' : `조건에 맞는 문항 ${n.toLocaleString()}개`;
       return `<button type="button" class="ug-chip${n ? '' : ' is-quiet'}" data-focus="ch:${index}" title="${escapeHtml(note)}" aria-label="${escapeHtml(label)} 빼기 (${escapeHtml(note)})" onclick="UnitPastExams.gridRemoveSchool(${index})"><span>${escapeHtml(label)}</span><span class="ug-chip-x" aria-hidden="true"></span></button>`;
     }).join('');
-    return `<div class="ug-cond-schools"><div class="ug-chips" id="ug-chips">${chips || '<span class="ug-chips-empty">학교를 고르면 그 학교 문항만 셉니다. 고르지 않으면 모든 학교입니다.</span>'}</div><label class="ug-school-search"><span class="ug-cond-label">학교 찾기</span><input type="search" id="ug-school-q" class="ug-school-q" data-focus="q" autocomplete="off" placeholder="학교 이름 (예: 순천)" value="${escapeHtml(G.schoolQuery)}" oninput="UnitPastExams.gridSchoolQuery(this.value)" onkeydown="UnitPastExams.gridSchoolKey(event)"></label><ul class="ug-school-results" id="ug-school-results" aria-label="학교 목록">${gridSchoolResultsHtml()}</ul></div>`;
+    return `<div class="ug-cond-schools"><div class="ug-chips" id="ug-chips">${chips || '<span class="ug-chips-empty">학교를 고르면 그 학교 문항만 셉니다. 고르지 않으면 모든 학교입니다.</span>'}</div><label class="ug-school-search"><span class="ug-cond-label">학교 찾기</span><input type="search" id="ug-school-q" class="ug-school-q" data-focus="q" autocomplete="off" placeholder="학교 이름 (예: 순천)" value="${escapeHtml(G.schoolQuery)}" oninput="UnitPastExams.gridSchoolQuery(this.value)" onkeydown="UnitPastExams.gridSchoolKey(event)"></label><ul class="ug-school-results" id="ug-school-results" aria-label="학교 목록">${gridSchoolResultsHtml()}</ul>${G.src.schools.length ? '<button type="button" class="ug-fold-btn ug-only-pc" data-focus="sd" onclick="UnitPastExams.gridSchoolEdit(false)">학교 고르기 마침</button>' : ''}</div>`;
   }
   function gridRangeHtml() {
     const years = gridYears();
@@ -1697,7 +1741,7 @@
     if (kind === 'mode') {
       if (!GRID_MODES.some(([id]) => id === next) || src.mode === next) return;
       src.mode = next;
-      if (next === 'all') { src.schools = []; src.group = 'mixed'; G.schoolQuery = ''; }
+      if (next === 'all') { src.schools = []; src.group = 'mixed'; G.schoolQuery = ''; G.schoolEdit = false; }
     } else if (kind === 'year') {
       if (!GRID_YEARS.some(([id]) => id === next) || src.year === next) return;
       src.year = next;
@@ -1735,6 +1779,7 @@
     if (!key || G.src.schools.includes(key)) return;
     G.src.schools.push(key);
     G.src.mode = 'school';
+    G.schoolEdit = true;
     G.schoolQuery = '';
     // 두 번째 학교부터 "결과 묶기"가 생기므로, 접혀 있던 "문항 수 · 정리 순서"를 펼쳐 알린다.
     if (G.src.schools.length === 2) { const details = document.getElementById('ug-opts'); if (details) details.open = true; }
@@ -1749,8 +1794,16 @@
     gridSrcChanged();
     gridFocusSearch();
   }
+  function gridSchoolEdit(on) {
+    G.schoolEdit = Boolean(on);
+    gridPatch('ug-cond', gridCondHtml());
+    const target = typeof document.querySelector === 'function'
+      ? document.querySelector(on ? '#ug-school-q' : '#ug-cond [data-focus="sf"]') : null;
+    if (target && typeof target.focus === 'function') target.focus({ preventScroll: true });
+  }
   function gridCondReset() {
     G.src = gridDefaultSrc();
+    G.schoolEdit = false;
     G.schoolQuery = '';
     gridSrcChanged();
   }
@@ -2077,6 +2130,6 @@
     if (window.Archive2Assign && typeof window.Archive2Assign.handlePopState === 'function' && window.Archive2Assign.handlePopState()) return;
     if (state.ready) gridRestoreFromUrl();
   });
-  window.UnitPastExams = { init, renderSafeFallback, renderGrid, gridRestoreFromUrl, gridPickGradeEarly, gridOpenEdit, gridLeaveEdit, gridSelectGrade, gridClearGrade, gridSetCourse, gridSetSrc, gridSetRange, gridSchoolQuery, gridSchoolKey, gridAddSchool, gridRemoveSchool, gridCondOpen, gridCondClose, gridCondReset, gridTypesOffAll, gridToggleCell, gridToggleOpen, gridToggleType, gridResetTypes, gridToggleUnit, gridApplyStep, gridClear, gridSetAmount, gridSetPer, gridStepPer, gridSetOrder, gridShowPapers, gridBack, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, printPaper, assignPaper, assignAllPapers };
+  window.UnitPastExams = { init, renderSafeFallback, renderGrid, gridRestoreFromUrl, gridPickGradeEarly, gridOpenEdit, gridLeaveEdit, gridSelectGrade, gridClearGrade, gridSetCourse, gridSetSrc, gridSetRange, gridSchoolQuery, gridSchoolKey, gridAddSchool, gridRemoveSchool, gridSchoolEdit, gridCondOpen, gridCondClose, gridCondReset, gridTypesOffAll, gridToggleCell, gridToggleOpen, gridToggleType, gridResetTypes, gridToggleUnit, gridApplyStep, gridClear, gridSetAmount, gridSetPer, gridStepPer, gridSetOrder, gridShowPapers, gridBack, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, printPaper, assignPaper, assignAllPapers };
   window.High1UnitPastExams = window.UnitPastExams;
 })();

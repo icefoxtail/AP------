@@ -3494,7 +3494,7 @@ function renderAssignTargetProgressView() {
             <span class="icon">${icon}</span>
             <div style="flex:1 1 auto; min-width:0;">
                 <span>${escapeModalText(className)}${p.status === 'error' ? ' — ' + escapeModalText(p.error || '처리 실패') : pdfPending ? ' — Assignment 저장 완료 · PDF 준비 필요' : ''}</span>
-                ${assignmentSaved ? `<small style="display:block; margin-top:4px; color:var(--text-sub);">Assignment ID · ${escapeModalText(assignmentId)}</small>` : ''}
+                ${assignmentSaved ? `<small style="display:block; margin-top:4px; color:var(--text-sub);">출제 번호 · ${escapeModalText(assignmentId)}</small>` : ''}
                 ${pdfPending && p.pdfError ? `<small style="display:block; margin-top:4px; color:var(--text-sub);">${escapeModalText(p.pdfError)}</small>` : ''}
                 ${pdfPending && p.pdfRetrying ? '<small style="display:block; margin-top:4px; color:var(--text-sub);">PDF를 다시 준비하고 있습니다.</small>' : ''}
                 ${outputActions}
