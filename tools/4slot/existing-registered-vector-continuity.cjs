@@ -6,6 +6,7 @@ const crypto = require('node:crypto'), {execFileSync} = require('node:child_proc
 const {compactItem} = require('./import-4slot.cjs');
 const {buildLookup} = require('./validate-4slot.cjs');
 const {sourceNumber, sourceIdentityNumber} = require('./exam-items.cjs');
+const originalSourceError=require('./original-source-error-hold.cjs');
 const {verifyUi, DECISION} = require('./existing-registered-vector-ui.cjs');
 const DIR = '.archive-meta-register/4slot-existing-vector-continuity';
 const SCHEMA = 'archive-four-slot-existing-registered-vector-continuity-v1';
@@ -272,6 +273,7 @@ function verifyUiCheckoutContinuity(reader, claim, {technical,questionUid,source
   return {sourceRef:claim.capturedSourceRef,assetRefs:claim.capturedAssetRefs};
 }
 function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loadBank,safe}) {
+  originalSourceError.assertNotSubject({questionUid:id?.questionUid,source:d?.sourceArchiveFile,ordinal:cur?.ordinal});
   const doc=entry.doc,reader=entry.reader;
   exact(doc,['schemaVersion','scope','sourceArchiveFile','questionUid','sourceOrdinal','sourceQuestionNo','sourceQuestionCount',
     'priorRegistrationRef','priorCompactRef','currentCompactRef','dictionaryRef','nativeFourSlotRef','nativeSourceRef','priorSourceRef','currentSourceRef',

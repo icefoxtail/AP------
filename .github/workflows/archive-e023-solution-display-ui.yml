@@ -5,6 +5,12 @@ on:
     branches: ['review-reference/e023-solution-current-ui-20261116']
     paths:
       - '.github/workflows/archive-e023-solution-display-ui.yml'
+      - 'tools/check-e023-solution-display-browser.cjs'
+      - 'tests/archive-e023-solution-display-ui.test.js'
+      - 'tests/fixtures/archive-e023-solution-display-ui.json'
+      - 'tools/check-m2s1-solution-scroll.cjs'
+      - 'tools/check-reviewed-problem-renderer-browser.cjs'
+      - 'archive/engine.html'
   workflow_dispatch:
 
 permissions:

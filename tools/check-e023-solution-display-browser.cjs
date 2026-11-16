@@ -15,7 +15,7 @@ const CHECKER_PATH='tools/check-e023-solution-display-browser.cjs';
 const SHARED_CHECKER_PATH='tools/check-reviewed-problem-renderer-browser.cjs';
 const SOLUTION_CHECKER_PATH='tools/check-m2s1-solution-scroll.cjs';
 const SHARED_CHECKER_SHA256='e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673';
-const SOLUTION_CHECKER_SHA256='9dfe5d4e0f0fd83ba0766eb38836e6397027bd311d78c0e6bb37fdbf5dbddc4d';
+const SOLUTION_CHECKER_SHA256='5ac51ffc469444e3e13449980d2820d19924563e50de08409ac47678a6c19d80';
 const IDENTITY_PATH='archive/data/question_identity_map.json';
 const SCHEMA='archive-e023-solution-display-raw-ui-v1',FONT_FAMILY='Nanum Myeongjo';
 const SHA1=/^[a-f0-9]{40}$/;
