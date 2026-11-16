@@ -81,6 +81,22 @@ const requiredCommands = [
     args: ['--test', 'tests/item-4slot-m2s2-display-repair-markup.test.cjs']
   },
   {
+    label: 'tests/item-4slot-m2s2-imported-issued-metadata.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-issued-metadata.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-issued-metadata-authority.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-issued-metadata-authority.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-issued-metadata-history.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-issued-metadata-history.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-issued-metadata-obligation.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-issued-metadata-obligation.test.cjs']
+  },
+  {
     label: 'tests/item-4slot-m2s2-imported-native-vector-amendment.test.cjs',
     args: ['--test', 'tests/item-4slot-m2s2-imported-native-vector-amendment.test.cjs']
   },

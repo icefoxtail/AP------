@@ -7,6 +7,7 @@ const {compactItem}=require('./import-4slot.cjs');
 const {buildLookup,validateData}=require('./validate-4slot.cjs');
 const {sourceNumber,sourceIdentityNumber}=require('./exam-items.cjs');
 const nativeAmendment=require('./m2s2-imported-native-vector-amendment.cjs');
+const issuedMetadata=require('./m2s2-imported-issued-metadata-continuity.cjs');
 const displayRepair=()=>require('./m2s2-exact-display-repair-closure.cjs');
 const CARRIER_SCHEMA='m2-s2-imported-current-four-slot-continuity-v1';
 const HOLD_SCHEMA='4slot-m2s2-imported-current-renderer-hold-v1';
@@ -29,7 +30,7 @@ const PRESENTATION=new Set(['image','imageAlt','imageSize','layoutTag','solution
 const METADATA=new Set(['conditionKeys','crossConceptKeys','curriculum','decisiveStep','difficultyBoundaryFlag','difficultyBucket','difficultyConfidence','integrationPattern','legacyLevelCompatibility','primaryMethod','problemTypeKey','rpmL1','rpmL2','rpmL3','rpmL4','rpmPrimaryPath','standardUnit','standardUnitKey','subUnit','subUnitKey','templateKey']);
 const OVERLAY=new Set(['courseKey','curriculumKey','crossConceptKeys']);
 const own=(o,k)=>Object.hasOwn(o||{},k);
-const has=d=>displayRepair().hasFor(d,'IMPORTED_NATIVE_AMENDMENT')||nativeAmendment.has(d)||own(d.evidence,GROUP)||(d.items||[]).some(i=>i.registrationHold?.schemaVersion===HOLD_SCHEMA||own(i.registrationHold,'m2ImportedCarrier'));
+const has=d=>issuedMetadata.has(d)||displayRepair().hasFor(d,'IMPORTED_NATIVE_AMENDMENT')||nativeAmendment.has(d)||own(d.evidence,GROUP)||(d.items||[]).some(i=>i.registrationHold?.schemaVersion===HOLD_SCHEMA||own(i.registrationHold,'m2ImportedCarrier'));
 const inScope=d=>/^original\/middle\/m2\/2final\//.test(d.sourceArchiveFile||'');
 const git=(root,args)=>execFileSync('git',['-C',root,'-c','core.quotepath=false',...args],{timeout:30000,maxBuffer:32*1024*1024,stdio:['ignore','pipe','pipe']});
 
@@ -37,6 +38,7 @@ const git=(root,args)=>execFileSync('git',['-C',root,'-c','core.quotepath=false'
 // cache. Full HEAD ancestry retains the obligation after deletion or a merge.
 function createObligationReader(root,{safe,sha,blob,stable}) {
   const successorObligation=nativeAmendment.createObligationReader(root,{safe,sha,blob,stable});
+  const metadataObligation=issuedMetadata.createObligationReader(root,{safe,sha,blob,stable});
   let loaded=false,failed=false,claims=[];
   function load(){
     if(loaded)return;loaded=true;
@@ -65,10 +67,10 @@ function createObligationReader(root,{safe,sha,blob,stable}) {
     const successor=displayRepair().hasFor(d,'IMPORTED_NATIVE_AMENDMENT');
     return {required:true,errors:has(d)&&covered||successor?[]:['M2_IMPORTED_CONTINUITY_OBLIGATION_REQUIRED'],digest:sha(stable(found)),...(successor?{entries:found}:{})};
   };
-  return d=>{const prior=originalObligation(d),next=successorObligation(d);return {required:prior.required||next.required||false,errors:[...prior.errors,...next.errors],digest:next.digest===null?prior.digest:sha(stable([prior.digest,next.digest])),...(displayRepair().hasFor(d,'IMPORTED_NATIVE_AMENDMENT')?{originalEntries:prior.entries||[],amendmentEntries:next.entries||[]}:{} )};};
+  return d=>{const prior=originalObligation(d),next=successorObligation(d),metadata=metadataObligation(d);const priorDigest=next.digest===null?prior.digest:sha(stable([prior.digest,next.digest]));return {required:prior.required||next.required||metadata.required||false,errors:[...prior.errors,...next.errors,...metadata.errors],digest:metadata.digest===null?priorDigest:sha(stable([priorDigest,metadata.digest])),...(displayRepair().hasFor(d,'IMPORTED_NATIVE_AMENDMENT')?{originalEntries:prior.entries||[],amendmentEntries:next.entries||[]}:{}),...(metadata.required?{metadataEntries:metadata.entries||[]}:{} )};};
 }
 function evidenceDigests(root,d,{safe,sha}){
-  const out=nativeAmendment.evidenceDigests(root,d,{safe,sha});for(const r of Object.values(d.evidence?.[GROUP]||{}))if(r?.path){try{out[r.path]=sha(fs.readFileSync(safe(root,r.path)));}catch{out[r.path]=null;}}return out;
+  const out={...nativeAmendment.evidenceDigests(root,d,{safe,sha}),...issuedMetadata.evidenceDigests(root,d,{safe,sha})};for(const r of Object.values(d.evidence?.[GROUP]||{}))if(r?.path){try{out[r.path]=sha(fs.readFileSync(safe(root,r.path)));}catch{out[r.path]=null;}}return out;
 }
 function validateLegacyFile(root,d,hp,historicalCommit=null,historicalReads=null){
   if(!has(d))return [];
@@ -278,7 +280,7 @@ function validateHistoricalFile(root,reference,hp){
     safe(root,reference.path);const raw=git(root,['show',reference.commit+':'+reference.path]);
     if(sha(raw)!==reference.sha256||blob(raw)!==reference.gitBlobSha1)throw Error('BYTES');
     const document=JSON.parse(raw);
-    if(Object.hasOwn(document.evidence||{},'currentM2DisplayRepairClosure'))throw Error('NOT_ORIGINAL');
+    if(Object.hasOwn(document.evidence||{},'currentM2DisplayRepairClosure')||issuedMetadata.has(document))throw Error('NOT_ORIGINAL');
     if(nativeAmendment.has(document))return nativeAmendment.validateHistoricalFile(root,reference,hp,validateHistoricalFile);
     if(!Object.hasOwn(document.evidence||{},GROUP))throw Error('ORIGINAL_REQUIRED');
     const reads=new Map(),errors=validateLegacyFile(root,document,hp,reference.commit,reads);
@@ -286,6 +288,7 @@ function validateHistoricalFile(root,reference,hp){
   }catch{return {errors:['M2_IMPORTED_CONTINUITY_HISTORICAL_INPUT_INVALID'],document:null,requiredLiveEvidence:[]};}
 }
 function validateFile(root,d,hp){
+  if(issuedMetadata.has(d))return issuedMetadata.validateFile(root,d,hp,validateHistoricalFile);
   if(displayRepair().has(d))return displayRepair().validateFile(root,d,hp,validateHistoricalFile);
   if(nativeAmendment.has(d))return nativeAmendment.validateFile(root,d,hp,validateFile);
   return validateLegacyFile(root,d,hp);

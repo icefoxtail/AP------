@@ -1,0 +1,14 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict');
+const {fixture,run}=require('./helpers/m2s2-imported-metadata-fixture.cjs');
+const denied=f=>{const r=run(f);assert.equal(r.index.records.length,0);assert.ok(r.index.pending.some(x=>/M2_IMPORTED_METADATA_/.test(x.reason)),JSON.stringify(r.index.pending));return r;};
+test('request scope cannot become full-exam',t=>{const f=fixture(t,{changeRequest:r=>{r.scope='FULL_EXAM';}});denied(f);});
+test('receipt must be an actual registered FINAL_QA artifact',t=>{const f=fixture(t,{changeReceipt:r=>{r.metadataRegistrationStatus='PENDING';}});denied(f);});
+test('receipt request digest cannot identify different request bytes',t=>{const f=fixture(t,{changeReceipt:r=>{r.requestSha256='a'.repeat(64);}});denied(f);});
+test('the new path cannot carry registry changes',t=>{const f=fixture(t,{changeRequest:r=>r.registryChanges.push({op:'ADD',kind:'CC',key:'UNAPPROVED'})});denied(f);});
+test('runtime selected metadata must equal both source and issued metadata',t=>{const f=fixture(t,{changeReceipt:r=>{r.runtimeRecords[0].courseKey='M2-1';}});denied(f);});
+test('duplicate issued selected identity is rejected',t=>{const f=fixture(t,{changeReceipt:r=>r.appliedIdentityRecords.push(structuredClone(r.appliedIdentityRecords[0]))});denied(f);});
+test('sourceReview cannot name a different native authority',t=>{const f=fixture(t,{changeReceipt:r=>{r.fingerprintRepairs[0].sourceReview.reviewCommit='a'.repeat(40);}});denied(f);});
+test('native source binding remains exact',t=>{const f=fixture(t,{changeReceipt:r=>{r.fingerprintRepairs[0].sourceReview.reviewedSourceSha256='b'.repeat(64);}});denied(f);});
+test('native approved after values cannot be substituted in the issued row',t=>{const f=fixture(t,{changeRequest:r=>{r.items[0].after.curriculum='2022';},changeReceipt:r=>{r.appliedRecords[0].curriculum='2022';r.runtimeRecords[0].curriculum='2022';}});denied(f);});
+test('full row proof cannot omit an unchanged peer',t=>{const f=fixture(t,{changeProof:p=>p.rows.pop()});denied(f);});
