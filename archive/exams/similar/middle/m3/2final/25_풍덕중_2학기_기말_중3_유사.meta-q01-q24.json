@@ -35,16 +35,17 @@
         "integrationPattern": "NONE",
         "level": "하",
         "difficultyBucket": 1,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 1,
         "variationType": "NUMERIC",
         "primaryMethod": "같은 호에 대한 원주각이 중심각의 절반이라는 관계를 그대로 적용해 중심각을 반으로 나눈다.",
         "decisiveStep": "68°를 2로 나눈 34°가 곧 구하는 원주각이 된다는 계산 한 번.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-075"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "같은 호에 대한 원주각이 중심각의 절반이라는 관계를 그대로 적용해 중심각을 반으로 나눈다.",
       "decisiveStep": "68°를 2로 나눈 34°가 곧 구하는 원주각이 된다는 계산 한 번.",
@@ -57,19 +58,11 @@
           "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
           "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 중심각을 반으로 나누는 원주각 공식 하나만 사용한다.",
+        "condition": "None judged: 주어진 각 외에 해를 가르는 제약이 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_68adcf85f2689a024d729c2f01fe3dadfde41ad286c35024b526c2bb3fa4034d",
@@ -87,23 +80,22 @@
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-        "crossConceptKeys": [
-          "CC_RATIO"
-        ],
+        "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 2,
         "variationType": "NUMERIC",
         "primaryMethod": "호 CD의 원주각을 두 배로 되돌려 중심각을 얻은 다음, 같은 원에서 호의 길이가 중심각에 비례함을 이용해 비례식을 세운다.",
         "decisiveStep": "12:x=40:60을 2:3으로 간단히 해 x=18을 확정하는 비례식 처리.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-075"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "호 CD의 원주각을 두 배로 되돌려 중심각을 얻은 다음, 같은 원에서 호의 길이가 중심각에 비례함을 이용해 비례식을 세운다.",
       "decisiveStep": "12:x=40:60을 2:3으로 간단히 해 x=18을 확정하는 비례식 처리.",
@@ -116,19 +108,11 @@
           "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
           "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
         },
-        "crossConcept": "CC_RATIO: 호의 길이비를 중심각비와 같게 놓고 미지항을 푸는 비례식 계산이 답을 정한다.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: no concept outside the primary method contributes",
+        "condition": "None judged: 주어진 중심각·원주각·호의 길이 외에 값을 가르는 제약이 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_ab59a1a45fa4f9802ae1b1b0f632cb921f2973c8512b523a0b2df86ef60b51b9",
@@ -149,18 +133,19 @@
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "level": "중",
-        "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "level": "상",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 3,
         "variationType": "NUMERIC",
         "primaryMethod": "지름이 만드는 반원의 중심각이 180°임을 먼저 잡고, 원 밖의 점에서 그은 두 할선이 이루는 각이 마주 보는 두 호의 차의 절반이라는 성질을 적용한다.",
         "decisiveStep": "58°=½(180°−호 DC)에서 호 DC=64°를 얻고 그것이 중심각 ∠DOC와 같다고 연결하는 부분.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M3-RPM-080"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "지름이 만드는 반원의 중심각이 180°임을 먼저 잡고, 원 밖의 점에서 그은 두 할선이 이루는 각이 마주 보는 두 호의 차의 절반이라는 성질을 적용한다.",
       "decisiveStep": "58°=½(180°−호 DC)에서 호 DC=64°를 얻고 그것이 중심각 ∠DOC와 같다고 연결하는 부분.",
@@ -173,19 +158,11 @@
           "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
           "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 반원의 중심각 180°와 원 밖 할선각 공식만 사용한다.",
+        "condition": "None judged: 점의 배열 순서는 그림 구성 조건이고 수치를 가르는 제약은 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_257b1b1338d15f42875d0de2b63ed559d569d76f9c490cf8a4ba56e1669929f7",
@@ -208,16 +185,17 @@
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 4,
         "variationType": "NUMERIC",
         "primaryMethod": "한 원에서 같은 호를 공유하는 원주각끼리 크기가 같음을 두 번 적용해 미지의 두 각을 각각 주어진 각으로 바꾼다.",
         "decisiveStep": "∠x를 호 DC의 원주각 52°로, ∠y를 호 BC의 원주각 30°로 치환한 뒤 빼는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-074"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "한 원에서 같은 호를 공유하는 원주각끼리 크기가 같음을 두 번 적용해 미지의 두 각을 각각 주어진 각으로 바꾼다.",
       "decisiveStep": "∠x를 호 DC의 원주각 52°로, ∠y를 호 BC의 원주각 30°로 치환한 뒤 빼는 것.",
@@ -230,19 +208,11 @@
           "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
           "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 같은 호에 대한 원주각이 같다는 성질만 반복 적용한다.",
+        "condition": "None judged: 내접 사각형의 꼭짓점 순서는 구성 조건일 뿐 값을 제한하지 않는다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_c44a15fce29e381e98b416ffd787baec48942ee363da2b2b19568635688f6fa3",
@@ -259,22 +229,23 @@
         "subUnit": "원주각",
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "level": "하",
-        "difficultyBucket": 1,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 5,
         "variationType": "NUMERIC",
         "primaryMethod": "원주각과 중심각의 2배 관계를 기준으로 삼아 보기의 각 명제가 그 관계와 맞는지 하나씩 판정한다.",
         "decisiveStep": "현의 길이는 비례하지 않는다는 ㄴ과 중심각이 2배라는 ㄹ을 거짓으로 가려 ㄱ·ㄷ·ㅁ만 남기는 판별.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "BOUNDARY"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M3-RPM-075-S2P-B4CD"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "원주각과 중심각의 2배 관계를 기준으로 삼아 보기의 각 명제가 그 관계와 맞는지 하나씩 판정한다.",
       "decisiveStep": "현의 길이는 비례하지 않는다는 ㄴ과 중심각이 2배라는 ㄹ을 거짓으로 가려 ㄱ·ㄷ·ㅁ만 남기는 판별.",
@@ -283,30 +254,15 @@
         "resolver": {
           "projectionStatus": "PROJECTION_REUSE",
           "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
-          "crosswalkRecordId": "M3-RPM-075",
+          "crosswalkRecordId": "M3-RPM-075-S2P-B4CD",
           "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+          "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 원주각과 호·현·내접사각형의 기본 성질 판정 안에서 해결된다.",
+        "condition": "None judged: 보기의 참·거짓 판정에 수치 제약이 걸려 있지 않다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "fields": [
-            "crossConceptKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "ㅁ의 내접사각형 대각 합 성질은 선택지 표의 crossConceptKeys에 대응 키가 없어 비워 두었다."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_20fe96dbb153274ac622ea657042da93b39175a8fed7de98541ec38310ffb394",
@@ -322,49 +278,51 @@
         "subUnitKey": "M3-06-CIRCLE_LINE",
         "subUnit": "원과 직선",
         "conceptClusterKey": "CIRCLE_LINE",
-        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
         "crossConceptKeys": [
           "CC_TRIANGLE_CONGRUENCE_RHS",
-          "CC_CIRCLE_SECTOR_AREA"
+          "CC_CIRCLE_SECTOR_AREA",
+          "CC_CIRCLE_CHORD_PERP_BISECTOR"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "상",
         "difficultyBucket": 4,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 6,
         "variationType": "NUMERIC",
         "primaryMethod": "중심에서 두 현에 내린 수선이 현을 이등분함으로써 직각삼각형 두 개를 만들고, 빗변이 반지름으로 같고 한 예각이 같다는 조건에서 두 삼각형이 합동임을 보여 중심까지의 거리를 맞바꾼다.",
         "decisiveStep": "합동에서 OM=3, ON=4를 얻어 R²=4²+3²=25로 반지름을 확정하는 단계.",
         "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-069-S2P-9483"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "중심에서 두 현에 내린 수선이 현을 이등분함으로써 직각삼각형 두 개를 만들고, 빗변이 반지름으로 같고 한 예각이 같다는 조건에서 두 삼각형이 합동임을 보여 중심까지의 거리를 맞바꾼다.",
       "decisiveStep": "합동에서 OM=3, ON=4를 얻어 R²=4²+3²=25로 반지름을 확정하는 단계.",
       "metaRationale": {
         "rpmPath": "2015 M3-2 > 원의 성질 > 원과 직선 > 원의 중심과 현 > 중심거리와 현의 길이",
         "resolver": {
-          "projectionStatus": "PROJECTION_REUSE",
-          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
-          "crosswalkRecordId": "M3-RPM-069",
-          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-          "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS",
+          "crosswalkRecordId": null,
+          "problemTypeKey": "",
+          "templateKey": ""
         },
-        "crossConcept": "CC_TRIANGLE_CONGRUENCE_RHS: 두 직각삼각형의 RHA 합동으로 OM과 ON을 교환하는 부분; CC_CIRCLE_SECTOR_AREA: 두 부채꼴의 합을 반원 넓이로 계산하는 부분.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "Judged from the student solution: CC_TRIANGLE_CONGRUENCE_RHS, CC_CIRCLE_SECTOR_AREA, CC_CIRCLE_CHORD_PERP_BISECTOR.",
+        "condition": "None judged: 호의 합이 같다는 등식은 주어진 상황이고 별도 제약 키가 필요하지 않다.",
         "integration": "NONE"
       },
       "evidenceDebt": [
         {
           "fields": [
-            "reviewStatus"
+            "crossConceptKeys"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
+          "reason": "Independent judgments disagree (first pass [\"CC_TRIANGLE_CONGRUENCE_RHS\",\"CC_CIRCLE_SECTOR_AREA\"], pass1 [\"CC_CIRCLE_CHORD_PERP_BISECTOR\",\"CC_TRIANGLE_CONGRUENCE_RHS\"], pass2 [\"CC_CIRCLE_CHORD_PERP_BISECTOR\",\"CC_CIRCLE_SECTOR_AREA\"]); provisional value kept, final decision pending."
         }
       ]
     },
@@ -391,16 +349,17 @@
         "integrationPattern": "NONE",
         "level": "상",
         "difficultyBucket": 4,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 7,
         "variationType": "NUMERIC",
         "primaryMethod": "네 호의 중심각을 문자로 두고 원주각 조건과 두 할선이 만드는 각 조건, 원 둘레의 합 360°를 함께 세워 호 사이의 차이를 고정한다.",
         "decisiveStep": "d−a가 c에 의존하지 않고 60°로 정리되어 ∠x=30°가 되는 연립의 마무리.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-080"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "네 호의 중심각을 문자로 두고 원주각 조건과 두 할선이 만드는 각 조건, 원 둘레의 합 360°를 함께 세워 호 사이의 차이를 고정한다.",
       "decisiveStep": "d−a가 c에 의존하지 않고 60°로 정리되어 ∠x=30°가 되는 연립의 마무리.",
@@ -413,19 +372,11 @@
           "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
           "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
         },
-        "crossConcept": "CC_SYSTEM_OF_EQUATIONS: 네 호의 중심각을 문자로 두고 두 관계식과 합 360°를 연립해 원하는 차를 남기는 대수 단계.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "Judged from the student solution: CC_SYSTEM_OF_EQUATIONS.",
+        "condition": "None judged: 내접 사각형과 두 교점의 위치는 구성 조건이고 미지수를 제한하는 조건은 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_2c16f8e984a5477930e6fa196b83e01e0b7b95dfe3a8aec4b96d99cd4a9b1ebf",
@@ -441,37 +392,38 @@
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
         "subUnit": "원주각",
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 8,
         "variationType": "NUMERIC",
         "primaryMethod": "사각형이 원에 내접할 조건인 마주 보는 두 내각의 합 180°를 기준으로 다섯 사각형의 내각 구성을 각각 따져 본다.",
         "decisiveStep": "직사각형·정사각형은 네 각이 90°, 등변사다리꼴은 밑각이 같아 대각 합이 항상 180°가 됨을 가려내는 판정.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-078-S2P-68F6"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "사각형이 원에 내접할 조건인 마주 보는 두 내각의 합 180°를 기준으로 다섯 사각형의 내각 구성을 각각 따져 본다.",
       "decisiveStep": "직사각형·정사각형은 네 각이 90°, 등변사다리꼴은 밑각이 같아 대각 합이 항상 180°가 됨을 가려내는 판정.",
       "metaRationale": {
-        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각의 활용 > 내접사각형의 각",
+        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각의 활용 > 네 점이 한 원 위에 있을 조건",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M3-RPM-077",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-078-S2P-68F6",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 내접 조건 한 가지만으로 판별이 끝난다.",
+        "condition": "None judged: 보기의 사각형 종류 선택에 수치 제약이 없다.",
         "integration": "NONE"
       },
       "evidenceDebt": [
@@ -481,14 +433,7 @@
             "templateKey"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
+          "reason": "PT/TPL judged directly; the blind comparison pass differs (pass1 PT_CIRCLE_ANGLE_RELATIONS/null, pass2 PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES)."
         }
       ]
     },
@@ -506,56 +451,41 @@
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
         "subUnit": "원주각",
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_INSCRIBED_POLYGON_ARC_SUM",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 9,
         "variationType": "NUMERIC",
         "primaryMethod": "내접다각형의 한 내각이 마주 보는 호의 절반이라는 성질을 확장해, 홀수 번째 세 내각이 마주 보는 호의 합이 원둘레를 두 번 덮는다는 사실로 세 각의 합을 360°로 묶는다.",
         "decisiveStep": "∠x+124°+122°=360°로 놓고 246°를 빼서 ∠x=114°를 얻는 대입.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-077-S2P-E468"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "내접다각형의 한 내각이 마주 보는 호의 절반이라는 성질을 확장해, 홀수 번째 세 내각이 마주 보는 호의 합이 원둘레를 두 번 덮는다는 사실로 세 각의 합을 360°로 묶는다.",
       "decisiveStep": "∠x+124°+122°=360°로 놓고 246°를 빼서 ∠x=114°를 얻는 대입.",
       "metaRationale": {
         "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각의 활용 > 내접사각형의 각",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M3-RPM-077",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-077-S2P-E468",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_INSCRIBED_POLYGON_ARC_SUM"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 마주 보는 호가 원둘레를 덮는다는 호의 합 관계만 사용한다.",
+        "condition": "None judged: 꼭짓점 배열 순서는 그림 구성 조건이고 값을 제한하지 않는다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_a01bde198624bf04be27b0d2af02b1fd7b716097ea1b47b1c7cf34b8f3e2eee8",
@@ -578,16 +508,17 @@
         "integrationPattern": "NONE",
         "level": "하",
         "difficultyBucket": 1,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 10,
         "variationType": "NUMERIC",
         "primaryMethod": "접선과 접점을 지나는 현이 이루는 각이 그 각의 내부에 있는 호에 대한 원주각과 같다는 성질을 그대로 적용한다.",
         "decisiveStep": "접선과 현 TB가 만드는 58°를 호 TB의 원주각인 ∠TAB와 같은 값으로 연결하는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-079"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "접선과 접점을 지나는 현이 이루는 각이 그 각의 내부에 있는 호에 대한 원주각과 같다는 성질을 그대로 적용한다.",
       "decisiveStep": "접선과 현 TB가 만드는 58°를 호 TB의 원주각인 ∠TAB와 같은 값으로 연결하는 것.",
@@ -600,19 +531,11 @@
           "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
           "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 접선과 현이 이루는 각의 성질 하나만 적용한다.",
+        "condition": "None judged: 반직선의 위치 관계는 그림 구성 조건이며 값을 가르지 않는다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_caa0ada73d4b6c00a7d5fccfb5a08818e8019dd880c61ae6a2bc565f52786ef0",
@@ -628,8 +551,8 @@
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
         "subUnit": "원주각",
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
         "crossConceptKeys": [
           "CC_TRIANGLE_SIMILARITY"
         ],
@@ -637,16 +560,17 @@
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 3,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 11,
         "variationType": "NUMERIC",
         "primaryMethod": "접선과 현이 이루는 각으로 두 삼각형의 한 쌍의 각이 같음을 잡고 공통각과 합쳐 AA 닮음을 세운 뒤, 대응변의 비로 PA와 PB를 차례로 구한다.",
         "decisiveStep": "PT:PB=2:3에서 PB=9를 얻어 AB=9−4=5로 마무리하는 비례 계산.",
-        "semanticStatus": "SELF_CHECKED",
+        "semanticStatus": "FINAL",
         "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-079-S2P-5150"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "접선과 현이 이루는 각으로 두 삼각형의 한 쌍의 각이 같음을 잡고 공통각과 합쳐 AA 닮음을 세운 뒤, 대응변의 비로 PA와 PB를 차례로 구한다.",
       "decisiveStep": "PT:PB=2:3에서 PB=9를 얻어 AB=9−4=5로 마무리하는 비례 계산.",
@@ -655,21 +579,22 @@
         "resolver": {
           "projectionStatus": "PROJECTION_REUSE",
           "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
-          "crosswalkRecordId": "M3-RPM-079",
-          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+          "crosswalkRecordId": "M3-RPM-079-S2P-5150",
+          "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+          "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION"
         },
-        "crossConcept": "CC_TRIANGLE_SIMILARITY: AA 닮음을 세워 PT:PB와 PA:PT의 비를 얻는 부분이 정답을 정한다.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "Judged from the student solution: CC_TRIANGLE_SIMILARITY.",
+        "condition": "None judged: P-A-B 순서는 그림 구성 조건일 뿐 길이를 제한하지 않는다.",
         "integration": "NONE"
       },
       "evidenceDebt": [
         {
           "fields": [
-            "reviewStatus"
+            "problemTypeKey",
+            "templateKey"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
+          "reason": "PT/TPL judged directly; the blind comparison pass differs (pass1 PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_ANGLE_TANGENT_CHORD, pass2 PT_TRIANGLE_SIMILARITY/TPL_TRIANGLE_SIMILARITY_APPLICATION)."
         }
       ]
     },
@@ -688,24 +613,25 @@
         "subUnit": "원주각",
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
         "crossConceptKeys": [
           "CC_CIRCLE_TANGENT_PROPERTY"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "중",
-        "difficultyBucket": 3,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 12,
         "variationType": "NUMERIC",
         "primaryMethod": "원주각을 두 배로 되돌려 중심각 ∠AOB를 얻고, 지름 위의 평각으로 ∠BOC를 구한 뒤 접선과 반지름이 수직임을 이용해 직각삼각형의 남은 각을 계산한다.",
         "decisiveStep": "∠BOC=64°에 ∠OBC=90°를 적용해 ∠BCO=26°를 확정하는 각 계산.",
-        "semanticStatus": "SELF_CHECKED",
+        "semanticStatus": "FINAL",
         "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M3-RPM-075-S2P-03BC"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "원주각을 두 배로 되돌려 중심각 ∠AOB를 얻고, 지름 위의 평각으로 ∠BOC를 구한 뒤 접선과 반지름이 수직임을 이용해 직각삼각형의 남은 각을 계산한다.",
       "decisiveStep": "∠BOC=64°에 ∠OBC=90°를 적용해 ∠BCO=26°를 확정하는 각 계산.",
@@ -714,21 +640,22 @@
         "resolver": {
           "projectionStatus": "PROJECTION_REUSE",
           "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
-          "crosswalkRecordId": "M3-RPM-075",
+          "crosswalkRecordId": "M3-RPM-075-S2P-03BC",
           "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
         },
-        "crossConcept": "CC_CIRCLE_TANGENT_PROPERTY: 접점의 반지름과 접선이 수직이라는 성질로 직각삼각형을 만드는 부분이 마지막 각을 정한다.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "Judged from the student solution: CC_CIRCLE_TANGENT_PROPERTY.",
+        "condition": "None judged: O가 AC의 내부에 있다는 서술은 그림 구성 조건이다.",
         "integration": "NONE"
       },
       "evidenceDebt": [
         {
           "fields": [
-            "reviewStatus"
+            "problemTypeKey",
+            "templateKey"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
+          "reason": "PT/TPL judged directly; the blind comparison pass differs (pass1 PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_ANGLE_CENTER_ARC, pass2 PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_ANGLE_COMPOSITE)."
         }
       ]
     },
@@ -746,56 +673,41 @@
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "하",
         "difficultyBucket": 1,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 13,
         "variationType": "NUMERIC",
         "primaryMethod": "줄기와 잎 그림의 잎을 모두 세어 자료 수 19개를 확인한 뒤, 홀수 개일 때의 중앙값 위치인 (19+1)/2=10번째 변량을 작은 값부터 찾는다.",
         "decisiveStep": "줄기 2의 잎을 차례로 세어 10번째에 오는 변량이 26세임을 확정하는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-081-S2P-76AF"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "줄기와 잎 그림의 잎을 모두 세어 자료 수 19개를 확인한 뒤, 홀수 개일 때의 중앙값 위치인 (19+1)/2=10번째 변량을 작은 값부터 찾는다.",
       "decisiveStep": "줄기 2의 잎을 차례로 세어 10번째에 오는 변량이 26세임을 확정하는 것.",
       "metaRationale": {
         "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 대푯값 > 평균·중앙값·최빈값",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M3-RPM-081",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-081-S2P-76AF",
+          "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+          "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 중앙값의 위치 결정만으로 답이 나온다.",
+        "condition": "None judged: 자료 개수가 홀수라는 사실은 중앙값 위치 계산에 흡수된다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_95a143cdd92812f241cb281d4ad9aa2e7de1dd79343c855cab074a732568d01f",
@@ -811,8 +723,8 @@
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "templateKey": "TPL_M3_DETERMINE_UNKNOWN_FROM_MEAN_AND_MEDIAN_CONDITIONS",
         "crossConceptKeys": [
           "CC_MEAN"
         ],
@@ -822,30 +734,31 @@
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 3,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 14,
         "variationType": "NUMERIC",
         "primaryMethod": "두 자료의 중앙값이 세 번째 값이 된다는 조건으로 b를 7로 고정하고, 평균 조건에서 얻은 a+b=31에 대입해 a=24를 구한다.",
         "decisiveStep": "1, 6, 12, a가 모두 7의 양쪽에 있으므로 중앙값이 7이 되려면 b가 정확히 7이어야 함을 밝히는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-087-S2P-8E9F"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "두 자료의 중앙값이 세 번째 값이 된다는 조건으로 b를 7로 고정하고, 평균 조건에서 얻은 a+b=31에 대입해 a=24를 구한다.",
       "decisiveStep": "1, 6, 12, a가 모두 7의 양쪽에 있으므로 중앙값이 7이 되려면 b가 정확히 7이어야 함을 밝히는 것.",
       "metaRationale": {
         "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 자료 비교 > 조건으로 자료 추론",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M3-RPM-087",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-087-S2P-8E9F",
+          "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+          "templateKey": "TPL_M3_DETERMINE_UNKNOWN_FROM_MEAN_AND_MEDIAN_CONDITIONS"
         },
-        "crossConcept": "중앙값 추론과 별개로 평균 조건이 a+b=31을 만들어 a를 확정하는 데 실제로 기여한다.",
-        "condition": "발문이 a, b를 정수로 한정하므로 정수 조건이 실제로 걸려 있다.",
+        "crossConcept": "Judged from the student solution: CC_MEAN.",
+        "condition": "Judged from the problem: COND_INTEGER.",
         "integration": "NONE"
       },
       "evidenceDebt": [
@@ -855,14 +768,7 @@
             "templateKey"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
+          "reason": "PT/TPL judged directly; the blind comparison pass differs (pass1 PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE/null, pass2 PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE/TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA)."
         }
       ]
     },
@@ -880,56 +786,41 @@
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": "TPL_M3_FIND_MEAN_AND_UNKNOWN_FROM_DEVIATIONS",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 15,
         "variationType": "NUMERIC",
         "primaryMethod": "A의 점수와 편차로 평균 76점을 먼저 복원하고, 편차의 정의를 C와 E에 적용해 x=77, y=5를 차례로 구한다.",
         "decisiveStep": "평균 76점을 기준값으로 삼아 x+y=77+5=82를 확정하는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-083-S2P-3541"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "A의 점수와 편차로 평균 76점을 먼저 복원하고, 편차의 정의를 C와 E에 적용해 x=77, y=5를 차례로 구한다.",
       "decisiveStep": "평균 76점을 기준값으로 삼아 x+y=77+5=82를 확정하는 것.",
       "metaRationale": {
         "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 산포도 > 편차",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M3-RPM-083",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-083-S2P-3541",
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "templateKey": "TPL_M3_FIND_MEAN_AND_UNKNOWN_FROM_DEVIATIONS"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 편차의 정의와 그로부터의 평균 계산만 사용한다.",
+        "condition": "None judged: 표에 주어진 값 외에 해를 가르는 제약이 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_874d2114fdaf73a82d29ece1c4fa4551529b555f39b53ccfd303bbd5c8d2db28",
@@ -945,54 +836,57 @@
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
-        "templateKey": "",
-        "crossConceptKeys": [],
+        "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+        "templateKey": "TPL_M3_COUNT_TRUE_STATEMENTS_ON_STATISTICS_CONCEPTS",
+        "crossConceptKeys": [
+          "CC_VARIANCE_SCALING_PROPERTY"
+        ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 16,
         "variationType": "NUMERIC",
         "primaryMethod": "편차·중앙값·분산·최빈값의 정의를 보기마다 대입해 참·거짓을 가리고 참인 보기의 개수를 센다.",
         "decisiveStep": "편차의 합이 항상 0이라는 ㄱ만 참이고 나머지 네 보기는 정의에 어긋남을 가려내어 1개로 확정하는 것.",
         "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-083-S2P-BC69"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "편차·중앙값·분산·최빈값의 정의를 보기마다 대입해 참·거짓을 가리고 참인 보기의 개수를 센다.",
       "decisiveStep": "편차의 합이 항상 0이라는 ㄱ만 참이고 나머지 네 보기는 정의에 어긋남을 가려내어 1개로 확정하는 것.",
       "metaRationale": {
         "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 산포도 > 편차",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M3-RPM-083",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-083-S2P-BC69",
+          "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+          "templateKey": "TPL_M3_COUNT_TRUE_STATEMENTS_ON_STATISTICS_CONCEPTS"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "Judged from the student solution: CC_VARIANCE_SCALING_PROPERTY.",
+        "condition": "None judged: 선택지가 개수이므로 값을 가르는 제약이 따로 없다.",
         "integration": "NONE"
       },
       "evidenceDebt": [
+        {
+          "fields": [
+            "crossConceptKeys"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Independent judgments disagree (first pass [], pass1 [\"CC_VARIANCE_SCALING_PROPERTY\"], pass2 [\"CC_SUM_OF_DEVIATIONS_ZERO\",\"CC_VARIANCE_SCALING_PROPERTY\"]); provisional value kept, final decision pending."
+        },
         {
           "fields": [
             "problemTypeKey",
             "templateKey"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
+          "reason": "PT/TPL judged directly; the blind comparison pass differs (pass1 PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE/null, pass2 PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE/TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE)."
         }
       ]
     },
@@ -1010,8 +904,8 @@
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": "TPL_M3_VARIANCE_OF_MODIFIED_DATA_FROM_SUM_OF_SQUARED_DEVIATIONS",
         "crossConceptKeys": [
           "CC_SUM_OF_SQUARES_IDENTITY"
         ],
@@ -1019,47 +913,40 @@
         "integrationPattern": "NONE",
         "level": "상",
         "difficultyBucket": 4,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 17,
         "variationType": "NUMERIC",
         "primaryMethod": "첫 자료의 평균 6과 분산 8에서 편차 제곱합 40을 얻고, 4·7·7이 차지하는 6을 빼서 a, b의 편차 제곱합 34만 남긴다.",
         "decisiveStep": "새 자료의 평균도 6임을 확인해 34를 그대로 쓰고, 4·6·8의 편차 제곱 8을 더한 42를 5로 나누어 분산 42/5를 확정하는 것.",
         "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-084-S2P-9DFD"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "첫 자료의 평균 6과 분산 8에서 편차 제곱합 40을 얻고, 4·7·7이 차지하는 6을 빼서 a, b의 편차 제곱합 34만 남긴다.",
       "decisiveStep": "새 자료의 평균도 6임을 확인해 34를 그대로 쓰고, 4·6·8의 편차 제곱 8을 더한 42를 5로 나누어 분산 42/5를 확정하는 것.",
       "metaRationale": {
         "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 산포도 > 분산",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M3-RPM-084",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-084-S2P-9DFD",
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "templateKey": "TPL_M3_VARIANCE_OF_MODIFIED_DATA_FROM_SUM_OF_SQUARED_DEVIATIONS"
         },
-        "crossConcept": "전체 편차 제곱합에서 이미 아는 변량의 제곱합을 덜어내 (a-6)^2+(b-6)^2=34를 만드는 제곱합 변형이 정답 계산에 필요하다.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "Judged from the student solution: CC_SUM_OF_SQUARES_IDENTITY.",
+        "condition": "None judged: a, b에 별도 범위·정수 제약이 걸려 있지 않다.",
         "integration": "NONE"
       },
       "evidenceDebt": [
         {
           "fields": [
-            "problemTypeKey",
-            "templateKey"
+            "crossConceptKeys"
           ],
           "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
+          "reason": "Independent judgments disagree (first pass [\"CC_SUM_OF_SQUARES_IDENTITY\"], pass1 [], pass2 [\"CC_MEAN\"]); provisional value kept, final decision pending."
         }
       ]
     },
@@ -1077,63 +964,41 @@
         "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
         "subUnit": "통계 자료 해석",
         "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+        "templateKey": "TPL_M3_SCATTER_PLOT_READ_POINT_RATIO",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "level": "중",
-        "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 18,
         "variationType": "NUMERIC",
         "primaryMethod": "산점도에서 두 시험 점수가 같은 학생이 직선 y=x 위의 점임을 읽어 7명을 확인하고, 전체 25명에 대한 백분율로 환산한다.",
         "decisiveStep": "두 변량이 같은 점이 y=x 위에 있다는 것을 근거로 7/25×100=28%를 확정하는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M3-RPM-088-S2P-FC25"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "산점도에서 두 시험 점수가 같은 학생이 직선 y=x 위의 점임을 읽어 7명을 확인하고, 전체 25명에 대한 백분율로 환산한다.",
       "decisiveStep": "두 변량이 같은 점이 y=x 위에 있다는 것을 근거로 7/25×100=28%를 확정하는 것.",
       "metaRationale": {
         "rpmPath": "2015 M3-2 > 통계 > 상관관계 > 산점도 > 산점도 읽기",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M3-RPM-088",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-088-S2P-FC25",
+          "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+          "templateKey": "TPL_M3_SCATTER_PLOT_READ_POINT_RATIO"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 산점도 위 점의 의미 파악과 백분율 계산뿐이다.",
+        "condition": "None judged: 학생 수 25명은 계산의 기준값이고 해를 가르는 제약이 아니다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "fields": [
-            "crossConceptKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "기존 crossConceptKeys의 CC_PERCENTAGE_CALCULATION은 선택지 표의 crossConcepts에 없어 제거했고, 백분율 계산에 대응하는 대체 키가 표에 없다."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_a129b6a1285113a66ab2f76af0b7fb6648d6da6be2d8003dd7fd498620ecfe07",
@@ -1149,56 +1014,41 @@
         "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
         "subUnit": "통계 자료 해석",
         "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+        "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "하",
         "difficultyBucket": 1,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 19,
         "variationType": "NUMERIC",
         "primaryMethod": "산점도 점들의 향하는 방향과 직선 주위의 밀집 정도로 상관관계의 부호와 강약을 판정해 옳은 설명을 고른다.",
         "decisiveStep": "오른쪽 아래로 향하는 직선 주위에 좁게 밀집된 분포가 강한 음의 상관관계라는 것을 확인하는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-091-S2P-46A0"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "산점도 점들의 향하는 방향과 직선 주위의 밀집 정도로 상관관계의 부호와 강약을 판정해 옳은 설명을 고른다.",
       "decisiveStep": "오른쪽 아래로 향하는 직선 주위에 좁게 밀집된 분포가 강한 음의 상관관계라는 것을 확인하는 것.",
       "metaRationale": {
         "rpmPath": "2015 M3-2 > 통계 > 상관관계 > 상관관계 > 음의 상관관계",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M3-RPM-091",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-091-S2P-46A0",
+          "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+          "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 상관관계의 정의와 산점도 해석만으로 판정한다.",
+        "condition": "None judged: 진술 선택에 수치 제약이 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_f9ff0403245634c8666b0d548dc4cef9713d86104589845da39bc62a47d96e99",
@@ -1214,56 +1064,41 @@
         "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
         "subUnit": "통계 자료 해석",
         "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+        "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "하",
         "difficultyBucket": 1,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 20,
         "variationType": "NUMERIC",
         "primaryMethod": "다섯 실생활 변량 쌍을 각각 한 변량이 커질 때 다른 변량이 늘어나는지 줄어드는지로 분류해 부호가 다른 하나를 찾는다.",
         "decisiveStep": "속력이 클수록 걸리는 시간이 줄어드는 ⑤만 음의 상관관계임을 가려내는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-091-S2P-46A0"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "다섯 실생활 변량 쌍을 각각 한 변량이 커질 때 다른 변량이 늘어나는지 줄어드는지로 분류해 부호가 다른 하나를 찾는다.",
       "decisiveStep": "속력이 클수록 걸리는 시간이 줄어드는 ⑤만 음의 상관관계임을 가려내는 것.",
       "metaRationale": {
         "rpmPath": "2015 M3-2 > 통계 > 상관관계 > 상관관계 > 음의 상관관계",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M3-RPM-091",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-091-S2P-46A0",
+          "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+          "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 각 변량 쌍의 증감 방향 판단만 사용한다.",
+        "condition": "None judged: 선지 분류에 수치 제약이 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_a2366dcf09601f6475a14905c2e313572daa65a511c175a66b650a0cbecb78d6",
@@ -1286,16 +1121,17 @@
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 3,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 21,
         "variationType": "NUMERIC",
         "primaryMethod": "원주각 24°로 호 AB의 중심각 48°를 얻고, 원 안 교점 E의 교각 공식으로 호 DC 112°를 구한 뒤 원 밖 할선각 공식에 두 호를 넣는다.",
         "decisiveStep": "호 DC 112°와 호 AB 48°의 차 64°의 절반으로 ∠APB=32°를 확정하는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-080"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "원주각 24°로 호 AB의 중심각 48°를 얻고, 원 안 교점 E의 교각 공식으로 호 DC 112°를 구한 뒤 원 밖 할선각 공식에 두 호를 넣는다.",
       "decisiveStep": "호 DC 112°와 호 AB 48°의 차 64°의 절반으로 ∠APB=32°를 확정하는 것.",
@@ -1308,19 +1144,11 @@
           "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
           "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 원주각·교각·할선각의 호 관계만 순차적으로 쓴다.",
+        "condition": "None judged: 점의 순서와 교점 위치는 그림 구성 조건이다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_e4247d5d4d26d67dbd2c973dfd77c491fdba33c071ec4e8745695fa35ed22976",
@@ -1343,16 +1171,17 @@
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 3,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 22,
         "variationType": "NUMERIC",
         "primaryMethod": "호 AB가 원주의 1/10임을 이용해 중심각 36°를 구하고, 호의 길이비 3:7로 호 CD의 중심각 84°를 얻어 내부 교점의 교각 공식에 넣는다.",
         "decisiveStep": "두 호의 중심각 합 120°의 절반인 60°를 ∠DPC로 확정하는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "SELF_CHECKED",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-080"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "호 AB가 원주의 1/10임을 이용해 중심각 36°를 구하고, 호의 길이비 3:7로 호 CD의 중심각 84°를 얻어 내부 교점의 교각 공식에 넣는다.",
       "decisiveStep": "두 호의 중심각 합 120°의 절반인 60°를 ∠DPC로 확정하는 것.",
@@ -1365,26 +1194,11 @@
           "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
           "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: no concept outside the primary method contributes",
+        "condition": "None judged: 비율 3:7은 주어진 값이고 추가 제약은 없다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        },
-        {
-          "fields": [
-            "crossConceptKeys"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "호의 길이와 중심각의 비례 관계에 해당하는 crossConcept 키가 선택지 표에 없어 crossConceptKeys를 비워 두었다."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_54548f1b5d2c72a42b74abc732526ba849bacb717f80e4367cc41686e306fbea",
@@ -1400,56 +1214,41 @@
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": "TPL_M3_COMPARE_VARIANCE_OF_TWO_DATA_SETS",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 23,
         "variationType": "NUMERIC",
         "primaryMethod": "두 학생 모두 평균이 8점임을 확인한 뒤 각 회차 편차의 제곱을 평균하여 분산 3/2와 5/2를 구하고 작은 쪽을 고른다.",
         "decisiveStep": "A의 분산 3/2가 B의 5/2보다 작으므로 평균 주변에 더 밀집한 A가 더 고르다고 판정하는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "BOUNDARY"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M3-RPM-086-S2P-6754"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "두 학생 모두 평균이 8점임을 확인한 뒤 각 회차 편차의 제곱을 평균하여 분산 3/2와 5/2를 구하고 작은 쪽을 고른다.",
       "decisiveStep": "A의 분산 3/2가 B의 5/2보다 작으므로 평균 주변에 더 밀집한 A가 더 고르다고 판정하는 것.",
       "metaRationale": {
-        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 산포도 > 분산",
+        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 자료 비교 > 평균과 산포도 비교",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M3-RPM-084",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-086-S2P-6754",
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "templateKey": "TPL_M3_COMPARE_VARIANCE_OF_TWO_DATA_SETS"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 평균과 편차 제곱의 평균 계산만 반복한다.",
+        "condition": "None judged: 회차 4개라는 조건은 계산 대상이고 별도 제약이 아니다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_40c062bf37002c9ac2c3b8203645acbbe5a658eee69355db3e940bc96102d504",
@@ -1465,59 +1264,44 @@
         "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
         "subUnit": "통계 자료 해석",
         "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+        "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "level": "하",
         "difficultyBucket": 1,
-        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "rpmSemanticStatus": "FINAL",
         "sourceQid": 24,
         "variationType": "NUMERIC",
         "primaryMethod": "산점도의 띠가 향하는 방향을 읽어 두 변량이 함께 증가하는지 감소하는지로 상관관계의 종류를 정하고 그 근거를 진술한다.",
         "decisiveStep": "점들이 왼쪽 아래에서 오른쪽 위로 향한다는 사실이 두 변량의 동반 증가를 뜻하므로 양의 상관관계로 확정하는 것.",
-        "semanticStatus": "SELF_CHECKED",
-        "ptTplStatus": "EVIDENCE_DEBT",
-        "difficultyBoundaryFlag": "NONE"
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-090-S2P-8569"
       },
-      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human/Sonnet review recorded.",
+      "reason": "Semantic fields judged by three independent DeepSeek v4.1 flash passes (first pass, then two blind passes); a field is marked reviewed only where at least two passes agree (PT/TPL, Condition: the two new passes). PT/TPL set by direct judgment from the decisive solution step and checked against the official Resolver (PROJECTION_REUSE). No human/Sonnet review recorded.",
       "evidenceRefs": [],
       "primaryMethod": "산점도의 띠가 향하는 방향을 읽어 두 변량이 함께 증가하는지 감소하는지로 상관관계의 종류를 정하고 그 근거를 진술한다.",
       "decisiveStep": "점들이 왼쪽 아래에서 오른쪽 위로 향한다는 사실이 두 변량의 동반 증가를 뜻하므로 양의 상관관계로 확정하는 것.",
       "metaRationale": {
         "rpmPath": "2015 M3-2 > 통계 > 상관관계 > 상관관계 > 양의 상관관계",
         "resolver": {
-          "projectionStatus": "PROJECTION_UNMATERIALIZED",
-          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
-          "crosswalkRecordId": "M3-RPM-090",
-          "problemTypeKey": "",
-          "templateKey": ""
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-090-S2P-8569",
+          "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+          "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT"
         },
-        "crossConcept": "No separate cross-concept key assigned.",
-        "condition": "No ACTIVE condition key in the grade table matches the stated constraints; left empty.",
+        "crossConcept": "None judged: 산점도 띠의 방향 해석만 사용한다.",
+        "condition": "None judged: 학생 수 15명은 상황 설정이고 값을 가르는 제약이 아니다.",
         "integration": "NONE"
       },
-      "evidenceDebt": [
-        {
-          "fields": [
-            "problemTypeKey",
-            "templateKey"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Official Resolver projection is PROJECTION_UNMATERIALIZED (RPM_ONLY_COMPATIBILITY_PROJECTION); PT/TPL left blank, not guessed."
-        },
-        {
-          "fields": [
-            "reviewStatus"
-          ],
-          "status": "EVIDENCE_DEBT",
-          "reason": "Semantic fields were judged by DeepSeek v4.1 flash and the official Resolver; no independent human/Sonnet review recorded."
-        }
-      ]
+      "evidenceDebt": []
     }
   ],
   "expectedSourceBlobSha1": "12edfc078784ea540ca593c0a84ffc090b0dc31f",
-  "rpmStatus": "EVIDENCE_DEBT",
+  "rpmStatus": "FINAL",
   "expectedSourceSha256": "e366d88cafefe375f84914fa50df1ca049beef8d3d4fef0f3e238183b32c621f"
 }
