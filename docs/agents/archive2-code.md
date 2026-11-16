@@ -113,12 +113,25 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 ## 단원별 기출은 표 한 화면 (2026-11-16 사용자 결정)
 
-- **표가 `unit-past-exams.html`의 유일한 화면이다.** 옛 3단계 화면(학년·과목·단원 카드, 세분 출제, 옛 모아뽑기·구성 화면, 옛 단계 진행 띠)과 그 코드·CSS·Font Awesome 링크는 지웠다. 이유: 표 아래 "세분 출제" 링크가 메뉴 없는 옛 화면으로 보내고 출제가 1.0 전체 페이지로 넘어갔다. 그 기능(소단원·유형 필터, 학교·연도 모아뽑기)은 표 안으로 옮긴다(계획서 1b·1c).
+- **표가 `unit-past-exams.html`의 유일한 화면이다.** 옛 3단계 화면(학년·과목·단원 카드, 세분 출제, 옛 모아뽑기·구성 화면, 옛 단계 진행 띠)과 그 코드·CSS·Font Awesome 링크는 지웠다. 이유: 표 아래 "세분 출제" 링크가 메뉴 없는 옛 화면으로 보내고 출제가 1.0 전체 페이지로 넘어갔다. 그 기능 중 소단원·유형 거르기는 아래 "단원 트리와 표 펼침·유형 거르기"로 표 안에 들어왔고, 학교·연도 모아뽑기는 표 안으로 옮긴다(계획서 1c).
 - **옛 주소(`ready=1` 없음, `subUnit`·`blueprint`·`collection*` 같은 옛 값 포함)는 표로 열린다.** `grade`·`unit`(과목은 `course` 또는 옛 `semanticSubject`)만 이어받아 그 단원 행을 체크해 보여 주고, `gridSyncUrl`이 옛 값(`LEGACY_URL_PARAMS`)을 주소에서 지운다. `ready=1`은 더 이상 아무것도 바꾸지 않는다(1.0 "단원별 기출" 링크와 메뉴는 그대로 `ready=1`을 붙인다). `archive2-navigation.js`는 `ready`가 없어도 메뉴를 지우지 않는다.
-- **지우지 않은 것**: ① 표의 "고치기"가 여는 옛 "시험지 확인" 화면(미리보기·시험지 머리글 편집·문항 교체, `renderConfirmation`)은 기능 그대로고 모양은 1b에서 바꾼다. ② 출력(시험지·해설·정답)과 출제 패널 경로, `assign=legacy`일 때의 iframe 출제(`archive/index.html`의 `unitPastAssign` 처리). ③ `unit-past-exams-core.js`의 모아뽑기 계산(1c에서 표에 쓴다)과 다른 core 함수.
+- **지우지 않은 것**: ① 표의 "고치기"가 여는 "시험지 확인" 화면(미리보기·시험지 머리글 편집·문항 교체, `renderConfirmation`)은 기능 그대로이고 1b에서 새 모양으로 바꿨다. ② 출력(시험지·해설·정답)과 출제 패널 경로, `assign=legacy`일 때의 iframe 출제(`archive/index.html`의 `unitPastAssign` 처리). ③ `unit-past-exams-core.js`의 모아뽑기 계산(1c에서 표에 쓴다)과 다른 core 함수.
 - **옛 출력 전달 저장소(`mixedQuestions_`·`mixedMeta_`)와 `APMATH_UNIT_PAST_ASSIGN_`는 이 페이지가 더 쓰지 않는다**(문항은 출력 포장이나 출제 패널 본문으로 간다). `storeMixedPayload`는 `buildMixedMeta`로 이름을 바꿨다(meta만 만든다). `mixer.html`의 보관 규칙은 그대로다.
 - 로그인이 없으면 새 틀 안에 "선생님 로그인이 필요합니다" 안내(로그인·다시 확인 두 버튼), 로딩 실패면 이유와 `다시 시도`(새로고침)만 나온다. 옛 화면으로 보내는 링크는 없다.
 - 학년 버튼·탭·진행 줄·표 뼈대는 큰 자료를 해석하기 전에 그린다(아래 "첫 화면 먼저"). 회귀 테스트: `tests/archive-unit-past-exams-ui.test.js`·`-ui-runtime.test.js`·`archive2-navigation.test.cjs`, 실제 Chrome 확인은 `tools/check-archive-rpm-middle-browser.cjs`(옛 주소 열기 포함).
+
+## 단원 트리와 표 펼침·유형 거르기 (2026-11-16, 계획 1b)
+
+- **단원 목록은 `archive/archive2-unit-tree.js`(전역 `Archive2UnitTree`, node `require` 겸용) 한 곳에서 만든다.** 이유: 선생님은 교과서 목차대로(중1 "평면도형" 안의 "다각형", "원과 부채꼴") 고르고 싶어 하는데 표는 대단원뿐이었고, 문제지 만들기·빠른 평가도 같은 목록이 필요하다(계획 작업 3이 이 모듈을 연결한다). 표시와 선택에만 쓰며 문항의 값·정본 메타는 바꾸지 않는다.
+- **API**: `createTree(profileId, units)` → `{ childrenOf(unitKey), hasChildren, childKeyOf(unitKey, record), childName, childRank, pathLabel(unitKey, childKey) }`(units는 `core.buildCatalog(...).units`처럼 `key, name, course, selectableRecords`가 있는 목록). `loadGroups()`(고등 묶음표를 비동기로 한 번 읽음, 실패하면 콘솔 경고 후 `null`, 고등은 대단원만 보임), `setGroups(doc)`, `parseCellKey`, `scopeKey`, `NONE_KEY`.
+- **중등 판정(추정 매핑 없음)**: 대단원 24·중단원 54는 정본 `archive/data/meta-foundation/canonical/rpm-middle-2022-parents.json`(생성물 `rpm-middle-toc.js`의 `parents(학년)`)를 목차 순서(`orderInUnit`) 그대로 쓰고, 문항이 0인 중단원도 흐린 0으로 보인다. 문항의 중단원 = 문항의 `rpmParentResolution`(없으면 `core.resolveRpmParent`)이 EXACT이고 `parent.unitKey`가 그 대단원일 때 `parent`의 L2. 판정이 OUT_OF_SCOPE·NOT_FOUND인 옛 2015 키 문항은 정본 `legacySubUnitMappings`(옛 소단원 키 → 중단원)가 **같은 대단원의 중단원 하나**로 정할 때만 그 중단원으로 접고, 둘 이상이거나 AMBIGUOUS면 접지 않는다. 정할 수 없으면 그 대단원 아래 "중단원 미지정" 한 줄이다. 칸 키는 `p<orderInUnit>`이다.
+- **고등**: core 단원(표 행) 아래에 `archive/data/archive2-subunit-groups.json`의 묶음을 쓴다. 키는 `groupKey`에서 `SG:<과목>:<단원>:`을 뗀 값이고, 문항은 `core.getSubUnitKey(record)`로 묶음을 찾는다. 이름은 묶음표 그대로이며 영문·"핵심 개념" 이름, `unit_other`·`excluded` 묶음, 묶음표에 없는 키·빈 키는 "기타" 한 줄(맨 끝)로 모은다. `unit_general`은 "단원 일반"(기타 앞). 이동(`moved`) 묶음은 원래 단원에 두며 원래 단원 묶음과 이름이 겹치면 " (다른 단원 분류)"를 붙인다(결정 대기: metadata.md "이동 표시"). 묶음표에 교재 순서가 없어 정렬은 구역(`sections`) → 가나다순이다. 문항이 없는 묶음은 목록에서 뺀다.
+- **표**: 단원 이름 옆 CSS 화살표 단추(`.ug-expand`, `aria-expanded`)로 펼치면 `.ug-subrow` 줄이 들여 쓰여 나온다(휴대폰도 카드 안 카드). 칸 키는 단원 전체 `단원|단계`, 중단원 `단원~중단원|단계`. 단원 전체 칸이 켜진 단계의 중단원 칸은 "이미 들어 있음"(`is-covered`)이고 누르면 단원 칸을 풀고 나머지 중단원 칸으로 갈라지며, 중단원 칸만 켜진 단원 칸은 `aria-pressed="mixed"`(점선)이다. 칸마다 N문항은 칸(단원 또는 중단원)마다 적용된다. 체크박스·"단계 버튼"은 단원 전체 칸만 다룬다.
+- **유형 거르기(오른쪽 패널 "유형" 접이식)**: 고른 단원(체크했거나 칸을 고른 단원, 중단원 칸만 골랐으면 그 중단원)에 있는 유형만 보이고 기본은 전부 켜짐. 끄면 `core.countGrid`·`core.buildSelectionPapers`에 `excludedTypeKeys`로 넘겨 **표 숫자와 문제지를 같은 조건으로 다시 센다**. 뺄 유형 목록(`G.typeOff`)으로 표현해 단원을 바꿔도 새 유형은 켜진 채 나타난다. 키 없는 문항·유형 연결이 끊긴 문항은 "유형 미지정"(`core.NO_TYPE_KEY`, 중학교는 유형 채움이 7~16%라 맨 위에 항상 둔다). `filterUnitRecords`는 미지정 문항을 빼므로 쓰지 않는다.
+- **선택 기억**: localStorage `archive2.unitGrid.v1`(v2)에 고른 칸·체크·펼침·뺀 유형을 저장하고, 주소에는 `sel`(칸)·`chk`(체크한 단원)·`notype`(뺀 유형)을 둔다. 주소에 있으면 저장값보다 우선이라 주소를 다시 열면 같은 선택이다. `snapshotKey`는 같은 조건이면 같고, 중단원(`subUnitKeys`)·남은 유형(`problemTypeKeys`)을 키에 넣되 안 쓰면 옛 키와 같다. 권 제목·요약표는 "평면도형 › 원과 부채꼴 · 2~4단계"처럼 중단원이 보인다.
+- **권 고치기 화면**: 위 한 줄은 학년 · 과목 · 단원(중단원) · 단계 · 문항 수이고 "전체 아카이브 · 바로 쓰는 문제지" 같은 옛 말은 없다. 교체 후보는 **그 권을 만든 조건 안**에서 찾는다: 후보 난이도 거르기는 하·중·상이 아니라 그 권의 1~5단계(단계 미지정 열을 골랐을 때만 단계 미지정 문항 포함)이고, 뺀 유형을 따르며, 기본은 바꿀 문항과 같은 중단원·같은 단계(교사가 범위를 넓힐 수 있다). 이전에는 단계 미지정·소단원 없는 문항이 후보에서 늘 빠졌고 2단계 문항이 3단계로 바뀔 수 있었다.
+- **옛 주소(`unit=`)로 열리면** 체크된 단원 행으로 스크롤하고 잠깐 강조한다(`.is-flash`).
+- 회귀 테스트: `tests/archive2-unit-tree.test.js`(정본 중단원 모두·순서·중복 이름 0·한 문항 한 줄·고등 이름 규칙·묶음표 실패 시 경고·유형 거르기), `tests/archive-unit-past-exams-ui-runtime.test.js`(펼침·소단원 칸·유형 끄기·주소 복원).
 
 ## 첫 화면 먼저 (2026-11-10)
 

@@ -2,7 +2,6 @@
   'use strict';
 
   const core = window.UnitPastExamsCore || window.High1UnitPastExamsCore;
-  const LEVELS = ['하', '중', '상', '미분류'];
   const PRINT_HEADER_TEXT_LIMITS = { title: 80, metaRight: 60, subtitle: 120 };
   const REPLACEMENT_PAGE_SIZE = 10;
   const state = {
@@ -236,12 +235,14 @@
     state.replacementFilter = null;
     if (options.disableEditMode) state.questionEditMode = false;
   }
-  // 표에서 만든 권은 "미분류 포함" 선택이 없으므로 소단원·난이도가 분류된 문항만 교체 후보로 쓴다(권 고치기를 새 모양으로 바꿀 때 다시 정한다).
-  function getReplacementIncludeUnclassified() { return false; }
-  function isReplacementRecordAllowed(record) {
+  // 교체 후보는 그 권을 만든 조건 안에서만 찾는다: 그 권의 단계(1~5단계 그대로, 단계 미지정 열을 골랐을 때만 단계 미지정 문항 포함)와
+  // 뺀 유형을 따른다. 기본으로 바꿀 문항과 같은 중단원(고등은 소단원 묶음)·같은 단계에서 고르고, 교사가 범위를 넓힐 수 있다.
+  function isReplacementRecordAllowed(record, paper) {
     if (!core.isAutomaticSelectable(record)) return false;
-    if (getReplacementIncludeUnclassified()) return true;
-    return Boolean(core.getSelectionSubUnitKey(record)) && core.getDifficultyBucket(record) !== '미분류';
+    const steps = paper && Array.isArray(paper.difficultySteps) ? paper.difficultySteps : [];
+    if (steps.length && !steps.includes(core.getStepToken(record))) return false;
+    const keep = paper && Array.isArray(paper.excludedTypeKeys) && paper.excludedTypeKeys.length ? core.createTypeFilter(paper.excludedTypeKeys) : null;
+    return !keep || keep(record);
   }
   function getReplacementSourcePool(unit, paper) {
     let records = unit.records;
@@ -251,26 +252,24 @@
       const owner = current && (state.catalog?.units || []).find(item => item.key === current.mappedUnitKey);
       records = owner ? owner.records : unit.records;
     }
-    return records.filter(isReplacementRecordAllowed);
+    return records.filter(record => isReplacementRecordAllowed(record, paper));
   }
   function getUsedGeneratedQuestionIdentities() {
     return new Set(state.generatedPapers.flatMap(paper => paper.records || []).map(record => core.getRecordIdentity(record)));
   }
+  function replacementChildKey(record) { return G.tree ? G.tree.childKeyOf(record.mappedUnitKey, record) : ''; }
   function getReplacementFilterForRecord(record) {
-    return {
-      subUnitKey: core.getSelectionSubUnitKey(record) || '',
-      difficultyBucket: core.getDifficultyBucket(record)
-    };
+    return { childKey: replacementChildKey(record), step: core.getStepToken(record) };
   }
+  // 중단원(고등은 소단원 묶음) 선택지: 표의 펼침과 같은 이름·순서(Archive2UnitTree).
   function getReplacementSubUnitOptions(records) {
+    if (!G.tree) return [];
     const options = new Map();
-    records.forEach(record => {
-      const key = core.getSelectionSubUnitKey(record) || '__unclassified__';
-      if (!options.has(key)) options.set(key, core.getSelectionSubUnitLabel(record) || '미분류 소단원');
-    });
-    return [...options.entries()]
-      .map(([key, label]) => ({ key, label }))
-      .sort((a, b) => String(a.label).localeCompare(String(b.label), 'ko'));
+    for (const record of records) {
+      const key = replacementChildKey(record);
+      if (key && !options.has(key)) options.set(key, { key, label: G.tree.childName(record.mappedUnitKey, key) || key, rank: G.tree.childRank(record.mappedUnitKey, key) });
+    }
+    return [...options.values()].sort((a, b) => a.rank - b.rank);
   }
   function compareReplacementRecords(a, b) {
     return core.compareRecords(a, b) || String(core.getRecordIdentity(a)).localeCompare(String(core.getRecordIdentity(b)));
@@ -278,14 +277,12 @@
   function getReplacementCandidates(unit, paper, index, filter = state.replacementFilter) {
     const currentIdentity = core.getRecordIdentity(paper.records[index]);
     const used = getUsedGeneratedQuestionIdentities();
-    const subUnitKey = filter?.subUnitKey || '';
-    const difficultyBucket = filter?.difficultyBucket || '';
+    const childKey = filter?.childKey || '';
+    const step = filter?.step || '';
     return getReplacementSourcePool(unit, paper)
       .filter(record => {
-        const recordSubUnitKey = core.getSelectionSubUnitKey(record) || '';
-        const recordDifficulty = core.getDifficultyBucket(record);
-        if (subUnitKey && recordSubUnitKey !== (subUnitKey === '__unclassified__' ? '' : subUnitKey)) return false;
-        if (difficultyBucket && recordDifficulty !== difficultyBucket) return false;
+        if (childKey && replacementChildKey(record) !== childKey) return false;
+        if (step && core.getStepToken(record) !== step) return false;
         const identity = core.getRecordIdentity(record);
         return identity !== currentIdentity && !used.has(identity);
       })
@@ -589,10 +586,13 @@
     dialog.innerHTML = `<div class="unit-ready-assignment-heading"><div><h2 id="unit-ready-assignment-title">반·학생에게 출제</h2><p>${escapeHtml(paper.title)} · ${paper.count}문항</p></div><button type="button" class="unit-btn" data-close-ready-assignment>시험지로 돌아가기</button></div><iframe title="반·학생 출제 대상 선택" src="${escapeHtml(url.href)}"></iframe>`;
     dialog.showModal();
   }
-  // 고치기 화면 맨 위 한 줄: 학년 · 과목 · 단원 | 전체 아카이브 · 바로 쓰는 문제지 · N문항
+  // 권 고치기 화면 맨 위 한 줄: 학년 · 과목 · 단원(중단원) · 단계 · 문항 수. 표에서 고른 조건을 그대로 말한다.
   function renderContextStrip(unit, count) {
     const profile = getProfile();
-    return `<div class="unit-context-strip"><strong>${escapeHtml(profile.gradeLabel)}</strong><span class="unit-context-dot">·</span><strong>${escapeHtml(unit.course)}</strong><span class="unit-context-dot">·</span><strong>${escapeHtml(unit.name)}</strong><span class="unit-context-dot">|</span><span>전체 아카이브</span><span class="unit-context-dot">·</span><span>바로 쓰는 문제지</span><span class="unit-context-dot">·</span><span>${count}문항</span></div>`;
+    const stepLabel = G.result?.stepLabel || '';
+    const lead = [profile.gradeLabel, unit.course, G.result?.unitLabel || unit.name].filter(Boolean).map(text => `<strong>${escapeHtml(text)}</strong>`);
+    const rest = [stepLabel, `${count}문항`].filter(Boolean).map(text => `<span>${escapeHtml(text)}</span>`);
+    return `<div class="unit-context-strip">${[...lead, ...rest].join('<span class="unit-context-dot">·</span>')}</div>`;
   }
   function describeStepComposition(summary) {
     if (!summary) return '';
@@ -676,7 +676,7 @@
     panel.outerHTML = renderQuestionReplacementPanel(unit, paper);
   }
   function setReplacementFilter(field, value) {
-    if (!state.replacementFilter || !['subUnitKey', 'difficultyBucket'].includes(field)) return;
+    if (!state.replacementFilter || !['childKey', 'step'].includes(field)) return;
     state.replacementFilter[field] = String(value || '');
     state.replacementCandidatePage = 0;
     refreshReplacementCandidates();
@@ -822,37 +822,43 @@
   function renderQuestionEditToggle() {
     return `<div class="unit-question-edit-actions"><button type="button" class="unit-btn${state.questionEditMode ? ' primary' : ''}" aria-pressed="${state.questionEditMode ? 'true' : 'false'}" onclick="UnitPastExams.toggleQuestionEditMode()">문항 수정</button></div>`;
   }
+  function replacementRecordText(record) {
+    const childName = G.tree ? G.tree.childName(record.mappedUnitKey, replacementChildKey(record)) : '';
+    return `${childName || `${gridUnitKindName()} 미지정`} · ${core.stepTokenLabel(core.getStepToken(record))}`;
+  }
   function renderQuestionReplacementPanel(unit, paper) {
     if (!state.questionEditMode) return '';
     const panelId = 'unit-question-replacement-panel';
     const index = state.selectedQuestionIndex;
     if (index < 0 || index >= paper.records.length) {
-      return `<section id="${panelId}" class="unit-question-replacement-panel"><h3>선택 문항</h3><p class="unit-replacement-empty">왼쪽 미리보기에서 교체할 문항을 클릭하세요.</p></section>`;
+      return `<section id="${panelId}" class="unit-question-replacement-panel"><h3>문항 바꾸기</h3><p class="unit-replacement-empty">왼쪽 미리보기에서 바꿀 문항을 누르세요.</p></section>`;
     }
     const record = paper.records[index];
     const sourcePool = getReplacementSourcePool(unit, paper);
     const filter = state.replacementFilter || getReplacementFilterForRecord(record);
-    const subUnitOptions = [{ key: '', label: '전체 소단원' }, ...getReplacementSubUnitOptions(sourcePool)]
-      .map(option => `<option value="${escapeHtml(option.key)}"${filter.subUnitKey === option.key ? ' selected' : ''}>${escapeHtml(option.label)}</option>`).join('');
-    const allowUnclassified = getReplacementIncludeUnclassified();
-    const difficultyOptions = ['', ...LEVELS.filter(level => level !== '미분류' || allowUnclassified)]
-      .map(level => `<option value="${escapeHtml(level)}"${filter.difficultyBucket === level ? ' selected' : ''}>${escapeHtml(level || '전체 난이도')}</option>`).join('');
+    const kind = gridUnitKindName();
+    const childOptions = [{ key: '', label: `전체 ${kind}` }, ...getReplacementSubUnitOptions(sourcePool)]
+      .map(option => `<option value="${escapeHtml(option.key)}"${filter.childKey === option.key ? ' selected' : ''}>${escapeHtml(option.label)}</option>`).join('');
+    // 단계는 1~5단계 그대로: 이 권을 만들 때 고른 단계만 보인다.
+    const paperSteps = core.STEP_TOKENS.filter(token => (paper.difficultySteps || []).includes(token));
+    const stepOptions = [{ key: '', label: '전체 단계' }, ...paperSteps.map(token => ({ key: token, label: core.stepTokenLabel(token) }))]
+      .map(option => `<option value="${escapeHtml(option.key)}"${filter.step === option.key ? ' selected' : ''}>${escapeHtml(option.label)}</option>`).join('');
     const pageCount = Math.max(1, Math.ceil(state.replacementCandidates.length / REPLACEMENT_PAGE_SIZE));
     const page = Math.min(state.replacementCandidatePage, pageCount - 1);
     const pageItems = state.replacementCandidates.slice(page * REPLACEMENT_PAGE_SIZE, (page + 1) * REPLACEMENT_PAGE_SIZE);
     const candidates = pageItems.map(candidate => {
       const candidateIndex = state.replacementCandidates.indexOf(candidate);
       const label = getSourceExamLabel(candidate.sourceFile, candidate) || '출처 확인 필요';
-      return `<article class="unit-replacement-candidate"><div><strong>${escapeHtml(label)}</strong><span>${escapeHtml(core.getSelectionSubUnitLabel(candidate) || '미분류 소단원')} · ${escapeHtml(core.getDifficultyBucket(candidate))} · 원본 ${escapeHtml(candidate.sourceQuestionNo || candidate.id || '')}번</span></div><button type="button" class="unit-btn" onclick="UnitPastExams.replaceSelectedQuestion(${candidateIndex})">이 문제로 교체</button></article>`;
+      return `<article class="unit-replacement-candidate"><div><strong>${escapeHtml(label)}</strong><span>${escapeHtml(replacementRecordText(candidate))} · 원본 ${escapeHtml(candidate.sourceQuestionNo || candidate.id || '')}번</span></div><button type="button" class="unit-btn" onclick="UnitPastExams.replaceSelectedQuestion(${candidateIndex})">이 문제로 교체</button></article>`;
     }).join('');
-    return `<section id="${panelId}" class="unit-question-replacement-panel"><h3>선택 문항</h3><div class="unit-replacement-selected"><strong>${index + 1}번</strong><span>${escapeHtml(core.getSelectionSubUnitLabel(record) || '미분류 소단원')} · ${escapeHtml(core.getDifficultyBucket(record))}</span><small>${escapeHtml(getSourceExamLabel(record.sourceFile, record) || '출처 확인 필요')} · 원본 ${escapeHtml(record.sourceQuestionNo || record.id || '')}번</small></div><div class="unit-replacement-filters"><label>소단원<select id="unit-replacement-subunit" onchange="UnitPastExams.setReplacementFilter('subUnitKey', this.value)">${subUnitOptions}</select></label><label>난이도<select id="unit-replacement-difficulty" onchange="UnitPastExams.setReplacementFilter('difficultyBucket', this.value)">${difficultyOptions}</select></label></div><div class="unit-replacement-tools"><button type="button" class="unit-btn primary" onclick="UnitPastExams.quickReplaceSelectedQuestion()">같은 조건으로 교체</button><button type="button" class="unit-btn" onclick="UnitPastExams.undoLastQuestionReplacement()"${paper.replacementHistory?.length ? '' : ' disabled'}>교체 되돌리기</button></div><div class="unit-replacement-count">후보 ${state.replacementCandidates.length}문항</div>${candidates || '<p class="unit-replacement-empty">조건에 맞는 다른 문항이 없습니다.</p>'}${pageCount > 1 ? `<div class="unit-replacement-pagination"><button type="button" class="unit-btn" onclick="UnitPastExams.setReplacementCandidatePage(${page - 1})"${page <= 0 ? ' disabled' : ''}>이전</button><span>${page + 1} / ${pageCount}</span><button type="button" class="unit-btn" onclick="UnitPastExams.setReplacementCandidatePage(${page + 1})"${page >= pageCount - 1 ? ' disabled' : ''}>다음</button></div>` : ''}</section>`;
+    return `<section id="${panelId}" class="unit-question-replacement-panel"><h3>문항 바꾸기</h3><div class="unit-replacement-selected"><strong>${index + 1}번</strong><span>${escapeHtml(replacementRecordText(record))}</span><small>${escapeHtml(getSourceExamLabel(record.sourceFile, record) || '출처 확인 필요')} · 원본 ${escapeHtml(record.sourceQuestionNo || record.id || '')}번</small></div><div class="unit-replacement-filters"><label>${kind}<select id="unit-replacement-subunit" onchange="UnitPastExams.setReplacementFilter('childKey', this.value)">${childOptions}</select></label><label>단계<select id="unit-replacement-difficulty" onchange="UnitPastExams.setReplacementFilter('step', this.value)">${stepOptions}</select></label></div><div class="unit-replacement-tools"><button type="button" class="unit-btn primary" onclick="UnitPastExams.quickReplaceSelectedQuestion()">같은 조건으로 교체</button><button type="button" class="unit-btn" onclick="UnitPastExams.undoLastQuestionReplacement()"${paper.replacementHistory?.length ? '' : ' disabled'}>교체 되돌리기</button></div><div class="unit-replacement-count">후보 ${state.replacementCandidates.length}문항</div>${candidates || `<p class="unit-replacement-empty">조건에 맞는 다른 문항이 없습니다. 위에서 ${kind}와 단계를 ‘전체’로 바꿔 보세요.</p>`}${pageCount > 1 ? `<div class="unit-replacement-pagination"><button type="button" class="unit-btn" onclick="UnitPastExams.setReplacementCandidatePage(${page - 1})"${page <= 0 ? ' disabled' : ''}>이전</button><span>${page + 1} / ${pageCount}</span><button type="button" class="unit-btn" onclick="UnitPastExams.setReplacementCandidatePage(${page + 1})"${page >= pageCount - 1 ? ' disabled' : ''}>다음</button></div>` : ''}</section>`;
   }
 
-  function getSummarySubUnits(paper) {
-    return [...new Set(paper.records.map(record => core.getSelectionSubUnitLabel(record)).filter(Boolean))];
+  function typeFilterText(paper) {
+    const count = (paper.excludedTypeKeys || []).length;
+    return count ? `유형 ${count}종을 뺐습니다` : '';
   }
-
-  // 권 고치기(표의 권 줄 "고치기")가 여는 화면: 실제 시험지 미리보기 + 시험지 머리글 + 문항 바꾸기. 모양은 다음 묶음(1b)에서 새 디자인으로 바꾼다.
+  // 권 고치기(표의 권 줄 "고치기")가 여는 화면: 실제 시험지 미리보기 + 시험지 머리글 + 문항 바꾸기.
   function renderWorkflow() {
     const unit = getUnit(state.selectedUnitKey);
     if (!unit) { renderGrid(); return; }
@@ -864,10 +870,19 @@
     if (!paper) { renderGrid(); return; }
     const printHeaderOptions = ensurePaperPrintHeaderOptions(unit, paper);
     const profile = getProfile();
-    const subUnits = getSummarySubUnits(paper);
-    const difficultyText = describeStepComposition(core.summarizeSteps(paper.records)) || '난이도 정보 없음';
+    const scopeText = (paper.scopeNames && paper.scopeNames.length ? paper.scopeNames : paper.unitNames || []);
+    const scopeShown = scopeText.length > 6 ? `${scopeText.slice(0, 6).join(' · ')} 외 ${scopeText.length - 6}곳` : scopeText.join(' · ');
+    const stepText = describeStepComposition(core.summarizeSteps(paper.records)) || '단계 정보 없음';
+    const filterText = typeFilterText(paper);
+    const rows = [
+      ['범위', `${profile.gradeLabel} · ${unit.course} · ${scopeShown || unit.name}`],
+      ['단계별 문항', stepText],
+      ...(filterText ? [['유형', filterText]] : []),
+      ['문항 수', `${paper.count}문항`],
+      ['원본 시험지', `${paper.sourceCount}개`]
+    ].map(([label, value]) => `<div class="unit-summary-row"><dt>${label}</dt><dd>${escapeHtml(value)}</dd></div>`).join('');
     const pager = state.generatedPapers.length > 1 ? `<div class="unit-preview-pager"><button class="unit-btn" type="button" aria-label="이전 문제지" onclick="UnitPastExams.selectPreviewPaper(${state.previewPaperPosition - 1})"${state.previewPaperPosition <= 0 ? ' disabled' : ''}>이전</button><span>${state.previewPaperPosition + 1} / ${state.generatedPapers.length}</span><button class="unit-btn" type="button" aria-label="다음 문제지" onclick="UnitPastExams.selectPreviewPaper(${state.previewPaperPosition + 1})"${state.previewPaperPosition >= state.generatedPapers.length - 1 ? ' disabled' : ''}>다음</button></div>` : '';
-    root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, paper.count)}<div class="unit-confirmation"><div class="unit-preview-pane"><div class="unit-preview-toolbar"><div class="unit-preview-title"><strong>${escapeHtml(paper.title)}</strong><span>${paper.count}문항 · 원본 ${paper.sourceCount}개 시험지</span></div></div><div class="unit-preview-frame" id="unit-preview-frame"><div class="unit-preview-loading"><span>실제 문제지를 준비하는 중입니다.</span></div></div>${pager}</div><aside class="unit-confirm-pane"><h2>출제 요약</h2><dl class="unit-summary-list"><div class="unit-summary-row"><dt>단원</dt><dd>${escapeHtml(profile.gradeLabel)} · ${escapeHtml(unit.course)} · ${escapeHtml(unit.name)}</dd></div><div class="unit-summary-row"><dt>출처</dt><dd>전체 아카이브</dd></div><div class="unit-summary-row"><dt>선택 소단원</dt><dd>${escapeHtml(subUnits.slice(0, 6).join(' · ') || '전체 소단원')}</dd></div><div class="unit-summary-row"><dt>난이도</dt><dd>${escapeHtml(difficultyText)}</dd></div><div class="unit-summary-row"><dt>문항 수</dt><dd>${paper.count}문항</dd></div><div class="unit-summary-row"><dt>원본 시험지</dt><dd>원본 ${paper.sourceCount}개 시험지</dd></div></dl><div class="unit-summary-emphasis">수록 문항<strong>${paper.count.toLocaleString()}문항</strong></div><section class="unit-print-header-editor" aria-labelledby="unit-print-header-title"><h3 id="unit-print-header-title">시험지 헤더</h3><div class="unit-print-header-fields"><label>제목<input id="unit-print-header-title-input" type="text" maxlength="80" value="${escapeHtml(printHeaderOptions.title)}" oninput="UnitPastExams.updatePrintHeaderOption('title', this.value)"></label><label>우측 문구<input type="text" maxlength="60" value="${escapeHtml(printHeaderOptions.metaRight)}" oninput="UnitPastExams.updatePrintHeaderOption('metaRight', this.value)"></label><label>보조 문구<input type="text" maxlength="120" value="${escapeHtml(printHeaderOptions.subtitle)}" oninput="UnitPastExams.updatePrintHeaderOption('subtitle', this.value)"></label></div><div class="unit-print-header-checks"><label><input type="checkbox"${printHeaderOptions.showNameLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showNameLine', this.checked)"> 이름칸</label><label><input type="checkbox"${printHeaderOptions.showScoreLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showScoreLine', this.checked)"> 점수칸</label></div></section><div class="unit-confirm-actions"><button type="button" class="unit-btn" onclick="UnitPastExams.gridLeaveEdit()">권 목록으로</button><button type="button" class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', '${paper.index}', this)">일반 출력</button><button type="button" class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', '${paper.index}', this)">학생에게 출제</button></div></aside></div></section>`;
+    root.innerHTML = `<section class="unit-workflow"><div class="unit-edit-head"><button type="button" class="ug-btn" onclick="UnitPastExams.gridLeaveEdit()">권 목록으로</button><div class="unit-edit-title"><h2>${escapeHtml(paper.title)}</h2>${renderContextStrip(unit, paper.count)}</div></div><div class="unit-confirmation"><div class="unit-preview-pane"><div class="unit-preview-toolbar"><div class="unit-preview-title"><strong>미리보기</strong><span>${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개</span></div></div><div class="unit-preview-frame" id="unit-preview-frame"><div class="unit-preview-loading"><span>실제 문제지를 준비하는 중입니다.</span></div></div>${pager}</div><aside class="unit-confirm-pane"><h2>이 권의 조건</h2><dl class="unit-summary-list">${rows}</dl><section class="unit-print-header-editor" aria-labelledby="unit-print-header-title"><h3 id="unit-print-header-title">시험지 헤더</h3><div class="unit-print-header-fields"><label>제목<input id="unit-print-header-title-input" type="text" maxlength="80" value="${escapeHtml(printHeaderOptions.title)}" oninput="UnitPastExams.updatePrintHeaderOption('title', this.value)"></label><label>우측 문구<input type="text" maxlength="60" value="${escapeHtml(printHeaderOptions.metaRight)}" oninput="UnitPastExams.updatePrintHeaderOption('metaRight', this.value)"></label><label>보조 문구<input type="text" maxlength="120" value="${escapeHtml(printHeaderOptions.subtitle)}" oninput="UnitPastExams.updatePrintHeaderOption('subtitle', this.value)"></label></div><div class="unit-print-header-checks"><label><input type="checkbox"${printHeaderOptions.showNameLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showNameLine', this.checked)"> 이름칸</label><label><input type="checkbox"${printHeaderOptions.showScoreLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showScoreLine', this.checked)"> 점수칸</label></div></section><div class="unit-confirm-actions"><button type="button" class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', '${paper.index}', this)">일반 출력</button><button type="button" class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', '${paper.index}', this)">학생에게 출제</button></div></aside></div></section>`;
     const headerEditor = root.querySelector('.unit-print-header-editor');
     headerEditor?.insertAdjacentHTML('afterend', `${renderQuestionEditToggle()}${renderQuestionReplacementPanel(unit, paper)}`);
     loadPreviewPaper(state.previewPaperPosition);
@@ -960,12 +975,15 @@
     Boot?.mountProgress?.(document.getElementById('boot-progress'));
     renderGridLoading(app);
     await Boot?.firstPaint?.();
+    // 고등 소단원 묶음표(작은 JSON)는 큰 자료와 함께 비동기로 읽는다. 못 읽으면 loadGroups가 콘솔 경고를 남기고 고등은 대단원만 보인다.
+    const groupsReady = treeApi()?.loadGroups ? treeApi().loadGroups() : Promise.resolve(null);
     try {
       try { await ensureQuestionIndex(); } catch (error) { console.error(error); }
       if (!Array.isArray(window.questionIndex)) { Boot?.finish?.(true); renderSafeFallback('question-index.js를 불러오지 못했습니다.'); return; }
       try { await loadMetadata(); } catch (error) { state.metadataError = true; console.warn(error); }
       Boot?.setStage?.('index');
       state.index = joinApprovedMetadata(window.questionIndex);
+      try { await groupsReady; } catch (error) { console.warn(error); }
       gridInit();
       state.ready = true;
       Boot?.finish?.(false);
@@ -992,12 +1010,22 @@
   const GRID_STEPS = ['1', '2', '3', '4', '5'];
   const GRID_ORDERS = [['recent', '최신 연도부터'], ['unit', '단원별로'], ['step', '쉬운 단계부터']];
   const GRID_PER_CELL_MAX = 50;
+  // cells의 칸 키: 단원 전체는 `단원|단계`, 중단원(고등은 소단원 묶음) 하나는 `단원~중단원|단계`. checked는 체크한 단원.
+  // open은 펼친 단원, typeOff는 유형 거르기에서 뺀 유형(비어 있으면 전부, NO_TYPE_KEY = 유형 미지정).
   const G = {
-    profileId: '', course: '', cells: new Set(), checked: new Set(), amount: 'all', perCell: 10, order: 'recent',
+    profileId: '', course: '', cells: new Set(), checked: new Set(), open: new Set(), typeOff: new Set(), tree: null, entry: null, typeRows: [],
+    amount: 'all', perCell: 10, order: 'recent',
     view: 'grid', counts: {}, showNone: false, result: null, catalogs: new Map(), saved: new Map(), papersPushed: false, editing: '', editPushed: false
   };
 
-  function gridKey(unitKey, token) { return `${unitKey}|${token}`; }
+  const treeApi = () => window.Archive2UnitTree || null;
+  function gridKey(unitKey, token, childKey) { return `${childKey ? `${unitKey}~${childKey}` : unitKey}|${token}`; }
+  // 'U|3' / 'U~C|3' -> { unitKey, childKey, step }
+  function gridParseKey(key) {
+    const [scope, step] = String(key || '').split('|');
+    const at = scope.indexOf('~');
+    return { unitKey: at < 0 ? scope : scope.slice(0, at), childKey: at < 0 ? '' : scope.slice(at + 1), step: step === undefined ? '' : step };
+  }
   function gridReadStore() {
     try {
       const value = JSON.parse(localStorage.getItem(GRID_STORAGE_KEY) || 'null');
@@ -1007,7 +1035,7 @@
   function gridWriteStore() {
     try {
       localStorage.setItem(GRID_STORAGE_KEY, JSON.stringify({
-        v: 1, profileId: G.profileId, course: G.course, cells: [...G.cells], checked: [...G.checked],
+        v: 2, profileId: G.profileId, course: G.course, cells: [...G.cells], checked: [...G.checked], open: [...G.open], typeOff: [...G.typeOff],
         amount: G.amount, perCell: G.perCell, order: G.order
       }));
     } catch (error) { /* 기억하지 못해도 화면은 정상 동작한다 */ }
@@ -1019,28 +1047,73 @@
     if (Number.isFinite(per) && per >= 1) G.perCell = Math.min(GRID_PER_CELL_MAX, per);
     if (GRID_ORDERS.some(([id]) => id === stored.order)) G.order = stored.order;
   }
+  // 저장·주소에서 읽은 칸: 없어졌거나 문항이 0인 칸·중단원은 버린다. 단원 전체 칸이 있는 단계의 중단원 칸은 이미 들어 있으므로 뺀다.
   function gridApplyStoredSelection(stored) {
     const known = new Set((state.catalog?.units || []).map(unit => unit.key));
     const profileId = state.profileId || G.profileId || 'h1';
     for (const key of Array.isArray(stored.cells) ? stored.cells : []) {
-      const [storedUnitKey, token] = String(key).split('|');
-      const unitKey = core.resolveUnitKeyAlias(profileId, storedUnitKey);
-      if (known.has(unitKey) && (G.counts[unitKey]?.[token] || 0) > 0) G.cells.add(gridKey(unitKey, token));
+      const parsed = gridParseKey(key);
+      const unitKey = core.resolveUnitKeyAlias(profileId, parsed.unitKey);
+      if (!known.has(unitKey) || (gridCountsOf(unitKey, parsed.childKey)?.[parsed.step] || 0) <= 0) continue;
+      G.cells.add(gridKey(unitKey, parsed.step, parsed.childKey));
+    }
+    for (const key of [...G.cells]) {
+      const parsed = gridParseKey(key);
+      if (parsed.childKey && G.cells.has(gridKey(parsed.unitKey, parsed.step))) G.cells.delete(key);
     }
     for (const storedUnitKey of Array.isArray(stored.checked) ? stored.checked : []) {
       const unitKey = core.resolveUnitKeyAlias(profileId, storedUnitKey);
       if (known.has(unitKey)) G.checked.add(unitKey);
     }
+    for (const unitKey of Array.isArray(stored.open) ? stored.open : []) {
+      if (known.has(unitKey) && G.tree?.hasChildren(unitKey)) G.open.add(unitKey);
+    }
+  }
+  function gridApplyStoredTypes(stored) {
+    G.typeOff = new Set(core.normalizeExcludedTypeKeys(stored && stored.typeOff));
+  }
+  function gridBuildTree(profileId, catalog) {
+    const api = treeApi();
+    if (!api) return null;
+    try { return api.createTree(profileId, catalog.units); } catch (error) { console.warn('[unit-past] 중단원 목록을 만들지 못해 대단원만 보입니다.', error); return null; }
   }
   function gridCatalogFor(profileId) {
     let entry = G.catalogs.get(profileId);
     if (!entry) {
       const catalog = core.buildCatalog(state.index.length ? state.index : window.questionIndex, { profileId });
-      entry = { catalog, counts: core.countGrid(catalog.units) };
+      const tree = gridBuildTree(profileId, catalog);
+      entry = { catalog, tree, all: core.countGrid(catalog.units, gridCountOptions(tree)), filtered: null, filteredKey: '' };
       G.catalogs.set(profileId, entry);
     }
     return entry;
   }
+  function gridChildOf(tree) { return tree ? (record, unit) => tree.childKeyOf(unit.key, record) : undefined; }
+  function gridCountOptions(tree, excluded) {
+    const options = {};
+    if (tree) options.childOf = gridChildOf(tree);
+    if (excluded && excluded.length) options.excludedTypeKeys = excluded;
+    return options;
+  }
+  // 칸 숫자: 유형 거르기가 켜져 있으면 뺀 유형을 제외하고 다시 센다(같은 조건이면 한 번만 센다).
+  function gridApplyCounts() {
+    const entry = G.entry;
+    if (!entry) { G.counts = {}; return; }
+    const excluded = core.normalizeExcludedTypeKeys(G.typeOff);
+    if (!excluded.length) { G.counts = entry.all; return; }
+    const key = excluded.join('|');
+    if (entry.filteredKey !== key) {
+      entry.filtered = core.countGrid(entry.catalog.units, gridCountOptions(entry.tree, excluded));
+      entry.filteredKey = key;
+    }
+    G.counts = entry.filtered;
+  }
+  // 한 줄의 단계별 문항 수: childKey가 없으면 단원 전체.
+  function gridCountsOf(unitKey, childKey) {
+    const row = G.counts[unitKey];
+    if (!row) return null;
+    return childKey ? (row.children && row.children[childKey]) || null : row;
+  }
+  function gridChildren(unitKey) { return G.tree ? G.tree.childrenOf(unitKey) : []; }
   function gridCourseUnits() { return (state.catalog?.units || []).filter(unit => unit.course === G.course); }
   function gridCourseTotal(course) { return (state.catalog?.units || []).filter(unit => unit.course === course).reduce((sum, unit) => sum + (G.counts[unit.key]?.total || 0), 0); }
   function gridCourses() { return state.profileId ? getProfile().courses : []; }
@@ -1058,11 +1131,19 @@
     if (!result || !result.papers.length) return undefined;
     return { key: result.snapshotUnitKey, name: result.unitLabel, course: result.courses.join(' · '), selectableRecords: [], records: [] };
   }
+  function gridSelectionOptions() {
+    const options = { units: state.catalog ? state.catalog.units : [], perCell: G.amount === 'each' ? G.perCell : null, order: G.order };
+    if (G.tree) {
+      options.childOf = gridChildOf(G.tree);
+      options.childName = (unitKey, childKey) => G.tree.childName(unitKey, childKey);
+      options.childRank = (unitKey, childKey) => G.tree.childRank(unitKey, childKey);
+    }
+    if (G.typeOff.size) options.excludedTypeKeys = [...G.typeOff];
+    return options;
+  }
   function gridRecompute() {
     try {
-      G.result = core.buildSelectionPapers([...G.cells].map(key => { const [unitKey, step] = key.split('|'); return { unitKey, step }; }), {
-        units: state.catalog ? state.catalog.units : [], perCell: G.amount === 'each' ? G.perCell : null, order: G.order
-      });
+      G.result = core.buildSelectionPapers([...G.cells].map(gridParseKey), gridSelectionOptions());
     } catch (error) { console.error(error); G.result = null; }
     if (!gridHasPapers()) G.view = 'grid';
     gridWriteStore();
@@ -1082,8 +1163,20 @@
     if (G.profileId && gridCourses().length > 1 && G.course) url.searchParams.set('course', G.course); else url.searchParams.delete('course');
     if (G.view === 'papers' || G.view === 'edit') url.searchParams.set('view', G.view); else url.searchParams.delete('view');
     if (G.view === 'edit' && G.editing) url.searchParams.set('paper', G.editing.replace(/^grid-/, '')); else url.searchParams.delete('paper');
-    if (mode === 'push') history.pushState(null, '', url.toString());
-    else if (mode === 'replace') history.replaceState(null, '', url.toString());
+    // 고른 칸·체크한 단원·뺀 유형도 주소에 둔다: 주소를 다시 열면(새로고침·공유) 같은 선택이 된다. 없으면 파라미터를 지운다.
+    for (const [param, values] of [[URL_SELECTION_PARAMS.cells, G.profileId ? [...G.cells] : []], [URL_SELECTION_PARAMS.checked, G.profileId ? [...G.checked] : []], [URL_SELECTION_PARAMS.typeOff, G.profileId ? [...G.typeOff] : []]]) {
+      if (values.length) url.searchParams.set(param, values.join(',')); else url.searchParams.delete(param);
+    }
+    try {
+      if (mode === 'push') history.pushState(null, '', url.toString());
+      else if (mode === 'replace') history.replaceState(null, '', url.toString());
+    } catch (error) { /* 주소를 바꾸지 못해도 화면은 정상 동작한다 */ }
+  }
+  const URL_SELECTION_PARAMS = { cells: 'sel', checked: 'chk', typeOff: 'notype' };
+  function gridReadUrlSelection(params) {
+    const list = name => String(params.get(name) || '').split(',').map(value => value.trim()).filter(Boolean);
+    const cells = list(URL_SELECTION_PARAMS.cells), checked = list(URL_SELECTION_PARAMS.checked), typeOff = list(URL_SELECTION_PARAMS.typeOff);
+    return cells.length || checked.length || typeOff.length ? { cells, checked, typeOff } : null;
   }
   function gridChrome() {
     const kicker = document.getElementById('unit-kicker');
@@ -1119,15 +1212,18 @@
     if (!profileId) { gridClearGrade({ fromPopstate: true }); return; }
     // 표가 열리기를 기다리며 다른 학년을 먼저 눌렀다면 주소의 단원·과목은 그 학년 것이 아니므로 쓰지 않는다.
     const sameAsUrl = !state.pendingProfileId || state.pendingProfileId === params.get('grade');
+    // 주소에 고른 칸·체크·뺀 유형이 있으면 그 선택이 저장된 선택보다 먼저다(주소를 다시 열면 같은 선택).
+    const urlSelection = sameAsUrl && params.get('grade') === profileId ? gridReadUrlSelection(params) : null;
     gridSelectGrade(profileId, {
-      stored, initial: true,
+      stored: urlSelection ? { ...(stored || {}), ...urlSelection, profileId } : stored, initial: true,
       course: (sameAsUrl && (params.get('course') || gridCourseForSubject(profileId, params.get('semanticSubject')))) || stored?.course || '',
       view: sameAsUrl ? params.get('view') : '',
       unitKey: sameAsUrl ? core.resolveUnitKeyAlias(profileId, params.get('unit')) : ''
     });
   }
   function gridClearGrade(options = {}) {
-    G.profileId = ''; G.course = ''; G.cells = new Set(); G.checked = new Set(); G.result = null; G.view = 'grid';
+    G.profileId = ''; G.course = ''; G.cells = new Set(); G.checked = new Set(); G.open = new Set(); G.typeOff = new Set(); G.tree = null; G.entry = null; G.counts = {};
+    G.result = null; G.view = 'grid';
     state.profileId = ''; state.catalog = null; state.selectedUnitKey = ''; state.generatedPapers = [];
     gridChrome();
     if (!options.fromPopstate) gridSyncUrl('push');
@@ -1143,19 +1239,25 @@
     }
     const changed = G.profileId !== profileId;
     // 학년을 바꿔도 이 화면을 떠나기 전에는 학년마다 고른 칸을 기억해 뒤로 가기로 돌아오면 그대로 보인다.
-    if (changed && G.profileId) G.saved.set(G.profileId, { cells: G.cells, checked: G.checked });
+    if (changed && G.profileId) G.saved.set(G.profileId, { cells: G.cells, checked: G.checked, open: G.open, typeOff: G.typeOff });
     G.profileId = state.profileId = profileId;
     state.semanticSubject = '';
     state.catalog = entry.catalog;
-    G.counts = entry.counts;
-    G.showNone = entry.catalog.units.some(unit => G.counts[unit.key].none > 0);
+    G.entry = entry;
+    G.tree = entry.tree;
+    G.showNone = entry.catalog.units.some(unit => entry.all[unit.key].none > 0);
     if (changed) {
       const kept = G.saved.get(profileId);
       G.cells = kept ? kept.cells : new Set();
       G.checked = kept ? kept.checked : new Set();
+      G.open = kept ? kept.open : new Set();
+      G.typeOff = kept ? kept.typeOff : new Set();
       G.result = null; G.view = 'grid';
     }
-    if (options.stored && options.stored.profileId === profileId) gridApplyStoredSelection(options.stored);
+    const storedHere = options.stored && options.stored.profileId === profileId ? options.stored : null;
+    if (storedHere) gridApplyStoredTypes(storedHere);
+    gridApplyCounts();
+    if (storedHere) gridApplyStoredSelection(storedHere);
     if (options.unitKey && G.counts[options.unitKey]) G.checked.add(options.unitKey);
     G.course = gridPickCourse(options.course, options.unitKey);
     gridRecompute();
@@ -1164,6 +1266,8 @@
     if (!options.fromPopstate) gridSyncUrl(changed && !options.initial ? 'push' : 'replace');
     renderGrid();
     if (changed && !options.initial && !options.fromPopstate) window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 옛 주소로 열렸으면 그 단원 행으로 스크롤하고 잠깐 강조한다(휴대폰에서 행이 화면 아래에 있어 안 보였다).
+    if (options.unitKey && options.initial && G.view === 'grid') gridFlashUnit(options.unitKey);
   }
   function gridRestoreFromUrl() {
     const params = new URLSearchParams(window.location.search);
@@ -1190,52 +1294,84 @@
     const open = targets.filter(unit => (G.counts[unit.key]?.[token] || 0) > 0);
     return open.length > 0 && open.every(unit => G.cells.has(gridKey(unit.key, token)));
   }
-  function gridCellHtml(unit, token, reports) {
-    const total = G.counts[unit.key]?.[token] || 0;
+  // 한 칸. child가 있으면 그 단원의 중단원(고등은 소단원 묶음) 칸이다. 단원 전체 칸이 켜져 있으면 그 단계의 중단원 칸은
+  // "이미 들어 있음"(is-covered)이고, 중단원 칸만 켜져 있으면 단원 칸은 "일부만"(is-part, aria-pressed=mixed)으로 보인다.
+  function gridCellHtml(unit, token, reports, child, partial) {
+    const childKey = child ? child.key : '';
+    const total = gridCountsOf(unit.key, childKey)?.[token] || 0;
     const caption = token === 'none' ? '미지정' : `${token}단계`;
     const stepName = core.stepTokenLabel(token);
-    if (!total) return `<span class="ug-cell is-zero"><span class="ug-n">0</span><span class="ug-cap">${caption}</span><span class="unit-visually-hidden">${escapeHtml(unit.name)} ${stepName} 문항 없음</span></span>`;
-    const key = gridKey(unit.key, token);
-    const on = G.cells.has(key);
-    const report = on ? reports.get(key) : null;
-    const each = on && G.amount === 'each' && report;
+    const name = child ? `${unit.name} › ${child.name}` : unit.name;
+    if (!total) return `<span class="ug-cell is-zero"><span class="ug-n">0</span><span class="ug-cap">${caption}</span><span class="unit-visually-hidden">${escapeHtml(name)} ${stepName} 문항 없음</span></span>`;
+    const key = gridKey(unit.key, token, childKey);
+    const own = G.cells.has(key);
+    const covered = Boolean(child) && G.cells.has(gridKey(unit.key, token));
+    const on = own || covered;
+    const part = !child && !own && Boolean(partial) && partial.has(gridKey(unit.key, token));
+    const report = own ? reports.get(key) : null;
+    const each = own && G.amount === 'each' && report;
     const take = each ? report.got : total;
     const short = Boolean(each && report.got < G.perCell);
     const shown = each ? `<span class="ug-n">${take}</span><span class="ug-of">/${total}</span>` : `<span class="ug-n">${total}</span>`;
-    let label = `${unit.name} ${stepName} ${total}문항`;
-    if (on) label += each ? `, ${take}문항 뽑음${short ? ', 모자라서 있는 만큼만' : ''}` : ', 선택됨';
-    return `<button type="button" class="ug-cell${on ? ' is-on' : ''}${short ? ' is-short' : ''}" data-focus="c:${key}" aria-pressed="${on ? 'true' : 'false'}" aria-label="${escapeHtml(label)}" onclick="UnitPastExams.gridToggleCell('${unit.key}','${token}')">${shown}<span class="ug-cap">${caption}</span></button>`;
+    let label = `${name} ${stepName} ${total}문항`;
+    if (on) label += each ? `, ${take}문항 뽑음${short ? ', 모자라서 있는 만큼만' : ''}` : covered ? ', 단원 전체에 들어 있어 선택됨' : ', 선택됨';
+    else if (part) label += ', 일부 중단원만 선택됨';
+    const click = child ? `UnitPastExams.gridToggleCell('${unit.key}','${token}','${childKey}')` : `UnitPastExams.gridToggleCell('${unit.key}','${token}')`;
+    const pressed = on ? 'true' : part ? 'mixed' : 'false';
+    return `<button type="button" class="ug-cell${on ? ' is-on' : ''}${covered ? ' is-covered' : ''}${part ? ' is-part' : ''}${short ? ' is-short' : ''}" data-focus="c:${key}" aria-pressed="${pressed}" aria-label="${escapeHtml(label)}" onclick="${click}">${shown}<span class="ug-cap">${caption}</span></button>`;
+  }
+  function gridUnitKindName() { return String(G.profileId).startsWith('m') ? '중단원' : '소단원'; }
+  function gridUnitRowHtml(unit, tokens, reports, partial) {
+    const checked = G.checked.has(unit.key);
+    const children = gridChildren(unit.key);
+    const open = children.length > 0 && G.open.has(unit.key);
+    const toggle = children.length
+      ? `<button type="button" class="ug-expand" data-focus="x:${unit.key}" aria-expanded="${open ? 'true' : 'false'}" aria-label="${escapeHtml(unit.name)} ${gridUnitKindName()} ${open ? '접기' : '펼치기'}" title="${gridUnitKindName()} ${children.length}개" onclick="UnitPastExams.gridToggleOpen('${unit.key}')"></button>`
+      : '<span class="ug-expand-gap" aria-hidden="true"></span>';
+    const head = `<tr class="ug-row${checked ? ' is-checked' : ''}" data-unit="${unit.key}"><th scope="row" class="ug-unit"><div class="ug-unit-line">${toggle}<label class="ug-check"><input type="checkbox" data-focus="k:${unit.key}"${checked ? ' checked' : ''} onchange="UnitPastExams.gridToggleUnit('${unit.key}')"><span>${escapeHtml(unit.name)}</span></label></div></th>${tokens.map(token => `<td class="ug-td">${gridCellHtml(unit, token, reports, null, partial)}</td>`).join('')}</tr>`;
+    if (!open) return head;
+    return head + children.map(child => {
+      const empty = !(gridCountsOf(unit.key, child.key)?.total);
+      return `<tr class="ug-subrow${empty ? ' is-empty' : ''}" data-unit="${unit.key}" data-child="${escapeHtml(child.key)}"><th scope="row" class="ug-unit ug-sub"><span class="ug-sub-name">${escapeHtml(child.name)}</span></th>${tokens.map(token => `<td class="ug-td">${gridCellHtml(unit, token, reports, child, partial)}</td>`).join('')}</tr>`;
+    }).join('');
   }
   function gridTableHtml() {
     const units = gridCourseUnits();
-    const reports = new Map((G.result?.cells || []).map(cell => [gridKey(cell.unitKey, cell.step), cell]));
+    const reports = new Map((G.result?.cells || []).map(cell => [gridKey(cell.unitKey, cell.step, cell.childKey), cell]));
     const tokens = G.showNone ? [...GRID_STEPS, 'none'] : GRID_STEPS;
     const targets = gridApplyTargets();
+    // 중단원 칸만 켠 단원·단계(단원 칸에 "일부" 표시)
+    const partial = new Set();
+    for (const key of G.cells) { const parsed = gridParseKey(key); if (parsed.childKey) partial.add(gridKey(parsed.unitKey, parsed.step)); }
     const checkedCount = (state.catalog?.units || []).filter(unit => G.checked.has(unit.key)).length;
     const scopeText = checkedCount ? `체크한 단원 ${checkedCount}개 전체에` : '체크가 없으면 보이는 모든 단원에';
     const stepButton = (token, prefix = 'a') => `<button type="button" class="ug-allstep" data-focus="${prefix}:${token}" aria-pressed="${gridStepPressed(token, targets) ? 'true' : 'false'}" aria-label="${token}단계를 ${checkedCount ? '체크한 단원 전체에' : '보이는 모든 단원에'}" onclick="UnitPastExams.gridApplyStep('${token}')">${token}단계</button>`;
     const head = `<tr class="ug-head-row"><th scope="col" class="ug-unit-head"><span class="ug-head-title">단원</span><span class="ug-head-hint">${scopeText}</span></th>${GRID_STEPS.map(token => `<th scope="col" class="ug-step-head">${stepButton(token)}</th>`).join('')}${G.showNone ? '<th scope="col" class="ug-step-head ug-none-head">미지정</th>' : ''}</tr>`;
-    const rows = units.map(unit => {
-      const checked = G.checked.has(unit.key);
-      return `<tr class="ug-row${checked ? ' is-checked' : ''}"><th scope="row" class="ug-unit"><label class="ug-check"><input type="checkbox" data-focus="k:${unit.key}"${checked ? ' checked' : ''} onchange="UnitPastExams.gridToggleUnit('${unit.key}')"><span>${escapeHtml(unit.name)}</span></label></th>${tokens.map(token => `<td class="ug-td">${gridCellHtml(unit, token, reports)}</td>`).join('')}</tr>`;
-    }).join('');
+    const rows = units.map(unit => gridUnitRowHtml(unit, tokens, reports, partial)).join('');
     const allbar = `<div class="ug-allbar" role="group" aria-label="체크한 단원 전체에 단계 적용"><span class="ug-allbar-label">${checkedCount ? `체크한 ${checkedCount}개 단원 전체에` : '보이는 모든 단원에'}</span>${GRID_STEPS.map(token => stepButton(token, 'b')).join('')}</div>`;
     return `${allbar}<table class="ug-table" style="--ug-cols:${tokens.length}"><thead>${head}</thead><tbody>${rows || '<tr><td class="ug-empty-row">이 과목에는 단원 정보가 없습니다.</td></tr>'}</tbody></table>`;
   }
+  // 표의 한 줄(단원 하나 또는 단원의 중단원 하나)의 이름: "평면도형" 또는 "평면도형 › 원과 부채꼴".
+  function gridScopeLabel(unitKey, childKey) {
+    const unit = (state.catalog?.units || []).find(item => item.key === unitKey);
+    const name = unit ? unit.name : unitKey;
+    const child = childKey && G.tree ? G.tree.childName(unitKey, childKey) : '';
+    return child ? `${name} › ${child}` : name;
+  }
   function gridShortText(shortages, limit = 4) {
-    const names = new Map((state.catalog?.units || []).map(unit => [unit.key, unit.name]));
-    const parts = shortages.slice(0, limit).map(item => `${names.get(item.unitKey) || item.unitKey} ${core.stepTokenLabel(item.step)} ${item.got}문항`);
+    const parts = shortages.slice(0, limit).map(item => `${gridScopeLabel(item.unitKey, item.childKey)} ${core.stepTokenLabel(item.step)} ${item.got}문항`);
     return parts.join(', ') + (shortages.length > limit ? ` 외 ${shortages.length - limit}곳` : '');
   }
   function gridMiniTableHtml(result) {
     const used = result.cells.filter(cell => cell.got > 0);
     const tokens = [...new Set(used.map(cell => cell.step))].sort((a, b) => core.STEP_TOKENS.indexOf(a) - core.STEP_TOKENS.indexOf(b));
     const names = new Map((state.catalog?.units || []).map(unit => [unit.key, unit.name]));
-    const rows = result.unitKeys.map(unitKey => {
-      const counts = tokens.map(token => used.find(cell => cell.unitKey === unitKey && cell.step === token)?.got || 0);
-      return `<tr><th scope="row">${escapeHtml(names.get(unitKey) || unitKey)}</th>${counts.map(count => `<td>${count || '-'}</td>`).join('')}<td class="ug-mini-sum">${counts.reduce((sum, count) => sum + count, 0)}</td></tr>`;
+    const scopes = result.scopes && result.scopes.length ? result.scopes : result.unitKeys.map(unitKey => ({ scopeKey: unitKey, label: names.get(unitKey) || unitKey }));
+    const rows = scopes.map(scope => {
+      const counts = tokens.map(token => used.find(cell => (cell.scopeKey || cell.unitKey) === scope.scopeKey && cell.step === token)?.got || 0);
+      return `<tr><th scope="row">${escapeHtml(scope.label)}</th>${counts.map(count => `<td>${count || '-'}</td>`).join('')}<td class="ug-mini-sum">${counts.reduce((sum, count) => sum + count, 0)}</td></tr>`;
     }).join('');
-    return `<table class="ug-mini"><thead><tr><th scope="col">단원</th>${tokens.map(token => `<th scope="col">${token === 'none' ? '미지정' : `${token}단계`}</th>`).join('')}<th scope="col">합계</th></tr></thead><tbody>${rows}</tbody></table>`;
+    return `<table class="ug-mini"><thead><tr><th scope="col">범위</th>${tokens.map(token => `<th scope="col">${token === 'none' ? '미지정' : `${token}단계`}</th>`).join('')}<th scope="col">합계</th></tr></thead><tbody>${rows}</tbody></table>`;
   }
   function gridSummaryHtml() {
     const result = G.result;
@@ -1257,8 +1393,50 @@
   }
   function gridSelectedTotal() {
     let sum = 0;
-    for (const key of G.cells) { const [unitKey, token] = key.split('|'); sum += G.counts[unitKey]?.[token] || 0; }
+    for (const key of G.cells) { const parsed = gridParseKey(key); sum += gridCountsOf(parsed.unitKey, parsed.childKey)?.[parsed.step] || 0; }
     return sum;
+  }
+
+  // ---- 유형 거르기 ("유형" 접이식) ----
+  // 고른 단원(체크했거나 칸을 고른 단원, 중단원 칸만 골랐으면 그 중단원)에 있는 유형만 보이고, 기본은 전부 켜져 있다.
+  // 끄면 그 유형 문항을 빼고 표 숫자와 문제지를 다시 센다. 중학교는 유형이 채워진 문항이 7~16%뿐이라 "유형 미지정"을 맨 위에 둔다.
+  function gridTypePool() {
+    const scopes = new Map();
+    for (const unitKey of G.checked) scopes.set(unitKey, null);
+    for (const key of G.cells) {
+      const { unitKey, childKey } = gridParseKey(key);
+      if (scopes.has(unitKey) && scopes.get(unitKey) === null) continue;
+      if (!childKey) { scopes.set(unitKey, null); continue; }
+      const only = scopes.get(unitKey) || new Set();
+      only.add(childKey);
+      scopes.set(unitKey, only);
+    }
+    const records = [];
+    for (const unit of state.catalog?.units || []) {
+      if (!scopes.has(unit.key)) continue;
+      const only = scopes.get(unit.key);
+      for (const record of unit.selectableRecords || []) if (!only || (G.tree && only.has(G.tree.childKeyOf(unit.key, record)))) records.push(record);
+    }
+    return records;
+  }
+  function gridTypesNowText() { return G.typeOff.size ? `${G.typeOff.size}종 뺌` : '전체 유형'; }
+  function gridTypesBodyHtml() {
+    const reset = G.typeOff.size ? '<button type="button" class="ug-link-btn" data-focus="t:reset" onclick="UnitPastExams.gridResetTypes()">모두 켜기</button>' : '';
+    const pool = gridTypePool();
+    if (!pool.length) {
+      G.typeRows = [];
+      return `<p class="ug-types-help">단원을 체크하거나 칸을 고르면 그 단원에 있는 유형이 나옵니다. 기본은 모든 유형을 씁니다.</p>${G.typeOff.size ? `<p class="ug-types-help">지금 유형 ${G.typeOff.size}종을 뺀 채로 숫자를 세고 있습니다.</p>${reset}` : ''}`;
+    }
+    const info = core.getTypeFilterOptions(pool);
+    const rows = [{ key: core.NO_TYPE_KEY, label: '유형 미지정', count: info.noneCount }, ...info.options];
+    G.typeRows = rows.map(row => row.key);
+    const items = rows.map((row, index) => `<li><label class="ug-type${row.count ? '' : ' is-quiet'}"><input type="checkbox" data-focus="t:${index}"${G.typeOff.has(row.key) ? '' : ' checked'} onchange="UnitPastExams.gridToggleType(${index})"><span class="ug-type-name">${escapeHtml(row.label)}</span><span class="ug-type-n">${row.count.toLocaleString()}</span></label></li>`).join('');
+    const hidden = [...G.typeOff].filter(key => !G.typeRows.includes(key)).length;
+    const hiddenNote = hidden ? `<p class="ug-types-help">고른 단원에 없는 유형 ${hidden}종도 빼고 있습니다.</p>` : '';
+    return `<p class="ug-types-help">고른 단원에 있는 유형입니다. 체크를 끄면 그 유형 문항을 빼고 다시 셉니다.</p><ul class="ug-type-list">${items}</ul>${hiddenNote}${reset}`;
+  }
+  function gridFilterNoteHtml() {
+    return G.typeOff.size ? `유형 ${G.typeOff.size}종을 뺀 문항 수입니다.` : '';
   }
   function gridPatch(id, html) {
     const el = document.getElementById(id);
@@ -1277,14 +1455,20 @@
     gridPatch('ug-sum', gridSummaryHtml());
     gridPatch('ug-bar', gridBarHtml());
     gridPatch('ug-orders', gridOrdersHtml());
+    gridPatch('ug-types-body', gridTypesBodyHtml());
     const now = document.getElementById('ug-opt-now');
     if (now) now.textContent = gridOptionsNow();
+    const typesNow = document.getElementById('ug-types-now');
+    if (typesNow) typesNow.textContent = gridTypesNowText();
+    const filterNote = document.getElementById('ug-filter-note');
+    if (filterNote) filterNote.textContent = gridFilterNoteHtml();
     const all = document.getElementById('ug-all-count');
     if (all) all.textContent = gridSelectedTotal() ? `(${gridSelectedTotal().toLocaleString()}문항)` : '';
     const go = document.getElementById('ug-go');
     if (go) go.disabled = !gridHasPapers();
     const clear = document.getElementById('ug-clear');
     if (clear) clear.disabled = !G.cells.size && !G.checked.size;
+    gridSyncUrl('replace');
   }
   function gridGradeButtons(activeId = G.profileId, handler = 'gridSelectGrade') {
     return `<div class="ug-grades" role="group" aria-label="학년">${GRID_GRADE_IDS.map(id => `<button type="button" class="ug-grade" data-profile="${id}" data-focus="g:${id}" aria-pressed="${activeId === id ? 'true' : 'false'}" onclick="UnitPastExams.${handler}('${id}')">${escapeHtml(core.getProfile(id).gradeLabel)}</button>`).join('')}</div>`;
@@ -1329,7 +1513,10 @@
     const wide = typeof window.matchMedia === 'function' && window.matchMedia('(min-width: 1360px)').matches;
     const amount = `<fieldset class="ug-amount"><legend>문항 수</legend><label class="ug-radio"><input type="radio" name="ug-amount" value="all"${G.amount === 'all' ? ' checked' : ''} onchange="UnitPastExams.gridSetAmount('all')"><span>있는 만큼 전부 <span class="ug-all-count" id="ug-all-count">${gridSelectedTotal() ? `(${gridSelectedTotal().toLocaleString()}문항)` : ''}</span></span></label><label class="ug-radio ug-radio-each"><input type="radio" name="ug-amount" value="each"${G.amount === 'each' ? ' checked' : ''} onchange="UnitPastExams.gridSetAmount('each')"><span>칸마다</span><span class="ug-stepper"><button type="button" class="ug-step-btn is-minus" aria-label="한 문항 줄이기" onclick="UnitPastExams.gridStepPer(-1)"></button><input id="ug-per" class="ug-per" type="number" inputmode="numeric" min="1" max="${GRID_PER_CELL_MAX}" value="${G.perCell}" aria-label="칸마다 뽑을 문항 수" oninput="UnitPastExams.gridSetPer(this.value)" onfocus="UnitPastExams.gridSetAmount('each', true)"><button type="button" class="ug-step-btn is-plus" aria-label="한 문항 늘리기" onclick="UnitPastExams.gridStepPer(1)"></button></span><span>문항씩</span></label><p class="ug-amount-help">모자란 칸은 막지 않고 있는 만큼만 넣습니다.</p></fieldset>`;
     const options = `<details class="ug-options"${wide ? ' open' : ''}><summary><span class="ug-options-title">문항 수 · 정리 순서</span><span class="ug-options-now" id="ug-opt-now">${escapeHtml(gridOptionsNow())}</span></summary>${amount}<div class="ug-order"><span class="ug-order-title" id="ug-order-title">정리 순서</span><div class="ug-orders" id="ug-orders" role="group" aria-labelledby="ug-order-title">${gridOrdersHtml()}</div></div></details>`;
-    root.innerHTML = `<section class="ug">${gridTabsHtml()}${picker}<p class="ug-help">단원 이름 앞 칸을 체크하고 단계 버튼을 누르면 체크한 단원 전체에 한 번에 적용됩니다. 칸을 따로 눌러 단원마다 다르게 고를 수도 있습니다. 칸의 숫자는 기출 문항 수입니다.</p><div class="ug-main"><section class="ug-table-wrap" aria-label="단원과 난이도 단계"><div class="ug-tools"><button type="button" class="ug-link-btn" id="ug-clear" onclick="UnitPastExams.gridClear()"${G.cells.size || G.checked.size ? '' : ' disabled'}>선택 지우기</button></div><div id="ug-table" class="ug-table-box">${gridTableHtml()}</div><p class="ug-legend">검은 칸이 고른 칸입니다. 칸마다 문항 수를 정하면 ‘뽑는 수/있는 수’로 보이고, 주홍 테두리는 문항이 모자라 있는 만큼만 넣은 칸입니다.</p></section><aside class="ug-panel" aria-label="만들어진 문제지"><div class="ug-sum" id="ug-sum">${gridSummaryHtml()}</div>${options}<div class="ug-go"><button type="button" class="ug-primary" id="ug-go" onclick="UnitPastExams.gridShowPapers()"${gridHasPapers() ? '' : ' disabled'}>문제지 보기</button></div></aside></div></section><div class="ug-bar" id="ug-bar" role="region" aria-label="만들어진 문제지 요약" aria-live="polite">${gridBarHtml()}</div>`;
+    const hasChildren = (state.catalog?.units || []).some(unit => gridChildren(unit.key).length);
+    const childHelp = hasChildren ? ` 단원 이름 옆 화살표를 누르면 ${gridUnitKindName()}이 펼쳐져 ${gridUnitKindName()}만 골라 만들 수도 있습니다.` : '';
+    const types = `<details class="ug-options ug-types" id="ug-types"><summary><span class="ug-options-title">유형</span><span class="ug-options-now" id="ug-types-now">${escapeHtml(gridTypesNowText())}</span></summary><div class="ug-types-body" id="ug-types-body">${gridTypesBodyHtml()}</div></details>`;
+    root.innerHTML = `<section class="ug">${gridTabsHtml()}${picker}<p class="ug-help">단원 이름 앞 칸을 체크하고 단계 버튼을 누르면 체크한 단원 전체에 한 번에 적용됩니다. 칸을 따로 눌러 단원마다 다르게 고를 수도 있습니다.${childHelp} 칸의 숫자는 기출 문항 수입니다.</p><div class="ug-main"><section class="ug-table-wrap" aria-label="단원과 난이도 단계"><div class="ug-tools"><span class="ug-filter-note" id="ug-filter-note">${escapeHtml(gridFilterNoteHtml())}</span><button type="button" class="ug-link-btn" id="ug-clear" onclick="UnitPastExams.gridClear()"${G.cells.size || G.checked.size ? '' : ' disabled'}>선택 지우기</button></div><div id="ug-table" class="ug-table-box">${gridTableHtml()}</div><p class="ug-legend">검은 칸이 고른 칸입니다. 칸마다 문항 수를 정하면 ‘뽑는 수/있는 수’로 보이고, 주홍 테두리는 문항이 모자라 있는 만큼만 넣은 칸입니다. 점선 칸은 펼친 줄 일부만 고른 단원입니다.</p></section><aside class="ug-panel" aria-label="만들어진 문제지"><div class="ug-sum" id="ug-sum">${gridSummaryHtml()}</div>${options}${types}<div class="ug-go"><button type="button" class="ug-primary" id="ug-go" onclick="UnitPastExams.gridShowPapers()"${gridHasPapers() ? '' : ' disabled'}>문제지 보기</button></div></aside></div></section><div class="ug-bar" id="ug-bar" role="region" aria-label="만들어진 문제지 요약" aria-live="polite">${gridBarHtml()}</div>`;
     setStatusKeepSummary();
   }
   // 학년을 고른 뒤에는 상태 줄에 집계 요약(renderSummary)이 남아 있어야 하므로 안내 문구만 지운다.
@@ -1349,7 +1536,8 @@
       const label = gridPaperLabel(paper, result.order);
       const facts = [`${paper.count}문항`, `원본 시험지 ${paper.sourceCount}개`];
       if (result.order !== 'recent') facts.push(gridYearText(paper));
-      const units = result.unitKeys.length > 1 && result.order !== 'unit' ? `<p class="ug-paper-units">${escapeHtml(paper.unitNames.join(' · '))}</p>` : '';
+      const paperScopes = paper.scopeNames && paper.scopeNames.length ? paper.scopeNames : paper.unitNames;
+      const units = ((result.scopes || []).length > 1 || result.unitKeys.length > 1) && result.order !== 'unit' ? `<p class="ug-paper-units">${escapeHtml(paperScopes.join(' · '))}</p>` : '';
       const edited = paper.edited ? '<p class="ug-paper-edited">문항을 바꾼 권입니다. 출력·출제에 바꾼 문항이 쓰입니다. 표로 돌아가 선택을 바꾸면 바꾼 내용은 사라집니다.</p>' : '';
       const args = `'${GRID_UNIT_KEY}', '${paper.gridId}', this`;
       return `<li class="ug-paper" data-profile="${G.profileId}"><div class="ug-paper-no"><span class="ug-big">${paper.index}</span><small>권</small></div><div class="ug-paper-info"><h3>${escapeHtml(label)}</h3><p>${escapeHtml(facts.join(' · '))}</p>${composition ? `<p class="ug-paper-steps">${escapeHtml(composition)}</p>` : ''}${units}${edited}</div><div class="ug-paper-actions"><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'exam')" aria-label="${escapeHtml(paper.title)} 시험지">시험지</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'sol')" aria-label="${escapeHtml(paper.title)} 해설">해설</button><button type="button" class="ug-btn" onclick="UnitPastExams.printPaper(${args}, 'ans')" aria-label="${escapeHtml(paper.title)} 정답">정답</button><button type="button" class="ug-btn ug-fix" title="미리 보고, 시험지 헤더와 문항을 고칩니다" onclick="UnitPastExams.gridOpenEdit('${paper.gridId}')" aria-label="${escapeHtml(paper.title)} 미리 보고 고치기">고치기</button><button type="button" class="ug-primary ug-assign" onclick="UnitPastExams.assignPaper(${args})" aria-label="${escapeHtml(paper.title)} 출제">출제</button></div></li>`;
@@ -1370,11 +1558,63 @@
     gridSyncUrl('replace');
     renderGrid();
   }
-  function gridToggleCell(unitKey, token) {
-    if (!(G.counts[unitKey]?.[token] > 0)) return;
-    const key = gridKey(unitKey, token);
-    if (G.cells.has(key)) G.cells.delete(key); else G.cells.add(key);
+  // 단원 전체 칸은 그 단계의 중단원 칸을 모두 품으므로, 단원 전체 칸을 켤 때 같은 단계의 중단원 칸은 지운다.
+  function gridDropChildCells(unitKey, token) {
+    for (const key of [...G.cells]) {
+      const parsed = gridParseKey(key);
+      if (parsed.childKey && parsed.unitKey === unitKey && parsed.step === token) G.cells.delete(key);
+    }
+  }
+  function gridToggleCell(unitKey, token, childKey = '') {
+    if (!(gridCountsOf(unitKey, childKey)?.[token] > 0)) return;
+    const unitCell = gridKey(unitKey, token);
+    if (!childKey) {
+      if (G.cells.has(unitCell)) G.cells.delete(unitCell);
+      else { gridDropChildCells(unitKey, token); G.cells.add(unitCell); }
+    } else if (G.cells.has(unitCell)) {
+      // 단원 전체에 들어 있던 중단원 하나를 끄면: 단원 전체 칸을 풀고 나머지 중단원 칸을 켠다(문항이 있는 것만).
+      G.cells.delete(unitCell);
+      for (const child of gridChildren(unitKey)) {
+        if (child.key !== childKey && (G.entry?.all[unitKey]?.children?.[child.key]?.[token] || 0) > 0) G.cells.add(gridKey(unitKey, token, child.key));
+      }
+    } else {
+      const key = gridKey(unitKey, token, childKey);
+      if (G.cells.has(key)) G.cells.delete(key); else G.cells.add(key);
+    }
     gridRefresh();
+  }
+  function gridToggleOpen(unitKey) {
+    if (!gridChildren(unitKey).length) return;
+    if (G.open.has(unitKey)) G.open.delete(unitKey); else G.open.add(unitKey);
+    gridWriteStore();
+    gridPatch('ug-table', gridTableHtml());
+  }
+  function gridToggleType(index) {
+    const key = G.typeRows[Number(index)];
+    if (!key) return;
+    if (G.typeOff.has(key)) G.typeOff.delete(key); else G.typeOff.add(key);
+    gridApplyCounts();
+    gridRefresh();
+  }
+  function gridResetTypes() {
+    if (!G.typeOff.size) return;
+    G.typeOff.clear();
+    gridApplyCounts();
+    gridRefresh();
+  }
+  // 옛 주소로 열렸을 때: 체크된 단원 행으로 스크롤하고 잠깐 강조한다(휴대폰에서는 행이 화면 아래에 있어 안 보였다).
+  function gridFlashUnit(unitKey) {
+    if (typeof document.querySelector !== 'function' || typeof window.setTimeout !== 'function') return;
+    window.setTimeout(() => {
+      const row = document.querySelector(`.ug-row[data-unit="${unitKey}"]`);
+      if (!row) return;
+      const reduce = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (typeof row.scrollIntoView === 'function') row.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+      if (row.classList) {
+        row.classList.add('is-flash');
+        window.setTimeout(() => row.classList.remove('is-flash'), 2600);
+      }
+    }, 120);
   }
   function gridToggleUnit(unitKey) {
     if (!G.counts[unitKey]) return;
@@ -1388,7 +1628,8 @@
     const everyOn = targets.every(unit => G.cells.has(gridKey(unit.key, token)));
     for (const unit of targets) {
       const key = gridKey(unit.key, token);
-      if (everyOn) G.cells.delete(key); else G.cells.add(key);
+      if (everyOn) G.cells.delete(key);
+      else { gridDropChildCells(unit.key, token); G.cells.add(key); }
     }
     gridRefresh();
   }
@@ -1444,7 +1685,7 @@
   // 권 목록의 줄 제목: 위 머리줄과 같은 말을 되풀이하지 않고, 정리 순서에 맞춰 그 권을 구별해 주는 것을 쓴다.
   // (출력·출제에 넘기는 권 제목 paper.title은 바꾸지 않는다.)
   function gridPaperLabel(paper, order) {
-    if (order === 'unit') return paper.unitNames.join(' · ') || paper.title;
+    if (order === 'unit') return (paper.scopeNames && paper.scopeNames.length ? paper.scopeNames : paper.unitNames).join(' · ') || paper.title;
     if (order === 'step') return core.selectionStepLabel([...new Set(paper.records.map(record => core.getStepToken(record)))]) || paper.title;
     return gridYearText(paper);
   }
@@ -1460,6 +1701,7 @@
     // 고치는 동안은 복사본을 쓰고, 권 목록으로 돌아갈 때 바뀐 내용을 그 권에 되돌려 쓴다.
     state.generatedPapers = [{
       ...paper, unitKey: state.selectedUnitKey, index: `generated-${gridId}`, baseSnapshotKey: paper.baseSnapshotKey || paper.snapshotKey,
+      excludedTypeKeys: [...(G.result?.excludedTypeKeys || [])],
       records: paper.records.map(record => ({ ...record })), outputEnvelopeCache: undefined,
       printHeaderOptions: paper.printHeaderOptions ? { ...paper.printHeaderOptions } : undefined
     }];
@@ -1480,6 +1722,9 @@
       snapshotKey: edited.snapshotKey, baseSnapshotKey: edited.baseSnapshotKey, edited: edited.snapshotKey !== edited.baseSnapshotKey,
       stepSummary: core.summarizeSteps(records), yearMin: years.length ? Math.min(...years) : 0, yearMax: years.length ? Math.max(...years) : 0,
       unitNames: (state.catalog?.units || []).filter(unit => records.some(record => record.mappedUnitKey === unit.key)).map(unit => unit.name),
+      scopeNames: (G.result?.scopes || []).length
+        ? G.result.scopes.filter(scope => records.some(record => record.mappedUnitKey === scope.unitKey && (!scope.childKey || G.tree?.childKeyOf(scope.unitKey, record) === scope.childKey))).map(scope => scope.label)
+        : target.scopeNames,
       sections: core.buildSelectionSections(records, target.sectionOptions),
       printHeaderOptions: edited.printHeaderOptions, outputEnvelopeCache: undefined, snapshotGeneratedAt: undefined
     });
@@ -1506,6 +1751,6 @@
     if (window.Archive2Assign && typeof window.Archive2Assign.handlePopState === 'function' && window.Archive2Assign.handlePopState()) return;
     if (state.ready) gridRestoreFromUrl();
   });
-  window.UnitPastExams = { init, renderSafeFallback, renderGrid, gridRestoreFromUrl, gridPickGradeEarly, gridOpenEdit, gridLeaveEdit, gridSelectGrade, gridClearGrade, gridSetCourse, gridToggleCell, gridToggleUnit, gridApplyStep, gridClear, gridSetAmount, gridSetPer, gridStepPer, gridSetOrder, gridShowPapers, gridBack, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, printPaper, assignPaper, assignAllPapers };
+  window.UnitPastExams = { init, renderSafeFallback, renderGrid, gridRestoreFromUrl, gridPickGradeEarly, gridOpenEdit, gridLeaveEdit, gridSelectGrade, gridClearGrade, gridSetCourse, gridToggleCell, gridToggleOpen, gridToggleType, gridResetTypes, gridToggleUnit, gridApplyStep, gridClear, gridSetAmount, gridSetPer, gridStepPer, gridSetOrder, gridShowPapers, gridBack, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, printPaper, assignPaper, assignAllPapers };
   window.High1UnitPastExams = window.UnitPastExams;
 })();

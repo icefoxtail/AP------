@@ -300,3 +300,80 @@ test('패널 request: 로그인이 없으면 요청 없이 status 401이다(패�
   const request = opened[0].request;
   await assert.rejects(() => request('/qr-classes', { method: 'GET', timeoutMs: 30000 }), error => error.status === 401);
 });
+
+// ---- 행 펼침(중단원·소단원 묶음)과 유형 거르기 (계획 1b) ----
+function createTreeRuntime(url, teacher = false) {
+  const Tree = require(path.join(archiveRoot, 'archive2-unit-tree.js'));
+  Tree.setGroups(JSON.parse(fs.readFileSync(path.join(archiveRoot, 'data', 'archive2-subunit-groups.json'), 'utf8')));
+  const rec = (n, sub, extra = {}) => ({
+    sourceFile: `original/high/h1/1mid/25_runtime${n}.js`, sourceOrdinal: n, id: n, grade: '고1', subject: '공통수학1', course: '공통수학1',
+    standardUnitKey: 'H22-C-06', standardUnit: '여러 가지 방정식과 부등식', question_uid: `tree-uid-${n}`, subUnitKey: sub, subUnit: 'x', level: '중', ...extra
+  });
+  const questionIndex = [
+    rec(1, 'H22-C-06-EQUATION', { problemTypeKey: 'PT_A', problemTypeLabel: '유형 가', metaFacetBound: true }),
+    rec(2, 'H22-C-06-EQUATION'),
+    rec(3, 'H22-C-06-SYSTEM', { problemTypeKey: 'PT_B', problemTypeLabel: '유형 나', metaFacetBound: true })
+  ];
+  return { Tree, runtime: createRuntime({ url, teacher, questionIndex, window: { Archive2UnitTree: Tree } }) };
+}
+
+test('단원 행을 펼치면 묶음표 이름의 소단원 행이 나오고, 소단원 칸만 골라 그 문항만 문제지가 된다', () => {
+  const { Tree, runtime } = createTreeRuntime('http://unit.test/archive/unit-past-exams.html?grade=h1');
+  const api = runtime.window.UnitPastExams;
+  api.gridSelectGrade('h1');
+  assert.doesNotMatch(runtime.getElement('unit-content').innerHTML, /ug-subrow/, '처음에는 접혀 있다');
+  assert.match(runtime.getElement('unit-content').innerHTML, /class="ug-expand"[^>]*aria-expanded="false"[^>]*aria-label="여러 가지 방정식과 부등식 소단원 펼치기"/);
+  api.gridToggleOpen('H22-C-06');
+  const table = runtime.getElement('ug-table').innerHTML;
+  assert.match(table, /aria-expanded="true"/);
+  assert.match(table, /class="ug-subrow[^"]*" data-unit="H22-C-06"/);
+  assert.match(table, /여러 가지 방정식/);
+  assert.match(table, /연립부등식/);
+  assert.doesNotMatch(table, /핵심 개념/);
+  const tree = Tree.createTree('h1', runtime.window.UnitPastExamsCore.buildCatalog(runtime.window.questionIndex, { profileId: 'h1' }).units);
+  const system = tree.childrenOf('H22-C-06').find(child => child.name === '연립부등식');
+  api.gridToggleCell('H22-C-06', 'none', system.key);
+  assert.match(runtime.getElement('ug-bar').innerHTML, /1문항 · 1권/);
+  assert.match(runtime.getElement('ug-sum').innerHTML, /여러 가지 방정식과 부등식 › 연립부등식 · 단계 미지정/);
+  assert.match(runtime.getElement('ug-table').innerHTML, /aria-pressed="mixed"/, '단원 칸은 일부만 고른 상태');
+  assert.match(runtime.url, /sel=H22-C-06(?:~|%7E)[^&]*%7Cnone/, '고른 소단원 칸이 주소에 남는다');
+  api.gridShowPapers();
+  assert.match(runtime.getElement('unit-content').innerHTML, /연립부등식/);
+  // 단원 전체 칸을 켜면 같은 단계의 소단원 칸은 따로 두지 않고(포함), 소단원 칸을 끄면 나머지 소단원 칸으로 갈라진다.
+  api.gridToggleCell('H22-C-06', 'none');
+  assert.match(runtime.getElement('ug-table').innerHTML, /is-covered/);
+  api.gridToggleCell('H22-C-06', 'none', system.key);
+  assert.match(runtime.getElement('ug-bar').innerHTML, /2문항 · 1권/, '연립부등식을 뺀 나머지만 남는다');
+});
+
+test('유형 거르기: 기본은 전부이고, 유형을 끄면 숫자가 그 조건으로 다시 세어지며 유형 미지정도 끌 수 있다', () => {
+  const { runtime } = createTreeRuntime('http://unit.test/archive/unit-past-exams.html?grade=h1');
+  const api = runtime.window.UnitPastExams;
+  api.gridSelectGrade('h1');
+  api.gridToggleUnit('H22-C-06');
+  const body = () => runtime.getElement('ug-types-body').innerHTML;
+  assert.match(body(), /유형 미지정/);
+  assert.match(body(), /유형 가/);
+  assert.match(body(), /유형 나/);
+  api.gridToggleCell('H22-C-06', 'none');
+  assert.match(runtime.getElement('ug-bar').innerHTML, /3문항/);
+  // 유형 미지정(맨 위)을 끄면 미지정 문항 1개가 빠진다.
+  api.gridToggleType(0);
+  assert.match(runtime.getElement('ug-bar').innerHTML, /2문항/);
+  assert.match(runtime.getElement('ug-types-now').textContent, /1종 뺌/);
+  assert.match(runtime.url, /notype=__none__/);
+  api.gridToggleType(1);
+  assert.match(runtime.getElement('ug-bar').innerHTML, /1문항/);
+  api.gridResetTypes();
+  assert.match(runtime.getElement('ug-bar').innerHTML, /3문항/);
+  assert.doesNotMatch(runtime.url, /notype/);
+});
+
+test('주소의 sel·chk·notype로 다시 열면 같은 선택이다', async () => {
+  const { runtime } = createTreeRuntime('http://unit.test/archive/unit-past-exams.html?grade=h1&sel=H22-C-06%7Cnone&chk=H22-C-06&notype=__none__', true);
+  await runtime.window.UnitPastExams.init();
+  const html = runtime.getElement('unit-content').innerHTML;
+  assert.match(html, /<input type="checkbox" data-focus="k:H22-C-06" checked/);
+  assert.match(html, /ug-bar-count">2문항 · 1권/);
+  assert.match(html, /id="ug-types-now">1종 뺌/);
+});
