@@ -280,7 +280,10 @@
         const caption = field === 'solutionImage' && question.solutionImageCaption
             ? `<span class="sol-image-caption">${question.solutionImageCaption}</span>`
             : '';
-        return `<${field === 'solutionImage' ? 'span' : 'div'} class="${className}${sizeClass}${layoutClass}"><img src="${escapeHtmlAttribute(url)}" alt="${escapeHtmlAttribute(alt)}">${caption}</${field === 'solutionImage' ? 'span' : 'div'}>`;
+        const mobileFigure = field === 'image' && question.sourcePayload?.imageMobileFigure === true
+            ? ' data-archive-mobile-figure="true"'
+            : '';
+        return `<${field === 'solutionImage' ? 'span' : 'div'} class="${className}${sizeClass}${layoutClass}"><img src="${escapeHtmlAttribute(url)}" alt="${escapeHtmlAttribute(alt)}"${mobileFigure}>${caption}</${field === 'solutionImage' ? 'span' : 'div'}>`;
     }
 
     function renderQuestionHTML(inputQuestion, options) {

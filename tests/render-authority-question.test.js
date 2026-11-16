@@ -89,6 +89,27 @@ test('Question authority preserves a meaningful source problem-image alt when no
   assert.match(exam, /alt="원 위의 점과 중심을 잇는 반지름을 나타낸 그림"/);
 });
 
+test('Question authority uses the exact author opt-in on the structured problem image only', () => {
+  const raw = { id: 1, content: '문항 내용', image: 'q.png', imageSize: 'small', imageAlt: '문제 그림 설명',
+    solutionImage: 's.svg', solutionImageAlt: '해설 그림 설명' };
+  const render = (payload, mode) => {
+    const [normalized] = A.normalizeArchiveQuestions([payload], { sourceArchiveFile: 'exams/a.js' });
+    return A.renderQuestionHTML(normalized, { ...renderOptions, mode });
+  };
+  const ordinary = render(raw, 'exam');
+  assert.match(ordinary, /class="q-image-wrap image-small"><img src="\/assets\/q\.png" alt="문제 그림 설명">/);
+  assert.doesNotMatch(ordinary, /data-archive-mobile-figure/);
+  for (const value of [false, null, 1, 'true', 'false', {}]) {
+    assert.equal(render({ ...raw, imageMobileFigure: value }, 'exam'), ordinary);
+  }
+  const optedIn = { ...raw, imageMobileFigure: true };
+  assert.equal(render(optedIn, 'exam'),
+    ordinary.replace('alt="문제 그림 설명">', 'alt="문제 그림 설명" data-archive-mobile-figure="true">'));
+  assert.equal(render(optedIn, 'solution'), render(raw, 'solution'));
+  assert.equal(render(optedIn, 'answer'), render(raw, 'answer'));
+  assert.doesNotMatch(render({ ...optedIn, image: undefined }, 'exam'), /data-archive-mobile-figure/);
+});
+
 test('Question authority automatically uses the shared SVG index when the browser page loads it', () => {
   const previousIndex = globalThis.APSvgAccessibilityIndex;
   const previousHelper = globalThis.APSvgAccessibility;
