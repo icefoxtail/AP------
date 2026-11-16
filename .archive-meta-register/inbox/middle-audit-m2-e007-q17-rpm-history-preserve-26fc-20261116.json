@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "middle-audit-m2-e007-q17-rpm-history-preserve-26fc-20261116",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+  "expectedSourceBlobSha1": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+  "expectedQuestionCount": 24,
+  "scope": "PARTIAL_UIDS",
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_ROOT_0A70543C4CE8",
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+        "sha256": "0e6f8edf5ade443a4e4f18d21dc12d15a1a768a8d272bcb8715efd18aabbccf3"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q17-issued-source-preservation.json",
+        "sha256": "f5cefeb1c838bfe7d12803e80c4a8091632613f54327d5123e7905dbf1443410"
+      }
+    ],
+    "sourceRebind": {
+      "priorReceiptRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+        "sha256": "0e6f8edf5ade443a4e4f18d21dc12d15a1a768a8d272bcb8715efd18aabbccf3"
+      },
+      "historicalRpmEvidence": {
+        "schemaVersion": "archive-native-issued-rpm-history-v1",
+        "priorReceiptCommit": "e9af62176fc10bce6c30f420d911664082ec059b"
+      }
+    }
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "sourceOrdinal": 17,
+      "before": {},
+      "after": {},
+      "reason": "Preserve the exact actual e9af issued Q17 values after the separate approved Q18 metadata-only source change. Q17 whole question and all student payloads remain unchanged. This request grants no new semantic approval. Preserve the exact issued FINAL_QA authority after an append-only RPM crosswalk update; no new approval or value.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+          "sha256": "0e6f8edf5ade443a4e4f18d21dc12d15a1a768a8d272bcb8715efd18aabbccf3"
+        },
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q17-issued-source-preservation.json",
+          "sha256": "f5cefeb1c838bfe7d12803e80c4a8091632613f54327d5123e7905dbf1443410"
+        }
+      ]
+    }
+  ]
+}
