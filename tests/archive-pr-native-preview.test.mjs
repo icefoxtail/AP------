@@ -2057,3 +2057,123 @@ for (const label of ['absent', 'empty']) {
   });
 }
 
+
+// Existing source-only FINAL_QA approval, with a later append to shared input.
+// This uses the public preview/prepare/proof interfaces and their existing
+// official-phase test runner; the registrar's approval guard remains separate.
+function issuedPartialHistoryFixture(t, { mutateReceipt, mutateRequest, directHistorical = false, nestedDirect = false } = {}) {
+  const f = fixture(t, { partial: true, finalQaPreservation: true, otherOwner: false });
+  const priorPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-partial.json';
+  const sharedPath = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json';
+  const historicalBytes = json({ records: [{ id: 'EXISTING' }] });
+  const currentBytes = json({ records: [{ id: 'EXISTING' }, { id: 'UNRELATED-APPEND' }] });
+  const historicalRef = { path: sharedPath, sha256: sha(historicalBytes) };
+  const currentRef = copy(f.request.approval.evidenceRefs[0]);
+  f.request.examUid = 'existing-partial-exam';
+  const item = f.request.items[0], row = { questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
+    sourceArchiveFile: f.request.sourceArchiveFile };
+  const receipt = { schemaVersion: 'archive-reviewed-exam-meta-registration-v2', metadataRegistrationStatus: 'REGISTERED',
+    requestId: 'issued-partial', requestSha256: 'a'.repeat(64), examUid: f.request.examUid,
+    sourceArchiveFile: f.request.sourceArchiveFile, sourceBlobSha1: 'b'.repeat(40), sourceRawSha256: 'c'.repeat(64),
+    scope: 'PARTIAL_UIDS', totalQuestions: 1, partialUidCount: 1, expectedQuestionCount: 24,
+    approval: { type: 'FINAL_QA', metadataReviewed: true, approvedBy: 'existing fixture approval', evidenceRefs: [historicalRef] },
+    appliedRecords: [{ ...row, metadataApprovalType: 'FINAL_QA' }], appliedIdentityRecords: [{ ...row }],
+    runtimeRecords: [{ ...row, sourceIdentity: `${row.sourceArchiveFile}#${row.sourceOrdinal}` }] };
+  mutateReceipt?.(receipt);
+  const priorBytes = json(receipt), priorRef = { path: priorPath, sha256: sha(priorBytes) };
+  f.write(priorPath, priorBytes); f.write(sharedPath, historicalBytes);
+  f.git('add', '.'); f.git('commit', '-qm', 'issued exact partial approval');
+  f.request.approval.sourceRebind.priorReceiptRef = priorRef;
+  f.request.approval.evidenceRefs = [priorRef, currentRef];
+  f.request.items[0].evidenceRefs = [priorRef, currentRef];
+  if (directHistorical) f.request.approval.evidenceRefs.push(historicalRef);
+  if (nestedDirect) {
+    const otherPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/separate-current.json';
+    const otherBytes = json({ schemaVersion: 'archive-reviewed-exam-meta-registration-v2', approval: { evidenceRefs: [historicalRef] } });
+    f.write(otherPath, otherBytes);
+    f.request.approval.evidenceRefs.push({ path: otherPath, sha256: sha(otherBytes) });
+  }
+  mutateRequest?.(f.request);
+  f.write(sharedPath, currentBytes); f.write(REQUEST, json(f.request));
+  f.git('add', '.'); f.git('commit', '-qm', 'preserve issued subset after unrelated shared append');
+  const headSha = f.git('rev-parse', 'HEAD'), repo = 'owner/repository';
+  const event = { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
+    number: 17, base: { sha: f.baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } } } };
+  const options = { root: f.root, repo, event, expectedSha: headSha, runId: 41, runAttempt: 1, run: f.run };
+  return { ...f, headSha, priorPath, priorBytes, priorRef, sharedPath, currentBytes, currentRef, options,
+    selected: () => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha }),
+    produce: () => producePrRegistrationProof(options),
+    validate: proof => validateLocalRegistrationProof({ ...options, proof }) };
+}
+
+test('issued partial FINAL_QA history stages the exact receipt and current inputs through PR, main and shadow proof', t => {
+  const f = issuedPartialHistoryFixture(t);
+  const [selected] = f.selected();
+  assert.deepEqual(selected.evidence.map(ref => ref.path).sort(), [f.priorPath, EVIDENCE].sort());
+  assert.equal(selected.questionCount, 1); assert.equal(selected.sourceQuestionCount, 24);
+  assert.deepEqual(selectPendingNativeRequests({ root: f.root, headSha: f.headSha }), [selected]);
+  f.hook['dry-run'] = target => {
+    assert.deepEqual(fs.readFileSync(path.join(target, f.priorPath)), Buffer.from(f.priorBytes));
+    assert.deepEqual(fs.readFileSync(path.join(target, f.sharedPath)), Buffer.from(f.currentBytes));
+  };
+  const proof = f.produce(), before = f.snapshot();
+  assert.equal(f.validate(proof).reusable, true); assert.deepEqual(f.snapshot(), before);
+  const check = proof.nativePreview.checks.find(value => value.id === 'native-consumer');
+  assert.deepEqual(check.preservedNativeApprovals, { requests: 1, preservedMetadataApprovals: 1,
+    newMetadataApprovals: 0, approvalTypes: ['FINAL_QA'] });
+  f.assertShadowsRemoved();
+});
+
+for (const [name, options] of [
+  ['wrong prior SHA', { mutateRequest: r => { r.approval.sourceRebind.priorReceiptRef.sha256 = '0'.repeat(64); } }],
+  ['changed UID', { mutateReceipt: r => { r.appliedRecords[0].questionUid = 'foreign'; } }],
+  ['changed identity ordinal', { mutateReceipt: r => { r.appliedIdentityRecords[0].sourceOrdinal = 6; } }],
+  ['changed runtime source', { mutateReceipt: r => { r.runtimeRecords[0].sourceArchiveFile = 'original/foreign.js'; } }],
+  ['wrong partial scope', { mutateReceipt: r => { delete r.scope; } }],
+  ['different approval type', { mutateReceipt: r => { r.approval.type = 'REVIEW2'; } }],
+  ['changed runtime identity', { mutateReceipt: r => { r.runtimeRecords[0].sourceIdentity = 'original/native.js#6'; } }],
+  ['wrong full denominator', { mutateReceipt: r => { r.expectedQuestionCount = 1; } }],
+  ['extra selected UID', { mutateReceipt: r => { r.appliedRecords.push({ ...r.appliedRecords[0], questionUid: 'neighbour' }); } }],
+  ['different exam', { mutateReceipt: r => { r.examUid = 'foreign-exam'; } }],
+  ['unregistered receipt', { mutateReceipt: r => { r.metadataRegistrationStatus = 'PENDING'; } }],
+  ['ordinary FINAL_QA without preservation', { mutateRequest: r => { delete r.approval.sourceRebind; } }],
+  ['unknown preservation option', { mutateRequest: r => { r.approval.sourceRebind.allowDrift = true; } }],
+  ['nonempty semantic after', { mutateRequest: r => { r.items[0].after.templateKey = 'UNREVIEWED'; } }],
+  ['separately declared historical ref', { directHistorical: true }],
+  ['separate current recursive receipt', { nestedDirect: true }],
+]) test(`issued partial FINAL_QA history refuses ${name} before official registration`, t => {
+  const f = issuedPartialHistoryFixture(t, options), before = f.snapshot();
+  assert.throws(f.produce, /EVIDENCE_DRIFT/);
+  assert.deepEqual(f.snapshot(), before); assert.equal(f.calls.length, 0);
+});
+
+test('issued partial FINAL_QA history retains live prior and direct evidence SHA and HEAD checks', t => {
+  for (const file of ['prior', 'direct']) {
+    const f = issuedPartialHistoryFixture(t), changed = file === 'prior' ? f.priorPath : EVIDENCE;
+    fs.appendFileSync(path.join(f.root, changed), '\n');
+    assert.throws(f.selected, /EVIDENCE_DRIFT/); assert.equal(f.calls.length, 0);
+  }
+  for (const file of ['prior', 'direct']) {
+    const f = issuedPartialHistoryFixture(t), changed = file === 'prior' ? f.priorPath : EVIDENCE;
+    const changedBytes = fs.readFileSync(path.join(f.root, changed), 'utf8') + '\n';
+    f.write(changed, changedBytes);
+    for (const refs of [f.request.approval.evidenceRefs, f.request.items[0].evidenceRefs])
+      refs.find(ref => ref.path === changed).sha256 = sha(changedBytes);
+    f.write(REQUEST, json(f.request)); f.git('add', '--', REQUEST); f.git('commit', '-qm', 'only the request is committed');
+    assert.throws(() => selectNativeRequests({ root: f.root, baseSha: f.baseSha,
+      headSha: f.git('rev-parse', 'HEAD') }), /EVIDENCE_NOT_FIXED/);
+    assert.equal(f.calls.length, 0);
+  }
+});
+
+test('issued partial FINAL_QA history cannot bypass official registration, projection, Consumer or shadow refusal', t => {
+  for (const phase of ['dry-run', 'projection', 'consumer']) {
+    const f = issuedPartialHistoryFixture(t);
+    f.hook[phase] = () => { throw Error('OFFICIAL_PRESERVATION_REFUSED'); };
+    assert.throws(f.produce, /OFFICIAL_PRESERVATION_REFUSED/); f.assertShadowsRemoved();
+  }
+  const f = issuedPartialHistoryFixture(t), proof = f.produce(), before = f.snapshot();
+  f.hook['dry-run'] = target => { if (target !== f.root) throw Error('OFFICIAL_SHADOW_PRESERVATION_REFUSED'); };
+  assert.throws(() => f.validate(proof), /OFFICIAL_SHADOW_PRESERVATION_REFUSED/);
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});

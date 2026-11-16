@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "independent-partial-final-qa-history-preview-review-v2",
+  "status": "PASS_INDEPENDENT_CODE_REVIEW",
+  "reviewer": "root/m3s2_closeout",
+  "implementationOwner": "root/m2_closeout",
+  "findings": [],
+  "candidate": {
+    "path": "/workspace/scratch/3e3a7e007c36/m2-agent/c-preview-drift/fix-harness/tools/ci/archive-pr-native-preview.mjs",
+    "bytes": 73588,
+    "sha256": "5d96e87086293555e67e483c94d7b1a0cd934a11f28f954255ea6ded52b91d54",
+    "gitBlobSha1": "ec621c60131869dbb84a6856ac688b32195c0e43",
+    "frozenLocalPath": "/workspace/scratch/3e3a7e007c36/m2-agent/c-preview-drift/native-preview-candidate.mjs"
+  },
+  "previewBase": {
+    "path": "/workspace/scratch/3e3a7e007c36/m2-agent/c-preview-drift/main8b-archive-pr-native-preview.mjs",
+    "bytes": 70992,
+    "sha256": "8a3e0b8dd63b4add4337807f31e87840f66529fd9939923ec581f2647afe0ff6",
+    "gitBlobSha1": "b735b26d64a16d07b2c772713244b830559904f6"
+  },
+  "candidateTests": {
+    "path": "/workspace/scratch/3e3a7e007c36/m2-agent/c-preview-drift/fix-harness/tests/archive-pr-native-preview.test.mjs",
+    "bytes": 150777,
+    "sha256": "022e818166e6f9b18157b2dfaea7bb7664de0f4a7e3c18603a0c19eaa4574b7a",
+    "gitBlobSha1": "1402b7573d4002fcedbe824510394f1baa515795",
+    "frozenLocalPath": "/workspace/scratch/3e3a7e007c36/m2-agent/c-preview-drift/native-preview-candidate.test.mjs"
+  },
+  "testBase": {
+    "path": "/workspace/scratch/3e3a7e007c36/m2-agent/c-preview-drift/current-preview.test.mjs",
+    "bytes": 142055,
+    "sha256": "d8b82833fc5ebc59fccb99ebd03967b0cb38f130c68b4bd35c4be72ba6221be8",
+    "gitBlobSha1": "a3f0136cd446f602bf2fc6b3ccf47aedd37c3d59"
+  },
+  "checks": [
+    {
+      "id": "unchanged_selection",
+      "status": "PASS",
+      "reason": "Request adoption and inherited selection functions are unchanged; this patch changes evidence staging for an already selected exact preservation input."
+    },
+    {
+      "id": "strict_opt_in",
+      "status": "PASS",
+      "reason": "The existing PARTIAL_UIDS FINAL_QA predicate requires empty before/after, no registry change or sourceReview/rebind subtype, no registration mode and a single priorReceiptRef declaration."
+    },
+    {
+      "id": "exact_prior_ref",
+      "status": "PASS",
+      "reason": "The boundary matches the declared priorReceiptRef by exact path/SHA object equality. Extra ref members do not broaden acceptance."
+    },
+    {
+      "id": "current_and_HEAD_before_boundary",
+      "status": "PASS",
+      "reason": "Every ref passes safe-path, cycle/conflicting-SHA, file bytes and immutable HEAD bytes checks before any history boundary is considered."
+    },
+    {
+      "id": "flat_receipt_path",
+      "status": "PASS",
+      "reason": "The early return is reachable only for a flat reviewed-exam-meta/v1 JSON receipt; arbitrary evidence files retain ordinary behavior."
+    },
+    {
+      "id": "issued_scope_and_digests",
+      "status": "PASS",
+      "reason": "The prior receipt must be REGISTERED PARTIAL_UIDS with exact selected/full counts, exam/source, requestId path identity, valid request/source digests and FINAL_QA metadata-reviewed authority."
+    },
+    {
+      "id": "selected_bijection",
+      "status": "PASS",
+      "reason": "Metadata, identity and runtime arrays have exact selected count, unique UID set and one-to-one UID/ordinal/source correspondence. Runtime sourceIdentity and metadata approval type are also checked."
+    },
+    {
+      "id": "separate_refs_remain_strict",
+      "status": "PASS",
+      "reason": "A historical shared path separately declared by the current request is still rejected on drift, as is that path reached through a different current receipt."
+    },
+    {
+      "id": "other_receipts_keep_recursion",
+      "status": "PASS",
+      "reason": "Nonmatching, malformed, ordinary and FULL receipts retain the preexisting recursive evidence staging. The old recursive/FULL audit and cycle/symlink boundaries remain covered."
+    },
+    {
+      "id": "official_guard_unchanged",
+      "status": "PASS",
+      "reason": "The current official registrar source-rebind guard is unmodified: current MD/ID/runtime, whole selected question objects, prior scope, ACTIVE resolution and typed Native reuse remain enforced."
+    },
+    {
+      "id": "official_phase_failures_propagate",
+      "status": "PASS",
+      "reason": "Public pipeline tests demonstrate refusal in dry-run, projection, Consumer and shadow phases cannot be converted to success or bypassed."
+    },
+    {
+      "id": "no_approval_or_student_changes",
+      "status": "PASS",
+      "reason": "Only preview orchestration and additive tests changed. No approval, source, student content, registry entry or runtime data was edited for this review."
+    }
+  ],
+  "existingRegistrarGuardContinuity": {
+    "path": "/workspace/scratch/3e3a7e007c36/m3s2-agent/preview-parity-review/registrar-guard-continuity.json",
+    "bytes": 938,
+    "sha256": "aff75ba9bfab6740beaa28a7208d4e13110183b36a52ce4384ef47b58a5f0fa5",
+    "gitBlobSha1": "e4e637f4571a472aa17ecb395ad97d2413d87998"
+  },
+  "testEvidence": [
+    {
+      "kind": "targeted_new",
+      "expected": {
+        "tests": 19,
+        "pass": 19,
+        "fail": 0
+      },
+      "path": "/workspace/scratch/3e3a7e007c36/m2-agent/c-preview-drift/partial-history-targeted-final.log",
+      "bytes": 2275,
+      "sha256": "70d70a74e90f39e20d9ac9911a5d0e7664309045589082bf51ac0999b49650b2",
+      "gitBlobSha1": "04fae0813ef4fa11412628756b369ae0b6c3a310"
+    },
+    {
+      "kind": "existing_boundaries",
+      "expected": {
+        "tests": 39,
+        "pass": 39,
+        "fail": 0
+      },
+      "path": "/workspace/scratch/3e3a7e007c36/m2-agent/c-preview-drift/existing-boundary-regressions.log",
+      "bytes": 4362,
+      "sha256": "2f3fecd8fbe09dc1de97f87522272599801377711d6cc6e23692d236df429419",
+      "gitBlobSha1": "9e5e57971c2cc2f33759fdfb7d604b198edb7dc3"
+    },
+    {
+      "kind": "original_baseline_red",
+      "expected": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "reason": "PR_NATIVE_PREVIEW:EVIDENCE_DRIFT:archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json"
+      },
+      "path": "/workspace/scratch/3e3a7e007c36/m2-agent/c-preview-drift/baseline-failure.log",
+      "bytes": 1870,
+      "sha256": "49fd08f73fbdcf29710fc22ee4d1f843147bc21ab9f08782bad33982987aa710",
+      "gitBlobSha1": "02b8bd11dfcf4556a554a4e6994cdafaa4234ef6"
+    },
+    {
+      "kind": "current_main_official_registrar_source_rebind",
+      "expected": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0
+      },
+      "path": "/workspace/scratch/3e3a7e007c36/m2-agent/c-preview-drift/current-main-official-source-rebind.log",
+      "bytes": 1118,
+      "sha256": "712a90b519edc76fb54cee87de6c9d13971770f9e97b72f61444e73016e9b1f9"
+    }
+  ],
+  "verificationScope": {
+    "newTestsExecutedBy": "implementation owner, logs independently read and hashes verified",
+    "testsRerunByReviewer": 0,
+    "existingFixturesModified": false,
+    "sourceOrAnswerContentRead": false,
+    "M3S1Scope": 0,
+    "remoteWrites": 0,
+    "verifiedPositiveTests": 67,
+    "baselineExpectedRed": 1
+  },
+  "limitations": [
+    "The new public-pipeline fixtures use the existing official-phase test runner; their success is not an actual main registration receipt.",
+    "Final current main file CAS and exact PR CI remain root integration requirements; deployed main/Consumer/Pages results remain separate."
+  ],
+  "nextAction": "Root may reuse this exact two-file candidate after current-main CAS and exact PR CI. All original strict registrar guards and old fixtures remain; actual main registration/Consumer/Pages are separate later observations.",
+  "previousReviewRef": {
+    "path": "/workspace/scratch/3e3a7e007c36/m3s2-agent/preview-parity-review/independent-code-review.json",
+    "sha256": "1841306993ad1069e2aa22a46e675c3dbee56128ed99f7439f9766bc2f875c50"
+  }
+}
