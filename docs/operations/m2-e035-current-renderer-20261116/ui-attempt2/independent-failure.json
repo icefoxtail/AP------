@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-e035-supported-chrome-attempt-independent-observation-v1",
+  "observer": "/root/audit_m3",
+  "observedAt": "2026-11-16T08:51:21.143705+00:00",
+  "headCommit": "e493d3b2863a8d2d76badc940ee9b8c605eca93d",
+  "producerSha256": "b67d3511ded330847ce86dbad09382a5357a6f249edd13f4a5f6d610f98dc2fb",
+  "runId": 43833721220,
+  "jobId": 133185034226,
+  "artifactId": 14209568321,
+  "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43833721220",
+  "observedJobConclusion": "failure",
+  "captureStepConclusion": "failure",
+  "artifactUploadConclusion": "success",
+  "zip": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43833721220/original-artifact.zip",
+    "sha256": "72a90fe9f29c9389425f6fcdd77c6f070ca2741d64d73d7ff197eef5d2325b79",
+    "bytes": 88194
+  },
+  "downloadManifest": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43833721220/download-manifest.json",
+    "sha256": "9ab7a512bb9ae833591533be2cd0fe78b71735da6beee9aa95f43cc76b02af1c",
+    "bytes": 2760
+  },
+  "failure": {
+    "activeCase": "desktop-problem",
+    "errorName": "AssertionError",
+    "message": "UI_RENDER_STATE",
+    "caseStartedAt": "2026-11-16T08:47:58.7404152Z",
+    "failureLoggedAt": "2026-11-16T08:48:03.3272964Z"
+  },
+  "actualCounts": {
+    "completedTechnicalCases": 0,
+    "requiredTechnicalCases": 4,
+    "originalTilePngsPresent": 1,
+    "failureViewportPngsPresent": 1,
+    "independentlyViewedOriginalPngs": 2
+  },
+  "recordedFailureState": {
+    "readinessState": "RENDER_READY",
+    "readinessReady": false,
+    "readinessFailed": false,
+    "renderError": null,
+    "questionCount": 21
+  },
+  "observedImages": [
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43833721220/e035-problem-desktop-tile-01.png",
+      "sha256": "f235e1c5acd2e2949f35046290a8c0e07296e29b0f7245ffd1687b48d84800b3",
+      "bytes": 30354,
+      "dimensions": {
+        "width": 664,
+        "height": 438
+      },
+      "actuallyViewed": true,
+      "priorAttemptTileBytesExact": true,
+      "priorTileSha256": "f235e1c5acd2e2949f35046290a8c0e07296e29b0f7245ffd1687b48d84800b3",
+      "observation": "Visible selected problem tile matches the previously inspected complete desktop tile; this does not establish four-case completion."
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43833721220/desktop-problem-failure-viewport.png",
+      "sha256": "028cfa92dc4ca95a0eedd60a137b87ea71bc3d4596c1ae7b530ff57f0f404a68",
+      "bytes": 41716,
+      "dimensions": {
+        "width": 1280,
+        "height": 900
+      },
+      "actuallyViewed": true,
+      "observation": "Selected problem is visible and a status feedback panel is visible near the bottom of the viewport; no original statement, answer or solution is reproduced."
+    }
+  ],
+  "inferences": [
+    {
+      "claim": "Failure is in the after-screenshot verifyTile UI_RENDER_STATE check.",
+      "basis": "Original tile exists; screenshot succeeded; PNG signature/dimensions checks precede after verifyTile. The next subsequent failure is exactly UI_RENDER_STATE."
+    },
+    {
+      "claim": "The feedbackIdle condition may be false after capture.",
+      "basis": "Failure viewport visibly contains a feedback panel. Exact feedbackIdle/mandatoryChildrenVisible fields were not recorded, so this is not a measured boolean or confirmed root cause."
+    }
+  ],
+  "notEstablished": [
+    "mobile document-coordinate capture result",
+    "four-case UI completeness",
+    "exact transient render-state guard operand",
+    "causation by Chromium internal capture state",
+    "current UI PASS"
+  ],
+  "decision": "HOLD_INCOMPLETE_CURRENT_UI_EVIDENCE",
+  "priorFailuresPreserved": true,
+  "newMathematicalQa": false,
+  "newMetadataApprovals": 0,
+  "newDifficultyJudgments": 0,
+  "newFourSlotApprovals": 0,
+  "producerOrApplicationExecutionByReviewer": 0,
+  "sourceAssetCssDomEditsByReviewer": 0,
+  "remoteWrites": 0,
+  "nextAction": "ROOT retains failed immutable bytes and diagnoses the observed post-capture readiness state. Preserve every original guard. If a normal idle wait is used, require all original post-capture viewport/DOM/geometry and coverage checks afterward; any new run requires independent observation of its own original images."
+}
