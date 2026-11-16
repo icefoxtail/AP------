@@ -639,7 +639,11 @@ window.questionBank = [
       "l4": "성질 비교"
     },
     "primaryMethod": "사각형의 포함관계와 대각선 성질 비교",
-    "decisiveStep": "마름모와 직사각형을 혼동하지 않고 보편 성질을 판정한다."
+    "decisiveStep": "마름모와 직사각형을 혼동하지 않고 보편 성질을 판정한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 12,
@@ -876,7 +880,11 @@ window.questionBank = [
       "l4": "넓이·부피 비"
     },
     "primaryMethod": "반지름비의 제곱을 넓이비로",
-    "decisiveStep": "2대5의 제곱비4대25를 큰원 넓이에 적용한다."
+    "decisiveStep": "2대5의 제곱비4대25를 큰원 넓이에 적용한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 16,
