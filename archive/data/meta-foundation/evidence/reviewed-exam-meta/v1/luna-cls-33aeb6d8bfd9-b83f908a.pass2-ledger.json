@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass2",
+  "createdAt": "2026-11-12T17:23:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/23_팔마고_1학기_중간_고2_확률과통계.js",
+  "items": [
+    {
+      "ordinal": 3,
+      "questionUid": "",
+      "primaryMethod": "5를 아래 첨자로 둔 조합합은 파스칼 항등식으로 이웃한 6을 아래 첨자로 둔 두 항의 차로 바꾸어 망원합을 만든다.",
+      "decisiveStep": "각 항을 C(k+1,6)-C(k,6)으로 바꾸면 중간 항이 소거되어 C(12,6)만 남는다.",
+      "rpmPath": { "majorUnit": "경우의 수", "midUnit": "이항정리", "l3": "이항계수", "l4": "조합 항등식" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 19,
+      "questionUid": "",
+      "primaryMethod": "두 사람의 격자 최단 경로를 중앙 세로선에 들어오는 위치로 나누고, C에 도달하기 전 만나는 경로쌍을 제외한다.",
+      "decisiveStep": "최단 경로의 교차 시점을 비교해 포함배제로 세는 방법은 표의 단일 유형 경로 조합으로 대응되지 않는다.",
+      "rpmPath": {},
+      "hold": "H2-확률과통계 표에서 동시 이동 중 첫 만남을 제외하는 격자 경로쌍 유형 조합을 찾지 못함",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 20,
+      "questionUid": "",
+      "primaryMethod": "홀수 차수 이항계수의 대칭성을 이용해 앞쪽 절반의 합을 전체 합의 절반에서 가운데 항을 뺀 값으로 나타낸다.",
+      "decisiveStep": "합을 2^(2n)-1로 정리한 뒤 1023=2^10-1과 지수를 비교해 n=5를 얻는다.",
+      "rpmPath": { "majorUnit": "경우의 수", "midUnit": "이항정리", "l3": "이항계수", "l4": "이항계수의 성질" },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 21,
+      "questionUid": "",
+      "primaryMethod": "각 함수 조건을 값의 순서쌍·서로 다른 값의 배열·증가 수열·중복 허용 증가 수열로 나누어 센 뒤, 조건부 선택에서 교집합 개수를 전체 조건 수로 나눈다.",
+      "decisiveStep": "마지막 확률은 단조 함수 252개 중 곱 조건도 만족하는 30개를 세어 5/42로 약분한다.",
+      "rpmPath": {},
+      "hold": "함수 개수 네 조건과 그중 하나를 기준으로 한 조건부확률을 함께 묻지만 H2-확률과통계 표에 이 복합 유형의 한 줄 조합이 없음",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    }
+  ]
+}
