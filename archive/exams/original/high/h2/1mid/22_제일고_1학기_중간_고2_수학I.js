@@ -694,7 +694,11 @@ window.questionBank = [
       "examUid": "22_제일고_1학기_중간_고2_수학I",
       "sourceQid": 14,
       "sourceOnlySha256": "a1f77104bb62161de578fefa269f3242cc742e968b9325a17ad990a9b109d30b"
-    }
+    },
+    "solutionImage": "assets/images/22_제일고_1학기_중간_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 제4사분면의 점 P(4,−4)와 원점 O를 잇고, P에서 x축에 내린 수선으로 직각삼각형을 만든다. 두 직각변에는 같은 길이 눈금이 있다.",
+    "solutionImageCaption": "tanθ=−1이고 a>0이므로 a=4이다. 따라서 cosθ=1/√2, sinθ=−1/√2이고 cosθ−sinθ=√2이다. 정답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
