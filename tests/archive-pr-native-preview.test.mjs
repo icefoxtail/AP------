@@ -59,6 +59,195 @@ function sourceQualityHoldFixture(write) {
   }));
 }
 
+const GEOMETRY_VERSION_PACK = 'archive/data/meta-foundation/canonical/packs/geometry-equations';
+const GEOMETRY_VERSION_PROVIDER = '.archive-meta-register/inbox/zz-geometry-taxonomy-provider.json';
+const GEOMETRY_VERSION_KEY = { curriculum: '2015', standardCourse: '수학(상)', standardUnitKey: 'H15-SA-09',
+  subUnitKey: 'H15-SA-09-TRIANGLE_CENTROID_AREA', problemTypeKey: 'PT_COORD_CENTROID' };
+function geometryVersionFixture(t, { mutateProvider, mutateConsumer, mutatePack, mutateBindings, secondProvider = false, providerConsumes = false } = {}) {
+  const f = fixture(t, { partial: true, otherOwner: false, mutateRequest: request => {
+    request.approval.type = 'REVIEW2'; request.approval.reviewPassCount = 2;
+    request.items[0].after = { ...copy(GEOMETRY_VERSION_KEY), templateKey: 'TPL_EXISTING_CENTROID' };
+    mutateConsumer?.(request);
+  } });
+  const pack = { packId: 'GEOMETRY_EQUATIONS', packVersion: '1.0.2', canonicalStatus: 'ACTIVE' };
+  const bindings = { ownerPack: 'GEOMETRY_EQUATIONS', status: 'ACTIVE', bindings: [
+    { ...copy(GEOMETRY_VERSION_KEY), ownerPack: 'GEOMETRY_EQUATIONS', status: 'ACTIVE' },
+  ] };
+  mutatePack?.(pack); mutateBindings?.(bindings);
+  f.write(`${GEOMETRY_VERSION_PACK}/pack.json`, json(pack));
+  f.write(`${GEOMETRY_VERSION_PACK}/bindings.json`, json(bindings));
+  const provider = copy(f.request);
+  provider.requestId = 'zz-geometry-taxonomy-provider';
+  provider.items[0].questionUid = 'geometry-provider-uid'; provider.items[0].sourceOrdinal = 6;
+  provider.items[0].after = providerConsumes ? copy(GEOMETRY_VERSION_KEY) : copy(BINDING_KEY);
+  provider.registryChanges = [{ path: `${GEOMETRY_VERSION_PACK}/taxonomy.json`, collection: 'templates',
+    match: { templateKey: 'TPL_NEW_GEOMETRY_TEMPLATE' }, before: null,
+    after: { templateKey: 'TPL_NEW_GEOMETRY_TEMPLATE', parentProblemTypeKey: 'PT_COORD_CENTROID', status: 'ACTIVE' },
+    evidenceRefs: copy(provider.approval.evidenceRefs) }];
+  mutateProvider?.(provider); f.write(GEOMETRY_VERSION_PROVIDER, json(provider));
+  const secondPath = '.archive-meta-register/inbox/zy-second-geometry-provider.json';
+  if (secondProvider) {
+    const second = copy(provider); second.requestId = 'zy-second-geometry-provider';
+    second.items[0].questionUid = 'second-provider-uid'; second.items[0].sourceOrdinal = 7;
+    second.registryChanges[0].match.templateKey = second.registryChanges[0].after.templateKey = 'TPL_SECOND_GEOMETRY_TEMPLATE';
+    f.write(secondPath, json(second));
+  }
+  f.git('add', '.'); f.git('commit', '-qm', 'fixed geometry version dependency input');
+  const headSha = f.git('rev-parse', 'HEAD');
+  return { ...f, provider, pack, bindings, secondPath, headSha,
+    select: () => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha }),
+    pending: () => selectPendingNativeRequests({ root: f.root, headSha }) };
+}
+
+test('geometry pack version dependency orders taxonomy-only provider before exact native consumers', t => {
+  const f = geometryVersionFixture(t), selected = f.select();
+  assert.deepEqual(selected.map(r => r.path), [GEOMETRY_VERSION_PROVIDER, REQUEST]);
+  assert.deepEqual(f.pending(), selected);
+  assert.deepEqual(orderNativeRequests([...selected].reverse()).map(r => r.path), [GEOMETRY_VERSION_PROVIDER, REQUEST]);
+  assert.equal(selected[0].registryDependency.provides.length, 0, 'no fabricated ACTIVE binding addition');
+  assert.equal(selected[0].geometryPackVersionDependency.provider, true);
+  assert.deepEqual(selected[1].geometryPackVersionDependency.consumers[0].key, GEOMETRY_VERSION_KEY);
+  assert.equal(selected[1].geometryPackVersionDependency.headSha, f.headSha);
+  assert.equal(selected[1].geometryPackVersionDependency.packRef.sha256, sha(json(f.pack)));
+  assert.equal(selected[1].geometryPackVersionDependency.bindingsRef.sha256, sha(json(f.bindings)));
+});
+
+test('geometry pack version dependency leaves provider-free selection without extra canonical reads', t => {
+  const f = fixture(t, { partial: true, otherOwner: false,
+    mutateRequest: r => { r.items[0].after = copy(GEOMETRY_VERSION_KEY); } });
+  const selected = selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha: f.headSha });
+  assert.deepEqual(selected.map(r => r.path), [REQUEST]);
+  assert.equal(selected[0].geometryPackVersionDependency, undefined);
+  assert.equal(fs.existsSync(path.join(f.root, `${GEOMETRY_VERSION_PACK}/pack.json`)), false);
+});
+
+for (const [name, change] of [
+  ['other pack', r => { r.registryChanges[0].path = 'archive/data/meta-foundation/canonical/packs/middle2/taxonomy.json'; }],
+  ['noncanonical path', r => { r.registryChanges[0].path = 'archive/data/meta-foundation/compiled/geometry-equations/taxonomy.json'; }],
+  ['unrecognized collection', r => { r.registryChanges[0].collection = 'other'; }],
+  ['no change', r => { r.registryChanges[0].before = copy(r.registryChanges[0].after); }],
+]) test(`geometry pack version dependency does not infer a provider from ${name}`, t => {
+  const f = geometryVersionFixture(t, { mutateProvider: change }), selected = f.select();
+  assert.deepEqual(selected.map(r => r.path), [REQUEST, GEOMETRY_VERSION_PROVIDER]);
+  assert.ok(selected.every(r => r.geometryPackVersionDependency === undefined));
+});
+
+for (const field of Object.keys(GEOMETRY_VERSION_KEY)) test(`geometry pack version dependency requires exact consumer ${field}`, t => {
+  const f = geometryVersionFixture(t, { mutateConsumer: r => { r.items[0].after[field] += '-other'; } });
+  const selected = f.select(); assert.deepEqual(selected.map(r => r.path), [REQUEST, GEOMETRY_VERSION_PROVIDER]);
+  assert.equal(selected[0].geometryPackVersionDependency, undefined);
+});
+
+test('geometry pack version dependency never infers a missing after key from before', t => {
+  const f = geometryVersionFixture(t, { mutateConsumer: r => {
+    r.items[0].before = copy(GEOMETRY_VERSION_KEY); delete r.items[0].after.subUnitKey;
+  } });
+  const selected = f.select(); assert.deepEqual(selected.map(r => r.path), [REQUEST, GEOMETRY_VERSION_PROVIDER]);
+  assert.equal(selected[0].geometryPackVersionDependency, undefined);
+});
+
+for (const [name, change, code] of [
+  ['ambiguous ACTIVE binding', bindings => { bindings.bindings.push(copy(bindings.bindings[0])); }, /REGISTRY_VERSION_AMBIGUOUS/],
+  ['wrong binding owner', bindings => { bindings.ownerPack = 'MIDDLE2'; }, /REGISTRY_VERSION_CONTEXT/],
+  ['inactive binding document', bindings => { bindings.status = 'REVIEW_REQUIRED'; }, /REGISTRY_VERSION_CONTEXT/],
+]) test(`geometry pack version dependency refuses ${name}`, t => {
+  const f = geometryVersionFixture(t, { mutateBindings: change }); assert.throws(f.select, code);
+});
+
+test('geometry pack version dependency does not consume inactive or differently owned binding rows', t => {
+  for (const mutateBindings of [b => { b.bindings[0].status = 'REVIEW_REQUIRED'; }, b => { b.bindings[0].ownerPack = 'MIDDLE2'; }]) {
+    const f = geometryVersionFixture(t, { mutateBindings });
+    assert.deepEqual(f.select().map(r => r.path), [REQUEST, GEOMETRY_VERSION_PROVIDER]);
+  }
+});
+
+test('geometry pack version dependency refuses a wrong or inactive canonical pack', t => {
+  for (const mutatePack of [p => { p.packId = 'MIDDLE2'; }, p => { p.canonicalStatus = 'REVIEW_REQUIRED'; }, p => { p.packVersion = 'current'; }]) {
+    const f = geometryVersionFixture(t, { mutatePack }); assert.throws(f.select, /REGISTRY_VERSION_CONTEXT/);
+  }
+});
+
+test('geometry pack version dependency uses immutable HEAD during postwrite reselection', t => {
+  const f = geometryVersionFixture(t), before = f.select();
+  f.write(`${GEOMETRY_VERSION_PACK}/pack.json`, json({ ...f.pack, packVersion: '1.0.3' }));
+  f.write(`${GEOMETRY_VERSION_PACK}/bindings.json`, json({ ...f.bindings, bindings: [] }));
+  assert.deepEqual(f.select(), before, 'selection is fixed; registrar still checks the actual worktree');
+});
+
+test('geometry pack version dependency waits for every selected provider', t => {
+  const f = geometryVersionFixture(t, { secondProvider: true }), selected = f.select();
+  assert.deepEqual(selected.map(r => r.path), [f.secondPath, GEOMETRY_VERSION_PROVIDER, REQUEST]);
+  assert.deepEqual(orderNativeRequests([...selected].reverse()).map(r => r.path), [GEOMETRY_VERSION_PROVIDER, f.secondPath, REQUEST]);
+});
+
+test('geometry pack version dependency allows self-provided pack and refuses mutual provider consumers', t => {
+  const f = geometryVersionFixture(t, { providerConsumes: true }), selected = f.select();
+  assert.deepEqual(selected.map(r => r.path), [GEOMETRY_VERSION_PROVIDER, REQUEST]);
+  assert.deepEqual(orderNativeRequests([selected[0]]).map(r => r.path), [GEOMETRY_VERSION_PROVIDER]);
+  const cycle = geometryVersionFixture(t, { providerConsumes: true, secondProvider: true });
+  assert.throws(cycle.select, /REGISTRY_DEPENDENCY_CYCLE/);
+});
+
+test('geometry pack version dependency preserves an existing binding cycle refusal', t => {
+  const f = geometryVersionFixture(t), selected = copy(f.select());
+  const provider = selected.find(r => r.path === GEOMETRY_VERSION_PROVIDER), consumer = selected.find(r => r.path === REQUEST);
+  const other = copy(BINDING_KEY);
+  consumer.registryDependency.provides = [{ path: 'archive/data/meta-foundation/canonical/packs/middle2/bindings.json', key: other }];
+  provider.registryDependency.requires.push({ questionUid: 'geometry-provider-uid', sourceOrdinal: 6, key: other });
+  assert.throws(() => orderNativeRequests(selected), /REGISTRY_DEPENDENCY_CYCLE/);
+});
+
+for (const [name, change, code] of [
+  ['missing descriptor', selected => { delete selected[0].geometryPackVersionDependency; }, /REGISTRY_VERSION_DESCRIPTOR/],
+  ['forged provider flag', selected => { selected[0].geometryPackVersionDependency.provider = false; }, /REGISTRY_VERSION_DESCRIPTOR/],
+  ['unknown descriptor key', selected => { selected[1].geometryPackVersionDependency.skip = true; }, /REGISTRY_VERSION_DESCRIPTOR/],
+  ['nonfixed context', selected => { selected[1].geometryPackVersionDependency.headSha = 'main'; }, /REGISTRY_VERSION_DESCRIPTOR/],
+  ['wrong pack path', selected => { selected[1].geometryPackVersionDependency.packRef.path = 'archive/other.json'; }, /REGISTRY_VERSION_DESCRIPTOR/],
+  ['different snapshot digest', selected => { selected[1].geometryPackVersionDependency.packRef.sha256 = 'f'.repeat(64); }, /REGISTRY_VERSION_CONTEXT/],
+  ['unselected consumer', selected => { selected[1].geometryPackVersionDependency.consumers[0].questionUid = 'outside'; }, /REGISTRY_VERSION_DESCRIPTOR/],
+  ['duplicate consumer', selected => { const d = selected[1].geometryPackVersionDependency; d.consumers.push(copy(d.consumers[0])); }, /REGISTRY_VERSION_DESCRIPTOR/],
+]) test(`geometry pack version dependency rejects ${name}`, t => {
+  const f = geometryVersionFixture(t), selected = copy(f.select()); change(selected);
+  assert.throws(() => orderNativeRequests(selected), code);
+});
+
+test('geometry pack version dependency rejects a removed provider and duplicate request path', t => {
+  const f = geometryVersionFixture(t), selected = f.select();
+  assert.throws(() => orderNativeRequests(selected.filter(r => r.path === REQUEST)), /REGISTRY_VERSION_PROVIDER_NOT_SELECTED/);
+  assert.throws(() => orderNativeRequests([...selected, selected[0]]), /DUPLICATE_REQUEST_PATH/);
+});
+
+test('geometry pack version dependency preserves the issued REVIEW2 row through the production compiler', t => {
+  const f = geometryVersionFixture(t), selected = f.select();
+  const compiler = fs.readFileSync(new URL('../archive/tools/meta-foundation/compile-meta-foundation.mjs', import.meta.url), 'utf8');
+  const start = compiler.indexOf('function expectedRuntime(canonical) {'), end = compiler.indexOf('\nfunction verifyExact(', start);
+  assert.ok(start >= 0 && end > start);
+  const body = compiler.slice(start, end);
+  const project = (version, row) => {
+    const runtimePath = 'archive/data/meta-foundation/runtime/geometry-equations-v1.json';
+    const runtime = { packVersion: version, runtimeVersion: `GEOMETRY_EQUATIONS@${version}/reviewed-exam-v2`, records: [copy(row)] };
+    const expectedRuntime = new Function('readJson', 'geometryRuntimePath', 'jsonText', `${body}\nreturn expectedRuntime;`)(
+      p => { assert.equal(p, runtimePath); return copy(runtime); }, runtimePath, json);
+    return JSON.parse(expectedRuntime({ packs: [{ meta: { packId: 'GEOMETRY_EQUATIONS', packVersion: version } }] })).records[0];
+  };
+  const execute = requests => {
+    let version = '1.0.2', issued;
+    for (const request of requests) {
+      if (request.path === GEOMETRY_VERSION_PROVIDER) version = '1.0.3';
+      else issued = { questionUid: 'fixture', metadataApprovalType: 'REVIEW2', approvalEvidence: ['synthetic-receipt'],
+        metaFoundationPackVersion: version, metadataRevision: `meta-foundation:GEOMETRY_EQUATIONS@${version}:exam-review2-v2:synthetic` };
+    }
+    return { issued, afterCompile: project(version, issued) };
+  };
+  const good = execute(selected); assert.deepEqual(good.afterCompile, good.issued);
+  assert.equal(good.issued.metadataRevision, 'meta-foundation:GEOMETRY_EQUATIONS@1.0.3:exam-review2-v2:synthetic');
+  const inverse = execute([...selected].reverse());
+  assert.notDeepEqual(inverse.afterCompile, inverse.issued);
+  assert.equal(inverse.afterCompile.metadataRevision, 'meta-foundation:GEOMETRY_EQUATIONS@1.0.3');
+  const forged = { ...good.afterCompile, approvalEvidence: ['different'] };
+  assert.notDeepEqual(forged, good.issued, 'whole-row evidence equality is not relaxed by ordering');
+});
+
 function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, auditSourcePreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));

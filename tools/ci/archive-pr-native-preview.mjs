@@ -209,6 +209,8 @@ function auditSourcePreservationDescriptor(request, file) {
 const REGISTRY_DEPENDENCY_SCHEMA = 'archive-native-active-binding-dependency-v1';
 const BINDING_FIELDS = ['curriculum', 'standardCourse', 'standardUnitKey', 'subUnitKey', 'problemTypeKey'];
 const BINDING_PATH = /^archive\/data\/meta-foundation\/canonical\/packs\/[a-z0-9_-]+\/bindings\.json$/;
+const GEOMETRY_PACK = 'archive/data/meta-foundation/canonical/packs/geometry-equations';
+const GEOMETRY_VERSION_SCHEMA = 'archive-native-geometry-pack-version-dependency-v1';
 function bindingKey(value) {
   if (!value || BINDING_FIELDS.some(field => typeof value[field] !== 'string' || !value[field].trim())) return null;
   return Object.fromEntries(BINDING_FIELDS.map(field => [field, value[field]]));
@@ -229,7 +231,73 @@ export function nativeRegistryDependencyDescriptor(request) {
     const key = bindingKey(item.after);
     return key ? [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, key }] : [];
   });
-  return provides.length || requires.length ? { schemaVersion: REGISTRY_DEPENDENCY_SCHEMA, provides, requires } : undefined;
+  const geometryPackProvider = (Array.isArray(request.registryChanges) ? request.registryChanges : []).some(change =>
+    change.path === `${GEOMETRY_PACK}/taxonomy.json` && ['problemTypes', 'templates'].includes(change.collection)
+    && Object.hasOwn(change, 'before') && Object.hasOwn(change, 'after') && !eq(change.before, change.after));
+  return provides.length || requires.length || geometryPackProvider
+    ? { schemaVersion: REGISTRY_DEPENDENCY_SCHEMA, provides, requires,
+      ...(geometryPackProvider ? { geometryPackProvider: true } : {}) } : undefined;
+}
+
+// A taxonomy-only change also increments this pack's version. Its native
+// consumers must issue their runtime receipts against the final selected pack,
+// before the compiler checks that exact same version. This adds ordering only;
+// the registrar still verifies all changes, evidence and whole runtime rows.
+function attachGeometryPackVersionDependencies({ root, headSha, requests, cache }) {
+  if (!requests.some(r => r.registryDependency?.geometryPackProvider)) return requests;
+  const packPath = `${GEOMETRY_PACK}/pack.json`, bindingsPath = `${GEOMETRY_PACK}/bindings.json`;
+  const pack = fixedJson(root, headSha, packPath, cache), bindings = fixedJson(root, headSha, bindingsPath, cache);
+  if (pack.value?.packId !== 'GEOMETRY_EQUATIONS' || pack.value.canonicalStatus !== 'ACTIVE'
+      || !/^\d+\.\d+\.\d+$/.test(pack.value.packVersion || '') || bindings.value?.status !== 'ACTIVE'
+      || bindings.value.ownerPack !== 'GEOMETRY_EQUATIONS' || !Array.isArray(bindings.value.bindings))
+    fail('REGISTRY_VERSION_CONTEXT');
+  const context = { schemaVersion: GEOMETRY_VERSION_SCHEMA, headSha, packVersion: pack.value.packVersion,
+    packRef: { path: packPath, sha256: pack.sha256 }, bindingsRef: { path: bindingsPath, sha256: bindings.sha256 } };
+  for (const request of requests) {
+    const consumers = (request.registryDependency?.requires || []).filter(row => {
+      const matches = bindings.value.bindings.filter(binding => binding.status === 'ACTIVE'
+        && binding.ownerPack === 'GEOMETRY_EQUATIONS' && eq(bindingKey(binding), row.key));
+      if (matches.length > 1) fail('REGISTRY_VERSION_AMBIGUOUS');
+      return matches.length === 1;
+    });
+    const provider = request.registryDependency?.geometryPackProvider === true;
+    if (provider || consumers.length) request.geometryPackVersionDependency = {
+      ...structuredClone(context), provider, consumers: structuredClone(consumers) };
+  }
+  return requests;
+}
+
+function geometryPackVersionDependencies(requests) {
+  const providers = [], consumers = [], dependencies = new Map();
+  let fixedContext;
+  for (const request of requests) {
+    const descriptor = request.geometryPackVersionDependency;
+    if (!descriptor) {
+      if (request.registryDependency?.geometryPackProvider) fail('REGISTRY_VERSION_DESCRIPTOR');
+      continue;
+    }
+    const { provider, consumers: rows, ...context } = descriptor;
+    if (!objectKeys(descriptor, ['schemaVersion', 'headSha', 'packVersion', 'packRef', 'bindingsRef', 'provider', 'consumers'])
+        || descriptor.schemaVersion !== GEOMETRY_VERSION_SCHEMA || !/^[a-f0-9]{40}$/.test(descriptor.headSha || '')
+        || !/^\d+\.\d+\.\d+$/.test(descriptor.packVersion || '') || typeof provider !== 'boolean'
+        || provider !== (request.registryDependency?.geometryPackProvider === true) || !Array.isArray(rows)
+        || ![descriptor.packRef, descriptor.bindingsRef].every(ref => objectKeys(ref, ['path', 'sha256']) && /^[a-f0-9]{64}$/.test(ref.sha256 || ''))
+        || descriptor.packRef.path !== `${GEOMETRY_PACK}/pack.json` || descriptor.bindingsRef.path !== `${GEOMETRY_PACK}/bindings.json`
+        || rows.some(row => !objectKeys(row, ['questionUid', 'sourceOrdinal', 'key'])
+          || !(request.registryDependency?.requires || []).some(required => eq(required, row)))
+        || new Set(rows.map(row => row.questionUid)).size !== rows.length || !provider && !rows.length)
+      fail('REGISTRY_VERSION_DESCRIPTOR');
+    if (fixedContext && !eq(fixedContext, context)) fail('REGISTRY_VERSION_CONTEXT');
+    fixedContext = context;
+    if (provider) providers.push(request.path);
+    if (rows.length) consumers.push(request.path);
+  }
+  if (consumers.length && !providers.length) fail('REGISTRY_VERSION_PROVIDER_NOT_SELECTED');
+  for (const consumer of consumers) for (const provider of providers) if (provider !== consumer) {
+    if (!dependencies.has(consumer)) dependencies.set(consumer, new Set());
+    dependencies.get(consumer).add(provider);
+  }
+  return dependencies;
 }
 
 export function nativeRegistryDependencies(requests) {
@@ -256,6 +324,10 @@ export function nativeRegistryDependencies(requests) {
     if (!provider || provider === request.path) continue;
     if (!dependencies.has(request.path)) dependencies.set(request.path, new Set());
     dependencies.get(request.path).add(provider);
+  }
+  for (const [consumer, providers] of geometryPackVersionDependencies(requests)) {
+    if (!dependencies.has(consumer)) dependencies.set(consumer, new Set());
+    for (const provider of providers) dependencies.get(consumer).add(provider);
   }
   return dependencies;
 }
@@ -871,6 +943,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       receiptPath: `${RECEIPTS}${request.requestId}.json` });
   }
   if (new Set(requests.map(r => r.requestId)).size !== requests.length) fail('DUPLICATE_REQUEST_ID');
+  attachGeometryPackVersionDependencies({ root, headSha, requests, cache: fixedSubsetInputs });
   return orderNativeRequests(requests.sort((a, b) => a.path.localeCompare(b.path, 'en')));
 }
 
