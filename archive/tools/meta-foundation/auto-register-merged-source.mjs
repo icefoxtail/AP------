@@ -11,7 +11,7 @@ import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, nativeReviewedFamilyRationaleReuse,
-  nativeReviewedMetadataRationaleReuse } from './native-reviewed-source-reuse.mjs';
+  nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind } from './native-reviewed-source-reuse.mjs';
 import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
 import { nativeReviewedM2CcRendererRebind } from './reviewed-m2-cc-renderer-continuity.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
@@ -229,8 +229,9 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       if(preservedSource===true)return receiptPath;
       const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
       const reviewedRenderer=nativeReviewedRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      const reviewedM2Renderer=nativeReviewedM2ProblemRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       const reviewedM2CcRenderer=nativeReviewedM2CcRendererRebind({receipt,previous,question,identity,ordinal,verifiedSource});
-      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2CcRenderer!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2Renderer!==true&&reviewedM2CcRenderer!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }

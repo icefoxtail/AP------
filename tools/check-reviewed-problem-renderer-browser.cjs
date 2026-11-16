@@ -489,12 +489,24 @@ function preflight(reader, manifest) {
 const mime = rel => ({ '.js': 'text/javascript', '.json': 'application/json', '.html': 'text/html', '.css': 'text/css', '.svg': 'image/svg+xml',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.woff': 'font/woff', '.woff2': 'font/woff2', '.ttf': 'font/ttf' }[path.extname(rel)] || 'application/octet-stream');
 
-async function closeStudentContext(page, context, verifySettled = () => {}) {
+async function closeStudentContext(page, context, verifySettled = () => {}, pendingRoutes = new Set()) {
   try {
     // A completed screenshot does not settle every intercepted font response.
     // Keep the request context alive until its running handlers finish reading
     // and fulfilling (or reporting and aborting) those exact responses.
-    if (page) await page.unrouteAll({ behavior: 'wait' });
+    if (page) {
+      // Playwright clears its handler list before unrouteAll waits. Keep it
+      // installed until every callback has settled, including late responses.
+      let routeFailure;
+      while (pendingRoutes.size) {
+        const batch = [...pendingRoutes];
+        pendingRoutes.clear();
+        const settled = await Promise.allSettled(batch);
+        routeFailure ||= settled.find(result => result.status === 'rejected');
+      }
+      if (routeFailure) throw routeFailure.reason;
+      await page.unrouteAll({ behavior: 'wait' });
+    }
     verifySettled();
   } finally {
     await context.close();
@@ -555,13 +567,14 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
       const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: 1,
         isMobile: viewport.name === 'mobile', hasTouch: viewport.name === 'mobile', serviceWorkers: 'block' });
       let page, casesCompleted = false;
+      const pendingRoutes = new Set();
       const pageErrors = [], requestFailures = [], externalRequests = [], declaredFonts = new Set(), fontResources = new Set();
       try {
         page = await context.newPage();
         page.setDefaultTimeout(10000);
         page.on('pageerror', error => pageErrors.push({ messageSha256: sha256(error.message) }));
         page.on('requestfailed', request => requestFailures.push({ urlSha256: sha256(request.url()), errorSha256: sha256(request.failure()?.errorText || '') }));
-        await page.route('**/*', async route => {
+        const handleRoute = async route => {
           const url = new URL(route.request().url());
           if (url.origin === origin) return route.continue();
           const stylesheet = isStudentFontStylesheet(url.href);
@@ -587,10 +600,13 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
               externalFontResources.set(resourceId, { resourceId, kind: stylesheet ? 'STYLESHEET' : 'FONT', host: url.hostname, urlSha256,
                 status: response.status(), mime: contentType, sha256: responseSha256, bytes: bytes.length });
               fontResources.add(resourceId);
-              return route.fulfill({ response });
+              return await route.fulfill({ response });
             } catch (error) {
               failures.push(fontFailureDiagnostic(fontObservation, error));
-              return route.abort('failed');
+              try { return await route.abort('failed'); } catch (abortError) {
+                failures.push({ code: 'UI_FONT_ABORT_FAILED', errorSha256: sha256(String(abortError?.message || abortError)) });
+                throw error;
+              }
             }
           }
           if (url.protocol === 'https:' && url.hostname === 'img.wangjiedu.com' && url.pathname.startsWith('/exams/images/')) {
@@ -603,6 +619,11 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           }
           externalRequests.push({ host: url.hostname, urlSha256: sha256(url.href) });
           return route.abort('blockedbyclient');
+        };
+        await page.route('**/*', route => {
+          const work = handleRoute(route);
+          pendingRoutes.add(work);
+          return work;
         });
         const url = `${origin}/archive/engine.html?data=${encodeURIComponent(sourcePath.slice('archive/'.length))}&mode=exam&fit=screen&studentReview=1`;
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
@@ -676,7 +697,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           // Inspect real late failures after route settlement and before teardown.
           // If the case already failed, retain that original failure instead.
           if (casesCompleted) assert.equal(pageErrors.length + requestFailures.length + externalRequests.length + failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
-        });
+        }, pendingRoutes);
       }
     }
     assert.equal(results.length, manifest.expectedCases, 'UI_ALL_SIX_REQUIRED');

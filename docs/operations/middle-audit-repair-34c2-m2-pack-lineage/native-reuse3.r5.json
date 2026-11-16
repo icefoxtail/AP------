@@ -1,0 +1,1315 @@
+{
+  "schemaVersion": "unit25-m2-replacement-three-native-reuse-readback-v5",
+  "fixtureReceiptCorrectionRef": {
+    "path": "state/unit25-official-validation/m2-replacement-three/fixture-receipt-inventory-correction.r1.json",
+    "sha256": "d8287c78c7399624d0d82066bbca98a350812f1972059114856d9cda765d37a8",
+    "priorReportRef": {
+      "path": "state/unit25-official-validation/m2-replacement-three/native-reuse3.r3.json",
+      "sha256": "286cbfd24d018517cffbcc1fc3475766e4d8a0fa7c1acf438df42a1173a10347"
+    },
+    "scope": "Only genuine actual-main historical receipt copies and removal of three fixture-only unpublished generatedFrom pointers; row values unchanged. No ancestry or policy weakening."
+  },
+  "environmentCorrectionRef": {
+    "path": "state/unit25-official-validation/real-git-shallow-boundary-import.r1.json",
+    "sha256": "96854a3fc894a4e6522e8739a301b5a9b3d3d7416e1dfbfeba2501fde9126ae3",
+    "priorNullReport": {
+      "path": "state/unit25-official-validation/m2-replacement-three/native-reuse3.r2.json",
+      "sha256": "2f42cc49a09eb319d50d15dd6fdd5b9baa00b7b180adbe5eef54245c03236b79"
+    },
+    "reason": "Root imported only actual repository shallow boundaries omitted by the fixture; no fabricated commits, parent or validator changes. R3 reruns only these three previously blocked UIDs."
+  },
+  "supersedesPrematurePrecheckReport": {
+    "path": "state/unit25-official-validation/m2-replacement-three/native-reuse3.r1.json",
+    "sha256": "4d9ac6225ad30e01086ab621b4e47a5451cd106de42366082b0762a6bf6b126f",
+    "nativeInvocations": 0,
+    "reason": "R1 stopped before native calls because it required historical pack version equality. R2 records the ordinary current-pack revision separately and uses the actual full native receipt function as the mandatory gate."
+  },
+  "nativeInvocationCount": 3,
+  "reviewer": "GPT_ROOT_0A70543C4CE8",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "issuedMain": "4b504e10b1ce7a90576486663b3862ef99922325",
+  "applicationCommit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+  "fixtureRoot": "/workspace/scratch/0a70543c4ce8/state/unit25-actual-fixture",
+  "requestManifestSha256": "e7c05041be20f135cc8ed124a8e236ffdb919649d8b767fd9fe14dc6cbd278f8",
+  "replacementApplicationManifestRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/state/m2-unit25-ordinary-three/apply-manifest.r2.json",
+    "sha256": "6d1cfc7d05ca9dcba006d12405bb6f9d67fa0404253c03684bba10eda372e5d8"
+  },
+  "prior31NativePassReruns": 0,
+  "lifecycleProofRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/state/unit25-official-validation/m2-replacement-three/official-lifecycle-proof.r1.json",
+    "sha256": "3cac81db4c82b8ae8d27e3c7f65ed975a325ed26fe634e393b04778ba556df88"
+  },
+  "registry": {
+    "status": "ACTIVE",
+    "registrySha": "sha256:596b1d5370f52b45be6a3f52c0b98adac3e38f9625875731ac45ed86ec548781"
+  },
+  "cohorts": {
+    "M2": {
+      "selected": 3,
+      "currentApplications": 3,
+      "preservedApprovals": 0,
+      "passed": 3,
+      "failed": 0,
+      "status": "PASS_LOCAL_NATIVE_REUSE",
+      "failedUids": []
+    }
+  },
+  "selectedUidCount": 3,
+  "rows": [
+    {
+      "cohort": "M2",
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "sourceOrdinal": 17,
+      "requestId": "middle-audit-repair-34c2-m2-e007-q17-current-native-reassessment",
+      "kind": "CURRENT_APPLICATION",
+      "status": "PASS",
+      "expectedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-current-native-reassessment.json",
+        "sha256": "b2a6c121278b7725274d52a2d3da0ea653f45ff304599b54da4c97689fafa569",
+        "requestSha256": "0c9f52bf92402a661acd95f03ca6dee2b4f6813d5111a6ff8259ff2f89a03fee"
+      },
+      "parentChain": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-current-native-reassessment.json",
+          "requestId": "middle-audit-repair-34c2-m2-e007-q17-current-native-reassessment",
+          "sha256": "b2a6c121278b7725274d52a2d3da0ea653f45ff304599b54da4c97689fafa569",
+          "sourceBlobSha1": "e57e45b11251cdf4d31e1296008c1fb0f1546935",
+          "sourceRawSha256": "8c302c66fc44090236203ad35ec957338cff8b151598acb722fb15fbab6ff85c",
+          "selectedOrdinal": 17,
+          "sourceQuestionStableSha256": "12203ffc3268e3adbeee66b0f54a294c4b6c90a56e729eabc929f034e9fe2d70",
+          "priorReceiptRef": null
+        }
+      ],
+      "originalPriorReceiptChain": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18.json",
+          "requestId": "middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18",
+          "sha256": "adb28d993b9a4077eaa14b7a5ce362872d6d9ecaa669574beb4017f16720797e",
+          "sourceBlobSha1": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+          "sourceRawSha256": "40c140a6a46d476b7058eb715105e6dc18a3ef4f3933d8cde6118ac281693e5c",
+          "selectedOrdinal": 17,
+          "sourceQuestionStableSha256": "12203ffc3268e3adbeee66b0f54a294c4b6c90a56e729eabc929f034e9fe2d70",
+          "priorReceiptRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+            "sha256": "0e6f8edf5ade443a4e4f18d21dc12d15a1a768a8d272bcb8715efd18aabbccf3"
+          }
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+          "requestId": "middle-audit-repair-34c2-m2-e007-q17",
+          "sha256": "0e6f8edf5ade443a4e4f18d21dc12d15a1a768a8d272bcb8715efd18aabbccf3",
+          "sourceBlobSha1": "5b2b82a0698986eaa464e85de2dbed93a948eada",
+          "sourceRawSha256": "927b41384bf04d7f228700e8e71a240b07bb1bb7323c9586d24da8c68a88d0f4",
+          "selectedOrdinal": 17,
+          "sourceQuestionStableSha256": "12203ffc3268e3adbeee66b0f54a294c4b6c90a56e729eabc929f034e9fe2d70",
+          "priorReceiptRef": null
+        }
+      ],
+      "packVersionTransition": {
+        "metadataBefore": "1.0.7",
+        "runtimeBefore": "1.0.7",
+        "metadataAfter": "1.0.11",
+        "runtimeAfter": "1.0.11",
+        "scope": "New ordinary registration of unchanged accepted values; full native receipt gate below remains mandatory.",
+        "currentActivePackVersion": "1.0.11"
+      },
+      "actualBeforeValuesUnchanged": {
+        "metadataExcludingRecordedPackRevision": true,
+        "identity": true,
+        "runtimeExcludingRecordedPackRevision": true,
+        "originalEvidenceRetained": true
+      },
+      "replacesUnpublishedRequestId": "middle-audit-repair-34c2-m2-e007-q17-preserve-after-integer-extrema",
+      "sourceBinding": {
+        "issuedMain": "4b504e10b1ce7a90576486663b3862ef99922325",
+        "applicationCommit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+        "beforeBlobSha1": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+        "beforeRawSha256": "40c140a6a46d476b7058eb715105e6dc18a3ef4f3933d8cde6118ac281693e5c",
+        "currentBlobSha1": "e57e45b11251cdf4d31e1296008c1fb0f1546935",
+        "currentRawSha256": "8c302c66fc44090236203ad35ec957338cff8b151598acb722fb15fbab6ff85c",
+        "studentFieldsDomain": "REASSESSED_STUDENT_FIELDS",
+        "studentPayloadUnchanged": true,
+        "selectedWholeQuestionUnchanged": true
+      },
+      "sourceHoldBefore": {
+        "metaStatus": null,
+        "metaDebtFields": null,
+        "sourceQualityHold": null,
+        "contentDebt": null,
+        "registrationHold": null,
+        "qualityHold": null,
+        "rpmPrimaryKey": null,
+        "rpmOriginalCurriculum": null,
+        "rpmOriginalStatus": null
+      },
+      "sourceHoldAfter": {
+        "metaStatus": null,
+        "metaDebtFields": null,
+        "sourceQualityHold": null,
+        "contentDebt": null,
+        "registrationHold": null,
+        "qualityHold": null,
+        "rpmPrimaryKey": null,
+        "rpmOriginalCurriculum": null,
+        "rpmOriginalStatus": null
+      },
+      "sourceHoldUnchanged": true,
+      "activeBinding": {
+        "status": "PASS",
+        "ownerPack": "MIDDLE2",
+        "binding": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-02",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+          "ownerPack": "MIDDLE2",
+          "subUnitLabelKo": "일차부등식",
+          "L1": "일차부등식",
+          "L2": "일차부등식",
+          "status": "ACTIVE",
+          "supportingQuestionUids": [
+            "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e"
+          ],
+          "supportingItemCount": 1
+        },
+        "problemTypeActive": true,
+        "templateActive": true
+      },
+      "nativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-current-native-reassessment.json",
+      "nativeReceiptMatchesExpected": true,
+      "approvalBoundary": {
+        "scope": "Exact frozen ordinary requests for three already accepted UIDs; fingerprint values, student payload, meaning, source QA, holds and original issued receipts remain unchanged. Replaces unpublished source-only requests only.",
+        "newMeaningApprovals": 0,
+        "newMathematicalQa": 0,
+        "newSourceQa": 0,
+        "ordinaryRegistrationApplicationOnly": true,
+        "currentNativeRef": {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E007.accepted-review.json",
+          "sha256": "a16f62a23a5cd5e1f8120cae39cc333b9d852412fe144c13edbabd04f26647bd"
+        }
+      },
+      "sourceReviewLimits": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "scope": "METADATA_SOURCE_BINDING_ONLY",
+        "newMathematicalQa": false,
+        "currentTargetApplication": null
+      }
+    },
+    {
+      "cohort": "M2",
+      "questionUid": "qid_v1_76dd55da73d9edb2aeb41cdd76997b70ec4a5d668fc94f00736038cde358937d",
+      "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+      "sourceOrdinal": 12,
+      "requestId": "middle-audit-repair-34c2-m2-e035-q12-current-native-reassessment",
+      "kind": "CURRENT_APPLICATION",
+      "status": "PASS",
+      "expectedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12-current-native-reassessment.json",
+        "sha256": "6613a09d34db67493fbbfe9e476f58a996f0f1f3f2a366b0c5bf2275e671df58",
+        "requestSha256": "6ac168035f6b184612b354580c63a9f0fc681623a7ade8425a20eb7c20795ee9"
+      },
+      "parentChain": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12-current-native-reassessment.json",
+          "requestId": "middle-audit-repair-34c2-m2-e035-q12-current-native-reassessment",
+          "sha256": "6613a09d34db67493fbbfe9e476f58a996f0f1f3f2a366b0c5bf2275e671df58",
+          "sourceBlobSha1": "ebd499cd5e52824ad9eb2597c8108ada013f2bc4",
+          "sourceRawSha256": "de15541161f629958edf4daed26bb139215222ee8a1cdf416851b58f92b9d97d",
+          "selectedOrdinal": 12,
+          "sourceQuestionStableSha256": "99559a7675af50286cf06ec64c8e00c9783a6750228b1d0ace09a8d4861f1303",
+          "priorReceiptRef": null
+        }
+      ],
+      "originalPriorReceiptChain": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12.json",
+          "requestId": "middle-audit-repair-34c2-m2-e035-q12",
+          "sha256": "f86c4fa1caadff8457e4ba4011a7a6fab0be7879eb32d31353d84216bfc684fa",
+          "sourceBlobSha1": "0a1a4d8a4c6104e256495da1f1c20d47a4bce70b",
+          "sourceRawSha256": "ac1ce894f4cb91035f851749b5aa778f1a834ed0c91ac60c864665fd20d15cea",
+          "selectedOrdinal": 12,
+          "sourceQuestionStableSha256": "99559a7675af50286cf06ec64c8e00c9783a6750228b1d0ace09a8d4861f1303",
+          "priorReceiptRef": null
+        }
+      ],
+      "packVersionTransition": {
+        "metadataBefore": "1.0.7",
+        "runtimeBefore": "1.0.7",
+        "metadataAfter": "1.0.11",
+        "runtimeAfter": "1.0.11",
+        "scope": "New ordinary registration of unchanged accepted values; full native receipt gate below remains mandatory.",
+        "currentActivePackVersion": "1.0.11"
+      },
+      "actualBeforeValuesUnchanged": {
+        "metadataExcludingRecordedPackRevision": true,
+        "identity": true,
+        "runtimeExcludingRecordedPackRevision": true,
+        "originalEvidenceRetained": true
+      },
+      "replacesUnpublishedRequestId": "middle-audit-repair-34c2-m2-e035-q12-preserve-current-source",
+      "sourceBinding": {
+        "issuedMain": "4b504e10b1ce7a90576486663b3862ef99922325",
+        "applicationCommit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+        "beforeBlobSha1": "ebd499cd5e52824ad9eb2597c8108ada013f2bc4",
+        "beforeRawSha256": "de15541161f629958edf4daed26bb139215222ee8a1cdf416851b58f92b9d97d",
+        "currentBlobSha1": "ebd499cd5e52824ad9eb2597c8108ada013f2bc4",
+        "currentRawSha256": "de15541161f629958edf4daed26bb139215222ee8a1cdf416851b58f92b9d97d",
+        "studentFieldsDomain": "REASSESSED_STUDENT_FIELDS",
+        "studentPayloadUnchanged": true,
+        "selectedWholeQuestionUnchanged": true
+      },
+      "sourceHoldBefore": {
+        "metaStatus": null,
+        "metaDebtFields": null,
+        "sourceQualityHold": null,
+        "contentDebt": null,
+        "registrationHold": null,
+        "qualityHold": null,
+        "rpmPrimaryKey": null,
+        "rpmOriginalCurriculum": null,
+        "rpmOriginalStatus": null
+      },
+      "sourceHoldAfter": {
+        "metaStatus": null,
+        "metaDebtFields": null,
+        "sourceQualityHold": null,
+        "contentDebt": null,
+        "registrationHold": null,
+        "qualityHold": null,
+        "rpmPrimaryKey": null,
+        "rpmOriginalCurriculum": null,
+        "rpmOriginalStatus": null
+      },
+      "sourceHoldUnchanged": true,
+      "activeBinding": {
+        "status": "PASS",
+        "ownerPack": "MIDDLE2",
+        "binding": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "ownerPack": "MIDDLE2",
+          "subUnitLabelKo": "일차함수의 뜻과 그래프",
+          "L1": "일차함수",
+          "L2": "일차함수와 그 그래프",
+          "supportingItemCount": 3,
+          "supportingQuestionUids": [
+            "qid_v1_1ea93c8f6e39dec082dec838c07cd44187b0fe2e169005b68a65e6d29fba82a8",
+            "qid_v1_77dcd4204b00bb39c6f468ed99adef321ba119dcd686cc0af797f758391d6030",
+            "qid_v1_4031c846e87d88b28687218a6863b73a2e8e061ef3bdf9c123e8d7f9e8308762"
+          ],
+          "status": "ACTIVE"
+        },
+        "problemTypeActive": true,
+        "templateActive": true
+      },
+      "nativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12-current-native-reassessment.json",
+      "nativeReceiptMatchesExpected": true,
+      "approvalBoundary": {
+        "scope": "Exact frozen ordinary requests for three already accepted UIDs; fingerprint values, student payload, meaning, source QA, holds and original issued receipts remain unchanged. Replaces unpublished source-only requests only.",
+        "newMeaningApprovals": 0,
+        "newMathematicalQa": 0,
+        "newSourceQa": 0,
+        "ordinaryRegistrationApplicationOnly": true,
+        "currentNativeRef": {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E035.accepted-review.json",
+          "sha256": "8fe5dd9f13e2a2a47e9eb7ab24db66c02f1fcd9c90b29cd8ce325b79a87f8dcd"
+        }
+      },
+      "sourceReviewLimits": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "scope": "METADATA_SOURCE_BINDING_ONLY",
+        "newMathematicalQa": false,
+        "currentTargetApplication": null
+      }
+    },
+    {
+      "cohort": "M2",
+      "questionUid": "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb",
+      "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+      "sourceOrdinal": 18,
+      "requestId": "middle-audit-repair-34c2-m2-e035-q18-current-native-reassessment",
+      "kind": "CURRENT_APPLICATION",
+      "status": "PASS",
+      "expectedReceipt": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18-current-native-reassessment.json",
+        "sha256": "f4912023040cab1ae619e69e43ae69cb4ac82b5636bd5471a56efc8ce2bacc09",
+        "requestSha256": "e728728075986f9aa93967cbc7a2c5a41d63620bb2256d7895ef060c7870db13"
+      },
+      "parentChain": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18-current-native-reassessment.json",
+          "requestId": "middle-audit-repair-34c2-m2-e035-q18-current-native-reassessment",
+          "sha256": "f4912023040cab1ae619e69e43ae69cb4ac82b5636bd5471a56efc8ce2bacc09",
+          "sourceBlobSha1": "ebd499cd5e52824ad9eb2597c8108ada013f2bc4",
+          "sourceRawSha256": "de15541161f629958edf4daed26bb139215222ee8a1cdf416851b58f92b9d97d",
+          "selectedOrdinal": 18,
+          "sourceQuestionStableSha256": "e8612acfad8d912aa6343bbb876372cd13e66bce5c63d21de2a25d804c1a5ef0",
+          "priorReceiptRef": null
+        }
+      ],
+      "originalPriorReceiptChain": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18.json",
+          "requestId": "middle-audit-repair-34c2-m2-e035-q18",
+          "sha256": "a450f653ab8e6687d4d405f732948cdadc3fe85238fdfb1bbf99a74056ccc839",
+          "sourceBlobSha1": "0a1a4d8a4c6104e256495da1f1c20d47a4bce70b",
+          "sourceRawSha256": "ac1ce894f4cb91035f851749b5aa778f1a834ed0c91ac60c864665fd20d15cea",
+          "selectedOrdinal": 18,
+          "sourceQuestionStableSha256": "e8612acfad8d912aa6343bbb876372cd13e66bce5c63d21de2a25d804c1a5ef0",
+          "priorReceiptRef": null
+        }
+      ],
+      "packVersionTransition": {
+        "metadataBefore": "1.0.8",
+        "runtimeBefore": "1.0.8",
+        "metadataAfter": "1.0.11",
+        "runtimeAfter": "1.0.11",
+        "scope": "New ordinary registration of unchanged accepted values; full native receipt gate below remains mandatory.",
+        "currentActivePackVersion": "1.0.11"
+      },
+      "actualBeforeValuesUnchanged": {
+        "metadataExcludingRecordedPackRevision": true,
+        "identity": true,
+        "runtimeExcludingRecordedPackRevision": true,
+        "originalEvidenceRetained": true
+      },
+      "replacesUnpublishedRequestId": "middle-audit-repair-34c2-m2-e035-q18-preserve-current-source",
+      "sourceBinding": {
+        "issuedMain": "4b504e10b1ce7a90576486663b3862ef99922325",
+        "applicationCommit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+        "beforeBlobSha1": "ebd499cd5e52824ad9eb2597c8108ada013f2bc4",
+        "beforeRawSha256": "de15541161f629958edf4daed26bb139215222ee8a1cdf416851b58f92b9d97d",
+        "currentBlobSha1": "ebd499cd5e52824ad9eb2597c8108ada013f2bc4",
+        "currentRawSha256": "de15541161f629958edf4daed26bb139215222ee8a1cdf416851b58f92b9d97d",
+        "studentFieldsDomain": "REASSESSED_STUDENT_FIELDS",
+        "studentPayloadUnchanged": true,
+        "selectedWholeQuestionUnchanged": true
+      },
+      "sourceHoldBefore": {
+        "metaStatus": null,
+        "metaDebtFields": null,
+        "sourceQualityHold": null,
+        "contentDebt": null,
+        "registrationHold": null,
+        "qualityHold": null,
+        "rpmPrimaryKey": null,
+        "rpmOriginalCurriculum": null,
+        "rpmOriginalStatus": null
+      },
+      "sourceHoldAfter": {
+        "metaStatus": null,
+        "metaDebtFields": null,
+        "sourceQualityHold": null,
+        "contentDebt": null,
+        "registrationHold": null,
+        "qualityHold": null,
+        "rpmPrimaryKey": null,
+        "rpmOriginalCurriculum": null,
+        "rpmOriginalStatus": null
+      },
+      "sourceHoldUnchanged": true,
+      "activeBinding": {
+        "status": "PASS",
+        "ownerPack": "MIDDLE2",
+        "binding": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+          "ownerPack": "MIDDLE2",
+          "subUnitLabelKo": "일차함수와 일차방정식의 관계",
+          "L1": "일차함수",
+          "L2": "일차함수와 일차방정식의 관계",
+          "status": "ACTIVE",
+          "supportingQuestionUids": [
+            "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb"
+          ],
+          "supportingItemCount": 1
+        },
+        "problemTypeActive": true,
+        "templateActive": true
+      },
+      "nativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18-current-native-reassessment.json",
+      "nativeReceiptMatchesExpected": true,
+      "approvalBoundary": {
+        "scope": "Exact frozen ordinary requests for three already accepted UIDs; fingerprint values, student payload, meaning, source QA, holds and original issued receipts remain unchanged. Replaces unpublished source-only requests only.",
+        "newMeaningApprovals": 0,
+        "newMathematicalQa": 0,
+        "newSourceQa": 0,
+        "ordinaryRegistrationApplicationOnly": true,
+        "currentNativeRef": {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E035.accepted-review.json",
+          "sha256": "8fe5dd9f13e2a2a47e9eb7ab24db66c02f1fcd9c90b29cd8ce325b79a87f8dcd"
+        }
+      },
+      "sourceReviewLimits": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "scope": "METADATA_SOURCE_BINDING_ONLY",
+        "newMathematicalQa": false,
+        "currentTargetApplication": null
+      }
+    }
+  ],
+  "modules": [
+    {
+      "path": "archive/archive2-canonical.js",
+      "sha256": "7c653df0ad709c77c64484747ce1e848dfc6ff94204beb27f63ecfe7ec42b20e"
+    },
+    {
+      "path": "archive/problem-bank-meta.js",
+      "sha256": "1c0fd1aac6b59a053f0f300ee2797f66475e3cc19a2292fa7bab0a67775abfba"
+    },
+    {
+      "path": "archive/tools/archive-codex-artifact-io.mjs",
+      "sha256": "1b3a31fda62fb877260f0e38af96bf84cd7a6b5beaab358d929c87c7ac47017b"
+    },
+    {
+      "path": "archive/tools/archive-content-inputs.mjs",
+      "sha256": "ca36f83f4674a493ba0db21da386d90c5c1d70fedd0505f4e40294ace5a69950"
+    },
+    {
+      "path": "archive/tools/archive-stage-validator-compat-v1.mjs",
+      "sha256": "acdb9faa38fa611d60ebd3c234d48bd040f4d4484999a5c57c5c19053ebe3360"
+    },
+    {
+      "path": "archive/tools/archive-student-bundle.mjs",
+      "sha256": "b9b2bb2d9de4ac30a12add593887659eabe75215432b7d134be207cba3c5641a"
+    },
+    {
+      "path": "archive/tools/archive-unit-order.mjs",
+      "sha256": "ae070bda93511a26aecb8b7bc6419be787d38b0e443935c60a3f5e1debc632dc"
+    },
+    {
+      "path": "archive/tools/evidence-authority-v1.mjs",
+      "sha256": "1ead1c23be30cc9917cdf3b45c8289f962114e5f9ef40fbfe45dbe56dcf1b864"
+    },
+    {
+      "path": "archive/tools/intelligence/question-identity-contract.mjs",
+      "sha256": "2ef84cd2baeefaae4d77c262f354a4a1e57b16a4b979c71bd86c134bb2f36524"
+    },
+    {
+      "path": "archive/tools/meta-foundation/active-registry.mjs",
+      "sha256": "fb92f3db9c869183cf04415f9a1d678c60ba52a7ad1ec995beb57e77bdf402ed"
+    },
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "sha256": "563da2259b016ba57ddffb0cdf784b6b151e635743d306a68eaacb4f8f8c1ecc"
+    },
+    {
+      "path": "archive/tools/meta-foundation/compile-meta-foundation.mjs",
+      "sha256": "742cac9a4abf22c3efaf1aa6759e285c9229e9a6c769b7bdec162eb82a93caa5"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-approved-renderer-preservation.mjs",
+      "sha256": "49eb0e8a2de75688ebf8db146d0d2b1c7e71b327b364230eaac436d1f861d434"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-audit-preservation.mjs",
+      "sha256": "9c2a20b33b6fc7cabc1e9db34e645723c215c4115e4648097961ec6a0c6eb290"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-audit-source-preservation.mjs",
+      "sha256": "eee78e441f0409055657eb4dfe7c6af81284633558ef81bf26f5d43a6d06af42"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-authority-correction.mjs",
+      "sha256": "aa1b594bc02da817719524f3f589275adca500081f1c00452b93e21461414a4b"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+      "sha256": "af1cfad8057d55dacc988c242d697d32100b072596161c43c9adf8736a7d9adb"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs",
+      "sha256": "e7675a5124d206dc376341e1453398e3f597172c821b7a364d6fae9d019e067a"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+      "sha256": "bc70d6a59522e8529377823fdcebc46a02171511ad2fd961c7923d7f2fc15b75"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+      "sha256": "2e631c35dc9a3a813b043174e0f482d1bcd7fa420ae2dd5867ecd9b91f59521e"
+    },
+    {
+      "path": "archive/tools/meta-foundation/register-difficulty5.mjs",
+      "sha256": "681e30501e9a9f0df7ac78c560a868cba8564864f8ab1468220223d28d360d6e"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs",
+      "sha256": "98c416216dc754a1b5d144a81741adf2ccba62c487f1d4c7fadba0a107332c83"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "1971573f16fdb3e3805ebd42018921dd13ed25f484b20080679b7ba5b59ec405"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-existing-primary-disposition.mjs",
+      "sha256": "462195fd31d76b0abcd81ff695d54689220fcd80d618ec5bb3ad30a2ed3dd485"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2-proposal-finalization.mjs",
+      "sha256": "26942c38274a1f18656ed709b9e9cac7a2e28a83bcc69482e1b7f75f9bdcc714"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2s1-current-definition-application.mjs",
+      "sha256": "c47fb64d0114d6cca0eb008b61f20dacdcf2e144c510365b5b61db9976b16d16"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2s1-prerequisite-existing-application.mjs",
+      "sha256": "a0ebb6c148b6ecb23ac88fe0a75b07693d6478727ab05bc24dc71eadb374bd57"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m3s2-current-target-application.mjs",
+      "sha256": "0bd3c286f31dca592e6a7b72c99ebf98cc910498132358f4eb11ed355f9b5b13"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-meta-value-fields.mjs",
+      "sha256": "ebce5ab16817840a87fa1a316719c17c850fe772a89e40cbc9004f3dae808e65"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-native-parent.mjs",
+      "sha256": "6d5d69e94a7b7e012709473fcb1e33519c775a374c43cee64bb64d7019a399b3"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-native-rationale-continuity.mjs",
+      "sha256": "cdbd5cf53f5242f134c2c4279487f64fbdc4c34bffd73caeb25edfc75c0bf25d"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-native-retained-fields.mjs",
+      "sha256": "7eb37fdf8c19a257ae7baeb60a23b1e45e0743b561399823461f8804fe64b53c"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-native-scope-fields.mjs",
+      "sha256": "5141941aa255071121d605921e9c179d6483b6f14e672f385ee9993e9f59b8f8"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-pack-version-lineage.mjs",
+      "sha256": "328af2184158489f1f4d77c609c6a883738db2bf7b2b672f258798b5743d16d9"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-proposal-finalization.mjs",
+      "sha256": "633cb4c1b28325720821ba3f8f5037ea0a6749b6ed319c5bc3e13abf7e76a12d"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-replay-registry-context.mjs",
+      "sha256": "67383ffa32832b247596eb2c8409e10b729e0605f3519d69e299bd643551d8bd"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-retained-scope-transport.mjs",
+      "sha256": "ea2b11feedccd10f2d0121983d264d53f05401cdfd15f9e77664a61a863a8e88"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-rpm-provenance.mjs",
+      "sha256": "64f2612aaf8e4d3dfd261061ed90e583b7a7e0fa6735658d1264d0469d1a9288"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-runtime-summary.mjs",
+      "sha256": "127e3991991ccb52393f7fe005ef6c4a51515e5f78d53051953f8955be29a8b3"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-binding.mjs",
+      "sha256": "1d07b8dc56c8e77e4ca8a2d82d698caf869452f5c65886ccd1686adaa2bd0833"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "sha256": "215ee89ea5f0be4632808ef223278b8d60bb33d47ae9764b8c4bf72f3d383a3b"
+    },
+    {
+      "path": "archive/tools/question-only-replacement-v2.mjs",
+      "sha256": "5fec4481ac8c4ada8a209eefe5ed13a21b04c4e42099ea5633777bc70461a959"
+    },
+    {
+      "path": "archive/tools/review-evidence-gate.mjs",
+      "sha256": "26ebc3515c2d7b02ed5d0096c6aa708bc9c1d35d6ad6701fa8cd82cfa343a866"
+    },
+    {
+      "path": "archive/tools/solution-calibration-gate.mjs",
+      "sha256": "fc5230b62afbec3146ee1669a143910b667ed0377f04f90b0f7b255e283af98d"
+    }
+  ],
+  "inputReadback": [
+    {
+      "path": "archive/tools/meta-foundation/active-registry.mjs",
+      "sha256": "fb92f3db9c869183cf04415f9a1d678c60ba52a7ad1ec995beb57e77bdf402ed"
+    },
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "sha256": "563da2259b016ba57ddffb0cdf784b6b151e635743d306a68eaacb4f8f8c1ecc"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "1971573f16fdb3e3805ebd42018921dd13ed25f484b20080679b7ba5b59ec405"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-authority-correction.mjs",
+      "sha256": "aa1b594bc02da817719524f3f589275adca500081f1c00452b93e21461414a4b"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-runtime-summary.mjs",
+      "sha256": "127e3991991ccb52393f7fe005ef6c4a51515e5f78d53051953f8955be29a8b3"
+    },
+    {
+      "path": "archive/tools/intelligence/question-identity-contract.mjs",
+      "sha256": "2ef84cd2baeefaae4d77c262f354a4a1e57b16a4b979c71bd86c134bb2f36524"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2s1-prerequisite-existing-application.mjs",
+      "sha256": "a0ebb6c148b6ecb23ac88fe0a75b07693d6478727ab05bc24dc71eadb374bd57"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-rpm-provenance.mjs",
+      "sha256": "64f2612aaf8e4d3dfd261061ed90e583b7a7e0fa6735658d1264d0469d1a9288"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-approved-renderer-preservation.mjs",
+      "sha256": "49eb0e8a2de75688ebf8db146d0d2b1c7e71b327b364230eaac436d1f861d434"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+      "sha256": "2e631c35dc9a3a813b043174e0f482d1bcd7fa420ae2dd5867ecd9b91f59521e"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-native-rationale-continuity.mjs",
+      "sha256": "cdbd5cf53f5242f134c2c4279487f64fbdc4c34bffd73caeb25edfc75c0bf25d"
+    },
+    {
+      "path": "archive/tools/archive-content-inputs.mjs",
+      "sha256": "ca36f83f4674a493ba0db21da386d90c5c1d70fedd0505f4e40294ace5a69950"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs",
+      "sha256": "98c416216dc754a1b5d144a81741adf2ccba62c487f1d4c7fadba0a107332c83"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-replay-registry-context.mjs",
+      "sha256": "67383ffa32832b247596eb2c8409e10b729e0605f3519d69e299bd643551d8bd"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-binding.mjs",
+      "sha256": "1d07b8dc56c8e77e4ca8a2d82d698caf869452f5c65886ccd1686adaa2bd0833"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-meta-value-fields.mjs",
+      "sha256": "ebce5ab16817840a87fa1a316719c17c850fe772a89e40cbc9004f3dae808e65"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-retained-scope-transport.mjs",
+      "sha256": "ea2b11feedccd10f2d0121983d264d53f05401cdfd15f9e77664a61a863a8e88"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-native-parent.mjs",
+      "sha256": "6d5d69e94a7b7e012709473fcb1e33519c775a374c43cee64bb64d7019a399b3"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "sha256": "215ee89ea5f0be4632808ef223278b8d60bb33d47ae9764b8c4bf72f3d383a3b"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m3s2-current-target-application.mjs",
+      "sha256": "0bd3c286f31dca592e6a7b72c99ebf98cc910498132358f4eb11ed355f9b5b13"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2s1-current-definition-application.mjs",
+      "sha256": "c47fb64d0114d6cca0eb008b61f20dacdcf2e144c510365b5b61db9976b16d16"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-native-retained-fields.mjs",
+      "sha256": "7eb37fdf8c19a257ae7baeb60a23b1e45e0743b561399823461f8804fe64b53c"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-existing-primary-disposition.mjs",
+      "sha256": "462195fd31d76b0abcd81ff695d54689220fcd80d618ec5bb3ad30a2ed3dd485"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-native-scope-fields.mjs",
+      "sha256": "5141941aa255071121d605921e9c179d6483b6f14e672f385ee9993e9f59b8f8"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-proposal-finalization.mjs",
+      "sha256": "633cb4c1b28325720821ba3f8f5037ea0a6749b6ed319c5bc3e13abf7e76a12d"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2-proposal-finalization.mjs",
+      "sha256": "26942c38274a1f18656ed709b9e9cac7a2e28a83bcc69482e1b7f75f9bdcc714"
+    },
+    {
+      "path": "archive/tools/meta-foundation/compile-meta-foundation.mjs",
+      "sha256": "742cac9a4abf22c3efaf1aa6759e285c9229e9a6c769b7bdec162eb82a93caa5"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-audit-source-preservation.mjs",
+      "sha256": "eee78e441f0409055657eb4dfe7c6af81284633558ef81bf26f5d43a6d06af42"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-audit-preservation.mjs",
+      "sha256": "9c2a20b33b6fc7cabc1e9db34e645723c215c4115e4648097961ec6a0c6eb290"
+    },
+    {
+      "path": "archive/tools/archive-unit-order.mjs",
+      "sha256": "ae070bda93511a26aecb8b7bc6419be787d38b0e443935c60a3f5e1debc632dc"
+    },
+    {
+      "path": "archive/tools/archive-codex-artifact-io.mjs",
+      "sha256": "1b3a31fda62fb877260f0e38af96bf84cd7a6b5beaab358d929c87c7ac47017b"
+    },
+    {
+      "path": "archive/tools/archive-stage-validator-compat-v1.mjs",
+      "sha256": "acdb9faa38fa611d60ebd3c234d48bd040f4d4484999a5c57c5c19053ebe3360"
+    },
+    {
+      "path": "archive/tools/review-evidence-gate.mjs",
+      "sha256": "26ebc3515c2d7b02ed5d0096c6aa708bc9c1d35d6ad6701fa8cd82cfa343a866"
+    },
+    {
+      "path": "archive/tools/evidence-authority-v1.mjs",
+      "sha256": "1ead1c23be30cc9917cdf3b45c8289f962114e5f9ef40fbfe45dbe56dcf1b864"
+    },
+    {
+      "path": "archive/tools/question-only-replacement-v2.mjs",
+      "sha256": "5fec4481ac8c4ada8a209eefe5ed13a21b04c4e42099ea5633777bc70461a959"
+    },
+    {
+      "path": "archive/tools/archive-student-bundle.mjs",
+      "sha256": "b9b2bb2d9de4ac30a12add593887659eabe75215432b7d134be207cba3c5641a"
+    },
+    {
+      "path": "archive/tools/solution-calibration-gate.mjs",
+      "sha256": "fc5230b62afbec3146ee1669a143910b667ed0377f04f90b0f7b255e283af98d"
+    },
+    {
+      "path": "archive/tools/meta-foundation/register-difficulty5.mjs",
+      "sha256": "681e30501e9a9f0df7ac78c560a868cba8564864f8ab1468220223d28d360d6e"
+    },
+    {
+      "path": "archive/problem-bank-meta.js",
+      "sha256": "1c0fd1aac6b59a053f0f300ee2797f66475e3cc19a2292fa7bab0a67775abfba"
+    },
+    {
+      "path": "archive/archive2-canonical.js",
+      "sha256": "7c653df0ad709c77c64484747ce1e848dfc6ff94204beb27f63ecfe7ec42b20e"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+      "sha256": "af1cfad8057d55dacc988c242d697d32100b072596161c43c9adf8736a7d9adb"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-pack-version-lineage.mjs",
+      "sha256": "328af2184158489f1f4d77c609c6a883738db2bf7b2b672f258798b5743d16d9"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+      "sha256": "bc70d6a59522e8529377823fdcebc46a02171511ad2fd961c7923d7f2fc15b75"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs",
+      "sha256": "e7675a5124d206dc376341e1453398e3f597172c821b7a364d6fae9d019e067a"
+    },
+    {
+      "path": "REQUESTS12.r2.json",
+      "sha256": "e7c05041be20f135cc8ed124a8e236ffdb919649d8b767fd9fe14dc6cbd278f8"
+    },
+    {
+      "path": ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-e007-q17-current-native-reassessment.json",
+      "sha256": "35b72f71bf26a5d4324a3c718e44ae56fcd86e12e2d9782c6927e12ff25c0627"
+    },
+    {
+      "path": ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-e035-q12-current-native-reassessment.json",
+      "sha256": "187b35dd326b2004886c9f78b6b7cf698847dfdfe9349d4a8a566d5ff51066fb"
+    },
+    {
+      "path": ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-e035-q18-current-native-reassessment.json",
+      "sha256": "4af94edffcea92113fe3b6f6cf3424ee6711d80f584b2145550598bcb0680408"
+    },
+    {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-current-native-reassessment/current-native-three-application-evidence.r1.json",
+      "sha256": "abb55654f4004e6f3f25204240de9cdac5c2e44fc9c04f8ac436fd43ebc57d75"
+    },
+    {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-current-native-reassessment/root-current-native-three-approval.r1.json",
+      "sha256": "ef87771af2cf6ca5b11b5bdf088fcdce44428f11d2109336ebed1221073933e9"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "5a41c235a5e6305507ad424a6c5d171f362fa21012ef40c0aef1b8665d32f4a2"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "sha256": "6650546fb6b6534bbcafa40f06c21f7145bcd7c7bf0edac0d126c459a56101b1"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/algebra-2022-v1.json",
+      "sha256": "fb439bbe1700129bccb02c113bc64389e1817937c5f6cd65a0700091946010e5"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/derivative-v1.json",
+      "sha256": "c9dc142e5f61d451c88b69269236a2f0fcb66544f8cb1a4884c8a4fd9265ee8e"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json",
+      "sha256": "f4ed8a1ca68fbb7769086f792673c1f9110ecf64d317f02ce237e820d5f855cd"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+      "sha256": "ddb62c947369337dda81f6c7a63e7531ffe5d14f72869f0df3c8af0db2ca1325"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+      "sha256": "2148ece0b2ccce5da67ea7dca3b637d267f2bb5d174e2bfb9f057daa8b814886"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/geometry-v1.json",
+      "sha256": "086b7af881c888fcd8622fc2fa8c1325e08e646e2dbf23981e7a0cc32fd14959"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/h1-foundation-v1.json",
+      "sha256": "fe0d40688eb18a33ff8a825c99ad4516f17aa28db79381c63a71a593804f77f0"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/h1-original-source-v1.json",
+      "sha256": "08d04537134cdb893cebc14ec88cf35ff06e10bbbb39e1d3b2e2fa1512e8aaa9"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/integral-calculus-v1.json",
+      "sha256": "c346f0a18831f75a6ec6648aeb559cfa4a51f3871708c192b8e1670c0d584b4a"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/limit-continuity-v1.json",
+      "sha256": "3c2da1e43389c9f3af4026a37bb777127412e68fbfc3ad065e823814be028e4e"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "sha256": "82a73c617501f0805bb5875e138400eceab6056ac86d463e9f67b3aae0b78979"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "sha256": "9f15cf1f5a611562c77cf8929845ca474099d5c3db22a6ff486e71e6977ec2bb"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+      "sha256": "aee14b3398b545e1b56c65ac30ad03eadae43863248527bd9f612dbb4a9252b8"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle3-v1.json",
+      "sha256": "1dd2ce171ce24582b30834000f0856d0fd52304984cb8e88b3b155cad2754e09"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/probability-statistics-v1.json",
+      "sha256": "d7de9dde7c27061143e0dbc858067b3e150362106d1d9bbd26362ed49ece59e3"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+      "sha256": "76835dfb6bcefe0362ed364a01b16eebb115af4f39273253b7fe9236cc2591a7"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/trigonometry-v1.json",
+      "sha256": "86f6c27b7e16c50c89aaf9698f90f15baf0da44ce785c021b36a4df02dcdae93"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/registry_index.json",
+      "sha256": "20e36055cde53a4f81b73e6ea6ab6382733a0c818812933c0baa67b6739d2285"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+      "sha256": "11889c08f041e0ac9ed3e131c3119369d51fb53d3704eaa637482894190d24cf"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "sha256": "4402ba3360bb4acfbde9810fd999b63ca95733bb0477b177e11b7dedfd9460b5"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "95c45cd888d5f65b2b4c8bfdac0179e2b3d94eb0e1be08358896e5f2e5eb48b5"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "sha256": "305c14086ed8554e95d28b3191e2ea62314dac62b4c10d3557bcd578c925220f"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+      "sha256": "fb085f13a391f1d973a02bc7306b4ff973c5dab829d16faf8b34c834c4e5f68a"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "948fc5c3a48e7602b13851f6be94bbbc57ecabe09563a3cad3cd5f232a6dafb2"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/algebra.json",
+      "sha256": "6f0c3508c293f6861a7d9a2641be2c90769d8cc46c00c75cbe67092edb009d54"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/calculus.json",
+      "sha256": "dd2bc4069ed66978b42550739c4c7807a30346463a78dfa81f5613d1680f129c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "sha256": "c4d237b4a25cbaaaffe9c923d79eb1240ec7ae2c2cc6488204a392a14ccb06b1"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/counting.json",
+      "sha256": "d6dac004fc42c4d7c5e8fc411ea97bc653ba5681079698f77f352c6518d6b9e4"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/functions.json",
+      "sha256": "97a3b7de9161ee8840ca41c2a4c8ca9876734937198d87cb4c16e2e9e89849c6"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/logic-set.json",
+      "sha256": "f33efc641f56ace7dd121238f4b2638f410570bb4a8f47642111df67992b0eeb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/middle1.json",
+      "sha256": "61fe5e236cfc4cf68d5cc17171617f9303c692b3d4caf889800cf5e2b088ad3d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/number-theory.json",
+      "sha256": "c5e617dd42eca2268207905cdee4ebe61939f76f9108349b692aeaee47b5bcf1"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "sha256": "beae40b5ea265ffcd71168da73568435f6e60aad8680027c1d9ccd08fc1ad9d9"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/sequences.json",
+      "sha256": "dbc95de1be6ba1c3ebd487d1827f8d6c325d2ae909981ff8f61544742678957a"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/trigonometry.json",
+      "sha256": "6dc2372dc0ed53987215f08a003a91c3453e2e5c2988f43ba730a2a8ec599974"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/aliases.json",
+      "sha256": "f3af3f54d502bf8e7ae7b6dd84ac74ca46eeb8aa928171408e38a0f6f8f3f50c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "sha256": "ff59576b8df6c016103841234f0bc64bdfcc16ac875df2f23f8d299b4ff66330"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/pack.json",
+      "sha256": "f9f334947ab521a168c27eac76c3d87a25e9e31a2af9c8f88fa50ef4a1bed427"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+      "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/aliases.json",
+      "sha256": "0cf59c0d43ef96fd46b4c16325e0c3d7f6f6aadbf1decef262658e6f5755110c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/bindings.json",
+      "sha256": "2a2b9d2cdf3d5b2cdbf27279d85d69b392f70e5706d073b8ed92bf2a4ea13160"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/pack.json",
+      "sha256": "14be7fac9251ae3b58994a942651080877b740f2dbe1eb6ce2a0dde0782e8ff2"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/exponents-logarithms/taxonomy.json",
+      "sha256": "6cdb69282a67115935134e5d6d7632c51fa9e26126ae4a45e1a1ef48813b471f"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/aliases.json",
+      "sha256": "a0e69ab0e7b3825763272f086dccdb86ef2cd0730552acf91529092c884d3fd8"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+      "sha256": "e881896df6f8ae5a5728876e1fcb0dffecb9e9bdc01f7e50f10f842eaffb826e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
+      "sha256": "eb7f9aadc04019ca36c4c0255fa46f84a5a5de52d031e5fe5e71665a51a97c2c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+      "sha256": "a2fcbf92e38dd452e86149b946817a5eb2ec8cad5dada09a6f3fecb87705a456"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/aliases.json",
+      "sha256": "a459a72979b235d531b3b9992d08d5dec7d4e60f3913788c400d442dba79ece6"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/bindings.json",
+      "sha256": "35302a5b1448feea34bb03ee24c9b7059a7f84dd9510fb19274250f39fab29ad"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/pack.json",
+      "sha256": "dac68a99e092fe1170a1fe002e4de14ae232328ff03b33b7fd73979dcc026082"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+      "sha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/aliases.json",
+      "sha256": "3c46a5ad22e2ba13fa7d8dfb2051ff4519e790befea0701908d4ff300ac5f461"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/bindings.json",
+      "sha256": "ab37bbce702c73d28dd14415d6ba7fe1cb55c42417162f97f497b277f3da9379"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/pack.json",
+      "sha256": "60cbdccb978bafbf4edf1bf04e081fb39970a0334c827079957e3ba6cd796648"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-original-source/taxonomy.json",
+      "sha256": "533eb7222eb313e034fddb8e3034653dc8763472ab232c988d10d54a36ecea4a"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/aliases.json",
+      "sha256": "9d5bca3366f3a8823afd506be37f6a8b196b1599faaa5f53a548d4023c48d78a"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+      "sha256": "b6fdbe6d462617c257673cb6cb23ad24abdd6993c753979d34e2e54db8a2f71e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/pack.json",
+      "sha256": "91c6493661c00809e6b1c613f886ac4eb37289558abe8274b3929f5c2cb577ca"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+      "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/aliases.json",
+      "sha256": "9fb49614a2829b3d928e90a2d91d98c3a53dd6e07bbb47fbffb31b37f33e3912"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "sha256": "50605f20f9f4a37f186ee79c983db4631b4e8922cb7dfedf791722b37497ffe4"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/pack.json",
+      "sha256": "b9337290842da013fddda2afe899361232be1428d3395ee25e355459c9358f24"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+      "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/aliases.json",
+      "sha256": "06a45ebecbd7dacfc71e1f795230e6341deee6b726127b807b3f3e99bc13676d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "sha256": "30f28cec63d438f9e969e65b113ed92719b5903b74b169bf2295b117205b7c08"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+      "sha256": "f569f1cc058485fc00eacca29da83050b8cb05e7085375937b86f3428342ef5b"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "sha256": "2ce95890ab666b06406163a1e3462ff28adbba45b059facde03b0817be51c035"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/aliases.json",
+      "sha256": "422eadccd96aac0451555aecf69be61bd0405ec4964036fd6eba9c5ccbb16801"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "sha256": "5efb2841e80d882d86f61e4b73279e11811134b160cea1c4e93a3e48000c6f59"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+      "sha256": "ac21e2e9c33f3bd2b194c07d88f47ffec1c0f4e3d84d04dd6ff995c0999295c3"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "sha256": "a4c8d7a057e43cac333c390c69cf423f6c9f90de30f8e737854a42a44032977c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/aliases.json",
+      "sha256": "5a5c5839128fbcf40c0cdee802f1e7f6b7f9408b7a18157bab07194ab02458ee"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json",
+      "sha256": "ca1523d9fc65cd2b37c7b4cd99203e1785b231b4c09bc30a9cd7d9b3e86bf685"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/pack.json",
+      "sha256": "a31b21f5067b468b5c450b55775e03d66b2df5c4f8eb3f246ab36b83efe05a6d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json",
+      "sha256": "d47934ac1d6729dd42f434e19bf49b47e5175c4125d496541c88ef90946b8ec1"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/aliases.json",
+      "sha256": "8eaf72d877a8b560455ef948c7229faf0a6c3de841ab9d962edb513259f3422a"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json",
+      "sha256": "5d11705a488f3de996a1a0be10154168748299015052e6d5e1b19d7037817fb9"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/pack.json",
+      "sha256": "19198198adf5cee0fda38708ae71313272d60a854afeb71a750fa0a41945b552"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+      "sha256": "f39e9445169d2c0f42d38a4bd1e3c41219e7e03f28b9a41ab4d76542f638e520"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/aliases.json",
+      "sha256": "74f9273c95bef1eb0188aab181b13de31da36c8b54172c72efe712382296db98"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/bindings.json",
+      "sha256": "ba5f1e2fa976ef7434fae7e461b1228df6f5b0ce07043e1448a291e6233b9149"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/pack.json",
+      "sha256": "71a532845d684687fd85992737452fda79537804ddc5d7aad72eb4d3fc0a091f"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/taxonomy.json",
+      "sha256": "e00d94231656f828f82df3e4523135aaf420c4cd1cf3b577b964a864608226da"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/pack.json",
+      "sha256": "9f42add5dc58b9a73cec846d3840e25c51bb1b42a1e6fab61cde4f613415ca19"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+      "sha256": "b053ec5faf408fe659e1f9232cba84aca8abed8c9e448548c7693e12cc0ab0fb"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/bindings.json",
+      "sha256": "7c2334d36cd2eee4eb90f6962d4301317fcde385a9cb88f1c1e15a10f75ae9f8"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/aliases.json",
+      "sha256": "c540580aba9060ceff81319155d7c1337bf1e811289483511c3030c2d68449c4"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/pack.json",
+      "sha256": "6457d8d5956a4da6b6b78eed0d271e440b1ed398438a7b29c708e4fd3617c591"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/taxonomy.json",
+      "sha256": "1aa1dcd5faa83efcb0ec211c631f935ca2e1c604bb41b58fd30ae977cd420f2b"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/bindings.json",
+      "sha256": "d659538f5253bd081706c299b82ac5814ba3cb85e64420a8a282ab042adbf61c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/aliases.json",
+      "sha256": "96e5c8ef2d0a31204d9b58b38fd1c613af78c54d849004659d251a61a47cce63"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/statistics-concepts.json",
+      "sha256": "73c06dc2d1cb46fe7a178fd8609fcfdbbe2959be4d921ab489ab4dcd8442a657"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/pack.json",
+      "sha256": "2b560ef0db7ec3aad0178a73d60c1cf6de7e267855708865bb67d890e7c20610"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/taxonomy.json",
+      "sha256": "bc6a43a4b941af7891014d311396da352ceac53c30adf54ea1e111cbb7fc4d85"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/bindings.json",
+      "sha256": "af843d20885e448ea5a730d3c8a7a5e8b21abf93c45d5658f4b6aa5e9ab3b1f7"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/aliases.json",
+      "sha256": "db186215fe6ef0ced6c6dcd3825727af1c91f77ad34a642d23a2febc09b81926"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/pack.json",
+      "sha256": "f7b10b5aed9e39619e8a7394fcf259cd0cb8e5fbf9583aa76dc71939ce90f6a6"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+      "sha256": "5e438a90a47abc3305936f01acd4cfb1cbc3e1783026b91c8e4c629be1801683"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/bindings.json",
+      "sha256": "0894c55e0a7615131fae915162e6c25d8bf8f07872e605f5c2b4d38926f5339d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/aliases.json",
+      "sha256": "658690343529c52ca583035c1d2811dd3bf816f383ca42a4bc41e17f24bb52ee"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+      "sha256": "a2a475effb045717df8c1af760c412076b3c3c92d1f3dcea34f3ef846208327d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/taxonomy.json",
+      "sha256": "234121a8177fe104ef9c3decce046395ee4069a28b81624efdb39984d2a6eff4"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+      "sha256": "9833476cc60ebb0ca440367c474eb926010e04f90ba89bb2096ef2b23b79c6de"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/aliases.json",
+      "sha256": "932b39f7ba367e04a7c655ed044a8fb109536b45cb48f7155780625b6b73cbf6"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/aliases.json",
+      "sha256": "91cd2389664be06b344276fc8237db0de5fe397010c64ef4ba9aaf1aed1e121d"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "sha256": "ea7e49ee1cd29763e96515b0e2f253823eb4e288b6939b77c79aca139edeab4c"
+    },
+    {
+      "path": "archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "sha256": "8c302c66fc44090236203ad35ec957338cff8b151598acb722fb15fbab6ff85c"
+    },
+    {
+      "path": "archive/exams/original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+      "sha256": "de15541161f629958edf4daed26bb139215222ee8a1cdf416851b58f92b9d97d"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-current-native-reassessment.json",
+      "sha256": "b2a6c121278b7725274d52a2d3da0ea653f45ff304599b54da4c97689fafa569"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18.json",
+      "sha256": "adb28d993b9a4077eaa14b7a5ce362872d6d9ecaa669574beb4017f16720797e"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+      "sha256": "0e6f8edf5ade443a4e4f18d21dc12d15a1a768a8d272bcb8715efd18aabbccf3"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12-current-native-reassessment.json",
+      "sha256": "6613a09d34db67493fbbfe9e476f58a996f0f1f3f2a366b0c5bf2275e671df58"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12.json",
+      "sha256": "f86c4fa1caadff8457e4ba4011a7a6fab0be7879eb32d31353d84216bfc684fa"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18-current-native-reassessment.json",
+      "sha256": "f4912023040cab1ae619e69e43ae69cb4ac82b5636bd5471a56efc8ce2bacc09"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18.json",
+      "sha256": "a450f653ab8e6687d4d405f732948cdadc3fe85238fdfb1bbf99a74056ccc839"
+    }
+  ],
+  "inputMutationCount": 0,
+  "productionWrites": 0,
+  "registrarInvocations": 0,
+  "oldFocusedTestReruns": 0,
+  "officialRemoteWriter": "NOT_RUN_FOR_THIS_APPLICATION",
+  "studentDeployment": "NOT_RUN_FOR_THIS_APPLICATION",
+  "scope": "Only the three exact M2 replacement requests; compare new receipt/current values/ACTIVE/native reuse to unchanged actual4b504 prior authority. Prior31PASS and Q11 are not executed; no registrar invocation."
+}

@@ -16,6 +16,7 @@ export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
   Object.freeze({ requestKey: "currentDefinitionApplication", proofKey: "currentDefinitionApplication" }),
   Object.freeze({ requestKey: "prerequisiteExistingApplication", proofKey: "prerequisiteExistingApplication" }),
   Object.freeze({ requestKey: "currentTargetApplication", proofKey: "currentTargetApplication" }),
+  Object.freeze({ requestKey: "m2ProblemRendererContinuity", proofKey: "m2ProblemRendererContinuity" }),
 ]);
 
 export function reviewedSourceBindingItems(request) {

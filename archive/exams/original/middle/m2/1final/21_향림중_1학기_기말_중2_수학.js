@@ -171,7 +171,7 @@ window.examData = {
     {
       "id": 6,
       "score": 3,
-      "question": "<p>6. 다음 일차부등식 중 해를 수직선 위에 나타내었을 때, 아래 그림과 같은 것은? [3점]</p><p><img src=\"assets/images/21_향림중_1학기_기말_중2_수학/q06.png\" /></p>",
+      "question": "<p>6. 다음 일차부등식 중 해를 수직선 위에 나타내었을 때, 아래 그림과 같은 것은? [3점]</p><p><img src=\"assets/images/21_향림중_1학기_기말_중2_수학/q6-problem-visual-v2.svg\" alt=\"−2부터 3까지 눈금이 있다. 1의 채운 점에서 왼쪽 방향으로 검은 선이 뻗는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$2x > x-3$",
         "$5x+7 \\le 2x-2$",
@@ -190,10 +190,10 @@ window.examData = {
       "subUnit": "일차부등식",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "content": "<p>6. 다음 일차부등식 중 해를 수직선 위에 나타내었을 때, 아래 그림과 같은 것은? [3점]</p><p><img src=\"assets/images/21_향림중_1학기_기말_중2_수학/q06.png\" alt=\"수직선: 1에 색칠된 원이 있고 왼쪽으로 뻗은 화살표 (x <= 1)\" class=\"question-image\" /></p>",
+      "content": "<p>6. 다음 일차부등식 중 해를 수직선 위에 나타내었을 때, 아래 그림과 같은 것은? [3점]</p><p><img src=\"assets/images/21_향림중_1학기_기말_중2_수학/q6-problem-visual-v2.svg\" alt=\"−2부터 3까지 눈금이 있다. 1의 채운 점에서 왼쪽 방향으로 검은 선이 뻗는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "originalCategory": "일차부등식",
       "standardCourse": "중2-1",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "일차부등식"
       ],

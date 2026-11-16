@@ -13,7 +13,7 @@ const { stable, sha256, gitBlob, createGitReader, isStudentFontStylesheet, decla
 const MANIFEST_PATH = 'tests/fixtures/archive-e013-q20-enclosed-latin-ui.json';
 const CHECKER_PATH = 'tools/check-e013-q20-enclosed-latin-browser.cjs';
 const SHARED_CHECKER_PATH = 'tools/check-reviewed-problem-renderer-browser.cjs';
-const SHARED_CHECKER_SHA256 = '94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4';
+const SHARED_CHECKER_SHA256 = '046ff3571372bacd3655cee6bb9e1f4b0bfcf8acbc85f894bda586f84085bee5';
 const IDENTITY_PATH = 'archive/data/question_identity_map.json';
 const SCHEMA = 'archive-e013-q20-enclosed-latin-ui-preview-v1';
 const FONT_FAMILY = 'Nanum Myeongjo';

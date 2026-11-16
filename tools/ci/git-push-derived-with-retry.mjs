@@ -4,7 +4,8 @@
 // The derived files are a pure function of the checked-in inputs, so when another
 // writer moved the branch first we do NOT rebase/merge our stale output: we reset to
 // the new tip, re-run the caller's regenerate-and-validate command on that base, and
-// push the fresh result (at most 3 attempts, hard cap). If the competitor already
+// push the fresh result (3 attempts by default, at most 6 when explicitly requested).
+// The caller's existing step/job timeouts still bound the entire operation. If the competitor already
 // published an identical tree, that is success without any extra commit.
 //
 // Optional --reapply-check "<command>": the single shortcut. If this attempt created a local commit and the
@@ -14,9 +15,16 @@
 // push. A failing check, a cherry-pick conflict or a staged path outside --paths-file falls back to
 // regenerate. Without the option the behaviour is unchanged.
 //
+// Optional --race-fetch-scope all-heads is limited to origin/main. Before a race
+// retry it also fetches the other origin heads, so immutable review commits
+// published after checkout are available to the unchanged regenerate/verify
+// commands. The already captured origin/main ref and working tree are not changed
+// by that evidence fetch. Its fixed refspec cannot be supplied by the caller.
+//
 //   node tools/ci/git-push-derived-with-retry.mjs --paths-file <file> --message <msg> \
 //     [--regenerate "<command run through the platform shell>"] [--remote origin] \
 //     [--branch main] [--max-attempts 3] [--summary-file <md>] [--label <name>] \
+//     [--race-fetch-scope branch|all-heads] \
 //     [--verify-command "<candidate check before each push>"] \
 //     [--reapply-check "<exit 0 only if the competing range is provably unrelated>"]
 //
@@ -34,24 +42,34 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
-const HARD_CAP = 3;
+const DEFAULT_ATTEMPTS = 3;
+const HARD_CAP = 6;
 const SUCCESS = new Set(["PUSHED", "ALREADY_CURRENT", "ALREADY_REFLECTED"]);
 
+function resolveRaceFetchScope(opt) {
+  const scope = opt.raceFetchScope === undefined ? "branch" : opt.raceFetchScope;
+  if (scope !== "branch" && scope !== "all-heads") throw new Error("--race-fetch-scope must be branch or all-heads");
+  if (scope === "all-heads" && (opt.remote !== "origin" || opt.branch !== "main")) throw new Error("all-heads race fetch requires origin/main");
+  return scope;
+}
+
 function parseArgs(argv) {
-  const opt = { remote: "origin", branch: "main", maxAttempts: HARD_CAP, label: "derived data", regenerate: "", verifyCommand: "", reapplyCheck: "", summaryFile: "", pathsFile: "", message: "" };
+  const opt = { remote: "origin", branch: "main", maxAttempts: DEFAULT_ATTEMPTS, raceFetchScope: "branch", label: "derived data", regenerate: "", verifyCommand: "", reapplyCheck: "", summaryFile: "", pathsFile: "", message: "" };
   const names = { "--paths-file": "pathsFile", "--regenerate": "regenerate", "--message": "message", "--remote": "remote", "--branch": "branch",
-    "--max-attempts": "maxAttempts", "--summary-file": "summaryFile", "--label": "label", "--verify-command": "verifyCommand", "--reapply-check": "reapplyCheck" };
+    "--max-attempts": "maxAttempts", "--race-fetch-scope": "raceFetchScope", "--summary-file": "summaryFile", "--label": "label", "--verify-command": "verifyCommand", "--reapply-check": "reapplyCheck" };
   for (let i = 0; i < argv.length; i += 2) {
     const key = names[argv[i]];
     if (!key || argv[i + 1] === undefined) throw new Error(`unknown or valueless argument: ${argv[i]}`);
     opt[key] = argv[i + 1];
   }
-  opt.maxAttempts = Math.min(HARD_CAP, Math.max(1, Number.parseInt(opt.maxAttempts, 10) || HARD_CAP));
+  opt.maxAttempts = Math.min(HARD_CAP, Math.max(1, Number.parseInt(opt.maxAttempts, 10) || DEFAULT_ATTEMPTS));
+  resolveRaceFetchScope(opt);
   if (!opt.pathsFile || !opt.message) throw new Error("--paths-file and --message are required");
   return opt;
 }
 
 export function pushDerivedWithRetry(opt, { cwd = process.cwd(), log = console.log } = {}) {
+  const raceFetchScope = resolveRaceFetchScope(opt);
   const pathspecs = fs.readFileSync(opt.pathsFile, "utf8").split(/\r?\n/).map(l => l.trim()).filter(l => l && !l.startsWith("#"));
   if (!pathspecs.length) throw new Error("paths file has no pathspecs");
   const remoteRef = `${opt.remote}/${opt.branch}`;
@@ -141,6 +159,14 @@ export function pushDerivedWithRetry(opt, { cwd = process.cwd(), log = console.l
     if (attempts.length >= opt.maxAttempts) return outcome("RETRY_EXHAUSTED", { competitor: competitor() });
     if (!opt.regenerate) return outcome("NO_REGENERATE", { error: "branch moved and no --regenerate command was given", competitor: competitor() });
 
+    if (raceFetchScope === "all-heads") {
+      // main was fetched above and is the exact retry base. Do not move that ref
+      // again while hydrating the other heads; a later main advance must still
+      // lose the ordinary push race and re-enter the existing validation path.
+      const hydrated = git(["fetch", "--no-tags", "origin", "+refs/heads/*:refs/remotes/origin/*", "^refs/heads/main"]);
+      if (hydrated.status !== 0) return outcome("FETCH_FAILED", { error: `race evidence heads: ${hydrated.stderr}` });
+    }
+
     if (opt.reapplyCheck && attempt.pushed) {
       const unrelated = spawnSync(opt.reapplyCheck, { cwd, shell: true, stdio: "inherit",
         env: { ...process.env, DERIVED_BASE_SHA: attempt.base, COMPETITOR_HEAD_SHA: remote } });
@@ -201,7 +227,7 @@ export function renderSummary(opt, r) {
 
 function main() {
   let opt;
-  try { opt = parseArgs(process.argv.slice(2)); } catch (error) { console.error(`${error.message}\nusage: git-push-derived-with-retry.mjs --paths-file <f> --message <m> [--regenerate <cmd>] [--verify-command <cmd>] [--reapply-check <cmd>] [--remote origin] [--branch main] [--max-attempts 3] [--summary-file <md>] [--label <name>]`); process.exit(2); }
+  try { opt = parseArgs(process.argv.slice(2)); } catch (error) { console.error(`${error.message}\nusage: git-push-derived-with-retry.mjs --paths-file <f> --message <m> [--regenerate <cmd>] [--verify-command <cmd>] [--reapply-check <cmd>] [--remote origin] [--branch main] [--max-attempts 3] [--race-fetch-scope branch|all-heads] [--summary-file <md>] [--label <name>]`); process.exit(2); }
   let result;
   try { result = pushDerivedWithRetry(opt); } catch (error) { result = { result: "STAGE_FAILED", ok: false, attempts: 0, mainSha: "", registeredSha: "", attemptLog: [], error: error.message }; }
   console.log(`[${opt.label}] result=${result.result} attempts=${result.attempts} main_sha=${result.mainSha} registered_sha=${result.registeredSha}${result.error ? ` error=${result.error}` : ""}`);

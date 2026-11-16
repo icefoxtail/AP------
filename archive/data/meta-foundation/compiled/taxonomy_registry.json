@@ -32,7 +32,7 @@
     },
     {
       "packId": "MIDDLE_GEOMETRY",
-      "version": "1.0.10"
+      "version": "1.0.11"
     },
     {
       "packId": "MIDDLE1",
@@ -40,7 +40,7 @@
     },
     {
       "packId": "H1_FOUNDATION",
-      "version": "1.0.8"
+      "version": "1.0.10"
     },
     {
       "packId": "H1_ORIGINAL_SOURCE",
@@ -72,7 +72,7 @@
     }
   ],
   "problemTypeCount": 434,
-  "templateCount": 1005,
+  "templateCount": 1007,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -35666,6 +35666,34 @@
           "approvedBy": "GPT_ROOT_0A70543C4CE8",
           "approvalScope": "DEFINITION_AND_EXACT_UID_SEMANTIC_APPLICATION; OFFICIAL_REGISTRY_WRITE_PENDING"
         }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION",
+      "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "canonicalLabelKo": "일차부등식의 가장 작은 정수해",
+      "definition": "일차부등식의 해집합을 유한한 하한을 갖는 비어 있지 않은 반직선으로 나타낸 뒤, 경계의 포함 여부를 반영하여 그 해집합에 속하는 가장 작은 정수를 정한다.",
+      "internalSkeleton": "ISOLATE_VARIABLE_IDENTIFY_LOWER_BOUND_AND_INCLUSION_SELECT_LEAST_ADMISSIBLE_INTEGER",
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "aliases": [],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_INDEPENDENT_INEQUALITIES_LEAST_INTEGER_SUM",
+      "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "canonicalLabelKo": "독립된 부등식의 최소 정수해 합",
+      "definition": "서로 독립된 두 일차부등식에서 각각 유한한 하한과 경계의 포함 여부를 구하고, 각 해집합에 속하는 가장 작은 정수를 독립적으로 선택하여 그 두 정수의 합의 최솟값을 정한다.",
+      "internalSkeleton": "SOLVE_TWO_INDEPENDENT_INEQUALITIES_SELECT_EACH_LEAST_INTEGER_ADD_INDEPENDENT_MINIMA",
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "aliases": [],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0"
       ]
     },
     {

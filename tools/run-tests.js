@@ -30,9 +30,11 @@ const tests = includeQuarantined
   ? files
   : files.filter(name => !quarantined.has(name));
 
-// These two complete suites exceeded the old 60-second child limit in CI.
+// These complete suites exceed the old 60-second child limit (the M2 renderer
+// suite measures 85–107 seconds with actual Git, writer and replay fixtures).
 // Keep a finite per-command limit in both the full and scoped runners.
-const jsTestTimeout = file => file === 'archive2-compose-scope.test.js' ? 180000
+const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.test.js' ? 180000
+  : file === 'archive2-compose-scope.test.js' ? 180000
   : file === 'meta-foundation-middle-geometry-runtime.test.js' ? 300000 : 60000;
 
 // Keep the SVG semantic regression outside the legacy CommonJS-only glob.
@@ -99,6 +101,14 @@ const requiredCommands = [
   {
     label: 'tests/archive-reviewed-native-scope-fields.test.mjs',
     args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
+  },
+  {
+    label: 'tests/archive-source-delta.test.mjs',
+    args: ['--test', 'tests/archive-source-delta.test.mjs']
+  },
+  {
+    label: 'archive/tools/meta-foundation/source-delta-report.mjs syntax',
+    args: ['--check', 'archive/tools/meta-foundation/source-delta-report.mjs']
   },
   {
     label: 'tests/archive-main-merge-meta.test.mjs',

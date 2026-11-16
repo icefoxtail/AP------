@@ -551,3 +551,56 @@ test('workflow requires the six-case job without modifying the existing solution
   assert(!job.includes('/*-desktop.png') && !job.includes('/*-mobile.png'), 'v2 uploads original tiles without a single-shot alias');
   assert.match(workflow, /name: Archive2 50-question solution Chrome[\s\S]*?timeout-minutes: 12/);
 });
+
+
+test('tracked route work finishes before interception is removed, including work joining during drain', async () => {
+  const events = [], work = new Set(); let releaseFirst, releaseLate;
+  const firstReady = new Promise(resolve => { releaseFirst = resolve; });
+  const lateReady = new Promise(resolve => { releaseLate = resolve; });
+  work.add((async () => {
+    await firstReady; events.push('first-fulfilled');
+    work.add((async () => { await lateReady; events.push('late-fulfilled'); })());
+  })());
+  const completion = checker.closeStudentContext({ async unrouteAll(options) {
+    assert.deepEqual(options, { behavior: 'wait' });
+    assert.deepEqual(events, ['first-fulfilled', 'late-fulfilled']); events.push('unroute');
+  } }, { async close() { events.push('close'); } }, () => events.push('verify'), work);
+  await Promise.resolve(); assert.deepEqual(events, []);
+  releaseFirst(); await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(events, ['first-fulfilled']);
+  releaseLate(); await completion;
+  assert.deepEqual(events, ['first-fulfilled', 'late-fulfilled', 'unroute', 'verify', 'close']);
+  assert.equal(work.size, 0);
+});
+
+test('tracked route work waits for the other response before propagating the original rejection', async () => {
+  const events = [], work = new Set(); let rejectFirst, releaseOther;
+  const original = new Error('route terminal operation failed');
+  work.add(new Promise((resolve, reject) => { rejectFirst = reject; }));
+  work.add((async () => { await new Promise(resolve => { releaseOther = resolve; }); events.push('other-settled'); })());
+  const completion = checker.closeStudentContext({ async unrouteAll() { events.push('unroute'); } },
+    { async close() { events.push('close'); } }, () => events.push('verify'), work);
+  const rejects = assert.rejects(completion, error => error === original);
+  rejectFirst(original); await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(events, [], 'the remaining response must settle before context disposal');
+  releaseOther(); await rejects;
+  assert.deepEqual(events, ['other-settled', 'close']);
+  assert.equal(work.size, 0);
+});
+
+test('tracked route work keeps a late collected font failure visible to the existing strict check', async () => {
+  const failures = [], events = [], work = new Set(); let release;
+  const ready = new Promise(resolve => { release = resolve; });
+  const message = 'late response body failure';
+  work.add((async () => { await ready; failures.push(checker.fontFailureDiagnostic({ kind: 'FONT',
+    stage: 'BODY_READ', urlSha256: 'a'.repeat(64) }, new Error(message))); events.push('failure-recorded'); })());
+  const completion = checker.closeStudentContext({ async unrouteAll() { events.push('unroute'); } },
+    { async close() { events.push('close'); } }, () => {
+      events.push('verify'); assert.equal(failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
+    }, work);
+  const rejects = assert.rejects(completion, /UI_LATE_NETWORK_OR_PAGE_FAILURE/);
+  release(); await rejects;
+  assert.deepEqual(events, ['failure-recorded', 'unroute', 'verify', 'close']);
+  assert.equal(failures[0].errorMessageSha256, checker.sha256(message));
+  assert.equal(work.size, 0);
+});
