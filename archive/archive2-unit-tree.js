@@ -106,11 +106,19 @@
     return legacyIndex;
   }
 
+  // 중단원 칸 키: 정본 parentKey(학년·교재·대단원·중단원 이름)에서 만든 짧은 고정 키. 목차 서수(p1, p2)는 목차 순서가 바뀌면 옛 주소의 뜻이 바뀐다.
+  function fnv1a(text) {
+    let hash = 0x811c9dc5;
+    for (let i = 0; i < text.length; i += 1) { hash ^= text.charCodeAt(i); hash = Math.imul(hash, 0x01000193); }
+    return (hash >>> 0).toString(16).padStart(8, '0');
+  }
+  const middleChildKey = parentKey => `m${fnv1a(String(parentKey || ''))}`;
+
   function middleUnit(profile, unit) {
     const parents = Toc.parents(profile.grade).filter(parent => parent.unitKey === unit.key)
       .sort((a, b) => (a.orderInUnit || 0) - (b.orderInUnit || 0));
     const children = parents.map((parent, index) => ({
-      key: `p${parent.orderInUnit || index + 1}`, name: parent.L2, kind: 'chapter', section: '', parentKey: parent.parentKey, rank: index
+      key: middleChildKey(parent.parentKey), name: parent.L2, kind: 'chapter', section: '', parentKey: parent.parentKey, rank: index
     }));
     const byParent = new Map(children.map(child => [child.parentKey, child]));
     const assign = record => {

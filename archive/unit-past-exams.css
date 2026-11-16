@@ -499,3 +499,72 @@
 .unit-preview-title span { font-size: 14px; }
 .unit-preview-title strong { font-size: 16px; }
 @media (max-width: 700px) { .unit-edit-head .ug-btn { width: 100%; } }
+
+/* ---- 조건 줄: 출처 · 연도 · 시험 · 학기 (2026-11-16, 계획 1c). 규칙은 archive/DESIGN.md "조건 줄" ----
+   PC: 표 위 한 줄(좁으면 줄바꿈). 휴대폰(700px 이하): `조건 N개 · 바꾸기` 한 줄 버튼 + 아래에서 올라오는 시트. 기본값은 전부 "전체"(조용한 모양)이고,
+   바꾼 조건만 주홍으로 티 난다. 누르는 칸은 44px 이상. */
+.ug-cond-open,
+.ug-cond-scrim,
+.ug-cond-sheet-head,
+.ug-only-sheet { display: none; }
+.ug-cond-body { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; }
+.ug-cond-line { display: flex; flex: 1 1 auto; flex-wrap: wrap; align-items: center; gap: 8px 22px; }
+.ug-cond-grp { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.ug-cond-label { color: var(--ink-2); font-weight: 700; font-size: 14px; }
+.ug-cond-segs { display: flex; flex-wrap: wrap; gap: 6px; }
+.ug-cond .ug-seg { min-height: 44px; padding: 0 13px; font-size: 14px; }
+.ug-cond-grp:not(.is-changed) .ug-seg.is-on { border-color: var(--control-line); background: var(--chip); color: var(--ink); }
+.ug-cond-grp.is-changed .ug-cond-label { color: var(--brand-ink); }
+.ug-cond-grp.is-changed .ug-seg.is-on { border-color: var(--brand); background: var(--brand); color: var(--surface); }
+.ug-cond-foot { display: none; }
+.ug-cond-schools,
+.ug-cond-range { order: 2; flex: 1 1 100%; }
+.ug-cond-schools { display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--chip); }
+.ug-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-height: 44px; }
+.ug-chips-empty { color: var(--ink-2); font-size: 14px; }
+.ug-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 10px 0 16px; border: 0; border-radius: var(--radius-pill); background: var(--brand); color: var(--surface); font-weight: 700; font-size: 15px; cursor: pointer; }
+.ug-chip:hover { background: var(--brand-hover); }
+.ug-chip.is-quiet { background: var(--ink-2); }
+.ug-chip-x { position: relative; flex: 0 0 auto; width: 18px; height: 18px; }
+.ug-chip-x::before,
+.ug-chip-x::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 2px; background: currentColor; transform: translate(-50%, -50%) rotate(45deg); }
+.ug-chip-x::after { transform: translate(-50%, -50%) rotate(-45deg); }
+.ug-school-search { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.ug-school-q { flex: 1 1 220px; min-width: 0; min-height: 44px; padding: 0 14px; border: 1.5px solid var(--control-line); border-radius: var(--radius-field); background: var(--surface); color: var(--ink); font: inherit; }
+.ug-school-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px 8px; margin: 0; padding: 0; list-style: none; }
+.ug-school-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; min-height: 44px; padding: 0 14px; border: 1.5px solid var(--control-line); border-radius: var(--radius-pill); background: var(--surface); color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
+.ug-school-item:hover { border-color: var(--ink); background: var(--surface); }
+.ug-school-name { min-width: 0; overflow-wrap: anywhere; }
+.ug-school-n { flex: 0 0 auto; color: var(--ink-2); font-weight: 400; font-size: 13px; font-variant-numeric: tabular-nums; }
+.ug-school-item.is-quiet .ug-school-name,
+.ug-school-item.is-quiet .ug-school-n { color: var(--muted); }
+.ug-school-hint { grid-column: 1 / -1; color: var(--ink-2); font-size: 14px; line-height: 1.5; }
+.ug-cond-range { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--chip); }
+.ug-cond-range label { display: flex; align-items: center; gap: 8px; }
+.ug-select { min-height: 44px; padding: 0 12px; border: 1.5px solid var(--control-line); border-radius: var(--radius-field); background: var(--surface); color: var(--ink); font: inherit; font-weight: 700; }
+.ug-range-sep { width: 14px; height: 2px; background: var(--ink-2); }
+.ug-range-note { flex: 1 1 100%; color: var(--ink-2); font-size: 14px; }
+.ug-sum-schools { margin: -6px 0 10px; color: var(--ink-2); font-size: 14px; line-height: 1.5; }
+.ug-type-bulk { display: flex; align-items: center; gap: 8px; margin: 0 0 4px; }
+.ug-type-bulk-sep { width: 1px; height: 16px; background: var(--line); }
+@media (max-width: 700px) {
+  .ug-cond-open { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 48px; padding: 0 18px; border: 1.5px solid var(--ink); border-radius: var(--radius-pill); background: var(--surface); color: var(--ink); font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; }
+  .ug-cond-open::after { content: ""; flex: 0 0 auto; width: 8px; height: 8px; margin: 0 2px 3px 8px; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .ug-cond-open.is-changed { border-color: var(--brand); background: var(--brand-soft); color: var(--brand-soft-ink); }
+  .ug-cond-scrim.is-open { display: block; position: fixed; z-index: 70; inset: 0; background: rgba(23, 23, 28, .45); }
+  .ug-cond-body { display: none; }
+  .ug-cond-body.is-open { display: flex; position: fixed; z-index: 71; left: 0; right: 0; bottom: 0; flex-direction: column; align-items: stretch; flex-wrap: nowrap; gap: 14px; max-height: 88vh; padding: 14px 16px 0; overflow-y: auto; overscroll-behavior: contain; border-radius: 20px 20px 0 0; background: var(--surface); box-shadow: 0 -10px 32px rgba(23, 23, 28, .22); }
+  .ug-only-pc { display: none; }
+  .ug-cond-sheet-head { position: sticky; top: -14px; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: -14px; padding: 14px 0 8px; background: var(--surface); }
+  .ug-cond-sheet-head strong { font-size: 18px; letter-spacing: -.02em; }
+  .ug-cond-line { flex-direction: column; align-items: stretch; gap: 12px; }
+  .ug-cond-grp { flex-direction: column; align-items: stretch; gap: 6px; }
+  .ug-cond-segs { gap: 6px; }
+  .ug-cond-segs .ug-seg { flex: 1 1 0; min-width: 0; padding: 0 6px; }
+  .ug-only-sheet { display: flex; }
+  .ug-cond-schools,
+  .ug-cond-range { order: 0; }
+  .ug-school-results { grid-template-columns: minmax(0, 1fr); }
+  .ug-cond-foot { position: sticky; bottom: 0; z-index: 1; order: 9; display: flex; flex-direction: column-reverse; align-items: stretch; gap: 4px; margin: 0 -16px; padding: 10px 16px calc(12px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); background: var(--surface); }
+  .ug-cond-done { width: 100%; }
+}

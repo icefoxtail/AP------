@@ -207,3 +207,22 @@ test('유형 거르기: 뺀 유형은 숫자·문제지에서 빠지고, 유형 
   assert.equal(core.createTypeFilter([]), null);
   assert.deepEqual(core.normalizeExcludedTypeKeys(new Set(['b', 'a', '', 'a'])), ['a', 'b']);
 });
+
+test('중등 중단원 칸 키는 정본 parentKey에서 만든 짧고 안정된 키다(목차 서수 p1·p2가 아니다)', () => {
+  const seen = new Map();
+  for (const [profileId, grade] of [['m1', '중1'], ['m2', '중2'], ['m3', '중3']]) {
+    const { tree } = treeFor(profileId);
+    const again = Tree.createTree(profileId, core.buildCatalog(joined, { profileId }).units);
+    for (const parent of Toc.parents(grade)) {
+      const child = tree.childrenOf(parent.unitKey).find(item => item.parentKey === parent.parentKey);
+      assert.ok(child, `${grade} ${parent.L2}`);
+      assert.match(child.key, /^m[0-9a-f]{8}$/, '짧고 주소·쉼표 목록에 그대로 쓸 수 있다');
+      assert.doesNotMatch(child.key, /^p\d+$/);
+      assert.equal(again.childrenOf(parent.unitKey).find(item => item.parentKey === parent.parentKey).key, child.key, '다시 만들어도 같은 키');
+      const id = `${grade}/${child.key}`;
+      assert.ok(!seen.has(id), `키 충돌 0: ${id}`);
+      seen.set(id, parent.parentKey);
+    }
+  }
+  assert.ok(seen.size >= 54);
+});

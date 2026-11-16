@@ -377,3 +377,187 @@ test('주소의 sel·chk·notype로 다시 열면 같은 선택이다', async ()
   assert.match(html, /ug-bar-count">2문항 · 1권/);
   assert.match(html, /id="ug-types-now">1종 뺌/);
 });
+
+// ---- 조건 줄: 출처(전체 기출 | 학교 지정) · 연도 · 시험 · 학기 (계획 1c) ----
+function createSourceRuntime(url = 'http://unit.test/archive/unit-past-exams.html?grade=h1', options = {}) {
+  const rec = (n, school, yy, period, extra = {}) => ({
+    sourceFile: `original/high/h1/${period}/${yy}_${school}.js`, sourceOrdinal: n, id: n, grade: '고1', subject: '공통수학1', course: '공통수학1',
+    standardUnitKey: 'H22-C-01', standardUnit: '다항식의 연산', question_uid: `src-uid-${n}`, subUnitKey: 'H22-C-01-CORE', subUnit: '핵심', level: '중', ...extra
+  });
+  const questionIndex = [
+    rec(1, '순천고', 25, '1mid'), rec(2, '순천고', 25, '1mid'), rec(3, '순천고', 24, '2final'), rec(4, '순천고', 22, '1mid'),
+    rec(5, '광양고', 25, '1final'), rec(6, '광양고', 25, '1final'), rec(7, '광양고', 23, '1mid'), rec(8, '금당고', 25, '2mid')
+  ];
+  return createRuntime({ url, questionIndex, ...options });
+}
+const bar = runtime => runtime.getElement('ug-bar').innerHTML;
+// 권 목록에서 표로 돌아간다(뒤로 가기와 같다: 주소의 view를 지우고 주소대로 다시 그린다).
+const backToTable = runtime => { const url = new URL(runtime.url); url.searchParams.delete('view'); runtime.setUrl(url.toString()); runtime.window.UnitPastExams.gridRestoreFromUrl(); };
+const cond = runtime => runtime.getElement('ug-cond').innerHTML;
+
+test('조건 줄: 기본은 전부 "전체"라 숫자·결과가 조건을 모르던 때와 같고, 조건을 바꾸면 주홍으로 표시된다', () => {
+  const runtime = createSourceRuntime();
+  const api = runtime.window.UnitPastExams;
+  api.gridSelectGrade('h1');
+  const html = runtime.getElement('unit-content').innerHTML;
+  assert.match(html, /<section class="ug-cond" id="ug-cond"/);
+  assert.match(html, /조건 없음 · 바꾸기/);
+  for (const label of ['출처', '연도', '시험', '학기']) assert.match(html, new RegExp(`aria-label="${label}"`));
+  assert.match(html, /aria-pressed="true" onclick="UnitPastExams\.gridSetSrc\('mode','all'\)">전체 기출</);
+  assert.doesNotMatch(html, /is-changed|ug-cond-schools/, '기본에는 바뀐 조건도 학교 고르기 칸도 없다');
+  api.gridToggleCell('H22-C-01', 'none');
+  assert.match(bar(runtime), /8문항 · 1권/);
+  assert.doesNotMatch(new URL(runtime.url).search, /sch=|yr=|ex=|sm=|grp=/, '기본값은 주소에 남기지 않는다');
+  api.gridSetSrc('exam', 'mid');
+  assert.match(cond(runtime), /ug-cond-grp is-changed" role="group" aria-label="시험"/);
+  assert.match(cond(runtime), /조건 1개 · 바꾸기/);
+  assert.match(bar(runtime), /5문항/, '중간고사만(순천고 3·광양고 1·금당고 1)');
+});
+
+test('학교 지정: 학교 검색·칩, 숫자가 그 학교·연도 문항 수로 바뀌고 주소·저장에 남는다', () => {
+  const runtime = createSourceRuntime();
+  const api = runtime.window.UnitPastExams;
+  api.gridSelectGrade('h1');
+  api.gridToggleCell('H22-C-01', 'none');
+  api.gridSetSrc('mode', 'school');
+  let html = cond(runtime);
+  assert.match(html, /class="ug-cond-schools"/);
+  assert.match(html, /순천고<\/span><span class="ug-school-n">4문항/, '학교 목록에 문항 수가 함께 나온다(많은 학교부터)');
+  api.gridSchoolQuery('광양');
+  assert.match(runtime.getElement('ug-school-results').innerHTML, /광양고/);
+  assert.doesNotMatch(runtime.getElement('ug-school-results').innerHTML, /순천고/);
+  api.gridAddSchool(0);
+  html = cond(runtime);
+  assert.match(html, /class="ug-chip"[^>]*aria-label="광양고 빼기/, '고른 학교는 칩으로 쌓인다');
+  assert.match(html, /조건 1개 · 바꾸기/);
+  assert.match(bar(runtime), /3문항 · 1권/, '표·요약이 광양고 문항 수로 바뀐다');
+  assert.match(runtime.getElement('ug-sum').innerHTML, /광양고 · 다항식의 연산/);
+  assert.match(runtime.getElement('ug-filter-note').textContent, /광양고 조건의 문항 수/);
+  assert.equal(new URL(runtime.url).searchParams.get('sch'), '광양고');
+  assert.equal(JSON.parse(runtime.stored.get('archive2.unitGrid.v1')).src.schools[0], '광양고');
+  // 연도: 최근 3년(학교마다 자료가 있는 최신 연도), 직접 고르기
+  api.gridSetSrc('year', 'r3');
+  assert.equal(new URL(runtime.url).searchParams.get('yr'), 'r3');
+  api.gridSetSrc('year', 'range');
+  assert.match(cond(runtime), /class="ug-cond-range"/);
+  api.gridSetRange('from', '2025');
+  api.gridSetRange('to', '2025');
+  assert.equal(new URL(runtime.url).searchParams.get('yr'), '2025-2025');
+  assert.match(bar(runtime), /2문항 · 1권/, '광양고 2025년만');
+  // 조건 모두 지우기는 기본으로 되돌린다.
+  api.gridCondReset();
+  assert.match(cond(runtime), /조건 없음 · 바꾸기/);
+  assert.match(bar(runtime), /8문항 · 1권/);
+  assert.doesNotMatch(new URL(runtime.url).search, /sch=|yr=/);
+});
+
+test('학교를 2곳 이상 고르면 묶기 선택이 생기고, 학교별로 한 권씩이면 학교마다 권과 제목이 따로다', () => {
+  const runtime = createSourceRuntime();
+  const api = runtime.window.UnitPastExams;
+  api.gridSelectGrade('h1');
+  api.gridToggleCell('H22-C-01', 'none');
+  api.gridSetSrc('mode', 'school');
+  api.gridAddSchool(0);
+  assert.equal(runtime.getElement('ug-group').innerHTML, '', '학교가 1곳이면 묶기 선택이 없다');
+  api.gridAddSchool(0);
+  const group = runtime.getElement('ug-group').innerHTML;
+  assert.match(group, /한 권으로 섞기/);
+  assert.match(group, /학교별로 한 권씩/);
+  assert.match(runtime.getElement('ug-opt-now').textContent, /한 권으로 섞기/);
+  api.gridShowPapers();
+  let list = runtime.getElement('unit-content').innerHTML;
+  assert.equal((list.match(/class="ug-paper"/g) || []).length, 1, '섞기: 한 권');
+  assert.match(list, /원본 시험지 \d+개 · 광양고·순천고 20\d\d/, '섞은 권 줄에 원본 시험지 수와 학교·연도 요약');
+  backToTable(runtime);
+  api.gridSetSrc('group', 'school');
+  assert.equal(new URL(runtime.url).searchParams.get('grp'), 'school');
+  api.gridShowPapers();
+  list = runtime.getElement('unit-content').innerHTML;
+  assert.equal((list.match(/class="ug-paper"/g) || []).length, 2, '학교별: 학교마다 한 권');
+  assert.match(list, /<h3>(순천고|광양고) · /);
+  assert.match(list, /<h3>(순천고|광양고) · \d{4}[^<]*년<\/h3>/, '학교별 권은 줄 제목에 학교·연도가 있다');
+  assert.doesNotMatch(list, /원본 시험지 \d+개 · (순천고|광양고)/, '줄 제목에 있는 학교·연도를 줄 아래에서 되풀이하지 않는다');
+  assert.match(list, /학교별로 한 권씩/);
+  // 학교를 하나로 줄이면 묶기 선택이 사라지고 섞기로 돌아간다.
+  backToTable(runtime);
+  api.gridRemoveSchool(0);
+  assert.equal(runtime.getElement('ug-group').innerHTML, '');
+  assert.doesNotMatch(runtime.url, /grp=/);
+});
+
+test('조건(학교·연도·시험·학기·묶기)이 주소와 저장에 남아 다시 열면 같은 화면이다', async () => {
+  const url = 'http://unit.test/archive/unit-past-exams.html?grade=h1&sch=%EC%88%9C%EC%B2%9C%EA%B3%A0%2C%EA%B4%91%EC%96%91%EA%B3%A0&yr=2023-2025&ex=mid&sm=1&grp=school&sel=H22-C-01%7Cnone';
+  const runtime = createSourceRuntime(url, { teacher: true });
+  await runtime.window.UnitPastExams.init();
+  const html = runtime.getElement('unit-content').innerHTML;
+  assert.match(html, /조건 4개 · 바꾸기/);
+  assert.match(html, /class="ug-chip"[^>]*aria-label="순천고 빼기/);
+  assert.match(html, /class="ug-chip"[^>]*aria-label="광양고 빼기/);
+  assert.match(html, /class="ug-cond-range"/);
+  assert.match(html, /gridSetSrc\('group','school'\)[^>]*>학교별로 한 권씩/);
+  assert.match(html, /<details class="ug-options" id="ug-opts" open>/, '학교가 2곳 이상이면 묶기가 있는 접이식이 펼쳐진다');
+  // 저장만으로도 같은 조건: 주소에 조건이 없으면 저장값을 쓴다.
+  const stored = runtime.stored.get('archive2.unitGrid.v1');
+  const again = createSourceRuntime('http://unit.test/archive/unit-past-exams.html?grade=h1', { teacher: true, storage: { 'archive2.unitGrid.v1': stored } });
+  await again.window.UnitPastExams.init();
+  assert.match(again.getElement('unit-content').innerHTML, /조건 4개 · 바꾸기/);
+  assert.equal(new URL(again.url).searchParams.get('sch'), '순천고,광양고');
+});
+
+test('휴대폰 조건 시트: 열고 닫을 수 있고, 닫으면 단추로 돌아온다', () => {
+  const runtime = createSourceRuntime();
+  const api = runtime.window.UnitPastExams;
+  api.gridSelectGrade('h1');
+  assert.doesNotMatch(runtime.getElement('unit-content').innerHTML, /ug-cond-body is-open/);
+  assert.match(runtime.getElement('unit-content').innerHTML, /aria-expanded="false" aria-controls="ug-cond-body"/);
+  api.gridCondOpen();
+  assert.match(cond(runtime), /ug-cond-scrim is-open/);
+  assert.match(cond(runtime), /ug-cond-body is-open/);
+  assert.match(cond(runtime), /aria-expanded="true"/);
+  assert.match(cond(runtime), /이 조건으로 보기 · 8문항/);
+  api.gridCondClose();
+  assert.doesNotMatch(cond(runtime), /ug-cond-body is-open/);
+  assert.match(cond(runtime), /aria-expanded="false"/);
+  assert.match(cond(runtime), /gridSetSrc\('year','r5'\)/);
+});
+
+test('유형 거르기: 전체 끄기·전체 켜기 단추로 하나만 남기기 쉽다', () => {
+  const { runtime } = createTreeRuntime('http://unit.test/archive/unit-past-exams.html?grade=h1');
+  const api = runtime.window.UnitPastExams;
+  api.gridSelectGrade('h1');
+  api.gridToggleUnit('H22-C-06');
+  api.gridToggleCell('H22-C-06', 'none');
+  const body = () => runtime.getElement('ug-types-body').innerHTML;
+  assert.match(body(), /gridResetTypes\(\)"[^>]*disabled>전체 켜기/, '다 켜져 있으면 전체 켜기는 눌리지 않는다');
+  assert.match(bar(runtime), /3문항/);
+  api.gridTypesOffAll();
+  assert.match(runtime.getElement('ug-types-now').textContent, /3종 뺌/);
+  assert.match(body(), /gridTypesOffAll\(\)"[^>]*disabled>전체 끄기/);
+  assert.doesNotMatch(bar(runtime), /\d문항 · \d권/, '전부 끄면 고른 문항이 없다');
+  api.gridToggleType(2); // 유형 가
+  assert.match(bar(runtime), /1문항/);
+  api.gridResetTypes();
+  assert.match(bar(runtime), /3문항/);
+});
+
+test('유형 거르기 중에 단원 칸을 풀면 나머지 소단원 칸은 거른 숫자 기준으로 켜진다', () => {
+  const { Tree, runtime } = createTreeRuntime('http://unit.test/archive/unit-past-exams.html?grade=h1');
+  const api = runtime.window.UnitPastExams;
+  api.gridSelectGrade('h1');
+  api.gridToggleUnit('H22-C-06');
+  api.gridToggleCell('H22-C-06', 'none');
+  assert.match(bar(runtime), /3문항/);
+  // 유형 미지정(방정식 소단원의 2번 문항)을 끄면 방정식은 유형 가 1문항, 연립부등식은 유형 나 1문항이 남는다.
+  api.gridToggleType(0);
+  api.gridToggleOpen('H22-C-06');
+  const catalog = runtime.window.UnitPastExamsCore.buildCatalog(runtime.window.questionIndex, { profileId: 'h1' });
+  const tree = Tree.createTree('h1', catalog.units);
+  const system = tree.childrenOf('H22-C-06').find(child => child.name === '연립부등식');
+  assert.ok(system);
+  api.gridToggleCell('H22-C-06', 'none', system.key);
+  // 연립부등식 칸을 끄면 단원 전체 칸이 풀리고 나머지 소단원 칸이 켜지는데, 거르기 전 숫자가 아니라 거른 숫자로 판단한다.
+  const cells = new URL(runtime.url).searchParams.get('sel');
+  assert.match(cells, /H22-C-06~[^,|]+\|none/);
+  assert.doesNotMatch(cells, new RegExp(`~${system.key}\\|none`));
+  assert.match(bar(runtime), /1문항 · 1권/);
+});
