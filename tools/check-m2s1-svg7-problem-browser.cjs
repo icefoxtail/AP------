@@ -10,6 +10,67 @@ const BASE_COMMIT='d7111057c89ad4f4a418e2805eeeb1b04447f99f';
 const SURFACE_PATH='tools/capture-m1s2-problem-surface.cjs';
 const Q15_SURFACE_PATH='tools/capture-m2s1-svg7-problem-surface.cjs';
 function surfaceRoute(item){if(item.questionUid!==Q15Surface.UID)return 'SHARED_SURFACE';Q15Surface.assertQ15Binding(item);return 'Q15_EMBEDDED_CHOICES';}
+// Preserve only known failure codes from Playwright's error wrapper. Neither
+// the original message nor browser/student text is written to public proof.
+const Q15_FAILURE_CODES=new Set(['SCOPE','EMBEDDED_CHOICES','WHOLE_QUESTION','SURFACE_REQUIRED','SURFACE_KEYS','SURFACE_SCOPE',
+ 'SURFACE_COMPLETENESS','STATEMENT_REQUIRED','DIRECT_TOPOLOGY','CHILD_ORDER','EXTRA_ELEMENT','OUTSIDE_TEXT','EXTRA_NODE',
+ 'OUTER_TWO','ROLE_TOPOLOGY','VISIBLE_ORDINAL','PARAGRAPHS_TWO','PARAGRAPH_ROLES','IMAGE_ROLE','IMAGE_PATH','IMAGE_READY',
+ 'REQUIRED_ELEMENT_HIDDEN','ROLE_CLIPPED','STATEMENT_HIDDEN','STATEMENT_RANGE','STATEMENT_NODE','MATH_ATOM',
+ 'STATEMENT_ELEMENT','BREAK_NODE','SEMANTIC_ROLES_OVERLAP'].map(code=>'UI_Q15_'+code));
+function safeFailureCode(error,fallback){
+ const message=typeof error?.message==='string'?error.message:'';
+ if(/^UI_[A-Z0-9_]+$/.test(message))return message;
+ const codes=[...new Set(message.match(/\bUI_Q15_[A-Z0-9_]+\b/g)||[])];
+ return codes.length===1&&Q15_FAILURE_CODES.has(codes[0])?codes[0]:fallback;
+}
+// Failure-only browser reader: no text, HTML, URLs, choices or solutions leave
+// the page. It neither mutates DOM nor decides whether capture can proceed.
+function inspectQ15FailureMetadata(image,scope){
+ const box=image.closest('.q-box');
+ const rect=e=>{if(!e)return null;const r=e.getBoundingClientRect();return Object.fromEntries(['x','y','width','height'].map(k=>[k,Number.isFinite(r[k])?r[k]:null]));};
+ const css=e=>{if(!e)return null;const s=getComputedStyle(e);return{displayNone:s.display==='none',visibilityHidden:s.visibility==='hidden'||s.visibility==='collapse',opacityZero:Number(s.opacity)===0};};
+ const visible=e=>{for(let n=e;n&&box?.contains(n);n=n.parentElement){const r=rect(n),s=css(n);if(s.displayNone||s.visibilityHidden||s.opacityZero||!(r.width>0&&r.height>0))return false;}return Boolean(e&&box?.contains(e));};
+ const role=e=>e?{nodeType:e.nodeType,tagName:e.tagName,elementChildren:e.children.length,
+  nonemptyDirectTextNodes:[...e.childNodes].filter(n=>n.nodeType===Node.TEXT_NODE&&Boolean(n.textContent.trim())).length,
+  rect:rect(e),css:css(e),visibleWithinQuestion:visible(e)}:null;
+ const number=box?.querySelectorAll('.q-num')[0],content=box?.querySelectorAll('.q-content')[0];
+ const statement=content?.children[0],figure=content?.children[1];
+ const atoms=[];let visitedNodes=0,truncated=false;
+ const walk=(node,depth)=>{
+  if(visitedNodes>=128||depth>16||atoms.length>=64){truncated=true;return;}visitedNodes++;
+  if(node.nodeType===Node.TEXT_NODE){if(!node.textContent.trim())return;const range=document.createRange();range.selectNodeContents(node);
+   const all=[...range.getClientRects()];if(all.length>16)truncated=true;
+   atoms.push({kind:'NONEMPTY_TEXT_RANGE',parentTag:node.parentElement?.tagName||null,visibleWithinQuestion:visible(node.parentElement),
+    rects:all.slice(0,16).map(r=>Object.fromEntries(['x','y','width','height'].map(k=>[k,Number.isFinite(r[k])?r[k]:null])))});return;}
+  if(node.nodeType!==Node.ELEMENT_NODE)return;
+  if(node.tagName==='MJX-CONTAINER'){atoms.push({kind:'GENERATED_MATH_ATOM',rect:rect(node),visibleWithinQuestion:visible(node)});return;}
+  for(const child of node.childNodes)walk(child,depth+1);
+ };
+ if(statement)for(const child of statement.childNodes)walk(child,0);
+ let imagePathMatchesScope=false;
+ try{const url=new URL(image.currentSrc||image.src,document.baseURI),p=decodeURIComponent(url.pathname);
+  imagePathMatchesScope=!url.search&&!url.hash&&[scope.assetPath.replace(/^archive/,''),'/exams/images/'+scope.assetPath.slice('archive/assets/images/'.length)].includes(p);
+ }catch{}
+ return{schemaVersion:'archive-m2s1-q15-failure-diagnostic-v1',status:'OBSERVATION_ONLY_NO_ACCEPTANCE',
+  outerElementCount:box?.children.length??null,numberCount:box?.querySelectorAll('.q-num').length??null,
+  contentCount:box?.querySelectorAll('.q-content').length??null,paragraphCount:content?.children.length??null,
+  nestedQuestionCount:box?.querySelectorAll('.q-box').length??null,imageCount:box?.querySelectorAll('img').length??null,
+  roles:{question:role(box),number:role(number),content:role(content),statement:role(statement),figure:role(figure),image:role(image)},
+  statementAtoms:atoms,visitedNodes,truncated,imagePathMatchesScope,imageComplete:Boolean(image.complete),
+  naturalWidth:image.naturalWidth,naturalHeight:image.naturalHeight,
+  viewport:{width:innerWidth,height:innerHeight},scroll:{x:scrollX,y:scrollY},domWrites:0};
+}
+async function captureQ15WithDiagnostics(page,target,file,item,activeCase,diagnostics){
+ try{return await Q15Surface.captureQ15Tiles(page,target,file,item);}
+ catch(error){
+  const row={key:activeCase.key,questionUid:activeCase.questionUid,sourceOrdinal:activeCase.sourceOrdinal,viewport:activeCase.viewport,
+   kind:'Q15_CAPTURE_FAILURE',failureCode:safeFailureCode(error,'UI_BROWSER_CHECK_FAILED'),errorMessageSha256:sha256(error.message||'')};
+  try{row.observation=await target.evaluate(inspectQ15FailureMetadata,Q15Surface.BROWSER_SCOPE);}
+  catch(diagnosticError){row.observation={status:'UNAVAILABLE',errorMessageSha256:sha256(diagnosticError.message||'')};}
+  diagnostics.push(row);
+  throw error;
+ }
+}
 const MANIFEST_PATH='tests/fixtures/archive-m2s1-svg7-problem-ui.json',CHECKER_PATH='tools/check-m2s1-svg7-problem-browser.cjs',SHARED_CHECKER_PATH='tools/check-reviewed-problem-renderer-browser.cjs';
 const MANIFEST_SHA="6d79b0597fcdf0fe90490a408c467f223f753c0b81a0be06f0da49a64a88701b",CAPTURE_SHA='e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673',IDENTITY_PATH='archive/data/question_identity_map.json';
 const SCHEMA='archive-m2s1-svg7-problem-github-ui-raw-v1',FONT_FAMILY='Nanum Myeongjo';
@@ -230,7 +291,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           surfaceDiagnostics.push({key:item.key,questionUid:item.questionUid,sourceOrdinal:item.sourceOrdinal,viewport:viewport.name,surface:measuredSurface.surface});
           const route=surfaceRoute(item);
           let captured;
-          if(route==='Q15_EMBEDDED_CHOICES')captured=await Q15Surface.captureQ15Tiles(page,target,path.join(out,screenshotPath),item);
+          if(route==='Q15_EMBEDDED_CHOICES')captured=await captureQ15WithDiagnostics(page,target,path.join(out,screenshotPath),item,activeCase,surfaceDiagnostics);
           else { Surface.assertSurfaceTopology(measuredSurface.surface); captured=await Surface.captureM1ProblemTiles(page,target,path.join(out,screenshotPath)); }
           const {capture,surface:surfaceStructure}=captured;
           const geometry = await target.evaluate(image => {
@@ -272,7 +333,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
     }
     return writeProof('TECHNICAL_PASS_VISUAL_REVIEW_PENDING');
   } catch (error) {
-    writeProof('FAIL', /^UI_[A-Z0-9_]+$/.test(error.message) ? error.message : 'UI_BROWSER_CHECK_FAILED');
+    writeProof('FAIL', safeFailureCode(error,'UI_BROWSER_CHECK_FAILED'));
     throw error;
   } finally {
     clearTimeout(watchdog);
@@ -282,5 +343,5 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
 }
 
 async function main(){const a=process.argv.slice(2);assert(a.length===4&&a[0]==='--root'&&a[2]==='--output','UI_ARGUMENTS');const root=path.resolve(a[1]),out=path.resolve(a[3]);assert(!out.startsWith(root+path.sep)&&out!==root,'UI_OUTPUT_OUTSIDE_CHECKOUT');assert(!fs.existsSync(out)||fs.readdirSync(out).length===0,'UI_EMPTY_OUTPUT');for(let p=out;p!==path.dirname(p);p=path.dirname(p))if(fs.existsSync(p))assert(!fs.lstatSync(p).isSymbolicLink(),'UI_OUTPUT_SYMLINK');const expectedCommit=process.env.ARCHIVE_M2S1_SVG7_UI_EXPECTED_SHA;assert(/^[a-f0-9]{40}$/.test(expectedCommit||''),'UI_EXPECTED_COMMIT');const p=await inspectStudentUi({root,out,expectedCommit,executablePath:process.env.CHROME_BIN});console.log(JSON.stringify({status:p.status,cases:p.completedLogicalCases,checkoutCommit:p.checkoutCommit,newApprovals:0}));}
-module.exports={surfaceRoute,validateManifest,validateInlinePointer,validateIdentity,preflight,executionProvenance,inspectStudentUi,CAPTURE_SHA,MANIFEST_SHA,BASE_COMMIT};
-if(require.main===module)main().catch(e=>{console.error(JSON.stringify({status:'FAIL',failureCode:/^UI_[A-Z0-9_]+$/.test(e.message)?e.message:'UI_GITHUB_CHROME_FAILED',errorMessageSha256:sha256(e.message||'')}));process.exitCode=1;});
+module.exports={surfaceRoute,safeFailureCode,inspectQ15FailureMetadata,captureQ15WithDiagnostics,validateManifest,validateInlinePointer,validateIdentity,preflight,executionProvenance,inspectStudentUi,CAPTURE_SHA,MANIFEST_SHA,BASE_COMMIT};
+if(require.main===module)main().catch(e=>{console.error(JSON.stringify({status:'FAIL',failureCode:safeFailureCode(e,'UI_GITHUB_CHROME_FAILED'),errorMessageSha256:sha256(e.message||'')}));process.exitCode=1;});

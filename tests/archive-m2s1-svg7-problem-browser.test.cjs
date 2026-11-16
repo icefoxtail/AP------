@@ -193,3 +193,68 @@ test('Q24 r2 pins reuse the closed official worker without changing the seven UI
  assert.equal(manifest.staticEvidenceRef.commit,'b13247a6c8bc7793f011395c0c0b68fa8c0352d6');assert.equal(manifest.priorStaticEvidenceRef.commit,'34b9e6ab851d78f90bba4975416cbeb5ee8817e3');
  const old=clone(manifest);old.items.find(r=>r.key==='E045-Q24').assetPath=old.items.find(r=>r.key==='E045-Q24').assetPath.replace('-r2.svg','-r1.svg');assert.throws(()=>H.validateManifest(old),/UI_CLOSED_MANIFEST/);
 });
+// A failed real capture stays failed. These observations intentionally expose
+// only enum codes and geometry, never the browser's original message/text.
+for(const[name,message,expected]of[
+ ['known wrapped error','locator.evaluate: Error: UI_Q15_ROLE_CLIPPED\n    at need (<anonymous>:2:1)','UI_Q15_ROLE_CLIPPED'],
+ ['repeated same enum','UI_Q15_STATEMENT_RANGE\nUI_Q15_STATEMENT_RANGE','UI_Q15_STATEMENT_RANGE'],
+ ['unknown wrapped enum','locator.evaluate: UI_Q15_UNKNOWN_FUTURE','FALLBACK'],
+ ['two different wrapped enums','UI_Q15_ROLE_CLIPPED UI_Q15_STATEMENT_RANGE','FALLBACK'],
+ ['ordinary exception','locator.evaluate: ReferenceError: hidden value','FALLBACK'],
+ ['embedded non-token','PREFIX_UI_Q15_ROLE_CLIPPED_SUFFIX','FALLBACK'],
+ ['existing direct code','UI_NETWORK_OR_PAGE_FAILURE','UI_NETWORK_OR_PAGE_FAILURE']
+])test('Q15 failure diagnostic preserves '+name,()=>assert.equal(H.safeFailureCode(new Error(message),'FALLBACK'),expected));
+test('Q15 failure diagnostic records geometry without text HTML URLs or mutation',async()=>{
+ const f=q15Dom(),before=f.box.outerHTML;
+ const observed=normalize(await f.target.evaluate(H.inspectQ15FailureMetadata,Q15.BROWSER_SCOPE));
+ assert.equal(observed.status,'OBSERVATION_ONLY_NO_ACCEPTANCE');assert.equal(observed.outerElementCount,2);
+ assert.equal(observed.roles.statement.tagName,'P');assert.deepEqual(observed.roles.statement.rect,f.statement.r);
+ assert.equal(observed.statementAtoms.length,1);assert.equal(observed.imagePathMatchesScope,true);
+ const raw=JSON.stringify(observed);for(const secret of [f.text.textContent,f.image.src,'<DIV','textContent','outerHTML'])assert(!raw.includes(secret));
+ assert.equal(f.box.outerHTML,before);assert.equal(observed.domWrites,0);assert.equal(f.state.screenshots.length,0);
+});
+test('Q15 failure diagnostic reports hidden and extra roles without accepting them',async()=>{
+ const f=q15Dom();f.statement.style.visibility='hidden';f.content.append(new f.Element('p'));
+ const observed=normalize(await f.target.evaluate(H.inspectQ15FailureMetadata,Q15.BROWSER_SCOPE));
+ assert.equal(observed.paragraphCount,3);assert.equal(observed.roles.statement.visibleWithinQuestion,false);
+ assert.equal(observed.status,'OBSERVATION_ONLY_NO_ACCEPTANCE');await assert.rejects(f.measure(),/UI_Q15_PARAGRAPHS_TWO/);
+});
+test('Q15 failure diagnostic bounds the amount of metadata',async()=>{
+ const f=q15Dom();for(let i=0;i<200;i++)f.statement.append(new f.TextNode('private synthetic text '+i));
+ const observed=normalize(await f.target.evaluate(H.inspectQ15FailureMetadata,Q15.BROWSER_SCOPE));
+ assert.equal(observed.truncated,true);assert(observed.statementAtoms.length<=64);assert(observed.visitedNodes<=128);
+ assert(!JSON.stringify(observed).includes('private synthetic'));
+});
+test('Q15 failure diagnostic keeps a real rejected capture rejected',async()=>{
+ const f=q15Dom(),rows=[];f.content.append(new f.Element('p'));
+ await assert.rejects(H.captureQ15WithDiagnostics(f.page,f.target,'/tmp/not-written.png',q15Binding(),
+  {key:'E045-Q15',questionUid:Q15.UID,sourceOrdinal:15,viewport:'desktop'},rows),/UI_Q15_PARAGRAPHS_TWO/);
+ assert.equal(rows.length,1);assert.equal(rows[0].failureCode,'UI_Q15_PARAGRAPHS_TWO');
+ assert.equal(rows[0].observation.paragraphCount,3);assert.equal(f.state.screenshots.length,0);
+});
+test('Q15 failure diagnostic preserves the exact original wrapped exception',async()=>{
+ const f=q15Dom(),rows=[],original=new Error('locator.evaluate: Error: UI_Q15_STATEMENT_RANGE\n private raw browser detail'),prior=Q15.captureQ15Tiles;
+ Q15.captureQ15Tiles=async()=>{throw original;};
+ try{await assert.rejects(H.captureQ15WithDiagnostics(f.page,f.target,'/tmp/not-written.png',q15Binding(),
+  {key:'E045-Q15',questionUid:Q15.UID,sourceOrdinal:15,viewport:'desktop'},rows),e=>e===original);}
+ finally{Q15.captureQ15Tiles=prior;}
+ assert.equal(rows[0].failureCode,'UI_Q15_STATEMENT_RANGE');assert.equal(rows[0].errorMessageSha256,sha(original.message));
+ assert(!JSON.stringify(rows).includes('private raw'));assert.equal(f.state.screenshots.length,0);
+});
+test('Q15 failure diagnostic cannot replace an original failure when observation fails',async()=>{
+ const f=q15Dom(),rows=[],original=new Error('locator.evaluate: Error: UI_Q15_ROLE_CLIPPED'),prior=Q15.captureQ15Tiles;
+ Q15.captureQ15Tiles=async()=>{throw original;};
+ const target={evaluate:async()=>{throw new Error('private diagnostic failure');}};
+ try{await assert.rejects(H.captureQ15WithDiagnostics(f.page,target,'/tmp/not-written.png',q15Binding(),
+  {key:'E045-Q15',questionUid:Q15.UID,sourceOrdinal:15,viewport:'desktop'},rows),e=>e===original);}
+ finally{Q15.captureQ15Tiles=prior;}
+ assert.equal(rows[0].observation.status,'UNAVAILABLE');assert(!JSON.stringify(rows).includes('private diagnostic failure'));
+});
+test('Q15 failure diagnostic leaves the successful return and evaluations unchanged',async()=>{
+ const f=q15Dom(),rows=[],result={syntheticCapture:'unchanged'},prior=Q15.captureQ15Tiles;let evaluations=0;
+ Q15.captureQ15Tiles=async()=>result;
+ try{assert.equal(await H.captureQ15WithDiagnostics(f.page,{evaluate:async()=>{evaluations++;}},'/tmp/not-written.png',q15Binding(),
+  {key:'E045-Q15',questionUid:Q15.UID,sourceOrdinal:15,viewport:'desktop'},rows),result);}
+ finally{Q15.captureQ15Tiles=prior;}
+ assert.equal(evaluations,0);assert.equal(rows.length,0);
+});
