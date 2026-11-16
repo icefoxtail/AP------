@@ -16,6 +16,32 @@
         // 현재 문서 위치 기준 상대 경로로 해석해 어디에 올려도 vendor를 찾게 한다.
         var AP_VENDOR_BASE = new URL('vendor/', document.baseURI).href;
 
+        const hangulMathFontLoads = new Map();
+        const preparedHangulMathGlyphs = new Set();
+        function prepareHangulMathFont(glyphs) {
+            if (hangulMathFontLoads.has(glyphs)) return hangulMathFontLoads.get(glyphs);
+            let timer;
+            const fontReady = Promise.resolve().then(() => {
+                if (!document.fonts?.load || !document.fonts?.check) throw new Error('HANGUL_MATH_FONT_API_UNAVAILABLE');
+                return Promise.all([400, 700].map(async weight => {
+                    const descriptor = `${weight} 16px "Nanum Myeongjo"`;
+                    const faces = await document.fonts.load(descriptor, glyphs);
+                    if (!faces.length || faces.some(face => face.family.replace(/["']/g, '') !== 'Nanum Myeongjo' || face.status !== 'loaded') ||
+                        !document.fonts.check(descriptor, glyphs)) {
+                        throw new Error('HANGUL_MATH_FONT_NOT_LOADED');
+                    }
+                }));
+            });
+            const ready = Promise.race([
+                fontReady,
+                new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('HANGUL_MATH_FONT_TIMEOUT')), 5000); })
+            ]).finally(() => clearTimeout(timer)).then(() => {
+                for (const glyph of glyphs) preparedHangulMathGlyphs.add(glyph);
+            });
+            hangulMathFontLoads.set(glyphs, ready);
+            return ready;
+        }
+
         function prepareEnclosedLatinMathJax() {
             // Install the fallback before MathJax can measure and cache these glyphs.
             const descriptor = '16px "AP Enclosed Latin"';
@@ -39,18 +65,24 @@
                 const unknownText = output?.unknownText;
                 if (typeof unknownText !== 'function') throw new Error('ENCLOSED_LATIN_MATHJAX_OUTPUT_UNAVAILABLE');
                 output.unknownText = function (text, ...args) {
+                    if ((text.match(/[\uAC00-\uD7A3]/gu) || []).some(glyph => !preparedHangulMathGlyphs.has(glyph))) {
+                        throw new Error('HANGUL_MATH_FONT_NOT_READY');
+                    }
                     const node = unknownText.call(this, text, ...args);
-                    if (!/[\u24B6-\u24E9]/u.test(text)) return node;
+                    if (!/[\u24B6-\u24E9\uAC00-\uD7A3]/u.test(text)) return node;
 
                     // CHTML uses unknownText for both measurement and final markup.
                     // Keep the original outer styles and style only the target runs.
                     this.adaptor.remove(this.adaptor.firstChild(node));
-                    for (const part of text.split(/([\u24B6-\u24E9]+)/u)) {
+                    for (const part of text.split(/([\u24B6-\u24E9]+|[\uAC00-\uD7A3]+)/u)) {
                         if (!part) continue;
                         const content = this.text(part);
                         const child = /[\u24B6-\u24E9]/u.test(part) ? this.html('span', {
                             class: 'ap-enclosed-latin',
                             style: { 'font-family': this.font.getFamily('"AP Enclosed Latin", serif') }
+                        }, [content]) : /[\uAC00-\uD7A3]/u.test(part) ? this.html('span', {
+                            class: 'ap-hangul-math',
+                            style: { 'font-family': this.font.getFamily('"Nanum Myeongjo", serif') }
                         }, [content]) : content;
                         this.adaptor.append(node, child);
                     }
@@ -615,12 +647,25 @@ async function waitForEnclosedLatinMath(elements) {
     if (pageReady !== prepareEnclosedLatinMathJax) return;
     const roots = elements == null ? [document.body] : Array.isArray(elements) ? elements : [elements];
     const targets = roots.flatMap(root => typeof root === 'string' ? [...document.querySelectorAll(root)] : [root]);
-    if (!targets.some(node => /[\u24B6-\u24E9]/u.test(node?.textContent || ''))) return;
+    const enclosedLatin = targets.some(node => /[\u24B6-\u24E9]/u.test(node?.textContent || ''));
+    const hangul = new Set();
+    const collectHangul = text => { for (const glyph of text.match(/[\uAC00-\uD7A3]/gu) || []) hangul.add(glyph); };
+    for (const node of targets) {
+        // Plain Korean body text keeps its existing path. Only math needs the
+        // CHTML fallback prepared before its first measurement can be cached.
+        for (const match of (node?.textContent || '').matchAll(/(?<!\\)(?:\$\$([\s\S]*?)\$\$|\$([^$]*?)\$)|\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/gu)) {
+            collectHangul(match.slice(1).filter(value => value !== undefined).join(''));
+        }
+        if (node?.matches?.('math, mjx-container')) collectHangul(node.textContent || '');
+        for (const math of node?.querySelectorAll?.('math, mjx-container') || []) collectHangul(math.textContent || '');
+    }
+    if (!enclosedLatin && !hangul.size) return;
     const ready = window.MathJax?.startup?.promise;
-    if (!ready || typeof ready.then !== 'function') throw new Error('ENCLOSED_LATIN_FONT_NOT_READY');
+    if (!ready || typeof ready.then !== 'function') throw new Error(enclosedLatin ? 'ENCLOSED_LATIN_FONT_NOT_READY' : 'HANGUL_MATH_FONT_NOT_READY');
     // The general MathJax loader deliberately continues on failure. This
     // named glyph path must not measure/cache missing glyphs after that catch.
     await ready;
+    if (hangul.size) await prepareHangulMathFont([...hangul].sort().join(''));
 }
 
 async function typesetMath(label, elements) {
