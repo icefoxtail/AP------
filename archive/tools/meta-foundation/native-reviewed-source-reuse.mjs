@@ -10,6 +10,7 @@ import { loadCanonical } from './compile-meta-foundation.mjs';
 import { validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
 import { M2_PROBLEM_RENDERER_SCHEMA } from './reviewed-m2-problem-renderer-continuity.mjs';
 import { M2_PROBLEM21_CONTINUITY_SCHEMA, M2_PROBLEM21_ITEMS } from './reviewed-m2-problem21-continuity.mjs';
+import { M2_FAMILY3_PROBLEM_CONTINUITY_SCHEMA, M2_FAMILY3_PROBLEM_SCOPE, M2_FAMILY3_PROBLEM_ITEMS } from './reviewed-m2-family3-problem-continuity.mjs';
 import { E023_SOLUTION_DISPLAY_SCHEMA, E023_SOLUTION_DISPLAY_FIELDS } from './reviewed-m2-e023-solution-display-continuity.mjs';
 import { validateNativeReviewedParent } from './reviewed-native-parent.mjs';
 import { validateReviewedRetainedScopeParent } from './reviewed-retained-scope-transport.mjs';
@@ -354,12 +355,42 @@ export function nativeReviewedM2ProblemRendererRebind(receipt, nativeSource, pre
   } catch { return false; }
 }
 
+// This is only the actual pending cursor's immutable whole-question context.
+// Its old display is not authority: the current typed Native/UI review is still
+// fully replayed before this one-UID historical input can be recognized.
+const E017_RHS_CURSOR_SOURCE = Object.freeze({
+  commit: 'd511d4f82d3da2224cc43f8ff26f30469b436af3',
+  path: 'archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js',
+  gitBlobSha1: 'a6a8419ba3ea9b6e271b57c34b920088277dc226',
+  sha256: '916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687',
+  bytes: 66448
+});
+const E017_RHS_CURSOR_QUESTION_SHA256 = '20a99cd2a1363d44ad9033982102491aff790ef4fe5b187f07bb04dfaa476a51';
+function matchesE017RhsHistoricalCursor(root, previous) {
+  if (sha(stable(previous)) !== E017_RHS_CURSOR_QUESTION_SHA256) return false;
+  const ref = E017_RHS_CURSOR_SOURCE;
+  const run = args => execFileSync('git', args, {cwd:fs.realpathSync(root), maxBuffer:16*1024*1024,
+    stdio:['ignore','pipe','pipe'], env:{...process.env,GIT_NO_LAZY_FETCH:'1',GIT_OPTIONAL_LOCKS:'0'}});
+  if (run(['ls-tree','-z',ref.commit,'--',ref.path]).toString() !==
+      `100644 blob ${ref.gitBlobSha1}\t${ref.path}\0`) return false;
+  const raw = run(['cat-file','blob',ref.gitBlobSha1]);
+  if (raw.length !== ref.bytes || sha(raw) !== ref.sha256 || blob(raw) !== ref.gitBlobSha1) return false;
+  const context = vm.createContext(Object.create(null), {codeGeneration:{strings:false,wasm:false}});
+  vm.runInContext('globalThis.window = {}; globalThis.console = Object.freeze({log(){},warn(){},error(){}});',
+    context,{timeout:5000});
+  vm.runInContext(raw.toString('utf8'),context,{timeout:5000});
+  const bank = context.window.questionBank || context.window.questions || context.questionBank || context.questions || context.window.examData?.questions;
+  return Array.isArray(bank) && bank.length === 23 &&
+    sha(stable(JSON.parse(JSON.stringify(bank[1])))) === E017_RHS_CURSOR_QUESTION_SHA256;
+}
+
 // The one reviewed solution line is carried only after the entire issued typed
 // request and immutable UI/authority binding have been replayed. A payload hash
 // or an ordinary receipt never grants this old-cursor continuation.
 export function nativeReviewedE017RhsRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
   if (!previous || identity.questionUid !== M2_E017_RHS_UID || ordinal !== 2 ||
-      receipt.sourceArchiveFile !== M2_E017_RHS_SOURCE || receipt.approval?.sourceRebind !== undefined) return false;
+      receipt.sourceArchiveFile !== M2_E017_RHS_SOURCE || receipt.expectedQuestionCount !== 23 ||
+      receipt.approval?.sourceRebind !== undefined) return false;
   const matches = receipt.fingerprintRepairs?.filter(r => r.questionUid === identity.questionUid && r.sourceOrdinal === ordinal);
   const proof = matches?.[0]?.sourceReview?.e017RhsContinuity;
   if (matches?.length !== 1 || proof?.schemaVersion !== M2_E017_RHS_SCHEMA || proof.questionUid !== identity.questionUid ||
@@ -370,7 +401,7 @@ export function nativeReviewedE017RhsRebind(receipt, nativeSource, previous, que
     if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
     const prior = sha(stable(previous));
     return [proof.nativeReviewedQuestionSha256, proof.nativeCommittedQuestionSha256, proof.reviewedCurrentQuestionSha256]
-      .some(value => SHA256.test(value || '') && value === prior);
+      .some(value => SHA256.test(value || '') && value === prior) || matchesE017RhsHistoricalCursor(nativeSource.root, previous);
   } catch { return false; }
 }
 
@@ -485,4 +516,34 @@ export function nativeReviewedM2Problem21Rebind(receipt, nativeSource, previous,
     }
   } catch { return false; }
   return false;
+}
+
+
+// This separate three-UID profile does not widen the existing fixed-three or
+// problem21 profiles. The complete issued Native/retained/parent request is
+// replayed before accepting any authenticated original or caught-up cursor.
+export function nativeReviewedM2Family3Rebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (!previous || receipt.approval?.sourceRebind !== undefined) return false;
+  const item = M2_FAMILY3_PROBLEM_ITEMS.find(item => item.questionUid === identity.questionUid &&
+    item.sourceOrdinal === ordinal && item.sourceArchiveFile === receipt.sourceArchiveFile);
+  if (!item || receipt.expectedQuestionCount !== item.expectedQuestionCount) return false;
+  const matches = receipt.fingerprintRepairs?.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+  const proof = matches?.[0]?.sourceReview?.m2Family3ProblemContinuity;
+  if (matches?.length !== 1 || proof?.schemaVersion !== M2_FAMILY3_PROBLEM_CONTINUITY_SCHEMA ||
+      proof.scope !== M2_FAMILY3_PROBLEM_SCOPE || proof.questionUid !== identity.questionUid ||
+      proof.sourceOrdinal !== ordinal || proof.sourceArchiveFile !== receipt.sourceArchiveFile ||
+      proof.requiresOrdinaryNativeValidation !== true ||
+      proof.requiresOrdinaryRetainedValidation !== item.key.startsWith('E015') || proof.requiresSeparateSolutionContinuity !== false ||
+      !same(proof.normalizedProblemFields, ['image','imageAlt','imageSize','layoutTag']) ||
+      proof.memoryOnlyNormalization !== true || proof.newMathematicalQa !== false || proof.newMetadataApprovals !== 0 ||
+      proof.newDifficultyJudgments !== 0 || proof.newReview2Claims !== 0 || proof.sourceWrites !== 0 || proof.rendererWrites !== 0) return false;
+  try {
+    if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
+    // validateDirect compared this proof with a fresh full typed replay. Each
+    // digest was recomputed from the exact immutable Git bank in that replay.
+    const previousSha = sha(stable(previous));
+    return [proof.nativeReviewedQuestionSha256, proof.nativeCommittedQuestionSha256,
+      proof.staticBeforeQuestionSha256, proof.staticCurrentQuestionSha256, proof.reviewedCurrentQuestionSha256]
+      .some(value => SHA256.test(value || '') && value === previousSha);
+  } catch { return false; }
 }
