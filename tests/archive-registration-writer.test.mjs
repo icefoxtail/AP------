@@ -382,6 +382,54 @@ test('4slot failure preserves the last index and receipts, while verified ordina
   assert.deepEqual(f.calls,['fourSlot'],'recovery does not rerun verified shared/Generated producers');
 });
 
+const geomEvidence='archive/data/meta-foundation/evidence/geometry-equations/v1/';
+const geomDerived=[geomEvidence+'global_integrity_audit.json',geomEvidence+'promotion_receipt.json'];
+test('reviewed and shared lanes agree on the compile-derived geometry evidence, and only on those two files',()=>{
+  const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),lanes=nativeLanes(root);
+  const reviewed=lanes.find(l=>l.id==='reviewed'),shared=lanes.find(l=>l.id==='shared');
+  for(const file of geomDerived) {
+    assert.equal(matches(file,shared.outputs),true,'shared lane owns '+file);
+    assert.equal(matches(file,reviewed.outputs),true,'reviewed lane runs compile --write and may rewrite '+file);
+  }
+  // Protection is not widened: neighbours in the folder and other evidence/canonical sources stay refused for the reviewed lane.
+  for(const file of [geomEvidence+'item_metadata_assignments_400.json',geomEvidence+'unrelated_new_file.json',geomEvidence+'sub/promotion_receipt.json',
+    'archive/data/meta-foundation/evidence/middle-geometry/v1/global_integrity_audit.json',
+    'archive/data/meta-foundation/evidence/h1-foundation/v1/promotion_receipt.json'])
+    assert.equal(matches(file,reviewed.outputs),false,'reviewed lane still refuses '+file);
+});
+
+test('a reviewed registration that bumps the geometry pack version stages the two derived files; any other evidence write is still refused',async t=>{
+  const root0=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+  const realReviewed=nativeLanes(root0).find(l=>l.id==='reviewed').outputs;
+  const prepare=async(extra)=>{
+    const f=fixture(t);
+    for(const file of [...geomDerived,geomEvidence+'item_metadata_assignments_400.json'])write(f.root,file,{packVersion:'1.0.2',file:path.basename(file)});
+    commit(f.root,'geometry evidence at the promoted pack version');
+    const lanes=f.lanes.map(l=>l.id==='reviewed'?{...l,outputs:[...l.outputs,...realReviewed]}:l);
+    const execute=async ctx=>{
+      await f.execute(ctx);
+      if(ctx.lane.id==='reviewed') {
+        // what compile-meta-foundation --write does after a request edits the GEOMETRY_EQUATIONS pack (1.0.2 -> 1.0.3)
+        for(const file of geomDerived)write(ctx.root,file,{packVersion:'1.0.3',file:path.basename(file)});
+        extra?.(ctx);
+      }
+    };
+    return {f,run:()=>prepareRegistration({...f.options,lanes,execute})};
+  };
+  const ok=await prepare();
+  const result=await ok.run();
+  assert.equal(result.status,'PREPARED');
+  for(const file of geomDerived) {
+    assert.ok(result.changedPaths.includes(file),'staged: '+file);
+    assert.equal(JSON.parse(git(ok.f.root,'show',':'+file)).packVersion,'1.0.3');
+  }
+  assert.equal(git(ok.f.root,'diff','--name-only'),'','derived evidence is staged, not left unstaged');
+  for(const sibling of [geomEvidence+'item_metadata_assignments_400.json',geomEvidence+'unrelated_new_file.json']) {
+    const bad=await prepare(ctx=>write(ctx.root,sibling,{packVersion:'tampered'}));
+    await assert.rejects(bad.run(),new RegExp('UNEXPECTED_REVIEWED_PATHS:.*'+path.basename(sibling).replace('.','\.')));
+  }
+});
+
 test('native proof includes external canonical authority, consumer policy and core runtime dependencies',()=>{
   const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),lanes=nativeLanes(root);
   const shared=lanes.find(l=>l.id==='shared');
