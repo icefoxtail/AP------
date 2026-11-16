@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "D-current-actual4b504-after-C785-integration-v1",
+  "registeredBaseline": "4b504e10b1ce7a90576486663b3862ef99922325",
+  "baseC": "78515f1676d425564ae0c7428a3b949ca6f91c6b",
+  "scope": {
+    "newNativeCandidates": 5,
+    "M2S2": 2,
+    "M3S2": 3,
+    "existingRendererCandidates": 10,
+    "parentSixActive": false,
+    "sourceMathRechecks": 0
+  },
+  "sameEditionProofsReused": {
+    "originalD47": "0805ac7bd025cad5fe3a32da628e4300cab436414856f9783d592338aaaff0ac",
+    "current8866Composition": "54475a1ae6c5f6c4beef083a448c3ee575bcc389cf3ddf8fb2d24ef47de8d184",
+    "merged2210Selected10Assets20": "12c1e596ac8d05df13771868f43934ac3e80ae54a924cf4cc1b1e38618c3ed88",
+    "currentBeforeState5": "e04dcd0834bcc2c0ae26d508f3bdf9562c0f85998267fc26a4cb1599ca7a35bb"
+  },
+  "actualBeforeState": [
+    {
+      "requestId": "m3s2-e011-polygon-provider-26fc-20261115",
+      "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+      "beforeFields": 25,
+      "mismatchedFields": []
+    },
+    {
+      "requestId": "m2s2-centroid2-current-v2-26fc-20261115-E023",
+      "questionUid": "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3",
+      "beforeFields": 26,
+      "mismatchedFields": []
+    },
+    {
+      "requestId": "m2s2-centroid2-current-v2-26fc-20261115-E023",
+      "questionUid": "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+      "beforeFields": 30,
+      "mismatchedFields": []
+    },
+    {
+      "requestId": "m3s2-e010-centroid-cc2-26fc-20261115",
+      "questionUid": "qid_v1_719c286ffcf71eb9f34be502cdb7964b0d74f8401d10a964fed913205341eefc",
+      "beforeFields": 26,
+      "mismatchedFields": []
+    },
+    {
+      "requestId": "m3s2-e010-centroid-cc2-26fc-20261115",
+      "questionUid": "qid_v1_6377390a036884a114da2d38588443a733bbf318de7093d7b9c839035ffa33bf",
+      "beforeFields": 26,
+      "mismatchedFields": []
+    }
+  ],
+  "currentCode": [
+    {
+      "path": "archive/item-4slot.js",
+      "after": "bc842db7daa1e4cbee52e33e06846b940547f9ce",
+      "rawSha256": "3c8b67c60cbb56ca69c45c3fdadef757bd7a215800589b7c582b387123153674"
+    },
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "after": "34da6247ba0e36750deaf64395ce6c38cc0e69e0",
+      "rawSha256": "3e08ce8e78d516c586b87b8bc0189795c47e356b62392b04a47238d0131b09d2"
+    },
+    {
+      "path": "tools/4slot/rebind-existing-renderer-v2.cjs",
+      "after": "6385048fba0460eaff0ffc5b3131c496de329ae5",
+      "rawSha256": "b43cf80df2c0b9f78f72160c5e87874ba2821119faca3068eb091ff203a9562d"
+    },
+    {
+      "path": "tools/run-tests.js",
+      "after": "edbf1d1e1139f8a2dd7206c60c04e7af4dc46c51",
+      "rawSha256": "a4c7041e5894b538b8a7b3f14a2a7875c04cd1dcf18f6de69d533ecb3fe39ad9"
+    },
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "after": "a71e9b5d6f5aa2f72d633006f0ea727b7adbd44d",
+      "rawSha256": "b96f2f41d9ffb88f23a2d1527c18a8a8454324d7b80cc1a213a61247916e4088"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2-cc-renderer-continuity.mjs",
+      "after": "e5428569e7ebfbb0037a9b7d7a347af7222307cf",
+      "rawSha256": "35403077a1320a2313049682404a08a95bf4414a559b5e0f14519ae350aaa7f6"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "after": "d0519d2e5b813685d3739998f22d07f214ff339a",
+      "rawSha256": "c8faaf60bdfae7e26c7bdb58719d8c98e49eb849957def47dbd8965ae8ab60e6"
+    }
+  ],
+  "priorFocusedTests": {
+    "CVectorPublic": 13,
+    "DVectorRenderer": 13,
+    "D9NewRationale": 4,
+    "fullMathRechecks": 0
+  },
+  "requestRules": {
+    "operationOrder": [
+      "m2s2-centroid2-current-v2-26fc-20261115-E023",
+      "m3s2-e010-centroid-cc2-26fc-20261115",
+      "m3s2-e011-polygon-provider-26fc-20261115"
+    ],
+    "noAutoInheritedCC": true,
+    "newQ17Q7Requests": false,
+    "publishedHistoricalHelpers": false,
+    "E052Included": false,
+    "duplicate2258ExtraUids": 0
+  },
+  "exactHeadCI": "PENDING",
+  "actualRegistration": "NOT_OBSERVED",
+  "actualConsumer": "NOT_OBSERVED",
+  "actualPages": "NOT_OBSERVED"
+}
