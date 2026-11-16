@@ -2594,7 +2594,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const existingRuntime = (runtimes.get(owners.get(current.questionUid))?.data.records || []).find(r => r.questionUid === current.questionUid);
       if (rebindPrior.priorRuntime && !eq(existingRuntime, rebindPrior.priorRuntime.get(current.questionUid)))
         fail(`sourceRebind partial runtime differs from prior receipt: ${current.questionUid}`);
-      const rrPrior = { ...finalPrior, sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
+      // This branch only runs when the identity is unchanged (checkedPrior.identityChanged is false), so the replaced record's
+      // catalog identity provenance carries over; the exact comparison below stays as strict as before.
+      const rrPrior = { ...finalPrior, ...preservedRuntimeIdentityProvenance({ previous: existingRuntime, final: finalPrior, ordinal: i + 1, identityReplaced: false }),
+        sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
         approvedSourceFingerprint: checkedPrior.sourceFingerprint, legacyLevel: finalPrior.level,
         runtimeSelectable: finalPrior.defaultSelectable && finalPrior.curriculumApplicability === "DEFAULT_SCOPE" };
       if (owners.get(current.questionUid) !== packIdPrior || !existingRuntime ||

@@ -6506,3 +6506,22 @@ test('projection input context cannot enter real write or ordinary dry-run regis
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, projectionPhase: phase }), /read-only projection/);
   closeProjectionPhase(phase, f.root);
 });
+
+test("source rebind keeps catalog identity provenance on the runtime record and never invents it", t => {
+  const keys = ["catalogIdentityRepairVerified", "catalogIdentityRepairEvidence", "rawQuestionHash"];
+  const runtimeFile = "archive/data/meta-foundation/runtime/new-course-v1.json";
+  const flagged = sourceRebindFixture(t);
+  const runtime = flagged.read(runtimeFile);
+  Object.assign(runtime.records[0], { catalogIdentityRepairVerified: true, catalogIdentityRepairEvidence: "fixture identity repair evidence", rawQuestionHash: "raw-hash-1" });
+  flagged.put(runtimeFile, runtime);
+  // Same strict runtime comparison as before; only the replaced record's identity provenance is carried over.
+  assert.equal(registerReviewedExamV2({ root: flagged.root, request: flagged.request, write: true }).status, "PASS");
+  const row = flagged.read(runtimeFile).records[0];
+  assert.equal(row.catalogIdentityRepairVerified, true);
+  assert.equal(row.catalogIdentityRepairEvidence, "fixture identity repair evidence");
+  assert.equal(row.rawQuestionHash, "raw-hash-1");
+  assert.equal(row.metadataRevision.endsWith(":test-source-rebind"), true);
+  const plain = sourceRebindFixture(t);
+  assert.equal(registerReviewedExamV2({ root: plain.root, request: plain.request, write: true }).status, "PASS");
+  for (const key of keys) assert.equal(Object.hasOwn(plain.read(runtimeFile).records[0], key), false, key);
+});
