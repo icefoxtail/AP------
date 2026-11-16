@@ -1,0 +1,302 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "정사각형에서 가로를 늘리고 세로를 줄인 직사각형을 비교한다.",
+  "accessibilityDescription": "정사각형에서 가로를 늘리고 세로를 줄인 직사각형을 비교한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "학교에서는 삭막한 운동장 한쪽에 화사한 꽃을 심어 생기를 불어넣을 화단을 만들려고 하였다. 처음에는 잡초 관리와 물 주기가 수월하도록 반듯한 정사각형 모양의 화단을 만들 계획이었으나, 삽을 들고 실제 공간의 흙을 파며 확인해 보니 한쪽 방향으로는 남는 공간이 있어 조금 더 넓게 사용할 수 있었고, 다른 방향으로는 학생들이 지나다닐 통로를 충분히 확보해야 했다. 그래서 처음 계획했던 정사각형의 한 변을 기준으로 삼아, 가로 길이는 3 m 시원하게 늘리고 세로 길이는 2 m 줄여 실용적인 직사각형 모양의 화단으로 설계를 변경하였다. 구슬땀을 흘리며 계획을 바꾸어 만든 직사각형 화단의 넓이는 50 m²가 되었다. 처음 계획했던 정사각형 모양 화단의 한 변의 길이는 몇 m인지 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "원래 한 변 x에서 가로 x+3과 세로 x-2가 된 넓이 50의 직사각형을 보여 준다.",
+      "mappedTo": [
+        "mathPlan",
+        "caption"
+      ]
+    },
+    {
+      "id": "coordinates",
+      "condition": "그림의 기준 꼭짓점을 원점으로 잡고 해설에서 검산한 가로·세로 길이만큼 평행이동하여 꼭짓점을 구성한다. 최종 답 숫자는 좌표·길이 라벨로 표시하지 않고 x가 든 길이식으로 보존한다.",
+      "mappedTo": "mathPlan.nodes"
+    }
+  ],
+  "newVisualInformation": [
+    "원래 한 변 x에서 가로 x+3과 세로 x-2가 된 넓이 50의 직사각형을 보여 준다."
+  ],
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "7"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "7"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    }
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "sGA",
+      "refs": [
+        "G",
+        "A"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d1",
+        "from": "A",
+        "to": "E",
+        "label": "x+3",
+        "side": "BELOW",
+        "unit": "m"
+      },
+      {
+        "id": "d2",
+        "from": "E",
+        "to": "F",
+        "label": "x-2",
+        "side": "RIGHT",
+        "unit": "m"
+      },
+      {
+        "id": "old",
+        "from": "D",
+        "to": "C",
+        "label": "x",
+        "side": "ABOVE",
+        "unit": "m"
+      }
+    ],
+    "regions": [
+      {
+        "id": "garden",
+        "fill": "GREEN",
+        "label": "50",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "E",
+              "F",
+              "G"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "hiddenPointStyle": "NONE"
+}
