@@ -1,4 +1,6 @@
 import crypto from "node:crypto";
+import fs from "node:fs";
+import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { validateExistingPrimaryDisposition } from "./reviewed-existing-primary-disposition.mjs";
 
@@ -11,12 +13,108 @@ const text = value => typeof value === "string" && value.trim().length > 0;
 const compact = value => value.replace(/\s+/gu, "");
 const SCHEMA = "archive-reviewed-native-retained-fields-v1";
 const RPM_PATH = "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json";
+export const NATIVE_RPM_EVIDENCE_ALIAS_SCHEMA = "archive-reviewed-native-rpm-evidence-alias-v1";
+const SHA1 = /^[a-f0-9]{40}$/, SHA256 = /^[a-f0-9]{64}$/;
+const own = (value, key) => value && Object.hasOwn(value, key);
+const exactKeys = (value, keys) => value && typeof value === "object" && !Array.isArray(value) &&
+  equal(Object.keys(value).sort(), [...keys].sort());
 const PRIMARY = ["problemTypeKey", "templateKey"];
 const PARENTS = ["standardCourse", "standardUnitKey", "subUnitKey"];
 const LABEL_KEYS = { standardUnit: "standardUnitKey", subUnit: "subUnitKey" };
 export const REVIEWED_NATIVE_RETAINABLE_FIELDS = Object.freeze([
   ...PARENTS, ...PRIMARY, "crossConceptKeys", "conditionKeys", "integrationPattern", ...Object.keys(LABEL_KEYS),
 ]);
+
+// This is an evidence-location opt-in, not another native approval. Keep it on
+// the item so the immutable sourceReview/retainedFields/frozen renderer contract
+// remains exact. It cannot be silently ignored by another registrar mode.
+export function assertNativeRpmEvidenceAliasScope(request) {
+  if (own(request, "nativeRpmEvidenceAlias") || own(request?.approval, "nativeRpmEvidenceAlias"))
+    fail("native RPM alias belongs only to a selected retained item");
+  for (const patch of Array.isArray(request?.items) ? request.items : []) {
+    if (own(patch?.sourceReview, "nativeRpmEvidenceAlias") || own(patch?.sourceReview?.retainedFields, "nativeRpmEvidenceAlias"))
+      fail("native RPM alias must not alter the original sourceReview");
+    if (!own(patch, "nativeRpmEvidenceAlias")) continue;
+    const spec = patch.nativeRpmEvidenceAlias, review = patch.sourceReview;
+    if (request.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2" ||
+        request.scope !== "PARTIAL_UIDS" || request.approval?.type !== "FINAL_QA" ||
+        request.approval.metadataReviewed !== true || request.registrationMode !== undefined ||
+        request.approval.sourceRebind !== undefined || !Array.isArray(request.registryChanges) || request.registryChanges.length ||
+        !/^original\/middle\/m2\/(?:2mid|2final)\/[^/]+\.js$/.test(request.sourceArchiveFile || "") ||
+        patch.rebind !== undefined || review?.schemaVersion !== "archive-reviewed-source-reassessment-v1" ||
+        review.retainedFields?.schemaVersion !== SCHEMA || review.proposalFinalization !== undefined ||
+        review.rendererProof !== undefined || review.m2ProviderRendererProof !== undefined ||
+        !exactKeys(spec, ["schemaVersion", "nativeCommit", "nativePath", "nativeSha256", "copyRef"]) ||
+        spec.schemaVersion !== NATIVE_RPM_EVIDENCE_ALIAS_SCHEMA || !SHA1.test(spec.nativeCommit || "") ||
+        spec.nativeCommit !== review.reviewCommit || spec.nativePath !== RPM_PATH || !SHA256.test(spec.nativeSha256 || "") ||
+        !exactKeys(spec.copyRef, ["path", "sha256"]) || spec.copyRef.sha256 !== spec.nativeSha256 ||
+        spec.copyRef.path !== `.archive-meta-register/evidence/retained-native-rpm/${spec.nativeCommit}/middle2.json`)
+      fail("native RPM alias requires the closed existing M2 retained-fields scope");
+    for (const refs of [request.approval.evidenceRefs, patch.evidenceRefs])
+      if (!Array.isArray(refs) || refs.filter(ref => equal(ref, spec.copyRef)).length !== 1 ||
+          refs.some(ref => ref?.path === RPM_PATH) ||
+          refs.filter(ref => ref?.path === spec.copyRef.path).length !== 1)
+        fail("native RPM alias must replace only the historical path in both evidence lists");
+  }
+}
+
+function aliasFile(root, relative) {
+  if (typeof relative !== "string" || path.isAbsolute(relative) || relative.includes("\\") || relative.includes("\0") ||
+      relative.split("/").some(part => !part || part === "." || part === "..")) fail("unsafe native RPM alias path");
+  const full = path.resolve(root, relative), stop = path.resolve(root);
+  for (let current = full; current !== stop; current = path.dirname(current))
+    if (fs.existsSync(current) && fs.lstatSync(current).isSymbolicLink()) fail("native RPM alias symlink rejected");
+  if (!fs.existsSync(full) || !fs.lstatSync(full).isFile()) fail("native RPM alias file missing");
+  return fs.readFileSync(full);
+}
+
+function nativeRpmAlias({ root, native, row, request, patch, loaded }) {
+  const spec = patch.nativeRpmEvidenceAlias;
+  if (spec === undefined) return null;
+  assertNativeRpmEvidenceAliasScope(request);
+  const git = args => {
+    try { return execFileSync("git", args, { cwd: root, stdio: ["ignore", "pipe", "pipe"], maxBuffer: 16 * 1024 * 1024 }); }
+    catch { fail("native RPM alias immutable Git input unavailable"); }
+  };
+  if (git(["rev-parse", "--verify", `${spec.nativeCommit}^{commit}`]).toString().trim() !== native.spec.reviewCommit)
+    fail("native RPM alias commit differs from the actual native review");
+  const head = git(["rev-parse", "--verify", "HEAD^{commit}"]).toString().trim();
+  if (!SHA1.test(head)) fail("native RPM alias current HEAD unavailable");
+  for (const commit of [spec.nativeCommit, head]) {
+    const entry = git(["ls-tree", "-z", "--full-tree", commit, "--", RPM_PATH]).toString();
+    if (!/^100(?:644|755) blob [a-f0-9]{40}\t[^\0]+\0$/.test(entry) || entry.split("\t")[1] !== RPM_PATH + "\0")
+      fail("native RPM alias canonical Git path is not one regular file");
+  }
+  // Read both raw snapshots and the live files on every validation. No success,
+  // current raw bytes or live-record equality is cached by this transport.
+  const original = git(["show", `${spec.nativeCommit}:${RPM_PATH}`]), copied = aliasFile(root, spec.copyRef.path),
+    current = aliasFile(root, RPM_PATH), committed = git(["show", `${head}:${RPM_PATH}`]);
+  if (!original.equals(copied) || sha256(original) !== spec.nativeSha256 || loaded.sha256 !== spec.nativeSha256)
+    fail("native RPM alias is not the exact immutable native raw copy");
+  if (!current.equals(committed)) fail("native RPM alias current canonical bytes differ from HEAD");
+  let before, after;
+  try { before = JSON.parse(original); after = JSON.parse(current); }
+  catch { fail("native RPM alias canonical JSON invalid"); }
+  for (const document of [before, after])
+    if (document?.schemaVersion !== "rpm-primary-active-crosswalk-v1" || document.status !== "ACTIVE_REFERENCE" ||
+        document.grade !== "M2" || document.rpmAuthority?.version !== "RPM_PRIMARY_TAXONOMY_v1.0" ||
+        document.rpmAuthority.status !== "LOCKED" ||
+        document.rpmAuthority.source !== "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json" ||
+        document.activeAuthority?.source !== "archive/data/meta-foundation/canonical/" ||
+        !Array.isArray(document.records) || !document.records.length || document.records.some(record => !record || !text(record.id)) ||
+        new Set(document.records.map(record => record.id)).size !== document.records.length)
+      fail("native RPM alias requires matching ACTIVE M2 canonical headers");
+  const header = document => Object.fromEntries(Object.entries(document).filter(([key]) =>
+    !["records", "summary", "generatedAgainstMain"].includes(key)));
+  if (!equal(header(before), header(after))) fail("native RPM alias canonical header drift");
+  const priorRows = before.records.filter(record => record.id === row.rpmRecordId),
+    currentRows = after.records.filter(record => record.id === row.rpmRecordId);
+  if (priorRows.length !== 1 || currentRows.length !== 1 || !equal(priorRows[0], currentRows[0]))
+    fail("native RPM alias selected whole record changed or missing");
+  return { schemaVersion: NATIVE_RPM_EVIDENCE_ALIAS_SCHEMA, nativeCommit: spec.nativeCommit, nativePath: RPM_PATH,
+    nativeSha256: spec.nativeSha256, copyRef: { ...spec.copyRef }, recordId: row.rpmRecordId,
+    selectedRecordSha256: sha256(stable(priorRows[0])), newMetadataApprovals: 0, inferredValues: false };
+}
 
 function immutableRpm({ root, native, row, request, patch, cache }) {
   const commit = native.spec.reviewCommit, key = stable(["retained-native-rpm", root, commit]);
@@ -31,13 +129,14 @@ function immutableRpm({ root, native, row, request, patch, cache }) {
     if (!Array.isArray(document.records)) fail("immutable native RPM records missing");
     loaded = { records: document.records, sha256: sha256(bytes) };cache.set(key, loaded);
   }
-  for (const refs of [request.approval?.evidenceRefs, patch.evidenceRefs])
+  const aliasProof = nativeRpmAlias({ root, native, row, request, patch, loaded });
+  if (!aliasProof) for (const refs of [request.approval?.evidenceRefs, patch.evidenceRefs])
     if (!refs?.some(ref => ref.path === RPM_PATH && ref.sha256 === loaded.sha256))
       fail("native RPM scope must be bound by both evidence lists");
   const records = loaded.records.filter(record => record.id === row.rpmRecordId);
   if (records.length !== 1) fail("one exact native RPM record required");
   return { record: records[0], ref: { commit, path: RPM_PATH, sha256: loaded.sha256,
-    recordId: row.rpmRecordId, recordSha256: sha256(stable(records[0])) } };
+    recordId: row.rpmRecordId, recordSha256: sha256(stable(records[0])) }, aliasProof };
 }
 
 // This explicit lane carries only values already present in both source snapshots
@@ -45,6 +144,7 @@ function immutableRpm({ root, native, row, request, patch, cache }) {
 // ACTIVE definitions are mandatory; current metadata alone is never evidence.
 export function validateReviewedNativeRetainedFields({ root, request, patch, native, row,
   accepted, question, final, canonicalBefore, canonicalAfter, studentPayload, studentFields, bankFromBytes, cache = new Map() }) {
+  assertNativeRpmEvidenceAliasScope(request);
   const spec = patch.sourceReview?.retainedFields;
   if (spec === undefined) return null;
   if (!spec || spec.schemaVersion !== SCHEMA || Object.keys(spec).some(key => !["schemaVersion", "fields", "independentPrimary"].includes(key)) ||
@@ -164,6 +264,7 @@ export function validateReviewedNativeRetainedFields({ root, request, patch, nat
     problemTypeDefinitionSha256: sha256(stable(oldPt)), templateDefinitionSha256: sha256(stable(oldTpl)),
     exactBindingSha256: sha256(stable(priorBindings[0])), nativeExactBindingSha256: nativeBinding,
     nativeRpmRef: rpm.ref, parentBindings, conceptBindings,
+    ...(rpm.aliasProof ? { nativeRpmEvidenceAlias: rpm.aliasProof } : {}),
     ...(independentPrimary ? { independentPrimary, independentApplicabilityDecision: true } : { newFieldJudgments: false }),
     newDefinitions: false, newMathematicalQa: false, inferredValues: false } };
 }

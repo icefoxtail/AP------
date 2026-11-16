@@ -12,6 +12,7 @@ import { computeLegacyCompat, registerDifficulty5 } from "./register-difficulty5
 import { AUDIT_PRESERVATION_SCHEMA, isAuditPreservation, loadAuditPreservation, planPreservedAuditRecord, assertAuditPreservationReceipt, assertPreservedAuditRepair, readPreservedAuditEvidence, preservedAuditConsumerParent } from "./native-audit-preservation.mjs";
 import { AUDIT_SOURCE_PRESERVATION_SCHEMA, auditSourcePreservationSummary, auditSourceBindingPath, buildAuditSourceBinding } from "./native-audit-source-preservation.mjs";
 import { validateReviewedSourceReassessment } from "./reviewed-source-reassessment.mjs";
+import { assertNativeRpmEvidenceAliasScope } from "./reviewed-native-retained-fields.mjs";
 import { validateNativeReviewedParent } from "./reviewed-native-parent.mjs";
 import { validateReviewedRetainedScopeParent } from "./reviewed-retained-scope-transport.mjs";
 import { REVIEWED_SOURCE_FIELDS, REVIEWED_META_VALUE_FIELDS } from "./reviewed-meta-value-fields.mjs";
@@ -2118,6 +2119,7 @@ function registerIdentityFingerprintOnly({ root, req, metadata, identity, rows, 
 }
 
 export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false }) {
+  assertNativeRpmEvidenceAliasScope(req);
   if (isIssuedSourceBindingRecovery(req?.approval?.sourceRebind))
     return registerIssuedSourceBindingRecovery({ root, request: req, write, verifyProjection });
   if (req.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2") fail("request schema mismatch");

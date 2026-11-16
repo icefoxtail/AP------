@@ -1726,3 +1726,32 @@ window.questionBank = [
     }
   }
 ];
+
+// Carry exact independently finalized CC applications and the native course namespace.
+Object.assign(window.questionBank[6], {
+  "crossConceptKeys": [
+    "CC_TRIANGLE_INCENTER",
+    "CC_TRIANGLE_AREA",
+    "CC_TRIANGLE_AREA_INRADIUS_SEMIPERIMETER"
+  ],
+  "curriculumKey": "2015",
+  "courseKey": "M2-2"
+});
+Object.assign(window.questionBank[11], {
+  "crossConceptKeys": [
+    "CC_CIRCLE_CIRCUMFERENCE",
+    "CC_CYLINDER_LATERAL_UNFOLDING_SHORTEST_PATH"
+  ],
+  "curriculumKey": "2015",
+  "courseKey": "M2-2"
+});
+
+// Synchronize only registrar-derived metadata tags; source review status is retained.
+Object.assign(window.questionBank[6], {
+  "tagConfidence": "approved_final_qa",
+  "tagStatus": "reviewed_pass"
+});
+Object.assign(window.questionBank[11], {
+  "tagConfidence": "approved_final_qa",
+  "tagStatus": "reviewed_pass"
+});

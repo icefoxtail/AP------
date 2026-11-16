@@ -10,7 +10,7 @@ const clone=x=>structuredClone(x),blob=b=>crypto.createHash('sha1').update(`blob
 const payload=q=>Object.fromEntries(REASSESSED_STUDENT_FIELDS.map(k=>[k,q[k]??null]));
 const delta=(a,b)=>Object.fromEntries([...new Set([...Object.keys(a),...Object.keys(b)])].filter(k=>!same(a[k],b[k])).sort().map(k=>[k,{before:{present:Object.hasOwn(a,k),value:a[k]??null},after:{present:Object.hasOwn(b,k),value:b[k]??null}}]));
 
-export function m2RendererFixture(t,{layout='grid',extraDelta={},currentSvg,productionStudentDelta={},unapprovedMetadataAppend={},sealV1=true}={}) {
+export function m2RendererFixture(t,{layout='grid',extraDelta={},currentSvg,productionStudentDelta={},unapprovedMetadataAppend={},sealV1=true,rpmDocumentHeader={}}={}) {
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'m2-renderer-contract-'));t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
   const git=(...a)=>execFileSync('git',a,{cwd:root,stdio:['ignore','pipe','pipe']}).toString().trim();
   git('init','-q');git('config','user.name','Synthetic fixture');git('config','user.email','fixture@example.invalid');
@@ -28,7 +28,7 @@ export function m2RendererFixture(t,{layout='grid',extraDelta={},currentSvg,prod
   put(oldAsset,Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a9L8AAAAASUVORK5CYII=','base64'));
   put(solutionAsset,'<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L1 1"/></svg>');
   put(sourcePath,source(old));
-  const rpmRef=put(rpmPath,{records:[{id:'M2-RPM-1',curriculum:'2015',scope:'M2-2',standardUnitKey:'M2-06',subUnitKey:'M2-06-RATIO'}]});
+  const rpmRef=put(rpmPath,{...clone(rpmDocumentHeader),records:[{id:'M2-RPM-1',curriculum:'2015',scope:'M2-2',standardUnitKey:'M2-06',subUnitKey:'M2-06-RATIO'}]});
   const base=commit(),binding={curriculum:'2015',standardCourse:'중2 수학',standardUnitKey:'M2-06',subUnitKey:'M2-06-RATIO',problemTypeKey:'PT_EXISTING',status:'ACTIVE',ownerPack:'MIDDLE_GEOMETRY'};
   const row={questionUid:'uid1',sourceOrdinal:1,rpmRecordId:'M2-RPM-1',rpmDecision:'KEEP',decisiveStep:'synthetic reviewed decisive step',after:{difficultyBucket:2},proposalRefs:[],registrationDebt:[],
     fieldReview:{classification:'기존 ACTIVE 주유형 검토',binding:'정확한 기존 ACTIVE binding 검토',difficulty:'기존 난도 유지',crossConcept:'독립 CC 없음',condition:'별도 Condition 없음',integration:'Primary taxonomy 내부 단계만으로 해결한다.'},
