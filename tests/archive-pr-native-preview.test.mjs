@@ -1530,6 +1530,101 @@ test('missing live renderer bytes still reject proof reuse after successful immu
   assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
 });
 
+function rendererLiveInputProofFixture(t, mutateEvidence) {
+  const f = fixture(t, { otherOwner: false });
+  const files = ['tools/check-reviewed-problem-renderer-browser.cjs', 'archive/engine.html',
+    'apmath/css/student-navigation.css', 'archive/vendor/nanum-myeongjo/fixture.woff2'];
+  const removed = 'tools/consumed-historical-helper.cjs', changed = 'tools/current-historical-helper.cjs';
+  const unrelated = 'tools/unrelated-renderer.cjs';
+  for (const file of [...files, removed, changed, unrelated]) f.write(file, `fixed synthetic input: ${file}\n`);
+  f.git('add', '.'); f.git('commit', '-qm', 'exact renderer input references');
+  const baseSha = f.git('rev-parse', 'HEAD');
+  const ref = file => {
+    const bytes = fs.readFileSync(path.join(f.root, file));
+    return { commit: baseSha, path: file, gitBlobSha1: f.git('rev-parse', `${baseSha}:${file}`),
+      sha256: sha(bytes), bytes: bytes.length };
+  };
+  const refs = files.map(ref), historicalRefs = [ref(removed), ref(changed)];
+  const evidence = { schemaVersion: 'synthetic-live-ui-inputs-v1', captureHelperRef: refs[0],
+    servedFiles: refs.slice(1), historicalRefs,
+    unrelatedShortRef: { path: unrelated, sha256: ref(unrelated).sha256 } };
+  mutateEvidence?.(evidence, f);
+  f.write(changed, 'current HEAD bytes must win over the historical reference\n');
+  fs.unlinkSync(path.join(f.root, removed));
+  const changedSha = sha(fs.readFileSync(path.join(f.root, changed)));
+  f.write(EVIDENCE, json(evidence));
+  const evidenceRef = { path: EVIDENCE, sha256: sha(json(evidence)) };
+  f.request.approval.evidenceRefs = [evidenceRef]; f.request.items[0].evidenceRefs = [evidenceRef];
+  f.write(REQUEST, json(f.request)); f.git('add', '.'); f.git('commit', '-qm', 'renderer request and current historical paths');
+  const headSha = f.git('rev-parse', 'HEAD'), repo = 'owner/repository', observations = [];
+  for (const phase of ['dry-run', 'write', 'projection']) f.hook[phase] = target => {
+    for (const input of refs) {
+      const full = path.join(target, input.path);
+      if (!fs.existsSync(full) || sha(fs.readFileSync(full)) !== input.sha256)
+        throw Error('LIVE_UI_INPUT_BYTES_CHANGED');
+      if (target !== f.root && fs.existsSync(path.join(f.root, input.path)))
+        assert.notEqual(fs.statSync(full).ino, fs.statSync(path.join(f.root, input.path)).ino);
+    }
+    assert.equal(fs.existsSync(path.join(target, removed)), false, 'historical-only files stay in Git');
+    assert.equal(sha(fs.readFileSync(path.join(target, changed))), changedSha, 'restore current HEAD, never old reference bytes');
+    if (target !== f.root) assert.equal(fs.existsSync(path.join(target, unrelated)), false, 'unrelated and short refs are not adopted');
+    observations.push({ phase, target });
+  };
+  const options = { root: f.root, repo, expectedSha: headSha, runId: 41, runAttempt: 1, run: f.run,
+    event: { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
+      base: { sha: baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } } } } };
+  return { ...f, files, refs, observations, options,
+    produce: () => producePrRegistrationProof(options),
+    validate: proof => validateLocalRegistrationProof({ ...options, proof }),
+    native: preview => validateNativePreview({ root: f.root, baseSha, headSha, preview, run: f.run, allowedGenerated: ALLOWED }) };
+}
+
+test('shadow restores exact HEAD helper runtime and font refs from selected evidence only', t => {
+  const f = rendererLiveInputProofFixture(t), proof = f.produce(), before = f.snapshot();
+  assert.equal(proof.status, 'PASS'); assert.equal(f.validate(proof).reusable, true);
+  assert.ok(f.observations.some(row => row.target !== f.root && row.phase === 'dry-run'));
+  assert.ok(f.observations.some(row => row.target !== f.root && row.phase === 'write'));
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+for (const [name, mutate] of [
+  ['same-size runtime drift', f => {
+    const file = path.join(f.root, f.files[1]), bytes = fs.readFileSync(file); bytes[0] ^= 1; fs.writeFileSync(file, bytes);
+  }],
+  ['missing live helper', f => fs.unlinkSync(path.join(f.root, f.files[0]))],
+]) test(`shadow UI input restoration cannot approve ${name}`, t => {
+  const f = rendererLiveInputProofFixture(t), proof = f.produce(); mutate(f); const before = f.snapshot();
+  assert.throws(() => f.native(proof.nativePreview), /LIVE_UI_INPUT_BYTES_CHANGED/);
+  assert.ok(f.observations.some(row => row.target !== f.root && row.phase === 'write'),
+    'exact HEAD shadow succeeds before the unchanged live registrar guard rejects drift');
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+test('shadow UI input restoration preserves an official registrar refusal', t => {
+  const f = rendererLiveInputProofFixture(t), proof = f.produce(), before = f.snapshot();
+  f.hook['dry-run'] = target => { if (target !== f.root) throw Error('FULL_NATIVE_REFUSED'); };
+  assert.throws(() => f.validate(proof), /FULL_NATIVE_REFUSED/);
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+test('shadow UI input restoration refuses unsafe declared reference paths', t => {
+  const f = rendererLiveInputProofFixture(t, evidence => {
+    evidence.extraRef = { ...evidence.captureHelperRef, path: '../outside-workspace' };
+  }), proof = f.produce(), before = f.snapshot();
+  assert.throws(() => f.native(proof.nativePreview), /UNSAFE_PATH/);
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+test('shadow UI input restoration refuses a tracked symlink reference', t => {
+  const f = rendererLiveInputProofFixture(t, (evidence, fixture) => {
+    const file = 'tools/symlink-input.cjs';
+    fs.symlinkSync('check-reviewed-problem-renderer-browser.cjs', path.join(fixture.root, file));
+    evidence.extraRef = { ...evidence.captureHelperRef, path: file };
+  }), proof = f.produce(), before = f.snapshot();
+  assert.throws(() => f.native(proof.nativePreview), /SHADOW_REFERENCE_NOT_REGULAR/);
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
 test('post-state replay does not replace the initial official output plan with an empty list', t => {
   const f = fixture(t), proof = f.produce(), requests = f.selected();
   assert.deepEqual(applyNativeRequests({ root: f.root, requests, run: f.run }), [
