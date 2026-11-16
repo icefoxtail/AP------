@@ -18,6 +18,7 @@ export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
   Object.freeze({ requestKey: "prerequisiteExistingApplication", proofKey: "prerequisiteExistingApplication" }),
   Object.freeze({ requestKey: "currentTargetApplication", proofKey: "currentTargetApplication" }),
   Object.freeze({ requestKey: "m2ProblemRendererContinuity", proofKey: "m2ProblemRendererContinuity" }),
+  Object.freeze({ requestKey: "m2E006ProblemContinuity", proofKey: "m2E006ProblemContinuity" }),
   Object.freeze({ requestKey: "e017RhsContinuity", proofKey: "e017RhsContinuity" }),
   Object.freeze({ requestKey: "m2ProblemRenderer21Continuity", proofKey: "m2ProblemRenderer21Continuity" }),
   Object.freeze({ requestKey: "m2Family3ProblemContinuity", proofKey: "m2Family3ProblemContinuity" }),

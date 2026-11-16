@@ -230,7 +230,8 @@ test('alternate Git-index environment disables reuse',async t=>{
 test('existing official validators and bounded fixed-point branches remain in their callers',()=>{
   const read=p=>fs.readFileSync(path.join(sourceRoot,p),'utf8');
   const reviewed=read('tools/ci/reviewed-meta-register-pass.sh'),semantic=read('tools/ci/archive-main-auto-meta-pass.sh'),shared=read('tools/ci/archive-pages-registration-derive.sh');
-  for(const expected of ['--verify-projection','collect-reviewed-consumer-refusals.mjs','verify-archive-registration.mjs','build-archive2-catalog.mjs --check','--canonical-only-check'])assert(reviewed.includes(expected));
+  for(const expected of ['verify-reviewed-projection-requests.mjs','collect-reviewed-consumer-refusals.mjs','verify-archive-registration.mjs','build-archive2-catalog.mjs --check','--canonical-only-check'])assert(reviewed.includes(expected));
+  assert(read('tools/ci/verify-reviewed-projection-requests.mjs').includes('--verify-projection'));
   for(const expected of ['--verify --report','--replay-report','AUTO_META_REPLAY_NOT_IDEMPOTENT','verify-archive-registration.mjs','archive-question-identity-runtime.test.mjs'])assert(semantic.includes(expected));
   assert.equal((reviewed.match(/node tools\/ci\/archive-registration-build-db\.mjs/g)||[]).length,2);
   assert.equal((semantic.match(/node tools\/ci\/archive-registration-build-db\.mjs/g)||[]).length,3);

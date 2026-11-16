@@ -8,6 +8,7 @@ const {buildLookup} = require('./validate-4slot.cjs');
 const {sourceNumber, sourceIdentityNumber} = require('./exam-items.cjs');
 const originalSourceError=require('./original-source-error-hold.cjs');
 const {verifyUi, DECISION} = require('./existing-registered-vector-ui.cjs');
+const {embeddedChoiceContinuity:svg7EmbeddedChoices,inlineFigureContinuity:svg7InlineFigure} = require('./existing-registered-vector-svg7-ui.cjs');
 const {verifyOriginalTextSolutionFigure} = require('./existing-original-text-solution3.cjs');
 const DIR = '.archive-meta-register/4slot-existing-vector-continuity';
 const SCHEMA = 'archive-four-slot-existing-registered-vector-continuity-v1';
@@ -219,13 +220,16 @@ function inlineEdits(edits,before,after,kind,priorProblemAssets,reader) {
   if(!b.subarray(bi).equals(a.subarray(ai)))fail('INLINE_UNDECLARED_REMAINDER');
 }
 function displayBinding(doc, prior, current, changes, surface, priorAssets, currentAssets) {
-  const allowed=surface==='PROBLEM'?PROBLEM:SOLUTION;
+  const embedded=surface==='PROBLEM'&&own(doc,svg7EmbeddedChoices.OPTION);
+  const allowed=surface==='PROBLEM'?[...PROBLEM,...(embedded?[svg7EmbeddedChoices.FIELD]:[])]:SOLUTION;
   return {questionUid:doc.questionUid,sourceOrdinal:doc.sourceOrdinal,sourceQuestionNo:doc.sourceQuestionNo,
     sourceQuestionCount:doc.sourceQuestionCount,surface,priorSourceRef:doc.priorSourceRef,currentSourceRef:doc.currentSourceRef,
     priorQuestionSha256:sha(stable(prior)),currentQuestionSha256:sha(stable(current)),
     changedFields:changes.filter(r=>allowed.includes(r.field)),priorAssets,currentAssets,
     vectorSha256:doc.vectorSha256,priorMetadataSha256:doc.priorMetadataSha256,priorIdentitySha256:doc.priorIdentitySha256,
-    inlineEdits:surface==='PROBLEM'?doc.inlineEdits:[]};
+    inlineEdits:surface==='PROBLEM'?doc.inlineEdits:[],
+    ...(embedded?{[svg7EmbeddedChoices.OPTION]:doc[svg7EmbeddedChoices.OPTION]}:{}),
+    ...(surface==='PROBLEM'&&own(doc,svg7InlineFigure.OPTION)?{[svg7InlineFigure.OPTION]:doc[svg7InlineFigure.OPTION]}:{})};
 }
 function validateReview(reader, ref, binding) {
   const review=reader.json(ref);
@@ -280,7 +284,8 @@ function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loa
     'priorRegistrationRef','priorCompactRef','currentCompactRef','dictionaryRef','nativeFourSlotRef','nativeSourceRef','priorSourceRef','currentSourceRef',
     'priorMetadataRef','priorIdentityRef','nativeAuthority','nativeAssets','priorAssets','currentAssets','vectorSha256','nativeItemSha256',
     'priorMetadataSha256','priorIdentitySha256','changedFields','displayReviews','inlineEdits','orphanIdentity',
-    'newMathQa','newSemanticApproval','newFourSlotVector'],'INPUT');
+    'newMathQa','newSemanticApproval','newFourSlotVector',...(own(doc,svg7EmbeddedChoices.OPTION)?[svg7EmbeddedChoices.OPTION]:[]),
+    ...(own(doc,svg7InlineFigure.OPTION)?[svg7InlineFigure.OPTION]:[])],'INPUT');
   if(doc.schemaVersion!==SCHEMA||doc.scope!==SCOPE||!/^original\/middle\/m2\/1(?:mid|final)\/[^/]+\.js$/.test(doc.sourceArchiveFile)||
      doc.sourceArchiveFile!==d.sourceArchiveFile||doc.questionUid!==id.questionUid||doc.sourceOrdinal!==cur.ordinal||
      doc.sourceQuestionNo!==sourceIdentityNumber(cur.q)||!positive(doc.sourceQuestionCount)||doc.sourceQuestionCount!==bank.length||
@@ -349,9 +354,24 @@ function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loa
   inventory(reader,doc.priorAssets,p.q,doc.priorSourceRef.commit);
   inventory(reader,doc.currentAssets,cur.q,doc.currentSourceRef.commit,true);
   if(!eq(withoutCommit(doc.nativeAssets),withoutCommit(doc.priorAssets)))fail('NATIVE_PRIOR_ASSET_BYTES');
+  const embedded=own(doc,svg7EmbeddedChoices.OPTION)?svg7EmbeddedChoices.verify({claim:doc[svg7EmbeddedChoices.OPTION],
+    questionUid:doc.questionUid,sourceOrdinal:doc.sourceOrdinal,boundState:svg7EmbeddedChoices.state(n.q,p.q,cur.q),
+    nativeSourceRef:doc.nativeSourceRef,priorSourceRef:doc.priorSourceRef,currentSourceRef:doc.currentSourceRef,
+    priorProblemAssets:doc.priorAssets.filter(r=>sourceRefs(p.q,PROBLEM_ASSETS).includes(r.path)),
+    currentProblemAssets:doc.currentAssets.filter(r=>sourceRefs(cur.q,PROBLEM_ASSETS).includes(r.path)),
+    readRef:ref=>reader.read(ref),readLiveRef:ref=>reader.read(ref,true)}):null;
+  const inlineFigure=own(doc,svg7InlineFigure.OPTION)?svg7InlineFigure.verify({claim:doc[svg7InlineFigure.OPTION],
+    questionUid:doc.questionUid,sourceOrdinal:doc.sourceOrdinal,boundState:svg7InlineFigure.state(n.q,p.q,cur.q),
+    nativeSourceRef:doc.nativeSourceRef,priorSourceRef:doc.priorSourceRef,currentSourceRef:doc.currentSourceRef,
+    priorProblemAssets:doc.priorAssets.filter(r=>sourceRefs(p.q,PROBLEM_ASSETS).includes(r.path)),
+    currentProblemAssets:doc.currentAssets.filter(r=>sourceRefs(cur.q,PROBLEM_ASSETS).includes(r.path)),
+    readRef:ref=>reader.read(ref),readLiveRef:ref=>reader.read(ref,true)}):null;
   const changes=ownChanges(p.q,cur.q);
-  if(!changes.length||!eq(changes,doc.changedFields)||changes.some(c=>![...PROBLEM,...SOLUTION].includes(c.field)))fail('UNREVIEWABLE_FIELD_CHANGE');
-  const surfaces=['PROBLEM','SOLUTION'].filter(s=>changes.some(c=>(s==='PROBLEM'?PROBLEM:SOLUTION).includes(c.field)));
+  if(!changes.length||!eq(changes,doc.changedFields)||changes.some(c=>![...PROBLEM,...SOLUTION].includes(c.field)&&
+    !(embedded&&c.field===svg7EmbeddedChoices.FIELD)))fail('UNREVIEWABLE_FIELD_CHANGE');
+  if(embedded&&!changes.some(c=>c.field===svg7EmbeddedChoices.FIELD))fail('UNNEEDED_EMBEDDED_CHOICE_CLAIM');
+  const surfaces=['PROBLEM','SOLUTION'].filter(s=>changes.some(c=>(s==='PROBLEM'?PROBLEM:SOLUTION).includes(c.field)||
+    s==='PROBLEM'&&embedded&&c.field===svg7EmbeddedChoices.FIELD));
   if(!Array.isArray(doc.displayReviews)||!eq(doc.displayReviews.map(r=>r.surface).sort(),surfaces.slice().sort()))fail('DISPLAY_SURFACE_INVENTORY');
   let inlineKind='NONE',uiCases=0,uiTiles=0;
   for(const surface of surfaces) {
@@ -366,7 +386,7 @@ function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loa
     const binding=displayBinding(doc,p.q,cur.q,changes,surface,priorAssets,currentAssets);
     if(originalTextFigure)verifyOriginalTextSolutionFigure({claim:review.originalTextSolutionFigure,binding,
       priorQuestion:p.q,currentQuestion:cur.q,nativeItemSha256:doc.nativeItemSha256});
-    else if(!priorAssets.length||!currentAssets.length)fail('DISPLAY_ASSET_REQUIRED');
+    else if((!priorAssets.length&&!(inlineFigure&&surface==='PROBLEM'))||!currentAssets.length)fail('DISPLAY_ASSET_REQUIRED');
     const row=validateReview(reader,review.independentRef,binding);
     if(surface==='PROBLEM')inlineKind=row.contentEditKind;
     else if(row.contentEditKind!=='NONE')fail('SOLUTION_CONTENT_EDIT');
@@ -399,6 +419,7 @@ function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loa
   } else if(doc.orphanIdentity!==null)fail('UNNEEDED_ORPHAN_PROOF');
   return {status:'PASS',questionUid:id.questionUid,sourceOrdinal:cur.ordinal,orphanIdentity:orphan,
     logicalUiCases:uiCases,originalUiTiles:uiTiles,observed:[...reader.observed],
-    ref:{path:entry.path,sha256:entry.sha256},approvalEffect:SCOPE,newFourSlotVector:0,newSemanticApproval:0};
+    ref:{path:entry.path,sha256:entry.sha256},approvalEffect:SCOPE,newFourSlotVector:0,newSemanticApproval:0,
+    ...(embedded?{svg7EmbeddedChoiceContinuity:embedded}:{}),...(inlineFigure?{svg7InlineFigureContinuity:inlineFigure}:{})};
 }
 module.exports={DIR,SCHEMA,SCOPE,REVIEW_SCHEMA,collect,verify,verifyUiCheckoutContinuity,displayBinding,ownChanges,fields,vector,stable,sha,identityHash};

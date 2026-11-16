@@ -13,6 +13,7 @@ import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, prRegistrationProofNeeded,
 
 import { preparePrRegistration } from '../tools/ci/archive-pr-registration-prepare.mjs';
 import { registerDifficulty5 } from '../archive/tools/meta-foundation/register-difficulty5.mjs';
+import { expectedRuntime } from '../archive/tools/meta-foundation/compile-meta-foundation.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = value => JSON.stringify(value, null, 2) + '\n';
@@ -219,33 +220,48 @@ test('geometry pack version dependency rejects a removed provider and duplicate 
 
 test('geometry pack version dependency preserves the issued REVIEW2 row through the production compiler', t => {
   const f = geometryVersionFixture(t), selected = f.select();
-  const compiler = fs.readFileSync(new URL('../archive/tools/meta-foundation/compile-meta-foundation.mjs', import.meta.url), 'utf8');
-  const start = compiler.indexOf('function expectedRuntime(canonical) {'), end = compiler.indexOf('\nfunction verifyExact(', start);
-  assert.ok(start >= 0 && end > start);
-  const body = compiler.slice(start, end);
-  const project = (version, row) => {
-    const runtimePath = 'archive/data/meta-foundation/runtime/geometry-equations-v1.json';
+  const runtimePath = 'archive/data/meta-foundation/runtime/geometry-equations-v1.json';
+  const receiptPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/synthetic.json';
+  const project = (version, row, receiptRow = row) => {
     const runtime = { packVersion: version, runtimeVersion: `GEOMETRY_EQUATIONS@${version}/reviewed-exam-v2`, records: [copy(row)] };
-    const expectedRuntime = new Function('readJson', 'geometryRuntimePath', 'jsonText', `${body}\nreturn expectedRuntime;`)(
-      p => { assert.equal(p, runtimePath); return copy(runtime); }, runtimePath, json);
-    return JSON.parse(expectedRuntime({ packs: [{ meta: { packId: 'GEOMETRY_EQUATIONS', packVersion: version } }] })).records[0];
+    const receipt = { schemaVersion: 'archive-reviewed-exam-meta-registration-v2', metadataRegistrationStatus: 'REGISTERED',
+      requestId: 'synthetic', sourceArchiveFile: receiptRow.sourceArchiveFile,
+      runtimeRecords: [copy(receiptRow)], appliedRecords: [copy(receiptRow)] };
+    const read = p => {
+      assert.ok(p === runtimePath || p === receiptPath, `unexpected compiler input: ${p}`);
+      return copy(p === runtimePath ? runtime : receipt);
+    };
+    const projected = expectedRuntime({ packs: [{ meta: { packId: 'GEOMETRY_EQUATIONS', packVersion: version } }] }, read);
+    assert.deepEqual(runtime.records, [row], 'projection must not mutate its input row');
+    assert.deepEqual(receipt.runtimeRecords, [receiptRow], 'projection must not mutate its issued receipt');
+    return JSON.parse(projected).records[0];
   };
   const execute = requests => {
     let version = '1.0.2', issued;
     for (const request of requests) {
       if (request.path === GEOMETRY_VERSION_PROVIDER) version = '1.0.3';
-      else issued = { questionUid: 'fixture', metadataApprovalType: 'REVIEW2', approvalEvidence: ['synthetic-receipt'],
-        metaFoundationPackVersion: version, metadataRevision: `meta-foundation:GEOMETRY_EQUATIONS@${version}:exam-review2-v2:synthetic` };
+      else issued = { questionUid: 'fixture', metadataApprovalType: 'REVIEW2', approvalEvidence: [receiptPath],
+        sourceArchiveFile: 'original/synthetic-geometry-fixture.js', sourceOrdinal: 1, sourceFingerprint: 'synthetic-fingerprint',
+        metaFoundationPackId: 'GEOMETRY_EQUATIONS', metaFoundationPackVersion: version,
+        metadataRevision: `meta-foundation:GEOMETRY_EQUATIONS@${version}:exam-review2-v2:synthetic` };
     }
     return { issued, afterCompile: project(version, issued) };
   };
   const good = execute(selected); assert.deepEqual(good.afterCompile, good.issued);
   assert.equal(good.issued.metadataRevision, 'meta-foundation:GEOMETRY_EQUATIONS@1.0.3:exam-review2-v2:synthetic');
+  assert.equal(good.issued.metaFoundationPackVersion, '1.0.3');
   const inverse = execute([...selected].reverse());
-  assert.notDeepEqual(inverse.afterCompile, inverse.issued);
-  assert.equal(inverse.afterCompile.metadataRevision, 'meta-foundation:GEOMETRY_EQUATIONS@1.0.3');
+  // The current compiler preserves an exact issued row; ordering still decides
+  // the pack version at issuance and must not rely on a later compiler rewrite.
+  assert.deepEqual(inverse.afterCompile, inverse.issued);
+  assert.notDeepEqual(inverse.issued, good.issued);
+  assert.equal(inverse.afterCompile.metadataRevision, 'meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-review2-v2:synthetic');
+  assert.equal(inverse.afterCompile.metaFoundationPackVersion, '1.0.2');
   const forged = { ...good.afterCompile, approvalEvidence: ['different'] };
   assert.notDeepEqual(forged, good.issued, 'whole-row evidence equality is not relaxed by ordering');
+  assert.throws(() => project('1.0.3', forged, good.issued), /does not match its issued Native receipt/);
+  assert.throws(() => project('1.0.3', { ...good.issued, sourceFingerprint: 'changed' }, good.issued),
+    /does not match its issued Native receipt/, 'unchanged evidence cannot authorize a changed runtime row');
 });
 
 function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, auditSourcePreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
@@ -1716,6 +1732,101 @@ test('missing live renderer bytes still reject proof reuse after successful immu
   const before = f.snapshot();
   assert.throws(() => f.native(proof.nativePreview), /LIVE_RENDERER_BYTES_CHANGED/);
   assert.ok(f.observations.some(row => row.target !== f.root && row.phase === 'write'));
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+function rendererLiveInputProofFixture(t, mutateEvidence) {
+  const f = fixture(t, { otherOwner: false });
+  const files = ['tools/check-reviewed-problem-renderer-browser.cjs', 'archive/engine.html',
+    'apmath/css/student-navigation.css', 'archive/vendor/nanum-myeongjo/fixture.woff2'];
+  const removed = 'tools/consumed-historical-helper.cjs', changed = 'tools/current-historical-helper.cjs';
+  const unrelated = 'tools/unrelated-renderer.cjs';
+  for (const file of [...files, removed, changed, unrelated]) f.write(file, `fixed synthetic input: ${file}\n`);
+  f.git('add', '.'); f.git('commit', '-qm', 'exact renderer input references');
+  const baseSha = f.git('rev-parse', 'HEAD');
+  const ref = file => {
+    const bytes = fs.readFileSync(path.join(f.root, file));
+    return { commit: baseSha, path: file, gitBlobSha1: f.git('rev-parse', `${baseSha}:${file}`),
+      sha256: sha(bytes), bytes: bytes.length };
+  };
+  const refs = files.map(ref), historicalRefs = [ref(removed), ref(changed)];
+  const evidence = { schemaVersion: 'synthetic-live-ui-inputs-v1', captureHelperRef: refs[0],
+    servedFiles: refs.slice(1), historicalRefs,
+    unrelatedShortRef: { path: unrelated, sha256: ref(unrelated).sha256 } };
+  mutateEvidence?.(evidence, f);
+  f.write(changed, 'current HEAD bytes must win over the historical reference\n');
+  fs.unlinkSync(path.join(f.root, removed));
+  const changedSha = sha(fs.readFileSync(path.join(f.root, changed)));
+  f.write(EVIDENCE, json(evidence));
+  const evidenceRef = { path: EVIDENCE, sha256: sha(json(evidence)) };
+  f.request.approval.evidenceRefs = [evidenceRef]; f.request.items[0].evidenceRefs = [evidenceRef];
+  f.write(REQUEST, json(f.request)); f.git('add', '.'); f.git('commit', '-qm', 'renderer request and current historical paths');
+  const headSha = f.git('rev-parse', 'HEAD'), repo = 'owner/repository', observations = [];
+  for (const phase of ['dry-run', 'write', 'projection']) f.hook[phase] = target => {
+    for (const input of refs) {
+      const full = path.join(target, input.path);
+      if (!fs.existsSync(full) || sha(fs.readFileSync(full)) !== input.sha256)
+        throw Error('LIVE_UI_INPUT_BYTES_CHANGED');
+      if (target !== f.root && fs.existsSync(path.join(f.root, input.path)))
+        assert.notEqual(fs.statSync(full).ino, fs.statSync(path.join(f.root, input.path)).ino);
+    }
+    assert.equal(fs.existsSync(path.join(target, removed)), false, 'historical-only files stay in Git');
+    assert.equal(sha(fs.readFileSync(path.join(target, changed))), changedSha, 'restore current HEAD, never old reference bytes');
+    if (target !== f.root) assert.equal(fs.existsSync(path.join(target, unrelated)), false, 'unrelated and short refs are not adopted');
+    observations.push({ phase, target });
+  };
+  const options = { root: f.root, repo, expectedSha: headSha, runId: 41, runAttempt: 1, run: f.run,
+    event: { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
+      base: { sha: baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } } } } };
+  return { ...f, files, refs, observations, options,
+    produce: () => producePrRegistrationProof(options),
+    validate: proof => validateLocalRegistrationProof({ ...options, proof }),
+    native: preview => validateNativePreview({ root: f.root, baseSha, headSha, preview, run: f.run, allowedGenerated: ALLOWED }) };
+}
+
+test('shadow restores exact HEAD helper runtime and font refs from selected evidence only', t => {
+  const f = rendererLiveInputProofFixture(t), proof = f.produce(), before = f.snapshot();
+  assert.equal(proof.status, 'PASS'); assert.equal(f.validate(proof).reusable, true);
+  assert.ok(f.observations.some(row => row.target !== f.root && row.phase === 'dry-run'));
+  assert.ok(f.observations.some(row => row.target !== f.root && row.phase === 'write'));
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+for (const [name, mutate] of [
+  ['same-size runtime drift', f => {
+    const file = path.join(f.root, f.files[1]), bytes = fs.readFileSync(file); bytes[0] ^= 1; fs.writeFileSync(file, bytes);
+  }],
+  ['missing live helper', f => fs.unlinkSync(path.join(f.root, f.files[0]))],
+]) test(`shadow UI input restoration cannot approve ${name}`, t => {
+  const f = rendererLiveInputProofFixture(t), proof = f.produce(); mutate(f); const before = f.snapshot();
+  assert.throws(() => f.native(proof.nativePreview), /LIVE_UI_INPUT_BYTES_CHANGED/);
+  assert.ok(f.observations.some(row => row.target !== f.root && row.phase === 'write'),
+    'exact HEAD shadow succeeds before the unchanged live registrar guard rejects drift');
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+test('shadow UI input restoration preserves an official registrar refusal', t => {
+  const f = rendererLiveInputProofFixture(t), proof = f.produce(), before = f.snapshot();
+  f.hook['dry-run'] = target => { if (target !== f.root) throw Error('FULL_NATIVE_REFUSED'); };
+  assert.throws(() => f.validate(proof), /FULL_NATIVE_REFUSED/);
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+test('shadow UI input restoration refuses unsafe declared reference paths', t => {
+  const f = rendererLiveInputProofFixture(t, evidence => {
+    evidence.extraRef = { ...evidence.captureHelperRef, path: '../outside-workspace' };
+  }), proof = f.produce(), before = f.snapshot();
+  assert.throws(() => f.native(proof.nativePreview), /UNSAFE_PATH/);
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+test('shadow UI input restoration refuses a tracked symlink reference', t => {
+  const f = rendererLiveInputProofFixture(t, (evidence, fixture) => {
+    const file = 'tools/symlink-input.cjs';
+    fs.symlinkSync('check-reviewed-problem-renderer-browser.cjs', path.join(fixture.root, file));
+    evidence.extraRef = { ...evidence.captureHelperRef, path: file };
+  }), proof = f.produce(), before = f.snapshot();
+  assert.throws(() => f.native(proof.nativePreview), /SHADOW_REFERENCE_NOT_REGULAR/);
   assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
 });
 

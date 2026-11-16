@@ -172,6 +172,23 @@ const requiredCommands = [
     args: ['--test', 'tests/item-4slot-existing-renderer-v2.test.cjs']
   },
   {
+    label: 'tests/archive-svg7-named-problem-continuity.test.cjs',
+    args: ['--test', 'tests/archive-svg7-named-problem-continuity.test.cjs']
+  },
+  {
+    label: 'tests/archive-m2s1-text3-fragment-ui.test.cjs',
+    args: ['--test', 'tests/archive-m2s1-text3-fragment-ui.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-text3-fragment-ui.test.cjs',
+    args: ['--test', 'tests/item-4slot-text3-fragment-ui.test.cjs']
+  },
+  {
+    label: 'tests/archive-m3-e052-q5-existing-vector.test.mjs',
+    args: ['--test', 'tests/archive-m3-e052-q5-existing-vector.test.mjs'],
+    timeout: 300000
+  },
+  {
     label: 'tests/item-4slot-existing-original-text-solution3.test.cjs',
     args: ['--test', 'tests/item-4slot-existing-original-text-solution3.test.cjs'],
     timeout: 60000
@@ -184,6 +201,14 @@ const requiredCommands = [
   {
     label: 'tests/item-4slot-m3-renderer-hold.test.cjs',
     args: ['--test', 'tests/item-4slot-m3-renderer-hold.test.cjs']
+  },
+  {
+    label: 'tests/archive-reviewed-projection-phase.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-projection-phase.test.mjs']
+  },
+  {
+    label: 'tests/meta-foundation-geometry-issued-rows.test.mjs',
+    args: ['--test', 'tests/meta-foundation-geometry-issued-rows.test.mjs']
   },
   {
     label: 'tests/archive-registration-writer.test.mjs',
@@ -357,6 +382,11 @@ const requiredCommands = [
     label: 'tests/archive-reviewed-exam-registration-v2.test.mjs',
     args: ['--test', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
     timeout: 300000
+  },
+  {
+    label: 'tests/archive-m2-e006-problem-continuity.test.mjs',
+    args: ['--max-old-space-size=256', '--test', 'tests/archive-m2-e006-problem-continuity.test.mjs'],
+    timeout: 60000
   },
   {
     label: 'tests/archive-reviewed-m2-family3-problem-continuity.test.mjs',
