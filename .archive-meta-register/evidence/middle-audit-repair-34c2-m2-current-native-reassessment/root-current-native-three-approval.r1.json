@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "middle-audit-current-native-three-root-approval-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "approvedAt": "2026-11-16T05:24:28.950167+00:00",
+  "decision": "APPROVE_EXACT_CURRENT_NATIVE_REASSESSMENT_APPLICATION",
+  "scope": "Exact frozen ordinary requests for three already accepted UIDs; fingerprint values, student payload, meaning, source QA, holds and original issued receipts remain unchanged. Replaces unpublished source-only requests only.",
+  "actualBeforeMain": "4b504e10b1ce7a90576486663b3862ef99922325",
+  "currentApplicationCommit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+  "manifestRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/state/m2-unit25-ordinary-three/apply-manifest.r1.json",
+    "sha256": "476ea9b16f6ff9810ee6a27996ad200ca78a1ddae2edb6afca0bcd9386e3a4a4"
+  },
+  "applicationEvidenceRef": {
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-current-native-reassessment/current-native-three-application-evidence.r1.json",
+    "sha256": "abb55654f4004e6f3f25204240de9cdac5c2e44fc9c04f8ac436fd43ebc57d75"
+  },
+  "independentReviewRef": {
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-current-native-reassessment/m2-current-native-three-independent-review.r1.json",
+    "sha256": "d17f13dddcc9d8934a43890e9ca3b9cfce3fd188aa5930e66126c9a51c78521f"
+  },
+  "requests": [
+    {
+      "requestId": "middle-audit-repair-34c2-m2-e007-q17-current-native-reassessment",
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "draftSha256": "85af9ee6a5718ce454341bb1c70ee4ef132813418588075545d0ad5af30a0e28",
+      "requestCoreSha256": "d9682bd804dcafabcac56d3979c4bf05e97c046e7365a1ec267c093bb3ed2227"
+    },
+    {
+      "requestId": "middle-audit-repair-34c2-m2-e035-q12-current-native-reassessment",
+      "questionUid": "qid_v1_76dd55da73d9edb2aeb41cdd76997b70ec4a5d668fc94f00736038cde358937d",
+      "draftSha256": "9bc4851aafa14d4533d0c463fa5a23a6df15fcd7dd40b974046104689d5554d1",
+      "requestCoreSha256": "15a9e3bd291dab49842c75b2cac71375877f7ac1fe371dcb874709b4bdbe33b6"
+    },
+    {
+      "requestId": "middle-audit-repair-34c2-m2-e035-q18-current-native-reassessment",
+      "questionUid": "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb",
+      "draftSha256": "7f1db725f2d1da286958c9d95ef63c30a100ec02c5fe7d7f35fc39bfd1cf18db",
+      "requestCoreSha256": "53967cca2bc72c774ab38fe49c000924d99b79a0e76b2d1b028057ae1a23f7fb"
+    }
+  ],
+  "replacesUnpublishedRequests": [
+    "middle-audit-repair-34c2-m2-e007-q17-preserve-after-integer-extrema",
+    "middle-audit-repair-34c2-m2-e035-q12-preserve-current-source",
+    "middle-audit-repair-34c2-m2-e035-q18-preserve-current-source"
+  ],
+  "mustNotExecuteBoth": true,
+  "allowedFinalization": {
+    "requestCoreMustRemainExact": true,
+    "existingEvidenceRefsMustRemain": true,
+    "onlyAppendImmutableRootApprovalAndIndependentReviewRefs": true,
+    "replacedUnpublishedSourceOnlyRequests": [
+      "middle-audit-repair-34c2-m2-e007-q17-preserve-after-integer-extrema",
+      "middle-audit-repair-34c2-m2-e035-q12-preserve-current-source",
+      "middle-audit-repair-34c2-m2-e035-q18-preserve-current-source"
+    ],
+    "mustNotExecuteBoth": true
+  },
+  "newMeaningApprovals": 0,
+  "newMathematicalQa": 0,
+  "newSourceQa": 0,
+  "newUniqueRepairUids": 0,
+  "ordinaryRegistrationNewMetadataApprovals": 3,
+  "validationFixtureRule": "Root restores only these three exact actual4b504 metadata/identity/runtime rows, parks the three unpublished preserve receipts, then performs dry/write/replay/native reuse and direct consumer checks. Other completed rows remain unchanged.",
+  "remoteRegistration": "NOT_EXECUTED_FOR_REPLACEMENT",
+  "studentDeployment": "NOT_VERIFIED_FOR_REPLACEMENT"
+}
