@@ -5,6 +5,11 @@ on:
     branches: ['review-reference/e017-solution-current-ui-20261116']
     paths:
       - '.github/workflows/archive-e017-solution-display-ui.yml'
+      - 'tools/check-e017-solution-display-browser.cjs'
+      - 'tools/check-m2s1-solution-scroll.cjs'
+      - 'tools/check-reviewed-problem-renderer-browser.cjs'
+      - 'tests/archive-e017-solution-display-ui.test.js'
+      - 'tests/fixtures/archive-e017-solution-display-ui.json'
   workflow_dispatch:
 
 permissions:
