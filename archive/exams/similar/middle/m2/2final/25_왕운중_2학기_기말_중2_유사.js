@@ -36,7 +36,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "SIMILAR_RATIO_CORRESPONDENCE",
-    "solution": "닮은 두 삼각형에서 대응변의 길이의 비는 일정하다.\n$\\triangle ABC \\sim \\triangle DEF$이므로 대응변 $\\overline{BC}$와 $\\overline{EF}$의 길이로부터 닮음비는\n$$\n\\overline{BC} : \\overline{EF} = 18 : 12 = 3 : 2\n$$\n대응변 $\\overline{AB}$와 $\\overline{DE}$의 길이의 비도 $3:2$이므로\n$$\n\\begin{aligned}\n\\overline{AB} : \\overline{DE} &= 3 : 2 \\\n\\overline{AB} : 8 &= 3 : 2 \\\n2 \\times \\overline{AB} &= 24 \\\n\\overline{AB} &= 12\\rm\\,cm\n\\end{aligned}\n$$\n따라서 구하는 선분 $\\overline{AB}$의 길이는 $12\\rm\\,cm$이다."
+    "solution": "닮은 두 삼각형에서 대응변의 길이의 비는 일정하다.\n$\\triangle ABC \\sim \\triangle DEF$이므로 대응변 $\\overline{BC}$와 $\\overline{EF}$의 길이로부터 닮음비는\n$$\n\\overline{BC} : \\overline{EF} = 18 : 12 = 3 : 2\n$$\n대응변 $\\overline{AB}$와 $\\overline{DE}$의 길이의 비도 $3:2$이므로\n\n$$\n\\begin{aligned}\n\\overline{AB} : \\overline{DE} &= 3 : 2 \\\\\n\\overline{AB} : 8 &= 3 : 2 \\\\\n2 \\times \\overline{AB} &= 24 \\\\\n\\overline{AB} &= 12\\rm\\,cm\n\\end{aligned}\n$$\n\n따라서 구하는 선분 $\\overline{AB}$의 길이는 $12\\rm\\,cm$이다."
   },
   {
     "id": 2,
@@ -71,7 +71,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "AREA_RATIO_SIMILARITY",
-    "solution": "A0 용지에서 A6 용지까지 긴 변을 반으로 $6$번 자르므로, A6 용지의 넓이는 A0 용지 넓이의\n$$\n\\left(\\frac{1}{2}\\right)^6 = \\frac{1}{64}\n$$\n배이다.\n닮은 두 직사각형에서 넓이의 비는 닮음비의 제곱과 같으므로\n$$\n\\begin{aligned}\n(\\text{닮음비})^2 &= 1 : 64 \\\n\\text{닮음비} &= \\sqrt{1} : \\sqrt{64} \\\n&= 1 : 8\n\\end{aligned}\n$$\n따라서 A6 용지와 A0 용지의 닮음비는 $1:8$이다."
+    "solution": "A0 용지에서 A6 용지까지 긴 변을 반으로 $6$번 자르므로, A6 용지의 넓이는 A0 용지 넓이의\n$$\n\\left(\\frac{1}{2}\\right)^6 = \\frac{1}{64}\n$$\n배이다.\n닮은 두 직사각형에서 넓이의 비는 닮음비의 제곱과 같으므로\n\n$$\n\\begin{aligned}\n(\\text{닮음비})^2 &= 1 : 64 \\\\\n\\text{닮음비} &= \\sqrt{1} : \\sqrt{64} \\\\\n&= 1 : 8\n\\end{aligned}\n$$\n\n따라서 A6 용지와 A0 용지의 닮음비는 $1:8$이다."
   },
   {
     "id": 3,
@@ -106,7 +106,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "TRIANGLE_AA_SIMILARITY",
-    "solution": "$\\triangle ABC$와 $\\triangle CBD$에서\n$$\n\\begin{aligned}\n\\angle B &\\text{는 공통} \\\n\\angle A &= \\angle BCD\n\\end{aligned}\n$$\n두 쌍의 대응각의 크기가 각각 같으므로\n$$\n\\triangle ABC \\sim \\triangle CBD \\quad (\\text{AA 닮음})\n$$\n대응변의 길이의 비가 같으므로\n$$\n\\begin{aligned}\n\\overline{AB} : \\overline{CB} &= \\overline{AC} : \\overline{CD} \\\n\\overline{AB} : 6 &= 15 : 5 = 3 : 1 \\\n\\overline{AB} &= 6 \\times 3 \\\n&= 18\\rm\\,cm\n\\end{aligned}\n$$\n따라서 구하는 선분 $\\overline{AB}$의 길이는 $18\\rm\\,cm$이다."
+    "solution": "$\\triangle ABC$와 $\\triangle CBD$에서\n\n$$\n\\begin{aligned}\n\\angle B &\\text{는 공통} \\\\\n\\angle A &= \\angle BCD\n\\end{aligned}\n$$\n\n두 쌍의 대응각의 크기가 각각 같으므로\n$$\n\\triangle ABC \\sim \\triangle CBD \\quad (\\text{AA 닮음})\n$$\n대응변의 길이의 비가 같으므로\n\n$$\n\\begin{aligned}\n\\overline{AB} : \\overline{CB} &= \\overline{AC} : \\overline{CD} \\\\\n\\overline{AB} : 6 &= 15 : 5 = 3 : 1 \\\\\n\\overline{AB} &= 6 \\times 3 \\\\\n&= 18\\rm\\,cm\n\\end{aligned}\n$$\n\n따라서 구하는 선분 $\\overline{AB}$의 길이는 $18\\rm\\,cm$이다."
   },
   {
     "id": 4,
@@ -127,7 +127,7 @@ window.questionBank = [
     "tags": [
       "도형"
     ],
-    "content": "지면에 수직으로 세운 길이 $1.5\\rm\\,m$인 막대의 그림자의 길이가 $2\\rm\\,m$일 때, 밑면이 한 변의 길이가 $240\\rm\\,m$인 정사각형 모양의 피라미드의 그림자의 길이가 밑면의 가장자리로부터 $80\\rm\\,m$였다. 이 피라미드의 높이는? (단, 피라미드의 꼭짓점은 밑면 정사각형의 두 대각선의 교점 바로 위에 수직으로 위치한다.)",
+    "content": "지면에 수직으로 세운 길이 $1.5\\rm\\,m$인 막대의 그림자의 길이가 $2\\rm\\,m$일 때, 밑면이 한 변의 길이가 $240\\rm\\,m$인 정사각형인 피라미드의 그림자가 밑면의 가장자리로부터 $80\\rm\\,m$만큼 뻗어 있었다. 이 피라미드의 높이는? (단, 피라미드의 꼭짓점은 밑면 정사각형의 두 대각선의 교점 바로 위에 수직으로 위치한다.)",
     "choices": [
       "$135\\rm\\,m$",
       "$140\\rm\\,m$",
@@ -141,7 +141,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "SIMILARITY_HEIGHT_MEASUREMENT",
-    "solution": "태양 광선은 평행하므로 물체의 높이와 그림자가 이루는 직각삼각형은 서로 닮음이다.\n피라미드의 꼭짓점은 정사각형 밑면의 중심 위에 위치하므로, 중심에서 그림자 방향의 밑면 가장자리까지의 거리는\n$$\n\\frac{240}{2} = 120\\rm\\,m\n$$\n피라미드의 꼭짓점 수선의 발에서부터 그림자의 끝까지의 전체 수평 거리는\n$$\n120 + 80 = 200\\rm\\,m\n$$\n막대의 높이와 그림자의 길이의 비는 $1.5 : 2 = 3 : 4$이므로\n$$\n\\begin{aligned}\nh : 200 &= 3 : 4 \\\n4h &= 600 \\\nh &= 150\\rm\\,m\n\\end{aligned}\n$$\n따라서 피라미드의 높이는 $150\\rm\\,m$이다."
+    "solution": "태양 광선은 평행하므로 물체의 높이와 그림자가 이루는 직각삼각형은 서로 닮음이다.\n피라미드의 꼭짓점은 정사각형 밑면의 중심 위에 위치하므로, 중심에서 그림자 방향의 밑면 가장자리까지의 거리는\n$$\n\\frac{240}{2} = 120\\rm\\,m\n$$\n피라미드의 꼭짓점 수선의 발에서부터 그림자의 끝까지의 전체 수평 거리는\n$$\n120 + 80 = 200\\rm\\,m\n$$\n막대의 높이와 그림자의 길이의 비는 $1.5 : 2 = 3 : 4$이므로\n\n$$\n\\begin{aligned}\nh : 200 &= 3 : 4 \\\\\n4h &= 600 \\\\\nh &= 150\\rm\\,m\n\\end{aligned}\n$$\n\n따라서 피라미드의 높이는 $150\\rm\\,m$이다."
   },
   {
     "id": 5,
@@ -176,7 +176,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "PARALLEL_LINES_SEGMENT_RATIO",
-    "solution": "세 평행선이 두 직선과 만날 때 생기는 대응 선분의 길이의 비는 서로 같다.\n$$\n\\begin{aligned}\n6 : 9 &= 8 : x \\\n2 : 3 &= 8 : x \\\n2x &= 24 \\\nx &= 12\n\\end{aligned}\n$$\n따라서 $x$의 값은 $12$이다."
+    "solution": "세 평행선이 두 직선과 만날 때 생기는 대응 선분의 길이의 비는 서로 같다.\n\n$$\n\\begin{aligned}\n6 : 9 &= 8 : x \\\\\n2 : 3 &= 8 : x \\\\\n2x &= 24 \\\\\nx &= 12\n\\end{aligned}\n$$\n\n따라서 $x$의 값은 $12$이다."
   },
   {
     "id": 6,
@@ -211,7 +211,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "CENTROID_MEDIAN_LENGTH",
-    "solution": "점 $D$는 변 $\\overline{AB}$의 중점이므로\n$$\ny = \\overline{AD} = \\frac{1}{2}\\overline{AB} = \\frac{1}{2} \\times 12 = 6\\rm\\,cm\n$$\n점 $G$는 $\\triangle ABC$의 무게중심이므로 중선 $\\overline{CD}$를 꼭짓점 $C$로부터 $2:1$로 나눈다.\n$$\n\\begin{aligned}\n\\overline{CG} : \\overline{GD} &= 2 : 1 \\\n\\overline{GD} &= \\frac{1}{2}\\overline{CG} = \\frac{1}{2} \\times 8 = 4\\rm\\,cm \\\nx = \\overline{CD} &= \\overline{CG} + \\overline{GD} = 8 + 4 = 12\\rm\\,cm\n\\end{aligned}\n$$\n따라서 구하는 값은\n$$\nx + y = 12 + 6 = 18\n$$\n따라서 정답은 ④이다."
+    "solution": "점 $D$는 변 $\\overline{AB}$의 중점이므로\n$$\ny = \\overline{AD} = \\frac{1}{2}\\overline{AB} = \\frac{1}{2} \\times 12 = 6\\rm\\,cm\n$$\n점 $G$는 $\\triangle ABC$의 무게중심이므로 중선 $\\overline{CD}$를 꼭짓점 $C$로부터 $2:1$로 나눈다.\n\n$$\n\\begin{aligned}\n\\overline{CG} : \\overline{GD} &= 2 : 1 \\\\\n\\overline{GD} &= \\frac{1}{2}\\overline{CG} = \\frac{1}{2} \\times 8 = 4\\rm\\,cm \\\\\nx = \\overline{CD} &= \\overline{CG} + \\overline{GD} = 8 + 4 = 12\\rm\\,cm\n\\end{aligned}\n$$\n\n구하는 값은\n$$\nx + y = 12 + 6 = 18\n$$\n따라서 정답은 ④이다."
   },
   {
     "id": 7,
@@ -246,7 +246,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "PYTHAGOREAN_THEOREM_BASIC",
-    "solution": "직각삼각형 $ABC$에서 피타고라스 정리에 의해\n$$\n\\overline{AB}^2 + \\overline{AC}^2 = \\overline{BC}^2\n$$\n주어진 값을 대입하면\n$$\n\\begin{aligned}\n12^2 + \\overline{AC}^2 &= 13^2 \\\n144 + \\overline{AC}^2 &= 169 \\\n\\overline{AC}^2 &= 25\n\\end{aligned}\n$$\n길이는 양수이므로\n$$\n\\overline{AC} = 5\\rm\\,cm\n$$\n따라서 구하는 선분 $\\overline{AC}$의 길이는 $5\\rm\\,cm$이다."
+    "solution": "직각삼각형 $ABC$에서 피타고라스 정리에 의해\n$$\n\\overline{AB}^2 + \\overline{AC}^2 = \\overline{BC}^2\n$$\n주어진 값을 대입하면\n\n$$\n\\begin{aligned}\n12^2 + \\overline{AC}^2 &= 13^2 \\\\\n144 + \\overline{AC}^2 &= 169 \\\\\n\\overline{AC}^2 &= 25\n\\end{aligned}\n$$\n\n길이는 양수이므로\n$$\n\\overline{AC} = 5\\rm\\,cm\n$$\n따라서 구하는 선분 $\\overline{AC}$의 길이는 $5\\rm\\,cm$이다."
   },
   {
     "id": 8,
@@ -281,7 +281,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "RIGHT_TRIANGLE_CONGRUENCE_SEMICIRCLE",
-    "solution": "$\\triangle AED \\equiv \\triangle BCE$이고 $\\angle A = \\angle B = 90^\\circ$이므로\n$$\n\\begin{aligned}\n\\overline{BC} &= \\overline{AE} = 8, \\quad \\overline{BE} = \\overline{AD} = 6 \\\n\\overline{DE} &= \\sqrt{6^2 + 8^2} = 10, \\quad \\overline{CE} = 10\n\\end{aligned}\n$$\n직각삼각형 $AED$에서 $\\angle ADE + \\angle AED = 90^\\circ$이고 $\\triangle AED \\equiv \\triangle BCE$에 의해 $\\angle ADE = \\angle BEC$이므로\n$$\n\\angle BEC + \\angle AED = 90^\\circ\n$$\n세 점 $A, E, B$가 한 직선 위에 있으므로\n$$\n\\angle DEC = 180^\\circ - (\\angle AED + \\angle BEC) = 180^\\circ - 90^\\circ = 90^\\circ\n$$\n따라서 $\\triangle DEC$는 $\\overline{DE}=\\overline{CE}=10$인 직각이등변삼각형이다.\n피타고라스 정리에 의해\n$$\n\\overline{CD}^2 = \\overline{DE}^2 + \\overline{CE}^2 = 10^2 + 10^2 = 200\n$$\n선분 $\\overline{CD}$를 지름으로 하는 반원의 넓이는\n$$\n\\begin{aligned}\nS &= \\frac{1}{2}\\pi \\left(\\frac{\\overline{CD}}{2}\\right)^2 \\\n&= \\frac{1}{8}\\pi \\overline{CD}^2 \\\n&= \\frac{200}{8}\\pi \\\n&= 25\\pi\n\\end{aligned}\n$$\n따라서 정답은 ③이다."
+    "solution": "$\\triangle AED \\equiv \\triangle BCE$이고 $\\angle A = \\angle B = 90^\\circ$이므로\n\n$$\n\\begin{aligned}\n\\overline{BC} &= \\overline{AE} = 8, \\quad \\overline{BE} = \\overline{AD} = 6 \\\\\n\\overline{DE} &= \\sqrt{6^2 + 8^2} = 10, \\quad \\overline{CE} = 10\n\\end{aligned}\n$$\n\n직각삼각형 $AED$에서 $\\angle ADE + \\angle AED = 90^\\circ$이고 $\\triangle AED \\equiv \\triangle BCE$에 의해 $\\angle ADE = \\angle BEC$이므로\n$$\n\\angle BEC + \\angle AED = 90^\\circ\n$$\n세 점 $A, E, B$가 한 직선 위에 있으므로\n$$\n\\angle DEC = 180^\\circ - (\\angle AED + \\angle BEC) = 180^\\circ - 90^\\circ = 90^\\circ\n$$\n따라서 $\\triangle DEC$는 $\\overline{DE}=\\overline{CE}=10$인 직각이등변삼각형이다.\n피타고라스 정리에 의해\n$$\n\\overline{CD}^2 = \\overline{DE}^2 + \\overline{CE}^2 = 10^2 + 10^2 = 200\n$$\n선분 $\\overline{CD}$를 지름으로 하는 반원의 넓이는\n\n$$\n\\begin{aligned}\nS &= \\frac{1}{2}\\pi \\left(\\frac{\\overline{CD}}{2}\\right)^2 \\\\\n&= \\frac{1}{8}\\pi \\overline{CD}^2 \\\\\n&= \\frac{200}{8}\\pi \\\\\n&= 25\\pi\n\\end{aligned}\n$$\n\n따라서 정답은 ③이다."
   },
   {
     "id": 9,
@@ -302,7 +302,7 @@ window.questionBank = [
     "tags": [
       "도형"
     ],
-    "content": "$\\triangle ABC$에서 세 점 $D, E, F$는 각각 변 $AB, BC, CA$의 중점이다. 다음 보기 중 옳은 것만을 있는 대로 고른 것은?",
+    "content": "$\\triangle ABC$에서 세 점 $D, E, F$는 각각 변 $AB, BC, CA$의 중점이다. 다음 보기 중 옳은 것만을 있는 대로 고른 것은?\n• ㄱ. $\\overline{DF} \\parallel \\overline{BC}$\n• ㄴ. $\\overline{DE} = \\dfrac{1}{2}\\overline{AC}$\n• ㄷ. $\\triangle ABC$의 둘레의 길이는 $\\triangle DEF$의 둘레의 길이의 $2$배이다.",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",
@@ -316,7 +316,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "TRIANGLE_MIDPOINT_THEOREM",
-    "solution": "삼각형의 두 변의 중점을 연결한 선분의 성질(중점연결정리)에 의해\n$$\n\\begin{aligned}\n\\text{ㄱ. } &D, F\\text{는 각각 } AB, AC\\text{의 중점이므로 } \\overline{DF} \\parallel \\overline{BC}\\text{이다. (참)} \\\n\\text{ㄴ. } &D, E\\text{는 각각 } AB, BC\\text{의 중점이므로 } \\overline{DE} = \\frac{1}{2}\\overline{AC}\\text{이다. (참)} \\\n\\text{ㄷ. } &\\overline{DE} = \\frac{1}{2}\\overline{AC}, \\overline{EF} = \\frac{1}{2}\\overline{AB}, \\overline{FD} = \\frac{1}{2}\\overline{BC}\\text{이므로} \\\n&\\triangle DEF\\text{의 둘레는 } \\triangle ABC\\text{의 둘레의 } \\frac{1}{2}\\text{배이다. 따라서 } \\triangle ABC\\text{의 둘레는 } \\triangle DEF\\text{의 } 2\\text{배이다. (참)}\n\\end{aligned}\n$$\n따라서 ㄱ, ㄴ, ㄷ 모두 옳으므로 정답은 ⑤이다."
+    "solution": "삼각형의 두 변의 중점을 연결한 선분의 성질(중점연결정리)에 의해\n\nㄱ. $D, F$는 각각 $\\overline{AB}, \\overline{AC}$의 중점이므로 $\\overline{DF} \\parallel \\overline{BC}$이다. (참)\n\nㄴ. $D, E$는 각각 $\\overline{AB}, \\overline{BC}$의 중점이므로 $\\overline{DE} = \\frac{1}{2}\\overline{AC}$이다. (참)\n\nㄷ. $\\overline{DE} = \\frac{1}{2}\\overline{AC}$, $\\overline{EF} = \\frac{1}{2}\\overline{AB}$, $\\overline{FD} = \\frac{1}{2}\\overline{BC}$이므로\n$\\triangle DEF$의 둘레는 $\\triangle ABC$의 둘레의 $\\frac{1}{2}$배이다. 따라서 $\\triangle ABC$의 둘레는 $\\triangle DEF$의 $2$배이다. (참)\n\n따라서 ㄱ, ㄴ, ㄷ 모두 옳으므로 정답은 ⑤이다."
   },
   {
     "id": 10,
@@ -337,7 +337,7 @@ window.questionBank = [
     "tags": [
       "도형"
     ],
-    "content": "다음 두 명제의 참·거짓에 대하여 [ A ], [ B ]에 알맞은 것을 짝지은 것은? [명제 1] 세 직선 $l, m, n$이 다른 두 직선과 만날 때 생기는 선분의 길이의 비가 같으면, 세 직선 $l, m, n$은 항상 평행하다. ⋯ [ A ] [명제 2] 가로의 길이가 $16\\rm\\,cm$, 세로의 길이가 $12\\rm\\,cm$인 직사각형 모양의 액자가 있다. 폭이 $2\\rm\\,cm$로 일정한 테두리를 제외한 안쪽 직사각형은 바깥쪽 직사각형과 항상 닮은 도형이다. ⋯ [ B ]",
+    "content": "다음 두 명제의 참·거짓에 대하여 [ A ], [ B ]에 알맞은 것을 짝지은 것은?\n• [명제 1] 세 직선 $l, m, n$이 다른 두 직선과 만날 때 생기는 선분의 길이의 비가 같으면, 세 직선 $l, m, n$은 항상 평행하다. ⋯ [ A ]\n• [명제 2] 가로의 길이가 $16\\rm\\,cm$, 세로의 길이가 $12\\rm\\,cm$인 직사각형 모양의 액자가 있다. 폭이 $2\\rm\\,cm$로 일정한 테두리를 제외한 안쪽 직사각형은 바깥쪽 직사각형과 항상 닮은 도형이다. ⋯ [ B ]",
     "choices": [
       "[A] 참, [B] 참",
       "[A] 거짓, [B] 거짓",
@@ -351,7 +351,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "PARALLEL_CONVERSE_AND_RECTANGLE_SIMILARITY",
-    "solution": "[명제 1]: 세 직선이 평행하지 않은 반례를 들 수 있다. 두 횡선 x=0, x=1에서 세 직선 l, m, n의 교점 높이가 각각 (0, 2, 3), (0, 4, 6)이라고 하자. 두 횡선에서 대응하는 구간의 길이는 각각 (2, 1), (4, 2)이므로 각 구간의 비는 모두 2:1이다. 그러나 l, m, n의 기울기는 각각 0, 2, 3이므로 서로 평행하지 않다. 따라서 [A]는 거짓이다.\n[명제 2]: 바깥 직사각형의 가로와 세로의 비는\n$$\n16 : 12 = 4 : 3\n$$\n이다.\n폭이 사방으로 $2\\rm\\,cm$씩 줄어든 안쪽 직사각형의 가로와 세로의 길이는\n$$\n\\begin{aligned}\n\\text{가로} &= 16 - 2 \\times 2 = 12\\rm\\,cm \\\n\\text{세로} &= 12 - 2 \\times 2 = 8\\rm\\,cm\n\\end{aligned}\n$$\n안쪽 직사각형의 가로와 세로의 비는\n$$\n12 : 8 = 3 : 2\n$$\n$4 : 3 \ne 3 : 2$이므로 가로와 세로의 비가 달라 두 직사각형은 닮은 도형이 아니다. 따라서 [B]는 거짓이다.\n따라서 [A] 거짓, [B] 거짓이다."
+    "solution": "[명제 1] 세 직선 $l, m, n$이 한 점 $O$에서 만나고, 점 $O$를 지나지 않는 평행한 두 직선과 각각 만나는 경우를 생각하자. 이때 두 평행한 직선 위에서 생기는 선분의 길이의 비는 서로 같지만, 세 직선 $l, m, n$은 한 점에서 만나므로 평행하지 않다. 따라서 선분의 길이의 비가 같아도 세 직선이 항상 평행한 것은 아니므로 [A]는 거짓이다.\n\n[명제 2] 바깥쪽 직사각형의 가로와 세로의 길이의 비는\n\n$$\n16 : 12 = 4 : 3\n$$\n\n이다. 테두리의 폭이 사방으로 $2\\rm\\,cm$이므로 안쪽 직사각형의 가로와 세로의 길이는\n\n$$\n\\begin{aligned}\n\\text{가로} &= 16 - 2 \\times 2 = 12\\rm\\,cm \\\\\n\\text{세로} &= 12 - 2 \\times 2 = 8\\rm\\,cm\n\\end{aligned}\n$$\n\n이므로 안쪽 직사각형의 가로와 세로의 길이의 비는\n\n$$\n12 : 8 = 3 : 2\n$$\n\n이다. $4 : 3 \\ne 3 : 2$이므로 두 직사각형은 닮은 도형이 아니다. 따라서 [B]는 거짓이다.\n\n따라서 [A] 거짓, [B] 거짓이므로 정답은 ②이다."
   },
   {
     "id": 11,
@@ -372,7 +372,7 @@ window.questionBank = [
     "tags": [
       "도형"
     ],
-    "content": "$\\triangle ABC$에서 세 점 $D, E, F$는 각각 변 $BC, CA, AB$의 중점이고, 세 중선의 교점을 $G$라 하자. 선분 $AD$와 선분 $FE$의 교점을 $H$라 하고, 점 $G$를 지나고 변 $BC$에 평행한 직선이 두 변 $AB, AC$와 만나는 점을 각각 $I, J$라 할 때, 다음 보기 중 옳은 것만을 있는 대로 고른 것은?",
+    "content": "$\\triangle ABC$에서 세 점 $D, E, F$는 각각 변 $BC, CA, AB$의 중점이고, 세 중선의 교점을 $G$라 하자. 선분 $AD$와 선분 $FE$의 교점을 $H$라 하고, 점 $G$를 지나고 변 $BC$에 평행한 직선이 두 변 $AB, AC$와 만나는 점을 각각 $I, J$라 할 때, 다음 보기 중 옳은 것만을 있는 대로 고른 것은?\n• ㄱ. $\\overline{AH} : \\overline{HG} = 3 : 1$\n• ㄴ. 사각형 $IBCJ$의 넓이는 삼각형 $AFE$의 넓이의 $\\dfrac{20}{9}$배이다.\n• ㄷ. 삼각형 $ABC$의 넓이가 $48$일 때, 삼각형 $FGE$의 넓이는 $4$이다.",
     "choices": [
       "ㄱ",
       "ㄱ, ㄴ",
@@ -386,7 +386,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "CENTROID_MIDPOINT_ADVANCED_RATIO",
-    "solution": "중점연결정리와 무게중심의 성질을 차례로 적용한다.\nㄱ. 점 $H$는 중점연결선 $\\overline{FE}$와 중선 $\\overline{AD}$의 교점이므로 $\\overline{AH} = \\dfrac{1}{2}\\overline{AD}$이다.\n점 $G$는 무게중심이므로 $\\overline{AG} = \\dfrac{2}{3}\\overline{AD}$이다.\n$$\n\\begin{aligned}\n\\overline{HG} &= \\overline{AG} - \\overline{AH} = \\left(\\frac{2}{3} - \\frac{1}{2}\\right)\\overline{AD} = \\frac{1}{6}\\overline{AD} \\\n\\overline{AH} : \\overline{HG} &= \\frac{1}{2} : \\frac{1}{6} = 3 : 1 \\quad (\\text{참})\n\\end{aligned}\n$$\nㄴ. $\\overline{IJ} \\parallel \\overline{BC}$이므로 $\\triangle AIJ \\sim \\triangle ABC$이고 닮음비는 $\\overline{AG} : \\overline{AD} = 2 : 3$이다.\n넓이의 비는 닮음비의 제곱이므로\n$$\nS_{\\triangle AIJ} = \\left(\\frac{2}{3}\\right)^2 S_{\\triangle ABC} = \\frac{4}{9}S_{\\triangle ABC}\n$$\n따라서 사각형 $IBCJ$의 넓이는\n$$\nS_{IBCJ} = S_{\\triangle ABC} - S_{\\triangle AIJ} = \\left(1 - \\frac{4}{9}\\right)S_{\\triangle ABC} = \\frac{5}{9}S_{\\triangle ABC}\n$$\n또한 점 $F, E$가 중점이므로 $S_{\\triangle AFE} = \\frac{1}{4}S_{\\triangle ABC}$이다.\n$$\nS_{IBCJ} : S_{\\triangle AFE} = \\frac{5}{9} : \\frac{1}{4} = 20 : 9 \\quad (\\text{참})\n$$\nㄷ. $\\triangle FGE$의 밑변은 $\\overline{FE} = \\dfrac{1}{2}\\overline{BC}$이고, 점 $G$와 선분 $\\overline{FE}$ 사이의 높이는 전체 높이의 $\\dfrac{1}{6}$이다.\n$$\nS_{\\triangle FGE} = \\frac{1}{12}S_{\\triangle ABC}\n$$\n$S_{\\triangle ABC} = 48$이면 $S_{\\triangle FGE} = \\frac{48}{12} = 4$이다. (참)\n따라서 ㄱ, ㄴ, ㄷ 모두 옳으므로 정답은 ④이다."
+    "solution": "중점연결정리와 무게중심의 성질을 차례로 적용한다.\nㄱ. 점 $H$는 중점연결선 $\\overline{FE}$와 중선 $\\overline{AD}$의 교점이므로 $\\overline{AH} = \\dfrac{1}{2}\\overline{AD}$이다.\n점 $G$는 무게중심이므로 $\\overline{AG} = \\dfrac{2}{3}\\overline{AD}$이다.\n\n$$\n\\begin{aligned}\n\\overline{HG} &= \\overline{AG} - \\overline{AH} = \\left(\\frac{2}{3} - \\frac{1}{2}\\right)\\overline{AD} = \\frac{1}{6}\\overline{AD} \\\\\n\\overline{AH} : \\overline{HG} &= \\frac{1}{2} : \\frac{1}{6} = 3 : 1 \\quad (\\text{참})\n\\end{aligned}\n$$\n\nㄴ. $\\overline{IJ} \\parallel \\overline{BC}$이므로 $\\triangle AIJ \\sim \\triangle ABC$이고 닮음비는 $\\overline{AG} : \\overline{AD} = 2 : 3$이다.\n넓이의 비는 닮음비의 제곱이므로\n$$\nS_{\\triangle AIJ} = \\left(\\frac{2}{3}\\right)^2 S_{\\triangle ABC} = \\frac{4}{9}S_{\\triangle ABC}\n$$\n따라서 사각형 $IBCJ$의 넓이는\n$$\nS_{IBCJ} = S_{\\triangle ABC} - S_{\\triangle AIJ} = \\left(1 - \\frac{4}{9}\\right)S_{\\triangle ABC} = \\frac{5}{9}S_{\\triangle ABC}\n$$\n또한 점 $F, E$가 중점이므로 $S_{\\triangle AFE} = \\frac{1}{4}S_{\\triangle ABC}$이다.\n$$\nS_{IBCJ} : S_{\\triangle AFE} = \\frac{5}{9} : \\frac{1}{4} = 20 : 9 \\quad (\\text{참})\n$$\nㄷ. $\\triangle FGE$의 밑변은 $\\overline{FE} = \\dfrac{1}{2}\\overline{BC}$이고, 점 $G$와 선분 $\\overline{FE}$ 사이의 높이는 전체 높이의 $\\dfrac{1}{6}$이다.\n$$\nS_{\\triangle FGE} = \\frac{1}{12}S_{\\triangle ABC}\n$$\n삼각형 $ABC$의 넓이가 $48$이므로 $S_{\\triangle FGE} = \\frac{1}{12} \\times 48 = 4$이다. (참)\n따라서 ㄱ, ㄴ, ㄷ 모두 옳으므로 정답은 ④이다."
   },
   {
     "id": 12,
@@ -422,7 +422,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "PANTAGRAPH_SIMILARITY",
-    "solution": "고정점 $O$를 기준으로 선분 $\\overline{OA}$와 $\\overline{OB}$의 길이는\n$$\n\\begin{aligned}\n\\overline{OB} &= \\overline{OA} + \\overline{AB} = 15 + 45 = 60\\rm\\,cm \\\n\\overline{OA} : \\overline{OB} &= 15 : 60 = 1 : 4\n\\end{aligned}\n$$\n$\\overline{AD} \\parallel \\overline{BE}$이므로 $\\triangle OAD \\sim \\triangle OBE$이고 닮음비는\n$$\n\\overline{OA} : \\overline{OB} = 1 : 4\n$$\n따라서 점 $D$가 그리는 도형과 점 $E$가 그리는 도형의 닮음비는 $1:4$이다."
+    "solution": "고정점 $O$를 기준으로 선분 $\\overline{OA}$와 $\\overline{OB}$의 길이는\n\n$$\n\\begin{aligned}\n\\overline{OB} &= \\overline{OA} + \\overline{AB} = 15 + 45 = 60\\rm\\,cm \\\\\n\\overline{OA} : \\overline{OB} &= 15 : 60 = 1 : 4\n\\end{aligned}\n$$\n\n$\\overline{AD} \\parallel \\overline{BE}$이므로 $\\triangle OAD \\sim \\triangle OBE$이고 닮음비는\n$$\n\\overline{OA} : \\overline{OB} = 1 : 4\n$$\n따라서 점 $D$가 그리는 도형과 점 $E$가 그리는 도형의 닮음비는 $1:4$이다."
   },
   {
     "id": 13,
@@ -562,7 +562,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "PROBABILITY_FUNDAMENTAL_PROPERTIES",
-    "solution": "확률의 기본 성질을 검토하면 다음과 같다.\n$$\n\\begin{aligned}\n\\text{① } &\\text{절대로 일어나지 않는 사건의 확률은 } 0\\text{이다. (거짓)} \\\n\\text{② } &\\text{어떤 사건이 일어날 확률 } p\\text{는 항상 } 1\\text{ 이하이다. (거짓)} \\\n\\text{③ } &\\text{확률 } p\\text{의 값의 범위는 } 0 \\le p \\le 1\\text{이다. (거짓)} \\\n\\text{④ } &\\text{사건 } A\\text{가 일어나지 않을 확률은 전체 확률 } 1\\text{에서 } p\\text{를 뺀 } 1-p\\text{이다. (참)} \\\n\\text{⑤ } &\\text{반드시 일어나는 사건의 확률은 } 1\\text{이다. (거짓)}\n\\end{aligned}\n$$\n따라서 옳은 것은 ④이다."
+    "solution": "확률의 기본 성질을 검토하면 다음과 같다.\n\n① 절대로 일어나지 않는 사건의 확률은 $0$이다. (거짓)\n\n② 어떤 사건이 일어날 확률 $p$는 항상 $1$ 이하이다. (거짓)\n\n③ 확률 $p$의 값의 범위는 $0 \\le p \\le 1$이다. (거짓)\n\n④ 사건 $A$가 일어나지 않을 확률은 전체 확률 $1$에서 $p$를 뺀 $1-p$이다. (참)\n\n⑤ 반드시 일어나는 사건의 확률은 $1$이다. (거짓)\n\n따라서 옳은 것은 ④이다."
   },
   {
     "id": 17,
@@ -583,7 +583,7 @@ window.questionBank = [
     "tags": [
       "도형"
     ],
-    "content": "두 삼각형 $ABC$와 $DEF$에서 $\\overline{AB}=10\\rm\\,cm$, $\\overline{DE}=5\\rm\\,cm$, $\\overline{EF}=6\\rm\\,cm$, $\\angle B = \\angle E$이다. 다음 $4$장의 카드 중 한 장을 임의로 뽑아 적힌 조건을 추가할 때, $\\triangle ABC \\sim \\triangle DEF$가 성립할 확률은? [카드 1] $\\overline{BC}=12\\rm\\,cm$ [카드 2] $\\angle A = \\angle D$ [카드 3] $\\angle C = \\angle F$ [카드 4] $\\overline{AC}=10\\rm\\,cm$",
+    "content": "두 삼각형 $ABC$와 $DEF$에서 $\\overline{AB}=10\\rm\\,cm$, $\\overline{DE}=5\\rm\\,cm$, $\\overline{EF}=6\\rm\\,cm$, $\\angle B = \\angle E$이다. 다음 $4$장의 카드 중 한 장을 임의로 뽑아 적힌 조건을 추가할 때, $\\triangle ABC \\sim \\triangle DEF$가 성립할 확률은?\n• [카드 1] $\\overline{BC}=12\\rm\\,cm$\n• [카드 2] $\\angle A = \\angle D$\n• [카드 3] $\\angle C = \\angle F$\n• [카드 4] $\\overline{AC}=10\\rm\\,cm$",
     "choices": [
       "$\\dfrac{3}{4}$",
       "$\\dfrac{1}{2}$",
@@ -597,7 +597,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "TRIANGLE_SIMILARITY_PROBABILITY",
-    "solution": "기본 조건에서 대응변 $\\overline{AB} : \\overline{DE} = 10 : 5 = 2 : 1$이고 대응각 $\\angle B = \\angle E$이다.\n각 카드를 추가했을 때 닮음 성립 여부는 다음과 같다.\n$$\n\\begin{aligned}\n\\text{[카드 1] } &\\overline{BC}=12\\rm\\,cm \\implies \\overline{BC} : \\overline{EF} = 12 : 6 = 2 : 1 \\\n&\\text{두 쌍의 대응변의 길이의 비가 같고 그 끼인각이 같으므로 SAS 닮음 성립 (참)} \\\n\\text{[카드 2] } &\\angle A = \\angle D \\implies \\angle B = \\angle E\\text{와 함께 두 각이 같으므로 AA 닮음 성립 (참)} \\\n\\text{[카드 3] } &\\angle C = \\angle F \\implies \\angle B = \\angle E\\text{와 함께 두 각이 같으므로 AA 닮음 성립 (참)} \\\n\\text{[카드 4] } &\\overline{AC}=10\\rm\\,cm \\implies \\text{끼인각이 아닌 대변이므로 닮음조건이 성립하지 않는다. (거짓)}\n\\end{aligned}\n$$\n따라서 닮음이 성립하는 카드는 [카드 1], [카드 2], [카드 3]의 $3$장이다.\n구하는 확률은\n$$\n\\frac{3}{4}\n$$\n따라서 정답은 ①이다."
+    "solution": "기본 조건에서 대응변 $\\overline{AB} : \\overline{DE} = 10 : 5 = 2 : 1$이고 대응각 $\\angle B = \\angle E$이다.\n각 카드를 추가했을 때 닮음 성립 여부는 다음과 같다.\n\n[카드 1] $\\overline{BC}=12\\rm\\,cm$이므로 $\\overline{BC} : \\overline{EF} = 12 : 6 = 2 : 1$이다. 두 쌍의 대응변의 길이의 비가 같고 그 끼인각이 같으므로 SAS 닮음이 성립한다. (참)\n\n[카드 2] $\\angle A = \\angle D$이므로 $\\angle B = \\angle E$와 함께 두 각이 같아 AA 닮음이 성립한다. (참)\n\n[카드 3] $\\angle C = \\angle F$이므로 $\\angle B = \\angle E$와 함께 두 각이 같아 AA 닮음이 성립한다. (참)\n\n[카드 4] $\\overline{AC}=10\\rm\\,cm$는 $\\angle B$의 대변이므로 두 변의 길이의 비와 그 끼인각이 같은 조건도, 두 각이 같은 조건도 되지 못한다. 따라서 닮음이 성립한다고 할 수 없다. (거짓)\n\n따라서 닮음이 성립하는 카드는 [카드 1], [카드 2], [카드 3]의 $3$장이다.\n구하는 확률은 $\\frac{3}{4}$이다.\n따라서 정답은 ①이다."
   },
   {
     "id": 18,
@@ -632,7 +632,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "OR_PROBABILITY_INCLUSION_EXCLUSION",
-    "solution": "$1$부터 $100$까지의 자연수 중\n$$\n\\begin{aligned}\n3\\text{의 배수의 개수: } &100 \\div 3 = 33\\text{ (개)} \\\n5\\text{의 배수의 개수: } &100 \\div 5 = 20\\text{ (개)} \\\n15\\text{의 배수(공배수)의 개수: } &100 \\div 15 = 6\\text{ (개)}\n\\end{aligned}\n$$\n$3$의 배수 또는 $5$의 배수가 나오는 경우의 수는\n$$\n33 + 20 - 6 = 47\n$$\n전체 경우의 수는 $100$이므로 구하는 확률은\n$$\n\\frac{47}{100}\n$$\n따라서 정답은 ③이다."
+    "solution": "$1$부터 $100$까지의 자연수 중 $3$의 배수의 개수는 $100 \\div 3 = 33$(개)이다.\n$5$의 배수의 개수는 $100 \\div 5 = 20$(개)이다.\n$15$의 배수(공배수)의 개수는 $100 \\div 15 = 6$(개)이다.\n\n$3$의 배수 또는 $5$의 배수가 나오는 경우의 수는 $33 + 20 - 6 = 47$이다.\n전체 경우의 수는 $100$이므로 구하는 확률은 $\\frac{47}{100}$이다.\n따라서 정답은 ③이다."
   },
   {
     "id": 19,
@@ -653,7 +653,7 @@ window.questionBank = [
     "tags": [
       "확률"
     ],
-    "content": "도윤이와 시우가 농구 자유투를 성공할 확률이 각각 $\\dfrac{1}{3}$, $x$이다. 두 사람이 각각 자유투를 한 번씩 던질 때, 적어도 한 명이 성공할 확률이 $\\dfrac{3}{4}$이다. 이때 $x$의 값은?",
+    "content": "도윤이와 시우가 농구 자유투를 성공할 확률이 각각 $\\dfrac{1}{3}$, $x$이다. 두 사람이 각각 자유투를 한 번씩 던질 때, 적어도 한 명이 성공할 확률이 $\\dfrac{3}{4}$이다. (단, 두 사람의 성공 여부는 서로 영향을 주지 않는다.) 이때 $x$의 값은?",
     "choices": [
       "$\\dfrac{1}{4}$",
       "$\\dfrac{3}{8}$",
@@ -667,7 +667,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "AT_LEAST_PROBABILITY_EQUATION",
-    "solution": "'적어도 한 명이 성공한다'는 사건의 여사건은 '두 사람 모두 실패한다'는 사건이다.\n도윤이가 실패할 확률은\n$$\n1 - \\frac{1}{3} = \\frac{2}{3}\n$$\n시우가 실패할 확률은 $1 - x$이다.\n두 사람이 모두 실패할 확률은\n$$\n\\frac{2}{3}(1 - x)\n$$\n적어도 한 명이 성공할 확률이 $\\dfrac{3}{4}$이므로\n$$\n\\begin{aligned}\n1 - \\frac{2}{3}(1 - x) &= \\frac{3}{4} \\\n\\frac{2}{3}(1 - x) &= \\frac{1}{4} \\\n1 - x &= \\frac{1}{4} \\times \\frac{3}{2} = \\frac{3}{8} \\\nx &= 1 - \\frac{3}{8} \\\n&= \\frac{5}{8}\n\\end{aligned}\n$$\n따라서 $x$의 값은 $\\dfrac{5}{8}$이다."
+    "solution": "'적어도 한 명이 성공한다'는 사건의 여사건은 '두 사람 모두 실패한다'는 사건이다.\n도윤이가 실패할 확률은\n$$\n1 - \\frac{1}{3} = \\frac{2}{3}\n$$\n시우가 실패할 확률은 $1 - x$이다.\n두 사람이 모두 실패할 확률은\n$$\n\\frac{2}{3}(1 - x)\n$$\n적어도 한 명이 성공할 확률이 $\\dfrac{3}{4}$이므로\n\n$$\n\\begin{aligned}\n1 - \\frac{2}{3}(1 - x) &= \\frac{3}{4} \\\\\n\\frac{2}{3}(1 - x) &= \\frac{1}{4} \\\\\n1 - x &= \\frac{1}{4} \\times \\frac{3}{2} = \\frac{3}{8} \\\\\nx &= 1 - \\frac{3}{8} \\\\\n&= \\frac{5}{8}\n\\end{aligned}\n$$\n\n따라서 $x$의 값은 $\\dfrac{5}{8}$이다."
   },
   {
     "id": 20,
@@ -689,7 +689,7 @@ window.questionBank = [
       "확률",
       "표"
     ],
-    "content": "좌표평면의 원점 $O(0, 0)$에 말이 놓여 있다. 주사위 한 개를 던져 나오는 눈의 수에 따라 다음과 같이 말을 이동시킨다. - 홀수의 눈이 나오면 $x$축의 양의 방향으로 $1$만큼 이동한다. - 짝수의 눈이 나오면 $y$축의 양의 방향으로 $1$만큼 이동한다. 주사위를 $3$번 던졌을 때, 말이 점 $(2, 1)$에 도착할 확률은?",
+    "content": "좌표평면의 원점 $O(0, 0)$에 말이 놓여 있다. 주사위 한 개를 던져 나오는 눈의 수에 따라 다음과 같이 말을 이동시킨다.\n• 홀수의 눈이 나오면 $x$축의 양의 방향으로 $1$만큼 이동한다.\n• 짝수의 눈이 나오면 $y$축의 양의 방향으로 $1$만큼 이동한다.\n\n주사위를 $3$번 던졌을 때, 말이 점 $(2, 1)$에 도착할 확률은?",
     "choices": [
       "$\\dfrac{1}{4}$",
       "$\\dfrac{3}{8}$",
@@ -703,7 +703,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "COORDINATE_WALK_PROBABILITY",
-    "solution": "주사위를 한 번 던질 때 홀수의 눈이 나올 확률은 $\\dfrac{3}{6} = \\dfrac{1}{2}$이고, 짝수의 눈이 나올 확률은 $\\dfrac{3}{6} = \\dfrac{1}{2}$이다.\n말이 원점에서 점 $(2, 1)$에 도착하려면 $3$번의 시행 중 홀수가 $2$번, 짝수가 $1$번 나와야 한다.\n홀수와 짝수가 나오는 순서는\n$$\n(\\text{홀}, \\text{홀}, \\text{짝}), \\quad (\\text{홀}, \\text{짝}, \\text{홀}), \\quad (\\text{짝}, \\text{홀}, \\text{홀}) \\implies 3\\text{가지}\n$$\n각 순서가 일어날 확률은 독립시행의 곱에 의해\n$$\n\\frac{1}{2} \\times \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{8}\n$$\n따라서 구하는 확률은\n$$\n3 \\times \\frac{1}{8} = \\frac{3}{8}\n$$\n따라서 정답은 ②이다."
+    "solution": "주사위를 한 번 던질 때 홀수의 눈이 나올 확률은 $\\dfrac{3}{6} = \\dfrac{1}{2}$이고, 짝수의 눈이 나올 확률은 $\\dfrac{3}{6} = \\dfrac{1}{2}$이다.\n말이 원점에서 점 $(2, 1)$에 도착하려면 $3$번의 시행 중 홀수가 $2$번, 짝수가 $1$번 나와야 한다.\n홀수와 짝수가 나오는 순서는\n$$\n(\\text{홀}, \\text{홀}, \\text{짝}), \\quad (\\text{홀}, \\text{짝}, \\text{홀}), \\quad (\\text{짝}, \\text{홀}, \\text{홀}) \\implies 3\\text{가지}\n$$\n각 시행의 결과는 서로 영향을 주지 않으므로 각 순서가 일어날 확률은\n$$\n\\frac{1}{2} \\times \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{8}\n$$\n따라서 구하는 확률은\n$$\n3 \\times \\frac{1}{8} = \\frac{3}{8}\n$$\n따라서 정답은 ②이다."
   },
   {
     "id": 21,
@@ -718,14 +718,14 @@ window.questionBank = [
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "questionType": "서답형",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
     "tags": [
       "도형",
       "그래프"
     ],
-    "content": "[서술형 1] 일차방정식 $4x+3y-24=0$의 그래프가 $x$축, $y$축과 만나는 점을 각각 $A, B$라 하고, 원점 $O$에서 선분 $\\overline{AB}$에 내린 수선의 발을 $C$라 하자. 다음 물음에 답하시오. [7점] (1) 세 선분 $\\overline{OA}, \\overline{OB}, \\overline{AB}$의 길이를 각각 구하시오. [4점] (2) 선분 $\\overline{OC}$의 길이를 구하고, 그 과정을 서술하시오. [3점]",
+    "content": "[서술형 1] 일차방정식 $4x+3y-24=0$의 그래프가 $x$축, $y$축과 만나는 점을 각각 $A, B$라 하고, 원점 $O$에서 선분 $\\overline{AB}$에 내린 수선의 발을 $C$라 하자. 다음 물음에 답하시오. [7점]\n(1) 세 선분 $\\overline{OA}, \\overline{OB}, \\overline{AB}$의 길이를 각각 구하시오. [4점]\n(2) 선분 $\\overline{OC}$의 길이를 구하고, 그 과정을 서술하시오. [3점]",
     "choices": [],
     "answer": "(1) $\\overline{OA}=6, \\overline{OB}=8, \\overline{AB}=10$\n(2) $\\dfrac{24}{5}$",
     "points": 7,
@@ -733,7 +733,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "RIGHT_TRIANGLE_ALTITUDE_AREA",
-    "solution": "(1) 일차방정식 $4x+3y-24=0$에서\n$y=0$을 대입하면 $4x-24=0 \\implies x=6$이므로 점 $A(6, 0)$이다. 따라서\n$$\n\\overline{OA} = 6\n$$\n$x=0$을 대입하면 $3y-24=0 \\implies y=8$이므로 점 $B(0, 8)$이다. 따라서\n$$\n\\overline{OB} = 8\n$$\n$\\triangle OAB$는 $\\angle O = 90^\\circ$인 직각삼각형이므로 피타고라스 정리에 의해\n$$\n\\begin{aligned}\n\\overline{AB} &= \\sqrt{\\overline{OA}^2 + \\overline{OB}^2} \\\n&= \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} \\\n&= 10\n\\end{aligned}\n$$\n\n(2) $\\triangle OAB$의 넓이를 두 가지 방법으로 나타내면\n$$\nS = \\frac{1}{2} \\times \\overline{OA} \\times \\overline{OB} = \\frac{1}{2} \\times \\overline{AB} \\times \\overline{OC}\n$$\n이 성립한다. 구한 값을 대입하면\n$$\n\\begin{aligned}\n\\frac{1}{2} \\times 6 \\times 8 &= \\frac{1}{2} \\times 10 \\times \\overline{OC} \\\n48 &= 10 \\times \\overline{OC} \\\n\\overline{OC} &= \\frac{48}{10} = \\frac{24}{5}\n\\end{aligned}\n$$\n따라서 (1) $\\overline{OA}=6, \\overline{OB}=8, \\overline{AB}=10$, (2) $\\dfrac{24}{5}$이다."
+    "solution": "(1) 일차방정식 $4x+3y-24=0$에서\n$y=0$을 대입하면 $4x-24=0 \\implies x=6$이므로 점 $A(6, 0)$이다. 따라서\n$$\n\\overline{OA} = 6\n$$\n$x=0$을 대입하면 $3y-24=0 \\implies y=8$이므로 점 $B(0, 8)$이다. 따라서\n$$\n\\overline{OB} = 8\n$$\n$\\triangle OAB$는 $\\angle O = 90^\\circ$인 직각삼각형이므로 피타고라스 정리에 의해\n\n$$\n\\begin{aligned}\n\\overline{AB} &= \\sqrt{\\overline{OA}^2 + \\overline{OB}^2} \\\\\n&= \\sqrt{6^2 + 8^2} = \\sqrt{36 + 64} = \\sqrt{100} \\\\\n&= 10\n\\end{aligned}\n$$\n\n(2) $\\triangle OAB$의 넓이를 두 가지 방법으로 나타내면\n$$\nS = \\frac{1}{2} \\times \\overline{OA} \\times \\overline{OB} = \\frac{1}{2} \\times \\overline{AB} \\times \\overline{OC}\n$$\n이 성립한다. 구한 값을 대입하면\n\n$$\n\\begin{aligned}\n\\frac{1}{2} \\times 6 \\times 8 &= \\frac{1}{2} \\times 10 \\times \\overline{OC} \\\\\n48 &= 10 \\times \\overline{OC} \\\\\n\\overline{OC} &= \\frac{48}{10} = \\frac{24}{5}\n\\end{aligned}\n$$\n\n따라서 (1) $\\overline{OA}=6, \\overline{OB}=8, \\overline{AB}=10$, (2) $\\dfrac{24}{5}$이다."
   },
   {
     "id": 22,
@@ -748,13 +748,13 @@ window.questionBank = [
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "questionType": "서답형",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
     "tags": [
       "확률"
     ],
-    "content": "[서술형 2] 한 변의 길이가 $1$인 정오각형 $ABCDE$의 꼭짓점 $A$에서 출발하여 변을 따라 시계 반대 방향으로 이동하는 점 $P$가 있다. 서로 다른 주사위 $2$개를 동시에 던져 나온 두 눈의 수의 합만큼 점 $P$를 이동시킬 때, 다음 물음에 답하시오. [7점] (1) 점 $P$가 꼭짓점 $D$에 도착하기 위한 두 눈의 수의 합을 모두 구하시오. [2점] (2) 점 $P$가 꼭짓점 $D$에 도착할 수 있는 모든 경우를 순서쌍으로 나타내시오. [3점] (3) 점 $P$가 꼭짓점 $D$에 도착할 확률을 구하시오. [2점]",
+    "content": "[서술형 2] 한 변의 길이가 $1$인 정오각형 $ABCDE$의 꼭짓점 $A$에서 출발하여 변을 따라 $A \\to B \\to C \\to D \\to E$ 방향(시계 반대 방향)으로 이동하는 점 $P$가 있다. 서로 다른 주사위 $2$개를 동시에 던져 나온 두 눈의 수의 합만큼 점 $P$를 이동시킬 때, 다음 물음에 답하시오. [7점]\n(1) 점 $P$가 꼭짓점 $D$에 도착하기 위한 두 눈의 수의 합을 모두 구하시오. [2점]\n(2) 점 $P$가 꼭짓점 $D$에 도착할 수 있는 모든 경우를 순서쌍으로 나타내시오. [3점]\n(3) 점 $P$가 꼭짓점 $D$에 도착할 확률을 구하시오. [2점]",
     "choices": [],
     "answer": "(1) $3, 8$\n(2) $(1, 2), (2, 1), (2, 6), (3, 5), (4, 4), (5, 3), (6, 2)$\n(3) $\\dfrac{7}{36}$",
     "points": 7,
@@ -777,13 +777,13 @@ window.questionBank = [
     "subUnit": "확률의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "questionType": "서답형",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
     "tags": [
       "확률"
     ],
-    "content": "[서술형 3] 주머니 $A$에는 노란 구슬 $3$개와 파란 구슬 $2$개가 들어 있고, 주머니 $B$에는 노란 구슬 $4$개와 파란 구슬 $1$개가 들어 있다. 주머니 $A$와 주머니 $B$에서 구슬을 각각 한 개씩 임의로 꺼낼 때, 다음 물음에 답하시오. [6점] (1) 주머니 $A$에서 노란 구슬을 꺼낼 확률을 구하시오. [2점] (2) 주머니 $B$에서 노란 구슬을 꺼낼 확률을 구하시오. [2점] (3) 두 구슬이 모두 노란 구슬일 확률을 구하고, 그 과정을 서술하시오. [2점]",
+    "content": "[서술형 3] 주머니 $A$에는 노란 구슬 $3$개와 파란 구슬 $2$개가 들어 있고, 주머니 $B$에는 노란 구슬 $4$개와 파란 구슬 $1$개가 들어 있다. 주머니 $A$와 주머니 $B$에서 구슬을 각각 한 개씩 임의로 꺼낼 때, 다음 물음에 답하시오. [6점]\n(1) 주머니 $A$에서 노란 구슬을 꺼낼 확률을 구하시오. [2점]\n(2) 주머니 $B$에서 노란 구슬을 꺼낼 확률을 구하시오. [2점]\n(3) 두 구슬이 모두 노란 구슬일 확률을 구하고, 그 과정을 서술하시오. [2점]",
     "choices": [],
     "answer": "(1) $\\dfrac{3}{5}$\n(2) $\\dfrac{4}{5}$\n(3) $\\dfrac{12}{25}$",
     "points": 6,
@@ -791,6 +791,6 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "중2 수학",
     "conceptClusterKey": "INDEPENDENT_PROBABILITY_MULTIPLICATION",
-    "solution": "(1) 주머니 $A$에 들어 있는 전체 구슬의 개수는 $3 + 2 = 5$개이다.\n노란 구슬이 $3$개 들어 있으므로 구하는 확률은\n$$\nP(A) = \\frac{3}{5}\n$$\n\n(2) 주머니 $B$에 들어 있는 전체 구슬의 개수는 $4 + 1 = 5$개이다.\n노란 구슬이 $4$개 들어 있으므로 구하는 확률은\n$$\nP(B) = \\frac{4}{5}\n$$\n\n(3) 주머니 $A$에서 구슬을 꺼내는 사건과 주머니 $B$에서 구슬을 꺼내는 사건은 서로 영향을 주지 않는 독립적인 사건이다.\n따라서 곱의 법칙에 의해 두 구슬이 모두 노란 구슬일 확률은\n$$\n\\begin{aligned}\nP(A \\cap B) &= P(A) \\times P(B) \\\n&= \\frac{3}{5} \\times \\frac{4}{5} \\\n&= \\frac{12}{25}\n\\end{aligned}\n$$\n따라서 (1) $\\dfrac{3}{5}$, (2) $\\dfrac{4}{5}$, (3) $\\dfrac{12}{25}$이다."
+    "solution": "(1) 주머니 $A$에 들어 있는 전체 구슬의 개수는 $3 + 2 = 5$개이다.\n노란 구슬이 $3$개 들어 있으므로 구하는 확률은\n$$\nP(A) = \\frac{3}{5}\n$$\n\n(2) 주머니 $B$에 들어 있는 전체 구슬의 개수는 $4 + 1 = 5$개이다.\n노란 구슬이 $4$개 들어 있으므로 구하는 확률은\n$$\nP(B) = \\frac{4}{5}\n$$\n\n(3) 주머니 $A$에서 구슬을 꺼내는 사건과 주머니 $B$에서 구슬을 꺼내는 사건은 서로 영향을 주지 않는 독립적인 사건이다.\n따라서 곱의 법칙에 의해 두 구슬이 모두 노란 구슬일 확률은\n\n$$\n\\begin{aligned}\nP(A \\cap B) &= P(A) \\times P(B) \\\\\n&= \\frac{3}{5} \\times \\frac{4}{5} \\\\\n&= \\frac{12}{25}\n\\end{aligned}\n$$\n\n따라서 (1) $\\dfrac{3}{5}$, (2) $\\dfrac{4}{5}$, (3) $\\dfrac{12}{25}$이다."
   }
 ];
