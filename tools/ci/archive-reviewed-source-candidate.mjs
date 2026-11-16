@@ -7,6 +7,8 @@ import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { REVIEWED_META_VALUE_FIELDS } from '../../archive/tools/meta-foundation/reviewed-meta-value-fields.mjs';
 import { createQuestionIdentityResolver } from '../../archive/tools/intelligence/question-identity-contract.mjs';
+import { M2_PROBLEM_IMAGE_REPAIR8_PROFILE, validateM2ProblemImageRepair8Candidate,
+  materializeM2ProblemImageRepair8 } from '../../archive/tools/meta-foundation/materialize-reviewed-problem-image-repair8.mjs';
 
 export const CANDIDATE_ENVELOPE = '.archive-source-metadata/candidate.json';
 export const CANDIDATE_SCHEMA = 'archive-reviewed-source-candidate-input-v1';
@@ -835,7 +837,9 @@ export function inspectSourceMetadataCandidate({ repoRoot, inputCommit, eventRef
   verifiedRef(envelope.manifestRef, manifestFile);
   requireThat(manifestFile.value.materializationId === envelope.materializationId &&
     manifestFile.value.baseCommit === baseCommit, 'MANIFEST_IDENTITY');
-  const closure = validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, manifestFile, files });
+  const closure = manifestFile.value.transportProfile === M2_PROBLEM_IMAGE_REPAIR8_PROFILE
+    ? validateM2ProblemImageRepair8Candidate({ root, baseCommit, inputCommit, envelope, manifestFile, files })
+    : validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, manifestFile, files });
   return { root, baseCommit, inputCommit, materializationId: envelope.materializationId,
     candidateBranch: `release/metadata-source-${envelope.materializationId}`, envelopeFile, manifestFile, files,
     totalInputBytes: total, closure };
@@ -856,7 +860,9 @@ export async function buildSourceMetadataCandidate({ repoRoot, inputCommit, even
   const { root, baseCommit, manifestFile, materializationId, candidateBranch } = inspected;
   const target = outsideNewDirectory(root, outputRoot);
   const { materializeReviewedSourceMetadata } = await import('../../archive/tools/meta-foundation/materialize-reviewed-source-metadata.mjs');
-  await materializeReviewedSourceMetadata({ repoRoot: root, manifest: manifestFile.value,
+  const materialize = manifestFile.value.transportProfile === M2_PROBLEM_IMAGE_REPAIR8_PROFILE
+    ? materializeM2ProblemImageRepair8 : materializeReviewedSourceMetadata;
+  await materialize({ repoRoot: root, manifest: manifestFile.value,
     baseCommit, inputCommit, outputRoot: target, write: true });
   const manifest = manifestFile.value;
   requireThat(Array.isArray(manifest.files) && manifest.files.length > 0, 'MATERIALIZED_FILES_REQUIRED');

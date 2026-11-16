@@ -19,6 +19,7 @@ import { validateM2S1PrerequisiteExistingApplication } from "./reviewed-m2s1-pre
 import { validateM3S2CurrentTargetApplication } from "./reviewed-m3s2-current-target-application.mjs";
 import { validateM2ProblemRendererContinuity } from "./reviewed-m2-problem-renderer-continuity.mjs";
 import { validateReviewedM2CcRendererContinuity } from "./reviewed-m2-cc-renderer-continuity.mjs";
+import { validateM2E017RhsContinuity } from "./reviewed-m2-e017-rhs-continuity.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -218,6 +219,15 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       kind !== "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA";
   })) fail("native review retains an explicit source/content/difficulty hold");
   const payload = studentPayload(question);
+  const e017Rhs = validateM2E017RhsContinuity({ root, request, patch, native: loaded, row,
+    question, studentPayload, bankFromBytes });
+  if (e017Rhs) {
+    const inner = validateReviewedSourceReassessment({ root, request, patch: e017Rhs.normalizedPatch,
+      metadata, question: e017Rhs.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
+      issuedSourceReview, cache });
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)), e017RhsContinuity: {
+      ...e017Rhs.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
+  }
   const m2ProblemRenderer = validateM2ProblemRendererContinuity({ root, request, patch, native: loaded, row,
     question, studentPayload, bankFromBytes, cache });
   if (m2ProblemRenderer) {

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "middle-native-main410-phase1-integration-review-v1",
+  "parents": [
+    "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+    "41013240126886b4550f364d5f880f0471ce351f"
+  ],
+  "counts": {
+    "requests": 16,
+    "uniqueUidCount": 126,
+    "sourceCount": 14,
+    "recoveryUidCount": 81,
+    "auditCohortUidCount": 24,
+    "E004SourcePreserveUidCount": 10,
+    "E011SourcePreserveUidCount": 1,
+    "otherApprovedNativeTransportUidCount": 10,
+    "registryProviderRequests": 4,
+    "addOnlyRegistryRows": 6,
+    "alreadyIssuedExcludedUidCount": 4,
+    "alreadyIssuedQ17RetainedAsSourcePreservationUidCount": 1
+  },
+  "selectedSourceCount": 14,
+  "directEvidenceRefs": 339,
+  "directEvidenceRawExact": true,
+  "actualIssuedMain": {
+    "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+    "requests": 3,
+    "uids": 5,
+    "currentRowsPerLayer": 5,
+    "officialConsumerPassed": 5,
+    "skipped": 0
+  },
+  "newRequestSemantics": "Original approval transports plus exact existing Q17 source preservation; no new mathematical or difficulty judgment",
+  "nativeUnion": {
+    "manualFiles": 2,
+    "autoMergedFiles": 3,
+    "independentBlocking": 0,
+    "selectedSyntheticPassed": 332,
+    "localSuiteTimeouts": 1,
+    "timeoutSeconds": 60,
+    "unobservedSuite": "archive-reviewed-source-candidate.test.mjs",
+    "officialCIRequired": true
+  },
+  "providerSelection": {
+    "productionFiles": 1,
+    "testFiles": 1,
+    "syntheticPassed": 45,
+    "syntheticFailed": 0,
+    "skipped": 0,
+    "independentBlocking": 0,
+    "canonicalActiveAndExactEqualityUnchanged": true
+  },
+  "excludedM3S1ExactPaths": 1713,
+  "excludedM3S1OwnedPathChanges": 0,
+  "parallelMainSourceAssetPathsPreserved": 41,
+  "actualRegistrationAndConsumer": "NOT_RUN_FOR_THIS_126_INPUT",
+  "E035": "HOLD_SEPARATE_ACTUAL_UI_AND_NATIVE_GATE",
+  "f932": "UNISSUED_UNTIL_ACTUAL_PHASE1_E082_MAIN_GATE",
+  "newMainM1SvgSources": "Preserved exact main; impact audit separate and pending, not included in the frozen 969 prediction",
+  "reports": [
+    {
+      "path": "docs/operations/middle-native-registration-20261115/main410-phase1/input126-manifest.json",
+      "sha256": "b1484cb51add595df610fa4127c063e99ab13cd746a7c61e2faab932cc14ed25"
+    },
+    {
+      "path": "docs/operations/middle-native-registration-20261115/main410-phase1/input126-independent.json",
+      "sha256": "5ac5225796bcb523f33eb0d18caa8d83ccb33d91fc231568e4deec2984c6ca9b"
+    },
+    {
+      "path": "docs/operations/middle-native-registration-20261115/main410-phase1/actual-issued5-current-rows.json",
+      "sha256": "3257556f56db4353e07bac57372fb7aa71537eff9412c1687ef84766cea1257c"
+    },
+    {
+      "path": "docs/operations/middle-native-registration-20261115/main410-phase1/actual-issued5-official-consumer.json",
+      "sha256": "5bb3aa3dc302402e78189864d35a4227fe116f6a02ccdf894ff2762d3faf4406"
+    },
+    {
+      "path": "docs/operations/middle-native-registration-20261115/main410-phase1/latest410-selected14-source.json",
+      "sha256": "da1cbc72b809a4cbdd38a002edb11ee20ca6030761c78481171c9552db097e6f"
+    },
+    {
+      "path": "docs/operations/middle-native-registration-20261115/main410-phase1/native-union-independent.json",
+      "sha256": "c6cea8319e87045886c2d0326451a22e18d82c702e8ff95052812950761ce8ac"
+    },
+    {
+      "path": "docs/operations/middle-native-registration-20261115/main410-phase1/provider-selection-validation.json",
+      "sha256": "9328d3eb41ae331e788e5db1f02d1157eee6e3b7c0c531f95685f1b7a15be515"
+    },
+    {
+      "path": "docs/operations/middle-native-registration-20261115/main410-phase1/provider-selection-independent.json",
+      "sha256": "beff26d34bad7d3d2d3b50f1c6968e8f56e27755b9b2ac40caf12c5631bb011c"
+    },
+    {
+      "path": "docs/operations/middle-native-registration-20261115/main410-phase1/native-union-selected-regression.json",
+      "sha256": "92296b7c10f90f1a18727e6518aeec2347b6180689341e37a11a9cb5b99e048d"
+    }
+  ]
+}

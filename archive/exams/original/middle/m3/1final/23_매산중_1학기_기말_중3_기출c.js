@@ -137,8 +137,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] $a^2 \\pm 2ab + b^2 = (a \\pm b)^2$ 공식을 이용한다.\\n조건 정리: 주어진 식이 완전제곱식이 되어야 하고, $\\square$는 양수이다.\\n정석 풀이: 주어진 식의 양 끝 항을 제곱 형태로 나타내면\\n$4x^2 = (2x)^2$, $25y^2 = (5y)^2$이다.\\n이 식이 완전제곱식이 되려면 가운데 항은 $\\pm 2 \\times (2x) \\times (5y) = \\pm 20xy$가 되어야 한다.\\n문제에서 구하는 $\\square$ 안의 값은 양수이므로 $20$이다.\\n따라서 정답은 ①이다.",
-    "subUnitKey": "M3-02-FACTORIZATION",
-    "subUnit": "인수분해",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
   },

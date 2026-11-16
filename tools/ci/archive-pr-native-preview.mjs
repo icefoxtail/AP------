@@ -1,5 +1,5 @@
 // Apply source-bound v2 and official difficulty5 requests in a disposable CI checkout.
-// PRs select changed requests, their exact pending ACTIVE binding providers,
+// PRs select changed requests, their exact pending ACTIVE binding/definition providers,
 // and proven existing FINAL_QA source continuities.
 // Pushes select the exact pending HEAD inbox.
 // The main writer, inbox consumption and approval policy remain unchanged.
@@ -579,55 +579,72 @@ function partialFinalQaPreservation(request) {
 // comes from the same immutable HEAD inbox, never a working copy or moving ref.
 // A matching provider must still pass the ordinary request/source/evidence
 // selector and official registrar; this does not approve a canonical row.
-function selectBindingProviderClosure({ root, baseSha, headSha, files, basePaths, pendingPaths }) {
-  const fixed = new Map(), providers = new Map();
+function selectRegistryProviderClosure({ root, baseSha, headSha, files, basePaths, pendingPaths }) {
+  const kinds = [
+    { name: 'binding', describe: nativeRegistryDependencyDescriptor,
+      key: row => JSON.stringify(row.key), providers: new Map(), inherited: new Map(),
+      ambiguous: 'REGISTRY_DEPENDENCY_AMBIGUOUS', changed: 'INHERITED_BINDING_PROVIDER_CHANGED' },
+    { name: 'definition', describe: nativeDefinitionDependencyDescriptor,
+      key: row => JSON.stringify([row.collection, row.key]), providers: new Map(), inherited: new Map(),
+      ambiguous: 'DEFINITION_DEPENDENCY_AMBIGUOUS', changed: 'INHERITED_DEFINITION_PROVIDER_CHANGED' },
+  ];
+  const fixed = new Map();
   for (const file of pendingPaths) {
     const raw = gitBytes(root, `${headSha}:${file}`);
     let request;
     try { request = JSON.parse(raw); } catch { continue; }
     if (!request || typeof request !== 'object' || Array.isArray(request)) continue;
-    const descriptor = nativeRegistryDependencyDescriptor(request);
-    if (!descriptor) continue;
-    fixed.set(file, { raw, descriptor });
-    for (const row of descriptor.provides) {
-      const key = JSON.stringify(row.key);
-      if (!providers.has(key)) providers.set(key, []);
-      providers.get(key).push(file);
+    const descriptors = new Map();
+    for (const kind of kinds) {
+      const descriptor = kind.describe(request);
+      if (!descriptor) continue;
+      descriptors.set(kind.name, descriptor);
+      for (const row of descriptor.provides) {
+        const key = kind.key(row);
+        if (!kind.providers.has(key)) kind.providers.set(key, []);
+        kind.providers.get(key).push(file);
+      }
     }
+    fixed.set(file, { raw, descriptors });
   }
-  const selected = new Set(files), queue = [...selected], inherited = new Map();
+  const initial = new Set(files), selected = new Set(files), queue = [...selected];
   for (let i = 0; i < queue.length; i++) {
     const consumer = queue[i];
-    for (const row of fixed.get(consumer)?.descriptor.requires || []) {
-      const matches = providers.get(JSON.stringify(row.key)) || [];
-      if (matches.length > 1) fail('REGISTRY_DEPENDENCY_AMBIGUOUS');
+    for (const kind of kinds) for (const row of fixed.get(consumer)?.descriptors.get(kind.name)?.requires || []) {
+      const matches = kind.providers.get(kind.key(row)) || [];
+      if (matches.length > 1) fail(kind.ambiguous);
       const provider = matches[0];
-      // A missing provider may be an existing canonical binding. Leave that
+      // A missing provider may be an existing canonical binding/definition. Leave that
       // decision, including refusal of a missing ACTIVE row, to the registrar.
       if (!provider || provider === consumer) continue;
       if (!selected.has(provider)) {
         const raw = fixed.get(provider).raw;
         if (!basePaths.has(provider) || !raw.equals(gitBytes(root, `${baseSha}:${provider}`)))
-          fail(`INHERITED_BINDING_PROVIDER_CHANGED:${provider}`);
-        inherited.set(provider, { baseSha, requestSha256: sha(raw), requiredBy: [] });
+          fail(`${kind.changed}:${provider}`);
         selected.add(provider); queue.push(provider);
       }
-      const reason = inherited.get(provider);
-      const witness = { requestPath: consumer, questionUid: row.questionUid, sourceOrdinal: row.sourceOrdinal, key: row.key };
+      if (!initial.has(provider) && !kind.inherited.has(provider)) kind.inherited.set(provider,
+        { baseSha, requestSha256: sha(fixed.get(provider).raw), requiredBy: [] });
+      const reason = kind.inherited.get(provider);
+      const witness = { requestPath: consumer, questionUid: row.questionUid, sourceOrdinal: row.sourceOrdinal,
+        ...(kind.name === 'definition' ? { collection: row.collection } : {}), key: row.key };
       if (reason && !reason.requiredBy.some(value => eq(value, witness))) reason.requiredBy.push(witness);
     }
   }
-  for (const reason of inherited.values()) reason.requiredBy.sort((a, b) =>
+  for (const kind of kinds) for (const reason of kind.inherited.values()) reason.requiredBy.sort((a, b) =>
     a.requestPath.localeCompare(b.requestPath, 'en') || a.sourceOrdinal - b.sourceOrdinal
+      || (a.collection || '').localeCompare(b.collection || '', 'en')
       || JSON.stringify(a.key).localeCompare(JSON.stringify(b.key), 'en'));
-  return { files: [...selected], inherited };
+  return { files: [...selected], inheritedBindings: kinds[0].inherited, inheritedDefinitions: kinds[1].inherited };
 }
 
 // A code-only PR may inherit source changes whose registration writer is still
 // pending. An exact no-new-approval partial FINAL_QA rebind may supply that
 // existing receipt. A fingerprint-only source review needs the exact issued
 // approval witness above. Other inherited requests are selected only when
-// their exact add-only ACTIVE binding is required by this fixed selection.
+// their exact add-only ACTIVE binding or CC/COND definition is explicitly
+// required by this fixed selection. The canonical equality/ACTIVE gates remain
+// in the unchanged registrar, after the provider's ordinary validated write.
 export function selectNativeRequests({ root, baseSha, headSha }) {
   const fields = git(root, 'diff', '--name-status', '--diff-filter=AM', '--no-renames', '-z', baseSha, headSha, '--', INBOX).split('\0').filter(Boolean);
   if (fields.length % 2) fail('DIFF_INVALID');
@@ -653,9 +670,10 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     else inheritedReassessments.set(file, { baseSha, requestSha256: sha(raw), ...reassessment });
     files.push(file);
   }
-  const closure = selectBindingProviderClosure({ root, baseSha, headSha, files, basePaths, pendingPaths });
+  const closure = selectRegistryProviderClosure({ root, baseSha, headSha, files, basePaths, pendingPaths });
   return selectFixedNativeRequests({ root, files: closure.files, headSha, rejectUnsupported: false,
-    inherited, inheritedBindingProviders: closure.inherited, inheritedReassessments });
+    inherited, inheritedBindingProviders: closure.inheritedBindings,
+    inheritedDefinitionProviders: closure.inheritedDefinitions, inheritedReassessments });
 }
 
 const flatInboxPath = file => file.startsWith(INBOX) && !file.slice(INBOX.length).includes('/') && file.endsWith('.json');
@@ -865,7 +883,7 @@ function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, histor
   return [...refs.values()].sort((a, b) => a.path.localeCompare(b.path, 'en'));
 }
 
-function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, inherited = new Map(), inheritedBindingProviders = new Map(), inheritedReassessments = new Map() }) {
+function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, inherited = new Map(), inheritedBindingProviders = new Map(), inheritedDefinitionProviders = new Map(), inheritedReassessments = new Map() }) {
   const requests = [];
   for (const file of files) {
     safe(root, file);
@@ -936,6 +954,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       sourceQuestionCount: request.expectedQuestionCount, selectedItems,
       ...(inherited.has(file) ? { inheritedPreservation: inherited.get(file) } : {}),
       ...(inheritedBindingProviders.has(file) ? { inheritedBindingProvider: inheritedBindingProviders.get(file) } : {}),
+      ...(inheritedDefinitionProviders.has(file) ? { inheritedDefinitionProvider: inheritedDefinitionProviders.get(file) } : {}),
       ...(inheritedReassessments.has(file) ? { inheritedFingerprintReassessment: inheritedReassessments.get(file) } : {}),
       ...(partial ? { scope: request.scope } : {}),
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),

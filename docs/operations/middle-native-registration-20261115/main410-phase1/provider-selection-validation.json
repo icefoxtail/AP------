@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "archive-pr-pending-definition-provider-selection-review-v1",
+  "status": "LOCAL_TARGETED_PASS_INDEPENDENT_REVIEW_PENDING",
+  "author": "/root/m1_compact_transport",
+  "createdAt": "2026-11-16T10:29:18.277118+00:00",
+  "baseCodeCommit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+  "observedCiFailure": {
+    "logRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main4af-intake/ci633-test-original.log",
+      "sha256": "98f7bd2d3c587545fb310800987ecf7d6248d9cc986c2bedf35cd22a687faaa7",
+      "bytes": 315781
+    },
+    "runId": 43844505698,
+    "headCommit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+    "baseCommit": "a66fe820204ac8aaeb086124321dbc8259554a69",
+    "checkoutCommit": "b34ee4255c2f99f32d786e48ce34b1c97e8f0556",
+    "error": "native proposal finalization: reused canonical definition changed or was not already ACTIVE",
+    "request": ".archive-meta-register/inbox/m2s2-follow6-20261115-E005.json",
+    "checkoutEvidenceBoundary": "Exact checkout id comes from the original CI log. Its b34 merge object is not available locally; this analysis uses exact633 and its direct a66 parent. No new CI or registration run is claimed."
+  },
+  "rawFacts": {
+    "providerBaseRef": {
+      "commit": "a66fe820204ac8aaeb086124321dbc8259554a69",
+      "path": ".archive-meta-register/inbox/m2s2-centroid2-current-v2-26fc-20261115-E023.json",
+      "sha256": "fae8e0ca586d01566451d427398c7f34e9fcd5df53c9b0671db39891dffe991c",
+      "gitBlobSha1": "3ecfd00a5ca09f7018f43d75516964e48fcef6ae",
+      "bytes": 23051
+    },
+    "providerHeadRef": {
+      "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+      "path": ".archive-meta-register/inbox/m2s2-centroid2-current-v2-26fc-20261115-E023.json",
+      "sha256": "fae8e0ca586d01566451d427398c7f34e9fcd5df53c9b0671db39891dffe991c",
+      "gitBlobSha1": "3ecfd00a5ca09f7018f43d75516964e48fcef6ae",
+      "bytes": 23051
+    },
+    "providerRawUnchanged": true,
+    "providerRegistryCollections": [
+      "concepts"
+    ],
+    "providerRegistryChanges": 1,
+    "providerProvidesBindings": false,
+    "consumerRef": {
+      "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+      "path": ".archive-meta-register/inbox/m2s2-follow6-20261115-E005.json",
+      "sha256": "626cbcef6af2c6e6bfbcb2b21eb4cac27ceb75394216b182adc2c7b04fe8f3b9",
+      "gitBlobSha1": "091f6d8a25de5a6534249e0b9e31312b2708d3e1",
+      "bytes": 9845
+    },
+    "consumerUid": "qid_v1_826a35829c515296d28c799f17e8610d2ece6e8ea45c812778822d082b9efee1",
+    "sourceOrdinal": 12,
+    "consumerRegistryChanges": 0,
+    "explicitAfterKey": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO",
+    "consumerChanged": true,
+    "providerChanged": false,
+    "baseCanonicalRef": {
+      "commit": "a66fe820204ac8aaeb086124321dbc8259554a69",
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "sha256": "beae40b5ea265ffcd71168da73568435f6e60aad8680027c1d9ccd08fc1ad9d9",
+      "gitBlobSha1": "b5069e29e4658758bfc51f05fcfa572e905e930f",
+      "bytes": 262689
+    },
+    "headCanonicalRef": {
+      "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "sha256": "beae40b5ea265ffcd71168da73568435f6e60aad8680027c1d9ccd08fc1ad9d9",
+      "gitBlobSha1": "b5069e29e4658758bfc51f05fcfa572e905e930f",
+      "bytes": 262689
+    },
+    "oldCanonicalRawExact": true,
+    "oldSelectedRowCount": 0,
+    "frozenDispositionRef": {
+      "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+      "path": ".archive-meta-register/evidence/m2s2-follow9-definition-finalization-20261115/finalized-disposition.json",
+      "sha256": "03dad491bc50c7f47d495370706107d6802f85806dbc324b5f802f4005612ed6",
+      "gitBlobSha1": "b9b405b056f4e7f8f7ae6ba9ba5b863e983f1ad5",
+      "bytes": 76004
+    },
+    "applicationIndex": 0,
+    "decisionIndex": 0,
+    "disposition": "REUSE_ACTIVE",
+    "currentCanonicalRef": {
+      "commit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "gitBlobSha1": "2d7c1509e1a5ec6cf1ffad561b6edfe6f73dc634",
+      "sha256": "e31c0102c956599ab5e4a5c761122fcb15c27f67dcae3cd02a3b98f6f01434af",
+      "bytes": 270864,
+      "readMethod": "LOCAL_API_RAW_CACHE_VERIFIED_AGAINST_EXACT_GIT_TREE_ENTRY",
+      "cacheRef": {
+        "path": "/workspace/scratch/987d4bf32f40/m2-native-queue-a6df/main316-issued-watch/issued4af-proofs-canonical-api-raw.json",
+        "sha256": "d392de30d20237b2b5d20ff28ad72d498426066852928f48648f6c694e855364",
+        "bytes": 449419
+      }
+    },
+    "currentSelectedRowCount": 1,
+    "currentStatus": "ACTIVE",
+    "selectedWholeRowSha256": "81a3ba8b43ed4e487df88ec14479ee746ae1694d8819f8ff4874f627da37ec11",
+    "frozenDefinitionProviderAfterAndCurrentWholeRowExact": true
+  },
+  "causalTrace": [
+    {
+      "function": "selectNativeRequests",
+      "finding": "E005 is changed. Unchanged E023 carries a concepts ADD, so it is not an inherited source-only preservation or fingerprint-only reassessment."
+    },
+    {
+      "function": "selectBindingProviderClosure in633",
+      "finding": "Selection closure reads only ACTIVE binding descriptors. E023 has no binding ADD and therefore is not selected as a CC-only provider."
+    },
+    {
+      "function": "nativeDefinitionDependencies/orderNativeRequests",
+      "finding": "The existing graph orders only already-selected requests. It cannot order an omitted E023 descriptor."
+    },
+    {
+      "function": "applyNativeRequests",
+      "finding": "The official registrar runs dry then write for each selected request in order. Omitted pending requests do not write any canonical row."
+    },
+    {
+      "function": "registryPlan/lookup -> canonicalBefore",
+      "finding": "E005 has no registry changes. Fresh live canonical becomes both canonicalBefore and canonicalAfter; with no provider write the selected row remains absent."
+    },
+    {
+      "function": "reusedDefinition",
+      "finding": "The unchanged finalizer correctly rejects both missing live row and missing already-ACTIVE before row. The error is not evidence that the later4af definition differs."
+    }
+  ],
+  "current4afAssessment": {
+    "knownMissingRowCauseRemovedWithoutCodeChange": true,
+    "scope": "Given exact4af live canonical bytes before E005, the frozen full ACTIVE definition exists and the observed gate is satisfied. All other registration, native and Consumer guards remain mandatory.",
+    "actualE005Or126Run": false,
+    "actualProviderReceiptReviewOwner": "/root/audit_m2"
+  },
+  "productionChange": {
+    "path": "tools/ci/archive-pr-native-preview.mjs",
+    "method": "One queue follows both existing closed binding and CC/COND definition descriptors from fixed HEAD. Only a matching flat pending provider can be added. Every inherited provider must equal its exact base raw bytes. Separate inheritedDefinitionProvider metadata binds request SHA and requiring UID/ordinal/collection/key.",
+    "guardPreservation": [
+      "add-only ACTIVE descriptor remains unchanged",
+      "only explicit after keys; no before/source inference",
+      "exact base/HEAD/live request identity and source/evidence checks",
+      "required-key ambiguity and mixed graph cycle rejection",
+      "ordinary provider dry/write before consumer",
+      "unchanged fresh canonicalBefore and full equality/ACTIVE finalizer",
+      "unrelated pending owners stay unselected",
+      "main full-pending selection and writer unchanged"
+    ],
+    "productionFilesChanged": 1,
+    "canonicalOrSemanticValidatorChanged": false
+  },
+  "validation": {
+    "beforeRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/before-ci633-reproduction.json",
+      "sha256": "771b0b657f56b2d3547f296e4812027d8b7e6a029d69a08aff3143cbb5062a57",
+      "bytes": 632
+    },
+    "beforeLogRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/before-ci633-reproduction.tap",
+      "sha256": "7b9847979afdc2da4d6b343876123024bc235f542cf0782cea001f3e7fd2db5f",
+      "bytes": 1462
+    },
+    "beforeCounts": {
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0
+    },
+    "intendedBeforeFailure": "FIXTURE_REUSED_DEFINITION_NOT_ACTIVE_BEFORE",
+    "afterRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/candidate-targeted-regression.json",
+      "sha256": "bd4d5682d43fe632a879b9359428a1717b1e67a190941bb6aa66e0c0333f4e10",
+      "bytes": 945
+    },
+    "afterLogRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/candidate-targeted-regression.tap",
+      "sha256": "2023590f403ab72c264b4a2bda259a272e3d1490b4a086cec3c82020665dc9a5",
+      "bytes": 4717
+    },
+    "afterCounts": {
+      "tests": 45,
+      "pass": 45,
+      "fail": 0,
+      "skipped": 0
+    },
+    "afterDurationSeconds": 11.897203935004654,
+    "newCases": 12,
+    "existingCasesSelected": 33,
+    "existingTestPreservation": "All original test bytes outside the explicitly revised unchanged-provider case and the inserted twelve cases are exact. That existing case changes its title and provider-selection expectation; its no-before/source-inference assertion remains.",
+    "executionKind": "SYNTHETIC_GIT_SELECTION_AND_CANONICAL_PREREQUISITE_FIXTURES",
+    "realNativeApproval": false,
+    "realConsumerApproval": false,
+    "testTimeoutOrAuthorityWeakening": false
+  },
+  "moduleSnapshotRef": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/module-snapshot.json",
+    "sha256": "cfb2b0e82f2a2271d4301c272c65e704809ce27eeda47654a916643abb5c6904",
+    "bytes": 17948
+  },
+  "unchangedModules": 66,
+  "exactCodeRefs": [
+    {
+      "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "sha256": "c1408f9a6fe17fd77dc044e9f2a36c8ddf1103bdd25a20f1480c44eb582ab3b1",
+      "gitBlobSha1": "60555743b801ad7f33e0577fb8e4fd51b11a4f10",
+      "bytes": 87254
+    },
+    {
+      "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+      "path": "tools/ci/archive-pr-registration-prepare.mjs",
+      "sha256": "6c23ffec591e35caf51c5018a147dc5b509e4b2435b0183cd92a574bcb087843",
+      "gitBlobSha1": "db55a660af3da4f8b0b4e23a6c35ff729aee0961",
+      "bytes": 8517
+    },
+    {
+      "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+      "path": "tools/ci/archive-pr-registration-proof.mjs",
+      "sha256": "2857cd81741d59c7fadc19f3e681928f7582db6c931e6770e3d7a9e0b072b1a1",
+      "gitBlobSha1": "c773c8d4a66e5a9a6d52726e100188dd1b0d6408",
+      "bytes": 22759
+    },
+    {
+      "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "25448b6a4b2c54492af1382df6a65b8b15a5ca4fa54d966a2017ef2deb50f4a7",
+      "gitBlobSha1": "5d3d5de6346206459c022ac165aff2e401e4c2d5",
+      "bytes": 268590
+    },
+    {
+      "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+      "path": "archive/tools/meta-foundation/reviewed-proposal-finalization.mjs",
+      "sha256": "cceffb69ed1ef7914c824ed2e4dab01f14d9871b879d15e9fc243a464ba39a68",
+      "gitBlobSha1": "f6d854127f29cd9b826d1b9aa6cc40eb3d036487",
+      "bytes": 49677
+    },
+    {
+      "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+      "path": "archive/tools/meta-foundation/reviewed-m2-proposal-finalization.mjs",
+      "sha256": "9e510872b82b0f5fe8041f1546971efa5dbd851e49f34f514e46bf93fa002376",
+      "gitBlobSha1": "504989380a762043ed3830f2234cc9bf8d97895b",
+      "bytes": 21922
+    },
+    {
+      "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "sha256": "edfde041d9a445fafe27f3f597b75f63422487268d883fd9b48c2413d3c1a954",
+      "gitBlobSha1": "a5409edfeb1f47093b1995f6a090d5531a4c24ec",
+      "bytes": 36521
+    },
+    {
+      "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+      "path": "tools/ci/register-reviewed-meta-requests.mjs",
+      "sha256": "08b19e6ce49ed800eb696cce096da044a5f6f759d231c7ee3ebf3cb580e65cad",
+      "gitBlobSha1": "710bc76da07d5a8c113897838866007e7521c589",
+      "bytes": 24102
+    }
+  ],
+  "patchRef": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/candidate.patch",
+    "sha256": "7402ca100386d20ea310381b4e412fbf371044a0cac8d5be381a695addb41672",
+    "bytes": 20297
+  },
+  "preservation": {
+    "rootWorktreeWrites": 0,
+    "productionSourceWrites": 0,
+    "productionCanonicalWrites": 0,
+    "productionRequestWrites": 0,
+    "remoteWrites": 0,
+    "E035HelperOrRendererWrites": 0,
+    "actualUiPass": false
+  },
+  "nextAction": "M3 independently reviews the frozen two payloads. ROOT alone integrates/publishes and runs current exact CI."
+}
