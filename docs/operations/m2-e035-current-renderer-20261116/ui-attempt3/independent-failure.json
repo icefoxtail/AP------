@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "archive-scoped-independent-ui-attempt-review-v1",
+  "reviewer": "/root/audit_m3",
+  "observedAt": "2026-11-16T09:08:48.559938+00:00",
+  "decision": "HOLD_INCOMPLETE_FOUR_CASE_CAPTURE",
+  "workflow": {
+    "runId": 43835521703,
+    "jobId": 133191061118,
+    "artifactId": 14209958857,
+    "headCommit": "3d11fa3a6a3802de3ffdec4b519e1258fdbc8b61",
+    "conclusion": "failure",
+    "checkoutCommit": "e162ece8868f9d9dcb8c1e0f9590a738dcf36a16",
+    "browserVersion": "157.0.8103.78",
+    "zipSha256": "6c1472c9a0a999de032337497bb8c4b0f376f9220e081c49baf740743b49df76",
+    "zipBytes": 201534,
+    "downloadDigestVerified": true
+  },
+  "rawEvidence": [
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43835521703/download-manifest.json",
+      "sha256": "d949c9955df43b5fb2d6669d7431e41f1ff6769a516719f5dceff96b305fdf97",
+      "bytes": 6860
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43835521703/technical-proof.json",
+      "sha256": "8fba925ff6eadfc25bbc45bf80406d7b7166560eb2e3ed8fcb8f47ebf4454df0",
+      "bytes": 34458
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43835521703/diagnostics.json",
+      "sha256": "d62b429b87613a512a8d40e7ce5269765bfc29b1410cea6597457db84238f3f3",
+      "bytes": 8179
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43835521703/desktop-solution-failure-state.json",
+      "sha256": "f40bd8eff8cc41b23765061a92e61c7c0d1dbd0a2067636bba6dda19cb0e73fe",
+      "bytes": 582
+    }
+  ],
+  "originalPngs": [
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43835521703/e035-problem-desktop-tile-01.png",
+      "sha256": "f235e1c5acd2e2949f35046290a8c0e07296e29b0f7245ffd1687b48d84800b3",
+      "bytes": 30354,
+      "width": 664,
+      "height": 438
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43835521703/e035-solution-desktop-tile-01.png",
+      "sha256": "ebb975a21025ce51f60ee847ab67e242ffd7a08bb261ea50743c56ad6c39c1a7",
+      "bytes": 48167,
+      "width": 316,
+      "height": 597
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43835521703/desktop-solution-failure-viewport.png",
+      "sha256": "03a8fd221c2ec7fe9ac0a6fcfce17a6d199755a8785d36e5b64a2769d7c45049",
+      "bytes": 104162,
+      "width": 1280,
+      "height": 900
+    }
+  ],
+  "actualInspection": {
+    "method": "view_image of original artifact PNGs",
+    "newlyInspected": [
+      "e035-solution-desktop-tile-01.png",
+      "desktop-solution-failure-viewport.png"
+    ],
+    "problemPngSameShaAsPreviouslyInspectedOriginal": true,
+    "observations": [
+      "The selected desktop solution tile shows the complete visible selected text and repaired diagram within its PNG bounds; no new asset inconsistency was observed in this limited view.",
+      "The full desktop failure viewport contains the selected solution region and a visible status feedback overlay outside that selected tile.",
+      "This limited visual observation does not certify the failed coordinate or pixel-dimension guard, the uncompleted solution case, or either mobile case."
+    ],
+    "originalStudentTextCopied": false
+  },
+  "actualProgress": {
+    "completedTechnicalCases": 1,
+    "expectedCases": 4,
+    "completedCaseIds": [
+      "desktop-problem"
+    ],
+    "failedCase": "desktop-solution",
+    "mobileCasesStarted": 0,
+    "failureCode": "UI_ORIGINAL_PNG_FULL_CLIP_DIMENSIONS",
+    "fourCaseUiPass": false
+  },
+  "naturalIdleEvidence": {
+    "caseId": "desktop-problem",
+    "elapsedMs": 1728,
+    "pollObservations": 34,
+    "firstFeedbackIdle": false,
+    "lastFeedbackIdle": true,
+    "allMandatoryChildrenVisible": true,
+    "allReadinessRenderReady": true,
+    "selectedDomShaUnchanged": true,
+    "complete": true
+  },
+  "pixelFailureLimits": {
+    "actualSolutionPng": {
+      "width": 316,
+      "height": 597
+    },
+    "priorViewportModePng": {
+      "width": 316,
+      "height": 596
+    },
+    "failedCaseMeasuredClipStored": false,
+    "exactRoundingCauseConfirmed": false,
+    "note": "The old viewport-mode clip cannot be substituted for the unrecorded v3 failing clip. The actual 597px image disproves treating the prior 596px result as the new document-capture result; a fresh exact clip and IHDR diagnostic is required before accepting a fixed quantization rule."
+  },
+  "boundaries": {
+    "productionChanges": 0,
+    "independentBrowserExecution": 0,
+    "newMathematicalQa": false,
+    "newMetadataApprovals": 0,
+    "newDifficultyJudgments": 0,
+    "nativeRegistration": 0,
+    "priorAttemptsRetained": true
+  }
+}

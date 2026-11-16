@@ -1,0 +1,211 @@
+{
+  "runId": 43835521703,
+  "jobId": 133191061118,
+  "artifactId": 14209958857,
+  "headCommit": "3d11fa3a6a3802de3ffdec4b519e1258fdbc8b61",
+  "zipSha256": "6c1472c9a0a999de032337497bb8c4b0f376f9220e081c49baf740743b49df76",
+  "zipBytes": 201534,
+  "files": [
+    {
+      "path": "desktop-problem-preflight.json",
+      "sha256": "e0bf20752194a2794e9c097ed05df510ca4180778c2ace3c854a165b474cb4df",
+      "bytes": 364
+    },
+    {
+      "path": "desktop-solution-failure-state.json",
+      "sha256": "f40bd8eff8cc41b23765061a92e61c7c0d1dbd0a2067636bba6dda19cb0e73fe",
+      "bytes": 582,
+      "observation": {
+        "readiness": "{\"adapter\":\"MixerAdapter\",\"transaction\":1,\"state\":\"RENDER_READY\",\"ready\":false,\"failed\":false,\"failure\":null,\"events\":[{\"state\":\"DATA_READY\",\"evidence\":{\"questions\":21,\"key\":\"\"}},{\"state\":\"MATH_READY\",\"evidence\":{\"source\":\"local\"}},{\"state\":\"IMAGE_READY\",\"evidence\":{\"images\":20,\"loaded\":20,\"errors\":0,\"timeouts\":0}},{\"state\":\"LAYOUT_READY\",\"evidence\":{\"pages\":10}},{\"state\":\"RENDER_READY\",\"evidence\":{\"mode\":\"sol\"}}]}",
+        "questions": 21,
+        "renderError": null,
+        "bodyTextLength": 187234
+      }
+    },
+    {
+      "path": "desktop-solution-preflight.json",
+      "sha256": "e8053f455cf9eec3a0a05522787ea5aa6a94d02df384936453c8eddbe5ef0c9a",
+      "bytes": 365
+    },
+    {
+      "path": "desktop-solution-failure-viewport.png",
+      "sha256": "03a8fd221c2ec7fe9ac0a6fcfce17a6d199755a8785d36e5b64a2769d7c45049",
+      "bytes": 104162,
+      "dimensions": [
+        1280,
+        900
+      ]
+    },
+    {
+      "path": "diagnostics.json",
+      "sha256": "d62b429b87613a512a8d40e7ce5269765bfc29b1410cea6597457db84238f3f3",
+      "bytes": 8179,
+      "observation": {
+        "status": "FAIL",
+        "activeCase": "desktop-solution",
+        "failures": [],
+        "externalResources": [],
+        "error": {
+          "name": "AssertionError",
+          "message": "UI_ORIGINAL_PNG_FULL_CLIP_DIMENSIONS"
+        }
+      },
+      "captureSettles": [
+        {
+          "caseId": "desktop-problem",
+          "tileIndex": 1,
+          "elapsedMs": 1728,
+          "complete": true,
+          "observationsCount": 34,
+          "first": {
+            "feedbackIdle": false,
+            "mandatoryChildrenVisible": true,
+            "readiness": "RENDER_READY",
+            "domSha256": "2998c999a9cd27191c252b1fc2c33026ecfcafdc85c3e2743b0b0e2e40df10f2"
+          },
+          "last": {
+            "feedbackIdle": true,
+            "mandatoryChildrenVisible": true,
+            "readiness": "RENDER_READY",
+            "domSha256": "2998c999a9cd27191c252b1fc2c33026ecfcafdc85c3e2743b0b0e2e40df10f2"
+          }
+        }
+      ]
+    },
+    {
+      "path": "e035-problem-desktop-tile-01.png",
+      "sha256": "f235e1c5acd2e2949f35046290a8c0e07296e29b0f7245ffd1687b48d84800b3",
+      "bytes": 30354,
+      "dimensions": [
+        664,
+        438
+      ]
+    },
+    {
+      "path": "e035-solution-desktop-tile-01.png",
+      "sha256": "ebb975a21025ce51f60ee847ab67e242ffd7a08bb261ea50743c56ad6c39c1a7",
+      "bytes": 48167,
+      "dimensions": [
+        316,
+        597
+      ]
+    },
+    {
+      "path": "technical-proof.json",
+      "sha256": "8fba925ff6eadfc25bbc45bf80406d7b7166560eb2e3ed8fcb8f47ebf4454df0",
+      "bytes": 34458,
+      "observation": {
+        "schemaVersion": "archive-e035-current-renderer-student-ui-technical-v2",
+        "status": "FAIL",
+        "producer": "/root",
+        "executionOwner": "GITHUB_ACTIONS_SUPPORTED_CHROME",
+        "checkoutCommit": "e162ece8868f9d9dcb8c1e0f9590a738dcf36a16",
+        "browserVersion": "157.0.8103.78"
+      },
+      "cases": [
+        {
+          "caseId": "desktop-problem",
+          "status": "PASS",
+          "viewport": {
+            "name": "desktop",
+            "width": 1280,
+            "height": 900
+          },
+          "captureViewport": {
+            "width": 1280,
+            "height": 900
+          },
+          "tiles": [
+            {
+              "clip": {
+                "x": 307.84375,
+                "y": 123.546875,
+                "width": 664.3125,
+                "height": 438.421875
+              },
+              "screenshotEvidence": {
+                "api": "PAGE_SCREENSHOT",
+                "fullPage": true,
+                "scale": "css",
+                "coordinateSystem": "DOCUMENT_CSS_PIXELS",
+                "documentClip": {
+                  "x": 307.84375,
+                  "y": 10429.546875,
+                  "width": 664.3125,
+                  "height": 438.421875
+                },
+                "contextViewportBefore": {
+                  "width": 1280,
+                  "height": 900
+                },
+                "contextViewportAfter": {
+                  "width": 1280,
+                  "height": 900
+                },
+                "metricsBefore": {
+                  "layoutViewport": {
+                    "width": 1280,
+                    "height": 900
+                  },
+                  "documentClient": {
+                    "width": 1280,
+                    "height": 900
+                  },
+                  "visualViewport": {
+                    "width": 1280,
+                    "height": 900,
+                    "offsetLeft": 0,
+                    "offsetTop": 0,
+                    "pageLeft": 0,
+                    "pageTop": 10306,
+                    "scale": 1
+                  },
+                  "screen": {
+                    "width": 1280,
+                    "height": 900
+                  },
+                  "devicePixelRatio": 1
+                },
+                "metricsAfter": {
+                  "layoutViewport": {
+                    "width": 1280,
+                    "height": 900
+                  },
+                  "documentClient": {
+                    "width": 1280,
+                    "height": 900
+                  },
+                  "visualViewport": {
+                    "width": 1280,
+                    "height": 900,
+                    "offsetLeft": 0,
+                    "offsetTop": 0,
+                    "pageLeft": 0,
+                    "pageTop": 10306,
+                    "scale": 1
+                  },
+                  "screen": {
+                    "width": 1280,
+                    "height": 900
+                  },
+                  "devicePixelRatio": 1
+                },
+                "pngDimensions": {
+                  "width": 664,
+                  "height": 438
+                },
+                "visibleRoiContained": true,
+                "postprocessing": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "tile-helper.cjs",
+      "sha256": "94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4",
+      "bytes": 50028
+    }
+  ]
+}
