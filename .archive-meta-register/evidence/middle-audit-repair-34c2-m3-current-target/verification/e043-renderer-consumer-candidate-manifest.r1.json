@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "m1-q11-native-renderer-reuse-candidate-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "author": "GPT_M1_0A70543C4CE8",
+  "status": "CODE_CANDIDATE_PENDING_ROOT_TARGETED_VALIDATION",
+  "questionUid": "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+  "sourceOrdinal": 11,
+  "scope": "Consumer adapter reuses its already-authoritative typed current-target proof validator; no source, semantic value, approval or registry edits.",
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+      "beforeSha256": "10358a2e912143a4376c2f345b78d7fb5379f18758d746985f62b3eda2c525a8",
+      "candidateRef": {
+        "path": "state/m1-q11-renderer-reuse/candidate/archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+        "sha256": "bc70d6a59522e8529377823fdcebc46a02171511ad2fd961c7923d7f2fc15b75"
+      }
+    }
+  ],
+  "refs": {
+    "diagnosis": {
+      "path": "state/m1-q11-renderer-reuse/diagnosis.r1.json",
+      "sha256": "484ae073264b38d4157a534a70a830055228976577acb2735dcf26deef60a6b1"
+    },
+    "diagnosticRunner": {
+      "path": "state/m1-q11-renderer-reuse/diagnose-q11.r1.mjs",
+      "sha256": "ef8659e7421e045ba6770d41726894c581022cd2d3bc043ffc0297629004c702"
+    },
+    "candidate": {
+      "path": "state/m1-q11-renderer-reuse/candidate/archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+      "sha256": "bc70d6a59522e8529377823fdcebc46a02171511ad2fd961c7923d7f2fc15b75"
+    },
+    "patch": {
+      "path": "state/m1-q11-renderer-reuse/native-reviewed-renderer-reuse.r1.patch",
+      "sha256": "49965f45dcd6d2a82953205cc4c8248280d671a9e6a06687f6bea6b89b049faf"
+    },
+    "sourceValidator": {
+      "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+      "sha256": "2e631c35dc9a3a813b043174e0f482d1bcd7fa420ae2dd5867ecd9b91f59521e"
+    }
+  },
+  "finding": {
+    "figureHelper": "RETURNED_NULL_UNRELATED_LANE",
+    "rendererHelperException": "source reassessment: reviewed after value mismatch (including omitted field): standardCourse",
+    "cause": "Legacy synthetic reassessment omits typed currentTargetApplication and original exact request before/after; native semantic standardCourse cannot be reinterpreted as the separately approved operating target."
+  },
+  "implementation": {
+    "typedSchema": "archive-m3s2-current-target-application-v1",
+    "requireSourceValidatorTrue": true,
+    "sourceValidatorObligations": [
+      "exact source-review sidecar digest/content/request snapshot",
+      "source and selected metadata/identity/runtime equality",
+      "original request before/after and UID/full denominators",
+      "immutable approval and independent review references",
+      "add-only canonical-before restoration",
+      "complete native source-review proof reproduction and equality",
+      "renderer sidecar digest/content/provenance"
+    ],
+    "afterSuccessfulSourceValidation": "Use exact issued proof for common renderer post-guards; no early success return.",
+    "legacyPathUnchanged": true,
+    "typedFailuresStillThrow": true
+  },
+  "checks": {
+    "legacyReplayArgumentsExactUnchanged": true,
+    "allPostReplayAndAllowedPreviousGuardsExactUnchanged": true,
+    "commonBindingClaimsPreconditionsExactUnchanged": true,
+    "syntaxCheck": "PASS_NODE_CHECK",
+    "runtimeTests": "NOT_RUN_ROOT_WILL_VALIDATE_Q11_ONLY",
+    "fullConsumerFlow": "NOT_RUN_BY_M1_FOR_CANDIDATE",
+    "newImportCycle": false
+  },
+  "newMeaningApprovals": 0,
+  "newMathematicalQa": 0,
+  "newSourceQualityApproval": 0,
+  "fixtureWrites": 0,
+  "productionWrites": 0,
+  "registrarInvocations": 0,
+  "oldFocusedTestReruns": 0,
+  "passingCohortReruns": 0,
+  "nextAction": "Root installs candidate only in controlled fixture, checks Q11 full consumer flow and typed-proof/sidecar tamper negatives; M3 independently reviews frozen candidate."
+}

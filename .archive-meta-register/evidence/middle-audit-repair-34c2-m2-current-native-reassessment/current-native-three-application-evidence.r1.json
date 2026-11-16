@@ -1,0 +1,393 @@
+{
+  "schemaVersion": "middle-audit-current-native-reassessment-application-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "actualBeforeMain": "4b504e10b1ce7a90576486663b3862ef99922325",
+  "currentApplicationCommit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+  "immutableOriginalIssueAnchor": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "immutableAnchorIsActualMainAncestor": true,
+  "status": "PREPARED_FOR_ROOT_AND_INDEPENDENT_CURRENT_APPLICATION_REVIEW",
+  "scope": {
+    "selectedUids": 3,
+    "newMeaningApprovals": 0,
+    "newMathematicalQa": 0,
+    "newUniqueRepairUids": 0,
+    "ordinaryMetadataRegistrationReissues": 3
+  },
+  "replacesUnpublishedSourceOnlyRequests": [
+    "middle-audit-repair-34c2-m2-e007-q17-preserve-after-integer-extrema",
+    "middle-audit-repair-34c2-m2-e035-q12-preserve-current-source",
+    "middle-audit-repair-34c2-m2-e035-q18-preserve-current-source"
+  ],
+  "notCombinedWithThoseRequests": true,
+  "beforeStateRule": "Exact actual4b504 full metadata/identity/runtime rows, not the later temporary fixture source-only rows. Only the exact three target rows and their owner runtime rows may be reset by root in the validation fixture before testing these replacement requests.",
+  "metadataRef": {
+    "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+    "path": "archive/data/question_metadata.json",
+    "sha256": "317f8ccf747f9393ca464542fbf49d02a53cb00479d4d9b674f93ce3351d5f2f"
+  },
+  "identityRef": {
+    "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+    "path": "archive/data/question_identity_map.json",
+    "sha256": "ceb965af4a5bd4192e1cb4af00afbf403f98de001bfda945a8938689d823d06e"
+  },
+  "runtimeRef": {
+    "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+    "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+    "sha256": "96b474f7a86b72bd93f1d8a490bf02099efb6c85e5df498b4fc55cca18df8a50"
+  },
+  "crosswalkContinuity": {
+    "originalRef": {
+      "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "sha256": "faf7473ff5e6514535effb7f0afc45b5c51b75f25ffa28820bede4f9f0dfc511"
+    },
+    "currentRef": {
+      "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "sha256": "d8bee9e806e3481432b94a02c1ff95ee22bf3dbe71c66cb73d162dabddde2542"
+    },
+    "oldRecordCount": 242,
+    "currentRecordCount": 244,
+    "original242RecordsExactUnchangedPrefix": true,
+    "authorityAndPolicyUnchanged": true,
+    "addedIds": [
+      "M2-RPM-141-ALL-SOLUTIONS-SIGN-34C2",
+      "M2-RPM-157-SWAPPED-QUANTITIES-34C2"
+    ],
+    "selectedCandidateSetsUnchanged": true,
+    "oldReceiptRefsRemainUnmodified": true,
+    "currentFileNotOverwritten": true
+  },
+  "selected": [
+    {
+      "exam": "E007",
+      "ordinal": 17,
+      "uid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "prior": "middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18",
+      "original": "middle-audit-repair-34c2-m2-e007-q17",
+      "replace": "middle-audit-repair-34c2-m2-e007-q17-preserve-after-integer-extrema",
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "examUid": "26_왕운중_1학기_중간_중2_기출",
+      "priorReceiptRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18.json",
+        "sha256": "adb28d993b9a4077eaa14b7a5ce362872d6d9ecaa669574beb4017f16720797e"
+      },
+      "originalIssuedReceiptRef": {
+        "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+        "sha256": "0e6f8edf5ade443a4e4f18d21dc12d15a1a768a8d272bcb8715efd18aabbccf3"
+      },
+      "nativeReviewRef": {
+        "commit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E007.accepted-review.json",
+        "sha256": "a16f62a23a5cd5e1f8120cae39cc333b9d852412fe144c13edbabd04f26647bd"
+      },
+      "nativeSource": {
+        "gitBlobSha1": "be1efc8167d8d5c9d4caa84e8c197c1000f20f86",
+        "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75"
+      },
+      "currentSource": {
+        "commit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+        "path": "archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+        "sha256": "8c302c66fc44090236203ad35ec957338cff8b151598acb722fb15fbab6ff85c",
+        "gitBlobSha1": "e57e45b11251cdf4d31e1296008c1fb0f1546935"
+      },
+      "sourceOrdinal": 17,
+      "before": {
+        "sourceFingerprint": "357d377f27984d759c5ced9c479b967b738e0a096b1eb4042f73208ae4cb5820",
+        "contentFingerprint": "3c18f378c8e14b7c8480c3c75b629d3c8be8bb28ab9636c4928b42f97012b418"
+      },
+      "after": {
+        "sourceFingerprint": "357d377f27984d759c5ced9c479b967b738e0a096b1eb4042f73208ae4cb5820",
+        "contentFingerprint": "3c18f378c8e14b7c8480c3c75b629d3c8be8bb28ab9636c4928b42f97012b418"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "357d377f27984d759c5ced9c479b967b738e0a096b1eb4042f73208ae4cb5820"
+      },
+      "actualMetadataRowStableSha256": "890f0bcf475f3609727524de4b50807fe7dca49dc530f5590767d60ecce23331",
+      "actualIdentityRowStableSha256": "c62962acbbe51d7db5f45e66dda2953f6523c7a8922dc83cd9ceb398ac5184f6",
+      "actualRuntimeRowStableSha256": "6540212887ed980b846e4d75f73e8445fa7c8219ad0a7ecabf6f43b8e4385410",
+      "existingApprovalEvidence": [
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.evidence.final.r1_09.revision2.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18.json"
+      ],
+      "priorMetadataRevision": "meta-foundation:MIDDLE2@1.0.7:exam-final_qa-v2:middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18",
+      "currentWholeQuestionStableSha256": "12203ffc3268e3adbeee66b0f54a294c4b6c90a56e729eabc929f034e9fe2d70",
+      "selectedWholeQuestionUnchanged": true,
+      "currentStudentPayloadSha256": "543db4ece1a1520d5ff3c1da468c5c5e4ec48ce0779eb2edf7876119a86a1d3a",
+      "nativeStudentPayloadUnchanged": true,
+      "sourceQaApprovalFields": {
+        "reviewStatus": "pending"
+      },
+      "rationaleFieldSha256": {
+        "primaryMethod": "a089df511e4074c84813568e65b57f8e3f4ffcbe9833016397affd72f9e567cc",
+        "decisiveStep": "8b7a93154e4773b40e2d94a17f7fcdfc21ba5da988769b03ddeb2c47b206943f"
+      },
+      "definitions": {
+        "problemTypeKey": {
+          "key": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+          "stableSha256": "f3c751586ffcc761ff7cd9b44faa08a9d260b3c9c02379f49aa1de936e8ce165",
+          "unchanged": true
+        },
+        "templateKey": {
+          "key": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+          "stableSha256": "33c57fa459e878fd5e9ca1543e957f24f4583212682873ba36524f89a45efed7",
+          "unchanged": true
+        }
+      },
+      "exactActiveBindingStableSha256": "6fc528ee776b3b16a60f5ebaf6368d6830c548d3756d4881dd79f7cffc9aeadb",
+      "originalAndCurrentBindingUnchanged": true,
+      "selectedRpm": {
+        "recordId": "M2-RPM-136",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "selectedRows": [
+          {
+            "recordId": "M2-RPM-136",
+            "stableSha256": "f001cf03db408f640b557b43ed5099ff183cc68f9f72fe3b2e10b834c239102b"
+          },
+          {
+            "recordId": "M2-RPM-136-INEQUALITY-PROPERTIES-34C2",
+            "stableSha256": "6e8ea43e19a4509c2b18f5bf1d1f4752622da8b02e072d5927b31c6fa9e8b14f"
+          }
+        ],
+        "completeCandidateSetUnchanged": true
+      },
+      "nativeProposalRefsUnchanged": [],
+      "newMeaningApproval": 0,
+      "newMathematicalQa": 0
+    },
+    {
+      "exam": "E035",
+      "ordinal": 12,
+      "uid": "qid_v1_76dd55da73d9edb2aeb41cdd76997b70ec4a5d668fc94f00736038cde358937d",
+      "prior": "middle-audit-repair-34c2-m2-e035-q12",
+      "original": "middle-audit-repair-34c2-m2-e035-q12",
+      "replace": "middle-audit-repair-34c2-m2-e035-q12-preserve-current-source",
+      "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+      "examUid": "22_연향중_1학기_기말_중2_기출",
+      "priorReceiptRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12.json",
+        "sha256": "f86c4fa1caadff8457e4ba4011a7a6fab0be7879eb32d31353d84216bfc684fa"
+      },
+      "originalIssuedReceiptRef": {
+        "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12.json",
+        "sha256": "f86c4fa1caadff8457e4ba4011a7a6fab0be7879eb32d31353d84216bfc684fa"
+      },
+      "nativeReviewRef": {
+        "commit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E035.accepted-review.json",
+        "sha256": "8fe5dd9f13e2a2a47e9eb7ab24db66c02f1fcd9c90b29cd8ce325b79a87f8dcd"
+      },
+      "nativeSource": {
+        "gitBlobSha1": "40560d9f62a2bf414b2b9ab1c25a6b5dd263b764",
+        "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75"
+      },
+      "currentSource": {
+        "commit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+        "path": "archive/exams/original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+        "sha256": "de15541161f629958edf4daed26bb139215222ee8a1cdf416851b58f92b9d97d",
+        "gitBlobSha1": "ebd499cd5e52824ad9eb2597c8108ada013f2bc4"
+      },
+      "sourceOrdinal": 12,
+      "before": {
+        "sourceFingerprint": "4dd56fe57b3d24b8bf70af42e16fd11e7088de742e400b62193d2e9fc3db2d28",
+        "contentFingerprint": "3ea39fe6ed8a24f9e11f259842098b6cef9582dab301827c98a01d00e20ecd9c"
+      },
+      "after": {
+        "sourceFingerprint": "4dd56fe57b3d24b8bf70af42e16fd11e7088de742e400b62193d2e9fc3db2d28",
+        "contentFingerprint": "3ea39fe6ed8a24f9e11f259842098b6cef9582dab301827c98a01d00e20ecd9c"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "4dd56fe57b3d24b8bf70af42e16fd11e7088de742e400b62193d2e9fc3db2d28"
+      },
+      "actualMetadataRowStableSha256": "05e3da5359457e7587358797f42f2dc50eef96aaca19cd931cc3d3f12ff9a18b",
+      "actualIdentityRowStableSha256": "b5948650bc588b8477d86bd6aa105bf782694f6fcd7677fe633ba4a3dc90bc20",
+      "actualRuntimeRowStableSha256": "880168bc450a280fcedef9f89821ce39ed282d20d24a58e3510814a596321717",
+      "existingApprovalEvidence": [
+        "archive/_generated/intelligence/phase1/pilot/review/medium-batch-3-semantic-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12.json"
+      ],
+      "priorMetadataRevision": "meta-foundation:MIDDLE2@1.0.7:exam-final_qa-v2:middle-audit-repair-34c2-m2-e035-q12",
+      "currentWholeQuestionStableSha256": "99559a7675af50286cf06ec64c8e00c9783a6750228b1d0ace09a8d4861f1303",
+      "selectedWholeQuestionUnchanged": true,
+      "currentStudentPayloadSha256": "c674c32c8f01f887109430c9dc1f571f01c98d157f50902e0ca95ba2a86270c5",
+      "nativeStudentPayloadUnchanged": true,
+      "sourceQaApprovalFields": {},
+      "rationaleFieldSha256": {
+        "primaryMethod": "16c32dddf69f0cf8549a7729d42d1e3c39a854701003c88c8da41002dbf8d806",
+        "decisiveStep": "af0c140f7ccf9393d3693b246cde4a610b7fc09bec981eebef3305fed10cbb2a"
+      },
+      "definitions": {
+        "problemTypeKey": {
+          "key": "PT_LINE_EQUATION",
+          "stableSha256": "d2f5c3ed89e874b18b7e367dd9d5071f39af87739469bb687f2da53502fe7b11",
+          "unchanged": true
+        },
+        "templateKey": {
+          "key": "TPL_LINE_TWO_POINTS",
+          "stableSha256": "bd6c7550652d89f3d1f57b06e4fe4452dc5b2192f1b93d45063f0456cb39620f",
+          "unchanged": true
+        }
+      },
+      "exactActiveBindingStableSha256": "caf412478c97a014adb496d623bb6d0ca130221a56914848c6b02d456352c60c",
+      "originalAndCurrentBindingUnchanged": true,
+      "selectedRpm": {
+        "recordId": "M2-RPM-052",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "selectedRows": [
+          {
+            "recordId": "M2-RPM-052",
+            "stableSha256": "adc004072c114c849553613a3afad8499dcdb9845f8b3535b806ed1c90d50120"
+          },
+          {
+            "recordId": "M2-RPM-052-LINE-TWO-POINTS-34C2",
+            "stableSha256": "5a94ded79c2404d964f34ebe0c71a08abc87c9255bd0174323a83b3cff6bbb84"
+          }
+        ],
+        "completeCandidateSetUnchanged": true
+      },
+      "nativeProposalRefsUnchanged": [],
+      "newMeaningApproval": 0,
+      "newMathematicalQa": 0
+    },
+    {
+      "exam": "E035",
+      "ordinal": 18,
+      "uid": "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb",
+      "prior": "middle-audit-repair-34c2-m2-e035-q18",
+      "original": "middle-audit-repair-34c2-m2-e035-q18",
+      "replace": "middle-audit-repair-34c2-m2-e035-q18-preserve-current-source",
+      "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+      "examUid": "22_연향중_1학기_기말_중2_기출",
+      "priorReceiptRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18.json",
+        "sha256": "a450f653ab8e6687d4d405f732948cdadc3fe85238fdfb1bbf99a74056ccc839"
+      },
+      "originalIssuedReceiptRef": {
+        "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18.json",
+        "sha256": "a450f653ab8e6687d4d405f732948cdadc3fe85238fdfb1bbf99a74056ccc839"
+      },
+      "nativeReviewRef": {
+        "commit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E035.accepted-review.json",
+        "sha256": "8fe5dd9f13e2a2a47e9eb7ab24db66c02f1fcd9c90b29cd8ce325b79a87f8dcd"
+      },
+      "nativeSource": {
+        "gitBlobSha1": "40560d9f62a2bf414b2b9ab1c25a6b5dd263b764",
+        "baseSha": "0ba1e7de048de3af0771da6c0972409fd46baa75"
+      },
+      "currentSource": {
+        "commit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+        "path": "archive/exams/original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+        "sha256": "de15541161f629958edf4daed26bb139215222ee8a1cdf416851b58f92b9d97d",
+        "gitBlobSha1": "ebd499cd5e52824ad9eb2597c8108ada013f2bc4"
+      },
+      "sourceOrdinal": 18,
+      "before": {
+        "sourceFingerprint": "f30322e09ed3a4b5ffb2d2ef8f186ef9b04318e64ae00f07ea03f2043c4d4059",
+        "contentFingerprint": "4e6dd122cd1a47f910df6927b64c9027ffcfd196e529a734d9df4d61a1d6ec67"
+      },
+      "after": {
+        "sourceFingerprint": "f30322e09ed3a4b5ffb2d2ef8f186ef9b04318e64ae00f07ea03f2043c4d4059",
+        "contentFingerprint": "4e6dd122cd1a47f910df6927b64c9027ffcfd196e529a734d9df4d61a1d6ec67"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "f30322e09ed3a4b5ffb2d2ef8f186ef9b04318e64ae00f07ea03f2043c4d4059"
+      },
+      "actualMetadataRowStableSha256": "28ed337aebd9fd31811b28aa91446122582fe54990ba5d8834319a16c8a82bea",
+      "actualIdentityRowStableSha256": "ec0e385bfec28be5ff34d385afc00aeb280bde1d96a31da9d58030fef5309e2d",
+      "actualRuntimeRowStableSha256": "c04289a846385e94873ad61746d1d4606a863777d690c6bfa832776c83ee0454",
+      "existingApprovalEvidence": [
+        "archive/_generated/intelligence/phase1/pilot/review/medium-batch-4-semantic-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18.json"
+      ],
+      "priorMetadataRevision": "meta-foundation:MIDDLE2@1.0.8:exam-final_qa-v2:middle-audit-repair-34c2-m2-e035-q18",
+      "currentWholeQuestionStableSha256": "e8612acfad8d912aa6343bbb876372cd13e66bce5c63d21de2a25d804c1a5ef0",
+      "selectedWholeQuestionUnchanged": true,
+      "currentStudentPayloadSha256": "7a6e3232b37e1cb8e0a8ba0d20ae25cc278ec95c172e7dfa43702eafdb7f50e0",
+      "nativeStudentPayloadUnchanged": true,
+      "sourceQaApprovalFields": {},
+      "rationaleFieldSha256": {
+        "primaryMethod": "08b4d2ae6aa56e39c36c958029b1bc6e129287ef90911b782b5fba967d18bd49",
+        "decisiveStep": "b58da3767dd6c6d9ccf0f8365230af5ceb2d3a5e74bfbc4e225b7b023d67dd71"
+      },
+      "definitions": {
+        "problemTypeKey": {
+          "key": "PT_LINE_INTERSECTION_CONDITION",
+          "stableSha256": "e93345a8401946b01d9c22c270ce7eb441b9a3cfff9bba3555d2bcb786266434",
+          "unchanged": true
+        },
+        "templateKey": {
+          "key": "TPL_INTERSECTION_SEGMENT_RANGE",
+          "stableSha256": "fd59093aa9f0dfed34c83651b86f4fbd7561bbd9e942a0ae72019a83ef604975",
+          "unchanged": true
+        }
+      },
+      "exactActiveBindingStableSha256": "87f3e209571f936d57e9c1e3ec97478ddab74c0939908b0f9658c83b7a6e95ac",
+      "originalAndCurrentBindingUnchanged": true,
+      "selectedRpm": {
+        "recordId": "M2-RPM-059",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "조건에 따른 식 결정"
+        },
+        "selectedRows": [
+          {
+            "recordId": "M2-RPM-059",
+            "stableSha256": "e366c553b14e072eaed2a26b07649ca31e44f0111644d5a09bd99fe2ea8097ed"
+          },
+          {
+            "recordId": "M2-RPM-059-SEGMENT-INTERSECTION-34C2",
+            "stableSha256": "4df1ac8da0fc3684a1a4b49ff18258f1fc1a253eff9f05b140da4451aced7cbe"
+          }
+        ],
+        "completeCandidateSetUnchanged": true
+      },
+      "nativeProposalRefsUnchanged": [],
+      "newMeaningApproval": 0,
+      "newMathematicalQa": 0
+    }
+  ],
+  "existingValidatorProbeRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/state/m2-unit25-ordinary-reassessment-probe.r1.json",
+    "sha256": "d7ca23bc03b8f4ba4969704b3c105f0b669dce22b58575af080b1bcabc64a10a"
+  },
+  "registrationContract": {
+    "requestScope": "PARTIAL_UIDS",
+    "approvalType": "FINAL_QA",
+    "afterFields": [
+      "sourceFingerprint",
+      "contentFingerprint"
+    ],
+    "afterValueDelta": 0,
+    "sourceReviewSchema": "archive-reviewed-source-reassessment-v1",
+    "nativeReviewBytesChanged": false,
+    "oldReceiptAndRowApprovalChainRetained": true,
+    "sourceQaFlagsChanged": false,
+    "provenanceVerifiedFinalCreated": false,
+    "registryChanges": 0,
+    "sourceChanges": 0,
+    "identityValueChanges": 0,
+    "reason": "Existing current-source ordinaryReviewedReassessment replays unchanged native student/rationale/accepted values with exact source and issued prior authority. It does not suppress or ignore an old SHA and does not synthesize a new solution."
+  },
+  "officialLifecycleForReplacement": "NOT_RUN",
+  "rootApproval": "PENDING_EXACT_PACKET_REVIEW",
+  "independentApproval": "PENDING",
+  "productionWrites": 0
+}

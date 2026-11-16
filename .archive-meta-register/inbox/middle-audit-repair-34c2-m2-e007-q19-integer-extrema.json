@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "middle-audit-repair-34c2-m2-e007-q19-integer-extrema",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+  "expectedSourceBlobSha1": "e57e45b11251cdf4d31e1296008c1fb0f1546935",
+  "expectedQuestionCount": 24,
+  "scope": "PARTIAL_UIDS",
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_ROOT_0A70543C4CE8",
+    "evidenceRefs": [
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E007.accepted-review.json",
+        "sha256": "a16f62a23a5cd5e1f8120cae39cc333b9d852412fe144c13edbabd04f26647bd"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-exact-template-application-proposal.r1.json",
+        "sha256": "5895357dd45fc3348a80a056e2b2b7bdb40a3e1ab768851cc5644709c164b13b"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-source-and-native-transport.r1.json",
+        "sha256": "1fa166f13cb59a8af86a01ae95ad4f4eb4d3d438214ed020fb201218d5dd7d0b"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-template-application-independent-review.r1.json",
+        "sha256": "d12a528f02c9e1c66ed72f15b77123c300b1f7f1fdad7f846487e75d0ec9fcce"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-root-approval.r1.json",
+        "sha256": "b1a134fea84b5ff65cd28b276078cf0bded693c99aee9a4f329d96cae26bc25b"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-actual-input-binding.4b504e10b1ce.json",
+        "sha256": "857e8334d5f31f3ce51a6753205b298075a7deafca70cd60cc243ebd98a564bb"
+      }
+    ]
+  },
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION",
+        "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "canonicalLabelKo": "일차부등식의 가장 작은 정수해",
+        "definition": "일차부등식의 해집합을 유한한 하한을 갖는 비어 있지 않은 반직선으로 나타낸 뒤, 경계의 포함 여부를 반영하여 그 해집합에 속하는 가장 작은 정수를 정한다.",
+        "internalSkeleton": "ISOLATE_VARIABLE_IDENTIFY_LOWER_BOUND_AND_INCLUSION_SELECT_LEAST_ADMISSIBLE_INTEGER",
+        "status": "ACTIVE",
+        "ownerPack": "H1_FOUNDATION",
+        "aliases": [],
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-exact-template-application-proposal.r1.json",
+          "sha256": "5895357dd45fc3348a80a056e2b2b7bdb40a3e1ab768851cc5644709c164b13b"
+        },
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-template-application-independent-review.r1.json",
+          "sha256": "d12a528f02c9e1c66ed72f15b77123c300b1f7f1fdad7f846487e75d0ec9fcce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-root-approval.r1.json",
+          "sha256": "b1a134fea84b5ff65cd28b276078cf0bded693c99aee9a4f329d96cae26bc25b"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "questionUid": "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c",
+      "sourceOrdinal": 19,
+      "before": {
+        "curriculum": null,
+        "courseKey": null,
+        "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
+        "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+        "conditionKeys": [],
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculumKey": null,
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "level": null,
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "curriculum": "2022",
+        "courseKey": "M2-1",
+        "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION",
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "primaryMethod": "복잡한부등식풀이후정수해의최소값결정",
+        "decisiveStep": "x>-15이므로최소정수는-14.",
+        "curriculumKey": "2022",
+        "crossConceptKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "reason": "Root and independent approval of the exact template and current classification application using the unchanged accepted native integer-boundary procedure. Preserve source QA flags, every student payload, existing difficulty judgment and native RPM_LEAF_GAP; no RPM identifier/path or new mathematical solution is introduced.",
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E007.accepted-review.json",
+          "sha256": "a16f62a23a5cd5e1f8120cae39cc333b9d852412fe144c13edbabd04f26647bd"
+        },
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-exact-template-application-proposal.r1.json",
+          "sha256": "5895357dd45fc3348a80a056e2b2b7bdb40a3e1ab768851cc5644709c164b13b"
+        },
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-source-and-native-transport.r1.json",
+          "sha256": "1fa166f13cb59a8af86a01ae95ad4f4eb4d3d438214ed020fb201218d5dd7d0b"
+        },
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-template-application-independent-review.r1.json",
+          "sha256": "d12a528f02c9e1c66ed72f15b77123c300b1f7f1fdad7f846487e75d0ec9fcce"
+        },
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-root-approval.r1.json",
+          "sha256": "b1a134fea84b5ff65cd28b276078cf0bded693c99aee9a4f329d96cae26bc25b"
+        },
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-actual-input-binding.4b504e10b1ce.json",
+          "sha256": "857e8334d5f31f3ce51a6753205b298075a7deafca70cd60cc243ebd98a564bb"
+        }
+      ]
+    }
+  ]
+}
