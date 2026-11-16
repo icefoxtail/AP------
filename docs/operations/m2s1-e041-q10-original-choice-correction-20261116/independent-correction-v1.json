@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "archive-independent-m2s1-e041-q10-choice-correction-v1",
+  "transportProfile": "M2S1_E041_Q10_ORIGINAL_CHOICE_ORDER_V1",
+  "scope": "EXACT_E041_Q10_ORIGINAL_CHOICE_ORDER_AND_LINKED_LABELS",
+  "producer": "GPT_REGISTRAR_REPAIR",
+  "reviewer": "GPT_ROOT_C8F1B0BFB4FA",
+  "phaseOrder": "ORIGINAL_GIVEN_FREEZE_THEN_CURRENT_THEN_LINKED_LABELS",
+  "originalGivenRef": {
+    "commit": "7ac54acd8f26166546c6afb26e0f454bfaee2b2e",
+    "path": "docs/operations/m2s1-e041-q10-original-choice-correction-20261116/original-given.png",
+    "gitBlobSha1": "531f89382fbc683c1d7ea35a4996f25df8578013",
+    "sha256": "da955a778bf6974e8ea0954278328bebfd87b26846bbf1c2e13103bd368e545f",
+    "bytes": 75524
+  },
+  "originalObservationSha256": "05c6cc131fc35a1bd5589dfaa119d2145711643aa07b1cb189ba09fc68a56047",
+  "rootCorrectionReviewSha256": "6275e9c91ededdb6e837600ee7d404859b49a6f14eeb18a4f6876f832cf7b464",
+  "sourceBeforeRef": {
+    "commit": "47157c1d0d618471a983fe0887cd65355c17dfbd",
+    "path": "archive/exams/original/middle/m2/1final/21_신흥중_1학기_기말_중2_수학.js",
+    "gitBlobSha1": "7e69bf4dc2ca2dba259141f925c2112a847f3eb8",
+    "sha256": "a50d8a0a7512495490cb3ab3cd4812f535eb5fb58a13070ab5c328765ec7098c",
+    "bytes": 50974
+  },
+  "sourceAfter": {
+    "path": "archive/exams/original/middle/m2/1final/21_신흥중_1학기_기말_중2_수학.js",
+    "gitBlobSha1": "8352325a9872e91cf699732c3f93ce5afd3a0e05",
+    "sha256": "7c29326ae417dfd561061d09b54e3fe1ebcef60ad38b6926ceeb84ed8e12598a",
+    "bytes": 50974
+  },
+  "questionUid": "qid_v1_eff16cb34d23543b88c1ec860d9c271078746a16c8dfd13ceb01a6cecbf7c108",
+  "sourceOrdinal": 10,
+  "expectedQuestionCount": 24,
+  "beforeWholeQuestionSha256": "c34e0db61d17b44639dce4247e3522dba7e1889fa78ccd288b9d3caf8a269385",
+  "afterWholeQuestionSha256": "bf25c2bac47da131c50d99af134bc9df317c82732c7df074cea9f73544f9721d",
+  "fieldTransitions": [
+    {
+      "field": "answer",
+      "before": {
+        "own": true,
+        "type": "string",
+        "sha256": "d41ea6521f53fb3dfa10cf72e2932f4405d9c999fa422cdc840d25d57e90dd34"
+      },
+      "after": {
+        "own": true,
+        "type": "string",
+        "sha256": "0bdef091c479702584f065d3a3714f8a76f851b3f0cf10912f345a5dd930b0a8"
+      }
+    },
+    {
+      "field": "choices",
+      "before": {
+        "own": true,
+        "type": "array",
+        "sha256": "7a60cb22caf91b445a5ebc2043873f7ca1f8bd0ee8a925e130059338f7adb482"
+      },
+      "after": {
+        "own": true,
+        "type": "array",
+        "sha256": "8584fa5a1d842fd0c91c6308d6a1aad2dc7b55143e6845c673b8e66686987bb0"
+      }
+    },
+    {
+      "field": "solution",
+      "before": {
+        "own": true,
+        "type": "string",
+        "sha256": "0ce04cd292c38093c917981ab51b850043c23bec52e957e95097b72f1e0b5bc3"
+      },
+      "after": {
+        "own": true,
+        "type": "string",
+        "sha256": "e7dc47267ace067a8ac514aed9ed913bf14d506e68b4ad047af1e813b4f45b7d"
+      }
+    }
+  ],
+  "optionPermutationFromCurrentOneBased": [
+    1,
+    2,
+    5,
+    3,
+    4
+  ],
+  "linkedLabelChange": {
+    "answerLabelOnly": true,
+    "solutionChoiceLabelOccurrencesOnly": 2,
+    "solutionCalculationUnchanged": true
+  },
+  "decision": "ACCEPT_EXACT_ORIGINAL_CHOICE_ORDER_AND_LINKED_LABEL_CORRECTION",
+  "newNativeApprovals": 0,
+  "newReview2Claims": 0,
+  "newMetadataApprovals": 0,
+  "newDifficultyJudgments": 0,
+  "newFourSlotVectors": 0,
+  "existingApprovalReuseAuthorized": false,
+  "actualUi": "PENDING"
+}
