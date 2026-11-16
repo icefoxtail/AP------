@@ -278,7 +278,7 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "question": "정의역이 \\{x \\mid 2 \\le x \\le 6\\}인 함수 y = \\log_{\\frac{1}{2}} (x+2) - 3의 최댓값을 M, 최솟값을 m이라 할 때, M-m의 값은?",
+    "question": "정의역이 $\\{x \\mid 2 \\le x \\le 6\\}$인 함수 $y = \\log_{\\frac{1}{2}} (x+2) - 3$의 최댓값을 M, 최솟값을 m이라 할 때, $M-m$의 값은?",
     "choices": [
       "-1",
       "0",
@@ -306,7 +306,7 @@ window.questionBank = [
       "subUnit": "로그함수의 최대최소",
       "difficulty": 2
     },
-    "content": "정의역이 \\{x \\mid 2 \\le x \\le 6\\}인 함수 y = \\log_{\\frac{1}{2}} (x+2) - 3의 최댓값을 M, 최솟값을 m이라 할 때, M-m의 값은?",
+    "content": "정의역이 $\\{x \\mid 2 \\le x \\le 6\\}$인 함수 $y = \\log_{\\frac{1}{2}} (x+2) - 3$의 최댓값을 M, 최솟값을 m이라 할 때, $M-m$의 값은?",
     "questionType": "객관식",
     "category": "로그함수",
     "originalCategory": "지수함수와 로그함수",
@@ -739,7 +739,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "question": "양수 x가 다음 조건을 만족시킬 때, 6\\log x의 값은?<br><br>(가) 100 < x < 1000<br>(나) \\log 2x^2 - \\log \\frac{\\sqrt{x}}{5}의 값은 정수이다.",
+    "question": "양수 x가 다음 조건을 만족시킬 때, $6\\log x$의 값은?<br><br>(가) $100 &lt; x &lt; 1000$<br>(나) $\\log 2x^2 - \\log \\frac{\\sqrt{x}}{5}$의 값은 정수이다.",
     "choices": [
       "16",
       "18",
@@ -767,7 +767,7 @@ window.questionBank = [
       "subUnit": "상용로그의 성질",
       "difficulty": 3
     },
-    "content": "양수 x가 다음 조건을 만족시킬 때, 6\\log x의 값은?<br><br>(가) 100 < x < 1000<br>(나) \\log 2x^2 - \\log \\frac{\\sqrt{x}}{5}의 값은 정수이다.",
+    "content": "양수 x가 다음 조건을 만족시킬 때, $6\\log x$의 값은?<br><br>(가) $100 &lt; x &lt; 1000$<br>(나) $\\log 2x^2 - \\log \\frac{\\sqrt{x}}{5}$의 값은 정수이다.",
     "questionType": "객관식",
     "category": "로그의 뜻과 성질",
     "originalCategory": "지수와 로그",
@@ -1934,7 +1934,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "question": "1보다 큰 실수 a에 대하여 두 곡선 y = \\log_a x, y = \\log_{a+2} x가 직선 y = 2와 만나는 점을 각각 A, B라 하자. 점 A를 지나고 y축에 평행한 직선이 곡선 y = \\log_{a+2} x와 만나는 점을 C, 점 B를 지나고 y축에 평행한 직선이 곡선 y = \\log_a x와 만나는 점을 D라 할 때, 다음 물음에 답하시오.<br><br>(1) 다음 제시된 사항을 모두 반영하여, 문제의 조건을 그래프로 나타내시오. [3점]<br>- 각 그래프의 끝에 그래프가 나타내는 함수식을 적기<br>&nbsp;&nbsp;&nbsp;&nbsp;(y = \\log_a x, y = \\log_{a+2} x, y = 2)<br>- 그래프에 x절편 나타내기<br>- 그래프에 점 A, B, C, D 나타내기<br><br>(2) \\overline{\\mathrm{AC}} = 1일 때, \\overline{\\mathrm{BD}}의 길이를 구하고, 그 풀이과정을 서술하시오. [4점]",
+    "question": "1보다 큰 실수 a에 대하여 두 곡선 $y = \\log_a x$, $y = \\log_{a+2} x$가 직선 $y = 2$와 만나는 점을 각각 A, B라 하자. 점 A를 지나고 y축에 평행한 직선이 곡선 $y = \\log_{a+2} x$와 만나는 점을 C, 점 B를 지나고 y축에 평행한 직선이 곡선 $y = \\log_a x$와 만나는 점을 D라 할 때, 다음 물음에 답하시오.<br><br>(1) 다음 제시된 사항을 모두 반영하여, 문제의 조건을 그래프로 나타내시오. [3점]<br>- 각 그래프의 끝에 그래프가 나타내는 함수식을 적기<br>&nbsp;&nbsp;&nbsp;&nbsp;($y = \\log_a x$, $y = \\log_{a+2} x$, $y = 2$)<br>- 그래프에 x절편 나타내기<br>- 그래프에 점 A, B, C, D 나타내기<br><br>(2) $\\overline{\\mathrm{AC}} = 1$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하고, 그 풀이과정을 서술하시오. [4점]",
     "choices": [],
     "answer": "2",
     "solution": "$y=2$와 만나는 점은\n$A=(a^2,2)$, $B=((a+2)^2,2)$이다.\n$A$의 x좌표에서 다른 곡선과 만나는 $C$는\n$C=(a^2,\\log_{a+2}a^2)$이고, $B$의 x좌표에서 첫 곡선과 만나는 $D$는\n$D=((a+2)^2,\\log_a((a+2)^2))$이다.\n$a>1$이므로 $a+2>a$이고, $AC=2-\\log_{a+2}a^2=1$에서 $\\log_{a+2}a=\\dfrac12$이다.\n따라서 $\\sqrt{a+2}=a$, 즉 $a^2-a-2=0$이다. $a>1$을 만족하는 값은 $a=2$이다.\n이때 $A=(4,2)$, $B=(16,2)$, $C=(4,1)$, $D=(16,4)$이므로 $BD=4-2=2$이다.\n따라서 구하는 값은 2이다.",
@@ -1956,7 +1956,7 @@ window.questionBank = [
       "subUnit": "로그함수의 그래프와 선분의 길이",
       "difficulty": 4
     },
-    "content": "1보다 큰 실수 a에 대하여 두 곡선 y = \\log_a x, y = \\log_{a+2} x가 직선 y = 2와 만나는 점을 각각 A, B라 하자. 점 A를 지나고 y축에 평행한 직선이 곡선 y = \\log_{a+2} x와 만나는 점을 C, 점 B를 지나고 y축에 평행한 직선이 곡선 y = \\log_a x와 만나는 점을 D라 할 때, 다음 물음에 답하시오.<br><br>(1) 다음 제시된 사항을 모두 반영하여, 문제의 조건을 그래프로 나타내시오. [3점]<br>- 각 그래프의 끝에 그래프가 나타내는 함수식을 적기<br>&nbsp;&nbsp;&nbsp;&nbsp;(y = \\log_a x, y = \\log_{a+2} x, y = 2)<br>- 그래프에 x절편 나타내기<br>- 그래프에 점 A, B, C, D 나타내기<br><br>(2) \\overline{\\mathrm{AC}} = 1일 때, \\overline{\\mathrm{BD}}의 길이를 구하고, 그 풀이과정을 서술하시오. [4점]",
+    "content": "1보다 큰 실수 a에 대하여 두 곡선 $y = \\log_a x$, $y = \\log_{a+2} x$가 직선 $y = 2$와 만나는 점을 각각 A, B라 하자. 점 A를 지나고 y축에 평행한 직선이 곡선 $y = \\log_{a+2} x$와 만나는 점을 C, 점 B를 지나고 y축에 평행한 직선이 곡선 $y = \\log_a x$와 만나는 점을 D라 할 때, 다음 물음에 답하시오.<br><br>(1) 다음 제시된 사항을 모두 반영하여, 문제의 조건을 그래프로 나타내시오. [3점]<br>- 각 그래프의 끝에 그래프가 나타내는 함수식을 적기<br>&nbsp;&nbsp;&nbsp;&nbsp;($y = \\log_a x$, $y = \\log_{a+2} x$, $y = 2$)<br>- 그래프에 x절편 나타내기<br>- 그래프에 점 A, B, C, D 나타내기<br><br>(2) $\\overline{\\mathrm{AC}} = 1$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하고, 그 풀이과정을 서술하시오. [4점]",
     "questionType": "서술형",
     "category": "로그함수",
     "originalCategory": "지수함수와 로그함수",
