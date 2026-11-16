@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "m3s2-e052-existing-native2-preservation-closeout-v1",
+  "status": "PASS_LOCAL_CURRENT_MAIN_GATES_WITHOUT_D_PATCH",
+  "actualBaseMain": "f6fdf1aaadb2345273eb314db0ab2cc80dab7e07",
+  "reasonCode": "EXISTING_APPROVED_TWO_UIDS_LOST_FULL_SOURCE_RECEIPT_REUSE_AFTER_OTHER_UID_METADATA_ONLY_CHANGE",
+  "requestId": "m3s2-e052-existing2-preserve-3e3a-20261116",
+  "sourceArchiveFile": "original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+  "currentSourceGitBlob": "5a9e25d32e96a19bb6bb2f2f8265446cb92fee34",
+  "currentCompactGitBlob": "4f996d2c2d1c170554b2711e664c7fe9422591ec",
+  "priorReceiptRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-release-20261115.json",
+    "sha256": "a1ee07c869661804dc60fb1e6c05a78c3047115c0c83b6c276ad96c52d7b1721",
+    "gitBlob": "01381f3e01d8046921c38641aad99cb5a70b9a9c",
+    "priorSourceGitBlob": "2b71e1d36ec1ad2c3886298a7eb70080394bf18c"
+  },
+  "selected": [
+    {
+      "questionUid": "qid_v1_600e20543decf50f0033dc65a1a757ecb528796d236665ecf8dfceb2d5d1ea94",
+      "sourceOrdinal": 2
+    },
+    {
+      "questionUid": "qid_v1_796434a371934dab9b840443d828fd1a43688ac6aa8c5fc2b03b956c39d7e714",
+      "sourceOrdinal": 25
+    }
+  ],
+  "counts": {
+    "preservedExistingNative": 2,
+    "newNative": 0,
+    "sourceChanges": 0,
+    "compactChanges": 0,
+    "registryChanges": 0,
+    "newDefinitions": 0,
+    "newMetadataApprovals": 0
+  },
+  "currentCode": {
+    "validatorGitBlob": "03718d51eb0460c0ac12e1c3babdd60b38d922f1",
+    "autoRegistrarGitBlob": "114574f8e2e44cb6515c47a3abd0155e28f8d8e6",
+    "DProposedValidatorUsed": false
+  },
+  "gates": {
+    "dryWriteReplay": "PASS_LOCAL_DRY_WRITE_REPLAY_NATIVE2",
+    "native2": [
+      {
+        "questionUid": "qid_v1_600e20543decf50f0033dc65a1a757ecb528796d236665ecf8dfceb2d5d1ea94",
+        "sourceOrdinal": 2,
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-existing2-preserve-3e3a-20261116.json",
+        "plannerStatus": "ALREADY_REGISTERED"
+      },
+      {
+        "questionUid": "qid_v1_796434a371934dab9b840443d828fd1a43688ac6aa8c5fc2b03b956c39d7e714",
+        "sourceOrdinal": 25,
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-existing2-preserve-3e3a-20261116.json",
+        "plannerStatus": "ALREADY_REGISTERED"
+      }
+    ],
+    "Consumer2": {
+      "changed": 2,
+      "checked": 2,
+      "passed": 2,
+      "skippedUnchanged": 0
+    },
+    "ConsumerValues": [
+      {
+        "questionUid": "qid_v1_600e20543decf50f0033dc65a1a757ecb528796d236665ecf8dfceb2d5d1ea94",
+        "sourceOrdinal": 2,
+        "canonicalAssignmentReasons": [],
+        "approvalStatus": "APPROVED",
+        "reviewEvidence": "PASS",
+        "directSelectable": true,
+        "courseKey": "M3-2",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "difficultyBucket": 2
+      },
+      {
+        "questionUid": "qid_v1_796434a371934dab9b840443d828fd1a43688ac6aa8c5fc2b03b956c39d7e714",
+        "sourceOrdinal": 25,
+        "canonicalAssignmentReasons": [],
+        "approvalStatus": "APPROVED",
+        "reviewEvidence": "PASS",
+        "directSelectable": true,
+        "courseKey": "M3-2",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "difficultyBucket": 3
+      }
+    ],
+    "projectionReplay": {
+      "status": "PASS",
+      "replay": true,
+      "plannedPaths": []
+    }
+  },
+  "preservation": {
+    "allStudentPayloads": 25,
+    "selectedWholeQuestions": 2,
+    "selectedChanges": [
+      {
+        "questionUid": "qid_v1_600e20543decf50f0033dc65a1a757ecb528796d236665ecf8dfceb2d5d1ea94",
+        "sourceOrdinal": 2,
+        "changedFields": [
+          "metadataRevision",
+          "approvalEvidence"
+        ]
+      },
+      {
+        "questionUid": "qid_v1_796434a371934dab9b840443d828fd1a43688ac6aa8c5fc2b03b956c39d7e714",
+        "sourceOrdinal": 25,
+        "changedFields": [
+          "metadataRevision",
+          "approvalEvidence"
+        ]
+      }
+    ],
+    "outsideExact": {
+      "metadata": 28888,
+      "identity": 28890,
+      "runtime": 7325
+    },
+    "sourceCompactCanonicalCompiledUnchanged": true,
+    "otherOwnerQ5Q12Unchanged": true,
+    "registryChanges": 0,
+    "newDefinitions": 0,
+    "newMetadataApprovals": 0,
+    "newDifficultyJudgments": 0,
+    "newMathVisualReview": 0
+  },
+  "newDefinitionDependency": 0,
+  "historicalSourceBlobReachableInMain": true,
+  "existingOwnerScope": {
+    "pr": 2220,
+    "requestId": "m3s2-audit-e052-native2-20261116",
+    "selectedOrdinals": [
+      5,
+      12
+    ],
+    "includedInThisCandidate": false
+  },
+  "evidenceRefs": [
+    {
+      "path": "/workspace/scratch/3e3a7e007c36/m3s2-agent/e052-preserve2/official-registration-native2.json",
+      "sha256": "ddb3182756df77620298e80ab60569d17b9b08139c833a1010e3cd7a42c994d7",
+      "bytes": 16924
+    },
+    {
+      "path": "/workspace/scratch/3e3a7e007c36/m3s2-agent/e052-preserve2/official-consumer2.json",
+      "sha256": "e319e944914dd7acb0ad6547afbc9efb74ff4141d7999460e721a1aeb89bfb71",
+      "bytes": 2603
+    },
+    {
+      "path": "/workspace/scratch/3e3a7e007c36/m3s2-agent/e052-preserve2/consumer-projection2.json",
+      "sha256": "d5f8f6b674fa6b8036355dec42c53b64159e5f96e40eed1be975b1db07abc449",
+      "bytes": 1617
+    }
+  ],
+  "remoteDuplicateCheck": {
+    "main": "f6fdf1aaadb2345273eb314db0ab2cc80dab7e07",
+    "matchingE052Inbox": [
+      "m3s2-audit-e052-native2-20261116"
+    ],
+    "existingQ2Q25PreservationFollowupFound": false,
+    "activeQ5Q12OwnerExcluded": true
+  },
+  "actualMainRegistration": "NOT_RUN",
+  "Pages": "NOT_RUN",
+  "remoteWrites": 0
+}
