@@ -1,4 +1,201 @@
 {
-  "status": "EXEMPT",
-  "reason": "The lens area is calculated from two sector areas and two isosceles-triangle areas."
+  "capability": "construction-spike-v1",
+  "sourceQuote": "두 사분원의 넓이의 합에서 정사각형의 넓이를 빼면",
+  "sourceConditions": [
+    {
+      "id": "q19-c1",
+      "condition": "한 변의 길이가 12 cm인 정사각형",
+      "mappedTo": ["A", "B", "C", "D", "sAB", "sBC", "sCD", "sDA", "dAB"]
+    },
+    {
+      "id": "q19-c2",
+      "condition": "꼭짓점 B를 중심으로 하고 반지름의 길이가 12 cm인 사분원의 호 AC",
+      "mappedTo": ["kB", "arcACB", "qB"]
+    },
+    {
+      "id": "q19-c3",
+      "condition": "꼭짓점 D를 중심으로 하고 반지름의 길이가 12 cm인 사분원의 호 AC",
+      "mappedTo": ["kD", "arcACD", "qD"]
+    },
+    {
+      "id": "q19-c4",
+      "condition": "두 사분원이 겹치는 렌즈 모양 부분",
+      "mappedTo": ["arcACB", "arcACD"]
+    }
+  ],
+  "newVisualInformation": [
+    "중심이 B인 사분원 전체를 파란색으로 옅게 칠함",
+    "중심이 D인 사분원 전체를 주황색으로 옅게 칠함",
+    "두 사분원이 겹치는 렌즈 모양 부분은 두 색이 겹쳐 진하게 보임",
+    "정사각형의 넓이 144 cm²와 사분원의 넓이 36π cm²를 중간값 라벨로 표시"
+  ],
+  "caption": "한 변의 길이가 12 cm인 정사각형 안에서 꼭짓점 B를 중심으로 하는 사분원은 파랑, 꼭짓점 D를 중심으로 하는 사분원은 주황으로 옅게 칠하고, 두 사분원이 겹치는 렌즈 모양 부분이 두 색으로 진하게 보이는 그림. 각 사분원의 호 곁에 '사분원 36π cm²' 라벨을 하나씩 두고 지시선으로 그 사분원의 호에 이어 붙였으며, 정사각형 위쪽 변 곁에 '정사각형 144 cm²' 라벨을 두었다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "12" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "12" },
+            { "kind": "integer", "value": "12" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "12" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "kB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["B"],
+        "args": {
+          "radius": { "kind": "integer", "value": "12" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kD",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["D"],
+        "args": {
+          "radius": { "kind": "integer", "value": "12" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D"],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcACB",
+        "circle": "kB",
+        "center": "B",
+        "from": "A",
+        "to": "C",
+        "side": "MINOR",
+        "highlight": true,
+        "color": "BLUE",
+        "label": "사분원 36π cm²",
+        "labelKind": "TEXT",
+        "labelWeight": "MATH",
+        "labelPlacement": "LEADER",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcACD",
+        "circle": "kD",
+        "center": "D",
+        "from": "A",
+        "to": "C",
+        "side": "MINOR",
+        "highlight": true,
+        "color": "WARM",
+        "label": "사분원 36π cm²",
+        "labelKind": "TEXT",
+        "labelWeight": "MATH",
+        "labelPlacement": "LEADER",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "qB",
+        "fill": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "sector": { "center": "B", "from": "A", "to": "C", "side": "MINOR" }
+          }
+        ]
+      },
+      {
+        "id": "qD",
+        "fill": "WARM",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "shapes": [
+          {
+            "sector": { "center": "D", "from": "A", "to": "C", "side": "MINOR" }
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "12\\,cm",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ],
+    "textLabels": [
+      {
+        "id": "sqArea",
+        "at": [6, 13.2],
+        "text": "정사각형 144 cm²",
+        "labelKind": "TEXT",
+        "labelWeight": "MATH",
+        "anchor": "CENTER",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": { "width": 640, "height": 580 }
 }

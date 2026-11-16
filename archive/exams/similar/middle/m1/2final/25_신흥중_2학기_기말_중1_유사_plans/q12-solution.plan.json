@@ -1,4 +1,217 @@
 {
-  "status": "EXEMPT",
-  "reason": "The cylinder volume minus the two sphere volumes is computed in text."
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": { "text": "통의 높이는 16cm" },
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {
+            "id": "s1",
+            "kind": "CYLINDER",
+            "radius": 4,
+            "height": 16,
+            "stack": { "count": 2, "radius": 4 }
+          }
+        ],
+        "dims": [
+          { "diameter": "bottom", "side": "BOTTOM" },
+          { "solid": "s1", "height": true, "side": "LEFT" }
+        ]
+      }
+    },
+    {
+      "caption": { "text": "단면: 구 지름 8cm 두 개" },
+      "plan": {
+        "capability": "construction-spike-v1",
+        "mathPlan": {
+          "schemaVersion": "construction-spike-v1",
+          "realization": {
+            "recipeId": "PLANE_FIGURE_v1",
+            "unit": "source-length",
+            "reflectionEquivalent": false
+          },
+          "nodes": [
+            {
+              "id": "P1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "0" }, { "kind": "integer", "value": "0" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "8" }, { "kind": "integer", "value": "0" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "8" }, { "kind": "integer", "value": "16" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "P4",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "0" }, { "kind": "integer", "value": "16" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "4" }, { "kind": "integer", "value": "0" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "4" }, { "kind": "integer", "value": "8" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "D3",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "4" }, { "kind": "integer", "value": "16" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "4" }, { "kind": "integer", "value": "4" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R1",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "8" }, { "kind": "integer", "value": "4" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "O2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "4" }, { "kind": "integer", "value": "12" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "R2",
+              "op": "SOURCE_POINT",
+              "inputs": [],
+              "args": { "coordinates": [ { "kind": "integer", "value": "8" }, { "kind": "integer", "value": "12" } ] },
+              "outputType": "POINT",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "c1",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [ "O1" ],
+              "args": { "radius": { "kind": "integer", "value": "4" } },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            },
+            {
+              "id": "c2",
+              "op": "CIRCLE_CENTER_RADIUS",
+              "inputs": [ "O2" ],
+              "args": { "radius": { "kind": "integer", "value": "4" } },
+              "outputType": "CIRCLE",
+              "factRole": "GIVEN"
+            }
+          ]
+        },
+        "axisTickValues": { "x": [], "y": [] },
+        "displayLines": [],
+        "displayCircles": [ "c1", "c2" ],
+        "displaySegments": [
+          { "id": "sP1P2", "refs": [ "P1", "P2" ] },
+          { "id": "sP2P3", "refs": [ "P2", "P3" ] },
+          { "id": "sP3P4", "refs": [ "P3", "P4" ] },
+          { "id": "sP4P1", "refs": [ "P4", "P1" ] },
+          { "id": "sD1D2", "refs": [ "D1", "D2" ] },
+          { "id": "sD2D3", "refs": [ "D2", "D3" ] },
+          { "id": "sO1R1", "refs": [ "O1", "R1" ] }
+        ],
+        "displayPoints": [ "P1", "P2", "P3", "P4", "D1", "D2", "D3", "O1", "R1", "O2", "R2" ],
+        "hiddenPointNames": [ "P1", "P2", "P3", "P4", "D1", "D2", "D3", "O1", "R1", "O2", "R2" ],
+        "hiddenPointStyle": "NONE",
+        "planeMarks": {
+          "expressionLabels": [
+            { "id": "lR", "ownerSegment": "sO1R1", "text": "4", "unit": "cm" }
+          ],
+          "dimensions": [
+            { "id": "dD8a", "from": "D1", "to": "D2", "label": "8", "unit": "cm", "side": "RIGHT", "style": "INLINE", "factRole": "GIVEN" },
+            { "id": "dD8b", "from": "D2", "to": "D3", "label": "8", "unit": "cm", "side": "RIGHT", "style": "INLINE", "factRole": "GIVEN" },
+            { "id": "dW8", "from": "P1", "to": "P2", "label": "8", "unit": "cm", "side": "BELOW", "style": "BAR", "offset": "AUTO", "factRole": "GIVEN" }
+          ],
+          "regions": [
+            {
+              "id": "rgEmpty",
+              "fill": "MEDIUM",
+              "factRole": "DERIVED_INTERMEDIATE",
+              "shapes": [ { "polygon": [ "P1", "P2", "P3", "P4" ] } ],
+              "holes": [
+                { "loop": { "start": "R1", "steps": [ { "to": "R1", "arc": { "center": "O1", "side": "FULL" } } ] } },
+                { "loop": { "start": "R2", "steps": [ { "to": "R2", "arc": { "center": "O2", "side": "FULL" } } ] } }
+              ]
+            },
+            {
+              "id": "rgS1",
+              "fill": "BLUE",
+              "factRole": "GIVEN",
+              "shapes": [ { "loop": { "start": "R1", "steps": [ { "to": "R1", "arc": { "center": "O1", "side": "FULL" } } ] } } ]
+            },
+            {
+              "id": "rgS2",
+              "fill": "BLUE",
+              "factRole": "GIVEN",
+              "shapes": [ { "loop": { "start": "R2", "steps": [ { "to": "R2", "arc": { "center": "O2", "side": "FULL" } } ] } } ]
+            }
+          ]
+        },
+        "coordinateCanvas": { "width": 384, "height": 560 }
+      }
+    }
+  ],
+  "caption": "원기둥 모양의 통에 같은 크기의 구 두 개가 위아래로 꼭 맞게 들어 있다. 구의 지름이 8cm이므로 통의 높이는 구의 지름 두 개를 이은 16cm이고, 단면 그림에서 파란 원 두 개는 구의 단면, 회색으로 칠한 부분은 구를 빼고 남은 빈 공간이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면의 지름이 8cm인 원기둥 모양의 통이다",
+      "mappedTo": "panels[0..1]"
+    },
+    {
+      "id": "c2",
+      "condition": "반지름이 4cm인 구 두 개가 통에 위아래로 꼭 맞게 들어 있다",
+      "mappedTo": "panels[0]"
+    },
+    {
+      "id": "c3",
+      "condition": "두 구는 한 점에서 맞닿고 통의 밑면과 윗면에 닿는다",
+      "mappedTo": "panels[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "통의 높이가 구의 지름 8cm 두 개를 이은 16cm임(바깥 치수선)",
+    "통을 축을 지나는 평면으로 자른 단면에서 구의 단면 두 개는 파란 원, 구를 빼고 남은 빈 공간은 회색으로 구분됨"
+  ]
 }

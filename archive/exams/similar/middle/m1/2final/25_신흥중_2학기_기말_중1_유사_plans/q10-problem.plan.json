@@ -1,4 +1,54 @@
 {
-  "status": "EXEMPT",
-  "reason": "The cylinder and attached hemispheres, radii and cylinder height are all explicitly described."
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "caption": "밑면의 반지름이 3cm, 높이가 8cm인 원기둥의 양쪽 밑면에 반지름이 3cm인 반구를 붙여 만든 입체도형.",
+  "accessibilityDescription": "원기둥의 위아래에 반구를 붙인 입체도형을 비스듬히 본 그림. 원기둥의 밑면 반지름 3cm와 원기둥의 높이 8cm가 적혀 있고, 원기둥과 반구가 만나는 원은 앞쪽이 실선, 뒤쪽이 점선으로 그려져 있다.",
+  "solids": [
+    {
+      "id": "lower",
+      "kind": "HEMISPHERE",
+      "radius": 3,
+      "orientation": "APEX_DOWN"
+    },
+    {
+      "id": "tube",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 8,
+      "on": "lower"
+    },
+    {
+      "id": "upper",
+      "kind": "HEMISPHERE",
+      "radius": 3,
+      "on": "tube"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "tube",
+      "height": true
+    },
+    {
+      "solid": "tube",
+      "radius": "bottom"
+    }
+  ],
+  "sourceQuote": "밑면의 반지름의 길이가 $3\\text{ cm}$이고 높이가 $8\\text{ cm}$인 원기둥의 양쪽 밑면에 반지름의 길이가 각각 $3\\text{ cm}$인 반구를 붙여서 만든 입체도형의 겉넓이는?",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원기둥의 양쪽 밑면에 반지름 3 cm인 반구가 하나씩 붙어 있다",
+      "mappedTo": ["lower", "upper"]
+    },
+    {
+      "id": "c2",
+      "condition": "가운데 원기둥의 밑면 반지름은 3 cm, 높이는 8 cm이다",
+      "mappedTo": ["tube"]
+    }
+  ],
+  "newVisualInformation": [
+    "반구와 원기둥이 만나는 접합 원 두 개가 보이는 하나의 입체도형",
+    "밑면의 반지름 3cm와 원기둥의 높이 8cm의 길이 표시"
+  ]
 }

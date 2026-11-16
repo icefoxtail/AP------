@@ -1,4 +1,52 @@
 {
-  "status": "EXEMPT",
-  "reason": "The frustum lateral area and circular base areas are computed from the stated dimensions."
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CONE_FRUSTUM",
+      "radius": 6,
+      "topRadius": 3,
+      "height": 4,
+      "axis": {
+        "label": "l"
+      }
+    }
+  ],
+  "section": {
+    "kind": "AXIAL"
+  },
+  "dims": [
+    {
+      "solid": "s1",
+      "height": true
+    },
+    {
+      "solid": "s1",
+      "radius": "bottom"
+    },
+    {
+      "solid": "s1",
+      "radius": "top"
+    },
+    {
+      "solid": "s1",
+      "slant": true
+    }
+  ],
+  "solidCaption": {
+    "text": "회전체와 회전축을 포함하는 단면"
+  },
+  "caption": "직각사다리꼴을 회전축 l을 축으로 1회전시켜 만든 회전체를 축을 포함하는 평면으로 자른 단면. 윗면 반지름 3cm, 아랫면 반지름 6cm, 높이 4cm, 모선 5cm.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "윗변 3cm, 아랫변 6cm, 높이 4cm, 빗변 5cm인 직각사다리꼴을 높이에 해당하는 변 l을 축으로 1회전",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "윗면 반지름 3cm, 아랫면 반지름 6cm, 높이 4cm, 모선 5cm인 회전체",
+    "회전축을 포함하는 단면인 사다리꼴"
+  ]
 }

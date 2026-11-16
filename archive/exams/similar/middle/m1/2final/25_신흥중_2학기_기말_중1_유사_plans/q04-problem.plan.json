@@ -1,4 +1,216 @@
 {
-  "status": "EXEMPT",
-  "reason": "The colored region is explicitly the larger sector minus the smaller concentric sector, with angle and radii stated."
+  "capability": "construction-spike-v1",
+  "sourceQuote": "반지름의 길이가 각각 $9\\text{ cm}, 3\\text{ cm}$인",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "9" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "A"],
+        "args": {
+          "length": { "kind": "integer", "value": "9" },
+          "angleDeg": { "kind": "integer", "value": "60" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "A"],
+        "args": {
+          "length": { "kind": "integer", "value": "3" },
+          "angleDeg": { "kind": "integer", "value": "60" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["O"],
+        "args": {
+          "dx": { "kind": "integer", "value": "3" },
+          "dy": { "kind": "integer", "value": "0" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cBig",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["O"],
+        "args": {
+          "radius": { "kind": "integer", "value": "9" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cSmall",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["O"],
+        "args": {
+          "radius": { "kind": "integer", "value": "3" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["O", "A", "B", "C", "D"],
+  "hiddenPointNames": ["C", "D"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sOA", "refs": ["O", "A"] },
+    { "id": "sOB", "refs": ["O", "B"] }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAOB",
+        "refs": ["A", "O", "B"],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "cBig",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "highlight": false,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcCD",
+        "circle": "cSmall",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "highlight": false,
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rBand",
+        "fill": "BLUE",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "A",
+              "to": "B",
+              "side": "MINOR"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "C",
+              "to": "D",
+              "side": "MINOR"
+            }
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dOA",
+        "from": "O",
+        "to": "A",
+        "label": "9\\,cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dOC",
+        "from": "O",
+        "to": "C",
+        "label": "3\\,cm",
+        "side": "LEFT",
+        "style": "ARROW",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 520 },
+  "caption": "중심 O가 같은 두 부채꼴에서 큰 부채꼴의 반지름은 9 cm, 작은 부채꼴의 반지름은 3 cm이고 중심각은 60°이며, 두 호 사이의 부분을 옅은 파란색으로 칠한 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "중심이 같은 두 부채꼴의 중심각은 60°이다",
+      "mappedTo": ["aAOB", "sOA", "sOB", "rBand"]
+    },
+    {
+      "id": "c2",
+      "condition": "큰 부채꼴의 반지름은 9 cm이다",
+      "mappedTo": ["A", "B", "cBig", "arcAB", "dOA"]
+    },
+    {
+      "id": "c3",
+      "condition": "작은 부채꼴의 반지름은 3 cm이다",
+      "mappedTo": ["C", "D", "cSmall", "arcCD", "dOC"]
+    },
+    {
+      "id": "c4",
+      "condition": "큰 부채꼴에서 작은 부채꼴을 뺀 부분을 칠한다",
+      "mappedTo": ["rBand"]
+    }
+  ],
+  "newVisualInformation": [
+    "두 부채꼴의 두 반지름을 O에서 나온 한 쌍의 선분 O-A, O-B로 그리고 그 위 3 cm 지점을 잇는 작은 호를 함께 그려 두 부채꼴이 같은 중심을 씀을 보인다",
+    "두 호 사이의 띠 모양 부분을 옅은 파란색으로 칠한다",
+    "중심각 60°를 O의 각 표식으로 표시한다",
+    "큰 반지름 9 cm와 작은 반지름 3 cm를 도형 바깥 치수선으로 표시한다"
+  ]
 }

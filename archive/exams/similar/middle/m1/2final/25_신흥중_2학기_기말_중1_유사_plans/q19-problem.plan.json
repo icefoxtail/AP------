@@ -1,4 +1,174 @@
 {
-  "status": "EXEMPT",
-  "reason": "The square side, quarter-circle centers, radii and overlap inside the square are fully specified."
+  "capability": "construction-spike-v1",
+  "sourceQuote": "한 변의 길이가 $12\\text{ cm}$인 정사각형 $ABCD$의 내부에서",
+  "sourceConditions": [
+    {
+      "id": "q19-c1",
+      "condition": "한 변의 길이가 12 cm인 정사각형",
+      "mappedTo": ["A", "B", "C", "D", "sAB", "sBC", "sCD", "sDA", "dAB"]
+    },
+    {
+      "id": "q19-c2",
+      "condition": "꼭짓점 B를 중심으로 하고 반지름의 길이가 12 cm인 사분원의 호 AC",
+      "mappedTo": ["kB", "arcACB"]
+    },
+    {
+      "id": "q19-c3",
+      "condition": "꼭짓점 D를 중심으로 하고 반지름의 길이가 12 cm인 사분원의 호 AC",
+      "mappedTo": ["kD", "arcACD"]
+    },
+    {
+      "id": "q19-c4",
+      "condition": "두 사분원이 겹치는 렌즈 모양 부분",
+      "mappedTo": ["lens"]
+    }
+  ],
+  "newVisualInformation": [
+    "두 사분원의 호가 만드는 렌즈 모양의 겹친 부분을 파란색으로 칠함",
+    "한 변의 길이 12 cm를 아래 변 바깥 치수선에 표시"
+  ],
+  "caption": "한 변의 길이가 12 cm인 정사각형 안에 꼭짓점 B와 D를 각각 중심으로 하는 두 사분원의 호를 그리고, 두 호가 만드는 렌즈 모양의 겹친 부분을 파란색으로 칠한 그림.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "12" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "12" },
+            { "kind": "integer", "value": "12" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "12" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "kB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["B"],
+        "args": {
+          "radius": { "kind": "integer", "value": "12" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "kD",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["D"],
+        "args": {
+          "radius": { "kind": "integer", "value": "12" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D"],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sBC", "refs": ["B", "C"] },
+    { "id": "sCD", "refs": ["C", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcACB",
+        "circle": "kB",
+        "center": "B",
+        "from": "A",
+        "to": "C",
+        "side": "MINOR",
+        "highlight": false,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcACD",
+        "circle": "kD",
+        "center": "D",
+        "from": "A",
+        "to": "C",
+        "side": "MINOR",
+        "highlight": false,
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "lens",
+        "fill": "BLUE",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                { "to": "C", "arc": { "center": "B", "side": "MINOR" } },
+                { "to": "A", "arc": { "center": "D", "side": "MINOR" } }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "12\\,cm",
+        "side": "BELOW",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "coordinateCanvas": { "width": 620, "height": 560 }
 }

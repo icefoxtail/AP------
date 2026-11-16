@@ -1,4 +1,226 @@
 {
-  "status": "EXEMPT",
-  "reason": "The solution derives the angle/arc relation algebraically; no diagram is needed."
+  "capability": "construction-spike-v1",
+  "sourceQuote": "$\\overline{OA} = \\overline{OD}$ (반지름)이므로",
+  "sourceConditions": [
+    {
+      "id": "q03-c1",
+      "condition": "중심이 O인 반원에서 선분 AB는 지름이고, A는 왼쪽, B는 오른쪽 끝이다",
+      "mappedTo": ["O", "A", "B", "sAB", "arcAB"]
+    },
+    {
+      "id": "q03-c2",
+      "condition": "호 AB 위의 점은 A, D, C, B 순서로 놓여 있고 선분 AD는 선분 OC와 평행이다",
+      "mappedTo": ["A", "D", "C", "B", "sAD", "sOC", "pADOC"]
+    },
+    {
+      "id": "q03-c3",
+      "condition": "각 DAO는 30도이고 호 AD의 길이는 20 cm이다",
+      "mappedTo": ["aDAO", "arcAD"]
+    },
+    {
+      "id": "q03-c4",
+      "condition": "OA와 OD는 모두 반지름이므로 길이가 같고, 삼각형 AOD의 밑각인 각 ADO도 30도, 중심각 AOD는 120도이다",
+      "mappedTo": ["sOA", "sOD", "eRadius", "aADO", "aAOD"]
+    }
+  ],
+  "newVisualInformation": [
+    "반지름 OD를 점선 보조선으로 긋고 OA와 OD에 같은 길이 눈금을 하나씩 표시",
+    "삼각형 AOD의 밑각인 각 ADO 30도를 각 DAO와 같은 파란 호로 표시",
+    "중심각 AOD 120도를 주황 호로 표시",
+    "동위각인 각 BOC 30도를 각 DAO와 같은 파란 호로 표시",
+    "호 AD는 주황, 호 BC는 파랑으로 강조(호 BC의 길이 값은 쓰지 않음)"
+  ],
+  "caption": "중심 O인 반원에서 반지름 OD를 점선으로 긋고, 호 AD는 주황, 호 BC는 파랑으로 강조했으며, 30도인 세 각 DAO·ADO·BOC는 파란 호로, 120도인 각 AOD는 주황 호로 나타낸 그림.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "-12" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "12" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "B"],
+        "args": {
+          "length": { "kind": "integer", "value": "12" },
+          "angleDeg": { "kind": "integer", "value": "60" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "B"],
+        "args": {
+          "length": { "kind": "integer", "value": "12" },
+          "angleDeg": { "kind": "integer", "value": "30" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["O"],
+        "args": {
+          "radius": { "kind": "integer", "value": "12" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "O"],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sOA", "refs": ["O", "A"] },
+    { "id": "sAD", "refs": ["A", "D"] },
+    { "id": "sOC", "refs": ["O", "C"] },
+    { "id": "sOD", "refs": ["O", "D"], "dashed": true }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcAD",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "D",
+        "side": "CW",
+        "highlight": true,
+        "color": "WARM",
+        "label": "20",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcBC",
+        "circle": "k",
+        "center": "O",
+        "from": "B",
+        "to": "C",
+        "side": "MINOR",
+        "highlight": true,
+        "color": "BLUE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aDAO",
+        "refs": ["D", "A", "O"],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aADO",
+        "refs": ["A", "D", "O"],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "style": "ARC",
+        "labelPlacement": "LEADER",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aBOC",
+        "refs": ["B", "O", "C"],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "aAOD",
+        "refs": ["A", "O", "D"],
+        "value": 120,
+        "label": "120",
+        "arcs": 1,
+        "style": "ARC",
+        "color": "WARM",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalAngles": [
+      { "angles": ["aDAO", "aADO", "aBOC"], "color": "BLUE" }
+    ],
+    "parallels": [
+      {
+        "id": "pADOC",
+        "count": 1,
+        "segments": ["sAD", "sOC"],
+        "color": "BLUE"
+      }
+    ],
+    "equalLengths": [
+      {
+        "id": "eRadius",
+        "count": 1,
+        "segments": ["sOA", "sOD"]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  }
 }

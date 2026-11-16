@@ -1,4 +1,357 @@
 {
-  "status": "EXEMPT",
-  "reason": "The rectangle, sector radius/angle and equal exclusive-area condition are fully specified algebraically."
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "157",
+              "denominator": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "157",
+              "denominator": "25"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "kB",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "XSE",
+        "op": "INTERSECTION",
+        "inputs": [
+          "lCD",
+          "kB"
+        ],
+        "args": {},
+        "outputType": "POINT_SET",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SELECT_POINT",
+        "inputs": [
+          "XSE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "branch": {
+          "kind": "SIDE_OF_ORIENTED_LINE",
+          "refs": [
+            "B",
+            "E"
+          ],
+          "sign": 1
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "P"
+  ],
+  "hiddenPointNames": [
+    "P"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAE",
+        "circle": "kB",
+        "center": "B",
+        "from": "A",
+        "to": "E",
+        "side": "MINOR",
+        "highlight": false,
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rRect",
+        "fill": "WARM",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "A",
+              "steps": [
+                {
+                  "to": "D"
+                },
+                {
+                  "to": "P"
+                },
+                {
+                  "to": "A",
+                  "arc": {
+                    "center": "B",
+                    "side": "CCW"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "rSector",
+        "fill": "BLUE",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "loop": {
+              "start": "C",
+              "steps": [
+                {
+                  "to": "E"
+                },
+                {
+                  "to": "P",
+                  "arc": {
+                    "center": "B",
+                    "side": "CCW"
+                  }
+                },
+                {
+                  "to": "C"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "8",
+        "unit": "cm",
+        "side": "LEFT",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 620,
+    "height": 560
+  },
+  "caption": "한 변의 길이가 8cm인 직사각형과 중심각이 90도인 부채꼴이 점 B를 공통 꼭짓점으로 겹쳐 있고, 직사각형에만 속하는 부분은 주황색, 부채꼴에만 속하는 부분은 파란색으로 칠한 그림.",
+  "sourceQuote": "점 $B$를 공통 꼭짓점으로 하여 겹쳐져 있다",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "선분 AB=8cm인 직사각형",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "sAB",
+        "sBC",
+        "sCD",
+        "sAD",
+        "dAB"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "점 B를 중심으로 하고 반지름이 BA=8인 중심각 90도의 부채꼴",
+      "mappedTo": [
+        "kB",
+        "arcAE",
+        "sAB",
+        "sBC",
+        "sCE",
+        "rB"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "직사각형에만 속하는 부분과 부채꼴에만 속하는 부분",
+      "mappedTo": [
+        "rRect",
+        "rSector",
+        "E",
+        "P"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "직사각형에만 속하는 오른쪽 위 모서리 부분을 주황색으로 칠함",
+    "부채꼴에만 속하는 직사각형 오른쪽 바깥 부분을 파란색으로 칠함",
+    "두 도형이 겹치는 공통 부분은 칠하지 않음"
+  ]
 }

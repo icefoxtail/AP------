@@ -1,4 +1,166 @@
 {
-  "status": "EXEMPT",
-  "reason": "The point order on the semicircle, diameter, parallel radii/chords, angle and arc length are all explicit in the stem."
+  "capability": "construction-spike-v1",
+  "sourceQuote": "선분 $AB$는 지름이고",
+  "sourceConditions": [
+    {
+      "id": "q03-c1",
+      "condition": "중심이 O인 반원에서 선분 AB는 지름이고, A는 왼쪽, B는 오른쪽 끝이다",
+      "mappedTo": ["O", "A", "B", "sAB", "arcAB"]
+    },
+    {
+      "id": "q03-c2",
+      "condition": "호 AB 위의 점은 A, D, C, B 순서로 놓여 있고 선분 AD는 선분 OC와 평행이다",
+      "mappedTo": ["A", "D", "C", "B", "sAD", "sOC", "pADOC"]
+    },
+    {
+      "id": "q03-c3",
+      "condition": "각 DAO는 30도이고 호 AD의 길이는 20 cm이다",
+      "mappedTo": ["aDAO", "arcAD"]
+    }
+  ],
+  "newVisualInformation": [
+    "호 AD의 길이 20cm와 각 DAO 30도를 표시",
+    "선분 AD와 선분 OC가 평행임을 같은 파란 화살표 눈금으로 표시",
+    "반지름 OD, 각 AOD, 각 BOC, 호 BC의 길이는 그리지 않음"
+  ],
+  "caption": "중심 O인 반원에서 지름 AB와 현 AD, 반지름 OC를 그리고, 호 AD의 길이 20cm와 각 DAO 30도, 현 AD와 반지름 OC가 평행임을 같은 파란 화살표로 나타낸 그림.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "-12" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "12" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "B"],
+        "args": {
+          "length": { "kind": "integer", "value": "12" },
+          "angleDeg": { "kind": "integer", "value": "60" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "B"],
+        "args": {
+          "length": { "kind": "integer", "value": "12" },
+          "angleDeg": { "kind": "integer", "value": "30" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["O"],
+        "args": {
+          "radius": { "kind": "integer", "value": "12" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["A", "B", "C", "D", "O"],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sAB", "refs": ["A", "B"] },
+    { "id": "sAD", "refs": ["A", "D"] },
+    { "id": "sOC", "refs": ["O", "C"] }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "CW",
+        "highlight": false,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "arcAD",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "D",
+        "side": "CW",
+        "highlight": true,
+        "label": "20",
+        "unit": "cm",
+        "factRole": "GIVEN"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aDAO",
+        "refs": ["D", "A", "O"],
+        "value": 30,
+        "label": "30",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "parallels": [
+      {
+        "id": "pADOC",
+        "count": 1,
+        "segments": ["sAD", "sOC"],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 560
+  }
 }

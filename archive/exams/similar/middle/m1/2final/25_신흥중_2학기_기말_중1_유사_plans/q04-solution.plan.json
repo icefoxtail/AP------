@@ -1,4 +1,255 @@
 {
-  "status": "EXEMPT",
-  "reason": "The perimeter is computed from two arc lengths and two radial segments in text."
+  "capability": "construction-spike-v1",
+  "sourceQuote": "색칠한 부분의 둘레는 큰 호의 길이, 작은 호의 길이, 양쪽 선분의 길이의 합이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "0" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            { "kind": "integer", "value": "9" },
+            { "kind": "integer", "value": "0" }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "A"],
+        "args": {
+          "length": { "kind": "integer", "value": "9" },
+          "angleDeg": { "kind": "integer", "value": "60" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": ["O", "A"],
+        "args": {
+          "length": { "kind": "integer", "value": "3" },
+          "angleDeg": { "kind": "integer", "value": "60" },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": ["O"],
+        "args": {
+          "dx": { "kind": "integer", "value": "3" },
+          "dy": { "kind": "integer", "value": "0" }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cBig",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["O"],
+        "args": {
+          "radius": { "kind": "integer", "value": "9" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cSmall",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["O"],
+        "args": {
+          "radius": { "kind": "integer", "value": "3" }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["O", "A", "B", "C", "D"],
+  "hiddenPointNames": ["C", "D"],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    { "id": "sOD", "refs": ["O", "D"] },
+    { "id": "sDA", "refs": ["D", "A"] },
+    { "id": "sOC", "refs": ["O", "C"] },
+    { "id": "sCB", "refs": ["C", "B"] }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aAOB",
+        "refs": ["A", "O", "B"],
+        "value": 60,
+        "label": "60",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arcAB",
+        "circle": "cBig",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "highlight": true,
+        "color": "WARM",
+        "label": "3pi",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "arcCD",
+        "circle": "cSmall",
+        "center": "O",
+        "from": "C",
+        "to": "D",
+        "side": "MINOR",
+        "highlight": true,
+        "color": "BLUE",
+        "label": "pi",
+        "unit": "cm",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rBand",
+        "fill": "BLUE",
+        "factRole": "GIVEN",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "A",
+              "to": "B",
+              "side": "MINOR"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "C",
+              "to": "D",
+              "side": "MINOR"
+            }
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dOA",
+        "from": "O",
+        "to": "A",
+        "label": "9\\,cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dDA",
+        "from": "D",
+        "to": "A",
+        "label": "6\\,cm",
+        "side": "BELOW",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "value": 6,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "dOC",
+        "from": "O",
+        "to": "C",
+        "label": "3\\,cm",
+        "side": "LEFT",
+        "style": "ARROW",
+        "offset": "AUTO",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "dCB",
+        "from": "C",
+        "to": "B",
+        "label": "6\\,cm",
+        "side": "LEFT",
+        "style": "ARROW",
+        "offset": 2,
+        "value": 6,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "equalLengths": [
+      { "id": "eSide", "count": 1, "segments": ["sDA", "sCB"], "color": "GREEN" }
+    ]
+  },
+  "coordinateCanvas": { "width": 720, "height": 560 },
+  "caption": "중심 O가 같은 두 부채꼴 사이의 색칠한 띠에서 큰 호는 주황으로 3π cm, 작은 호는 파랑으로 π cm, 길이가 같은 두 직선 변은 초록 눈금으로 각각 6cm를 나타내고, 중심각 60°와 두 반지름 9cm·3cm를 함께 쓴 그림.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "중심이 같은 두 부채꼴의 중심각은 60°이다",
+      "mappedTo": ["aAOB", "sOD", "sDA", "sOC", "sCB", "rBand"]
+    },
+    {
+      "id": "c2",
+      "condition": "큰 부채꼴의 반지름은 9 cm이다",
+      "mappedTo": ["A", "B", "cBig", "arcAB", "dOA"]
+    },
+    {
+      "id": "c3",
+      "condition": "작은 부채꼴의 반지름은 3 cm이다",
+      "mappedTo": ["C", "D", "cSmall", "arcCD", "dOC"]
+    },
+    {
+      "id": "c4",
+      "condition": "큰 부채꼴에서 작은 부채꼴을 뺀 부분을 칠한다",
+      "mappedTo": ["rBand"]
+    },
+    {
+      "id": "c5",
+      "condition": "색칠한 부분의 둘레는 큰 호, 작은 호, 같은 길이인 두 직선 변 네 경계의 길이의 합이다",
+      "mappedTo": ["arcAB", "arcCD", "sDA", "sCB", "dDA", "dCB", "eSide"]
+    }
+  ],
+  "newVisualInformation": [
+    "큰 호 AB에 3π cm를 주황 호로, 작은 호 CD에 π cm를 파랑 호로 표시해 두 호가 둘레의 곡선 부분임을 보인다",
+    "두 직선 변 DA와 CB에 초록 같은 길이 눈금을 하나씩 찍고 치수선으로 각각 6 cm를 쓴다",
+    "9 cm 치수선은 6 cm 치수선보다 바깥 단에, 3 cm 치수선은 6 cm 치수선보다 안쪽 단에 두어 두 반지름 위의 조각 길이를 읽게 한다"
+  ]
 }

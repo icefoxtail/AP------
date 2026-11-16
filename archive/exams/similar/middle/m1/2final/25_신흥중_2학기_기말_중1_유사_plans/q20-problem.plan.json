@@ -1,4 +1,39 @@
 {
-  "status": "EXEMPT",
-  "reason": "The two congruent regular tetrahedra joined face-to-face define a specific polyhedron."
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "BIPYRAMID",
+      "base": {
+        "kind": "REGULAR",
+        "n": 3,
+        "side": 6
+      },
+      "height": 4.898979485566356,
+      "names": "....."
+    }
+  ],
+  "view": {
+    "yawDeg": 0
+  },
+  "solidCaption": {
+    "text": "정사면체 두 개를 붙인 다면체"
+  },
+  "caption": "합동인 정사면체 두 개를 한 면끼리 맞대어 붙인 다면체로, 맞댄 면의 세 꼭짓점이 가운데에, 나머지 꼭짓점 두 개가 위와 아래에 있다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "합동인 정사면체 두 개를 서로 한 면을 맞대어 붙인 다면체",
+      "mappedTo": "solids[0]"
+    },
+    {
+      "id": "c2",
+      "condition": "꼭짓점 5개, 면 6개(삼각쌍뿔)",
+      "mappedTo": "solids[0]"
+    }
+  ],
+  "newVisualInformation": [
+    "맞댄 면의 세 꼭짓점이 가운데 고리를 이루고 위·아래에 꼭짓점이 하나씩 있는 입체의 모양",
+    "가려진 모서리는 점선으로 보인다"
+  ]
 }

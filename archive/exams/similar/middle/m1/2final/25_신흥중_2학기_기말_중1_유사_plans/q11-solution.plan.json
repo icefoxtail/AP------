@@ -1,4 +1,65 @@
 {
-  "status": "EXEMPT",
-  "reason": "The two component volumes are computed and added in text."
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": { "kind": "RECT", "width": 6, "depth": 6 },
+      "height": 5,
+      "names": "........"
+    },
+    {
+      "id": "s2",
+      "kind": "PYRAMID",
+      "base": { "kind": "RECT", "width": 6, "depth": 6 },
+      "height": 6,
+      "names": "....."
+    }
+  ],
+  "highlights": [
+    { "solid": "s1", "face": "side0", "fill": "LIGHT" },
+    { "solid": "s1", "face": "side1", "fill": "LIGHT" },
+    { "solid": "s1", "face": "top", "fill": "LIGHT" },
+    { "solid": "s2", "face": "side0", "fill": "WARM" },
+    { "solid": "s2", "face": "side1", "fill": "WARM" }
+  ],
+  "solidCaption": { "text": "사각기둥(파랑)과 사각뿔(주황)" },
+  "space": {
+    "points": [
+      { "id": "P", "at": [12.896445, 6.857161, 0], "hideName": true, "hideDot": true },
+      { "id": "Q", "at": [12.896445, 6.857161, 6], "hideName": true, "hideDot": true }
+    ],
+    "segments": [
+      { "from": "P", "to": "Q", "style": "DASHED", "role": "REF" }
+    ]
+  },
+  "dims": [
+    { "edge": ["s1#b0", "s1#b1"], "side": "BOTTOM" },
+    { "edge": ["s1#b0", "s1#t0"], "side": "LEFT" },
+    { "from": "P", "to": "Q", "side": "RIGHT", "line": 1 },
+    { "edge": ["s2#b0", "s2#b1"], "side": "BOTTOM" }
+  ],
+  "caption": "사각기둥은 파란색, 사각뿔은 주황색으로 칠해 부피를 두 부분으로 나누어 보인 그림. 사각기둥의 부피는 밑넓이 36cm²에 높이 5cm를 곱한 180cm³이고, 사각뿔의 부피는 같은 밑넓이 36cm²에 높이 6cm를 곱한 값의 3분의 1인 72cm³이다. 두 부피를 더하면 입체 전체의 부피가 된다.",
+  "accessibilityDescription": "왼쪽에는 밑면이 한 변 6cm인 정사각형이고 높이가 5cm인 사각기둥을, 오른쪽에는 밑면이 그와 합동인 정사각형이고 높이가 6cm인 사각뿔을 나란히 그린 그림. 사각기둥은 파란색, 사각뿔은 주황색으로 칠해 두 부분이 구분되고, 사각기둥의 밑면 한 변 6cm와 높이 5cm, 사각뿔의 밑면 한 변 6cm와 높이 6cm가 적혀 있으며, 사각뿔의 높이는 꼭대기에서 밑면의 중심까지 내린 점선과 나란한 세로 치수선 곁에 적었다. 보이지 않는 모서리는 점선으로 그려져 있다.",
+  "sourceQuote": "밑면이 한 변의 길이가 $6\\text{ cm}$인 정사각형이고 높이가 $5\\text{ cm}$인 사각기둥 위에, 밑면이 합동인 정사각형이고 높이가 $6\\text{ cm}$인 사각뿔을 올려놓아 만든 입체도형의 부피는?",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사각기둥의 밑면은 한 변 6cm인 정사각형, 높이는 5cm",
+      "mappedTo": ["s1", "s1#b0-s1#b1", "s1#b0-s1#t0"]
+    },
+    {
+      "id": "c2",
+      "condition": "사각뿔의 밑면은 사각기둥의 밑면과 합동인 정사각형, 높이는 6cm",
+      "mappedTo": ["s2", "s2#b0-s2#b1", "P-Q"]
+    }
+  ],
+  "newVisualInformation": [
+    "사각기둥과 사각뿔을 나란히 두어 입체 전체의 부피를 두 부분으로 나누어 보이게 했다",
+    "사각기둥은 파란색, 사각뿔은 주황색으로 칠해 두 부분을 구분했다",
+    "사각기둥의 밑면 한 변 6cm와 높이 5cm, 사각뿔의 밑면 한 변 6cm와 높이 6cm를 나타냈다",
+    "사각뿔의 높이는 밑면의 중심에서 꼭대기까지 내린 점선과 그 바깥 치수선 곁에 적어, 비스듬한 옆모서리 길이와 헷갈리지 않게 했다",
+    "사각뿔의 밑면 한 변에도 6cm를 적어 사각기둥의 밑면과 합동임이 보이게 했다"
+  ]
 }

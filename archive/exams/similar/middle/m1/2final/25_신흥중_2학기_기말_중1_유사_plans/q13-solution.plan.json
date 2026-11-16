@@ -1,4 +1,46 @@
 {
-  "status": "EXEMPT",
-  "reason": "The displaced volume and remaining-cylinder water volume are equated in text."
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {"text": "물이 가득 찬 그릇에 구를 넣음"},
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {"id": "s1", "kind": "CYLINDER", "radius": 9, "height": 18},
+          {"id": "s2", "kind": "SPHERE", "radius": 9, "inside": "s1"}
+        ],
+        "dims": [
+          {"solid": "s2", "radius": "center", "label": "r"},
+          {"solid": "s1", "height": true, "side": "LEFT", "label": "2r"}
+        ]
+      }
+    },
+    {
+      "caption": {"text": "구를 꺼낸 뒤 남은 물"},
+      "plan": {
+        "capability": "solid-figure-v1",
+        "unit": "cm",
+        "solids": [
+          {"id": "s1", "kind": "CYLINDER", "radius": 9, "height": 18}
+        ],
+        "section": {"solid": "s1", "kind": "LEVEL", "at": "1/3", "fill": "BOTTOM"},
+        "dims": [
+          {"solid": "s1", "level": true, "side": "LEFT"},
+          {"solid": "s1", "radius": "bottom", "label": "r"}
+        ]
+      }
+    }
+  ],
+  "caption": "밑면인 원의 지름과 높이가 같은 원기둥 모양 그릇에 꼭 맞게 들어가는 구를 넣은 모습(가)과, 구를 꺼낸 뒤 그릇에 남은 물의 높이를 6cm로 나타낸 모습(나)을 나란히 나타낸 그림. 구의 반지름과 그릇의 밑면 반지름은 같고, 그릇의 높이는 그 두 배이다.",
+  "sourceConditions": [
+    {"id": "c1", "condition": "밑면인 원의 지름의 길이와 높이가 같은 원기둥 모양의 그릇", "mappedTo": "panels[0..1].solids"},
+    {"id": "c2", "condition": "그릇에 꼭 맞게 들어가는 구(구의 지름은 원기둥의 지름, 곧 그릇의 높이와 같다)", "mappedTo": "panels[0].solids"},
+    {"id": "c3", "condition": "물을 가득 채운 다음 구를 완전히 넣었다가 꺼냈다", "mappedTo": "panels[0..1]"},
+    {"id": "c4", "condition": "그릇에 남아 있는 물의 높이는 6cm이다", "mappedTo": "panels[1].section+dims"}
+  ],
+  "newVisualInformation": [
+    "구의 반지름 r과 그릇의 밑면 반지름 r이 같고 그릇의 높이가 2r임(가)",
+    "구를 꺼낸 뒤 그릇에 남은 물의 높이 6cm(나)"
+  ]
 }

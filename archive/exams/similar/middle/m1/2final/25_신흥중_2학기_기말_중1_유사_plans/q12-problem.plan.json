@@ -1,4 +1,40 @@
 {
-  "status": "EXEMPT",
-  "reason": "The cylinder diameter, sphere radii, fit direction and wall-thickness convention are stated."
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CYLINDER",
+      "radius": 4,
+      "height": 16,
+      "stack": { "count": 2, "radius": 4 }
+    }
+  ],
+  "dims": [
+    { "solid": "s1b2", "radius": "center" },
+    { "diameter": "bottom", "side": "BOTTOM" }
+  ],
+  "caption": "밑면의 지름이 8cm인 원기둥 모양의 통 안에 반지름 4cm인 구 두 개가 위아래로 맞닿아 꼭 맞게 들어 있는 모양을 나타낸 그림.",
+  "accessibilityDescription": "원기둥 모양의 통 안에 같은 크기의 구 두 개가 아래위로 놓여 서로 한 점에서 맞닿고, 아래 구는 통의 밑면에, 위 구는 통의 뚜껑에 닿아 있다. 통의 밑면 지름 8cm와 아래 구의 반지름 4cm를 표시하였다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원기둥 모양의 통의 밑면의 지름은 8cm이다",
+      "mappedTo": "s1"
+    },
+    {
+      "id": "c2",
+      "condition": "구의 반지름은 4cm이다",
+      "mappedTo": "s1b1"
+    },
+    {
+      "id": "c3",
+      "condition": "구 2개가 통 안에 위아래로 꼭 맞게 들어 있고 한 점에서 맞닿는다",
+      "mappedTo": "s1b2"
+    }
+  ],
+  "newVisualInformation": [
+    "원기둥 모양의 통 안에 구 두 개가 위아래로 쌓여 서로 맞닿은 모습",
+    "통의 밑면 지름 8cm와 구의 반지름 4cm의 길이 표시"
+  ]
 }

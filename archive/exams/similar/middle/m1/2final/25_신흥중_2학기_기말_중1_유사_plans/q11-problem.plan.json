@@ -1,4 +1,69 @@
 {
-  "status": "EXEMPT",
-  "reason": "The square-prism and square-pyramid dimensions and shared base are explicitly stated."
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "space": {
+    "points": [
+      { "id": "A", "at": [-3, -3, 0], "hideName": true, "hideDot": true },
+      { "id": "B", "at": [3, -3, 0], "hideName": true, "hideDot": true },
+      { "id": "C", "at": [3, 3, 0], "hideName": true, "hideDot": true },
+      { "id": "D", "at": [-3, 3, 0], "hideName": true, "hideDot": true },
+      { "id": "E", "at": [-3, -3, 5], "hideName": true, "hideDot": true },
+      { "id": "F", "at": [3, -3, 5], "hideName": true, "hideDot": true },
+      { "id": "G", "at": [3, 3, 5], "hideName": true, "hideDot": true },
+      { "id": "H", "at": [-3, 3, 5], "hideName": true, "hideDot": true },
+      { "id": "I", "at": [0, 0, 11], "hideName": true, "hideDot": true },
+      { "id": "J", "at": [0, 0, 5], "hideName": true, "hideDot": true }
+    ],
+    "segments": [
+      { "from": "A", "to": "B", "style": "SOLID" },
+      { "from": "B", "to": "C", "style": "SOLID" },
+      { "from": "C", "to": "D", "style": "DASHED" },
+      { "from": "D", "to": "A", "style": "DASHED" },
+      { "from": "A", "to": "E", "style": "SOLID" },
+      { "from": "B", "to": "F", "style": "SOLID" },
+      { "from": "C", "to": "G", "style": "SOLID" },
+      { "from": "D", "to": "H", "style": "DASHED" },
+      { "from": "E", "to": "F", "style": "SOLID" },
+      { "from": "F", "to": "G", "style": "SOLID" },
+      { "from": "G", "to": "H", "style": "DASHED" },
+      { "from": "H", "to": "E", "style": "DASHED" },
+      { "from": "I", "to": "E", "style": "SOLID" },
+      { "from": "I", "to": "F", "style": "SOLID" },
+      { "from": "I", "to": "G", "style": "SOLID" },
+      { "from": "I", "to": "H", "style": "DASHED" }
+    ]
+  },
+  "segments": [
+    { "from": "J", "to": "I", "style": "DASHED", "role": "REF" }
+  ],
+  "dims": [
+    { "from": "A", "to": "B", "side": "BOTTOM" },
+    { "from": "C", "to": "G", "side": "RIGHT" },
+    { "from": "J", "to": "I", "side": "RIGHT", "line": 1 }
+  ],
+  "caption": "밑면이 정사각형인 사각기둥 위에 밑면이 합동인 정사각형인 사각뿔을 올려놓은 입체도형.",
+  "accessibilityDescription": "사각기둥의 윗면과 사각뿔의 밑면이 정확히 겹치게 올려놓은 입체도형과, 밑면의 한 변 6cm, 사각기둥의 높이 5cm, 사각뿔의 높이 6cm를 나타낸 그림.",
+  "sourceQuote": "밑면이 한 변의 길이가 $6\\text{ cm}$인 정사각형이고 높이가 $5\\text{ cm}$인 사각기둥 위에, 밑면이 합동인 정사각형이고 높이가 $6\\text{ cm}$인 사각뿔을 올려놓아 만든 입체도형",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "사각기둥의 밑면은 한 변 6cm인 정사각형, 높이는 5cm",
+      "mappedTo": ["A", "B", "C", "G"]
+    },
+    {
+      "id": "c2",
+      "condition": "사각뿔의 밑면은 사각기둥의 밑면과 합동인 정사각형, 높이는 6cm",
+      "mappedTo": ["E", "F", "J", "I"]
+    },
+    {
+      "id": "c3",
+      "condition": "사각기둥의 윗면과 사각뿔의 밑면이 정확히 겹친다",
+      "mappedTo": ["E", "F", "G", "H"]
+    }
+  ],
+  "newVisualInformation": [
+    "사각기둥 위에 사각뿔을 올린 하나의 입체도형",
+    "사각뿔의 높이를 밑면의 중심에서 꼭대기까지 점선으로 나타냈다",
+    "밑면의 한 변 6cm, 사각기둥의 높이 5cm, 사각뿔의 높이 6cm의 길이 표시"
+  ]
 }

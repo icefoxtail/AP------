@@ -1,4 +1,47 @@
 {
-  "status": "EXEMPT",
-  "reason": "The three right-triangle side lengths and prism height are explicitly given."
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [[0, 0], [12, 0], [0, 5]]
+      },
+      "height": 8,
+      "names": "......"
+    }
+  ],
+  "dims": [
+    { "edge": ["#b0", "#b1"], "side": "BOTTOM" },
+    { "edge": ["#t0", "#t2"], "side": "LEFT" },
+    { "edge": ["#t1", "#t2"], "side": "TOP" },
+    { "edge": ["#b1", "#t1"], "side": "RIGHT" }
+  ],
+  "marks": {
+    "rightAngles": [
+      { "at": "#t0", "refs": ["#t1", "#t2"] }
+    ]
+  },
+  "caption": "밑면이 세 변의 길이가 각각 5cm, 12cm, 13cm인 직각삼각형이고 높이가 8cm인 삼각기둥.",
+  "accessibilityDescription": "밑면이 직각삼각형인 삼각기둥을 비스듬히 본 그림. 밑면의 세 변의 길이 5cm, 12cm, 13cm와 기둥의 높이 8cm가 적혀 있고, 직각삼각형의 직각인 꼭짓점에 직각 표시가 있으며, 보이지 않는 모서리는 점선으로 그려져 있다.",
+  "sourceQuote": "밑면이 세 변의 길이가 각각 $5\\text{ cm}, 12\\text{ cm}, 13\\text{ cm}$인 직각삼각형이고 높이가 $8\\text{ cm}$인 삼각기둥의 겉넓이는?",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑면은 세 변의 길이가 각각 5 cm, 12 cm, 13 cm인 직각삼각형이다",
+      "mappedTo": ["#b0-#b1", "#b0-#b2", "#b1-#b2"]
+    },
+    {
+      "id": "c2",
+      "condition": "삼각기둥의 높이는 8 cm이다",
+      "mappedTo": ["#b1-#t1"]
+    }
+  ],
+  "newVisualInformation": [
+    "밑면 직각삼각형의 세 변의 길이 5cm, 12cm, 13cm를 각각의 변 곁에 적었다",
+    "기둥의 높이 8cm를 옆모서리 곁에 적었다",
+    "직각삼각형의 직각인 꼭짓점에 직각 표시를 그렸다",
+    "보이지 않는 모서리 세 개를 점선으로 그렸다"
+  ]
 }

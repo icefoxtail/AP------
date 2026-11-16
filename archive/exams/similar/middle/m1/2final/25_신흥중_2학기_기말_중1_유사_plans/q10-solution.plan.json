@@ -1,4 +1,54 @@
 {
-  "status": "EXEMPT",
-  "reason": "The exterior cylinder and hemisphere surfaces are separated and summed in text."
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "caption": "두 반구의 곡면을 합하면 반지름 3cm인 구 하나의 겉면이 되고, 가운데 원기둥에서는 옆면만 겉으로 드러난다. 왼쪽에 그 구를, 오른쪽에 밑면의 반지름 3cm, 높이 8cm인 원기둥을 나란히 놓았다.",
+  "accessibilityDescription": "왼쪽에 반지름 3cm인 구, 오른쪽에 밑면의 반지름 3cm, 높이 8cm인 원기둥을 나란히 놓은 그림. 구에는 반지름 3cm가, 원기둥에는 밑면의 반지름 3cm와 높이 8cm가 길이로 적혀 있다.",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "SPHERE",
+      "radius": 3
+    },
+    {
+      "id": "s2",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 8
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "center"
+    },
+    {
+      "solid": "s2",
+      "radius": "bottom"
+    },
+    {
+      "solid": "s2",
+      "height": true
+    }
+  ],
+  "solidCaption": {
+    "text": "합친 구 36π, 원기둥 옆면 48π"
+  },
+  "sourceQuote": "밑면의 반지름의 길이가 $3\\text{ cm}$이고 높이가 $8\\text{ cm}$인 원기둥의 양쪽 밑면에 반지름의 길이가 각각 $3\\text{ cm}$인 반구를 붙여서 만든 입체도형의 겉넓이는?",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원기둥의 양쪽 밑면에 붙인 반지름 3 cm인 반구 두 개는 합하면 반지름 3 cm인 구 하나가 된다",
+      "mappedTo": ["s1"]
+    },
+    {
+      "id": "c2",
+      "condition": "가운데 원기둥의 밑면 반지름은 3 cm, 높이는 8 cm이다",
+      "mappedTo": ["s2"]
+    }
+  ],
+  "newVisualInformation": [
+    "두 반구의 곡면을 합한 구 하나를 왼쪽에 따로 놓았다",
+    "가운데 원기둥을 오른쪽에 따로 놓아 겉으로 드러나는 부분이 옆면임을 보였다",
+    "구의 반지름 3cm, 원기둥의 반지름 3cm와 높이 8cm의 길이 표시"
+  ]
 }
