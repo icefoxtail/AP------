@@ -448,7 +448,28 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "courseKey": "M2-1",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_TWO_POINTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "primaryMethod": "그래프 두 점으로 직선식 복원 후 x절편",
+    "decisiveStep": "(-2,-7),(3,3)에서 기울기2와 상수항-3을 얻는다.",
+    "rpmPrimaryId": "M2-RPM-052",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 그 그래프",
+      "l3": "식 구하기",
+      "l4": "두 점으로 식 구하기"
+    },
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 그 그래프",
+    "rpmL3": "식 구하기",
+    "rpmL4": "두 점으로 식 구하기",
+    "rpmPrimaryRecordId": "M2-RPM-052"
   },
   {
     "id": 13,
@@ -677,7 +698,30 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "curriculum": "2015",
+    "courseKey": "M2-1",
+    "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+    "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE",
+    "primaryMethod": "선분과 직선 교점의 허용구간 확인",
+    "decisiveStep": "교점 x=12/(a+1)이4≤x≤8인지 각 후보를 판정한다.",
+    "rpmPrimaryId": "M2-RPM-059",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 일차방정식의 관계",
+      "l3": "그래프 활용",
+      "l4": "조건에 따른 식 결정"
+    },
+    "rpmL1": "일차함수",
+    "rpmL2": "일차함수와 일차방정식의 관계",
+    "rpmL3": "그래프 활용",
+    "rpmL4": "조건에 따른 식 결정",
+    "rpmPrimaryRecordId": "M2-RPM-059"
   },
   {
     "id": 19,

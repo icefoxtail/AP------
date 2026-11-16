@@ -22,6 +22,41 @@ test('existing compact is registered and the consumer returns all four slots',t=
 test('writes only the derived index and second run is byte-identical',t=>{const f=fixture(t),before=fs.readFileSync(path.join(f.root,rel));assert.equal(mod.run(f.root,{write:true}).changed,true);assert.equal(mod.run(f.root,{write:true}).changed,false);assert.equal(mod.run(f.root,{check:true}).changed,false);assert.deepEqual(fs.readFileSync(path.join(f.root,rel)),before);});
 test('metadata-only source change reuses historical student payload',t=>{const f=fixture(t),old=f.js();f.bank[0].problemTypeKey='new';f.sync();const {index}=mod.build(f.root,{readBlob:()=>old});assert.equal(index.counts.registered,2);assert.equal(index.records[0].sourceBinding,'UNCHANGED_STUDENT_PAYLOAD');});
 test('one changed solution isolates just that ordinal, never rewrites slots',t=>{const f=fixture(t),old=f.js();f.bank[0].solution='Different reasoning';f.sync();const {index}=mod.build(f.root,{readBlob:()=>old});assert.equal(index.counts.registered,1);assert.equal(index.records[0].sourceQuestionNo,'2');assert.equal(index.pending[0].reason,'STALE_STUDENT_PAYLOAD');});
+test('one registered renderer sidecar preserves unrelated payload and asset baselines',t=>{
+ const adapter=require('../tools/4slot/registered-renderer-continuity.cjs'),original=adapter.verify;
+ t.after(()=>{adapter.verify=original;});
+ const f=fixture(t);f.bank[0].image='assets/old.svg';f.bank[1].image='assets/neighbor.svg';
+ f.save('archive/assets/old.svg','<svg>old</svg>');f.save('archive/assets/neighbor.svg','<svg>neighbor</svg>');
+ f.data.sourceGitBlobSha=mod.blob(f.js());f.write();const historical=f.js(),before=mod.build(f.root).index;
+ const compactBytes=fs.readFileSync(path.join(f.root,rel));
+ f.bank[0].image='assets/current.svg';f.save('archive/assets/current.svg','<svg>reviewed replacement</svg>');f.save('archive/assets/neighbor.svg','<svg>unreviewed changed neighbor</svg>');f.sync();
+ const sidecar='.archive-meta-register/4slot-renderer-continuity/selected.json';
+ f.save(sidecar,{sourceArchiveFile:source,questionUid:uid(1),sourceOrdinal:1,receiptRef:{path:'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/selected.json'}});
+ f.save('archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/selected.json',{approval:{evidenceRefs:[]}});
+ let calls=0;adapter.verify=(root,entry)=>{calls++;assert.equal(entry.questionUid,uid(1));return{status:'PASS'};};
+ const one=mod.build(f.root,{previous:before,readBlob:()=>historical});
+ assert.equal(one.index.records.length,1);assert.equal(one.index.records[0].questionUid,uid(1));assert.equal(one.index.records[0].sourceBinding,'REGISTERED_RENDERER_CONTINUITY');
+ assert.equal(mod.verify(one.index).verified,1);
+ const api=consumer.createIndex(one.index);assert.deepEqual(api.get(uid(1)).method,[3]);
+ assert.deepEqual(api.find({method:[3]},{dictionaryVersion:f.dict.dictionaryVersion}).map(r=>r.questionUid),[uid(1)]);
+ assert.ok(Object.isFrozen(api.get(uid(1)).rendererContinuityRef));
+ for(const change of [{rendererContinuityRef:undefined},{rendererContinuityRef:{path:sidecar,sha256:'bad'}},{rendererContinuityRef:{path:sidecar,sha256:['a'.repeat(64)]}},{rendererContinuityRef:{path:sidecar+'/../other.json',sha256:'a'.repeat(64)}},{independentReviewClaim:true}]){
+   const invalid=structuredClone(one.index);Object.assign(invalid.records[0],change);assert.throws(()=>consumer.createIndex(invalid),/FOUR_SLOT_RENDERER_CONTINUITY_REF_INVALID/);
+ }
+ assert.equal(one.index.pending.find(p=>p.ordinal===2).reason,'STALE_ASSET_BYTES');
+ assert.deepEqual(one.index.files[0].baselineAssetDigests,before.files[0].baselineAssetDigests);
+ assert.deepEqual(one.index.files[0].baselinePayloadHashes,before.files[0].baselinePayloadHashes);
+ assert.deepEqual(fs.readFileSync(path.join(f.root,rel)),compactBytes);
+ assert.equal(mod.build(f.root,{previous:one.index,readBlob:()=>historical}).stats.reusedFiles,1);assert.equal(calls,1);
+ // Receipt removal must invalidate the cache and fail only the selected UID.
+ fs.rmSync(path.join(f.root,'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/selected.json'));
+ adapter.verify=()=>{calls++;throw Error('REGISTERED_RENDERER_CONTINUITY_INVALID:receipt missing');};
+ const two=mod.build(f.root,{previous:one.index,readBlob:()=>historical}).index;
+ assert.equal(calls,2);assert.equal(two.records.length,0);
+ assert.equal(two.pending.find(p=>p.ordinal===2).reason,'STALE_ASSET_BYTES');
+ assert.match(two.pending.find(p=>p.ordinal===1).reason,/receipt missing/);
+ assert.deepEqual(two.files[0].baselineAssetDigests,before.files[0].baselineAssetDigests);
+});
 test('missing historical source never silently rebinds stale records',t=>{const f=fixture(t);f.data.sourceGitBlobSha='b'.repeat(40);f.write();const {index}=mod.build(f.root,{readBlob:()=>null});assert.equal(index.counts.registered,0);assert.ok(index.pending.every(r=>r.reason==='SOURCE_BASELINE_UNAVAILABLE'));});
 test('persisted baseline supports later changes without Git history',t=>{const f=fixture(t);mod.run(f.root,{write:true});f.bank[0].tags=['new'];f.sync();assert.equal(mod.build(f.root,{readBlob:()=>null}).index.counts.registered,2);});
 test('unknown term is isolated, valid question still registers',t=>{const f=fixture(t);f.data.items[0].method=[999];f.write();const {index}=mod.build(f.root);assert.equal(index.counts.registered,1);assert.match(index.pending[0].reason,/INVALID_TERM/);});

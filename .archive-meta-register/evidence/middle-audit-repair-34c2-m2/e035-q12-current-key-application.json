@@ -1,0 +1,200 @@
+{
+  "schemaVersion": "middle-audit-current-existing-key-application-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "questionUid": "qid_v1_76dd55da73d9edb2aeb41cdd76997b70ec4a5d668fc94f00736038cde358937d",
+  "sourceOrdinal": 12,
+  "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+  "decision": "APPROVE_EXPLICIT_EXISTING_FAMILY_APPLICATION_WITH_DOWNSTREAM_INTERCEPT_GOAL",
+  "approvedBy": "GPT_ROOT_0A70543C4CE8",
+  "preparedBy": "GPT_M2_34C2",
+  "nativeRef": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "nativePath": "docs/operations/m2-s1-meta-full-20261114/exams/E035/accepted-review.json",
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E035.accepted-review.json",
+    "sha256": "8fe5dd9f13e2a2a47e9eb7ab24db66c02f1fcd9c90b29cd8ce325b79a87f8dcd"
+  },
+  "nativeCandidateWasNotAnApproval": true,
+  "currentApplicationReviewedSeparately": true,
+  "rootObserved": "Root read M2-RPM-048 selectionRule and its FAMILY_EQUIVALENT_AFTER_SUBTYPE_EXPANSION / COMPLETE semantic audit, and M2-RPM-052 DIRECT_EQUIVALENT. Under this existing explicit family, determining the line from two points is the primary strategy and the intercept is the downstream target. Root approved applying the unchanged PT_LINE_EQUATION/TPL_LINE_TWO_POINTS without globally broadening the internalDescription.",
+  "actualFinalGoal": "x절편",
+  "primaryRpmRecordId": "M2-RPM-052",
+  "supportingRpmRecordIds": [
+    "M2-RPM-048"
+  ],
+  "exactFamilySelectionRule": "최종 풀이의 입력 구조에 따라 기울기·절편 계수 판독, 한 점과 기울기, 두 점 또는 복합 조건 후보 중 decisive step과 일치하는 listed template을 선택한다.",
+  "sourceReasoning": "The actual PNG marks (-2,-7) and (3,3). The unchanged existing solution obtains slope 2, determines y=2x-3 using a known point, then sets y=0 to find the requested x-intercept. The intermediate line equation is the necessary decisive construction; the final goal remains explicitly the x-intercept.",
+  "exactDefinitions": {
+    "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+    "originalFileSha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458",
+    "problemType": {
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "canonicalLabelKo": "직선의 방정식 구하기",
+      "definition": "주어진 점, 기울기, 평행·수직 조건 또는 선행 계산으로 얻은 정보를 이용하여 직선의 방정식을 결정하는 유형.",
+      "aliases": [],
+      "internalDescription": "직선의 방정식을 정하는 문제가 주목표이며 다른 개념은 필요한 경우 CrossConcept로 분리한다.",
+      "supportingQuestionUids": [
+        "qid_v1_05d9a725108d3a7af1502c15a390ec45c0c73924c728c34daaebb6fbbd6fa19f",
+        "qid_v1_1cbe49434b9940e25ff46f1b899351030e32d2940087bb42dd89258eef0d272b",
+        "qid_v1_21624626e2bb9bc7693873e38469182efc6558ce0834fe61ff7c50d1bff53d8b",
+        "qid_v1_2be507d90c2150b04fde5892933e9fa34e982210e2cf52c79b5a6758899c0ac8",
+        "qid_v1_337f4ad88454eff109bb975f9bce0af5a286a9976dc24e5166b77fd23433441e",
+        "qid_v1_3488da1c7abdec50c5474c89bb22e2109c903b8d4458634cf49d4583efbefcaa",
+        "qid_v1_365de743add70ab24741f8aa6b0595978dcb43e6a434174416bf27be4ca76f3c",
+        "qid_v1_3bb3fabb8e59d032f928e8247159ef4dc86cc1662e2ecb16762730b3ace6dfa2",
+        "qid_v1_420cda7f4f2bf3d62e92d2fb34ea89521a5aff15ce139fda90130b61516fc737",
+        "qid_v1_4901b5ff6e242e8853040eb75aab5fda9785afcae9261ee88cf2ecb42efb5ee5",
+        "qid_v1_4e01249a94065050d024f4f8d7e80a9e0eb1d029416fd1aa797c773cf2259833",
+        "qid_v1_58cf79d479db3df3bf7e532da4305a8c615f8f167d7c03fa0c3e3ed05da6e3bb",
+        "qid_v1_61d0fc3e45602d4428fe373e77085e97611c35f973c1e71a0eb046c5a277d4bc",
+        "qid_v1_6bb0455b661abe26bd248699742616a61b5715a75bd2f71e4ac3d91d79ceb761",
+        "qid_v1_7d54c0e0e9769d5cbfbc8647d60c04f1b107d363acec487b44c4c114220cc13c",
+        "qid_v1_7ff2290953e6ed4f6ac719b0e6c691c79bda96b4405b580ae5da2891404f95bc",
+        "qid_v1_974c3c78ceb1d983d3bd1227126c4b59b09498a4dd5915962534a4bdb8efe933",
+        "qid_v1_9f3f8480d5d3a1e56d1dc4b15ec55ed5b64301a642da7c92e35c2f2fdfa0cb2b",
+        "qid_v1_a9596bc7cf103eff07aadf1b87c72e9c51cee90a1e6977e5270d9dae380f14fc",
+        "qid_v1_c74704d33388939b4a3755a48d9b9a1b4e3fce9dececf9ea4cac6ae854894512",
+        "qid_v1_cb25555dd7e08c4ddb6ada91b265de21b1f7958d8d2db5ea624c439e0b1d64b6"
+      ],
+      "supportingItemCount": 21,
+      "sourceUnit": "LINE_EQUATION",
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS"
+    },
+    "template": {
+      "templateKey": "TPL_LINE_TWO_POINTS",
+      "canonicalLabelKo": "두 점을 지나는 직선",
+      "definition": "두 점에서 기울기를 구하고 한 점을 대입하여 직선의 방정식을 구한다.",
+      "aliases": [],
+      "internalSkeleton": "두 점에서 기울기를 구하고 한 점을 대입하여 직선의 방정식을 구한다.",
+      "parentProblemTypeKey": "PT_LINE_EQUATION",
+      "supportingQuestionUids": [
+        "qid_v1_2be507d90c2150b04fde5892933e9fa34e982210e2cf52c79b5a6758899c0ac8",
+        "qid_v1_337f4ad88454eff109bb975f9bce0af5a286a9976dc24e5166b77fd23433441e",
+        "qid_v1_7d54c0e0e9769d5cbfbc8647d60c04f1b107d363acec487b44c4c114220cc13c"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnit": "LINE_EQUATION",
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS"
+    }
+  },
+  "semanticAuditRef": {
+    "path": "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/crosswalk-semantic-audit.json",
+    "sha256": "0d2245d11f5b5e172df485a8df42f10e2f2fbfbacec32c185893af81d80fa054"
+  },
+  "semanticAuditEntries": [
+    {
+      "rpmRecordId": "M2-RPM-048",
+      "semanticRelation": "FAMILY_EQUIVALENT_AFTER_SUBTYPE_EXPANSION",
+      "defectType": "BINDING_ONLY_GAP",
+      "repairAction": "DIRECT_TO_COMPLETE_FAMILY_CANDIDATE_SET; EXACT_BINDING_STILL_MISSING",
+      "familyCoverage": {
+        "coverage": "COMPLETE",
+        "candidateKeys": [
+          "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+          "TPL_LINE_POINT_SLOPE",
+          "TPL_LINE_TWO_POINTS",
+          "TPL_LINE_MULTI_CONDITION"
+        ],
+        "majorSubtypes": [
+          "계수/그래프",
+          "한 점과 기울기",
+          "두 점",
+          "복합 조건"
+        ],
+        "reason": "직선 방정식 family가 graph coefficient, point-slope, two-point, multi-condition subtype을 나누어 담는다. direct rows for broad graph/slope-intercept leaves are upgraded to this complete family."
+      }
+    },
+    {
+      "rpmRecordId": "M2-RPM-052",
+      "semanticRelation": "DIRECT_EQUIVALENT",
+      "defectType": "BINDING_ONLY_GAP",
+      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
+      "familyCoverage": null
+    }
+  ],
+  "exactExistingBinding": {
+    "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+    "binding": {
+      "curriculum": "2015",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "ownerPack": "MIDDLE2",
+      "subUnitLabelKo": "일차함수의 뜻과 그래프",
+      "L1": "일차함수",
+      "L2": "일차함수와 그 그래프",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_1ea93c8f6e39dec082dec838c07cd44187b0fe2e169005b68a65e6d29fba82a8",
+        "qid_v1_77dcd4204b00bb39c6f468ed99adef321ba119dcd686cc0af797f758391d6030",
+        "qid_v1_4031c846e87d88b28687218a6863b73a2e8e061ef3bdf9c123e8d7f9e8308762"
+      ],
+      "status": "ACTIVE"
+    }
+  },
+  "scopeDecision": {
+    "curriculum": "2015",
+    "courseKey": "M2-1",
+    "purpose": "Explicit reviewed RPM classification namespace and existing exact binding; not an inference from the exam year",
+    "originalMachineCurriculumPresent": false,
+    "acceptedBy": "GPT_ROOT_0A70543C4CE8"
+  },
+  "currentFigureWitness": {
+    "path": "archive/assets/images/22_연향중_1학기_기말_중2_기출/q12.png",
+    "sha256": "e8854fab5d2c5053eaf97d0885d177a9bb467048046f0915b10ec6d89e9e2f95",
+    "visuallyInspectedBy": "GPT_M2_34C2",
+    "observation": "The PNG labels the two points (-2,-7) and (3,3); its current bytes equal the exact prior source asset bytes.",
+    "priorAssetCommit": "0441bbe1de62a62b4d26f82fa3c0271d65884dce"
+  },
+  "existingSolutionVerification": {
+    "mode": "REUSE_ACCEPTED_NATIVE_SOLUTION_WITH_DIRECT_SOURCE_FIGURE_CHECK",
+    "solutionSha256": "5d085ae847b44bd67d035609b773a192bce024a071de6f78dc15653ee3b21fe4",
+    "blindReviewClaim": false,
+    "newSolutionWritten": false
+  },
+  "historicalFingerprintRepair": {
+    "priorCommit": "0441bbe1de62a62b4d26f82fa3c0271d65884dce",
+    "priorSourceBlobSha1": "fd9fa25b4df30997e6ae35285659998d63ff9af6",
+    "metadataSourceFingerprint": "66dfd99a50119a72aa13ae57b9a0aed103ea4a034f2868e7a35ba12901658f10",
+    "currentSourceFingerprint": "4dd56fe57b3d24b8bf70af42e16fd11e7088de742e400b62193d2e9fc3db2d28",
+    "unchangedContentFingerprint": "3ea39fe6ed8a24f9e11f259842098b6cef9582dab301827c98a01d00e20ecd9c",
+    "changedStudentFields": [
+      "solution"
+    ]
+  },
+  "sourceBefore": {
+    "blobSha1": "0049fe463e63005ee621b950814b26221e6132ba",
+    "sha256": "b630e20be24fd438427c3e820a78dc7c077424f56d597e525f7a1e1e934c4ac2"
+  },
+  "sourceAfter": {
+    "blobSha1": "a2b5ff24952749484bc38c1be6c153cb1a355c61",
+    "sha256": "e0555915c32c32a199f2442502dd0f0cd6433607fca53d268eae2523be4c2b56"
+  },
+  "changedSourceFields": [
+    "curriculum",
+    "courseKey",
+    "problemTypeKey",
+    "templateKey",
+    "crossConceptKeys",
+    "conditionKeys",
+    "integrationPattern",
+    "primaryMethod",
+    "decisiveStep",
+    "rpmPrimaryId",
+    "rpmPrimaryPath",
+    "rpmL1",
+    "rpmL2",
+    "rpmL3",
+    "rpmL4",
+    "rpmPrimaryRecordId"
+  ],
+  "unchangedStudentPayloadQuestionCount": 24,
+  "wholeOtherQuestionsUnchanged": 23,
+  "newDefinitionCount": 0,
+  "newCurrentApplicationDecisionCount": 1,
+  "newFullMathematicalQa": false,
+  "remoteMainRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}
