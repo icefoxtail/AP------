@@ -7,6 +7,7 @@ on:
       - '.github/workflows/m2s1-svg7-problem-chrome.yml'
       - 'tools/check-m2s1-svg7-problem-browser.cjs'
       - 'tools/capture-m1s2-problem-surface.cjs'
+      - 'tools/capture-m2s1-svg7-problem-surface.cjs'
       - 'tools/check-reviewed-problem-renderer-browser.cjs'
       - 'tests/archive-m2s1-svg7-problem-browser.test.cjs'
       - 'tests/fixtures/archive-m2s1-svg7-problem-ui.json'
@@ -59,6 +60,7 @@ jobs:
             /tools/check-reviewed-problem-renderer-browser.cjs
             /tools/check-m2s1-svg7-problem-browser.cjs
             /tools/capture-m1s2-problem-surface.cjs
+            /tools/capture-m2s1-svg7-problem-surface.cjs
             /tests/archive-m2s1-svg7-problem-browser.test.cjs
             /tests/fixtures/archive-m2s1-svg7-problem-ui.json
       - uses: actions/setup-node@v4

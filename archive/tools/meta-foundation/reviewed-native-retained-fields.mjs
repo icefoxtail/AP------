@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { readM2Family7RpmRowContinuity } from "./reviewed-m2-family7-rpm-row-continuity.mjs";
 import { validateExistingPrimaryDisposition } from "./reviewed-existing-primary-disposition.mjs";
 
 const fail = message => { throw new Error(`native retained fields: ${message}`); };
@@ -19,6 +20,10 @@ export const REVIEWED_NATIVE_RETAINABLE_FIELDS = Object.freeze([
 ]);
 
 function immutableRpm({ root, native, row, request, patch, cache }) {
+  const continuity = readM2Family7RpmRowContinuity({ root, request, patch, nativeSpec: native.spec, nativeRow: row, cache });
+  if (continuity) return { record: continuity.record,
+    ref: { commit: continuity.historical.ref.commit, path: RPM_PATH, sha256: continuity.historical.ref.sha256,
+      recordId: row.rpmRecordId, recordSha256: continuity.proof.recordSha256 }, rowContinuity: continuity.proof };
   const commit = native.spec.reviewCommit, key = stable(["retained-native-rpm", root, commit]);
   let loaded = cache.get(key);
   if (!loaded) {
@@ -164,6 +169,7 @@ export function validateReviewedNativeRetainedFields({ root, request, patch, nat
     problemTypeDefinitionSha256: sha256(stable(oldPt)), templateDefinitionSha256: sha256(stable(oldTpl)),
     exactBindingSha256: sha256(stable(priorBindings[0])), nativeExactBindingSha256: nativeBinding,
     nativeRpmRef: rpm.ref, parentBindings, conceptBindings,
+    ...(rpm.rowContinuity ? { rpmRowContinuity: rpm.rowContinuity } : {}),
     ...(independentPrimary ? { independentPrimary, independentApplicabilityDecision: true } : { newFieldJudgments: false }),
     newDefinitions: false, newMathematicalQa: false, inferredValues: false } };
 }

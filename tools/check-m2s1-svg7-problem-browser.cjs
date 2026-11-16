@@ -4,11 +4,14 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http'),vm=require('node:vm');
 const H=require('./check-reviewed-problem-renderer-browser.cjs');
 const Surface=require('./capture-m1s2-problem-surface.cjs');
+const Q15Surface=require('./capture-m2s1-svg7-problem-surface.cjs');
 const {stable,sha256,gitBlob,createGitReader,checkedStudentFontRefs,studentFontResourcePath,createStudentRouteLifecycle,serveStudentFont,closeStudentContext,captureProblemTiles,readScreenshotArtifacts,assertScreenshotInventory,FONT_DIR,FONT_STYLESHEET}=H;
-const BASE_COMMIT='b9f9dd4b30b668e3935f53a132a38e9eac35b363';
+const BASE_COMMIT='d7111057c89ad4f4a418e2805eeeb1b04447f99f';
 const SURFACE_PATH='tools/capture-m1s2-problem-surface.cjs';
+const Q15_SURFACE_PATH='tools/capture-m2s1-svg7-problem-surface.cjs';
+function surfaceRoute(item){if(item.questionUid!==Q15Surface.UID)return 'SHARED_SURFACE';Q15Surface.assertQ15Binding(item);return 'Q15_EMBEDDED_CHOICES';}
 const MANIFEST_PATH='tests/fixtures/archive-m2s1-svg7-problem-ui.json',CHECKER_PATH='tools/check-m2s1-svg7-problem-browser.cjs',SHARED_CHECKER_PATH='tools/check-reviewed-problem-renderer-browser.cjs';
-const MANIFEST_SHA="b1e8616b9b1a4337f01f20027536a9e4fd0ce9899018f4ca5165725cceb242a8",CAPTURE_SHA='e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673',IDENTITY_PATH='archive/data/question_identity_map.json';
+const MANIFEST_SHA="6d79b0597fcdf0fe90490a408c467f223f753c0b81a0be06f0da49a64a88701b",CAPTURE_SHA='e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673',IDENTITY_PATH='archive/data/question_identity_map.json';
 const SCHEMA='archive-m2s1-svg7-problem-github-ui-raw-v1',FONT_FAMILY='Nanum Myeongjo';
 const EXPECTED_UIDS=["qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6","qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5","qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec","qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637","qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad","qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd","qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569"];
 function validateManifest(m){assert.equal(sha256(stable(m)),MANIFEST_SHA,'UI_CLOSED_MANIFEST');assert.equal(m.expectedCases,14,'UI_CASES');assert.deepEqual(m.items.map(r=>r.questionUid),EXPECTED_UIDS,'UI_EXACT_SEVEN');return m;}
@@ -51,6 +54,7 @@ function preflight(reader, manifest) {
     validateIdentity(identity,item);
     assert.equal(sha256(stable({ content: question.content ?? question.question, choices: question.choices ?? [] })), item.problemPayloadSha256, 'UI_PROBLEM_PAYLOAD_DRIFT');
     validateInlinePointer(question,item);
+    if(item.questionUid===Q15Surface.UID)Q15Surface.assertQ15Preflight(question,item);
     assert.equal(sha256(stable({ imageAlt: question.imageAlt, imageSize: question.imageSize, layoutTag: question.layoutTag })), item.presentationSha256, 'UI_PRESENTATION_DRIFT');
     const asset = reader.read(item.assetPath);
     assert.equal(sha256(asset), item.assetSha256, 'UI_REVIEWED_ASSET_DRIFT');assert.equal(gitBlob(asset),item.assetGitBlobSha1,'UI_ASSET_GIT_DRIFT');assert.equal(asset.length,item.assetBytes,'UI_ASSET_SIZE_DRIFT');
@@ -91,7 +95,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
   let activeCase = null;
   fs.mkdirSync(out, { recursive: true });
   const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD', execution, checkoutCommit: reader.commit, baseCommit: BASE_COMMIT,
-    manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), captureHelperRef: reader.ref(SHARED_CHECKER_PATH), surfaceHelperRef:reader.ref(SURFACE_PATH), ...inputs,
+    manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), captureHelperRef: reader.ref(SHARED_CHECKER_PATH), surfaceHelperRef:reader.ref(SURFACE_PATH), scopedSurfaceHelperRef:reader.ref(Q15_SURFACE_PATH), ...inputs,
     mode: 'exam', studentReview: true, screenshotsScope: 'SELECTED_PROBLEM_ORIGINAL_SCROLL_TILES_ONLY', problemOnlyScreenshots: true,
     sourceOverlay: false, sourceOverlayCount: 0, sourceWrites: 0,
     solutionsOpened: false, productionCdnTest: false, assetTransport: 'EXACT_CHECKOUT_BYTES_FOR_DEFAULT_IMAGE_ORIGIN',
@@ -224,8 +228,11 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           const screenshotPath = `${item.key}-${viewport.name}.png`;
           const measuredSurface=await target.evaluate(Surface.measureM1ProblemCapture);
           surfaceDiagnostics.push({key:item.key,questionUid:item.questionUid,sourceOrdinal:item.sourceOrdinal,viewport:viewport.name,surface:measuredSurface.surface});
-          Surface.assertSurfaceTopology(measuredSurface.surface);
-          const {capture,surface:surfaceStructure} = await Surface.captureM1ProblemTiles(page, target, path.join(out, screenshotPath));
+          const route=surfaceRoute(item);
+          let captured;
+          if(route==='Q15_EMBEDDED_CHOICES')captured=await Q15Surface.captureQ15Tiles(page,target,path.join(out,screenshotPath),item);
+          else { Surface.assertSurfaceTopology(measuredSurface.surface); captured=await Surface.captureM1ProblemTiles(page,target,path.join(out,screenshotPath)); }
+          const {capture,surface:surfaceStructure}=captured;
           const geometry = await target.evaluate(image => {
             const box = image.closest('.q-box'), a = image.getBoundingClientRect(), b = box.getBoundingClientRect();
             return { naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
@@ -260,7 +267,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
     assertScreenshotInventory(results, readScreenshotArtifacts(out));
     // Re-read all served and bound inputs after the screenshots. No cache can
     // turn a mutable working-tree file into immutable provenance.
-    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, proofBase.surfaceHelperRef, inputs.identityRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
+    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, proofBase.surfaceHelperRef, proofBase.scopedSurfaceHelperRef, inputs.identityRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
       assert.deepEqual(reader.ref(ref.path), ref, 'UI_INPUT_CHANGED_DURING_RUN');
     }
     return writeProof('TECHNICAL_PASS_VISUAL_REVIEW_PENDING');
@@ -275,5 +282,5 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
 }
 
 async function main(){const a=process.argv.slice(2);assert(a.length===4&&a[0]==='--root'&&a[2]==='--output','UI_ARGUMENTS');const root=path.resolve(a[1]),out=path.resolve(a[3]);assert(!out.startsWith(root+path.sep)&&out!==root,'UI_OUTPUT_OUTSIDE_CHECKOUT');assert(!fs.existsSync(out)||fs.readdirSync(out).length===0,'UI_EMPTY_OUTPUT');for(let p=out;p!==path.dirname(p);p=path.dirname(p))if(fs.existsSync(p))assert(!fs.lstatSync(p).isSymbolicLink(),'UI_OUTPUT_SYMLINK');const expectedCommit=process.env.ARCHIVE_M2S1_SVG7_UI_EXPECTED_SHA;assert(/^[a-f0-9]{40}$/.test(expectedCommit||''),'UI_EXPECTED_COMMIT');const p=await inspectStudentUi({root,out,expectedCommit,executablePath:process.env.CHROME_BIN});console.log(JSON.stringify({status:p.status,cases:p.completedLogicalCases,checkoutCommit:p.checkoutCommit,newApprovals:0}));}
-module.exports={validateManifest,validateInlinePointer,validateIdentity,preflight,executionProvenance,inspectStudentUi,CAPTURE_SHA,MANIFEST_SHA,BASE_COMMIT};
+module.exports={surfaceRoute,validateManifest,validateInlinePointer,validateIdentity,preflight,executionProvenance,inspectStudentUi,CAPTURE_SHA,MANIFEST_SHA,BASE_COMMIT};
 if(require.main===module)main().catch(e=>{console.error(JSON.stringify({status:'FAIL',failureCode:/^UI_[A-Z0-9_]+$/.test(e.message)?e.message:'UI_GITHUB_CHROME_FAILED',errorMessageSha256:sha256(e.message||'')}));process.exitCode=1;});

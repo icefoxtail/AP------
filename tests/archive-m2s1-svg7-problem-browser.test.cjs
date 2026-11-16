@@ -53,3 +53,143 @@ for(const [name,alter]of[
  ['different checked-out head',f=>f.event.pull_request.head.sha='4'.repeat(40)],
  ['unidentified attempt',f=>delete f.env.GITHUB_RUN_ATTEMPT]
 ])test('execution provenance rejects '+name,()=>{const f=execution();alter(f);assert.throws(()=>H.executionProvenance(f.head,f.env,f.event),/UI_/);});
+
+// Q15 alone measures three distinct native elements inside its two-child box.
+// Synthetic DOM geometry tests are not screenshot or display acceptance.
+const vm=require('node:vm'),Q15=require('../tools/capture-m2s1-svg7-problem-surface.cjs');
+const q15Manifest=manifest.items.find(row=>row.questionUid===Q15.UID);
+function q15Binding(){const r=q15Manifest;return{key:r.key,questionUid:r.questionUid,sourceOrdinal:r.sourceOrdinal,questionSha256:r.questionSha256,
+ sourceRef:{path:r.sourcePath,gitBlobSha1:r.sourceGitBlobSha1,sha256:r.sourceSha256,bytes:r.sourceBytes},
+ assetRef:{path:r.assetPath,gitBlobSha1:r.assetGitBlobSha1,sha256:r.assetSha256,bytes:r.assetBytes}};}
+test('Q15 surface keeps the exact source, whole question and problem asset pins',()=>{
+ assert.equal(Q15.assertQ15Binding(q15Binding()),true);assert.equal(H.surfaceRoute(q15Binding()),'Q15_EMBEDDED_CHOICES');
+ for(const row of manifest.items.filter(row=>row.questionUid!==Q15.UID))assert.equal(H.surfaceRoute(row),'SHARED_SURFACE');
+});
+for(const[name,alter]of[
+ ['another UID',x=>x.questionUid=manifest.items[0].questionUid],['another ordinal',x=>x.sourceOrdinal=24],
+ ['a changed whole question',x=>x.questionSha256='0'.repeat(64)],['a changed source path',x=>x.sourceRef.path='archive/exams/other.js'],
+ ['a changed source blob',x=>x.sourceRef.gitBlobSha1='0'.repeat(40)],['a changed source digest',x=>x.sourceRef.sha256='0'.repeat(64)],
+ ['a changed source size',x=>x.sourceRef.bytes++],['a changed asset path',x=>x.assetRef.path='archive/assets/other.svg'],
+ ['a changed asset digest',x=>x.assetRef.sha256='0'.repeat(64)]
+])test('Q15 surface rejects '+name,()=>{const b=q15Binding();alter(b);assert.throws(()=>Q15.assertQ15Binding(b),/UI_Q15_SCOPE/);});
+for(const[name,q]of[['missing embedded flag',{choices:Array(5).fill('synthetic')}],['false embedded flag',{choicesEmbeddedInImage:false,choices:Array(5).fill('synthetic')}],['missing option',{choicesEmbeddedInImage:true,choices:Array(4).fill('synthetic')}],['invented whole question',{choicesEmbeddedInImage:true,choices:Array(5).fill('synthetic')}]])
+ test('Q15 preflight refuses '+name,()=>assert.throws(()=>Q15.assertQ15Preflight(q,q15Manifest),/UI_Q15_(EMBEDDED_CHOICES|WHOLE_QUESTION)/));
+
+function q15Dom(){
+ const state={scrollX:0,scrollY:0,foreignHit:false,onScroll:null,onScreenshot:null,screenshots:[]};
+ const rect=(x,y,width,height)=>({x,y,width,height});
+ class TextNode{
+  constructor(text){this.nodeType=3;this.textContent=text;this.parentElement=null;this.textRects=null;}
+ }
+ class Element{
+  constructor(tag,classes='',r=rect(0,0,1,1)){this.nodeType=1;this.tagName=tag.toUpperCase();this.attrs={};this.classes=classes;this.childNodes=[];this.parentElement=null;this.r=r;this.style={display:'block',visibility:'visible',opacity:'1',position:'static'};this.classList={contains:c=>this.classes.split(/\s+/).includes(c)};}
+  get children(){return this.childNodes.filter(x=>x.nodeType===1);}
+  append(...nodes){for(const n of nodes){n.parentElement=this;this.childNodes.push(n);}return this;}
+  get textContent(){return this.childNodes.map(x=>x.textContent||'').join('');}
+  get outerHTML(){return '<'+this.tagName+' class="'+this.classes+'" data-style="'+JSON.stringify(this.style)+'">'+this.childNodes.map(x=>x.outerHTML||x.textContent).join('')+'</'+this.tagName+'>';}
+  matches(s){if(s.startsWith('.'))return this.classList.contains(s.slice(1));if(s.startsWith('['))return this.hasAttribute(s.slice(1,-1));return this.tagName===s.toUpperCase();}
+  querySelectorAll(selectors){const choices=selectors.split(',');const out=[];const visit=e=>{for(const c of e.children){if(choices.some(s=>c.matches(s)))out.push(c);visit(c);}};visit(this);return out;}
+  contains(node){for(let n=node;n;n=n.parentElement)if(n===this)return true;return false;}
+  closest(s){for(let n=this;n;n=n.parentElement)if(n.matches(s))return n;return null;}
+  getBoundingClientRect(){return {...this.r,x:this.r.x-state.scrollX,y:this.r.y-state.scrollY};}
+  hasAttribute(k){return Object.hasOwn(this.attrs,k);}
+ }
+ const body=new Element('body','',rect(0,0,390,2000)),box=new Element('div','q-box',rect(10,10,380,600)),num=new Element('div','q-num',rect(20,20,50,20));num.append(new TextNode('15.'));
+ const content=new Element('div','q-content',rect(20,60,360,500)),statement=new Element('p','',rect(20,60,360,40)),text=new TextNode('Synthetic statement only');statement.append(text);
+ const figure=new Element('p','',rect(20,120,360,420)),image=new Element('img','',rect(30,125,340,400));image.src='https://img.wangjiedu.com/exams/images/'+q15Manifest.assetPath.slice('archive/assets/images/'.length);image.currentSrc=image.src;image.complete=true;image.naturalWidth=680;image.naturalHeight=800;
+ figure.append(image);content.append(statement,figure);box.append(num,content);body.append(box);
+ const document={baseURI:'http://localhost/archive/engine.html',documentElement:{dataset:{apPrintReadiness:JSON.stringify({state:'RENDER_READY'})}},getElementById:()=>null,
+  querySelectorAll:s=>s==='body *'?body.querySelectorAll('div,p,img,span,mjx-container'):[],elementFromPoint:()=>state.foreignHit?body:box,
+  createRange:()=>{let node;return{selectNodeContents:n=>{node=n;},getClientRects:()=>node.textRects||[node.parentElement.getBoundingClientRect()]};}};
+ const context=vm.createContext({document,Node:{ELEMENT_NODE:1,TEXT_NODE:3,COMMENT_NODE:8},URL,crypto:crypto.webcrypto,TextEncoder,
+  getComputedStyle:e=>e.style,innerWidth:390,innerHeight:844,requestAnimationFrame:fn=>fn(),__image:image,__arg:null});
+ Object.defineProperties(context,{scrollX:{get:()=>state.scrollX},scrollY:{get:()=>state.scrollY}});
+ context.window={scrollBy:d=>{state.scrollY+=d.top;state.scrollX+=d.left;state.onScroll?.();}};
+ const evaluate=async(fn,arg)=>{context.__arg=arg;return vm.runInContext('('+fn.toString()+')(__image,__arg)',context);};
+ const page={waitForFunction:async()=>{},evaluate:async(fn,arg)=>{context.__arg=arg;return vm.runInContext('('+fn.toString()+')(__arg)',context);},screenshot:async opts=>{state.screenshots.push(opts);state.onScreenshot?.();}};
+ return{state,body,box,num,content,statement,text,figure,image,document,context,Element,TextNode,rect,target:{evaluate},page,
+  measure:()=>evaluate(Q15.measureQ15Capture,Q15.BROWSER_SCOPE)};
+}
+function normalize(value){return JSON.parse(JSON.stringify(value));}
+test('Q15 native reader uses actual number and two paragraph rectangles without counting the content parent',async()=>{
+ const f=q15Dom(),frame=normalize(await f.measure());Q15.assertQ15Topology(frame.surface);
+ assert.equal(frame.surface.outerElementCount,2);assert.equal(frame.surface.semanticChildCount,3);
+ assert.deepEqual(frame.children,[f.num.r,f.statement.r,f.figure.r]);assert(!frame.children.some(x=>stable(x)===stable(f.content.r)));
+ assert.equal(frame.surface.embeddedChoiceCount,5);assert.equal(frame.surface.statementTextNodes,1);
+});
+for(const[name,alter,code]of[
+ ['an extra outer element',f=>f.box.append(new f.Element('div')),/UI_Q15_OUTER_TWO/],
+ ['an outer nonempty text node',f=>f.box.append(new f.TextNode('uncaptured')),/UI_Q15_OUTSIDE_TEXT/],
+ ['a third paragraph',f=>f.content.append(new f.Element('p')),/UI_Q15_PARAGRAPHS_TWO/],
+ ['text outside the two paragraphs',f=>f.content.append(new f.TextNode('uncaptured')),/UI_Q15_OUTSIDE_TEXT/],
+ ['swapped paragraph roles',f=>f.content.childNodes.reverse(),/UI_Q15_IMAGE_ROLE/],
+ ['a non-paragraph statement',f=>f.statement.tagName='DIV',/UI_Q15_PARAGRAPH_ROLES/],
+ ['hidden statement',f=>f.statement.style.display='none',/UI_Q15_REQUIRED_ELEMENT_HIDDEN/],
+ ['hidden text inside visible paragraph',f=>{const s=new f.Element('span','',f.statement.r);s.style.visibility='hidden';s.append(new f.TextNode('hidden'));f.statement.append(s);},/UI_Q15_STATEMENT_HIDDEN/],
+ ['an empty statement',f=>f.statement.childNodes=[],/UI_Q15_STATEMENT_REQUIRED/],
+ ['unmeasurable statement text',f=>f.text.textRects=[],/UI_Q15_STATEMENT_RANGE/],
+ ['statement range outside paragraph',f=>f.text.textRects=[f.rect(0,60,360,40)],/UI_Q15_STATEMENT_RANGE/],
+ ['a second image',f=>f.figure.append(new f.Element('img')),/UI_Q15_IMAGE_ROLE/],
+ ['a nested image wrapper',f=>{const w=new f.Element('span');f.figure.childNodes=[];w.append(f.image);f.figure.append(w);},/UI_Q15_IMAGE_ROLE/],
+ ['hidden image',f=>f.image.style.opacity='0',/UI_Q15_REQUIRED_ELEMENT_HIDDEN/],
+ ['nonempty text in the image paragraph',f=>f.figure.append(new f.TextNode('unmeasured')),/UI_Q15_OUTSIDE_TEXT/],
+ ['a changed image path',f=>f.image.currentSrc='https://img.wangjiedu.com/exams/images/other.svg',/UI_Q15_IMAGE_PATH/],
+ ['an alternate image source',f=>f.image.attrs.srcset='other.svg 2x',/UI_Q15_IMAGE_ROLE/],
+ ['an incomplete image',f=>f.image.complete=false,/UI_Q15_IMAGE_READY/],
+ ['an image outside its paragraph',f=>f.image.r.width=500,/UI_Q15_ROLE_CLIPPED/],
+ ['overlapping semantic roles',f=>{f.figure.r.y=80;f.image.r.y=85;},/UI_Q15_SEMANTIC_ROLES_OVERLAP/],
+ ['a nested question',f=>f.statement.append(new f.Element('div','q-box')),/UI_Q15_ROLE_TOPOLOGY/],
+ ['a duplicate number role',f=>f.statement.classes='q-num',/UI_Q15_ROLE_TOPOLOGY/],
+ ['the equal-slot wrapper route',f=>f.box.classes+=' ap-equal-slot',/UI_Q15_DIRECT_TOPOLOGY/],
+ ['an active statement element',f=>f.statement.append(new f.Element('iframe')),/UI_Q15_STATEMENT_ELEMENT/]
+])test('Q15 native reader refuses '+name,async()=>{const f=q15Dom();alter(f);await assert.rejects(f.measure,code);});
+test('Q15 visible MathJax atom keeps generated assistive copy out of visible counting',async()=>{
+ const f=q15Dom(),math=new f.Element('mjx-container','',f.rect(20,60,100,30)),assistive=new f.Element('mjx-assistive-mml');assistive.style.visibility='hidden';assistive.append(new f.TextNode('synthetic assistive formula'));math.append(assistive);f.statement.append(math);
+ const frame=await f.measure();assert.equal(frame.surface.statementMathAtoms,1);assert.equal(frame.surface.statementTextNodes,1);assert.equal(frame.children.length,3);
+});
+test('Q15 synthetic scroll capture retains complete tiles, hit tests, original PNG settings and zero DOM writes',async()=>{
+ const f=q15Dom();const result=await Q15.captureQ15Tiles(f.page,f.target,'/tmp/synthetic-q15.png',q15Binding());
+ assert.equal(result.capture.coverage.complete,true);assert.equal(result.capture.visibleChildren,3);assert.equal(result.capture.foreignContentHits,0);
+ assert.equal(result.capture.domWrites,0);assert.equal(result.capture.cssWrites,0);assert.equal(result.capture.viewportChanges,0);assert.equal(result.capture.compositeImageCreated,false);
+ assert.equal(f.state.screenshots.length,1);assert.equal(f.state.screenshots[0].fullPage,false);assert.equal(f.state.screenshots[0].caret,'initial');
+});
+test('Q15 scroll remeasurement refuses changed semantic topology',async()=>{
+ const f=q15Dom();f.state.scrollY=-1000;f.state.onScroll=()=>f.content.append(new f.Element('p'));
+ await assert.rejects(()=>Q15.captureQ15Tiles(f.page,f.target,'/tmp/synthetic-q15.png',q15Binding()),/UI_Q15_PARAGRAPHS_TWO/);assert.equal(f.state.screenshots.length,0);
+});
+test('Q15 postcapture topology change stays fatal',async()=>{
+ const f=q15Dom();f.state.onScreenshot=()=>f.figure.append(new f.TextNode('late extra text'));
+ await assert.rejects(()=>Q15.captureQ15Tiles(f.page,f.target,'/tmp/synthetic-q15.png',q15Binding()),/UI_Q15_OUTSIDE_TEXT/);
+});
+test('Q15 postcapture geometry change stays fatal',async()=>{
+ const f=q15Dom();f.state.onScreenshot=()=>{f.image.r.width-=5;};
+ await assert.rejects(()=>Q15.captureQ15Tiles(f.page,f.target,'/tmp/synthetic-q15.png',q15Binding()),/UI_SCROLL_TILE_DOCUMENT_GEOMETRY_CHANGED/);
+});
+test('Q15 foreign-content hit remains fatal before a screenshot',async()=>{
+ const f=q15Dom();f.state.foreignHit=true;
+ await assert.rejects(()=>Q15.captureQ15Tiles(f.page,f.target,'/tmp/synthetic-q15.png',q15Binding()),/UI_CAPTURE_FOREIGN_CONTENT/);assert.equal(f.state.screenshots.length,0);
+});
+test('Q15 pending render state is refused by the shared capture kernel',async()=>{
+ const f=q15Dom();f.document.documentElement.dataset.apPrintReadiness=JSON.stringify({state:'PENDING'});
+ await assert.rejects(()=>Q15.captureQ15Tiles(f.page,f.target,'/tmp/synthetic-q15.png',q15Binding()),/UI_CAPTURE_RENDER_STATE/);assert.equal(f.state.screenshots.length,0);
+});
+
+test('Q15 solution nodes remain a fatal problem-only violation',async()=>{
+ const f=q15Dom(),query=f.document.querySelectorAll;f.document.querySelectorAll=s=>s.startsWith('#print-area .sol-box')?[{}]:query(s);
+ await assert.rejects(()=>Q15.captureQ15Tiles(f.page,f.target,'/tmp/synthetic-q15.png',q15Binding()),/UI_CAPTURE_RENDER_STATE/);assert.equal(f.state.screenshots.length,0);
+});
+test('Q15 a fully obstructed viewport cannot be captured as a success',async()=>{
+ const f=q15Dom(),overlay=new f.Element('div','',f.rect(0,0,390,844));overlay.style.position='fixed';f.body.append(overlay);
+ await assert.rejects(()=>Q15.captureQ15Tiles(f.page,f.target,'/tmp/synthetic-q15.png',q15Binding()),/UI_SCROLL_TILE_VISIBLE_AREA/);assert.equal(f.state.screenshots.length,0);
+});
+
+test('Q15 binding refuses the prior E045 source header after the exact Q24 revision',()=>{
+ const b=q15Binding();b.sourceRef.gitBlobSha1='76638fe5ba4c770d7f6f9875b0cc8baae8430797';b.sourceRef.sha256='fc8cad2a1f43bd2b4d0f9331bba55c151201183a279008339822da32736613b9';
+ assert.throws(()=>Q15.assertQ15Binding(b),/UI_Q15_SCOPE/);
+});
+test('Q24 r2 pins reuse the closed official worker without changing the seven UID selection',()=>{
+ const q=manifest.items.find(r=>r.key==='E045-Q24');assert.equal(manifest.candidateSourceCommit,'89508c9b2af9ade9372cd147f1f766a69849ab88');
+ assert.equal(q.assetGitBlobSha1,'6ddf55bc8a7575124342f996cd654b6df3ca5013');assert.equal(q.questionSha256,'6bbba32d209bd4dedfd6b154d86c986a059e69ac883b52bc963b67db17a36ae8');
+ assert.equal(manifest.staticEvidenceRef.commit,'b13247a6c8bc7793f011395c0c0b68fa8c0352d6');assert.equal(manifest.priorStaticEvidenceRef.commit,'34b9e6ab851d78f90bba4975416cbeb5ee8817e3');
+ const old=clone(manifest);old.items.find(r=>r.key==='E045-Q24').assetPath=old.items.find(r=>r.key==='E045-Q24').assetPath.replace('-r2.svg','-r1.svg');assert.throws(()=>H.validateManifest(old),/UI_CLOSED_MANIFEST/);
+});
