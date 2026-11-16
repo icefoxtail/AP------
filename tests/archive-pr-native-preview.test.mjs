@@ -59,7 +59,7 @@ function sourceQualityHoldFixture(write) {
   }));
 }
 
-function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, auditSourcePreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
+function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, auditSourcePreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, sourceFields = {}, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, text, target = root) => {
@@ -86,7 +86,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
     'archive/db.js', META, 'archive/data/archive2-catalog.json',
     'archive/data/archive2-canonical-input-manifest.json',
   ].join('\n') + '\n');
-  write(SOURCE, 'window.questions = '+JSON.stringify(Array.from({length:partial?24:1},(_,i)=>({id:i+1})))+';\n');
+  write(SOURCE, 'window.questions = '+JSON.stringify(Array.from({length:partial?24:1},(_,i)=>({id:i+1, ...sourceFields})))+';\n');
   write(EVIDENCE, json({ reviewed: 'fixture approval evidence, without student content' }));
   sourceQualityHoldFixture(write);
   if (auditSourcePreservation) write(AUDIT_PRIOR_RECEIPT, json({
@@ -1352,6 +1352,77 @@ test('difficulty-only proof preserves exactly attributed informational assignmen
   const forged=copy(proof.nativePreview);delete forged.checks[1].difficultyOnly;
   assert.throws(()=>f.native(forged),/CHECKS_INCOMPLETE/);
   f.assertShadowsRemoved();
+});
+
+test('native REVIEW2 typeHold permits only its exact assignment_missing Consumer row', t => {
+  const held = fixture(t, { mutateRequest: request => {
+    request.approval.type = 'REVIEW2';
+    request.items[0].typeHold = true;
+  } });
+  held.hook.assignmentPending = [{ exam: 'original/native.js', qid: 1, uid: 'fixture', reason: 'assignment_missing' }];
+  held.hook.result = (phase, result) => phase === 'projection' ? { ...result, consumerLanes: { typeHold: 1 } } : result;
+  assert.equal(held.produce().status, 'PASS');
+
+  const unprovenProjection = fixture(t, { mutateRequest: request => {
+    request.approval.type = 'REVIEW2'; request.items[0].typeHold = true;
+  } });
+  unprovenProjection.hook.assignmentPending = [{ exam: 'original/native.js', qid: 1, uid: 'fixture', reason: 'assignment_missing' }];
+  assert.throws(() => unprovenProjection.produce(), /PROJECTION_NOT_VERIFIED/);
+
+  const unheld = fixture(t);
+  unheld.hook.assignmentPending = [{ exam: 'original/native.js', qid: 1, uid: 'fixture', reason: 'assignment_missing' }];
+  assert.throws(() => unheld.produce(), /CONSUMER_NOT_PASS/);
+
+  const malformed = fixture(t, { mutateRequest: request => {
+    request.approval.type = 'REVIEW2';
+    request.items[0].typeHold = true;
+    request.items[0].after = { problemTypeKey: 'PT_NOT_ALLOWED' };
+  } });
+  malformed.hook.assignmentPending = [{ exam: 'original/native.js', qid: 1, uid: 'fixture', reason: 'assignment_missing' }];
+  assert.throws(() => malformed.produce(), /CONSUMER_NOT_PASS/);
+
+  for (const sourceFields of [{ problemTypeKey: 'PT_ALREADY_BOUND' }, { templateKey: 'TPL_ALREADY_BOUND' }]) {
+    const sourceAssigned = fixture(t, { sourceFields, mutateRequest: request => {
+      request.approval.type = 'REVIEW2'; request.items[0].typeHold = true;
+    } });
+    sourceAssigned.hook.assignmentPending = [{ exam: 'original/native.js', qid: 1, uid: 'fixture', reason: 'assignment_missing' }];
+    assert.throws(() => sourceAssigned.produce(), /CONSUMER_NOT_PASS/);
+  }
+
+  const wrongApproval = fixture(t, { mutateRequest: request => { request.items[0].typeHold = true; } });
+  wrongApproval.hook.assignmentPending = [{ exam: 'original/native.js', qid: 1, uid: 'fixture', reason: 'assignment_missing' }];
+  assert.throws(() => wrongApproval.produce(), /CONSUMER_NOT_PASS/);
+
+  const wrongUid = fixture(t, { mutateRequest: request => {
+    request.approval.type = 'REVIEW2'; request.items[0].typeHold = true;
+  } });
+  wrongUid.hook.assignmentPending = [{ exam: 'original/native.js', qid: 1, uid: 'foreign-uid', reason: 'assignment_missing' }];
+  wrongUid.hook.result = (phase, result) => phase === 'projection' ? { ...result, consumerLanes: { typeHold: 1 } } : result;
+  assert.throws(() => wrongUid.produce(), /CONSUMER_NOT_PASS/);
+
+  const wrongOrdinal = fixture(t, { mutateRequest: request => {
+    request.approval.type = 'REVIEW2'; request.items[0].typeHold = true;
+  } });
+  wrongOrdinal.hook.assignmentPending = [{ exam: 'original/native.js', qid: 2, uid: 'fixture', reason: 'assignment_missing' }];
+  wrongOrdinal.hook.result = (phase, result) => phase === 'projection' ? { ...result, consumerLanes: { typeHold: 1 } } : result;
+  assert.throws(() => wrongOrdinal.produce(), /CONSUMER_NOT_PASS/);
+
+  const duplicateOwner = fixture(t, { pairedDifficulty: true, mutateRequest: request => {
+    request.approval.type = 'REVIEW2'; request.items[0].typeHold = true;
+  } });
+  duplicateOwner.hook.assignmentPending = [{ exam: 'original/native.js', qid: 1, uid: 'fixture', reason: 'assignment_missing' }];
+  duplicateOwner.hook.result = (phase, result) => phase === 'projection' ? { ...result, consumerLanes: { typeHold: 1 } } : result;
+  assert.throws(() => duplicateOwner.produce(), /CONSUMER_NOT_PASS/);
+
+  const duplicatePending = fixture(t, { mutateRequest: request => {
+    request.approval.type = 'REVIEW2'; request.items[0].typeHold = true;
+  } });
+  duplicatePending.hook.assignmentPending = [
+    { exam: 'original/native.js', qid: 1, uid: 'fixture', reason: 'assignment_missing' },
+    { exam: 'original/native.js', qid: 1, uid: 'fixture', reason: 'assignment_missing' },
+  ];
+  duplicatePending.hook.result = (phase, result) => phase === 'projection' ? { ...result, consumerLanes: { typeHold: 1 } } : result;
+  assert.throws(() => duplicatePending.produce(), /CONSUMER_NOT_PASS/);
 });
 
 test('informational assignment allowance refuses wrong/missing scope, other reasons, duplicates and native overlaps', t => {

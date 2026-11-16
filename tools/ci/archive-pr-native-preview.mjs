@@ -800,12 +800,6 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
     if (!Number.isSafeInteger(request.expectedQuestionCount) || request.expectedQuestionCount < 1) fail('QUESTION_COUNT');
     if (!Array.isArray(request.items) || !request.items.length || request.items.length > request.expectedQuestionCount
         || !correction && !basicPreservation && !partial && request.items.length !== request.expectedQuestionCount) fail('QUESTION_COUNT');
-    const selectedItems = request.items.map(item => ({ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal }));
-    if (selectedItems.some(item => typeof item.questionUid !== 'string' || !item.questionUid.trim()
-        || !Number.isSafeInteger(item.sourceOrdinal) || item.sourceOrdinal < 1 || item.sourceOrdinal > request.expectedQuestionCount)
-        || new Set(selectedItems.map(i => i.questionUid)).size !== selectedItems.length
-        || new Set(selectedItems.map(i => i.sourceOrdinal)).size !== selectedItems.length) fail('SELECTED_UID_SCOPE');
-    selectedItems.sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
     const historicalRpmEvidence = [];
     const evidence = fixedNativeEvidence(root, headSha, [request.approval?.evidenceRefs, ...(request.items || []).map(i => i.evidenceRefs),
       ...(request.registryChanges || []).map(i => i.evidenceRefs),
@@ -824,6 +818,19 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
     } catch { fail('SOURCE_BANK_INVALID'); }
     if (!Array.isArray(bank) || bank.length !== request.expectedQuestionCount) fail('SOURCE_DENOMINATOR');
+    const selectedItems = request.items.map(item => {
+      const sourceQuestion = bank[item.sourceOrdinal - 1];
+      const heldTypePath = item.typeHold === true && request.approval?.type === 'REVIEW2'
+        && !sourceQuestion?.problemTypeKey && !sourceQuestion?.templateKey
+        && !['problemTypeKey', 'templateKey', 'L3', 'L4', 'rpmL3', 'rpmL4'].some(key =>
+          Object.hasOwn(item.after || {}, key));
+      return { questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, ...(heldTypePath ? { typeHold: true } : {}) };
+    });
+    if (selectedItems.some(item => typeof item.questionUid !== 'string' || !item.questionUid.trim()
+        || !Number.isSafeInteger(item.sourceOrdinal) || item.sourceOrdinal < 1 || item.sourceOrdinal > request.expectedQuestionCount)
+        || new Set(selectedItems.map(i => i.questionUid)).size !== selectedItems.length
+        || new Set(selectedItems.map(i => i.sourceOrdinal)).size !== selectedItems.length) fail('SELECTED_UID_SCOPE');
+    selectedItems.sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
     requests.push({ ...fileRef(root, file), requestId: request.requestId, questionCount: selectedItems.length,
       sourceQuestionCount: request.expectedQuestionCount, selectedItems,
       ...(inherited.has(file) ? { inheritedPreservation: inherited.get(file) } : {}),
@@ -947,7 +954,22 @@ function difficultyAssignmentInformation(requests, result) {
     if (row?.reason !== 'assignment_missing' || typeof row.exam !== 'string'
         || !Number.isSafeInteger(row.qid) || typeof row.uid !== 'string') fail('CONSUMER_NOT_PASS');
     const exams = result.exams.filter(e => e.exam === row.exam);
-    if (exams.length !== 1 || exams[0].kind !== 'difficulty5-ratings') fail('CONSUMER_NOT_PASS');
+    if (exams.length !== 1) fail('CONSUMER_NOT_PASS');
+    // A REVIEW2 typeHold is the registrar's explicit usable-meta path, not a
+    // general waiver for unassigned rows. Keep its exception bound to the
+    // exact request, UID and source ordinal that carried the validated hold.
+    const native = requests.find(r => r.path === exams[0].file && r.kind === undefined);
+    const heldItem = native?.selectedItems.find(i => i.questionUid === row.uid && i.sourceOrdinal === row.qid && i.typeHold === true);
+    if (native && exams[0].kind === 'reviewed-exam-v2' && heldItem
+        && exams[0].exam === native.source.path.replace(/^archive\/exams\//, '')) {
+      const owners = requests.filter(r => r.selectedItems.some(i => i.questionUid === row.uid));
+      if (owners.length !== 1 || owners[0] !== native) fail('CONSUMER_NOT_PASS');
+      const key = `${native.path}\0${row.uid}`;
+      if (seen.has(key)) fail('CONSUMER_NOT_PASS');
+      seen.add(key);
+      continue;
+    }
+    if (exams[0].kind !== 'difficulty5-ratings') fail('CONSUMER_NOT_PASS');
     const request = difficulty.find(r => r.path === exams[0].file && r.requestId === row.exam);
     const owners = requests.filter(r => r.selectedItems.some(i => i.questionUid === row.uid));
     if (!request || owners.length !== 1 || owners[0] !== request
@@ -976,9 +998,13 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
   for (const request of requests) {
     const result = registrar(root, request, run, ['--verify-projection']);
     const identityOnly = request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY';
+    const requestedTypeHolds = request.selectedItems.filter(item => item.typeHold === true).length;
     if (!resultScopeMatches(result, request) || result.replay !== true
         || result.consumerSearchStatus !== (request.kind === 'native-authority-withdrawal' ? 'AUTHORITY_WITHDRAWAL_VERIFIED' : identityOnly ? 'IDENTITY_BINDINGS_VERIFIED'
           : request.kind === 'difficulty5-ratings' ? 'STATIC_DIFFICULTY_VALUES_VERIFIED' : 'STATIC_VALUES_VERIFIED')
+        // The official projection verifier counts rows using its persisted isTypeHoldRecord predicate;
+        // don't let the request's typeHold marker alone authorize the CI exception.
+        || requestedTypeHolds > 0 && result.consumerLanes?.typeHold !== requestedTypeHolds
         || identityOnly && (result.consumerLanes?.identityBindings !== request.questionCount
           || result.consumerLanes?.newMetadataApprovals !== 0)) fail('PROJECTION_NOT_VERIFIED');
   }
