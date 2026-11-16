@@ -10,6 +10,7 @@ const E017_ASSET='archive/assets/images/24_연향중_2학기_중간_중2_수학/
 const E017_MANIFEST='tests/fixtures/archive-e017-solution-display-ui.json';
 const E017_MANIFEST_HASH='966de71fcb4089b09fedb204918f6b2f72c80e0fa54a53313fcb69e727f929b3';
 const e017CaptionPolicies=new WeakSet();
+const e017CaptionTransports=new WeakMap();
 function assertE017CaptionSource(q) {
   assert(q&&String(q.id??q.number)==='2'&&typeof q.solution==='string'&&q.solution.trim()&&
     q.solutionImage===E017_ASSET.slice('archive/'.length)&&!Object.hasOwn(q,'solutionImageCaption'),
@@ -41,15 +42,49 @@ function makeE017CaptionAbsencePolicy(reader,item,loadQuestions) {
     sourceCaptionOwn:false,expectedCaptionCount:0});
   e017CaptionPolicies.add(policy);return policy;
 }
+function makeE017CaptionAssetTransport(policy,{imageUrl,origin,servedRefs,mirroredRefs}) {
+  assert(e017CaptionPolicies.has(policy),'UI_E017_CAPTION_POLICY_NOT_VERIFIED');
+  let diagnostic={schemaVersion:'archive-e017-caption-asset-transport-diagnostic-v1',parsed:false};
+  try {
+    const local=new URL(origin),url=new URL(imageUrl),pathname=decodeURIComponent(url.pathname);
+    const same=url.origin===origin&&pathname==='/'+E017_ASSET;
+    const mirrored=url.origin==='https://img.wangjiedu.com'&&pathname==='/exams/images/'+E017_ASSET.slice('archive/assets/images/'.length);
+    diagnostic={...diagnostic,parsed:true,urlSha256:H.sha256(url.href),pathnameSha256:H.sha256(pathname),
+      sameOrigin:url.origin===origin,defaultCdnOrigin:url.origin==='https://img.wangjiedu.com',samePathExact:same,mirroredPathExact:mirrored,
+      credentialFree:!url.username&&!url.password,fragmentFree:!url.hash};
+    assert(local.origin===origin&&local.protocol==='http:'&&['127.0.0.1','localhost'].includes(local.hostname)&&
+      !local.username&&!local.password,'UI_E017_CAPTION_CAPTURE_ORIGIN');
+    assert(diagnostic.credentialFree&&diagnostic.fragmentFree&&(same||mirrored),'UI_E017_CAPTION_IMAGE_URL');
+    const refs=same?servedRefs:mirroredRefs;
+    assert(Array.isArray(refs),'UI_E017_CAPTION_TRANSPORT_INVENTORY');
+    const matches=refs.filter(ref=>ref?.path===E017_ASSET);diagnostic.exactPathRefCount=matches.length;
+    assert.equal(matches.length,1,'UI_E017_CAPTION_TRANSPORT_INVENTORY');
+    assert.deepEqual(matches[0],policy.assetRef,'UI_E017_CAPTION_TRANSPORT_REF');
+    const transport=Object.freeze({schemaVersion:'archive-e017-caption-asset-transport-v1',
+      mode:same?'SAME_ORIGIN_GIT_BYTES':'MIRRORED_GIT_BYTES',assetRef:Object.freeze({...policy.assetRef}),urlSha256:diagnostic.urlSha256});
+    e017CaptionTransports.set(transport,policy);return transport;
+  }catch(cause){
+    const error=cause instanceof assert.AssertionError?cause:new Error('UI_E017_CAPTION_IMAGE_URL');
+    error.captureDiagnostic=diagnostic;throw error;
+  }
+}
 function assertE017CaptionObservation(o) {
   assert(o&&o.schemaVersion==='archive-e017-caption-absence-observation-v1'&&o.questionUid===E017_UID&&
     o.sourceOrdinal===2&&o.expectedCaptionCount===0&&Array.isArray(o.measuredFrames)&&o.measuredFrames.length>=2,
     'UI_E017_CAPTION_OBSERVATION');
+  const transport=o.imageTransport;
+  assert(transport?.schemaVersion==='archive-e017-caption-asset-transport-v1'&&
+    ['SAME_ORIGIN_GIT_BYTES','MIRRORED_GIT_BYTES'].includes(transport.mode)&&
+    transport.assetRef?.path===E017_ASSET&&/^[a-f0-9]{64}$/.test(transport.urlSha256),'UI_E017_CAPTION_TRANSPORT_OBSERVATION');
   for(const f of o.measuredFrames){
     assert(f&&['boxVisible','imageVisible','completeChildrenVisible','namedCaptionAbsence','captionPolicyApplied'].every(k=>f[k]===true)&&
       f.captionExpected===0,'UI_E017_CAPTION_ROLE_OBSERVATION');
     for(const key of ['number','semantic','answer','explanation'])assert(f.roles?.[key]?.count===1&&f.roles[key].visible===1,'UI_E017_CAPTION_REQUIRED_ROLE');
     assert(f.roles?.caption?.count===0&&f.roles.caption.visible===0,'UI_E017_CAPTION_UNEXPECTED');
+    const u=f.imageUrlBinding;
+    assert(u?.schemaVersion==='archive-e017-caption-image-url-v1'&&u.urlSha256===transport.urlSha256&&
+      u.transportMode===transport.mode&&['originAllowed','pathExact','credentialFree','fragmentFree'].every(k=>u[k]===true),
+      'UI_E017_CAPTION_URL_OBSERVATION');
   }
 }
 const overlaps=(a,b)=>a.x<b.x+b.width&&a.x+a.width>b.x&&a.y<b.y+b.height&&a.y+a.height>b.y;
@@ -84,12 +119,26 @@ async function measureSolutionCapture(image, captionPolicy = null) {
   const roles={number:role('.q-num'),semantic:role(semanticSelector),answer:role('.sol-ans'),
     explanation:role('.sol-exp'),caption:role('.sol-image-caption')};
   const questionNumber=box.querySelector('.q-num')?.textContent?.trim();
-  const imageUrl=captionPolicy===null?null:new URL(image.currentSrc||image.src,location.href);
+  let imageUrlBinding=null;
+  if(captionPolicy!==null){
+    imageUrlBinding={schemaVersion:'archive-e017-caption-image-url-v1',urlSha256:null,transportMode:'REFUSED',
+      originAllowed:false,pathExact:false,credentialFree:false,fragmentFree:false};
+    try{
+      const url=new URL(image.currentSrc||image.src,location.href),pathname=decodeURIComponent(url.pathname);
+      const same=url.origin===location.origin,mirrored=url.origin==='https://img.wangjiedu.com';
+      const pathExact=(same&&pathname==='/archive/assets/images/24_연향중_2학기_중간_중2_수학/q02-solution.svg')||
+        (mirrored&&pathname==='/exams/images/24_연향중_2학기_중간_중2_수학/q02-solution.svg');
+      const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(url.href));
+      imageUrlBinding={...imageUrlBinding,urlSha256:[...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,'0')).join(''),
+        transportMode:pathExact?(same?'SAME_ORIGIN_GIT_BYTES':'MIRRORED_GIT_BYTES'):'REFUSED',
+        originAllowed:same||mirrored,pathExact,credentialFree:!url.username&&!url.password,fragmentFree:!url.hash};
+    }catch{}
+  }
   const namedCaptionAbsence=captionPolicy!==null&&captionPolicy.schemaVersion==='archive-e017-exact-source-caption-absence-v1'&&
     captionPolicy.questionUid==='qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9'&&
     captionPolicy.sourceOrdinal===2&&captionPolicy.sourceCaptionOwn===false&&captionPolicy.expectedCaptionCount===0&&
-    /^2\.?$/.test(questionNumber||'')&&roles.number.count===1&&roles.semantic.count===1&&imageUrl.origin===location.origin&&
-    decodeURIComponent(imageUrl.pathname)==='/archive/assets/images/24_연향중_2학기_중간_중2_수학/q02-solution.svg';
+    /^2\.?$/.test(questionNumber||'')&&roles.number.count===1&&roles.semantic.count===1&&
+    ['originAllowed','pathExact','credentialFree','fragmentFree'].every(k=>imageUrlBinding[k]===true);
   const captionVisible=captionPolicy===null?roles.caption.count===1&&roles.caption.visible===1:
     namedCaptionAbsence&&roles.caption.count===0;
   const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(box.outerHTML));
@@ -105,7 +154,8 @@ async function measureSolutionCapture(image, captionPolicy = null) {
       ['.sol-ans','.sol-exp'].every(s=>box.querySelectorAll(s).length===1 && visible(box.querySelector(s))) && captionVisible && visible(image),
     semanticRoleCandidates:semanticCandidates.map(node=>({tag:String(node.tagName||'').toLowerCase(),directChild:node.parentElement===box,visible:visible(node),isReminderValue:node.getAttribute('data-semantic-content')==='1'})),
     roleVisibility:{roles,boxVisible:visible(box),imageVisible:visible(image),completeChildrenVisible,namedCaptionAbsence,
-      captionPolicyApplied:captionPolicy!==null,captionExpected:captionPolicy===null?1:0},
+      captionPolicyApplied:captionPolicy!==null,captionExpected:captionPolicy===null?1:0,
+      ...(captionPolicy===null?{}:{imageUrlBinding})},
     domSha256: [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('') };
 }
 
@@ -143,11 +193,19 @@ function documentProblemFrame(frame) {
     questionNumber: frame.questionNumber };
 }
 
-async function captureSolutionTiles(page, target, file, captionPolicy = null) {
+async function captureSolutionTiles(page, target, file, captionPolicy = null, imageTransport = null) {
   assert(captionPolicy===null||e017CaptionPolicies.has(captionPolicy),'UI_E017_CAPTION_POLICY_NOT_VERIFIED');
+  assert(captionPolicy===null||e017CaptionTransports.get(imageTransport)===captionPolicy,'UI_E017_CAPTION_TRANSPORT_NOT_VERIFIED');
   const measuredRoles=[];
   const measure=async()=>{const frame=await target.evaluate(measureSolutionCapture,captionPolicy);
-    if(captionPolicy!==null)measuredRoles.push(frame.roleVisibility);return frame;};
+    if(captionPolicy!==null){
+      measuredRoles.push(frame.roleVisibility);
+      if(frame.roleVisibility.imageUrlBinding?.urlSha256!==imageTransport.urlSha256||
+        frame.roleVisibility.imageUrlBinding?.transportMode!==imageTransport.mode){
+        const e=Error('UI_E017_CAPTION_IMAGE_TRANSPORT_DRIFT');e.captureDiagnostic={schemaVersion:'archive-solution-role-visibility-diagnostic-v1',
+          roleVisibility:frame.roleVisibility,expectedImageUrlSha256:imageTransport.urlSha256,domSha256:frame.domSha256};throw e;
+      }
+    }return frame;};
   const requireVisible=frame=>{
     if(frame.mandatoryChildrenVisible!==true){const e=Error('UI_REQUIRED_PROBLEM_CHILD_HIDDEN');
       e.captureDiagnostic={schemaVersion:'archive-solution-role-visibility-diagnostic-v1',questionNumberSha256:H.sha256(String(frame.questionNumber||'')),
@@ -198,8 +256,8 @@ async function captureSolutionTiles(page, target, file, captionPolicy = null) {
     domSha256: originalDomSha256, feedbackIdle: true, foreignContentHits: 0, cssWrites: 0, domWrites: 0, viewportChanges: 0,
     compositeImageCreated: false, ...(captionPolicy===null?{}:{captionAbsenceObservation:{
       schemaVersion:'archive-e017-caption-absence-observation-v1',questionUid:E017_UID,sourceOrdinal:2,
-      expectedCaptionCount:0,measuredFrames:measuredRoles}}) };
+      expectedCaptionCount:0,imageTransport,measuredFrames:measuredRoles}}) };
 }
 
 
-module.exports={captureSolutionTiles,assertSolutionTileCapture,measureSolutionCapture,makeE017CaptionAbsencePolicy,assertE017CaptionSource,assertE017CaptionObservation};
+module.exports={captureSolutionTiles,assertSolutionTileCapture,measureSolutionCapture,makeE017CaptionAbsencePolicy,makeE017CaptionAssetTransport,assertE017CaptionSource,assertE017CaptionObservation};

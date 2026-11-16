@@ -9,13 +9,13 @@ const vm = require('node:vm');
 const H = require('./check-reviewed-problem-renderer-browser.cjs');
 const { stable, sha256, gitBlob, createGitReader, studentFontResourcePath, checkedStudentFontRefs, FONT_DIR, FONT_STYLESHEET,
   fontFailureDiagnostic, readScreenshotArtifacts, assertScreenshotInventory } = H;
-const { captureSolutionTiles, makeE017CaptionAbsencePolicy, assertE017CaptionObservation } = require("./check-m2s1-solution-scroll.cjs");
+const { captureSolutionTiles, makeE017CaptionAbsencePolicy, makeE017CaptionAssetTransport, assertE017CaptionObservation } = require("./check-m2s1-solution-scroll.cjs");
 
 const CHECKER_PATH='tools/check-e017-solution-display-browser.cjs';
 const SHARED_CHECKER_PATH='tools/check-reviewed-problem-renderer-browser.cjs';
 const SOLUTION_CHECKER_PATH='tools/check-m2s1-solution-scroll.cjs';
 const SHARED_CHECKER_SHA256='e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673';
-const SOLUTION_CHECKER_SHA256='0df35b34806291e19e322ad6aaf385bf527118071627c7c9ea2abf0db6e47305';
+const SOLUTION_CHECKER_SHA256='5ac51ffc469444e3e13449980d2820d19924563e50de08409ac47678a6c19d80';
 const IDENTITY_PATH='archive/data/question_identity_map.json';
 const SCHEMA='archive-e017-solution-display-raw-ui-v1',FONT_FAMILY='Nanum Myeongjo';
 const SHA1=/^[a-f0-9]{40}$/;
@@ -82,6 +82,7 @@ function assertCompletedResults(results,inputs,manifest,artifacts){
   assert.deepEqual(row.sourceRef,item.sourceRef,'UI_RESULT_SOURCE');assert.deepEqual(row.assetRefs,item.assetRefs,'UI_RESULT_ASSETS');
   assertTechnicalState(row.technical,manifest.mode,item.expectedBankCount);
   assertE017CaptionObservation(row.captionAbsenceObservation);
+  assert.deepEqual(row.captionAbsenceObservation.imageTransport.assetRef,item.assetRef,'UI_RESULT_CAPTION_TRANSPORT_ASSET');
   const c=row.capture;assert.equal(c.schemaVersion,'archive-solution-scroll-coverage-v1','UI_CAPTURE_SCHEMA');
   assert(c.method==='UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES'&&c.overlapCssPixels===32&&c.tileLimit===8&&c.cssWrites===0&&c.domWrites===0&&c.viewportChanges===0&&c.compositeImageCreated===false&&c.feedbackIdle===true&&c.foreignContentHits===0,'UI_UNCHANGED_CAPTURE_REQUIRED');
   assert.deepEqual(c.coverage,H.assertTileCoverage(c.content.height,c.tiles),'UI_COMPLETE_COVERAGE');
@@ -245,7 +246,10 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
           const box = target.locator('xpath=ancestor::div[contains(concat(" ",normalize-space(@class)," ")," sol-box ")][1]');
           assert.equal(await box.count(), 1, 'UI_UNIQUE_SOLUTION_BOX');
           const screenshotPath = `${item.key}-${viewport.name}.png`;
-          const {captionAbsenceObservation,...capture}=await captureSolutionTiles(page,target,path.join(out,screenshotPath),captionAbsencePolicy);
+          const imageTransport=makeE017CaptionAssetTransport(captionAbsencePolicy,{
+            imageUrl:await target.evaluate(image=>image.currentSrc||image.src),origin,
+            servedRefs:[...served.values()],mirroredRefs:[...mirrored.values()]});
+          const {captionAbsenceObservation,...capture}=await captureSolutionTiles(page,target,path.join(out,screenshotPath),captionAbsencePolicy,imageTransport);
           const geometry = await target.evaluate(image => {
             const box = image.closest('.sol-box'), a = image.getBoundingClientRect(), b = box.getBoundingClientRect();
             return { naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
