@@ -307,7 +307,7 @@ test('the pass and workflow wiring use the isolating registrar and keep the sing
   assert.ok(pass.includes('isolate=tools/ci/register-reviewed-meta-requests.mjs') && pass.includes('node "$isolate" --applied-file'), 'requests are registered through the isolating script');
   assert.ok(!/for request in "\$\{reqs\[@\]\}"; do\s*\n\s*node archive\/tools\/meta-foundation\/register-reviewed-exam-meta-source\.mjs[^\n]*--write/.test(pass), 'no unguarded fail-fast registrar loop');
   assert.ok(pass.includes('for request in "${applied[@]}"; do rm -f -- "$request"; done'), 'only applied requests are consumed');
-  assert.ok(pass.includes('--verify-projection') && /for request in "\$\{applied\[@\]\}"; do\s*\n\s*schema=/.test(pass), 'only applied requests are projection-verified');
+  assert.ok(pass.includes('verify-reviewed-projection-requests.mjs') && pass.includes('--candidates-file') && pass.includes('-- "${applied[@]}"'), 'only applied requests enter the read-only projection phase');
   assert.ok(pass.includes('for round in 1 2; do'), 'bounded to two registration rounds');
   assert.ok(pass.indexOf('compile-meta-foundation.mjs --write') > 0 && pass.indexOf('compile-meta-foundation.mjs --write') < pass.indexOf('compile-meta-foundation.mjs --canonical-only-check'),
     'derived compiled data is written by the single writer before its parity gate (a stale base must not block every request)');
@@ -372,11 +372,12 @@ function passFixture(t, behaviors, { buildFailOnce = false } = {}) {
   copyModule('tools/ci/archive-pr-native-preview.mjs');
   // Keep the real generation entrypoint; only its heavy Python child is stubbed.
   copyModule('tools/ci/archive-registration-build-db.mjs');
+  copyModule('tools/ci/verify-reviewed-projection-requests.mjs');
   // The real registration paths plus `derived/`, where the stub registrar writes its output.
   put('tools/ci/archive-meta-register-commit.paths', read('tools/ci/archive-meta-register-commit.paths') + 'derived/\n');
   put('derived/.keep', '');
   put('tools/bin/python', '#!/bin/sh\nexec node "$@"\n'); fs.chmodSync(path.join(dir, 'tools/bin/python'), 0o755);
-  for (const rel of ['tests/archive-reviewed-exam-registration-v2.test.mjs', 'tests/archive-finalqa-nonpt-register.test.mjs', 'tests/archive-finalqa-nonpt-real-geumdang.test.mjs'])
+  for (const rel of ['tests/archive-reviewed-exam-registration-v2.test.mjs', 'tests/archive-reviewed-projection-phase.test.mjs', 'tests/archive-finalqa-nonpt-register.test.mjs', 'tests/archive-finalqa-nonpt-real-geumdang.test.mjs'])
     put(rel, "import test from 'node:test'; test('stub', () => {});\n");
   put('archive/build_db.py', `const fs = require('node:fs'); const n = Number(fs.existsSync('build.count') ? fs.readFileSync('build.count', 'utf8') : 0) + 1; fs.writeFileSync('build.count', String(n));
 ${buildFailOnce ? "if (n === 1) { console.error('first build does not converge'); process.exit(1); }" : ''}
@@ -396,6 +397,17 @@ if (args.includes('--verify-projection')) {
 if (body.behavior === 'fail') { console.error('Error: before mismatch: qid_' + name + '.standardCourse'); process.exit(1); }
 fs.mkdirSync('derived', { recursive: true }); fs.writeFileSync('derived/' + name + '.out', 'applied\\n'); console.log('{}');
 `);
+  // The real phase/supervisor invokes a synchronous v2 verifier in its worker.
+  // Keep the heavy verifier stub explicit; exits exercise the real IPC boundary.
+  put('archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs', `import fs from 'node:fs';import assert from 'node:assert/strict';
+export function registerReviewedExamV2({ request: body }) {
+  const name=body.fixtureName, missing=body.verifyNeeds&&!fs.existsSync('derived/'+body.verifyNeeds+'.out');
+  if(body.behavior==='verify-fail-silent'&&fs.existsSync('derived/'+name+'.out'))process.exit(7);
+  if(body.behavior==='verify-fail-assert'&&fs.existsSync('derived/'+name+'.out'))assert.fail('projection differs');
+  if((body.behavior==='verify-fail'&&fs.existsSync('derived/'+name+'.out'))||missing)throw new Error('Consumer metadata mismatch: qid_'+name+'.curriculumKey');
+  return {status:'PASS'};
+}
+`);
   put('archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs', `import fs from 'node:fs'; import path from 'node:path';
 export function verifyChangedUidConsumerApproval({ requestPaths }) {
   const exams = [], failures = [];
@@ -413,15 +425,15 @@ export function verifyChangedUidConsumerApproval({ requestPaths }) {
 }
 `);
   for (const [name, body] of Object.entries(behaviors))
-    put(`.archive-meta-register/inbox/${name}.json`, JSON.stringify({ schemaVersion: 'archive-reviewed-exam-meta-register-request-v2', approval: { type: 'FINAL_QA' }, ...(typeof body === 'string' ? { behavior: body } : body) }, null, 2) + '\n');
+    put(`.archive-meta-register/inbox/${name}.json`, JSON.stringify({ schemaVersion: 'archive-reviewed-exam-meta-register-request-v2', fixtureName: name, approval: { type: 'FINAL_QA' }, ...(typeof body === 'string' ? { behavior: body } : body) }, null, 2) + '\n');
   git(dir, 'add', '-A'); git(dir, 'commit', '-q', '-m', 'seed');
   const exists = rel => fs.existsSync(path.join(dir, rel));
   const run = () => {
     const summary = path.join(dir, 'summary.md'); fs.rmSync(summary, { force: true });
-    const runner = path.join(dir, 'runner-temp'); fs.mkdirSync(runner, { recursive: true });
+    const runner = fs.mkdtempSync(path.join(os.tmpdir(), 'register-pass-evidence-')); t.after(() => fs.rmSync(runner, { recursive: true, force: true }));
     const r = spawnSync('bash', ['tools/ci/reviewed-meta-register-pass.sh'], { cwd: dir, encoding: 'utf8',
       env: { ...process.env, PATH: path.join(dir, 'tools/bin') + path.delimiter + process.env.PATH, RUNNER_TEMP: runner, GITHUB_STEP_SUMMARY: summary, ARCHIVE_META_SCOPED: 'false' } });
-    return { ...r, copies: exists('runner-temp/archive-meta-register-pass/requests') ? fs.readdirSync(path.join(dir, 'runner-temp/archive-meta-register-pass/requests')).sort() : [],
+    return { ...r, evidenceRoot: runner, copies: fs.existsSync(path.join(runner, 'archive-meta-register-pass/requests')) ? fs.readdirSync(path.join(runner, 'archive-meta-register-pass/requests')).sort() : [],
       builds: exists('build.count') ? Number(fs.readFileSync(path.join(dir, 'build.count'), 'utf8')) : 0,
       inbox: fs.readdirSync(path.join(dir, '.archive-meta-register/inbox')).sort() };
   };
@@ -476,8 +488,8 @@ test('pass: actual consumer refusals are rolled back and recorded before valid r
   const rejection = f.readJson('.archive-meta-register/rejected/2-consumer-bad.rejection.json');
   assert.equal(rejection.stage, 'consumer-verify');
   assert.match(rejection.error, /VALUE_MISMATCH Q1: request 2 != consumer 3/);
-  assert.equal(f.readJson('runner-temp/archive-meta-register-pass/consumer-preflight-1.json').status, 'FAIL');
-  assert.equal(f.readJson('runner-temp/archive-meta-register-pass/consumer-preflight-2.json').status, 'PASS');
+  assert.equal(JSON.parse(fs.readFileSync(path.join(r.evidenceRoot,'archive-meta-register-pass/consumer-preflight-1.json'),'utf8')).status, 'FAIL');
+  assert.equal(JSON.parse(fs.readFileSync(path.join(r.evidenceRoot,'archive-meta-register-pass/consumer-preflight-2.json'),'utf8')).status, 'PASS');
   assert.deepEqual(r.inbox, []);
   assert.deepEqual(r.copies, ['1-good.json'], 'only actually verified requests reach the independent final gate');
 });
