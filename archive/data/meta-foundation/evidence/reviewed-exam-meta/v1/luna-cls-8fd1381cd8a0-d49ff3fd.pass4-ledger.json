@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass4",
+  "createdAt": "2026-11-14T00:00:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_수학I.js",
+  "items": [
+    {
+      "ordinal": 10,
+      "chosenFrom": "new",
+      "resolutionReason": "0≤2x<4π에서 sin 2x=3/4의 두 사분면 해를 각각 세어 네 근의 합을 구한다.",
+      "integrationPattern": "CASE_BRANCH"
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "new",
+      "resolutionReason": "2x²-8의 양수 조건과 x+a의 로그 정의역을 확인한 뒤 로그 밑을 통일해 얻은 방정식이 a에 따라 한 근만 갖도록 제한한다.",
+      "integrationPattern": "INTERDEPENDENT"
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "new",
+      "resolutionReason": "a의 12 거듭제곱과 b의 36 거듭제곱근을 소인수 지수로 표현해 ab²=64c 및 c=3ⁿ의 정수 조건을 함께 맞춘다.",
+      "integrationPattern": "DEEP_COMPOSITE"
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "new",
+      "resolutionReason": "경계 곡선과 점근선 사이에서 가능한 정수 x 구간을 나눠 각 x마다 정수 y의 개수를 합한다.",
+      "integrationPattern": "CASE_BRANCH"
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass1",
+      "resolutionReason": "t=3ˣ>0으로 치환하면 (t-3)²=-k-1이므로 서로 다른 양의 두 t를 갖는 정수 k의 범위를 센다.",
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "new",
+      "resolutionReason": "그래프의 최댓값 6과 최솟값 2가 a=2,c=4를 주고 주기 6π에서 b=±1/3 중 목적식 ac+b를 작게 하는 부호를 고른다.",
+      "integrationPattern": "CASE_BRANCH"
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "new",
+      "resolutionReason": "tan(3π/2+θ)=3/4를 tanθ=-4/3으로 바꾸고 cosθ>0으로 제4사분면을 정해 반지름 2의 좌표 차 a-b를 구한다.",
+      "integrationPattern": "REINTERPRETATION"
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "new",
+      "resolutionReason": "ㄱ·ㄴ·ㄷ 각각에서 f(x)=f(-x)와 f(2+x)=f(2-x)를 대조하면 두 대칭을 모두 만족하는 것은 ㄴ뿐이다.",
+      "integrationPattern": "CASE_BRANCH"
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass1",
+      "resolutionReason": "로그 정의로 (1),(2)를 확인한 다음 u=logₐM, v=logₐN 치환과 밑 변환으로 (3),(4)를 차례로 증명한다.",
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "new",
+      "resolutionReason": "보기 ㄱ의 감소함수 최댓값, ㄴ의 logₐ1, ㄷ의 log1, ㄹ의 정의역을 각각 점검해 참인 ㄴ·ㄷ을 고른다.",
+      "integrationPattern": "CASE_BRANCH"
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "pass1",
+      "resolutionReason": "pH=-log[H⁺]에서 농도 H를 H/2로 바꾸면 pH는 4.7+log2=5.0이다.",
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass1",
+      "resolutionReason": "s+c=1/2에서 sc=-3/8, (s-c)²=7/4를 얻고 제4사분면 부호를 적용해 a+b=2를 구한다.",
+      "integrationPattern": "SEQUENTIAL"
+    }
+  ]
+}

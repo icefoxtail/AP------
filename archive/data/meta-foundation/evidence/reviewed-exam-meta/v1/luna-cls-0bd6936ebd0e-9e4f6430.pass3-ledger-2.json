@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T17:53:33+09:00",
+  "sourceArchiveFile": "original/high/h2/1final/21_매산고_1학기_기말_고2_수학I.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass2",
+      "resolutionReason": "2π-π/6의 코사인은 기준각 π/6의 코사인과 같다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "l3": "일반각과 호도법",
+        "l4": "일반각"
+      }
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass2",
+      "resolutionReason": "열 항 곱의 공비 지수 0+…+9=45를 이용해 B10을 (a²r⁹)^5로 묶는다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": []
+    },
+    {
+      "ordinal": 2,
+      "chosenFrom": "pass2",
+      "resolutionReason": "두 등차수열 합의 식을 빼면 공차만 남아 d=5가 된다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "hold": "integrationPattern: H2-수학I.json의 활성 유형 목록에 두 등차수열의 합 조건으로 공차를 구하는 유형이 없음",
+      "rpmPath": {
+        "l4": "일반항"
+      }
+    },
+    {
+      "ordinal": 5,
+      "chosenFrom": "pass2",
+      "resolutionReason": "3m²-26m-77=(3m+7)(m-11)=0에서 자연수 m=11만 남는다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_POSITIVE"
+      ]
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "resolutionReason": "두 경계가 한 바퀴에서 대칭이므로 합은 2π이다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "integrationPattern": "PT_TRIGONOMETRIC_INEQUALITY",
+      "rpmPath": {
+        "l4": "그래프를 이용한 해"
+      }
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass2",
+      "resolutionReason": "부분합의 차 S5-S4로 다섯째 항 11을 복원한다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "midUnit": "수열의 합",
+        "l3": "합의 기호 Σ",
+        "l4": "성질"
+      }
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass2",
+      "resolutionReason": "후보 u=1,2는 d²<0이라 제외되고 u=-3만 실수 공차를 준다.",
+      "choiceTableUsed": "H2-수학I.json",
+      "rpmPath": {
+        "l3": "등차수열",
+        "l4": "일반항"
+      }
+    }
+  ]
+}
