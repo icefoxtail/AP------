@@ -40,12 +40,16 @@ import { isDeepStrictEqual } from "node:util";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
-import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
-import { bindDifficulty5Source } from "./register-difficulty5.mjs";
+import { isAuditPreservation } from "./native-audit-preservation.mjs";
+import { APPROVED_RENDERER_PRESERVATION } from "./native-approved-renderer-preservation.mjs";
+import { bindDifficulty5Source, registerDifficulty5 } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
-import { isSourceSubsetRebind } from "./source-subset-preservation.mjs";
+import { NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_HOLD_REASON } from "./native-basic-hold-preservation.mjs";
+import { NATIVE_BASIC_PARENT_SCHEMA } from "./reviewed-native-basic-parent.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
+
+import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
 
 const require = createRequire(import.meta.url);
 const SCHEMA = {
@@ -58,6 +62,7 @@ const SCHEMA = {
   BASIC_PARENT_CORRECTION: "archive-basic-parent-correction-request-v1",
   BASIC_REBIND: "archive-basic-scope-rebind-request-v1",
 };
+const DIFFICULTY_FIELDS = Object.freeze(["difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility"]);
 const GENERATED_INDEX = "archive/data/generated-lite-consumer/v1/index.json";
 const RECEIPTS = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/";
 // Full metadata, identity and runtime records are checked by the official v2
@@ -143,11 +148,19 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
   }
   if (schema === SCHEMA.PINPOINT || schema === SCHEMA.V2) {
     if (!Array.isArray(doc.items) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "request needs sourceArchiveFile and items[]");
+    if (isNativeAuthorityCorrection(doc)) {
+      if (doc.scope !== "PARTIAL_UIDS" || doc.approval?.type !== "AUTHORITY_CORRECTION" || doc.approval.metadataReviewed !== false ||
+          !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 || !doc.items.length ||
+          doc.registryChanges?.length || doc.approval.sourceRebind) fail("INVALID_REQUEST", "explicit authority withdrawal scope required");
+      return { kind: "native-authority-withdrawal", exam: doc.examUid, sourceFile: doc.sourceArchiveFile,
+        expectedBlob: doc.expectedSourceBlobSha1, expectedQuestionCount: doc.expectedQuestionCount, request: doc,
+        rows: doc.items.map(item => ({ ordinal: item.sourceOrdinal, uid: item.questionUid, unchanged: false })) };
+    }
     if (schema === SCHEMA.V2 && doc.registrationMode !== undefined) {
       if (doc.registrationMode !== "IDENTITY_FINGERPRINT_ONLY" || doc.scope !== "PARTIAL_UIDS" ||
           doc.approval?.type !== "FINAL_QA" || doc.approval.metadataReviewed !== true ||
           !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 || !doc.items.length ||
-          doc.items.length > doc.expectedQuestionCount || doc.registryChanges?.length || doc.approval.sourceRebind)
+          doc.items.length > doc.expectedQuestionCount || doc.registryChanges?.length || doc.approval.sourceRebind || doc.approval.rendererPreservation !== undefined)
         fail("INVALID_REQUEST", "identity repair requires its explicit scope and creates no metadata approval");
       const rows = doc.items.map(item => {
         if (!item.questionUid || !Number.isSafeInteger(item.sourceOrdinal) || item.sourceOrdinal < 1 || item.sourceOrdinal > doc.expectedQuestionCount ||
@@ -163,13 +176,16 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       return { kind: "identity-fingerprint-repair", exam: doc.examUid || doc.sourceArchiveFile,
         sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, expectedQuestionCount: doc.expectedQuestionCount, rows };
     }
-    if (schema === SCHEMA.V2 && doc.approval?.sourceRebind !== undefined) {
+    if (schema === SCHEMA.V2 && (doc.approval?.sourceRebind !== undefined || doc.approval?.rendererPreservation !== undefined)) {
       const audit = doc.approval.type === "META_PIPELINE_AUDIT" &&
-        doc.approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
-      const partial = doc.scope === "PARTIAL_UIDS", subset = isSourceSubsetRebind(doc.approval.sourceRebind);
-      if ((!audit && doc.approval.type !== "FINAL_QA") || !doc.approval.sourceRebind ||
+        isAuditPreservation(doc.approval);
+      const partial = doc.scope === "PARTIAL_UIDS";
+      const renderer = doc.approval.rendererPreservation !== undefined;
+      const rendererValid = renderer && partial && doc.approval.sourceRebind === undefined &&
+        doc.approval.rendererPreservation?.schemaVersion === APPROVED_RENDERER_PRESERVATION;
+      if ((!audit && doc.approval.type !== "FINAL_QA") || (renderer ? !rendererValid : !doc.approval.sourceRebind ||
           typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
-          (!audit && doc.approval.sourceRebind.schemaVersion !== undefined && !subset) || subset && !partial ||
+          (!audit && doc.approval.sourceRebind.schemaVersion !== undefined)) ||
           doc.approval.metadataReviewed !== true || doc.registryChanges?.length ||
           (doc.scope !== undefined && !partial) ||
           !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(doc.requestId || "") ||
@@ -208,8 +224,9 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
   if (schema === SCHEMA.BASIC_REBIND || schema === SCHEMA.BASIC_PARENT_CORRECTION) {
     const correction = schema === SCHEMA.BASIC_PARENT_CORRECTION;
     const preservation = doc.approval?.sourceReview !== undefined;
+    const nativeParent = doc.approval?.sourceReview?.schemaVersion === NATIVE_BASIC_PARENT_SCHEMA;
     if (!Array.isArray(doc.items) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "rebind request needs sourceArchiveFile and items[]");
-    if (preservation && (correction || doc.approval.sourceReview?.schemaVersion !== BASIC_PRESERVATION_SCHEMA ||
+    if (preservation && (correction || ![BASIC_PRESERVATION_SCHEMA, NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_PARENT_SCHEMA].includes(doc.approval.sourceReview?.schemaVersion) ||
         doc.approval.type !== "BASIC_SCOPE_REBIND" || doc.scope !== undefined || doc.registrationMode !== undefined ||
         !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 || !doc.items.length ||
         doc.items.length > doc.expectedQuestionCount || new Set(doc.items.map(i => i.questionUid)).size !== doc.items.length ||
@@ -226,7 +243,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       } : {}, fingerprint: item.after.sourceFingerprint,
         bodyFingerprint: item.after.contentFingerprint, unchanged: false, gated: true };
     });
-    return { kind: preservation ? "basic-approval-preservation" : correction ? "basic-parent-correction" : "basic-scope-rebind",
+    return { kind: nativeParent ? "basic-parent-registration" : preservation ? "basic-approval-preservation" : correction ? "basic-parent-correction" : "basic-scope-rebind",
       approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
       ...(preservation ? { request: doc, expectedQuestionCount: doc.expectedQuestionCount } : {}),
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
@@ -268,9 +285,12 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     const sourceFile = normalizeFile(gemini.sourceArchiveFile || doc.sourceArchiveFile);
     if (!sourceFile) fail("INVALID_REQUEST", "diff5 request needs sourceArchiveFile");
     const items = gemini.items || doc.items || [];
-    if (!Array.isArray(items)) fail("INVALID_REQUEST", "diff5 request needs items[]");
+    if (!Array.isArray(items) || !items.length) fail("INVALID_REQUEST", "diff5 request needs items[]");
+    if (doc.approval || (doc.registryChanges?.length ?? 0)) fail("INVALID_REQUEST", "diff5 request cannot carry semantic approval or registry changes");
     const rows = items.map(item => {
-      if (!item?.after || typeof item.after !== "object") fail("INVALID_REQUEST", `item #${item?.ordinal} has no after`);
+      if (!item?.after || typeof item.after !== "object" || Array.isArray(item.after) ||
+          Object.keys(item.after).some(field => !DIFFICULTY_FIELDS.includes(field)))
+        fail("INVALID_REQUEST", `item #${item?.ordinal} is not difficulty-only`);
       const expect = { difficultyBucket: item.after.difficultyBucket };
       return {
         ordinal: item.ordinal,
@@ -282,6 +302,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     });
     return {
       kind: "difficulty5-ratings",
+      request: doc,
       approvalType: null,
       exam: gemini.requestId || sourceFile,
       sourceFile,
@@ -339,6 +360,50 @@ function findMetaPipelineRuntime(consumer, unit, row, resolved) {
   return candidates.length === 1 ? candidates[0] : null;
 }
 
+// The official registrar owns normalization and reviewed-correction authority. A D5
+// Consumer claim first replays that exact read-only kernel against current canonical
+// metadata/identity/source. No source tag or semantic approval is changed here.
+function verifiedDifficultyRows(root, unit, consumer) {
+  const proof = registerDifficulty5({ root, request: unit.request, write: false, verifyProjection: true });
+  if (proof.status !== "PASS" || !["verify-projection", "verify-reviewed-correction"].includes(proof.mode) ||
+      proof.requestId !== unit.request.gemini.requestId || proof.sourceArchiveFile !== unit.sourceFile ||
+      proof.sourceBlobSha !== unit.expectedBlob || proof.summary?.written !== false || proof.summary?.changedFields !== 0 ||
+      proof.summary?.VERIFIED !== unit.rows.length || proof.summary?.total !== unit.rows.length ||
+      proof.summary?.APPLY !== 0 || proof.summary?.CONFLICT !== 0 || proof.summary?.SKIP_INVALID !== 0 ||
+      proof.ptTpl !== "UNTOUCHED_NOT_IN_SCOPE" || !Array.isArray(proof.items) || proof.items.length !== unit.rows.length ||
+      new Set(proof.items.map(item => item.questionUid)).size !== unit.rows.length ||
+      new Set(proof.items.map(item => item.ordinal)).size !== unit.rows.length)
+    throw Error("official difficulty projection/scope mismatch");
+  if (!consumer.difficultyMetadataByUid) {
+    const records = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8")).records;
+    consumer.difficultyMetadataByUid = new Map();
+    for (const record of records || []) {
+      const list = consumer.difficultyMetadataByUid.get(record.questionUid) || [];
+      list.push(record); consumer.difficultyMetadataByUid.set(record.questionUid, list);
+    }
+  }
+  const bank = loadBank(root, unit.sourceFile);
+  return unit.rows.map(row => {
+    const checked = proof.items.find(item => item.questionUid === row.uid && item.ordinal === row.ordinal);
+    const matches = consumer.difficultyMetadataByUid.get(row.uid) || [], meta = matches[0];
+    if (!checked || checked.decision !== "VERIFIED" || matches.length !== 1 ||
+        meta.sourceArchiveFile !== unit.sourceFile || meta.sourceOrdinal !== row.ordinal ||
+        !DIFFICULTY_FIELDS.every(field => own(checked.after, field) && same(meta[field], checked.after[field])))
+      throw Error(`official difficulty metadata/UID mismatch: ${row.uid}`);
+    const source = bank[row.ordinal - 1];
+    if (!source) throw Error(`difficulty source ordinal missing: ${row.uid}`);
+    const values = Object.fromEntries(DIFFICULTY_FIELDS.map(field => [field, checked.after[field] ?? null]));
+    const semanticPending = !meta.metadataApprovalType &&
+      ["registration_only_pending_review", "registration_pending_semantic_review"].includes(meta.metadataStatus) &&
+      meta.fieldStatus?.problemType === "manual_review_pending" && meta.fieldStatus?.template === "manual_review_pending" &&
+      meta.tagConfidence === "registration_only" && meta.tagStatus === "registration_only_pending_review";
+    return { ...row, difficultyProjection: { values, binding: checked.consumerBinding, semanticPending,
+      ordinaryNormalization: proof.mode === "verify-projection" && !unit.request.reviewedCorrection,
+      currentTags: { tagConfidence: meta.tagConfidence, tagStatus: meta.tagStatus },
+      sourceAnnotations: Object.fromEntries(["tagConfidence", "tagStatus", "legacyLevelCompatibility"].map(field => [field, source[field] ?? null])) } };
+  });
+}
+
 function checkRow(consumer, unit, row) {
   const key = `${normalizeFile(unit.sourceFile)}#${Number(row.ordinal)}`;
   const resolved = consumer.resolvedBySource.get(key);
@@ -354,7 +419,31 @@ function checkRow(consumer, unit, row) {
   // REVIEW2 may also register a judged tag/difficulty value over the exam file's inline value; the registrar records the source value in receipt.sourceValueOverrides.
   // REVIEW2 (two independent judgments): the exam file's own review annotation (e.g. SELF_CHECKED) differs from the registrar-forced
   // reviewed_pass by design; it is kept in the exam file and is not a metadata conflict. Every other conflicting field still refuses.
-  const blockingConflicts = (resolved.metadataConflicts || []).filter(f => !(unit.approvalType === "REVIEW2" && (f === "reviewStatus" || REVIEW2_SOURCE_OVERRIDE_FIELDS.includes(f))));
+  const difficulty = unit.kind === "difficulty5-ratings" ? row.difficultyProjection : null;
+  if (unit.kind === "difficulty5-ratings") {
+    if (!difficulty) return { ...out, reason: "VALUE_MISMATCH", detail: "official difficulty projection missing" };
+    // Some auxiliary D5 fields are not exposed by the page. Their exact current
+    // metadata equivalence is already proven above; any exposed canonical value
+    // must agree too, while the bucket still takes the real page/query path below.
+    const mismatched = DIFFICULTY_FIELDS.filter(field => own(resolved, field) && !same(resolved[field], difficulty.values[field]));
+    if (mismatched.length) return { ...out, reason: "VALUE_MISMATCH", detail: "official difficulty tuple != canonical consumer: " + mismatched.join(",") };
+  }
+  const blockingConflicts = (resolved.metadataConflicts || []).filter(field => {
+    if (unit.approvalType === "REVIEW2" && (field === "reviewStatus" || REVIEW2_SOURCE_OVERRIDE_FIELDS.includes(field))) return false;
+    let reason = null;
+    if (difficulty?.semanticPending && ["tagConfidence", "tagStatus"].includes(field) &&
+        same(resolved[field], difficulty.currentTags[field]) && difficulty.sourceAnnotations[field] !== null &&
+        !same(difficulty.sourceAnnotations[field], difficulty.currentTags[field]))
+      reason = "SEMANTIC_REVIEW_PENDING_UNCHANGED";
+    if (field === "legacyLevelCompatibility" && difficulty?.ordinaryNormalization &&
+        same(resolved[field], difficulty.values[field]) && difficulty.sourceAnnotations[field] !== null &&
+        !same(difficulty.sourceAnnotations[field], difficulty.values[field]))
+      reason = "OFFICIAL_D5_LEGACY_COMPATIBILITY_NORMALIZATION";
+    if (!reason) return true;
+    (out.metadataConflictAdvisories ||= []).push({ field, reason, sourceValue: difficulty.sourceAnnotations[field],
+      canonicalValue: resolved[field], semanticApproval: false });
+    return false;
+  });
   if (blockingConflicts.length)
     return { ...out, reason: "METADATA_CONFLICT", detail: blockingConflicts.join(",") };
   const evidence = resolved.assignmentEvidence;
@@ -431,6 +520,7 @@ function preservedNativeRows(root, unit, consumer) {
   if (receipt.newMetadataApprovals !== 0 || receipt.preservedMetadataApprovals !== count ||
       receipt.totalQuestions !== count || receipt.approval?.type !== unit.approvalType ||
       !same(receipt.approval.sourceRebind, request.approval.sourceRebind) ||
+      !same(receipt.approval.rendererPreservation, request.approval.rendererPreservation) ||
       loadBank(root, unit.sourceFile).length !== unit.expectedQuestionCount)
     throw Error("native approval preservation receipt/denominator mismatch");
   for (const records of [receipt.appliedRecords, receipt.runtimeRecords]) {
@@ -458,16 +548,27 @@ function preservedNativeRows(root, unit, consumer) {
 
 function preservedBasicRows(root, unit, consumer) {
   const request = unit.request, count = unit.rows.length;
+  const nativeParent = unit.kind === "basic-parent-registration";
   const proof = registerBasicScopeRebind({ root, request, verifyProjection: true });
   if (proof.status !== "PASS" || proof.requestId !== request.requestId || proof.replay !== true ||
       proof.consumerSearchStatus !== "STATIC_VALUES_VERIFIED" || proof.totalQuestions !== count ||
-      proof.expectedQuestionCount !== unit.expectedQuestionCount || proof.newMetadataApprovals !== 0 || proof.advancedApprovals !== 0 ||
-      proof.metadataValuesChanged !== false || proof.preservedMetadataApprovals !== count || !same(proof.plannedPaths, []))
+      proof.expectedQuestionCount !== unit.expectedQuestionCount || proof.newMetadataApprovals !== (nativeParent ? count : 0) || proof.advancedApprovals !== 0 ||
+      proof.metadataValuesChanged !== false || proof.preservedMetadataApprovals !== (nativeParent ? 0 : count) ||
+      nativeParent && (proof.newBasicParentApprovals !== count || proof.newDifficultyJudgments !== 0 || proof.newBlindReviews !== 0 || proof.newReview2 !== 0) || !same(proof.plannedPaths, []))
     throw Error("basic preservation official replay/scope mismatch");
   const metadata = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8"));
   return unit.rows.map(row => {
     const matches = metadata.records.filter(r => r.questionUid === row.uid);
-    if (matches.length !== 1 || consumer.runtimeByUid.has(row.uid)) throw Error("basic preservation current metadata/runtime scope mismatch");
+    if (matches.length !== 1) throw Error("basic preservation current metadata scope mismatch");
+    const runtime = consumer.runtimeByUid.get(row.uid) || [];
+    if (request.approval.sourceReview.schemaVersion === NATIVE_BASIC_HOLD_SCHEMA) {
+      const bindings = (proof.heldRuntimeBindings || []).filter(record => record.questionUid === row.uid);
+      const stableHash = value => crypto.createHash("sha256").update(JSON.stringify(value, (_, v) => v && typeof v === "object" && !Array.isArray(v)
+        ? Object.fromEntries(Object.keys(v).sort().map(key => [key, v[key]])) : v)).digest("hex");
+      if (bindings.length !== runtime.length || bindings.length > 1 || runtime.some(record => !bindings.some(binding => binding.recordSha256 === stableHash(record))) ||
+          !same((proof.metaOnlyHoldReasons || []).filter(record => record.questionUid === row.uid), [{ questionUid: row.uid, reason: NATIVE_BASIC_HOLD_REASON }]))
+        throw Error("basic preservation explicit held runtime drift");
+    } else if (runtime.length) throw Error("basic preservation current metadata/runtime scope mismatch");
     const item = request.items.find(i => i.questionUid === row.uid), record = matches[0];
     // The official replay above checks the entire protected metadata/identity
     // row. The current canonical resolver and actual page query below must
@@ -483,7 +584,7 @@ function preservedBasicRows(root, unit, consumer) {
 export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scopedPaths = [] }) {
   let mainSha = "UNKNOWN";
   try { mainSha = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim(); } catch { /* not a git checkout */ }
-  const result = { status: "PASS", mainSha, counts: { changed: 0, checked: 0, passed: 0, skippedUnchanged: 0 }, exams: [], failures: [], unobservedFields: [], solverOnlyRevisions: [], assignmentPending: [] };
+  const result = { status: "PASS", mainSha, counts: { changed: 0, checked: 0, passed: 0, skippedUnchanged: 0 }, exams: [], failures: [], unobservedFields: [], solverOnlyRevisions: [], assignmentPending: [], metadataConflictAdvisories: [] };
   const inputs = [...requestPaths, ...scopedPaths];
   if (!inputs.length) { result.status = "FAIL"; result.failures.push({ exam: "-", qid: "-", uid: "-", reason: "NO_INPUT", detail: "no --request/--scoped given" }); return result; }
   const units = [];
@@ -529,6 +630,34 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
       }
     }
     if (!sourceBound) continue;
+    if (unit.kind === "difficulty5-ratings") {
+      summary.approvalCreated = false; summary.newMetadataApprovals = 0; summary.semanticApproval = false;
+      try { rows = verifiedDifficultyRows(root, unit, consumer); summary.officialDifficultyTuplesVerified = rows.length; }
+      catch (error) {
+        summary.checked = rows.length; result.counts.checked += rows.length;
+        result.failures.push({ exam: unit.exam, qid: rows[0]?.ordinal ?? "-", uid: rows[0]?.uid ?? "-",
+          reason: "VALUE_MISMATCH", detail: "official difficulty projection failed: " + error.message });
+        continue;
+      }
+    }
+    if (unit.kind === "native-authority-withdrawal") {
+      summary.checked = rows.length; result.counts.checked += rows.length;
+      summary.approvalCreated = false; summary.newMetadataApprovals = 0; summary.withdrawnMetadataApprovals = 0;
+      summary.expectedQuestionCount = unit.expectedQuestionCount;
+      try {
+        const replay = registerNativeAuthorityCorrection({ root, request: unit.request, write: false });
+        if (replay.status !== "PASS" || replay.replay !== true || replay.newMetadataApprovals !== 0 ||
+            replay.totalQuestions !== rows.length || replay.plannedPaths.length) throw Error("authority withdrawal replay mismatch");
+        const proof = verifyNativeAuthorityCorrectionConsumer({ root, request: unit.request, catalog: consumer.catalog });
+        summary.passed = rows.length; result.counts.passed += rows.length;
+        summary.withdrawnMetadataApprovals = proof.withdrawnMetadataApprovals;
+        summary.authorityHolds = proof.checkedAuthorityHolds;
+      } catch (error) {
+        result.failures.push({ exam: unit.exam, qid: rows[0]?.ordinal ?? "-", uid: rows[0]?.uid ?? "-",
+          reason: "AUTHORITY_WITHDRAWAL_MISMATCH", detail: error.message });
+      }
+      continue;
+    }
     if (unit.kind === "native-approval-preservation") {
       summary.approvalCreated = false; summary.newMetadataApprovals = 0;
       summary.preservedMetadataApprovals = 0; summary.approvalType = unit.approvalType;
@@ -541,8 +670,10 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
         continue;
       }
     }
-    if (unit.kind === "basic-approval-preservation") {
+    if (["basic-approval-preservation", "basic-parent-registration"].includes(unit.kind)) {
+      const nativeParent = unit.kind === "basic-parent-registration";
       summary.approvalCreated = false; summary.newMetadataApprovals = 0; summary.advancedApprovals = 0;
+      if (nativeParent) { summary.newBasicParentApprovals = 0; summary.newDifficultyJudgments = 0; summary.newBlindReviews = 0; summary.newReview2 = 0; }
       summary.preservedMetadataApprovals = 0; summary.expectedQuestionCount = unit.expectedQuestionCount;
       try { rows = preservedBasicRows(root, unit, consumer); }
       catch (error) {
@@ -596,10 +727,17 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
       if (checked.reason) result.failures.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid || row.uid || "-", reason: checked.reason, detail: checked.detail || "" });
       else { summary.passed++; result.counts.passed++; }
       if (checked.assignmentPending && !checked.reason) result.assignmentPending.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid, reason: checked.assignmentPending });
+      for (const advisory of checked.metadataConflictAdvisories || [])
+        result.metadataConflictAdvisories.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid, ...advisory });
       if (checked.solverOnlyRevision) result.solverOnlyRevisions.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid });
       if (checked.unobserved?.length) result.unobservedFields.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid, fields: checked.unobserved });
     }
     if (["native-approval-preservation", "basic-approval-preservation"].includes(unit.kind)) summary.preservedMetadataApprovals = summary.passed;
+    if (unit.kind === "basic-parent-registration") {
+      summary.newBasicParentApprovals = summary.passed;
+      summary.newMetadataApprovals = summary.passed;
+      summary.approvalCreated = summary.passed > 0;
+    }
   }
   if (result.failures.length || result.counts.checked !== result.counts.changed) result.status = "FAIL";
   return result;
@@ -607,11 +745,14 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
 
 export function renderSummary(result) {
   const c = result.counts;
-  const preservation = result.exams.some(e => ["binding-course-correction", "identity-fingerprint-repair", "native-approval-preservation", "basic-approval-preservation"].includes(e.kind));
-  const lines = [preservation ? "### Changed-UID consumer verification" : "### Changed-UID effective consumer approval", ""];
+  const preservation = result.exams.some(e => ["binding-course-correction", "identity-fingerprint-repair", "native-approval-preservation", "basic-approval-preservation", "native-authority-withdrawal"].includes(e.kind));
+  const difficulty = result.exams.some(e => e.kind === "difficulty5-ratings");
+  const verification = preservation || difficulty;
+  const lines = [verification ? "### Changed-UID consumer verification" : "### Changed-UID effective consumer approval", ""];
   if (result.status === "PASS") {
-    lines.push(`PASS: changed ${c.passed}/${c.changed} ${preservation ? "verified" : "approved"} (checked ${c.checked}, skippedUnchanged ${c.skippedUnchanged}), main \`${result.mainSha}\`.`);
-    if (preservation) lines.push("Preservation operations verify existing consumer state and create no new metadata or exam approval.");
+    lines.push(`PASS: changed ${c.passed}/${c.changed} ${verification ? "verified" : "approved"} (checked ${c.checked}, skippedUnchanged ${c.skippedUnchanged}), main \`${result.mainSha}\`.`);
+    if (preservation) lines.push("These operations verify consumer state and create no new metadata or exam approval.");
+    if (difficulty) lines.push("D5 rows verify the official four-field difficulty projection and the page bucket/query; they do not grant semantic, PT/TPL or source approval.");
   } else {
     lines.push(`FAIL: changed ${c.changed}, checked ${c.checked}, passed ${c.passed}, skippedUnchanged ${c.skippedUnchanged}, main \`${result.mainSha}\`.`, "",
       "| exam | QID | UID | reason |", "| --- | --- | --- | --- |");
@@ -626,11 +767,17 @@ export function renderSummary(result) {
     lines.push(`  Preserved ${e.approvalType} approvals: ${e.preservedMetadataApprovals ?? 0}; new approvals: 0; source questions: ${e.expectedQuestionCount}.`);
   for (const e of result.exams.filter(e => e.kind === "basic-approval-preservation"))
     lines.push(`  Preserved basic approvals: ${e.preservedMetadataApprovals ?? 0}; new approvals: 0; advanced approvals: 0; source questions: ${e.expectedQuestionCount}.`);
+  for (const e of result.exams.filter(e => e.kind === "basic-parent-registration"))
+    lines.push(`  New basic parent approvals: ${e.newBasicParentApprovals ?? 0}; preserved prior parents: 0; advanced approvals: 0; source questions: ${e.expectedQuestionCount}.`);
+  for (const e of result.exams.filter(e => e.kind === "native-authority-withdrawal"))
+    lines.push(`  Unsupported approvals withdrawn: ${e.withdrawnMetadataApprovals ?? 0}; explicit authority holds: ${e.authorityHolds ?? 0}; new approvals: 0.`);
   if (result.assignmentPending?.length) {
     const byExam = new Map();
     for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);
     lines.push("", `Informational: ${result.assignmentPending.length} row(s) with canonical L1/L2 assignment not approved; outside this request's changed fields: ${[...byExam].map(([exam, qids]) => `${exam} ${qids.join(", ")}`).join("; ")}.`);
   }
+  for (const row of result.metadataConflictAdvisories || [])
+    lines.push(`Retained annotation conflict: ${row.exam} Q${row.qid} ${row.field}: ${row.reason}; no semantic approval.`);
   if (result.solverOnlyRevisions?.length) lines.push("", `Solver-only revisions since review (body fingerprint still bound; informational): ${result.solverOnlyRevisions.map(r => `Q${r.qid}`).join(", ")}.`);
   if (result.unobservedFields.length) lines.push("", `Fields not exposed by the consumer (informational): ${result.unobservedFields.length} row(s).`);
   return lines.join("\n") + "\n";

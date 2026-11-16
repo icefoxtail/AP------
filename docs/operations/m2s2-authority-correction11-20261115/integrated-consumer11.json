@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "authority-correction-integrated-consumer11-v1",
+  "status": "PASS_LOCAL_INTEGRATION",
+  "baseActualMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "fixtureQualification": "Exact current code plus separately proposed four-file integration; 4 sources/95 questions/11 held UIDs; full two affected runtime documents and exact mandatory supporting runtimes.",
+  "consumer": {
+    "status": "PASS",
+    "mainSha": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+    "counts": {
+      "changed": 11,
+      "checked": 11,
+      "passed": 11,
+      "skippedUnchanged": 0
+    },
+    "exams": [
+      {
+        "file": ".archive-meta-register/inbox/m2s2-authority-hold-e012-26fc-20261115.json",
+        "kind": "native-authority-withdrawal",
+        "exam": "24_왕운중_2학기_기말_중2_수학",
+        "sourceFile": "original/middle/m2/2final/24_왕운중_2학기_기말_중2_수학.js",
+        "changed": 1,
+        "checked": 1,
+        "passed": 1,
+        "skippedUnchanged": 0,
+        "approvalCreated": false,
+        "newMetadataApprovals": 0,
+        "withdrawnMetadataApprovals": 1,
+        "expectedQuestionCount": 24,
+        "authorityHolds": 1
+      },
+      {
+        "file": ".archive-meta-register/inbox/m2s2-authority-hold-e048-26fc-20261115.json",
+        "kind": "native-authority-withdrawal",
+        "exam": "20_신흥중_2학기_기말_중2_기출",
+        "sourceFile": "original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js",
+        "changed": 7,
+        "checked": 7,
+        "passed": 7,
+        "skippedUnchanged": 0,
+        "approvalCreated": false,
+        "newMetadataApprovals": 0,
+        "withdrawnMetadataApprovals": 7,
+        "expectedQuestionCount": 24,
+        "authorityHolds": 7
+      },
+      {
+        "file": ".archive-meta-register/inbox/m2s2-authority-hold-e054-26fc-20261115.json",
+        "kind": "native-authority-withdrawal",
+        "exam": "20_향림중_2학기_기말_중2_기출",
+        "sourceFile": "original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+        "changed": 1,
+        "checked": 1,
+        "passed": 1,
+        "skippedUnchanged": 0,
+        "approvalCreated": false,
+        "newMetadataApprovals": 0,
+        "withdrawnMetadataApprovals": 1,
+        "expectedQuestionCount": 24,
+        "authorityHolds": 1
+      },
+      {
+        "file": ".archive-meta-register/inbox/m2s2-authority-hold-e061-26fc-20261115.json",
+        "kind": "native-authority-withdrawal",
+        "exam": "19_풍덕중_2학기_기말_중2_기출",
+        "sourceFile": "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "changed": 2,
+        "checked": 2,
+        "passed": 2,
+        "skippedUnchanged": 0,
+        "approvalCreated": false,
+        "newMetadataApprovals": 0,
+        "withdrawnMetadataApprovals": 2,
+        "expectedQuestionCount": 23,
+        "authorityHolds": 2
+      }
+    ],
+    "failures": [],
+    "unobservedFields": [],
+    "solverOnlyRevisions": [],
+    "assignmentPending": []
+  },
+  "v2ProjectionDispatcher": {
+    "requestId": "m2s2-authority-hold-e048-26fc-20261115",
+    "status": "PASS",
+    "replay": true,
+    "registrationMode": "WITHDRAW_UNSUPPORTED_NATIVE_AUTHORITY",
+    "scope": "PARTIAL_UIDS",
+    "partialUidCount": 7,
+    "expectedQuestionCount": 24,
+    "totalQuestions": 7,
+    "withdrawnMetadataApprovals": 7,
+    "newMetadataApprovals": 0,
+    "plannedPaths": [],
+    "consumerSearchStatus": "AUTHORITY_WITHDRAWAL_VERIFIED",
+    "consumerLanes": {
+      "authorityHolds": 7,
+      "newMetadataApprovals": 0
+    }
+  },
+  "newMetadataApprovals": 0,
+  "withdrawnMetadataApprovals": 11,
+  "code": [
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "sha256": "9f45d41a94cce025f75bbb6319e6da039829ffe5283ca98a83f60faa9c6ef650"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "dc000e7b9e7201f6aee2d47f63a808b37d87ff8c81e3e3bd322d52fb88e01c47"
+    },
+    {
+      "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "sha256": "3f31b975719a191367f5d77256d8726df85461156e053bcfb58dd3402a7d50f2"
+    },
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "sha256": "e2a0a6e27c5666a7e4ba073a353c7ca4f0bd8bbc8e78034342d6d4e46b3d700a"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-authority-correction.mjs",
+      "sha256": "aa1b594bc02da817719524f3f589275adca500081f1c00452b93e21461414a4b"
+    }
+  ],
+  "protectedFileDigests": {
+    "archive/data/question_metadata.json": "213e286dcf670e8eef3d363a50cd0a10d07ee3f2aa3268bf43c39ca7622d06c2",
+    "archive/data/question_identity_map.json": "c012de60b9bf80027ee7928aba1fd669e773ed720d08e8ed69bdf12c05a9d029",
+    "archive/data/meta-foundation/runtime/derivative-v1.json": "c9dc142e5f61d451c88b69269236a2f0fcb66544f8cb1a4884c8a4fd9265ee8e",
+    "archive/data/meta-foundation/runtime/functions-graphs-v1.json": "064bc447feec048fe8dc2aefd17dbaba19ed06c74e7b72096894cbf31ba083ae",
+    "archive/data/meta-foundation/runtime/geometry-equations-v1.json": "2148ece0b2ccce5da67ea7dca3b637d267f2bb5d174e2bfb9f057daa8b814886",
+    "archive/data/meta-foundation/runtime/h1-foundation-v1.json": "fe0d40688eb18a33ff8a825c99ad4516f17aa28db79381c63a71a593804f77f0",
+    "archive/data/meta-foundation/runtime/h1-original-source-v1.json": "08d04537134cdb893cebc14ec88cf35ff06e10bbbb39e1d3b2e2fa1512e8aaa9",
+    "archive/data/meta-foundation/runtime/integral-calculus-v1.json": "c346f0a18831f75a6ec6648aeb559cfa4a51f3871708c192b8e1670c0d584b4a",
+    "archive/data/meta-foundation/runtime/limit-continuity-v1.json": "3c2da1e43389c9f3af4026a37bb777127412e68fbfc3ad065e823814be028e4e",
+    "archive/data/meta-foundation/runtime/middle-geometry-v1.json": "0ae000ddeac7761a01f3c059fc7df8fc8b27ccf4cfdafc5a02a9b2ff9584c3d7",
+    "archive/data/meta-foundation/runtime/middle1-v1.json": "9a8495d9bae5efdde3738fe54963a540c87552dd76af1d24bdb443690b90dff7",
+    "archive/data/meta-foundation/runtime/middle2-v1.json": "96c5344c43f4510dc0e381836ee9d660dc2abd9b7c1a344652ecdb863533abbb",
+    "archive/data/meta-foundation/runtime/probability-statistics-v1.json": "d7de9dde7c27061143e0dbc858067b3e150362106d1d9bbd26362ed49ece59e3",
+    "archive/data/meta-foundation/runtime/sets-propositions-v1.json": "76835dfb6bcefe0362ed364a01b16eebb115af4f39273253b7fe9236cc2591a7",
+    ".archive-meta-register/inbox/m2s2-authority-hold-e012-26fc-20261115.json": "167d57817314b108e1c1f4b5b19e601c54d43b082b0b39cd0767133a7949b03d",
+    ".archive-meta-register/inbox/m2s2-authority-hold-e048-26fc-20261115.json": "18bc7b2095a734adbeb475fa408a7ec46c07ae7bdfecd2eeec0758cbe52a8582",
+    ".archive-meta-register/inbox/m2s2-authority-hold-e054-26fc-20261115.json": "8af106a499b2efe6f1374df37581a3238e89d88522a52ea4c23010e8dcf17758",
+    ".archive-meta-register/inbox/m2s2-authority-hold-e061-26fc-20261115.json": "4bbb2f09abe87435c838d30ce104831ab31346d83ff49166d8f7333deb649560",
+    "archive/exams/original/middle/m2/2final/24_왕운중_2학기_기말_중2_수학.js": "95647be8314e50fe5d97970149ca4ff6ce523bc8f30461e3e29c0bf378044e46",
+    "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E012.json": "2a79b3db49ac32d5c487fb2173946ba61a31e279a9e8b70c738fd013be83ca8b",
+    "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-authority-hold-e012-26fc-20261115.json": "313deb7c868c2d9f2293c11d32fd164d250d8ee8618493828e748f22e4a4fd2b",
+    "archive/exams/original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js": "2ac6f218f9643d830892f80e6fb27d3f830f981a05b45018cb0aeb11d11bc48e",
+    "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E048.json": "2905252dad28dfa60c5a3249efb789821bc3b3b9d9cf5c7e83a03f279c55c9c2",
+    "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-authority-hold-e048-26fc-20261115.json": "e3fdaaabcd9ee75f40e25969695ac53bb144797530f24508eebad1ecd4453f46",
+    "archive/exams/original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js": "1a381196c3fce41ff54d5184409e8dbe2c8f41277761961b97930657c6652ffd",
+    "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E054.json": "a18f410090151371e985798c80c1f5e1fa08f5bbc4308a1dbebcc9e47c489773",
+    "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-authority-hold-e054-26fc-20261115.json": "05638912babff9d233b510ee1f36d34d8c71cfbe99eccbe386e549dfa8213e0a",
+    "archive/exams/original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js": "1a27a8466e7cee17ce98e9f4411d90c3aa73e4fbf49940c0dfbaf57f872a13c1",
+    "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E061.json": "f8ad3a8bedea29dee87b5209e4777ac50dfbae0a089f2482f496ec92772b0501",
+    "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-authority-hold-e061-26fc-20261115.json": "67ed0d5914d4b4db33fdfb2c9498980e308d86ef0aac093bfe303a7b4b2cc78f"
+  },
+  "readOnly": true,
+  "actualCorrection": "NOT_RUN",
+  "sourceEdits": 0
+}

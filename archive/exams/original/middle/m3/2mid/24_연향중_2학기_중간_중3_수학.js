@@ -35,7 +35,7 @@ window.questionBank = [
     "curriculum": "2015",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-    "primaryMethod": "직각B를 기준으로 AC가 빗변이고 BC가 C의 이웃변임을 확인하여 코사인 정의의 비를 바로 읽는다.",
+    "primaryMethod": "직각삼각형에서 각 C의 이웃변과 빗변을 확인하여 코사인 정의 적용",
     "decisiveStep": "직각B를 기준으로 AC가 빗변이고 BC가 C의 이웃변임을 확인하여 코사인 정의의 비를 바로 읽는다."
   ,
     "crossConceptKeys": [],
@@ -44,7 +44,9 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -78,7 +80,7 @@ window.questionBank = [
     "curriculum": "2015",
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
-    "primaryMethod": "각 선택지의30·45·60도 특수각 삼각비를 그대로 대입하여 곱·합·몫·차의 진술을 판정한다.",
+    "primaryMethod": "특수각 삼각비의 정확한 값을 선택지별로 대입해 참·거짓을 판정",
     "decisiveStep": "각 선택지의30·45·60도 특수각 삼각비를 그대로 대입하여 곱·합·몫·차의 진술을 판정한다."
   ,
     "crossConceptKeys": [],
@@ -87,7 +89,9 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -132,7 +136,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "반지름1인 사분원의 점 좌표를 cos·sin으로 읽고 여각 관계 및 sin/cos의 비로 tan 근삿값을 비교한다.",
-    "decisiveStep": "반지름1인 사분원의 점 좌표를 cos·sin으로 읽고 여각 관계 및 sin/cos의 비로 tan 근삿값을 비교한다."
+    "decisiveStep": "반지름1인 사분원의 점 좌표를 cos·sin으로 읽고 여각 관계 및 sin/cos의 비로 tan 근삿값을 비교한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -223,7 +230,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "사인의 비2:3을 직각삼각형의 맞은편 변과 빗변에 대응시키고 남은 변을 피타고라스로 구해 탄젠트 비로 바꾼다.",
-    "decisiveStep": "사인의 비2:3을 직각삼각형의 맞은편 변과 빗변에 대응시키고 남은 변을 피타고라스로 구해 탄젠트 비로 바꾼다."
+    "decisiveStep": "사인의 비2:3을 직각삼각형의 맞은편 변과 빗변에 대응시키고 남은 변을 피타고라스로 구해 탄젠트 비로 바꾼다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -313,7 +323,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "삼각형 내각합에 비1:2:3을 적용해30·60·90도를 정한 뒤 해당 특수각 삼각비를 식에 대입한다.",
-    "decisiveStep": "삼각형 내각합에 비1:2:3을 적용해30·60·90도를 정한 뒤 해당 특수각 삼각비를 식에 대입한다."
+    "decisiveStep": "삼각형 내각합에 비1:2:3을 적용해30·60·90도를 정한 뒤 해당 특수각 삼각비를 식에 대입한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -358,7 +371,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다.",
-    "decisiveStep": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다."
+    "decisiveStep": "내각합으로45도를 정하고 보조수선 높이를 sin30으로 구한 뒤45도 직각이등변삼각형에서 목표변을 복원한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -544,7 +560,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "주어진 각의 구간으로 sin−cos와 sin+cos의 부호를 정해 두 절댓값을 풀고 sin값을 얻은 뒤 예각의 cos와 tan으로 변환한다.",
-    "decisiveStep": "주어진 각의 구간으로 sin−cos와 sin+cos의 부호를 정해 두 절댓값을 풀고 sin값을 얻은 뒤 예각의 cos와 tan으로 변환한다."
+    "decisiveStep": "주어진 각의 구간으로 sin−cos와 sin+cos의 부호를 정해 두 절댓값을 풀고 sin값을 얻은 뒤 예각의 cos와 tan으로 변환한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -589,7 +608,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다.",
-    "decisiveStep": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다."
+    "decisiveStep": "좌표에서 세 변의 제곱을 구해 등변과 피타고라스의 역을 확인하여45도 직각이등변삼각형을 복원하고 최종 삼각비 곱을 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 14,
@@ -682,7 +704,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "반현6을 이용해 원호까지 높이MC3을 먼저 복원하고 중심거리x와 반지름x+3의 피타고라스 식에서 중심거리를 정한다.",
-    "decisiveStep": "반현6을 이용해 원호까지 높이MC3을 먼저 복원하고 중심거리x와 반지름x+3의 피타고라스 식에서 중심거리를 정한다."
+    "decisiveStep": "반현6을 이용해 원호까지 높이MC3을 먼저 복원하고 중심거리x와 반지름x+3의 피타고라스 식에서 중심거리를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 16,
@@ -772,7 +797,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "현의 중점으로 반현6과 중심거리r−4를 잡아 반지름의 피타고라스 식을 푼 뒤 원주를 계산한다.",
-    "decisiveStep": "현의 중점으로 반현6과 중심거리r−4를 잡아 반지름의 피타고라스 식을 푼 뒤 원주를 계산한다."
+    "decisiveStep": "현의 중점으로 반현6과 중심거리r−4를 잡아 반지름의 피타고라스 식을 푼 뒤 원주를 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 18,
@@ -952,7 +980,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B45",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "정육면체의 면대각선과 공간대각선을 복원하고 수선이 만든 직각삼각형의 닮음으로 목표각을 큰 삼각형의 각에 옮긴 뒤 세 삼각비를 조합한다.",
-    "decisiveStep": "정육면체의 면대각선과 공간대각선을 복원하고 수선이 만든 직각삼각형의 닮음으로 목표각을 큰 삼각형의 각에 옮긴 뒤 세 삼각비를 조합한다."
+    "decisiveStep": "정육면체의 면대각선과 공간대각선을 복원하고 수선이 만든 직각삼각형의 닮음으로 목표각을 큰 삼각형의 각에 옮긴 뒤 세 삼각비를 조합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,

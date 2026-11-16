@@ -798,7 +798,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "공통 예각과 직각으로 닮음을 확인해 대응 길이를 옮기고 두 각 기준의 삼각비를 구별해 거짓 진술을 찾는다.",
-    "decisiveStep": "공통 예각과 직각으로 닮음을 확인해 대응 길이를 옮기고 두 각 기준의 삼각비를 구별해 거짓 진술을 찾는다."
+    "decisiveStep": "공통 예각과 직각으로 닮음을 확인해 대응 길이를 옮기고 두 각 기준의 삼각비를 구별해 거짓 진술을 찾는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 19,
@@ -888,7 +891,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "특수각의 사인·코사인·탄젠트 값을 주어진 식에 대입한다.",
-    "decisiveStep": "특수각의 사인·코사인·탄젠트 값을 주어진 식에 대입한다."
+    "decisiveStep": "특수각의 사인·코사인·탄젠트 값을 주어진 식에 대입한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 21,

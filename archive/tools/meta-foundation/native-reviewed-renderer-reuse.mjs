@@ -7,6 +7,9 @@ import { REASSESSED_STUDENT_FIELDS, validateReviewedSourceReassessment } from '.
 import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
 import { reviewedRendererBindingPath, buildReviewedRendererBinding } from './reviewed-current-renderer-continuity.mjs';
 import { REVIEWED_RPM_FIELDS } from './reviewed-rpm-provenance.mjs';
+import { validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
+import { readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
+import { readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
 
 const fail = message => { throw Error(`native reviewed renderer reuse: ${message}`); };
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -29,11 +32,13 @@ function safePath(root, relative) {
   return full;
 }
 
-function claimedRows(receipt, root, identity, ordinal, cache) {
+function claimedRows(receipt, root, identity, ordinal, cache, historicalContext, solutionHistory) {
   const claims = [];
   for (const ref of receipt.approval.evidenceRefs || []) {
     if (!SHA256.test(ref.sha256 || '')) fail('SHA-bound approval evidence required');
-    const bytes = fs.readFileSync(safePath(root, ref.path));
+    const bytes = solutionHistory ? readIssuedSolutionRpmHistoricalEvidence(solutionHistory, receipt, ref)
+      : historicalContext ? readIssuedRpmHistoricalEvidence(historicalContext, receipt, ref)
+        : fs.readFileSync(safePath(root, ref.path));
     if (sha(bytes) !== ref.sha256) fail('current evidence bytes changed');
     const key = `renderer-reuse-claim:${ref.sha256}`;
     if (!cache.has(key)) {
@@ -71,9 +76,12 @@ function verifyRendererBinding(receipt, root, bindingPath) {
 // null preserves the old receipt contracts. A claimed compound review must be
 // revalidated even after the pending cursor catches up to the current question.
 export function nativeReviewedRendererRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (nativeSource.issuedRpmHistoryContext && nativeSource.issuedSolutionRpmHistoryContext)
+    fail('multiple historical contexts are not supported');
   const root = fs.realpathSync(nativeSource.root);
   if (!caches.has(root)) caches.set(root, new Map());
-  const cache = caches.get(root), claims = claimedRows(receipt, root, identity, ordinal, cache);
+  const cache = caches.get(root), claims = claimedRows(receipt, root, identity, ordinal, cache,
+    nativeSource.issuedRpmHistoryContext, nativeSource.issuedSolutionRpmHistoryContext);
   const bindingPath = reviewedRendererBindingPath(receipt.requestId);
   const registeredBinding = current.approvalEvidence?.includes(bindingPath);
   const selected = (receipt.fingerprintRepairs || []).filter(r => r.questionUid === identity.questionUid);
@@ -90,7 +98,8 @@ export function nativeReviewedRendererRebind(receipt, nativeSource, previous, qu
       receipt.approval.sourceRebind || repair.rebind !== undefined ||
       receipt.expectedQuestionCount !== nativeSource.bank.length ||
       repair.sourceOrdinal !== ordinal || proof.questionUid !== identity.questionUid || proof.sourceOrdinal !== ordinal ||
-      proof.schemaVersion !== 'archive-reviewed-source-reassessment-v1' || proof.nativeSchemaVersion !== 'm3-s2-complete-semantic-review-v1' ||
+      proof.schemaVersion !== 'archive-reviewed-source-reassessment-v1' ||
+      !['m3-s2-complete-semantic-review-v1', 'm2-s2-meta-review-v1'].includes(proof.nativeSchemaVersion) ||
       proof.scope !== 'METADATA_SOURCE_BINDING_ONLY' || proof.newMathematicalQa !== false || proof.proposalFinalization !== undefined ||
       renderer?.schemaVersion !== 'archive-reviewed-current-renderer-continuity-v1' ||
       renderer.scope !== 'NATIVE_SEMANTIC_REUSE_WITH_INDEPENDENT_CURRENT_RENDERER' ||
@@ -109,14 +118,29 @@ export function nativeReviewedRendererRebind(receipt, nativeSource, previous, qu
   // registered current values; no stale fingerprint is treated as a new review.
   const canonical = registry ? {pt:registry.problemTypes, tpl:registry.templates} : undefined;
   const replayAfter = { ...repair.after };
+  const registeredRationale = proof.rationaleBindings?.primaryMethod?.origin === 'REGISTERED_NATIVE_DECISIVE_STEP_UNCHANGED';
   for (const [bindings, allowed] of [[proof.rationaleBindings, ['primaryMethod', 'decisiveStep']],
     [proof.rpmBindings, REVIEWED_RPM_FIELDS]]) {
     for (const field of Object.keys(bindings || {})) {
       if (!allowed.includes(field) || !Object.hasOwn(current, field)) fail('unsupported native value binding');
-      replayAfter[field] = current[field];
+      // This issued provenance comes from a fingerprint-only request. Reinjecting
+      // unchanged values would change that request's meaning and its exact proof.
+      // The official reassessment below still verifies every source-carried value.
+      if (!registeredRationale) replayAfter[field] = current[field];
     }
   }
-  const reproduced = validateReviewedSourceReassessment({root,
+  // A typed current-target application keeps the exact original request and its
+  // add-only replay-before context in the writer-issued source-review sidecar.
+  // Its validator reproduces and compares the complete issued proof, including
+  // the renderer seal. Do not replace that request with the legacy projection.
+  // Revalidate here as well so standalone adapter calls retain the same guards.
+  let reproduced;
+  if (proof.currentTargetApplication !== undefined) {
+    if (proof.currentTargetApplication?.schemaVersion !== 'archive-m3s2-current-target-application-v1' ||
+        validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true)
+      fail('current-target renderer requires its exact issued source-review binding');
+    reproduced = proof;
+  } else reproduced = validateReviewedSourceReassessment({root,
     request:{scope:receipt.scope, approval:receipt.approval, sourceArchiveFile:receipt.sourceArchiveFile,
       expectedQuestionCount:receipt.expectedQuestionCount},
     patch:{questionUid:identity.questionUid, sourceOrdinal:ordinal, after:replayAfter,
@@ -134,6 +158,14 @@ export function nativeReviewedRendererRebind(receipt, nativeSource, previous, qu
         correctionInput.scope !== 'CORRECTION_INPUT_ONLY' || !SHA256.test(correctionInput.studentPayloadSha256 || ''))
       fail('unsupported independently inspected correction input');
     allowedPrevious.push(correctionInput.studentPayloadSha256);
+  }
+  const priorRenderer = reproduced.rendererContinuity.prefigureRendererWitness;
+  if (priorRenderer !== undefined) {
+    if (priorRenderer.schemaVersion !== 'archive-independent-prior-solution-renderer-review-v1' ||
+        priorRenderer.scope !== 'EXACT_PREEXISTING_SOLUTION_RENDERER_ADDITION' ||
+        !equal(priorRenderer.prefigureSourceRef, renderer.prefigureSourceRef) ||
+        !SHA256.test(priorRenderer.studentPayloadSha256 || '')) fail('unsupported independently inspected prior renderer');
+    allowedPrevious.push(priorRenderer.studentPayloadSha256);
   }
   if (!allowedPrevious.includes(priorPayloadSha))
     fail('previous student payload is not an immutable native, current or independently inspected correction input');

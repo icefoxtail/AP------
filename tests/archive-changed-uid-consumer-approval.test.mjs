@@ -9,7 +9,8 @@ import { fileURLToPath } from "node:url";
 import { verifyChangedUidConsumerApproval, renderSummary } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
 import { loadResolvedConsumerCatalog, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import canonical from "../archive/archive2-canonical.js";
-import { SOURCE_SUBSET_SCHEMA } from "../archive/tools/meta-foundation/source-subset-preservation.mjs";
+import vm from "node:vm";
+import { registerDifficulty5 } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const checker = path.join(repo, "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs");
@@ -205,29 +206,6 @@ test("partial audit preservation is typed as existing approval preservation and 
   assert.equal(out.failures[0].reason, "NATIVE_PRESERVATION_MISMATCH");
 });
 
-test("strict subset Consumer dispatch requires real native replay and never skips its unchanged values", t => {
-  const f = historicalConsumerFixture(t), item = f.request.items[0];
-  const request = { ...f.request, requestId: "missing-strict-subset-proof", scope: "PARTIAL_UIDS", registryChanges: [],
-    approval: { ...f.request.approval, type: "FINAL_QA", sourceRebind: {
-      schemaVersion: SOURCE_SUBSET_SCHEMA, priorReceiptRef: { path: "missing.json", sha256: "a".repeat(64) },
-      subsetEvidenceRef: { path: "missing-subset.json", sha256: "b".repeat(64) } } },
-    items: [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, before: {}, after: {} }] };
-  const out = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "strict-subset.json", request)] });
-  assert.equal(out.status, "FAIL");
-  assert.equal(out.exams[0].kind, "native-approval-preservation");
-  assert.equal(out.exams[0].expectedQuestionCount, 24);
-  assert.equal(out.exams[0].newMetadataApprovals, 0);assert.equal(out.exams[0].preservedMetadataApprovals, 0);
-  assert.deepEqual(out.counts, { changed: 1, checked: 1, passed: 0, skippedUnchanged: 0 });
-  assert.equal(out.failures[0].reason, "NATIVE_PRESERVATION_MISMATCH");
-  for (const mutate of [r => { r.approval.sourceRebind.schemaVersion = "unknown-subset"; },
-    r => { delete r.scope; r.expectedQuestionCount = 1; }, r => { r.approval.type = "REVIEW2"; },
-    r => { r.items[0].after.crossConceptKeys = ["UNREVIEWED"]; }, r => { r.items[0].sourceReview = {}; }]) {
-    const bad = structuredClone(request);mutate(bad);
-    const result = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "bad-strict-subset.json", bad)] });
-    assert.equal(result.status, "FAIL");assert.equal(result.failures[0].reason, "INVALID_REQUEST");assert.equal(result.counts.passed, 0);
-  }
-});
-
 test("preserved native summary separates old approvals from new approvals and keeps its source denominator", () => {
   const result = { status: "PASS", mainSha: "a".repeat(40), counts: { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 },
     exams: [{ kind: "native-approval-preservation", exam: "fixture", changed: 1, checked: 1, passed: 1, skippedUnchanged: 0,
@@ -267,6 +245,27 @@ test("basic preservation summary reports existing approvals and zero new or adva
     failures: [], unobservedFields: [], assignmentPending: [] });
   assert.match(out, /Preserved basic approvals: 1; new approvals: 0; advanced approvals: 0; source questions: 25/);
   assert.doesNotMatch(out, /1\/1 approved/);
+});
+
+test("new BASIC parent Consumer requires the official review and reports a new basic parent separately", t => {
+  const f = historicalConsumerFixture(t), item = f.request.items[0];
+  const request = { schemaVersion: "archive-basic-scope-rebind-request-v1", requestId: "new-basic-no-receipt", examUid: "historical-fixture",
+    sourceArchiveFile: f.request.sourceArchiveFile, expectedSourceBlobSha1: f.request.expectedSourceBlobSha1, expectedQuestionCount: 24,
+    approval: { type: "BASIC_SCOPE_REBIND", sourceReview: { schemaVersion: "archive-reviewed-native-basic-parent-v1" } },
+    items: [{ questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal,
+      after: { sourceFingerprint: item.after.sourceFingerprint, contentFingerprint: item.after.contentFingerprint },
+      basicParent: { grade: "중2", curriculumKey: "2022", courseKey: "M2-1", L1: "fixture", L2: "fixture" } }] };
+  const out = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "new-basic.json", request)] });
+  assert.equal(out.status, "FAIL"); assert.equal(out.exams[0].kind, "basic-parent-registration");
+  assert.equal(out.exams[0].newBasicParentApprovals, 0); assert.equal(out.exams[0].preservedMetadataApprovals, 0);
+  assert.equal(out.exams[0].newMetadataApprovals, 0); assert.equal(out.exams[0].approvalCreated, false);
+  assert.equal(out.counts.passed, 0); assert.equal(out.counts.skippedUnchanged, 0); assert.equal(out.failures[0].reason, "BASIC_PRESERVATION_MISMATCH");
+  const summary = renderSummary({ status: "PASS", mainSha: "a".repeat(40), counts: { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 },
+    exams: [{ kind: "basic-parent-registration", exam: "basic", changed: 1, checked: 1, passed: 1, skippedUnchanged: 0,
+      newBasicParentApprovals: 1, preservedMetadataApprovals: 0, expectedQuestionCount: 24, newMetadataApprovals: 1, advancedApprovals: 0, approvalCreated: true }],
+    failures: [], unobservedFields: [], assignmentPending: [] });
+  assert.match(summary, /New basic parent approvals: 1; preserved prior parents: 0; advanced approvals: 0; source questions: 24/);
+  assert.doesNotMatch(summary, /Preserved basic approvals: 1/);
 });
 
 test("identity-only Consumer verification reports one exact binding and zero new approvals", t => {
@@ -445,4 +444,134 @@ test("a REVIEW2 type-hold item is checked only for its source binding; the same 
   assert.ok(reasons.includes("NOT_APPROVED_IN_CONSUMER"), "the plain request is still gated");
   assert.equal(out.failures.length, reasons.filter(r => ["NOT_APPROVED_IN_CONSUMER", "VALUE_MISMATCH"].includes(r)).length);
   assert.ok(out.exams.find(e => e.file.endsWith("hold.json")).passed >= 1, "the type-hold item passes on its source binding");
+});
+
+// Freeze the two real refused D5 inputs. The source, request and typed proof are
+// read from their immutable public Git commit; the fixture stores only the exact
+// pre-registration metadata/identity rows. No semantic review is synthesized.
+function difficultyRefusalFixture(t, caseIndex) {
+  const spec = JSON.parse(fs.readFileSync(path.join(repo, "tests/fixtures/archive-difficulty5-consumer-refusals.json"), "utf8"));
+  const entry = spec.cases[caseIndex], f = historicalConsumerFixture(t);
+  const hash = b => crypto.createHash("sha256").update(b).digest("hex");
+  const git = relative => execFileSync("git", ["show", `${spec.origin.commit}:${relative}`], { cwd: repo, maxBuffer: 8 * 1024 * 1024 });
+  const put = (relative, bytes) => { const p = path.join(f.root, relative); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, bytes); return p; };
+  const source = git(entry.sourcePath); assert.equal(hash(source), entry.sourceRawSha256);
+  assert.equal(crypto.createHash("sha1").update(`blob ${source.length}\0`).update(source).digest("hex"), entry.sourceGitBlobSha1);
+  put(entry.sourcePath, source);
+  const requestBytes = git(entry.requestPath); assert.equal(hash(requestBytes), entry.requestSha256);
+  const request = JSON.parse(requestBytes), file = put("difficulty.json", requestBytes);
+  for (const ref of entry.evidenceRefs) { const bytes = git(ref.path); assert.equal(hash(bytes), ref.sha256); put(ref.path, bytes); }
+  put("archive/data/question_metadata.json", JSON.stringify({ records: [entry.metadataBefore] }));
+  put("archive/data/question_identity_map.json", JSON.stringify({ records: [entry.identityBefore] }));
+  const applied = registerDifficulty5({ root: f.root, request, write: true });
+  assert.equal(applied.status, "PASS"); assert.equal(applied.summary.APPLY, 1);
+  const meta = JSON.parse(fs.readFileSync(path.join(f.root, "archive/data/question_metadata.json"))).records[0];
+  const context = { window: {} }; vm.runInNewContext(source.toString(), context);
+  const q = context.window.questionBank[entry.sourceOrdinal - 1];
+  const fp = hash(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null,
+    answer: q.answer ?? null, solution: q.solution ?? null, image: q.image ?? null }));
+  const contentFp = hash(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, image: q.image ?? null }));
+  const catalogPath = path.join(f.root, "archive/data/archive2-catalog.json"), catalog = JSON.parse(fs.readFileSync(catalogPath));
+  const fields = ["difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility", "tagConfidence", "tagStatus"];
+  const row = { ...catalog.records[0], sourceFile: request.gemini.sourceArchiveFile, sourceOrdinal: entry.sourceOrdinal,
+    sourceQuestionNo: String(q.id), questionUid: entry.questionUid, sourceGrade: caseIndex ? "중2" : "중3", effectiveBrowseGrade: caseIndex ? "중2" : "중3",
+    sourceFingerprint: fp, assignmentFingerprint: contentFp, approvedSourceFingerprint: meta.sourceFingerprint,
+    metadataRevision: meta.metadataRevision ?? "", sourceStatus: "HOLD", sourceReviewStatus: meta.metadataStatus,
+    semanticDisposition: "HOLD", sourceIssueHold: false, automatic: false, defaultSelectable: true,
+    metadataAssignmentEvidence: { questionUid: entry.questionUid, sourceFile: request.gemini.sourceArchiveFile,
+      sourceOrdinal: entry.sourceOrdinal, sourceFingerprint: meta.sourceFingerprint, assignmentFingerprint: meta.contentFingerprint,
+      metadataStatus: meta.metadataStatus, fieldStatus: meta.fieldStatus, evidenceRefs: meta.approvalEvidence || [],
+      evidenceDigest: hash(JSON.stringify(meta)), metadataRevision: meta.metadataRevision ?? "" },
+    metadataConflicts: fields.filter(field => q[field] !== undefined && q[field] !== null && meta[field] !== undefined && JSON.stringify(q[field]) !== JSON.stringify(meta[field])),
+    assignmentEvidence: null, canonicalAssignmentReasons: ["assignment_missing"], metaProjection: null,
+    metaProjectionStatus: "DISPLAY_PROJECTION_UNAVAILABLE", metaProjectionFailureReason: "DISPLAY_PROJECTION_CORE_APPROVAL_MISSING",
+    ...Object.fromEntries(fields.map(field => [field, meta[field] ?? null])) };
+  for (const field of ["curriculumKey", "courseKey", "L1", "L2", "L3", "L4", "problemTypeKey", "templateKey", "standardUnitKey", "subUnitKey"])
+    row[field] = "";
+  catalog.records = [row]; catalog.sourceHashes = [[request.gemini.sourceArchiveFile, hash(source)]];
+  catalog.exams = [{ ...catalog.exams[0], file: request.gemini.sourceArchiveFile, qCount: context.window.questionBank.length }];
+  const refresh = () => {
+    fs.writeFileSync(catalogPath, JSON.stringify(catalog));
+    const manifestPath = path.join(f.root, "archive/data/archive2-canonical-input-manifest.json");
+    const manifest = JSON.parse(fs.readFileSync(manifestPath));
+    for (const item of manifest.files) item.sha256 = hash(fs.readFileSync(path.resolve(f.root, "archive", item.path)));
+    manifest.projectionVersion = "archive2-canonical-v1:" + hash(canonical.projectionManifestPayload(manifest.files, canonical.RESOLVER_VERSION));
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+  };
+  refresh();
+  return { ...f, file, request, entry, meta, row, catalog, refresh, put,
+    check: () => verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [file] }) };
+}
+
+for (const caseIndex of [0, 1]) test(`D5-only exact refused request ${caseIndex}: official tuple and page/query pass without semantic promotion`, t => {
+  const f = difficultyRefusalFixture(t, caseIndex);
+  const before = fs.readFileSync(path.join(f.root, "archive/data/question_metadata.json"));
+  const out = f.check(); assert.equal(out.status, "PASS", JSON.stringify(out.failures));
+  assert.deepEqual(out.counts, { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 });
+  assert.equal(out.exams[0].officialDifficultyTuplesVerified, 1); assert.equal(out.exams[0].semanticApproval, false);
+  assert.equal(out.exams[0].newMetadataApprovals, 0); assert.equal(out.exams[0].approvalCreated, false);
+  assert.equal(out.metadataConflictAdvisories.length, caseIndex ? 1 : 2);
+  assert.ok(out.metadataConflictAdvisories.every(row => row.semanticApproval === false));
+  assert.equal(out.metadataConflictAdvisories[0].reason, caseIndex ? "OFFICIAL_D5_LEGACY_COMPATIBILITY_NORMALIZATION" : "SEMANTIC_REVIEW_PENDING_UNCHANGED");
+  assert.deepEqual(fs.readFileSync(path.join(f.root, "archive/data/question_metadata.json")), before);
+  assert.equal(f.row.automatic, false); assert.equal(f.row.semanticDisposition, "HOLD");
+  const resolved = loadResolvedConsumerCatalog(f.root).records[0];
+  assert.ok(resolved.canonicalAssignmentReasons.length, "no advanced assignment approval was added");
+  assert.match(renderSummary(out), /four-field difficulty projection/); assert.match(renderSummary(out), /no semantic approval/);
+  assert.doesNotMatch(renderSummary(out), /changed 1\/1 approved/);
+});
+
+for (const [field, badValue] of Object.entries({ difficultyBucket: 1, difficultyConfidence: "low", difficultyBoundaryFlag: "B45", legacyLevelCompatibility: "STRONG_CONFLICT" })) {
+  test(`D5-only official projection rejects mutated canonical metadata ${field}`, t => {
+    const f = difficultyRefusalFixture(t, 0); f.meta[field] = badValue;
+    f.put("archive/data/question_metadata.json", JSON.stringify({ records: [f.meta] }));
+    const out = f.check(); assert.equal(out.status, "FAIL"); assert.equal(out.counts.passed, 0);
+    assert.match(out.failures[0].detail, /official difficulty projection failed/);
+    assert.deepEqual(out.metadataConflictAdvisories, []);
+  });
+  test(`D5-only official tuple rejects stale exposed Consumer ${field}`, t => {
+    const f = difficultyRefusalFixture(t, 0); f.row[field] = badValue; f.refresh();
+    const out = f.check(); assert.equal(out.status, "FAIL"); assert.equal(out.counts.passed, 0);
+    assert.match(out.failures[0].detail, /official difficulty tuple != canonical consumer/);
+  });
+}
+
+test("D5-only typed evidence and raw compatibility drift still fail before advisory classification", t => {
+  for (const change of ["evidence", "compatibility", "source", "uid"]) {
+    const f = difficultyRefusalFixture(t, 0);
+    if (change === "evidence") f.put(f.request.reviewedCorrection.evidencePath, "{}");
+    if (change === "compatibility") { f.request.gemini.items[0].after.legacyLevelCompatibility = "BORDERLINE_ACCEPTABLE"; f.put("difficulty.json", JSON.stringify(f.request)); }
+    if (change === "source") fs.appendFileSync(path.join(f.root, f.entry.sourcePath), "\n// drift\n");
+    if (change === "uid") { f.request.gemini.items[0].questionUid = "qid_v1_" + "a".repeat(64); f.put("difficulty.json", JSON.stringify(f.request)); }
+    const out = f.check(); assert.equal(out.status, "FAIL", change); assert.equal(out.counts.passed, 0, change);
+    assert.deepEqual(out.metadataConflictAdvisories, [], change);
+  }
+});
+
+test("D5-only advisories do not waive unknown, PT/TPL, identity or source conflicts", t => {
+  for (const field of ["problemTypeKey", "templateKey", "identity", "sourceFingerprint", "unexpectedField"]) {
+    const f = difficultyRefusalFixture(t, 0); f.row.metadataConflicts.push(field); f.refresh();
+    const out = f.check(); assert.equal(out.status, "FAIL", field); assert.equal(out.counts.passed, 0);
+    assert.equal(out.failures[0].reason, "METADATA_CONFLICT"); assert.equal(out.failures[0].detail, field);
+  }
+});
+
+test("D5-only tag advisory requires the exact pending semantic context and cannot carry semantic edits", t => {
+  const f = difficultyRefusalFixture(t, 0);
+  f.meta.metadataStatus = "approved_semantic_review";
+  f.put("archive/data/question_metadata.json", JSON.stringify({ records: [f.meta] }));
+  const out = f.check(); assert.equal(out.status, "FAIL"); assert.equal(out.failures[0].reason, "METADATA_CONFLICT");
+  const other = difficultyRefusalFixture(t, 0); other.request.gemini.items[0].after.problemTypeKey = "PT_UNREVIEWED";
+  other.put("difficulty.json", JSON.stringify(other.request));
+  const bad = other.check(); assert.equal(bad.status, "FAIL"); assert.equal(bad.failures[0].reason, "INVALID_REQUEST");
+});
+
+test("D5-only compatibility normalization never applies to typed corrections or other registration kinds", t => {
+  const f = difficultyRefusalFixture(t, 0); f.row.metadataConflicts = ["legacyLevelCompatibility"]; f.refresh();
+  const typed = f.check(); assert.equal(typed.status, "FAIL"); assert.equal(typed.failures[0].reason, "METADATA_CONFLICT");
+  const p = difficultyRefusalFixture(t, 0);
+  p.put("difficulty.json", JSON.stringify({ schemaVersion: "archive-finalqa-pinpoint-register-request-v1", examUid: "same-d5-value-non-d5-kind",
+    sourceArchiveFile: p.request.gemini.sourceArchiveFile, expectedSourceBlobSha1: p.request.gemini.latestBlobSha,
+    items: [{ questionUid: p.entry.questionUid, sourceOrdinal: p.entry.sourceOrdinal, before: { difficultyBucket: 3 }, after: { difficultyBucket: 4 } }] }));
+  const other = p.check(); assert.equal(other.status, "FAIL"); assert.equal(other.failures[0].reason, "METADATA_CONFLICT");
 });

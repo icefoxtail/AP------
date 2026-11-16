@@ -159,7 +159,7 @@ window.examData = {
     {
       "id": 12,
       "score": 4.0,
-      "question": "<p>$\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{AE}} = \\overline{\\mathrm{DE}} = \\overline{\\mathrm{DB}}$이고 $\\angle \\mathrm{B} = 25^\\circ$일 때, $\\angle x$의 크기는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q12.png\"></p>",
+      "question": "<p>$\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{AE}} = \\overline{\\mathrm{DE}} = \\overline{\\mathrm{DB}}$이고 $\\angle \\mathrm{B} = 25^\\circ$일 때, $\\angle x$의 크기는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q12-problem-visual-v2.svg\" alt=\"B, D, A는 한 직선 위에 있고 B, E, C도 한 직선 위에 있다. AC, AE, DE, DB는 모두 길이가 같고 B의 각은 25도이다. A에서 AE와 AC 사이 각은 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$25^\\circ$",
         "$30^\\circ$",
@@ -173,7 +173,7 @@ window.examData = {
     {
       "id": 13,
       "score": 4.0,
-      "question": "<p>다음 그림과 같이 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{B}$의 이등분선과 $\\angle \\mathrm{C}$의 외각의 이등분선의 교점을 $\\mathrm{D}$라 하자. $\\angle \\mathrm{A} = 36^\\circ$일 때, $\\angle x$의 크기는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q13.png\"></p>",
+      "question": "<p>다음 그림과 같이 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{B}$의 이등분선과 $\\angle \\mathrm{C}$의 외각의 이등분선의 교점을 $\\mathrm{D}$라 하자. $\\angle \\mathrm{A} = 36^\\circ$일 때, $\\angle x$의 크기는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q13-problem-visual-v2.svg\" alt=\"A각은 36도이다. AB와 AC는 같은 길이이다. B의 이등분선과 C 바깥 각의 이등분선이 D에서 만난다. BDC에서 x를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$14^\\circ$",
         "$15^\\circ$",
@@ -187,7 +187,7 @@ window.examData = {
     {
       "id": 14,
       "score": 4.0,
-      "question": "<p>다음 중에서 오른쪽 두 직각삼각형 $\\mathrm{ABC}$와 $\\mathrm{DEF}$가 서로 합동이 되는 조건이 아닌 것은?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q14.png\"></p>",
+      "question": "<p>다음 중에서 오른쪽 두 직각삼각형 $\\mathrm{ABC}$와 $\\mathrm{DEF}$가 서로 합동이 되는 조건이 아닌 것은?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q14-problem-visual-v2.svg\" alt=\"왼쪽 삼각형 ABC는 C에서 직각이고 오른쪽 삼각형 DEF는 F에서 직각이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$\\angle \\mathrm{A} = \\angle \\mathrm{D}, \\; \\angle \\mathrm{B} = \\angle \\mathrm{E}$",
         "$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{DE}}, \\; \\angle \\mathrm{B} = \\angle \\mathrm{E}$",
@@ -201,7 +201,7 @@ window.examData = {
     {
       "id": 15,
       "score": 4.0,
-      "question": "<p>다음 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{BAD} = 25^\\circ$일 때 $x$의 값은?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q15.png\"></p>",
+      "question": "<p>다음 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{BAD} = 25^\\circ$일 때 $x$의 값은?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"A의 BAD각은 25도이다. B는 직각이고 E에서 DE가 AC에 수직이다. AB와 AE에 같은 눈금이 있으며 C의 각에는 x가 적혀 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$35^\\circ$",
         "$36^\\circ$",
@@ -215,7 +215,7 @@ window.examData = {
     {
       "id": 16,
       "score": 4.0,
-      "question": "<p>오른쪽 그림에서 점 $\\mathrm{O}$가 $\\triangle \\mathrm{ABC}$의 외심일 때, 다음 중에서 옳은 것을 모두 고르면? (정답 2개)</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q16.png\"></p>",
+      "question": "<p>오른쪽 그림에서 점 $\\mathrm{O}$가 $\\triangle \\mathrm{ABC}$의 외심일 때, 다음 중에서 옳은 것을 모두 고르면? (정답 2개)</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"삼각형 ABC의 외심은 O이다. O를 각 꼭짓점과 연결했다. AB, AC, BC에 내린 수선은 각각 M, L, N에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$",
         "$\\angle \\mathrm{OCL} = \\angle \\mathrm{OCN}$",
@@ -229,7 +229,7 @@ window.examData = {
     {
       "id": 17,
       "score": 4.0,
-      "question": "<p>점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이다. $\\angle \\mathrm{BAO} = 24^\\circ$, $\\angle \\mathrm{CAO} = 26^\\circ$일 때, $\\angle \\mathrm{BCO}$의 크기는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q17.png\"></p>",
+      "question": "<p>점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이다. $\\angle \\mathrm{BAO} = 24^\\circ$, $\\angle \\mathrm{CAO} = 26^\\circ$일 때, $\\angle \\mathrm{BCO}$의 크기는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"외심 O에 A와 C를 이었다. A에서 BAO각은 24도, CAO각은 26도이다. C에서는 BC와 CO가 이루는 각을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$34^\\circ$",
         "$36^\\circ$",
@@ -243,7 +243,7 @@ window.examData = {
     {
       "id": 18,
       "score": 4.0,
-      "question": "<p>점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle \\mathrm{ABC}$의 외심, 내심이다. $\\angle \\mathrm{A} = 80^\\circ$일 때, $\\angle \\mathrm{BOC} - \\angle \\mathrm{BIC}$는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q18.png\"></p>",
+      "question": "<p>점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle \\mathrm{ABC}$의 외심, 내심이다. $\\angle \\mathrm{A} = 80^\\circ$일 때, $\\angle \\mathrm{BOC} - \\angle \\mathrm{BIC}$는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q18-problem-visual-v2.svg\" alt=\"삼각형의 꼭짓각은 80도이다. 밑변 끝 B와 C에서 외심 O로 잇는 선과 내심 I로 잇는 선을 각각 그렸다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$28^\\circ$",
         "$30^\\circ$",
@@ -257,7 +257,7 @@ window.examData = {
     {
       "id": 19,
       "score": 4.0,
-      "question": "<p>오른쪽 그림에서 원 $\\mathrm{I}$는 $\\triangle \\mathrm{ABC}$의 내접원이다. $\\overline{\\mathrm{AD}} = 2\\text{ cm}$, $\\overline{\\mathrm{BD}} = 4\\text{ cm}$, $\\overline{\\mathrm{BC}} = 10\\text{ cm}$일 때, $\\overline{\\mathrm{AC}}$의 길이는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q19.png\"></p>",
+      "question": "<p>오른쪽 그림에서 원 $\\mathrm{I}$는 $\\triangle \\mathrm{ABC}$의 내접원이다. $\\overline{\\mathrm{AD}} = 2\\text{ cm}$, $\\overline{\\mathrm{BD}} = 4\\text{ cm}$, $\\overline{\\mathrm{BC}} = 10\\text{ cm}$일 때, $\\overline{\\mathrm{AC}}$의 길이는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q19-problem-visual-v2.svg\" alt=\"삼각형 ABC의 내접원 중심은 I이다. 접점은 D, E, F이다. D에서 A까지 2 cm, D에서 B까지 4 cm이고 BC 전체는 10 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$8\\text{ cm}$",
         "$8.5\\text{ cm}$",
@@ -293,7 +293,7 @@ window.examData = {
     {
       "id": 22,
       "score": 6.0,
-      "question": "<p>【서술형 2】 아래의 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}} = 5a^3b^2$, $\\overline{\\mathrm{BC}} = 3ab^3$일 때, 선분 $\\mathrm{AB}$와 선분 $\\mathrm{BC}$를 각각 회전축으로 하여 1회전 시켜 생기는 두 입체도형의 부피를 각각 $V_1$, $V_2$라 할 때 물음에 답하시오. [6점]</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/s02.png\"></p><p>(1) 선분 $\\mathrm{AB}$를 회전축으로 하는 입체도형의 부피 $V_1$를 구하시오. [2점]<br><br>(2) 선분 $\\mathrm{BC}$를 회전축으로 하는 입체도형의 부피 $V_2$를 구하시오. [2점]<br><br>(3) $\\frac{V_2}{V_1}$의 값을 구하시오. [2점]</p>",
+      "question": "<p>【서술형 2】 아래의 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}} = 5a^3b^2$, $\\overline{\\mathrm{BC}} = 3ab^3$일 때, 선분 $\\mathrm{AB}$와 선분 $\\mathrm{BC}$를 각각 회전축으로 하여 1회전 시켜 생기는 두 입체도형의 부피를 각각 $V_1$, $V_2$라 할 때 물음에 답하시오. [6점]</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q22-problem-visual-v2.svg\" alt=\"직사각형에서 A는 왼쪽 위, B는 왼쪽 아래, C는 오른쪽 아래, D는 오른쪽 위에 있다. 네 모서리에 직각 표시가 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) 선분 $\\mathrm{AB}$를 회전축으로 하는 입체도형의 부피 $V_1$를 구하시오. [2점]<br><br>(2) 선분 $\\mathrm{BC}$를 회전축으로 하는 입체도형의 부피 $V_2$를 구하시오. [2점]<br><br>(3) $\\frac{V_2}{V_1}$의 값을 구하시오. [2점]</p>",
       "choices": [],
       "answer": "",
       "solution": ""
@@ -301,7 +301,7 @@ window.examData = {
     {
       "id": 23,
       "score": 2.0,
-      "question": "<p>【서술형 3】 다음 직각삼각형 중에서 서로 합동인 것을 찾아 기호로 나타내고, 직각삼각형의 합동 조건을 쓰시오. [2점]</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/s03.png\"></p>",
+      "question": "<p>【서술형 3】 다음 직각삼각형 중에서 서로 합동인 것을 찾아 기호로 나타내고, 직각삼각형의 합동 조건을 쓰시오. [2점]</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q23-problem-visual-v2.svg\" alt=\"ABC는 A가 직각이며 AB는 4, AC는 7이다. DEF는 E가 직각이며 D의 각은 50도이고 DF는 7이다. GHI는 I가 직각이며 IH는 4, GH는 7이다. JKL은 J가 직각이며 K의 각은 40도이고 KL은 7이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "",
       "solution": ""
@@ -309,7 +309,7 @@ window.examData = {
     {
       "id": 24,
       "score": 6.0,
-      "question": "<p>【서술형 4】 점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이고 $\\angle \\mathrm{A} : \\angle \\mathrm{B} : \\angle \\mathrm{C} = 4 : 2 : 3$일 때, 물음에 답하시오. [6점]</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/s04.png\"></p><p>(1) $\\angle \\mathrm{A}, \\angle \\mathrm{B}, \\angle \\mathrm{C}$를 각각 구하시오. [3점]<br><br>(2) $\\angle \\mathrm{OBA} : \\angle \\mathrm{OBC}$를 구하시오. [3점]</p>",
+      "question": "<p>【서술형 4】 점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이고 $\\angle \\mathrm{A} : \\angle \\mathrm{B} : \\angle \\mathrm{C} = 4 : 2 : 3$일 때, 물음에 답하시오. [6점]</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"외심 O와 세 꼭짓점 A, B, C를 연결했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) $\\angle \\mathrm{A}, \\angle \\mathrm{B}, \\angle \\mathrm{C}$를 각각 구하시오. [3점]<br><br>(2) $\\angle \\mathrm{OBA} : \\angle \\mathrm{OBC}$를 구하시오. [3점]</p>",
       "choices": [],
       "answer": "",
       "solution": ""
@@ -487,8 +487,9 @@ window.questionBank = [
   },
   {
     "id": 12,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>$\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{AE}} = \\overline{\\mathrm{DE}} = \\overline{\\mathrm{DB}}$이고 $\\angle \\mathrm{B} = 25^\\circ$일 때, $\\angle x$의 크기는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q12.png\"></p>",
+    "question": "<p>$\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{AE}} = \\overline{\\mathrm{DE}} = \\overline{\\mathrm{DB}}$이고 $\\angle \\mathrm{B} = 25^\\circ$일 때, $\\angle x$의 크기는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q12-problem-visual-v2.svg\" alt=\"B, D, A는 한 직선 위에 있고 B, E, C도 한 직선 위에 있다. AC, AE, DE, DB는 모두 길이가 같고 B의 각은 25도이다. A에서 AE와 AC 사이 각은 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$25^\\circ$",
       "$30^\\circ$",
@@ -498,12 +499,13 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>$\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{AE}} = \\overline{\\mathrm{DE}} = \\overline{\\mathrm{DB}}$이고 $\\angle \\mathrm{B} = 25^\\circ$일 때, $\\angle x$의 크기는?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q12.png\"></div>"
+    "content": "<div>$\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{AE}} = \\overline{\\mathrm{DE}} = \\overline{\\mathrm{DB}}$이고 $\\angle \\mathrm{B} = 25^\\circ$일 때, $\\angle x$의 크기는?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q12-problem-visual-v2.svg\" alt=\"B, D, A는 한 직선 위에 있고 B, E, C도 한 직선 위에 있다. AC, AE, DE, DB는 모두 길이가 같고 B의 각은 25도이다. A에서 AE와 AC 사이 각은 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 13,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>다음 그림과 같이 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{B}$의 이등분선과 $\\angle \\mathrm{C}$의 외각의 이등분선의 교점을 $\\mathrm{D}$라 하자. $\\angle \\mathrm{A} = 36^\\circ$일 때, $\\angle x$의 크기는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q13.png\"></p>",
+    "question": "<p>다음 그림과 같이 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{B}$의 이등분선과 $\\angle \\mathrm{C}$의 외각의 이등분선의 교점을 $\\mathrm{D}$라 하자. $\\angle \\mathrm{A} = 36^\\circ$일 때, $\\angle x$의 크기는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q13-problem-visual-v2.svg\" alt=\"A각은 36도이다. AB와 AC는 같은 길이이다. B의 이등분선과 C 바깥 각의 이등분선이 D에서 만난다. BDC에서 x를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$14^\\circ$",
       "$15^\\circ$",
@@ -513,12 +515,13 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>다음 그림과 같이 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{B}$의 이등분선과 $\\angle \\mathrm{C}$의 외각의 이등분선의 교점을 $\\mathrm{D}$라 하자. $\\angle \\mathrm{A} = 36^\\circ$일 때, $\\angle x$의 크기는?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q13.png\"></div>"
+    "content": "<div>다음 그림과 같이 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{B}$의 이등분선과 $\\angle \\mathrm{C}$의 외각의 이등분선의 교점을 $\\mathrm{D}$라 하자. $\\angle \\mathrm{A} = 36^\\circ$일 때, $\\angle x$의 크기는?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q13-problem-visual-v2.svg\" alt=\"A각은 36도이다. AB와 AC는 같은 길이이다. B의 이등분선과 C 바깥 각의 이등분선이 D에서 만난다. BDC에서 x를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 14,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>다음 중에서 오른쪽 두 직각삼각형 $\\mathrm{ABC}$와 $\\mathrm{DEF}$가 서로 합동이 되는 조건이 아닌 것은?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q14.png\"></p>",
+    "question": "<p>다음 중에서 오른쪽 두 직각삼각형 $\\mathrm{ABC}$와 $\\mathrm{DEF}$가 서로 합동이 되는 조건이 아닌 것은?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q14-problem-visual-v2.svg\" alt=\"왼쪽 삼각형 ABC는 C에서 직각이고 오른쪽 삼각형 DEF는 F에서 직각이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$\\angle \\mathrm{A} = \\angle \\mathrm{D}, \\; \\angle \\mathrm{B} = \\angle \\mathrm{E}$",
       "$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{DE}}, \\; \\angle \\mathrm{B} = \\angle \\mathrm{E}$",
@@ -528,12 +531,13 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>다음 중에서 오른쪽 두 직각삼각형 $\\mathrm{ABC}$와 $\\mathrm{DEF}$가 서로 합동이 되는 조건이 아닌 것은?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q14.png\"></div>"
+    "content": "<div>다음 중에서 오른쪽 두 직각삼각형 $\\mathrm{ABC}$와 $\\mathrm{DEF}$가 서로 합동이 되는 조건이 아닌 것은?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q14-problem-visual-v2.svg\" alt=\"왼쪽 삼각형 ABC는 C에서 직각이고 오른쪽 삼각형 DEF는 F에서 직각이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 15,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>다음 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{BAD} = 25^\\circ$일 때 $x$의 값은?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q15.png\"></p>",
+    "question": "<p>다음 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{BAD} = 25^\\circ$일 때 $x$의 값은?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"A의 BAD각은 25도이다. B는 직각이고 E에서 DE가 AC에 수직이다. AB와 AE에 같은 눈금이 있으며 C의 각에는 x가 적혀 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$35^\\circ$",
       "$36^\\circ$",
@@ -543,12 +547,13 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>다음 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{BAD} = 25^\\circ$일 때 $x$의 값은?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q15.png\"></div>"
+    "content": "<div>다음 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{BAD} = 25^\\circ$일 때 $x$의 값은?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"A의 BAD각은 25도이다. B는 직각이고 E에서 DE가 AC에 수직이다. AB와 AE에 같은 눈금이 있으며 C의 각에는 x가 적혀 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 16,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>오른쪽 그림에서 점 $\\mathrm{O}$가 $\\triangle \\mathrm{ABC}$의 외심일 때, 다음 중에서 옳은 것을 모두 고르면? (정답 2개)</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q16.png\"></p>",
+    "question": "<p>오른쪽 그림에서 점 $\\mathrm{O}$가 $\\triangle \\mathrm{ABC}$의 외심일 때, 다음 중에서 옳은 것을 모두 고르면? (정답 2개)</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"삼각형 ABC의 외심은 O이다. O를 각 꼭짓점과 연결했다. AB, AC, BC에 내린 수선은 각각 M, L, N에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$\\overline{\\mathrm{OM}} = \\overline{\\mathrm{ON}}$",
       "$\\angle \\mathrm{OCL} = \\angle \\mathrm{OCN}$",
@@ -558,12 +563,13 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>오른쪽 그림에서 점 $\\mathrm{O}$가 $\\triangle \\mathrm{ABC}$의 외심일 때, 다음 중에서 옳은 것을 모두 고르면? (정답 2개)</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q16.png\"></div>"
+    "content": "<div>오른쪽 그림에서 점 $\\mathrm{O}$가 $\\triangle \\mathrm{ABC}$의 외심일 때, 다음 중에서 옳은 것을 모두 고르면? (정답 2개)</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"삼각형 ABC의 외심은 O이다. O를 각 꼭짓점과 연결했다. AB, AC, BC에 내린 수선은 각각 M, L, N에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 17,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이다. $\\angle \\mathrm{BAO} = 24^\\circ$, $\\angle \\mathrm{CAO} = 26^\\circ$일 때, $\\angle \\mathrm{BCO}$의 크기는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q17.png\"></p>",
+    "question": "<p>점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이다. $\\angle \\mathrm{BAO} = 24^\\circ$, $\\angle \\mathrm{CAO} = 26^\\circ$일 때, $\\angle \\mathrm{BCO}$의 크기는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"외심 O에 A와 C를 이었다. A에서 BAO각은 24도, CAO각은 26도이다. C에서는 BC와 CO가 이루는 각을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$34^\\circ$",
       "$36^\\circ$",
@@ -573,12 +579,13 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이다. $\\angle \\mathrm{BAO} = 24^\\circ$, $\\angle \\mathrm{CAO} = 26^\\circ$일 때, $\\angle \\mathrm{BCO}$의 크기는?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q17.png\"></div>"
+    "content": "<div>점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이다. $\\angle \\mathrm{BAO} = 24^\\circ$, $\\angle \\mathrm{CAO} = 26^\\circ$일 때, $\\angle \\mathrm{BCO}$의 크기는?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"외심 O에 A와 C를 이었다. A에서 BAO각은 24도, CAO각은 26도이다. C에서는 BC와 CO가 이루는 각을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 18,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle \\mathrm{ABC}$의 외심, 내심이다. $\\angle \\mathrm{A} = 80^\\circ$일 때, $\\angle \\mathrm{BOC} - \\angle \\mathrm{BIC}$는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q18.png\"></p>",
+    "question": "<p>점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle \\mathrm{ABC}$의 외심, 내심이다. $\\angle \\mathrm{A} = 80^\\circ$일 때, $\\angle \\mathrm{BOC} - \\angle \\mathrm{BIC}$는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q18-problem-visual-v2.svg\" alt=\"삼각형의 꼭짓각은 80도이다. 밑변 끝 B와 C에서 외심 O로 잇는 선과 내심 I로 잇는 선을 각각 그렸다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$28^\\circ$",
       "$30^\\circ$",
@@ -588,12 +595,13 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle \\mathrm{ABC}$의 외심, 내심이다. $\\angle \\mathrm{A} = 80^\\circ$일 때, $\\angle \\mathrm{BOC} - \\angle \\mathrm{BIC}$는?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q18.png\"></div>"
+    "content": "<div>점 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\triangle \\mathrm{ABC}$의 외심, 내심이다. $\\angle \\mathrm{A} = 80^\\circ$일 때, $\\angle \\mathrm{BOC} - \\angle \\mathrm{BIC}$는?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q18-problem-visual-v2.svg\" alt=\"삼각형의 꼭짓각은 80도이다. 밑변 끝 B와 C에서 외심 O로 잇는 선과 내심 I로 잇는 선을 각각 그렸다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 19,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>오른쪽 그림에서 원 $\\mathrm{I}$는 $\\triangle \\mathrm{ABC}$의 내접원이다. $\\overline{\\mathrm{AD}} = 2\\text{ cm}$, $\\overline{\\mathrm{BD}} = 4\\text{ cm}$, $\\overline{\\mathrm{BC}} = 10\\text{ cm}$일 때, $\\overline{\\mathrm{AC}}$의 길이는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q19.png\"></p>",
+    "question": "<p>오른쪽 그림에서 원 $\\mathrm{I}$는 $\\triangle \\mathrm{ABC}$의 내접원이다. $\\overline{\\mathrm{AD}} = 2\\text{ cm}$, $\\overline{\\mathrm{BD}} = 4\\text{ cm}$, $\\overline{\\mathrm{BC}} = 10\\text{ cm}$일 때, $\\overline{\\mathrm{AC}}$의 길이는?</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q19-problem-visual-v2.svg\" alt=\"삼각형 ABC의 내접원 중심은 I이다. 접점은 D, E, F이다. D에서 A까지 2 cm, D에서 B까지 4 cm이고 BC 전체는 10 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$8\\text{ cm}$",
       "$8.5\\text{ cm}$",
@@ -603,7 +611,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>오른쪽 그림에서 원 $\\mathrm{I}$는 $\\triangle \\mathrm{ABC}$의 내접원이다. $\\overline{\\mathrm{AD}} = 2\\text{ cm}$, $\\overline{\\mathrm{BD}} = 4\\text{ cm}$, $\\overline{\\mathrm{BC}} = 10\\text{ cm}$일 때, $\\overline{\\mathrm{AC}}$의 길이는?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q19.png\"></div>"
+    "content": "<div>오른쪽 그림에서 원 $\\mathrm{I}$는 $\\triangle \\mathrm{ABC}$의 내접원이다. $\\overline{\\mathrm{AD}} = 2\\text{ cm}$, $\\overline{\\mathrm{BD}} = 4\\text{ cm}$, $\\overline{\\mathrm{BC}} = 10\\text{ cm}$일 때, $\\overline{\\mathrm{AC}}$의 길이는?</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q19-problem-visual-v2.svg\" alt=\"삼각형 ABC의 내접원 중심은 I이다. 접점은 D, E, F이다. D에서 A까지 2 cm, D에서 B까지 4 cm이고 BC 전체는 10 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 20,
@@ -631,29 +639,32 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "layoutTag": "fullwidth",
     "score": 6,
-    "question": "<p>【서술형 2】 아래의 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}} = 5a^3b^2$, $\\overline{\\mathrm{BC}} = 3ab^3$일 때, 선분 $\\mathrm{AB}$와 선분 $\\mathrm{BC}$를 각각 회전축으로 하여 1회전 시켜 생기는 두 입체도형의 부피를 각각 $V_1$, $V_2$라 할 때 물음에 답하시오. [6점]</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/s02.png\"></p><p>(1) 선분 $\\mathrm{AB}$를 회전축으로 하는 입체도형의 부피 $V_1$를 구하시오. [2점]<br><br>(2) 선분 $\\mathrm{BC}$를 회전축으로 하는 입체도형의 부피 $V_2$를 구하시오. [2점]<br><br>(3) $\\frac{V_2}{V_1}$의 값을 구하시오. [2점]</p>",
+    "question": "<p>【서술형 2】 아래의 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}} = 5a^3b^2$, $\\overline{\\mathrm{BC}} = 3ab^3$일 때, 선분 $\\mathrm{AB}$와 선분 $\\mathrm{BC}$를 각각 회전축으로 하여 1회전 시켜 생기는 두 입체도형의 부피를 각각 $V_1$, $V_2$라 할 때 물음에 답하시오. [6점]</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q22-problem-visual-v2.svg\" alt=\"직사각형에서 A는 왼쪽 위, B는 왼쪽 아래, C는 오른쪽 아래, D는 오른쪽 위에 있다. 네 모서리에 직각 표시가 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) 선분 $\\mathrm{AB}$를 회전축으로 하는 입체도형의 부피 $V_1$를 구하시오. [2점]<br><br>(2) 선분 $\\mathrm{BC}$를 회전축으로 하는 입체도형의 부피 $V_2$를 구하시오. [2점]<br><br>(3) $\\frac{V_2}{V_1}$의 값을 구하시오. [2점]</p>",
     "choices": [],
     "answer": "",
     "solution": "",
-    "content": "<div>【서술형 2】 아래의 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}} = 5a^3b^2$, $\\overline{\\mathrm{BC}} = 3ab^3$일 때, 선분 $\\mathrm{AB}$와 선분 $\\mathrm{BC}$를 각각 회전축으로 하여 1회전 시켜 생기는 두 입체도형의 부피를 각각 $V_1$, $V_2$라 할 때 물음에 답하시오. [6점]</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/s02.png\"></div><div>(1) 선분 $\\mathrm{AB}$를 회전축으로 하는 입체도형의 부피 $V_1$를 구하시오. [2점]<br><br>(2) 선분 $\\mathrm{BC}$를 회전축으로 하는 입체도형의 부피 $V_2$를 구하시오. [2점]<br><br>(3) $\\frac{V_2}{V_1}$의 값을 구하시오. [2점]</div>"
+    "content": "<div>【서술형 2】 아래의 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}} = 5a^3b^2$, $\\overline{\\mathrm{BC}} = 3ab^3$일 때, 선분 $\\mathrm{AB}$와 선분 $\\mathrm{BC}$를 각각 회전축으로 하여 1회전 시켜 생기는 두 입체도형의 부피를 각각 $V_1$, $V_2$라 할 때 물음에 답하시오. [6점]</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q22-problem-visual-v2.svg\" alt=\"직사각형에서 A는 왼쪽 위, B는 왼쪽 아래, C는 오른쪽 아래, D는 오른쪽 위에 있다. 네 모서리에 직각 표시가 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div><div>(1) 선분 $\\mathrm{AB}$를 회전축으로 하는 입체도형의 부피 $V_1$를 구하시오. [2점]<br><br>(2) 선분 $\\mathrm{BC}$를 회전축으로 하는 입체도형의 부피 $V_2$를 구하시오. [2점]<br><br>(3) $\\frac{V_2}{V_1}$의 값을 구하시오. [2점]</div>"
   },
   {
     "id": 23,
+    "layoutTag": "fullwidth",
     "score": 2,
-    "question": "<p>【서술형 3】 다음 직각삼각형 중에서 서로 합동인 것을 찾아 기호로 나타내고, 직각삼각형의 합동 조건을 쓰시오. [2점]</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/s03.png\"></p>",
+    "question": "<p>【서술형 3】 다음 직각삼각형 중에서 서로 합동인 것을 찾아 기호로 나타내고, 직각삼각형의 합동 조건을 쓰시오. [2점]</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q23-problem-visual-v2.svg\" alt=\"ABC는 A가 직각이며 AB는 4, AC는 7이다. DEF는 E가 직각이며 D의 각은 50도이고 DF는 7이다. GHI는 I가 직각이며 IH는 4, GH는 7이다. JKL은 J가 직각이며 K의 각은 40도이고 KL은 7이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "",
     "solution": "",
-    "content": "<div>【서술형 3】 다음 직각삼각형 중에서 서로 합동인 것을 찾아 기호로 나타내고, 직각삼각형의 합동 조건을 쓰시오. [2점]</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/s03.png\"></div>"
+    "content": "<div>【서술형 3】 다음 직각삼각형 중에서 서로 합동인 것을 찾아 기호로 나타내고, 직각삼각형의 합동 조건을 쓰시오. [2점]</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q23-problem-visual-v2.svg\" alt=\"ABC는 A가 직각이며 AB는 4, AC는 7이다. DEF는 E가 직각이며 D의 각은 50도이고 DF는 7이다. GHI는 I가 직각이며 IH는 4, GH는 7이다. JKL은 J가 직각이며 K의 각은 40도이고 KL은 7이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 24,
+    "layoutTag": "fullwidth",
     "score": 6,
-    "question": "<p>【서술형 4】 점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이고 $\\angle \\mathrm{A} : \\angle \\mathrm{B} : \\angle \\mathrm{C} = 4 : 2 : 3$일 때, 물음에 답하시오. [6점]</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/s04.png\"></p><p>(1) $\\angle \\mathrm{A}, \\angle \\mathrm{B}, \\angle \\mathrm{C}$를 각각 구하시오. [3점]<br><br>(2) $\\angle \\mathrm{OBA} : \\angle \\mathrm{OBC}$를 구하시오. [3점]</p>",
+    "question": "<p>【서술형 4】 점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이고 $\\angle \\mathrm{A} : \\angle \\mathrm{B} : \\angle \\mathrm{C} = 4 : 2 : 3$일 때, 물음에 답하시오. [6점]</p><p><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"외심 O와 세 꼭짓점 A, B, C를 연결했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) $\\angle \\mathrm{A}, \\angle \\mathrm{B}, \\angle \\mathrm{C}$를 각각 구하시오. [3점]<br><br>(2) $\\angle \\mathrm{OBA} : \\angle \\mathrm{OBC}$를 구하시오. [3점]</p>",
     "choices": [],
     "answer": "",
     "solution": "",
-    "content": "<div>【서술형 4】 점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이고 $\\angle \\mathrm{A} : \\angle \\mathrm{B} : \\angle \\mathrm{C} = 4 : 2 : 3$일 때, 물음에 답하시오. [6점]</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/s04.png\"></div><div>(1) $\\angle \\mathrm{A}, \\angle \\mathrm{B}, \\angle \\mathrm{C}$를 각각 구하시오. [3점]<br><br>(2) $\\angle \\mathrm{OBA} : \\angle \\mathrm{OBC}$를 구하시오. [3점]</div>"
+    "content": "<div>【서술형 4】 점 $\\mathrm{O}$는 $\\triangle \\mathrm{ABC}$의 외심이고 $\\angle \\mathrm{A} : \\angle \\mathrm{B} : \\angle \\mathrm{C} = 4 : 2 : 3$일 때, 물음에 답하시오. [6점]</div><div><img src=\"assets/images/23_금당중_1학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"외심 O와 세 꼭짓점 A, B, C를 연결했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div><div>(1) $\\angle \\mathrm{A}, \\angle \\mathrm{B}, \\angle \\mathrm{C}$를 각각 구하시오. [3점]<br><br>(2) $\\angle \\mathrm{OBA} : \\angle \\mathrm{OBC}$를 구하시오. [3점]</div>"
   }
 ];

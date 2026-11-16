@@ -44,7 +44,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "기준각 A의 맞은편 변과 빗변을 확인해 sin A=a/c인 정의 진술을 고른다.",
-    "decisiveStep": "기준각 A의 맞은편 변과 빗변을 확인해 sin A=a/c인 정의 진술을 고른다."
+    "decisiveStep": "기준각 A의 맞은편 변과 빗변을 확인해 sin A=a/c인 정의 진술을 고른다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -87,7 +90,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 2,
     "primaryMethod": "tan A에서 두 직각변의 비3:4를 정하고 피타고라스로 빗변비5를 구한 뒤 sin A와 cos A를 더한다.",
-    "decisiveStep": "tan A에서 두 직각변의 비3:4를 정하고 피타고라스로 빗변비5를 구한 뒤 sin A와 cos A를 더한다."
+    "decisiveStep": "tan A에서 두 직각변의 비3:4를 정하고 피타고라스로 빗변비5를 구한 뒤 sin A와 cos A를 더한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -181,7 +187,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "맞은편 길이 x와 이웃한 길이3을 tan60으로 직접 연결한다.",
-    "decisiveStep": "맞은편 길이 x와 이웃한 길이3을 tan60으로 직접 연결한다."
+    "decisiveStep": "맞은편 길이 x와 이웃한 길이3을 tan60으로 직접 연결한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -224,7 +233,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "선택지의 특수각 삼각비 값을 정확히 대입한 뒤 가장 작은 값을 고른다.",
-    "decisiveStep": "선택지의 특수각 삼각비 값을 정확히 대입한 뒤 가장 작은 값을 고른다."
+    "decisiveStep": "선택지의 특수각 삼각비 값을 정확히 대입한 뒤 가장 작은 값을 고른다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -267,7 +279,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "cos90과 tan0이0임을 대입하여 두 곱과 합의 값을 계산한다.",
-    "decisiveStep": "cos90과 tan0이0임을 대입하여 두 곱과 합의 값을 계산한다."
+    "decisiveStep": "cos90과 tan0이0임을 대입하여 두 곱과 합의 값을 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -312,7 +327,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "단위 사분원에서 sin35와 cos35의 근삿값을 읽고 tan=sin/cos로 바꿔 가장 가까운 값을 선택한다.",
-    "decisiveStep": "단위 사분원에서 sin35와 cos35의 근삿값을 읽고 tan=sin/cos로 바꿔 가장 가까운 값을 선택한다."
+    "decisiveStep": "단위 사분원에서 sin35와 cos35의 근삿값을 읽고 tan=sin/cos로 바꿔 가장 가까운 값을 선택한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -357,7 +375,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "삼각비 표에서25도 행과 사인 열이 만나는 값을 그대로 읽는다.",
-    "decisiveStep": "삼각비 표에서25도 행과 사인 열이 만나는 값을 그대로 읽는다."
+    "decisiveStep": "삼각비 표에서25도 행과 사인 열이 만나는 값을 그대로 읽는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -402,7 +423,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "주어진 수선으로 나뉜 첫 직각삼각형에서 sin·cos로 높이와 밑변을 구한 뒤 남은 밑변과 피타고라스로 AC를 결정한다.",
-    "decisiveStep": "주어진 수선으로 나뉜 첫 직각삼각형에서 sin·cos로 높이와 밑변을 구한 뒤 남은 밑변과 피타고라스로 AC를 결정한다."
+    "decisiveStep": "주어진 수선으로 나뉜 첫 직각삼각형에서 sin·cos로 높이와 밑변을 구한 뒤 남은 밑변과 피타고라스로 AC를 결정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -545,7 +569,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "두 관측점에서 같은 건물 높이를 h로 두고 각각의 tan 식을 연결해 공통 높이를 구한다.",
-    "decisiveStep": "두 관측점에서 같은 건물 높이를 h로 두고 각각의 tan 식을 연결해 공통 높이를 구한다."
+    "decisiveStep": "두 관측점에서 같은 건물 높이를 h로 두고 각각의 tan 식을 연결해 공통 높이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -635,7 +662,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 2,
     "primaryMethod": "정사각형의 반대각선 길이를 정하고 tan60으로 각뿔의 수직 높이를 구해 각뿔 부피식에 연결한다.",
-    "decisiveStep": "정사각형의 반대각선 길이를 정하고 tan60으로 각뿔의 수직 높이를 구해 각뿔 부피식에 연결한다."
+    "decisiveStep": "정사각형의 반대각선 길이를 정하고 tan60으로 각뿔의 수직 높이를 구해 각뿔 부피식에 연결한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 15,
@@ -680,7 +710,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "중심에서 현에 내린 수선으로 반현5를 정하고 중심거리5와 피타고라스로 반지름 x를 구한다.",
-    "decisiveStep": "중심에서 현에 내린 수선으로 반현5를 정하고 중심거리5와 피타고라스로 반지름 x를 구한다."
+    "decisiveStep": "중심에서 현에 내린 수선으로 반현5를 정하고 중심거리5와 피타고라스로 반지름 x를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 16,

@@ -49,15 +49,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "인수분해",
-      "완전제곱식",
-      "이차방정식",
-      "판별식",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "인수분해", "완전제곱식", "이차방정식", "조건해석", "계산"],
     "wide": false,
     "content": "다음 이차방정식 중 중근을 갖는 것은?",
     "choices": [
@@ -86,16 +78,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "인수분해",
-      "이차방정식",
-      "지수",
-      "오류판별",
-      "대입",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "인수분해", "이차방정식", "대입", "조건해석", "계산"],
     "wide": false,
     "content": "두 이차방정식 $x^2-4x-5=0, x^2-5x-6=0$의 공통인 근이 $\\dfrac{1}{2}x^2+3mx-2=0$의 한 근일 때, 상수 $m$의 값은?",
     "choices": [
@@ -198,16 +181,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "인수분해",
-      "이차방정식",
-      "수직선",
-      "정수조건",
-      "범위",
-      "조건해석",
-      "계산"
-    ],
+    "tags": ["객관식", "이차방정식", "수직선", "정수조건", "범위", "조건해석", "계산"],
     "wide": false,
     "content": "이차방정식 $8x^2-10x-3=0$의 두 근 사이에 있는 모든 정수의 합은?",
     "choices": [
@@ -260,8 +234,8 @@ window.questionBank = [
     "solution": "$n$각형의 대각선 수는\n$\\dfrac{n(n-3)}2$개이다.\n따라서\n$\\dfrac{n(n-3)}2=90$,\n$n^2-3n-180=0$이다.\n인수분해하면\n$(n-15)(n+12)=0$이다.\n다각형의 변의 수는 양수이므로 $n=15$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -311,16 +285,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차함수",
-      "함수",
-      "도형",
-      "원",
-      "그래프",
-      "대입",
-      "조건해석"
-    ],
+    "tags": ["객관식", "이차함수", "함수", "도형", "그래프", "대입", "조건해석"],
     "wide": false,
     "content": "원점을 꼭짓점으로 하고 점 $(-6, 12)$를 지나는 이차함수의 그래프와 $x$축에 서로 대칭인 그래프가 점 $(m, -27)$을 지날 때, $m$의 값은? (단, $m>0$)",
     "choices": [
@@ -352,16 +317,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "절댓값",
-      "이차함수",
-      "함수",
-      "그래프",
-      "표해석",
-      "좌표",
-      "범위"
-    ],
+    "tags": ["객관식", "절댓값", "이차함수", "함수", "그래프", "좌표", "범위"],
     "wide": false,
     "content": "다음 중 이차함수 $y=3x^2-1$의 그래프에 대한 설명으로 옳지 않은 것은?",
     "choices": [
@@ -466,16 +422,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "계수비교",
-      "이차함수",
-      "함수",
-      "그래프",
-      "표해석",
-      "좌표",
-      "계산"
-    ],
+    "tags": ["객관식", "계수비교", "이차함수", "함수", "그래프", "좌표", "계산"],
     "wide": false,
     "content": "이차함수 $y=\\dfrac{1}{2}x^2$의 그래프와 모양이 같고, 꼭짓점의 좌표가 $(-3, -5)$인 포물선을 그래프로 하는 이차함수의 식은?",
     "choices": [
@@ -605,16 +552,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차함수",
-      "일차함수",
-      "함수",
-      "그래프",
-      "표해석",
-      "좌표",
-      "대입"
-    ],
+    "tags": ["객관식", "이차함수", "일차함수", "함수", "그래프", "좌표", "대입"],
     "wide": false,
     "content": "이차함수 $y=x^2-4kx+3k^2-2k-5$의 그래프의 꼭짓점이 일차함수 $y=x-1$의 그래프 위에 있을 때, 상수 $k$의 값은?",
     "choices": [
@@ -685,15 +623,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차함수",
-      "함수",
-      "그래프",
-      "표해석",
-      "좌표",
-      "계산"
-    ],
+    "tags": ["객관식", "이차함수", "함수", "그래프", "좌표", "계산"],
     "wide": false,
     "content": "이차함수 $y=-x^2+6x-3a+6$의 그래프의 꼭짓점이 $x$축 위에 있을 때, 상수 $a$의 값은?",
     "choices": [

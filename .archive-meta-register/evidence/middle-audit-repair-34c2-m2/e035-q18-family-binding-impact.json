@@ -1,0 +1,588 @@
+{
+  "schemaVersion": "middle-audit-minimal-family-crosswalk-materialization-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+  "beforeSha256": "2bee3efdbdcd0dee3e5c91341eecb2a8f7c6350f6860cb20de38429dbd17308e",
+  "afterSha256": "faf7473ff5e6514535effb7f0afc45b5c51b75f25ffa28820bede4f9f0dfc511",
+  "existingRowCount": 241,
+  "existingRowsModified": 1,
+  "existingDefinitionOrCandidateChanges": 0,
+  "modifiedRow": {
+    "before": {
+      "id": "M2-RPM-059",
+      "curriculum": "2015",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계",
+        "l3": "그래프 활용",
+        "l4": "조건에 따른 식 결정"
+      },
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "problemTypeLabelKo": "직선의 방정식 구하기",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_LINE_POINT_SLOPE",
+          "templateLabelKo": "한 점과 기울기가 주어진 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_TWO_POINTS",
+          "templateLabelKo": "두 점을 지나는 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_MULTI_CONDITION",
+          "templateLabelKo": "조건이 주어진 직선의 방정식"
+        }
+      ],
+      "selectionRule": "final solution에서 사용한 점·기울기·복합 조건에 맞는 listed template 선택",
+      "bindingStatus": "MISSING"
+    },
+    "after": {
+      "id": "M2-RPM-059",
+      "curriculum": "2015",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계",
+        "l3": "그래프 활용",
+        "l4": "조건에 따른 식 결정"
+      },
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "problemTypeLabelKo": "직선의 방정식 구하기",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_LINE_POINT_SLOPE",
+          "templateLabelKo": "한 점과 기울기가 주어진 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_TWO_POINTS",
+          "templateLabelKo": "두 점을 지나는 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_MULTI_CONDITION",
+          "templateLabelKo": "조건이 주어진 직선의 방정식"
+        }
+      ],
+      "selectionRule": "final solution에서 사용한 점·기울기·복합 조건에 맞는 listed template 선택",
+      "bindingStatus": "ACTIVE",
+      "standardCourse": "중2 수학",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "ownerPack": "MIDDLE2"
+      }
+    },
+    "existingExactBinding": {
+      "curriculum": "2015",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "ownerPack": "MIDDLE2",
+      "subUnitLabelKo": "일차함수와 일차방정식의 관계",
+      "L1": "일차함수",
+      "L2": "일차함수와 일차방정식의 관계",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_5068a742bcc99fb3c7a7aa746d0182bd19789f8afce1a5abf3e8c1e465d61d2d"
+      ],
+      "status": "ACTIVE"
+    },
+    "changedFields": [
+      "mappingStatus",
+      "bindingStatus",
+      "standardCourse",
+      "binding"
+    ]
+  },
+  "append": [
+    {
+      "id": "M2-RPM-059-SEGMENT-INTERSECTION-34C2",
+      "curriculum": "2015",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계",
+        "l3": "그래프 활용",
+        "l4": "조건에 따른 식 결정"
+      },
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+      "problemTypeLabelKo": "직선의 교점과 위치 조건",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+      "templateLabelKo": "직선이 선분과 만나는 조건",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+        "ownerPack": "MIDDLE2"
+      }
+    }
+  ],
+  "summaryBefore": {
+    "recordCount": 241,
+    "DIRECT_ACTIVE": 36,
+    "FAMILY_ACTIVE": 2,
+    "DIRECT_BINDING_GAP": 67,
+    "FAMILY_BINDING_GAP": 14,
+    "RPM_ONLY": 122
+  },
+  "summaryAfter": {
+    "recordCount": 242,
+    "DIRECT_ACTIVE": 37,
+    "FAMILY_ACTIVE": 3,
+    "DIRECT_BINDING_GAP": 67,
+    "FAMILY_BINDING_GAP": 13,
+    "RPM_ONLY": 122
+  },
+  "rootSingleWriterRequired": true,
+  "officialPolicy": "docs/agents/metadata.md CURRENT extension principle (e): minimum existing-row change with all affected UID results checked.",
+  "existingMetadataAtNewBindingTuple": [],
+  "explicitRpmPathSourceConsumers": [
+    {
+      "questionUid": "qid_v1_d2c34d77502f34d64c137d344549a99a806faed60edf4c8a44a9e52efc246c83",
+      "sourceArchiveFile": "original/middle/m2/2mid/19_동산중_2학기_중간_중2_수학.js",
+      "sourceOrdinal": 3,
+      "currentSourcePt": "PT_LINE_EQUATION",
+      "currentSourceTpl": "TPL_LINE_PARALLEL",
+      "currentMetadataPt": "",
+      "currentMetadataTpl": "",
+      "unit": "M2-04",
+      "subUnit": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "sourceSolutionPresent": false,
+      "verificationStatusNotPromoted": true,
+      "before": {
+        "inputGateRejected": true,
+        "inputGateReason": "META_VERIFIED_FINAL_SOLUTION_REQUIRED"
+      },
+      "after": {
+        "inputGateRejected": true,
+        "inputGateReason": "META_VERIFIED_FINAL_SOLUTION_REQUIRED"
+      },
+      "exactSignatureUnchanged": true
+    },
+    {
+      "questionUid": "qid_v1_b96ae32c80a0ce1003ec00ffedf028fd4290e59a3ff4793f76df73212a4f19e9",
+      "sourceArchiveFile": "original/middle/m2/2final/20_풍덕중_2학기_기말_중2_기출.js",
+      "sourceOrdinal": 22,
+      "currentSourcePt": "PT_LINE_EQUATION",
+      "currentSourceTpl": "",
+      "currentMetadataPt": "",
+      "currentMetadataTpl": "",
+      "unit": "M2-04",
+      "subUnit": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "sourceSolutionPresent": true,
+      "verificationStatusNotPromoted": true,
+      "before": {
+        "inputGateRejected": true,
+        "inputGateReason": "META_VERIFIED_FINAL_SOLUTION_REQUIRED"
+      },
+      "after": {
+        "inputGateRejected": true,
+        "inputGateReason": "META_VERIFIED_FINAL_SOLUTION_REQUIRED"
+      },
+      "exactSignatureUnchanged": true
+    },
+    {
+      "questionUid": "qid_v1_9d2760bf163ca4f38a922770c07d0ef8edf1c3a576a7e8654fe0c1d1fb07a623",
+      "sourceArchiveFile": "original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+      "sourceOrdinal": 22,
+      "currentSourcePt": "PT_LINE_EQUATION",
+      "currentSourceTpl": "TPL_LINE_MULTI_CONDITION",
+      "currentMetadataPt": "",
+      "currentMetadataTpl": "",
+      "unit": "M2-03",
+      "subUnit": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "sourceSolutionPresent": true,
+      "verificationStatusNotPromoted": true,
+      "before": {
+        "inputGateRejected": true,
+        "inputGateReason": "META_VERIFIED_FINAL_SOLUTION_REQUIRED"
+      },
+      "after": {
+        "inputGateRejected": true,
+        "inputGateReason": "META_VERIFIED_FINAL_SOLUTION_REQUIRED"
+      },
+      "exactSignatureUnchanged": true
+    }
+  ],
+  "metadataAtSameRpmPath": [],
+  "oldFamilySelectedRoutes": [
+    {
+      "templateKey": "TPL_LINE_POINT_SLOPE",
+      "mode": "STRUCTURAL_ONLY_NO_UID_SEMANTIC_ASSIGNMENT",
+      "before": {
+        "semanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "조건에 따른 식 결정"
+        },
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_LINE_EQUATION",
+        "mappedTemplateKeys": [
+          "TPL_LINE_POINT_SLOPE"
+        ],
+        "ownerPack": "GEOMETRY_EQUATIONS",
+        "bindingOwnerPack": "MIDDLE2",
+        "bindingIdentity": "2015|M2-04|M2-04-LINEAR_FUNCTION_EQUATION|PT_LINE_EQUATION|MIDDLE2"
+      },
+      "after": {
+        "semanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "조건에 따른 식 결정"
+        },
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_LINE_EQUATION",
+        "mappedTemplateKeys": [
+          "TPL_LINE_POINT_SLOPE"
+        ],
+        "ownerPack": "GEOMETRY_EQUATIONS",
+        "bindingOwnerPack": "MIDDLE2",
+        "bindingIdentity": "2015|M2-04|M2-04-LINEAR_FUNCTION_EQUATION|PT_LINE_EQUATION|MIDDLE2"
+      },
+      "exactSignatureUnchanged": true
+    },
+    {
+      "templateKey": "TPL_LINE_TWO_POINTS",
+      "mode": "STRUCTURAL_ONLY_NO_UID_SEMANTIC_ASSIGNMENT",
+      "before": {
+        "semanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "조건에 따른 식 결정"
+        },
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_LINE_EQUATION",
+        "mappedTemplateKeys": [
+          "TPL_LINE_TWO_POINTS"
+        ],
+        "ownerPack": "GEOMETRY_EQUATIONS",
+        "bindingOwnerPack": "MIDDLE2",
+        "bindingIdentity": "2015|M2-04|M2-04-LINEAR_FUNCTION_EQUATION|PT_LINE_EQUATION|MIDDLE2"
+      },
+      "after": {
+        "semanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "조건에 따른 식 결정"
+        },
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_LINE_EQUATION",
+        "mappedTemplateKeys": [
+          "TPL_LINE_TWO_POINTS"
+        ],
+        "ownerPack": "GEOMETRY_EQUATIONS",
+        "bindingOwnerPack": "MIDDLE2",
+        "bindingIdentity": "2015|M2-04|M2-04-LINEAR_FUNCTION_EQUATION|PT_LINE_EQUATION|MIDDLE2"
+      },
+      "exactSignatureUnchanged": true
+    },
+    {
+      "templateKey": "TPL_LINE_MULTI_CONDITION",
+      "mode": "STRUCTURAL_ONLY_NO_UID_SEMANTIC_ASSIGNMENT",
+      "before": {
+        "semanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "조건에 따른 식 결정"
+        },
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_LINE_EQUATION",
+        "mappedTemplateKeys": [
+          "TPL_LINE_MULTI_CONDITION"
+        ],
+        "ownerPack": "GEOMETRY_EQUATIONS",
+        "bindingOwnerPack": "MIDDLE2",
+        "bindingIdentity": "2015|M2-04|M2-04-LINEAR_FUNCTION_EQUATION|PT_LINE_EQUATION|MIDDLE2"
+      },
+      "after": {
+        "semanticStatus": "FINAL",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "조건에 따른 식 결정"
+        },
+        "projectionStatus": "PROJECTION_REUSE",
+        "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "mappedProblemTypeKey": "PT_LINE_EQUATION",
+        "mappedTemplateKeys": [
+          "TPL_LINE_MULTI_CONDITION"
+        ],
+        "ownerPack": "GEOMETRY_EQUATIONS",
+        "bindingOwnerPack": "MIDDLE2",
+        "bindingIdentity": "2015|M2-04|M2-04-LINEAR_FUNCTION_EQUATION|PT_LINE_EQUATION|MIDDLE2"
+      },
+      "exactSignatureUnchanged": true
+    }
+  ],
+  "allExistingSelectedFamilyRoutesPreserved": true,
+  "actualOtherUidApprovalOrSourceChanges": 0,
+  "targetInput": {
+    "sourceIdentity": {
+      "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+      "questionUid": "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb",
+      "sourceOrdinal": 18,
+      "contentHash": "sha256:1d1db25f6293f6ee4f537dfb8cdeeeace07fa0dbdc3dbb64cef65849ce5f4b54",
+      "choicesHash": "sha256:377d9a5592ca12100b502d8cec0b96252c1855bd05c0c0bd7114dc83a2803635",
+      "imageRefHash": "sha256:f4c11d7bb73ad2f890dee3d6ae3d44756e18a2f3a65d37659820ea7493fc37fb"
+    },
+    "solutionIdentity": {
+      "status": "VERIFIED_FINAL",
+      "independentVerification": true,
+      "solutionHash": "sha256:818502e61e600da6f78820cc927627597d13e2b6c7ea0f80899d098e514b107f"
+    },
+    "curriculumContext": {
+      "grade": "M2",
+      "curriculum": "2015",
+      "scope": "M2-1",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION"
+    },
+    "semanticDecision": {
+      "primaryMethod": "선분과 직선 교점의 허용구간 확인",
+      "decisiveStep": "교점 x=12/(a+1)이4≤x≤8인지 각 후보를 판정한다.",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계",
+        "l3": "그래프 활용",
+        "l4": "조건에 따른 식 결정"
+      }
+    },
+    "familyTemplateSelection": {
+      "stage": "POST_CROSSWALK",
+      "inputBundleSha": "sha256:95472199d1ebe6249d309f855153818145e7be1efa80372fc8e6ad47db0fa066",
+      "crosswalkRecordId": "M2-RPM-059-SEGMENT-INTERSECTION-34C2",
+      "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+      "decisiveStepReason": "The decisive condition is membership of the line intersection in the finite segment. Its endpoint boundaries are exactly the two limiting lines through the endpoints, with both endpoints included. Root independently read and approved this existing source/solution against the exact segment-intersection template."
+    }
+  },
+  "targetFirstProjection": "META_ONLY_COMPATIBILITY_PENDING",
+  "targetFirstReason": "CROSSWALK_ROW_SELECTION_PENDING",
+  "targetResolved": {
+    "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v2",
+    "sourceFingerprint": "sha256:c4cb8b94467c9bac776826dea21f403da1030a1a695b0592155c03b9e71f45b5",
+    "inputBundleSha": "sha256:95472199d1ebe6249d309f855153818145e7be1efa80372fc8e6ad47db0fa066",
+    "rpmPath": {
+      "curriculum": "2015",
+      "scope": "M2-1",
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 일차방정식의 관계",
+      "l3": "그래프 활용",
+      "l4": "조건에 따른 식 결정"
+    },
+    "rpmL3": "그래프 활용",
+    "rpmL4": "조건에 따른 식 결정",
+    "semanticScopeRelation": "CURRENT_SCOPE",
+    "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "crosswalkRecordId": "M2-RPM-059-SEGMENT-INTERSECTION-34C2",
+    "crosswalkStatus": "DIRECT_ACTIVE",
+    "projectionStatus": "PROJECTION_REUSE",
+    "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+    "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+    "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+    "mappedProblemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+    "mappedTemplateKeys": [
+      "TPL_INTERSECTION_SEGMENT_RANGE"
+    ],
+    "ownerPack": "GEOMETRY_EQUATIONS",
+    "ownerVersion": "1.0.2",
+    "bindingOwnerPack": "MIDDLE2",
+    "bindingIdentity": "2015|M2-04|M2-04-LINEAR_FUNCTION_EQUATION|PT_LINE_INTERSECTION_CONDITION|MIDDLE2",
+    "legacyProjection": {
+      "status": "PROJECTION_REUSE",
+      "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+      "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+      "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+      "candidateTemplateKeys": [
+        "TPL_INTERSECTION_SEGMENT_RANGE"
+      ],
+      "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+      "bindingOwnerPack": "MIDDLE2",
+      "bindingIdentity": "2015|M2-04|M2-04-LINEAR_FUNCTION_EQUATION|PT_LINE_INTERSECTION_CONDITION|MIDDLE2"
+    },
+    "disposition": "RPM_SEMANTIC_FINAL",
+    "semanticStatus": "FINAL",
+    "rpmSemantic": {
+      "status": "FINAL",
+      "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0",
+      "curriculum": "2015",
+      "scope": "M2-1",
+      "targetScope": "M2-1",
+      "scopeRelation": "CURRENT_SCOPE",
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 일차방정식의 관계",
+      "l3": "그래프 활용",
+      "l4": "조건에 따른 식 결정",
+      "primaryMethod": "선분과 직선 교점의 허용구간 확인",
+      "decisiveStep": "교점 x=12/(a+1)이4≤x≤8인지 각 후보를 판정한다.",
+      "sourceFingerprint": "sha256:c4cb8b94467c9bac776826dea21f403da1030a1a695b0592155c03b9e71f45b5",
+      "inputBundleSha": "sha256:95472199d1ebe6249d309f855153818145e7be1efa80372fc8e6ad47db0fa066",
+      "rpmRecordSha": "sha256:3f8a5ff7671c6f307d056bd3e201d0c1371857267865cd5af544a20d6e4b3f94"
+    },
+    "advancedMetaEligible": true,
+    "dispositionReason": "",
+    "semanticInputBundle": {
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+        "questionUid": "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb",
+        "sourceIdentityKey": "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb",
+        "sourceOrdinal": 18,
+        "contentHash": "sha256:1d1db25f6293f6ee4f537dfb8cdeeeace07fa0dbdc3dbb64cef65849ce5f4b54",
+        "choicesHash": "sha256:377d9a5592ca12100b502d8cec0b96252c1855bd05c0c0bd7114dc83a2803635",
+        "imageRefHash": "sha256:f4c11d7bb73ad2f890dee3d6ae3d44756e18a2f3a65d37659820ea7493fc37fb",
+        "sourceFingerprint": "sha256:c4cb8b94467c9bac776826dea21f403da1030a1a695b0592155c03b9e71f45b5"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "solutionHash": "sha256:818502e61e600da6f78820cc927627597d13e2b6c7ea0f80899d098e514b107f",
+        "independentVerification": true
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "subjectFamily": "",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION"
+      },
+      "semanticDecision": {
+        "primaryMethod": "선분과 직선 교점의 허용구간 확인",
+        "decisiveStep": "교점 x=12/(a+1)이4≤x≤8인지 각 후보를 판정한다.",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "조건에 따른 식 결정"
+        },
+        "scopeRelation": "CURRENT_SCOPE"
+      }
+    },
+    "authorityRefs": [
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+        "bytes": 1839,
+        "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "bytes": 559927,
+        "sha256": "sha256:7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md",
+        "bytes": 6057,
+        "sha256": "sha256:7d80ce780a18929ecff4c329ffe7811d340e7a921b9c6900b7a8aa170f2ac9ba"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "bytes": 159867,
+        "sha256": "sha256:faf7473ff5e6514535effb7f0afc45b5c51b75f25ffa28820bede4f9f0dfc511"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "bytes": 159867,
+        "sha256": "sha256:faf7473ff5e6514535effb7f0afc45b5c51b75f25ffa28820bede4f9f0dfc511",
+        "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/registry_index.json",
+        "bytes": 21741,
+        "sha256": "sha256:f00fc9ac86093de19dcb4db041c6af753e91a8ff2699c608329c7bf81433e08a",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+        "bytes": 2268,
+        "sha256": "sha256:11889c08f041e0ac9ed3e131c3119369d51fb53d3704eaa637482894190d24cf",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+        "bytes": 259291,
+        "sha256": "sha256:8c60ebb19670c12491b7259e90530d3b64c16e1252bb691e5b69d1670a16f617",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bytes": 2276362,
+        "sha256": "sha256:2806348fc95149ca3bb7563e9b0d01ada2d764616a04027c57c718fb1d707376",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+        "bytes": 1687601,
+        "sha256": "sha256:e8d40bce41d532c70ae205269b771564c23fca0f077335f07e5449b78a1bd7c2",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+        "bytes": 259332,
+        "sha256": "sha256:3dacd35e12f9c49283f7c14f8aa99c61dba1cb9ac14b5e86dee9d2a80d452208",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "bytes": 967518,
+        "sha256": "sha256:d9914f26710cfc28cdd0911f75816997620f88f52c4b364efe1e8e2d3507fedb",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      }
+    ],
+    "evidenceSha": "sha256:ec36c55850c7f4fa59decaa86a3097feadeeaba36c62393057e69f6fbf3ff887"
+  },
+  "officialRegistrarDryrun": "PENDING_ROOT_FINAL_SOURCE_AND_REQUEST",
+  "remoteMainRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}

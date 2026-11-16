@@ -14,7 +14,7 @@
 
 ## CURRENT TOP — 단일 메타 Resolver 연결 (2026-10-30)
 
-- 신규 기출 CREATE/R1/R2/R3에서 Primary RPM L1~L4 + CrossConcept/Condition/Integration을 교육과정 내 실제 풀이로 판정하고, PT/TPL은 [단일 진입·Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)의 공식 명령/ACTIVE 바인딩으로만 투영한다. 작업자가 PT/TPL을 자유 추정하거나 CrossConcept으로 Primary를 대체하지 않는다. 모델 공통 규칙이며 사후 FINAL QA의 기존 PT/TPL 재검 제외·예약 Git writer 금지/현재 캠페인 설정은 유지한다.
+- 신규 기출 CREATE/R1/R2/R3에서 Primary RPM L1~L4 + CrossConcept/Condition/Integration을 교육과정 내 실제 풀이로 판정하고, PT/TPL은 [단일 진입·Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md) §0에 따라 정한다. **(2026-11-16 사용자 결정) "PT/TPL은 공식 Resolver 결과만" 제한은 없앴다.** Resolver 조회, 결정 단계를 근거로 한 직접 판정, 새 키 신설이 모두 정식 경로다. 근거 없이 채우지 않고, 키의 ACTIVE·부모·바인딩 검증은 그대로다. 이유: 유형은 계속 늘어나는 분류라 한 판정기에 묶을 수 없다. CrossConcept으로 Primary를 대체하지 않는다. 모델 공통 규칙이며 사후 FINAL QA의 기존 PT/TPL 재검 제외·예약 Git writer 금지/현재 캠페인 설정은 유지한다.
 
 ## CURRENT — 모든 결과물의 확장 메타·4칸·검토 기록 작성 (2026-11-04, 사용자 결정)
 
@@ -31,7 +31,7 @@
 
 - **(a) 맞는 기존 키가 없으면 가장 가까운 키에 억지로 붙이지 않는다. 정식 `registryChanges`로 새 키를 만든다.** 문항 해설과 정의가 모순되는 키를 달아 두면 학생 화면의 L4·유형 설명이 문항과 어긋나고, 그 키를 근거로 같은 유형을 모으면 엉뚱한 문항이 섞인다(신흥중 25 Q19가 다른 시험의 "미정계수 결정" TPL을 숫자 위치만 보고 물려받은 사례).
 - **(b) 새 키의 이름·정의·`internalSkeleton`은 같은 형태 문항이 재사용할 수 있게 일반화해서 쓴다.** 특정 시험의 숫자·식·인물을 넣지 않고 풀이 구조(무엇을 어떤 순서로 하는지)로 쓴다. 이유: 정의가 한 문항에 묶이면 다음 문항이 붙을 수 없어 같은 유형의 키가 계속 늘어난다. 이름 규칙은 기존 키 패턴을 따른다(예: `TPL_<과정>_<풀이 구조>`, 부모 PT 아래). 기존 키로 충분한지 먼저 같은 PT 아래 TPL 정의를 읽고 판단한다.
-- **(c) 새로 만든 키도 공식 레지스트리·Resolver를 거치므로 "PT/TPL은 공식 Resolver 결과만" 규칙과 충돌하지 않는다.** 그 규칙의 뜻은 작업자가 PT/TPL을 추정해 쓰지 말라는 것이지 새 키를 만들지 말라는 것이 아니다. 새 키는 반드시 정식 요청(근거 파일 SHA 결속, 등록기 검증, 크로스워크·바인딩 정합)으로 들어가고, 이후 Resolver가 그 키를 결과로 낸다.
+- **(c) 새 키는 공식 레지스트리에 정식으로 넣는다.** ("PT/TPL은 공식 Resolver 결과만" 규칙은 2026-11-16 사용자 결정으로 없앴다. 남은 원칙은 근거 없이 쓰지 말라는 것이다.) 새 키는 반드시 정식 요청(근거 파일 SHA 결속, 등록기 검증, 크로스워크·바인딩 정합)으로 들어가고, 이후 Resolver가 그 키를 결과로 낸다.
 - **(d) 다음 문항이 같은 형태면 그 키를 재사용한다.** 새 키를 또 만들지 않는다. 지원 문항(`supportingQuestionUids`)과 크로스워크 `templateCandidates`에 덧붙이고, 정의가 그 문항을 포함하도록 억지로 넓혀야 하면 새 키를 만든다. 이유: 키가 같은 형태 문항의 묶음 단위여야 검색·통계가 의미를 가진다.
 - **(e) 추가(add-only)를 우선하고, 기존 행·키 수정은 영향 문항을 확인하고 기록한다.** 새 TPL·바인딩·크로스워크 행은 추가로 처리한다. 같은 리프·단원에 쓰는 행이 `RPM_ONLY`뿐이라 후보 TPL을 붙일 ACTIVE 행이 없는 경우처럼 기존 행을 바꿔야 할 때만 최소 수정하고(예: `RPM_ONLY`를 `FAMILY_ACTIVE`로), 같은 행을 쓰는 모든 문항의 Resolver 결과가 그대로인지 확인해 요청의 증거 파일에 적는다. 이유: 기존 행을 쓰는 다른 시험지의 메타를 조용히 바꾸지 않기 위해서다. 의미 키 삭제·정의 변경은 지금처럼 등록기가 막는다.
 - **크로스워크 행 확장:** 문항의 PT/TPL에 맞는 ACTIVE 행이 없어 RPM Primary 경로(`rpmPrimaryPath`)를 못 채우면, 문항·해설을 보고 마스터에 있는 RPM 리프를 정해 `archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/<파일>.json`에 `DIRECT_ACTIVE` 행(문항의 PT/TPL, 문항 자신의 `standardUnitKey`·`subUnitKey`, ACTIVE 바인딩)을 덧붙이고 `summary` 개수를 갱신한다. 이름이 비슷하다고 고르지 않는다. 같은 리프 후보가 둘이면 소형 메타에 `rpmPrimaryRecordId`로 지목한다. 마스터에 맞는 리프가 아예 없거나 해설이 두 리프 중 하나로 정해지지 않는 문항만 비워 두고 이유를 EVIDENCE_DEBT로 적는다.
@@ -85,7 +85,7 @@
 - **빈 것만 한다.** 대상은 저장소 도구가 만든 "빈 파일 목록"에 있는 파일뿐이고 위에서부터 한다. 이유: 난이도 제출 698건 중 약 260건이 이미 값이 있는 시험지의 재판정이라 버려졌다.
 - **한 번 읽을 때 다 받는다.** 분류 읽기 한 번에 단원·소단원(빈 문항만), 핵심 풀이·결정 단계·RPM L1~L4, CrossConcept·Condition·Integration을 함께 낸다. 화면이 읽지 않는 항목만 채우는 단독 작업은 만들지 않는다. 난이도는 별도 판정이라 위 절의 라인을 그대로 쓴다.
 - **판정은 두 번, 서로 보지 않고 한다. 안 맞으면 추정하지 않는다.** 1차 판정과 2차 판정은 서로 다른 대화 컨텍스트에서 한다(별도 Codex 창이거나, 한 감독 세션이 따로 띄운 하위 작업자 둘). 2차는 자기 원장을 다 쓰기 전에 1차 원장을 열지 않고, 감독 세션은 2차 작업자에게 대상 시험지 목록만 넘기고 1차 원장의 내용은 넘기지 않는다. 감독 세션은 불일치를 한쪽 값으로 정해 주지 않는다. 두 원장이 일치한 문항만 등록하고 불일치·판정 불가는 HOLD 목록에 `EVIDENCE_DEBT`로 남긴다. 같은 세션의 자기 점검을 독립 검수로 적지 않는다.
-- **PT/TPL은 원장에 적지 않는다.** RPM 경로에서 공식 Resolver(`rpm-active-resolver.mjs`)가 뽑는다. 크로스워크 행이 없으면 등록하지 않고 "새 키 후보"로 빼서 Codex가 `registryChanges`로 처리한다(위 "확장 원칙" 절).
+- **PT/TPL도 원장에 적을 수 있다 (2026-11-16 사용자 결정으로 변경, 이전: "원장에 적지 않는다").** 문항·해설의 결정 단계를 근거로 ACTIVE 키를 직접 판정해 근거 구절과 함께 적는다. RPM 경로에서 Resolver(`rpm-active-resolver.mjs`)가 뽑은 값도 그대로 쓸 수 있다. 맞는 키가 없으면 가까운 키에 붙이지 말고 "새 키 후보"로 적어 `registryChanges`로 처리한다(위 "확장 원칙" 절). 두 판정이 일치한 값만 등록한다. 이유: 유형을 Resolver 출력으로만 받으면 크로스워크 행이 없는 문항의 유형 칸이 계속 빈다.
 - **역할(창 A·B는 별도 창 또는 감독 세션의 하위 작업자 A·B):** Codex 창 A = 도구 제작, 밀린 판정 회수(판정 값은 그대로 두고 `before`·해시만 현재 정본으로 다시 만들어 새 `requestId`로 재제출), 분류 1차 원장. Codex 창 B = 분류 2차 원장, 두 원장 대조 → 도구로 요청 생성 → dry-run → 인박스 PR, HOLD·새 키 후보·거부 건 처리. 원장은 작업 폴더 `.tmp/meta-backfill/`에 두고 커밋하지 않는다.
 - **채우는 순서(화면에 쓰이는 것부터):** ① 난이도(기출 2026년 → 과거 → 유형별·교과서·유사) ② 단원·소단원이 빈 기출 ③ 유형(기출 최신 연도부터) ④ 교과서 소단원, 유형별·유사 문제지.
 - **판정 원장 `meta-judgment-ledger-v1`(시험지 하나에 파일 하나):** 최상위 `schemaVersion`, `judge`(`pass1`|`pass2`), `createdAt`, `sourceArchiveFile`(목록 값 그대로), `items[]`. 문항마다 `ordinal`, `questionUid`, `primaryMethod`(핵심 풀이 한 문장), `decisiveStep`(결정 단계 한 문장), `rpmPath{majorUnit, midUnit, l3, l4}`, `crossConceptKeys[]`, `conditionKeys[]`, `integrationPattern`, 그리고 목록에서 단원·소단원이 빈 문항에만 `standardUnitKey`, `subUnitKey`. 키는 저장소가 내보낸 선택지 표에 있는 값만 쓰고, 맞는 값이 없거나 판정할 수 없으면 값을 비우고 `hold`에 사유를 적는다.
@@ -128,3 +128,9 @@
 - **검수 상태:** 시험지의 `reviewStatus`와 등록 후 `reviewed_pass`의 차이는 REVIEW2에서 소비자 충돌로 거부하지 않는다(`verifyConsumerValues`의 `blockingConflicts`와 `verify-changed-uid-consumer-approval.mjs`의 METADATA_CONFLICT 판정에서 `reviewStatus`만 제외). 시험지 파일은 고치지 않는다.
 - **유형 경로를 정할 수 없는 문항(`typeHold`):** 항목에 `typeHold: true`를 두면 단원·소단원과 판정된 CrossConcept·Condition·Integration만 등록한다. PT/TPL이 둘 다 미등록인 문항에만 쓸 수 있고, `after`에 PT/TPL/L3/L4/rpmL3/rpmL4를 넣으면 거부한다. 결과 행은 `metadataStatus: approved_partial_with_explicit_holds`, `fieldStatus.problemType/template: manual_review_pending`, `metaFoundationHoldReason: TYPE_PATH_UNBOUND_UNIT_SUB_ONLY`이며 런타임 행을 만들지 않는다. 크로스워크·봉인 문서·4칸 사전은 건드리지 않는다.
 - 도구: `_luna/classify-final/register/`의 `select-ready.cjs` → `build-meta-request.mjs` → `verify-batch.mjs` → `install-batch.sh`.
+
+## CURRENT — 문항 본문 변경 종류 판정기 `source-delta` (등록기 동작은 아직 바꾸지 않음)
+
+- **무엇:** `archive/tools/meta-foundation/source-delta.mjs`는 같은 문항의 옛 본문과 현재 본문을 비교해 무엇이 바뀌었는지 판정하는 순수 모듈이다(`UNCHANGED`·`FIGURE`·`NOTATION`·`SOLUTION`·`STEM_EDIT`·`ANSWER`·`REPLACED`·`NUMBER_MISMATCH`). 지문 계산식은 기존 등록기와 글자 그대로 같고, `NOTATION`은 코드에 이유와 함께 적힌 명시 규칙만 같게 본다(애매하면 아님). 이유: 그림 교체·본문 오류 수정으로 지문이 어긋난 문항의 메타를 떼지 않고, 변경 종류를 꼬리표로 남기는 재결속의 첫 단계다.
+- **보고 도구:** `node archive/tools/meta-foundation/source-delta-report.mjs --scope <시험지 경로 접두어> --out <저장소 밖 경로>`는 읽기 전용이며 어긋난 문항마다 git 이력에서 옛 blob을 찾아 분류를 집계한다. 보고서는 Git에 두지 않는다(저장소 안 출력은 거부). `REPLACED` 임계값(`REPLACED_RECALL_THRESHOLD`)은 표본 약 20건으로 정한 값이고 전수 보고로 보정한다.
+- 이 PR 시점에서 등록기·빌더·화면 코드는 이 모듈을 쓰지 않는다. 검사: `tests/archive-source-delta.test.mjs`.

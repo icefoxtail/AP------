@@ -611,8 +611,10 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "imageSize": "tall",
+    "imageAlt": "A 회사는 반지름 a, 높이 b이다. B 회사는 반지름 b, 높이 a이다. 같은 문자는 각각 같은 색으로 표시했다.",
     "content": "오른쪽 그림과 같이 A회사는 밑면의 반지름의 길이가 $a$이고 높이가 $b$인 원기둥 모양의 통조림 캔을 만들었고, B회사는 밑면의 반지름의 길이가 $b$이고 높이가 $a$인 원기둥 모양의 통조림 캔을 만들었다. A회사가 만든 캔의 부피는 B회사가 만든 캔의 부피의 몇 배인가? <span class='score'>(5점)</span>",
-    "image": "assets/images/21_연향중_1학기_중간_중2_기출/q13.png",
+    "image": "assets/images/21_연향중_1학기_중간_중2_기출/q13-problem-visual-v2.svg",
     "choices": [
       "$a$",
       "$b$",
@@ -628,7 +630,7 @@ window.questionBank = [
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": ["객관식","원기둥","부피","비","단항식","계산","도형"],
     "wide": false,
     "solution": "A회사의 캔은 밑면의 반지름이 $a$, 높이가 $b$이므로\n$V_A=\\pi a^2b$이다.\nB회사의 캔은 밑면의 반지름이 $b$, 높이가 $a$이므로\n$V_B=\\pi b^2a$이다.\n따라서 부피의 비는\n$\\dfrac{V_A}{V_B}=\\dfrac{\\pi a^2b}{\\pi b^2a}=\\dfrac ab$이다.\n\n따라서 정답은 ⑤이다.",

@@ -46,7 +46,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원주각105°가 보는 큰 호의 중심각210°를 전체360°에서 빼고, 다른 그림은 중심각60°를 절반으로 바꾼다.",
-    "decisiveStep": "원주각105°가 보는 큰 호의 중심각210°를 전체360°에서 빼고, 다른 그림은 중심각60°를 절반으로 바꾼다."
+    "decisiveStep": "원주각105°가 보는 큰 호의 중심각210°를 전체360°에서 빼고, 다른 그림은 중심각60°를 절반으로 바꾼다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -93,7 +96,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "호BD의 중심각을 만든 뒤 COD를 빼서 BOC를 복원하고 그 절반이 목표 원주각임을 확인하여 잘못된 계산 단계를 고른다.",
-    "decisiveStep": "호BD의 중심각을 만든 뒤 COD를 빼서 BOC를 복원하고 그 절반이 목표 원주각임을 확인하여 잘못된 계산 단계를 고른다."
+    "decisiveStep": "호BD의 중심각을 만든 뒤 COD를 빼서 BOC를 복원하고 그 절반이 목표 원주각임을 확인하여 잘못된 계산 단계를 고른다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -140,7 +146,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "세 호의 비3:4:5에서 BC의 몫4/12를 전체 중심각에 적용하고 같은 호의 원주각으로 절반 변환한다.",
-    "decisiveStep": "세 호의 비3:4:5에서 BC의 몫4/12를 전체 중심각에 적용하고 같은 호의 원주각으로 절반 변환한다."
+    "decisiveStep": "세 호의 비3:4:5에서 BC의 몫4/12를 전체 중심각에 적용하고 같은 호의 원주각으로 절반 변환한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -188,7 +197,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름에 대한 직각과 같은 호의 중심각·원주각 배수 관계로 각 진술을 확인하고 연장선 삼각형의 내각합으로 잘못된 값을 배제한다.",
-    "decisiveStep": "지름에 대한 직각과 같은 호의 중심각·원주각 배수 관계로 각 진술을 확인하고 연장선 삼각형의 내각합으로 잘못된 값을 배제한다."
+    "decisiveStep": "지름에 대한 직각과 같은 호의 중심각·원주각 배수 관계로 각 진술을 확인하고 연장선 삼각형의 내각합으로 잘못된 값을 배제한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -376,7 +388,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "내접오각형의 두 원주각이 보는 큰 호를 중심각으로 바꿔 호BAE와 호BC를 차례로 복원한 뒤 중심각과 원주각을 구한다.",
-    "decisiveStep": "내접오각형의 두 원주각이 보는 큰 호를 중심각으로 바꿔 호BAE와 호BC를 차례로 복원한 뒤 중심각과 원주각을 구한다."
+    "decisiveStep": "내접오각형의 두 원주각이 보는 큰 호를 중심각으로 바꿔 호BAE와 호BC를 차례로 복원한 뒤 중심각과 원주각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -470,7 +485,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접선과 현이 이루는 각을 대응 원주각과 연결하고 두 번째 그림에서는 삼각형 내각합으로 나머지 각을 구한다.",
-    "decisiveStep": "접선과 현이 이루는 각을 대응 원주각과 연결하고 두 번째 그림에서는 삼각형 내각합으로 나머지 각을 구한다."
+    "decisiveStep": "접선과 현이 이루는 각을 대응 원주각과 연결하고 두 번째 그림에서는 삼각형 내각합으로 나머지 각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -517,7 +535,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "AP=AT로 밑각35°를 얻어 접현각으로 원 안의 각에 옮기고, P/A/B 일직선의 보각을 거쳐 목표 삼각형의 각을 결정한다.",
-    "decisiveStep": "AP=AT로 밑각35°를 얻어 접현각으로 원 안의 각에 옮기고, P/A/B 일직선의 보각을 거쳐 목표 삼각형의 각을 결정한다."
+    "decisiveStep": "AP=AT로 밑각35°를 얻어 접현각으로 원 안의 각에 옮기고, P/A/B 일직선의 보각을 거쳐 목표 삼각형의 각을 결정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -564,7 +585,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접현각55°와 지름에 대한 직각으로 안쪽 각 x를 구하고 반대 방향의 접선에서 보각을 만든 뒤 바깥 삼각형에서 y를 구한다.",
-    "decisiveStep": "접현각55°와 지름에 대한 직각으로 안쪽 각 x를 구하고 반대 방향의 접선에서 보각을 만든 뒤 바깥 삼각형에서 y를 구한다."
+    "decisiveStep": "접현각55°와 지름에 대한 직각으로 안쪽 각 x를 구하고 반대 방향의 접선에서 보각을 만든 뒤 바깥 삼각형에서 y를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -1006,7 +1030,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름의 원주각 직각과 접현각62°에서 x를 내각합으로 정한 뒤 같은 호TC를 보는 y에 값을 전달한다.",
-    "decisiveStep": "지름의 원주각 직각과 접현각62°에서 x를 내각합으로 정한 뒤 같은 호TC를 보는 y에 값을 전달한다."
+    "decisiveStep": "지름의 원주각 직각과 접현각62°에서 x를 내각합으로 정한 뒤 같은 호TC를 보는 y에 값을 전달한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,
@@ -1083,3 +1110,9 @@ window.questionBank = [
     "decisiveStep": "편차합0으로 빠진 편차−1을 먼저 정하고 여섯 편차의 제곱평균과 그 양의 제곱근으로 분산·표준편차를 구한다."
   }
 ];
+
+// Transport the unchanged independently approved native template and course namespace.
+(function () {
+  Object.assign(window.questionBank[4], {"templateKey":"TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES","courseKey":"M3-2"});
+  Object.assign(window.questionBank[5], {"templateKey":"TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES","courseKey":"M3-2"});
+})();

@@ -726,7 +726,11 @@ window.questionBank = [
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
     "reviewStatus": "manual_review",
-    "decisiveStep": "이동 공식과 sin^2+cos^2=1로 sin x 이차방정식을 얻어 구간별 근을 센다."
+    "decisiveStep": "이동 공식과 sin^2+cos^2=1로 sin x 이차방정식을 얻어 구간별 근을 센다.",
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌 구간 [−3π/2,2π]에서 사인곡선과 y=2/3, y=−1의 교점을 나타낸다.",
+    "solutionImageCaption": "주어진 방정식은 sin x=2/3 또는 sin x=−1로 정리된다. 닫힌 구간에서 첫 수평선과 세 번, 둘째 수평선과 두 번 만나 서로 다른 근은 모두 다섯 개이므로 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 15,
@@ -993,7 +997,11 @@ window.questionBank = [
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
     "reviewStatus": "manual_review",
-    "decisiveStep": "두 함수의 축 절편을 t=3^a로 나타내고 외접원 넓이를 t의 이차방정식으로 바꾼 뒤 a>=1로 근을 고른다."
+    "decisiveStep": "두 함수의 축 절편을 t=3^a로 나타내고 외접원 넓이를 t의 이차방정식으로 바꾼 뒤 a>=1로 근을 고른다.",
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학I/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위의 A, B와 원점 O가 직각삼각형을 이루고, AB의 중점 M을 중심으로 하는 원이 O, A, B를 지난다.",
+    "solutionImageCaption": "A와 B는 각각 y축과 x축 위이므로 OA⊥OB이다. 따라서 외접원의 중심은 빗변 AB의 중점 M이다. 넓이 10π에서 t=6을 얻고, 구하는 값은 a=log₃6이다. 정답은 a=log₃6이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 20,

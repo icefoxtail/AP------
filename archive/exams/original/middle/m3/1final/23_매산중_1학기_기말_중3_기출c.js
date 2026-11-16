@@ -65,8 +65,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 합이 $x$의 계수, 곱이 상수항이 되는 두 수를 찾아 인수분해한다.\\n조건 정리: $x^2+5x-24$\\n정석 풀이: 곱해서 $-24$가 되고, 더해서 $5$가 되는 두 실수는 $8$과 $-3$이다.\\n따라서 $x^2+5x-24 = (x+8)(x-3)$으로 인수분해된다.\\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
   },
@@ -173,8 +173,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 수의 계산에서 두 수의 제곱의 차 형태는 합차공식을 이용하면 쉽게 계산할 수 있다.\\n조건 정리: $71^2-29^2$을 계산해야 한다.\\n정석 풀이: 주어진 식은 두 수의 제곱의 차이므로 합차공식인 $a^2-b^2=(a+b)(a-b)$를 이용하면 편리하다.\\n$a=71, b=29$로 생각하여 대입하면\\n$71^2-29^2 = (71+29)(71-29) = 100 \\times 42 = 4200$으로 쉽게 계산된다.\\n따라서 정답은 ①이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
   },
@@ -490,9 +490,7 @@ window.questionBank = [
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "conditionKeys": [
-      "COND_NATURAL_NUMBER"
-    ]
+    "conditionKeys": ["COND_POSITIVE"]
   },
   {
     "id": 15,
@@ -603,9 +601,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
-    "crossConceptKeys": [
-      "CC_FUNCTION_SYMMETRY"
-    ],
+    "crossConceptKeys": [],
     "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 두 포물선은 원점에서 만나며 y축에 각각 대칭이다. 파란 곡선은 아래로 열리고 주황 곡선은 위로 열려 x축을 사이에 두고 서로 마주 본다.",
     "solutionImageCaption": "y=−3x²는 원점을 지나고 아래로 열리므로 ②이다. y=3x²와는 x축에 대하여 서로 대칭이다.",
@@ -753,9 +749,7 @@ window.questionBank = [
     "crossConceptKeys": [
       "CC_TRIANGLE_AREA"
     ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "conditionKeys": [],
     "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 삼각형 밑변 길이는 2x−6이다. 꼭짓점에서 그 밑변에 내린 높이 h를 점선과 직각으로 표시했다.",
     "solutionImageCaption": "넓이는 (2x−6)h/2=(x−3)h이다. 주어진 넓이 x²+4x−21=(x−3)(x+7)에서 높이는 x+7이다.",
@@ -763,7 +757,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "level": "상",
+    "level": "중",
     "category": "다항식의 곱셈과 인수분해",
     "originalCategory": "다항식의 곱셈과 인수분해",
     "standardCourse": "중3 수학",
@@ -782,8 +776,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$5$",
     "solution": "[키포인트] 정사각형의 둘레와 넓이 공식을 이용하여 식을 세우고, 제곱의 차 인수분해 공식을 활용한다.\\n조건 정리: 한 변의 길이가 $x, y$인 두 정사각형의 둘레의 합이 $48$, 넓이의 차가 $60$이다. ($x>y$)\\n정석 풀이: 한 변의 길이가 $x$인 정사각형의 둘레는 $4x$, 넓이는 $x^2$이고, 한 변의 길이가 $y$인 정사각형의 둘레는 $4y$, 넓이는 $y^2$이다.\\n첫 번째 조건에서 둘레의 길이의 합이 $48$이므로\\n$4x + 4y = 48$\\n양변을 $4$로 나누면 $x+y = 12 \\dots$ (1)\\n두 번째 조건에서 넓이의 차가 $60$이므로\\n$x^2 - y^2 = 60$\\n이 식의 좌변을 인수분해하면 $(x+y)(x-y) = 60$이다.\\n식 (1)에서 구한 $x+y=12$를 대입하면\\n$12(x-y) = 60$\\n양변을 $12$로 나누면 $x-y = 5$이다.\\n따라서 구하는 값은 $5$이다.",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented",
     "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q22-solution.svg",
@@ -864,9 +858,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
-    "crossConceptKeys": [
-      "CC_FUNCTION_SYMMETRY"
-    ],
+    "crossConceptKeys": [],
     "solutionImage": "assets/images/23_매산중_1학기_기말_중3_기출c/q25-solution.svg",
     "solutionImageAlt": "해설 그림: 여섯 포물선을 같은 좌표축과 y=1, y=−1 점선에서 비교한다. 곡선마다 식 라벨이 붙어 있다.",
     "solutionImageCaption": "(1) 위로 볼록한 것은 ㄱ, ㄹ, ㅂ. (2) x축 대칭인 그래프는 ㄴ과 ㅂ. (3) 가장 넓은 그래프는 ㄹ.",
@@ -902,7 +894,7 @@ window.questionBank = [
   },
   {
     "id": 27,
-    "level": "상",
+    "level": "중",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",

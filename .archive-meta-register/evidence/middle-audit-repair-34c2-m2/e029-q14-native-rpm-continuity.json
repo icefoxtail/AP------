@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "middle-audit-native-rpm-continuity-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "baseCommit": "1a3db9d6d8f5e7e1404c17f4978398eb90dbe6a5",
+  "sourceArchiveFile": "original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+  "sourceOrdinal": 14,
+  "questionUid": "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354",
+  "nativeReview": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E029/accepted-review.json",
+    "rawSha256": "f49dca98cbcb5432515ba2182848cf9c83c15c1c7b284942f5b26df5ec0b535b",
+    "sourceGitBlobSha": "b4081251ca79dfa3ba9eebfff3aad0ebb7398297"
+  },
+  "currentSourceBeforeBlobSha": "e755a22282e3413ddc628488b476ca0cf3f60793",
+  "currentSourceAfterBlobSha": "144b1bd0bf1c82be94910bb727ff3c33b6a69772",
+  "studentPayloadHashBefore": "770ce0f981eac9415694f2a2d60c7022698dac1c654a2421a9dc1394beff29c3",
+  "studentPayloadHashAfter": "770ce0f981eac9415694f2a2d60c7022698dac1c654a2421a9dc1394beff29c3",
+  "nativeReviewedStudentPayloadHash": "770ce0f981eac9415694f2a2d60c7022698dac1c654a2421a9dc1394beff29c3",
+  "studentPayloadChangeCount": 0,
+  "unrelatedQuestionChanges": 0,
+  "changedFields": [
+    "semanticSourceScope",
+    "semanticScopeRelation",
+    "evidenceRefs",
+    "rpmPrimaryRecordId",
+    "rpmPrimaryPath",
+    "rpmL3",
+    "rpmL4",
+    "projectionStatus",
+    "nullReason",
+    "projectionReason",
+    "targetNamespace"
+  ],
+  "before": {
+    "semanticSourceScope": "M2-1",
+    "semanticScopeRelation": "TARGET_SCOPE",
+    "evidenceRefs": [
+      "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+    ],
+    "rpmPrimaryRecordId": "M2-RPM-038",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차부등식과 연립일차방정식",
+      "midUnit": "연립일차방정식의 활용",
+      "l3": "수와 개수",
+      "l4": "두 수 관계"
+    },
+    "rpmL3": "수와 개수",
+    "rpmL4": "두 수 관계",
+    "projectionStatus": "RPM_ONLY",
+    "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+    "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
+    "targetNamespace": null
+  },
+  "after": {
+    "semanticSourceScope": "M1-1",
+    "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+    "evidenceRefs": [
+      "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e029-q14-native-rpm-continuity.json"
+    ],
+    "rpmPrimaryRecordId": "M1-RPM-042",
+    "rpmPrimaryPath": {
+      "majorUnit": "문자와 식",
+      "midUnit": "일차방정식의 활용",
+      "l3": "수와 관계",
+      "l4": "나이·개수 관계"
+    },
+    "rpmL3": "수와 관계",
+    "rpmL4": "나이·개수 관계",
+    "projectionStatus": "BINDING_PENDING",
+    "nullReason": "Accepted prerequisite RPM M1-RPM-042 is RPM_ONLY / NO_ACTIVE_MAPPING. Exact ACTIVE PT/TPL binding in the preserved M2 target namespace remains unconfirmed.",
+    "projectionReason": "Canonical prerequisite RPM path remains intact. Target M2 namespace and L1/L2 are held separately in targetNamespace; absent source target fields remain proposal only. Target scoped binding is unconfirmed.",
+    "targetNamespace": {
+      "scope": "M2-1",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "majorUnit": "일차부등식과 연립일차방정식",
+      "midUnit": "연립일차방정식",
+      "rpmEffectiveParentKey": null,
+      "provenance": "SOURCE_EXPLICIT_PRESERVED"
+    }
+  },
+  "preservedTargetNamespace": {
+    "scope": "M2-1",
+    "standardCourse": "중2 수학",
+    "standardUnitKey": "M2-03",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "majorUnit": "일차부등식과 연립일차방정식",
+    "midUnit": "연립일차방정식",
+    "rpmEffectiveParentKey": null,
+    "provenance": "SOURCE_EXPLICIT_PRESERVED"
+  },
+  "registrationDebt": [
+    "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+    "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+  ],
+  "goalDebt": [
+    {
+      "code": "GOAL_CONTEXT_MEASURE_TERM_GAP",
+      "targetQuote": "다훈이의 나이",
+      "reason": "나이는 문맥상 측정 대상이나 사전에는 나이 또는 적절한 상위 측정량 용어가 없다. 태어난 시점을 새로 가정해 경과시간으로 바꾸거나 소재를 신규 수학개념으로 등록하지 않는다.",
+      "disposition": "정확한 문맥 목표를 scenarioNote와 인용에 보존하며 generic 값만 남은 부분을 완전한 goal 대상 채움으로 주장하지 않는다."
+    }
+  ],
+  "officialRegistrationStatus": "NOT_RUN",
+  "newPtTplApproval": false,
+  "finalQaClaim": false,
+  "nextAction": "Transport accepted prerequisite RPM with target namespace separation through the official canonical path; retain explicit ACTIVE binding debt until an exact target-scoped type/template approval is registered. The separately root-approved goal amendment adds existing unknown/value terms, pending main runtime registration.",
+  "nativeRegistrationDebtAtReview": [
+    "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+    "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED",
+    "FOUR_SLOT_GOAL_CONTEXT_MEASURE_TERM_GAP"
+  ],
+  "currentGoalDisposition": {
+    "status": "ROOT_ACCEPTED_TARGET_OBJECT_SUPPLEMENT",
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e029-q14-goal-amendment.json",
+    "sha256": "4bf79ffd99a24000782860866052c4d781ffb74e7480e1fbb43493809945a94b",
+    "goal": [
+      745,
+      131
+    ],
+    "newDictionaryTerm": false,
+    "mainRegistration": "NOT_RUN"
+  }
+}

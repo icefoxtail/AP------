@@ -1,3 +1,4 @@
+import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 // Main-merge metadata registration. It applies declared metadata, never invents a semantic review.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -5,15 +6,23 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { loadCanonicalParentRetry, canonicalParentRetryTargets, resolveCanonicalParentRetry } from './canonical-parent-retry.mjs';
 import { isUnambiguousLegacySourceUidAlias } from '../intelligence/question-identity-contract.mjs';
 import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
-import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
+import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, nativeReviewedFamilyRationaleReuse,
+  nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind, nativeReviewedE017RhsRebind } from './native-reviewed-source-reuse.mjs';
+import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
+import { nativeReviewedM2CcRendererRebind } from './reviewed-m2-cc-renderer-continuity.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
-import { hasReviewedReceiptLineage } from './reviewed-source-binding.mjs';
+import { assertIssuedRpmHistoricalLeaf, readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
+import { assertIssuedSolutionRpmHistoricalLeaf, readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
+import { hasApprovedRendererPreservationClaim, verifyApprovedRendererReceipt } from './native-approved-renderer-preservation.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
+
+import { nativeAuthorityHoldState } from './native-authority-correction.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -160,7 +169,9 @@ function preservedAuditReceipt({nativeSource,question,previous,current,identity,
 // pending cursor. Reuse its byte-bound native receipt, never the approval flags alone. Returning
 // ALREADY_REGISTERED also leaves the native metadata revision, runtime and RPM parent untouched.
 export function nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack=pt?.ownerPack}) {
+  if(originalSourceError.isSubject({questionUid:current?.questionUid||identity?.questionUid,source,ordinal}))return null;
   if(!nativeSource||!previous)return null;
+  if(nativeAuthorityHoldState({root:nativeSource.root,current,identity,source,ordinal}))return null;
   const studentUnchanged=equal(pick(previous,STUDENT),pick(question,STUDENT));
   const {root,bytes,blobSha1,bank,runtimeRecord,runtimeStatus}=nativeSource;
   if(!Buffer.isBuffer(bytes)||!Array.isArray(bank)||!equal(bank[ordinal-1],question)
@@ -195,7 +206,14 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||approval?.type!==current.metadataApprovalType||approval.metadataReviewed!==true
         ||!String(approval.approvedBy||'').trim()||approval.type==='REVIEW2'&&approval.reviewPassCount!==2
         ||!Array.isArray(approval.evidenceRefs)||!approval.evidenceRefs.length)continue;
-      if(!approval.evidenceRefs.every(ref=>/^[a-f0-9]{64}$/.test(ref.sha256||'')&&sha256(boundRead(ref.path))===ref.sha256))continue;
+      const rpmHistory=nativeSource.issuedRpmHistoryContext;
+      const solutionRpmHistory=nativeSource.issuedSolutionRpmHistoryContext;
+      if(rpmHistory&&solutionRpmHistory)continue;
+      if(rpmHistory)assertIssuedRpmHistoricalLeaf({context:rpmHistory,receipt,nativeSource,current,identity,ordinal});
+      if(solutionRpmHistory)assertIssuedSolutionRpmHistoricalLeaf({context:solutionRpmHistory,receipt,nativeSource,current,identity,ordinal,previous});
+      if(!approval.evidenceRefs.every(ref=>/^[a-f0-9]{64}$/.test(ref.sha256||'')&&sha256(solutionRpmHistory
+        ?readIssuedSolutionRpmHistoricalEvidence(solutionRpmHistory,receipt,ref):rpmHistory
+          ?readIssuedRpmHistoricalEvidence(rpmHistory,receipt,ref):boundRead(ref.path))===ref.sha256))continue;
       const record=nativeReceiptRecords(receipt,nativeSource,source)?.get(identity.questionUid);
       const runtime=receipt.runtimeRecords?.filter(r=>r.questionUid===identity.questionUid);
       const registeredIdentity=receipt.appliedIdentityRecords?.filter(r=>r.questionUid===identity.questionUid);
@@ -205,16 +223,27 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||registeredIdentity[0].sourceOrdinal!==ordinal||registeredIdentity[0].sourceFingerprint!==identity.sourceFingerprint
         ||!equal(registeredIdentity[0].sourceQuestionNo,identity.sourceQuestionNo)
         ||current.metadataRevision!==`meta-foundation:${ownerPack}@${current.metaFoundationPackVersion}:exam-${approval.type.toLowerCase()}-v2:${requestId}`)continue;
+      if(Object.hasOwn(approval,'rendererPreservation')||Object.hasOwn(receipt,'approvedRendererPreservation')||
+        hasApprovedRendererPreservationClaim({root,current,runtimeRecord})) {
+        const kept=verifyApprovedRendererReceipt({receipt,nativeSource,current,identity,ordinal,previous,registry,
+          revalidateLeaf:ancestor=>{
+            const context=activeBindingContext({candidate:ancestor.current,check:{curriculum:ancestor.current.curriculum||ancestor.current.curriculumKey},
+              registry,runtimeOwner:ancestor.current.metaFoundationPackId});
+            return context.reason?null:nativeReviewReceipt({...ancestor,registry,...context});
+          }});
+        if(kept!==true)continue;
+        return receiptPath;
+      }
+      const verifiedSource=validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
+      const preservedSource=nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,registry,
+        revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor})});
+      if(preservedSource===true)return receiptPath;
       const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
       const reviewedRenderer=nativeReviewedRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
-      const reviewedSource=validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
-      // Only a replayed immutable source reassessment distinguishes a direct
-      // review's lineage refs from source-only preservation. null is no proof;
-      // explicit sourceRebind/count claims still enter every preservation guard.
-      const directSourceReview=reviewedSource===true&&hasReviewedReceiptLineage(receipt);
-      const preservedSource=directSourceReview?null:nativePreservedSourceRebind({receipt,nativeSource,question,identity,ordinal,current,
-        revalidateLeaf:ancestor=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,pt,tpl,registry,ownerPack,...ancestor})});
-      if(preservedSource!==true&&reviewedFigure!==true&&reviewedRenderer!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      const reviewedM2Renderer=nativeReviewedM2ProblemRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      const reviewedM2CcRenderer=nativeReviewedM2CcRendererRebind({receipt,previous,question,identity,ordinal,verifiedSource});
+      const reviewedE017Rhs=nativeReviewedE017RhsRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2Renderer!==true&&reviewedM2CcRenderer!==true&&reviewedE017Rhs!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }
@@ -244,9 +273,13 @@ export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
 }
 
 // The official ACTIVE validator is supplied by loadContext; fixtures use the same public interface.
-export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource}) {
+export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource, canonicalParentRetry}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
   if (!identity || !current || identity.questionUid!==current.questionUid || identity.sourceArchiveFile!==source || current.sourceArchiveFile!==source || Number(identity.sourceOrdinal)!==ordinal || Number(current.sourceOrdinal)!==ordinal) return reject('UID_JOIN_MISMATCH');
+  if(originalSourceError.isSubject({questionUid:identity.questionUid,source,ordinal}))return reject(originalSourceError.REASON);
+  const authorityHold=nativeAuthorityHoldState({root:nativeSource?.root,current,identity,source,ordinal});
+  if(authorityHold)return reject(authorityHold.reason);
+  if(canonicalParentRetry&&['FINAL_QA','REVIEW2','META_PIPELINE_AUDIT'].includes(current.metadataApprovalType))return reject('CANONICAL_PARENT_RETRY:NATIVE_AUTHORITY_NOT_SUPPORTED');
   if (q.questionUid && q.questionUid!==identity.questionUid && !isUnambiguousLegacySourceUidAlias({question:q,
     sourceArchiveFile:source,sourceOrdinal:ordinal,identityRecord:identity,
     identityMap:nativeSource?.identityMap,bank:nativeSource?.bank})) return reject('SOURCE_UID_CONFLICT');
@@ -288,7 +321,8 @@ export function planQuestion({question:q, previous, current, identity, registry,
     if(changed || candidate[k]==null || candidate[k]==='') candidate[k]=structuredClone(q[k]);
   }
   if(!candidate.problemTypeKey||!candidate.templateKey) return reject('DECLARED_PT_TPL_MISSING');
-  const inputHash=hash({source,ordinal,student:pick(q,STUDENT),metadata:semantic(q),registry:registry.registrySha});
+  const parentRetryInput=canonicalParentRetry?{requestSha256:canonicalParentRetry.requestSha256,masterSha256:canonicalParentRetry.request.masterRef.sha256}:null;
+  const inputHash=hash({source,ordinal,student:pick(q,STUDENT),metadata:semantic(q),registry:registry.registrySha,...(parentRetryInput?{canonicalParentRetry:parentRetryInput}:{})});
   const hasSourceRationale=!sourceMetaChanged||Boolean(String(q.primaryMethod||'').trim()&&String(q.decisiveStep||'').trim());
   // Reusing an existing byte-bound native approval does not produce new metadata.
   // Validate every supplied field, ACTIVE key/binding/owner and source rationale,
@@ -304,15 +338,20 @@ export function planQuestion({question:q, previous, current, identity, registry,
     const supplied=validate({...candidate,sourceArchiveFile:source},registry,{requireFields:false});
     if(supplied.status==='VALIDATED'&&supplied.activeBinding) {
       const context=activeBindingContext({candidate,check:supplied,registry,runtimeOwner});
-      if(!context.reason&&hasSourceRationale) {
+      if(!context.reason) {
         const nativeReceipt=nativeReviewReceipt({nativeSource,question:q,previous,current,identity,source,ordinal,registry,pt:context.pt,tpl:context.tpl,ownerPack:context.ownerPack});
-        if(nativeReceipt)return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,
+        if(nativeReceipt&&(hasSourceRationale||nativeReviewedFamilyRationaleReuse(nativeReceipt,nativeSource,previous,q,identity,ordinal,current,registry)||
+          nativeReviewedMetadataRationaleReuse(nativeReceipt,nativeSource,previous,q,identity,ordinal,current,registry)))return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,
           sourceOrdinal:ordinal,inputHash,nativeReviewReceipt:nativeReceipt};
       }
     }
   }
+  if(nativeSource&&hasApprovedRendererPreservationClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
+    return reject('NATIVE_APPROVED_RENDERER_PRESERVATION_REVALIDATION_FAILED');
   if(nativeSource&&hasNativeReviewedSourceClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
     return reject('NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED');
+  if(nativeSource&&hasAuditSourcePreservationClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord}))
+    return reject('NATIVE_AUDIT_SOURCE_PRESERVATION_REVALIDATION_FAILED');
   if(nativeSource&&hasNativeSourcePreservationClaim({root:nativeSource.root,current,runtimeRecord:nativeSource.runtimeRecord,nativeSource}))
     return reject('NATIVE_SOURCE_PRESERVATION_REVALIDATION_FAILED');
   // All new registrations and missing/stale/incompatible native evidence retain
@@ -325,7 +364,13 @@ export function planQuestion({question:q, previous, current, identity, registry,
   const {pt,tpl,binding,pack,ownerPack}=context;
   // Existing declarations are evidence of what was merged, not proof of independent mathematical QA.
   if(!hasSourceRationale) return reject('SOURCE_SEMANTIC_RATIONALE_MISSING');
-  if(!binding.L1||!binding.L2||!pt.canonicalLabelKo||!tpl.canonicalLabelKo) return reject('CANONICAL_LABELS_MISSING');
+  let parentLabels={L1:binding.L1,L2:binding.L2},parentRetry=null;
+  if(canonicalParentRetry) {
+    try {parentRetry=resolveCanonicalParentRetry({state:canonicalParentRetry,source,ordinal,question:q,previous,current,identity,registry,binding,candidate,nativeSource,priorReceipt,studentChanged,validatedCurriculum:check.curriculum});}
+    catch(error){return reject(String(error.message));}
+    parentLabels=parentRetry;
+  }
+  if(!parentLabels.L1||!parentLabels.L2||!pt.canonicalLabelKo||!tpl.canonicalLabelKo) return reject('CANONICAL_LABELS_MISSING');
   // A newly available registry binding does not resolve a reviewed row's
   // explicit type hold. Keep its approved basic fields and provenance intact;
   // only an explicit reviewed registration may replace these held values.
@@ -335,7 +380,7 @@ export function planQuestion({question:q, previous, current, identity, registry,
     return reject('EXPLICIT_PARTIAL_REVIEW_HOLD');
   const final={...candidate,sourceFingerprint:fp,contentFingerprint:cf,curriculum:check.curriculum,curriculumKey:check.curriculum,
     courseKey:check.curriculum===current.curriculumKey&&current.courseKey?current.courseKey:candidate.standardCourse,
-    L1:binding.L1,L2:binding.L2,L3:pt.canonicalLabelKo,L4:tpl.canonicalLabelKo,
+    L1:parentLabels.L1,L2:parentLabels.L2,L3:pt.canonicalLabelKo,L4:tpl.canonicalLabelKo,
     foundationTaxonomyStatus:'CONFIRMED',projectionStatus:'REUSE',metaFoundationStatus:'ACTIVE',
     metaFoundationPackId:ownerPack,metaFoundationPackVersion:pack.version,
     metadataRegistrationStatus:'REGISTERED',metadataRegistrationBasis:'MAIN_MERGED_EXPLICIT_METADATA',
@@ -355,10 +400,10 @@ export function planQuestion({question:q, previous, current, identity, registry,
   }
   // A rerun after a build can canonicalize summary fields; compare actual registered values, not wall-clock data.
   const effectiveFields=[...FIELDS.filter(k=>Object.hasOwn(final,k)), 'sourceFingerprint','contentFingerprint','L1','L2','L3','L4'];
-  if(priorReceipt?.inputHash===inputHash&&priorReceipt.metadataRegistrationStatus==='REGISTERED'&&effectiveFields.every(k=>equal(current[k],final[k]))) return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,inputHash};
+  if(priorReceipt?.inputHash===inputHash&&priorReceipt.metadataRegistrationStatus==='REGISTERED'&&effectiveFields.every(k=>equal(current[k],final[k]))) return {status:'ALREADY_REGISTERED',questionUid:identity.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,inputHash,...(parentRetry?{canonicalParentRetry:parentRetry.proof}:{})};
   return {status:'APPLY',questionUid:identity.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,inputHash,ownerPack,final,
     changedFields:effectiveFields.filter(k=>!equal(current[k],final[k])),preserveReview,coreChanged,sourceMetaChanged,
-    studentPayloadHash:hash(pick(q,STUDENT)),sourceQuestionNo:questionNo};
+    studentPayloadHash:hash(pick(q,STUDENT)),sourceQuestionNo:questionNo,...(parentRetry?{canonicalParentRetry:parentRetry.proof}:{})};
 }
 
 async function context(root) {
@@ -437,7 +482,7 @@ function replayBatch(root, file, {config,state,head}) {
   return binding;
 }
 
-export async function registerMergedSource({root=ROOT,write:doWrite=false,reportPath,replayReportPath}={}) {
+export async function registerMergedSource({root=ROOT,write:doWrite=false,reportPath,replayReportPath,canonicalParentRetryRequestPath,canonicalParentRetryRequestSha256}={}) {
   root=path.resolve(root);
   if(replayReportPath&&doWrite)throw Error('AUTO_META_REPLAY_READ_ONLY');
   const config=read(root,CONFIG); if(config?.enabled!==true){const r={status:'DISABLED',processed:0,results:[]};if(reportPath)fs.writeFileSync(reportPath,json(r));return r;}
@@ -445,8 +490,18 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   if(doWrite&&process.env.GITHUB_ACTIONS==='true'&&process.env.GITHUB_REF!=='refs/heads/main')throw Error('MAIN_ONLY_WRITER');
   const state=read(root,STATE,{schemaVersion:VERSION,lastProcessedCommit:config.bootstrapBase,pending:{},completedPilots:[],latestReceipts:{}});
   const replay=replayReportPath?replayBatch(root,replayReportPath,{config,state,head}):null;
-  const targets=replay?structuredClone(replay.targets):selectTargets(root,state,config,head);
-  const report={schemaVersion:VERSION,head,base:state.lastProcessedCommit,write:doWrite,results:[],studentFilesChanged:0,unrelatedMetadataChanged:0};
+  if(replay&&(canonicalParentRetryRequestPath||canonicalParentRetryRequestSha256))throw Error('CANONICAL_PARENT_RETRY:REPLAY_OPTIONS');
+  const retryRef=replay?.targets?.[0]?.[1]?.canonicalParentRetry || (canonicalParentRetryRequestPath?{path:canonicalParentRetryRequestPath,sha256:canonicalParentRetryRequestSha256}:null);
+  const parentRetry=retryRef?loadCanonicalParentRetry(root,retryRef.path,retryRef.sha256):null;
+  if(canonicalParentRetryRequestSha256&&!parentRetry)throw Error('CANONICAL_PARENT_RETRY:REQUEST_REQUIRED');
+  const targets=replay?structuredClone(replay.targets):parentRetry?canonicalParentRetryTargets(parentRetry):selectTargets(root,state,config,head);
+  if(parentRetry&&!equal(targets,canonicalParentRetryTargets(parentRetry)))throw Error('CANONICAL_PARENT_RETRY:TARGET_SCOPE');
+  if(parentRetry)for(const [key,target]of targets) {
+    const queued=state.pending?.[key],item=parentRetry.request.items.find(r=>r.sourceOrdinal===target.sourceOrdinal);
+    if(queued&&queued.baseCommit!==target.baseCommit)throw Error('CANONICAL_PARENT_RETRY:PENDING_BASE_CONFLICT');
+    if(!queued&&!state.latestReceipts?.[item.questionUid])throw Error('CANONICAL_PARENT_RETRY:PENDING_TARGET_REQUIRED');
+  }
+  const report={schemaVersion:VERSION,head,base:state.lastProcessedCommit,write:doWrite,results:[],studentFilesChanged:0,unrelatedMetadataChanged:0,...(parentRetry?{canonicalParentRetryRequest:{path:parentRetry.path,sha256:parentRetry.requestSha256},selectedUidCount:parentRetry.request.items.length}:{})};
   if(!targets.length){
     if(replay?.registrySha&&(await context(root)).registry.registrySha!==replay.registrySha)throw Error('AUTO_META_REPLAY_REGISTRY_DRIFT');
     const batch={schemaVersion:REPLAY_VERSION,head,configSha256:hash(config),registrySha:null,targets:[],results:[],rowBindings:[],sourceHashes:{},immutableOutputs:{}};
@@ -467,6 +522,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   const beforeRows=new Map(c.metadata.records.map(r=>[r.questionUid,hash(r)])),touched=new Set(),sourceHashes=new Map();
   const max=config.maxQuestionsPerRun||100;
   if(!Number.isInteger(max)||max<1||max>500)throw Error('BATCH_LIMIT_INVALID');
+  if(parentRetry&&targets.length>max)throw Error('CANONICAL_PARENT_RETRY:BATCH_LIMIT');
   const sourceDelta=git(root,'diff','--name-only',state.lastProcessedCommit,head,'--','archive/exams/').trim();
   let acted=0;
   for(let ti=0;ti<targets.length;ti++) {
@@ -489,7 +545,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       const priorPath=state.latestReceipts?.[id?.questionUid];
       if(priorPath&&!new RegExp('^\\.archive-meta-register/auto/receipts/[A-Za-z0-9_-]+\\.json$').test(priorPath))throw Error('RECEIPT_PATH_INVALID');
       const prior=priorPath?read(root,priorPath):null;
-      const attemptSignature=hash({source:sourceHashes.get(rel),metadata:current,registry:c.registry.registrySha});
+      const attemptSignature=hash({source:sourceHashes.get(rel),metadata:current,registry:c.registry.registrySha,...(parentRetry?{canonicalParentRetry:{requestSha256:parentRetry.requestSha256,masterSha256:parentRetry.request.masterRef.sha256}}:{})});
       if(!replay&&state.pending?.[key]?.attemptSignature===attemptSignature) {
         report.results.push({status:'SUPPLEMENT_PENDING_UNCHANGED',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:state.pending[key].lastReasons});
         continue;
@@ -498,8 +554,8 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       const runtimeOwner=c.owners.get(id?.questionUid),nativeSource=sourceBindings.get(source);
       if(['FINAL_QA','REVIEW2','META_PIPELINE_AUDIT'].includes(current?.metadataApprovalType)&&!nativeSource.blobSha1)
         nativeSource.blobSha1=execFileSync('git',['hash-object','--path',rel,'--stdin'],{cwd:root,input:nativeSource.bytes,encoding:'utf8',stdio:['pipe','pipe','pipe']}).trim();
-      result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,
-        nativeSource:{...nativeSource,identityMap:c.identityMap,identityByJoin:c.identityByJoin,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
+      result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,canonicalParentRetry:parentRetry,
+        nativeSource:{...nativeSource,...(parentRetry?{previousSourceBytes:execFileSync('git',['show',`${target.baseCommit}:${rel}`],{cwd:root,maxBuffer:16*1024*1024,stdio:['pipe','pipe','pipe']})}:{}),identityMap:c.identityMap,identityByJoin:c.identityByJoin,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
           runtimeStatus:c.runtimes.get(runtimeOwner)?.data.status}});
       if(result.status==='APPLY') {
         const rt=c.runtimes.get(result.ownerPack);if(!rt||rt.data.status!=='ACTIVE')throw Error('OWNER_RUNTIME_MISSING');
@@ -514,7 +570,8 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
           before:pick(current,result.changedFields),after:pick(final,result.changedFields),changedFields:result.changedFields};
         const receipt={...request,metadataRegistrationStatus:'REGISTERED',consumerStatus:'PENDING_VERIFICATION',
           studentPayloadHash:result.studentPayloadHash,coreChanged:result.coreChanged,reviewPreserved:result.preserveReview,
-          values:pick(final,[...FIELDS,'sourceFingerprint','contentFingerprint','L1','L2','L3','L4'])};
+          values:pick(final,[...FIELDS,'sourceFingerprint','contentFingerprint','L1','L2','L3','L4']),
+          ...(result.canonicalParentRetry?{canonicalParentRetry:result.canonicalParentRetry,registeredMetadataSha256:hash(final)}:{})};
         const existing=read(root,reqPath);
         if(existing&&!equal(existing,request))throw Error('IMMUTABLE_REQUEST_CONFLICT');
         const priorStoredReceipt=read(root,receiptPath);
@@ -529,6 +586,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
         nextState.latestReceipts[result.questionUid]=receiptPath;
         result={...result,requestId,receiptPath};delete result.final;
       }
+      if(parentRetry&&result.status==='ALREADY_REGISTERED')result={...result,receiptPath:priorPath};
       if(['APPLY','ALREADY_REGISTERED'].includes(result.status)) {
         delete nextState.pending[key];
         if(target.pilot&&!nextState.completedPilots.includes(key))nextState.completedPilots.push(key);
@@ -544,8 +602,10 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
     }
     report.results.push(result);
   }
+  if(parentRetry&&(attemptedTargets.length!==targets.length||report.results.some(r=>!['APPLY','ALREADY_REGISTERED'].includes(r.status))))throw Error('CANONICAL_PARENT_RETRY:BATCH_REFUSED:'+JSON.stringify(report.results.map(r=>({sourceOrdinal:r.sourceOrdinal,status:r.status,reasons:r.reasons}))));
+  if(parentRetry)nextState.completedCanonicalParentRetries={...(state.completedCanonicalParentRetries||{}),[parentRetry.requestSha256]:{requestPath:parentRetry.path,requestSha256:parentRetry.requestSha256,receipts:report.results.map(r=>({questionUid:r.questionUid,path:r.receiptPath,sha256:sha256(outputs.has(r.receiptPath)?json(outputs.get(r.receiptPath)):fs.readFileSync(path.join(root,r.receiptPath)))}))}};
   // A queued batch is durable in the SAME commit as its cursor. Missed events are caught up from this cursor.
-  if(sourceDelta||touched.size||acted&&targets.some(([,t])=>t.pilot&&!state.completedPilots?.includes(`${t.sourceArchiveFile}#${t.sourceOrdinal}`)))nextState.lastProcessedCommit=head;
+  if(!parentRetry&&(sourceDelta||touched.size||acted&&targets.some(([,t])=>t.pilot&&!state.completedPilots?.includes(`${t.sourceArchiveFile}#${t.sourceOrdinal}`))))nextState.lastProcessedCommit=head;
   for(const row of c.metadata.records)if(!touched.has(row.questionUid)&&beforeRows.get(row.questionUid)!==hash(row))throw Error('UNRELATED_UID_MUTATION');
   for(const [rel,sha]of sourceHashes)if(sha256(fs.readFileSync(path.join(root,rel)))!==sha)throw Error('STUDENT_SOURCE_MUTATION');
   if(touched.size) {
@@ -590,7 +650,7 @@ export async function verifyMergedSource({root=ROOT,reportPath}) {
   if(report.unrelatedMetadataDigest&&hash(c.metadata.records.filter(r=>!appliedUids.has(r.questionUid)).sort((a,b)=>a.questionUid.localeCompare(b.questionUid,'en')))!==report.unrelatedMetadataDigest)throw Error('BUILD_CHANGED_UNRELATED_METADATA');
   for(const [rel,digest] of Object.entries(report.sourceHashes||{}))if(sha256(fs.readFileSync(path.join(root,rel)))!==digest)throw Error('BUILD_CHANGED_SOURCE');
   const verified=[];
-  for(const r of report.results.filter(r=>r.status==='APPLY')) {
+  for(const r of report.results.filter(r=>r.status==='APPLY'||report.canonicalParentRetryRequest&&r.status==='ALREADY_REGISTERED')) {
     const receipt=read(root,r.receiptPath),row=c.metaByUid.get(r.questionUid),owner=c.owners.get(r.questionUid),rt=c.runtimes.get(owner)?.data.records.find(x=>x.questionUid===r.questionUid),consumer=byUid.get(r.questionUid);
     if(!receipt||!row||!rt||!consumer)throw Error('REGISTERED_UID_MISSING:'+r.questionUid);
     for(const f of ['problemTypeKey','templateKey','crossConceptKeys','conditionKeys','integrationPattern','difficultyBucket']) {
@@ -612,11 +672,13 @@ export async function verifyMergedSource({root=ROOT,reportPath}) {
   if(verified.length)write(root,`${AUTO}/last-verification.json`,{schemaVersion:VERSION,head:report.head,...result});
   return result;
 }
-if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
+// Finish module evaluation before Consumer imports this module back through the registrar.
+async function runCli() {
   const a=process.argv.slice(2),get=k=>a.includes(k)?a[a.indexOf(k)+1]:undefined;
   try {
     const root=get('--root')||ROOT,reportPath=get('--report')||path.join(process.env.RUNNER_TEMP||'/tmp','archive-auto-meta-report.json');
-    const result=a.includes('--verify')?await verifyMergedSource({root,reportPath}):await registerMergedSource({root,write:a.includes('--write'),reportPath,replayReportPath:get('--replay-report')});
+    const result=a.includes('--verify')?await verifyMergedSource({root,reportPath}):await registerMergedSource({root,write:a.includes('--write'),reportPath,replayReportPath:get('--replay-report'),canonicalParentRetryRequestPath:get('--canonical-parent-retry-request'),canonicalParentRetryRequestSha256:get('--canonical-parent-retry-sha256')});
     console.log(JSON.stringify(result,null,2));
   }catch(e){console.error('AUTO_META_FAILED:',e.stack||e);process.exitCode=1;}
 }
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) void runCli();

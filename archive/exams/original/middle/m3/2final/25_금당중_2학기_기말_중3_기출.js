@@ -47,7 +47,10 @@ window.questionBank=[
     "difficultyConfidence": "medium",
     "difficultyBucket": 2,
     "primaryMethod": "작은 중심각의 보각이 아니라 전체 360°에서 뺀 큰 호의 중심각을 만들고 그 절반을 원주각으로 읽는다.",
-    "decisiveStep": "작은 중심각의 보각이 아니라 전체 360°에서 뺀 큰 호의 중심각을 만들고 그 절반을 원주각으로 읽는다."
+    "decisiveStep": "작은 중심각의 보각이 아니라 전체 360°에서 뺀 큰 호의 중심각을 만들고 그 절반을 원주각으로 읽는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -95,7 +98,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "원주각에서 전체 호 AC를 복원하고 중심각이 정한 호 BC를 빼서 호 AB의 절반을 구한다.",
-    "decisiveStep": "원주각에서 전체 호 AC를 복원하고 중심각이 정한 호 BC를 빼서 호 AB의 절반을 구한다."
+    "decisiveStep": "원주각에서 전체 호 AC를 복원하고 중심각이 정한 호 BC를 빼서 호 AB의 절반을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -143,7 +149,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "원 전체를 3:5:7로 비례배분해 호 AB의 중심각을 구한 뒤 원주각의 절반 관계를 적용한다.",
-    "decisiveStep": "원 전체를 3:5:7로 비례배분해 호 AB의 중심각을 구한 뒤 원주각의 절반 관계를 적용한다."
+    "decisiveStep": "원 전체를 3:5:7로 비례배분해 호 AB의 중심각을 구한 뒤 원주각의 절반 관계를 적용한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -192,7 +201,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "주어진 원주 비와 호 길이 비를 중심각으로 바꾸고, 교차하는 두 현의 각을 대하는 두 호 합의 절반으로 계산한다.",
-    "decisiveStep": "주어진 원주 비와 호 길이 비를 중심각으로 바꾸고, 교차하는 두 현의 각을 대하는 두 호 합의 절반으로 계산한다."
+    "decisiveStep": "주어진 원주 비와 호 길이 비를 중심각으로 바꾸고, 교차하는 두 현의 각을 대하는 두 호 합의 절반으로 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -241,7 +253,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "지름이 정한 180°의 호와 중심각 50°의 작은 호의 차를 두 할선의 바깥각으로 바꾼다.",
-    "decisiveStep": "지름이 정한 180°의 호와 중심각 50°의 작은 호의 차를 두 할선의 바깥각으로 바꾼다."
+    "decisiveStep": "지름이 정한 180°의 호와 중심각 50°의 작은 호의 차를 두 할선의 바깥각으로 바꾼다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -290,7 +305,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "두 원주각이 보는 큰 호와 작은 호를 구분하여 여집합 호를 구한 후 필요한 호의 차에서 중심각을 얻는다.",
-    "decisiveStep": "두 원주각이 보는 큰 호와 작은 호를 구분하여 여집합 호를 구한 후 필요한 호의 차에서 중심각을 얻는다."
+    "decisiveStep": "두 원주각이 보는 큰 호와 작은 호를 구분하여 여집합 호를 구한 후 필요한 호의 차에서 중심각을 얻는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -339,7 +357,10 @@ window.questionBank=[
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "이등변삼각형의 밑각을 β로 두고 접현각과 삼각형 내각합으로 β를 정한 뒤 내접사각형 대각의 합을 쓴다.",
-    "decisiveStep": "이등변삼각형의 밑각을 β로 두고 접현각과 삼각형 내각합으로 β를 정한 뒤 내접사각형 대각의 합을 쓴다."
+    "decisiveStep": "이등변삼각형의 밑각을 β로 두고 접현각과 삼각형 내각합으로 β를 정한 뒤 내접사각형 대각의 합을 쓴다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -388,7 +409,10 @@ window.questionBank=[
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "원주각으로 두 호를 정한 다음 교차현의 각에서 미지 호를 복원하고 전체 호의 합으로 나머지 호를 얻어 2x−y를 계산한다.",
-    "decisiveStep": "원주각으로 두 호를 정한 다음 교차현의 각에서 미지 호를 복원하고 전체 호의 합으로 나머지 호를 얻어 2x−y를 계산한다."
+    "decisiveStep": "원주각으로 두 호를 정한 다음 교차현의 각에서 미지 호를 복원하고 전체 호의 합으로 나머지 호를 얻어 2x−y를 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -437,7 +461,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 4,
     "primaryMethod": "내접한 두 원의 공통접선을 보조로 세워 접현각을 두 원 사이에 옮기고, 작은 원의 접현각과 삼각형 각합으로 x의 식을 만든다.",
-    "decisiveStep": "내접한 두 원의 공통접선을 보조로 세워 접현각을 두 원 사이에 옮기고, 작은 원의 접현각과 삼각형 각합으로 x의 식을 만든다."
+    "decisiveStep": "내접한 두 원의 공통접선을 보조로 세워 접현각을 두 원 사이에 옮기고, 작은 원의 접현각과 삼각형 각합으로 x의 식을 만든다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -964,7 +991,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "접선과 평행한 현으로 옮긴 각과 접현각이 같음을 연결하여 두 밑각이 같음을 보이고, 정삼각형이 되는 각 60°를 정한다.",
-    "decisiveStep": "접선과 평행한 현으로 옮긴 각과 접현각이 같음을 연결하여 두 밑각이 같음을 보이고, 정삼각형이 되는 각 60°를 정한다."
+    "decisiveStep": "접선과 평행한 현으로 옮긴 각과 접현각이 같음을 연결하여 두 밑각이 같음을 보이고, 정삼각형이 되는 각 60°를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -1008,7 +1038,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "접현각에서 30°를 얻고 지름에 대한 원주각 90°를 확보한 뒤 특수각의 두 직각변으로 삼각형 넓이를 구한다.",
-    "decisiveStep": "접현각에서 30°를 얻고 지름에 대한 원주각 90°를 확보한 뒤 특수각의 두 직각변으로 삼각형 넓이를 구한다."
+    "decisiveStep": "접현각에서 30°를 얻고 지름에 대한 원주각 90°를 확보한 뒤 특수각의 두 직각변으로 삼각형 넓이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,

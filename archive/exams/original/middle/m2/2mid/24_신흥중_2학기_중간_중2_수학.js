@@ -3,6 +3,8 @@ window.examTitle="24_신흥중_2학기_중간_중2_수학";
 window.questionBank=[
   {
     "id": 1,
+    "imageSize": "tall",
+    "imageAlt": "AB와 AC에 같은 눈금이 있다. 밑변 BC를 오른쪽으로 늘렸을 때 C의 외각은 130도이고 A의 각은 x이다.",
     "level": "하",
     "category": "이등변삼각형",
     "originalCategory": "이등변삼각형",
@@ -11,7 +13,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "이등변삼각형",
       "도형"
@@ -27,7 +29,7 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] 삼각형의 외각과 내각은 한 직선 위에서 합이 $180^\\circ$이고, 이등변삼각형의 두 밑각은 서로 같다.\n$\\angle C=180^\\circ-130^\\circ=50^\\circ$이다. 이등변삼각형이므로 $\\angle B=50^\\circ$이다. 따라서 $x=180^\\circ-50^\\circ-50^\\circ=80^\\circ$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q01.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q1-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -54,14 +56,14 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "이등변삼각형",
       "도형",
       "복수정답"
     ],
     "wide": false,
-    "content": "다음은 두 내각의 크기가 같은 삼각형은 이등변삼각형임을 설명하는 과정이다. ㉠ ~ ㉤에 들어갈 것으로 알맞지 않은 것은?(정답2개) (4점)",
+    "content": "다음은 두 내각의 크기가 같은 삼각형은 이등변삼각형임을 설명하는 과정이다. ㉠ ~ ㉤에 들어갈 것으로 알맞지 않은 것은?(정답2개) (4점)<br><img src=\"assets/images/24_신흥중_2학기_중간_중2_수학/q2-problem-visual-v2.svg\" alt=\"삼각형 ABC에서 B와 C에 같은 각 표시가 있다. A의 두 각에도 같은 표시가 있고, A에서 이어진 선은 BC 위 D에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><div class=\"question-note-box\"><p>$\\triangle ABC$에서 $\\angle B=\\angle C$라 하고, $\\angle A$의 이등분선과 변 $BC$의 교점을 $D$라 하면 $\\triangle ABD$와 $\\triangle ACD$에서</p><p>$\\angle B=\\angle C$<br>$\\angle BAD=\\boxed{\\text{㉠}}$ …… ① 이다.</p><p>이때 삼각형의 세 내각의 합은 $180^\\circ$이므로<br>$\\angle ADB=\\boxed{\\text{㉡}}$ …… ② 이고,<br>$\\boxed{\\text{㉢}}$는 공통 …… ③ 이다.</p><p>따라서 ①, ②, ③에 의하여 $\\triangle ABD\\equiv\\triangle ACD$ ($\\boxed{\\text{㉣}}$ 합동)이므로<br>$\\overline{AB}=\\boxed{\\text{㉤}}$이다. 즉, 두 내각의 크기가 같은 삼각형은 이등변삼각형이다.</p></div>",
     "choices": [
       "㉠ : $\\angle CAD$",
       "㉡ : $\\angle ADC$",
@@ -71,7 +73,7 @@ window.questionBank=[
     ],
     "answer": "③, ④",
     "solution": "[키포인트] 빈칸에 들어갈 각과 변을 실제 두 삼각형의 대응 관계에 맞추어 확인한다.\n㉠은 $\\angle CAD$가 맞다. 또 $\\angle ADB=180^\\circ-\\angle B-\\angle BAD$이고 $\\angle ADC=180^\\circ-\\angle C-\\angle CAD$이므로 ㉡은 $\\angle ADC$가 맞다. 두 삼각형에서 공통인 변은 $AD$이므로 ㉢에 $BC$가 들어가는 것은 틀리다. 두 각과 그 사이의 변 $AD$가 각각 같으므로 합동 조건은 ASA이고, ㉣에 SAS가 들어가는 것도 틀리다. 합동 후 대응변은 $AB=AC$이므로 ㉤은 맞다.\n따라서 정답은 ③, ④이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q02.png",
+    "image": "",
     "imageSize": "tall",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -91,6 +93,8 @@ window.questionBank=[
   },
   {
     "id": 3,
+    "imageSize": "tall",
+    "imageAlt": "AB와 AC는 길이가 같다. A에서 D로 그은 각의 이등분선 위에 점 P가 있다. B와 C에서 P로 각각 선을 이었다.",
     "level": "중",
     "category": "이등변삼각형",
     "originalCategory": "이등변삼각형",
@@ -99,7 +103,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "이등변삼각형",
       "도형"
@@ -115,7 +119,7 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "[키포인트] 이등변삼각형의 꼭지각 이등분선은 대칭축이므로, 축 위의 점은 양쪽 꼭짓점까지의 거리가 같다.\n$AB=AC$, $\\angle BAD=\\angle CAD$, $AD$는 공통이므로 $\\triangle ABD\\cong\\triangle ACD$이다. 따라서 $BD=CD$, $\\angle ABD=\\angle ACD$, $\\angle PDB=\\angle PDC$가 성립한다. 또한 $PD$는 공통이고 $BD=CD$이므로 $\\triangle PBD\\cong\\triangle PCD$이며 $\\angle PBD=\\angle PCD$, $PB=PC$이다. 그러나 $AP=BP$는 일반적으로 성립하지 않는다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q03.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q3-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -134,6 +138,8 @@ window.questionBank=[
   },
   {
     "id": 4,
+    "imageSize": "tall",
+    "imageAlt": "AB와 AC가 길이가 같은 삼각형의 꼭짓각은 56도이다. C에서 각을 나눈 선은 AB의 D에 닿는다. D에서는 DB와 DC 사이의 각을 표시했다.",
     "level": "중",
     "category": "이등변삼각형",
     "originalCategory": "이등변삼각형",
@@ -142,7 +148,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "이등변삼각형",
       "도형"
@@ -158,7 +164,7 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "[키포인트] 이등변삼각형의 밑각을 구한 뒤, 각의 이등분선으로 나뉜 각을 사용한다.\n$\\angle B=\\angle C=\\dfrac{180^\\circ-56^\\circ}{2}=62^\\circ$이다. $CD$가 $\\angle C$의 이등분선이므로 $\\angle BCD=31^\\circ$이다. 따라서 $\\angle BDC=180^\\circ-62^\\circ-31^\\circ=87^\\circ$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q04.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q4-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -177,6 +183,8 @@ window.questionBank=[
   },
   {
     "id": 5,
+    "imageSize": "tall",
+    "imageAlt": "B, D, A는 한 비스듬한 직선 위에 있다. B, E, C는 가로로 차례대로 있다. BD, DE, EA, AC에는 같은 눈금이 있다. B의 각은 20도이다.",
     "level": "상",
     "category": "이등변삼각형",
     "originalCategory": "이등변삼각형",
@@ -185,7 +193,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "이등변삼각형",
       "도형"
@@ -201,7 +209,7 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "[키포인트] 연속해서 주어진 같은 길이로 이등변삼각형을 만들고 각을 차례대로 전달한다.\n$BD=DE$이므로 $\\angle DBE=\\angle BED=20^\\circ$이고 $\\angle BDE=140^\\circ$이다. $B,D,A$가 한 직선 위에 있으므로 $\\angle ADE=40^\\circ$이다. $DE=EA$이므로 $\\angle DAE=40^\\circ$, $\\angle DEA=100^\\circ$이다. 따라서 $\\angle BEA=20^\\circ+100^\\circ=120^\\circ$이고, $B,E,C$가 한 직선 위에 있으므로 $\\angle AEC=60^\\circ$이다. $EA=AC$이므로 $\\angle ECA=60^\\circ$이고, 결국 $\\angle EAC=180^\\circ-60^\\circ-60^\\circ=60^\\circ$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q05.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q5-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -221,6 +229,7 @@ window.questionBank=[
   },
   {
     "id": 6,
+    "imageAlt": "(1)은 빗변 4 cm와 50도, (2)는 빗변 5 cm와 50도 및 40도, (3)은 빗변 4 cm와 40도이다. (4)는 빗변 5 cm와 가로 직각변 4 cm, (5)는 왼쪽 직각변 5 cm와 40도 및 50도이다. (6)은 A가 직각이고 AB는 4, AC는 7이다. (7)은 빗변 5 cm와 세로 직각변 4 cm이다. (8)은 I가 직각이고 IH는 4, GH는 7이다.",
     "level": "중",
     "category": "직각삼각형의 합동",
     "originalCategory": "직각삼각형의 합동",
@@ -229,7 +238,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "직각삼각형의 합동",
       "도형"
@@ -245,7 +254,7 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] 직각삼각형은 빗변과 다른 한 변이 각각 같으면 RHS 합동이다.\n(4)는 빗변의 길이가 $5\\,\\mathrm{cm}$이고 한 직각변의 길이가 $4\\,\\mathrm{cm}$이다. (7)도 빗변이 $5\\,\\mathrm{cm}$이고 한 직각변이 $4\\,\\mathrm{cm}$이다. 따라서 (4)와 (7)은 빗변과 다른 한 변이 각각 같은 직각삼각형이므로 RHS 합동이다. 다른 선택지의 쌍은 표시된 길이나 예각이 서로 일치하지 않거나 제시된 합동 조건이 맞지 않는다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q06.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q6-problem-visual-v2.svg",
     "imageSize": "tall",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -265,6 +274,8 @@ window.questionBank=[
   },
   {
     "id": 7,
+    "imageSize": "full",
+    "imageAlt": "왼쪽 B, 위쪽 A, 오른쪽 C의 윤곽과 이름만 보인다. 표시할 선과 점을 넣을 삼각형 내부가 비어 있다.",
     "level": "중",
     "category": "직각삼각형의 합동",
     "originalCategory": "직각삼각형의 합동",
@@ -273,7 +284,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "직각삼각형의 합동",
       "도형"
@@ -289,7 +300,7 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] 두 직각삼각형에서 빗변과 한 직각변이 각각 같음을 찾는다.\n$\\triangle BMD$와 $\\triangle CME$는 모두 직각삼각형이다. 두 삼각형의 빗변은 각각 $MB$, $MC$이고 $M$이 중점이므로 $MB=MC$이다. 또한 직각변 $MD=ME$가 주어졌다. 따라서 빗변과 다른 한 변이 각각 같으므로 $\\triangle BMD\\cong\\triangle CME$이고 합동 조건은 RHS이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q07.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q7-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -351,6 +362,8 @@ window.questionBank=[
   },
   {
     "id": 9,
+    "imageSize": "tall",
+    "imageAlt": "외심 O에서 세 꼭짓점까지 선이 있다. AB의 수선 발은 M, BC의 수선 발은 N, AC의 수선 발은 L이다.",
     "level": "중",
     "category": "삼각형의 외심",
     "originalCategory": "삼각형의 외심",
@@ -359,7 +372,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "삼각형의 외심",
       "도형"
@@ -375,7 +388,7 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "[키포인트] 외심에서 현에 내린 수선은 현을 이등분하지만, 서로 다른 현까지의 거리가 항상 같은 것은 아니다.\n$OM\\perp AB$이므로 $AM=BM$이다. $OA=OC$이고 $OL$은 공통인 직각삼각형 $OAL$, $OCL$은 RHS 합동이므로 $\\angle OCL=\\angle OAL$이다. 외심이므로 $OB=OC$이고, 직각삼각형 $OBN$, $OCN$도 RHS 합동이다. 그러나 $OL$과 $ON$은 서로 다른 현 $AC$, $BC$까지의 거리이므로 일반적으로 같지 않다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q09.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q9-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -394,6 +407,8 @@ window.questionBank=[
   },
   {
     "id": 10,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC의 외심 O는 밑변 BC 아래에 있다. B에서 위쪽 BA와 BC 사이가 20도이고, BC와 아래쪽 BO 사이가 15도이다.",
     "level": "상",
     "category": "삼각형의 외심",
     "originalCategory": "삼각형의 외심",
@@ -402,7 +417,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "삼각형의 외심",
       "도형"
@@ -418,7 +433,7 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "[키포인트] 외심에서 각 꼭짓점까지의 거리가 같다는 성질로 이등변삼각형의 각을 연결한다.\n$\\angle ABO=\\angle ABC+\\angle CBO=20^\\circ+15^\\circ=35^\\circ$이다. $OA=OB$이므로 $\\angle BAO=35^\\circ$이다. $\\angle ACB=c$라 두면 $\\angle ACO=c+15^\\circ$이고, $OA=OC$이므로 $\\angle OAC=c+15^\\circ$이다. 따라서 $\\angle A=35^\\circ+(c+15^\\circ)=c+50^\\circ$이다. 삼각형 $ABC$에서 $(c+50^\\circ)+20^\\circ+c=180^\\circ$이므로 $c=55^\\circ$이고 $\\angle A=105^\\circ$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q10.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q10-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -438,6 +453,8 @@ window.questionBank=[
   },
   {
     "id": 11,
+    "imageSize": "tall",
+    "imageAlt": "AC와 BC는 같은 길이이고 C는 40도이다. A와 B에서 내심 I와 외심 O를 이었다. I와 O에 이어지는 선은 서로 다른 모양이다.",
     "level": "중",
     "category": "삼각형의 외심과 내심",
     "originalCategory": "삼각형의 외심과 내심",
@@ -446,7 +463,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "삼각형의 외심과 내심",
       "도형"
@@ -462,7 +479,7 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "[키포인트] 이등변삼각형의 밑각과 내심의 각 이등분 성질을 직접 적용한다.\n$\\angle A=\\angle B=\\dfrac{180^\\circ-40^\\circ}{2}=70^\\circ$이다. 내심 $I$는 세 각의 이등분선의 교점이므로 $BI$는 $\\angle B$를 이등분한다. 따라서 $\\angle IBC=\\dfrac{70^\\circ}{2}=35^\\circ$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q11.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q11-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -525,6 +542,8 @@ window.questionBank=[
   },
   {
     "id": 13,
+    "imageSize": "full",
+    "imageAlt": "평행사변형 ABCD의 대각선 AC와 BD가 O에서 교차한다.",
     "level": "중",
     "category": "평행사변형의 성질",
     "originalCategory": "평행사변형의 성질",
@@ -533,7 +552,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "평행사변형의 성질",
       "도형"
@@ -549,7 +568,7 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "[키포인트] 평행사변형의 대각선은 서로를 이등분한다.\n$\\angle OAB=\\angle OBA$이므로 $\\triangle AOB$는 이등변삼각형이고 $OA=OB$이다. 평행사변형의 대각선은 서로를 이등분하므로 $OA=OC$, $OB=OD$이다. 따라서 $AC=OA+OC=2OA$, $BD=OB+OD=2OB$이고 $OA=OB$이므로 $AC=BD$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q13.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q13-problem-visual-v2.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -571,6 +590,8 @@ window.questionBank=[
   },
   {
     "id": 14,
+    "imageSize": "tall",
+    "imageAlt": "왼쪽 변 AB는 6 cm이다. 대각선 AC는 8 cm, BD는 12 cm이고 O에서 교차한다.",
     "level": "하",
     "category": "평행사변형의 성질",
     "originalCategory": "평행사변형의 성질",
@@ -579,7 +600,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "평행사변형의 성질",
       "도형"
@@ -595,7 +616,7 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "[키포인트] 평행사변형의 대각선 교점은 각 대각선의 중점이다.\n$AO=\\dfrac{AC}{2}=4\\,\\mathrm{cm}$이고 $BO=\\dfrac{BD}{2}=6\\,\\mathrm{cm}$이다. 따라서 $\\triangle ABO$의 둘레는 $AB+AO+BO=6+4+6=16\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q14.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q14-problem-visual-v2.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -616,6 +637,8 @@ window.questionBank=[
   },
   {
     "id": 15,
+    "imageSize": "tall",
+    "imageAlt": "AB는 8이고 윗변 AD는 11이다. A를 나눈 선이 밑변 F로, D를 나눈 선이 밑변 E로 이어진다. 밑변에는 B, E, F, C 순으로 점이 있다.",
     "level": "중",
     "category": "평행사변형의 성질",
     "originalCategory": "평행사변형의 성질",
@@ -624,7 +647,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "평행사변형의 성질",
       "도형"
@@ -640,7 +663,7 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "[키포인트] 평행선과 각의 이등분선으로 생기는 이등변삼각형을 이용한다.\n$AD\\parallel BC$이므로 $\\angle FAD=\\angle AFB$이다. 또 $AF$가 $\\angle A$의 이등분선이므로 $\\angle BAF=\\angle FAD$이다. 따라서 $\\angle BAF=\\angle AFB$이고 $BF=AB=8$이다. 같은 방법으로 $CE=CD=AB=8$이다. $BC=11$이므로 $CF=BC-BF=3$이다. 또 $CE=CF+FE$이므로 $EF=8-3=5$이다. 따라서 $BF+CF+EF=8+3+5=16$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q15.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q15-problem-visual-v2.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -668,13 +691,13 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "평행사변형이 되는 조건",
       "도형"
     ],
     "wide": false,
-    "content": "다음은 $\\square ABCD$에서 $\\overline{AD}\\parallel\\overline{BC}$이고 $\\overline{AD}=\\overline{BC}$일 때, $\\square ABCD$가 평행사변형임을 설명하는 과정이다. 다음 □ 안에 들어갈 것으로 알맞지 않은 것은? (4점)",
+    "content": "다음은 $\\square ABCD$에서 $\\overline{AD}\\parallel\\overline{BC}$이고 $\\overline{AD}=\\overline{BC}$일 때, $\\square ABCD$가 평행사변형임을 설명하는 과정이다. 다음 □ 안에 들어갈 것으로 알맞지 않은 것은? (4점)<br><img src=\"assets/images/24_신흥중_2학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"AD와 BC가 같은 길이이며 평행하다. 사각형 ABCD 안에는 A와 C를 잇는 대각선이 있다. 다른 두 변에는 조건 표시가 없다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><div class=\"question-note-box\"><p>사각형 $ABCD$에서 대각선 $AC$를 그으면, $\\triangle ABC$와 $\\triangle CDA$에서</p><p>$\\overline{BC}=\\boxed{\\text{㉠}}$ …… ①<br>$\\angle BCA=\\boxed{\\text{㉡}}$ …… ②<br>$\\boxed{\\text{㉢}}$는 공통 …… ③ 이다.</p><p>①, ②, ③에 의하여 $\\triangle ABC\\equiv\\triangle CDA$ (SAS 합동)이므로<br>$\\angle BAC=\\boxed{\\text{㉣}}$이다.</p><p>따라서 평행선과 엇각의 성질에 의하여 $\\overline{AB}\\parallel\\boxed{\\text{㉤}}$이다.<br>즉, 두 쌍의 대변이 각각 평행하므로 사각형 $ABCD$는 평행사변형이다.</p></div>",
     "choices": [
       "㉠ : $\\overline{AD}$",
       "㉡ : $\\angle DAC$",
@@ -684,7 +707,7 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] 증명 과정의 빈칸을 두 삼각형의 대응 순서에 맞추어 확인한다.\n주어진 조건에서 $BC=AD$이므로 ㉠은 $AD$이다. $AD\\parallel BC$이므로 엇각 $\\angle BCA=\\angle DAC$여서 ㉡은 $\\angle DAC$이다. $AC$는 공통이므로 ㉢은 $AC$이다. 따라서 두 삼각형은 SAS 합동이다. 합동의 대응 순서에서 $\\angle BAC$와 같은 각은 $\\angle DCA$이며, 이를 이용해 $AB\\parallel CD$를 얻는다. 그러므로 ㉣에 $\\angle CAD$가 들어가는 것은 알맞지 않다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q16.png",
+    "image": "",
     "imageSize": "tall",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
@@ -784,6 +807,8 @@ window.questionBank=[
   },
   {
     "id": 19,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC에서 B의 각은 50도이다. 외심 O에서 A와 C로 선을 이었다. 그 사이의 중심각을 표시했다.",
     "level": "중",
     "category": "삼각형의 외심",
     "originalCategory": "삼각형의 외심",
@@ -792,7 +817,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "삼각형의 외심",
@@ -803,7 +828,7 @@ window.questionBank=[
     "choices": [],
     "answer": "$100^\\circ$",
     "solution": "[키포인트] 외심에서 세 꼭짓점까지의 거리가 같아 생기는 두 이등변삼각형을 이용한다.\n$\\angle ABO=x$라 두면 $OA=OB$이므로 $\\angle OAB=x$이고 $\\angle AOB=180^\\circ-2x$이다. 한편 $\\angle OBC=50^\\circ-x$이고 $OB=OC$이므로 $\\angle BCO=50^\\circ-x$이다. 따라서 $\\angle BOC=180^\\circ-2(50^\\circ-x)=80^\\circ+2x$이다. 점 $O$ 둘레의 각의 합은 $360^\\circ$이므로 $\\angle AOC=360^\\circ-(180^\\circ-2x)-(80^\\circ+2x)=100^\\circ$이다.\n따라서 구하는 각의 크기는 $100^\\circ$이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q19.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q19-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -823,6 +848,8 @@ window.questionBank=[
   },
   {
     "id": 20,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC에서 AD와 BE가 내심 I에서 만난다. ADB는 70도, AEB는 80도이고 C의 각도 표시돼 있다.",
     "level": "상",
     "category": "삼각형의 내심",
     "originalCategory": "삼각형의 내심",
@@ -831,7 +858,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "삼각형의 내심",
@@ -842,7 +869,7 @@ window.questionBank=[
     "choices": [],
     "answer": "$40^\\circ$",
     "solution": "[키포인트] 내심에서 각의 이등분선으로 나뉜 반각을 문자로 두고 두 삼각형의 내각의 합을 이용한다.\n삼각형 $ABD$에서 $\\angle ABD=2a$, $\\angle BAD=b$이므로 $2a+b+70^\\circ=180^\\circ$, 즉 $2a+b=110^\\circ$이다. 삼각형 $ABE$에서 $\\angle ABE=a$, $\\angle BAE=2b$이므로 $a+2b+80^\\circ=180^\\circ$, 즉 $a+2b=100^\\circ$이다. 두 식을 풀면 $a=40^\\circ$, $b=30^\\circ$이다. 따라서 $\\angle A=60^\\circ$, $\\angle B=80^\\circ$이고 $\\angle C=180^\\circ-60^\\circ-80^\\circ=40^\\circ$이다.\n따라서 구하는 각의 크기는 $40^\\circ$이다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q20.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q20-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -864,6 +891,8 @@ window.questionBank=[
   },
   {
     "id": 21,
+    "imageSize": "full",
+    "imageAlt": "위쪽 A, D와 아래쪽 B, C가 연결돼 평행사변형을 이룬다. 그림 안은 비어 있다.",
     "level": "중",
     "category": "평행사변형의 성질",
     "originalCategory": "평행사변형의 성질",
@@ -872,7 +901,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "평행사변형의 성질",
@@ -883,7 +912,7 @@ window.questionBank=[
     "choices": [],
     "answer": "$AB=CD$, $BC=AD$",
     "solution": "[키포인트] 평행사변형에 대각선을 그어 두 삼각형의 ASA 합동을 증명한다.\n$AB\\parallel CD$이므로 엇각 $\\angle BAC=\\angle DCA$이다. 또한 $BC\\parallel AD$이므로 엇각 $\\angle BCA=\\angle DAC$이다. 두 삼각형에서 $AC$는 공통인 변이므로 두 각과 그 사이의 변이 각각 같아 $\\triangle ABC\\cong\\triangle CDA$이다. 따라서 대응변의 길이가 같아 $AB=CD$, $BC=AD$이다.\n따라서 평행사변형의 두 쌍의 대변의 길이는 각각 같다.",
-    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q21.png",
+    "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q21-problem-visual-v2.svg",
     "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q21-solution.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",

@@ -820,7 +820,9 @@ window.questionBank = [
     "decisiveStep": "중심 (3,3)을 y=ax+4에 대입해 a=-1/3을 확정한다.",
     "semanticSourceScope": "M2-1",
     "semanticScopeRelation": "TARGET_SCOPE",
-    "crossConceptKeys": ["CC_MIDPOINT"],
+    "crossConceptKeys": [
+      "CC_MIDPOINT"
+    ],
     "conditionKeys": [],
     "integrationPattern": "REINTERPRETATION",
     "semanticConfidence": "HIGH",
@@ -958,8 +960,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "쌍둥이 동생 한 명의 나이를 미지수로 두고 네 사람의 나이 합을 식으로 세운다.",
     "decisiveStep": "(x+5)+3x=21에서 x=4, 다훈이 나이 9를 확정한다.",
-    "semanticSourceScope": "M2-1",
-    "semanticScopeRelation": "TARGET_SCOPE",
+    "semanticSourceScope": "M1-1",
+    "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -967,26 +969,38 @@ window.questionBank = [
     "evidenceRefs": [
       "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-      "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+      "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e029-q14-native-rpm-continuity.json"
     ],
     "rpmSemanticStatus": "FINAL",
-    "rpmPrimaryRecordId": "M2-RPM-038",
+    "rpmPrimaryRecordId": "M1-RPM-042",
     "rpmPrimaryPath": {
-      "majorUnit": "일차부등식과 연립일차방정식",
-      "midUnit": "연립일차방정식의 활용",
-      "l3": "수와 개수",
-      "l4": "두 수 관계"
+      "majorUnit": "문자와 식",
+      "midUnit": "일차방정식의 활용",
+      "l3": "수와 관계",
+      "l4": "나이·개수 관계"
     },
-    "rpmL3": "수와 개수",
-    "rpmL4": "두 수 관계",
-    "projectionStatus": "RPM_ONLY",
-    "ownerPack": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
-    "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
+    "rpmL3": "수와 관계",
+    "rpmL4": "나이·개수 관계",
+    "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+    "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "NONE"
+    "boundaryStatus": "NONE",
+    "targetNamespace": {
+      "scope": "M2-1",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "majorUnit": "일차부등식과 연립일차방정식",
+      "midUnit": "연립일차방정식",
+      "rpmEffectiveParentKey": null,
+      "provenance": "SOURCE_EXPLICIT_PRESERVED"
+    },
+    "rpmPrimaryId": "M1-RPM-042",
+    "rpmL1": "문자와 식",
+    "rpmL2": "일차방정식의 활용",
+    "courseKey": "M2-1"
   },
   {
     "id": 15,

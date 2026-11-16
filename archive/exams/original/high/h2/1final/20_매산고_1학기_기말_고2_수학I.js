@@ -240,7 +240,11 @@ window.questionBank = [
       "assets/images/20_매산고_1학기_기말_고2_수학I/q14.png"
     ],
     "answer": "①",
-    "solution": "$BC=x$라 하면 $\\triangle ABC$에서 코사인법칙에 따라\n$(5\\sqrt6)^2=10^2+x^2-2\\cdot10\\cdot x\\cos60^\\circ$,\n$150=100+x^2-10x$,\n$x^2-10x-50=0$이다.\n따라서 $BC=5+5\\sqrt3$이다(길이이므로 양의 근만 취한다).\n$CD=y$라 하면 $\\triangle ACD$에 코사인법칙을 적용하여\n$(7\\sqrt2)^2=10^2+y^2-2\\cdot10\\cdot y\\cos60^\\circ$,\n$98=100+y^2-10y$,\n$y^2-10y+2=0$이다.\n따라서 가능한 $CD$는 $5+\\sqrt{23}$, $5-\\sqrt{23}$이고, 두 값 모두 $0<CD<BC$라서 점 $D$가 선분 $BC$ 위에 놓인다.\n각 경우 $BD=BC-CD$이므로 모든 $BD$의 길이의 합은\n$2BC-\\{(5+\\sqrt{23})+(5-\\sqrt{23})\\}$\n$=2(5+5\\sqrt3)-10=10\\sqrt3$이다.\n따라서 정답은 ①이다."
+    "solution": "$BC=x$라 하면 $\\triangle ABC$에서 코사인법칙에 따라\n$(5\\sqrt6)^2=10^2+x^2-2\\cdot10\\cdot x\\cos60^\\circ$,\n$150=100+x^2-10x$,\n$x^2-10x-50=0$이다.\n따라서 $BC=5+5\\sqrt3$이다(길이이므로 양의 근만 취한다).\n$CD=y$라 하면 $\\triangle ACD$에 코사인법칙을 적용하여\n$(7\\sqrt2)^2=10^2+y^2-2\\cdot10\\cdot y\\cos60^\\circ$,\n$98=100+y^2-10y$,\n$y^2-10y+2=0$이다.\n따라서 가능한 $CD$는 $5+\\sqrt{23}$, $5-\\sqrt{23}$이고, 두 값 모두 $0<CD<BC$라서 점 $D$가 선분 $BC$ 위에 놓인다.\n각 경우 $BD=BC-CD$이므로 모든 $BD$의 길이의 합은\n$2BC-\\{(5+\\sqrt{23})+(5-\\sqrt{23})\\}$\n$=2(5+5\\sqrt3)-10=10\\sqrt3$이다.\n따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/20_매산고_1학기_기말_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 삼각형 ABC의 교점 D와 AB=5√6, AC=10, AD=7√2를 보인다. 아래 확대 패널은 C 가까이에 있는 다른 교점 D′와 CD′=5−√23을 나타낸다. BD 길이의 합은 그림에 없다.",
+    "solutionImageCaption": "두 가능한 BD 길이를 각각 확인해 합한다. 정답은 10√3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

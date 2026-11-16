@@ -77,11 +77,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차방정식",
-      "근과계수"
-    ],
+    "tags": ["객관식", "이차방정식", "대입", "인수분해"],
     "wide": false,
     "content": "이차방정식 $2x^2+5x+k=0$의 한 근이 $x=-3$일 때, 다른 한 근을 구하면? (단, $k$는 상수) [4점]",
     "choices": [
@@ -109,12 +105,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차방정식",
-      "중근",
-      "판별식"
-    ],
+    "tags": ["객관식", "이차방정식", "중근", "완전제곱식"],
     "wide": false,
     "content": "이차방정식 $x^2+2mx+16=0$이 중근을 갖도록 하는 양수 $m$의 값을 구하면? [4점]",
     "choices": [
@@ -701,7 +692,7 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "level": "상",
+    "level": "중",
     "category": "이차방정식",
     "originalCategory": "이차방정식",
     "standardCourse": "중3",
@@ -728,7 +719,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "level": "상",
+    "level": "중",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3",
@@ -780,8 +771,8 @@ window.questionBank = [
     "answer": "(가) $c+\\left(\\dfrac{b}{2}\\right)^2=\\left(x+\\dfrac{b}{2}\\right)^2$, \n(나) $\\dfrac{-b+\\sqrt{b^2+4c}}{2}$",
     "solution": "직각삼각형 $ABC$에 피타고라스 정리를 적용한다.\n$AB=\\sqrt c$, $AC=CE=\\dfrac b2$, $BE=x$이므로 $BC=x+\\dfrac b2$이다. 따라서 $c+\\left(\\dfrac b2\\right)^2=\\left(x+\\dfrac b2\\right)^2$가 (가)이다. 양수인 해를 택하면 $x=\\dfrac{-b+\\sqrt{b^2+4c}}2$이므로 이것이 (나)이다.",
     "image": "assets/images/26_왕운중_1학기_기말_중3_기출/q23.png",
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
-    "subUnit": "이차방정식의 활용",
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_왕운중_1학기_기말_중3_기출/q23-solution.svg",

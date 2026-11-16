@@ -171,7 +171,7 @@ window.examData = {
       "category": "근호를 포함한 식의 계산",
       "originalCategory": "제곱근의 문자를 이용한 표현",
       "difficultyBucket": 2,
-      "level": 2,
+      "level": "하",
       "score": 4.0,
       "layoutTag": "grid",
       "wide": false,
@@ -277,6 +277,12 @@ window.examData = {
     },
     {
       "id": 8,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "AB=√(2²+1²)=√5이다. E=1−√5, F=1+√5이다. 실제 위치와 다른 설명은 ③이다.",
+      "solutionImageAlt": "모눈에서 정사각형의 A는 가로축의 1에 있고, B는 오른쪽 위, C는 맨 위, D는 왼쪽 위에 있다. A를 중심으로 B와 D를 지나는 원이 가로선을 E와 F에서 만난다. 모눈의 가로 칸과 세로 칸으로 반지름을 구하는 두 직각변을 표시했다.",
+      "solutionImage": "assets/images/17_풍덕중_1학기_중간_중3_수학/q8-solution-visual-v2.svg",
+      "imageSize": "large",
+      "imageAlt": "모눈에서 정사각형의 A는 가로축의 1에 있고, B는 오른쪽 위, C는 맨 위, D는 왼쪽 위에 있다. A를 중심으로 B와 D를 지나는 원이 가로선을 E와 F에서 만난다.",
       "number": 8,
       "type": "MULTIPLE_CHOICE",
       "questionType": "객관식",
@@ -290,7 +296,7 @@ window.examData = {
       "difficultyBucket": 2,
       "level": 2,
       "score": 4.0,
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "wide": false,
       "tags": [
         "도형",
@@ -300,7 +306,7 @@ window.examData = {
       ],
       "hasVisual": true,
       "sourceParity": "EXACT",
-      "question": "<p>8. 다음 그림과 같은 정사각형 $\\mathrm{ABCD}$의 꼭짓점 $\\mathrm{A}$를 중심으로 하고 $\\overline{\\mathrm{AB}}$를 반지름으로 하는 원을 그려, 원이 수직선과 만나는 두 점을 각각 $\\mathrm{E}$, $\\mathrm{F}$라 할 때, 다음 중 옳지 않은 것은?[4점]</p><p><img src=\"assets/images/17_풍덕중_1학기_중간_중3_수학/q08.png\" alt=\"수직선 위의 점 1을 꼭짓점 A로 하는 정사각형 ABCD에서 반지름이 선분 AB인 원이 수직선과 만나는 점 E와 F를 나타낸 기하 도형\" /></p>",
+      "question": "<p>8. 다음 그림과 같은 정사각형 $\\mathrm{ABCD}$의 꼭짓점 $\\mathrm{A}$를 중심으로 하고 $\\overline{\\mathrm{AB}}$를 반지름으로 하는 원을 그려, 원이 수직선과 만나는 두 점을 각각 $\\mathrm{E}$, $\\mathrm{F}$라 할 때, 다음 중 옳지 않은 것은?[4점]</p><p><img src=\"assets/images/17_풍덕중_1학기_중간_중3_수학/q8-problem-visual-v2.svg\" alt=\"모눈에서 정사각형의 A는 가로축의 1에 있고, B는 오른쪽 위, C는 맨 위, D는 왼쪽 위에 있다. A를 중심으로 B와 D를 지나는 원이 가로선을 E와 F에서 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "정사각형 $\\mathrm{ABCD}$의 넓이는 $5$이다.",
         "$\\overline{\\mathrm{AD}}=\\sqrt{5}$",
@@ -310,12 +316,10 @@ window.examData = {
       ],
       "answer": "③",
       "solution": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>조건: 수직선 위의 한 점 $\\mathrm{A}(1)$을 꼭짓점으로 하는 정사각형 $\\mathrm{ABCD}$가 모눈종이 위에 놓여 있습니다. 점 $\\mathrm{A}$를 중심으로 하고 $\\overline{\\mathrm{AB}}$를 반지름으로 하는 원이 수직선과 만나는 두 점이 각각 $\\mathrm{E}, \\mathrm{F}$입니다.<br/>구할 대상: 5개 선지 중 옳지 않은 것을 고릅니다.</p><p><strong>[2단계: 핵심 발상/공식/보조선]</strong><br/>1) 모눈 한 칸의 크기를 $1$이라 할 때, 직각삼각형의 밑변이 $2$, 높이가 $1$이므로 피타고라스 정리에 의해 $\\overline{\\mathrm{AB}} = \\sqrt{2^2 + 1^2} = \\sqrt{5}$입니다.<br/>2) 정사각형 $\\mathrm{ABCD}$의 넓이는 $(\\sqrt{5})^2 = 5$입니다.<br/>3) 원의 반지름은 $r = \\overline{\\mathrm{AB}} = \\sqrt{5}$이므로 선분 $\\overline{\\mathrm{AF}}$와 $\\overline{\\mathrm{AE}}$의 길이는 모두 $\\sqrt{5}$입니다.<br/>4) 점 $\\mathrm{A}$의 좌표가 $1$이므로 수직선 위의 대응점 좌표는 $\\mathrm{E}(1-\\sqrt{5})$, $\\mathrm{F}(1+\\sqrt{5})$입니다.</p><p><strong>[3단계: 연속 등식 및 충분한 중간 계산]</strong><br/>각 선지의 수학적 참/거짓을 검증합니다:<br/>- ①: 정사각형 $\\mathrm{ABCD}$의 한 변의 길이는 $\\sqrt{2^2+1^2} = \\sqrt{5}$이므로 넓이는 $(\\sqrt{5})^2 = 5$입니다. (참)<br/>- ②: $\\overline{\\mathrm{AD}} = \\sqrt{1^2+2^2} = \\sqrt{5}$입니다. (참)<br/>- ③: 선분 $\\overline{\\mathrm{AF}}$의 길이는 원의 반지름의 길이이므로 $\\overline{\\mathrm{AF}} = \\overline{\\mathrm{AB}} = \\sqrt{5}$입니다. $1+\\sqrt{5}$는 선분 $\\overline{\\mathrm{AF}}$의 길이가 아니라 점 $\\mathrm{F}$에 대응하는 '좌표'입니다. 선분의 길이와 좌표를 혼동한 서술로 거짓입니다. (거짓, 정답)<br/>- ④: $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{AE}}$는 모두 중심이 $\\mathrm{A}$인 원의 반지름이므로 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AE}}=\\sqrt{5}$로 같습니다. (참)<br/>- ⑤: 점 $\\mathrm{E}$는 기준점 $\\mathrm{A}(1)$에서 왼쪽으로 반지름 $\\sqrt{5}$만큼 이동한 점이므로 대응하는 수는 $1-\\sqrt{5}$입니다. (참)</p><p><strong>[4단계: 경우 나눔 및 5개 선지 검토]</strong><br/>① 참 (넓이는 $5$)<br/>② 참 ($\\overline{\\mathrm{AD}}=\\sqrt{5}$)<br/>③ 거짓 (선분 $\\overline{\\mathrm{AF}}$의 길이는 $\\sqrt{5}$이어야 하므로 옳지 않음, 정답)<br/>④ 참 (반지름으로 일치)<br/>⑤ 참 (점 $\\mathrm{E}$의 좌표 $1-\\sqrt{5}$)</p><p><strong>[5단계: 명확한 결론]</strong><br/>따라서 옳지 않은 것은 ③입니다.</p>",
-      "image": "assets/images/17_풍덕중_1학기_중간_중3_수학/q08.png",
+      "image": "assets/images/17_풍덕중_1학기_중간_중3_수학/q8-problem-visual-v2.svg",
       "accessibility": "수직선 위의 점 1을 꼭짓점 A로 하는 정사각형 ABCD에서 반지름이 선분 AB인 원이 수직선과 만나는 점 E와 F를 나타낸 기하 도형",
       "questionNumber": 8,
-      "images": [
-        "assets/images/17_풍덕중_1학기_중간_중3_수학/q08.png"
-      ]
+      "images": ["assets/images/17_풍덕중_1학기_중간_중3_수학/q8-problem-visual-v2.svg"]
     },
     {
       "id": 9,
@@ -446,7 +450,7 @@ window.examData = {
       "standardUnitOrder": 1,
       "category": "근호를 포함한 식의 계산",
       "originalCategory": "근호 안이 자연수가 될 확률",
-      "difficultyBucket": 2,
+      "difficultyBucket": 3,
       "level": 2,
       "score": 4.0,
       "layoutTag": "grid",
@@ -602,6 +606,8 @@ window.examData = {
       "standardUnitKey": "M3-01",
       "standardUnit": "실수와 그 계산",
       "standardUnitOrder": 1,
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "subUnit": "근호를 포함한 식의 계산",
       "category": "근호를 포함한 식의 계산",
       "originalCategory": "분모의 유리화를 이용한 식의 값 계산",
       "difficultyBucket": 2,
@@ -866,6 +872,12 @@ window.examData = {
     },
     {
       "id": 23,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "세 변의 길이는 왼쪽부터 2√3, 3√3, 4√3 cm이다. 가로의 합은 2(2√3+3√3+4√3), 바깥 세로의 합은 2×4√3이다. 따라서 둘레는 26√3 cm이다.",
+      "solutionImageAlt": "작은 정사각형부터 큰 정사각형을 왼쪽에서 오른쪽으로 정렬했다. ㉠, ㉡, ㉢의 넓이는 차례로 12, 27, 48 cm²이다. 맞닿은 변이 점선이다.",
+      "solutionImage": "assets/images/17_풍덕중_1학기_중간_중3_수학/q23-solution-visual-v2.svg",
+      "imageSize": "large",
+      "imageAlt": "작은 정사각형부터 큰 정사각형을 왼쪽에서 오른쪽으로 정렬했다. ㉠, ㉡, ㉢의 넓이는 차례로 12, 27, 48 cm²이다. 맞닿은 변이 점선이다.",
       "number": 23,
       "type": "SUBJECTIVE",
       "questionType": "서술형",
@@ -877,9 +889,9 @@ window.examData = {
       "category": "근호를 포함한 식의 계산",
       "originalCategory": "정사각형의 넓이와 둘레의 길이 계산",
       "difficultyBucket": 3,
-      "level": 3,
+      "level": "중",
       "score": 6.0,
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "wide": false,
       "tags": [
         "도형",
@@ -890,16 +902,14 @@ window.examData = {
       ],
       "hasVisual": true,
       "sourceParity": "EXACT",
-      "question": "<p>【서술형 1】 다음 그림과 같이 넓이가 각각 $12\\text{ cm}^2$, $27\\text{ cm}^2$, $48\\text{ cm}^2$ 인 정사각형 세 개를 나란히 붙여서 만든 도형의 둘레의 길이를 구하시오.[6점]\n\n(1) 정사각형 ㉠, ㉡, ㉢의 한 변의 길이를 각각 구하기 [각1점=3점]\n\n(2) 주어진 도형의 둘레의 길이 구하기[3점]</p><p><img src=\"assets/images/17_풍덕중_1학기_중간_중3_수학/q23.png\" alt=\"넓이가 각각 12 제곱센티미터, 27 제곱센티미터, 48 제곱센티미터인 세 정사각형 기역, 니은, 디귿을 나란히 붙여 만든 도형\" /></p>",
+      "question": "<p>【서술형 1】 다음 그림과 같이 넓이가 각각 $12\\text{ cm}^2$, $27\\text{ cm}^2$, $48\\text{ cm}^2$ 인 정사각형 세 개를 나란히 붙여서 만든 도형의 둘레의 길이를 구하시오.[6점]\n\n(1) 정사각형 ㉠, ㉡, ㉢의 한 변의 길이를 각각 구하기 [각1점=3점]\n\n(2) 주어진 도형의 둘레의 길이 구하기[3점]</p><p><img src=\"assets/images/17_풍덕중_1학기_중간_중3_수학/q23-problem-visual-v2.svg\" alt=\"작은 정사각형부터 큰 정사각형을 왼쪽에서 오른쪽으로 정렬했다. ㉠, ㉡, ㉢의 넓이는 차례로 12, 27, 48 cm²이다. 맞닿은 변이 점선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "(1) ㉠ 2√3 cm, ㉡ 3√3 cm, ㉢ 4√3 cm\n(2) 26√3 cm",
       "solution": "<p><strong>[1단계: 원문 조건 및 구할 대상]</strong><br/>조건: 넓이가 각각 $12\\text{ cm}^2$, $27\\text{ cm}^2$, $48\\text{ cm}^2$인 세 정사각형 ㉠, ㉡, ㉢이 가로로 밑변을 맞대어 나란히 붙어 있습니다.<br/>구할 대상:<br/>(1) 세 정사각형 ㉠, ㉡, ㉢의 한 변의 길이를 각각 구하기 [3점]<br/>(2) 주어진 도형 전체의 둘레의 길이 구하기 [3점]</p><p><strong>[2단계: 핵심 발상/공식/보조선]</strong><br/>1) 정사각형의 넓이가 $S$일 때 한 변의 길이는 $\\sqrt{S}$입니다.<br/>2) 도형의 둘레는 아래쪽 가로선, 위쪽 가로선, 가장 왼쪽 세로선, 가장 오른쪽 세로선, 그리고 계단 모양으로 내려오는 높이 차이 선분들을 모두 합산하여 구합니다.</p><p><strong>[3단계: 연속 등식 및 충분한 중간 계산]</strong><br/>(1) 세 정사각형의 한 변의 길이 구하기:<br/>- 정사각형 ㉠의 한 변의 길이:<br/>  $$\\sqrt{12} = \\sqrt{2^2 \\times 3} = 2\\sqrt{3}\\text{ cm}$$<br/>- 정사각형 ㉡의 한 변의 길이:<br/>  $$\\sqrt{27} = \\sqrt{3^2 \\times 3} = 3\\sqrt{3}\\text{ cm}$$<br/>- 정사각형 ㉢의 한 변의 길이:<br/>  $$\\sqrt{48} = \\sqrt{4^2 \\times 3} = 4\\sqrt{3}\\text{ cm}$$<br/><br/>(2) 주어진 도형의 둘레의 길이 구하기:<br/>- 가로 방향 선분의 길이의 합:<br/>  아랫변의 총길이는 세 정사각형의 한 변의 길이의 합입니다:<br/>  $$\\text{아랫변} = 2\\sqrt{3} + 3\\sqrt{3} + 4\\sqrt{3} = 9\\sqrt{3}\\text{ cm}$$<br/>  윗변의 가로선들(㉠의 윗변, ㉡의 윗변, ㉢의 윗변)의 합도 아랫변과 동일하게 $9\\sqrt{3}\\text{ cm}$입니다:<br/>  $$\\text{가로 방향 합} = 9\\sqrt{3} + 9\\sqrt{3} = 18\\sqrt{3}\\text{ cm}$$<br/>- 세로 방향 선분의 길이의 합:<br/>  가장 왼쪽 변의 길이는 ㉠의 한 변인 $2\\sqrt{3}\\text{ cm}$입니다.<br/>  가장 오른쪽 변의 길이는 ㉢의 한 변인 $4\\sqrt{3}\\text{ cm}$입니다.<br/>  ㉠과 ㉡의 높이 차이에 의한 세로선: $3\\sqrt{3} - 2\\sqrt{3} = \\sqrt{3}\\text{ cm}$<br/>  ㉡과 ㉢의 높이 차이에 의한 세로선: $4\\sqrt{3} - 3\\sqrt{3} = \\sqrt{3}\\text{ cm}$<br/>  따라서 세로 방향 선분의 합은 다음과 같습니다:<br/>  $$\\text{세로 방향 합} = 2\\sqrt{3} + 4\\sqrt{3} + \\sqrt{3} + \\sqrt{3} = 8\\sqrt{3}\\text{ cm}$$<br/>  (참고: 세로 방향 선분의 총합은 가장 높은 변인 ㉢의 높이의 $2$배인 $2 \\times 4\\sqrt{3} = 8\\sqrt{3}\\text{ cm}$와 같습니다.)<br/>- 전체 둘레의 길이:<br/>  $$\\text{둘레} = \\text{가로 합} + \\text{세로 합} = 18\\sqrt{3} + 8\\sqrt{3} = 26\\sqrt{3}\\text{ cm}$$</p><p><strong>[4단계: 단계별 계산 및 논리 전개]</strong><br/>- (1) 각 넓이에 제곱근을 취하고 소인수분해하여 $2\\sqrt{3}\\text{cm}, 3\\sqrt{3}\\text{cm}, 4\\sqrt{3}\\text{cm}$를 정확히 구함.<br/>- (2) 가로 방향 선분의 합 $18\\sqrt{3}\\text{cm}$와 세로 방향 선분의 합 $8\\sqrt{3}\\text{cm}$를 합산하여 둘레 $26\\sqrt{3}\\text{cm}$를 논리 비약 없이 유도함.</p><p><strong>[5단계: 명확한 결론]</strong><br/>따라서 최종 정답은 다음과 같습니다:<br/>(1) ㉠ $2\\sqrt{3}\\text{ cm}$, ㉡ $3\\sqrt{3}\\text{ cm}$, ㉢ $4\\sqrt{3}\\text{ cm}$<br/>(2) $26\\sqrt{3}\\text{ cm}$</p>",
-      "image": "assets/images/17_풍덕중_1학기_중간_중3_수학/q23.png",
+      "image": "assets/images/17_풍덕중_1학기_중간_중3_수학/q23-problem-visual-v2.svg",
       "accessibility": "넓이가 각각 12 제곱센티미터, 27 제곱센티미터, 48 제곱센티미터인 세 정사각형 기역, 니은, 디귿을 나란히 붙여 만든 도형",
       "questionNumber": 23,
-      "images": [
-        "assets/images/17_풍덕중_1학기_중간_중3_수학/q23.png"
-      ]
+      "images": ["assets/images/17_풍덕중_1학기_중간_중3_수학/q23-problem-visual-v2.svg"]
     },
     {
       "id": 24,

@@ -3,6 +3,7 @@ window.examTitle = "23_신흥중_1학기_기말_중2_기출";
 window.questionBank = [
   {
     "id": 1,
+    "imageAlt": "다섯 그림에서 점의 위치와 포함 표시가 다르다. ①는 2에서 왼쪽으로 이어지며 끝점은 포함한다. ②는 2에서 오른쪽으로 이어지며 끝점은 포함한다. ③는 3에서 오른쪽으로 이어지며 끝점은 비어 있다. ④는 3에서 오른쪽으로 이어지며 끝점은 포함한다. ⑤는 3에서 왼쪽으로 이어지며 끝점은 비어 있다. ",
     "level": "중",
     "category": "일차부등식",
     "originalCategory": "일차부등식",
@@ -11,7 +12,7 @@ window.questionBank = [
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차부등식",
@@ -23,7 +24,7 @@ window.questionBank = [
     "choices": [],
     "answer": "③",
     "solution": "[키포인트] 음수로 나누면 부등호의 방향이 바뀐다.\n$1-0.4x<-0.2$\n$-0.4x<-1.2$\n양변을 $-0.4$로 나누면 $x>3$이다.\n따라서 $3$은 포함하지 않고 $3$의 오른쪽을 나타낸 ③이 정답이다.",
-    "image": "assets/images/23_신흥중_1학기_기말_중2_기출/q1.png",
+    "image": "assets/images/23_신흥중_1학기_기말_중2_기출/q1-problem-visual-v2.svg",
     "imageSize": "tall",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -395,6 +396,7 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "imageAlt": "직선은 가로축의 2, 세로축의 −3을 지나 오른쪽 위로 올라간다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -403,7 +405,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -421,8 +423,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 그래프의 두 절편을 이용해 기울기와 $y$절편을 구한다.\n직선은 $(0,-3)$과 $(2,0)$을 지난다.\n기울기는 $\\dfrac{0-(-3)}{2-0}=\\dfrac32$이고 $y$절편은 $-3$이다.\n따라서 일차함수의 식은 $y=\\dfrac32x-3$이므로 정답은 ①이다.",
-    "image": "assets/images/23_신흥중_1학기_기말_중2_기출/q13.png",
-    "imageSize": "half",
+    "image": "assets/images/23_신흥중_1학기_기말_중2_기출/q13-problem-visual-v2.svg",
+    "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -595,6 +597,7 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "imageAlt": "①은 올라가면서 세로축의 양수 부분을, ②는 올라가면서 음수 부분을 지난다. ③은 내려가면서 음수 부분을, ④는 내려가면서 양수 부분을 지난다. ⑤는 올라가면서 원점을 지난다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -603,7 +606,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -615,7 +618,7 @@ window.questionBank = [
     "choices": [],
     "answer": "④",
     "solution": "[키포인트] 기울기와 $y$절편의 부호를 확인한다.\n$y=-bx+a$의 기울기는 $-b$이고 $b>0$이므로 기울기는 음수이다.\n$y$절편은 $a$이고 $a>0$이므로 $y$축의 양의 부분을 지난다.\n따라서 오른쪽 아래로 향하면서 $y$축의 양의 부분을 지나는 ④가 정답이다.",
-    "image": "assets/images/23_신흥중_1학기_기말_중2_기출/q19.png",
+    "image": "assets/images/23_신흥중_1학기_기말_중2_기출/q19-problem-visual-v2.svg",
     "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",

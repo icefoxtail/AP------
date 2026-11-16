@@ -1,3 +1,4 @@
+import { M2_E017_RHS_SCHEMA, M2_E017_RHS_UID, M2_E017_RHS_SOURCE } from "./reviewed-m2-e017-rhs-continuity.mjs";
 // Revalidate an issued opt-in source review before AutoMeta reuses its approval.
 // This read-only check grants neither a new approval nor a student-change exception.
 import fs from 'node:fs';
@@ -7,12 +8,16 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { loadCanonical } from './compile-meta-foundation.mjs';
 import { validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
+import { M2_PROBLEM_RENDERER_SCHEMA } from './reviewed-m2-problem-renderer-continuity.mjs';
 import { validateNativeReviewedParent } from './reviewed-native-parent.mjs';
+import { validateReviewedRetainedScopeParent } from './reviewed-retained-scope-transport.mjs';
 import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
-import { REVIEWED_SOURCE_BINDING_OPT_INS, hasReviewedReceiptLineage, reviewedSourceBindingItems, reviewedSourceBindingPath,
+import { REVIEWED_SOURCE_BINDING_OPT_INS, reviewedSourceBindingItems, reviewedSourceBindingPath,
   buildReviewedSourceBinding } from './reviewed-source-binding.mjs';
 import { restoreReviewedReplayCanonicalBefore } from './reviewed-replay-registry-context.mjs';
-import { isSourceSubsetRebind, validateSourceSubsetEvidence, preservedSourceEvidence } from './source-subset-preservation.mjs';
+import { reviewedRendererBindingPath, buildReviewedRendererBinding } from './reviewed-current-renderer-continuity.mjs';
+import { NATIVE_RATIONALE_CONTINUITY_SCHEMA, NATIVE_RATIONALE_SOURCE_FIELDS,
+  rationaleProtectedQuestionSha256, rationaleSourceFieldBinding } from './reviewed-native-rationale-continuity.mjs';
 
 const RECEIPTS = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const INDEX = 'archive/data/meta-foundation/canonical/registry_index.json';
@@ -30,8 +35,7 @@ const caches = new Map(), supportedFields = new Set(REVIEWED_META_VALUE_FIELDS);
 const marker = p => typeof p === 'string' && p.startsWith(RECEIPTS) && /\/[A-Za-z0-9][A-Za-z0-9_-]{0,100}\.source-review-binding\.json$/.test(p);
 const markers = row => (Array.isArray(row?.approvalEvidence) ? row.approvalEvidence : []).filter(marker);
 const typedProof = (receipt, uid) => receipt.fingerprintRepairs?.some(repair => repair.questionUid === uid &&
-  (REVIEWED_SOURCE_BINDING_OPT_INS.some(({proofKey}) => repair.sourceReview?.[proofKey] !== undefined) ||
-    hasReviewedReceiptLineage(receipt) && repair.sourceReview !== undefined)) ||
+  REVIEWED_SOURCE_BINDING_OPT_INS.some(({proofKey}) => repair.sourceReview?.[proofKey] !== undefined)) ||
   receipt.nativeParentBindings?.some(row => row.questionUid === uid);
 
 function safePath(root, relative) {
@@ -166,14 +170,30 @@ function validateDirect(receipt, context) {
     fail('registered request/fingerprint repair drift');
   const beforeTables = restoreReviewedReplayCanonicalBefore({request, currentTables:tables, root});
   const proof = validateReviewedSourceReassessment({root, request, patch, metadata:{...current,...patch.before},
-    question, final:current, supportedFields, canonicalBefore:beforeTables, canonicalAfter:tables, cache});
+    question, final:current, supportedFields, canonicalBefore:beforeTables, canonicalAfter:tables,
+    issuedSourceReview:repair.sourceReview, cache});
   if (!same(proof, repair.sourceReview)) fail('current source-review proof differs from issued proof');
-  if (patch.targetParentRef?.nativeSourceReview !== undefined) {
+  // This current-target application requires its original compound renderer
+  // contract as well as the typed source review. A source-only ancestor may
+  // preserve both proofs; it may not discard the writer-issued renderer seal.
+  if (patch.sourceReview?.currentTargetApplication !== undefined) {
+    const rendererPath = reviewedRendererBindingPath(receipt.requestId), rendererBytes = bytes(root, rendererPath);
+    const rendererDigests = receipt.outputDigests?.filter(ref => ref.path === rendererPath);
+    if (rendererDigests?.length !== 1 || rendererDigests[0].sha256 !== sha(rendererBytes) ||
+        !same(JSON.parse(rendererBytes), buildReviewedRendererBinding(receipt)) ||
+        !current.approvalEvidence?.includes(rendererPath) || !runtimeRecord.approvalEvidence?.includes(rendererPath))
+      fail('current-target renderer sidecar digest, content or provenance differs');
+  }
+  if (patch.targetParentRef?.nativeSourceReview !== undefined || patch.targetParentRef?.retainedScopeParent !== undefined) {
     const curriculum = current.curriculum || current.curriculumKey, course = current.standardCourse || current.courseKey;
     const binding = tables.bindings.get(stable([curriculum,course,current.standardUnitKey,current.subUnitKey??null,current.problemTypeKey]));
     const pt = tables.pt.get(current.problemTypeKey), tpl = tables.tpl.get(current.templateKey);
-    const parent = validateNativeReviewedParent({root, request, patch, row:current, sourceReview:proof,
-      resolved:{curriculum,course,binding,pt,tpl,pack:tables.packs.get(binding?.ownerPack || pt?.ownerPack)}});
+    const context = {root, request, patch, row:current, sourceReview:proof,
+      resolved:{curriculum,course,binding,pt,tpl,pack:tables.packs.get(binding?.ownerPack || pt?.ownerPack)}};
+    if (patch.targetParentRef.nativeSourceReview !== undefined && patch.targetParentRef.retainedScopeParent !== undefined)
+      fail('ambiguous typed target parent carrier');
+    const parent = patch.targetParentRef.nativeSourceReview !== undefined
+      ? validateNativeReviewedParent(context) : validateReviewedRetainedScopeParent(context);
     const issued = receipt.nativeParentBindings?.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
     if (issued?.length !== 1 || !same(parent, issued[0])) fail('current native parent proof differs');
   }
@@ -200,7 +220,7 @@ export function validateNativeReviewedSourceReuse(receipt, nativeSource, questio
   if (!hasNativeReviewedSourceClaim({root, current, runtimeRecord}) && !typedProof(receipt, identity.questionUid)) return null;
   if (!caches.has(root)) caches.set(root, new Map());
   const context = {root,current,runtimeRecord,question,identity,ordinal,tables:currentTables(root,registry),cache:caches.get(root)};
-  let cursor = receipt, state = selected(cursor, identity.questionUid, ordinal), cursorBank = nativeSource.bank;
+  let cursor = receipt, state = selected(cursor, identity.questionUid, ordinal);
   if (!same(state.row,current) || !same(state.runtime,runtimeRecord) || !same(state.identity,identity) ||
       !Buffer.isBuffer(nativeSource.bytes) || !Array.isArray(nativeSource.bank) ||
       !same(nativeSource.bank[ordinal-1],question) || blob(nativeSource.bytes) !== nativeSource.blobSha1 ||
@@ -225,21 +245,128 @@ export function validateNativeReviewedSourceReuse(receipt, nativeSource, questio
     const raw = bytes(root,ref.path);
     if (sha(raw) !== ref.sha256) fail('prior receipt digest changed');
     const prior = JSON.parse(raw), old = selected(prior,identity.questionUid,ordinal);
-    const subset = isSourceSubsetRebind(cursor.approval.sourceRebind);
-    if (subset) validateSourceSubsetEvidence({root, current:cursor, prior, selected:[...state.records.values()]});
     if (ref.path !== RECEIPTS+prior.requestId+'.json' || prior.examUid !== cursor.examUid || prior.sourceArchiveFile !== cursor.sourceArchiveFile ||
-        prior.expectedQuestionCount !== cursor.expectedQuestionCount || (!subset && prior.partialUidCount !== cursor.partialUidCount) ||
-        (!subset && !same([...state.records.keys()].sort(),[...old.records.keys()].sort()))) fail('source-rebind ancestor scope changed');
+        prior.expectedQuestionCount !== cursor.expectedQuestionCount || prior.partialUidCount !== cursor.partialUidCount ||
+        !same([...state.records.keys()].sort(),[...old.records.keys()].sort())) fail('source-rebind ancestor scope changed');
     const bank = priorBank(root,prior);
     for (const [uid, row] of state.records) {
       const oldRow=old.records.get(uid), oldRuntime=old.runtimes.get(uid), runtime=state.runtimes.get(uid);
-      const evidenceAfter=preservedSourceEvidence(oldRow.approvalEvidence,RECEIPTS+cursor.requestId+'.json',cursor.approval.sourceRebind);
+      const evidenceAfter=[...new Set([...(oldRow.approvalEvidence||[]),RECEIPTS+cursor.requestId+'.json'])];
       if (!same(unchangedRecord(row),unchangedRecord(oldRow)) || !same(row.approvalEvidence,evidenceAfter) ||
           !same(unchangedRecord(runtime),unchangedRecord(oldRuntime)) || !same(runtime.approvalEvidence,evidenceAfter) ||
           !same(state.identities.get(uid),old.identities.get(uid)) ||
-          !same(bank[row.sourceOrdinal-1],cursorBank[row.sourceOrdinal-1]))
+          !same(bank[row.sourceOrdinal-1],nativeSource.bank[row.sourceOrdinal-1]))
         fail('source-rebind ancestor changed a selected question, approval or identity');
     }
-    cursor=prior;state=old;cursorBank=bank;
+    cursor=prior;state=old;
   }
+}
+
+// This existing-approval lane is deliberately narrower than the source producer.
+// An older cursor may still carry the pre-review difficulty values. A FAMILY_ACTIVE
+// parent receipt can retain its two immutable native rationale values without adding
+// them to the source, only after the complete issued review and parent are replayed.
+export function nativeReviewedFamilyRationaleReuse(receiptPath, nativeSource, previous, question, identity, ordinal, current, registry) {
+  const difficulty = new Set(['difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility']);
+  const rationale = ['primaryMethod','decisiveStep'];
+  if (!previous || rationale.some(field => Object.hasOwn(previous,field) || Object.hasOwn(question,field) ||
+      typeof current[field] !== 'string' || !current[field].trim())) return false;
+  const rest = value => Object.fromEntries(Object.entries(value).filter(([field]) => !difficulty.has(field)));
+  if (!same(rest(previous),rest(question)) ||
+      ![...difficulty].some(field => !same(previous[field] ?? null,question[field] ?? null))) return false;
+  try {
+    const root = fs.realpathSync(nativeSource.root), receipt = read(root,receiptPath);
+    if (receiptPath !== RECEIPTS+receipt.requestId+'.json' || receipt.approval?.sourceRebind !== undefined ||
+        validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry) !== true) return false;
+    const request = read(root,reviewedSourceBindingPath(receipt.requestId)).requestSnapshot;
+    const patches = request.items.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+    const repairs = receipt.fingerprintRepairs.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+    const parents = receipt.nativeParentBindings?.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+    if (patches.length !== 1 || repairs.length !== 1 || parents?.length !== 1) return false;
+    const patch = patches[0], proof = repairs[0].sourceReview, parent = parents[0];
+    if (patch.targetParentRef?.nativeSourceReview?.crosswalkProfile !== 'ACTIVE_FAMILY_EXPLICIT_NATIVE_AFTER' ||
+        patch.targetParentRef.retainedScopeParent !== undefined || patch.rebind !== undefined ||
+        Object.keys(patch.sourceReview).some(key => !['schemaVersion','reviewCommit','reviewPath','reviewRef'].includes(key)) ||
+        proof.nativeSchemaVersion !== 'm2-s2-meta-review-v1' || proof.newMathematicalQa !== false ||
+        parent.crosswalkProfile !== 'ACTIVE_FAMILY_EXPLICIT_NATIVE_AFTER' || parent.primaryAuthority !== 'EXPLICIT_NATIVE_AFTER' ||
+        parent.templateCandidatesUsedAsApproval !== false || parent.sharedCrosswalkModified !== false ||
+        parent.canonicalDefinitionsModified !== false || parent.newMathematicalQa !== false) return false;
+    return rationale.every(field => Object.hasOwn(patch.after,field) && patch.after[field] === current[field] &&
+      proof.rationaleBindings?.[field]?.origin === 'NATIVE_ITEM_FIELD' &&
+      proof.rationaleBindings[field].valueSha256 === sha(current[field]));
+  } catch { return false; }
+}
+
+// This separately issued profile binds an existing metadata parent and the two
+// verbatim native item rationale fields. The generic source producer and the
+// narrower FAMILY_ACTIVE exception above retain their original contracts.
+export function nativeReviewedMetadataRationaleReuse(receiptPath, nativeSource, previous, question, identity, ordinal, current, registry) {
+  const fields = ['primaryMethod', 'decisiveStep'];
+  if (!previous || fields.some(field => Object.hasOwn(previous, field) || Object.hasOwn(question, field) ||
+      typeof current[field] !== 'string' || !current[field].trim())) return false;
+  try {
+    const root = fs.realpathSync(nativeSource.root), receipt = read(root, receiptPath);
+    if (receiptPath !== RECEIPTS + receipt.requestId + '.json' || receipt.approval.sourceRebind !== undefined ||
+        validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
+    const request = read(root, reviewedSourceBindingPath(receipt.requestId)).requestSnapshot;
+    const patches = request.items.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+    const repairs = receipt.fingerprintRepairs.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+    if (patches.length !== 1 || repairs.length !== 1) return false;
+    const patch = patches[0], sourceReview = repairs[0].sourceReview, proof = sourceReview.rationaleContinuity;
+    if (!same(patch.sourceReview.rationaleContinuity, { schemaVersion: NATIVE_RATIONALE_CONTINUITY_SCHEMA }) ||
+        proof?.schemaVersion !== NATIVE_RATIONALE_CONTINUITY_SCHEMA || proof.scope !== 'ISSUED_NATIVE_RATIONALE_REUSE_ONLY' ||
+        sourceReview.nativeSchemaVersion !== 'm2-s2-meta-review-v1' || sourceReview.newMathematicalQa !== false ||
+        proof.questionUid !== identity.questionUid || proof.sourceOrdinal !== ordinal ||
+        proof.protectedQuestionSha256 !== rationaleProtectedQuestionSha256(previous) ||
+        proof.protectedQuestionSha256 !== rationaleProtectedQuestionSha256(question) || proof.currentQuestionSha256 !== sha(stable(question)) ||
+        !same(proof.sourceMetadataFields, NATIVE_RATIONALE_SOURCE_FIELDS) ||
+        !Array.isArray(proof.nativeSourceMetadata) || proof.nativeSourceMetadata.length !== NATIVE_RATIONALE_SOURCE_FIELDS.length ||
+        proof.nativeSourceMetadata.some((entry, index) => entry.field !== NATIVE_RATIONALE_SOURCE_FIELDS[index] ||
+          ![entry.reviewed, entry.committed, rationaleSourceFieldBinding(question, entry.field)]
+            .some(bound => same(bound, rationaleSourceFieldBinding(previous, entry.field))))) return false;
+    return fields.every(field => patch.after[field] === current[field] &&
+      same(proof.rationaleBindings[field], { origin: 'NATIVE_ITEM_FIELD', valueSha256: sha(current[field]) }) &&
+      same(proof.rationaleBindings[field], sourceReview.rationaleBindings[field]));
+  } catch { return false; }
+}
+
+// The exact three-item M2 renderer contract changes only a separately witnessed
+// picture presentation. Revalidate its complete typed request first, then bind
+// an older cursor to one of that proof's immutable whole questions. A generic
+// typed review or a matching student fingerprint is not renderer authority.
+export function nativeReviewedM2ProblemRendererRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (!previous || receipt.approval?.sourceRebind !== undefined) return false;
+  const matches = receipt.fingerprintRepairs?.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+  const proof = matches?.[0]?.sourceReview?.m2ProblemRendererContinuity;
+  if (matches?.length !== 1 || proof?.schemaVersion !== M2_PROBLEM_RENDERER_SCHEMA ||
+      proof.questionUid !== identity.questionUid || proof.sourceOrdinal !== ordinal ||
+      proof.sourceArchiveFile !== receipt.sourceArchiveFile || proof.memoryOnlyNormalization !== true ||
+      proof.newMathematicalQa !== false || proof.newMetadataApprovals !== 0 || proof.newDifficultyJudgments !== 0 ||
+      proof.newReview2Claims !== 0 || proof.sourceWrites !== 0 || proof.rendererWrites !== 0) return false;
+  try {
+    if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
+    const previousSha = sha(stable(previous));
+    return [proof.nativeReviewedSource, proof.nativeCommittedSource, proof.prefigureSource]
+      .some(ref => SHA256.test(ref?.questionSha256 || '') && ref.questionSha256 === previousSha);
+  } catch { return false; }
+}
+
+// The one reviewed solution line is carried only after the entire issued typed
+// request and immutable UI/authority binding have been replayed. A payload hash
+// or an ordinary receipt never grants this old-cursor continuation.
+export function nativeReviewedE017RhsRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (!previous || identity.questionUid !== M2_E017_RHS_UID || ordinal !== 2 ||
+      receipt.sourceArchiveFile !== M2_E017_RHS_SOURCE || receipt.approval?.sourceRebind !== undefined) return false;
+  const matches = receipt.fingerprintRepairs?.filter(r => r.questionUid === identity.questionUid && r.sourceOrdinal === ordinal);
+  const proof = matches?.[0]?.sourceReview?.e017RhsContinuity;
+  if (matches?.length !== 1 || proof?.schemaVersion !== M2_E017_RHS_SCHEMA || proof.questionUid !== identity.questionUid ||
+      proof.sourceOrdinal !== ordinal || proof.sourceArchiveFile !== receipt.sourceArchiveFile || proof.memoryOnlyNormalization !== true ||
+      proof.newMathematicalQa !== false || proof.newMetadataApprovals !== 0 || proof.newDifficultyJudgments !== 0 ||
+      proof.newReview2Claims !== 0 || proof.sourceWrites !== 0 || proof.rendererWrites !== 0) return false;
+  try {
+    if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
+    const prior = sha(stable(previous));
+    return [proof.nativeReviewedQuestionSha256, proof.nativeCommittedQuestionSha256, proof.reviewedCurrentQuestionSha256]
+      .some(value => SHA256.test(value || '') && value === prior);
+  } catch { return false; }
 }

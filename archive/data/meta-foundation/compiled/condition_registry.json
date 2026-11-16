@@ -2,7 +2,7 @@
   "schemaVersion": "meta-foundation-condition-registry-v1",
   "owner": "CONDITION_CORE",
   "status": "DERIVED_READ_ONLY",
-  "conditionCount": 57,
+  "conditionCount": 58,
   "conditions": [
     {
       "conditionKey": "COND_INTEGER",
@@ -3192,6 +3192,38 @@
           "sourceOrdinal": 6,
           "sourceTextExcerpt": "삼각형 $ABC$의 세 변의 길이를 $a$, $b$, $c$라고 하자. 등식 $a^3+a^2c+ac^2-b^3-b^2c-bc^2=0$이 성립할 때, 삼각형 $ABC$는 어떤 삼각형인지 말하시오. [4.1점]",
           "solutionDecisiveExcerpt": "주어진 식을 $a$에 관한 부분과 $b$에 관한 부분으로 묶는다.\n$a^3-b^3+c(a^2-b^2)+c^2(a-b)=0$이다.\n$(a-b)\\{a^2+ab+b^2+c(a+b)+c^2\\}=0$이다.\n$a,b,c$는 삼각형의 세 변의 길이이므로 모두 양수이다.\n따라서 괄호 안의 $a^2+ab+b^2+c(a+b)+c^2$는 양수이다.\n곱이 $0$이 되려면 $a-b=0$, 곧 $a=b$여야 한다.\n두 변의 길이가 같으므로 $a=b$인 이등변삼각형이다. 정답은 ①이다."
+        }
+      ]
+    },
+    {
+      "conditionKey": "COND_EXCLUDED_ANGLE_VALUE",
+      "canonicalLabelKo": "특정 예각 값 제외",
+      "definition": "문제에서 특정 예각 값을 제외하도록 명시하여, 그 각에서 서로 다른 삼각비 표현이 같은 값을 갖는 경우를 배제하는 조건.",
+      "aliases": [],
+      "owner": "CONDITION_CORE",
+      "status": "ACTIVE",
+      "sourceEligibility": "ORIGINAL_EXAM",
+      "supportingQuestionUids": [
+        "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74"
+      ],
+      "supportingItemCount": 1,
+      "evidenceProvenance": [
+        {
+          "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+          "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+          "sourceOrdinal": 8,
+          "nativeReviewRef": {
+            "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+            "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9"
+          },
+          "nativeProposalDocumentRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.proposals.json",
+            "sha256": "3bfceaeaccaaa79e8b06912de334d13920ea4cc4ff05cf3b9195c6cb88f6e3e4"
+          },
+          "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+          "currentSourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+          "currentSourceRawSha256": "616a36936b61a7885e83b4c0702a09006f759819bc8abb03e23b6455672dba98"
         }
       ]
     }

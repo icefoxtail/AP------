@@ -245,8 +245,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 문장을 $y = (x\\text{에 대한 이차식})$ 꼴의 함수식으로 나타낼 수 있는지 확인한다.\\n정석 풀이:\\n① $x$각형의 대각선의 개수 $y$는 $y = \\dfrac{x(x-3)}{2} = \\dfrac{1}{2}x^2 - \\dfrac{3}{2}x$ 이므로 이차함수가 맞다.\\n② $x$각형의 내각의 합의 크기 $y$는 $y = 180(x-2) = 180x - 360$ 이므로 일차함수이다. 따라서 이차함수가 아니다.\\n③ 반지름의 길이가 $x$ cm인 원의 넓이 $y$는 $y = \\pi x^2$ 이므로 이차함수가 맞다.\\n④ 한 모서리의 길이가 $x$ cm인 정육면체의 겉넓이 $y$는 정육면체의 여섯 면의 넓이의 합이므로 $y = 6x^2$ 이 되어 이차함수가 맞다.\\n⑤ 사다리꼴의 넓이 $y$는 $y = \\dfrac{1}{2}(x+2x) \\times 3x = \\dfrac{9}{2}x^2$ 이므로 이차함수가 맞다.\\n따라서 이차함수가 아닌 것은 ②이다.\\n따라서 정답은 ②이다.",
-    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "이차함수의 활용",
+    "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },

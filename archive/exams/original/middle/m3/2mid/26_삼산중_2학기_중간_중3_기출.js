@@ -48,7 +48,10 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "빗변과 한 직각변에서 피타고라스 정리로 나머지 변을 정한 뒤, 각 C의 맞은편 변과 이웃한 변의 비로 tan C를 판정한다.",
-    "decisiveStep": "빗변과 한 직각변에서 피타고라스 정리로 나머지 변을 정한 뒤, 각 C의 맞은편 변과 이웃한 변의 비로 tan C를 판정한다."
+    "decisiveStep": "빗변과 한 직각변에서 피타고라스 정리로 나머지 변을 정한 뒤, 각 C의 맞은편 변과 이웃한 변의 비로 tan C를 판정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -141,7 +144,10 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "중심에서 현에 내린 수선이 현을 이등분함을 적용하여 12와 9로 반지름을 구하고 원주로 연결한다.",
-    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분함을 적용하여 12와 9로 반지름을 구하고 원주로 연결한다."
+    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분함을 적용하여 12와 9로 반지름을 구하고 원주로 연결한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -285,7 +291,10 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "공통 대각선 BD를 tan60°로 구하고 45° 직각삼각형의 등변 관계를 이어서 두 삼각형 넓이를 합한다.",
-    "decisiveStep": "공통 대각선 BD를 tan60°로 구하고 45° 직각삼각형의 등변 관계를 이어서 두 삼각형 넓이를 합한다."
+    "decisiveStep": "공통 대각선 BD를 tan60°로 구하고 45° 직각삼각형의 등변 관계를 이어서 두 삼각형 넓이를 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -440,7 +449,10 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "반사각과 입사각이 같아 생기는 두 직각삼각형에서 수평거리들을 구하고, 차와 전체 높이를 피타고라스 정리로 합쳐 AC를 구한다.",
-    "decisiveStep": "반사각과 입사각이 같아 생기는 두 직각삼각형에서 수평거리들을 구하고, 차와 전체 높이를 피타고라스 정리로 합쳐 AC를 구한다."
+    "decisiveStep": "반사각과 입사각이 같아 생기는 두 직각삼각형에서 수평거리들을 구하고, 차와 전체 높이를 피타고라스 정리로 합쳐 AC를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -540,7 +552,10 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "넓이와 두 변 사이의 사인 관계에서 AC를 먼저 구하고, 수선을 내려 CH·AH·BH를 정한 후 피타고라스로 BC를 얻는다.",
-    "decisiveStep": "넓이와 두 변 사이의 사인 관계에서 AC를 먼저 구하고, 수선을 내려 CH·AH·BH를 정한 후 피타고라스로 BC를 얻는다."
+    "decisiveStep": "넓이와 두 변 사이의 사인 관계에서 AC를 먼저 구하고, 수선을 내려 CH·AH·BH를 정한 후 피타고라스로 BC를 얻는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -590,7 +605,10 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "이웃한 두 각의 합과 비에서 60°를 정하고, 삼각비 넓이에 대각선의 넓이 사등분 성질을 결합한다.",
-    "decisiveStep": "이웃한 두 각의 합과 비에서 60°를 정하고, 삼각비 넓이에 대각선의 넓이 사등분 성질을 결합한다."
+    "decisiveStep": "이웃한 두 각의 합과 비에서 60°를 정하고, 삼각비 넓이에 대각선의 넓이 사등분 성질을 결합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -640,7 +658,10 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "대각선 BD로 나눈 두 삼각형에 두 변과 끼인각의 넓이 공식을 각각 적용하고 근호식을 정리해 합한다.",
-    "decisiveStep": "대각선 BD로 나눈 두 삼각형에 두 변과 끼인각의 넓이 공식을 각각 적용하고 근호식을 정리해 합한다."
+    "decisiveStep": "대각선 BD로 나눈 두 삼각형에 두 변과 끼인각의 넓이 공식을 각각 적용하고 근호식을 정리해 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 14,
@@ -690,7 +711,10 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "현이 반지름을 수직이등분하므로 중심거리가 r/2이고, 반현 9와 반지름 r의 직각삼각형 관계를 세운다. 최종 결정은 중심거리·현 길이의 피타고라스 식이다.",
-    "decisiveStep": "현이 반지름을 수직이등분하므로 중심거리가 r/2이고, 반현 9와 반지름 r의 직각삼각형 관계를 세운다. 최종 결정은 중심거리·현 길이의 피타고라스 식이다."
+    "decisiveStep": "현이 반지름을 수직이등분하므로 중심거리가 r/2이고, 반현 9와 반지름 r의 직각삼각형 관계를 세운다. 최종 결정은 중심거리·현 길이의 피타고라스 식이다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 15,
@@ -790,7 +814,10 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "같은 길이의 평행 현 쌍이 중심에서 같은 거리에 있음을 써 중심거리를 5와 3으로 정하고, 반지름과 목표 반현에 피타고라스를 차례로 적용한다.",
-    "decisiveStep": "같은 길이의 평행 현 쌍이 중심에서 같은 거리에 있음을 써 중심거리를 5와 3으로 정하고, 반지름과 목표 반현에 피타고라스를 차례로 적용한다."
+    "decisiveStep": "같은 길이의 평행 현 쌍이 중심에서 같은 거리에 있음을 써 중심거리를 5와 3으로 정하고, 반지름과 목표 반현에 피타고라스를 차례로 적용한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 17,
@@ -990,7 +1017,10 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "접선 길이의 같음으로 세 변을 x+5, x+12, 17로 나타내고 피타고라스의 양수해에서 내접반지름을 정한 뒤 세 중심거리를 합한다.",
-    "decisiveStep": "접선 길이의 같음으로 세 변을 x+5, x+12, 17로 나타내고 피타고라스의 양수해에서 내접반지름을 정한 뒤 세 중심거리를 합한다."
+    "decisiveStep": "접선 길이의 같음으로 세 변을 x+5, x+12, 17로 나타내고 피타고라스의 양수해에서 내접반지름을 정한 뒤 세 중심거리를 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 21,
@@ -1034,7 +1064,10 @@ window.questionBank = [
     "solutionImageSize": "medium"
   ,
     "primaryMethod": "접힘의 대칭으로 AF=DF와 각 이등분을 얻어 45°를 복원한 뒤, 추가 수선에서 삼각비와 피타고라스를 이어 EF를 정한다.",
-    "decisiveStep": "접힘의 대칭으로 AF=DF와 각 이등분을 얻어 45°를 복원한 뒤, 추가 수선에서 삼각비와 피타고라스를 이어 EF를 정한다."
+    "decisiveStep": "접힘의 대칭으로 AF=DF와 각 이등분을 얻어 45°를 복원한 뒤, 추가 수선에서 삼각비와 피타고라스를 이어 EF를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -1167,3 +1200,8 @@ window.questionBank = [
     "decisiveStep": "서로 다른 두 현의 수직이등분선 교점으로 중심을 작도하고, 반지름·공통변·직각의 RHS 합동으로 현의 이등분 성질을 설명한다."
   }
 ];
+
+// Reuse the immutable native review and independently finalized exact metadata application.
+(function () {
+  Object.assign(window.questionBank[7], {"conditionKeys":["COND_EXCLUDED_ANGLE_VALUE"]});
+})();

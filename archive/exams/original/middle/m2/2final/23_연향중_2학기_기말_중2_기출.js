@@ -3,6 +3,8 @@ window.examTitle = "23_연향중_2학기_기말_중2_기출";
 window.questionBank = [
   {
     "id": 1,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC에서 중선 AM과 CN이 G에서 만난다. CG는 20 cm이고 GN은 x cm, BM은 y cm, BC는 28 cm이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -11,7 +13,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -26,14 +28,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 무게중심은 각 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n그림에서 $N$, $M$은 각각 $AB$, $BC$의 중점이고 $CG=20\\rm\\,cm$, $BC=28\\rm\\,cm$이다.\n$CG:GN=2:1$이므로 $x=GN=10$이다. 또 $M$은 $BC$의 중점이므로 $y=BM=14$이다.\n따라서 $x+y=10+14=24$이므로 정답은 ⑤이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q1.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q1-problem-visual-v2.svg",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
     "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형의 무게중심 G, 변의 중점 M과 N을 표시하고 중선의 분할과 밑변 이등분을 나타낸다.",
-    "solutionImageCaption": "길이의 단위는 cm이다. CG:GN=2:1이므로 x=10, BM은 BC의 절반이므로 y=14이다. 답: ⑤ 24",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q1-solution-visual-v2.svg",
+    "solutionImageAlt": "삼각형 ABC에서 중선 AM과 CN이 G에서 만난다. CG는 20 cm이고 GN은 x cm, BM은 y cm, BC는 28 cm이다.",
+    "solutionImageCaption": "CG:GN=2:1이므로 x=10이다. M은 중점이므로 y=28÷2=14이다. 따라서 x+y=24이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_COORD_CENTROID",
@@ -60,6 +62,8 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "imageSize": "tall",
+    "imageAlt": "M은 BC의 중점, N은 CD의 중점이다. AM과 AN이 BD에서 각각 P와 Q를 만난다. P, Q, N, C, M을 차례로 이은 영역을 칠했다.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -68,7 +72,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -83,14 +87,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 대각선 $BD$가 평행사변형의 넓이를 반으로 나누고, 닮음을 이용해 $P$, $Q$가 $BD$를 나누는 비를 구한다.\n$BM=MC$이고 $BM\\parallel AD$이므로 $\\triangle BMP\\sim\\triangle DAP$이다. 따라서 $BP:PD=1:2$, 즉 $BP=\\dfrac13BD$이다. 같은 방법으로 $DQ=\\dfrac13DB$이다.\n$\\triangle BCD$의 넓이는 $96\\div2=48$이다. $BM=\\dfrac12BC$, $BP=\\dfrac13BD$이므로 $\\triangle BPM$의 넓이는 $48\\times\\dfrac12\\times\\dfrac13=8$이다. 마찬가지로 $\\triangle DQN$의 넓이도 $8$이다.\n색칠한 부분의 넓이는 $48-8-8=32\\rm\\,cm^2$이므로 정답은 ④이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q2.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q2-problem-visual-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 평행사변형에서 가운데 오각형과 양쪽에 같은 넓이 8을 갖는 두 삼각형을 구분한다.",
-    "solutionImageCaption": "삼각형 BCD의 넓이 48에서 주황색 두 삼각형의 넓이 8씩을 뺀다. 답: ④ 32cm²",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q2-solution-visual-v2.svg",
+    "solutionImageAlt": "M은 BC의 중점, N은 CD의 중점이다. AM과 AN이 BD에서 각각 P와 Q를 만난다. P, Q, N, C, M을 차례로 이은 영역을 칠했다. 둘레 옆의 두 삼각형을 다른 색으로 표시했다.",
+    "solutionImageCaption": "삼각형 BCD의 넓이는 48 cm²이고 두 주황 삼각형은 각각 8 cm²이다. 따라서 색칠한 부분은 32 cm²이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -119,6 +123,8 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC의 중선 AD와 BE는 G에서 만난다. D에서 오른쪽 변 AC에 닿는 DF는 BE와 평행이다.",
     "level": "상",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -127,7 +133,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -142,20 +148,23 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 무게중심에서 나온 중점 조건과 평행선의 성질을 연달아 사용한다.\n$G$가 무게중심이므로 $D$는 $BC$의 중점, $E$는 $AC$의 중점이다. 따라서 $DC=\\dfrac12BC$, $EC=\\dfrac12AC$이다.\n$DF\\parallel BE$이고 $D$가 $BC$의 중점이므로 $\\triangle CDF\\sim\\triangle CBE$에서 $CF:CE=CD:CB=1:2$이다. 따라서 $CF=\\dfrac12CE=\\dfrac14AC$이다.\n$\\triangle FDC$와 $\\triangle ABC$는 꼭짓점 $C$의 끼인각이 같으므로 넓이의 비는 $\\dfrac{CF}{CA}\\times\\dfrac{CD}{CB}=\\dfrac14\\times\\dfrac12=\\dfrac18$이다.\n따라서 $\\triangle ABC$의 넓이는 $8\\times8=64\\rm\\,cm^2$이므로 정답은 ⑤이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q3.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q3-problem-visual-v2.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형 ABC의 무게중심과 중점 D, E, 평행선 DF를 그리고 삼각형 FDC를 색칠한다.",
-    "solutionImageCaption": "CF:CA=1:4이고 CD:CB=1:2이므로 색칠한 삼각형은 전체의 1/8이다. 답: ⑤ 64cm²",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q3-solution-visual-v2.svg",
+    "solutionImageAlt": "삼각형 ABC의 중선 AD와 BE는 G에서 만난다. D에서 오른쪽 변 AC에 닿는 DF는 BE와 평행이다. FDC의 넓이를 청록 영역 안에 표시했다.",
+    "solutionImageCaption": "닮음에서 CF:CA=1:4, 밑변에서 CD:CB=1:2이다. FDC 넓이는 전체의 1/8이므로 ABC의 넓이는 64 cm²이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M2-2",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
     "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
     "crossConceptKeys": [
-      "CC_AREA_RATIO"
+      "CC_AREA_RATIO",
+      "CC_TRIANGLE_CENTROID_MEDIAN_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -178,6 +187,8 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "imageSize": "tall",
+    "imageAlt": "AB 위의 D와 AC 위의 E를 이은 선분은 BC와 평행하다. DC와 BE가 F에서 만난다. DC 전체 길이는 24 cm이다.",
     "level": "중",
     "category": "도형의 닮음",
     "originalCategory": "도형의 닮음",
@@ -186,7 +197,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -201,14 +212,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 평행선으로 두 중점을 찾은 뒤 두 중선의 교점이 무게중심임을 이용한다.\n$AD=\\dfrac12AB$이므로 $D$는 $AB$의 중점이다. 또한 $DE\\parallel BC$이므로 중점 연결 정리에 의해 $E$는 $AC$의 중점이다.\n따라서 $CD$와 $BE$는 $\\triangle ABC$의 두 중선이고, 그 교점 $F$는 무게중심이다. 무게중심은 중선을 $2:1$로 나누므로 $CF:FD=2:1$이다.\n$DC=24\\rm\\,cm$이므로 $DF=24\\times\\dfrac13=8\\rm\\,cm$이다. 따라서 정답은 ③이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q4.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q4-problem-visual-v2.svg",
     "subUnitKey": "M2-06-TRIANGLE_CENTROID",
     "subUnit": "삼각형의 무게중심의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 삼각형에서 D와 E가 중점이고 두 중선의 교점 F가 CD를 2:1로 나누는 모습을 나타낸다.",
-    "solutionImageCaption": "F는 무게중심이므로 CF:FD=2:1이고 CD=24cm이다. 답: ③ 8cm",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q4-solution-visual-v2.svg",
+    "solutionImageAlt": "AB 위의 D와 AC 위의 E를 이은 선분은 BC와 평행하다. DC와 BE가 F에서 만난다. DC 전체 길이는 24 cm이다. 무게중심 F 양쪽 두 부분을 나누어 표시했다.",
+    "solutionImageCaption": "D와 E가 중점이므로 F는 무게중심이다. CF:FD=2:1이고 DC=24 cm이므로 DF=8 cm이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_COORD_CENTROID",
@@ -237,6 +248,8 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC의 두 옆변 AB와 AC는 각각 17이고 가로 밑변 BC는 16이다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -245,7 +258,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -260,14 +273,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 이등변삼각형의 꼭짓점에서 밑변에 내린 높이는 밑변을 이등분한다.\n두 빗변의 길이가 $17$, 밑변이 $16$이므로 높이의 발을 $H$라 하면 $BH=8$이다.\n피타고라스 정리에 의해 $AH=\\sqrt{17^2-8^2}=\\sqrt{225}=15$이다.\n따라서 넓이는 $\\dfrac12\\times16\\times15=120$이므로 정답은 ④이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q5.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q5-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: 이등변삼각형에서 밑변의 중점 H에 수선을 내리고 BH=8, AH=15를 표시한다.",
-    "solutionImageCaption": "밑변의 반은 8이고 피타고라스 정리로 높이는 15이다. 답: ④ 120",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q5-solution-visual-v2.svg",
+    "solutionImageAlt": "삼각형 ABC의 두 옆변 AB와 AC는 각각 17이고 가로 밑변 BC는 16이다. 높이 15를 내려 밑변을 두 길이 8로 나눈다.",
+    "solutionImageCaption": "밑변의 절반은 8이고 높이는 √(17²−8²)=15이다. 따라서 넓이는 16×15÷2=120이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -297,6 +310,8 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "imageSize": "tall",
+    "imageAlt": "아래의 두 가로 구간은 12 cm와 18 cm이다. 안쪽 기울어진 선분은 20 cm이고 세로가 x, 바깥 빗변이 y이다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -305,7 +320,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -320,14 +335,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 안쪽 직각삼각형에서 $x$를 먼저 구하고, 전체 직각삼각형에서 $y$를 구한다.\n안쪽 직각삼각형에서 $x^2+12^2=20^2$이므로 $x^2=256$, 따라서 $x=16$이다.\n전체 밑변의 길이는 $12+18=30$이므로 $y^2=16^2+30^2=1156$이다. 따라서 $y=34$이다.\n그러므로 $x+y=16+34=50$이므로 정답은 ⑤이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q6.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q6-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 공통 높이를 갖는 두 직각삼각형에서 먼저 구한 높이 x=16과 전체 빗변 y=34를 표시한다.",
-    "solutionImageCaption": "안쪽 직각삼각형에서 x=16, 전체 직각삼각형에서 y=34이다. 답: ⑤ 50",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q6-solution-visual-v2.svg",
+    "solutionImageAlt": "아래의 두 가로 구간은 12 cm와 18 cm이다. 안쪽 기울어진 선분은 20 cm이고 세로가 x, 바깥 빗변이 y이다.",
+    "solutionImageCaption": "작은 삼각형에서 x=16이고, 전체 밑변 30의 직각삼각형에서 y=34이다. 따라서 x+y=50이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -354,6 +369,8 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "imageSize": "tall",
+    "imageAlt": "직각삼각형 ABC에서 AB가 20 cm이고 BC가 25 cm이다. 두 작은 반원에서 BC가 지름인 반원 바깥에 남긴 두 초승달에 색이 칠해져 있다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -362,7 +379,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -377,14 +394,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 직각삼각형에서 두 직각변을 지름으로 한 반원의 넓이 합과 빗변을 지름으로 한 반원의 넓이가 같다.\n피타고라스 정리에 의해 $AC=\\sqrt{25^2-20^2}=15\\rm\\,cm$이다.\n세 반원의 넓이 관계에서 겹치는 공통 부분을 제거하면 두 색칠한 초승달 부분의 넓이 합은 $\\triangle ABC$의 넓이와 같다.\n따라서 색칠한 부분의 넓이는 $\\dfrac12\\times20\\times15=150\\rm\\,cm^2$이므로 정답은 ①이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q7.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q7-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q7-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 세 변을 지름으로 하는 반원과 두 초승달을 표시하고 AC=15cm를 나타낸다.",
-    "solutionImageCaption": "AC=15cm이며 두 초승달의 넓이 합은 직각삼각형 ABC의 넓이와 같다. 답: ① 150cm²",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q7-solution-visual-v2.svg",
+    "solutionImageAlt": "직각삼각형 ABC에서 AB가 20 cm이고 BC가 25 cm이다. 두 작은 반원에서 BC가 지름인 반원 바깥에 남긴 두 초승달에 색이 칠해져 있다. AC에는 계산한 15 cm를 표시했다.",
+    "solutionImageCaption": "AC=15 cm이다. 두 초승달의 넓이 합은 직각삼각형 ABC의 넓이와 같으므로 20×15÷2=150 cm²이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -404,6 +421,8 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "imageSize": "tall",
+    "imageAlt": "한 변이 12인 정사각형 ABCD가 있다. 오른쪽 변 위에 E가 있고 BE는 15이다. BE와 윗변 AD를 연장하여 F에서 만난다.",
     "level": "상",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -412,7 +431,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -427,14 +446,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 정사각형 안의 직각삼각형에서 $EC$를 구한 뒤 닮음으로 $DF$를 구한다.\n$BC=12$, $BE=15$이고 $\\angle C=90^\\circ$이므로 $EC=\\sqrt{15^2-12^2}=9$이다. 따라서 $DE=12-9=3$이다.\n$BC\\parallel DF$, $B,E,F$가 한 직선 위, $C,E,D$가 한 직선 위이므로 $\\triangle BCE\\sim\\triangle FDE$이다.\n$EC:DE=9:3=3:1$이므로 $BC:DF=3:1$, 따라서 $DF=4$이다.\n$\\triangle DEF$의 넓이는 $\\dfrac12\\times3\\times4=6$이므로 정답은 ②이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q8.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q8-problem-visual-v2.svg",
     "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
     "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 한 변이 12인 정사각형 ABCD에서 E는 DC 위에 있고, BE와 AD의 연장선의 교점은 F이다. BE=15인 직각삼각형 BCE와 FDE가 닮아 CE=9와 DE=3, BC와 DF가 각각 대응한다.",
-    "solutionImageCaption": "EC=9, DE=3이므로 닮음에서 DF=4이다. 답: ② 6",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q8-solution-visual-v2.svg",
+    "solutionImageAlt": "한 변이 12인 정사각형 ABCD가 있다. 오른쪽 변 위에 E가 있고 BE는 15이다. BE와 윗변 AD를 연장하여 F에서 만난다. 서로 닮은 두 직각삼각형의 9, 3, 4를 표시했다.",
+    "solutionImageCaption": "EC=9이므로 DE=3이고 닮음비에 따라 DF=4이다. 따라서 삼각형 DEF의 넓이는 3×4÷2=6이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
@@ -514,6 +533,8 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "imageSize": "tall",
+    "imageAlt": "아래 CD는 28, 왼쪽 짧은 BC는 6, 기울어진 BA는 10, 위 AE는 20이다. 오른쪽 D와 E는 직각이다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -522,7 +543,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -537,14 +558,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 왼쪽의 빗변이 $10$인 직각삼각형에서 높이 차를 구한 뒤 큰 직사각형에서 잘린 삼각형을 뺀다.\n윗변과 아랫변의 길이 차는 $28-20=8$이다. 왼쪽 빗변이 $10$이므로 높이 차를 $t$라 하면 $8^2+t^2=10^2$, 따라서 $t=6$이다.\n왼쪽 세로변이 $6$이므로 전체 높이는 $6+6=12$이다. 가로 $28$, 세로 $12$인 직사각형의 넓이는 $336$이다.\n왼쪽 위에서 빠진 직각삼각형의 넓이는 $\\dfrac12\\times8\\times6=24$이므로 주어진 도형의 넓이는 $336-24=312$이다. 따라서 정답은 ②이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q10.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q10-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 도형을 완성한 직사각형과 왼쪽 위에 추가한 직각삼각형을 다른 색으로 구분한다.",
-    "solutionImageCaption": "가로 차는 8이고 빗변 10인 삼각형의 높이는 6이다. 전체 높이는 12이다. 답: ② 312",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q10-solution-visual-v2.svg",
+    "solutionImageAlt": "아래 CD는 28, 왼쪽 짧은 BC는 6, 기울어진 BA는 10, 위 AE는 20이다. 오른쪽 D와 E는 직각이다. 왼쪽 위를 연장해 가로 8, 세로 6인 직각삼각형을 만들었다.",
+    "solutionImageCaption": "왼쪽 위에서 잘린 직각삼각형의 밑변은 8이고 높이는 6이다. 전체에서 빼면 28×12−8×6÷2=312이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -712,7 +733,11 @@ window.questionBank = [
       "l4": "단계별 선택"
     },
     "primaryMethod": "두 눈의 합이5 또는10인 순서쌍",
-    "decisiveStep": "합이 될 수 있는 배수 두개를 찾아 각 순서쌍 수4와3을 더한다."
+    "decisiveStep": "합이 될 수 있는 배수 두개를 찾아 각 순서쌍 수4와3을 더한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 14,
@@ -762,10 +787,16 @@ window.questionBank = [
       "l4": "순서가 있는 경우"
     },
     "primaryMethod": "양끝 고정 후 가운데 배열",
-    "decisiveStep": "맨앞과 맨뒤 두 자리를 고정하고 남은3명을 배열한다."
+    "decisiveStep": "맨앞과 맨뒤 두 자리를 고정하고 남은3명을 배열한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 15,
+    "imageSize": "tall",
+    "imageAlt": "왼쪽 위에 A, 그 아래 B, 오른쪽 위에 D, 전체 아랫줄에 C를 두었다. 경계선을 공유하는 영역을 읽을 수 있다.",
     "level": "상",
     "category": "확률",
     "originalCategory": "확률",
@@ -774,7 +805,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -789,7 +820,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 서로 맞닿은 영역끼리만 다른 색이어야 한다는 조건을 순서대로 적용한다.\n영역 $B$의 색은 $4$가지 중 하나를 고를 수 있다. $D$는 $B$와 이웃하므로 $3$가지이다.\n$A$는 $B$, $D$와 모두 이웃하므로 이 두 색을 제외한 $2$가지이고, $C$도 $B$, $D$와 이웃하므로 $2$가지이다. $A$와 $C$는 서로 이웃하지 않으므로 같은 색이어도 된다.\n따라서 경우의 수는 $4\\times3\\times2\\times2=48$이므로 정답은 ④이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q15.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q15-problem-visual-v2.svg",
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
@@ -867,7 +898,11 @@ window.questionBank = [
       "l4": "확률 계산"
     },
     "primaryMethod": "빈 공을 포함한 표본공간과 약수 개수",
-    "decisiveStep": "전체18에 약수6개를 대응시킨다."
+    "decisiveStep": "전체18에 약수6개를 대응시킨다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 17,
@@ -917,7 +952,11 @@ window.questionBank = [
       "l4": "확률 계산"
     },
     "primaryMethod": "구체 사건의 불가능·확실 여부",
-    "decisiveStep": "각 시행에서 사건이 불가능하거나 확실한지 확인하고 가위바위보 승부를 고른다."
+    "decisiveStep": "각 시행에서 사건이 불가능하거나 확실한지 확인하고 가위바위보 승부를 고른다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 18,
@@ -967,10 +1006,16 @@ window.questionBank = [
       "l4": "사건의 합"
     },
     "primaryMethod": "배타적인 두 맛 사건의 합",
-    "decisiveStep": "딸기와 사과의 주어진 확률을 더한다."
+    "decisiveStep": "딸기와 사과의 주어진 확률을 더한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 19,
+    "imageSize": "tall",
+    "imageAlt": "굵은 파란 직선은 가로축의 2와 세로축의 −4를 지나 오른쪽 위로 올라간다.",
     "level": "상",
     "category": "확률",
     "originalCategory": "확률",
@@ -979,7 +1024,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "그래프"
     ],
@@ -994,14 +1039,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 그래프에서 직선의 식을 구하고, $1$부터 $6$까지의 정수 좌표 중 직선 위의 점을 찾는다.\n직선은 $(0,-4)$와 $(2,0)$을 지나므로 기울기는 $2$이고 식은 $y=2x-4$이다.\n$x,y$가 모두 $1$부터 $6$까지일 때 가능한 점은 $(3,2),(4,4),(5,6)$의 $3$개이다.\n전체 경우는 서로 구별되는 두 번의 주사위 결과 $6\\times6=36$가지이므로 확률은 $\\dfrac3{36}=\\dfrac1{12}$이다. 따라서 정답은 ①이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q19.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q19-problem-visual-v2.svg",
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 직선 y=2x-4 위의 주사위 눈 좌표 (3,2), (4,4), (5,6).",
-    "solutionImageCaption": "가능한 좌표는 세 개이고 전체는 36가지이므로 확률은 1/12이다. 정답 ①.",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q19-solution-visual-v2.svg",
+    "solutionImageAlt": "굵은 파란 직선은 가로축의 2와 세로축의 −4를 지나 오른쪽 위로 올라간다. 두 주사위 눈으로 가능한 세 격자점을 서로 구분해 표시했다.",
+    "solutionImageCaption": "직선은 y=2x−4이다. 가능한 순서쌍은 (3,2), (4,4), (5,6) 세 가지이므로 확률은 3/36=1/12이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
@@ -1080,10 +1125,16 @@ window.questionBank = [
       "l4": "여사건"
     },
     "primaryMethod": "두 사람 모두 오답인 사건의 여사건",
-    "decisiveStep": "독립 가정 아래 두 오답 확률을 곱하고1에서 뺀다."
+    "decisiveStep": "독립 가정 아래 두 오답 확률을 곱하고1에서 뺀다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 21,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC에서 A는 직각이다. 중선 AD 위에 무게중심 G가 있다. GD는 10 cm, AC는 36 cm이다.",
     "level": "상",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -1092,7 +1143,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
@@ -1102,20 +1153,23 @@ window.questionBank = [
     "choices": [],
     "answer": "$48\\rm\\,cm$",
     "solution": "[키포인트] 무게중심의 중선 분할비와 직각삼각형의 빗변 중점 성질을 차례로 사용한다.\n$G$가 무게중심이므로 $D$는 $BC$의 중점이고 $AG:GD=2:1$이다. $GD=10\\rm\\,cm$이므로 $AG=20\\rm\\,cm$, 따라서 $AD=30\\rm\\,cm$이다.\n직각삼각형에서 빗변의 중점은 세 꼭짓점에서 같은 거리에 있으므로 $AD=BD=CD=30\\rm\\,cm$이다. 따라서 $BC=60\\rm\\,cm$이다.\n피타고라스 정리에 의해 $AB^2=BC^2-AC^2=60^2-36^2=2304$이므로 $AB=48\\rm\\,cm$이다.\n따라서 구하는 값은 $48\\rm\\,cm$이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q21.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q21-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형의 빗변 중점 D와 무게중심 G를 나타내고 AD, BD, CD의 같은 길이를 표시한다.",
-    "solutionImageCaption": "GD=10cm이므로 AD=30cm이고 빗변의 중점 D에서 세 꼭짓점까지의 거리는 모두 30cm이다. 답: 48cm",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q21-solution-visual-v2.svg",
+    "solutionImageAlt": "삼각형 ABC에서 A는 직각이다. 중선 AD 위에 무게중심 G가 있다. GD는 10 cm, AC는 36 cm이다. 빗변 양쪽 절반과 중선 AD의 같은 길이를 눈금과 색으로 표시했다.",
+    "solutionImageCaption": "GD=10 cm이므로 AD=30 cm이고 빗변 BC=60 cm이다. 피타고라스 정리로 AB=√(60²−36²)=48 cm이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M2-2",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "crossConceptKeys": [
-      "CC_PYTHAGOREAN"
+      "CC_PYTHAGOREAN",
+      "CC_TRIANGLE_CENTROID_MEDIAN_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
@@ -1138,6 +1192,8 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "imageSize": "tall",
+    "imageAlt": "직사각형 ABCD의 가로 AD는 12 cm, 세로 AB는 9 cm이다. A에서 대각선 BD에 내린 수선은 E에 닿는다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -1146,7 +1202,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
@@ -1156,14 +1212,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{36}{5}\\rm\\,cm$",
     "solution": "[키포인트] 직사각형의 대각선 길이를 구한 뒤 같은 삼각형의 넓이를 두 가지 방법으로 나타낸다.\n$AB=9\\rm\\,cm$, $AD=12\\rm\\,cm$이므로 $\\triangle ABD$에서 피타고라스 정리에 의해 $BD=\\sqrt{9^2+12^2}=15\\rm\\,cm$이다.\n$\\triangle ABD$의 넓이는 $\\dfrac12\\times9\\times12=54\\rm\\,cm^2$이다. 한편 밑변을 $BD$로 보면 넓이는 $\\dfrac12\\times15\\times AE$이다.\n따라서 $\\dfrac12\\times15\\times AE=54$이므로 $AE=\\dfrac{108}{15}=\\dfrac{36}{5}\\rm\\,cm$이다.\n따라서 구하는 값은 $\\dfrac{36}{5}\\rm\\,cm$이다.",
-    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q22.png",
+    "image": "assets/images/23_연향중_2학기_기말_중2_기출/q22-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 직사각형에서 삼각형 ABD를 색칠하고 BD=15cm, 넓이 54cm² 및 수선 AE를 나타낸다.",
-    "solutionImageCaption": "BD=15cm이고 색칠한 삼각형의 넓이는 54cm²이다. 답: 36/5cm",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중2_기출/q22-solution-visual-v2.svg",
+    "solutionImageAlt": "직사각형 ABCD의 가로 AD는 12 cm, 세로 AB는 9 cm이다. A에서 대각선 BD에 내린 수선은 E에 닿는다. 삼각형의 넓이 54 cm²와 대각선 15 cm를 따로 나타냈다.",
+    "solutionImageCaption": "삼각형 ABD는 54 cm²이고 대각선 BD는 15 cm이다. 15×AE÷2=54이므로 AE=36/5 cm이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "",
@@ -1229,7 +1285,11 @@ window.questionBank = [
       "l4": "순서가 있는 경우"
     },
     "primaryMethod": "끝자리 조건에 따른 세 자리 수 계수",
-    "decisiveStep": "전체수·짝수·4의배수에서 선두0금지와 서로다름을 적용해 경우수를 합한다."
+    "decisiveStep": "전체수·짝수·4의배수에서 선두0금지와 서로다름을 적용해 경우수를 합한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 24,

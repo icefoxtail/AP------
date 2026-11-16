@@ -540,9 +540,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceQid": 11,
     "questionUid": "qid_v1_a79a9dd748010d19cc96a5896c82c599615a4b8d1e7c7a472f53c9e450c8607d",
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q11-solution.svg",
-    "solutionImageAlt": "지수함수의 평행이동과 대칭이동, 점근선 y=3",
-    "solutionImageCaption": "평행이동·대칭이동 뒤의 그래프와 수평점근선"
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 기준 곡선 y=4^(−x)와 대상 곡선 y=−4^(−x−1)+3이 다른 색으로 표시되어 있다. 대상 곡선에는 수평점근선 y=3과 점 P=(−1,2)가 표시되어 있다.",
+    "solutionImageCaption": "기준 곡선을 왼쪽으로 1만큼 옮긴 뒤 x축에 대칭하고 위로 3만큼 옮긴다. 치역의 위 경계와 수평점근선은 모두 3이다. 네 빈칸은 3, 3, −1, 3이므로 합은 8이고 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -902,7 +903,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceQid": 18,
     "questionUid": "qid_v1_5460f0b3bd3314803f7221f5be8857636ef461bbcb95fd3c7c5fe33b87393005",
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q18-solution.svg"
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 좌표평면에서 파란 꺾은선 f와 초록 점선 지수곡선을 비교한다. 위는 x가 음수인 구간이고 아래는 영을 포함한 오른쪽 구간이다. 영에서 만나는 점은 아래 그림에 포함한다.",
+    "solutionImageCaption": "각 일차식으로 정해지는 구간에서 지수곡선과의 교점을 확인한다. 음의 구간은 짝함수 관계로 계산한다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1006,7 +1010,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceQid": 20,
     "questionUid": "qid_v1_37db272aaec7a7b10f1a1bb25034b31372f5a839bc250f8747513f509ce4d170",
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q20-solution.svg"
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위 그림에는 세 함수와 좌표축으로 둘러싸인 영역의 정수 좌표를 세 열의 보라색 점으로 표시했다. 아래는 가장 높은 보라색 점 (2,5)를 옮겨 같은 비율로 확대한 그림으로, 바로 오른쪽 위에서 지수곡선과 감소 로그곡선이 교차한다.",
+    "solutionImageCaption": "두 로그곡선이 만나는 곳에서 경계가 바뀐다. 정수 x 값을 차례대로 확인하여 영역 내부와 경계의 점을 함께 센다. 정답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1186,6 +1193,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceQid": 24,
     "questionUid": "qid_v1_00b87803b31a81acce071c041925b037d65596bc4ee80b3fc468a46539326200",
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q24-solution.svg"
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_수학I/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 지수곡선과 초록 점선 지수곡선은 기울기 −1인 직선과 각각 A, B에서 만난다. AB의 중점 M에서 x축에 내린 점선의 길이가 a이다. 원점 O와 A, B가 이루는 삼각형의 넓이가 S이다.",
+    "solutionImageCaption": "두 교점 A=(1,17/4), B=(4,5/4)의 높이를 평균하면 중점의 높이는 a=11/4이다. 원점 O와 두 교점이 이루는 삼각형의 넓이는 S=63/8이다. 따라서 2S/a=63/11이다.",
+    "solutionImageSize": "full"
   }
 ];

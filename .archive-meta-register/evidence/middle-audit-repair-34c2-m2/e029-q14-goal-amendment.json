@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "middle-audit-four-slot-goal-amendment-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "questionUid": "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354",
+  "sourceArchiveFile": "original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+  "sourceOrdinal": 14,
+  "sourceBlobBefore": "e755a22282e3413ddc628488b476ca0cf3f60793",
+  "sourceBlobAfter": "144b1bd0bf1c82be94910bb727ff3c33b6a69772",
+  "priorCompactSha256": "3dc5836edc6c53a16d3bd5e076ab1387552576faa312c79f5bbc1b2b160dbccb",
+  "studentPayloadHash": "770ce0f981eac9415694f2a2d60c7022698dac1c654a2421a9dc1394beff29c3",
+  "allExamStudentPayloadUnchanged": 23,
+  "oldGoal": [
+    131
+  ],
+  "newGoal": [
+    745,
+    131
+  ],
+  "goalEvidence": [
+    {
+      "term": "미지수",
+      "termId": 745,
+      "src": "stem",
+      "quote": "다훈이의 나이를 구하면?",
+      "justification": "The asked age is an unknown numerical quantity determined by the stated relations. Its name is preserved as story context, while the mathematical target is the unknown value."
+    },
+    {
+      "term": "값",
+      "termId": 131,
+      "src": "stem",
+      "quote": "다훈이의 나이를 구하면?"
+    }
+  ],
+  "scenarioNote": "다훈이와 같은 나이인 세 동생의 나이 합 및 나이 차. 발문이 요구하는 것은 다훈이의 나이이며, 생년월일·기준시각·만 나이 조건을 추가하지 않는다.",
+  "acceptedNativeDebtDisposition": {
+    "code": "GOAL_CONTEXT_MEASURE_TERM_GAP",
+    "decision": "NARROW_TARGET_OBJECT_SUPPLEMENT_ACCEPTED",
+    "reason": "Current root directly reviewed the source, existing solution and dictionary terms745/131; adding the existing unknown target term makes the mathematical target explicit. No new age/time term or alias is introduced; exact age wording is retained here."
+  },
+  "rootReview": {
+    "reviewer": "GPT_ROOT_0A70543C4CE8",
+    "decision": "ACCEPT_GOAL_UNKNOWN_VALUE_AMENDMENT",
+    "directSourceAndExistingSolutionRead": true,
+    "dictionaryIdsRead": [
+      745,
+      131
+    ],
+    "newSolution": false,
+    "newDictionaryTerm": false,
+    "newMathQa": false
+  },
+  "scope": {
+    "changedItems": 1,
+    "changedSlot": "goal",
+    "givenChanges": 0,
+    "methodChanges": 0,
+    "conditionChanges": 0,
+    "sourceStudentFieldChanges": 0,
+    "unrelatedVectorsChanged": 0,
+    "originalReviewerPreserved": true
+  },
+  "priorEvidence": {
+    "branch": "review/m2s1-follow49-four-slot-accepted-26fc-20261115",
+    "commit": "ecb00ddace7e87904e8ed60ce535f61d8c7a05c5",
+    "path": ".archive-meta-register/evidence/m2s1-follow49-four-slot-accepted-26fc-20261115/native/E029.four-slot.json"
+  },
+  "originalReviewedBy": {
+    "agent": "M2-S1 original author, independent sample and root acceptance (reused)",
+    "at": "2026-11-14",
+    "sampled": [
+      6,
+      12,
+      22
+    ]
+  },
+  "officialMainRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}

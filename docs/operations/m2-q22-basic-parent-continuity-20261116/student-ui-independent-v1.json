@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "archive-q22-independent-problem-ui-audit-v1",
+  "reviewer": "GPT_ROOT_C8F1B0BFB4FA",
+  "role": "INDEPENDENT_PROBLEM_ONLY_VISUAL_REVIEWER",
+  "technicalRef": {
+    "path": "docs/operations/m2-q22-basic-parent-continuity-20261116/student-ui-technical-v1.json",
+    "sha256": "88abd6df3307e7fd372054cb8fdf11b50188f44aab881a1bb58c28ecf841656b"
+  },
+  "checkoutCommit": "efc359049e2bf95cf857c0250d6e1822601eeaca",
+  "workflowRun": 43813640700,
+  "artifactId": 14202116677,
+  "artifactZipSha256": "8a712dd32326646a5f100631ba62f48038bc398d0d740e7e4932c98ffc7af310",
+  "staticReviewRef": {
+    "path": "evidence/root-q22-static-display-review-r1.json",
+    "sha256": "8a088741e4f95949e8b2954f65533f93341ffa1313e842ffce516e573191c24e"
+  },
+  "reviewOrder": [
+    "GIVEN_ONLY_EXPECTED_FROZEN",
+    "ORIGINAL_IMAGE_EXPECTED_FROZEN",
+    "CURRENT_STATIC_SVG_REVIEW",
+    "ACTUAL_DESKTOP_ORIGINAL_TILES",
+    "ACTUAL_MOBILE_ORIGINAL_TILE"
+  ],
+  "originalPngsPersonallyInspected": [
+    {
+      "path": "Q22-desktop-tile-01.png",
+      "sha256": "3cb23180a0945a4b4ba7f005d9cb417cce3a77a46b1a1d308b2b53c80b301460",
+      "bytes": 51306
+    },
+    {
+      "path": "Q22-desktop-tile-02.png",
+      "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+      "bytes": 652
+    },
+    {
+      "path": "Q22-mobile-tile-01.png",
+      "sha256": "70d6fce26f9144d34064d2e9cce86d5eb3b98f62b530a61d69ab0447a087ead7",
+      "bytes": 47787
+    }
+  ],
+  "logicalCases": [
+    {
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "questionUid": "qid_v1_0704335d6e4bedb837a893f8f28eac2587963888307021abc83e61407b889051",
+      "sourceOrdinal": 22,
+      "screenshotRefs": [
+        {
+          "path": "Q22-desktop-tile-01.png",
+          "sha256": "3cb23180a0945a4b4ba7f005d9cb417cce3a77a46b1a1d308b2b53c80b301460",
+          "bytes": 51306
+        },
+        {
+          "path": "Q22-desktop-tile-02.png",
+          "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+          "bytes": 652
+        }
+      ],
+      "sourceRef": {
+        "commit": "efc359049e2bf95cf857c0250d6e1822601eeaca",
+        "path": "archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "40fac8532d52c2b308708f6a0769005029bb7565",
+        "sha256": "b86fc1cbb7a69bdedc337675a834c9641344df0c7d2cd47a1bb953b6177cb2f4",
+        "bytes": 75142
+      },
+      "assetRef": {
+        "commit": "efc359049e2bf95cf857c0250d6e1822601eeaca",
+        "path": "archive/assets/images/24_매산중_2학기_중간_중2_수학/q22-problem-visual-v2.svg",
+        "gitBlobSha1": "b74f08fbd57d670ab8463932191dfedb9e16bf88",
+        "sha256": "274a37ec62956b63400c6d27b9d217b2715ca3ef4d0a64dc40dcd39f5058f96d",
+        "bytes": 6797
+      },
+      "givenTextLegible": true,
+      "bothDiagramsComplete": true,
+      "originalGeometryLabelsAndShadedRegionPreserved": true,
+      "clippingObserved": false,
+      "unrelatedContentObserved": false,
+      "solutionObserved": false,
+      "captureCoverageComplete": true,
+      "observations": [
+        "Both problem subparts, the boxed given text, and both stacked diagrams are complete. The unknown angle remains symbolic; the printed givens, labels, radius label and shaded segment agree with the frozen problem display baseline.",
+        "The second desktop scroll tile is a blank continuation of the existing response area; the first tile contains all displayed problem text and figures."
+      ],
+      "status": "ACCEPTED"
+    },
+    {
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "questionUid": "qid_v1_0704335d6e4bedb837a893f8f28eac2587963888307021abc83e61407b889051",
+      "sourceOrdinal": 22,
+      "screenshotRefs": [
+        {
+          "path": "Q22-mobile-tile-01.png",
+          "sha256": "70d6fce26f9144d34064d2e9cce86d5eb3b98f62b530a61d69ab0447a087ead7",
+          "bytes": 47787
+        }
+      ],
+      "sourceRef": {
+        "commit": "efc359049e2bf95cf857c0250d6e1822601eeaca",
+        "path": "archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "40fac8532d52c2b308708f6a0769005029bb7565",
+        "sha256": "b86fc1cbb7a69bdedc337675a834c9641344df0c7d2cd47a1bb953b6177cb2f4",
+        "bytes": 75142
+      },
+      "assetRef": {
+        "commit": "efc359049e2bf95cf857c0250d6e1822601eeaca",
+        "path": "archive/assets/images/24_매산중_2학기_중간_중2_수학/q22-problem-visual-v2.svg",
+        "gitBlobSha1": "b74f08fbd57d670ab8463932191dfedb9e16bf88",
+        "sha256": "274a37ec62956b63400c6d27b9d217b2715ca3ef4d0a64dc40dcd39f5058f96d",
+        "bytes": 6797
+      },
+      "givenTextLegible": true,
+      "bothDiagramsComplete": true,
+      "originalGeometryLabelsAndShadedRegionPreserved": true,
+      "clippingObserved": false,
+      "unrelatedContentObserved": false,
+      "solutionObserved": false,
+      "captureCoverageComplete": true,
+      "observations": [
+        "Both problem subparts, the boxed given text, and both stacked diagrams are complete. The unknown angle remains symbolic; the printed givens, labels, radius label and shaded segment agree with the frozen problem display baseline.",
+        "The text wraps inside the mobile box. Both figures and their visible labels fit within the captured problem area without observed clipping or substitution."
+      ],
+      "status": "ACCEPTED"
+    }
+  ],
+  "decision": "ACCEPTED_PROBLEM_DISPLAY_CONTINUITY_ONLY",
+  "parentRestorationApproval": false,
+  "newMathematicalApprovals": 0,
+  "newMetadataApprovals": 0,
+  "newDifficultyJudgments": 0,
+  "newReview2Approvals": 0,
+  "holdDisposition": "UNCHANGED",
+  "requiredNextAction": "ORIGINAL_HOLD_REPLAY_AND_TYPED_CONSUMER_PARENT_PRESERVATION"
+}

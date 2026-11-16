@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-meta-4slot-compact-v1",
   "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
-  "sourceGitBlobSha": "b5d867ed7bd83f03b1b6793dc5802de2cdcaf3ee",
+  "sourceGitBlobSha": "c4c950882c3f8dd696089a5e12aeb65b8a81e065",
   "dictionaryVersion": "term-dict-v1.6-2026-11-15",
   "evidence": {
     "branch": "review/m3-s2-meta-full-20261114",
@@ -24,17 +24,15 @@
       "version": "term-dict-v1.6-2026-11-15",
       "definitionReviewSha256": "8938198986ae1dfa70178f4f83e3bae018a749b9367cf15d3a186ff0d6f27cf4"
     },
-    "nativeHoldReview": {
-      "rendererCorrection": {
-        "commit": "991a51af26f6130e5187e672a53054417a5214a6",
-        "path": "docs/operations/m3-s2-4slot-current-20261115/q15-registration-hold.json",
-        "sha256": "b19d81dc6cd4706380672433afd64e5fc420206f2281be299758406eab43b8fc"
-      },
-      "supersession": {
-        "commit": "74901a67ace9b0eb3e626a95be89b8da04051ead",
-        "path": "docs/operations/m3-s2-4slot-current-20261115/q15-renderer-supersession.json",
-        "sha256": "5a3a3394da9ef70dffc49539bb1e0063a534dee481e1b406312b17289912e754"
-      }
+    "rendererCorrectionRelease": {
+      "path": ".archive-meta-register/evidence/m3s2-public-q15-four-slot-release9-26fc-20261115.json",
+      "sha256": "1651d0dc3d9ac8c30fd80493121ef237bc8a852e106fa594cb63a0b255d56a67",
+      "sourceCorrectionCommit": "05fbeada07613cd6cc66e71b8c9c3e729403139f",
+      "independentReviewCommit": "55f4dd95c88a7cb4b712794777c9518777f01580",
+      "actualCorrectedSourceMain": "125431da16e154d75182185c787ec1f05e89e90b",
+      "scope": "EXACT_E066_Q15_FALSE_EQUALITY_MARK_CORRECTION_AND_EXISTING_4SLOT_REUSE",
+      "newFullExamReview": false,
+      "historicalNegativeEvidenceRetainedInReleaseProof": true
     }
   },
   "reviewedBy": {
@@ -360,29 +358,7 @@
       "condition": [
         179
       ],
-      "candidates": [],
-      "registrationHold": {
-        "schemaVersion": "4slot-native-review-hold-v1",
-        "reason": "SOURCE_RENDERER_CORRECTION_PENDING",
-        "questionUid": "qid_v1_9d287c6ad59d90578b2325f24c150e2a0b1c91fec9fd81031ce40604ea6cfce6",
-        "sourceOrdinal": 15,
-        "sourceQuestionNo": "15",
-        "ordinal": 15,
-        "studentPayloadSha256": "c0015b7e5c50ff2f76d87ac2ca9c76d7bf03ab3c4f7c91810b754dfa4103e918",
-        "sourceFingerprint": "d1851156155fd1b04ac17d6462157b6717b38800af6aeb3cddc7c6c44a997c4b",
-        "sourceGitBlobSha": "b5d867ed7bd83f03b1b6793dc5802de2cdcaf3ee",
-        "evidence": {
-          "commit": "991a51af26f6130e5187e672a53054417a5214a6",
-          "path": "docs/operations/m3-s2-4slot-current-20261115/q15-registration-hold.json",
-          "sha256": "b19d81dc6cd4706380672433afd64e5fc420206f2281be299758406eab43b8fc"
-        },
-        "supersessionEvidence": {
-          "commit": "74901a67ace9b0eb3e626a95be89b8da04051ead",
-          "path": "docs/operations/m3-s2-4slot-current-20261115/q15-renderer-supersession.json",
-          "sha256": "5a3a3394da9ef70dffc49539bb1e0063a534dee481e1b406312b17289912e754"
-        },
-        "nextAction": "Publish and read back the source owner correction and independent immutable evidence, then rebind E066 to the corrected current source and remove only this exact renderer hold. Preserve all other reviewed slot values and existing metadata approvals."
-      }
+      "candidates": []
     },
     {
       "ordinal": 16,

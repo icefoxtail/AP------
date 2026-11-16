@@ -3551,6 +3551,58 @@ def _ov_collinear(own,other,tolerance=0.5):
 def _ov_glyph_codes(node):
     return [(child.get('data-c') or '').upper() for child in node.iter() if child.tag.split('}')[-1]=='path' and child.get('data-c')]
 
+def _ov_codes_match(got,want):
+    return len(got)==len(want) and all(code in allowed for code,allowed in zip(got,want))
+
+def _ov_logb_operands(text):
+    """Read the two operands of one literal logb call independently of the typesetter."""
+    depth=0;separator=None
+    for index,char in enumerate(text):
+        if char=='(':depth+=1
+        elif char==')':
+            depth-=1
+            if depth<0:return None
+        elif char==',' and depth==0:
+            if separator is not None:return None
+            separator=index
+    if depth or separator is None:return None
+    base,argument=text[:separator].strip(),text[separator+1:].strip()
+    return (base,argument) if base and argument else None
+
+def _ov_math_callout_matches(node,text):
+    if node.get('data-text') is not None:return False
+    call=re.match(r'(?:(?P<lhs>[A-Za-zαβγδθπ])\s*=\s*)?logb\s*\(',text)
+    if call is None:return _ov_codes_match(_ov_glyph_codes(node),_ov_label_codes(text))
+    operands=_ov_logb_operands(text[call.end():-1]) if text.endswith(')') else None
+    if operands is None:return False
+    base,argument=operands
+    prefix=_ov_label_codes(call['lhs']+'=') if call['lhs'] else []
+    math_groups=[group for group in node.iter() if group.get('data-mml-node')=='math']
+    if len(math_groups)!=1:return False
+    children=list(math_groups[0]);operator_at=len(prefix)
+    if len(children)!=operator_at+3:return False
+    operator,application,argument_group=children[operator_at:]
+    if [group.get('data-mml-node') for group in (operator,application,argument_group)]!=['msub','mo','mrow'] or len(operator)!=2:
+        return False
+    upright,subscript=operator
+    if upright.get('data-mml-node')!='mi' or _ov_glyph_codes(upright)!=['6C','6F','67']:return False
+    # The locked MathJax serializer draws a real, lowered subscript at reduced scale.
+    subscript_transform=re.fullmatch(r'translate\(([\d.]+),(-[\d.]+)\) scale\(([\d.]+)\)',subscript.get('transform',''))
+    if subscript_transform is None:return False
+    try:dx,dy,scale=map(float,subscript_transform.groups())
+    except ValueError:return False
+    if not (math.isfinite(dx) and math.isfinite(dy) and dx>0 and dy<0 and 0<scale<1):return False
+    # U+2061 is a single empty function-application glyph in this exact slot.
+    glyphs=[child for child in node.iter() if child.tag.split('}')[-1]=='path']
+    paths=[child for child in math_groups[0].iter() if child.tag.split('}')[-1]=='path']
+    if len(application)!=1 or application[0] not in paths or application[0].get('data-c')!='2061' or application[0].get('d')!='':
+        return False
+    if glyphs!=paths or any(not child.get('data-c') or not child.get('d') for child in paths if child is not application[0]):
+        return False
+    got_prefix=[code for group in children[:operator_at] for code in _ov_glyph_codes(group)]
+    return (_ov_codes_match(got_prefix,prefix) and _ov_codes_match(_ov_glyph_codes(subscript),_ov_label_codes(base)) and
+            _ov_codes_match(_ov_glyph_codes(argument_group),_ov_label_codes('('+argument+')')))
+
 def _ov_color_errors(node,color,code):
     """(G12-2) The stroke of one drawn overlay line or segment against the plan's colour name: a coloured one wears the palette's line colour at the colour width, a plain one
     wears no palette colour (a colour the plan did not declare is as wrong as a missing one)."""
@@ -3890,8 +3942,7 @@ def overlays_audit(plan,svg,transform):
                     if node is None:errors.append('OVERLAY_CALLOUT_LABEL_MISSING:'+ident);continue
                     if node.get('data-owner')!=callout['dot']:errors.append('OVERLAY_CALLOUT_OWNER_MISMATCH:'+ident);continue
                     if callout['labelKind']=='MATH':
-                        want=_ov_label_codes(callout['text']);got=_ov_glyph_codes(node)
-                        if node.get('data-text') is not None or len(got)!=len(want) or any(code not in allowed for code,allowed in zip(got,want)):errors.append('OVERLAY_CALLOUT_TEXT_MISMATCH:'+ident);continue
+                        if not _ov_math_callout_matches(node,callout['text']):errors.append('OVERLAY_CALLOUT_TEXT_MISMATCH:'+ident);continue
                     elif node.get('data-text')!=callout['text'] or node.get('data-tex') is not None or _ov_glyph_codes(node):errors.append('OVERLAY_CALLOUT_TEXT_MISMATCH:'+ident);continue
                     box=_region_label_box(groups,label_id);leader=leaders.get(label_id);dot_node=circles.get(callout['dot'])
                     if box is None or leader is None or dot_node is None:errors.append('OVERLAY_CALLOUT_LEADER_MISSING:'+ident);continue
@@ -4834,7 +4885,7 @@ def trigonometric_period_v2_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':features,'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_INDEPENDENT_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
-MC_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL')
+MC_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC')
 MC_EXACT_PATTERN=r'-?\d+(?:/\d+)?'
 
 def _mc_obs_fraction(value,code):
@@ -4866,18 +4917,23 @@ def _mc_obs_free(entry,ident):
         if curve['d'][1]==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
         pole=-curve['d'][0]/curve['d'][1]
         if sum(coefficient*pole**power for power,coefficient in enumerate(curve['n']))==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
-    elif kind=='EXPONENTIAL':
+    elif kind in ('EXPONENTIAL','LOGARITHMIC'):
         raw_base=entry.get('base')
+        base_code='MULTI_CURVE_'+kind+'_BASE_INVALID:'+ident
         if not isinstance(raw_base,str) or not re.fullmatch(r'[1-9]\d{0,3}(?:/[1-9]\d{0,3})?',raw_base):
-            raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
+            raise ValueError(base_code)
         base=Fraction(raw_base)
         if str(base)!=raw_base or base==1 or max(base.numerator,base.denominator)>1000:
-            raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
-        coefficients=entry.get('coefficients')
-        if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError(code)
-        a,k,c=[_mc_obs_fraction(value,code) for value in coefficients]
-        if not a or not k:raise ValueError(code)
-        curve.update({'base':base,'c':[a,k,c],'shiftX':_mc_obs_fraction(entry.get('shiftX','0'),code)})
+            raise ValueError(base_code)
+        raw=entry.get('coefficients')
+        if not isinstance(raw,list) or len(raw)!=(3 if kind=='EXPONENTIAL' else 4):raise ValueError(code)
+        coefficients=[_mc_obs_fraction(value,code) for value in raw]
+        if not coefficients[0] or not coefficients[1]:raise ValueError(code)
+        curve.update({'base':base,'c':coefficients})
+        if kind=='EXPONENTIAL':
+            curve['shiftX']=_mc_obs_fraction(entry.get('shiftX','0'),code)
+        elif any(key in entry for key in ('shiftX','domainStates','abs')):
+            raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
     else:
         curve['r']=_mc_obs_pair(entry,'radicand',code)
         if curve['r'][1]==0:raise ValueError(code)
@@ -4924,6 +4980,10 @@ def _mc_obs_y_plain(curve,x_value):
     if kind=='EXPONENTIAL':
         a,k,c=curve['c']
         return float(c)+float(a)*math.exp(math.log(curve['base'])*float(k*(x_value-curve['shiftX'])))
+    if kind=='LOGARITHMIC':
+        a,k,b,c=curve['c']
+        argument=k*x_value+b
+        return float(c)+float(a)*math.log(argument,curve['base']) if argument>0 else None
     f0,f1,f2=curve['f']
     return f0+f1*x_value+f2*x_value*x_value
 
@@ -4981,7 +5041,7 @@ def _mc_region_expected(plan,entry,by_id,viewport):
     boundaries=[]
     for name in names:
         curve='axis' if name=='axis' else by_id.get(name)
-        if curve is None or (curve!='axis' and curve.get('kind')=='X_OF_Y'):raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+str(region_id)+':'+name)
+        if curve is None or (curve!='axis' and curve.get('kind') in ('X_OF_Y','LOGARITHMIC')):raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+str(region_id)+':'+name)
         if curve!='axis':
             lo,hi=curve['interval']
             if float(start)<float(lo)-1e-9 or float(end)>float(hi)+1e-9:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+str(region_id)+':'+name)
@@ -5298,7 +5358,7 @@ def multi_curve_audit(plan,svg,transform,model=False):
             if entry.get('inverseOf') is not None:
                 source=by_id.get(entry['inverseOf'])
                 if source is None or source.get('inverse') or source.get('abs'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
-                if kind=='EXPONENTIAL':raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+                if kind in ('EXPONENTIAL','LOGARITHMIC'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
                 definition=_mc_obs_inverse_definition(source,ident) if source['kind'] in MC_FREE_KINDS else None
                 if definition is None:
                     # a quadratic half: its inverse is a square root (own derivation, exact)
@@ -5330,6 +5390,12 @@ def multi_curve_audit(plan,svg,transform,model=False):
                         raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
                     if any(abs(_mc_obs_y_plain(curve,x))>10**8 for x in (lo,hi)):
                         raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
+                if kind=='LOGARITHMIC':
+                    _,k,b,_=curve['c']
+                    if any(k*x+b<=0 for x in (lo,hi)):raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                    if (any(abs(x)>10**6 or float(k)*float(x)+float(b)<=0 for x in (lo,hi)) or float(lo)>=float(hi)
+                        or any(abs(_mc_obs_y_plain(curve,x))>10**8 for x in (lo,hi))):
+                        raise ValueError('MULTI_CURVE_LOGARITHMIC_NUMERIC_SCOPE:'+ident)
                 if kind=='RATIONAL':
                     pole=-curve['d'][0]/curve['d'][1]
                     if lo<pole<hi:branches=[{'side':'LEFT','xInterval':(lo,pole),'yInterval':None},{'side':'RIGHT','xInterval':(pole,hi),'yInterval':None}]
@@ -5401,6 +5467,10 @@ def multi_curve_audit(plan,svg,transform,model=False):
             elif kind=='EXPONENTIAL':
                 if (row.get('base')!=str(curve['base']) or not list_same(row.get('coefficients'),curve['c'])
                     or not list_same([row.get('shiftX')],[curve['shiftX']])):same=False
+            elif kind=='LOGARITHMIC':
+                _,k,b,_=curve['c']
+                if (row.get('base')!=str(curve['base']) or not list_same(row.get('coefficients'),curve['c'])
+                    or row.get('naturalDomainBoundaryX')!=str(-b/k)):same=False
             elif kind=='SQRT':
                 if not list_same(row.get('radicand'),curve['r']) or not list_same([row.get('amplitude','1')],[curve['a']]) or not list_same([row.get('offset','0')],[curve['o']]):same=False
             if kind=='X_OF_Y' and row.get('branch','BOTH')!=curve['branch']:same=False
@@ -5467,6 +5537,10 @@ def multi_curve_audit(plan,svg,transform,model=False):
                 # coverage: each end is at the interval end, or (a free curve) where the frame cuts it off
                 for end_point,want in ((points[0],start),(points[-1],end)):
                     at_end=abs(end_point[0]-want)<=x_tol
+                    if kind=='LOGARITHMIC':
+                        # A small x gap next to the boundary can hide a large vertical piece.
+                        exact_x=branch['xInterval'][0] if want==start else branch['xInterval'][1]
+                        at_end=at_end and abs(end_point[1]-_mc_obs_y_plain(curve,exact_x))<=y_tol
                     at_frame=clipped_ok and (abs(end_point[1]-ymax)<=y_tol or abs(end_point[1]-ymin)<=y_tol)
                     if not at_end and not at_frame:errors.append('MULTI_CURVE_COVERAGE_FAIL:'+tag);break
                 if kind=='X_OF_Y':
@@ -5522,7 +5596,7 @@ def multi_curve_audit(plan,svg,transform,model=False):
             if raw_emphasis is None:
                 if row.get('emphasis'):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+ident)
                 continue
-            if curve['kind']=='X_OF_Y' or not isinstance(raw_emphasis,list) or not 1<=len(raw_emphasis)<=3:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+            if curve['kind'] in ('X_OF_Y','LOGARITHMIC') or not isinstance(raw_emphasis,list) or not 1<=len(raw_emphasis)<=3:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
             lo,hi=curve['interval'];previous=None;frozen_rows=row.get('emphasis') if isinstance(row.get('emphasis'),list) else []
             if len(frozen_rows)!=len(raw_emphasis):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+ident)
             for number,item in enumerate(raw_emphasis,1):

@@ -439,7 +439,10 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q7-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정의역 −2≤x≤2에서 감소하는 지수곡선이다. 양 끝은 닫힌 점이며, x=−2에서 주어진 최댓값 y=48에 이른다.",
+    "solutionImageCaption": "밑 $r=\\frac{a}{a+2}$는 $a>0$이므로 $0<r<1$이다.\n따라서 $f(x)=3r^x$는 감소함수이고, 정의역 $[-2,2]$에서 최댓값은 $x=-2$일 때이다.\n$3r^{-2}=48$에서\n$r^2=\\frac1{16}$, $r=\\frac14$이다.\n그러므로\n$\\frac{a}{a+2}=\\frac14$\n$4a=a+2$\n$a=\\frac23$이다.\n정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 8,
@@ -622,7 +625,11 @@ window.questionBank = [
       "disposition": "LAYOUT_KEEP",
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
-    "visualDisposition": "VISUAL_EXEMPT"
+    "visualDisposition": "VISUAL_EXEMPT",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 수직선은 이차식 해 −4<x<5, 정의역 x>4, 그리고 공통 해 4<x<5를 위에서 아래 순서로 나타낸다. 모든 경계점은 열린 점이다.",
+    "solutionImageCaption": "로그 부등식은 −4<x<5, 정의역은 x>4이므로 공통 구간은 4<x<5이고 길이는 1이다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 11,
@@ -744,7 +751,11 @@ window.questionBank = [
       "disposition": "LAYOUT_KEEP",
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
-    "visualDisposition": "VISUAL_EXEMPT"
+    "visualDisposition": "VISUAL_EXEMPT",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원 위의 P_1,…,P_6를 표시하고, y축 대칭인 점들이 같은 높이에 놓이는 모습을 수평선으로 보여준다.",
+    "solutionImageCaption": "sin(π/7)=sin(6π/7), sin(2π/7)=sin(5π/7), sin(3π/7)=sin(4π/7)이므로 서로 다른 값은 3개이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 13,
@@ -806,7 +817,10 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q13-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 함수 f(x), g(x)의 두 로그곡선과 y=2 수평선을 나타낸다. x=1에서 각 곡선의 기준점 P,Q가 표시되어 있으며 두 곡선은 y=2를 기준으로 서로 대칭이다.",
+    "solutionImageCaption": "y=log₂x와 y=−log₂x+m의 대칭 조건을 y=2와 비교하면 m=4이다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 14,
@@ -868,7 +882,10 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q14-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 지수함수 y=3^(x+1), y=3 및 y=5 기준선과 좌표축을 나타낸다. x=0에서 곡선은 y=3이고, 두 후보 높이 5±k는 y=5를 중심으로 대응한다.",
+    "solutionImageCaption": "t=3^(x+1)에서 양의 x는 t>3, 음의 x는 0<t<3이다. 두 후보 5±k를 비교해 k=3,4를 얻고 합은 7이다. 정답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 15,
@@ -930,7 +947,10 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q15-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 수평선 y=3, y=9, y=27을 나타낸다. 두 낮은 수평선은 포물선과 각각 두 점에서 만나고, 가장 높은 수평선은 꼭짓점에서 접한다.",
+    "solutionImageCaption": "y=3과 y=9는 각각 두 점에서 만나고, y=27은 꼭짓점에서 접한다. 꼭짓값이 27이므로 더 높은 자연수 수준에는 교점이 없다. 따라서 a=10 (⑤)이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 16,
@@ -940,6 +960,7 @@ window.questionBank = [
     "question": "다음 그림과 같이 좌표평면 위에 곡선 $y = \\log_{\\frac{1}{2}} x$와 $x$축 위에 서로 다른 세 점 $A(x_1, 0)$, $B(x_2, 0)$, $C(x_3, 0)$이 있다. $\\overline{AB} = \\overline{BC}$일 때, 옳은 것만을 [보기]에서 있는 대로 고른 것은? (단, $1 < x_1 < x_2 < x_3$) [4.2점]\n<보기>\nㄱ. $\\log_{\\frac{1}{2}} (x_2 - x_1) = \\log_{\\frac{1}{2}} (x_3 - x_2)$\nㄴ. $\\log_{\\frac{1}{2}} (x_1 + x_2 + x_3) = \\log_{\\frac{1}{2}} (3x_2)$이다.\nㄷ. $\\log_{\\frac{1}{2}} \\frac{x_2}{x_1} > \\log_{\\frac{1}{2}} \\frac{x_3}{x_2}$이다.",
     "content": "다음 그림과 같이 좌표평면 위에 곡선 $y = \\log_{\\frac{1}{2}} x$와 $x$축 위에 서로 다른 세 점 $A(x_1, 0)$, $B(x_2, 0)$, $C(x_3, 0)$이 있다. $\\overline{AB} = \\overline{BC}$일 때, 옳은 것만을 보기에서 있는 대로 고른 것은? (단, $1 < x_1 < x_2 < x_3$) [4.2점]\n<보기>\nㄱ. $\\log_{\\frac{1}{2}} (x_2 - x_1) = \\log_{\\frac{1}{2}} (x_3 - x_2)$\nㄴ. $\\log_{\\frac{1}{2}} (x_1 + x_2 + x_3) = \\log_{\\frac{1}{2}} (3x_2)$이다.\nㄷ. $\\log_{\\frac{1}{2}} \\frac{x_2}{x_1} > \\log_{\\frac{1}{2}} \\frac{x_3}{x_2}$이다.",
     "image": "assets/images/23_순천여고_1학기_중간_고2_수학I/q16.png",
+    "imageAlt": "좌표평면에서 밑이 2분의 1인 감소 로그곡선이 보인다. 가로축 오른쪽에 A, B, C가 왼쪽부터 표시되어 있다.",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -1063,6 +1084,7 @@ window.questionBank = [
     "question": "그림과 같이 선분 $AB$를 지름으로 하는 반원이 있다. 선분 $AB$의 중점을 $O$라 하고 호 $AB$ 위의 점 $P$에 대하여 $AP$의 중점 $Q$에서 선분 $AB$에 내린 수선의 발을 $R$이라 하자. $\\angle PAB = 30^\\circ$이고 $\\log_3 (\\overline{AR} \\times \\overline{OR}) = \\frac{8}{3}$일 때, 삼각형 $PAB$의 넓이를 구하면 $k\\sqrt[6]{3}$이다. 상수 $k$의 값은? [4.3점]",
     "content": "그림과 같이 선분 $AB$를 지름으로 하는 반원이 있다. 선분 $AB$의 중점을 $O$라 하고 호 $AB$ 위의 점 $P$에 대하여 $AP$의 중점 $Q$에서 선분 $AB$에 내린 수선의 발을 $R$이라 하자. $\\angle PAB = 30^\\circ$이고 $\\log_3 (\\overline{AR} \\times \\overline{OR}) = \\frac{8}{3}$일 때, 삼각형 $PAB$의 넓이를 구하면 $k\\sqrt[6]{3}$이다. 상수 $k$의 값은? [4.3점]",
     "image": "assets/images/23_순천여고_1학기_중간_고2_수학I/q18.png",
+    "imageAlt": "지름 AB인 반원에 중심 O와 호 위의 P를 표시했다. 선분 AP 위의 Q에서 지름에 내린 수선의 발은 R이다. 각 PAB는 30도이다.",
     "choices": [
       "$64$",
       "$72$",
@@ -1177,7 +1199,10 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q19-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 삼각형 A(−5,1), B(11,1), C(1,11)이 표시되어 있다. AB는 y=1의 수평 밑변이며 길이는 16이다. C에서 AB에 내린 수직 높이 CH에는 직각 표식이 있고, 높이는 10이다.",
+    "solutionImageCaption": "삼각형 ABC에서 밑변 AB=16과 수직 높이 CH=10을 이용하면 넓이는 1/2·16·10=80이다. 따라서 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 20,
@@ -1239,7 +1264,10 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q20-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 수직선은 u=f(x)−1의 범위 [k−3,k+1]을 비교한다. 위 두 범위는 0을 포함하고 마지막 범위는 0의 오른쪽에 있다. 모두 닫힌 범위이며, 절댓값은 0에서 해당 점까지의 거리이다.",
+    "solutionImageCaption": "범위가 0을 포함하면 최솟값은 0이고, 그렇지 않으면 두 끝점에서 읽은 절댓값의 차가 구간 길이와 같다. 옳은 것은 ㄱ뿐이므로 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 21,
@@ -1316,7 +1344,9 @@ window.questionBank = [
     "score": 7,
     "question": "직선 $y = -2x + k$와 $y$축과의 교점을 $A$라 하고, $y = -2x + k$가 두 함수 $y = 4^x - 3$, $y = 2^{x+a} + 2$의 그래프와 만나는 점을 각각 $B, C$라 하자. 점 $C$의 $x$좌표가 $2$이고, 점 $A$가 $\\overline{BC}$를 $3:4$로 외분하는 점일 때, 상수 $a, k$값을 각각 구하시오. (7점)",
     "content": "직선 $y = -2x + k$와 $y$축과의 교점을 $A$라 하고, $y = -2x + k$가 두 함수 $y = 4^x - 3$, $y = 2^{x+a} + 2$의 그래프와 만나는 점을 각각 $B, C$라 하자. 점 $C$의 $x$좌표가 $2$이고, 점 $A$가 $\\overline{BC}$를 $3:4$로 외분하는 점일 때, 상수 $a, k$값을 각각 구하시오. (7점)",
-    "image": "assets/images/23_순천여고_1학기_중간_고2_수학I/q22.png",
+    "image": "assets/images/23_순천여고_1학기_중간_고2_수학I/q22-problem-v1.svg",
+    "imageAlt": "직선과 두 지수곡선의 교점을 A, B, C로 표시했다. A는 y축 위에 있고, A가 BC를 3:4로 외분하며 C의 x좌표는 2이다.",
+    "imageSize": "tall",
     "choices": [],
     "answer": "a=-1, k=8",
     "solution": "$A$는 $y$축 위의 점이므로 $x_A=0$이고, $x_C=2$이다.\n$A$가 $\\overline{BC}$를 $3:4$로 외분하므로 $|x_B|:|x_C|=3:4$이다. 따라서 $x_B=\\frac32$ 또는 $x_B=-\\frac32$이다. $x_B=-\\frac32$이면 $0$이 $-\\frac32$와 $2$ 사이에 있어 내분이 되므로, 외분 조건에 맞는 값은 $x_B=\\frac32$이다.\n$B$는 $y=4^x-3$ 위에 있으므로 $y_B=4^{\\frac{3}{2}}-3=5$이다. 직선 $y=-2x+k$에 대입하면 $5=-2\\cdot\\frac32+k$에서 $k=8$이다.\n이제 $C$의 직선 위의 $y$좌표는 $-2\\cdot2+8=4$이다. $C$는 $y=2^{x+a}+2$ 위에 있으므로 $4=2^{2+a}+2$, $2^{2+a}=2$이고 $a=-1$이다.\n따라서 $a=-1$, $k=8$이다.",
@@ -1374,7 +1404,7 @@ window.questionBank = [
     "content": "양수 $k$에 대하여 세 함수 $f(x) = \\log_{\\frac{1}{3}} (x+3)$, $g(x) = \\log_9 (x+3)$, $h(x) = \\log_3 (x-k)$가 있다. 두 함수 $y = f(x)$, $y = g(x)$의 그래프의 교점을 $A$, 두 함수 $y = f(x)$, $y = h(x)$의 그래프의 교점을 $B$, 두 함수 $y = g(x)$, $y = h(x)$의 그래프의 교점을 $C$라고 하고, 함수 $y = h(x)$의 그래프의 점근선이 두 함수 $y = f(x)$, $y = g(x)$의 그래프와 만나는 점을 각각 $D, E$라 하자. $\\overline{DE} = \\frac{3}{2}\\log_3 6$일 때, 삼각형 $ABC$의 무게중심의 $x$좌표를 구하시오. (7점)",
     "choices": [],
     "answer": "\\frac{4+\\sqrt{10}}{3}",
-    "solution": "교점 $A$는\n$\\log_{\\frac{1}{3}}(x+3)=\\log_9(x+3)$에서 구한다.\n$u=\\log_3(x+3)$라 두면 $-u=\\frac{u}{2}$이므로 $u=0$, $A=(-2,0)$이다.\n점근선은 $x=k$이다. 이 직선과 $f,g$의 교점 $D,E$는 세로로 놓이며\n$DE=|\\log_{\\frac{1}{3}}(k+3)-\\log_9(k+3)|=\\frac32\\log_3(k+3)$이다.\n주어진 길이와 비교하여 $k+3=6$, 따라서 $k=3$이다.\n$B$는 $f=h$에서\n$-\\log_3(x+3)=\\log_3(x-3)$이므로 $(x+3)(x-3)=1$, 즉 $x^2=10$이다.\n$x=\\pm\\sqrt{10}$ 중 $h$의 정의역 $x>3$을 만족하는 값은 $x_B=\\sqrt{10}$이다.\n$C$는 $g=h$에서\n$\\frac12\\log_3(x+3)=\\log_3(x-3)$이므로 $x+3=(x-3)^2$이다.\n$(x-1)(x-6)=0$ 중 정의역 $x>3$을 만족하는 것은 $x_C=6$이다.\n무게중심의 $x$좌표는\n$\\frac{-2+\\sqrt{10}+6}{3}=\\frac{4+\\sqrt{10}}{3}$이다.",
+    "solution": "교점 $A$는\n$\\log_{\\frac{1}{3}}(x+3)=\\log_9(x+3)$에서 구한다.\n$u=\\log_3(x+3)$라 두면 $-u=\\frac{u}{2}$이므로 $u=0$, $A=(-2,0)$이다.\n점근선은 $x=k$이다. 이 직선과 $f,g$의 교점 $D,E$는 세로로 놓이며\n$DE=|\\log_{\\frac{1}{3}}(k+3)-\\log_9(k+3)|=\\frac32\\log_3(k+3)$이다.\n주어진 길이와 비교하여 $k+3=6$, 따라서 $k=3$이다.\n$B$는 $f=h$에서\n$-\\log_3(x+3)=\\log_3(x-3)$이므로 $(x+3)(x-3)=1$, 즉 $x^2=10$이다.\n$x=\\pm\\sqrt{10}$ 중 $h$의 정의역 $x>3$을 만족하는 값은 $x_B=\\sqrt{10}$이다.\n$C$는 $g=h$에서\n$\\frac12\\log_3(x+3)=\\log_3(x-3)$이므로 $x+3=(x-3)^2$이다.\n$(x-1)(x-6)=0$ 중 정의역 $x>3$을 만족하는 것은 $x_C=6$이다.\n\n\n세로 점근선은 $x=3$이다. 그림에서 만나는 곳을 아래와 같이 대응시킨다.\n\n| 점 | 그림에서의 위치 | 좌표 |\n| --- | --- | --- |\n| $A$ | 곡선 $f$와 $g$의 교점 | $x=-2$, $y=0$ |\n| $B$ | 곡선 $f$와 $h$의 교점 | $x=\\sqrt{10}$, $y=\\log_3(\\sqrt{10}-3)$ |\n| $C$ | 곡선 $g$와 $h$의 교점 | $x=6$, $y=1$ |\n| $D$ | 곡선 $f$와 점근선의 교점 | $x=3$, $y=-\\log_3 6$ |\n| $E$ | 곡선 $g$와 점근선의 교점 | $x=3$, $y=\\frac{1}{2}\\log_3 6$ |\n\n무게중심의 $x$좌표는\n$\\frac{-2+\\sqrt{10}+6}{3}=\\frac{4+\\sqrt{10}}{3}$이다.",
     "category": "수학I",
     "originalCategory": "수학I",
     "level": "상",
@@ -1419,6 +1449,9 @@ window.questionBank = [
       "reason": "AUTO-FIRST; 원문 텍스트와 보기 순서 보존. actual Archive render는 후속 R3 범위."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEWED",
-    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q23-solution.svg"
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_수학I/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 곡선 f, 초록 점선 곡선 g, 주황 곡선 h 및 점근선 x=3이다. f와 g의 교점 A, g와 h의 교점 C를 표시했다. 점근선 바로 오른쪽의 f와 h 사이 교점 B와, 점근선 위의 D, E는 해설 표에서 위치를 대조한다.",
+    "solutionImageCaption": "두 로그함수의 높이 차에서 점근선 위치를 정한다. 세 교점의 x좌표를 더해 3으로 나누면 답은 (4+√10)/3이다.",
+    "solutionImageSize": "full"
   }
 ];

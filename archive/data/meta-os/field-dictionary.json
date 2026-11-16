@@ -1320,6 +1320,13 @@
       "note": "reviewFlag를 단 사유 문장(어떤 결함이 남았는지). 꼬리표의 근거이며 사용 문턱이 아님"
     },
     {
+      "name": "metadataAuthorityHold",
+      "layer": "보류·부채",
+      "kind": "상태",
+      "sameMeaningAs": [],
+      "note": "공식 native-authority-correction 등록기가 근거 없는 기존 FINAL_QA 권한을 철회한 뒤 남기는 archive-native-authority-hold-v1 객체. correctionRequestId, receiptPath, sealPath, reason(UNSUPPORTED_GENERIC_FINAL_QA), priorSemanticSha256, sourceHold(false)를 담는다. 정정 요청·불변 영수증·UID별 seal·현재 의미 상태와 identity가 함께 일치해야 유효하며, 손상된 보류도 승인으로 해석하지 않는다. 공식 v2 등록기와 AutoMeta는 별도의 명시적 권한 해결 없이 기존 승인을 재사용하거나 새 승격을 만들지 못하게 한다. 원문 자료 부족에 따른 sourceIssueHold와 다른 권한 보류이고, 기존 영수증·학생 원문·identity·D5를 바꾸거나 새 의미 승인을 뜻하지 않는다. 필드 또는 seal을 지운 사실만으로 해제되지 않는다."
+    },
+    {
       "name": "metaFoundationHoldReason",
       "layer": "보류·부채",
       "kind": "증거",
@@ -1401,6 +1408,13 @@
       "kind": "증거",
       "sameMeaningAs": [],
       "note": "상태를 그렇게 정한 이유(A/B 일치 등)"
+    },
+    {
+      "name": "sourceQualityHold",
+      "layer": "보류·부채",
+      "kind": "증거",
+      "sameMeaningAs": [],
+      "note": "archive-source-quality-hold-projection-v1 카탈로그 전용 근거 객체. source-quality-holds-v1 원장의 exact UID·시험지·순번·현재 원본 blob/raw SHA·원그림 SHA·기존 native 영수증·명시 EVIDENCE_PENDING 근거에 결속된 sourceIssueHold 투영을 설명한다. 원본 파일, 원본 무결성/게시 상태, 기존 native 승인과 D5를 변경하지 않으며 새 의미 승인이 아니다. 기본·고급 자동 선정과 VERIFIED 프로필에 동일 보류를 적용하고 일반 열람·기록 난도 이용은 보존한다. 별도의 명시 원자료 해결 근거 없이 자동 해제하지 않는다."
     }
   ]
 }

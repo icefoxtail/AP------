@@ -142,7 +142,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식의 풀이",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "crossConceptKeys": [],
@@ -216,7 +216,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식의 풀이",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "crossConceptKeys": [],
@@ -273,7 +273,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식의 풀이",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "crossConceptKeys": [],
@@ -543,10 +543,10 @@ window.questionBank = [
     "rpmL3": "인수분해 공식",
     "rpmL4": "제곱식",
     "rpmMappingStatus": "RPM_ONLY",
-    "difficultyBucket": 2,
+    "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "sourceIdentityKey": "22_향림중_1학기_기말_중3_수학#q09",
     "provenance": {
       "sourceMode": "ORIGINAL",
@@ -600,10 +600,10 @@ window.questionBank = [
     "rpmL3": "인수분해 공식",
     "rpmL4": "이차식",
     "rpmMappingStatus": "RPM_ONLY",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "sourceIdentityKey": "22_향림중_1학기_기말_중3_수학#q10",
     "provenance": {
       "sourceMode": "ORIGINAL",
@@ -620,7 +620,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "NONE"
   },
   {
     "id": 11,
@@ -657,7 +657,7 @@ window.questionBank = [
     "rpmL3": "인수분해 공식",
     "rpmL4": "이차식",
     "rpmMappingStatus": "RPM_ONLY",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
@@ -675,12 +675,8 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "crossConceptKeys": [
-      "CC_AREA"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "crossConceptKeys": ["CC_RECTANGLE_AREA"],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL"
   },
   {
@@ -718,7 +714,7 @@ window.questionBank = [
     "rpmL3": "이차방정식과 해",
     "rpmL4": "해가 주어진 이차방정식의 계수 결정",
     "rpmMappingStatus": "RPM_ONLY",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
@@ -733,12 +729,12 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식의 풀이",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "NONE"
   },
   {
     "id": 13,
@@ -775,7 +771,7 @@ window.questionBank = [
     "rpmL3": "제곱근·완전제곱식을 이용한 풀이",
     "rpmL4": "완전제곱식",
     "rpmMappingStatus": "RPM_ONLY",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
@@ -790,7 +786,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식의 풀이",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "crossConceptKeys": [],
@@ -836,10 +832,10 @@ window.questionBank = [
     "rpmL3": "제곱근·완전제곱식을 이용한 풀이",
     "rpmL4": "완전제곱식",
     "rpmMappingStatus": "RPM_ONLY",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "sourceIdentityKey": "22_향림중_1학기_기말_중3_수학#q14",
     "provenance": {
       "sourceMode": "ORIGINAL",
@@ -851,7 +847,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식의 풀이",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "crossConceptKeys": [],
@@ -908,7 +904,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식의 풀이",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "crossConceptKeys": [],
@@ -967,7 +963,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식의 풀이",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "crossConceptKeys": [],
@@ -1027,11 +1023,11 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_PERFECT_SQUARE"],
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "SEQUENTIAL",
     "solutionImage": "assets/images/22_향림중_1학기_기말_중3_수학/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선에서 a가 1/2의 오른쪽과 3/2의 왼쪽에 놓인다. a의 점 위치는 구간 안 예시이다.",
     "solutionImageCaption": "왼쪽 거리 |a−1/2|=a−1/2에서 오른쪽 거리 |a−3/2|=3/2−a를 빼면 2a−2이다. 정답은 ⑤이다.",
@@ -1090,15 +1086,9 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "crossConceptKeys": [
-      "CC_COMBINATORICS_COUNTING"
-    ],
-    "conditionKeys": [
-      "COND_INTEGER",
-      "COND_NATURAL_NUMBER",
-      "COND_RANGE"
-    ],
-    "integrationPattern": "CASE_BRANCH",
+    "crossConceptKeys": ["CC_PROBABILITY_DEFINITION"],
+    "conditionKeys": ["COND_NATURAL_NUMBER", "COND_RANGE"],
+    "integrationPattern": "SEQUENTIAL",
     "solutionImage": "assets/images/22_향림중_1학기_기말_중3_수학/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 주사위 두 눈 x,y를 열과 행에 놓고 각 칸에 (x−1)(y−3)를 적었다. 양의 완전제곱수에 해당하는 칸이 강조된다.",
     "solutionImageCaption": "자연수인 제곱근은 양의 완전제곱수에 대응한다. 해당 눈은 (2,4), (5,4), (3,5), (4,6)이다. 확률은 4/36=1/9이며 ③이다.",
@@ -1144,7 +1134,7 @@ window.questionBank = [
     "rpmMappingStatus": "RPM_ONLY",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "B23",
+    "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "sourceIdentityKey": "22_향림중_1학기_기말_중3_수학#q19",
     "provenance": {
@@ -1160,11 +1150,9 @@ window.questionBank = [
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
-    "integrationPattern": "CASE_BRANCH",
+    "crossConceptKeys": ["CC_SQUARE_AREA"],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "SEQUENTIAL",
     "solutionImageCaption": "길이의 관계를 나타낸 모식도이다. 두 넓이의 합으로 x²+(8−x)²=34이다. x는 3 또는 5이고, AP>BP이므로 AP=5 cm이다. 정답은 ④이다."
   },
   {
@@ -1205,10 +1193,10 @@ window.questionBank = [
     "rpmL3": "거리·속력·기타",
     "rpmL4": "운동 문제",
     "rpmMappingStatus": "RPM_ONLY",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "sourceIdentityKey": "22_향림중_1학기_기말_중3_수학#q20",
     "provenance": {
       "sourceMode": "ORIGINAL",
@@ -1229,7 +1217,7 @@ window.questionBank = [
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "SEQUENTIAL",
     "solutionImageCaption": "넓이는 (1/2)(2t)(12−t)=20이다. 해는 2와 10이지만 P의 이동은 0≤t≤6이므로 2초 후이다. 정답은 ①이다."
   },
   {
@@ -1283,7 +1271,7 @@ window.questionBank = [
     "conditionKeys": [
       "COND_INTEGER"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "NONE"
   },
   {
     "id": 22,
@@ -1335,7 +1323,7 @@ window.questionBank = [
     "problemTypeKey": "PT_RADICAL_EXPRESSION",
     "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
     "ptTplExactCurriculumBinding": "MISSING_DIRECT_BINDING_GAP",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_DENOMINATOR_RATIONALIZATION"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL"
   },
@@ -1368,7 +1356,7 @@ window.questionBank = [
     "rpmL3": "근의 공식",
     "rpmL4": "근의 공식",
     "rpmMappingStatus": "RPM_ONLY",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
@@ -1383,7 +1371,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식의 풀이",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "crossConceptKeys": [],
@@ -1441,10 +1429,8 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
-    "integrationPattern": "CASE_BRANCH",
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE",
     "solutionImageCaption": "한 변 L cm의 종이에서 3 cm씩 양쪽을 빼면 밑면의 한 변은 L−6 cm이다. 3(L−6)²=300에서 L>6이므로 처음 종이의 한 변은 16 cm이다."
   }
 ];

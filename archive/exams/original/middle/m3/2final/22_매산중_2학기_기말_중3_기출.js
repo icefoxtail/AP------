@@ -47,7 +47,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "기준각 A의 이웃변c와 빗변b를 구별해 코사인 정의에 맞는 등식을 고른다.",
-    "decisiveStep": "기준각 A의 이웃변c와 빗변b를 구별해 코사인 정의에 맞는 등식을 고른다."
+    "decisiveStep": "기준각 A의 이웃변c와 빗변b를 구별해 코사인 정의에 맞는 등식을 고른다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -95,7 +98,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "원뿔의 축단면에 이미 주어진 직각삼각형에서 모선20과 sin60으로 높이AO를 직접 구한다.",
-    "decisiveStep": "원뿔의 축단면에 이미 주어진 직각삼각형에서 모선20과 sin60으로 높이AO를 직접 구한다."
+    "decisiveStep": "원뿔의 축단면에 이미 주어진 직각삼각형에서 모선20과 sin60으로 높이AO를 직접 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -143,7 +149,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "수평 그림자50과 주어진 tan40=0.8로 나무 높이h를 직접 계산한다.",
-    "decisiveStep": "수평 그림자50과 주어진 tan40=0.8로 나무 높이h를 직접 계산한다."
+    "decisiveStep": "수평 그림자50과 주어진 tan40=0.8로 나무 높이h를 직접 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -191,7 +200,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "공통 수평거리70에서 관측점 아래 높이와 위 높이를 각각 tan45·tan60으로 구해 더한다.",
-    "decisiveStep": "공통 수평거리70에서 관측점 아래 높이와 위 높이를 각각 tan45·tan60으로 구해 더한다."
+    "decisiveStep": "공통 수평거리70에서 관측점 아래 높이와 위 높이를 각각 tan45·tan60으로 구해 더한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -239,7 +251,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "가까운 점의 거리x와 건물높이h를 같은 값으로 두고 먼 점의 거리x+30과 tan30 식을 연결해 높이를 구한다.",
-    "decisiveStep": "가까운 점의 거리x와 건물높이h를 같은 값으로 두고 먼 점의 거리x+30과 tan30 식을 연결해 높이를 구한다."
+    "decisiveStep": "가까운 점의 거리x와 건물높이h를 같은 값으로 두고 먼 점의 거리x+30과 tan30 식을 연결해 높이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -431,7 +446,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "현의 수직이등분으로 반현4를 정하고 반지름5와 피타고라스에서 중심거리x를 구한다.",
-    "decisiveStep": "현의 수직이등분으로 반현4를 정하고 반지름5와 피타고라스에서 중심거리x를 구한다."
+    "decisiveStep": "현의 수직이등분으로 반현4를 정하고 반지름5와 피타고라스에서 중심거리x를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -479,7 +497,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "각 꼭짓점에서 같은 접선길이를 차례로 옮기고 전체변에서 빼어 마지막 접선AP를 구한다.",
-    "decisiveStep": "각 꼭짓점에서 같은 접선길이를 차례로 옮기고 전체변에서 빼어 마지막 접선AP를 구한다."
+    "decisiveStep": "각 꼭짓점에서 같은 접선길이를 차례로 옮기고 전체변에서 빼어 마지막 접선AP를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -720,7 +741,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "같은 현의 원주각43도와 지름을 보는 직각90도를 각각 옮긴 뒤 삼각형의 남은 각을 구한다.",
-    "decisiveStep": "같은 현의 원주각43도와 지름을 보는 직각90도를 각각 옮긴 뒤 삼각형의 남은 각을 구한다."
+    "decisiveStep": "같은 현의 원주각43도와 지름을 보는 직각90도를 각각 옮긴 뒤 삼각형의 남은 각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 16,
@@ -768,7 +792,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 1,
     "primaryMethod": "서로 다른 두 현에 접현각 정리를 각각 바로 적용하여 x=72,y=71을 얻는다.",
-    "decisiveStep": "서로 다른 두 현에 접현각 정리를 각각 바로 적용하여 x=72,y=71을 얻는다."
+    "decisiveStep": "서로 다른 두 현에 접현각 정리를 각각 바로 적용하여 x=72,y=71을 얻는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 17,
@@ -864,7 +891,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 2,
     "primaryMethod": "원주각122도를 호244도로 바꿔 중심각70도의 호를 빼고 반대쪽 호의 나머지186도를 반으로 나눈다.",
-    "decisiveStep": "원주각122도를 호244도로 바꿔 중심각70도의 호를 빼고 반대쪽 호의 나머지186도를 반으로 나눈다."
+    "decisiveStep": "원주각122도를 호244도로 바꿔 중심각70도의 호를 빼고 반대쪽 호의 나머지186도를 반으로 나눈다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 19,
@@ -1001,7 +1031,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "빗변16과 주어진30도에서 cos30으로 이웃한 변AC를 직접 계산한다.",
-    "decisiveStep": "빗변16과 주어진30도에서 cos30으로 이웃한 변AC를 직접 계산한다."
+    "decisiveStep": "빗변16과 주어진30도에서 cos30으로 이웃한 변AC를 직접 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -1044,6 +1077,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 2,
     "primaryMethod": "정육면체의 면대각선으로 밑면 정삼각형 넓이를 정하고 주어진 수선·각에서 cos a로 높이AH를 표현한 뒤 삼각뿔 부피식에 대입한다.",
-    "decisiveStep": "정육면체의 면대각선으로 밑면 정삼각형 넓이를 정하고 주어진 수선·각에서 cos a로 높이AH를 표현한 뒤 삼각뿔 부피식에 대입한다."
+    "decisiveStep": "정육면체의 면대각선으로 밑면 정삼각형 넓이를 정하고 주어진 수선·각에서 cos a로 높이AH를 표현한 뒤 삼각뿔 부피식에 대입한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   }
 ];

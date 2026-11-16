@@ -1,0 +1,330 @@
+{
+  "schemaVersion": "m2s2-exact-current-renderer-method-mismatch-restoration-proposal-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "preparedAt": "2026-11-16T03:00:24.298Z",
+  "reviewer": "GPT_M3_34C2",
+  "decision": "PROPOSE_RESTORE_EXISTING_REVIEWED_SOLUTION_RENDERER_ONLY",
+  "questionUid": "qid_v1_de05c8f5bd81a6127d8730a8e09746a4a840f731aee7e66995f28d1aa969cba6",
+  "sourceOrdinal": 19,
+  "sourceArchiveFile": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js",
+  "currentRemoteMain": "16f0413bbf709581eededf19497008031d80b808",
+  "currentSource": {
+    "path": "archive/exams/original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js",
+    "gitBlobSha1": "09b1040a324327c425f417e2af3b47c02ab493c6",
+    "sha256": "5de64301c7b7e08ce350b1394b986d53583c14f32033ba5636b2daff5230fc7f"
+  },
+  "candidateSource": {
+    "localPath": "/workspace/scratch/0a70543c4ce8/m3-prep/m2s2-four-slot-continuity/E016/candidates/e016-q19-restore-reviewed-solution-renderer.js",
+    "sha256": "355fb8d92e7de01a88505bb8d121ed0b8891f4e96f8d622787871e7c3e4bda14",
+    "gitBlobSha1": "3c5fc14f44aa8102fe4a8bc506ff3bb1b8a216b1"
+  },
+  "sourceDelta": {
+    "set": {
+      "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q19-solution.svg"
+    },
+    "remove": {
+      "solutionImageSize": "full",
+      "solutionImageCaption": "같은 호 AC를 보는 중심각은 원주각의 두 배이다. 따라서 ∠AOC=100°이다.",
+      "solutionImageAlt": "삼각형 ABC에서 B의 각은 50도이다. 외심 O에서 A와 C로 선을 이었다. 그 사이의 중심각을 표시했다. 원주각 B와 중심각 AOC를 청록색으로 표시하고 호 AC를 굵게 그렸다."
+    }
+  },
+  "finding": {
+    "actualBeforeAndCurrentImagesViewed": true,
+    "actualNativeAndCurrentSolutionTextRead": true,
+    "actualSvgMarkupAndAccessibilityTextRead": true,
+    "currentCaption": "같은 호 AC를 보는 중심각은 원주각의 두 배이다. 따라서 ∠AOC=100°이다.",
+    "currentAlt": "삼각형 ABC에서 B의 각은 50도이다. 외심 O에서 A와 C로 선을 이었다. 그 사이의 중심각을 표시했다. 원주각 B와 중심각 AOC를 청록색으로 표시하고 호 AC를 굵게 그렸다.",
+    "nativePrimaryMethod": "외심의 이등변각과 중심 주위 각 합",
+    "nativeDecisiveStep": "반지름 두 쌍의 같은 각을 문자로 나타낸 뒤 중심 주위360도에서 소거한다.",
+    "currentIllustrationDifference": "The new solution SVG emphasizes arc AC and angles at B/O, omits auxiliary segment OB, and its caption explicitly invokes the central-angle/inscribed-angle theorem. The accepted unchanged solution uses OA=OB=OC, two isosceles triangles and angles around O. Equal answers alone do not establish method continuity.",
+    "proposedRestoration": "Reuse the exact existing native q19-solution.svg with OA, OB, OC and OA=OB=OC annotation. Remove only the three later renderer-caption/size/alt fields. Keep the current problem image and all original text/metadata.",
+    "comparisonContact": {
+      "path": "/workspace/scratch/0a70543c4ce8/m3-prep/m2s2-four-slot-continuity/E016/e016-q19-before-current-contact.png",
+      "sha256": "1bfe450f2ed26bee5066cfed8003831fbe5d048c03ef8363a5fabf1d2c45181b"
+    }
+  },
+  "nativeAuthority": {
+    "reviewRef": {
+      "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+      "path": "archive/data/meta-review/m2-s2-20261114/exams/E016/review.json",
+      "sha256": "63c099274f181fc65a611142b778de40ad35fd3e9175eae10357f0100f53fb69",
+      "localPath": "/workspace/scratch/0a70543c4ce8/m3-prep/m2s2-four-slot-continuity/E016/native-review.json"
+    },
+    "fourSlotRef": {
+      "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+      "path": "archive/data/meta-review/m2-s2-20261114/exams/E016/four-slot.json",
+      "sha256": "9f74519e58fdd4290b52247f89d8cc0e47fbd42ef1699ac1a38c0592562cdae0",
+      "sourceGitBlobSha": "452058115a64e46a1873baaeb4540e77ea2e10e5"
+    },
+    "rootAcceptanceRef": {
+      "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+      "path": "archive/data/meta-review/m2-s2-20261114/exams/E016/root-acceptance.json",
+      "sha256": "7a9db16edefaa4f7cd407423342ebcd22bbd55d6f73acd02ea42b599bae28a8b",
+      "localPath": "/workspace/scratch/0a70543c4ce8/m3-prep/m2s2-four-slot-continuity/E016/native-root-acceptance.json"
+    },
+    "nativeItemStableSha256": "984fc4bbe814e5a2846ffaffd1a83089a7c80d4b78c7b36fa2c7a9ddd83aad1d",
+    "verdict": "REGISTRATION_PENDING",
+    "registrationDebt": [
+      {
+        "type": "RESOLVER_PROOF_PENDING",
+        "reason": "ACTIVE 정의·parent·binding 읽기 대조 완료. 이번 메타 검토는 새 수학 독립검수 권한이 없어 VERIFIED_FINAL/independentVerification 증거를 만들어 공식 Resolver 통과로 주장하지 않음."
+      }
+    ],
+    "proposalRefs": []
+  },
+  "currentIssuedScope": {
+    "snapshot": "16f0413bbf709581eededf19497008031d80b808",
+    "remoteBlobRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "09b1040a324327c425f417e2af3b47c02ab493c6",
+        "sha256": "5de64301c7b7e08ce350b1394b986d53583c14f32033ba5636b2daff5230fc7f"
+      },
+      {
+        "path": "archive/data/question_metadata.json",
+        "gitBlobSha1": "153fd5198d4fecbccaddcc9fff228545909db57c",
+        "sha256": "7e54a2bf119fba179262d46fd8f7943e42ee56b4c4c3323d53ed703a04c984f1"
+      },
+      {
+        "path": "archive/data/question_identity_map.json",
+        "gitBlobSha1": "5860f657b01e042fce17a9fdb6fcf031dc81889e",
+        "sha256": "e5ca007a85b5a93b34ad02dd9986261137e77fdd99c2f8108d027729e0c26ce0"
+      },
+      {
+        "path": "archive/data/item-4slot-index.json",
+        "gitBlobSha1": "f5fc629a77cb5a15f87e3b6b9c61264248799475",
+        "sha256": "f2f0ca6ff38e93f6f6bc4e0badb4c0d77a01068910d934f9df63017e5db64d2d"
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "gitBlobSha1": "8fbfade8234a74b58aaf8d29f921afe08c164f04",
+        "sha256": "e344d9c9c3730baf9b0bd01ffc59ac33299efebf84a38c87582fe915c98332e7"
+      },
+      {
+        "path": "archive/assets/images/24_신흥중_2학기_중간_중2_수학/q19-solution.svg",
+        "gitBlobSha1": "cdf98808d4616ad3311d46b633b7ce5ce0c13628",
+        "sha256": "652c641290e66c6102a9c552dac0f8006df793d87c39c5e4673c0058cc643627"
+      },
+      {
+        "path": "archive/assets/images/24_신흥중_2학기_중간_중2_수학/q19-solution-visual-v2.svg",
+        "gitBlobSha1": "1e9ab47cd2f435311c776716b24603207f89f671",
+        "sha256": "d33b7c119d26ba7cc4e0502e9d7263be571d729d4e47f6c114577834dd5f66b3"
+      }
+    ],
+    "allRuntimePackDocumentsRead": 18,
+    "missingRemoteBlobs": 0,
+    "denominator": 21,
+    "finalQaRecords": 0,
+    "finalRecords": [
+      {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_6ec64a052a0fcf3711fe639c6c939333aeda7395196b19491be8cfdba34d35de"
+      },
+      {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_9712d4b5a957c9751325a694f83498505d2cc56e68ddc56200ad2da87144787e"
+      }
+    ],
+    "heldRecords": [
+      {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_0d3f0261acf9b67c7089bdbb7760f60b6854c1662d15b94faeda93e16e56cd20",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_23be7ec1a0b172a32c2c4bb9717df19f738c0d25141112fce968dfd1eb9ddec3",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_44075fefcf3301081be856834227bb16403f426f3117a67b2d765dc9cd6da273",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_655fdbc4b743e89d740c80af1b025b66048ed009866c3c624cafd20431efa111",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_70f2ec5f290db3f13c7e5535db5ff95a3489dc92d515732b81832486fbcc86b5",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_77d55d70ddb1e6a4618172db7a8504ebbb7e216d79e4e35e7809c6bf9a6968dd",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_7b4fb51db266430f5b14e3d97220ccb9772d9598c7ee1029c85150268b3b51af",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_92582dbafe5f4b941dffe7aed0b09efc30fd5fa678635897f692a33d04e9372e",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_ae3c63c0188bf5de758e103a70cc90c0b27756523d1958ceb335669852c08f3d",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_b37b517aae3d99c5a2cc5f5adf764888c7c377e99785918cceacd7290dc5c49c",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_b57044d4ecb38f8387217a247ea8dd776921014122477d9d4155b85d2350ecaf",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_b6fa000f54812cd7671106e3f8e0bf3b26888820fd4570deb448966050bffab9",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_d44910ac4eed7ee435978bcdb8620a485723d0c56533c3c9735bb50d053bfec3",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_d95b323069d9e36833f9646a3db0dbc8e5942b6696da48bdebc6e69e081f2e74",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_de05c8f5bd81a6127d8730a8e09746a4a840f731aee7e66995f28d1aa969cba6",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_ef3958e05772a67ec9ef1dd8a7fedb1c0842ca1008a82bfb788050a5d8b94015",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_f429cdb188e89f39e282ede340950fa0b318043f90e8bace8c77f77107371a0f",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_f7ea6087ad496c4efcc82bd2eb0a0d30bcfe35bc5304afdd23a3f86dedb7cb2d",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_ff1dc767a640fdee74cdbea30d2f09c870192cb4eb392792f9ad0d7544ad82a7",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      }
+    ],
+    "q19": {
+      "runtime": {
+        "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "reviewStatus": "manual_review",
+        "metaFoundationStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false,
+        "sourceFingerprint": "7f88216504eb35dc39782f14624684f3ede438379b8bf93dee001e5fcd0f8bb5",
+        "approvedSourceFingerprint": "7f88216504eb35dc39782f14624684f3ede438379b8bf93dee001e5fcd0f8bb5"
+      },
+      "sharedMetadata": {
+        "metadataStatus": "approved_partial_with_explicit_holds",
+        "fieldStatus": {
+          "standardUnit": "approved_source",
+          "subUnit": "approved_source",
+          "concept": "approved_classification",
+          "problemType": "manual_review_pending",
+          "template": "manual_review_pending",
+          "difficulty": "approved_source"
+        },
+        "tagStatus": "approved_subunit_concept_partial",
+        "tagConfidence": "candidate_evidence"
+      },
+      "currentReviewedV2ReceiptReferencePresent": false,
+      "receiptScopeNote": "No selected current metadata/runtime row carries a reviewed-v2 request/sourceReview/receipt reference. Historical receipt archives were not exhaustively searched."
+    },
+    "fourSlot": {
+      "registered": 4,
+      "pending": 17,
+      "q19Reason": "STALE_STUDENT_PAYLOAD",
+      "compactRegistrationHolds": 0
+    }
+  },
+  "impact": {
+    "changedSourceQuestionCount": 1,
+    "changedSourceFields": [
+      "solutionImage",
+      "solutionImageSize",
+      "solutionImageCaption",
+      "solutionImageAlt"
+    ],
+    "otherSourceQuestionsUnchanged": 20,
+    "contentAnswerSolutionUnchanged": true,
+    "problemImageUnchanged": true,
+    "identityHashUnchanged": true,
+    "identityHash": "e9c4491d0870b7daf0533a5237b0c84eaacb9857456371d365dd91d10620c87d",
+    "beforeFourSlotPayloadHash": "5b5570f151960508fc9384380c37789c5d7d5a83264a6fc5f4904890e9d83060",
+    "candidateFourSlotPayloadHash": "fac26d2979b9cf8ae7c9be0acd343b5d6747595a6db7d80f596328b8fee7248e",
+    "newSourceSemantics": 0,
+    "newMetadataApprovals": 0,
+    "registryMutations": 0,
+    "existingSourceAndRuntimeHoldsReleased": 0,
+    "sourceOnlyPreservationRequest": "No current FINAL_QA registration is identified to preserve. Do not manufacture one. Root should reread latest remote current rows before applying, retain all 19 runtime difficulty holds/2 FINAL states, then bind only the reviewed four-slot continuity candidate."
+  },
+  "rootNextActions": [
+    "Compare latest remote source and current metadata/runtime states against this exact snapshot.",
+    "Apply this one four-field restoration candidate only if the source bytes remain exact. Existing old SVG must retain its authenticated blob.",
+    "After Q2/Q16 original proof transcriptions and the remaining E016 renderer differences are reviewed, bind the 21 existing vectors without altering native debt or held metadata.",
+    "Read the official writer and current consumer after merge. This proposal is not an issued receipt or student deployment."
+  ],
+  "limits": {
+    "repositoryWrites": 0,
+    "officialRegistration": "NOT_RUN",
+    "studentDeployment": "NOT_RUN",
+    "newFullMathematicalQa": false
+  }
+}

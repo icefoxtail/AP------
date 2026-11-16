@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COORDINATE_GEOMETRY",
-  "shardVersion": "1.1.10",
+  "shardVersion": "1.1.11",
   "status": "ACTIVE",
-  "conceptCount": 53,
+  "conceptCount": 54,
   "concepts": [
     {
       "conceptKey": "CC_CIRCLE_CENTER_RADIUS",
@@ -2410,6 +2410,43 @@
         "2015:중3 수학:M3-01"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CYLINDER_LATERAL_UNFOLDING_SHORTEST_PATH",
+      "canonicalLabelKo": "원기둥 옆면의 고정 감김수 전개 최단거리",
+      "definition": "직원기둥의 옆면을 길이가 보존되는 직사각형 띠로 펼치고 지정된 감김수에 해당하는 두 끝점의 전개 위치를 고르면, 허용된 옆면 전개 영역 안에서 두 끝점을 잇는 직선이 최단 경로가 된다. 밑면을 가로지르는 경로나 다른 감김수의 경로와 구별한다.",
+      "ownerConceptShard": "COORDINATE_GEOMETRY",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M2-07"
+      ],
+      "legacyKeys": [],
+      "taxonomyRefs": [
+        "PT_M2_PYTHAGOREAN_RELATION"
+      ],
+      "curriculumRefs": [],
+      "evidenceProvenance": [
+        {
+          "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+          "questionUid": "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9",
+          "sourceOrdinal": 12,
+          "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+          "sourceBlobSha1": "d02155dc9bda42ff2a5b097a62b604664183ada5",
+          "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E059/review.json",
+          "nativeReviewSha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544",
+          "nativeProposalRefs": [
+            "B-E059-CYLINDER-UNFOLD"
+          ],
+          "classificationRationale": "PNG에서 A/B는 같은 모선의 위/아래 끝점이고 실은 옆면을 한 바퀴 감는다. stem의 반지름/높이와 고정 한 바퀴 조건을 직사각형 전개 끝점에 대응한 후 직선 최단 경로를 피타고라스로 계산한다.",
+          "newMathematicalQa": false
+        }
+      ]
     }
   ]
 }

@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import core from "../archive2-core.js";
 import { materializePackageShards } from "./materialize-archive-package-shards.mjs";
 import problemBankMeta from "../problem-bank-meta.js";
+import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
 import {
   buildMixedSourceShard,
   buildMixedUidBucket,
@@ -28,6 +29,7 @@ if (refreshingCanonicalProjection && process.argv.includes("--check"))
   throw new Error("--refresh-canonical-projection is a write path and cannot be combined with --check");
 const metadata = JSON.parse(read("archive/data/question_metadata.json"));
 const identity = JSON.parse(read("archive/data/question_identity_map.json"));
+const sourceQualityHolds = loadSourceQualityHolds({ root, identity });
 const basicScopeLinks = JSON.parse(read("archive/data/basic-scope-parent-links.json"));
 const projectionPolicy = JSON.parse(read("archive/data/archive2-canonical-projection-policy.json"));
 const foundationTaxonomy = JSON.parse(read("archive/data/meta-foundation/compiled/taxonomy_registry.json"));
@@ -613,6 +615,7 @@ for (const exam of exams) {
     for (const field of ["reviewStatus", "sourceQualityDisposition", "sourceIssueHold",
       "sourceDefectCandidate", "basicSemanticDisposition", "semanticDisposition"])
       if (record[field] === undefined && question[field] !== undefined) record[field] = question[field];
+    applySourceQualityHold(record, sourceQualityHolds);
     examRecords.push(record);
     records.push(record);
   }
@@ -627,6 +630,7 @@ for (const exam of exams) {
   ];
   exam.gradeConflict = examRecords.some((r) => r.gradeConflict);
 }
+assertSourceQualityHoldCoverage(sourceQualityHolds);
 const gradeCourseRows = projectionPolicy.gradeCourseAllowlist || [];
 const canonicalBasicParents = [];
 const canonicalAdvancedPaths = [];
@@ -773,6 +777,7 @@ const allInputPaths = [...new Set([
     runtimeInputPaths,
   ),
   coreMetaFilterAuthorityPath,
+  ...sourceQualityHolds.manifestPaths,
 ])].sort();
 const manifestFiles = allInputPaths.map((inputPath) => {
   const bytes = inputPath === "data/archive2-catalog.json"
@@ -860,6 +865,7 @@ const mixedRecordFields = [...new Set([
   "sourceIntegrityStatus", "sourceFingerprint", "assignmentFingerprint",
   "sourceStatus", "metadataConflicts", "unverifiedTaxonomy",
   ...core.META_FIELDS,
+  ...SOURCE_QUALITY_HOLD_FIELDS,
 ])];
 const mixedAssignmentFields = [
   "store", "questionUid", "sourceFile", "sourceOrdinal", "grade", "curriculumKey",
@@ -903,7 +909,7 @@ for (const [sourceFile, sourceRows] of sourceRecords) {
       sourceFingerprint: row.sourceFingerprint || "",
       rawQuestionHash: row.rawQuestionHash || "",
     };
-    for (const field of core.META_FIELDS)
+    for (const field of [...core.META_FIELDS, ...SOURCE_QUALITY_HOLD_FIELDS])
       if (Object.prototype.hasOwnProperty.call(row, field)) sourceRecord[field] = row[field];
     return sourceRecord;
   });

@@ -8,7 +8,7 @@ const out = path.join(root, 'reports/archive-fast-engine-v2');
 const base = 'http://127.0.0.1:8766/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&prewarm=0&snapshotCache=0';
 const runtimeScripts = ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'question-image-readiness', 'screen-runtime-adapter'];
 const runtimeVersions = Object.freeze({
-    mathjax_render_loop: '20260911.5',
+    mathjax_render_loop: '20261116-enclosed-latin',
     'layout-authority': '20260911.5',
     'layout-materializer': '20261102.2',
     'solution-render-executor': '20260914.1',

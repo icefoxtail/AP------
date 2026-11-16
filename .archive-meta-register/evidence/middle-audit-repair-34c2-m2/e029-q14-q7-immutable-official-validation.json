@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "middle-audit-prerequisite-existing-official-validation-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "baseDataCommit": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "codeBaseCommit": "071dc5756f153202ae1b17228a7a0c2c0b3bcb54",
+  "immutableProofCommit": "2219e98223e0c15ccbe64b0744e6058df935ff7f",
+  "status": "PASS_LOCAL_OFFICIAL_DRY_WRITE_REPLAY",
+  "source": {
+    "path": "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+    "blobSha1": "4d133716fc9336b49bd7ba7c59a7e045635c1ef9",
+    "sha256": "67869fb390585b1985f8aefe25e09764f6e933bde14d0101d06d212c04e12efb"
+  },
+  "requests": [
+    {
+      "path": ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-e029-q7-preserve-after-q14.json",
+      "sha256": "5e11b1f76c8bceafc51477735e0b6b24548b16291c87dd9fe4ad06a2ad451002"
+    },
+    {
+      "path": ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-e029-q14-prerequisite.json",
+      "sha256": "845fb254b1b2a37e1f94be30e4022b91ffdaa4a58b6508a19d888f4b21b28536"
+    }
+  ],
+  "results": [
+    {
+      "phase": "q7-preserve-write",
+      "sha256": "c33884574cef5261b126a0ab497e094107402f0c1082f64e716d51d2c42bd3e0",
+      "result": {
+        "status": "PASS",
+        "write": true,
+        "requestId": "middle-audit-repair-34c2-m2-e029-q7-preserve-after-q14",
+        "approvalType": "FINAL_QA",
+        "totalQuestions": 1,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 1,
+        "expectedQuestionCount": 23,
+        "newMetadataApprovals": 0,
+        "preservedMetadataApprovals": 1,
+        "registryChangeCount": 0,
+        "runtimeMaterialized": 1,
+        "fingerprintRepairCount": 0,
+        "consumerSearchStatus": "NOT_RUN",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle2-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e029-q7-preserve-after-q14.json"
+        ]
+      },
+      "reusedCompletedFixtureStep": true,
+      "originalCodeProofCommit": "6b672ca51bb274803bfd6fe0287b5f13b4ce90f3"
+    },
+    {
+      "phase": "q14-final-dryrun",
+      "sha256": "2b2127cb4b6399cc8e4a863630f4ecd4f01182ebcbcea65c1e9e6e02f12c09ea",
+      "result": {
+        "status": "PASS",
+        "write": false,
+        "requestId": "middle-audit-repair-34c2-m2-e029-q14-prerequisite",
+        "approvalType": "FINAL_QA",
+        "totalQuestions": 1,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 1,
+        "expectedQuestionCount": 23,
+        "registryChangeCount": 1,
+        "runtimeMaterialized": 1,
+        "fingerprintRepairCount": 1,
+        "consumerSearchStatus": "NOT_RUN",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+          "archive/data/meta-foundation/runtime/middle2-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e029-q14-prerequisite.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e029-q14-prerequisite.json"
+        ]
+      }
+    },
+    {
+      "phase": "q14-final-write",
+      "sha256": "627334186580cb9052bec4289d1251692aba0dcd5a4adf25c6c401e879d3aefe",
+      "result": {
+        "status": "PASS",
+        "write": true,
+        "requestId": "middle-audit-repair-34c2-m2-e029-q14-prerequisite",
+        "approvalType": "FINAL_QA",
+        "totalQuestions": 1,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 1,
+        "expectedQuestionCount": 23,
+        "registryChangeCount": 1,
+        "runtimeMaterialized": 1,
+        "fingerprintRepairCount": 1,
+        "consumerSearchStatus": "NOT_RUN",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+          "archive/data/meta-foundation/runtime/middle2-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/question_identity_map.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e029-q14-prerequisite.source-review-binding.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e029-q14-prerequisite.json"
+        ]
+      }
+    },
+    {
+      "phase": "q7-preserve-replay",
+      "sha256": "8118b0f371593e0da3569aaeb8daa0e9b1a3c0f89aa7ebf347396dd4a417c428",
+      "result": {
+        "status": "PASS",
+        "requestId": "middle-audit-repair-34c2-m2-e029-q7-preserve-after-q14",
+        "totalQuestions": 1,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 1,
+        "expectedQuestionCount": 23,
+        "newMetadataApprovals": 0,
+        "preservedMetadataApprovals": 1,
+        "replay": true,
+        "plannedPaths": [],
+        "consumerSearchStatus": "NOT_RUN",
+        "browserStatus": "NOT_RUN"
+      }
+    },
+    {
+      "phase": "q14-final-replay",
+      "sha256": "324a62b7c705de674cd0cbf42f89ea7074778f04ffc6bf4d07c9886d4c0ebbd0",
+      "result": {
+        "status": "PASS",
+        "requestId": "middle-audit-repair-34c2-m2-e029-q14-prerequisite",
+        "totalQuestions": 1,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 1,
+        "expectedQuestionCount": 23,
+        "replay": true,
+        "plannedPaths": [],
+        "consumerSearchStatus": "NOT_RUN",
+        "browserStatus": "NOT_RUN"
+      }
+    }
+  ],
+  "semanticApplicationUid": "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354",
+  "preservedIssuedUid": "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+  "newDefinitionCount": 0,
+  "newBindingCount": 1,
+  "crosswalkChanges": 0,
+  "newFullMathematicalQa": 0,
+  "nativeProposalRefs": [],
+  "modifiedMetadataUids": [
+    "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+    "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354"
+  ],
+  "modifiedIdentityUids": [
+    "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354"
+  ],
+  "unselectedMetadataOrIdentityChanges": 0,
+  "sourceMutation": 0,
+  "reusedCompletedFixtureSteps": [
+    "Q7 source-only write from first actual run"
+  ],
+  "q7RepeatWrite": false,
+  "executedCodeRefs": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "41f4300b4ca69b368e55bfdefe11e7d90e0e634519dc15d7705f75a0eed5b5dc"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-rpm-provenance.mjs",
+      "sha256": "64f2612aaf8e4d3dfd261061ed90e583b7a7e0fa6735658d1264d0469d1a9288"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "sha256": "ab41e9edcc64234776c399073e2ab40f8e489d9fe7b0bbb52da86f991b247e60"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-binding.mjs",
+      "sha256": "01d4385259801587eb2e2d442601f570eabc44a4afd915b63da6dd4cf0097a7d"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-replay-registry-context.mjs",
+      "sha256": "9c7309a6dfb99490126aad6963a01dac986e0542704e5e14b48772f889a88ebb"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2s1-prerequisite-existing-application.mjs",
+      "sha256": "a0ebb6c148b6ecb23ac88fe0a75b07693d6478727ab05bc24dc71eadb374bd57"
+    },
+    {
+      "path": "tests/archive-m2s1-prerequisite-existing-application.test.mjs",
+      "sha256": "584980dee2f086872bca04d4760193edae1eaaba7f92be963c51403190d7362f"
+    }
+  ],
+  "existingGoalReused": [
+    745,
+    131
+  ],
+  "actualRemoteWriter": "PENDING_ROOT_MERGE_AND_WRITER",
+  "canonicalConsumer": "PENDING_CHANGED_SCOPE_DERIVED_BUILD",
+  "studentDeployment": "NOT_RUN"
+}

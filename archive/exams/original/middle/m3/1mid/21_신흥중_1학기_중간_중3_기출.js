@@ -3,7 +3,7 @@ window.examTitle = "21_신흥중_1학기_중간_중3_기출";
 window.questionBank = [
   {
     "id": 1,
-    "level": "[중]",
+    "level": "하",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -32,14 +32,14 @@ window.questionBank = [
     ],
     "answer": "3",
     "solution": "① $\\sqrt{5}$는 5의 제곱근이지 25의 제곱근이 아니다. ② $\\sqrt{9}=3$이므로 3의 제곱근은 $\\pm\\sqrt{3}$이다. ③ $\\sqrt{(-7)^2}=7$이고 7의 음의 제곱근은 $-\\sqrt{7}$이므로 옳다. ④ $(-2)^2=4$의 제곱근은 $\\pm2$이다. ⑤ 0의 제곱근은 0 하나뿐이다. 따라서 정답은 ③이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 2,
-    "level": "[하]",
+    "level": "하",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -68,14 +68,14 @@ window.questionBank = [
     ],
     "answer": "3",
     "solution": "$\\sqrt{(-6)^2}=|-6|=6$이므로 ③의 $\\sqrt{(-6)^2}=-6$은 옳지 않다. 나머지는 각각 제곱근의 성질과 근호 계산에 맞는다. 따라서 정답은 ③이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 3,
-    "level": "[중]",
+    "level": "중",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -109,7 +109,7 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "level": "[중]",
+    "level": "하",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -147,7 +147,7 @@ window.questionBank = [
     "solutionImageSize": "full",
     "solutionImageAlt": "같은 파란 대각선의 길이는 모두 √2이다. A에서 오른쪽으로 P, B에서 왼쪽으로 Q까지 같은 거리를 표시했다.",
     "solutionImageCaption": "P가 A보다 오른쪽 √2만큼 앞에 있어 A는 −2이다. 한 칸 오른쪽의 B는 −1이다. B에서 왼쪽으로 √2만큼 간 Q의 수는 −1−√2이다.",
-    "level": "[중]",
+    "level": "중",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -183,7 +183,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "level": "[중]",
+    "level": "하",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -211,14 +211,14 @@ window.questionBank = [
     ],
     "answer": "4",
     "solution": "$\\sqrt5\\approx2.236$, $\\sqrt{24}\\approx4.899$이다. 3, $\\sqrt{18}$, $\\sqrt{10}$, $\\sqrt{15}$는 두 수 사이에 있지만 $\\sqrt{25}=5$는 $\\sqrt{24}$보다 크다. 따라서 정답은 ④이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 7,
-    "level": "[중]",
+    "level": "중",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -246,14 +246,14 @@ window.questionBank = [
     ],
     "answer": "1",
     "solution": "$320=2^6\\times5$이다. $\\sqrt{\\frac{320}{x}}$가 자연수가 되려면 $\\frac{320}{x}$가 완전제곱수여야 한다. 가장 작은 자연수 $x$로 홀수 지수인 인수 5를 없애면 $x=5$이고, $\\frac{320}{5}=64=8^2$이다. 따라서 정답은 ①이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
-    "level": "[중]",
+    "level": "중",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -287,7 +287,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "level": "[중]",
+    "level": "중",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -321,7 +321,7 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "[중]",
+    "level": "중",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -348,14 +348,14 @@ window.questionBank = [
     ],
     "answer": "1",
     "solution": "$2<\\sqrt5<3$이므로 $2-\\sqrt5<0$, $3-\\sqrt5>0$이다.\n따라서\n$\\sqrt{(2-\\sqrt5)^2}=|2-\\sqrt5|=\\sqrt5-2$,\n$\\sqrt{(3-\\sqrt5)^2}=|3-\\sqrt5|=3-\\sqrt5$이다.\n그러므로\n$(\\sqrt5-2)+(3-\\sqrt5)=1$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 11,
-    "level": "[중]",
+    "level": "중",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -389,7 +389,7 @@ window.questionBank = [
   },
   {
     "id": 12,
-    "level": "[중]",
+    "level": "중",
     "category": "다항식의 곱셈",
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
@@ -423,7 +423,7 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "level": "[중]",
+    "level": "중",
     "category": "다항식의 곱셈",
     "content": "$(x+a)(x-b)=x^2+x-2$일 때, $a-b+ab$의 값은? (단, $a, b$는 상수) (4점)",
     "choices": [
@@ -457,7 +457,7 @@ window.questionBank = [
   },
   {
     "id": 14,
-    "level": "[중]",
+    "level": "중",
     "category": "다항식의 곱셈",
     "content": "$(2x-3y)(-3x+7y)+(-2x+3y)^2$ 전개한 식에서 $xy$의 계수를 구하면? (4점)",
     "choices": [
@@ -492,7 +492,7 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "level": "[중]",
+    "level": "중",
     "category": "인수분해",
     "content": "인수분해 공식을 이용하여 $\\frac{1001 \\times 1002 - 1002}{1001^2-1}$를 계산하면? (4점)",
     "choices": [
@@ -519,14 +519,14 @@ window.questionBank = [
     ],
     "wide": false,
     "standardUnitOrder": 2,
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
-    "level": "[중]",
+    "level": "중",
     "category": "인수분해",
     "content": "이차식 $6x^2-13x-5$를 인수분해 하였을 때, 인수를 고르면? (4점)",
     "choices": [
@@ -553,14 +553,14 @@ window.questionBank = [
     ],
     "wide": false,
     "standardUnitOrder": 2,
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
-    "level": "[중]",
+    "level": "중",
     "category": "인수분해",
     "content": "다음 중 인수분해 한 것이 옳지 않은 것은? (4점)",
     "choices": [
@@ -587,14 +587,14 @@ window.questionBank = [
     ],
     "wide": false,
     "standardUnitOrder": 2,
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
-    "level": "[중]",
+    "level": "하",
     "category": "인수분해",
     "content": "다음 식 $9a^2 + \\Box ab + b^2$이 완전제곱식이 될 때, $\\Box$ 안에 들어갈 것을 고르면? (4점)",
     "choices": [
@@ -621,14 +621,14 @@ window.questionBank = [
     ],
     "wide": false,
     "standardUnitOrder": 2,
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 19,
-    "level": "[중]",
+    "level": "중",
     "category": "인수분해",
     "content": "$(x-1)^2 - (2x-3)$을 인수분해하면? (4점)",
     "choices": [
@@ -655,14 +655,14 @@ window.questionBank = [
     ],
     "wide": false,
     "standardUnitOrder": 2,
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
-    "level": "[상]",
+    "level": "중",
     "category": "인수분해",
     "content": "한승이는 $x$의 계수를 잘못 보고 $(x-3)(x+6)$으로, 수정이는 상수항을 잘못 보고 $(x-4)(x-3)$으로 인수분해 하였다. 처음 이차식을 바르게 인수분해 하면? (4점)",
     "choices": [
@@ -689,14 +689,14 @@ window.questionBank = [
     ],
     "wide": false,
     "standardUnitOrder": 2,
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
-    "level": "[중]",
+    "level": "하",
     "category": "제곱근과 실수",
     "content": "[서답형 1-1] $\\sqrt{169}-(-\\sqrt{12})^2+\\sqrt{(-5)^2}$을 계산하시오. (4점)",
     "answer": "6",
@@ -724,7 +724,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "level": "[중]",
+    "level": "중",
     "category": "제곱근과 실수",
     "content": "[서답형 1-2] $a < 0$일 때, $\\sqrt{(3a)^2}-\\sqrt{(-\\frac{1}{2}a)^2}$을 간단히 하시오. (5점)",
     "answer": "$-\\frac{5}{2}a$",
@@ -746,23 +746,23 @@ window.questionBank = [
     ],
     "wide": false,
     "choices": [],
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
-    "level": "[상]",
+    "level": "중",
     "category": "다항식의 곱셈",
     "content": "[서답형 2-2] $x = \\frac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}, y = \\frac{\\sqrt{3}+\\sqrt{2}}{\\sqrt{3}-\\sqrt{2}}$일 때, $x^3y - xy^3$의 값을 구하시오. (5점)",
     "answer": "$-40\\sqrt{6}$",
     "solution": "분모를 유리화하면 $x=(\\sqrt3-\\sqrt2)^2=5-2\\sqrt6$, $y=(\\sqrt3+\\sqrt2)^2=5+2\\sqrt6$이다. 따라서 $xy=1$, $x+y=10$, $x-y=-4\\sqrt6$이다. $x^3y-xy^3=xy(x^2-y^2)=xy(x-y)(x+y)=1\\cdot(-4\\sqrt6)\\cdot10=-40\\sqrt6$이다.",
     "originalCategory": "",
     "standardCourse": "",
-    "standardUnitKey": "M3-02",
-    "standardUnit": "다항식의 곱셈과 인수분해",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "M3-01",
+    "standardUnit": "실수와 그 계산",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -775,14 +775,14 @@ window.questionBank = [
     ],
     "wide": false,
     "choices": [],
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
-    "level": "[상]",
+    "level": "중",
     "category": "인수분해",
     "content": "[서답형 4-2] 이차식 $2x^2-ax-3$이 정수 계수로 인수분해 될 때, 정수 $a$가 될 수 있는 모든 수의 합을 구하시오. (5점)",
     "answer": "0",
@@ -804,8 +804,8 @@ window.questionBank = [
     ],
     "wide": false,
     "choices": [],
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-    "subUnit": "다항식의 곱셈",
+    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnit": "인수분해",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

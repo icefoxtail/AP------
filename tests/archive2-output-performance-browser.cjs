@@ -342,8 +342,8 @@ function installRetainedVisibilityObservation() {
   };
 }
 
-async function documentEvidence(page) {
-  return page.evaluate(async () => {
+async function documentEvidence(page, capturePdfMath = false) {
+  return page.evaluate(async capturePdfMath => {
     const digest = async value => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))), byte => byte.toString(16).padStart(2, '0')).join('');
     const state = typeof AppState !== 'undefined' ? AppState : window.AppState;
     const runtime = window.archiveScreenRuntime || window.mixedScreenRuntime;
@@ -365,6 +365,33 @@ async function documentEvidence(page) {
       value.payloadHash === envelope?.payloadHash && value.contractVersion === envelope?.contractVersion;
     const math = [...area.querySelectorAll('mjx-container')];
     const mathMarkup = math.map(node => node.innerHTML.replace(/MJX-\d+/g, 'MJX-N'));
+    // Keep at most two PDF snapshots inside Chrome. Markup and attribute values
+    // never leave the page; only a failed parity check requests redacted hashes.
+    let mathSnapshot;
+    if (capturePdfMath) try {
+      const childNodes = root => {
+        const result = [];
+        const walk = (node, path) => {
+          result.push({ path, type: node.nodeType, name: node.nodeName,
+            namespace: node.namespaceURI || null,
+            value: node.nodeValue === null ? null : String(node.nodeValue).replace(/MJX-\d+/g, 'MJX-N') });
+          Array.from(node.childNodes || []).forEach((child, index) => walk(child, [...path, index]));
+        };
+        Array.from(root.childNodes || []).forEach((node, index) => walk(node, [index]));
+        return result;
+      };
+      mathSnapshot = math.map((node, index) => ({ markup: mathMarkup[index],
+        childNodes: childNodes(node),
+        elements: [...node.querySelectorAll('*')].map(element => ({ tag: element.localName,
+          attributes: [...element.attributes].map(attribute => [attribute.name, attribute.value.replace(/MJX-\d+/g, 'MJX-N')]) })) }));
+    } catch (_) { delete window.__archivePdfMathSnapshots; }
+    const mathMarkupHash = await digest(JSON.stringify(mathMarkup));
+    if (mathSnapshot) try {
+      const cache = window.__archivePdfMathSnapshots instanceof Map ? window.__archivePdfMathSnapshots : new Map();
+      cache.delete(mathMarkupHash); cache.set(mathMarkupHash, mathSnapshot);
+      while (cache.size > 2) cache.delete(cache.keys().next().value);
+      window.__archivePdfMathSnapshots = cache;
+    } catch (_) { delete window.__archivePdfMathSnapshots; }
     const operationMath = window.__solutionLoadingQA.calls.filter(call => call.startMs >= window.__solutionLoadingQA.operationStart);
     const solutionSources = [...area.querySelectorAll('.sol-box')].map(node => node.dataset.sourceRef || '');
     const clipping = [...area.querySelectorAll('.page *')].filter(node => {
@@ -414,7 +441,7 @@ async function documentEvidence(page) {
         content: q.content || q.question || '', choices: q.choices || [], answer: q.answer,
         solution: q.solution || q.explanation || q.sol || '', image: q.image || '', images: q.images || [],
         solutionImage: q.solutionImage || '', solutionImageLayout: q.solutionImageLayout || '' })))),
-      mathMarkupHash: await digest(JSON.stringify(mathMarkup)),
+      mathMarkupHash,
       mathGeometry: math.map(node => ({ width: Math.round(node.getBoundingClientRect().width), height: Math.round(node.getBoundingClientRect().height) })),
       operationMath: { calls: operationMath.length,
         totalMs: operationMath.reduce((total, call) => total + (call.endMs - call.startMs), 0),
@@ -444,7 +471,7 @@ async function documentEvidence(page) {
         metadataRecordsCount: Array.isArray(window.ARCHIVE_QUESTION_METADATA?.records) ? window.ARCHIVE_QUESTION_METADATA.records.length : 0,
         appDataCount: Array.isArray(state?.data) ? state.data.length : 0, appKeyPresent: !!state?.key }
     };
-  });
+  }, capturePdfMath);
 }
 
 async function awaitInitialOutcome(page, strictEnvelope) {
@@ -474,6 +501,16 @@ async function printPreflight(page, before) {
         const result = await window.mixedFastHost.preflight();
         return { ok: result.ok, pages: result.pages, elapsedMs: performance.now() - started };
       }
+      // Match the original engine's safePrint barrier before the unchanged
+      // snapshot gates. The wait stays inside this measured preflight interval.
+      if (document.fonts?.ready) {
+        let fontTimer;
+        try {
+          await Promise.race([document.fonts.ready, new Promise(resolve => {
+            fontTimer = setTimeout(resolve, 5000);
+          })]);
+        } finally { clearTimeout(fontTimer); }
+      }
       const runtime = window.archiveScreenRuntime;
       const result = window.APArchiveSnapshotContract.preflight(runtime.activeSnapshot, runtime.committedCandidate);
       if (result.pass) window.bindArchiveRuntimePrintReadiness();
@@ -488,6 +525,100 @@ async function printPreflight(page, before) {
   const after = await H.capture(page, before.outcome);
   const parity = H.compareRows({ ...before, pass: true, name: 'before-preflight' }, { ...after, pass: true, name: 'after-preflight' });
   return { ...measured, outputParity: parity, attemptsBefore: before.attempts.length, attemptsAfter: after.attempts.length };
+}
+
+async function pdfMathMarkupDiagnostic(page, beforeHash, afterHash) {
+  return page.evaluate(async ({ beforeHash, afterHash }) => {
+    const schemaVersion = 'archive-pdf-math-markup-diagnostic-v1';
+    const unavailable = reason => ({ schemaVersion, status: 'UNAVAILABLE', reason });
+    const cache = window.__archivePdfMathSnapshots;
+    const before = cache?.get(beforeHash), after = cache?.get(afterHash);
+    if (!before || !after) return unavailable('SNAPSHOT_MISSING');
+    const digest = async value => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))), byte => byte.toString(16).padStart(2, '0')).join('');
+    if (await digest(JSON.stringify(before.map(node => node.markup))) !== beforeHash ||
+      await digest(JSON.stringify(after.map(node => node.markup))) !== afterHash) return unavailable('SNAPSHOT_HASH_MISMATCH');
+    const counts = values => {
+      const result = new Map();
+      for (const value of values) result.set(value, (result.get(value) || 0) + 1);
+      return result;
+    };
+    const countChanges = (left, right) => [...new Set([...left.keys(), ...right.keys()])].sort()
+      .filter(name => (left.get(name) || 0) !== (right.get(name) || 0))
+      .map(name => ({ name, before: left.get(name) || 0, after: right.get(name) || 0 }));
+    const nodes = [];
+    for (let index = 0; index < Math.max(before.length, after.length); index++) {
+      const left = before[index], right = after[index];
+      const leftElements = left?.elements || [], rightElements = right?.elements || [];
+      const record = { index, beforeSha256: left ? await digest(left.markup) : null,
+        afterSha256: right ? await digest(right.markup) : null,
+        beforeElementCount: leftElements.length, afterElementCount: rightElements.length };
+      record.changed = record.beforeSha256 !== record.afterSha256;
+      if (record.changed) {
+        record.tagCountChanges = countChanges(counts(leftElements.map(element => element.tag)), counts(rightElements.map(element => element.tag)));
+        record.attributeNameCountChanges = countChanges(counts(leftElements.flatMap(element => element.attributes.map(([name]) => name))),
+          counts(rightElements.flatMap(element => element.attributes.map(([name]) => name))));
+        record.elementChanges = [];
+        record.attributeOrderChanges = [];
+        for (let elementIndex = 0; elementIndex < Math.max(leftElements.length, rightElements.length); elementIndex++) {
+          const a = leftElements[elementIndex], b = rightElements[elementIndex];
+          const aAttributes = new Map(a?.attributes || []), bAttributes = new Map(b?.attributes || []);
+          const addedAttributeNames = [...bAttributes.keys()].filter(name => !aAttributes.has(name)).sort();
+          const removedAttributeNames = [...aAttributes.keys()].filter(name => !bAttributes.has(name)).sort();
+          const changedAttributeNames = [...aAttributes.keys()].filter(name => bAttributes.has(name) && aAttributes.get(name) !== bAttributes.get(name)).sort();
+          if (a?.tag !== b?.tag || addedAttributeNames.length || removedAttributeNames.length || changedAttributeNames.length)
+            record.elementChanges.push({ elementIndex, beforeTag: a?.tag || null, afterTag: b?.tag || null,
+              addedAttributeNames, removedAttributeNames, changedAttributeNames });
+          const beforeOrder = [...aAttributes.keys()], afterOrder = [...bAttributes.keys()];
+          if (a?.tag === b?.tag && !addedAttributeNames.length && !removedAttributeNames.length && !changedAttributeNames.length &&
+              JSON.stringify(beforeOrder) !== JSON.stringify(afterOrder))
+            record.attributeOrderChanges.push({ elementIndex, tag: a?.tag || null, beforeOrder, afterOrder });
+        }
+        // Character data never leaves Chrome. These hashes distinguish text,
+        // comment and DOM ordering changes from an attribute-order-only change;
+        // none changes the original byte-exact mathMarkupHash comparison.
+        const leftChildren = left?.childNodes || [], rightChildren = right?.childNodes || [];
+        const structure = nodes => nodes.map(({ value, ...node }) => node);
+        record.childNodeDetailVersion = 2;
+        record.beforeChildNodeCount = leftChildren.length;
+        record.afterChildNodeCount = rightChildren.length;
+        record.beforeChildStructureSha256 = await digest(JSON.stringify(structure(leftChildren)));
+        record.afterChildStructureSha256 = await digest(JSON.stringify(structure(rightChildren)));
+        record.childNodeTypeChanges = [];
+        record.characterDataChanges = [];
+        for (let childIndex = 0; childIndex < Math.max(leftChildren.length, rightChildren.length); childIndex++) {
+          const a = leftChildren[childIndex], b = rightChildren[childIndex];
+          if (JSON.stringify(a?.path) !== JSON.stringify(b?.path) || a?.type !== b?.type || a?.name !== b?.name || a?.namespace !== b?.namespace)
+            record.childNodeTypeChanges.push({ childIndex, beforePath: a?.path || null, afterPath: b?.path || null,
+              beforeType: a?.type ?? null, afterType: b?.type ?? null, beforeName: a?.name || null, afterName: b?.name || null });
+          if ((a?.value !== null && a?.value !== undefined || b?.value !== null && b?.value !== undefined) && a?.value !== b?.value)
+            record.characterDataChanges.push({ childIndex, beforePath: a?.path || null, afterPath: b?.path || null,
+              beforeType: a?.type ?? null, afterType: b?.type ?? null,
+              beforeLength: a?.value?.length ?? null, afterLength: b?.value?.length ?? null,
+              beforeSha256: a?.value === null || a?.value === undefined ? null : await digest(a.value),
+              afterSha256: b?.value === null || b?.value === undefined ? null : await digest(b.value),
+              beforeWhitespaceOnly: typeof a?.value === 'string' ? /^\s*$/.test(a.value) : null,
+              afterWhitespaceOnly: typeof b?.value === 'string' ? /^\s*$/.test(b.value) : null });
+        }
+      }
+      nodes.push(record);
+    }
+    return { schemaVersion, status: 'CAPTURED', comparison: 'DOCUMENT_ORDER',
+      normalization: 'EXISTING_MJX_NUMERIC_ID_ONLY', beforeHash, afterHash,
+      beforeNodeCount: before.length, afterNodeCount: after.length,
+      changedNodeCount: nodes.filter(node => node.changed).length, nodes };
+  }, { beforeHash, afterHash });
+}
+
+async function comparePdfScreen(page, before, after) {
+  try { return compare(before, after); }
+  catch (error) {
+    if (error.code === 'EXTENDED_OUTPUT_PARITY_MISMATCH' && error.details?.field === 'mathMarkupHash') {
+      try { error.details.mathMarkupDiagnostic = await bounded(pdfMathMarkupDiagnostic(page, before.mathMarkupHash, after.mathMarkupHash), 5000); }
+      catch (_) { error.details.mathMarkupDiagnostic = { schemaVersion: 'archive-pdf-math-markup-diagnostic-v1',
+        status: 'UNAVAILABLE', reason: 'DIAGNOSTIC_CAPTURE_FAILED' }; }
+    }
+    throw error;
+  }
 }
 
 async function printPdfMetadata(session, before) {
@@ -527,7 +658,7 @@ async function printPdfMetadata(session, before) {
   }), 45000);
   requireThat(stable.outcome.ok && stable.activeRootMatches, 'POST_PDF_OUTPUT_NOT_READY', stable);
   const after = await H.capture(session.page, stable.outcome);
-  const afterEvidence = await documentEvidence(session.page);
+  const afterEvidence = await documentEvidence(session.page, true);
   H.assertReady(after, before.questionCount, 'after-pdf');
   requireThat(after.mode === before.mode && after.qpp === before.qpp && afterEvidence.snapshotId === stable.snapshotId &&
     afterEvidence.attemptCount === stable.attemptCount && afterEvidence.snapshotMode === after.mode &&
@@ -535,7 +666,7 @@ async function printPdfMetadata(session, before) {
   if (afterEvidence.envelope.present) requireThat(afterEvidence.envelope.mode === after.mode &&
     afterEvidence.envelope.verifiedIdentityMatches && afterEvidence.envelope.renderedIdentityMatches &&
     afterEvidence.envelope.urlIdentityMatches && !afterEvidence.envelope.errorPresent, 'POST_PDF_ENVELOPE_NOT_READY');
-  const screenParity = compare({ ...before, pass: true, name: 'before-pdf' },
+  const screenParity = await comparePdfScreen(session.page, { ...before, pass: true, name: 'before-pdf' },
     { ...after, ...afterEvidence, pass: true, name: 'after-pdf' });
   const afterPrintState = { snapshotId: afterEvidence.snapshotId, snapshotMode: afterEvidence.snapshotMode,
     committedMode: afterEvidence.committedMode, mode: after.mode, attemptCount: afterEvidence.attemptCount,
@@ -689,7 +820,7 @@ async function measureOperation(session, operation, label, repeat, network, firs
   }
   const after = await session.metrics();
   const row = await H.capture(page, outcome);
-  const evidence = await documentEvidence(page);
+  const evidence = await documentEvidence(page, purpose === 'pdf');
   if (first) publicMs = (fixture.kind === 'envelope' ? evidence.envelopeReadyAt : evidence.runtimeReadyAt) ?? row.engineElapsedMs;
   // A same-mode cache HIT may create a real transaction while retaining the
   // active DOM. Zero means observed existing output, not a newly painted view.
@@ -969,7 +1100,7 @@ async function main() {
   if (!report.pass) process.exitCode = 1;
 }
 
-module.exports = { openSession, awaitInitialOutcome, documentEvidence, printPreflight, safeError };
+module.exports = { openSession, awaitInitialOutcome, documentEvidence, printPreflight, safeError, cycle };
 
 if (require.main === module) main().catch(error => {
   report.pass = false; report.failures.push(safeError(error)); report.summaries = summarize(); writeReport();

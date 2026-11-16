@@ -951,7 +951,7 @@ window.questionBank = [
     "imageStatus": "provided",
     "answerStatus": "verified",
     "solutionStatus": "created",
-    "reviewStatus": "manual_review",
+    "reviewStatus": "reviewed_pass",
     "sourceIdentityKey": "26_동산중_1학기_중간_중2_기출:q19",
     "sourcePage": 4,
 },
@@ -1006,7 +1006,7 @@ window.questionBank = [
     "imageStatus": "not_required",
     "answerStatus": "verified",
     "solutionStatus": "created",
-    "reviewStatus": "manual_review",
+    "reviewStatus": "reviewed_pass",
     "sourceIdentityKey": "26_동산중_1학기_중간_중2_기출:q20",
     "sourcePage": 4,
 },
@@ -1059,7 +1059,7 @@ window.questionBank = [
     "imageStatus": "not_required",
     "answerStatus": "verified",
     "solutionStatus": "created",
-    "reviewStatus": "manual_review",
+    "reviewStatus": "reviewed_pass",
     "sourceIdentityKey": "26_동산중_1학기_중간_중2_기출:q21",
     "sourcePage": 4,
 },
@@ -1165,14 +1165,14 @@ window.questionBank = [
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "비율·가격",
       "표"
     ],
     "wide": false,
-    "content": "지민이는 휴대 전화에 저장된 사진을 같은 크기로 인화하려고 한다. 인터넷 사진관 A와 B의 가격이 <표>와 같다. 사진을 몇 장 이상 인화해야 인터넷 사진관 B를 이용하는 것이 더 저렴한지 구하는 과정을 서술하시오. (단, 일차부등식을 세워 해결하고, 인화하는 사진의 수는 자연수이다.)",
+    "content": "지민이는 휴대 전화에 저장된 사진을 같은 크기로 인화하려고 한다. 인터넷 사진관 A와 B의 가격이 아래 표와 같다. 사진을 몇 장 이상 인화해야 인터넷 사진관 B를 이용하는 것이 더 저렴한지 구하는 과정을 서술하시오. (단, 일차부등식을 세워 해결하고, 인화하는 사진의 수는 자연수이다.)\n\n| 구분 | 인터넷 사진관 A | 인터넷 사진관 B |\n| --- | --- | --- |\n| 1장의 가격 | 200원 | 90원 |\n| 배송비 | 무료 배송 | 2500원 |\n\n",
     "choices": [],
     "answer": "23장 이상",
     "solution": "사진을 x장 인화한다고 하자.\n사진관 A의 비용은 200x원이고, 사진관 B의 비용은 90x+2500원이다.\nB가 더 저렴하려면 90x+2500<200x이어야 한다.\n따라서 2500<110x, x>2500/110=250/11이다.\nx는 자연수이므로 x≥23이다.\n따라서 23장 이상 인화해야 B가 더 저렴하다.",
@@ -1199,6 +1199,6 @@ window.questionBank = [
     "sourceIdentityKey": "26_동산중_1학기_중간_중2_기출:q24",
     "sourcePage": 4,
     "solutionImage": "assets/images/26_동산중_1학기_중간_중2_기출/q24-solution.svg",
-    "image": "assets/images/26_동산중_1학기_중간_중2_기출/q24-clean.svg"
+    "image": ""
   }
 ];

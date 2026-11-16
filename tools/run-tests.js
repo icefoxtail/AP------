@@ -30,10 +30,41 @@ const tests = includeQuarantined
   ? files
   : files.filter(name => !quarantined.has(name));
 
+// These complete suites exceed the old 60-second child limit (the M2 renderer
+// suite measures 85–107 seconds with actual Git, writer and replay fixtures).
+// Keep a finite per-command limit in both the full and scoped runners.
+const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.test.js' ? 180000
+  : file === 'archive2-compose-scope.test.js' ? 180000
+  : file === 'meta-foundation-middle-geometry-runtime.test.js' ? 300000 : 60000;
+
 // Keep the SVG semantic regression outside the legacy CommonJS-only glob.
 // CI invokes this runner, so both the verifier syntax gate and its ESM test
 // become blocking checks on every normal test run.
 const requiredCommands = [
+  {
+    label: 'tests/native-approved-renderer-consumer.test.mjs',
+    args: ['--test', 'tests/native-approved-renderer-consumer.test.mjs']
+  },
+  {
+    label: 'tests/native-approved-renderer-preservation.test.mjs',
+    args: ['--test', 'tests/native-approved-renderer-preservation.test.mjs']
+  },
+  {
+    label: 'tests/native-approved-renderer-preview.test.mjs',
+    args: ['--test', 'tests/native-approved-renderer-preview.test.mjs']
+  },
+  {
+    label: 'tests/archive-source-quality-holds.test.mjs',
+    args: ['--test', 'tests/archive-source-quality-holds.test.mjs']
+  },
+  {
+    label: 'tests/archive-m2s1-original-source-error-hold.test.cjs',
+    args: ['--test', 'tests/archive-m2s1-original-source-error-hold.test.cjs']
+  },
+  {
+    label: 'tests/archive-native-authority-correction.test.mjs',
+    args: ['--test', 'tests/archive-native-authority-correction.test.mjs']
+  },
   {
     label: 'tests/archive-reviewed-parent-correction.test.mjs',
     args: ['--test', 'tests/archive-reviewed-parent-correction.test.mjs']
@@ -63,16 +94,46 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-pr-registration-prepare.test.mjs']
   },
   {
+    label: 'tests/archive-native-issued-rpm-history.test.mjs',
+    args: ['--test', 'tests/archive-native-issued-rpm-history.test.mjs']
+  },
+  {
+    label: 'tests/archive-native-issued-solution-rpm-history.test.mjs',
+    args: ['--test', 'tests/archive-native-issued-solution-rpm-history.test.mjs']
+  },
+  {
+    label: 'tests/archive-native-issued-child-continuity.test.mjs',
+    args: ['--test', 'tests/archive-native-issued-child-continuity.test.mjs']
+  },
+  {
     label: 'tests/archive-pr-native-preview.test.mjs',
-    args: ['--test', 'tests/archive-pr-native-preview.test.mjs']
+    args: ['--test', 'tests/archive-pr-native-preview.test.mjs'],
+    timeout: 300000
+  },
+  {
+    label: 'tests/archive-reviewed-m2-cc-renderer.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-m2-cc-renderer.test.mjs']
   },
   {
     label: 'tests/archive-reviewed-native-scope-fields.test.mjs',
     args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
   },
   {
+    label: 'tests/archive-source-delta.test.mjs',
+    args: ['--test', 'tests/archive-source-delta.test.mjs']
+  },
+  {
+    label: 'archive/tools/meta-foundation/source-delta-report.mjs syntax',
+    args: ['--check', 'archive/tools/meta-foundation/source-delta-report.mjs']
+  },
+  {
     label: 'tests/archive-main-merge-meta.test.mjs',
-    args: ['--test', 'tests/archive-main-merge-meta.test.mjs']
+    args: ['--test', 'tests/archive-main-merge-meta.test.mjs'],
+    timeout: 300000
+  },
+  {
+    label: 'tests/archive-main-auto-parent-retry.test.mjs',
+    args: ['--test', 'tests/archive-main-auto-parent-retry.test.mjs']
   },
   {
     label: 'tests/archive-main-meta-batch-replay.test.mjs',
@@ -81,6 +142,31 @@ const requiredCommands = [
   {
     label: 'tests/item-4slot-runtime.test.cjs',
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
+  },
+  {
+    label: 'tests/archive-mathjax-enclosed-latin-font.test.cjs',
+    args: ['--test', 'tests/archive-mathjax-enclosed-latin-font.test.cjs']
+  },
+  {
+    label: 'tests/archive-e013-q20-enclosed-latin-ui.test.cjs',
+    args: ['--test', 'tests/archive-e013-q20-enclosed-latin-ui.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-public-reviewed-rebind.test.cjs',
+    args: ['--test', 'tests/item-4slot-public-reviewed-rebind.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-existing-renderer-v2.test.cjs',
+    args: ['--test', 'tests/item-4slot-existing-renderer-v2.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-existing-vector-continuity.test.cjs',
+    args: ['--test', 'tests/item-4slot-existing-vector-continuity.test.cjs'],
+    timeout: 180000
+  },
+  {
+    label: 'tests/item-4slot-m3-renderer-hold.test.cjs',
+    args: ['--test', 'tests/item-4slot-m3-renderer-hold.test.cjs']
   },
   {
     label: 'tests/archive-registration-writer.test.mjs',
@@ -245,6 +331,15 @@ const requiredCommands = [
   {
     label: 'tests/archive-reviewed-apply-bridge.test.mjs',
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
+  },
+  {
+    label: 'tests/archive-reviewed-exam-registration-v2.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
+    timeout: 300000
+  },
+  {
+    label: 'tests/archive-reviewed-retained-scope-transport.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-retained-scope-transport.test.mjs']
   },
   {
     label: 'tests/archive-reviewed-native-parent.test.mjs',
@@ -442,6 +537,18 @@ const requiredCommands = [
   {
     label: 'apmath/playground/next/tools/label-sweep.test.mjs',
     args: ['--test', 'apmath/playground/next/tools/label-sweep.test.mjs']
+  },
+  {
+    label: 'tests/archive-basic-scope-rebind.test.mjs',
+    args: ['--test', 'tests/archive-basic-scope-rebind.test.mjs']
+  },
+  {
+    label: 'tests/archive-source-metadata-materializer.test.mjs',
+    args: ['--test', 'tests/archive-source-metadata-materializer.test.mjs']
+  },
+  {
+    label: 'tests/archive-reviewed-source-candidate.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-source-candidate.test.mjs']
   }
 ];
 
@@ -473,8 +580,8 @@ if (args.length) {
   // existing test-name filters, timeouts and quarantine policy verbatim.
   const availableCommands = [
     ...tests.map(file => ({ label: `tests/${file}`, args: [`tests/${file}`],
-      timeout: file === 'archive2-compose-scope.test.js' ? 180000 : 60000 })),
-    ...requiredCommands.map(command => ({ ...command, timeout: 60000 })),
+      timeout: jsTestTimeout(file) })),
+    ...requiredCommands.map(command => ({ ...command, timeout: command.timeout ?? 60000 })),
   ];
   if (runScopedTests({ root, scopeFile: args[1], availableCommands })) return;
 }
@@ -530,7 +637,7 @@ for (const file of tests) {
     cwd: root,
     stdio: 'inherit',
     // Full canonical Compose inventory now covers all grades and runtime packs.
-    timeout: file === 'archive2-compose-scope.test.js' ? 180000 : 60000
+    timeout: jsTestTimeout(file)
   });
 
   if (result.status === 0) {
@@ -551,7 +658,7 @@ for (const command of requiredCommands) {
   const result = spawnSync(process.execPath, command.args, {
     cwd: root,
     stdio: 'inherit',
-    timeout: 60000
+    timeout: command.timeout ?? 60000
   });
   if (result.status === 0) {
     passed += 1;

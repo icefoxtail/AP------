@@ -276,6 +276,11 @@ if (reviewedInput) {
   // changed bytes is rejected even when its receipt and all metadata flags remain intact.
   const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "middle-geometry-native-proof-"));
   try {
+    // Preserved approvals replay their immutable Git ancestry as well as the
+    // copied evidence files. Give this isolated fixture read-only access to the
+    // same object history; its proof bytes remain independent mutable copies.
+    execFileSync("git", ["clone", "--quiet", "--shared", "--no-checkout", "--local", root, fixtureRoot],
+      { stdio: ["ignore", "pipe", "pipe"] });
     const receiptPath = nativeApprovals.get(input.current.questionUid);
     const receipt = readJson(receiptPath);
     for (const relative of [receiptPath, ...receipt.approval.evidenceRefs.map(ref => ref.path)]) {
@@ -359,7 +364,19 @@ assert(q513);
 assert.strictEqual(q513.standardUnitKey, "M3-05");
 assert.strictEqual(q513.subUnitKey, "M3-05-TRIG_RATIO_APPLICATION");
 assert.strictEqual(q513.problemTypeKey, "PT_TRIG_RATIO_APPLICATION");
-assert.strictEqual(q513.templateKey, "TPL_TRIG_APPLICATION_DIRECT_MEASURE");
+// A reviewed transition is accepted only after the exact production receipt and
+// ACTIVE binding checks above; otherwise retain the historical DIRECT contract.
+const q513ReceiptPath = nativeApprovals.get(uid513);
+if (q513ReceiptPath) {
+  const applied = readJson(q513ReceiptPath).appliedRecords.filter(row => row.questionUid === uid513);
+  assert.strictEqual(applied.length, 1, uid513);
+  assert.strictEqual(applied[0].sourceArchiveFile, historicalByUid.get(uid513).source, uid513);
+  assert.strictEqual(Number(applied[0].sourceOrdinal), historicalByUid.get(uid513).ordinal, uid513);
+  assert.deepStrictEqual(applied[0], currentQuestionMetadata.get(uid513), uid513);
+  assert.strictEqual(q513.templateKey, applied[0].templateKey, uid513);
+} else {
+  assert.strictEqual(q513.templateKey, "TPL_TRIG_APPLICATION_DIRECT_MEASURE");
+}
 
 const globalRuntime = [
   "geometry-equations-v1.json", "sets-propositions-v1.json", "functions-graphs-v1.json",

@@ -15,7 +15,7 @@ const CANON = "archive/data/meta-foundation/canonical/";
 const sorted = values => [...values].sort();
 const uniqueStrings = values => Array.isArray(values) && values.every(text) && new Set(values).size === values.length;
 const ACTIVE_REUSE_KINDS = new Set(["EXISTING_ACTIVE_CROSSWALK_CONNECTION", "REUSE_ACTIVE_ADD_CROSSWALK", "RPM_LEAF_GAP_ACTIVE_TEMPLATE_REUSE",
-  "EXISTING_ACTIVE_LINK_GAP", "RPM_LEAF_LINK_PROPOSAL"]);
+  "EXISTING_ACTIVE_LINK_GAP", "RPM_LEAF_LINK_PROPOSAL", "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP"]);
 
 function safePath(root, relative) {
   if (!text(relative) || path.isAbsolute(relative) || relative.includes("\\") || relative.includes("\0") ||
@@ -161,6 +161,14 @@ function validateActiveReuse(ctx, { id, kind, proposal, origin }) {
   } else if (kind === "RPM_LEAF_LINK_PROPOSAL") {
     if (proposal.reuseTemplate !== tplKey || proposal.searchedGlobalActive !== true || proposal.registrationStatus !== "PROPOSAL_ONLY_NOT_INSERTED")
       fail("RPM leaf proposal does not preserve the native template");
+  } else if (kind === "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP") {
+    const keys = ["kind", "supportingQuestionUids", "historicalSourceRpm", "currentExactRpm", "existingActiveProblemType",
+      "existingActiveTemplate", "newProblemTypeRequired", "newTemplateRequired", "reason", "owner"];
+    if (Object.keys(proposal).some(k => !keys.includes(k)) || proposal.kind !== kind ||
+        proposal.existingActiveProblemType !== ptKey || proposal.existingActiveTemplate !== tplKey ||
+        proposal.newProblemTypeRequired !== false || proposal.newTemplateRequired !== false ||
+        !text(proposal.historicalSourceRpm) || !text(proposal.currentExactRpm) || !text(proposal.reason) || !text(proposal.owner))
+      fail("original publisher gap must preserve the exact native ACTIVE PT/TPL without new definitions");
   } else if (proposal.existingTemplateKey !== tplKey || proposal.parentProblemTypeKey !== ptKey ||
       proposal.nativeTemplateProposalWithdrawn !== true || proposal.sourceNewStringKeyInserted !== false ||
       proposal.registrationStatus !== "PUBLISHER_LEAF_AND_CONNECTION_ONLY_NATIVE_REUSE")
@@ -170,6 +178,8 @@ function validateActiveReuse(ctx, { id, kind, proposal, origin }) {
     scope: "EXISTING_ACTIVE_PT_TPL_REUSE", newDefinition: false, newMathematicalQa: false,
     ...(kind === "HISTORICAL_PROJECTION_BINDING_NOTE" ? {
       declaredCurricula: [...new Set(proposal.debts.map(d => d.curriculum))], historicalBindingsResolved: false,
+    } : kind === "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP" ? {
+      originalPublisherParentAndLeafResolved: false, currentCurriculumBindingResolution: "NOT_ASSERTED",
     } : {}) };
 }
 
@@ -574,7 +584,7 @@ export function validateNativeProposalFinalization(args) {
   }
   const v3 = ctx.spec.schemaVersion === "archive-native-proposal-finalization-v3";
   const v2 = ctx.spec.schemaVersion === "archive-native-proposal-finalization-v2" || v3;
-  const allowed = v2 ? ["schemaVersion", "finalizationCommit", "finalizationRef", "proposalSelections"] :
+  const allowed = v2 ? ["schemaVersion", "finalizationCommit", "finalizationRef", "proposalSelections", ...(v3 ? ["curriculumTransport", "scopeParentTransport"] : [])] :
     ["schemaVersion", "finalizationCommit", "finalizationRef", "registryChangesRef", "proposalMappingRef", "sourceBindingRef", "proposalIds"];
   if (ctx.request.registrationMode || (!v2 && ctx.spec.schemaVersion !== "archive-native-proposal-finalization-v1") ||
       Object.keys(ctx.spec).some(k => !allowed.includes(k)) || !SHA1.test(ctx.spec.finalizationCommit || "") ||
@@ -595,9 +605,11 @@ export function validateNativeProposalFinalization(args) {
       fail(`finalized value must bind explicit request, source and final metadata: ${field}`);
   }
   const { question, ...snapshot } = result.snapshot;
-  return { fields: result.fields, technicalBindings: technical, proof: { ...ctx.spec, reviewer: result.reviewer,
+  return { fields: { ...result.fields, ...(result.curriculumTransport?.fields || {}), ...(result.scopeParentTransport?.fields || {}) }, technicalBindings: technical, proof: { ...ctx.spec, reviewer: result.reviewer,
     nativeAfterSha256: sha(stable(ctx.row.after)), nativeProposalBindings: proposals.map(p => ({ ...(p.id === undefined ? {} : { id: p.id }), type: p.type,
       proposalSha256: sha(stable(p.proposal)), documentRef: p.origin, ...(v2 ? { selection: p.selection } : {}) })),
     sourceSnapshot: snapshot, assetBindings: result.assets, definitions: result.definitions,
-    ...(v2 ? { dispositions: result.decisions, independentReviewRefs: result.independentReviews } : {}), finalizedFields: result.fields, newMathematicalQa: false, newReview2Claims: 0 } };
+    ...(v2 ? { dispositions: result.decisions, independentReviewRefs: result.independentReviews } : {}), finalizedFields: result.fields,
+    ...(result.curriculumTransport ? { curriculumTransport: result.curriculumTransport } : {}),
+    ...(result.scopeParentTransport ? { scopeParentTransport: result.scopeParentTransport } : {}), newMathematicalQa: false, newReview2Claims: 0 } };
 }

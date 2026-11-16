@@ -752,10 +752,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "curriculum": "2022",
     "course": "중2 수학",
-    "solutionImage": "assets/images/25_매산중_1학기_중간_중2_기출/q19-solution.svg",
-    "solutionImageAlt": "해설 그림: 수직선 두 줄이다. 위 줄은 주어진 해 x≥-1을 닫힌 점 -1과 오른쪽 화살표로 나타냈다. 아래 줄에는 부등식을 풀어 얻은 해의 끝점 (a+4)/4를 점 P로 나타냈고, 점 P는 -1과 같은 위치에 있다. 0도 표시했다.",
-    "solutionImageCaption": "주어진 해 x≥-1의 끝점 -1과 부등식을 풀어 얻은 해 x≥(a+4)/4의 끝점 (a+4)/4를 같은 수직선 위에 놓은 그림이다. 점 P는 (a+4)/4의 위치이고 두 끝점이 같은 자리에 있다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_매산중_1학기_중간_중2_기출/q19-solution-visual-v2.svg",
+    "solutionImageAlt": "수직선의 −1에서 오른쪽으로 뻗는 범위이다. −1을 포함하는 닫힌 점이고 같은 경계점을 (a+4)/4로도 나타냈다.",
+    "solutionImageCaption": "부등식을 풀면 x≥(a+4)/4이다. 주어진 해의 시작점 −1과 같으므로 a=−8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -864,10 +864,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "course": "중2 수학",
-    "solutionImage": "assets/images/25_매산중_1학기_중간_중2_기출/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 밑면이 가로 24, 세로 36인 직사각형이고 밑면을 색칠한 사각뿔이다. 밑넓이 864, 부피 360a³b², 높이 h를 표시했고 높이는 임의의 비율로 그렸다.",
-    "solutionImageCaption": "밑면이 가로 24, 세로 36인 직사각형이고 부피가 360a³b²인 사각뿔이며, 높이 h는 임의의 비율로 그렸다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/25_매산중_1학기_중간_중2_기출/q22-solution-visual-v2.svg",
+    "solutionImageAlt": "푸른 밑면에서 앞 변은 24, 오른쪽 변은 36이다. 꼭짓점에서 밑면으로 내린 수선이 높이 h이고, 뒤쪽 윤곽은 점선으로 표시했다.",
+    "solutionImageCaption": "밑면 넓이는 24×36=864이다. 부피는 864h/3이므로 높이는 5a³b²/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

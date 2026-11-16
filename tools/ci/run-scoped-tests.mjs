@@ -20,10 +20,19 @@ const metadataConsumers = [
   /^tests\/(?:problem-bank-meta|apms-result-clinic-uid-bridge\.|apmath-omr-result-identity\.|apms-clinic-uid-refresh\.)/,
 ];
 const registrationContracts = [
+  /^tests\/native-approved-renderer-(?:consumer|preservation|preview)\.test\.mjs$/,
+  /^tests\/archive-(?:source-quality-holds|native-authority-correction)\.test\.mjs$/,
+  /^tests\/archive-m2s1-original-source-error-hold\.test\.cjs$/,
+  /^tests\/archive-m2-problem-renderer-continuity\.test\.js$/,
+  /^tests\/archive-m2-e017-rhs-continuity\.test\.js$/,
+  /^tests\/archive-reviewed-exam-registration-v2\.test\.mjs$/,
+  /^tests\/archive-reviewed-retained-scope-transport\.test\.mjs$/,
   /^tests\/archive-reviewed-parent-correction\.test\.mjs$/,
   /^tests\/archive-(?:registration-|register-|single-writer-|main-(?:merge-meta|meta-batch-replay)\.|native-(?:proposal-|replay-registry-context\.)|pr-(?:registration-|native-preview\.)|pages-|package-only\.|reviewed-(?:apply-bridge\.|native-)|meta-backlog-)/,
   /^tests\/archive2-registration-contracts\.test\.mjs$/,
   /^tests\/(?:git-push-derived-with-retry\.|ci-signal-hygiene\.|run-tests-output-guard\.|apms-worker-deploy\.)/,
+  /^tests\/archive-basic-scope-rebind\.test\.mjs$/,
+  /^tests\/archive-(?:source-metadata-materializer|reviewed-source-candidate)\.test\.mjs$/,
 ];
 const outputConsumers = [
   // Common output modules serve originals, Generated, saved papers and APMS

@@ -50,7 +50,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "주어진 중심각140도의 나머지 큰 호220도를 읽고 그 호에 대한 원주각의 절반 관계를 적용한다.",
-    "decisiveStep": "주어진 중심각140도의 나머지 큰 호220도를 읽고 그 호에 대한 원주각의 절반 관계를 적용한다."
+    "decisiveStep": "주어진 중심각140도의 나머지 큰 호220도를 읽고 그 호에 대한 원주각의 절반 관계를 적용한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -101,7 +103,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "20도 원주각의 대응 호5cm와 목표각의 대응 호15cm를 비교하여 호길이와 원주각의 비례로 목표각을 정한다.",
-    "decisiveStep": "20도 원주각의 대응 호5cm와 목표각의 대응 호15cm를 비교하여 호길이와 원주각의 비례로 목표각을 정한다."
+    "decisiveStep": "20도 원주각의 대응 호5cm와 목표각의 대응 호15cm를 비교하여 호길이와 원주각의 비례로 목표각을 정한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -152,7 +156,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "지름 AC에 대한 직각 ADC를 만들고 삼각형 ACD의 내각합에서 ACD=60도를 얻은 뒤 같은 호 AD의 원주각 ABD에 옮긴다.",
-    "decisiveStep": "지름 AC에 대한 직각 ADC를 만들고 삼각형 ACD의 내각합에서 ACD=60도를 얻은 뒤 같은 호 AD의 원주각 ABD에 옮긴다."
+    "decisiveStep": "지름 AC에 대한 직각 ADC를 만들고 삼각형 ACD의 내각합에서 ACD=60도를 얻은 뒤 같은 호 AD의 원주각 ABD에 옮긴다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -203,7 +209,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "원주각34도로 호 AB68도를 구하고 명시된2배 관계로 CD136도를 얻은 뒤 두 호 합의 절반으로 내부교각을 구한다.",
-    "decisiveStep": "원주각34도로 호 AB68도를 구하고 명시된2배 관계로 CD136도를 얻은 뒤 두 호 합의 절반으로 내부교각을 구한다."
+    "decisiveStep": "원주각34도로 호 AB68도를 구하고 명시된2배 관계로 CD136도를 얻은 뒤 두 호 합의 절반으로 내부교각을 구한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -254,7 +262,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "원주각64도의 호AC를 제외한 나머지232도를 같은 두 현 AB·BC의 호로 반분하고, 그 호의 원주각을 접현각 BAT에 대응한다.",
-    "decisiveStep": "원주각64도의 호AC를 제외한 나머지232도를 같은 두 현 AB·BC의 호로 반분하고, 그 호의 원주각을 접현각 BAT에 대응한다."
+    "decisiveStep": "원주각64도의 호AC를 제외한 나머지232도를 같은 두 현 AB·BC의 호로 반분하고, 그 호의 원주각을 접현각 BAT에 대응한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -307,7 +317,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "같은 호 AE의 원주각으로 y를 정하고 내접사각형의 대각 합에서 ABC를 구한 뒤 이웃한 바깥각 x로 바꾸어 두 각을 합한다.",
-    "decisiveStep": "같은 호 AE의 원주각으로 y를 정하고 내접사각형의 대각 합에서 ABC를 구한 뒤 이웃한 바깥각 x로 바꾸어 두 각을 합한다."
+    "decisiveStep": "같은 호 AE의 원주각으로 y를 정하고 내접사각형의 대각 합에서 ABC를 구한 뒤 이웃한 바깥각 x로 바꾸어 두 각을 합한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -358,7 +370,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "둔각 원주각115도가 보는 큰 호230도를 작은 호130도로 바꾸고, 두 접선이 이루는 각180도−130도를 구한다.",
-    "decisiveStep": "둔각 원주각115도가 보는 큰 호230도를 작은 호130도로 바꾸고, 두 접선이 이루는 각180도−130도를 구한다."
+    "decisiveStep": "둔각 원주각115도가 보는 큰 호230도를 작은 호130도로 바꾸고, 두 접선이 이루는 각180도−130도를 구한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -409,7 +423,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "지름의 원주각으로 직각 ATB, 접현각으로 ABT=30도를 정한 후 직각삼각형의 사인비로 두 직각변을 구해 넓이를 계산한다.",
-    "decisiveStep": "지름의 원주각으로 직각 ATB, 접현각으로 ABT=30도를 정한 후 직각삼각형의 사인비로 두 직각변을 구해 넓이를 계산한다."
+    "decisiveStep": "지름의 원주각으로 직각 ATB, 접현각으로 ABT=30도를 정한 후 직각삼각형의 사인비로 두 직각변을 구해 넓이를 계산한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -460,7 +476,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "원주각에서c+d를, 한 외부 할선각에서a−c를 구한다. 이 두 식과 전체 호360도를 선형 결합해b−d를 남긴 뒤 다른 외부 할선각으로 반감한다.",
-    "decisiveStep": "원주각에서c+d를, 한 외부 할선각에서a−c를 구한다. 이 두 식과 전체 호360도를 선형 결합해b−d를 남긴 뒤 다른 외부 할선각으로 반감한다."
+    "decisiveStep": "원주각에서c+d를, 한 외부 할선각에서a−c를 구한다. 이 두 식과 전체 호360도를 선형 결합해b−d를 남긴 뒤 다른 외부 할선각으로 반감한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -1124,7 +1142,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "정오각형의 동일한 다섯 호에서CD의 중심각72도를 구하고, 나머지 세 꼭짓점에서CD를 보는 원주각을 찾아 중심각의 절반으로 계산한다.",
-    "decisiveStep": "정오각형의 동일한 다섯 호에서CD의 중심각72도를 구하고, 나머지 세 꼭짓점에서CD를 보는 원주각을 찾아 중심각의 절반으로 계산한다."
+    "decisiveStep": "정오각형의 동일한 다섯 호에서CD의 중심각72도를 구하고, 나머지 세 꼭짓점에서CD를 보는 원주각을 찾아 중심각의 절반으로 계산한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,
@@ -1169,7 +1189,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "지름의 원주각90도와 접현각68도로 ABC의 남은 각22도를 구한다. 접선의 반대 방향 보각112도를 만들어 삼각형 PAB의 내각합으로 목표각을 정한다.",
-    "decisiveStep": "지름의 원주각90도와 접현각68도로 ABC의 남은 각22도를 구한다. 접선의 반대 방향 보각112도를 만들어 삼각형 PAB의 내각합으로 목표각을 정한다."
+    "decisiveStep": "지름의 원주각90도와 접현각68도로 ABC의 남은 각22도를 구한다. 접선의 반대 방향 보각112도를 만들어 삼각형 PAB의 내각합으로 목표각을 정한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 24,

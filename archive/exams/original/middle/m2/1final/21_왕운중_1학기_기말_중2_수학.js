@@ -228,8 +228,9 @@ window.examData = {
     },
     {
       "id": 17,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "<p>17. 일차함수 $y=-\\frac{3}{4}x+3$의 그래프와 $x$축, $y$축으로 둘러싸인 도형의 넓이를 함수 $y=mx$의 그래프가 이등분할 때, $m$의 값을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_1학기_기말_중2_수학/q17.png\" class=\"question-image\" /></p>",
+      "question": "<p>17. 일차함수 $y=-\\frac{3}{4}x+3$의 그래프와 $x$축, $y$축으로 둘러싸인 도형의 넓이를 함수 $y=mx$의 그래프가 이등분할 때, $m$의 값을 구하면? [4점]</p><p><img src=\"assets/images/21_왕운중_1학기_기말_중2_수학/q17-problem-visual-v2.svg\" alt=\"오렌지 내리막 그래프와 두 좌표축이 만드는 삼각형을 검은 y=mx 직선이 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$\\frac{1}{4}$",
         "$\\frac{1}{2}$",
@@ -270,8 +271,9 @@ window.examData = {
     },
     {
       "id": 20,
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "<p>20. 오른쪽 그림에서 두 직선 $l, m$이 만나는 점을 $P(p, q)$라 할 때, $p+q$의 값을 구하면? [5점]</p><p><img src=\"assets/images/21_왕운중_1학기_기말_중2_수학/q20.png\" class=\"question-image\" /></p>",
+      "question": "<p>20. 오른쪽 그림에서 두 직선 $l, m$이 만나는 점을 $P(p, q)$라 할 때, $p+q$의 값을 구하면? [5점]</p><p><img src=\"assets/images/21_왕운중_1학기_기말_중2_수학/q20-problem-visual-v2.svg\" alt=\"검은 직선 l은 가로축의 2와 세로축의 −4, 주황 직선 m은 가로축의 9와 세로축의 3을 지난다. 교점을 P(p, q)로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "1",
         "2",
@@ -308,8 +310,9 @@ window.examData = {
     },
     {
       "id": 24,
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "<p>[서술형 4] 연립방정식 $\\begin{cases} ax-by=-1 \\\\ bx-ay=-8 \\end{cases}$의 두 일차방정식의 그래프가 오른쪽 그림과 같을 때, 상수 $a, b$에 대하여 부등식 $ax+b > 0$의 해를 구하시오. [5점]</p><p><img src=\"assets/images/21_왕운중_1학기_기말_중2_수학/s04.png\" class=\"question-image\" /></p>",
+      "question": "<p>[서술형 4] 연립방정식 $\\begin{cases} ax-by=-1 \\\\ bx-ay=-8 \\end{cases}$의 두 일차방정식의 그래프가 오른쪽 그림과 같을 때, 상수 $a, b$에 대하여 부등식 $ax+b > 0$의 해를 구하시오. [5점]</p><p><img src=\"assets/images/21_왕운중_1학기_기말_중2_수학/q24-problem-visual-v2.svg\" alt=\"두 오른쪽 위로 향하는 직선이 만나고, 교점에서 좌표축에 내린 점선이 가로축의 2와 세로축의 5를 가리킨다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "",
       "solution": ""

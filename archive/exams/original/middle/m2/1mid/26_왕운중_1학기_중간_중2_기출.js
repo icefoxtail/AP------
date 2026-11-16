@@ -518,6 +518,7 @@ window.questionBank=[
   },
   {
     "id": 13,
+    "imageAlt": "직사각형 ABCD의 세로변 AB는 4x³y, 가로변 BC는 2x³y이다. 왼쪽 AB를 지름으로 하는 청록색 반원을 그리고 A와 C를 이어 주황색 직각삼각형 ABC를 표시했다.",
     "level": "상",
     "category": "수학",
     "originalCategory": "수학",
@@ -526,7 +527,7 @@ window.questionBank=[
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [],
     "wide": false,
     "content": "오른쪽 그림과 같이 가로의 길이가 $2x^3y$, 세로의 길이가 $4x^3y$인 직사각형 $ABCD$, $AB$를 지름으로 하는 반원 $O$, 직각삼각형 $ABC$가 있다. 변 $AB$를 축으로 하여 직각삼각형 $ABC$를 1회전시킬 때 생기는 회전체의 부피를 $V_1$, 변 $AB$를 축으로 하는 반원을 1회전시킬 때 생기는 회전체의 부피를 $V_2$라 할 때, $V_1+V_2$를 구하면? [5점]",
@@ -558,8 +559,8 @@ window.questionBank=[
     "answerStatus": "draft",
     "solutionStatus": "draft",
     "reviewStatus": "pending",
-    "image": "assets/images/26_왕운중_1학기_중간_중2_기출/q13.png",
-    "imageSize": "large",
+    "image": "assets/images/26_왕운중_1학기_중간_중2_기출/q13-problem-visual-v2.svg",
+    "imageSize": "full",
     "solutionImage": "assets/images/26_왕운중_1학기_중간_중2_기출/q13-solution.svg",
     "solutionImageAlt": "해설 그림: AB를 축으로 회전시켜 생기는 원뿔(꼭짓점 A, 밑면 중심 B, 밑면 반지름 2x³y, 높이 4x³y)과 반지름이 2x³y인 구(중심 O)를 나란히 보여 준다.",
     "solutionImageCaption": "원뿔의 밑면 반지름과 구의 반지름은 2x³y로 같고, 원뿔의 높이 4x³y는 구의 지름과 같다.",
@@ -723,8 +724,8 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "LINEAR_INEQUALITY",
-    "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
-    "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+    "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+    "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -736,7 +737,23 @@ window.questionBank=[
     "imageStatus": "none",
     "answerStatus": "draft",
     "solutionStatus": "draft",
-    "reviewStatus": "pending"
+    "reviewStatus": "pending",
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "primaryMethod": "부등식동치와음수곱의부등호반전판정",
+    "decisiveStep": "a<b로돌린뒤-3곱하면방향이>로바뀜.",
+    "rpmPrimaryId": "M2-RPM-136",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차부등식",
+      "midUnit": "일차부등식",
+      "l3": "부등식의 성질",
+      "l4": "부등식의 성질"
+    },
+    "rpmL1": "일차부등식",
+    "rpmL2": "일차부등식",
+    "rpmL3": "부등식의 성질",
+    "rpmL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-136"
   },
   {
     "id": 18,
@@ -766,10 +783,12 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "LINEAR_INEQUALITY",
-    "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
-    "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+    "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+    "templateKey": "TPL_H1_LINEAR_INEQUALITY_ALL_SOLUTIONS_SIGN",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_NEGATIVE"
+    ],
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
@@ -783,7 +802,23 @@ window.questionBank=[
     "solutionImage": "assets/images/26_왕운중_1학기_중간_중2_기출/q18-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선 두 줄: 위는 해가 모두 음수인 범위 x<0(끝점 0은 속이 빈 점), 아래는 a=-7일 때 해집합 x≤0(끝점 0은 속이 찬 점)을 보여 준다.",
     "solutionImageCaption": "a=-7일 때 해집합 x≤(2/3)(a+7)은 x≤0이고 끝점 0은 음수가 아니므로, 모든 해가 음수이려면 끝점이 0보다 작아야 한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "primaryMethod": "해의최대경계를음수조건과결합하여매개변수범위결정",
+    "decisiveStep": "x≤(2/3)(a+7)의최대해가0보다작아야함.",
+    "rpmPrimaryId": "M2-RPM-141",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차부등식",
+      "midUnit": "일차부등식",
+      "l3": "해의 조건",
+      "l4": "계수 조건"
+    },
+    "rpmL1": "일차부등식",
+    "rpmL2": "일차부등식",
+    "rpmL3": "해의 조건",
+    "rpmL4": "계수 조건",
+    "rpmPrimaryRecordId": "M2-RPM-141"
   },
   {
     "id": 19,
@@ -813,10 +848,12 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "LINEAR_INEQUALITY",
-    "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
-    "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+    "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+    "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
@@ -826,7 +863,11 @@ window.questionBank=[
     "imageStatus": "none",
     "answerStatus": "draft",
     "solutionStatus": "draft",
-    "reviewStatus": "pending"
+    "reviewStatus": "pending",
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "primaryMethod": "복잡한부등식풀이후정수해의최소값결정",
+    "decisiveStep": "x>-15이므로최소정수는-14."
   },
   {
     "id": 20,
@@ -856,10 +897,12 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "LINEAR_INEQUALITY",
-    "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
-    "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+    "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+    "templateKey": "TPL_H1_INDEPENDENT_INEQUALITIES_LEAST_INTEGER_SUM",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER"
+    ],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
@@ -869,7 +912,11 @@ window.questionBank=[
     "imageStatus": "none",
     "answerStatus": "draft",
     "solutionStatus": "draft",
-    "reviewStatus": "pending"
+    "reviewStatus": "pending",
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "primaryMethod": "각부등식의최소정수해를독립결정하여합최소화",
+    "decisiveStep": "각각x>-4,x>4에서a최소-3,b최소5."
   },
   {
     "id": 21,
@@ -947,6 +994,7 @@ window.questionBank=[
   },
   {
     "id": 23,
+    "imageAlt": "왼쪽의 파란 직사각형 A는 세로가 5xy이고 오른쪽 청록색 직사각형 B는 세로가 3x²y²이다. 두 도형의 가로 길이의 합에 L을 표시했다.",
     "level": "중",
     "category": "수학",
     "originalCategory": "수학",
@@ -955,7 +1003,7 @@ window.questionBank=[
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [],
     "wide": false,
     "content": "다음 그림은 넓이가 각각 $10x^2y+15xy^3$, $-12x^2y^4+21x^3y^2$인 직사각형 $A$, $B$를 서로 붙여 놓은 것이다. $A$의 세로의 길이가 $5xy$, $B$의 세로의 길이가 $3x^2y^2$이고 두 직사각형의 가로의 길이의 합을 $L$이라고 할 때, $L$의 값을 구하시오. [5점]",
@@ -981,8 +1029,8 @@ window.questionBank=[
     "answerStatus": "draft",
     "solutionStatus": "draft",
     "reviewStatus": "pending",
-    "image": "assets/images/26_왕운중_1학기_중간_중2_기출/q23.png",
-    "imageSize": "large",
+    "image": "assets/images/26_왕운중_1학기_중간_중2_기출/q23-problem-visual-v2.svg",
+    "imageSize": "full",
     "solutionImage": "assets/images/26_왕운중_1학기_중간_중2_기출/q23-solution.svg",
     "solutionImageAlt": "해설 그림: 직사각형 A(세로 5xy, 가로 2x+3y²)와 B(세로 3x²y², 가로 7x-4y²)를 이어 붙인 그림으로, 두 가로의 합이 전체 가로 L임을 보여 준다.",
     "solutionImageCaption": "각 직사각형의 가로 길이는 넓이를 세로로 나눈 값이고 L은 두 가로의 합이다.",

@@ -4335,9 +4335,9 @@ MULTI_CURVE_FIELDS={'family','curves','axisTickValues','domain','viewport','plot
 # G18a: besides the two quadratic kinds a curve may be LINE (y=c0+c1*x), RATIONAL (y=(a0+a1*x)/(d0+d1*x)) or SQRT (y=offset+amplitude*sqrt(c0+c1*x)), each with
 # its own look (color, weight, style, label, hideLabels), or the inverse of another curve (inverseOf). These kinds are not bounded by their own shape, so the
 # author names the window (graphPlan.viewport = [xmin,xmax,ymin,ymax]) and a curve is clipped to the frame built around that window.
-MULTI_CURVE_KINDS=('Y_OF_X','X_OF_Y','LINE','RATIONAL','SQRT','EXPONENTIAL')
-MULTI_CURVE_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL')
-MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch','abs'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain','domainStates','abs'},'RATIONAL':{'numerator','denominator','domain','domainStates','abs'},'SQRT':{'radicand','amplitude','offset','domain','domainStates','abs'},'EXPONENTIAL':{'base','coefficients','shiftX','domain','domainStates'}}
+MULTI_CURVE_KINDS=('Y_OF_X','X_OF_Y','LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC')
+MULTI_CURVE_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC')
+MULTI_CURVE_KIND_KEYS={'Y_OF_X':{'coefficients','domain','branch','abs'},'X_OF_Y':{'coefficients','domain','branch'},'LINE':{'coefficients','domain','domainStates','abs'},'RATIONAL':{'numerator','denominator','domain','domainStates','abs'},'SQRT':{'radicand','amplitude','offset','domain','domainStates','abs'},'EXPONENTIAL':{'base','coefficients','shiftX','domain','domainStates'},'LOGARITHMIC':{'base','coefficients','domain'}}
 MULTI_CURVE_LOOK_KEYS={'id','kind','label','color','weight','style','hideLabel','hideLabels','inverseOf','emphasis'}
 # G18a-4: emphasis:[{from?,to?,color?,fromState?,toState?}] draws only that x stretch of the curve heavier and in a colour, with an open or closed end dot (states OPEN | CLOSED | NONE);
 # domain may be written {from,to} as well as [from,to] (the curve is then not drawn outside it).
@@ -4485,22 +4485,32 @@ def mc_value(curve,x_value):
     elif kind=='EXPONENTIAL':
         amplitude,rate,offset=curve['coefficients']
         value=float(amplitude)*curve['base']**float(rate*(x_value-curve['shiftX']))+float(offset)
+    elif kind=='LOGARITHMIC':
+        a,k,b,c=curve['coefficients']
+        argument=k*x_value+b
+        if argument<=0:return None
+        value=float(a)*math.log(argument)/math.log(curve['base'])+float(c)
     else:
         radicand=curve['radicand'][0]+curve['radicand'][1]*x_value
         if radicand<0:return None
         value=float(curve['offset'])+float(curve['amplitude'])*math.sqrt(float(radicand))
     return abs(value) if curve.get('abs') else value
 
-def _mc_exponential_curve(entry,ident):
+def _mc_rational_base(entry,ident,kind):
     value=entry.get('base')
     try:
         if not isinstance(value,str) or not re.fullmatch(r'[1-9]\d{0,3}(?:/[1-9]\d{0,3})?',value):raise ValueError()
-        base=exp_log_base(value,'MULTI_CURVE_EXPONENTIAL')
+        base=exp_log_base(value,'MULTI_CURVE_'+kind)
         if base is None or base['kind'] not in ('INTEGER','RATIONAL'):raise ValueError()
         base=Fraction(base['text'])
         if str(base)!=value or max(base.numerator,base.denominator)>1000:raise ValueError()
     except ValueError:
-        raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident) from None
+        raise ValueError('MULTI_CURVE_'+kind+'_BASE_INVALID:'+ident) from None
+    return base
+
+
+def _mc_exponential_curve(entry,ident):
+    base=_mc_rational_base(entry,ident,'EXPONENTIAL')
     raw=entry.get('coefficients')
     code='MULTI_CURVE_COEFFICIENT_INVALID:'+ident
     if not isinstance(raw,list) or len(raw)!=3:raise ValueError(code)
@@ -4515,6 +4525,28 @@ def _mc_exponential_curve(entry,ident):
     if any(abs(mc_value(curve,x))>10**8 for x in interval):
         raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
     return curve
+
+def _mc_logarithmic_curve(entry,ident):
+    base=_mc_rational_base(entry,ident,'LOGARITHMIC')
+    code='MULTI_CURVE_COEFFICIENT_INVALID:'+ident
+    raw=entry.get('coefficients')
+    if not isinstance(raw,list) or len(raw)!=4:raise ValueError(code)
+    a,k,b,c=(_mc_fraction(value,code) for value in raw)
+    if not a or not k:raise ValueError(code)
+    domain_code='MULTI_CURVE_DOMAIN_INVALID:'+ident
+    lo,hi=_mc_interval_fractions(entry.get('domain'),domain_code)
+    if any(k*x+b<=0 for x in (lo,hi)):raise ValueError(domain_code)
+    curve={'kind':'LOGARITHMIC','base':base,'coefficients':[a,k,b,c],'interval':(lo,hi)}
+    scope='MULTI_CURVE_LOGARITHMIC_NUMERIC_SCOPE:'+ident
+    if any(abs(x)>10**6 for x in (lo,hi)) or float(lo)>=float(hi):raise ValueError(scope)
+    for x in (lo,hi):
+        # The sampler evaluates the affine argument in double precision.
+        argument=float(k)*float(x)+float(b)
+        if argument<=0 or not math.isfinite(argument):raise ValueError(scope)
+        y=mc_value(curve,x)
+        if not math.isfinite(y) or abs(y)>10**8:raise ValueError(scope)
+    return curve
+
 
 def _mc_free_curve(entry,ident,kind,window,look):
     """LINE / RATIONAL / SQRT from its own fields; the draw interval is the author's domain or the window's."""
@@ -4539,6 +4571,8 @@ def _mc_free_curve(entry,ident,kind,window,look):
         elif curve['numerator'][0]+curve['numerator'][1]*pole==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
     elif kind=='EXPONENTIAL':
         curve.update(_mc_exponential_curve(entry,ident))
+    elif kind=='LOGARITHMIC':
+        curve.update(_mc_logarithmic_curve(entry,ident))
     else:
         raw=entry.get('radicand')
         if not isinstance(raw,list) or len(raw)!=2:raise ValueError('MULTI_CURVE_COEFFICIENT_INVALID:'+ident)
@@ -4612,7 +4646,7 @@ def multi_curve_source(plan):
             source=by_id.get(inverse_of) if isinstance(inverse_of,str) else None
             if source is None or source.get('inverseOf') is not None:raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
             if 'kind' in entry and entry['kind'] not in MULTI_CURVE_KINDS:raise ValueError('MULTI_CURVE_KIND_INVALID:'+ident)
-            if entry.get('kind')=='EXPONENTIAL':raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+            if entry.get('kind') in ('EXPONENTIAL','LOGARITHMIC'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
             curve=_mc_inverse_curve(entry,ident,source,_mc_look(entry,ident,True))
             curve['intervalGiven']='domain' in entry
             if 'domain' in entry:curve['interval']=_mc_interval_fractions(entry['domain'],'MULTI_CURVE_DOMAIN_INVALID:'+ident)
@@ -4636,7 +4670,7 @@ def multi_curve_source(plan):
         if set(entry)-MULTI_CURVE_LOOK_KEYS-MULTI_CURVE_KIND_KEYS[kind]:raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
         look=_mc_look(entry,ident,free)
         if free:
-            if kind=='EXPONENTIAL' and window is None:raise ValueError('MULTI_CURVE_WINDOW_REQUIRED:'+ident)
+            if kind in ('EXPONENTIAL','LOGARITHMIC') and window is None:raise ValueError('MULTI_CURVE_WINDOW_REQUIRED:'+ident)
             curve=_mc_free_curve(entry,ident,kind,window,look)
             if 'interval' not in curve:
                 if window is None:raise ValueError('MULTI_CURVE_WINDOW_REQUIRED:'+ident)
@@ -4677,7 +4711,7 @@ def _mc_emphasis_rows(entry,curve):
     ident=curve['id']
     if raw is None:return []
     if not isinstance(raw,list) or not 1<=len(raw)<=MULTI_CURVE_EMPHASIS_MAX:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
-    if curve['kind']=='X_OF_Y':raise ValueError('MULTI_CURVE_EMPHASIS_UNSUPPORTED:'+ident)
+    if curve['kind'] in ('X_OF_Y','LOGARITHMIC'):raise ValueError('MULTI_CURVE_EMPHASIS_UNSUPPORTED:'+ident)
     try:lo,hi=(_mc_to_fraction(value,ident) for value in curve['interval'])
     except ValueError:raise ValueError('MULTI_CURVE_EMPHASIS_UNSUPPORTED:'+ident) from None
     rows=[];previous=None
@@ -4772,10 +4806,13 @@ def _mc_row(curve):
             if curve.get('abs'):horizontal=abs(horizontal)   # the asymptote of |f| is |h|
             lo,hi=curve['interval']
             row['asymptotes']={'vertical':{'x':_mc_text(pole),'drawn':bool(lo<=pole<=hi and pole!=0)},'horizontal':{'y':_mc_text(horizontal),'drawn':bool(horizontal!=0)}}
-        elif kind=='EXPONENTIAL':
+        elif kind in ('EXPONENTIAL','LOGARITHMIC'):
             row['base']=str(curve['base'])
             row['coefficients']=[_mc_text(value) for value in curve['coefficients']]
-            row['shiftX']=_mc_text(curve['shiftX'])
+            if kind=='EXPONENTIAL':row['shiftX']=_mc_text(curve['shiftX'])
+            else:
+                _,k,b,_=curve['coefficients']
+                row['naturalDomainBoundaryX']=_mc_text(-b/k)
         else:
             row['radicand']=[_mc_text(value) for value in curve['radicand']];row['amplitude']=_mc_text(curve['amplitude']);row['offset']=_mc_text(curve['offset'])
             boundary=-curve['radicand'][0]/curve['radicand'][1];lo,hi=curve['interval']
@@ -4812,7 +4849,7 @@ def _mc_boundary_y(curve,x_value):
 def _mc_region_boundary(curve,ident,region_id,start,end):
     """The boundary must be defined over the whole closed [start,end] inside its own draw interval (no pole of a rational, no start of a square root outside it)."""
     if curve=='axis':return
-    if curve['kind']=='X_OF_Y':raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+region_id+':'+ident)
+    if curve['kind'] in ('X_OF_Y','LOGARITHMIC'):raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+region_id+':'+ident)
     lo,hi=curve['interval']
     if float(start)<float(lo)-1e-9 or float(end)>float(hi)+1e-9:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+ident)
     if curve['kind']=='RATIONAL':

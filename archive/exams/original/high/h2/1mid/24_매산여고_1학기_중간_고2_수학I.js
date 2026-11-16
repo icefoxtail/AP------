@@ -401,7 +401,11 @@ window.questionBank = [
     "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
     "sourceQid": 8,
     "answerStatus": "generated_pending",
-    "solutionStatus": "generated_pending"
+    "solutionStatus": "generated_pending",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 단위원에 x=π/3, x=4π/3인 두 근의 동경과 각각의 기준각 호가 표시되어 있다.",
+    "solutionImageCaption": "cos x=0은 원래 식의 해가 아니므로 tan x=√3로 바꾼다. 0≤x<2π에서 두 근은 π/3과 4π/3, 합은 5π/3이므로 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -761,7 +765,8 @@ window.questionBank = [
     "sourceQid": 15,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q15-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "사인 그래프 한 주기에서 최댓값 −1/2의 수평 점선과 주기 2π/3을 표시했다."
   },
   {
     "id": 16,
@@ -915,7 +920,10 @@ window.questionBank = [
     "sourceQid": 18,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q18-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정확히 두 가지와 만나는 자연수 n의 두 범위를 따로 보인다. 첫째·둘째 가지는 5 이상 10 미만, 둘째·셋째 가지는 50 이상 100 미만이다. 두 범위에서 왼쪽 끝은 포함하고 오른쪽 끝은 제외한다.",
+    "solutionImageCaption": "가지별 교점 가능 범위는 첫째 [1,10), 둘째 [5,100), 셋째 [50,1000)이다. 첫째와 셋째가 만나지 않으므로 두 겹침을 각각 센다. 정답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -966,7 +974,10 @@ window.questionBank = [
     "sourceQid": 19,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q19-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q19-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 첫째 줄은 최고점 x=4를 길이 2 구간에 포함하는 자연수 시작 값 t를 나타낸다. 이어지는 줄은 함수값이 1 이상인 닫힌 범위 안에서, 길이 1 구간을 왼쪽 끝이나 오른쪽 끝에 붙이는 두 배치를 나타낸다.",
+    "solutionImageCaption": "최고점은 x=4에 있다. 최솟값이 1인 길이 1 구간은 함수값이 1 이상인 범위 안에서 왼쪽 또는 오른쪽 경계에 닿는다. 정답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1017,7 +1028,8 @@ window.questionBank = [
     "sourceQid": 20,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q20-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "세로축 대칭과 가로축 대칭에서 각각 얻은 각 후보를 두 줄에 배열하고, 두 줄에 공통인 각 π/2를 표시했다."
   },
     {
     "id": 21,
@@ -1114,7 +1126,8 @@ window.questionBank = [
     "sourceQid": 22,
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q22-solution.svg"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_수학I/q22-solution.svg",
+    "solutionImageAlt": "제4사분면의 사인은 음수이고 코사인은 양수이며, 사인에서 코사인을 뺀 값이 음수임을 표시했다."
   },
   {
     "id": 23,

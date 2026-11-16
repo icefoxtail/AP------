@@ -182,11 +182,14 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "layoutTag": "fullwidth",
+    "imageSize": "full",
+    "imageAlt": "파란 위쪽 경계 y=3x²와 주황 아래쪽 경계 y=−x²가 원점에서 만난다. 각 x에서 두 곡선 사이에 해당하는 영역을 연두색과 옅은 빗금으로 표시했다.",
     "questionNumber": 10,
     "number": 10,
     "questionType": "객관식",
-    "question": "10. 그림은 두 이차함수 $y = 3x^2$과 $y = -x^2$의 그래프를 그린 것이다. 빗금 친 부분에 있는 이차함수의 그래프는?<br>(단, $\\mathrm{O}$는 원점) [4.2점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q10.png\" class=\"exam-img\" />",
-    "content": "10. 그림은 두 이차함수 $y = 3x^2$과 $y = -x^2$의 그래프를 그린 것이다. 빗금 친 부분에 있는 이차함수의 그래프는?<br>(단, $\\mathrm{O}$는 원점) [4.2점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q10.png\" class=\"exam-img\" />",
+    "question": "10. 그림은 두 이차함수 $y = 3x^2$과 $y = -x^2$의 그래프를 그린 것이다. 빗금 친 부분에 있는 이차함수의 그래프는?<br>(단, $\\mathrm{O}$는 원점) [4.2점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q10-problem-visual-v2.svg\" alt=\"파란 위쪽 경계 y=3x²와 주황 아래쪽 경계 y=−x²가 원점에서 만난다. 각 x에서 두 곡선 사이에 해당하는 영역을 연두색과 옅은 빗금으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "10. 그림은 두 이차함수 $y = 3x^2$과 $y = -x^2$의 그래프를 그린 것이다. 빗금 친 부분에 있는 이차함수의 그래프는?<br>(단, $\\mathrm{O}$는 원점) [4.2점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q10-problem-visual-v2.svg\" alt=\"파란 위쪽 경계 y=3x²와 주황 아래쪽 경계 y=−x²가 원점에서 만난다. 각 x에서 두 곡선 사이에 해당하는 영역을 연두색과 옅은 빗금으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "① $y = 4x^2$",
       "② $y = \\frac{2}{3}x^2$",
@@ -194,13 +197,11 @@ window.questionBank = [
       "④ $y = -2x^2$",
       "⑤ $y = -\\frac{4}{3}x^2$"
     ],
-    "images": [
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q10.png"
-    ],
+    "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q10-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4.2,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q10.png"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q10-problem-visual-v2.svg"
   },
   {
     "id": 11,
@@ -224,11 +225,14 @@ window.questionBank = [
   },
   {
     "id": 12,
+    "layoutTag": "fullwidth",
+    "imageSize": "full",
+    "imageAlt": "위로 열린 포물선은 가로축의 −6과 2에서 만난다. 세로축에서의 교점은 −4이고 꼭짓점은 왼쪽 아래로 내려간다.",
     "questionNumber": 12,
     "number": 12,
     "questionType": "객관식",
-    "question": "12. 이차함수 $y = ax^2 + bx + c$의 그래프가 다음 그림과 같을 때, 이 이차함수의 식은? (단, $\\mathrm{O}$는 원점) [4.6점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q12.png\" class=\"exam-img\" />",
-    "content": "12. 이차함수 $y = ax^2 + bx + c$의 그래프가 다음 그림과 같을 때, 이 이차함수의 식은? (단, $\\mathrm{O}$는 원점) [4.6점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q12.png\" class=\"exam-img\" />",
+    "question": "12. 이차함수 $y = ax^2 + bx + c$의 그래프가 다음 그림과 같을 때, 이 이차함수의 식은? (단, $\\mathrm{O}$는 원점) [4.6점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"위로 열린 포물선은 가로축의 −6과 2에서 만난다. 세로축에서의 교점은 −4이고 꼭짓점은 왼쪽 아래로 내려간다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "12. 이차함수 $y = ax^2 + bx + c$의 그래프가 다음 그림과 같을 때, 이 이차함수의 식은? (단, $\\mathrm{O}$는 원점) [4.6점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"위로 열린 포물선은 가로축의 −6과 2에서 만난다. 세로축에서의 교점은 −4이고 꼭짓점은 왼쪽 아래로 내려간다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "① $y = \\frac{1}{3}x^2 + \\frac{4}{3}x - 4$",
       "② $y = \\frac{2}{3}x^2 + \\frac{1}{3}x - 6$",
@@ -236,48 +240,40 @@ window.questionBank = [
       "④ $y = 2x^2 - \\frac{5}{3}x - 6$",
       "⑤ $y = \\frac{5}{2}x^2 + \\frac{4}{3}x - 4$"
     ],
-    "images": [
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q12.png"
-    ],
+    "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q12-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4.6,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q12.png"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q12-problem-visual-v2.svg"
   },
   {
     "id": 13,
+    "choiceColumns": 2,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "직선 y=ax+b는 오른쪽으로 갈수록 높아진다. 직선은 y축의 양의 부분과 x축의 음의 부분을 지난다.",
     "questionNumber": 13,
     "number": 13,
     "questionType": "객관식",
-    "question": "13. &lt;보기&gt;는 일차함수 $y = ax + b$의 그래프를 나타낸 것이다. 이 때, 이차함수 $y = -bx^2 + a$의 그래프는? (단, $\\mathrm{O}$는 원점) [4.6점]<br><br><div class=\"exam-box\"><div class=\"exam-box-title\">&lt;보 기&gt;</div><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13.png\" class=\"exam-img\" /></div>",
-    "content": "13. &lt;보기&gt;는 일차함수 $y = ax + b$의 그래프를 나타낸 것이다. 이 때, 이차함수 $y = -bx^2 + a$의 그래프는? (단, $\\mathrm{O}$는 원점) [4.6점]<br><br><div class=\"exam-box\"><div class=\"exam-box-title\">&lt;보 기&gt;</div><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13.png\" class=\"exam-img\" /></div>",
-    "choices": [
-      "① <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13_1.png\" class=\"exam-img\" />",
-      "② <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13_2.png\" class=\"exam-img\" />",
-      "③ <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13_3.png\" class=\"exam-img\" />",
-      "④ <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13_4.png\" class=\"exam-img\" />",
-      "⑤ <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13_5.png\" class=\"exam-img\" />"
-    ],
-    "images": [
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q13.png",
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q13_1.png",
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q13_2.png",
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q13_3.png",
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q13_4.png",
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q13_5.png"
-    ],
+    "question": "13. &lt;보기&gt;는 일차함수 $y = ax + b$의 그래프를 나타낸 것이다. 이 때, 이차함수 $y = -bx^2 + a$의 그래프는? (단, $\\mathrm{O}$는 원점) [4.6점]<br><br><div class=\"exam-box\"><div class=\"exam-box-title\">&lt;보 기&gt;</div><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"직선 y=ax+b는 오른쪽으로 갈수록 높아진다. 직선은 y축의 양의 부분과 x축의 음의 부분을 지난다.\" style=\"display:block;width:min(100%,406px);height:auto;margin:0 auto;\"></div>",
+    "content": "13. &lt;보기&gt;는 일차함수 $y = ax + b$의 그래프를 나타낸 것이다. 이 때, 이차함수 $y = -bx^2 + a$의 그래프는? (단, $\\mathrm{O}$는 원점) [4.6점]<br><br><div class=\"exam-box\"><div class=\"exam-box-title\">&lt;보 기&gt;</div><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"직선 y=ax+b는 오른쪽으로 갈수록 높아진다. 직선은 y축의 양의 부분과 x축의 음의 부분을 지난다.\" style=\"display:block;width:min(100%,406px);height:auto;margin:0 auto;\"></div>",
+    "choices": ["① <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-choice-1-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 음의 부분에 놓여 있고 아래로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","② <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-choice-2-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 양의 부분에 놓여 있고 아래로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","③ <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-choice-3-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 원점에 놓여 있고 위로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","④ <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-choice-4-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 음의 부분에 놓여 있고 위로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","⑤ <img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q13-choice-5-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 양의 부분에 놓여 있고 위로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">"],
+    "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q13-problem-visual-v2.svg","assets/images/16_경기은계중_1학기_기말_중3_수학/q13_1.png","assets/images/16_경기은계중_1학기_기말_중3_수학/q13_2.png","assets/images/16_경기은계중_1학기_기말_중3_수학/q13_3.png","assets/images/16_경기은계중_1학기_기말_중3_수학/q13_4.png","assets/images/16_경기은계중_1학기_기말_중3_수학/q13_5.png"],
     "answer": "",
     "solution": "",
     "score": 4.6,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q13.png"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q13-problem-visual-v2.svg"
   },
   {
     "id": 14,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "아래에 수면을 나타낸 파란 평면이 있다. 그 왼쪽 위에는 다이빙대가 있고, 출발하는 사람과 수면 사이의 수직 높이를 15 m라고 표시했다.",
     "questionNumber": 14,
     "number": 14,
     "questionType": "객관식",
-    "question": "14. 올림픽의 다이빙 경기 중에는 높이가 $15\\mathrm{m}$인 고정 다이빙대에서 뛰어드는 플랫폼 다이빙이 있다. $15\\mathrm{m}$ 높이의 다이빙대 위에서 도약하여 다이빙한 선수의 $t$초 후의 높이 $h\\mathrm{m}$는 $h = -4.9t^2 + 4.9t + 15$이라고 한다. 선수가 가장 높이 올라갔을 때, 수면으로부터의 높이는? [4.8점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q14.png\" class=\"exam-img\" />",
-    "content": "14. 올림픽의 다이빙 경기 중에는 높이가 $15\\mathrm{m}$인 고정 다이빙대에서 뛰어드는 플랫폼 다이빙이 있다. $15\\mathrm{m}$ 높이의 다이빙대 위에서 도약하여 다이빙한 선수의 $t$초 후의 높이 $h\\mathrm{m}$는 $h = -4.9t^2 + 4.9t + 15$이라고 한다. 선수가 가장 높이 올라갔을 때, 수면으로부터의 높이는? [4.8점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q14.png\" class=\"exam-img\" />",
+    "question": "14. 올림픽의 다이빙 경기 중에는 높이가 $15\\mathrm{m}$인 고정 다이빙대에서 뛰어드는 플랫폼 다이빙이 있다. $15\\mathrm{m}$ 높이의 다이빙대 위에서 도약하여 다이빙한 선수의 $t$초 후의 높이 $h\\mathrm{m}$는 $h = -4.9t^2 + 4.9t + 15$이라고 한다. 선수가 가장 높이 올라갔을 때, 수면으로부터의 높이는? [4.8점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q14-problem-visual-v2.svg\" alt=\"아래에 수면을 나타낸 파란 평면이 있다. 그 왼쪽 위에는 다이빙대가 있고, 출발하는 사람과 수면 사이의 수직 높이를 15 m라고 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "14. 올림픽의 다이빙 경기 중에는 높이가 $15\\mathrm{m}$인 고정 다이빙대에서 뛰어드는 플랫폼 다이빙이 있다. $15\\mathrm{m}$ 높이의 다이빙대 위에서 도약하여 다이빙한 선수의 $t$초 후의 높이 $h\\mathrm{m}$는 $h = -4.9t^2 + 4.9t + 15$이라고 한다. 선수가 가장 높이 올라갔을 때, 수면으로부터의 높이는? [4.8점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q14-problem-visual-v2.svg\" alt=\"아래에 수면을 나타낸 파란 평면이 있다. 그 왼쪽 위에는 다이빙대가 있고, 출발하는 사람과 수면 사이의 수직 높이를 15 m라고 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "① $12.115\\mathrm{m}$",
       "② $12.125\\mathrm{m}$",
@@ -285,21 +281,22 @@ window.questionBank = [
       "④ $15.115\\mathrm{m}$",
       "⑤ $16.225\\mathrm{m}$"
     ],
-    "images": [
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q14.png"
-    ],
+    "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q14-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4.8,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q14.png"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q14-problem-visual-v2.svg"
   },
   {
     "id": 15,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "왼쪽의 파랑 직사각형 ABCD는 가로 4 cm, 세로 6 cm이다. 주황 점선으로 오른쪽으로 확장되고 아래쪽이 줄어든 직사각형을 표시했다.",
     "questionNumber": 15,
     "number": 15,
     "questionType": "객관식",
-    "question": "15. 가로와 세로의 길이가 각각 $4\\mathrm{cm}$, $6\\mathrm{cm}$인 직사각형 $\\mathrm{ABCD}$가 있다. 가로의 길이는 매초 $2\\mathrm{cm}$씩 늘어나고 세로의 길이는 매초 $1\\mathrm{cm}$씩 줄어들 때, 처음 직사각형과 넓이가 같아지는 것은 몇 초 후인가? [4.8점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q15.png\" class=\"exam-img\" />",
-    "content": "15. 가로와 세로의 길이가 각각 $4\\mathrm{cm}$, $6\\mathrm{cm}$인 직사각형 $\\mathrm{ABCD}$가 있다. 가로의 길이는 매초 $2\\mathrm{cm}$씩 늘어나고 세로의 길이는 매초 $1\\mathrm{cm}$씩 줄어들 때, 처음 직사각형과 넓이가 같아지는 것은 몇 초 후인가? [4.8점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q15.png\" class=\"exam-img\" />",
+    "question": "15. 가로와 세로의 길이가 각각 $4\\mathrm{cm}$, $6\\mathrm{cm}$인 직사각형 $\\mathrm{ABCD}$가 있다. 가로의 길이는 매초 $2\\mathrm{cm}$씩 늘어나고 세로의 길이는 매초 $1\\mathrm{cm}$씩 줄어들 때, 처음 직사각형과 넓이가 같아지는 것은 몇 초 후인가? [4.8점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q15-problem-visual-v2.svg\" alt=\"왼쪽의 파랑 직사각형 ABCD는 가로 4 cm, 세로 6 cm이다. 주황 점선으로 오른쪽으로 확장되고 아래쪽이 줄어든 직사각형을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "15. 가로와 세로의 길이가 각각 $4\\mathrm{cm}$, $6\\mathrm{cm}$인 직사각형 $\\mathrm{ABCD}$가 있다. 가로의 길이는 매초 $2\\mathrm{cm}$씩 늘어나고 세로의 길이는 매초 $1\\mathrm{cm}$씩 줄어들 때, 처음 직사각형과 넓이가 같아지는 것은 몇 초 후인가? [4.8점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q15-problem-visual-v2.svg\" alt=\"왼쪽의 파랑 직사각형 ABCD는 가로 4 cm, 세로 6 cm이다. 주황 점선으로 오른쪽으로 확장되고 아래쪽이 줄어든 직사각형을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "① 8초 후",
       "② 6초 후",
@@ -307,21 +304,22 @@ window.questionBank = [
       "④ 4초 후",
       "⑤ 2초 후"
     ],
-    "images": [
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q15.png"
-    ],
+    "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q15-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 4.8,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q15.png"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q15-problem-visual-v2.svg"
   },
   {
     "id": 16,
+    "layoutTag": "fullwidth",
+    "imageSize": "full",
+    "imageAlt": "위로 열린 포물선이 x축을 왼쪽에서 A, 오른쪽에서 B로 만난다. 두 점의 가운데보다 아래쪽에 꼭짓점이 놓인다.",
     "questionNumber": 16,
     "number": 16,
     "questionType": "객관식",
-    "question": "16. 이차함수 $y = x^2 + x + a$의 그래프에서 $x$축과의 교점을 $\\mathrm{A}$, $\\mathrm{B}$라 하자. $\\overline{\\mathrm{AB}} = 7$일 때, 이 이차함수의 최솟값은? [5.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q16.png\" class=\"exam-img\" />",
-    "content": "16. 이차함수 $y = x^2 + x + a$의 그래프에서 $x$축과의 교점을 $\\mathrm{A}$, $\\mathrm{B}$라 하자. $\\overline{\\mathrm{AB}} = 7$일 때, 이 이차함수의 최솟값은? [5.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q16.png\" class=\"exam-img\" />",
+    "question": "16. 이차함수 $y = x^2 + x + a$의 그래프에서 $x$축과의 교점을 $\\mathrm{A}$, $\\mathrm{B}$라 하자. $\\overline{\\mathrm{AB}} = 7$일 때, 이 이차함수의 최솟값은? [5.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"위로 열린 포물선이 x축을 왼쪽에서 A, 오른쪽에서 B로 만난다. 두 점의 가운데보다 아래쪽에 꼭짓점이 놓인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "16. 이차함수 $y = x^2 + x + a$의 그래프에서 $x$축과의 교점을 $\\mathrm{A}$, $\\mathrm{B}$라 하자. $\\overline{\\mathrm{AB}} = 7$일 때, 이 이차함수의 최솟값은? [5.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"위로 열린 포물선이 x축을 왼쪽에서 A, 오른쪽에서 B로 만난다. 두 점의 가운데보다 아래쪽에 꼭짓점이 놓인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "① $-\\frac{49}{4}$",
       "② $-\\frac{37}{3}$",
@@ -329,21 +327,22 @@ window.questionBank = [
       "④ -7",
       "⑤ -5"
     ],
-    "images": [
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q16.png"
-    ],
+    "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q16-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 5,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q16.png"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q16-problem-visual-v2.svg"
   },
   {
     "id": 17,
+    "layoutTag": "fullwidth",
+    "imageSize": "full",
+    "imageAlt": "위로 열린 y=x²에는 A와 B가 있다. 두 점의 높이는 같다. B에서 같은 세로선을 내려 주황 점선 y=−2x²/3 위의 C에 닿는다.",
     "questionNumber": 17,
     "number": 17,
     "questionType": "객관식",
-    "question": "17. 그림과 같이 두 점 $\\mathrm{A}$, $\\mathrm{B}$는 이차함수 $y = x^2$의 그래프 위의 점이고, $y$축에 서로 대칭이다. 점 $\\mathrm{B}$에서 $y$축에 평행한 선을 그어 이차함수 $y = -\\frac{2}{3}x^2$의 그래프와 만나는 점을 $\\mathrm{C}$라고 하자. $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{BC}} = 2 : 1$일 때, 점 $\\mathrm{A}$의 좌표는?<br>(단, 점 $\\mathrm{B}$는 제1사분면 위에 있다.) [5.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q17.png\" class=\"exam-img\" />",
-    "content": "17. 그림과 같이 두 점 $\\mathrm{A}$, $\\mathrm{B}$는 이차함수 $y = x^2$의 그래프 위의 점이고, $y$축에 서로 대칭이다. 점 $\\mathrm{B}$에서 $y$축에 평행한 선을 그어 이차함수 $y = -\\frac{2}{3}x^2$의 그래프와 만나는 점을 $\\mathrm{C}$라고 하자. $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{BC}} = 2 : 1$일 때, 점 $\\mathrm{A}$의 좌표는?<br>(단, 점 $\\mathrm{B}$는 제1사분면 위에 있다.) [5.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q17.png\" class=\"exam-img\" />",
+    "question": "17. 그림과 같이 두 점 $\\mathrm{A}$, $\\mathrm{B}$는 이차함수 $y = x^2$의 그래프 위의 점이고, $y$축에 서로 대칭이다. 점 $\\mathrm{B}$에서 $y$축에 평행한 선을 그어 이차함수 $y = -\\frac{2}{3}x^2$의 그래프와 만나는 점을 $\\mathrm{C}$라고 하자. $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{BC}} = 2 : 1$일 때, 점 $\\mathrm{A}$의 좌표는?<br>(단, 점 $\\mathrm{B}$는 제1사분면 위에 있다.) [5.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"위로 열린 y=x²에는 A와 B가 있다. 두 점의 높이는 같다. B에서 같은 세로선을 내려 주황 점선 y=−2x²/3 위의 C에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "17. 그림과 같이 두 점 $\\mathrm{A}$, $\\mathrm{B}$는 이차함수 $y = x^2$의 그래프 위의 점이고, $y$축에 서로 대칭이다. 점 $\\mathrm{B}$에서 $y$축에 평행한 선을 그어 이차함수 $y = -\\frac{2}{3}x^2$의 그래프와 만나는 점을 $\\mathrm{C}$라고 하자. $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{BC}} = 2 : 1$일 때, 점 $\\mathrm{A}$의 좌표는?<br>(단, 점 $\\mathrm{B}$는 제1사분면 위에 있다.) [5.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"위로 열린 y=x²에는 A와 B가 있다. 두 점의 높이는 같다. B에서 같은 세로선을 내려 주황 점선 y=−2x²/3 위의 C에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "① $\\left(-\\frac{2}{3}, \\frac{4}{9}\\right)$",
       "② $\\left(-\\frac{3}{4}, \\frac{9}{16}\\right)$",
@@ -351,13 +350,11 @@ window.questionBank = [
       "④ (-3, 3)",
       "⑤ (-3, 9)"
     ],
-    "images": [
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q17.png"
-    ],
+    "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 5,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q17.png"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q17-problem-visual-v2.svg"
   },
   {
     "id": 18,
@@ -403,18 +400,19 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "layoutTag": "fullwidth",
+    "imageSize": "full",
+    "imageAlt": "위로 열린 포물선은 x축의 2에서 꼭짓점을 이루고 세로축의 4를 지난다.",
     "questionNumber": 21,
     "number": 21,
     "questionType": "서술형",
-    "question": "21. [서술형 4] 이차함수의 그래프가 점 $(k, 10)$을 지난다고 할 때, $k$의 값은 두 개가 나온다. 이 때, 두 $k$값의 차를 구하시오.<br>(풀이과정을 서술하시오.) [7.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q21.png\" class=\"exam-img\" />",
-    "content": "21. [서술형 4] 이차함수의 그래프가 점 $(k, 10)$을 지난다고 할 때, $k$의 값은 두 개가 나온다. 이 때, 두 $k$값의 차를 구하시오.<br>(풀이과정을 서술하시오.) [7.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q21.png\" class=\"exam-img\" />",
+    "question": "21. [서술형 4] 이차함수의 그래프가 점 $(k, 10)$을 지난다고 할 때, $k$의 값은 두 개가 나온다. 이 때, 두 $k$값의 차를 구하시오.<br>(풀이과정을 서술하시오.) [7.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg\" alt=\"위로 열린 포물선은 x축의 2에서 꼭짓점을 이루고 세로축의 4를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "21. [서술형 4] 이차함수의 그래프가 점 $(k, 10)$을 지난다고 할 때, $k$의 값은 두 개가 나온다. 이 때, 두 $k$값의 차를 구하시오.<br>(풀이과정을 서술하시오.) [7.0점]<br><br><img src=\"assets/images/16_경기은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg\" alt=\"위로 열린 포물선은 x축의 2에서 꼭짓점을 이루고 세로축의 4를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [],
-    "images": [
-      "assets/images/16_경기은계중_1학기_기말_중3_수학/q21.png"
-    ],
+    "images": ["assets/images/16_경기은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 7,
-    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q21.png"
+    "image": "assets/images/16_경기은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg"
   }
 ];

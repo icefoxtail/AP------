@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "middle-audit-difficulty-current-reconciliation-v1",
+  "baseCommit": "1a3db9d6d8f5e7e1404c17f4978398eb90dbe6a5",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "scope": "Six non-numeric shared difficulty fields; current source 1..5 values agree with existing native accepted numeric decisions. Preserve approval statuses, source bindings, holds, and original student payload. Confidence is copied from current source; no new difficulty adjudication.",
+  "rows": [
+    {
+      "sourceArchiveFile": "original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
+      "ordinal": 20,
+      "questionUid": "qid_v1_1e46ebb50849b86b58bd4371d0844ea6ba205b91a6c2277012ffd05fb4738324",
+      "sourceBlobSha": "75a6f10eb7283507af1df83d10699eed605b7208",
+      "before": {
+        "difficultyBucket": "중",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "sourceNumericDecision": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "nativeReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E001/accepted-review.json",
+        "numericBucket": 2
+      },
+      "existingMetadataStatus": "approved_partial_with_explicit_holds",
+      "existingDifficultyStatus": "approved_source",
+      "contentDebt": [
+        {
+          "kind": "STEM_FIGURE_CONFLICT",
+          "observed": "원본 q20.png에는 음의 기울기 직선과 양의 기울기 직선이 교차한다. 첫 식 x-y=a는 y=x-a라 항상 양의 기울기1이다. 그림의 교점(2,3)과 해설 대입/정답은 일치하지만 직선 방향이 원본 식과 충돌한다.",
+          "asset": "assets/images/26_동산중_1학기_기말_중2_기출/q20.png",
+          "action": "원본 시험지 대조 후 내용 담당자 별도 검토; 본 작업은 수정하지 않음."
+        }
+      ],
+      "semanticApprovalPreserved": true,
+      "sourceFingerprintPreserved": true,
+      "nextAction": "원문/그림 부채는 기존 hold로 보존하고 숫자 난도 표시만 공식 등록기로 결속. 수정으로 의미 승인 또는 원문 해결을 주장하지 않음."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+      "ordinal": 9,
+      "questionUid": "qid_v1_734b45f2f62c92f213cff2d1590ecca2e2c21f09956dd4221cdb6eee5f0e1a2e",
+      "sourceBlobSha": "7a91302f47df3aa5d2bb085f36ca1cfdece3b7d7",
+      "before": {
+        "difficultyBucket": "중",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "sourceNumericDecision": {
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "nativeReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E050/accepted-review.json",
+        "numericBucket": 3
+      },
+      "existingMetadataStatus": "approved_partial_with_explicit_holds",
+      "existingDifficultyStatus": "approved_source",
+      "contentDebt": [
+        "기존 해설은 잘못 읽은 분수의 기약형92/225와22/45를 얻은 뒤 그 분자92/분모45가 원래 분수의 해당 성분과 같다고 암묵적으로 가정한다. 잘못 읽은 분수의 약분 전 성분에 대한 추가 전제가 실제 본문에 없어 조건부 구조판정이며 해결된 것으로 보지 않는다."
+      ],
+      "semanticApprovalPreserved": true,
+      "sourceFingerprintPreserved": true,
+      "nextAction": "원문/그림 부채는 기존 hold로 보존하고 숫자 난도 표시만 공식 등록기로 결속. 수정으로 의미 승인 또는 원문 해결을 주장하지 않음."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js",
+      "ordinal": 6,
+      "questionUid": "qid_v1_fa00e2cef8c94873fa5989d76c772cf7f4376d71c24ec595cf7ad14c878b2b3a",
+      "sourceBlobSha": "9ce1e4b210e5154f782c5748b4baa1498550990f",
+      "before": {
+        "difficultyBucket": "중",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "sourceNumericDecision": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "nativeReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E023/accepted-review.json",
+        "numericBucket": 2
+      },
+      "existingMetadataStatus": "approved_partial_with_explicit_holds",
+      "existingDifficultyStatus": "approved_source",
+      "contentDebt": [
+        {
+          "type": "MISREAD_REDUCTION_ASSUMPTION",
+          "evidence": "현재해설은오독소수의기약표현7/12,6/11에서원분자7·원분모11을단정한다. 하지만원래14/33(기약)에서분모24오독→7/12,분자18오독→6/11도같은관측을만든다. 제시선택지중의도답②는유효하나원분수유일성과해설의성분단정은발문만으로보장되지않는다.",
+          "action": "현재E023의선택지⑤6/11를포함해원문·정답·해설보존. 보존성분에필요한추가전제는내용검토로분리."
+        }
+      ],
+      "semanticApprovalPreserved": true,
+      "sourceFingerprintPreserved": true,
+      "nextAction": "원문/그림 부채는 기존 hold로 보존하고 숫자 난도 표시만 공식 등록기로 결속. 수정으로 의미 승인 또는 원문 해결을 주장하지 않음."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js",
+      "ordinal": 23,
+      "questionUid": "qid_v1_9e354d8b9f3cda15bb855f907667e9e4aa493f07a54afa3f4fb9833df93101fb",
+      "sourceBlobSha": "9ce1e4b210e5154f782c5748b4baa1498550990f",
+      "before": {
+        "difficultyBucket": "상",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "sourceNumericDecision": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "nativeReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E023/accepted-review.json",
+        "numericBucket": 2
+      },
+      "existingMetadataStatus": "approved_partial_with_explicit_holds",
+      "existingDifficultyStatus": "approved_source",
+      "contentDebt": [
+        {
+          "type": "NONTIGHT_BOUND_AMBIGUITY",
+          "evidence": "발문만으로a≤7/2,b≥11/2의모든값이허용된다. a3,b6도성립하지만4ab72이다. source77은a,b를정확한최소최대경계로읽었을때의도답이다.",
+          "action": "현재원문·정답·기존해설보존,최적경계명시는별도내용검토."
+        }
+      ],
+      "semanticApprovalPreserved": true,
+      "sourceFingerprintPreserved": true,
+      "nextAction": "원문/그림 부채는 기존 hold로 보존하고 숫자 난도 표시만 공식 등록기로 결속. 수정으로 의미 승인 또는 원문 해결을 주장하지 않음."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js",
+      "ordinal": 10,
+      "questionUid": "qid_v1_e0532bc2c06691f61509bcdcc3f3a67872e2ad23fbd8e252cb7aa37706dcb2c3",
+      "sourceBlobSha": "d7c4616ed29b0b4617da37952c21f87bfe179834",
+      "before": {
+        "difficultyBucket": "",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "sourceNumericDecision": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "nativeReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E015/accepted-review.json",
+        "numericBucket": 2
+      },
+      "existingMetadataStatus": "approved_partial_with_explicit_holds",
+      "existingDifficultyStatus": "manual_review_pending",
+      "contentDebt": [],
+      "semanticApprovalPreserved": true,
+      "sourceFingerprintPreserved": true,
+      "nextAction": "원문/그림 부채는 기존 hold로 보존하고 숫자 난도 표시만 공식 등록기로 결속. 수정으로 의미 승인 또는 원문 해결을 주장하지 않음."
+    },
+    {
+      "sourceArchiveFile": "original/middle/m2/1mid/25_진남중_1학기_중간_중2_기출.js",
+      "ordinal": 23,
+      "questionUid": "qid_v1_cd165fc6c9ac85769f05ddf2e86ebe0036f5beae8b2fa643da29feebc2c67cd5",
+      "sourceBlobSha": "0bdaba5a37137fd2c1747d4c9245ba154c8e96cd",
+      "before": {
+        "difficultyBucket": "상",
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null
+      },
+      "sourceNumericDecision": {
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "nativeReview": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E016/accepted-review.json",
+        "numericBucket": 2
+      },
+      "existingMetadataStatus": "approved_partial_with_explicit_holds",
+      "existingDifficultyStatus": "approved_source",
+      "contentDebt": [
+        {
+          "type": "NONTIGHT_BOUND_AMBIGUITY",
+          "evidence": "모든x∈[−1,3]에대해a≤5−x/2≤b만요구하면a≤7/2,b≥11/2인모든경계가가능하다. 예a3,b6은조건을만족하지만4ab72다. a,b가각각최댓가능하한/최솟가능상한또는식의최솟값/최댓값이라는조건이없다.",
+          "action": "정답77과원문·기존해설은보존하고경계의tightness명시를후속내용검토로보낸다."
+        }
+      ],
+      "semanticApprovalPreserved": true,
+      "sourceFingerprintPreserved": true,
+      "nextAction": "원문/그림 부채는 기존 hold로 보존하고 숫자 난도 표시만 공식 등록기로 결속. 수정으로 의미 승인 또는 원문 해결을 주장하지 않음."
+    }
+  ],
+  "requestPaths": [
+    ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-difficulty-E001.json",
+    ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-difficulty-E050.json",
+    ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-difficulty-E023.json",
+    ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-difficulty-E015.json",
+    ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-difficulty-E016.json"
+  ]
+}

@@ -298,12 +298,12 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "도형"
       ],
       "wide": false,
-      "content": "<p>10. 오른쪽 그림과 같은 직선을 그래프로 하는 직선의 방정식을 구하면? [4점]</p><p><img src=\"assets/images/21_신흥중_1학기_기말_중2_수학/q10.png\" alt=\"x축과 (2, 0), y축과 (0, -3)에서 만나는 직선 그래프\" class=\"question-image\" /></p>",
+      "content": "<p>10. 오른쪽 그림과 같은 직선을 그래프로 하는 직선의 방정식을 구하면? [4점]</p><p><img src=\"assets/images/21_신흥중_1학기_기말_중2_수학/q10-problem-visual-v2.svg\" alt=\"검은 직선은 가로축의 2, 세로축의 −3에서 좌표축과 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$3x + 2y - 6 = 0$",
         "$2x - 3y - 6 = 0$",
@@ -313,7 +313,7 @@ window.examData = {
       ],
       "answer": "④",
       "solution": "[원문 조건 및 구할 대상]\n그림 `q10.png`의 직선을 그래프로 하는 일차방정식을 구한다.\n\n[핵심 발상/공식]\n직선이 $x$축과 만나는 점을 $(a, 0)$, $y$축과 만나는 점을 $(0, b)$라 할 때, 절편을 이용한 직선의 방정식은 $\\dfrac{x}{a} + \\dfrac{y}{b} = 1$이다.\n\n[연속 등식 및 중간 계산]\n1단계: 그래프에서 두 축과의 교점을 읽는다.\n- $x$절편: $(2, 0) \\implies a = 2$\n- $y$절편: $(0, -3) \\implies b = -3$\n2단계: 절편 공식을 적용하여 직선의 방정식을 세운다.\n$\\dfrac{x}{2} + \\dfrac{y}{-3} = 1$\n3단계: 양변에 최소공배수 $6$을 곱하여 일반형으로 정리한다.\n$3x - 2y = 6$\n$3x - 2y - 6 = 0$\n\n[경우 나눔 및 선택지 검토]\n보기와 대조하면 ④번 $3x - 2y - 6 = 0$과 정확히 일치한다.\n\n[결론]\n따라서 정답은 ④이다.",
-      "question": "<p>10. 오른쪽 그림과 같은 직선을 그래프로 하는 직선의 방정식을 구하면? [4점]</p><p><img src=\"assets/images/21_신흥중_1학기_기말_중2_수학/q10.png\" alt=\"x축과 (2, 0), y축과 (0, -3)에서 만나는 직선 그래프\" class=\"question-image\" /></p>"
+      "question": "<p>10. 오른쪽 그림과 같은 직선을 그래프로 하는 직선의 방정식을 구하면? [4점]</p><p><img src=\"assets/images/21_신흥중_1학기_기말_중2_수학/q10-problem-visual-v2.svg\" alt=\"검은 직선은 가로축의 2, 세로축의 −3에서 좌표축과 만난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>"
     },
     {
       "id": 11,

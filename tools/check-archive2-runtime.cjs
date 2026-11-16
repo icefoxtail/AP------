@@ -5,9 +5,11 @@ const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const root = path.resolve(__dirname, '..');
 const files = [
+  'tests/archive2-runtime-preparation.test.cjs',
   'tests/archive2-original-source-route.test.cjs',
   'tests/archive2-original-source-verification-shard.test.mjs',
   'tests/archive2-mixed-verification-compact.test.mjs',
+  'tests/archive-source-quality-holds.test.mjs',
   'tests/archive-pages-site-reach.test.mjs',
   'tests/archive2-compose-performance.test.cjs',
   'tests/archive2-preview-feedback.test.cjs',
@@ -45,6 +47,14 @@ console.log('Archive2 Runtime Guard — ARCHIVE2_RUNTIME_CONTRACT_V1_20261006');
 // Ordinary PR/local runs may still prepare their isolated runner projection.
 const registered = process.argv.includes('--registered');
 if (!registered) {
+// A canonical-only PR can legitimately precede its generated registry index.
+// Derive that isolated checkout with the official compiler before consumers
+// inspect the registry. Registered snapshots remain strictly read-only below.
+const metaFoundation = spawnSync(process.execPath, ['archive/tools/meta-foundation/compile-meta-foundation.mjs', '--write'], {
+  cwd: root, stdio: 'inherit', timeout: 120000,
+});
+if (metaFoundation.error) console.error(metaFoundation.error.message);
+if (metaFoundation.status !== 0 || metaFoundation.error) process.exit(1);
 const accessibility = spawnSync(process.execPath, ['archive/tools/build-svg-accessibility-index.cjs'], {
   cwd: root, stdio: 'inherit', timeout: 120000,
 });
@@ -65,7 +75,7 @@ if (extensionKeys.status !== 0 || extensionKeys.error) process.exit(1);
   console.log('REGISTERED_SNAPSHOT_REUSED: shared registration builders were not run');
 }
 const result = spawnSync(process.execPath, ['--test', '--test-concurrency=1', ...files], {
-  cwd: root, stdio: 'inherit', timeout: 120000,
+  cwd: root, stdio: 'inherit', timeout: 180000,
 });
 if (result.error) console.error(result.error.message);
 process.exit(result.status === 0 && !result.error ? 0 : 1);

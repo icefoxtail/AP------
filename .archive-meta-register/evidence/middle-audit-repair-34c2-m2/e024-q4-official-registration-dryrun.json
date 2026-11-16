@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "middle-audit-scoped-official-registrar-dryrun-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "command": "node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request .archive-meta-register/inbox/middle-audit-repair-34c2-m2-e024-q4.json",
+  "requestRef": {
+    "path": ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-e024-q4.json",
+    "sha256": "a9a78cabb09072e755a35ca84d87807c129139faeadc4977734b579c1505a013"
+  },
+  "sourceBlobSha1": "6c857633edb9fe267375cd9b1c9326cc975817ba",
+  "sourceRawSha256": "ebda72d20030605af7dd7a8434d04d731a0422bc3f66090f15e0160e818e3dd8",
+  "immutableRendererProofCommit": "c6cf8f68044346929a410f67e71dddadb2a74fae",
+  "result": {
+    "status": "PASS",
+    "write": false,
+    "requestId": "middle-audit-repair-34c2-m2-e024-q4",
+    "approvalType": "FINAL_QA",
+    "totalQuestions": 1,
+    "scope": "PARTIAL_UIDS",
+    "partialUidCount": 1,
+    "expectedQuestionCount": 24,
+    "registryChangeCount": 0,
+    "runtimeMaterialized": 1,
+    "fingerprintRepairCount": 1,
+    "consumerSearchStatus": "NOT_RUN",
+    "replay": false,
+    "plannedPaths": [
+      "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "archive/data/question_metadata.json",
+      "archive/data/question_identity_map.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e024-q4.renderer-binding.json",
+      "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e024-q4.json"
+    ]
+  },
+  "scopeChecks": {
+    "selectedQuestionUid": "qid_v1_70a153fd0db92774327a2a79647a464cb887d400f870eb8b8280cab9f094b147",
+    "studentPayloadChanges": 0,
+    "unchangedStudentPayloadQuestionCount": 24,
+    "sourceFieldChanges": [
+      "curriculum"
+    ],
+    "compactSourceBlobUnchanged": true,
+    "newFullMathematicalQa": false
+  },
+  "remoteMainRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}

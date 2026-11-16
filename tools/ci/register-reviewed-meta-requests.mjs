@@ -29,7 +29,7 @@ import vm from "node:vm";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { verifyStudentAccess } from '../../archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs';
-import { AUDIT_PRESERVATION_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, auditPreservationDependency,
+import { AUDIT_PRESERVATION_SCHEMA, AUDIT_SOURCE_PRESERVATION_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, auditPreservationDependency,
   basicPreservationDescriptor, difficultyBeforeBindings, nativeRegistryDependencyDescriptor,
   nativeRegistryDependencies, orderNativeRequests } from './archive-pr-native-preview.mjs';
 
@@ -39,6 +39,7 @@ export function acceptPendingSupplement(opt, requestAbs, error) {
   // Preserving an existing verified audit is not a new provisional approval.
   // A failed preservation must retain ordinary fail-closed rejection semantics.
   if(doc.approval.sourceRebind?.schemaVersion===AUDIT_PRESERVATION_SCHEMA
+      ||doc.approval.sourceRebind?.schemaVersion===AUDIT_SOURCE_PRESERVATION_SCHEMA
       ||doc.approval.sourceRebind?.difficultyRequestRef!==undefined)return null;
   const access=verifyStudentAccess(opt.root,doc);
   const dir=path.join(opt.root,'.archive-meta-register/pending-supplement');
@@ -125,7 +126,7 @@ export function orderedRequestPaths(opt, { onDependencyError } = {}) {
     return {path:rel,requestArg,sha256:bytes?sha256(bytes):undefined,doc,sourceRebind,
       ...(registryDependency?{registryDependency}:{}),
       ...(sourceRebind?{kind:'native-approval-preservation'}:{}),
-      ...(basicPreservation?{basicPreservation,kind:'basic-approval-preservation'}:{}),
+      ...(basicPreservation?{basicPreservation,kind:basicPreservation.newBasicParent?'basic-parent-registration':'basic-approval-preservation'}:{}),
       ...(doc?.schemaVersion===DIFFICULTY_REQUEST_SCHEMA&&doc.gemini?.schemaVersion==='v1'
         &&doc.reviewedCorrection?.schemaVersion==='archive-difficulty5-reviewed-correction-v1'
         ?{kind:'difficulty5-ratings',difficultyBeforeBindings:difficultyBeforeBindings(doc),

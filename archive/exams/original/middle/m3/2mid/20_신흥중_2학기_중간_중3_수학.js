@@ -1259,6 +1259,7 @@ window.questionBank = [
   "score": 4,
   "category": "특수각의 삼각비",
   "standardCourse": "중3 수학",
+  "courseKey": "M3-2",
   "standardUnitKey": "M3-05",
   "standardUnit": "삼각비",
   "standardUnitOrder": 5,
@@ -1337,6 +1338,7 @@ window.questionBank = [
   "score": 4,
   "category": "삼각비와 중선·직각삼각형",
   "standardCourse": "중3 수학",
+  "courseKey": "M3-2",
   "standardUnitKey": "M3-05",
   "standardUnit": "삼각비",
   "standardUnitOrder": 5,
@@ -1478,7 +1480,9 @@ window.questionBank = [
 ,
     "conceptClusterKey": "TRIG_RATIO",
     "primaryMethod": "tanA의 비를 직각삼각형 두 직각변의 비로 놓고 나머지 삼각비를 구한다.",
-    "decisiveStep": "변의 비 5:12:13에서 cosA−sinA=(12−5)/13이다."
+    "decisiveStep": "변의 비 5:12:13에서 cosA−sinA=(12−5)/13이다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
 {
   "id": 20,
@@ -1489,6 +1493,7 @@ window.questionBank = [
   "score": 4,
   "category": "삼각비와 단위원·접선",
   "standardCourse": "중3 수학",
+  "courseKey": "M3-2",
   "standardUnitKey": "M3-05",
   "standardUnit": "삼각비",
   "standardUnitOrder": 5,
@@ -1567,6 +1572,7 @@ window.questionBank = [
   "score": 5,
   "category": "직각삼각형의 변과 삼각비",
   "standardCourse": "중3 수학",
+  "courseKey": "M3-2",
   "standardUnitKey": "M3-05",
   "standardUnit": "삼각비",
   "standardUnitOrder": 5,

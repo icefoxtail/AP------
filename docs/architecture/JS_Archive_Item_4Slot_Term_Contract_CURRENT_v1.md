@@ -153,7 +153,7 @@ method 항목의 예(IMPLIED):
 3. 모든 용어가 사전(대표 표기 또는 동의어)에 있는가. 없으면 실패가 아니라 **신규 용어 후보**로 모은다(§10).
 4. goal·method가 비어 있지 않은가, format이 정해진 값인가, method 항목에 `evidenceType`이 있고 IMPLIED면 `justification`이 있는가.
    - 경고(실패 아님, 재확인 대상): goal에 사전 `kind: 방법` 용어만 있음, 4칸 전체 용어가 4개 이하, method가 1개뿐, 한 시험지 안에서 4칸이 완전히 같은 문항이 있음.
-5. `questionUid`가 문항 identity map의 그 시험지 문항인가, 시험지의 모든 문항이 빠짐없이 있는가(coverage).
+5. `questionUid`가 문항 identity map의 그 시험지 문항인가, 시험지의 모든 문항이 빠짐없이 있는가(coverage). 명시적인 부분제출은 §11-7의 전체 분할과 독립 수납 계약을 적용하며, 일반 전체 제출의 누락 검사는 그대로 유지한다.
 6. 지문(§12)이 현재 문항 객체에서 다시 계산한 값과 같은가. 다르면 상태를 STALE 등으로 표시한다(실패로 막지는 않는다).
 
 이유: 사람은 스크립트가 걸러낸 문항과 표본만 보게 하려는 것이다. 위 검사는 4칸 파일 자체의 건전성만 보며, 기존 등록기·승인·catalog 빌드의 입력이 아니다(§14).
@@ -309,6 +309,20 @@ method 항목의 예(IMPLIED):
 시험지 4칸 파일이 없거나 일부 문항만 있어도 오류가 아니다. 검색은 그 문항을 4칸 필터에서만 제외하고 기존 필터에는 그대로 둔다(§14).
 
 이는 **운영 호환성** 규칙이다. 신규 제작 제출물에서 4칸·검토 기록 누락을 완료로 인정하는 면제가 아니다. 제출 분모·누락·미검토·SOURCE_ONLY 후속 작성은 공통 작성·검토·인계 요건으로 별도 확인한다.
+
+### 11-7. 명시적인 부분제출과 비공개 검토의 공개 수납 영수증 (2026-11-15)
+
+검토가 완료된 일부 문항만 먼저 등록할 때 제출물과 compact에 `scope: "PARTIAL_UIDS"`, `expectedQuestionCount`, `selected`, `unsubmitted`를 모두 적는다. 두 목록의 각 행은 정확한 `{questionUid, sourceOrdinal, sourceQuestionNo}`이며, `sourceOrdinal`은 현재 시험지 배열의 1부터 시작하는 위치, `sourceQuestionNo`는 원본의 ID 또는 번호를 문자열로 보존한 값이다. compact의 `ordinal`은 기존처럼 화면 문항 번호다. 서로 다른 이 세 값을 추정해서 맞추지 않는다.
+
+현재 `sourceGitBlobSha`와 공개 source 바이트가 같아야 하며, canonical identity map의 유일한 UID/위치/번호로 전체 시험지 분모를 확인한다. `selected`와 `unsubmitted`는 각각 비어 있지 않고 서로 겹치지 않아야 하며, 합집합이 시험지 전체와 정확히 같아야 한다. 중복·누락·범위 밖 UID·틀린 번호·잘못된 분모는 실패다. `items`에는 선택한 문항만 한 번씩 넣는다. 미제출 문항에 빈 method, 후보 승인, 가짜 검토 행을 만들지 않는다. 이 헤더가 없는 일반 제출은 기존 전체 coverage 규칙을 그대로 적용한다.
+
+비공개 작성물은 공식 importer의 `--accepted-private-input` 경로로 수납한다. 첫 어댑터는 이미 독립 수용된 단일 벡터 입력 `q22-accepted-private-vector-input-v1`과 독립 검토 `q22-private-independent-current-source-vector-review-v2`를 읽는다. 특정 UID에 대한 예외를 만들지 않으며, 다른 형태의 승인 문서를 임의로 추론하지 않는다. importer는 저장소 밖의 실제 작성 원문·독립 검토 원문·수용된 ID 벡터를 읽고 참조 SHA, 작성자와 다른 검토자, 결정·시각·허용 범위, 현재 HEAD source와 사전, 인용·방법 근거 및 벡터 일치를 검사한다. 비공개 파일의 해시만 제출해서 통과할 수 없다. 기존의 전체 시험지 Git 브랜치 importer는 이 부분제출 형식을 받지 않는다.
+
+공개 출력은 기존 ID-only compact와 `archive/data/item-4slot-receipts/v1/<requestId>.json` 수납 영수증이다. 영수증 `archive-4slot-private-import-receipt-v1`에는 현재 source/사전 해시, 정확한 분할, 작성자·독립 검토자·결정·입력 digest·`FOUR_SLOT_VECTOR_ONLY` 범위, compact 벡터 해시 및 인용의 위치/길이/해시만 둔다. 문자열 offset과 길이는 Unicode code point 기준이다. 방법 근거가 IMPLIED이면 설명의 해시만 보존한다. 인용 원문, 정답·해설, 작성자의 사유, 비공개 경로·상위 작업 원문은 넣지 않는다. compact의 `evidence`는 `archive-4slot-private-import-evidence-v1`과 실제 생성된 영수증의 경로·SHA를 가리킨다. 존재하지 않는 Git commit이나 브랜치를 근거로 꾸미지 않는다.
+
+첫 수납은 compact가 없는 경우에만 허용하며 `expectedCompactSha256: "NONE"`을 명시한다. 재실행은 실제 기존 SHA가 맞고 출력 전체가 바이트 단위로 같은 경우만 허용한다. 다른 기존 compact나 같은 ID의 다른 영수증은 충돌로 거부한다. 이 경로는 다른 검토자의 선택 행을 덮거나 합치지 않는다.
+
+runtime과 공개 데이터 검사는 비공개 저장소·Drive 없이 영수증의 실제 바이트와 현재 공개 source/사전/identity, 선택 벡터와 모든 인용 span을 다시 확인한다. cache를 재사용하기 전에도 이 검사를 수행한다. 유효한 선택만 runtime record로 등록하고 미제출은 UID별 `NOT_SUBMITTED`로 남긴다. 예를 들어 25=1+24라면 `items=1`, `registered=1`, `pending=24`, 파일 `completeExam=false`, 상태 `SUPPLEMENT_PENDING`이다. `get/hasTerm/find`에 미제출 24개는 들어가지 않는다. 이 수납은 시험지 전체 완료, 새 수학 풀이 검수, 의미 메타 FINAL_QA, 난도 등록을 뜻하지 않으며 해당 상태를 바꾸지 않는다.
 
 ## 12. 지문 규약
 

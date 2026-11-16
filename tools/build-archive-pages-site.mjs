@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { buildStudentSvgRefresh } from './lib/build-student-svg-refresh.mjs';
+import { loadSourceQualityHolds } from '../archive/tools/source-quality-holds.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 // The compact mixed verification rows are decoded with the same function the browser and Worker loader use.
@@ -150,13 +151,30 @@ function addCanonicalInputs(selection, root, config, buildOnlyOut) {
     fail(`unsupported canonicalInputs.ship: ${config.ship}`);
   const fetched = config.ship === 'loader-fetch-set' ? loaderFetchedCanonicalInputs(root, manifest.files) : null;
   const seen = new Set();
+  let qualityInputs;
+  const verifiedQualityInputs = () => {
+    if (!qualityInputs) {
+      // The typed loader verifies the exact source, assets, dictionary and review bytes.
+      // Membership authorizes a digest-only dependency, never a directory or a new fetch.
+      const identity = readJson(root, 'archive/data/question_identity_map.json', 'source quality hold identity');
+      const hold = loadSourceQualityHolds({ root, identity });
+      const listed = new Set(manifest.files.map(row => row?.path));
+      for (const dependency of hold.manifestPaths)
+        if (!listed.has(dependency)) fail(`canonical input manifest omits a source quality hold dependency: ${dependency}`);
+      qualityInputs = new Set(hold.manifestPaths);
+    }
+    return qualityInputs;
+  };
   for (const entry of manifest.files) {
     if (!entry || typeof entry.path !== 'string' || !SHA256_RE.test(String(entry.sha256 || '')))
       fail('canonical input manifest contains an invalid file entry');
     const raw = entry.path.replace(/\\/g, '/');
     let relative;
+    let qualityDependency = false;
     if (raw.startsWith('../')) {
-      if (raw !== '../docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json')
+      if (raw.startsWith('../docs/operations/') || /^\.\.\/docs\/architecture\/4slot\/term-dictionary-v[0-9.]+\.json$/.test(raw))
+        qualityDependency = verifiedQualityInputs().has(raw);
+      if (!qualityDependency && raw !== '../docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json')
         fail(`canonical input manifest references an unapproved parent path: ${raw}`);
       relative = normalizeRelative(path.posix.normalize(`archive/${raw}`), 'canonical input path');
     } else {
@@ -166,7 +184,9 @@ function addCanonicalInputs(selection, root, config, buildOnlyOut) {
       const safePrefix = prefix.endsWith('/') ? prefix.slice(0, -1) : prefix;
       return relative === safePrefix || relative.startsWith(`${safePrefix}/`);
     });
-    if (!allowed) fail(`canonical input manifest references an unapproved runtime path: ${relative}`);
+    if (!allowed && !qualityDependency && (raw.startsWith('exams/') || raw.startsWith('assets/')))
+      qualityDependency = verifiedQualityInputs().has(raw);
+    if (!allowed && !qualityDependency) fail(`canonical input manifest references an unapproved runtime path: ${relative}`);
     if (seen.has(relative)) fail(`canonical input manifest repeats a file: ${relative}`);
     seen.add(relative);
     const absolute = resolveInside(root, relative, 'canonical input path');
@@ -174,6 +194,12 @@ function addCanonicalInputs(selection, root, config, buildOnlyOut) {
     const actualSha = normalizedTextSha256(absolute);
     if (actualSha !== entry.sha256.toLowerCase())
       fail(`canonical input digest mismatch: ${relative}`);
+    if (qualityDependency) {
+      if (fetched?.has(raw)) fail(`source quality hold evidence cannot be a loader-fetched input: ${relative}`);
+      const reason = raw.startsWith('../docs/operations/') ? 'source-quality-hold-evidence' : 'source-quality-hold-dependency';
+      buildOnlyOut.push({ path: relative, bytes: fs.statSync(absolute).size, reason });
+      continue;
+    }
     if (fetched && !fetched.has(raw)) {
       buildOnlyOut.push({ path: relative, bytes: fs.statSync(absolute).size });
       continue;
@@ -446,6 +472,9 @@ function collectSelection(root, manifest, buildOnlyOut = []) {
   addReviewOverrides(selection, root, closure.reviewOverrides);
   addReviewedExamMeta(selection, root, closure.reviewedExamMeta, buildOnlyOut);
   for (const relative of closure.extraFiles || []) addFile(selection, root, relative, 'explicit runtime data dependency');
+  for (const item of buildOnlyOut)
+    if (item.reason === 'source-quality-hold-evidence' && selection.has(item.path))
+      fail(`source quality hold evidence must remain build-only: ${item.path}`);
   return [...selection.entries()]
     .map(([relative, value]) => ({ path: relative, ...value }))
     .sort((a, b) => a.path.localeCompare(b.path));

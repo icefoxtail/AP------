@@ -44,7 +44,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "직각삼각형의 두 변의 비로 sin A와 tan B를 각각 표현한 뒤 공통 변을 약분하는 삼각비 정의 문항이다.",
-    "decisiveStep": "직각삼각형의 두 변의 비로 sin A와 tan B를 각각 표현한 뒤 공통 변을 약분하는 삼각비 정의 문항이다."
+    "decisiveStep": "직각삼각형의 두 변의 비로 sin A와 tan B를 각각 표현한 뒤 공통 변을 약분하는 삼각비 정의 문항이다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -90,7 +91,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "피타고라스 정리로 빠진 변 AC를 먼저 구한 뒤 같은 변을 분자로 갖는 두 삼각비를 더한다.",
-    "decisiveStep": "피타고라스 정리로 빠진 변 AC를 먼저 구한 뒤 같은 변을 분자로 갖는 두 삼각비를 더한다."
+    "decisiveStep": "피타고라스 정리로 빠진 변 AC를 먼저 구한 뒤 같은 변을 분자로 갖는 두 삼각비를 더한다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -271,7 +273,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "32도와 58도가 여각임을 사용해 사인·코사인 항을 소거하고 사분원 도식에서 탄젠트 근삿값을 읽는다.",
-    "decisiveStep": "32도와 58도가 여각임을 사용해 사인·코사인 항을 소거하고 사분원 도식에서 탄젠트 근삿값을 읽는다."
+    "decisiveStep": "32도와 58도가 여각임을 사용해 사인·코사인 항을 소거하고 사분원 도식에서 탄젠트 근삿값을 읽는다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -317,7 +321,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "수평거리와 올려본 각의 탄젠트로 눈높이 위의 높이를 구한 뒤 실제 눈높이를 더한다.",
-    "decisiveStep": "수평거리와 올려본 각의 탄젠트로 눈높이 위의 높이를 구한 뒤 실제 눈높이를 더한다."
+    "decisiveStep": "수평거리와 올려본 각의 탄젠트로 눈높이 위의 높이를 구한 뒤 실제 눈높이를 더한다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -363,7 +368,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "A에서 BC에 수선을 내려 두 성분을 삼각비로 구하고 남은 밑변 조각과 높이에 피타고라스 정리를 적용한다.",
-    "decisiveStep": "A에서 BC에 수선을 내려 두 성분을 삼각비로 구하고 남은 밑변 조각과 높이에 피타고라스 정리를 적용한다."
+    "decisiveStep": "A에서 BC에 수선을 내려 두 성분을 삼각비로 구하고 남은 밑변 조각과 높이에 피타고라스 정리를 적용한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -455,7 +462,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "특수각으로 직각삼각형의 두 변을 구한 뒤 빗변에 내린 높이의 닮음 관계로 AD·BD를 얻어 넓이를 구한다.",
-    "decisiveStep": "특수각으로 직각삼각형의 두 변을 구한 뒤 빗변에 내린 높이의 닮음 관계로 AD·BD를 얻어 넓이를 구한다."
+    "decisiveStep": "특수각으로 직각삼각형의 두 변을 구한 뒤 빗변에 내린 높이의 닮음 관계로 AD·BD를 얻어 넓이를 구한다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -546,7 +554,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "직사각형 안의 직각삼각형에서 높이 정리로 AD를 복원하고 BC/AC를 코사인 값으로 읽는다.",
-    "decisiveStep": "직사각형 안의 직각삼각형에서 높이 정리로 AD를 복원하고 BC/AC를 코사인 값으로 읽는다."
+    "decisiveStep": "직사각형 안의 직각삼각형에서 높이 정리로 AD를 복원하고 BC/AC를 코사인 값으로 읽는다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -592,7 +601,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "접은 선의 대칭성으로 각을 이등분하고 평행한 종이 가장자리의 각을 연결해 밑변을 구한 뒤 넓이를 계산한다.",
-    "decisiveStep": "접은 선의 대칭성으로 각을 이등분하고 평행한 종이 가장자리의 각을 연결해 밑변을 구한 뒤 넓이를 계산한다."
+    "decisiveStep": "접은 선의 대칭성으로 각을 이등분하고 평행한 종이 가장자리의 각을 연결해 밑변을 구한 뒤 넓이를 계산한다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 14,
@@ -684,7 +694,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "지름에서 반지름과 중심에서 현까지의 거리를 구하고 피타고라스로 반현을 계산하여 두 배 한다.",
-    "decisiveStep": "지름에서 반지름과 중심에서 현까지의 거리를 구하고 피타고라스로 반현을 계산하여 두 배 한다."
+    "decisiveStep": "지름에서 반지름과 중심에서 현까지의 거리를 구하고 피타고라스로 반현을 계산하여 두 배 한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 16,
@@ -730,7 +742,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "중심에서 두 현까지 거리가 같아 대응 중심각이 같음을 얻고 주어진 수선 사이 각을 중심각으로 바꾼 후 원주각으로 반감한다.",
-    "decisiveStep": "중심에서 두 현까지 거리가 같아 대응 중심각이 같음을 얻고 주어진 수선 사이 각을 중심각으로 바꾼 후 원주각으로 반감한다."
+    "decisiveStep": "중심에서 두 현까지 거리가 같아 대응 중심각이 같음을 얻고 주어진 수선 사이 각을 중심각으로 바꾼 후 원주각으로 반감한다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 17,
@@ -822,7 +835,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "외접사각형의 각 꼭짓점에서 접선 길이를 짝지어 맞은편 두 변의 합이 같다는 관계를 세운다.",
-    "decisiveStep": "외접사각형의 각 꼭짓점에서 접선 길이를 짝지어 맞은편 두 변의 합이 같다는 관계를 세운다."
+    "decisiveStep": "외접사각형의 각 꼭짓점에서 접선 길이를 짝지어 맞은편 두 변의 합이 같다는 관계를 세운다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 19,
@@ -914,7 +929,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "작은 원의 반지름을 큰 원의 현까지의 중심거리로 해석하여 반현을 구하고 수직인 두 현의 교점 위치만큼 더한다.",
-    "decisiveStep": "작은 원의 반지름을 큰 원의 현까지의 중심거리로 해석하여 반현을 구하고 수직인 두 현의 교점 위치만큼 더한다."
+    "decisiveStep": "작은 원의 반지름을 큰 원의 현까지의 중심거리로 해석하여 반현을 구하고 수직인 두 현의 교점 위치만큼 더한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 21,
@@ -954,7 +971,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "정육면체에서 면·공간 대각선으로 직각삼각형 EGC의 세 변을 복원한 뒤 sin과 tan을 정의로 읽는다.",
-    "decisiveStep": "정육면체에서 면·공간 대각선으로 직각삼각형 EGC의 세 변을 복원한 뒤 sin과 tan을 정의로 읽는다."
+    "decisiveStep": "정육면체에서 면·공간 대각선으로 직각삼각형 EGC의 세 변을 복원한 뒤 sin과 tan을 정의로 읽는다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -994,7 +1012,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "두 관측점의 탄젠트 식에 동일한 높이를 사용하고 거리 차 20을 결합해 하나의 방정식으로 높이를 결정한다.",
-    "decisiveStep": "두 관측점의 탄젠트 식에 동일한 높이를 사용하고 거리 차 20을 결합해 하나의 방정식으로 높이를 결정한다."
+    "decisiveStep": "두 관측점의 탄젠트 식에 동일한 높이를 사용하고 거리 차 20을 결합해 하나의 방정식으로 높이를 결정한다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,
@@ -1034,7 +1053,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "현의 수직이등분을 이용해 반현을 정하고 중심에서 현까지의 거리를 r−3으로 나타내 피타고라스 방정식을 세운다.",
-    "decisiveStep": "현의 수직이등분을 이용해 반현을 정하고 중심에서 현까지의 거리를 r−3으로 나타내 피타고라스 방정식을 세운다."
+    "decisiveStep": "현의 수직이등분을 이용해 반현을 정하고 중심에서 현까지의 거리를 r−3으로 나타내 피타고라스 방정식을 세운다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 24,
@@ -1074,6 +1095,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "피타고라스로 CH를 구하고 세 점에서의 같은 접선 조각을 가로 w의 식으로 연결해 DH의 합 조건으로 w와 GH를 정한다.",
-    "decisiveStep": "피타고라스로 CH를 구하고 세 점에서의 같은 접선 조각을 가로 w의 식으로 연결해 DH의 합 조건으로 w와 GH를 정한다."
+    "decisiveStep": "피타고라스로 CH를 구하고 세 점에서의 같은 접선 조각을 가로 w의 식으로 연결해 DH의 합 조건으로 w와 GH를 정한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   }
 ];

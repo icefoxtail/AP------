@@ -204,7 +204,7 @@ function auditDependencyFixture(t, { difficultyBehavior = 'ok', auditBehavior = 
   return {...f,put,audit,difficulty,auditPath,difficultyPath,source};
 }
 
-function basicDependencyFixture(t,{behavior='ok',stale=false}={}){
+function basicDependencyFixture(t,{behavior='ok',stale=false,newParent=false}={}){
   const f=fixture(t,{'00-difficulty':'ok','10-unrelated':'ok','99-basic-preserve':behavior});
   const put=(rel,value)=>{fs.mkdirSync(path.dirname(path.join(f.dir,rel)),{recursive:true});fs.writeFileSync(path.join(f.dir,rel),typeof value==='string'?value:JSON.stringify(value)+'\n');};
   const source='archive/exams/original/basic.js',body='window.questions=[{id:1}];\n';put(source,body);
@@ -212,7 +212,7 @@ function basicDependencyFixture(t,{behavior='ok',stale=false}={}){
   const fingerprints={sourceFingerprint:'a'.repeat(64),contentFingerprint:'b'.repeat(64)},uid='fixture';
   const basicPath='.archive-meta-register/inbox/99-basic-preserve.json',difficultyPath='.archive-meta-register/inbox/00-difficulty.json';
   put(basicPath,{schemaVersion:'archive-basic-scope-rebind-request-v1',behavior,sourceArchiveFile:'original/basic.js',expectedSourceBlobSha1:blob,expectedQuestionCount:1,
-    approval:{type:'BASIC_SCOPE_REBIND',sourceReview:{schemaVersion:'archive-basic-scope-current-source-preservation-v1'}},
+    approval:{type:'BASIC_SCOPE_REBIND',sourceReview:{schemaVersion:newParent?'archive-reviewed-native-basic-parent-v1':'archive-basic-scope-current-source-preservation-v1'}},
     items:[{questionUid:uid,sourceOrdinal:1,after:fingerprints}]});
   put(difficultyPath,{schemaVersion:'archive-difficulty5-register-request-v1',behavior:'ok',
     gemini:{schemaVersion:'v1',sourceArchiveFile:'original/basic.js',latestBlobSha:blob,items:[{questionUid:uid,ordinal:1}]},
@@ -224,6 +224,12 @@ function basicDependencyFixture(t,{behavior='ok',stale=false}={}){
 test('main uses exact basic-before-D5 dependency despite reversed filenames',t=>{
   const f=basicDependencyFixture(t),r=f.run();assert.equal(r.status,0,r.stderr);
   assert.deepEqual(r.applied,['.archive-meta-register/inbox/10-unrelated.json',f.basicPath,f.difficultyPath]);assert.deepEqual(r.rejected,[]);
+});
+test('main orders a new BASIC parent before exact D5 and propagates its refusal without changing unrelated requests',t=>{
+  const f=basicDependencyFixture(t,{newParent:true}),r=f.run();assert.equal(r.status,0,r.stderr);
+  assert.deepEqual(r.applied,['.archive-meta-register/inbox/10-unrelated.json',f.basicPath,f.difficultyPath]);assert.deepEqual(r.rejected,[]);
+  const bad=basicDependencyFixture(t,{newParent:true,behavior:'fail'}),refused=bad.run();assert.equal(refused.status,0,refused.stderr);
+  assert.deepEqual(refused.applied,['.archive-meta-register/inbox/10-unrelated.json']);assert.deepEqual(refused.rejected,[bad.basicPath,bad.difficultyPath]);
 });
 test('refused basic preservation prevents its paired D5 and keeps unrelated registration',t=>{
   const f=basicDependencyFixture(t,{behavior:'fail'}),r=f.run();assert.equal(r.status,0,r.stderr);
@@ -345,22 +351,25 @@ function passFixture(t, behaviors, { buildFailOnce = false } = {}) {
   git(dir, 'init', '-q', '--initial-branch=main');
   for (const [k, v] of [['user.name', 'test'], ['user.email', 'test@example.invalid'], ['core.autocrlf', 'false']]) git(dir, 'config', k, v);
   const put = (rel, text) => { fs.mkdirSync(path.dirname(path.join(dir, rel)), { recursive: true }); fs.writeFileSync(path.join(dir, rel), text); };
-  // The real preview imports typed preservation contracts. Copy their actual
-  // local module closure before installing the intentional heavy-step stubs.
-  const copiedModules = new Set();
+  // Copy the real preview module with its relative static imports.
+  // Heavy execution steps are still replaced by the explicit stubs below.
+  const copied = new Set();
   const copyModule = rel => {
-    if (copiedModules.has(rel)) return;
-    assert.ok(!path.posix.isAbsolute(rel) && !rel.startsWith('../'), 'fixture module stays in the repository');
-    copiedModules.add(rel);
-    const source = read(rel);
-    put(rel, source);
-    const localImports = /(?:^|[;\n])\s*(?:import|export)\s+(?:[^;'\"]*?\sfrom\s*)?['\"](\.{1,2}\/[^'\"]+)['\"]/g;
-    for (const match of source.matchAll(localImports))
-      copyModule(path.posix.normalize(path.posix.join(path.posix.dirname(rel), match[1])));
+    rel = path.posix.normalize(rel);
+    assert.ok(!path.posix.isAbsolute(rel) && rel !== '..' && !rel.startsWith('../'), 'fixture module stays inside the repository');
+    if (copied.has(rel)) return;
+    copied.add(rel);
+    const text = read(rel); put(rel, text);
+    if (!/\.[cm]?js$/.test(rel)) return;
+    const staticImports = /\b(?:import|export)\s+(?:[^'";()]*?\s+from\s*)?['"](\.{1,2}\/[^'"]+)['"]/g;
+    const staticRequires = /\brequire\s*\(\s*['"](\.{1,2}\/[^'"]+)['"]\s*\)/g;
+    for (const pattern of [staticImports, staticRequires]) for (const match of text.matchAll(pattern))
+      copyModule(path.posix.join(path.posix.dirname(rel), match[1]));
   };
-  for (const rel of ['tools/ci/reviewed-meta-register-pass.sh', 'tools/ci/register-reviewed-meta-requests.mjs', 'tools/ci/archive-pr-native-preview.mjs', 'tools/ci/collect-reviewed-consumer-refusals.mjs', 'tools/ci/archive-meta-register-commit.paths', 'archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs'])
-    if (rel === 'tools/ci/archive-pr-native-preview.mjs') copyModule(rel);
-    else put(rel, read(rel));
+  for (const rel of ['tools/ci/reviewed-meta-register-pass.sh', 'tools/ci/register-reviewed-meta-requests.mjs', 'tools/ci/archive-pr-native-preview.mjs', 'tools/ci/collect-reviewed-consumer-refusals.mjs', 'tools/ci/archive-meta-register-commit.paths', 'archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs',
+    'archive/tools/meta-foundation/native-authority-correction.mjs', 'archive/tools/meta-foundation/reviewed-runtime-summary.mjs'])
+    put(rel, read(rel));
+  copyModule('tools/ci/archive-pr-native-preview.mjs');
   // The real registration paths plus `derived/`, where the stub registrar writes its output.
   put('tools/ci/archive-meta-register-commit.paths', read('tools/ci/archive-meta-register-commit.paths') + 'derived/\n');
   put('derived/.keep', '');
@@ -512,6 +521,26 @@ test('pass: provisional META_PIPELINE approval keeps the request for student acc
   assert.equal(receipt.releaseStatus,'APPROVED');
   assert.equal(receipt.metadataVerificationStatus,'NOT_VERIFIED');
   assert.equal(r.builds,0);
+});
+
+for (const behavior of ['fail', 'verify-fail']) test(`pass: refused source-only audit preservation is never provisional: ${behavior}`, t => {
+  const request = { behavior, approval: { type: 'META_PIPELINE_AUDIT', metadataReviewed: true,
+    approvedBy: 'existing FULL audit subset', sourceRebind: { schemaVersion: 'archive-native-audit-source-preservation-v1',
+      requestPath: '.archive-meta-register/inbox/2-preserve.json', priorCommit: 'a'.repeat(40),
+      priorReceiptRef: { path: 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/prior-full.json', sha256: 'b'.repeat(64) } } },
+    sourceArchiveFile: 'original/a.js', expectedQuestionCount: 2, scope: 'PARTIAL_UIDS', registryChanges: [],
+    items: [{ questionUid: 'kept', sourceOrdinal: 1, before: {}, after: {}, reason: 'unchanged source-only subset' }] };
+  const f = passFixture(t, { '1-good': 'ok', '2-preserve': request });
+  fs.mkdirSync(path.join(f.dir, 'archive/exams/original'), { recursive: true });
+  fs.writeFileSync(path.join(f.dir, 'archive/engine.html'), '<html>engine</html>');
+  fs.writeFileSync(path.join(f.dir, 'archive/exams/original/a.js'),
+    'window.questionBank=[{id:1,content:"Question one",solution:"Existing solution one"},{id:2,content:"Question two",solution:"Existing solution two"}];');
+  const r = f.run(); assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.deepEqual(r.copies, ['1-good.json']);
+  assert.equal(f.exists('.archive-meta-register/pending-supplement'), false);
+  assert.equal(f.exists('derived/2-preserve.out'), false);
+  assert.equal(f.readJson('.archive-meta-register/rejected/2-preserve.rejection.json').stage,
+    behavior === 'fail' ? 'registrar' : 'projection-verify');
 });
 
 test('pass: every request refused -> green, nothing built, rejections recorded', t => {

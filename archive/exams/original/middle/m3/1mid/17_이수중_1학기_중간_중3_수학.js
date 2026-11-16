@@ -395,15 +395,17 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "layoutTag": "fullwidth",
+    "imageSize": "large",
+    "imageAlt": "A, B, C의 아래쪽 변을 한 수평선에 맞춰 큰 것부터 작은 것 순서로 붙였다. 안쪽 두 세로 점선은 옆 정사각형과 겹치는 변이다.",
+    "image": "assets/images/17_이수중_1학기_중간_중3_수학/q22-problem-visual-v2.svg",
     "questionNumber": 22,
     "number": 22,
     "questionType": "서술형",
     "question": "[서술형 2] 다음 그림에서 $\\mathrm{A, B, C}$는 모두 정사각형이고, $\\mathrm{A}$와 $\\mathrm{B}$의 넓이가 각각 $\\mathrm{C}$의 넓이의 $3$배, $2$배이다. 이 세 정사각형을 붙여서 새로운 도형을 만들었을 때, 이 도형의 둘레의 길이가 $8\\sqrt{3}+4\\sqrt{2}+4\\text{cm}$이다. 이 도형의 넓이를 구하여라. [7점]",
     "content": "[서술형 2] 다음 그림에서 $\\mathrm{A, B, C}$는 모두 정사각형이고, $\\mathrm{A}$와 $\\mathrm{B}$의 넓이가 각각 $\\mathrm{C}$의 넓이의 $3$배, $2$배이다. 이 세 정사각형을 붙여서 새로운 도형을 만들었을 때, 이 도형의 둘레의 길이가 $8\\sqrt{3}+4\\sqrt{2}+4\\text{cm}$이다. 이 도형의 넓이를 구하여라. [7점]",
     "choices": [],
-    "images": [
-      "assets/images/17_이수중_1학기_중간_중3_수학/q22.png"
-    ],
+    "images": ["assets/images/17_이수중_1학기_중간_중3_수학/q22-problem-visual-v2.svg"],
     "answer": "",
     "solution": "",
     "score": 7.0

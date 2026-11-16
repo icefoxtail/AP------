@@ -12,7 +12,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "이차함수의 뜻",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -58,7 +58,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "인수분해를 이용한 풀이",
+    "subUnit": "이차방정식",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -104,7 +104,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식과 해",
+    "subUnit": "이차방정식",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -150,7 +150,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "이차함수의 뜻",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -196,7 +196,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "y=ax²의 그래프",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -226,8 +226,8 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
@@ -242,7 +242,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "그래프와 식",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -269,13 +269,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_FUNCTION_SYMMETRY"
-    ],
+    "crossConceptKeys": ["CC_REFLECTION"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
@@ -290,7 +288,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "y=ax²의 그래프",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -336,7 +334,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "근의 공식",
+    "subUnit": "이차방정식",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -382,7 +380,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "근의 공식",
+    "subUnit": "이차방정식",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -411,7 +409,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -428,7 +426,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
-    "subUnit": "도형",
+    "subUnit": "이차방정식의 활용",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -460,16 +458,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_SQUARE",
-      "CC_PYTHAGOREAN"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
-    "integrationPattern": "SEQUENTIAL",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
@@ -483,8 +476,8 @@ window.questionBank = [
     "standardUnitKey": "M3-03",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
-    "subUnit": "수와 식",
+    "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+    "subUnit": "이차방정식",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -513,7 +506,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -530,7 +523,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
-    "subUnit": "도형",
+    "subUnit": "이차방정식의 활용",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -562,15 +555,13 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_SIMILARITY"
-    ],
+    "crossConceptKeys": ["CC_SIMILARITY_RATIO"],
     "conditionKeys": [
       "COND_POSITIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
@@ -585,7 +576,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "그래프와 계수",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -617,9 +608,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_SLOPE"
-    ],
+    "crossConceptKeys": ["CC_LINEAR_FUNCTIONS"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
@@ -638,7 +627,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "그래프와 계수",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -665,11 +654,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_VERTEX"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -686,7 +673,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "꼭짓점형",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -732,7 +719,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "꼭짓점형",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -761,7 +748,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -770,7 +757,7 @@ window.questionBank = [
   {
     "id": 17,
     "score": 4,
-    "level": "상",
+    "level": "중",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",
@@ -778,7 +765,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "그래프와 계수",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -805,20 +792,18 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_VERTEX"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
     "score": 4,
-    "level": "상",
+    "level": "중",
     "category": "이차함수와 그래프",
     "originalCategory": "이차함수와 그래프",
     "standardCourse": "중3 수학",
@@ -826,7 +811,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "그래프와 계수",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -858,12 +843,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_VERTEX"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
@@ -879,7 +862,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "그래프와 식",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -911,15 +894,13 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_DISTANCE_TWO_POINTS"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "INTERDEPENDENT",
-    "difficultyBucket": 4,
-    "difficultyConfidence": "high",
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL"
   },
@@ -934,7 +915,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "근의 공식",
+    "subUnit": "이차방정식",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -963,7 +944,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -980,7 +961,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "꼭짓점형",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -1012,15 +993,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "crossConceptKeys": ["CC_POLYGON_AREA"],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "difficultyConfidence": "high",
+    "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
@@ -1035,7 +1012,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "제곱근·완전제곱식을 이용한 풀이",
+    "subUnit": "이차방정식",
     "questionType": "서술형",
     "layoutTag": "essay",
     "tags": [
@@ -1075,7 +1052,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
-    "subUnit": "도형",
+    "subUnit": "이차방정식의 활용",
     "questionType": "서술형",
     "layoutTag": "essay",
     "tags": [
@@ -1096,14 +1073,12 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_AREA"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
@@ -1123,7 +1098,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "꼭짓점형",
+    "subUnit": "이차함수의 그래프",
     "questionType": "서술형",
     "layoutTag": "essay",
     "tags": [
@@ -1149,9 +1124,9 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": ["CC_TRANSLATION"],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",

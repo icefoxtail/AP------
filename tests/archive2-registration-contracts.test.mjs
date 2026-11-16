@@ -92,23 +92,21 @@ test("normal registration sync refreshes parent links and then rebuilds the boun
   const sync = source.slice(start);
   const runtimeRename = sync.indexOf("sync-runtime-source-path-renames.mjs");
   const parentLinks = sync.indexOf("build-basic-scope-parent-links.mjs");
-  const projectionWrites = [...sync.matchAll(/build-archive2-ready-catalog\.mjs/g)]
-    .map((match) => match.index)
-    .filter((index) => !sync.slice(index, index + 80).includes("--check"));
-  const parentCheck = sync.indexOf('build-basic-scope-parent-links.mjs", "--check"');
+  const projections = [...sync.matchAll(/build-archive2-ready-catalog\.mjs/g)]
+    .map((match) => match.index);
   const catalogCheck = sync.indexOf('build-archive2-catalog.mjs", "--check"');
-  const finalProjection = projectionWrites.at(-1);
+  const [intermediateProjection, finalProjection] = projections;
 
   assert.ok(runtimeRename >= 0 && runtimeRename < parentLinks,
     "runtime input renames must finish before parent links are regenerated");
-  assert.ok(projectionWrites.some((index) => runtimeRename < index && index < parentLinks),
-    "the intermediate catalog and runtime readiness must settle after renames and before parent-link generation");
+  assert.equal(projections.length, 2,
+    "registration uses one bounded intermediate and one bounded final catalog/readiness closure");
+  assert.ok(runtimeRename < intermediateProjection && intermediateProjection < parentLinks,
+    "intermediate catalog/readiness must settle renamed runtime inputs before parent links bind their authority");
   assert.ok(finalProjection > parentLinks,
     "the final catalog/readiness fixed point must be rebuilt after parent links change");
-  assert.ok(parentCheck > finalProjection,
-    "parent links must pass their unchanged stale check after the final readiness projection");
-  assert.ok(catalogCheck > parentCheck,
-    "the generated final catalog must pass its stale check after parent-link stability is verified");
+  assert.ok(catalogCheck > finalProjection,
+    "the generated final catalog must then pass the stale check");
   const readinessWrite = sync.indexOf('refresh-runtime-source-readiness.mjs", "--write"');
   const readinessCheck = sync.indexOf('refresh-runtime-source-readiness.mjs", "--check"');
   assert.equal(readinessWrite, -1,

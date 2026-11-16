@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "M3S2_INDEPENDENT_3_SAMPLE_v1",
+  "examId": "E038",
+  "author": "review_a",
+  "reviewer": "review_b",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_매산중_2학기_중간_중3_수학.js",
+  "sourceBlob": "c359c7a18444b4732668917feb2a0cd0d30038d4",
+  "sourceGitBlobSha": "c359c7a18444b4732668917feb2a0cd0d30038d4",
+  "sourcePacketSha256": "ae58bc8870d8da27c637a41769392c28ed9f6253338e7a96ada7da98bdf28a62",
+  "target4slotSha256": "21b179a49773b9b7ddded069d58806f4d839a26635985ab309e661f10d08bab7",
+  "targetReviewSha256": "bc308a07a41978d98efb329ad6eb2525fd61a47ee57d602986446ec811651c0a",
+  "sampledSourcePatchSha256": "e883097aedc83e217017645089864f820c4a43da334fa056204a229b52c6e218",
+  "sampleOrdinals": [
+    9,
+    22,
+    23
+  ],
+  "sampleRule": "단위사분원과 비특수각·선택분기의 서로 다른 ACTIVE 부모·입체 삼각비 선택문항을 실제 원문과 그림으로 교차 확인",
+  "status": "PASS_FINAL_METADATA_BOUND",
+  "decisiveErrorCount": 0,
+  "fabricatedQuoteCount": 0,
+  "items": [
+    {
+      "ordinal": 9,
+      "questionUid": "qid_v1_57e037fbe122e1f13dbd5abe8e6b52cda499f0a547407be039f94d0f9c06fc08",
+      "status": "PASS",
+      "independentMeaningReview": "현재 PNG에서 반지름1과 세로 직각변 약0.67을 확인했다. 하단이 잘려 인접변0.74 표시는 보이지 않지만 기존 해설의 피타고라스 관계로 해당 변을 복원할 수 있다. given 사분원/반지름/각/길이, goal 코사인, method 직각삼각형/피타고라스/코사인이 실제 입력과 요구에 맞는다. 42°를 특수각으로 분류하지 않는다.",
+      "quotesChecked": 8,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentInlineImage"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 22,
+      "questionUid": "qid_v1_f309fc18fd6cf18c004c2af01398ca91fa305f55980696e7af93ad5197eeca11",
+      "status": "PASS",
+      "independentMeaningReview": "①은 y절편−3으로 c를 정하고 두 점으로 a,b를 연립해 함수식을 구한다. ②는 축−3과 근−9의 대칭으로 근3을 얻고 y절편9에서 계수와 꼭짓점(−3,12)을 복원해 두 삼각형넓이의 합으로 사각형넓이를 구한다. goal 함수식과 사각형/넓이를 구별했고 방법도 연립·대칭·좌표·넓이를 모두 담는다. 두 분기의 기존 ACTIVE 부모/TPL이 서로 달라 source 단일필드를 null로 남긴 것은 표현공백이며 신규 정의 부재가 아니다.",
+      "quotesChecked": 12,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution"
+      ],
+      "imageRead": false,
+      "newMathematicalVerification": false
+    },
+    {
+      "ordinal": 23,
+      "questionUid": "qid_v1_219e4d3eb588b985bdca39486d7b47f3d242a96b71e8e90e8a72a6d1d631e34c",
+      "status": "PASS",
+      "independentMeaningReview": "①은 30·45·60도의 삼각비 표를 채우는 직접 특수각 문제이다. ②의 현재 SVG를 직접 렌더해 A의 수선높이, 정사각형 밑면, 마주보는 변의 중점 M/N 및 단면AOM을 확인했다. 옆모서리 상등으로 수선의 발이 중심임을 정당화한 뒤 높이5√2와 OM5로 tanx를 구한다. given 입체/정사각형/정삼각형/중점, goal 삼각비/탄젠트, method 높이·피타고라스·단면·탄젠트와 명시 중점조건이 실제 두 분기에 결속된다.",
+      "quotesChecked": 14,
+      "quoteErrors": [],
+      "decisiveGoalMethodError": false,
+      "requiredConditionOmission": false,
+      "sourceRead": [
+        "stem",
+        "choices",
+        "answer",
+        "existingSolution",
+        "currentInlineImage"
+      ],
+      "imageRead": true,
+      "newMathematicalVerification": false
+    }
+  ],
+  "imageVersionEvidence": {
+    "path": "/workspace/scratch/6538df266481/worker-outputs/b/independent/E038-image-version.json",
+    "sha256": "c384f002da818d60bcc97233b79a31db280f2706dc279f40787321347d162357",
+    "verifiedAssets": 5
+  },
+  "authorCorrectionsVerified": {
+    "Q9": "given 길이 약0.67 추가",
+    "Q22": "goal 사각형 추가",
+    "sourceAndClassificationAndBucketsUnchanged": true
+  },
+  "newMathematicalVerification": false,
+  "previousBoundArtifactHashes": {
+    "review.json": "76221c65b57f37a2bf07832d4a6b270c23955f83bbd61a0a3b3f705b07ab1bcc",
+    "source-patch.json": "d5de1be70855c7b2a61ac90d5762b44c25f6aa4d81d915a86d94743f50991f58"
+  },
+  "targetedIntegrationDelta": {
+    "ordinal": 20,
+    "field": "integrationPattern",
+    "fromNonCanonical": "CONDITION_COMPOSITE",
+    "accepted": "INTERDEPENDENT",
+    "sourceAndExistingSolutionActuallyRead": true,
+    "basis": "두 그래프가 서로의 꼭짓점을 지나는 두 식은 같은 p,q와 a를 함께 제한하고, 수평선분 길이와 p<−2 조건이 이 공통 미지량 관계를 결정한다. 같은 변수들을 함께 구속하는 결합으로 INTERDEPENDENT를 수용한다.",
+    "sourcePatchSingleFieldDeltaProvedByReverseHash": "d5de1be70855c7b2a61ac90d5762b44c25f6aa4d81d915a86d94743f50991f58",
+    "otherSampleAndDifficultyValuesUnchanged": true,
+    "newMathematicalVerification": false
+  }
+}
