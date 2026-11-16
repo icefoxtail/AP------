@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import core from "../archive2-core.js";
 import { materializePackageShards } from "./materialize-archive-package-shards.mjs";
 import problemBankMeta from "../problem-bank-meta.js";
+import { verifiedAuditCcSourcePrecedence, auditCcSourceFieldIsVerified } from "./meta-foundation/audited-cross-concept-append.mjs";
 import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
 import {
   buildMixedSourceShard,
@@ -371,6 +372,10 @@ for (const exam of exams) {
   if (!Array.isArray(bank)) throw new Error("source bank unavailable: " + file);
   if (bank.length !== Number(exam.qCount))
     throw new Error("catalog/source cardinality mismatch: " + file);
+  const auditCcIdentityRows = bank.map((_, index) => identityBySource.get(file + "#" + (index + 1))).filter(Boolean);
+  const auditCcPrecedence = verifiedAuditCcSourcePrecedence({ root, source: file, bytes: sourceBytes, bank,
+    metadataRows: auditCcIdentityRows.map(row => metaByUid.get(row.questionUid)).filter(Boolean),
+    identityRows: auditCcIdentityRows });
   const examRecords = [];
   for (const [index, question] of bank.entries()) {
     const ordinal = index + 1;
@@ -430,7 +435,8 @@ for (const exam of exams) {
         String(sourceValue).trim() !== "" &&
         value !== undefined &&
         JSON.stringify(sourceValue) !== JSON.stringify(value) &&
-        !metaV2Sidecar
+        !metaV2Sidecar &&
+        !auditCcSourceFieldIsVerified(auditCcPrecedence, id?.questionUid, field, sourceValue, value)
       )
         metadataConflicts.push(field);
       if (value !== undefined) semantic[field] = value;

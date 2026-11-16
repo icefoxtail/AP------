@@ -21,6 +21,18 @@
 - 기존 reviewed/AutoMeta concurrency group에서 직렬 실행한다. 병행 PR이 main을 전진시키면 기존 helper로 최신 main에서 재생성·재검증 후 최대 3회 비강제 push한다. 매 candidate의 정확한 parent..head에 기존 Git footprint 검사를 실행한다. 실행 증거와 단계별 실패를 남기며 시간별 catch-up이 마지막 영속 cursor부터 재시도한다.
 - 봇 push에 downstream push 이벤트를 기대하지 않는다. 실제 검증한 `registered_sha`를 `registered_main_sha` 입력으로 Pages에 한 번 전달한다. helper의 나중 `main_sha`와 혼동하지 않는다. 배포 성공은 별도 결과이며 등록 성공으로 추정하지 않는다.
 
+## 명시된 한 배치의 실행 범위
+
+사용자가 현재 등록 배치에서 중3 1학기를 제외한 경우, `.archive-meta-register/auto/run-scopes/*.json`의 `archive-semantic-run-scope-v1`을 명시적으로 사용할 수 있다. descriptor는 scope ID/phase, 정확한 `original/middle/m3/1mid/`·`1final/` 제외 prefix와 해당 배치의 전체 inbox 경로/raw SHA256을 기록한다. 이는 실행 범위이며 메타 승인이나 영구적인 학기 동결이 아니다.
+
+writer와 AutoMeta는 descriptor와 전체 inbox 집합을 **같은 immutable Git HEAD**에서 읽는다. 모든 bound inbox가 원 bytes로 존재하고 tracked inbox JSON 전체 집합과 같을 때만 활성이다. 일부 소비·bytes 불일치·추가 병행 inbox·중복 binding·범위 밖 prefix·여러 활성 descriptor는 어떤 lane도 실행하기 전에 실패한다. bound inbox가 모두 소비된 다음 HEAD에서는 비활성으로 돌아가며, working/index의 정상 inbox 소비로 현재 실행 도중 scope가 바뀌지는 않는다. 빈 binding 배열은 유효한 descriptor가 아니다.
+
+AutoMeta는 전체 후보를 계속 수집하되 제외 대상은 planner 호출 전에 유예한다. 기존 excluded pending 객체는 base commit·원인·입력 서명까지 그대로 보존하고, 새로 발견한 제외 source delta도 cursor 이동 전에 pending에 남긴다. 유예는 승인·등록·시도 상한 소비·pilot 완료가 아니며 `deferredTargets/deferredPending`으로 따로 기록한다. 현재 scope의 continuation은 허용된 미시도 대상만 계산한다. 전체 pending debt를 지우거나 전체 작업 완료로 표시하지 않는다.
+
+scope digest는 writer lane parameters와 report/batch replay/최종 verify에 결속한다. 따라서 자동 main push와 race-safe regeneration에도 같은 HEAD 정책이 적용되며, 배치 소비 후의 기본 정책은 parameter 변화로 다시 검토된다. 등록 planner·전체 build/identity/registry/Consumer/replay 검증·required lane·workflow 설정은 줄이지 않는다.
+
+writer는 어떤 lane도 실행하기 전에 excluded metadata/identity/runtime 및 4slot records·pending·files의 행 집합을 고정하고, 모든 검증 후 원 UID의 범위 이동·삭제 및 새 excluded 행까지 다시 비교한다. 전역 컨테이너의 count/version/digest 갱신은 허용하지만 excluded 행은 같아야 한다. 기존 excluded pending key/value도 최종까지 보존되어야 하며 신규 유예 target 추가는 허용한다. 위반은 원격 persist 전에 실패한다. scope 입력이 잘못되었을 때는 이전 `safeToPersist` 증거를 재사용하지 않는다.
+
 ## PR 기술검사와 게시 경계
 
 - CI가 PR의 임시 projection과 등록 기술검사를 한 번 수행하고 metadata proof artifact를 남긴다. 같은 러너의 `run-tests`가 같은 PR/base/head/checkout·입력·검사기·CI 실행/attempt에 결속된 proof만 재사용해 중복 카탈로그 빌드를 건너뛴다. 변조·실패·판본 차이는 통과시키지 않는다. 필수 direct Chrome 검사(원본 시험지 접근)는 `Problem Bank Shared Meta`가 `archive/**` PR에서 수행한다(2026-11-07: Archive Registration Sync 제거, Chrome 검사는 Problem Bank Shared Meta, 등록 데이터 검사는 CI). META_V2·검색 보완 진단은 실제 임시 projection이 있는 CI에서 기존 advisory 정책으로 실행한다. PR branch commit/push와 main repair PR 생성은 하지 않는다. 고정 event base와 실제 checkout을 검사하며 이후 무관한 main 이동은 그 결과를 무효화하지 않는다. 실제 merge 충돌과 보호 규칙은 병합 시 별도로 확인한다.

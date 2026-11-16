@@ -41,12 +41,16 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
 import { AUDIT_PRESERVATION_SCHEMA } from "./native-audit-preservation.mjs";
+import { isExplicitAuditCcAppendRequest } from "./audited-cross-concept-append.mjs";
 import { APPROVED_RENDERER_PRESERVATION } from "./native-approved-renderer-preservation.mjs";
 import { bindDifficulty5Source } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
 import { NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_HOLD_REASON } from "./native-basic-hold-preservation.mjs";
 import { NATIVE_BASIC_PARENT_SCHEMA } from "./reviewed-native-basic-parent.mjs";
+import { isExplicitSourceSubsetRebind } from "./source-subset-preservation.mjs";
+import { isExplicitIssuedSourceBindingRecoveryRequest } from "./issued-source-binding-recovery.mjs";
+import { isOriginalFinalQaRendererPreservation, isExplicitOriginalRendererRequest } from "./original-finalqa-renderer-preservation.mjs";
 import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, verifyBindingCourseCorrectionWithConsumer } from "./register-binding-course-correction.mjs";
 
 import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
@@ -176,16 +180,21 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
         sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, expectedQuestionCount: doc.expectedQuestionCount, rows };
     }
     if (schema === SCHEMA.V2 && (doc.approval?.sourceRebind !== undefined || doc.approval?.rendererPreservation !== undefined)) {
+      const auditCcAppend = isExplicitAuditCcAppendRequest(doc);
       const audit = doc.approval.type === "META_PIPELINE_AUDIT" &&
         doc.approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
-      const partial = doc.scope === "PARTIAL_UIDS";
+      const partial = doc.scope === "PARTIAL_UIDS", subset = isExplicitSourceSubsetRebind(doc.approval.sourceRebind);
+      const originalRenderer = isOriginalFinalQaRendererPreservation(doc.approval.sourceRebind), recovery = isExplicitIssuedSourceBindingRecoveryRequest(doc);
       const renderer = doc.approval.rendererPreservation !== undefined;
       const rendererValid = renderer && partial && doc.approval.sourceRebind === undefined &&
         doc.approval.rendererPreservation?.schemaVersion === APPROVED_RENDERER_PRESERVATION;
-      if ((!audit && doc.approval.type !== "FINAL_QA") || (renderer ? !rendererValid : !doc.approval.sourceRebind ||
-          typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
-          (!audit && doc.approval.sourceRebind.schemaVersion !== undefined)) ||
-          doc.approval.metadataReviewed !== true || doc.registryChanges?.length ||
+      if ((!audit && !auditCcAppend && doc.approval.type !== "FINAL_QA") ||
+          (renderer ? !rendererValid : !doc.approval.sourceRebind ||
+            typeof doc.approval.sourceRebind !== "object" || Array.isArray(doc.approval.sourceRebind) ||
+            (!audit && !auditCcAppend && doc.approval.sourceRebind.schemaVersion !== undefined && !subset && !originalRenderer && !recovery)) ||
+          (subset || originalRenderer || recovery) && !partial ||
+          originalRenderer && !isExplicitOriginalRendererRequest(doc) ||
+          doc.approval.metadataReviewed !== true || !auditCcAppend && doc.registryChanges?.length ||
           (doc.scope !== undefined && !partial) ||
           !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(doc.requestId || "") ||
           !Number.isSafeInteger(doc.expectedQuestionCount) || doc.expectedQuestionCount < 1 ||

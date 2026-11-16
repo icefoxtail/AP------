@@ -39,6 +39,7 @@ const CHECKER_FILES = new Set([
   'tools/run-tests.js', 'tests/archive-pr-registration-prepare.test.mjs',
   'tests/archive-pr-registration-proof.test.mjs',
   'tests/archive-pr-native-preview.test.mjs',
+  'tests/archive-semantic-run-scope.test.mjs',
 ]);
 const REQUIRED_FILES = [...REGISTRATION_CHECKS.map(check => check.file), ALLOWLIST,
   'archive/build_db.py', 'archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs',
@@ -86,7 +87,7 @@ function isInput(file) {
   // These native producers traverse Archive inventories and canonical authority.
   // Keep their uncertain Archive/shared dependencies conservative; unrelated main
   // commits are not themselves an input and no moving branch ref is consulted.
-  return ['archive/', '.archive-meta-register/inbox/', 'shared/', 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/',
+  return ['archive/', '.archive-meta-register/inbox/', '.archive-meta-register/auto/run-scopes/', 'shared/', 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION/',
     'docs/rules/01_CANONICAL/taxonomy/'].some(prefix => file.startsWith(prefix));
 }
 

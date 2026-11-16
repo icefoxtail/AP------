@@ -9,6 +9,10 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import vm from 'node:vm';
 import { spawnSync } from 'node:child_process';
+import { isExplicitSourceSubsetRebind, isFullSourceSubsetRebind, sourceSubsetEvidencePath, fullSourceSubsetEvidencePath } from '../../archive/tools/meta-foundation/source-subset-preservation.mjs';
+import { isExplicitIssuedSourceBindingRecoveryRequest } from '../../archive/tools/meta-foundation/issued-source-binding-recovery.mjs';
+import { isExplicitAuditCcAppendRequest } from '../../archive/tools/meta-foundation/audited-cross-concept-append.mjs';
+import { isOriginalFinalQaRendererPreservation,isExplicitOriginalRendererRequest } from '../../archive/tools/meta-foundation/original-finalqa-renderer-preservation.mjs';
 
 export const NATIVE_PREVIEW_SCHEMA = 'archive-pr-native-preview/v1';
 export const NATIVE_REQUEST_SCHEMA = 'archive-reviewed-exam-meta-register-request-v2';
@@ -231,6 +235,62 @@ export function nativeRegistryDependencies(requests) {
   return dependencies;
 }
 
+const DEFINITION_DEPENDENCY_SCHEMA = 'archive-native-active-definition-dependency-v1';
+const DEFINITION_KINDS = [
+  { collection: 'concepts', field: 'conceptKey', itemField: 'crossConceptKeys',
+    path: /^archive\/data\/meta-foundation\/canonical\/concepts\/[a-z0-9_-]+\.json$/ },
+  { collection: 'conditions', field: 'conditionKey', itemField: 'conditionKeys',
+    path: /^archive\/data\/meta-foundation\/canonical\/condition_registry\.json$/ },
+];
+const explicitDefinitionKey = value => typeof value === 'string' && value.length > 0 && value.trim() === value;
+
+// An exact reviewed add-only definition can supply a later request in the same
+// transaction. This establishes order only: each registrar still authenticates
+// the definition and its approval, then the consumer reads the actual written
+// canonical row through the unchanged REUSE_ACTIVE contract.
+export function nativeDefinitionDependencyDescriptor(request) {
+  if (request.schemaVersion !== NATIVE_REQUEST_SCHEMA || request.registrationMode !== undefined) return undefined;
+  const provides = (Array.isArray(request.registryChanges) ? request.registryChanges : []).flatMap(change => {
+    const kind = DEFINITION_KINDS.find(row => row.collection === change.collection);
+    const key = kind && change.after?.[kind.field];
+    return kind && kind.path.test(change.path) && change.before === null && change.after?.status === 'ACTIVE'
+      && explicitDefinitionKey(key) && change.match && Object.keys(change.match).length === 1
+      && change.match[kind.field] === key ? [{ collection: kind.collection, path: change.path, key }] : [];
+  });
+  const requires = (Array.isArray(request.items) ? request.items : []).flatMap(item => DEFINITION_KINDS.flatMap(kind =>
+    (Array.isArray(item.after?.[kind.itemField]) ? item.after[kind.itemField] : []).filter(explicitDefinitionKey)
+      .map(key => ({ collection: kind.collection, key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal }))));
+  return provides.length || requires.length ? { schemaVersion: DEFINITION_DEPENDENCY_SCHEMA, provides, requires } : undefined;
+}
+
+export function nativeDefinitionDependencies(requests) {
+  const providers = new Map(), dependencies = new Map();
+  const keyOf = row => {
+    if (!DEFINITION_KINDS.some(kind => kind.collection === row?.collection) || !explicitDefinitionKey(row.key))
+      fail('DEFINITION_DEPENDENCY_KEY');
+    return JSON.stringify([row.collection, row.key]);
+  };
+  for (const request of requests) {
+    const descriptor = request.definitionDependency;
+    if (!descriptor) continue;
+    if (descriptor.schemaVersion !== DEFINITION_DEPENDENCY_SCHEMA || !Array.isArray(descriptor.provides)
+      || !Array.isArray(descriptor.requires)) fail('DEFINITION_DEPENDENCY_DESCRIPTOR');
+    for (const row of descriptor.provides) {
+      const key = keyOf(row), kind = DEFINITION_KINDS.find(kind => kind.collection === row.collection);
+      if (!kind.path.test(row.path)) fail('DEFINITION_DEPENDENCY_PATH');
+      if (providers.has(key)) fail('DEFINITION_DEPENDENCY_AMBIGUOUS');
+      providers.set(key, request.path);
+    }
+  }
+  for (const request of requests) for (const row of request.definitionDependency?.requires || []) {
+    const provider = providers.get(keyOf(row));
+    if (!provider || provider === request.path) continue;
+    if (!dependencies.has(request.path)) dependencies.set(request.path, new Set());
+    dependencies.get(request.path).add(provider);
+  }
+  return dependencies;
+}
+
 export function orderNativeRequests(requests) {
   const byPath = new Map(requests.map(request => [request.path, request]));
   if (byPath.size !== requests.length) fail('DUPLICATE_REQUEST_PATH');
@@ -295,15 +355,18 @@ export function orderNativeRequests(requests) {
     }
   }
   const registryDependencies = nativeRegistryDependencies(requests);
-  for (const [consumer, providers] of registryDependencies) {
-    if (!dependencies.has(consumer)) dependencies.set(consumer, new Set());
-    for (const provider of providers) dependencies.get(consumer).add(provider);
+  const definitionDependencies = nativeDefinitionDependencies(requests);
+  for (const graph of [registryDependencies, definitionDependencies]) {
+    for (const [consumer, providers] of graph) {
+      if (!dependencies.has(consumer)) dependencies.set(consumer, new Set());
+      for (const provider of providers) dependencies.get(consumer).add(provider);
+    }
   }
   const remaining = [...requests], ordered = [], completed = new Set();
   while (remaining.length) {
     const index = remaining.findIndex(request => !dependencies.has(request.path)
       || [...dependencies.get(request.path)].every(dependency => completed.has(dependency)));
-    if (index < 0) fail(registryDependencies.size ? 'REGISTRY_DEPENDENCY_CYCLE' : 'AUDIT_DEPENDENCY_CYCLE');
+    if (index < 0) fail(registryDependencies.size || definitionDependencies.size ? 'REGISTRY_DEPENDENCY_CYCLE' : 'AUDIT_DEPENDENCY_CYCLE');
     const [request] = remaining.splice(index, 1);
     ordered.push(request); completed.add(request.path);
   }
@@ -311,6 +374,20 @@ export function orderNativeRequests(requests) {
 }
 
 const emptyObject = value => value && typeof value === 'object' && !Array.isArray(value) && !Object.keys(value).length;
+function explicitSubsetReferences(request) {
+  const rebind = request.approval?.sourceRebind, ref = rebind?.subsetEvidenceRef;
+  const sameRef = (a, b) => a && b && eq(Object.keys(a).sort(), ['path', 'sha256'])
+    && a.path === b.path && a.sha256 === b.sha256;
+  return isExplicitSourceSubsetRebind(rebind)
+    && eq(Object.keys(rebind).sort(), ['priorReceiptRef', 'schemaVersion', 'subsetEvidenceRef'])
+    && /^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(request.requestId || '')
+    && ref && eq(Object.keys(ref).sort(), ['path', 'sha256'])
+    && ref.path === (isFullSourceSubsetRebind(rebind) ? fullSourceSubsetEvidencePath(request.requestId) : sourceSubsetEvidencePath(request.requestId)) && /^[a-f0-9]{64}$/.test(ref.sha256 || '')
+    && Array.isArray(request.approval.evidenceRefs) && request.approval.evidenceRefs.some(item => sameRef(item, ref))
+    && request.approval.evidenceRefs.some(item => sameRef(item, rebind.priorReceiptRef))
+    && Array.isArray(request.items) && request.items.every(item => Array.isArray(item.evidenceRefs) && item.evidenceRefs.some(entry => sameRef(entry, ref)));
+}
+
 const objectKeys = (value, expected) => value && typeof value === 'object' && !Array.isArray(value)
   && eq(Object.keys(value).sort(), [...expected].sort());
 const FINGERPRINT_FIELDS = ['sourceFingerprint', 'contentFingerprint'];
@@ -461,7 +538,7 @@ function partialFinalQaPreservation(request) {
       Array.isArray(request.registryChanges) && request.registryChanges.length === 0)
     && approval?.type === 'FINAL_QA' && approval.metadataReviewed === true
     && typeof approval.approvedBy === 'string' && Boolean(approval.approvedBy.trim())
-    && rebind && !Array.isArray(rebind) && eq(Object.keys(rebind), ['priorReceiptRef'])
+    && rebind && !Array.isArray(rebind) && (eq(Object.keys(rebind), ['priorReceiptRef']) || explicitSubsetReferences(request) || isExplicitOriginalRendererRequest(request) || isExplicitIssuedSourceBindingRecoveryRequest(request))
     && typeof rebind.priorReceiptRef?.path === 'string' && /^[a-f0-9]{64}$/.test(rebind.priorReceiptRef?.sha256 || '')
     && Array.isArray(request.items) && request.items.length > 0
     && request.items.every(item => emptyObject(item.before) && emptyObject(item.after)
@@ -538,7 +615,7 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     // an ordinary inherited request into an eligible preservation request.
     const raw = gitBytes(root, `${headSha}:${file}`);
     let request; try { request = JSON.parse(raw); } catch { continue; }
-    const preservation = partialFinalQaPreservation(request);
+    const preservation = partialFinalQaPreservation(request) || isExplicitAuditCcAppendRequest(request);
     const reassessment = preservation ? null : inheritedFingerprintReassessment({ root, headSha, request, cache: fixedInputs });
     if (!preservation && !reassessment) continue;
     if (!raw.equals(gitBytes(root, `${baseSha}:${file}`))) fail(`INHERITED_REQUEST_CHANGED:${file}`);
@@ -570,7 +647,7 @@ export function selectPendingNativeRequests({ root, headSha }) {
 // Include that receipt's explicit SHA-bound approval inputs in the same fixed
 // manifest, so the independent shadow receives the documents too. This stages
 // inputs only; the official registrar still authenticates every approval.
-function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef } = {}) {
+function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, historicalAuditReceipt } = {}) {
   const refs = new Map(), active = new Set();
   const visit = item => {
     if (!/^[a-f0-9]{64}$/.test(item?.sha256 || '')) fail('EVIDENCE_SHA');
@@ -592,6 +669,21 @@ function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef } = {})
     try { receipt = JSON.parse(fs.readFileSync(safe(root, ref.path), 'utf8')); }
     catch { fail(`EVIDENCE_JSON:${ref.path}`); }
     if (receipt?.schemaVersion !== 'archive-reviewed-exam-meta-registration-v2') return;
+    // An explicitly typed CC append authenticates this complete prior audit
+    // from priorCommit in the official registrar. Its old inbox inputs have
+    // already been consumed and must not be recreated in the current inbox.
+    // Only the exact prior receipt may use that immutable replay boundary;
+    // ordinary native receipts keep the recursive live-input staging below.
+    if (historicalAuditReceipt?.path === ref.path && historicalAuditReceipt.sha256 === ref.sha256) {
+      if (!/^[a-f0-9]{40}$/.test(historicalAuditReceipt.commit || '') ||
+          receipt.approval?.type !== 'META_PIPELINE_AUDIT')
+        fail('HISTORICAL_AUDIT_RECEIPT_NOT_FIXED');
+      let historical;
+      try { historical = gitBytes(root, `${historicalAuditReceipt.commit}:${ref.path}`); }
+      catch { fail('HISTORICAL_AUDIT_RECEIPT_NOT_FIXED'); }
+      if (sha(historical) !== ref.sha256) fail('HISTORICAL_AUDIT_RECEIPT_NOT_FIXED');
+      return;
+    }
     const nestedRefs = receipt.approval?.evidenceRefs;
     // An authority withdrawal binds its unsupported original receipt as the
     // object being corrected, not as proof of a reusable native approval.
@@ -633,11 +725,14 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       continue;
     }
     const sourceRebind = auditPreservationDependency(request, file);
+    const auditCcAppend = isExplicitAuditCcAppendRequest(request);
     const registryDependency = nativeRegistryDependencyDescriptor(request);
+    const definitionDependency = nativeDefinitionDependencyDescriptor(request);
     const preservation = request.approval?.sourceRebind !== undefined;
     if (preservation && (correction || request.registrationMode !== undefined ||
         !request.approval.sourceRebind || typeof request.approval.sourceRebind !== 'object' || Array.isArray(request.approval.sourceRebind) ||
-        !(sourceRebind || request.approval.type === 'FINAL_QA' && request.approval.sourceRebind.schemaVersion === undefined))) fail('PRESERVATION_SCOPE');
+        !(sourceRebind || auditCcAppend || request.approval.type === 'FINAL_QA' && (request.approval.sourceRebind.schemaVersion === undefined ||
+          (isExplicitSourceSubsetRebind(request.approval.sourceRebind) || isOriginalFinalQaRendererPreservation(request.approval.sourceRebind) || isExplicitIssuedSourceBindingRecoveryRequest(request)) && partialFinalQaPreservation(request))))) fail('PRESERVATION_SCOPE');
     const partial = !correction && request.scope === 'PARTIAL_UIDS';
     if (!correction && request.scope !== undefined && !partial) fail('REQUEST_SCOPE');
     if (request.registrationMode !== undefined && (correction || !partial ||
@@ -657,7 +752,9 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
     const evidence = fixedNativeEvidence(root, headSha, [request.approval?.evidenceRefs, ...(request.items || []).map(i => i.evidenceRefs),
       ...(request.registryChanges || []).map(i => i.evidenceRefs),
       ...(correction ? [[request.difficultyEvidence]] : [])],
-      { withdrawnReceiptRef: authorityCorrection ? request.authorityCorrection?.originalReceiptRef : undefined });
+      { withdrawnReceiptRef: authorityCorrection ? request.authorityCorrection?.originalReceiptRef : undefined,
+        historicalAuditReceipt: auditCcAppend ? { ...request.approval.sourceRebind.priorReceiptRef,
+          commit: request.approval.sourceRebind.priorCommit } : undefined });
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
     const source = fileRef(root, sourcePath), blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
     if (blobSha1 !== request.expectedSourceBlobSha1 || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
@@ -677,6 +774,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(request.registrationMode ? { registrationMode: request.registrationMode } : {}),
       ...(sourceRebind ? { sourceRebind } : {}),
       ...(registryDependency ? { registryDependency } : {}),
+      ...(definitionDependency ? { definitionDependency } : {}),
       ...(rendererPreservation ? { rendererPreservation } : {}),
       ...(authorityCorrection ? { kind: 'native-authority-withdrawal' } : basicPreservation ? { basicPreservation, kind: basicPreservation.newBasicParent ? 'basic-parent-registration' : 'basic-approval-preservation' }
         : correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }

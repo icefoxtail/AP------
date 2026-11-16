@@ -49,7 +49,10 @@ jobs:
     runs-on: ubuntu-latest
     # Source PRs generate and verify their temporary projection, including one
     # bounded builder recovery, before running the unchanged full test scope.
-    timeout-minutes: 45
+    # Immutable issued-approval recovery takes about 90 seconds per native call.
+    # Allow the full projection, independent shadow, Consumer and test scope to
+    # finish; no registration proof or required check is skipped.
+    timeout-minutes: 120
     permissions:
       contents: read
     steps:
@@ -246,3 +249,12 @@ jobs:
         env:
           ARCHIVE_PR_REGISTRATION_PROOF: ${{ steps.registration_proof.outputs.proof_file }}
         run: node tools/run-tests.js --ci-scope "$RUNNER_TEMP/archive-ci-scope.json"
+
+      - name: Preserve exact PR registration proof for review
+        if: always() && github.event_name == 'pull_request' && steps.registration_scope.outputs.needed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-pr-registration-proof-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-pr-registration-proof/proof.json
+          if-no-files-found: warn
+          retention-days: 14

@@ -6,12 +6,17 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { loadCanonical } from './compile-meta-foundation.mjs';
+import { createExactJsonByteParser } from './exact-json-byte-parser.mjs';
 import { validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
 import { validateNativeReviewedParent } from './reviewed-native-parent.mjs';
 import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
-import { REVIEWED_SOURCE_BINDING_OPT_INS, reviewedSourceBindingItems, reviewedSourceBindingPath,
+import { REVIEWED_SOURCE_BINDING_OPT_INS, hasReviewedReceiptLineage, reviewedSourceBindingItems, reviewedSourceBindingPath,
   buildReviewedSourceBinding } from './reviewed-source-binding.mjs';
 import { restoreReviewedReplayCanonicalBefore } from './reviewed-replay-registry-context.mjs';
+import { isSourceSubsetRebind, validateSourceSubsetEvidence, preservedSourceEvidence } from './source-subset-preservation.mjs';
+import { isIssuedSourceBindingRecovery, validateIssuedSourceBindingRecovery } from './issued-source-binding-recovery.mjs';
+import { hasImmutableM2CurrentRendererClaim } from './reviewed-m2-current-renderer-continuity.mjs';
+import { hasImmutableM2ProviderCurrentRendererClaim } from './reviewed-m2-provider-current-renderer-continuity.mjs';
 
 const RECEIPTS = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const INDEX = 'archive/data/meta-foundation/canonical/registry_index.json';
@@ -29,7 +34,8 @@ const caches = new Map(), supportedFields = new Set(REVIEWED_META_VALUE_FIELDS);
 const marker = p => typeof p === 'string' && p.startsWith(RECEIPTS) && /\/[A-Za-z0-9][A-Za-z0-9_-]{0,100}\.source-review-binding\.json$/.test(p);
 const markers = row => (Array.isArray(row?.approvalEvidence) ? row.approvalEvidence : []).filter(marker);
 const typedProof = (receipt, uid) => receipt.fingerprintRepairs?.some(repair => repair.questionUid === uid &&
-  REVIEWED_SOURCE_BINDING_OPT_INS.some(({proofKey}) => repair.sourceReview?.[proofKey] !== undefined)) ||
+  (REVIEWED_SOURCE_BINDING_OPT_INS.some(({proofKey}) => repair.sourceReview?.[proofKey] !== undefined) ||
+    hasReviewedReceiptLineage(receipt) && repair.sourceReview !== undefined)) ||
   receipt.nativeParentBindings?.some(row => row.questionUid === uid);
 
 function safePath(root, relative) {
@@ -57,6 +63,8 @@ function unique(rows, key, label) {
 // A durable marker must also stop the ordinary producer fallback if the native
 // receipt itself is missing, changed or no longer passes its earlier checks.
 export function hasNativeReviewedSourceClaim({root, current, runtimeRecord}) {
+  if (hasImmutableM2CurrentRendererClaim({root,current,runtimeRecord})) return true;
+  if (hasImmutableM2ProviderCurrentRendererClaim({root,current,runtimeRecord})) return true;
   if (markers(current).length || markers(runtimeRecord).length) return true;
   const candidates=new Set([current,runtimeRecord].flatMap(row=>Array.isArray(row?.approvalEvidence)?row.approvalEvidence:[]));
   for (const row of [current,runtimeRecord]) {
@@ -94,18 +102,21 @@ export function hasNativeReviewedSourceClaim({root, current, runtimeRecord}) {
   return false;
 }
 
+const parseCurrentTable = createExactJsonByteParser();
 function currentTables(root, registry) {
-  if (registry?.status !== 'ACTIVE' || !same(read(root, INDEX), registry.files?.index)) fail('current ACTIVE registry changed');
-  // Never memoize current bytes. The immutable Git review cache below does not
-  // exempt current assets, witnesses, master data or canonical files from reads.
+  const currentBytes=new Map([[INDEX,bytes(root,INDEX)]]);
+  if (registry?.status !== 'ACTIVE' || !same(parseCurrentTable(currentBytes.get(INDEX)), registry.files?.index)) fail('current ACTIVE registry changed');
+  // Read and authenticate every live file on every call. Only parsing of exact
+  // equal bytes is shared; no witness, asset, registry or approval check is cached.
   for (const entry of [...registry.files.index.canonicalSources, ...registry.files.index.compiledArtifacts]) {
-    const actual = sha(Buffer.from(bytes(root, entry.path).toString('utf8').replaceAll('\r\n', '\n')));
+    const raw=bytes(root,entry.path);currentBytes.set(entry.path,raw);
+    const actual = sha(Buffer.from(raw.toString('utf8').replaceAll('\r\n', '\n')));
     if (actual !== String(entry.sha256).replace(/^sha256:/, '')) fail('current registry digest mismatch');
   }
-  const canonical = loadCanonical(p => read(root, p));
+  const canonical = loadCanonical(p => parseCurrentTable(currentBytes.get(p) ?? bytes(root,p)));
   return { pt:registry.problemTypes, tpl:registry.templates, cc:registry.concepts, cond:registry.conditions,
     packs:unique(canonical.packs, p => p.meta.packId, 'pack'),
-    master:unique(read(root, MASTER).filter(r => ['standardUnitKey','subUnitKey'].includes(r.keyType)), r => r.key, 'master'),
+    master:unique(parseCurrentTable(bytes(root,MASTER)).filter(r => ['standardUnitKey','subUnitKey'].includes(r.keyType)), r => r.key, 'master'),
     bindings:unique(registry.bindingRows.filter(r=>r.status==='ACTIVE'), r => stable([r.curriculum,r.standardCourse,r.standardUnitKey,r.subUnitKey??null,r.problemTypeKey]), 'binding') };
 }
 
@@ -198,7 +209,7 @@ export function validateNativeReviewedSourceReuse(receipt, nativeSource, questio
   if (!hasNativeReviewedSourceClaim({root, current, runtimeRecord}) && !typedProof(receipt, identity.questionUid)) return null;
   if (!caches.has(root)) caches.set(root, new Map());
   const context = {root,current,runtimeRecord,question,identity,ordinal,tables:currentTables(root,registry),cache:caches.get(root)};
-  let cursor = receipt, state = selected(cursor, identity.questionUid, ordinal);
+  let cursor = receipt, state = selected(cursor, identity.questionUid, ordinal), cursorBank = nativeSource.bank;
   if (!same(state.row,current) || !same(state.runtime,runtimeRecord) || !same(state.identity,identity) ||
       !Buffer.isBuffer(nativeSource.bytes) || !Array.isArray(nativeSource.bank) ||
       !same(nativeSource.bank[ordinal-1],question) || blob(nativeSource.bytes) !== nativeSource.blobSha1 ||
@@ -208,6 +219,14 @@ export function validateNativeReviewedSourceReuse(receipt, nativeSource, questio
   while (true) {
     if (seen.has(cursor.requestId) || seen.size >= 64) fail('source-rebind receipt cycle or depth exceeded');
     seen.add(cursor.requestId); evidence(root,cursor.approval.evidenceRefs);
+    if (isIssuedSourceBindingRecovery(cursor.approval?.sourceRebind)) {
+      const raw = cursor === receipt ? nativeSource.bytes : execFileSync('git', ['cat-file', 'blob', cursor.sourceBlobSha1],
+        { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ['ignore','pipe','pipe'] });
+      if (wanted.size || validateIssuedSourceBindingRecovery(cursor, { ...nativeSource, bytes:raw,
+        blobSha1:cursor.sourceBlobSha1, bank:cursorBank, runtimeRecord:state.runtime }, cursorBank[ordinal-1],
+        state.identity, ordinal, state.row) !== true) fail('issued source recovery ancestor cannot replay');
+      return true;
+    }
     if (typedProof(cursor,identity.questionUid) || wanted.has(reviewedSourceBindingPath(cursor.requestId))) {
       if (cursor.approval.sourceRebind !== undefined) fail('source rebind cannot issue a new typed review');
       const verified = validateDirect(cursor,{...context,current:state.row,runtimeRecord:state.runtime,identity:state.identity});
@@ -223,19 +242,21 @@ export function validateNativeReviewedSourceReuse(receipt, nativeSource, questio
     const raw = bytes(root,ref.path);
     if (sha(raw) !== ref.sha256) fail('prior receipt digest changed');
     const prior = JSON.parse(raw), old = selected(prior,identity.questionUid,ordinal);
+    const subset = isSourceSubsetRebind(cursor.approval.sourceRebind);
+    if (subset) validateSourceSubsetEvidence({root, current:cursor, prior, selected:[...state.records.values()]});
     if (ref.path !== RECEIPTS+prior.requestId+'.json' || prior.examUid !== cursor.examUid || prior.sourceArchiveFile !== cursor.sourceArchiveFile ||
-        prior.expectedQuestionCount !== cursor.expectedQuestionCount || prior.partialUidCount !== cursor.partialUidCount ||
-        !same([...state.records.keys()].sort(),[...old.records.keys()].sort())) fail('source-rebind ancestor scope changed');
+        prior.expectedQuestionCount !== cursor.expectedQuestionCount || (!subset && prior.partialUidCount !== cursor.partialUidCount) ||
+        (!subset && !same([...state.records.keys()].sort(),[...old.records.keys()].sort()))) fail('source-rebind ancestor scope changed');
     const bank = priorBank(root,prior);
     for (const [uid, row] of state.records) {
       const oldRow=old.records.get(uid), oldRuntime=old.runtimes.get(uid), runtime=state.runtimes.get(uid);
-      const evidenceAfter=[...new Set([...(oldRow.approvalEvidence||[]),RECEIPTS+cursor.requestId+'.json'])];
+      const evidenceAfter=preservedSourceEvidence(oldRow.approvalEvidence,RECEIPTS+cursor.requestId+'.json',cursor.approval.sourceRebind);
       if (!same(unchangedRecord(row),unchangedRecord(oldRow)) || !same(row.approvalEvidence,evidenceAfter) ||
           !same(unchangedRecord(runtime),unchangedRecord(oldRuntime)) || !same(runtime.approvalEvidence,evidenceAfter) ||
           !same(state.identities.get(uid),old.identities.get(uid)) ||
-          !same(bank[row.sourceOrdinal-1],nativeSource.bank[row.sourceOrdinal-1]))
+          !same(bank[row.sourceOrdinal-1],cursorBank[row.sourceOrdinal-1]))
         fail('source-rebind ancestor changed a selected question, approval or identity');
     }
-    cursor=prior;state=old;
+    cursor=prior;state=old;cursorBank=bank;
   }
 }

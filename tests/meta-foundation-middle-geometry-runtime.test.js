@@ -283,11 +283,40 @@ if (reviewedInput) {
       { stdio: ["ignore", "pipe", "pipe"] });
     const receiptPath = nativeApprovals.get(input.current.questionUid);
     const receipt = readJson(receiptPath);
-    for (const relative of [receiptPath, ...receipt.approval.evidenceRefs.map(ref => ref.path)]) {
+    // A direct source-review receipt also verifies the live canonical tables and
+    // its output-digest-bound request sidecar. A no-checkout Git clone supplies
+    // immutable history, but does not materialize these current local inputs.
+    const fixturePaths = new Set([receiptPath, "archive/exams/" + input.source,
+      "archive/data/meta-foundation/canonical/registry_index.json",
+      "archive/data/master_tables/js_archive_tag_master.json"]);
+    const boundRefs = new Map();
+    const bind = ref => {
+      assert(ref && typeof ref.path === "string" && /^[a-f0-9]{64}$/.test(ref.sha256), "exact fixture evidence ref");
+      assert(path.resolve(fixtureRoot, ref.path).startsWith(fixtureRoot + path.sep), ref.path);
+      assert(!boundRefs.has(ref.path) || boundRefs.get(ref.path) === ref.sha256, "conflicting fixture evidence refs");
+      boundRefs.set(ref.path, ref.sha256);
+      fixturePaths.add(ref.path);
+    };
+    receipt.approval.evidenceRefs.forEach(bind);
+    for (const ref of receipt.outputDigests || []) {
+      if (!ref.path.endsWith(".source-review-binding.json")) continue;
+      bind(ref);
+      const sidecar = readJson(ref.path);
+      assert.strictEqual(sidecar.schemaVersion, "archive-reviewed-source-binding-v1");
+      assert.strictEqual(sidecar.requestId, receipt.requestId);
+      sidecar.requestSnapshot.approval.evidenceRefs.forEach(bind);
+      for (const item of sidecar.requestSnapshot.items) item.evidenceRefs.forEach(bind);
+    }
+    for (const entry of [...input.registry.files.index.canonicalSources, ...input.registry.files.index.compiledArtifacts])
+      fixturePaths.add(entry.path);
+    const { loadCanonical } = await import("../archive/tools/meta-foundation/compile-meta-foundation.mjs");
+    loadCanonical(relative => { fixturePaths.add(relative); return readJson(relative); });
+    for (const relative of fixturePaths) {
       const target = path.resolve(fixtureRoot, relative);
       assert(target.startsWith(fixtureRoot + path.sep), relative);
       fs.mkdirSync(path.dirname(target), { recursive: true });
       fs.copyFileSync(path.join(root, relative), target);
+      if (boundRefs.has(relative)) assert.strictEqual(sha256(fs.readFileSync(target)), boundRefs.get(relative), relative);
     }
     const fixture = { ...input, nativeSource: { ...input.nativeSource, root: fixtureRoot } };
     assertNativeApproval(fixture, "unchanged copied native proof");
