@@ -9,6 +9,9 @@ import { execFileSync } from 'node:child_process';
 import { loadCanonical } from './compile-meta-foundation.mjs';
 import { validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
 import { M2_PROBLEM_RENDERER_SCHEMA } from './reviewed-m2-problem-renderer-continuity.mjs';
+import { M2_PROBLEM21_CONTINUITY_SCHEMA, M2_PROBLEM21_ITEMS } from './reviewed-m2-problem21-continuity.mjs';
+import { M2_FAMILY3_PROBLEM_CONTINUITY_SCHEMA, M2_FAMILY3_PROBLEM_SCOPE, M2_FAMILY3_PROBLEM_ITEMS } from './reviewed-m2-family3-problem-continuity.mjs';
+import { E023_SOLUTION_DISPLAY_SCHEMA, E023_SOLUTION_DISPLAY_FIELDS } from './reviewed-m2-e023-solution-display-continuity.mjs';
 import { validateNativeReviewedParent } from './reviewed-native-parent.mjs';
 import { validateReviewedRetainedScopeParent } from './reviewed-retained-scope-transport.mjs';
 import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
@@ -35,7 +38,8 @@ const caches = new Map(), supportedFields = new Set(REVIEWED_META_VALUE_FIELDS);
 const marker = p => typeof p === 'string' && p.startsWith(RECEIPTS) && /\/[A-Za-z0-9][A-Za-z0-9_-]{0,100}\.source-review-binding\.json$/.test(p);
 const markers = row => (Array.isArray(row?.approvalEvidence) ? row.approvalEvidence : []).filter(marker);
 const typedProof = (receipt, uid) => receipt.fingerprintRepairs?.some(repair => repair.questionUid === uid &&
-  REVIEWED_SOURCE_BINDING_OPT_INS.some(({proofKey}) => repair.sourceReview?.[proofKey] !== undefined)) ||
+  (REVIEWED_SOURCE_BINDING_OPT_INS.some(({proofKey}) => repair.sourceReview?.[proofKey] !== undefined) ||
+    repair.sourceReview?.nativeRpmCourseTransport !== undefined)) ||
   receipt.nativeParentBindings?.some(row => row.questionUid === uid);
 
 function safePath(root, relative) {
@@ -351,12 +355,42 @@ export function nativeReviewedM2ProblemRendererRebind(receipt, nativeSource, pre
   } catch { return false; }
 }
 
+// This is only the actual pending cursor's immutable whole-question context.
+// Its old display is not authority: the current typed Native/UI review is still
+// fully replayed before this one-UID historical input can be recognized.
+const E017_RHS_CURSOR_SOURCE = Object.freeze({
+  commit: 'd511d4f82d3da2224cc43f8ff26f30469b436af3',
+  path: 'archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js',
+  gitBlobSha1: 'a6a8419ba3ea9b6e271b57c34b920088277dc226',
+  sha256: '916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687',
+  bytes: 66448
+});
+const E017_RHS_CURSOR_QUESTION_SHA256 = '20a99cd2a1363d44ad9033982102491aff790ef4fe5b187f07bb04dfaa476a51';
+function matchesE017RhsHistoricalCursor(root, previous) {
+  if (sha(stable(previous)) !== E017_RHS_CURSOR_QUESTION_SHA256) return false;
+  const ref = E017_RHS_CURSOR_SOURCE;
+  const run = args => execFileSync('git', args, {cwd:fs.realpathSync(root), maxBuffer:16*1024*1024,
+    stdio:['ignore','pipe','pipe'], env:{...process.env,GIT_NO_LAZY_FETCH:'1',GIT_OPTIONAL_LOCKS:'0'}});
+  if (run(['ls-tree','-z',ref.commit,'--',ref.path]).toString() !==
+      `100644 blob ${ref.gitBlobSha1}\t${ref.path}\0`) return false;
+  const raw = run(['cat-file','blob',ref.gitBlobSha1]);
+  if (raw.length !== ref.bytes || sha(raw) !== ref.sha256 || blob(raw) !== ref.gitBlobSha1) return false;
+  const context = vm.createContext(Object.create(null), {codeGeneration:{strings:false,wasm:false}});
+  vm.runInContext('globalThis.window = {}; globalThis.console = Object.freeze({log(){},warn(){},error(){}});',
+    context,{timeout:5000});
+  vm.runInContext(raw.toString('utf8'),context,{timeout:5000});
+  const bank = context.window.questionBank || context.window.questions || context.questionBank || context.questions || context.window.examData?.questions;
+  return Array.isArray(bank) && bank.length === 23 &&
+    sha(stable(JSON.parse(JSON.stringify(bank[1])))) === E017_RHS_CURSOR_QUESTION_SHA256;
+}
+
 // The one reviewed solution line is carried only after the entire issued typed
 // request and immutable UI/authority binding have been replayed. A payload hash
 // or an ordinary receipt never grants this old-cursor continuation.
 export function nativeReviewedE017RhsRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
   if (!previous || identity.questionUid !== M2_E017_RHS_UID || ordinal !== 2 ||
-      receipt.sourceArchiveFile !== M2_E017_RHS_SOURCE || receipt.approval?.sourceRebind !== undefined) return false;
+      receipt.sourceArchiveFile !== M2_E017_RHS_SOURCE || receipt.expectedQuestionCount !== 23 ||
+      receipt.approval?.sourceRebind !== undefined) return false;
   const matches = receipt.fingerprintRepairs?.filter(r => r.questionUid === identity.questionUid && r.sourceOrdinal === ordinal);
   const proof = matches?.[0]?.sourceReview?.e017RhsContinuity;
   if (matches?.length !== 1 || proof?.schemaVersion !== M2_E017_RHS_SCHEMA || proof.questionUid !== identity.questionUid ||
@@ -367,6 +401,149 @@ export function nativeReviewedE017RhsRebind(receipt, nativeSource, previous, que
     if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
     const prior = sha(stable(previous));
     return [proof.nativeReviewedQuestionSha256, proof.nativeCommittedQuestionSha256, proof.reviewedCurrentQuestionSha256]
-      .some(value => SHA256.test(value || '') && value === prior);
+      .some(value => SHA256.test(value || '') && value === prior) || matchesE017RhsHistoricalCursor(nativeSource.root, previous);
+  } catch { return false; }
+}
+
+// Historical cursor inputs only. These whole-bank references do not approve
+// any historical display. Current authority comes from replaying the complete
+// issued request, including both display witnesses and the ordinary Native check.
+const M2_PROBLEM21_CURSOR_SOURCES = Object.freeze({
+  "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js": [
+    {
+      "commit": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+      "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+      "gitBlobSha1": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+      "sha256": "ec693aa011e6a82f41c63f640666d061c2751a972abfb730ca91e954565ad9c3",
+      "bytes": 40638
+    },
+    {
+      "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+      "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+      "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+      "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+      "bytes": 61302
+    },
+    {
+      "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+      "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+      "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+      "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+      "bytes": 66448
+    },
+    {
+      "commit": "e841eb07f25c9646df5bbf5b235fc9a1d815f4f7",
+      "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+      "gitBlobSha1": "f417b7e4e993ceb1a70c1b85de1e292a52d2b551",
+      "sha256": "18caddd4282a3121e51eb6c2fe2e047c3a6e8e11074336b10a6098566529a68a",
+      "bytes": 66605
+    }
+  ],
+  "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js": [
+    {
+      "commit": "ed83f05220b64f75cbbd5de360a68dd6ddaadd22",
+      "path": "archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+      "gitBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+      "sha256": "5e97d4fcea1a919e49a50ae655ee7c288b7a23a1656189a57b8aa1a9543f7e0c",
+      "bytes": 39754
+    },
+    {
+      "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+      "path": "archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+      "gitBlobSha1": "7fdc6dfcb7b717cea2852d4bd96d7659316039c7",
+      "sha256": "93ee10ebffd06e4742cfbcf6ddae30a27830b49a4c691710ad7f3e414a370bd1",
+      "bytes": 60473
+    },
+    {
+      "commit": "ecb0b3efd706fb63dc12336560a418f17dac0ccb",
+      "path": "archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+      "gitBlobSha1": "f0cd94780d1f2c277bad52142cfa20cb932e0e96",
+      "sha256": "e3eea28235f0054b79858ad6451af0a82c94ffb9ab7470f481710519a2887cdf",
+      "bytes": 63986
+    },
+    {
+      "commit": "e841eb07f25c9646df5bbf5b235fc9a1d815f4f7",
+      "path": "archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+      "gitBlobSha1": "a0aaefbea3f6c695d515dbdb873c1e1f3304d5c7",
+      "sha256": "8a8cb1f63ca99513962e4191fe308efc552be0c8bf9f8befaf8008157d0c9d82",
+      "bytes": 65146
+    }
+  ]
+});
+
+// An old cursor may predate the reviewed display while a caught-up cursor has
+// the exact current bank. Neither cursor grants approval: replay the entire
+// issued typed registration first, then require a whole-question match against
+// one of this closed cohort's immutable historical banks.
+export function nativeReviewedM2Problem21Rebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (!previous || receipt.approval?.sourceRebind !== undefined) return false;
+  const item = M2_PROBLEM21_ITEMS.find(item => item.callerAction === 'NORMALIZE_EXACT_PROBLEM_FIELDS' &&
+    item.questionUid === identity.questionUid && item.sourceOrdinal === ordinal && item.sourceArchiveFile === receipt.sourceArchiveFile);
+  if (!item || receipt.expectedQuestionCount !== item.expectedQuestionCount) return false;
+  const matches = receipt.fingerprintRepairs?.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+  const review = matches?.[0]?.sourceReview, proof = review?.m2ProblemRenderer21Continuity;
+  const zeroApproval = value => value?.memoryOnlyNormalization === true && value.newMathematicalQa === false &&
+    value.newMetadataApprovals === 0 && value.newDifficultyJudgments === 0 && value.newReview2Claims === 0 &&
+    value.sourceWrites === 0 && value.rendererWrites === 0;
+  if (matches?.length !== 1 || proof?.schemaVersion !== M2_PROBLEM21_CONTINUITY_SCHEMA ||
+      proof.questionUid !== identity.questionUid || proof.sourceOrdinal !== ordinal || proof.sourceArchiveFile !== receipt.sourceArchiveFile ||
+      proof.requiresOrdinaryNativeValidation !== true || !zeroApproval(proof)) return false;
+  if (proof.requiresSeparateSolutionContinuity) {
+    const solution = review.e023SolutionDisplayContinuity;
+    if (solution?.schemaVersion !== E023_SOLUTION_DISPLAY_SCHEMA || solution.questionUid !== identity.questionUid ||
+        solution.sourceOrdinal !== ordinal || solution.sourceArchiveFile !== receipt.sourceArchiveFile ||
+        !same(solution.ownedFields, E023_SOLUTION_DISPLAY_FIELDS) || !zeroApproval(solution)) return false;
+  }
+  try {
+    if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
+    const root = fs.realpathSync(nativeSource.root), priorSha = sha(stable(previous));
+    for (const ref of M2_PROBLEM21_CURSOR_SOURCES[receipt.sourceArchiveFile] || []) {
+      const run = args => execFileSync('git', args, {cwd:root, maxBuffer:16*1024*1024, stdio:['ignore','pipe','pipe'],
+        env:{...process.env,GIT_NO_LAZY_FETCH:'1',GIT_OPTIONAL_LOCKS:'0'}});
+      const entry = run(['ls-tree','-z',ref.commit,'--',ref.path]).toString();
+      if (entry !== `100644 blob ${ref.gitBlobSha1}\t${ref.path}\0`) return false;
+      const raw = run(['cat-file','blob',ref.gitBlobSha1]);
+      if (raw.length !== ref.bytes || sha(raw) !== ref.sha256 || blob(raw) !== ref.gitBlobSha1) return false;
+      // Construct all source-visible objects inside the context. Host-created
+      // window or console functions would expose a host Function constructor.
+      const context = vm.createContext(Object.create(null), {codeGeneration:{strings:false,wasm:false}});
+      vm.runInContext('globalThis.window = {}; globalThis.console = Object.freeze({log(){},warn(){},error(){}});',
+        context,{timeout:5000});
+      vm.runInContext(raw.toString('utf8'),context,{timeout:5000});
+      const bank = context.window.questionBank || context.window.questions || context.questionBank || context.questions || context.window.examData?.questions;
+      if (!Array.isArray(bank) || bank.length !== item.expectedQuestionCount) return false;
+      if (sha(stable(JSON.parse(JSON.stringify(bank[ordinal-1])))) === priorSha) return true;
+    }
+  } catch { return false; }
+  return false;
+}
+
+
+// This separate three-UID profile does not widen the existing fixed-three or
+// problem21 profiles. The complete issued Native/retained/parent request is
+// replayed before accepting any authenticated original or caught-up cursor.
+export function nativeReviewedM2Family3Rebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (!previous || receipt.approval?.sourceRebind !== undefined) return false;
+  const item = M2_FAMILY3_PROBLEM_ITEMS.find(item => item.questionUid === identity.questionUid &&
+    item.sourceOrdinal === ordinal && item.sourceArchiveFile === receipt.sourceArchiveFile);
+  if (!item || receipt.expectedQuestionCount !== item.expectedQuestionCount) return false;
+  const matches = receipt.fingerprintRepairs?.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+  const proof = matches?.[0]?.sourceReview?.m2Family3ProblemContinuity;
+  if (matches?.length !== 1 || proof?.schemaVersion !== M2_FAMILY3_PROBLEM_CONTINUITY_SCHEMA ||
+      proof.scope !== M2_FAMILY3_PROBLEM_SCOPE || proof.questionUid !== identity.questionUid ||
+      proof.sourceOrdinal !== ordinal || proof.sourceArchiveFile !== receipt.sourceArchiveFile ||
+      proof.requiresOrdinaryNativeValidation !== true ||
+      proof.requiresOrdinaryRetainedValidation !== item.key.startsWith('E015') || proof.requiresSeparateSolutionContinuity !== false ||
+      !same(proof.normalizedProblemFields, ['image','imageAlt','imageSize','layoutTag']) ||
+      proof.memoryOnlyNormalization !== true || proof.newMathematicalQa !== false || proof.newMetadataApprovals !== 0 ||
+      proof.newDifficultyJudgments !== 0 || proof.newReview2Claims !== 0 || proof.sourceWrites !== 0 || proof.rendererWrites !== 0) return false;
+  try {
+    if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
+    // validateDirect compared this proof with a fresh full typed replay. Each
+    // digest was recomputed from the exact immutable Git bank in that replay.
+    const previousSha = sha(stable(previous));
+    return [proof.nativeReviewedQuestionSha256, proof.nativeCommittedQuestionSha256,
+      proof.staticBeforeQuestionSha256, proof.staticCurrentQuestionSha256, proof.reviewedCurrentQuestionSha256]
+      .some(value => SHA256.test(value || '') && value === previousSha);
   } catch { return false; }
 }

@@ -2180,3 +2180,118 @@ for (const [name, mutate] of [
   assert.throws(() => f.selected(), /PRESERVED_RPM_HISTORY_/);
 });
 
+
+// Synthetic E032 history tests the preview boundary, not new approval evidence.
+const E032_SOURCE = 'original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js';
+const E032_PRIOR = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E032.json';
+const E032_REQUEST = '.archive-meta-register/inbox/e032-subset-preview-fixture.json';
+const E032_RUNTIME = 'archive/data/meta-foundation/runtime/middle2-v1.json';
+const E032_PAIRS = [
+ ['qid_v1_f288a19bf33c38b84c2c2436478bfba2bafd4b275fa60568af686eeab5732363',2],
+ ['qid_v1_9172cf1ec90c0cc3af91cab63dcfa4b68fa61065882343e82812a4d86d780f85',3],
+ ['qid_v1_bed808c0cecc90e30621de4a5b961290d1ce0b95e943d07155962ed483cc39c8',4],
+ ['qid_v1_df579118439a5d43dc8408f65e435810dd1ef11b29053720e135ca1120ec50f0',5],
+ ['qid_v1_45204c832c0632b1cad11ec4c9e766abfddf38680628e9af0beb70538e68ece7',6],
+ ['qid_v1_9ec4baa4cded9d949b8ca60ced0a095a03b5d438f48f1a57fde1cc7dfeb956d6',7],
+ ['qid_v1_7a44e50d6c7fb8fddcd4b1791abe9bd4987c5e1dc4d6e6aafca725c7c62a7f6a',9]
+];
+function subsetPreviewFixture(t) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'e032-subset-preview-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const write = (p, data) => { fs.mkdirSync(path.dirname(path.join(root, p)), { recursive: true }); fs.writeFileSync(path.join(root, p), data); };
+  const git = (...args) => { const r = spawnSync('git', args, { cwd: root, encoding: 'utf8' }); assert.equal(r.status, 0, r.stderr); return r.stdout.trim(); };
+  const blob = b => createHash('sha1').update(`blob ${Buffer.byteLength(b)}\0`).update(b).digest('hex');
+  const sourceBytes = bank => 'window.questionBank = ' + JSON.stringify(bank) + ';\n';
+  git('init', '-q', '--initial-branch=main'); git('config', 'user.name', 'synthetic-preview');
+  git('config', 'user.email', 'fixture@example.invalid'); git('config', 'commit.gpgsign', 'false');
+  const proofPath = 'docs/operations/e032-preview-fixture-proof.json', proof = json({ kind: 'synthetic-only' });
+  write(proofPath, proof); const proofRef = { path: proofPath, sha256: sha(proof) };
+  const oldBank = Array.from({ length: 24 }, (_, i) => ({ id: i + 1, content: 'Synthetic item ' + (i + 1), answer: 'fixture', solution: 'fixture' }));
+  const oldBytes = sourceBytes(oldBank), priorId = path.posix.basename(E032_PRIOR, '.json');
+  const metadata = E032_PAIRS.map(([questionUid, sourceOrdinal]) => ({ questionUid, sourceArchiveFile: E032_SOURCE, sourceOrdinal,
+    sourceFingerprint: sha(json(oldBank[sourceOrdinal - 1])), contentFingerprint: sha(json(oldBank[sourceOrdinal - 1])),
+    metaFoundationPackId: 'MIDDLE2', metaFoundationPackVersion: '1.0.3', metadataApprovalType: 'FINAL_QA',
+    metadataRevision: 'meta-foundation:MIDDLE2@1.0.3:exam-final_qa-v2:' + priorId, approvalEvidence: [E032_PRIOR],
+    difficultyBucket: 3, difficultyConfidence: 'high', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL',
+    verifiedEligible: false, automaticAssignmentEligible: false }));
+  const identities = metadata.map(r => ({ questionUid: r.questionUid, sourceArchiveFile: E032_SOURCE, sourceOrdinal: r.sourceOrdinal, sourceFingerprint: r.sourceFingerprint }));
+  const runtime = metadata.map(r => ({ ...copy(r), sourceIdentity: E032_SOURCE + '#' + r.sourceOrdinal }));
+  const prior = { schemaVersion: 'archive-reviewed-exam-meta-registration-v2', requestId: priorId, requestSha256: sha('synthetic old request'),
+    metadataRegistrationStatus: 'REGISTERED', examUid: 'synthetic-e032', sourceArchiveFile: E032_SOURCE,
+    sourceBlobSha1: blob(oldBytes), sourceRawSha256: sha(oldBytes), expectedQuestionCount: 24, scope: 'PARTIAL_UIDS',
+    totalQuestions: 7, partialUidCount: 7, approval: { type: 'FINAL_QA', metadataReviewed: true, approvedBy: 'synthetic-prior', evidenceRefs: [proofRef] },
+    appliedRecords: copy(metadata), appliedIdentityRecords: copy(identities), runtimeRecords: copy(runtime), fingerprintRepairs: [], nativeParentBindings: [] };
+  write(E032_PRIOR, json(prior)); write('archive/exams/' + E032_SOURCE, oldBytes);
+  write(META, json({ records: metadata })); write(IDENTITY, json({ records: identities })); write(E032_RUNTIME, json({ status: 'ACTIVE', records: runtime }));
+  git('add', '.'); git('commit', '-qm', 'synthetic original seven'); const priorCommit = git('rev-parse', 'HEAD');
+  const bank = copy(oldBank); for (const [, ordinal] of E032_PAIRS.slice(4)) bank[ordinal - 1].solutionImage = 'assets/synthetic-changed-' + ordinal + '.svg';
+  write('archive/exams/' + E032_SOURCE, sourceBytes(bank)); git('add', '.'); git('commit', '-qm', 'synthetic changed neighbours');
+  const baseSha = git('rev-parse', 'HEAD'), ref = { path: E032_PRIOR, sha256: sha(json(prior)) };
+  const request = { schemaVersion: NATIVE_REQUEST_SCHEMA, requestId: 'e032-subset-preview-fixture', examUid: prior.examUid,
+    sourceArchiveFile: E032_SOURCE, expectedSourceBlobSha1: blob(sourceBytes(bank)), expectedQuestionCount: 24, scope: 'PARTIAL_UIDS', registryChanges: [],
+    approval: { type: 'FINAL_QA', metadataReviewed: true, approvedBy: 'preservation-only', evidenceRefs: [ref],
+      sourceRebind: { schemaVersion: 'archive-native-partial-subset-preservation-v1', priorCommit, currentCommit: baseSha,
+        priorReceiptRef: ref, selectedQuestionUids: E032_PAIRS.slice(0, 4).map(r => r[0]), excludedQuestionUids: E032_PAIRS.slice(4).map(r => r[0]) } },
+    items: E032_PAIRS.slice(0, 4).map(([questionUid, sourceOrdinal]) => ({ questionUid, sourceOrdinal, before: {}, after: {},
+      reason: 'Synthetic unchanged authority preservation', evidenceRefs: [ref] })) };
+  const seal = () => { write(E032_REQUEST, json(request)); git('add', '.'); git('commit', '--allow-empty', '-qm', 'synthetic preview request'); return git('rev-parse', 'HEAD'); };
+  return { root, write, git, blob, sourceBytes, oldBank, bank, metadata, identities, runtime, prior, request, baseSha, seal, proofPath };
+}
+
+test('E032 subset preview selects only four with the original denominator and zero new approvals', t => {
+  const f = subsetPreviewFixture(t), headSha = f.seal();
+  const rows = selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha });
+  assert.equal(rows.length, 1); const r = rows[0];
+  assert.equal(r.kind, 'native-approval-preservation'); assert.equal(r.questionCount, 4); assert.equal(r.sourceQuestionCount, 24);
+  assert.deepEqual(r.selectedItems, E032_PAIRS.slice(0, 4).map(([questionUid, sourceOrdinal]) => ({ questionUid, sourceOrdinal })));
+  assert.equal(r.partialSubsetPreservation.priorApprovalCount, 7);
+  assert.equal(r.partialSubsetPreservation.preservedMetadataApprovals, 4); assert.equal(r.partialSubsetPreservation.newMetadataApprovals, 0);
+  assert.deepEqual(selectPendingNativeRequests({ root: f.root, headSha }), rows);
+  const before = json(rows), oldEvidence = fs.readFileSync(path.join(f.root, E032_PRIOR));
+  for (const [p, records] of [[META, f.metadata], [E032_RUNTIME, f.runtime]]) {
+    const after = copy(records); for (const row of after.slice(0, 4)) { row.metadataRevision += ':issued'; row.approvalEvidence.push(r.receiptPath); }
+    f.write(p, json({ records: after }));
+  }
+  assert.equal(json(selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha })), before,
+    'post-registration re-selection authenticates the same immutable HEAD inputs; issued state is checked by the registrar');
+  assert.deepEqual(fs.readFileSync(path.join(f.root, E032_PRIOR)), oldEvidence);
+});
+
+for (const [name, mutate] of [
+  ['unknown preservation schema', f => { f.request.approval.sourceRebind.schemaVersion += '-unknown'; }],
+  ['non-partial request', f => { delete f.request.scope; }],
+  ['empty selected set', f => { f.request.items = []; }],
+  ['duplicate selected UID', f => { f.request.items[1] = copy(f.request.items[0]); }],
+  ['excluded UID injection', f => { [f.request.items[0].questionUid, f.request.items[0].sourceOrdinal] = E032_PAIRS[4]; }],
+  ['missing excluded partition', f => { f.request.approval.sourceRebind.excludedQuestionUids.pop(); }],
+  ['after patch instead of preservation', f => { f.request.items[0].after.difficultyBucket = 1; }],
+  ['new registry approval', f => { f.request.registryChanges.push({ evidenceRefs: f.request.approval.evidenceRefs }); }],
+  ['foreign approval type', f => { f.request.approval.type = 'REVIEW2'; }],
+  ['forged prior receipt digest', f => { f.request.approval.sourceRebind.priorReceiptRef.sha256 = 'f'.repeat(64); }],
+  ['missing fixed historical commit', f => { f.request.approval.sourceRebind.priorCommit = 'f'.repeat(40); }],
+  ['wrong historical source pin', f => { f.request.approval.sourceRebind.priorCommit = f.baseSha; }],
+  ['wrong current source pin', f => { f.request.approval.sourceRebind.currentCommit = f.request.approval.sourceRebind.priorCommit; }],
+  ['selected current metadata drift', f => { f.metadata[0].difficultyBucket = 1; f.write(META, json({ records: f.metadata })); }],
+  ['selected current runtime evidence drift', f => { f.runtime[0].approvalEvidence.push('unapproved'); f.write(E032_RUNTIME, json({ records: f.runtime })); }],
+  ['selected current identity drift', f => { f.identities[0].sourceFingerprint = 'f'.repeat(64); f.write(IDENTITY, json({ records: f.identities })); }],
+  ['changed selected whole question', f => { f.bank[1].content += ' changed'; f.write('archive/exams/' + E032_SOURCE, f.sourceBytes(f.bank)); f.git('add', '.'); f.git('commit', '-qm', 'synthetic unapproved change'); f.request.approval.sourceRebind.currentCommit = f.git('rev-parse', 'HEAD'); f.request.expectedSourceBlobSha1 = f.blob(f.sourceBytes(f.bank)); }],
+]) test('E032 subset preview rejects ' + name, t => {
+  const f = subsetPreviewFixture(t); mutate(f); const headSha = f.seal();
+  assert.throws(() => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha }));
+});
+
+test('E032 subset preview keeps immutable evidence and source working-copy tamper guards', t => {
+  const f = subsetPreviewFixture(t), headSha = f.seal();
+  f.write(f.proofPath, json({ changed: true }));
+  assert.throws(() => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha }), /EVIDENCE_DRIFT/);
+});
+test('E032 subset preview refuses a registrar result promoting seven or granting new approval', t => {
+  const f = subsetPreviewFixture(t), headSha = f.seal();
+  const requests = selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha });
+  for (const [totalQuestions, preservedMetadataApprovals, newMetadataApprovals] of [[7, 7, 0], [4, 4, 4]]) {
+    const run = () => json({ status: 'PASS', requestId: f.request.requestId, scope: 'PARTIAL_UIDS', totalQuestions,
+      partialUidCount: totalQuestions, expectedQuestionCount: 24, preservedMetadataApprovals, newMetadataApprovals,
+      replay: false, plannedPaths: [META, requests[0].receiptPath] });
+    assert.throws(() => applyNativeRequests({ root: f.root, requests, run, guard: false }), /DRY_RUN_NOT_PASS/);
+  }
+});

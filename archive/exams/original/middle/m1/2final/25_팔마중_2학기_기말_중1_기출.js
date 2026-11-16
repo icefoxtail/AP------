@@ -390,9 +390,7 @@ window.questionBank = [
         "도형"
       ],
       "wide": false,
-      "image": "assets/images/25_팔마중_2학기_기말_중1_기출/q08-problem-geometry-20261116.svg",
-      "imageSize": "tall",
-      "imageAlt": "한 모서리가 x cm인 정육면체를 A, C, F를 지나는 평면으로 잘라 낸 나머지. 점선은 잘리기 전 꼭짓점 B와 연결된 모서리를 나타낸다.",
+      "image": "assets/images/25_팔마중_2학기_기말_중1_기출/q8.png",
       "content": "다음 그림은 한 모서리의 길이 $x\\rm\\,cm$인 정육면체를 세 꼭짓점 $A$, $C$, $F$를 지나는 평면으로 잘라 내고 남은 부분이다. 이 입체도형의 부피가 $180\\rm\\,cm^3$라고 할 때, $x$를 구하면? [4점]",
       "choices": [
         "$4\\rm\\,cm$",

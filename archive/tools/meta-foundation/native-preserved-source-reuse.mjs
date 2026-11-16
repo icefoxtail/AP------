@@ -10,6 +10,7 @@ import {REVIEWED_META_VALUE_FIELDS} from './reviewed-meta-value-fields.mjs';
 import {nativeReviewedRendererRebind} from './native-reviewed-renderer-reuse.mjs';
 import {reviewedRendererBindingPath} from './reviewed-current-renderer-continuity.mjs';
 import {assertReviewedPackVersionLineage} from './reviewed-pack-version-lineage.mjs';
+import {isPartialSubsetPreservation,hasPartialSubsetPreservationFingerprint,validatePartialSubsetPreservation} from './native-partial-subset-preservation.mjs';
 import {loadIssuedChildContinuity} from './native-issued-child-continuity.mjs';
 import {loadIssuedRpmChildContinuity,readIssuedRpmHistoricalEvidence,replayIssuedRpmHistoricalLeaf} from './native-issued-rpm-history.mjs';
 import {loadIssuedSolutionRpmChildContinuity,readIssuedSolutionRpmHistoricalEvidence,replayIssuedSolutionRpmHistoricalLeaf} from './native-issued-solution-rpm-history.mjs';
@@ -45,6 +46,7 @@ function evidence(root,refs) {
 // from turning an issued preservation receipt into an ordinary FINAL_QA receipt.
 export function isPartialNativeSourcePreservation(receipt,root) {
   if(receipt?.approval?.type!=='FINAL_QA'||!(receipt.scope==='PARTIAL_UIDS'||Object.hasOwn(receipt,'partialUidCount')))return false;
+  if(hasPartialSubsetPreservationFingerprint(receipt))return true;
   if(Object.hasOwn(receipt.approval,'sourceRebind')||receipt.newMetadataApprovals===0&&receipt.preservedMetadataApprovals>0||
     Array.isArray(receipt.approval.evidenceRefs)&&receipt.approval.evidenceRefs.some(ref=>nativePath(ref?.path)))return true;
   if(!root||!ID.test(receipt.requestId||'')||!Array.isArray(receipt.appliedRecords)||!receipt.appliedRecords.length||
@@ -353,17 +355,20 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     if(seen.has(cursor.requestId)||seen.size>=64)fail('source-rebind cycle or depth exceeded');
     seen.add(cursor.requestId);evidence(root,cursor.approval.evidenceRefs);
     const spec=cursor.approval.sourceRebind,ref=spec?.priorReceiptRef;
-    if(!spec||!same(Object.keys(spec).sort(),['priorReceiptRef'])||!nativePath(ref?.path)||!SHA256.test(ref.sha256||'')||
+    const subsetRequested=isPartialSubsetPreservation(cursor);
+    if(!spec||!subsetRequested&&!same(Object.keys(spec).sort(),['priorReceiptRef'])||!nativePath(ref?.path)||!SHA256.test(ref.sha256||'')||
       !cursor.approval.evidenceRefs.some(item=>same(item,ref))||cursor.newMetadataApprovals!==0||
       cursor.preservedMetadataApprovals!==cursor.partialUidCount||!absentOrEmpty(cursor.registryChanges)||
       !absentOrEmpty(cursor.fingerprintRepairs)||!absentOrEmpty(cursor.nativeParentBindings))fail('exact source-only preservation required');
     const raw=readBytes(root,ref.path);
     if(sha(raw)!==ref.sha256)fail('prior receipt digest changed');
     const prior=JSON.parse(raw),old=selected(prior,identity.questionUid,ordinal);
+    const subset=subsetRequested?validatePartialSubsetPreservation({root,envelope:cursor,prior,bytes:source.bytes,bank:source.bank,
+      metadata:[...state.records.values()],identities:[...state.identities.values()],runtime:[...state.runtimes.values()],mode:"receipt"}):null;
     if(ref.path!==receiptPath(prior.requestId)||seen.has(prior.requestId)||prior.examUid!==cursor.examUid||
       prior.sourceArchiveFile!==cursor.sourceArchiveFile||prior.expectedQuestionCount!==cursor.expectedQuestionCount||
-      prior.partialUidCount!==cursor.partialUidCount||prior.sourceRawSha256===cursor.sourceRawSha256||
-      !same([...old.records.keys()].sort(),[...state.records.keys()].sort()))fail('preserved ancestor scope or source binding changed');
+      !subset&&prior.partialUidCount!==cursor.partialUidCount||prior.sourceRawSha256===cursor.sourceRawSha256||
+      !subset&&!same([...old.records.keys()].sort(),[...state.records.keys()].sort()))fail('preserved ancestor scope or source binding changed');
     const priorSource=gitSource(root,prior.sourceBlobSha1,prior.sourceRawSha256,prior.expectedQuestionCount);
     for(const [uid,row]of state.records) {
       const before=old.records.get(uid),beforeRuntime=old.runtimes.get(uid),nextRuntime=state.runtimes.get(uid);

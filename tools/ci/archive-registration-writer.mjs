@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { BOUNDED_RENDERER_UI_INPUTS } from '../4slot/bounded-renderer-ui-inputs.mjs';
 import { sourceQualityHoldDependencyPaths } from '../../archive/tools/source-quality-holds.mjs';
 import { canonicalParentRetryRequests, canonicalParentRetryDependencies } from '../../archive/tools/meta-foundation/canonical-parent-retry.mjs';
 // One preparation transaction for the existing registration producers. This script never commits or pushes.
@@ -94,7 +95,7 @@ export function nativeLanes(root) {
     accessibilityBase=context.APSvgAccessibilityIndex?.buildScope?.baseRef;
   }
   if(!/^[a-f0-9]{40}$/.test(accessibilityBase||''))throw Error('ACCESSIBILITY_FIXED_COVERAGE_BASE_REQUIRED');
-  const code=['archive/tools/','archive/build_db.py','tools/ci/archive-registration-writer.mjs','tools/ci/archive-registration-whitespace.mjs',
+  const code=['archive/tools/','archive/build_db.py','tools/ci/archive-registration-writer.mjs','tools/ci/archive-registration-build-db.mjs','tools/ci/archive-registration-whitespace.mjs',
     'tools/ci/archive-pages-registration.paths','tools/ci/archive-meta-register-commit.paths',
     'tools/ci/archive-pages-registration-derive.sh','archive/archive2-core.js','archive/archive2-canonical.js',
     'archive/problem-bank-meta.js','archive/meta-foundation-runtime.js','archive/mixer-selector.js',
@@ -160,7 +161,7 @@ export function nativeLanes(root) {
       parameters:{accessibilityBase},
       commands:[cmd('node','archive/tools/build-svg-accessibility-index.cjs','--base',accessibilityBase),
         cmd('node','archive/tools/build-archive2-extension-keys.mjs')]},
-    {id:'fourSlot',inputs:['archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',
+    {id:'fourSlot',inputs:[...BOUNDED_RENDERER_UI_INPUTS,'archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',
       '.archive-meta-register/4slot-existing-vector-continuity/',
       '.archive-meta-register/4slot-renderer-continuity/','archive/data/question_metadata.json',
       'archive/data/meta-foundation/evidence/reviewed-exam-meta/','.archive-meta-register/evidence/',
@@ -297,7 +298,10 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   const laneState=new Map();
   // A retry gets fresh native reports; an earlier attempt's PASS may never certify the new snapshot.
   const nativeWork=path.join(work,'native');fs.rmSync(nativeWork,{recursive:true,force:true});fs.mkdirSync(nativeWork,{recursive:true});
+  const buildPrepareId=crypto.randomUUID();
   const writerEnv={...env,RUNNER_TEMP:nativeWork,RELEASE_EVIDENCE_DIR:path.join(work,'shared'),
+    ARCHIVE_REGISTRATION_BUILD_PREPARE_ID:buildPrepareId,
+    ARCHIVE_REGISTRATION_BUILD_CACHE_DIR:path.join(work,'build-cache',buildPrepareId),
     GITHUB_STEP_SUMMARY:path.join(work,'native-step-summary.md'),
     NODE_OPTIONS:env.NODE_OPTIONS||'--max-old-space-size=6144'};
   fs.mkdirSync(writerEnv.RELEASE_EVIDENCE_DIR,{recursive:true});

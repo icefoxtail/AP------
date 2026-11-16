@@ -1,0 +1,503 @@
+{
+  "schemaVersion": "m2s2-e032-unchanged4-preservation-local-verification-v1",
+  "status": "LOCAL_SCOPED_GATES_PASS_OPERATIONAL_REGISTRATION_NOT_RUN",
+  "requestId": "m2s2-e032-unchanged4-source-preserve-26fc-20261116",
+  "scope": {
+    "sourceArchiveFile": "original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js",
+    "expectedQuestionCount": 24,
+    "immutableOriginalReceiptCount": 7,
+    "preservedSelectedCount": 4,
+    "excludedChangedCount": 3,
+    "selected": [
+      {
+        "questionUid": "qid_v1_f288a19bf33c38b84c2c2436478bfba2bafd4b275fa60568af686eeab5732363",
+        "sourceOrdinal": 2
+      },
+      {
+        "questionUid": "qid_v1_9172cf1ec90c0cc3af91cab63dcfa4b68fa61065882343e82812a4d86d780f85",
+        "sourceOrdinal": 3
+      },
+      {
+        "questionUid": "qid_v1_bed808c0cecc90e30621de4a5b961290d1ce0b95e943d07155962ed483cc39c8",
+        "sourceOrdinal": 4
+      },
+      {
+        "questionUid": "qid_v1_df579118439a5d43dc8408f65e435810dd1ef11b29053720e135ca1120ec50f0",
+        "sourceOrdinal": 5
+      }
+    ],
+    "excluded": [
+      {
+        "questionUid": "qid_v1_45204c832c0632b1cad11ec4c9e766abfddf38680628e9af0beb70538e68ece7",
+        "sourceOrdinal": 6,
+        "reason": "CURRENT_EDITION_RENDERER_OR_STUDENT_DELTA_NOT_AUTHORIZED_BY_THIS_PRESERVATION",
+        "inOriginal519Pending": true
+      },
+      {
+        "questionUid": "qid_v1_9ec4baa4cded9d949b8ca60ced0a095a03b5d438f48f1a57fde1cc7dfeb956d6",
+        "sourceOrdinal": 7,
+        "reason": "CURRENT_EDITION_RENDERER_OR_STUDENT_DELTA_NOT_AUTHORIZED_BY_THIS_PRESERVATION",
+        "inOriginal519Pending": true
+      },
+      {
+        "questionUid": "qid_v1_7a44e50d6c7fb8fddcd4b1791abe9bd4987c5e1dc4d6e6aafca725c7c62a7f6a",
+        "sourceOrdinal": 9,
+        "reason": "CURRENT_EDITION_RENDERER_OR_STUDENT_DELTA_NOT_AUTHORIZED_BY_THIS_PRESERVATION",
+        "inOriginal519Pending": true
+      }
+    ],
+    "newMetadataApprovals": 0,
+    "newDifficultyApprovals": 0,
+    "newRegistryDefinitions": 0,
+    "sourceOrAssetWrites": 0
+  },
+  "authority": {
+    "originalReceiptRef": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-binding68-20261115-E032.json",
+      "sha256": "14d9fbf5b32052c2ddef7350f39bcc3d101ebc52f4bad92e2a082ca793c74622"
+    },
+    "priorCommit": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+    "currentSourceCommit": "18fa82034ce4189d2a15833cbe3ad44694a04675",
+    "priorSource": {
+      "gitBlobSha1": "aabd0b9da6e62a4ffe6d13f816038856ce748fae",
+      "sha256": "d50e159dac7ffff2aa284b90c3ade2ffe3a9a424269c202614d6c1f908392845",
+      "bytes": 58464
+    },
+    "currentSource": {
+      "gitBlobSha1": "fd0dc32166162175615877330ce429082df3b896",
+      "sha256": "1e9a95b3939bda908b327940082355534abc01ad7be3161e58bcfce53625d268",
+      "bytes": 60630
+    },
+    "sourceContinuityProof": {
+      "path": ".archive-meta-register/evidence/m2s2-e032-unchanged4-source-preserve-26fc-20261116/source-continuity.json",
+      "sha256": "67bb345b750705ff327667247694e7f9d272c340d89483260b599ae0a84bada6",
+      "gitBlobSha1": "f3a39d39f66ad6c770ba9dfadc0c6b804410c4f0",
+      "bytes": 5640
+    },
+    "request": {
+      "path": ".archive-meta-register/inbox/m2s2-e032-unchanged4-source-preserve-26fc-20261116.json",
+      "sha256": "c53c2506b86153578225fc30af699ee3ffec683731ff19f40f19d831610f402d",
+      "gitBlobSha1": "a39cd63ff17b854c7c7ac0b7fde3496cba6ee88b",
+      "bytes": 5499
+    },
+    "originalSevenReceiptUnchanged": true,
+    "historicalOriginalAuthorityValidationIsNotCurrentSevenApproval": true,
+    "perUidChildSupersessionCount": 4,
+    "excludedThreeKeepOriginalMetadataIdentityRuntimeEvidenceAndRevision": true
+  },
+  "implementation": {
+    "contract": "archive-native-partial-subset-preservation-v1",
+    "fixedScope": "E032 source and the explicit four/three UID partition",
+    "productionFiles": [
+      {
+        "path": "archive/tools/meta-foundation/native-partial-subset-preservation.mjs",
+        "sha256": "2f61f683b5cc8ced4772c176a2909dd0d952316a3aa924e3c2ba6bc1cf81421a",
+        "gitBlobSha1": "4f228a6cab5063a22a6aabac8109cd8e966d5907",
+        "bytes": 13243
+      },
+      {
+        "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+        "sha256": "0e67d93bc835e8694eb686487349eceaa709675be2c12511034faf9a630cc323",
+        "gitBlobSha1": "30cb24374f2f1ff89cc9a60129db82628563fd3e",
+        "bytes": 33223
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+        "sha256": "28d5e1aa02cbe5fcf7e842f7b41400271e811300a77b367cbfedb807fcbda1d3",
+        "gitBlobSha1": "08003589eb6c9a9a8e6473e69aa916dff7dfac35",
+        "bytes": 259169
+      },
+      {
+        "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+        "sha256": "6647a7bf65232e0785cb942ce25797c4eec829b72f60011cd97ff3f1bca59b01",
+        "gitBlobSha1": "ca68f03953876ed11db06066b92761e9956124d2",
+        "bytes": 61163
+      }
+    ],
+    "consumerChange": "Typed partial preservation routing only; official registrar verifyProjection remains mandatory before preserved rows are accepted.",
+    "ordinaryEqualCountGuardUnchanged": true,
+    "missingGitPinsFailClosed": true,
+    "tripleMarkerDeletionRetainsOnlyThisChildFourValidationObligation": true,
+    "allSelectedWholeQuestionsAndStudentPayloadsExact": true,
+    "allSelectedQuestionsAssetFreeIncludingSvgCarrier": true,
+    "requestBeforeAndAfterPatchesEmpty": true
+  },
+  "validation": {
+    "codeBaseCommit": "36509bc5edc46eb28f030aca79f4b3a5397cfcd3",
+    "actualGlobalInputCommit": "8377221debc9200dff7e647ae1a772d8d5a2e8be",
+    "freshInputCasCommit": "92dd3614585fefadef3ce0ad6cf68aed5cef97da",
+    "freshInputCas": {
+      "paths": 491,
+      "unchanged": 491,
+      "drift": 0,
+      "sameIdIssuedReceiptPresent": false
+    },
+    "focusedTests": {
+      "path": "tests/archive-native-partial-subset-preservation.test.js",
+      "sha256": "7d591e2ce08a4d47f7b10623d643c779c591a25b5d139a6efd9fec8debef0f1b",
+      "gitBlobSha1": "5eca1e900246414566d68c36ccdac8b8ad83f3b5",
+      "bytes": 16472,
+      "passed": 42,
+      "failed": 0,
+      "skipped": 0
+    },
+    "officialRegistrar": {
+      "dry": "PASS",
+      "localWrite": "PASS",
+      "preservedCount": 4,
+      "newApprovalCount": 0,
+      "changedPaths": [
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-e032-unchanged4-source-preserve-26fc-20261116.json",
+        "archive/data/meta-foundation/runtime/middle2-v1.json",
+        "archive/data/question_metadata.json"
+      ]
+    },
+    "officialNative": {
+      "historicalSelectedAuthorityPassed": 4,
+      "currentChildPassed": 4,
+      "excludedCurrentNull": 3
+    },
+    "officialConsumer": {
+      "status": "PASS",
+      "checked": 4,
+      "passed": 4,
+      "newApprovalCount": 0,
+      "preservedCount": 4
+    },
+    "officialReplay": {
+      "status": "PASS",
+      "replay": true,
+      "plannedPaths": [],
+      "currentCanonicalRows": 4,
+      "usableMetaLane": 0
+    },
+    "actualNegativeCases": [
+      {
+        "name": "UNKNOWN_TYPED_SCHEMA",
+        "status": "EXPECTED_REFUSAL",
+        "passed": 0
+      },
+      {
+        "name": "AFTER_PATCH_PROMOTION",
+        "status": "EXPECTED_REFUSAL",
+        "passed": 0
+      },
+      {
+        "name": "EXCLUDED_UID_SUBSTITUTION",
+        "status": "EXPECTED_REFUSAL",
+        "passed": 0
+      },
+      {
+        "name": "SOURCE_PIN_DRIFT",
+        "status": "EXPECTED_REFUSAL",
+        "passed": 0
+      },
+      {
+        "name": "NONPARTIAL_SCOPE",
+        "status": "EXPECTED_REFUSAL",
+        "passed": 0
+      },
+      {
+        "name": "TYPED_MARKER_REMOVED",
+        "status": "EXPECTED_REFUSAL",
+        "passed": 0
+      },
+      {
+        "name": "ISSUED_RECEIPT_ABSENT",
+        "status": "EXPECTED_REFUSAL",
+        "passed": 0
+      }
+    ],
+    "actualNegativeProtectedFilesUnchanged": 21,
+    "outsideSelectedTwentyWholeRowsUnchanged": true,
+    "changedThreeWholeRowsUnchanged": true,
+    "allTwentyFourD5TuplesUnchanged": true,
+    "identityFileUnchangedByRegistration": true,
+    "originalSevenReceiptUnchanged": true,
+    "selectedVerifiedEligibleCount": 0,
+    "selectedAutomaticAssignmentEligibleCount": 0,
+    "excludedVerifiedOrAutomaticPromotions": 0,
+    "newMathematicalReview": false
+  },
+  "boundedFixture": {
+    "reason": "Reproduce only the missing local gates after the temporary filesystem was lost; no new request identity or operational approval was issued.",
+    "registrar": "Actual-byte-validated source24 metadata/identity/runtime projection with original headers retained.",
+    "globalMetadataIdentityRecordsVerified": 28890,
+    "globalUidAndSourceOrdinalUniquenessVerified": true,
+    "globalSourceInputFilesVerified": 19,
+    "consumer": "Exact E032 source24 plus the existing required source-quality-hold control source24; forty-eight question build, four target Consumer checks.",
+    "controlSourceNewReviewOrApproval": 0,
+    "fullGlobalRegistrarRun": false,
+    "fullGlobalConsumerRun": false,
+    "globalInputValidationDoesNotConstituteGlobalPostWriteValidation": true,
+    "reconstructedCodeHasFreshTests": true,
+    "preLossFortyTestsNotReusedForReconstructedCode": true
+  },
+  "historyAvailability": {
+    "mainWriterWorkflow": ".github/workflows/archive-main-auto-meta.yml",
+    "writerFetchDepth": 0,
+    "writerRef": "main",
+    "ciWorkflow": ".github/workflows/ci.yml",
+    "ciFetchDepth": 0,
+    "fixedNativePreview": "tools/ci/archive-pr-native-preview.mjs",
+    "previewClone": "shared local clone of the fixed checkout",
+    "actualLocalFixedGitDryWriteNativeReplay": "PASS",
+    "exactCandidatePrHistoryExecution": "NOT_RUN"
+  },
+  "localEvidenceDigests": [
+    {
+      "artifactName": "focused-final-v6.log",
+      "sha256": "cb293a4ef985dc85b3ddb8cba6629803206ac97168c7fa3a8b08a29e5d330acd",
+      "gitBlobSha1": "9d6d57d9387bc672868121be524dcf0e5610e80a",
+      "bytes": 2769,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "source24-view-proof.json",
+      "sha256": "f619aa14434cc51d82b674d28b6f7c54ebd6078e63583b06109eb59b9db45840",
+      "gitBlobSha1": "9699273d003645ea70ff51be100a3a39f6df3caa",
+      "bytes": 15502,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "required-control-view-reconstructed-v5.json",
+      "sha256": "b01cc11e7e8ca8cf7bfa75c9513edbf92e12d469dc19c2440b697e8c50863afa",
+      "gitBlobSha1": "3ced6a34f95e3b746e0bc0aaaec44aa8cdb08205",
+      "bytes": 11038,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "reproduced-before-v5.json",
+      "sha256": "82f342775ecc8a1c21e9d8cc2d50eb2e75b0ace1272eb7563bd8f056666630b7",
+      "gitBlobSha1": "886de4c03097287fa20a6a8d1ea8060327ad27c0",
+      "bytes": 22000,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "reproduced-official-dry-v5.json",
+      "sha256": "75bc5fdc7af9ea15fcad55ed9cbbed8cc0e1f93228fcf06c9c12a33d0a34ad89",
+      "gitBlobSha1": "d84262a3adf7a19546a3177aa54991d76b8c1ac1",
+      "bytes": 1434,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "reproduced-official-write-v5.json",
+      "sha256": "d1eca1ae8f0b506fb093cac42bf8a2c808fa86d101f170a8b212802fe88f555a",
+      "gitBlobSha1": "e73b47d3d4e1aedaa19526d99d8f3234d64f10c5",
+      "bytes": 1433,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "reproduced-native-after-v5.json",
+      "sha256": "feb279508ac6ce79894102c928157fd27f454e650c85cabd6cfd6f8d24d268b3",
+      "gitBlobSha1": "22cb0729a016d479bf259c97ea8afb7499ebb6df",
+      "bytes": 21545,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "reproduced-exact-write-delta-v5.json",
+      "sha256": "7d37dcda7f63653cf498f0d032b7db11f2583ea47a5883134a3bbe893737fcb9",
+      "gitBlobSha1": "cbaa9bee82f39146b85ceba7d65ffd897ae4af67",
+      "bytes": 1254,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "consumer-two-source-scope-v5.json",
+      "sha256": "c43c68805c40cd826ca2d0d83c688d4cc26a875716ea54e62fe50bc7840c8b0e",
+      "gitBlobSha1": "60aba9f9b03ac4c9176b9549b325f0af136c09e7",
+      "bytes": 4751,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "consumer-asset-inputs-v5.json",
+      "sha256": "bbb3996b946d6617d71c1ed8d4b51812f96caa8e8a0a34b24a916125c62b4b3f",
+      "gitBlobSha1": "267173ba52463d887b11e388ccd2431ee7cf71b5",
+      "bytes": 12787,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "consumer-seed-inputs-v5.json",
+      "sha256": "ced0df3bd844496e9345731003a0a042f07c485a0d2c709d3a6fbbbd76ecb177",
+      "gitBlobSha1": "b48b042a9e5f8d87c344cb3852ebaf1337153b85",
+      "bytes": 719,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "build-question-index-v5.log",
+      "sha256": "20e408c926c23e9e404ced331e70f78de51ff2ba5b23bc6ddf5ba18c46880394",
+      "gitBlobSha1": "ef32beb63d150c577fe0ffa6712bb433b058d755",
+      "bytes": 292,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "build-archive2-catalog-complete-v5.log",
+      "sha256": "73de92cd96f74c6e54f00b83e4d05aa184fea9cf550c67bed202a5c8b61ffe2d",
+      "gitBlobSha1": "dc25cd57d3e70fb2daf0c09780b33eec4ee5f579",
+      "bytes": 887,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "official-consumer4-reproduction-v6.json",
+      "sha256": "8a1d3b0839bd82c77ed5cd3278571aab6c6164b59fb10b616ccfc94251eee546",
+      "gitBlobSha1": "b83eeb41bc8d5ab788affc7ecfb55c0faae65397",
+      "bytes": 901,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "consumer-seven-observation-v6.json",
+      "sha256": "3bc29e3455b952bfeea01ef90b29bd2ad00066e2ef9804b6a622d229e5b4e149",
+      "gitBlobSha1": "88bf86474dc7c1b37878b616fe16d2670e811c11",
+      "bytes": 4662,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "official-final-replay-v6.json",
+      "sha256": "ae7caee354c0592c5c6285777e2d6220c8e79ea9166bbd0089dc122f10aee960",
+      "gitBlobSha1": "cb65c954157cc36e547fc06815cf8cdc27abc7f3",
+      "bytes": 3511,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "official-consumer-negatives-v6.json",
+      "sha256": "1ee79691ee6601d6336403b10ec049d54fc45da4607ddb147554e7a4c2b7cb5d",
+      "gitBlobSha1": "3fb4e278366a49614c41b26184e1f9424c30387f",
+      "bytes": 1393,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "final-replay-negatives-v6.log",
+      "sha256": "3309e2a87e43f3afae7f93c8672728058b4c7adc91ec5380a1f26e9446c6fce3",
+      "gitBlobSha1": "e7b903db07403288ed0187a424330cc6ecfa9113",
+      "bytes": 109,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "current92dd-input-cas-v6.json",
+      "sha256": "119025cc56708890cb1de0d31d7a3b18c923f0dd477d9af2e5c0bd052a6bbabe",
+      "gitBlobSha1": "8078424b8dd83fa1b0baafdb54792ab01cc88a37",
+      "bytes": 255,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "history-contract-final-v6.json",
+      "sha256": "73bcf6374987ea65b90008c69ba0b23267b4325540e6ac4523ccfe91d63268a1",
+      "gitBlobSha1": "9283de347edd6bcd8be795f7986c1eba7246fed8",
+      "bytes": 4051,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "code365-manifest.json",
+      "sha256": "a636b992dd0c4b2d223760eece23acb5740f42ceeb5683716ac8784438fde685",
+      "gitBlobSha1": "393e5bb792ba045c0985f3e87cdb0ed554866e64",
+      "bytes": 19377,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "inputs365-manifest.json",
+      "sha256": "6ef39b514e0c318459dc28d2ffff5e62eb96641e33ab6969758f2b9f35d1714e",
+      "gitBlobSha1": "b8a225c304b3b49a65b109592d6418c3147d1cd2",
+      "bytes": 128580,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "mixed-policy-hydration-v5.json",
+      "sha256": "0a3ac26ca1ca3fd436d11c12f601dae5444d32e2c541417896cceac1606e6f85",
+      "gitBlobSha1": "d476429774460a038bf29aabd3cf293111575b1b",
+      "bytes": 228,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "reproduced-before-v5.log",
+      "sha256": "6c0d62bc1ab05039791883fa3edf65d53740664c67115cba367fbdb4b09a92c5",
+      "gitBlobSha1": "cc22bde0874f8d4811ee73a71e1dab297caef7a3",
+      "bytes": 82,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "reproduced-dry-v5.log",
+      "sha256": "08a397e3a22af948c5771e534cfdd853b8e80b433ef7a1d5812846f7be7b7497",
+      "gitBlobSha1": "b5f003e252b1b62d3fe8dc0b25b2950e913a4303",
+      "bytes": 316,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "reproduced-write-v5.log",
+      "sha256": "af18528c9b44b153d72752450cd4f8e178c57f1e20de5a8d76004a05f706eba8",
+      "gitBlobSha1": "7f45cb2d5b3c72bc3b04d81d66cc8d30b9edacfd",
+      "bytes": 318,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "reproduced-native-after-v5.log",
+      "sha256": "9def167019f752f0722d5ed17da5c36798c5f1500fd760bc6999e6513f973d15",
+      "gitBlobSha1": "d6a21fc4200edd182ba0d4bf38f0686348822f6e",
+      "bytes": 98,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "consumer-reproduction-v6.log",
+      "sha256": "d992d5949bd49725f6fcc793d125e0d44a840762717d078471e435a447954a22",
+      "gitBlobSha1": "f25d3c7e84b113b7b55bdb499ed302a472c46d9c",
+      "bytes": 150,
+      "role": "LOCAL_EXECUTION_OR_INPUT_BINDING",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "recovered-helper-static-v5.json",
+      "sha256": "3f320329d961fcb3ef14f41bfcbc01f24c10ae3737538df4768710b8349f283c",
+      "gitBlobSha1": "496b4fcbf96865064eae46fd346f99fead885c59",
+      "bytes": 1606,
+      "role": "INDEPENDENT_STATIC_REVIEW",
+      "publishedAsSeparateGitFile": false
+    },
+    {
+      "artifactName": "consumer-routing-static-v6.json",
+      "sha256": "2091a57b6bd6f510e6c1d8b30b6cfe87d8992c836325faacfe8eac0eb3ad2f0b",
+      "gitBlobSha1": "63fe2688129410e1b009547068e12bc2e2b44c1d",
+      "bytes": 1297,
+      "role": "INDEPENDENT_STATIC_REVIEW",
+      "publishedAsSeparateGitFile": false
+    }
+  ],
+  "notClaimed": [
+    "Global semantic completion",
+    "New FINAL_QA authority",
+    "Current approval of excluded three",
+    "VERIFIED or automatic assignment eligibility",
+    "Operational writer application",
+    "Pages deployment"
+  ],
+  "remainingGates": [
+    "Root fresh destination and source/authority compare-and-swap before publication.",
+    "Exact published PR HEAD required CI, including native preview and fixed-history evidence closure.",
+    "Single production writer receipt4/current native/Consumer4; verify actual outside selected values, original receipt7 and excluded3 unchanged.",
+    "Actual current readback and Pages bytes where the release contract requires them."
+  ]
+}
