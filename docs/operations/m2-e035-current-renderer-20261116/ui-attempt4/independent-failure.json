@@ -1,0 +1,257 @@
+{
+  "schemaVersion": "archive-scoped-independent-ui-attempt-review-v1",
+  "reviewer": "/root/audit_m3",
+  "observedAt": "2026-11-16T09:18:12.695261+00:00",
+  "decision": "HOLD_INCOMPLETE_FOUR_CASE_CAPTURE",
+  "workflow": {
+    "headCommit": "cea301e64ef4fedb170b21c6242481588b136d38",
+    "runId": 43837513619,
+    "jobId": 133197715706,
+    "artifactId": 14211208414,
+    "conclusion": "failure",
+    "zipSha256": "e480d0cf6fc99f6768aa7945fe83109267531c00af4182e3cf01e210d35f514d",
+    "zipBytes": 198899,
+    "downloadDigestVerified": true,
+    "browserVersion": "157.0.8103.78",
+    "checkoutCommit": "e162ece8868f9d9dcb8c1e0f9590a738dcf36a16"
+  },
+  "rawEvidence": [
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43837513619/download-manifest.json",
+      "sha256": "b771afdaf1401fad980e623315613f00491df6762c9eb2e65dbd539911400393",
+      "bytes": 1731
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43837513619/technical-proof.json",
+      "sha256": "da693882c913821b7b324fd02c8f4cb8cde3c9caac2eab1b50e2a0c62b564072",
+      "bytes": 34458
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43837513619/diagnostics.json",
+      "sha256": "4bf94c639a6c5e292ca5e2f7aff9102da32608c3f90f2b03dce54e76a537bb8f",
+      "bytes": 23014
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43837513619/desktop-solution-failure-state.json",
+      "sha256": "27f1e34917dd4e3918f5d608207f2e567050fab604beb4b56c49c36bb7228cc2",
+      "bytes": 582
+    }
+  ],
+  "originalImages": [
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43837513619/e035-problem-desktop-tile-01.png",
+      "sha256": "f235e1c5acd2e2949f35046290a8c0e07296e29b0f7245ffd1687b48d84800b3",
+      "bytes": 30354,
+      "width": 664,
+      "height": 438,
+      "independentlyViewedOriginal": true
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43837513619/e035-solution-desktop-tile-01.png",
+      "sha256": "ebb975a21025ce51f60ee847ab67e242ffd7a08bb261ea50743c56ad6c39c1a7",
+      "bytes": 48167,
+      "width": 316,
+      "height": 597,
+      "independentlyViewedOriginal": true
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-gha-43837513619/desktop-solution-failure-viewport.png",
+      "sha256": "02d4ea1cab6f2ba30022db03e344e5d02eff11461db6b78762dcb201143ec147",
+      "bytes": 101115,
+      "width": 1280,
+      "height": 900,
+      "independentlyViewedOriginal": true
+    }
+  ],
+  "actualProgress": {
+    "technicalCasesCompleted": 1,
+    "expectedCases": 4,
+    "completedCaseIds": [
+      "desktop-problem"
+    ],
+    "failedCase": "desktop-solution",
+    "failureCode": "UI_MANDATORY_CHILDREN_NOT_VISIBLE",
+    "mobileCasesStarted": 0,
+    "fourCaseUiPass": false
+  },
+  "exactPixelDiagnostics": [
+    {
+      "caseId": "desktop-problem",
+      "tileIndex": 1,
+      "layoutClip": {
+        "x": 307.84375,
+        "y": 123.546875,
+        "width": 664.3125,
+        "height": 438.421875
+      },
+      "documentClip": {
+        "x": 307.84375,
+        "y": 10429.546875,
+        "width": 664.3125,
+        "height": 438.421875
+      },
+      "contextViewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "metricsBefore": {
+        "layoutViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "documentClient": {
+          "width": 1280,
+          "height": 900
+        },
+        "visualViewport": {
+          "width": 1280,
+          "height": 900,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "pageLeft": 0,
+          "pageTop": 10306,
+          "scale": 1
+        },
+        "screen": {
+          "width": 1280,
+          "height": 900
+        },
+        "devicePixelRatio": 1
+      },
+      "pngDimensions": {
+        "width": 664,
+        "height": 438
+      },
+      "expectedPng": {
+        "width": 664,
+        "height": 438
+      },
+      "pixelRule": "NEAREST_INTEGER_CSS_PX"
+    },
+    {
+      "caseId": "desktop-solution",
+      "tileIndex": 1,
+      "layoutClip": {
+        "x": 311.84375,
+        "y": 123.515625,
+        "width": 316.15625,
+        "height": 596.890625
+      },
+      "documentClip": {
+        "x": 311.84375,
+        "y": 5895.515625,
+        "width": 316.15625,
+        "height": 596.890625
+      },
+      "contextViewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "metricsBefore": {
+        "layoutViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "documentClient": {
+          "width": 1280,
+          "height": 900
+        },
+        "visualViewport": {
+          "width": 1280,
+          "height": 900,
+          "offsetLeft": 0,
+          "offsetTop": 0,
+          "pageLeft": 0,
+          "pageTop": 5772,
+          "scale": 1
+        },
+        "screen": {
+          "width": 1280,
+          "height": 900
+        },
+        "devicePixelRatio": 1
+      },
+      "pngDimensions": {
+        "width": 316,
+        "height": 597
+      },
+      "expectedPng": {
+        "width": 316,
+        "height": 597
+      },
+      "pixelRule": "NEAREST_INTEGER_CSS_PX"
+    }
+  ],
+  "actualNaturalIdleObservations": [
+    {
+      "caseId": "desktop-problem",
+      "elapsedMs": 1731,
+      "maximumWaitMs": 10000,
+      "complete": true,
+      "observations": 32,
+      "first": {
+        "feedbackIdle": false,
+        "mandatoryChildrenVisible": true,
+        "readiness": "RENDER_READY",
+        "domSha256": "2998c999a9cd27191c252b1fc2c33026ecfcafdc85c3e2743b0b0e2e40df10f2"
+      },
+      "last": {
+        "feedbackIdle": true,
+        "mandatoryChildrenVisible": true,
+        "readiness": "RENDER_READY",
+        "domSha256": "2998c999a9cd27191c252b1fc2c33026ecfcafdc85c3e2743b0b0e2e40df10f2"
+      },
+      "mandatoryFalseIndices": [],
+      "selectedDomShaConstant": true
+    },
+    {
+      "caseId": "desktop-solution",
+      "elapsedMs": 3432,
+      "maximumWaitMs": 10000,
+      "complete": false,
+      "observations": 56,
+      "first": {
+        "feedbackIdle": false,
+        "mandatoryChildrenVisible": true,
+        "readiness": "RENDER_READY",
+        "domSha256": "5455e4e973ef3f6df4496607620b8b386f0ccf0bdc047d976c6754f994457ab7"
+      },
+      "last": {
+        "feedbackIdle": true,
+        "mandatoryChildrenVisible": false,
+        "readiness": "RENDER_READY",
+        "domSha256": "5455e4e973ef3f6df4496607620b8b386f0ccf0bdc047d976c6754f994457ab7"
+      },
+      "mandatoryFalseIndices": [
+        55
+      ],
+      "selectedDomShaConstant": true
+    }
+  ],
+  "independentVisualNotes": [
+    "Both original desktop tiles were inspected directly; the selected question and selected solution content and repaired diagram are present within their PNG bounds.",
+    "The selected solution is also visible in the original failure viewport. This does not establish which element failed the mandatory-visibility predicate after capture.",
+    "Both desktop tile raw hashes match the preceding v3 originals; the v4 solution clip and IHDR are now explicitly recorded and satisfy the single round candidate.",
+    "No mobile PNG was produced and no four-case independent positive UI observation is issued."
+  ],
+  "limits": [
+    "The final solution poll records mandatoryChildrenVisible=false while feedbackIdle becomes true; prior polls record mandatoryChildrenVisible=true.",
+    "The aggregate predicate covers box, image, question number and required direct children. The failing constituent and its style/rect were not recorded.",
+    "The mandatory assertion precedes final geometry/viewport assertions, so the last poll cannot be described as passing those later invariants.",
+    "Round is validated for the two recorded desktop captures only, not for the absent mobile cases or as a universal API property."
+  ],
+  "minimalNextDiagnostic": "Preserve all guards and expose the existing mandatory predicate constituents using metadata-only tag/class/style/rect/visibility fields before its assertion; do not omit a child or wait through disappearance to manufacture approval.",
+  "boundaries": {
+    "reviewerBrowserExecution": 0,
+    "reviewerWorkflowRetry": 0,
+    "sourceChanges": 0,
+    "assetChanges": 0,
+    "rendererOrCssChanges": 0,
+    "nativeRegistration": 0,
+    "newMathematicalQa": false,
+    "newMetadataApprovals": 0,
+    "newDifficultyJudgments": 0,
+    "priorFailuresPreserved": true,
+    "originalStudentTextCopied": false
+  }
+}
