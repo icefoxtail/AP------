@@ -1,0 +1,51 @@
+name: Verify exact main registration projection
+
+on:
+  push:
+    branches: ['review-reference/main6bc-registration-projection-20261116-r1']
+    paths:
+      - '.github/workflows/archive-fixed-main-registration-projection.yml'
+      - 'tools/ci/project-fixed-main-4slot-registration-20261116.cjs'
+
+permissions:
+  contents: read
+
+jobs:
+  projection:
+    if: github.ref == 'refs/heads/review-reference/main6bc-registration-projection-20261116-r1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify fixed index bytes and project exact registration metadata
+        run: node --max-old-space-size=768 tools/ci/project-fixed-main-4slot-registration-20261116.cjs > "$RUNNER_TEMP/fixed-main-registration-projection.json"
+      - name: Emit the verified metadata artifact with byte identity
+        env:
+          PROJECTION_FILE: ${{ runner.temp }}/fixed-main-registration-projection.json
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const crypto = require('node:crypto');
+          const raw = fs.readFileSync(process.env.PROJECTION_FILE);
+          if (raw.length > 8 * 1024 * 1024) throw new Error('bounded metadata report exceeded');
+          JSON.parse(raw);
+          const encoded = raw.toString('base64');
+          const chunks = encoded.match(/.{1,6000}/g) || [];
+          console.log('REGISTRATION_PROJECTION_BEGIN_V1 bytes=' + raw.length + ' sha256=' + crypto.createHash('sha256').update(raw).digest('hex') + ' chunks=' + chunks.length);
+          chunks.forEach((chunk, index) => console.log('REGISTRATION_PROJECTION_B64_V1:' + String(index).padStart(4, '0') + ':' + chunk));
+          console.log('REGISTRATION_PROJECTION_END_V1');
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: exact-main-registration-projection-${{ github.run_id }}
+          path: ${{ runner.temp }}/fixed-main-registration-projection.json
+          if-no-files-found: warn
+          retention-days: 14
