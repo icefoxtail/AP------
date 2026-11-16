@@ -7,6 +7,7 @@ const consumer = require('../../archive/item-4slot.js');
 const rendererHold = require('./renderer-registration-hold.cjs');
 const currentRendererHold = require('./current-renderer-negative-hold.cjs');
 const m2Continuity = require('./m2s2-current-continuity.cjs');
+const m2ImportedContinuity = require('./m2s2-imported-current-continuity.cjs');
 const partial = require('./partial-submission.cjs');
 const registeredRenderer = require('./registered-renderer-continuity.cjs');
 const { sourceNumber, sourceIdentityNumber } = require('./exam-items.cjs');
@@ -23,7 +24,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
-const BUILDER_SHA = sha(Buffer.concat([fs.readFileSync(__filename), fs.readFileSync(require.resolve('./renderer-registration-hold.cjs')), fs.readFileSync(require.resolve('./partial-submission.cjs')), fs.readFileSync(require.resolve('./current-renderer-negative-hold.cjs')), fs.readFileSync(require.resolve('./current-renderer-negative-hold-v2.cjs')), fs.readFileSync(require.resolve('./m2s2-current-continuity.cjs')), fs.readFileSync(require.resolve('./import-4slot.cjs')), fs.readFileSync(require.resolve('./validate-4slot.cjs')), fs.readFileSync(require.resolve('./exam-items.cjs')), fs.readFileSync(require.resolve('./registered-renderer-continuity.cjs')), fs.readFileSync(registeredRenderer.worker)]));
+const BUILDER_SHA = sha(Buffer.concat([fs.readFileSync(__filename), fs.readFileSync(require.resolve('./renderer-registration-hold.cjs')), fs.readFileSync(require.resolve('./partial-submission.cjs')), fs.readFileSync(require.resolve('./metadata-registration-hold.cjs')), fs.readFileSync(require.resolve('./verify-hold-metadata-replay.mjs')), fs.readFileSync(require.resolve('./current-renderer-negative-hold.cjs')), fs.readFileSync(require.resolve('./current-renderer-negative-hold-v2.cjs')), fs.readFileSync(require.resolve('./m2s2-current-continuity.cjs')), fs.readFileSync(require.resolve('./m2s2-imported-current-continuity.cjs')), fs.readFileSync(require.resolve('./import-4slot.cjs')), fs.readFileSync(require.resolve('./validate-4slot.cjs')), fs.readFileSync(require.resolve('./exam-items.cjs')), fs.readFileSync(require.resolve('./registered-renderer-continuity.cjs')), fs.readFileSync(registeredRenderer.worker)]));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -95,12 +96,13 @@ function validateItem(it, dict) {
 // An explicit native review hold never waives slot validation or registers a row.
 // This route preserves the existing M1-S1 partial-method decision while the rest
 // of that complete exam denominator can register. It is not an empty-slot route.
-function validateRegistrationHold(root, d, it, id, cur, {currentRendererNegativeValidated=false,m2ContinuityValidated=false}={}) {
+function validateRegistrationHold(root, d, it, id, cur, {currentRendererNegativeValidated=false,m2ContinuityValidated=false,m2ImportedContinuityValidated=false}={}) {
   const h=it.registrationHold, errors=[];
-  if(!h||!['4slot-native-review-hold-v1',...currentRendererHold.HOLD_SCHEMAS,m2Continuity.HOLD_SCHEMA].includes(h.schemaVersion))return ['UNSUPPORTED_HOLD'];
+  if(!h||!['4slot-native-review-hold-v1',...currentRendererHold.HOLD_SCHEMAS,m2Continuity.HOLD_SCHEMA,m2ImportedContinuity.HOLD_SCHEMA].includes(h.schemaVersion))return ['UNSUPPORTED_HOLD'];
   if(h.questionUid!==id?.questionUid||h.sourceOrdinal!==cur?.ordinal||h.sourceQuestionNo!==sourceIdentityNumber(cur?.q||{})||h.ordinal!==it.ordinal)errors.push('HOLD_IDENTITY_MISMATCH');
   if(typeof h.nextAction!=='string'||!h.nextAction.trim())errors.push('HOLD_NEXT_ACTION_MISSING');
   if(h.schemaVersion===m2Continuity.HOLD_SCHEMA)return [...errors,...(m2ContinuityValidated&&h.reason===m2Continuity.REASON?[]:['M2_CURRENT_CONTINUITY_FILE_NOT_VALIDATED'])];
+  if(h.schemaVersion===m2ImportedContinuity.HOLD_SCHEMA)return [...errors,...(m2ImportedContinuityValidated&&h.reason===m2ImportedContinuity.REASON?[]:['M2_IMPORTED_CONTINUITY_FILE_NOT_VALIDATED'])];
   if(currentRendererHold.HOLD_SCHEMAS.includes(h.schemaVersion))return [...errors,...(currentRendererNegativeValidated&&h.reason===currentRendererHold.REASON?[]:['CURRENT_RENDERER_HOLD_FILE_NOT_VALIDATED'])];
   if(h.reason==='SOURCE_RENDERER_CORRECTION_PENDING')return [...errors,...rendererHold.validate(root,d,it,id,cur,{safe,sha,blob,stable,payloadHash,identityHash,git,assetRefs,loadBank})];
   if(h.reason==='SOURCE_EVIDENCE_UNRESOLVED')return [...errors,...validateM2SourceHold(root,d,it,id,cur)];
@@ -139,7 +141,7 @@ function validateM2SourceHold(root,d,it,id,cur) {
 function holdEvidenceDigests(root,d) {
   const out={};
   for(const it of d.items)if(own(it,'registrationHold')) {
-    for(const field of ['evidence','reviewEvidence','independentEvidence','fourSlotEvidence','supersessionEvidence',...currentRendererHold.directFields]) {
+    for(const field of ['evidence','reviewEvidence','independentEvidence','metadataTransportEvidence','fourSlotEvidence','supersessionEvidence',...currentRendererHold.directFields]) {
       const rel=it.registrationHold?.[field]?.path;
       if(typeof rel!=='string')continue;
       try { out[rel]=sha(fs.readFileSync(safe(root,rel))); } catch { out[rel]=null; }
@@ -184,6 +186,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
   for(const r of identity.records||[]){const key=`${r.sourceArchiveFile}#${r.sourceOrdinal}`;if(!joins.has(key))joins.set(key,[]);joins.get(key).push(r);uidUses.set(r.questionUid,(uidUses.get(r.questionUid)||0)+1);}
   const currentNegativeObligation=currentRendererHold.createObligationReader(root,{safe,sha,blob,stable});
   const m2ContinuityObligation=m2Continuity.createObligationReader(root,{safe,sha,blob,stable});
+  const m2ImportedObligation=m2ImportedContinuity.createObligationReader(root,{safe,sha,blob,stable});
   const oldFiles=new Map((previous?.files||[]).map(f=>[f.path,f]));
   const rendererContinuities=registeredRenderer.collect(root,{safe,walk,sha});
   const records=[], files=[], pending=[], observed=[], stats={revalidatedFiles:0,reusedFiles:0};
@@ -198,7 +201,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       d=JSON.parse(raw);file.itemCount=Array.isArray(d.items)?d.items.length:0;const dict=dicts.get(d.dictionaryVersion), errors=validateCompact(d,rel,dict);
       if(errors.length)throw Error(errors.join('|'));
       const sf=safe(root,'archive/exams/'+d.sourceArchiveFile), sourceRaw=fs.readFileSync(sf), sourceBlob=blob(sourceRaw);
-      const bank=loadBank(sourceRaw), byNumber=sourceNumbers(bank), assetDigests=assetsFor(root,bank), holdDigests={...holdEvidenceDigests(root,d),...m2Continuity.evidenceDigests(root,d,{safe,sha})};
+      const bank=loadBank(sourceRaw), byNumber=sourceNumbers(bank), assetDigests=assetsFor(root,bank), holdDigests={...holdEvidenceDigests(root,d),...m2Continuity.evidenceDigests(root,d,{safe,sha}),...m2ImportedContinuity.evidenceDigests(root,d,{safe,sha})};
       // Validate the public receipt and the complete canonical partition before cache reuse.
       // The receipt contains no private prose; all quote spans are checked against public source bytes.
       const scope=partial.hasScope(d)?partial.publicEvidence(root,d,{bank,identity,sourceRaw,dictPath:dict.path}):null;
@@ -213,9 +216,13 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       if(m2Obligation.errors.length)throw Error(m2Obligation.errors.join('|'));
       const currentM2=m2Continuity.has(d);
       if(currentM2){const errors=m2Continuity.validateFile(root,d,{safe,sha,blob,stable,payloadHash,identityHash,assetRefs,loadBank,dictionary:dict,identity,studentFields:STUDENT});if(errors.length)throw Error(errors.join('|'));}
+      const importedObligation=m2ImportedObligation(d);
+      if(importedObligation.errors.length)throw Error(importedObligation.errors.join('|'));
+      const currentImportedM2=m2ImportedContinuity.has(d);
+      if(currentImportedM2){const errors=m2ImportedContinuity.validateFile(root,d,{safe,sha,blob,stable,payloadHash,identityHash,assetRefs,loadBank,dictionary:dict,identity,studentFields:STUDENT});if(errors.length)throw Error(errors.join('|'));}
       const relevantIdentity=bank.map((_,i)=>joins.get(`${d.sourceArchiveFile}#${i+1}`)||[]);
       const continuities=rendererContinuities.get(d.sourceArchiveFile)||[],continuityDigests=continuities.flatMap(e=>e.digests);
-      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests,scope?.evidenceDigests||null,continuityDigests,obligation.digest,m2Obligation.digest]));
+      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests,scope?.evidenceDigests||null,continuityDigests,obligation.digest,m2Obligation.digest,importedObligation.digest]));
       const old=oldFiles.get(rel);
       file={...file,sourceArchiveFile:d.sourceArchiveFile,sourceGitBlobSha:d.sourceGitBlobSha,currentSourceBlobSha:sourceBlob,dictionaryVersion:d.dictionaryVersion,dictionarySha256:dict.sha256,reviewedBy:d.reviewedBy,evidence:d.evidence,inputHash,assetDigests,itemCount:d.items.length};
       if(scope)file={...file,scope:partial.SCOPE,expectedQuestionCount:bank.length,selectedCount:scope.selected.length,unsubmittedCount:scope.unsubmitted.length,completeExam:false};
@@ -225,7 +232,9 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       for(const [p,h]of Object.entries(holdDigests))if(h)observed.push([p,h]);
       for(const [p,h]of continuityDigests)if(h)observed.push([p,h]);
       // No repeated semantic review. Cached rows are re-used only for identical input bytes and identity joins.
-      if(reuseCache&&old?.inputHash===inputHash&&previous?.schemaVersion===SCHEMA){
+      // The explicit metadata continuation also depends on the issued receipt,
+      // metadata and runtime. Always replay that one negative decision live.
+      if(reuseCache&&!d.items.some(it=>rendererHold.hasMetadataClaim(d,it))&&old?.inputHash===inputHash&&previous?.schemaVersion===SCHEMA){
         files.push(old);records.push(...previous.records.filter(r=>r.compactPath===rel));pending.push(...previous.pending.filter(r=>r.path===rel));stats.reusedFiles++;continue;
       }
       stats.revalidatedFiles++;
@@ -282,7 +291,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
         const alteredAsset=oldSame&&assetRefs(cur.q).some(p=>own(baselineAssets,p)&&baselineAssets[p]!==assetDigests[p]);
         if(alteredAsset&&!rendererContinuation){fail('STALE_ASSET_BYTES',it.ordinal);continue;}
         if(own(it,'registrationHold')) {
-          const errors=validateRegistrationHold(root,d,it,id,cur,{currentRendererNegativeValidated:currentNegative,m2ContinuityValidated:currentM2}), h=it.registrationHold;
+          const errors=validateRegistrationHold(root,d,it,id,cur,{currentRendererNegativeValidated:currentNegative,m2ContinuityValidated:currentM2,m2ImportedContinuityValidated:currentImportedM2}), h=it.registrationHold;
           if(errors.length)fail('INVALID_REGISTRATION_HOLD:'+errors.join('|'),it.ordinal,{questionUid:id.questionUid});
           else fail('EXPLICIT_REVIEW_HOLD:'+h.reason,it.ordinal,{questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,evidence:h.evidence||h.currentRendererNegativeEvidence,nextAction:h.nextAction});
           continue;

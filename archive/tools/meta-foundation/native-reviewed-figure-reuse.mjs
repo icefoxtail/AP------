@@ -1,6 +1,7 @@
 // Reuse an already issued native approval across one independently reviewed figure
 // replacement. This adapter never registers metadata or approves arbitrary content.
 import fs from 'node:fs';
+import {verifyIssuedRpmEvidenceContinuity} from './issued-rpm-evidence-continuity.mjs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
@@ -190,7 +191,11 @@ export function nativeReviewedFigureRebind(receipt,nativeSource,previous,questio
     // malformed receipt loses its repair entry. A caught-up cursor is no waiver.
     for(const ref of receipt.approval.evidenceRefs||[]){
       const bytes=fs.readFileSync(safePath(nativeSource.root,ref.path));
-      if(sha(bytes)!==ref.sha256)fail('current evidence bytes changed');
+      if(sha(bytes)!==ref.sha256){
+        const continuity=verifyIssuedRpmEvidenceContinuity({root:nativeSource.root,receipt,
+          receiptPath:`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${receipt.requestId}.json`,evidenceRef:ref});
+        if(continuity?.currentRef.sha256!==sha(bytes))fail('current evidence bytes changed');
+      }
       let doc;try{doc=JSON.parse(bytes);}catch{continue;}
       if(doc.sourceArchiveFile===receipt.sourceArchiveFile&&
         (doc.reviewScope==='NARROW_CURRENT_FIGURE_CONTINUITY_ONLY'||doc.rendererAssetBindingRef&&doc.originalPendingRequest&&doc.independentReviewRefs)&&

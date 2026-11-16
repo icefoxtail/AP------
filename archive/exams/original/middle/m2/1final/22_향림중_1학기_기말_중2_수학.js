@@ -228,8 +228,9 @@ window.examData = {
     },
     {
       "id": 17,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "<p>17. 다음 그림과 같이 일차함수 $y=-\\frac{1}{3}x-2$의 그래프가 $x$축, $y$축과 만나는 점을 각각 $\\text{A, B}$라 할 때, $\\triangle \\text{ABO}$의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/22_향림중_1학기_기말_중2_수학/q17.png\" alt=\"도형\"></p>",
+      "question": "<p>17. 다음 그림과 같이 일차함수 $y=-\\frac{1}{3}x-2$의 그래프가 $x$축, $y$축과 만나는 점을 각각 $\\text{A, B}$라 할 때, $\\triangle \\text{ABO}$의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/22_향림중_1학기_기말_중2_수학/q17-problem-visual-v2.svg\" alt=\"본문의 식에 따라 파란 직선이 오른쪽 아래로 향한다. 가로축과 만나는 점은 원점 왼쪽의 A, 세로축과 만나는 점은 원점 아래의 B이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "6",
         "5",
@@ -322,8 +323,9 @@ window.examData = {
     },
     {
       "id": 25,
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "<p>서술형 4. 일차함수 $y=-\\frac{1}{2}x-1$의 그래프의 $x$절편, $y$절편을 구하고, 이를 이용하여 좌표평면에 두 점을 표시하여 그래프를 그리시오. [5점]</p><p><img src=\"assets/images/22_향림중_1학기_기말_중2_수학/s04.png\" alt=\"도형\"></p>",
+      "question": "<p>서술형 4. 일차함수 $y=-\\frac{1}{2}x-1$의 그래프의 $x$절편, $y$절편을 구하고, 이를 이용하여 좌표평면에 두 점을 표시하여 그래프를 그리시오. [5점]</p><p><img src=\"assets/images/22_향림중_1학기_기말_중2_수학/q25-problem-visual-v2.svg\" alt=\"가로축과 세로축은 눈금 −4, −2, 2, 4를 표시하고, 사이에 단위 모눈이 있다. 좌표평면에는 점과 함수선이 아직 그려져 있지 않다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "",
       "solution": ""

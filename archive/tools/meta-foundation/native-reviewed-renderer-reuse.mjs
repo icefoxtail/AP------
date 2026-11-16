@@ -7,6 +7,7 @@ import { REASSESSED_STUDENT_FIELDS, validateReviewedSourceReassessment } from '.
 import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
 import { reviewedRendererBindingPath, buildReviewedRendererBinding } from './reviewed-current-renderer-continuity.mjs';
 import { REVIEWED_RPM_FIELDS } from './reviewed-rpm-provenance.mjs';
+import { verifyIssuedRpmEvidenceContinuity } from './issued-rpm-evidence-continuity.mjs';
 
 const fail = message => { throw Error(`native reviewed renderer reuse: ${message}`); };
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -34,8 +35,12 @@ function claimedRows(receipt, root, identity, ordinal, cache) {
   for (const ref of receipt.approval.evidenceRefs || []) {
     if (!SHA256.test(ref.sha256 || '')) fail('SHA-bound approval evidence required');
     const bytes = fs.readFileSync(safePath(root, ref.path));
-    if (sha(bytes) !== ref.sha256) fail('current evidence bytes changed');
-    const key = `renderer-reuse-claim:${ref.sha256}`;
+    if (sha(bytes) !== ref.sha256) {
+      const continuity = verifyIssuedRpmEvidenceContinuity({ root, receipt,
+        receiptPath: `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${receipt.requestId}.json`, evidenceRef: ref });
+      if (continuity?.currentRef.sha256 !== sha(bytes)) fail('current evidence bytes changed');
+    }
+    const key = `renderer-reuse-claim:${sha(bytes)}`;
     if (!cache.has(key)) {
       let doc; try { doc = JSON.parse(bytes); } catch { doc = null; }
       cache.set(key, doc);

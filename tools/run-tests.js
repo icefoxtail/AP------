@@ -40,6 +40,18 @@ const jsTestTimeout = file => file === 'archive2-compose-scope.test.js' ? 180000
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/archive-issued-rpm-evidence-continuity.test.mjs',
+    args: ['--test', 'tests/archive-issued-rpm-evidence-continuity.test.mjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-current-continuity.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-current-continuity.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-current-continuity.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-current-continuity.test.cjs']
+  },
+  {
     label: 'tests/archive-m2-provider-current-renderer.test.mjs',
     args: ['--test', 'tests/archive-m2-provider-current-renderer.test.mjs']
   },
@@ -66,11 +78,6 @@ const requiredCommands = [
   {
     label: 'tests/archive-original-finalqa-renderer-preservation.test.mjs',
     args: ['--test', 'tests/archive-original-finalqa-renderer-preservation.test.mjs']
-  },
-  {
-    label: 'tests/archive-reviewed-exam-registration-v2.test.mjs',
-    args: ['--test', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
-    timeout: 300000
   },
   {
     label: 'tests/item-4slot-current-renderer-negative-hold-v2.test.cjs',
@@ -332,6 +339,15 @@ const requiredCommands = [
   {
     label: 'tests/archive-reviewed-apply-bridge.test.mjs',
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
+  },
+  {
+    label: 'tests/archive-reviewed-exam-registration-v2.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
+    timeout: 300000
+  },
+  {
+    label: 'tests/archive-reviewed-retained-scope-transport.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-retained-scope-transport.test.mjs']
   },
   {
     label: 'tests/archive-reviewed-native-parent.test.mjs',

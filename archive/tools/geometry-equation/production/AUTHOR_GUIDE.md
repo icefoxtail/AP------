@@ -326,6 +326,12 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - paths에는 xAxis, yAxis, secant, logOriginal, logShifted의 원본 픽셀 좌표를 준다. 두 로그곡선 모두 증가하고 오목해야 한다. A와 B는 직선과 두 축이 만나는 점, P와 Q는 각 로그곡선과 직선이 만나는 점이며 O는 두 축의 교차다. 원본과 같이 직선 위에 A, P, Q, B 순서로 있어야 한다.
 - labelOrigins에는 O, A, B, P, Q, x, y, logOriginal, logShifted, line, schematic을 준다. 그림 파일에서 잘린 식도 발문을 근거로 조판한다. 개형 위에는 풀이 수치, 점 좌표, 눈금을 표시하지 않는다.
 
+문자 밑 지수·로그곡선에 수평선과 수직선을 그어 사각형의 꼭짓점을 얻는 문제에는 `source-exp-log-orthogonal-guides-schematic-v1`을 쓴다. 발문에 밑이 1보다 큰 같은 문자, 양의 정수만큼 위로 옮긴 지수식과 오른쪽으로 옮긴 로그식, 그리고 두 축 교점 A/B로부터 C/D를 만드는 관계가 있어야 한다.
+
+- `paths`에는 `xAxis`, `yAxis`, `exponential`, `logarithm`의 원본 픽셀 좌표만 준다. O는 두 축의 교차다. 지수곡선과 세로축이 A, 로그곡선과 가로축이 B에서 만난다. A에서 수평인 `AC`와 B에서 수직인 `BD` 및 사각형 `ABCD`는 두 곡선과 두 축에서 계산하고 원본 잉크에 대조한다.
+- `view:{width,height}`는 원본과 같은 픽셀 단위를 쓴다. 폭은 원본의 70%부터 전체 폭까지이며 확인한 축과 획을 잘라낼 수 없다. 높이는 원본 높이부터 최대 128픽셀 아래까지다. 아래의 새 여백은 잘렸던 점 이름 자리로 쓸 수 있다. `labelOrigins`에는 O, A, B, C, D, x, y, exp, log, schematic을 준다.
+- 발문의 두 식과 개형 표시는 유지한다. 풀이에서 얻은 밑, 점의 수치 좌표, 눈금은 쓰지 않는다. SVG 역검증과 실제 글꼴·겹침 검사는 기존 문제 개형과 같은 경로에서 실행한다.
+
 ### 3-8. 중학교 평면도형: 각·선분·호 표식이 있는 축 없는 그림 (`PLANE_FIGURE_v1`, `planeMarks`)
 
 - **plan 최상위 `caption`은 필수다.** 평면도형·좌표 도형(`construction-spike-v1`)도 `caption`(한 문장, 정답·숨긴 점 이름 없이)이 있어야 하고, 없으면 `SPEC_ERROR`/`PLAN_CAPTION_REQUIRED`(path `caption`)로 거절된다. 숨긴 점(`hiddenPointNames`)의 이름을 caption에 쓰면 `HIDDEN_POINT_NAMED_IN_TEXT:<id>`이다. publish.json의 caption(풀이 요약+정답)과는 별개다. 이유: 금당고 14개 그림이 caption 없이 `NON_JSON_VALUE`(spec.title 미정의)로 거절됐다.

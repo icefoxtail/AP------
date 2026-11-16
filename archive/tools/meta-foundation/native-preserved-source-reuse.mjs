@@ -14,6 +14,7 @@ import {nativeReviewedRendererRebind} from './native-reviewed-renderer-reuse.mjs
 import {reviewedRendererBindingPath} from './reviewed-current-renderer-continuity.mjs';
 import {isIssuedSourceBindingRecovery,hasIssuedSourceBindingRecoveryMarker} from './issued-source-binding-recovery.mjs';
 import {assertReviewedPackVersionLineage} from './reviewed-pack-version-lineage.mjs';
+import {verifyIssuedRpmEvidenceContinuity} from './issued-rpm-evidence-continuity.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a-f0-9]{64}$/;
@@ -36,10 +37,15 @@ function safePath(root,relative) {
   return full;
 }
 const readBytes=(root,relative)=>fs.readFileSync(safePath(root,relative));
-function evidence(root,refs) {
+function evidence(root,refs,receipt) {
   if(!Array.isArray(refs)||!refs.length)fail('SHA-bound approval evidence required');
-  for(const ref of refs)if(!SHA256.test(ref?.sha256||'')||sha(readBytes(root,ref.path))!==ref.sha256)
-    fail('approval evidence missing or changed');
+  for(const ref of refs){
+    if(!SHA256.test(ref?.sha256||''))fail('approval evidence missing or changed');
+    const liveSha=sha(readBytes(root,ref.path));
+    if(liveSha===ref.sha256)continue;
+    const continuity=verifyIssuedRpmEvidenceContinuity({root,receipt,receiptPath:receiptPath(receipt?.requestId),evidenceRef:ref});
+    if(continuity?.currentRef.sha256!==liveSha)fail('approval evidence missing or changed');
+  }
 }
 
 // The count and prior-evidence markers also prevent deleting just sourceRebind
@@ -379,7 +385,7 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     if(ordinaryReviewedReassessment({receipt:cursor,nativeSource:source,question:source.bank[ordinal-1],
       identity:state.identity,ordinal,current:state.row,registry}))break;
     if(seen.has(cursor.requestId)||seen.size>=64)fail('source-rebind cycle or depth exceeded');
-    seen.add(cursor.requestId);evidence(root,cursor.approval.evidenceRefs);
+    seen.add(cursor.requestId);evidence(root,cursor.approval.evidenceRefs,cursor);
     const spec=cursor.approval.sourceRebind,ref=spec?.priorReceiptRef;
     const subset=isExplicitSourceSubsetRebind(spec),fullSubset=isFullSourceSubsetRebind(spec);
     if(!spec||!subset&&!same(Object.keys(spec).sort(),['priorReceiptRef'])||!nativePath(ref?.path)||!SHA256.test(ref.sha256||'')||
@@ -410,7 +416,7 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     if(fullSubset)replayOriginalFullFinalQa({root,prior,priorReceiptRef:ref,nativeSource:source,registry,revalidateLeaf});
     cursor=prior;state=old;source={...source,...priorSource,...historicalIdentity,runtimeRecord:old.runtime};
   }
-  evidence(root,cursor.approval.evidenceRefs);
+  evidence(root,cursor.approval.evidenceRefs,cursor);
   const relative=receiptPath(cursor.requestId),context={nativeSource:source,current:state.row,identity:state.identity,question:source.bank[ordinal-1]};
   if(revalidateLeaf(context)!==relative)fail('original native approval cannot replay for this cursor');
   // A caught-up cursor must not skip the original solution-only repair. Replaying

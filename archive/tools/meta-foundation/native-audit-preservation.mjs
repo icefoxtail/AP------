@@ -7,6 +7,8 @@ import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { REASSESSED_STUDENT_FIELDS } from "./reviewed-source-reassessment.mjs";
 import { loadUnitOrders, UNIT_MASTER_PATH } from "../archive-unit-order.mjs";
+import { AUDIT_SOURCE_PRESERVATION_SCHEMA, loadAuditSourcePreservation, planAuditSourcePreservation,
+  assertAuditSourcePreservationReceipt } from "./native-audit-source-preservation.mjs";
 import { createExactJsonByteParser, freezeJsonValue } from "./exact-json-byte-parser.mjs";
 
 const parseSmallJson = createExactJsonByteParser(16);
@@ -144,7 +146,8 @@ function historicalEvidence(root, revision, ref, refs, receipt, request) {
 }
 
 export function isAuditPreservation(approval) {
-  return approval?.type === "META_PIPELINE_AUDIT" && approval.sourceRebind?.schemaVersion === AUDIT_PRESERVATION_SCHEMA;
+  return approval?.type === "META_PIPELINE_AUDIT" &&
+    [AUDIT_PRESERVATION_SCHEMA, AUDIT_SOURCE_PRESERVATION_SCHEMA].includes(approval.sourceRebind?.schemaVersion);
 }
 // An older v2 audit retained the source's partial tag and omitted reviewStatus.
 // This exact status tuple is an existing approval, not a new reviewed_pass. Its
@@ -207,6 +210,10 @@ function preservationSelection(request, questionCount) {
 // its exact subset. Neither path changes classification or QA. The independently
 // reviewed difficulty input must still cover the entire source bank.
 export function loadAuditPreservation({ root, request, bytes, bank, _historical = null }) {
+  if (request.approval?.sourceRebind?.schemaVersion === AUDIT_SOURCE_PRESERVATION_SCHEMA)
+    return loadAuditSourcePreservation({ root, request, bytes, bank, _historical }, {
+      load: loadAuditPreservation, plan: planPreservedAuditRecord,
+      assertReceipt: assertAuditPreservationReceipt, assertRepair: assertPreservedAuditRepair });
   const approval = request.approval, spec = approval?.sourceRebind, source = request.sourceArchiveFile;
   if (!isAuditPreservation(approval) || request.registrationMode !== undefined ||
       request.registryChanges?.length || !text(approval.approvedBy) || approval.metadataReviewed !== true)
@@ -471,6 +478,8 @@ export function preservedAuditConsumerParent(context, record, consumer) {
 }
 
 export function planPreservedAuditRecord(context, { current, identity, runtime, question, ordinal, receiptPath, replay = false }) {
+  if (context.sourceOnly === true)
+    return planAuditSourcePreservation(context, { current, identity, runtime, question, ordinal, receiptPath, replay });
   const { request, prior, records, identities, runtimes, oldBank, master, changes, difficultyItems, proofRows } = context;
   const uid = current.questionUid, old = records.get(uid), oldId = identities.get(uid), oldRuntime = runtimes.get(uid);
   const patch = context.patches.get(uid), beforeQuestion = oldBank[ordinal - 1], change = changes.get(uid);
@@ -567,6 +576,8 @@ export function planPreservedAuditRecord(context, { current, identity, runtime, 
 }
 
 export function assertAuditPreservationReceipt(receipt, request, bytes, questionCount) {
+  if (request.approval?.sourceRebind?.schemaVersion === AUDIT_SOURCE_PRESERVATION_SCHEMA)
+    return assertAuditSourcePreservationReceipt(receipt, request, bytes, questionCount);
   const { partial, patches, selectedCount: count } = preservationSelection(request, questionCount);
   if (receipt.schemaVersion !== "archive-reviewed-exam-meta-registration-v2" || receipt.metadataRegistrationStatus !== "REGISTERED" ||
       receipt.requestId !== request.requestId || receipt.requestSha256 !== sha(stable(request)) ||
