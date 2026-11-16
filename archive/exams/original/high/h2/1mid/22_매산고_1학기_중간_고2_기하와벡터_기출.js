@@ -535,7 +535,8 @@ window.questionBank = [
       "$2\\sqrt{13}$",
       "$2\\sqrt{14}$"
     ],
-    "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q14.png",
+    "image": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q14_question-v2.svg",
+    "imageSize": "large",
     "imageAlt": "사다리꼴에서 위쪽 변 AD와 아래쪽 변 BC가 평행하다. 꼭짓점 B와 C에서 밑변과 옆변이 이루는 두 각에 같은 표시가 있다.",
     "answer": "④",
     "solution": "$AD\\parallel BC$이고 밑각이 같으므로 사다리꼴은 이등변이다.\n두 밑변의 길이 차는 $8-4=4$이므로\n각 옆의 수평 차는 $2$이다.\n\n$P$를 $BC$의 중점이라 하면\n$\\overrightarrow{AB}+\\overrightarrow{AC}=2\\overrightarrow{AP}$이다.\n따라서\n$2|AP|=4\\sqrt5$,\n$|AP|=2\\sqrt5$이다.\n\n직각삼각형에서 $AP$의 수평 성분은 $2$이므로\n$2^2+h^2=(2\\sqrt5)^2$,\n$h=4$이다.\n\n두 밑변의 길이 차의 절반은 $2$이고 $AD=4$이므로\n$BD$의 수평 성분은 $2+4=6$이다.\n따라서\n$|BD|=\\sqrt{6^2+4^2}=\\sqrt{52}=2\\sqrt{13}$이다.\n\n따라서 정답은 ④이다.",
