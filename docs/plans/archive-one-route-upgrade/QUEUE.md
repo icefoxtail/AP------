@@ -11,6 +11,8 @@
 
 ## 공통 규칙 (모든 작업)
 
+- **사용자 원칙(2026-11-16): 항상 넓은 방식. 모든 문제를 활용 가능하게.** 표기 차이, 연결 행 없음, 승인 대기 같은 이유로 문항을 버리거나 막는 설계를 하지 않는다. 받아들이고 꼬리표를 남긴다. 엄격한 방식과 넓은 방식을 나란히 만들지 않는다. 유지하는 것은 근거 없이 값을 채우지 않는 것과 기계 검증(키가 살아 있는지, 상위 관계)뿐이다.
+
 - `main` 병합, PR 생성, 강제 push, 이력 재작성, 다른 브랜치(다른 작업자의 것) 수정 금지.
 - 운영 데이터(정본 메타, 레지스트리, 크로스워크, 4칸 사전, 영수증, 봉인 문서)는 고치지 않는다. 지시 파일이 명시한 파일만 바꾼다.
 - 검사를 약하게 만들지 않는다. 테스트를 지우거나 건너뛰게 하지 않는다. 실행하지 않은 검사는 보고서에 NOT_RUN.
@@ -28,6 +30,7 @@
 | 3 | `TASK-03-registrar-rebind.md` | `feat/registrar-rebind-20261116` | 대기 |
 | 4 | `TASK-04-type-unlock-code.md` | `feat/type-unlock-code-20261116` | 대기 |
 | 5 | `TASK-05-ci-blockers.md` | `fix/ci-blockers-20261116` | 대기 |
+| 5-2 | `TASK-09-scope-alias.md` (5번 다음, 6번보다 먼저) | `feat/scope-alias-20261116` | 대기 |
 | 6 | `TASK-06-bundle-manifest.md` | `feat/exam-bundle-20261116` | 대기 |
 | 7 | `TASK-07-coverage-map.md` | `feat/coverage-map-20261116` | 대기 |
 | 8 | `TASK-08-one-route-doc.md` | `docs/one-route-20261116` | 대기 |
