@@ -18,6 +18,7 @@ import { validateM2ProblemRendererContinuity } from "./reviewed-m2-problem-rende
 import { validateReviewedM2CcRendererContinuity } from "./reviewed-m2-cc-renderer-continuity.mjs";
 import { validateM2E017RhsContinuity } from "./reviewed-m2-e017-rhs-continuity.mjs";
 import { validateM2ProblemRenderer21Continuity } from "./reviewed-m2-problem21-continuity.mjs";
+import { validateM2Family3ProblemContinuity } from "./reviewed-m2-family3-problem-continuity.mjs";
 import { validateM2E023SolutionDisplayContinuity } from "./reviewed-m2-e023-solution-display-continuity.mjs";
 import { bindReviewedM2NativeRpmCourse } from "./reviewed-m2-native-rpm-course.mjs";
 
@@ -215,6 +216,17 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
       issuedSourceReview, cache });
     return { ...inner, studentPayloadSha256: sha256(stable(payload)), e017RhsContinuity: {
       ...e017Rhs.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
+  }
+  const m2Family3 = validateM2Family3ProblemContinuity({ root, request, patch, native: loaded, row,
+    question, bankFromBytes, cache });
+  if (m2Family3) {
+    // Preserve the existing retained-fields/scope options. The ordinary Native
+    // recursion still checks every non-display value and the current parent.
+    const inner = validateReviewedSourceReassessment({ root, request, patch: m2Family3.normalizedPatch,
+      metadata, question: m2Family3.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
+      issuedSourceReview, cache });
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)), m2Family3ProblemContinuity: {
+      ...m2Family3.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
   }
   // Both witnesses read the same real source before either comparison view is
   // composed. Each owns a closed, disjoint set of display fields. The recursive

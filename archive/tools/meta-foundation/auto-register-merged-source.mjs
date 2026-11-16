@@ -13,7 +13,7 @@ import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, nativeReviewedFamilyRationaleReuse,
   nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind, nativeReviewedE017RhsRebind,
-  nativeReviewedM2Problem21Rebind } from './native-reviewed-source-reuse.mjs';
+  nativeReviewedM2Problem21Rebind, nativeReviewedM2Family3Rebind } from './native-reviewed-source-reuse.mjs';
 import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
 import { nativeReviewedM2CcRendererRebind } from './reviewed-m2-cc-renderer-continuity.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
@@ -245,7 +245,8 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       const reviewedM2CcRenderer=nativeReviewedM2CcRendererRebind({receipt,previous,question,identity,ordinal,verifiedSource});
       const reviewedE017Rhs=nativeReviewedE017RhsRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       const reviewedM2Problem21=nativeReviewedM2Problem21Rebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
-      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2Renderer!==true&&reviewedM2CcRenderer!==true&&reviewedE017Rhs!==true&&reviewedM2Problem21!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      const reviewedM2Family3=nativeReviewedM2Family3Rebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2Renderer!==true&&reviewedM2CcRenderer!==true&&reviewedE017Rhs!==true&&reviewedM2Problem21!==true&&reviewedM2Family3!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }
