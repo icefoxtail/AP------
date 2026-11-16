@@ -489,3 +489,56 @@ test('Q24 native failure wrapper records only diagnostics and rethrows the exact
  finally{Q15.captureQ24Tiles=prior;}
  assert.equal(rows[0].failureCode,'UI_Q24_CONTENT_RANGE');assert.equal(rows[0].sameDomAsInitialMeasurement,true);assert.equal(f.state.screenshots.length,0);
 });
+
+// This synthetic observation tests failure transport only. The actual E045
+// mobile child roles and dimensions have not yet been observed.
+function e045Q24Diagnostic(){
+ const f=q24Diagnostic(),r=manifest.items.find(row=>row.key==='E045-Q24');
+ f.item={key:r.key,questionUid:r.questionUid,sourceOrdinal:r.sourceOrdinal,questionSha256:r.questionSha256,
+  sourceRef:{path:r.sourcePath,gitBlobSha1:r.sourceGitBlobSha1,sha256:r.sourceSha256,bytes:r.sourceBytes},
+  assetRef:{path:r.assetPath,gitBlobSha1:r.assetGitBlobSha1,sha256:r.assetSha256,bytes:r.assetBytes}};
+ f.active={key:r.key,questionUid:r.questionUid,sourceOrdinal:24,viewport:'mobile'};
+ return f;
+}
+test('E045 Q24 failure diagnostic retains the real shared rejection and does not capture',async()=>{
+ const f=e045Q24Diagnostic(),rows=[];
+ await assert.rejects(H.captureSharedWithDiagnostics(f.page,f.target,'/tmp/not-written.png',f.item,f.active,rows,f.measured),/UI_NATIVE_SURFACE_COMPLETENESS/);
+ assert.equal(rows.length,1);assert.equal(rows[0].key,'E045-Q24');assert.equal(rows[0].questionUid,f.item.questionUid);
+ assert.equal(rows[0].failureCode,'UI_NATIVE_SURFACE_COMPLETENESS');assert.equal(rows[0].sameDomAsInitialMeasurement,true);
+ assert.equal(rows[0].observation.status,'OBSERVATION_ONLY_NO_ACCEPTANCE');assert.equal(f.state.screenshots.length,0);
+ const raw=JSON.stringify(rows);for(const secret of [f.text.textContent,f.image.src,'<DIV','textContent','outerHTML'])assert(!raw.includes(secret));
+});
+test('E045 Q24 failure diagnostic preserves the exact original exception when observation also fails',async()=>{
+ const f=e045Q24Diagnostic(),rows=[],original=new Error('UI_NATIVE_SURFACE_COMPLETENESS'),prior=SharedSurface.assertSurfaceTopology;
+ SharedSurface.assertSurfaceTopology=()=>{throw original;};
+ try{await assert.rejects(H.captureSharedWithDiagnostics(f.page,{evaluate:async()=>{throw new Error('private observation');}},'/tmp/not-written.png',f.item,f.active,rows,f.measured),e=>e===original);}
+ finally{SharedSurface.assertSurfaceTopology=prior;}
+ assert.equal(rows.length,1);assert.equal(rows[0].observation.status,'UNAVAILABLE');assert.equal(rows[0].errorMessageSha256,sha(original.message));
+ assert(!JSON.stringify(rows).includes('private observation'));assert.equal(f.state.screenshots.length,0);
+});
+test('E045 Q24 failure diagnostic leaves the successful call order and return unchanged',async()=>{
+ const f=e045Q24Diagnostic(),rows=[],calls=[],result={exact:'capture'},a=SharedSurface.assertSurfaceTopology,c=SharedSurface.captureM1ProblemTiles;
+ SharedSurface.assertSurfaceTopology=s=>{assert.equal(s,f.measured.surface);calls.push('topology');};
+ SharedSurface.captureM1ProblemTiles=async(p,t,file)=>{assert.equal(p,f.page);assert.equal(t,target);assert.equal(file,'/tmp/not-written.png');calls.push('capture');return result;};
+ const target={evaluate:async()=>{throw new Error('diagnostic must not run on success');}};
+ try{assert.equal(await H.captureSharedWithDiagnostics(f.page,target,'/tmp/not-written.png',f.item,f.active,rows,f.measured),result);}
+ finally{SharedSurface.assertSurfaceTopology=a;SharedSurface.captureM1ProblemTiles=c;}
+ assert.deepEqual(calls,['topology','capture']);assert.equal(rows.length,0);
+});
+for(const[name,alter]of[
+ ['other UID',f=>f.item.questionUid=Q15.UID],['other key',f=>f.item.key='E048-Q24'],
+ ['other ordinal',f=>f.item.sourceOrdinal=15],['other whole question',f=>f.item.questionSha256='0'.repeat(64)],
+ ['missing source reference',f=>delete f.item.sourceRef],['different source path',f=>f.item.sourceRef.path='archive/exams/other.js'],
+ ['different source Git',f=>f.item.sourceRef.gitBlobSha1='0'.repeat(40)],['different source raw',f=>f.item.sourceRef.sha256='0'.repeat(64)],
+ ['different source byte count',f=>f.item.sourceRef.bytes++],['missing asset reference',f=>delete f.item.assetRef],
+ ['former asset revision',f=>f.item.assetRef.path=f.item.assetRef.path.replace('-r2.svg','-r1.svg')],
+ ['different asset Git',f=>f.item.assetRef.gitBlobSha1='0'.repeat(40)],['different asset raw',f=>f.item.assetRef.sha256='0'.repeat(64)],
+ ['different asset byte count',f=>f.item.assetRef.bytes++],['active key disagreement',f=>f.active.key='E048-Q24'],
+ ['active UID disagreement',f=>f.active.questionUid=Q15.UID],['active ordinal disagreement',f=>f.active.sourceOrdinal=15],
+ ['desktop',f=>f.active.viewport='desktop'],['different width',f=>f.measured.viewport.width=391],
+ ['different height',f=>f.measured.viewport.height=843],['missing measured viewport',f=>delete f.measured.viewport]
+])test('E045 Q24 failure diagnostic does not observe '+name,async()=>{
+ const f=e045Q24Diagnostic(),rows=[];alter(f);let observations=0;
+ await assert.rejects(H.captureSharedWithDiagnostics(f.page,{evaluate:async()=>{observations++;}},'/tmp/not-written.png',f.item,f.active,rows,f.measured),/UI_NATIVE_SURFACE_COMPLETENESS/);
+ assert.equal(observations,0);assert.equal(rows.length,0);assert.equal(f.state.screenshots.length,0);
+});

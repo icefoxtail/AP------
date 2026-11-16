@@ -114,7 +114,15 @@ async function captureSharedWithDiagnostics(page,target,file,item,activeCase,dia
    item.questionSha256==='6af32349e8c99b6a75b05aae09dec93eb95cf45b28399e1cfc5d897494440d7a'&&
    activeCase.key===item.key&&activeCase.questionUid===item.questionUid&&activeCase.sourceOrdinal===24&&activeCase.viewport==='mobile'&&
    measuredSurface.viewport?.width===390&&measuredSurface.viewport?.height===844;
-  if(selected){
+  const selectedE045=item.key==='E045-Q24'&&item.questionUid==='qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd'&&item.sourceOrdinal===24&&
+   item.questionSha256==='6bbba32d209bd4dedfd6b154d86c986a059e69ac883b52bc963b67db17a36ae8'&&
+   item.sourceRef?.path==='archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js'&&
+   item.sourceRef.gitBlobSha1==='c8945961f52f7efca83d66ea045d070e74718de6'&&item.sourceRef.sha256==='c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a'&&item.sourceRef.bytes===44656&&
+   item.assetRef?.path==='archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2-source-repair-r2.svg'&&
+   item.assetRef.gitBlobSha1==='6ddf55bc8a7575124342f996cd654b6df3ca5013'&&item.assetRef.sha256==='a7f34be6ce3556987911922fe8df74cfca412de47f8ce1af3d0dd4bccc8c3749'&&item.assetRef.bytes===10634&&
+   activeCase.key===item.key&&activeCase.questionUid===item.questionUid&&activeCase.sourceOrdinal===24&&activeCase.viewport==='mobile'&&
+   measuredSurface.viewport?.width===390&&measuredSurface.viewport?.height===844;
+  if(selected||selectedE045){
    const row={key:item.key,questionUid:item.questionUid,sourceOrdinal:24,viewport:'mobile',kind:'Q24_SHARED_CAPTURE_FAILURE',
     failureCode:safeFailureCode(error,'UI_BROWSER_CHECK_FAILED'),errorMessageSha256:sha256(error.message||'')};
    try{row.observation=await target.evaluate(inspectQ24FailureMetadata);row.sameDomAsInitialMeasurement=row.observation.domSha256===measuredSurface.domSha256;}
