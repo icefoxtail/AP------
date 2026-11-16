@@ -1,13 +1,13 @@
 {
   "schemaVersion": "middle-D-current-input-repair-dependency-v1",
-  "baseMain": "b645719341bc7deae6ed3b21a78f878109dc7789",
-  "previousDHead": "abf336e1ba5ef47cee91d51f883e9c0d35df7542",
+  "baseMain": "cbc203f210f2d70daf2cd1190b0794ae536cb121",
+  "previousDHead": "9b9d43e1f0d3dea32baa01772767633855910dce",
   "dependency": {
     "pr": 2246,
-    "head": "387dba05a709c6b3e65e712ffd3e7932fcf148df",
-    "tree": "91f433b8e4894e09165396805765238edb360da8",
-    "exactPaths": 8,
-    "remoteAfter": "8_OF_8_EXACT",
+    "head": "7d96a07730d1cd71cddcb39a60d7d7e10759ce6a",
+    "tree": "457b7c4b3023198266a1525bc364bed6e61d77e0",
+    "exactPaths": 4,
+    "scope": "E024_EXISTING_NATIVE_PARENT_ONLY",
     "historyReceiptChanges": 0,
     "originalSourceChanges": 0,
     "newApprovals": 0
@@ -16,14 +16,15 @@
     "nativeNew": 9,
     "nativePreserved": 23,
     "requests": 8,
-    "ownPreviousPaths": 61,
-    "currentBaseChangesSince0add": 57,
+    "ownPreviousPaths": 62,
     "intersection": 0,
-    "sharedThreeCodeChanges": "UNCHANGED_EXACT_FROM_65_TESTED_UNION"
+    "sharedThreeCodeChanges": "EXACT_FROM_CURRENT_87_TESTED_UNION",
+    "currentBaseChangesSincePreviousHead": 16
   },
   "repairVerification": {
-    "previewTests": 67,
-    "previewIndependentSha256": "d006640bd9774035143d160dd961bfc8a481c7e18a1fcf06c1da46026e0e8e9a",
+    "preview": "REUSE_MERGED_MAIN_2250_EXACT",
+    "previewIndependentTests": 23,
+    "previewIndependentSha256": "c5776a4844abbbb1f8bbf33094acecab60fe69546f5db57299aefee5209b61b5",
     "E024Consumer": 1,
     "E024IndependentSha256": "4482e776768f97813b490063265bbb20812671dc4e19f181e34dc2e1ba08791d",
     "registeredActual": "NOT_RUN"
@@ -34,13 +35,13 @@
     "error": "PR_NATIVE_PREVIEW:EVIDENCE_DRIFT:archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
     "E024PriorCI": "CURRENT_APPROVED_PARENT_CARRIER_MISSING"
   },
-  "operationalOrder": "Merge exact verified dependency2246, then exact D HEAD via merge commit. This is a selected branch dependency; no fixed semantic C-before-D condition.",
+  "operationalOrder": "Merge E024-only #2246, then this exact D HEAD via merge commit. Reuse merged main #2250 preview; no fixed semantic C-before-D condition.",
   "actualWriter": {
     "registeredSha": "e9af62176fc10bce6c30f420d911664082ec059b",
     "failedRun": 43787650174,
     "reason": "RETRY_EXHAUSTED_3_MAIN_RACES_NO_REGISTERED_SHA",
     "nextRun": 43793905345,
-    "nextState": "PREPARE_IN_PROGRESS"
+    "nextState": "PERSIST_IN_PROGRESS_NO_REGISTERED_SHA"
   },
   "C": {
     "ownerPR": 2203,
@@ -212,8 +213,18 @@
   },
   "codeReferenceMain": "c8582e3f664476fe2bcc537f882c608ea9470327",
   "laterMainDelta": {
-    "files": 24,
-    "D_C_repairPathIntersection": 0,
-    "sourceAndCompactSixIntersection": 0
+    "from": "b645719341bc7deae6ed3b21a78f878109dc7789",
+    "to": "cbc203f210f2d70daf2cd1190b0794ae536cb121",
+    "files": 16,
+    "ownD_C_PathIntersection": 0
+  },
+  "previewRepairReuse": {
+    "mergedPR": 2250,
+    "mainCommit": "a248ad5ad67c2e98de50ffc0ee438b75abfff17b",
+    "codeGitBlob": "36ee9e10316f8634926c8b4fd3d828f8d1c451cd",
+    "testGitBlob": "662a8659b3d9e589d4c2dd204703e89584e61888",
+    "independentPassed": 23,
+    "independentSha256": "c5776a4844abbbb1f8bbf33094acecab60fe69546f5db57299aefee5209b61b5",
+    "priorRootProposal": "RETAINED_IN_HISTORY_ONLY_NOT_EFFECTIVE_CHANGE"
   }
 }
