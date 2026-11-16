@@ -1144,7 +1144,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "sin²+cos²=1에서 사인을 구하고 예각 조건으로 양의 제곱근을 택한 뒤 sin/cos로 탄젠트를 구한다.",
-    "decisiveStep": "sin²+cos²=1에서 사인을 구하고 예각 조건으로 양의 제곱근을 택한 뒤 sin/cos로 탄젠트를 구한다."
+    "decisiveStep": "sin²+cos²=1에서 사인을 구하고 예각 조건으로 양의 제곱근을 택한 뒤 sin/cos로 탄젠트를 구한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 20,

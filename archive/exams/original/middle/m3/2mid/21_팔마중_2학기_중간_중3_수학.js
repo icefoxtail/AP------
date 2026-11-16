@@ -234,7 +234,9 @@ window.questionBank = [
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
-    "sourceAssetGitBlobs": []
+    "sourceAssetGitBlobs": [],
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -378,7 +380,9 @@ window.questionBank = [
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
-    "sourceAssetGitBlobs": []
+    "sourceAssetGitBlobs": [],
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -1705,7 +1709,9 @@ window.questionBank = [
     "sourceMode": "ORIGINAL",
     "originalSourceProvenance": "ORIGINAL",
     "originalSourceGitBlob": "3e6da5246093b39b3641701cb55bfbb414f12c98",
-    "sourceAssetGitBlobs": []
+    "sourceAssetGitBlobs": [],
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,

@@ -193,7 +193,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "지름을 보는 원주각의 직각과 같은 호의 중심각 절반을 이용하여 성립하는 두 각 진술을 판정한다.",
-    "decisiveStep": "지름을 보는 원주각의 직각과 같은 호의 중심각 절반을 이용하여 성립하는 두 각 진술을 판정한다."
+    "decisiveStep": "지름을 보는 원주각의 직각과 같은 호의 중심각 절반을 이용하여 성립하는 두 각 진술을 판정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -533,7 +536,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "AP=AT의 이등변 밑각을 구해 일직선상 외각을 얻고 접현각으로 다른 꼭짓각에 전달한 뒤 삼각형의 남은 각을 구한다.",
-    "decisiveStep": "AP=AT의 이등변 밑각을 구해 일직선상 외각을 얻고 접현각으로 다른 꼭짓각에 전달한 뒤 삼각형의 남은 각을 구한다."
+    "decisiveStep": "AP=AT의 이등변 밑각을 구해 일직선상 외각을 얻고 접현각으로 다른 꼭짓각에 전달한 뒤 삼각형의 남은 각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,

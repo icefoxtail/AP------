@@ -48,7 +48,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "현의 수직이등분 성질로 반현의 등길이를 옮기고 반지름·직각을 결합해 RHS합동을 확인한 뒤 잘못된 대응점 순서를 판정한다.",
-    "decisiveStep": "현의 수직이등분 성질로 반현의 등길이를 옮기고 반지름·직각을 결합해 RHS합동을 확인한 뒤 잘못된 대응점 순서를 판정한다."
+    "decisiveStep": "현의 수직이등분 성질로 반현의 등길이를 옮기고 반지름·직각을 결합해 RHS합동을 확인한 뒤 잘못된 대응점 순서를 판정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -96,7 +99,10 @@ window.questionBank=[
     "difficultyConfidence": "medium",
     "difficultyBucket": 2,
     "primaryMethod": "접점에서 반지름과 접선이 수직임을 이용해 피타고라스로 PA를 구하고 같은 외부점의 두 접선 등길이로 PB를 결정한다.",
-    "decisiveStep": "접점에서 반지름과 접선이 수직임을 이용해 피타고라스로 PA를 구하고 같은 외부점의 두 접선 등길이로 PB를 결정한다."
+    "decisiveStep": "접점에서 반지름과 접선이 수직임을 이용해 피타고라스로 PA를 구하고 같은 외부점의 두 접선 등길이로 PB를 결정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -144,7 +150,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "같은 호를 보는 원주각이 중심각의 절반임을 그대로 대입한다.",
-    "decisiveStep": "같은 호를 보는 원주각이 중심각의 절반임을 그대로 대입한다."
+    "decisiveStep": "같은 호를 보는 원주각이 중심각의 절반임을 그대로 대입한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -192,7 +201,10 @@ window.questionBank=[
     "difficultyConfidence": "medium",
     "difficultyBucket": 1,
     "primaryMethod": "접선 PR과 현 PA 사이의 각에 대응하는 같은 현의 원주각을 찾아 올바른 등식 보기를 고른다.",
-    "decisiveStep": "접선 PR과 현 PA 사이의 각에 대응하는 같은 현의 원주각을 찾아 올바른 등식 보기를 고른다."
+    "decisiveStep": "접선 PR과 현 PA 사이의 각에 대응하는 같은 현의 원주각을 찾아 올바른 등식 보기를 고른다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -282,7 +294,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "현의 중점과 피타고라스로 현AB의 길이를 구하고 같은 현의 중심거리를 CD로 옮겨 삼각형 넓이를 계산한다.",
-    "decisiveStep": "현의 중점과 피타고라스로 현AB의 길이를 구하고 같은 현의 중심거리를 CD로 옮겨 삼각형 넓이를 계산한다."
+    "decisiveStep": "현의 중점과 피타고라스로 현AB의 길이를 구하고 같은 현의 중심거리를 CD로 옮겨 삼각형 넓이를 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -330,7 +345,10 @@ window.questionBank=[
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "접기 대응으로 접힌 현까지의 중심거리가 큰 반지름의 절반임을 얻고 반현과 반지름의 피타고라스 관계에서 두 반지름을 결정한다.",
-    "decisiveStep": "접기 대응으로 접힌 현까지의 중심거리가 큰 반지름의 절반임을 얻고 반현과 반지름의 피타고라스 관계에서 두 반지름을 결정한다."
+    "decisiveStep": "접기 대응으로 접힌 현까지의 중심거리가 큰 반지름의 절반임을 얻고 반현과 반지름의 피타고라스 관계에서 두 반지름을 결정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -378,7 +396,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "같은 꼭짓점에서의 접선 등길이를 이용한 반둘레 관계에서 BE=s-CA로 목표 접선 길이를 계산한다.",
-    "decisiveStep": "같은 꼭짓점에서의 접선 등길이를 이용한 반둘레 관계에서 BE=s-CA로 목표 접선 길이를 계산한다."
+    "decisiveStep": "같은 꼭짓점에서의 접선 등길이를 이용한 반둘레 관계에서 BE=s-CA로 목표 접선 길이를 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -426,7 +447,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "각 꼭짓점의 두 접선 길이를 x,y로 두고 전체 변의 합 관계와 같은 점 B의 접선 등길이를 연립해 BR을 구한다.",
-    "decisiveStep": "각 꼭짓점의 두 접선 길이를 x,y로 두고 전체 변의 합 관계와 같은 점 B의 접선 등길이를 연립해 BR을 구한다."
+    "decisiveStep": "각 꼭짓점의 두 접선 길이를 x,y로 두고 전체 변의 합 관계와 같은 점 B의 접선 등길이를 연립해 BR을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -522,7 +546,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "두 원주각을 해당 호의 중심각 크기로 바꾼 뒤 전체360도에서 제외하고 남은 호의 원주각을 구한다.",
-    "decisiveStep": "두 원주각을 해당 호의 중심각 크기로 바꾼 뒤 전체360도에서 제외하고 남은 호의 원주각을 구한다."
+    "decisiveStep": "두 원주각을 해당 호의 중심각 크기로 바꾼 뒤 전체360도에서 제외하고 남은 호의 원주각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -570,7 +597,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "원주각에서 중심각120도를 구하고 현의 중점 수선과60도 직각삼각형의 변비로 반지름을 복원해 호의 길이를 구한다.",
-    "decisiveStep": "원주각에서 중심각120도를 구하고 현의 중점 수선과60도 직각삼각형의 변비로 반지름을 복원해 호의 길이를 구한다."
+    "decisiveStep": "원주각에서 중심각120도를 구하고 현의 중점 수선과60도 직각삼각형의 변비로 반지름을 복원해 호의 길이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -618,7 +648,10 @@ window.questionBank=[
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "두 내접사각형의 대각 보각과 일직선의 보각을 순차 적용해 외부 삼각형 두 각을 정하고 남은 각을 구한다.",
-    "decisiveStep": "두 내접사각형의 대각 보각과 일직선의 보각을 순차 적용해 외부 삼각형 두 각을 정하고 남은 각을 구한다."
+    "decisiveStep": "두 내접사각형의 대각 보각과 일직선의 보각을 순차 적용해 외부 삼각형 두 각을 정하고 남은 각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 14,
@@ -748,7 +781,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "현의 중점에서 반현4와 중심거리R-2를 정하고 반지름R을 빗변으로 하는 피타고라스 방정식으로 반지름을 역산한다.",
-    "decisiveStep": "현의 중점에서 반현4와 중심거리R-2를 정하고 반지름R을 빗변으로 하는 피타고라스 방정식으로 반지름을 역산한다."
+    "decisiveStep": "현의 중점에서 반현4와 중심거리R-2를 정하고 반지름R을 빗변으로 하는 피타고라스 방정식으로 반지름을 역산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 17,
@@ -892,7 +928,10 @@ window.questionBank=[
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "힌트의 내접사각형 같은 현 각과 접현각, 작은 원 지름의 직각을 연결해 x+y=90도와 x-y=26도를 세워 목표각을 구한다.",
-    "decisiveStep": "힌트의 내접사각형 같은 현 각과 접현각, 작은 원 지름의 직각을 연결해 x+y=90도와 x-y=26도를 세워 목표각을 구한다."
+    "decisiveStep": "힌트의 내접사각형 같은 현 각과 접현각, 작은 원 지름의 직각을 연결해 x+y=90도와 x-y=26도를 세워 목표각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 20,
@@ -1062,7 +1101,10 @@ window.questionBank=[
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "첫 원주각에서 부채꼴 중심각을 정해 넓이로 반지름을 역산하고 현이 반지름과 같은 정삼각형을 만든 뒤 다른 원주각을 구한다.",
-    "decisiveStep": "첫 원주각에서 부채꼴 중심각을 정해 넓이로 반지름을 역산하고 현이 반지름과 같은 정삼각형을 만든 뒤 다른 원주각을 구한다."
+    "decisiveStep": "첫 원주각에서 부채꼴 중심각을 정해 넓이로 반지름을 역산하고 현이 반지름과 같은 정삼각형을 만든 뒤 다른 원주각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 24,

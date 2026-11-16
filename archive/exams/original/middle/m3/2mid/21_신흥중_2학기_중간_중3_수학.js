@@ -54,7 +54,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "그림의 빗변5와 대변3·인접변4를 사인·코사인 정의에 직접 대입하고 합한다.",
-    "decisiveStep": "그림의 빗변5와 대변3·인접변4를 사인·코사인 정의에 직접 대입하고 합한다."
+    "decisiveStep": "그림의 빗변5와 대변3·인접변4를 사인·코사인 정의에 직접 대입하고 합한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -109,7 +111,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "큰 직각삼각형의 빗변13을 복원하고 x와B의 여각 관계로 sinx=cosB를 적용한다.",
-    "decisiveStep": "큰 직각삼각형의 빗변13을 복원하고 x와B의 여각 관계로 sinx=cosB를 적용한다."
+    "decisiveStep": "큰 직각삼각형의 빗변13을 복원하고 x와B의 여각 관계로 sinx=cosB를 적용한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -164,7 +168,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "직선기울기3을 tan a로 읽고 변비1:3의 빗변√10에서 sin a cos a를 계산한다.",
-    "decisiveStep": "직선기울기3을 tan a로 읽고 변비1:3의 빗변√10에서 sin a cos a를 계산한다."
+    "decisiveStep": "직선기울기3을 tan a로 읽고 변비1:3의 빗변√10에서 sin a cos a를 계산한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -219,7 +225,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "정육면체의 면대각선6√2와 공간대각선6√3을 복원한 뒤 cosx·tanx의 변비에서 GE가 소거되는 것을 읽는다. 길이 목표가 아닌 삼각비식이므로 GEOMETRIC_DERIVATION으로 교정한다.",
-    "decisiveStep": "정육면체의 면대각선6√2와 공간대각선6√3을 복원한 뒤 cosx·tanx의 변비에서 GE가 소거되는 것을 읽는다. 길이 목표가 아닌 삼각비식이므로 GEOMETRIC_DERIVATION으로 교정한다."
+    "decisiveStep": "정육면체의 면대각선6√2와 공간대각선6√3을 복원한 뒤 cosx·tanx의 변비에서 GE가 소거되는 것을 읽는다. 길이 목표가 아닌 삼각비식이므로 GEOMETRIC_DERIVATION으로 교정한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -274,7 +282,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "30°,60°,45°의 표준 삼각비를 대입해 두 같은 곱의 차를 구한다.",
-    "decisiveStep": "30°,60°,45°의 표준 삼각비를 대입해 두 같은 곱의 차를 구한다."
+    "decisiveStep": "30°,60°,45°의 표준 삼각비를 대입해 두 같은 곱의 차를 구한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -329,7 +339,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "그림의 y좌표0.5736을 표의 sin35°와 대응해 각35°를 역조회하고 cos35°=0.8192를 읽어 BD=1−OB로 계산한다.",
-    "decisiveStep": "그림의 y좌표0.5736을 표의 sin35°와 대응해 각35°를 역조회하고 cos35°=0.8192를 읽어 BD=1−OB로 계산한다."
+    "decisiveStep": "그림의 y좌표0.5736을 표의 sin35°와 대응해 각35°를 역조회하고 cos35°=0.8192를 읽어 BD=1−OB로 계산한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -384,7 +396,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "curriculum": "2015",
     "primaryMethod": "내심의 각120=90+A/2에서 A60,B30을 정한 뒤 요청된 특수각식에 대입한다.",
-    "decisiveStep": "내심의 각120=90+A/2에서 A60,B30을 정한 뒤 요청된 특수각식에 대입한다."
+    "decisiveStep": "내심의 각120=90+A/2에서 A60,B30을 정한 뒤 요청된 특수각식에 대입한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -498,7 +512,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2015",
     "primaryMethod": "건물 양쪽에서 공통높이h를 써 BH=h,CH=h/√3를 만들고 두거리가300이라는 식으로 결정한다.",
-    "decisiveStep": "건물 양쪽에서 공통높이h를 써 BH=h,CH=h/√3를 만들고 두거리가300이라는 식으로 결정한다."
+    "decisiveStep": "건물 양쪽에서 공통높이h를 써 BH=h,CH=h/√3를 만들고 두거리가300이라는 식으로 결정한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -990,7 +1006,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "두 접선과 중심의 합동 관계로 외점각을30°씩 나누고 접점수직삼각형에서 OA=18tan30을 구한다.",
-    "decisiveStep": "두 접선과 중심의 합동 관계로 외점각을30°씩 나누고 접점수직삼각형에서 OA=18tan30을 구한다."
+    "decisiveStep": "두 접선과 중심의 합동 관계로 외점각을30°씩 나누고 접점수직삼각형에서 OA=18tan30을 구한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 18,
@@ -1181,7 +1199,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "직각삼각형BCD에서 CD6을 구한 뒤 외접사각형 대변합으로 AB를 구한다.",
-    "decisiveStep": "직각삼각형BCD에서 CD6을 구한 뒤 외접사각형 대변합으로 AB를 구한다."
+    "decisiveStep": "직각삼각형BCD에서 CD6을 구한 뒤 외접사각형 대변합으로 AB를 구한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 21,
@@ -1230,7 +1250,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2015",
     "primaryMethod": "수평거리100과 제공된 tan34값을 높이식100tan34에 바로 대입한다.",
-    "decisiveStep": "수평거리100과 제공된 tan34값을 높이식100tan34에 바로 대입한다."
+    "decisiveStep": "수평거리100과 제공된 tan34값을 높이식100tan34에 바로 대입한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,

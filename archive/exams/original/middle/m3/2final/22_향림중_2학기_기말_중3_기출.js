@@ -46,7 +46,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중심에서 현에 내린 수선으로 반현12를 얻고 중심거리5와 피타고라스로 반지름을 구한다.",
-    "decisiveStep": "중심에서 현에 내린 수선으로 반현12를 얻고 중심거리5와 피타고라스로 반지름을 구한다."
+    "decisiveStep": "중심에서 현에 내린 수선으로 반현12를 얻고 중심거리5와 피타고라스로 반지름을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -93,7 +96,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중심에서 두 현까지의 등거리로 두 현의 길이가 같음을 얻고 이등변삼각형의 밑각을 구한다.",
-    "decisiveStep": "중심에서 두 현까지의 등거리로 두 현의 길이가 같음을 얻고 이등변삼각형의 밑각을 구한다."
+    "decisiveStep": "중심에서 두 현까지의 등거리로 두 현의 길이가 같음을 얻고 이등변삼각형의 밑각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -140,7 +146,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "110° 원주각이 보는 큰 호의 중심각을 두 배로 구한다.",
-    "decisiveStep": "110° 원주각이 보는 큰 호의 중심각을 두 배로 구한다."
+    "decisiveStep": "110° 원주각이 보는 큰 호의 중심각을 두 배로 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -187,7 +196,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "반지름을r, 중심에서 현까지의 거리를r−4로 두고 반현6과 피타고라스식을 세워 반지름을 복원한 뒤 둘레를 구한다.",
-    "decisiveStep": "반지름을r, 중심에서 현까지의 거리를r−4로 두고 반현6과 피타고라스식을 세워 반지름을 복원한 뒤 둘레를 구한다."
+    "decisiveStep": "반지름을r, 중심에서 현까지의 거리를r−4로 두고 반현6과 피타고라스식을 세워 반지름을 복원한 뒤 둘레를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -234,7 +246,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "세 꼭짓점에서 그은 등접선으로 변의 조각들을x,10−x,6−x로 나타내어 한 변의 합12와 연결한다.",
-    "decisiveStep": "세 꼭짓점에서 그은 등접선으로 변의 조각들을x,10−x,6−x로 나타내어 한 변의 합12와 연결한다."
+    "decisiveStep": "세 꼭짓점에서 그은 등접선으로 변의 조각들을x,10−x,6−x로 나타내어 한 변의 합12와 연결한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -281,7 +296,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "반원의 호180°와 중심각이 정하는 호50°의 차를 구하고 원 밖 두 할선각의 절반 관계를 적용한다.",
-    "decisiveStep": "반원의 호180°와 중심각이 정하는 호50°의 차를 구하고 원 밖 두 할선각의 절반 관계를 적용한다."
+    "decisiveStep": "반원의 호180°와 중심각이 정하는 호50°의 차를 구하고 원 밖 두 할선각의 절반 관계를 적용한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -328,7 +346,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "호의 길이 비례로 작은 중심각40°를 구한 뒤 목표 원주각이 보는 두 호의 중심각 합160°를 절반으로 한다.",
-    "decisiveStep": "호의 길이 비례로 작은 중심각40°를 구한 뒤 목표 원주각이 보는 두 호의 중심각 합160°를 절반으로 한다."
+    "decisiveStep": "호의 길이 비례로 작은 중심각40°를 구한 뒤 목표 원주각이 보는 두 호의 중심각 합160°를 절반으로 한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -375,7 +396,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접현각80°를 같은 현을 보는 원주각으로 옮기고 삼각형 내각합에서 목표각을 구한다.",
-    "decisiveStep": "접현각80°를 같은 현을 보는 원주각으로 옮기고 삼각형 내각합에서 목표각을 구한다."
+    "decisiveStep": "접현각80°를 같은 현을 보는 원주각으로 옮기고 삼각형 내각합에서 목표각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -464,7 +488,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "접선의 등길이·각이등분과 접점의 직각에서30-60-90 삼각형의 변비로 반지름을 복원하고, 두 접선 사이 각의 보각으로 중심각을 정해 부채꼴 넓이를 구한다.",
-    "decisiveStep": "접선의 등길이·각이등분과 접점의 직각에서30-60-90 삼각형의 변비로 반지름을 복원하고, 두 접선 사이 각의 보각으로 중심각을 정해 부채꼴 넓이를 구한다."
+    "decisiveStep": "접선의 등길이·각이등분과 접점의 직각에서30-60-90 삼각형의 변비로 반지름을 복원하고, 두 접선 사이 각의 보각으로 중심각을 정해 부채꼴 넓이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -511,7 +538,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접점의 직각으로 중심거리를 구하고 접점 대칭으로 생긴 두 직각삼각형의 AA닮음에서 반현 길이를 계산한다.",
-    "decisiveStep": "접점의 직각으로 중심거리를 구하고 접점 대칭으로 생긴 두 직각삼각형의 AA닮음에서 반현 길이를 계산한다."
+    "decisiveStep": "접점의 직각으로 중심거리를 구하고 접점 대칭으로 생긴 두 직각삼각형의 AA닮음에서 반현 길이를 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -558,7 +588,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "접현각에서 호BC를 구하고 평행선이 만드는 등각으로 두 호를 대응시켜 호AD를 복원한 뒤 내부 교차현각을 구한다.",
-    "decisiveStep": "접현각에서 호BC를 구하고 평행선이 만드는 등각으로 두 호를 대응시켜 호AD를 복원한 뒤 내부 교차현각을 구한다."
+    "decisiveStep": "접현각에서 호BC를 구하고 평행선이 만드는 등각으로 두 호를 대응시켜 호AD를 복원한 뒤 내부 교차현각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -982,7 +1015,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름에 대한 직각과 접현각을 삼각형의 각으로 전달한 뒤 연장선 보각과 내각합으로 외부 목표각을 구한다.",
-    "decisiveStep": "지름에 대한 직각과 접현각을 삼각형의 각으로 전달한 뒤 연장선 보각과 내각합으로 외부 목표각을 구한다."
+    "decisiveStep": "지름에 대한 직각과 접현각을 삼각형의 각으로 전달한 뒤 연장선 보각과 내각합으로 외부 목표각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,
