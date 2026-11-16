@@ -589,7 +589,7 @@ test('all changed browser scripts use new cache versions', () => {
   assert.match(html, /archive2\.css\?v=20261111-remove-1/);
   assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);
   assert.match(html, /archive2-papers\.js\?v=20261110-teacher-copy-1/);
-  assert.match(html, /archive2-navigation\.js\?v=20261110-library-2/);
+  assert.match(html, /archive2-navigation\.js\?v=20261116-one-screen-1/);
 });
 
 test('Finder, Recent, and Saved Paper view state survives route changes and reload URLs', () => {

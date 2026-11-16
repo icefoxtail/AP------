@@ -15,7 +15,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 ## 화면 디자인 (2026-11-10 사용자 결정)
 
-- 화면 디자인은 `archive/DESIGN.md`를 따른다. 색·글꼴·모양은 `archive/archive2-tokens.css` 한 곳에서 정의하고, 화면 CSS에 색 숫자를 직접 쓰지 않는다. 메뉴는 `archive2-navigation.js`(PC 6칸 / 휴대폰 5칸)가 `workspace.html`과 `unit-past-exams.html?ready=1`에 같이 그린다. 이유: 화면마다 모양이 달라 완성도가 낮아 보인다는 사용자 지적이 있었다.
+- 화면 디자인은 `archive/DESIGN.md`를 따른다. 색·글꼴·모양은 `archive/archive2-tokens.css` 한 곳에서 정의하고, 화면 CSS에 색 숫자를 직접 쓰지 않는다. 메뉴는 `archive2-navigation.js`(PC 6칸 / 휴대폰 5칸)가 `workspace.html`과 `unit-past-exams.html`에 같이 그린다. 이유: 화면마다 모양이 달라 완성도가 낮아 보인다는 사용자 지적이 있었다.
 - `apmath/DESIGN.md`는 APMS용이라 별개다.
 
 ## 시험지 끝 제출 QR (2026-11-01 사용자 결정)
@@ -68,7 +68,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **Worker가 다시 배포되지 않게 `archive2-history.js`·`archive2-core.js`·`archive2-output*.js`를 건드리지 않았다.** 이 파일들이 main에 들어가면 `.github/workflows/apms-worker-deploy.yml`이 Worker를 자동 배포한다. `saved_paper_id`·`archive_file`은 `History.normalizeAssignments`가 버리므로 출제 내역 화면은 `state.recentAssignments`(원자료)에서 `recentSourceOf`로 읽는다. 이 필드를 정규화에 넣고 싶으면 Worker 재배포를 감수하는 별도 결정이 필요하다.
 - **출제 내역 줄(`view=recent`)**: 같은 `.exam-row` 구성요소, 날짜순, 책등에 출제 월·일과 대상 학년. 출처 표시는 `saved_paper_id`가 있으면 "보관함 문제지"(눌러 보관함의 그 문제지로), 없고 `archive_file`이 `MIXED:`로 시작하면 "단원별 기출", 그 밖의 파일이면 "학교 기출"이다. 기간·학년·반·과목·검색 필터와 포커스·늦은 응답 무시 규칙은 그대로다.
 - **학생별 확인**(`assignmentStatus`)은 출제 내역뿐 아니라 보관함 줄에서도 열린다(`isStatusView`). 보관함에서 열 때 `recentSelectedAssignmentId`를 비우는 이유: 이전 출제 내역 선택이 남아 있으면 응답이 현재 요청으로 인정되지 않았다.
-- **로그인 판정은 `archive/archive2-session.js` 한 곳**(교사·관리자·owner 역할, id `t_admin`, 로그인 id `admin`)이고 왼쪽 메뉴와 단원별 기출이 같이 쓴다. 교사가 아닌 계정이 로그인돼 있으면 메뉴에 "선생님 계정으로 로그인해 주세요"가 나온다. 서버가 `owner`를 거부하는 곳이 있어도 판정을 좁히지 않는다(기존 동작 유지). 단원별 기출 페이지는 시작할 때 인라인으로 `init()`을 부르므로 이 스크립트를 `defer` 없이 먼저 불러야 한다.
+- **로그인 판정은 `archive/archive2-session.js` 한 곳**(교사·관리자·owner 역할, id `t_admin`, 로그인 id `admin`)이고 왼쪽 메뉴와 단원별 기출이 같이 쓴다. 교사가 아닌 계정이 로그인돼 있으면 메뉴에 "선생님 계정으로 로그인해 주세요"가 나온다. 서버가 `owner`를 거부하는 곳이 있어도 판정을 좁히지 않는다(기존 동작 유지). 단원별 기출 페이지는 메뉴 자리 바로 뒤에 이 스크립트와 `archive2-navigation.js`를 `defer` 없이 불러(작은 파일이라 첫 화면부터 메뉴가 보인다) 메뉴가 먼저 붙고, 나머지 스크립트는 모두 `defer`이며 `DOMContentLoaded`에서 `init()`을 부른다.
 - **로그인이 없을 때 화면(2026-11-10 조정)**: 교사 세션이 아니면(`teacherSessionOk`, 판정은 `archive2-session.js`) `view=saved`·`view=recent`는 API를 한 번도 부르지 않고 `data-login-notice` 안내 하나만 그린다(오류 아님, 알림·토스트 없음). 서버가 401/403을 줘도 같은 안내다. 그 밖의 오류는 본문에 한 번만 보이게 `error.archive2ShownInline`을 달아 `status()` 토스트가 같은 문장을 되풀이하지 않게 했다. 출제 이력 불러오기 실패·확인 중 문구는 카드마다가 아니라 목록 위 `data-history-note` 한 줄에만 둔다.
 - 새 파일을 만들면 `tools/archive-pages-release-manifest.json`의 `archiveRootFiles`에 올려야 학생·교사 사이트에 배포된다.
 
@@ -102,7 +102,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 ## 단원별 기출 선택 규칙 (2026-11-10 사용자 결정)
 
-- 단원별 기출(`unit-past-exams.html?ready=1`)은 단원 × 난이도 1~5단계 표에서 **여러 단원 × 여러 단계를 한 번에** 고른다. 코드는 `UnitPastExamsCore.buildSelectionPapers(selection, { units, perCell, order })`와 `countGrid(units)`다. 이유: 교사가 학교별만큼 단원별로, 난이도별로 주는 일이 많은데 예전 3단계 진행은 단원 하나씩만 골랐고 칸별 문항 수도 고르기 전에는 안 보였다.
+- 단원별 기출(`unit-past-exams.html`)은 단원 × 난이도 1~5단계 표에서 **여러 단원 × 여러 단계를 한 번에** 고른다. 코드는 `UnitPastExamsCore.buildSelectionPapers(selection, { units, perCell, order })`와 `countGrid(units)`다. 이유: 교사가 학교별만큼 단원별로, 난이도별로 주는 일이 많은데 예전 3단계 진행은 단원 하나씩만 골랐고 칸별 문항 수도 고르기 전에는 안 보였다.
 - 기본은 **고른 칸의 문항을 있는 만큼 전부** 넣는다. `칸마다 N문항`(1~50)은 선택 사항이다. **칸의 문항이 N보다 적으면 막지 않고 있는 만큼만** 넣고 `shortages`에 기록해 화면에 알린다. 이유: 예전 비슷한 기능은 10문제를 정했는데 모자라면 문제지가 아예 만들어지지 않아 쓰이지 않았다. 모자람을 오류로 되돌리지 않는다.
 - N문항을 고르는 순서는 기존 `sortForSelection`(최신 연도 먼저 → 승인된 메타 먼저 → 시드 고정 무작위) 그대로다. 한 문항은 한 번만 들어간다.
 - 한 권은 목표 50·최대 80문항으로 나누고 같은 원본 시험의 문항은 한 권에 둔다(`splitIntoPapers`). 이유: 문항이 50개를 넘으면 출력이 오래 걸린다. 문항 수를 정하지 않아도(전부 모드) 이 규칙이 권을 나눈다.
@@ -110,6 +110,15 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 권 제목은 `명제 외 3단원 · 1~3단계 · 1권/4권`이고 `snapshotKey`는 선택·옵션·권 구성으로 정해지는 결정값(`unitpast_<scope>_multi-<해시>_<해시>`)이라 같은 선택이면 같다. 출력·출제는 기존 `printPaper`(시험지·해설·정답)·`assignPaper`를 그대로 부르며 새 출력 경로를 만들지 않았다.
 - `유사문제` 탭과 `유사문제 먼저, 기출 다음` 탭은 **자리만** 있고 누를 수 없다(유사문제의 난이도 단계 표시 작업이 끝나면 연다). 여러 권을 한 번에 출제하거나 보관함에 저장하는 기능은 새 출제 패널과 함께 다음 단계에서 만든다.
 - 집계표(`countGrid`)는 학년 자료가 준비될 때 한 번만 계산해 보관한다(렌더마다 2만여 문항을 돌지 않는다. 계약의 동기 500ms 상한). 마지막 선택(학년·과목·칸·옵션)은 localStorage `archive2.unitGrid.v1` 하나에 기억하며, 읽기·쓰기가 실패해도 화면은 정상 동작한다.
+
+## 단원별 기출은 표 한 화면 (2026-11-16 사용자 결정)
+
+- **표가 `unit-past-exams.html`의 유일한 화면이다.** 옛 3단계 화면(학년·과목·단원 카드, 세분 출제, 옛 모아뽑기·구성 화면, 옛 단계 진행 띠)과 그 코드·CSS·Font Awesome 링크는 지웠다. 이유: 표 아래 "세분 출제" 링크가 메뉴 없는 옛 화면으로 보내고 출제가 1.0 전체 페이지로 넘어갔다. 그 기능(소단원·유형 필터, 학교·연도 모아뽑기)은 표 안으로 옮긴다(계획서 1b·1c).
+- **옛 주소(`ready=1` 없음, `subUnit`·`blueprint`·`collection*` 같은 옛 값 포함)는 표로 열린다.** `grade`·`unit`(과목은 `course` 또는 옛 `semanticSubject`)만 이어받아 그 단원 행을 체크해 보여 주고, `gridSyncUrl`이 옛 값(`LEGACY_URL_PARAMS`)을 주소에서 지운다. `ready=1`은 더 이상 아무것도 바꾸지 않는다(1.0 "단원별 기출" 링크와 메뉴는 그대로 `ready=1`을 붙인다). `archive2-navigation.js`는 `ready`가 없어도 메뉴를 지우지 않는다.
+- **지우지 않은 것**: ① 표의 "고치기"가 여는 옛 "시험지 확인" 화면(미리보기·시험지 머리글 편집·문항 교체, `renderConfirmation`)은 기능 그대로고 모양은 1b에서 바꾼다. ② 출력(시험지·해설·정답)과 출제 패널 경로, `assign=legacy`일 때의 iframe 출제(`archive/index.html`의 `unitPastAssign` 처리). ③ `unit-past-exams-core.js`의 모아뽑기 계산(1c에서 표에 쓴다)과 다른 core 함수.
+- **옛 출력 전달 저장소(`mixedQuestions_`·`mixedMeta_`)와 `APMATH_UNIT_PAST_ASSIGN_`는 이 페이지가 더 쓰지 않는다**(문항은 출력 포장이나 출제 패널 본문으로 간다). `storeMixedPayload`는 `buildMixedMeta`로 이름을 바꿨다(meta만 만든다). `mixer.html`의 보관 규칙은 그대로다.
+- 로그인이 없으면 새 틀 안에 "선생님 로그인이 필요합니다" 안내(로그인·다시 확인 두 버튼), 로딩 실패면 이유와 `다시 시도`(새로고침)만 나온다. 옛 화면으로 보내는 링크는 없다.
+- 학년 버튼·탭·진행 줄·표 뼈대는 큰 자료를 해석하기 전에 그린다(아래 "첫 화면 먼저"). 회귀 테스트: `tests/archive-unit-past-exams-ui.test.js`·`-ui-runtime.test.js`·`archive2-navigation.test.cjs`, 실제 Chrome 확인은 `tools/check-archive-rpm-middle-browser.cjs`(옛 주소 열기 포함).
 
 ## 첫 화면 먼저 (2026-11-10)
 
@@ -123,6 +132,8 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **남은 가장 긴 동기 구간(canonical 안이라 여기서 못 쪼갠다):** 이 PC 실측(2026-11-10, 같은 조건 3회): 가장 긴 것이 1.2~1.7초(카탈로그 66.8MB의 문자열 정리·인코딩·`JSON.parse`), 다음이 0.9~1.6초(`resolveCatalog`), 나머지는 0.3초 이하다. 준비가 끝난 뒤 한가할 때 만드는 문항 분류 색인(`buildIndex`)이 0.6~1.1초다. 모두 **첫 화면을 그린 뒤**에 실행되지만 그 동안 클릭이 밀린다(변경 전에는 4초짜리 한 덩어리가 있었다). 계약 §3의 "동기 500ms"는 선택·클릭 처리에 대한 조항이라 부팅 준비는 "긴 준비 작업은 첫 반응을 막지 않는다"(진행 표시 먼저)를 따른다. 이 구간을 없애려면 canonical을 고치거나(조각 처리) 아래 다음 단계가 필요하다.
 - **다음 단계 후보:** ① 요약 산출물(`archive2-catalog-summary.json`: 시험 목록·분류·sourceHashes·health·시험별 검색어. manifest에 해시 등록, 번들은 뒤에서 검증) — 학교별 기출을 카탈로그 전에도 그릴 수 있다. ② 카탈로그 인코딩 v2(중복 생략 무손실, 66.8MB를 20MB대로). ③ Web Worker에서 받기·해시·파싱·해석(메인 스레드 동기 구간 제거. `loadVerifiedInput`/`resolveCatalog`이 canonical에 있어 canonical 수정이 필요). ④ Cache Storage(sha 키, 적중해도 sha 재검증).
 - 새 코드는 시간 기준이 아니라 **순서·결함 조건**으로 검사한다: `tests/archive2-boot-order.test.js`(`check-archive2-runtime.cjs`에 포함). 이 PC는 CPU가 흔들려 시간 기준이 불안정하다.
+
+- **단원별 기출 페이지도 같은 방식(2026-11-16)**: 메뉴 자리를 숨기지 않고(`archive2-shell archive2-unit-surface`가 정적 `<body>`에 있다) 메뉴 스크립트를 바로 붙인다. 정적 HTML은 새 머리글 + "불러오는 중" 한 줄뿐이다(옛 머리줄·돌아가기 버튼·빈 진행 띠·회색 상태 줄 없음). 무거운 스크립트는 `defer`로 두고, `question-index.js`(11.6MB)는 `<link rel="preload">`로 내려받기만 먼저 시작한 뒤 `unit-past-exams.js`가 표 뼈대(학년 버튼·탭·진행 줄·칸 자리 표시, 가짜 숫자 없음)를 그리고 `Archive2Boot.firstPaint()`를 부른 다음에 불러와 해석한다. 뼈대를 그린 직후 `firstPaint`를 부르지 않으면 안전 시간 4초까지 해석이 멈춘다. 표가 열리기 전에 누른 학년은 `state.pendingProfileId`로 기억했다가 표를 그릴 때 쓴다. 완료·실패는 `Boot.finish(false/true)`로 알린다.
 
 ## 문제지 만들기 한 화면 (2026-11-10)
 
@@ -140,7 +151,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 ## 단원별 기출 출제도 같은 패널로 (2026-11-11)
 
-- 단원별 기출 `권 목록`의 권별 `출제`(2026-11-11 전에는 `반에 출제`)와 새 `전체 출제 (N권)`은 `unit-past-exams.js`의 `assignPaper`/`assignAllPapers` → `openAssignPanel`이 `Archive2Assign.open({items:[{kind:"unit", snapshotKey, title, identityTitle, grade, subject, count, ref}], unit:{load}, request, outputLinks:false})`로 연다. 이유: 교사는 단원별 기출을 가장 자주 쓰고 한 번에 50문항씩 여러 권을 만드는데, 옛 iframe은 권마다 모달을 열어 같은 반·날짜를 되풀이해 골라야 했다. `전체 출제`는 2권 이상이고 패널을 쓸 수 있을 때만 보인다. 옛 방식(`assign=legacy`·스크립트 없음)은 옛 iframe 경로 그대로고 `전체 출제`는 없다(옛 방식은 한 번에 한 권뿐이다). 준비 화면 `고치기`에서 연 `학생에게 출제`도 ready 화면이면 같은 패널로 간다.
+- 단원별 기출 `권 목록`의 권별 `출제`(2026-11-11 전에는 `반에 출제`)와 새 `전체 출제 (N권)`은 `unit-past-exams.js`의 `assignPaper`/`assignAllPapers` → `openAssignPanel`이 `Archive2Assign.open({items:[{kind:"unit", snapshotKey, title, identityTitle, grade, subject, count, ref}], unit:{load}, request, outputLinks:false})`로 연다. 이유: 교사는 단원별 기출을 가장 자주 쓰고 한 번에 50문항씩 여러 권을 만드는데, 옛 iframe은 권마다 모달을 열어 같은 반·날짜를 되풀이해 골라야 했다. `전체 출제`는 2권 이상이고 패널을 쓸 수 있을 때만 보인다. 옛 방식(`assign=legacy`·스크립트 없음)은 옛 iframe 경로 그대로고 `전체 출제`는 없다(옛 방식은 한 번에 한 권뿐이다). `고치기` 화면에서 연 `학생에게 출제`도 같은 패널로 간다.
 - **요청 본문은 옛 모달이 보내던 것과 키·순서·값이 같다(헤더 없이)**: `POST /class-exam-assignments`, `X-Archive2-Contract` 없음, `{class_id, exam_title, exam_date, question_count, archive_file:"MIXED:<snapshotKey>", source_type:"mixed", mixed_payload_json(문자열 {questions, meta}), pdf_qpp, subject, grade_label, assignment_batch_id, target_scope}`, `student_ids` 없음(`unitBodyFor`, 테스트가 옛 `registerIndexClassExamAssignment`를 vm으로 실행해 대조). 이유: 서버의 계약 헤더 경로(`archive2-v1`)는 문항별 승인 대조를 통과할 필드가 없어 단원별 문제지를 받지 못한다. 서버는 바꾸지 않는다. `exam_date`와 `pdf_qpp`만 패널에서 고른 값이고(옛 경로는 늘 오늘), 쪽당 문항을 바꿨으면 `meta.qpp`도 같은 값으로 맞춘다. `exam_title`은 옛 경로와 같은 `identityTitle||title`이고 명단 조회도 같은 값이다.
 - **헤더 없는 경로는 받는 사람을 항상 반 전체로 기록한다**(서버가 `student_ids`를 읽지 않는다). 그래서 학생을 일부만 고른 반은 POST 성공 **뒤 같은 작업 안에서** `POST /class-exam-assignments/exclude-students`(`assignment_id, class_id, student_ids(고르지 않은 학생 = 명단 − 선택), operation_identity(UUID), exam_title, exam_date, archive_file`)로 뺀다. 반 전체를 골랐으면 보내지 않고, 200명이 넘으면 나눠 보낸다(서버 한도). **제외가 실패하면 성공으로 표시하지 않는다**: 결과 줄은 `출제됨 · 학생 제외 실패`, "출제는 됐지만 고르지 않은 학생 N명을 빼지 못했습니다. 지금은 반 전체에게 보입니다."와 `다시 빼기`(제외 요청만 같은 `operation_identity`로 다시, 출제는 다시 보내지 않는다. 서버가 건·학생마다 이 번호로 멱등이다). 이 상태로 닫기·뒤로 가기를 하면 한 번 경고하고, 페이지를 떠나려 해도 `beforeunload`가 알린다. 이유: 일부 학생에게만 내려던 것이 반 전체에게 남는데 교사가 모르는 것이 가장 나쁜 사고다.
 - **재전송·중복**: 같은 (반, 출제일, `MIXED:<키>`)는 서버가 새 건을 만들지 않고 기존 건을 갱신해 같은 assignment를 돌려준다(`exams.js` 헤더 없는 POST의 `existing` 분기). 그래서 같은 권을 같은 날 다시 눌러도, 응답이 끊겨 `확인하기`를 눌러도 **얼려 둔 같은 본문**을 보내면 새 건이 생기지 않는다. `확인하기`가 성공하면 이어서 제외 단계까지 간다. **취소된 건**: 이 분기는 기존 건이 취소됐는지 보지 않고 성공(200)으로 돌려주므로, 응답 `assignment.cancelled_at`이 있으면 성공이 아니라 `취소된 출제`로 표시하고(제외도 보내지 않는다) "…취소된 상태라 같은 날짜로는 다시 낼 수 없습니다. 출제일을 바꿔 주세요."를 보인다. `새로 출제`는 주지 않는다(batch id가 서버 키가 아니라 번호를 바꿔도 피할 수 없다).
@@ -161,3 +172,22 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **만들던 문제지 `삭제`**: 홈과 출제 내역 모두 `이어하기` 옆에 바로 보인다(더보기 안에 숨기지 않는다). 이 기기(localStorage)의 작업만 지우며 확인을 거친다. 지금 작업 중인 초안을 지우면 `resetWorkingDraft()`로 작업 상태도 비운다 — 안 비우면 자동 저장이 되살린다.
 - PDF 준비 오류의 서버 원문(영어)은 `pdfErrorText()`로 교사용 문장으로 바꿔 보인다.
 - 홈의 `생성문제` 칸은 열리는 화면 제목(`generated-bank.html` "모의고사 만들기")에 맞춰 `모의고사`라고 부른다. `유사문제`는 학교 기출 옆 유사 세트를 가리키는 말이라 쓰지 않는다.
+
+## 남은 과제 (화면 마감 범위 밖, 2026-11-12 조사)
+
+화면 마감 묶음은 아래를 하지 않았다. 조사 결과만 적어 두며, 하게 되면 이 절을 갱신한다. 행번호는 2026-11-12 기준이라 달라졌을 수 있다.
+
+| # | 항목 | 크기 | 근거·막는 점 |
+|---|---|---|---|
+| L1 | 출제 패널 실제 서버 확인 | S | 가짜 API로만 검수(#1651·#1724·#1735). 원장님이 시험용 반으로 |
+| L2 | 단원별 문제지 보관함 저장 | L·서버 | 권 최대 80문항 vs 서버 1~50(`apmath/worker-backup/worker/helpers/archive-saved-papers.js:267-268`), 묶음 8권·1.5MB·8MB |
+| L3 | 단원별 기출 유사문제 탭 | M~L | 자리만(`unit-past-exams.js`의 `gridTabsHtml`). 유사문항 난이도 단계 38% → 자료 작업 먼저 |
+| L4 | 자료 준비 시간 단축(7번 2단계) | L | 요약 산출물 없음(위 "첫 화면 먼저"). Web Worker안은 `archive2-canonical.js` 수정 → Worker 재배포 |
+| L5 | 원본 출제 패널 출력 설정 편집·미리보기, 학생 검색·선생님 필터 | M | `archive/DESIGN.md` "알려진 남은 것", 위 "화면 안 반에 출제"·"원본 시험지 출제도 같은 패널로" |
+| L6 | 출제 이력 90일·1000건 한계 | M·서버 | 위 "보관함·출제 내역 통합" |
+| L7 | 고친 권이 표 선택 바꾸면 사라짐 | S~M | #1639 (`gridCommitEdit`은 권 목록으로 돌아갈 때만 쓴다) |
+| L8 | 리뷰 보고서 비화면 항목: 백업 불러오기 XSS, 저장 미확정 시 출력 잠김, localStorage 누적(`mixer.html:2366`), 출제 창 카탈로그 재요청(`archive2-entry.js:42`), 반 명단 뒤바뀜, `#apmsess=`·`?assetBase=` 덮어쓰기, 초안 복원 거부, 캐시 버전 누락, CSP — 각각 처리 여부 재확인 필요 | S~M | 보고서 2026-11-10 |
+
+**Worker 자동 재배포 파일** (main 병합 때 Worker가 다시 배포된다. 화면 마감 묶음은 원칙적으로 건드리지 않고, 건드리면 지시서에 명시하고 배포 결과를 확인한다): `apmath/worker-backup/**`, `archive/archive2-canonical.js`, `archive2-core.js`, `archive2-history.js`, `archive2-output-contract.js`, `archive2-output.js`, `mixer-selector.js`.
+
+화면 마감 계획서는 단원별 기출 표 안에 소단원·유형 필터(1b)와 학교·연도 모아뽑기(1c)를 넣고, 메뉴 아래 도구 링크 숨기기, 빠른 평가 재설계, 단독 페이지(모의고사·평가 보관함·분석표) 새 디자인, 출력 창 조작줄, 잔여 정리, 390/1024/1440px 한 바퀴 점검 순으로 이어진다.

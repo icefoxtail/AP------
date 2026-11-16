@@ -7,18 +7,40 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="archive2-tokens.css?v=20261110-shell-1">
-  <link rel="stylesheet" href="unit-past-exams.css?v=20261111-assign-1">
+  <link rel="stylesheet" href="unit-past-exams.css?v=20261116-one-screen-1">
   <link rel="stylesheet" href="archive2-assign.css?v=20261111-assign-5">
-  <link rel="stylesheet" href="archive2-navigation.css?v=20261110-library-2">
-  <script defer src="archive2-navigation.js?v=20261110-library-2"></script>
+  <link rel="stylesheet" href="archive2-navigation.css?v=20261116-one-screen-1">
+  <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
+  <!-- question-index.js(11.6MB)는 표 뼈대가 화면에 올라간 뒤에 이 페이지의 스크립트가 불러와 해석한다. 내려받기만 먼저 시작해 둔다. -->
+  <link rel="preload" as="script" href="question-index.js?v=20261110a">
+  <script defer src="archive2-boot.js?v=20261110-first-paint-1"></script>
+  <script defer src="archive2-canonical.js?v=20261104-source-meta-approval-1"></script>
+  <script defer src="rpm-middle-toc.js?v=20261115-m1-dongsan-current-1"></script>
+  <script defer src="archive2-core.js?v=20261111-one-lane-difficulty-1"></script>
+  <script defer src="unit-past-exams-core.js?v=20261113-rpm-middle-parents-1"></script>
+  <script defer src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b"></script>
+  <script defer src="meta-foundation-runtime.js?v=20261110-first-paint-1"></script>
+  <script defer src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
+  <script defer src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
+  <script defer src="archive2-assign.js?v=20261111-assign-5"></script>
+  <script defer src="unit-past-exams.js?v=20261116-one-screen-1"></script>
+  <script>document.addEventListener('DOMContentLoaded', function () {
+    if (window.UnitPastExams) window.UnitPastExams.init();
+    else document.getElementById('unit-content').innerHTML = '<div class="unit-error unit-fallback"><strong>단원별 출제 도구를 불러오지 못했습니다.</strong><br>새로고침해 다시 시도해 주세요.</div>';
+  });</script>
 </head>
-<body class="unit-page">
-  <header data-archive-navigation="unit" hidden></header>
+<body class="unit-page archive2-shell archive2-unit-surface">
+  <header data-archive-navigation="unit" class="archive-navigation"></header>
+  <!-- 메뉴는 작은 스크립트라 일찍 붙인다: 처음 보이는 화면부터 새 메뉴가 있어야 한다. 로그인 판정(session)이 먼저다. -->
+  <script src="archive2-session.js?v=20261110-library-2"></script>
+  <script src="archive2-navigation.js?v=20261116-one-screen-1"></script>
+  <div id="boot-progress" class="boot-progress" role="status" aria-live="polite" hidden>
+    <p class="boot-progress-text"><span data-boot-label>화면을 준비하고 있습니다.</span> <span data-boot-count aria-hidden="true"></span></p>
+    <div class="boot-progress-track" aria-hidden="true"><span class="boot-progress-bar" data-boot-bar></span></div>
+  </div>
   <main class="unit-shell">
     <header class="unit-appbar">
-      <button class="unit-back" type="button" onclick="location.href='workspace.html'" aria-label="Archive 2.0으로 돌아가기"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span>Archive 2.0</span></button>
       <div class="unit-brand">
         <div class="unit-kicker" id="unit-kicker">2022 개정 교육과정</div>
         <h1 id="unit-title">단원별 기출</h1>
@@ -27,23 +49,8 @@
       <div class="unit-summary" id="unit-summary" aria-live="polite"></div>
       <select id="unit-qpp" class="unit-visually-hidden" tabindex="-1" aria-hidden="true"><option value="4" selected>4문항</option><option value="6">6문항</option><option value="8">8문항</option></select>
     </header>
-    <nav class="unit-stepper" id="unit-stepper" aria-label="단원별 기출 진행 단계"></nav>
-    <div class="unit-status is-loading" id="unit-status" role="status" aria-live="polite">문항 인덱스를 불러오는 중입니다.</div>
-    <div id="unit-content"><div class="unit-loading">단원별 문항을 집계하는 중입니다.</div></div>
+    <div class="unit-status" id="unit-status" role="status" aria-live="polite"></div>
+    <div id="unit-content"><div class="unit-loading">단원별 기출을 불러오는 중입니다.</div></div>
   </main>
-  <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
-  <script src="archive2-canonical.js?v=20261104-source-meta-approval-1"></script>
-  <script src="rpm-middle-toc.js?v=20261115-m1-dongsan-current-1"></script>
-  <script src="archive2-core.js?v=20261111-one-lane-difficulty-1"></script>
-  <script src="unit-past-exams-core.js?v=20261113-rpm-middle-parents-1"></script>
-  <script src="question-index.js?v=20261110a"></script>
-  <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b"></script>
-  <script src="meta-foundation-runtime.js?v=20261110-first-paint-1"></script>
-  <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
-  <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
-  <script src="archive2-session.js?v=20261110-library-2"></script>
-  <script src="archive2-assign.js?v=20261111-assign-5"></script>
-  <script src="unit-past-exams.js?v=20261113-rpm-middle-parents-1"></script>
-  <script>window.UnitPastExams.init();</script>
 </body>
 </html>

@@ -495,10 +495,11 @@ test('단원별 기출 page joins facets only from the final catalog lane, with 
   const js = read('unit-past-exams.js');
   assert.match(js, /facets: typeof archive2\.metaFacetsOf === 'function'/);
   assert.match(js, /metaFacetBound: true/);
-  assert.match(js, /data-field="conceptLabel"/);
-  assert.match(js, /facetStatusText/);
-  assert.match(js, /id="unit-approved-meta"/);
-  assert.match(js, /metaApproved/);
+  // The old 세분 출제 form (per-row concept/type/template lists and the 승인된 분류만 box) is gone from this page; the
+  // type filter comes back inside the unit x step table in the next change. An old address that still carries
+  // `metaApproved` is cleaned from the URL, and the lane join above keeps feeding the catalog the table counts.
+  assert.doesNotMatch(js, /data-field="conceptLabel"|id="unit-approved-meta"|renderAdvancedRows/);
+  assert.match(js, /LEGACY_URL_PARAMS[\s\S]{0,400}'metaApproved'/);
 });
 
 // ---- 문제지 만들기 UI ---------------------------------------------------------------------------
@@ -639,7 +640,7 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   const unitPage = read('unit-past-exams.html');
   assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(unitPage, /unit-past-exams-core\.js\?v=20261113-rpm-middle-parents-1/);
-  assert.match(unitPage, /unit-past-exams\.js\?v=20261113-rpm-middle-parents-1/);
+  assert.match(unitPage, /unit-past-exams\.js\?v=20261116-one-screen-1/);
   assert.match(read('problem-bank-search.html'), new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(read('problem-bank-search.html'), new RegExp('problem-bank-meta\\.js\\?v=' + version));
   const clinic = fs.readFileSync(path.join(root, 'apmath/js/clinic-print.js'), 'utf8');

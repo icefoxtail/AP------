@@ -8,13 +8,6 @@
     const host = document.querySelector("[data-archive-navigation]");
     if (!host) return;
     const mode = host.dataset.archiveNavigation;
-    if (
-      mode === "unit" &&
-      new URLSearchParams(location.search).get("ready") !== "1"
-    ) {
-      host.remove();
-      return;
-    }
     document.body.classList.add("archive2-shell");
     if (mode === "unit") document.body.classList.add("archive2-unit-surface");
     host.className = "archive-navigation";

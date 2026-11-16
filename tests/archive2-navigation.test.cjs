@@ -129,23 +129,33 @@ test('단원별 기출 and the menu share one teacher rule instead of two copies
     workspaceHtml.indexOf('defer src="archive2-session.js') < workspaceHtml.indexOf('defer src="archive2-navigation.js'),
   'workspace: deferred scripts run in order, the rule before the menu');
   const unitHtml = read('unit-past-exams.html');
-  // The unit page starts itself with an inline init() call, before deferred scripts run, so the rule is not deferred.
-  assert.match(unitHtml, /<script src="archive2-session\.js\?v=[\w-]+"><\/script>/);
-  assert.ok(unitHtml.indexOf('archive2-session.js') < unitHtml.indexOf('unit-past-exams.js'), 'rule before the page init');
+  // The unit page is parsed first and started on DOMContentLoaded (after its deferred scripts), so the menu and the rule it
+  // reads are small blocking scripts placed right after the menu host: the menu is in the first painted frame.
+  assert.match(unitHtml, /<script src="archive2-session\.js\?v=[\w-]+"><\/script>\s*<script src="archive2-navigation\.js\?v=[\w-]+"><\/script>/);
+  assert.ok(unitHtml.indexOf('<header data-archive-navigation="unit"') < unitHtml.indexOf('archive2-session.js'), 'menu host before the menu scripts');
+  assert.match(unitHtml, /<script defer src="unit-past-exams\.js/, 'the page runtime is deferred, so it runs after the menu and never blocks the first frame');
+  assert.match(unitHtml, /DOMContentLoaded[\s\S]{0,160}UnitPastExams\.init\(\)/);
 });
 
-test('shared navigation mounts only on the ready shelf, leaving the legacy builder intact', () => {
-  for (const ready of [false, true]) {
-    let removed = false, attached = false;
-    const host = { dataset: { archiveNavigation: 'unit' }, hidden: true, remove: () => removed = true };
+test('shared navigation mounts on the unit page whether or not the address says ready, and is never hidden or removed', () => {
+  for (const search of ['', '?ready=1', '?grade=h1&unit=H22-C2-01']) {
+    let removed = false;
+    const attached = [];
+    const host = { dataset: { archiveNavigation: 'unit' }, hidden: true, remove: () => { removed = true; } };
     vm.runInNewContext(read('archive2-navigation.js'), {
-      document: {querySelector: () => host, body: {classList: {add: () => attached = true}}},
-      URLSearchParams, location: {search: ready ? '?ready=1' : ''},
+      document: { querySelector: () => host, body: { classList: { add: name => attached.push(name) } } },
+      URLSearchParams, location: { search },
     });
-    assert.equal(removed, !ready);
-    assert.equal(attached, ready);
-    if (ready) assert.equal(host.hidden, false);
+    assert.equal(removed, false, search);
+    assert.deepEqual(attached.slice(0, 2), ['archive2-shell', 'archive2-unit-surface'], search);
+    assert.equal(host.hidden, false, search);
+    assert.match(host.innerHTML, /<a href="unit-past-exams\.html\?ready=1" data-nav-key="unit" aria-current="page" class="active"/, search);
   }
+  // The first frame is already the new frame: the static page carries the shell classes, so nothing is restyled when the menu mounts.
+  const html = read('unit-past-exams.html');
+  assert.match(html, /<body class="unit-page archive2-shell archive2-unit-surface">/);
+  assert.doesNotMatch(html, /data-archive-navigation="unit"[^>]*hidden/);
+  assert.doesNotMatch(html, /unit-stepper|unit-back|fa-solid|font-awesome/i);
 });
 
 test('native unit assignment embeds without changing assignment APIs and cannot close during a save', () => {

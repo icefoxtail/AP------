@@ -66,12 +66,13 @@ const server=http.createServer((req,res)=>{
   console.log('COMPOSE all selection',await page.evaluate(()=>{document.querySelector('[data-action="scope-all"]').click();const el=document.getElementById('distribution');const start=performance.now();el.value='all';el.dispatchEvent(new Event('change',{bubbles:true}));return performance.now()-start;}));
   await page.goto(base+'unit-past-exams.html?ready=1');
   await page.waitForFunction(()=>window.UnitPastExams,{timeout:60000});
-  await page.locator('.unit-grade-card').first().waitFor({timeout:60000});
+  await page.locator('.ug-table').waitFor({timeout:60000});
   console.log('UNIT_INITIAL',(await page.locator('#unit-status').innerText()).slice(0,120));
-  console.log('UNIT_GRADE',await page.evaluate(()=>{const start=performance.now();UnitPastExams.selectProfile('h1');return performance.now()-start;}));
-  console.log('UNIT_CARDS',(await page.locator('#unit-content').innerText()).slice(0,450));
-  await page.locator('[onclick*="renderDetail"]').first().click();
-  await page.locator('[onclick*="previewExistingPaper"]').first().click();
+  console.log('UNIT_GRADE',await page.evaluate(()=>{const start=performance.now();UnitPastExams.gridSelectGrade('h1');return performance.now()-start;}));
+  console.log('UNIT_TABLE',(await page.locator('#unit-content').innerText()).slice(0,450));
+  await page.locator('.ug-cell:not(.is-zero)').first().click();
+  await page.locator('.ug-bar .ug-primary').click();
+  await page.getByRole('button',{name:/미리 보고 고치기/}).first().click();
   await page.locator('#unit-preview-iframe').waitFor({timeout:60000});
   const unitFrame=await (await page.locator('#unit-preview-iframe').elementHandle()).contentFrame();
   await unitFrame.waitForURL(/mixed_engine.html/,{timeout:10000});
