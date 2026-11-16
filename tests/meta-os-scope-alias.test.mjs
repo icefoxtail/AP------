@@ -1,0 +1,48 @@
+import assert from 'node:assert/strict';
+import { aliasData, canonicalCourse, sameCourse, sameUnit } from '../archive/tools/meta-os/scope-alias.mjs';
+const middle=(course='중2 수학',unit='M2-01',file='original/middle/m2/1mid/test.js')=>({curriculum:'2015',course,standardUnitKey:unit,sourceArchiveFile:file});
+const supported=canonicalCourse(middle());
+assert.equal(supported.courseId,'M2');
+assert.equal(supported.grade,2);
+assert.equal(supported.semester,1);
+assert.equal(supported.confidence,'SUPPORTED');
+assert.ok(sameCourse(middle('중2 수학'),middle('중2-1')));
+assert.ok(!sameCourse(middle('중1 수학','M1-01','original/middle/m1/1mid/test.js'),middle()));
+const conflict=canonicalCourse(middle('중1 수학'));
+assert.equal(conflict.courseId,'M2');
+assert.equal(conflict.confidence,'RESOLVED_BY_UNIT_AND_PATH');
+// Display placement is not permission to accept contradictory course metadata.
+assert.equal(sameCourse(middle('중1 수학'),middle()),false);
+const three=canonicalCourse(middle('중1 수학','M2-01','original/middle/m3/1mid/test.js'));
+assert.equal(three.confidence,'CONFLICT');
+assert.equal(three.courseId,'M2');
+assert.equal(three.evidence.tieBreak,'UNIT_THEN_COURSE_THEN_PATH');
+const unknown=middle('NEVER_OBSERVED_TEST_ALIAS');
+assert.equal(canonicalCourse(unknown).confidence,'UNKNOWN_ALIAS');
+assert.equal(canonicalCourse(unknown).unknownAlias,true);
+assert.equal(canonicalCourse(unknown).courseId,'M2');
+assert.equal(sameCourse(unknown,middle()),false);
+const high={curriculum:'2015',course:'수학I',unit:'H15-M1-01',sourceArchiveFile:'original/high/h2/1mid/test.js'};
+assert.equal(sameCourse(high,{...high,course:'수학II'}),false);
+assert.equal(canonicalCourse({...high,course:'수학II'}).confidence,'CONFLICT');
+assert.equal(sameCourse({...high,course:'NEW_HIGH_ALIAS'},high),false);
+assert.equal(sameUnit({curriculum:'2015',unit:'M2-01'},{curriculum:'2022',unit:'M2-01'}),false);
+const explicitEdge=aliasData.unitEdges.find(e=>sameUnit(e.from,e.to));
+assert.ok(explicitEdge,'An existing authoritative exact-leaf mapping is usable');
+assert.ok(sameUnit(explicitEdge.to,explicitEdge.from));
+assert.ok(sameCourse(explicitEdge.from,explicitEdge.to));
+assert.equal(sameUnit({...explicitEdge.from,course:'NEVER_OBSERVED_TEST_ALIAS'},explicitEdge.to),false);
+assert.equal(sameUnit({...explicitEdge.from,unit:'NOT_IN_CROSSWALK'},explicitEdge.to),false);
+const parent=aliasData.parentEdges[0];
+assert.ok(sameUnit({curriculum:parent.curriculum,unit:parent.from},{curriculum:parent.curriculum,unit:parent.to}));
+assert.equal(sameUnit({curriculum:'2015',unit:parent.from},{curriculum:'2015',unit:parent.to}),false);
+assert.equal(sameUnit({unit:''},{unit:''}),false);
+// The official parent table explicitly marks a coarse legacy unit shared by two parents.
+assert.equal(sameUnit({curriculum:'2022',unit:'M22-2-06'},{curriculum:'2022',unit:'RPM22-M2-L1-06'}),false);
+assert.equal(sameUnit({curriculum:'2022',unit:'M22-2-06'},{curriculum:'2022',unit:'RPM22-M2-L1-07'}),false);
+// Inputs are untouched, and every listed spelling has a real observation count.
+const frozen=Object.freeze(middle());canonicalCourse(frozen);sameCourse(frozen,frozen);
+for(const a of aliasData.observedSpellings)assert.ok(a.questionCount+a.bindingCount>0);
+for(const g of aliasData.groups)for(const a of g.aliases)assert.ok(aliasData.observedSpellings.some(o=>o.value===a.value));
+assert.ok(!aliasData.observedSpellings.some(a=>a.value==='NEVER_OBSERVED_TEST_ALIAS'));
+console.log('meta-os-scope-alias: PASS');
