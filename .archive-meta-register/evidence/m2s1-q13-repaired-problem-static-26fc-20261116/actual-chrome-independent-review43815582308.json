@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "m2s1-q13-actual-chrome-independent-visual-review-v1",
+  "scope": "ONE_PROBLEM_SURFACE_TWO_ACTUAL_CHROME_PNGS",
+  "reviewer": "GPT_ROOT_26FC_M3S2_INDEPENDENT",
+  "reviewedAt": "2026-11-16T06:41:14.353253+00:00",
+  "questionUid": "qid_v1_594a94974ad128fef949b5ad8e5b88adf7658172b79e76e4cbabaa9f40b8f101",
+  "examId": "E010",
+  "sourceOrdinal": 13,
+  "surface": "PROBLEM",
+  "workflowRunId": "43815582308",
+  "workflowSuccessSource": "ROOT_REPORTED; reviewer independently inspected only the supplied actual PNGs",
+  "repairedSvgGitBlobSha1": "90d7c28a4f812792acda697ac66cbf2eac37f439",
+  "existingRootVisualProofCommit": "e372f09c39654c9b6ce84f0652838e2f5aab21c5",
+  "independence": {
+    "repairedSvgAuthoredByReviewer": false,
+    "reviewerPreviouslyPreparedDedicatedCaptureWrapper": true,
+    "sharedCaptureHelpersChanged": false,
+    "otherReviewerDecisionUsedAsVisualEvidence": false
+  },
+  "inputs": [
+    {
+      "filename": "E010-Q13-desktop-tile-01.png",
+      "viewport": "desktop",
+      "bytes": 29402,
+      "sha256": "6a7b86885112dc0a31097cbd39e14a9c80fac3281265b18bff469705003844a5",
+      "gitBlobSha1": "ab69917d7a5576d671401e308d0456a33f0fbca7",
+      "width": 664,
+      "height": 436
+    },
+    {
+      "filename": "E010-Q13-mobile-tile-01.png",
+      "viewport": "mobile",
+      "bytes": 26743,
+      "sha256": "5d037757eb9194436ec99f7c24f21008c202ee2eaa91ea039569922938fc036d",
+      "gitBlobSha1": "1c9e17bffe5d5e8e63de1063a4893fa7f1563431",
+      "width": 334,
+      "height": 440
+    }
+  ],
+  "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+  "observations": [
+    {
+      "viewport": "desktop",
+      "upwardDisplacementMarkersVisible": 3,
+      "correspondingMarkerLabelsVisible": 3,
+      "axesAndAxisLabelsVisible": true,
+      "bothGraphLinesAndGraphLabelsVisible": true,
+      "givenTextWithinTile": true,
+      "choicesVisible": 5,
+      "choicesLayout": "All five choices are fully visible on one line.",
+      "observedClipping": false,
+      "observedLabelOrMarkerOcclusion": false,
+      "readability": "PASS_WITHIN_SUPPLIED_ACTUAL_TILE"
+    },
+    {
+      "viewport": "mobile",
+      "upwardDisplacementMarkersVisible": 3,
+      "correspondingMarkerLabelsVisible": 3,
+      "axesAndAxisLabelsVisible": true,
+      "bothGraphLinesAndGraphLabelsVisible": true,
+      "givenTextWithinTile": true,
+      "choicesVisible": 5,
+      "choicesLayout": "Choices one through four occupy the first line; the fifth wraps to a fully visible second line.",
+      "observedClipping": false,
+      "observedLabelOrMarkerOcclusion": false,
+      "readability": "PASS_WITHIN_SUPPLIED_ACTUAL_TILE"
+    }
+  ],
+  "boundary": {
+    "actualPngsDirectlyViewed": 2,
+    "rerenders": 0,
+    "sourceEdits": 0,
+    "assetEdits": 0,
+    "registrationWrites": 0,
+    "newMathQa": 0,
+    "newSemanticApproval": 0,
+    "newDifficultyDecision": 0,
+    "newFourSlotVector": 0,
+    "answerOrSolutionJudgment": false,
+    "existingRootVisualProofChanged": false,
+    "oldCurrentHoldEvidenceChanged": false,
+    "technicalFontGeometryGatesReexecuted": false,
+    "actualConsumerOrPagesGateClaimed": false
+  },
+  "notes": [
+    "Supplementary visual evidence only; preserves the existing immutable root visual proof.",
+    "The original missing-marker HOLD remains historical evidence for the old asset.",
+    "This review concerns visible continuity and readability of the repaired problem surface, not mathematical correctness or answer selection."
+  ]
+}
