@@ -134,7 +134,7 @@ test("ci.yml: skills verification uses the exact PR event base while non-PR runs
 test("Native registration keeps compiled-artifact isolation; Pages never regenerates shared outputs", () => {
   const derive = read("tools/ci/archive-pages-registration-derive.sh");
   const order = [derive.indexOf("refresh_meta_foundation_compiled\n  node archive/tools/meta-foundation/materialize"),
-    derive.indexOf("python archive/build_db.py")];
+    derive.indexOf("node tools/ci/archive-registration-build-db.mjs")];
   assert.ok(order[0] > 0 && order[1] > order[0], "compile --write must run before the catalog / manifest / readiness rebuild");
   assert.match(derive, /compile-meta-foundation\.mjs --write/);
   assert.match(derive, /::warning title=Meta Foundation compile::/);
