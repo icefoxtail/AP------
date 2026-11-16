@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "middle-meta-ui-route-settlement-verification-v1",
+  "scope": "Existing reviewed UI checker lifecycle and its exact Q20 consumer pin; existing data review scope unchanged.",
+  "baseMain": "569758e146d4dd8c6798e33dfdccb3c2b426b4b6",
+  "actualFailures": [
+    {
+      "pr": 2203,
+      "job": 133125910708,
+      "kind": "Q20 consumer retained previous helper digest",
+      "testFilePass": 372,
+      "testFileFail": 1
+    },
+    {
+      "pr": 2214,
+      "job": 133123678836,
+      "run": 43814606497,
+      "kind": "Concurrent route teardown caused unhandled fulfillment rejection",
+      "artifact": 14203743068,
+      "artifactZipSha256": "b70f2989d5ac0ca9ce766b1a03a4f02b3e3f02cdc629fa19f522c2010d51a9bc",
+      "technicalProofAvailable": false
+    }
+  ],
+  "primaryReference": "https://github.com/microsoft/playwright/issues/43878",
+  "runtimeVersionInspected": "1.62.1",
+  "repair": [
+    "Own route-handler promises and drain before removing interception.",
+    "Await fulfillment and record success only after settlement.",
+    "Keep fetch/fulfill/abort failures fatal; never attempt a second handling after fulfillment starts.",
+    "Preserve original case and cleanup errors.",
+    "Bind the Q20 producer to the exact repaired shared checker."
+  ],
+  "files": [
+    {
+      "path": "tools/run-tests.js",
+      "gitBlobSha1": "92c8b9ad438bf843db1f63efb902a0ad3ff5ebda",
+      "sha256": "7aa19f3c41af7b9de0c6eec9c4d173b678c445350fd1af31827cc1db91b52346"
+    },
+    {
+      "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+      "gitBlobSha1": "e395084f787ad45b66d54dc6906cd2b6be3ac97a",
+      "sha256": "72ed3a6e6d5488066df8379b299bc8fab77d19bee251561a5294767e45d06784"
+    },
+    {
+      "path": "tests/archive-problem-renderer-ui-contract.test.js",
+      "gitBlobSha1": "ad093503cfdec3002e6ff2cbde7bed04d1e53729",
+      "sha256": "17c0149d084ebb243d8b6377b99ac13af958f10440ba9a9458708756196c56f2"
+    },
+    {
+      "path": "tools/check-e013-q20-enclosed-latin-browser.cjs",
+      "gitBlobSha1": "e8311ce645462c27edae1121da41e8dfc6b15324",
+      "sha256": "d30c2b6aa07d650c7f12329efa92d9aa3908aefe7431a260d418312bf3795bdd"
+    }
+  ],
+  "validation": {
+    "routeBoundaryTests": {
+      "passed": 12,
+      "failed": 0,
+      "logSha256": "e41beb1c3818f28da5f541cb8cbd860bda1b74c72e62a984b1db8f101ea4131d"
+    },
+    "existingQ20Tests": {
+      "passed": 93,
+      "failed": 0,
+      "testChanged": false,
+      "logSha256": "ce757d9336329216d09cc4178154c1ce781bd9fcadafabcc5257757436173643"
+    },
+    "unchangedGuardAuditSha256": "bd52dae6e7ce12a6cb6317b76450e4d5d7972b84909422267db715f1223467c0",
+    "independentRootReviewSha256": "6bbe2f78920fa3bbf78bb609b82e9a833d82c497b4c644155250f9c3d90a9d9f",
+    "runnerThreeWayProofSha256": "7069d94c96a478309439fb68f0094aa40b0e549870615413861ca05e88daab3a",
+    "requiredMainCommandsPreserved": 118,
+    "newExactHeadChrome": "REQUIRED_AFTER_PUBLICATION"
+  },
+  "newMathQa": 0,
+  "newSemanticApproval": 0,
+  "sourceAssetWrites": 0,
+  "failureSuppression": false,
+  "m3s1SourceBranchPacketChanges": 0,
+  "parentSix": "Paused; historical local proof documents do not imply actual registration."
+}

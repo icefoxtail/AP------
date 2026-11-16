@@ -1,0 +1,837 @@
+{
+  "schemaVersion": "m2s1-unrecorded17-current-evidence-assessment-v1",
+  "status": "NO_REGISTRATION_ONLY_CANDIDATE_EXPLICIT_HOLDS_RECONFIRMED",
+  "originalTaskId": "d200021a-924b-42a5-ad31-a53818575c78",
+  "originalTaskOwnership": "Read-only evidence reuse; no join or modification of the original task.",
+  "nativeReviewCommit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+  "currentSourceCommit": "4e84d022319f8a404dbeda29372fa2c26b033fbd",
+  "actualRegisteredSnapshot": "125431da16e154d75182185c787ec1f05e89e90b",
+  "originalHandoff": {
+    "path": "docs/operations/m2-s1-meta-full-20261114/HANDOFF.md",
+    "sha256": "922ab0e355d2570d56c552d1167186debadcdf5fb3b935138ad30943e43f1c1a"
+  },
+  "summary": {
+    "exams": 17,
+    "questionUids": 394,
+    "originalEvidenceFoundAndHashVerified": 394,
+    "originalEvidenceNotFound": 0,
+    "currentSourceWholeBlobEqual": 17,
+    "currentCompactAbsent": 17,
+    "completeApprovedFourSlotVectors": 0,
+    "registrationOnlyCandidates": 0,
+    "explicitMethodHolds": 394,
+    "actualMetadataPendingSemanticReview": 394,
+    "nativeSlotsAtomCounts": {
+      "given": 603,
+      "goal": 622,
+      "method": 0,
+      "condition": 231
+    },
+    "nativeAtomsWithoutTermId": 28,
+    "uidsWithNativeAtomsWithoutTermId": 21,
+    "additionalHoldReasonsOverlapping": {
+      "DIFFICULTY_CONDITIONAL_MANUAL_REVIEW": 164,
+      "SOURCE_METHOD_EVIDENCE": 394,
+      "SOURCE_CONTENT": 34,
+      "NUMERIC_DIFFICULTY_UNKNOWN": 21
+    },
+    "acceptedFollow49Overlap": 0,
+    "newApprovals": 0,
+    "sourceWrites": 0,
+    "registryWrites": 0,
+    "remoteWrites": 0,
+    "mathReviewReruns": 0,
+    "registrationRuns": 0
+  },
+  "semanticStatusCountsAsRecorded": {
+    "curriculumProvenance": {
+      "SOURCE_FIELD_MISSING_SEMANTIC_PROPOSAL_ONLY": 394
+    },
+    "resolverStatus": {
+      "NOT_RUN_EVIDENCE_INCOMPLETE": 144,
+      "NOT_RUN_GENUINE_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED": 140,
+      "None": 110
+    },
+    "projectionStatus": {
+      "BINDING_PENDING": 12,
+      "None": 228,
+      "UNMATERIALIZED": 154
+    },
+    "semanticEvidenceStatus": {
+      "SOURCE_ONLY": 284,
+      "None": 110
+    }
+  },
+  "decision": {
+    "publishOperationalRequests": false,
+    "reason": "All394 current source versions retain the exact reviewed empty-method debt. Current published release/intake manifests explicitly withhold them. Hash rebinding cannot create missing method authority.",
+    "partialUidSubmissionCannotSkipRequiredMethod": true,
+    "reusableEvidence": "Original author, sampled independent review, root acceptance, and unchanged given/goal/condition atoms remain referenced. Their review is not repeated and candidate atoms remain candidates.",
+    "nextAction": "Obtain exact missing source/method evidence for a bounded selected UID set, resolve its named source or term debt, and secure explicit author plus independent acceptance before official scoped import or registration.",
+    "existing58CompactsOutsideScope": true,
+    "difficultyAndFullSemanticApprovalAreSeparate": true
+  },
+  "examInventory": [
+    {
+      "examId": "E026",
+      "sourcePath": "archive/exams/original/middle/m2/1final/23_매산중_1학기_기말_중2_수학.js",
+      "questionCount": 24,
+      "reviewedAndCurrentSourceGitBlob": "3b1ced77f7bf780d72c4dffb2f5e3de3712d67be",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/23_매산중_1학기_기말_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 24,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E026/CURRENT.json",
+          "sha256": "bf6bb2de5db99c80190de7658181eb2fba095311d29b9e24d47617d3117a0427"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E026/accepted-review.json",
+          "sha256": "232f42ff076a699896401b51dda9143264d91d1f5dee1e29d58d2b507483f792"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E026/four-slot.json",
+          "sha256": "632c52f21787367b470991abfcb02c39d944bae4f542906fc247a4a5fc1325aa"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E026/validation.json",
+          "sha256": "4ee1595302e3416396a8365b0bc71e27706f46f84db6e19d25af56bed8230842"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E026/root-review.json",
+          "sha256": "7d2b4f12459900a25bed621b114c83b5f316758b456003ef8806f1193dd4ae9a"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E026/independent.json",
+          "sha256": "016fc4622d7116f7b9d9a9537a72a85e58fb9e5d80732d106dc0524bb27948f4"
+        }
+      }
+    },
+    {
+      "examId": "E027",
+      "sourcePath": "archive/exams/original/middle/m2/1final/23_순천여중_1학기_기말_중2_수학.js",
+      "questionCount": 24,
+      "reviewedAndCurrentSourceGitBlob": "8559c5d7442db764fe910181d9202cd4c4a8a0a9",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/23_순천여중_1학기_기말_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 24,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E027/CURRENT.json",
+          "sha256": "dd943a3b8bc12595fab5124545baddd611ace904f2002d0e4cf54f5f2b15d8ee"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E027/accepted-review.json",
+          "sha256": "acf3851c8ef039e975a93c76ffc09af74e3db9c7b4c92736d25db5a37f1522f6"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E027/four-slot.json",
+          "sha256": "149d0bd38688e13373e329c7d52c068bced82a75905364f01e660fd0538a22f4"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E027/validation.json",
+          "sha256": "13595b097d5f6f47063795b2d2afee150f29920c1c22c750a243dfb7f547dc0e"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E027/root-review.json",
+          "sha256": "9e80484b365ebcd722e016fa7d34681f92b56b42291cff6b9ac35cbf2070f615"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E027/independent.json",
+          "sha256": "1fd1eb95abe377f88dce62a786682918bdd83c0a5b7d99187915fc7bc18c970e"
+        }
+      }
+    },
+    {
+      "examId": "E031",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/23_금당중_1학기_중간_중2_수학.js",
+      "questionCount": 24,
+      "reviewedAndCurrentSourceGitBlob": "72cf4be120a8f266d3bbe882fa3a63155e769e14",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1mid/23_금당중_1학기_중간_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 24,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E031/CURRENT.json",
+          "sha256": "607ea57b07cb35c440e6f402bce0d3c616ba3384c864b87c4a1d1e2821c72edc"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E031/accepted-review.json",
+          "sha256": "e4ce04083ce18e9edf996647c30a1cc6d14b7b06be3dc1bf5b0705c25f8efb72"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E031/four-slot.json",
+          "sha256": "48cd56f9f527bf59901675caa87d388c95f08d68d16ee07e4c4da7df8583623c"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E031/validation.json",
+          "sha256": "cecbc7466a571c57a4b79c9354b77127c419fb0cd6923a8e8f00538dbd240767"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E031/root-review.json",
+          "sha256": "d6687fb398ba38ca03298b410fcbf893d7065577783f33c5cfaf3e9f2a46c85f"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E031/independent.json",
+          "sha256": "441dc1a8f86f51ea31c233702bfef0956893cf081d8a5def78b9babadb4a53d2"
+        }
+      }
+    },
+    {
+      "examId": "E032",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/23_신흥중_1학기_중간_중2_수학.js",
+      "questionCount": 24,
+      "reviewedAndCurrentSourceGitBlob": "306c926ab6387ae8017ec59ef9b0cc8c20d04275",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1mid/23_신흥중_1학기_중간_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 24,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E032/CURRENT.json",
+          "sha256": "707e4f185b1e7f8d8ab5d045916079e712932d3e3ed8ac676fb272ac76f9bfca"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E032/accepted-review.json",
+          "sha256": "7b616ec650cdf8fe1c0f119568027bdf865f3617e422388abb6dccb3858208ad"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E032/four-slot.json",
+          "sha256": "cc39723e351cfdc12b1cc8ecca77a30300595f12a0289ca073deff4c2eca2378"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E032/validation.json",
+          "sha256": "d73c4af0bb3195589e8d6ab86b0f5216cdd5ef269e8dea5af05fef365f3416f3"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E032/root-review.json",
+          "sha256": "9cf6b31c6e18011de924cceba1c1c4c43954ab698bb83f06aae8d20b5e546a44"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E032/independent.json",
+          "sha256": "fcdb2767a39b8b1302eb21eff95b78747cdd8de29f81c0fc57df60ec72891c01"
+        }
+      }
+    },
+    {
+      "examId": "E033",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/23_연향중_1학기_중간_중2_수학.js",
+      "questionCount": 23,
+      "reviewedAndCurrentSourceGitBlob": "e54093a7a891423bc81cb9b584fc1007be519821",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1mid/23_연향중_1학기_중간_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 23,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E033/CURRENT.json",
+          "sha256": "e64fc84459fabcb71af18c3a413e2bb58a6d2535f87fd026d3d042036d54a1f5"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E033/accepted-review.json",
+          "sha256": "4894ba8d1f80f20a4d7de66c79013b50c7860006c4ccab401573ccd25905d7ee"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E033/four-slot.json",
+          "sha256": "bfa645c44a075cd5858ea69192673e823e231190debe9f78288d39e269953458"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E033/validation.json",
+          "sha256": "bde5454e4daa206f2b69632fd796900c94523b8761c67258eb6e0e2f5b63af72"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E033/root-review.json",
+          "sha256": "0e3119f67fabbb6174503c0bda70f57933763bdb57cee18401481b0e1fdc823c"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E033/independent.json",
+          "sha256": "c6d12c1c7f296e351ba74e59ae83de09b40b74c02ef93c208831ace0c52e95f4"
+        }
+      }
+    },
+    {
+      "examId": "E038",
+      "sourcePath": "archive/exams/original/middle/m2/1final/22_향림중_1학기_기말_중2_수학.js",
+      "questionCount": 25,
+      "reviewedAndCurrentSourceGitBlob": "436b3b9167f27ad9499a82b24af1eb13b9015daf",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/22_향림중_1학기_기말_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 25,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E038/CURRENT.json",
+          "sha256": "7fef7fdb4f98995693ed2fe404e8055e0c37de5c15bcedf8a9a5467f6a34726a"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E038/accepted-review.json",
+          "sha256": "d008daebcc718d889f90d1e717ec9fcf2febadf871cc7a9c98e840bbdb264004"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E038/four-slot.json",
+          "sha256": "14a9cfed67410a0f8bfcef5d6d8d039e2dff9c0021bbec8086220f2634f0cf1c"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E038/validation.json",
+          "sha256": "908b5f508e4afaf568e79ac1109035b0b9ec7ad5e51ff4ec2e60546faa46181f"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E038/root-review.json",
+          "sha256": "f47678b8bcf7a3d848a55d5043e408174f91dd23047ca10bc0538af8e4364b6f"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E038/independent.json",
+          "sha256": "d36e8047272ab36af5d60c89d103a0e717c0c29961d18ee2d25ff22827c5cb03"
+        }
+      }
+    },
+    {
+      "examId": "E039",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/22_동산중_1학기_중간_중2_수학.js",
+      "questionCount": 25,
+      "reviewedAndCurrentSourceGitBlob": "bb178501aa319154d2bc82fcf1f7a5a7b6c344ac",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1mid/22_동산중_1학기_중간_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 25,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E039/CURRENT.json",
+          "sha256": "56cfdc9367a17ac1ed38620cf96af70789ecbac91d6b11065c03b5ad1a7131cb"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E039/accepted-review.json",
+          "sha256": "f5cd1c1ce1248ad7d984a35e9799056df13f7c1e123b5130d8860d682e624697"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E039/four-slot.json",
+          "sha256": "1427736d4f6bc1df1ac4e3202a234add15651f8c9dffd1897d9b529f8cc1ea4b"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E039/validation.json",
+          "sha256": "7389956e8f0238e87e7531665025a125d2483c50d9379d1d3861be3c3d614003"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E039/root-review.json",
+          "sha256": "686d65f98da8c10cf42587573e1726526f7db0d4784026fe5f99937d51f239c5"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E039/independent.json",
+          "sha256": "96fae4c99c4b26200092c600ced00994b5d080c22a5721b6c96cf3b13322b3a1"
+        }
+      }
+    },
+    {
+      "examId": "E042",
+      "sourcePath": "archive/exams/original/middle/m2/1final/21_연향중_1학기_기말_중2_수학.js",
+      "questionCount": 21,
+      "reviewedAndCurrentSourceGitBlob": "0243bc77d19c50dfe6b410825849176897cc06fd",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/21_연향중_1학기_기말_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 21,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E042/CURRENT.json",
+          "sha256": "84807bef954184f9f3a173c41b77ab99cf6df509de439a9a77bdfd83a1bd4b81"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E042/accepted-review.json",
+          "sha256": "7a4a2922dc9923c78c4c0d1064a837e71e37561a0c3d464beac2dc6f42bcfb19"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E042/four-slot.json",
+          "sha256": "1801845b94843508ef65b4d3a642b5b9e850be5db4daf7e54d8b1c998c6f4b36"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E042/validation.json",
+          "sha256": "b0e90d129f82e8b24eb24e7b27229ba1ae0c365aff6139d7abbb8a5785b6195f"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E042/root-review.json",
+          "sha256": "f7ffc0643e47f7cb950dd809ada4a5d2ae47bd8f561b7b2b29735f7b933af569"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E042/independent.json",
+          "sha256": "f869ec7ccade3b15b27a2fc940d59195e38a19daadd0a7c8f627bd18c1c4ec02"
+        }
+      }
+    },
+    {
+      "examId": "E043",
+      "sourcePath": "archive/exams/original/middle/m2/1final/21_왕운중_1학기_기말_중2_수학.js",
+      "questionCount": 24,
+      "reviewedAndCurrentSourceGitBlob": "3c02928da8bb401b196b3d3defde2ccea93a279a",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/21_왕운중_1학기_기말_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 24,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E043/CURRENT.json",
+          "sha256": "2686d60d93c15d1fea2f0e89768b2ef37d653395e461c92932fcf8e9cd7340a1"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E043/accepted-review.json",
+          "sha256": "c114fc9dbfeb3d1420a5f4eb990e86f9f2b7fe8c1426fc848eaea06b358d7e2a"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E043/four-slot.json",
+          "sha256": "caf97b7913c12d4c476578e475ad7efbdd4cc9299d00549ba96686f0d50b6823"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E043/validation.json",
+          "sha256": "51dbde123f32880ba466a0bfad85d37b5d08cb5466270aa5dddd053526aa6760"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E043/root-review.json",
+          "sha256": "b1023706a45ae9a75fd190224be6bc625e2f409f8903cc29eab0dc8e4e428d4b"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E043/independent.json",
+          "sha256": "73325b6da7d2236eff49cdf7066242cad1c58390b44b3acdc0693d8f7afacccf"
+        }
+      }
+    },
+    {
+      "examId": "E046",
+      "sourcePath": "archive/exams/original/middle/m2/1final/21_풍덕중_1학기_기말_중2_수학.js",
+      "questionCount": 27,
+      "reviewedAndCurrentSourceGitBlob": "b9b7073b63d004a43822e51034bf4b8d16e2197e",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/21_풍덕중_1학기_기말_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 27,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E046/CURRENT.json",
+          "sha256": "698bfaa6f096547ac8970e92455b7309fc3476e24add14be2a880b769005735e"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E046/accepted-review.json",
+          "sha256": "13e76fd434dc53f2eea1a7802194078bfa46c8838c97c1499c5c8f9c492f8862"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E046/four-slot.json",
+          "sha256": "e0c28128344bf3ae2888ebe0d4885bb72aab1262f449ffda98834006aa130795"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E046/validation.json",
+          "sha256": "282042ec80cd4b925405e6d3dd4a3062f502a9a87ba0bd5b7b91ab8158d6aa8f"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E046/root-review.json",
+          "sha256": "79b3d89ab4977bc52429b03be46706974c62dbfbfb3a4c8f4142165e6453e052"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E046/independent.json",
+          "sha256": "1b51921a5520a6103b66aadcedb5b97c8cc07973a65df2369630f95e255e90be"
+        }
+      }
+    },
+    {
+      "examId": "E066",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js",
+      "questionCount": 22,
+      "reviewedAndCurrentSourceGitBlob": "269f9327a1a8c88329c17254c49ca3cd8e694118",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 22,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E066/CURRENT.json",
+          "sha256": "84af70309315e991c0c43f0086881b7b8038b7f96280988f0bfd05e982136e5f"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E066/accepted-review.json",
+          "sha256": "88deef6ead409e5570af78797cdd1cadc3c304275e5e0a4c7d24701cd48c737e"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E066/four-slot.json",
+          "sha256": "f63a970f90c62833b797f58d8a1ad38fa0cb1a2da85ad9634cc9cf05a40e2a6d"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E066/validation.json",
+          "sha256": "8a9d1148860fc17b03a1d123fe19dd5021de9299b84be8a4b979eace2e5a6004"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E066/root-review.json",
+          "sha256": "1b8fc44783fa29b002c949f8b3c4a92e0b97d2924b826413cffb8eeaa723f014"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E066/independent.json",
+          "sha256": "34686c087093355ea732d03ea4e47ec54e493e02805205c8bc20b62192900817"
+        }
+      }
+    },
+    {
+      "examId": "E067",
+      "sourcePath": "archive/exams/original/middle/m2/1final/19_이수중_1학기_기말_중2_수학.js",
+      "questionCount": 22,
+      "reviewedAndCurrentSourceGitBlob": "9d7f1ac418a2db43f4f294e5c921c91b660722ce",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/19_이수중_1학기_기말_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 22,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E067/CURRENT.json",
+          "sha256": "25636265e2f0315061374a9c60ffe8d16b06eda22d61f2faa94ace9be84ea248"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E067/accepted-review.json",
+          "sha256": "0a0125ef4859ffc546a50ff91d227d4fbd0935880aae93814302bf9deec5f8c8"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E067/four-slot.json",
+          "sha256": "e6ff8a54ba46284f7f5fee4593055bb2cece8f7bedc38744b2ab5d678811829e"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E067/validation.json",
+          "sha256": "34ad048c97cee8473072d718f758101f3917a610a937cdd60d9a501473b3ce99"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E067/root-review.json",
+          "sha256": "fbaa03261308d18606b7f71d0d3543218d2b11c20fb7f8c85373c63cc5a8ff60"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E067/independent.json",
+          "sha256": "a10205ea7d33549ed49fab3bdb18b3b4ed83833be768d18dc835b6ffec6aea84"
+        }
+      }
+    },
+    {
+      "examId": "E069",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js",
+      "questionCount": 19,
+      "reviewedAndCurrentSourceGitBlob": "6477e2c3b7675f17372859ad4b92d824a53ceeaf",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 19,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E069/CURRENT.json",
+          "sha256": "27de0939e56f180d5f8c7646dbe920660791c1609dee1f971a7c3dc4cbe78907"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E069/accepted-review.json",
+          "sha256": "2a471bf4850c0145db09e6b83ba0de0d4613eb3af17f2f5f3035c0c8fa21ba01"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E069/four-slot.json",
+          "sha256": "0c46c9abfa07e4485b981969b50e3abf50f6c040482d87e57661d6c17c6b78ca"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E069/validation.json",
+          "sha256": "8c609b4edeb576d52b7fec4f155281ab05c62f1e93e33bbba44b8febec16660f"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E069/root-review.json",
+          "sha256": "f39bd04209cbbf7b0509c7e6b615c524a17f9c8ba51f8396e29a10c587dc7c75"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E069/independent.json",
+          "sha256": "40e3baedd6576b2eb09432f4c1af30e7b4e8d52f61c0a3f498b912485ae3d090"
+        }
+      }
+    },
+    {
+      "examId": "E070",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js",
+      "questionCount": 23,
+      "reviewedAndCurrentSourceGitBlob": "4aed1b3bd6aeed39813d7087753797c2c746b6a2",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 23,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E070/CURRENT.json",
+          "sha256": "0b0d69ca83b2f53fbfe3eba7d72bc3c403f227a045b5070a4d02b2b7182eb544"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E070/accepted-review.json",
+          "sha256": "5a0c3a00dd4ddbeb3f5b705ca0577555ebf878c735265e76b00bf3304f109246"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E070/four-slot.json",
+          "sha256": "574bfe7a024c9fd127264ed965a88a51ecd51595da3f17715700107fd68c4f46"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E070/validation.json",
+          "sha256": "d8fc63a6e4d176e2bb0c4eb2adc0b45b00022aab7d4d3327398b5af30c900035"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E070/root-review.json",
+          "sha256": "8922ec6c5f49484027bcd406a250d3105b33ea55fbfc8beb7eb774d566449052"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E070/independent.json",
+          "sha256": "54e3d15fe3f8be776087f18645337765ba5e7063a2f8ce87d44f6ec1fe43e71c"
+        }
+      }
+    },
+    {
+      "examId": "E071",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js",
+      "questionCount": 23,
+      "reviewedAndCurrentSourceGitBlob": "603963bf0f61b762a0197dc736652e666f3e2734",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 23,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E071/CURRENT.json",
+          "sha256": "2350f6d9c6fde8f77969a50c6798918915fef8748db5a5aed35ad0677c9080eb"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E071/accepted-review.json",
+          "sha256": "893acce72cedc4ce934eaf80e04a0bdeb6ccb5c973e54f548006e14660280188"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E071/four-slot.json",
+          "sha256": "0042c5041976093c0f688703589b5b1b8d39b81365a155a8f31e91592a2ec20c"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E071/validation.json",
+          "sha256": "08eee0a05d20dfed7679ff4e1562d335c5a6a502fa54987559a4cc130196fd16"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E071/root-review.json",
+          "sha256": "ed612610b961fbf552afb8bdf4381c3281a14c5159bf1074d5007d6760602b39"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E071/independent.json",
+          "sha256": "19b183cfcabcc725ecf55c8fded12bf847a0844d137ec0a0bc78bbdcc8ceb575"
+        }
+      }
+    },
+    {
+      "examId": "E073",
+      "sourcePath": "archive/exams/original/middle/m2/1mid/19_청주금천중_1학기_중간_중2_수학.js",
+      "questionCount": 20,
+      "reviewedAndCurrentSourceGitBlob": "9e842f6c63b7aeadf6f125af4d8326c2dfcb9fe9",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1mid/19_청주금천중_1학기_중간_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 20,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E073/CURRENT.json",
+          "sha256": "335a3dc58d7bfdb3ab4413422d683417c58ea77f9d1e82a9f8b82435cfae0b6f"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E073/accepted-review.json",
+          "sha256": "d9a2ab97854c34027a8484f7821a8d5e90c715903cca27acef34bda0d02ceece"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E073/four-slot.json",
+          "sha256": "8c78284b3e38d04eaee8ace750fcb456bf24868f881e0c165a731e949ba7501f"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E073/validation.json",
+          "sha256": "72963d81998a72466f9cfd8fb589d9ab904a383a244a41f1abe404093a4f8856"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E073/root-review.json",
+          "sha256": "1151062d794ea4e9f4b06fbf0d80f61ab1f04c7b8ecb1f35df4e6a22942b2a6a"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E073/independent.json",
+          "sha256": "c4e1a38b6d77774c7b8727a2259ee563de264bc78e03331cb92dcf4b55023d0b"
+        }
+      }
+    },
+    {
+      "examId": "E074",
+      "sourcePath": "archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js",
+      "questionCount": 24,
+      "reviewedAndCurrentSourceGitBlob": "b350058633ed7ecd7ed8736140163366269bd300",
+      "compactPath": "archive/data/item-4slot/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.4slot.json",
+      "compactPresent": false,
+      "reviewDecision": "ACCEPT_REVIEW_WITH_NAMED_DEBTS",
+      "fourSlotStatus": "INCOMPLETE_SOURCE_ONLY",
+      "readyForRegistration": 0,
+      "explicitMethodHolds": 24,
+      "proofs": {
+        "currentIndex": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E074/CURRENT.json",
+          "sha256": "fac0efce2157a947bbf3da4b17332cb927bdd8b3cd7c489f5761a98cd435daa6"
+        },
+        "acceptedReview": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E074/accepted-review.json",
+          "sha256": "03ff25530efcf36fbb789236b61affc46c1e2a3a0fe95aa3ad6a20f83e6e8383"
+        },
+        "fourSlot": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E074/four-slot.json",
+          "sha256": "57bb5b863e051efc94ea319806261c4b4a2297c4841e1709d4b68a7947220dae"
+        },
+        "nativeValidation": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E074/validation.json",
+          "sha256": "e78320c7c8acd23d897394f1d7c2e3523a76a6b75ed6b4ec935246a06d4cf095"
+        },
+        "rootAcceptance": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E074/root-review.json",
+          "sha256": "37ebf51555ea7ee747c078f056a012641a6e9137d88a302f345ef6d5f8c953eb"
+        },
+        "originalIndependent": {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "docs/operations/m2-s1-meta-full-20261114/exams/E074/independent.json",
+          "sha256": "8592273e26660e170fc307d02ad87a4becd1e0d042755e1eaf26eaeba9db06c5"
+        }
+      }
+    }
+  ],
+  "currentPublishedHoldRefs": [
+    {
+      "commit": "4e84d022319f8a404dbeda29372fa2c26b033fbd",
+      "path": "docs/operations/m2s1-closeout-20261115/release-manifest.json",
+      "sha256": "0322298f1d6faca8663724183aff0994a01c497b8d8f0db0f84152d50826a831"
+    },
+    {
+      "commit": "4e84d022319f8a404dbeda29372fa2c26b033fbd",
+      "path": "docs/operations/m2s1-four-slot-operational-20261115/intake-manifest.json",
+      "sha256": "ece8807557bdcf30bb8841332b13a8de985d0a35b6651cf52f999aab611a2a5e"
+    }
+  ],
+  "verificationMode": "Exact Git/raw hashes, UID/ordinal partitions, unchanged source blobs, current canonical row state, and existing validator output reuse. No new mathematical or semantic judgment."
+}
