@@ -1,0 +1,232 @@
+{
+  "schemaVersion": "archive-e023-q21-issued-parent-display-verification-v2",
+  "status": "PASS_CURRENT_ACTUAL_SCOPED_INPUT_WITH_UNDEPLOYED_CANDIDATE_CODE",
+  "codeBaseCommit": "6dd9ca544b359727e906023304aa5f4213086ee9",
+  "scope": {
+    "questionUids": [
+      "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3"
+    ],
+    "sourceArchiveFile": "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+    "questionOrdinal": 21,
+    "operation": "DISPLAY_ONLY_CURRENT_ISSUED_PARENT_TRANSPORT",
+    "newApproval": 0,
+    "sourceOrRegistrationWrites": 0,
+    "otherAllowlistedUids": 0
+  },
+  "implementation": {
+    "production": {
+      "path": "archive/archive2-canonical.js",
+      "gitBlobSha1": "733bede611518556c0b7eebf0680e30cf8d56afd",
+      "sha256": "6df9ec964ec8b70f0e797808e1557500041115487530a08f444a8a6e67b9aa1d",
+      "bytes": 97175
+    },
+    "test": {
+      "path": "tests/archive2-canonical-projection.test.mjs",
+      "gitBlobSha1": "a89077234b1cf5466c98b85b07dc9744dafdeb29",
+      "sha256": "2b2d3acdda543c426182cb5bd1ad361c43b42bf2791d865907a13ef06ce9f3cb",
+      "bytes": 54239
+    },
+    "existingTestPrefixUnchanged": true,
+    "runnerChangeRequired": false
+  },
+  "authority": {
+    "actualInputCommit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+    "receipt": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-centroid2-current-v2-26fc-20261115-E023.json",
+      "gitBlobSha1": "0c5772453ad5e942a5c0039757e650ab237b85a0",
+      "sha256": "a305d7f1c33200cfc794cc4b34e7b8d411c6fd976cbeae22d304479566c9622e"
+    },
+    "parentLabels": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-centroid2-20261115-E023.parent-labels.json",
+      "gitBlobSha1": "64d71ef03fd6e257b34cf814e9d65d1576bdc864",
+      "sha256": "d5b4067e7da720bd02455bdf421f93f99f810b7af5acda5c48ebf745c42ca36e"
+    },
+    "existingDefaultCandidateCount": 3,
+    "issuedParentMatchCount": 1,
+    "parentChoiceOrMathematicalReviewRepeated": false,
+    "currentIssuedPreservation": {
+      "commit": "96ded37d2d79768962e9f5075e7711cbfd249de5",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-native78-current-r9-20261116-93-preserve-issued-e023-finalqa2.json",
+      "gitBlobSha1": "578463372556b154cf0562126ba211dc9f1218b2",
+      "sha256": "00b09ac538fb8f969bdb1c40398a12e7731cb57ba4d68c5ccbbe4306e80fa9e3",
+      "selectedMetadataIdentityRuntimeExact": 2,
+      "priorApprovalCoreUnchanged": 2
+    }
+  },
+  "guardContract": [
+    "exact UID/source/ordinal and existing approved parent tuple allowlist",
+    "current issued receipt/source raw SHA/current metadata and ACTIVE runtime validation precede map population",
+    "selected runtime revision, approval evidence, approval type/status and field-status equality",
+    "existing basic and advanced assignment validation precedes display transport",
+    "unique current receipt claim and unique approved parent inside current exact-subunit scope and current master",
+    "full/content fingerprint and identity equality",
+    "only prior PARENT_AMBIGUOUS failure eligible; existing projection and explicit source/semantic/field holds preserved or refused",
+    "general default ambiguity and nonselected UID behavior unchanged"
+  ],
+  "focusedRegression": {
+    "command": "node --test --test-name-pattern=\"issued M2 parent display\" tests/archive2-canonical-projection.test.mjs",
+    "passed": 33,
+    "failed": 0,
+    "logSha256": "49aa2676ef63ff6141330b02b953b02107dae40e4e22513519f89d44563cf91b",
+    "testPatchSha256": "a05c7dc6c40a2288e5fab67145fba004eeca09de1d1854fb30f850f561bbd778",
+    "coverage": [
+      "valid issued-parent display",
+      "unissued changed-source refusal",
+      "receipt byte/hash and approval validation",
+      "runtime/current metadata revision and evidence drift refusal",
+      "explicit HOLD/STALE/INVALID/EVIDENCE_DEBT/PENDING/UNKNOWN refusal",
+      "ambiguous/missing/out-of-scope parent refusal",
+      "nonselected record and actual problem-bank eligibility preservation"
+    ]
+  },
+  "historicalScopedExecution": {
+    "localResultSha256": "40bda3cb0e93d3dca19188736869ebf79d51e4e6874bda8bff2059d13389af46",
+    "inputCommit": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+    "inputScope": {
+      "actualInputsVerifiedByExistingLoader": 268,
+      "resolvedUids": 2,
+      "originalReceiptUnmodified": true,
+      "scopedResourcesStableSha256": "06859318a6aa32f492e6ba7838b29602d1f0580bc7f6f653f3aece908d2680b1"
+    },
+    "result": {
+      "q21Before": "DISPLAY_PROJECTION_PARENT_AMBIGUOUS",
+      "q21After": "DISPLAY_ONLY_SOURCE_BOUND",
+      "parentBinding": {
+        "standardUnitKey": "M2-05",
+        "matchedSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "resolution": "ISSUED_FINAL_QA_EXACT_PARENT",
+        "L1": "삼각형의 성질",
+        "L2": "삼각형의 외심과 내심",
+        "reference": "data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-centroid2-current-v2-26fc-20261115-E023.json",
+        "sha256": "a305d7f1c33200cfc794cc4b34e7b8d411c6fd976cbeae22d304479566c9622e"
+      },
+      "nonDisplayCanonicalFieldsUnchanged": true,
+      "unselectedQ3WholeRecordUnchanged": true,
+      "actualProblemBankFieldsPreserved": [
+        "verifiedEligible",
+        "automatic",
+        "defaultSelectable",
+        "directSelectable",
+        "reviewStatus",
+        "sourceStatus",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "rpmPrimaryRecordId",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4",
+        "assignmentEvidence",
+        "reviewedExamRegistration",
+        "metaStatus"
+      ],
+      "verifiedEligibleBefore": false,
+      "verifiedEligibleAfter": false,
+      "unissuedFc30Refused": true
+    },
+    "execution": {
+      "resolvedSourceUids": 2,
+      "pageProjectedUids": 1,
+      "full2866ConsumerReruns": 0,
+      "nativeReplays": 0,
+      "registrationOrDataWrites": 0,
+      "mathematicalOrParentChoiceReviews": 0,
+      "remoteWrites": 0
+    }
+  },
+  "independentReview": {
+    "reviewer": "GPT_ROOT_26FC_M3S2_INDEPENDENT",
+    "staticReviewSha256": "4a085603005f903cf2809f634520c64cc5b5b74680d674e902c3f407412fd3e8",
+    "dynamicBindingSha256": "743852ade0db6c754fcd769a90fa8e4a0ad959a819fc0d0e0bfad1074e6da4ce",
+    "decision": "ACCEPT_SAME_CODE_WITH_CURRENT_ACTUAL96_SCOPED_EVIDENCE",
+    "currentActualBindingSha256": "1deea9cb6e064cc4af120907f9ef051c548f04cc6261be46a0a00f44430b3219"
+  },
+  "protectedScopeReadOnly": {
+    "external2303PendingRequests": 10,
+    "selectedUniqueUids": 94,
+    "original36HoldIntersection": 0,
+    "hyangrimQ5Intersection": 0,
+    "metadataIntersectionProofSha256": "6c6e4f4ff679395f8fd37cca213b9e3ab960929998ea04d921850f4626121949",
+    "actualNewRegistrationGuardPending": false,
+    "actual96StoredProtectionSha256": "6d8e7a364f5ca498fb792a23f3bb8ebea22382555d4f29faa010c2ad7c59bf66"
+  },
+  "operationalBoundary": {
+    "currentSourceGitBlobSha1": "fc30c53f747a1d959a7af8a58d6a1fc0ac9de538",
+    "currentSourceWithOnlyOldReceiptRefused": true,
+    "post2303ActualReceiptVerifiedByThisDocument": true,
+    "remotePublishedByAgent": false,
+    "currentMainOrPagesPassClaimed": false,
+    "full2866ConsumerReruns": 0,
+    "nextAction": "Root applies the exact candidate after fresh path CAS and exact-head CI, then checks the deployed Q21 display-only result without changing approval or eligibility.",
+    "candidateCurrentlyDeployed": false
+  },
+  "actualCurrentScopedExecution": {
+    "localResultSha256": "3366c0c7c17755ece19172585f9fa9721be47afd0b9a3803e2d42de6d7946af2",
+    "inputCommit": "96ded37d2d79768962e9f5075e7711cbfd249de5",
+    "inputScope": {
+      "actualInputsVerifiedByExistingLoader": 278,
+      "resolvedUids": 2,
+      "originalReceiptUnmodified": true,
+      "selectedStateDigestSha256": "6ddf196d1195e1291b4ec4a4903f0722e4102d52f4c937152f5cbb4cbd6c8f48",
+      "scopedResourcesStableSha256": "f403c35eb12b44d1221dbcb11c0cd9421a60551650fb09a9cdec5b1f4fa2cfcc"
+    },
+    "result": {
+      "q21Before": "DISPLAY_PROJECTION_PARENT_AMBIGUOUS",
+      "q21After": "DISPLAY_ONLY_SOURCE_BOUND",
+      "parentBinding": {
+        "standardUnitKey": "M2-05",
+        "matchedSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "resolution": "ISSUED_FINAL_QA_EXACT_PARENT",
+        "L1": "삼각형의 성질",
+        "L2": "삼각형의 외심과 내심",
+        "reference": "data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-native78-current-r9-20261116-93-preserve-issued-e023-finalqa2.json",
+        "sha256": "00b09ac538fb8f969bdb1c40398a12e7731cb57ba4d68c5ccbbe4306e80fa9e3"
+      },
+      "nonDisplayCanonicalFieldsUnchanged": true,
+      "unselectedQ3WholeRecordUnchanged": true,
+      "actualProblemBankFieldsPreserved": [
+        "verifiedEligible",
+        "automatic",
+        "defaultSelectable",
+        "directSelectable",
+        "reviewStatus",
+        "sourceStatus",
+        "problemTypeKey",
+        "templateKey",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "difficultyBoundaryFlag",
+        "legacyLevelCompatibility",
+        "rpmPrimaryRecordId",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4",
+        "assignmentEvidence",
+        "reviewedExamRegistration",
+        "metaStatus"
+      ],
+      "verifiedEligibleBefore": false,
+      "verifiedEligibleAfter": false,
+      "currentIssuedMetadataIdentityRuntimeExact": 2,
+      "originalApprovalCoreUnchanged": 2,
+      "newlyIssuedReceiptSha256": "00b09ac538fb8f969bdb1c40398a12e7731cb57ba4d68c5ccbbe4306e80fa9e3",
+      "priorReceiptSha256": "a305d7f1c33200cfc794cc4b34e7b8d411c6fd976cbeae22d304479566c9622e"
+    },
+    "execution": {
+      "resolvedSourceUids": 2,
+      "pageProjectedUids": 1,
+      "full2866ConsumerReruns": 0,
+      "nativeReplays": 0,
+      "registrationOrDataWrites": 0,
+      "mathematicalOrParentChoiceReviews": 0,
+      "remoteWrites": 0
+    },
+    "selectedCurrentStateDigestsSha256": "6ddf196d1195e1291b4ec4a4903f0722e4102d52f4c937152f5cbb4cbd6c8f48",
+    "actual8ManifestSha256": "0f7651ba1ef4e2167d486af44e5757f01daf7507e53827cf38ca23b19fce32be"
+  }
+}

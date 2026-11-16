@@ -106,3 +106,65 @@ test('catalog composes the separate negative subtype with legacy v1; unchanged s
   const Core=require('../archive/archive2-core.js'),PB=require('../archive/problem-bank-meta.js');assert.equal(Core.basicEligibility(record).ok,false);assert.equal(Core.advancedEligible(record),false);assert.equal(PB.projectOriginal(record).verifiedEligible,false);assert.equal(record.difficultyBucket,3);
 });
 test('legacy v1 alone does not require a foreign named ledger',async t=>{const root=fs.mkdtempSync(path.join(os.tmpdir(),'legacy-alone-'));t.after(()=>fs.rmSync(root,{recursive:true,force:true}));const Q=await import(pathToFileURL(path.resolve(__dirname,'../archive/tools/source-quality-holds.mjs'))),helper=await import(pathToFileURL(path.resolve(__dirname,'helpers/source-quality-hold-fixture.mjs')));const legacy=helper.seedSourceQualityHoldFixture(root);const state=Q.loadSourceQualityHolds({root,identity:legacy.identity});assert.equal(state.holds.size,1);assert.equal(state.holds.has(H.UID),false);});
+
+async function pagesNamedHoldFixture(t) {
+  const f = fixture(t);
+  const Q = await import(pathToFileURL(path.resolve(__dirname, '../archive/tools/source-quality-holds.mjs')));
+  const P = await import(pathToFileURL(path.resolve(__dirname, '../tools/build-archive-pages-site.mjs')));
+  const legacyHelper = await import(pathToFileURL(path.resolve(__dirname, 'helpers/source-quality-hold-fixture.mjs')));
+  const legacy = legacyHelper.seedSourceQualityHoldFixture(f.root);
+  f.identity.records.push(...legacy.identity.records); f.write(H.ID, f.identity);
+  const state = Q.loadSourceQualityHolds({ root: f.root, identity: f.identity });
+  const canonicalPath = 'archive/data/archive2-canonical-input-manifest.json';
+  const digest = bytes => sha(Buffer.from(bytes.toString('utf8').replace(/^\uFEFF/, '').replace(/\r\n/g, '\n')));
+  const canonical = { schemaVersion: 'archive2-canonical-input-manifest-v1', files: state.manifestPaths.map(relative => ({
+    path: relative, sha256: digest(fs.readFileSync(path.resolve(f.root, 'archive', relative))),
+  })) };
+  const save = () => f.write(canonicalPath, canonical);
+  save(); f.write('index.html', '<h1>Synthetic runtime</h1>');
+  const manifest = {
+    schemaVersion: 'ARCHIVE_PAGES_SITE_MANIFEST_V1', maxBytes: 1_000_000,
+    files: ['index.html', canonicalPath], trees: [{ path: 'archive/exams' }, { path: 'archive/assets' }],
+    runtimeClosure: { canonicalInputs: { manifest: canonicalPath, allowedPrefixes: ['archive/data/'] } },
+  };
+  return { ...f, canonical, digest, save, manifest, plan: () => P.planPagesSite({ sourceRoot: f.root, manifest }) };
+}
+
+test('Pages named hold verifies the exact dictionary/source/SVG closure while preserving runtime files', async t => {
+  const f = await pagesNamedHoldFixture(t), plan = f.plan();
+  assert(plan.buildOnly.some(row => row.path === dictPath && row.reason === 'source-quality-hold-dependency'));
+  assert(!plan.entries.some(row => row.path === dictPath));
+  for (const relative of [sourcePath, currentImage]) assert(plan.entries.some(row => row.path === relative));
+  for (const relative of [reviewPath, givenPath, cropPath]) {
+    assert(plan.buildOnly.some(row => row.path === relative && row.reason === 'source-quality-hold-evidence'));
+    assert(!plan.entries.some(row => row.path === relative));
+  }
+});
+
+for (const [label, relative, error] of [
+  ['another dictionary version', '../docs/architecture/4slot/term-dictionary-v9.9.json', /unapproved parent path/],
+  ['a dictionary path alias', '../docs/architecture/4slot/alias/../term-dictionary-v1.5.json', /unapproved parent path/],
+  ['a foreign exam source', 'exams/foreign.js', /unapproved runtime path/],
+  ['a foreign renderer asset', 'assets/foreign.svg', /unapproved runtime path/],
+]) test('Pages named hold does not authorize ' + label, async t => {
+  const f = await pagesNamedHoldFixture(t);
+  f.canonical.files.push({ path: relative, sha256: 'a'.repeat(64) }); f.save();
+  assert.throws(f.plan, error);
+});
+
+for (const [label, relative] of [['dictionary', dictPath], ['source', sourcePath], ['renderer', currentImage]])
+  test('Pages named hold rejects changed ' + label + ' even with a recomputed manifest digest', async t => {
+    const f = await pagesNamedHoldFixture(t), absolute = path.join(f.root, relative);
+    fs.appendFileSync(absolute, '\n');
+    const row = f.canonical.files.find(row => path.resolve(f.root, 'archive', row.path) === absolute);
+    row.sha256 = f.digest(fs.readFileSync(absolute)); f.save();
+    assert.throws(f.plan, /ORIGINAL_SOURCE_ERROR_HOLD:LIVE_BYTES_CHANGED/);
+  });
+
+test('Pages named hold requires all typed dependencies and protects review text from explicit publication', async t => {
+  const missing = await pagesNamedHoldFixture(t);
+  missing.canonical.files = missing.canonical.files.filter(row => row.path !== 'exams/' + H.SOURCE); missing.save();
+  assert.throws(missing.plan, /omits a source quality hold dependency/);
+  const publish = await pagesNamedHoldFixture(t); publish.manifest.files.push(reviewPath);
+  assert.throws(publish.plan, /source quality hold evidence must remain build-only/);
+});

@@ -1,0 +1,39 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T22:04:20.235+00:00",
+ "sourceArchiveFile": "original/high/h2/1mid/22_금당고_1학기_중간_고2_수학I.js",
+ "items": [
+  {
+   "ordinal": 9,
+   "chosenFrom": "new",
+   "resolutionReason": "밑면 반지름 2, 모선 8인 원뿔의 겉넓이를 밑면 4π와 옆면 πrl=16π의 합 20π로 구하는 입체도형 넓이인데 기하 표에는 입체도형의 겉넓이 항목이 없다.",
+   "choiceTableUsed": "H2-기하.json",
+   "rpmPath": {
+    "majorUnit": "공간도형과 공간좌표",
+    "midUnit": "공간도형",
+    "l3": "",
+    "l4": ""
+   },
+   "subUnitKey": "H22-GE-03-CORE",
+   "crossConceptKeys": [],
+   "conditionKeys": [],
+   "integrationPattern": "NONE",
+   "hold": "신규 제안: 공간도형 아래 입체도형의 겉넓이 항목이 표에 없음. 선택지 표에 H15 접두어 sub 키가 없어 H22-GE 키를 썼다.",
+   "proposedNew": {
+    "rpmPath.l3": {
+     "value": "입체도형의 겉넓이",
+     "label": "입체도형의 겉넓이",
+     "parent": "공간도형과 공간좌표 > 공간도형",
+     "why": "가장 가까운 '직선과 평면'과 '삼수선 정리'는 위치 관계와 각을 다루고, 이 문항은 원뿔의 밑면과 옆면 넓이를 더하는 넓이 계산이다."
+    },
+    "rpmPath.l4": {
+     "value": "원뿔의 겉넓이",
+     "label": "원뿔의 겉넓이",
+     "parent": "공간도형과 공간좌표 > 공간도형 > 입체도형의 겉넓이",
+     "why": "가장 가까운 '이면각'은 두 평면의 각이며 원뿔의 밑면 넓이와 옆면 넓이 합과 맞지 않는다."
+    }
+   }
+  }
+ ]
+}

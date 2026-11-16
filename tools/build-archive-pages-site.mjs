@@ -151,28 +151,30 @@ function addCanonicalInputs(selection, root, config, buildOnlyOut) {
     fail(`unsupported canonicalInputs.ship: ${config.ship}`);
   const fetched = config.ship === 'loader-fetch-set' ? loaderFetchedCanonicalInputs(root, manifest.files) : null;
   const seen = new Set();
-  let qualityParentInputs;
+  let qualityInputs;
+  const verifiedQualityInputs = () => {
+    if (!qualityInputs) {
+      // The typed loader verifies the exact source, assets, dictionary and review bytes.
+      // Membership authorizes a digest-only dependency, never a directory or a new fetch.
+      const identity = readJson(root, 'archive/data/question_identity_map.json', 'source quality hold identity');
+      const hold = loadSourceQualityHolds({ root, identity });
+      const listed = new Set(manifest.files.map(row => row?.path));
+      for (const dependency of hold.manifestPaths)
+        if (!listed.has(dependency)) fail(`canonical input manifest omits a source quality hold dependency: ${dependency}`);
+      qualityInputs = new Set(hold.manifestPaths);
+    }
+    return qualityInputs;
+  };
   for (const entry of manifest.files) {
     if (!entry || typeof entry.path !== 'string' || !SHA256_RE.test(String(entry.sha256 || '')))
       fail('canonical input manifest contains an invalid file entry');
     const raw = entry.path.replace(/\\/g, '/');
     let relative;
-    let qualityParent = false;
+    let qualityDependency = false;
     if (raw.startsWith('../')) {
-      if (raw.startsWith('../docs/operations/')) {
-        if (!qualityParentInputs) {
-          // The typed loader validates exact UID/source/image/receipt/evidence bytes. Its returned
-          // paths authorize only build-time evidence; they do not authorize an arbitrary docs tree.
-          const identity = readJson(root, 'archive/data/question_identity_map.json', 'source quality hold identity');
-          const hold = loadSourceQualityHolds({ root, identity });
-          const listed = new Set(manifest.files.map(row => row?.path));
-          for (const dependency of hold.manifestPaths)
-            if (!listed.has(dependency)) fail(`canonical input manifest omits a source quality hold dependency: ${dependency}`);
-          qualityParentInputs = new Set(hold.manifestPaths.filter(p => p.startsWith('../docs/operations/')));
-        }
-        qualityParent = qualityParentInputs.has(raw);
-      }
-      if (!qualityParent && raw !== '../docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json')
+      if (raw.startsWith('../docs/operations/') || /^\.\.\/docs\/architecture\/4slot\/term-dictionary-v[0-9.]+\.json$/.test(raw))
+        qualityDependency = verifiedQualityInputs().has(raw);
+      if (!qualityDependency && raw !== '../docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json')
         fail(`canonical input manifest references an unapproved parent path: ${raw}`);
       relative = normalizeRelative(path.posix.normalize(`archive/${raw}`), 'canonical input path');
     } else {
@@ -182,7 +184,9 @@ function addCanonicalInputs(selection, root, config, buildOnlyOut) {
       const safePrefix = prefix.endsWith('/') ? prefix.slice(0, -1) : prefix;
       return relative === safePrefix || relative.startsWith(`${safePrefix}/`);
     });
-    if (!allowed && !qualityParent) fail(`canonical input manifest references an unapproved runtime path: ${relative}`);
+    if (!allowed && !qualityDependency && (raw.startsWith('exams/') || raw.startsWith('assets/')))
+      qualityDependency = verifiedQualityInputs().has(raw);
+    if (!allowed && !qualityDependency) fail(`canonical input manifest references an unapproved runtime path: ${relative}`);
     if (seen.has(relative)) fail(`canonical input manifest repeats a file: ${relative}`);
     seen.add(relative);
     const absolute = resolveInside(root, relative, 'canonical input path');
@@ -190,9 +194,10 @@ function addCanonicalInputs(selection, root, config, buildOnlyOut) {
     const actualSha = normalizedTextSha256(absolute);
     if (actualSha !== entry.sha256.toLowerCase())
       fail(`canonical input digest mismatch: ${relative}`);
-    if (qualityParent) {
+    if (qualityDependency) {
       if (fetched?.has(raw)) fail(`source quality hold evidence cannot be a loader-fetched input: ${relative}`);
-      buildOnlyOut.push({ path: relative, bytes: fs.statSync(absolute).size, reason: 'source-quality-hold-evidence' });
+      const reason = raw.startsWith('../docs/operations/') ? 'source-quality-hold-evidence' : 'source-quality-hold-dependency';
+      buildOnlyOut.push({ path: relative, bytes: fs.statSync(absolute).size, reason });
       continue;
     }
     if (fetched && !fetched.has(raw)) {
