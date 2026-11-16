@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "L",
+            "value": "2*sqrt(3)",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "P4",
+            "value": "4",
+            "hideName": true,
+            "showValue": false
+          },
+          {
+            "id": "P5",
+            "value": "5",
+            "hideName": true,
+            "showValue": false
+          },
+          {
+            "id": "P6",
+            "value": "6",
+            "hideName": true,
+            "showValue": false
+          },
+          {
+            "id": "P7",
+            "value": "7",
+            "hideName": true,
+            "showValue": false
+          },
+          {
+            "id": "R",
+            "value": "5*sqrt(2)",
+            "hideName": true,
+            "style": "HOLLOW"
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "두 끝 사이의 자연수"
+  },
+  "caption": "주어진 두 끝 사이의 자연수 눈금을 확인하고 왼쪽 끝은 포함, 오른쪽 끝은 제외한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "발문의 부등식을 양수 조건에서 정리한 범위",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정수 눈금의 포함 여부를 보여 주고 개수나 합은 쓰지 않는다."
+  ],
+  "accessibilityDescription": "주어진 두 끝 사이의 자연수 눈금을 확인하고 왼쪽 끝은 포함, 오른쪽 끝은 제외한다."
+}
