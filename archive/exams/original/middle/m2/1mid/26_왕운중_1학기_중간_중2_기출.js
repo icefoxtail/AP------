@@ -724,8 +724,8 @@ window.questionBank=[
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "LINEAR_INEQUALITY",
-    "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
-    "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+    "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+    "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -737,7 +737,23 @@ window.questionBank=[
     "imageStatus": "none",
     "answerStatus": "draft",
     "solutionStatus": "draft",
-    "reviewStatus": "pending"
+    "reviewStatus": "pending",
+    "curriculum": "2022",
+    "courseKey": "M2-1",
+    "primaryMethod": "부등식동치와음수곱의부등호반전판정",
+    "decisiveStep": "a<b로돌린뒤-3곱하면방향이>로바뀜.",
+    "rpmPrimaryId": "M2-RPM-136",
+    "rpmPrimaryPath": {
+      "majorUnit": "일차부등식",
+      "midUnit": "일차부등식",
+      "l3": "부등식의 성질",
+      "l4": "부등식의 성질"
+    },
+    "rpmL1": "일차부등식",
+    "rpmL2": "일차부등식",
+    "rpmL3": "부등식의 성질",
+    "rpmL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-136"
   },
   {
     "id": 18,

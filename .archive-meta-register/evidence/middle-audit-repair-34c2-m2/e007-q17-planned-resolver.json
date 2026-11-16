@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "middle-audit-planned-official-resolver-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+  "sourceOrdinal": 17,
+  "mode": "ISOLATED_OFFICIAL_COMPILER_AND_RESOLVER_WITH_EXACT_PROPOSED_ADDITIONS",
+  "registryStatus": "ACTIVE",
+  "registrySha": "sha256:25399fc7e9900f8fb1e99ddd6800f0a1b27ec80f8bc8c9185317e25661752990",
+  "sourceBlobSha1": "5b2b82a0698986eaa464e85de2dbed93a948eada",
+  "rootCurrentApplicationEvidence": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q17-current-key-application.json",
+  "verifiedSolutionBasis": "Existing current solution and the negative-multiplication decisive step were directly checked by GPT_M2_34C2 and then independently read by root before root approved the exact current application. Native SOURCE_ONLY status was not relabeled as a historical VERIFIED_FINAL receipt.",
+  "input": {
+    "sourceIdentity": {
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "sourceOrdinal": 17,
+      "contentHash": "sha256:c9cf6296d37c507a8621f30d1e7fc7aa2ac36fd16784b9d1eba4ea51c33ba576",
+      "choicesHash": "sha256:35ef900333fb63aba735118dbabd6b918a7a9ad8ff2ecf8c3a0e2c054596f8a3",
+      "imageRefHash": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    "solutionIdentity": {
+      "status": "VERIFIED_FINAL",
+      "independentVerification": true,
+      "solutionHash": "sha256:60181ca0ebe675ff9c9a40246cfe78e8ca40879ba4d33550beb8357f783822ce"
+    },
+    "curriculumContext": {
+      "grade": "M2",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-02",
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY"
+    },
+    "semanticDecision": {
+      "primaryMethod": "부등식동치와음수곱의부등호반전판정",
+      "decisiveStep": "a<b로돌린뒤-3곱하면방향이>로바뀜.",
+      "rpmPath": {
+        "curriculum": "2022",
+        "scope": "M2-1",
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식",
+        "l3": "부등식의 성질",
+        "l4": "부등식의 성질"
+      }
+    },
+    "familyTemplateSelection": {
+      "stage": "POST_CROSSWALK",
+      "inputBundleSha": "sha256:8e1e8d0e3a80e6ed47d00e2e3b2026b1c9e7f70fabb9fabd328a4768c06ac2cc",
+      "crosswalkRecordId": "M2-RPM-136-INEQUALITY-PROPERTIES-34C2",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "decisiveStepReason": "The selected item asks whether each inequality transformation preserves the relation. Its decisive negative multiplier reverses the inequality, exactly matching the transformation-property template independently approved for this current source by root."
+    }
+  },
+  "resolved": {
+    "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v2",
+    "sourceFingerprint": "sha256:b2d652e29c7c4e2ce733bb2a7b6e07a182a71fc6bc815efcafe713f8d4d4c501",
+    "inputBundleSha": "sha256:8e1e8d0e3a80e6ed47d00e2e3b2026b1c9e7f70fabb9fabd328a4768c06ac2cc",
+    "rpmPath": {
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "majorUnit": "일차부등식",
+      "midUnit": "일차부등식",
+      "l3": "부등식의 성질",
+      "l4": "부등식의 성질"
+    },
+    "rpmL3": "부등식의 성질",
+    "rpmL4": "부등식의 성질",
+    "semanticScopeRelation": "CURRENT_SCOPE",
+    "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "crosswalkRecordId": "M2-RPM-136-INEQUALITY-PROPERTIES-34C2",
+    "crosswalkStatus": "DIRECT_ACTIVE",
+    "projectionStatus": "PROJECTION_REUSE",
+    "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+    "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+    "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+    "mappedProblemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+    "mappedTemplateKeys": [
+      "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES"
+    ],
+    "ownerPack": "MIDDLE2",
+    "ownerVersion": "1.0.7",
+    "bindingOwnerPack": "MIDDLE2",
+    "bindingIdentity": "2022|M2-02|M2-02-LINEAR_INEQUALITY|PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE|MIDDLE2",
+    "legacyProjection": {
+      "status": "PROJECTION_REUSE",
+      "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "candidateTemplateKeys": [
+        "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES"
+      ],
+      "canonicalOwnerPack": "MIDDLE2",
+      "bindingOwnerPack": "MIDDLE2",
+      "bindingIdentity": "2022|M2-02|M2-02-LINEAR_INEQUALITY|PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE|MIDDLE2"
+    },
+    "disposition": "RPM_SEMANTIC_FINAL",
+    "semanticStatus": "FINAL",
+    "rpmSemantic": {
+      "status": "FINAL",
+      "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "targetScope": "M2-1",
+      "scopeRelation": "CURRENT_SCOPE",
+      "majorUnit": "일차부등식",
+      "midUnit": "일차부등식",
+      "l3": "부등식의 성질",
+      "l4": "부등식의 성질",
+      "primaryMethod": "부등식동치와음수곱의부등호반전판정",
+      "decisiveStep": "a<b로돌린뒤-3곱하면방향이>로바뀜.",
+      "sourceFingerprint": "sha256:b2d652e29c7c4e2ce733bb2a7b6e07a182a71fc6bc815efcafe713f8d4d4c501",
+      "inputBundleSha": "sha256:8e1e8d0e3a80e6ed47d00e2e3b2026b1c9e7f70fabb9fabd328a4768c06ac2cc",
+      "rpmRecordSha": "sha256:2fb7815c2152085d3e11e5159716a1f4b13cd7d6577b61bbb5663e00e5d5b5b7"
+    },
+    "advancedMetaEligible": true,
+    "dispositionReason": "",
+    "semanticInputBundle": {
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+        "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+        "sourceIdentityKey": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+        "sourceOrdinal": 17,
+        "contentHash": "sha256:c9cf6296d37c507a8621f30d1e7fc7aa2ac36fd16784b9d1eba4ea51c33ba576",
+        "choicesHash": "sha256:35ef900333fb63aba735118dbabd6b918a7a9ad8ff2ecf8c3a0e2c054596f8a3",
+        "imageRefHash": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "sourceFingerprint": "sha256:b2d652e29c7c4e2ce733bb2a7b6e07a182a71fc6bc815efcafe713f8d4d4c501"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "solutionHash": "sha256:60181ca0ebe675ff9c9a40246cfe78e8ca40879ba4d33550beb8357f783822ce",
+        "independentVerification": true
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2022",
+        "scope": "M2-1",
+        "subjectFamily": "",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY"
+      },
+      "semanticDecision": {
+        "primaryMethod": "부등식동치와음수곱의부등호반전판정",
+        "decisiveStep": "a<b로돌린뒤-3곱하면방향이>로바뀜.",
+        "rpmPath": {
+          "curriculum": "2022",
+          "scope": "M2-1",
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "scopeRelation": "CURRENT_SCOPE"
+      }
+    },
+    "authorityRefs": [
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+        "bytes": 1839,
+        "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "bytes": 559927,
+        "sha256": "sha256:7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md",
+        "bytes": 6090,
+        "sha256": "sha256:142129858d0dc33ca6cb42ff925fb7ced93958d86907b31c0a69c2a6c72a4fc4"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "bytes": 157421,
+        "sha256": "sha256:98a6978ad2bb055d9645d7bec83b788c12972341b08f5fabbe013b574e3e5100"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "bytes": 157421,
+        "sha256": "sha256:98a6978ad2bb055d9645d7bec83b788c12972341b08f5fabbe013b574e3e5100",
+        "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/registry_index.json",
+        "bytes": 21742,
+        "sha256": "sha256:adae8990f606f535a90a989a0b06ab0c3d5667e635191398fdf7685350bb154c",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+        "bytes": 2268,
+        "sha256": "sha256:11889c08f041e0ac9ed3e131c3119369d51fb53d3704eaa637482894190d24cf",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+        "bytes": 259291,
+        "sha256": "sha256:8c60ebb19670c12491b7259e90530d3b64c16e1252bb691e5b69d1670a16f617",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bytes": 2276362,
+        "sha256": "sha256:2806348fc95149ca3bb7563e9b0d01ada2d764616a04027c57c718fb1d707376",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+        "bytes": 1687601,
+        "sha256": "sha256:e8d40bce41d532c70ae205269b771564c23fca0f077335f07e5449b78a1bd7c2",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+        "bytes": 259332,
+        "sha256": "sha256:3dacd35e12f9c49283f7c14f8aa99c61dba1cb9ac14b5e86dee9d2a80d452208",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "bytes": 967470,
+        "sha256": "sha256:2ce6bcb43fcd82ce3fc7eba4065bba8d3ab31a82e77f7111d56afd52f4aab70d",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      }
+    ],
+    "evidenceSha": "sha256:97e0a572385bd7a2cf796b14d9b7f8cde8caf391abd7eb55ed60ee963d319549"
+  },
+  "mainRegistryMutated": false,
+  "remoteMainRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}

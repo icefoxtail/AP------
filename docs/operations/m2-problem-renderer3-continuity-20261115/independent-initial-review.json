@@ -1,0 +1,609 @@
+{
+  "schemaVersion": "archive-independent-problem-renderer-review-v1",
+  "scope": "EXACT_THREE_FOREIGN_PROBLEM_RENDERERS_ONLY",
+  "reviewer": "/root/m3s2_release",
+  "reviewedAt": "2026-11-15T21:06:16.369102+00:00",
+  "baseCommit": "125431da16e154d75182185c787ec1f05e89e90b",
+  "publicCandidateCommit": "32467a13be16e40be70c99b2c57fe863685e83c7",
+  "mergedSourceCommit": "4e84d022319f8a404dbeda29372fa2c26b033fbd",
+  "expectedFactsFrozenBeforeCandidateOpen": true,
+  "reviewerProvenance": "Not a foreign PR2188 source/SVG author. Prior local retained metadata request/code preparation is disclosed and is not independently approved by this visual record.",
+  "decision": "TWO_NARROW_RENDERER_PASSES_ONE_LABEL_CLEARANCE_REPAIR",
+  "checkedCount": 3,
+  "narrowPassCount": 2,
+  "narrowFailCount": 1,
+  "rows": [
+    {
+      "key": "E005-Q12",
+      "questionUid": "qid_v1_826a35829c515296d28c799f17e8610d2ece6e8ea45c812778822d082b9efee1",
+      "sourceOrdinal": 12,
+      "decision": "PASS_NARROW_PROBLEM_RENDERER_CONTINUITY",
+      "geometryAndGivenConditions": "PASS",
+      "standaloneLabelReadability": "PASS",
+      "observed": [
+        "Original midpoint labels D on AB, E on BC and F on CA are preserved, and all three midpoint errors are zero in actual SVG coordinates.",
+        "The full-side dimension owners AB=8 cm, BC=12 cm and CA=10 cm match the original; all three lengths use the same measured scale of 46.5 screen pixels per cm.",
+        "One-, two- and three-tick pairings remain unambiguous for the three respective side halves. The inner DEF triangle adds no new construction or numeric conclusion.",
+        "Point/dimension text and geometry are legible in the inspected standalone rendering; recoloring and fills do not introduce an additional stated relation."
+      ],
+      "sourceBinding": {
+        "key": "E005-Q12",
+        "questionUid": "qid_v1_826a35829c515296d28c799f17e8610d2ece6e8ea45c812778822d082b9efee1",
+        "sourceOrdinal": 12,
+        "beforeSourceRef": {
+          "commit": "125431da16e154d75182185c787ec1f05e89e90b",
+          "path": "archive/exams/original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+          "gitBlobSha1": "8797b4d782baf8403ca118e761bd8ec4ac674c9b",
+          "sha256": "15e85e9db89e9e8579d9e00a5b5c78092ea84089b0ef7004435b13ec85af6644",
+          "bytes": 68887
+        },
+        "currentSourceRef": {
+          "commit": "32467a13be16e40be70c99b2c57fe863685e83c7",
+          "path": "archive/exams/original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+          "gitBlobSha1": "dbc3648a0ce007125279c81262f3e28e9616636a",
+          "sha256": "4a5d2b1c16c340ad34de15bff29449923ab4016ce1909f4f14d1827e52dd0335",
+          "bytes": 73011
+        },
+        "mergedSourceCommit": "4e84d022319f8a404dbeda29372fa2c26b033fbd",
+        "mergedSourceByteExact": true,
+        "problemPayloadSha256": "a08b21f131d8e13e935025311901ad096e32c867c1f9e89559c276702a206ccc",
+        "problemTextChoicesUnchanged": true,
+        "changedFields": [
+          "image",
+          "imageAlt",
+          "imageSize",
+          "layoutTag"
+        ],
+        "protectedNonRendererFieldsUnchanged": true
+      },
+      "beforeAsset": {
+        "commit": "125431da16e154d75182185c787ec1f05e89e90b",
+        "path": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q12.png",
+        "gitBlobSha1": "378df0b088841798ba38ed208049aa9c2bdfa070",
+        "sha256": "e44a058a99b68c5cf3cce5b5df02d92027ce359efaff7398bcea75429cac0128",
+        "bytes": 37458
+      },
+      "afterAsset": {
+        "commit": "32467a13be16e40be70c99b2c57fe863685e83c7",
+        "path": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q12-problem-visual-v2.svg",
+        "gitBlobSha1": "0538d26894e953ba85f28408d48a58eec91ae817",
+        "sha256": "dfb01581e063f857eaeffd99d0f46f3a7fb1b8915e9b7b8d87ef7c76a3db5f61",
+        "bytes": 6176
+      },
+      "render": {
+        "key": "E005-Q12",
+        "renderer": "inkscape",
+        "sourceSha256": "dfb01581e063f857eaeffd99d0f46f3a7fb1b8915e9b7b8d87ef7c76a3db5f61",
+        "sourcePublicRef": {
+          "commit": "32467a13be16e40be70c99b2c57fe863685e83c7",
+          "path": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q12-problem-visual-v2.svg",
+          "gitBlobSha1": "0538d26894e953ba85f28408d48a58eec91ae817",
+          "sha256": "dfb01581e063f857eaeffd99d0f46f3a7fb1b8915e9b7b8d87ef7c76a3db5f61",
+          "bytes": 6176
+        },
+        "mergedCommitAssetExact": true,
+        "renderPath": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/E005-Q12-after.png",
+        "renderSha256": "867382f9131d58f3d2e73d3cfb214578f354bc87af8ca4c8649b70e3e4765177"
+      },
+      "coordinateObservation": {
+        "key": "E005-Q12",
+        "circlePoints": {
+          "A": [
+            294.25,
+            108.71570504437068
+          ],
+          "B": [
+            85.0,
+            416.2842949556293
+          ],
+          "C": [
+            643.0,
+            416.2842949556293
+          ],
+          "D": [
+            189.625,
+            262.5
+          ],
+          "E": [
+            364.0,
+            416.2842949556293
+          ],
+          "F": [
+            468.625,
+            262.5
+          ]
+        },
+        "midpointErrorsPixels": {
+          "D_midpoint_AB": 0.0,
+          "E_midpoint_BC": 0.0,
+          "F_midpoint_CA": 0.0
+        },
+        "displayedDimensionScalePixelsPerCm": [
+          46.5,
+          46.5,
+          46.5
+        ],
+        "geometryConditionsPass": true,
+        "actualStructuralLineBindings": [
+          {
+            "segment": "AD",
+            "lineIndex": 0,
+            "x1": 294.25,
+            "y1": 108.7157,
+            "x2": 189.625,
+            "y2": 262.5,
+            "endpointMaxErrorPixels": 5.044370681162036e-06
+          },
+          {
+            "segment": "DB",
+            "lineIndex": 2,
+            "x1": 189.625,
+            "y1": 262.5,
+            "x2": 85.0,
+            "y2": 416.2843,
+            "endpointMaxErrorPixels": 5.0443706527403265e-06
+          },
+          {
+            "segment": "AF",
+            "lineIndex": 4,
+            "x1": 294.25,
+            "y1": 108.7157,
+            "x2": 468.625,
+            "y2": 262.5,
+            "endpointMaxErrorPixels": 5.044370681162036e-06
+          },
+          {
+            "segment": "FC",
+            "lineIndex": 7,
+            "x1": 468.625,
+            "y1": 262.5,
+            "x2": 643.0,
+            "y2": 416.2843,
+            "endpointMaxErrorPixels": 5.0443706527403265e-06
+          },
+          {
+            "segment": "BE",
+            "lineIndex": 10,
+            "x1": 85.0,
+            "y1": 416.2843,
+            "x2": 364.0,
+            "y2": 416.2843,
+            "endpointMaxErrorPixels": 5.0443706527403265e-06
+          },
+          {
+            "segment": "EC",
+            "lineIndex": 14,
+            "x1": 364.0,
+            "y1": 416.2843,
+            "x2": 643.0,
+            "y2": 416.2843,
+            "endpointMaxErrorPixels": 5.0443706527403265e-06
+          },
+          {
+            "segment": "DE",
+            "lineIndex": 18,
+            "x1": 189.625,
+            "y1": 262.5,
+            "x2": 364.0,
+            "y2": 416.2843,
+            "endpointMaxErrorPixels": 5.0443706527403265e-06
+          },
+          {
+            "segment": "EF",
+            "lineIndex": 19,
+            "x1": 364.0,
+            "y1": 416.2843,
+            "x2": 468.625,
+            "y2": 262.5,
+            "endpointMaxErrorPixels": 5.0443706527403265e-06
+          },
+          {
+            "segment": "FD",
+            "lineIndex": 20,
+            "x1": 468.625,
+            "y1": 262.5,
+            "x2": 189.625,
+            "y2": 262.5,
+            "endpointMaxErrorPixels": 0.0
+          }
+        ]
+      },
+      "newMetadataApproval": false,
+      "newDifficultyJudgment": false,
+      "newFullMathematicalQa": false,
+      "newReview2": false
+    },
+    {
+      "key": "E006-Q21",
+      "questionUid": "qid_v1_df7a46a1d2551864d378ffa34389721380b230aa6e36d5a8d064be61aada21ea",
+      "sourceOrdinal": 21,
+      "decision": "PASS_NARROW_PROBLEM_RENDERER_CONTINUITY",
+      "geometryAndGivenConditions": "PASS",
+      "standaloneLabelReadability": "PASS",
+      "observed": [
+        "A-D-B, B-C-F, D-E-F and A-G-E-C incidence/order all match the original image.",
+        "D is the exact midpoint of AB; E is the exact midpoint of DF; DG and BF are parallel. Direct coordinate errors are below 3e-14 screen pixel or 6e-15 normalized relation.",
+        "The equality-mark group styles are swapped relative to the raster, but each original equal pair remains distinct and no different segments are asserted equal.",
+        "The explicit parallel arrows repeat a given condition and the 18 cm dimension spans the entire BF. No requested length or new auxiliary construction is displayed."
+      ],
+      "sourceBinding": {
+        "key": "E006-Q21",
+        "questionUid": "qid_v1_df7a46a1d2551864d378ffa34389721380b230aa6e36d5a8d064be61aada21ea",
+        "sourceOrdinal": 21,
+        "beforeSourceRef": {
+          "commit": "125431da16e154d75182185c787ec1f05e89e90b",
+          "path": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+          "gitBlobSha1": "3840cd5075d2634acc0fb09dbcc545e6641393a0",
+          "sha256": "50798d8a3670011e7a825b0f11a31d4ba7a5442d2a69ddac77b70dfe7196337e",
+          "bytes": 55054
+        },
+        "currentSourceRef": {
+          "commit": "32467a13be16e40be70c99b2c57fe863685e83c7",
+          "path": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+          "gitBlobSha1": "fb5492f096e8d7cfa8cccbf2f5cb9c98181a0ce1",
+          "sha256": "1ad6a014c40c64d8524b7f616fcbd5b717e7b0051887189bcbbdf0e46b6fbf9f",
+          "bytes": 58252
+        },
+        "mergedSourceCommit": "4e84d022319f8a404dbeda29372fa2c26b033fbd",
+        "mergedSourceByteExact": true,
+        "problemPayloadSha256": "3c390b64113c814f1405b03dc1fcc2c7951292910b501cdc1b2ccd7635c58024",
+        "problemTextChoicesUnchanged": true,
+        "changedFields": [
+          "image",
+          "imageAlt",
+          "imageSize",
+          "layoutTag"
+        ],
+        "protectedNonRendererFieldsUnchanged": true
+      },
+      "beforeAsset": {
+        "commit": "125431da16e154d75182185c787ec1f05e89e90b",
+        "path": "archive/assets/images/25_연향중_2학기_기말_중2_기출/q21.png",
+        "gitBlobSha1": "0af01a049ad73eb03fab3bf447a10b75092b83e1",
+        "sha256": "2b3395e89b5a498ddfeb879a6f799141871fe68a0a89b4802cc2b6d8f65bd00e",
+        "bytes": 23350
+      },
+      "afterAsset": {
+        "commit": "32467a13be16e40be70c99b2c57fe863685e83c7",
+        "path": "archive/assets/images/25_연향중_2학기_기말_중2_기출/q21-problem-visual-v2.svg",
+        "gitBlobSha1": "cb2d982095986c654797fbf2bbbf85f582e96eba",
+        "sha256": "1a84d03567e03aceba1ff1edd07dc370a0729efb749e8191cc1af6a7e349e270",
+        "bytes": 4583
+      },
+      "render": {
+        "key": "E006-Q21",
+        "renderer": "inkscape",
+        "sourceSha256": "1a84d03567e03aceba1ff1edd07dc370a0729efb749e8191cc1af6a7e349e270",
+        "sourcePublicRef": {
+          "commit": "32467a13be16e40be70c99b2c57fe863685e83c7",
+          "path": "archive/assets/images/25_연향중_2학기_기말_중2_기출/q21-problem-visual-v2.svg",
+          "gitBlobSha1": "cb2d982095986c654797fbf2bbbf85f582e96eba",
+          "sha256": "1a84d03567e03aceba1ff1edd07dc370a0729efb749e8191cc1af6a7e349e270",
+          "bytes": 4583
+        },
+        "mergedCommitAssetExact": true,
+        "renderPath": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/E006-Q21-after.png",
+        "renderSha256": "c1df5c0228d69df5fe30a65aecb9b0ab612f7e963470fc9c8afa3b4962e95f94"
+      },
+      "coordinateObservation": {
+        "key": "E006-Q21",
+        "circlePoints": {
+          "A": [
+            371.73333333333335,
+            96.76666666666668
+          ],
+          "B": [
+            85.0,
+            440.23333333333335
+          ],
+          "C": [
+            453.0,
+            440.23333333333335
+          ],
+          "F": [
+            637.0,
+            440.23333333333335
+          ],
+          "D": [
+            228.36666666666665,
+            268.5
+          ],
+          "E": [
+            432.68333333333334,
+            354.3666666666667
+          ],
+          "G": [
+            412.3666666666667,
+            268.5
+          ]
+        },
+        "relationshipErrors": {
+          "D_midpoint_AB": 2.842170943040401e-14,
+          "E_midpoint_DF": 0.0,
+          "DG_parallel_BF": 0.0,
+          "E_on_AC": 0.0,
+          "G_on_AC": 5.153676128750984e-15,
+          "C_on_BF": 0.0
+        },
+        "pointOrderOnAC": {
+          "G": 0.49999999999999994,
+          "E": 0.7499999999999999,
+          "C": 1.0
+        },
+        "geometryConditionsPass": true,
+        "actualStructuralLineBindings": [
+          {
+            "segment": "AB",
+            "lineIndex": 0,
+            "x1": 371.7333,
+            "y1": 96.7667,
+            "x2": 85.0,
+            "y2": 440.2333,
+            "endpointMaxErrorPixels": 4.714045209071666e-05
+          },
+          {
+            "segment": "AC",
+            "lineIndex": 1,
+            "x1": 371.7333,
+            "y1": 96.7667,
+            "x2": 453.0,
+            "y2": 440.2333,
+            "endpointMaxErrorPixels": 4.714045209071666e-05
+          },
+          {
+            "segment": "BF",
+            "lineIndex": 2,
+            "x1": 85.0,
+            "y1": 440.2333,
+            "x2": 637.0,
+            "y2": 440.2333,
+            "endpointMaxErrorPixels": 3.3333333362861595e-05
+          },
+          {
+            "segment": "DF",
+            "lineIndex": 3,
+            "x1": 228.3667,
+            "y1": 268.5,
+            "x2": 637.0,
+            "y2": 440.2333,
+            "endpointMaxErrorPixels": 3.3333333362861595e-05
+          },
+          {
+            "segment": "DG",
+            "lineIndex": 4,
+            "x1": 228.3667,
+            "y1": 268.5,
+            "x2": 412.3667,
+            "y2": 268.5,
+            "endpointMaxErrorPixels": 3.3333333362861595e-05
+          }
+        ]
+      },
+      "newMetadataApproval": false,
+      "newDifficultyJudgment": false,
+      "newFullMathematicalQa": false,
+      "newReview2": false
+    },
+    {
+      "key": "E006-Q3",
+      "questionUid": "qid_v1_77bdb41803d8e38bf819ade572a121911b9ef1bf783541203c671df15ec0985f",
+      "sourceOrdinal": 3,
+      "decision": "FAIL_NARROW_LABEL_CLEARANCE",
+      "geometryAndGivenConditions": "PASS",
+      "standaloneLabelReadability": "FAIL",
+      "observed": [
+        "The B right angle, perpendicular BD at D, and A-D-C order agree with the original. The measured AB/AD ratio is 2, with normalized right-angle errors at most 1.8e-16.",
+        "The dimension 6 belongs to AB and 3 belongs to AD; no value for DC or extra construction is displayed.",
+        "The terminal green tick for the AD dimension intersects the right/lower part of the D glyph in the inspected standalone render. D text bounds are x=217.380..234.548 and y=142.563..163.269; the adjacent cap runs from (238.75,149.6591) to (233.25,159.1854).",
+        "Geometry/conditions are preserved, but D label clearance needs a targeted placement repair before this renderer receives a complete narrow visual PASS."
+      ],
+      "sourceBinding": {
+        "key": "E006-Q3",
+        "questionUid": "qid_v1_77bdb41803d8e38bf819ade572a121911b9ef1bf783541203c671df15ec0985f",
+        "sourceOrdinal": 3,
+        "beforeSourceRef": {
+          "commit": "125431da16e154d75182185c787ec1f05e89e90b",
+          "path": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+          "gitBlobSha1": "3840cd5075d2634acc0fb09dbcc545e6641393a0",
+          "sha256": "50798d8a3670011e7a825b0f11a31d4ba7a5442d2a69ddac77b70dfe7196337e",
+          "bytes": 55054
+        },
+        "currentSourceRef": {
+          "commit": "32467a13be16e40be70c99b2c57fe863685e83c7",
+          "path": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+          "gitBlobSha1": "fb5492f096e8d7cfa8cccbf2f5cb9c98181a0ce1",
+          "sha256": "1ad6a014c40c64d8524b7f616fcbd5b717e7b0051887189bcbbdf0e46b6fbf9f",
+          "bytes": 58252
+        },
+        "mergedSourceCommit": "4e84d022319f8a404dbeda29372fa2c26b033fbd",
+        "mergedSourceByteExact": true,
+        "problemPayloadSha256": "ed99010775f917634ef25f140f611b679cb4b9971887f9d253136f6749627b78",
+        "problemTextChoicesUnchanged": true,
+        "changedFields": [
+          "image",
+          "imageAlt",
+          "imageSize",
+          "layoutTag"
+        ],
+        "protectedNonRendererFieldsUnchanged": true
+      },
+      "beforeAsset": {
+        "commit": "125431da16e154d75182185c787ec1f05e89e90b",
+        "path": "archive/assets/images/25_연향중_2학기_기말_중2_기출/q3.png",
+        "gitBlobSha1": "4d884238e3f469d4fa8c9d3611310fe1fa277bec",
+        "sha256": "f461265320333113668d5b5f26fec774c5915a3bbffc416222346ddf590c295f",
+        "bytes": 20074
+      },
+      "afterAsset": {
+        "commit": "32467a13be16e40be70c99b2c57fe863685e83c7",
+        "path": "archive/assets/images/25_연향중_2학기_기말_중2_기출/q3-problem-visual-v2.svg",
+        "gitBlobSha1": "091dab5b27fbc303c12180d688d3d0ac068f9bc8",
+        "sha256": "99517b7f14779fd3bacd7b879992ee920cc737a9c0d76e75b3edec91de710f54",
+        "bytes": 3552
+      },
+      "render": {
+        "key": "E006-Q3",
+        "renderer": "inkscape",
+        "sourceSha256": "99517b7f14779fd3bacd7b879992ee920cc737a9c0d76e75b3edec91de710f54",
+        "sourcePublicRef": {
+          "commit": "32467a13be16e40be70c99b2c57fe863685e83c7",
+          "path": "archive/assets/images/25_연향중_2학기_기말_중2_기출/q3-problem-visual-v2.svg",
+          "gitBlobSha1": "091dab5b27fbc303c12180d688d3d0ac068f9bc8",
+          "sha256": "99517b7f14779fd3bacd7b879992ee920cc737a9c0d76e75b3edec91de710f54",
+          "bytes": 3552
+        },
+        "mergedCommitAssetExact": true,
+        "renderPath": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/E006-Q3-after.png",
+        "renderSha256": "ad284c12103206f0cc06bd5c619ccdda41fc2e78583fa769c9a37b9a977d1611"
+      },
+      "coordinateObservation": {
+        "key": "E006-Q3",
+        "circlePoints": {
+          "A": [
+            85.0,
+            103.03807704961142
+          ],
+          "B": [
+            85.0,
+            415.9619229503886
+          ],
+          "C": [
+            627.0,
+            415.9619229503886
+          ],
+          "D": [
+            220.5,
+            181.2690385248057
+          ]
+        },
+        "relationshipErrors": {
+          "rightAngleB_normalizedDot": 0.0,
+          "altitudeAtD_normalizedDot": 1.7159799378389894e-16,
+          "D_on_AC_distancePixels": 2.325152815771831e-14,
+          "AB_over_AD_ratioError": 4.440892098500626e-16
+        },
+        "geometryConditionsPass": true,
+        "actualStructuralLineBindings": [
+          {
+            "segment": "AB",
+            "lineIndex": 0,
+            "x1": 85.0,
+            "y1": 103.0381,
+            "x2": 85.0,
+            "y2": 415.9619,
+            "endpointMaxErrorPixels": 2.2950388597564597e-05
+          },
+          {
+            "segment": "BC",
+            "lineIndex": 1,
+            "x1": 85.0,
+            "y1": 415.9619,
+            "x2": 627.0,
+            "y2": 415.9619,
+            "endpointMaxErrorPixels": 2.2950388597564597e-05
+          },
+          {
+            "segment": "AC",
+            "lineIndex": 2,
+            "x1": 85.0,
+            "y1": 103.0381,
+            "x2": 627.0,
+            "y2": 415.9619,
+            "endpointMaxErrorPixels": 2.2950388597564597e-05
+          },
+          {
+            "segment": "BD",
+            "lineIndex": 3,
+            "x1": 85.0,
+            "y1": 415.9619,
+            "x2": 220.5,
+            "y2": 181.269,
+            "endpointMaxErrorPixels": 3.8524805688666675e-05
+          }
+        ]
+      },
+      "newMetadataApproval": false,
+      "newDifficultyJudgment": false,
+      "newFullMathematicalQa": false,
+      "newReview2": false
+    }
+  ],
+  "proofRefs": [
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/expected-facts.json",
+      "sha256": "14d956978fe89a371900a776b157fd6ec2062e2f350d05afbbfd39b77e82da1e"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/problem-source-bindings.json",
+      "sha256": "8a8a2161125374d90697acca1df664c8131d9665f9485d9bddcf7dc04664894c"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/render-manifest.json",
+      "sha256": "5bfe927357bd11c1b5deb96edeec5f6960e6dbd5aca99b3e9bb0b7352b64239e"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/svg-coordinate-checks-r2.json",
+      "sha256": "3a60cda82a95f9f3df4656aa38de04057c1f91bf1f989a8bfecf4aed572df534"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/q3-label-bounds.json",
+      "sha256": "b822ea7bee71cfa50a4eb68181019d78ca634091af3c2dd9b577ffa5b30c21fc"
+    }
+  ],
+  "inputFiles": [
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-renderer-blind3-r1/manifest.json",
+      "sha256": "62dc1864599ea525e15c76309ef28fc532a1bedc319511d67a1294840b51d90c"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-renderer-blind3-r1/01-expected-problem-only.json",
+      "sha256": "1ed2d4f514ac2b189ba75422332c6aa8ae659ddf21d30feef6481dc5de9bc529"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-renderer-blind3-r1/02-current-renderer-after-expected-freeze.json",
+      "sha256": "5c045350538e0748137dfa51e320f3903abefbf352c112891c9077f67f89010c"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-renderer-blind3-r1/README.md",
+      "sha256": "d9dd495ef4fd4a49433ff3352efbef56bb07f2682e3a879aae2002ed636cd8dd"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-renderer-blind3-r1/assets/E005-Q12-before.png",
+      "sha256": "e44a058a99b68c5cf3cce5b5df02d92027ce359efaff7398bcea75429cac0128"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-renderer-blind3-r1/assets/E005-Q12-after.svg",
+      "sha256": "dfb01581e063f857eaeffd99d0f46f3a7fb1b8915e9b7b8d87ef7c76a3db5f61"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-renderer-blind3-r1/assets/E006-Q21-before.png",
+      "sha256": "2b3395e89b5a498ddfeb879a6f799141871fe68a0a89b4802cc2b6d8f65bd00e"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-renderer-blind3-r1/assets/E006-Q21-after.svg",
+      "sha256": "1a84d03567e03aceba1ff1edd07dc370a0729efb749e8191cc1af6a7e349e270"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-renderer-blind3-r1/assets/E006-Q3-before.png",
+      "sha256": "f461265320333113668d5b5f26fec774c5915a3bbffc416222346ddf590c295f"
+    },
+    {
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-renderer-blind3-r1/assets/E006-Q3-after.svg",
+      "sha256": "99517b7f14779fd3bacd7b879992ee920cc737a9c0d76e75b3edec91de710f54"
+    }
+  ],
+  "producerAndVerifierAreDifferent": true,
+  "notAnIndependentMetadataApproval": true,
+  "actualArchiveDesktopRender": "NOT_RUN; standalone Inkscape preview only",
+  "answerAndSolutionModelInspection": false,
+  "opaqueNonRendererEqualityCheck": "Hashes and equality only; no answer/solution values emitted",
+  "newFullMathematicalQa": false,
+  "newMetadataApprovals": 0,
+  "newDifficultyJudgments": 0,
+  "newReview2Count": 0,
+  "sourceWrites": 0,
+  "assetWrites": 0,
+  "metadataWrites": 0,
+  "remoteWrites": 0,
+  "nextAction": "Foreign-author-separated repair of E006Q3 D label clearance, then targeted re-render of that exact SVG and updated immutable hash; root independent review and actual student desktop gate remain separate."
+}

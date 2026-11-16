@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "m3s2-audit-e043-q11-native1-20261116",
+  "examUid": "22_풍덕중_2학기_중간_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "9deab677a813cf0f99e6a0cc9e1658268a61550e",
+  "expectedQuestionCount": 25,
+  "scope": "PARTIAL_UIDS",
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_M3_0A70543C4CE8_NATIVE_REUSE_RENDERER_CONTINUITY",
+    "evidenceRefs": [
+      {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-native1-20261116/E043.meta.json",
+        "sha256": "a1c1734e1c8ea17f2f940a254ce4bdf3ff3addf0ea34847bbd02be1e8555a43e"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-native1-20261116/E043.independent.json",
+        "sha256": "08e9160916e3a46892c505a42b7b0c22f55cc444d443231b75098ef49e007036"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/independent-renderer-review.json",
+        "sha256": "6680a78931734c638357bcee3583c21adac4d5a63b6b95c3e085f9d711464466"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/renderer-continuity.json",
+        "sha256": "2fda5c233248ffa43fe84208ca9331b3727f06b760aaf94732532413a0ee6175"
+      },
+      {
+        "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/native-reuse-limits.json",
+        "sha256": "ee217906e9d0c75ad3d13e99a31fb95a7dd0cc9ebba781fcbb937c5548d608ba"
+      }
+    ]
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546",
+      "sourceOrdinal": 11,
+      "before": {
+        "standardCourse": "중3 수학",
+        "standardUnitKey": "M3-05",
+        "standardUnit": "삼각비",
+        "subUnitKey": "",
+        "subUnit": "",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "crossConceptKeys": [
+          "CC_ANGLE_BISECTOR_THEOREM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": null,
+        "difficultyBucket": 3,
+        "difficultyConfidence": null,
+        "difficultyBoundaryFlag": null,
+        "legacyLevelCompatibility": null,
+        "curriculum": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "curriculumKey": null,
+        "sourceFingerprint": "27ee7c5c0767acf8ede64d6d83447a43d475b4d0f050023e17c4b62fd2c3c10f",
+        "contentFingerprint": "f26579700e6cb33a6038ff07bc3ff14917df0b12fb43d47209cb61eee40c6bf3"
+      },
+      "after": {
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnit": "삼각형의 성질",
+        "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+        "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+        "crossConceptKeys": [
+          "CC_SPECIAL_ANGLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "curriculum": "2015",
+        "primaryMethod": "30·60·90도 직각삼각형의 고정 변비로 BC=3, AC=6을 얻은 뒤 각의 이등분선 정리로 AD:DB=AC:CB=2:1을 세운다. 목표 길이를 결정하는 주전략은 일반 삼각형의 각의 이등분선 정리이며 실제 sin/cos/tan 계산은 없다.",
+        "decisiveStep": "30·60·90도 직각삼각형의 고정 변비로 BC=3, AC=6을 얻은 뒤 각의 이등분선 정리로 AD:DB=AC:CB=2:1을 세운다. 목표 길이를 결정하는 주전략은 일반 삼각형의 각의 이등분선 정리이며 실제 sin/cos/tan 계산은 없다.",
+        "curriculumKey": "2015",
+        "sourceFingerprint": "27ee7c5c0767acf8ede64d6d83447a43d475b4d0f050023e17c4b62fd2c3c10f",
+        "contentFingerprint": "f26579700e6cb33a6038ff07bc3ff14917df0b12fb43d47209cb61eee40c6bf3"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "27ee7c5c0767acf8ede64d6d83447a43d475b4d0f050023e17c4b62fd2c3c10f"
+      },
+      "reason": "불변 native의 의미·난도 검토와 직접 확인한 후속 그림의 좁은 보존 증거를 재사용한다. 현재 source의 기존 curriculum은 운송하고 native의 원본 교육과정 승인으로 확대하지 않는다. 원본 crop·해설 provenance·정확 RPM leaf·2022 연결 부채는 증거에 보존한다.",
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m3s2-audit-e043-native1-20261116/E043.meta.json",
+          "sha256": "a1c1734e1c8ea17f2f940a254ce4bdf3ff3addf0ea34847bbd02be1e8555a43e"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-audit-e043-native1-20261116/E043.independent.json",
+          "sha256": "08e9160916e3a46892c505a42b7b0c22f55cc444d443231b75098ef49e007036"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/independent-renderer-review.json",
+          "sha256": "6680a78931734c638357bcee3583c21adac4d5a63b6b95c3e085f9d711464466"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/renderer-continuity.json",
+          "sha256": "2fda5c233248ffa43fe84208ca9331b3727f06b760aaf94732532413a0ee6175"
+        },
+        {
+          "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/native-reuse-limits.json",
+          "sha256": "ee217906e9d0c75ad3d13e99a31fb95a7dd0cc9ebba781fcbb937c5548d608ba"
+        }
+      ],
+      "sourceReview": {
+        "schemaVersion": "archive-reviewed-source-reassessment-v1",
+        "reviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+        "reviewPath": "docs/operations/m3-s2-meta-full-20261114/exams/E043.meta.json",
+        "reviewRef": {
+          "path": ".archive-meta-register/evidence/m3s2-audit-e043-native1-20261116/E043.meta.json",
+          "sha256": "a1c1734e1c8ea17f2f940a254ce4bdf3ff3addf0ea34847bbd02be1e8555a43e"
+        },
+        "rendererProof": {
+          "schemaVersion": "archive-reviewed-current-renderer-continuity-v1",
+          "reviewCommit": "689fa6379fa2dec544890d83af186f64d127d763",
+          "reviewRef": {
+            "path": ".archive-meta-register/evidence/m3s2-audit-e043-renderer2-20261116/renderer-continuity.json",
+            "sha256": "2fda5c233248ffa43fe84208ca9331b3727f06b760aaf94732532413a0ee6175"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "m1-audit-dongsan23-q1-34c2e1a2-20261116",
+  "requestSha256": "eb260d73e9d30de7c2a214f1bedb03f91db1e9985e758ee1afae17947d6a238d",
+  "examUid": "23_동산중_1학기_중간_중1_기출",
+  "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+  "sourceBlobSha1": "c382e6cf85ec366866152c39fddd275eb0e5be5a",
+  "sourceRawSha256": "13befd0b7e59e37fe5a9592aec64200ce73f3af5417899095803dde533e01aff",
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_ROOT_0A70543C4CE8",
+    "evidenceRefs": [
+      {
+        "path": ".archive-meta-register/evidence/m1-audit-repair-34c2e1a2-20261116/dongsan23-q1.review.json",
+        "sha256": "7eeb7fa3b6651da716efbe6307cd1467bd18281e9c3206ac56a40eb9b1a05122"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      }
+    ]
+  },
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "problemTypes",
+      "match": {
+        "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+        "canonicalLabelKo": "유한 목록의 소수 개수",
+        "definition": "명시적으로 주어진 유한 자연수 목록의 각 원소를 소수의 정의로 분류하고 소수인 원소의 개수를 구한다. 연속 구간의 모든 자연수를 조사하는 유형과 구분한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "sourceUnits": [
+          "M1-01"
+        ],
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m1-audit-repair-34c2e1a2-20261116/dongsan23-q1.review.json",
+          "sha256": "7eeb7fa3b6651da716efbe6307cd1467bd18281e9c3206ac56a40eb9b1a05122"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE",
+        "parentProblemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+        "canonicalLabelKo": "유한 목록의 소수 판별 후 개수 계산",
+        "definition": "명시적으로 주어진 유한 자연수 목록의 각 원소를 소수의 정의로 분류하고 소수인 원소의 개수를 구한다. 연속 구간의 모든 자연수를 조사하는 유형과 구분한다.",
+        "internalSkeleton": "명시된 유한 자연수 목록에서 1을 제외한다 → 각 원소가 1과 자기 자신만을 약수로 가지는지 판별한다 → 소수로 판정된 원소의 개수를 센다. 목록에 없는 중간 수는 조사 대상에 넣지 않는다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c"
+        ],
+        "observedConditionKeys": [],
+        "observedIntegrationPatterns": [
+          "NONE"
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m1-audit-repair-34c2e1a2-20261116/dongsan23-q1.review.json",
+          "sha256": "7eeb7fa3b6651da716efbe6307cd1467bd18281e9c3206ac56a40eb9b1a05122"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+        "curriculum": "2015",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+        "curriculum": "2015",
+        "standardCourse": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "L1": "소인수분해",
+        "L2": "소인수분해"
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/m1-audit-repair-34c2e1a2-20261116/dongsan23-q1.review.json",
+          "sha256": "7eeb7fa3b6651da716efbe6307cd1467bd18281e9c3206ac56a40eb9b1a05122"
+        }
+      ]
+    }
+  ],
+  "appliedRecords": [
+    {
+      "questionUid": "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c",
+      "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceFingerprint": "9ad44202d4f73b3d195ef4f118e1cdeebd99d1aaabbabd190c52943e61a193ca",
+      "contentFingerprint": "0f0184fe0acd3989e65b26141d9fe11882ff09f28e4ee5c576107f2092479e1c",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-01",
+      "standardUnit": "소인수분해",
+      "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+      "subUnit": "소인수분해",
+      "conceptClusterKey": "M1-01-PRIME_FACTORIZATION",
+      "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+      "templateKey": "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE",
+      "difficultyBucket": 1,
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.11:exam-final_qa-v2:m1-audit-dongsan23-q1-34c2e1a2-20261116",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+        "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+        "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-audit-dongsan23-q1-34c2e1a2-20261116.json"
+      ],
+      "metaFoundationPackVersion": "1.0.11",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "rpmPathStatus": "DIRECT",
+      "curriculumKey": "2015",
+      "courseKey": "M1-1",
+      "L1": "소인수분해",
+      "L2": "소인수분해",
+      "L3": "유한 목록의 소수 개수",
+      "L4": "유한 목록의 소수 판별 후 개수 계산",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "reviewStatus": "reviewed_pass",
+      "metaFoundationHoldReason": null,
+      "curriculum": "2015",
+      "level": "중",
+      "primaryMethod": "명시된 유한 자연수 목록에서 소수인 원소를 판별하고 그 개수를 센다.",
+      "decisiveStep": "목록에 없는 자연수를 조사 대상에 넣지 않고 소수의 정의로 각 원소를 판정한다.",
+      "metadataApprovalType": "FINAL_QA",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED"
+    }
+  ],
+  "appliedIdentityRecords": [
+    {
+      "questionUid": "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c",
+      "legacyQKey": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js_1",
+      "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceFingerprint": "9ad44202d4f73b3d195ef4f118e1cdeebd99d1aaabbabd190c52943e61a193ca"
+    }
+  ],
+  "fingerprintRepairs": [
+    {
+      "questionUid": "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c",
+      "sourceOrdinal": 1,
+      "metadataBefore": {
+        "sourceFingerprint": "61466dd045b7f3d68dbcc9114960e1a3b37504052d3acde244d7c2e94742fac7",
+        "contentFingerprint": "0f0184fe0acd3989e65b26141d9fe11882ff09f28e4ee5c576107f2092479e1c"
+      },
+      "identityBefore": {
+        "sourceFingerprint": "61466dd045b7f3d68dbcc9114960e1a3b37504052d3acde244d7c2e94742fac7"
+      },
+      "after": {
+        "sourceFingerprint": "9ad44202d4f73b3d195ef4f118e1cdeebd99d1aaabbabd190c52943e61a193ca",
+        "contentFingerprint": "0f0184fe0acd3989e65b26141d9fe11882ff09f28e4ee5c576107f2092479e1c"
+      },
+      "rebind": {
+        "priorSourceBlobSha1": "ac6d340d230d2a593b43a5b6c61c413fe5f90761",
+        "priorContentFingerprint": "0f0184fe0acd3989e65b26141d9fe11882ff09f28e4ee5c576107f2092479e1c"
+      }
+    }
+  ],
+  "runtimeRecords": [
+    {
+      "questionUid": "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c",
+      "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceFingerprint": "9ad44202d4f73b3d195ef4f118e1cdeebd99d1aaabbabd190c52943e61a193ca",
+      "contentFingerprint": "0f0184fe0acd3989e65b26141d9fe11882ff09f28e4ee5c576107f2092479e1c",
+      "standardCourse": "중1 수학",
+      "standardUnitKey": "M1-01",
+      "standardUnit": "소인수분해",
+      "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+      "subUnit": "소인수분해",
+      "conceptClusterKey": "M1-01-PRIME_FACTORIZATION",
+      "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+      "templateKey": "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE",
+      "difficultyBucket": 1,
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.11:exam-final_qa-v2:m1-audit-dongsan23-q1-34c2e1a2-20261116",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
+        "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
+        "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-audit-dongsan23-q1-34c2e1a2-20261116.json"
+      ],
+      "metaFoundationPackVersion": "1.0.11",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "rpmPathStatus": "DIRECT",
+      "curriculumKey": "2015",
+      "courseKey": "M1-1",
+      "L1": "소인수분해",
+      "L2": "소인수분해",
+      "L3": "유한 목록의 소수 개수",
+      "L4": "유한 목록의 소수 판별 후 개수 계산",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "reviewStatus": "reviewed_pass",
+      "metaFoundationHoldReason": null,
+      "curriculum": "2015",
+      "level": "중",
+      "primaryMethod": "명시된 유한 자연수 목록에서 소수인 원소를 판별하고 그 개수를 센다.",
+      "decisiveStep": "목록에 없는 자연수를 조사 대상에 넣지 않고 소수의 정의로 각 원소를 판정한다.",
+      "metadataApprovalType": "FINAL_QA",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "sourceIdentity": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js#1",
+      "approvedSourceFingerprint": "9ad44202d4f73b3d195ef4f118e1cdeebd99d1aaabbabd190c52943e61a193ca",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    }
+  ],
+  "outputDigests": [
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "2c71f5933fdea2a15a1ef5381ebb982757d22fbba144c707c68720c7c5a27857"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "748b801e3ea29a3ce484c7769bd44f90373cba78e25b4383566e2393b55a9471"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "sha256": "3ea3d98b2ea8b7c6c8fab0eeff95f4787028115b34023b42b9742d27efa89414"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/registry_index.json",
+      "sha256": "1231444c26853372a1863bb1d197e7d1de321efb28dd68b1eccae06c1a478165"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "sha256": "e85976aa83bf96631d541cb3494f44ae71cad2a74b0937c4f57a7e582be88263"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "sha256": "abefae661f11f801c5a95038ce58befe921e04dd3d00b131b8dd2b25fb46276c"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+      "sha256": "e651543ac53a8c800baf37bdb79a5f595289eed9dae6b615cf98f8af3c0d0a38"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "sha256": "eed8b0eb480ffd59a43c2b7042b87eee9727b1f553b24e3e36c23c336bb0976a"
+    },
+    {
+      "path": "archive/data/question_identity_map.json",
+      "sha256": "31a5b4fb67cd49765a31c8569440997105e084e40b9dfc4dc739b932b849f77f"
+    }
+  ],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}
