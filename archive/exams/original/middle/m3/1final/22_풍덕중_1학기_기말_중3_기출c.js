@@ -12,7 +12,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "이차함수의 뜻",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -58,7 +58,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "인수분해를 이용한 풀이",
+    "subUnit": "이차방정식",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -104,7 +104,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "이차방정식과 해",
+    "subUnit": "이차방정식",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -150,7 +150,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "이차함수의 뜻",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -196,7 +196,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "y=ax²의 그래프",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -242,7 +242,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "그래프와 식",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -288,7 +288,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "y=ax²의 그래프",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -334,7 +334,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "근의 공식",
+    "subUnit": "이차방정식",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -380,7 +380,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "근의 공식",
+    "subUnit": "이차방정식",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -426,7 +426,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
-    "subUnit": "도형",
+    "subUnit": "이차방정식의 활용",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -523,7 +523,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
-    "subUnit": "도형",
+    "subUnit": "이차방정식의 활용",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -576,7 +576,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "그래프와 계수",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -627,7 +627,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "그래프와 계수",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -673,7 +673,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "꼭짓점형",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -719,7 +719,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "꼭짓점형",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -765,7 +765,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "그래프와 계수",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -795,10 +795,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 2,
-    "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -811,7 +811,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "그래프와 계수",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -862,7 +862,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "그래프와 식",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -915,7 +915,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "근의 공식",
+    "subUnit": "이차방정식",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -961,7 +961,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "꼭짓점형",
+    "subUnit": "이차함수의 그래프",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -1012,7 +1012,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-    "subUnit": "제곱근·완전제곱식을 이용한 풀이",
+    "subUnit": "이차방정식",
     "questionType": "서술형",
     "layoutTag": "essay",
     "tags": [
@@ -1052,7 +1052,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
-    "subUnit": "도형",
+    "subUnit": "이차방정식의 활용",
     "questionType": "서술형",
     "layoutTag": "essay",
     "tags": [
@@ -1098,7 +1098,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "꼭짓점형",
+    "subUnit": "이차함수의 그래프",
     "questionType": "서술형",
     "layoutTag": "essay",
     "tags": [

@@ -1,3 +1,4 @@
+import { M2_E017_RHS_SCHEMA, M2_E017_RHS_UID, M2_E017_RHS_SOURCE } from "./reviewed-m2-e017-rhs-continuity.mjs";
 // Revalidate an issued opt-in source review before AutoMeta reuses its approval.
 // This read-only check grants neither a new approval nor a student-change exception.
 import fs from 'node:fs';
@@ -347,5 +348,25 @@ export function nativeReviewedM2ProblemRendererRebind(receipt, nativeSource, pre
     const previousSha = sha(stable(previous));
     return [proof.nativeReviewedSource, proof.nativeCommittedSource, proof.prefigureSource]
       .some(ref => SHA256.test(ref?.questionSha256 || '') && ref.questionSha256 === previousSha);
+  } catch { return false; }
+}
+
+// The one reviewed solution line is carried only after the entire issued typed
+// request and immutable UI/authority binding have been replayed. A payload hash
+// or an ordinary receipt never grants this old-cursor continuation.
+export function nativeReviewedE017RhsRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (!previous || identity.questionUid !== M2_E017_RHS_UID || ordinal !== 2 ||
+      receipt.sourceArchiveFile !== M2_E017_RHS_SOURCE || receipt.approval?.sourceRebind !== undefined) return false;
+  const matches = receipt.fingerprintRepairs?.filter(r => r.questionUid === identity.questionUid && r.sourceOrdinal === ordinal);
+  const proof = matches?.[0]?.sourceReview?.e017RhsContinuity;
+  if (matches?.length !== 1 || proof?.schemaVersion !== M2_E017_RHS_SCHEMA || proof.questionUid !== identity.questionUid ||
+      proof.sourceOrdinal !== ordinal || proof.sourceArchiveFile !== receipt.sourceArchiveFile || proof.memoryOnlyNormalization !== true ||
+      proof.newMathematicalQa !== false || proof.newMetadataApprovals !== 0 || proof.newDifficultyJudgments !== 0 ||
+      proof.newReview2Claims !== 0 || proof.sourceWrites !== 0 || proof.rendererWrites !== 0) return false;
+  try {
+    if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
+    const prior = sha(stable(previous));
+    return [proof.nativeReviewedQuestionSha256, proof.nativeCommittedQuestionSha256, proof.reviewedCurrentQuestionSha256]
+      .some(value => SHA256.test(value || '') && value === prior);
   } catch { return false; }
 }

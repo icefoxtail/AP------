@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "PLANE_GEOMETRY",
-  "shardVersion": "1.3.23",
+  "shardVersion": "1.3.25",
   "status": "ACTIVE",
-  "conceptCount": 130,
+  "conceptCount": 132,
   "concepts": [
     {
       "conceptKey": "CC_ANGLE_BISECTOR",
@@ -5227,6 +5227,159 @@
         "2015:중3 수학:M3-06"
       ],
       "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO",
+      "canonicalLabelKo": "무게중심의 중선 교점과 2대1 분할",
+      "definition": "삼각형의 무게중심은 각 꼭짓점과 그 대변의 중점을 잇는 세 중선의 교점이며, 각 중선을 꼭짓점에서 대변의 중점 쪽으로 2:1로 나눈다.",
+      "ownerConceptShard": "PLANE_GEOMETRY",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+        "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M2-05",
+        "M2-06"
+      ],
+      "legacyKeys": [],
+      "taxonomyRefs": [
+        "PT_PARALLEL_SEGMENT_RATIO",
+        "PT_TRIANGLE_CENTERS"
+      ],
+      "curriculumRefs": [],
+      "evidenceProvenance": [
+        {
+          "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+          "questionUid": "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3",
+          "sourceOrdinal": 3,
+          "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+          "sourceBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+          "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+          "nativeReviewSha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+          "nativeProposalRefs": [
+            "B-E023-CC-CENTROID"
+          ],
+          "classificationRationale": "G가 무게중심이며 AG/BG의 연장이 각각 D/E에 닿는다는 stem과 그림을 확인했다. 중선의 정의로 D/E가 대변의 중점임을 얻은 후 평행선 선분비와 넓이비를 결합한다.",
+          "newMathematicalQa": false
+        },
+        {
+          "source": "M2S2_NATIVE_PROPOSAL_NARROW_DEFINITION_FINALIZATION_20261115",
+          "questionUid": "qid_v1_1042e4bc1d8ffa66ef5d65438e878ade2ec52b168772bfaa3f514f6b94078ea3",
+          "sourceOrdinal": 21,
+          "sourceCommit": "586d05b31cfc329bbe014acbe47f4e3313ffc251",
+          "sourceBlobSha1": "0a6f06b0d702264ca13e27d4280b727199cfaafc",
+          "nativeReviewCommit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "nativeReviewPath": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+          "nativeReviewSha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+          "nativeProposalRefs": [
+            "B-E023-CC-CENTROID"
+          ],
+          "classificationRationale": "PNG의 A 직각, G가 AD 위에 있는 위치, GD 길이 표기를 확인했다. 현재 해설은 무게중심의 AG:GD=2:1로 AD를 정한 뒤 직각삼각형 빗변 중점 성질을 Primary로 사용한다.",
+          "newMathematicalQa": false
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+      "canonicalLabelKo": "다각형의 내각의 합",
+      "definition": "주분류 풀이를 보조하여 단순 다각형의 내각의 합 (n−2)×180°에서 알려진 각을 빼 필요한 각을 구하는 개념.",
+      "ownerConceptShard": "PLANE_GEOMETRY",
+      "aliases": [
+        "사각형 내각의 합"
+      ],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+        "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+        "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+        "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+      ],
+      "supportingItemCount": 4,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_CIRCLE_ANGLE_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+          "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+          "sourceOrdinal": 17,
+          "nativeReviewRef": {
+            "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+            "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+          },
+          "nativeProposalDocumentRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+            "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+          },
+          "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+          "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+          "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+        },
+        {
+          "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+          "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+          "sourceOrdinal": 22,
+          "nativeReviewRef": {
+            "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.meta.json",
+            "sha256": "9c3d2d434b56f7f97f27b73487d4a2818fe64eee8ede3d86a3adc6b2f9816132"
+          },
+          "nativeProposalDocumentRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E014.proposals.json",
+            "sha256": "8c3410ed4948fccb1727b61f5047b1242d38835543f0ebc048cf6467db1e7da6"
+          },
+          "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+          "currentSourcePath": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+          "currentSourceRawSha256": "1551862ec37612c88b3230c1fb810cbd6099ca4ea3636d3454349eb5c32820e3"
+        },
+        {
+          "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+          "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+          "sourceOrdinal": 22,
+          "nativeReviewRef": {
+            "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.meta.json",
+            "sha256": "c82745c755f3c7ba4dfb22a2bbfeb9eb298c777057c16df5de3f4e64f94c941e"
+          },
+          "nativeProposalDocumentRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E034.proposals.json",
+            "sha256": "8f2f658823ee6070a3c72b354fd6ad3512309c5a94aad8194ad3deb1176dd501"
+          },
+          "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+          "currentSourcePath": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+          "currentSourceRawSha256": "1328d0916144a13de61af38e27a1218a63b6eeddd6180455b127017f127f3824"
+        },
+        {
+          "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+          "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+          "sourceOrdinal": 5,
+          "nativeReviewRef": {
+            "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+            "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+          },
+          "nativeProposalDocumentRef": {
+            "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+            "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c"
+          },
+          "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+          "currentSourcePath": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+          "currentSourceRawSha256": "78255beb5bcb8a24933eeec6972404e6e417defe2acab614b08582780950d4f6"
+        }
+      ]
     },
     {
       "conceptKey": "CC_RIGHT_TRIANGLE_THIRTY_DEGREE_HALF_HYPOTENUSE",
