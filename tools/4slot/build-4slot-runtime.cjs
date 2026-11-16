@@ -6,6 +6,7 @@ const crypto = require('node:crypto'), { execFileSync } = require('node:child_pr
 const consumer = require('../../archive/item-4slot.js');
 const rendererHold = require('./renderer-registration-hold.cjs');
 const partial = require('./partial-submission.cjs');
+const existingRenderer = require('./rebind-existing-renderer-v2.cjs');
 const registeredRenderer = require('./registered-renderer-continuity.cjs');
 const existingVector = require('./existing-registered-vector-continuity.cjs');
 const { sourceNumber, sourceIdentityNumber } = require('./exam-items.cjs');
@@ -22,7 +23,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
-const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker,require.resolve('./existing-registered-vector-continuity.cjs'),require.resolve('./existing-registered-vector-ui.cjs')].map(p=>fs.readFileSync(p))));
+const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker,require.resolve('./rebind-existing-renderer-v2.cjs'),require.resolve('./existing-registered-vector-continuity.cjs'),require.resolve('./existing-registered-vector-ui.cjs')].map(p=>fs.readFileSync(p))));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -198,15 +199,17 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
       // Validate the public receipt and the complete canonical partition before cache reuse.
       // The receipt contains no private prose; all quote spans are checked against public source bytes.
       const scope=partial.hasScope(d)?partial.publicEvidence(root,d,{bank,identity,sourceRaw,dictPath:dict.path}):null;
+      const rendererScope=own(d,existingRenderer.MARKER)?existingRenderer.verifyPublished(root,d):null;
       const relevantIdentity=bank.map((_,i)=>joins.get(`${d.sourceArchiveFile}#${i+1}`)||[]);
       const continuities=rendererContinuities.get(d.sourceArchiveFile)||[],continuityDigests=continuities.flatMap(e=>e.digests);
       const vectorEntries=vectorContinuities.get(d.sourceArchiveFile)||[],vectorDigests=vectorEntries.flatMap(e=>e.digests);
-      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests,scope?.evidenceDigests||null,scope?.contractSha256||null,continuityDigests,vectorDigests]));
+      const inputHash=sha(stable([BUILDER_SHA,file.compactSha256,sourceBlob,dict.sha256,relevantIdentity,relevantIdentity.flat().map(r=>uidUses.get(r.questionUid)),assetDigests,holdDigests,scope?.evidenceDigests||null,scope?.contractSha256||null,rendererScope?.evidenceDigests||null,continuityDigests,vectorDigests]));
       const old=oldFiles.get(rel);
       file={...file,sourceArchiveFile:d.sourceArchiveFile,sourceGitBlobSha:d.sourceGitBlobSha,currentSourceBlobSha:sourceBlob,dictionaryVersion:d.dictionaryVersion,dictionarySha256:dict.sha256,reviewedBy:d.reviewedBy,evidence:d.evidence,inputHash,assetDigests,itemCount:d.items.length};
       if(scope)file={...file,scope:partial.SCOPE,expectedQuestionCount:bank.length,selectedCount:scope.selected.length,unsubmittedCount:scope.unsubmitted.length,completeExam:false};
       observed.push(['archive/exams/'+d.sourceArchiveFile,sha(sourceRaw)],[dict.path,dict.sha256]);
       if(scope)for(const ref of scope.evidenceDigests)observed.push([ref.path,ref.sha256]);
+      if(rendererScope)for(const ref of rendererScope.evidenceDigests)observed.push([ref.path,ref.sha256]);
       for(const [p,h]of Object.entries(assetDigests))if(h)observed.push([p,h]);
       for(const [p,h]of Object.entries(holdDigests))if(h)observed.push([p,h]);
       for(const [p,h]of continuityDigests)if(h)observed.push([p,h]);
@@ -273,6 +276,10 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
         const baseline=sourceBlob===d.sourceGitBlobSha?currentPayload:past?payloadHash(past.q):oldSame?old.baselinePayloadHashes?.[it.ordinal]:null;
         if(baseline)baselineHashes[it.ordinal]=baseline;
         if(!baseline){fail('SOURCE_BASELINE_UNAVAILABLE',it.ordinal);continue;}
+        const rendererRecord=rendererScope?.byUid.get(id.questionUid);
+        const rendererBound=rendererRecord&&rendererRecord.sourceOrdinal===cur.ordinal&&rendererRecord.sourceQuestionNo===sourceIdentityNumber(cur.q)&&
+          past&&rendererRecord.beforeWholeQuestionSha256===sha(stable(past.q))&&rendererRecord.currentWholeQuestionSha256===sha(stable(cur.q));
+        if(rendererRecord&&!rendererBound){fail('SCOPED_RENDERER_BASELINE_MISMATCH',it.ordinal);continue;}
         let rendererContinuation=null;
         const selectedContinuities=continuities.filter(e=>e.questionUid===id.questionUid||e.sourceOrdinal===cur.ordinal);
         if(selectedContinuities.length){
@@ -280,7 +287,8 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
           try{registeredRenderer.verify(root,selectedContinuities[0]);rendererContinuation={path:selectedContinuities[0].path,sha256:selectedContinuities[0].sha256};}
           catch(e){fail(e.message,it.ordinal);continue;}
         }
-        if(currentPayload!==baseline&&!rendererContinuation&&!vectorContinuation){fail('STALE_STUDENT_PAYLOAD',it.ordinal);continue;}
+        if(rendererBound&&(rendererContinuation||vectorContinuation)){fail('MULTIPLE_RENDERER_CONTINUITY_AUTHORITIES',it.ordinal);continue;}
+        if(currentPayload!==baseline&&!rendererBound&&!rendererContinuation&&!vectorContinuation){fail('STALE_STUDENT_PAYLOAD',it.ordinal);continue;}
         // Changed local figure bytes invalidate only rows that reference that file; never discard other rows.
         const alteredAsset=oldSame&&assetRefs(cur.q).some(p=>own(baselineAssets,p)&&baselineAssets[p]!==assetDigests[p]);
         if(alteredAsset&&!rendererContinuation&&!vectorContinuation){fail('STALE_ASSET_BYTES',it.ordinal);continue;}
@@ -290,7 +298,8 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
           else fail('EXPLICIT_REVIEW_HOLD:'+h.reason,it.ordinal,{questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,evidence:h.evidence,nextAction:h.nextAction});
           continue;
         }
-        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:sourceIdentityNumber(cur.q),sourceDisplayNumber:it.ordinal,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceUidBinding,identityFingerprintStatus,sourceBinding:vectorContinuation?'EXISTING_REGISTERED_VECTOR_CONTINUITY':rendererContinuation?'REGISTERED_RENDERER_CONTINUITY':sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',...(rendererContinuation?{rendererContinuityRef:rendererContinuation}:{}),...(vectorContinuation?{existingVectorContinuityRef:vectorContinuation.ref}:{}),registrationStatus:'REGISTERED',independentReviewClaim:false};
+        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:sourceIdentityNumber(cur.q),sourceDisplayNumber:it.ordinal,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceUidBinding,identityFingerprintStatus,sourceBinding:rendererBound?'SCOPED_REVIEWED_RENDERER':vectorContinuation?'EXISTING_REGISTERED_VECTOR_CONTINUITY':rendererContinuation?'REGISTERED_RENDERER_CONTINUITY':sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',...(rendererContinuation?{rendererContinuityRef:rendererContinuation}:{}),...(vectorContinuation?{existingVectorContinuityRef:vectorContinuation.ref}:{}),registrationStatus:'REGISTERED',independentReviewClaim:false};
+        if(rendererBound)row.rendererReceipt={schemaVersion:existingRenderer.RECEIPT_SCHEMA,...d[existingRenderer.MARKER].receipt};
         records.push(row);
       }
       if(scope)for(const row of scope.unsubmitted)fail('NOT_SUBMITTED',row.displayNumber,{questionUid:row.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:row.sourceOrdinal,sourceQuestionNo:row.sourceQuestionNo});
