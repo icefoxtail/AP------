@@ -1,0 +1,26 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:49:29.656+00:00",
+ "sourceArchiveFile": "original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 14,
+   "chosenFrom": "new",
+   "resolutionReason": "f(a+b)+f(a-b)=2f(a)+2f(b)에 a=b=0, a=0, a=b=x를 넣어 f(0)=0, f(-x)=f(x), f(2x)=4f(x)를 얻는 짝함수 대칭 조건이라 앞서 제안한 기함수·우함수 조건을 쓴다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "l4": ""
+   },
+   "hold": "신규 제안: 함수의 성질 아래 기함수·우함수 조건 항목이 표에 없음(앞서 제안한 값 재사용).",
+   "proposedNew": {
+    "rpmPath.l4": {
+     "value": "기함수 조건",
+     "label": "기함수·우함수 조건",
+     "parent": "함수 > 함수 > 함수의 성질",
+     "why": "가장 가까운 '항등함수·상수함수'는 특수 함수 분류이고 '일대일함수'는 값 대응이라, f(-x)=f(x)인 y축 대칭 조건과 맞지 않는다."
+    }
+   }
+  }
+ ]
+}

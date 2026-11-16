@@ -1,0 +1,190 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "luna-cls-82d50544bedf-c580d4dc",
+  "examUid": "23_중앙여고_1학기_중간_고2_대수",
+  "scope": "PARTIAL_UIDS",
+  "sourceArchiveFile": "original/high/h2/1mid/23_중앙여고_1학기_중간_고2_대수.js",
+  "expectedSourceBlobSha1": "f7038b9998ef3b6feb5a90930ae75947ff6a540e",
+  "expectedQuestionCount": 5,
+  "approval": {
+    "type": "REVIEW2",
+    "metadataReviewed": true,
+    "reviewPassCount": 2,
+    "approvedBy": "사용자 지시 2026-11-14: 분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)",
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-82d50544bedf-c580d4dc.pass1-ledger.json",
+        "sha256": "e50460e7591091cc74982d0d90928fc14a206ed46a6e2ea097af1152bb6a07d8"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-82d50544bedf-c580d4dc.pass2-ledger.json",
+        "sha256": "283948438053bce53e9aedafd24d59a9adbf9b6b8ae37231c17c00169f2ba291"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-82d50544bedf-c580d4dc.pass3-ledger.json",
+        "sha256": "a7102e6cf3bf4088c8561705fca84026cb0f86b9fdf6f86fcb6117acd4b72a41"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-82d50544bedf-c580d4dc.approval-note.json",
+        "sha256": "b60feb1fd4ba84051789a0dd77da6a5bc4a45fa64cedde4aef03cd61711a8467"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_279c15abd169f69633fdf4b555370408474230c3e4207ee3f8a6c154564174e6",
+      "sourceOrdinal": 4,
+      "before": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "exponent log",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 3,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "exponent log",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_INEQUALITY_ALWAYS_TRUE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "level": "상",
+        "primaryMethod": "t=log₂x로 치환해 부등식을 2^(t²)≥k·2^(2t)로 바꾸고 t에 대한 최솟값을 구한다.",
+        "decisiveStep": "2^(t²−2t)=2^((t−1)²−1)의 최솟값은 1/2이므로 0<k≤1/2이다."
+      },
+      "typeHold": true,
+      "fieldCandidates": {
+        "rpmPath": [
+          {
+            "value": {
+              "majorUnit": "지수함수와 로그함수",
+              "midUnit": "지수함수",
+              "l3": "지수함수의 활용",
+              "l4": "최대·최소"
+            },
+            "source": "p3"
+          }
+        ]
+      },
+      "reason": "분류 확정(registered+agree+p3+luna-k1; 유형 미결합 — 단원·소단원만) — t=log₂x로 치환해 부등식을 2^(t²)≥k·2^(2t)로 바꾸고 t에 대한 최솟값을 구한다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-82d50544bedf-c580d4dc.pass1-ledger.json",
+          "sha256": "e50460e7591091cc74982d0d90928fc14a206ed46a6e2ea097af1152bb6a07d8"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-82d50544bedf-c580d4dc.pass2-ledger.json",
+          "sha256": "283948438053bce53e9aedafd24d59a9adbf9b6b8ae37231c17c00169f2ba291"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-82d50544bedf-c580d4dc.pass3-ledger.json",
+          "sha256": "a7102e6cf3bf4088c8561705fca84026cb0f86b9fdf6f86fcb6117acd4b72a41"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-82d50544bedf-c580d4dc.approval-note.json",
+          "sha256": "b60feb1fd4ba84051789a0dd77da6a5bc4a45fa64cedde4aef03cd61711a8467"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_367af95ddff5f5511a2ed5c6fc3259584fe235c17cb6088fd8a8461f0c165ebb",
+      "sourceOrdinal": 5,
+      "before": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "exponent log",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "difficultyBucket": 3,
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "level": null,
+        "primaryMethod": null,
+        "decisiveStep": null,
+        "L1": null,
+        "L2": null,
+        "L3": null,
+        "L4": null
+      },
+      "after": {
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-01",
+        "standardUnit": "지수와 로그",
+        "subUnitKey": "H22-A-01-EXPONENT_LOG",
+        "subUnit": "exponent log",
+        "crossConceptKeys": [
+          "CC_VIETA_FORMULAS",
+          "CC_QUADRATIC_ROOT_INTERVAL_CONDITION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "level": "상",
+        "primaryMethod": "t=log_3 x로 두어 t²−2t+k=0을 만든 뒤, 해당 근이 −1과 0 사이에 놓이는 조건을 계산한다.",
+        "decisiveStep": "근 t가 −1<t<0이면 k=2t−t²이므로 −3<k<0이고 두 t근의 합이 2라서 원래 방정식의 두 x근의 곱은 3²=9이다."
+      },
+      "typeHold": true,
+      "fieldCandidates": {
+        "rpmPath": [
+          {
+            "value": {
+              "majorUnit": "지수함수와 로그함수",
+              "midUnit": "로그함수",
+              "l3": "로그부등식",
+              "l4": "정의역·밑 조건"
+            },
+            "source": "p3"
+          }
+        ]
+      },
+      "reason": "분류 확정(registered+agree+p3+luna-k1; 유형 미결합 — 단원·소단원만) — t=log_3 x로 두어 t²−2t+k=0을 만든 뒤, 해당 근이 −1과 0 사이에 놓이는 조건을 계산한다.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-82d50544bedf-c580d4dc.pass1-ledger.json",
+          "sha256": "e50460e7591091cc74982d0d90928fc14a206ed46a6e2ea097af1152bb6a07d8"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-82d50544bedf-c580d4dc.pass2-ledger.json",
+          "sha256": "283948438053bce53e9aedafd24d59a9adbf9b6b8ae37231c17c00169f2ba291"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-82d50544bedf-c580d4dc.pass3-ledger.json",
+          "sha256": "a7102e6cf3bf4088c8561705fca84026cb0f86b9fdf6f86fcb6117acd4b72a41"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-82d50544bedf-c580d4dc.approval-note.json",
+          "sha256": "b60feb1fd4ba84051789a0dd77da6a5bc4a45fa64cedde4aef03cd61711a8467"
+        }
+      ]
+    }
+  ]
+}

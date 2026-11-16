@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-56ae3cb7f764-057141fb",
+  "sourceArchiveFile": "original/high/h2/2final/25_순천고_2학기_기말_고2_수학II.js",
+  "createdAt": "2026-11-15T19:35:41.056Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "sourceBlobSha1": "fdda0708bee804472e35456623b84508f36ccdad",
+  "ledgers": [
+    {
+      "role": "pass1",
+      "source": "A-out/ledgers/25_순천고_2학기_기말_고2_수학II.json",
+      "sourceSha256": "76d14669c97d17c7e05cf7e53370f8056b4ddeece54504531eb68fc34d9e7683",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-56ae3cb7f764-057141fb.pass1-ledger.json",
+      "repoSha256": "ad2a3d2e4c2ba745772df4600f94f990180dc865d3b53a8d365bcc56b4bcdb2c",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass2",
+      "source": "A2-out/ledgers/25_순천고_2학기_기말_고2_수학II.json",
+      "sourceSha256": "ae919ad9937c0293390e027fee8a0016d99f45eacfb3895bc310781cecdb3746",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-56ae3cb7f764-057141fb.pass2-ledger.json",
+      "repoSha256": "59f6cb9eb0a5f5eb1c5e53026106f2c223ee925ae9f594a2376adbf57c498de3",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/t/ledgers/shard-8-exam-022.json",
+      "sourceSha256": "5b42bfebcd0f7315eb1c57e1d025079b2fcf32713c580008d3345d0911a68105",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-56ae3cb7f764-057141fb.pass3-ledger.json",
+      "repoSha256": "0dca608bae789442bfa80becadcdfbf2823a8ecbe76e789f0328bb83ef061a26",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/l/ledgers/luna-pass3-shard5-023.json",
+      "sourceSha256": "671ce4d0922bd524b51b4f915056c456ebd35059fd9590bad3f70eceb9343a66",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-56ae3cb7f764-057141fb.pass3-ledger-2.json",
+      "repoSha256": "01354c77ebc5b6cf71bdc934dc490a0f5e90f6d2a91e60b1aa220bb0fa5f3682",
+      "lineEndingNormalized": true
+    }
+  ],
+  "fieldSources": {
+    "registered": 48,
+    "agree": 87,
+    "luna-k4": 32,
+    "p3": 33,
+    "tera-k67": 10,
+    "luna-k1": 4,
+    "tera-k3": 2
+  },
+  "itemSources": {
+    "registered+agree+luna-k4+p3": 2,
+    "registered+agree+p3+luna-k4": 4,
+    "registered+agree+luna-k4": 5,
+    "registered+agree+p3+tera-k67": 2,
+    "registered+agree+tera-k67+p3": 1,
+    "registered+p3+luna-k4": 1,
+    "registered+agree+tera-k67": 1,
+    "registered+agree+p3+luna-k1": 1,
+    "registered+p3+luna-k1": 1
+  },
+  "typeHoldQuestions": 11,
+  "idWarnings": []
+}

@@ -1,0 +1,350 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass1",
+    "createdAt":  "2026-11-12T01:27:00+09:00",
+    "sourceArchiveFile":  "types/high/h2/비상_대수_지수로그_중단원_고2_유형심화.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "f(-27,3), f(0,4), f(16,4)에서 실수 세제곱근과 네제곱근의 개수를 각각 센다.",
+                      "decisiveStep":  "짝수 지수의 실수 근은 양수에서 두 개, 음수에서 없고 홀수 지수는 실근이 하나임을 적용한다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "거듭제곱근",
+                                      "l4":  "실수 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "세제곱근과 네제곱근을 계산하고 8^(1/3)을 제곱해 세 항을 더한다.",
+                      "decisiveStep":  "짝수 제곱근은 음수 밑의 짝수 거듭제곱에서도 양의 근을 취한다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "거듭제곱근",
+                                      "l4":  "n제곱근"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "로그값이 1이므로 진수 x²-8x+15를 밑 x-3과 같게 놓고 정의 조건을 적용한다.",
+                      "decisiveStep":  "인수분해한 뒤 밑이 양수이고 1이 아니며 진수가 양수인 해만 남긴다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그함수",
+                                      "l3":  "로그방정식",
+                                      "l4":  "진수 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "1/log₃2를 log₂3으로 바꾸고 log₂12를 log₂(3·4)로 나누어 정리한다.",
+                      "decisiveStep":  "로그의 밑과 진수 관계로 역수 로그는 log₂3이며 log₂12=a+2이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질",
+                                      "l4":  "밑의 변환"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "분자를 세제곱근의 차이로 인수분해해 괄호의 인수와 약분한다.",
+                      "decisiveStep":  "u=a^(1/3), v=b^(1/3)로 놓으면 u³-v³=(u-v)(u²+uv+v²)이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙",
+                                      "l4":  "지수식 계산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "부피 48π에서 구의 반지름을 구해 6의 거듭제곱근 꼴과 비교한다.",
+                      "decisiveStep":  "(4/3)πr³=48π에서 r³=36=6²이므로 r=6^(2/3), 따라서 m=2, n=3이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "거듭제곱근",
+                                      "l4":  "n제곱근"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "왼쪽을 a의 지수로 바꾸어 지수끼리 비교해 k를 구한다.",
+                      "decisiveStep":  "세제곱근 기호의 바깥 지수와 안의 제곱근 지수를 곱해 전체 지수를 (4+k)/6로 만든다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙",
+                                      "l4":  "조건식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "t=√x+1/√x로 두어 t²=x+2+1/x를 구하고 세제곱 합으로 바꾼다.",
+                      "decisiveStep":  "t²=9와 t\u003e0에서 t=3이며 구하는 식은 t³-3t=18이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙",
+                                      "l4":  "조건식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "a=2^x로 놓아 a+a⁻¹=5를 세제곱 항의 합으로 변환하고 분모로 나눈다.",
+                      "decisiveStep":  "a³+a⁻³=(a+a⁻¹)³-3(a+a⁻¹)=110이므로 110/5를 계산한다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "지수법칙",
+                                      "l4":  "조건식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "log₂₅9를 밑 5의 로그로 바꾸어 지수를 log₅6으로 합친다.",
+                      "decisiveStep":  "log₂₅9=log₅3이므로 5^(log₅2+log₅3)=6이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질",
+                                      "l4":  "밑의 변환"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "두 로그의 밑 조건과 진수 조건을 각각 부등식으로 세워 공통 범위를 구한다.",
+                      "decisiveStep":  "(x-2)(x-3)\u003e0과 x\u003e2, x≠3, x\u003c7을 교차하면 3\u003cx\u003c7이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 뜻",
+                                      "l4":  "밑과 진수 조건"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "밑변환으로 log₁₅90을 log₂90/log₂15로 바꾸고 a,b로 나타낸다.",
+                      "decisiveStep":  "90=2·3²·5와 15=3·5를 이용해 분자는 1+2a+b, 분모는 a+b가 된다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질",
+                                      "l4":  "밑의 변환"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "A=log₂a, B=log₂b로 두어 조건에서 B/A를 구한 뒤 두 역수 로그의 제곱을 더한다.",
+                      "decisiveStep":  "log_b8=3/B이므로 A·3/B=1, 따라서 log_a b=3이고 log_b a=1/3이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질",
+                                      "l4":  "밑의 변환"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "0.024를 2.4×10⁻²로 바꾸고 3.3802를 log 2.4+3으로 해석한다.",
+                      "decisiveStep":  "로그의 곱셈 성질로 M=0.3802-2, N=2.4×10³을 얻는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "상용로그",
+                                      "l4":  "소수점 위치"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "n년 후 증가 배율 1.12ⁿ이 2 이상이 되는 부등식에 상용로그를 취한다.",
+                      "decisiveStep":  "n≥0.3010/0.0492≈6.12이므로 최소 자연수는 7이다.",
+                      "rpmPath":  {
+                                      "l4":  "밑의 범위에 따른 부등호",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수함수",
+                                      "l3":  "지수부등식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "n/3이 제곱수이고 n/2가 세제곱수라는 조건을 소인수 지수에 적용해 작은 n을 찾는다.",
+                      "decisiveStep":  "n=2^a3^b에서 a 짝수와 a-1의 3배수, b-1 짝수와 b의 3배수를 함께 만족시킨다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "거듭제곱근",
+                                      "l4":  "n제곱근"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  17,
+                      "questionUid":  "",
+                      "primaryMethod":  "로그식을 묶어 N=2^(2m)3^(2n)으로 나타내고 N≤900인 조합을 열거한다.",
+                      "decisiveStep":  "양의 정수 m,n에서 가능한 N은 36, 144, 324, 576이며 이를 합한다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질",
+                                      "l4":  "곱·몫·거듭제곱"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  18,
+                      "questionUid":  "",
+                      "primaryMethod":  "t=15와 t=3을 모델에 대입한 두 식을 빼고 P₁₅=P₃/8을 대입한다.",
+                      "decisiveStep":  "로그 차가 c log4=log8이므로 c=3/2이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그함수",
+                                      "l3":  "로그함수의 활용",
+                                      "l4":  "최대·최소"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

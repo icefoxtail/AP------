@@ -1,0 +1,53 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T22:35:54+09:00",
+    "sourceArchiveFile":  "types/high/h2/비상_대수_지수로그_익힘책_고2_유형심화.js",
+    "items":  [
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "S에서 a+b 짝수와 ab≤2를 함께 걸러 ㄱ,ㄴ만 참이고 가능한 쌍은 a별로 2,2,1,2개라 n(S)=7이지만 H2-대수 표에는 집합 조건 분류 RPM 행이 없다.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_INEQUALITY_CONSTRAINT"
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "hold":  {
+                                   "rpmPath.majorUnit":  "집합 원소 조건을 홀짝·곱 부등식으로 판정하는 RPM 행이 H2-대수 표에 없어 보류한다.",
+                                   "rpmPath.midUnit":  "집합 원소 조건을 홀짝·곱 부등식으로 판정하는 RPM 행이 H2-대수 표에 없어 보류한다.",
+                                   "rpmPath.l3":  "집합 원소 조건을 홀짝·곱 부등식으로 판정하는 RPM 행이 H2-대수 표에 없어 보류한다.",
+                                   "rpmPath.l4":  "집합 원소 조건을 홀짝·곱 부등식으로 판정하는 RPM 행이 H2-대수 표에 없어 보류한다.",
+                                   "conditionKeys":  "a+b가 짝수라는 일반 홀짝 조건에 대응하는 키가 H2-대수 표의 조건 목록에 없어 이 조건 키는 보류하고 ab≤2 조건 키만 기록한다."
+                               },
+                      "rpmPath":  {
+                                      "majorUnit":  "",
+                                      "midUnit":  "",
+                                      "l3":  "",
+                                      "l4":  ""
+                                  }
+                  },
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "로그 성질로 D가 P^(-2/3)에 비례함을 얻어 가격 배수를 r라 두면 r^(-2/3)=1/4, 즉 r=8이다.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "PT_H22A_01_LOG_PROPERTIES",
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질",
+                                      "l4":  "곱·몫·거듭제곱"
+                                  }
+                  }
+              ]
+}

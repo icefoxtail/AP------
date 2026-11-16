@@ -1,0 +1,59 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T22:04:43.529+00:00",
+ "sourceArchiveFile": "original/high/h2/1mid/22_순천고_1학기_중간_고2_확률과통계.js",
+ "items": [
+  {
+   "ordinal": 14,
+   "chosenFrom": "new",
+   "resolutionReason": "5⁶≡1, 7⁶≡1 (mod 36)이므로 5¹²+7¹²≡1+1=2를 구하는 거듭제곱의 나머지인데 확률과통계 표에는 정수의 나머지 경로가 없어 앞서 제안한 값을 쓴다.",
+   "choiceTableUsed": "H2-확률과통계.json",
+   "rpmPath": {
+    "majorUnit": "",
+    "midUnit": "",
+    "l3": "",
+    "l4": ""
+   },
+   "hold": "신규 제안: 확률과통계 표에 거듭제곱의 나머지 경로가 없음(앞서 제안한 정수의 성질 계열 재사용).",
+   "proposedNew": {
+    "rpmPath.majorUnit": {
+     "value": "정수의 성질",
+     "label": "정수의 성질",
+     "parent": "(최상위)",
+     "why": "가장 가까운 '경우의 수'는 개수를 세는 단원이라 36으로 나눈 나머지 계산과 맞지 않는다."
+    },
+    "rpmPath.midUnit": {
+     "value": "나머지와 합동",
+     "label": "나머지와 합동",
+     "parent": "정수의 성질",
+     "why": "가장 가까운 '이항정리'는 전개식의 항이라 mod 36 거듭제곱 계산과 맞지 않는다."
+    },
+    "rpmPath.l3": {
+     "value": "거듭제곱의 나머지",
+     "label": "거듭제곱의 나머지",
+     "parent": "정수의 성질 > 나머지와 합동",
+     "why": "가장 가까운 '이항정리 전개식의 항'은 다항식 전개이고 이 문항은 5¹²+7¹²의 나머지다."
+    },
+    "rpmPath.l4": {
+     "value": "주기를 이용한 나머지",
+     "label": "주기를 이용한 나머지(요일)",
+     "parent": "정수의 성질 > 나머지와 합동 > 거듭제곱의 나머지",
+     "why": "가장 가까운 '특정 항의 계수'는 계수 계산이고 이 문항은 5⁶, 7⁶이 36으로 나누어 1이 되는 주기를 쓴다."
+    }
+   }
+  },
+  {
+   "ordinal": 4,
+   "chosenFrom": "pass2",
+   "resolutionReason": "A에서 P까지 6C2=15, P에서 B까지 4C2=6이므로 P를 지나는 최단경로 수 15×6=90을 구하는 도로망 문제라 같은 것이 있는 순열 항목에 둔다.",
+   "choiceTableUsed": "H2-확률과통계.json",
+   "rpmPath": {
+    "majorUnit": "경우의 수",
+    "midUnit": "순열과 조합",
+    "l3": "순열",
+    "l4": "중복·원순열"
+   }
+  }
+ ]
+}

@@ -1,0 +1,66 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T20:03:50+09:00",
+    "sourceArchiveFile":  "types/high/h2/비상_대수_지수로그_대단원_고2_유형심화.js",
+    "items":  [
+                  {
+                      "resolutionReason":  "A(3,d)가 y=2ˣ 위에 있어 d=8이고 B(b,3)가 y=log₂x 위에 있어 b=8이므로 bd=64다.",
+                      "chosenFrom":  "new",
+                      "rpmPath":  {
+                                      "l3":  "로그의 뜻",
+                                      "l4":  "로그와 지수 관계"
+                                  },
+                      "ordinal":  10,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "공통값 81=3⁴에서 x=4, 9ʸ=3⁴이므로 y=2, 27⁻ᶻ=3⁴이므로 z=−4/3이며 합은 14/3이다.",
+                      "chosenFrom":  "pass1",
+                      "rpmPath":  {
+                                      "l4":  "지수식 계산"
+                                  },
+                      "ordinal":  12,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "몸무게 비 200에 대해 log(200^{3/4})=(3/4)(3·0.30+2·0.70)=1.725이므로 대사량 비는 약 53배다.",
+                      "chosenFrom":  "pass2",
+                      "rpmPath":  {
+                                      "l4":  "실수 지수"
+                                  },
+                      "ordinal":  13,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "t=2ˣ\u003e0으로 두면 2ˣ+8^{1−x}=t+8/t³이며 도함수 1−24/t⁴=0에서 t=24^{1/4}, 최솟값은 4·24^{1/4}/3이다.",
+                      "chosenFrom":  "new",
+                      "rpmPath":  {
+                                      "l4":  "최대·최소",
+                                      "midUnit":  "지수함수",
+                                      "l3":  "지수함수의 활용"
+                                  },
+                      "ordinal":  14,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "u=log₂x의 허용구간 [log₂3,log₂7]은 u=2를 포함하고 u²−4u+k의 최솟값은 k−4이므로 A∩B=∅ iff k\u003e4다.",
+                      "chosenFrom":  "pass1",
+                      "rpmPath":  {
+                                      "l4":  "치환"
+                                  },
+                      "ordinal":  16,
+                      "choiceTableUsed":  "H2-대수.json"
+                  },
+                  {
+                      "resolutionReason":  "log₃a=4, log₃b=5이므로 a=81,b=243이고 logₐb=5/4, log₃(ab)=9라 합은 41/4다.",
+                      "chosenFrom":  "pass1",
+                      "rpmPath":  {
+                                      "l3":  "로그의 성질",
+                                      "l4":  "밑의 변환"
+                                  },
+                      "ordinal":  7,
+                      "choiceTableUsed":  "H2-대수.json"
+                  }
+              ]
+}

@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T17:13:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/26_강남여고_1학기_중간_고2_대수.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass2",
+      "resolutionReason": "(−2)⁵=−32여서 다섯제곱근 기호의 값은 −2이고, 네제곱근 16과 √((−3)²)는 각각 2와 3이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l4": "n제곱근"
+      }
+    },
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass2",
+      "resolutionReason": "24=2³×3이므로 가능한 세제곱인 약수는 1과 8이며 n=24,3의 합은 27이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_NATURAL"
+      ]
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "pass2",
+      "resolutionReason": "10(3×0.3010+0.4771)=13.801이므로 13≤log(24¹⁰)<14에서 n=13이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_NATURAL"
+      ]
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "resolutionReason": "(sinθ+cosθ)²=7/4이고 π<θ<3π/2에서 두 함수값이 모두 음수이므로 합은 −√7/2이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_RESTRICTED_INTERVAL"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass2",
+      "resolutionReason": "6/a=3에서 a=2이고 t/a=5이므로 필요한 시간은 t=10시간이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l3": "지수방정식",
+        "l4": "밑 통일"
+      }
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass2",
+      "resolutionReason": "첫 경우의 네 해 π/6,5π/6,7π/6,11π/6의 합은 4π이고 두 번째 해 π/2,3π/2의 합은 2π이므로 전체 합은 6π이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_RESTRICTED_INTERVAL"
+      ]
+    },
+    {
+      "ordinal": 23,
+      "chosenFrom": "pass2",
+      "resolutionReason": "ab=200=2³×5²에서 a의 양의 약수 선택마다 b가 하나씩 정해지므로 순서쌍은 (3+1)(2+1)=12개이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_NATURAL"
+      ]
+    },
+    {
+      "ordinal": 24,
+      "chosenFrom": "pass2",
+      "resolutionReason": "n은 3,5,6의 최소공배수 30의 배수이므로 100 이하의 자연수는 30,60,90이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l3": "지수법칙",
+        "l4": "조건식"
+      },
+      "conditionKeys": [
+        "COND_NATURAL",
+        "COND_RANGE"
+      ]
+    },
+    {
+      "ordinal": 25,
+      "chosenFrom": "pass2",
+      "resolutionReason": "첫 범위는 π/3<x<5π/3에서 π를 제외한 것이고 둘째 범위는 π/4<x<5π/4이므로 π/3<x<π 또는 π<x<5π/4이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_RESTRICTED_INTERVAL"
+      ]
+    },
+    {
+      "ordinal": 3,
+      "chosenFrom": "pass2",
+      "resolutionReason": "로그의 밑이 양수이므로 a=2이고 5^(−b)=5²에서 b=−2이므로 a^b=1/4이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ]
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "resolutionReason": "x=π/2+nπ에서는 cos x=0이어서 tan x가 정의되지 않으므로 정의역도 실수 전체라는 두 번째 설명이 틀리다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "midUnit": "삼각함수의 그래프",
+        "l3": "기본 그래프",
+        "l4": "tan"
+      }
+    }
+  ]
+}

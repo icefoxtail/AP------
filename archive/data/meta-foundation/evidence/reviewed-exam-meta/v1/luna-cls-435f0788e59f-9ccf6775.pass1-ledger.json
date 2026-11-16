@@ -1,0 +1,414 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass1",
+    "createdAt":  "2026-11-12T09:20:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "다섯 수열에서 분자·분모 차수와 지배항, 인수별 극한을 비교해 옳은 등식을 가린다.",
+                      "decisiveStep":  "⑤는 3^n으로 나누면 3/(1-(2/3)^n)→3이므로 보기의 1/3과 다르고, 참인 등식은 ②이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "수열의 극한",
+                                      "midUnit":  "수열의 극한",
+                                      "l3":  "극한의 계산",
+                                      "l4":  "대수적 계산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "1/((n+1)(n+2))를 1/(n+1)-1/(n+2)로 쪼개 부분합에서 중간 항을 지운다.",
+                      "decisiveStep":  "N번째 부분합은 1/2-1/(N+2)이므로 N을 무한대로 보낼 때 1/2가 남는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "수열의 극한",
+                                      "midUnit":  "급수",
+                                      "l3":  "급수의 성질",
+                                      "l4":  "급수 계산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "(4^n+3^n)/5^n을 (4/5)^n과 (3/5)^n의 두 무한등비급수로 나눈다.",
+                      "decisiveStep":  "두 합을 각각 4와 3/2로 계산해 더하면 11/2이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "수열의 극한",
+                                      "midUnit":  "급수",
+                                      "l3":  "등비급수",
+                                      "l4":  "무한등비급수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "x→0에서 지수·로그·삼각함수 보기의 기본 극한을 표준형으로 바꿔 값을 비교한다.",
+                      "decisiveStep":  "ln(1-x)/x에서 u=-x로 두면 -ln(1+u)/u→-1이므로 ③만 맞다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "함수의 극한과 연속",
+                                      "midUnit":  "함수의 극한",
+                                      "l3":  "극한의 성질",
+                                      "l4":  "대수적 계산"
+                                  },
+                      "choiceTableUsed":  "H2-미적분I.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "sinα, cosβ와 각의 범위에서 두 각의 삼각비를 구해 코사인 차 공식에 대입한다.",
+                      "decisiveStep":  "코사인 차 공식은 cosαcosβ+sinαsinβ이므로 사분면에 따른 부호를 먼저 반영한다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "",
+                                      "midUnit":  "",
+                                      "l3":  "",
+                                      "l4":  ""
+                                  },
+                      "choiceTableUsed":  "H2-미적분I.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "hold":  "삼각함수의 덧셈정리 유형에 해당하는 조합을 H2-미적분I.json, H2-미적분.json, H2-대수.json에서 찾지 못함"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "보기마다 지수·로그·곱·삼각함수 미분 공식을 적용해 제시된 도함수와 대조한다.",
+                      "decisiveStep":  "(x cot x)\u0027=cot x-x csc²x이므로 첫 항을 cot²x로 쓴 ⑤가 틀렸다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "미분법",
+                                      "midUnit":  "여러 가지 미분법",
+                                      "l3":  "함수의 몫과 합성",
+                                      "l4":  "합성함수의 미분"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "cos(nπ/2)가 0인 홀수 항을 없애고 짝수 항에서 남는 부호를 번갈아 정리한다.",
+                      "decisiveStep":  "남은 급수는 첫항 -1/4, 공비 -1/4인 등비급수라 합은 -1/5이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "수열의 극한",
+                                      "midUnit":  "급수",
+                                      "l3":  "급수의 성질",
+                                      "l4":  "급수 계산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "f(x)=e^(x+1)ln(x²)를 곱의 미분법으로 미분하고 x=1을 대입한다.",
+                      "decisiveStep":  "f\u0027(1)=e²(ln 1+2/1)=2e²이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "미분법",
+                                      "midUnit":  "지수함수와 로그함수의 미분",
+                                      "l3":  "로그함수의 미분",
+                                      "l4":  "합성함수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "두 직선의 기울기 3/5와 -3으로 예각의 탄젠트를 구하고 sec²θ=1+tan²θ를 쓴다.",
+                      "decisiveStep":  "tanθ=9/2라서 4sec²θ=4(1+81/4)=85이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "도형의 방정식",
+                                      "midUnit":  "직선의 방정식",
+                                      "l3":  "두 직선의 위치 관계",
+                                      "l4":  "교점"
+                                  },
+                      "choiceTableUsed":  "H1-수학(상).json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "x=0에서 연속이 되게 왼쪽 식의 분자 상수와 로그 극한을 맞춰 a와 b를 구한다.",
+                      "decisiveStep":  "유한한 극한에서 a=2이고 왼쪽 극한은 1/(2b)=-1이므로 a+b=3/2이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "함수의 극한과 연속",
+                                      "midUnit":  "함수의 연속",
+                                      "l3":  "연속 조건",
+                                      "l4":  "구간별 함수"
+                                  },
+                      "choiceTableUsed":  "H2-미적분I.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "-csc x/(1+cot x)를 -1/(sin x+cos x)로 고쳐 차분극한을 한 점의 미분계수로 계산한다.",
+                      "decisiveStep":  "정리한 함수의 도함수는 (cos x-sin x)/(sin x+cos x)²이고 π/4에서 0이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "미분법",
+                                      "midUnit":  "삼각함수의 미분",
+                                      "l3":  "sin·cos의 미분",
+                                      "l4":  "기본 미분"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "u=nx로 치환해 f(n)을 n²/2로 바꾼 다음 1²부터 8²까지 더한다.",
+                      "decisiveStep":  "합은 (1/2)(8·9·17/6)=102이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "함수의 극한과 연속",
+                                      "midUnit":  "함수의 극한",
+                                      "l3":  "함수의 극한",
+                                      "l4":  "극한값 계산"
+                                  },
+                      "choiceTableUsed":  "H2-미적분I.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "(1+sec x)/tan x를 (1+cos x)/sin x로 정리한 뒤 몫을 미분해 π/3에서 기울기를 구한다.",
+                      "decisiveStep":  "f\u0027(π/3)=-(1+cos(π/3))/sin²(π/3)=-2이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "미분법",
+                                      "midUnit":  "삼각함수의 미분",
+                                      "l3":  "tan 및 관련 함수의 미분",
+                                      "l4":  "복합 삼각함수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "n번째 부분합에서 직전 부분합을 빼 a_n을 구하고 n=1에서 a_1을 따로 계산한다.",
+                      "decisiveStep":  "a_n=-3/(n(n+2))이므로 a_1+n²a_n의 극한은 1/2-3=-5/2이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "수열의 극한",
+                                      "midUnit":  "수열의 극한",
+                                      "l3":  "수열의 수렴과 발산",
+                                      "l4":  "극한값"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "B에서 C로 향하는 길이를 회전해 C\u0027=(2+sinθ,cosθ)로 놓고 삼각형 넓이를 θ의 함수로 미분한다.",
+                      "decisiveStep":  "f(θ)=(2+sinθ)cosθ/2이므로 f\u0027(π/3)=-(1+2√3)/4, 따라서 합은 7이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "미분법",
+                                      "midUnit":  "도함수의 활용",
+                                      "l3":  "최대·최소",
+                                      "l4":  "활용"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "7/37의 반복 소수 189를 한 묶음으로 보고 각 묶음 값이 1/8씩 줄어드는 급수로 바꾼다.",
+                      "decisiveStep":  "첫 묶음은 29/8이므로 전체는 (29/8)/(1-1/8)=29/7이고 분자와 분모의 합은 36이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "수열의 극한",
+                                      "midUnit":  "급수",
+                                      "l3":  "등비급수",
+                                      "l4":  "활용"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  17,
+                      "questionUid":  "",
+                      "primaryMethod":  "양의 반축에서 각 단위구간의 교점 수를 세고 y축 대칭과 원점을 반영해 a_n을 만든다.",
+                      "decisiveStep":  "a_n=4n-1이므로 항을 9(1/(4n-1)-1/(4n+3))로 바꾸어 망원합을 얻는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "수열의 극한",
+                                      "midUnit":  "급수",
+                                      "l3":  "급수의 성질",
+                                      "l4":  "급수 계산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  18,
+                      "questionUid":  "",
+                      "primaryMethod":  "P=(cosθ,sinθ)와 접선 교점 Q=(secθ,0)에서 두 넓이를 세우고 기본 삼각극한으로 정리한다.",
+                      "decisiveStep":  "4·((1-cosθ)/θ²)·(θ/sinθ)·(1/cos²θ)·√((π/2-θ)/2)의 극한은 √π이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "함수의 극한과 연속",
+                                      "midUnit":  "함수의 극한",
+                                      "l3":  "극한의 성질",
+                                      "l4":  "대수적 계산"
+                                  },
+                      "choiceTableUsed":  "H2-미적분I.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  19,
+                      "questionUid":  "",
+                      "primaryMethod":  "tan x+cot x를 1/(sin x cos x)로 바꾸어 f를 곱으로 나타내고 함수값과 도함수값을 계산한다.",
+                      "decisiveStep":  "π/3에서 두 값은 (3+√3)/8, -(5+√3)/8이므로 합은 -1/4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "미분법",
+                                      "midUnit":  "삼각함수의 미분",
+                                      "l3":  "sin·cos의 미분",
+                                      "l4":  "기본 미분"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  20,
+                      "questionUid":  "",
+                      "primaryMethod":  "정삼각형 외접원 반지름과 다음 원의 반지름의 비를 이용해 둘레·넓이의 등비급수를 각각 만든다.",
+                      "decisiveStep":  "반지름비는 1/2, 넓이비는 1/4이므로 둘레합은 16π, 제외넓이합은 (12√3-4π)/(1-1/4)이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "수열의 극한",
+                                      "midUnit":  "급수",
+                                      "l3":  "등비급수",
+                                      "l4":  "활용"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  21,
+                      "questionUid":  "",
+                      "primaryMethod":  "첫 극한에서 f(1), f\u0027(1)을 얻고 함수 관계를 대입·미분해 g(1), g\u0027(1)을 구한 뒤 곱의 미분계수로 연결한다.",
+                      "decisiveStep":  "f(1)=e, f\u0027(1)=2e, g(1)=2, g\u0027(1)=1이므로 a=-2e, b=5e, b-a=7e이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "미분법",
+                                      "midUnit":  "여러 가지 미분법",
+                                      "l3":  "함수의 몫과 합성",
+                                      "l4":  "합성함수의 미분"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

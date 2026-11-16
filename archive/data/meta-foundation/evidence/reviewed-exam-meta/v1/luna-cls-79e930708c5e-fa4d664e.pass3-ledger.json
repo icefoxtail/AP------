@@ -1,0 +1,83 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T16:40:42+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/21_매산고_1학기_중간_고2_수학II.js",
+    "items":  [
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "불연속 반지름 a₂=√2의 좌극한은 2, a₄=√5의 우극한은 1이므로 요구된 합은 3이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "standardUnitKey":  "H15-M2-01",
+                      "subUnitKey":  "H15-M2-01-LIMIT",
+                      "rpmPath":  {
+                                      "midUnit":  "함수의 극한",
+                                      "l3":  "함수의 극한",
+                                      "l4":  "좌극한·우극한"
+                                  }
+                  },
+                  {
+                      "ordinal":  18,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "P=(0,t),Q=(t+1,t)인 직각삼각형의 내접반지름 r=(2t+1−√(2t²+2t+1))/2이므로 g/f=(t−r)/r→1+√2.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "standardUnitKey":  "H15-M2-01",
+                      "subUnitKey":  "H15-M2-01-LIMIT",
+                      "rpmPath":  {
+                                      "majorUnit":  "함수의 극한과 연속",
+                                      "midUnit":  "함수의 극한",
+                                      "l3":  "무한대에서의 극한",
+                                      "l4":  ""
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "hold":  {
+                                   "rpmPath.l4":  "H2-수학II l4 선택지는 다항·유리함수 또는 그래프 해석으로 제한되어 기하 내접원 중심비의 무한대 극한 세부 유형이 없다."
+                               }
+                  },
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "x\u003e0에서 g(t)=t²+12|t|+6이므로 h(t) 좌우 미분계수의 차는 |t|항 계수 −12a에서 결정되어 미분가능하려면 a=0이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "subUnitKey":  "H15-M2-03-DERIVATIVE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "y=x³+2x+2의 도함수는 3x²+2이므로 x=1에서 접선 기울기는 5이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "standardUnitKey":  "H15-M2-03",
+                      "subUnitKey":  "H15-M2-03-DERIVATIVE",
+                      "rpmPath":  {
+                                      "midUnit":  "미분계수와 도함수",
+                                      "l3":  "도함수",
+                                      "l4":  "도함수 계산"
+                                  }
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "도함수 극한 조건에서 4차 최고차항 계수 1, 다음 계수 1을 얻고 f(0)=2,f(2)=0,f′(2)=19로 풀면 f=x⁴+x³−6x²−x+2이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "subUnitKey":  "H15-M2-03-DERIVATIVE_DEFINITION",
+                      "rpmPath":  {
+                                      "l3":  "미분계수",
+                                      "l4":  "정의로 미분계수"
+                                  }
+                  },
+                  {
+                      "ordinal":  7,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "|x²−1|은 x=1에서 연속하지만 왼쪽 미분계수 −2와 오른쪽 미분계수 2가 달라 그 점에서 미분가능하지 않다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "subUnitKey":  "H15-M2-03-CONTINUITY"
+                  }
+              ]
+}

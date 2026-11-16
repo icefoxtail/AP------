@@ -1,0 +1,98 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T18:44:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/26_효천고_1학기_중간_고2_대수.js",
+    "items":  [
+                  {
+                      "ordinal":  2,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "log_{√5}(1/25)=−4 because (√5)^−4=1/25, so the statement giving 1/4 is the incorrect simplification.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "rpmPath":  {
+                                      "l3":  "로그의 뜻",
+                                      "l4":  "로그와 지수 관계"
+                                  }
+                  },
+                  {
+                      "ordinal":  3,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "Subtracting log 9.25=0.9661 from log x=2.9661 gives log(x/9.25)=2, so x=9.25·100=925.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "rpmPath":  {
+                                      "l4":  "소수점 위치"
+                                  }
+                  },
+                  {
+                      "ordinal":  5,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "In quadrant II, cosθ=−√(1−16/25)=−3/5, hence tanθ=(4/5)/(−3/5)=−4/3.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "rpmPath":  {
+                                      "l3":  "삼각함수의 성질",
+                                      "l4":  "삼각함수 관계"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  7,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "81^(2/n)=3^(8/n) needs n|8 and 125^(6/(n+1))=5^(18/(n+1)) needs n+1|18; common n=1,2,8 sum to 11.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "conditionKeys":  [
+                                            "COND_INTEGER",
+                                            "COND_NATURAL"
+                                        ]
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "Set (2log₂n+1)/3=m; among m=1,…,6 only odd m=1,3,5 make n=2^((3m−1)/2) natural, giving n=2,16,128 with sum 146.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "rpmPath":  {
+                                      "l3":  "로그의 뜻",
+                                      "l4":  "로그와 지수 관계"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_NATURAL",
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  14,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "For n∈{1,…,9}, the real roots of (x^n−2)(x^(2n)−2)=0 depend on parity; checking their products yields the extreme n+k values −3 and 8+2^(3/8), whose sum is 5+2^(3/8).",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL",
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  16,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "With t=3^f(x), root counts from the two branches show n=9,15,16,17 each yields three distinct roots, and their sum is 57.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "rpmPath":  {
+                                      "l3":  "지수방정식",
+                                      "l4":  "치환"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_NATURAL",
+                                            "COND_PIECEWISE_DOMAIN_PARTITION",
+                                            "COND_EXACT_INTERSECTION_COUNT"
+                                        ]
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "The inequalities imply 0\u003cb\u003c1 and b²\u003ca\u003cb; applying monotonicity of logarithms with bases below 1 gives the order among all four expressions.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "conditionKeys":  [
+                                            "COND_INEQUALITY_CONSTRAINT"
+                                        ]
+                  }
+              ]
+}

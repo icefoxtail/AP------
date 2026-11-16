@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T18:04:09+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/23_중앙여고_1학기_중간_고2_대수.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass2",
+      "resolutionReason": "왼쪽은 a^(2/3), 오른쪽은 a^(1/2+m/6)이므로 지수를 같게 두면 m=1이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "integrationPattern": "PT_H22A_01_ROOT_REAL",
+      "rpmPath": {
+        "l3": "거듭제곱근",
+        "l4": "실수 조건"
+      }
+    },
+    {
+      "ordinal": 2,
+      "chosenFrom": "pass2",
+      "resolutionReason": "범위 안의 완전세제곱수는 125, 완전제곱수는 9뿐이므로 a−b=116이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "integrationPattern": "PT_H22A_01_ROOT_REAL"
+    },
+    {
+      "ordinal": 3,
+      "chosenFrom": "pass2",
+      "resolutionReason": "(가)는 xy=m^(3n), (나)는 x+y=m을 주므로 x²y+xy²=xy(x+y)=m^(3n+1)이고 로그값은 3n+1이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "integrationPattern": "PT_H22A_01_LOG_PROPERTIES",
+      "rpmPath": {
+        "midUnit": "로그",
+        "l3": "로그의 성질",
+        "l4": "곱·몫·거듭제곱"
+      }
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "resolutionReason": "2^(t²−2t)=2^((t−1)²−1)의 최솟값은 1/2이므로 0<k≤1/2이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "integrationPattern": "PT_FUNCTION_EXTREMUM",
+      "rpmPath": {
+        "l3": "지수함수의 활용",
+        "l4": "최대·최소"
+      }
+    },
+    {
+      "ordinal": 5,
+      "chosenFrom": "pass2",
+      "resolutionReason": "근 t가 −1<t<0이면 k=2t−t²이므로 −3<k<0이고 두 t근의 합이 2라서 원래 방정식의 두 x근의 곱은 3²=9이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "integrationPattern": "PT_H22A_03_LOG_EQUATION",
+      "rpmPath": {
+        "l3": "로그부등식",
+        "l4": "정의역·밑 조건"
+      }
+    }
+  ]
+}

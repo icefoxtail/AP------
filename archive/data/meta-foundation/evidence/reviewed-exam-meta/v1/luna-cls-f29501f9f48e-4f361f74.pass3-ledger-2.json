@@ -1,0 +1,46 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T15:37:46+09:00",
+    "sourceArchiveFile":  "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "24/x가 자연수이려면 x가 24의 양의 약수여서 A={1,2,3,4,6,8,12,24}, 원소는 8개다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "rpmPath":  {
+                                      "l4":  "유한집합 원소 개수"
+                                  }
+                  },
+                  {
+                      "ordinal":  8,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "PQ 기울기 1/2에 수직인 이동 직선의 기울기는 −2이고 이동 뒤 점 (−6,0)을 지나므로 절편 b=−12, a+b=−14이다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "rpmPath":  {
+                                      "l4":  "수직",
+                                      "midUnit":  "직선의 방정식",
+                                      "l3":  "두 직선의 위치 관계"
+                                  }
+                  },
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "직선 매개변수 t로 원에 대입하면 두 교점 매개변수 곱은 −81/(1+m²)이고 OP·OQ=|t_Pt_Q|(1+m²)=81이다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "hold":  "rpmPath.l4: H1-공통수학2.json의 원과 직선 목록에는 교점 개수와 현의 길이만 있고, 문제의 OP·OQ 곱(점의 거듭제곱)을 정확히 분류하는 l4 항목이 없어 보류함"
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "A,B의 총원은 각각 28,20이고 한 과목만 선택한 인원 48−2t≤34에서 7≤t≤20, 합집합의 최댓값·최솟값은 41,28이라 합은 69다.",
+                      "choiceTableUsed":  "H1-공통수학2.json",
+                      "rpmPath":  {
+                                      "l4":  "원소 개수",
+                                      "midUnit":  "집합의 연산",
+                                      "l3":  "교집합과 합집합"
+                                  }
+                  }
+              ]
+}

@@ -1,0 +1,168 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T12:09:44.792+09:00",
+    "sourceArchiveFile":  "original/high/h2/2final/25_순천고_2학기_기말_고2_수학II.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "속도는 x′(t)=3(t−3)(t+1)이라 t≥0에서 방향 전환은 t=3이고 가속도 x″(3)=12다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  10,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′(x)=6x²−2x+3을 적분하면 f=2x³−x²+3x+C이고 f(−1)=−2에서 C=4, f(2)=22다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "도함수에서 원함수"
+                                  }
+                  },
+                  {
+                      "ordinal":  11,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "분모 x²−ax+2a가 모든 실수에서 양의 값을 가지려면 판별식 a²−8a\u003c0이라 0\u003ca\u003c8이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_UNIVERSAL_INPUTS"
+                                        ]
+                  },
+                  {
+                      "ordinal":  12,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "포물선을 (x−1)²−(1−a)로 바꾸면 x축 사이 넓이는 4(1−a)^(3/2)/3=36이므로 a=−8이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "도형 활용",
+                                      "l4":  "매개변수 넓이"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "구간별로 x축과의 부호가 달라지는 점 −1,0,1에서 적분을 나누어 합하면 넓이는 13/3이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ]
+                  },
+                  {
+                      "ordinal":  16,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "넓이 S(t)=t²(a−t)²/2은 t=a/2에서 최대 M=a⁴/32이고 p=a/2라 M/p=a³/16이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  18,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "H(x)=∫₀ˣ(x−t)f(t)dt에서 H(2)=0,H′(2)=5와 주어진 적분조건으로 ∫₀²f=5,∫₀²tf=10을 얻어 목표 적분은25다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "상한이 변수인 적분"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_DERIVATIVE_DEFINITION_LIMIT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  2,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "v(t)=30−3t는 t=10에서 0이므로 첫 방향전환까지 높이는 10+∫₀¹⁰(30−3t)dt=160m다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "도함수의 축 −1, 근 2에서 f=(x+1)³−27(x+1)+C이고 절댓값 방정식 근이 네 개가 되려면 |극값|=54라 C=8, f(1)=−38이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "crossConceptKeys":  [
+                                               "CC_ABSOLUTE_VALUE_CURVE_GRAPH"
+                                           ]
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′=3x(x−2)을 적분해 f=x³−3x²+C를 얻고 x=0 극댓값 4에서 C=4다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "도함수에서 원함수"
+                                  }
+                  },
+                  {
+                      "ordinal":  24,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′=3(x−1)(x+1)은 x\u003e0에서 x=1까지 감소 후 증가하므로 최솟값 f(1)=−4가 가능한 최댓값 하한 k다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_UNIVERSAL_INPUTS",
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  3,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "∫f′(x)dx=6x³−7x+C에서 f=6x³−7x+C이고 f(1)=3이면 C=4라 f(2)=38이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l4":  "초기조건"
+                                  }
+                  },
+                  {
+                      "ordinal":  4,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f′(x)=3x²+8x−a는 [0,2]에서 최대가 x=2의 28이므로 감소 조건은 28−a≤0, 즉 a≥28이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  6,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "높이 x=30t−5t²의 속도 30−10t는 t=3에서 0이 되어 꼭대기 높이는 30·3−5·9=45m다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "midUnit":  "도함수의 활용(3)",
+                                      "l3":  "속도와 가속도",
+                                      "l4":  "위치·속도·가속도"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  8,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "−2x²+6x는 [−1,0]에서 음수, [0,1]에서 양수라 절댓값 적분을 나누면 11/3+7/3=6이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "midUnit":  "정적분의 활용",
+                                      "l3":  "넓이",
+                                      "l4":  "곡선과 x축"
+                                  }
+                  },
+                  {
+                      "ordinal":  9,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "K=∫₀¹2f(x)dx라 두면 f=3x²−4x+K이고 K=2(1−2+K)에서 K=2라 f(1)=1이다.",
+                      "choiceTableUsed":  "H2-수학II.json",
+                      "rpmPath":  {
+                                      "l3":  "정적분의 뜻",
+                                      "l4":  "정적분 계산"
+                                  }
+                  }
+              ]
+}

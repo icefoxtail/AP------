@@ -1,0 +1,103 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass2",
+    "createdAt":  "2026-11-12T17:27:39+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/23_중앙여고_1학기_중간_고2_대수.js",
+    "items":  [
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  1,
+                      "rpmPath":  {
+                                      "l4":  "실수 조건",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "거듭제곱근"
+                                  },
+                      "primaryMethod":  "a의 세제곱근 관계를 지수식으로 바꾸고 양변의 a 지수를 비교해 m을 구한다.",
+                      "decisiveStep":  "왼쪽은 a^(2/3), 오른쪽은 a^(1/2+m/6)이므로 지수를 같게 두면 m=1이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  2,
+                      "rpmPath":  {
+                                      "l4":  "실수 조건",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수",
+                                      "l3":  "거듭제곱근"
+                                  },
+                      "primaryMethod":  "a와 b의 범위에서 세제곱근과 제곱근이 정수가 되도록 완전세제곱수와 완전제곱수를 각각 찾는다.",
+                      "decisiveStep":  "범위 안의 완전세제곱수는 125, 완전제곱수는 9뿐이므로 a−b=116이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  3,
+                      "rpmPath":  {
+                                      "l4":  "곱·몫·거듭제곱",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질"
+                                  },
+                      "primaryMethod":  "(가)에서 xy의 n제곱근이 m³임을 식으로 쓰고, (나)에서 x+y=m을 얻어 로그의 진수를 정리한다.",
+                      "decisiveStep":  "(가)는 xy=m^(3n), (나)는 x+y=m을 주므로 x²y+xy²=xy(x+y)=m^(3n+1)이고 로그값은 3n+1이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  4,
+                      "rpmPath":  {
+                                      "l4":  "최대·최소",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "지수함수",
+                                      "l3":  "지수함수의 활용"
+                                  },
+                      "primaryMethod":  "t=log₂x로 치환해 부등식을 2^(t²)≥k·2^(2t)로 바꾸고 t에 대한 최솟값을 구한다.",
+                      "decisiveStep":  "2^(t²−2t)=2^((t−1)²−1)의 최솟값은 1/2이므로 0\u003ck≤1/2이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  },
+                  {
+                      "questionUid":  "",
+                      "integrationPattern":  "SEQUENTIAL",
+                      "ordinal":  5,
+                      "rpmPath":  {
+                                      "l4":  "정의역·밑 조건",
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "midUnit":  "로그함수",
+                                      "l3":  "로그부등식"
+                                  },
+                      "primaryMethod":  "t=log_3 x로 두어 t²−2t+k=0을 만든 뒤, 해당 근이 −1과 0 사이에 놓이는 조건을 계산한다.",
+                      "decisiveStep":  "근 t가 −1\u003ct\u003c0이면 k=2t−t²이므로 −3\u003ck\u003c0이고 두 t근의 합이 2라서 원래 방정식의 두 x근의 곱은 3²=9이다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ]
+                  }
+              ]
+}

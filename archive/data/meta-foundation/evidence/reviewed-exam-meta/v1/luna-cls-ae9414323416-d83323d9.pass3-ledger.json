@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T14:24:00+09:00",
+  "sourceArchiveFile": "original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
+  "items": [
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass1",
+      "resolutionReason": "접선 기울기 m에 대해 15|m|/√(m²+1)=3이므로 m²=1/24, 두 기울기 곱은 −1/24이고 a+b=25다.",
+      "choiceTableUsed": "H1-공통수학2.json",
+      "rpmPath": {
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "l3": "원의 접선",
+        "l4": "기울기가 주어진 접선"
+      },
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_LINE"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "new",
+      "resolutionReason": "두 사선 교점의 대칭축은 x=−4이고 내심에서 y=2와 x+√3y−2=0까지 거리를 같게 두어 a+b=16−10√3을 얻는다.",
+      "choiceTableUsed": "H1-공통수학2.json",
+      "rpmPath": {
+        "majorUnit": "도형의 방정식",
+        "midUnit": "직선의 방정식",
+        "l3": "점과 직선 사이의 거리",
+        "l4": "도형의 넓이·최소거리"
+      },
+      "crossConceptKeys": [
+        "CC_POINT_TO_LINE_DISTANCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass1",
+      "resolutionReason": "U={2,3,5,7,11,13,17,19}에서 3을 포함한 최소 소수 합은 17이며 {2,3,5,7}이 이를 이룬다.",
+      "choiceTableUsed": "H1-공통수학2.json",
+      "rpmPath": {
+        "majorUnit": "집합과 명제",
+        "midUnit": "집합의 뜻과 포함 관계",
+        "l3": "집합과 원소",
+        "l4": "원소나열법·조건제시법"
+      },
+      "crossConceptKeys": [],
+      "integrationPattern": "NONE",
+      "hold": {
+        "conditionKeys": "The table has no condition key for requiring the sum of selected primes to itself be prime and greater than 5."
+      }
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass2",
+      "resolutionReason": "A=(4,2), B=(0,4), D=(8/3,8/3), E=(8/5,16/5)에서 외접원 반지름 제곱은 32/9라 36k=128이다.",
+      "choiceTableUsed": "H1-공통수학2.json",
+      "rpmPath": {
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "l3": "원의 방정식",
+        "l4": "일반형에서 원 찾기"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "new",
+      "resolutionReason": "두 비공집합 근집합의 합집합 크기가 2일 때 가능한 bc는 44,48,55이므로 극값은 44와 55다.",
+      "choiceTableUsed": "H1-공통수학2.json",
+      "rpmPath": {
+        "majorUnit": "집합과 명제",
+        "midUnit": "집합의 연산",
+        "l3": "교집합과 합집합",
+        "l4": "원소 개수"
+      },
+      "crossConceptKeys": [
+        "CC_SET_INTERSECTION_UNION"
+      ],
+      "conditionKeys": [
+        "COND_NONEMPTY_SELECTION"
+      ],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "pass1",
+      "resolutionReason": "반지름 1/5,3/2인 두 원의 중심거리 13√2/10에서 사다리꼴 높이는 7/10이고 넓이는 119/200이다.",
+      "choiceTableUsed": "H1-공통수학2.json",
+      "rpmPath": {
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "l3": "원의 접선",
+        "l4": "기울기가 주어진 접선"
+      },
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_LINE"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "integrationPattern": "NONE"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T21:49:10.269+00:00",
+ "sourceArchiveFile": "original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js",
+ "items": [
+  {
+   "ordinal": 20,
+   "chosenFrom": "new",
+   "resolutionReason": "주기 8인 f(x)와 y=mx의 교점 개수 g(m)에서 g(1/2)를 구하고 g(1/(4n))=39인 n을 (4n-1)²>288n, <320n로 찾으므로 그래프의 교점 항목을 쓴다.",
+   "choiceTableUsed": "H1-수학(하).json",
+   "rpmPath": {
+    "majorUnit": "함수",
+    "midUnit": "함수",
+    "l3": "",
+    "l4": ""
+   },
+   "hold": "신규 제안: 함수>함수 아래 그래프의 교점을 다루는 l3·l4 항목이 표에 없음(앞서 제안한 값 재사용).",
+   "proposedNew": {
+    "rpmPath.l3": {
+     "value": "함수의 그래프",
+     "label": "함수의 그래프",
+     "parent": "함수 > 함수",
+     "why": "가장 가까운 '함수의 성질'은 일대일·항등함수 분류이고, 이 문항은 주기함수와 직선 그래프의 교점 개수를 센다."
+    },
+    "rpmPath.l4": {
+     "value": "그래프의 교점",
+     "label": "함수 그래프의 교점",
+     "parent": "함수 > 함수 > 함수의 그래프",
+     "why": "가장 가까운 '정의역·공역·치역'은 집합을 다루고, 이 문항은 f(x)=x/(4n)의 실근 개수를 센다."
+    }
+   }
+  }
+ ]
+}

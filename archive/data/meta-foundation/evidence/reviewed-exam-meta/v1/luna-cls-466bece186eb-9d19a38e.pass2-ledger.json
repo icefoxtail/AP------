@@ -1,0 +1,464 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass2",
+    "createdAt":  "2026-11-12T23:13:26+09:00",
+    "sourceArchiveFile":  "original/high/h2/1final/23_팔마고_1학기_기말_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "",
+                      "primaryMethod":  "확률질량함수의 조합계수 100Cx와 (1/5)ˣ(4/5)¹⁰⁰⁻ˣ에서 이항분포의 n=100, p=1/5를 읽는다.",
+                      "decisiveStep":  "V(X)=100×(1/5)×(4/5)=16이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "",
+                      "primaryMethod":  "X가 B(18, 1/3)을 따르므로 평균을 6으로 구하고 Y=3X+2의 평균으로 바꾼다.",
+                      "decisiveStep":  "E(Y)=3E(X)+2=3×6+2=20이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_LINEARITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "",
+                      "primaryMethod":  "E(X)=1/2와 σ(X)=2를 -4X+1의 평균 및 표준편차 변환식에 각각 대입한다.",
+                      "decisiveStep":  "평균은 -1, 표준편차는 |-4|×2=8이므로 두 값의 합은 7이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_LINEARITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  4,
+                      "questionUid":  "",
+                      "primaryMethod":  "1, 1, 2, 3이 적힌 공에서 얻은 크기 2의 표본평균의 기댓값을 모집단 평균과 같게 둔다.",
+                      "decisiveStep":  "E(X̄)=(1+1+2+3)/4=7/4이며 추출 개수 2로 다시 나누지 않는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모집단과 표본",
+                                      "l4":  "표본평균"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  5,
+                      "questionUid":  "",
+                      "primaryMethod":  "X=0, 1, 2의 확률 1/6, 2/3, 1/6에서 평균 1에 대한 제곱편차를 합한다.",
+                      "decisiveStep":  "V(X)=(0-1)²/6+(2-1)²/6=1/3이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "",
+                      "primaryMethod":  "1승 1패 이후 A가 우승하는 경로를 두 경기 연승과 세 경기에서 마지막에 두 번째 승리를 얻는 경우로 나눈다.",
+                      "decisiveStep":  "우승 확률은 (1/3)²+2×(1/3)²×(2/3)=7/27이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "조건부확률",
+                                      "l3":  "독립시행",
+                                      "l4":  "반복 시행의 확률"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  7,
+                      "questionUid":  "",
+                      "primaryMethod":  "4의 약수 1, 2, 4가 나온 횟수를 k로 두면 네 번 이동 후 좌표가 2k-(4-k)가 됨을 이용한다.",
+                      "decisiveStep":  "3k-4\u003e0에서 k≥2이므로 확률은 1-(1+4)/16=11/16이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "조건부확률",
+                                      "l3":  "독립시행",
+                                      "l4":  "이항형 시행"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_PROBABILITY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  8,
+                      "questionUid":  "",
+                      "primaryMethod":  "17 이하와 23 이상의 확률이 같다는 정규분포의 대칭성으로 평균 m을 두 경계의 중점으로 정한다.",
+                      "decisiveStep":  "m=(17+23)/2=20이고 P(X≥m)=1/2이므로 곱은 10이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  9,
+                      "questionUid":  "",
+                      "primaryMethod":  "N(50, 4)의 표준편차 2로 F(52)-F(47)=P(47\u003cX≤52)를 표준화한다.",
+                      "decisiveStep":  "구간 -1.5\u003cZ≤1의 확률은 0.4332+0.3413=0.7745이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "표준정규분포"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "",
+                      "primaryMethod":  "평점의 모표준편차 5와 신뢰도 95%를 사용해 신뢰구간 길이 19.6/√n을 2 이하로 놓는다.",
+                      "decisiveStep":  "n≥9.8²=96.04이므로 표본 크기의 최솟값은 97이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모평균 추정",
+                                      "l4":  "표본크기"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_CONFIDENCE_INTERVAL_LENGTH"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  11,
+                      "questionUid":  "",
+                      "primaryMethod":  "A와 B의 독립성에서 여사건의 독립성을 얻고 교집합의 확률을 P(A)P(B)로 바꾸어 세 등식을 비교한다.",
+                      "decisiveStep":  "드모르간 법칙으로 둘째 식이 성립하고 P(A∪B)-P(B)=P(A)(1-P(B))이므로 셋째 식도 성립한다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "조건부확률",
+                                      "l3":  "사건의 독립",
+                                      "l4":  "독립 판정"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_DEMORGAN_LAWS"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  12,
+                      "questionUid":  "",
+                      "primaryMethod":  "f(x)=k|x|+k를 x=0에서 나누어 -1부터 2까지의 넓이를 1로 맞춘 뒤 0부터 1까지의 넓이를 구한다.",
+                      "decisiveStep":  "전체 넓이가 11k/2이므로 k=2/11이고 구하는 확률은 3k/2=3/11이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률밀도함수"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_LINEAR_FUNCTION_AREA"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NONZERO"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "",
+                      "primaryMethod":  "100회 동전 던지기의 앞면 수를 X로 놓아 최종 점수 3X-(100-X)를 120 이상으로 제한한다.",
+                      "decisiveStep":  "X≥55이고 B(100, 1/2)의 평균 50, 표준편차 5로 표준화하면 Z≥1의 확률 0.1587이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_NORMAL_APPROXIMATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  14,
+                      "questionUid":  "",
+                      "primaryMethod":  "만족 응답자 수를 B(400, 0.8)로 놓아 평균 320과 표준편차 8로 구간 324부터 k까지를 표준화한다.",
+                      "decisiveStep":  "0.2857+P(0≤Z≤0.5)=0.4772이므로 (k-320)/8=2에서 k=336이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_NORMAL_APPROXIMATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  15,
+                      "questionUid":  "",
+                      "primaryMethod":  "표본평균 10에서 신뢰구간 끝점까지 거리 0.1을 모표준편차 1과 표본 크기 100의 표준오차로 나눈다.",
+                      "decisiveStep":  "기준값이 0.1/(1/10)=1이므로 α=100×2×0.3413=68.26이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모평균 추정",
+                                      "l4":  "신뢰구간"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_STANDARD_NORMAL_TABLE_READING"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "",
+                      "primaryMethod":  "상위 15%의 경계 75.2를 표준화 값 1.04에 대응시켜 σ를 구한 뒤 상위 10%의 값 1.28을 적용한다.",
+                      "decisiveStep":  "σ=(75.2-70)/1.04=5이고 x=70+1.28×5=76.4이므로 σ+x=81.4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "표준정규분포"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  17,
+                      "questionUid":  "",
+                      "primaryMethod":  "표준편차 5를 고정한 정규곡선을 옮기며 구간 [0, 10] 안의 넓이를 평균 k의 위치에 따라 비교한다.",
+                      "decisiveStep":  "넓이는 k=5에서 최대이고 f(k)=f(10-k)이므로 f(0)=f(10)은 참이지만 f(k)=f(5-k)는 거짓이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "정규분포",
+                                      "l4":  "정규분포 확률"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  18,
+                      "questionUid":  "",
+                      "primaryMethod":  "칫솔 네 개 무게의 합을 평균 80, 표준편차 8인 정규분포로 나타내고 하위 확률 0.0228의 경계를 찾는다.",
+                      "decisiveStep":  "(x-80)/8=-2이므로 불량 판정의 경계 무게 x=64이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모집단과 표본",
+                                      "l4":  "표본분포"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_STANDARDIZATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  19,
+                      "questionUid":  "",
+                      "primaryMethod":  "수박과 멜론 9개의 표본평균 표준편차 5와 3을 이용해 같은 확률을 만드는 두 표준화 값의 부호를 반대로 놓는다.",
+                      "decisiveStep":  "(k-3m)/5=-(k-m)/3에서 8k=14m이므로 k/m=7/4이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모집단과 표본",
+                                      "l4":  "표본분포"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  20,
+                      "questionUid":  "",
+                      "primaryMethod":  "1, 2, 3, 4 카드에서 첫 짝수가 두 번째 또는 세 번째에 나오는 경로의 비복원 확률을 곱한다.",
+                      "decisiveStep":  "b=(2/4)(2/3)=1/3이고 c=(2/4)(1/3)(2/2)=1/6이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "이산확률변수"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_PROBABILITY_MULTIPLICATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  21,
+                      "questionUid":  "",
+                      "primaryMethod":  "앞 문항의 첫 짝수 카드 위치 X=1, 2, 3의 확률 1/2, 1/3, 1/6으로 두 기댓값 E(X), E(X²)를 계산한다.",
+                      "decisiveStep":  "E(X)=5/3, E(X²)=10/3이므로 V(X)=10/3-25/9=5/9이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "분산·표준편차"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  22,
+                      "questionUid":  "",
+                      "primaryMethod":  "확률의 차 p₂-p₁=1/30, p₃-p₂=2/30, p₄-p₃=3/30으로 네 확률을 p₁에 관한 식으로 표시한다.",
+                      "decisiveStep":  "p₁+(p₁+1/30)+(p₁+3/30)+(p₁+6/30)=1에서 p₁=1/6이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률질량함수"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_PROBABILITY_DISTRIBUTION_TABLE"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  23,
+                      "questionUid":  "",
+                      "primaryMethod":  "X²-5X+6≤0을 (X-2)(X-3)≤0으로 풀고 앞 문항의 질량함수에서 X=2, 3의 확률을 더한다.",
+                      "decisiveStep":  "p₂=1/5, p₃=4/15이므로 구하는 확률은 7/15이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "확률분포",
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률질량함수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  24,
+                      "questionUid":  "",
+                      "primaryMethod":  "95% 신뢰구간 길이 23.52를 표본평균 표준편차의 2×1.96배로 나타낸다.",
+                      "decisiveStep":  "σ(X̄)=23.52/3.92=6이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "통계",
+                                      "midUnit":  "통계적 추정",
+                                      "l3":  "모평균 추정",
+                                      "l4":  "신뢰구간"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_CONFIDENCE_INTERVAL_LENGTH"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  }
+              ]
+}

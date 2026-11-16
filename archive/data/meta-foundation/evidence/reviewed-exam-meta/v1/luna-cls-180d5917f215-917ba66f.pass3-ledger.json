@@ -1,0 +1,127 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T13:24:05+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/25_효천고_1학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  2,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "₃Hₙ=(n+2 choose 2)=21이면 (n+2)(n+1)=42이므로 n=5다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  3,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "A에서 P까지는 오른쪽 3칸·위 1칸이라 4경로, P에서 B까지는 1칸씩이라 2경로여서 총 8이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "순열",
+                                      "l4":  "일렬 배열"
+                                  }
+                  },
+                  {
+                      "ordinal":  5,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "파스칼 항등식을 연속 적용하면 좌변은 (n+4 choose 4)이고 (10 choose 4)와 같아 n=6이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  11,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x′=x−2,y′=y−1,z′=z−3로 두면 x′+y′+z′=9의 음이 아닌 정수해 수 (11 choose 2)=55다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_LOWER_BOUND"
+                                        ]
+                  },
+                  {
+                      "ordinal":  12,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "좌변은 (1+7)ⁿ=8ⁿ=2^(3n)이라 2^60과 같으려면 n=20이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "c′=c−d−1로 치환하면 a+b+c′=10의 해 66개가 d=0,1,2,3 각각 가능해 264개다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_UPPER_BOUND",
+                                            "COND_LOWER_BOUND"
+                                        ]
+                  },
+                  {
+                      "ordinal":  14,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "w=1일 때 x+y+z=9는 28개, w=2일 때 합 5는 6개, w≥3은 불가능해 전체 34개다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_POSITIVE",
+                                            "COND_NATURAL_NUMBER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "가능한 (f(2),f(4)) 세 쌍에서 조건을 만족하는 함수 수는 25+25+75=125개다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_INEQUALITY_CONSTRAINT",
+                                            "COND_FUNCTION_VALUE_CONSTRAINT"
+                                        ],
+                      "hold":  "H2-확률과통계 표의 rpmPath에는 함수의 개수를 세는 순열과 조합 분류 칸이 없어, 일렬 배열 등 다른 방식의 경로로 대체하지 않고 rpmPath.l3·rpmPath.l4를 보류함."
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "각 색을 하나씩 고른 뒤 4변수 합≤15 경우 816에서 노랑이 13개 초과하는 10경우를 빼면 806이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l4":  "중복을 허용한 선택"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_MINIMUM_CATEGORY_COUNTS",
+                                            "COND_UPPER_BOUND"
+                                        ]
+                  },
+                  {
+                      "ordinal":  21,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "계수 비교 후 a(n−2)=15이고 가능한 쌍의 an은 45,25,21,17이므로 최댓값은 45다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER",
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "a,b,c의 비감소 조합은 a 홀수 조건에서 10+3=13개이고 d,e 조합은 d 짝수 조건에서 5+3+1=9개라 총 117개다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_RANGE",
+                                            "COND_ODD"
+                                        ]
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "치역 세 값 중 반복값과 치역 선택이 가능한 8가지이고 각 함숫값 배열은 4!/2!=12가지라 96개다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "conditionKeys":  [
+                                            "COND_ODD_SELECTED_SUM"
+                                        ]
+                  }
+              ]
+}

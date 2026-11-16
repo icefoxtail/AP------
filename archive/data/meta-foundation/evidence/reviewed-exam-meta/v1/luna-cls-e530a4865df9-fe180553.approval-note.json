@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-e530a4865df9-fe180553",
+  "sourceArchiveFile": "similar/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제.js",
+  "createdAt": "2026-11-15T19:37:54.813Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "sourceBlobSha1": "9b8383385fca436195bb860e6d093f8cc948fac3",
+  "ledgers": [
+    {
+      "role": "pass1",
+      "source": "A-out/ledgers/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제.json",
+      "sourceSha256": "827cc5324f023eec468b27ac23ca75c16537b96561de9b4277881b2b4f3e31d8",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-e530a4865df9-fe180553.pass1-ledger.json",
+      "repoSha256": "1bbb56f98c9184d5d9640dd2f1ef2116cc892daceff910aba1d8aac9b14b659d",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass2",
+      "source": "A2-out/ledgers/25_순천여고_2학기_중간_고1_공통수학2_강화유사문제.json",
+      "sourceSha256": "9b777dcd307d13ff8fab34bcb58d6c1dae688525d7c3ce4181d2c4748da134ad",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-e530a4865df9-fe180553.pass2-ledger.json",
+      "repoSha256": "590f2893348a97eafd8be8e24429b0a5d35ff09a192403e27876692439f0a9cb",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/t/ledgers/shard-1-p3-similar-high1-exam-004.json",
+      "sourceSha256": "4e5b7bfc17eac4b9ca32a0d1833789bef7b9d5e829d5b7d6ad66bdfb6f131d7b",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-e530a4865df9-fe180553.pass3-ledger.json",
+      "repoSha256": "4e5b7bfc17eac4b9ca32a0d1833789bef7b9d5e829d5b7d6ad66bdfb6f131d7b",
+      "lineEndingNormalized": false
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/l/ledgers/luna-pass3-shard4-078-suncheon-high1-common2-similar.json",
+      "sourceSha256": "2d496d37aedecf03c6284f59d1955d6bffd32dc2ce2d0ce72d213030e007f91c",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-e530a4865df9-fe180553.pass3-ledger-2.json",
+      "repoSha256": "2d496d37aedecf03c6284f59d1955d6bffd32dc2ce2d0ce72d213030e007f91c",
+      "lineEndingNormalized": false
+    }
+  ],
+  "fieldSources": {
+    "registered": 42,
+    "agree": 73,
+    "p3": 32,
+    "luna-k4": 26,
+    "tera-k67": 16
+  },
+  "itemSources": {
+    "registered+agree+p3+luna-k4": 5,
+    "registered+agree+tera-k67": 3,
+    "registered+agree+p3+tera-k67": 3,
+    "registered+agree+luna-k4": 4,
+    "registered+p3+luna-k4": 1,
+    "registered+p3+tera-k67": 2
+  },
+  "typeHoldQuestions": 10,
+  "idWarnings": []
+}

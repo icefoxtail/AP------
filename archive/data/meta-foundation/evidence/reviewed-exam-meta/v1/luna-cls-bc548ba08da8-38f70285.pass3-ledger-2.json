@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T16:18:00+09:00",
+  "sourceArchiveFile": "types/high/h2/비상_대수_사인코사인법칙_익힘책_고2_유형확인.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass2",
+      "resolutionReason": "−11π/3=60°와 같은 동경이고 나머지 네 각은 300°와 같은 동경이라 하나만 다르다.",
+      "choiceTableUsed": "H2-대수.json",
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass1",
+      "resolutionReason": "사인비 3:5:7에서 cos C=−1/2, sin C=√3/2이므로 가장 긴 변 c=2·7·sin C=7√3이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l3": "코사인법칙"
+      },
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 11,
+      "chosenFrom": "pass2",
+      "resolutionReason": "cos C=1/5에서 sin C=2√6/5이므로 넓이는 1/2·5·6·2√6/5=6√6이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass2",
+      "resolutionReason": "탑의 밑동이 두 지점 사이이므로 h/√3+h=10이고 h=10√3/(√3+1)이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "pass2",
+      "resolutionReason": "최댓값 5와 최솟값 −1에서 a=3,c=2, 주기 4π에서 b=1/2라 abc=3이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "resolutionReason": "내분점 OP=3r/4와 중점 OQ=r/2를 넓이 공식에 넣어 r=4를 얻는다.",
+      "choiceTableUsed": "H2-대수.json",
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass2",
+      "resolutionReason": "cosθ=8/10=4/5이므로 cos2θ=2(4/5)²−1=7/25다.",
+      "choiceTableUsed": "H2-대수.json",
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 16,
+      "chosenFrom": "pass1",
+      "resolutionReason": "b=k,c=2k와 R=√7에서 k=√3이므로 넓이는 1/2·k·2k·sin120°=3√3/2다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l3": "삼각형의 넓이",
+        "l4": "두 변과 끼인각"
+      },
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 3,
+      "chosenFrom": "pass2",
+      "resolutionReason": "두 분수를 통분하면 2/sinθ=−4이므로 sinθ=−1/2다.",
+      "choiceTableUsed": "H2-대수.json",
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass1",
+      "resolutionReason": "cos(−7π/3)=1/2, sin(11π/6)=−1/2, tan(9π/4)=1이어서 합은 1이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l3": "삼각함수의 성질",
+        "l4": "주기·대칭"
+      },
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 5,
+      "chosenFrom": "pass1",
+      "resolutionReason": "|sin(x/2)|의 주기는 기본 주기 4π의 절반인 2π라 해당 함수만 맞다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "midUnit": "삼각함수",
+        "l3": "삼각함수의 성질",
+        "l4": "주기·대칭"
+      },
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "pass2",
+      "resolutionReason": "대칭각 쌍과 여각 관계로 계산하면 세 보기의 값은 각각 −1,5,1이어서 모두 옳다.",
+      "choiceTableUsed": "H2-대수.json",
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "resolutionReason": "2cos²x−cosx−1=0에서 cosx=1 또는 −1/2이며 [0,2π)에서 해는 1+2=3개다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass2",
+      "resolutionReason": "구간별 해 끝점은 π/3,2π/3,4π/3,5π/3이고 합은 4π다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass2",
+      "resolutionReason": "∠C=60°에서 12/sin60°=2R이므로 R=4√3이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "hold": "integrationPattern 값 목록이 H2-대수.json에 없어 NONE/SEQUENTIAL/CASE_BRANCH 중에서 추정하지 않고 보류한다."
+    }
+  ]
+}

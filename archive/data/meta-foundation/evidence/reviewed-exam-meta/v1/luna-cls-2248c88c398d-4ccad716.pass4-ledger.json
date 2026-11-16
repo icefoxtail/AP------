@@ -1,0 +1,47 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T22:18:17.705+00:00",
+ "sourceArchiveFile": "similar/high/h1/1final/25_금당고_1학기_기말_고1_심화.js",
+ "items": [
+  {
+   "ordinal": 2,
+   "chosenFrom": "new",
+   "resolutionReason": "N=2^a·3^b에서 (a+1)(b+1)=12와 약수의 합이 1000보다 큰 최소 N=486 (합 1092)을 구하는 약수의 개수와 합 문제인데 공통수학1 표에 약수 항목이 없다.",
+   "choiceTableUsed": "H1-공통수학1.json",
+   "rpmPath": {
+    "majorUnit": "",
+    "midUnit": "",
+    "l3": "",
+    "l4": ""
+   },
+   "hold": "신규 제안: 공통수학1 표에 약수의 개수와 총합 경로가 없음.",
+   "proposedNew": {
+    "rpmPath.majorUnit": {
+     "value": "정수의 성질",
+     "label": "정수의 성질",
+     "parent": "(최상위)",
+     "why": "가장 가까운 '경우의 수'는 개수를 세는 단원이지만 이 문항은 소인수분해로 약수의 개수와 합을 다룬다."
+    },
+    "rpmPath.midUnit": {
+     "value": "약수와 배수",
+     "label": "약수와 배수",
+     "parent": "정수의 성질",
+     "why": "가장 가까운 '인수분해'는 다항식의 인수이고 이 문항은 자연수 N의 약수를 다룬다."
+    },
+    "rpmPath.l3": {
+     "value": "약수의 개수와 총합",
+     "label": "약수의 개수와 총합",
+     "parent": "정수의 성질 > 약수와 배수",
+     "why": "가장 가까운 '인수분해의 활용'은 수의 계산에 쓰는 인수분해이고 이 문항은 약수의 개수 공식과 합 공식이다."
+    },
+    "rpmPath.l4": {
+     "value": "소인수분해를 이용한 약수의 개수와 합",
+     "label": "소인수분해를 이용한 약수의 개수와 합",
+     "parent": "정수의 성질 > 약수와 배수 > 약수의 개수와 총합",
+     "why": "가장 가까운 '수의 계산'은 인수분해로 수를 계산하는 것이지만 이 문항은 N=2^a·3^b의 지수 조합을 찾는다."
+    }
+   }
+  }
+ ]
+}

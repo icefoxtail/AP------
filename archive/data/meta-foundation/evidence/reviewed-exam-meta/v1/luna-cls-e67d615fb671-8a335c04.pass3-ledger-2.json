@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T13:38:23+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/25_순천여고_1학기_중간_고2_대수.js",
+  "items": [
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass2",
+      "resolutionReason": "3/4<n<3/2인 정수는 1뿐이므로 θ=2π/3이고 p−q=1이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "rpmPath": {
+        "l4": "일반각"
+      }
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "resolutionReason": "0<k<3이면 네 교점이지만 k=f(0)=3일 때 가운데 두 교점이 하나가 되어 세 실근을 갖는다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT",
+        "COND_PIECEWISE_DOMAIN_PARTITION"
+      ]
+    },
+    {
+      "ordinal": 16,
+      "chosenFrom": "pass2",
+      "resolutionReason": "5≤n≤14에서 2f(n)=f(n+1)은 f(n)=1, f(n+1)=2인 n=11,13에서만 성립하여 합은 24이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_NATURAL",
+        "COND_RANGE"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass2",
+      "resolutionReason": "1<a<b이므로 logₐb=2여서 b=a², a³=2⁹이고 목표 식은 (1/3)²·6=2/3이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_INEQUALITY_CONSTRAINT"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass2",
+      "resolutionReason": "3n=99이면 (1,2)에 한 교점, 봉우리 3부터 97까지 각각 두 교점, 99에 한 교점으로 1+96+1=98이 되어 n=33이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT",
+        "COND_NATURAL"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "pass2",
+      "resolutionReason": "3−a=a/2에서 a=2이고 오른쪽 영점 8과 거리가 5인 왼쪽 영점은 3이므로 b⁻³=2, (ab)³=4이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_PIECEWISE_DOMAIN_PARTITION"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass2",
+      "resolutionReason": "꼭짓점 t=1에서 최솟값 −9, 끝점 t=4에서 최댓값 0이므로 b=0, a=2이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_RANGE"
+      ]
+    },
+    {
+      "ordinal": 22,
+      "chosenFrom": "pass2",
+      "resolutionReason": "20(log9.5−1)=−0.4460=0.5540−1이므로 비율은 3.581·10⁻¹=0.3581이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l4": "소수점 위치"
+      }
+    },
+    {
+      "ordinal": 23,
+      "chosenFrom": "pass2",
+      "resolutionReason": "공통값은 −5이므로 b=a, c=a^(−1/5)이고 bc=a^(4/5)≤200인 자연수 조건에서 a=2⁵,3⁵만 남아 합은 275이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "conditionKeys": [
+        "COND_NATURAL",
+        "COND_UPPER_BOUND"
+      ],
+      "rpmPath": {
+        "l4": "밑의 변환"
+      }
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "resolutionReason": "4^(log₂3)=3²=9이고 나머지는 −2, 3/2, 3/2, 6이므로 세 번째가 가장 크다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l4": "곱·몫·거듭제곱"
+      }
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass2",
+      "resolutionReason": "f(a+2)=log₂2+2=3=a+4이므로 a=−1이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l4": "평행이동"
+      }
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass2",
+      "resolutionReason": "주어진 좌변이 sinθ로 정리되어 sinθ=1/2이고 cosθ=−√3/2이다.",
+      "choiceTableUsed": "H2-대수.json",
+      "rpmPath": {
+        "l3": "삼각함수의 성질",
+        "l4": "삼각함수 관계"
+      }
+    }
+  ]
+}
