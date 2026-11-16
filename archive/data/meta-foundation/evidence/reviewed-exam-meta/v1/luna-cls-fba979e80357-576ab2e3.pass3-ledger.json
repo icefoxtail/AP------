@@ -1,0 +1,60 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T20:46:26+09:00",
+    "sourceArchiveFile":  "original/high/h2/1final/23_매산고_1학기_기말_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "resolutionReason":  "모집단 N(56,15²)에서 25개를 뽑은 합 X는 N(1400,75²)이어서 1325≤X≤1550은 표준화하면 −1≤Z≤2이고 확률은 0.8185다.",
+                      "chosenFrom":  "pass1",
+                      "ordinal":  10,
+                      "subUnitKey":  "H15-PS-05-PROBABILITY_DISTRIBUTION",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "resolutionReason":  "매 시행에서 A의 공 개수는 짝수 눈이 한 사람에게만 나올 때 ±1, 두 눈의 홀짝이 같을 때 0만큼 바뀌므로 독립 시행의 처음 도달 확률을 센다.",
+                      "chosenFrom":  "pass2",
+                      "ordinal":  12,
+                      "subUnitKey":  "H15-PS-04-INDEPENDENCE",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "subUnitKey":  "H15-PS-05-PROBABILITY_DISTRIBUTION",
+                      "rpmPath":  {
+                                      "l4":  "표준정규분포"
+                                  },
+                      "resolutionReason":  "70점 이상 비율 0.023은 Z=2 꼬리이고 65~70점 비율 0.044는 Z=1.5와 2 사이이므로 두 경계식에서 σ=10,m=50을 얻어 m−σ=40이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "ordinal":  14,
+                      "chosenFrom":  "pass1"
+                  },
+                  {
+                      "resolutionReason":  "X~B(120,1/6)의 평균은 120·1/6=20, 분산은 120·1/6·5/6=50/3이므로 곱은 1000/3이다.",
+                      "chosenFrom":  "pass1",
+                      "ordinal":  2,
+                      "subUnitKey":  "H15-PS-05-PROBABILITY_DISTRIBUTION",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "resolutionReason":  "폭이 6인 정규분포 구간의 확률은 중심 t+3이 평균 m에 가까울수록 크고 f(5)\u003cf(17)\u003cf(9)에서 14\u003cm\u003c16이므로 자연수 m=15다.",
+                      "chosenFrom":  "pass1",
+                      "ordinal":  20,
+                      "subUnitKey":  "H15-PS-05-PROBABILITY_DISTRIBUTION",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "resolutionReason":  "P(X≤6)=P(X≥14)는 평균 m을 중심으로 6과 14가 대칭임을 뜻하므로 m=(6+14)/2=10이다.",
+                      "chosenFrom":  "pass1",
+                      "ordinal":  3,
+                      "subUnitKey":  "H15-PS-05-PROBABILITY_DISTRIBUTION",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  },
+                  {
+                      "resolutionReason":  "P(X≤60)=0.2743은 표준정규표에서 z=−0.6에 해당하므로 (60−m)/5=−0.6을 풀어 m=63이다.",
+                      "chosenFrom":  "pass1",
+                      "ordinal":  9,
+                      "subUnitKey":  "H15-PS-05-PROBABILITY_DISTRIBUTION",
+                      "choiceTableUsed":  "H2-확률과통계.json"
+                  }
+              ]
+}
