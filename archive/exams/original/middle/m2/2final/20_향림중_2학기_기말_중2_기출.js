@@ -642,7 +642,7 @@ window.questionBank = [
     "projectionStatus": "PROJECTION_REUSE",
     "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
     "problemTypeKey": "PT_SIMILAR_FIGURES",
-    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+    "templateKey": "TPL_SIMILAR_FIGURES_CORRESPONDENCE_STATEMENT_JUDGMENT",
     "crossConceptKeys": [
       "CC_SIMILAR_FIGURES_AREA_VOLUME"
     ],
@@ -1354,8 +1354,8 @@ window.questionBank = [
     "semanticScopeRelation": "CURRENT_SCOPE",
     "projectionStatus": "PROJECTION_REUSE",
     "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
-    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+    "problemTypeKey": "PT_M2_PARALLELOGRAM_OPPOSITE_SIDES_PROOF",
+    "templateKey": "TPL_M2_PARALLELOGRAM_OPPOSITE_SIDES_DIAGONAL_ASA",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",

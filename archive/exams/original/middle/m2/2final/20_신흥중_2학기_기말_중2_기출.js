@@ -845,7 +845,7 @@ window.questionBank = [
     "subUnitConfidence": "current_pass",
     "subUnitClassificationDepth": "complete_documented",
     "problemTypeKey": "PT_COORD_CENTROID",
-    "templateKey": "TPL_CENTROID_APPLICATION",
+    "templateKey": "TPL_CENTROID_NESTED_MEDIAN_AREA_PARTITION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
