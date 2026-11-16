@@ -11,6 +11,8 @@ export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
   Object.freeze({ requestKey: "proposalFinalization", proofKey: "proposalFinalization" }),
   Object.freeze({ requestKey: "retainedFields", proofKey: "retainedNativeFields" }),
   Object.freeze({ requestKey: "scopeFieldBinding", proofKey: "scopeFieldBindings" }),
+  Object.freeze({ requestKey: "m2RendererProof", proofKey: "m2RendererContinuity" }),
+  Object.freeze({ requestKey: "m2ProviderRendererProof", proofKey: "m2ProviderRendererContinuity" }),
   Object.freeze({ requestKey: "retainedScopeTransport", proofKey: "retainedScopeTransport" }),
   Object.freeze({ requestKey: "rationaleContinuity", proofKey: "rationaleContinuity" }),
   Object.freeze({ requestKey: "currentDefinitionApplication", proofKey: "currentDefinitionApplication" }),
@@ -20,11 +22,24 @@ export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
   Object.freeze({ requestKey: "e017RhsContinuity", proofKey: "e017RhsContinuity" }),
 ]);
 
+// A previous native receipt can be lineage evidence for a fresh source
+// reassessment. This only selects the durable proof contract; it grants no
+// approval and must never erase an explicit source-only preservation claim.
+export function hasReviewedReceiptLineage(value) {
+  return value?.scope === "PARTIAL_UIDS" && value.approval?.type === "FINAL_QA" &&
+    !Object.hasOwn(value.approval, "sourceRebind") &&
+    !Object.hasOwn(value, "newMetadataApprovals") && !Object.hasOwn(value, "preservedMetadataApprovals") &&
+    Array.isArray(value.approval.evidenceRefs) && value.approval.evidenceRefs.some(ref =>
+      /^archive\/data\/meta-foundation\/evidence\/reviewed-exam-meta\/v1\/[A-Za-z0-9][A-Za-z0-9_-]{0,100}\.json$/.test(ref?.path || "") &&
+      ref.path !== `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${value.requestId}.json`);
+}
+
 export function reviewedSourceBindingItems(request) {
   if (!Array.isArray(request?.items)) fail("request items required");
+  const lineage = hasReviewedReceiptLineage(request);
   return request.items.filter(patch => REVIEWED_SOURCE_BINDING_OPT_INS.some(({ requestKey }) =>
     patch.sourceReview?.[requestKey] !== undefined) || patch.targetParentRef?.nativeSourceReview !== undefined ||
-    patch.targetParentRef?.retainedScopeParent !== undefined);
+    patch.targetParentRef?.retainedScopeParent !== undefined || (lineage && patch.sourceReview !== undefined));
 }
 
 export function reviewedSourceBindingPath(requestId) {

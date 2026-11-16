@@ -11,6 +11,7 @@ import vm from 'node:vm';
 import {execFileSync, spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {checkStagedRegistrationWhitespace} from './archive-registration-whitespace.mjs';
+import {SEMANTIC_RUN_SCOPE_DIR,resolveSemanticRunScope,semanticRunScopeProof,assertSemanticRunScopeProof,excludesSemanticSource,captureExcludedSemanticRows,assertExcludedSemanticRowsUnchanged,executeFourSlotScopeCheck} from '../../archive/tools/meta-foundation/semantic-run-scope.mjs';
 
 export const VERSION = 'archive-registration-writer-v1';
 export const STATE = '.archive-meta-register/auto/writer-state.json';
@@ -22,6 +23,8 @@ const splitZ = value => value.split('\0').filter(Boolean);
 const git = (root, ...args) => execFileSync('git', args, {cwd:root, encoding:'utf8', maxBuffer:256*1024*1024, stdio:['ignore','pipe','pipe']});
 const read = (root, rel, fallback) => fs.existsSync(path.join(root, rel)) ? JSON.parse(fs.readFileSync(path.join(root, rel), 'utf8')) : fallback;
 const specs = (root, rel) => fs.readFileSync(path.join(root, rel), 'utf8').split(/\r?\n/).map(s=>s.trim()).filter(s=>s&&!s.startsWith('#'));
+const bindSemanticScope=(lanes,scope)=>lanes.map(lane=>lane.id==='semantic'
+  ?{...lane,parameters:{...(lane.parameters||{}),semanticRunScope:semanticRunScopeProof(scope)}}:lane);
 
 // Existing path lists use literal paths, directory prefixes and Git's non-glob-mode `*` (including '/').
 export function matches(file, patterns) {
@@ -73,7 +76,7 @@ function rollbackStaged(root, allowed) {
   }
 }
 
-export function nativeLanes(root) {
+export function nativeLanes(root,runScope=resolveSemanticRunScope(root)) {
   const config=read(root,'.archive-meta-register/auto/config.json',{});
   const parentRetry=canonicalParentRetryRequests(root)[0]||null;
   const shared=specs(root,'tools/ci/archive-pages-registration.paths');
@@ -123,20 +126,26 @@ export function nativeLanes(root) {
         // Reuse its real checks before commit; its old post-push summary names HEAD as registered,
         // so use this writer's accurate PREPARED summary and the push helper's exact SHA instead.
         ?[{...cmd('bash','tools/ci/verify-registered-consumer-approval.sh'),env:{GITHUB_STEP_SUMMARY:'/dev/null'}}]:[]},
-    {id:'semantic',inputs:[...code,...registration,...canonicalParentRetryDependencies(root),'.archive-meta-register/auto/config.json','.archive-meta-register/auto/state.json',
+    {id:'semantic',inputs:[...code,...registration,SEMANTIC_RUN_SCOPE_DIR,...canonicalParentRetryDependencies(root),'.archive-meta-register/auto/config.json','.archive-meta-register/auto/state.json',
       'tools/ci/archive-main-auto-meta-pass.sh','tests/archive-question-identity-contract.test.mjs',
       'tests/archive-question-identity-runtime.test.mjs'],outputs:auto,enabled:config.enabled===true,
+      parameters:{semanticRunScope:semanticRunScopeProof(runScope)},
       commands:[{...cmd('bash','tools/ci/archive-main-auto-meta-pass.sh'),...(parentRetry?{env:{ARCHIVE_CANONICAL_PARENT_RETRY_REQUEST:parentRetry.path,ARCHIVE_CANONICAL_PARENT_RETRY_SHA256:parentRetry.sha256}}:{})}],
       finalCommands:({env})=>fs.existsSync(path.join(env.RUNNER_TEMP,'archive-main-auto-meta/report.json'))
         ?[cmd('node','archive/tools/meta-foundation/auto-register-merged-source.mjs','--verify','--report',path.join(env.RUNNER_TEMP,'archive-main-auto-meta/report.json'))]:[],
       continuation:({root,env})=>{
+        const scope=resolveSemanticRunScope(root);
         const pending=read(root,'.archive-meta-register/auto/state.json',{pending:{}}).pending||{};
         const report=read(env.RUNNER_TEMP,'archive-main-auto-meta/report.json',{results:[]});
+        assertSemanticRunScopeProof(report.runScope,scope);
         const attempted=new Set((report.results||[]).map(r=>`${r.sourceArchiveFile}#${r.sourceOrdinal}`));
         // Early native refusals can have no attemptSignature (for example a removed target). They
         // are still observed pending debt, not an unprocessed batch: retry only entries absent from
         // this exact run's results, otherwise stable refusals would rebuild forever on identical input.
-        return canonicalParentRetryRequests(root).length>0||Object.keys(pending).some(key=>!attempted.has(key));
+        // Excluded debt remains in pending and is reported separately. A later
+        // consumed-inbox HEAD has an unscoped parameter fingerprint and resumes
+        // the default policy; the current batch must not spin on deferred work.
+        return canonicalParentRetryRequests(root).length>0||Object.entries(pending).some(([key,target])=>!excludesSemanticSource(scope,target.sourceArchiveFile)&&!attempted.has(key));
       }},
     {id:'shared',inputs:[...code,...registration,'archive/assets/','archive/data/generated-lite-consumer/v1/',
       'archive/db.js','archive/question-index.js','archive/question-identity.js'],outputs:shared,required:true,
@@ -272,27 +281,44 @@ export function renderRegistrationSummary(result) {
 }
 
 // Recovery checks only the checked-out snapshot. It does not fetch main, run producers or edit Git data.
-export function checkRegistration({root=ROOT,work,lanes=nativeLanes(root),env=process.env}={}) {
+export function checkRegistration({root=ROOT,work,lanes,env=process.env}={}) {
   root=path.resolve(root);assertClean(root);
+  const inputSha=git(root,'rev-parse','HEAD').trim(),directory=work?evidenceDir(root,work,env):null;
+  if(directory)writeEvidence(directory,{schemaVersion:VERSION,mode:'check',inputSha,status:'CHECKING',safeToPersist:false,registrationReady:false,changedPaths:[]});
+  let runScope;try{runScope=resolveSemanticRunScope(root);lanes=bindSemanticScope(lanes??nativeLanes(root,runScope),runScope);}catch(error){
+    if(directory)writeEvidence(directory,{schemaVersion:VERSION,mode:'check',inputSha,status:'SCOPE_REJECTED',safeToPersist:false,registrationReady:false,error:error.message,changedPaths:[]});
+    throw error;
+  }
   const assessment=assess(indexRows(root),stateAt(root),lanes);
-  const report={schemaVersion:VERSION,mode:'check',inputSha:git(root,'rev-parse','HEAD').trim(),...assessment,
+  const report={schemaVersion:VERSION,mode:'check',inputSha,...assessment,semanticRunScope:semanticRunScopeProof(runScope),
     registrationReady:assessment.publishable,safeToPersist:false,changedPaths:[],
     status:assessment.needed?(assessment.publishable?'REGISTRATION_PARTIAL':'REGISTRATION_REQUIRED'):'REGISTERED'};
   if(work)writeEvidence(evidenceDir(root,work,env),report);
   return report;
 }
 
-export async function prepareRegistration({root=ROOT,work,execute=executeCommands,lanes=nativeLanes(root),env=process.env}={}) {
+export async function prepareRegistration({root=ROOT,work,execute=executeCommands,lanes,env=process.env}={}) {
   root=path.resolve(root);assertClean(root);
   if(env.GITHUB_ACTIONS==='true'&&(env.GITHUB_EVENT_NAME==='pull_request'||env.GITHUB_REF!=='refs/heads/main'))throw Error('MAIN_ONLY_WRITER');
-  if(new Set(lanes.map(l=>l.id)).size!==lanes.length||lanes.some((l,i)=>l.id==='fourSlot'&&i!==lanes.length-1))throw Error('INVALID_LANE_ORDER');
   work=evidenceDir(root,work,env);
-  const inputSha=git(root,'rev-parse','HEAD').trim(),before=indexRows(root),old=stateAt(root);
-  const initialSeals=read(root,'archive/data/meta-foundation/crosswalks/sealed-digests.v1.json',{entries:[]});
-  const allOutputs=unique(lanes.flatMap(l=>l.outputs));
+  const inputSha=git(root,'rev-parse','HEAD').trim();
   const report={schemaVersion:VERSION,mode:'prepare',inputSha,status:'PREPARING',safeToPersist:false,registrationReady:false,
     sourceMutation:0,independentReviewClaim:false,lanes:[],changedPaths:[]};
   writeEvidence(work,report); // An interrupted retry cannot leave an earlier attempt's publishable report.
+  let runScope,excludedBefore;
+  try{
+    runScope=resolveSemanticRunScope(root);lanes=bindSemanticScope(lanes??nativeLanes(root,runScope),runScope);
+    excludedBefore=captureExcludedSemanticRows(root,runScope);
+    report.semanticRunScope=semanticRunScopeProof(runScope);
+    if(excludedBefore)report.excludedScopeBefore={counts:excludedBefore.counts,digest:excludedBefore.digest,
+      excludedPendingCount:Object.keys(excludedBefore.excludedPending).length,pendingDigest:excludedBefore.pendingDigest};
+  }catch(error){
+    Object.assign(report,{status:'SCOPE_REJECTED',error:error.message});writeEvidence(work,report);throw error;
+  }
+  if(new Set(lanes.map(l=>l.id)).size!==lanes.length||lanes.some((l,i)=>l.id==='fourSlot'&&i!==lanes.length-1))throw Error('INVALID_LANE_ORDER');
+  const before=indexRows(root),old=stateAt(root);
+  const initialSeals=read(root,'archive/data/meta-foundation/crosswalks/sealed-digests.v1.json',{entries:[]});
+  const allOutputs=unique(lanes.flatMap(l=>l.outputs));
   const next={schemaVersion:VERSION,lanes:{...old.lanes},blockedLanes:[]};
   const laneState=new Map();
   // A retry gets fresh native reports; an earlier attempt's PASS may never certify the new snapshot.
@@ -301,7 +327,7 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
     GITHUB_STEP_SUMMARY:path.join(work,'native-step-summary.md'),
     NODE_OPTIONS:env.NODE_OPTIONS||'--max-old-space-size=6144'};
   fs.mkdirSync(writerEnv.RELEASE_EVIDENCE_DIR,{recursive:true});
-  let sharedPassed=true,finalChecked=false;
+  let sharedPassed=true,finalChecked=false,checkedFourSlotPass;
   const environmentFor=(lane,record,rows=indexRows(root))=>{
     if(!lane.scopedInputs)return writerEnv;
     const scopedInputDigest=fingerprint(rows,lane.scopedInputs);
@@ -382,12 +408,15 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
     const started=Date.now();
     try {
       const executionEnv=environmentFor(lane,record,current);
-      const result=await execute({root,work,lane,env:executionEnv,prior:laneState});
+      const checked=await executeFourSlotScopeCheck({root,scope:runScope,lane,env:executionEnv,
+        execute:env=>execute({root,work,lane,env,prior:laneState})});
+      const result=checked.result;
       const files=unstaged(root);guardFiles(files,lane.outputs,lane.id.toUpperCase());stage(root,files);
       checkPreserved(root,before,initialSeals);
       Object.assign(record,{status:'VERIFIED',durationMs:Date.now()-started,changedCount:files.length,advisories:result?.advisories||[],
         verifiedInputDigest:inputFingerprint(indexRows(root),lane),verifiedOutputDigest:fingerprint(indexRows(root),lane.outputs),
         needsContinuation:lane.continuation?lane.continuation({root,env:executionEnv}):false});
+      if(lane.id==='fourSlot')checkedFourSlotPass=checked.checkedFourSlotPass;
     } catch(error) {
       // Unexpected source writes are never waived or hidden behind lane isolation.
       if(/^UNEXPECTED_|^IMMUTABLE_|^EXISTING_CROSSWALK/.test(error.message))throw error;
@@ -421,6 +450,10 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   guardFiles(changed(root),[...allOutputs,STATE],'TRANSACTION');
   if(unstaged(root).length)throw Error('UNSTAGED_TRANSACTION_OUTPUT');
   try {
+    const currentScope=resolveSemanticRunScope(root);
+    if(currentScope.active&&currentScope.head!==inputSha)throw Error('SEMANTIC_RUN_SCOPE_HEAD_DRIFT');
+    assertSemanticRunScopeProof(report.semanticRunScope,currentScope);
+    report.excludedScopeGuard=assertExcludedSemanticRowsUnchanged(root,currentScope,excludedBefore,{checkedFourSlotPass});
     report.whitespace=checkStagedRegistrationWhitespace(root);
     checkPreserved(root,before,initialSeals);
   } catch(error) {

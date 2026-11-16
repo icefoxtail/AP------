@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "pr2224-ci80-exact-failure-diagnosis-v1",
+  "head": "80c1f48781c53a0ebbf1b4366a1557a25d4ef439",
+  "main": "4b504e10b1ce7a90576486663b3862ef99922325",
+  "exactCiMerge": "be04cb758c6a25e3231050e0ab0de6d1fc9b4794",
+  "runId": 43806677632,
+  "jobId": 133100431191,
+  "jobUrl": "https://github.com/icefoxtail/AP------/actions/runs/43806677632/job/133100431191",
+  "ciResult": "FAIL",
+  "testFilesPassed": 385,
+  "testFilesFailed": 2,
+  "existingQuarantinedFiles": 8,
+  "newQuarantines": 0,
+  "registrationPreparationProof": "PASS",
+  "studentSearchVisibility": "PASS",
+  "otherWorkflowResults": {
+    "Problem Bank Shared Meta": "PASS",
+    "Archive Main Auto Metadata": "PASS",
+    "Archive2 Runtime Guard": "PASS"
+  },
+  "failureExcerpt": {
+    "path": ".tmp/pr2224-ci80-failure-excerpt.log",
+    "sha256": "818e386567e854eaa556b925631a8028194c2d652ca8edfeef51e43c8d56d1e2",
+    "bytes": 7749
+  },
+  "fullJobLogToolReadCharacters": 2746533,
+  "failures": [
+    {
+      "test": "meta-foundation-middle-geometry-runtime.test.js",
+      "kind": "NATIVE_RECEIPT_VERIFICATION_NULL",
+      "questionUid": "qid_v1_04ffcbf3befa26a307a87e5037cafd0ffecf7cf1e30a57b5dcbf25aeabb24fff",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 4,
+      "timeoutFailure": false,
+      "status": "EXACT_GUARD_DIAGNOSIS_IN_PROGRESS"
+    },
+    {
+      "test": "tests/archive-ci-scope.test.mjs",
+      "kind": "STALE_TEST_EXPECTATION_AFTER_MAIN_PR2263_MEASURED_BUDGET",
+      "actualNativePreviewBudget": 300000,
+      "staleExpectedBudget": 60000,
+      "productionBudgetModified": false,
+      "fix": "Bind native-preview to the existing main budget in both full/scoped registry assertions",
+      "targetedCheck": "PASS 1/1",
+      "wholeSuiteRerun": false
+    }
+  ]
+}

@@ -7,15 +7,18 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { loadPatterns } from './push-touches-paths.mjs';
+import { beginSemanticRunScopeGuard, finishSemanticRunScopeGuard } from '../../archive/tools/meta-foundation/semantic-run-scope.mjs';
 import { selectNativeRequests, selectPendingNativeRequests, pendingNativeRequestPaths, applyNativeRequests,
   verifyNativeRequests, nativeOutputManifest, emptyNativePreview } from './archive-pr-native-preview.mjs';
 
 const SHA = /^[0-9a-f]{40}$/i;
+const preparationScopeGuards = new WeakMap();
 const INPUTS = [
   // Archive producers import shared runtime modules and canonical data. Until a
   // dependency is classified explicitly, rebuild conservatively in the runner.
   /^archive\//,
   /^\.archive-meta-register\/inbox\/[^/]+\.json$/,
+  /^\.archive-meta-register\/auto\/run-scopes\/[^/]+\.json$/,
   /^docs\/rules\/01_CANONICAL\/taxonomy\//,
   /^tools\/ci\/(?:archive-pr-registration-prepare\.mjs|archive-pr-native-preview\.mjs|archive-pages-registration\.paths|push-touches-paths\.mjs)$/,
 ];
@@ -57,14 +60,20 @@ export function preparePrRegistration({ root = process.cwd(), eventName, event, 
     ? selectNativeRequests({ root, baseSha, headSha }) : selectPendingNativeRequests({ root, headSha });
   const report = { baseSha, inputHeadSha, headSha, changedPathCount: paths?.length ?? null,
     ...(eventName === 'push' ? { pendingRequestPaths: pendingPaths } : {}) };
+  const semanticGuard = beginSemanticRunScopeGuard(root);
+  const complete = result => {
+    preparationScopeGuards.set(result, { root: path.resolve(root), semanticGuard });
+    result.semanticRunScope = completePrRegistrationSemanticScope(root, result);
+    return result;
+  };
   if (!registrationInputsChanged(paths) && !pendingPaths.length && !requests.length) {
-    return { ...report, state: 'NO_OP', reason: 'no registration input changed in the fixed source snapshot' };
+    return complete({ ...report, state: 'NO_OP', reason: 'no registration input changed in the fixed source snapshot' });
   }
   // This command is for a disposable CI checkout. Never overwrite local unfinished work.
   if (git(['status', '--porcelain', '-z', '--untracked-files=all']).length) throw new Error('temporary registration preparation requires a clean CI checkout');
   const nativePreview = emptyNativePreview();
   nativePreview.requests = requests;
-  nativePreview.plans = applyNativeRequests({ root, requests: nativePreview.requests, run });
+  nativePreview.plans = applyNativeRequests({ root, requests: nativePreview.requests, run, semanticGuard });
   run(process.execPath, ['archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs', '--write'], root, true);
   if (nativePreview.requests.length) run(process.execPath, ['archive/tools/meta-foundation/compile-meta-foundation.mjs', '--write'], root, true);
   // Match the official reviewed-meta writer's bounded fixed-point recovery.
@@ -93,7 +102,15 @@ export function preparePrRegistration({ root = process.cwd(), eventName, event, 
   const nativePaths = new Set(nativePreview.plans.flatMap(plan => plan.plannedPaths));
   const unexpected = generated.filter(file => !nativePaths.has(file) && !allowed.some(re => re.test(file.normalize('NFC'))));
   if (unexpected.length) throw new Error(`registration preparation changed non-derived files: ${unexpected.join(', ')}`);
-  return { ...report, state: 'PREPARED', reason: pendingPaths.length ? 'fixed main snapshot has pending native registration' : paths ? 'registration input changed' : 'scope unavailable; conservative registration build', generatedPaths: generated, nativePreview };
+  return complete({ ...report, state: 'PREPARED', reason: pendingPaths.length ? 'fixed main snapshot has pending native registration' : paths ? 'registration input changed' : 'scope unavailable; conservative registration build', generatedPaths: generated, nativePreview });
+}
+
+// The producer calls this again after its final catalog stabilization/checks.
+// A submitted JSON report cannot supply or replace the private initial snapshot.
+export function completePrRegistrationSemanticScope(root, prepared) {
+  const context = preparationScopeGuards.get(prepared);
+  if (!context || context.root !== path.resolve(root)) throw Error('SEMANTIC_RUN_SCOPE_PRIVATE_PREPARATION_REQUIRED');
+  return finishSemanticRunScopeGuard(root, context.semanticGuard);
 }
 
 function main() {

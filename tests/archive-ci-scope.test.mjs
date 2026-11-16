@@ -150,7 +150,7 @@ test('long native suites retain bounded identical full and scoped budgets withou
       __dirname:path.join(repo,'tools'),process:{argv:['node','run-tests.js'],env:{}},
       require:name=>name==='child_process'?{spawnSync(){throw Error('registry inspection must not execute commands');}}:createRequire(import.meta.url)(name),
     });
-  for(const [file,timeout] of [['tests/archive-main-merge-meta.test.mjs',300000],['tests/meta-foundation-middle-geometry-runtime.test.js',300000],['tests/archive2-compose-scope.test.js',180000],['tests/item-4slot-m3-renderer-hold.test.cjs',60000]]) {
+  for(const [file,timeout] of [['tests/archive-main-merge-meta.test.mjs',300000],['tests/archive-pr-native-preview.test.mjs',300000],['tests/meta-foundation-middle-geometry-runtime.test.js',300000],['tests/archive2-compose-scope.test.js',180000],['tests/item-4slot-m3-renderer-hold.test.cjs',60000]]) {
     const matches=registry.filter(command=>command.args.includes(file));assert.equal(matches.length,1,file);assert.equal(matches[0].timeout,timeout,file);
     const selected=selectTechnicalCommands(classifyPaths(['tools/ci/archive-registration-writer.mjs']),registry).filter(command=>command.args.includes(file));
     assert.equal(selected.length,1,`scoped command: ${file}`);assert.equal(selected[0].timeout,timeout,file);
@@ -159,6 +159,28 @@ test('long native suites retain bounded identical full and scoped budgets withou
   assert.ok(registry.every(command=>Number.isSafeInteger(command.timeout)&&command.timeout>0&&command.timeout<=300000));
   assert.equal((text.match(/timeout: jsTestTimeout\(file\)/g)||[]).length,2,'full and scoped JS use the same bounded mapping');
   assert.equal((text.match(/timeout: command\.timeout \?\? 60000/g)||[]).length,2,'full and scoped explicit commands preserve per-command defaults');
+});
+
+test('exact repair commands cover every unchanged fixture name once in full and scoped plans', async () => {
+  const text=read('tools/run-tests.js'),boundary=text.indexOf('\nif (args.length) {\n  const { runScopedTests }');
+  const registry=await vm.runInNewContext(text.slice(0,boundary)+
+    '\nreturn requiredCommands.map(command=>({...command,timeout:command.timeout??60000}));\n}\nmain();',{
+      __dirname:path.join(repo,'tools'),process:{argv:['node','run-tests.js'],env:{}},
+      require:name=>name==='child_process'?{spawnSync(){throw Error('registry inspection must not execute commands');}}:createRequire(import.meta.url)(name),
+    });
+  const file='tests/item-4slot-m2s2-current-repair-closure.test.cjs';
+  const commands=registry.filter(command=>command.args.includes(file));
+  assert.equal(commands.length,4);assert.ok(commands.every(command=>command.timeout===60000));
+  const names=[],fixtureRequire=createRequire(path.join(repo,file));
+  vm.runInNewContext(read(file),{require:name=>name==='node:test'?{test(name){names.push(name);}}:fixtureRequire(name)});
+  assert.equal(names.length,new Set(names).size);assert.ok(names.length>0);
+  const counts=commands.map(()=>0);
+  for(const name of names){const matches=commands.map((command,index)=>({index,pattern:command.args[command.args.indexOf('--test-name-pattern')+1]})).filter(x=>new RegExp(x.pattern).test(name));assert.equal(matches.length,1,name);counts[matches[0].index]++;}
+  assert.ok(counts.every(n=>n>0));assert.equal(counts.reduce((a,b)=>a+b,0),names.length);
+  for(const groups of [['metadata'],['registration'],['output']]){
+    const selected=selectTechnicalCommands({groups},registry).filter(command=>command.args.includes(file));
+    assert.equal(selected.length,4,groups.join(','));assert.ok(selected.every(command=>command.timeout===60000));
+  }
 });
 
 test('the production test registry retains its P2/P3 additions and supplies the scoped runner once', async () => {

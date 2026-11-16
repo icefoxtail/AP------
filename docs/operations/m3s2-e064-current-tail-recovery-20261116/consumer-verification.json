@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "m3s2-e064-current-tail-full-consumer-v1",
+  "status": "PASS",
+  "head": "65a0f805661bd9f22190ad5d901e8d1b77914c90",
+  "actualMain": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "codePatch": {
+    "path": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+    "sha256": "09bc03280c922601417dc2b78229ccf0bb68eee215d628c50aeda85587ae2e6d"
+  },
+  "frozenCodeCommit": "e6e6046b38cf97e0c01c90785a8c42f30127dd4e",
+  "startedAt": "2026-11-16T02:13:29.683Z",
+  "completedAt": "2026-11-16T02:15:26.100Z",
+  "officialApi": "verifyNativeRequests",
+  "scope": "EXACT_ONE_OWNED_REQUEST",
+  "requestCount": 1,
+  "selectedUids": 8,
+  "newRequested": 0,
+  "preservedExisting": 8,
+  "wholeSourceQuestions": 22,
+  "fullCatalogSha256": "c0e20ea2d8ff8669ae69b0677457c6d00cb897808520f1877e1369b8164ac23b",
+  "targetCatalogUsed": false,
+  "checks": [
+    {
+      "id": "native-projection",
+      "outcome": "success"
+    },
+    {
+      "id": "native-consumer",
+      "outcome": "success",
+      "preservedNativeApprovals": {
+        "requests": 1,
+        "preservedMetadataApprovals": 8,
+        "newMetadataApprovals": 0,
+        "approvalTypes": [
+          "FINAL_QA"
+        ]
+      }
+    }
+  ],
+  "calls": [
+    {
+      "mode": "projection",
+      "requestPaths": [
+        ".archive-meta-register/inbox/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json"
+      ],
+      "status": "PASS",
+      "totalQuestions": 8,
+      "consumerSearchStatus": "STATIC_VALUES_VERIFIED",
+      "consumerLanes": {
+        "canonical": 8,
+        "usableMetaLane": 0
+      },
+      "rawResultSha256": "9a5bfbd5ad0a4f7f5ab4b2d454ae08b57dbd49b2e34c9f9740d93a1e5977771e",
+      "elapsedMs": 50161
+    },
+    {
+      "mode": "changed-uid-consumer",
+      "requestPaths": [
+        ".archive-meta-register/inbox/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json"
+      ],
+      "status": "PASS",
+      "counts": {
+        "changed": 8,
+        "checked": 8,
+        "passed": 8,
+        "skippedUnchanged": 0
+      },
+      "exams": [
+        {
+          "file": ".archive-meta-register/inbox/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json",
+          "kind": "native-approval-preservation",
+          "exam": "20_이수중_2학기_기말_중3_기출",
+          "sourceFile": "original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
+          "changed": 8,
+          "checked": 8,
+          "passed": 8,
+          "skippedUnchanged": 0,
+          "approvalCreated": false,
+          "newMetadataApprovals": 0,
+          "preservedMetadataApprovals": 8,
+          "approvalType": "FINAL_QA",
+          "expectedQuestionCount": 22
+        }
+      ],
+      "failures": [],
+      "unobservedFields": [],
+      "rawResultSha256": "002aedff1366443cbba1fff9231dfbb7abf317fc0c757385dfa9eae005c10415",
+      "elapsedMs": 57967
+    }
+  ],
+  "globalPendingSelection": "NOT_RUN",
+  "immutableShadow": "PENDING_ROOT_COMBINED",
+  "mainRegistration": "NOT_RUN"
+}

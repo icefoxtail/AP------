@@ -94,6 +94,15 @@ test('PR validation jobs do not retain checkout credentials or inherit the main 
   }
 });
 
+test('scope-only changes retain the read-only inventory and the required scope fixture', () => {
+  const triggers=writer.slice(0,writer.indexOf('\npermissions:'));
+  for(const entry of ['archive/tools/meta-foundation/semantic-run-scope.mjs',
+    '.archive-meta-register/auto/run-scopes/**','tests/archive-semantic-run-scope.test.mjs'])
+    assert.ok(triggers.includes(`'${entry}'`),entry);
+  const runner=fs.readFileSync(path.join(root,'tools/run-tests.js'),'utf8');
+  assert.ok(runner.includes("args: ['--test', 'tests/archive-semantic-run-scope.test.mjs']"));
+});
+
 // 2026-11-07: the separate Archive Registration Sync workflow was removed. Its Chrome check runs in
 // Problem Bank Shared Meta and its registration data check runs in CI; neither may be weakened.
 test('original exam Chrome check is a blocking Problem Bank Shared Meta step on archive PRs', () => {

@@ -7,6 +7,7 @@ import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,STATE} from '../tools/ci/archive-registration-writer.mjs';
+import {resolveSemanticRunScope,semanticRunScopeProof,recordFourSlotScopeCheck} from '../archive/tools/meta-foundation/semantic-run-scope.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
 // replaced by small deterministic writers; their existing suites and real Actions remain separate evidence.
@@ -77,6 +78,137 @@ function fixture(t) {
   const seedRegistered=async()=>{const result=await prepareRegistration(options);assert.equal(result.publishable,true);commit(root,'registered fixture');calls.length=0;return result;};
   return {dir,root,work,lanes,calls,execute,options,seedRegistered};
 }
+
+function scopedWriterFixture(t,{v2=false}={}){
+  const f=fixture(t),inbox=['.archive-meta-register/inbox/scope-first.json','.archive-meta-register/inbox/scope-second.json'];
+  const extraInboxes=v2?['.archive-meta-register/inbox/unrelated-owner.json']:[];
+  const metadata='archive/data/question_metadata.json',identity='archive/data/question_identity_map.json';
+  const runtime='archive/data/meta-foundation/runtime/middle3-v1.json',four='archive/data/item-4slot-index.json';
+  const excludedSource='original/middle/m3/1mid/untouched.js';
+  const row={questionUid:'excluded_uid',sourceArchiveFile:excludedSource,sourceOrdinal:1,value:'unchanged'};
+  for(const p of [...inbox,...extraInboxes])write(f.root,p,{requestId:path.basename(p,'.json')});
+  for(const p of [metadata,identity,runtime])write(f.root,p,{records:[row],packVersion:'1',status:'ACTIVE'});
+  write(f.root,four,{records:[row],pending:[],files:[],counts:{records:1}});
+  write(f.root,cursor,{sourceSha256:'old',lastProcessedCommit:'old',pending:{[excludedSource+'#1']:{sourceArchiveFile:excludedSource,sourceOrdinal:1,baseCommit:git(f.root,'rev-parse','HEAD'),lastReasons:['old refusal']}}});
+  const bindings=inbox.map(p=>({path:p,sha256:hash(read(f.root,p))}));
+  write(f.root,'.archive-meta-register/auto/run-scopes/writer-fixture-phase1.json',{schemaVersion:v2?'archive-semantic-run-scope-v2':'archive-semantic-run-scope-v1',scopeId:'writer-semantic-fixture',phase:'phase1',
+    excludedSourcePrefixes:['original/middle/m3/1final/','original/middle/m3/1mid/'],...(v2?{cohortBindings:bindings}:{inboxBindings:bindings})});
+  f.lanes.find(l=>l.id==='reviewed').outputs.push(...inbox,...extraInboxes);
+  f.lanes.find(l=>l.id==='shared').outputs.push(metadata,identity,runtime,four);
+  const realRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+  f.lanes.find(l=>l.id==='semantic').continuation=nativeLanes(realRoot).find(l=>l.id==='semantic').continuation;
+  commit(f.root,'bound one-batch scope');
+  const execute=async ctx=>{
+    const pending=structuredClone(readJson(f.root,cursor).pending||{});
+    const result=await f.execute(ctx);
+    if(ctx.lane.id==='reviewed')for(const p of [...inbox,...extraInboxes])fs.rmSync(path.join(f.root,p),{force:true});
+    if(ctx.lane.id==='semantic'){
+      write(f.root,cursor,{...readJson(f.root,cursor),pending});
+      write(ctx.env.RUNNER_TEMP,'archive-main-auto-meta/report.json',{runScope:semanticRunScopeProof(resolveSemanticRunScope(f.root)),results:[],deferredPending:Object.keys(pending).length});
+    }
+    return result;
+  };
+  return {...f,inbox,extraInboxes,metadata,identity,runtime,four,excludedSource,execute,options:{...f.options,execute}};
+}
+
+test('production writer holds scope through native consumption and regeneration; consumed HEAD returns to default parameters',async t=>{
+  const f=scopedWriterFixture(t),beforePending=readJson(f.root,cursor).pending;
+  const first=await prepareRegistration(f.options);assert.equal(first.safeToPersist,true);assert.equal(first.semanticRunScope.active,true);
+  assert.equal(first.excludedScopeGuard.unchanged,true);assert.deepEqual(readJson(f.root,cursor).pending,beforePending);
+  assert.equal(first.lanes.find(l=>l.id==='semantic').needsContinuation,false,'deferred debt does not loop inside this scope');
+  assert.equal(readJson(f.root,STATE).lanes.semantic.parameters.semanticRunScope.scopeDigest,first.semanticRunScope.scopeDigest);
+  for(const id of ['reviewed','semantic','generated','shared','fourSlot'])assert(f.calls.includes(id),'existing lane still runs: '+id);
+  assert.equal(resolveSemanticRunScope(f.root).active,true,'working/index consumption cannot disable the current run');
+  git(f.root,'reset','--hard','HEAD');f.calls.length=0;write(f.root,'docs/concurrent.md','unrelated competing main input\n');commit(f.root,'race regeneration head');
+  const regenerated=await prepareRegistration(f.options);assert.equal(regenerated.semanticRunScope.scopeDigest,first.semanticRunScope.scopeDigest);
+  assert.equal(regenerated.safeToPersist,true);assert.equal(regenerated.excludedScopeGuard.unchanged,true);
+  commit(f.root,'registered and consumed scoped batch');assert.equal(resolveSemanticRunScope(f.root).active,false);
+  const checked=checkRegistration(f.options);assert.equal(checked.semanticRunScope.active,false);
+  assert.equal(checked.lanes.find(l=>l.id==='semantic').needed,true,'normal policy is re-enabled by stable unscoped parameters');
+});
+
+test('invalid phase1 HEAD rejects every lane and replaces earlier safe-to-persist evidence',async t=>{
+  for(const mode of ['prepare','check'])await t.test(mode,async sub=>{
+    const f=scopedWriterFixture(sub);fs.rmSync(path.join(f.root,f.inbox[0]));commit(f.root,'partial request set');
+    fs.mkdirSync(f.work,{recursive:true});write(f.work,'report.json',{status:'PREPARED',safeToPersist:true,publishable:true});
+    if(mode==='prepare')await assert.rejects(prepareRegistration(f.options),/PARTIAL_INBOX/);
+    else assert.throws(()=>checkRegistration(f.options),/PARTIAL_INBOX/);
+    assert.deepEqual(f.calls,[]);const report=readJson(f.work,'report.json');assert.equal(report.status,'SCOPE_REJECTED');assert.equal(report.safeToPersist,false);assert.notEqual(report.publishable,true);
+  });
+});
+
+test('excluded row guard rejects a nonsemantic lane side effect after all normal validators run',async t=>{
+  const f=scopedWriterFixture(t);
+  const execute=async ctx=>{const result=await f.execute(ctx);if(ctx.lane.id==='shared'){
+    const d=readJson(f.root,f.runtime);d.records[0].value='unauthorized side effect';write(f.root,f.runtime,d);
+  }return result;};
+  await assert.rejects(prepareRegistration({...f.options,execute}),/EXCLUDED_ROW_MUTATION/);
+  assert(f.calls.includes('generated'));assert(f.calls.includes('shared'));assert(f.calls.includes('fourSlot'));
+  const report=readJson(f.work,'report.json');assert.equal(report.status,'FINAL_GATE_FAILED');assert.equal(report.safeToPersist,false);assert.equal(report.publishable,false);
+});
+test('writer preserves initial excluded debt even if final report and pending are both made to omit it',async t=>{
+  const f=scopedWriterFixture(t);
+  const execute=async ctx=>{const result=await f.execute(ctx);if(ctx.lane.id==='semanticFinal'){
+    const state=readJson(f.root,cursor);state.pending={};write(f.root,cursor,state);
+    write(ctx.env.RUNNER_TEMP,'archive-main-auto-meta/report.json',{runScope:semanticRunScopeProof(resolveSemanticRunScope(f.root)),results:[],deferredTargets:[],deferredPending:0});
+  }return result;};
+  await assert.rejects(prepareRegistration({...f.options,execute}),/EXCLUDED_PENDING_MUTATION/);
+  const report=readJson(f.work,'report.json');assert.equal(report.safeToPersist,false);assert.equal(report.status,'FINAL_GATE_FAILED');
+});
+test('active writer rejects a changed HEAD before persist even when its scope bindings are identical',async t=>{
+  const f=scopedWriterFixture(t);
+  const execute=async ctx=>{const result=await f.execute(ctx);if(ctx.lane.id==='fourSlot'){
+    const previous=git(f.root,'rev-parse','HEAD'),tree=git(f.root,'rev-parse','HEAD^{tree}');
+    const next=git(f.root,'commit-tree',tree,'-p',previous,'-m','same inputs under a different HEAD');
+    git(f.root,'update-ref','HEAD',next,previous);
+  }return result;};
+  await assert.rejects(prepareRegistration({...f.options,execute}),/SEMANTIC_RUN_SCOPE_HEAD_DRIFT/);
+  const report=readJson(f.work,'report.json');assert.equal(report.safeToPersist,false);assert.equal(report.status,'FINAL_GATE_FAILED');
+});
+
+function rekeyWriterFixture(t){
+  const f=scopedWriterFixture(t),old=readJson(f.root,f.four);
+  Object.assign(old,{schemaVersion:'archive-item-4slot-runtime-v1',builderSha256:'a'.repeat(64),inputDigest:'b'.repeat(64),
+    counts:{files:1,items:1,registered:1,pending:0},files:[{path:'archive/data/item-4slot/'+f.excludedSource.replace(/\.js$/,'.4slot.json'),
+      inputHash:'c'.repeat(64),status:'REGISTERED',itemCount:1}]});
+  write(f.root,f.four,old);
+  f.lanes.find(l=>l.id==='shared').outputs=f.lanes.find(l=>l.id==='shared').outputs.filter(p=>p!==f.four);
+  const fourLane=f.lanes.find(l=>l.id==='fourSlot');fourLane.outputs.push(f.four);
+  fourLane.commands=[{program:'bash',args:['tools/ci/archive-four-slot-pass.sh']}];
+  commit(f.root,'bound rekey fixture');
+  const execute=async(ctx,{fail=false,omitProof=false,tamperIndex=false}={})=>{
+    const result=await f.execute(ctx);
+    if(ctx.lane.id==='fourSlot'){
+      const index=structuredClone(old);index.builderSha256='d'.repeat(64);index.inputDigest='e'.repeat(64);index.files[0].inputHash='f'.repeat(64);write(f.root,f.four,index);
+      const work=path.join(ctx.env.RUNNER_TEMP,'archive-four-slot'),digest=hash(read(f.root,f.four));
+      for(const [i,name]of ['report.json','verify.json','replay.json'].entries())write(work,name,{
+        schemaVersion:index.schemaVersion,status:'PASS',indexSha256:digest,inputDigest:index.inputDigest,counts:index.counts,
+        verified:1,pending:0,sourceMutation:0,semanticApprovalMutation:0,output:f.four,write:i===0,changed:i===0});
+      if(!omitProof)recordFourSlotScopeCheck(f.root,work,ctx.env.ARCHIVE_FOUR_SLOT_CHECK_NONCE);
+      if(tamperIndex)fs.appendFileSync(path.join(f.root,f.four),' ');
+      if(fail)throw Error('fixture full pass failed');
+    }
+    return result;
+  };
+  return {...f,old,execute,options:{...f.options,execute}};
+}
+
+test('active writer persists checked cache rekey while every excluded registration row remains exact',async t=>{
+  const f=rekeyWriterFixture(t),result=await prepareRegistration(f.options);
+  assert.equal(result.safeToPersist,true);assert.equal(result.lanes.find(l=>l.id==='fourSlot').status,'VERIFIED');
+  assert.equal(result.excludedScopeGuard.semanticUnchanged,true);assert.equal(result.excludedScopeGuard.exactRowsUnchanged,false);
+  assert.equal(result.excludedScopeGuard.cacheRekey.changedFileCount,1);
+  assert.equal(result.excludedScopeGuard.cacheRekey.checkedIndexSha256,hash(read(f.root,f.four)));
+});
+
+for(const mode of ['fail','omitProof','tamperIndex'])test('a '+mode+' four-slot execution never authorizes a writer cache rekey',async t=>{
+  const f=rekeyWriterFixture(t),result=await prepareRegistration({...f.options,execute:ctx=>f.execute(ctx,{[mode]:true})});
+  assert.equal(result.lanes.find(l=>l.id==='fourSlot').status,'FAILED');
+  assert.deepEqual(readJson(f.root,f.four),f.old,'failed independent lane restores its original index');
+  assert.equal(result.excludedScopeGuard.exactRowsUnchanged,true);assert.equal(result.excludedScopeGuard.cacheRekey,null);
+  assert.ok(readJson(f.root,STATE).blockedLanes.includes('fourSlot'));
+  assert.equal(result.status,'PREPARED_WITH_FAILURES','the existing optional-lane policy is retained; no new index is certified');
+});
 
 test('new source fixture: one staged transaction joins source, UID, consumer, cursor and receipt',async t=>{
   const f=fixture(t),head=git(f.root,'rev-parse','HEAD');
@@ -481,4 +613,25 @@ test('--unrelated-range CLI exits 0 only for an unrelated range and 1 for anythi
   const f=fixture(t);write(f.root,'apmath/playground/next/x.js','x\n');const next=commit(f.root,'would be unrelated');
   const unknown=spawnSync(process.execPath,[script,'--unrelated-range',git(f.root,'rev-parse',next+'^'),next,'--root',f.root],{cwd:realRoot,encoding:'utf8'});
   assert.equal(unknown.status,1);
+});
+
+
+test('v2 production writer seals all inputs, keeps its parameters through consumption and rebinds regeneration',async t=>{
+  const f=scopedWriterFixture(t,{v2:true}),first=await prepareRegistration(f.options);
+  assert.equal(first.safeToPersist,true);assert.equal(first.semanticRunScope.cohortInputCount,2);assert.equal(first.semanticRunScope.boundInputCount,3);
+  assert.equal(first.excludedScopeGuard.unchanged,true);assert.equal(first.lanes.find(l=>l.id==='semantic').needsContinuation,false);
+  assert.equal(readJson(f.root,STATE).lanes.semantic.parameters.semanticRunScope.scopeDigest,first.semanticRunScope.scopeDigest);
+  for(const p of [...f.inbox,...f.extraInboxes])assert.equal(fs.existsSync(path.join(f.root,p)),false);
+  assert.equal(resolveSemanticRunScope(f.root).inboxBindings.length,3,'staged consumption retains the sealed HEAD');
+  git(f.root,'reset','--hard','HEAD');const next='.archive-meta-register/inbox/new-concurrent-owner.json';
+  write(f.root,next,{requestId:'new-concurrent'});f.extraInboxes.push(next);f.lanes.find(l=>l.id==='reviewed').outputs.push(next);commit(f.root,'new owner enters immutable inbox');
+  const regenerated=await prepareRegistration(f.options);assert.equal(regenerated.safeToPersist,true);assert.equal(regenerated.semanticRunScope.boundInputCount,4);
+  assert.notEqual(regenerated.semanticRunScope.scopeDigest,first.semanticRunScope.scopeDigest);assert.equal(regenerated.excludedScopeGuard.unchanged,true);
+  commit(f.root,'registered cohort and complete queue');assert.equal(resolveSemanticRunScope(f.root).active,false);
+  assert.equal(checkRegistration(f.options).lanes.find(l=>l.id==='semantic').needed,true);
+});
+test('v2 invalid cohort overwrites old publishable evidence and executes no lane',async t=>{
+  const f=scopedWriterFixture(t,{v2:true});write(f.root,f.inbox[0],{changed:true});commit(f.root,'cohort raw drift');
+  write(f.work,'report.json',{safeToPersist:true,status:'PREPARED'});await assert.rejects(prepareRegistration(f.options),/INBOX_DRIFT/);
+  assert.deepEqual(f.calls,[]);assert.equal(readJson(f.work,'report.json').safeToPersist,false);
 });

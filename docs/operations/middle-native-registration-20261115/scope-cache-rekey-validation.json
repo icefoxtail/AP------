@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "archive-semantic-scope-rekey-validation-v1",
+  "head": "ba4c5908527e6fdd8c767597188331484ca1e301",
+  "base": "c71cb2fb1e427b42ff4181ba82885a2e20da552d",
+  "tree": "35e99b628d4dec01a705618712db7616ce46a5eb",
+  "scope": {
+    "productionCodeFiles": 6,
+    "testFiles": 4,
+    "contractFiles": 1,
+    "productionSourceOrAssetWrites": 0,
+    "productionDataOrInboxWrites": 0,
+    "remoteWrites": 0,
+    "fullBuilds": 0,
+    "clones": 0
+  },
+  "tests": [
+    {
+      "path": ".tmp/scope-helper-tests.log",
+      "sha256": "6dfd44383a8817d2ed3a2692a7b2c9cc30288735d82ed8810fa2e625b4de8735",
+      "bytes": 3562,
+      "command": "node --test tests/archive-semantic-run-scope.test.mjs",
+      "tests": 41,
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 4176.457405
+    },
+    {
+      "path": ".tmp/pr-scope-tests-final.log",
+      "sha256": "198ce84c409bbd2e02e36d1649d798fc0caa406d51af2ceb2f130d5d461accfa",
+      "bytes": 4660,
+      "command": "node --test --test-concurrency=1 tests/archive-pr-registration-prepare.test.mjs tests/archive-pr-registration-proof.test.mjs",
+      "tests": 40,
+      "passed": 40,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 19393.395153
+    },
+    {
+      "path": ".tmp/writer-scope-tests.log",
+      "sha256": "7a0fdc4902e768e2981c8a892782e34f21e61983c613785c50cf184dfd652a0b",
+      "bytes": 1083,
+      "command": "node --test --test-name-pattern='scope|excluded|active writer|checked cache rekey|four-slot execution' tests/archive-registration-writer.test.mjs",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 8193.309865
+    }
+  ],
+  "focusedUniqueTests": 90,
+  "failed": 0,
+  "syntax": "PASS_5_MODULES_PLUS_SHELL_AND_4_TEST_FILES",
+  "gitDiffWhitespace": "PASS",
+  "retainedInitialAttempt": {
+    "path": ".tmp/pr-scope-tests.log",
+    "sha256": "c95180069255145e3e0097e72a972c966a2b8bcf8285ae21e7a3c344bb0d12fa",
+    "result": "36_PASS_4_FAIL",
+    "cause": "Synthetic allowlist used unsupported double-star semantics and was rejected by the existing non-derived path guard before reaching the intended excluded-row assertion. Fixture changed to exact approved output paths; production guard unchanged."
+  },
+  "independentReview": "ROOT_IN_PROGRESS",
+  "actualMainWriter": "NOT_RUN",
+  "actualFullFourSlotBuilderConsumer": "NOT_RUN",
+  "fullRepositoryTests": "NOT_RUN",
+  "rootCombinedCI": "PENDING_ROOT",
+  "boundaries": [
+    "Only the fixed successful full four-slot command can yield the private nonce-bound capability.",
+    "Final index raw SHA equals checked SHA; only valid files.inputHash values under a changed valid builder hash may differ.",
+    "All other protected rows/properties and pre-existing AutoMeta pending entries remain exact; existing append-only deferred debt behavior is retained.",
+    "PR producer and plan shadow share the same excluded-row guard; local proof validation rebuilds baseline from immutable HEAD.",
+    "PR has no full-four-slot capability and retains exact comparison.",
+    "Reports distinguish semanticUnchanged from exactRowsUnchanged and explicitly list cacheRekey.",
+    "Optional failed four-slot lane still rolls back and remains blocked; no new rekey is certified."
+  ],
+  "nextAction": "ROOT exact-code review, compose latest HEAD complete inbox scope descriptor, then official integrated prepare/proof/full four-slot validation and remote CI."
+}

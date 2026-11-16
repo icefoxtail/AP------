@@ -167,8 +167,6 @@ window.questionBank=[
   },
   {
     "id": 4,
-    "imageSize": "tall",
-    "imageAlt": "왼쪽 기둥의 윗면은 A, B, C이고 아랫면은 D, E, F이다. 오른쪽은 G, H, I와 J, K, L이다. EF의 길이는 2 cm, 대응 모서리 KL은 4 cm이다. B와 H의 삼각형 각은 직각이다.",
     "level": "하",
     "category": "닮은 입체도형의 부피비",
     "originalCategory": "도형의 닮음",
@@ -177,7 +175,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "닮은 입체도형의 부피비",
       "도형"
@@ -193,7 +191,7 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "닮은 입체도형의 부피의 비는 닮음비의 세제곱이다.\n부피의 비는 $1:8$이다. 따라서 큰 삼각기둥의 부피는 $12\\times8=96\\,\\mathrm{cm}^3$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q4-problem-visual-v2.svg",
+    "image": "assets/images/24_금당중_2학기_중간_중2_수학/q4.png",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",

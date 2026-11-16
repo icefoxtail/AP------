@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "committed-main-native-writer-artifact-review-v1",
+  "mode": "READ_ONLY_NO_NEW_RUN",
+  "writerRun": 43836934643,
+  "registerJob": 133195790513,
+  "writerCompletion": "SUCCESS",
+  "main": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+  "artifact": {
+    "id": 14214154309,
+    "name": "archive-main-registration-43836934643-1",
+    "zipSha256": "6a21a2eaa83be34af4920512119fb2e137f80db86d866c321fcc3c37d0a8bb0f",
+    "zipBytes": 714863
+  },
+  "executedRequestBindings": [
+    {
+      "requestId": "m2s2-centroid2-current-v2-26fc-20261115-E023",
+      "artifactMember": "native/archive-meta-register-pass/requests/m2s2-centroid2-current-v2-26fc-20261115-E023.json",
+      "rawRequestSha256": "fae8e0ca586d01566451d427398c7f34e9fcd5df53c9b0671db39891dffe991c",
+      "gitBlobSha1": "3ecfd00a5ca09f7018f43d75516964e48fcef6ae",
+      "bytes": 23051,
+      "exactOriginalMain316Request": true,
+      "canonicalDigestEqualsIssuedReceipt": true,
+      "selectedUidCount": 2
+    },
+    {
+      "requestId": "m3s2-e010-centroid-cc2-26fc-20261115",
+      "artifactMember": "native/archive-meta-register-pass/requests/m3s2-e010-centroid-cc2-26fc-20261115.json",
+      "rawRequestSha256": "c79bf852cd0f7a639f8dc7f1e86be144eb45b2aa5012ecf82f31b274680be0dd",
+      "gitBlobSha1": "8e3d02d26b0295ff415472cb65193d2860067963",
+      "bytes": 12053,
+      "exactOriginalMain316Request": true,
+      "canonicalDigestEqualsIssuedReceipt": true,
+      "selectedUidCount": 2
+    },
+    {
+      "requestId": "m3s2-e011-polygon-provider-26fc-20261115",
+      "artifactMember": "native/archive-meta-register-pass/requests/m3s2-e011-polygon-provider-26fc-20261115.json",
+      "rawRequestSha256": "8027aba9c8e9809196cf2d973aa892eeaaa63250c444346cb1b1c9219824ae33",
+      "gitBlobSha1": "92fd14ea190cf7009188490ed1844315c99f3234",
+      "bytes": 13371,
+      "exactOriginalMain316Request": true,
+      "canonicalDigestEqualsIssuedReceipt": true,
+      "selectedUidCount": 1
+    }
+  ],
+  "finalConsumer": {
+    "producer": "OFFICIAL_MAIN_WRITER_ARTIFACT",
+    "preparedMainSha": "a66fe820204ac8aaeb086124321dbc8259554a69",
+    "counts": {
+      "changed": 5,
+      "checked": 5,
+      "passed": 5,
+      "skippedUnchanged": 0
+    },
+    "failures": [],
+    "unobservedFields": [],
+    "assignmentPending": [],
+    "metadataConflictAdvisories": []
+  },
+  "persistedCheck": {
+    "inputSha": "4af0d3e08addac84ac833afc7cbc3519979f79a3",
+    "status": "REGISTRATION_PARTIAL",
+    "registrationReady": true,
+    "publishable": true,
+    "laneStatuses": {
+      "reviewed": "VERIFIED_REUSED",
+      "semantic": "NEEDS_REGISTRATION",
+      "shared": "VERIFIED_REUSED",
+      "generated": "VERIFIED_REUSED",
+      "studentIndexes": "VERIFIED_REUSED",
+      "fourSlot": "VERIFIED_REUSED"
+    },
+    "interpretation": "The three reviewed requests and final Consumer for five UID rows are verified. Existing semantic debt remains; global semantic completion is not claimed."
+  },
+  "evidence": [
+    {
+      "path": "/workspace/scratch/987d4bf32f40/m2-native-queue-a6df/main316-issued-watch/artifact-selected/report.json",
+      "sha256": "76d6650f428d5c881024fb1d01215b84a6eb811c7754989f1c8acbc446cef78e",
+      "bytes": 7278
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/m2-native-queue-a6df/main316-issued-watch/artifact-selected/persisted/report.json",
+      "sha256": "5c7962d6da6c6917e6ff90024c65ffd638c866bdc36bc265c4b8babdcdb4b5b6",
+      "bytes": 2500
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/m2-native-queue-a6df/main316-issued-watch/artifact-selected/reviewedFinal-1.log",
+      "sha256": "944399b647e233917289113bd7c0e33bc139c364dd4735534a2d7e0e91c857a2",
+      "bytes": 1650
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/m2-native-queue-a6df/main316-issued-watch/artifact-selected/native/archive-meta-register-pass/consumer-preflight-1.json",
+      "sha256": "3d319e5fd30eea8c9b9d1d51913faffd347d666ec8b789db8ed8d6475422552b",
+      "bytes": 1452
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/m2-native-queue-a6df/main316-issued-watch/writer316-completed.log",
+      "sha256": "a4e5ed0ccdaeb26f41037d23622b9225201794ad3cd3c6516ed2b1cc6c05d68b",
+      "bytes": 311632
+    }
+  ],
+  "newRegistrationRuns": 0,
+  "newConsumerRuns": 0,
+  "newApproval": 0
+}

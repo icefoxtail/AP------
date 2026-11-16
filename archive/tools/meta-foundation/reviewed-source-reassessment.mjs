@@ -8,6 +8,9 @@ import { validateNativeProposalFinalization } from "./reviewed-proposal-finaliza
 import { validateReviewedCurrentRendererContinuity } from "./reviewed-current-renderer-continuity.mjs";
 import { bindReviewedNativeScopeFields } from "./reviewed-native-scope-fields.mjs";
 import { validateReviewedNativeRetainedFields } from "./reviewed-native-retained-fields.mjs";
+import { validateM2CurrentRendererContinuity } from "./reviewed-m2-current-renderer-continuity.mjs";
+import { validateM2ProviderCurrentRendererContinuity } from "./reviewed-m2-provider-current-renderer-continuity.mjs";
+import { createImmutableGitMetadataLookup } from "./immutable-git-metadata.mjs";
 import { bindReviewedRetainedScopeTransport } from "./reviewed-retained-scope-transport.mjs";
 import { bindReviewedNativeFamilyCourse } from "./reviewed-native-parent.mjs";
 import { bindReviewedNativeRationaleContinuity } from "./reviewed-native-rationale-continuity.mjs";
@@ -38,6 +41,17 @@ const studentPayload = question => Object.fromEntries(REASSESSED_STUDENT_FIELDS.
 const DIFFICULTY_FIELDS = ["level", "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility"];
 const DERIVED_FIELDS = new Set(["sourceFingerprint", "contentFingerprint", "L1", "L2", "L3", "L4"]);
 
+function validateNativePerItemSourceEvidence(native, row, ordinal) {
+  if (!row.sourceEvidence) return;
+  const evidence = row.sourceEvidence, q = native.reviewedBank[ordinal - 1];
+  const fingerprints = { QBODY: sha256(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, image: q.image ?? null })),
+    QFULL: sha256(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, answer: q.answer ?? null, solution: q.solution ?? null, image: q.image ?? null })) };
+  if (evidence.sourceGitBlobSha !== native.sourceBlob || !Array.isArray(evidence.fingerprints) ||
+      Object.entries(fingerprints).some(([scope, value]) => evidence.fingerprints.filter(f =>
+        f.scope === scope && f.algo === "sha256-canonical-json-v1" && f.value === value).length !== 1))
+    fail("native per-item source fingerprints mismatch");
+}
+
 function repositoryPath(root, relative) {
   if (!text(relative) || relative.includes("\\") || relative.includes("\0") || path.isAbsolute(relative) ||
       relative.split("/").some(part => !part || part === "." || part === "..")) fail("unsafe review path");
@@ -47,8 +61,9 @@ function repositoryPath(root, relative) {
   return full;
 }
 
+const immutableGitMetadata = createImmutableGitMetadataLookup();
 function git(root, args) {
-  try { return execFileSync("git", args, { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] }); }
+  try { return immutableGitMetadata(root, args, () => execFileSync("git", args, { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] })); }
   catch { fail("review commit or bound Git object unavailable"); }
 }
 
@@ -213,34 +228,36 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     return { ...inner, studentPayloadSha256: sha256(stable(payload)), e017RhsContinuity: {
       ...e017Rhs.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
   }
-  const m2Renderer = validateM2ProblemRendererContinuity({ root, request, patch, native: loaded, row,
+  const m2ProblemRenderer = validateM2ProblemRendererContinuity({ root, request, patch, native: loaded, row,
     question, studentPayload, bankFromBytes, cache });
-  if (m2Renderer) {
+  if (m2ProblemRenderer) {
     // Only the authenticated four renderer fields are compared through the
     // original prefigure view. Native, definition, retained-primary, scope and
     // live original asset validators all run again without exceptions or writes.
-    const inner = validateReviewedSourceReassessment({ root, request, patch: m2Renderer.normalizedPatch,
-      metadata, question: m2Renderer.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
+    const inner = validateReviewedSourceReassessment({ root, request, patch: m2ProblemRenderer.normalizedPatch,
+      metadata, question: m2ProblemRenderer.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
       issuedSourceReview, cache });
     return { ...inner, studentPayloadSha256: sha256(stable(payload)), m2ProblemRendererContinuity: {
-      ...m2Renderer.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
+      ...m2ProblemRenderer.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
   }
   const m2CcRenderer = validateReviewedM2CcRendererContinuity({ root, request, patch, native: loaded, row,
     question, studentPayload, bankFromBytes, cache });
   const rendererContinuity = patch.sourceReview.rendererProof === undefined ? null :
     validateReviewedCurrentRendererContinuity({ root, request, patch, native: loaded, row,
       question, studentPayload, bankFromBytes, cache });
-  if (!m2CcRenderer && !rendererContinuity && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
+  const m2Renderer = patch.sourceReview.m2RendererProof === undefined ? null :
+    validateM2CurrentRendererContinuity({ root, request, patch, native: loaded, row,
+      question, studentPayload, bankFromBytes, cache });
+  const m2ProviderRenderer = patch.sourceReview.m2ProviderRendererProof === undefined ? null :
+    validateM2ProviderCurrentRendererContinuity({ root, request, patch, native: loaded, row,
+      question, studentPayload, bankFromBytes, cache });
+  if (!m2CcRenderer && !rendererContinuity && !m2Renderer && !m2ProviderRenderer && (!equal(payload, studentPayload(reviewedBank[ordinal - 1])) ||
       !equal(payload, studentPayload(committedBank[ordinal - 1])))) fail("current student payload differs from the reviewed source");
-  if (row.sourceEvidence) {
-    const evidence = row.sourceEvidence, q = reviewedBank[ordinal - 1];
-    const fingerprints = { QBODY: sha256(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, image: q.image ?? null })),
-      QFULL: sha256(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, answer: q.answer ?? null, solution: q.solution ?? null, image: q.image ?? null })) };
-    if (evidence.sourceGitBlobSha !== loaded.sourceBlob || !Array.isArray(evidence.fingerprints) ||
-        Object.entries(fingerprints).some(([scope, value]) => evidence.fingerprints.filter(f =>
-          f.scope === scope && f.algo === "sha256-canonical-json-v1" && f.value === value).length !== 1))
-      fail("native per-item source fingerprints mismatch");
-  }
+  // Only the authenticated frozen request's exact prefigure object can be used
+  // as this M2 presentation view. Its metadata is equal to the live object; the
+  // existing finalization/retention validators still supply every approved value.
+  const semanticQuestion = m2ProviderRenderer?.semanticQuestion || m2Renderer?.semanticQuestion || question;
+  validateNativePerItemSourceEvidence(loaded, row, ordinal);
   const accepted = { ...row.after };
   for (const key of DIFFICULTY_FIELDS) if (Object.hasOwn(row.finalDifficulty || {}, key)) {
     if (Object.hasOwn(accepted, key) && !equal(accepted[key], row.finalDifficulty[key])) fail(`native difficulty disagreement: ${key}`);
@@ -249,7 +266,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   const identityOnly = request.registrationMode === "IDENTITY_FINGERPRINT_ONLY";
   const proposalFinalization = identityOnly && patch.sourceReview.proposalFinalization === undefined ? null :
     validateNativeProposalFinalization({ root, request, patch, native: loaded, row,
-      accepted, question: m2CcRenderer?.originalQuestion || question, final, metadata, issuedSourceReview, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
+      accepted, question: m2CcRenderer?.originalQuestion || semanticQuestion, final, metadata, issuedSourceReview, studentPayload, bankFromBytes, canonicalBefore, canonicalAfter, cache });
   if (m2CcRenderer && (proposalFinalization?.proof?.schemaVersion !== "archive-native-proposal-finalization-v1" ||
       !proposalFinalization.proof.nativeProposalBindings?.length ||
       proposalFinalization.proof.nativeProposalBindings.some(binding => binding.type !== "CC") ||
@@ -276,7 +293,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     accepted, question, final, canonicalBefore, canonicalAfter, cache });
   if (scopeFieldBindings) Object.assign(accepted, scopeFieldBindings.fields);
   const retainedNativeFields = validateReviewedNativeRetainedFields({ root, request, patch, native: loaded, row,
-    accepted, question, final, canonicalBefore, canonicalAfter, studentPayload, studentFields: REASSESSED_STUDENT_FIELDS, bankFromBytes, cache });
+    accepted, question: semanticQuestion, final, canonicalBefore, canonicalAfter, studentPayload, studentFields: REASSESSED_STUDENT_FIELDS, bankFromBytes, cache });
   if (retainedNativeFields) Object.assign(accepted, retainedNativeFields.fields);
   const retainedScopeTransport = bindReviewedRetainedScopeTransport({ root, request, patch, native: loaded, row,
     metadata, accepted, question, final, retainedNativeFields, canonicalBefore, canonicalAfter,
@@ -370,6 +387,8 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     reviewCommitSourceBlobSha1: loaded.committedBlob, questionUid: patch.questionUid, sourceOrdinal: ordinal,
     reviewer: loaded.reviewer, decision, studentPayloadSha256: sha256(stable(payload)),
     ...(rendererContinuity ? { rendererContinuity } : {}),
+    ...(m2Renderer ? { m2RendererContinuity: m2Renderer.proof } : {}),
+    ...(m2ProviderRenderer ? { m2ProviderRendererContinuity: m2ProviderRenderer.proof } : {}),
     ...(m2CcRenderer ? { m2CcRendererContinuity: { ...m2CcRenderer.proof,
       originalFinalizationSha256: sha256(stable(proposalFinalization.proof)) } } : {}),
     ...(Object.keys(rationaleBindings).length ? { rationaleBindings } : {}),
@@ -386,4 +405,63 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     ...(proposalFinalization?.proof ? { proposalFinalization: proposalFinalization.proof } : {}),
     ...(proposalFinalization?.technicalBindings?.length ? { technicalProposalBindings: proposalFinalization.technicalBindings } : {}),
     scope: identityOnly ? "IDENTITY_BINDING_ONLY" : "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false };
+}
+
+// Independently finalized CC authority is a component, not a replacement for
+// an existing audit's primary, difficulty, integration or status. Validate the
+// component against its own immutable native base, then return that one exact
+// addition. The caller separately verifies/preserves the original audit and
+// binds the actual source to their exact union. Ordinary FINAL_QA is unchanged.
+export function validateReviewedAuditCrossConceptComponent({ root, request, component, evidenceRefs,
+  question, prior, canonicalBefore, canonicalAfter, cache = new Map() }) {
+  if (request.approval?.type !== "META_PIPELINE_AUDIT" ||
+      request.approval.sourceRebind?.schemaVersion !== "archive-audit-finalized-cc-append-v1" ||
+      !component || Object.keys(component).some(k => !["questionUid", "sourceOrdinal", "addCrossConceptKey", "sourceReview"].includes(k)) ||
+      component.questionUid !== prior.questionUid || component.sourceOrdinal !== prior.sourceOrdinal ||
+      !text(component.addCrossConceptKey) || component.sourceReview?.rendererProof !== undefined ||
+      Object.keys(component.sourceReview || {}).some(k => !["schemaVersion", "reviewCommit", "reviewPath", "reviewRef", "proposalFinalization"].includes(k)))
+    fail("exact separately typed audit CC component required");
+  const patch = { questionUid: component.questionUid, sourceOrdinal: component.sourceOrdinal,
+    sourceReview: component.sourceReview, evidenceRefs };
+  const native = loadReview({ root, request, patch, cache }), row = native.rows.get(component.sourceOrdinal);
+  if (native.review.schemaVersion !== "m2-s2-meta-review-v1" || row?.questionUid !== component.questionUid ||
+      !["CORRECT", "KEEP", "KEEP_SEMANTIC_RPM"].includes(row.rpmDecision) || !text(row.decisiveStep) ||
+      !text(row.fieldReview?.classification) || !text(row.fieldReview?.difficulty) ||
+      !row.after || typeof row.after !== "object" || Array.isArray(row.after) ||
+      !Array.isArray(row.after.crossConceptKeys) || new Set(row.after.crossConceptKeys).size !== row.after.crossConceptKeys.length ||
+      row.after.crossConceptKeys.some(k => !text(k)) || row.after.crossConceptKeys.includes(component.addCrossConceptKey))
+    fail("settled exact native CC component missing");
+  const debts = [...(row.debts || []), ...(row.contentDebt || []), ...(row.registrationDebt || [])];
+  if ((row.contentDebt || []).length || debts.some(debt => {
+    const kind = typeof debt === "string" ? debt : debt?.type || debt?.kind || "";
+    return /^(SOURCE_|CONTENT_|SOLUTION_|PRIOR_SOURCE_QA|DIFFICULTY_HOLD|EXPLICIT_DIFFICULTY_VALIDITY)/.test(kind) &&
+      kind !== "SOURCE_IMAGE_CROP_NONBLOCKING_METADATA";
+  })) fail("native component retains a source/content/difficulty hold");
+  const ordinal = component.sourceOrdinal;
+  if (!equal(studentPayload(question), studentPayload(native.reviewedBank[ordinal - 1])) ||
+      !equal(studentPayload(question), studentPayload(native.committedBank[ordinal - 1])))
+    fail("audit CC component student payload differs from immutable native source");
+  validateNativePerItemSourceEvidence(native, row, ordinal);
+  for (const field of ["standardCourse", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "curriculum", "curriculumKey", "courseKey"])
+    if (Object.hasOwn(row.after, field) && !equal(row.after[field], prior[field]))
+      fail("audit CC component primary/curriculum disagrees with retained audit: " + field);
+  const componentKeys = [...row.after.crossConceptKeys, component.addCrossConceptKey];
+  const componentQuestion = { ...question, crossConceptKeys: componentKeys };
+  patch.after = { crossConceptKeys: componentKeys };
+  const final = { ...prior, crossConceptKeys: componentKeys };
+  const proof = validateNativeProposalFinalization({ root, request, patch, native, row,
+    accepted: { ...row.after }, question: componentQuestion, final, studentPayload, bankFromBytes,
+    canonicalBefore, canonicalAfter, cache });
+  if (component.sourceReview.proposalFinalization?.schemaVersion !== "archive-native-proposal-finalization-v1" ||
+      proof?.proof?.nativeProposalBindings?.length !== 1 || proof.proof.nativeProposalBindings[0].type !== "CC" ||
+      proof.proof.definitions?.length !== 1 || proof.proof.definitions[0].collection !== "concepts" ||
+      proof.proof.definitions[0].key !== component.addCrossConceptKey ||
+      !equal(proof.fields, { crossConceptKeys: componentKeys }) || proof.technicalBindings?.length)
+    fail("only one independently finalized CC component is supported");
+  return { schemaVersion: "archive-reviewed-audit-cc-component-v1", questionUid: prior.questionUid,
+    sourceOrdinal: ordinal, nativeReview: { commit: native.spec.reviewCommit, path: native.spec.reviewPath,
+      sha256: native.spec.reviewRef.sha256 }, nativeItemSha256: sha256(stable(row)),
+    nativeBaseCrossConceptKeys: row.after.crossConceptKeys, addCrossConceptKey: component.addCrossConceptKey,
+    proposalFinalization: proof.proof, nativeOtherFieldsApplied: false,
+    newMathematicalQa: false, newReview2Claims: 0, newDifficultyJudgments: 0 };
 }

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "middle-ci928-root-closeout-v2",
+  "commit": "928f3d1174a2a486858b512433e5c8e9eb8803bf",
+  "runId": 43826809530,
+  "jobId": 133165888955,
+  "conclusion": "FAILURE",
+  "tests": {
+    "pass": 401,
+    "fail": 3,
+    "knownFail": 0,
+    "total": 404,
+    "existingQuarantineSkipped": 8
+  },
+  "failedFiles": [
+    "tests/item-4slot-m2s2-display-repair-history.test.cjs",
+    "tests/item-4slot-data.test.cjs",
+    "tests/meta-os-audit.test.mjs"
+  ],
+  "failureKinds": [
+    "FIXTURE_MERGE_COMMIT_IDENTITY_MISSING",
+    "CURRENT_RENDERER_HOLD_FILE_VALIDATION_CONTEXT_MISSING",
+    "REGISTERED_COMPONENT_PROVENANCE_FIELD_DICTIONARY_MISSING"
+  ],
+  "registrationProof": {
+    "artifactId": 14209114775,
+    "zipSha256": "26234cede79523f177d8992b2bb02ba724bebdc2cf218443a453b58abb740862",
+    "proofSha256": "71a8fb4c301519dec1c4aa970f2d1b97de8cfa6a1c07357c99ea2b3f6385bba0",
+    "status": "PASS",
+    "nativeRequests": 19,
+    "nativeUids": 132,
+    "descriptorBoundInputs": 20,
+    "nativePlans": 19,
+    "outputs": 53,
+    "projectionAndConsumer": "PASS",
+    "existingApprovalPreservationRequests": 8,
+    "existingApprovalsPreserved": 115,
+    "newApprovals": 0,
+    "m3s1BeforeAfterExact": true,
+    "excludedPendingPreserved": 1767
+  },
+  "firstFixtureFix": {
+    "changedFiles": 1,
+    "productionChanges": 0,
+    "targetedPass": 12,
+    "targetedFail": 0,
+    "targetedSkip": 0,
+    "manifestSha256": "a368d484925a4d4c3c93c4b12b1ae038edb10f9cb29622cbb18a8671b4efca7c"
+  },
+  "remainingFixes": [
+    "DATA_TEST_VALIDATE_WHOLE_HOLD_CARRIER_BEFORE_CONTEXT",
+    "REGISTER_EXACT_COMPONENT_PROVENANCE_FIELD_IN_DICTIONARY"
+  ],
+  "holdDecisionsChanged": 0,
+  "productionMerge": false,
+  "previousReportSha256": "5ceddcf4bd4c9cb79d3eaa19e61e39c88e276542fc0e858d4be2632702c4b9bb",
+  "correction": "Correct metadata-audit test extension to exact observed .mjs; all counts and results unchanged"
+}

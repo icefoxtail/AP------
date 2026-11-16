@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "pr-definition-provider-closure-independent-read-v1",
+  "reviewer": "/root/audit_m2",
+  "status": "PASS_STATIC_NO_BLOCKING_FINDINGS",
+  "blockingFindings": [],
+  "baseCommit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+  "manifestRef": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/publication-candidate-manifest.json",
+    "sha256": "bbb44601c2e66e5cb462df381a9349825acc114a6080563058156a54661b62c6"
+  },
+  "files": [
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "currentRef": {
+        "localFile": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/candidate/tools/ci/archive-pr-native-preview.mjs",
+        "sha256": "68f5bb075cb3cb1426eb0545d1e4ae8be1e75d2cda23ce4fc51a15d42ab14376",
+        "gitBlobSha1": "48e387ac8dc36889fb4d3e9463a537bc07451a3a",
+        "bytes": 88687
+      },
+      "baseRef": {
+        "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+        "path": "tools/ci/archive-pr-native-preview.mjs",
+        "sha256": "c1408f9a6fe17fd77dc044e9f2a36c8ddf1103bdd25a20f1480c44eb582ab3b1",
+        "gitBlobSha1": "60555743b801ad7f33e0577fb8e4fd51b11a4f10",
+        "bytes": 87254
+      }
+    },
+    {
+      "path": "tests/archive-pr-native-preview.test.mjs",
+      "currentRef": {
+        "localFile": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/candidate/tests/archive-pr-native-preview.test.mjs",
+        "sha256": "9ed37cd192d6a9931e16be6937ab1fa4dcdc3366124c49409fa2a41b2970982e",
+        "gitBlobSha1": "b9e8abdceb6186b5f3c8937e0f6654f7c4e298c5",
+        "bytes": 175546
+      },
+      "baseRef": {
+        "commit": "63397d0ed1a023505b3d85e3a9633d9bf1dd7a13",
+        "path": "tests/archive-pr-native-preview.test.mjs",
+        "sha256": "24b246d5ec66ec9945e99ea3cd5af9f9e89022ec302e3bbfb10b5d5056ae1f93",
+        "gitBlobSha1": "e1285219669df5c6b93f3dc11e234bf4863f4d5e",
+        "bytes": 165078
+      }
+    }
+  ],
+  "authorEvidence": {
+    "validationRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/cause-and-validation.json",
+      "sha256": "9328d3eb41ae331e788e5db1f02d1157eee6e3b7c0c531f95685f1b7a15be515",
+      "bytes": 13100
+    },
+    "moduleSnapshotRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/module-snapshot.json",
+      "sha256": "cfb2b0e82f2a2271d4301c272c65e704809ce27eeda47654a916643abb5c6904",
+      "bytes": 17948
+    },
+    "beforeFailureRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/before-ci633-reproduction.tap",
+      "sha256": "7b9847979afdc2da4d6b343876123024bc235f542cf0782cea001f3e7fd2db5f",
+      "bytes": 1462
+    },
+    "afterRegressionRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/e005-ci633-provider-closure/candidate-targeted-regression.tap",
+      "sha256": "2023590f403ab72c264b4a2bda259a272e3d1490b4a086cec3c82020665dc9a5",
+      "bytes": 4717
+    }
+  },
+  "ciCauseConfirmed": {
+    "runId": 43844505698,
+    "failedRequest": ".archive-meta-register/inbox/m2s2-follow6-20261115-E005.json",
+    "explicitKey": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO",
+    "unchangedProviderRaw": true,
+    "oldCanonicalSelectedRows": 0,
+    "current4afSelectedRows": 1,
+    "current4afStatus": "ACTIVE",
+    "frozenDefinitionProviderAfterCurrentWholeExact": true,
+    "wholeRowSha256": "81a3ba8b43ed4e487df88ec14479ee746ae1694d8819f8ff4874f627da37ec11",
+    "cause": "The changed consumer was selected, while its unchanged CC-only provider was omitted by the binding-only PR selection closure. The existing definition graph only ordered selected requests, so the unchanged finalizer saw no already ACTIVE row.",
+    "checkoutBoundary": "Exact checkout id comes from the original CI log. Its b34 merge object is not available locally; this analysis uses exact633 and its direct a66 parent. No new CI or registration run is claimed.",
+    "originalLogRef": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main4af-intake/ci633-test-original.log",
+      "sha256": "98f7bd2d3c587545fb310800987ecf7d6248d9cc986c2bedf35cd22a687faaa7",
+      "bytes": 315781
+    }
+  },
+  "reviewedBoundaries": [
+    "Only the existing closed binding and concepts/conditions descriptors are used. Replacement, inactive, noncanonical, nonexact providers and identity-only requests are not admitted by this adapter.",
+    "Provider lookup reads the flat pending JSON set from immutable HEAD. Inherited providers must be raw-exact in base; live request/source/evidence drift remains rejected by the unchanged fixed selector.",
+    "One queue follows mixed binding and definition prerequisites. Required-key ambiguity fails, and combined graph cycle checks and deterministic provider-before-consumer order remain unchanged.",
+    "No before fields or inferred source keys are used. Unrelated pending inputs remain unselected.",
+    "The new reason binds base/request hash and requiring UID/ordinal/collection/key. Whole descriptor equality is rederived by validateNativePreview and does not create authority.",
+    "Registrar dry/write, fresh canonicalBefore, full definition equality/ACTIVE, semantic guards, immutable shadow and changed-UID Consumer are unchanged.",
+    "Main full-pending selection remains unchanged."
+  ],
+  "unchangedCriticalBlocks": [
+    {
+      "entrypoint": "export function nativeDefinitionDependencyDescriptor(",
+      "sha256": "c092727e9855908f7701c5f76e823d2a7895a35bf23fc63be52b8b3aad3362af"
+    },
+    {
+      "entrypoint": "export function nativeDefinitionDependencies(",
+      "sha256": "60986f46bc21ef7350ee97ec504006ba9388e60be267b31e6eb4e82b0faa25f1"
+    },
+    {
+      "entrypoint": "export function orderNativeRequests(",
+      "sha256": "6f0a5454f14e6db289d3e8daf70b084413824ce75aa2715202d7aa3542933e9e"
+    },
+    {
+      "entrypoint": "export function applyNativeRequests(",
+      "sha256": "e15bc0adc3006e5b88a59d5e98a89dbaa2aadc9252203fb6e4bcde0743ee05ff"
+    },
+    {
+      "entrypoint": "export function validateNativePreview(",
+      "sha256": "30192ddeb1de86107a39ee82ee3a3a8b7c8e66e8898ed4a4a259344054c45c26"
+    }
+  ],
+  "authorTestEvidence": {
+    "before": {
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0
+    },
+    "beforeFailure": "FIXTURE_REUSED_DEFINITION_NOT_ACTIVE_BEFORE",
+    "after": {
+      "tests": 45,
+      "pass": 45,
+      "fail": 0,
+      "skipped": 0
+    },
+    "newCases": 12,
+    "existingCases": 33,
+    "scope": "Synthetic selection/canonical-prerequisite/order fixtures only; no real native approval or Consumer run."
+  },
+  "reviewerTestsRun": 0,
+  "newApproval": 0,
+  "codeEdits": 0,
+  "remoteWrites": 0,
+  "current126Boundary": "Actual4af ACTIVE definition removes this observed missing-row cause. Other native/Consumer gates remain required and no new126 execution is claimed."
+}

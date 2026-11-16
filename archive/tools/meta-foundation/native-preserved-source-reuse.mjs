@@ -5,11 +5,16 @@ import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import {hasReviewedReceiptLineage,reviewedSourceBindingPath} from './reviewed-source-binding.mjs';
+import {validateNativeReviewedSourceReuse} from './native-reviewed-source-reuse.mjs';
+import {hasSourceSubsetMarker,isExplicitSourceSubsetRebind,isFullSourceSubsetRebind,validateExplicitSourceSubsetEvidence,preservedSourceEvidence,priorSourceIdentityContext,replayOriginalFullFinalQa} from './source-subset-preservation.mjs';
 import {validateReviewedSourceReassessment} from './reviewed-source-reassessment.mjs';
 import {REVIEWED_META_VALUE_FIELDS} from './reviewed-meta-value-fields.mjs';
 import {nativeReviewedRendererRebind} from './native-reviewed-renderer-reuse.mjs';
 import {reviewedRendererBindingPath} from './reviewed-current-renderer-continuity.mjs';
+import {isIssuedSourceBindingRecovery,hasIssuedSourceBindingRecoveryMarker} from './issued-source-binding-recovery.mjs';
 import {assertReviewedPackVersionLineage} from './reviewed-pack-version-lineage.mjs';
+import {verifyIssuedRpmEvidenceContinuity} from './issued-rpm-evidence-continuity.mjs';
 import {loadIssuedChildContinuity} from './native-issued-child-continuity.mjs';
 import {loadIssuedRpmChildContinuity,readIssuedRpmHistoricalEvidence,replayIssuedRpmHistoricalLeaf} from './native-issued-rpm-history.mjs';
 import {loadIssuedSolutionRpmChildContinuity,readIssuedSolutionRpmHistoricalEvidence,replayIssuedSolutionRpmHistoricalLeaf} from './native-issued-solution-rpm-history.mjs';
@@ -35,16 +40,23 @@ function safePath(root,relative) {
   return full;
 }
 const readBytes=(root,relative)=>fs.readFileSync(safePath(root,relative));
-function evidence(root,refs) {
+function evidence(root,refs,receipt) {
   if(!Array.isArray(refs)||!refs.length)fail('SHA-bound approval evidence required');
-  for(const ref of refs)if(!SHA256.test(ref?.sha256||'')||sha(readBytes(root,ref.path))!==ref.sha256)
-    fail('approval evidence missing or changed');
+  for(const ref of refs){
+    if(!SHA256.test(ref?.sha256||''))fail('approval evidence missing or changed');
+    const liveSha=sha(readBytes(root,ref.path));
+    if(liveSha===ref.sha256)continue;
+    const continuity=verifyIssuedRpmEvidenceContinuity({root,receipt,receiptPath:receiptPath(receipt?.requestId),evidenceRef:ref});
+    if(continuity?.currentRef.sha256!==liveSha)fail('approval evidence missing or changed');
+  }
 }
 
 // The count and prior-evidence markers also prevent deleting just sourceRebind
 // from turning an issued preservation receipt into an ordinary FINAL_QA receipt.
 export function isPartialNativeSourcePreservation(receipt,root) {
   if(receipt?.approval?.type!=='FINAL_QA'||!(receipt.scope==='PARTIAL_UIDS'||Object.hasOwn(receipt,'partialUidCount')))return false;
+  if(receipt.appliedRecords?.some(hasSourceSubsetMarker)||receipt.runtimeRecords?.some(hasSourceSubsetMarker)||
+    receipt.appliedRecords?.some(hasIssuedSourceBindingRecoveryMarker)||receipt.runtimeRecords?.some(hasIssuedSourceBindingRecoveryMarker))return true;
   if(Object.hasOwn(receipt.approval,'sourceRebind')||receipt.newMetadataApprovals===0&&receipt.preservedMetadataApprovals>0||
     Array.isArray(receipt.approval.evidenceRefs)&&receipt.approval.evidenceRefs.some(ref=>nativePath(ref?.path)))return true;
   if(!root||!ID.test(receipt.requestId||'')||!Array.isArray(receipt.appliedRecords)||!receipt.appliedRecords.length||
@@ -58,13 +70,15 @@ export function isPartialNativeSourcePreservation(receipt,root) {
       .every(row=>Array.isArray(row.approvalEvidence)&&row.approvalEvidence.includes(relative)))continue;
     try {
       const prior=JSON.parse(readBytes(root,relative));
-      if(prior.scope!=='PARTIAL_UIDS'||prior.approval?.type!=='FINAL_QA'||relative!==receiptPath(prior.requestId)||
+      const full=prior.scope===undefined,priorCount=full?prior.totalQuestions:prior.partialUidCount,
+        priorDenominator=full?prior.totalQuestions:prior.expectedQuestionCount;
+      if((!full&&prior.scope!=='PARTIAL_UIDS')||prior.approval?.type!=='FINAL_QA'||relative!==receiptPath(prior.requestId)||
         prior.examUid!==receipt.examUid||prior.sourceArchiveFile!==receipt.sourceArchiveFile||
-        prior.expectedQuestionCount!==receipt.expectedQuestionCount||prior.partialUidCount!==receipt.partialUidCount||
+        priorDenominator!==receipt.expectedQuestionCount||priorCount<receipt.partialUidCount||
         prior.sourceBlobSha1===receipt.sourceBlobSha1)continue;
       const uid=receipt.appliedRecords[0].questionUid,ordinal=receipt.appliedRecords[0].sourceOrdinal,
-        now=selected(receipt,uid,ordinal),old=selected(prior,uid,ordinal);
-      if(!same([...now.records.keys()].sort(),[...old.records.keys()].sort()))continue;
+        now=selected(receipt,uid,ordinal),old=selected(prior,uid,ordinal,{full});
+      if([...now.records.keys()].some(id=>!old.records.has(id)))continue;
       if([...now.records].every(([id,row])=>{
         const before=old.records.get(id),evidenceAfter=[...new Set([...before.approvalEvidence,receiptPath(receipt.requestId)])];
         return same(unchanged(row),unchanged(before))&&same(row.approvalEvidence,evidenceAfter)&&
@@ -79,6 +93,8 @@ export function isPartialNativeSourcePreservation(receipt,root) {
 // Preserve the existing non-native producer behavior. Only a claimed partial
 // preservation chain blocks that fallback when its original proof cannot replay.
 export function hasNativeSourcePreservationClaim({root,current,runtimeRecord,nativeSource}) {
+  if(hasIssuedSourceBindingRecoveryMarker(current)||hasIssuedSourceBindingRecoveryMarker(runtimeRecord))return true;
+  if(hasSourceSubsetMarker(current)||hasSourceSubsetMarker(runtimeRecord))return true;
   for(const row of [current,runtimeRecord])for(const relative of row?.approvalEvidence||[]) {
     if(!nativePath(relative))continue;
     try {if(isPartialNativeSourcePreservation(JSON.parse(readBytes(root,relative)),root))return true;}catch {/* No new claim is inferred from a filename. */}
@@ -102,8 +118,9 @@ export function hasNativeSourcePreservationClaim({root,current,runtimeRecord,nat
     if(!nativePath(relative)||relative===latest||!runtimeRecord.approvalEvidence.includes(relative))continue;
     try {
       const prior=JSON.parse(readBytes(root,relative));
-      if(prior.scope!=='PARTIAL_UIDS')continue;
-      const old=selected(prior,current.questionUid,current.sourceOrdinal);
+      const full=prior.scope===undefined;
+      if(!full&&prior.scope!=='PARTIAL_UIDS')continue;
+      const old=selected(prior,current.questionUid,current.sourceOrdinal,{full});
       const evidenceAfter=[...new Set([...old.row.approvalEvidence,latest])];
       if(relative===receiptPath(prior.requestId)&&same(unchanged(current),unchanged(old.row))&&
         same(unchanged(runtimeRecord),unchanged(old.runtime))&&same(current.approvalEvidence,evidenceAfter)&&
@@ -122,21 +139,24 @@ function unique(rows,label) {
   }
   return result;
 }
-function selected(receipt,uid,ordinal) {
+function selected(receipt,uid,ordinal,{full=false}={}) {
   const records=unique(receipt.appliedRecords,'metadata'),identities=unique(receipt.appliedIdentityRecords,'identity'),runtimes=unique(receipt.runtimeRecords,'runtime');
+  const count=full?receipt.totalQuestions:receipt.partialUidCount,denominator=full?receipt.totalQuestions:receipt.expectedQuestionCount;
   if(receipt.schemaVersion!=='archive-reviewed-exam-meta-registration-v2'||receipt.metadataRegistrationStatus!=='REGISTERED'||
-    receipt.scope!=='PARTIAL_UIDS'||receipt.registrationMode!==undefined||receipt.approval?.type!=='FINAL_QA'||
+    (full?['scope','partialUidCount','expectedQuestionCount'].some(key=>Object.hasOwn(receipt,key)):receipt.scope!=='PARTIAL_UIDS')||
+    receipt.registrationMode!==undefined||receipt.approval?.type!=='FINAL_QA'||
     receipt.approval.metadataReviewed!==true||!String(receipt.approval.approvedBy||'').trim()||
     !SHA256.test(receipt.requestSha256||'')||!SHA1.test(receipt.sourceBlobSha1||'')||!SHA256.test(receipt.sourceRawSha256||'')||
     typeof receipt.sourceArchiveFile!=='string'||!receipt.sourceArchiveFile.endsWith('.js')||!String(receipt.examUid||'').trim()||
-    !Number.isInteger(receipt.expectedQuestionCount)||!Number.isInteger(receipt.partialUidCount)||receipt.partialUidCount<1||
-    receipt.partialUidCount>receipt.expectedQuestionCount||receipt.totalQuestions!==receipt.partialUidCount||
-    [records,identities,runtimes].some(map=>map.size!==receipt.partialUidCount||!same([...map.keys()].sort(),[...records.keys()].sort()))||
+    !Number.isInteger(denominator)||!Number.isInteger(count)||count<1||
+    count>denominator||receipt.totalQuestions!==count||
+    [records,identities,runtimes].some(map=>map.size!==count||!same([...map.keys()].sort(),[...records.keys()].sort()))||
+    full&&[...records.values()].some((row,i)=>row.sourceOrdinal!==i+1)||
     new Set([...records.values()].map(row=>row.sourceOrdinal)).size!==records.size)fail('exact partial FINAL_QA inventory required');
   const relative=receiptPath(receipt.requestId);
   for(const [id,row]of records) {
     const runtime=runtimes.get(id),identity=identities.get(id),revision=`meta-foundation:${row.metaFoundationPackId}@${row.metaFoundationPackVersion}:exam-final_qa-v2:${receipt.requestId}`;
-    if(!Number.isInteger(row.sourceOrdinal)||row.sourceOrdinal<1||row.sourceOrdinal>receipt.expectedQuestionCount||
+    if(!Number.isInteger(row.sourceOrdinal)||row.sourceOrdinal<1||row.sourceOrdinal>denominator||
       [row,runtime,identity].some(value=>value.sourceArchiveFile!==receipt.sourceArchiveFile||value.sourceOrdinal!==row.sourceOrdinal)||
       row.metadataApprovalType!=='FINAL_QA'||runtime.metadataApprovalType!=='FINAL_QA'||
       row.metadataRevision!==revision||runtime.metadataRevision!==revision||
@@ -212,7 +232,14 @@ function ordinaryReviewedReassessment({receipt,nativeSource,question,identity,or
       fail('ordinary renderer reassessment lacks a verified current proof');
     rendererBinding=reviewedRendererBindingPath(receipt.requestId);
   }
-  const appended=row=>[...new Set([...row.approvalEvidence,receiptPath(receipt.requestId),...(rendererBinding?[rendererBinding]:[])])];
+  // The combined writer also seals an immutable request/source-review snapshot.
+  // Accept its additional provenance only after the ordinary native verifier has
+  // reproduced that exact sidecar. This is required for every reviewed peer of
+  // a mixed renderer cohort, even when the caller is an unchanged rebind member.
+  const sourceVerified=validateNativeReviewedSourceReuse(receipt,nativeSource,question,identity,ordinal,current,registry);
+  const sourceBinding=sourceVerified===true&&hasReviewedReceiptLineage(receipt)?reviewedSourceBindingPath(receipt.requestId):null;
+  const appended=row=>[...new Set([...row.approvalEvidence,receiptPath(receipt.requestId),
+    ...(rendererBinding?[rendererBinding]:[]),...(sourceBinding?[sourceBinding]:[])])];
   if(!same(without(current,metadataKeys),without(old.row,metadataKeys))||
     !same(without(identity,['sourceFingerprint']),without(old.identity,['sourceFingerprint']))||
     !same(without(nativeSource.runtimeRecord,runtimeKeys),without(old.runtime,runtimeKeys))||
@@ -221,7 +248,7 @@ function ordinaryReviewedReassessment({receipt,nativeSource,question,identity,or
   // The renderer verifier reproduced the entire original native/source review,
   // current independent asset proof and typed sidecar. Only that issued sidecar
   // may accompany the new receipt in this otherwise unchanged approval.
-  if(rendererBinding)return true;
+  if(rendererBinding||sourceBinding)return true;
   if(!reviewCaches.has(root))reviewCaches.set(root,new Map());
   const canonical=registry?{pt:registry.problemTypes,tpl:registry.templates}:undefined;
   const result=validateReviewedSourceReassessment({root,
@@ -346,35 +373,56 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
   // to reuse changed student content or skip a renderer/typed-source verifier.
   if(ordinaryReviewedReassessment({receipt,nativeSource,question,identity,ordinal,current,registry}))return null;
   const seen=new Set();
-  while(isPartialNativeSourcePreservation(cursor,root)&&!ordinaryReviewedReassessment({receipt:cursor,nativeSource:source,
-    question:source.bank[ordinal-1],identity:state.identity,ordinal,current:state.row,registry})) {
+  while(isPartialNativeSourcePreservation(cursor,root)) {
+    if(isIssuedSourceBindingRecovery(cursor.approval?.sourceRebind)) {
+      const context={nativeSource:source,current:state.row,identity:state.identity,question:source.bank[ordinal-1]};
+      if(revalidateLeaf(context)!==receiptPath(cursor.requestId))fail('issued source recovery ancestor cannot replay');
+      break;
+    }
+    // A source-only descendant may reach a direct reassessment whose evidence
+    // also names older receipts. Replay that cursor's immutable native proof;
+    // the lineage marker alone cannot end the preservation chain.
+    if(hasReviewedReceiptLineage(cursor)&&cursor.fingerprintRepairs?.some(row=>
+      row.questionUid===identity.questionUid&&row.sourceReview!==undefined)) {
+      const context={nativeSource:source,current:state.row,identity:state.identity,question:source.bank[ordinal-1]};
+      if(revalidateLeaf(context)!==receiptPath(cursor.requestId))fail('direct source-review ancestor cannot replay');
+      break;
+    }
     if(unchangedMemberOfRendererReassessment({receipt:cursor,nativeSource:source,question:source.bank[ordinal-1],
       identity:state.identity,ordinal,current:state.row,registry,state,revalidateLeaf}))break;
+    if(ordinaryReviewedReassessment({receipt:cursor,nativeSource:source,question:source.bank[ordinal-1],
+      identity:state.identity,ordinal,current:state.row,registry}))break;
     if(seen.has(cursor.requestId)||seen.size>=64)fail('source-rebind cycle or depth exceeded');
-    seen.add(cursor.requestId);evidence(root,cursor.approval.evidenceRefs);
+    seen.add(cursor.requestId);evidence(root,cursor.approval.evidenceRefs,cursor);
     const spec=cursor.approval.sourceRebind,ref=spec?.priorReceiptRef;
-    if(!spec||!same(Object.keys(spec).sort(),['priorReceiptRef'])||!nativePath(ref?.path)||!SHA256.test(ref.sha256||'')||
+    const subset=isExplicitSourceSubsetRebind(spec),fullSubset=isFullSourceSubsetRebind(spec);
+    if(!spec||!subset&&!same(Object.keys(spec).sort(),['priorReceiptRef'])||!nativePath(ref?.path)||!SHA256.test(ref.sha256||'')||
       !cursor.approval.evidenceRefs.some(item=>same(item,ref))||cursor.newMetadataApprovals!==0||
       cursor.preservedMetadataApprovals!==cursor.partialUidCount||!absentOrEmpty(cursor.registryChanges)||
       !absentOrEmpty(cursor.fingerprintRepairs)||!absentOrEmpty(cursor.nativeParentBindings))fail('exact source-only preservation required');
     const raw=readBytes(root,ref.path);
     if(sha(raw)!==ref.sha256)fail('prior receipt digest changed');
-    const prior=JSON.parse(raw),old=selected(prior,identity.questionUid,ordinal);
+    const prior=JSON.parse(raw);
+    if(subset)validateExplicitSourceSubsetEvidence({root,current:cursor,prior,selected:[...state.records.values()]});
+    const old=selected(prior,identity.questionUid,ordinal,{full:fullSubset});
+    const priorDenominator=fullSubset?prior.totalQuestions:prior.expectedQuestionCount;
     if(ref.path!==receiptPath(prior.requestId)||seen.has(prior.requestId)||prior.examUid!==cursor.examUid||
-      prior.sourceArchiveFile!==cursor.sourceArchiveFile||prior.expectedQuestionCount!==cursor.expectedQuestionCount||
-      prior.partialUidCount!==cursor.partialUidCount||prior.sourceRawSha256===cursor.sourceRawSha256||
-      !same([...old.records.keys()].sort(),[...state.records.keys()].sort()))fail('preserved ancestor scope or source binding changed');
-    const priorSource=gitSource(root,prior.sourceBlobSha1,prior.sourceRawSha256,prior.expectedQuestionCount);
+      prior.sourceArchiveFile!==cursor.sourceArchiveFile||priorDenominator!==cursor.expectedQuestionCount||
+      (!subset&&prior.partialUidCount!==cursor.partialUidCount)||prior.sourceRawSha256===cursor.sourceRawSha256||
+      (!subset&&!same([...old.records.keys()].sort(),[...state.records.keys()].sort())))fail('preserved ancestor scope or source binding changed');
+    const priorSource=gitSource(root,prior.sourceBlobSha1,prior.sourceRawSha256,priorDenominator);
     for(const [uid,row]of state.records) {
       const before=old.records.get(uid),beforeRuntime=old.runtimes.get(uid),nextRuntime=state.runtimes.get(uid);
-      const approvalEvidence=[...new Set([...before.approvalEvidence,receiptPath(cursor.requestId)])];
+      const approvalEvidence=preservedSourceEvidence(before.approvalEvidence,receiptPath(cursor.requestId),spec);
       if(!same(unchanged(row),unchanged(before))||!same(row.approvalEvidence,approvalEvidence)||
         !same(unchanged(nextRuntime),unchanged(beforeRuntime))||!same(nextRuntime.approvalEvidence,approvalEvidence)||
         !same(state.identities.get(uid),old.identities.get(uid))||
         !same(source.bank[row.sourceOrdinal-1],priorSource.bank[row.sourceOrdinal-1]))
         fail('selected whole question, approval or identity changed');
     }
-    cursor=prior;state=old;source={...nativeSource,...priorSource,runtimeRecord:old.runtime};
+    const historicalIdentity=subset?priorSourceIdentityContext(source,prior):{};
+    if(fullSubset)replayOriginalFullFinalQa({root,prior,priorReceiptRef:ref,nativeSource:source,registry,revalidateLeaf});
+    cursor=prior;state=old;source={...source,...priorSource,...historicalIdentity,runtimeRecord:old.runtime};
   }
   if(issuedChild) {
     if(receiptPath(cursor.requestId)!==issuedChild.descriptor.priorReceiptRef.path)
@@ -390,7 +438,7 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
       fail('issued child original native cursors did not replay');
     return true;
   }
-  evidence(root,cursor.approval.evidenceRefs);
+  evidence(root,cursor.approval.evidenceRefs,cursor);
   const relative=receiptPath(cursor.requestId),context={nativeSource:source,current:state.row,identity:state.identity,question:source.bank[ordinal-1]};
   if(revalidateLeaf(context)!==relative)fail('original native approval cannot replay for this cursor');
   // A caught-up cursor must not skip the original solution-only repair. Replaying

@@ -1,0 +1,356 @@
+{
+  "schemaVersion": "archive-native-request-partition-transport-v1",
+  "status": "LOCAL_CANDIDATE_NOT_ISSUED",
+  "transportAuthor": "/root/audit_m2",
+  "authorityRole": "NON_AUTHORIZING_BYTE_AND_SCOPE_TRANSPORT",
+  "newApproval": 0,
+  "newMathQa": 0,
+  "newDifficultyJudgment": 0,
+  "fixedMain": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+  "existingOwnCandidate": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+  "originalWholeRequestRef": {
+    "commit": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+    "path": ".archive-meta-register/inbox/m3s2-finalized-e011-transport-20261115.json",
+    "gitBlobSha1": "d048b1d9b09403c3eed9ba56cbc56de89c060656",
+    "sha256": "73bc4a57ac2a0be1d3f157a341dee17b48d27326f08c7ecfe52bc99c91f193d4",
+    "bytes": 29897
+  },
+  "existingUnissuedProviderRequestRef": {
+    "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+    "path": ".archive-meta-register/inbox/m3s2-e011-polygon-provider-26fc-20261115.json",
+    "gitBlobSha1": "92fd14ea190cf7009188490ed1844315c99f3234",
+    "sha256": "8027aba9c8e9809196cf2d973aa892eeaaa63250c444346cb1b1c9219824ae33",
+    "bytes": 13371
+  },
+  "mainSourceRef": {
+    "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+    "path": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+    "gitBlobSha1": "222eb1878d15a65307c75603c8f9ea6294aa05a4",
+    "sha256": "4a3cc76df0474cc2da8b6d5c2d5a4b7219e2499a225a84a66a3d0ed0245a9f9f",
+    "bytes": 53610
+  },
+  "candidateSourceRef": {
+    "commit": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+    "path": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+    "gitBlobSha1": "571500d0a9427d84ed70fbecb1746e77e5059f5c",
+    "sha256": "6dd834b1522dd4b28788387411ba56076c2360607f6f446d7ad62d47573211b4",
+    "bytes": 53722
+  },
+  "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+  "totalQuestions": 23,
+  "newResidualRequestId": "m3s2-finalized-e011-condition2-transport-20261116",
+  "originalProviderRequestId": "m3s2-e011-polygon-provider-26fc-20261115",
+  "newProviderTransportRequestId": "m3s2-e011-polygon-provider-main316-rebind-20261116",
+  "newProviderIdCondition": "The exact main316 provider request is unissued. A new transport ID preserves the original pending request raw as immutable evidence and avoids rewriting that ID. Replace the original pending path only if the exact request still exists and its actual receipt remains absent. An intervening committed issuance requires replanning from the actual receipt, not a second application under this fresh ID.",
+  "sourceDelta": {
+    "selectedWholeOrdinal17Exact": true,
+    "metadataOnlyOrdinals": [
+      9,
+      10
+    ],
+    "changedFields": [
+      "conditionKeys",
+      "courseKey"
+    ],
+    "all23StudentPayloadsExact": true,
+    "outsideThreeWholeRowsExact": true,
+    "newSourceEdits": 0
+  },
+  "selectedRows": [
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_3b4595999c22c82e40420fa1d0d09f36072fd9c9c779ef54e115324d30a86c5b",
+      "mainWholeSha256": "d45dae1d27f0397cd261020f5b80193879c6ae6629cc952e7a83115d594b6ce6",
+      "candidateWholeSha256": "b43b08727ddee4b3e2e3d034fa6537fb2cc6b332c11e59b45197e70e9138c0e9",
+      "studentPayloadSha256": "7ffc17be061605daae67625867477317cf0bce80cf69b72bd3c8c0ac8923f0bc",
+      "originalBeforeSha256": "d2b6438afa8be4f204f016c4e5d9ed83ca82126313926a6240b3e966553c28ac",
+      "originalAfterSha256": "0f6b7afb4ca71285151df530913e1df678a31af2636ca28820648c3315d4e297",
+      "originalSourceReviewSha256": "b0d7b42e0b72c0d93f2981d36dc2783340173960b3bb1f97b0b9e9203b60fa8f"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c",
+      "mainWholeSha256": "ef5da13afbee7a36e37c7dec2f8d66df0a79d4a2cbfe06705dbf2bf4e09c3240",
+      "candidateWholeSha256": "a05398600ba1894b12fba2524bc88acef759bdda00d0200192032640ad7e98f8",
+      "studentPayloadSha256": "c267182f2a056d7e607efbe8be35cc90606318b7a583ebceef618b19a6c70cff",
+      "originalBeforeSha256": "359ae59d72b30495e7e9b162d4e160177dbe5932d74e073fe25816ea283646ed",
+      "originalAfterSha256": "f9c57e777e432e063fbd4c3a608646ff7c476f279754dbd55f652cf91e1813d6",
+      "originalSourceReviewSha256": "ae213397caf4ee138517afd4b2a2bc0e1f6ea6032031e8b69353922638523f5a"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
+      "mainWholeSha256": "d5b0b260040a1c2cd2c43eeadd2668aeb24bb44dcb1d3804bc77ce5d8b6a57ca",
+      "candidateWholeSha256": "d5b0b260040a1c2cd2c43eeadd2668aeb24bb44dcb1d3804bc77ce5d8b6a57ca",
+      "studentPayloadSha256": "9f2c54b6109fd6a0545f45deb5e012a3724a98d08441e739cf0a4f4eb46d4630",
+      "originalBeforeSha256": "9b608bac9effaba2e98824462f20b8dc7b8a28c177d7ba3a7defc2a1a22d94ce",
+      "originalAfterSha256": "440a51e0d7ef7d4e7573e0af53c98c5288aa0be2af46eac1d8824a798c005da1",
+      "originalSourceReviewSha256": "547d41d900e55a4e4a7699fc1dcf6a67f9237098d3fef0875a72aa94183ddddd"
+    }
+  ],
+  "assetGitRefs": [
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q1-solution.svg",
+      "mainBeforeBlob": "a4c546cc2eb7a475130f02a0a3fe20a064a43a44",
+      "mainAfterBlob": "a4c546cc2eb7a475130f02a0a3fe20a064a43a44",
+      "ownCandidateBlob": "a4c546cc2eb7a475130f02a0a3fe20a064a43a44",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q1.png",
+      "mainBeforeBlob": "2190652e5a8e74c9ecbb308f29f50eebf85eea32",
+      "mainAfterBlob": "2190652e5a8e74c9ecbb308f29f50eebf85eea32",
+      "ownCandidateBlob": "2190652e5a8e74c9ecbb308f29f50eebf85eea32",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q10-solution.svg",
+      "mainBeforeBlob": "b7a2275c09587aa227f517e805f04ca58bea131d",
+      "mainAfterBlob": "b7a2275c09587aa227f517e805f04ca58bea131d",
+      "ownCandidateBlob": "b7a2275c09587aa227f517e805f04ca58bea131d",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q10.png",
+      "mainBeforeBlob": "c020ddd292027ef9f963a8dc14711a5da4847512",
+      "mainAfterBlob": "c020ddd292027ef9f963a8dc14711a5da4847512",
+      "ownCandidateBlob": "c020ddd292027ef9f963a8dc14711a5da4847512",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q11-solution.svg",
+      "mainBeforeBlob": "93b54f208c7630ef27a049597771feda6d6fe90f",
+      "mainAfterBlob": "93b54f208c7630ef27a049597771feda6d6fe90f",
+      "ownCandidateBlob": "93b54f208c7630ef27a049597771feda6d6fe90f",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q11.png",
+      "mainBeforeBlob": "4664996832182edf7e6f91b390a1d802a8940c54",
+      "mainAfterBlob": "4664996832182edf7e6f91b390a1d802a8940c54",
+      "ownCandidateBlob": "4664996832182edf7e6f91b390a1d802a8940c54",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q12-solution.svg",
+      "mainBeforeBlob": "79c1c5ddfa662bc18b042819b3389a8bade704bb",
+      "mainAfterBlob": "79c1c5ddfa662bc18b042819b3389a8bade704bb",
+      "ownCandidateBlob": "79c1c5ddfa662bc18b042819b3389a8bade704bb",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q12.png",
+      "mainBeforeBlob": "55d49e1f4ef4fa30f12fc5fd8d184fb376d8bbd0",
+      "mainAfterBlob": "55d49e1f4ef4fa30f12fc5fd8d184fb376d8bbd0",
+      "ownCandidateBlob": "55d49e1f4ef4fa30f12fc5fd8d184fb376d8bbd0",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q13-solution.svg",
+      "mainBeforeBlob": "5d74472de1462409d193eb17394f79de686ef522",
+      "mainAfterBlob": "5d74472de1462409d193eb17394f79de686ef522",
+      "ownCandidateBlob": "5d74472de1462409d193eb17394f79de686ef522",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q13.png",
+      "mainBeforeBlob": "e38c6f7763abf8cc0122140873d9d540dc014895",
+      "mainAfterBlob": "e38c6f7763abf8cc0122140873d9d540dc014895",
+      "ownCandidateBlob": "e38c6f7763abf8cc0122140873d9d540dc014895",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q14-solution.svg",
+      "mainBeforeBlob": "102f48b2bb23ea770deb6bbfd828dd88c4a41694",
+      "mainAfterBlob": "102f48b2bb23ea770deb6bbfd828dd88c4a41694",
+      "ownCandidateBlob": "102f48b2bb23ea770deb6bbfd828dd88c4a41694",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q14.png",
+      "mainBeforeBlob": "3d59386491a1dde12fe09beea978ad3946d2918b",
+      "mainAfterBlob": "3d59386491a1dde12fe09beea978ad3946d2918b",
+      "ownCandidateBlob": "3d59386491a1dde12fe09beea978ad3946d2918b",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q15-solution.svg",
+      "mainBeforeBlob": "206c35b82aca4aa048d62abdfd637f47f489b5c4",
+      "mainAfterBlob": "206c35b82aca4aa048d62abdfd637f47f489b5c4",
+      "ownCandidateBlob": "206c35b82aca4aa048d62abdfd637f47f489b5c4",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q15.png",
+      "mainBeforeBlob": "7ade13d8d3762f0e5099e00ef6cb57c77d8927c2",
+      "mainAfterBlob": "7ade13d8d3762f0e5099e00ef6cb57c77d8927c2",
+      "ownCandidateBlob": "7ade13d8d3762f0e5099e00ef6cb57c77d8927c2",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q16-solution.svg",
+      "mainBeforeBlob": "72beb003d964d0f929ea1a1680cf7affeb015688",
+      "mainAfterBlob": "72beb003d964d0f929ea1a1680cf7affeb015688",
+      "ownCandidateBlob": "72beb003d964d0f929ea1a1680cf7affeb015688",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q16.png",
+      "mainBeforeBlob": "830619c63d2954ebee2423c7c89ab1f962f8157c",
+      "mainAfterBlob": "830619c63d2954ebee2423c7c89ab1f962f8157c",
+      "ownCandidateBlob": "830619c63d2954ebee2423c7c89ab1f962f8157c",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q17-solution.svg",
+      "mainBeforeBlob": "ea67c637256667e45c8b133ca6ea152aa5b0884f",
+      "mainAfterBlob": "ea67c637256667e45c8b133ca6ea152aa5b0884f",
+      "ownCandidateBlob": "ea67c637256667e45c8b133ca6ea152aa5b0884f",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q17.png",
+      "mainBeforeBlob": "e7c0bd6e22036df2191b726d779a84cb9b84851b",
+      "mainAfterBlob": "e7c0bd6e22036df2191b726d779a84cb9b84851b",
+      "ownCandidateBlob": "e7c0bd6e22036df2191b726d779a84cb9b84851b",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q18-solution.svg",
+      "mainBeforeBlob": "c3b25507f0f123d7d9fdfaac380d9447d2524c68",
+      "mainAfterBlob": "c3b25507f0f123d7d9fdfaac380d9447d2524c68",
+      "ownCandidateBlob": "c3b25507f0f123d7d9fdfaac380d9447d2524c68",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q18.png",
+      "mainBeforeBlob": "9225f97064ee96ddb12e52a8deaadff15df54283",
+      "mainAfterBlob": "9225f97064ee96ddb12e52a8deaadff15df54283",
+      "ownCandidateBlob": "9225f97064ee96ddb12e52a8deaadff15df54283",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q19-solution.svg",
+      "mainBeforeBlob": "d8731833ba5ef9ee9b4bd414d8e8bf64cc6029c8",
+      "mainAfterBlob": "d8731833ba5ef9ee9b4bd414d8e8bf64cc6029c8",
+      "ownCandidateBlob": "d8731833ba5ef9ee9b4bd414d8e8bf64cc6029c8",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q19.png",
+      "mainBeforeBlob": "2af40faa0b72a6d9f87d69adc8b1b0751d2c96e4",
+      "mainAfterBlob": "2af40faa0b72a6d9f87d69adc8b1b0751d2c96e4",
+      "ownCandidateBlob": "2af40faa0b72a6d9f87d69adc8b1b0751d2c96e4",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q2-solution.svg",
+      "mainBeforeBlob": "d763a9f103631918ff2e93f76d247070f7e8053a",
+      "mainAfterBlob": "d763a9f103631918ff2e93f76d247070f7e8053a",
+      "ownCandidateBlob": "d763a9f103631918ff2e93f76d247070f7e8053a",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q20-solution.svg",
+      "mainBeforeBlob": "52eb80133c3c288081cb7764b98668d4ccf900e9",
+      "mainAfterBlob": "52eb80133c3c288081cb7764b98668d4ccf900e9",
+      "ownCandidateBlob": "52eb80133c3c288081cb7764b98668d4ccf900e9",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q20.png",
+      "mainBeforeBlob": "27d2a38a62bc9f29bcf7861bbf87e35e565b6b51",
+      "mainAfterBlob": "27d2a38a62bc9f29bcf7861bbf87e35e565b6b51",
+      "ownCandidateBlob": "27d2a38a62bc9f29bcf7861bbf87e35e565b6b51",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q21-solution.svg",
+      "mainBeforeBlob": "991bd9bd041cf0c8dc882396420039a3d1bbb400",
+      "mainAfterBlob": "991bd9bd041cf0c8dc882396420039a3d1bbb400",
+      "ownCandidateBlob": "991bd9bd041cf0c8dc882396420039a3d1bbb400",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q21.png",
+      "mainBeforeBlob": "97cfe407bdb69aab7bc74dbdbfcf99a16107c5f7",
+      "mainAfterBlob": "97cfe407bdb69aab7bc74dbdbfcf99a16107c5f7",
+      "ownCandidateBlob": "97cfe407bdb69aab7bc74dbdbfcf99a16107c5f7",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q22-solution-v2.svg",
+      "mainBeforeBlob": "ade67cb6906da975416b369c93e2e2c88cc8e7ed",
+      "mainAfterBlob": "ade67cb6906da975416b369c93e2e2c88cc8e7ed",
+      "ownCandidateBlob": "ade67cb6906da975416b369c93e2e2c88cc8e7ed",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q22.png",
+      "mainBeforeBlob": "e15a3538a95ceffe85e8efb461db585078454099",
+      "mainAfterBlob": "e15a3538a95ceffe85e8efb461db585078454099",
+      "ownCandidateBlob": "e15a3538a95ceffe85e8efb461db585078454099",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q23-solution.svg",
+      "mainBeforeBlob": "c969b4dee181e6f63b8e3572fcb1e8b6e08d068c",
+      "mainAfterBlob": "c969b4dee181e6f63b8e3572fcb1e8b6e08d068c",
+      "ownCandidateBlob": "c969b4dee181e6f63b8e3572fcb1e8b6e08d068c",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q23.png",
+      "mainBeforeBlob": "865e28cae667a5fd03319c3b98c68d36e9adb903",
+      "mainAfterBlob": "865e28cae667a5fd03319c3b98c68d36e9adb903",
+      "ownCandidateBlob": "865e28cae667a5fd03319c3b98c68d36e9adb903",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q3.png",
+      "mainBeforeBlob": "ce3bad6611f7cbfd92eec6d075b13e6de8acd08f",
+      "mainAfterBlob": "ce3bad6611f7cbfd92eec6d075b13e6de8acd08f",
+      "ownCandidateBlob": "ce3bad6611f7cbfd92eec6d075b13e6de8acd08f",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q5.png",
+      "mainBeforeBlob": "fcb8e419c24d88834d2de3e8eb405cdfa4246407",
+      "mainAfterBlob": "fcb8e419c24d88834d2de3e8eb405cdfa4246407",
+      "ownCandidateBlob": "fcb8e419c24d88834d2de3e8eb405cdfa4246407",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q8.png",
+      "mainBeforeBlob": "b4343707c632b097576ce456396a7ad2afb49cfb",
+      "mainAfterBlob": "b4343707c632b097576ce456396a7ad2afb49cfb",
+      "ownCandidateBlob": "b4343707c632b097576ce456396a7ad2afb49cfb",
+      "allThreeExact": true
+    },
+    {
+      "path": "archive/assets/images/25_연향중_2학기_중간_중3_수학/q9.png",
+      "mainBeforeBlob": "b7cd5e7f253739925972bde8ed4f30f3677875e0",
+      "mainAfterBlob": "b7cd5e7f253739925972bde8ed4f30f3677875e0",
+      "ownCandidateBlob": "b7cd5e7f253739925972bde8ed4f30f3677875e0",
+      "allThreeExact": true
+    }
+  ],
+  "definitionPartition": [
+    {
+      "requestId": "m3s2-finalized-e011-condition2-transport-20261116",
+      "collection": "conditions",
+      "key": "COND_SPECIFIED_APPROXIMATIONS",
+      "afterSha256": "5602b25195705164db1574406f7f13a1fa050baba2a0f424e58b95c167f9a0fd"
+    },
+    {
+      "requestId": "m3s2-e011-polygon-provider-main316-rebind-20261116",
+      "collection": "concepts",
+      "key": "CC_POLYGON_INTERIOR_ANGLE_SUM",
+      "afterSha256": "d0793e5d1f53923e049a0bdeab5e0fc9497d7c01062b5910412df61a38415e86"
+    }
+  ],
+  "newBeforeAfterOrSourceReviewValues": false,
+  "sourceOrStudentOrAssetEditsApplied": false,
+  "officialRegistrar": "NOT_RUN",
+  "officialConsumer": "NOT_RUN"
+}

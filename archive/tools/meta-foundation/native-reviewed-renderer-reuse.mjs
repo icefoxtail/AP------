@@ -7,6 +7,7 @@ import { REASSESSED_STUDENT_FIELDS, validateReviewedSourceReassessment } from '.
 import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
 import { reviewedRendererBindingPath, buildReviewedRendererBinding } from './reviewed-current-renderer-continuity.mjs';
 import { REVIEWED_RPM_FIELDS } from './reviewed-rpm-provenance.mjs';
+import { verifyIssuedRpmEvidenceContinuity } from './issued-rpm-evidence-continuity.mjs';
 import { validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
 import { readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
 import { readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
@@ -39,8 +40,15 @@ function claimedRows(receipt, root, identity, ordinal, cache, historicalContext,
     const bytes = solutionHistory ? readIssuedSolutionRpmHistoricalEvidence(solutionHistory, receipt, ref)
       : historicalContext ? readIssuedRpmHistoricalEvidence(historicalContext, receipt, ref)
         : fs.readFileSync(safePath(root, ref.path));
-    if (sha(bytes) !== ref.sha256) fail('current evidence bytes changed');
-    const key = `renderer-reuse-claim:${ref.sha256}`;
+    if (sha(bytes) !== ref.sha256) {
+      if (historicalContext || solutionHistory) fail('historical evidence bytes changed');
+      let continuity;
+      try { continuity = verifyIssuedRpmEvidenceContinuity({ root, receipt,
+        receiptPath: `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${receipt.requestId}.json`, evidenceRef: ref }); }
+      catch { fail('current evidence bytes changed'); }
+      if (continuity?.currentRef.sha256 !== sha(bytes)) fail('current evidence bytes changed');
+    }
+    const key = `renderer-reuse-claim:${sha(bytes)}`;
     if (!cache.has(key)) {
       let doc; try { doc = JSON.parse(bytes); } catch { doc = null; }
       cache.set(key, doc);

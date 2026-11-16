@@ -1,0 +1,173 @@
+{
+  "schemaVersion": "m2-exact-display-repair-code-verification-v1",
+  "author": "/root/m1_compact_transport",
+  "commit": "9d35b4000661bf6d6b0496ef7dc5e52c54af4471",
+  "parentCommit": "fc06147312d612b291816b95abf4e22a7bdd6c21",
+  "tree": "305a39a7e68dc7a4fe69617eeea34bef06da317d",
+  "workingTreeTrackedClean": true,
+  "all15CommittedFilesRawExact": true,
+  "syntaxAndDiffCheck": "PASS_AT_FREEZE",
+  "logs": [
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/display-repair-first-positive.log",
+      "sha256": "782221bc31565835923c756706d522ce0a4e3043e3f68442564058e2a794efa1",
+      "bytes": 372,
+      "phase": "EARLY_POSITIVES_BEFORE_NEGATIVE_COVERAGE",
+      "tests": 3,
+      "passCount": 3,
+      "failCount": 0,
+      "skipCount": 0,
+      "durationMs": 9745.669803
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/display-repair-boundary-first.log",
+      "sha256": "040c2a8cd0c7e497e1848e8aab28e79dd1e356d052b24a204aabb77b76066d06",
+      "bytes": 1245,
+      "phase": "BEFORE_FINAL_ROLE_CLOSURE_GUARD",
+      "tests": 13,
+      "passCount": 13,
+      "failCount": 0,
+      "skipCount": 0,
+      "durationMs": 39948.862278
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/display-repair-evidence-first.log",
+      "sha256": "58be92535e4f7b73a6278d7899c877aba6dfad0392ec7582c197f9d27ceaba29",
+      "bytes": 1400,
+      "phase": "BEFORE_FINAL_ROLE_CLOSURE_GUARD",
+      "tests": 15,
+      "passCount": 15,
+      "failCount": 0,
+      "skipCount": 0,
+      "durationMs": 29405.545054
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/display-repair-history-first.log",
+      "sha256": "5a237043e5bf565e403a3464d370cac635a948fdd25e73d9456cf69a5387cc18",
+      "bytes": 1253,
+      "phase": "BEFORE_FINAL_ROLE_CLOSURE_GUARD",
+      "tests": 12,
+      "passCount": 12,
+      "failCount": 0,
+      "skipCount": 0,
+      "durationMs": 26108.484849
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/display-repair-markup-first.log",
+      "sha256": "172a37e5d0de4e3d7ea047edb8ed4dcc897a96e031636616ed3db3e29cf74633",
+      "bytes": 1103,
+      "phase": "BEFORE_FINAL_ROLE_CLOSURE_GUARD",
+      "tests": 12,
+      "passCount": 12,
+      "failCount": 0,
+      "skipCount": 0,
+      "durationMs": 20318.784256
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/display-repair-final-role-closure.log",
+      "sha256": "9e403cf489f1d231d094946aeff1f228c10fe23e90a1082ca308ef6605b37f77",
+      "bytes": 644,
+      "phase": "EXACT_FINAL_CODE_THREE_POSITIVES_THREE_ADDED_NEGATIVES",
+      "tests": 6,
+      "passCount": 6,
+      "failCount": 0,
+      "skipCount": 0,
+      "durationMs": 24239.364225,
+      "codeCommit": "9d35b4000661bf6d6b0496ef7dc5e52c54af4471"
+    }
+  ],
+  "ciRegistration": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/display-repair-ci-verification.json",
+    "sha256": "8eb2349fcebb3853695856edf3995e35c3a7f29abe14f19d1253c990d7b8d638",
+    "bytes": 14149
+  },
+  "uniqueCurrentTestNames": 55,
+  "observedUniquePassingTestNamesAcrossPhases": 55,
+  "earlierCompleteContractPhase": {
+    "tests": 52,
+    "passCount": 52,
+    "finalRoleClosureGuardsNotYetPresent": true
+  },
+  "exactFinalDeltaPhase": {
+    "tests": 6,
+    "passCount": 6,
+    "threeRepeatedPositives": 3,
+    "threeNewNegatives": 3
+  },
+  "all55ExecutedTogetherOnExactFinalCode": false,
+  "doNotSumOverlappingRuns": true,
+  "legacyCoverage": "Each synthetic fixture replays its literal legacy current/imported history. No new full legacy or E017 suite execution is claimed on this commit.",
+  "requiredCommands": [
+    {
+      "file": "tests/item-4slot-m2s2-exact-display-repair.test.cjs",
+      "registeredExactlyOnce": true,
+      "timeoutMs": 60000,
+      "selectedScopes": [
+        "metadata",
+        "output",
+        "registration"
+      ]
+    },
+    {
+      "file": "tests/item-4slot-m2s2-display-repair-evidence.test.cjs",
+      "registeredExactlyOnce": true,
+      "timeoutMs": 60000,
+      "selectedScopes": [
+        "metadata",
+        "output",
+        "registration"
+      ]
+    },
+    {
+      "file": "tests/item-4slot-m2s2-display-repair-history.test.cjs",
+      "registeredExactlyOnce": true,
+      "timeoutMs": 60000,
+      "selectedScopes": [
+        "metadata",
+        "output",
+        "registration"
+      ]
+    },
+    {
+      "file": "tests/item-4slot-m2s2-display-repair-markup.test.cjs",
+      "registeredExactlyOnce": true,
+      "timeoutMs": 60000,
+      "selectedScopes": [
+        "metadata",
+        "output",
+        "registration"
+      ]
+    }
+  ],
+  "dependencies": {
+    "importedNativeAmendment": "060e7691d1467fd4d08b164463b95501de632ab6",
+    "e017Original": "5d1eecf7c47664c54ec115bfe8a962591ad0dcf3",
+    "e017ActualR2Shape": "15b77321daf9c579bdae54c4aa5783bb67da815e",
+    "localExactR2Cherry": "fc06147312d612b291816b95abf4e22a7bdd6c21"
+  },
+  "scope": {
+    "sourceWrites": 0,
+    "assetWrites": 0,
+    "productionCompactWrites": 0,
+    "generatedWrites": 0,
+    "remoteWrites": 0,
+    "newMathApprovals": 0,
+    "newDifficultyApprovals": 0,
+    "newSlotValues": 0,
+    "actualRegistration": "NOT_RUN",
+    "actualConsumer": "NOT_RUN",
+    "productionHoldsReleased": 0
+  },
+  "publicationRefs": {
+    "candidateSources": "65c461fa57e74516a060cc507806ec96adac9abc",
+    "rootObservations": "327979c2a0fe158cf5c7075e7d133561c6992776",
+    "rawIndependentObservations": "2327b3d04050c15510d3eeaeeaa17e1ac4cd1c02",
+    "closedObservationBindings": "10749a1ffdb22f20a02b9293a57d46833a31b2bc"
+  },
+  "remainingGates": [
+    "ROOT independent code review",
+    "Publish exact repair carriers and source-bound input snapshots",
+    "E022 requires literal amended compact with original negative source",
+    "Assign bounded actual registration and Consumer execution window"
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "main316-builder-hold8dfa-union-validation-v1",
+  "reviewer": "/root/m1_compact_transport",
+  "status": "SCOPED_UNION_VALIDATED_NOT_APPLIED",
+  "preparedAtUtc": "2026-11-16T09:32:03.571398+00:00",
+  "base": "b4660aff7d1ca92c07498e3f1eeb89fdba71cd1c",
+  "ours": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+  "main": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+  "autoMergeTree": "11140b908aa3009ce951962ae59b15425c3dae62",
+  "resolvedProductionFiles": 1,
+  "conflictBlocksResolved": 2,
+  "candidate": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/resolved/tools/4slot/build-4slot-runtime.cjs",
+    "sha256": "6a50275c6973b399a5f69ba8b67f475f7719ac0535d69fc34d9967425e43ca02",
+    "bytes": 36328
+  },
+  "rawGitBlobSha1": "433a96cdf468e3fca9193d59c89fb66b4db226d3",
+  "static": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/static-union-verification.json",
+    "sha256": "eafa327e5d08587187515bf65e7ade87646ae7d3a222bcc9829c286b3a777f18",
+    "bytes": 3429
+  },
+  "tests": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "tests/item-4slot-existing-renderer-v2.test.cjs"
+      ],
+      "cwd": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/test-root",
+      "timeoutSeconds": 60,
+      "exitCode": 0,
+      "seconds": 19.12608100300713,
+      "counts": {
+        "tests": 36,
+        "pass": 36,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/item-4slot-existing-renderer-v2.test.cjs.log",
+        "bytes": 3051,
+        "sha256": "a36b2179c07ea1c137a1f9a64c533134e321dcc069a0b1c89754c569d2a345d1"
+      },
+      "syntheticOnly": true
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "tests/item-4slot-public-reviewed-rebind.test.cjs"
+      ],
+      "cwd": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/test-root",
+      "timeoutSeconds": 60,
+      "exitCode": 0,
+      "seconds": 5.175172567003756,
+      "counts": {
+        "tests": 32,
+        "pass": 32,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/item-4slot-public-reviewed-rebind.test.cjs.log",
+        "bytes": 3021,
+        "sha256": "dbee33d43655a715e828b96e1dca0de22f7b4ef53799a790e2591e2bbd5d454a"
+      },
+      "syntheticOnly": true
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "tests/item-4slot-current-renderer-negative-hold.test.cjs"
+      ],
+      "cwd": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/test-root",
+      "timeoutSeconds": 60,
+      "exitCode": 0,
+      "seconds": 15.881816491993959,
+      "counts": {
+        "tests": 50,
+        "pass": 50,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/item-4slot-current-renderer-negative-hold.test.cjs.log",
+        "bytes": 5165,
+        "sha256": "70f798da13e63607ee909ed47ab47e04e4f238b843d8fe83623297f4445d6419"
+      },
+      "syntheticOnly": true
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "tests/item-4slot-current-renderer-negative-hold-v2.test.cjs"
+      ],
+      "cwd": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/test-root",
+      "timeoutSeconds": 60,
+      "exitCode": 0,
+      "seconds": 24.978129056995385,
+      "counts": {
+        "tests": 55,
+        "pass": 55,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/item-4slot-current-renderer-negative-hold-v2.test.cjs.log",
+        "bytes": 5111,
+        "sha256": "696910c0106cfbae0d2a322285d9c0fc549b1c60e091988e8cdf1dae808d4ad1"
+      },
+      "syntheticOnly": true
+    }
+  ],
+  "totals": {
+    "tests": 173,
+    "pass": 173,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "perCommandBudgetSeconds": 60,
+  "holdTestCommit": "8dfa9e4d548b0a6678107f620d1c52fc821c5a48",
+  "holdTestMainOverlap": 0,
+  "integrationMeaning": [
+    "The original main existing renderer validation, accepted exact receipt, full partition, source/whole-question binding, mixed-authority rejection, observed evidence and per-row receipt remain intact.",
+    "The original main public partial schema dispatch and transitive contract fingerprint remain intact.",
+    "Every ours current-negative/M2/current-imported/display historical obligation, full-file validation and digest remains before cached-row reuse.",
+    "The item hold validator and derived hold context call remain literal ours bytes. The test adapter still requires the production history reader and full-file validator; no boolean is hardcoded true.",
+    "The 8dfa four test files remain exact and have no incoming-main modifications."
+  ],
+  "inputManifest": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/test-root-input-manifest.json",
+    "sha256": "77ba7389f814b7e68867833d5073f53b87e2df1d4a7c9cb8632b56320619a5b0",
+    "bytes": 7504
+  },
+  "diffs": [
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/ours-resolved.diff",
+      "sha256": "0065ad776e4426508c989764088a186940486932d874e1e9350e664338f995bd",
+      "bytes": 12109
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-builder-union/main-resolved.diff",
+      "sha256": "19e94c53fa4e47eec0214f06161d1e9035db36390cd0631ab4ba5db3fb07dc2a",
+      "bytes": 13903
+    }
+  ],
+  "sourceCompactDecisionWrites": 0,
+  "rootWorktreeWrites": 0,
+  "remoteWrites": 0,
+  "fullDataTest": "NOT_RUN: code-only test root contains no operational source/identity/compact data",
+  "fullBuilderOrConsumer": "NOT_RUN: only synthetic suites; ROOT must validate complete final union",
+  "frozenCheckpoints": {
+    "AP-4slot-data-hold-context": {
+      "head": "8dfa9e4d548b0a6678107f620d1c52fc821c5a48",
+      "trackedStatus": "CLEAN"
+    },
+    "AP-m2-e035-renderer-continuity": {
+      "head": "542639cf7c873a1e462e683c63224fcc7d64b8ad",
+      "trackedStatus": "CLEAN"
+    }
+  },
+  "fixturePreparationFailure": {
+    "testExecuted": false,
+    "reason": "Missing shared promisor consumer/test blobs before code-only materialization; exact authorized file-only reads installed verified Git objects; no assertions were modified."
+  }
+}

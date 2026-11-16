@@ -1,0 +1,777 @@
+{
+  "schemaVersion": "main316-native-code-union-independent-read-v1",
+  "reviewer": "/root/m1_compact_transport",
+  "createdAt": "2026-11-16T09:38:51.463008+00:00",
+  "decision": "NO_BLOCKING_FINDING_IN_SCOPED_STATIC_REVIEW",
+  "scope": {
+    "productionCandidateFiles": 5,
+    "base": "b4660aff7d1ca92c07498e3f1eeb89fdba71cd1c",
+    "ours": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+    "main": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+    "automaticMergeTree": "11140b908aa3009ce951962ae59b15425c3dae62",
+    "codeEdits": 0,
+    "testsExecutedByReviewer": 0,
+    "productionRegistration": 0,
+    "consumerExecution": 0,
+    "sourceAssetCompactWrites": 0,
+    "remoteWrites": 0
+  },
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "candidate": {
+        "localPath": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/candidate/archive/tools/meta-foundation/auto-register-merged-source.mjs",
+        "sha256": "9d9da652a84ce95a35da40786f939243ed11d655077bffa6d0b6e64812d8975f",
+        "gitBlobSha1": "c4bf175ef8a8087d560d9789d04a02ea9a797e07",
+        "bytes": 67229
+      },
+      "readSnapshotExact": true,
+      "versions": {
+        "base": {
+          "commit": "b4660aff7d1ca92c07498e3f1eeb89fdba71cd1c",
+          "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+          "gitBlobSha1": "87e62661bb8036c65512bd19472ced068e3b9a6a",
+          "sha256": "60b88238e96792bfb7c3b72b022f8839c433a92e5f9f034d971630e3f7fc603f",
+          "bytes": 58060,
+          "exactRootSnapshot": true
+        },
+        "ours": {
+          "commit": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+          "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+          "gitBlobSha1": "4aa2c2a66e99f56bfe55bc6e11f93e53068e6faf",
+          "sha256": "7527ec8dd544469351adb1654a59d129747ac6ee9b2ba24adb7cbe1004ce468f",
+          "bytes": 65828,
+          "exactRootSnapshot": true
+        },
+        "main": {
+          "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+          "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+          "gitBlobSha1": "2db796256cd14e0fa484679aa7cc6e6ebb5b2717",
+          "sha256": "c92b3ac0fd0bf7864fc4f43b3723f71573b8f1c1b4bc43d024e64d735c67650c",
+          "bytes": 59221,
+          "exactRootSnapshot": true
+        }
+      },
+      "readDiffs": [
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/auto-register-merged-source.mjs.base.diff",
+          "sha256": "a0cba8db49fde95f73b892055882597106bf270e2ded64e39bd6a5a9bf3bc33f",
+          "bytes": 22622,
+          "against": "base"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/auto-register-merged-source.mjs.ours.diff",
+          "sha256": "e35b04fe8364926f1fccb3267829be4d878758dc394eb6208449fbb9c54f2a25",
+          "bytes": 4375,
+          "against": "ours"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/auto-register-merged-source.mjs.main.diff",
+          "sha256": "30e15fd87848f974181b59d12ff882e8617521d989557115ed4c38c9e741cd77",
+          "bytes": 22317,
+          "against": "main"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/auto-register-merged-source.mjs.merged.diff",
+          "sha256": "4736cb36974bc0d9f0c6cdead8fb012aa78f9d4b1fe22a08a995053d9f594fd6",
+          "bytes": 7933,
+          "against": "merged"
+        }
+      ]
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+      "candidate": {
+        "localPath": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/candidate/archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+        "sha256": "1136a106760fa6e5803a7b5e1859254f94f7345cfb65af789d026021702209dc",
+        "gitBlobSha1": "3fa5ecc18479e6bb6d9190233c1b07baa9769168",
+        "bytes": 36602
+      },
+      "readSnapshotExact": true,
+      "versions": {
+        "base": {
+          "commit": "b4660aff7d1ca92c07498e3f1eeb89fdba71cd1c",
+          "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+          "gitBlobSha1": "f79d83c71733ba14b5e1d9ddd79b8b54fbb601ca",
+          "sha256": "af1cfad8057d55dacc988c242d697d32100b072596161c43c9adf8736a7d9adb",
+          "bytes": 30963,
+          "exactRootSnapshot": true
+        },
+        "ours": {
+          "commit": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+          "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+          "gitBlobSha1": "0a78dde232447e707395ba04a763bd5c93261076",
+          "sha256": "19f5a8b87400d88f54a3cccf4200f55f54d598e8f7f2389b959c8118b54c42fa",
+          "bytes": 34945,
+          "exactRootSnapshot": true
+        },
+        "main": {
+          "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+          "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+          "gitBlobSha1": "8d156d5084712ca840992388d9c542962e6b8dc9",
+          "sha256": "2f968d1ef7e958d61139d431ef24eefe146776dd54a539ad13f431d144d95dcb",
+          "bytes": 32620,
+          "exactRootSnapshot": true
+        }
+      },
+      "readDiffs": [
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/native-preserved-source-reuse.mjs.base.diff",
+          "sha256": "cf844bb056c310db8baebe7dc9b088fe49f05456419810a4aea243d0971ec2e2",
+          "bytes": 19853,
+          "against": "base"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/native-preserved-source-reuse.mjs.ours.diff",
+          "sha256": "4ddfaa8a96f8507f50c82184015b57811eeb4682014be9370fb539abf2d43a1b",
+          "bytes": 3509,
+          "against": "ours"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/native-preserved-source-reuse.mjs.main.diff",
+          "sha256": "99386051b88b4c2f552677063996f336043fc568a27f278086a4f42116369b11",
+          "bytes": 18036,
+          "against": "main"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/native-preserved-source-reuse.mjs.merged.diff",
+          "sha256": "5962f1389d86f22873ddf903648c48774cfe0eeb6fe7b74bda641667a6373b76",
+          "bytes": 2322,
+          "against": "merged"
+        }
+      ]
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs",
+      "candidate": {
+        "localPath": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/candidate/archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs",
+        "sha256": "75ef3069e362e271d3c29e5d495a561fe4adabcd96d0595ea16ba4b645f7b751",
+        "gitBlobSha1": "870541f33b5298d072e1d438defdfb6fa9ce6956",
+        "bytes": 22568
+      },
+      "readSnapshotExact": true,
+      "versions": {
+        "base": {
+          "commit": "b4660aff7d1ca92c07498e3f1eeb89fdba71cd1c",
+          "path": "archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs",
+          "gitBlobSha1": "22b46fba2d6fbbb9e5b2aae0e2db5b0d3e82dca9",
+          "sha256": "e7675a5124d206dc376341e1453398e3f597172c821b7a364d6fae9d019e067a",
+          "bytes": 20170,
+          "exactRootSnapshot": true
+        },
+        "ours": {
+          "commit": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+          "path": "archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs",
+          "gitBlobSha1": "17bcf549b804d94f5310392de2acfa4d69dd9e14",
+          "sha256": "4c4b8ac84f2b260a9899d334431b2bcf4d16dcf870102bd96fb662a8cfacf513",
+          "bytes": 21713,
+          "exactRootSnapshot": true
+        },
+        "main": {
+          "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+          "path": "archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs",
+          "gitBlobSha1": "04735cdb0833106ab563bd7ebd1fa14edbc92ee0",
+          "sha256": "a86f97a5afb2689471784208e313cdf94c20e9498caaf80178cb396c7081f976",
+          "bytes": 20804,
+          "exactRootSnapshot": true
+        }
+      },
+      "readDiffs": [
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/native-reviewed-figure-reuse.mjs.base.diff",
+          "sha256": "2c6afb32b2c90ff58f143422201ad6f6aa07288953b3019ced5ab7e2c39f9d43",
+          "bytes": 5490,
+          "against": "base"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/native-reviewed-figure-reuse.mjs.ours.diff",
+          "sha256": "5361013163e16565c62bb18d2b03c5240cb6b1026dd2980af6c03338071185ee",
+          "bytes": 2762,
+          "against": "ours"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/native-reviewed-figure-reuse.mjs.main.diff",
+          "sha256": "58941c49a4b6899a05b4657089cbfa9d80f9f1c01dfd055e631d54787f5447fa",
+          "bytes": 4450,
+          "against": "main"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/native-reviewed-figure-reuse.mjs.merged.diff",
+          "sha256": "11bdaa7e93b0833a7e1f513d2adee1b13f0e4630a99fbde76663616bb49d495f",
+          "bytes": 3144,
+          "against": "merged"
+        }
+      ]
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+      "candidate": {
+        "localPath": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/candidate/archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+        "sha256": "22495c79f10d21317b39d834c72fe1cd786ef8877810ee2e079da18157c65b2a",
+        "gitBlobSha1": "276c92c83a1b633e05884d0c0da39e92fb70675b",
+        "bytes": 13052
+      },
+      "readSnapshotExact": true,
+      "versions": {
+        "base": {
+          "commit": "b4660aff7d1ca92c07498e3f1eeb89fdba71cd1c",
+          "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+          "gitBlobSha1": "e618c2693cf54779ecc0c4247aad058c6021b936",
+          "sha256": "bc70d6a59522e8529377823fdcebc46a02171511ad2fd961c7923d7f2fc15b75",
+          "bytes": 11869,
+          "exactRootSnapshot": true
+        },
+        "ours": {
+          "commit": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+          "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+          "gitBlobSha1": "98607ad5ac0f2542662896cb4f18bc3a39450508",
+          "sha256": "19d8b499cacfe4262ca3d22fb8959a1967909c108f485682d86e4cdeabc8de51",
+          "bytes": 12230,
+          "exactRootSnapshot": true
+        },
+        "main": {
+          "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+          "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+          "gitBlobSha1": "2a92763df7777114ed403b0fc9e5ca5481171daa",
+          "sha256": "83de1798ec68b90d29271a9bfd7a175eb19e57fd7c93e03d35c6992666a09336",
+          "bytes": 12520,
+          "exactRootSnapshot": true
+        }
+      },
+      "readDiffs": [
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/native-reviewed-renderer-reuse.mjs.base.diff",
+          "sha256": "63a25a4f580001ac275e45bdf2f4aee30c29e17762cc51c1a20c9e2e93a6671c",
+          "bytes": 3516,
+          "against": "base"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/native-reviewed-renderer-reuse.mjs.ours.diff",
+          "sha256": "b0233704d7677cd63b49b49893718f84bae00870efc1abf9a070f874789fd81f",
+          "bytes": 3265,
+          "against": "ours"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/native-reviewed-renderer-reuse.mjs.main.diff",
+          "sha256": "805c883fee2629bfc34ae9fe27266d2302bad382394b5799815289e328307173",
+          "bytes": 1858,
+          "against": "main"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/native-reviewed-renderer-reuse.mjs.merged.diff",
+          "sha256": "133c9fb703f3ec766ca51bcba5d832946c98430abe377a08d83ee988b18c1fdb",
+          "bytes": 2014,
+          "against": "merged"
+        }
+      ]
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "candidate": {
+        "localPath": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/candidate/archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+        "sha256": "edfde041d9a445fafe27f3f597b75f63422487268d883fd9b48c2413d3c1a954",
+        "gitBlobSha1": "a5409edfeb1f47093b1995f6a090d5531a4c24ec",
+        "bytes": 36521
+      },
+      "readSnapshotExact": true,
+      "versions": {
+        "base": {
+          "commit": "b4660aff7d1ca92c07498e3f1eeb89fdba71cd1c",
+          "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+          "gitBlobSha1": "d4fd054f5e3a9101ad4d02b34cb054eefbee997b",
+          "sha256": "d253028b814db981a620e5c852ceb2b490699d76ed81ce9615db0d90f7310b2b",
+          "bytes": 28802,
+          "exactRootSnapshot": true
+        },
+        "ours": {
+          "commit": "672d9f1f808d726f9ddfb4c9ddc40877de4f768e",
+          "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+          "gitBlobSha1": "8273e1b1b64e685f67c3d5b5aa01d1f0c4d62cbe",
+          "sha256": "fa872047b7435897c4ff46f0b9113065f7eba051abd94c01f19ecb68e0f4945c",
+          "bytes": 35521,
+          "exactRootSnapshot": true
+        },
+        "main": {
+          "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+          "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+          "gitBlobSha1": "5a6ac0ca07a6b5d746b8b6e17799a60984ffc261",
+          "sha256": "c2ff821e47ccfc85466652a9bf32db8f2576470b0416bc024e78c562db6e52a7",
+          "bytes": 29812,
+          "exactRootSnapshot": true
+        }
+      },
+      "readDiffs": [
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/reviewed-source-reassessment.mjs.base.diff",
+          "sha256": "b1e04294c8648ba8315cf8dcc2314c3b98d52b6e130f634e5adfcb97dfbb45bf",
+          "bytes": 16423,
+          "against": "base"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/reviewed-source-reassessment.mjs.ours.diff",
+          "sha256": "c61a8e797ed6e39116f38b03fee79a8aacc05796887c938b9e25d6954e39435d",
+          "bytes": 4244,
+          "against": "ours"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/reviewed-source-reassessment.mjs.main.diff",
+          "sha256": "6253f366012114a784d4ac80c5e379b03efc1e974e085421d2b32a8ba5251b72",
+          "bytes": 15203,
+          "against": "main"
+        },
+        {
+          "path": "/workspace/scratch/987d4bf32f40/AP-4slot-data-hold-context/.tmp/main316-native-union-independent/reviewed-source-reassessment.mjs.merged.diff",
+          "sha256": "b5842d17309f23598f17334bc2686fd4a23ff618e62f2041f2b17068a53ad6cd",
+          "bytes": 4305,
+          "against": "merged"
+        }
+      ]
+    }
+  ],
+  "mainSupportRead": [
+    {
+      "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+      "path": "archive/tools/meta-foundation/native-issued-child-continuity.mjs",
+      "gitBlobSha1": "273b4b1ccd20403a53c8a10d541189bf9551e444",
+      "sha256": "84e8f0624b458a917dcfd5e664c7fb27bb92b29a03742f38fc39ee984bae698e",
+      "bytes": 16953
+    },
+    {
+      "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+      "path": "archive/tools/meta-foundation/native-issued-rpm-history.mjs",
+      "gitBlobSha1": "b05122d7878996d025a9fad4f3ff001041955762",
+      "sha256": "8148675a44f9d95909833f97f1058e7b378f0fa78be1c2921c862d2cf1bdab5f",
+      "bytes": 24405
+    },
+    {
+      "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+      "path": "archive/tools/meta-foundation/native-issued-solution-rpm-history.mjs",
+      "gitBlobSha1": "69fc9ed7b5d7c92ac702e0864deea6d62499c73c",
+      "sha256": "acb4ea0924edd4df03020e5a7eadda311a8d264ef80a46a31bcddfaa3bbab246",
+      "bytes": 35654
+    },
+    {
+      "commit": "316ec01cf8e0c70420a450405a003c695ffed1f5",
+      "path": "archive/tools/meta-foundation/reviewed-m2-cc-renderer-continuity.mjs",
+      "gitBlobSha1": "e5428569e7ebfbb0037a9b7d7a347af7222307cf",
+      "sha256": "35403077a1320a2313049682404a08a95bf4414a559b5e0f14519ae350aaa7f6",
+      "bytes": 17471
+    }
+  ],
+  "findings": [],
+  "reviewedBoundaries": [
+    {
+      "id": "HISTORICAL_VS_CURRENT_EVIDENCE",
+      "result": "PRESERVED",
+      "observation": "nativeReviewReceipt authenticates one private historical context, rejects dual contexts, reads only that context's authenticated predecessor references, and cannot invoke current RPM continuity after a historical hash mismatch. Figure and renderer claim scanners use the same historical/current separation."
+    },
+    {
+      "id": "CONTEXT_AUTHENTICATION",
+      "result": "PRESERVED",
+      "observation": "Main historical tokens are private WeakMap entries produced by exact published receipt/source/metadata/runtime/identity validation. Issued and original/current cursor replays still use the original official native verifier; non-RPM refs remain fresh live exact checks. Published child sidecars require HEAD ancestry, actual published table states, and unchanged selected whole question."
+    },
+    {
+      "id": "CURRENT_RPM_FALLBACK",
+      "result": "FAIL_CLOSED",
+      "observation": "Only the live non-historical mismatch branch calls verifyIssuedRpmEvidenceContinuity. A returned currentRef SHA must equal the freshly read bytes. Missing eligibility, unavailable original request ancestry, malformed proof or thrown validation yields the original current evidence bytes changed error. The two catch clauses normalize rejection text without creating a success path."
+    },
+    {
+      "id": "SOURCE_RECOVERY_AND_LINEAGE",
+      "result": "PRESERVED",
+      "observation": "Existing issued-source recovery, original FINAL_QA renderer, verified direct source-review lineage and fingerprint-only preservation paths remain. Direct-review classification still requires official source binding verification. Preservation chains retain cycle/depth, exact prior receipt, selected whole-question/metadata/runtime/identity and full/subset replay checks."
+    },
+    {
+      "id": "ISSUED_CHILD_TERMINAL",
+      "result": "PRESERVED",
+      "observation": "A recognized published child first authenticates its full historical context. Its exact source-only shape is incompatible with the earlier mixed-renderer and ordinary-reassessment exits. Terminal prior receipt equality and both native cursor replays remain mandatory."
+    },
+    {
+      "id": "OLD_CURSOR_RENDERER_PROVIDER",
+      "result": "PRESERVED",
+      "observation": "Existing figure, renderer, M2 problem renderer, M2 renderer refresh and provider paths remain. M2 current/provider old cursors require official reviewedSource true and exactly one typed proof whose native student-payload hash matches the supplied previous cursor; marker presence alone does not grant reuse."
+    },
+    {
+      "id": "M2_CC_ORIGINAL_FINALIZER",
+      "result": "PRESERVED",
+      "observation": "Main M2 CC renderer bridge binds the exact immutable accepted request, original selected inventory/registry changes/native spec/after values, native student payload and current renderer assets. Reassessment calls the existing proposal finalizer using the authenticated original question and requires v1 CC bindings plus concepts definitions; output seals that finalizer proof hash, later checked by the old-cursor adapter."
+    },
+    {
+      "id": "PRIOR_NATIVE_GUARDS",
+      "result": "PRESERVED",
+      "observation": "Native authority hold checks, settled native decisions, hard content/difficulty debts, per-item evidence, accepted-value completeness, retained primary/fields/scope, provider finalization and current registry checks remain in the candidate. The auto writer's existing semantic run-scope exclusion and replay bindings are retained."
+    },
+    {
+      "id": "NO_VERDICT_CACHE_ADDED",
+      "result": "PRESERVED",
+      "observation": "The union adds no approval-result cache. Existing immutable lookup/batch parsing optimizations remain, while live evidence and canonical checks still execute along the reviewed acceptance paths."
+    }
+  ],
+  "authorTestEvidence": {
+    "owner": "ROOT",
+    "reportPath": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/final-regression-report.json",
+    "sha256": "4d719061f6d6a89fddbfd1e82d544723dd7865b66a0343c9c1e05e2b8efe17fd",
+    "uniqueSuites": 11,
+    "selectedTests": 574,
+    "selectedPass": 574,
+    "selectedFail": 0,
+    "selectedSkip": 0,
+    "reviewerRanTests": false,
+    "logsRawVerified": [
+      {
+        "test": "tests/archive-native-issued-child-continuity.test.mjs",
+        "role": "firstAttempt",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-main/archive-native-issued-child-continuity.test.mjs.log",
+        "sha256": "1450029a7c15c7c62a4ad11f050faa920274b354ee12c5f5404f59796e4da090",
+        "bytes": 4300,
+        "counts": {
+          "tests": 59,
+          "pass": 59,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-native-issued-child-continuity.test.mjs",
+        "role": "selectedEvidence",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-main/archive-native-issued-child-continuity.test.mjs.log",
+        "sha256": "1450029a7c15c7c62a4ad11f050faa920274b354ee12c5f5404f59796e4da090",
+        "bytes": 4300,
+        "counts": {
+          "tests": 59,
+          "pass": 59,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-native-issued-rpm-history.test.mjs",
+        "role": "firstAttempt",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-main/archive-native-issued-rpm-history.test.mjs.log",
+        "sha256": "cd0ea41f5e9421bbc06834f6e5cf92e717230b15772ada29d2980b2ac9b68b81",
+        "bytes": 10323,
+        "counts": {
+          "tests": 59,
+          "pass": 56,
+          "fail": 3,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-native-issued-rpm-history.test.mjs",
+        "role": "selectedEvidence",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-main/archive-native-issued-rpm-history.v2.tap",
+        "sha256": "c1e7c64da0a11857dbed6a4ca8a02671431d7d0d43452c734357c38ef37e902c",
+        "bytes": 10103,
+        "counts": {
+          "tests": 59,
+          "pass": 59,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-native-issued-solution-rpm-history.test.mjs",
+        "role": "firstAttempt",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-main/archive-native-issued-solution-rpm-history.test.mjs.log",
+        "sha256": "37137061c3e9ae64f8a3fb370c7f861376787179d9864db52fd8f0ea86603e9e",
+        "bytes": 3927,
+        "counts": {
+          "tests": 67,
+          "pass": 67,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-native-issued-solution-rpm-history.test.mjs",
+        "role": "selectedEvidence",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-main/archive-native-issued-solution-rpm-history.test.mjs.log",
+        "sha256": "37137061c3e9ae64f8a3fb370c7f861376787179d9864db52fd8f0ea86603e9e",
+        "bytes": 3927,
+        "counts": {
+          "tests": 67,
+          "pass": 67,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-reviewed-m2-cc-renderer.test.mjs",
+        "role": "firstAttempt",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-main/archive-reviewed-m2-cc-renderer.test.mjs.log",
+        "sha256": "1e8b0bc25e0850ff593f827f17a2329a568297d8e1d7dc40d8b63c1268d03d99",
+        "bytes": 3032,
+        "counts": {
+          "tests": 37,
+          "pass": 37,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-reviewed-m2-cc-renderer.test.mjs",
+        "role": "selectedEvidence",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-main/archive-reviewed-m2-cc-renderer.test.mjs.log",
+        "sha256": "1e8b0bc25e0850ff593f827f17a2329a568297d8e1d7dc40d8b63c1268d03d99",
+        "bytes": 3032,
+        "counts": {
+          "tests": 37,
+          "pass": 37,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-reviewed-pack-version-lineage-companions.test.mjs",
+        "role": "firstAttempt",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-main/archive-reviewed-pack-version-lineage-companions.test.mjs.log",
+        "sha256": "b451919283a364c9d58108ab2d776601b5babd8de255dbb54e5c20c289ac2a11",
+        "bytes": 2495,
+        "counts": {
+          "tests": 26,
+          "pass": 26,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-reviewed-pack-version-lineage-companions.test.mjs",
+        "role": "selectedEvidence",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-main/archive-reviewed-pack-version-lineage-companions.test.mjs.log",
+        "sha256": "b451919283a364c9d58108ab2d776601b5babd8de255dbb54e5c20c289ac2a11",
+        "bytes": 2495,
+        "counts": {
+          "tests": 26,
+          "pass": 26,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-issued-rpm-evidence-continuity.test.mjs",
+        "role": "firstAttempt",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-own/archive-issued-rpm-evidence-continuity.test.mjs.log",
+        "sha256": "1a40d1bea8350980db47b4c7913177032309f2e50c72cf98a940c5367a57799f",
+        "bytes": 7352,
+        "counts": {
+          "tests": 84,
+          "pass": 84,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-issued-rpm-evidence-continuity.test.mjs",
+        "role": "selectedEvidence",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-own/archive-issued-rpm-evidence-continuity.v2.tap",
+        "sha256": "07cc49cc0a3b249fb1fd55b5a4c0cb050ddff5d6772a696c72c5cabf4756ed78",
+        "bytes": 17437,
+        "counts": {
+          "tests": 84,
+          "pass": 84,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-original-finalqa-renderer-preservation.test.mjs",
+        "role": "firstAttempt",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-own/archive-original-finalqa-renderer-preservation.test.mjs.log",
+        "sha256": "4a84db5d25c4bfdd3e70339699386bea313e1d46e8c48e857a9d5390e9337df2",
+        "bytes": 6527,
+        "counts": {
+          "tests": 58,
+          "pass": 58,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-original-finalqa-renderer-preservation.test.mjs",
+        "role": "selectedEvidence",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-own/archive-original-finalqa-renderer-preservation.test.mjs.log",
+        "sha256": "4a84db5d25c4bfdd3e70339699386bea313e1d46e8c48e857a9d5390e9337df2",
+        "bytes": 6527,
+        "counts": {
+          "tests": 58,
+          "pass": 58,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-m2-current-renderer-continuity.test.mjs",
+        "role": "firstAttempt",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-own/archive-m2-current-renderer-continuity.test.mjs.log",
+        "sha256": "08b9902f308df276dd7e3020cc5ef4a39829bc816ce938ed970df58fa165a628",
+        "bytes": 5382,
+        "counts": {
+          "tests": 61,
+          "pass": 61,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-m2-current-renderer-continuity.test.mjs",
+        "role": "selectedEvidence",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-own/archive-m2-current-renderer-continuity.test.mjs.log",
+        "sha256": "08b9902f308df276dd7e3020cc5ef4a39829bc816ce938ed970df58fa165a628",
+        "bytes": 5382,
+        "counts": {
+          "tests": 61,
+          "pass": 61,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-m2-current-renderer-refresh.test.mjs",
+        "role": "firstAttempt",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-own/archive-m2-current-renderer-refresh.test.mjs.log",
+        "sha256": "ef3897b6999644c8fc46881235adbe1f72c5db4b590e0cf6516fe74e3b1cfe22",
+        "bytes": 4639,
+        "counts": {
+          "tests": 46,
+          "pass": 46,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-m2-current-renderer-refresh.test.mjs",
+        "role": "selectedEvidence",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-own/archive-m2-current-renderer-refresh.test.mjs.log",
+        "sha256": "ef3897b6999644c8fc46881235adbe1f72c5db4b590e0cf6516fe74e3b1cfe22",
+        "bytes": 4639,
+        "counts": {
+          "tests": 46,
+          "pass": 46,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-m2-current-renderer-registration.test.mjs",
+        "role": "firstAttempt",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-own/archive-m2-current-renderer-registration.test.mjs.log",
+        "sha256": "3e73589cf0da3c7a61efd1b03b297fb72283912cfc9f53a3fc796764bbc400f6",
+        "bytes": 2156,
+        "counts": {
+          "tests": 18,
+          "pass": 18,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-m2-current-renderer-registration.test.mjs",
+        "role": "selectedEvidence",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-own/archive-m2-current-renderer-registration.test.mjs.log",
+        "sha256": "3e73589cf0da3c7a61efd1b03b297fb72283912cfc9f53a3fc796764bbc400f6",
+        "bytes": 2156,
+        "counts": {
+          "tests": 18,
+          "pass": 18,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-m2-provider-current-renderer.test.mjs",
+        "role": "firstAttempt",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-own/archive-m2-provider-current-renderer.test.mjs.log",
+        "sha256": "d202e525e9ca7c20881e1952e69912472e92519eb47ec7698f784c56120e9ab4",
+        "bytes": 6015,
+        "counts": {
+          "tests": 59,
+          "pass": 59,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      },
+      {
+        "test": "tests/archive-m2-provider-current-renderer.test.mjs",
+        "role": "selectedEvidence",
+        "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/regression-own/archive-m2-provider-current-renderer.test.mjs.log",
+        "sha256": "d202e525e9ca7c20881e1952e69912472e92519eb47ec7698f784c56120e9ab4",
+        "bytes": 6015,
+        "counts": {
+          "tests": 59,
+          "pass": 59,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "independentlyExecuted": false
+      }
+    ],
+    "initialFailure": {
+      "suite": "tests/archive-native-issued-rpm-history.test.mjs",
+      "reportedFailNodes": 3,
+      "distinctFailingAssertions": 2,
+      "reason": "Both ordinary live scanners rejected invalid continuity but propagated a new error message instead of the existing expected current evidence bytes changed message. Parent suite adds the third failed node.",
+      "firstLogPreserved": true,
+      "finalRerunSuites": 2,
+      "assertionsChanged": false
+    }
+  },
+  "manifestState": {
+    "finalAuthority": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/final-regression-report.json",
+    "finalCandidateShaVerified": true,
+    "priorResolutionManifestPreservedAsInitialCandidate": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/main316-code-union/resolution-manifest.json",
+    "initialManifestDiffersFor": [
+      "archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs",
+      "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs"
+    ],
+    "note": "Use final-regression-report candidate hashes or a newly issued final publication manifest; the earlier syntax-only manifest describes the pre-normalization figure/renderer candidates."
+  },
+  "limits": [
+    "Static independent code review, not a second execution of ROOT suites.",
+    "No actual production native registration or Consumer run by this reviewer.",
+    "Current main integration CI and final publication remain ROOT responsibilities.",
+    "No new semantic, mathematical, difficulty, or four-slot approval."
+  ]
+}

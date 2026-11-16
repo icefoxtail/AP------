@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "e064-current-tail-official-registration-v1",
+  "status": "PASS",
+  "officialApi": "registerReviewedExamV2",
+  "sameProcessDryWriteReplay": true,
+  "originalReplayCache": "EXISTING_IMMUTABLE_REPLAY_ONLY; LIVE_CHECKS_NOT_SKIPPED",
+  "head": "65a0f805661bd9f22190ad5d901e8d1b77914c90",
+  "actualMain": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "codePatch": {
+    "path": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+    "sha256": "09bc03280c922601417dc2b78229ccf0bb68eee215d628c50aeda85587ae2e6d"
+  },
+  "frozenCodeCommit": "e6e6046b38cf97e0c01c90785a8c42f30127dd4e",
+  "request": {
+    "path": ".archive-meta-register/inbox/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json",
+    "sha256": "d97f25cb7c315bc8a4d2b78c992ed23b2bc159a9f74bcfd90bfdb8dde2477fc4",
+    "requestId": "issued-binding-recovery-e064-current11-existing8-preserve-20261115"
+  },
+  "stages": [
+    {
+      "stage": "dry",
+      "elapsedMs": 60742,
+      "status": "PASS",
+      "replay": false,
+      "plannedPaths": [
+        "archive/data/question_metadata.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.source-binding-recovery.json",
+        "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json"
+      ],
+      "reportSha256": "73c5b7cff4add8d90b34c208952bb61027561ba06736aac304097dd2a19af866"
+    },
+    {
+      "stage": "write",
+      "elapsedMs": 5455,
+      "status": "PASS",
+      "replay": false,
+      "plannedPaths": [
+        "archive/data/question_metadata.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.source-binding-recovery.json",
+        "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json"
+      ],
+      "reportSha256": "f2a9b67cbfd3ac61a107c4d786a09a8492c51da551ff565bacfdfc0ee2f31758"
+    },
+    {
+      "stage": "replay",
+      "elapsedMs": 6816,
+      "status": "PASS",
+      "replay": true,
+      "plannedPaths": [],
+      "reportSha256": "7b90c438627bbc6352f05942f19887346ad316b5a5cbd2bfbdb10ddfe502319e"
+    }
+  ],
+  "nativePassed": 8,
+  "autoAlreadyRegistered": 8,
+  "native": [
+    {
+      "questionUid": "qid_v1_fd151a3be077c3ab8f97b50568f25bffc0255d284204a3558b8613ae2084ccb7",
+      "sourceOrdinal": 1,
+      "nativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json",
+      "autoStatus": "ALREADY_REGISTERED",
+      "reasons": []
+    },
+    {
+      "questionUid": "qid_v1_93b94de0ac1a03f42c73c71d1a27097dca2f16f830de8a0c1a6d5b2d967e13ea",
+      "sourceOrdinal": 2,
+      "nativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json",
+      "autoStatus": "ALREADY_REGISTERED",
+      "reasons": []
+    },
+    {
+      "questionUid": "qid_v1_2d080d98cc944a6f1054519343a77ff3848045217f1debd4834ba4f494866d92",
+      "sourceOrdinal": 3,
+      "nativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json",
+      "autoStatus": "ALREADY_REGISTERED",
+      "reasons": []
+    },
+    {
+      "questionUid": "qid_v1_d0f13bd8543fdafbae919916b56c59fb9d1adea669e334aff42d5e79636575cb",
+      "sourceOrdinal": 9,
+      "nativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json",
+      "autoStatus": "ALREADY_REGISTERED",
+      "reasons": []
+    },
+    {
+      "questionUid": "qid_v1_5892cc4641db153fac680e4c2c44ff66e1c4e80e97c7a543a05df6011234f751",
+      "sourceOrdinal": 14,
+      "nativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json",
+      "autoStatus": "ALREADY_REGISTERED",
+      "reasons": []
+    },
+    {
+      "questionUid": "qid_v1_3f5294911836129b2e04251f037234c5a54696c3618900f5cc4c5d4c764daad9",
+      "sourceOrdinal": 15,
+      "nativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json",
+      "autoStatus": "ALREADY_REGISTERED",
+      "reasons": []
+    },
+    {
+      "questionUid": "qid_v1_57101b2335ebda70b1b79a8669c2314bc9e81c658ee530504fff27709293616f",
+      "sourceOrdinal": 16,
+      "nativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json",
+      "autoStatus": "ALREADY_REGISTERED",
+      "reasons": []
+    },
+    {
+      "questionUid": "qid_v1_e2633929122014f08f73ba83ed1cbfe7cab09fca29ddf8b6c64f4849b52c7dc2",
+      "sourceOrdinal": 19,
+      "nativeReceipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json",
+      "autoStatus": "ALREADY_REGISTERED",
+      "reasons": []
+    }
+  ],
+  "wholeSourceQuestions": 22,
+  "selectedWholeCohort": 8,
+  "newMetadataApprovals": 0,
+  "semanticValueChanges": 0,
+  "sourceAndAssetsChanged": 0,
+  "originalAndCurrentIssuedReceiptsUnchanged": true,
+  "identityWholeFileUnchanged": true,
+  "outside8MetadataUnchanged": 28882,
+  "outside8RuntimeUnchanged": 1446,
+  "cumulativeCurrentTailEvidenceRetained": true,
+  "newReceipt": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.json",
+    "sha256": "d9dc37022472eff79973e5f07aa20bb80c6e1d035954e47077b8054b3272973c"
+  },
+  "newProof": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/issued-binding-recovery-e064-current11-existing8-preserve-20261115.source-binding-recovery.json",
+    "sha256": "302668f89ce9d8b3f9ba3d76f364bb31f37d23beda24b1b988ea80def94e3873"
+  },
+  "fullConsumer": "NOT_RUN",
+  "mainRegistration": "NOT_RUN"
+}

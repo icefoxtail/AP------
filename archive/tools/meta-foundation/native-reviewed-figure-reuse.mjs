@@ -1,13 +1,18 @@
 // Reuse an already issued native approval across one independently reviewed figure
 // replacement. This adapter never registers metadata or approves arbitrary content.
 import fs from 'node:fs';
+import {verifyIssuedRpmEvidenceContinuity} from './issued-rpm-evidence-continuity.mjs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { REASSESSED_STUDENT_FIELDS, validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
+import { createImmutableGitMetadataLookup } from './immutable-git-metadata.mjs';
+import { readImmutableGitFiles } from './immutable-git-batch.mjs';
 import { readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
 import { readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
+
+const immutableMetadata = createImmutableGitMetadataLookup();
 
 const SHA1 = /^[a-f0-9]{40}$/, SHA256 = /^[a-f0-9]{64}$/;
 const fail = message => { throw Error(`native reviewed figure reuse: ${message}`); };
@@ -32,7 +37,8 @@ function safePath(root, relative) {
 }
 function parse(bytes) { try { return JSON.parse(bytes); } catch { fail('invalid JSON evidence'); } }
 function git(ctx, ...args) {
-  try { return execFileSync('git', args, {cwd:ctx.root, maxBuffer:32*1024*1024, stdio:['ignore','pipe','pipe']}); }
+  try { return immutableMetadata(ctx.root,args,()=>execFileSync('git', args,
+    {cwd:ctx.root, maxBuffer:32*1024*1024, stdio:['ignore','pipe','pipe']})); }
   catch { fail('immutable Git evidence unavailable'); }
 }
 function gitFile(ctx, commit, relative) {
@@ -46,6 +52,22 @@ function gitFile(ctx, commit, relative) {
     ctx.cache.set(key, {blob, bytes, sha256:sha(bytes)});
   }
   return ctx.cache.get(key);
+}
+function batchAssetFiles(ctx, entries) {
+  const missing=new Map();
+  for(const entry of entries) {
+    safePath(ctx.root,entry.path);
+    if(!SHA1.test(entry.commit||''))fail('exact evidence commit required');
+    const key=`figure-git:${entry.commit}:${entry.path}`;
+    if(!ctx.cache.has(key))missing.set(key,entry);
+  }
+  if(missing.size<=new Set([...missing.values()].map(e=>e.commit)).size+1)return;
+  const raw=readImmutableGitFiles(ctx.root,[...missing.values()]);let index=0;
+  if(raw.some(bytes=>bytes.length>32*1024*1024))fail('immutable Git evidence unavailable');
+  for(const [key]of missing) {
+    const bytes=raw[index++],blob=crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+    ctx.cache.set(key,{blob,bytes,sha256:sha(bytes)});
+  }
 }
 function bankFromFile(ctx, file) {
   const key = `figure-bank:${file.blob}`;
@@ -146,6 +168,7 @@ function references(root, question) {
 }
 function verifyAssets(ctx, assets, question, commit, live=false) {
   if(!equal(assets.map(a=>a.path).sort(),references(ctx.root,question)))fail('renderer asset inventory is incomplete or excessive');
+  batchAssetFiles(ctx,assets.flatMap(a=>(live?[commit,ctx.proof.reviewCommit]:[commit]).map(commit=>({commit,path:a.path}))));
   for(const a of assets){
     const file=gitFile(ctx,commit,a.path);
     if(!SHA1.test(a.gitBlobSha||'')||!SHA256.test(a.rawSha256||'')||file.blob!==a.gitBlobSha||file.sha256!==a.rawSha256)
@@ -176,7 +199,14 @@ export function nativeReviewedFigureRebind(receipt,nativeSource,previous,questio
         :nativeSource.issuedRpmHistoryContext
           ?readIssuedRpmHistoricalEvidence(nativeSource.issuedRpmHistoryContext,receipt,ref)
           :fs.readFileSync(safePath(nativeSource.root,ref.path));
-      if(sha(bytes)!==ref.sha256)fail('current evidence bytes changed');
+      if(sha(bytes)!==ref.sha256){
+        if(nativeSource.issuedRpmHistoryContext||nativeSource.issuedSolutionRpmHistoryContext)fail('historical evidence bytes changed');
+        let continuity;
+        try { continuity=verifyIssuedRpmEvidenceContinuity({root:nativeSource.root,receipt,
+          receiptPath:`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${receipt.requestId}.json`,evidenceRef:ref}); }
+        catch { fail('current evidence bytes changed'); }
+        if(continuity?.currentRef.sha256!==sha(bytes))fail('current evidence bytes changed');
+      }
       let doc;try{doc=JSON.parse(bytes);}catch{continue;}
       if(doc.sourceArchiveFile===receipt.sourceArchiveFile&&
         (doc.reviewScope==='NARROW_CURRENT_FIGURE_CONTINUITY_ONLY'||doc.rendererAssetBindingRef&&doc.originalPendingRequest&&doc.independentReviewRefs)&&

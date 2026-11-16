@@ -1,0 +1,349 @@
+{
+  "schemaVersion": "archive-main-native-writer-union-independent-read-v1",
+  "reviewer": "/root/audit_m3",
+  "createdAt": "2026-11-16T07:38:57.407943+00:00",
+  "decision": "PASS_SCOPED_STATIC_UNION_REVIEW",
+  "blockingFindings": [],
+  "bases": {
+    "commonMain": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+    "incomingMain": "0343eb29d5bfff7cace4c403ef99e3f67265bfef",
+    "oursCommit": "e9305482f16853842d7c0ac4c40a8cc51b1f627d",
+    "oursTree": "e134f1d50f412440f35b3d4a748fcc61e5ea7827",
+    "autoMergeTreeBeforeTwoResolutions": "c21c10f4dc17b97e147850453dbcc6a9e7f01fb4"
+  },
+  "scope": {
+    "productionAndRunnerPaths": 14,
+    "nativeProduction": 9,
+    "ciAndWorkflow": 5,
+    "automaticMainDeltaExact": 12,
+    "resolvedFilesExactConstructedUnion": 2,
+    "additionalProtectedFilesExactOurs": 10,
+    "fourSlotCodeDelta": []
+  },
+  "productionManifest": [
+    {
+      "path": ".github/workflows/archive-main-auto-meta.yml",
+      "bytes": 7464,
+      "sha256": "89ecfb7ac878ddf570a78f7c4c88a47bbd0909f9efcd6b3152306c0206291bad",
+      "source": "AUTO_MERGE_TREE",
+      "mainDeltaEqualsMergedDelta": true,
+      "mainChangedLines": 3,
+      "mergedChangedLines": 3
+    },
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "bytes": 65828,
+      "sha256": "7527ec8dd544469351adb1654a59d129747ac6ee9b2ba24adb7cbe1004ce468f",
+      "source": "ROOT_RESOLVED_FILE"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+      "bytes": 30661,
+      "sha256": "199077315dc71471f260aaa4346f4b0dc793b5f41dbcbe9b02010506c06f7a93",
+      "source": "AUTO_MERGE_TREE",
+      "mainDeltaEqualsMergedDelta": true,
+      "mainChangedLines": 22,
+      "mergedChangedLines": 22
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "bytes": 268590,
+      "sha256": "25448b6a4b2c54492af1382df6a65b8b15a5ca4fa54d966a2017ef2deb50f4a7",
+      "source": "AUTO_MERGE_TREE",
+      "mainDeltaEqualsMergedDelta": true,
+      "mainChangedLines": 7,
+      "mergedChangedLines": 7
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2-finalized-scope-parent.mjs",
+      "bytes": 12404,
+      "sha256": "8b0de29cf677abebca7e9516fb938609e4e40f4a7a778dacc14bb30c1e3ae77c",
+      "source": "AUTO_MERGE_TREE",
+      "mainDeltaEqualsMergedDelta": true,
+      "mainChangedLines": 148,
+      "mergedChangedLines": 148
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2-problem-renderer-continuity.mjs",
+      "bytes": 40174,
+      "sha256": "db245298d93be58d4ab3f8bf44af16ccd2dc20f754b56a13aa2d95630df98039",
+      "source": "AUTO_MERGE_TREE",
+      "mainDeltaEqualsMergedDelta": true,
+      "mainChangedLines": 460,
+      "mergedChangedLines": 460
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2-proposal-finalization.mjs",
+      "bytes": 21922,
+      "sha256": "9e510872b82b0f5fe8041f1546971efa5dbd851e49f34f514e46bf93fa002376",
+      "source": "AUTO_MERGE_TREE",
+      "mainDeltaEqualsMergedDelta": true,
+      "mainChangedLines": 66,
+      "mergedChangedLines": 66
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-proposal-finalization.mjs",
+      "bytes": 49677,
+      "sha256": "cceffb69ed1ef7914c824ed2e4dab01f14d9871b879d15e9fc243a464ba39a68",
+      "source": "AUTO_MERGE_TREE",
+      "mainDeltaEqualsMergedDelta": true,
+      "mainChangedLines": 8,
+      "mergedChangedLines": 8
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-binding.mjs",
+      "bytes": 7085,
+      "sha256": "de4765d2f81043a3dfc6f7846e57401d7b5a2204ae6d77d9cc48d52795f37b69",
+      "source": "AUTO_MERGE_TREE",
+      "mainDeltaEqualsMergedDelta": true,
+      "mainChangedLines": 1,
+      "mergedChangedLines": 1
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "bytes": 35521,
+      "sha256": "fa872047b7435897c4ff46f0b9113065f7eba051abd94c01f19ecb68e0f4945c",
+      "source": "ROOT_RESOLVED_FILE"
+    },
+    {
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "bytes": 36929,
+      "sha256": "e0cbffde464d70a8e7d06ace8b96c0cacc145e3e5e11003eef0bf04d9535b1e6",
+      "source": "AUTO_MERGE_TREE",
+      "mainDeltaEqualsMergedDelta": true,
+      "mainChangedLines": 1,
+      "mergedChangedLines": 1
+    },
+    {
+      "path": "tools/ci/git-push-derived-with-retry.mjs",
+      "bytes": 16353,
+      "sha256": "eaa73f11dd56fa25b830d77e7074431b1619522be9b625eaecd498ffa3f981c3",
+      "source": "AUTO_MERGE_TREE",
+      "mainDeltaEqualsMergedDelta": true,
+      "mainChangedLines": 38,
+      "mergedChangedLines": 38
+    },
+    {
+      "path": "tools/ci/run-scoped-tests.mjs",
+      "bytes": 12157,
+      "sha256": "c55d619fa65309dbed690fe9a8787431a7e673ddb7f93b1954cd1bddf27c5d00",
+      "source": "AUTO_MERGE_TREE",
+      "mainDeltaEqualsMergedDelta": true,
+      "mainChangedLines": 1,
+      "mergedChangedLines": 1
+    },
+    {
+      "path": "tools/run-tests.js",
+      "bytes": 30238,
+      "sha256": "7405fd50b3daefc4094c248b9770b8566e46cc37c50017c7db2e25158a51c088",
+      "source": "AUTO_MERGE_TREE",
+      "mainDeltaEqualsMergedDelta": true,
+      "mainChangedLines": 6,
+      "mergedChangedLines": 6
+    }
+  ],
+  "protectedManifest": [
+    {
+      "path": "archive/tools/meta-foundation/semantic-run-scope.mjs",
+      "bytes": 19466,
+      "sha256": "af2b4c11adcaeb59a7d0752a876a23d296d967e88cdd48eda879b1093ae6a079",
+      "exactOurs": true
+    },
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "bytes": 87254,
+      "sha256": "c1408f9a6fe17fd77dc044e9f2a36c8ddf1103bdd25a20f1480c44eb582ab3b1",
+      "exactOurs": true
+    },
+    {
+      "path": "tools/ci/archive-pr-registration-prepare.mjs",
+      "bytes": 8517,
+      "sha256": "6c23ffec591e35caf51c5018a147dc5b509e4b2435b0183cd92a574bcb087843",
+      "exactOurs": true
+    },
+    {
+      "path": "tools/ci/archive-pr-registration-proof.mjs",
+      "bytes": 22759,
+      "sha256": "2857cd81741d59c7fadc19f3e681928f7582db6c931e6770e3d7a9e0b072b1a1",
+      "exactOurs": true
+    },
+    {
+      "path": "tools/ci/archive-four-slot-pass.sh",
+      "bytes": 4109,
+      "sha256": "d6ade451a51d312674df1e0028306159a46b90b0b5b82f60fdd872b0930751cb",
+      "exactOurs": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/issued-rpm-evidence-continuity.mjs",
+      "bytes": 22340,
+      "sha256": "7190a9a08500bf1bf1fef62f8894eece9bdbdd64e0670a6b36533004057b5e41",
+      "exactOurs": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+      "bytes": 70729,
+      "sha256": "09bc03280c922601417dc2b78229ccf0bb68eee215d628c50aeda85587ae2e6d",
+      "exactOurs": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-native-retained-fields.mjs",
+      "bytes": 20593,
+      "sha256": "aec903342127b799cb22049607ff0ca3561aab0e9fd1e853e057ae49563c07cd",
+      "exactOurs": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2-current-renderer-continuity.mjs",
+      "bytes": 35672,
+      "sha256": "1b5ce2eeed8e7b965272597570cdcd215bb66eba8918b1b11d00098e8fe27cc6",
+      "exactOurs": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2-provider-current-renderer-continuity.mjs",
+      "bytes": 24493,
+      "sha256": "286eff8eb9764759968376f89558f04959532955a16c660e12c96dbc8f132d24",
+      "exactOurs": true
+    }
+  ],
+  "supportManifest": [
+    {
+      "path": "docs/architecture/M2_Finalized_Curriculum_Transport_v1.md",
+      "bytes": 3255,
+      "sha256": "6e9f933c8dc54f46505b93cb96e8d046b3733baa939224d1ac543081bb5b03c6",
+      "sourceCommit": "0343eb29d5bfff7cace4c403ef99e3f67265bfef",
+      "review": "COMPLETE_DOCUMENT"
+    },
+    {
+      "path": "docs/architecture/M2_Finalized_Scope_Parent_Transport_v1.md",
+      "bytes": 6399,
+      "sha256": "fc783a9463293c41d2672c24a9ea793db718539894d5ffc23a7de4a9c76d0fda",
+      "sourceCommit": "0343eb29d5bfff7cace4c403ef99e3f67265bfef",
+      "review": "COMPLETE_DOCUMENT"
+    },
+    {
+      "path": "docs/architecture/M2_Problem_Renderer_Continuity_v1.md",
+      "bytes": 8257,
+      "sha256": "a53719fb74c3c12366dce52f9a4854feafde1d806e14d57d73318e207b16fe65",
+      "sourceCommit": "0343eb29d5bfff7cace4c403ef99e3f67265bfef",
+      "review": "COMPLETE_DOCUMENT"
+    },
+    {
+      "path": "tests/archive-m2-problem-renderer-continuity.test.js",
+      "bytes": 61537,
+      "sha256": "aa9b075ad62bfbfa5706f4214010ac1a295f35b865c98f7219a1ab8e192286eb",
+      "sourceCommit": "0343eb29d5bfff7cace4c403ef99e3f67265bfef",
+      "review": "RELEVANT_NEW_TEST_AND_ASSERTION_SECTIONS_READ"
+    },
+    {
+      "path": "tests/archive-native-proposal-v3.test.js",
+      "bytes": 46176,
+      "sha256": "09082388060e7dc889115bb90c83f676842c94f20276a11529f3c1c5c6e93a62",
+      "sourceCommit": "0343eb29d5bfff7cace4c403ef99e3f67265bfef",
+      "review": "RELEVANT_NEW_TEST_AND_ASSERTION_SECTIONS_READ"
+    },
+    {
+      "path": "tests/archive-registration-writer.test.mjs",
+      "bytes": 35960,
+      "sha256": "f1e0452e945508bbda7aafb939767e83687e76031e979654d1aaeec97effba76",
+      "sourceCommit": "0343eb29d5bfff7cace4c403ef99e3f67265bfef",
+      "review": "RELEVANT_NEW_TEST_AND_ASSERTION_SECTIONS_READ"
+    },
+    {
+      "path": "tests/archive-single-writer-workflows.test.mjs",
+      "bytes": 21197,
+      "sha256": "73e7f647893e2ccc0031647dbcf199a17fd21387160ebc845e1e9b269aedfde3",
+      "sourceCommit": "0343eb29d5bfff7cace4c403ef99e3f67265bfef",
+      "review": "RELEVANT_NEW_TEST_AND_ASSERTION_SECTIONS_READ"
+    },
+    {
+      "path": "tests/git-push-derived-with-retry.test.mjs",
+      "bytes": 35662,
+      "sha256": "bad88fa6e30aced747fa31ab8851810595815d388408aba29926c392a78cea5f",
+      "sourceCommit": "0343eb29d5bfff7cace4c403ef99e3f67265bfef",
+      "review": "RELEVANT_NEW_TEST_AND_ASSERTION_SECTIONS_READ"
+    }
+  ],
+  "resolvedChecks": {
+    "autoMatchesOursPlusMainImportCallAndNegativeGuard": true,
+    "reassessmentMatchesOursPlusMainFrontBranchAndMetadataContext": true,
+    "oldM2AndProviderRendererAlternativesRemain": true,
+    "mainRendererLocalNamesDoNotCollideWithOldM2LocalNames": true,
+    "semanticQuestionAndMetadataAndIssuedSourceReviewAllPassed": true
+  },
+  "runnerChecks": {
+    "newM2RendererFinite180000": true,
+    "geometry300000Unchanged": true,
+    "compose180000Unchanged": true,
+    "newM2RendererInRegistrationScope": true,
+    "existingVectorCarrierIsWriterInput": true,
+    "originMainExplicitSixAttempts": true,
+    "raceEvidenceAllHeadsOptIn": true
+  },
+  "findings": [
+    {
+      "area": "M2 finalized transport",
+      "conclusion": "New opt-ins remain separate from native finalized fields. Exact immutable RPM, metadata absence or explicit native carry, current master and ACTIVE tuple checks run before proof publication. Issued replay compares the recomputed sealed proof; no generic curriculum or course inference added by this merge."
+    },
+    {
+      "area": "M2 problem renderer",
+      "conclusion": "New main helper stays limited to its exact three UID/source/ordinal bindings and one exclusive authority lane. Immutable native, prefigure/current sources and full assets, original independent observation plus six-case student UI evidence are checked before four in-memory display fields are restored and the original reassessment validator is called. Current payload digest and original proof digest remain sealed."
+    },
+    {
+      "area": "AutoMeta and durable sidecars",
+      "conclusion": "New old-cursor path requires complete native source-review revalidation and exact whole-question digest from the bound original/prefigure snapshots. Existing old M2 renderer, provider renderer, recovery, RPM ordinary/solution leaf and alias modules are preserved. The new sidecar option is appended without deleting old options."
+    },
+    {
+      "area": "Scope and four-slot preservation",
+      "conclusion": "Fixed scope guard, private checked-full-pass cache-rekey capability, PR capture/finalassert and full four-slot pass stay byte-identical to ours. Main only extends the writer four-slot input fingerprint with existing-vector carrier directory; it does not authorize semantic changes or bypass full checks."
+    },
+    {
+      "area": "Main race",
+      "conclusion": "Default remains three attempts; explicit CLI budget caps at six. Only origin/main can opt in to the fixed all-heads refspec. Evidence hydration excludes main after capturing the retry base, does not checkout or merge the evidence branch, and preserves ordinary regeneration/reapply checks, candidate verification, failed-digest refusal and nonforce push."
+    }
+  ],
+  "minimumCompositionGatesForRoot": [
+    {
+      "boundary": "New M2 renderer and recursive finalized/retained authority",
+      "existingTests": [
+        "tests/archive-m2-problem-renderer-continuity.test.js",
+        "tests/archive-native-proposal-v3.test.js"
+      ],
+      "purpose": "Run registered finite commands on the final exact union. Includes official write/replay, old/caught-up cursors, missing sidecar/live-asset refusals and replay absence seal."
+    },
+    {
+      "boundary": "Old renderer/provider branch coexistence",
+      "existingTests": [
+        "tests/archive-m2-current-renderer-registration.test.mjs",
+        "tests/archive-m2-provider-current-renderer.test.mjs"
+      ],
+      "purpose": "Confirm the two renamed local branches preserve old request execution. Prefer the existing CI command set, not a new cloned fixture or altered assertion."
+    },
+    {
+      "boundary": "Writer carrier invalidation and bounded race",
+      "existingTests": [
+        "tests/archive-registration-writer.test.mjs",
+        "tests/archive-single-writer-workflows.test.mjs",
+        "tests/git-push-derived-with-retry.test.mjs"
+      ],
+      "purpose": "New carrier add/change/remove must invalidate cache; failed evidence or candidate verification must not publish. Existing exact scope guard remains separately required in final CI."
+    }
+  ],
+  "execution": {
+    "staticGitReadsAndByteAssertions": true,
+    "nodeTestsRun": 0,
+    "registrationRuns": 0,
+    "consumerRuns": 0,
+    "fullBuilds": 0,
+    "syntaxExecutionByReviewer": 0,
+    "newCheckoutOrClone": 0,
+    "productionEdits": 0,
+    "sourceOrAssetEdits": 0,
+    "remoteWrites": 0,
+    "rootReportedResolvedSyntax": "2 PASS; not rerun by reviewer"
+  },
+  "limitations": [
+    "This is a code and raw-byte integration review, not final CI or live registration approval.",
+    "New production helper evidence contracts were read; actual three-item input packets, UI images and current registration state were not re-reviewed.",
+    "The auto-merge tree still names its pre-resolution object; final root publication must bind the two exact resolved file hashes in this manifest.",
+    "Future source/data additions, including the separately excluded E035 Q12 renderer change, are outside this code review."
+  ]
+}

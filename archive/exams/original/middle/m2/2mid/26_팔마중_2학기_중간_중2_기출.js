@@ -1323,3 +1323,19 @@ window.questionBank = [
     "decisiveStep": "길이비로 새 변을 구해 각각 제곱과 세제곱으로 목표량을 계산한다."
   }
 ];
+
+// Carry the accepted native original curriculum and independently finalized CC30 application.
+Object.assign(window.questionBank[9], {
+  "crossConceptKeys": [
+    "CC_RIGHT_TRIANGLE_THIRTY_DEGREE_HALF_HYPOTENUSE"
+  ],
+  "curriculum": "2022",
+  "curriculumKey": "2022",
+  "courseKey": "M2-2"
+});
+
+// Synchronize registrar-derived metadata tag state; the source review status is retained.
+Object.assign(window.questionBank[9], {
+  "tagConfidence": "approved_final_qa",
+  "tagStatus": "reviewed_pass"
+});

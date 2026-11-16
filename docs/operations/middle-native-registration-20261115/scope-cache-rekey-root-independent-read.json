@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "root-m3s1-scope-cache-rekey-independent-read-v1",
+  "baseCommit": "c71cb2fb1e427b42ff4181ba82885a2e20da552d",
+  "reviewer": "GPT_ROOT_META_PLAN_20261115",
+  "productionFiles": [
+    {
+      "path": "archive/tools/meta-foundation/semantic-run-scope.mjs",
+      "sha256": "af2b4c11adcaeb59a7d0752a876a23d296d967e88cdd48eda879b1093ae6a079",
+      "bytes": 19466
+    },
+    {
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "sha256": "ef5e92457741b065b9da2c16b80d7c1b52414cfead71146ac389655601bad782",
+      "bytes": 36863
+    },
+    {
+      "path": "tools/ci/archive-four-slot-pass.sh",
+      "sha256": "d6ade451a51d312674df1e0028306159a46b90b0b5b82f60fdd872b0930751cb",
+      "bytes": 4109
+    },
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "sha256": "c1408f9a6fe17fd77dc044e9f2a36c8ddf1103bdd25a20f1480c44eb582ab3b1",
+      "bytes": 87254
+    },
+    {
+      "path": "tools/ci/archive-pr-registration-prepare.mjs",
+      "sha256": "6c23ffec591e35caf51c5018a147dc5b509e4b2435b0183cd92a574bcb087843",
+      "bytes": 8517
+    },
+    {
+      "path": "tools/ci/archive-pr-registration-proof.mjs",
+      "sha256": "2857cd81741d59c7fadc19f3e681928f7582db6c931e6770e3d7a9e0b072b1a1",
+      "bytes": 22759
+    }
+  ],
+  "blockingFindings": [],
+  "verifiedDesignBoundaries": [
+    "Active scope is read from immutable HEAD and the complete bound inbox.",
+    "PR native application is guarded before and after mutation even when dirty-path accounting is disabled.",
+    "PR prepare and final catalog proof reuse a private pre-mutation snapshot; local proof verification reconstructs the baseline from HEAD.",
+    "PR paths have no cache rekey capability.",
+    "The fixed complete four-slot pass is unchanged through full build/check/replay/Consumer/path guards.",
+    "Only the current successful fixed command can return the fresh nonce-bound checked-index capability used by the main writer.",
+    "The current full index raw digest and builder digest are rebound at the final guard.",
+    "Only excluded fourSlot.files.inputHash may differ when builder changes; all other excluded rows and preexisting pending entries remain exact.",
+    "A same-builder inputHash change, fabricated or serialized capability, stale/failed/missing proof, and post-check index drift fail closed.",
+    "The result separates exactRowsUnchanged from semanticUnchanged and explicitly describes the cache rekey."
+  ],
+  "scopeDescriptorCreatedByThisReview": false,
+  "newApprovalOrExclusionScopeChange": false,
+  "rootRuntimeTests": "NOT_RUN_READ_ONLY_REVIEW",
+  "fullGlobalWriterValidation": "NOT_RUN_REQUIRED_ON_FINAL_UNION",
+  "testsReviewed": [
+    "archive-semantic-run-scope.test.mjs",
+    "archive-registration-writer.test.mjs",
+    "archive-pr-registration-prepare.test.mjs",
+    "archive-pr-registration-proof.test.mjs"
+  ],
+  "finalCommitByteMatchRequired": true
+}

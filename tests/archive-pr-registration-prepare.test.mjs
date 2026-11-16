@@ -4,7 +4,9 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { preparePrRegistration, registrationInputsChanged } from '../tools/ci/archive-pr-registration-prepare.mjs';
+import { applyNativeRequests } from '../tools/ci/archive-pr-native-preview.mjs';
 
 function fixture(t, changedFile = 'archive/exams/original/new.js') {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'pr-registration-'));
@@ -47,7 +49,7 @@ function fixture(t, changedFile = 'archive/exams/original/new.js') {
 test('only registration inputs require a temporary projection; unknown scope is conservative', () => {
   for (const file of ['archive/exams/original/new.js', 'archive/assets/images/a.svg', 'archive/data/question_metadata.json',
     'archive/data/meta-foundation/canonical/pack.json', 'archive/tools/build-archive2-catalog.mjs',
-    '.archive-meta-register/inbox/native-v2.json', 'tools/ci/archive-pr-native-preview.mjs']) {
+    '.archive-meta-register/inbox/native-v2.json', '.archive-meta-register/auto/run-scopes/phase1.json', 'tools/ci/archive-pr-native-preview.mjs']) {
     assert.equal(registrationInputsChanged([file]), true, file);
   }
   for (const paths of [[], ['apmath/playground/labs/a.html'], ['.github/workflows/ci.yml'], ['docs/architecture/notes.md']]) {
@@ -197,4 +199,72 @@ test('clean unrelated code-only push with no fixed pending inbox retains its no-
   const result = f.prepare({ eventName: 'push', event: { before: f.baseSha, after: f.headSha } });
   assert.equal(result.state, 'NO_OP'); assert.deepEqual(result.pendingRequestPaths, []);
   assert.equal(f.commands.length, 0);
+});
+
+function scopedFixture(t,{v2=false}={}){
+  const f=fixture(t),source='original/middle/m3/1mid/excluded.js';
+  const meta='archive/data/question_metadata.json',identity='archive/data/question_identity_map.json';
+  const runtime='archive/data/meta-foundation/runtime/middle3-v1.json',four='archive/data/item-4slot-index.json';
+  const put=(file,value)=>f.write(file,JSON.stringify(value)+'\n');
+  const row={questionUid:'excluded_uid',sourceArchiveFile:source,sourceOrdinal:1,value:'preserve'};
+  for(const file of [meta,identity,runtime])put(file,{records:[row]});
+  put(four,{records:[row],pending:[],files:[{path:'archive/data/item-4slot/'+source.replace(/\.js$/,'.4slot.json'),inputHash:'a'.repeat(64)}],builderSha256:'b'.repeat(64)});
+  put('.archive-meta-register/auto/state.json',{pending:{[source+'#1']:{sourceArchiveFile:source,lastReasons:['keep']}}});
+  const inbox='.archive-meta-register/inbox/other-schema.json';put(inbox,{schemaVersion:'fixture-other-owner'});
+  const bindings=[{path:inbox,sha256:createHash('sha256').update(fs.readFileSync(path.join(f.root,inbox))).digest('hex')}];
+  put('.archive-meta-register/auto/run-scopes/fixture-phase1.json',{schemaVersion:v2?'archive-semantic-run-scope-v2':'archive-semantic-run-scope-v1',scopeId:'fixture-pr-scope',phase:'phase1',
+    excludedSourcePrefixes:['original/middle/m3/1final/','original/middle/m3/1mid/'],...(v2?{cohortBindings:bindings}:{inboxBindings:bindings})});
+  if(v2)put('.archive-meta-register/inbox/extra-owner.json',{schemaVersion:'fixture-another-owner'});
+  f.write('tools/ci/archive-pages-registration.paths',['archive/db.js',meta,identity,runtime,four,'.archive-meta-register/auto/state.json'].join('\n')+'\n');
+  f.git('add','-A');f.git('commit','-qm','scoped fixture');const headSha=f.git('rev-parse','HEAD');f.event.pull_request.head.sha=headSha;
+  return {...f,source,meta,identity,runtime,four,put,headSha,
+    prepare:extra=>f.prepare({expectedSha:headSha,...extra})};
+}
+
+test('PR common native entry and final builder guard preserve the active excluded snapshot',t=>{
+  const f=scopedFixture(t),result=f.prepare();
+  assert.equal(result.semanticRunScope.binding.active,true);
+  assert.equal(result.semanticRunScope.excludedRows.semanticUnchanged,true);
+  assert.equal(result.semanticRunScope.excludedRows.exactRowsUnchanged,true);
+  assert.equal(result.semanticRunScope.excludedRows.cacheRekey,null);
+});
+for(const fileKey of ['meta','identity','runtime','four'])test('PR preparation refuses excluded '+fileKey+' mutation after native application',t=>{
+  const f=scopedFixture(t);
+  assert.throws(()=>f.prepare({run:(program,args)=>{
+    const value=f.run(program,args);
+    if(program==='python3'){
+      const d=JSON.parse(fs.readFileSync(path.join(f.root,f[fileKey]),'utf8'));
+      if(fileKey==='four'){d.builderSha256='c'.repeat(64);d.files[0].inputHash='d'.repeat(64);}
+      else d.records[0].value='changed';
+      f.put(f[fileKey],d);
+    }
+    return value;
+  }}),/EXCLUDED_ROW_MUTATION/);
+});
+
+for(const guard of [true,false])test('the shared native application entry enforces exclusions with path guard='+guard,t=>{
+  const f=scopedFixture(t),receipt='archive/data/fixture-receipt.json';
+  const request={path:'.archive-meta-register/inbox/fixture-native.json',requestId:'fixture-native',questionCount:1,receiptPath:receipt};
+  let writes=0;
+  const run=(_program,args)=>{
+    if(args.includes('--write')){
+      writes++;const d=JSON.parse(fs.readFileSync(path.join(f.root,f.meta),'utf8'));d.records[0].value='wrong native side effect';f.put(f.meta,d);f.put(receipt,{fixture:true});
+    }
+    return JSON.stringify({status:'PASS',requestId:request.requestId,totalQuestions:1,replay:false,plannedPaths:[f.meta,receipt].sort()});
+  };
+  assert.throws(()=>applyNativeRequests({root:f.root,requests:[request],run,guard}),/EXCLUDED_ROW_MUTATION/);
+  assert.equal(writes,1,'native result is not certified after an excluded side effect');
+});
+
+
+test('v2 PR preparation seals an unrelated owner without promoting its input to an approval',t=>{
+  const f=scopedFixture(t,{v2:true}),result=f.prepare();
+  assert.equal(result.semanticRunScope.binding.cohortInputCount,1);assert.equal(result.semanticRunScope.binding.boundInputCount,2);
+  assert.equal(result.semanticRunScope.excludedRows.semanticUnchanged,true);
+  assert.equal(result.nativePreview.requests.length,0,'unchanged native schema selection is separate from scope inventory');
+});
+test('v2 main selection still rejects unsupported pending registration input before generation',t=>{
+  const f=scopedFixture(t,{v2:true}),before=fs.readFileSync(path.join(f.root,f.meta));
+  assert.throws(()=>f.prepare({eventName:'push',event:{before:f.baseSha,after:f.headSha}}),/UNSUPPORTED/);
+  assert.equal(f.commands.length,0);assert.deepEqual(fs.readFileSync(path.join(f.root,f.meta)),before);
 });

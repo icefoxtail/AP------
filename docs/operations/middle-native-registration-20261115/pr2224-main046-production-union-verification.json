@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "production-merge046-semantic-union-review-v1",
+  "status": "PASS",
+  "refs": {
+    "base": "4b504e10b1ce7a90576486663b3862ef99922325",
+    "ours": "dbd22911c6d79beb49b1c278a033e212c1630006",
+    "theirs": "0463552b03bfaa91548aa63b03837761cafe2e60",
+    "candidate": "5317244b77ee85833e8b4ea3f73545f5a1d1515b"
+  },
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "localPath": "/workspace/scratch/987d4bf32f40/AP-m2-main4b-native-replan/.tmp/merge046-production-only/resolved/archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "bytes": 65604,
+      "sha256": "ab50673ecafa5d5e1e9df989b77f42a138c980f6d8a6ef737709e068e0ff066a",
+      "gitBlobSha1": "e8237e3adbe846793e4f45eb5693cb7de0a46062",
+      "conflictHunksResolved": 2
+    },
+    {
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "localPath": "/workspace/scratch/987d4bf32f40/AP-m2-main4b-native-replan/.tmp/merge046-production-only/resolved/tools/ci/archive-registration-writer.mjs",
+      "bytes": 36600,
+      "sha256": "f961560ab58d0889f832701f5ac66588435b71b4ec9f7342d10ecfa2ff86e2d3",
+      "gitBlobSha1": "99108b95d40079254672b80522445925aad69036",
+      "conflictHunksResolved": 2
+    }
+  ],
+  "assertions": [
+    {
+      "name": "syntax archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "status": "PASS"
+    },
+    {
+      "name": "syntax tools/ci/archive-registration-writer.mjs",
+      "status": "PASS"
+    },
+    {
+      "name": "all non-conflict candidate segments preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "entire nativeReviewReceipt byte-identical to ours",
+      "status": "PASS"
+    },
+    {
+      "name": "scope replay validator byte-identical to ours",
+      "status": "PASS"
+    },
+    {
+      "name": "writer transaction and final guards byte-identical to ours",
+      "status": "PASS"
+    },
+    {
+      "name": "both nativeSource context requirements preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "writer carries scope fingerprint and retry dependencies",
+      "status": "PASS"
+    },
+    {
+      "name": "writer retry env survives with scope",
+      "status": "PASS"
+    },
+    {
+      "name": "excluded debt alone does not continue or mutate",
+      "status": "PASS"
+    },
+    {
+      "name": "allowed unattempted debt continues",
+      "status": "PASS"
+    },
+    {
+      "name": "attempted allowed plus excluded debt does not continue",
+      "status": "PASS"
+    },
+    {
+      "name": "pending canonical retry retains main continuation",
+      "status": "PASS"
+    },
+    {
+      "name": "scope report mismatch refuses continuation",
+      "status": "PASS"
+    },
+    {
+      "name": "AutoMeta retry setup retains scope report and exact targets",
+      "status": "PASS"
+    },
+    {
+      "name": "AutoMeta replay receives scope and deferred proof",
+      "status": "PASS"
+    },
+    {
+      "name": "retry replay cannot accept new CLI request",
+      "status": "PASS"
+    },
+    {
+      "name": "retry queued base conflict still refused",
+      "status": "PASS"
+    },
+    {
+      "name": "parent retry cannot replace FINAL_QA authority",
+      "status": "PASS"
+    },
+    {
+      "name": "parent retry cannot replace REVIEW2 authority",
+      "status": "PASS"
+    },
+    {
+      "name": "parent retry cannot replace META_PIPELINE_AUDIT authority",
+      "status": "PASS"
+    },
+    {
+      "name": "authority withdrawal stays before retry",
+      "status": "PASS"
+    },
+    {
+      "name": "excluded retry is rejected before persistence",
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "passed": 23,
+    "failed": 0
+  },
+  "verificationKind": "syntax, byte-preservation and in-memory conflict-composition checks; not an actual native replay",
+  "nativeReceiptFunctionSha256": "89ba38b3ad38cc9684075f4d09a425b5d066d4befa9d56819e1c3bead582429e",
+  "mainHelper": {
+    "blobSha1": "5afa5b91f1c09f8ba2a7c5735eea13e568173074",
+    "sha256": "f0d5766d2fcfeeee8490948e6df8ed680a1a2e88668e38f924e93e91af545325",
+    "bytes": 14135
+  },
+  "boundaries": {
+    "actualReplayRun": false,
+    "metadataMutation": 0,
+    "sourceMutation": 0,
+    "remoteMutation": 0,
+    "rootWorktreeMutation": 0,
+    "frozen82CodeMutation": 0
+  },
+  "notes": [
+    "Scope proof, excluded pending debt, before/after excluded-row guard and fail-closed replay remain required.",
+    "Main canonical-parent retry remains a separate exact request; it refuses FINAL_QA, REVIEW2 and audit authority and requires its complete target set to succeed.",
+    "An excluded canonical retry is not silently absorbed or dropped; the complete retry batch is refused before output persistence."
+  ]
+}

@@ -5,7 +5,8 @@ import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {registerMergedSource,sourceFingerprint,contentFingerprint} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
+import {registerMergedSource,verifyMergedSource,sourceFingerprint,contentFingerprint} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
+import {resolveSemanticRunScope} from '../archive/tools/meta-foundation/semantic-run-scope.mjs';
 
 const source='original/middle/m3/1mid/batch-fixture.js';
 const metaPath='archive/data/question_metadata.json',identityPath='archive/data/question_identity_map.json';
@@ -176,4 +177,100 @@ test('a new registry binding retries pending source without replacing a partial 
   const replay=await f.replay();assert.equal(replay.replayVerified,true);assert.equal(replay.replayed,2);
   assert.equal(replay.results.find(r=>r.questionUid===f.uid(1)).status,'SUPPLEMENT_PENDING');
   assert.deepEqual(replay.plannedPaths,[]);assert.deepEqual(f.read(metaPath).records[0],heldBefore);
+});
+
+const scopeDescriptor='.archive-meta-register/auto/run-scopes/bounded-fixture-phase1.json';
+const scopeInboxes=['.archive-meta-register/inbox/scope-one.json','.archive-meta-register/inbox/scope-two.json'];
+const allowedSource='original/middle/m3/2mid/allowed-fixture.js';
+const stable=value=>JSON.stringify(value,(_,x)=>x&&typeof x==='object'&&!Array.isArray(x)?Object.fromEntries(Object.keys(x).sort().map(k=>[k,x[k]])):x);
+function scopeFixture(t,{allowed=true,max=1,v2=false}={}){
+  const f=fixture(t,{count:1,max,pending:()=>false});
+  if(allowed){
+    f.put('archive/exams/'+allowedSource,'window.questionBank='+JSON.stringify(f.bank)+';\n');
+    for(const file of [metaPath,identityPath]){const d=f.read(file);d.records.push({...d.records[0],questionUid:f.uid(100),sourceArchiveFile:allowedSource});f.put(file,d);}
+  }
+  f.git('add','-A');f.git('commit','-qm','complete fixture sources');const base=f.git('rev-parse','HEAD');
+  const s=f.read(statePath);s.lastProcessedCommit=base;s.pending[source+'#1']={...s.pending[source+'#1'],lastReasons:['retained historical refusal'],attemptSignature:'original-attempt-signature',extraBoundary:'keep-exact'};
+  if(allowed)s.pending[allowedSource+'#1']={sourceArchiveFile:allowedSource,sourceOrdinal:1,baseCommit:base};f.put(statePath,s);
+  for(const p of scopeInboxes)f.put(p,{requestId:path.basename(p,'.json')});
+  const scopeBindings=scopeInboxes.map(p=>({path:p,sha256:sha(f.bytes(p))}));
+  f.put(scopeDescriptor,{schemaVersion:v2?'archive-semantic-run-scope-v2':'archive-semantic-run-scope-v1',scopeId:'bounded-semantic-fixture',phase:'phase1',
+    excludedSourcePrefixes:['original/middle/m3/1final/','original/middle/m3/1mid/'],
+    ...(v2?{cohortBindings:scopeBindings}:{inboxBindings:scopeBindings})});
+  if(v2)f.put('.archive-meta-register/inbox/another-owner.json',{requestId:'another-owner'});
+  f.git('add','-A');f.git('commit','-qm','bound phase1');
+  return f;
+}
+function resealTamperedReplay(f){
+  const report=f.read('first-report.json'),{sha256:ignored,stateAfterSha256:ignoredState,...sealed}=report.replayBatch;
+  report.replayBatch.sha256=sha(stable(sealed));const s=f.read(statePath);
+  if(report.replayBatch.targets.length)s.lastBatchSha256=report.replayBatch.sha256;
+  f.put(statePath,s);report.replayBatch.stateAfterSha256=sha(stable(s));f.put('first-report.json',report);
+}
+
+test('active run scope defers an otherwise applicable M3S1 target, preserves its debt and spends the cap on allowed work',async t=>{
+  const f=scopeFixture(t),beforePending=structuredClone(f.read(statePath).pending[source+'#1']);
+  const beforeMeta=structuredClone(f.read(metaPath).records[0]),beforeIdentity=f.bytes(identityPath),beforeSource=f.bytes('archive/exams/'+source);
+  const result=await f.first();assert.equal(result.runScope.active,true);assert.equal(result.applied,1);
+  assert.equal(result.results.length,1);assert.equal(result.results[0].sourceArchiveFile,allowedSource);
+  assert.equal(result.deferredPending,1);assert.equal(result.pending,1);assert.equal(result.allowedPending,0);
+  assert.deepEqual(f.read(statePath).pending[source+'#1'],beforePending);
+  assert.deepEqual(f.read(metaPath).records[0],beforeMeta);assert.deepEqual(f.bytes(identityPath),beforeIdentity);assert.deepEqual(f.bytes('archive/exams/'+source),beforeSource);
+  assert.deepEqual(f.read('archive/data/meta-foundation/runtime/middle3-v1.json').records.map(r=>r.questionUid),[f.uid(100)]);
+  assert.equal(f.read(statePath).latestReceipts[f.uid(1)],undefined);
+  const replay=await f.replay();assert.equal(replay.replayVerified,true);assert.equal(replay.replayed,1);assert.equal(replay.deferredPending,1);assert.deepEqual(replay.plannedPaths,[]);
+  for(const p of scopeInboxes)fs.rmSync(path.join(f.root,p));f.git('add','-A');f.git('commit','-qm','phase1 consumed');
+  assert.equal(resolveSemanticRunScope(f.root).active,false);
+  const later=await f.first();assert.equal(later.applied,1);assert.equal(later.results[0].sourceArchiveFile,source,'a later unscoped job resumes normal automation');
+});
+
+test('new excluded source changes are queued before cursor advance while pre-existing excluded pending remains exact',async t=>{
+  for(const existing of [false,true])await t.test(existing?'existing debt':'new debt',async sub=>{
+    const f=scopeFixture(sub,{allowed:false}),s=f.read(statePath),old=structuredClone(s.pending[source+'#1']);
+    if(!existing){delete s.pending[source+'#1'];f.put(statePath,s);}
+    const bank=structuredClone(f.bank);bank[0].primaryMethod='Declared fixture update';f.put('archive/exams/'+source,'window.questionBank='+JSON.stringify(bank)+';\n');
+    f.git('add','-A');f.git('commit','-qm','excluded source delta');const head=f.git('rev-parse','HEAD'),metadata=f.bytes(metaPath),runtime=f.bytes('archive/data/meta-foundation/runtime/middle3-v1.json');
+    const result=await f.first();assert.equal(result.applied,0);assert.deepEqual(result.results,[]);assert.equal(result.deferredPending,1);
+    const after=f.read(statePath);assert.equal(after.lastProcessedCommit,head);assert(after.pending[source+'#1']);
+    if(existing)assert.deepEqual(after.pending[source+'#1'],old);else assert.equal(after.pending[source+'#1'].baseCommit,s.lastProcessedCommit);
+    assert.deepEqual(f.bytes(metaPath),metadata);assert.deepEqual(f.bytes('archive/data/meta-foundation/runtime/middle3-v1.json'),runtime);
+    assert.equal((await f.replay()).replayVerified,true);
+  });
+});
+
+for(const [name,mutate,error]of [
+  ['missing top scope',r=>{delete r.runScope;},/REPORT_BINDING_DRIFT/],
+  ['changed top scope',r=>{r.runScope.scopeDigest='0'.repeat(64);},/REPORT_BINDING_DRIFT/],
+  ['missing batch scope',r=>{delete r.replayBatch.runScope;},/REPORT_BINDING_DRIFT/],
+  ['missing both scopes',r=>{delete r.runScope;delete r.replayBatch.runScope;},/REPORT_BINDING_DRIFT/],
+  ['omitted deferred debt',r=>{r.deferredTargets=[];r.replayBatch.deferredTargets=[];},/DEFERRED_BINDING_DRIFT/],
+  ['excluded attempted result',r=>{r.results[0].sourceArchiveFile=source;},/SCOPE_EXCLUDED_ATTEMPT/],
+])test('scoped replay fails closed after self-consistent report tampering: '+name,async t=>{
+  const f=scopeFixture(t);await f.first();const r=f.read('first-report.json');mutate(r);f.put('first-report.json',r);resealTamperedReplay(f);
+  await assert.rejects(f.replay(),error);
+});
+test('scoped final verify checks exact policy, head and deferred set before consumer loading',async t=>{
+  for(const [name,mutate,error]of [
+    ['missing scope',f=>{const r=f.read('first-report.json');delete r.runScope;f.put('first-report.json',r);},/REPORT_BINDING_DRIFT/],
+    ['missing deferred set',f=>{const r=f.read('first-report.json');r.deferredTargets=[];f.put('first-report.json',r);},/DEFERRED_BINDING_DRIFT/],
+    ['excluded result',f=>{const r=f.read('first-report.json');r.results[0].sourceArchiveFile=source;f.put('first-report.json',r);},/SCOPE_EXCLUDED_ATTEMPT/],
+    ['later unconsumed HEAD',f=>{f.put('unrelated.txt','later');f.git('add','unrelated.txt');f.git('commit','-qm','later');},/REPORT_HEAD_DRIFT/],
+  ])await t.test(name,async sub=>{const f=scopeFixture(sub);await f.first();mutate(f);await assert.rejects(verifyMergedSource({root:f.root,reportPath:f.reportPath}),error);});
+});
+
+
+test('v2 AutoMeta binds every HEAD inbox, preserves excluded debt and replays the exact allowed batch',async t=>{
+  const f=scopeFixture(t,{v2:true}),before=structuredClone(f.read(statePath).pending[source+'#1']);
+  const report=await f.first();assert.equal(report.runScope.schemaVersion,'archive-semantic-run-scope-binding-v2');
+  assert.equal(report.runScope.cohortInputCount,2);assert.equal(report.runScope.boundInputCount,3);assert.equal(report.applied,1);
+  assert.equal(report.deferredPending,1);assert.equal(report.results[0].sourceArchiveFile,allowedSource);
+  assert.deepEqual(f.read(statePath).pending[source+'#1'],before);
+  for(const p of scopeInboxes)fs.rmSync(path.join(f.root,p));f.git('add','-u');
+  assert.equal((await f.replay()).replayVerified,true,'working/index consumption does not rewrite the fixed HEAD inventory');
+  const r=f.read('first-report.json');r.runScope.inboxBindings.pop();r.replayBatch.runScope.inboxBindings.pop();
+  f.put('first-report.json',r);resealTamperedReplay(f);await assert.rejects(f.replay(),/REPORT_BINDING_DRIFT/);
+});
+test('v2 final AutoMeta verification rejects an omitted complete inventory before Consumer loading',async t=>{
+  const f=scopeFixture(t,{v2:true});await f.first();const report=f.read('first-report.json');delete report.runScope.inboxBindings;f.put('first-report.json',report);
+  await assert.rejects(verifyMergedSource({root:f.root,reportPath:f.reportPath}),/REPORT_BINDING_DRIFT/);
 });

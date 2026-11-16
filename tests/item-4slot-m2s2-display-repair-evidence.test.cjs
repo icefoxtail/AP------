@@ -1,0 +1,17 @@
+'use strict';
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path');
+const {fixture,contract,mod,valid,rejected,hash}=require('./helpers/m2s2-display-repair-fixture.cjs');
+for(const role of ['candidate','mechanical','xml','actual','root'])test('display repair missing '+role+' proof fails before warm reuse',t=>{const f=fixture(t),warm=valid(f);fs.unlinkSync(path.join(f.root,f.paths[role]));rejected(f,/LIVE_BYTES|EVIDENCE_UNAVAILABLE/,warm);});
+for(const key of ['listedImagesActuallyViewed','originalNamedFourSlots'])test('display repair cannot claim a missing independent actual read: '+key,t=>{const f=fixture(t);f.actualRow.actualReads[key]=false;f.sign();rejected(f,/ACTUAL_READING/);});
+test('display repair rejects a ROOT observer that is the transport author',t=>{const f=fixture(t);f.rootRead.reviewer=f.proof.transportAuthor;f.sign();rejected(f,/ROOT_OBSERVATION/);});
+test('display repair preserves honest browser and registration limits',t=>{const f=fixture(t);f.actual.limits.browserInspection='PASS';f.sign();rejected(f,/ORIGINAL_REVIEW_LIMITS/);});
+test('display repair rejects a substituted image even after wrapper resealing',t=>{const f=fixture(t);const p='docs/operations/m2-display-fixture/fake.png';f.save(p,f.bytes(f.capturePaths[0])+'replacement');const c=f.commit('fake viewed image');f.binding.actualImageRefs=[f.ref(c,p,true)];f.signBinding();rejected(f,/ACTUAL_IMAGE_COVERAGE/);});
+test('display repair rejects an absolute executable wrapper reference',t=>{const f=fixture(t);f.binding.independentObservationRef.path='/historical-locator/actual.json';f.signBinding();rejected(f,/REFERENCE/);});
+test('display repair historical observer locators are never opened',t=>{const f=fixture(t);for(const p of [f.actual.candidateReportRef.path,f.mechanical.sourceReportRef.path])assert.equal(fs.existsSync(p),false);valid(f);});
+test('display repair rejects a native full-vector byte substitution',t=>{const f=fixture(t),p=f.nativeRef.path;const raw=f.bytes(p);f.save(p,Buffer.concat([raw,Buffer.from(' ')]));const c=f.commit('different native authority');f.actualRow.nativeFourSlotRef=f.ref(c,p,true);f.mechanicalRow.nativeFourSlotRef=f.ref(c,p,true);f.sign();rejected(f,/NATIVE_SELECTED_AUTHORITY/);});
+test('display repair rejects removal of the original live negative',t=>{const f=fixture(t),warm=valid(f);fs.unlinkSync(path.join(f.root,f.negativeRef.path));rejected(f,/EVIDENCE_UNAVAILABLE|LIVE_BYTES/,warm);});
+test('display repair rejects an extra unknown carrier field',t=>{const f=fixture(t);f.proof.skipNegative=true;f.signCarrier();rejected(f,/FIELDS/);});
+
+test('display repair independent native PNG must be the exact original problem asset',t=>{const f=fixture(t),p='docs/operations/m2-display-fixture/different-observed.png',bytes=Buffer.concat([f.bytes(f.capturePaths[0]),Buffer.from('a different claimed image')]);f.save(p,bytes);const c=f.commit('wrong independent image input');f.binding.actualImageRefs=[f.ref(c,p,true)];const image={...f.actualRow.actualImageRefs[0],path:'/a historical unused locator',sha256:mod.sha(bytes),bytes:bytes.length};f.actualRow.actualImageRefs=[image];f.xml.imageFiles=[image];f.sign();rejected(f,/ACTUAL_NATIVE_PNG/);});
+test('display repair ROOT observation has a closed shape',t=>{const f=fixture(t);f.rootRead.skipHistoricalProof=true;f.sign();rejected(f,/FIELDS/);});

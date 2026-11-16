@@ -47,6 +47,15 @@ changed.update(subprocess.check_output(['git','ls-files','--others','--exclude-s
 bad=[p for p in changed if p and not any(fnmatch.fnmatchcase(p,x) for x in patterns)]
 if bad: raise SystemExit('UNEXPECTED_4SLOT_GENERATED_PATHS: '+str(bad))
 PY
+# This ephemeral challenge is issued by the current main-writer invocation.
+# It is created only after full --check, replay, Consumer and path guards pass;
+# it never changes the deterministic persisted 4slot proof/receipt.
+if [[ -n "${ARCHIVE_FOUR_SLOT_CHECK_NONCE:-}" ]]; then
+  node --input-type=module - "$work" <<'JS'
+import {recordFourSlotScopeCheck} from './archive/tools/meta-foundation/semantic-run-scope.mjs';
+recordFourSlotScopeCheck(process.cwd(),process.argv[2],process.env.ARCHIVE_FOUR_SLOT_CHECK_NONCE);
+JS
+fi
 if [[ -n "${GITHUB_STEP_SUMMARY:-}" ]]; then
  { echo '### Existing 4slot → registered index'; echo '```json'; cat "$work/verify.json"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
 fi

@@ -1,0 +1,283 @@
+{
+  "schemaVersion": "m3-f932-three-phase2-independent-read-gate-review-v1",
+  "reviewer": "/root/audit_m3",
+  "reviewedAtUtc": "2026-11-16T07:19:24.951Z",
+  "status": "EXISTING_OBSERVATION_BYTES_SUPPORTED_PHASE1_MAIN_GATE_PENDING",
+  "rawComparison": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/f932-three-frozen-evidence-independent-read.json",
+    "sha256": "f46c8674c7bbbfc2d2e6a752cec9a737e61f66d04c7e30e06dc92605baedc3ba"
+  },
+  "counts": {
+    "fullVectors": 72,
+    "changedObserved": 64,
+    "untouched": 8,
+    "fontClosure": 6,
+    "assetReferences": 256,
+    "uniqueCurrentAssets": 128
+  },
+  "sourceAndVectorBoundary": {
+    "latestMain": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+    "sourcesExactToObserved": 3,
+    "fullNativeProjectedVectorsExact": 72,
+    "changedObservationsExact": 64,
+    "originalRetained58": 58,
+    "originalFontPendingUnmodified": 6,
+    "rootFontClosuresMatched": 6,
+    "unchangedWholeQuestionsAndAssets": 8,
+    "sourceMutation": 0,
+    "assetMutation": 0,
+    "slotMutation": 0,
+    "newVisualReview": 0,
+    "newMathQa": 0,
+    "newDifficultyApproval": 0,
+    "newSemanticApproval": 0
+  },
+  "browserJoins": [
+    {
+      "id": "E082-q12-problem",
+      "exam": "E082",
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_a8f10a377a4336eaa0f47739f2b2a16170d95478f6c4b54bd6dcb5b4513ed675",
+      "checks": {
+        "singleInput": true,
+        "singleResult": true,
+        "inputMatchesResult": true,
+        "sourceUidOrdinal": true,
+        "assetRawRef": true,
+        "capturedDomRawSha256": true,
+        "viewBox": true,
+        "declaredNormalizationEquality": true
+      }
+    },
+    {
+      "id": "E082-q23-problem",
+      "exam": "E082",
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_06b3ae65d59e49005130c6b098ca264dd170282fca254fc48a7477b652ffafd0",
+      "checks": {
+        "singleInput": true,
+        "singleResult": true,
+        "inputMatchesResult": true,
+        "sourceUidOrdinal": true,
+        "assetRawRef": true,
+        "capturedDomRawSha256": true,
+        "viewBox": true,
+        "declaredNormalizationEquality": true
+      }
+    },
+    {
+      "id": "E083-q7-problem",
+      "exam": "E083",
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_376c873d683c6cd6d2872696e1885f653fe3a93cb4ee961887a02c0201c75dda",
+      "checks": {
+        "singleInput": true,
+        "singleResult": true,
+        "inputMatchesResult": true,
+        "sourceUidOrdinal": true,
+        "assetRawRef": true,
+        "capturedDomRawSha256": true,
+        "viewBox": true,
+        "declaredNormalizationEquality": true
+      }
+    },
+    {
+      "id": "E083-q22-problem",
+      "exam": "E083",
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_3630ea0897715a1882063f30d0473c6215a675ab11ef0f5f828a113ec774a18b",
+      "checks": {
+        "singleInput": true,
+        "singleResult": true,
+        "inputMatchesResult": true,
+        "sourceUidOrdinal": true,
+        "assetRawRef": true,
+        "capturedDomRawSha256": true,
+        "viewBox": true,
+        "declaredNormalizationEquality": true
+      }
+    },
+    {
+      "id": "E080-q5-problem",
+      "exam": "E080",
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_eb4ec15d7b74a65947e00d2db991a4a8eb530b69a3f97ebc1acc25043c3584f0",
+      "checks": {
+        "singleInput": true,
+        "singleResult": true,
+        "inputMatchesResult": true,
+        "sourceUidOrdinal": true,
+        "assetRawRef": true,
+        "capturedDomRawSha256": true,
+        "viewBox": true,
+        "declaredNormalizationEquality": true
+      }
+    },
+    {
+      "id": "E080-q9-problem",
+      "exam": "E080",
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_d4c1a9569cafb095817f204b59ae61cb768b143ac3d1784d133943ce50308c9d",
+      "checks": {
+        "singleInput": true,
+        "singleResult": true,
+        "inputMatchesResult": true,
+        "sourceUidOrdinal": true,
+        "assetRawRef": true,
+        "capturedDomRawSha256": true,
+        "viewBox": true,
+        "declaredNormalizationEquality": true
+      }
+    }
+  ],
+  "priorGateClassification": {
+    "exactOriginalStatus": "AWAIT_ACTUAL_PHASE1_REGISTERED_MAIN",
+    "originalObservationFileUnmodified": true,
+    "unissuedDraftStatusPreserved": true,
+    "source": "Explicit condition in the frozen original observation and draft; not a generic positive-intake receipt requirement implemented by the current builder",
+    "genericPositiveIntake": "build -> validateCompact -> source blob / per-item payload / asset verification; currentFourSlotVectorContinuity is provenance, not a dedicated positive validator",
+    "negativeSchemas": "The related continuity schema is interpreted inside explicit negative-hold paths; those are not an alternate positive approval for these64",
+    "existingRegisteredVectorHelper": "Separate schema requires actual prior registered index/metadata context; it is not the proposed positive provenance intake",
+    "rootDecision": "Honor the explicit observation condition: publish phase1 literal E082 with full24 and Q10 chain first, confirm actual main Q10/vector/receipt, then publish phase2 current3source64 proposal",
+    "waivers": 0
+  },
+  "actualMainRead": {
+    "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+    "registered": 7,
+    "pending": 65,
+    "E082": {
+      "registered": [
+        2,
+        5,
+        21
+      ],
+      "pendingCount": 21,
+      "q10": "STALE_STUDENT_PAYLOAD",
+      "phase1ExpectedLiteralPresent": false
+    },
+    "E083": {
+      "registered": [
+        2,
+        4
+      ],
+      "pendingCount": 23
+    },
+    "E080": {
+      "registered": [
+        2,
+        3
+      ],
+      "pendingCount": 21
+    }
+  },
+  "phase1ReadOnlyPrediction": {
+    "total24": 24,
+    "registered4": [
+      2,
+      5,
+      10,
+      21
+    ],
+    "pending20": [
+      1,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24
+    ],
+    "basis": "Same current source, unchanged whole questions/assets, exact 7feb fullvector and Q10 existing proof; not an execution result",
+    "officialBuilder": "NOT_RUN",
+    "consumer": "NOT_RUN",
+    "mainWriter": "NOT_RUN"
+  },
+  "remainingGates": [
+    "Actual main phase1 literal/full24/Q10 receipt observation",
+    "M1 proposed successor final exact bytes and recursive Q10 evidence preservation review",
+    "Immutable publication of the final phase2 carrier and complete closure",
+    "Official final full builder/replay/Consumer on the exact phase2 inputs",
+    "Actual main registration and downstream release observation"
+  ],
+  "codeRefs": [
+    {
+      "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "sha256": "e7ff71d88580f6903746fca9827cf8d08086508976ad46bfbb29eb0aeec46049",
+      "bytes": 30449,
+      "stage": "ACTUAL_MAIN"
+    },
+    {
+      "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+      "path": "tools/ci/archive-four-slot-pass.sh",
+      "sha256": "0f6b9b4649da0d6306e9f600c6f2ee34a2e9c0b4c95c0758615d6e46ac71e84f",
+      "bytes": 3584,
+      "stage": "ACTUAL_MAIN"
+    },
+    {
+      "commit": "7e85ce9f9290b6b9a749ad94bfabc79f933fd21a",
+      "path": "tools/4slot/current-renderer-negative-hold.cjs",
+      "sha256": "8b264bb68d2d6f1e379a6c5e4bc4bb680a12bb296d33f593276223ed0c80e793",
+      "bytes": 20374,
+      "stage": "PLANNED_ROOT_UNION_NOT_MAIN"
+    },
+    {
+      "commit": "7e85ce9f9290b6b9a749ad94bfabc79f933fd21a",
+      "path": "tools/4slot/current-renderer-negative-hold-v2.cjs",
+      "sha256": "da422e55cba7d4578f60c0704b08f738d2d5b17e8710c9ac70ee5d32b5495fbd",
+      "bytes": 26283,
+      "stage": "PLANNED_ROOT_UNION_NOT_MAIN"
+    },
+    {
+      "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+      "path": "tools/4slot/existing-registered-vector-continuity.cjs",
+      "sha256": "7601f39f8633b16e201c8764e382681ad1dd2dd4e193e4a3fb012bddc801b272",
+      "bytes": 34007,
+      "stage": "ACTUAL_MAIN"
+    },
+    {
+      "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+      "path": "docs/architecture/JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md",
+      "sha256": "345b06496fc64faead622b44d8ef7f668452cc96c543e6dbd361e2c7947ab6ec",
+      "bytes": 55515,
+      "stage": "ACTUAL_MAIN"
+    },
+    {
+      "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+      "path": "docs/architecture/Archive_4Slot_Auto_Registration_CURRENT.md",
+      "sha256": "9b983dc3b682a25e6051073adf3e5e53eedfce38632656154c82323face61d44",
+      "bytes": 10463,
+      "stage": "ACTUAL_MAIN"
+    },
+    {
+      "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+      "path": "docs/operations/JS_Archive_4Slot_Review_and_Main_Import_CURRENT_v1.md",
+      "sha256": "2d5a3198cb80594dcb8c7e20abc023f8e617239319b6f8b09fd72c5c544eae02",
+      "bytes": 16376,
+      "stage": "ACTUAL_MAIN"
+    },
+    {
+      "commit": "7e85ce9f9290b6b9a749ad94bfabc79f933fd21a",
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "sha256": "72adc7bd53b9b3964f9b9e2203ceab23ada1894d3ddf6aaf7db5408eb52b673c",
+      "bytes": 35104,
+      "stage": "PLANNED_ROOT_UNION_NOT_MAIN"
+    }
+  ],
+  "productionWrites": 0,
+  "remoteWrites": 0,
+  "rawQuestionOrAnswerTextInReport": false
+}

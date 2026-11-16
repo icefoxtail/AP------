@@ -42,6 +42,125 @@ const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.t
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'tests/archive-issued-rpm-evidence-continuity.test.mjs',
+    args: ['--test', 'tests/archive-issued-rpm-evidence-continuity.test.mjs']
+  },
+  // The complete exact-repair fixture is split without changing any assertion.
+  // All names are covered once; each command retains the ordinary 60s budget.
+  ...[
+    '^(?:an exact approved repair|closed repair|truthfully rebound input|warm live repair rejects old-raw-negative$)',
+    '^(?:independent observation|warm live repair rejects (?:peer-asset|vector)$)',
+    '^(?:cold live repair|warm live repair rejects identity$)',
+    '^(?:warm live repair rejects (?!(?:old-raw-negative|peer-asset|vector|identity)$)|a committed)',
+  ].map((pattern, index) => ({
+    label: `tests/item-4slot-m2s2-current-repair-closure.test.cjs [${index + 1}/4]`,
+    args: ['--test', '--test-name-pattern', pattern, 'tests/item-4slot-m2s2-current-repair-closure.test.cjs'],
+  })),
+  {
+    label: 'tests/item-4slot-m2s2-current-continuity.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-current-continuity.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-current-continuity.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-current-continuity.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-exact-display-repair.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-exact-display-repair.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-display-repair-evidence.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-display-repair-evidence.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-display-repair-history.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-display-repair-history.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-display-repair-markup.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-display-repair-markup.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-issued-metadata.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-issued-metadata.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-issued-metadata-authority.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-issued-metadata-authority.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-issued-metadata-history.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-issued-metadata-history.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-issued-metadata-obligation.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-issued-metadata-obligation.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-native-vector-amendment.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-native-vector-amendment.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-native-authority.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-native-authority.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-m2s2-imported-native-observer-v1.test.cjs',
+    args: ['--test', 'tests/item-4slot-m2s2-imported-native-observer-v1.test.cjs']
+  },
+  {
+    label: 'tests/archive-m2-provider-current-renderer.test.mjs',
+    args: ['--test', 'tests/archive-m2-provider-current-renderer.test.mjs']
+  },
+  {
+    label: 'tests/archive-audited-cc-append.test.mjs',
+    args: ['--test', 'tests/archive-audited-cc-append.test.mjs']
+  },
+  {
+    label: 'tests/archive-audited-cc-catalog-precedence.test.mjs',
+    args: ['--test', 'tests/archive-audited-cc-catalog-precedence.test.mjs']
+  },
+  {
+    label: 'tests/archive-changed-uid-consumer-approval.test.mjs',
+    args: ['--test', 'tests/archive-changed-uid-consumer-approval.test.mjs']
+  },
+  {
+    label: 'tests/archive-m2-current-renderer-continuity.test.mjs',
+    args: ['--test', 'tests/archive-m2-current-renderer-continuity.test.mjs']
+  },
+  {
+    label: 'tests/archive-m2-current-renderer-registration.test.mjs',
+    args: ['--test', 'tests/archive-m2-current-renderer-registration.test.mjs']
+  },
+  {
+    label: 'tests/archive-m2-current-renderer-refresh.test.mjs',
+    args: ['--test', 'tests/archive-m2-current-renderer-refresh.test.mjs']
+  },
+  {
+    label: 'tests/archive-original-finalqa-renderer-preservation.test.mjs',
+    args: ['--test', 'tests/archive-original-finalqa-renderer-preservation.test.mjs']
+  },
+  {
+    label: 'tests/item-4slot-current-renderer-negative-hold-v2.test.cjs',
+    args: ['--test', 'tests/item-4slot-current-renderer-negative-hold-v2.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-current-renderer-negative-hold.test.cjs',
+    args: ['--test', 'tests/item-4slot-current-renderer-negative-hold.test.cjs']
+  },
+  {
+    label: 'tests/meta-foundation-exact-json-byte-parser.test.mjs',
+    args: ['--test', 'tests/meta-foundation-exact-json-byte-parser.test.mjs']
+  },
+  {
+    label: 'tests/meta-foundation-immutable-git-batch.test.mjs',
+    args: ['--test', 'tests/meta-foundation-immutable-git-batch.test.mjs']
+  },
+  {
+    label: 'tests/meta-foundation-immutable-git-metadata.test.mjs',
+    args: ['--test', 'tests/meta-foundation-immutable-git-metadata.test.mjs']
+  },
+  {
     label: 'tests/native-approved-renderer-consumer.test.mjs',
     args: ['--test', 'tests/native-approved-renderer-consumer.test.mjs']
   },
@@ -134,6 +253,14 @@ const requiredCommands = [
   {
     label: 'tests/archive-main-meta-batch-replay.test.mjs',
     args: ['--test', 'tests/archive-main-meta-batch-replay.test.mjs']
+  },
+  {
+    label: 'tests/archive-semantic-run-scope.test.mjs',
+    args: ['--test', 'tests/archive-semantic-run-scope.test.mjs']
+  },
+  {
+    label: 'tests/archive-semantic-run-scope-v2.test.mjs',
+    args: ['--test', 'tests/archive-semantic-run-scope-v2.test.mjs']
   },
   {
     label: 'tests/item-4slot-runtime.test.cjs',

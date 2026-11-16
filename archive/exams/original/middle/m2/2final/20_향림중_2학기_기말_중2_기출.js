@@ -1553,3 +1553,12 @@ window.questionBank = [
     "solutionImageSize": "full"
   }
 ];
+
+// Carry the immutable native review and independently finalized application.
+Object.assign(window.questionBank[20], {
+  "problemTypeKey": "PT_M2_PARALLELOGRAM_OPPOSITE_SIDES_PROOF",
+  "templateKey": "TPL_M2_PARALLELOGRAM_OPPOSITE_SIDES_DIAGONAL_ASA",
+  "curriculum": "2015",
+  "curriculumKey": "2015",
+  "courseKey": "M2-2"
+});
