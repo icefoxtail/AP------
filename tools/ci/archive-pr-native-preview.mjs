@@ -36,7 +36,6 @@ const sorted = values => [...new Set(values)].sort();
 
 import { AUTHORITY_CORRECTION_MODE, isNativeAuthorityCorrection, authorityHoldSealPath } from '../../archive/tools/meta-foundation/native-authority-correction.mjs';
 import { bindDifficulty5Source } from '../../archive/tools/meta-foundation/register-difficulty5.mjs';
-import { hasIssuedRpmHistory, loadIssuedRpmHistory, readIssuedRpmCurrentState, readIssuedRpmHistoricalEvidence } from '../../archive/tools/meta-foundation/native-issued-rpm-history.mjs';
 
 export function nativeCommand(program, args, root) {
   const r = spawnSync(program, args, { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
@@ -687,7 +686,7 @@ function historicalPreservedRpmEvidence(root, headSha, context, item, currentRef
 // Include that receipt's explicit SHA-bound approval inputs in the same fixed
 // manifest, so the independent shadow receives the documents too. This stages
 // inputs only; the official registrar still authenticates every approval.
-function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, auditSourceAncestor, preservationRequest, historicalRpmEvidence = [], issuedRpmHistory } = {}) {
+function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, auditSourceAncestor, preservationRequest, historicalRpmEvidence = [] } = {}) {
   const refs = new Map(), active = new Set(), historyCache = new Map();
   const visit = (item, context = null) => {
     if (!/^[a-f0-9]{64}$/.test(item?.sha256 || '')) fail('EVIDENCE_SHA');
@@ -715,17 +714,6 @@ function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, auditS
     let receipt;
     try { receipt = JSON.parse(fs.readFileSync(safe(root, ref.path), 'utf8')); }
     catch { fail(`EVIDENCE_JSON:${ref.path}`); }
-    if (issuedRpmHistory && eq(issuedRpmHistory.descriptor.priorReceiptRef, { path: ref.path, sha256: ref.sha256 })) {
-      // Historical canonical bytes never replace the current file in the shadow.
-      // The same strict validator has bound the issued receipt, original Git,
-      // unchanged current RPM rows and exact selected current state.
-      for (const input of receipt.approval.evidenceRefs) {
-        readIssuedRpmHistoricalEvidence(issuedRpmHistory, receipt, input);
-        visit(input.path === issuedRpmHistory.descriptor.historicalCrosswalkRef.path
-          ? issuedRpmHistory.descriptor.currentCrosswalkRef : input);
-      }
-      active.delete(ref.path); return;
-    }
     if (auditSourceAncestor && eq(auditSourceAncestor.priorReceiptRef, { path: ref.path, sha256: ref.sha256 })) {
       // Only this typed source-only audit uses a historical FULL authority.
       // Its registrar replays the entire prior graph from immutable Git,
@@ -818,6 +806,14 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
         || new Set(selectedItems.map(i => i.questionUid)).size !== selectedItems.length
         || new Set(selectedItems.map(i => i.sourceOrdinal)).size !== selectedItems.length) fail('SELECTED_UID_SCOPE');
     selectedItems.sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
+    const historicalRpmEvidence = [];
+    const evidence = fixedNativeEvidence(root, headSha, [request.approval?.evidenceRefs, ...(request.items || []).map(i => i.evidenceRefs),
+      ...(request.registryChanges || []).map(i => i.evidenceRefs),
+      ...(correction ? [[request.difficultyEvidence]] : [])],
+      { preservationRequest: request, historicalRpmEvidence,
+        withdrawnReceiptRef: authorityCorrection ? request.authorityCorrection?.originalReceiptRef : undefined,
+        auditSourceAncestor: auditSourcePreservation ? { ...auditSourcePreservation,
+          sourceArchiveFile: request.sourceArchiveFile, examUid: request.examUid, expectedQuestionCount: request.expectedQuestionCount } : undefined });
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
     const source = fileRef(root, sourcePath), blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
     if (blobSha1 !== request.expectedSourceBlobSha1 || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
@@ -828,17 +824,6 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
     } catch { fail('SOURCE_BANK_INVALID'); }
     if (!Array.isArray(bank) || bank.length !== request.expectedQuestionCount) fail('SOURCE_DENOMINATOR');
-    const issuedRpmHistory = hasIssuedRpmHistory(request) ? loadIssuedRpmHistory({ root, envelope: request,
-      bytes: fs.readFileSync(safe(root, sourcePath)), bank: JSON.parse(JSON.stringify(bank)), headSha,
-      ...readIssuedRpmCurrentState(root, request) }) : null;
-    const historicalRpmEvidence = [];
-    const evidence = fixedNativeEvidence(root, headSha, [request.approval?.evidenceRefs, ...(request.items || []).map(i => i.evidenceRefs),
-      ...(request.registryChanges || []).map(i => i.evidenceRefs),
-      ...(correction ? [[request.difficultyEvidence]] : [])],
-      { preservationRequest: request, historicalRpmEvidence, issuedRpmHistory,
-        withdrawnReceiptRef: authorityCorrection ? request.authorityCorrection?.originalReceiptRef : undefined,
-        auditSourceAncestor: auditSourcePreservation ? { ...auditSourcePreservation,
-          sourceArchiveFile: request.sourceArchiveFile, examUid: request.examUid, expectedQuestionCount: request.expectedQuestionCount } : undefined });
     requests.push({ ...fileRef(root, file), requestId: request.requestId, questionCount: selectedItems.length,
       sourceQuestionCount: request.expectedQuestionCount, selectedItems,
       ...(inherited.has(file) ? { inheritedPreservation: inherited.get(file) } : {}),
@@ -849,7 +834,6 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(sourceRebind ? { sourceRebind } : {}),
       ...(auditSourcePreservation ? { auditSourcePreservation } : {}),
       ...(historicalRpmEvidence.length ? { historicalRpmEvidence } : {}),
-      ...(issuedRpmHistory ? { issuedRpmHistory: issuedRpmHistory.descriptor } : {}),
       ...(registryDependency ? { registryDependency } : {}),
       ...(rendererPreservation ? { rendererPreservation } : {}),
       ...(authorityCorrection ? { kind: 'native-authority-withdrawal' } : basicPreservation ? { basicPreservation, kind: basicPreservation.newBasicParent ? 'basic-parent-registration' : 'basic-approval-preservation' }

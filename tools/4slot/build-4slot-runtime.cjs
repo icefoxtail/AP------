@@ -23,7 +23,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
-const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker,require.resolve('./existing-registered-vector-continuity.cjs'),require.resolve('./existing-registered-vector-ui.cjs'),require.resolve('./rebind-existing-renderer-v2.cjs')].map(p=>fs.readFileSync(p))));
+const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker,require.resolve('./rebind-existing-renderer-v2.cjs'),require.resolve('./existing-registered-vector-continuity.cjs'),require.resolve('./existing-registered-vector-ui.cjs')].map(p=>fs.readFileSync(p))));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -287,7 +287,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
           try{registeredRenderer.verify(root,selectedContinuities[0]);rendererContinuation={path:selectedContinuities[0].path,sha256:selectedContinuities[0].sha256};}
           catch(e){fail(e.message,it.ordinal);continue;}
         }
-        if(rendererBound&&rendererContinuation){fail('MULTIPLE_RENDERER_CONTINUITY_AUTHORITIES',it.ordinal);continue;}
+        if(rendererBound&&(rendererContinuation||vectorContinuation)){fail('MULTIPLE_RENDERER_CONTINUITY_AUTHORITIES',it.ordinal);continue;}
         if(currentPayload!==baseline&&!rendererBound&&!rendererContinuation&&!vectorContinuation){fail('STALE_STUDENT_PAYLOAD',it.ordinal);continue;}
         // Changed local figure bytes invalidate only rows that reference that file; never discard other rows.
         const alteredAsset=oldSame&&assetRefs(cur.q).some(p=>own(baselineAssets,p)&&baselineAssets[p]!==assetDigests[p]);
@@ -298,7 +298,7 @@ function build(root=ROOT,{previous,readBlob,reuseCache=true}={}) {
           else fail('EXPLICIT_REVIEW_HOLD:'+h.reason,it.ordinal,{questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,evidence:h.evidence,nextAction:h.nextAction});
           continue;
         }
-        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:sourceIdentityNumber(cur.q),sourceDisplayNumber:it.ordinal,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceUidBinding,identityFingerprintStatus,sourceBinding:vectorContinuation?'EXISTING_REGISTERED_VECTOR_CONTINUITY':rendererBound?'SCOPED_REVIEWED_RENDERER':rendererContinuation?'REGISTERED_RENDERER_CONTINUITY':sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',...(rendererContinuation?{rendererContinuityRef:rendererContinuation}:{}),...(vectorContinuation?{existingVectorContinuityRef:vectorContinuation.ref}:{}),registrationStatus:'REGISTERED',independentReviewClaim:false};
+        const row={questionUid:id.questionUid,sourceArchiveFile:d.sourceArchiveFile,sourceOrdinal:cur.ordinal,sourceQuestionNo:sourceIdentityNumber(cur.q),sourceDisplayNumber:it.ordinal,compactPath:rel,dictionaryVersion:d.dictionaryVersion,format:it.format,...Object.fromEntries(SLOTS.map(s=>[s,it[s]])),candidates:it.candidates,sourceUidBinding,identityFingerprintStatus,sourceBinding:rendererBound?'SCOPED_REVIEWED_RENDERER':vectorContinuation?'EXISTING_REGISTERED_VECTOR_CONTINUITY':rendererContinuation?'REGISTERED_RENDERER_CONTINUITY':sourceBlob===d.sourceGitBlobSha?'EXACT_BLOB':'UNCHANGED_STUDENT_PAYLOAD',...(rendererContinuation?{rendererContinuityRef:rendererContinuation}:{}),...(vectorContinuation?{existingVectorContinuityRef:vectorContinuation.ref}:{}),registrationStatus:'REGISTERED',independentReviewClaim:false};
         if(rendererBound)row.rendererReceipt={schemaVersion:existingRenderer.RECEIPT_SCHEMA,...d[existingRenderer.MARKER].receipt};
         records.push(row);
       }

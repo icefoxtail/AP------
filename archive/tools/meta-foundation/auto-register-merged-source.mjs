@@ -15,7 +15,6 @@ import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, native
 import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
 import { nativeReviewedM2CcRendererRebind } from './reviewed-m2-cc-renderer-continuity.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
-import { assertIssuedRpmHistoricalLeaf, readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
 import { hasApprovedRendererPreservationClaim, verifyApprovedRendererReceipt } from './native-approved-renderer-preservation.mjs';
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
@@ -203,10 +202,7 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         ||approval?.type!==current.metadataApprovalType||approval.metadataReviewed!==true
         ||!String(approval.approvedBy||'').trim()||approval.type==='REVIEW2'&&approval.reviewPassCount!==2
         ||!Array.isArray(approval.evidenceRefs)||!approval.evidenceRefs.length)continue;
-      const rpmHistory=nativeSource.issuedRpmHistoryContext;
-      if(rpmHistory)assertIssuedRpmHistoricalLeaf({context:rpmHistory,receipt,nativeSource,current,identity,ordinal});
-      if(!approval.evidenceRefs.every(ref=>/^[a-f0-9]{64}$/.test(ref.sha256||'')&&sha256(rpmHistory
-        ?readIssuedRpmHistoricalEvidence(rpmHistory,receipt,ref):boundRead(ref.path))===ref.sha256))continue;
+      if(!approval.evidenceRefs.every(ref=>/^[a-f0-9]{64}$/.test(ref.sha256||'')&&sha256(boundRead(ref.path))===ref.sha256))continue;
       const record=nativeReceiptRecords(receipt,nativeSource,source)?.get(identity.questionUid);
       const runtime=receipt.runtimeRecords?.filter(r=>r.questionUid===identity.questionUid);
       const registeredIdentity=receipt.appliedIdentityRecords?.filter(r=>r.questionUid===identity.questionUid);

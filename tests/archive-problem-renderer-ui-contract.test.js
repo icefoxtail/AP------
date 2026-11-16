@@ -12,6 +12,56 @@ const head = 'a'.repeat(40);
 const scope = changedFiles => ({ schemaVersion: 'archive-ci-scope-v2', eventName: 'pull_request', headSha: head, changedFiles });
 const studentCss = [400, 700, 800].map(weight => `@font-face { font-family: 'Nanum Myeongjo'; font-style: normal; font-weight: ${weight}; src: url(https://fonts.gstatic.com/s/nanummyeongjo/v1/reviewed_${weight}.woff2) format('woff2'); }`).join('\n');
 
+test('student context waits for a pending font body and route fulfillment before disposal', async () => {
+  const events = []; let disposed = false, releaseBody;
+  const bodyReady = new Promise(resolve => { releaseBody = resolve; });
+  const handler = (async () => {
+    await bodyReady;
+    assert.equal(disposed, false, 'pending response must still be readable');
+    events.push('body-read', 'route-fulfilled');
+  })();
+  const page = { async unrouteAll(options) {
+    assert.deepEqual(options, { behavior: 'wait' });
+    events.push('drain-start'); await handler; events.push('drain-end');
+  } };
+  const context = { async close() { disposed = true; events.push('context-closed'); } };
+  const completion = checker.closeStudentContext(page, context, () => {
+    assert.equal(disposed, false); events.push('late-check');
+  });
+  await Promise.resolve();
+  assert.equal(disposed, false); assert.deepEqual(events, ['drain-start']);
+  releaseBody(); await completion;
+  assert.deepEqual(events, ['drain-start', 'body-read', 'route-fulfilled', 'drain-end', 'late-check', 'context-closed']);
+});
+
+test('student context draining preserves late font failure diagnostics and does not suppress handler errors', async () => {
+  const failures = []; let releaseFailure, closed = false;
+  const pending = new Promise(resolve => { releaseFailure = resolve; });
+  const message = 'apiResponse.body: genuine response body read failure';
+  const handler = (async () => {
+    await pending;
+    failures.push(checker.fontFailureDiagnostic({ kind: 'FONT', stage: 'BODY_READ', httpStatus: 200,
+      urlSha256: 'a'.repeat(64), responseUrlSha256: 'a'.repeat(64), mime: 'font/woff2' }, new Error(message)));
+  })();
+  const completion = checker.closeStudentContext({ async unrouteAll(options) {
+    assert.deepEqual(options, { behavior: 'wait' }); await handler;
+  } }, { async close() { closed = true; } }, () => {
+    assert.equal(closed, false);
+    assert.equal(failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
+  });
+  await Promise.resolve(); assert.equal(closed, false); assert.equal(failures.length, 0);
+  const rejects = assert.rejects(completion, /UI_LATE_NETWORK_OR_PAGE_FAILURE/);
+  releaseFailure(); await rejects;
+  assert.equal(closed, true); assert.equal(failures.length, 1);
+  assert.equal(failures[0].errorMessageSha256, checker.sha256(message));
+  assert.equal(failures[0].stage, 'BODY_READ');
+  assert.throws(() => assert.equal(failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE'), /UI_LATE_NETWORK_OR_PAGE_FAILURE/);
+  const original = new Error('route handler failed'); let closedAfterError = false;
+  await assert.rejects(checker.closeStudentContext({ async unrouteAll() { throw original; } },
+    { async close() { closedAfterError = true; } }), error => error === original);
+  assert.equal(closedAfterError, true);
+});
+
 test('the real engine imports its student font before qualified CSS rules', () => {
   const engine = fs.readFileSync(path.join(__dirname, '..', 'archive/engine.html'), 'utf8');
   const fontStyles = [...engine.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)]

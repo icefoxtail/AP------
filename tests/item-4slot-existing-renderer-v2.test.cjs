@@ -116,3 +116,23 @@ test('renderer lane merge refuses two valid authorities for the same selected UI
  assert.equal(built.index.pending.find(r=>r.ordinal===2).reason,'MULTIPLE_RENDERER_CONTINUITY_AUTHORITIES');
  assert.equal(built.index.pending.find(r=>r.ordinal===3).reason,'STALE_STUDENT_PAYLOAD');
 });
+
+test('renderer and existing-vector composition refuses mixed runtime certificates',t=>{
+ const f=fixture(t);H.importExistingRenderer({...f.args(),write:true});
+ const good=f.build().index,mixed=structuredClone(good),row=mixed.records.find(r=>r.questionUid===uid(2));
+ row.existingVectorContinuityRef={path:'.archive-meta-register/4slot-existing-vector-continuity/'+uid(2)+'.json',sha256:'b'.repeat(64)};
+ assert.throws(()=>C.createIndex(mixed),/FOUR_SLOT_EXISTING_VECTOR_REF_UNEXPECTED/);
+ row.sourceBinding='EXISTING_REGISTERED_VECTOR_CONTINUITY';
+ assert.throws(()=>C.createIndex(mixed),/FOUR_SLOT_SOURCE_BINDING_INVALID/);
+});
+test('renderer and existing-vector composition refuses two independently validated authorities',t=>{
+ const f=fixture(t);H.importExistingRenderer({...f.args(),write:true});
+ const adapter=require('../tools/4slot/existing-registered-vector-continuity.cjs'),original=adapter.verify;
+ t.after(()=>{adapter.verify=original;});
+ const sidecar=adapter.DIR+'/'+uid(2)+'.json';
+ f.write(sidecar,{sourceArchiveFile:source.slice(14),questionUid:uid(2),sourceOrdinal:2});
+ let calls=0;adapter.verify=(_root,entry)=>{calls++;return{ref:{path:entry.path,sha256:entry.sha256},observed:[]};};
+ const built=f.build();assert.equal(calls,1);assert.deepEqual(built.index.records.map(r=>r.questionUid),[uid(1)]);
+ assert.equal(built.index.pending.find(r=>r.ordinal===2).reason,'MULTIPLE_RENDERER_CONTINUITY_AUTHORITIES');
+ assert.equal(built.index.pending.find(r=>r.ordinal===3).reason,'STALE_STUDENT_PAYLOAD');
+});

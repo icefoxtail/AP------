@@ -10,7 +10,6 @@ import {REVIEWED_META_VALUE_FIELDS} from './reviewed-meta-value-fields.mjs';
 import {nativeReviewedRendererRebind} from './native-reviewed-renderer-reuse.mjs';
 import {reviewedRendererBindingPath} from './reviewed-current-renderer-continuity.mjs';
 import {assertReviewedPackVersionLineage} from './reviewed-pack-version-lineage.mjs';
-import {hasIssuedRpmHistory,loadIssuedRpmHistory,readIssuedRpmHistoricalEvidence} from './native-issued-rpm-history.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a-f0-9]{64}$/;
@@ -33,10 +32,9 @@ function safePath(root,relative) {
   return full;
 }
 const readBytes=(root,relative)=>fs.readFileSync(safePath(root,relative));
-function evidence(root,refs,historicalContext,receipt) {
+function evidence(root,refs) {
   if(!Array.isArray(refs)||!refs.length)fail('SHA-bound approval evidence required');
-  for(const ref of refs)if(!SHA256.test(ref?.sha256||'')||sha(historicalContext
-    ?readIssuedRpmHistoricalEvidence(historicalContext,receipt,ref):readBytes(root,ref.path))!==ref.sha256)
+  for(const ref of refs)if(!SHA256.test(ref?.sha256||'')||sha(readBytes(root,ref.path))!==ref.sha256)
     fail('approval evidence missing or changed');
 }
 
@@ -339,20 +337,15 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
   // null preserves the ordinary native/student guards; this is not permission
   // to reuse changed student content or skip a renderer/typed-source verifier.
   if(ordinaryReviewedReassessment({receipt,nativeSource,question,identity,ordinal,current,registry}))return null;
-  const seen=new Set();let rpmHistory=null;
+  const seen=new Set();
   while(isPartialNativeSourcePreservation(cursor,root)&&!ordinaryReviewedReassessment({receipt:cursor,nativeSource:source,
     question:source.bank[ordinal-1],identity:state.identity,ordinal,current:state.row,registry})) {
     if(unchangedMemberOfRendererReassessment({receipt:cursor,nativeSource:source,question:source.bank[ordinal-1],
       identity:state.identity,ordinal,current:state.row,registry,state,revalidateLeaf}))break;
     if(seen.has(cursor.requestId)||seen.size>=64)fail('source-rebind cycle or depth exceeded');
     seen.add(cursor.requestId);evidence(root,cursor.approval.evidenceRefs);
-    const spec=cursor.approval.sourceRebind,ref=spec?.priorReceiptRef,withRpmHistory=hasIssuedRpmHistory(cursor);
-    if(withRpmHistory){
-      if(rpmHistory)fail('multiple historical RPM boundaries are not supported');
-      rpmHistory=loadIssuedRpmHistory({root,envelope:cursor,bytes:source.bytes,bank:source.bank,
-        current:state.row,identity:state.identity,runtimeRecord:state.runtime});
-    }
-    if(!spec||!same(Object.keys(spec).sort(),withRpmHistory?['historicalRpmEvidence','priorReceiptRef']:['priorReceiptRef'])||!nativePath(ref?.path)||!SHA256.test(ref.sha256||'')||
+    const spec=cursor.approval.sourceRebind,ref=spec?.priorReceiptRef;
+    if(!spec||!same(Object.keys(spec).sort(),['priorReceiptRef'])||!nativePath(ref?.path)||!SHA256.test(ref.sha256||'')||
       !cursor.approval.evidenceRefs.some(item=>same(item,ref))||cursor.newMetadataApprovals!==0||
       cursor.preservedMetadataApprovals!==cursor.partialUidCount||!absentOrEmpty(cursor.registryChanges)||
       !absentOrEmpty(cursor.fingerprintRepairs)||!absentOrEmpty(cursor.nativeParentBindings))fail('exact source-only preservation required');
@@ -375,9 +368,8 @@ export function nativePreservedSourceRebind({receipt,nativeSource,question,ident
     }
     cursor=prior;state=old;source={...nativeSource,...priorSource,runtimeRecord:old.runtime};
   }
-  evidence(root,cursor.approval.evidenceRefs,rpmHistory,cursor);
-  const relative=receiptPath(cursor.requestId),context={nativeSource:rpmHistory?{...source,issuedRpmHistoryContext:rpmHistory}:source,
-    current:state.row,identity:state.identity,question:source.bank[ordinal-1]};
+  evidence(root,cursor.approval.evidenceRefs);
+  const relative=receiptPath(cursor.requestId),context={nativeSource:source,current:state.row,identity:state.identity,question:source.bank[ordinal-1]};
   if(revalidateLeaf(context)!==relative)fail('original native approval cannot replay for this cursor');
   // A caught-up cursor must not skip the original solution-only repair. Replaying
   // its actual old Git question invokes the same existing native solution guard.

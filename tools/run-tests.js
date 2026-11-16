@@ -93,11 +93,6 @@ const requiredCommands = [
     timeout: 300000
   },
   {
-    label: 'tests/archive-native-issued-rpm-history.test.mjs',
-    args: ['--test', 'tests/archive-native-issued-rpm-history.test.mjs'],
-    timeout: 300000
-  },
-  {
     label: 'tests/archive-reviewed-m2-cc-renderer.test.mjs',
     args: ['--test', 'tests/archive-reviewed-m2-cc-renderer.test.mjs']
   },
@@ -123,17 +118,17 @@ const requiredCommands = [
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
   },
   {
-    label: 'tests/item-4slot-existing-vector-continuity.test.cjs',
-    args: ['--test', 'tests/item-4slot-existing-vector-continuity.test.cjs'],
-    timeout: 180000
-  },
-  {
     label: 'tests/item-4slot-public-reviewed-rebind.test.cjs',
     args: ['--test', 'tests/item-4slot-public-reviewed-rebind.test.cjs']
   },
   {
     label: 'tests/item-4slot-existing-renderer-v2.test.cjs',
     args: ['--test', 'tests/item-4slot-existing-renderer-v2.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-existing-vector-continuity.test.cjs',
+    args: ['--test', 'tests/item-4slot-existing-vector-continuity.test.cjs'],
+    timeout: 180000
   },
   {
     label: 'tests/item-4slot-m3-renderer-hold.test.cjs',
