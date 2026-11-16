@@ -436,7 +436,8 @@ function createArchiveScreenRuntime() {
             raw = Array.isArray(bank) ? bank : bank?.questions || bank?.problems;
             if (!Array.isArray(raw) || !raw.length) throw new Error('EMPTY_SOURCE_DATA');
             title = window.examTitle || (!window.questionBank && (window.examData?.title || window.examData?.examTitle)) || input.title || '수학 시험지';
-            displayTitle = window.examDisplayTitle || title;
+            // 머리글에 찍는 제목만 읽기 쉬운 이름으로(식별 제목 title/identityTitle은 그대로). 해석할 수 없으면 원문.
+            displayTitle = window.examDisplayTitle || window.ExamDisplayTitle?.readableExamTitle?.(title) || title;
         } finally {
             window.removeEventListener('error', onError);
             script.remove();
@@ -657,6 +658,7 @@ function createArchiveScreenRuntime() {
         window.__AP_RENDER_METRICS__ = ctx.metrics;
         document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.id === `btn-${ctx.candidate.mode}`));
         document.getElementById('ctrl-title').innerText = getDisplayTitle(AppState);
+        if (ctx.candidate.source?.displayTitle) document.title = `${getDisplayTitle(AppState)} · JS 아카이브`;
         document.getElementById('qpp-display').innerText = `쪽당 ${AppState.qpp}문항`;
         renderPrintHeaderControls();
         // QR controls use the candidate until history becomes visible at the end.
