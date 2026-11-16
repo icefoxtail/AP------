@@ -1,0 +1,97 @@
+{
+  "capability": "polynomial-spike-v1",
+  "caption": "공이 올라갈 때와 내려올 때 높이 16을 지나는 두 지점이다. 0초부터 4초까지의 관찰 구간이며 4초는 운동의 끝이 아니다.",
+  "accessibilityDescription": "공이 올라갈 때와 내려올 때 높이 16을 지나는 두 지점이다. 0초부터 4초까지의 관찰 구간이며 4초는 운동의 끝이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "체육 시간에 한 학생이 운동장에서 맑은 하늘을 향해 공을 힘껏 위로 던졌다. 주변에 있던 친구들은 공이 얼마나 높이 올라가는지 지켜보며 환호성을 질렀다. 공은 처음에는 빠르게 위로 솟아오르다가 시간이 지날수록 속력이 점차 줄어들며 어느 순간 최고점에 도달한 뒤 다시 아래로 떨어지기 시작하였다. 옆에서 지켜보던 과학반 학생이 공의 운동을 분석한 결과, 공을 던진 후 $t$초가 지났을 때 지면으로부터 공의 높이 $h$ m는 $h = -5t^2 + 20t + 1$로 나타낼 수 있다고 하였다. 마침 운동장 한쪽에는 체육대회를 알리는 16 m 높이의 대형 현수막 줄이 쳐져 있었다. 던져진 공이 지면에서 16 m 높이에 있는 현수막 줄에 닿게 되는 시각을 모두 구하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "solution",
+      "condition": "같은 높이 16을 상승·하강 때 두 번 지난다는 이유를 포물선과 수평선 교점으로 보여 준다.",
+      "mappedTo": [
+        "graphPlan",
+        "caption"
+      ]
+    },
+    {
+      "id": "displaywindow",
+      "condition": "domain [0,4]는 관찰용 그리기 창이다. sourceDomain과 끝점 표식을 선언하지 않는다. 지면 도달 시각은 2+√105/5이며4초보다 크다.",
+      "mappedTo": [
+        "graphPlan.domain",
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "같은 높이 16을 상승·하강 때 두 번 지난다는 이유를 포물선과 수평선 교점으로 보여 준다."
+  ],
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "20",
+      "-5"
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -0.3,
+      4.4,
+      -2,
+      24
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 21
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "1"
+        },
+        {
+          "id": "Q",
+          "curveX": "3"
+        }
+      ],
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "16",
+          "color": "WARM"
+        }
+      ],
+      "guides": [
+        {
+          "id": "gp",
+          "from": "P",
+          "axis": "x"
+        },
+        {
+          "id": "gq",
+          "from": "Q",
+          "axis": "x"
+        }
+      ]
+    },
+    "axisVariable": "t",
+    "axisTitles": {
+      "x": "t",
+      "y": "h"
+    }
+  }
+}
