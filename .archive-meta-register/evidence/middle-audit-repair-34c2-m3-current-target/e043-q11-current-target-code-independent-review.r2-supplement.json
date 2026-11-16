@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "archive-m3s2-current-target-code-independent-supplement-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "reviewer": "GPT_M1_0A70543C4CE8",
+  "integrator": "GPT_ROOT_0A70543C4CE8",
+  "reviewedAt": "2026-11-16T04:24:26.794468+00:00",
+  "decision": "APPROVE_EXACT_LATEST_MAIN_HOOK_INTEGRATION",
+  "scope": "ONE_FILE_DELTA_ONLY_SUPPLEMENT_NO_NEW_SEMANTIC_APPROVAL",
+  "priorIndependentReviewRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/m1-read/e043-q11-current-target-code-independent-review.r1.json",
+    "sha256": "90ee74137cf3b7141490cb0c24f9572abeffa60a4c7a626c37f82de8d3ca05a6"
+  },
+  "integrationManifestRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/state/unit25-prepared/e043-code-integration.r2.json",
+    "sha256": "ff8f91d0f6ee1eae4cc72afe2d01dbfa7198b29da03ab166b536b68346eebf40"
+  },
+  "patchRef": {
+    "path": "/workspace/scratch/0a70543c4ce8/state/unit25-prepared/e043-latest-hook.r2.patch",
+    "sha256": "a1ed450c50c5b93f510f87c735e806253dc307558a45c1dfb9c63d25389300d5"
+  },
+  "verifiedFile": {
+    "repoPath": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+    "baselineMain": "8866abd245ce04a0bbedfe661d23791e0838c0e3",
+    "baselineGitBlobSha1": "806a7c6ee1822c48cbfbc7f2601485896becc2ee",
+    "baselineSha256": "ce6ca79b6a57a1dff31e5cc0612cd106dfc43805252284eaef3ce37e93807587",
+    "candidatePath": "/workspace/scratch/0a70543c4ce8/state/unit25-prepared/archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+    "candidateSha256": "215ee89ea5f0be4632808ef223278b8d60bb33d47ae9764b8c4bf72f3d383a3b",
+    "baselineVerification": "ACTUAL_LOCAL_CACHED_GIT_SHOW_AT_EXACT_MAIN_WITH_NO_FETCH",
+    "candidateVerification": "ACTUAL_RAW_BYTES_AND_EXACT_THREE_INSERTIONS"
+  },
+  "checks": {
+    "latestMainBlobAndRawShaVerified": true,
+    "candidateEqualsLatestMainPlusPreviouslyReviewedThreeInsertions": true,
+    "addedImportLines": 1,
+    "addedValidatorCallAndFieldMergeLines": 4,
+    "addedProofLines": 1,
+    "otherCandidateEditsRelativeToLatestMain": 0,
+    "candidateR1ToR2DeltaEqualsC302To8866UpstreamDelta": true,
+    "upstreamRationaleFallbackOrderPreserved": true,
+    "upstreamAlreadyMatchingSourceProvenanceGuardPreserved": true,
+    "newCurrentTargetHelperDoesNotReturnRationaleFields": true,
+    "nativeRationaleValueAndSourceAgreementChecksRetained": true,
+    "noGlobalNativeAfterOrRpmAuthorityChangeIntroduced": true
+  },
+  "codeAssessment": "The exact current-target import, call/accepted-field merge, and distinct proof hook were added to current main. The upstream native decisive-step fallback is retained verbatim, including its inequality guard for already-matching committed source provenance and its four-way exact-value check. The helper adds only approved target/curriculum fields; it does not override the downstream rationale selection or proof origins.",
+  "otherFiles": "The prior frozen review remains the authority for the unchanged helper, other four hooks, and contract documentation. This supplement replaces only the reviewed-source-reassessment candidate SHA, not the earlier evidence.",
+  "blockingFindings": [],
+  "reusedFocusedExecution": {
+    "priorManifestSha256": "d253fb449c24558f95b6e368a5e787cf21aebe4030a589765b64d02756cda130",
+    "reportedTests": 29,
+    "reportedPass": 29,
+    "rerunByThisReviewer": false,
+    "latestIntegratedPacketExecution": "NOT_RUN_IN_THIS_SUPPLEMENT",
+    "requiredNextExecution": "Actual follow-up packet write/replay and production readback are handled by root after the real receipt prerequisites."
+  },
+  "newDistinctPrimaryUidContribution": 0,
+  "repositorySourceWrites": 0,
+  "sharedCodeWrites": 0,
+  "registryWrites": 0,
+  "officialReceiptWrites": 0,
+  "officialRegistration": "NOT_RUN_BY_THIS_SUPPLEMENT",
+  "studentDeployment": "NOT_RUN_BY_THIS_SUPPLEMENT",
+  "nextAction": "Root may integrate this exact r2 hook with the other frozen r1 candidates while preserving current-main changes. Keep source publication gated on actual neighboring receipts and validate the actual integrated follow-up packet lifecycle."
+}

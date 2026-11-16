@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "archive-q11-typed-renderer-reuse-independent-code-review-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "reviewer": "GPT_M3_0A70543C4CE8",
+  "author": "GPT_M1_0A70543C4CE8",
+  "decision": "APPROVE_EXACT_TYPED_RENDERER_ADAPTER_ONLY",
+  "blockingFindings": [],
+  "scope": {
+    "changedFiles": 1,
+    "targetQuestionUid": "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546",
+    "sourceArchiveFile": "original/middle/m3/2mid/22_풍덕중_2학기_중간_중3_수학.js",
+    "sourceOrdinal": 11,
+    "candidateSha256": "bc70d6a59522e8529377823fdcebc46a02171511ad2fd961c7923d7f2fc15b75",
+    "ordinaryLaneSemanticApprovalChanges": 0
+  },
+  "manifestRef": {
+    "path": "state/m1-q11-renderer-reuse/candidate-manifest.r1.json",
+    "sha256": "06e8c9f7fcb3d0d4dd05e8cec8616648c26f3c37539f1a1c7294306ef58eec7e",
+    "bytes": 4031
+  },
+  "baselineRef": {
+    "commit": "c663f60a7bd3e5cd4bd1f813d3b1888c83888a15",
+    "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+    "sha256": "10358a2e912143a4376c2f345b78d7fb5379f18758d746985f62b3eda2c525a8",
+    "actualGitBytesRead": true
+  },
+  "checkedRefs": [
+    {
+      "path": "state/m1-q11-renderer-reuse/candidate-manifest.r1.json",
+      "sha256": "06e8c9f7fcb3d0d4dd05e8cec8616648c26f3c37539f1a1c7294306ef58eec7e",
+      "bytes": 4031
+    },
+    {
+      "path": "state/m1-q11-renderer-reuse/diagnosis.r1.json",
+      "sha256": "484ae073264b38d4157a534a70a830055228976577acb2735dcf26deef60a6b1",
+      "bytes": 4137
+    },
+    {
+      "path": "state/m1-q11-renderer-reuse/diagnose-q11.r1.mjs",
+      "sha256": "ef8659e7421e045ba6770d41726894c581022cd2d3bc043ffc0297629004c702",
+      "bytes": 6250
+    },
+    {
+      "path": "state/m1-q11-renderer-reuse/candidate/archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+      "sha256": "bc70d6a59522e8529377823fdcebc46a02171511ad2fd961c7923d7f2fc15b75",
+      "bytes": 11869
+    },
+    {
+      "path": "state/m1-q11-renderer-reuse/native-reviewed-renderer-reuse.r1.patch",
+      "sha256": "49965f45dcd6d2a82953205cc4c8248280d671a9e6a06687f6bea6b89b049faf",
+      "bytes": 1956
+    },
+    {
+      "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+      "sha256": "2e631c35dc9a3a813b043174e0f482d1bcd7fa420ae2dd5867ecd9b91f59521e",
+      "bytes": 26920
+    },
+    {
+      "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-m3s2-current-target-application.mjs",
+      "sha256": "0bd3c286f31dca592e6a7b72c99ebf98cc910498132358f4eb11ed355f9b5b13",
+      "bytes": 31576
+    },
+    {
+      "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-source-binding.mjs",
+      "sha256": "1d07b8dc56c8e77e4ca8a2d82d698caf869452f5c65886ccd1686adaa2bd0833",
+      "bytes": 5829
+    },
+    {
+      "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-replay-registry-context.mjs",
+      "sha256": "67383ffa32832b247596eb2c8409e10b729e0605f3519d69e299bd643551d8bd",
+      "bytes": 14447
+    },
+    {
+      "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "sha256": "215ee89ea5f0be4632808ef223278b8d60bb33d47ae9764b8c4bf72f3d383a3b",
+      "bytes": 27814
+    }
+  ],
+  "staticChecks": {
+    "exactManifestAndAllReferencedBytes": true,
+    "candidateReversesToExactImmutableBaselineWithOnlyNewImportAndTypedBranch": true,
+    "allExistingPreconditionsAndRendererBindingGuardsByteIdentical": true,
+    "legacySyntheticReplayArgumentsByteIdentical": true,
+    "allCommonPostReplayAndAllowedPreviousPayloadGuardsByteIdentical": true,
+    "exactTypedSchemaRequired": true,
+    "strictSourceReuseMustReturnTrue": true,
+    "noTypedEarlySuccessReturn": true,
+    "sourceValidatorChecksCurrentSourceMetadataIdentityRuntimeExact": true,
+    "sourceValidatorReplaysOriginalRequestSidecarAndRestoredAddOnlyBeforeContext": true,
+    "completeReproducedProofMustEqualIssuedProof": true,
+    "sourceAndRendererSidecarDigestsContentsAndRegisteredProvenanceRemainRequired": true,
+    "typedHelperRetainsExactQ11ApplicationAndAllUnresolvedNativeLimits": true,
+    "newImportHasNoPathBackToRendererAdapter": true
+  },
+  "reviewConclusions": [
+    "The defect is the legacy synthetic replay losing the separately approved current-target request. The native M2 standardCourse must remain native; the M3 operating target is a distinct exact application.",
+    "Assigning the issued proof to reproduced is safe only after the existing strict validator returns true: that validator independently reconstructs the full proof from the exact original request and compares it with this receipt, including renderer seal and current ACTIVE registry.",
+    "The new branch does not grant renderer continuity by key presence. Wrong schema, missing/changed typed sidecar, source drift, changed approvals, replay-before mismatch, or renderer seal failure still reject.",
+    "The existing post-validation previous-payload allowlist is still mandatory. The imported validator does not replace that renderer obligation.",
+    "The exact helper still preserves native original curriculum UNSPECIFIED, null 2015 exact RPM leaf, unresolved 2022 binding, and no full semantic/math/source-quality approval."
+  ],
+  "readOnlyImportGraph": {
+    "moduleCount": 20,
+    "newImportCycle": false,
+    "files": [
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/archive-content-inputs.mjs",
+        "sha256": "ca36f83f4674a493ba0db21da386d90c5c1d70fedd0505f4e40294ace5a69950"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/compile-meta-foundation.mjs",
+        "sha256": "742cac9a4abf22c3efaf1aa6759e285c9229e9a6c769b7bdec162eb82a93caa5"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+        "sha256": "2e631c35dc9a3a813b043174e0f482d1bcd7fa420ae2dd5867ecd9b91f59521e"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs",
+        "sha256": "98c416216dc754a1b5d144a81741adf2ccba62c487f1d4c7fadba0a107332c83"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-existing-primary-disposition.mjs",
+        "sha256": "462195fd31d76b0abcd81ff695d54689220fcd80d618ec5bb3ad30a2ed3dd485"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-m2-proposal-finalization.mjs",
+        "sha256": "26942c38274a1f18656ed709b9e9cac7a2e28a83bcc69482e1b7f75f9bdcc714"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-m2s1-current-definition-application.mjs",
+        "sha256": "c47fb64d0114d6cca0eb008b61f20dacdcf2e144c510365b5b61db9976b16d16"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-m2s1-prerequisite-existing-application.mjs",
+        "sha256": "a0ebb6c148b6ecb23ac88fe0a75b07693d6478727ab05bc24dc71eadb374bd57"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-m3s2-current-target-application.mjs",
+        "sha256": "0bd3c286f31dca592e6a7b72c99ebf98cc910498132358f4eb11ed355f9b5b13"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-meta-value-fields.mjs",
+        "sha256": "ebce5ab16817840a87fa1a316719c17c850fe772a89e40cbc9004f3dae808e65"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-native-parent.mjs",
+        "sha256": "6d5d69e94a7b7e012709473fcb1e33519c775a374c43cee64bb64d7019a399b3"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-native-rationale-continuity.mjs",
+        "sha256": "cdbd5cf53f5242f134c2c4279487f64fbdc4c34bffd73caeb25edfc75c0bf25d"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-native-retained-fields.mjs",
+        "sha256": "7eb37fdf8c19a257ae7baeb60a23b1e45e0743b561399823461f8804fe64b53c"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-native-scope-fields.mjs",
+        "sha256": "5141941aa255071121d605921e9c179d6483b6f14e672f385ee9993e9f59b8f8"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-proposal-finalization.mjs",
+        "sha256": "633cb4c1b28325720821ba3f8f5037ea0a6749b6ed319c5bc3e13abf7e76a12d"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-replay-registry-context.mjs",
+        "sha256": "67383ffa32832b247596eb2c8409e10b729e0605f3519d69e299bd643551d8bd"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-retained-scope-transport.mjs",
+        "sha256": "ea2b11feedccd10f2d0121983d264d53f05401cdfd15f9e77664a61a863a8e88"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-rpm-provenance.mjs",
+        "sha256": "64f2612aaf8e4d3dfd261061ed90e583b7a7e0fa6735658d1264d0469d1a9288"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-source-binding.mjs",
+        "sha256": "1d07b8dc56c8e77e4ca8a2d82d698caf869452f5c65886ccd1686adaa2bd0833"
+      },
+      {
+        "path": "state/unit25-actual-fixture/archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+        "sha256": "215ee89ea5f0be4632808ef223278b8d60bb33d47ae9764b8c4bf72f3d383a3b"
+      }
+    ]
+  },
+  "executionBoundary": {
+    "candidateRuntimeTests": "NOT_RUN_BY_INDEPENDENT_REVIEWER",
+    "fixtureCodeReplacements": 0,
+    "productionWrites": 0,
+    "registrarInvocations": 0,
+    "prior29FocusedTestReruns": 0,
+    "passing28M3CohortReruns": 0,
+    "newMeaningApprovals": 0,
+    "newMathematicalQa": 0
+  },
+  "requiredNextAction": "Root integrates this exact one-file candidate in the controlled fixture and verifies Q11 full native reuse plus narrow typed-proof/sidecar tamper rejection; production issuance and deployment remain separate."
+}
