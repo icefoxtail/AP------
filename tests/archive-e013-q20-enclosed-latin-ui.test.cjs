@@ -27,7 +27,7 @@ function technical() { return { mode: 'exam', questions: 24, pages: 24, readines
   mathErrors: 0, unrenderedMath: 0, mathJaxSource: 'local', solutionNodes: 0 }; }
 function goodGlyphs() {
   return {schemaVersion:'archive-enclosed-latin-glyph-observation-v1',sourceOrdinal:20,mode:'exam',
-    unknownFamily:'AP Enclosed Latin, serif',normalCssFont:['AP Enclosed Latin, serif',false,false],
+    unknownFamily:'serif',normalCssFont:['serif',false,false],
     loadedFaces:[{family:'AP Enclosed Latin',status:'loaded'}],fontChecked:true,
     measuredWidths:[9424,9425,9426,9427,9428,9429].map(codePoint=>({codePoint,width:1})),
     choices:C.EXPECTED_ITEM.choiceGlyphs.map(cps=>({glyphs:cps.map(cp=>({codePoints:[cp],variant:'normal',fontFamily:'MJX-TEX-ZERO, "AP Enclosed Latin", serif',width:13,height:14,display:'inline-block',visibility:'visible',opacity:1}))})),
@@ -175,8 +175,8 @@ for(const [name,mutate] of [
   ['missing last glyph',d=>{d.choices[4].glyphs.pop();}],
   ['changed source character',d=>{d.choices[0].glyphs[0].codePoints=[9425];}],
   ['choice order changed',d=>{d.choices.reverse();}],
-  ['remaining old serif family',d=>{d.unknownFamily='serif';}],
-  ['wrong normal variant mapping',d=>{d.normalCssFont[0]='serif';}],
+  ['global enclosed-Latin family override',d=>{d.unknownFamily='AP Enclosed Latin, serif';}],
+  ['global normal variant override',d=>{d.normalCssFont[0]='AP Enclosed Latin, serif';}],
   ['explicit font variant',d=>{d.choices[0].glyphs[0].variant='-explicitFont';}],
   ['no loaded face',d=>{d.loadedFaces=[];}],
   ['font check false',d=>{d.fontChecked=false;}],
@@ -206,14 +206,15 @@ test('the actual browser observer only reads the product font, cached widths and
   const fonts=[{family:'AP Enclosed Latin',status:'loaded'}];
   fonts.check=()=>{checks++;return true;};fonts.load=noWrite;
   const choices=C.EXPECTED_ITEM.choiceGlyphs.map(cps=>({querySelectorAll:selector=>{
-    assert.equal(selector,'mjx-utext');return cps.map(cp=>({textContent:String.fromCodePoint(cp),
-      getAttribute:key=>{assert.equal(key,'variant');return 'normal';},getBoundingClientRect:()=>({width:13,height:14}),setAttribute:noWrite}));
+    assert.equal(selector,'mjx-utext > .ap-enclosed-latin');return cps.map(cp=>({textContent:String.fromCodePoint(cp),
+      parentElement:{getAttribute:key=>{assert.equal(key,'variant');return 'normal';}},
+      getBoundingClientRect:()=>({width:13,height:14}),setAttribute:noWrite}));
   }}));
   const box={querySelector:selector=>{assert.equal(selector,'.q-num');return{textContent:'20.'};},
     querySelectorAll:selector=>{assert.equal(selector,'.choice-text');return choices;},appendChild:noWrite};
   const image={closest:selector=>{assert.equal(selector,'.q-box');return box;}};
-  const output={unknownCache:new Map([['normal',cache]]),font:{options:{unknownFamily:'AP Enclosed Latin, serif'},getCssFont:variant=>{
-    assert.equal(variant,'normal');return ['AP Enclosed Latin, serif',false,false];}}};
+  const output={unknownCache:new Map([['normal',cache]]),font:{options:{unknownFamily:'serif'},getCssFont:variant=>{
+    assert.equal(variant,'normal');return ['serif',false,false];}}};
   const context={image,AppState:{mode:'exam'},window:{MathJax:{startup:{document:{outputJax:output}},typesetPromise:noWrite}},
     document:{fonts,querySelector:()=>null,createElement:noWrite},getComputedStyle:()=>({fontFamily:'MJX-TEX-ZERO, "AP Enclosed Latin", serif',display:'inline-block',visibility:'visible',opacity:'1'})};
   const observed=JSON.parse(JSON.stringify(vm.runInNewContext(`(${C.readChoiceGlyphs.toString()})(image)`,context)));

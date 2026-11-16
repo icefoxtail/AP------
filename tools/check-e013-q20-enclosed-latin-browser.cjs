@@ -130,12 +130,15 @@ function readChoiceGlyphs(image) {
   if (box.querySelector('.q-num')?.textContent?.trim() !== '20.') throw new Error('UI_E013_GLYPH_ORDINAL');
   const output = window.MathJax?.startup?.document?.outputJax;
   const cache = output?.unknownCache?.get('normal');
-  const isCircle = c => c >= 0x24B6 && c <= 0x24E9;
   const choices = [...box.querySelectorAll('.choice-text')].map(choice => {
-    const glyphs = [...choice.querySelectorAll('mjx-utext')].filter(node => [...node.textContent].some(c => isCircle(c.codePointAt(0)))).map(node => {
+    const glyphs = [...choice.querySelectorAll('mjx-utext > .ap-enclosed-latin')].map(node => {
+      const run = node.parentElement, runStyle = getComputedStyle(run);
       const style = getComputedStyle(node), rect = node.getBoundingClientRect();
-      return { codePoints: [...node.textContent].map(c => c.codePointAt(0)), variant: node.getAttribute('variant'),
-        fontFamily: style.fontFamily, width: rect.width, height: rect.height, display: style.display, visibility: style.visibility, opacity: Number(style.opacity) };
+      return { codePoints: [...node.textContent].map(c => c.codePointAt(0)), variant: run.getAttribute('variant'),
+        fontFamily: style.fontFamily, width: rect.width, height: rect.height,
+        display: runStyle.display === 'none' ? 'none' : style.display,
+        visibility: runStyle.visibility === 'visible' ? style.visibility : runStyle.visibility,
+        opacity: Number(style.opacity) * Number(runStyle.opacity) };
     });
     return { glyphs };
   });
@@ -151,8 +154,8 @@ function assertChoiceGlyphs(observed) {
   assert(observed && observed.schemaVersion === 'archive-enclosed-latin-glyph-observation-v1', 'UI_E013_GLYPH_SCHEMA');
   assert.equal(observed.mode, 'exam', 'UI_E013_GLYPH_SURFACE');
   assert.equal(observed.sourceOrdinal, 20, 'UI_E013_GLYPH_ORDINAL');
-  assert.equal(observed.unknownFamily, 'AP Enclosed Latin, serif', 'UI_E013_UNKNOWN_FAMILY');
-  assert.deepEqual(observed.normalCssFont, ['AP Enclosed Latin, serif', false, false], 'UI_E013_NORMAL_VARIANT_FONT');
+  assert.equal(observed.unknownFamily, 'serif', 'UI_E013_UNKNOWN_FAMILY');
+  assert.deepEqual(observed.normalCssFont, ['serif', false, false], 'UI_E013_NORMAL_VARIANT_FONT');
   assert(Array.isArray(observed.loadedFaces) && observed.loadedFaces.length === 1 &&
     observed.loadedFaces[0].family.replace(/["']/g, '') === 'AP Enclosed Latin' && observed.loadedFaces[0].status === 'loaded' &&
     observed.fontChecked === true, 'UI_E013_GLYPH_FONT_READY');
