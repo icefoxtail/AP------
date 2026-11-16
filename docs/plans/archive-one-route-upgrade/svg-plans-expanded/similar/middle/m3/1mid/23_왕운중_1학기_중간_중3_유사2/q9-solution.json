@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "3"
+          },
+          {
+            "id": "P",
+            "value": "3+sqrt(5)",
+            "showValue": false
+          }
+        ]
+      }
+    ],
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "A",
+        "radius": {
+          "value": "sqrt(5)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "P",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            3,
+            0
+          ],
+          "to": [
+            4,
+            2
+          ],
+          "toName": "B"
+        }
+      }
+    ]
+  },
+  "caption": "점 A에서 가로 1, 세로 2인 직각삼각형의 빗변 AB를 오른쪽 수직선으로 옮겨 점 P를 잡는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A는 수직선의 3이고 오른쪽으로 √5만큼 이동한다.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "가로 1, 세로 2인 보조 직각삼각형과 호로 이동 거리를 구성한다. P의 좌표는 숨긴다."
+  ],
+  "accessibilityDescription": "점 A에서 가로 1, 세로 2인 직각삼각형의 빗변 AB를 오른쪽 수직선으로 옮겨 점 P를 잡는다."
+}
