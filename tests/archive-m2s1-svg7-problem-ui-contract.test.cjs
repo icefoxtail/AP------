@@ -15,7 +15,7 @@ const digest = value => H.sha256(H.stable(value));
 
 test('exact public SVG7 scope is three banks, 75 questions, fourteen problem-only cases', () => {
   C.validateManifest(original);
-  assert.equal(original.sourceCandidateCommit, '76ed4169325af7c8145a03b6d23d537940e359df');
+  assert.equal(original.sourceCandidateCommit, '89508c9b2af9ade9372cd147f1f766a69849ab88');
   assert.equal(original.sourceBindings.reduce((sum, row) => sum + row.expectedQuestionCount, 0), 75);
   assert.deepEqual(original.items.filter(row => row.choiceCount === 0).map(row => row.key).sort(), A.TWO_ROLE_KEYS);
   assert.equal(original.items.filter(row => row.choiceCount === 5).length, 5);
@@ -37,6 +37,8 @@ for (const [name, mutate] of Object.entries({
   'alternate current source': m => { m.sourceBindings[0].gitBlobSha1 = '0'.repeat(40); },
   'transport receipt mismatch': m => { m.sourceTransportReceiptRef.sha256 = '0'.repeat(64); },
   'substituted static review': m => { m.staticEvidenceRef.commit = '0'.repeat(40); },
+  'discarded original static review': m => { delete m.priorStaticEvidenceRef; },
+  'different historical seven': m => { m.priorStaticEvidenceRef.sha256 = '0'.repeat(64); },
   'identity scope resealed': m => { m.identityBinding.sha256 = '0'.repeat(64); },
   'embedded-choice scope changed': m => { m.items.find(row => row.key === A.EMBEDDED_CHOICE_KEY).embeddedChoiceBinding.choicesSha256 = '0'.repeat(64); },
   'old engine': m => { m.engineBinding.gitBlobSha1 = '0'.repeat(40); },
@@ -318,4 +320,38 @@ test('historical embedded metadata requires an exact regular Git file, not a new
       assert.throws(()=>C.readHistoricalBound({root:tmp},{...ref,...mutation}));
     const symlink=Buffer.from('before.json');assert.throws(()=>C.readHistoricalBound({root:tmp},{commit,path:'alias.json',gitBlobSha1:H.gitBlob(symlink),sha256:H.sha256(symlink),bytes:symlink.length}),/UI_SVG7_ORIGINAL_REGULAR_BLOB/);
   }finally{fs.rmSync(tmp,{recursive:true,force:true});}
+});
+
+
+test('Q24 revision permits exactly the O x attribute with reversible raw bytes', () => {
+  const before = Buffer.from('<svg><text x="118.158" y="442.252">O</text><text x="80">−1</text></svg>');
+  const after = Buffer.from(before.toString().replace('x="118.158"', 'x="158.158"'));
+  assert.deepEqual(C.assertOriginOnlyDelta(before, after), { tag: 'text', text: 'O', attribute: 'x', before: '118.158', after: '158.158' });
+  for (const variant of [after.toString().replace('442.252', '440.252'), after+' ', after.toString().replace('−1','−2'),
+    after.toString().replace('158.158','160.158'), before.toString(), after.toString().replace('>O<','>0<')])
+    assert.throws(() => C.assertOriginOnlyDelta(before, Buffer.from(variant)), /UI_SVG7_ORIGIN_ONLY_X_DELTA/);
+  assert.throws(() => C.assertOriginOnlyDelta(Buffer.from('<svg><text x="118.158">O</text><text x="118.158">O</text></svg>'), after), /UI_SVG7_ORIGIN_ORIGINAL_LABEL/);
+});
+
+test('revision capsule retains original seven and six unchanged assets', () => {
+  const read = ref => JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', ref.path)));
+  const receipt=read(original.sourceTransportReceiptRef), prior=read(original.priorStaticEvidenceRef), revision=read(original.staticEvidenceRef);
+  const effective=C.validateRevisionStatic(original,receipt,prior,revision);
+  assert.equal(effective.rows.length,7);
+  for(const row of effective.rows) if(row.key!=='E045-Q24') assert.deepEqual(row,prior.rows.find(x=>x.key===row.key));
+  assert.deepEqual(effective.rows.find(x=>x.key==='E045-Q24').newAssetRef,revision.repair.newAssetRef);
+  for(const mutate of [
+    x=>{x.revision.reviewer=x.revision.producer;},
+    x=>{x.revision.repair.key='E045-Q15';},
+    x=>{x.revision.repair.attributeDelta.after='160.158';},
+    x=>{x.revision.repair.priorRepairAssetRef.sha256='0'.repeat(64);},
+    x=>{x.revision.newNativeApprovals=1;},
+    x=>{x.revision.actualUi='PASS';},
+    x=>{x.prior.rows.pop();},
+    x=>{x.receipt.inputClosure.selection[0].beforeWholeQuestionSha256='0'.repeat(64);},
+    x=>{x.receipt.inputClosure.unchangedPriorAssets=5;},
+    x=>{x.receipt.inputClosure.selectedOtherFieldsChanged=1;},
+    x=>{x.receipt.inputClosure.originalAssetsChanged=1;},
+    x=>{x.receipt.inputCommit='0'.repeat(40);}
+  ]){const x=clone({receipt,prior,revision});mutate(x);assert.throws(()=>C.validateRevisionStatic(original,x.receipt,x.prior,x.revision));}
 });

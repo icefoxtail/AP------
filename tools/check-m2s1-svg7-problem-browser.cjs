@@ -17,14 +17,14 @@ const CHECKER_PATH = 'tools/check-m2s1-svg7-problem-browser.cjs';
 const SHARED_CHECKER_PATH = 'tools/check-reviewed-problem-renderer-browser.cjs';
 const SHARED_CHECKER_SHA256 = 'e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673';
 const ROLE_CAPTURE_PATH = 'tools/m2s1-svg7-problem-capture.cjs';
-const ROLE_CAPTURE_SHA256 = 'c0c8bfdf260333d3cfa7cff433dea3e0f5856eb0d02eb2ccd9a852f6e92e2996';
+const ROLE_CAPTURE_SHA256 = 'a4092b992d01f5069a4a084598d7c4fe7d20488d122e120ec718bf226c44d585';
 const IDENTITY_PATH = 'archive/data/question_identity_map.json';
 const SCHEMA = 'archive-m2s1-svg7-problem-ui-preview-v1';
 const FONT_FAMILY = 'Nanum Myeongjo';
 const SHA1 = /^[a-f0-9]{40}$/;
 const SHA256 = /^[a-f0-9]{64}$/;
-const EXPECTED_MANIFEST_SHA256 = '0078b2e25ff644db5ead8dbcb73dc2e221ece00037a5af4c59c5fb509e246bae';
-const EXPECTED_ITEMS_SHA256 = '662d07832951ac56a241dd4b028e7b13989fc47100fb0d9594a0e7fba81535d9';
+const EXPECTED_MANIFEST_SHA256 = '7841708cf55979eee55c2dc051bef354ddd1fabb1253bed0699b9dba24ff800c';
+const EXPECTED_ITEMS_SHA256 = '955387d143c582ddfb39dc88a8a59043dd77ab21f4cfa3e836422d9bcd1d26bc';
 const VIEWPORTS = Object.freeze([{ name: 'desktop', width: 1365, height: 1000 }, { name: 'mobile', width: 390, height: 844 }]);
 const SEALED = 'SEALED_PUBLIC_SOURCE_CANDIDATE';
 const ownSnapshot = (question, fields) => Object.fromEntries(fields.map(field => [field,
@@ -35,8 +35,8 @@ function ownKeys(value, keys, code) {
 }
 function validateManifest(manifest) {
   ownKeys(manifest, ['schemaVersion', 'scope', 'bindingState', 'surface', 'mode', 'sourceCandidateCommit', 'expectedCases', 'viewports',
-    'sourceTransportReceiptRef', 'staticEvidenceRef', 'identityBinding', 'engineBinding', 'sharedHelperBinding', 'sourceBindings', 'items'], 'UI_SVG7_MANIFEST_KEYS');
-  assert.equal(manifest.schemaVersion, 'archive-m2s1-svg7-problem-ui-manifest-v1', 'UI_SVG7_MANIFEST_SCHEMA');
+    'sourceTransportReceiptRef', 'staticEvidenceRef', 'priorStaticEvidenceRef', 'identityBinding', 'engineBinding', 'sharedHelperBinding', 'sourceBindings', 'items'], 'UI_SVG7_MANIFEST_KEYS');
+  assert.equal(manifest.schemaVersion, 'archive-m2s1-svg7-problem-ui-manifest-v2', 'UI_SVG7_MANIFEST_SCHEMA');
   assert.equal(manifest.scope, 'EXACT_M2S1_SVG7_PROBLEM_DISPLAY_NO_APPROVAL', 'UI_SVG7_MANIFEST_SCOPE');
   assert(manifest.surface === 'PROBLEM' && manifest.mode === 'exam', 'UI_SVG7_PROBLEM_ONLY');
   assert.equal(manifest.bindingState, SEALED, 'UI_SVG7_PUBLIC_SOURCE_SEAL_REQUIRED');
@@ -129,12 +129,81 @@ function validateEmbeddedOriginal(reader, item, question, staticRow) {
   assert(typeof old.content === 'string' && old.content.split(beforeUri).length === 2 && old.content.replace(beforeUri, afterUri) === question.content,
     'UI_SVG7_ORIGINAL_SINGLE_URI_REPLACEMENT');
 }
+// The new immutable root capsule changes one label position. It does not
+// replace the original seven-problem static review or widen the capture scope.
+function assertOriginOnlyDelta(beforeBytes, afterBytes) {
+  const before = beforeBytes.toString('utf8'), after = afterBytes.toString('utf8');
+  const matches = [...before.matchAll(/<text\b[^>]*>O<\/text>/gu)];
+  assert(matches.length === 1 && matches[0][0].split('x="118.158"').length === 2, 'UI_SVG7_ORIGIN_ORIGINAL_LABEL');
+  const oldElement = matches[0][0], newElement = oldElement.replace('x="118.158"', 'x="158.158"');
+  const expected = before.slice(0, matches[0].index) + newElement + before.slice(matches[0].index + oldElement.length);
+  assert(Buffer.from(expected).equals(afterBytes) && after.replace(newElement, oldElement) === before, 'UI_SVG7_ORIGIN_ONLY_X_DELTA');
+  return { tag: 'text', text: 'O', attribute: 'x', before: '118.158', after: '158.158' };
+}
+function validateRevisionStatic(manifest, receipt, prior, revision) {
+  requireSealedManifest(manifest);
+  ownKeys(revision, ['schemaVersion', 'transportProfile', 'producer', 'reviewer', 'priorStaticRef', 'repair', 'staticDecision',
+    'actualUi', 'newFullMathematicalQa', 'newNativeApprovals', 'newReview2Claims', 'newMetadataApprovals', 'newDifficultyJudgments', 'newFourSlotVectors'], 'UI_SVG7_REVISION_CAPSULE_KEYS');
+  assert(revision.schemaVersion === 'archive-independent-m2s1-svg7-q24-origin-label-static-v2' &&
+    revision.transportProfile === 'M2S1_SVG7_IMAGE_POINTER_Q24_ORIGIN_V2' &&
+    revision.producer === 'GPT_M2S1_RELEASE' && revision.reviewer === 'GPT_ROOT_C8F1B0BFB4FA' && revision.reviewer !== revision.producer &&
+    revision.staticDecision === 'ACCEPT_ORIGIN_LABEL_POSITION_ONLY' && revision.actualUi === 'PENDING' && revision.newFullMathematicalQa === false &&
+    ['newNativeApprovals', 'newReview2Claims', 'newMetadataApprovals', 'newDifficultyJudgments', 'newFourSlotVectors'].every(key => revision[key] === 0), 'UI_SVG7_REVISION_AUTHORITY');
+  assert.deepEqual(revision.priorStaticRef, manifest.priorStaticEvidenceRef, 'UI_SVG7_PRIOR_STATIC_JOIN');
+  const repair = revision.repair, item = manifest.items.find(row => row.key === 'E045-Q24');
+  ownKeys(repair, ['key', 'questionUid', 'sourceOrdinal', 'priorRepairAssetRef', 'newAssetRef', 'attributeDelta', 'xmlPropertyProofSha256'], 'UI_SVG7_REPAIR_KEYS');
+  assert(repair.key === item.key && repair.questionUid === item.questionUid && repair.sourceOrdinal === item.sourceOrdinal &&
+    repair.xmlPropertyProofSha256 === 'ae35439e0fec97839bf8bac613c90e51c27b3b20d9c61cc3c31e82aa4d727bec', 'UI_SVG7_REPAIR_SCOPE');
+  assert.deepEqual(repair.attributeDelta, { tag: 'text', text: 'O', attribute: 'x', before: '118.158', after: '158.158' }, 'UI_SVG7_REPAIR_ATTRIBUTE');
+  assert(Array.isArray(prior.rows) && prior.rows.length === 7 && new Set(prior.rows.map(row => row.questionUid)).size === 7, 'UI_SVG7_PRIOR_SEVEN');
+  const old = prior.rows.find(row => row.key === item.key);
+  assert(old && old.questionUid === item.questionUid && old.sourceOrdinal === item.sourceOrdinal, 'UI_SVG7_PRIOR_SCOPE');
+  assert.deepEqual(repair.priorRepairAssetRef, old.newAssetRef, 'UI_SVG7_PRIOR_ASSET_JOIN');
+  assert.deepEqual(repair.newAssetRef, { commit: '987990e2452af47732dc62e1925c1bc397d474e4', path: item.assetPath,
+    gitBlobSha1: item.assetGitBlobSha1, sha256: item.assetSha256, bytes: item.assetBytes }, 'UI_SVG7_NEW_ASSET_JOIN');
+  const closure = receipt.inputClosure;
+  assert(receipt.schemaVersion === 'archive-reviewed-source-candidate-receipt-v1' &&
+    receipt.materializationId === 'm2s1-svg7-q24-origin-v2-20261116' && receipt.inputCommit === '828b47b23a29be265ad73264e3ac7274afeefc9b' &&
+    receipt.baseCommit === 'd7111057c89ad4f4a418e2805eeeb1b04447f99f' &&
+    closure?.transportProfile === revision.transportProfile && closure.selectedUidCount === 7 && closure.selection?.length === 7 &&
+    new Set(closure.selection.map(row => row.questionUid)).size === 7 && closure.assetRevisionKey === item.key && closure.unchangedPriorAssets === 6 &&
+    closure.requestCount === 0 && closure.preservationRequestCount === 0 && closure.newApprovals === 0 && closure.approvalEffect === 'NONE' &&
+    closure.actualUi === 'PENDING' && receipt.approvalEffect === 'NONE' && receipt.registrationStatus === 'NOT_REGISTERED' &&
+    closure.selectedOtherFieldsChanged === 0 && closure.nonselectedWholeQuestionChanges === 0 && closure.originalAssetsChanged === 0 &&
+    closure.sourcePrefixSuffixChanged === 0 && closure.literalChangeKind === 'EXACT_SINGLE_IMG_SRC_URI_ONLY', 'UI_SVG7_REVISION_RECEIPT');
+  assert.deepEqual(closure.sourceFieldsChanged, ['content'], 'UI_SVG7_REVISION_RECEIPT');
+  assert.deepEqual(closure.staticEvidenceRef, manifest.staticEvidenceRef, 'UI_SVG7_REVISION_RECEIPT');
+  assert.deepEqual(closure.priorStaticEvidenceRef, manifest.priorStaticEvidenceRef, 'UI_SVG7_REVISION_RECEIPT');
+  assert.deepEqual(closure.assetRevisionChange, repair.attributeDelta, 'UI_SVG7_REVISION_RECEIPT');
+  const rows = prior.rows.map(row => {
+    const transport = closure.selection.find(entry => entry.key === row.key), target = manifest.items.find(entry => entry.key === row.key);
+    assert(transport && target && transport.questionUid === row.questionUid && transport.sourceOrdinal === row.sourceOrdinal &&
+      transport.beforeWholeQuestionSha256 === row.wholeQuestionBeforeSha256 && transport.contentBeforeSha256 === row.contentBeforeSha256 &&
+      transport.afterWholeQuestionSha256 === target.questionSha256 && transport.contentAfterSha256 === target.contentSha256 &&
+      transport.pointerField === 'content' && transport.pointerKind === 'EXACT_SINGLE_IMG_SRC_URI', 'UI_SVG7_REVISION_ORIGINAL_JOIN');
+    return row.key === item.key ? { ...row, newAssetRef: repair.newAssetRef, contentAfterSha256: target.contentSha256 } : row;
+  });
+  return { ...prior, rows };
+}
+function readRevisionStatic(reader, manifest, receipt) {
+  const priorBytes = readBound(reader, manifest.priorStaticEvidenceRef, 'UI_SVG7_PRIOR_STATIC_DRIFT');
+  const revisionBytes = readBound(reader, manifest.staticEvidenceRef, 'UI_SVG7_STATIC_REVIEW_DRIFT');
+  assert.deepEqual(readHistoricalBound(reader, manifest.priorStaticEvidenceRef), priorBytes, 'UI_SVG7_PRIOR_STATIC_IMMUTABLE');
+  assert.deepEqual(readHistoricalBound(reader, manifest.staticEvidenceRef), revisionBytes, 'UI_SVG7_REVISION_IMMUTABLE');
+  const prior = JSON.parse(priorBytes), revision = JSON.parse(revisionBytes);
+  const result = validateRevisionStatic(manifest, receipt, prior, revision);
+  const before = readHistoricalBound(reader, revision.repair.priorRepairAssetRef), after = readHistoricalBound(reader, revision.repair.newAssetRef);
+  assert.deepEqual(assertOriginOnlyDelta(before, after), revision.repair.attributeDelta, 'UI_SVG7_REVISION_DELTA_JOIN');
+  return result;
+}
+
 function preflight(reader, manifest) {
   requireSealedManifest(manifest);
   const identityBytes = readBound(reader, manifest.identityBinding, 'UI_SVG7_IDENTITY_DRIFT'), identity = JSON.parse(identityBytes);
   assert(Array.isArray(identity.records), 'UI_SVG7_IDENTITY_RECORDS');
-  const receipt = JSON.parse(readBound(reader, manifest.sourceTransportReceiptRef, 'UI_SVG7_TRANSPORT_RECEIPT_DRIFT'));
-  const staticReview = JSON.parse(readBound(reader, manifest.staticEvidenceRef, 'UI_SVG7_STATIC_REVIEW_DRIFT'));
+  const receiptBytes = readBound(reader, manifest.sourceTransportReceiptRef, 'UI_SVG7_TRANSPORT_RECEIPT_DRIFT');
+  assert.deepEqual(readHistoricalBound(reader, manifest.sourceTransportReceiptRef), receiptBytes, 'UI_SVG7_RECEIPT_IMMUTABLE');
+  const receipt = JSON.parse(receiptBytes), staticReview = readRevisionStatic(reader, manifest, receipt);
   readBound(reader, manifest.engineBinding, 'UI_SVG7_ENGINE_DRIFT');
   readBound(reader, manifest.sharedHelperBinding, 'UI_SVG7_SHARED_HELPER_DRIFT');
   assert.equal(receipt.sourceFiles.length, 3, 'UI_SVG7_RECEIPT_SOURCES');
@@ -167,7 +236,7 @@ function preflight(reader, manifest) {
     return { ...item, sourceRef: reader.ref(item.sourcePath, bytes), assetRef: reader.ref(item.assetPath, asset) };
   });
   return { identityRef: reader.ref(IDENTITY_PATH, identityBytes), sourceTransportReceiptRef: reader.ref(manifest.sourceTransportReceiptRef.path),
-    staticEvidenceRef: reader.ref(manifest.staticEvidenceRef.path), engineRef: reader.ref(manifest.engineBinding.path), items };
+    staticEvidenceRef: reader.ref(manifest.staticEvidenceRef.path), priorStaticEvidenceRef: reader.ref(manifest.priorStaticEvidenceRef.path), engineRef: reader.ref(manifest.engineBinding.path), items };
 }
 function assertTechnicalState(technical, expectedBankCount) {
   assert([24, 25, 26].includes(expectedBankCount), 'UI_SVG7_EXPECTED_BANK_COUNT');
@@ -413,7 +482,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     assertCompletedResults(results, inputs, manifest, readScreenshotArtifacts(out));
     // Re-read all served and bound inputs after the screenshots. No cache can
     // turn a mutable working-tree file into immutable provenance.
-    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, roleCaptureHelperRef, inputs.identityRef, inputs.sourceTransportReceiptRef, inputs.staticEvidenceRef, inputs.engineRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
+    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, roleCaptureHelperRef, inputs.identityRef, inputs.sourceTransportReceiptRef, inputs.staticEvidenceRef, inputs.priorStaticEvidenceRef, inputs.engineRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
       assert.deepEqual(reader.ref(ref.path), ref, 'UI_INPUT_CHANGED_DURING_RUN');
     }
     return writeProof('TECHNICAL_PASS_VISUAL_REVIEW_PENDING');
@@ -441,7 +510,7 @@ async function main() {
     newParentApprovals: 0, releaseGate: proof.releaseGate }));
 }
 module.exports = { MANIFEST_PATH, CHECKER_PATH, SHARED_CHECKER_PATH, SHARED_CHECKER_SHA256, ROLE_CAPTURE_PATH, ROLE_CAPTURE_SHA256, IDENTITY_PATH, SCHEMA,
-  EXPECTED_MANIFEST_SHA256, EXPECTED_ITEMS_SHA256, VIEWPORTS, SEALED, ownSnapshot, validateManifest, requireSealedManifest, checkoutEvidence, loadQuestions, assertBoundQuestion, readBound, readHistoricalBound, validateEmbeddedOriginal, preflight, assertTechnicalState, assertCompletedResults, checkedOutput };
+  EXPECTED_MANIFEST_SHA256, EXPECTED_ITEMS_SHA256, VIEWPORTS, SEALED, ownSnapshot, validateManifest, requireSealedManifest, checkoutEvidence, loadQuestions, assertBoundQuestion, readBound, readHistoricalBound, validateEmbeddedOriginal, assertOriginOnlyDelta, validateRevisionStatic, readRevisionStatic, preflight, assertTechnicalState, assertCompletedResults, checkedOutput };
 if (require.main === module) main().catch(error => {
   const message = String(error?.message || ''), code = message.split('\n')[0];
   console.error(JSON.stringify({ schemaVersion: SCHEMA, status: 'FAIL', newParentApprovals: 0,

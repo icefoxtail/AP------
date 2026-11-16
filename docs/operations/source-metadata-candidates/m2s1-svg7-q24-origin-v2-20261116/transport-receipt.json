@@ -1,12 +1,12 @@
 {
   "schemaVersion": "archive-reviewed-source-candidate-receipt-v1",
-  "materializationId": "m2s1-svg7-current92dd-r1-20261116",
-  "baseCommit": "92dd3614585fefadef3ce0ad6cf68aed5cef97da",
-  "inputCommit": "18898978c541c513265009a6b8c2235fe3ec0688",
+  "materializationId": "m2s1-svg7-q24-origin-v2-20261116",
+  "baseCommit": "d7111057c89ad4f4a418e2805eeeb1b04447f99f",
+  "inputCommit": "828b47b23a29be265ad73264e3ac7274afeefc9b",
   "manifestRef": {
-    "path": ".archive-meta-register/evidence/m2s1-svg7-current92dd-r1-20261116.materialization.json",
-    "blobSha1": "b60559127b4dfafe261162a993ed432e06cd6627",
-    "sha256": "160d7d43048fd70b40b8b76255a1c9ef6f30bc81a291fc9d35bbe5d06abe1a96"
+    "path": ".archive-meta-register/evidence/m2s1-svg7-q24-origin-v2-20261116.materialization.json",
+    "blobSha1": "9dbad1bca94a0018f561a84463d03e67b0c1734e",
+    "sha256": "487df975ce49b5c0c79145a85caaa346beadbeacfcfb674695b4ce0a2049ece5"
   },
   "sourceFiles": [
     {
@@ -23,15 +23,15 @@
     },
     {
       "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
-      "blobSha1": "76638fe5ba4c770d7f6f9875b0cc8baae8430797",
-      "sha256": "fc8cad2a1f43bd2b4d0f9331bba55c151201183a279008339822da32736613b9",
+      "blobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+      "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
       "bytes": 44656
     }
   ],
   "inputFileCount": 1,
-  "inputBytes": 15499,
+  "inputBytes": 15510,
   "inputClosure": {
-    "transportProfile": "M2S1_SVG7_IMAGE_POINTER_V1",
+    "transportProfile": "M2S1_SVG7_IMAGE_POINTER_Q24_ORIGIN_V2",
     "requestCount": 0,
     "preservationRequestCount": 0,
     "selectedUidCount": 7,
@@ -40,11 +40,11 @@
     "approvalEffect": "NONE",
     "actualUi": "PENDING",
     "staticEvidenceRef": {
-      "commit": "34b9e6ab851d78f90bba4975416cbeb5ee8817e3",
-      "path": "docs/operations/m2s1-svg7-source-repair-20261116/independent-static-v1.json",
-      "gitBlobSha1": "c0f84ef234a430067e79e563712bb2c95b0ae3a0",
-      "sha256": "2fa5c28da0a4d22c6443a6a164caa300fadc3642201265224b7351eb273b520e",
-      "bytes": 13196
+      "commit": "b13247a6c8bc7793f011395c0c0b68fa8c0352d6",
+      "path": "docs/operations/m2s1-svg7-source-repair-20261116/q24-origin-label-static-v2.json",
+      "gitBlobSha1": "488a87750eb5075d7d4f24eff4d295c71833f817",
+      "sha256": "a754f9bbb97df32d07a109592673194cd4b28a1c9d24a90fccbfa89a36735c54",
+      "bytes": 1986
     },
     "sourceFiles": [
       {
@@ -67,8 +67,8 @@
       },
       {
         "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
-        "blobSha1": "76638fe5ba4c770d7f6f9875b0cc8baae8430797",
-        "sha256": "fc8cad2a1f43bd2b4d0f9331bba55c151201183a279008339822da32736613b9",
+        "blobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+        "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
         "bytes": 44656,
         "expectedQuestionCount": 24,
         "selectedCount": 2,
@@ -136,11 +136,11 @@
         "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
         "sourceOrdinal": 24,
         "beforeWholeQuestionSha256": "d075d4109a219af8f4cce602302124309912170814eee6de8f3a96aea0f9faed",
-        "afterWholeQuestionSha256": "5602bb843c590424cf036bdf5894ec9fd0b83eac656966b742df0e0a6adcc81d",
+        "afterWholeQuestionSha256": "6bbba32d209bd4dedfd6b154d86c986a059e69ac883b52bc963b67db17a36ae8",
         "pointerField": "content",
         "pointerKind": "EXACT_SINGLE_IMG_SRC_URI",
         "contentBeforeSha256": "ea1627aa0fe1f10699f827297ab398ecaf2ba831a0357929fa5a28d7c1ff6031",
-        "contentAfterSha256": "75a81e1bfe516de552634a89e99b49bac96d1fe7cb770afd55c1f8284e47d604"
+        "contentAfterSha256": "0a3a28c7c1802c1a6d70bfd3594cbe8f24e1cb8532e1f7843546c5f9d28da3b7"
       },
       {
         "key": "E045-Q15",
@@ -154,7 +154,23 @@
         "contentAfterSha256": "8f566982bc978031c2a027378beca1091d177bc5a0a483a4a10f1fa62087702b"
       }
     ],
-    "evidenceTraversal": "EXACT_ROOT_STATIC7_CURRENT_WHOLE_SOURCE_AND_IDENTITY",
+    "evidenceTraversal": "EXACT_ROOT_STATIC7_Q24_ORIGIN_REVISION_CURRENT_WHOLE_SOURCE_AND_IDENTITY",
+    "priorStaticEvidenceRef": {
+      "commit": "34b9e6ab851d78f90bba4975416cbeb5ee8817e3",
+      "path": "docs/operations/m2s1-svg7-source-repair-20261116/independent-static-v1.json",
+      "gitBlobSha1": "c0f84ef234a430067e79e563712bb2c95b0ae3a0",
+      "sha256": "2fa5c28da0a4d22c6443a6a164caa300fadc3642201265224b7351eb273b520e",
+      "bytes": 13196
+    },
+    "assetRevisionKey": "E045-Q24",
+    "assetRevisionChange": {
+      "tag": "text",
+      "text": "O",
+      "attribute": "x",
+      "before": "118.158",
+      "after": "158.158"
+    },
+    "unchangedPriorAssets": 6,
     "sourceFieldsChanged": [
       "content"
     ],
