@@ -1,0 +1,402 @@
+{
+  "schemaVersion": "middle-audit-two-rpm-additive-selection-impact-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "status": "SCOPED_ACTUAL_PROVENANCE_AND_SEPARATE_COUNTERFACTUAL_GUARD_PASS",
+  "scope": "Only RPM141 and RPM157 current exact-path consumers plus the two approved target UIDs. Existing source/math review reused; no verification-status promotion.",
+  "definitionApprovalRefs": [
+    {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q18-definition-approval.json",
+      "sha256": "62115dabeb0d6a149f009308c6d0c2cb153c01451cc165f0c224cf1cbe416c37"
+    },
+    {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e009-q21-definition-approval.json",
+      "sha256": "c9d99644f099ba12d73de983d9e38ea2080bfc566c6f18de3c2ec300ea052046"
+    }
+  ],
+  "sourceConsumers": [
+    {
+      "rpmRecordId": "M2-RPM-141",
+      "rpmPath": {
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식",
+        "l3": "해의 조건",
+        "l4": "계수 조건"
+      },
+      "currentExplicitSourceConsumers": [
+        {
+          "questionUid": "qid_v1_9df1eca5d0c22a90aca720b006484fe3aecccaac90d9e0f4a1129140496ba3ba",
+          "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+          "sourceOrdinal": 15,
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-02",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "questionStableSha256": "a66870d93603efe81e5ee0451fef0683e90ebe78b2721ec103f6cd66886815c1"
+        }
+      ],
+      "nativeReviewedTarget": {
+        "questionUid": "qid_v1_a4b3418a5df90ae608ef84ba58fe6f667ea8dabb8c4f0ba10140bb31d04ba3b4",
+        "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 18
+      },
+      "metadataConsumers": []
+    },
+    {
+      "rpmRecordId": "M2-RPM-157",
+      "rpmPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식의 활용",
+        "l3": "수와 개수",
+        "l4": "개수·가격"
+      },
+      "currentExplicitSourceConsumers": [
+        {
+          "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+          "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceOrdinal": 21,
+          "curriculum": "2022",
+          "standardCourse": "중2",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "problemTypeKey": null,
+          "templateKey": null,
+          "questionStableSha256": "3b730cddfc216b902da4585fc7101468787e16688c61ef4cb5ab8cc803bff99e"
+        }
+      ],
+      "nativeReviewedTarget": {
+        "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+        "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+        "sourceOrdinal": 21
+      },
+      "metadataConsumers": []
+    }
+  ],
+  "actualAffectedOtherUidCount": 1,
+  "actualOtherUid": "qid_v1_9df1eca5d0c22a90aca720b006484fe3aecccaac90d9e0f4a1129140496ba3ba",
+  "otherRpm157ExplicitCurrentUidCount": 0,
+  "currentProvenanceRefs": [
+    {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E050.accepted-review.json",
+      "sha256": "c02e55f41dc5b031d2623aea64340fbf9a98008557c5ea532c88c2f44848f331"
+    },
+    {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E050.independent.json",
+      "sha256": "ade077f207a152fd9b44cd687b160347c3977d3a8d0e92650e61b983b1372f2d"
+    },
+    {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E050.root-review.json",
+      "sha256": "327c05c61c8a96c650c82650affa86254625d9d08a1689dd9592445b098d93b2"
+    },
+    {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e050-q15-current-solution-continuity.json",
+      "sha256": "e03416f58c8f9dac9c811c7de4fb1bdc3db64c11ad28bab7484ad3b831c115eb"
+    },
+    {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E009.accepted-review.json",
+      "sha256": "691e36be8fb22796e164e43de699f1e82dc93313e841a7ca7e2e5bb5db628cd5"
+    }
+  ],
+  "crosswalk": {
+    "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "beforeSha256": "faf7473ff5e6514535effb7f0afc45b5c51b75f25ffa28820bede4f9f0dfc511",
+    "plannedAfterSha256": "d8bee9e806e3481432b94a02c1ff95ee22bf3dbe71c66cb73d162dabddde2542",
+    "existingRowsChanged": 0,
+    "append": [
+      {
+        "id": "M2-RPM-141-ALL-SOLUTIONS-SIGN-34C2",
+        "curriculum": "2022",
+        "scope": "M2-1",
+        "rpmPath": {
+          "majorUnit": "일차부등식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "mappingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "problemTypeLabelKo": "일차·연립부등식",
+        "ownerPack": "H1_FOUNDATION",
+        "templateKey": "TPL_H1_LINEAR_INEQUALITY_ALL_SOLUTIONS_SIGN",
+        "templateLabelKo": "일차부등식의 전체 해 부호 조건",
+        "bindingStatus": "ACTIVE",
+        "binding": {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-02",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+          "ownerPack": "MIDDLE2"
+        },
+        "promotesRpmOnlyRowId": "M2-RPM-141"
+      },
+      {
+        "id": "M2-RPM-157-SWAPPED-QUANTITIES-34C2",
+        "curriculum": "2022",
+        "scope": "M2-1",
+        "rpmPath": {
+          "majorUnit": "연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "개수·가격"
+        },
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "mappingStatus": "DIRECT_ACTIVE",
+        "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "problemTypeLabelKo": "방정식의 활용",
+        "ownerPack": "H1_FOUNDATION",
+        "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+        "templateLabelKo": "알려진 단위량과 수량 교환 차이의 연립식",
+        "bindingStatus": "ACTIVE",
+        "binding": {
+          "curriculum": "2022",
+          "standardCourse": "중2",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+          "ownerPack": "MIDDLE2"
+        },
+        "promotesRpmOnlyRowId": "M2-RPM-157"
+      }
+    ],
+    "originalRpmOnlyRowsPreserved": true
+  },
+  "plannedRegistry": {
+    "location": "ISOLATED_FIXTURE_ONLY_RESTORED_AFTER_CHECK",
+    "beforeStatus": "ACTIVE",
+    "afterStatus": "ACTIVE",
+    "newTemplateCount": 2,
+    "newBindingCount": 2,
+    "packVersions": [
+      {
+        "pack": "H1_FOUNDATION",
+        "before": "1.0.6",
+        "plannedAfter": "1.0.8"
+      },
+      {
+        "pack": "MIDDLE2",
+        "before": "1.0.8",
+        "plannedAfter": "1.0.10"
+      }
+    ],
+    "existingParentDefinitionsChanged": 0
+  },
+  "resolverCode": {
+    "path": "archive/tools/meta-foundation/rpm-active-resolver.mjs",
+    "sha256": "b1c0cd45861af26ac40143be20801d9a0889a1558c1f38e72563810994359a99",
+    "selectionContract": "crosswalkMatch preserves original RPM_ONLY records and returns requiresSelection:true after linked promotion even when only one candidate remains. resolveMetaRoute requires a POST_CROSSWALK selection naming the row and template with the current inputBundleSha and decisiveStepReason; absent selection remains pending."
+  },
+  "results": [
+    {
+      "label": "E050_Q15",
+      "questionUid": "qid_v1_9df1eca5d0c22a90aca720b006484fe3aecccaac90d9e0f4a1129140496ba3ba",
+      "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+      "sourceOrdinal": 15,
+      "actualCurrentProvenance": {
+        "solutionStatus": "SOURCE_ONLY",
+        "independentVerification": false,
+        "nativeVerdict": "REGISTRATION_PENDING",
+        "nativeRegistrationDebt": [
+          "OFFICIAL_RESOLVER_VERIFIED_FINAL_EVIDENCE_NOT_ESTABLISHED",
+          "ACTIVE_SCOPED_PT_TPL_BINDING_NOT_ESTABLISHED"
+        ],
+        "noVerificationPromotion": true
+      },
+      "actualBefore": {
+        "inputGateRejected": true,
+        "inputGateReason": "META_VERIFIED_FINAL_SOLUTION_REQUIRED"
+      },
+      "actualAfter": {
+        "inputGateRejected": true,
+        "inputGateReason": "META_VERIFIED_FINAL_SOLUTION_REQUIRED"
+      },
+      "actualSignatureUnchanged": true,
+      "hypotheticalStrongerProvenance": {
+        "kind": "STRUCTURAL_COUNTERFACTUAL_ONLY_NOT_A_REAL_VERIFIED_FINAL_INPUT_OR_UID_APPROVAL",
+        "changes": {
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "independentVerification": true
+          }
+        },
+        "postCrosswalkSelectionProvided": false,
+        "inputBundleOnly": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+            "questionUid": "qid_v1_9df1eca5d0c22a90aca720b006484fe3aecccaac90d9e0f4a1129140496ba3ba",
+            "sourceOrdinal": 15,
+            "contentHash": "sha256:5d0359e5a1eccbe5e7a2582225f2514dbc2f6fab3081b564205a9c98e95be800",
+            "choicesHash": "sha256:88a15f80509c27844b08a837304bee993da2a85f5f9a52a70366442a9c7db4e6",
+            "imageRefHash": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "independentVerification": true,
+            "solutionHash": "sha256:61dc5ca3cee7405172e6ad0edd4cfb5157e4afce0a70ead244fcf1ae5aca1658"
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2022",
+            "scope": "M2-1",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-02",
+            "subUnitKey": "M2-02-LINEAR_INEQUALITY"
+          },
+          "semanticDecision": {
+            "primaryMethod": "두 부등식 해의 경계 일치로 상수 결정",
+            "decisiveStep": "두 부등식 해의 경계 일치로 상수 결정",
+            "rpmPath": {
+              "curriculum": "2022",
+              "scope": "M2-1",
+              "majorUnit": "일차부등식",
+              "midUnit": "일차부등식",
+              "l3": "해의 조건",
+              "l4": "계수 조건"
+            }
+          }
+        },
+        "before": {
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M2-RPM-141",
+          "mappedProblemTypeKey": "",
+          "mappedTemplateKeys": [],
+          "ownerPack": "",
+          "bindingOwnerPack": "",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "after": {
+          "semanticStatus": "FINAL",
+          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+          "projectionReasonCode": "CROSSWALK_ROW_SELECTION_PENDING",
+          "crosswalkRecordId": "",
+          "mappedProblemTypeKey": "",
+          "mappedTemplateKeys": [
+            "TPL_H1_LINEAR_INEQUALITY_ALL_SOLUTIONS_SIGN"
+          ],
+          "ownerPack": "",
+          "bindingOwnerPack": "",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "notAnOfficialResolverReceipt": true,
+        "notReferencedAsActualSemanticApproval": true
+      },
+      "sourceAndMetadataApplicationChanged": false
+    },
+    {
+      "label": "E009_Q21",
+      "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+      "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+      "sourceOrdinal": 21,
+      "actualCurrentProvenance": {
+        "solutionStatus": "SOURCE_ONLY",
+        "independentVerification": false,
+        "nativeVerdict": "REGISTRATION_PENDING",
+        "nativeRegistrationDebt": [
+          "PT_TPL_EVIDENCE_INCOMPLETE: semantic candidate requires genuine resolver input/evidence and active scoped binding confirmation."
+        ],
+        "noVerificationPromotion": true
+      },
+      "actualBefore": {
+        "inputGateRejected": true,
+        "inputGateReason": "META_VERIFIED_FINAL_SOLUTION_REQUIRED"
+      },
+      "actualAfter": {
+        "inputGateRejected": true,
+        "inputGateReason": "META_VERIFIED_FINAL_SOLUTION_REQUIRED"
+      },
+      "actualSignatureUnchanged": true,
+      "hypotheticalStrongerProvenance": {
+        "kind": "STRUCTURAL_COUNTERFACTUAL_ONLY_NOT_A_REAL_VERIFIED_FINAL_INPUT_OR_UID_APPROVAL",
+        "changes": {
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "independentVerification": true
+          }
+        },
+        "postCrosswalkSelectionProvided": false,
+        "inputBundleOnly": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+            "sourceOrdinal": 21,
+            "contentHash": "sha256:ba5631a7a62c4a1f5d1b450a85510557ec5cc5d349d053af5960941f9134510d",
+            "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "imageRefHash": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "independentVerification": true,
+            "solutionHash": "sha256:b29ef561f2fc65bca76463dc0af095e87ef144411da291134f0eb607793cac83"
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2022",
+            "scope": "M2-1",
+            "standardCourse": "중2",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD"
+          },
+          "semanticDecision": {
+            "primaryMethod": "개수·가격 조건으로 연립방정식 구성",
+            "decisiveStep": "x+y=10,x-y=2",
+            "rpmPath": {
+              "curriculum": "2022",
+              "scope": "M2-1",
+              "majorUnit": "연립일차방정식",
+              "midUnit": "연립일차방정식의 활용",
+              "l3": "수와 개수",
+              "l4": "개수·가격"
+            }
+          }
+        },
+        "before": {
+          "semanticStatus": "FINAL",
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "projectionReasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M2-RPM-157",
+          "mappedProblemTypeKey": "",
+          "mappedTemplateKeys": [],
+          "ownerPack": "",
+          "bindingOwnerPack": "",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "after": {
+          "semanticStatus": "FINAL",
+          "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+          "projectionReasonCode": "CROSSWALK_ROW_SELECTION_PENDING",
+          "crosswalkRecordId": "",
+          "mappedProblemTypeKey": "",
+          "mappedTemplateKeys": [
+            "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES"
+          ],
+          "ownerPack": "",
+          "bindingOwnerPack": "",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "notAnOfficialResolverReceipt": true,
+        "notReferencedAsActualSemanticApproval": true
+      },
+      "sourceAndMetadataApplicationChanged": false
+    }
+  ],
+  "e050Q15DefinitionMismatch": "Q15 equates the boundaries of two solution sets. Q18 constrains every point of one solution set to a strict sign region. The new Q18 template is not approved or selected for Q15.",
+  "crosswalkMeaning": "The additive DIRECT row is an exact selectable PT/TPL candidate, not a claim that every UID classified in this broad RPM leaf uses that method.",
+  "sharedSourceMutation": 0,
+  "sharedMetadataMutation": 0,
+  "sharedRegistryMutation": 0,
+  "ordinarySearchEligibilityMutation": 0,
+  "officialRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}

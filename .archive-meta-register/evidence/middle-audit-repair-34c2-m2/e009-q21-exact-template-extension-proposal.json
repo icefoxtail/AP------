@@ -1,0 +1,297 @@
+{
+  "schemaVersion": "middle-audit-exact-template-extension-proposal-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "status": "PROPOSED_ONLY_NOT_APPROVED_OR_REGISTERED",
+  "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+  "sourceOrdinal": 21,
+  "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+  "currentSourceBlobSha1": "3d0454c4851e2d3c8c135feccf1e2c46f8497ba4",
+  "currentStudentPayloadSha256": "8596b643ab59bff5853c8fd686e8968f02571fbcb257c616a1e263053b947c3f",
+  "nativeRef": {
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E009.accepted-review.json",
+    "sha256": "691e36be8fb22796e164e43de699f1e82dc93313e841a7ca7e2e5bb5db628cd5"
+  },
+  "nativeSourceBlobSha1": "a1ad1dce4f166a0beac29247801ebbe07ddca0be",
+  "nativeProposalRef": null,
+  "nativeReviewedFields": {
+    "semanticDecision": {
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "semanticCurriculum": "2022",
+      "rpmPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식의 활용",
+        "l3": "수와 개수",
+        "l4": "개수·가격"
+      },
+      "rpmBasePath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식의 활용",
+        "l3": "수와 개수",
+        "l4": "개수·가격"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    "primaryMethod": "주문·오배송 가격차와 총개수로 연립식을 모델링",
+    "decisiveStep": "x+y=10, (2000x+1300y)-(1300x+2000y)=1400",
+    "finalDifficulty": {
+      "level": "중",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL",
+      "reason": "가격이 바뀐 것이 아니라 두 물건의 개수가 뒤바뀐 상황을 두 총액식으로 표현해야 한다."
+    },
+    "fieldReview": {
+      "classification": "두 종류 물건의 개수·가격 활용이며 수량교환 전후를 구분한다.",
+      "binding": "ACTIVE 단가결정 PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST는 단가가 미지수인 문제다. 본문은 단가가 주어지고 수량교환을 복원하므로 그대로 붙이지 않는다.",
+      "crossConcept": "Primary 내부의 표준 조작만 쓰며 외부 결정 개념은 없다.",
+      "condition": "해 선택을 제한하는 별도 수 체계·구간 조건이 없다. 명시된 상수 역할 및 문항 조건은 4slot에 따로 보존한다.",
+      "integration": "Primary 내부의 일상 절차이며 추가 개념 통합 구조는 없다.",
+      "difficulty": "가격이 바뀐 것이 아니라 두 물건의 개수가 뒤바뀐 상황을 두 총액식으로 표현해야 한다.",
+      "fourSlot": "SELF_CHECKED; literal quotes and dictionary terms; independent sample pending."
+    },
+    "proposalRefs": []
+  },
+  "currentSourceScope": {
+    "curriculum": "2022",
+    "standardCourse": "중2",
+    "standardUnitKey": "M2-03",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD"
+  },
+  "scopeDecision": "Preserve the current explicit source curriculum2022 and source standardCourse 중2. Do not infer or change curriculum from the exam year.",
+  "currentMathWitness": "The accepted native review and current existing solution distinguish total count from the difference of weighted totals after the quantities are exchanged. The prices stay fixed; the unknown quantities are exchanged. Both equations are linear.",
+  "parentRef": {
+    "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+    "sha256": "f86de5514f0412339a7ecd4c726263cf84db28d961fcfe24d95644802c5cf4ef",
+    "problemType": {
+      "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+      "canonicalLabelKo": "방정식의 활용",
+      "definition": "기하·수량 관계를 방정식으로 모델링해 미지수와 목표량을 결정하는 유형.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_057d0484edf04d9862c111926987ce7100eb516a9fb7778edbee3e7d38489622",
+        "qid_v1_80a4c2e314d5145cda420a12d4813264bde0be5425c1362676cb081aa1fdd21a",
+        "qid_v1_ecaf81bbf6105d7c887f3e981e468f5fda8723a862716bda09e2663ebc3def9a"
+      ],
+      "sourceUnits": [
+        "H15-SA-07",
+        "H22-C-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "H1_STAGE3_L3_GLOBAL_NORMALIZED_1170",
+          "semanticLedger": "accepted H1 L3 baseline",
+          "definitionSource": "H1_STAGE3_L3_SYNTHESIS_CHECKPOINT_1170"
+        }
+      ]
+    }
+  },
+  "existingTemplateChildren": [],
+  "knownExactMismatch": [
+    {
+      "key": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+      "reason": "That problem type solves unknown unit prices; here the unit prices are already given and quantities are unknown."
+    },
+    {
+      "key": "TPL_H1_SYSTEM_DIRECT",
+      "reason": "The inspected direct-system procedure uses linear substitution leading to quadratic roots; it does not express total counts plus exchanged-quantity weighted difference."
+    }
+  ],
+  "proposedTemplate": {
+    "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+    "parentProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+    "canonicalLabelKo": "알려진 단위량과 수량 교환 차이의 연립식",
+    "definition": "알려진 두 단위량과 두 수량의 합 및 두 수량을 서로 바꾼 가중합의 차이를 이용해 연립일차방정식을 세우고 수량을 구한다.",
+    "internalSkeleton": "DEFINE_TWO_QUANTITIES_TOTAL_COUNT_EQUATION_SWAP_WEIGHTED_TOTALS_DIFFERENCE_SOLVE_LINEAR_SYSTEM",
+    "status": "ACTIVE",
+    "ownerPack": "H1_FOUNDATION",
+    "aliases": [],
+    "supportingItemCount": 1,
+    "supportingQuestionUids": [
+      "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e"
+    ],
+    "evidenceProvenance": [
+      {
+        "source": "CURRENT_M2_AUDIT_REPAIR_34C2_EXACT_TEMPLATE_PROPOSAL",
+        "nativeReview": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E009.accepted-review.json",
+        "nativeSourceOrdinal": 21,
+        "proposalStatus": "PENDING_ROOT_DEFINITION_APPLICATION_APPROVAL"
+      }
+    ]
+  },
+  "proposedBinding": {
+    "curriculum": "2022",
+    "standardCourse": "중2",
+    "standardUnitKey": "M2-03",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+    "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+    "ownerPack": "MIDDLE2",
+    "subUnitLabelKo": "연립일차방정식의 활용",
+    "L1": "연립일차방정식",
+    "L2": "연립일차방정식의 활용",
+    "status": "ACTIVE",
+    "supportingQuestionUids": [
+      "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e"
+    ],
+    "supportingItemCount": 1
+  },
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+        "parentProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "canonicalLabelKo": "알려진 단위량과 수량 교환 차이의 연립식",
+        "definition": "알려진 두 단위량과 두 수량의 합 및 두 수량을 서로 바꾼 가중합의 차이를 이용해 연립일차방정식을 세우고 수량을 구한다.",
+        "internalSkeleton": "DEFINE_TWO_QUANTITIES_TOTAL_COUNT_EQUATION_SWAP_WEIGHTED_TOTALS_DIFFERENCE_SOLVE_LINEAR_SYSTEM",
+        "status": "ACTIVE",
+        "ownerPack": "H1_FOUNDATION",
+        "aliases": [],
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "CURRENT_M2_AUDIT_REPAIR_34C2_EXACT_TEMPLATE_PROPOSAL",
+            "nativeReview": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E009.accepted-review.json",
+            "nativeSourceOrdinal": 21,
+            "proposalStatus": "PENDING_ROOT_DEFINITION_APPLICATION_APPROVAL"
+          }
+        ]
+      }
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "problemTypeKey": "PT_H1_EQUATION_APPLICATION"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "ownerPack": "MIDDLE2",
+        "subUnitLabelKo": "연립일차방정식의 활용",
+        "L1": "연립일차방정식",
+        "L2": "연립일차방정식의 활용",
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e"
+        ],
+        "supportingItemCount": 1
+      }
+    }
+  ],
+  "proposedCrosswalk": {
+    "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "beforeFileSha256": "faf7473ff5e6514535effb7f0afc45b5c51b75f25ffa28820bede4f9f0dfc511",
+    "preservedPlaceholder": {
+      "id": "M2-RPM-157",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식의 활용",
+        "l3": "수와 개수",
+        "l4": "개수·가격"
+      },
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    "append": {
+      "id": "M2-RPM-157-SWAPPED-QUANTITIES-34C2",
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "연립일차방정식",
+        "midUnit": "연립일차방정식의 활용",
+        "l3": "수와 개수",
+        "l4": "개수·가격"
+      },
+      "standardCourse": "중2",
+      "standardUnitKey": "M2-03",
+      "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+      "problemTypeLabelKo": "방정식의 활용",
+      "ownerPack": "H1_FOUNDATION",
+      "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+      "templateLabelKo": "알려진 단위량과 수량 교환 차이의 연립식",
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "중2",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+        "ownerPack": "MIDDLE2"
+      },
+      "promotesRpmOnlyRowId": "M2-RPM-157"
+    },
+    "existingRowChanges": 0
+  },
+  "impact": {
+    "existingMetadataAtNewBindingTuple": [],
+    "existingBindingsAtTuple": [],
+    "existingMetadataUsingProposedNewTemplate": [],
+    "sameRpmPathSourceConsumers": [
+      {
+        "questionUid": "qid_v1_4343d400192c1c78e234127b568bcaccf993f719acb29714389a8c80125dc69e",
+        "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+        "sourceOrdinal": 21,
+        "curriculum": "2022",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "newTemplateNotAutomaticallySelected": true
+      }
+    ],
+    "oldDefinitionsChanged": 0,
+    "sourceModified": false,
+    "approvalStatesModified": false,
+    "ordinaryEligibilityModified": false,
+    "selectedUidOnly": true,
+    "existingConsumerGuard": "REQUIRED_AT_OFFICIAL_FINAL_DRYRUN"
+  },
+  "fingerprintState": {
+    "metadataSourceFingerprint": "64c94dc79a335c50d8ae7d97b510bddc46b4687f15a5c057d103f9866a15b14c",
+    "currentSourceFingerprint": "e3497d1d0521f2a53f217be2ef8b2d8eeea1c69149ce83c79bcc24a51fc722a7",
+    "metadataContentFingerprint": "655602d1763fe8abf7d945174a0f64b773dde8c38dcedc8c6dcc319ca238aacf",
+    "currentContentFingerprint": "5ea3b334f9335102b29448a688b26da1f5ad1fa62af6f77a8e9d7b5e6990e056",
+    "needsBodySourceReassessment": true,
+    "needsSourceFingerprintRepair": true
+  },
+  "remainingRequirements": [
+    "Root approval of this exact generic template definition and its current Q21 application.",
+    "The current body fingerprint differs from the stored metadata body fingerprint; ordinary solution-only rebind is unavailable.",
+    "Exact native source blob a1ad1dce4f166a0beac29247801ebbe07ddca0be and review-commit source must be read and compared against current student payload.",
+    "Existing native sourceReview accepts the M2S1 schema, but new PT/TPL is outside native after; formal proposal finalization support must be verified. Native Q21 proposalRefs is empty, so an M2S2-only proposal adapter cannot be claimed to approve it.",
+    "Current cleaned rationale differs in wording from native item rationale; preserve or explicitly bind its current accepted provenance instead of overwriting meaning just to satisfy an adapter."
+  ],
+  "nextAction": "First obtain exact native/current source continuity. Approve the exact new template, add its M2 binding and linked RPM157 DIRECT row, and use a strictly scoped official current-application/proposal-finalization path for the body rebind. Do not fabricate a native proposal reference or bypass fingerprint gates.",
+  "newSemanticApproval": false,
+  "officialRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}
