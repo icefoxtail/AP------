@@ -1010,3 +1010,209 @@ for (const [label, options, error] of [
   assert.equal(fs.existsSync(f.outputRoot), false);
   assert.equal(git(f.root, 'rev-parse', 'HEAD'), f.baseCommit);
 });
+
+// Closed image8 tests reuse the immutable reviewed context as opaque Git bytes.
+// Only hashes/ref metadata are committed here; no student source or review body
+// is embedded in the tests. Missing exact evidence is a fixture failure.
+import vmImage8 from 'node:vm';
+import { M2_PROBLEM_IMAGE_REPAIR8_PROFILE as IMAGE8_PROFILE, M2_PROBLEM_IMAGE_REPAIR8_SCHEMA as IMAGE8_SCHEMA,
+  M2_PROBLEM_IMAGE_REPAIR8_STATIC_SCHEMA as IMAGE8_STATIC_SCHEMA, M2_PROBLEM_IMAGE_REPAIR8_SCOPE as IMAGE8_SCOPE,
+  materializeM2ProblemImageRepair8 } from '../archive/tools/meta-foundation/materialize-reviewed-problem-image-repair8.mjs';
+const IMAGE8_STATIC = 'docs/operations/m2-problem-image8-repair-20261116/independent-static-v2.json';
+const IMAGE8_A2_COMMIT = '8a03e198329962876dadc62149821efefecf0a02';
+const IMAGE8_ORIGINAL_COMMIT = '61830b6cd7ef773f6d9c963142a7e95af4c48e82';
+const image8Ref = (commit, name, raw) => ({ commit, path: name, gitBlobSha1: blobHash(raw), sha256: rawHash(raw), bytes: Buffer.byteLength(raw) });
+const image8Run = raw => {
+  const ctx = { window: {} }; vmImage8.runInNewContext(String(raw), ctx, { timeout: 3000 });
+  return JSON.parse(JSON.stringify(ctx.window.questionBank || ctx.window.questions || ctx.questionBank || ctx.questions));
+};
+const image8Evidence = new Map();
+function image8EvidenceBytes(commit, name) {
+  const key = commit + ':' + name;
+  if (!image8Evidence.has(key)) image8Evidence.set(key, execFileSync('git', ['-C', repository, 'show', key], {
+    env: { ...process.env, GIT_NO_LAZY_FETCH: '1' }, maxBuffer: 2 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'],
+  }));
+  return image8Evidence.get(key);
+}
+const image8ApprovedAssets = new Map();
+function image8Asset(scope) {
+  if (!image8ApprovedAssets.has(scope.key)) {
+    const raw = execFileSync('git', ['-C', repository, 'cat-file', 'blob', scope.approvedAssetGitBlobSha1], {
+      env: { ...process.env, GIT_NO_LAZY_FETCH: '1' }, maxBuffer: 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'],
+    });
+    assert.equal(blobHash(raw), scope.approvedAssetGitBlobSha1); assert.equal(rawHash(raw), scope.approvedAssetSha256);
+    assert.equal(raw.length, scope.approvedAssetBytes); image8ApprovedAssets.set(scope.key, raw);
+  }
+  return image8ApprovedAssets.get(scope.key);
+}
+function image8Fixture(t, { changeBank, suffix, changeSource, changeIdentity, changeReview, changeManifest, changeOldAsset,
+  changeEnvelope, changeManifestText, extraInput, changeExpectedAfter } = {}) {
+  const container = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-image8-candidate-fixture-'));
+  t.after(() => fs.rmSync(container, { recursive: true, force: true }));
+  const root = path.join(container, 'repo'); fs.mkdirSync(root);
+  const put = (name, raw) => { const f = path.join(root, name); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, raw); };
+  git(root, 'init', '-q', '-b', 'main'); git(root, 'config', 'user.name', 'Image fixture');
+  git(root, 'config', 'user.email', 'fixture@example.invalid'); git(root, 'config', 'commit.gpgsign', 'false');
+  git(root, 'config', 'core.quotePath', 'false');
+  const common = path.resolve(repository, git(repository, 'rev-parse', '--git-common-dir'));
+  fs.writeFileSync(path.join(root, '.git/objects/info/alternates'), path.join(common, 'objects') + '\n');
+  put('README.md', 'Opaque immutable context transport fixture\n');
+  for (const s of IMAGE8_SCOPE) put(s.newAssetPath, image8Asset(s));
+  git(root, 'add', '.'); git(root, 'commit', '-qm', 'immutable approved assets');
+  const assetCommit = git(root, 'rev-parse', 'HEAD');
+  const approvedReview = JSON.parse(image8EvidenceBytes(IMAGE8_A2_COMMIT, IMAGE8_STATIC));
+  const review = structuredClone(approvedReview);
+  assert.equal(review.schemaVersion, IMAGE8_STATIC_SCHEMA);
+  changeReview?.(review); const reviewRaw = json(review); put(IMAGE8_STATIC, reviewRaw);
+  git(root, 'add', '.'); git(root, 'commit', '-qm', 'immutable independent static context');
+  const reviewCommit = git(root, 'rev-parse', 'HEAD');
+  git(root, 'rm', '--', IMAGE8_STATIC, ...IMAGE8_SCOPE.map(s => s.newAssetPath));
+  const sourcePaths = [...new Set(IMAGE8_SCOPE.map(s => s.sourcePath))], sources = new Map(), after = new Map(), banks = new Map(), records = [];
+  for (const [index, sourcePath] of sourcePaths.entries()) {
+    const sourceArchiveFile = sourcePath.slice('archive/exams/'.length), scope = IMAGE8_SCOPE.filter(s => s.sourcePath === sourcePath);
+    const bank = image8Run(image8EvidenceBytes(IMAGE8_ORIGINAL_COMMIT, sourcePath));
+    assert.equal(bank.length, index === 0 ? 23 : 24);
+    for (const [i, q] of bank.entries()) {
+      const owner = scope.find(s => s.sourceOrdinal === i + 1), questionUid = owner?.questionUid || 'qid_v1_' + rawHash(`${sourcePath}:${i + 1}`);
+      const sourceQuestionNo = q.sourceQuestionNo ?? q.sourceQid ?? q.id ?? i + 1;
+      records.push({ questionUid, sourceArchiveFile, sourceOrdinal: i + 1, sourceQuestionNo,
+        legacyQKey: sourceArchiveFile + '_' + sourceQuestionNo });
+    }
+    changeBank?.(bank, index);
+    const tail = suffix?.(index) ?? '\n// Public trailing metadata remains byte-identical.\nwindow.questionBank[10].courseKey = "M2-2";\n';
+    let before = '// Opaque historical source context serialized for isolated transport test\nwindow.questionBank = ' + JSON.stringify(bank, null, 2) + ';\n' + tail;
+    before = changeSource?.(before, index) ?? before;
+    const executed = image8Run(before); banks.set(sourcePath, executed); sources.set(sourcePath, before); put(sourcePath, before);
+    let changed = before;
+    for (const s of scope) changed = changed.replace('"image": ' + JSON.stringify(s.oldAssetPath.slice('archive/'.length)),
+      '"image": ' + JSON.stringify(s.newAssetPath.slice('archive/'.length)));
+    changed = changeExpectedAfter?.(changed, index) ?? changed; after.set(sourcePath, changed);
+    for (const s of scope) {
+      const original = image8EvidenceBytes(IMAGE8_ORIGINAL_COMMIT, s.oldAssetPath);
+      put(s.oldAssetPath, changeOldAsset?.(original, s) ?? original);
+    }
+  }
+  put('archive/assets/images/fixture-original.png', 'Synthetic original PNG bytes\n');
+  const identity = { schemaVersion: 'question-identity-map-v1', records,
+    lookup: { byQuestionUid: Object.fromEntries(records.map(({ questionUid, ...r }) => [questionUid, r])),
+      bySourceFileAndOrdinal: Object.fromEntries(sourcePaths.map(p => [p.slice('archive/exams/'.length), Object.fromEntries(records.filter(r => r.sourceArchiveFile === p.slice('archive/exams/'.length)).map(r => [r.sourceOrdinal, r.questionUid]))])),
+      bySourceFileAndQuestionNo: Object.fromEntries(sourcePaths.map(p => [p.slice('archive/exams/'.length), Object.fromEntries(records.filter(r => r.sourceArchiveFile === p.slice('archive/exams/'.length)).map(r => [r.sourceQuestionNo, [r.questionUid]]))])),
+      byLegacyQKey: Object.fromEntries(records.map(r => [r.legacyQKey, [r.questionUid]])) } };
+  changeIdentity?.(identity); const identityRaw = json(identity); put(IDENTITY, identityRaw);
+  git(root, 'add', '.'); git(root, 'commit', '-qm', 'trusted current source and identity');
+  const baseCommit = git(root, 'rev-parse', 'HEAD');
+  const manifest = { schemaVersion: IMAGE8_SCHEMA, transportProfile: IMAGE8_PROFILE, materializationId: 'fixture-image8-repair', baseCommit,
+    identityRef: ref(IDENTITY, identityRaw), staticEvidenceRef: image8Ref(reviewCommit, IMAGE8_STATIC, reviewRaw), outputScope: sourcePaths,
+    files: sourcePaths.map(sourcePath => ({ path: sourcePath, sourceBeforeRef: image8Ref(baseCommit, sourcePath, sources.get(sourcePath)),
+      after: hashPair(after.get(sourcePath)), expectedQuestionCount: banks.get(sourcePath).length,
+      changes: IMAGE8_SCOPE.filter(s => s.sourcePath === sourcePath).map(s => ({ key: s.key, questionUid: s.questionUid, sourceOrdinal: s.sourceOrdinal,
+        wholeQuestionBeforeSha256: rawHash(stable(banks.get(sourcePath)[s.sourceOrdinal - 1])),
+        imageBefore: s.oldAssetPath.slice('archive/'.length), imageAfter: s.newAssetPath.slice('archive/'.length),
+        oldAssetRef: image8Ref(baseCommit, s.oldAssetPath, fs.readFileSync(path.join(root, s.oldAssetPath))),
+        newAssetRef: structuredClone(approvedReview.rows.find(r => r.key === s.key).newAssetRef) })) })) };
+  changeManifest?.(manifest, { baseCommit, assetCommit, reviewCommit, sources, after });
+  let manifestRaw = json(manifest); manifestRaw = changeManifestText?.(manifestRaw) ?? manifestRaw;
+  const input = { [MANIFEST]: manifestRaw, ...(extraInput || {}) };
+  const envelope = { schemaVersion: CANDIDATE_SCHEMA, materializationId: manifest.materializationId, baseCommit,
+    manifestRef: ref(MANIFEST, manifestRaw), inputFiles: Object.entries(input).map(([p, b]) => ref(p, b)) };
+  changeEnvelope?.(envelope);
+  for (const [p, b] of Object.entries(input)) put(p, b); put(CANDIDATE_ENVELOPE, json(envelope));
+  git(root, 'add', '.'); git(root, 'commit', '-qm', 'metadata-only image repair input');
+  const inputCommit = git(root, 'rev-parse', 'HEAD'); git(root, 'reset', '--hard', baseCommit);
+  const options = { repoRoot: root, inputCommit, eventRef: 'archive-meta-source-input/' + envelope.materializationId };
+  return { root, container, options, baseCommit, inputCommit, manifest, envelope, sources, after, banks, sourcePaths };
+}
+
+test('image8 closed candidate: exact URI8, source2 only, approved assets read-only and no approvals', async t => {
+  const f = image8Fixture(t), inspected = inspectSourceMetadataCandidate(f.options);
+  assert.equal(inspected.closure.transportProfile, IMAGE8_PROFILE); assert.equal(inspected.closure.selectedUidCount, 8);
+  assert.equal(inspected.closure.newApprovals, 0); assert.equal(inspected.closure.actualUi, 'PENDING');
+  assert.deepEqual(inspected.closure.sourceFiles.map(r => r.nonselectedWholeQuestionsPreserved), [17, 22]);
+  const result = await buildSourceMetadataCandidate({ ...f.options, outputRoot: path.join(f.container, 'output') });
+  assert.equal(result.sourceFileCount, 2); assert.equal(result.approvalEffect, 'NONE'); assert.equal(result.registrationStatus, 'NOT_REGISTERED');
+  assert.equal(git(f.root, 'rev-parse', 'HEAD'), f.baseCommit); assert.equal(git(f.root, 'diff', '--name-only', 'HEAD'), '');
+  const changes = git(f.root, 'diff-tree', '--no-commit-id', '--name-only', '-r', f.inputCommit, result.candidateCommit).split('\n').sort();
+  assert.deepEqual(changes, [CANDIDATE_ENVELOPE, result.receiptPath, ...f.sourcePaths].sort());
+  for (const sourcePath of f.sourcePaths) {
+    assert.equal(git(f.root, 'show', result.candidateCommit + ':' + sourcePath), f.after.get(sourcePath).trim());
+    const produced = image8Run(fs.readFileSync(path.join(f.container, 'output', sourcePath))), wanted = structuredClone(f.banks.get(sourcePath));
+    for (const s of IMAGE8_SCOPE.filter(s => s.sourcePath === sourcePath)) wanted[s.sourceOrdinal - 1].image = s.newAssetPath.slice('archive/'.length);
+    assert.equal(rawHash(stable(produced)), rawHash(stable(wanted))); assert.equal(produced[10].courseKey, 'M2-2');
+  }
+  const receipt = JSON.parse(git(f.root, 'show', result.candidateCommit + ':' + result.receiptPath));
+  assert.equal(receipt.inputClosure.staticEvidenceRef.sha256, f.manifest.staticEvidenceRef.sha256);
+  for (const s of IMAGE8_SCOPE) assert.equal(git(f.root, 'rev-parse', result.candidateCommit + ':' + s.oldAssetPath), git(f.root, 'rev-parse', f.baseCommit + ':' + s.oldAssetPath));
+  assert.equal(git(f.root, 'rev-parse', result.candidateCommit + ':archive/assets/images/fixture-original.png'), git(f.root, 'rev-parse', f.baseCommit + ':archive/assets/images/fixture-original.png'));
+});
+test('image8 closed candidate: newer unselected Q2 context remains outside the eight-row scope', t => {
+  const f = image8Fixture(t, { changeBank: (bank, i) => { if (i === 0) bank[1].question = 'Synthetic newer unselected context'; } });
+  const inspected = inspectSourceMetadataCandidate(f.options);
+  assert.equal(inspected.closure.selectedUidCount, 8);
+  assert.deepEqual(inspected.closure.sourceFiles.map(r => r.nonselectedWholeQuestionsPreserved), [17, 22]);
+});
+
+const image8Negative = [
+  ['fully resealed current given differs from independent before', { changeBank: (b, i) => { if (i === 0) b[3].question = 'Synthetic changed given'; } }, /STATIC_CURRENT_WHOLE_QUESTION/],
+  ['fully resealed current old asset differs from independent before', { changeOldAsset: (b, s) => s.key === IMAGE8_SCOPE[0].key ? Buffer.concat([b, Buffer.from('\n<!-- synthetic changed asset context -->\n')]) : b }, /STATIC_CURRENT_OLD_ASSET/],
+  ['A2 omits A1 lineage', { changeReview: r => { delete r.priorStaticRef; } }, /STATIC_SHAPE/],
+  ['A2 changes A1 lineage commit', { changeReview: r => { r.priorStaticRef.commit = '1'.repeat(40); } }, /STATIC_PRIOR_REF/],
+  ['A2 changes A1 lineage digest', { changeReview: r => { r.priorStaticRef.sha256 = '0'.repeat(64); } }, /STATIC_PRIOR_REF/],
+  ['A2 reassigns independent reviewer', { changeReview: r => { r.reviewer = 'DIFFERENT_REVIEWER'; } }, /STATIC_PRIOR_LINEAGE/],
+  ['A2 changes original source commit', { changeReview: r => { r.rows[0].beforeSourceRef.commit = '1'.repeat(40); } }, /STATIC_GIVEN_FIXED/],
+  ['A2 changes original source hash', { changeReview: r => { r.rows[0].beforeSourceRef.sha256 = '0'.repeat(64); } }, /STATIC_GIVEN_FIXED/],
+  ['A2 changes original whole question digest', { changeReview: r => { r.rows[0].wholeQuestionBeforeSha256 = '0'.repeat(64); } }, /STATIC_GIVEN_DIGEST/],
+  ['A2 changes old asset commit', { changeReview: r => { r.rows[0].oldAssetRef.commit = '1'.repeat(40); } }, /STATIC_OLD_ASSET_FIXED/],
+  ['A2 changes old asset hash', { changeReview: r => { r.rows[0].oldAssetRef.sha256 = '0'.repeat(64); } }, /STATIC_OLD_ASSET_FIXED/],
+  ['no profile fallback', { changeManifest: m => { delete m.transportProfile; } }, /SOURCE_METADATA_CANDIDATE:/],
+  ['unknown profile', { changeManifest: m => { m.transportProfile = 'M2_PROBLEM_IMAGE_REPAIR9_V1'; } }, /SOURCE_METADATA_CANDIDATE:/],
+  ['unknown manifest field', { changeManifest: m => { m.extra = true; } }, /MANIFEST_SHAPE/],
+  ['raw source payload', { changeManifest: m => { m.sourceBody = 'forbidden'; } }, /RAW_OR_UNSAFE_METADATA_FIELD/],
+  ['raw SVG payload', { changeManifest: m => { m.files[0].changes[0].svg = '<svg/>'; } }, /RAW_OR_UNSAFE_METADATA_FIELD/],
+  ['unreferenced metadata input', { extraInput: { [EXTRA]: '{}\n' } }, /INPUT_GRAPH_SCOPE/],
+  ['preservation mixed into image profile', { changeEnvelope: e => { e.preservationRequestRefs = []; } }, /INPUT_GRAPH_SCOPE/],
+  ['additional source', { changeManifest: m => { m.outputScope.push(SOURCE); } }, /FILE_SCOPE/],
+  ['missing selected item', { changeManifest: m => { m.files[0].changes.pop(); } }, /CHANGE_SCOPE/],
+  ['duplicate selected item', { changeManifest: m => { m.files[0].changes[1] = structuredClone(m.files[0].changes[0]); } }, /CHANGE_FIXED_SCOPE/],
+  ['excluded Q2', { changeManifest: m => { m.files[0].changes[0].key = 'E017-Q02'; m.files[0].changes[0].sourceOrdinal = 2; } }, /CHANGE_FIXED_SCOPE/],
+  ['wrong UID', { changeManifest: m => { m.files[0].changes[0].questionUid = UID; } }, /CHANGE_FIXED_SCOPE/],
+  ['wrong ordinal', { changeManifest: m => { m.files[0].changes[0].sourceOrdinal++; } }, /CHANGE_FIXED_SCOPE/],
+  ['whole question changed', { changeManifest: m => { m.files[0].changes[0].wholeQuestionBeforeSha256 = '0'.repeat(64); } }, /WHOLE_QUESTION_BEFORE/],
+  ['source before wrong commit', { changeManifest: (m, f) => { m.files[0].sourceBeforeRef.commit = f.assetCommit; } }, /IMMUTABLE_REF_BINDING/],
+  ['source before wrong hash', { changeManifest: m => { m.files[0].sourceBeforeRef.sha256 = '0'.repeat(64); } }, /IMMUTABLE_REF_DRIFT/],
+  ['source wrong denominator', { changeManifest: m => { m.files[0].expectedQuestionCount = 25; } }, /SOURCE_DENOMINATOR/],
+  ['wrong after source hash', { changeManifest: m => { m.files[0].after.sha256 = '0'.repeat(64); } }, /SOURCE_AFTER_DRIFT/],
+  ['image before differs', { changeManifest: m => { m.files[0].changes[0].imageBefore += '?changed'; } }, /IMAGE_URI_SCOPE/],
+  ['remote image after', { changeManifest: m => { m.files[0].changes[0].imageAfter = 'https://example.invalid/image.svg'; } }, /IMAGE_URI_SCOPE/],
+  ['new URI outside approved version', { changeManifest: m => { m.files[0].changes[0].imageAfter = m.files[0].changes[0].imageAfter.replace('v4', 'v5'); } }, /IMAGE_URI_SCOPE/],
+  ['old asset wrong current commit', { changeManifest: (m, f) => { m.files[0].changes[0].oldAssetRef.commit = f.assetCommit; } }, /IMMUTABLE_REF_BINDING/],
+  ['old asset hash drift', { changeManifest: m => { m.files[0].changes[0].oldAssetRef.sha256 = '0'.repeat(64); } }, /IMMUTABLE_REF_DRIFT/],
+  ['new asset disagrees with static review', { changeManifest: m => { m.files[0].changes[0].newAssetRef.sha256 = '0'.repeat(64); } }, /ASSET_STATIC_JOIN/],
+  ['resealed static cannot approve different SVG', { changeReview: r => { r.rows[0].newAssetRef.sha256 = '0'.repeat(64); } }, /APPROVED_ASSET_BYTES/],
+  ['reviewer equals producer', { changeReview: r => { r.reviewer = r.producer; } }, /REVIEWER_SEPARATION/],
+  ['case-only reviewer alias', { changeReview: r => { r.reviewer = r.producer.toLowerCase(); } }, /REVIEWER_SEPARATION/],
+  ['unrecognized review schema', { changeReview: r => { r.schemaVersion += '-other'; } }, /STATIC_PROFILE/],
+  ['review scope duplicate', { changeReview: r => { r.rows[1] = structuredClone(r.rows[0]); } }, /STATIC_ROW_SCOPE/],
+  ['review pending row', { changeReview: r => { r.rows[0].staticDecision = 'PENDING'; } }, /STATIC_ROW_SCOPE/],
+  ['review missing row', { changeReview: r => { r.rows.pop(); } }, /STATIC_SCOPE/],
+  ['review basis drift', { changeReview: r => { r.basisReviewSha256 = '0'.repeat(64); } }, /STATIC_BASIS/],
+  ['repair plan drift', { changeReview: r => { r.repairPlanSha256 = '0'.repeat(64); } }, /STATIC_BASIS/],
+  ['UI approval claim', { changeReview: r => { r.actualUi = 'PASS'; } }, /STATIC_EFFECT/],
+  ['new metadata approval claim', { changeReview: r => { r.newMetadataApprovals = 1; } }, /STATIC_EFFECT/],
+  ['wrong static ref hash', { changeManifest: m => { m.staticEvidenceRef.sha256 = '0'.repeat(64); } }, /IMMUTABLE_REF_DRIFT/],
+  ['static reference wrong path', { changeManifest: m => { m.staticEvidenceRef.path = 'docs/operations/other.json'; } }, /IMMUTABLE_REF_BINDING/],
+  ['identity digest drift', { changeManifest: m => { m.identityRef.sha256 = '0'.repeat(64); } }, /IDENTITY_DRIFT/],
+  ['identity duplicate UID', { changeIdentity: x => { x.records.push(structuredClone(x.records[3])); } }, /IDENTITY_DENOMINATOR/],
+  ['identity lookup wrong UID', { changeIdentity: x => { const k = Object.keys(x.lookup.bySourceFileAndOrdinal)[0]; x.lookup.bySourceFileAndOrdinal[k]['4'] = UID; } }, /IDENTITY_LOOKUP_JOIN/],
+  ['embedded UID mismatch', { changeBank: (b, i) => { if (i === 0) b[3].questionUid = UID; } }, /EXPLICIT_SOURCE_UID/],
+  ['metadata change mixed into URI item', { changeManifest: m => { m.files[0].changes[0].metadataFields = []; } }, /CHANGE_SHAPE/],
+  ['duplicate JSON manifest key', { changeManifestText: s => s.replace('"transportProfile":', '"transportProfile":"ignored", "transportProfile":') }, /DUPLICATE_JSON_KEY/],
+  ['trailing execution overrides selected image', { suffix: i => i === 0 ? '\nwindow.questionBank[3].image = "'+IMAGE8_SCOPE[0].oldAssetPath.slice('archive/'.length)+'";\n' : '' }, /EXECUTED_WHOLE_BANK_DRIFT/],
+  ['trailing execution changes an unselected value after URI switch', { suffix: i => i === 0 ? '\nif (window.questionBank[3].image.endsWith("v4.svg")) window.questionBank[0].answer="changed";\n' : '' }, /EXECUTED_WHOLE_BANK_DRIFT/],
+  ['forged output changes answer', { changeExpectedAfter: (s, i) => i === 0 ? s.replace(/"answer":\s*(?:"(?:\\.|[^"\\])*"|[^,\n]+)/, '"answer": "synthetic changed output"') : s }, /SOURCE_AFTER_DRIFT/],
+  ['string code generation from window constructor', { suffix: i => i === 0 ? '\nwindow.constructor.constructor("return 7")();\n' : '' }, /SOURCE_EXECUTION/],
+  ['string code generation from console method', { suffix: i => i === 0 ? '\nconsole.log.constructor("return 7")();\n' : '' }, /SOURCE_EXECUTION/],
+];
+for (const [name, options, error] of image8Negative) test('image8 closed candidate rejects ' + name, t => {
+  const f = image8Fixture(t, options); assert.throws(() => inspectSourceMetadataCandidate(f.options), error);
+  assert.equal(git(f.root, 'rev-parse', 'HEAD'), f.baseCommit); assert.equal(git(f.root, 'diff', '--name-only', 'HEAD'), '');
+});

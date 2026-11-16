@@ -40,7 +40,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "curriculum": "2015",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 2,
@@ -81,7 +86,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "curriculum": "2015",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 3,
@@ -206,7 +216,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 6,
@@ -247,7 +262,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 7,
@@ -329,7 +349,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 9,
@@ -370,7 +395,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 10,
@@ -452,7 +482,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 12,
@@ -577,7 +612,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 15,
@@ -657,7 +697,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 17,
@@ -732,14 +777,19 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 19,
@@ -780,7 +830,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 20,
@@ -961,13 +1016,18 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q24-solution.svg",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "curriculum": "2015",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   }
 ];

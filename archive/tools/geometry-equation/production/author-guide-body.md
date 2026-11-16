@@ -7,6 +7,8 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 
 construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDescription`은 그림의 점·도형 관계를 설명하는 짧은 한국어 평문 한 줄(공백만은 불가, 500자 이하)이다. 지정하면 SVG의 접근성 `<desc>`에 XML 이스케이프하여 전달한다. 정답은 넣지 않는다. 생략하면 기존 기본 설명과 SVG 출력은 그대로 유지된다. composite-panels·number-line-figure·solid-figure·quadratic-inequality-chain도 같은 선택 필드를 받는다: 엔진이 루트 `role="img"`와 `<title>`(plan `caption`)·`<desc>`(`accessibilityDescription`, 생략하면 그림 종류별 기본 문장: 수직선 "수직선 위에 범위를 나타낸 그림이다.", 입체도형 "입체도형과 주어진 길이·위치를 나타낸 그림이다.", 이차부등식 그래프+수직선 "그래프로 조건을 나타낸 그림이다.", 그 밖의 composite는 위 기본 문장)를 직접 쓰므로 렌더 뒤에 접근성 보완 스크립트(a11y.sh)를 돌릴 필요가 없다. 이미 들어 있으면 그 스크립트는 `METADATA_ALREADY_PRESENT`로 거절되어 무해하다.
 
+`ellipse-figure-v1`의 일반 타원·포물선·쌍곡선에도 `accessibilityDescription`을 쓸 수 있다. 새 학생용 그림에는 곡선·점·선분이 보여 주는 관계를 한 줄, 500자 이내로 적고 `caption`에 짧은 제목을 쓴다. 이 필드를 지정하면 엔진이 제목·설명과 고유 라벨 ID를 렌더하고 독립 관측기가 확인한다. 수학 조건과 도형의 좌표는 그대로 계산한다.
+
 ## 1. 순서
 
 1. 문항(발문, 보기, 정답)과 풀이를 먼저 완성한다. 모든 값을 직접 풀어 확인한다.
