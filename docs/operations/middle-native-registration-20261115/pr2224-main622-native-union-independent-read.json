@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "pr2224-622-native-union-independent-read-v1",
+  "status": "PASS_SCOPED_STATIC_READ",
+  "reviewer": "audit_m3",
+  "references": {
+    "base": "0463552b03bfaa91548aa63b03837761cafe2e60",
+    "ours": "d4d38609e82d15c27968d371b5b04a8fbc5624fa",
+    "theirs": "62254b1df15a6a3a7be604a38ee446dd20879c67",
+    "mergeTree": "3712e1f8a4419b0f09d6fd3af15af9dc262eabe3"
+  },
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+      "resolvedBytes": 12230,
+      "resolvedSha256": "19d8b499cacfe4262ca3d22fb8959a1967909c108f485682d86e4cdeabc8de51",
+      "resolvedBlob": "98607ad5ac0f2542662896cb4f18bc3a39450508",
+      "immutableVersions": {
+        "base": {
+          "revision": "0463552b03bfaa91548aa63b03837761cafe2e60",
+          "sha256": "10358a2e912143a4376c2f345b78d7fb5379f18758d746985f62b3eda2c525a8"
+        },
+        "ours": {
+          "revision": "d4d38609e82d15c27968d371b5b04a8fbc5624fa",
+          "sha256": "628ec209507b4228f603d06d53452f8fd1a9e5960ab2823389115fa78baa9a74"
+        },
+        "theirs": {
+          "revision": "62254b1df15a6a3a7be604a38ee446dd20879c67",
+          "sha256": "bc70d6a59522e8529377823fdcebc46a02171511ad2fd961c7923d7f2fc15b75"
+        },
+        "mergeTree": {
+          "revision": "3712e1f8a4419b0f09d6fd3af15af9dc262eabe3",
+          "sha256": "31dd3a0e4ebfa7a983278c533bc7730cfe6baedc7cb6fa17f61dc92c65de242a"
+        }
+      },
+      "conflictCount": 1,
+      "conflictsRestrictedToImports": true,
+      "nonImportBodyExactRawAutoMerge": true,
+      "importBindingsExactSetUnion": true,
+      "missingImports": [],
+      "additionalUnrequestedImports": [],
+      "rootOnlyImports": [
+        [
+          "./issued-rpm-evidence-continuity.mjs",
+          "verifyIssuedRpmEvidenceContinuity"
+        ]
+      ],
+      "mainOnlyImports": [
+        [
+          "./native-reviewed-source-reuse.mjs",
+          "validateNativeReviewedSourceReuse"
+        ]
+      ]
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+      "resolvedBytes": 28911,
+      "resolvedSha256": "9b96f9cfcece2e27c7dece4ec6547d40c0f0f6d7aab0074da3085cbfc4c3cfb9",
+      "resolvedBlob": "4b2ede10a13059650175244dd93127317602e5a2",
+      "immutableVersions": {
+        "base": {
+          "revision": "0463552b03bfaa91548aa63b03837761cafe2e60",
+          "sha256": "a32a5d56bfb049c6c83aa7d0dc7ded95fb15ceaf56675b6a253e119bcdf3beac"
+        },
+        "ours": {
+          "revision": "d4d38609e82d15c27968d371b5b04a8fbc5624fa",
+          "sha256": "a133ae69447f5679fd91141aac7504ebcfe5598c0640503aaf7c954e8831666f"
+        },
+        "theirs": {
+          "revision": "62254b1df15a6a3a7be604a38ee446dd20879c67",
+          "sha256": "2e631c35dc9a3a813b043174e0f482d1bcd7fa420ae2dd5867ecd9b91f59521e"
+        },
+        "mergeTree": {
+          "revision": "3712e1f8a4419b0f09d6fd3af15af9dc262eabe3",
+          "sha256": "681a298463ec915ff5bec4df9b6aacff3db1278841512146c7a6c6c727e5b424"
+        }
+      },
+      "conflictCount": 1,
+      "conflictsRestrictedToImports": true,
+      "nonImportBodyExactRawAutoMerge": true,
+      "importBindingsExactSetUnion": true,
+      "missingImports": [],
+      "additionalUnrequestedImports": [],
+      "rootOnlyImports": [
+        [
+          "./exact-json-byte-parser.mjs",
+          "createExactJsonByteParser"
+        ],
+        [
+          "./issued-source-binding-recovery.mjs",
+          "isIssuedSourceBindingRecovery"
+        ],
+        [
+          "./issued-source-binding-recovery.mjs",
+          "validateIssuedSourceBindingRecovery"
+        ],
+        [
+          "./reviewed-m2-current-renderer-continuity.mjs",
+          "hasImmutableM2CurrentRendererClaim"
+        ],
+        [
+          "./reviewed-m2-provider-current-renderer-continuity.mjs",
+          "hasImmutableM2ProviderCurrentRendererClaim"
+        ],
+        [
+          "./reviewed-source-binding.mjs",
+          "hasReviewedReceiptLineage"
+        ],
+        [
+          "./source-subset-preservation.mjs",
+          "isSourceSubsetRebind"
+        ],
+        [
+          "./source-subset-preservation.mjs",
+          "preservedSourceEvidence"
+        ],
+        [
+          "./source-subset-preservation.mjs",
+          "validateSourceSubsetEvidence"
+        ]
+      ],
+      "mainOnlyImports": [
+        [
+          "./reviewed-current-renderer-continuity.mjs",
+          "buildReviewedRendererBinding"
+        ],
+        [
+          "./reviewed-current-renderer-continuity.mjs",
+          "reviewedRendererBindingPath"
+        ]
+      ]
+    }
+  ],
+  "checks": {
+    "mainCurrentTargetDelegatesToFullIssuedSourceBinding": true,
+    "mainRendererDigestContentAndBothProvenanceClaimsPreserved": true,
+    "mainReplayBeforeOriginalRequestPathPreserved": true,
+    "rootIssuedRpmFreshLiveClaimValidationPreserved": true,
+    "rootRecoverySubsetM2ClaimAndLineagePathsPreserved": true,
+    "rootExactByteParserReadAndHashChecksPreserved": true
+  },
+  "blockingFindings": [],
+  "execution": {
+    "tests": 0,
+    "moduleImports": 0,
+    "syntaxChecks": 0,
+    "registrar": 0,
+    "Consumer": 0,
+    "codeWrites": 0
+  },
+  "qualification": "Only resolved two-file semantic/byte union is reviewed. Root seven syntax checks and final actual CI are separate evidence; no runtime PASS inferred."
+}

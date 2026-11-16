@@ -18,6 +18,7 @@ import { isSourceSubsetRebind, validateSourceSubsetEvidence, preservedSourceEvid
 import { isIssuedSourceBindingRecovery, validateIssuedSourceBindingRecovery } from './issued-source-binding-recovery.mjs';
 import { hasImmutableM2CurrentRendererClaim } from './reviewed-m2-current-renderer-continuity.mjs';
 import { hasImmutableM2ProviderCurrentRendererClaim } from './reviewed-m2-provider-current-renderer-continuity.mjs';
+import { reviewedRendererBindingPath, buildReviewedRendererBinding } from './reviewed-current-renderer-continuity.mjs';
 import { NATIVE_RATIONALE_CONTINUITY_SCHEMA, NATIVE_RATIONALE_SOURCE_FIELDS,
   rationaleProtectedQuestionSha256, rationaleSourceFieldBinding } from './reviewed-native-rationale-continuity.mjs';
 
@@ -181,6 +182,17 @@ function validateDirect(receipt, context) {
     question, final:current, supportedFields, canonicalBefore:beforeTables, canonicalAfter:tables,
     issuedSourceReview:repair.sourceReview, cache});
   if (!same(proof, repair.sourceReview)) fail('current source-review proof differs from issued proof');
+  // This current-target application requires its original compound renderer
+  // contract as well as the typed source review. A source-only ancestor may
+  // preserve both proofs; it may not discard the writer-issued renderer seal.
+  if (patch.sourceReview?.currentTargetApplication !== undefined) {
+    const rendererPath = reviewedRendererBindingPath(receipt.requestId), rendererBytes = bytes(root, rendererPath);
+    const rendererDigests = receipt.outputDigests?.filter(ref => ref.path === rendererPath);
+    if (rendererDigests?.length !== 1 || rendererDigests[0].sha256 !== sha(rendererBytes) ||
+        !same(JSON.parse(rendererBytes), buildReviewedRendererBinding(receipt)) ||
+        !current.approvalEvidence?.includes(rendererPath) || !runtimeRecord.approvalEvidence?.includes(rendererPath))
+      fail('current-target renderer sidecar digest, content or provenance differs');
+  }
   if (patch.targetParentRef?.nativeSourceReview !== undefined || patch.targetParentRef?.retainedScopeParent !== undefined) {
     const curriculum = current.curriculum || current.curriculumKey, course = current.standardCourse || current.courseKey;
     const binding = tables.bindings.get(stable([curriculum,course,current.standardUnitKey,current.subUnitKey??null,current.problemTypeKey]));

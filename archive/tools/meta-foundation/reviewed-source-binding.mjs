@@ -17,6 +17,7 @@ export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
   Object.freeze({ requestKey: "rationaleContinuity", proofKey: "rationaleContinuity" }),
   Object.freeze({ requestKey: "currentDefinitionApplication", proofKey: "currentDefinitionApplication" }),
   Object.freeze({ requestKey: "prerequisiteExistingApplication", proofKey: "prerequisiteExistingApplication" }),
+  Object.freeze({ requestKey: "currentTargetApplication", proofKey: "currentTargetApplication" }),
 ]);
 
 // A previous native receipt can be lineage evidence for a fresh source

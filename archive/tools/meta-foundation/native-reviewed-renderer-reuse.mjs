@@ -8,6 +8,7 @@ import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
 import { reviewedRendererBindingPath, buildReviewedRendererBinding } from './reviewed-current-renderer-continuity.mjs';
 import { REVIEWED_RPM_FIELDS } from './reviewed-rpm-provenance.mjs';
 import { verifyIssuedRpmEvidenceContinuity } from './issued-rpm-evidence-continuity.mjs';
+import { validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
 
 const fail = message => { throw Error(`native reviewed renderer reuse: ${message}`); };
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -126,7 +127,18 @@ export function nativeReviewedRendererRebind(receipt, nativeSource, previous, qu
       if (!registeredRationale) replayAfter[field] = current[field];
     }
   }
-  const reproduced = validateReviewedSourceReassessment({root,
+  // A typed current-target application keeps the exact original request and its
+  // add-only replay-before context in the writer-issued source-review sidecar.
+  // Its validator reproduces and compares the complete issued proof, including
+  // the renderer seal. Do not replace that request with the legacy projection.
+  // Revalidate here as well so standalone adapter calls retain the same guards.
+  let reproduced;
+  if (proof.currentTargetApplication !== undefined) {
+    if (proof.currentTargetApplication?.schemaVersion !== 'archive-m3s2-current-target-application-v1' ||
+        validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true)
+      fail('current-target renderer requires its exact issued source-review binding');
+    reproduced = proof;
+  } else reproduced = validateReviewedSourceReassessment({root,
     request:{scope:receipt.scope, approval:receipt.approval, sourceArchiveFile:receipt.sourceArchiveFile,
       expectedQuestionCount:receipt.expectedQuestionCount},
     patch:{questionUid:identity.questionUid, sourceOrdinal:ordinal, after:replayAfter,
