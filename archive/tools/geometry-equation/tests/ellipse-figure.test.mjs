@@ -516,6 +516,45 @@ test('a curve name gets a leader that ends on its own curve; a changed name or a
 
 // 26 복성고 2mid q12 (golden item154circleparabolatangent): a circle and a parabola with one common tangent.  multi-curve-figure-v1 refuses the circle
 // (MULTI_CURVE_KIND_INVALID:circle); conics takes it, the hidden tangent line on c2 proves the tangency to the parabola, and the parabola's name keeps its leader.
+test('accessible conic plans bind unique labels, titles, and descriptions to the same geometry',async()=>{
+  const mixed=mixPlan();
+  const chord=chordPlan();
+  chord.segments[0].label='2';
+  chord.points.find(point=>point.id==='P').label=false;
+  const cases=[chord,{...mixed,conics:[{...mixed.conics[0],label:'x^2/a^2+y^2/b^2=1'},
+    {...mixed.conics[1],label:'y^2=4x'}]}];
+  for(const original of cases){
+    const caption='이차곡선과 점의 위치';
+    const accessibilityDescription='곡선 위의 점과 선분 사이의 관계를 나타낸 그림이다.';
+    const plan={...original,caption,accessibilityDescription};
+    const model=await solveEllipseFigure(plan);
+    const {svg}=await renderEllipseSvg({plan,model,identity,typographyPolicy:policy});
+    assert.match(svg,/<title id="visual-title">이차곡선과 점의 위치<\/title>/);
+    assert.match(svg,/<desc id="visual-desc">곡선 위의 점과 선분 사이의 관계를 나타낸 그림이다\.<\/desc>/);
+    const ids=[...svg.matchAll(/\sid="([^"]+)"/g)].map(match=>match[1]);
+    assert.equal(ids.length,new Set(ids).size);
+    assert.equal((await auditEllipseSvg({plan,svg})).status,'PASS');
+    const duplicate=svg.replace('id="label-point-O"','id="point-O"');
+    assert.ok((await auditEllipseSvg({plan,svg:duplicate})).errors.includes('CONIC_DUPLICATE_ID'));
+    const missing=svg.replace(/<desc[^>]*>[^<]*<\/desc>/,'');
+    assert.ok((await auditEllipseSvg({plan,svg:missing})).errors.includes('CONIC_ACCESSIBLE_NAME_MISMATCH'));
+    const rogue=svg.replace('</svg>','<g id="measure-z" data-label-kind="COORDINATE_LABEL" data-label-role="measure" data-segment="z" data-owner="ellipse-measure-z"/></svg>');
+    assert.ok((await auditEllipseSvg({plan,svg:rogue})).errors.includes('CONIC_LABEL_OWNER_MISMATCH:measure-z'));
+    if(original===chord){
+      assert.match(svg,/id="measure-s1" data-label-kind="COORDINATE_LABEL"/);
+      const hiddenLabel=svg.replace('</svg>','<g id="label-point-P" data-label-kind="COORDINATE_LABEL" data-label-role="point" data-point="P" data-owner="ellipse-point-P"/></svg>');
+      assert.ok((await auditEllipseSvg({plan,svg:hiddenLabel})).errors.includes('CONIC_LABEL_OWNER_MISMATCH:point-P'));
+    }
+    const wrongOwner=svg.replace('data-owner-label="label-curve-c1"','data-owner-label="curve-c1"');
+    if(original===cases[1]){
+      assert.notEqual(wrongOwner,svg);
+      assert.ok((await auditEllipseSvg({plan,svg:wrongOwner})).errors.includes('CONIC_LEADER_LABEL_MISMATCH:curve-c1'));
+    }
+  }
+  refused({...chordPlan(),accessibilityDescription:' '},'INVALID_ACCESSIBILITY_DESCRIPTION');
+  refused({...mixed,caption:' ',accessibilityDescription:'곡선의 교점을 표시한다.'},'PLAN_CAPTION_REQUIRED');
+});
+
 const circleParabolaPlan=()=>JSON.parse(fs.readFileSync('archive/tools/geometry-equation/ops/golden/item154circleparabolatangent/plan.json','utf8'));
 // The policy the Archive measurement gives this figure (about 24.2 px type shown at 0.466): at that scale the parabola name's leader, which comes from the opening of the curve,
 // grazed a corner of the sampled curve in the browser (LEADER_CROSSING:leader-curve-c2:curve-c2).
