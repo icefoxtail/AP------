@@ -1,0 +1,106 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-1",
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "4",
+            "showValue": true
+          },
+          {
+            "id": "P",
+            "value": "-1+sqrt(5)",
+            "showValue": false
+          },
+          {
+            "id": "Q",
+            "value": "4-sqrt(2)",
+            "showValue": false
+          }
+        ]
+      }
+    ],
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "A",
+        "radius": {
+          "value": "sqrt(5)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "P",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            -1,
+            0
+          ],
+          "to": [
+            -3,
+            1
+          ],
+          "toName": "R"
+        }
+      },
+      {
+        "id": "c2",
+        "center": "B",
+        "radius": {
+          "value": "sqrt(2)"
+        },
+        "arc": {
+          "side": "LEFT"
+        },
+        "hits": [
+          {
+            "id": "Q",
+            "branch": "LEFT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            4,
+            0
+          ],
+          "to": [
+            3,
+            1
+          ],
+          "toName": "S"
+        }
+      }
+    ]
+  },
+  "caption": "중심 A에서는 가로 2, 세로 1인 빗변을 오른쪽으로, 중심 B에서는 한 변 1인 정사각형 대각선을 왼쪽으로 옮긴다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(−1)에서 반지름 √5의 오른쪽 교점 P, B(4)에서 반지름 √2의 왼쪽 교점 Q.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 중심과 옮기는 방향을 구별한다. 점 P·Q의 좌표는 숨긴다."
+  ],
+  "accessibilityDescription": "중심 A에서는 가로 2, 세로 1인 빗변을 오른쪽으로, 중심 B에서는 한 변 1인 정사각형 대각선을 왼쪽으로 옮긴다."
+}
