@@ -18,7 +18,7 @@ import { auditSourceBindingPath } from "../archive/tools/meta-foundation/native-
 import { buildReviewedSourceBinding, reviewedSourceBindingPath } from "../archive/tools/meta-foundation/reviewed-source-binding.mjs";
 import { verifyChangedUidConsumerApproval } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
 import canonical from "../archive/archive2-canonical.js";
-import { collectSourceValueOverrides, isLegacyPathFormulaUid, legacyPathFormulaUids, isAuditedPendingIntegrationRebindAllowed, isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, isSourceConditionEvidenceDebtAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, validateSourceConditionCorrections, validateSourceCrossConceptCorrections, validateTargetedAuditCorrections, validateTargetedRecoverySupplement, verifyConsumerValues, verifyIdentityFingerprintConsumer } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { collectSourceValueOverrides, isLegacyPathFormulaUid, legacyPathFormulaUids, isAuditedPendingIntegrationRebindAllowed, isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, isSourceConditionEvidenceDebtAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, preservedRuntimeIdentityProvenance, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, validateSourceConditionCorrections, validateSourceCrossConceptCorrections, validateTargetedAuditCorrections, validateTargetedRecoverySupplement, verifyConsumerValues, verifyIdentityFingerprintConsumer } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 
 test("targeted audit correction preserves raw provenance and cannot merge canonical keys", () => {
   const ref = { path: "docs/audit-correction.json", sha256: "a".repeat(64) };
@@ -6408,4 +6408,76 @@ test('renderer v3 prior solution witness cannot be omitted or broaden the exact 
     fs.appendFileSync(path.join(f.root, f.solutionPath), ' ');
     assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /live renderer bytes changed/);
   });
+});
+
+// Runtime-only catalog identity provenance (catalogIdentityRepairVerified & co) must survive a re-registration that does not state it.
+function reregisterFixture(t, { flag = true } = {}) {
+  const f = fixture(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const runtimeFile = "archive/data/meta-foundation/runtime/new-course-v1.json";
+  const runtime = f.read(runtimeFile);
+  if (flag) {
+    runtime.records[0].catalogIdentityRepairVerified = true;
+    runtime.records[0].catalogIdentityRepairEvidence = "fixture identity repair evidence";
+    runtime.records[0].rawQuestionHash = "raw-hash-1";
+  }
+  f.put(runtimeFile, runtime);
+  const first = f.read(META).records[0];
+  const q2 = { ...f.q, difficultyBucket: 4 };
+  const text = `window.questions = ${JSON.stringify([q2])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, text);
+  const request = { schemaVersion: f.request.schemaVersion, requestId: "test-new-course-reregister", examUid: "exam1", sourceArchiveFile: f.request.sourceArchiveFile,
+    expectedSourceBlobSha1: blob(text), expectedQuestionCount: 1,
+    approval: { type: "FINAL_QA", metadataReviewed: true, approvedBy: "fixture-reviewer", evidenceRefs: f.evidenceRefs },
+    items: [{ questionUid: "uid1", sourceOrdinal: 1, before: { difficultyBucket: first.difficultyBucket }, after: { difficultyBucket: 4 }, reason: "난이도만 다시 등록", evidenceRefs: f.evidenceRefs }] };
+  return { ...f, request, runtimeFile };
+}
+
+test("re-registration keeps catalog identity provenance on the runtime record when the request does not state it", t => {
+  const f = reregisterFixture(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(f.runtimeFile).records[0];
+  assert.equal(row.difficultyBucket, 4);
+  assert.equal(row.catalogIdentityRepairVerified, true);
+  assert.equal(row.catalogIdentityRepairEvidence, "fixture identity repair evidence");
+  assert.equal(row.rawQuestionHash, "raw-hash-1");
+});
+
+test("re-registration does not invent identity provenance for a runtime record that never had it", t => {
+  const f = reregisterFixture(t, { flag: false });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(f.runtimeFile).records[0];
+  assert.equal(row.difficultyBucket, 4);
+  for (const key of ["catalogIdentityRepairVerified", "catalogIdentityRepairEvidence", "rawQuestionHash"]) assert.equal(Object.hasOwn(row, key), false, key);
+});
+
+test("identity provenance is carried only for the same UID, file, ordinal and unreplaced identity", () => {
+  const previous = { questionUid: "u", sourceArchiveFile: "a.js", sourceOrdinal: 3, catalogIdentityRepairVerified: true, catalogIdentityRepairEvidence: "e", rawQuestionHash: "h", problemTypeKey: "PT_OLD" };
+  const final = { questionUid: "u", sourceArchiveFile: "a.js", sourceOrdinal: 3 };
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous, final, ordinal: 3, identityReplaced: false }),
+    { catalogIdentityRepairVerified: true, catalogIdentityRepairEvidence: "e", rawQuestionHash: "h" });
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous, final, ordinal: 3, identityReplaced: true }), {});
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous, final, ordinal: 4, identityReplaced: false }), {});
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous, final: { ...final, sourceArchiveFile: "b.js" }, ordinal: 3, identityReplaced: false }), {});
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous, final: { ...final, questionUid: "v" }, ordinal: 3, identityReplaced: false }), {});
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous: undefined, final, ordinal: 3, identityReplaced: false }), {});
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous, final: { ...final, rawQuestionHash: "stated" }, ordinal: 3, identityReplaced: false }),
+    { catalogIdentityRepairVerified: true, catalogIdentityRepairEvidence: "e" });
+});
+
+test("a re-registration that replaces the question identity (fingerprint repair) drops identity provenance", t => {
+  const f = reregisterFixture(t);
+  const identityPath = "archive/data/question_identity_map.json", identityBefore = f.read(identityPath).records[0].sourceFingerprint;
+  const q3 = { ...f.q, content: "교체된 지문", difficultyBucket: 4 };
+  const text = `window.questions = ${JSON.stringify([q3])};
+`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, text);
+  const after = { sourceFingerprint: auditSourceFingerprint(q3), contentFingerprint: auditContentFingerprint(q3) };
+  Object.assign(f.request, { expectedSourceBlobSha1: blob(text) });
+  Object.assign(f.request.items[0], { before: { ...f.request.items[0].before, sourceFingerprint: f.read(META).records[0].sourceFingerprint, contentFingerprint: null },
+    after: { ...f.request.items[0].after, ...after }, identityBefore: { sourceFingerprint: identityBefore } });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(f.runtimeFile).records[0];
+  assert.equal(row.difficultyBucket, 4);
+  for (const key of ["catalogIdentityRepairVerified", "catalogIdentityRepairEvidence", "rawQuestionHash"]) assert.equal(Object.hasOwn(row, key), false, key);
 });
