@@ -342,8 +342,8 @@ function installRetainedVisibilityObservation() {
   };
 }
 
-async function documentEvidence(page) {
-  return page.evaluate(async () => {
+async function documentEvidence(page, capturePdfMath = false) {
+  return page.evaluate(async capturePdfMath => {
     const digest = async value => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))), byte => byte.toString(16).padStart(2, '0')).join('');
     const state = typeof AppState !== 'undefined' ? AppState : window.AppState;
     const runtime = window.archiveScreenRuntime || window.mixedScreenRuntime;
@@ -365,6 +365,21 @@ async function documentEvidence(page) {
       value.payloadHash === envelope?.payloadHash && value.contractVersion === envelope?.contractVersion;
     const math = [...area.querySelectorAll('mjx-container')];
     const mathMarkup = math.map(node => node.innerHTML.replace(/MJX-\d+/g, 'MJX-N'));
+    // Keep at most two PDF snapshots inside Chrome. Markup and attribute values
+    // never leave the page; only a failed parity check requests redacted hashes.
+    let mathSnapshot;
+    if (capturePdfMath) try {
+      mathSnapshot = math.map((node, index) => ({ markup: mathMarkup[index],
+        elements: [...node.querySelectorAll('*')].map(element => ({ tag: element.localName,
+          attributes: [...element.attributes].map(attribute => [attribute.name, attribute.value.replace(/MJX-\d+/g, 'MJX-N')]) })) }));
+    } catch (_) { delete window.__archivePdfMathSnapshots; }
+    const mathMarkupHash = await digest(JSON.stringify(mathMarkup));
+    if (mathSnapshot) try {
+      const cache = window.__archivePdfMathSnapshots instanceof Map ? window.__archivePdfMathSnapshots : new Map();
+      cache.delete(mathMarkupHash); cache.set(mathMarkupHash, mathSnapshot);
+      while (cache.size > 2) cache.delete(cache.keys().next().value);
+      window.__archivePdfMathSnapshots = cache;
+    } catch (_) { delete window.__archivePdfMathSnapshots; }
     const operationMath = window.__solutionLoadingQA.calls.filter(call => call.startMs >= window.__solutionLoadingQA.operationStart);
     const solutionSources = [...area.querySelectorAll('.sol-box')].map(node => node.dataset.sourceRef || '');
     const clipping = [...area.querySelectorAll('.page *')].filter(node => {
@@ -414,7 +429,7 @@ async function documentEvidence(page) {
         content: q.content || q.question || '', choices: q.choices || [], answer: q.answer,
         solution: q.solution || q.explanation || q.sol || '', image: q.image || '', images: q.images || [],
         solutionImage: q.solutionImage || '', solutionImageLayout: q.solutionImageLayout || '' })))),
-      mathMarkupHash: await digest(JSON.stringify(mathMarkup)),
+      mathMarkupHash,
       mathGeometry: math.map(node => ({ width: Math.round(node.getBoundingClientRect().width), height: Math.round(node.getBoundingClientRect().height) })),
       operationMath: { calls: operationMath.length,
         totalMs: operationMath.reduce((total, call) => total + (call.endMs - call.startMs), 0),
@@ -444,7 +459,7 @@ async function documentEvidence(page) {
         metadataRecordsCount: Array.isArray(window.ARCHIVE_QUESTION_METADATA?.records) ? window.ARCHIVE_QUESTION_METADATA.records.length : 0,
         appDataCount: Array.isArray(state?.data) ? state.data.length : 0, appKeyPresent: !!state?.key }
     };
-  });
+  }, capturePdfMath);
 }
 
 async function awaitInitialOutcome(page, strictEnvelope) {
@@ -500,6 +515,69 @@ async function printPreflight(page, before) {
   return { ...measured, outputParity: parity, attemptsBefore: before.attempts.length, attemptsAfter: after.attempts.length };
 }
 
+async function pdfMathMarkupDiagnostic(page, beforeHash, afterHash) {
+  return page.evaluate(async ({ beforeHash, afterHash }) => {
+    const schemaVersion = 'archive-pdf-math-markup-diagnostic-v1';
+    const unavailable = reason => ({ schemaVersion, status: 'UNAVAILABLE', reason });
+    const cache = window.__archivePdfMathSnapshots;
+    const before = cache?.get(beforeHash), after = cache?.get(afterHash);
+    if (!before || !after) return unavailable('SNAPSHOT_MISSING');
+    const digest = async value => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))), byte => byte.toString(16).padStart(2, '0')).join('');
+    if (await digest(JSON.stringify(before.map(node => node.markup))) !== beforeHash ||
+      await digest(JSON.stringify(after.map(node => node.markup))) !== afterHash) return unavailable('SNAPSHOT_HASH_MISMATCH');
+    const counts = values => {
+      const result = new Map();
+      for (const value of values) result.set(value, (result.get(value) || 0) + 1);
+      return result;
+    };
+    const countChanges = (left, right) => [...new Set([...left.keys(), ...right.keys()])].sort()
+      .filter(name => (left.get(name) || 0) !== (right.get(name) || 0))
+      .map(name => ({ name, before: left.get(name) || 0, after: right.get(name) || 0 }));
+    const nodes = [];
+    for (let index = 0; index < Math.max(before.length, after.length); index++) {
+      const left = before[index], right = after[index];
+      const leftElements = left?.elements || [], rightElements = right?.elements || [];
+      const record = { index, beforeSha256: left ? await digest(left.markup) : null,
+        afterSha256: right ? await digest(right.markup) : null,
+        beforeElementCount: leftElements.length, afterElementCount: rightElements.length };
+      record.changed = record.beforeSha256 !== record.afterSha256;
+      if (record.changed) {
+        record.tagCountChanges = countChanges(counts(leftElements.map(element => element.tag)), counts(rightElements.map(element => element.tag)));
+        record.attributeNameCountChanges = countChanges(counts(leftElements.flatMap(element => element.attributes.map(([name]) => name))),
+          counts(rightElements.flatMap(element => element.attributes.map(([name]) => name))));
+        record.elementChanges = [];
+        for (let elementIndex = 0; elementIndex < Math.max(leftElements.length, rightElements.length); elementIndex++) {
+          const a = leftElements[elementIndex], b = rightElements[elementIndex];
+          const aAttributes = new Map(a?.attributes || []), bAttributes = new Map(b?.attributes || []);
+          const addedAttributeNames = [...bAttributes.keys()].filter(name => !aAttributes.has(name)).sort();
+          const removedAttributeNames = [...aAttributes.keys()].filter(name => !bAttributes.has(name)).sort();
+          const changedAttributeNames = [...aAttributes.keys()].filter(name => bAttributes.has(name) && aAttributes.get(name) !== bAttributes.get(name)).sort();
+          if (a?.tag !== b?.tag || addedAttributeNames.length || removedAttributeNames.length || changedAttributeNames.length)
+            record.elementChanges.push({ elementIndex, beforeTag: a?.tag || null, afterTag: b?.tag || null,
+              addedAttributeNames, removedAttributeNames, changedAttributeNames });
+        }
+      }
+      nodes.push(record);
+    }
+    return { schemaVersion, status: 'CAPTURED', comparison: 'DOCUMENT_ORDER',
+      normalization: 'EXISTING_MJX_NUMERIC_ID_ONLY', beforeHash, afterHash,
+      beforeNodeCount: before.length, afterNodeCount: after.length,
+      changedNodeCount: nodes.filter(node => node.changed).length, nodes };
+  }, { beforeHash, afterHash });
+}
+
+async function comparePdfScreen(page, before, after) {
+  try { return compare(before, after); }
+  catch (error) {
+    if (error.code === 'EXTENDED_OUTPUT_PARITY_MISMATCH' && error.details?.field === 'mathMarkupHash') {
+      try { error.details.mathMarkupDiagnostic = await bounded(pdfMathMarkupDiagnostic(page, before.mathMarkupHash, after.mathMarkupHash), 5000); }
+      catch (_) { error.details.mathMarkupDiagnostic = { schemaVersion: 'archive-pdf-math-markup-diagnostic-v1',
+        status: 'UNAVAILABLE', reason: 'DIAGNOSTIC_CAPTURE_FAILED' }; }
+    }
+    throw error;
+  }
+}
+
 async function printPdfMetadata(session, before) {
   const started = performance.now();
   const pdf = await bounded(session.cdp.send('Page.printToPDF', {
@@ -537,7 +615,7 @@ async function printPdfMetadata(session, before) {
   }), 45000);
   requireThat(stable.outcome.ok && stable.activeRootMatches, 'POST_PDF_OUTPUT_NOT_READY', stable);
   const after = await H.capture(session.page, stable.outcome);
-  const afterEvidence = await documentEvidence(session.page);
+  const afterEvidence = await documentEvidence(session.page, true);
   H.assertReady(after, before.questionCount, 'after-pdf');
   requireThat(after.mode === before.mode && after.qpp === before.qpp && afterEvidence.snapshotId === stable.snapshotId &&
     afterEvidence.attemptCount === stable.attemptCount && afterEvidence.snapshotMode === after.mode &&
@@ -545,7 +623,7 @@ async function printPdfMetadata(session, before) {
   if (afterEvidence.envelope.present) requireThat(afterEvidence.envelope.mode === after.mode &&
     afterEvidence.envelope.verifiedIdentityMatches && afterEvidence.envelope.renderedIdentityMatches &&
     afterEvidence.envelope.urlIdentityMatches && !afterEvidence.envelope.errorPresent, 'POST_PDF_ENVELOPE_NOT_READY');
-  const screenParity = compare({ ...before, pass: true, name: 'before-pdf' },
+  const screenParity = await comparePdfScreen(session.page, { ...before, pass: true, name: 'before-pdf' },
     { ...after, ...afterEvidence, pass: true, name: 'after-pdf' });
   const afterPrintState = { snapshotId: afterEvidence.snapshotId, snapshotMode: afterEvidence.snapshotMode,
     committedMode: afterEvidence.committedMode, mode: after.mode, attemptCount: afterEvidence.attemptCount,
@@ -699,7 +777,7 @@ async function measureOperation(session, operation, label, repeat, network, firs
   }
   const after = await session.metrics();
   const row = await H.capture(page, outcome);
-  const evidence = await documentEvidence(page);
+  const evidence = await documentEvidence(page, purpose === 'pdf');
   if (first) publicMs = (fixture.kind === 'envelope' ? evidence.envelopeReadyAt : evidence.runtimeReadyAt) ?? row.engineElapsedMs;
   // A same-mode cache HIT may create a real transaction while retaining the
   // active DOM. Zero means observed existing output, not a newly painted view.
