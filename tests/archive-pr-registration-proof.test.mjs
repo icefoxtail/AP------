@@ -28,6 +28,7 @@ test('proof production follows registration inputs and direct checkers, not unre
     '.archive-meta-register/auto/run-scopes/a-phase1.json',
     'archive/tools/meta-foundation/semantic-run-scope.mjs',
     'tests/archive-semantic-run-scope.test.mjs',
+    'tests/archive-semantic-run-scope-v2.test.mjs',
     'tests/archive-pr-native-preview.test.mjs',
     CI_WORKFLOW_PATH, ...REGISTRATION_CHECKS.map(check => check.file)]) {
     assert.equal(prRegistrationProofNeeded([file]), true, file);
@@ -50,6 +51,11 @@ test('scope descriptor bytes and the shared helper belong to the immutable proof
   const afterHelper=registrationProofFingerprints(f.root);
   assert.notEqual(afterHelper.checkerDigest,afterScope.checkerDigest);
   assert.equal(afterHelper.inputDigest,afterScope.inputDigest);
+  const v2Test='tests/archive-semantic-run-scope-v2.test.mjs';
+  f.write(v2Test,'// v2 cohort and complete inventory regression\n');f.git('add','--',v2Test);f.git('commit','-qm','v2 scope checker regression');
+  const afterV2Test=registrationProofFingerprints(f.root);
+  assert.notEqual(afterV2Test.checkerDigest,afterHelper.checkerDigest);
+  assert.equal(afterV2Test.inputDigest,afterHelper.inputDigest);
 });
 
 function fixture(t, changedFile = 'archive/exams/original/new.js') {
@@ -142,7 +148,7 @@ test('producer uses the existing preparation once, verifies all required data ch
   assert.equal(validateLocalRegistrationProof({ ...f.options(), proof, runId: 41, runAttempt: 1 }).reusable, true);
 });
 
-function scopedProofFixture(t){
+function scopedProofFixture(t,{v2=false}={}){
   const f=fixture(t),source='original/middle/m3/1mid/excluded.js';
   const meta='archive/data/question_metadata.json',identity='archive/data/question_identity_map.json';
   const runtime='archive/data/meta-foundation/runtime/middle3-v1.json',four='archive/data/item-4slot-index.json';
@@ -151,9 +157,10 @@ function scopedProofFixture(t){
   for(const file of [meta,identity,runtime])put(file,{records:[row]});
   put(four,{records:[row],pending:[],files:[{path:'archive/data/item-4slot/'+source.replace(/\.js$/,'.4slot.json'),inputHash:'a'.repeat(64)}],builderSha256:'b'.repeat(64)});
   const inbox='.archive-meta-register/inbox/fixture-other-schema.json';put(inbox,{schemaVersion:'fixture-other-schema'});
-  put('.archive-meta-register/auto/run-scopes/proof-phase1.json',{schemaVersion:'archive-semantic-run-scope-v1',scopeId:'fixture-pr-scope',phase:'phase1',
-    excludedSourcePrefixes:['original/middle/m3/1final/','original/middle/m3/1mid/'],
-    inboxBindings:[{path:inbox,sha256:sha256(fs.readFileSync(path.join(f.root,inbox)))}]});
+  const bindings=[{path:inbox,sha256:sha256(fs.readFileSync(path.join(f.root,inbox)))}];
+  put('.archive-meta-register/auto/run-scopes/proof-phase1.json',{schemaVersion:v2?'archive-semantic-run-scope-v2':'archive-semantic-run-scope-v1',scopeId:'fixture-pr-scope',phase:'phase1',
+    excludedSourcePrefixes:['original/middle/m3/1final/','original/middle/m3/1mid/'],...(v2?{cohortBindings:bindings}:{inboxBindings:bindings})});
+  if(v2)put('.archive-meta-register/inbox/another-owner.json',{schemaVersion:'fixture-another-owner'});
   const allow='tools/ci/archive-pages-registration.paths';f.write(allow,fs.readFileSync(path.join(f.root,allow),'utf8')+meta+'\n'+identity+'\n'+four+'\n');
   f.git('add','-A');f.git('commit','-qm','scope proof fixture');
   const headSha=f.git('rev-parse','HEAD');f.event.pull_request.head.sha=headSha;
@@ -385,5 +392,15 @@ test('required check outcomes, strict metadata schema and exact producer cannot 
   for (const [mutate, pattern] of cases) {
     const forged = clone(proof); mutate(forged);
     assert.throws(() => validateLocalRegistrationProof({ ...f.options(), proof: forged, runId: 41, runAttempt: 1 }), pattern);
+  }
+});
+
+
+test('v2 PR proof and verify-local retain both sealed inventories and reject omission or schema downgrade',t=>{
+  const f=scopedProofFixture(t,{v2:true}),proof=f.produce();
+  assert.equal(proof.semanticRunScope.binding.cohortInputCount,1);assert.equal(proof.semanticRunScope.binding.boundInputCount,2);
+  assert.equal(validateLocalRegistrationProof({...f.options(),proof}).reusable,true);
+  for(const mutate of[p=>p.semanticRunScope.binding.inboxBindings.pop(),p=>p.semanticRunScope.binding.cohortBindings.pop(),p=>{p.semanticRunScope.binding.schemaVersion='archive-semantic-run-scope-binding-v1';}]){
+    const bad=clone(proof);mutate(bad);assert.throws(()=>validateLocalRegistrationProof({...f.options(),proof:bad}),/GUARD_PROOF_DRIFT/);
   }
 });

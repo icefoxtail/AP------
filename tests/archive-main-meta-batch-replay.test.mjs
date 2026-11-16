@@ -183,7 +183,7 @@ const scopeDescriptor='.archive-meta-register/auto/run-scopes/bounded-fixture-ph
 const scopeInboxes=['.archive-meta-register/inbox/scope-one.json','.archive-meta-register/inbox/scope-two.json'];
 const allowedSource='original/middle/m3/2mid/allowed-fixture.js';
 const stable=value=>JSON.stringify(value,(_,x)=>x&&typeof x==='object'&&!Array.isArray(x)?Object.fromEntries(Object.keys(x).sort().map(k=>[k,x[k]])):x);
-function scopeFixture(t,{allowed=true,max=1}={}){
+function scopeFixture(t,{allowed=true,max=1,v2=false}={}){
   const f=fixture(t,{count:1,max,pending:()=>false});
   if(allowed){
     f.put('archive/exams/'+allowedSource,'window.questionBank='+JSON.stringify(f.bank)+';\n');
@@ -193,9 +193,11 @@ function scopeFixture(t,{allowed=true,max=1}={}){
   const s=f.read(statePath);s.lastProcessedCommit=base;s.pending[source+'#1']={...s.pending[source+'#1'],lastReasons:['retained historical refusal'],attemptSignature:'original-attempt-signature',extraBoundary:'keep-exact'};
   if(allowed)s.pending[allowedSource+'#1']={sourceArchiveFile:allowedSource,sourceOrdinal:1,baseCommit:base};f.put(statePath,s);
   for(const p of scopeInboxes)f.put(p,{requestId:path.basename(p,'.json')});
-  f.put(scopeDescriptor,{schemaVersion:'archive-semantic-run-scope-v1',scopeId:'bounded-semantic-fixture',phase:'phase1',
+  const scopeBindings=scopeInboxes.map(p=>({path:p,sha256:sha(f.bytes(p))}));
+  f.put(scopeDescriptor,{schemaVersion:v2?'archive-semantic-run-scope-v2':'archive-semantic-run-scope-v1',scopeId:'bounded-semantic-fixture',phase:'phase1',
     excludedSourcePrefixes:['original/middle/m3/1final/','original/middle/m3/1mid/'],
-    inboxBindings:scopeInboxes.map(p=>({path:p,sha256:sha(f.bytes(p))}))});
+    ...(v2?{cohortBindings:scopeBindings}:{inboxBindings:scopeBindings})});
+  if(v2)f.put('.archive-meta-register/inbox/another-owner.json',{requestId:'another-owner'});
   f.git('add','-A');f.git('commit','-qm','bound phase1');
   return f;
 }
@@ -254,4 +256,21 @@ test('scoped final verify checks exact policy, head and deferred set before cons
     ['excluded result',f=>{const r=f.read('first-report.json');r.results[0].sourceArchiveFile=source;f.put('first-report.json',r);},/SCOPE_EXCLUDED_ATTEMPT/],
     ['later unconsumed HEAD',f=>{f.put('unrelated.txt','later');f.git('add','unrelated.txt');f.git('commit','-qm','later');},/REPORT_HEAD_DRIFT/],
   ])await t.test(name,async sub=>{const f=scopeFixture(sub);await f.first();mutate(f);await assert.rejects(verifyMergedSource({root:f.root,reportPath:f.reportPath}),error);});
+});
+
+
+test('v2 AutoMeta binds every HEAD inbox, preserves excluded debt and replays the exact allowed batch',async t=>{
+  const f=scopeFixture(t,{v2:true}),before=structuredClone(f.read(statePath).pending[source+'#1']);
+  const report=await f.first();assert.equal(report.runScope.schemaVersion,'archive-semantic-run-scope-binding-v2');
+  assert.equal(report.runScope.cohortInputCount,2);assert.equal(report.runScope.boundInputCount,3);assert.equal(report.applied,1);
+  assert.equal(report.deferredPending,1);assert.equal(report.results[0].sourceArchiveFile,allowedSource);
+  assert.deepEqual(f.read(statePath).pending[source+'#1'],before);
+  for(const p of scopeInboxes)fs.rmSync(path.join(f.root,p));f.git('add','-u');
+  assert.equal((await f.replay()).replayVerified,true,'working/index consumption does not rewrite the fixed HEAD inventory');
+  const r=f.read('first-report.json');r.runScope.inboxBindings.pop();r.replayBatch.runScope.inboxBindings.pop();
+  f.put('first-report.json',r);resealTamperedReplay(f);await assert.rejects(f.replay(),/REPORT_BINDING_DRIFT/);
+});
+test('v2 final AutoMeta verification rejects an omitted complete inventory before Consumer loading',async t=>{
+  const f=scopeFixture(t,{v2:true});await f.first();const report=f.read('first-report.json');delete report.runScope.inboxBindings;f.put('first-report.json',report);
+  await assert.rejects(verifyMergedSource({root:f.root,reportPath:f.reportPath}),/REPORT_BINDING_DRIFT/);
 });

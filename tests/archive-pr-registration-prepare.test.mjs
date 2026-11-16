@@ -201,7 +201,7 @@ test('clean unrelated code-only push with no fixed pending inbox retains its no-
   assert.equal(f.commands.length, 0);
 });
 
-function scopedFixture(t){
+function scopedFixture(t,{v2=false}={}){
   const f=fixture(t),source='original/middle/m3/1mid/excluded.js';
   const meta='archive/data/question_metadata.json',identity='archive/data/question_identity_map.json';
   const runtime='archive/data/meta-foundation/runtime/middle3-v1.json',four='archive/data/item-4slot-index.json';
@@ -211,9 +211,10 @@ function scopedFixture(t){
   put(four,{records:[row],pending:[],files:[{path:'archive/data/item-4slot/'+source.replace(/\.js$/,'.4slot.json'),inputHash:'a'.repeat(64)}],builderSha256:'b'.repeat(64)});
   put('.archive-meta-register/auto/state.json',{pending:{[source+'#1']:{sourceArchiveFile:source,lastReasons:['keep']}}});
   const inbox='.archive-meta-register/inbox/other-schema.json';put(inbox,{schemaVersion:'fixture-other-owner'});
-  put('.archive-meta-register/auto/run-scopes/fixture-phase1.json',{schemaVersion:'archive-semantic-run-scope-v1',scopeId:'fixture-pr-scope',phase:'phase1',
-    excludedSourcePrefixes:['original/middle/m3/1final/','original/middle/m3/1mid/'],
-    inboxBindings:[{path:inbox,sha256:createHash('sha256').update(fs.readFileSync(path.join(f.root,inbox))).digest('hex')}]});
+  const bindings=[{path:inbox,sha256:createHash('sha256').update(fs.readFileSync(path.join(f.root,inbox))).digest('hex')}];
+  put('.archive-meta-register/auto/run-scopes/fixture-phase1.json',{schemaVersion:v2?'archive-semantic-run-scope-v2':'archive-semantic-run-scope-v1',scopeId:'fixture-pr-scope',phase:'phase1',
+    excludedSourcePrefixes:['original/middle/m3/1final/','original/middle/m3/1mid/'],...(v2?{cohortBindings:bindings}:{inboxBindings:bindings})});
+  if(v2)put('.archive-meta-register/inbox/extra-owner.json',{schemaVersion:'fixture-another-owner'});
   f.write('tools/ci/archive-pages-registration.paths',['archive/db.js',meta,identity,runtime,four,'.archive-meta-register/auto/state.json'].join('\n')+'\n');
   f.git('add','-A');f.git('commit','-qm','scoped fixture');const headSha=f.git('rev-parse','HEAD');f.event.pull_request.head.sha=headSha;
   return {...f,source,meta,identity,runtime,four,put,headSha,
@@ -253,4 +254,17 @@ for(const guard of [true,false])test('the shared native application entry enforc
   };
   assert.throws(()=>applyNativeRequests({root:f.root,requests:[request],run,guard}),/EXCLUDED_ROW_MUTATION/);
   assert.equal(writes,1,'native result is not certified after an excluded side effect');
+});
+
+
+test('v2 PR preparation seals an unrelated owner without promoting its input to an approval',t=>{
+  const f=scopedFixture(t,{v2:true}),result=f.prepare();
+  assert.equal(result.semanticRunScope.binding.cohortInputCount,1);assert.equal(result.semanticRunScope.binding.boundInputCount,2);
+  assert.equal(result.semanticRunScope.excludedRows.semanticUnchanged,true);
+  assert.equal(result.nativePreview.requests.length,0,'unchanged native schema selection is separate from scope inventory');
+});
+test('v2 main selection still rejects unsupported pending registration input before generation',t=>{
+  const f=scopedFixture(t,{v2:true}),before=fs.readFileSync(path.join(f.root,f.meta));
+  assert.throws(()=>f.prepare({eventName:'push',event:{before:f.baseSha,after:f.headSha}}),/UNSUPPORTED/);
+  assert.equal(f.commands.length,0);assert.deepEqual(fs.readFileSync(path.join(f.root,f.meta)),before);
 });

@@ -259,6 +259,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-semantic-run-scope.test.mjs']
   },
   {
+    label: 'tests/archive-semantic-run-scope-v2.test.mjs',
+    args: ['--test', 'tests/archive-semantic-run-scope-v2.test.mjs']
+  },
+  {
     label: 'tests/item-4slot-runtime.test.cjs',
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
   },

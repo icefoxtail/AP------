@@ -28,7 +28,7 @@ const registrationContracts = [
   /^tests\/archive-reviewed-exam-registration-v2\.test\.mjs$/,
   /^tests\/archive-reviewed-retained-scope-transport\.test\.mjs$/,
   /^tests\/archive-reviewed-parent-correction\.test\.mjs$/,
-  /^tests\/archive-(?:semantic-run-scope\.|registration-|register-|single-writer-|main-(?:merge-meta|meta-batch-replay)\.|native-(?:proposal-|replay-registry-context\.)|pr-(?:registration-|native-preview\.)|pages-|package-only\.|reviewed-(?:apply-bridge\.|native-)|meta-backlog-)/,
+  /^tests\/archive-(?:semantic-run-scope(?:-v2)?\.|registration-|register-|single-writer-|main-(?:merge-meta|meta-batch-replay)\.|native-(?:proposal-|replay-registry-context\.)|pr-(?:registration-|native-preview\.)|pages-|package-only\.|reviewed-(?:apply-bridge\.|native-)|meta-backlog-)/,
   /^tests\/archive2-registration-contracts\.test\.mjs$/,
   /^tests\/(?:git-push-derived-with-retry\.|ci-signal-hygiene\.|run-tests-output-guard\.|apms-worker-deploy\.)/,
   /^tests\/archive-basic-scope-rebind\.test\.mjs$/,

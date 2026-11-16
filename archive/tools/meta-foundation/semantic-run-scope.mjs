@@ -9,6 +9,8 @@ import {execFileSync} from 'node:child_process';
 export const SEMANTIC_RUN_SCOPE_DIR='.archive-meta-register/auto/run-scopes/';
 export const SEMANTIC_RUN_SCOPE_SCHEMA='archive-semantic-run-scope-v1';
 export const SEMANTIC_RUN_SCOPE_BINDING='archive-semantic-run-scope-binding-v1';
+export const SEMANTIC_RUN_SCOPE_SCHEMA_V2='archive-semantic-run-scope-v2';
+export const SEMANTIC_RUN_SCOPE_BINDING_V2='archive-semantic-run-scope-binding-v2';
 export const M3S1_SOURCE_PREFIXES=Object.freeze(['original/middle/m3/1final/','original/middle/m3/1mid/']);
 const INBOX='.archive-meta-register/inbox/';
 const META='archive/data/question_metadata.json',IDENTITY='archive/data/question_identity_map.json';
@@ -48,6 +50,43 @@ function validateDescriptor(doc,relative){
   }
 }
 
+// V2 separates the exact activating cohort from the complete immutable inbox.
+// No additional input is omitted or approved: all its bytes are sealed below,
+// and the existing PR/main registration selectors and validators remain intact.
+function resolveCohortScope(root,head,entry,raw,descriptor,entries,inbox){
+  if(!exactKeys(descriptor,['schemaVersion','scopeId','phase','excludedSourcePrefixes','cohortBindings'])
+    ||descriptor.schemaVersion!==SEMANTIC_RUN_SCOPE_SCHEMA_V2
+    ||!/^[a-z0-9][a-z0-9-]{2,100}$/.test(descriptor.scopeId||'')
+    ||!/^phase[1-9][0-9]*$/.test(descriptor.phase||'')
+    ||!Array.isArray(descriptor.excludedSourcePrefixes)
+    ||stable([...descriptor.excludedSourcePrefixes].sort())!==stable(M3S1_SOURCE_PREFIXES)
+    ||!Array.isArray(descriptor.cohortBindings)||descriptor.cohortBindings.length<1||descriptor.cohortBindings.length>500)
+    fail('DESCRIPTOR_INVALID:'+entry.path);
+  const seen=new Set(),validPath=p=>/^\.archive-meta-register\/inbox\/[A-Za-z0-9][A-Za-z0-9._-]*\.json$/.test(p||'');
+  for(const row of descriptor.cohortBindings){
+    if(!exactKeys(row,['path','sha256'])||!validPath(row.path)||!DIGEST.test(row.sha256||'')||seen.has(row.path))
+      fail('BINDING_INVALID:'+entry.path);
+    seen.add(row.path);
+  }
+  const present=descriptor.cohortBindings.filter(row=>inbox.has(row.path));
+  if(!present.length)return null;
+  if(present.length!==descriptor.cohortBindings.length)fail('PARTIAL_INBOX:'+entry.path);
+  const complete=entries.filter(row=>row.path.startsWith(INBOX));
+  if(complete.length>500)fail('INBOX_INVENTORY_TOO_LARGE:'+entry.path);
+  const inboxBindings=complete.map(input=>{
+    if(!validPath(input.path)||input.mode!=='100644'||input.type!=='blob')fail('INBOX_ENTRY_INVALID:'+input.path);
+    return {path:input.path,sha256:sha(blobBytes(root,input.blob))};
+  }).sort((a,b)=>a.path.localeCompare(b.path,'en'));
+  const actual=new Map(inboxBindings.map(row=>[row.path,row.sha256]));
+  for(const bound of descriptor.cohortBindings)if(actual.get(bound.path)!==bound.sha256)fail('INBOX_DRIFT:'+bound.path);
+  const sealed={schemaVersion:SEMANTIC_RUN_SCOPE_BINDING_V2,head,descriptorPath:entry.path,
+    descriptorRawSha256:sha(raw),scopeId:descriptor.scopeId,phase:descriptor.phase,
+    excludedSourcePrefixes:[...M3S1_SOURCE_PREFIXES],
+    cohortBindings:descriptor.cohortBindings.map(row=>({...row})).sort((a,b)=>a.path.localeCompare(b.path,'en')),
+    inboxBindings};
+  return {...sealed,active:true,scopeDigest:sha(stable(sealed))};
+}
+
 export function resolveSemanticRunScope(root){
   const head=git(root,'rev-parse','HEAD').trim();
   const entries=git(root,'ls-tree','-r','-z',head,'--',SEMANTIC_RUN_SCOPE_DIR,INBOX).split('\0').filter(Boolean).map(line=>{
@@ -64,6 +103,11 @@ export function resolveSemanticRunScope(root){
     const raw=blobBytes(root,entry.blob);
     if(raw.length>1024*1024)fail('DESCRIPTOR_TOO_LARGE');
     let descriptor;try{descriptor=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(raw));}catch{fail('DESCRIPTOR_JSON_INVALID:'+entry.path);}
+    if(descriptor?.schemaVersion===SEMANTIC_RUN_SCOPE_SCHEMA_V2){
+      const scope=resolveCohortScope(root,head,entry,raw,descriptor,entries,inbox);
+      if(scope)active.push(scope);
+      continue;
+    }
     validateDescriptor(descriptor,entry.path);
     const present=descriptor.inboxBindings.filter(row=>inbox.has(row.path));
     if(present.length===0)continue; // This batch is consumed; future jobs keep their normal policy.
@@ -85,6 +129,13 @@ export function resolveSemanticRunScope(root){
 }
 
 export function semanticRunScopeProof(scope){
+  if(scope?.active===true&&scope.schemaVersion===SEMANTIC_RUN_SCOPE_BINDING_V2)
+    return {schemaVersion:SEMANTIC_RUN_SCOPE_BINDING_V2,active:true,head:scope.head,
+      scopeDigest:scope.scopeDigest,scopeId:scope.scopeId,phase:scope.phase,
+      descriptorPath:scope.descriptorPath,descriptorRawSha256:scope.descriptorRawSha256,
+      excludedSourcePrefixes:[...scope.excludedSourcePrefixes],cohortInputCount:scope.cohortBindings.length,
+      boundInputCount:scope.inboxBindings.length,cohortBindings:scope.cohortBindings.map(row=>({...row})),
+      inboxBindings:scope.inboxBindings.map(row=>({...row}))};
   return scope?.active===true?{schemaVersion:SEMANTIC_RUN_SCOPE_BINDING,active:true,
     scopeDigest:scope.scopeDigest,scopeId:scope.scopeId,phase:scope.phase,
     descriptorPath:scope.descriptorPath,descriptorRawSha256:scope.descriptorRawSha256,

@@ -41,6 +41,7 @@ const CHECKER_FILES = new Set([
   'tests/archive-pr-registration-proof.test.mjs',
   'tests/archive-pr-native-preview.test.mjs',
   'tests/archive-semantic-run-scope.test.mjs',
+  'tests/archive-semantic-run-scope-v2.test.mjs',
 ]);
 const REQUIRED_FILES = [...REGISTRATION_CHECKS.map(check => check.file), ALLOWLIST,
   'archive/build_db.py', 'archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs',

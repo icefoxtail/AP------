@@ -79,19 +79,21 @@ function fixture(t) {
   return {dir,root,work,lanes,calls,execute,options,seedRegistered};
 }
 
-function scopedWriterFixture(t){
+function scopedWriterFixture(t,{v2=false}={}){
   const f=fixture(t),inbox=['.archive-meta-register/inbox/scope-first.json','.archive-meta-register/inbox/scope-second.json'];
+  const extraInboxes=v2?['.archive-meta-register/inbox/unrelated-owner.json']:[];
   const metadata='archive/data/question_metadata.json',identity='archive/data/question_identity_map.json';
   const runtime='archive/data/meta-foundation/runtime/middle3-v1.json',four='archive/data/item-4slot-index.json';
   const excludedSource='original/middle/m3/1mid/untouched.js';
   const row={questionUid:'excluded_uid',sourceArchiveFile:excludedSource,sourceOrdinal:1,value:'unchanged'};
-  for(const p of inbox)write(f.root,p,{requestId:path.basename(p,'.json')});
+  for(const p of [...inbox,...extraInboxes])write(f.root,p,{requestId:path.basename(p,'.json')});
   for(const p of [metadata,identity,runtime])write(f.root,p,{records:[row],packVersion:'1',status:'ACTIVE'});
   write(f.root,four,{records:[row],pending:[],files:[],counts:{records:1}});
   write(f.root,cursor,{sourceSha256:'old',lastProcessedCommit:'old',pending:{[excludedSource+'#1']:{sourceArchiveFile:excludedSource,sourceOrdinal:1,baseCommit:git(f.root,'rev-parse','HEAD'),lastReasons:['old refusal']}}});
-  write(f.root,'.archive-meta-register/auto/run-scopes/writer-fixture-phase1.json',{schemaVersion:'archive-semantic-run-scope-v1',scopeId:'writer-semantic-fixture',phase:'phase1',
-    excludedSourcePrefixes:['original/middle/m3/1final/','original/middle/m3/1mid/'],inboxBindings:inbox.map(p=>({path:p,sha256:hash(read(f.root,p))}))});
-  f.lanes.find(l=>l.id==='reviewed').outputs.push(...inbox);
+  const bindings=inbox.map(p=>({path:p,sha256:hash(read(f.root,p))}));
+  write(f.root,'.archive-meta-register/auto/run-scopes/writer-fixture-phase1.json',{schemaVersion:v2?'archive-semantic-run-scope-v2':'archive-semantic-run-scope-v1',scopeId:'writer-semantic-fixture',phase:'phase1',
+    excludedSourcePrefixes:['original/middle/m3/1final/','original/middle/m3/1mid/'],...(v2?{cohortBindings:bindings}:{inboxBindings:bindings})});
+  f.lanes.find(l=>l.id==='reviewed').outputs.push(...inbox,...extraInboxes);
   f.lanes.find(l=>l.id==='shared').outputs.push(metadata,identity,runtime,four);
   const realRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
   f.lanes.find(l=>l.id==='semantic').continuation=nativeLanes(realRoot).find(l=>l.id==='semantic').continuation;
@@ -99,14 +101,14 @@ function scopedWriterFixture(t){
   const execute=async ctx=>{
     const pending=structuredClone(readJson(f.root,cursor).pending||{});
     const result=await f.execute(ctx);
-    if(ctx.lane.id==='reviewed')for(const p of inbox)fs.rmSync(path.join(f.root,p),{force:true});
+    if(ctx.lane.id==='reviewed')for(const p of [...inbox,...extraInboxes])fs.rmSync(path.join(f.root,p),{force:true});
     if(ctx.lane.id==='semantic'){
       write(f.root,cursor,{...readJson(f.root,cursor),pending});
       write(ctx.env.RUNNER_TEMP,'archive-main-auto-meta/report.json',{runScope:semanticRunScopeProof(resolveSemanticRunScope(f.root)),results:[],deferredPending:Object.keys(pending).length});
     }
     return result;
   };
-  return {...f,inbox,metadata,identity,runtime,four,excludedSource,execute,options:{...f.options,execute}};
+  return {...f,inbox,extraInboxes,metadata,identity,runtime,four,excludedSource,execute,options:{...f.options,execute}};
 }
 
 test('production writer holds scope through native consumption and regeneration; consumed HEAD returns to default parameters',async t=>{
@@ -611,4 +613,25 @@ test('--unrelated-range CLI exits 0 only for an unrelated range and 1 for anythi
   const f=fixture(t);write(f.root,'apmath/playground/next/x.js','x\n');const next=commit(f.root,'would be unrelated');
   const unknown=spawnSync(process.execPath,[script,'--unrelated-range',git(f.root,'rev-parse',next+'^'),next,'--root',f.root],{cwd:realRoot,encoding:'utf8'});
   assert.equal(unknown.status,1);
+});
+
+
+test('v2 production writer seals all inputs, keeps its parameters through consumption and rebinds regeneration',async t=>{
+  const f=scopedWriterFixture(t,{v2:true}),first=await prepareRegistration(f.options);
+  assert.equal(first.safeToPersist,true);assert.equal(first.semanticRunScope.cohortInputCount,2);assert.equal(first.semanticRunScope.boundInputCount,3);
+  assert.equal(first.excludedScopeGuard.unchanged,true);assert.equal(first.lanes.find(l=>l.id==='semantic').needsContinuation,false);
+  assert.equal(readJson(f.root,STATE).lanes.semantic.parameters.semanticRunScope.scopeDigest,first.semanticRunScope.scopeDigest);
+  for(const p of [...f.inbox,...f.extraInboxes])assert.equal(fs.existsSync(path.join(f.root,p)),false);
+  assert.equal(resolveSemanticRunScope(f.root).inboxBindings.length,3,'staged consumption retains the sealed HEAD');
+  git(f.root,'reset','--hard','HEAD');const next='.archive-meta-register/inbox/new-concurrent-owner.json';
+  write(f.root,next,{requestId:'new-concurrent'});f.extraInboxes.push(next);f.lanes.find(l=>l.id==='reviewed').outputs.push(next);commit(f.root,'new owner enters immutable inbox');
+  const regenerated=await prepareRegistration(f.options);assert.equal(regenerated.safeToPersist,true);assert.equal(regenerated.semanticRunScope.boundInputCount,4);
+  assert.notEqual(regenerated.semanticRunScope.scopeDigest,first.semanticRunScope.scopeDigest);assert.equal(regenerated.excludedScopeGuard.unchanged,true);
+  commit(f.root,'registered cohort and complete queue');assert.equal(resolveSemanticRunScope(f.root).active,false);
+  assert.equal(checkRegistration(f.options).lanes.find(l=>l.id==='semantic').needed,true);
+});
+test('v2 invalid cohort overwrites old publishable evidence and executes no lane',async t=>{
+  const f=scopedWriterFixture(t,{v2:true});write(f.root,f.inbox[0],{changed:true});commit(f.root,'cohort raw drift');
+  write(f.work,'report.json',{safeToPersist:true,status:'PREPARED'});await assert.rejects(prepareRegistration(f.options),/INBOX_DRIFT/);
+  assert.deepEqual(f.calls,[]);assert.equal(readJson(f.work,'report.json').safeToPersist,false);
 });
