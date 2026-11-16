@@ -4834,7 +4834,7 @@ def trigonometric_period_v2_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':features,'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_INDEPENDENT_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
-MC_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL')
+MC_FREE_KINDS=('LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC')
 MC_EXACT_PATTERN=r'-?\d+(?:/\d+)?'
 
 def _mc_obs_fraction(value,code):
@@ -4866,18 +4866,23 @@ def _mc_obs_free(entry,ident):
         if curve['d'][1]==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
         pole=-curve['d'][0]/curve['d'][1]
         if sum(coefficient*pole**power for power,coefficient in enumerate(curve['n']))==0:raise ValueError('MULTI_CURVE_RATIONAL_DEGENERATE:'+ident)
-    elif kind=='EXPONENTIAL':
+    elif kind in ('EXPONENTIAL','LOGARITHMIC'):
         raw_base=entry.get('base')
+        base_code='MULTI_CURVE_'+kind+'_BASE_INVALID:'+ident
         if not isinstance(raw_base,str) or not re.fullmatch(r'[1-9]\d{0,3}(?:/[1-9]\d{0,3})?',raw_base):
-            raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
+            raise ValueError(base_code)
         base=Fraction(raw_base)
         if str(base)!=raw_base or base==1 or max(base.numerator,base.denominator)>1000:
-            raise ValueError('MULTI_CURVE_EXPONENTIAL_BASE_INVALID:'+ident)
-        coefficients=entry.get('coefficients')
-        if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError(code)
-        a,k,c=[_mc_obs_fraction(value,code) for value in coefficients]
-        if not a or not k:raise ValueError(code)
-        curve.update({'base':base,'c':[a,k,c],'shiftX':_mc_obs_fraction(entry.get('shiftX','0'),code)})
+            raise ValueError(base_code)
+        raw=entry.get('coefficients')
+        if not isinstance(raw,list) or len(raw)!=(3 if kind=='EXPONENTIAL' else 4):raise ValueError(code)
+        coefficients=[_mc_obs_fraction(value,code) for value in raw]
+        if not coefficients[0] or not coefficients[1]:raise ValueError(code)
+        curve.update({'base':base,'c':coefficients})
+        if kind=='EXPONENTIAL':
+            curve['shiftX']=_mc_obs_fraction(entry.get('shiftX','0'),code)
+        elif any(key in entry for key in ('shiftX','domainStates','abs')):
+            raise ValueError('MULTI_CURVE_CURVE_INVALID:'+ident)
     else:
         curve['r']=_mc_obs_pair(entry,'radicand',code)
         if curve['r'][1]==0:raise ValueError(code)
@@ -4924,6 +4929,10 @@ def _mc_obs_y_plain(curve,x_value):
     if kind=='EXPONENTIAL':
         a,k,c=curve['c']
         return float(c)+float(a)*math.exp(math.log(curve['base'])*float(k*(x_value-curve['shiftX'])))
+    if kind=='LOGARITHMIC':
+        a,k,b,c=curve['c']
+        argument=k*x_value+b
+        return float(c)+float(a)*math.log(argument,curve['base']) if argument>0 else None
     f0,f1,f2=curve['f']
     return f0+f1*x_value+f2*x_value*x_value
 
@@ -4981,7 +4990,7 @@ def _mc_region_expected(plan,entry,by_id,viewport):
     boundaries=[]
     for name in names:
         curve='axis' if name=='axis' else by_id.get(name)
-        if curve is None or (curve!='axis' and curve.get('kind')=='X_OF_Y'):raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+str(region_id)+':'+name)
+        if curve is None or (curve!='axis' and curve.get('kind') in ('X_OF_Y','LOGARITHMIC')):raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+str(region_id)+':'+name)
         if curve!='axis':
             lo,hi=curve['interval']
             if float(start)<float(lo)-1e-9 or float(end)>float(hi)+1e-9:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+str(region_id)+':'+name)
@@ -5298,7 +5307,7 @@ def multi_curve_audit(plan,svg,transform,model=False):
             if entry.get('inverseOf') is not None:
                 source=by_id.get(entry['inverseOf'])
                 if source is None or source.get('inverse') or source.get('abs'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
-                if kind=='EXPONENTIAL':raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
+                if kind in ('EXPONENTIAL','LOGARITHMIC'):raise ValueError('MULTI_CURVE_INVERSE_UNSUPPORTED:'+ident)
                 definition=_mc_obs_inverse_definition(source,ident) if source['kind'] in MC_FREE_KINDS else None
                 if definition is None:
                     # a quadratic half: its inverse is a square root (own derivation, exact)
@@ -5330,6 +5339,12 @@ def multi_curve_audit(plan,svg,transform,model=False):
                         raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
                     if any(abs(_mc_obs_y_plain(curve,x))>10**8 for x in (lo,hi)):
                         raise ValueError('MULTI_CURVE_EXPONENTIAL_NUMERIC_SCOPE:'+ident)
+                if kind=='LOGARITHMIC':
+                    _,k,b,_=curve['c']
+                    if any(k*x+b<=0 for x in (lo,hi)):raise ValueError('MULTI_CURVE_DOMAIN_INVALID:'+ident)
+                    if (any(abs(x)>10**6 or float(k)*float(x)+float(b)<=0 for x in (lo,hi)) or float(lo)>=float(hi)
+                        or any(abs(_mc_obs_y_plain(curve,x))>10**8 for x in (lo,hi))):
+                        raise ValueError('MULTI_CURVE_LOGARITHMIC_NUMERIC_SCOPE:'+ident)
                 if kind=='RATIONAL':
                     pole=-curve['d'][0]/curve['d'][1]
                     if lo<pole<hi:branches=[{'side':'LEFT','xInterval':(lo,pole),'yInterval':None},{'side':'RIGHT','xInterval':(pole,hi),'yInterval':None}]
@@ -5401,6 +5416,10 @@ def multi_curve_audit(plan,svg,transform,model=False):
             elif kind=='EXPONENTIAL':
                 if (row.get('base')!=str(curve['base']) or not list_same(row.get('coefficients'),curve['c'])
                     or not list_same([row.get('shiftX')],[curve['shiftX']])):same=False
+            elif kind=='LOGARITHMIC':
+                _,k,b,_=curve['c']
+                if (row.get('base')!=str(curve['base']) or not list_same(row.get('coefficients'),curve['c'])
+                    or row.get('naturalDomainBoundaryX')!=str(-b/k)):same=False
             elif kind=='SQRT':
                 if not list_same(row.get('radicand'),curve['r']) or not list_same([row.get('amplitude','1')],[curve['a']]) or not list_same([row.get('offset','0')],[curve['o']]):same=False
             if kind=='X_OF_Y' and row.get('branch','BOTH')!=curve['branch']:same=False
@@ -5467,6 +5486,10 @@ def multi_curve_audit(plan,svg,transform,model=False):
                 # coverage: each end is at the interval end, or (a free curve) where the frame cuts it off
                 for end_point,want in ((points[0],start),(points[-1],end)):
                     at_end=abs(end_point[0]-want)<=x_tol
+                    if kind=='LOGARITHMIC':
+                        # A small x gap next to the boundary can hide a large vertical piece.
+                        exact_x=branch['xInterval'][0] if want==start else branch['xInterval'][1]
+                        at_end=at_end and abs(end_point[1]-_mc_obs_y_plain(curve,exact_x))<=y_tol
                     at_frame=clipped_ok and (abs(end_point[1]-ymax)<=y_tol or abs(end_point[1]-ymin)<=y_tol)
                     if not at_end and not at_frame:errors.append('MULTI_CURVE_COVERAGE_FAIL:'+tag);break
                 if kind=='X_OF_Y':
@@ -5522,7 +5545,7 @@ def multi_curve_audit(plan,svg,transform,model=False):
             if raw_emphasis is None:
                 if row.get('emphasis'):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+ident)
                 continue
-            if curve['kind']=='X_OF_Y' or not isinstance(raw_emphasis,list) or not 1<=len(raw_emphasis)<=3:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
+            if curve['kind'] in ('X_OF_Y','LOGARITHMIC') or not isinstance(raw_emphasis,list) or not 1<=len(raw_emphasis)<=3:raise ValueError('MULTI_CURVE_EMPHASIS_INVALID:'+ident)
             lo,hi=curve['interval'];previous=None;frozen_rows=row.get('emphasis') if isinstance(row.get('emphasis'),list) else []
             if len(frozen_rows)!=len(raw_emphasis):errors.append('MULTI_CURVE_INVENTORY_MISMATCH:'+ident)
             for number,item in enumerate(raw_emphasis,1):

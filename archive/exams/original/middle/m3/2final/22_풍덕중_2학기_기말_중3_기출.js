@@ -1095,3 +1095,8 @@ window.questionBank = [
     "decisiveStep": "산점도의 과학>수학인 점을 y=x 아래에서9개 세어20명 대비45%로 바꾸고 전체 증가 추세를 양의 상관관계로 해석한다."
   }
 ];
+
+// Transport the unchanged independently approved native template and course namespace.
+(function () {
+  Object.assign(window.questionBank[2], {"templateKey":"TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES","courseKey":"M3-2"});
+})();

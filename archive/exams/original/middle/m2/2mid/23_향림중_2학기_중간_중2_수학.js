@@ -42,6 +42,8 @@ window.questionBank=[
   },
   {
     "id": 2,
+    "imageSize": "tall",
+    "imageAlt": "굵은 파란 직선은 세로축의 3과 가로축의 2를 지나며 왼쪽 위에서 오른쪽 아래로 내려간다.",
     "level": "하",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -50,7 +52,7 @@ window.questionBank=[
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "그래프"
@@ -66,7 +68,7 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "[키포인트] 그래프에서 두 절편을 읽으면 기울기와 $y$절편을 바로 구할 수 있다.\n기울기는 $m=\\dfrac{0-3}{2-0}=-\\dfrac{3}{2}$이고, $y$절편은 $3$이다. 따라서 직선의 식은 $y=-\\dfrac{3}{2}x+3$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q2.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q2-problem-visual-v2.svg",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -292,6 +294,8 @@ window.questionBank=[
   },
   {
     "id": 8,
+    "imageSize": "tall",
+    "imageAlt": "격자 위에 위로 올라가는 두 직선과 아래로 내려가는 한 직선이 있다. A는 (−1,0), B는 (2,1), C는 (−1,−2), D는 (0,−1), E는 (1,−2)이다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -300,7 +304,7 @@ window.questionBank=[
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "그래프"
@@ -316,7 +320,7 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "[키포인트] 연립방정식의 해는 두 직선의 교점의 좌표이다.\n$x=y+1$을 $-3x+9y=3$에 대입하면 $-3(y+1)+9y=3$이다. $6y-3=3$이므로 $y=1$이고, $x=y+1=2$이다. 따라서 해는 $(2,1)$이며 그림에서 이 점은 B이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q8.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q8-problem-visual-v2.svg",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
@@ -372,6 +376,8 @@ window.questionBank=[
   },
   {
     "id": 10,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC의 AB와 AC는 9 cm씩이며 가로 BC는 10 cm이다. A의 이등분선 AD는 밑변에 닿는다.",
     "level": "하",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -380,7 +386,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -396,7 +402,7 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "[키포인트] 이등변삼각형에서 꼭지각의 이등분선은 밑변을 이등분한다.\n$AD$는 밑변 $BC$의 중선이므로 $BD=DC$이다. 따라서 $BD=\\dfrac{BC}{2}=\\dfrac{10}{2}=5\\,\\mathrm{cm}$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q10.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q10-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -415,6 +421,8 @@ window.questionBank=[
   },
   {
     "id": 11,
+    "imageSize": "tall",
+    "imageAlt": "AB와 AC의 길이는 같다. A각은 76도이다. A를 지나는 AD는 밑변 BC와 평행하며, AD와 AC 사이 각에 x가 적혀 있다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -423,7 +431,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -439,7 +447,7 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "[키포인트] 이등변삼각형의 두 밑각을 구한 뒤 평행선의 엇각 또는 동위각을 이용한다.\n이등변삼각형이므로 $\\angle ABC=\\angle ACB$이다. 따라서 $\\angle ACB=\\dfrac{180^\\circ-76^\\circ}{2}=52^\\circ$이다. $AD\\parallel BC$이므로 $AC$를 횡단선으로 볼 때 $\\angle DAC=\\angle ACB=52^\\circ$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q11.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q11-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -460,6 +468,11 @@ window.questionBank=[
   },
   {
     "id": 12,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "두 직각삼각형은 빗변 OP가 공통이며 O의 두 각이 같아 RHA 합동이다. 따라서 OC=OD이고 PC=PD이다. 옳지 않은 것은 ②이다.",
+    "solutionImageAlt": "P는 O각의 이등분선 위에 있다. P에서 OA에 내린 수선은 C, OB에 내린 수선은 D에 닿는다. 같은 두 수선과 두 빗변을 갖는 삼각형을 비교한다.",
+    "imageSize": "tall",
+    "imageAlt": "P는 O각의 이등분선 위에 있다. P에서 OA에 내린 수선은 C, OB에 내린 수선은 D에 닿는다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -468,7 +481,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -484,12 +497,12 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "[키포인트] 각의 이등분선 위의 점에서 두 변에 내린 수선의 길이는 같고, 두 직각삼각형은 합동이다.\n두 직각삼각형은 빗변 $OP$가 같고 한 예각 $\\angle COP$, $\\angle POD$가 같으므로 합동이다. 따라서 $OC=OD$, $PC=PD$가 성립한다. 그러나 $\\angle OPC$는 점 $P$에서의 각이고 $\\angle POD$는 점 $O$에서의 각이므로 일반적으로 같다고 할 수 없다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q12.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q12-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q12-solution-visual-v2.svg",
     "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
     "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
     "crossConceptKeys": [
@@ -506,6 +519,8 @@ window.questionBank=[
   },
   {
     "id": 13,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC는 AB와 AC의 길이가 같다. M은 BC의 중점이다. M에서 두 옆변에 그은 수선은 D, E에 닿는다. AB는 12 cm이고 EC는 4 cm이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -514,7 +529,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -530,7 +545,7 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "[키포인트] 이등변삼각형의 대칭축 위에 있는 점에서 양쪽 변에 내린 수선의 발은 서로 대칭이다.\n$AE=AC-EC=12-4=8\\,\\mathrm{cm}$이다. $D$와 $E$는 대칭축 $AM$에 대하여 서로 대응하는 점이므로 $AD=AE=8\\,\\mathrm{cm}$이다. 따라서 $AD+AE=8+8=16\\,\\mathrm{cm}$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q13.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q13-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -549,6 +564,11 @@ window.questionBank=[
   },
   {
     "id": 14,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "외심에서 세 꼭짓점까지 거리가 같다. AOC는 108°이고 BOC는 112°이므로 AOB는 140°이다. OAB는 (180°−140°)÷2=20°이다.",
+    "solutionImageAlt": "외심 O에서 삼각형의 꼭짓점으로 선분을 이었다. A의 OAC각은 36도이며 B의 OBC각은 34도이다. 같은 세 반지름과 중심각 108도, 112도를 표시했다.",
+    "imageSize": "tall",
+    "imageAlt": "외심 O에서 삼각형의 꼭짓점으로 선분을 이었다. A의 OAC각은 36도이며 B의 OBC각은 34도이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -557,7 +577,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -573,12 +593,12 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "[키포인트] 외심에서 세 꼭짓점까지의 거리는 같으므로 세 반지름으로 생기는 이등변삼각형을 이용한다.\n$OA=OC$이므로 $\\angle OCA=36^\\circ$이고 $\\angle AOC=180^\\circ-36^\\circ-36^\\circ=108^\\circ$이다. 또 $OB=OC$이므로 $\\angle OCB=34^\\circ$이고 $\\angle BOC=112^\\circ$이다. 따라서 $\\angle AOB=360^\\circ-108^\\circ-112^\\circ=140^\\circ$이다. $OA=OB$이므로 $\\angle OAB=\\dfrac{180^\\circ-140^\\circ}{2}=20^\\circ$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q14.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q14-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q14-solution.svg",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q14-solution-visual-v2.svg",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "crossConceptKeys": [],
@@ -593,6 +613,11 @@ window.questionBank=[
   },
   {
     "id": 15,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "OA=OC이고 C의 각은 60°이므로 AOC는 정삼각형이다. 둘레가 18 cm여서 반지름은 6 cm이다. 외접원의 둘레는 12π cm이다.",
+    "solutionImageAlt": "A의 각은 직각이다. 빗변 BC 위의 O는 외심이다. △ACO에서 C의 각이 60도이다. △ACO의 세 같은 변을 표시했다.",
+    "imageSize": "tall",
+    "imageAlt": "A의 각은 직각이다. 빗변 BC 위의 O는 외심이다. △ACO에서 C의 각이 60도이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -601,7 +626,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -617,12 +642,12 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "[키포인트] 직각삼각형의 외심은 빗변의 중점이고, 그림의 $60^\\circ$를 이용하면 $\\triangle AOC$가 정삼각형이 된다.\n$OA=OC$이므로 $\\angle OAC=\\angle ACO=60^\\circ$이다. 따라서 $\\triangle AOC$의 세 각이 모두 $60^\\circ$이므로 정삼각형이고 $OA=OC=AC=r$이다. 둘레가 $18\\,\\mathrm{cm}$이므로 $3r=18$, 따라서 $r=6\\,\\mathrm{cm}$이다. 외접원의 둘레는 $2\\pi r=12\\pi\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q15.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q15-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q15-solution.svg",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q15-solution-visual-v2.svg",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "crossConceptKeys": [
@@ -639,6 +664,8 @@ window.questionBank=[
   },
   {
     "id": 16,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC의 세 각의 이등분선이 내심 I에서 만난다. I에서 세 변에 내린 수선의 발은 D, E, F이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -647,7 +674,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -663,7 +690,7 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] 내심에서 삼각형의 세 변에 이르는 수선의 길이는 모두 같다.\n$\\triangle IDB$와 $\\triangle IEB$는 각각 $D$, $E$에서 직각이고, 빗변 $IB$가 공통이며 한 변 $ID=IE$이다. 따라서 빗변과 한 변의 길이가 각각 같으므로 $\\triangle IDB\\cong\\triangle IEB$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q16.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q16-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -684,6 +711,8 @@ window.questionBank=[
   },
   {
     "id": 17,
+    "imageSize": "tall",
+    "imageAlt": "내심 I와 세 꼭짓점을 이었다. B에서 BC와 BI 사이 각은 30도이고 C에서 CI와 CA 사이 각은 25도이다. A에서 AB와 AI 사이 각은 x이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -692,7 +721,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -708,7 +737,7 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "[키포인트] 내심은 세 내각의 이등분선의 교점이므로 그림에 표시된 각은 각 꼭짓점의 내각의 절반이다.\n$BI$, $CI$, $AI$는 각의 이등분선이므로 $\\angle A=2x$, $\\angle B=60^\\circ$, $\\angle C=50^\\circ$이다. 따라서 $2x+60^\\circ+50^\\circ=180^\\circ$이고, $2x=70^\\circ$이므로 $x=35^\\circ$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q17.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q17-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -727,6 +756,8 @@ window.questionBank=[
   },
   {
     "id": 18,
+    "imageSize": "tall",
+    "imageAlt": "AB는 7 cm이고 대각선 BD 전체는 10 cm이다. D의 각은 AD와 DC 사이의 70도이다. 두 대각선이 O에서 만난다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -735,7 +766,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -751,7 +782,7 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] 평행사변형은 마주 보는 변과 각이 같고, 이웃한 두 각의 합은 $180^\\circ$이지만 두 대각선의 길이는 일반적으로 같지 않다.\n마주 보는 각이 같으므로 $\\angle ABC=70^\\circ$이고, 마주 보는 변이 같으므로 $DC=AB=7\\,\\mathrm{cm}$이다. 이웃한 각은 보각이므로 $\\angle BCD=110^\\circ$이다. 대각선 $AC$로 나눈 두 삼각형 $ABC$, $CDA$는 세 변이 각각 같아 합동이다. 그러나 $BD=10\\,\\mathrm{cm}$이라고 해서 다른 대각선 $AC$도 $10\\,\\mathrm{cm}$인 것은 아니다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q18.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q18-problem-visual-v2.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -811,6 +842,11 @@ window.questionBank=[
   },
   {
     "id": 20,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "ABE에서 ABC를 빼면 ACE의 넓이는 17−8=9 cm²이다. AC와 DE가 평행하므로 같은 밑변 AC를 쓰는 ACD의 넓이도 9 cm²이다.",
+    "solutionImageAlt": "B, C, E는 한 직선 위에 있다. AC와 DE는 서로 평행하다. 밑변 AC를 공유하는 ACE와 ACD를 색과 점선으로 구분했다.",
+    "imageSize": "tall",
+    "imageAlt": "B, C, E는 한 직선 위에 있다. AC와 DE는 서로 평행하다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -819,7 +855,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
@@ -835,12 +871,12 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "[키포인트] 큰 삼각형에서 작은 삼각형을 빼고, 평행선 사이에 있는 두 점에서 같은 밑변으로 만든 삼각형의 넓이가 같음을 이용한다.\n$\\triangle ABE$는 $\\triangle ABC$와 $\\triangle ACE$로 나뉘므로 $[ACE]=17-8=9\\,\\mathrm{cm}^2$이다. $AC\\parallel DE$이므로 점 $D$와 $E$에서 직선 $AC$까지의 높이는 같다. 따라서 같은 밑변 $AC$를 가지는 $\\triangle ACD$와 $\\triangle ACE$의 넓이는 같아 $[ACD]=9\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ⑤이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q20.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q20-problem-visual-v2.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q20-solution-visual-v2.svg",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -853,6 +889,8 @@ window.questionBank=[
   },
   {
     "id": 21,
+    "imageSize": "tall",
+    "imageAlt": "굵은 파란 직선이 세로축의 2에 닿는다. 가로축에서는 −4와 −2 사이에 교점이 있다. 격자 간격은 두 축에 표시돼 있다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -861,7 +899,7 @@ window.questionBank=[
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "그래프"
@@ -871,7 +909,7 @@ window.questionBank=[
     "choices": [],
     "answer": "$8$",
     "solution": "[키포인트] 그래프에서 기울기와 $y$절편을 읽어 주어진 일반형의 계수와 비교한다.\n기울기는 $\\dfrac{2-0}{0-(-3)}=\\dfrac{2}{3}$이고 $y$절편은 $2$이므로 직선의 식은 $y=\\dfrac{2}{3}x+2$이다. 양변에 $3$을 곱하면 $3y=2x+6$, 즉 $2x-3y+6=0$이다. 따라서 $a=2$, $b=6$이므로 $a+b=8$이다.\n따라서 구하는 값은 $8$이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q21.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q21-problem-visual-v2.svg",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
@@ -923,6 +961,11 @@ window.questionBank=[
   },
   {
     "id": 23,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "I에서 세 변까지 내린 수선의 길이는 모두 3 cm이다. 세 작은 삼각형의 넓이를 더하면 3×40÷2=60 cm²이다.",
+    "solutionImageAlt": "삼각형의 내심은 I이다. I에서 밑변에 내린 수선은 반지름 3 cm이다. 풀이에서는 나머지 두 변에 내린 같은 길이의 수선을 함께 표시했다.",
+    "imageSize": "tall",
+    "imageAlt": "삼각형의 내심은 I이다. I에서 밑변에 내린 수선은 반지름 3 cm이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -931,7 +974,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
@@ -941,12 +984,12 @@ window.questionBank=[
     "choices": [],
     "answer": "$60\\,\\mathrm{cm}^2$",
     "solution": "[키포인트] 내심에서 세 변에 내린 수선의 길이는 모두 내접원의 반지름과 같으므로 큰 삼각형을 세 개의 작은 삼각형으로 나눈다.\n$[ABC]=\\dfrac{1}{2}\\times AB\\times3+\\dfrac{1}{2}\\times BC\\times3+\\dfrac{1}{2}\\times CA\\times3$이다. 따라서 $[ABC]=\\dfrac{1}{2}\\times3\\times(AB+BC+CA)=\\dfrac{1}{2}\\times3\\times40=60\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $60\\,\\mathrm{cm}^2$이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q23.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q23-problem-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q23-solution-visual-v2.svg",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
     "crossConceptKeys": [
@@ -963,6 +1006,11 @@ window.questionBank=[
   },
   {
     "id": 24,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "이등분선과 평행선을 이용하면 BF=AB=6 cm, CE=CD=6 cm이다. BE=10−6=4 cm이므로 EF=6−4=2 cm이다.",
+    "solutionImageAlt": "평행사변형 ABCD의 왼쪽 모서리는 6 cm이고 윗변은 10 cm이다. 위쪽 각의 두 이등분선 AF와 DE가 밑변에서 F와 E에 닿는다. 각각 같은 길이인 두 쌍을 눈금으로 표시했다.",
+    "imageSize": "tall",
+    "imageAlt": "평행사변형 ABCD의 왼쪽 모서리는 6 cm이고 윗변은 10 cm이다. 위쪽 각의 두 이등분선 AF와 DE가 밑변에서 F와 E에 닿는다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -971,7 +1019,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
@@ -981,12 +1029,12 @@ window.questionBank=[
     "choices": [],
     "answer": "$2\\,\\mathrm{cm}$",
     "solution": "[키포인트] 평행사변형의 평행선과 각의 이등분선을 함께 이용하면 밑변 위에 이등변삼각형이 만들어진다.\n$AD\\parallel BF$이므로 $\\angle DAF=\\angle AFB$이다. 또 $AF$는 $\\angle DAB$의 이등분선이므로 $\\angle BAF=\\angle DAF$이다. 따라서 $\\angle BAF=\\angle AFB$이므로 $BF=AB=6\\,\\mathrm{cm}$이다. 같은 방법으로 $AD\\parallel CE$이고 $DE$가 $\\angle CDA$를 이등분하므로 $\\angle CDE=\\angle DEC$이다. 따라서 $CE=CD=6\\,\\mathrm{cm}$이다. $BC=10\\,\\mathrm{cm}$이므로 $BE=BC-CE=4\\,\\mathrm{cm}$이고, $EF=BF-BE=6-4=2\\,\\mathrm{cm}$이다.\n따라서 구하는 길이는 $2\\,\\mathrm{cm}$이다.",
-    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q24.png",
+    "image": "assets/images/23_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q24-solution.svg",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q24-solution-visual-v2.svg",
     "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
     "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
     "crossConceptKeys": [],
