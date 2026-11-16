@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "variable": "x"
+  },
+  "numberLineCaption": {
+    "text": "범위에 포함되는 정수"
+  },
+  "caption": "두 고정점 −2와 4 사이에서는 두 점까지 거리의 합이 두 고정점 사이 거리 6과 같다. 양 끝도 포함한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "|x−4|+|x+2|=6.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "거리합의 최소가 유지되는 닫힌 구간과 그 안 정수 눈금을 보이며 정수 개수는 쓰지 않는다."
+  ],
+  "accessibilityDescription": "두 고정점 −2와 4 사이에서는 두 점까지 거리의 합이 두 고정점 사이 거리 6과 같다. 양 끝도 포함한다."
+}
