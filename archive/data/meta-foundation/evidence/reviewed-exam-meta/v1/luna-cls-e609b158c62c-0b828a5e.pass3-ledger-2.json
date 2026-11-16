@@ -1,0 +1,82 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T19:25:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/25_금당고_1학기_중간_고2_수학I.js",
+    "items":  [
+                  {
+                      "ordinal":  2,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "√64=8 and the real cube root of 8 is 2.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "midUnit":  "지수",
+                                      "l3":  "거듭제곱근",
+                                      "l4":  "n제곱근"
+                                  }
+                  },
+                  {
+                      "ordinal":  4,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "π/2+π/3=5π/6 and sin(5π/6)=1/2.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "l3":  "삼각함수의 뜻",
+                                      "l4":  "삼각함수 값"
+                                  },
+                      "hold":  "integrationPattern: H2-수학I.json에 허용 목록이 없어 값을 선택하지 못했다."
+                  },
+                  {
+                      "ordinal":  6,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "log₂9·log₃4=(2log₂3)(2log₃2)=4 by the reciprocal base-change identity.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "midUnit":  "로그",
+                                      "l3":  "로그의 성질",
+                                      "l4":  "밑의 변환"
+                                  }
+                  },
+                  {
+                      "ordinal":  10,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "On 0≤x≤2π, sin x=1/2 at π/6 and 5π/6, whose sum is π.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "l3":  "삼각방정식·부등식",
+                                      "l4":  "주기 구간의 해"
+                                  },
+                      "hold":  "integrationPattern: H2-수학I.json에 허용 목록이 없어 값을 선택하지 못했다."
+                  },
+                  {
+                      "ordinal":  16,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "Sector area is (1/2)·3²·π/6=3π/4 and the tangent semicircle area is π/2, so their sum is 5π/4.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "hold":  "rpmPath.midUnit, rpmPath.l3, rpmPath.l4: H2-대수.json has no matching choice path for this sector and tangent-circle area problem."
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "For n cycles of sin(nx) on 0≤x≤2nπ there are 2n² roots, so 2n²≤270 gives the greatest natural n=11.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  21,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "From a=1,2,3,4 in f(x)=sin(aπx)+2b, the count of x with f(x) a power of 2 is 7 only for a=4 and a=6, whose sum is 10.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "rpmPath":  {
+                                      "midUnit":  "삼각함수의 그래프",
+                                      "l3":  "그래프 활용",
+                                      "l4":  "교점"
+                                  },
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER"
+                                        ]
+                  }
+              ]
+}
