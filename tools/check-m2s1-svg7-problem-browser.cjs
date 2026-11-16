@@ -48,8 +48,8 @@ function inspectQ15FailureMetadata(image,scope){
  };
  if(statement)for(const child of statement.childNodes)walk(child,0);
  let imagePathMatchesScope=false;
- try{const url=new URL(image.currentSrc||image.src,document.baseURI),p=decodeURIComponent(url.pathname);
-  imagePathMatchesScope=!url.search&&!url.hash&&[scope.assetPath.replace(/^archive/,''),'/exams/images/'+scope.assetPath.slice('archive/assets/images/'.length)].includes(p);
+ try{const url=new URL(image.currentSrc||image.src,document.baseURI),expected='https://img.wangjiedu.com/exams/images/'+scope.assetPath.slice('archive/assets/images/'.length).split('/').map(encodeURIComponent).join('/')+'?v=20261014.1';
+  imagePathMatchesScope=url.href===expected&&(image.currentSrc||image.src)===expected&&image.src===expected;
  }catch{}
  return{schemaVersion:'archive-m2s1-q15-failure-diagnostic-v1',status:'OBSERVATION_ONLY_NO_ACCEPTANCE',
   outerElementCount:box?.children.length??null,numberCount:box?.querySelectorAll('.q-num').length??null,

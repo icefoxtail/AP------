@@ -99,9 +99,12 @@ async function measureQ15Capture(image, scope) {
     box.querySelectorAll('img').length === 1 && !image.hasAttribute('srcset'), 'UI_Q15_IMAGE_ROLE');
   exactChildren(figure, [image]);
   const imageUrl = new URL(image.currentSrc || image.src, document.baseURI);
-  const decodedPath = decodeURIComponent(imageUrl.pathname);
-  need(!imageUrl.search && !imageUrl.hash && [scope.assetPath.replace(/^archive/, ''),
-    '/exams/images/' + scope.assetPath.slice('archive/assets/images/'.length)].includes(decodedPath), 'UI_Q15_IMAGE_PATH');
+  // Exact output of the pinned engine's default archive-source cache revision
+  // and archive-asset-base resolver; no alternate origin/path/query is allowed.
+  const expectedImageUrl = 'https://img.wangjiedu.com/exams/images/' +
+    scope.assetPath.slice('archive/assets/images/'.length).split('/').map(encodeURIComponent).join('/') + '?v=20261014.1';
+  need(imageUrl.href === expectedImageUrl && (image.currentSrc || image.src) === expectedImageUrl &&
+    image.src === expectedImageUrl, 'UI_Q15_IMAGE_PATH');
   need(image.complete && image.naturalWidth > 0 && image.naturalHeight > 0, 'UI_Q15_IMAGE_READY');
   const question = rect(box), contentRect = rect(content), statementRect = rect(statement), figureRect = rect(figure);
   for (const element of [box, number, content, statement, figure, image]) need(visibleWithin(element), 'UI_Q15_REQUIRED_ELEMENT_HIDDEN');

@@ -96,7 +96,7 @@ function q15Dom(){
  }
  const body=new Element('body','',rect(0,0,390,2000)),box=new Element('div','q-box',rect(10,10,380,600)),num=new Element('div','q-num',rect(20,20,50,20));num.append(new TextNode('15.'));
  const content=new Element('div','q-content',rect(20,60,360,500)),statement=new Element('p','',rect(20,60,360,40)),text=new TextNode('Synthetic statement only');statement.append(text);
- const figure=new Element('p','',rect(20,120,360,420)),image=new Element('img','',rect(30,125,340,400));image.src='https://img.wangjiedu.com/exams/images/'+q15Manifest.assetPath.slice('archive/assets/images/'.length);image.currentSrc=image.src;image.complete=true;image.naturalWidth=680;image.naturalHeight=800;
+ const figure=new Element('p','',rect(20,120,360,420)),image=new Element('img','',rect(30,125,340,400));image.src='https://img.wangjiedu.com/exams/images/'+q15Manifest.assetPath.slice('archive/assets/images/'.length).split('/').map(encodeURIComponent).join('/')+'?v=20261014.1';image.currentSrc=image.src;image.complete=true;image.naturalWidth=680;image.naturalHeight=800;
  figure.append(image);content.append(statement,figure);box.append(num,content);body.append(box);
  const document={baseURI:'http://localhost/archive/engine.html',documentElement:{dataset:{apPrintReadiness:JSON.stringify({state:'RENDER_READY'})}},getElementById:()=>null,
   querySelectorAll:s=>s==='body *'?body.querySelectorAll('div,p,img,span,mjx-container'):[],elementFromPoint:()=>state.foreignHit?body:box,
@@ -257,4 +257,23 @@ test('Q15 failure diagnostic leaves the successful return and evaluations unchan
   {key:'E045-Q15',questionUid:Q15.UID,sourceOrdinal:15,viewport:'desktop'},rows),result);}
  finally{Q15.captureQ15Tiles=prior;}
  assert.equal(evaluations,0);assert.equal(rows.length,0);
+});
+test('Q15 URL accepts only the official default runtime cache URL',async()=>{
+ const f=q15Dom();assert.equal(sha(f.image.src),'68102e0ec9b12f6f5789f45fe94d78f0b45f6ae12015af2a0bb9ce51a17ab2c4');
+ const frame=normalize(await f.measure());assert.equal(frame.surface.imageCount,1);assert.equal(frame.surface.semanticChildCount,3);
+ const diagnostic=normalize(await f.target.evaluate(H.inspectQ15FailureMetadata,Q15.BROWSER_SCOPE));assert.equal(diagnostic.imagePathMatchesScope,true);
+});
+for(const[name,alter]of[
+ ['unversioned legacy URL',s=>s.split('?')[0]],['another version',s=>s.replace('20261014.1','20261116.1')],
+ ['extra query',s=>s+'&x=1'],['duplicate version query',s=>s+'&v=20261014.1'],['encoded query value',s=>s.replace('v=2','v=%32')],
+ ['fragment',s=>s+'#part'],['empty fragment marker',s=>s+'#'],['username',s=>s.replace('https://','https://user@')],
+ ['password',s=>s.replace('https://','https://user:pass@')],['another origin',s=>s.replace('img.wangjiedu.com','example.invalid')],
+ ['another port',s=>s.replace('.com/','.com:444/')],['insecure protocol',s=>s.replace('https:','http:')],
+ ['same-origin fallback',s=>'http://localhost/archive/assets/images/'+s.split('/exams/images/')[1]],
+ ['path prefix',s=>s.replace('/exams/images/','/other/exams/images/')],['another problem image',s=>s.replace('/q15-','/q24-')],
+ ['file suffix',s=>s.replace('.svg?','.svg.extra?')],['encoded separator',s=>s.replace('/q15-','%2Fq15-')],
+ ['double-encoded path',s=>s.replace(/%/g,'%25')],['another exam folder',s=>s.replace('/exams/images/21_','/exams/images/22_')]
+])test('Q15 URL refuses '+name,async()=>{const f=q15Dom();f.image.src=alter(f.image.src);f.image.currentSrc=f.image.src;await assert.rejects(f.measure(),/UI_Q15_IMAGE_PATH/);});
+test('Q15 URL refuses differing source and loaded URLs',async()=>{
+ const f=q15Dom();f.image.src=f.image.src.replace('/q15-','/q24-');await assert.rejects(f.measure(),/UI_Q15_IMAGE_PATH/);
 });
