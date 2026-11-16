@@ -46,7 +46,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 호를 보는 원주각26°의 두 배가 중심각52°라는 배수 관계를 직접 적용한다.",
-    "decisiveStep": "같은 호를 보는 원주각26°의 두 배가 중심각52°라는 배수 관계를 직접 적용한다."
+    "decisiveStep": "같은 호를 보는 원주각26°의 두 배가 중심각52°라는 배수 관계를 직접 적용한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -93,7 +96,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "같은 원에서 호의 길이 비가 원주각25°:50°와 같으므로 2:x=1:2를 바로 대입한다.",
-    "decisiveStep": "같은 원에서 호의 길이 비가 원주각25°:50°와 같으므로 2:x=1:2를 바로 대입한다."
+    "decisiveStep": "같은 원에서 호의 길이 비가 원주각25°:50°와 같으므로 2:x=1:2를 바로 대입한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -227,7 +233,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "접선AT와 현AB의 각을 같은 호AB를 보는 원주각ACB56°와 대응시킨다.",
-    "decisiveStep": "접선AT와 현AB의 각을 같은 호AB를 보는 원주각ACB56°와 대응시킨다."
+    "decisiveStep": "접선AT와 현AB의 각을 같은 호AB를 보는 원주각ACB56°와 대응시킨다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -321,7 +330,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름의 원주각90°로 다른 내각50°를 얻고 두 호의 크기100°:80°를 길이15:x의 비로 바꾼다.",
-    "decisiveStep": "지름의 원주각90°로 다른 내각50°를 얻고 두 호의 크기100°:80°를 길이15:x의 비로 바꾼다."
+    "decisiveStep": "지름의 원주각90°로 다른 내각50°를 얻고 두 호의 크기100°:80°를 길이15:x의 비로 바꾼다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -368,7 +380,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "전체360°를 호의 비3:4:5로 나누어 호BC의 중심각120°를 정한 뒤 그 원주각60°를 구한다.",
-    "decisiveStep": "전체360°를 호의 비3:4:5로 나누어 호BC의 중심각120°를 정한 뒤 그 원주각60°를 구한다."
+    "decisiveStep": "전체360°를 호의 비3:4:5로 나누어 호BC의 중심각120°를 정한 뒤 그 원주각60°를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -415,7 +430,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "오른쪽 내접사각형의 대각 보각을 공통현 끝의 일직선 이웃각으로 옮겨 왼쪽 내접사각형의 목표 두 각을 구한다.",
-    "decisiveStep": "오른쪽 내접사각형의 대각 보각을 공통현 끝의 일직선 이웃각으로 옮겨 왼쪽 내접사각형의 목표 두 각을 구한다."
+    "decisiveStep": "오른쪽 내접사각형의 대각 보각을 공통현 끝의 일직선 이웃각으로 옮겨 왼쪽 내접사각형의 목표 두 각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -462,7 +480,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "원주각26°로 호AD52°를 얻고 같은 호CD 및 반원 총각으로 호CB76°를 복원한 뒤 내부 두 현의 교점각을 구한다.",
-    "decisiveStep": "원주각26°로 호AD52°를 얻고 같은 호CD 및 반원 총각으로 호CB76°를 복원한 뒤 내부 두 현의 교점각을 구한다."
+    "decisiveStep": "원주각26°로 호AD52°를 얻고 같은 호CD 및 반원 총각으로 호CB76°를 복원한 뒤 내부 두 현의 교점각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -509,7 +530,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "두 접선 사이30°에서 작은 호AB150°와 큰 호ACB210°를 구별하고 큰 호를1:2로 나누어 목표 원주각35°를 정한다.",
-    "decisiveStep": "두 접선 사이30°에서 작은 호AB150°와 큰 호ACB210°를 구별하고 큰 호를1:2로 나누어 목표 원주각35°를 정한다."
+    "decisiveStep": "두 접선 사이30°에서 작은 호AB150°와 큰 호ACB210°를 구별하고 큰 호를1:2로 나누어 목표 원주각35°를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -844,7 +868,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "내접육각형의 교대 세 원주각을 각각 대응하는 네 호의 합의 절반으로 표현한 뒤 합에서 여섯 호가 두 번 포함됨을 이용한다.",
-    "decisiveStep": "내접육각형의 교대 세 원주각을 각각 대응하는 네 호의 합의 절반으로 표현한 뒤 합에서 여섯 호가 두 번 포함됨을 이용한다."
+    "decisiveStep": "내접육각형의 교대 세 원주각을 각각 대응하는 네 호의 합의 절반으로 표현한 뒤 합에서 여섯 호가 두 번 포함됨을 이용한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 20,
@@ -891,7 +918,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "목표 접현각을 θ로 두고 등변삼각형의 밑각θ/2 및 지름 원주각90°로 같은 호의 원주각90°−θ/2를 만들어 접현각과 같게 놓는다.",
-    "decisiveStep": "목표 접현각을 θ로 두고 등변삼각형의 밑각θ/2 및 지름 원주각90°로 같은 호의 원주각90°−θ/2를 만들어 접현각과 같게 놓는다."
+    "decisiveStep": "목표 접현각을 θ로 두고 등변삼각형의 밑각θ/2 및 지름 원주각90°로 같은 호의 원주각90°−θ/2를 만들어 접현각과 같게 놓는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 21,
@@ -938,7 +968,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "호BC72°와 미지호AD=d에서 원주각ABE=d/2 및 내부 교점각AED=(d+72)/2를 표현해 주어진5:3 관계로 d를 복원한 뒤 목표 원주각을 구한다.",
-    "decisiveStep": "호BC72°와 미지호AD=d에서 원주각ABE=d/2 및 내부 교점각AED=(d+72)/2를 표현해 주어진5:3 관계로 d를 복원한 뒤 목표 원주각을 구한다."
+    "decisiveStep": "호BC72°와 미지호AD=d에서 원주각ABE=d/2 및 내부 교점각AED=(d+72)/2를 표현해 주어진5:3 관계로 d를 복원한 뒤 목표 원주각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,

@@ -46,7 +46,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "작은 원의 반지름을 큰 원의 현까지 거리로 놓고 반현 길이의 제곱이 두 반지름 제곱 차임을 이용해 고리 넓이를 구한다.",
-    "decisiveStep": "작은 원의 반지름을 큰 원의 현까지 거리로 놓고 반현 길이의 제곱이 두 반지름 제곱 차임을 이용해 고리 넓이를 구한다."
+    "decisiveStep": "작은 원의 반지름을 큰 원의 현까지 거리로 놓고 반현 길이의 제곱이 두 반지름 제곱 차임을 이용해 고리 넓이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -94,7 +97,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중심에서 같은 거리인 두 현이 같아 이등변삼각형이 된다는 점이 핵심이고 내각 합으로 밑각을 구한다.",
-    "decisiveStep": "중심에서 같은 거리인 두 현이 같아 이등변삼각형이 된다는 점이 핵심이고 내각 합으로 밑각을 구한다."
+    "decisiveStep": "중심에서 같은 거리인 두 현이 같아 이등변삼각형이 된다는 점이 핵심이고 내각 합으로 밑각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -142,7 +148,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중심에서 현에 내린 수선이 현을 이등분하므로 반현과 반지름으로 중심거리를 피타고라스 계산한다.",
-    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분하므로 반현과 반지름으로 중심거리를 피타고라스 계산한다."
+    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분하므로 반현과 반지름으로 중심거리를 피타고라스 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -190,7 +199,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 접선의 동일 길이와 중심선의 각 이등분으로 30도 직각삼각형을 구성하고 접선 길이의 합을 얻는다.",
-    "decisiveStep": "두 접선의 동일 길이와 중심선의 각 이등분으로 30도 직각삼각형을 구성하고 접선 길이의 합을 얻는다."
+    "decisiveStep": "두 접선의 동일 길이와 중심선의 각 이등분으로 30도 직각삼각형을 구성하고 접선 길이의 합을 얻는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -238,7 +250,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "세 꼭짓점의 접선 조각을 같은 길이끼리 옮겨 BC를 두 남은 접선 조각의 합으로 나타낸다.",
-    "decisiveStep": "세 꼭짓점의 접선 조각을 같은 길이끼리 옮겨 BC를 두 남은 접선 조각의 합으로 나타낸다."
+    "decisiveStep": "세 꼭짓점의 접선 조각을 같은 길이끼리 옮겨 BC를 두 남은 접선 조각의 합으로 나타낸다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -286,7 +301,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "원주각에서 각 호의 크기를 복원하고 같은 호 조건으로 남은 호를 구한 다음 접선과 현의 각으로 반감한다.",
-    "decisiveStep": "원주각에서 각 호의 크기를 복원하고 같은 호 조건으로 남은 호를 구한 다음 접선과 현의 각으로 반감한다."
+    "decisiveStep": "원주각에서 각 호의 크기를 복원하고 같은 호 조건으로 남은 호를 구한 다음 접선과 현의 각으로 반감한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -334,7 +352,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "같은 두 호가 보는 원주각을 이용해 원 안 두 현의 교각을 두 호의 합 절반으로 읽는다.",
-    "decisiveStep": "같은 두 호가 보는 원주각을 이용해 원 안 두 현의 교각을 두 호의 합 절반으로 읽는다."
+    "decisiveStep": "같은 두 호가 보는 원주각을 이용해 원 안 두 현의 교각을 두 호의 합 절반으로 읽는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -382,7 +403,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "주어진 중심각의 호를 같은 두 호로 나눈 뒤 그 절반인 원주각을 읽는다.",
-    "decisiveStep": "주어진 중심각의 호를 같은 두 호로 나눈 뒤 그 절반인 원주각을 읽는다."
+    "decisiveStep": "주어진 중심각의 호를 같은 두 호로 나눈 뒤 그 절반인 원주각을 읽는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -478,7 +502,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 외부 할선각으로 두 호의 차를 식으로 세우고 원 전체 호의 합과 결합해 목표 원주각이 보는 호의 합을 결정한다.",
-    "decisiveStep": "두 외부 할선각으로 두 호의 차를 식으로 세우고 원 전체 호의 합과 결합해 목표 원주각이 보는 호의 합을 결정한다."
+    "decisiveStep": "두 외부 할선각으로 두 호의 차를 식으로 세우고 원 전체 호의 합과 결합해 목표 원주각이 보는 호의 합을 결정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -526,7 +553,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 접선의 끼인각에서 작은 호의 중심각을 얻고 두 접현각의 합을 그 호의 절반으로 묶는다.",
-    "decisiveStep": "두 접선의 끼인각에서 작은 호의 중심각을 얻고 두 접현각의 합을 그 호의 절반으로 묶는다."
+    "decisiveStep": "두 접선의 끼인각에서 작은 호의 중심각을 얻고 두 접현각의 합을 그 호의 절반으로 묶는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -969,7 +999,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "먼저 원주점에서 현까지 길이를 구하고 수직이등분선 위 중심의 위치를 x로 놓아 반지름 조건의 피타고라스 방정식을 세운다.",
-    "decisiveStep": "먼저 원주점에서 현까지 길이를 구하고 수직이등분선 위 중심의 위치를 x로 놓아 반지름 조건의 피타고라스 방정식을 세운다."
+    "decisiveStep": "먼저 원주점에서 현까지 길이를 구하고 수직이등분선 위 중심의 위치를 x로 놓아 반지름 조건의 피타고라스 방정식을 세운다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -1012,7 +1045,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "주어진 호 길이를 중심각으로 바꾸고 두 할선각의 호 차 조건과 전체 호의 합으로 필요한 호를 결정한다.",
-    "decisiveStep": "주어진 호 길이를 중심각으로 바꾸고 두 할선각의 호 차 조건과 전체 호의 합으로 필요한 호를 결정한다."
+    "decisiveStep": "주어진 호 길이를 중심각으로 바꾸고 두 할선각의 호 차 조건과 전체 호의 합으로 필요한 호를 결정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,

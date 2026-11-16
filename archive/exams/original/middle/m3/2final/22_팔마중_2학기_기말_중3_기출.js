@@ -47,7 +47,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "같은 호AB를 보는 중심각과 두 원주각의 배각·동일 관계를 바로 적용해 x-y를 구한다.",
-    "decisiveStep": "같은 호AB를 보는 중심각과 두 원주각의 배각·동일 관계를 바로 적용해 x-y를 구한다."
+    "decisiveStep": "같은 호AB를 보는 중심각과 두 원주각의 배각·동일 관계를 바로 적용해 x-y를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -95,7 +98,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "같은 길이의 연속 두 호BC·CD를 합쳐 목표 원주각이 보는 호의 크기를 두 배로 정한다.",
-    "decisiveStep": "같은 길이의 연속 두 호BC·CD를 합쳐 목표 원주각이 보는 호의 크기를 두 배로 정한다."
+    "decisiveStep": "같은 길이의 연속 두 호BC·CD를 합쳐 목표 원주각이 보는 호의 크기를 두 배로 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -143,7 +149,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "접선-현 각65도를 원주각으로 옮긴 뒤 삼각형의 내각 합에서 목표각을 구한다.",
-    "decisiveStep": "접선-현 각65도를 원주각으로 옮긴 뒤 삼각형의 내각 합에서 목표각을 구한다."
+    "decisiveStep": "접선-현 각65도를 원주각으로 옮긴 뒤 삼각형의 내각 합에서 목표각을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -191,7 +200,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "두 주어진 원주각을 대응 호로 바꾸고 같은 호를 연결하여 ABC를 정한 뒤 외각EBA를 평각에서 뺀다.",
-    "decisiveStep": "두 주어진 원주각을 대응 호로 바꾸고 같은 호를 연결하여 ABC를 정한 뒤 외각EBA를 평각에서 뺀다."
+    "decisiveStep": "두 주어진 원주각을 대응 호로 바꾸고 같은 호를 연결하여 ABC를 정한 뒤 외각EBA를 평각에서 뺀다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -239,7 +251,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "접현각으로 ABD를 정하고 등변AD=BD에서 BAD를 옮겨 내접사각형의 대각 관계로 y를 구한다.",
-    "decisiveStep": "접현각으로 ABD를 정하고 등변AD=BD에서 BAD를 옮겨 내접사각형의 대각 관계로 y를 구한다."
+    "decisiveStep": "접현각으로 ABD를 정하고 등변AD=BD에서 BAD를 옮겨 내접사각형의 대각 관계로 y를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -287,7 +302,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "내접사각형의 대각과 연장선의 보각으로 APD의 각을 복원한 뒤 접현각을 ACD로 전달해 CAD를 정한다.",
-    "decisiveStep": "내접사각형의 대각과 연장선의 보각으로 APD의 각을 복원한 뒤 접현각을 ACD로 전달해 CAD를 정한다."
+    "decisiveStep": "내접사각형의 대각과 연장선의 보각으로 APD의 각을 복원한 뒤 접현각을 ACD로 전달해 CAD를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -383,7 +401,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "두 접선 사이 각에서 작은 호와 큰 호를 구별하고 C를 지나는 큰 호를2:5로 나눈 뒤 목표 원주각을 정한다.",
-    "decisiveStep": "두 접선 사이 각에서 작은 호와 큰 호를 구별하고 C를 지나는 큰 호를2:5로 나눈 뒤 목표 원주각을 정한다."
+    "decisiveStep": "두 접선 사이 각에서 작은 호와 큰 호를 구별하고 C를 지나는 큰 호를2:5로 나눈 뒤 목표 원주각을 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -431,7 +452,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "두 외부 할선각을 네 호의 차 방정식으로 표현하고 전체360도와 연립하여 필요한 호의 합만 복원한다.",
-    "decisiveStep": "두 외부 할선각을 네 호의 차 방정식으로 표현하고 전체360도와 연립하여 필요한 호의 합만 복원한다."
+    "decisiveStep": "두 외부 할선각을 네 호의 차 방정식으로 표현하고 전체360도와 연립하여 필요한 호의 합만 복원한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -479,7 +503,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "두 직각으로 BC를 지름으로 하는 공통 원을 구성하고 중점Q를 중심으로 해석하여 교차현각 정리에서 중심각AQD를 구한다.",
-    "decisiveStep": "두 직각으로 BC를 지름으로 하는 공통 원을 구성하고 중점Q를 중심으로 해석하여 교차현각 정리에서 중심각AQD를 구한다."
+    "decisiveStep": "두 직각으로 BC를 지름으로 하는 공통 원을 구성하고 중점Q를 중심으로 해석하여 교차현각 정리에서 중심각AQD를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -1003,7 +1030,7 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_POLYGON_INTERIOR_ANGLE_SUM"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
@@ -1011,7 +1038,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "원주각126도가 보는 큰 호를 먼저 정하고 반대 작은 호의 중심각108도를 두 접점의 직각과 사각형 내각 합에 연결한다.",
-    "decisiveStep": "원주각126도가 보는 큰 호를 먼저 정하고 반대 작은 호의 중심각108도를 두 접점의 직각과 사각형 내각 합에 연결한다."
+    "decisiveStep": "원주각126도가 보는 큰 호를 먼저 정하고 반대 작은 호의 중심각108도를 두 접점의 직각과 사각형 내각 합에 연결한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,
@@ -1054,7 +1084,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBucket": 3,
     "primaryMethod": "접선-현 관계와 삼각형 내각 합에서 미지각β를 사용해 D의 각을 표현하고 그 이등분각을 목표 삼각형에 넣어β를 소거한다.",
-    "decisiveStep": "접선-현 관계와 삼각형 내각 합에서 미지각β를 사용해 D의 각을 표현하고 그 이등분각을 목표 삼각형에 넣어β를 소거한다."
+    "decisiveStep": "접선-현 관계와 삼각형 내각 합에서 미지각β를 사용해 D의 각을 표현하고 그 이등분각을 목표 삼각형에 넣어β를 소거한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 24,

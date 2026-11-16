@@ -137,7 +137,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "특수각의 삼각비 값을 대입해 다섯 식의 등식이 성립하는지 직접 확인한다.",
-    "decisiveStep": "특수각의 삼각비 값을 대입해 다섯 식의 등식이 성립하는지 직접 확인한다."
+    "decisiveStep": "특수각의 삼각비 값을 대입해 다섯 식의 등식이 성립하는지 직접 확인한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -567,7 +570,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "두 관측점 사이에 탑이 있어 양쪽 수평거리 합을 90으로 놓고 같은 미지 높이를 두 탄젠트 식에서 소거한다.",
-    "decisiveStep": "두 관측점 사이에 탑이 있어 양쪽 수평거리 합을 90으로 놓고 같은 미지 높이를 두 탄젠트 식에서 소거한다."
+    "decisiveStep": "두 관측점 사이에 탑이 있어 양쪽 수평거리 합을 90으로 놓고 같은 미지 높이를 두 탄젠트 식에서 소거한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -984,7 +990,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "빗변에 주어진 사인·코사인 값을 곱해 두 직각변을 각각 구한 뒤 합한다.",
-    "decisiveStep": "빗변에 주어진 사인·코사인 값을 곱해 두 직각변을 각각 구한 뒤 합한다."
+    "decisiveStep": "빗변에 주어진 사인·코사인 값을 곱해 두 직각변을 각각 구한 뒤 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
