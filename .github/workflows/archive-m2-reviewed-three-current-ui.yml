@@ -1,0 +1,49 @@
+name: Archive M2 Reviewed Three Current UI Evidence
+
+on:
+  push:
+    branches: ['review-reference/m2-reviewed-three-current-ui-20261116']
+    paths:
+      - '.github/workflows/archive-m2-reviewed-three-current-ui.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  problem-ui:
+    name: Exact three reviewed problem renderers in current student UI
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify the existing closed three-item capture contract
+        run: node --test tests/archive-problem-renderer-ui-contract.test.js
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/m2-reviewed-three-ui-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Capture exact original problem-only scroll tiles
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/m2-reviewed-three-ui-browser/node_modules
+        run: node tools/check-reviewed-problem-renderer-browser.cjs --output "$RUNNER_TEMP/m2-reviewed-three-current-ui"
+      - name: Preserve original problem-only evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m2-reviewed-three-current-ui-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/m2-reviewed-three-current-ui/
+          if-no-files-found: warn
+          retention-days: 14
