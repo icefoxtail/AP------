@@ -1,61 +1,38 @@
-# 중등 통합 메타 D — 기존 승인 9문항 등록과 기존 승인 23건 보존
+# 중등 통합 메타 D — 승인 9문항 등록과 기존 승인 23문항 보존
 
-완료된 전수 검토와 정확한 독립 승인에 남은 정의·원본 결속·등록 입력을 운반합니다. 새로운 수학·그림·난도 판정은 만들지 않습니다.
+기준 main: `828b0797450a56280208506b8808b62e2d341195`. 현재 입력은 새 native 9문항, 기존 native 보존23문항, 총8요청·32 UID입니다. 승인된 ADD_ONLY 정의5개를 운반하며 새 수학·그림·난도 판정은 없습니다. E023 Q6의 난도 교정은 기존 독립 adjudication의 2→1을 정확 반영합니다.
 
 ## 출고 범위
 
-| 묶음 | 정확한 대상 | 새 native 등록 | 기존 native 보존 |
-| --- | --- | ---: | ---: |
-| 중2 2학기 | 신흥19 기말 E059 Q7·Q12, 왕운23 중간 E028 Q2 | 3 | 0 |
-| 중3 2학기 기존 잔여 | 삼산26 중간 E001 Q8·Q19, 풍덕24 기말 E017 Q23 | 3 | 23 |
-| 중3 2학기 TPL support | 순천여23 기말 E023 Q5·Q6, 풍덕22 기말 E035 Q3 | 3 | 0 |
-| 합계 | 요청 8개, 선택 UID 32개 | 9 | 23 |
+| 학기 | 새 등록 대상 | 기존 승인 보존 |
+|---|---|---|
+| 중2 2학기 | E059 신흥19 기말 Q7·Q12, E028 왕운23 중간 Q2 | 0 |
+| 중3 2학기 | E001 삼산26 중간 Q8·Q19, E017 풍덕24 기말 Q23, E023 순천여23 기말 Q5·Q6, E035 풍덕22 기말 Q3 | E001 5문항, E017 18문항 |
 
-- 현 main의 source 6파일, 학생용 143문항의 원문·선택지·정답·해설·그림을 보존합니다.
-- 현 원본을 공식 4칸 빌더에 넣은 기준으로 등록114와 기존 pending29를 전후 그대로 보존합니다. 등록114는 중2 28 + 중3 기존37 + support49입니다. pending29는 #2209에서 그림이 바뀐 E028의19와 기존 중3의10입니다. 이 패킷이 새로 만드는 보류는0입니다.
-- 원래 승인된 ADD_ONLY 정의5만 등록합니다: 중2 CC2/TPL1, 중3 COND1/TPL1. 원래 support UID와 승인 문서는 바꾸지 않습니다.
-- E023 Q6의 난도2→1은 기존 독립 adjudication을 반영하는 교정1건입니다. 원 native가 Mother2를 before로 명시했고, 독립 판정의 정확 UID/raw SHA와 세 source 판본·asset 바이트가 일치합니다.
+6개 원본의 학생 payload143개를 보존합니다. 현재 원본 기준 4칸114 registered/29 pending은 묶음별 검증에서 전후 동일하며, #2209가 바꾼 E028의 그림19문항을 이전판으로 되돌리지 않습니다. 중3 1학기 조사·수정·패킷 인수는0입니다.
 
-## 최신 main의 다른 작업을 보존
+## 최신 main 통합
 
-통합 기준 main은 `f6fdf1aaadb2345273eb314db0ab2cc80dab7e07`입니다.
+59개 D 대상경로의 before blob을 위 main에서 직접 재조회했고 전부 정확히 일치했습니다. #2226의 공용 helper·renderer continuity와 테스트 변경을 보존했습니다. 공유 테스트의 D 추가는 기존60행뿐이며 양방향 3-way 결과가 같습니다. 영향 회귀44 PASS/0 FAIL/0 SKIP입니다.
 
-#2209가 왕운23 중간의 다른19문항 그림을 바꾼 뒤에도 Q2의 전체 객체와 학생 payload는 기존 검토판본과 정확히 같았습니다. 최신 source의 모든 바이트를 보존하고 승인된 Q2 metadata suffix257bytes만 붙였습니다. expectedSourceBlobSha1도 그 정확한 새 source에 결속했습니다. 과거 M2 검증의47/47은 이전 원본에 대한 기록이며, 현재 검증은28 registered/19 pending입니다.
+#2228 HEAD `a09d1a0c76e9da974cf69482953d69e3355bad66`의 정확7경로를 의존 변경으로 포함했습니다. 이 PR은 #2228의 main 병합 후에 병합합니다. 그때 #2228 변경7개는 이 PR의 유효 diff에서 빠지고 D 자체60경로가 남습니다. #2228 소유 브랜치는 수정하지 않습니다. RPM1개 ID 동기화의 독립 exact 증거와 D5 Consumer 경계 읽기 검토를 재사용합니다. PT/TPL·identity·source·unknown conflict guard는 계속 유지됩니다.
 
-#2219의 두 공용 renderer helper를 유지합니다. 기존 D rationale 회귀와 최신 renderer 회귀를 3-way로 합친 test를 사용했고24 PASS·0 FAIL·0 SKIP을 확인했습니다. D의60행 추가 블록을 제거하면 최신 main test 바이트와 정확히 같습니다. 최신 helper에서 중2 선택3의 공식 replay/Consumer도 통과했습니다.
+기존 E052 Q2/Q25의 현재 원본 보존 입력은 #2227로 이미 main에 병합되었습니다. 중복 #2223은 병합 없이 닫았고 그3파일을 이 PR에 추가하지 않았습니다. 과거 proof의 “#2223 통합” 설명은 당시 계획이며 이 문서와 `integration-cas-828b079.json`이 최신 상태입니다.
 
-Polygon E011 Q17/E052 Q5는 이 출고에서 제외했습니다. #2219/#2220의 활성 담당자가 E052에 별도 `CC_QUADRILATERAL_ANGLE_SUM`(support1)을 확정·제출했고, 과거 후보는 `CC_POLYGON_INTERIOR_ANGLE_SUM`(support4)을 사용합니다. 키·정의·지원 집합이 동일하지 않아 의미 충돌이 없다고 새로 판단하지 않습니다. 다른 담당자의 source·registry·inbox·신규 승인을 덮거나 같은 UID를 중복 출고하지 않습니다.
+## 검증과 아직 남은 운영 단계
 
-Support3은 두 polygon CC가 모두 없는 D-only fixture에서도 공식 dry/write/native/Consumer/replay를 통과했습니다. 새 의존성은 D의 기존 승인 TPL 하나뿐이며 별도 registryChanges는0입니다.
+B/#2201의 실제 등록 snapshot은 `e9af62176fc10bce6c30f420d911664082ec059b`입니다. writer43779609672 성공과 대상별 영수증·metadata·identity·4칸 및 Consumer를 확인했습니다. 보고서 전체 상태는 REGISTRATION_PARTIAL이고 semantic lane은 NEEDS_REGISTRATION이며 완료로 바꾸지 않습니다.
 
-## 검증 근거
+D32 선택행의 metadata/identity·before/source·정의 중복 여부는 실제 snapshot과 최신 main에서 검증했습니다. 묶음별 공식 dry/write/native receipt/Changed-UID Consumer/projection replay를 재사용합니다. 이 통합 HEAD의 필수 CI는 새로 실행합니다. 과거 HEAD의 CI 성공을 대신 사용하지 않습니다.
 
-초기6 HEAD `ccd5f67f16d1768f486c6a4c83a773dfb027f570`의 원격 CI3개는 모두 통과했습니다. 이번 통합 HEAD의 CI는 별도로 확인합니다.
+Pages43786397078은 exact e9af의 R2 470/470을 통과했으나 RPM ID 불일치로 build가 실패했고 deploy는 건너뛰었습니다. 공개 배포는 완료가 아닙니다. #2228에 정확한 RPM 수리가 있습니다.
 
-- https://github.com/icefoxtail/AP------/actions/runs/43776575226
-- https://github.com/icefoxtail/AP------/actions/runs/43776575153
-- https://github.com/icefoxtail/AP------/actions/runs/43776575277
+## 병합 순서와 재개
 
-현재 입력에 대한 공식 registrar dry/write/replay, native receipt, Changed-UID Consumer와 4칸 보존을 묶음별로 검증했습니다. 범위 밖 metadata·identity·runtime과 기존 승인값은 보존합니다. 기존 D rationale 수리는 #2163의 소유3파일만 재사용하며, native after/item 우선순위와 정확한 네 값의 verbatim 일치 조건을 유지합니다.
+1. #2228 정확 HEAD의 필수 CI와 현재 원격 상태를 확인해 먼저 main에 병합합니다.
+2. D 정확 HEAD의 필수 CI·현재 대상경로·중복등록을 확인하고 증거 commit ancestry를 보존하는 merge commit으로 병합합니다.
+3. D의 실제 main registered SHA·영수증32·Consumer·4칸 및 exact SHA Pages/공개 바이트를 각각 확인합니다.
+4. 실제 등록된 D registry에서 C 부모6의 source·metadata·identity·master·PT/TPL·binding·원 operation 미완료를 모두 다시 확인한 뒤 새 immutable strict-CAS 요청을 만듭니다. 기존 request bytes는 유지하고 활성 index 참조 하나만 교체합니다.
+5. C6에 실제 증거 차단이 있으면 C의 중3 2학기 4칸19를 독립 출고합니다. 다른 소유자의 #2203/#2214 브랜치는 덮어쓰지 않습니다.
 
-주요 현재 증거:
-
-- 이 디렉터리 `integration-cas-f6fdf1a.json`: 실제 main before/after Git blob 대조 및 통합 범위.
-- `m2-current2209-official-proof.json`, `m2-current2209-renderer-holds19.json`.
-- `rationale-current2219-integration.json`, `polygon-two-excluded-current-owner.json`.
-- `docs/operations/middle-meta-closeout-3e3a-20261116/m3s2-residual3-local-gates.json`.
-- 같은 디렉터리 `m3s2-tpl-support3-local-gates.json`, `m3s2-e023-q6-existing-authority.json`.
-- `docs/operations/middle-meta-closeout-3e3a-20261116/m3s2-support3-d-only-dependency.json`.
-
-이전6 패킷의 검증 자료도 그대로 남겼습니다. 최신 source에 대한 숫자와 판본 판단에는 위 current2209/D-only/current2219 증거를 우선합니다.
-
-## 운영 순서
-
-#2208 CLI 수리는 이미 main에 병합됐고 실제 writer의 semantic lane도 VERIFIED를 확인했습니다. 현재까지 writer가 main 동시 변경으로 저장 재시도를 소진한 사실과, 이 패킷의 로컬·CI 검증을 구분합니다.
-
-1. B/#2201의 실제 main 등록·선택 Consumer를 확인합니다.
-2. C 부모6을 실제 등록합니다. 다른 담당자의 정의 추가로 전역 registry SHA가 달라지면, 선택6의 source·metadata·identity·정본·binding과 기존 미완료 상태를 대조한 새 immutable strict-CAS 요청으로만 재결속합니다. 원 base/prior-source 핀과 검증 조건은 유지합니다.
-3. C6 실제 등록 뒤 이 패킷의 source·정의·UID 중복을 다시 확인하고 병합합니다. 새 정의5가 C6보다 먼저 등록되지 않도록 합니다.
-4. 실제 registered SHA/영수증, 선택32 Consumer, 현재4칸114/29, 정확 registered SHA의 Pages·공개 바이트를 각각 확인합니다.
-
-로컬·PR CI만으로 실제 등록·배포 완료를 선언하지 않습니다. 중3 1학기 변경 경로는0입니다.
+과거 `integration-cas-f6fdf1a.json`, current2209/current2219 proof는 해당 snapshot의 검증 기록입니다. 새 원본·승인·난도 판정을 위한 근거로 확장하지 않습니다. polygon2와 E052 신규 CC 소유 범위는 제외합니다.
