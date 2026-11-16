@@ -95,9 +95,9 @@ for round in 1 2; do
   # can rewrite a runtime pack (middle-geometry-v1.json counts) after the final canonical manifest was built,
   # so its own --check fails once for requests that add records to such a pack and passes on the next run.
   # One re-run is allowed; a genuine failure fails again and fails the pass.
-  if ! python archive/build_db.py; then
+  if ! node tools/ci/archive-registration-build-db.mjs; then
     echo "::warning title=build_db did not converge on the first run::re-running once to reach the generator fixed point"
-    python archive/build_db.py
+    node tools/ci/archive-registration-build-db.mjs
   fi
 
   node archive/tools/verify-archive-registration.mjs

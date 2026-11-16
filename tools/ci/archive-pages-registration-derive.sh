@@ -29,7 +29,7 @@ refresh_meta_foundation_compiled() {
 materialize() {
   refresh_meta_foundation_compiled
   node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write 2>&1 | tee "$RELEASE_EVIDENCE_DIR/meta-v2-materializer-write.log"
-  python archive/build_db.py 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive-registration-build.log"
+  node tools/ci/archive-registration-build-db.mjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive-registration-build.log"
 }
 
 verify() {
