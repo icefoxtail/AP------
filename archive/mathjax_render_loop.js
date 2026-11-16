@@ -56,6 +56,7 @@
 
     async function typeset(label, elements, metrics = current) {
         if (!global.MathJax?.typesetPromise) return false;
+        if (global.waitForEnclosedLatinMath) await global.waitForEnclosedLatinMath(elements);
         const startedAt = now();
         await global.MathJax.typesetPromise(elements);
         const elapsedMs = Number((now() - startedAt).toFixed(1));
