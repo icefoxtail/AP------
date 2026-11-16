@@ -111,10 +111,20 @@ function fixture(t,opt={}) {
   if(opt.orphan)doc.orphanIdentity={schemaVersion:'archive-existing-registered-orphan-uid-display-continuity-v1',embeddedQuestionUid:uid(9),questionUid:uid(1),sourceOrdinal:1,sourceQuestionNo:'1',historicalFingerprint:builder.identityHash(before[0]),currentFingerprint:builder.identityHash(current[0])};
   if(opt.doc)opt.doc(doc);
   const surfaces=opt.solution?['PROBLEM','SOLUTION']:['PROBLEM'],technical={},reviews={};
+  const splitSurfaces=opt.splitCapture||[];let captureCommit=null;
+  if(splitSurfaces.length){
+    const restore=[SF,NEW,NEW_SOL,CHILD].filter(p=>fs.existsSync(path.join(root,p))).map(p=>[p,fs.readFileSync(path.join(root,p))]);
+    write(root,`${PREFIX}/capture-only-marker.json`,{synthetic:true});
+    if(opt.captureMutation)opt.captureMutation(root,current);
+    captureCommit=commit(root);for(const[p,raw]of restore)write(root,p,raw);
+  }
   for(const surface of surfaces){
     const paths=surface==='PROBLEM'?[NEW,...(opt.nested?[CHILD]:[])]:[NEW_SOL];const oldPaths=surface==='PROBLEM'?[OLD,...(opt.nested?[CHILD]:[])]:[OLD_SOL];
     const currentAssets=doc.currentAssets.filter(r=>paths.includes(r.path)),priorAssets=doc.priorAssets.filter(r=>oldPaths.includes(r.path));
-    technical[surface]=makeUi(doc,surface,currentAssets,{tiles:opt.tiles||1});if(opt.technical)opt.technical(technical[surface],surface);
+    const captured=splitSurfaces.includes(surface);
+    const uiDoc=captured?{...doc,currentSourceRef:ref(root,captureCommit,SF)}:doc;
+    const uiAssets=captured?currentAssets.map(a=>ref(root,captureCommit,a.path)):currentAssets;
+    technical[surface]=makeUi(uiDoc,surface,uiAssets,{tiles:opt.tiles||1});if(opt.technical)opt.technical(technical[surface],surface);
     write(root,`${PREFIX}/${surface}-technical.json`,technical[surface]);
     const binding=route.displayBinding(doc,before[0],current[0],doc.changedFields,surface,priorAssets,currentAssets);
     reviews[surface]={schemaVersion:route.REVIEW_SCHEMA,scope:route.SCOPE,reviewer:'SYNTHETIC_DISPLAY_REVIEWER',decision:ui.DECISION,
@@ -131,6 +141,11 @@ function fixture(t,opt={}) {
   }
   const reviewCommit=commit(root);
   doc.displayReviews=surfaces.map(surface=>({surface,independentRef:ref(root,reviewCommit,`${PREFIX}/${surface}-independent.json`),technicalRef:ref(root,phaseCommit,`${PREFIX}/${surface}-technical.json`),visualRef:ref(root,reviewCommit,`${PREFIX}/${surface}-visual.json`)}));
+  for(const review of doc.displayReviews)if(splitSurfaces.includes(review.surface)){
+    const actual=technical[review.surface].results[0];
+    review.uiCheckoutContinuity={schemaVersion:'archive-existing-vector-ui-checkout-continuity-v1',questionUid:doc.questionUid,sourceOrdinal:doc.sourceOrdinal,surface:review.surface,
+      capturedSourceRef:actual.sourceRef,capturedAssetRefs:actual.assetRefs,currentSourceRef:doc.currentSourceRef,currentAssetRefs:actual.assetRefs.map(a=>doc.currentAssets.find(c=>c.path===a.path))};
+  }
   if(opt.finalDoc)opt.finalDoc(doc);
   const carrier=`${route.DIR}/${uid(1)}.json`;write(root,carrier,doc);
   return {root,doc,carrier,prior,current,before,identity,compact,technical,reviews,commit:currentCommit,
@@ -338,3 +353,101 @@ const uiNegatives=[
   ['unknown asset ref field',t=>{t.results[0].assetRefs[0].optional=true;}]
 ];
 for(const [name,mutate] of uiNegatives)test('rejects fully resealed UI capsule: '+name,t=>refuses(t,{technical:mutate},/EXISTING_VECTOR_UI_|EXISTING_REGISTERED_VECTOR_REF_KEYS/));
+
+const splitOptions={solution:true,splitCapture:['SOLUTION']};
+const splitReview=doc=>doc.displayReviews.find(r=>r.surface==='SOLUTION');
+function refusesCheckout(t,mutate,pattern=/UI_CHECKOUT_/){
+  const f=fixture(t,splitOptions);mutate(splitReview(f.doc),f);f.save();const out=f.run();
+  assert.equal(selected(out),undefined);assert.match(out.pending.find(r=>r.ordinal===1)?.reason||'',pattern);
+}
+test('UI checkout continuity joins separate unchanged solution capture without altering original evidence',t=>{
+  const f=fixture(t,splitOptions),review=splitReview(f.doc),raw=fs.readFileSync(path.join(f.root,PREFIX+'/SOLUTION-technical.json'));
+  assert.notEqual(review.uiCheckoutContinuity.capturedSourceRef.commit,f.doc.currentSourceRef.commit);
+  const md=fs.readFileSync(path.join(f.root,MD)),id=fs.readFileSync(path.join(f.root,ID)),out=f.run();
+  assert.ok(selected(out));assert.deepEqual(vector(selected(out)),vector(selected(f.prior)));assert.equal(builder.verify(out).verified,3);
+  assert.deepEqual(f.run(out),out);assert.deepEqual(fs.readFileSync(path.join(f.root,MD)),md);assert.deepEqual(fs.readFileSync(path.join(f.root,ID)),id);
+  assert.deepEqual(fs.readFileSync(path.join(f.root,PREFIX+'/SOLUTION-technical.json')),raw);
+});
+test('UI checkout continuity preserves complete two-viewport problem capture',t=>{
+  const f=fixture(t,{splitCapture:['PROBLEM']}),out=f.run();assert.ok(selected(out));assert.equal(builder.verify(out).verified,3);assert.deepEqual(f.run(out),out);
+});
+test('UI checkout continuity validates unchanged nested surface assets as a complete inventory',t=>{
+  const f=fixture(t,{nested:true,splitCapture:['PROBLEM']}),out=f.run();assert.ok(selected(out));
+  assert.equal(f.doc.displayReviews[0].uiCheckoutContinuity.capturedAssetRefs.length,2);assert.deepEqual(f.run(out),out);
+});
+test('UI checkout continuity absence retains original selected-ref rejection',t=>refusesCheckout(t,r=>{delete r.uiCheckoutContinuity;},/EXISTING_VECTOR_UI_SELECTED_BINDING/));
+test('UI checkout continuity own-null is refused',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity=null;},/UI_CHECKOUT_CONTINUITY_KEYS/));
+test('UI checkout continuity unknown schema is refused',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.schemaVersion='unknown';}));
+test('UI checkout continuity extra field is refused',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.approval=true;},/UI_CHECKOUT_CONTINUITY_KEYS/));
+test('UI checkout continuity foreign UID is refused',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.questionUid=uid(22);}));
+test('UI checkout continuity foreign ordinal is refused',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.sourceOrdinal=2;}));
+test('UI checkout continuity cannot cross problem and solution scopes',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.surface='PROBLEM';}));
+test('UI checkout continuity current source must be the carrier current ref',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.currentSourceRef=r.uiCheckoutContinuity.capturedSourceRef;}));
+test('UI checkout continuity unnecessary same-checkout declaration is refused',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.capturedSourceRef=r.uiCheckoutContinuity.currentSourceRef;}));
+test('UI checkout continuity source commit must be the actual technical checkout',t=>refusesCheckout(t,(r,f)=>{
+  r.uiCheckoutContinuity.capturedSourceRef=ref(f.root,g(f.root,'rev-parse','HEAD'),SF);
+}));
+test('UI checkout continuity missing immutable commit is refused',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.capturedSourceRef.commit='0'.repeat(40);},/IMMUTABLE_GIT_INPUT_UNAVAILABLE/));
+test('UI checkout continuity wrong path fails the exact Git binding',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.capturedSourceRef.path=DP;},/REF_GIT_BINDING/));
+test('UI checkout continuity wrong raw digest is refused',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.capturedSourceRef.sha256='0'.repeat(64);},/REF_BYTES/));
+test('UI checkout continuity wrong byte count is refused',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.capturedSourceRef.bytes++;},/REF_BYTES/));
+test('UI checkout continuity omitted captured asset inventory is refused',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.capturedAssetRefs=[];}));
+test('UI checkout continuity omitted current asset inventory is refused',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.currentAssetRefs=[];}));
+test('UI checkout continuity duplicate captured asset is refused',t=>refusesCheckout(t,r=>{r.uiCheckoutContinuity.capturedAssetRefs.push(r.uiCheckoutContinuity.capturedAssetRefs[0]);}));
+test('UI checkout continuity asset commit must stay in the actual capture',t=>refusesCheckout(t,(r,f)=>{r.uiCheckoutContinuity.capturedAssetRefs=r.uiCheckoutContinuity.capturedAssetRefs.map(a=>ref(f.root,f.commit,a.path));}));
+test('UI checkout continuity missing nested captured asset is refused',t=>refuses(t,{nested:true,splitCapture:['PROBLEM'],finalDoc:d=>{d.displayReviews[0].uiCheckoutContinuity.capturedAssetRefs=d.displayReviews[0].uiCheckoutContinuity.capturedAssetRefs.filter(r=>r.path!==CHILD);}},/UI_CHECKOUT_/));
+test('UI checkout continuity reordered nested inventory is refused',t=>refuses(t,{nested:true,splitCapture:['PROBLEM'],finalDoc:d=>{d.displayReviews[0].uiCheckoutContinuity.capturedAssetRefs.reverse();}},/UI_CHECKOUT_CAPTURE_BINDING/));
+test('UI checkout continuity never ignores an unselected row change in the captured whole source',t=>refuses(t,{...splitOptions,captureMutation:(root,current)=>{
+  const other=CLONE(current);other[1].content+=' synthetic captured difference';write(root,SF,bankText(other));
+}},/UI_CHECKOUT_BYTES/));
+test('UI checkout continuity refuses even source-container whitespace drift',t=>refuses(t,{...splitOptions,captureMutation:root=>{fs.appendFileSync(path.join(root,SF),'\n');}},/UI_CHECKOUT_BYTES/));
+test('UI checkout continuity refuses a fully hashed changed captured surface asset',t=>refuses(t,{...splitOptions,captureMutation:root=>{fs.appendFileSync(path.join(root,NEW_SOL),' ');}},/UI_CHECKOUT_BYTES/));
+test('UI checkout continuity refuses changed captured nested child bytes',t=>refuses(t,{nested:true,splitCapture:['PROBLEM'],captureMutation:root=>{fs.appendFileSync(path.join(root,CHILD),' changed');}},/UI_CHECKOUT_BYTES/));
+test('UI checkout continuity cannot bypass current metadata whole-row equality',t=>refuses(t,{...splitOptions,current:(b,m)=>{m.records[0].primaryMethod='foreign';}},/METADATA_IDENTITY_CHANGED/));
+test('UI checkout continuity cannot bypass current identity whole-row equality',t=>refuses(t,{...splitOptions,current:(b,m,i)=>{i.records[0].foreign=true;}},/METADATA_IDENTITY_CHANGED/));
+test('UI checkout continuity cannot bypass a changed six-field vector',t=>refuses(t,{...splitOptions,current:(b,m,i,c)=>{c.items[0].method=[2];}},/PRIOR_REGISTERED_INDEX|PRIOR_REGISTERED_ROW/));
+test('UI checkout continuity still refuses an independent visual HOLD',t=>refuses(t,{...splitOptions,visual:(v,s)=>{if(s==='SOLUTION')v.records[0].decision='HOLD';}},/EXISTING_VECTOR_UI_VISUAL_CASE_BINDING/));
+test('UI checkout continuity deletion refuses on the caught-up cursor',t=>{
+  const f=fixture(t,splitOptions),out=f.run();assert.ok(selected(out));delete splitReview(f.doc).uiCheckoutContinuity;f.save();const next=f.run(out);
+  assert.equal(selected(next),undefined);assert.match(next.pending.find(r=>r.ordinal===1).reason,/EXISTING_VECTOR_UI_SELECTED_BINDING/);
+});
+test('UI checkout continuity retains live asset refusal after successful issuance',t=>{
+  const f=fixture(t,splitOptions),out=f.run();assert.ok(selected(out));fs.appendFileSync(path.join(f.root,NEW_SOL),' ');const next=f.run(out);
+  assert.equal(selected(next),undefined);assert.match(next.pending.find(r=>r.ordinal===1).reason,/LIVE_BYTES_CHANGED/);
+});
+
+function bareBrOptions(markup){return{content:true,current:bank=>{
+  bank[0].content=bank[0].content.replace('<div>',markup+'<div>');
+}};}
+for(const markup of ['<br>','<br/>','<br />','<br \t/>','<BR/>'])test('bare br reviewed image wrapper preserves original vector and caught-up replay: '+JSON.stringify(markup),t=>{
+  const f=fixture(t,bareBrOptions(markup)),beforeMd=fs.readFileSync(path.join(f.root,MD)),beforeId=fs.readFileSync(path.join(f.root,ID));
+  const carrier=path.join(f.root,route.DIR+'/'+uid(1)+'.json'),carrierRaw=fs.readFileSync(carrier);let sameCurrentWithoutCarrier;
+  fs.unlinkSync(carrier);try{sameCurrentWithoutCarrier=f.run();}finally{fs.writeFileSync(carrier,carrierRaw);}
+  assert.equal(selected(sameCurrentWithoutCarrier),undefined);
+  const out=f.run();assert.ok(selected(out));assert.deepEqual(vector(selected(out)),vector(selected(f.prior)));
+  assert.equal(builder.verify(out).verified,3);assert.deepEqual(f.run(out),out);
+  assert.deepEqual(out.records.filter(r=>r.questionUid!==uid(1)),sameCurrentWithoutCarrier.records.filter(r=>r.questionUid!==uid(1)));
+  assert.deepEqual(fs.readFileSync(path.join(f.root,MD)),beforeMd);assert.deepEqual(fs.readFileSync(path.join(f.root,ID)),beforeId);
+});
+for(const markup of [
+  '<br class="synthetic">','<br id="synthetic"/>','<br title="synthetic"/>',
+  '<br onclick="synthetic()">','<br onload="synthetic()"/>','<br style="height:1px">',
+  '<br data-synthetic/>','<br disabled>','<br / >','</br>','<br >',
+  '<hr>','<span></span>','<script></script>','<div>Synthetic added text</div>',
+  '<br>Synthetic added text','Synthetic prefix<br/>','<br>&nbsp;'
+])test('bare br extension refuses fully resealed attributes, other tags, or text: '+JSON.stringify(markup),t=>{
+  refuses(t,bareBrOptions(markup),/INLINE_NON_IMAGE_MARKUP/);
+});
+test('bare br wrapper cannot conceal another student field change',t=>refuses(t,{content:true,current:bank=>{
+  bank[0].content=bank[0].content.replace('<div>','<br><div>');bank[0].choices[0]+=' synthetic change';
+}},/UNREVIEWABLE_FIELD_CHANGE/));
+test('bare br wrapper still requires exact declared UTF8 span bytes',t=>refuses(t,{...bareBrOptions('<br>'),doc:d=>{
+  d.inlineEdits[0].afterSha256=sha('different synthetic span');
+}},/INLINE_EDIT_BINDING/));
+test('bare br wrapper cannot turn an independently held actual UI into acceptance',t=>refuses(t,{
+  ...bareBrOptions('<br/>'),visual:v=>{v.records[0].decision='HOLD';}
+},/EXISTING_VECTOR_UI_VISUAL_CASE_BINDING/));
+test('bare br wrapper missing carrier remains refused on the caught-up cursor',t=>{
+  const f=fixture(t,bareBrOptions('<br />')),out=f.run();assert.ok(selected(out));fs.unlinkSync(path.join(f.root,route.DIR+'/'+uid(1)+'.json'));
+  const next=f.run(out);assert.equal(selected(next),undefined);assert.match(next.pending.find(r=>r.ordinal===1).reason,/EXISTING_REGISTERED_VECTOR_CLAIM_MISSING_OR_MIXED/);
+});
