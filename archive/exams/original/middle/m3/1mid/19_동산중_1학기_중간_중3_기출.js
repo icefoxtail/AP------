@@ -69,7 +69,7 @@ window.questionBank = [
     "solution": "$\\sqrt{\\frac49}=\\frac23$, $0.21$, $\\sqrt{0.36}=0.6$, $\\sqrt{81}=9$는 모두 유리수이다.\n$\\sqrt2+\\sqrt4=2+\\sqrt2$, $\\pi$, $\\sqrt3$, $\\sqrt{0.4}$는 모두 무리수이다.\n따라서 무리수는 4개이므로 정답은 ②이다.",
     "level": "하",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -106,7 +106,7 @@ window.questionBank = [
     "solution": "$x$가 자연수이므로 $\\sqrt{x}$는 0 이상이다. 따라서 부등식의 양변을 제곱하면\n$16\\le x<25$이다.\n조건을 만족하는 자연수는 $16,17,18,19,20,21,22,23,24$로 9개이다.\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -300,7 +300,7 @@ window.questionBank = [
     "solution": "정사각형의 대각선 $AC$와 $BD$의 길이는 각각 $\\sqrt2$이다.\n$C$의 수가 0이고 $PC=AC=\\sqrt2$이며 $P$는 $-1$의 왼쪽이므로 $a=-\\sqrt2$이다.\n$B$의 수가 $-1$이고 $BQ=BD=\\sqrt2$이므로 $b=-1+\\sqrt2$이다.\n따라서 $a+b=-\\sqrt2+(-1+\\sqrt2)=-1$이므로 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "image": "assets/images/19_동산중_1학기_중간_중3_기출/q8-problem-v3.svg",
@@ -338,7 +338,7 @@ window.questionBank = [
     "solution": "① $-\\sqrt{18}<-4$이므로 거짓이다.\n\n② $(2\\sqrt{11})^2=44<(3\\sqrt5)^2=45$이므로 거짓이다.\n\n③ $\\sqrt2+1<3$이므로 거짓이다.\n\n④ $5\\sqrt6<6\\sqrt5$이므로 거짓이다.\n\n⑤는 $5\\sqrt3>6\\sqrt2$와 같고 $75>72$이므로 참이다.\n\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -619,8 +619,8 @@ window.questionBank = [
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "다항식의 곱셈과 인수분해",
-    "standardUnitOrder": 2,
+    "standardUnit": "실수와 그 계산",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -636,7 +636,7 @@ window.questionBank = [
     "solution": "$\\sqrt{x^2+4x+4}=\\sqrt{(x+2)^2}=|x+2|$이고 $\\sqrt{x^2-4x+4}=\\sqrt{(x-2)^2}=|x-2|$이다.\n$-2<x<2$이므로 $x+2>0$, $x-2<0$이다.\n따라서 주어진 식은 $(x+2)+(2-x)=4$이다.\n따라서 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "인수분해",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -821,7 +821,7 @@ window.questionBank = [
     "solution": "(1) 제곱근표에서 행 5.5, 열 3을 읽으면 $\\sqrt{5.53}\\approx2.352$이다.\n(2) 2.390은 행 5.7, 열 1에 있으므로 $\\sqrt{x}\\approx\\sqrt{5.71}$이다. 따라서 $x=5.71$이다.\n(3) $553=100\\times5.53$이므로 $\\sqrt{553}=10\\sqrt{5.53}\\approx10\\times2.352=23.52$이다.\n따라서 구하는 값은 (1) 2.352, (2) 5.71, (3) 23.52이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -834,8 +834,8 @@ window.questionBank = [
     "originalCategory": "인수분해의 활용",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-01",
-    "standardUnit": "다항식의 곱셈과 인수분해",
-    "standardUnitOrder": 2,
+    "standardUnit": "실수와 그 계산",
+    "standardUnitOrder": 1,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -852,7 +852,7 @@ window.questionBank = [
     "solution": "$0<a<1$이므로 $\\sqrt{a^2}=a$이다.\n$(a+\\dfrac1a)^2-4=(\\dfrac1a-a)^2$, $(a-\\dfrac1a)^2+4=(a+\\dfrac1a)^2$이다.\n부호를 반영하면 식은 $5a+2(\\dfrac1a-a)-2(a+\\dfrac1a)=a$이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "인수분해",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
