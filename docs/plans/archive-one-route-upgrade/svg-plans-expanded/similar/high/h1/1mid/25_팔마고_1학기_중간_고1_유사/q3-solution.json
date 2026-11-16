@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "caption": "k의 허용 범위는 열린 구간이다. 양 끝점은 −2√5와 2√5이며 끝점은 포함하지 않는다. 이 안의 정수를 센다.",
+  "accessibilityDescription": "k의 허용 범위는 열린 구간이다. 양 끝점은 −2√5와 2√5이며 끝점은 포함하지 않는다. 이 안의 정수를 센다.",
+  "numberLine": {
+    "variable": "k",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2*sqrt(5)",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2*sqrt(5)",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "color": "BLUE"
+      }
+    ]
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $x^{2}-2ax+2a^{2}+ka+5=0$이 임의의 실수 $a$의 값에 관계없이 항상 허근을 갖도록 하는 모든 정수 $k$의 개수는? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "relation",
+      "condition": "항상 양수인 이차식의 판별식에서 얻은 열린 구간과 끝점 제외를 보여 주어 정수 세기의 경계를 확인한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "항상 양수인 이차식의 판별식에서 얻은 열린 구간과 끝점 제외를 보여 주어 정수 세기의 경계를 확인한다."
+  ]
+}
