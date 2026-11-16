@@ -11,6 +11,10 @@ import {validateReviewedAuditCrossConceptComponent, REASSESSED_STUDENT_FIELDS} f
 import {loadActiveMetaRegistry} from './active-registry.mjs';
 import {readImmutableGitFiles} from './immutable-git-batch.mjs';
 import {createExactJsonByteParser} from './exact-json-byte-parser.mjs';
+import {AUDIT_SUBSET_CC_SCHEMA,isAuditSubsetCcAppend,isExplicitAuditSubsetCcAppendRequest,loadAuditSubsetCcAppend,
+  planAuditSubsetCcRow,buildAuditSubsetCcBinding,auditSubsetCcSummary,assertAuditSubsetCcReceipt,
+  nativeAuditSubsetCcAppend,verifiedAuditSubsetCcSourcePrecedence,hasExplicitAuditSubsetCcClaim,hasAuditSubsetCcClaim} from './audited-subset-cross-concept-append.mjs';
+export {AUDIT_SUBSET_CC_SCHEMA};
 
 const parseSmallJson = createExactJsonByteParser(16);
 const parseCurrentJson = raw => raw.length<=2*1024*1024 ? parseSmallJson(raw) : JSON.parse(raw.toString('utf8'));
@@ -77,12 +81,13 @@ function refs(root, values) {
 }
 const bound = (map, ref) => ref && map.get(ref.path) === ref.sha256;
 export const auditCcBindingPath = requestId => RECEIPTS + requestId + '.audit-cc-append.json';
-export const isAuditCcAppend = approval => approval?.type === 'META_PIPELINE_AUDIT'
+export const isAuditCcAppend = approval => isAuditSubsetCcAppend(approval) || approval?.type === 'META_PIPELINE_AUDIT'
   && approval.sourceRebind?.schemaVersion === AUDIT_CC_APPEND_SCHEMA;
 
 // This structural gate selects only the new operation. Authority validation is
 // always performed below by the actual immutable audit and finalization code.
 export function isExplicitAuditCcAppendRequest(request) {
+  if (isAuditSubsetCcAppend(request?.approval)) return isExplicitAuditSubsetCcAppendRequest(request);
   const spec = request?.approval?.sourceRebind;
   return request?.schemaVersion === 'archive-reviewed-exam-meta-register-request-v2' && isAuditCcAppend(request.approval)
     && exactKeys(request,['schemaVersion','requestId','examUid','sourceArchiveFile','expectedSourceBlobSha1','expectedQuestionCount','approval','registryChanges','items'])
@@ -136,6 +141,7 @@ function readBoundRequest(root, request) {
 }
 
 export function loadAuditCcAppend({root,request,bytes,bank,canonicalBefore,canonicalAfter}) {
+  if (isAuditSubsetCcAppend(request?.approval)) return loadAuditSubsetCcAppend({root,request,bytes,bank,canonicalBefore,canonicalAfter});
   if (!isExplicitAuditCcAppendRequest(request)) fail('exclusive full-audit CC append scope required');
   const spec=request.approval.sourceRebind, priorRef=spec.priorReceiptRef, component=spec.component;
   if (priorRef.path === RECEIPTS + request.requestId + '.json' ||
@@ -230,6 +236,7 @@ function components(context) {
       componentProofSha256:sha(stable(context.proof)),newMathematicalQa:false,newDifficultyJudgments:0}};
 }
 export function planAuditCcAppendRow(context,{current,identity,runtime,question,ordinal,receiptPath,replay=false}) {
+  if (context.subsetCc) return planAuditSubsetCcRow(context,{current,identity,runtime,question,ordinal,receiptPath,replay});
   const old=context.records.get(current.questionUid),oldId=context.identities.get(current.questionUid),oldRt=context.runtimes.get(current.questionUid);
   if (!old || old.sourceOrdinal!==ordinal || !same(question,context.bank[ordinal-1]) ||
       receiptPath!==RECEIPTS+context.request.requestId+'.json') fail('exact retained audit row required');
@@ -246,6 +253,7 @@ export function planAuditCcAppendRow(context,{current,identity,runtime,question,
 }
 
 export function buildAuditCcAppendBinding(context,requestSha256=sha(stable(context.request))) {
+  if (context.subsetCc) return buildAuditSubsetCcBinding(context,requestSha256);
   return {schemaVersion:AUDIT_CC_BINDING_SCHEMA,requestId:context.request.requestId,requestSha256,
     requestSnapshot:structuredClone(context.request),priorReceiptRef:context.priorRef,
     sourceArchiveFile:context.request.sourceArchiveFile,expectedQuestionCount:context.bank.length,
@@ -260,12 +268,14 @@ export function buildAuditCcAppendBinding(context,requestSha256=sha(stable(conte
       appendedCrossConceptKeys:r.questionUid===context.selected.questionUid?[context.request.approval.sourceRebind.component.addCrossConceptKey]:[]}))};
 }
 export function auditCcAppendSummary(context) {
+  if (context.subsetCc) return auditSubsetCcSummary(context);
   return {schemaVersion:AUDIT_CC_APPEND_SCHEMA,bindingPath:context.bindingPath,priorReceiptRef:context.priorRef,
     preservedApprovalType:'META_PIPELINE_AUDIT',newMetadataApprovals:0,preservedMetadataApprovals:context.bank.length,
     finalizedCrossConceptApplications:1,appendedQuestionUid:context.selected.questionUid,
     appendedCrossConceptKey:context.request.approval.sourceRebind.component.addCrossConceptKey};
 }
 export function assertAuditCcAppendReceipt(context,receipt) {
+  if (context.subsetCc) return assertAuditSubsetCcReceipt(context,receipt);
   const request=context.request,hash=sha(stable(request)),count=context.bank.length;
   if (!exactKeys(receipt,['schemaVersion','requestId','requestSha256','examUid','sourceArchiveFile','sourceBlobSha1','sourceRawSha256',
       'approval','metaPipelineAudit','auditCrossConceptAppend','metadataRegistrationStatus','examFinalQaStatus','consumerSearchStatus',
@@ -305,13 +315,15 @@ function receiptCandidates(current,runtime) {
 }
 
 export function nativeAuditCcAppend({nativeSource,question,previous,current,identity,ordinal,registry,pt,tpl,ownerPack}) {
+  const subset = nativeAuditSubsetCcAppend({nativeSource,question,previous,current,identity,ordinal,registry,pt,tpl,ownerPack});
+  if (subset) return subset;
   const {root,bytes,bank,runtimeRecord}=nativeSource;
   if (!isPreservableAuditRecord(current) || current.metaFoundationPackId!==ownerPack ||
       current.L3!==pt?.canonicalLabelKo || current.L4!==tpl?.canonicalLabelKo) return null;
   for (const p of receiptCandidates(current,runtimeRecord)) {
     try {
       const receipt=read(root,p);
-      if (!isAuditCcAppend(receipt.approval)) continue;
+      if (!isAuditCcAppend(receipt.approval) || isAuditSubsetCcAppend(receipt.approval)) continue;
       const matches=receipt.appliedRecords.filter(r=>r.questionUid===current.questionUid);
       if (matches.length!==1 || !same(matches[0],current)) fail('native current component row drift');
       if (receipt.sourceRawSha256!==sha(bytes) || receipt.sourceBlobSha1!==blob(bytes))
@@ -340,6 +352,8 @@ export function nativeAuditCcAppend({nativeSource,question,previous,current,iden
 // only after replaying both authorities and every current row of the full
 // source. A revision label selects work; it never grants this precedence.
 export function verifiedAuditCcSourcePrecedence({root,source,bytes,bank,metadataRows,identityRows}) {
+  if (Array.isArray(metadataRows) && metadataRows.some(current=>hasExplicitAuditSubsetCcClaim({root,current})))
+    return verifiedAuditSubsetCcSourcePrecedence({root,source,bytes,bank,metadataRows,identityRows});
   const empty=()=>new Map();
   if (!Array.isArray(metadataRows) || !metadataRows.some(row=>
       row.crossConceptApprovalComponents!==undefined ||
@@ -413,6 +427,7 @@ export function auditCcSourceFieldIsVerified(precedence,questionUid,field,source
 }
 
 export function hasExplicitAuditCcAppendClaim({root,current,runtimeRecord}) {
+  if (hasExplicitAuditSubsetCcClaim({root,current,runtimeRecord})) return true;
   for (const row of [current,runtimeRecord]) if (row?.crossConceptApprovalComponents!==undefined ||
       /:audit-finalized-cc-append-v1:/.test(row?.metadataRevision||'') ||
       row?.approvalEvidence?.some(p=>typeof p==='string' && p.endsWith('.audit-cc-append.json'))) return true;
@@ -454,6 +469,7 @@ function immutableAuditAuthorities(root,source) {
 // Immutable original authority, not the presence of mutable issued markers,
 // bounds the CC array. No result from this function approves any record.
 export function hasAuditCcAppendClaim({root,current,runtimeRecord,nativeSource}) {
+  if (hasAuditSubsetCcClaim({root,current,runtimeRecord})) return true;
   if (hasExplicitAuditCcAppendClaim({root,current,runtimeRecord})) return true;
   if (!current?.questionUid || !current.sourceArchiveFile || !nativeSource?.bank) return false;
   let authorities;

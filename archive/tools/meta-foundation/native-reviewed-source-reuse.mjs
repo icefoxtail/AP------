@@ -20,6 +20,7 @@ import { isSourceSubsetRebind, validateSourceSubsetEvidence, preservedSourceEvid
 import { isIssuedSourceBindingRecovery, validateIssuedSourceBindingRecovery } from './issued-source-binding-recovery.mjs';
 import { hasImmutableM2CurrentRendererClaim } from './reviewed-m2-current-renderer-continuity.mjs';
 import { hasImmutableM2ProviderCurrentRendererClaim } from './reviewed-m2-provider-current-renderer-continuity.mjs';
+import { hasImmutableM2E035RendererClaim, M2_E035_RENDERER_SCHEMA, M2_E035_SCOPE } from './reviewed-m2-e035-renderer-continuity.mjs';
 import { reviewedRendererBindingPath, buildReviewedRendererBinding } from './reviewed-current-renderer-continuity.mjs';
 import { NATIVE_RATIONALE_CONTINUITY_SCHEMA, NATIVE_RATIONALE_SOURCE_FIELDS,
   rationaleProtectedQuestionSha256, rationaleSourceFieldBinding } from './reviewed-native-rationale-continuity.mjs';
@@ -71,6 +72,7 @@ function unique(rows, key, label) {
 export function hasNativeReviewedSourceClaim({root, current, runtimeRecord}) {
   if (hasImmutableM2CurrentRendererClaim({root,current,runtimeRecord})) return true;
   if (hasImmutableM2ProviderCurrentRendererClaim({root,current,runtimeRecord})) return true;
+  if (hasImmutableM2E035RendererClaim({root,current,runtimeRecord})) return true;
   if (markers(current).length || markers(runtimeRecord).length) return true;
   const candidates=new Set([current,runtimeRecord].flatMap(row=>Array.isArray(row?.approvalEvidence)?row.approvalEvidence:[]));
   for (const row of [current,runtimeRecord]) {
@@ -389,5 +391,25 @@ export function nativeReviewedE017RhsRebind(receipt, nativeSource, previous, que
     const prior = sha(stable(previous));
     return [proof.nativeReviewedQuestionSha256, proof.nativeCommittedQuestionSha256, proof.reviewedCurrentQuestionSha256]
       .some(value => SHA256.test(value || '') && value === prior);
+  } catch { return false; }
+}
+
+// E035's old cursor is bound to a complete authenticated source object, not a
+// matching fingerprint or the presence of a renderer marker. This shares only
+// the unchanged full native replay; the earlier fixed-three lane is untouched.
+export function nativeReviewedM2E035RendererRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (!previous || receipt.approval?.sourceRebind !== undefined || identity.questionUid !== M2_E035_SCOPE.questionUid ||
+      ordinal !== M2_E035_SCOPE.sourceOrdinal || receipt.sourceArchiveFile !== M2_E035_SCOPE.sourceArchiveFile) return false;
+  const matches = receipt.fingerprintRepairs?.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+  const proof = matches?.[0]?.sourceReview?.m2E035RendererContinuity;
+  if (matches?.length !== 1 || proof?.schemaVersion !== M2_E035_RENDERER_SCHEMA ||
+      Object.entries(M2_E035_SCOPE).some(([key, value]) => proof[key] !== value) || proof.memoryOnlyNormalization !== true ||
+      proof.newMathematicalQa !== false || proof.newMetadataApprovals !== 0 || proof.newDefinitionApprovals !== 0 ||
+      proof.newDifficultyJudgments !== 0 || proof.newFourSlotApprovals !== 0 || proof.sourceWrites !== 0 || proof.rendererWrites !== 0) return false;
+  try {
+    if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
+    const previousSha = sha(stable(previous));
+    return [proof.productionBeforeSourceRef, proof.prefigureSourceRef]
+      .some(ref => SHA256.test(ref?.questionSha256 || '') && ref.questionSha256 === previousSha);
   } catch { return false; }
 }

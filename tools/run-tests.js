@@ -113,12 +113,53 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-m2-provider-current-renderer.test.mjs']
   },
   {
+    label: 'tests/archive-m2-e035-renderer-source.test.mjs',
+    args: ['--test', 'tests/archive-m2-e035-renderer-source.test.mjs']
+  },
+  {
+    label: 'tests/archive-m2-e035-renderer-viewport.test.mjs',
+    args: ['--test', 'tests/archive-m2-e035-renderer-viewport.test.mjs']
+  },
+  ...['dependencies', 'coordinates', 'evidence'].map(group => ({
+    label: `tests/archive-m2-e035-renderer-v3-${group}.test.mjs`,
+    args: ['--test', `tests/archive-m2-e035-renderer-v3-${group}.test.mjs`],
+  })),
+  {
+    label: 'tests/archive-m2-e035-renderer-runtime.test.mjs [v3]',
+    args: ['--test', '--test-name-pattern', '^v3 ', 'tests/archive-m2-e035-renderer-runtime.test.mjs'],
+  },
+  // Keep all E035 synthetic assertions in the ordinary finite 60s commands.
+  ...['^truthfully re-sealed', '^(?:an original|actual capture|re-sealing|supported Chromium|a truthful|preserved HOLD|same-path|E035 static|a native content)'].map((pattern, index) => ({
+    label: `tests/archive-m2-e035-renderer-evidence.test.mjs [${index + 1}/2]`,
+    args: ['--test', '--test-name-pattern', pattern, 'tests/archive-m2-e035-renderer-evidence.test.mjs'],
+  })),
+  ...[
+    '^synthetic official',
+    '^(?:old-cursor|issued E035 refuses)',
+    '^(?:all live provenance|committed deletion|committed empty|merge-parent|unrelated branch|current canonical|unavailable HEAD)',
+  ].map((pattern, index) => ({
+    label: `tests/archive-m2-e035-renderer-runtime.test.mjs [${index + 1}/3]`,
+    args: ['--test', '--test-name-pattern', pattern, 'tests/archive-m2-e035-renderer-runtime.test.mjs'],
+  })),
+  {
     label: 'tests/archive-audited-cc-append.test.mjs',
     args: ['--test', 'tests/archive-audited-cc-append.test.mjs']
   },
   {
     label: 'tests/archive-audited-cc-catalog-precedence.test.mjs',
     args: ['--test', 'tests/archive-audited-cc-catalog-precedence.test.mjs']
+  },
+  {
+    label: 'tests/archive-audited-subset-cc-append.test.mjs',
+    args: ['--test', 'tests/archive-audited-subset-cc-append.test.mjs']
+  },
+  {
+    label: 'tests/archive-audited-subset-cc-guards.test.mjs',
+    args: ['--test', 'tests/archive-audited-subset-cc-guards.test.mjs']
+  },
+  {
+    label: 'tests/archive-audited-subset-cc-replay.test.mjs',
+    args: ['--test', 'tests/archive-audited-subset-cc-replay.test.mjs']
   },
   {
     label: 'tests/archive-changed-uid-consumer-approval.test.mjs',

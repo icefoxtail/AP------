@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "archive-e035-screen-fit-independent-initial-review-v1",
+  "reviewer": "M3",
+  "createdAt": "2026-11-16T10:03:07.685303+00:00",
+  "decision": "BLOCKED_SCOPED_REGRESSION",
+  "blockingFindings": 1,
+  "candidateManifest": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/publication-candidate-manifest.json",
+    "bytes": 1626,
+    "sha256": "d1a3ccf79f56380115e569787f083fb5877e91e7376f89b7e17309929e70e0d3"
+  },
+  "authorValidation": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/repair-plan-and-validation.json",
+    "bytes": 7471,
+    "sha256": "780e4397541c8e335656419a8b9886b6c1c3f9f0eb416086ac80f191b32a9652"
+  },
+  "candidateRenderer": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/candidate/archive/mixed_engine.html",
+    "bytes": 208780,
+    "sha256": "5422ca623e5c1274620d12c3ca91bc8df3cbe41479fea6ae67e695f4ee82d497"
+  },
+  "test": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/candidate/tests/archive-mixed-screen-fit.test.js",
+    "bytes": 6762,
+    "sha256": "f2e1e35451a0e5a6d3075adf1a5daeb38901d42ac1e33e99d839843b24431c88"
+  },
+  "authorLogsRead": [
+    {
+      "ref": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/before-regression.tap",
+        "bytes": 9847,
+        "sha256": "ba753aa7c57b27a753a1187879f2215ef825b82ce1f536b8f2e66a7f2df90810"
+      },
+      "summary": [],
+      "testStatusLines": []
+    },
+    {
+      "ref": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/renderer-screen-fit-repair/after-regression.tap",
+        "bytes": 1114,
+        "sha256": "5b6d89f0aa4be0059263fdf45a91834f3c6e0cb3084affa04511d9ebf9af9949"
+      },
+      "summary": [],
+      "testStatusLines": []
+    }
+  ],
+  "verifiedScope": {
+    "onlyScreenTransformRuleAndUpdateScreenFitScaleChanged": true,
+    "inverseTwoRegionsMatchesEntireE162Renderer": true,
+    "printNoneOverrideUnchanged": true,
+    "existingScaleBoundsAndGutterUnchanged": true,
+    "studentSourceAssetsNativeInputsChanged": 0
+  },
+  "acceptedReasoning": "Using finite positive document client width addresses the observed 786 versus 390 width discrepancy. Center-origin overflow arithmetic gives the intended horizontal fit in the modeled normal path.",
+  "finding": {
+    "id": "EXISTING_REVIEW_TOP_LEFT_ORIGIN",
+    "severity": "blocking before publication",
+    "evidence": [
+      {
+        "commit": "e162ece8868f9d9dcb8c1e0f9590a738dcf36a16",
+        "path": "archive/archive2-review.css",
+        "sha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110",
+        "bytes": 476
+      },
+      {
+        "commit": "e162ece8868f9d9dcb8c1e0f9590a738dcf36a16",
+        "path": "archive/archive2-review.js",
+        "sha256": "c908f7933ab69970b0f952e5207ef1d83a116c72944fe6a88780dd56b9dd59ce",
+        "bytes": 407
+      }
+    ],
+    "entry": "archive2Review=1 adds archive2-paper-review and screen-fit-mode.",
+    "cssMode": "At screen max-width 850px, archive2-review.css forces zero horizontal margins and top-left transform origin.",
+    "candidateBehavior": "The unconditional negative center offset also applies in this existing left-origin mode.",
+    "counterexampleModel": {
+      "clientWidth": 390,
+      "innerWidth": 786,
+      "areaWidth": 794,
+      "pageWidth": 794,
+      "activeReviewCss": true,
+      "transformOriginX": 0,
+      "marginLeft": 0,
+      "scale": "374/794",
+      "offsetX": -202,
+      "resultLeft": -202,
+      "resultRight": 172
+    },
+    "status": "Direct derivation from existing stylesheet and candidate; no browser execution or synthetic execution by M3.",
+    "requiredFix": "Do not apply center-origin overflow compensation when the effective existing mode uses a left transform origin. Preserve that mode and add a focused regression using its actual CSS declarations."
+  },
+  "testAssessment": {
+    "positive": "The same test file extracts the production function and models the declared transform order, including desktop, mobile overflow, fallback, resize and print override.",
+    "gap": "The model always asserts top-center origin and auto margins from the inline rule. It omits the later archive2-review.css mode, so 11/11 does not cover this regression.",
+    "remainingActualGate": "Fresh original four-view UI evidence is required even after the model passes. The model does not establish vertical layout, actual CSS cascade or glyph legibility."
+  },
+  "helperCompatibility": {
+    "frozenHelper": "542639cf7c873a1e462e683c63224fcc7d64b8ad",
+    "floorUnchanged": true,
+    "newImmutableRendererAllowedWithExactCheckoutRefs": true,
+    "sourceAndAssetsExactBytesRequired": true,
+    "fourCaseEvidenceRequired": true
+  },
+  "reviewExecution": {
+    "tests": 0,
+    "browser": 0,
+    "productionEdits": 0,
+    "remoteWrites": 0
+  },
+  "uiDecision": "HOLD",
+  "nextAction": "M1 narrowly repairs the left-origin interaction and freezes a separate delta and targeted result. M3 re-reads that delta; ROOT owns publication and actual UI execution."
+}

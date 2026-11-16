@@ -1,0 +1,78 @@
+{
+  "runId": 43833721220,
+  "jobId": 133185034226,
+  "artifactId": 14209568321,
+  "headCommit": "e493d3b2863a8d2d76badc940ee9b8c605eca93d",
+  "zipSha256": "72a90fe9f29c9389425f6fcdd77c6f070ca2741d64d73d7ff197eef5d2325b79",
+  "zipBytes": 88194,
+  "files": [
+    {
+      "path": "desktop-problem-preflight.json",
+      "sha256": "e0bf20752194a2794e9c097ed05df510ca4180778c2ace3c854a165b474cb4df",
+      "bytes": 364
+    },
+    {
+      "path": "desktop-problem-failure-state.json",
+      "sha256": "fd276b550657d55f40b871de4ea4c6d67c4fb74a3a746b2b1303b145aaedbaed",
+      "bytes": 583,
+      "observation": {
+        "readiness": "{\"adapter\":\"MixerAdapter\",\"transaction\":1,\"state\":\"RENDER_READY\",\"ready\":false,\"failed\":false,\"failure\":null,\"events\":[{\"state\":\"DATA_READY\",\"evidence\":{\"questions\":21,\"key\":\"\"}},{\"state\":\"MATH_READY\",\"evidence\":{\"source\":\"local\"}},{\"state\":\"IMAGE_READY\",\"evidence\":{\"images\":13,\"loaded\":13,\"errors\":0,\"timeouts\":0}},{\"state\":\"LAYOUT_READY\",\"evidence\":{\"pages\":17}},{\"state\":\"RENDER_READY\",\"evidence\":{\"mode\":\"exam\"}}]}",
+        "questions": 21,
+        "renderError": null,
+        "bodyTextLength": 179185
+      }
+    },
+    {
+      "path": "diagnostics.json",
+      "sha256": "299d14304622471bd19c246f497d839c84c88fe3ee793c05862cc12201fabb3e",
+      "bytes": 184,
+      "observation": {
+        "status": "FAIL",
+        "activeCase": "desktop-problem",
+        "failures": [],
+        "externalResources": [],
+        "error": {
+          "name": "AssertionError",
+          "message": "UI_RENDER_STATE"
+        }
+      }
+    },
+    {
+      "path": "desktop-problem-failure-viewport.png",
+      "sha256": "028cfa92dc4ca95a0eedd60a137b87ea71bc3d4596c1ae7b530ff57f0f404a68",
+      "bytes": 41716,
+      "dimensions": [
+        1280,
+        900
+      ]
+    },
+    {
+      "path": "e035-problem-desktop-tile-01.png",
+      "sha256": "f235e1c5acd2e2949f35046290a8c0e07296e29b0f7245ffd1687b48d84800b3",
+      "bytes": 30354,
+      "dimensions": [
+        664,
+        438
+      ]
+    },
+    {
+      "path": "technical-proof.json",
+      "sha256": "14cf8734df0eade064e22c0a12ba21a02bc7d7eef121ce81486d03553fc8dc36",
+      "bytes": 20960,
+      "observation": {
+        "schemaVersion": "archive-e035-current-renderer-student-ui-technical-v2",
+        "status": "FAIL",
+        "producer": "/root",
+        "executionOwner": "GITHUB_ACTIONS_SUPPORTED_CHROME",
+        "checkoutCommit": "e162ece8868f9d9dcb8c1e0f9590a738dcf36a16",
+        "browserVersion": "157.0.8103.78"
+      },
+      "cases": []
+    },
+    {
+      "path": "tile-helper.cjs",
+      "sha256": "94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4",
+      "bytes": 50028
+    }
+  ]
+}

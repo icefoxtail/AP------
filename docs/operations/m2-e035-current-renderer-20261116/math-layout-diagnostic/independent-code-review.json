@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-e035-math-layout-diagnostic-independent-read-v1",
+  "observedAt": "2026-11-16T11:26:04.083490+00:00",
+  "observer": "/root/audit_m3",
+  "decision": "STATIC_ACCEPT_DIAGNOSTIC_ONLY",
+  "blockingFindings": 0,
+  "base": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-v7-pinned-helper/producer-v7-pinned-helper-candidate.cjs",
+    "sha256": "4ec3f3f17fe58c45d63b2c35cfc9a0735c80d051c0ce767f30dd0b9afbc9d8e2",
+    "bytes": 29202
+  },
+  "candidate": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-math-layout-diagnostic/producer-v7-math-layout-diagnostic.cjs",
+    "sha256": "b572ebb371b855b54ab3ec171751206e9a0a45501bba65dd91c2a10171af37cf",
+    "bytes": 31555
+  },
+  "manifest": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration/.tmp/e035-math-layout-diagnostic/candidate-manifest.json",
+    "sha256": "3f2a30e9277c91cf1541e09d0bd313543955a93bfc915bcc83243bd3ffcc6b6e"
+  },
+  "exactDeltaGroups": 2,
+  "inverseReconstructsPriorProducerBytes": true,
+  "unchangedByInverse": [
+    "original measurement/hit/capture predicates",
+    "viewport, source and whole-bank bindings",
+    "four fixed cases and screenshot API",
+    "all existing late-failure and technical-proof checks",
+    "original helper/version pin and pixel rule"
+  ],
+  "diagnosticReview": {
+    "selectedScope": "Current exact unique asset selector and its attached .q-box only",
+    "readTiming": "Synchronous read-only browser function called only after the original case capture completes, before the unchanged late-failure check",
+    "maximumContainers": 8,
+    "maximumNodesPerContainer": 64,
+    "maximumFragmentsPerNode": 8,
+    "maximumAncestorRecords": 4,
+    "computedStyleProperties": [
+      "display",
+      "position",
+      "fontFamily",
+      "fontSize",
+      "lineHeight",
+      "verticalAlign",
+      "whiteSpace",
+      "wordBreak",
+      "overflowWrap",
+      "width",
+      "height",
+      "boxSizing",
+      "transform",
+      "top",
+      "left"
+    ],
+    "pseudoStyle": "Only mjx-c ::before, same fixed property allowlist; computed content is not read",
+    "output": "Separate case-specific math-layout.json, diagnostic-only authority flag",
+    "sourceOrMathStringsEmitted": false,
+    "attributeValuesEmitted": false,
+    "htmlEmitted": false,
+    "domWrites": 0,
+    "cssWrites": 0,
+    "viewportOrScrollWrites": 0,
+    "fallbackOrRetryAdded": false,
+    "diagnosticFailureCannotConvertCaptureFailureToPass": true,
+    "fullDomOrAttributeSerialization": false
+  },
+  "limits": {
+    "fullComputedStyleDump": false,
+    "elementSelectionMayCountMoreNodesThanEmitted": true,
+    "emissionBoundedToDeclaredLimits": true,
+    "notAVisualOrMathematicalApproval": true,
+    "newBrowserExecutionByReviewer": 0,
+    "newTestsByReviewer": 0,
+    "productionOrCandidateEditsByReviewer": 0,
+    "priorUiDecision": "HOLD",
+    "nativeTechnicalV3Intake": "NOT_IMPLEMENTED"
+  },
+  "priorVisualHold": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-readable-v7-gha-independent-visual-hold.json",
+    "sha256": "6ea937c2ca18aeb9519f9e318d2255b4b56cc798925ebb4c7b031d85ccafcd51"
+  },
+  "nextAction": "ROOT may publish this diagnostic-only producer and run it once against the same immutable renderer. Inspect bounded numeric/style outputs to locate the glyph-layout defect; retain UI HOLD until an independently reviewed repair and new original four-case capture."
+}

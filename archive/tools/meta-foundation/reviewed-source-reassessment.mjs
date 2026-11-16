@@ -20,6 +20,7 @@ import { validateM3S2CurrentTargetApplication } from "./reviewed-m3s2-current-ta
 import { validateM2ProblemRendererContinuity } from "./reviewed-m2-problem-renderer-continuity.mjs";
 import { validateReviewedM2CcRendererContinuity } from "./reviewed-m2-cc-renderer-continuity.mjs";
 import { validateM2E017RhsContinuity } from "./reviewed-m2-e017-rhs-continuity.mjs";
+import { validateM2E035RendererContinuity } from "./reviewed-m2-e035-renderer-continuity.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -228,6 +229,18 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     return { ...inner, studentPayloadSha256: sha256(stable(payload)), e017RhsContinuity: {
       ...e017Rhs.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
   }
+  const e035Renderer = validateM2E035RendererContinuity({ root, request, patch, native: loaded, row,
+    question, studentPayload, bankFromBytes, cache });
+  if (e035Renderer) {
+    // The exact original request and complete frozen source object were read
+    // from immutable Git. All ordinary v3/native/retained/current-definition
+    // validators execute again; the outer result binds the actual live payload.
+    const inner = validateReviewedSourceReassessment({ root, request, patch: e035Renderer.normalizedPatch,
+      metadata, question: e035Renderer.normalizedQuestion, final, supportedFields, canonicalBefore, canonicalAfter,
+      issuedSourceReview, cache });
+    return { ...inner, studentPayloadSha256: sha256(stable(payload)), m2E035RendererContinuity: {
+      ...e035Renderer.proof, originalSourceReviewSha256: sha256(stable(inner)) } };
+  }
   const m2ProblemRenderer = validateM2ProblemRendererContinuity({ root, request, patch, native: loaded, row,
     question, studentPayload, bankFromBytes, cache });
   if (m2ProblemRenderer) {
@@ -412,10 +425,16 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
 // component against its own immutable native base, then return that one exact
 // addition. The caller separately verifies/preserves the original audit and
 // binds the actual source to their exact union. Ordinary FINAL_QA is unchanged.
-export function validateReviewedAuditCrossConceptComponent({ root, request, component, evidenceRefs,
-  question, prior, canonicalBefore, canonicalAfter, cache = new Map() }) {
+export function validateReviewedAuditCrossConceptComponent(args) {
+  return validateAuditCrossConceptComponent(args, "archive-audit-finalized-cc-append-v1");
+}
+export function validateReviewedAuditSubsetCrossConceptComponent(args) {
+  return validateAuditCrossConceptComponent(args, "archive-audit-subset-finalized-cc-append-v1");
+}
+function validateAuditCrossConceptComponent({ root, request, component, evidenceRefs,
+  question, prior, canonicalBefore, canonicalAfter, cache = new Map() }, operationSchema) {
   if (request.approval?.type !== "META_PIPELINE_AUDIT" ||
-      request.approval.sourceRebind?.schemaVersion !== "archive-audit-finalized-cc-append-v1" ||
+      request.approval.sourceRebind?.schemaVersion !== operationSchema ||
       !component || Object.keys(component).some(k => !["questionUid", "sourceOrdinal", "addCrossConceptKey", "sourceReview"].includes(k)) ||
       component.questionUid !== prior.questionUid || component.sourceOrdinal !== prior.sourceOrdinal ||
       !text(component.addCrossConceptKey) || component.sourceReview?.rendererProof !== undefined ||

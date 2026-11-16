@@ -137,7 +137,7 @@
 
         #print-area { display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; }
         body.screen-fit-mode { overflow-x: hidden; }
-        body.screen-fit-mode #print-area { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: scale(var(--screen-page-scale, 1)); transform-origin: top center; }
+        body.screen-fit-mode #print-area { width: max-content; max-width: none; margin-left: auto; margin-right: auto; transform: translateX(var(--screen-page-offset-x, 0px)) scale(var(--screen-page-scale, 1)); transform-origin: top center; }
         body.screen-fit-mode .page { flex: 0 0 auto; }
         @media screen and (max-width: 640px) {
             body.screen-fit-mode { padding-top: 44px; }
@@ -436,10 +436,16 @@
         if (new URLSearchParams(window.location.search).get('archive2Context') === 'archive2') {
             document.documentElement.dataset.archive2Context = 'archive2';
         }
+        // Presentation marker only: do not impersonate Archive2 transport context.
+        if (new URLSearchParams(window.location.search).get('studentReview') === '1' &&
+            !document.documentElement.dataset.archive2Context) {
+            document.documentElement.dataset.apStudentReview = 'true';
+        }
     </script>
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261116-mobile-figure-1">
+    <link rel="stylesheet" href="student-review-mobile.css?v=20261116-readable-2">
     <script src="render-state-normalizer.js?v=20261112-student-svg-1"></script>
     <script src="screen-runtime.js?v=20261106-output-performance-2"></script>
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
@@ -3389,9 +3395,25 @@ function getFastPrintCopies() {
     return copies;
 }
 
+// The existing A4 DOM remains the print/export authority. Suspend only the
+// student's screen presentation while any supported print transport reads it.
+function suspendStudentReviewPresentation() {
+    const html = document.documentElement;
+    if (html.dataset.apStudentReview !== 'true') return () => {};
+    const attribute = 'data-ap-student-review-printing';
+    const previous = html.getAttribute(attribute);
+    html.setAttribute(attribute, 'true');
+    return () => {
+        if (previous === null) html.removeAttribute(attribute);
+        else html.setAttribute(attribute, previous);
+    };
+}
+
 async function safePrint(mode = 'vector') {
     mode = mode === 'raster' || mode === 'native' || mode === 'gdi' ? mode : 'vector';
     if (printPending) return;
+    const restoreStudentPresentation = suspendStudentReviewPresentation();
+    try {
     printPending = true;
     setPrintButtonsBusy(true, mode);
     const printStartedAt = performance.now();
@@ -3556,6 +3578,9 @@ async function safePrint(mode = 'vector') {
         cleanup();
         throw error;
     }
+    } finally {
+        restoreStudentPresentation();
+    }
 }
 if (!buildContext) window.safePrint = safePrint;
 
@@ -3569,9 +3594,19 @@ function updateScreenFitScale() {
     const page = area?.querySelector('.page');
     if (!area || !page) return;
     const pageWidth = page.offsetWidth || 794;
-    const availableWidth = Math.max(280, window.innerWidth - 16);
+    // Mobile overflow can widen innerWidth beyond the actual document viewport.
+    const clientWidth = document.documentElement.clientWidth;
+    const viewportWidth = Number.isFinite(clientWidth) && clientWidth > 0 ? clientWidth : window.innerWidth;
+    if (!Number.isFinite(viewportWidth) || viewportWidth <= 0) return;
+    const availableWidth = Math.max(280, viewportWidth - 16);
     const scale = Math.max(0.32, Math.min(1, availableWidth / pageWidth));
+    // An overflowing max-content area has no auto margin. Keep its scaled
+    // paper centered in the real viewport without changing print geometry.
+    const leftAlignedReview = document.documentElement.classList.contains('archive2-paper-review') &&
+        window.matchMedia('(max-width: 850px)').matches;
+    const offsetX = leftAlignedReview ? 0 : Math.min(0, (viewportWidth - (area.offsetWidth || pageWidth)) / 2);
     document.documentElement.style.setProperty('--screen-page-scale', String(scale));
+    document.documentElement.style.setProperty('--screen-page-offset-x', `${offsetX}px`);
 }
 
 if (!buildContext && typeof window !== 'undefined' && window.addEventListener) {

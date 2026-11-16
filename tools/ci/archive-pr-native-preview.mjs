@@ -12,6 +12,7 @@ import { spawnSync } from 'node:child_process';
 import { isExplicitSourceSubsetRebind, isFullSourceSubsetRebind, sourceSubsetEvidencePath, fullSourceSubsetEvidencePath } from '../../archive/tools/meta-foundation/source-subset-preservation.mjs';
 import { isExplicitIssuedSourceBindingRecoveryRequest } from '../../archive/tools/meta-foundation/issued-source-binding-recovery.mjs';
 import { isExplicitAuditCcAppendRequest } from '../../archive/tools/meta-foundation/audited-cross-concept-append.mjs';
+import { auditSubsetCcHistoricalEvidenceAnchors } from '../../archive/tools/meta-foundation/audited-subset-cross-concept-append.mjs';
 import { isOriginalFinalQaRendererPreservation,isExplicitOriginalRendererRequest } from '../../archive/tools/meta-foundation/original-finalqa-renderer-preservation.mjs';
 import { verifyIssuedRpmEvidenceContinuity } from '../../archive/tools/meta-foundation/issued-rpm-evidence-continuity.mjs';
 import { beginSemanticRunScopeGuard, finishSemanticRunScopeGuard } from '../../archive/tools/meta-foundation/semantic-run-scope.mjs';
@@ -783,7 +784,7 @@ function historicalPreservedRpmEvidence(root, headSha, context, item, currentRef
 // Include that receipt's explicit SHA-bound approval inputs in the same fixed
 // manifest, so the independent shadow receives the documents too. This stages
 // inputs only; the official registrar still authenticates every approval.
-function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, historicalAuditReceipt, auditSourceAncestor,
+function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, historicalAuditReceipt, historicalAuditReceipts = [], auditSourceAncestor,
   preservationRequest, historicalRpmEvidence = [] } = {}) {
   const refs = new Map(), active = new Set(), historyCache = new Map();
   const visit = (item, issuedOwner = null, preservationContext = null) => {
@@ -851,12 +852,14 @@ function fixedNativeEvidence(root, headSha, lists, { withdrawnReceiptRef, histor
     // already been consumed and must not be recreated in the current inbox.
     // Only the exact prior receipt may use that immutable replay boundary;
     // ordinary native receipts keep the recursive live-input staging below.
-    if (historicalAuditReceipt?.path === ref.path && historicalAuditReceipt.sha256 === ref.sha256) {
-      if (!/^[a-f0-9]{40}$/.test(historicalAuditReceipt.commit || '') ||
+    const historicalAuditAnchor = [historicalAuditReceipt, ...historicalAuditReceipts].filter(Boolean)
+      .find(anchor => anchor.path === ref.path && anchor.sha256 === ref.sha256);
+    if (historicalAuditAnchor) {
+      if (!/^[a-f0-9]{40}$/.test(historicalAuditAnchor.commit || '') ||
           receipt.approval?.type !== 'META_PIPELINE_AUDIT')
         fail('HISTORICAL_AUDIT_RECEIPT_NOT_FIXED');
       let historical;
-      try { historical = gitBytes(root, `${historicalAuditReceipt.commit}:${ref.path}`); }
+      try { historical = gitBytes(root, `${historicalAuditAnchor.commit}:${ref.path}`); }
       catch { fail('HISTORICAL_AUDIT_RECEIPT_NOT_FIXED'); }
       if (sha(historical) !== ref.sha256) fail('HISTORICAL_AUDIT_RECEIPT_NOT_FIXED');
       return;
@@ -938,6 +941,7 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
         withdrawnReceiptRef: authorityCorrection ? request.authorityCorrection?.originalReceiptRef : undefined,
         historicalAuditReceipt: auditCcAppend ? { ...request.approval.sourceRebind.priorReceiptRef,
           commit: request.approval.sourceRebind.priorCommit } : undefined,
+        historicalAuditReceipts: auditSubsetCcHistoricalEvidenceAnchors({ root, request }),
         auditSourceAncestor: auditSourcePreservation ? { ...auditSourcePreservation,
           sourceArchiveFile: request.sourceArchiveFile, examUid: request.examUid, expectedQuestionCount: request.expectedQuestionCount } : undefined });
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;

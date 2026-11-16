@@ -22,7 +22,7 @@ import { REVIEWED_SOURCE_BINDING_OPT_INS, reviewedSourceBindingItems, reviewedSo
 import { restoreReviewedReplayCanonicalBefore } from "./reviewed-replay-registry-context.mjs";
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from "./native-reviewed-source-reuse.mjs";
 import { loadActiveMetaRegistry } from "./active-registry.mjs";
-import { AUDIT_CC_APPEND_SCHEMA, isAuditCcAppend, isExplicitAuditCcAppendRequest, loadAuditCcAppend,
+import { AUDIT_CC_APPEND_SCHEMA, AUDIT_SUBSET_CC_SCHEMA, isAuditCcAppend, isExplicitAuditCcAppendRequest, loadAuditCcAppend,
   planAuditCcAppendRow, buildAuditCcAppendBinding, auditCcAppendSummary, assertAuditCcAppendReceipt } from "./audited-cross-concept-append.mjs";
 import { activeBindingContext } from "./auto-register-merged-source.mjs";
 import { loadApprovedRendererPreservation, planApprovedRendererRecord, buildApprovedRendererBinding, verifyApprovedRendererReceipt } from "./native-approved-renderer-preservation.mjs";
@@ -2172,8 +2172,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const approvedRendererRequested = Object.hasOwn(req.approval, "rendererPreservation");
   const auditPreservationRequested = isAuditPreservation(req.approval);
   const auditCcAppendRequested = isAuditCcAppend(req.approval);
-  if (req.approval.sourceRebind?.schemaVersion === AUDIT_CC_APPEND_SCHEMA && !isExplicitAuditCcAppendRequest(req))
-    fail("exact separately typed full audit CC append required");
+  if ([AUDIT_CC_APPEND_SCHEMA, AUDIT_SUBSET_CC_SCHEMA].includes(req.approval.sourceRebind?.schemaVersion) && !isExplicitAuditCcAppendRequest(req))
+    fail("exact separately typed audit CC append scope required");
   const originalRendererRequested = isOriginalFinalQaRendererPreservation(req.approval.sourceRebind);
   if ([AUDIT_PRESERVATION_SCHEMA, AUDIT_SOURCE_PRESERVATION_SCHEMA].includes(req.approval.sourceRebind?.schemaVersion) && !auditPreservationRequested)
     fail("audit source rebind must retain META_PIPELINE_AUDIT approval type");

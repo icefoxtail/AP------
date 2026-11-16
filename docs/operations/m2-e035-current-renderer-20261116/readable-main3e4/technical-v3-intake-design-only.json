@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-e035-technical-v3-intake-design-delta-v1",
+  "status": "DESIGN_ONLY_AFTER_ACTUAL_FOUR_VIEW_GATE",
+  "author": "/root/audit_m3",
+  "basis": {
+    "helper": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/archive/tools/meta-foundation/reviewed-m2-e035-renderer-continuity.mjs",
+      "sha256": "898f91f466348d39522868ef9f8e691a00f5c2751c762c8166168e6dea059cd8",
+      "bytes": 47383
+    },
+    "commit": "542639cf7c873a1e462e683c63224fcc7d64b8ad",
+    "producerCandidate": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-semantic-scope-rekey/.tmp/e035-v7-pinned-helper/producer-v7-pinned-helper-candidate.cjs",
+      "sha256": "4ec3f3f17fe58c45d63b2c35cfc9a0735c80d051c0ce767f30dd0b9afbc9d8e2",
+      "bytes": 29202
+    }
+  },
+  "implementationWrites": 0,
+  "nativeRegistrations": 0,
+  "requiresRootDecisionAfterActualUi": true,
+  "dispatch": {
+    "newSchema": "archive-e035-current-renderer-student-ui-technical-v3",
+    "v2Path": "Preserve the existing technical-v2 key/coordinate/quantizer checks exactly; use an explicit v3 branch rather than broadening both schemas."
+  },
+  "closedTopLevelAdditions": [
+    "playwrightVersion",
+    "helperRef",
+    "helperVersion"
+  ],
+  "requiredPinnedDependency": {
+    "helperRef": {
+      "commit": "63050c3475be52f6ebf5b34c4d0ac3c785915aa7",
+      "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+      "gitBlobSha1": "dcb4382ada6913f9aa35a820777248ee93879e36",
+      "sha256": "94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4"
+    },
+    "helperVersion": "archive-problem-scroll-coverage-v1",
+    "playwrightVersion": "1.62.1",
+    "checks": "Read regular immutable helper via existing file/reference and ancestor checks; require exact closed ref and bytes. This is a historical tool dependency, not a current HTTP served file; do not require current helper path to retain old94ec bytes."
+  },
+  "screenshotEvidenceV3Keys": [
+    "api",
+    "fullPage",
+    "scale",
+    "coordinateSystem",
+    "viewportClip",
+    "documentClip",
+    "documentClipRole",
+    "contextViewportBefore",
+    "contextViewportAfter",
+    "metricsBefore",
+    "metricsAfter",
+    "pngDimensions",
+    "pixelRule",
+    "playwrightVersion",
+    "visibleRoiContained",
+    "postprocessing"
+  ],
+  "screenshotValues": {
+    "api": "PAGE_SCREENSHOT",
+    "fullPage": false,
+    "scale": "css",
+    "coordinateSystem": "VIEWPORT_CSS_PIXELS",
+    "documentClipRole": "DERIVED_VISIBLE_ROI_ONLY",
+    "pixelRule": "FLOOR_CSS_PX_PLUS_0_001",
+    "playwrightVersion": "1.62.1",
+    "visibleRoiContained": true,
+    "postprocessing": false
+  },
+  "coordinateRequirements": [
+    "Keep exact desktop1280x900/mobile390x844 presets, isMobile/hasTouch and DPR1.",
+    "Require layoutViewport=documentClient=visual dimensions=screen=context, visual scale1 and offsets0 exactly.",
+    "Require exact pageLeft/pageTop=tile scroll x/y, same full metrics before/after and unchanged context.",
+    "viewportClip exactly equals tile.clip; clip wholly inside actual viewport.",
+    "documentClip exactly derives from tile.clip+scroll and is evidence only, never an alternate capture ROI.",
+    "Retain all document-relative question/content geometry, DOM digest, scroll, readiness, visibility, hit, original tile count/32 overlap/full coverage checks."
+  ],
+  "pixelRequirements": [
+    "Only v3 uses Math.floor(dimension + 0.001), exactly as the declared pinned viewport producer.",
+    "Check the same formula in viewport evidence and the immutable original PNG IHDR validation.",
+    "Do not accept a floor/round/ceil range, resize/crop/composite, changed viewport or offscreen document image.",
+    "Pass only the validated layout view to the unchanged fixed-three tile validator; no change to that validator is necessary for this design."
+  ],
+  "unchangedAuthority": [
+    "E035 UID12/full21 source transport",
+    "All current source/assets/raw served and mirror references",
+    "Independent original HOLD plus separately repaired asset observation",
+    "Actual four cases and independent every-tile complete coverage/glyph/solution flags",
+    "Original native/v3/metadata/difficulty/definition approval and current canonical guards",
+    "Historical negative and marker-removal obligations"
+  ],
+  "minimumFutureRegressions": [
+    "Actual-preset v3 viewport success plus old v2 controls unchanged",
+    "Missing/wrong helper ref/version/regular entry/blob/hash/ancestor refused",
+    "Wrong driver/API/fullPage/coordinate/pixel rule or undeclared key refused",
+    "Self-consistently resealed layout/client/visual/context divergence, nonunit scale or offsets refused",
+    "Before-after scroll/DOM/metrics drift or offscreen viewportClip refused",
+    "Wrong derived documentClip and PNG formula/tampered original bytes refused",
+    "Incomplete four-case/tile/overlap/independent glyph/solution coverage refused",
+    "Existing original HOLD/history/source/native negatives remain required"
+  ],
+  "actualGate": "Do not implement intake from a proposed capture shape alone; confirm the public immutable technical-v3 original four views and independent legibility first. Keep every prior failure and current native input0."
+}

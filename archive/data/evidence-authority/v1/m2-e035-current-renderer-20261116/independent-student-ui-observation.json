@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "archive-independent-e035-current-renderer-student-ui-review-v1",
+  "scope": "EXACT_E035_FOUR_CURRENT_UI_CASES",
+  "decision": "RETAIN_EXISTING_APPROVED_PRESENTATION",
+  "observer": "/root/audit_m3",
+  "observedAt": "2026-11-16T11:59:41.736704+00:00",
+  "producer": "/root",
+  "technicalRef": {
+    "commit": "09f8b5a03ba21c9da8418b14084dc6a80a895db6",
+    "path": "archive/data/evidence-authority/v1/m2-e035-current-renderer-20261116/actual-ui/technical-proof.json",
+    "gitBlobSha1": "55f1e7228a900d86cc18aa1d7479324d2405f67b",
+    "sha256": "2ac6d495f995b8810e50d4db8c3e235e65f31c50cd001841bbeeda58291d800a"
+  },
+  "records": [
+    {
+      "caseId": "desktop-problem",
+      "view": "problem",
+      "coverageReview": {
+        "questionUid": "qid_v1_aaa151978fdd692262dad4377577bb5ee6e5b89c725920ab21afae3ea603f5c8",
+        "sourceOrdinal": 12,
+        "viewport": "desktop",
+        "screenshots": [
+          {
+            "tileIndex": 1,
+            "path": "e035-problem-desktop-tile-01.png",
+            "sha256": "f235e1c5acd2e2949f35046290a8c0e07296e29b0f7245ffd1687b48d84800b3",
+            "bytes": 30354
+          }
+        ],
+        "decision": "PASS",
+        "conditionsAndLabelsPreserved": true,
+        "legible": true,
+        "notClipped": true,
+        "completeProblemCoverage": true
+      },
+      "completeSolutionCoverage": false,
+      "glyphsLegible": true,
+      "observations": "I read the original full problem tile. The stem, choices, diagram labels and mathematical glyphs are legible and contained. This image is byte-identical to the prior desktop capture and was inspected again."
+    },
+    {
+      "caseId": "desktop-solution",
+      "view": "solution",
+      "coverageReview": {
+        "questionUid": "qid_v1_aaa151978fdd692262dad4377577bb5ee6e5b89c725920ab21afae3ea603f5c8",
+        "sourceOrdinal": 12,
+        "viewport": "desktop",
+        "screenshots": [
+          {
+            "tileIndex": 1,
+            "path": "e035-solution-desktop-tile-01.png",
+            "sha256": "27d7fba5f6f61dc4b3cc09f1eb64d97ba83933dafff3ac6f96b09896bbc55068",
+            "bytes": 48162
+          }
+        ],
+        "decision": "PASS",
+        "conditionsAndLabelsPreserved": true,
+        "legible": true,
+        "notClipped": true,
+        "completeProblemCoverage": true
+      },
+      "completeSolutionCoverage": true,
+      "glyphsLegible": true,
+      "observations": "I read the original full solution tile, including the stem, repaired diagram, caption and written steps. The labels and mathematical glyphs are legible and the bottom of the solution is present. This image is byte-identical to the prior desktop capture and was inspected again."
+    },
+    {
+      "caseId": "mobile-problem",
+      "view": "problem",
+      "coverageReview": {
+        "questionUid": "qid_v1_aaa151978fdd692262dad4377577bb5ee6e5b89c725920ab21afae3ea603f5c8",
+        "sourceOrdinal": 12,
+        "viewport": "mobile",
+        "screenshots": [
+          {
+            "tileIndex": 1,
+            "path": "e035-problem-mobile-tile-01.png",
+            "sha256": "d615823289794de0102420ea5983624a6e0d09cb08918b7d8d8b9bef3cda3a4d",
+            "bytes": 31060
+          }
+        ],
+        "decision": "PASS",
+        "conditionsAndLabelsPreserved": true,
+        "legible": true,
+        "notClipped": true,
+        "completeProblemCoverage": true
+      },
+      "completeSolutionCoverage": false,
+      "glyphsLegible": true,
+      "observations": "I read the original full mobile problem tile. The stem, choices and diagram labels are readable. The previously separated overbars are now attached to the intended glyph groups, without clipping."
+    },
+    {
+      "caseId": "mobile-solution",
+      "view": "solution",
+      "coverageReview": {
+        "questionUid": "qid_v1_aaa151978fdd692262dad4377577bb5ee6e5b89c725920ab21afae3ea603f5c8",
+        "sourceOrdinal": 12,
+        "viewport": "mobile",
+        "screenshots": [
+          {
+            "tileIndex": 1,
+            "path": "e035-solution-mobile-tile-01.png",
+            "sha256": "c3008555a45470895a99cc2a4aa3d1e38571aeb916c60bb22b84978c3ba33558",
+            "bytes": 61238
+          },
+          {
+            "tileIndex": 2,
+            "path": "e035-solution-mobile-tile-02.png",
+            "sha256": "3fc69d8d65e24ea5bf2c003ddf8f48cabf879c1995770d7ada202495b1d315bb",
+            "bytes": 10206
+          }
+        ],
+        "decision": "PASS",
+        "conditionsAndLabelsPreserved": true,
+        "legible": true,
+        "notClipped": true,
+        "completeProblemCoverage": true
+      },
+      "completeSolutionCoverage": true,
+      "glyphsLegible": true,
+      "observations": "I read both original mobile solution tiles in order. The stem, repaired diagram, caption and written steps are readable, and the mathematical glyphs remain attached and legible. The 32 CSS pixel overlap joins the continuation without a missing line; the final solution boundary is present. The partially cut continuation at the top of tile2 is fully visible in tile1."
+    }
+  ],
+  "newMathematicalQa": false,
+  "newMetadataApprovals": 0,
+  "newDifficultyJudgments": 0,
+  "newFourSlotApprovals": 0
+}

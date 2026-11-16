@@ -737,7 +737,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "problemTypeKey": "PT_SIMILAR_FIGURES",
     "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_SIMILAR_FIGURES_AREA_VOLUME","CC_PRISM_VOLUME"],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,

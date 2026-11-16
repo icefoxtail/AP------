@@ -8,7 +8,7 @@ import { execFileSync } from "node:child_process";
 import { REASSESSED_STUDENT_FIELDS } from "./reviewed-source-reassessment.mjs";
 import { loadUnitOrders, UNIT_MASTER_PATH } from "../archive-unit-order.mjs";
 import { AUDIT_SOURCE_PRESERVATION_SCHEMA, loadAuditSourcePreservation, planAuditSourcePreservation,
-  assertAuditSourcePreservationReceipt } from "./native-audit-source-preservation.mjs";
+  assertAuditSourcePreservationReceipt, auditSourceBindingPath } from "./native-audit-source-preservation.mjs";
 import { createExactJsonByteParser, freezeJsonValue } from "./exact-json-byte-parser.mjs";
 
 const parseSmallJson = createExactJsonByteParser(16);
@@ -406,6 +406,69 @@ export function loadVerifiedHistoricalAuditSnapshot({ root, priorCommit, priorRe
       receiptRef: context.ref, bank: context.oldBank, sourceBlobSha1: context.prior.sourceBlobSha1,
       sourceRawSha256: context.prior.sourceRawSha256 });
   return { prior, bytes, bank, context: verified.context, request: verified.request, sourceSnapshots };
+}
+
+// A component successor may retain the exact, already issued source-only audit
+// subset. Revalidate its original full audit and every selected public row;
+// neither a receipt label nor a caller-selected subset is an approval.
+export function loadVerifiedHistoricalAuditSourceSnapshot({ root, priorCommit, priorReceiptRef }) {
+  commit(root, priorCommit);
+  if (!priorReceiptRef?.path?.startsWith(RECEIPTS) ||
+      priorReceiptRef.path.slice(RECEIPTS.length).includes("/") ||
+      !priorReceiptRef.path.endsWith(".json") || !SHA256.test(priorReceiptRef.sha256 || ""))
+    fail("historical source-only audit reference required");
+  const raw = git(root, ["show", priorCommit + ":" + priorReceiptRef.path]);
+  if (sha(raw) !== priorReceiptRef.sha256 ||
+      !raw.equals(fs.readFileSync(localPath(root, priorReceiptRef.path))))
+    fail("historical source-only audit receipt bytes mismatch");
+  const prior = JSON.parse(raw), request = historicalRequest(root, priorCommit, prior);
+  if (prior.approval?.type !== "META_PIPELINE_AUDIT" ||
+      prior.approval.sourceRebind?.schemaVersion !== AUDIT_SOURCE_PRESERVATION_SCHEMA ||
+      prior.scope !== "PARTIAL_UIDS" || !request || request.scope !== "PARTIAL_UIDS" ||
+      priorReceiptRef.path !== RECEIPTS + prior.requestId + ".json")
+    fail("existing source-only audit subset required");
+  const bindingPath = auditSourceBindingPath(prior.requestId), bindingRaw = git(root, ["show", priorCommit + ":" + bindingPath]);
+  if (!bindingRaw.equals(fs.readFileSync(localPath(root, bindingPath))))
+    fail("historical source-only audit binding bytes mismatch");
+  const bytes = git(root, ["show", priorCommit + ":archive/exams/" + prior.sourceArchiveFile]);
+  const bank = parseBank(bytes);
+  assertAuditPreservationReceipt(prior, request, bytes, bank.length);
+  for (const refs of [request.approval.evidenceRefs, ...request.items.map(item => item.evidenceRefs)]) {
+    if (!Array.isArray(refs) || !refs.length) fail("historical source-only evidence missing");
+    for (const ref of refs) historicalEvidence(root, priorCommit, ref, refs, prior, request);
+  }
+  const context = loadAuditPreservation({ root, request, bytes, bank,
+    _historical: { commit: priorCommit, receipt: prior, seen: [] } });
+  if (context.sourceOnly !== true || !equal(prior.metaPipelineAudit, context.prior.metaPipelineAudit))
+    fail("historical source-only audit provenance mismatch");
+  const full = loadVerifiedHistoricalAuditSnapshot({ root,
+    priorCommit: request.approval.sourceRebind.priorCommit,
+    priorReceiptRef: request.approval.sourceRebind.priorReceiptRef });
+  const ids = unique(prior.appliedIdentityRecords, "questionUid", "historical source-only identity");
+  const runtimes = unique(prior.runtimeRecords, "questionUid", "historical source-only runtime");
+  const metadata = historicalUidIndex(gitJson(root, priorCommit, "archive/data/question_metadata.json").records,
+    "historical source-only current metadata");
+  const identity = historicalUidIndex(gitJson(root, priorCommit, "archive/data/question_identity_map.json").records,
+    "historical source-only current identity");
+  const packs = [...new Set(prior.appliedRecords.map(row => row.metaFoundationPackId))];
+  if (packs.some(pack => !/^[A-Z][A-Z0-9_]*$/.test(pack || ""))) fail("invalid historical audit pack");
+  const runtime = unique(packs.flatMap(pack => {
+    const doc = gitJson(root, priorCommit, "archive/data/meta-foundation/runtime/" + pack.toLowerCase().replaceAll("_", "-") + "-v1.json");
+    if (doc.packId !== pack || doc.status !== "ACTIVE") fail("historical audit runtime is not ACTIVE");
+    return doc.records || [];
+  }), "questionUid", "historical source-only current runtime");
+  for (const current of prior.appliedRecords) {
+    const kept = planPreservedAuditRecord(context, { current, identity: ids.get(current.questionUid),
+      runtime: runtimes.get(current.questionUid), question: bank[current.sourceOrdinal - 1],
+      ordinal: current.sourceOrdinal, receiptPath: priorReceiptRef.path, replay: true });
+    assertPreservedAuditRepair(prior, kept);
+    if (!equal(current, metadata.get(current.questionUid)) ||
+        !equal(ids.get(current.questionUid), identity.get(current.questionUid)) ||
+        !equal(runtimes.get(current.questionUid), runtime.get(current.questionUid)))
+      fail("historical source-only audit differs from actual snapshot");
+  }
+  return { prior, request, bytes, bank, context, full, bindingPath,
+    bindingRef: { path: bindingPath, sha256: sha(bindingRaw) } };
 }
 
 // Historical raw audit L1/L2 can predate the already published basic-parent

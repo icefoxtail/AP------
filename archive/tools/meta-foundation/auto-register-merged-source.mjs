@@ -11,7 +11,7 @@ import { REASSESSED_STUDENT_FIELDS } from './reviewed-source-reassessment.mjs';
 import { nativeReviewedFigureRebind } from './native-reviewed-figure-reuse.mjs';
 import { nativeReviewedRendererRebind } from './native-reviewed-renderer-reuse.mjs';
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, nativeReviewedFamilyRationaleReuse,
-  nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind, nativeReviewedE017RhsRebind } from './native-reviewed-source-reuse.mjs';
+  nativeReviewedMetadataRationaleReuse, nativeReviewedM2ProblemRendererRebind, nativeReviewedE017RhsRebind, nativeReviewedM2E035RendererRebind } from './native-reviewed-source-reuse.mjs';
 import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
 import { nativeReviewedM2CcRendererRebind } from './reviewed-m2-cc-renderer-continuity.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
@@ -277,6 +277,7 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       const reviewedFigure=nativeReviewedFigureRebind(receipt,nativeSource,previous,question,identity,ordinal,current);
       const reviewedRenderer=nativeReviewedRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       const reviewedM2ProblemRenderer=nativeReviewedM2ProblemRendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
+      const reviewedE035Renderer=nativeReviewedM2E035RendererRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
       // M2 presentation transport has its own revalidated immutable prefigure
       // view. An older cursor must match that whole student payload exactly;
       // the presence of a marker or witness alone cannot exempt a change.
@@ -292,7 +293,7 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
         m2ProviderProofs[0].nativeStudentPayloadSha256===hash(pick(previous,REASSESSED_STUDENT_FIELDS));
       const reviewedM2CcRenderer=nativeReviewedM2CcRendererRebind({receipt,previous,question,identity,ordinal,verifiedSource:reviewedSource});
       const reviewedE017Rhs=nativeReviewedE017RhsRebind(receipt,nativeSource,previous,question,identity,ordinal,current,registry);
-      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2ProblemRenderer!==true&&!reviewedM2Renderer&&!reviewedM2ProviderRenderer&&reviewedM2CcRenderer!==true&&reviewedE017Rhs!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
+      if(reviewedFigure!==true&&reviewedRenderer!==true&&reviewedM2ProblemRenderer!==true&&reviewedE035Renderer!==true&&!reviewedM2Renderer&&!reviewedM2ProviderRenderer&&reviewedM2CcRenderer!==true&&reviewedE017Rhs!==true&&!studentUnchanged&&!nativeSolutionRebind(receipt,nativeSource,previous,question,identity,ordinal))continue;
       return receiptPath;
     } catch { /* Missing, malformed or drifted evidence never grants the native reuse path. */ }
   }

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "e035-readable-screen-main3e4-rebase-validation-v1",
+  "status": "UNISSUED_UI_PENDING",
+  "author": "/root/m1_compact_transport",
+  "baseRef": {
+    "commit": "3e4c4404463f7556898048de43f8ec0d8cac2cda",
+    "path": "archive/mixed_engine.html",
+    "gitBlobSha1": "302831ea09b90242ace7bfe86320ce84eabdf44f",
+    "sha256": "a946d11b43af51a24bfa90e5362e98f91e5d466fbe3059753f2501a310c578ad",
+    "bytes": 208100
+  },
+  "priorCandidateManifest": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/student-review-readable/publication-candidate-manifest.json",
+    "sha256": "a0cfc6ef39cf388364e3d8a0961f18de363e3b44627e4ec2313978b1ec30c262",
+    "bytes": 2508
+  },
+  "priorValidation": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/student-review-readable/readable-screen-validation.json",
+    "sha256": "334e28c030a24ed2194f6b443ace8ffd02f0500c870a1bfb6fe8f3e0faabc133",
+    "bytes": 8209
+  },
+  "mainDelta": {
+    "from": "41013240126886b4550f364d5f880f0471ce351f",
+    "to": "3e4c4404463f7556898048de43f8ec0d8cac2cda",
+    "htmlChangedLines": 1,
+    "change": "Preserve latest MathJax cache version 20261116-enclosed-latin",
+    "exactGitMainRawRead": true,
+    "rootCacheEqualsGitRaw": true,
+    "priorCandidatePlusExactOneLineEqualsCurrent": true,
+    "cssAndBothTestsUnchanged": true,
+    "otherMainFilesMustBePreservedFromLatestBase": true
+  },
+  "cumulativeChanges": {
+    "carryPreviouslyReviewed630FitFix": true,
+    "newLegacyStudentReviewScreenCss": true,
+    "scope": {
+      "query": "studentReview=1",
+      "context": "legacy mixed with no data-archive2-context",
+      "media": "screen and max-width 640px",
+      "ready": "data-ap-render-ready=true",
+      "target": "live #print-area with .q-box, excluding PDF mode",
+      "offscreenBuildHasNoPrintAreaId": true,
+      "appliesToProblemAndSolution": true,
+      "appliesToAnswerGrid": false,
+      "desktopUnchanged": true,
+      "normalReviewUnchanged": true,
+      "existingArchive2ContextUnchanged": true
+    },
+    "printState": {
+      "reusesExistingPrintPendingGuard": true,
+      "originalPrintBodyByteExact": true,
+      "outerTryFinallyIncludesEveryOriginalReturnAndThrow": true,
+      "restoresPreexistingAttributeExactly": true,
+      "nestedBusyCallDoesNotChangeAttribute": true,
+      "commonFastPreflightStillRequired": true,
+      "nativeRasterA4GeometryStillRequired": true
+    },
+    "supportedEntryPoints": [
+      {
+        "entry": "toolbar + reader controls + window.safePrint vector/PDF",
+        "boundary": "same safePrint body, screen presentation suspended before preflight and restored by outer finally"
+      },
+      {
+        "entry": "safePrint raster",
+        "boundary": "same A4 page bitmap preparation observes suspended presentation"
+      },
+      {
+        "entry": "safePrint native/PCL",
+        "boundary": "same native page collection observes suspended presentation"
+      },
+      {
+        "entry": "safePrint gdi + fast-print dialog",
+        "boundary": "same native GDI page collection; cancel/dry-run/error restores presentation"
+      },
+      {
+        "entry": "browser Print/Ctrl+P",
+        "boundary": "new stylesheet uses screen media only; existing @media print A4 remains exact"
+      },
+      {
+        "entry": "mode=pdf existing iframe",
+        "boundary": "new selector excludes body.mode-pdf; iframe/export code unchanged"
+      }
+    ],
+    "paginationAndByteBoundary": {
+      "boundedInverseReconstructsPriorHtmlSha256": "88695f546ad269874ff434762d65eae029e955610b27ca36e605533428af5555",
+      "allOriginalHtmlBytesExactAfterRemovingExplicitAdditions": true,
+      "originalA4PaginationFitMakePageAndSourceContentFunctionsUnmodified": true,
+      "qppSourceAssetsMathAndMetadataWrites": 0,
+      "newStudentScreenTypography": {
+        "bodyChoiceWrittenSolutionPx": 16,
+        "lineHeight": 1.6,
+        "questionNumberPx": 18,
+        "captionPx": 14
+      },
+      "noCanvasScaleOrImagePostprocessing": true
+    },
+    "latestOfflineFontAndMathjaxCompanionsModified": 0,
+    "sourceAssetsMathMetadataWrites": 0,
+    "nativeHelperAndPixelQuantizerModified": false
+  },
+  "validation": {
+    "newTests": 23,
+    "carriedExistingFitTests": 12,
+    "tests": 35,
+    "passed": 35,
+    "failed": 0,
+    "skipped": 0,
+    "execution": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/student-review-readable/main3e4/latest35-execution.json",
+      "sha256": "3282d04fb2ba10a2bb665fd0cbc89bf57aa945b1c5aa65348d5cc113244e53ac",
+      "bytes": 578
+    },
+    "log": {
+      "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/student-review-readable/main3e4/latest35-tests.tap",
+      "sha256": "cf7ef567c7ff4590411951806f462b054c34d43dc4818602843204e2276e80e1",
+      "bytes": 7682
+    },
+    "elapsedSeconds": 0.644,
+    "inlineHtmlScriptsSyntaxPass": 5,
+    "originalBefore23FailurePreserved": {
+      "tests": 23,
+      "passed": 3,
+      "failed": 20,
+      "skipped": 0,
+      "log": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/student-review-readable/before-final23.tap",
+        "sha256": "2932de57e388331577512a2200ef64ef64567273153aaa8fae6a00b228fb4800",
+        "bytes": 258856
+      }
+    },
+    "originalBeforeAndAfterNotRewritten": true,
+    "testKinds": "Node VM exercises actual safePrint source with transport stubs; CSS scope/declaration assertions and prior screen-fit model. No browser layout or glyph review."
+  },
+  "ci": {
+    "newTestJsAutoDiscovered": true,
+    "defaultTimeoutMs": 60000,
+    "outputScopeRegexIncludesArchivePrefix": true,
+    "runnerOrBudgetChange": 0
+  },
+  "nativeProofCompatibility": {
+    "helperRawSha256": "898f91f466348d39522868ef9f8e691a00f5c2751c762c8166168e6dea059cd8",
+    "helperModified": false,
+    "quantizerModified": false,
+    "supportedNewRenderer": "studentUi accepts exact immutable rendererRef at new checkout; exact unchanged source/current assets and every served CSS ref still required",
+    "actualFourViews": "NOT_RUN_FOR_THIS_CANDIDATE",
+    "oldUiHoldRetained": true
+  },
+  "unchangedTestCompanion": {
+    "path": "archive/archive2-review.css",
+    "localPath": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/student-review-readable/main3e4/candidate/archive/archive2-review.css",
+    "sha256": "ffe81c698aad10c1a718c759f729493f4b801f418122de323b7f750ab40a4110",
+    "publicationIncluded": false
+  },
+  "actual": {
+    "newBrowserRuns": 0,
+    "newUiPositive": 0,
+    "priorMobileUiHoldPreserved": true,
+    "requiredNextAction": "M3 independent static read; ROOT publishes exact latest-base candidate; then coordinated supported Chrome producer and independent four-view readability/print-boundary observations."
+  },
+  "patch": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m2-e035-renderer-continuity/.tmp/student-review-readable/main3e4/main3e4-complete.patch",
+    "sha256": "475276867888abc01c0ffb4f9d8cd21ffd92b63d0d3e3ffa722862c0474fe77c",
+    "bytes": 28340
+  }
+}
