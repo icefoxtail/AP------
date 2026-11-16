@@ -49,7 +49,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "그림의60도 중심각에 대응하는 같은 호의 원주각을 절반 관계로 직접 구한다.",
-    "decisiveStep": "그림의60도 중심각에 대응하는 같은 호의 원주각을 절반 관계로 직접 구한다."
+    "decisiveStep": "그림의60도 중심각에 대응하는 같은 호의 원주각을 절반 관계로 직접 구한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -296,7 +298,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "주어진 중심각과 호 길이의 비례로 전체 원둘레를 얻고 다른 호의 중심각을 구한 뒤 그 호의 원주각을 절반으로 산출한다.",
-    "decisiveStep": "주어진 중심각과 호 길이의 비례로 전체 원둘레를 얻고 다른 호의 중심각을 구한 뒤 그 호의 원주각을 절반으로 산출한다."
+    "decisiveStep": "주어진 중심각과 호 길이의 비례로 전체 원둘레를 얻고 다른 호의 중심각을 구한 뒤 그 호의 원주각을 절반으로 산출한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -347,7 +351,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "내접사각형 대각에서 각BCD를 구하고 삼각형 내각합으로 각CBD를 얻어 접현각에 대응한다.",
-    "decisiveStep": "내접사각형 대각에서 각BCD를 구하고 삼각형 내각합으로 각CBD를 얻어 접현각에 대응한다."
+    "decisiveStep": "내접사각형 대각에서 각BCD를 구하고 삼각형 내각합으로 각CBD를 얻어 접현각에 대응한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -497,7 +503,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "원주각에서 작은 호를 복원하고 외부할선각의 차 조건으로 다른 호를 구한 뒤 내부현교각의 합 조건에 연결한다.",
-    "decisiveStep": "원주각에서 작은 호를 복원하고 외부할선각의 차 조건으로 다른 호를 구한 뒤 내부현교각의 합 조건에 연결한다."
+    "decisiveStep": "원주각에서 작은 호를 복원하고 외부할선각의 차 조건으로 다른 호를 구한 뒤 내부현교각의 합 조건에 연결한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -547,7 +555,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "주어진60도 원주각의 호120도에서 중심각76도의 호를 빼고 남은 호44도를 목표 원주각의 절반 관계에 대응한다.",
-    "decisiveStep": "주어진60도 원주각의 호120도에서 중심각76도의 호를 빼고 남은 호44도를 목표 원주각의 절반 관계에 대응한다."
+    "decisiveStep": "주어진60도 원주각의 호120도에서 중심각76도의 호를 빼고 남은 호44도를 목표 원주각의 절반 관계에 대응한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -1034,7 +1044,9 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "현BC가 반지름이라는 조건을 정삼각형의60도 호로 바꾸고 주어진 원주각에서 다른 호128도를 복원하여 내부현교각에 연결한다.",
-    "decisiveStep": "현BC가 반지름이라는 조건을 정삼각형의60도 호로 바꾸고 주어진 원주각에서 다른 호128도를 복원하여 내부현교각에 연결한다."
+    "decisiveStep": "현BC가 반지름이라는 조건을 정삼각형의60도 호로 바꾸고 주어진 원주각에서 다른 호128도를 복원하여 내부현교각에 연결한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,

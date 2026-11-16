@@ -42,7 +42,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "공통각을 갖는 두 직각삼각형의 대응각을 읽고 작은 삼각형의 빗변을 구해 두 삼각비의 곱을 계산한다.",
-    "decisiveStep": "공통각을 갖는 두 직각삼각형의 대응각을 읽고 작은 삼각형의 빗변을 구해 두 삼각비의 곱을 계산한다."
+    "decisiveStep": "공통각을 갖는 두 직각삼각형의 대응각을 읽고 작은 삼각형의 빗변을 구해 두 삼각비의 곱을 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -86,7 +89,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "탄젠트에서 미지 직각변 x를 구한 뒤 피타고라스로 빗변 y를 구하여 곱한다.",
-    "decisiveStep": "탄젠트에서 미지 직각변 x를 구한 뒤 피타고라스로 빗변 y를 구하여 곱한다."
+    "decisiveStep": "탄젠트에서 미지 직각변 x를 구한 뒤 피타고라스로 빗변 y를 구하여 곱한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -128,7 +134,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "탄젠트에서 두 직각변의 비를 정하고 피타고라스로 빗변 비를 얻어 코사인으로 바꾼다.",
-    "decisiveStep": "탄젠트에서 두 직각변의 비를 정하고 피타고라스로 빗변 비를 얻어 코사인으로 바꾼다."
+    "decisiveStep": "탄젠트에서 두 직각변의 비를 정하고 피타고라스로 빗변 비를 얻어 코사인으로 바꾼다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -172,7 +181,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 직각삼각형에서 같은 각의 여각을 비교해 x가 원래 각 ACB임을 얻고 주어진 두 변으로 코사인을 읽는다.",
-    "decisiveStep": "두 직각삼각형에서 같은 각의 여각을 비교해 x가 원래 각 ACB임을 얻고 주어진 두 변으로 코사인을 읽는다."
+    "decisiveStep": "두 직각삼각형에서 같은 각의 여각을 비교해 x가 원래 각 ACB임을 얻고 주어진 두 변으로 코사인을 읽는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -258,7 +270,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "수선으로 생긴 삼각형들의 여각·닮음 대응에서 같은 각을 찾아 각 빗변과 맞은편 변의 비를 비교한다.",
-    "decisiveStep": "수선으로 생긴 삼각형들의 여각·닮음 대응에서 같은 각을 찾아 각 빗변과 맞은편 변의 비를 비교한다."
+    "decisiveStep": "수선으로 생긴 삼각형들의 여각·닮음 대응에서 같은 각을 찾아 각 빗변과 맞은편 변의 비를 비교한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -302,7 +317,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "사분원의 반지름을 빗변으로 읽고 사인 정의에서 수선의 길이를 바로 표시한다.",
-    "decisiveStep": "사분원의 반지름을 빗변으로 읽고 사인 정의에서 수선의 길이를 바로 표시한다."
+    "decisiveStep": "사분원의 반지름을 빗변으로 읽고 사인 정의에서 수선의 길이를 바로 표시한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -344,7 +362,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "여각의 사인·코사인이 같고 탄젠트가 서로 역수임을 이용해 네 인수를 소거한다.",
-    "decisiveStep": "여각의 사인·코사인이 같고 탄젠트가 서로 역수임을 이용해 네 인수를 소거한다."
+    "decisiveStep": "여각의 사인·코사인이 같고 탄젠트가 서로 역수임을 이용해 네 인수를 소거한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -388,7 +409,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "공통 높이를 h로 놓고 양쪽 밑변을 각 탄젠트로 표현해 합이 10이라는 방정식으로 높이를 구한다.",
-    "decisiveStep": "공통 높이를 h로 놓고 양쪽 밑변을 각 탄젠트로 표현해 합이 10이라는 방정식으로 높이를 구한다."
+    "decisiveStep": "공통 높이를 h로 놓고 양쪽 밑변을 각 탄젠트로 표현해 합이 10이라는 방정식으로 높이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -432,7 +456,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "반지름과 탄젠트 비로 한 직각삼각형의 두 변을 복원하고 다른 수선 길이와 차를 구해 사다리꼴 넓이로 연결한다.",
-    "decisiveStep": "반지름과 탄젠트 비로 한 직각삼각형의 두 변을 복원하고 다른 수선 길이와 차를 구해 사다리꼴 넓이로 연결한다."
+    "decisiveStep": "반지름과 탄젠트 비로 한 직각삼각형의 두 변을 복원하고 다른 수선 길이와 차를 구해 사다리꼴 넓이로 연결한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -476,7 +503,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "기준각에 따른 빗변·이웃변·맞은편 변을 식으로 놓고 코사인 관계에서 잘못 곱한 식을 찾는다.",
-    "decisiveStep": "기준각에 따른 빗변·이웃변·맞은편 변을 식으로 놓고 코사인 관계에서 잘못 곱한 식을 찾는다."
+    "decisiveStep": "기준각에 따른 빗변·이웃변·맞은편 변을 식으로 놓고 코사인 관계에서 잘못 곱한 식을 찾는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -520,7 +550,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "공통 수선 높이를 h로 놓고 양쪽 밑변을 2h와 h/2로 표현해 전체 밑변에서 h를 구한 뒤 빗변들을 피타고라스로 구해 둘레를 합한다.",
-    "decisiveStep": "공통 수선 높이를 h로 놓고 양쪽 밑변을 2h와 h/2로 표현해 전체 밑변에서 h를 구한 뒤 빗변들을 피타고라스로 구해 둘레를 합한다."
+    "decisiveStep": "공통 수선 높이를 h로 놓고 양쪽 밑변을 2h와 h/2로 표현해 전체 밑변에서 h를 구한 뒤 빗변들을 피타고라스로 구해 둘레를 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -564,7 +597,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "30°와45° 직각삼각형에서 길이를 복원하여 높이를 합하고 새 직각삼각형의 15° 코사인을 읽는다.",
-    "decisiveStep": "30°와45° 직각삼각형에서 길이를 복원하여 높이를 합하고 새 직각삼각형의 15° 코사인을 읽는다."
+    "decisiveStep": "30°와45° 직각삼각형에서 길이를 복원하여 높이를 합하고 새 직각삼각형의 15° 코사인을 읽는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 14,
@@ -608,7 +644,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "두 관측점의 수평거리 차를 500으로 놓고 공통 높이의 두 탄젠트 식을 같게 하여 높이를 구한 뒤 눈높이를 더한다.",
-    "decisiveStep": "두 관측점의 수평거리 차를 500으로 놓고 공통 높이의 두 탄젠트 식을 같게 하여 높이를 구한 뒤 눈높이를 더한다."
+    "decisiveStep": "두 관측점의 수평거리 차를 500으로 놓고 공통 높이의 두 탄젠트 식을 같게 하여 높이를 구한 뒤 눈높이를 더한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 15,
@@ -652,7 +691,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "측량 삼각형에 수선을 내려 코사인·사인으로 두 직각변을 구하고 밑변의 차와 피타고라스로 목표 대각선을 구한다.",
-    "decisiveStep": "측량 삼각형에 수선을 내려 코사인·사인으로 두 직각변을 구하고 밑변의 차와 피타고라스로 목표 대각선을 구한다."
+    "decisiveStep": "측량 삼각형에 수선을 내려 코사인·사인으로 두 직각변을 구하고 밑변의 차와 피타고라스로 목표 대각선을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 16,
@@ -744,7 +786,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "내각비로 원주각을 구하고 대응 중심각과 현의 수직이등분을 이용해 직각삼각형을 만든 뒤 사인 식으로 반지름을 역산한다.",
-    "decisiveStep": "내각비로 원주각을 구하고 대응 중심각과 현의 수직이등분을 이용해 직각삼각형을 만든 뒤 사인 식으로 반지름을 역산한다."
+    "decisiveStep": "내각비로 원주각을 구하고 대응 중심각과 현의 수직이등분을 이용해 직각삼각형을 만든 뒤 사인 식으로 반지름을 역산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 18,
@@ -885,7 +930,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "둔각 바깥으로 수선을 내려 여각 탄젠트로 길이를 복원하고 밑변을 피타고라스로 구한 뒤 이등변삼각형을 반으로 나누어 반각의 코사인을 읽는다.",
-    "decisiveStep": "둔각 바깥으로 수선을 내려 여각 탄젠트로 길이를 복원하고 밑변을 피타고라스로 구한 뒤 이등변삼각형을 반으로 나누어 반각의 코사인을 읽는다."
+    "decisiveStep": "둔각 바깥으로 수선을 내려 여각 탄젠트로 길이를 복원하고 밑변을 피타고라스로 구한 뒤 이등변삼각형을 반으로 나누어 반각의 코사인을 읽는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 21,
@@ -921,7 +969,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "기본 특수각의 세 삼각비 값을 정의된 순서대로 나열하고 tan90°는 값이 없음을 적는다.",
-    "decisiveStep": "기본 특수각의 세 삼각비 값을 정의된 순서대로 나열하고 tan90°는 값이 없음을 적는다."
+    "decisiveStep": "기본 특수각의 세 삼각비 값을 정의된 순서대로 나열하고 tan90°는 값이 없음을 적는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -959,7 +1010,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "수선을 선택해72°의 여각18° 탄젠트로 두 직각변의 비와 길이를 구하고 남은 밑변과 피타고라스로 목표변을 계산한다.",
-    "decisiveStep": "수선을 선택해72°의 여각18° 탄젠트로 두 직각변의 비와 길이를 구하고 남은 밑변과 피타고라스로 목표변을 계산한다."
+    "decisiveStep": "수선을 선택해72°의 여각18° 탄젠트로 두 직각변의 비와 길이를 구하고 남은 밑변과 피타고라스로 목표변을 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,

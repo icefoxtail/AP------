@@ -183,7 +183,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "중심수선이 현을 반분함을 이용하여 CD의 반5와 중심거리3에서 반지름제곱34를 얻고 중심거리4인 현AB의 반길이를 피타고라스로 구한다."
+    "primaryMethod": "중심수선이 현을 반분함을 이용하여 CD의 반5와 중심거리3에서 반지름제곱34를 얻고 중심거리4인 현AB의 반길이를 피타고라스로 구한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -325,7 +327,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "지름AB의 원주각으로 ADB90°를 얻고 삼각형 내각합으로 ABD39°를 정한 뒤 같은 현AD의 ACD로 전달한다. 기존 COMPOSITE의 실제 두 원각 관계 연쇄가 유효하다."
+    "primaryMethod": "지름AB의 원주각으로 ADB90°를 얻고 삼각형 내각합으로 ABD39°를 정한 뒤 같은 현AD의 ACD로 전달한다. 기존 COMPOSITE의 실제 두 원각 관계 연쇄가 유효하다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -374,7 +378,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "원주각54°에서 호AD108°를 얻고 내부 교차현각81°의 두 호 합에서 호BC54°를 얻어 주어진 호길이5와의 비례로 목표 호길이를 구한다."
+    "primaryMethod": "원주각54°에서 호AD108°를 얻고 내부 교차현각81°의 두 호 합에서 호BC54°를 얻어 주어진 호길이5와의 비례로 목표 호길이를 구한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -423,7 +429,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "같은 중심거리에서 AB=BC를 얻고 두 현의 같은 원주각으로 A=C를 정한 뒤 명시된 A:B=5:2를 삼각형 내각합에 대입한다."
+    "primaryMethod": "같은 중심거리에서 AB=BC를 얻고 두 현의 같은 원주각으로 A=C를 정한 뒤 명시된 A:B=5:2를 삼각형 내각합에 대입한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -472,7 +480,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "오각형의 두 원주각130°와100°가 보는 호를 비교해 CD100°를 분리한 뒤 접현각50°로 옮긴다. 기존 접선-현각 TPL이 호·원주각 관계와의 연결까지 명시하므로 정상 재사용한다."
+    "primaryMethod": "오각형의 두 원주각130°와100°가 보는 호를 비교해 CD100°를 분리한 뒤 접현각50°로 옮긴다. 기존 접선-현각 TPL이 호·원주각 관계와의 연결까지 명시하므로 정상 재사용한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -520,7 +530,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "지름의 원주각으로 직각C를 확인하고 피타고라스로 BC6을 얻어 tanA=BC/AC를 구한다. 최종 목표는 삼각비의 값이며 원주각은 보조 전처리이다."
+    "primaryMethod": "지름의 원주각으로 직각C를 확인하고 피타고라스로 BC6을 얻어 tanA=BC/AC를 구한다. 최종 목표는 삼각비의 값이며 원주각은 보조 전처리이다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -614,7 +626,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "환형 넓이32π에서 R²−r²=32를 얻고 작은 원의 접점 수직으로 큰 원의 반현제곱을 같은 제곱 차에 연결하여 AB를 구한다."
+    "primaryMethod": "환형 넓이32π에서 R²−r²=32를 얻고 작은 원의 접점 수직으로 큰 원의 반현제곱을 같은 제곱 차에 연결하여 AB를 구한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 14,
@@ -663,7 +677,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "반사 중심각246°의 여호114°를 명시된2:1 비로 나누어 PB38°를 정하고 그 호의 원주각19°를 구한다."
+    "primaryMethod": "반사 중심각246°의 여호114°를 명시된2:1 비로 나누어 PB38°를 정하고 그 호의 원주각19°를 구한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 15,
@@ -854,7 +870,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "접현각과 PT=TB의 이등변 관계에서30°를 얻고 직각삼각형의 sin30으로 반지름6을 정한다. 중심각60°·120°를 확인해 부채꼴AOT와 삼각형OTB의 넓이를 합한다. 기존 SECTOR_MEASURE는 부채꼴 포함 합성도형 넓이를 명시한다."
+    "primaryMethod": "접현각과 PT=TB의 이등변 관계에서30°를 얻고 직각삼각형의 sin30으로 반지름6을 정한다. 중심각60°·120°를 확인해 부채꼴AOT와 삼각형OTB의 넓이를 합한다. 기존 SECTOR_MEASURE는 부채꼴 포함 합성도형 넓이를 명시한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 19,
@@ -897,7 +915,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "원5등분의 호72°를 단위로 두 원주각과 내부교차현각이 보는 호의 개수를 읽고 x+z−y를 계산한다. y의 내부교차현각이 있으므로 CENTER_ARC 하나로 축약하지 않는다."
+    "primaryMethod": "원5등분의 호72°를 단위로 두 원주각과 내부교차현각이 보는 호의 개수를 읽고 x+z−y를 계산한다. y의 내부교차현각이 있으므로 CENTER_ARC 하나로 축약하지 않는다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 20,
@@ -940,7 +960,9 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "각의 이등분선으로 AB:AC=5:3을 얻고 직각삼각형 피타고라스로 세 변12/16/20을 복원한 뒤 내접반지름의 세 변 관계 r=(AC+BC−AB)/2를 사용한다. GLOBAL 중심 성질 TPL의 실제 지원 문항에도 직각삼각형의 내접반지름 계산이 있으므로 재사용한다."
+    "primaryMethod": "각의 이등분선으로 AB:AC=5:3을 얻고 직각삼각형 피타고라스로 세 변12/16/20을 복원한 뒤 내접반지름의 세 변 관계 r=(AC+BC−AB)/2를 사용한다. GLOBAL 중심 성질 TPL의 실제 지원 문항에도 직각삼각형의 내접반지름 계산이 있으므로 재사용한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 21,
@@ -1065,6 +1087,8 @@ window.questionBank = [
     "solutionImageSize": "full"
   ,
     "curriculum": "2015",
-    "primaryMethod": "등접선으로 CP3·DP9와 CD12를 얻고 양끝 접선의 평행 간격 AB를 다른변6인 직각삼각형의 피타고라스로 구한다. 전체 지름 목표라도 실제 등접선 길이 관계망을 쓰므로 기존 TM을 재사용한다."
+    "primaryMethod": "등접선으로 CP3·DP9와 CD12를 얻고 양끝 접선의 평행 간격 AB를 다른변6인 직각삼각형의 피타고라스로 구한다. 전체 지름 목표라도 실제 등접선 길이 관계망을 쓰므로 기존 TM을 재사용한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   }
 ];
