@@ -21,11 +21,11 @@ jobs:
     timeout-minutes: 45
     env:
       ARCHIVE_REVIEW_BASE: b18bf1e25cbace6c2a9985067ca79cff4e6b8a3c
+      ARCHIVE_REVIEW_PREVIOUS_HEAD: d7951cffa69f7858283f710e4e9dcdaf0f0bd00f
       ARCHIVE_REGISTERED_INDEX_COMMIT: 8377221debc9200dff7e647ae1a772d8d5a2e8be
       ARCHIVE_EXPECTED_INDEX_BLOB: 82e4ea98415a859771717904a9858baa40ad3ba5
       ARCHIVE_EXPECTED_MD_BLOB: f705bba21cd6eaad71f9317cd55ee4ce85e187c7
       ARCHIVE_EXPECTED_ID_BLOB: 24c9016c5910d188c5665f2f837d47dbd6ae3e77
-      ARCHIVE_REVIEW_OUTPUT: ${{ runner.temp }}/m2-four-slot-current-main-cold
       NODE_OPTIONS: --max-old-space-size=2048
     steps:
       - name: Check out the immutable review head and all Git history
@@ -46,7 +46,7 @@ jobs:
           from pathlib import Path
 
           root = Path.cwd()
-          output = Path(os.environ['ARCHIVE_REVIEW_OUTPUT'])
+          output = Path(os.environ['RUNNER_TEMP']) / 'm2-four-slot-current-main-cold'
           output.mkdir(parents=True, exist_ok=False)
           workflow = '.github/workflows/m2-four-slot-current-main-cold.yml'
           base = os.environ['ARCHIVE_REVIEW_BASE']
@@ -81,11 +81,17 @@ jobs:
               report['checkoutCommit'] = git('rev-parse', 'HEAD')
               report['checkoutTree'] = git('rev-parse', 'HEAD^{tree}')
               parents = git('show', '-s', '--format=%P', 'HEAD').split()
-              if parents != [base]:
+              previous = os.environ['ARCHIVE_REVIEW_PREVIOUS_HEAD']
+              if parents != [previous]:
                   raise RuntimeError('REVIEW_PARENT_MISMATCH')
-              changes = git('diff', '--name-only', base, 'HEAD', '--').splitlines()
-              if changes != [workflow]:
-                  raise RuntimeError('REVIEW_SCOPE_MISMATCH')
+              if git('show', '-s', '--format=%P', previous).split() != [base]:
+                  raise RuntimeError('REVIEW_PREVIOUS_PARENT_MISMATCH')
+              report['reviewChain'] = []
+              for parent, commit in [(base, previous), (previous, 'HEAD')]:
+                  changes = git('diff', '--name-only', parent, commit, '--').splitlines()
+                  if changes != [workflow]:
+                      raise RuntimeError('REVIEW_SCOPE_MISMATCH')
+                  report['reviewChain'].append({'parent': parent, 'commit': git('rev-parse', commit), 'changedPaths': changes})
               expected = {
                   'archive/data/item-4slot-index.json': os.environ['ARCHIVE_EXPECTED_INDEX_BLOB'],
                   'archive/data/question_metadata.json': os.environ['ARCHIVE_EXPECTED_MD_BLOB'],
