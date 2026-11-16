@@ -476,7 +476,7 @@ window.questionBank = [
     "solution": "육각기둥의 모서리는 위·아래 밑면에 각각 6개씩이고 옆 모서리가 6개이므로 모두 18개이다.\nBH와 만나거나 평행한 모서리를 제외한다. BH 자체 1개, 점 B 또는 H에서 만나는 다른 모서리 4개, BH와 평행한 나머지 옆 모서리 5개이다.\n따라서 꼬인 위치에 있는 모서리는 18-(1+4+5)=8개이다. 정답은 ③이다.",
     "image": "assets/images/26_팔마중_2학기_중간_중1_기출/q08-problem-geometry-20261116.svg",
     "imageSize": "tall",
-    "imageAlt": "위쪽 밑면 ABCDEF와 아래쪽 밑면 GHIJKL을 가진 육각기둥.",
+    "imageAlt": "위쪽 밑면의 꼭짓점은 A, B, C, D, E, F이고 아래쪽은 G, H, I, J, K, L인 육각기둥.",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "category_or_cue_inferred",
