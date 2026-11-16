@@ -601,6 +601,12 @@ const requiredCommands = [
     // Bound the immutable Git fixture like the neighboring SVG7 contract.
     args: ['--max-old-space-size=256', 'tests/archive-m3-e052-q5-original-diagram-transport.test.mjs'],
     timeout: 240000
+  },
+  {
+    label: 'tests/archive-m3-e052-q5-complete-given.test.mjs',
+    // Exact public Git evidence and source views; no global data generation.
+    args: ['--max-old-space-size=384', 'tests/archive-m3-e052-q5-complete-given.test.mjs'],
+    timeout: 180000
   }
 ];
 

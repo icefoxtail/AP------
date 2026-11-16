@@ -8,6 +8,7 @@ const stable = value => JSON.stringify(value, (_, v) => v && typeof v === "objec
 const sha = value => crypto.createHash("sha256").update(value).digest("hex");
 
 export const REVIEWED_SOURCE_BINDING_OPT_INS = Object.freeze([
+  Object.freeze({ requestKey: "q5CompleteGivenApplication", proofKey: "q5CompleteGivenApplication" }),
   Object.freeze({ requestKey: "proposalFinalization", proofKey: "proposalFinalization" }),
   Object.freeze({ requestKey: "retainedFields", proofKey: "retainedNativeFields" }),
   Object.freeze({ requestKey: "scopeFieldBinding", proofKey: "scopeFieldBindings" }),
