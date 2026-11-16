@@ -1077,9 +1077,9 @@ window.questionBank = [
     "decisiveStep": "π/2<θ<5π/6이므로 a+b=4/3이다.",
     "reviewStatus": "manual_review",
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEW_REQUIRED",
-    "solutionImage": "assets/images/21_강남여고_1학기_중간_고2_수학I/q12-solution.svg",
-    "solutionImageAlt": "단위원에서 sin θ > 1/2인 호와 cos θ < 0인 호, 두 조건의 교집합인 열린 각 범위를 보여 준다.",
-    "solutionImageCaption": "파란 호와 보라 호가 함께 성립하는 주황색 열린 호가 π/2 < θ < 5π/6이다.",
+    "solutionImage": "assets/images/21_강남여고_1학기_중간_고2_수학I/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 0<u≤2에서 가로축 u=θ/π의 세 줄은 sin θ > 1/2의 열린 구간 (1/6, 5/6), cos θ < 0의 열린 구간 (1/2, 3/2), 두 조건의 공통 열린 구간 (1/2, 5/6)을 나타낸다.",
+    "solutionImageCaption": "u=θ/π로 두면 sin θ > 1/2의 해는 1/6 < u < 5/6이고, cos θ < 0의 해는 1/2 < u < 3/2이다. 교집합은 1/2 < u < 5/6이므로 π/2 < θ < 5π/6이다. 따라서 a=1/2, b=5/6이고 a+b=4/3, 정답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1966,8 +1966,7 @@ window.questionBank = [
     "id": 23,
     "questionType": "객관식",
     "score": 4,
-    "image": "assets/images/21_강남여고_1학기_중간_고2_수학I/q23.png",
-    "content": "23. 그림과 같이 좌표평면에 점 $\\mathrm{A}(4, 4)$와 함수 $f(x)=\\log_a(bx-12)$의 그래프가 있다. 곡선 $y=f(x)$의 점근선이 $x$축과 만나는 점을 $\\mathrm{P}$라 할 때, 곡선 $y=f(x)$ 위의 제1사분면의 점 $\\mathrm{Q}$에 대하여 삼각형 $\\mathrm{APQ}$가 다음 조건을 만족시킨다.\n<img src=\"assets/images/21_강남여고_1학기_중간_고2_수학I/q23.png\" class=\"question-img\" alt=\"문제 23 그림\">\n<div class=\"problem-box\">\n<b>&lt;조건&gt;</b><br>\n(가) 점 $\\mathrm{Q}$를 지나고 $x$축에 평행한 직선은 삼각형 $\\mathrm{APQ}$의 넓이를 이등분한다.<br>\n(나) 삼각형 $\\mathrm{APQ}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각이등변삼각형이다.\n</div>\n$a+b$의 값은? (단, $a, b$는 $a>1, b>0$인 상수이다.) [4점]",
+    "content": "23. 그림과 같이 좌표평면에 점 $\\mathrm{A}(4, 4)$와 함수 $f(x)=\\log_a(bx-12)$의 그래프가 있다. 곡선 $y=f(x)$의 점근선이 $x$축과 만나는 점을 $\\mathrm{P}$라 할 때, 곡선 $y=f(x)$ 위의 제1사분면의 점 $\\mathrm{Q}$에 대하여 삼각형 $\\mathrm{APQ}$가 다음 조건을 만족시킨다.\n<img src=\"assets/images/21_강남여고_1학기_중간_고2_수학I/q23.png\" class=\"question-img\" data-archive-mobile-figure=\"true\" alt=\"좌표평면에서 A(4,4), 점근선이 x축과 만나는 P, 로그곡선 위의 제1사분면 점 Q가 표시되어 있다. 삼각형 APQ는 A에서 직각이고, Q를 지나는 수평선이 변 AP를 지난다.\">\n<div class=\"problem-box\">\n<b>&lt;조건&gt;</b><br>\n(가) 점 $\\mathrm{Q}$를 지나고 $x$축에 평행한 직선은 삼각형 $\\mathrm{APQ}$의 넓이를 이등분한다.<br>\n(나) 삼각형 $\\mathrm{APQ}$는 $\\angle\\mathrm{A}=90^\\circ$인 직각이등변삼각형이다.\n</div>\n$a+b$의 값은? (단, $a, b$는 $a>1, b>0$인 상수이다.) [4점]",
     "choices": [
       "$8$",
       "$9$",
@@ -2145,8 +2144,7 @@ window.questionBank = [
     "id": 25,
     "questionType": "객관식",
     "score": 4,
-    "image": "assets/images/21_강남여고_1학기_중간_고2_수학I/q25.png",
-    "content": "25. 그림과 같이 반지름의 길이가 1이고 중심이 원점 $\\mathrm{O}$인 원 위의 두 점을 $\\mathrm{A, B}$라 하고, 점 $\\mathrm{A}$를 지나고 선분 $\\mathrm{OA}$에 수직인 직선과 직선 $\\mathrm{OB}$가 만나는 점을 $\\mathrm{C}$라 할 때, 선분 $\\mathrm{OA}$ 위의 점 $\\mathrm{D}$가 다음 조건을 만족시킨다.\n<img src=\"assets/images/21_강남여고_1학기_중간_고2_수학I/q25.png\" class=\"question-img\" alt=\"문제 25 그림\">\n<div class=\"problem-box\">\n<b>&lt;조건&gt;</b><br>\n(가) $\\overline{\\mathrm{OA}} \\perp \\overline{\\mathrm{BD}}$<br>\n(나) $\\overline{\\mathrm{BD}} + \\frac{1}{\\overline{\\mathrm{OC}}} = \\frac{4}{3}$\n</div>\n$\\angle\\mathrm{AOB}=\\theta$라 할 때, $\\frac{\\sin^2\\theta}{\\sin\\theta - \\cos\\theta} + \\frac{\\cos\\theta}{1-\\tan\\theta}$의 값은? [4점]",
+    "content": "25. 그림과 같이 반지름의 길이가 1이고 중심이 원점 $\\mathrm{O}$인 원 위의 두 점을 $\\mathrm{A, B}$라 하고, 점 $\\mathrm{A}$를 지나고 선분 $\\mathrm{OA}$에 수직인 직선과 직선 $\\mathrm{OB}$가 만나는 점을 $\\mathrm{C}$라 할 때, 선분 $\\mathrm{OA}$ 위의 점 $\\mathrm{D}$가 다음 조건을 만족시킨다.\n<img src=\"assets/images/21_강남여고_1학기_중간_고2_수학I/q25.png\" class=\"question-img\" data-archive-mobile-figure=\"true\" alt=\"단위원의 중심은 O이고 A와 B는 원 위에 있다. A를 지나 OA에 수직인 직선은 OB와 C에서 만나며, D는 OA 위에서 BD⊥OA를 이룬다. 중심각은 θ이다.\">\n<div class=\"problem-box\">\n<b>&lt;조건&gt;</b><br>\n(가) $\\overline{\\mathrm{OA}} \\perp \\overline{\\mathrm{BD}}$<br>\n(나) $\\overline{\\mathrm{BD}} + \\frac{1}{\\overline{\\mathrm{OC}}} = \\frac{4}{3}$\n</div>\n$\\angle\\mathrm{AOB}=\\theta$라 할 때, $\\frac{\\sin^2\\theta}{\\sin\\theta - \\cos\\theta} + \\frac{\\cos\\theta}{1-\\tan\\theta}$의 값은? [4점]",
     "choices": [
       "$\\frac{1}{3}$",
       "$\\frac{2}{3}$",
@@ -2236,8 +2234,7 @@ window.questionBank = [
     "id": 26,
     "questionType": "객관식",
     "score": 4,
-    "image": "assets/images/21_강남여고_1학기_중간_고2_수학I/q26.png",
-    "content": "26. 두 함수 $f(x)=\\frac{1}{2}\\log_a x$, $g(x)=\\log_{\\frac{1}{a}} x$ ($a>1$)에 대하여 두 곡선 $y=f(x)$, $y=g(x)$가 그림과 같다. 점 $\\mathrm{A}(1, 0)$을 지나고 $x$축의 양의 방향과 이루는 각의 크기가 $30^\\circ$이고 기울기가 양수인 직선 $l_1$이 곡선 $y=f(x)$와 만나는 점 중 $\\mathrm{A}$가 아닌 점을 $\\mathrm{B}$, 점 $\\mathrm{B}$를 지나고 직선 $l_1$에 수직인 직선 $l_2$가 곡선 $y=g(x)$와 만나는 점 중 $x$좌표가 1보다 큰 점을 $\\mathrm{C}$, 점 $\\mathrm{C}$를 지나고 직선 $l_2$에 수직인 직선 $l_3$이 $x$축과 만나는 점을 $\\mathrm{D}$라 하자. 직선 $l_2$와 $x$축이 만나는 점 $\\mathrm{E}$에 대하여 $\\overline{\\mathrm{AE}} : \\overline{\\mathrm{ED}} = 1 : 3$일 때, $\\overline{\\mathrm{BD}}^2$의 값은? [4점]\n<img src=\"assets/images/21_강남여고_1학기_중간_고2_수학I/q26.png\" class=\"question-img\" alt=\"문제 26 그림\">",
+    "content": "26. 두 함수 $f(x)=\\frac{1}{2}\\log_a x$, $g(x)=\\log_{\\frac{1}{a}} x$ ($a>1$)에 대하여 두 곡선 $y=f(x)$, $y=g(x)$가 그림과 같다. 점 $\\mathrm{A}(1, 0)$을 지나고 $x$축의 양의 방향과 이루는 각의 크기가 $30^\\circ$이고 기울기가 양수인 직선 $l_1$이 곡선 $y=f(x)$와 만나는 점 중 $\\mathrm{A}$가 아닌 점을 $\\mathrm{B}$, 점 $\\mathrm{B}$를 지나고 직선 $l_1$에 수직인 직선 $l_2$가 곡선 $y=g(x)$와 만나는 점 중 $x$좌표가 1보다 큰 점을 $\\mathrm{C}$, 점 $\\mathrm{C}$를 지나고 직선 $l_2$에 수직인 직선 $l_3$이 $x$축과 만나는 점을 $\\mathrm{D}$라 하자. 직선 $l_2$와 $x$축이 만나는 점 $\\mathrm{E}$에 대하여 $\\overline{\\mathrm{AE}} : \\overline{\\mathrm{ED}} = 1 : 3$일 때, $\\overline{\\mathrm{BD}}^2$의 값은? [4점]\n<img src=\"assets/images/21_강남여고_1학기_중간_고2_수학I/q26.png\" class=\"question-img\" data-archive-mobile-figure=\"true\" alt=\"로그곡선 f와 g 및 A(1,0)을 표시한다. l1은 A에서 기울기 양수로 f와 B에서 만나고, B를 지나는 l2는 g와 C에서 만난다. C를 지나 l2에 수직인 l3는 x축과 D에서 만나며, E는 l2와 x축의 교점이다.\">",
     "choices": [
       "$169$",
       "$172$",
@@ -2491,8 +2488,7 @@ window.questionBank = [
     "id": 29,
     "questionType": "서술형",
     "score": 5,
-    "image": "assets/images/21_강남여고_1학기_중간_고2_수학I/q29.png",
-    "content": "서술형3. 함수 $y=a\\cos b(x-c)+d$의 그래프가 다음과 같을 때, 상수 $a, b, c, d$에 대하여 $abcd$의 값을 구하시오. (단, $a>0, b>0, 0<c<\\pi$) [5점]\n<img src=\"assets/images/21_강남여고_1학기_중간_고2_수학I/q29.png\" class=\"question-img\" alt=\"서술형 3 그림\">",
+    "content": "서술형3. 함수 $y=a\\cos b(x-c)+d$의 그래프가 다음과 같을 때, 상수 $a, b, c, d$에 대하여 $abcd$의 값을 구하시오. (단, $a>0, b>0, 0<c<\\pi$) [5점]\n<img src=\"assets/images/21_강남여고_1학기_중간_고2_수학I/q29.png\" class=\"question-img\" data-archive-mobile-figure=\"true\" alt=\"코사인 그래프는 y=3과 y=−1 사이에서 진동한다. 첫 최댓값 아래 x=π/12, 이어지는 최솟값 아래 x=7π/12가 표시되고, 다음 최댓값까지 곡선이 이어진다.\">",
     "choices": [],
     "answer": "\\frac{\\pi}{3}",
     "solution": "그래프의 최댓값은 3, 최솟값은 -1이므로 진폭 $a=2$, 중심선 $d=1$이다.\n연속한 두 최댓값은 $x=\\frac{\\pi}{12}$와 $x=\\frac{13\\pi}{12}$에서 나타나므로 주기는 $\\pi$이다. 따라서 $\\frac{2\\pi}{b}=\\pi$에서 $b=2$이다.\n첫 최댓값이 $x=c=\\frac{\\pi}{12}$일 때 생기므로 $c=\\frac{\\pi}{12}$이다.\n따라서 $abcd=2\\cdot2\\cdot\\frac{\\pi}{12}\\cdot1=\\frac{\\pi}{3}$이다.",
