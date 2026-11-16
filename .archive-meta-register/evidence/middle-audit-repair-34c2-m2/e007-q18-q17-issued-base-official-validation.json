@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "middle-audit-q18-q17-issued-base-official-validation-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "baseCommit": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "scope": "Actual issued e9af registry/metadata/identity, isolated official write of Q17 source-only preservation followed by one Q18 definition/binding and metadata registration. No remote or live shared-store mutation.",
+  "status": "PASS",
+  "stages": [
+    {
+      "name": "m2-e007-q17-preserve-dryrun.json",
+      "sha256": "22c66df5a63be32661d6c5db5f23378fa1d21114955fa7d078b905d6c2054b7a",
+      "result": {
+        "status": "PASS",
+        "write": false,
+        "requestId": "middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18",
+        "approvalType": "FINAL_QA",
+        "totalQuestions": 1,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 1,
+        "expectedQuestionCount": 24,
+        "newMetadataApprovals": 0,
+        "preservedMetadataApprovals": 1,
+        "registryChangeCount": 0,
+        "runtimeMaterialized": 1,
+        "fingerprintRepairCount": 0,
+        "consumerSearchStatus": "NOT_RUN",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle2-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18.json"
+        ]
+      }
+    },
+    {
+      "name": "m2-e007-q18-e9af-dryrun.json",
+      "sha256": "b73d80fc98d7e8b5d55c7844c81b4b38f320f49ce4296e7fde6c37abb9548a72",
+      "result": {
+        "status": "PASS",
+        "write": false,
+        "requestId": "middle-audit-repair-34c2-m2-e007-q18",
+        "approvalType": "FINAL_QA",
+        "totalQuestions": 1,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 1,
+        "expectedQuestionCount": 24,
+        "registryChangeCount": 2,
+        "runtimeMaterialized": 1,
+        "fingerprintRepairCount": 0,
+        "consumerSearchStatus": "NOT_RUN",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+          "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "archive/data/meta-foundation/canonical/packs/h1-foundation/pack.json",
+          "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+          "archive/data/meta-foundation/runtime/middle2-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q18.json"
+        ]
+      }
+    },
+    {
+      "name": "m2-e007-q17-preserve-write.json",
+      "sha256": "a4945e6c59b23a0187a485862867fe347409f6ebc05cf8069a918f5cab70b09d",
+      "result": {
+        "status": "PASS",
+        "write": true,
+        "requestId": "middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18",
+        "approvalType": "FINAL_QA",
+        "totalQuestions": 1,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 1,
+        "expectedQuestionCount": 24,
+        "newMetadataApprovals": 0,
+        "preservedMetadataApprovals": 1,
+        "registryChangeCount": 0,
+        "runtimeMaterialized": 1,
+        "fingerprintRepairCount": 0,
+        "consumerSearchStatus": "NOT_RUN",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/runtime/middle2-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18.json"
+        ]
+      }
+    },
+    {
+      "name": "m2-e007-q18-e9af-write.json",
+      "sha256": "41160453447d1fc385065855a1e450093618a9ff5f1b7eccd791517cf253d92d",
+      "result": {
+        "status": "PASS",
+        "write": true,
+        "requestId": "middle-audit-repair-34c2-m2-e007-q18",
+        "approvalType": "FINAL_QA",
+        "totalQuestions": 1,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 1,
+        "expectedQuestionCount": 24,
+        "registryChangeCount": 2,
+        "runtimeMaterialized": 1,
+        "fingerprintRepairCount": 0,
+        "consumerSearchStatus": "NOT_RUN",
+        "replay": false,
+        "plannedPaths": [
+          "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+          "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+          "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+          "archive/data/meta-foundation/canonical/registry_index.json",
+          "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+          "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+          "archive/data/meta-foundation/canonical/packs/h1-foundation/pack.json",
+          "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+          "archive/data/meta-foundation/runtime/middle2-v1.json",
+          "archive/data/question_metadata.json",
+          "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q18.json"
+        ]
+      }
+    },
+    {
+      "name": "m2-e007-q17-preserve-after-q18-replay.json",
+      "sha256": "f91217f2d632eb444e12e22e0a73ac9df6638ecb453ccbfd3bf124cd67b6fd3e",
+      "result": {
+        "status": "PASS",
+        "requestId": "middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18",
+        "totalQuestions": 1,
+        "scope": "PARTIAL_UIDS",
+        "partialUidCount": 1,
+        "expectedQuestionCount": 24,
+        "newMetadataApprovals": 0,
+        "preservedMetadataApprovals": 1,
+        "replay": true,
+        "plannedPaths": [],
+        "consumerSearchStatus": "NOT_RUN",
+        "browserStatus": "NOT_RUN"
+      }
+    }
+  ],
+  "source": {
+    "path": "archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+    "sha256": "40c140a6a46d476b7058eb715105e6dc18a3ef4f3933d8cde6118ac281693e5c",
+    "blobSha1": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+    "studentPayloadChanges": 0,
+    "otherWholeQuestionsUnchanged": 23,
+    "sourceQaFlagsUnchanged": true
+  },
+  "metadataImpact": {
+    "before": {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "7e54a2bf119fba179262d46fd8f7943e42ee56b4c4c3323d53ed703a04c984f1"
+    },
+    "after": {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "b0296338207fad852ceebec49ac5cc2d69e5136417880b64220bb0d4e5166ba7"
+    },
+    "changedUidCount": 2,
+    "changedQuestionUids": [
+      "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "qid_v1_a4b3418a5df90ae608ef84ba58fe6f667ea8dabb8c4f0ba10140bb31d04ba3b4"
+    ],
+    "q17ChangedFields": [
+      "metadataRevision",
+      "approvalEvidence"
+    ],
+    "q17SemanticFieldsAndApprovalStateUnchanged": true,
+    "otherMetadataRowsUnchanged": 28888,
+    "identityRawUnchanged": true
+  },
+  "registryImpact": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+      "collection": "templates",
+      "existingRowsUnchanged": 63,
+      "addedRows": [
+        {
+          "templateKey": "TPL_H1_LINEAR_INEQUALITY_ALL_SOLUTIONS_SIGN",
+          "parentProblemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+          "canonicalLabelKo": "일차부등식의 전체 해 부호 조건",
+          "definition": "일차부등식의 해집합을 비어 있지 않은 한쪽 반직선으로 나타낸 뒤, 모든 해가 지정한 양수 또는 음수 영역에 속하도록 해의 방향과 유한 경계의 부호·포함 여부를 비교하여 매개변수 조건을 정한다.",
+          "internalSkeleton": "ISOLATE_VARIABLE_IDENTIFY_HALF_LINE_COMPARE_SIGN_BOUNDARY_AND_ENDPOINT_INCLUSION",
+          "status": "ACTIVE",
+          "ownerPack": "H1_FOUNDATION",
+          "aliases": [],
+          "supportingItemCount": 1,
+          "supportingQuestionUids": [
+            "qid_v1_a4b3418a5df90ae608ef84ba58fe6f667ea8dabb8c4f0ba10140bb31d04ba3b4"
+          ],
+          "evidenceProvenance": [
+            {
+              "source": "CURRENT_M2_AUDIT_REPAIR_34C2_EXACT_TEMPLATE_APPROVAL",
+              "nativeReview": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E007.accepted-review.json",
+              "nativeSourceOrdinal": 18,
+              "approvedBy": "GPT_ROOT_0A70543C4CE8",
+              "approvalScope": "DEFINITION_AND_EXACT_UID_SEMANTIC_APPLICATION; OFFICIAL_REGISTRY_WRITE_PENDING"
+            }
+          ]
+        }
+      ],
+      "sha256": "44626f726cde840090852b7a5a4817a16a30512dfdcfd32f5d7a9a44a64c99e7"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+      "collection": "bindings",
+      "existingRowsUnchanged": 54,
+      "addedRows": [
+        {
+          "curriculum": "2022",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-02",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+          "ownerPack": "MIDDLE2",
+          "subUnitLabelKo": "일차부등식",
+          "L1": "일차부등식",
+          "L2": "일차부등식",
+          "status": "ACTIVE",
+          "supportingQuestionUids": [
+            "qid_v1_a4b3418a5df90ae608ef84ba58fe6f667ea8dabb8c4f0ba10140bb31d04ba3b4"
+          ],
+          "supportingItemCount": 1
+        }
+      ],
+      "sha256": "dfafa994ee4064d4deae3a2218d70485cbc44c2e4843bd16c353ef1cc53b2fb1"
+    }
+  ],
+  "localFixtureReceipts": [
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18.json",
+      "sha256": "adb28d993b9a4077eaa14b7a5ce362872d6d9ecaa669574beb4017f16720797e",
+      "requestId": "middle-audit-repair-34c2-m2-e007-q17-preserve-after-q18",
+      "metadataRegistrationStatus": "REGISTERED",
+      "sourceBlobSha1": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+      "sourceBindingCurrent": true,
+      "appliedQuestionUids": [
+        "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q18.json",
+      "sha256": "5b644ba8a41bf45f749c993dda334becbafbdca382f4a558f9e1ba70fbe4b02a",
+      "requestId": "middle-audit-repair-34c2-m2-e007-q18",
+      "metadataRegistrationStatus": "REGISTERED",
+      "sourceBlobSha1": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+      "sourceBindingCurrent": true,
+      "appliedQuestionUids": [
+        "qid_v1_a4b3418a5df90ae608ef84ba58fe6f667ea8dabb8c4f0ba10140bb31d04ba3b4"
+      ]
+    }
+  ],
+  "newUniqueModifiedUidCount": 1,
+  "preservedAlreadyModifiedUidCount": 1,
+  "newMathematicalQa": false,
+  "canonicalConsumer": "NOT_RUN_FOR_NEW_UNIT; WAIT_DERIVED_REBUILD_AND_ACTUAL_WRITER",
+  "actualRemoteRegistration": "PENDING_ROOT_MERGE_AND_OFFICIAL_WRITER",
+  "studentDeployment": "NOT_RUN"
+}

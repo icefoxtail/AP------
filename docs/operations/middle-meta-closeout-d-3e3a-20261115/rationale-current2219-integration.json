@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "d-rationale-pr2219-test-three-way-integration-v1",
+  "observedMain": "53c9c1a5891700247b5825b72eaff8a9cca077ed",
+  "DHead": "ccd5f67f16d1768f486c6a4c83a773dfb027f570",
+  "mainPR": 2219,
+  "ownPR": 2210,
+  "status": "CLEAN_THREE_WAY_AND_TARGETED_24_PASS",
+  "files": {
+    "base": {
+      "path": "/workspace/scratch/3e3a7e007c36/followup-d/before/tests/archive-reviewed-exam-registration-v2.test.mjs",
+      "bytes": 439904,
+      "sha256": "50c38bc53b9c74f16c48265531b908d00297dcd6cab2a1371f61002eafade7a2",
+      "gitBlob": "0f302209abc3d8e759bcd3e715520e3b1cbbdb4e"
+    },
+    "priorDExactHead": {
+      "path": "/workspace/scratch/3e3a7e007c36/followup-d/tree/tests/archive-reviewed-exam-registration-v2.test.mjs",
+      "bytes": 443420,
+      "sha256": "3aa1e960808c6ab926ce171ce8e0660783abcfd6f509e0d949933eb8856fc9fd",
+      "gitBlob": "ff290beaa3edb51d439aafea954b27e35b7b41a7"
+    },
+    "currentMain": {
+      "path": "/workspace/scratch/3e3a7e007c36/m1-agent/rationale-2219/main.test.mjs",
+      "bytes": 442846,
+      "sha256": "181871aa02685a31d06fb42fa582ea89d03ef8ab01cf5ba6663b70ec869a29e3",
+      "gitBlob": "17cec785cc1380a86b01df5ffca24757e379bcc1"
+    },
+    "candidate": {
+      "path": "/workspace/scratch/3e3a7e007c36/m1-agent/rationale-2219/candidate.test.mjs",
+      "bytes": 446362,
+      "sha256": "565d70f1f6af93bc53358737e7f4f87c79f1882b6de99a9c860c351d09b26054",
+      "gitBlob": "c1a23a58b013e8fb863bb3a122e704b9b1888066"
+    },
+    "reverse": {
+      "path": "/workspace/scratch/3e3a7e007c36/m1-agent/rationale-2219/reverse.test.mjs",
+      "bytes": 446362,
+      "sha256": "565d70f1f6af93bc53358737e7f4f87c79f1882b6de99a9c860c351d09b26054",
+      "gitBlob": "c1a23a58b013e8fb863bb3a122e704b9b1888066"
+    }
+  },
+  "merge": {
+    "commands": "git merge-file -p -L left -L base -L right LEFT BASE RIGHT",
+    "bothOrderExitCodes": [
+      0,
+      0
+    ],
+    "bothOrdersExact": true,
+    "onlyChangeFromCurrentMain": "Exact existing D insertion block, 60 lines; removing it yields exact current main test bytes.",
+    "currentMainRendererChangesPreserved": true,
+    "existingDRegressionChangesPreserved": true
+  },
+  "targetedTests": {
+    "command": "node --test --test-name-pattern='renderer v2 official write/replay|m2-s2 renderer continuation|renderer v2 fingerprint-only|verbatim native rationale|native decisive step|already-matching committed rationale|explicit native after and item|native explicit rationale|native rationale transport|source reassessment ignores native annotations' tests/archive-reviewed-exam-registration-v2.test.mjs",
+    "total": 24,
+    "passed": 24,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 14248.378804,
+    "coverage": {
+      "existingDRationaleAndFingerprintCompatibility": 9,
+      "latestRendererM2M3PositiveAndGateNegativeIncludingSubtests": 15
+    },
+    "log": {
+      "path": "/workspace/scratch/3e3a7e007c36/m1-agent/rationale-2219/targeted-regressions.log",
+      "bytes": 2480,
+      "sha256": "573ee53e65f1014a083e2523a93e61aa3f3f71b216e5a55f1e5d2c22615abc2c",
+      "gitBlob": "8b96905f6f4f2872d1a6a985740c722f6a3832c0"
+    }
+  },
+  "testedModuleOverrides": [
+    {
+      "path": "/workspace/scratch/3e3a7e007c36/m1-agent/rationale-2219/tree/archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "bytes": 23113,
+      "sha256": "3f7c21e7eb13ac2e4ac241c6fb662c67e290332b61e62321c6ad02cf85878973",
+      "gitBlob": "2855fd4cf4e66dcb2164facdd25bcf71075e3947"
+    },
+    {
+      "path": "/workspace/scratch/3e3a7e007c36/m1-agent/rationale-2219/tree/archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+      "bytes": 10966,
+      "sha256": "10358a2e912143a4376c2f345b78d7fb5379f18758d746985f62b3eda2c525a8",
+      "gitBlob": "43a6a0196fb28d5a7cbabc6d6275e5a9881dfd61"
+    },
+    {
+      "path": "/workspace/scratch/3e3a7e007c36/m1-agent/rationale-2219/tree/archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs",
+      "bytes": 47223,
+      "sha256": "98c416216dc754a1b5d144a81741adf2ccba62c487f1d4c7fadba0a107332c83",
+      "gitBlob": "73a5b83ae2411dcafc58bf3103d31937f7ef6ceb"
+    }
+  ],
+  "harness": "Own code-only copy of root followup-d 45-dependency tree with exact current #2219 helpers; no production source supplied.",
+  "remainingGate": "Root must integrate on a current main parent and verify all CI at the resulting exact PR HEAD.",
+  "remoteWrites": 0,
+  "otherOwnerBranchChanges": 0,
+  "newSemanticApproval": 0,
+  "actualMainRegistrationClaim": false,
+  "updatedAt": "2026-11-16T00:22:48.246496Z"
+}

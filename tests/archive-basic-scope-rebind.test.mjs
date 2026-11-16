@@ -15,6 +15,7 @@ import { BASIC_PRESERVATION_SCHEMA, BASIC_PRESERVATION_REVIEW_SCHEMA, stableBasi
 import { NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_HOLD_REVIEW_SCHEMA, NATIVE_BASIC_HOLD_REASON } from "../archive/tools/meta-foundation/native-basic-hold-preservation.mjs";
 import { NATIVE_BASIC_PARENT_SCHEMA, NATIVE_BASIC_PARENT_REVIEW_SCHEMA } from "../archive/tools/meta-foundation/reviewed-native-basic-parent.mjs";
 import { REASSESSED_STUDENT_FIELDS } from "../archive/tools/meta-foundation/reviewed-source-reassessment.mjs";
+import { BASIC_HELD_RENDERER_SCHEMA, BASIC_HELD_RENDERER_EVIDENCE_SCHEMA } from "../archive/tools/meta-foundation/basic-held-renderer-continuity.mjs";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const canonical = createRequire(import.meta.url)("../archive/archive2-canonical.js");
@@ -462,8 +463,10 @@ test("reviewed basic preservation rejects unchanged external, alternate and inli
 
 // Reconstructed after loss of the unpublished e511 workspace. These are new
 // executions against the public production registrar, not recovered old PASSes.
-function nativeHoldFixture(t, { held = true, nativeChange = () => {}, holdChange = () => {}, currentExtra = {}, svg } = {}) {
-  const f = preservationFixture(t), { dir } = f;
+function nativeHoldFixture(t, { held = true, nativeChange = () => {}, holdChange = () => {}, currentExtra = {}, svg, problemSvg } = {}) {
+  const problemPath = 'archive/assets/images/test/q1.svg';
+  const f = preservationFixture(t, { assets: problemSvg === undefined ? {} : { image: problemPath.slice('archive/'.length) } }), { dir } = f;
+  if (problemSvg !== undefined) write(dir, problemPath, problemSvg);
   const uid = f.request.items[0].questionUid, source = f.request.sourceArchiveFile, sourcePath = `archive/exams/${source}`;
   const hash = value => sha256(stableBasicValue(value) ?? "undefined");
   const payload = q => Object.fromEntries(REASSESSED_STUDENT_FIELDS.map(k => [k, Object.hasOwn(q, k) ? q[k] : null]));
@@ -503,6 +506,9 @@ function nativeHoldFixture(t, { held = true, nativeChange = () => {}, holdChange
   const rendererAssets = svg === undefined ? [] : [{ path: assetPath, field: "solutionImage", commit: nativeCommit,
     gitBlobSha1: git(dir, "hash-object", assetPath), sha256: sha256(svg), nativeCommit,
     nativeGitBlobSha1: git(dir, "hash-object", assetPath), nativeSha256: sha256(svg), unchangedFromNative: true, visuallyInspected: true }];
+  if (problemSvg !== undefined) rendererAssets.push({ path: problemPath, field: 'image', commit: nativeCommit,
+    gitBlobSha1: git(dir, 'hash-object', problemPath), sha256: sha256(problemSvg), nativeCommit,
+    nativeGitBlobSha1: git(dir, 'hash-object', problemPath), nativeSha256: sha256(problemSvg), unchangedFromNative: true, visuallyInspected: true });
   const application = { questionUid: uid, sourceOrdinal: 1, nativeReviewRef: { commit: nativeCommit, path: nativePath, sha256: sha256(nativeRaw) },
     nativeItemStableSha256: hash(native.items[0]), nativeAfterSha256: hash(native.items[0].after), nativeActiveDefinitionMatchSha256: hash(native.items[0].activeDefinitionMatch),
     immutableSourceBefore: sourceRef(baseSha), immutableReviewedSource: sourceRef(nativeCommit), currentSource: sourceRef(nativeCommit),
@@ -533,7 +539,7 @@ function nativeHoldFixture(t, { held = true, nativeChange = () => {}, holdChange
       priorMetadataSha256: hash(f.metadata.records[0]), priorIdentitySha256: hash(f.identity.records[0]) }] };
   const reviewRef = f.save("native-hold-wrapper", wrapper);
   request.approval.evidenceRefs = [reviewRef, nativeRef, holdRef]; item.evidenceRefs = structuredClone(request.approval.evidenceRefs);
-  return { ...f, request, current, native, hold, wrapper, nativeRef, holdRef, reviewRef, runtimePath, heldRecord, assetPath, refreshManifest };
+  return { ...f, request, current, native, hold, wrapper, nativeRef, holdRef, reviewRef, runtimePath, heldRecord, assetPath, problemPath, refreshManifest };
 }
 
 test("native source hold preserves basic approval and every held runtime field through write/replay/projection", t => {
@@ -622,6 +628,227 @@ test("native hold replay revalidates immutable proof, receipt contents and curre
   assert.throws(() => run(g, { verifyProjection: true }), /evidence missing\/drift/);
   const h = nativeHoldFixture(t); h.request.registryChanges = []; refuses(h, /registryChanges/);
   const i = nativeHoldFixture(t); i.request.items[0].after.difficultyConfidence = "high"; refuses(i, /exactly sourceFingerprint/);
+});
+
+function heldRendererFixture(t, { svg = '<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L2 2"/></svg>' } = {}) {
+  const oldSvg = '<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L1 1"/></svg>';
+  const f = nativeHoldFixture(t, { problemSvg: oldSvg });
+  const { dir, request } = f, item = request.items[0], sourcePath = `archive/exams/${request.sourceArchiveFile}`;
+  const hash = value => sha256(stableBasicValue(value) ?? 'undefined');
+  const oldQuestion = structuredClone(f.current[0]);
+  const newPath = 'archive/assets/images/test/q1-problem-visual-v2.svg';
+  Object.assign(f.current[0], { image: newPath.slice('archive/'.length), imageAlt: 'same original givens', imageSize: 'tall', layoutTag: 'fullwidth' });
+  write(dir, sourcePath, sourceText(f.current)); write(dir, newPath, svg);
+  git(dir, 'add', '-A'); git(dir, 'commit', '-qm', 'public problem display only');
+  const afterCommit = git(dir, 'rev-parse', 'HEAD');
+  const app = f.hold.applications[0], oldSource = app.currentSource;
+  const sourceRef = (commit, question) => {
+    const raw = execFileSync('git', ['show', `${commit}:${sourcePath}`], { cwd: dir });
+    return { commit, path: sourcePath, gitBlobSha1: git(dir, 'rev-parse', `${commit}:${sourcePath}`), sha256: sha256(raw), questionSha256: hash(question) };
+  };
+  const asset = p => ({ path: p, gitBlobSha1: git(dir, 'hash-object', p), sha256: sha256(fs.readFileSync(path.join(dir, p))) });
+  const beforeAsset = asset(f.problemPath), afterAsset = asset(newPath);
+  const givenSource = execFileSync('git', ['show', `${request.previousSourceCommit}:${sourcePath}`], { cwd: dir });
+  const given = { schemaVersion: 'archive-problem-only-given-input-v1', scope: 'PROBLEM_DISPLAY_CONTINUITY_ONLY',
+    questionUid: item.questionUid, sourceOrdinal: 1,
+    sourceRef: { commit: request.previousSourceCommit, path: sourcePath, gitBlobSha1: request.previousSourceBlobSha1, sha256: sha256(givenSource) },
+    fields: Object.fromEntries(['content', 'question', 'choices'].filter(k => Object.hasOwn(oldQuestion, k)).map(k => [k, oldQuestion[k]])),
+    exclusions: ['answer', 'solution', 'solution assets', 'native judgments', 'review outcomes'],
+    instruction: 'Freeze expected observations from this problem text before opening the separate problem-image packet. This packet makes no review decision.' };
+  const exposure = originalImageSeen => ({ originalImageSeen, currentImageSeen: false, answersOrSolutionsSeen: false, nativeJudgmentsSeen: false, upstreamReviewOutcomeSeen: false });
+  const expectedGiven = { schemaVersion: 'archive-problem-only-expected-observations-v1', scope: 'Q22_PROBLEM_DISPLAY_CONTINUITY_ONLY',
+    reviewer: 'display-reviewer', stage: 'GIVEN_TEXT_FROZEN_BEFORE_ANY_PROBLEM_IMAGE', questionUid: item.questionUid,
+    sourceOrdinal: 1, exposure: exposure(false), newApprovals: 0 };
+  const expectedOriginal = { schemaVersion: 'archive-problem-only-expected-observations-v2', scope: 'Q22_PROBLEM_DISPLAY_CONTINUITY_ONLY',
+    reviewer: 'display-reviewer', stage: 'ORIGINAL_PROBLEM_IMAGE_OBSERVED_CURRENT_IMAGE_UNSEEN', questionUid: item.questionUid,
+    sourceOrdinal: 1, exposure: exposure(true), newApprovals: 0,
+    originalImageRef: { path: f.problemPath, sha256: beforeAsset.sha256, gitBlobSha1: beforeAsset.gitBlobSha1, gitCommit: request.previousSourceCommit } };
+  const observed = ['bothOriginalSubpartsPresent', 'unknownAngleRemainsSymbolic', 'allGivenAngleLabelsAtExpectedVerticesAndRays',
+    'incenterSegmentsAndPointPreserved', 'circlePointsAndRadiiPreserved', 'radiusLabel8BindsOC', 'shadedRegionMatchesOriginalMinorArcAndChordAC',
+    'noAddedSolutionCueObserved', 'labelsLegibleAndNotClippedAtInspectedSize', 'imageAltMatchesObservedGivens'];
+  const displayReview = { schemaVersion: 'archive-independent-problem-display-review-v1', scope: 'EXACT_Q22_TWO_PART_PROBLEM_STATIC_CONTINUITY',
+    reviewer: 'display-reviewer', producer: 'display-author', decision: 'STATIC_PROBLEM_DISPLAY_CONTINUITY_ACCEPTED',
+    beforeImageRef: { path: f.problemPath, sha256: beforeAsset.sha256 }, currentImageRef: afterAsset,
+    observations: Object.fromEntries(observed.map(k => [k, true])),
+    exposure: { expectationsFrozenBeforeCurrentImage: true, answerOrSolutionRead: false, nativeJudgmentRead: false, upstreamVisualDecisionRead: false },
+    actualStudentUi: 'NOT_RUN', newMathematicalQa: false, newMetadataApprovals: 0, newDifficultyJudgments: 0, newFourSlotApprovals: 0, sourceWrites: 0, assetWrites: 0 };
+  const rendererEvidence = { schemaVersion: BASIC_HELD_RENDERER_EVIDENCE_SCHEMA, scope: 'EXISTING_BASIC_AND_EXPLICIT_TYPE_HOLD_ONLY',
+    sourceArchiveFile: request.sourceArchiveFile, expectedQuestionCount: 2, questionUid: item.questionUid, sourceOrdinal: 1,
+    nativeReviewRef: app.nativeReviewRef,
+    independentHoldRef: { commit: request.approval.sourceReview.holdReviewCommit, path: request.approval.sourceReview.holdReviewPath, sha256: f.holdRef.sha256 },
+    beforeSource: sourceRef(oldSource.commit, oldQuestion), afterSource: sourceRef(afterCommit, f.current[0]),
+    changedDisplayFields: ['image', 'imageAlt', 'imageSize', 'layoutTag'], beforeAssets: [beforeAsset], afterAssets: [afterAsset],
+    newMetadataApprovals: 0, newMathematicalQa: false, newDifficultyJudgments: 0, newReview2: false, newFourSlotApprovals: 0, sourceWrites: 0, assetWrites: 0 };
+  const uiPath = 'docs/operations/m2-q22-basic-parent-continuity-20261116/', staticPublicPath = 'evidence/root-q22-static-display-review-r1.json';
+  const viewports = [{ name: 'desktop', width: 1365, height: 1000 }, { name: 'mobile', width: 390, height: 844 }];
+  const payloadSha = hash({ content: f.current[0].content ?? f.current[0].question, choices: f.current[0].choices ?? [] });
+  const presentationSha = hash({ imageAlt: f.current[0].imageAlt, imageSize: f.current[0].imageSize, layoutTag: f.current[0].layoutTag });
+  write(dir, 'archive/engine.html', '<html><body>unchanged fixture renderer</body></html>');
+  write(dir, 'tools/check-q22-basic-parent-problem-browser.cjs', '// immutable synthetic UI checker fixture\n');
+  write(dir, 'tools/check-reviewed-problem-renderer-browser.cjs', '// immutable synthetic capture fixture\n');
+  const uiManifest = { schemaVersion: 'archive-q22-basic-parent-problem-ui-manifest-v1', scope: 'EXACT_Q22_PROBLEM_DISPLAY_ONLY_NO_PARENT_APPROVAL',
+    expectedCases: 2, viewports, items: [{ key: 'Q22', questionUid: item.questionUid, sourceOrdinal: 1,
+      sourcePath, sourceGitBlobSha1: rendererEvidence.afterSource.gitBlobSha1, sourceSha256: rendererEvidence.afterSource.sha256,
+      expectedBankCount: 2, problemPayloadSha256: payloadSha, presentationSha256: presentationSha,
+      assetPath: newPath, assetGitBlobSha1: afterAsset.gitBlobSha1, assetSha256: afterAsset.sha256 }] };
+  write(dir, 'tests/fixtures/archive-q22-basic-parent-problem-ui.json', JSON.stringify(uiManifest));
+  git(dir, 'add', '-A'); git(dir, 'commit', '-qm', 'immutable synthetic UI input');
+  const uiCheckout = git(dir, 'rev-parse', 'HEAD');
+  const publicRef = (commit, p) => { const raw = execFileSync('git', ['show', `${commit}:${p}`], { cwd: dir });
+    return { commit, path: p, gitBlobSha1: git(dir, 'rev-parse', `${commit}:${p}`), sha256: sha256(raw), bytes: raw.length }; };
+  const uiSourceRef = publicRef(uiCheckout, sourcePath), uiAssetRef = publicRef(uiCheckout, newPath), domSha = hash('unchanged DOM');
+  const results = viewports.map(viewport => {
+    const screen = { tileIndex: 1, path: `Q22-${viewport.name}-tile-01.png`, sha256: hash(viewport.name), bytes: 100 };
+    return { status: 'PASS', key: 'Q22', questionUid: item.questionUid, sourceOrdinal: 1, viewport,
+      sourceRef: uiSourceRef, assetRef: uiAssetRef, screenshots: [screen], visualReview: 'PENDING', pageErrors: [], requestFailures: [], externalRequests: [],
+      technical: { mode: 'exam', questions: 2, pages: 2, readiness: 'RENDER_READY', imagesComplete: true,
+        mathErrors: 0, unrenderedMath: 0, mathJaxSource: 'local', solutionNodes: 0, fontReadiness: { status: 'loaded' } },
+      geometry: { imageInsideQuestion: true }, capture: { schemaVersion: 'archive-problem-scroll-coverage-v1', method: 'UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES',
+        tileLimit: 8, overlapCssPixels: 32, tileCount: 1, content: { height: 200 },
+        coverage: { requiredInterval: [0, 200], coveredInterval: [0, 200], complete: true },
+        tiles: [{ tileIndex: 1, relativeInterval: [0, 200], filename: screen.path, clip: { x: 0, y: 0, width: 300, height: 200 },
+          feedbackIdle: true, obstructionsIntersectingClip: 0, hitTestSamples: 100, foreignContentHits: 0, domSha256: domSha }],
+        domSha256: domSha, feedbackIdle: true, foreignContentHits: 0, cssWrites: 0, domWrites: 0, viewportChanges: 0, compositeImageCreated: false } };
+  });
+  const uiScreenshots = results.flatMap(r => r.screenshots.map(({ tileIndex, ...ref }) => ref));
+  const uiTechnical = { schemaVersion: 'archive-q22-basic-parent-problem-ui-preview-v1', executionOwner: 'GITHUB_ACTIONS_SUPPORTED_CHROME', checkoutCommit: uiCheckout,
+    manifestRef: publicRef(uiCheckout, 'tests/fixtures/archive-q22-basic-parent-problem-ui.json'),
+    checkerRef: publicRef(uiCheckout, 'tools/check-q22-basic-parent-problem-browser.cjs'),
+    captureHelperRef: publicRef(uiCheckout, 'tools/check-reviewed-problem-renderer-browser.cjs'),
+    expectedBankCount: 2, identityRef: publicRef(uiCheckout, 'archive/data/question_identity_map.json'),
+    items: [{ key: 'Q22', questionUid: item.questionUid, sourceOrdinal: 1, problemPayloadSha256: payloadSha, presentationSha256: presentationSha, sourceRef: uiSourceRef, assetRef: uiAssetRef }],
+    checkout: { expectedCheckoutCommit: uiCheckout, actualCheckoutCommit: uiCheckout, githubEventCommit: uiCheckout },
+    parentRestorationApproval: false, releaseGate: 'PENDING_INDEPENDENT_VISUAL_REVIEW', mode: 'exam', studentReview: true,
+    screenshotsScope: 'SELECTED_PROBLEM_ORIGINAL_SCROLL_TILES_ONLY', problemOnlyScreenshots: true,
+    sourceOverlay: false, sourceOverlayCount: 0, sourceWrites: 0, solutionsOpened: false, newFullMathematicalQa: false,
+    newMetadataApprovals: 0, newDifficultyJudgments: 0, newReviewPassCount: 0, newFourSlotApprovals: 0,
+    status: 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING', expectedLogicalCases: 2, completedLogicalCases: 2,
+    screenshotArtifactCount: uiScreenshots.length, screenshotArtifacts: uiScreenshots,
+    results, servedFiles: [publicRef(uiCheckout, 'archive/engine.html')], failures: [] };
+  const uiIndependent = { schemaVersion: 'archive-q22-independent-problem-ui-audit-v1', reviewer: 'independent-ui-reviewer', role: 'INDEPENDENT_PROBLEM_ONLY_VISUAL_REVIEWER',
+    checkoutCommit: uiCheckout, workflowRun: 1, artifactId: 1, artifactZipSha256: hash('original artifact zip'),
+    reviewOrder: ['GIVEN_ONLY_EXPECTED_FROZEN', 'ORIGINAL_IMAGE_EXPECTED_FROZEN', 'CURRENT_STATIC_SVG_REVIEW', 'ACTUAL_DESKTOP_ORIGINAL_TILES', 'ACTUAL_MOBILE_ORIGINAL_TILE'],
+    originalPngsPersonallyInspected: structuredClone(uiScreenshots),
+    logicalCases: results.map(row => ({ viewport: row.viewport, questionUid: item.questionUid, sourceOrdinal: 1,
+      screenshotRefs: row.screenshots.map(({ tileIndex, ...ref }) => ref), sourceRef: uiSourceRef, assetRef: uiAssetRef,
+      givenTextLegible: true, bothDiagramsComplete: true, originalGeometryLabelsAndShadedRegionPreserved: true,
+      clippingObserved: false, unrelatedContentObserved: false, solutionObserved: false, captureCoverageComplete: true, observations: ['Synthetic original PNG inspection.'], status: 'ACCEPTED' })),
+    decision: 'ACCEPTED_PROBLEM_DISPLAY_CONTINUITY_ONLY', parentRestorationApproval: false, newMathematicalApprovals: 0,
+    newMetadataApprovals: 0, newDifficultyJudgments: 0, newReview2Approvals: 0, holdDisposition: 'UNCHANGED',
+    requiredNextAction: 'ORIGINAL_HOLD_REPLAY_AND_TYPED_CONSUMER_PARENT_PRESERVATION' };
+  request.requestId = 'native-basic-held-renderer';
+  request.expectedSourceBlobSha1 = rendererEvidence.afterSource.gitBlobSha1;
+  item.after = { sourceFingerprint: sourceFingerprint(f.current[0]), contentFingerprint: contentFingerprint(f.current[0]) };
+  f.wrapper.requestId = request.requestId; f.wrapper.expectedSourceBlobSha1 = request.expectedSourceBlobSha1;
+  f.wrapper.questions[0].currentQuestionSha256 = hash(f.current[0]);
+  const seal = (mutateUiRefs = () => {}) => {
+    const givenRef = { schemaVersion: 'archive-public-source-derived-given-ref-v1',
+      path: 'evidence/m2-q22-problem-only-continuity-r1/given-only.json', sha256: sha256(JSON.stringify(given, null, 2) + '\n') };
+    expectedGiven.givenRef = { path: givenRef.path, sha256: givenRef.sha256 }; expectedOriginal.givenRef = structuredClone(expectedGiven.givenRef);
+    const givenExpectedRef = f.save('renderer-expected-given', expectedGiven);
+    expectedOriginal.priorExpectedRef = givenExpectedRef;
+    const originalExpectedRef = f.save('renderer-expected-original', expectedOriginal);
+    displayReview.expectedRef = originalExpectedRef;
+    const independentReviewRef = f.save('renderer-static-review', displayReview);
+    Object.assign(rendererEvidence, { givenRef, givenExpectedRef, originalExpectedRef, independentReviewRef });
+    write(dir, staticPublicPath, fs.readFileSync(path.join(dir, independentReviewRef.path)));
+    const techPath = uiPath + 'student-ui-technical-v1.json', independentPath = uiPath + 'student-ui-independent-v1.json';
+    const technicalRaw = JSON.stringify(uiTechnical, null, 2) + '\n'; write(dir, techPath, technicalRaw);
+    uiIndependent.technicalRef = { path: techPath, sha256: sha256(technicalRaw) };
+    uiIndependent.staticReviewRef = { path: staticPublicPath, sha256: independentReviewRef.sha256 };
+    write(dir, independentPath, JSON.stringify(uiIndependent, null, 2) + '\n');
+    git(dir, 'add', '-A'); git(dir, 'commit', '--allow-empty', '-qm', 'immutable synthetic UI evidence');
+    const uiCommit = git(dir, 'rev-parse', 'HEAD');
+    rendererEvidence.studentUi = { technicalRef: publicRef(uiCommit, techPath), independentRef: publicRef(uiCommit, independentPath) };
+    mutateUiRefs(rendererEvidence.studentUi);
+    const evidenceRef = f.save('renderer-evidence', rendererEvidence), reviewRef = f.save('native-hold-wrapper', f.wrapper);
+    request.approval.evidenceRefs = [reviewRef, f.nativeRef, f.holdRef, evidenceRef, givenExpectedRef, originalExpectedRef, independentReviewRef];
+    item.evidenceRefs = structuredClone(request.approval.evidenceRefs);
+    git(dir, 'add', '-A'); git(dir, 'commit', '--allow-empty', '-qm', 'immutable static display evidence');
+    request.approval.sourceReview.rendererContinuity = { schemaVersion: BASIC_HELD_RENDERER_SCHEMA,
+      reviewCommit: git(dir, 'rev-parse', 'HEAD'), reviewPath: evidenceRef.path, reviewRef: evidenceRef };
+  };
+  seal();
+  return { ...f, rendererEvidence, given, expectedGiven, expectedOriginal, displayReview, newPath, uiTechnical, uiIndependent, seal };
+}
+
+test('held renderer opt-in requires independent actual UI and preserves original native/HOLD authority through official write and replay', t => {
+  const f = heldRendererFixture(t), before = snapshot(f.dir), runtime = fs.readFileSync(path.join(f.dir, f.runtimePath));
+  const dry = run(f); assert.equal(dry.preservedMetadataApprovals, 1); assert.equal(snapshot(f.dir), before);
+  assert.equal(run(f, { write: true }).newMetadataApprovals, 0);
+  const receipt = readJson(f.dir, `${EVID}/${f.request.requestId}.json`), proof = receipt.applied[0].rendererContinuity;
+  assert.equal(proof.originalNativeAndHoldJudgmentsUnchanged, true);
+  assert.equal(proof.actualStudentUi, 'PASS'); assert.equal(proof.releaseGate, 'DISPLAY_WITNESS_VALIDATED_ORIGINAL_HOLD_REPLAY_REQUIRED');
+  assert.equal(proof.studentUi.logicalCases, 2); assert.equal(proof.studentUi.newMetadataApprovals, 0);
+  assert.equal(fs.existsSync(path.join(f.dir, f.rendererEvidence.givenRef.path)), false);
+  assert.equal(f.request.approval.evidenceRefs.some(r => r.path === f.rendererEvidence.givenRef.path), false);
+  assert.deepEqual(proof.changedDisplayFields, ['image', 'imageAlt', 'imageSize', 'layoutTag']);
+  assert.equal(receipt.applied[0].independentHoldRef.sha256, f.holdRef.sha256);
+  assert.equal(run(f, { write: true }).replay, true); assert.equal(run(f, { verifyProjection: true }).status, 'PASS');
+  assert.deepEqual(fs.readFileSync(path.join(f.dir, f.runtimePath)), runtime);
+  const md = readJson(f.dir, 'archive/data/question_metadata.json').records[0];
+  assert.deepEqual({ ...md, ...f.request.items[0].before }, f.metadata.records[0]);
+});
+
+for (const [name, mutate, error] of [
+  ['missing explicit option', f => { delete f.request.approval.sourceReview.rendererContinuity; }, /historical approved body|current student payload/],
+  ['null explicit option', f => { f.request.approval.sourceReview.rendererContinuity = null; }, /held-basic renderer scope/],
+  ['unknown option key', f => { f.request.approval.sourceReview.rendererContinuity.extra = true; }, /held-basic renderer scope/],
+  ['wrong immutable commit', f => { f.request.approval.sourceReview.rendererContinuity.reviewCommit = 'f'.repeat(40); }, /immutable input/],
+  ['wrong evidence hash', f => { f.request.approval.sourceReview.rendererContinuity.reviewRef.sha256 = '0'.repeat(64); }, /approval evidence missing\/drift/],
+  ['wrong source path', f => { f.rendererEvidence.afterSource.path = 'archive/exams/wrong.js'; f.seal(); }, /same-source snapshot/],
+  ['wrong denominator', f => { f.rendererEvidence.expectedQuestionCount = 3; f.seal(); }, /authority\/scope/],
+  ['wrong UID', f => { f.rendererEvidence.questionUid = 'foreign'; f.seal(); }, /authority\/scope/],
+  ['wider changed fields', f => { f.rendererEvidence.changedDisplayFields.push('solution'); f.seal(); }, /four problem display fields/],
+  ['missing asset', f => { f.rendererEvidence.afterAssets = []; f.seal(); }, /complete asset inventory/],
+  ['invented given packet text', f => { f.given.fields.content = 'invented source text'; f.seal(); }, /given packet derivation/],
+  ['wrong given source snapshot', f => { f.given.sourceRef.commit = 'f'.repeat(40); f.seal(); }, /given packet derivation/],
+  ['raw given input hidden in the packet', f => { f.given.studentText = 'invented source text'; f.seal(); }, /given packet derivation/],
+  ['given expected saw current image', f => { f.expectedGiven.exposure.currentImageSeen = true; f.seal(); }, /exposure binding/],
+  ['original expected saw native judgment', f => { f.expectedOriginal.exposure.nativeJudgmentsSeen = true; f.seal(); }, /exposure binding/],
+  ['wrong expected UID', f => { f.expectedOriginal.questionUid = 'foreign'; f.seal(); }, /expected UID/],
+  ['uninspected condition', f => { f.displayReview.observations.circlePointsAndRadiiPreserved = false; f.seal(); }, /static display witness/],
+  ['same author and display reviewer', f => { f.displayReview.producer = f.displayReview.reviewer; f.seal(); }, /static display witness/],
+  ['claimed new metadata approval', f => { f.displayReview.newMetadataApprovals = 1; f.seal(); }, /static display witness/],
+  ['invented actual UI PASS in static review', f => { f.displayReview.actualStudentUi = 'PASS'; f.seal(); }, /static display witness/],
+  ['missing technical UI status', f => { f.uiTechnical.status = 'NOT_RUN'; f.seal(); }, /UI technical scope/],
+  ['missing one actual viewport', f => { f.uiTechnical.results.pop(); f.seal(); }, /two viewports/],
+  ['wrong UI source identity', f => { f.uiTechnical.items[0].questionUid = 'foreign'; f.seal(); }, /UI exact current problem/],
+  ['wrong immutable UI byte count', f => { f.seal(refs => { refs.technicalRef.bytes++; }); }, /UI immutable\/current/],
+  ['unknown UI reference field', f => { f.seal(refs => { refs.extra = true; }); }, /technical and independent/],
+  ['UI changed CSS capture', f => { f.uiTechnical.results[0].capture.cssWrites = 1; f.seal(); }, /UI original scroll/],
+  ['UI uncovered final interval', f => { f.uiTechnical.results[0].capture.tiles[0].relativeInterval[1] = 199; f.seal(); }, /UI original PNG\/coverage/],
+  ['UI missing original screenshot', f => { f.uiTechnical.screenshotArtifacts.pop(); f.seal(); }, /UI screenshot artifact/],
+  ['UI independent original screenshot substitution', f => { f.uiIndependent.originalPngsPersonallyInspected[0].sha256 = '0'.repeat(64); f.seal(); }, /UI independent review/],
+  ['UI independent reviewer is technical producer', f => { f.uiIndependent.reviewer = f.uiTechnical.executionOwner; f.seal(); }, /UI independent review/],
+  ['UI independent reviewer is problem display producer', f => { f.uiIndependent.reviewer = f.displayReview.producer; f.seal(); }, /UI independent reviewer is problem display producer/],
+  ['UI independent approval escalation', f => { f.uiIndependent.newMetadataApprovals = 1; f.seal(); }, /UI independent review/],
+  ['UI independent condition disagreement', f => { f.uiIndependent.logicalCases[0].originalGeometryLabelsAndShadedRegionPreserved = false; f.seal(); }, /UI independent case/],
+  ['current UI engine differs from inspected engine', f => { write(f.dir, 'archive/engine.html', '<html>different renderer</html>'); }, /UI immutable\/current/],
+]) test(`held renderer refuses ${name} before any write`, t => {
+  const f = heldRendererFixture(t); mutate(f); refuses(f, error);
+});
+
+test('held renderer current and cached replay recheck live source, asset, witness, protected metadata and held runtime', t => {
+  for (const mutate of [
+    f => fs.appendFileSync(path.join(f.dir, f.newPath), '<!-- drift -->'),
+    f => fs.appendFileSync(path.join(f.dir, `archive/exams/${f.request.sourceArchiveFile}`), '\n'),
+    f => fs.unlinkSync(path.join(f.dir, f.rendererEvidence.independentReviewRef.path)),
+    f => fs.appendFileSync(path.join(f.dir, f.rendererEvidence.studentUi.technicalRef.path), '\n'),
+    f => write(f.dir, 'archive/engine.html', '<html>changed renderer</html>'),
+    f => { const d = readJson(f.dir, 'archive/data/question_metadata.json'); d.records[0].difficultyConfidence = 'low'; write(f.dir, 'archive/data/question_metadata.json', JSON.stringify(d)); },
+    f => { const d = readJson(f.dir, f.runtimePath); d.records[0].difficultyConfidence = 'high'; write(f.dir, f.runtimePath, JSON.stringify(d)); },
+    f => { const p = `${EVID}/${f.request.requestId}.json`, d = readJson(f.dir, p); delete d.applied[0].rendererContinuity; write(f.dir, p, JSON.stringify(d)); },
+  ]) {
+    const f = heldRendererFixture(t); run(f, { write: true }); assert.equal(run(f, { verifyProjection: true }).status, 'PASS');
+    mutate(f); assert.throws(() => run(f, { verifyProjection: true }), /asset bytes|source Git blob|evidence missing|UI immutable\/current|protected prior metadata|protected explicit held runtime|receipt\/protected value/);
+  }
+});
+
+test('held renderer refuses new external or malformed SVG dependencies', t => {
+  for (const svg of ['<svg xml:base="https://external.invalid/"><use href="#shape"/></svg>',
+    '<svg><path style="fill:u\\72l(https://external.invalid/#x)"/></svg>', '<svg><image href=external.svg /></svg>',
+    '<svg><use href="#shape"bad="x"/></svg>']) refuses(heldRendererFixture(t, { svg }), /unsupported SVG dependency/);
 });
 
 function newBasicParentFixture(t) {

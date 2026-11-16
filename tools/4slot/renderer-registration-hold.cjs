@@ -2,6 +2,7 @@
 // This contract never approves a row, waives ordinary slots, or repairs a source.
 'use strict';
 const fs = require('node:fs');
+const metadataHold = require('./metadata-registration-hold.cjs');
 const REASON = 'SOURCE_RENDERER_CORRECTION_PENDING';
 const SCHEMA = 'm3-s2-renderer-correction-registration-hold-v1';
 const REF = /^docs\/operations\/[A-Za-z0-9_가-힣./-]+\.json$/;
@@ -73,7 +74,7 @@ function validateLegacy(root,d,it,id,cur,hp,readCurrent=rel=>fs.readFileSync(hp.
 // The old hold and incorrect renderer stay historical; only the exact published
 // correction can supply the current source/renderer tuple. There is no general
 // source-change fallback and no route from this contract to a registered row.
-function validatePublishedCorrection(root,d,it,id,cur,hp) {
+function validatePublishedCorrection(root,d,it,id,cur,hp,readCurrent=rel=>fs.readFileSync(hp.safe(root,rel))) {
   const {safe,sha,blob,stable,payloadHash,identityHash,git,assetRefs,loadBank}=hp;
   const h=it.registrationHold, refs=d.evidence?.nativeHoldReview;
   const fail=message=>{throw Error('HOLD_CORRECTION_'+message);};
@@ -83,7 +84,7 @@ function validatePublishedCorrection(root,d,it,id,cur,hp) {
     if(!ref||!pattern.test(ref.path||'')||!COMMIT.test(ref.commit||'')||!SHA.test(ref.sha256||''))fail('REFERENCE_INVALID');
     const raw=git(root,['show',ref.commit+':'+ref.path]);
     if(raw===null||sha(raw)!==ref.sha256||(own(ref,'gitBlobSha1')&&(!COMMIT.test(ref.gitBlobSha1)||blob(raw)!==ref.gitBlobSha1)))fail('IMMUTABLE_BYTES_MISMATCH');
-    if(local&&sha(fs.readFileSync(safe(root,ref.path)))!==ref.sha256)fail('LOCAL_BYTES_MISMATCH');
+    if(local&&sha(readCurrent(ref.path))!==ref.sha256)fail('LOCAL_BYTES_MISMATCH');
     return raw;
   }
   const tuple=ref=>({path:ref?.path,gitBlobSha1:ref?.gitBlobSha1,sha256:ref?.sha256});
@@ -150,7 +151,8 @@ function validatePublishedCorrection(root,d,it,id,cur,hp) {
 
 function validate(root,d,it,id,cur,hp) {
   const h=it.registrationHold,refs=d.evidence?.nativeHoldReview;
+  if(metadataHold.hasClaim(d,it))return metadataHold.validate(root,d,it,id,cur,hp,validatePublishedCorrection);
   if(own(h,'reviewEvidence')||own(h,'independentEvidence')||own(refs,'rendererContinuity')||own(refs,'correctiveReview'))return validatePublishedCorrection(root,d,it,id,cur,hp);
   return validateLegacy(root,d,it,id,cur,hp);
 }
-module.exports={validate,REASON,SCHEMA,CONTINUITY_SCHEMA};
+module.exports={validate,REASON,SCHEMA,CONTINUITY_SCHEMA,hasMetadataClaim:metadataHold.hasClaim};

@@ -101,6 +101,10 @@ const requiredCommands = [
     timeout: 300000
   },
   {
+    label: 'tests/archive-main-auto-parent-retry.test.mjs',
+    args: ['--test', 'tests/archive-main-auto-parent-retry.test.mjs']
+  },
+  {
     label: 'tests/archive-main-meta-batch-replay.test.mjs',
     args: ['--test', 'tests/archive-main-meta-batch-replay.test.mjs']
   },
@@ -279,6 +283,15 @@ const requiredCommands = [
   {
     label: 'tests/archive-reviewed-apply-bridge.test.mjs',
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
+  },
+  {
+    label: 'tests/archive-reviewed-exam-registration-v2.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
+    timeout: 300000
+  },
+  {
+    label: 'tests/archive-reviewed-retained-scope-transport.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-retained-scope-transport.test.mjs']
   },
   {
     label: 'tests/archive-reviewed-native-parent.test.mjs',

@@ -1,0 +1,449 @@
+{
+  "schemaVersion": "root-current-renderer-observations-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "reviewedBy": "GPT_ROOT_0A70543C4CE8",
+  "inputManifestSha256": "6d781463859852bc512085c385c02659a0db8250f47ef32cb2844ac2fa306a60",
+  "scope": "ACTUAL_RENDERER_AND_BODY_CONTINUITY_ONLY",
+  "rows": [
+    {
+      "examId": "E021",
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_9e5e9e5c18525ff65a3fba39f0559661904342f1282e03ec44f113309b6ed79e",
+      "observations": "Both actual images: descending line, positive x/y intercepts; axes and origin preserved.",
+      "comparisonImage": {
+        "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E021/e021-q17-before-current-contact.png",
+        "sha256": "94debccdec511456fce69526b159be63ac8bf72def08b477906d2735b9bbd146"
+      },
+      "beforeAssets": [
+        {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "archive/assets/images/24_왕운중_1학기_기말_중2_기출/q17.png",
+          "gitBlobSha1": "af1a89b1f9746b60315d0ea6d7106e29d2ced62e",
+          "rawSha256": "0e74ce9a2b481f453f79bd6f0ac9493cd15d37af74400eb809bcfb956305380a",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E021/assets/before-q17.png"
+        }
+      ],
+      "reviewedCurrentAssets": [
+        {
+          "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+          "path": "archive/assets/images/24_왕운중_1학기_기말_중2_기출/q17-problem-visual-v2.svg",
+          "gitBlobSha1": "c283fe56d1c42e256a7e5e8fb7b9c4167d001bf6",
+          "rawSha256": "c9689fe6c9d17b06debd22f63735c558417847f6bbc7f818ba67c8776c40ec6b",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E021/assets/current-q17-problem-visual-v2.svg"
+        }
+      ],
+      "beforeStudentPayloadSha256": "c1ca3017a465ee45bfdc39012c75e7466351136fbfa75d2295d1c4723bea783b",
+      "currentStudentPayloadSha256": "0123e435e0b3e5a7a699ad1d8bde940636925652c374a0f4cfff9f763b25d8d7",
+      "decision": "RENDERER_CONTINUITY_VERIFIED",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "imageSize",
+        "imageAlt"
+      ]
+    },
+    {
+      "examId": "E021",
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_283cb181ff71c44beee4f23165108f2092f13731df19dd46ace6bad7bbdfef65",
+      "observations": "Both actual images: rising segment (5 min,0 m) to (11 min,1200 m); dashed projections clarify the existing coordinates.",
+      "comparisonImage": {
+        "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E021/e021-q18-before-current-contact.png",
+        "sha256": "493032532e7b1a310fee303beeaad41a5865a41a2d02615420ebdb88fc91f7a1"
+      },
+      "beforeAssets": [
+        {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "archive/assets/images/24_왕운중_1학기_기말_중2_기출/q18.png",
+          "gitBlobSha1": "5c6d7e8058ffe404a2db1875a063d83845dc8686",
+          "rawSha256": "2d8fd09114d63cfb7ec8aeffc5874be316e9a97926db38a0ae39c77abb23c03f",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E021/assets/before-q18.png"
+        }
+      ],
+      "reviewedCurrentAssets": [
+        {
+          "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+          "path": "archive/assets/images/24_왕운중_1학기_기말_중2_기출/q18-problem-visual-v2.svg",
+          "gitBlobSha1": "f5f0cec3e6507bb24764800657e25550d9a3e93e",
+          "rawSha256": "c5c9bf12f0f744a9a2ad84cbbffec5d1a76d6115204f204de66683c20454a25b",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E021/assets/current-q18-problem-visual-v2.svg"
+        }
+      ],
+      "beforeStudentPayloadSha256": "22535cad0bbfa030bb05a540ad09f08e96542646b0a70325f2a735ec507cd516",
+      "currentStudentPayloadSha256": "cbd8569e05751e07bbe1520d196a0ec4ea0307cb979d4530ea3328648df5482d",
+      "decision": "RENDERER_CONTINUITY_VERIFIED",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "imageSize",
+        "imageAlt"
+      ]
+    },
+    {
+      "examId": "E021",
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_5536d4866375f4388fdcf78c0ed31a956b615a4e3f6ebadc505af59c8fe54ea8",
+      "observations": "Original closed rectangle x=2,x=6,y=3,y=5 and unchanged source use attained boundary extrema. Current dashed x=6/y=5 must be restored to solid. Root removed exactly those two dash attributes, rendered and visually verified candidate against original: labels, coordinates and shaded rectangle preserved.",
+      "comparisonImage": {
+        "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E021/e021-q20-before-current-contact.png",
+        "sha256": "3adaa7f01dd2311f2505429200d7f55386706dd7caf28a893b790ea31bbc6c8a"
+      },
+      "beforeAssets": [
+        {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "archive/assets/images/24_왕운중_1학기_기말_중2_기출/q20.png",
+          "gitBlobSha1": "e592071a67e231ab25657a8030dc98ab47849f8d",
+          "rawSha256": "4836d1f17da5791c88b8e13b23ffa0f0c065f16552e9ca1717bc9206ad778cce",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E021/assets/before-q20.png"
+        }
+      ],
+      "reviewedCurrentAssets": [
+        {
+          "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+          "path": "archive/assets/images/24_왕운중_1학기_기말_중2_기출/q20-problem-visual-v2.svg",
+          "gitBlobSha1": "e46a7f89055a44f7a7e997278df5f1333392392f",
+          "rawSha256": "b2f1b769f44c0ee95c81bf2df484c5b4534a73b91e54d427480bc54d3c7d683f",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E021/assets/current-q20-problem-visual-v2.svg"
+        }
+      ],
+      "beforeStudentPayloadSha256": "206bb81a02f81dd92e57ab03a89844940866bdfb4f2aa8928023faba9814b845",
+      "currentStudentPayloadSha256": "6cdc32ffa4661c726801e6a258cd1c22f977c8d59c7fee177d6b4ab586833e73",
+      "decision": "REPAIR_REQUIRED_THEN_RENDERER_CONTINUITY_VERIFIED",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "imageSize",
+        "imageAlt"
+      ]
+    },
+    {
+      "examId": "E019",
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_49216c40a33bb8b369bca88a29620c7f13a4465b0728fc49e8c0f8c0ac560fa2",
+      "observations": "Both actual images: descending line, negative x/y intercepts; axes and origin preserved.",
+      "comparisonImage": {
+        "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E019/e019-q11-before-current-contact.png",
+        "sha256": "eb7327c38bcedce5868949fe18c66234d2d1bfb2ced57cae2c153699065ec35f"
+      },
+      "beforeAssets": [
+        {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q11.png",
+          "gitBlobSha1": "ab1347b9627804baeed8d4bb916e2fd5fca84ecc",
+          "rawSha256": "5a32dd00d28c27e18ca9258e4ed76abc165b2d1d65c2cbd48aa2942d0573ea82",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E019/assets/before-q11.png"
+        }
+      ],
+      "reviewedCurrentAssets": [
+        {
+          "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+          "path": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q11-problem-visual-v2.svg",
+          "gitBlobSha1": "ca4229337ed40a93c9e7cdb0ca28c4cf311ec5a4",
+          "rawSha256": "340311c031f7250eecc49ed2e5cca015490aad0354f8f9bbadadc9a543f6cb9e",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E019/assets/current-q11-problem-visual-v2.svg"
+        }
+      ],
+      "beforeStudentPayloadSha256": "160e4b0276f8c7a6d08d60aad8b70c5b112dff2bc6e41f0c31777996f6288f1a",
+      "currentStudentPayloadSha256": "0680c7ff60fbe2002a9a05840ddcca01a8b376fbfe71c0e8ebf6aa091cf8a9c9",
+      "decision": "RENDERER_CONTINUITY_VERIFIED",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "imageAlt",
+        "imageSize"
+      ]
+    },
+    {
+      "examId": "E019",
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_809fb57d6a8148dda510e1a2a9c9094e1cbf0de53f46fcd91c7dc0c962907386",
+      "observations": "Both actual images: unit grid, line through x-intercept 2 and y-intercept -1; coordinates and positive slope preserved.",
+      "comparisonImage": {
+        "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E019/e019-q12-before-current-contact.png",
+        "sha256": "351efce15f74d96053376fdc28498237fa1f9cbba459298b341693e76a844896"
+      },
+      "beforeAssets": [
+        {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q12.png",
+          "gitBlobSha1": "f7b6349a3c6e73fbec608c461e16d9147fa2571c",
+          "rawSha256": "5e2072da0ddc97f60d1fc485ad6a1aeef46e579ce44dd6bb1943166f80fa96c8",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E019/assets/before-q12.png"
+        }
+      ],
+      "reviewedCurrentAssets": [
+        {
+          "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+          "path": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q12-problem-visual-v2.svg",
+          "gitBlobSha1": "21bed02eb3201f9231a7512c4be860d0067966a3",
+          "rawSha256": "ff39b7ae1ba1646ccfa4cf2d20535d83d65bf2b25969a9d372777ab495ece2fc",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E019/assets/current-q12-problem-visual-v2.svg"
+        }
+      ],
+      "beforeStudentPayloadSha256": "dc70e8db524a3be674c9c23ac3e47ff69802ba44f07e74304ad3d6482630201a",
+      "currentStudentPayloadSha256": "7e5a45470c39cd520d18b46b6ac86f025c0f89187f6687482a5c45e93e7c7b50",
+      "decision": "RENDERER_CONTINUITY_VERIFIED",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "imageSize",
+        "imageAlt"
+      ]
+    },
+    {
+      "examId": "E019",
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_0bb95009841d8164d9f3729cf111b57e44c107bd9bd4d6189224f1de332ad000",
+      "observations": "Both actual images: descending line through (0,-1), rising line through (4,0), intersection (3,-2). Dashed style distinguishes a line; no inequality region or endpoint exclusion is introduced.",
+      "comparisonImage": {
+        "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E019/e019-q18-before-current-contact.png",
+        "sha256": "8d47018fe208f98600c934891b15d9be2565110d04a99595addd9e32da131049"
+      },
+      "beforeAssets": [
+        {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q18.png",
+          "gitBlobSha1": "5b21ef38cec5c8220195368b00cbbdedddf6f712",
+          "rawSha256": "b6eeda0021292f6f6d4973dab2061321e1cbd653b1f6e7c900639fe8e24b3b0f",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E019/assets/before-q18.png"
+        }
+      ],
+      "reviewedCurrentAssets": [
+        {
+          "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+          "path": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q18-problem-visual-v2.svg",
+          "gitBlobSha1": "3ae522b1c7806872384a5d2c730a356c5676a850",
+          "rawSha256": "07d1a00750b42444abb43d4664181b348a220499c3cbec8895cc29c925ceb329",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E019/assets/current-q18-problem-visual-v2.svg"
+        }
+      ],
+      "beforeStudentPayloadSha256": "aeec71ec5f4117e8ceaba578776a12d631993a2514aa6ddaae10021525047a82",
+      "currentStudentPayloadSha256": "30167522d6b550c3ea20e418708afc42d9fb3de938ab02106d975d325bffb096",
+      "decision": "RENDERER_CONTINUITY_VERIFIED",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "imageSize",
+        "imageAlt"
+      ]
+    },
+    {
+      "examId": "E019",
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_2c69d8d8f26a057066d31066c393065d0c810bb0fe1983063417b97148fbe2f2",
+      "observations": "Both actual images: y=ax+2 rising, y=-x+b falling, common positive y-intercept A, negative x-intercept B, positive x-intercept C. Aspect ratio is presentation only; labels and triangle incidence preserved.",
+      "comparisonImage": {
+        "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E019/e019-q22-before-current-contact.png",
+        "sha256": "9b979ca82faafdf2ccf206f4bb38d3b7b69762e00de6fa8e3deb3ede7d0d1473"
+      },
+      "beforeAssets": [
+        {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q22.png",
+          "gitBlobSha1": "be268382aff6a0f921f255cae79f03a0a0d17d27",
+          "rawSha256": "abb2d55216d532f0c6514e995c63ec659543db03097e6797ce9b17ab16115e01",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E019/assets/before-q22.png"
+        }
+      ],
+      "reviewedCurrentAssets": [
+        {
+          "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+          "path": "archive/assets/images/24_승평중_1학기_기말_중2_기출/q22-problem-visual-v2.svg",
+          "gitBlobSha1": "a76a1ccead6a8556336e076a7dff329e32fc9701",
+          "rawSha256": "be1a8abde7d071a434cb2a2d8a16d32978e8ed43c0392c30d61b4995601b4296",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E019/assets/current-q22-problem-visual-v2.svg"
+        }
+      ],
+      "beforeStudentPayloadSha256": "1092236f4cfc205df3ef93344922528786ef577089ea4f40c519e4adfb04fd17",
+      "currentStudentPayloadSha256": "9e9dbd76331cb09749f2882bfc2bafc9c38686cd28ff98b0038e5051fbf96e15",
+      "decision": "RENDERER_CONTINUITY_VERIFIED",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "imageSize",
+        "imageAlt"
+      ]
+    },
+    {
+      "examId": "E005",
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_7e294a1ec376c861cd42e750d7417e33933e6039f14d32085b32f4e28361e20d",
+      "observations": "Both actual images: one, two and three adjacent squares sharing vertical matches; grouping and continuation preserved.",
+      "comparisonImage": {
+        "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/e005-q9-before-current-contact.png",
+        "sha256": "b3032ba87dcbdfc9c1fa5c728d651007d56768b4720623b8602a0b17d624c699"
+      },
+      "beforeAssets": [
+        {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "archive/assets/images/26_팔마중_1학기_기말_중2_기출/q09.png",
+          "gitBlobSha1": "f94672df38a7f627021f212c23549852151b8c32",
+          "rawSha256": "08f31ab9ef1d01186ec70552b5ed45c26df37f8795e0763693adf19694b3f7c3",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/assets/before-q09.png"
+        }
+      ],
+      "reviewedCurrentAssets": [
+        {
+          "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+          "path": "archive/assets/images/26_팔마중_1학기_기말_중2_기출/q9-problem-visual-v2.svg",
+          "gitBlobSha1": "0c772624cdea12fd5a3fac8266f3e077b88ce595",
+          "rawSha256": "d940d515d0b3c50ad4b4a44b36eee8a25881c093eb5a962e1d40aaf7c4e11635",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/assets/current-q9-problem-visual-v2.svg"
+        }
+      ],
+      "beforeStudentPayloadSha256": "d854dba0cc02d1e815e6be46a027a755d3cf2bcfdcbc5086268cdfb68d3cb94e",
+      "currentStudentPayloadSha256": "2b7a640fa9a1996eeaf890d1283c58ce5f55277f883985d5e3f6342eb8946858",
+      "decision": "RENDERER_CONTINUITY_VERIFIED",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "imageSize",
+        "imageAlt"
+      ]
+    },
+    {
+      "examId": "E005",
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_170d1c6f1d2c566b2e81de4df9950abf99ec244cf12a0446923eb33afbccfa3e",
+      "observations": "Five actual graphs preserve ordered slopes/intercepts (2,2),(2,-2),(1/2,2),(1/2,-2),(-2,2). Entire original stem preserved; only same diagram and image description added inline. Choice/answer/solution bytes unchanged. Pencil crossings in original options 2 and 4 are annotations, not printed curves. Existing translation-direction wording remains unchanged and is not newly approved.",
+      "comparisonImage": {
+        "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/e005-q11-before-current-contact.png",
+        "sha256": "6c17a651070d4fd8fef99ef72b5fdb55241bbdfb516ca552b330f5ac144645e2"
+      },
+      "beforeAssets": [
+        {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "archive/assets/images/26_팔마중_1학기_기말_중2_기출/q11.png",
+          "gitBlobSha1": "5facc64515bfdb208e41f4f23517ca66b72fce6c",
+          "rawSha256": "376f40345ec11505fb45297f6855ab305b4ad70e3b398a049498f14201b2a4fa",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/assets/before-q11.png"
+        }
+      ],
+      "reviewedCurrentAssets": [
+        {
+          "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+          "path": "archive/assets/images/26_팔마중_1학기_기말_중2_기출/q11-problem-visual-v2.svg",
+          "gitBlobSha1": "76a56a324d35437c92c347e32837bfa894d0abbc",
+          "rawSha256": "310c22448ea066a2686bd6d2da2185e4176700065fafa380d9f3f8bf021a5cd8",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/assets/current-q11-problem-visual-v2.svg"
+        }
+      ],
+      "beforeStudentPayloadSha256": "b8a026e62aeebbcec8759cf65d2432ddaa00a2f5b3f204fcc69ed48cf85c4108",
+      "currentStudentPayloadSha256": "99dcefb66d202ecee8eb4a5509db4b9be1ea2d9d1431c497729225ce6a10cee4",
+      "decision": "RENDERER_CONTINUITY_VERIFIED",
+      "changedFields": [
+        "layoutTag",
+        "content",
+        "image"
+      ]
+    },
+    {
+      "examId": "E005",
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_db8f23f486179ddd8204782d9440d3a5bcf2fa00621d489683c93b6ade9da418",
+      "observations": "Both actual images: marked points (-2,4) and (2,1), unit grid, descending joining line preserved.",
+      "comparisonImage": {
+        "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/e005-q13-before-current-contact.png",
+        "sha256": "c51048cd9951214d3d01e2588f0e9a8a013f4d279a57e6ff1691ab2fc6b9e1e5"
+      },
+      "beforeAssets": [
+        {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "archive/assets/images/26_팔마중_1학기_기말_중2_기출/q13.png",
+          "gitBlobSha1": "6ac3cc6f92ba83a2ec90933fea76ae7334ec7e48",
+          "rawSha256": "11d208b45660a64f567595fc980438a7e9174507bcd7851a7391a9fd06c1c802",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/assets/before-q13.png"
+        }
+      ],
+      "reviewedCurrentAssets": [
+        {
+          "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+          "path": "archive/assets/images/26_팔마중_1학기_기말_중2_기출/q13-problem-visual-v2.svg",
+          "gitBlobSha1": "5c6ad65b4ddd860966f15a7b9767850ca9748193",
+          "rawSha256": "ab8c8e9372e5d757414e3baab4842e828f22fe99831fcb70a96234302bc0e720",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/assets/current-q13-problem-visual-v2.svg"
+        }
+      ],
+      "beforeStudentPayloadSha256": "fa0d57e3dca830834beec4f37ce46a0a401ba28fe34bcbc3908796b7003cb649",
+      "currentStudentPayloadSha256": "51f90d5b68026e866a5644b508081467ee0a8e77d8e152c4b5833c6e1dc1f7bf",
+      "decision": "RENDERER_CONTINUITY_VERIFIED",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "imageSize",
+        "imageAlt"
+      ]
+    },
+    {
+      "examId": "E005",
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_87213f474732065b6e067ead2809e851f1ec915b172853dc95eeeee70e571ce1",
+      "observations": "Both actual images: rectangle ABCD top15cm/right8cm, P on BC moving toward C, PD, shaded ABPD preserved.",
+      "comparisonImage": {
+        "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/e005-q16-before-current-contact.png",
+        "sha256": "40c89c29f6c84762df09d8bcba631edd1d1a0260d513dca7b4ac61bad5333bc3"
+      },
+      "beforeAssets": [
+        {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "archive/assets/images/26_팔마중_1학기_기말_중2_기출/q16-solution.svg",
+          "gitBlobSha1": "1de9aca327f3559fb62c4d404276b3343ae1daee",
+          "rawSha256": "23bb65c8cb7dded518a546d0b5d029b2958f3d12880eb6ef76b05a88d4c97f58",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/assets/before-q16-solution.svg"
+        },
+        {
+          "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+          "path": "archive/assets/images/26_팔마중_1학기_기말_중2_기출/q16.png",
+          "gitBlobSha1": "a326f6c0a8378973b7639d520ac30ae1e2239c29",
+          "rawSha256": "fa97dcac2a7c5f1dd0c74778b8a7df0ef97a8251e55a09d47c477bb036291452",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/assets/before-q16.png"
+        }
+      ],
+      "reviewedCurrentAssets": [
+        {
+          "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+          "path": "archive/assets/images/26_팔마중_1학기_기말_중2_기출/q16-problem-visual-v2.svg",
+          "gitBlobSha1": "72bbb6fa7ad0a5df02f9ed03eac4bc022b49e58c",
+          "rawSha256": "6bff080a292cde0a7808639916a371418c04c5f3bfe8481d1f7ddea34ee71790",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/assets/current-q16-problem-visual-v2.svg"
+        },
+        {
+          "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+          "path": "archive/assets/images/26_팔마중_1학기_기말_중2_기출/q16-solution.svg",
+          "gitBlobSha1": "1de9aca327f3559fb62c4d404276b3343ae1daee",
+          "rawSha256": "23bb65c8cb7dded518a546d0b5d029b2958f3d12880eb6ef76b05a88d4c97f58",
+          "localPath": "/workspace/scratch/0a70543c4ce8/m1-read/m2-small-figure-continuity/E005/assets/current-q16-solution.svg"
+        }
+      ],
+      "beforeStudentPayloadSha256": "d1f59ae3791c19b9f0b66c404152b80da6a656ae0ea85a8fcc45c6fcc547f71d",
+      "currentStudentPayloadSha256": "f192e26b02d4d58d9147600f97522426e3082dacf20d5f8aa1469672eac3258f",
+      "decision": "RENDERER_CONTINUITY_VERIFIED",
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "imageSize",
+        "imageAlt"
+      ]
+    }
+  ],
+  "existingBodyReviewReuse": {
+    "path": "m1-read/m2-small-figure-continuity/E019/e019-q19-existing-body-review-reuse.r1.json",
+    "sha256": "e07a69b26895fe3b44a195976c0d002db7dff5fede3573de08dc863edf476a05",
+    "newSemanticApproval": false
+  },
+  "repair": {
+    "repoPath": "archive/assets/images/24_왕운중_1학기_기말_중2_기출/q20-problem-visual-v2.svg",
+    "candidatePath": "/workspace/scratch/0a70543c4ce8/state/e021-q20-boundary-restored.svg",
+    "beforeSha256": "b2f1b769f44c0ee95c81bf2df484c5b4534a73b91e54d427480bc54d3c7d683f",
+    "afterSha256": "aa56024f9a074530f89d5ea1275b902cbded250c8736449a46d33b8e16eefb66",
+    "delta": "Remove exactly the two stroke-dasharray attributes; no other SVG byte changes.",
+    "renderedCandidatePath": "/workspace/scratch/0a70543c4ce8/state/e021-q20-boundary-restored.png",
+    "renderedCandidateSha256": "e8aff83f0ad9944ea2128d68748033c5796fe8aced10ecc0524b7657b833cf6f"
+  },
+  "currentImageAltAndInlineImageDescription": "READ_AND_CONSISTENT_WITH_ACTUAL_DIAGRAM",
+  "sourceTextWrites": 0,
+  "newMathQaApproval": 0,
+  "registryChanges": 0,
+  "nativeAuthorities": "FINAL_CHAIN_READBACK_REQUIRED_BEFORE_CANDIDATE_RELEASE",
+  "holds": "PRESERVE_ALL_EXISTING_NATIVE_AND_SOURCE_HOLDS"
+}

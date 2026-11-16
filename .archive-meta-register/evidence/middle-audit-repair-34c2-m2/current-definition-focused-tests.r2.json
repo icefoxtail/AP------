@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "scoped-registration-integration-test-record-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "tester": "GPT_M1_0A70543C4CE8",
+  "checkedAt": "2026-11-16T01:30:17.417049+00:00",
+  "status": "PASS",
+  "scope": "M2 S1 opt-in current definition application; temporary Git fixtures only",
+  "productionRepositoryMutations": false,
+  "command": "ARCHIVE_TEST_REPO=/workspace/scratch/0a70543c4ce8/scoped node --test m1-read/m2s1-current-definition-application.focused.test.mjs",
+  "counts": {
+    "tests": 28,
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0
+  },
+  "testFile": {
+    "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2s1-current-definition-application.focused.test.mjs",
+    "sha256": "48496ab3ab79d834490836019588a5767d35ee381d924833d5519305f42205d0"
+  },
+  "testedFiles": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2s1-current-definition-application.mjs",
+      "sha256": "c47fb64d0114d6cca0eb008b61f20dacdcf2e144c510365b5b61db9976b16d16"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "sha256": "d66d7104fe4a89df4f13296a57497d7f8b2153cf538e6281e1392fb3ee209b7b"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-binding.mjs",
+      "sha256": "67d940fd381356c272d7af770f6870655e9f088a82186a0d7123556100d5bbe8"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-replay-registry-context.mjs",
+      "sha256": "91f44671182c31449ee0ae24ed6e0e99f77fd312f05b92dbbf720576d6ffd733"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "sha256": "9a46e5da43a4643750c2a1a319b6b729cc14b7def40de51cf9a1a50053e5a7d4"
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+      "sha256": "cec4028328e02731868ddaa75990304a11eefec3995598079f4a06a8222e8ee3"
+    }
+  ],
+  "evidence": [
+    "Actual official registrar write, replay, typed source-binding emission and validateNativeReviewedSourceReuse completed successfully.",
+    "The original native record, student source bytes and omitted held metadata row remained unchanged during registration.",
+    "Unbound, missing, altered or reviewer-conflicting independent evidence was rejected before writes.",
+    "A selected native proposal, an explicit native source/difficulty hold, and a false no-proposal claim were rejected.",
+    "Unapproved template/binding meaning, incorrect RPM alias, missing 2022 owner scope, changed student answer, changed source approval flag and changed rationale were rejected.",
+    "Deleting the stored application proof, typed binding sidecar or original independent file blocked both replay and native source reuse.",
+    "Unrelated RPM append plus later unselected source metadata change preserved typed source reuse of the exact selected question.",
+    "A real official source-only PARTIAL_UIDS request issued a new receipt after an omitted question changed. It preserved exactly one prior approval, created zero new metadata approvals, passed its own replay, and reused the new receipt with current whole source bytes and current runtime through validateNativeReviewedSourceReuse.",
+    "Changing an omitted question inside the initial immutable application evidence commit was rejected before any metadata write.",
+    "The fixture stores standardCourse=중2 수학 while both immutable native sources and current source explicitly say 중2. Official write changes the selected metadata to 중2 and records UNCHANGED_NATIVE_AND_CURRENT_SOURCE_EXACT_BINDING."
+  ],
+  "fixtureNote": "The initial active-registry failure was a missing fixture metadata_rules ACTIVE file/index entry; only the temporary fixture setup was corrected. Production guards were not changed.",
+  "limitations": [
+    "These are isolated fixture integration tests; actual E009 registration, current writer receipt, consumer UI and deployment remain separate pending checks."
+  ],
+  "supersedes": {
+    "path": "/workspace/scratch/0a70543c4ce8/m1-read/m2s1-current-definition-focused-tests.r1.json",
+    "sha256": "7cc4c122f83c6a72869e774f05da75f5e349ed12e51621c7553b9544d4f3e66f"
+  }
+}

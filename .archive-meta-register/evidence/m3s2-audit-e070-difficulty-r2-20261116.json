@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "archive-m3-e070-difficulty-retry-evidence-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "preparedBy": "GPT_M3_34C2",
+  "baselineMain": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+  "decision": "RETRY_EXISTING_EXACT_REVIEWED_DIFFICULTY_AFTER_ALREADY_MERGED_CONSUMER_BOUNDARY_FIX",
+  "questionUid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+  "sourceOrdinal": 23,
+  "sourceArchiveFile": "original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+  "expectedQuestionCount": 23,
+  "originalRejectedRequest": {
+    "commit": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+    "path": ".archive-meta-register/rejected/m3s2-audit-e070-difficulty-20261116.json",
+    "sha256": "a67932573a29ac6f3f398817aa5e962d43a204a2c0bd124290f75d34b242d4c0"
+  },
+  "originalRejection": {
+    "commit": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+    "path": ".archive-meta-register/rejected/m3s2-audit-e070-difficulty-20261116.rejection.json",
+    "sha256": "184b7c8de93d6e8fd2f7d25b81616e2919d2d64360d4662f45570754bd823abf",
+    "stage": "consumer-verify",
+    "error": "METADATA_CONFLICT Q23: tagConfidence,tagStatus"
+  },
+  "newRequest": {
+    "path": ".archive-meta-register/inbox/m3s2-audit-e070-difficulty-r2-20261116.json",
+    "sha256": "8073d4f1d72639c1602344ed563f2a1a906b45d49d1ded829c5d317c73abc9af",
+    "requestId": "m3s2-audit-e070-difficulty-r2-20261116"
+  },
+  "requestSemanticDelta": [],
+  "requestMechanicalDelta": [
+    {
+      "field": "gemini.requestId",
+      "before": "m3s2-audit-e070-difficulty-20261116",
+      "after": "m3s2-audit-e070-difficulty-r2-20261116"
+    }
+  ],
+  "originalCreatedAtPreservedAsReviewInputTimestamp": true,
+  "existingCorrectionProof": {
+    "commit": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+    "path": ".archive-meta-register/evidence/m3s2-audit-e070-difficulty-20261116.json",
+    "sha256": "6f67ba98ad4840dff0023f7b874a5ad74c6b3b77aa7c85e1b40a3b10f462d753"
+  },
+  "reviewedCorrectionIdentical": true,
+  "sourceRef": {
+    "commit": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+    "path": "archive/exams/original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+    "sha256": "660fc5081a2292630cecc4e58066a2dd309bc2e89a6df122c671a8b450f97adc",
+    "blobSha1": "6ba408d51f059a3c1e10f984154cda530ff33ef0"
+  },
+  "sourceQuestionSha256": "f4ea53874eb37e5453c72282e708881545edb3423f5d2d335d1d5a0e2bd98cff",
+  "metadataRowSha256": "ce0daf3179edae2d0b932f69d029155fe3379a1641f3a26d069d1585506d5838",
+  "identityRowSha256": "18eb23d7d3afff5f2f320af0e62942314fe736f1c6e7e8f2902712c89885b2d0",
+  "unchangedSincePreviousWriter": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "newSourceChanges": 0,
+  "newRegistryChanges": 0,
+  "newSemanticApprovals": 0,
+  "newMathematicalQa": 0,
+  "sourceBindingRefresh": false,
+  "tagAndApprovalStatusChanges": [],
+  "difficultyBefore": {
+    "difficultyBucket": 3,
+    "difficultyConfidence": null,
+    "difficultyBoundaryFlag": null,
+    "legacyLevelCompatibility": null
+  },
+  "difficultyAfter": {
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
+  },
+  "retainedAnnotationConflicts": [
+    {
+      "field": "tagConfidence",
+      "source": {
+        "present": true,
+        "value": "medium"
+      },
+      "metadata": {
+        "present": true,
+        "value": "registration_only"
+      },
+      "decodedCatalog": {
+        "present": true,
+        "value": "registration_only"
+      },
+      "resolvedCatalog": {
+        "present": true,
+        "value": "registration_only"
+      }
+    },
+    {
+      "field": "tagStatus",
+      "source": {
+        "present": true,
+        "value": "reviewed_create"
+      },
+      "metadata": {
+        "present": true,
+        "value": "registration_only_pending_review"
+      },
+      "decodedCatalog": {
+        "present": true,
+        "value": "registration_only_pending_review"
+      },
+      "resolvedCatalog": {
+        "present": true,
+        "value": "registration_only_pending_review"
+      }
+    }
+  ],
+  "retainedMetadataStatus": "registration_only_pending_review",
+  "retainedMetadataSourceFingerprint": "b7df56882913e8e6d08d3376225eb2cc86defe42120da84150d998d55e1c3c64",
+  "retainedMetadataContentFingerprint": "c8461194aa8b9783aedc7998f7925651b86f985f27915b1b3e22916c278ad6d9",
+  "existingMainFix": {
+    "pullRequest": 2228,
+    "main": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+    "codeRef": {
+      "commit": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+      "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "sha256": "d598bb2d63915dbb0236313c08acb8a576600724f8f3ebe06a36d8dd994cfaf9"
+    },
+    "testRef": {
+      "commit": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+      "path": "tests/archive-changed-uid-consumer-approval.test.mjs",
+      "sha256": "561f9ba53495f848fdc8ac491392b591f80608dcc00fe24ee4ce0e92886ba4bf"
+    },
+    "actualFixtureRef": {
+      "commit": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+      "path": "tests/fixtures/archive-difficulty5-consumer-refusals.json",
+      "sha256": "9825d75d50363350c7ee0a93aa694c4007a9751824cda2688e54d1f17f81227b"
+    },
+    "exactSelectedFixtureMatched": true,
+    "newCodeWrittenByThisTask": false,
+    "behavior": [
+      "Official registerDifficulty5 verifyProjection revalidates the accepted four-value tuple and existing source/identity bindings.",
+      "Only the existing exact registration-only pending semantic tag context is an advisory; PT/TPL, identity, source and other conflicts still refuse.",
+      "The real page bucket, D5 query membership and directSelectable checks still run.",
+      "D5 verification reports no semantic/PT/TPL/source approval and retains pending canonical assignment debt."
+    ],
+    "testExecution": "Existing merged exact-fixture verification is reused; this preparation does not rerun it."
+  },
+  "activeInboxSearch": {
+    "main": "76cc4c8789c92d4f2c5cb55c2fca1815251617c2",
+    "inboxRequestCount": 12,
+    "sameUidRequestsFound": 0,
+    "otherOwnerPacketsModified": 0
+  },
+  "actualRegistration": "NOT_RUN_NEW_REQUEST",
+  "actualConsumerAfter": "NOT_RUN_NEW_REQUEST",
+  "studentDeployment": "NOT_RUN"
+}
