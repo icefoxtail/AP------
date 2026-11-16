@@ -1,0 +1,86 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass4",
+    "createdAt":  "2026-11-14T06:51:03+09:00",
+    "sourceArchiveFile":  "original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "x≥0에서 f(x)=x+3이고 x\u003c0에서 f(x)=(2-a)x+3이므로 두 구간의 단조성과 치역이 겹치지 않는 조건을 나눈다.",
+                      "integrationPattern":  "CASE_BRANCH"
+                  },
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "점근선 교점 Q를 기준으로 PNQM의 둘레를 u와 3/u의 합으로 바꾸어 읽으면 최소값 조건이 드러난다.",
+                      "integrationPattern":  "REINTERPRETATION"
+                  },
+                  {
+                      "ordinal":  16,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "x≤k, x≠2인 범위를 x\u003c2와 x\u003e2로 갈라 √(-x+k)=(x-3)/(x-2)의 교점 수가 2가 되는 k를 찾는다.",
+                      "integrationPattern":  "CASE_BRANCH"
+                  },
+                  {
+                      "ordinal":  17,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "정의역 x≥0에서 √(px+q)+r의 치역이 y≥3 전체가 되려면 시작점과 하한을 맞추어 q와 r을 읽어야 한다.",
+                      "integrationPattern":  "REINTERPRETATION"
+                  },
+                  {
+                      "ordinal":  18,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "|x-1|-4의 양의 구간 두 갈래에서 y=√(|x-1|-4)와 y=-x+k가 접하거나 만나는 경계 k를 각각 비교한다.",
+                      "integrationPattern":  "CASE_BRANCH"
+                  },
+                  {
+                      "ordinal":  2,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f(g(x))와 g(f(x))를 각각 6x+2k+3 및 6x+k+3으로 계산해 k를 정한 뒤 g(1)을 대입한다.",
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  21,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "역함수 조건 f(3)=6과 x₁\u003cx₂일 때 f(x₁)\u003ef(x₂)를 함께 적용해 1·2개씩 남는 값의 선택 수를 센다.",
+                      "integrationPattern":  "INTERDEPENDENT"
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "두 유리함수의 모든 사분면 통과 조건과 제3사분면 비통과 조건이 요구하는 k 범위를 교차시켜 정수 후보를 고른다.",
+                      "integrationPattern":  "INTERDEPENDENT"
+                  },
+                  {
+                      "ordinal":  23,
+                      "chosenFrom":  "pass1",
+                      "resolutionReason":  "f(x)=√(3x+4)의 역함수를 구한 뒤 A와 직선 l이 역함수 그래프와 만나는 C를 찾아 △ABC의 넓이를 계산한다.",
+                      "integrationPattern":  "SEQUENTIAL"
+                  },
+                  {
+                      "ordinal":  3,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "(2x+5)/(x-1)을 수평·수직 이동된 a/x 꼴로 다시 써 a,b,c를 읽어 합한다.",
+                      "integrationPattern":  "REINTERPRETATION"
+                  },
+                  {
+                      "ordinal":  5,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "(2-3x)/(x+1)의 점근선과 대칭축, 점 통과 및 사분면 성질을 보기별로 확인해 거짓인 설명을 고른다.",
+                      "integrationPattern":  "CASE_BRANCH"
+                  },
+                  {
+                      "ordinal":  6,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "5≤x≤8에서 (-2x+7)/(x-2)=√(2x)+k가 되는 교점을 하나만 갖도록 두 함수의 값 범위와 접촉 조건을 함께 맞춘다.",
+                      "integrationPattern":  "INTERDEPENDENT"
+                  },
+                  {
+                      "ordinal":  7,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "y=|(2x+1)/(-x+3)|와 y=k의 교점 수를 k=1, 2, 3 각각에서 분기점과 점근선 기준으로 세어 더한다.",
+                      "integrationPattern":  "CASE_BRANCH"
+                  }
+              ]
+}
