@@ -109,6 +109,10 @@ const requiredCommands = [
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
   },
   {
+    label: 'tests/item-4slot-public-reviewed-rebind.test.cjs',
+    args: ['--test', 'tests/item-4slot-public-reviewed-rebind.test.cjs']
+  },
+  {
     label: 'tests/item-4slot-m3-renderer-hold.test.cjs',
     args: ['--test', 'tests/item-4slot-m3-renderer-hold.test.cjs']
   },
