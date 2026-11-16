@@ -1,0 +1,56 @@
+name: Archive M2S1 Q13 Repaired Display UI Evidence
+
+on:
+  push:
+    branches: ['review-reference/m2s1-q13-repaired-ui-26fc-20261116']
+    paths:
+      - 'tools/check-m2s1-q13-repaired-display-browser.cjs'
+      - 'tests/fixtures/archive-m2s1-q13-repaired-display-ui.json'
+      - 'tests/archive-m2s1-q13-repaired-display-ui.test.cjs'
+      - '.github/workflows/archive-m2s1-q13-repaired-display-ui.yml'
+      - 'archive/assets/images/25_왕운중_1학기_기말_중2_수학/q13-problem-visual-v2.svg'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repaired-q13-display:
+    name: Q13 repaired problem desktop and mobile
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out exact reference commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check closed Q13 contract
+        run: node --test --test-concurrency=1 tests/archive-m2s1-q13-repaired-display-ui.test.cjs
+      - name: Install supported Chrome
+        id: chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+      - name: Install pinned browser controller
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/m2s1-q13-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Capture exact repaired Q13 in two unchanged viewports
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/m2s1-q13-browser/node_modules
+          ARCHIVE_M2S1_DISPLAY_UI_EXPECTED_SHA: ${{ github.sha }}
+        run: node tools/check-m2s1-q13-repaired-display-browser.cjs --surface PROBLEM --output "$RUNNER_TEMP/m2s1-q13-repaired-display"
+      - name: Upload actual technical evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m2s1-q13-repaired-display-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/m2s1-q13-repaired-display/
+          if-no-files-found: error
+          retention-days: 14
