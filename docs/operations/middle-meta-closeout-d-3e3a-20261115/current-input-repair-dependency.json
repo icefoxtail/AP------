@@ -1,7 +1,7 @@
 {
   "schemaVersion": "middle-D-current-input-repair-dependency-v1",
-  "baseMain": "16f0413bbf709581eededf19497008031d80b808",
-  "previousDHead": "56d4994b5e1c9933019548b12c8bffe825d484aa",
+  "baseMain": "b645719341bc7deae6ed3b21a78f878109dc7789",
+  "previousDHead": "abf336e1ba5ef47cee91d51f883e9c0d35df7542",
   "dependency": {
     "pr": 2246,
     "head": "387dba05a709c6b3e65e712ffd3e7932fcf148df",
@@ -53,5 +53,167 @@
     "M3S1SourcesBranchesPackets": 0,
     "newStudentPayloadChanges": 0,
     "newMathematicalJudgments": 0
+  },
+  "currentCodeReconciliation": {
+    "proofSha256": "163ec8c01b66ad67d5eeb4bc008e6d32e3d45da6b24438199f76f6925ebfc378",
+    "schemaVersion": "D-current-shared-code-pr2248-union-v1",
+    "observedAtUtc": "2026-11-16T03:16:25.178887+00:00",
+    "currentMain": "c8582e3f664476fe2bcc537f882c608ea9470327",
+    "dependencyHead": "387dba05a709c6b3e65e712ffd3e7932fcf148df",
+    "DHead": "abf336e1ba5ef47cee91d51f883e9c0d35df7542",
+    "CHead": "88874ce2ea608407e84ee1dda76243a9772c43ca",
+    "status": "PASS_EXACT_EXISTING_D_DELTA_AND_CURRENT_MAIN87_TARGETED_TESTS",
+    "files": [
+      {
+        "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+        "beforeGitBlob": "2756a9da7244cedb34b40b78f225ffa13a39b0c4",
+        "candidate": {
+          "path": "/workspace/scratch/3e3a7e007c36/m2-agent/d-code-2248/merged-reviewed-source-reassessment.mjs",
+          "bytes": 27230,
+          "sha256": "ce6ca79b6a57a1dff31e5cc0612cd106dfc43805252284eaef3ce37e93807587",
+          "gitBlob": "806a7c6ee1822c48cbfbc7f2601485896becc2ee"
+        }
+      },
+      {
+        "path": "tests/archive-reviewed-exam-registration-v2.test.mjs",
+        "beforeGitBlob": "008e2734078df5d7ea4c190aa9026e31bd190dcb",
+        "candidate": {
+          "path": "/workspace/scratch/3e3a7e007c36/m2-agent/d-code-2248/merged-common.test.mjs",
+          "bytes": 484323,
+          "sha256": "851849e970e62788b34d2d0128188b9462820900ad12675a47b89cad27339b1f",
+          "gitBlob": "c86956ef80e76df6b3de33c7536fccc6349a7d3f"
+        }
+      },
+      {
+        "path": "docs/architecture/Reviewed_Exam_Meta_Registration_v2.md",
+        "beforeGitBlob": "b77a92da18ab1f032b205ce1019669604f0f513c",
+        "candidate": {
+          "path": "/workspace/scratch/3e3a7e007c36/m2-agent/d-code-2248/merged-registration.md",
+          "bytes": 93874,
+          "sha256": "4634399bddb1277dd8dc2d73d2ca7816d2d1d2b95878b6dc4827248206fa2a0a",
+          "gitBlob": "b002ff20ab72ce5ef8221344d5746fafb02d4942"
+        }
+      }
+    ],
+    "merge": {
+      "forwardExit": 0,
+      "reverseExit": 0,
+      "bothOutputsIdentical": true,
+      "mainToCandidateChangedLinesEqualPriorDChangedLines": true,
+      "newSemanticAllowRules": 0,
+      "mainPrerequisiteGuardPreserved": true,
+      "sharedTestAndDocBytesUnchangedFromPrevious65PassUnion": true
+    },
+    "pathCAS": {
+      "compareProof": {
+        "path": "/workspace/scratch/3e3a7e007c36/m2-agent/d-code-2248/remote-own-path-cas.json",
+        "bytes": 36492,
+        "sha256": "8027a08e871654bcbaa63653c5a2f244df89dd2bb6635112049461616c46e53a",
+        "gitBlob": "52bb5b1cb72cd4a141bf4e4339f2ee4d18faa2fd"
+      },
+      "currentMainSince16fChangedFiles": 66,
+      "DOwnChangedFiles": 62,
+      "COwnChangedFiles": 43,
+      "intersections": {
+        "D62": [
+          "archive/tools/meta-foundation/reviewed-source-reassessment.mjs"
+        ],
+        "C43": []
+      }
+    },
+    "tests": [
+      {
+        "tests": 37,
+        "pass": 37,
+        "fail": 0,
+        "skipped": 0,
+        "log": {
+          "path": "/workspace/scratch/3e3a7e007c36/m2-agent/d-code-2248/rationale-current-main.log",
+          "bytes": 3055,
+          "sha256": "297218a9601766bea4f6c2ac3b2b0f873086cad1df3f997da825eb11e659cce0",
+          "gitBlob": "f6f2805adf608cf67589e2641ec5a3e18c324d7b"
+        }
+      },
+      {
+        "tests": 28,
+        "pass": 28,
+        "fail": 0,
+        "skipped": 0,
+        "log": {
+          "path": "/workspace/scratch/3e3a7e007c36/m2-agent/d-code-2248/definition-current-main.log",
+          "bytes": 2460,
+          "sha256": "f0f553dee9b624123b8ffe88a5cb61c73f8cbaae7fc10ea28192c99b976e54e0",
+          "gitBlob": "403320608b8712a6328e30dda5bbb828893c7cd4"
+        }
+      },
+      {
+        "tests": 22,
+        "pass": 22,
+        "fail": 0,
+        "skipped": 0,
+        "log": {
+          "path": "/workspace/scratch/3e3a7e007c36/m2-agent/d-code-2248/prerequisite-current-main.log",
+          "bytes": 1904,
+          "sha256": "95c85478eb24cacd0587b8da16bd4f3352c3754f6a38b55d6964e0abf07759ae",
+          "gitBlob": "334da1dd3d44bbf3592618b0a37447fe6a552988"
+        }
+      }
+    ],
+    "testsTotal": 87,
+    "absentOptIn": {
+      "proof": {
+        "path": "/workspace/scratch/3e3a7e007c36/m2-agent/d-code-2248/absent-opt-in-proof.json",
+        "bytes": 2563,
+        "sha256": "79646117bffd1d37bb16bec35b286b55da2c3bc977d0b951c53faca9400d5372",
+        "gitBlob": "4f7980e6d7ad0f5824722cc6533dbbb33347e04d"
+      },
+      "observer": {
+        "path": "/workspace/scratch/3e3a7e007c36/m2-agent/d-code-2248/verify-unselected-opt-in.mjs",
+        "bytes": 2764,
+        "sha256": "867c979f95cad5c4f139eebc19db071e7e5b510d7351685d930bab9e1686b45f",
+        "gitBlob": "3742993657f5b973dbc628b32432e0247dc2fadc"
+      },
+      "selectedUidCount": 4,
+      "requestCount": 3,
+      "E024R3AndD3": true,
+      "bothEntryPointsReturnNull": true,
+      "unrelatedContextReads": 0,
+      "requestMutation": false,
+      "sourceBindingInventoryUnchanged": true
+    },
+    "codeReview": {
+      "newCurrentMainHelper": "701788b073384d437e80d769dd8bb43de09be1d9",
+      "prepareAndValidateAbsentOptionReturnBeforeContextAccess": true,
+      "rationalePrecedence": "Current prerequisite retained rationale, current-definition retained rationale, native after/item all still precede D exact four-declaration decisive-step transport.",
+      "rpmProvenance": "No prerequisite capability is created without explicit typed declaration; ordinary curriculum and scope validation still applies.",
+      "replay": "New restore-before condition adds only explicit prerequisiteExistingApplication. Existing D/E024 requests do not gain that path."
+    },
+    "remoteInputs": {
+      "path": "/workspace/scratch/3e3a7e007c36/m2-agent/d-code-2248/remote-pins.json",
+      "bytes": 1130,
+      "sha256": "e92675704361ae204cde69e825072a2309284e4b07762a508e70102f82391b19",
+      "gitBlob": "3e18a4e8069a5932c004f2035fc87916288fcf8e"
+    },
+    "prior65Proof": {
+      "path": "/workspace/scratch/3e3a7e007c36/m2-agent/d-code-2236/integration-proof-latest8b.json",
+      "bytes": 8368,
+      "sha256": "92740ed1468516cc366310a2643e4be67bf39e8a9df47050a14c1700f9cd20bd",
+      "gitBlob": "36ebf122a2fe2b63364e3736910d615789e619e5"
+    },
+    "limits": {
+      "newMathematicalReview": 0,
+      "realExamSourceQuestionRead": 0,
+      "M3S1SourceBranchPacketRead": 0,
+      "remoteWrites": 0,
+      "productionRegistrationClaim": false,
+      "exactRebasedPrCIRequired": true
+    },
+    "nextAction": "Root exact current-main CAS and carry candidate806a with previous testc869/doccandidateb002; keep newly merged prerequisite helper and registrars. R2246 has no path overlap; publish and verify exact CI before D/C operational merge."
+  },
+  "codeReferenceMain": "c8582e3f664476fe2bcc537f882c608ea9470327",
+  "laterMainDelta": {
+    "files": 24,
+    "D_C_repairPathIntersection": 0,
+    "sourceAndCompactSixIntersection": 0
   }
 }

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "middle-audit-native-semantic-rpm-transport-r2-v1",
+  "questionUid": "qid_v1_c9d434ef023fa3190d72ac549b9ff014f87855a4a3b689e3b07ce5df0915f354",
+  "sourceOrdinal": 14,
+  "sourceArchiveFile": "original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+  "failedDryrunCodeProofCommit": "6b672ca51bb274803bfd6fe0287b5f13b4ce90f3",
+  "failure": "source reassessment: current source RPM differs from native evidence: rpmPrimaryPath",
+  "nativeReviewRef": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E029/accepted-review.json",
+    "sha256": "f49dca98cbcb5432515ba2182848cf9c83c15c1c7b284942f5b26df5ec0b535b"
+  },
+  "immutableNativeSource": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+    "sha256": "6b231624d183c4f4d4f45d96aff4d5de1e250667a3ca82276663efb4f51ec4f2",
+    "rpmFields": {
+      "rpmPrimaryId": null,
+      "rpmPrimaryRecordId": "M2-RPM-038",
+      "rpmPrimaryPath": {
+        "majorUnit": "일차부등식과 연립일차방정식",
+        "midUnit": "연립일차방정식의 활용",
+        "l3": "수와 개수",
+        "l4": "두 수 관계"
+      },
+      "rpmL1": null,
+      "rpmL2": null,
+      "rpmL3": "수와 개수",
+      "rpmL4": "두 수 관계",
+      "semanticSourceScope": "M2-1",
+      "semanticScopeRelation": "TARGET_SCOPE"
+    }
+  },
+  "priorCurrentSource": {
+    "commit": "e9af62176fc10bce6c30f420d911664082ec059b",
+    "path": "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+    "sha256": "25a2b5c096c82f1a653b12c3c743112fc18dd79a9bc7c62dc531973fc9b54c7b",
+    "rpmFields": {
+      "rpmPrimaryId": null,
+      "rpmPrimaryRecordId": "M1-RPM-042",
+      "rpmPrimaryPath": {
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용",
+        "l3": "수와 관계",
+        "l4": "나이·개수 관계"
+      },
+      "rpmL1": null,
+      "rpmL2": null,
+      "rpmL3": "수와 관계",
+      "rpmL4": "나이·개수 관계",
+      "semanticSourceScope": "M1-1",
+      "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE"
+    }
+  },
+  "currentApprovedSource": {
+    "commit": "6b672ca51bb274803bfd6fe0287b5f13b4ce90f3",
+    "path": "archive/exams/original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+    "sha256": "67869fb390585b1985f8aefe25e09764f6e933bde14d0101d06d212c04e12efb",
+    "rpmFields": {
+      "rpmPrimaryId": "M1-RPM-042",
+      "rpmPrimaryRecordId": "M1-RPM-042",
+      "rpmPrimaryPath": {
+        "majorUnit": "문자와 식",
+        "midUnit": "일차방정식의 활용",
+        "l3": "수와 관계",
+        "l4": "나이·개수 관계"
+      },
+      "rpmL1": "문자와 식",
+      "rpmL2": "일차방정식의 활용",
+      "rpmL3": "수와 관계",
+      "rpmL4": "나이·개수 관계",
+      "semanticSourceScope": "M1-1",
+      "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE"
+    }
+  },
+  "nativeAcceptedSemanticDecision": {
+    "rpmRecordId": "M1-RPM-042",
+    "rpmDecision": "CORRECT",
+    "semanticCurriculum": "2015",
+    "semanticScope": "M1-1",
+    "rpmPath": {
+      "majorUnit": "문자와 식",
+      "midUnit": "일차방정식의 활용",
+      "l3": "수와 관계",
+      "l4": "나이·개수 관계"
+    },
+    "rpmBasePath": {
+      "majorUnit": "문자와 식",
+      "midUnit": "일차방정식의 활용",
+      "l3": "수와 관계",
+      "l4": "나이·개수 관계"
+    },
+    "semanticSourcePath": {
+      "majorUnit": "문자와 식",
+      "midUnit": "일차방정식의 활용",
+      "l3": "수와 관계",
+      "l4": "나이·개수 관계"
+    }
+  },
+  "repairScope": "Return rpmPrimaryPath/rpmL3/rpmL4 from the already authenticated immutable native semantic decision and exact LOCKED master row, alongside existing native-derived aliases. Preserve the default source fallback for every unopted request.",
+  "sourceMetadataDeltaChanges": 0,
+  "sourceBytesChangesFrom6b672": 0,
+  "studentPayloadChanges": 0,
+  "newSemanticJudgments": 0,
+  "newFullMathematicalQa": 0,
+  "newNativeProposalRefs": 0,
+  "existingQ7PreservationFixtureWrite": "PASS_REUSED_NO_SECOND_WRITE",
+  "productionQ14Registration": "NOT_RUN"
+}

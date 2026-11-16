@@ -13,13 +13,13 @@
     "reason": "Reuse the preserved C19 fallback as a current-main integration of the owner's unchanged valid C snapshot; original owner branch remains unchanged.",
     "originalRequestSixActive": false
   },
-  "baseMain": "16f0413bbf709581eededf19497008031d80b808",
+  "baseMain": "b645719341bc7deae6ed3b21a78f878109dc7789",
   "dependencyPRs": [
     2246,
     2210
   ],
-  "dependencyHead": "abf336e1ba5ef47cee91d51f883e9c0d35df7542",
-  "dependencyTree": "acf6cfc15f029dca5c15d2a7b246b258d651e0fd",
+  "dependencyHead": "9b9d43e1f0d3dea32baa01772767633855910dce",
+  "dependencyTree": "e881942360b2502cf06867985c19ffb7e3e7f025",
   "counts": {
     "restored4Slot": 19,
     "preserved4Slot": 23,
@@ -364,8 +364,16 @@
       "sha256": "b43db7fc6b5f0bf0c24339d67bb65c7449e15ca0c9cc7b3063141bce384f0997"
     },
     "existingScoped42": {
-      "status": "PASS_REUSED_SAME_DATA_INPUTS_CURRENT_BUILDER_CONFIRMATION_IN_PROGRESS",
-      "sha256": "7c9792bb94e491813ae5d48f06095cfe10a93b69a8d18e18399f28f431961f72"
+      "status": "CURRENT_UNION_BUILDER_AND_CONSUMER_PASS",
+      "sha256": "43b46bf2f403e9ebf43ac05d936fa6936e5178ac937552f29fffae15a370a202",
+      "registered": 42,
+      "preserved": 23,
+      "new": 19,
+      "excluded": 52,
+      "consumer42": 42,
+      "termMembership299": 299,
+      "protectedFiles": 119,
+      "changedProtectedFiles": 0
     },
     "exactNewHeadCI": "REQUIRED"
   },
@@ -381,5 +389,13 @@
   "excluded": {
     "M3S1SourcesBranchesPackets": 0,
     "otherOwnerBranchesOverwritten": 0
+  },
+  "latestSharedCode": {
+    "DValidator": "806a7c6ee1822c48cbfbc7f2601485896becc2ee",
+    "mainAfter16PathCount": 90,
+    "CPathIntersection": 0,
+    "DPathIntersection": 1,
+    "proofSha256": "163ec8c01b66ad67d5eeb4bc008e6d32e3d45da6b24438199f76f6925ebfc378",
+    "passed": 87
   }
 }
