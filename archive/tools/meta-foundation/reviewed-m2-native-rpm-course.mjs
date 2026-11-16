@@ -3,6 +3,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import vm from 'node:vm';
+import {buildReviewedSourceBinding, reviewedSourceBindingPath} from './reviewed-source-binding.mjs';
 
 export const M2_NATIVE_RPM_COURSE_SCHEMA = 'archive-m2-native-rpm-course-transport-v1';
 const NATIVE_COMMIT = 'c28641f67d91bfb27352b11faaef4552f46c45be';
@@ -330,7 +331,82 @@ function checkScope(value, { courseAbsent = true } = {}) {
       ['curriculum', 'curriculumKey'].some(k => own(value, k) && value[k] !== CURRICULUM) ||
       own(value, 'standardCourse') && value.standardCourse !== STANDARD_COURSE) fail('SCOPE_ABSENCE_OR_CONFLICT');
 }
-function checkedPresence(metadata, before, issuedProof, item) {
+// The registrar's cold replay overlays patch.before on the issued final row.
+// Fields omitted from before (notably its derived curriculumKey) and the
+// registrar's approval markers therefore remain in that view. Only the exact
+// persisted receipt, typed proof and digest-bound sidecar can authenticate it.
+function checkedIssuedBeforeView({root, request, patch, metadata, final, issuedProof, item}) {
+  if (issuedProof === undefined) return false;
+  if (!object(issuedProof) || !object(metadata) || !object(patch.before) || !object(patch.sourceReview))
+    fail('ISSUED_PRESENCE_PROOF_REQUIRED');
+  const issuedMarkers = [metadata, final].some(value => value?.metadataApprovalType === 'FINAL_QA' ||
+    value?.metaFoundationStatus === 'ACTIVE');
+  const inheritedCurriculum = issuedProof?.metadataBeforeScopePresence?.curriculumKey?.present === false &&
+    own(metadata, 'curriculumKey') && metadata.curriculumKey !== null;
+  if (!issuedMarkers && !inheritedCurriculum) return false;
+  const requested = Array.isArray(request.items) ? request.items.filter(value =>
+    value.questionUid === item.questionUid && value.sourceOrdinal === item.sourceOrdinal) : [];
+  const rawPatch = requested?.[0], removed = Object.keys(rawPatch?.sourceReview || {}).filter(key => !own(patch.sourceReview, key));
+  const displayOptions = item.reviewPath.includes('/E023/') ? {
+    m2ProblemRenderer21Continuity: 'archive-reviewed-m2-problem21-continuity-v1',
+    e023SolutionDisplayContinuity: 'archive-m2-e023-solution-display6-continuity-v1',
+  } : item.sourceOrdinal === 2 ? {e017RhsContinuity: 'archive-m2-e017-existing-rhs-solution-continuity-v1'} : {
+    m2ProblemRenderer21Continuity: 'archive-reviewed-m2-problem21-continuity-v1',
+  };
+  // Central display validators recurse with only their named option removed.
+  // Authenticate that metadata-only view against the untouched request; this
+  // grants no renderer authority and accepts no other patch normalization.
+  const comparison = rawPatch && {...rawPatch, sourceReview: {...rawPatch.sourceReview}};
+  for (const key of removed) {
+    const option = rawPatch.sourceReview[key];
+    if (!own(displayOptions, key) || !exactKeys(option, ['schemaVersion', 'reviewCommit', 'reviewRef']) ||
+        option.schemaVersion !== displayOptions[key] || !SHA1.test(option.reviewCommit || '') ||
+        !exactKeys(option.reviewRef, ['path', 'sha256']) || !nonempty(option.reviewRef.path) ||
+        !SHA256.test(option.reviewRef.sha256 || '')) fail('ISSUED_METADATA_REQUEST_VIEW_MISMATCH');
+    delete comparison.sourceReview[key];
+  }
+  if (request.schemaVersion !== 'archive-reviewed-exam-meta-register-request-v2' ||
+      !/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(request.requestId || '') ||
+      !Array.isArray(request.items) || requested.length !== 1 || !same(comparison, patch) ||
+      !same(metadata, {...final, ...patch.before}) || final.questionUid !== item.questionUid ||
+      final.sourceOrdinal !== item.sourceOrdinal || final.sourceArchiveFile !== item.sourceArchiveFile ||
+      final.metadataApprovalType !== 'FINAL_QA' || final.metaFoundationStatus !== 'ACTIVE' ||
+      !own(final, 'curriculumKey') || final.curriculumKey !== CURRICULUM ||
+      !nonempty(final.metadataRevision) || !final.metadataRevision.endsWith(`:exam-final_qa-v2:${request.requestId}`))
+    fail('ISSUED_METADATA_BEFORE_VIEW_REQUIRED');
+  const receiptPath = `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${request.requestId}.json`;
+  const receipt = json(localBytes(root, receiptPath));
+  if (receipt.schemaVersion !== 'archive-reviewed-exam-meta-registration-v2' || receipt.requestId !== request.requestId ||
+      receipt.requestSha256 !== hash(request) || receipt.sourceArchiveFile !== item.sourceArchiveFile ||
+      receipt.sourceBlobSha1 !== request.expectedSourceBlobSha1 ||
+      receipt.sourceRawSha256 !== issuedProof.currentSource?.sha256 ||
+      receipt.scope !== 'PARTIAL_UIDS' || receipt.expectedQuestionCount !== item.expectedQuestionCount ||
+      receipt.totalQuestions !== request.items.length || receipt.partialUidCount !== request.items.length ||
+      receipt.metadataRegistrationStatus !== 'REGISTERED' || !same(receipt.approval, request.approval) ||
+      !same(receipt.registryChanges, []) || !Array.isArray(receipt.appliedRecords) ||
+      receipt.appliedRecords.length !== request.items.length ||
+      receipt.appliedRecords.filter(value => value.questionUid === item.questionUid && same(value, final)).length !== 1)
+    fail('ISSUED_METADATA_RECEIPT_MISMATCH');
+  const repairs = receipt.fingerprintRepairs?.filter(value => value.questionUid === item.questionUid &&
+    value.sourceOrdinal === item.sourceOrdinal), repair = repairs?.[0];
+  if (repairs?.length !== 1 || !same(repair.sourceReview?.nativeRpmCourseTransport, issuedProof) ||
+      removed.some(key => !object(repair.sourceReview?.[key]) ||
+        !SHA256.test(repair.sourceReview[key].originalSourceReviewSha256 || '')) ||
+      !same(repair.metadataBefore, {sourceFingerprint: patch.before.sourceFingerprint, contentFingerprint: patch.before.contentFingerprint}) ||
+      !same(repair.after, {sourceFingerprint: final.sourceFingerprint, contentFingerprint: final.contentFingerprint}) ||
+      own(patch, 'identityBefore') && !same(repair.identityBefore, patch.identityBefore))
+    fail('ISSUED_METADATA_REPAIR_MISMATCH');
+  const sidecarPath = reviewedSourceBindingPath(request.requestId), sidecarBytes = localBytes(root, sidecarPath);
+  const digests = receipt.outputDigests?.filter(value => value.path === sidecarPath);
+  let expected;
+  try { expected = buildReviewedSourceBinding({...receipt, request}); }
+  catch { fail('ISSUED_METADATA_SIDECAR_MISMATCH'); }
+  if (digests?.length !== 1 || digests[0].sha256 !== sha(sidecarBytes) || !same(json(sidecarBytes), expected) ||
+      ![receiptPath, sidecarPath].every(p => Array.isArray(final.approvalEvidence) &&
+        final.approvalEvidence.filter(value => value === p).length === 1)) fail('ISSUED_METADATA_SIDECAR_MISMATCH');
+  return true;
+}
+function checkedPresence(metadata, before, issuedProof, item, issuedBeforeView, after) {
   if (!object(metadata) || !object(before) || !own(before, 'courseKey') || before.courseKey !== null)
     fail('ORIGINAL_COURSE_BEFORE_NULL_REQUIRED');
   const issued = issuedProof?.metadataBeforeScopePresence;
@@ -344,7 +420,9 @@ function checkedPresence(metadata, before, issuedProof, item) {
         typeof issued[field].present !== 'boolean' || issued[field].present && issued[field].valueSha256 !== hash(expected) ||
         field === 'courseKey' && issued[field].present)) fail('ISSUED_PRESENCE_PROOF_REQUIRED');
     const wasAbsent = issuedProof !== undefined ? issued[field].present === false : !own(metadata, field);
-    if (wasAbsent ? own(metadata, field) && (issuedProof === undefined || metadata[field] !== null) :
+    const issuedDerivedCurriculum = issuedBeforeView && field === 'curriculumKey' && wasAbsent &&
+      !own(before, field) && !own(after, field) && metadata[field] === CURRICULUM;
+    if (wasAbsent ? own(metadata, field) && (issuedProof === undefined || metadata[field] !== null) && !issuedDerivedCurriculum :
         !own(metadata, field) || metadata[field] !== expected || field === 'courseKey') fail('METADATA_SCOPE_PRESENCE_CONFLICT');
     if (own(before, field) ? before[field] !== (wasAbsent ? null : expected) : !wasAbsent)
       fail('METADATA_SCOPE_BEFORE_MISMATCH');
@@ -421,7 +499,8 @@ export function bindReviewedM2NativeRpmCourse({ root, request, patch, native, ro
       !own(patch.after, 'sourceFingerprint') || !SHA256.test(patch.after.sourceFingerprint || '') ||
       final.sourceFingerprint !== patch.after.sourceFingerprint || !SHA1.test(request.expectedSourceBlobSha1 || ''))
     fail('EXACT_NATIVE_COURSE_AFTER_REQUIRED');
-  const metadataBeforeScopePresence = checkedPresence(metadata, patch.before, issuedProof, item);
+  const issuedBeforeView = checkedIssuedBeforeView({root, request, patch, metadata, final, issuedProof, item});
+  const metadataBeforeScopePresence = checkedPresence(metadata, patch.before, issuedProof, item, issuedBeforeView, patch.after);
   const sr = patch.sourceReview;
   if (!object(sr) || sr.schemaVersion !== 'archive-reviewed-source-reassessment-v1' || sr.reviewCommit !== NATIVE_COMMIT ||
       sr.reviewPath !== item.reviewPath || !exactKeys(sr.reviewRef, ['path', 'sha256']) || sr.reviewRef.sha256 !== item.reviewSha256)
@@ -485,7 +564,7 @@ export function bindReviewedM2NativeRpmCourse({ root, request, patch, native, ro
     answer: liveQuestion.answer ?? null, solution: liveQuestion.solution ?? null, image: liveQuestion.image ?? null }));
   if (patch.after.sourceFingerprint !== currentFingerprint) fail('CURRENT_SOURCE_FINGERPRINT_AFTER_REQUIRED');
   for (const q of [reviewedBank[item.sourceOrdinal - 1], committedQuestion, currentBank[item.sourceOrdinal - 1], question]) checkScope(q);
-  if (['FINAL_QA'].includes(metadata.metadataApprovalType) || metadata.metaFoundationStatus === 'ACTIVE') {
+  if (!issuedBeforeView && (['FINAL_QA'].includes(metadata.metadataApprovalType) || metadata.metaFoundationStatus === 'ACTIVE')) {
     for (const k of ['problemTypeKey', 'templateKey', 'rpmPrimaryPath'])
       if (own(metadata, k) && !same(metadata[k], after[k])) fail('EXISTING_APPROVED_METADATA_CONFLICT');
   }

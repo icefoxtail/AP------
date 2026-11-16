@@ -346,6 +346,11 @@ const requiredCommands = [
     timeout: 300000
   },
   {
+    label: 'tests/archive-reviewed-m2-family7-rpm-row-continuity.test.mjs',
+    args: ['--max-old-space-size=256', '--test', 'tests/archive-reviewed-m2-family7-rpm-row-continuity.test.mjs'],
+    timeout: 240000
+  },
+  {
     label: 'tests/archive-reviewed-retained-scope-transport.test.mjs',
     args: ['--test', 'tests/archive-reviewed-retained-scope-transport.test.mjs']
   },
