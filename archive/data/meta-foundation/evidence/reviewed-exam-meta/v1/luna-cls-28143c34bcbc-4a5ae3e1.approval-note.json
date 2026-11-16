@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "luna-classify-approval-note-v1",
+  "requestId": "luna-cls-28143c34bcbc-4a5ae3e1",
+  "sourceArchiveFile": "original/high/h2/1final/21_제일고_1학기_기말_고2_수학I.js",
+  "createdAt": "2026-11-16T01:11:31.747Z",
+  "userInstruction": {
+    "date": "2026-11-14",
+    "wording": "분류 판정 732개 확정, 등록을 먼저 하자 (판정 결과를 검사 통과분부터 올린다)"
+  },
+  "rule": "칸별 최종값: 1차==2차이면 그 값, 아니면 3차 값, 3차에서 보류였던 칸은 4차(통합 유형은 루나, 나머지는 소넷) 값, 표에 없던 RPM 경로는 사용자가 받아들인 새 값(2026-11-14). 판정 대상이 아니던 칸은 등록된 현재 값 유지(결정 5). 소단원 별칭 통합은 subunit-alias.json(결정 2). PT/TPL은 시험지 값이 있으면 그 값, 없으면 공식 resolver의 직접·활성 바인딩 결과.",
+  "mainSha": "92029875c913c1b2e03e127619d54a8685c7081c",
+  "sourceBlobSha1": "a86a70e7e9a0e01019953cc3d6a7debeede099a5",
+  "ledgers": [
+    {
+      "role": "pass1",
+      "source": "A-out/ledgers/21_제일고_1학기_기말_고2_수학I.json",
+      "sourceSha256": "f2b7dd108195784ae90247610c1064c5065c9567afdf1c5957291bb831c53d4c",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-28143c34bcbc-4a5ae3e1.pass1-ledger.json",
+      "repoSha256": "e8491ee1cdc41e85cd0418623cb49afc3ad2b7e223149523684ce50c3e1d4a0b",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass2",
+      "source": "A2-out/ledgers/21_제일고_1학기_기말_고2_수학I.json",
+      "sourceSha256": "837b9b3f1f1178e3d0f62a3f7c1c8dc339a48f4904b5709a99aae531093e845c",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-28143c34bcbc-4a5ae3e1.pass2-ledger.json",
+      "repoSha256": "e80dd511fbf77a3895d39d224f42fd47ee2eeeb285b2d8a9009e61e2c33f163c",
+      "lineEndingNormalized": true
+    },
+    {
+      "role": "pass3",
+      "source": "classify-final/p3/l/ledgers/shard1-136.json",
+      "sourceSha256": "3916dd49e86929ea6c0fd7f646eb4559139c59b6ce3a049a5b13e2a145cc0740",
+      "repoPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/luna-cls-28143c34bcbc-4a5ae3e1.pass3-ledger.json",
+      "repoSha256": "97ce27516bd396f560e6802dbd9cdb8099ada8fc90e45cb154d23f85546976aa",
+      "lineEndingNormalized": true
+    }
+  ],
+  "fieldSources": {
+    "registered": 34,
+    "agree": 117,
+    "luna-k4": 42,
+    "tera-k67": 6,
+    "p3": 17
+  },
+  "itemSources": {
+    "registered+agree+luna-k4": 4,
+    "registered+agree+tera-k67+p3": 1,
+    "registered+agree+tera-k67": 1,
+    "registered+agree+p3+luna-k4": 2,
+    "registered+agree+luna-k4+p3": 1
+  },
+  "typeHoldQuestions": 8,
+  "idWarnings": []
+}
