@@ -143,15 +143,13 @@ window.questionBank = [
       "templateKey"
     ],
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
-    "crossConceptKeys": [
-      "CC_ROOTS_COEFFICIENTS"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 1,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 4,
@@ -196,12 +194,12 @@ window.questionBank = [
     ],
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
     "integrationPattern": "NONE",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 5,
@@ -298,12 +296,12 @@ window.questionBank = [
       "templateKey"
     ],
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_MULTIPLICATION_FORMULAS"],
     "conditionKeys": [
       "COND_NONZERO"
     ],
-    "integrationPattern": "NONE",
-    "difficultyBucket": 2,
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL"
@@ -354,7 +352,7 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -450,7 +448,7 @@ window.questionBank = [
     ],
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
-    "conditionKeys": [],
+    "conditionKeys": ["COND_RATIONAL"],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
@@ -502,10 +500,10 @@ window.questionBank = [
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 3,
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
   },
   {
@@ -551,9 +549,7 @@ window.questionBank = [
     ],
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "conditionKeys": ["COND_POSITIVE", "COND_RATIONAL"],
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
@@ -607,7 +603,7 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
+    "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q12-solution.svg",
     "solutionImageAlt": "해설 그림: 같은 높이에서 바깥 파란 점 두 개가 넓은 곡선의 폭을, 안쪽 주황 점 두 개가 좁은 곡선의 폭을 표시한다. 두 포물선은 위로 열리며 꼭짓점이 같다.",
@@ -821,10 +817,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q16-solution.svg",
     "solutionImageAlt": "해설 그림: 초록 포물선을 아래로 옮기면 파란 포물선이 된다. 파란 곡선 위에 주황 점 (3,5)가 있다.",
     "solutionImageCaption": "5=9a−4에서 a=1이다. 정답은 ③이다.",
@@ -874,7 +870,7 @@ window.questionBank = [
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1095,7 +1091,7 @@ window.questionBank = [
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1185,10 +1181,8 @@ window.questionBank = [
     ],
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": ["COND_INEQUALITY_CONSTRAINT"],
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1236,7 +1230,7 @@ window.questionBank = [
     "nullReason": "현재 2015 중3 수학 M3-03/M3-04에 exact ACTIVE PT/TPL curriculum binding이 없음. 해당 문항의 RPM crosswalk가 RPM_ONLY 또는 binding gap이므로 canonical key를 임의로 채우지 않음. qid별 실제 lookup과 후보상태는 누적 기록 참조.",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1282,10 +1276,10 @@ window.questionBank = [
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "solutionImage": "assets/images/21_팔마중_1학기_기말_중3_수학/q25-solution.svg",
     "solutionImageAlt": "해설 그림: 파란 포물선의 꼭짓점 아래로 대칭축을 그었다. 양쪽 x절편은 대칭축에서 같은 거리만큼 떨어져 있다.",
     "solutionImageCaption": "(1) 꼭짓점형은 y=−(x−4)²+4이다. (2) 꼭짓점은 (4,4), 축은 x=4이다.",

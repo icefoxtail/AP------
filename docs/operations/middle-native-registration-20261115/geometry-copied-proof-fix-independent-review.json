@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "geometry-copied-proof-fixture-fix-independent-read-v1",
+  "reviewer": "/root/m1_compact_transport",
+  "reviewedAtUtc": "2026-11-16T00:25:45.068719+00:00",
+  "status": "NO_BLOCKING_FINDING_IN_EXACT_ORDINARY_SOURCE_REVIEW_FIXTURE_DELTA",
+  "commit": "c9e91333da3474af56e0dffca92a8f86b76478c4",
+  "parent": "7a25584dd818752d469afd39ce0b6e7aa1fb7140",
+  "changedFiles": [
+    {
+      "path": "tests/meta-foundation-middle-geometry-runtime.test.js",
+      "sha256": "81448429a09eebcda1a53b6905452011fe0eca645816b5525d884da5cf45e756"
+    }
+  ],
+  "findings": {
+    "existingFixtureOnly": true,
+    "ordinarySidecarBoundByOutputDigest": true,
+    "sidecarSchemaAndRequestIdChecked": true,
+    "sidecarApprovalAndItemEvidenceIncluded": true,
+    "liveCanonicalAndCompiledIndexClosureIncluded": true,
+    "officialLoadCanonicalTraversalUsed": true,
+    "masterAndTargetSourceIncluded": true,
+    "conflictingEvidenceDigestRejected": true,
+    "copyTargetOutsideFixtureRejected": true,
+    "boundCopiedBytesRehashed": true,
+    "unchangedPositiveAssertionPreserved": true,
+    "proofDriftNegativeAssertionPreserved": true,
+    "originalNegativeCasesAndCleanupPreserved": true,
+    "productionVerifierChanged": false,
+    "timeoutOrApprovalStrengthChanged": false
+  },
+  "basis": "Exact diff and surrounding production reads reviewed; fixes the observed ordinary E026 sourceReview fixture by materializing current canonical inputs and the exact durable sidecar. It does not add a recovery exemption or bypass a native guard.",
+  "execution": {
+    "independentTests": 0,
+    "independentClone": 0,
+    "independentProbe": 0,
+    "authorReportedNodeCheck": "PASS_ONLY",
+    "actual300SecondRuntime": "NOT_RUN_FOR_THIS_COMMIT"
+  },
+  "limitation": "This is scoped static acceptance for the observed ordinary receipt. It does not assert generic recovery closure support or a passing official full runtime test."
+}

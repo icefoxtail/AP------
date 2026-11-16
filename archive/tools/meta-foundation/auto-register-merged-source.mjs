@@ -709,7 +709,8 @@ export async function verifyMergedSource({root=ROOT,reportPath}) {
   if(verified.length)write(root,`${AUTO}/last-verification.json`,{schemaVersion:VERSION,head:report.head,...result});
   return result;
 }
-if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
+// Finish module evaluation before Consumer imports this module back through the registrar.
+async function runCli() {
   const a=process.argv.slice(2),get=k=>a.includes(k)?a[a.indexOf(k)+1]:undefined;
   try {
     const root=get('--root')||ROOT,reportPath=get('--report')||path.join(process.env.RUNNER_TEMP||'/tmp','archive-auto-meta-report.json');
@@ -717,3 +718,4 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
     console.log(JSON.stringify(result,null,2));
   }catch(e){console.error('AUTO_META_FAILED:',e.stack||e);process.exitCode=1;}
 }
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) void runCli();
