@@ -7,14 +7,19 @@ const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
 const vm = require('node:vm');
+const { execFileSync } = require('node:child_process');
 const H = require('./check-reviewed-problem-renderer-browser.cjs');
 const { stable, sha256, gitBlob, createGitReader, FONT_DIR, FONT_STYLESHEET, studentFontResourcePath, checkedStudentFontRefs,
-  createStudentRouteLifecycle, serveStudentFont, closeStudentContext, captureProblemTiles, readScreenshotArtifacts, assertScreenshotInventory } = H;
+  createStudentRouteLifecycle, serveStudentFont, closeStudentContext, readScreenshotArtifacts, assertScreenshotInventory } = H;
 const MANIFEST_PATH = 'tests/fixtures/archive-e013-q20-enclosed-latin-ui.json';
 const CHECKER_PATH = 'tools/check-e013-q20-enclosed-latin-browser.cjs';
 const SHARED_CHECKER_PATH = 'tools/check-reviewed-problem-renderer-browser.cjs';
-// Bind the exact shared capture, same-origin font verification, and owned route cleanup.
-const SHARED_CHECKER_SHA256 = 'e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673';
+// The approved UI3 capture is immutable. The current checkout supplies font
+// transport and route cleanup under its own exact byte pin.
+const SHARED_CHECKER_COMMIT = '1b91646c1b4d8aef41a6bba11470f75ac533445a';
+const SHARED_CHECKER_GIT_BLOB = 'dcb4382ada6913f9aa35a820777248ee93879e36';
+const SHARED_CHECKER_SHA256 = '94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4';
+const LIVE_CHECKER_SHA256 = 'e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673';
 const IDENTITY_PATH = 'archive/data/question_identity_map.json';
 const SCHEMA = 'archive-e013-q20-enclosed-latin-ui-preview-v1';
 const FONT_FAMILY = 'Nanum Myeongjo';
@@ -218,12 +223,30 @@ function checkedOutput(root, out) {
 const mime = rel => ({ '.js': 'text/javascript', '.json': 'application/json', '.html': 'text/html', '.css': 'text/css', '.svg': 'image/svg+xml',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.woff': 'font/woff', '.woff2': 'font/woff2', '.ttf': 'font/ttf' }[path.extname(rel)] || 'application/octet-stream');
 
+function readFrozenCaptureSource(root) {
+  const bytes = execFileSync('git', ['-C', root, 'show', SHARED_CHECKER_COMMIT + ':' + SHARED_CHECKER_PATH],
+    { timeout: 30000, maxBuffer: 128 * 1024 });
+  const ref = { commit: SHARED_CHECKER_COMMIT, path: SHARED_CHECKER_PATH, gitBlobSha1: gitBlob(bytes), sha256: sha256(bytes), bytes: bytes.length };
+  assert.equal(ref.gitBlobSha1, SHARED_CHECKER_GIT_BLOB, 'UI_E013_CAPTURE_HELPER_GIT_CHANGED');
+  assert.equal(ref.sha256, SHARED_CHECKER_SHA256, 'UI_E013_CAPTURE_HELPER_CHANGED');
+  return { ref, bytes };
+}
+
+function loadFrozenCaptureHelper(root) {
+  const { ref, bytes } = readFrozenCaptureSource(root);
+  const approvedModule = { exports: {} };
+  vm.compileFunction(bytes.toString('utf8'), ['require', 'module', 'exports'],
+    { filename: ref.commit + ':' + ref.path })(require, approvedModule, approvedModule.exports);
+  return { ref, helper: approvedModule.exports };
+}
+
 async function inspectStudentUi({ root, out, expectedCommit, executablePath, githubEventCommit = null }) {
   assert(executablePath && path.isAbsolute(executablePath) && fs.statSync(executablePath).isFile(), 'UI_SUPPORTED_CHROME_REQUIRED');
   assert(SHA1.test(expectedCommit), 'UI_E013_EXPECTED_CHECKOUT_REQUIRED');
   const reader = createGitReader(root, expectedCommit);
-  const captureHelperRef = reader.ref(SHARED_CHECKER_PATH);
-  assert.equal(captureHelperRef.sha256, SHARED_CHECKER_SHA256, 'UI_E013_CAPTURE_HELPER_CHANGED');
+  const liveHelperRef = reader.ref(SHARED_CHECKER_PATH);
+  assert.equal(liveHelperRef.sha256, LIVE_CHECKER_SHA256, 'UI_E013_LIVE_HELPER_CHANGED');
+  const { ref: captureHelperRef, helper: { captureProblemTiles } } = loadFrozenCaptureHelper(root);
   const manifestBytes = reader.read(MANIFEST_PATH), manifest = JSON.parse(manifestBytes);
   const inputs = preflight(reader, manifest);
   const { refs: fontRefs, weights: fontWeights, licenseRef: fontLicenseRef } = checkedStudentFontRefs(reader);
@@ -231,7 +254,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
   let activeCase = null;
   fs.mkdirSync(out, { recursive: true });
   const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_SUPPORTED_CHROME', checkoutCommit: reader.commit,
-    manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), captureHelperRef, ...inputs,
+    manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), captureHelperRef, liveHelperRef, ...inputs,
     checkout: { expectedCheckoutCommit: expectedCommit, actualCheckoutCommit: reader.commit, githubEventCommit },
     parentRestorationApproval: false, releaseGate: 'PENDING_INDEPENDENT_VISUAL_REVIEW',
     mode: 'exam', studentReview: true, screenshotsScope: 'SELECTED_PROBLEM_ORIGINAL_SCROLL_TILES_ONLY', problemOnlyScreenshots: true,
@@ -394,9 +417,10 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     assertCompletedResults(results, inputs, manifest, readScreenshotArtifacts(out));
     // Re-read all served and bound inputs after the screenshots. No cache can
     // turn a mutable working-tree file into immutable provenance.
-    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, inputs.identityRef, inputs.fontRef, fontLicenseRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
+    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.liveHelperRef, inputs.identityRef, inputs.fontRef, fontLicenseRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
       assert.deepEqual(reader.ref(ref.path), ref, 'UI_INPUT_CHANGED_DURING_RUN');
     }
+    assert.deepEqual(readFrozenCaptureSource(root).ref, captureHelperRef, 'UI_E013_CAPTURE_HELPER_CHANGED');
     return writeProof('TECHNICAL_PASS_VISUAL_REVIEW_PENDING');
   } catch (error) {
     writeProof('FAIL', /^UI_[A-Z0-9_]+$/.test(error.message) ? error.message : 'UI_BROWSER_CHECK_FAILED');
@@ -421,7 +445,7 @@ async function main() {
     screenshotArtifacts: proof.screenshotArtifactCount, checkoutCommit: proof.checkoutCommit,
     parentRestorationApproval: false, releaseGate: proof.releaseGate }));
 }
-module.exports = { MANIFEST_PATH, CHECKER_PATH, SHARED_CHECKER_PATH, SHARED_CHECKER_SHA256, IDENTITY_PATH, SCHEMA,
+module.exports = { MANIFEST_PATH, CHECKER_PATH, SHARED_CHECKER_PATH, LIVE_CHECKER_SHA256, loadFrozenCaptureHelper, IDENTITY_PATH, SCHEMA,
   EXPECTED_ITEM, EXPECTED_FONT, readChoiceGlyphs, assertChoiceGlyphs, VIEWPORTS, validateManifest, checkoutEvidence, preflight, assertTechnicalState, assertCompletedResults, checkedOutput };
 if (require.main === module) main().catch(error => {
   const message = String(error?.message || ''), code = message.split('\n')[0];

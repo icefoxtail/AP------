@@ -147,10 +147,21 @@ for (const [name, mutate] of [
   const f = completed(); mutate(f); assert.throws(() => C.assertCompletedResults(f.rows, f.actual, manifest, f.artifacts), /UI_/);
 });
 
-test('the imported UI3 capture and font module remains its exact frozen source and six-case contract', () => {
-  assert.equal(H.sha256(fs.readFileSync(path.join(root, C.SHARED_CHECKER_PATH))), C.SHARED_CHECKER_SHA256);
+test('the imported UI3 capture retains its exact approved source and six-case contract', () => {
+  const { ref, helper } = C.loadFrozenCaptureHelper(root);
+  assert.deepEqual(ref, { commit: '1b91646c1b4d8aef41a6bba11470f75ac533445a', path: C.SHARED_CHECKER_PATH,
+    gitBlobSha1: 'dcb4382ada6913f9aa35a820777248ee93879e36',
+    sha256: '94ec31b0e66d1461e7e9757e10af194ac2de47d9b614da4ab191e4615a17dfa4', bytes: 50028 });
   const sharedManifest = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures/archive-reviewed-problem-renderer-ui3.json')));
-  assert.equal(H.validateManifest(sharedManifest).expectedCases, 6); assert.equal(H.TILE_OVERLAP, 32); assert.equal(H.TILE_LIMIT, 8);
+  assert.equal(helper.validateManifest(sharedManifest).expectedCases, 6);
+  assert.equal(helper.TILE_OVERLAP, 32); assert.equal(helper.TILE_LIMIT, 8);
+  assert.equal(typeof helper.captureProblemTiles, 'function');
+});
+
+test('the current font transport and lifecycle use a separately pinned checkout helper', () => {
+  assert.equal(H.sha256(fs.readFileSync(path.join(root, C.SHARED_CHECKER_PATH))), C.LIVE_CHECKER_SHA256);
+  assert.equal(typeof H.checkedStudentFontRefs, 'function');
+  assert.equal(typeof H.closeStudentContext, 'function');
 });
 test('output cannot overwrite the checkout, reuse stale artifacts or follow an output symlink', () => {
   const folder = fs.mkdtempSync(path.join(os.tmpdir(), 'e013-output-test-'));

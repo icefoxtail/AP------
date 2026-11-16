@@ -18,11 +18,8 @@ test('batch renderer is the default and legacy remains an explicit fallback', ()
 });
 
 test('both archive engines install render metrics and the shared loop runtime', () => {
-  const runtimeVersions = {
-    'engine.html': '20261116-enclosed-latin',
-    'mixed_engine.html': '20260911.5'
-  };
-  for (const [filename, version] of Object.entries(runtimeVersions)) {
+  const version = '20261116-enclosed-latin';
+  for (const filename of ['engine.html', 'mixed_engine.html']) {
     const html = fs.readFileSync(path.join(root, 'archive', filename), 'utf8');
     assert.ok(html.includes(`<script src="mathjax_render_loop.js?v=${version}"></script>`),
       `${filename} must load the shared render loop at version ${version}`);
