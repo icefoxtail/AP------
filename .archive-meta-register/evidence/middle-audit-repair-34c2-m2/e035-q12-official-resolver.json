@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "middle-audit-scoped-official-resolver-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "questionUid": "qid_v1_76dd55da73d9edb2aeb41cdd76997b70ec4a5d668fc94f00736038cde358937d",
+  "sourceOrdinal": 12,
+  "mode": "READ_ONLY_ACTUAL_ACTIVE_REGISTRY_AND_ROOT_SEALED_CROSSWALK",
+  "crosswalkRef": {
+    "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "sha256": "2bee3efdbdcd0dee3e5c91341eecb2a8f7c6350f6860cb20de38429dbd17308e"
+  },
+  "sourceBlobSha1": "a2b5ff24952749484bc38c1be6c153cb1a355c61",
+  "verifiedSolutionBasis": "The existing accepted solution and exact unchanged figure were checked by GPT_M2_34C2; root independently read the current source/solution and exact authoritative family rule before approving this application. This is a current limited verification of the existing solution, not a retrospective relabeling of native SOURCE_ONLY evidence or a new blind-review round.",
+  "rootCurrentApplicationEvidence": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e035-q12-current-key-application.json",
+  "actualFinalGoal": "x절편",
+  "primaryRpmRecordId": "M2-RPM-052",
+  "supportingRpmRecordIds": [
+    "M2-RPM-048"
+  ],
+  "firstProjectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+  "firstReason": "CROSSWALK_ROW_SELECTION_PENDING",
+  "input": {
+    "sourceIdentity": {
+      "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+      "questionUid": "qid_v1_76dd55da73d9edb2aeb41cdd76997b70ec4a5d668fc94f00736038cde358937d",
+      "sourceOrdinal": 12,
+      "contentHash": "sha256:0bbccba0a6c6595ab4c6ccea8da8b900412b45b57f23bbe8f4e90ad9b2529cae",
+      "choicesHash": "sha256:5585ff7e9f6d81a7d17423cc5de42ce34cec6f8c405efa55f63c2a1510ae54d1",
+      "imageRefHash": "sha256:35178af23dd317b1ce3af31e4f7c3fc5c92fed321ac7591b630f6cf70029d58f"
+    },
+    "solutionIdentity": {
+      "status": "VERIFIED_FINAL",
+      "independentVerification": true,
+      "solutionHash": "sha256:5d085ae847b44bd67d035609b773a192bce024a071de6f78dc15653ee3b21fe4"
+    },
+    "curriculumContext": {
+      "grade": "M2",
+      "curriculum": "2015",
+      "scope": "M2-1",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-04",
+      "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC"
+    },
+    "semanticDecision": {
+      "primaryMethod": "그래프 두 점으로 직선식 복원 후 x절편",
+      "decisiveStep": "(-2,-7),(3,3)에서 기울기2와 상수항-3을 얻는다.",
+      "rpmPath": {
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프",
+        "l3": "식 구하기",
+        "l4": "두 점으로 식 구하기"
+      }
+    },
+    "familyTemplateSelection": {
+      "stage": "POST_CROSSWALK",
+      "inputBundleSha": "sha256:14a44a97d69d1a79ab9f547e2b2b9d870835a3db8608c9d18016da517844df23",
+      "crosswalkRecordId": "M2-RPM-052-LINE-TWO-POINTS-34C2",
+      "templateKey": "TPL_LINE_TWO_POINTS",
+      "decisiveStepReason": "The exact two-point inputs determine the slope and line equation. The final x-intercept is an explicitly preserved downstream goal within the approved existing complete line-equation family; root approved this current application after reading the native evidence and authoritative family rule."
+    }
+  },
+  "resolved": {
+    "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v2",
+    "sourceFingerprint": "sha256:0c9ae497de941599707f1631529ac9a40a92b5daa365c91194e652d32fd75ee8",
+    "inputBundleSha": "sha256:14a44a97d69d1a79ab9f547e2b2b9d870835a3db8608c9d18016da517844df23",
+    "rpmPath": {
+      "curriculum": "2015",
+      "scope": "M2-1",
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 그 그래프",
+      "l3": "식 구하기",
+      "l4": "두 점으로 식 구하기"
+    },
+    "rpmL3": "식 구하기",
+    "rpmL4": "두 점으로 식 구하기",
+    "semanticScopeRelation": "CURRENT_SCOPE",
+    "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "crosswalkRecordId": "M2-RPM-052-LINE-TWO-POINTS-34C2",
+    "crosswalkStatus": "DIRECT_ACTIVE",
+    "projectionStatus": "PROJECTION_REUSE",
+    "projectionReasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_TWO_POINTS",
+    "mappedProblemTypeKey": "PT_LINE_EQUATION",
+    "mappedTemplateKeys": [
+      "TPL_LINE_TWO_POINTS"
+    ],
+    "ownerPack": "GEOMETRY_EQUATIONS",
+    "ownerVersion": "1.0.2",
+    "bindingOwnerPack": "MIDDLE2",
+    "bindingIdentity": "2015|M2-04|M2-04-LINEAR_FUNCTION_BASIC|PT_LINE_EQUATION|MIDDLE2",
+    "legacyProjection": {
+      "status": "PROJECTION_REUSE",
+      "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_TWO_POINTS",
+      "candidateTemplateKeys": [
+        "TPL_LINE_TWO_POINTS"
+      ],
+      "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+      "bindingOwnerPack": "MIDDLE2",
+      "bindingIdentity": "2015|M2-04|M2-04-LINEAR_FUNCTION_BASIC|PT_LINE_EQUATION|MIDDLE2"
+    },
+    "disposition": "RPM_SEMANTIC_FINAL",
+    "semanticStatus": "FINAL",
+    "rpmSemantic": {
+      "status": "FINAL",
+      "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0",
+      "curriculum": "2015",
+      "scope": "M2-1",
+      "targetScope": "M2-1",
+      "scopeRelation": "CURRENT_SCOPE",
+      "majorUnit": "일차함수",
+      "midUnit": "일차함수와 그 그래프",
+      "l3": "식 구하기",
+      "l4": "두 점으로 식 구하기",
+      "primaryMethod": "그래프 두 점으로 직선식 복원 후 x절편",
+      "decisiveStep": "(-2,-7),(3,3)에서 기울기2와 상수항-3을 얻는다.",
+      "sourceFingerprint": "sha256:0c9ae497de941599707f1631529ac9a40a92b5daa365c91194e652d32fd75ee8",
+      "inputBundleSha": "sha256:14a44a97d69d1a79ab9f547e2b2b9d870835a3db8608c9d18016da517844df23",
+      "rpmRecordSha": "sha256:166af247250b33d3a7e8a2471858adaf20c637805f86230c1cc567e8e4dccc11"
+    },
+    "advancedMetaEligible": true,
+    "dispositionReason": "",
+    "semanticInputBundle": {
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+        "questionUid": "qid_v1_76dd55da73d9edb2aeb41cdd76997b70ec4a5d668fc94f00736038cde358937d",
+        "sourceIdentityKey": "qid_v1_76dd55da73d9edb2aeb41cdd76997b70ec4a5d668fc94f00736038cde358937d",
+        "sourceOrdinal": 12,
+        "contentHash": "sha256:0bbccba0a6c6595ab4c6ccea8da8b900412b45b57f23bbe8f4e90ad9b2529cae",
+        "choicesHash": "sha256:5585ff7e9f6d81a7d17423cc5de42ce34cec6f8c405efa55f63c2a1510ae54d1",
+        "imageRefHash": "sha256:35178af23dd317b1ce3af31e4f7c3fc5c92fed321ac7591b630f6cf70029d58f",
+        "sourceFingerprint": "sha256:0c9ae497de941599707f1631529ac9a40a92b5daa365c91194e652d32fd75ee8"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "solutionHash": "sha256:5d085ae847b44bd67d035609b773a192bce024a071de6f78dc15653ee3b21fe4",
+        "independentVerification": true
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "subjectFamily": "",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC"
+      },
+      "semanticDecision": {
+        "primaryMethod": "그래프 두 점으로 직선식 복원 후 x절편",
+        "decisiveStep": "(-2,-7),(3,3)에서 기울기2와 상수항-3을 얻는다.",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기"
+        },
+        "scopeRelation": "CURRENT_SCOPE"
+      }
+    },
+    "authorityRefs": [
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+        "bytes": 1839,
+        "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "bytes": 559927,
+        "sha256": "sha256:7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md",
+        "bytes": 6057,
+        "sha256": "sha256:7d80ce780a18929ecff4c329ffe7811d340e7a921b9c6900b7a8aa170f2ac9ba"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "bytes": 158478,
+        "sha256": "sha256:2bee3efdbdcd0dee3e5c91341eecb2a8f7c6350f6860cb20de38429dbd17308e"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "bytes": 158478,
+        "sha256": "sha256:2bee3efdbdcd0dee3e5c91341eecb2a8f7c6350f6860cb20de38429dbd17308e",
+        "role": "RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/registry_index.json",
+        "bytes": 21741,
+        "sha256": "sha256:2217a32769eb8025e737b198e9361b818511887b7bbc8c6d4a0e7899315f7052",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+        "bytes": 2268,
+        "sha256": "sha256:11889c08f041e0ac9ed3e131c3119369d51fb53d3704eaa637482894190d24cf",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+        "bytes": 259291,
+        "sha256": "sha256:8c60ebb19670c12491b7259e90530d3b64c16e1252bb691e5b69d1670a16f617",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "bytes": 2276362,
+        "sha256": "sha256:8fb170bb8e7397e2459e26c037913a75340720c30a9c77deda051e9b48154c12",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+        "bytes": 1687601,
+        "sha256": "sha256:e8d40bce41d532c70ae205269b771564c23fca0f077335f07e5449b78a1bd7c2",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+        "bytes": 259332,
+        "sha256": "sha256:3dacd35e12f9c49283f7c14f8aa99c61dba1cb9ac14b5e86dee9d2a80d452208",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "bytes": 966926,
+        "sha256": "sha256:dac1de72104ee5233854788bff8cd5ef60af7e5fb5b0d7c0f059da7211ac7836",
+        "role": "ACTIVE_META_COMPATIBILITY_PROJECTION"
+      }
+    ],
+    "evidenceSha": "sha256:986f1e0bda67fe38cff129e6d1c78d3437530d1706238963f8b17d58e0f12bee"
+  },
+  "registryMutated": false,
+  "newFullMathematicalQa": false,
+  "remoteMainRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}

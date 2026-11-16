@@ -1,0 +1,351 @@
+{
+  "schemaVersion": "official-d5-consumer-boundary-verification-v1",
+  "status": "PASS_LOCAL_BOUNDED",
+  "baseCommit": "92029875c913c1b2e03e127619d54a8685c7081c",
+  "currentCasCommit": "d511d4f82d3da2224cc43f8ff26f30469b436af3",
+  "currentCasUnchangedPaths": 10,
+  "historicalRefusal": {
+    "writerRun": 43773007888,
+    "persisted": false,
+    "preflightSha256": "9c876af5e13eb31495f05382e21c20c568eb6a02127bf20427f1dfd6bd248c1d",
+    "refusedRequests": 2
+  },
+  "scope": {
+    "targetRequests": 2,
+    "targetUids": 2,
+    "targetSourceQuestions": 47,
+    "requiredQualityControlSource": 1,
+    "fullConsumerTestCases": 32,
+    "newDifficultyJudgments": 0,
+    "newSemanticApprovals": 0,
+    "sourceRequestEvidenceChanges": 0,
+    "registrationImplementationChanges": 0
+  },
+  "contract": {
+    "officialReadOnlyProjectionRequired": true,
+    "canonicalDifficultyFields": [
+      "difficultyBucket",
+      "difficultyConfidence",
+      "difficultyBoundaryFlag",
+      "legacyLevelCompatibility"
+    ],
+    "pageObservedFields": [
+      "difficultyBucket"
+    ],
+    "pageQueryVerified": true,
+    "ordinaryCompatibility": "existing official kernel result only",
+    "typedCorrectionCompatibility": "exact four-field request and immutable evidence equality; no normalization override",
+    "semanticPendingTagAdvisory": "only tagConfidence/tagStatus under exact pending metadata state; metadata/source annotations retained",
+    "hardConflicts": [
+      "problemTypeKey",
+      "templateKey",
+      "identity",
+      "sourceFingerprint",
+      "all other fields"
+    ],
+    "approvalClaim": false
+  },
+  "targets": [
+    {
+      "questionUid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+      "sourceArchiveFile": "original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 23,
+      "requestPath": ".archive-meta-register/inbox/m3s2-audit-e070-difficulty-20261116.json",
+      "immutableInputCommit": "92029875c913c1b2e03e127619d54a8685c7081c",
+      "sourceGitBlobSha1": "6ba408d51f059a3c1e10f984154cda530ff33ef0",
+      "requestRawSha256": "a67932573a29ac6f3f398817aa5e962d43a204a2c0bd124290f75d34b242d4c0",
+      "officialMode": "verify-reviewed-correction",
+      "officialAfter": {
+        "difficultyBoundaryFlag": "B34",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "legacyLevelCompatibility": "NORMAL",
+        "sourceFingerprint": "b7df56882913e8e6d08d3376225eb2cc86defe42120da84150d998d55e1c3c64",
+        "contentFingerprint": "c8461194aa8b9783aedc7998f7925651b86f985f27915b1b3e22916c278ad6d9"
+      },
+      "consumerBinding": "stale",
+      "consumerObservation": {
+        "uid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+        "canonical": {
+          "questionUid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+          "sourceOrdinal": 23,
+          "difficultyBucket": 4,
+          "difficultyConfidence": "medium",
+          "difficultyBoundaryFlag": "B34",
+          "legacyLevelCompatibility": "NORMAL",
+          "tagConfidence": "registration_only",
+          "tagStatus": "registration_only_pending_review",
+          "metadataConflicts": [
+            "tagConfidence",
+            "tagStatus"
+          ],
+          "sourceStatus": "HOLD",
+          "automatic": false,
+          "canonicalAssignmentReasons": [
+            "assignment_missing"
+          ],
+          "metaProjectionFailureReason": "DISPLAY_PROJECTION_FINGERPRINT_MISMATCH",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "page": {
+          "questionUid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+          "sourceOrdinal": 23,
+          "difficultyBucket": 4,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": "B34",
+          "legacyLevelCompatibility": "NORMAL",
+          "tagConfidence": "registration_only",
+          "tagStatus": "registration_only_pending_review",
+          "metadataConflicts": [
+            "tagConfidence",
+            "tagStatus"
+          ],
+          "sourceStatus": "HOLD",
+          "automatic": false,
+          "directSelectable": true,
+          "verifiedEligible": false,
+          "canonicalAssignmentReasons": [
+            "assignment_missing"
+          ],
+          "metaProjectionFailureReason": "DISPLAY_PROJECTION_FINGERPRINT_MISMATCH",
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      "advisories": [
+        {
+          "exam": "m3s2-audit-e070-difficulty-20261116",
+          "qid": 23,
+          "uid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+          "field": "tagConfidence",
+          "reason": "SEMANTIC_REVIEW_PENDING_UNCHANGED",
+          "sourceValue": "medium",
+          "canonicalValue": "registration_only",
+          "semanticApproval": false
+        },
+        {
+          "exam": "m3s2-audit-e070-difficulty-20261116",
+          "qid": 23,
+          "uid": "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+          "field": "tagStatus",
+          "reason": "SEMANTIC_REVIEW_PENDING_UNCHANGED",
+          "sourceValue": "reviewed_create",
+          "canonicalValue": "registration_only_pending_review",
+          "semanticApproval": false
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1e46ebb50849b86b58bd4371d0844ea6ba205b91a6c2277012ffd05fb4738324",
+      "sourceArchiveFile": "original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
+      "sourceOrdinal": 20,
+      "requestPath": ".archive-meta-register/inbox/middle-audit-repair-34c2-m2-difficulty-E001.json",
+      "immutableInputCommit": "92029875c913c1b2e03e127619d54a8685c7081c",
+      "sourceGitBlobSha1": "75a6f10eb7283507af1df83d10699eed605b7208",
+      "requestRawSha256": "05940dae9fb5a71b2ebe29c706c43c488cb4cd0b4f5194681163a759b6468f92",
+      "officialMode": "verify-projection",
+      "officialAfter": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "consumerBinding": "content",
+      "consumerObservation": {
+        "uid": "qid_v1_1e46ebb50849b86b58bd4371d0844ea6ba205b91a6c2277012ffd05fb4738324",
+        "canonical": {
+          "questionUid": "qid_v1_1e46ebb50849b86b58bd4371d0844ea6ba205b91a6c2277012ffd05fb4738324",
+          "sourceOrdinal": 20,
+          "difficultyBucket": 2,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "tagConfidence": "rule_inferred",
+          "tagStatus": "approved_subunit_concept_partial",
+          "metadataConflicts": [
+            "legacyLevelCompatibility"
+          ],
+          "sourceStatus": "HOLD",
+          "automatic": false,
+          "canonicalAssignmentReasons": [
+            "assignment_missing"
+          ],
+          "metaProjectionFailureReason": "DISPLAY_PROJECTION_COURSE_NOT_ALLOWED",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "page": {
+          "questionUid": "qid_v1_1e46ebb50849b86b58bd4371d0844ea6ba205b91a6c2277012ffd05fb4738324",
+          "sourceOrdinal": 20,
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "tagConfidence": "rule_inferred",
+          "tagStatus": "approved_subunit_concept_partial",
+          "metadataConflicts": [
+            "legacyLevelCompatibility"
+          ],
+          "sourceStatus": "HOLD",
+          "automatic": false,
+          "directSelectable": true,
+          "verifiedEligible": false,
+          "canonicalAssignmentReasons": [
+            "assignment_missing"
+          ],
+          "metaProjectionFailureReason": "DISPLAY_PROJECTION_COURSE_NOT_ALLOWED",
+          "problemTypeKey": null,
+          "templateKey": null
+        }
+      },
+      "advisories": [
+        {
+          "exam": "middle-audit-repair-34c2-m2-difficulty-E001",
+          "qid": 20,
+          "uid": "qid_v1_1e46ebb50849b86b58bd4371d0844ea6ba205b91a6c2277012ffd05fb4738324",
+          "field": "legacyLevelCompatibility",
+          "reason": "OFFICIAL_D5_LEGACY_COMPATIBILITY_NORMALIZATION",
+          "sourceValue": "BORDERLINE_ACCEPTABLE",
+          "canonicalValue": "NORMAL",
+          "semanticApproval": false
+        }
+      ]
+    }
+  ],
+  "protectedScope": {
+    "schemaVersion": "two-d5-refusal-protected-scope-v1",
+    "targetCount": 2,
+    "original2866Intersection": [],
+    "original36Intersection": [],
+    "q5Intersection": false,
+    "original1299Plus1567MetadataRowsUnchanged": 2866,
+    "original36MetadataRowsUnchanged": 36,
+    "q5FullMetadataUnchanged": true,
+    "metadataOutsideTargetsUnchanged": 28888,
+    "identityRuntimeSourceUnchanged": true,
+    "protectedScopeSha256": "c46f133a0396c5d8d8c5587114252507f803063f71bc03fbb0f3d8f0b60b6292",
+    "originalScopeSha256": "72eb8e7bd55c2718c62dd551f564b0e7fc8553134468b85786c1a652520f2b4b",
+    "scope": "exact metadata/identity/runtime/source continuity; not a new global Consumer run"
+  },
+  "validation": {
+    "beforeExactRefusalCases": {
+      "passed": 0,
+      "failed": 2,
+      "reasons": [
+        "METADATA_CONFLICT:tagConfidence,tagStatus",
+        "METADATA_CONFLICT:legacyLevelCompatibility"
+      ]
+    },
+    "afterOfficialRegistrar": {
+      "requests": 2,
+      "appliedLocally": 2,
+      "verifyProjection": 2,
+      "projectionBindings": {
+        "stale": 1,
+        "content": 1
+      },
+      "fingerprintsRefreshed": 0
+    },
+    "afterOfficialConsumer": {
+      "changed": 2,
+      "checked": 2,
+      "passed": 2,
+      "skippedUnchanged": 0
+    },
+    "focusedTests": {
+      "new": 14,
+      "unchanged": 10,
+      "passed": 24,
+      "failed": 0
+    },
+    "fullConsumerTestFile": {
+      "passed": 32,
+      "failed": 0,
+      "skipped": 0
+    },
+    "negativeCoverage": [
+      "canonical metadata each of four fields",
+      "exposed canonical Consumer each of four fields",
+      "typed evidence SHA and raw compatibility",
+      "source blob and UID",
+      "PT/TPL/identity/source/unknown conflict",
+      "semantic pending context absent",
+      "semantic edits carried by D5 request",
+      "typed or non-D5 compatibility bypass"
+    ],
+    "actualRegistration": "NOT_RUN",
+    "PRCI": "NOT_RUN",
+    "Pages": "NOT_RUN"
+  },
+  "existingFailureLimits": {
+    "semanticHoldPreserved": true,
+    "automatic": false,
+    "verifiedEligible": false,
+    "pageAuxiliaryDifficultyConfidence": null,
+    "claim": "Canonical D5 tuple and page numeric bucket/query only; no full semantic/PT/TPL/BASIC/source approval"
+  },
+  "externalDraftOverlap": {
+    "pullRequest": 2224,
+    "head": "480c7bb963547d99bf8e060a5621d8d96c0d9b28",
+    "onlyTwoFilesCompared": true,
+    "equivalentD5FixPresent": false,
+    "bundleReused": false,
+    "futureThreeWayRisk": [
+      "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "tests/archive-changed-uid-consumer-approval.test.mjs"
+    ]
+  },
+  "localEvidenceDigests": [
+    {
+      "name": "diagnosis-v1.json",
+      "sha256": "798cb9365d3303b4da71d478d655412199d8ebb66bcc85a3e9c892b8aee2ad7e",
+      "availability": "local validation evidence; no claim of Git publication"
+    },
+    {
+      "name": "official-dry2.json",
+      "sha256": "d96640ad31b204b97e7a14c34f897f3557d271275c50c73abd361e2881c327b3",
+      "availability": "local validation evidence; no claim of Git publication"
+    },
+    {
+      "name": "official-local-registration2.json",
+      "sha256": "219d0cd8044f94016d77bc893d434e26444b1690a41206dd72ad1d5156963350",
+      "availability": "local validation evidence; no claim of Git publication"
+    },
+    {
+      "name": "official-consumer2.json",
+      "sha256": "624b0c383cb0cab5f09dbeb2871bf7a16872df184e8c81096716b4a34eedbfda",
+      "availability": "local validation evidence; no claim of Git publication"
+    },
+    {
+      "name": "protected-scope-proof.json",
+      "sha256": "a6dd6bdb5e406ce5f7cf63bb3e8be8d3a2a94bed0baada3a101f85acc6fa93c4",
+      "availability": "local validation evidence; no claim of Git publication"
+    },
+    {
+      "name": "test-before-exact2.log",
+      "sha256": "a804272828e464c7c54d02642ff04e247f358f13837f25d7e06f12223a69767c",
+      "availability": "local validation evidence; no claim of Git publication"
+    },
+    {
+      "name": "test-focused-combined-v1.log",
+      "sha256": "9cb537063186da2cab729489c9cde290d3f6b0b7e281f794c8bc8139694e9fa5",
+      "availability": "local validation evidence; no claim of Git publication"
+    },
+    {
+      "name": "test-full-file-v2.log",
+      "sha256": "091d7bcf63c27c486769c23ee79cc503bb2789362167be9c6d4a35a6dc73446f",
+      "availability": "local validation evidence; no claim of Git publication"
+    },
+    {
+      "name": "current-d511-cas.json",
+      "sha256": "cd05455469ab979d79f5fdaa9edf044d9241dd54e92fe2dc5d58cc47cb922a9b",
+      "availability": "local validation evidence; no claim of Git publication"
+    },
+    {
+      "name": "full-suite-history-inputs-verified.json",
+      "sha256": "cd011f06ceed1198388deb324630e7153f30a37172e6ecc6b6c92d919ec8c1b2",
+      "availability": "local validation evidence; no claim of Git publication"
+    }
+  ]
+}

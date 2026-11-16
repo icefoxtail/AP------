@@ -484,15 +484,15 @@
     "staleReviewedConflicts": 22,
     "productionValuesWinOnMerge": true
   },
-  "reviewedPassCount": 5206,
+  "reviewedPassCount": 5224,
   "counts": {
     "records": 28890,
     "uidUnique": true,
     "sourceJoinUnique": true,
-    "semanticallyReviewed": 5757,
-    "explicitProblemTypeHolds": 22368,
-    "explicitTemplateHolds": 22397,
-    "explicitDifficultyHolds": 5432,
+    "semanticallyReviewed": 13299,
+    "explicitProblemTypeHolds": 22358,
+    "explicitTemplateHolds": 22387,
+    "explicitDifficultyHolds": 5427,
     "m3FoundationV2AppliedRecords": 1644,
     "m3Direct2HFinalized": 700,
     "m3Direct2HChanged": 24,
@@ -7295,37 +7295,68 @@
       "sourceArchiveFile": "original/middle/m3/2mid/20_신흥중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 21,
       "sourceQuestionNo": 21,
-      "sourceFingerprint": "badf001ff40572db91634affa2b0bd59154a12bd04f4c202478814fb98839c3a",
-      "contentFingerprint": "9558c524de67dbf93c299b0d98755e540405833ada0c2378f8303e7d393940cc",
+      "sourceFingerprint": "d2ccdbbdc33e2889766358a36b592930d137c573b24cb3ff21f72e15b0af44e1",
+      "contentFingerprint": "80ce36a52b775c4b9e35d84658e47c1fc6f075b4dd2ec3a9d43ebc63db3f855d",
       "standardCourse": "중3 수학",
       "standardUnitKey": "M3-05",
       "standardUnit": "삼각비",
       "subUnitKey": "M3-05-TRIG_RATIO",
       "subUnit": "삼각비",
-      "conceptClusterKey": "",
-      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-      "crossConceptKeys": [],
+      "conceptClusterKey": "TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
-      "tagConfidence": "review_required",
-      "tagStatus": "review_required",
-      "reviewStatus": "review_required",
-      "metadataStatus": "registration_pending_semantic_review",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "manual_review_pending",
-        "template": "manual_review_pending",
-        "difficulty": "source_unreviewed"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "archive-registration-sync-v1",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e065-public-renderer9-26fc-20261115",
       "approvalEvidence": [
-        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e065-public-renderer9-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e065-public-renderer9-26fc-20261115.renderer-binding.json"
       ],
-      "difficultyBucket": 3
+      "difficultyBucket": 2,
+      "level": "중",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "주어진 사인과 빗변으로 두 직각변을 구한 뒤 각 소문항의 비를 계산한다.",
+      "decisiveStep": "BC=6,AB=2√7를 공통으로 사용하면 cosA=sinC=√7/4,tanA=3/√7이다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "삼각비",
+      "L2": "삼각비",
+      "L3": "삼각비의 값과 관계",
+      "L4": "삼각비의 기본 관계",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_00f1fe1672966290a8e0531e5bff9c2e9f79bd93d4c72d28b573c478d6a9f9af",
@@ -20311,7 +20342,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "questionUid": "qid_v1_036b4f1ec1e668b62c5f5256d4e89406d7f6b33cbefb90889a8a9da34c16e8ea",
@@ -28926,8 +28961,8 @@
       "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 1,
       "sourceQuestionNo": 1,
-      "sourceFingerprint": "12e8ac161ed82be71d2b781f329c534673ddccbf66633bea377fb18518030f56",
-      "contentFingerprint": "4b365e8dbae51c7652bfc2de6572d49fbdcd35c413dbd0318141576f3dfa0aee",
+      "sourceFingerprint": "2040efa5f79ce29ec99f1dfa871c4e115660d5f8350026011ee979ebbbdd0994",
+      "contentFingerprint": "0c450773edc46864c7c87fdaa95f0116dc2a4b0473e5b8e30fb87298225d52b2",
       "standardCourse": "중1 수학",
       "standardUnitKey": "M1-05",
       "standardUnit": "기본도형",
@@ -28955,11 +28990,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 2,
       "level": "하",
@@ -48542,37 +48579,69 @@
       "sourceArchiveFile": "original/middle/m3/2mid/20_신흥중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 18,
       "sourceQuestionNo": 18,
-      "sourceFingerprint": "e71d903330b7955df78e6a14ef26925907a8284028a795bdfaaa3694535bb0f7",
-      "contentFingerprint": "8c544438d5adcb3ac5d663c91964f0691187bec212949d6f90fc9dad113389dd",
+      "sourceFingerprint": "a8df1c5f30a2cb4420fe74bbf567af28ac611eb271299440bd58ce5976b3b597",
+      "contentFingerprint": "539d457622144abdb36c8be0a5f070f9638ff8ab211c827aa66c75cb77ea72df",
       "standardCourse": "중3 수학",
       "standardUnitKey": "M3-05",
       "standardUnit": "삼각비",
-      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-      "subUnit": "삼각비의 활용",
-      "conceptClusterKey": "",
-      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-      "crossConceptKeys": [],
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_SEGMENT_MIDPOINT"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
-      "tagConfidence": "review_required",
-      "tagStatus": "review_required",
-      "reviewStatus": "review_required",
-      "metadataStatus": "registration_pending_semantic_review",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "manual_review_pending",
-        "template": "manual_review_pending",
-        "difficulty": "source_unreviewed"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "archive-registration-sync-v1",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e065-public-renderer9-26fc-20261115",
       "approvalEvidence": [
-        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e065-public-renderer9-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e065-public-renderer9-26fc-20261115.renderer-binding.json"
       ],
-      "difficultyBucket": 3
+      "difficultyBucket": 2,
+      "level": "중",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "큰 직각삼각형에서 중점까지의 길이를 얻고 작은 직각삼각형의 코사인을 구한다.",
+      "decisiveStep": "BC=2√2, BD=√2, AD=√3이므로 cosx=AB/AD=1/√3이다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "삼각비",
+      "L2": "삼각비",
+      "L3": "삼각비의 값과 관계",
+      "L4": "삼각비의 기본 관계",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_081492db461112187764f9dde858d105fce15a0447cc49287555ada357a4cf44",
@@ -97855,7 +97924,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_1082351ecf5065785f41b8041ed27013b8624ba18543fc540be26dcacdddcaeb",
@@ -115414,11 +115487,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.12:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.12:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 2,
       "level": "하",
@@ -119449,7 +119524,10 @@
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
-      "difficultyBucket": 3
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_146b96fd2c40dd534fcb1c5b4974d5ee1dde78b5d0d099a83b267d30a2ab8ad8",
@@ -120301,7 +120379,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_1478b0ac1acb12153b5bb72dce087000a457c383b24cc4066b8bc41dc32bf8ed",
@@ -240487,11 +240569,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-q15-renderer-prior9-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-preserve-public-renderer9-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-preserve-public-renderer9-26fc-20261115.json"
       ],
       "difficultyBucket": 3,
       "difficultyConfidence": "medium",
@@ -244470,7 +244553,7 @@
       "sourceArchiveFile": "original/middle/m1/1mid/23_동산중_1학기_중간_중1_기출.js",
       "sourceOrdinal": 1,
       "sourceQuestionNo": "1",
-      "sourceFingerprint": "61466dd045b7f3d68dbcc9114960e1a3b37504052d3acde244d7c2e94742fac7",
+      "sourceFingerprint": "9ad44202d4f73b3d195ef4f118e1cdeebd99d1aaabbabd190c52943e61a193ca",
       "contentFingerprint": "0f0184fe0acd3989e65b26141d9fe11882ff09f28e4ee5c576107f2092479e1c",
       "standardCourse": "중1 수학",
       "standardUnitKey": "M1-01",
@@ -244478,31 +244561,32 @@
       "subUnitKey": "M1-01-PRIME_FACTORIZATION",
       "subUnit": "소인수분해",
       "conceptClusterKey": "M1-01-PRIME_FACTORIZATION",
-      "problemTypeKey": "PT_BOUNDED_PRIME_COUNT",
-      "templateKey": "TPL_BOUNDED_PRIME_COUNT_CORE",
+      "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+      "templateKey": "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE",
       "difficultyBucket": 1,
-      "tagConfidence": "independent_semantic_consensus",
-      "tagStatus": "meta_foundation_final",
-      "metadataStatus": "approved_full_with_selectability_hold",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "approved_classification",
-        "problemType": "approved_semantic",
-        "template": "approved_semantic",
-        "difficulty": "approved_blind_recheck",
-        "crossConcept": "approved_semantic",
-        "condition": "approved_semantic",
-        "integrationPattern": "approved_semantic"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.1:B01-B16",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.11:exam-final_qa-v2:m1-audit-dongsan23-q1-34c2e1a2-20261116",
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
         "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
         "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/CONSENSUS.jsonl",
-        "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+        "archive/_generated/intelligence/phase1/middle1-foundation/batches/B04_23_동산중_1학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-audit-dongsan23-q1-34c2e1a2-20261116.json"
       ],
-      "metaFoundationPackVersion": "1.0.1",
+      "metaFoundationPackVersion": "1.0.11",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "NONE",
@@ -244515,13 +244599,22 @@
       "courseKey": "M1-1",
       "L1": "소인수분해",
       "L2": "소인수분해",
-      "L3": "소수와 합성수",
-      "L4": "소수·합성수 판별",
+      "L3": "유한 목록의 소수 개수",
+      "L4": "유한 목록의 소수 판별 후 개수 계산",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_hold",
-      "metaFoundationHoldReason": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
-      "curriculum": "2015"
+      "reviewStatus": "reviewed_pass",
+      "metaFoundationHoldReason": null,
+      "curriculum": "2015",
+      "level": "중",
+      "primaryMethod": "명시된 유한 자연수 목록에서 소수인 원소를 판별하고 그 개수를 센다.",
+      "decisiveStep": "목록에 없는 자연수를 조사 대상에 넣지 않고 소수의 정의로 각 원소를 판정한다.",
+      "metadataApprovalType": "FINAL_QA",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED"
     },
     {
       "questionUid": "qid_v1_293b6d5fe94e8f8b5cef31a8661023ca2da357c738e569ee7db0f2d94b5fadbe",
@@ -268018,7 +268111,7 @@
       "L3": "원과 직선",
       "L4": "현의 길이",
       "reviewStatus": "reviewed_pass",
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-current11-existing8-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-preserve8-tag-transport-26fc-20261115",
       "metadataApprovalType": "FINAL_QA",
       "foundationTaxonomyStatus": "CONFIRMED",
       "projectionStatus": "REUSE",
@@ -268032,7 +268125,8 @@
       "defaultSelectable": true,
       "approvalEvidence": [
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-preserve8-tag-transport-26fc-20261115.json"
       ]
     },
     {
@@ -286017,7 +286111,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "questionUid": "qid_v1_2ff8935d2fe369992a25043d1bab736f7f7c9deb9bdd220eab42c97080c6f34e",
@@ -313857,11 +313955,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 2,
       "level": "하",
@@ -328003,28 +328103,66 @@
       "sourceArchiveFile": "original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
       "sourceOrdinal": 4,
       "sourceQuestionNo": "4",
-      "sourceFingerprint": "f7483628f32ec2664ffc53c08b214afc6441257dbd9e43e30a1c46d75f056a1f",
-      "contentFingerprint": "ce3f3e66aa9211002de1a65bdd228698229d535e2c299127ae52bc286b9b2a4f",
+      "sourceFingerprint": "af092cd3f2b410d6011274c5ada0cc16ca3648b4f3941e6a145c5e97b6ba4239",
+      "contentFingerprint": "e17a1bc3bb7651728fce869c89b6620d2e97251ba0c3296549d1fcda41613792",
       "standardCourse": "중3 수학",
       "standardUnitKey": "M3-06",
       "standardUnit": "원의 성질",
-      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-      "subUnit": "원과 직선·각의 성질",
-      "conceptClusterKey": "",
-      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "subUnitKey": "M3-06-CIRCLE_LINE",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
       "difficultyBucket": 2,
-      "tagConfidence": "registration_only",
-      "tagStatus": "registration_only_pending_review",
-      "metadataStatus": "registration_only_pending_review",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "approved_source",
-        "template": "approved_source",
-        "difficulty": "approved_source"
-      }
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "level": "중",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "접점의 반지름과 접선의 수직을 이용한 피타고라스 계산",
+      "decisiveStep": "∠OTP=90°이므로 PT²=10²−5²=75, PT=5√3이다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "원의 성질",
+      "L2": "원과 직선",
+      "L3": "원의 접선",
+      "L4": "접선의 길이",
+      "reviewStatus": "reviewed_pass",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-public-renderer3-tag-transport-26fc-20261115",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "approvalEvidence": [
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-public-renderer3-tag-transport-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-public-renderer3-tag-transport-26fc-20261115.renderer-binding.json"
+      ]
     },
     {
       "questionUid": "qid_v1_36a0e093b8b27b280998bf35d16b99dd66da41e61138ef4993e8a772a3ae947d",
@@ -351296,7 +351434,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_3ae48f28aee5455de07ad5739cf9d70594c0ad9a58d04cf579455ab682656f9f",
@@ -356763,7 +356905,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_3bd854b6527dd3378facad7950e9119a4284fae6e14dd86fed13e64ed998c3dc",
@@ -367512,8 +367658,8 @@
       "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 19,
       "sourceQuestionNo": 19,
-      "sourceFingerprint": "02a52838ae945d21d1d28204e7c0f6dadd9d72d8806fe3cd86f361c09439a3f7",
-      "contentFingerprint": "ae6b233059f60890b72cede436c9e32243378d860b569f2f2eb36586538d3874",
+      "sourceFingerprint": "080957be4afa637b699f288f21f0a797cceb69ecec43963c9ea7786c5471d379",
+      "contentFingerprint": "345b3665368a302febd3896eeebb3ca14a5c5ac3da9e1008e68fcd381ad4cc70",
       "standardCourse": "중1 수학",
       "standardUnitKey": "M1-08",
       "standardUnit": "자료의 정리와 해석",
@@ -367543,11 +367689,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -375169,11 +375317,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 3,
       "level": "중",
@@ -379907,7 +380057,7 @@
       "L3": "원주각·중심각과 원의 각 관계",
       "L4": "접선과 현이 이루는 각",
       "reviewStatus": "reviewed_pass",
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-current11-existing8-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-preserve8-tag-transport-26fc-20261115",
       "metadataApprovalType": "FINAL_QA",
       "foundationTaxonomyStatus": "CONFIRMED",
       "projectionStatus": "REUSE",
@@ -379921,7 +380071,8 @@
       "defaultSelectable": true,
       "approvalEvidence": [
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-preserve8-tag-transport-26fc-20261115.json"
       ]
     },
     {
@@ -398954,11 +399105,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 3,
       "level": "중",
@@ -428408,40 +428561,70 @@
       "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 12,
       "sourceQuestionNo": 12,
-      "sourceFingerprint": "5c57e9e0a0d1cf5d88aac6329b159653d2e9d2c6f69dc69bfe49c6840ec9127d",
-      "contentFingerprint": "4adb5d016c19cbec9ca70123a63559f212de523ab3a556b2966ea6baa6fd3c6f",
+      "sourceFingerprint": "c11c87763023a5c04c3ea0c3ceaf950cfa3f958f83a0df94eb77ebb2655c6a19",
+      "contentFingerprint": "9b61010d1c751ad5b91186de4c146292adbbdd0f689b5d3873af8f59ec1efa84",
       "standardCourse": "중3 수학",
       "standardUnitKey": "M3-05",
       "standardUnit": "삼각비",
-      "subUnitKey": "M3-05-TRIG_RATIO",
-      "subUnit": "삼각비",
-      "conceptClusterKey": "",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "TRIG_RATIO_APPLICATION",
       "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "",
-      "tagConfidence": "review_required",
-      "tagStatus": "review_required",
-      "reviewStatus": "review_required",
-      "metadataStatus": "registration_pending_semantic_review",
-      "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "manual_review_pending",
-        "template": "manual_review_pending",
-        "difficulty": "manual_review_pending"
-      },
-      "metadataRevision": "archive-registration-sync-v1",
-      "approvalEvidence": [
-        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
       ],
-      "difficultyBucket": 4,
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e066-public-renderer9-26fc-20261115",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-public-renderer9-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-public-renderer9-26fc-20261115.renderer-binding.json"
+      ],
+      "difficultyBucket": 3,
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B34",
-      "legacyLevelCompatibility": "NORMAL"
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "level": "상",
+      "primaryMethod": "연못 거리 문제에 수선을 내려 두 직각삼각형을 만들고 투영 길이와 피타고라스를 잇는다.",
+      "decisiveStep": "AD=5√3/2, BD=5/2, DC=19/2이므로 AC²=75/4+361/4=109, AC=√109m이다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비로 직접 길이·높이·거리 구하기",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_47f161b0d17ffbf29fd2e5bee424a0eb1284a5a35f979ad5f7a5b06713ab5e61",
@@ -433065,11 +433248,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 2,
       "level": "하",
@@ -435344,8 +435529,8 @@
       "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 23,
       "sourceQuestionNo": 23,
-      "sourceFingerprint": "0e3bbe78c62e60b9003a04f0757976cd2ff84ae7e5fb7ddeaedab633d9a8379f",
-      "contentFingerprint": "98bdcefdfc654e367e9f60f472e8b28c21c42f0202701a590b6f276e41ba34df",
+      "sourceFingerprint": "ee8253ce70a984e1b7133ec9d9690f3e7526ca3b676c8aea0ea86956a93a49ae",
+      "contentFingerprint": "105d7e1177a529e93a758a3adb3d4055201f5b88a711dc3b788d6b3de2d77a2c",
       "standardCourse": "중1 수학",
       "standardUnitKey": "M1-05",
       "standardUnit": "기본도형",
@@ -435375,11 +435560,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -444823,7 +445010,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_4a9b22b78110a4694f7131afd726597eec7e32119a64a251bfe86096fb8e547b",
@@ -506977,11 +507168,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-q15-renderer-prior9-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-preserve-public-renderer9-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-preserve-public-renderer9-26fc-20261115.json"
       ],
       "difficultyBucket": 2,
       "difficultyConfidence": "medium",
@@ -522375,7 +522567,7 @@
       "L3": "원주각·중심각과 원의 각 관계",
       "L4": "복합 원의 각 관계",
       "reviewStatus": "reviewed_pass",
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-current11-existing8-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-preserve8-tag-transport-26fc-20261115",
       "metadataApprovalType": "FINAL_QA",
       "foundationTaxonomyStatus": "CONFIRMED",
       "projectionStatus": "REUSE",
@@ -522389,7 +522581,8 @@
       "defaultSelectable": true,
       "approvalEvidence": [
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-preserve8-tag-transport-26fc-20261115.json"
       ]
     },
     {
@@ -530724,7 +530917,7 @@
       "L3": "원주각·중심각과 원의 각 관계",
       "L4": "원주각과 중심각",
       "reviewStatus": "reviewed_pass",
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-current11-existing8-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-preserve8-tag-transport-26fc-20261115",
       "metadataApprovalType": "FINAL_QA",
       "foundationTaxonomyStatus": "CONFIRMED",
       "projectionStatus": "REUSE",
@@ -530739,7 +530932,8 @@
       "approvalEvidence": [
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-release-20261115.json",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.renderer-binding.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.renderer-binding.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-preserve8-tag-transport-26fc-20261115.json"
       ]
     },
     {
@@ -543707,7 +543901,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "questionUid": "qid_v1_5ae28bd055b4c2372cab73aaa2ea76a4013cce388dd296ab83034e5256e2120f",
@@ -554880,28 +555078,64 @@
       "sourceArchiveFile": "original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
       "sourceOrdinal": 10,
       "sourceQuestionNo": "10",
-      "sourceFingerprint": "2581498b1ca01cee538c3860639e1636bf2a6e4556d3e7de7d2c778db0af3e69",
-      "contentFingerprint": "9398fb4064361327293d0816d7414a9264594a96db8416c04f1c80de96045fe8",
+      "sourceFingerprint": "d452a415f568756e283c8f3fab18f855a83d9804f3c95d96cfe60d21eb21124d",
+      "contentFingerprint": "83cdd9246500fc03f340b3ab0eefa0643108b3dc27288e09f2ab5fd5f74de3b0",
       "standardCourse": "중3 수학",
       "standardUnitKey": "M3-06",
       "standardUnit": "원의 성질",
       "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-      "subUnit": "원과 직선·각의 성질",
-      "conceptClusterKey": "",
+      "subUnit": "원주각",
+      "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
       "difficultyBucket": 2,
-      "tagConfidence": "registration_only",
-      "tagStatus": "registration_only_pending_review",
-      "metadataStatus": "registration_only_pending_review",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "approved_source",
-        "template": "approved_source",
-        "difficulty": "approved_source"
-      }
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "꼭짓점이 놓인 작은 호와 마주 보는 큰 호를 구별",
+      "decisiveStep": "C가 작은 호 위이므로 보는 호는360−100=260°, 원주각은130°이다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "원의 성질",
+      "L2": "원주각",
+      "L3": "원주각·중심각과 원의 각 관계",
+      "L4": "원주각과 중심각",
+      "reviewStatus": "reviewed_pass",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-public-renderer3-tag-transport-26fc-20261115",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "approvalEvidence": [
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-public-renderer3-tag-transport-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-public-renderer3-tag-transport-26fc-20261115.renderer-binding.json"
+      ]
     },
     {
       "questionUid": "qid_v1_5c8e1a89fd4d8f9e1860f2e8a1105881fe995c71d13ccb025fb284f1b2d92686",
@@ -557369,7 +557603,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_5d1b3c0b4b9b6a9c7a46e9b04c217be4118ceeabc804cbb95e290dd80651d9ec",
@@ -574499,11 +574737,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 3,
       "level": "중",
@@ -615072,11 +615312,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 1,
       "level": "하",
@@ -653246,11 +653488,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 1,
       "level": "하",
@@ -675267,37 +675511,66 @@
       "sourceArchiveFile": "original/middle/m3/2mid/20_신흥중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 20,
       "sourceQuestionNo": 20,
-      "sourceFingerprint": "aac14d4d3021bd9a130545b80d673f083bac25ab213043e616a3349063950f10",
-      "contentFingerprint": "a885cc11e152aad6657bfb494baf7b03f5212e0dc545ffadbb0d8b864b2ced20",
+      "sourceFingerprint": "e6200264ed75de0036e8560c27e692441f70f4c4f1bd4c07cbca221003d1224f",
+      "contentFingerprint": "0e6d96f8e8fda8a52eca4eae70bc3b99b7c1b785e49d139ba6f75bc8c3811dcf",
       "standardCourse": "중3 수학",
       "standardUnitKey": "M3-05",
       "standardUnit": "삼각비",
       "subUnitKey": "M3-05-TRIG_RATIO",
       "subUnit": "삼각비",
-      "conceptClusterKey": "",
+      "conceptClusterKey": "TRIG_RATIO",
       "problemTypeKey": "PT_TRIG_RATIO",
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
-      "tagConfidence": "review_required",
-      "tagStatus": "review_required",
-      "reviewStatus": "review_required",
-      "metadataStatus": "registration_pending_semantic_review",
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "manual_review_pending",
-        "template": "manual_review_pending",
-        "difficulty": "source_unreviewed"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "archive-registration-sync-v1",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e065-public-renderer9-26fc-20261115",
       "approvalEvidence": [
-        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e065-public-renderer9-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e065-public-renderer9-26fc-20261115.renderer-binding.json"
       ],
-      "difficultyBucket": 3
+      "difficultyBucket": 2,
+      "level": "중",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "단위원의 두 직각삼각형과 여각 관계로 선분에 해당하는 삼각비를 비교한다.",
+      "decisiveStep": "OA=OD=1이므로 AB=sinx,OB=cosx,CD=tanx이며 y=90°−x이다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "삼각비",
+      "L2": "삼각비",
+      "L3": "삼각비의 값과 관계",
+      "L4": "삼각비의 기본 관계",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_71221432010436d536ad1f4b4b01f76b5e49a174577985272f4a01c92a79141d",
@@ -687168,7 +687441,7 @@
       "conceptClusterKey": "M2-01-REPEATING_DECIMAL",
       "problemTypeKey": "",
       "templateKey": "",
-      "difficultyBucket": "중",
+      "difficultyBucket": 3,
       "tagConfidence": "rule_inferred",
       "tagStatus": "approved_subunit_concept_partial",
       "metadataStatus": "approved_partial_with_explicit_holds",
@@ -687183,7 +687456,10 @@
       "metadataRevision": "archive-metadata-v1-phase1b-20260825",
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
-      ]
+      ],
+      "difficultyConfidence": "low",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_734cbeaa6e693184e4b00ca152b36a240e87302561bffb3cf8da87e575c507e9",
@@ -687487,11 +687763,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-q15-renderer-prior9-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-preserve-public-renderer9-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-preserve-public-renderer9-26fc-20261115.json"
       ],
       "difficultyBucket": 2,
       "difficultyConfidence": "high",
@@ -699076,28 +699353,64 @@
       "sourceArchiveFile": "original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
       "sourceOrdinal": 13,
       "sourceQuestionNo": "13",
-      "sourceFingerprint": "5347545a57cfdfac1d97aebcfe9304b724efd238ec3a055c9e95aaca31cfffa9",
-      "contentFingerprint": "b5f6aeb17f785ddfa66242e01857188daa33782ec85bc6306062217b2fdbd8bd",
+      "sourceFingerprint": "867e58c8608b6e671960feb11a52d29a976287acd9d8a12d0c6ee72432459eee",
+      "contentFingerprint": "b88763c407bd759e9546f3bbc49876adfa4d7d9e3727e5eac020578df7735c6b",
       "standardCourse": "중3 수학",
       "standardUnitKey": "M3-06",
       "standardUnit": "원의 성질",
       "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-      "subUnit": "원과 직선·각의 성질",
-      "conceptClusterKey": "",
+      "subUnit": "원주각",
+      "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
       "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-      "difficultyBucket": 4,
-      "tagConfidence": "registration_only",
-      "tagStatus": "registration_only_pending_review",
-      "metadataStatus": "registration_only_pending_review",
+      "difficultyBucket": 2,
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "approved_source",
-        "template": "approved_source",
-        "difficulty": "approved_source"
-      }
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "내접사각형의 각과 두 외부 할선의 호 차를 연결",
+      "decisiveStep": "호AB+BC=230°, AD+CD=130°, BC−AD=60°이므로 AB−CD=40°이고 x=20°이다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "원의 성질",
+      "L2": "원주각",
+      "L3": "원주각·중심각과 원의 각 관계",
+      "L4": "복합 원의 각 관계",
+      "reviewStatus": "reviewed_pass",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-public-renderer3-tag-transport-26fc-20261115",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "approvalEvidence": [
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-public-renderer3-tag-transport-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-public-renderer3-tag-transport-26fc-20261115.renderer-binding.json"
+      ]
     },
     {
       "questionUid": "qid_v1_75374070ce2e0f983ffaa56377d7c5b57e37322b178d0b71f29d74055968e65c",
@@ -708721,7 +709034,7 @@
       "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
       "sourceOrdinal": 12,
       "sourceQuestionNo": "12",
-      "sourceFingerprint": "66dfd99a50119a72aa13ae57b9a0aed103ea4a034f2868e7a35ba12901658f10",
+      "sourceFingerprint": "4dd56fe57b3d24b8bf70af42e16fd11e7088de742e400b62193d2e9fc3db2d28",
       "contentFingerprint": "3ea39fe6ed8a24f9e11f259842098b6cef9582dab301827c98a01d00e20ecd9c",
       "standardCourse": "중2 수학",
       "standardUnitKey": "M2-04",
@@ -708729,27 +709042,67 @@
       "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
       "subUnit": "일차함수의 뜻과 그래프",
       "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
-      "problemTypeKey": "LINEAR_FUNCTION_FIND_EQUATION",
-      "templateKey": "LINEAR_FUNCTION_TWO_POINTS",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_TWO_POINTS",
       "difficultyBucket": 2,
-      "tagConfidence": "high",
-      "tagStatus": "approved_semantic_review",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
       "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "approved_semantic_review",
-        "problemType": "approved_semantic_review",
-        "template": "approved_semantic_review",
-        "difficulty": "approved_source"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "archive-metadata-v1-phase1b-20260825",
+      "metadataRevision": "meta-foundation:MIDDLE2@1.0.7:exam-final_qa-v2:middle-audit-repair-34c2-m2-e035-q12",
       "approvalEvidence": [
-        "archive/_generated/intelligence/phase1/pilot/review/medium-batch-3-semantic-review.json"
+        "archive/_generated/intelligence/phase1/pilot/review/medium-batch-3-semantic-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12.json"
       ],
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL"
+      "legacyLevelCompatibility": "NORMAL",
+      "curriculum": "2015",
+      "courseKey": "M2-1",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "level": "중",
+      "primaryMethod": "그래프 두 점으로 직선식 복원 후 x절편",
+      "decisiveStep": "(-2,-7),(3,3)에서 기울기2와 상수항-3을 얻는다.",
+      "rpmPrimaryId": "M2-RPM-052",
+      "rpmPrimaryPath": {
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 그 그래프",
+        "l3": "식 구하기",
+        "l4": "두 점으로 식 구하기"
+      },
+      "rpmL1": "일차함수",
+      "rpmL2": "일차함수와 그 그래프",
+      "rpmL3": "식 구하기",
+      "rpmL4": "두 점으로 식 구하기",
+      "curriculumKey": "2015",
+      "L1": "일차함수",
+      "L2": "일차함수와 그 그래프",
+      "L3": "직선의 방정식 구하기",
+      "L4": "두 점을 지나는 직선",
+      "reviewStatus": "reviewed_pass",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE2",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_76e187c8f4169038aad8e7bb4f9e18b3cdf69599166a68140ec2d4341752a67c",
@@ -764971,7 +765324,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "STRONG_CONFLICT"
     },
     {
       "questionUid": "qid_v1_7f8777fac3dc4e9c7b5d73efac255252f0d2433a918d987820843f7a402439a5",
@@ -793837,11 +794194,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-q15-renderer-prior9-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-preserve-public-renderer9-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-preserve-public-renderer9-26fc-20261115.json"
       ],
       "difficultyBucket": 3,
       "difficultyConfidence": "high",
@@ -811508,7 +811866,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_874fd0f6163edec1dafc2a24d3f3eaea1a44d156b07910779b34cbafdd465845",
@@ -816099,11 +816461,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 3,
       "level": "중",
@@ -857785,7 +858149,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_8ec4dc86b540dbfc51b47212a639df4c204e8bc347a8dfc5c524839020a3b99f",
@@ -888442,7 +888810,7 @@
       "L3": "원과 직선",
       "L4": "현의 길이",
       "reviewStatus": "reviewed_pass",
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-current11-existing8-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-preserve8-tag-transport-26fc-20261115",
       "metadataApprovalType": "FINAL_QA",
       "foundationTaxonomyStatus": "CONFIRMED",
       "projectionStatus": "REUSE",
@@ -888456,7 +888824,8 @@
       "defaultSelectable": true,
       "approvalEvidence": [
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-preserve8-tag-transport-26fc-20261115.json"
       ]
     },
     {
@@ -910464,8 +910833,8 @@
       "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 14,
       "sourceQuestionNo": 14,
-      "sourceFingerprint": "56cb185f1df67b49b45eacf5888c0110b0b1a717d0b2a596a42eb8919ec62877",
-      "contentFingerprint": "922d4cfb979aea320a9f258fc336ed608419c33931712443d11977d3ab2289bb",
+      "sourceFingerprint": "3a4f32f842017749193b0080266d4033c30c86314274551120a5374a7a50a5d7",
+      "contentFingerprint": "aef368db2231df0c18a74cb718f98fa71927b7a79e291a854ce2598b1b1ef972",
       "standardCourse": "중1 수학",
       "standardUnitKey": "M1-04",
       "standardUnit": "좌표평면과 그래프",
@@ -910495,11 +910864,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -947527,40 +947898,69 @@
       "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 15,
       "sourceQuestionNo": 15,
-      "sourceFingerprint": "9db390f93eca985ed8314072b60a7348aeae3f908a19ce84d273509d5c0015dc",
-      "contentFingerprint": "e8aa1ac70889a97f9c0143f8a5055aa818432d09b4657591a35afcad01c9bd18",
+      "sourceFingerprint": "d1851156155fd1b04ac17d6462157b6717b38800af6aeb3cddc7c6c44a997c4b",
+      "contentFingerprint": "55dfc41dcade2b50d8116dee93668336ba029b0994edeaa53149b80d249b8e6f",
       "standardCourse": "중3 수학",
       "standardUnitKey": "M3-06",
       "standardUnit": "원의 성질",
       "subUnitKey": "M3-06-CIRCLE_LINE",
       "subUnit": "원과 직선",
-      "conceptClusterKey": "",
-      "problemTypeKey": "",
-      "templateKey": "",
-      "crossConceptKeys": [],
+      "conceptClusterKey": "CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_CIRCLE_CIRCUMFERENCE"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "",
-      "tagConfidence": "review_required",
-      "tagStatus": "review_required",
-      "reviewStatus": "review_required",
-      "metadataStatus": "registration_pending_semantic_review",
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "manual_review_pending",
-        "template": "manual_review_pending",
-        "difficulty": "manual_review_pending"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "archive-registration-sync-v1",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e066-public-renderer9-26fc-20261115",
       "approvalEvidence": [
-        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-public-renderer9-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-public-renderer9-26fc-20261115.renderer-binding.json"
       ],
-      "difficultyBucket": 4,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B34",
-      "legacyLevelCompatibility": "NORMAL"
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "level": "상",
+      "primaryMethod": "중심에서 현까지의 거리와 반지름을 한 변수로 놓고 직각삼각형 관계로 반지름을 복원한다.",
+      "decisiveStep": "OB=r, OM=r−3, MB=6에서 r²=(r−3)²+36, 6r=45이므로 r=15/2, 원주15π이다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "원의 성질",
+      "L2": "원과 직선",
+      "L3": "원과 직선",
+      "L4": "현의 길이",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_9d2923c03eef494ca04b6ad10bbbd51bb42b0447cbc64e09edde5c1ae4927b12",
@@ -963749,8 +964149,8 @@
       "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 21,
       "sourceQuestionNo": 21,
-      "sourceFingerprint": "fcabfc5bc262b65c32e5a23ca0633f6dd59fc02ad87a0a7fb15e17c443070eb2",
-      "contentFingerprint": "ba0f8cc9aa09ec084af53f26e10dc7d6372b77ea9a60df83b97aef1f4c76868a",
+      "sourceFingerprint": "5b34f9a107c26ba36b6bea9c22a86e2e7adc06a4dea9ff3ab3c6b6cf6ced99ea",
+      "contentFingerprint": "a78cc3e7f0e1bc41a8cfe7fe4c1fb6ebfdb78520b13a12b26cff504b619495b7",
       "standardCourse": "중1 수학",
       "standardUnitKey": "M1-05",
       "standardUnit": "기본도형",
@@ -963778,11 +964178,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 2,
       "level": "하",
@@ -974436,11 +974838,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-q15-renderer-prior9-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-preserve-public-renderer9-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-preserve-public-renderer9-26fc-20261115.json"
       ],
       "difficultyBucket": 2,
       "difficultyConfidence": "medium",
@@ -1015782,11 +1016185,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 2,
       "level": "하",
@@ -1027017,37 +1027422,68 @@
       "sourceArchiveFile": "original/middle/m3/2mid/20_신흥중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 17,
       "sourceQuestionNo": 17,
-      "sourceFingerprint": "5ba3e073abf853eed3007e0328564e3581b8429552fd73b028d0ecd335c71898",
-      "contentFingerprint": "ff3497a359df1c3c58dd084a43308e979a2724da8bdc59be8742cee368903157",
+      "sourceFingerprint": "3e5e940f7e571037004e21ebc64bb653c4289e9101fb1b0489f68de21f54dd27",
+      "contentFingerprint": "1d64d78788c26b7102cdc2b4f5cc1067b751ee88131bd85b7e5615035ba8ac1d",
       "standardCourse": "중3 수학",
       "standardUnitKey": "M3-05",
       "standardUnit": "삼각비",
       "subUnitKey": "M3-05-TRIG_RATIO",
       "subUnit": "삼각비",
-      "conceptClusterKey": "",
+      "conceptClusterKey": "TRIG_RATIO",
       "problemTypeKey": "PT_TRIG_RATIO",
-      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
-      "crossConceptKeys": [],
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "tagConfidence": "review_required",
-      "tagStatus": "review_required",
-      "reviewStatus": "review_required",
-      "metadataStatus": "registration_pending_semantic_review",
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "manual_review_pending",
-        "template": "manual_review_pending",
-        "difficulty": "source_unreviewed"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "archive-registration-sync-v1",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e065-public-renderer9-26fc-20261115",
       "approvalEvidence": [
-        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e065-public-renderer9-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e065-public-renderer9-26fc-20261115.renderer-binding.json"
       ],
-      "difficultyBucket": 2
+      "difficultyBucket": 2,
+      "level": "중",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "NORMAL",
+      "primaryMethod": "직각삼각형의 빗변을 구하고 각에 대한 대변·인접변을 구분한다.",
+      "decisiveStep": "AB=2이므로 sinB=AC/AB=√3/2이며 역수를 적은 ④가 틀리다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "삼각비",
+      "L2": "삼각비",
+      "L3": "삼각비의 값과 관계",
+      "L4": "삼각비의 기본 관계",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_aa075f185aa7d18acc6417c6976be5d8f1cf84f255fa4c7693ee48555a1935f2",
@@ -1048139,7 +1048575,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "STRONG_CONFLICT"
     },
     {
       "questionUid": "qid_v1_ad9c52b6ff041f73f0422b4f5703810dc872941ea8442d4b445b6b63279ee470",
@@ -1048185,40 +1048625,68 @@
       "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 2,
       "sourceQuestionNo": 2,
-      "sourceFingerprint": "d30051b942543ca5070ec3b111a712c047b40c844ef86a62b3e26844f1d6bd7c",
-      "contentFingerprint": "a5262beeed164dd3ac3f0b4fc0cf216749836206a71e24cb1bd50c8970b7c88e",
+      "sourceFingerprint": "c32a48485c89cc5af1bdbb4bd1ac65b48ae9f5547421e7224bde0b80bc0bc3fa",
+      "contentFingerprint": "5e579812095cc584d15a0502d047ada2c57a0ca3efb8138d539a624e74332010",
       "standardCourse": "중3 수학",
       "standardUnitKey": "M3-05",
       "standardUnit": "삼각비",
       "subUnitKey": "M3-05-TRIG_RATIO",
       "subUnit": "삼각비",
-      "conceptClusterKey": "",
+      "conceptClusterKey": "TRIG_RATIO",
       "problemTypeKey": "PT_TRIG_RATIO",
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_RIGHT_TRIANGLE_SIMILARITY"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "",
-      "tagConfidence": "review_required",
-      "tagStatus": "review_required",
-      "reviewStatus": "review_required",
-      "metadataStatus": "registration_pending_semantic_review",
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "manual_review_pending",
-        "template": "manual_review_pending",
-        "difficulty": "manual_review_pending"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "archive-registration-sync-v1",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e066-public-renderer9-26fc-20261115",
       "approvalEvidence": [
-        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-public-renderer9-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-public-renderer9-26fc-20261115.renderer-binding.json"
       ],
-      "difficultyBucket": 3,
-      "difficultyConfidence": "high",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "NORMAL"
+      "legacyLevelCompatibility": "NORMAL",
+      "level": "중",
+      "primaryMethod": "빗변에 내린 높이가 만드는 닮음을 이용해 각 A,B의 변의 비를 판정한다.",
+      "decisiveStep": "BC²=AB·BD에서 AB=25, AC²=25·16에서 AC=20이므로 tan A=3/4이며 ③만 거짓이다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "삼각비",
+      "L2": "삼각비",
+      "L3": "삼각비의 값과 관계",
+      "L4": "삼각비의 기본 관계",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_ad9fbb66b241c58238d946a506895595b8989d1d2c6ff56717737d23b339fd31",
@@ -1063762,7 +1064230,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_b01fc03bbc1d4db84073563624987043ed8ce726af0ec39d6adb7ddbbc83fe6d",
@@ -1065386,7 +1065858,10 @@
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
-      "difficultyBucket": 4
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_b065d79aa7b71e97da4ffec11a2c4420eb8b859f473583254db1e0e5c238df79",
@@ -1117572,7 +1118047,7 @@
       "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 15,
       "sourceQuestionNo": "15",
-      "sourceFingerprint": "06e49ee4d1d10307e834a3e60eb6553a89b77e747808ec0597730ea8aeff5d17",
+      "sourceFingerprint": "93e412d1e734b84fb9b7fa8f18663f9e340d578d979ca3d82f6c4e8be4024ed8",
       "contentFingerprint": "3cfce563615491c53c7d5e48d4d3ff23ab74041412b331a16ab8c867e76c2fef",
       "standardCourse": "중1 수학",
       "standardUnitKey": "M1-06",
@@ -1117580,27 +1118055,68 @@
       "subUnitKey": "M1-06-POLYGON_CIRCLE",
       "subUnit": "다각형과 원",
       "conceptClusterKey": "M1-06-POLYGON_CIRCLE",
-      "problemTypeKey": "",
-      "templateKey": "",
-      "difficultyBucket": 2,
-      "tagConfidence": "rule_inferred",
-      "tagStatus": "approved_subunit_concept_partial",
-      "metadataStatus": "approved_partial_with_explicit_holds",
+      "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM",
+      "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION",
+      "difficultyBucket": 3,
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "approved_classification",
-        "problemType": "manual_review_pending",
-        "template": "manual_review_pending",
-        "difficulty": "approved_source"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "archive-metadata-v1-phase1b-20260825",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.11:exam-final_qa-v2:m1-audit-palma25-q15-34c2e1a2-20261116",
       "approvalEvidence": [
-        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-audit-palma25-q15-34c2e1a2-20261116.json"
       ],
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "level": "상",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "rpmPrimaryPath": {
+        "curriculumKey": "2022",
+        "courseKey": "M1-2",
+        "L1": "평면도형",
+        "L2": "다각형",
+        "L3": "삼각형·다각형의 각",
+        "L4": "각의 크기 계산"
+      },
+      "rpmL1": "평면도형",
+      "rpmL2": "다각형",
+      "rpmL3": "삼각형·다각형의 각",
+      "rpmL4": "각의 크기 계산",
+      "primaryMethod": "교차 도형의 내각합과 교점의 각 관계를 결합해 표시각의 합을 결정한다.",
+      "decisiveStep": "교점의 맞꼭지각을 아래쪽 보조삼각형에 옮긴 뒤 두 밑각의 합을 바깥 사각형의 내각의 합에서 뺀다.",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "courseKey": "M1-2",
+      "L1": "평면도형",
+      "L2": "다각형",
+      "L3": "교차 다각형의 각의 합",
+      "L4": "교차 다각형의 분할과 보조각 소거",
+      "reviewStatus": "reviewed_pass",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "metaFoundationPackVersion": "1.0.11",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_b8fff6b7e3727d111031a292dc1e4d92c20bcfdca9e079948fe502f54169e07e",
@@ -1122329,40 +1122845,70 @@
       "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 19,
       "sourceQuestionNo": 19,
-      "sourceFingerprint": "04876a9ad8090863d0c228766d88a3a39d5e9e8f277e585dc6147429e7a76491",
+      "sourceFingerprint": "e4cb34cd266051a1d5d6c6c5bacf02d4e6c37d9196eb2ba6ee372d94ff4c0788",
       "contentFingerprint": "7ff8738d7588fe2dcc357174ca637b6777a59282f70b0258d1777c59d794a62d",
       "standardCourse": "중3 수학",
       "standardUnitKey": "M3-05",
       "standardUnit": "삼각비",
       "subUnitKey": "M3-05-TRIG_RATIO",
       "subUnit": "삼각비",
-      "conceptClusterKey": "",
-      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-      "crossConceptKeys": [],
+      "conceptClusterKey": "TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "",
-      "tagConfidence": "review_required",
-      "tagStatus": "review_required",
-      "reviewStatus": "review_required",
-      "metadataStatus": "registration_pending_semantic_review",
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "manual_review_pending",
-        "template": "manual_review_pending",
-        "difficulty": "manual_review_pending"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "archive-registration-sync-v1",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e066-public-renderer9-26fc-20261115",
       "approvalEvidence": [
-        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-public-renderer9-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-public-renderer9-26fc-20261115.renderer-binding.json"
       ],
       "difficultyBucket": 2,
-      "difficultyConfidence": "high",
+      "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B12",
-      "legacyLevelCompatibility": "NORMAL"
+      "legacyLevelCompatibility": "NORMAL",
+      "level": "중",
+      "primaryMethod": "직각삼각형의 세 변에서 B의 삼각비를 구하고 90° 삼각비의 정의 여부를 판정한다.",
+      "decisiveStep": "AB=5이므로 B의 sin,cos,tan은3/5,4/5,3/4이고 C=90°에서 sin1,cos0,tan은 분모0으로 정의되지 않는다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "삼각비",
+      "L2": "삼각비",
+      "L3": "삼각비의 값과 관계",
+      "L4": "삼각비의 기본 관계",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_b99b0f71bc2323fadccc5dbd5380caaa6606493596ffd79bb9c1b17fba42cc2f",
@@ -1127298,7 +1127844,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_ba4a6c9ffd2a29392269ef7d941a3e17ba3725a25a7c6af0e795adbc3c771f68",
@@ -1129724,11 +1130274,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 1,
       "level": "하",
@@ -1150752,11 +1151304,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-q15-renderer-prior9-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-preserve-public-renderer9-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-preserve-public-renderer9-26fc-20261115.json"
       ],
       "difficultyBucket": 1,
       "difficultyConfidence": "high",
@@ -1152387,11 +1152940,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 2,
       "level": "하",
@@ -1159234,39 +1159789,40 @@
       "sourceArchiveFile": "original/middle/m1/2mid/23_신흥중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 25,
       "sourceQuestionNo": "25",
-      "sourceFingerprint": "a50e6ae296abd6048fddb72ced5ece42f59f92119bac44130dd4b5269a6ac6c9",
+      "sourceFingerprint": "6771bc00de1d5109c2179c337789dc6e04e0f6a587b179f1def5b8825173fd6b",
       "contentFingerprint": "ac599b0d1fabc5e369b0a5b8bab4efae8e57deb6ece16449e42411aafb6dbd56",
       "standardCourse": "중1 수학",
       "standardUnitKey": "M1-05",
       "standardUnit": "기본도형",
-      "subUnitKey": "M1-05-BASIC_FIGURE",
-      "subUnit": "점·선·면과 각",
-      "conceptClusterKey": "M1-05-BASIC_FIGURE",
-      "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-      "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER",
+      "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "subUnit": "작도와 합동",
+      "conceptClusterKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+      "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+      "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_ROTATED_CENTER_OVERLAP",
       "difficultyBucket": 4,
-      "tagConfidence": "independent_semantic_consensus",
-      "tagStatus": "meta_foundation_final",
-      "metadataStatus": "approved_full_with_selectability_hold",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "approved_classification",
-        "problemType": "approved_semantic",
-        "template": "approved_semantic",
-        "difficulty": "approved_blind_recheck",
-        "crossConcept": "approved_semantic",
-        "condition": "approved_semantic",
-        "integrationPattern": "approved_semantic"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.1:B01-B16",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.12:exam-final_qa-v2:m1-audit-sinheung23-q25-34c2e1a2-20261116",
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
         "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
         "archive/_generated/intelligence/phase1/middle1-foundation/batches/B06_23_신흥중_2학기_중간_중1_기출/CONSENSUS.jsonl",
-        "archive/_generated/intelligence/phase1/middle1-foundation/batches/B06_23_신흥중_2학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl"
+        "archive/_generated/intelligence/phase1/middle1-foundation/batches/B06_23_신흥중_2학기_중간_중1_기출/DIFFICULTY_FINAL.jsonl",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-audit-sinheung23-q25-34c2e1a2-20261116.json"
       ],
-      "metaFoundationPackVersion": "1.0.1",
+      "metaFoundationPackVersion": "1.0.12",
       "crossConceptKeys": [
         "CC_AREA"
       ],
@@ -1159281,13 +1159837,28 @@
       "courseKey": "M1-2",
       "L1": "기본 도형",
       "L2": "작도와 합동",
-      "L3": "삼각형의 합동",
-      "L4": "SAS 합동",
+      "L3": "정사각형 배치의 합동과 넓이",
+      "L4": "중심에 놓인 정사각형 꼭짓점의 회전 겹침 넓이",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_hold",
-      "metaFoundationHoldReason": "MISLEADING_SOLUTION",
-      "curriculum": "2015"
+      "reviewStatus": "reviewed_pass",
+      "metaFoundationHoldReason": null,
+      "curriculum": "2015",
+      "level": "상",
+      "rpmPrimaryPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "l3": "삼각형의 합동",
+        "l4": "ASA 합동"
+      },
+      "primaryMethod": "정사각형의 대각선과 두 직각의 관계로 ASA 합동을 증명하고 합동인 넓이 조각을 옮긴다.",
+      "decisiveStep": "겹친 사각형을 두 삼각형으로 나누고 합동인 조각으로 바꾸어 원 정사각형의 중심과 한 변이 만드는 삼각형의 넓이로 환원한다.",
+      "metadataApprovalType": "FINAL_QA",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE1",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED"
     },
     {
       "questionUid": "qid_v1_bf6fa4a75395ddcd3ae11309982d41b7785ebb88cca160f8175d67071bf7aac1",
@@ -1184203,11 +1184774,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-q15-renderer-prior9-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-preserve-public-renderer9-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-preserve-public-renderer9-26fc-20261115.json"
       ],
       "difficultyBucket": 2,
       "difficultyConfidence": "high",
@@ -1198213,11 +1198785,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 2,
       "level": "하",
@@ -1225318,7 +1225892,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "questionUid": "qid_v1_c9f56b737937b2136e41860c98f1cc493135fe4dc90af16d21e4aaf51b3d6b57",
@@ -1243439,7 +1244017,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_ccc76b1ffa5b822d02284287eb3a7896db86e986af0c8f8f11d0b033c8cc544e",
@@ -1260634,11 +1261216,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-q15-renderer-prior9-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-preserve-public-renderer9-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-preserve-public-renderer9-26fc-20261115.json"
       ],
       "difficultyBucket": 3,
       "difficultyConfidence": "medium",
@@ -1260927,7 +1261510,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_cfb314c0273176254268f12ca339ef8fa46294346cd2a4cad2bc6fba73391460",
@@ -1269030,7 +1269617,7 @@
       "L3": "원주각·중심각과 원의 각 관계",
       "L4": "원주각과 중심각",
       "reviewStatus": "reviewed_pass",
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-current11-existing8-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-preserve8-tag-transport-26fc-20261115",
       "metadataApprovalType": "FINAL_QA",
       "foundationTaxonomyStatus": "CONFIRMED",
       "projectionStatus": "REUSE",
@@ -1269044,7 +1269631,8 @@
       "defaultSelectable": true,
       "approvalEvidence": [
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-preserve8-tag-transport-26fc-20261115.json"
       ]
     },
     {
@@ -1283981,7 +1284569,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "questionUid": "qid_v1_d39361211d95fbe64a0745adf607c18cd38b0a73213954eef23392e4863db9ae",
@@ -1310480,7 +1311072,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_d8694c5a71d41abb320387c806e52dfc671b10d5faec2cd03a1f3b072aef4d84",
@@ -1320330,8 +1320926,8 @@
       "sourceArchiveFile": "original/middle/m1/2mid/26_왕운중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 15,
       "sourceQuestionNo": 15,
-      "sourceFingerprint": "ebb795598a2b34678d2c7be4fb30e451047ae0218984bd8140746aed91669e0c",
-      "contentFingerprint": "d1228e02b7d435394b091a0cdbdc21afe5b45e879b47e0dbab67d76578879aa0",
+      "sourceFingerprint": "eeb3c8e43d2fe959bcfded53148a55c8e078c8cac92556a863848d76b887fbc1",
+      "contentFingerprint": "8e42728f2c86e08e415ec0968388a6ae9f32901bc4615e695c8a37f255ba1f8d",
       "standardCourse": "중1 수학",
       "standardUnitKey": "M1-05",
       "standardUnit": "기본도형",
@@ -1320361,11 +1320957,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 1,
       "level": "하",
@@ -1325368,7 +1325966,7 @@
       "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
       "sourceOrdinal": 18,
       "sourceQuestionNo": "18",
-      "sourceFingerprint": "d7d9153c8b62e0c74d77debfc3e09c9390066f4e321da3515fc3259bc5116dd1",
+      "sourceFingerprint": "f30322e09ed3a4b5ffb2d2ef8f186ef9b04318e64ae00f07ea03f2043c4d4059",
       "contentFingerprint": "4e6dd122cd1a47f910df6927b64c9027ffcfd196e529a734d9df4d61a1d6ec67",
       "standardCourse": "중2 수학",
       "standardUnitKey": "M2-04",
@@ -1325376,27 +1325974,69 @@
       "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
       "subUnit": "일차함수와 일차방정식의 관계",
       "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
-      "problemTypeKey": "LINEAR_FUNCTION_FIND_EQUATION",
-      "templateKey": "LINEAR_FUNCTION_TWO_POINTS",
+      "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+      "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
       "difficultyBucket": 3,
-      "tagConfidence": "high",
-      "tagStatus": "approved_semantic_review",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
       "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "approved_semantic_review",
-        "problemType": "approved_semantic_review",
-        "template": "approved_semantic_review",
-        "difficulty": "approved_source"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "archive-metadata-v1-phase1b-20260825",
+      "metadataRevision": "meta-foundation:MIDDLE2@1.0.8:exam-final_qa-v2:middle-audit-repair-34c2-m2-e035-q18",
       "approvalEvidence": [
-        "archive/_generated/intelligence/phase1/pilot/review/medium-batch-4-semantic-review.json"
+        "archive/_generated/intelligence/phase1/pilot/review/medium-batch-4-semantic-review.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18.json"
       ],
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "curriculum": "2015",
+      "courseKey": "M2-1",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "level": "상",
+      "primaryMethod": "선분과 직선 교점의 허용구간 확인",
+      "decisiveStep": "교점 x=12/(a+1)이4≤x≤8인지 각 후보를 판정한다.",
+      "rpmPrimaryId": "M2-RPM-059",
+      "rpmPrimaryPath": {
+        "majorUnit": "일차함수",
+        "midUnit": "일차함수와 일차방정식의 관계",
+        "l3": "그래프 활용",
+        "l4": "조건에 따른 식 결정"
+      },
+      "rpmL1": "일차함수",
+      "rpmL2": "일차함수와 일차방정식의 관계",
+      "rpmL3": "그래프 활용",
+      "rpmL4": "조건에 따른 식 결정",
+      "curriculumKey": "2015",
+      "L1": "일차함수",
+      "L2": "일차함수와 일차방정식의 관계",
+      "L3": "직선의 교점과 위치 조건",
+      "L4": "직선이 선분과 만나는 조건",
+      "reviewStatus": "reviewed_pass",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE2",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_dae35d92d3eb8930a39d6e1cfd9212e6be505f38c2ae564dc318a6a21030574e",
@@ -1357968,7 +1358608,7 @@
       "conceptClusterKey": "M2-01-EXPONENT_LAW",
       "problemTypeKey": "",
       "templateKey": "",
-      "difficultyBucket": "",
+      "difficultyBucket": 2,
       "tagConfidence": "candidate_evidence",
       "tagStatus": "approved_subunit_concept_partial",
       "metadataStatus": "approved_partial_with_explicit_holds",
@@ -1357983,7 +1358623,10 @@
       "metadataRevision": "archive-metadata-v1-phase1b-20260825",
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
-      ]
+      ],
+      "difficultyConfidence": "low",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "questionUid": "qid_v1_e0543a83b8d6eede760d3fa3eff57a4f79e46dd5125989b82abfa35fccf995b8",
@@ -1360376,11 +1361019,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 3,
       "level": "중",
@@ -1367601,40 +1368246,66 @@
       "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 3,
       "sourceQuestionNo": 3,
-      "sourceFingerprint": "3e1b20f19347c336c2988935cbf5022968e78371a5c440f876520d35b64e67c7",
-      "contentFingerprint": "34ae372cc9f6ab2a12d475d194b35502ead195b2d639f62351ed0f18b1a01129",
+      "sourceFingerprint": "112f56184a37ad040a90ef6749023e67e71823363c3a65d3f76e6fbc83469441",
+      "contentFingerprint": "0591aef3e00f9878d09f853e65df3d9b58f666c0530c47aa8e4b24ed86e85507",
       "standardCourse": "중3 수학",
       "standardUnitKey": "M3-05",
       "standardUnit": "삼각비",
       "subUnitKey": "M3-05-TRIG_RATIO",
       "subUnit": "삼각비",
-      "conceptClusterKey": "",
+      "conceptClusterKey": "TRIG_RATIO",
       "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "crossConceptKeys": [],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "",
-      "tagConfidence": "review_required",
-      "tagStatus": "review_required",
-      "reviewStatus": "review_required",
-      "metadataStatus": "registration_pending_semantic_review",
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "manual_review_pending",
-        "problemType": "manual_review_pending",
-        "template": "manual_review_pending",
-        "difficulty": "manual_review_pending"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "archive-registration-sync-v1",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e066-public-renderer9-26fc-20261115",
       "approvalEvidence": [
-        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-public-renderer9-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-public-renderer9-26fc-20261115.renderer-binding.json"
       ],
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "NORMAL"
+      "difficultyBucket": 1,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "level": "중",
+      "primaryMethod": "삼각형 내각합으로 직각을 확인하고 특수각의 탄젠트로 AC를 직접 구한다.",
+      "decisiveStep": "B=30°,C=60°이므로 A=90°이고 AC=AB tan30°=4√3/3이다.",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "삼각비",
+      "L2": "삼각비",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비로 직접 길이·높이·거리 구하기",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.8",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_e1c36a92c85f8e9e2ddbfd521b46f06022e9afd87e44a23065331c89ed32afea",
@@ -1371621,7 +1372292,7 @@
       "L3": "원과 직선",
       "L4": "현의 수직이등분선",
       "reviewStatus": "reviewed_pass",
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-current11-existing8-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-preserve8-tag-transport-26fc-20261115",
       "metadataApprovalType": "FINAL_QA",
       "foundationTaxonomyStatus": "CONFIRMED",
       "projectionStatus": "REUSE",
@@ -1371635,7 +1372306,8 @@
       "defaultSelectable": true,
       "approvalEvidence": [
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-preserve8-tag-transport-26fc-20261115.json"
       ]
     },
     {
@@ -1383018,11 +1383690,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 3,
       "level": "중",
@@ -1384817,7 +1385491,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "STRONG_CONFLICT"
     },
     {
       "questionUid": "qid_v1_e4f8695e8d36958ddac15c243fd14a5a784357a6f1cabc3f6b6d8e558473c593",
@@ -1414231,7 +1414909,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "questionUid": "qid_v1_e92a2925e3e17d4e9a8720cec525d972a4efe8bd5c25317876058ff27613f7fd",
@@ -1510426,11 +1511108,12 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-q15-renderer-prior9-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.5:exam-final_qa-v2:m3s2-e066-preserve-public-renderer9-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-q15-renderer-prior9-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e066-preserve-public-renderer9-26fc-20261115.json"
       ],
       "difficultyBucket": 2,
       "difficultyConfidence": "medium",
@@ -1518989,7 +1519672,11 @@
       "metadataRevision": "archive-registration-sync-v1",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
-      ]
+      ],
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "questionUid": "qid_v1_fa497545571a7c50379f9d66d01e17fc5e68750fc5c41ba3dbe8efc9716cdc97",
@@ -1523186,11 +1523873,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 2,
       "level": "하",
@@ -1533924,8 +1534613,8 @@
       "subUnitKey": "M2-02-LINEAR_INEQUALITY",
       "subUnit": "일차부등식",
       "conceptClusterKey": "LINEAR_INEQUALITY",
-      "problemTypeKey": "LINEAR_INEQUALITY_SOLVE",
-      "templateKey": "LINEAR_INEQUALITY_BASIC_TRANSFORM",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
       "difficultyBucket": 1,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "B12",
@@ -1533933,24 +1534622,60 @@
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "NONE",
-      "tagConfidence": "candidate_evidence",
-      "tagStatus": "",
-      "metadataStatus": "approved_source",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
       "fieldStatus": {
-        "standardUnit": "approved_source",
-        "subUnit": "approved_source",
-        "concept": "approved_source",
-        "problemType": "approved_source",
-        "template": "approved_source",
-        "difficulty": "approved_source"
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "archive-registration-target-source-projection-v1",
+      "metadataRevision": "meta-foundation:MIDDLE2@1.0.7:exam-final_qa-v2:middle-audit-repair-34c2-m2-e007-q17",
       "approvalEvidence": [
-        "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.evidence.final.r1_09.revision2.json"
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.evidence.final.r1_09.revision2.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json"
       ],
       "subUnitConfidence": "candidate_evidence",
       "subUnitClassificationDepth": "complete_candidate",
-      "reviewStatus": "pending"
+      "reviewStatus": "reviewed_pass",
+      "curriculum": "2022",
+      "courseKey": "M2-1",
+      "level": "하",
+      "primaryMethod": "부등식동치와음수곱의부등호반전판정",
+      "decisiveStep": "a<b로돌린뒤-3곱하면방향이>로바뀜.",
+      "rpmPrimaryId": "M2-RPM-136",
+      "rpmPrimaryPath": {
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식",
+        "l3": "부등식의 성질",
+        "l4": "부등식의 성질"
+      },
+      "rpmL1": "일차부등식",
+      "rpmL2": "일차부등식",
+      "rpmL3": "부등식의 성질",
+      "rpmL4": "부등식의 성질",
+      "curriculumKey": "2022",
+      "L1": "일차부등식",
+      "L2": "일차부등식",
+      "L3": "부등식 성질 적용의 옳고 그름 판별",
+      "L4": "부등식 변형 성질 검증 절차",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE2",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
     },
     {
       "questionUid": "qid_v1_fc8494d2d3c8f6f9fed3f82a292bda3ea760c49e021b13f8aec8b7f677581b4b",
@@ -1536799,7 +1537524,7 @@
       "L3": "원과 직선",
       "L4": "현의 수직이등분선",
       "reviewStatus": "reviewed_pass",
-      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-current11-existing8-preserve-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.8:exam-final_qa-v2:m3s2-e064-preserve8-tag-transport-26fc-20261115",
       "metadataApprovalType": "FINAL_QA",
       "foundationTaxonomyStatus": "CONFIRMED",
       "projectionStatus": "REUSE",
@@ -1536813,7 +1537538,8 @@
       "defaultSelectable": true,
       "approvalEvidence": [
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-release-20261115.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-current11-existing8-preserve-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e064-preserve8-tag-transport-26fc-20261115.json"
       ]
     },
     {
@@ -1552898,11 +1553624,13 @@
         "condition": "approved_final_qa",
         "integrationPattern": "approved_final_qa"
       },
-      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-native-difficulty-rebind-20261115",
+      "metadataRevision": "meta-foundation:MIDDLE1@1.0.10:exam-final_qa-v2:m1s2-wangun26-full23-renderer-preserve-26fc-20261115",
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
         "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1-wangun-2026-mid-meta-review-20261113.json",
-        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json"
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-native-difficulty-rebind-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m1s2-wangun26-full23-renderer-preserve-26fc-20261115.approved-renderer-preservation.json"
       ],
       "difficultyBucket": 4,
       "level": "상",
@@ -1554562,5 +1555290,5 @@
       "archive/data/r2e-intake/m3/23_풍덕중_1학기_중간_중3_기출.meta-review2.meta-v2.payload.json"
     ]
   },
-  "digest": "73edda94f28918a8cce979071bb5445638398dca56d8e2e6e66bf9fdf34dff2d"
+  "digest": "1af2f58590622f41eaaa828479c7b17b89958ef7640bc502fa7900a528127d7c"
 }
