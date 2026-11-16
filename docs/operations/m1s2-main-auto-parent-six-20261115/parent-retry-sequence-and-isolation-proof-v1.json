@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "m1s2-exact-six-parent-retry-prior-producer-and-isolation-v1",
+  "status": "PASS",
+  "priorProducerEvidence": {
+    "path": "ci-recovery/authority-correction11-aa3789/consumer-fixture/archive/data/question_metadata.json",
+    "sha256": "213e286dcf670e8eef3d363a50cd0a10d07ee3f2aa3268bf43c39ca7622d06c2",
+    "actualChangedRowsReused": 11
+  },
+  "selectedRowCasUnchanged": true,
+  "globalMetadataFileChanged": true,
+  "globalMetadataBeforeSha256": "af62e59e7e4f590eb5081ad9f2de339df4c523d351a8a9cbe0728bf72da60886",
+  "metadataAfterPriorRowsSha256": "fe399fcbd8c8d397b05711cf671f55ddebdb9dc82aae8b13ed22973ebd341554",
+  "officialDryAfterPriorOutputs": {
+    "selected": 6,
+    "apply": 6,
+    "remaining40Selected": 0,
+    "m3s1Selected": 0
+  },
+  "oneSelectedRowDrift": {
+    "rejected": true,
+    "wholeBatchAborted": true,
+    "metadataWrites": 0,
+    "identityWrites": 0,
+    "runtimeWrites": 0,
+    "stateWrites": 0,
+    "receiptFilesCreated": 0
+  },
+  "limitation": "Reuses real prior producer output rows; the full B88 integrated writer remains a required main/PR CI gate."
+}

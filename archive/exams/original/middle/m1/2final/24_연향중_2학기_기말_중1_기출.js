@@ -724,7 +724,9 @@ window.questionBank = [
         "도형"
       ],
       "wide": false,
-      "image": "assets/images/24_연향중_2학기_기말_중1_기출/q14.png",
+      "image": "assets/images/24_연향중_2학기_기말_중1_기출/q14-problem-geometry-20261116.svg",
+      "imageSize": "full",
+      "imageAlt": "원뿔 모양 컵 A는 입구의 반지름이 20 cm이고 높이가 9 cm이다. 컵 B는 반지름이 10 cm이고 높이가 18 cm이다.",
       "content": "다음 두 종류의 컵 A, B가 있다. 다음 설명 중 옳은 것을 고르면?[4점]",
       "choices": [
         "컵 A에 담을 수 있는 물의 양이 컵 B보다 $3$배 많다.",
@@ -738,7 +740,7 @@ window.questionBank = [
       "subUnit": "입체도형의 측정",
       "subUnitConfidence": "rule_inferred",
       "subUnitClassificationDepth": "complete_rule",
-      "solution": "두 컵은 모두 원뿔 모양이므로 $\\dfrac13\\pi r^2h$에서 $r^2h$만 비교해도 된다.\n\n컵 A는 지름이 $20\\rm\\,cm$이므로 반지름이 $10\\rm\\,cm$이고 높이가 $9\\rm\\,cm$이다.\n\n$10^2\\times9=900$\n\n컵 B는 지름이 $10\\rm\\,cm$이므로 반지름이 $5\\rm\\,cm$이고 높이가 $18\\rm\\,cm$이다.\n\n$5^2\\times18=450$\n\n$900:450=2:1$\n\n따라서 컵 A에 담을 수 있는 물의 양은 컵 B의 $2$배이므로 정답은 ②이다.",
+      "solution": "두 컵은 모두 원뿔 모양이다. 부피 공식 $\\dfrac13\\pi r^2h$에서 $\\dfrac13\\pi$는 같으므로 $r^2h$를 비교한다.\n\n컵 A의 입구 반지름은 $20\\rm\\,cm$이고 높이는 $9\\rm\\,cm$이다.\n\n$20^2\\times9=3600$\n\n컵 B의 입구 반지름은 $10\\rm\\,cm$이고 높이는 $18\\rm\\,cm$이다.\n\n$10^2\\times18=1800$\n\n$3600:1800=2:1$\n\n따라서 컵 A에 담을 수 있는 물의 양은 컵 B의 $2$배이므로 정답은 ②이다.",
       "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
       "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
       "crossConceptKeys": [],
@@ -752,10 +754,10 @@ window.questionBank = [
       "l4Disposition": "ASSIGNED",
       "resolverEvidenceSha": "sha256:08ccce0abec0839f421af9a15b57d5ea694404784fe3366e35fc9836325a9bc4",
       "difficultyEvidenceSha": "sha256:c1f1deca08ec259162cdcecd1c13d845123c7d5a8f13ab931fbf620f0b2b131a",
-      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q14-solution.svg",
-      "solutionImageAlt": "해설 그림: 컵 A와 컵 B를 나란히 그린 원뿔 그림이다. 컵 A는 반지름 10, 높이 9, 컵 B는 반지름 5, 높이 18로 표시되어 있고 각 컵 위 글에 길이 단위가 cm라고 적혀 있다.",
-      "solutionImageCaption": "컵 A와 컵 B는 모두 원뿔 모양이고, 각 컵의 반지름과 높이를 cm 단위로 나타낸다.",
-      "solutionImageSize": "medium",
+      "solutionImage": "assets/images/24_연향중_2학기_기말_중1_기출/q14-problem-geometry-20261116.svg",
+      "solutionImageAlt": "원뿔 모양 컵 A는 입구의 반지름이 20 cm이고 높이가 9 cm이다. 컵 B는 반지름이 10 cm이고 높이가 18 cm이다.",
+      "solutionImageCaption": "두 컵은 원뿔 모양이다. 입구의 반지름은 A가 20 cm, B가 10 cm이고 높이는 각각 9 cm, 18 cm이다.",
+      "solutionImageSize": "full",
       "rpmPrimaryRecordId": "M1-RPM-103",
       "rpmPrimaryPath": {
         "majorUnit": "입체도형",
@@ -949,8 +951,10 @@ window.questionBank = [
         "그래프"
       ],
       "wide": false,
-      "image": "assets/images/24_연향중_2학기_기말_중1_기출/q18.png",
-      "content": "다음 그림은 남학생 $200$명과 여학생 $150$명의 일주일 동안 독서 시간을 조사하여 상대도수의 분포를 그래프로 나타낸 것이다. 보기 중 옳은 것을 모두 고른 것은?[4점]",
+      "image": "assets/images/24_연향중_2학기_기말_중1_기출/q18-problem-geometry-20261116.svg",
+      "imageSize": "full",
+      "imageAlt": "남학생과 여학생의 독서 시간에 대한 상대도수분포다각형",
+      "content": "다음 그림은 남학생 $200$명과 여학생 $150$명의 일주일 동안 독서 시간을 조사하여 상대도수의 분포를 그래프로 나타낸 것이다. 보기 중 옳은 것을 모두 고른 것은?[4점]\n\n<div class=\"question-note-box\"><b>보기</b><br>ㄱ. 여학생 중에서 도수가 가장 큰 계급은 $5$시간 이상 $7$시간 미만이다.<br>ㄴ. 독서 시간이 $7$시간 이상 $9$시간 미만인 학생은 여학생이 남학생보다 적다.<br>ㄷ. 여학생이 남학생보다 독서 시간이 많은 편이다.</div>",
       "choices": [
         "ㄱ",
         "ㄴ",

@@ -2,9 +2,9 @@
 
 This renamed font contains exactly U+24B6–U+24E9: 26 uppercase and 26 lowercase
 enclosed Latin letters. It adds no other Unicode coverage. The existing
-`mathjax-tex` math font remains in use; characters absent from that font use
-`AP Enclosed Latin, serif`, with the previous `serif` fallback retained for
-characters outside this subset.
+`mathjax-tex` math font and its default `serif` fallback remain in use. The
+engine adds `AP Enclosed Latin` to individual enclosed-Latin runs in CHTML
+unknown text, preserving the surrounding fallback markup for other characters.
 
 The 5,100-byte WOFF2 is a subset of **Noto Sans CJK KR Regular**, face index 1 in
 `NotoSansCJK-Regular.ttc` version 2.004. The original TTC SHA-256 is
@@ -38,19 +38,19 @@ preparation successful. The wait is bounded at 5,000 ms. This avoids recording
 a missing glyph's zero width in MathJax's unknown-character measurement cache.
 
 The existing general MathJax loader still continues on its historical failure
-paths. For the named `AP Enclosed Latin, serif` configuration and actual
-U+24B6–U+24E9 input only, both the shared render loop and the engine's direct
-fallback recheck the startup promise before calling `typesetPromise`. Thus a
-font rejection caught by the general loader cannot reach the first enclosed
-glyph measurement. Ordinary math, other unknown characters and other font
-configurations retain their existing continuation behavior.
+paths. For the engine's enclosed-Latin startup hook and actual U+24B6–U+24E9
+input only, both the shared render loop and the engine's direct fallback recheck
+the startup promise before calling `typesetPromise`. The promise also ensures
+the scoped CHTML hook is available before the first enclosed-glyph measurement.
+Other input and other startup configurations retain their existing continuation
+behavior.
 
 ## Verification boundary
 
 `node --test tests/archive-mathjax-enclosed-latin-font.test.cjs` decodes the
 shipped WOFF2 cmap and horizontal metrics, checks exact coverage and hashes,
 executes the production startup hook with a fake clock, and checks the
-vendored MathJax default-variant family mapping. It also connects the actual
+vendored MathJax default fallback and mixed-run markup. It also connects the actual
 general loader, shared loop and direct engine caller to test failure before
 measurement. These are code and font-byte
 checks. Actual Chrome rendering and independent screenshot review remain
