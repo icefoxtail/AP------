@@ -1,0 +1,366 @@
+{
+  "schemaVersion": "archive-m3s2-condition-definition-proposal-for-independent-review-v1",
+  "status": "AUTHOR_DRAFT_PENDING_INDEPENDENT_REVIEW",
+  "reviewInputRef": {
+    "path": "review-inputs.json",
+    "sha256": "645462ec59bb8c7eabb27a03f682e5966b352ab36097edfe0d967b0f2ea711eb"
+  },
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "collection": "conditions",
+      "match": {
+        "conditionKey": "COND_EXCLUDED_ANGLE_VALUE"
+      },
+      "before": null,
+      "after": {
+        "conditionKey": "COND_EXCLUDED_ANGLE_VALUE",
+        "canonicalLabelKo": "특정 예각 값 제외",
+        "definition": "문제에서 특정 예각 값을 제외하도록 명시하여, 그 각에서 서로 다른 삼각비 표현이 같은 값을 갖는 경우를 배제하는 조건.",
+        "aliases": [],
+        "owner": "CONDITION_CORE",
+        "status": "ACTIVE",
+        "sourceEligibility": "ORIGINAL_EXAM",
+        "supportingQuestionUids": [
+          "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74"
+        ],
+        "supportingItemCount": 1,
+        "evidenceProvenance": [
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+            "sourceOrdinal": 8,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.meta.json",
+              "sha256": "7a004835db2114441128e72e14b695aec173eb690e0ca7fd2cea9cb06e99bcd9"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E001.proposals.json",
+              "sha256": "3bfceaeaccaaa79e8b06912de334d13920ea4cc4ff05cf3b9195c6cb88f6e3e4"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+            "currentSourceRawSha256": "616a36936b61a7885e83b4c0702a09006f759819bc8abb03e23b6455672dba98"
+          }
+        ]
+      }
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "collection": "conditions",
+      "match": {
+        "conditionKey": "COND_SPECIFIED_APPROXIMATIONS"
+      },
+      "before": null,
+      "after": {
+        "conditionKey": "COND_SPECIFIED_APPROXIMATIONS",
+        "canonicalLabelKo": "지정된 근삿값 사용",
+        "definition": "계산에 사용할 근삿값이 문제에서 지정되어 있어 실제 정확값이나 다른 반올림값 대신 그 수치로 계산해야 한다.",
+        "aliases": [],
+        "owner": "CONDITION_CORE",
+        "status": "ACTIVE",
+        "sourceEligibility": "ORIGINAL_EXAM",
+        "supportingQuestionUids": [
+          "qid_v1_3b4595999c22c82e40420fa1d0d09f36072fd9c9c779ef54e115324d30a86c5b",
+          "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c"
+        ],
+        "supportingItemCount": 2,
+        "evidenceProvenance": [
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_3b4595999c22c82e40420fa1d0d09f36072fd9c9c779ef54e115324d30a86c5b",
+            "sourceOrdinal": 9,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+              "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+              "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+            "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+          },
+          {
+            "source": "NARROW_NATIVE_PROPOSAL_FINALIZATION",
+            "questionUid": "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c",
+            "sourceOrdinal": 10,
+            "nativeReviewRef": {
+              "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.meta.json",
+              "sha256": "55d168e5abb7167d55714f6039997e659e926d0b8151e5d66e3c55f5c9ad282d"
+            },
+            "nativeProposalDocumentRef": {
+              "path": "docs/operations/m3-s2-meta-full-20261114/exams/E011.proposals.json",
+              "sha256": "5db32bc88b70f2789f08439895472357cd1c33b68b697429494b7ba86f6819d1"
+            },
+            "currentSourceCommit": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+            "currentSourcePath": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+            "currentSourceRawSha256": "289411e10d59d426e14be9314706e97324cb40b9389b2574ebc4c436e49b378f"
+          }
+        ]
+      }
+    }
+  ],
+  "globalActiveSearch": {
+    "main": "b3c8b655591d21c10a7a32ffe2525b4503f012fc",
+    "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+    "sha256": "3dacd35e12f9c49283f7c14f8aa99c61dba1cb9ac14b5e86dee9d2a80d452208",
+    "activeCount": 57,
+    "allActiveDefinitions": [
+      {
+        "key": "COND_INTEGER",
+        "definition": "값이 정수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우."
+      },
+      {
+        "key": "COND_NATURAL_NUMBER",
+        "definition": "값이 자연수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우."
+      },
+      {
+        "key": "COND_POSITIVE",
+        "definition": "값이 0보다 커야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우."
+      },
+      {
+        "key": "COND_NEGATIVE",
+        "definition": "값이 0보다 작아야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우."
+      },
+      {
+        "key": "COND_RANGE",
+        "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우."
+      },
+      {
+        "key": "COND_NONZERO",
+        "definition": "0 배제 조건이 정의·비퇴화·해 선택 또는 개수 판정에 필요한 경우."
+      },
+      {
+        "key": "COND_FUNCTION_TYPE_RESTRICTION",
+        "definition": "항등함수·상수함수처럼 함수의 유형 자체가 주어져 가능한 함수값이나 관계를 제한하는 경우."
+      },
+      {
+        "key": "COND_FUNCTION_VALUE_CONSTRAINT",
+        "definition": "특정 정의역 입력에서의 함숫값 등식 또는 부등식이 함수나 매개변수의 허용값을 제한하는 경우."
+      },
+      {
+        "key": "COND_POLYNOMIAL_DEGREE_ONE",
+        "definition": "다항식의 차수가 1이어야 한다는 제한이 나머지·계수 관계를 결정하는 경우."
+      },
+      {
+        "key": "COND_CONSECUTIVE_GROUPING",
+        "definition": "지정된 사람이나 물건이 순열의 한 연속 블록으로 함께 배치되어야 하는 경우."
+      },
+      {
+        "key": "COND_MINIMUM_CATEGORY_COUNTS",
+        "definition": "선택 결과가 복수 범주에서 각각 지정된 최소 인원을 포함해야 하는 경우."
+      },
+      {
+        "key": "COND_FUNCTION_BIJECTION",
+        "definition": "함수가 일대일이며 공역 전체를 치역으로 가져야 하거나, 역함수가 존재해야 하는 경우."
+      },
+      {
+        "key": "COND_ITERATION_COUNT",
+        "definition": "같은 함수·변환을 적용하는 횟수가 지정되어 주기 또는 마지막 상태를 결정하는 경우."
+      },
+      {
+        "key": "COND_DISTINCT_CATEGORY_SELECTION",
+        "definition": "서로 다른 사람의 선택이 같은 범주·종류에 속하지 않아야 하는 경우."
+      },
+      {
+        "key": "COND_NONEMPTY_SELECTION",
+        "definition": "선택하는 항목이 1개 이상이어야 하며 빈 선택은 허용되지 않는 경우."
+      },
+      {
+        "key": "COND_DISTINCT_DIGITS",
+        "definition": "만드는 수에서 지정된 자릿수의 숫자들이 서로 달라야 하는 경우."
+      },
+      {
+        "key": "COND_DIVISIBILITY",
+        "definition": "어떤 수나 자릿수 합이 지정된 정수의 배수여야 하는 경우."
+      },
+      {
+        "key": "COND_FUNCTION_INJECTIVE",
+        "definition": "서로 다른 정의역 입력이 서로 다른 함숫값을 가져야 하는 경우."
+      },
+      {
+        "key": "COND_UNIVERSAL_INPUTS",
+        "definition": "함수 관계식이나 성질이 허용된 모든 입력값에 대하여 성립해야 하는 경우."
+      },
+      {
+        "key": "COND_STRICT_MONOTONE_VALUES",
+        "definition": "지정된 입력 순서에 대해 함숫값 또는 수열 항들이 엄격히 증가해야 하는 경우."
+      },
+      {
+        "key": "COND_ENDPOINT_SUM_ZERO",
+        "definition": "정의역의 양 끝점에 해당하는 두 함숫값의 합이 0 또는 지정된 값이어야 하는 경우."
+      },
+      {
+        "key": "COND_PIECEWISE_DOMAIN_PARTITION",
+        "definition": "함수의 서로 다른 식이 경계값을 기준으로 분리된 구간에서 각각 적용되는 경우."
+      },
+      {
+        "key": "COND_PARITY_POSITION",
+        "definition": "수의 지정된 자릿수가 홀수 또는 짝수여야 하는 경우."
+      },
+      {
+        "key": "COND_NO_ADJACENT_EVEN",
+        "definition": "배열된 숫자에서 짝수인 두 숫자가 이웃한 자리에 놓이지 않아야 하는 경우."
+      },
+      {
+        "key": "COND_PAIRWISE_DISTINCT_POINTS",
+        "definition": "서로 다른 점들이 같은 위치에 겹치지 않아야 하며, 한 점 일치로 인해 공선성 조건의 판정이 달라지는 경우."
+      },
+      {
+        "key": "COND_ADJACENT_REGIONS_DIFFERENT_COLOR",
+        "definition": "영역 인접 그래프에서 변으로 연결된 두 영역은 서로 다른 색을 받아야 하며, 서로 인접하지 않은 영역은 색을 공유할 수 있는 색칠 제한."
+      },
+      {
+        "key": "COND_STRICT_SELECTED_VALUE_SUM_COMPARISON",
+        "definition": "선택한 여러 함숫값의 합이 지정한 기준 함숫값의 배수 또는 다른 수량을 엄격히 초과하거나 밑돌아 허용 배치를 제한하는 경우."
+      },
+      {
+        "key": "COND_AT_MOST_ONE_DISTINGUISHED_CLASS_PER_GRID_LINE",
+        "definition": "격자 칸에 수를 배치할 때, 지정된 수의 부분집합(예: 3의 배수)이 각 가로줄·세로줄·명시된 대각선마다 최대 한 칸만 차지해야 하는 경우."
+      },
+      {
+        "key": "COND_SPECIFIED_ITEMS_AT_BOTH_ENDPOINTS",
+        "definition": "선형 배열에서 지정된 대상·기호 또는 범주의 선택된 원소가 첫째와 마지막 자리를 차지해야 하며, 두 끝자리의 순서는 별도 제한이 없을 수 있는 조건."
+      },
+      {
+        "key": "COND_NO_ADJACENT_SELECTED_SYMBOLS",
+        "definition": "문자열·배열에서 반복 출현하는 동일한 지정 기호가 서로 이웃한 두 자리를 동시에 차지하지 않아야 하는 조건이다. 서로 다른 지정 기호끼리의 인접은 허용될 수 있다."
+      },
+      {
+        "key": "COND_FIRST_LAST_SYMBOL_DEPENDENCY",
+        "definition": "선형 배열의 첫째 자리 기호에 따라 마지막 자리 기호가 정해지거나 금지되는 조건부 끝자리 관계."
+      },
+      {
+        "key": "COND_DISTINCT_ARRIVAL_TIMES",
+        "definition": "여러 사람·사건의 도착 시각이 서로 달라 동시 발생 없이 순서가 엄격히 정해지는 조건."
+      },
+      {
+        "key": "COND_EXACTLY_ONE_ADJACENT_FUNCTION_VALUE_DIFFERENCE",
+        "definition": "유한한 순서 정의역에서 인접 입력 n,n+1 중 정확히 한 쌍만 지정된 방향·크기의 함숫값 차 f(n+1)-f(n)을 가져야 하는 조건."
+      },
+      {
+        "key": "COND_NO_THREE_COLLINEAR_POINTS",
+        "definition": "주어진 점 집합에서 임의의 세 점을 골라도 한 직선 위에 놓이지 않아 각 3개 선택이 삼각형 하나를 이룬다는 조건."
+      },
+      {
+        "key": "COND_COPRIME_TO_FIXED_INTEGER",
+        "definition": "각 허용 정수 x가 지정된 고정 정수 d와 서로소(gcd(x,d)=1)여야 하는 조건."
+      },
+      {
+        "key": "COND_NON_COPRIME_TO_FIXED_INTEGER",
+        "definition": "각 허용 정수 x가 지정된 고정 정수 d와 서로소가 아니어야(gcd(x,d)>1) 하는 조건."
+      },
+      {
+        "key": "COND_ODD_SELECTED_SUM",
+        "definition": "선택된 수들의 합이 홀수여야 하며, 선택 개수의 홀짝이 허용 부분집합을 제한하는 조건."
+      },
+      {
+        "key": "COND_EXACTLY_N_INPUTS_SATISFY_FUNCTION_RELATION",
+        "definition": "함수 정의역에서 지정된 관계 R(a,f(a))를 만족하는 입력 a의 개수가 정확히 n이어야 하는 조건."
+      },
+      {
+        "key": "COND_UNIVERSAL_FUNCTION_VALUE_DISTANCE",
+        "definition": "허용된 모든 입력 x에 대해 |f(x)-g(x)|가 지정된 양의 거리 이상이어야 하는 조건."
+      },
+      {
+        "key": "COND_EXACT_INTERSECTION_COUNT",
+        "definition": "두 도형·그래프의 교집합 또는 교점이 정확히 n개여야 매개변수 범위를 결정하는 조건."
+      },
+      {
+        "key": "COND_NO_FIXED_POINTS",
+        "definition": "유한집합의 순열·전단사에서 어떤 입력도 자기 자신으로 대응하지 않아야 하는 조건(derangement)."
+      },
+      {
+        "key": "COND_PRIME_DIGITS_AT_SPECIFIED_POSITIONS",
+        "definition": "정수 표기의 지정된 자리들이 소수인 숫자여야 하는 조건."
+      },
+      {
+        "key": "COND_AT_LEAST_N_PRIME_DIGITS",
+        "definition": "정해진 수의 서로 다른 숫자 선택·배열에서 소수 숫자 자릿수가 최소 n개 이상이어야 하는 조건."
+      },
+      {
+        "key": "COND_EDGE_RESTRICTIONS",
+        "definition": "나열한 대상의 양끝에 지정된 종류의 대상이 오도록 하는 제한을 배열의 경우의 수에 반영한다."
+      },
+      {
+        "key": "COND_FREQUENCY_CONSTRAINTS",
+        "definition": "각 대상별로 허용되는 선택 횟수가 정해져 있어 그 횟수 조건에 맞는 구성과 배열만 센다."
+      },
+      {
+        "key": "COND_UPPER_BOUND",
+        "definition": "선택 개수 또는 변수의 값이 제시된 상한을 넘지 않아야 한다."
+      },
+      {
+        "key": "COND_LOWER_BOUND",
+        "definition": "선택 개수 또는 변수의 값이 제시된 하한 이상이어야 한다."
+      },
+      {
+        "key": "COND_NO_CONSECUTIVE_ELEMENTS",
+        "definition": "선택한 정수 번호 중 연속된 두 번호가 함께 포함되지 않아야 한다."
+      },
+      {
+        "key": "COND_INEQUALITY_CONSTRAINT",
+        "definition": "둘 이상의 변수 사이에 제시된 대소 관계를 만족하는 값만 해 또는 경우로 인정한다."
+      },
+      {
+        "key": "COND_DIGIT_SUM",
+        "definition": "각 자리 숫자의 합이 제시된 값과 같아야 한다."
+      },
+      {
+        "key": "COND_MONOTONIC_ORDER",
+        "definition": "입력값이 증가할 때 대응하는 함수값이 감소하지 않아야 한다는 순서 조건을 반영한다."
+      },
+      {
+        "key": "COND_NATURAL",
+        "definition": "값이 자연수(양의 정수)여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우."
+      },
+      {
+        "key": "COND_ODD",
+        "definition": "값이 홀수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우."
+      },
+      {
+        "key": "COND_RATIONAL",
+        "definition": "문자 또는 식의 값이 유리수 집합에 속하도록 제한하는 조건"
+      },
+      {
+        "key": "COND_RATIONAL_COEFFICIENTS",
+        "definition": "방정식의 지정된 계수들이 유리수 집합에 속한다는 조건"
+      },
+      {
+        "key": "COND_RESTRICTED_INTERVAL",
+        "definition": "변수가 문제에서 지정한 유한 구간 안에서만 변한다는 조건"
+      },
+      {
+        "key": "COND_TRIANGLE_SIDES",
+        "definition": "삼각형의 세 변 a,b,c는 양수이며 삼각부등식을 만족한다. 인수분해 후 나머지 인수가 양수임을 판정하는 데 사용한다."
+      }
+    ],
+    "exactKeyCollisions": [],
+    "nearestAndDistinctions": [
+      {
+        "key": "COND_NONZERO",
+        "distinction": "0을 배제하는 조건이며 특정한 비영 예각45° 배제와 다름."
+      },
+      {
+        "key": "COND_RANGE",
+        "distinction": "허용 구간/범위 조건으로서 지정된 수치 대입값을 고정하는 조건과 다르며 원 제안이 별도 특정각 제외를 명시."
+      },
+      {
+        "key": "COND_RESTRICTED_INTERVAL",
+        "distinction": "지정 유한구간의 제한이며 허용 구간 내부 한 각 값 제외와 구별."
+      }
+    ]
+  },
+  "scope": {
+    "newFullMathematicalQa": false,
+    "newReview2Claims": 0,
+    "newMetadataApprovals": 0,
+    "newDifficultyJudgments": 0,
+    "newSourceContentEdits": 0
+  }
+}
