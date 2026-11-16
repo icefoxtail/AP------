@@ -3,8 +3,10 @@
 // standard capture/font/lifecycle functions are reused. PR provenance is explicit.
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http'),vm=require('node:vm');
 const H=require('./check-reviewed-problem-renderer-browser.cjs');
+const Surface=require('./capture-m1s2-problem-surface.cjs');
 const {stable,sha256,gitBlob,createGitReader,checkedStudentFontRefs,studentFontResourcePath,createStudentRouteLifecycle,serveStudentFont,closeStudentContext,captureProblemTiles,readScreenshotArtifacts,assertScreenshotInventory,FONT_DIR,FONT_STYLESHEET}=H;
 const BASE_COMMIT='a66a389b96525f67e2868a000184039e08627e9f';
+const SURFACE_PATH='tools/capture-m1s2-problem-surface.cjs';
 const MANIFEST_PATH='tests/fixtures/archive-m1s2-problem-seven-ui.json',CHECKER_PATH='tools/check-m1s2-problem-seven-browser.cjs',SHARED_CHECKER_PATH='tools/check-reviewed-problem-renderer-browser.cjs';
 const MANIFEST_SHA='4047f77afefb607509904559a9a166b41a1dc85af849434963172ba7217617e6',CAPTURE_SHA='e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673',IDENTITY_PATH='archive/data/question_identity_map.json';
 const SCHEMA='archive-m1s2-problem-seven-github-ui-raw-v1',FONT_FAMILY='Nanum Myeongjo';
@@ -68,11 +70,11 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
   const inputs = preflight(reader, manifest);
   assert.equal(reader.ref(SHARED_CHECKER_PATH).sha256, CAPTURE_SHA, 'UI_CAPTURE_HELPER_DRIFT');
   const { refs: fontRefs, weights: fontWeights, licenseRef: fontLicenseRef } = checkedStudentFontRefs(reader);
-  const served = new Map(), mirrored = new Map(), studentFontResources = new Map(), failures = [], results = [];
+  const served = new Map(), mirrored = new Map(), studentFontResources = new Map(), failures = [], results = [], surfaceDiagnostics=[];
   let activeCase = null;
   fs.mkdirSync(out, { recursive: true });
   const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD', execution, checkoutCommit: reader.commit, baseCommit: BASE_COMMIT,
-    manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), captureHelperRef: reader.ref(SHARED_CHECKER_PATH), ...inputs,
+    manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), captureHelperRef: reader.ref(SHARED_CHECKER_PATH), surfaceHelperRef:reader.ref(SURFACE_PATH), ...inputs,
     mode: 'exam', studentReview: true, screenshotsScope: 'SELECTED_PROBLEM_ORIGINAL_SCROLL_TILES_ONLY', problemOnlyScreenshots: true,
     sourceOverlay: false, sourceOverlayCount: 0, sourceWrites: 0,
     solutionsOpened: false, productionCdnTest: false, assetTransport: 'EXACT_CHECKOUT_BYTES_FOR_DEFAULT_IMAGE_ORIGIN',
@@ -83,7 +85,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
     if (status === 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING') assertScreenshotInventory(results, screenshotArtifacts);
     const proof = { ...proofBase, status, ...(code ? { failureCode: code, activeCase } : {}), expectedLogicalCases: manifest.expectedCases,
       completedLogicalCases: results.length, screenshotArtifactCount: screenshotArtifacts.length, screenshotArtifacts,
-      results, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
+      results, surfaceDiagnostics, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
       studentFontResources: [...studentFontResources.values()], externalFontResources: [], failures };
     fs.writeFileSync(path.join(out, 'technical-proof.json'), JSON.stringify(proof, null, 2) + '\n');
     return proof;
@@ -203,7 +205,10 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           const box = target.locator('xpath=ancestor::div[contains(concat(" ",normalize-space(@class)," ")," q-box ")][1]');
           assert.equal(await box.count(), 1, 'UI_UNIQUE_PROBLEM_BOX');
           const screenshotPath = `${item.key}-${viewport.name}.png`;
-          const capture = await captureProblemTiles(page, target, path.join(out, screenshotPath));
+          const measuredSurface=await target.evaluate(Surface.measureM1ProblemCapture);
+          surfaceDiagnostics.push({key:item.key,questionUid:item.questionUid,sourceOrdinal:item.sourceOrdinal,viewport:viewport.name,surface:measuredSurface.surface});
+          Surface.assertSurfaceTopology(measuredSurface.surface);
+          const {capture,surface:surfaceStructure} = await Surface.captureM1ProblemTiles(page, target, path.join(out, screenshotPath));
           const geometry = await target.evaluate(image => {
             const box = image.closest('.q-box'), a = image.getBoundingClientRect(), b = box.getBoundingClientRect();
             return { naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
@@ -216,7 +221,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           const screenshots = capture.tiles.map(tile => { const bytes = fs.readFileSync(path.join(out, tile.filename));
             return { tileIndex: tile.tileIndex, path: tile.filename, sha256: sha256(bytes), bytes: bytes.length }; });
           results.push({ status: 'PASS', key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, viewport,
-            sourceRef: item.sourceRef, assetRef: item.assetRef, assetRefs:[item.assetRef], questionSha256:item.questionSha256, surface:'PROBLEM', mode:'exam', screenshots,
+            sourceRef: item.sourceRef, assetRef: item.assetRef, assetRefs:[item.assetRef], questionSha256:item.questionSha256, surface:'PROBLEM', surfaceStructure, mode:'exam', screenshots,
             technical: { ...technical, fontReadiness, fontResourceIds: [...fontState.fontResources.values()].sort() }, geometry, capture,
             visualReview: 'PENDING', pageErrors, requestFailures, externalRequests });
           activeCase = null;
@@ -238,7 +243,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
     assertScreenshotInventory(results, readScreenshotArtifacts(out));
     // Re-read all served and bound inputs after the screenshots. No cache can
     // turn a mutable working-tree file into immutable provenance.
-    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, inputs.identityRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
+    for (const ref of [proofBase.manifestRef, proofBase.checkerRef, proofBase.captureHelperRef, proofBase.surfaceHelperRef, inputs.identityRef, ...inputs.items.flatMap(row => [row.sourceRef, row.assetRef]), ...served.values(), ...mirrored.values()]) {
       assert.deepEqual(reader.ref(ref.path), ref, 'UI_INPUT_CHANGED_DURING_RUN');
     }
     return writeProof('TECHNICAL_PASS_VISUAL_REVIEW_PENDING');
