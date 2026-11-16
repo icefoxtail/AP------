@@ -1,6 +1,6 @@
 # TASK-10 중등 유형 직접 판정 진행 보고
 
-## 최신 원격 저장 상태
+## 이전 중3 checkpoint 상태 (아래 최신 통합 갱신 참조)
 
 - 결과 브랜치: `data/type-judgment-c-20261116`
 - 최신 결과 commit: `4bf51126abf4b9c71e0148939a13b353cff789da`
@@ -525,3 +525,814 @@
 - 중등 유사52시험지: m3 13 / m2 1 / m1 38. 원본과 다른 경로 집합이며 중복 계수하지 않았다. 결과 파일 이름 앞에는 similar-를 사용한다.
 - 중3 원본은90시험지 판독,108시험지 판독 잔여(중1·중2 별도 진행). 유사는 원본 후 이어간다.
 - 미게시 중3 기말28시험지 전송 해결, 중2 첫30시험지 수합, 중3 다음 시험지 직접 판독을 병행한다. 사용자 지정 결과·보고 브랜치의 중간 저장은 전체 문항 완료까지 승인되어 있다.
+
+
+## 최신 통합 갱신: 중2 첫35시험지 원격 보존
+
+- 결과 C HEAD: `f10a38c0f6f909eb7e2a8c8d3e74b6213e293f5e`. 직접 fetch하여 확인했다.
+- 원격 누적: 중3 62시험지1490문항 + 중2 35시험지821문항 = 97시험지2311문항. PICK1482 / NEW_KEY827 / HOLD2.
+- 이번 중2 checkpoint: PICK169 / NEW_KEY652 / HOLD0, check PASS93 / PT_ONLY25 / TOOL_ERROR703, ACTIVE·TPL상위·UID 직접검사 오류0.
+- 중2 담당이 `m2-1mid.jsonl` 28시험지655행, `m2-1final.jsonl` 7시험지166행만 게시했다. 담당의 local hash/원격 readback 일치 확인을 인계받았다. 판정 자체는 재검토하거나 변경하지 않았다.
+- 최신 소유 변경: 각 학년 담당이 자기 학년 결과 파일만 작성·게시한다. 공유 결과 C branch는 fresh HEAD 기반 expected_sha + force=false CAS로 서로 다른 파일 변경을 보존한다. TASK10 보고서는 중3 담당 단일 writer이다. 기존 단일 결과 writer 문구는 이 변경으로 대체한다.
+- 중3 직접 판독은92시험지2206문항(PICK1864 / NEW_KEY335 / HOLD7) 완료. 원격 미게시30시험지716문항 중28시험지670문항은 대형 기말 파일 전송 대기, 추가2시험지46문항은 다음 중간 checkpoint 대기이다. 저장 완료와 구분한다.
+- 대형 기말 blob `cf7a54b3fed876e3a47c2cebd76e00e2091183f2`은 create_tree inline 시도도60초 후 응답하지 않았고 SHA 조회404 확인. 해당 시도에서 commit/ref는 이동하지 않았다. 결과 파일 규격을 임의 분할하지 않았다.
+- 최신 계획 c60c944a의 QUEUE 전체 재독 및 FEEDBACK SHA256 동일 확인. 중3 원본 잔여106시험지, 이후 유사13시험지. 중1·중2 원본·유사는 각 담당 전담.
+- 91번째 신흥22중간25문항, 92번째 연향22중간21문항 모두 발문·선택지·해설·문제/해설 그림 직접 확인. 추가46문항 ACTIVE·TPL상위·UID 오류0, 도구상 INVALID는 의미판정과 분리하여 실제 check에 보존했다.
+
+## 중2 게시35시험지의 새 PT 제안 의미군
+
+- 담당이 게시821문항 중 NEW_KEY652건을 뜻이 같은 제안끼리163군으로 정리한 요약이다. 개별 판정 줄을 보며 재판정하지 않았으며 원격 결과는 변경하지 않았다.
+
+### 유리수와 소수의 포함관계 판별 — 27문항
+- 정의: 유리수는 유한소수 또는 순환소수로 표현됨을 이용해 모든 유리수가 유한소수라는 주장을 반박한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #2
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #5
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #1
+
+### 순환소수 분수화의 자리 이동 — 26문항
+- 정의: 비순환부와 순환마디 길이를 세어 1000x와 10x의 소수부를 일치시킨다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #4
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #1
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #20
+
+### 유한소수 조건의 자연수 선별 — 26문항
+- 정의: 각 자연수를 분모에 대입해 약분 후 2와 5 이외의 소인수가 남는 7과 9를 센다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #8
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #2
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #2
+
+### 부등식의 해로 계수 관계 복원 — 22문항
+- 정의: 그림의x<1을읽고(5+b)x<a+3의경계비(a+3)/(5+b)=1에서a-b2이다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #14
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #23
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #13
+
+### 순환마디와 점 표기 판별 — 22문항
+- 정의: 반복되는 최소 숫자열을 찾아 첫 자리와 끝 자리에 점을 찍은 표기와 비교한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #3
+- 대표: `archive/exams/original/middle/m2/1mid/19_청주금천중_1학기_중간_중2_수학.js` #4
+- 대표: `archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js` #1
+
+### 다항식의 단항식 나눗셈과 정리 — 21문항
+- 정의: 각 분자의 항을 분모 단항식으로 나누고 동류항을 합쳐 -2x-y를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #9
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #14
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #11
+
+### 단항식 항등식의 계수와 지수 비교 — 21문항
+- 정의: 계수 비교로 a=2를 정한 뒤 문자의 지수를 비교해 b=5와 c=4를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #13
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #7
+- 대표: `archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js` #6
+
+### 순환소수의 특정 자리 숫자 — 21문항
+- 정의: 비순환부 한 자리를 제외한 위치를 순환마디 길이 2로 나눈 나머지로 두 자리 숫자를 결정한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #7
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #3
+- 대표: `archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js` #2
+
+### 다항식 덧셈과 뺄셈 — 20문항
+- 정의: 괄호 앞 부호를 분배하고 동류항을 모아 각 다항식 계산의 참거짓을 확인한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #14
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #15
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #8
+
+### 유한소수 판별 — 19문항
+- 정의: 기약분수 분모의 소인수가 2와 5뿐인지 확인해 유한소수를 고른다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #1
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #2
+- 대표: `archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js` #1
+
+### 일차부등식 직접 풀이 — 15문항
+- 정의: 0.6x-0.9>3.5x+2에서-2.9x>2.9이므로x<-1이다.
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #15
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #20
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #12
+
+### 거듭제곱 곱의 십진 표준형과 자릿수 — 13문항
+- 정의: 2의9제곱·3·5의7제곱을 12·10의7제곱=1.2·10의8제곱으로 정리해 아홉 자리임을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #20
+- 대표: `archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js` #7
+- 대표: `archive/exams/original/middle/m2/1mid/19_청주금천중_1학기_중간_중2_수학.js` #17
+
+### 거듭제곱 치환 표현 — 13문항
+- 정의: 밑을 2로 통일해 2의 30제곱을 A인 2의 10제곱의 세제곱으로 나타낸다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #12
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #13
+- 대표: `archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js` #7
+
+### 순환소수의 분수 변환 — 13문항
+- 정의: 비순환부를 포함한 정수 차를 9와 0으로 구성한 분모로 나누어 각 변환을 확인한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #5
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #3
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #4
+
+### 일차부등식 해와 대입값 판별 — 13문항
+- 정의: 음수로 나눌 때 방향을 뒤집어 x<4를 얻고 경계값 4가 해가 아님을 판별한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #19
+- 대표: `archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js` #15
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #12
+
+### 지수법칙의 미정 지수 결정 — 12문항
+- 정의: 각 식을 같은 밑으로 정리해 지수의 일차방정식을 풀고 구한 지수 중 최솟값을 찾는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #10
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #7
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #5
+
+### 거듭제곱의 소인수 밑 통일 계산 — 11문항
+- 정의: 18과 54를 2와 3의 곱으로 바꿔 첫 비를 4로 만들고 같은 거듭제곱 세 항의 합을 약분해 전체 12를 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #8
+- 대표: `archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js` #21
+- 대표: `archive/exams/original/middle/m2/1mid/19_청주금천중_1학기_중간_중2_수학.js` #9
+
+### 수량 제한 상황의 부등식 모델링 — 11문항
+- 정의: 사람의 무게 55x와 물건의 무게 75의 합이 적재 한도 700 이하라는 식을 세운다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #12
+- 대표: `archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js` #18
+- 대표: `archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js` #17
+
+### 단항식 곱셈과 나눗셈 직접 계산 — 10문항
+- 정의: A=a제곱/(3b제곱)를 구하고 B의 역수2/(3ab제곱)를 곱해2a/(9b의4제곱)로 약분한다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js` #15
+- 대표: `archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js` #9
+- 대표: `archive/exams/original/middle/m2/1mid/23_신흥중_1학기_중간_중2_수학.js` #12
+
+### 분자·분모 오독 순환소수에서 원래 분수 복원 — 9문항
+- 정의: 잘못 본 두 순환소수를17/90과4/9로 바꿔 올바른 분자17과 분모9를 결합해17/9의 순환소수를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js` #23
+- 대표: `archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js` #9
+- 대표: `archive/exams/original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js` #22
+
+### 연속부등식의 일차식 범위 변환 — 9문항
+- 정의: -4<x≤2에-3을곱해방향을뒤집고5를더해-1≤A<17을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #12
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #12
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #14
+
+### 유한소수를 만드는 최소 배수 — 9문항
+- 정의: 약분 후 분모 35에서 2와 5 이외의 인수 7을 제거할 최소 배수 7을 정한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #6
+- 대표: `archive/exams/original/middle/m2/1mid/19_청주금천중_1학기_중간_중2_수학.js` #16
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #3
+
+### 입체도형 부피에서 문자 높이 역산 — 9문항
+- 정의: 입체의 부피 공식을 세우고 밑넓이 또는 관련 계수로 나누어 미지 높이를 문자식으로 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #8
+- 대표: `archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js` #14
+- 대표: `archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js` #22
+
+### 고정비와 이용료의 비용 비교 부등식 — 8문항
+- 정의: 카드 비용 2000+950x와 3일 패스 비용 23100을 비교해 x>21100/950에서 최소 23회를 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #22
+- 대표: `archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js` #24
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #26
+
+### 다항식 항등식의 빈 식 복원 — 8문항
+- 정의: 괄호를 풀어 좌변을 9a-6b-빈칸으로 나타내고 우변과 비교해 빈칸=-a+b를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #15
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #9
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #24
+
+### 그래프의 두 점으로 일차함수 식 결정 — 7문항
+- 정의: 그림의 절편 (2,0),(0,-3)에서 기울기 3/2와 y절편 -3을 읽어 y=3x/2-3을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #14
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #19
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #13
+
+### 다항식 연산의 오류 판별 — 7문항
+- 정의: 각 항에 분배하여 나눗셈한③의-2a+4와⑤의2x-5/3이 맞고 나머지의 부호·동류항 오류를 확인한다.
+- 대표: `archive/exams/original/middle/m2/1mid/23_신흥중_1학기_중간_중2_수학.js` #16
+- 대표: `archive/exams/original/middle/m2/1mid/23_신흥중_1학기_중간_중2_수학.js` #23
+- 대표: `archive/exams/original/middle/m2/1mid/23_연향중_1학기_중간_중2_수학.js` #9
+
+### 단항식 연산 과정의 역산 — 7문항
+- 정의: 최종식에 -2x의4제곱y를 곱한 뒤 (2xy/3)제곱으로 나누어 처음 식 3x세제곱y/2를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #11
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #12
+- 대표: `archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js` #12
+
+### 유한소수의 십진분수 변환 — 7문항
+- 정의: 기약분모의 2와5 지수를 맞추어 10의 거듭제곱 분모로 바꾸고 소수 표현 또는 자릿수를 결정한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #6
+- 대표: `archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js` #4
+- 대표: `archive/exams/original/middle/m2/1mid/23_금당중_1학기_중간_중2_수학.js` #3
+
+### 다항식 나눗셈 정리 후 수치 대입 — 6문항
+- 정의: 두 나눗셈을 계산해 -3a+2b로 정리한 뒤 주어진 a,b를 대입해 6을 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #17
+- 대표: `archive/exams/original/middle/m2/1mid/19_청주금천중_1학기_중간_중2_수학.js` #18
+- 대표: `archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js` #13
+
+### 분배법칙 전개와 계수 추출 — 6문항
+- 정의: 단항식을 다항식 각 항에 곱해 첫 식의 x제곱 계수 -3과 둘째 식 xy계수 10을 더한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #10
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #10
+- 대표: `archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js` #11
+
+### 계수 부호로 직선이 지나는 사분면 판별 — 5문항
+- 정의: a>0,b<0,c>0을 각 식의 기울기와 절편에 반영하면 ax+by+c=0만 양의 기울기와 양의 y절편으로 제2사분면을 지난다.
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #22
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #20
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #6
+
+### 미지수가 두 개인 일차방정식 판별 — 5문항
+- 정의: 등식을 정리하여 남는 미지수의 개수와 각 항의 차수로 이원 일차방정식 여부를 판단한다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #1
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #1
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #18
+
+### 연립일차방정식이 무수히 많은 해를 갖는 조건 — 5문항
+- 정의: 두 일차방정식의 계수와 상수항 비가 모두 일치하도록 조건을 세워 미정계수를 결정한다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #6
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #3
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #21
+
+### 일정 변화율과 초기값의 일차함수 모델링 — 5문항
+- 정의: 수면 압력 1과 깊이 10m당 증가량 1에서 y=x/10+1을 세워 x=1269의 압력 127.9를 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #17
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #21
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #25
+
+### 일차부등식 풀이와 수직선 표현 — 5문항
+- 정의: 5x<2x-12를풀어x<-4를얻고-4빈점에서왼쪽인그림③을 고른다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #11
+- 대표: `archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js` #7
+- 대표: `archive/exams/original/middle/m2/1mid/22_동산중_1학기_중간_중2_수학.js` #20
+
+### 해의 추가 관계를 이용한 연립방정식 계수 결정 — 5문항
+- 정의: 비조건x4y를첫식에대입해(12,3)을구하고둘째식에넣어12a-213에서a2이다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #7
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #21
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #7
+
+### 연립일차방정식의 대입법 풀이 — 4문항
+- 정의: y=2x-3을 다른 식에 대입하여 x=5,y=7을 얻고 합을 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #2
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #3
+- 대표: `archive/exams/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js` #2
+
+### 이원 일차방정식의 자연수 해 개수 — 4문항
+- 정의: 한 미지수를 다른 미지수의 식으로 나타내고 두 값의 자연수 조건을 만족하는 순서쌍을 열거하거나 센다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #2
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #1
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #15
+
+### 이원 일차방정식의 주어진 해 판별 — 4문항
+- 정의: 주어진 순서쌍을 이원 일차방정식에 대입하고 필요하면 정의역 조건까지 확인하여 해 여부를 판단한다.
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #1
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #2
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #6
+
+### 일차부등식의 자연수 해 개수 — 4문항
+- 정의: 부등식을 x≤3으로 풀어 자연수1,2,3의 세 개를 센다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #16
+- 대표: `archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js` #20
+- 대표: `archive/exams/original/middle/m2/1mid/22_동산중_1학기_중간_중2_수학.js` #22
+
+### 판매 이익 목표의 일차부등식 — 4문항
+- 정의: 하루 판매량 x에 대해 2·3000·0.7x≥1500000을 풀어 최소 정수 358을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #16
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #21
+- 대표: `archive/exams/original/middle/m2/1mid/19_청주금천중_1학기_중간_중2_수학.js` #20
+
+### 평행한 직선과 한 점으로 일차함수 식 결정 — 4문항
+- 정의: 평행 조건으로 기울기를 -1로 놓고 (2,4)를 y=-x+b에 대입하여 b=6을 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #16
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #16
+- 대표: `archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js` #16
+
+### 거듭제곱을 이용한 단위 환산 — 3문항
+- 정의: 톤에서킬로그램,그램으로 갈때10세제곱을 두번곱하여10의6제곱g를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js` #18
+- 대표: `archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js` #7
+- 대표: `archive/exams/original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js` #10
+
+### 구간별 이동 시간 제한의 일차부등식 — 3문항
+- 정의: 두 구간의 거리를 x와 16-x로 두고 x/5+(16-x)/60≤1을 풀어 최대 거리 4를 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #25
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #14
+- 대표: `archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js` #20
+
+### 문자 길이로 삼각형 넓이와 비 계산 — 3문항
+- 정의: 그림의 직각삼각형 밑변·높이로 A=2ab,B=3ab,C=3ab/2,D=2ab를 구하고 공통인수 a제곱b제곱을 약분해 13/12를 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #22
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #11
+- 대표: `archive/exams/original/middle/m2/1mid/21_왕운중_1학기_중간_중2_기출.js` #15
+
+### 문자식 치환 후 다항식 전개 — 3문항
+- 정의: A,B를대입해2A+B=5x+y와A-2B=3y를 만들고C,D를곱해-10x제곱-2xy-9y제곱을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js` #19
+- 대표: `archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js` #12
+- 대표: `archive/exams/original/middle/m2/1mid/26_왕의중_1학기_중간_중2_수학.js` #13
+
+### 연립방정식의 해를 대입한 미정계수 결정 — 3문항
+- 정의: 대입법으로첫연립해(5,2)를구하고2x+ay-2=0에넣어a=-4이다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #5
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #4
+- 대표: `archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js` #20
+
+### 이동 구간별 시간·거리의 연립방정식 — 3문항
+- 정의: 걷기x분과뛰기y분의x+y20,50x+150y2000을세워소거해뛰기10분을 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #10
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #7
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #24
+
+### 일차방정식의 주어진 해 대입으로 계수 결정 — 3문항
+- 정의: 해(1,1)을3x+ay4에대입해3+a4에서a1이다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #3
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #5
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #5
+
+### 일차부등식이 되는 계수 조건 — 3문항
+- 정의: 정리한 부등식의 고차항이 소거되고 일차항이 남도록 미정계수 조건을 결정한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #15
+- 대표: `archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js` #15
+- 대표: `archive/exams/original/middle/m2/1mid/26_왕의중_1학기_중간_중2_수학.js` #17
+
+### 잘못 곱한 다항식의 바른 나눗셈 복원 — 3문항
+- 정의: 잘못 수행한 곱셈 결과에서 원래 다항식을 복원한 뒤 의도한 나눗셈을 수행한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #22
+- 대표: `archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js` #22
+- 대표: `archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js` #12
+
+### 거듭제곱 공통인수로 지수 결정 — 2문항
+- 정의: 2의x제곱으로 묶어 14·2의x제곱=112를 얻고 2의x제곱=8에서 x=3을 정한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #6
+- 대표: `archive/exams/original/middle/m2/1mid/21_왕운중_1학기_중간_중2_기출.js` #17
+
+### 거듭제곱 합의 공통인수 추출 — 2문항
+- 정의: 최소거듭제곱3의n제곱으로 묶어13×3의n제곱=351에서n=3을 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js` #10
+- 대표: `archive/exams/original/middle/m2/1mid/25_진남중_1학기_중간_중2_기출.js` #10
+
+### 고정비와 물품 단가의 예산 제한 부등식 — 2문항
+- 정의: 포장비와장미값의합4000+1600x≤40000을 풀어x≤22.5에서최대정수22송이를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/25_매산중_1학기_중간_중2_기출.js` #24
+- 대표: `archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js` #16
+
+### 기울기·절편·지나는 점 조건으로 일차함수 식 결정 — 2문항
+- 정의: 기울기와 y절편은 식에 직접 넣고 두 점 또는 두 절편에서는 좌표 차의 비로 기울기를 구하여 각각 2x+5,-2x+7,-2x+4를 얻는다.
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #22
+- 대표: `archive/exams/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js` #1
+
+### 다항식 넓이에서 직사각형 변 계산 — 2문항
+- 정의: 직사각형 넓이를 주어진 한 변으로 나누어 미지 변의 문자식을 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #16
+- 대표: `archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js` #23
+
+### 다항식 항등식의 계수 비교 — 2문항
+- 정의: 두조건에서A를6x제곱-8x+4+b와6x제곱-2ax+9로복원해계수비교a4,b5와합9이다.
+- 대표: `archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js` #14
+- 대표: `archive/exams/original/middle/m2/1mid/26_왕의중_1학기_중간_중2_수학.js` #10
+
+### 다항식의 항·계수·차수 판별 — 2문항
+- 정의: x/3을(1/3)x로 읽어 x의 계수가1/3임을 확인한다.
+- 대표: `archive/exams/original/middle/m2/1mid/23_신흥중_1학기_중간_중2_수학.js` #14
+- 대표: `archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js` #14
+
+### 문자 계수 부호에 따른 일차부등식 풀이 — 2문항
+- 정의: a<1에서 1-a가 양수임을 확인하고 (1-a)x>-(1-a)의 양변을 나누어 x>-1을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #19
+- 대표: `archive/exams/original/middle/m2/1mid/22_동산중_1학기_중간_중2_수학.js` #25
+
+### 부등식의 정의와 기호 판별 — 2문항
+- 정의: 단순 다항식과 등호만 있는 방정식은 부등호로 대소를 나타낸 식이 아니므로 ①,④를 고른다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js` #17
+- 대표: `archive/exams/original/middle/m2/1mid/21_왕운중_1학기_중간_중2_기출.js` #18
+
+### 분수와 소수의 생활 맥락 표현 — 2문항
+- 정의: 일상 양의 표현과 연산 편의성을 비교한다. 나눗셈 결과가 순환할 수 있어 소수가 언제나 편리하다는⑤를 반박한다.
+- 대표: `archive/exams/original/middle/m2/1mid/23_신흥중_1학기_중간_중2_수학.js` #1
+- 대표: `archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js` #1
+
+### 세 점의 공선 조건으로 미지 좌표 결정 — 2문항
+- 정의: 두 점의 직선 y=-2x+1에 (k,k+1)을 대입하여 k=0을 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #8
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #20
+
+### 세 직선의 공점 조건으로 계수 결정 — 2문항
+- 정의: 앞의 두 직선의 교점 (2,1)을 구하고 세 번째 직선 x+ay=4에 대입하여 a=2를 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #20
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #10
+
+### 순환소수에 곱해 자연수가 되는 수 — 2문항
+- 정의: 100x-10x로 순환꼬리를 없애44/15를 얻고 자연수곱 조건A가15의배수여야 하므로최소세자리105를 정한다.
+- 대표: `archive/exams/original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js` #21
+- 대표: `archive/exams/original/middle/m2/1mid/25_진남중_1학기_중간_중2_기출.js` #21
+
+### 순환소수의 숫자 조건 방정식 — 2문항
+- 정의: 두 순환소수를분수로 바꿔(a+b)/9=5/9에서a+b=5를 얻고 소수조건으로a3,b2를 정하여차1/9를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js` #5
+- 대표: `archive/exams/original/middle/m2/1mid/25_진남중_1학기_중간_중2_기출.js` #5
+
+### 연립방정식의 주어진 해 판별 — 2문항
+- 정의: 제시한 순서쌍을 두 방정식에 모두 대입하여 동시에 만족하는지 판단한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js` #3
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #22
+
+### 연립부등식 정수해 개수로 계수 범위 결정 — 2문항
+- 정의: 해1≤x<2a+2에정수1~4만포함하도록4<2a+2≤5를세워1<a≤3/2이다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #19
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #19
+
+### 연립일차방정식의 가감법 풀이 — 2문항
+- 정의: 두식을더해4x8에서x2를얻고대입해y3이므로합5이다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #4
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #2
+
+### 연립일차부등식의 공통 해 구간 — 2문항
+- 정의: 각식을분모제거하여x≤13,x>3을얻고공통구간3<x≤13의경계차-10을 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #16
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #17
+
+### 열차 길이와 통과 시간의 연립방정식 — 2문항
+- 정의: 열차가 완전히 통과하는 이동거리를 구조물 길이와 열차 길이의 합으로 나타내고 두 통과시간 조건을 연립한다.
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #9
+- 대표: `archive/exams/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js` #17
+
+### 원기둥·원뿔 부피비의 문자식 — 2문항
+- 정의: 그림의 반지름과높이로 원기둥54πa세제곱b세제곱과원뿔6πa세제곱b세제곱을 계산해비9를 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/22_동산중_1학기_중간_중2_수학.js` #15
+- 대표: `archive/exams/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js` #21
+
+### 유한소수와 순환소수의 대소 비교 — 2문항
+- 정의: 순환부분을 풀어 자리별로 비교하면0.83<0.888…인③만 옳다.
+- 대표: `archive/exams/original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js` #3
+- 대표: `archive/exams/original/middle/m2/1mid/25_진남중_1학기_중간_중2_기출.js` #3
+
+### 의자 배분과 남는 자리의 연립부등식 — 2문항
+- 정의: 학생수4x+6을비어있는세의자와마지막불완전의자조건5(x-4)+1≤4x+6≤5(x-4)+5로 나타낸다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #20
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #20
+
+### 일차함수의 기울기와 절편 계산 — 2문항
+- 정의: y=-2x+6의 기울기는 -2, y절편은 6이고 y=0을 대입하면 x절편은 3이다.
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #15
+- 대표: `archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js` #13
+
+### 일차함수의 함숫값 대입 계산 — 2문항
+- 정의: f(x)=2x+5에 x=1,2를 각각 대입하여 f(1)+f(2)=7+9=16을 계산한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #12
+- 대표: `archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js` #10
+
+### 자연수해 개수로 일차부등식 계수 범위 결정 — 2문항
+- 정의: 일차부등식의 해 경계와 자연수해 개수 조건을 연결하여 매개변수 범위를 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #16
+- 대표: `archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js` #18
+
+### 작업률과 전체 일의 연립방정식 — 2문항
+- 정의: 각 작업자의 단위시간 작업량을 미지수로 놓고 서로 다른 시간 배분의 총 작업량을 같게 놓아 푼다.
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #22
+- 대표: `archive/exams/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js` #20
+
+### 전체 개체 수와 가중 총합의 연립방정식 — 2문항
+- 정의: 고양이와 병아리 수를 x,y라 놓고 x+y=15,4x+2y=52를 연립하여 고양이11마리를 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #2
+- 대표: `archive/exams/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js` #6
+
+### 정수해의 최댓값으로 부등식 계수 범위 결정 — 2문항
+- 정의: 해를x≤6-2a로 정리하고 최대정수-3 조건-3≤6-2a<-2를 풀어4<a≤9/2를 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/23_연향중_1학기_중간_중2_수학.js` #19
+- 대표: `archive/exams/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js` #18
+
+### 지수의 공약수 조건으로 최솟값 결정 — 2문항
+- 정의: ad32,bd24,cd40에서합96/d를 최소로 하려d를세 지수의 최대공약수8로 정하여12를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js` #12
+- 대표: `archive/exams/original/middle/m2/1mid/25_진남중_1학기_중간_중2_기출.js` #12
+
+### 총시간과 소모 열량의 연립방정식 — 2문항
+- 정의: 그림의 분당 열량 4,9와 총시간95,총열량505에서 x+y=95,4x+9y=505를 풀어 70분과 25분을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #23
+- 대표: `archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js` #22
+
+### 평균 점수 목표의 일차부등식 — 2문항
+- 정의: 기존 점수와 미지 점수의 합을 평균 목표 조건의 부등식으로 나타내어 필요한 점수 범위를 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #18
+- 대표: `archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js` #19
+
+### 함숫값 조건으로 일차함수 계수 결정 — 2문항
+- 정의: f(b)=-b/2+b=4를 풀어 b=8을 구한 다음 f(2)=7을 대입 계산한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #9
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #4
+
+### 거듭제곱 곱의 자릿수 조건으로 지수 결정 — 1문항
+- 정의: 11×2의a-9제곱×10의9제곱에서앞부분이두자리여야하므로10≤11×2의a-9제곱<100을만족하는a9,10,11,12이다.
+- 대표: `archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js` #22
+
+### 거듭제곱 일의 자리 주기 — 1문항
+- 정의: 2의 거듭제곱 주기 4에서 31의 나머지로 a=8, 3의108제곱에서 나머지 0으로 b=1을 정해 7을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #19
+
+### 거듭제곱 정의 연산의 미정 지수와 계산 — 1문항
+- 정의: 정의기호에서a+b=7,a-b=1로a=4,b=3을 정한 뒤 중첩 거듭제곱과 곱·나눗셈을 적용해x의8제곱y의15제곱을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_왕운중_1학기_중간_중2_기출.js` #24
+
+### 거듭제곱의 자릿수와 일의자리 결합 — 1문항
+- 정의: 2와5를 묶어125·10의12제곱으로15자리를 구하고7의 일의자리 주기4로7의20제곱 끝자리1을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js` #8
+
+### 계단형 도형의 둘레 문자식 — 1문항
+- 정의: 그림의 수평길이 합은 가로의 두 배이고 수직길이 합은 (2a-b)+(4b-a)의 두 배이므로 둘레8a+10b를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js` #10
+
+### 곱의 소인수분해 지수 합산 — 1문항
+- 정의: 각 인수를 소인수분해하고 같은 소수의 지수를 합쳐 2,3,5,7의 지수 10,2,7,1을 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js` #8
+
+### 구매 비용 방정식의 자연수 해 열거 — 1문항
+- 정의: 실제 비용으로 x+3y=14를 세우고 y≥1과 x≥0을 만족하는 y=1,2,3,4를 대입해 (11,1),(8,2),(5,3),(2,4)를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #23
+
+### 구매 비용 제한의 일차부등식 — 1문항
+- 정의: 연필을 x개로 두고 500x+200(12-x)≤5000을 풀어 가능한 최대 정수 8을 정한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #21
+
+### 기울기와 절편으로 두 직선의 위치 관계 판별 — 1문항
+- 정의: 격자에서 ㄱ과 ㄷ의 기울기가 같고 절편은 달라 평행하며 ㄴ은 기울기가 달라 나머지 두 직선과 각각 만난다.
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #24
+
+### 다항식 계수 조건의 미정계수 결정 — 1문항
+- 정의: 동류항을 모아 x제곱 계수 1/6-a와 x계수 -3/2의 합이 0이라는 방정식을 풀어 a=-4/3을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #16
+
+### 다항식 나눗셈 결과에서 원래 식 복원 — 1문항
+- 정의: 몫 3a+2b-3에 나눈 단항식 ab를 곱해 원래 다항식 3a제곱b+2ab제곱-3ab를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #9
+
+### 다항식 나눗셈과 부등식 풀이의 복합 오류 교정 — 1문항
+- 정의: 항별나눗셈,제수역수,음수나눗셈부등호반전,분모제거시상수배의 네오류를 각각고쳐3a제곱+1,6x+12,x>-4,x>6을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js` #24
+
+### 다항식 차의 순서 분기와 원식 복원 — 1문항
+- 정의: 두다항식의 빼는순서가 미정이므로-x+3y에서4x-y를빼거나더해-5x+4y와3x+2y를 얻어그림c,f를 고른다.
+- 대표: `archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js` #20
+
+### 단체 할인과 개인 요금의 비용 비교 부등식 — 1문항
+- 정의: 40명단체금액40×30000×0.9보다 개인총액30000x가 커야 하므로x>36에서37명이상이다.
+- 대표: `archive/exams/original/middle/m2/1mid/23_연향중_1학기_중간_중2_수학.js` #22
+
+### 덧셈 피라미드의 다항식 복원 — 1문항
+- 정의: 오른쪽 중간칸 -4b에서 맨 위 오른쪽 2a-b를 빼 위 중앙을 구하고 왼쪽 중간칸과 -4b를 더해 A=-a-6b를 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산사직여중_1학기_중간_중2_수학.js` #18
+
+### 도형 넓이 제한의 일차부등식 — 1문항
+- 정의: 정사각형900에서삼각형375와15x를뺀넓이525-15x≤500을풀어x≥5/3에서최소자연수2이다.
+- 대표: `archive/exams/original/middle/m2/1mid/26_왕의중_1학기_중간_중2_수학.js` #24
+
+### 두 자리 수의 자릿수 관계 연립방정식 — 1문항
+- 정의: 십의자리a,일의자리b로 놓아 10a+b=7(a+b),10b+a=10a+b-18을 풀면 a=4,b=2이므로 합6이다.
+- 대표: `archive/exams/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js` #13
+
+### 두 직선과 좌표축의 삼각형 넓이로 계수 결정 — 1문항
+- 정의: 공통 y절편6과 넓이15에서 밑변5를 얻고 x절편 차 -6/a+2=5를 풀어 a=-2를 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #12
+
+### 두 직선과 좌표축이 만드는 삼각형 넓이 계산 — 1문항
+- 정의: 공통 y절편2가 높이이고 x절편 -5와2의 차7이 밑변이므로 넓이는7이다.
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #11
+
+### 두 직선의 공통 절편 조건으로 계수 결정 — 1문항
+- 정의: 두 직선이 x축 위에서 만나므로 알려진 직선의 x절편 -6을 y=ax-3에 대입하여 a=-1/2를 얻는다.
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #21
+
+### 매개변수 연립방정식 해의 비 계산 — 1문항
+- 정의: 두 식을 빼서 x=3k,y=-k를 구하고 주어진 분수식의 공통인수 k를 약분해 9를 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #18
+
+### 문자 넓이 등식에서 사다리꼴 높이 역산 — 1문항
+- 정의: 직사각형 넓이12a세제곱b제곱을 사다리꼴 평균밑변3a로나누어높이4a제곱b제곱을 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js` #22
+
+### 문장으로 세운 부등식의 자연수 해 개수 — 1문항
+- 정의: 크지 않다는 조건을 5(x-3)≤2x+3으로 옮겨 풀고 1부터 6까지 자연수를 센다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #24
+
+### 미지수 두 개인 일차방정식의 계수 조건 — 1문항
+- 정의: 정리한 (2-a)x제곱+(5-b)x+2y+10=0에서 이차항은 없애고 x항은 남겨 a=2,b≠5를 정한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #19
+
+### 반복 곱셈 상황의 거듭제곱과 배수 — 1문항
+- 정의: 각 생쥐가 보리 이삭 7개씩 가지므로 보리 총수는 생쥐 수의 7배임을 곱셈 관계로 해석한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #6
+
+### 반비례 함수의 함숫값 조건과 대입 계산 — 1문항
+- 정의: f(2)=a/2=5에서 a=10을 얻고 f(1)=10을 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js` #3
+
+### 부등식 변형에 사용한 성질 식별 — 1문항
+- 정의: 해설의첫단계는같은식을양변에서빼는성질,마지막은음수-3로나눠방향이바뀌는성질임을 식별한다.
+- 대표: `archive/exams/original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js` #18
+
+### 부등식 해의 부호 조건으로 계수 범위 결정 — 1문항
+- 정의: 해x≤2(a+7)/3의모든값이음수이려면포함된최댓값도0미만이어야하므로a<-7이다.
+- 대표: `archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js` #18
+
+### 분수 거듭제곱 법칙의 원리 설명 — 1문항
+- 정의: 3/2를 다섯 번 곱한 것을 분자들의 곱과 분모들의 곱으로 묶어3의5제곱/2의5제곱을 증명한다.
+- 대표: `archive/exams/original/middle/m2/1mid/23_신흥중_1학기_중간_중2_수학.js` #22
+
+### 분수의 나눗셈·소수 표현 변환 — 1문항
+- 정의: 해설에 주어진2/3을 분자÷분모인2÷3과0.666…로바꾸어①을 고른다.
+- 대표: `archive/exams/original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js` #2
+
+### 삼각형 성립 조건의 일차부등식 — 1문항
+- 정의: 그림의 가장 긴 변x+3이 다른 두 변의 합2x보다 작아야 하므로 x>3을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #20
+
+### 삼각형 성질 진위와 경로 추적 — 1문항
+- 정의: 그림의 이등변삼각형·직각삼각형 합동·외심·피타고라스 진술을 순서대로 판정해 예-아니오-아니오-예-예 경로로 대구에 도착한다.
+- 대표: `archive/exams/original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js` #20
+
+### 세 직선의 교점으로 둘러싸인 삼각형 넓이 계산 — 1문항
+- 정의: 세 쌍을 연립하여 꼭짓점(1,1),(2,5),(5,3)을 구하고 외접직사각형에서 세 직각삼각형을 빼거나 좌표넓이식으로 넓이7을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js` #22
+
+### 소금물 농도 범위의 연립부등식 — 1문항
+- 정의: 소금량150+0.1x를총량500+x의20~25%사이에놓아풀면500/3≤x≤500이다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #17
+
+### 속력별 지각 시간으로 최소 속력 결정 — 1문항
+- 정의: 거리 d에 대해 d/50-d/60=6/60을 풀어 d=30을 얻고 예정시간 5/12시간으로 나누어 최소속력 72를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #17
+
+### 수평선 위 두 점의 좌표 일치 조건 — 1문항
+- 정의: y축에 수직인 직선은 수평선이므로 두 y좌표2a-3과5a+6을 같게 놓아 a=-3을 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #18
+
+### 순환소수 기약분모 조건의 숫자 결정 — 1문항
+- 정의: 2+a/9의 기약분모가 3이 되려면 a와 9의 최대공약수가 3이어야 하므로 a=3,6을 정한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #5
+
+### 순환소수 오산 차에서 원래 수 복원 — 1문항
+- 정의: 오산한 순환소수와 올바른 순환소수의 차 4/45-8/99=4/495로 8을 나누어 990을 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js` #19
+
+### 순환소수 자릿수의 합 — 1문항
+- 정의: 순환마디 384615의 합 27을 여섯 번 더하고 남은 네 자리 3846의 합 21을 더해 183을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_부산해운대여중_1학기_중간_중2_수학.js` #4
+
+### 순환소수의 크기 비교 — 1문항
+- 정의: 각 순환 표기를 전개해 첫 다른 자리까지 비교하면 0.9898…이 0.9888…보다 큼을 확인한다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_신흥중_1학기_중간_중2_기출.js` #2
+
+### 시간 경과에 따른 나이의 연립방정식 — 1문항
+- 정의: 현재 나이합 x+y=50과 16년 후 관계 x+16=2(y+16)+7을 세워 x-2y=23으로 정리한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js` #8
+
+### 시간 제한에 따른 최소 속력 — 1문항
+- 정의: 이미 사용한 0.5시간을 빼면 남은 7km를 1시간 이내 가야 하므로 0.5+7/v≤1.5에서 v≥7을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_연향중_1학기_중간_중2_기출.js` #20
+
+### 연립방정식의 오독 상수항 복원 — 1문항
+- 정의: 바르게읽은첫식에y2를넣어x9를구한뒤둘째좌변7×9-2×2=59를오독값으로복원한다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #9
+
+### 연립일차부등식이 해를 갖지 않는 계수 조건 — 1문항
+- 정의: 두해x≥-1과x<a+2의공통부분이없도록a+2≤-1을세워a≤-3이다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #15
+
+### 연속 비례식의 연립일차방정식 변환 — 1문항
+- 정의: 세 비의 공통값을 t라 놓아 x=2t-1,y=(-3t-1)/2를 셋째 식에 넣으면 t=1이므로 x+y=-1이다.
+- 대표: `archive/exams/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js` #7
+
+### 연속 자연수 곱의 소인수 지수 세기 — 1문항
+- 정의: 1부터12의곱에서2의배수6개,4의배수3개,8의배수1개를 누적해2의지수10을 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js` #9
+
+### 연속부등식의 정수 해 개수 — 1문항
+- 정의: -5<2x+1<3을풀어-3<x<1이므로정수-2,-1,0 세개이다.
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #11
+
+### 원기둥 반지름·높이 배율에 따른 부피비 — 1문항
+- 정의: 부피는반지름제곱과높이에비례하므로B/A=3제곱×1/2=9/2의역수2/9가A/B이다.
+- 대표: `archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js` #14
+
+### 원기둥 부피비의 문자식 — 1문항
+- 정의: 그림의 반지름·높이로 두 부피를 πa제곱b와πb제곱a로 세워 나누고 a/b로 약분한다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js` #13
+
+### 유한 후보값 중 부등식 해 개수로 계수 범위 결정 — 1문항
+- 정의: x<n의주어진다섯값중정확히-2,-1,0만참이려면0<n≤1이다.
+- 대표: `archive/exams/original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js` #20
+
+### 유한소수와 순환소수 오독의 차 방정식 — 1문항
+- 정의: 0.666…=2/3과0.6=3/5의곱결과차로(2/3-3/5)x=3을세워x45를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js` #21
+
+### 음의 정수 해가 없을 매개변수 범위 — 1문항
+- 정의: 해의 하한 (3a-3)/2가 가장 큰 음의 정수 -1보다 커야 한다는 조건으로 a>1/3을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #23
+
+### 이원 일차방정식의 해에서 미지 좌표 결정 — 1문항
+- 정의: (a,1),(-7,b)를 x-3y=-1에 각각 대입하여 a=2,b=-2,차4를 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js` #21
+
+### 일차부등식 해의 최소 자연수 — 1문항
+- 정의: 소수계수 부등식을x>3으로 풀어 이를 만족하는 최소 자연수4를 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_팔마중_1학기_중간_중2_기출.js` #17
+
+### 일차함수의 변화량과 기울기 계산 — 1문항
+- 정의: (f(7)-f(-2))/(7-(-2))는 기울기이므로 일차항 계수3/2와 같다.
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #7
+
+### 입체도형 부피에서 문자 밑넓이 역산 — 1문항
+- 정의: 원뿔부피의세배45x제곱y제곱을높이5x로나누어밑넓이9xy제곱을 구한다.
+- 대표: `archive/exams/original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js` #14
+
+### 잘못 나눈 다항식의 곱셈 복원 — 1문항
+- 정의: 잘못나눈결과에제수-2ab/3을곱해원식을복원하고한번더곱하여8a4b제곱/3-4a세제곱b세제곱이다.
+- 대표: `archive/exams/original/middle/m2/1mid/26_왕의중_1학기_중간_중2_수학.js` #12
+
+### 잘못 나눈 단항식의 바른 곱셈 복원 — 1문항
+- 정의: 피제수를 잘못 나눈 결과로 나누어 원래 곱할 단항식 -3x세제곱y의6제곱을 찾고 다시 곱한다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #7
+
+### 전체 인원과 인원 차의 연립방정식 — 1문항
+- 정의: 남녀 인원을 x,y라 놓고 x+y=40,x-y=4를 연립하여 여학생18명을 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #1
+
+### 전체량과 부분의 비를 이용한 비례배분 — 1문항
+- 정의: 두 길이를 2k,3k로 두어 5k=25를 풀고 긴 길이3k=15를 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #7
+
+### 절편 길이의 비와 한 점으로 직선의 식 결정 — 1문항
+- 정의: 양의 x절편 k와 음의 y절편 -2k에서 기울기2를 얻고 (3,2)를 대입하여 b=-4,a+b=-2를 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #15
+
+### 정수 해의 최솟값으로 매개변수 범위 — 1문항
+- 정의: 해 x≥6-2a의 최소 정수가 -3이려면 -4<6-2a≤-3임을 세워 9/2≤a<5를 얻는다.
+- 대표: `archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js` #18
+
+### 정점을 지나는 직선과 다각형의 교차 조건 — 1문항
+- 정의: 정점(0,-1)과 직사각형 꼭짓점을 연결한 기울기의 최소1/2,최대2를 경계로 잡아 곱1을 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js` #17
+
+### 정점을 지나는 직선과 선분의 교차 조건 — 1문항
+- 정의: 정점(0,-2)에서 선분 양 끝점으로 향하는 기울기1과8을 경계로 잡아 1≤a≤8을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #13
+
+### 좌표축에 평행한 직선의 성질 판별 — 1문항
+- 정의: x=a는 수직선, y=b는 수평선이므로 b=0인 y=0은 y축이 아니라 x축이다.
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #18
+
+### 좌표평면 복합도형의 넓이 이등분 판별 — 1문항
+- 정의: 그림의 L자 도형 넓이는16이다. 둘째 직선 y=-x/2+3 아래 부분은 첫 열 넓이5와 나머지 삼각형4로9라서 이등분이 아니며 나머지 직선은 각각8로 분할한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js` #19
+
+### 지수 합차의 배수 불변성 — 1문항
+- 정의: 3의 배수 지수끼리 더하고 빼도 3의 배수이므로 지수가 1인 a는 만들 수 없음을 보인다.
+- 대표: `archive/exams/original/middle/m2/1mid/19_동산중_1학기_중간_중2_기출.js` #11
+
+### 지수합 조건을 이용한 거듭제곱 계산 — 1문항
+- 정의: 같은 밑의 곱AB=3의(2x+2y)제곱을3의2(x+y)제곱으로 묶고x+y=3을 대입한다.
+- 대표: `archive/exams/original/middle/m2/1mid/22_동산중_1학기_중간_중2_수학.js` #11
+
+### 직선 그래프의 절편 부호로 계수 부호 결정 — 1문항
+- 정의: 그림에서 두 절편 -6/a,-6/b가 음수임을 읽어 a>0,b>0을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js` #16
+
+### 직선과 좌표축이 만드는 삼각형 넓이 계산 — 1문항
+- 정의: 절편(4,0),(0,-3)을 구하고 길이의 절댓값4,3을 사용하여 삼각형 넓이6을 계산한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_연향중_1학기_기말_중2_수학.js` #23
+
+### 직선과 좌표축이 만드는 삼각형 넓이로 계수 결정 — 1문항
+- 정의: 절편 -6/a와 -6의 절댓값을 밑변높이로 삼아 (1/2)(-6/a)6=9를 풀어 a=-2를 얻는다.
+- 대표: `archive/exams/original/middle/m2/1final/19_동산중_1학기_기말_중2_수학.js` #19
+
+### 집단별 구성 비율의 연립방정식 — 1문항
+- 정의: 동아리 총인원r,c에 대해 r+c=50,0.4r+0.6c=26을 풀어 c=30을 얻어 컴퓨터동아리 남학생18명을 구한다.
+- 대표: `archive/exams/original/middle/m2/1final/19_왕운중_1학기_기말_중2_수학.js` #21
+
+### 집단별 증감률과 총수의 연립방정식 — 1문항
+- 정의: 작년남녀x+y400과1.05x+0.85y376으로x180을구하고올해남학생1.05x189명을 얻는다.
+- 대표: `archive/exams/original/middle/m2/1final/18_연향중_1학기_기말_중2_수학.js` #10
+
+### 총인원과 예산 제한의 일차부등식 — 1문항
+- 정의: 어른x명,어린이25-x명으로두어요금1000x+600(25-x)≤21000을풀어어른최대15명이다.
+- 대표: `archive/exams/original/middle/m2/1mid/24_연향중_1학기_중간_중2_기출.js` #23
+
+### 총인원과 총금액의 연립방정식 — 1문항
+- 정의: 어른x,청소년y의x+y20,4000x+3000y72000을세워소거해어른12명,청소년8명이다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #22
+
+### 평면도형 회전체의 문자 부피 합 — 1문항
+- 정의: AB축회전의원뿔반지름2x세제곱y,높이4x세제곱y와구반지름2x세제곱y를읽어두부피합16πx9y세제곱이다.
+- 대표: `archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js` #13
+
+### 한 점을 지나는 수평선의 방정식 — 1문항
+- 정의: x축에 평행한 직선의 y값은 일정하므로 (2,-5)를 지나는 직선은 y=-5이다.
+- 대표: `archive/exams/original/middle/m2/1final/19_금당중_1학기_기말_중2_수학.js` #18
+
+### 현재·미래 나이 조건의 연립부등식 — 1문항
+- 정의: 아들x,아버지40-x로두고현재40-x≥3x와11년후51-x<2(x+11)을풀어유일한자연수10세이다.
+- 대표: `archive/exams/original/middle/m2/1final/17_연향중_1학기_기말_중2_수학.js` #18
+
+### 혼합물 성분량 하한의 일차부등식 — 1문항
+- 정의: A를xg,B를350-xg으로두고칼슘3.7x+1.2(350-x)≥485를풀어최소26g이다.
+- 대표: `archive/exams/original/middle/m2/1mid/26_왕의중_1학기_중간_중2_수학.js` #20
+
+## 중3 추가2시험지 새 제안 보충
+- 실수의 조밀성과 수직선 대응 판정 — 1문항. 정의: 실수 구간의 유리수·무리수의 무한성과 수직선 점에 대한 대응 성질을 판단한다. 대표: `archive/exams/original/middle/m3/1mid/22_신흥중_1학기_중간_중3_기출.js` #11
+- 이차방정식 정의 판별 — 1문항. 정의: 이항 및 전개 후 동류항을 정리하여 최고차수가2이고 이차항 계수가0이 아닌 방정식을 판별한다. 대표: `archive/exams/original/middle/m3/1mid/22_신흥중_1학기_중간_중3_기출.js` #20
+- 근호식이 유리수가 되는 계수 조건 — 1문항. 정의: 유리수 계수의 근호식을 유리수 부분과 무리수 부분으로 분리하여 무리수항 계수가0이라는 조건으로 미정계수를 구한다. 대표: `archive/exams/original/middle/m3/1mid/22_연향중_1학기_중간_중3_기출c.js` #11
+- 적층 직육면체의 끈 경로 길이 — 1문항. 정의: 중앙에 쌓은 직육면체의 노출면과 옆면을 따라 감는 끈 경로를 구간별로 나누어 합산하고 고리 수와 매듭 길이를 반영한다. 대표: `archive/exams/original/middle/m3/1mid/22_연향중_1학기_중간_중3_기출c.js` #20
