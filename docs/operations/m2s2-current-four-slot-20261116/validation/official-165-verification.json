@@ -1,0 +1,356 @@
+{
+  "schemaVersion": "m2s2-current-four-slot-165-official-verification-v1",
+  "author": "/root/audit_m2",
+  "codeCommit": "f0b2b04d90b155a273099c6bbbd342a4ab7265fa",
+  "inputManifest": {
+    "path": ".tmp/m2-current165-compacts-manifest.json",
+    "sha256": "3c443bd0ed9a66192b67bc905fda5efcf5ede894a41967baf21e44a4461fdb91"
+  },
+  "validationBase": "42455634c09ef0890d547801655086cd67212ce4",
+  "currentMainInputReadback": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "counts": {
+    "sources": 7,
+    "total": 165,
+    "retained": 125,
+    "body": 3,
+    "hold": 3,
+    "untouched": 34
+  },
+  "registered": 162,
+  "held": 3,
+  "heldQuestionUids": [
+    "qid_v1_30911c662dbb9da6dd2ee544347ee0c8a0366688572ac46f42270954f61e758e",
+    "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+    "qid_v1_517821f2235339814b86b46d179560192f8077998e96ef8d6eed72b2774f5f92"
+  ],
+  "officialBuilder": {
+    "dry": {
+      "path": ".tmp/m2-current165-official-dry.json",
+      "sha256": "ba1d8760136f47361a2a4a31ec8afed36c77e42114af6a4773dc7af828dd1046",
+      "durationMs": 19879,
+      "result": {
+        "schemaVersion": "archive-item-4slot-runtime-v1",
+        "status": "PASS_WITH_SUPPLEMENTS",
+        "verified": 162,
+        "pending": 3,
+        "indexSha256": "3bca4f2efc733197823b8d8defe49419325ae7c06f706c7069c65ec9e36fe8a1",
+        "sourceMutation": 0,
+        "semanticApprovalMutation": 0,
+        "revalidatedFiles": 7,
+        "reusedFiles": 0,
+        "counts": {
+          "files": 7,
+          "items": 165,
+          "registered": 162,
+          "pending": 3,
+          "withCandidates": 0,
+          "identityFingerprintHistorical": 157
+        },
+        "changed": true,
+        "write": false,
+        "output": "archive/data/item-4slot-index.json",
+        "inputDigest": "9fbc55cd9b1ab24b3b091c1968de4c18b70951bb2c2891ef8465af28ddfecb5d",
+        "sourceFiles": [
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "583a4627ed9cf0e67ac3ee6dae829f6f548c70c056ef78b64f0370a0b4f0f42e",
+            "status": "SUPPLEMENT_PENDING"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "2f0a51995683c84b08e1e0a303dd09296ff9fae480c27c3a66d9b7634a2f40b7",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "86feee5c695526b1ce69048ab013dd83765713d0322fb15568b1608424926531",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "146b748941e38d7117a5952bbda7f699c36139c830aaf39d8f1db123eecb9886",
+            "status": "SUPPLEMENT_PENDING"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "202868d88f0acf81a902467d94fed1e7efa593db621a0a3581de76a51ed71fa6",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "a7b9f6d9ec8b9a164738fc5ad2a5c7bed24af8cb839807e2b3d2f68d812adfc6",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.4slot.json",
+            "sha256": "0e3e0d2f1e47324f7a9f86cf5650bbf942ace16ddb8a73696f5b7e7dfa6ef52e",
+            "status": "SUPPLEMENT_PENDING"
+          }
+        ],
+        "pendingItems": [
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.4slot.json",
+            "ordinal": 4,
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+            "questionUid": "qid_v1_30911c662dbb9da6dd2ee544347ee0c8a0366688572ac46f42270954f61e758e",
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "nextAction": "Retain the exact existing vector. Keep the three independently observed current renderer discrepancies pending until a separately authorized correction and explicit release."
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+            "ordinal": 2,
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+            "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+            "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+            "nextAction": "Retain the exact existing vector. Keep the three independently observed current renderer discrepancies pending until a separately authorized correction and explicit release."
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.4slot.json",
+            "ordinal": 14,
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+            "questionUid": "qid_v1_517821f2235339814b86b46d179560192f8077998e96ef8d6eed72b2774f5f92",
+            "sourceArchiveFile": "original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.js",
+            "nextAction": "Retain the exact existing vector. Keep the three independently observed current renderer discrepancies pending until a separately authorized correction and explicit release."
+          }
+        ]
+      }
+    },
+    "write": {
+      "path": ".tmp/m2-current165-official-write.json",
+      "sha256": "f3a61e7df5b11ee073a9beece577b26d6b126843215db15eaa3d6ebda9e9c78a",
+      "durationMs": 27808,
+      "result": {
+        "schemaVersion": "archive-item-4slot-runtime-v1",
+        "status": "PASS_WITH_SUPPLEMENTS",
+        "verified": 162,
+        "pending": 3,
+        "indexSha256": "3bca4f2efc733197823b8d8defe49419325ae7c06f706c7069c65ec9e36fe8a1",
+        "sourceMutation": 0,
+        "semanticApprovalMutation": 0,
+        "revalidatedFiles": 7,
+        "reusedFiles": 0,
+        "counts": {
+          "files": 7,
+          "items": 165,
+          "registered": 162,
+          "pending": 3,
+          "withCandidates": 0,
+          "identityFingerprintHistorical": 157
+        },
+        "changed": true,
+        "write": true,
+        "output": "archive/data/item-4slot-index.json",
+        "inputDigest": "9fbc55cd9b1ab24b3b091c1968de4c18b70951bb2c2891ef8465af28ddfecb5d",
+        "sourceFiles": [
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "583a4627ed9cf0e67ac3ee6dae829f6f548c70c056ef78b64f0370a0b4f0f42e",
+            "status": "SUPPLEMENT_PENDING"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "2f0a51995683c84b08e1e0a303dd09296ff9fae480c27c3a66d9b7634a2f40b7",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "86feee5c695526b1ce69048ab013dd83765713d0322fb15568b1608424926531",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "146b748941e38d7117a5952bbda7f699c36139c830aaf39d8f1db123eecb9886",
+            "status": "SUPPLEMENT_PENDING"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "202868d88f0acf81a902467d94fed1e7efa593db621a0a3581de76a51ed71fa6",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "a7b9f6d9ec8b9a164738fc5ad2a5c7bed24af8cb839807e2b3d2f68d812adfc6",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.4slot.json",
+            "sha256": "0e3e0d2f1e47324f7a9f86cf5650bbf942ace16ddb8a73696f5b7e7dfa6ef52e",
+            "status": "SUPPLEMENT_PENDING"
+          }
+        ],
+        "pendingItems": [
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.4slot.json",
+            "ordinal": 4,
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+            "questionUid": "qid_v1_30911c662dbb9da6dd2ee544347ee0c8a0366688572ac46f42270954f61e758e",
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "nextAction": "Retain the exact existing vector. Keep the three independently observed current renderer discrepancies pending until a separately authorized correction and explicit release."
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+            "ordinal": 2,
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+            "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+            "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+            "nextAction": "Retain the exact existing vector. Keep the three independently observed current renderer discrepancies pending until a separately authorized correction and explicit release."
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.4slot.json",
+            "ordinal": 14,
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+            "questionUid": "qid_v1_517821f2235339814b86b46d179560192f8077998e96ef8d6eed72b2774f5f92",
+            "sourceArchiveFile": "original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.js",
+            "nextAction": "Retain the exact existing vector. Keep the three independently observed current renderer discrepancies pending until a separately authorized correction and explicit release."
+          }
+        ]
+      }
+    },
+    "check": {
+      "path": ".tmp/m2-current165-official-check.json",
+      "sha256": "eb882fb2104ca70839224cb9c34fdf12b1126dcf8f0373c5254860f863a7bfa1",
+      "durationMs": 41882,
+      "result": {
+        "schemaVersion": "archive-item-4slot-runtime-v1",
+        "status": "PASS_WITH_SUPPLEMENTS",
+        "verified": 162,
+        "pending": 3,
+        "indexSha256": "3bca4f2efc733197823b8d8defe49419325ae7c06f706c7069c65ec9e36fe8a1",
+        "sourceMutation": 0,
+        "semanticApprovalMutation": 0,
+        "revalidatedFiles": 7,
+        "reusedFiles": 0,
+        "counts": {
+          "files": 7,
+          "items": 165,
+          "registered": 162,
+          "pending": 3,
+          "withCandidates": 0,
+          "identityFingerprintHistorical": 157
+        },
+        "changed": false,
+        "write": false,
+        "output": "archive/data/item-4slot-index.json",
+        "inputDigest": "9fbc55cd9b1ab24b3b091c1968de4c18b70951bb2c2891ef8465af28ddfecb5d",
+        "sourceFiles": [
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "583a4627ed9cf0e67ac3ee6dae829f6f548c70c056ef78b64f0370a0b4f0f42e",
+            "status": "SUPPLEMENT_PENDING"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "2f0a51995683c84b08e1e0a303dd09296ff9fae480c27c3a66d9b7634a2f40b7",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "86feee5c695526b1ce69048ab013dd83765713d0322fb15568b1608424926531",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "146b748941e38d7117a5952bbda7f699c36139c830aaf39d8f1db123eecb9886",
+            "status": "SUPPLEMENT_PENDING"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "202868d88f0acf81a902467d94fed1e7efa593db621a0a3581de76a51ed71fa6",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.4slot.json",
+            "sha256": "a7b9f6d9ec8b9a164738fc5ad2a5c7bed24af8cb839807e2b3d2f68d812adfc6",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.4slot.json",
+            "sha256": "0e3e0d2f1e47324f7a9f86cf5650bbf942ace16ddb8a73696f5b7e7dfa6ef52e",
+            "status": "SUPPLEMENT_PENDING"
+          }
+        ],
+        "pendingItems": [
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.4slot.json",
+            "ordinal": 4,
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+            "questionUid": "qid_v1_30911c662dbb9da6dd2ee544347ee0c8a0366688572ac46f42270954f61e758e",
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "nextAction": "Retain the exact existing vector. Keep the three independently observed current renderer discrepancies pending until a separately authorized correction and explicit release."
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+            "ordinal": 2,
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+            "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+            "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+            "nextAction": "Retain the exact existing vector. Keep the three independently observed current renderer discrepancies pending until a separately authorized correction and explicit release."
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.4slot.json",
+            "ordinal": 14,
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+            "questionUid": "qid_v1_517821f2235339814b86b46d179560192f8077998e96ef8d6eed72b2774f5f92",
+            "sourceArchiveFile": "original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.js",
+            "nextAction": "Retain the exact existing vector. Keep the three independently observed current renderer discrepancies pending until a separately authorized correction and explicit release."
+          }
+        ]
+      }
+    }
+  },
+  "consumer": {
+    "module": "archive/item-4slot.js",
+    "registered": 162,
+    "vectorExact": 162,
+    "heldAbsent": 3,
+    "unexpectedRows": 0
+  },
+  "boundary": {
+    "original165VectorsUnchanged": true,
+    "reviewedByUnchanged": [
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.4slot.json",
+        "unchanged": true
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.4slot.json",
+        "unchanged": true
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.4slot.json",
+        "unchanged": true
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "unchanged": true
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.4slot.json",
+        "unchanged": true
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.4slot.json",
+        "unchanged": true
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/26_왕의중_2학기_중간_중2_기출.4slot.json",
+        "unchanged": true
+      }
+    ],
+    "all214MaterializedInputsRawUnchanged": true,
+    "sourceWrites": 0,
+    "assetWrites": 0,
+    "identityWrites": 0,
+    "generatedOutputOnly": "archive/data/item-4slot-index.json",
+    "generatedFilesToCommit": 0,
+    "newMathQa": 0,
+    "newSlotValues": 0,
+    "newMetadataApproval": 0
+  },
+  "limits": {
+    "mainRegistration": "NOT_RUN",
+    "fullMetadataConsumer": "NOT_RUN_NOT_REQUIRED_FOR_4SLOT_SCOPED_CHECK",
+    "browser": "NOT_RUN",
+    "latestMainDriftGate": "ROOT_INTEGRATION_REQUIRED"
+  }
+}

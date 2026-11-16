@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "readonly-independent-code-review-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "reviewer": "GPT_M1_0A70543C4CE8",
+  "scope": "Per-UID existing four-slot vector reuse after officially registered renderer continuity, including the actual read-only consumer",
+  "status": "NO_REMAINING_BLOCKING_FINDING_IN_REVIEWED_SCOPE",
+  "repositoryWrites": 0,
+  "testExecution": "NOT_RUN_BY_THIS_REVIEWER",
+  "newMathematicalQa": false,
+  "newSemanticApprovals": 0,
+  "newFourSlotApprovals": 0,
+  "files": [
+    {
+      "path": "tools/4slot/registered-renderer-continuity.cjs",
+      "sha256": "482b14918edf02eba8b794bbb350829b5ffc30f2fc89df23c0d360318dc27076"
+    },
+    {
+      "path": "tools/4slot/registered-renderer-continuity.mjs",
+      "sha256": "b3f447bc44e1283b942eb2f70f778c32ceab667370ed1be2966687bbf573f3e8"
+    },
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "sha256": "47e3492f6477cf0a36d7df02e7b5cb9548369bbb53dc4e1c8cfe72654ec3bcba"
+    },
+    {
+      "path": "tools/ci/archive-registration-writer.mjs",
+      "sha256": "135f8885d0ba0acf2044272ea01f1f6e09cc929ee6e3be82e4011246c3311149"
+    },
+    {
+      "path": "docs/architecture/4slot/registered-renderer-continuity-v1.md",
+      "sha256": "920176db528ade76ca8c0ec4e42c0041fb25d99174a94e28c394c1a2048c4635"
+    },
+    {
+      "path": "tests/archive-reviewed-exam-registration-v2.test.mjs",
+      "sha256": "f789e688ad37b3644d41066900df5931cf49e62c87432091e0cd6c0aca04b2a1"
+    },
+    {
+      "path": "tests/item-4slot-runtime.test.cjs",
+      "sha256": "290fac1437f4bf11ee5732c0b1d5b8d50be02cdfb9605d8ba2d413134f987608"
+    },
+    {
+      "path": "archive/item-4slot.js",
+      "sha256": "e85ed65f5524d7636545e5d8aa1e38ecfc2f82597944101cf9e28814582b7393"
+    }
+  ],
+  "findingsResolved": [
+    {
+      "finding": "Current registry status and binding were not explicitly required by the new adapter.",
+      "resolution": "Requires loadActiveMetaRegistry.status ACTIVE and validateActiveMetaFields(...,requireFields:true).status VALIDATED; negative inactive-registry fixture added."
+    },
+    {
+      "finding": "Issued receipt runtime row was replayed without reading current runtime.",
+      "resolution": "Reads runtime containers, requires exactly one current selected UID and ACTIVE expected owner, compares every issued runtime field, and supplies current runtime to native replay. Runtime inputs enter cache and writer dependency digests. Missing/inactive/changed-runtime negative fixtures added."
+    },
+    {
+      "finding": "Intermediate fix compared the active metadata validator's status to PASS, while valid populated metadata returns VALIDATED.",
+      "resolution": "Observed correction to VALIDATED in exact reviewed worker bytes."
+    },
+    {
+      "finding": "Existing read-only consumer rejected the new REGISTERED_RENDERER_CONTINUITY sourceBinding, so actual builder verification could not complete.",
+      "resolution": "The exact new binding is supported only with the closed rendererContinuityRef path/SHA object and independentReviewClaim false. References on old binding types are rejected and the reference object is frozen."
+    },
+    {
+      "finding": "RegExp.test alone accepted array-to-string coercion for a rendererContinuityRef SHA.",
+      "resolution": "The consumer explicitly requires a string SHA before checking lowercase 64-hex shape."
+    }
+  ],
+  "reviewedControls": [
+    "Closed sidecar scope and zero new QA/vector approvals",
+    "Exact compact file and selected item/dictionary hashes",
+    "Held compact item rejected",
+    "Current raw source and Git blob binding",
+    "Exact UID/ordinal/display number and historical compact source payload passed as prior source",
+    "Official issued receipt and renderer-binding hashes",
+    "Every issued shared metadata value retained",
+    "Existing native reassessment and independent renderer witness revalidated, including live assets",
+    "Sidecar outside compact tree preserves existing compact SHA and all unselected baseline payload/asset hashes",
+    "Selected malformed proof makes selected item pending; no generic search/selection eligibility mutations",
+    "Receipt deletion invalidates cache; separate builder integration fixture preserves unrelated stale assets",
+    "Positive native fixture includes actual issued receipt, real child worker invocation, and compact byte equality",
+    "Actual builder index enters mod.verify and the read-only createIndex/get/find query roundtrip; producer output is no longer checked alone",
+    "Consumer rejects missing proof ref, malformed SHA, escaping path and a new independent-review claim",
+    "The complete ACTIVE M2 fixture is opt-in; existing fixture defaults stay unchanged, while native difficulty fields enter immutable source/review evidence before final registration",
+    "Production ACTIVE/current-runtime guards remain intact; test setup was completed rather than bypassing those guards"
+  ],
+  "limitations": [
+    "This is independent source/code review, not a production registration or student deployment check.",
+    "No new sidecar or receipt was fabricated, no existing owner task was adopted.",
+    "Production UID recovery must await a genuine official receipt and exact current source snapshot; each selected sidecar remains subject to the same native proof."
+  ],
+  "revision": 2,
+  "supersedes": {
+    "path": "/workspace/scratch/0a70543c4ce8/m1-read/four-slot-renderer-extension-independent-review.json",
+    "sha256": "88cda907b76908ca1ce3632227d7e4e2dcad01fb1a32eeaa18c688ae6516b39f"
+  }
+}

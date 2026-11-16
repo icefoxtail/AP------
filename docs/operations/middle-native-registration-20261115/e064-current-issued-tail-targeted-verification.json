@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "archive-issued-current-tail-recovery-targeted-verification-v1",
+  "baseCommit": "65a0f805661bd9f22190ad5d901e8d1b77914c90",
+  "latestObservedMain": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "code": {
+    "path": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+    "sha256": "09bc03280c922601417dc2b78229ccf0bb68eee215d628c50aeda85587ae2e6d"
+  },
+  "tests": [
+    {
+      "name": "issued-current-descendant-recovery-tests.tap",
+      "tests": 90,
+      "pass": 90,
+      "fail": 0,
+      "logSha256": "0d11dae9117dcb6933120c1eaeb6d5b7a8fbbd47e3a57b4c102dfede16027046",
+      "recoveryCodeSha256": "1ed142ae80d2ba143bd00c573a2d5d37aa953affcf088e6da7f1da9e071daefc"
+    },
+    {
+      "name": "issued-current-descendant-inputrefs-test.tap",
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "logSha256": "3dc7fe0c6e873905ceb1569c0bee1d65825fb53190f1ede70bb56504d6b0f38f",
+      "recoveryCodeSha256": "09bc03280c922601417dc2b78229ccf0bb68eee215d628c50aeda85587ae2e6d"
+    },
+    {
+      "name": "e9-merged-fixture-targeted.tap",
+      "tests": 18,
+      "pass": 18,
+      "fail": 0,
+      "logSha256": "f8be7fdb4f84f7ffbe17a300c914f68da34df04de4590dad76484957c786731d",
+      "recoveryCodeSha256": null
+    }
+  ],
+  "finalDeltaAfter90Tests": "Return final ctx.refs as detached inputRefs; positive coverage verifies current tail inclusion and no alias to request refs. No validator logic changed.",
+  "independentReview": {
+    "path": "docs/operations/middle-native-registration-20261115/e064-current-issued-tail-independent-review.json",
+    "sha256": "9204c088089374bd83f92fea04f182f908fbded2d4cd6f79f3f84f0ea43c8a60",
+    "blockingFindings": 0,
+    "reviewerExecution": 0
+  },
+  "actualE064Registration": "IN_PROGRESS_NOT_VERIFIED",
+  "consumerE064": "NOT_RUN",
+  "fullPublicationCI": "NOT_RUN",
+  "newMetadataApprovals": 0,
+  "m3s1Changes": 0
+}

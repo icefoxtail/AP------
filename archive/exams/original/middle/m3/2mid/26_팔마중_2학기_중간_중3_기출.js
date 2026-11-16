@@ -44,7 +44,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "직각삼각형의 두 변의 비로 sin A와 tan B를 각각 표현한 뒤 공통 변을 약분하는 삼각비 정의 문항이다.",
-    "decisiveStep": "직각삼각형의 두 변의 비로 sin A와 tan B를 각각 표현한 뒤 공통 변을 약분하는 삼각비 정의 문항이다."
+    "decisiveStep": "직각삼각형의 두 변의 비로 sin A와 tan B를 각각 표현한 뒤 공통 변을 약분하는 삼각비 정의 문항이다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -90,7 +91,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "피타고라스 정리로 빠진 변 AC를 먼저 구한 뒤 같은 변을 분자로 갖는 두 삼각비를 더한다.",
-    "decisiveStep": "피타고라스 정리로 빠진 변 AC를 먼저 구한 뒤 같은 변을 분자로 갖는 두 삼각비를 더한다."
+    "decisiveStep": "피타고라스 정리로 빠진 변 AC를 먼저 구한 뒤 같은 변을 분자로 갖는 두 삼각비를 더한다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -317,7 +319,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "수평거리와 올려본 각의 탄젠트로 눈높이 위의 높이를 구한 뒤 실제 눈높이를 더한다.",
-    "decisiveStep": "수평거리와 올려본 각의 탄젠트로 눈높이 위의 높이를 구한 뒤 실제 눈높이를 더한다."
+    "decisiveStep": "수평거리와 올려본 각의 탄젠트로 눈높이 위의 높이를 구한 뒤 실제 눈높이를 더한다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -455,7 +458,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "특수각으로 직각삼각형의 두 변을 구한 뒤 빗변에 내린 높이의 닮음 관계로 AD·BD를 얻어 넓이를 구한다.",
-    "decisiveStep": "특수각으로 직각삼각형의 두 변을 구한 뒤 빗변에 내린 높이의 닮음 관계로 AD·BD를 얻어 넓이를 구한다."
+    "decisiveStep": "특수각으로 직각삼각형의 두 변을 구한 뒤 빗변에 내린 높이의 닮음 관계로 AD·BD를 얻어 넓이를 구한다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -546,7 +550,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "직사각형 안의 직각삼각형에서 높이 정리로 AD를 복원하고 BC/AC를 코사인 값으로 읽는다.",
-    "decisiveStep": "직사각형 안의 직각삼각형에서 높이 정리로 AD를 복원하고 BC/AC를 코사인 값으로 읽는다."
+    "decisiveStep": "직사각형 안의 직각삼각형에서 높이 정리로 AD를 복원하고 BC/AC를 코사인 값으로 읽는다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -592,7 +597,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "접은 선의 대칭성으로 각을 이등분하고 평행한 종이 가장자리의 각을 연결해 밑변을 구한 뒤 넓이를 계산한다.",
-    "decisiveStep": "접은 선의 대칭성으로 각을 이등분하고 평행한 종이 가장자리의 각을 연결해 밑변을 구한 뒤 넓이를 계산한다."
+    "decisiveStep": "접은 선의 대칭성으로 각을 이등분하고 평행한 종이 가장자리의 각을 연결해 밑변을 구한 뒤 넓이를 계산한다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 14,
@@ -730,7 +736,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "중심에서 두 현까지 거리가 같아 대응 중심각이 같음을 얻고 주어진 수선 사이 각을 중심각으로 바꾼 후 원주각으로 반감한다.",
-    "decisiveStep": "중심에서 두 현까지 거리가 같아 대응 중심각이 같음을 얻고 주어진 수선 사이 각을 중심각으로 바꾼 후 원주각으로 반감한다."
+    "decisiveStep": "중심에서 두 현까지 거리가 같아 대응 중심각이 같음을 얻고 주어진 수선 사이 각을 중심각으로 바꾼 후 원주각으로 반감한다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 17,
@@ -954,7 +961,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "정육면체에서 면·공간 대각선으로 직각삼각형 EGC의 세 변을 복원한 뒤 sin과 tan을 정의로 읽는다.",
-    "decisiveStep": "정육면체에서 면·공간 대각선으로 직각삼각형 EGC의 세 변을 복원한 뒤 sin과 tan을 정의로 읽는다."
+    "decisiveStep": "정육면체에서 면·공간 대각선으로 직각삼각형 EGC의 세 변을 복원한 뒤 sin과 tan을 정의로 읽는다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -994,7 +1002,8 @@ window.questionBank = [
   ,
     "curriculum": "2015",
     "primaryMethod": "두 관측점의 탄젠트 식에 동일한 높이를 사용하고 거리 차 20을 결합해 하나의 방정식으로 높이를 결정한다.",
-    "decisiveStep": "두 관측점의 탄젠트 식에 동일한 높이를 사용하고 거리 차 20을 결합해 하나의 방정식으로 높이를 결정한다."
+    "decisiveStep": "두 관측점의 탄젠트 식에 동일한 높이를 사용하고 거리 차 20을 결합해 하나의 방정식으로 높이를 결정한다.",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,

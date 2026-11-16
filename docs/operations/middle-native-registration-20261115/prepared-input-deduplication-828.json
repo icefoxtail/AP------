@@ -1,0 +1,65 @@
+{
+  "schema": "middle-prepared-input-deduplication-v1",
+  "rootBase": "ad5eeae69bd6d72d0d3154c8c256cf7d7f430744",
+  "currentMain": "828b0797450a56280208506b8808b62e2d341195",
+  "scope": [
+    "M3S2 E003 native9 + preserve4",
+    "M3S2 E052 preserve2"
+  ],
+  "authorityComparison": {
+    "path": "AP-m3-current-negative-v2/.tmp/main-e9af-828b-selected-scope-inventory.json",
+    "sha256": "3b1417478f0408e3f2200a78c3afc0011fa518cc0c1adf904106aea205d0684b",
+    "sameFields": [
+      "UID",
+      "ordinal",
+      "before",
+      "after",
+      "identityBefore",
+      "sourceReview"
+    ],
+    "note": "Independent read verifies equivalent selected patches and whole E003 question objects; raw E003 source uses current-main serialization."
+  },
+  "moves": [
+    {
+      "preparedInput": ".archive-meta-register/inbox/m3s2-audit-e003-native9-20261116.json",
+      "archivedPreparedInput": "docs/operations/middle-native-registration-20261115/superseded-prepared-inputs/m3s2-audit-e003-native9-20261116.json",
+      "sha256": "4e32ae6ba63a499bd21fbbcb5af852fa514973e77c436e6bd3f207095ddd83d4",
+      "currentMainInput": ".archive-meta-register/inbox/m3s2-e003-native9-course-scope-20261116.json",
+      "currentMainInputSha256": "aed7def229f4984f56aa5f19f83fe01f094ca599daf6bbf34f74547e7da0eab5",
+      "ownRows": 9,
+      "currentRows": 9,
+      "action": "SHELVE_DUPLICATE_PREPARED_INPUT_ONLY",
+      "currentRegistrationStatus": "NOT_CLAIMED"
+    },
+    {
+      "preparedInput": ".archive-meta-register/inbox/m3s2-e003-course-namespace-preserve4-20261116.json",
+      "archivedPreparedInput": "docs/operations/middle-native-registration-20261115/superseded-prepared-inputs/m3s2-e003-course-namespace-preserve4-20261116.json",
+      "sha256": "7bc08a5c663c883c98ea7cfc96233f1b369f2298c9f3dfe956853a5622bd47ed",
+      "currentMainInput": ".archive-meta-register/inbox/m3s2-e003-preserve4-course-scope-20261116.json",
+      "currentMainInputSha256": "2104a09c925031ffec0acbd2d3faca60ac4a86e7bc33914a69378186174dccc8",
+      "ownRows": 4,
+      "currentRows": 4,
+      "action": "SHELVE_DUPLICATE_PREPARED_INPUT_ONLY",
+      "currentRegistrationStatus": "NOT_CLAIMED"
+    },
+    {
+      "preparedInput": ".archive-meta-register/inbox/m3s2-finalized-e052-preserve2-20261115.json",
+      "archivedPreparedInput": "docs/operations/middle-native-registration-20261115/superseded-prepared-inputs/m3s2-finalized-e052-preserve2-20261115.json",
+      "sha256": "006b83d4a60263b1837d2fa9b9a2bd39d2c95a3db50378a2b68033cdb7bd978c",
+      "currentMainInput": ".archive-meta-register/inbox/m3s2-e052-preserve2-current-source-20261116.json",
+      "currentMainInputSha256": "79ad2bdcff426007be3f3b4035f366e37e2bb070a47f7696e52e1c160c281338",
+      "ownRows": 2,
+      "currentRows": 2,
+      "action": "SHELVE_DUPLICATE_PREPARED_INPUT_ONLY",
+      "currentRegistrationStatus": "NOT_CLAIMED"
+    }
+  ],
+  "preserved": [
+    "main pending inputs",
+    "main issued receipts",
+    "main rejected original E003 input and rejection",
+    "latest main source bytes"
+  ],
+  "productionRegistrationsClaimed": 0,
+  "excludedCourse": "M3S1"
+}

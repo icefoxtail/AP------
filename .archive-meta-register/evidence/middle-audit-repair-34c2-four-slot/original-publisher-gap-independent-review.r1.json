@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "scoped-independent-code-review-v1",
+  "reviewer": "GPT_M1_0A70543C4CE8",
+  "rootOwner": "GPT_ROOT_0A70543C4CE8",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "reviewedAt": "2026-11-16T00:57:40.795107+00:00",
+  "scope": "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP technical native ACTIVE definition reuse branch and its targeted fixture/regression additions",
+  "status": "NO_BLOCKING_FINDING_IN_REVIEWED_SCOPE",
+  "repositoryMutations": false,
+  "testsRunByReviewer": false,
+  "mathematicalReassessment": false,
+  "reviewedFiles": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-proposal-finalization.mjs",
+      "sha256": "633cb4c1b28325720821ba3f8f5037ea0a6749b6ed319c5bc3e13abf7e76a12d"
+    },
+    {
+      "path": "tests/archive-reviewed-exam-registration-v2.test.mjs",
+      "sha256": "9922c1bc86fe87ce56e6585d128e2f6a2bbc82c50e4a475a928ef59e4cdc5ac7"
+    }
+  ],
+  "immutableNativeRead": {
+    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E043.proposals.json",
+    "sha256": "a47b881f42025257dc62c069af75b202386383e741c3fdaaa4815bb8d5bf20bf",
+    "index": 1,
+    "questionUid": "qid_v1_916c03908e6a08d858a3e99febc0f465ee8e366e4496ec1788deb8ae87601546",
+    "keysCount": 10,
+    "newProblemTypeRequired": false,
+    "newTemplateRequired": false
+  },
+  "observations": [
+    "Selection remains confined to the m3-s2-complete-semantic-review-v1 native proposal inventory and SHA-bound immutable proposal document.",
+    "The existing inventory path validates exact selected UID membership before the technical reuse branch.",
+    "Shared guards require accepted/final PT and TPL equality, pre-existing ACTIVE definitions, unchanged before/after objects, and exact parent relationship.",
+    "The new branch rejects fields outside the actual ten-key native shape, requires both new-definition flags to be false, and requires all explanatory/owner/RPM text values.",
+    "The technical proof explicitly retains originalPublisherParentAndLeafResolved=false and currentCurriculumBindingResolution=NOT_ASSERTED; no new semantic definition, leaf approval, or mathematical QA is claimed.",
+    "New focused fixture exercises actual no-ID ten-key shape; rejection cases cover PT/TPL drift, new-definition flags, missing flag, unknown key, and fresh rather than pre-existing definitions. Existing broad exact-binding/definition guards are unchanged."
+  ],
+  "rootReportedValidation": {
+    "targetedTestsPassed": 3,
+    "actualE043Q11OfficialDryRun": "PASS",
+    "independentlyExecutedByReviewer": false
+  },
+  "limitations": [
+    "This is a code and immutable native data binding review. Registration persistence, consumer behavior, and student publication are separate gates."
+  ]
+}

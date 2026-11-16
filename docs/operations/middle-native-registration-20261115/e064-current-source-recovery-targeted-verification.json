@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "archive-issued-current-source-recovery-targeted-verification-v1",
+  "baseCommit": "411b28cce03e8ce01f43a3619908355c93827fd0",
+  "scope": "separate opt-in preserving the complete original issued cohort and immutable original replay",
+  "inputs": [
+    {
+      "path": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+      "sha256": "e5e813f5772b5d48ad83a010048f8262605f464ce6b398733093852f360bbcfa"
+    },
+    {
+      "path": "tests/archive-reviewed-exam-registration-v2.test.mjs",
+      "sha256": "9a03f4f0e73b34d27f062f7ed79b4cce0b7ac0b695d70fae19655fe9ca26ac5c"
+    },
+    {
+      "path": "docs/architecture/Reviewed_Exam_Meta_Registration_v2.md",
+      "sha256": "be6b35ea665fd3c1be5d2e7d2faeea0e9ca8d15b341d11d5171b48b5825c1b12"
+    }
+  ],
+  "command": "node --test --test-name-pattern='issued binding' tests/archive-reviewed-exam-registration-v2.test.mjs",
+  "targetedTests": {
+    "tests": 71,
+    "pass": 71,
+    "fail": 0,
+    "durationMs": 18447.794164,
+    "logSha256": "76a63560487c100592cc37b2230db2aa3d5a5ce951890fd588637b8116abfe5c"
+  },
+  "independentReview": {
+    "path": "docs/operations/middle-native-registration-20261115/e064-current-source-recovery-independent-review.json",
+    "sha256": "80fa98f87c33beb2429153b46e5b9b70d5d6e7ff34806fdd6a9dbb9655d24af4",
+    "reviewerExecution": 0
+  },
+  "actualE064Registration": "NOT_RUN",
+  "consumer": "NOT_RUN",
+  "wholePublicationCI": "NOT_RUN",
+  "newMetadataApprovals": 0,
+  "m3s1Changes": 0,
+  "remaining": [
+    "Reconcile latest committed E064 source-only descendant before generating actual repair input",
+    "Actual dry/write/replay/native/Consumer against latest main",
+    "Exact-head required CI"
+  ]
+}

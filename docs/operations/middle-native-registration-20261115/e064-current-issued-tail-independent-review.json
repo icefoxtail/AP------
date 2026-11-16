@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "e064-tail-recovery-independent-code-review-v1",
+  "reviewer": "GPT_AUDIT_M3_INDEPENDENT",
+  "status": "STATIC_PASS",
+  "modulePath": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+  "moduleSha256": "09bc03280c922601417dc2b78229ccf0bb68eee215d628c50aeda85587ae2e6d",
+  "firstReviewedCurrentSourceModuleSha256": "e5e813f5772b5d48ad83a010048f8262605f464ce6b398733093852f360bbcfa",
+  "tailBeforeFixSha256": "1ed142ae80d2ba143bd00c573a2d5d37aa953affcf088e6da7f1da9e071daefc",
+  "blockingFindings": [],
+  "correctedFinding": {
+    "kind": "INPUT_CLOSURE_RETURN",
+    "description": "Final request references include current issued tail authority; returned inputRefs now match final ctx.refs as a separate structured clone."
+  },
+  "checks": [
+    "The additional ref is accepted only by the exact current-source opt-in; original v1 contract and original native replay are unchanged.",
+    "Current issued receipt is pinned to exact immutable/live bytes and ancestor current-source commit and identical source bytes.",
+    "Each generic predecessor retains exact original full UID scope, denominator, identity, approved values, empty mutation collections, original source overrides and exact provenance append/revision.",
+    "Every chain evidence ref is verified both live and at the pinned current-issued commit; selected whole-question bytes and full source ID order remain equal to the original replay.",
+    "The chain must end in the exact replayed original issued receipt and does not permit an arbitrary old leaf exception.",
+    "New metadata/runtime rows append to current issued rows, preserving current tail provenance; the old issued/current tail receipts are never output targets.",
+    "Expected proof binds original replay and current tail chain separately; runtime and full-cohort descendant checks remain in force.",
+    "No new approval verdict cache or permission fallback is added."
+  ],
+  "readOnlyActualMainEvidence": {
+    "path": ".tmp/e064-independent/e9af-e064-read.json",
+    "sha256": "277472d1b35c8f9cf56a5bdb90cde0f581bd2ec8872d4d4318bfc72680545c55"
+  },
+  "testExecutionsByReviewer": 0,
+  "authorTests": "ROOT_REPORTED_90_PLUS_ONE_FOCUSED_NOT_RERUN",
+  "actualTypedRecovery": "NOT_YET_RUN",
+  "productionWritesByReviewer": 0,
+  "remoteWrites": 0
+}

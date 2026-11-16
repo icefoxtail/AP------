@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "m3s2-e003-current-e9-verification-v1",
+  "status": "LOCAL_OFFICIAL_CONSUMER_PASS",
+  "codeAndInputCommit": "65a0f805661bd9f22190ad5d901e8d1b77914c90",
+  "actualMainPrestate": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "originalInputCommit": "513f32dd4688119847bf023986b14d538840ee24",
+  "original513ResultsPreserved": true,
+  "inputFiles": [
+    {
+      "path": "archive/exams/original/middle/m3/2mid/26_팔마중_2학기_중간_중3_기출.js",
+      "sha256": "02be89e9ab1191ff6b7fce00e8bf477438f371ff22702f411aec1d8ffa6d91d1",
+      "size": 59317
+    },
+    {
+      "path": ".archive-meta-register/inbox/m3s2-audit-e003-native9-20261116.json",
+      "sha256": "4e32ae6ba63a499bd21fbbcb5af852fa514973e77c436e6bd3f207095ddd83d4",
+      "size": 49240
+    },
+    {
+      "path": ".archive-meta-register/inbox/m3s2-e003-course-namespace-preserve4-20261116.json",
+      "sha256": "7bc08a5c663c883c98ea7cfc96233f1b369f2298c9f3dfe956853a5622bd47ed",
+      "size": 6787
+    },
+    {
+      "path": "docs/operations/m3s2-e003-course-namespace-20261116/namespace-transport-proof.json",
+      "sha256": "51239bbc64098e6020f5ec5a356ec83f3258b6f358757205f79192f49c853f03",
+      "size": 12805
+    }
+  ],
+  "sourceQuestions": 24,
+  "newRequested": 9,
+  "preservedExisting": 4,
+  "nativePassed": 13,
+  "autoAlreadyRegistered": 13,
+  "fullConsumerCounts": {
+    "changed": 13,
+    "checked": 13,
+    "passed": 13,
+    "skippedUnchanged": 0
+  },
+  "consumerLanes": [
+    {
+      "canonical": 9,
+      "usableMetaLane": 0
+    },
+    {
+      "canonical": 4,
+      "usableMetaLane": 0
+    }
+  ],
+  "checks": [
+    {
+      "id": "native-projection",
+      "outcome": "success"
+    },
+    {
+      "id": "native-consumer",
+      "outcome": "success",
+      "preservedNativeApprovals": {
+        "requests": 1,
+        "preservedMetadataApprovals": 4,
+        "newMetadataApprovals": 0,
+        "approvalTypes": [
+          "FINAL_QA"
+        ]
+      }
+    }
+  ],
+  "studentPayloadUnchanged": 24,
+  "outsideSourceWholeObjectsUnchanged": 15,
+  "original4ReceiptUnchanged": true,
+  "preserved4AllValuesExceptProvenanceUnchanged": true,
+  "outside13MetadataUnchanged": 28877,
+  "outside9IdentityUnchanged": 28881,
+  "newCurriculumJudgments": 0,
+  "newMathematicalQa": false,
+  "sourceAssetsChanged": 0,
+  "generatedDataCommitted": 0,
+  "receipts": [
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e003-native9-20261116.json",
+      "sha256": "a6b625e8a948595ad77d90e80b7607d4acf1e6e890155d1a50cd455558e2144e",
+      "totalQuestions": 9,
+      "sourceBlobSha1": "2fcf33b3d64cce1412b0cbe33c3b943ff0c087ad"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e003-course-namespace-preserve4-20261116.json",
+      "sha256": "7a87b2a817cc20970f7b1e0a510ec60eb07349d913086d9eeb6ab0b24e898c03",
+      "totalQuestions": 4,
+      "sourceBlobSha1": "2fcf33b3d64cce1412b0cbe33c3b943ff0c087ad"
+    }
+  ],
+  "stages": [
+    {
+      "path": ".tmp/m3s2-audit-e003-native9-20261116-dry.json",
+      "sha256": "a528fa79d30559c0cca5badc24374f3b41b73b59a141a13f9d0fae8be729f4ef",
+      "stage": "dry",
+      "requestId": "m3s2-audit-e003-native9-20261116",
+      "elapsedSeconds": 6.599841984003433,
+      "logSha256": "0cdc6ff4652f0d4f85fe25aa7b895f1c4ff605ee83fcc4226cd65912f3dd9622"
+    },
+    {
+      "path": ".tmp/m3s2-audit-e003-native9-20261116-write.json",
+      "sha256": "5060e7a32cbfb8737d88d325d575e4dfa66ed1c859d1483a7233dd12751d1594",
+      "stage": "write",
+      "requestId": "m3s2-audit-e003-native9-20261116",
+      "elapsedSeconds": 5.9183796669967705,
+      "logSha256": "4c1fb5677a2a4d73988f7a3d8ac8a1495a9754bff3df33570fb279415cfc814c"
+    },
+    {
+      "path": ".tmp/m3s2-audit-e003-native9-20261116-replay.json",
+      "sha256": "628a93a0aebead2422a253bb58e96a80727f1a9ea25e97eaf5296a50ee5f11c4",
+      "stage": "replay",
+      "requestId": "m3s2-audit-e003-native9-20261116",
+      "elapsedSeconds": 2.0845079560021986,
+      "logSha256": "32a6d759c01fac2497eefa4dddc1fe437e7eff244c4da0611c216de5220d3d37"
+    },
+    {
+      "path": ".tmp/m3s2-e003-course-namespace-preserve4-20261116-dry.json",
+      "sha256": "3ee2db1bd4be62a4567a6189c51eedf0728b075a374e9b33faaeba09475e1aa1",
+      "stage": "dry",
+      "requestId": "m3s2-e003-course-namespace-preserve4-20261116",
+      "elapsedSeconds": 3.5181924520002212,
+      "logSha256": "39334b166c3127e8ce174ea9bbc48f7464078f238d4502af6727474ed01b4b7e"
+    },
+    {
+      "path": ".tmp/m3s2-e003-course-namespace-preserve4-20261116-write.json",
+      "sha256": "abb58232c0d8b0d1450f77a4713798d6846810ea14fee41e35e99d9ed7d0664e",
+      "stage": "write",
+      "requestId": "m3s2-e003-course-namespace-preserve4-20261116",
+      "elapsedSeconds": 4.4971570130001055,
+      "logSha256": "49bbd72cb168886090d28c1121671b681cfb5e7b14ed5e77e94f3cdc70cbda57"
+    },
+    {
+      "path": ".tmp/m3s2-e003-course-namespace-preserve4-20261116-replay.json",
+      "sha256": "2ac8e8212aece2f43e90bd011194b3ca03af0f8b520f314a9d029a800165f81c",
+      "stage": "replay",
+      "requestId": "m3s2-e003-course-namespace-preserve4-20261116",
+      "elapsedSeconds": 2.276148468001338,
+      "logSha256": "b8968ea784ce617dbf4b28bd9ccbb282f79f5b22b7b214508285551b5e48125d"
+    }
+  ],
+  "proofs": [
+    {
+      "path": ".tmp/e003-preparation.json",
+      "sha256": "b24f51a4f1b9c5beb7d15eab622e54ef89266e0510220f22d518500e52a77e0e"
+    },
+    {
+      "path": ".tmp/e003-consumer-input-hydration.json",
+      "sha256": "564d35191510ffd90ec2ade2191228f2e70347f3269f7bc708a5bd504648d904"
+    },
+    {
+      "path": ".tmp/e003-native-boundary-verification.json",
+      "sha256": "512bcd14c59313a793289a0279859407e1066e05c25685d7bd95722336f39ac1"
+    },
+    {
+      "path": ".tmp/e003-full-catalog-result.json",
+      "sha256": "0db52ec614f00a7a4e1359c8752ba4922c925e39c36b2f58a1ac303dacebf39f"
+    },
+    {
+      "path": ".tmp/e003-full-consumer-verification.json",
+      "sha256": "2b62e84b961a69079c1ff349a5322b0f39128750a6b2bfd47af204a888325a1a"
+    },
+    {
+      "path": ".tmp/e003-full-consumer-result.json",
+      "sha256": "0dfe6e93662a7bd6a0ee909b072ba2b8e660b6abf36948ddbe3eea17d9f9fbe5"
+    },
+    {
+      "path": ".tmp/e003-owned-consumer-descriptors.json",
+      "sha256": "92e4ceac76d4059fa5d06d325bbd84e902eb37a7d7b507f4d747eaab4638fd5b"
+    }
+  ],
+  "selectionScope": "EXACT_TWO_OWNED_REQUESTS",
+  "globalPendingSelection": "NOT_RUN",
+  "immutableShadow": "PENDING_ROOT_COMBINED",
+  "mainRegistration": "NOT_RUN",
+  "readOnlyCurrentPrestateInventory": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-m3-e003-course-namespace/.tmp/e064-independent/e9af-e064-read.json",
+    "sha256": "277472d1b35c8f9cf56a5bdb90cde0f581bd2ec8872d4d4318bfc72680545c55"
+  },
+  "independentInputReviewSha256": "a480842e4ca915ba20308fafc21960895b6907825cc53beadb9c057ded013aff"
+}

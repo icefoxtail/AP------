@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-m2s2-current-contract-integrated-code-verification-v1",
+  "baseCommit": "5d7ae10875723ca9d6410fa2fea14a1343fae591",
+  "authorCodeCommit": "f0b2b04d90b155a273099c6bbbd342a4ab7265fa",
+  "files": [
+    {
+      "path": "docs/architecture/4slot-m2s2-current-continuity-v1.md",
+      "sha256": "2e42bb59b9f14765a56d1bbe3a8104e23ded1e73ac71acf6ea5dc719379f5eb5"
+    },
+    {
+      "path": "tests/item-4slot-m2s2-current-continuity.test.cjs",
+      "sha256": "d5086ba247c849c8df748722a4a069eb9b37d23ed95be3b08b93af0e869b2f67"
+    },
+    {
+      "path": "tests/item-4slot-runtime.test.cjs",
+      "sha256": "e7ad037b60f14d3229f5749ab70dce35fd34d9a8a0415a3370860cd853d79d69"
+    },
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "sha256": "f8fdfe9ce5055a5e313f275edc524ca2a7a9703ff6ab4bebd616832f11a1e0ae"
+    },
+    {
+      "path": "tools/4slot/m2s2-current-continuity.cjs",
+      "sha256": "8b2ba711215749d6feaa3cb29075646ab7223dcf01aa6c951a1d2007bd343507"
+    }
+  ],
+  "tests": [
+    {
+      "path": ".tmp/m2-final-merged-contracts.tap",
+      "sha256": "228ae84359321c207480fda09f0a3e1e0b1e48f332646db3c87b764d7f754092",
+      "tests": 179,
+      "pass": 179,
+      "fail": 0
+    },
+    {
+      "path": ".tmp/m2-final-merged-m3-regression.tap",
+      "sha256": "289b92cca8c90e9fa8da47061c014323d9c5a7d2d54c51803ded4512762956c8",
+      "tests": 99,
+      "pass": 99,
+      "fail": 0
+    }
+  ],
+  "integration": "Preserve existing registered-renderer and M3 negative gates before cache; append M2 gate and both M2/M3 obligation digests; preserve all helper hashes.",
+  "sourceChanges": 0,
+  "assetChanges": 0,
+  "slotApprovals": 0,
+  "newMathematicalQa": false,
+  "mainRegistration": "NOT_RUN",
+  "fullPublicationCI": "NOT_RUN"
+}

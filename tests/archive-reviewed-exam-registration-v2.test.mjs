@@ -12,10 +12,12 @@ import { registerDifficulty5 } from "../archive/tools/meta-foundation/register-d
 import { planQuestion as planAutoQuestion, sourceFingerprint as auditSourceFingerprint, contentFingerprint as auditContentFingerprint, loadBank as loadSourceBank } from "../archive/tools/meta-foundation/auto-register-merged-source.mjs";
 import { validateActiveMetaFields, loadActiveMetaRegistry } from "../archive/tools/meta-foundation/active-registry.mjs";
 import { nativeReviewedRendererRebind } from "../archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs";
+import { verifyRegisteredRendererContinuity } from "../tools/4slot/registered-renderer-continuity.mjs";
 import { buildReviewedRendererBinding } from "../archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs";
 import { loadAuditPreservation } from "../archive/tools/meta-foundation/native-audit-preservation.mjs";
 import { buildReviewedSourceBinding, reviewedSourceBindingPath } from "../archive/tools/meta-foundation/reviewed-source-binding.mjs";
-import { prepareIssuedSourceBindingRecovery, issuedSourceBindingRecoveryPath, isExplicitIssuedSourceBindingRecoveryRequest } from "../archive/tools/meta-foundation/issued-source-binding-recovery.mjs";
+import { prepareIssuedSourceBindingRecovery, prepareIssuedSourceBindingCurrentTransport, issuedSourceBindingRecoveryPath, isExplicitIssuedSourceBindingRecoveryRequest } from "../archive/tools/meta-foundation/issued-source-binding-recovery.mjs";
+import { authorityHoldSealPath } from "../archive/tools/meta-foundation/native-authority-correction.mjs";
 import { loadCanonical as recoveryCanonical, buildCompiled as recoveryCompiled, compiledOutputs as recoveryOutputs, buildRegistryIndex as recoveryIndex } from "../archive/tools/meta-foundation/compile-meta-foundation.mjs";
 import { verifyChangedUidConsumerApproval } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
 import { SOURCE_SUBSET_SCHEMA, SOURCE_SUBSET_EVIDENCE_SCHEMA, sourceSubsetEvidencePath,
@@ -268,7 +270,7 @@ test("partial missing-array projection rejects reordering an explicit source tag
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /source\/approved metadata parity/);
 });
 
-function fixture(t, course = "중1 수학", curriculum = "2022") {
+function fixture(t, course = "중1 수학", curriculum = "2022", unitKey = "UNIT_NEW", subKey = "SUB_NEW") {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "archive-meta-v2-"));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const put = (p, value) => { const full = path.join(root, p); fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, typeof value === "string" ? value : j(value)); };
@@ -276,14 +278,14 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   put("docs/approval.json", { approved: true, meaning: "fixture reviewed definitions" });
   const evidenceRefs = [{ path: "docs/approval.json", sha256: hash(fs.readFileSync(path.join(root, "docs/approval.json"))) }];
   const q = { id: 1, content: "학생용 지문", choices: ["1", "2"], answer: "1", solution: "학생용 해설", image: "",
-    standardCourse: course, standardUnitKey: "UNIT_NEW", standardUnit: "새 단원", subUnitKey: "SUB_NEW", subUnit: "새 세부단원",
+    standardCourse: course, standardUnitKey: unitKey, standardUnit: "새 단원", subUnitKey: subKey, subUnit: "새 세부단원",
     level: "중", problemTypeKey: "PT_NEW", templateKey: "TPL_NEW", crossConceptKeys: ["CC_NEW"], conditionKeys: ["COND_NEW"], integrationPattern: "NONE", difficultyBucket: 3 };
   const source = "fixture/exam.js";
   const text = `window.questions = ${JSON.stringify([q])};\n`;
   put(`archive/exams/${source}`, text);
   const fingerprint = hash(JSON.stringify({ content: q.content, choices: q.choices, answer: q.answer, solution: q.solution, image: q.image }));
   const current = { questionUid: "uid1", sourceArchiveFile: source, sourceOrdinal: 1, sourceFingerprint: fingerprint,
-    standardCourse: course, standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW", reviewStatus: "review_required" };
+    standardCourse: course, standardUnitKey: unitKey, subUnitKey: subKey, reviewStatus: "review_required" };
   put(META, { records: [current], counts: {} });
   put("archive/data/question_identity_map.json", { records: [{ ...current }] });
   put(`${CANON}/registry_index.json`, { activePacks: [], activeConceptShards: [], conditionRegistry: { id: "CONDITION_CORE", version: "1", status: "ACTIVE" }, canonicalSources: [{ path: `${CANON}/condition_registry.json` }],
@@ -296,13 +298,13 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   const base = `${CANON}/packs/new-course`;
   change(`${CANON}/registry_index.json`, "activePacks", { id: "NEW_COURSE" }, null, { id: "NEW_COURSE", version: "1.0.0", status: "ACTIVE" });
   change(`${base}/pack.json`, null, null, null, { schemaVersion: "meta-foundation-pack-v1", packId: "NEW_COURSE", packVersion: "1.0.0", canonicalStatus: "ACTIVE", curricula: [curriculum], standardCourses: [course] });
-  change(`${base}/taxonomy.json`, null, null, null, { status: "ACTIVE", problemTypes: [{ problemTypeKey: "PT_NEW", canonicalLabelKo: "새 유형", definition: "검수된 유형 의미", ownerPack: "NEW_COURSE", status: "ACTIVE", sourceUnit: "UNIT_NEW", supportingQuestionUids: ["uid1"], supportingItemCount: 1 }], templates: [{ templateKey: "TPL_NEW", canonicalLabelKo: "새 풀이 구조", definition: "검수된 풀이 구조", parentProblemTypeKey: "PT_NEW", status: "ACTIVE", sourceUnit: "UNIT_NEW", supportingQuestionUids: ["uid1"], supportingItemCount: 1 }] });
-  change(`${base}/bindings.json`, null, null, null, { status: "ACTIVE", bindings: [{ curriculum, standardCourse: course, standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW", problemTypeKey: "PT_NEW", status: "ACTIVE" }] });
+  change(`${base}/taxonomy.json`, null, null, null, { status: "ACTIVE", problemTypes: [{ problemTypeKey: "PT_NEW", canonicalLabelKo: "새 유형", definition: "검수된 유형 의미", ownerPack: "NEW_COURSE", status: "ACTIVE", sourceUnit: unitKey, supportingQuestionUids: ["uid1"], supportingItemCount: 1 }], templates: [{ templateKey: "TPL_NEW", canonicalLabelKo: "새 풀이 구조", definition: "검수된 풀이 구조", parentProblemTypeKey: "PT_NEW", status: "ACTIVE", sourceUnit: unitKey, supportingQuestionUids: ["uid1"], supportingItemCount: 1 }] });
+  change(`${base}/bindings.json`, null, null, null, { status: "ACTIVE", bindings: [{ curriculum, standardCourse: course, standardUnitKey: unitKey, subUnitKey: subKey, problemTypeKey: "PT_NEW", status: "ACTIVE" }] });
   change(`${base}/aliases.json`, null, null, null, { aliases: [] });
   change(`${CANON}/registry_index.json`, "activeConceptShards", { id: "NEW_CONCEPTS" }, null, { id: "NEW_CONCEPTS", version: "1.0.0", status: "ACTIVE" });
   change(`${CANON}/concepts/new-concepts.json`, null, null, null, { shardId: "NEW_CONCEPTS", shardVersion: "1.0.0", concepts: [{ conceptKey: "CC_NEW", canonicalLabelKo: "새 추가 개념", definition: "추가 개념 근거", supportingQuestionUids: ["uid1"], supportingItemCount: 1, status: "ACTIVE" }] });
   change(`${CANON}/condition_registry.json`, "conditions", { conditionKey: "COND_NEW" }, null, { conditionKey: "COND_NEW", canonicalLabelKo: "새 조건", definition: "조건 근거", status: "ACTIVE" });
-  for (const row of [{ key: "UNIT_NEW", keyType: "standardUnitKey", labelKo: "새 단원", status: "active" }, { key: "SUB_NEW", keyType: "subUnitKey", parentKey: "UNIT_NEW", standardUnitKey: "UNIT_NEW", labelKo: "새 세부단원", status: "active" }]) change("archive/data/master_tables/js_archive_tag_master.json", "$", { key: row.key }, null, row);
+  for (const row of [{ key: unitKey, keyType: "standardUnitKey", labelKo: "새 단원", status: "active" }, { key: subKey, keyType: "subUnitKey", parentKey: unitKey, standardUnitKey: unitKey, labelKo: "새 세부단원", status: "active" }]) change("archive/data/master_tables/js_archive_tag_master.json", "$", { key: row.key }, null, row);
   const after = { ...Object.fromEntries(Object.entries(q).filter(([k]) => !["id", "content", "choices", "answer", "solution", "image"].includes(k))), curriculum, curriculumKey: curriculum, courseKey: course, rpmSemanticStatus: "FINAL", rpmL3: "reviewed-rpm-l3", rpmL4: "reviewed-rpm-l4" };
   const request = { schemaVersion: "archive-reviewed-exam-meta-register-request-v2", requestId: "test-new-course", examUid: "exam1", sourceArchiveFile: source, expectedSourceBlobSha1: blob(text), expectedQuestionCount: 1,
     approval: { type: "FINAL_QA", metadataReviewed: true, approvedBy: "fixture-reviewer", evidenceRefs }, registryChanges: changes,
@@ -2864,8 +2866,8 @@ test("fieldCandidates rpmPath is accepted when the path is a leaf of the locked 
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /rpmPath not in RPM master or received registry/);
 });
 
-function partialFixture(t) {
-  const f = fixture(t);
+function partialFixture(t, completeActiveMetadata = false) {
+  const f = completeActiveMetadata ? fixture(t, "중2 수학", "2022", "M2-01", "M2-01-FIXTURE") : fixture(t);
   const hold = { questionUid: "uid2", sourceArchiveFile: f.request.sourceArchiveFile, sourceOrdinal: 2,
     sourceFingerprint: "legacy-fingerprint", reviewStatus: "manual_review", metadataStatus: "approved_partial_with_explicit_holds",
     fieldStatus: { problemType: "manual_review_pending", template: "manual_review_pending" }, problemTypeKey: "", templateKey: null };
@@ -3234,8 +3236,8 @@ test("partial source rebind cannot add a held neighbour or change a selected ren
   assert.throws(() => registerReviewedExamV2({ root: changed.root, request: changed.request }), /must not change values/);
 });
 
-function itemRebindFixture(t) {
-  const f = partialFixture(t);
+function itemRebindFixture(t, completeActiveMetadata = false) {
+  const f = partialFixture(t, completeActiveMetadata);
   const sourceSha = q => hash(JSON.stringify({ content: q.content, choices: q.choices, answer: q.answer, solution: q.solution, image: q.image }));
   const bodySha = q => hash(JSON.stringify({ content: q.content, choices: q.choices, image: q.image }));
   const git = (...args) => execFileSync("git", args, { cwd: f.root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
@@ -3421,15 +3423,20 @@ test("partial UID Consumer verification sees only applied records from the recei
   assert.throws(() => verifyConsumerValues(f.root, f.read(META).records, receipt.runtimeRecords, catalog), /Consumer UID missing\/mismatch: uid2/);
 });
 
-function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1", options = {}, mutateReview = () => {}) {
-  if (typeof options === "function") { mutateReview = options; options = {}; }
+function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1", options = {}, mutateReview = () => {}, completeActiveMetadata = false) {
+  if (typeof options === "function") { completeActiveMetadata = typeof mutateReview === "boolean" ? mutateReview : completeActiveMetadata; mutateReview = options; options = {}; }
   const { content = "실제 재검토한 새 발문" } = options;
-  const f = itemRebindFixture(t);
+  const f = itemRebindFixture(t, completeActiveMetadata);
   const git = (...args) => execFileSync("git", args, { cwd: f.root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
   const commit = () => { git("add", "--", f.sourcePath, "docs/native-review.json");
     git("-c", "user.name=Fixture reviewer", "-c", "user.email=fixture@example.invalid", "commit", "--allow-empty", "-qm", "Reviewed current source");
     return git("rev-parse", "HEAD"); };
   Object.assign(f.current, { content, image: "assets/reviewed-figure.svg" });
+  if (completeActiveMetadata) {
+    const difficulty = { difficultyConfidence: 'high', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL' };
+    Object.assign(f.current, difficulty); Object.assign(f.item.after, difficulty);
+    for (const key of Object.keys(difficulty)) f.item.before[key] = f.read(META).records[0][key] ?? null;
+  }
   const bytes = f.writeBank(f.current), sourceBlob = git("hash-object", "-w", f.sourcePath);
   Object.assign(f.item.after, { sourceFingerprint: f.sourceSha(f.current), contentFingerprint: f.bodySha(f.current) });
   const after = structuredClone(f.item.after);
@@ -3468,11 +3475,11 @@ function reviewedSourceFixture(t, schema = "m3-s2-complete-semantic-review-v1", 
   return { ...f, git, review, updateReview };
 }
 
-function rendererContinuityFixture(t, optionsOrSchema = {}, mutateReview) {
+function rendererContinuityFixture(t, optionsOrSchema = {}, mutateReview, completeActiveMetadata = false) {
   const schema = typeof optionsOrSchema === 'string' ? optionsOrSchema : 'm3-s2-complete-semantic-review-v1';
   const { currentDelta = {}, nativeContent, nativeQuestionAlias, nativeReplacement } =
     typeof optionsOrSchema === 'string' ? {} : optionsOrSchema;
-  const f = reviewedSourceFixture(t, schema, { content: nativeContent }, mutateReview);
+  const f = reviewedSourceFixture(t, schema, { content: nativeContent }, mutateReview, completeActiveMetadata);
   if (nativeQuestionAlias !== undefined || nativeReplacement !== undefined) {
     if (nativeQuestionAlias !== undefined) f.current.question = nativeQuestionAlias;
     if (nativeReplacement !== undefined) f.current.aliveReplacement = nativeReplacement;
@@ -3812,8 +3819,8 @@ function correctiveRendererContinuityFixture(t) {
 }
 
 function rendererV2Fixture(t, { insertions = false, transformContainer = value => value, extraDelta = {},
-  nativeSchema = 'm3-s2-complete-semantic-review-v1', mutateReview } = {}) {
-  const f = rendererContinuityFixture(t, nativeSchema, mutateReview), previous = structuredClone(f.nativeQuestion);
+  nativeSchema = 'm3-s2-complete-semantic-review-v1', mutateReview, completeActiveMetadata = false } = {}) {
+  const f = rendererContinuityFixture(t, nativeSchema, mutateReview, completeActiveMetadata), previous = structuredClone(f.nativeQuestion);
   const secondAsset = 'archive/assets/current-relic.svg';
   f.put(secondAsset, '<svg xmlns="http://www.w3.org/2000/svg"><circle r="2"/></svg>');
   Object.assign(f.current, { imageAlt: 'The two given radii and perpendicular foot', imageSize: 'full' }, extraDelta);
@@ -3913,6 +3920,65 @@ test('m2-s2 renderer continuation preserves independent source, reviewer and ass
   }
   const unsupported = rendererV2Fixture(t, { nativeSchema: 'm2-s1-meta-review-v1' });
   assert.throws(() => registerReviewedExamV2({ root: unsupported.root, request: unsupported.request }), /exclusive native-semantic/);
+});
+
+function fourSlotRendererFixture(t) {
+  const f=rendererV2Fixture(t,{nativeSchema:'m2-s2-meta-review-v1',completeActiveMetadata:true});
+  const index=f.read(`${CANON}/registry_index.json`);index.status='ACTIVE';
+  index.canonicalSources.push({path:`${CANON}/metadata_rules.json`});f.put(`${CANON}/registry_index.json`,index);
+  f.put(`${CANON}/metadata_rules.json`,{status:'ACTIVE',integrationPatterns:['NONE']});
+  const conditions=f.read(`${CANON}/condition_registry.json`);conditions.status='ACTIVE';f.put(`${CANON}/condition_registry.json`,conditions);
+  registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const compactPath='archive/data/item-4slot/'+f.request.sourceArchiveFile.replace(/\.js$/,'.4slot.json');
+  const item={ordinal:1,format:'단일 정답',given:[],goal:[1],method:[2],condition:[],candidates:[]};
+  const compact={schemaVersion:'archive-meta-4slot-compact-v1',sourceArchiveFile:f.request.sourceArchiveFile,
+    sourceGitBlobSha:f.manifest.items[0].prefigureSourceRef.gitBlobSha1,dictionaryVersion:'1.0',
+    reviewedBy:{agent:'existing-slot-reviewer',at:'2026-11-15',sampled:[1]},
+    evidence:{branch:'existing-native-review',commit:f.item.sourceReview.reviewCommit,path:'docs/existing-slots.json'},items:[item]};
+  f.put(compactPath,compact);
+  const dictionaryPath='docs/architecture/4slot/term-dictionary-v1.0.json';
+  f.put(dictionaryPath,{dictionaryVersion:'1.0',terms:[{id:1,ko:'값',status:'ACTIVE'},{id:2,ko:'계산',status:'ACTIVE'}]});
+  const ref=p=>({path:p,sha256:hash(fs.readFileSync(path.join(f.root,p)))});
+  const sidecarPath='.archive-meta-register/4slot-renderer-continuity/fixture.json';
+  const doc={schemaVersion:'archive-four-slot-registered-renderer-continuity-v1',scope:'EXISTING_VECTOR_ONLY',
+    sourceArchiveFile:f.request.sourceArchiveFile,questionUid:'uid1',sourceOrdinal:1,sourceQuestionNo:'1',sourceDisplayNumber:1,
+    compactRef:ref(compactPath),compactItemSha256:hash(stable(item)),dictionaryRef:ref(dictionaryPath),
+    currentSourceRef:{...ref(f.sourcePath),gitBlobSha1:blob(fs.readFileSync(path.join(f.root,f.sourcePath)))},
+    receiptRef:ref(f.receiptPath),rendererBindingRef:ref(f.receiptPath.replace(/\.json$/,'.renderer-binding.json')),
+    independentReviewRef:ref(f.independentPath),newFourSlotApprovals:0,newMathematicalQa:false};
+  f.put(sidecarPath,doc);
+  return {...f,compactPath,compact,item,dictionaryPath,sidecarPath,doc,ref};
+}
+test('four-slot registered renderer continuity reuses only the exact issued receipt and unchanged vector',t=>{
+  const f=fourSlotRendererFixture(t),before=fs.readFileSync(path.join(f.root,f.compactPath));
+  const result=verifyRegisteredRendererContinuity(f.root,f.sidecarPath);
+  assert.deepEqual(result,{status:'PASS',questionUid:'uid1',sourceOrdinal:1,sourceBinding:'REGISTERED_RENDERER_CONTINUITY',independentReviewClaim:false,newFourSlotApprovals:0});
+  assert.deepEqual(fs.readFileSync(path.join(f.root,f.compactPath)),before);
+  const child=JSON.parse(execFileSync(process.execPath,[fileURLToPath(new URL('../tools/4slot/registered-renderer-continuity.mjs',import.meta.url)),f.root,f.sidecarPath],{encoding:'utf8'}));
+  assert.deepEqual(child,result);
+  assert.equal(verifyRegisteredRendererContinuity(f.root,f.sidecarPath).status,'PASS');
+});
+test('four-slot registered renderer continuity rejects drift without weakening the native proof',async t=>{
+  for(const [name,mutate,error]of[
+    ['changed vector',f=>{f.compact.items[0].method=[1];f.put(f.compactPath,f.compact);},/BOUND_FILE_CHANGED/],
+    ['changed dictionary',f=>f.put(f.dictionaryPath,{dictionaryVersion:'1.0',terms:[]}),/BOUND_FILE_CHANGED/],
+    ['unregistered receipt',f=>fs.rmSync(path.join(f.root,f.receiptPath)),/ENOENT/],
+    ['changed independent witness',f=>{f.independent.reviewer='someone else';f.put(f.independentPath,f.independent);},/BOUND_FILE_CHANGED/],
+    ['changed asset',f=>f.put(f.assetPath,'<svg/>'),/live renderer bytes changed/],
+    ['wrong UID',f=>{f.doc.questionUid='uid2';f.put(f.sidecarPath,f.doc);},/SELECTED_RENDERER_PROOF_REQUIRED/],
+    ['wrong ordinal',f=>{f.doc.sourceOrdinal=2;f.put(f.sidecarPath,f.doc);},/SOURCE_NUMBER_MISMATCH/],
+    ['new slot approval claim',f=>{f.doc.newFourSlotApprovals=1;f.put(f.sidecarPath,f.doc);},/CLOSED_CONTINUITY_SCOPE/],
+    ['current metadata changed',f=>{const m=f.read(META);m.records[0].difficultyBucket=5;f.put(META,m);},/REGISTERED_METADATA_DRIFT/],
+    ['inactive current registry',f=>{const r=f.read(CANON+'/registry_index.json');r.status='INACTIVE';f.put(CANON+'/registry_index.json',r);},/CURRENT_ACTIVE_BINDING_REQUIRED/],
+    ...['missing','inactive','changed'].map(kind=>['current runtime '+kind,f=>{
+      const directory='archive/data/meta-foundation/runtime';
+      for(const name of fs.readdirSync(path.join(f.root,directory))){const p=directory+'/'+name,r=f.read(p),row=r.records?.find(x=>x.questionUid==='uid1');if(!row)continue;
+        if(kind==='missing')r.records=r.records.filter(x=>x.questionUid!=='uid1');else if(kind==='inactive')r.status='INACTIVE';else row.templateKey='UNREVIEWED';f.put(p,r);
+      }
+    },/CURRENT_RUNTIME_/]),
+    ['current source changed',f=>{f.current.solution+=' changed';f.writeBank(f.current);},/CURRENT_SOURCE_CHANGED/],
+    ['held compact item',f=>{f.item.registrationHold={reason:'SOURCE_EVIDENCE_UNRESOLVED'};f.put(f.compactPath,f.compact);f.doc.compactRef=f.ref(f.compactPath);f.doc.compactItemSha256=hash(stable(f.item));f.put(f.sidecarPath,f.doc);},/EXACT_UNHELD_VECTOR_REQUIRED/],
+  ])await t.test(name,t=>{const f=fourSlotRendererFixture(t);mutate(f);assert.throws(()=>verifyRegisteredRendererContinuity(f.root,f.sidecarPath),error);});
 });
 
 test('renderer v2 fingerprint-only reuse preserves the issued registered rationale origin and RPM proof', t => {
@@ -4852,6 +4918,12 @@ function activeReuseProposalFixture(t, kind, { install = true } = {}) {
     if (kind === "EXISTING_ACTIVE_LINK_GAP") Object.assign(proposal, { existingTemplate: "TPL_NEW", parent: "PT_NEW" });
     else Object.assign(proposal, { reuseTemplate: "TPL_NEW", registrationStatus: "PROPOSAL_ONLY_NOT_INSERTED" });
   }
+  if (kind === "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP") {
+    delete proposal.supportOrdinals;
+    Object.assign(proposal, { kind, historicalSourceRpm: "M3-RPM-059", currentExactRpm: "M2-RPM-182",
+      existingActiveProblemType: "PT_NEW", existingActiveTemplate: "TPL_NEW", newProblemTypeRequired: false,
+      newTemplateRequired: false, reason: "Original publisher leaf remains missing; reuse the existing semantic definition.", owner: "native-release-owner" });
+  }
   f.review.proposals = [proposal, { type: "REUSE_ACTIVE_ADD_CROSSWALK", supportingQuestionUids: ["uid2"] }];
   f.updateReview();
   return { ...f, proposal };
@@ -4951,6 +5023,25 @@ test("technical reuse cannot create a definition, change a parent, disguise sema
   assert.throws(() => registerReviewedExamV2({ root: semantic.root, request: semantic.request }), /selected semantic proposal requires an exact native ID/);
   semantic.review.proposals[2].type = "BOUNDARY_REVIEW"; delete semantic.review.proposals[2].kind; semantic.updateReview();
   assert.throws(() => registerReviewedExamV2({ root: semantic.root, request: semantic.request }), /selected semantic proposal requires an exact native ID/);
+});
+
+test("original publisher parent and leaf debt reuses only unchanged ACTIVE definitions and preserves the unresolved debt", t => {
+  const f = activeReuseProposalFixture(t, "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP");
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
+  const proof = f.read(f.receiptPath).fingerprintRepairs[0].sourceReview.technicalProposalBindings[0];
+  assert.equal(proof.newDefinition, false); assert.equal(proof.newMathematicalQa, false);
+  assert.equal(proof.originalPublisherParentAndLeafResolved, false);
+  assert.equal(proof.currentCurriculumBindingResolution, "NOT_ASSERTED");
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+  for (const delta of [{ existingActiveProblemType: "PT_OTHER" }, { existingActiveTemplate: "TPL_OTHER" },
+    { newProblemTypeRequired: true }, { newTemplateRequired: true }, { newTemplateRequired: undefined },
+    { newDefinition: "unreviewed" }]) {
+    const bad = activeReuseProposalFixture(t, "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP");
+    Object.assign(bad.proposal, delta); bad.updateReview();
+    assert.throws(() => registerReviewedExamV2({ root: bad.root, request: bad.request }), /original publisher gap/);
+  }
+  const fresh = activeReuseProposalFixture(t, "ORIGINAL_PUBLISHER_PARENT_AND_LEAF_GAP", { install: false });
+  assert.throws(() => registerReviewedExamV2({ root: fresh.root, request: fresh.request }), /unchanged pre-existing ACTIVE/);
 });
 
 test("finalization retains exact immutable evidence and dual approval/item binding", t => {
@@ -6577,10 +6668,19 @@ test('renderer v3 prior solution witness cannot be omitted or broaden the exact 
 
 // Model the historical writer's missing sidecar in fixture data only. Production
 // recovery always pins the original issued Git receipt and never edits it.
-function issuedBindingRecoveryFixture(t, { transitiveEvidence = false } = {}) {
+function issuedBindingRecoveryFixture(t, { transitiveEvidence = false, selectedAssets = false, nativeUids = false } = {}) {
   const f=fixture(t),sourcePath=`archive/exams/${f.request.sourceArchiveFile}`;
   f.request=JSON.parse(JSON.stringify(f.request).replaceAll('UNIT_NEW','M1-RECOVERY-TEST'));
+  const uid=n=>nativeUids?`qid_v1_${String(n).repeat(64)}`:`uid${n}`;
+  if(nativeUids)f.request=JSON.parse(JSON.stringify(f.request).replaceAll('uid1',uid(1)));
   f.q.standardUnitKey='M1-RECOVERY-TEST';
+  const assetPaths=selectedAssets?['archive/assets/images/recovery-main.svg','archive/assets/images/recovery-inline.svg','archive/assets/images/recovery-solution.svg']:[];
+  if(selectedAssets){
+    for(const relative of assetPaths)f.put(relative,'<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path d="M0 0L20 20"/></svg>');
+    f.q.image=assetPaths[0].slice('archive/'.length);
+    f.q.solution+=`<img src="${assetPaths[1].slice('archive/'.length)}">`;
+    f.q.solutionImage=assetPaths[2].slice('archive/'.length);
+  }
   const complete={difficultyConfidence:'high',difficultyBoundaryFlag:'NONE',legacyLevelCompatibility:'NORMAL'};
   Object.assign(f.q,complete);Object.assign(f.request.items[0].after,complete);
   Object.assign(f.request.items[0].before,Object.fromEntries(Object.keys(complete).map(key=>[key,null])));
@@ -6593,9 +6693,9 @@ function issuedBindingRecoveryFixture(t, { transitiveEvidence = false } = {}) {
     if(change.path.endsWith('/taxonomy.json'))change.after.templates[0].ownerPack='NEW_COURSE';
   }
   const bank=[f.q,{...f.q,id:2},{...f.q,id:3}];
-  const initial={...f.read(META).records[0],standardUnitKey:f.q.standardUnitKey,contentFingerprint:auditContentFingerprint(f.q),sourceQuestionNo:1};
-  const records=[initial,{...initial,questionUid:'uid2',sourceOrdinal:2,sourceQuestionNo:2},
-    {questionUid:'uid3',sourceArchiveFile:f.request.sourceArchiveFile,sourceOrdinal:3,sourceQuestionNo:3,sourceFingerprint:'held',reviewStatus:'manual_review'}];
+  const initial={...f.read(META).records[0],questionUid:uid(1),standardUnitKey:f.q.standardUnitKey,sourceFingerprint:auditSourceFingerprint(f.q),contentFingerprint:auditContentFingerprint(f.q),sourceQuestionNo:1};
+  const records=[initial,{...initial,questionUid:uid(2),sourceOrdinal:2,sourceQuestionNo:2},
+    {questionUid:uid(3),sourceArchiveFile:f.request.sourceArchiveFile,sourceOrdinal:3,sourceQuestionNo:3,sourceFingerprint:'held',reviewStatus:'manual_review'}];
   f.put(META,{records,counts:{}});f.put('archive/data/question_identity_map.json',{records:structuredClone(records)});
   const writeBank=()=>{const raw=`window.questions=${JSON.stringify(bank)};\n`;f.put(sourcePath,raw);return raw;};
   const git=(...args)=>execFileSync('git',args,{cwd:f.root,encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
@@ -6635,6 +6735,7 @@ function issuedBindingRecoveryFixture(t, { transitiveEvidence = false } = {}) {
   const originalReceiptPath=`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${original.requestId}.json`;
   const bindingPath=reviewedSourceBindingPath(original.requestId),receipt=f.read(originalReceiptPath);
   const runtimePath='archive/data/meta-foundation/runtime/new-course-v1.json';
+  const strictState=new Map([META,runtimePath,originalReceiptPath,bindingPath].map(p=>[p,fs.readFileSync(path.join(f.root,p))]));
   // This is an explicit historical-format fixture transformation, not a writer
   // option: remove only the new durable output and its corresponding provenance.
   for(const p of [META,runtimePath]){const doc=f.read(p);for(const row of doc.records)if(Array.isArray(row.approvalEvidence))row.approvalEvidence=row.approvalEvidence.filter(value=>value!==bindingPath);f.put(p,doc);}
@@ -6644,7 +6745,7 @@ function issuedBindingRecoveryFixture(t, { transitiveEvidence = false } = {}) {
   const priorReceiptRef={path:originalReceiptPath,sha256:hash(fs.readFileSync(path.join(f.root,originalReceiptPath)))};
   const prepared=prepareIssuedSourceBindingRecovery({root:f.root,requestId:'typed-issued-source-recovery',
     originalRequestRef:{commit:pre,path:originalPath,sha256:hash(j(original))},issuedReceiptCommit:issued,priorReceiptRef});
-  return {...f,git,commit,bank,sourcePath,writeBank,original,originalReceiptPath,priorReceiptRef,pre,issued,reviewPath,runtimePath,
+  return {...f,git,commit,bank,sourcePath,writeBank,original,originalReceiptPath,priorReceiptRef,pre,issued,reviewPath,runtimePath,assetPaths,strictState,
     request:prepared.request,prepared,receiptPath:`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${prepared.request.requestId}.json`,
     proofPath:issuedSourceBindingRecoveryPath(prepared.request.requestId)};
 }
@@ -6823,4 +6924,280 @@ test('issued binding recovery keeps returned transitive references detached from
   for(const result of await recoveryAuto(f,preparedAgain.request)) {
     assert.equal(result.native,f.receiptPath);assert.equal(result.auto.status,'ALREADY_REGISTERED');
   }
+});
+
+function currentIssuedBindingRecoveryFixture(t,options={}) {
+  const f=issuedBindingRecoveryFixture(t,options),legacyRequest=structuredClone(f.request);
+  f.bank[2].editorialNote='already committed outside-cohort change before recovery';
+  const raw=f.writeBank(),currentSourceRef={commit:f.commit(),path:f.sourcePath,gitBlobSha1:blob(raw),sha256:hash(raw)};
+  const spec=f.request.approval.sourceRebind;
+  const prepared=prepareIssuedSourceBindingCurrentTransport({root:f.root,requestId:f.request.requestId,
+    originalRequestRef:spec.originalRequestRef,issuedReceiptCommit:spec.issuedReceiptCommit,priorReceiptRef:spec.priorReceiptRef,currentSourceRef});
+  return {...f,request:prepared.request,prepared,currentSourceRef,legacyRequest};
+}
+
+test('issued binding current-source recovery preserves the original replay and exact selected cohort after an outside change',async t=>{
+  const f=currentIssuedBindingRecoveryFixture(t),before=f.read(META);
+  const fixed=[f.sourcePath,f.originalReceiptPath,'archive/data/question_identity_map.json'];
+  const rawBefore=new Map(fixed.map(p=>[p,fs.readFileSync(path.join(f.root,p))]));
+  assert.equal(isExplicitIssuedSourceBindingRecoveryRequest(f.request),true);
+  assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.legacyRequest}),/current whole source differs/);
+  const dry=registerReviewedExamV2({root:f.root,request:f.request});
+  assert.equal(dry.newMetadataApprovals,0);assert.equal(dry.preservedMetadataApprovals,2);
+  assert.deepEqual(f.read(META),before);assert.equal(fs.existsSync(path.join(f.root,f.receiptPath)),false);
+  registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  assert.equal(registerReviewedExamV2({root:f.root,request:f.request}).replay,true);
+  for(const [p,raw]of rawBefore)assert.deepEqual(fs.readFileSync(path.join(f.root,p)),raw);
+  assert.deepEqual(f.read(META).records[2],before.records[2]);
+  const proof=f.read(f.proofPath),receipt=f.read(f.receiptPath);
+  assert.equal(proof.schemaVersion,'archive-issued-source-binding-current-source-proof-v1');
+  assert.equal(proof.sourceBlobSha1,f.currentSourceRef.gitBlobSha1);
+  assert.equal(proof.currentSourceTransport.originalSourceBlobSha1,f.original.expectedSourceBlobSha1);
+  assert.deepEqual(proof.currentSourceTransport.changedOutsideOrdinals,[3]);
+  assert.equal(proof.currentSourceTransport.newMetadataApprovals,0);
+  assert.equal(proof.currentSourceTransport.newMathematicalQa,false);
+  assert.equal(receipt.sourceRawSha256,f.currentSourceRef.sha256);
+  assert.deepEqual(receipt.approval.approvedBy,f.original.approval.approvedBy);
+  for(const result of await recoveryAuto(f)){assert.equal(result.native,f.receiptPath);assert.equal(result.auto.status,'ALREADY_REGISTERED');}
+  // Building the new transport must not mutate the cached historical replay.
+  const again=prepareIssuedSourceBindingRecovery({root:f.root,requestId:f.legacyRequest.requestId,
+    ...Object.fromEntries(Object.entries(f.legacyRequest.approval.sourceRebind).filter(([k])=>k!=='schemaVersion'))});
+  assert.deepEqual(again.request,f.legacyRequest);
+  assert.throws(()=>registerReviewedExamV2({root:f.root,request:again.request}),/current whole source differs/);
+});
+
+test('issued binding current-source recovery refuses widened envelopes and unbound current snapshots',async t=>{
+  const f=currentIssuedBindingRecoveryFixture(t);
+  const mutations=[
+    ['subset',r=>r.items.pop()],
+    ['new semantic field',r=>r.items[0].after.difficultyBucket=4],
+    ['new reviewer',r=>r.approval.approvedBy='replacement-reviewer'],
+    ['wrong current raw hash',r=>r.approval.sourceRebind.currentSourceRef.sha256='0'.repeat(64)],
+    ['wrong current blob',r=>r.approval.sourceRebind.currentSourceRef.gitBlobSha1='0'.repeat(40)],
+    ['wrong current path',r=>r.approval.sourceRebind.currentSourceRef.path='docs/approval.json'],
+    ['extra current flag',r=>r.approval.sourceRebind.currentSourceRef.allowChanged=true],
+    ['missing current reference',r=>delete r.approval.sourceRebind.currentSourceRef],
+    ['v1 plus current reference',r=>r.approval.sourceRebind.schemaVersion='archive-native-issued-source-binding-recovery-v1'],
+    ['v1 retargeted source',r=>{r.approval.sourceRebind.schemaVersion='archive-native-issued-source-binding-recovery-v1';delete r.approval.sourceRebind.currentSourceRef;}],
+  ];
+  for(const [name,mutate]of mutations)await t.test(name,()=>{
+    const request=structuredClone(f.request);mutate(request);
+    assert.throws(()=>registerReviewedExamV2({root:f.root,request,write:true}));
+    assert.equal(fs.existsSync(path.join(f.root,f.receiptPath)),false);
+    assert.equal(fs.existsSync(path.join(f.root,f.proofPath)),false);
+  });
+  await t.test('same source tree in an unrelated branch',()=>{
+    const tree=f.git('rev-parse','HEAD^{tree}');
+    const other=f.git('-c','user.name=Recovery fixture','-c','user.email=fixture@example.invalid',
+      'commit-tree',tree,'-p',f.pre,'-m','Unrelated current-source snapshot');
+    const request=structuredClone(f.request);request.approval.sourceRebind.currentSourceRef.commit=other;
+    assert.throws(()=>registerReviewedExamV2({root:f.root,request}),/not in checkout history/);
+  });
+});
+
+test('issued binding current-source recovery rejects selected whole-object drift and outside identity/order changes',async t=>{
+  const f=currentIssuedBindingRecoveryFixture(t),bank=structuredClone(f.bank);
+  const cases=[
+    ['selected student field',b=>b[1].content+=' changed'],
+    ['selected nonstudent field',b=>b[1].editorialNote='changed metadata'],
+    ['outside ID type',b=>b[2].id=String(b[2].id)],
+    ['outside duplicate ID',b=>b[2].id=b[1].id],
+    ['source order',b=>{const q=b[0];b[0]=b[1];b[1]=q;}],
+    ['source denominator',b=>b.push({...b[2],id:4})],
+  ];
+  for(const [name,mutate]of cases)await t.test(name,()=>{
+    const changed=structuredClone(bank);mutate(changed);
+    const raw='window.questions='+JSON.stringify(changed)+';\n';f.put(f.sourcePath,raw);
+    const request=structuredClone(f.request),commit=f.commit();
+    request.approval.sourceRebind.currentSourceRef={commit,path:f.sourcePath,gitBlobSha1:blob(raw),sha256:hash(raw)};
+    request.expectedSourceBlobSha1=blob(raw);
+    assert.throws(()=>registerReviewedExamV2({root:f.root,request,write:true}),/selected whole question|identity\/order|denominator/);
+    assert.equal(fs.existsSync(path.join(f.root,f.receiptPath)),false);
+    f.writeBank();
+  });
+});
+
+test('issued binding current-source recovery rechecks full UID layout and unqueried peer authority after a warm native replay',async t=>{
+  const f=currentIssuedBindingRecoveryFixture(t,{nativeUids:true});
+  registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const identityPath='archive/data/question_identity_map.json',paths=[identityPath,f.proofPath,f.receiptPath];
+  const saved=new Map(paths.map(p=>[p,fs.readFileSync(path.join(f.root,p))]));
+  const mutateDoc=(p,fn)=>{const d=f.read(p);fn(d);f.put(p,d);};
+  const cases=[
+    ['outside UID changed',()=>mutateDoc(identityPath,d=>d.records[2].questionUid='qid_v1_'+'4'.repeat(64))],
+    ['outside ordinal changed',()=>mutateDoc(identityPath,d=>d.records[2].sourceOrdinal=4)],
+    ['outside question number changed',()=>mutateDoc(identityPath,d=>d.records[2].sourceQuestionNo=30)],
+    ['transport proof changed',()=>mutateDoc(f.proofPath,d=>d.currentSourceTransport.changedOutsideOrdinals=[])],
+    ['proof removed',()=>fs.unlinkSync(path.join(f.root,f.proofPath))],
+  ];
+  for(const [name,mutate]of cases)await t.test(name,async()=>{
+    assert.equal((await recoveryAuto(f))[0].native,f.receiptPath);mutate();
+    const result=(await recoveryAuto(f))[0];assert.equal(result.native,null);assert.equal(result.auto.status,'SUPPLEMENT_PENDING');
+    assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.request}));
+    for(const [p,raw]of saved)fs.writeFileSync(path.join(f.root,p),raw);
+  });
+  await t.test('deterministic hold seal on the unqueried peer without a metadata marker',async()=>{
+    assert.equal((await recoveryAuto(f))[0].native,f.receiptPath);
+    const peer=f.request.items[1].questionUid,seal=authorityHoldSealPath(peer);
+    f.put(seal,{schemaVersion:'archive-native-authority-hold-v1',questionUid:peer,status:'AUTHORITY_REVIEW_REQUIRED'});
+    const result=(await recoveryAuto(f))[0];assert.equal(result.native,null);assert.equal(result.auto.status,'SUPPLEMENT_PENDING');
+    assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.request}),/cannot restore withdrawn authority/);
+    fs.unlinkSync(path.join(f.root,seal));
+    assert.equal((await recoveryAuto(f))[0].native,f.receiptPath);
+  });
+});
+
+test('issued binding current-source recovery pins main inline and solution assets to immutable current Git and fresh live bytes',async t=>{
+  const f=currentIssuedBindingRecoveryFixture(t,{selectedAssets:true});
+  const originals=new Map(f.assetPaths.map(p=>[p,fs.readFileSync(path.join(f.root,p))]));
+  assert.equal(f.prepared.currentSourceTransport.assets.length,3);
+  for(const relative of f.assetPaths)await t.test('current Git differs at '+relative,()=>{
+    fs.appendFileSync(path.join(f.root,relative),'\n');
+    const commit=f.commit();fs.writeFileSync(path.join(f.root,relative),originals.get(relative));
+    const request=structuredClone(f.request);request.approval.sourceRebind.currentSourceRef.commit=commit;
+    assert.throws(()=>registerReviewedExamV2({root:f.root,request,write:true}),/immutable asset differs/);
+    assert.equal(fs.existsSync(path.join(f.root,f.receiptPath)),false);
+  });
+  registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  for(const relative of f.assetPaths)await t.test('fresh live differs after warm replay at '+relative,async()=>{
+    assert.equal((await recoveryAuto(f))[0].native,f.receiptPath);
+    fs.appendFileSync(path.join(f.root,relative),'\n');
+    assert.equal((await recoveryAuto(f))[0].native,null);
+    assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.request}),/asset differs|evidence missing/);
+    fs.writeFileSync(path.join(f.root,relative),originals.get(relative));
+  });
+});
+
+test('issued binding current-source recovery survives a strict whole-cohort source-only descendant but requires its historical proof',async t=>{
+  const f=currentIssuedBindingRecoveryFixture(t);registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const recovered=fs.readFileSync(path.join(f.root,f.receiptPath)),ref={path:f.receiptPath,sha256:hash(recovered)};
+  f.commit();f.bank[2].editorialNote='a later outside change';const raw=f.writeBank();
+  const request={...structuredClone(f.request),requestId:'current-source-later-preservation',expectedSourceBlobSha1:blob(raw),
+    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'later-transport-reviewer',evidenceRefs:[ref],sourceRebind:{priorReceiptRef:ref}},
+    items:f.request.items.map(row=>({questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal,before:{},after:{},
+      reason:'preserve the complete existing cohort after another outside change',evidenceRefs:[ref]}))};
+  registerReviewedExamV2({root:f.root,request,write:true});assert.equal(registerReviewedExamV2({root:f.root,request}).replay,true);
+  const childPath='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/'+request.requestId+'.json';
+  for(const result of await recoveryAuto(f,request)){assert.equal(result.native,childPath);assert.equal(result.auto.status,'ALREADY_REGISTERED');}
+  const proof=fs.readFileSync(path.join(f.root,f.proofPath));fs.unlinkSync(path.join(f.root,f.proofPath));
+  assert.throws(()=>registerReviewedExamV2({root:f.root,request}),/ENOENT|recovery|typed source/);
+  for(const result of await recoveryAuto(f,request)){assert.equal(result.native,null);assert.equal(result.auto.status,'SUPPLEMENT_PENDING');}
+  fs.writeFileSync(path.join(f.root,f.proofPath),proof);assert.deepEqual(fs.readFileSync(path.join(f.root,f.receiptPath)),recovered);
+});
+
+function currentIssuedDescendantRecoveryFixture(t,options={}) {
+  const f=issuedBindingRecoveryFixture(t,options),originalRaw=fs.readFileSync(path.join(f.root,f.originalReceiptPath));
+  // First issue the descendant through the actual official registrar with its
+  // full strict original proof. Only then model the older missing-sidecar format.
+  for(const [p,raw]of f.strictState)fs.writeFileSync(path.join(f.root,p),raw);
+  const strictRef={path:f.originalReceiptPath,sha256:hash(f.strictState.get(f.originalReceiptPath))};
+  f.bank[2].editorialNote='source-only descendant already issued before recovery';const raw=f.writeBank();
+  const child={...structuredClone(f.request),requestId:'historical-issued-source-only-child',expectedSourceBlobSha1:blob(raw),
+    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'historical-source-only-reviewer',evidenceRefs:[strictRef],sourceRebind:{priorReceiptRef:strictRef}},
+    items:f.request.items.map(row=>({questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal,before:{},after:{},
+      reason:'exact whole-cohort preservation after an outside change',evidenceRefs:[strictRef]}))};
+  registerReviewedExamV2({root:f.root,request:child,write:true});
+  const childPath='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/'+child.requestId+'.json';
+  const childReceipt=f.read(childPath),bindingPath=reviewedSourceBindingPath(f.original.requestId);
+  fs.writeFileSync(path.join(f.root,f.originalReceiptPath),originalRaw);
+  for(const p of [META,f.runtimePath]){const d=f.read(p);for(const row of d.records)
+    if(row.approvalEvidence)row.approvalEvidence=row.approvalEvidence.filter(value=>value!==bindingPath);f.put(p,d);}
+  for(const row of [...childReceipt.appliedRecords,...childReceipt.runtimeRecords])row.approvalEvidence=row.approvalEvidence.filter(value=>value!==bindingPath);
+  child.approval.evidenceRefs=[f.priorReceiptRef];child.approval.sourceRebind.priorReceiptRef=f.priorReceiptRef;
+  child.items=child.items.map(row=>({...row,evidenceRefs:[f.priorReceiptRef]}));
+  childReceipt.approval=structuredClone(child.approval);
+  childReceipt.requestSha256=hash(JSON.stringify(child,(_,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.keys(v).sort().map(k=>[k,v[k]])):v));
+  childReceipt.outputDigests=childReceipt.outputDigests.map(ref=>({...ref,sha256:hash(fs.readFileSync(path.join(f.root,ref.path)))}));
+  f.put(childPath,childReceipt);fs.unlinkSync(path.join(f.root,bindingPath));
+  const commit=f.commit(),currentSourceRef={commit,path:f.sourcePath,gitBlobSha1:blob(raw),sha256:hash(raw)};
+  const currentIssuedReceiptRef={commit,path:childPath,sha256:hash(fs.readFileSync(path.join(f.root,childPath)))};
+  const spec=f.request.approval.sourceRebind,prepare=(overrides={})=>prepareIssuedSourceBindingCurrentTransport({
+    root:f.root,requestId:f.request.requestId,originalRequestRef:spec.originalRequestRef,
+    issuedReceiptCommit:spec.issuedReceiptCommit,priorReceiptRef:spec.priorReceiptRef,
+    currentSourceRef,currentIssuedReceiptRef,...overrides});
+  const prepared=prepare();
+  return {...f,request:prepared.request,prepared,prepare,currentSourceRef,currentIssuedReceiptRef,childPath,childReceipt};
+}
+
+test('issued binding current-source recovery preserves a previously issued strict source-only descendant without rewriting either old receipt',async t=>{
+  const f=currentIssuedDescendantRecoveryFixture(t,{nativeUids:true,selectedAssets:true});
+  assert.deepEqual(f.prepared.inputRefs,f.request.approval.evidenceRefs);
+  const tailRef=f.prepared.inputRefs.find(ref=>ref.path===f.childPath);
+  assert.equal(tailRef.sha256,f.currentIssuedReceiptRef.sha256);
+  tailRef.sha256='0'.repeat(64);
+  assert.equal(f.request.approval.evidenceRefs.find(ref=>ref.path===f.childPath).sha256,f.currentIssuedReceiptRef.sha256);
+  const paths=[f.sourcePath,f.originalReceiptPath,f.childPath,'archive/data/question_identity_map.json'];
+  const before=new Map(paths.map(p=>[p,fs.readFileSync(path.join(f.root,p))])),metadata=f.read(META),runtime=f.read(f.runtimePath);
+  const dry=registerReviewedExamV2({root:f.root,request:f.request});
+  assert.equal(dry.newMetadataApprovals,0);assert.equal(dry.preservedMetadataApprovals,2);assert.deepEqual(f.read(META),metadata);
+  registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  assert.equal(registerReviewedExamV2({root:f.root,request:f.request}).replay,true);
+  for(const [p,raw]of before)assert.deepEqual(fs.readFileSync(path.join(f.root,p)),raw);
+  for(const [doc,oldDoc]of [[f.read(META),metadata],[f.read(f.runtimePath),runtime]])for(const uid of f.request.items.map(r=>r.questionUid)){
+    const old=oldDoc.records.find(r=>r.questionUid===uid),now=doc.records.find(r=>r.questionUid===uid);
+    assert.deepEqual(now.approvalEvidence,[...old.approvalEvidence,f.receiptPath,f.proofPath]);
+    for(const [key,value]of Object.entries(old))if(!['approvalEvidence','metadataRevision'].includes(key))assert.deepEqual(now[key],value);
+  }
+  const proof=f.read(f.proofPath),chain=proof.currentSourceTransport.currentIssuedDescendant;
+  assert.deepEqual(chain.currentIssuedReceiptRef,f.currentIssuedReceiptRef);assert.equal(chain.chain.length,1);
+  assert.equal(chain.chain[0].priorReceiptRef.sha256,f.priorReceiptRef.sha256);
+  assert.equal(proof.originalRequestRef.commit,f.pre);assert.equal(chain.newMetadataApprovals,0);
+  for(const result of await recoveryAuto(f)){assert.equal(result.native,f.receiptPath);assert.equal(result.auto.status,'ALREADY_REGISTERED');}
+  const peer=f.request.items[1].questionUid,seal=authorityHoldSealPath(peer);
+  f.put(seal,{schemaVersion:'archive-native-authority-hold-v1',questionUid:peer,status:'AUTHORITY_REVIEW_REQUIRED'});
+  assert.equal((await recoveryAuto(f))[0].native,null);
+  assert.throws(()=>registerReviewedExamV2({root:f.root,request:f.request}),/cannot restore withdrawn authority/);
+  fs.unlinkSync(path.join(f.root,seal));
+});
+
+test('issued binding current-source recovery rejects typed current receipt mutations even with refreshed immutable raw references',async t=>{
+  const f=currentIssuedDescendantRecoveryFixture(t),original=fs.readFileSync(path.join(f.root,f.childPath));
+  const cases=[
+    ['split scope',d=>{d.partialUidCount=1;d.totalQuestions=1;d.preservedMetadataApprovals=1;d.appliedRecords.pop();d.runtimeRecords.pop();d.appliedIdentityRecords.pop();}],
+    ['new semantic approval',d=>d.newMetadataApprovals=1],
+    ['wrong approval type',d=>d.approval.type='BASIC5'],
+    ['non-generic ancestor',d=>d.approval.sourceRebind.schemaVersion='archive-native-issued-source-binding-recovery-v1'],
+    ['new selected metadata',d=>d.appliedRecords[1].difficultyBucket=4],
+    ['new selected runtime',d=>d.runtimeRecords[1].difficultyBucket=4],
+    ['changed selected identity',d=>d.appliedIdentityRecords[1].sourceQuestionNo=20],
+    ['lost original provenance',d=>d.appliedRecords[1].approvalEvidence.shift()],
+    ['invented provenance',d=>d.appliedRecords[1].approvalEvidence.push('docs/approval.json')],
+    ['forged metadata revision',d=>d.appliedRecords[1].metadataRevision+='-other'],
+    ['registry mutation',d=>d.registryChanges.push({path:'fake-canonical-change'})],
+    ['fingerprint repair',d=>d.fingerprintRepairs.push({questionUid:d.appliedRecords[0].questionUid})],
+    ['native parent mutation',d=>d.nativeParentBindings=[{questionUid:d.appliedRecords[0].questionUid}]],
+    ['different current source',d=>d.sourceBlobSha1=f.original.expectedSourceBlobSha1],
+    ['different original receipt hash',d=>d.approval.sourceRebind.priorReceiptRef.sha256='0'.repeat(64)],
+  ];
+  for(const [name,mutate]of cases)await t.test(name,()=>{
+    const receipt=JSON.parse(original);mutate(receipt);f.put(f.childPath,receipt);
+    const commit=f.commit(),currentIssuedReceiptRef={commit,path:f.childPath,sha256:hash(fs.readFileSync(path.join(f.root,f.childPath)))};
+    assert.throws(()=>f.prepare({currentSourceRef:{...f.currentSourceRef,commit},currentIssuedReceiptRef}),/issued source binding recovery:/);
+    assert.equal(fs.existsSync(path.join(f.root,f.receiptPath)),false);assert.equal(fs.existsSync(path.join(f.root,f.proofPath)),false);
+    fs.writeFileSync(path.join(f.root,f.childPath),original);
+  });
+  await t.test('new current receipt cannot be omitted or mixed into old v1',()=>{
+    const request=structuredClone(f.request);delete request.approval.sourceRebind.currentIssuedReceiptRef;
+    assert.throws(()=>registerReviewedExamV2({root:f.root,request,write:true}),/immutable evidence|whole-cohort/);
+    const old=structuredClone(f.request);old.approval.sourceRebind.schemaVersion='archive-native-issued-source-binding-recovery-v1';
+    assert.equal(isExplicitIssuedSourceBindingRecoveryRequest(old),false);
+    assert.throws(()=>registerReviewedExamV2({root:f.root,request:old,write:true}));
+  });
+});
+
+test('issued binding current-source recovery keeps an already-issued ancestor chain mandatory for a later exact descendant',async t=>{
+  const f=currentIssuedDescendantRecoveryFixture(t);registerReviewedExamV2({root:f.root,request:f.request,write:true});
+  const ref={path:f.receiptPath,sha256:hash(fs.readFileSync(path.join(f.root,f.receiptPath)))};
+  f.commit();f.bank[2].editorialNote='outside change after the recovered issued descendant';const raw=f.writeBank();
+  const request={...structuredClone(f.request),requestId:'after-recovered-issued-descendant',expectedSourceBlobSha1:blob(raw),
+    approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'later-transport-reviewer',evidenceRefs:[ref],sourceRebind:{priorReceiptRef:ref}},
+    items:f.request.items.map(row=>({questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal,before:{},after:{},evidenceRefs:[ref],reason:'same full cohort'}))};
+  registerReviewedExamV2({root:f.root,request,write:true});assert.equal(registerReviewedExamV2({root:f.root,request}).replay,true);
+  const childPath='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/'+request.requestId+'.json';
+  for(const result of await recoveryAuto(f,request)){assert.equal(result.native,childPath);assert.equal(result.auto.status,'ALREADY_REGISTERED');}
+  const oldRaw=fs.readFileSync(path.join(f.root,f.childPath));fs.unlinkSync(path.join(f.root,f.childPath));
+  assert.equal((await recoveryAuto(f,request))[0].native,null);
+  assert.throws(()=>registerReviewedExamV2({root:f.root,request}),/ENOENT|recovery|typed source/);
+  fs.writeFileSync(path.join(f.root,f.childPath),oldRaw);
+  assert.equal((await recoveryAuto(f,request))[0].native,childPath);
 });

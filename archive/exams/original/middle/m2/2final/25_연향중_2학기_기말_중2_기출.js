@@ -121,7 +121,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "직각삼각형에서 빗변에 내린 높이로 생기는 삼각형들은 서로 닮음이다.\n$\\angle ADB=\\angle ABC=90^\\circ$이고 $\\angle A$가 공통이므로 $\\triangle ABD\\sim\\triangle ABC$이다. 따라서 $AB:AC=AD:AB$이므로 $6:AC=3:6$이다. 그러므로 $AC=12$이고 $DC=AC-AD=12-3=9$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q3-problem-visual-v2.svg",
+    "image": "assets/images/25_연향중_2학기_기말_중2_기출/q3-problem-visual-v3.svg",
     "solutionImage": "assets/images/25_연향중_2학기_기말_중2_기출/q3-solution-v2.svg",
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",

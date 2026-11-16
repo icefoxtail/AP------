@@ -1,0 +1,4226 @@
+{
+  "schemaVersion": "m2s2-current-four-slot-actual-observation-v1",
+  "observer": "/root/audit_m2",
+  "scope": "EXISTING_FOUR_SLOT_CONTINUITY_ONLY",
+  "newMathematicalApproval": false,
+  "newSlotApproval": false,
+  "sourceWrites": 0,
+  "assetWrites": 0,
+  "slotChanges": 0,
+  "actualBrowser": "NOT_RUN",
+  "rows": [
+    {
+      "exam": "E017",
+      "sourceOrdinal": 1,
+      "questionUid": "qid_v1_fc40513f50e6014b508eb1e8061f135682b5a065fbf336fa755918de6c97ccf7",
+      "observedAtUtc": "2026-11-16T00:36:03.786685+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "두 밑각의 같은 표시와 두 변의 일차식, A/B/C 순서가 유지된다. 새 길이 괄호는 각 변 전체를 가리키며 구할 값이 선행 표시되지 않았다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 1,
+        "format": "단일 정답",
+        "given": [
+          158
+        ],
+        "goal": [
+          131
+        ],
+        "method": [
+          159,
+          64
+        ],
+        "condition": [
+          174
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "2b421425a612677efb997298792d423d8978cb8a8ceaaf9877adf84a19bc9de1",
+      "beforeQuestionSha256": "02be1513fdd41b6ecd24f02dbc4c2c9fe7dc74cbf845b5a59c3c9e1c5fa98dc6",
+      "currentQuestionSha256": "1b1e190a9551b66b480172aa552fb418c0b79487c2e63d45bc0964f9060f3743",
+      "beforeStudentSha256": "c414c98e9d18904c53c9b3467ee19c56d0fca2db25e497668251da698d85c68c",
+      "currentStudentSha256": "a8a5cd382a2f3ed12adbce79151aa4135049aa69451d2fc233ae6b1bb81343f9",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_fc40513f50e6014b508eb1e8061f135682b5a065fbf336fa755918de6c97ccf7",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q01.jpg",
+        "cardSha256": "918379e21e1dcc8d32ad364734e8e92ae32cd42218b46d50b582197f944ae80f",
+        "cardBytes": 77223,
+        "cardDimensions": [
+          1400,
+          671
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q01.png",
+            "gitBlobSha1": "9fcf3d3970c3c9f7541cfb03a28b1fff74c584cf",
+            "bytes": 13853,
+            "sha256": "c39ebac2969e65ce34697c5d083a997e93eee4d7a5b2b1464693a49f412ab1ce",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q01.png",
+              "gitBlobSha1": "9fcf3d3970c3c9f7541cfb03a28b1fff74c584cf",
+              "sha256": "c39ebac2969e65ce34697c5d083a997e93eee4d7a5b2b1464693a49f412ab1ce"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              531,
+              441
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q1-problem-visual-v2.svg",
+            "gitBlobSha1": "0fc064371cd83f131163fe57ed03f1f7fa7fa4ba",
+            "bytes": 3049,
+            "sha256": "37c964ca87185d9fb89f84ea2aae1e0a80a8cc03d5409193895921143c7e5fad",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "21cc91c94148c104c72a43371bc1cd859cf5c514046f79e78fd1525d108e0398",
+            "decodedDimensions": [
+              1000,
+              696
+            ],
+            "displayRole": "PROBLEM"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "02be1513fdd41b6ecd24f02dbc4c2c9fe7dc74cbf845b5a59c3c9e1c5fa98dc6",
+        "currentQuestionSha256": "1b1e190a9551b66b480172aa552fb418c0b79487c2e63d45bc0964f9060f3743",
+        "beforeStudentSha256": "c414c98e9d18904c53c9b3467ee19c56d0fca2db25e497668251da698d85c68c",
+        "currentStudentSha256": "a8a5cd382a2f3ed12adbce79151aa4135049aa69451d2fc233ae6b1bb81343f9",
+        "compactItemSha256": "2b421425a612677efb997298792d423d8978cb8a8ceaaf9877adf84a19bc9de1",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+      "observedAtUtc": "2026-11-16T00:36:03.787188+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "HOLD_RELATION_CONTINUITY",
+      "observations": [
+        "원 문제에는 BE와 BC의 같은 길이 눈금, E와 C의 직각 표시가 보인다. 현재 문제는 그 길이 눈금을 제거하고 B에서 ABD/DBC의 같은 각 표시를 직접 넣었다. 기존 native method는 합동조건+내각이며 RHS로 도출할 각 관계를 새 문제에서 제공하는 변경 후보이다. 기존 글풀이가 각 표시를 전제로 서술한 것은 원 그림의 조건 변경을 승인하는 근거로 사용하지 않는다. 원 조건 복원 또는 별도 권한 확인 전 유지 판정 보류."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 2,
+        "format": "단일 정답",
+        "given": [
+          161
+        ],
+        "goal": [
+          174
+        ],
+        "method": [
+          723,
+          714
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "compactItemSha256": "676aa45cb2aa635ec7d100b7bbaddf414208da869d7aaf327105e1cce033c0c1",
+      "beforeQuestionSha256": "e010b344b3919003c02886d0a5e09a7427f564da08e94a6d6ededc18b1627e51",
+      "currentQuestionSha256": "20a99cd2a1363d44ad9033982102491aff790ef4fe5b187f07bb04dfaa476a51",
+      "beforeStudentSha256": "e47b6b37c641c274802629184d80e3160ba65e314f2b6654c54d49562e15c621",
+      "currentStudentSha256": "22d7949f8092ca771ed00e2ada614ad77c8f9f1a0e25da5bd257bea7974925e0",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q02.jpg",
+        "cardSha256": "70eb27e5757acc3437c50bacfd574ff8ecb6e4e0c9b67cd2e6ef9f13ab804b29",
+        "cardBytes": 142340,
+        "cardDimensions": [
+          1400,
+          1779
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q02-solution.svg",
+            "gitBlobSha1": "501cb2268009c8e7bf8ef5cdc615c08d297c452a",
+            "bytes": 1118,
+            "sha256": "6d8aace16ef27a3d0eda602bcc01b77b868411b70eb1ef23b8b6b27f9f4349a0",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q02-solution.svg",
+              "gitBlobSha1": "501cb2268009c8e7bf8ef5cdc615c08d297c452a",
+              "sha256": "6d8aace16ef27a3d0eda602bcc01b77b868411b70eb1ef23b8b6b27f9f4349a0"
+            },
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "19f55d9f65839afbdbbd2c1aec386492c6adf5f7d3b4e73c8fd06f4f09e034c2",
+            "decodedDimensions": [
+              1000,
+              806
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q02.png",
+            "gitBlobSha1": "fd1f4b906e2a1a082721d15359691cd618b5397a",
+            "bytes": 20730,
+            "sha256": "c667a734e5183fe1949d991592cef0c3c6934715482100988cdc621d43b9a866",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q02.png",
+              "gitBlobSha1": "fd1f4b906e2a1a082721d15359691cd618b5397a",
+              "sha256": "c667a734e5183fe1949d991592cef0c3c6934715482100988cdc621d43b9a866"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              406,
+              636
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q02-solution.svg",
+            "gitBlobSha1": "501cb2268009c8e7bf8ef5cdc615c08d297c452a",
+            "bytes": 1118,
+            "sha256": "6d8aace16ef27a3d0eda602bcc01b77b868411b70eb1ef23b8b6b27f9f4349a0",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "19f55d9f65839afbdbbd2c1aec386492c6adf5f7d3b4e73c8fd06f4f09e034c2",
+            "decodedDimensions": [
+              1000,
+              806
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q2-problem-visual-v2.svg",
+            "gitBlobSha1": "bab4a51959bbc52cec399fbae555456bf47fdb33",
+            "bytes": 3572,
+            "sha256": "6f55717ce71daa79ea233874a3dcde73803364b2a025598026b7c2bc426a6d63",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "0624492ddce06426777d7cbedd6f633e99f9460fb0609101ed10e5d49ebc635c",
+            "decodedDimensions": [
+              1000,
+              829
+            ],
+            "displayRole": "PROBLEM"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "e010b344b3919003c02886d0a5e09a7427f564da08e94a6d6ededc18b1627e51",
+        "currentQuestionSha256": "20a99cd2a1363d44ad9033982102491aff790ef4fe5b187f07bb04dfaa476a51",
+        "beforeStudentSha256": "e47b6b37c641c274802629184d80e3160ba65e314f2b6654c54d49562e15c621",
+        "currentStudentSha256": "22d7949f8092ca771ed00e2ada614ad77c8f9f1a0e25da5bd257bea7974925e0",
+        "compactItemSha256": "676aa45cb2aa635ec7d100b7bbaddf414208da869d7aaf327105e1cce033c0c1",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 3,
+      "questionUid": "qid_v1_f867386595af4f85ce29e7ce9d88ded95c6ad8c288eceb582812d0b4b8d171f7",
+      "observedAtUtc": "2026-11-16T00:36:03.787614+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "A의 직각, 빗변 BC 위 O와 AO 연결, BOA 목표각을 원·현재에서 대조했다. 중점과 반각비는 기존 본문 그대로이며 새 문제에 계산 결과나 추가 등각 표지를 넣지 않았다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 3,
+        "format": "단일 정답",
+        "given": [
+          161,
+          188
+        ],
+        "goal": [
+          174
+        ],
+        "method": [
+          184,
+          159
+        ],
+        "condition": [
+          289
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "ffdac13700378f0a2ee79c99be9d9b777e477442ad1d51e8037df3d30865f400",
+      "beforeQuestionSha256": "2e2783130439257da45b837822d4b1e418aca91aac80e562fde29259a3ce8eb9",
+      "currentQuestionSha256": "17c68ba206916610dd62f0d85e48da1d14b1a434a2c634442dd18b3c541e6e0c",
+      "beforeStudentSha256": "b8bf7a11d4e3d972906fd787a7315c8695029cbd500a9592872942d0aad31c4f",
+      "currentStudentSha256": "6d3f8999e43b09fbbd0e51c110a1121e42d5aaf8c5f7acf36f4baa8137b3977e",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_f867386595af4f85ce29e7ce9d88ded95c6ad8c288eceb582812d0b4b8d171f7",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q03.jpg",
+        "cardSha256": "807b07c742bca2822e6ba7e73862e0012535c1f6b6f592ca501c8a2d5006678d",
+        "cardBytes": 67270,
+        "cardDimensions": [
+          1400,
+          576
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q03.png",
+            "gitBlobSha1": "86b5456976502d0c45efee56af2b94ea620839f4",
+            "bytes": 49785,
+            "sha256": "3edf05f7ccefe789838e37e59ee9dabaecc78e3bbc7cfcd29ac8bc9445c2137f",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q03.png",
+              "gitBlobSha1": "86b5456976502d0c45efee56af2b94ea620839f4",
+              "sha256": "3edf05f7ccefe789838e37e59ee9dabaecc78e3bbc7cfcd29ac8bc9445c2137f"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              513,
+              309
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q3-problem-visual-v2.svg",
+            "gitBlobSha1": "4f40e6c1732bd1ad3364d4a14dc6978917bfb66f",
+            "bytes": 2297,
+            "sha256": "623d65aefce6d07ba8ce3a5e3dd124bc69ee25019fd2a0ea7e5590a26edc05df",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "a09195af4418e2541c232bdb1946c33a7f9a1adc8827c1b37edf0a00adb2856a",
+            "decodedDimensions": [
+              1000,
+              689
+            ],
+            "displayRole": "PROBLEM"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "2e2783130439257da45b837822d4b1e418aca91aac80e562fde29259a3ce8eb9",
+        "currentQuestionSha256": "17c68ba206916610dd62f0d85e48da1d14b1a434a2c634442dd18b3c541e6e0c",
+        "beforeStudentSha256": "b8bf7a11d4e3d972906fd787a7315c8695029cbd500a9592872942d0aad31c4f",
+        "currentStudentSha256": "6d3f8999e43b09fbbd0e51c110a1121e42d5aaf8c5f7acf36f4baa8137b3977e",
+        "compactItemSha256": "ffdac13700378f0a2ee79c99be9d9b777e477442ad1d51e8037df3d30865f400",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_aa3c1ee5ab7ec90917755d06c8c44c1b8d06b3a14fde0c985c4fc769572eb51b",
+      "observedAtUtc": "2026-11-16T00:36:03.787957+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "내심 I가 DE 위에 있는 위치와 D/E의 두 변 위 위치, DE와 BC의 평행 화살표 및 AB/AC 전체 길이가 유지된다. 새 표시는 부분길이와 전체길이를 바꾸지 않았다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 4,
+        "format": "옳지 않은 것 고르기",
+        "given": [
+          185
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          717,
+          159,
+          214
+        ],
+        "condition": [
+          180
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "a53ddb07d855018f2b61bbd23a06bbaa94b77e6d101c1265e2ebc3d1a71d38f4",
+      "beforeQuestionSha256": "a55434719c16914c7fac9782e4b6923312beaf8053502a55e3a0b2c4af3c09a2",
+      "currentQuestionSha256": "3736b4f8ee991d4aa3bd67261c97d832b9d58cf5bce8a1837d84a271482f5e5c",
+      "beforeStudentSha256": "e298667d0c5cd47031695beb2baf3825a37006f661085033de35d409ce4f9c89",
+      "currentStudentSha256": "2e788d06fc25ea8ae8aacc7de6e21b88c5ccb51865774c38b1a22dec8a690912",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_aa3c1ee5ab7ec90917755d06c8c44c1b8d06b3a14fde0c985c4fc769572eb51b",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q04.jpg",
+        "cardSha256": "aa7d06117ed414853cc50081edd61519a8d3a7e33eb2af54f6ba750746045e37",
+        "cardBytes": 91796,
+        "cardDimensions": [
+          1400,
+          620
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q04.png",
+            "gitBlobSha1": "ba964a2ca0c255adfc9a0075c49a9d3ac18a9214",
+            "bytes": 45971,
+            "sha256": "0cdfcdfc45618559698c5c589590e488962d057d4714d1528cbceb49322f7372",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q04.png",
+              "gitBlobSha1": "ba964a2ca0c255adfc9a0075c49a9d3ac18a9214",
+              "sha256": "0cdfcdfc45618559698c5c589590e488962d057d4714d1528cbceb49322f7372"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              780,
+              576
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q4-problem-visual-v2.svg",
+            "gitBlobSha1": "7b60b51d28f8f147fad306c00b1f48fa8a4e5c9a",
+            "bytes": 4426,
+            "sha256": "16a8a8902061bf4c480f8d9fba1518b950cc226c1aed530239d32a68aeff61f5",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "3b3a983c24d4bcba3b39a733cee2bbcd6c5fcc7a0736779019a88ccd693b4116",
+            "decodedDimensions": [
+              1000,
+              754
+            ],
+            "displayRole": "PROBLEM"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "a55434719c16914c7fac9782e4b6923312beaf8053502a55e3a0b2c4af3c09a2",
+        "currentQuestionSha256": "3736b4f8ee991d4aa3bd67261c97d832b9d58cf5bce8a1837d84a271482f5e5c",
+        "beforeStudentSha256": "e298667d0c5cd47031695beb2baf3825a37006f661085033de35d409ce4f9c89",
+        "currentStudentSha256": "2e788d06fc25ea8ae8aacc7de6e21b88c5ccb51865774c38b1a22dec8a690912",
+        "compactItemSha256": "a53ddb07d855018f2b61bbd23a06bbaa94b77e6d101c1265e2ebc3d1a71d38f4",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_ef2f75003ed913b20f7bb4d1482589a1566675e22862440bf9c035c2da9b8490",
+      "observedAtUtc": "2026-11-16T00:36:03.788310+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "다섯 보기의 번호와 각각의 중점·각이등분·꼭짓점까지 같은 거리·변까지 같은 수선거리·수직이등분 조건을 전부 직접 대조했다. 보기별 조건의 역할과 선택 순서가 유지된다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 5,
+        "format": "옳은 것 고르기",
+        "given": [
+          158
+        ],
+        "goal": [
+          184
+        ],
+        "method": [
+          178,
+          216
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "compactItemSha256": "a0d74d9efb8e237d6fa13a538eb388037c5a39ae5121ed806c70d70e7e612cf7",
+      "beforeQuestionSha256": "3feae5dc0e4e6613c1b44630eef84f942dd239cf1710effa75c64434f25b2407",
+      "currentQuestionSha256": "ce8103923ed5c5bfca92f9697782b23f120f19356c513989251e5f4814f27aeb",
+      "beforeStudentSha256": "59a85de9e8d4ce8c8406b162532880598180c5ed7068870f85b9dc978cce9aa4",
+      "currentStudentSha256": "e6d3b8611e06b20b195f9b8363958fb6244a0ff0bc4e85d62f8eeb8145a43377",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_ef2f75003ed913b20f7bb4d1482589a1566675e22862440bf9c035c2da9b8490",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q05.jpg",
+        "cardSha256": "2f7dfc629da76bbd68c6e9b868fc480a3c1c2be627b755b2170403b30e9ec0b5",
+        "cardBytes": 132779,
+        "cardDimensions": [
+          1400,
+          836
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q05.png",
+            "gitBlobSha1": "e488df3006b46f2a696232137db4148ac84c5f10",
+            "bytes": 71650,
+            "sha256": "a028330aaa76491fcc75df51e5c919d23926083d717d6e33786b29953514d307",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q05.png",
+              "gitBlobSha1": "e488df3006b46f2a696232137db4148ac84c5f10",
+              "sha256": "a028330aaa76491fcc75df51e5c919d23926083d717d6e33786b29953514d307"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              1023,
+              868
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q5-problem-visual-v2.svg",
+            "gitBlobSha1": "a2e851ec2e5fe722404c95e6dff473ea99bc67d3",
+            "bytes": 17139,
+            "sha256": "ccc1ad41b2646af1db94ae70d03b17de2eadf027a5ad59a47db1f9f0d28e6603",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "d4a1bdb52ecfd3cb3437865684224b91639b43c4903400d2a806b75a5d8876a7",
+            "decodedDimensions": [
+              1000,
+              1074
+            ],
+            "displayRole": "PROBLEM"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "3feae5dc0e4e6613c1b44630eef84f942dd239cf1710effa75c64434f25b2407",
+        "currentQuestionSha256": "ce8103923ed5c5bfca92f9697782b23f120f19356c513989251e5f4814f27aeb",
+        "beforeStudentSha256": "59a85de9e8d4ce8c8406b162532880598180c5ed7068870f85b9dc978cce9aa4",
+        "currentStudentSha256": "e6d3b8611e06b20b195f9b8363958fb6244a0ff0bc4e85d62f8eeb8145a43377",
+        "compactItemSha256": "a0d74d9efb8e237d6fa13a538eb388037c5a39ae5121ed806c70d70e7e612cf7",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_9a0686ad7215cc2afff66c158131fd343a64bd2111f30341df6b8383aaba1b7c",
+      "observedAtUtc": "2026-11-16T00:36:03.788613+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "직각삼각형의 세 변 전체 길이, B의 직각과 내부 원·중심 I를 대조했다. 현재 문제에 반지름이나 넓이의 결과를 새로 표시하지 않았고 본문·선지·글풀이가 유지된다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 6,
+        "format": "단일 정답",
+        "given": [
+          161
+        ],
+        "goal": [
+          153,
+          213
+        ],
+        "method": [
+          213,
+          720
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "compactItemSha256": "d669c6e470f20d99f87b2bde319eee0f704c532460dd4fbf5ca9b20b7eecd1eb",
+      "beforeQuestionSha256": "e330f4fa42168d2372e8891ad6abbea479e1798085a3aa50e6adf21723d224f3",
+      "currentQuestionSha256": "491ff72d32c2168a243689b278c6b850c6e4406d359f41c7bf7fb22f12eb9650",
+      "beforeStudentSha256": "127bc5a8e27c1b6a0302d85ff691aec9b3c11bfbd2e9e527589aa9fbec6de1d2",
+      "currentStudentSha256": "9a041e3dffa1ff9a7c3b229e379bc0380bec961fe709ed20767b13194e389dbe",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_9a0686ad7215cc2afff66c158131fd343a64bd2111f30341df6b8383aaba1b7c",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q06.jpg",
+        "cardSha256": "9f426e3c82e5df428509fa35c74f18141e45a59c0ea66cbe0deba01ae353a13b",
+        "cardBytes": 89734,
+        "cardDimensions": [
+          1400,
+          558
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q06.png",
+            "gitBlobSha1": "ec8f072ae813d912bd88f52848a0fbadc2155c8a",
+            "bytes": 20122,
+            "sha256": "d4e982a09c733452593de5d4bd31bff8307e9d0778e531b26ccd8fe4ea78ca76",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q06.png",
+              "gitBlobSha1": "ec8f072ae813d912bd88f52848a0fbadc2155c8a",
+              "sha256": "d4e982a09c733452593de5d4bd31bff8307e9d0778e531b26ccd8fe4ea78ca76"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              498,
+              318
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q6-problem-visual-v2.svg",
+            "gitBlobSha1": "67ed351835e0a6b28c839d58574a634ae26df054",
+            "bytes": 3643,
+            "sha256": "8ca353fd9ba0b21dc8339430df93b98e3e6a351a1933e946aff8608d26b969dc",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "9874a2cd7f12607e1088befc264eff50aff147a75f681dcf89d4e97635e302af",
+            "decodedDimensions": [
+              1000,
+              663
+            ],
+            "displayRole": "PROBLEM"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "e330f4fa42168d2372e8891ad6abbea479e1798085a3aa50e6adf21723d224f3",
+        "currentQuestionSha256": "491ff72d32c2168a243689b278c6b850c6e4406d359f41c7bf7fb22f12eb9650",
+        "beforeStudentSha256": "127bc5a8e27c1b6a0302d85ff691aec9b3c11bfbd2e9e527589aa9fbec6de1d2",
+        "currentStudentSha256": "9a041e3dffa1ff9a7c3b229e379bc0380bec961fe709ed20767b13194e389dbe",
+        "compactItemSha256": "d669c6e470f20d99f87b2bde319eee0f704c532460dd4fbf5ca9b20b7eecd1eb",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 7,
+      "questionUid": "qid_v1_56134964da05fe0b1f0c03da443c3f5b954bf9479a9ee8b7250ff9363f2db98d",
+      "observedAtUtc": "2026-11-16T00:36:03.788903+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "외심 O, AOC의 주어진 각과 OAB의 각, C의 BCO 목표각 위치를 대조했다. 문제에 OB 보조선이나 계산된 각을 새로 넣지 않았다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 7,
+        "format": "단일 정답",
+        "given": [
+          184
+        ],
+        "goal": [
+          174
+        ],
+        "method": [
+          159,
+          714
+        ],
+        "condition": [],
+        "candidates": []
+      },
+      "compactItemSha256": "0fb1e5764bb81e042a8606fa807c505144dc93f67f531aea8e1107133532b6f6",
+      "beforeQuestionSha256": "d1310a5635d15a58c099986fcb6a8c2937cd719dbf8bd338219fec15d76f313f",
+      "currentQuestionSha256": "3ecb6da6e02e0b1cb35bec984247ca055b55336c4ba8e9b660e6576ef660dcfe",
+      "beforeStudentSha256": "72b36a04d912b28a83a57b5470d57982ee4e716f432cd8aec2b456fc7c27db8e",
+      "currentStudentSha256": "3de4e297aa58cc0666e201e52765f31435ce7e3420e4c36891812de4d2b1f43c",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_56134964da05fe0b1f0c03da443c3f5b954bf9479a9ee8b7250ff9363f2db98d",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q07.jpg",
+        "cardSha256": "5a69361cce58c4f22635eeb2e91922a42ec7af0938eba722d9eff218b94bd414",
+        "cardBytes": 86267,
+        "cardDimensions": [
+          1400,
+          843
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q07.png",
+            "gitBlobSha1": "4bff7cec92729a830f96924d771b38ac3921d6d7",
+            "bytes": 17736,
+            "sha256": "362440b6a71f97a4e0fcb41bd40066da909b6437c9036be627c357de84af8fbe",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q07.png",
+              "gitBlobSha1": "4bff7cec92729a830f96924d771b38ac3921d6d7",
+              "sha256": "362440b6a71f97a4e0fcb41bd40066da909b6437c9036be627c357de84af8fbe"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              476,
+              516
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q7-problem-visual-v2.svg",
+            "gitBlobSha1": "dda6617473be7baace216bc6eec9a4edf029c2c2",
+            "bytes": 2870,
+            "sha256": "7a6b5e43460afafbd06cc34b57e39a75ea2fa6d84bd1f4da6489aa020ffcfc75",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "9756cfefe75c2cb1e37e288c8f9c9f49071a835439470b71554658a01ba5da5c",
+            "decodedDimensions": [
+              1000,
+              733
+            ],
+            "displayRole": "PROBLEM"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "d1310a5635d15a58c099986fcb6a8c2937cd719dbf8bd338219fec15d76f313f",
+        "currentQuestionSha256": "3ecb6da6e02e0b1cb35bec984247ca055b55336c4ba8e9b660e6576ef660dcfe",
+        "beforeStudentSha256": "72b36a04d912b28a83a57b5470d57982ee4e716f432cd8aec2b456fc7c27db8e",
+        "currentStudentSha256": "3de4e297aa58cc0666e201e52765f31435ce7e3420e4c36891812de4d2b1f43c",
+        "compactItemSha256": "0fb1e5764bb81e042a8606fa807c505144dc93f67f531aea8e1107133532b6f6",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_76f0b67bec2a21754fd8f036418aae1956e62d1f19d0f60bf9acd93ba2606cc8",
+      "observedAtUtc": "2026-11-16T00:36:03.789312+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "평행사변형 대각선 교점 O와 BAC/BDC의 주어진 각, CBD의 x 및 BCA의 y가 유지된다. 글풀이의 평행선 각 옮김과 기존 네 칸 값을 변경하지 않았다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 8,
+        "format": "단일 정답",
+        "given": [
+          163
+        ],
+        "goal": [
+          131
+        ],
+        "method": [
+          180,
+          714
+        ],
+        "condition": [
+          310
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "025ba1aa6ab077bd68b86e8066d2498046da7d5939447060b3157717fd155b98",
+      "beforeQuestionSha256": "919c3e23df6e051d42defe623e5a6d5b6caaf7faf411908bee021b9e672998d7",
+      "currentQuestionSha256": "c95a0ae611964550210488033f6151aa647d011a18fb6ca0e63ef81c2ac44e05",
+      "beforeStudentSha256": "07e8315373859d9269863acee0264a2e4ac394767549b0bd4366dcb24b1fd054",
+      "currentStudentSha256": "63f98b5ada6c49463e7c8b81f56b13aecd481d7bb23301b1a37dc5b52f633ef3",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_76f0b67bec2a21754fd8f036418aae1956e62d1f19d0f60bf9acd93ba2606cc8",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q08.jpg",
+        "cardSha256": "2a54d67f39dc11b2c2773c3df46e27bbc7d27ff5caafdb14ceee665da8c65a62",
+        "cardBytes": 88958,
+        "cardDimensions": [
+          1400,
+          642
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q08.png",
+            "gitBlobSha1": "16d331605ae20b05b72845814255084c43f21ea8",
+            "bytes": 42412,
+            "sha256": "52c68a6aab6cf3a98b7ab9e8219dd9bdc3072bf809cec8c9138b9107b4c66899",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q08.png",
+              "gitBlobSha1": "16d331605ae20b05b72845814255084c43f21ea8",
+              "sha256": "52c68a6aab6cf3a98b7ab9e8219dd9bdc3072bf809cec8c9138b9107b4c66899"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              1170,
+              920
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q8-problem-visual-v2.svg",
+            "gitBlobSha1": "4c1e0e8b2dafaa0c9cd5f1480a437447e3c5fcb9",
+            "bytes": 3467,
+            "sha256": "379dfd7a3950548d105bc6c6fdbabf4dbe71e8dbd014548dbc39d11cbde9d9cd",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "09f0f6f4b692765dcde58f33203ea2d0a453a34f99d397532fa09acd9ca0a358",
+            "decodedDimensions": [
+              1000,
+              731
+            ],
+            "displayRole": "PROBLEM"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "919c3e23df6e051d42defe623e5a6d5b6caaf7faf411908bee021b9e672998d7",
+        "currentQuestionSha256": "c95a0ae611964550210488033f6151aa647d011a18fb6ca0e63ef81c2ac44e05",
+        "beforeStudentSha256": "07e8315373859d9269863acee0264a2e4ac394767549b0bd4366dcb24b1fd054",
+        "currentStudentSha256": "63f98b5ada6c49463e7c8b81f56b13aecd481d7bb23301b1a37dc5b52f633ef3",
+        "compactItemSha256": "025ba1aa6ab077bd68b86e8066d2498046da7d5939447060b3157717fd155b98",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_7d1571b986962c1d131481898b66de1a5f13030e0a5c19a4435ccda48b68f1ad",
+      "observedAtUtc": "2026-11-16T00:36:03.789710+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "BE=EC 눈금, A-E-F와 D-C-F의 순서, AB/AD 전체 길이 및 x의 DF 전체 범위가 유지된다. 동일한 풀이 SVG를 직접 읽었다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 9,
+        "format": "단일 정답",
+        "given": [
+          163
+        ],
+        "goal": [
+          131
+        ],
+        "method": [
+          192,
+          721
+        ],
+        "condition": [
+          188
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "534245e7faa114329ded310dbd3fd92994529014f06fd10a75081722fefcea20",
+      "beforeQuestionSha256": "d2c000f7e4831e08778cfbcc64ee551f6065042c8267d7c6236e34585086cc82",
+      "currentQuestionSha256": "6a974c5c580e9113c80e8c510b120b280b003670b8a4e51b45cc983951f228c5",
+      "beforeStudentSha256": "62ef7fe450422b4a0d30f360d61130c59852bb10f1c63e70a28e6a8318fb29c6",
+      "currentStudentSha256": "de5a5405c9b262b37283841d2ae57fc6403f76eee5fbc9dd63fb1deb364ad4c0",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_7d1571b986962c1d131481898b66de1a5f13030e0a5c19a4435ccda48b68f1ad",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q09.jpg",
+        "cardSha256": "7374efcf623618cc39ee47af002b5a860eeaf989113177f5e40de09afe1c8c45",
+        "cardBytes": 157998,
+        "cardDimensions": [
+          1400,
+          1582
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q09-solution.svg",
+            "gitBlobSha1": "fa061a9b61b4eec02234a5ab4c262e2d1a43e616",
+            "bytes": 1164,
+            "sha256": "3b4f8dfe6166ff38d06eda0efc22c4c29d2e1bec9b8309519b7da0c809cf8c20",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q09-solution.svg",
+              "gitBlobSha1": "fa061a9b61b4eec02234a5ab4c262e2d1a43e616",
+              "sha256": "3b4f8dfe6166ff38d06eda0efc22c4c29d2e1bec9b8309519b7da0c809cf8c20"
+            },
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "5b202ddce6ffd119161a71a383ae8e76c2124c87bb88d6d4e676eedd7a2ce8b2",
+            "decodedDimensions": [
+              1000,
+              1118
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q09.png",
+            "gitBlobSha1": "e2acdc4cf16ee1355403b1a82ba44d7d183d4106",
+            "bytes": 20706,
+            "sha256": "6130aa295af52bd0c64d68a17d91d6e14b95871db23b01668aa56f60eb2514bb",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q09.png",
+              "gitBlobSha1": "e2acdc4cf16ee1355403b1a82ba44d7d183d4106",
+              "sha256": "6130aa295af52bd0c64d68a17d91d6e14b95871db23b01668aa56f60eb2514bb"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              536,
+              516
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q09-solution.svg",
+            "gitBlobSha1": "fa061a9b61b4eec02234a5ab4c262e2d1a43e616",
+            "bytes": 1164,
+            "sha256": "3b4f8dfe6166ff38d06eda0efc22c4c29d2e1bec9b8309519b7da0c809cf8c20",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "5b202ddce6ffd119161a71a383ae8e76c2124c87bb88d6d4e676eedd7a2ce8b2",
+            "decodedDimensions": [
+              1000,
+              1118
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q9-problem-visual-v2.svg",
+            "gitBlobSha1": "2d06fb735ded3015612ba2b61ffc14fa7491a300",
+            "bytes": 4802,
+            "sha256": "4f2009813162dfc535b5a4953ffb93a3ec00142c29e07729af414335fcb0ed1a",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "93b5a00a28d81d658a5771c176167f31ea12025ef334e8ac05f951e9c93c04f0",
+            "decodedDimensions": [
+              1000,
+              787
+            ],
+            "displayRole": "PROBLEM"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "d2c000f7e4831e08778cfbcc64ee551f6065042c8267d7c6236e34585086cc82",
+        "currentQuestionSha256": "6a974c5c580e9113c80e8c510b120b280b003670b8a4e51b45cc983951f228c5",
+        "beforeStudentSha256": "62ef7fe450422b4a0d30f360d61130c59852bb10f1c63e70a28e6a8318fb29c6",
+        "currentStudentSha256": "de5a5405c9b262b37283841d2ae57fc6403f76eee5fbc9dd63fb1deb364ad4c0",
+        "compactItemSha256": "534245e7faa114329ded310dbd3fd92994529014f06fd10a75081722fefcea20",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 10,
+      "questionUid": "qid_v1_204dd3224ff8354e6989356a1f9151983e1bb875d1705e1aaf2d884aeafcfbc9",
+      "observedAtUtc": "2026-11-16T00:36:03.790143+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "HOLD_PROTECTED_BODY_CHANGE",
+      "observations": [
+        "원 이미지의 평행사변형·수직 대각선 증명과 (가)–(마) 빈칸을 현재 HTML content로 옮겼다. 원·현재의 문장 순서, BO/DO 관계, 공통 AO, 합동 빈칸 및 최종 같은 변 관계를 직접 대조했고 의미 차이는 발견하지 않았다. content 보호 필드 변경이므로 renderer-only 운반으로 확정하지 않고 별도 본문 운반 경로를 남긴다."
+      ],
+      "protectedBodyChange": true,
+      "changedFields": [
+        "content",
+        "image",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 10,
+        "format": "빈칸 채우기",
+        "given": [
+          163
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          723,
+          310
+        ],
+        "condition": [
+          179
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "ea5b2cbebe841da4853534c74d4518b0c9c246a14b3b750380a7ec11cb7e5af5",
+      "beforeQuestionSha256": "191bd19ca8e96f11c750c9c45b32b09b4696f167d990dbef196e657e203d4dea",
+      "currentQuestionSha256": "82e14b96cf6bf2a8513f5ff599e9dd60f0b52b9967c899bb054a30028c95d737",
+      "beforeStudentSha256": "825e94973f952fe25da190e66adce8bee45220e6533928210ed4e839038a2aaa",
+      "currentStudentSha256": "786f3196f29e1600defd901ae133dbe9a7c9daea368224843354a39d5550fc8d",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_204dd3224ff8354e6989356a1f9151983e1bb875d1705e1aaf2d884aeafcfbc9",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q10.jpg",
+        "cardSha256": "a8f3a627687a7b972759291a5c4d32d6d06845e16b436dc7644e9135e12fd532",
+        "cardBytes": 135882,
+        "cardDimensions": [
+          1400,
+          716
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q10.png",
+            "gitBlobSha1": "b3b6f042bf54b71023d872b8a056249d21703160",
+            "bytes": 41286,
+            "sha256": "71ca72e78999e64f7e884e2a74bd0adf730b3c02adc72195c72662b94a0ce175",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q10.png",
+              "gitBlobSha1": "b3b6f042bf54b71023d872b8a056249d21703160",
+              "sha256": "71ca72e78999e64f7e884e2a74bd0adf730b3c02adc72195c72662b94a0ce175"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              970,
+              870
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q10-problem-visual-v2.svg",
+            "gitBlobSha1": "0fa7d6452eeb00e9bbc5b6a81ca455179a435036",
+            "bytes": 2594,
+            "sha256": "3301d172d700d0bb1f1d4f5a25418b5f7db56f32c6f29d6826e6bcc87a51dd82",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "bbd64861d731409cbfa11f1e86fa3bea916cb6a0150702562fcc24413ef6cc53",
+            "decodedDimensions": [
+              1000,
+              722
+            ],
+            "displayRole": "PROBLEM"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": true,
+        "beforeQuestionSha256": "191bd19ca8e96f11c750c9c45b32b09b4696f167d990dbef196e657e203d4dea",
+        "currentQuestionSha256": "82e14b96cf6bf2a8513f5ff599e9dd60f0b52b9967c899bb054a30028c95d737",
+        "beforeStudentSha256": "825e94973f952fe25da190e66adce8bee45220e6533928210ed4e839038a2aaa",
+        "currentStudentSha256": "786f3196f29e1600defd901ae133dbe9a7c9daea368224843354a39d5550fc8d",
+        "compactItemSha256": "ea5b2cbebe841da4853534c74d4518b0c9c246a14b3b750380a7ec11cb7e5af5",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_9a1c71c7ed648940f63646fd8f2062e131ad914bdf109362eef3aef1a880d7f2",
+      "observedAtUtc": "2026-11-16T00:36:03.791623+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "마름모의 두 대각선과 B-P-C 순서, AP 연결이 유지된다. 길이와 분할비는 기존 본문 그대로이며 동일한 풀이 SVG의 넓이비 역할을 확인했다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 12,
+        "format": "단일 정답",
+        "given": [
+          164
+        ],
+        "goal": [
+          213
+        ],
+        "method": [
+          310,
+          213
+        ],
+        "condition": [
+          289
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "45571bdd13e79888a379725e549e478cc7e332cf631b51f5033bf0e03c8dd2ea",
+      "beforeQuestionSha256": "b1e592286532eedca164655cbc350750a1e7368c26e2f343a0d4df3317b04e3c",
+      "currentQuestionSha256": "b95d88abe9f9f2ca3f47cda0d797dcf8ca359e26145d8a14b64e5b576bc3e6cd",
+      "beforeStudentSha256": "89d424ab2aa3c2eaffd415284dc7a3f3dadc0f15014ef59705274ee052716f77",
+      "currentStudentSha256": "af28e6d798b8bc550ac5cd4f593acf91803f00c174a87970cdbea6f82bd20db0",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_9a1c71c7ed648940f63646fd8f2062e131ad914bdf109362eef3aef1a880d7f2",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q12.jpg",
+        "cardSha256": "bd3844b53d11fb38ab2e08f71364e065d2a678f8293e20f71cfefe9345274dec",
+        "cardBytes": 150672,
+        "cardDimensions": [
+          1400,
+          1232
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q12-solution.svg",
+            "gitBlobSha1": "f4e8e43b09d022697c09ffbd21dc7b8b638482ca",
+            "bytes": 1060,
+            "sha256": "c4f9658552978b9a7e4308b3d514e429eec5b770eba8f4376b0f2b92a6723e43",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q12-solution.svg",
+              "gitBlobSha1": "f4e8e43b09d022697c09ffbd21dc7b8b638482ca",
+              "sha256": "c4f9658552978b9a7e4308b3d514e429eec5b770eba8f4376b0f2b92a6723e43"
+            },
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "a65cf426b22a567c62738b3b0cf7d7f2360021cba0b69a427c406d288ed029c1",
+            "decodedDimensions": [
+              1000,
+              842
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q12.png",
+            "gitBlobSha1": "df80b3e61c1f859a77e1ca9219e4339ceb993a88",
+            "bytes": 13086,
+            "sha256": "cd9eca3be694584c7c557e7ca2cfed3e7336e8d0177a373ab777ae368d851b50",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q12.png",
+              "gitBlobSha1": "df80b3e61c1f859a77e1ca9219e4339ceb993a88",
+              "sha256": "cd9eca3be694584c7c557e7ca2cfed3e7336e8d0177a373ab777ae368d851b50"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              528,
+              358
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q12-problem-visual-v2.svg",
+            "gitBlobSha1": "cbe1052a84cc85a9af943b03cb477b0af16bcab8",
+            "bytes": 2470,
+            "sha256": "287bd2c0111518ebd3130cd35a28f452e7e739568b3007a92dd18f1177398b3e",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "ae21cb44fe66e0e66ab376bf5e500b45de376a9e527e4d6a390df588a89a6b04",
+            "decodedDimensions": [
+              1000,
+              722
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q12-solution.svg",
+            "gitBlobSha1": "f4e8e43b09d022697c09ffbd21dc7b8b638482ca",
+            "bytes": 1060,
+            "sha256": "c4f9658552978b9a7e4308b3d514e429eec5b770eba8f4376b0f2b92a6723e43",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "a65cf426b22a567c62738b3b0cf7d7f2360021cba0b69a427c406d288ed029c1",
+            "decodedDimensions": [
+              1000,
+              842
+            ],
+            "displayRole": "SOLUTION"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "b1e592286532eedca164655cbc350750a1e7368c26e2f343a0d4df3317b04e3c",
+        "currentQuestionSha256": "b95d88abe9f9f2ca3f47cda0d797dcf8ca359e26145d8a14b64e5b576bc3e6cd",
+        "beforeStudentSha256": "89d424ab2aa3c2eaffd415284dc7a3f3dadc0f15014ef59705274ee052716f77",
+        "currentStudentSha256": "af28e6d798b8bc550ac5cd4f593acf91803f00c174a87970cdbea6f82bd20db0",
+        "compactItemSha256": "45571bdd13e79888a379725e549e478cc7e332cf631b51f5033bf0e03c8dd2ea",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_9da60224de63e75d017892461250ba4a324d2fc267022173e70fc89770f4a75f",
+      "observedAtUtc": "2026-11-16T00:36:03.793273+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "사다리꼴의 AD/BC 평행 표지와 두 대각선 교점 O, 점 순서가 유지된다. 주어진 두 넓이와 구할 넓이는 본문 그대로이며 풀이 SVG도 동일하다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 13,
+        "format": "단일 정답",
+        "given": [
+          167
+        ],
+        "goal": [
+          213
+        ],
+        "method": [
+          630,
+          218
+        ],
+        "condition": [
+          180,
+          181
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "3c3e3069f6a3e99209bc457fb5a14359db0e1fb46263515e4f72598418af69c2",
+      "beforeQuestionSha256": "2da6c038fb05b1bf455ed464d3333c3ec8028fc8664fb97dfc369c1cf0466362",
+      "currentQuestionSha256": "12141a83931ca254f26659aec197da6072bfb034c9e79550eb44daadface0acd",
+      "beforeStudentSha256": "1ff8429233ea626a1ed976ae60e989cc26a3f9ebcc5808fc68b78782987844b0",
+      "currentStudentSha256": "7f8441cf6e64d84ff0f080ae14e1b3afd04e551ce4e172851ffbb3dfc2d9d0de",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_9da60224de63e75d017892461250ba4a324d2fc267022173e70fc89770f4a75f",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q13.jpg",
+        "cardSha256": "ad18e1970bd4a94aa77feeb627e6fdb1b9aa7275b57f2b0f362a95148bf915a1",
+        "cardBytes": 155360,
+        "cardDimensions": [
+          1400,
+          1259
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q13-solution.svg",
+            "gitBlobSha1": "8a99a19afc1a62358627a9c9429a11017eda664a",
+            "bytes": 1055,
+            "sha256": "da9d3cfa28e4c7a4039813bd526c6029ee4a0f6e30de5f6ce6c7405475bfab7c",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q13-solution.svg",
+              "gitBlobSha1": "8a99a19afc1a62358627a9c9429a11017eda664a",
+              "sha256": "da9d3cfa28e4c7a4039813bd526c6029ee4a0f6e30de5f6ce6c7405475bfab7c"
+            },
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "f47f32b06fda1bba47e5848eff6c39aada7d75d254ba640cd62f5341d5d6dd6e",
+            "decodedDimensions": [
+              1000,
+              838
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q13.png",
+            "gitBlobSha1": "a1de0bf26b9bc968086b6faecc7e802d1a523c9b",
+            "bytes": 40385,
+            "sha256": "59bf0d0b61f5193166b0562b08462f5f1dd8b77ae68b1c9a20097c9c3b5c3681",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q13.png",
+              "gitBlobSha1": "a1de0bf26b9bc968086b6faecc7e802d1a523c9b",
+              "sha256": "59bf0d0b61f5193166b0562b08462f5f1dd8b77ae68b1c9a20097c9c3b5c3681"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              443,
+              311
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q13-problem-visual-v2.svg",
+            "gitBlobSha1": "5df545afc80f57175bef3935a9c473e15a2dd0d1",
+            "bytes": 2824,
+            "sha256": "7550439d2fda9526b2ece27852df5b967303f7b03cad6478a518f74d0bf27eb8",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "fca1801ad8a2b1f82e75098418163d7d988a2d2a1ec000fe3849a8a5db4826cf",
+            "decodedDimensions": [
+              1000,
+              766
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q13-solution.svg",
+            "gitBlobSha1": "8a99a19afc1a62358627a9c9429a11017eda664a",
+            "bytes": 1055,
+            "sha256": "da9d3cfa28e4c7a4039813bd526c6029ee4a0f6e30de5f6ce6c7405475bfab7c",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "f47f32b06fda1bba47e5848eff6c39aada7d75d254ba640cd62f5341d5d6dd6e",
+            "decodedDimensions": [
+              1000,
+              838
+            ],
+            "displayRole": "SOLUTION"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "2da6c038fb05b1bf455ed464d3333c3ec8028fc8664fb97dfc369c1cf0466362",
+        "currentQuestionSha256": "12141a83931ca254f26659aec197da6072bfb034c9e79550eb44daadface0acd",
+        "beforeStudentSha256": "1ff8429233ea626a1ed976ae60e989cc26a3f9ebcc5808fc68b78782987844b0",
+        "currentStudentSha256": "7f8441cf6e64d84ff0f080ae14e1b3afd04e551ce4e172851ffbb3dfc2d9d0de",
+        "compactItemSha256": "3c3e3069f6a3e99209bc457fb5a14359db0e1fb46263515e4f72598418af69c2",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_adddde57b20b47317e783fa0120657234da8c0ec3f49cbba8b9a507a5807776c",
+      "observedAtUtc": "2026-11-16T00:36:03.794318+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "A-D-B 순서와 C의 이등분선 표시를 대조했다. 이등변·닮음 대응 순서는 본문 그대로이며 새 문제에 도출 각을 넣지 않았다. 풀이 SVG는 동일하다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 14,
+        "format": "단일 정답",
+        "given": [
+          159
+        ],
+        "goal": [
+          174
+        ],
+        "method": [
+          611,
+          64
+        ],
+        "condition": [
+          717,
+          192
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "5ace07d3fc93d0a6e67f4d66aab1496bec2315ddb78ca071b447ce52aac78678",
+      "beforeQuestionSha256": "a0d7dcacfa04a12f70dfbd7cc4e6d7cf9b339942eacabfc624ee06d4c939addd",
+      "currentQuestionSha256": "d228be68f61574e35b9f4b3107d46cb6f2116721fe149b2c229f0dda2fb9abbb",
+      "beforeStudentSha256": "1eeaeaf17cd555198f3f22be09349ae390261ed8fbfd3f71f3bd1f1302829907",
+      "currentStudentSha256": "099c113a407a407f3da3b2ba5a9a5d7037da4476717cf5841a1b5e1362353a17",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_adddde57b20b47317e783fa0120657234da8c0ec3f49cbba8b9a507a5807776c",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q14.jpg",
+        "cardSha256": "8151e68ae18db7ee0c3e138aea5473103c959bee546e80160cc3863443d5e5fd",
+        "cardBytes": 125148,
+        "cardDimensions": [
+          1400,
+          1480
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q14-solution.svg",
+            "gitBlobSha1": "9e95243b77c174064d4408b3dc5f413fbb0bbd44",
+            "bytes": 1056,
+            "sha256": "502eab90ec2d912ae22fc926f282822c76690fa47f91044033e4708279d95db2",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q14-solution.svg",
+              "gitBlobSha1": "9e95243b77c174064d4408b3dc5f413fbb0bbd44",
+              "sha256": "502eab90ec2d912ae22fc926f282822c76690fa47f91044033e4708279d95db2"
+            },
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "f58c6db3d1194e899cefc5ce1e89c4611ee2784f4c4826ceeeb64fc40725ac91",
+            "decodedDimensions": [
+              1000,
+              906
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q14.png",
+            "gitBlobSha1": "41e710c0a4555dd6d5e5120e9efbe0013af56f2a",
+            "bytes": 39241,
+            "sha256": "6099c0f93e3a86cd9136f7db13c6fd8a70a60af78bf2484754b6b6390c3d24eb",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q14.png",
+              "gitBlobSha1": "41e710c0a4555dd6d5e5120e9efbe0013af56f2a",
+              "sha256": "6099c0f93e3a86cd9136f7db13c6fd8a70a60af78bf2484754b6b6390c3d24eb"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              359,
+              368
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q14-problem-visual-v2.svg",
+            "gitBlobSha1": "b7b54448a4115e9e9889be44147a3c8b69891839",
+            "bytes": 2107,
+            "sha256": "8a0c25a651255f84d423725077f5a7cd8a2106c89526973a276314542f428ee9",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "40f3c3cd6853a3208fa5b1b65e644731703e597d60b272b9602c1ce59623c14c",
+            "decodedDimensions": [
+              1000,
+              871
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q14-solution.svg",
+            "gitBlobSha1": "9e95243b77c174064d4408b3dc5f413fbb0bbd44",
+            "bytes": 1056,
+            "sha256": "502eab90ec2d912ae22fc926f282822c76690fa47f91044033e4708279d95db2",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "f58c6db3d1194e899cefc5ce1e89c4611ee2784f4c4826ceeeb64fc40725ac91",
+            "decodedDimensions": [
+              1000,
+              906
+            ],
+            "displayRole": "SOLUTION"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "a0d7dcacfa04a12f70dfbd7cc4e6d7cf9b339942eacabfc624ee06d4c939addd",
+        "currentQuestionSha256": "d228be68f61574e35b9f4b3107d46cb6f2116721fe149b2c229f0dda2fb9abbb",
+        "beforeStudentSha256": "1eeaeaf17cd555198f3f22be09349ae390261ed8fbfd3f71f3bd1f1302829907",
+        "currentStudentSha256": "099c113a407a407f3da3b2ba5a9a5d7037da4476717cf5841a1b5e1362353a17",
+        "compactItemSha256": "5ace07d3fc93d0a6e67f4d66aab1496bec2315ddb78ca071b447ce52aac78678",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_ef6f8fb975efde2d9df111dda5acaca3127662d056b740d01d79924a89790e48",
+      "observedAtUtc": "2026-11-16T00:36:03.794851+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "직사각형과 대각선 AC, 수직이등분선 Q-O-P, AO/OC 눈금 및 O의 직각, AB/BC/OC와 x=AP의 범위가 유지된다. 풀이 SVG는 동일하다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 16,
+        "format": "단일 정답",
+        "given": [
+          165
+        ],
+        "goal": [
+          131
+        ],
+        "method": [
+          188,
+          192
+        ],
+        "condition": [
+          178
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "062d2512312a4c3a6b2c34dc166c9ac0bc4d07b224ba1a51679db0f93ec796e0",
+      "beforeQuestionSha256": "483a64eaf8ccd782204d5bd1a287e1089eac2fb8ee97217c436d9a8289b431de",
+      "currentQuestionSha256": "b688eccb46f64cf40731004dcdc622125d649223d51b464707fcf7a63e5eb419",
+      "beforeStudentSha256": "8198903e9b319dce08753e00f8d35162384d65c4321e2a5553e38211f2f3e1a1",
+      "currentStudentSha256": "b9349f43f0f5fc1d09c149fbf87c660047cf74d4b0b2c0b5a9336cde1e955ebe",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_ef6f8fb975efde2d9df111dda5acaca3127662d056b740d01d79924a89790e48",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q16.jpg",
+        "cardSha256": "89cd2eaa06c4163c46bcf18c203b8c45093ea64f75b7dc566d04c9f3630ffb2a",
+        "cardBytes": 151993,
+        "cardDimensions": [
+          1400,
+          1242
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q16-solution.svg",
+            "gitBlobSha1": "2320fbcfeeb9a5f18f1a141aa346c02e9b85ac9d",
+            "bytes": 1182,
+            "sha256": "b4b07ff2d5975cc64d0431ee5d90734e96d894e4e5074b09c60664cbf1079e0e",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q16-solution.svg",
+              "gitBlobSha1": "2320fbcfeeb9a5f18f1a141aa346c02e9b85ac9d",
+              "sha256": "b4b07ff2d5975cc64d0431ee5d90734e96d894e4e5074b09c60664cbf1079e0e"
+            },
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "6771035db470eec99560db9fa57c5a84f1af0cda9f53e94a08e78eed7fa92650",
+            "decodedDimensions": [
+              1000,
+              765
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q16.png",
+            "gitBlobSha1": "b631718e8c5eb39915da984eb09eb50cc4f6a0a0",
+            "bytes": 16373,
+            "sha256": "e60e26f45ba9dc45043b89c033fef9da5bcbfc852ce8fb164e1137f59058f9d5",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q16.png",
+              "gitBlobSha1": "b631718e8c5eb39915da984eb09eb50cc4f6a0a0",
+              "sha256": "e60e26f45ba9dc45043b89c033fef9da5bcbfc852ce8fb164e1137f59058f9d5"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              536,
+              436
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q16-problem-visual-v2.svg",
+            "gitBlobSha1": "1eefb37e9222768466c9ec3e9fda2db8b9991952",
+            "bytes": 5377,
+            "sha256": "60559b4992a3a16e91de9f14d9ae94fcfb3d08c6cb9703b19c598566a69178af",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "b3e846797a3ecd214d2233a53eaf7b34b537dd356dea234be15d234f1f82891c",
+            "decodedDimensions": [
+              1000,
+              761
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q16-solution.svg",
+            "gitBlobSha1": "2320fbcfeeb9a5f18f1a141aa346c02e9b85ac9d",
+            "bytes": 1182,
+            "sha256": "b4b07ff2d5975cc64d0431ee5d90734e96d894e4e5074b09c60664cbf1079e0e",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "6771035db470eec99560db9fa57c5a84f1af0cda9f53e94a08e78eed7fa92650",
+            "decodedDimensions": [
+              1000,
+              765
+            ],
+            "displayRole": "SOLUTION"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "483a64eaf8ccd782204d5bd1a287e1089eac2fb8ee97217c436d9a8289b431de",
+        "currentQuestionSha256": "b688eccb46f64cf40731004dcdc622125d649223d51b464707fcf7a63e5eb419",
+        "beforeStudentSha256": "8198903e9b319dce08753e00f8d35162384d65c4321e2a5553e38211f2f3e1a1",
+        "currentStudentSha256": "b9349f43f0f5fc1d09c149fbf87c660047cf74d4b0b2c0b5a9336cde1e955ebe",
+        "compactItemSha256": "062d2512312a4c3a6b2c34dc166c9ac0bc4d07b224ba1a51679db0f93ec796e0",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_f609573d96834aca9d5a21693e0ac6150be59ed77721e3cccc0005ed5f6e89fa",
+      "observedAtUtc": "2026-11-16T00:36:03.795342+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "A/H의 직각과 B-H-C 순서, BH/HC 각각의 부분 길이 및 AB 목표 길이가 유지된다. 새 문제에 목표 길이 결과가 없고 풀이 SVG는 동일하다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 17,
+        "format": "단일 정답",
+        "given": [
+          161
+        ],
+        "goal": [
+          131
+        ],
+        "method": [
+          192,
+          578
+        ],
+        "condition": [
+          179
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "016ba009faa2d0b8af0dc31fd8c52df77ed6626df17d81e61aa0b5aa3de29b41",
+      "beforeQuestionSha256": "16bb03bcceb28ec965117ea6bb51d57d2f072eecdf4e153829604d9de621fb44",
+      "currentQuestionSha256": "2e615f502a261b496bd7f1ddbe193e5f3d27324b142f271e309baba2360edbd9",
+      "beforeStudentSha256": "2ae41d08f4fd4ea06796126ed276dfa907b5950583e500c8535c6fccab7fee94",
+      "currentStudentSha256": "5dd5315f69c233b5a1e4dfd90dca49817eea526e411d40e4f20513030c989921",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_f609573d96834aca9d5a21693e0ac6150be59ed77721e3cccc0005ed5f6e89fa",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q17.jpg",
+        "cardSha256": "f29d7b47f96a92786859131b102cb654d8ae9668576bc61e5c2a9e2481e94149",
+        "cardBytes": 118124,
+        "cardDimensions": [
+          1400,
+          1272
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q17-solution.svg",
+            "gitBlobSha1": "9eff246d62039458dfdd2fe42c8fc5b362177475",
+            "bytes": 1024,
+            "sha256": "55b67d30a917b42cea0dd9ab8fa7cbb45e458b5d748567e2cc2ca841bda85f17",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q17-solution.svg",
+              "gitBlobSha1": "9eff246d62039458dfdd2fe42c8fc5b362177475",
+              "sha256": "55b67d30a917b42cea0dd9ab8fa7cbb45e458b5d748567e2cc2ca841bda85f17"
+            },
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "ff73775346228f5fa24fefb81b4e6616ebbd1a9ca7fb46136c916e50d4a35d48",
+            "decodedDimensions": [
+              1000,
+              882
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q17.png",
+            "gitBlobSha1": "7ae074cd74f82a630b8acb8fb525ea55901ac2bc",
+            "bytes": 18144,
+            "sha256": "d269db118e62c10205fe7b00171b1b8e595c2bccdc5d108d0844f45b203b50aa",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q17.png",
+              "gitBlobSha1": "7ae074cd74f82a630b8acb8fb525ea55901ac2bc",
+              "sha256": "d269db118e62c10205fe7b00171b1b8e595c2bccdc5d108d0844f45b203b50aa"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              736,
+              546
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q17-problem-visual-v2.svg",
+            "gitBlobSha1": "e4faca93063177969b694fe48fe476f91828bbeb",
+            "bytes": 4074,
+            "sha256": "3ab77dccdbf7e978e6c2a2a0171bb9cfe2c11a4eb71270056c70ec25343966cd",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "d791c227c2c72de61c78e0603b449a5a95872e9a4d1dc4076b11cb45702df0df",
+            "decodedDimensions": [
+              1000,
+              653
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q17-solution.svg",
+            "gitBlobSha1": "9eff246d62039458dfdd2fe42c8fc5b362177475",
+            "bytes": 1024,
+            "sha256": "55b67d30a917b42cea0dd9ab8fa7cbb45e458b5d748567e2cc2ca841bda85f17",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "ff73775346228f5fa24fefb81b4e6616ebbd1a9ca7fb46136c916e50d4a35d48",
+            "decodedDimensions": [
+              1000,
+              882
+            ],
+            "displayRole": "SOLUTION"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "16bb03bcceb28ec965117ea6bb51d57d2f072eecdf4e153829604d9de621fb44",
+        "currentQuestionSha256": "2e615f502a261b496bd7f1ddbe193e5f3d27324b142f271e309baba2360edbd9",
+        "beforeStudentSha256": "2ae41d08f4fd4ea06796126ed276dfa907b5950583e500c8535c6fccab7fee94",
+        "currentStudentSha256": "5dd5315f69c233b5a1e4dfd90dca49817eea526e411d40e4f20513030c989921",
+        "compactItemSha256": "016ba009faa2d0b8af0dc31fd8c52df77ed6626df17d81e61aa0b5aa3de29b41",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_e13b9dba98304967b524525611b6af91ed51580938601d9986ea7335cb415c67",
+      "observedAtUtc": "2026-11-16T00:36:03.795676+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "원뿔의 밑면과 평행한 단면, 꼭짓점-단면과 단면-밑면의 두 높이 범위 및 밑면 반지름을 대조했다. 현재 상부 점선과 외부 치수 괄호가 같은 범위를 나타내며 단면 반지름 결과는 미기재이다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 18,
+        "format": "단일 정답",
+        "given": [
+          712
+        ],
+        "goal": [
+          153
+        ],
+        "method": [
+          192,
+          578
+        ],
+        "condition": [
+          180
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "774d72fea6c5ae85e4f147834312b8c37600a525e67512713ef89e4c099b2b27",
+      "beforeQuestionSha256": "4d86e41f0a28a0b1f763033544ac6e8f745da58be4a64423f84c72aecd25b729",
+      "currentQuestionSha256": "00fbe83939b129710d835f180067e1b24c08aab3ec299108916d7d11d16822d2",
+      "beforeStudentSha256": "83204db15de536e697393b7fdc470a16cf6f5443800aa04ce8e3240503b331a2",
+      "currentStudentSha256": "2a29f84d878dc11b47908291e03c4fd028cad64ca5f632c50b91fedcb5f8830a",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_e13b9dba98304967b524525611b6af91ed51580938601d9986ea7335cb415c67",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q18.jpg",
+        "cardSha256": "682f2950f1fcfd0471b9dd5194b941cdb5c27970221b14578b1f5346bcbab577",
+        "cardBytes": 108777,
+        "cardDimensions": [
+          1400,
+          717
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q18.png",
+            "gitBlobSha1": "af600a3cf0feaeb5ae1bd3ba56a527e3a36d7496",
+            "bytes": 75818,
+            "sha256": "be46e8063073828e80a3c80996a3024afa1c37075ebbaaca7c84a8e814485840",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q18.png",
+              "gitBlobSha1": "af600a3cf0feaeb5ae1bd3ba56a527e3a36d7496",
+              "sha256": "be46e8063073828e80a3c80996a3024afa1c37075ebbaaca7c84a8e814485840"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              424,
+              381
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q18-problem-visual-v2.svg",
+            "gitBlobSha1": "147eaf6f09ea70d3b3f5793565d4e310163c6c24",
+            "bytes": 3888,
+            "sha256": "f63db390bc0192177f2110a124b3ed8fa7fb04ea4db03586dc3093ca22bce604",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "9794673ba18e49b99e73811375ddc9eb0dbd3ccd7b3b684fd9265dcf0d5ffc9f",
+            "decodedDimensions": [
+              1000,
+              842
+            ],
+            "displayRole": "PROBLEM"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "4d86e41f0a28a0b1f763033544ac6e8f745da58be4a64423f84c72aecd25b729",
+        "currentQuestionSha256": "00fbe83939b129710d835f180067e1b24c08aab3ec299108916d7d11d16822d2",
+        "beforeStudentSha256": "83204db15de536e697393b7fdc470a16cf6f5443800aa04ce8e3240503b331a2",
+        "currentStudentSha256": "2a29f84d878dc11b47908291e03c4fd028cad64ca5f632c50b91fedcb5f8830a",
+        "compactItemSha256": "774d72fea6c5ae85e4f147834312b8c37600a525e67512713ef89e4c099b2b27",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_f1ddbf57a4d17f4d8bb30c857fc401d30a193945bb24f8c684dd8086e322d7d2",
+      "observedAtUtc": "2026-11-16T00:36:03.796064+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "P/Q/R의 중점 눈금, P-M-N-R와 A-M-Q 및 D-N-Q 연결이 유지된다. 현재 문제에 넓이의 결과를 선행 표시하지 않았고 풀이 SVG는 동일하다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 19,
+        "format": "단일 정답",
+        "given": [
+          163
+        ],
+        "goal": [
+          213
+        ],
+        "method": [
+          441,
+          213
+        ],
+        "condition": [
+          188
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "57e3f2feaca05bd1003a7c2c519a23afcfcd7f9310a76c671574d4444567d5d2",
+      "beforeQuestionSha256": "3ced5a69ac81d8acb4264e5c5e94fa45cd2493968eb1bda4bbe27fcc225329c2",
+      "currentQuestionSha256": "f1d0d484340ad61b9a9d8998c812a8fad553306e7307b30c9177c116978affe7",
+      "beforeStudentSha256": "6940803a0308b55d01b305a5b09961e7e0453c62570026272678715d76bab377",
+      "currentStudentSha256": "e63258b07a6cd181b96c98f947571919d40445e5947b752ee13a7ec91819f516",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_f1ddbf57a4d17f4d8bb30c857fc401d30a193945bb24f8c684dd8086e322d7d2",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q19.jpg",
+        "cardSha256": "58aaec9435b9ea383aa836aa380206703d48ac82dea53d368adf0e60fe2f50c0",
+        "cardBytes": 139337,
+        "cardDimensions": [
+          1400,
+          1162
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q19-solution.svg",
+            "gitBlobSha1": "8d43cd9980bc052075806db63a3b92165fa9adbe",
+            "bytes": 1212,
+            "sha256": "29bc522f734c3f4291fc8cfde034982f150173c1376e7c418142a170108e51e0",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q19-solution.svg",
+              "gitBlobSha1": "8d43cd9980bc052075806db63a3b92165fa9adbe",
+              "sha256": "29bc522f734c3f4291fc8cfde034982f150173c1376e7c418142a170108e51e0"
+            },
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "f3a9c81c8e2b0a3de0bb664e020054cbed5c5b583a1d58519dfe811b04dd7996",
+            "decodedDimensions": [
+              1000,
+              795
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q19.png",
+            "gitBlobSha1": "f07a7409535f58fbfcf361089c2fd82651d18d02",
+            "bytes": 71784,
+            "sha256": "f7056e086ad83bf68fefa1c3793c6a2bbcfd6f1ac3ac1286ee0c97857df87045",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q19.png",
+              "gitBlobSha1": "f07a7409535f58fbfcf361089c2fd82651d18d02",
+              "sha256": "f7056e086ad83bf68fefa1c3793c6a2bbcfd6f1ac3ac1286ee0c97857df87045"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              564,
+              329
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q19-problem-visual-v2.svg",
+            "gitBlobSha1": "da71f3e0bb8c971e60d9a85adc3cef9451fa0ea6",
+            "bytes": 4938,
+            "sha256": "d9fa3897cb8309fe0a5921223ff72e9ff6eba5e60ec03d701a7468aaabe428ff",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "a482878649a6d20ed3fa4a203ee4b039b2028af0deb9a8c6cecfa9eb4d0c8a30",
+            "decodedDimensions": [
+              1000,
+              665
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q19-solution.svg",
+            "gitBlobSha1": "8d43cd9980bc052075806db63a3b92165fa9adbe",
+            "bytes": 1212,
+            "sha256": "29bc522f734c3f4291fc8cfde034982f150173c1376e7c418142a170108e51e0",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "f3a9c81c8e2b0a3de0bb664e020054cbed5c5b583a1d58519dfe811b04dd7996",
+            "decodedDimensions": [
+              1000,
+              795
+            ],
+            "displayRole": "SOLUTION"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "3ced5a69ac81d8acb4264e5c5e94fa45cd2493968eb1bda4bbe27fcc225329c2",
+        "currentQuestionSha256": "f1d0d484340ad61b9a9d8998c812a8fad553306e7307b30c9177c116978affe7",
+        "beforeStudentSha256": "6940803a0308b55d01b305a5b09961e7e0453c62570026272678715d76bab377",
+        "currentStudentSha256": "e63258b07a6cd181b96c98f947571919d40445e5947b752ee13a7ec91819f516",
+        "compactItemSha256": "57e3f2feaca05bd1003a7c2c519a23afcfcd7f9310a76c671574d4444567d5d2",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_ea8f9602a6a276cbaafa321190b673abbc47deafe5eae964c6d3caf81a3bfdb7",
+      "observedAtUtc": "2026-11-16T00:36:03.796482+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "정삼각형의 접기 전 A 점선과 D/F의 두 변 위 위치, 접는 DF와 접힌 E, BD/BE/DE의 길이 대상을 대조했다. 새로운 AF 결과 표지는 없고 풀이 SVG는 동일하다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 20,
+        "format": "단일 정답",
+        "given": [
+          160
+        ],
+        "goal": [
+          215
+        ],
+        "method": [
+          208,
+          192,
+          159
+        ],
+        "condition": [
+          208
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "95aa6002b8e8c5b46c47b3b1d9c39baeca3de6ebd83d5a19a6ea6bc1f79bdaef",
+      "beforeQuestionSha256": "a5e8c0c3c5648b6a2d256d7adf0a0ad85d2d5be39efd45b43a6a4bdc231d9c01",
+      "currentQuestionSha256": "bae4cfa9892ad7c9a80940e9da6502a505832df234536a65433e8d17e35330bb",
+      "beforeStudentSha256": "737bd7f8abc6e18103504c6fa8fe258e3a95ca67dafb6569f64011d532069685",
+      "currentStudentSha256": "108d15b574c954d6cd299690d1125a3837943b17356a95ddd7e79c0d85cfc988",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_ea8f9602a6a276cbaafa321190b673abbc47deafe5eae964c6d3caf81a3bfdb7",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q20.jpg",
+        "cardSha256": "5ccd86456c3da157774e3c3373116cc7d6543e1569a9e7770ed4a90b65a1075f",
+        "cardBytes": 170665,
+        "cardDimensions": [
+          1400,
+          1429
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q20-solution.svg",
+            "gitBlobSha1": "29698f364167c01f5086388d713dc2e272b7ef9c",
+            "bytes": 1150,
+            "sha256": "405656f96d66340cbe67b7f1ca949065e8d553f9d077ace052c0a558b03517c3",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q20-solution.svg",
+              "gitBlobSha1": "29698f364167c01f5086388d713dc2e272b7ef9c",
+              "sha256": "405656f96d66340cbe67b7f1ca949065e8d553f9d077ace052c0a558b03517c3"
+            },
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "afd3ec77d71a163fd31ded4fb671b38a819d16b87c79b7847ececf8a1d3b952c",
+            "decodedDimensions": [
+              1000,
+              897
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q20.png",
+            "gitBlobSha1": "5788bd0314cc778a71eefdbc4fc68a277c6a3035",
+            "bytes": 45107,
+            "sha256": "998aef7656bdff4f258b1752e64b143d3aa6123a09708df7af7ceb60629681a7",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q20.png",
+              "gitBlobSha1": "5788bd0314cc778a71eefdbc4fc68a277c6a3035",
+              "sha256": "998aef7656bdff4f258b1752e64b143d3aa6123a09708df7af7ceb60629681a7"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              411,
+              394
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q20-problem-visual-v2.svg",
+            "gitBlobSha1": "b06bbbe91eb11f6b223a78f3e914080f3245e789",
+            "bytes": 4437,
+            "sha256": "615fe21e2ed5cf66e86f2816eaeee26412dfc9aefc48c2367e7fd32b9c85f528",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "1a5f6f8a9bc0dca34a11b4cd71cf7787d59e8d1ef732b34a352304da15d33d01",
+            "decodedDimensions": [
+              1000,
+              812
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q20-solution.svg",
+            "gitBlobSha1": "29698f364167c01f5086388d713dc2e272b7ef9c",
+            "bytes": 1150,
+            "sha256": "405656f96d66340cbe67b7f1ca949065e8d553f9d077ace052c0a558b03517c3",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "afd3ec77d71a163fd31ded4fb671b38a819d16b87c79b7847ececf8a1d3b952c",
+            "decodedDimensions": [
+              1000,
+              897
+            ],
+            "displayRole": "SOLUTION"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "a5e8c0c3c5648b6a2d256d7adf0a0ad85d2d5be39efd45b43a6a4bdc231d9c01",
+        "currentQuestionSha256": "bae4cfa9892ad7c9a80940e9da6502a505832df234536a65433e8d17e35330bb",
+        "beforeStudentSha256": "737bd7f8abc6e18103504c6fa8fe258e3a95ca67dafb6569f64011d532069685",
+        "currentStudentSha256": "108d15b574c954d6cd299690d1125a3837943b17356a95ddd7e79c0d85cfc988",
+        "compactItemSha256": "95aa6002b8e8c5b46c47b3b1d9c39baeca3de6ebd83d5a19a6ea6bc1f79bdaef",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_8d5adb66553e5a1bd552ef118800a9e9daa315723365055741bff1a87eafa26d",
+      "observedAtUtc": "2026-11-16T00:36:03.796885+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "A-D-B와 B-E-C의 순서, AD=AC 눈금, D/C 직각 및 EC 부분 길이가 유지된다. 기존 RHS 합동과 길이 글풀이·풀이 SVG는 그대로이다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 21,
+        "format": "소문항 묶음",
+        "given": [
+          606
+        ],
+        "goal": [
+          193,
+          215
+        ],
+        "method": [
+          723,
+          159
+        ],
+        "condition": [
+          179,
+          215
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "5b123adfa63552a1cdf8d5231b99ee129cf78908ca393aba0772861851abc626",
+      "beforeQuestionSha256": "51d8e03ebc8b63d4055bf69a706a175482594e71a3de0474b83a14370e89fda6",
+      "currentQuestionSha256": "5a40b19b3ff2eddff5a939a929f187d8d3a506f47ee1f4ea0782d1d20c40d48d",
+      "beforeStudentSha256": "7c434aaa67589dae0d1a6852cff185491167a9dc12212474650e13a567e4a46d",
+      "currentStudentSha256": "f7f7d3980bc50d43417248a9980c2f7b8fd653f053c0186075a9a8136f3c8feb",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_8d5adb66553e5a1bd552ef118800a9e9daa315723365055741bff1a87eafa26d",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q21.jpg",
+        "cardSha256": "4ea165f3c790428c6a770c4686cfa155502eec495236b854194f265ac226fb6e",
+        "cardBytes": 122283,
+        "cardDimensions": [
+          1400,
+          1288
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q21-solution.svg",
+            "gitBlobSha1": "175d1c4c8a829c6e39dfb96822cc07890a3ea82e",
+            "bytes": 1156,
+            "sha256": "664cd65196cdb0dbaceeaf92a7103d997e79dea9073dc8cc8716deab22aa222a",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q21-solution.svg",
+              "gitBlobSha1": "175d1c4c8a829c6e39dfb96822cc07890a3ea82e",
+              "sha256": "664cd65196cdb0dbaceeaf92a7103d997e79dea9073dc8cc8716deab22aa222a"
+            },
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "affa3225a7428d1eaff117155523c06a5ceb4af5d371b61ea510d3819aab7ee1",
+            "decodedDimensions": [
+              1000,
+              861
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q21.png",
+            "gitBlobSha1": "e9be24a2b2bcf88a3d460a0aadbabb3b4040be0f",
+            "bytes": 15127,
+            "sha256": "3bc0b2909b1567df4efe814936945fab4b4cf8b82d1242aab362f839bb221fd1",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q21.png",
+              "gitBlobSha1": "e9be24a2b2bcf88a3d460a0aadbabb3b4040be0f",
+              "sha256": "3bc0b2909b1567df4efe814936945fab4b4cf8b82d1242aab362f839bb221fd1"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              506,
+              386
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q21-problem-visual-v2.svg",
+            "gitBlobSha1": "d8312703feb46b73e5cebf935e98e4008ec193a2",
+            "bytes": 3951,
+            "sha256": "45166e44f735d583e366bb234e354ce0b4b5724d98f83011bb117c968a10a0dd",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "9b328d96532183aa240120719b7ae62f92a2c4b7b76344683efdc1934fd39ac0",
+            "decodedDimensions": [
+              1000,
+              785
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q21-solution.svg",
+            "gitBlobSha1": "175d1c4c8a829c6e39dfb96822cc07890a3ea82e",
+            "bytes": 1156,
+            "sha256": "664cd65196cdb0dbaceeaf92a7103d997e79dea9073dc8cc8716deab22aa222a",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "affa3225a7428d1eaff117155523c06a5ceb4af5d371b61ea510d3819aab7ee1",
+            "decodedDimensions": [
+              1000,
+              861
+            ],
+            "displayRole": "SOLUTION"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "51d8e03ebc8b63d4055bf69a706a175482594e71a3de0474b83a14370e89fda6",
+        "currentQuestionSha256": "5a40b19b3ff2eddff5a939a929f187d8d3a506f47ee1f4ea0782d1d20c40d48d",
+        "beforeStudentSha256": "7c434aaa67589dae0d1a6852cff185491167a9dc12212474650e13a567e4a46d",
+        "currentStudentSha256": "f7f7d3980bc50d43417248a9980c2f7b8fd653f053c0186075a9a8136f3c8feb",
+        "compactItemSha256": "5b123adfa63552a1cdf8d5231b99ee129cf78908ca393aba0772861851abc626",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_ec4315a58b66e1ebad91df2b293bc4368c9a198026fe07235d1c7051c557102b",
+      "observedAtUtc": "2026-11-16T00:36:03.797264+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "두 정사각형의 꼭짓점 순서와 O의 첫 정사각형 중심 위치, P/Q 교점 및 겹친 OPCQ 영역을 대조했다. 결과 넓이는 문제에 추가되지 않았으며 풀이 SVG는 동일하다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 22,
+        "format": "소문항 묶음",
+        "given": [
+          166
+        ],
+        "goal": [
+          193,
+          213
+        ],
+        "method": [
+          723,
+          630
+        ],
+        "condition": [
+          181
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "2a4a87296597dd2d4adf33667c9c7fc395d7f6489f2683331b7b117f9aff769a",
+      "beforeQuestionSha256": "c1a71d385069c15a58161c099e81b001183c430b1d6fccb312db6fc54872cd3b",
+      "currentQuestionSha256": "09dee73af7d598749cc0e127de1cd2922bb576f33cfb0e13488967b552b4ed32",
+      "beforeStudentSha256": "e386386ca84ab043625bece54771be8fdfc15d31533145442eb7b2171563d952",
+      "currentStudentSha256": "d745c1ab0c7d2d9381344df2d969e70fc9fbadc8e57fbbe99547c9e68045e9f4",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_ec4315a58b66e1ebad91df2b293bc4368c9a198026fe07235d1c7051c557102b",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q22.jpg",
+        "cardSha256": "e1542ba4cac2a2aaab3a7d094a20655fefba864a38d75cc40fe15283ee28bb71",
+        "cardBytes": 143407,
+        "cardDimensions": [
+          1400,
+          1416
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q22-solution.svg",
+            "gitBlobSha1": "c439bb5a0352185fba5f99dd77835c63d572a580",
+            "bytes": 1336,
+            "sha256": "3a7226f40fc94436c4fd38d454d7860dbbb55cdc0be703d6c6a23076e5451f7c",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q22-solution.svg",
+              "gitBlobSha1": "c439bb5a0352185fba5f99dd77835c63d572a580",
+              "sha256": "3a7226f40fc94436c4fd38d454d7860dbbb55cdc0be703d6c6a23076e5451f7c"
+            },
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "e6a9e328241362646fd1cf1237eac9ca5a956fdca9d60c8b33a7ff18be2c9792",
+            "decodedDimensions": [
+              1000,
+              1000
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q22.png",
+            "gitBlobSha1": "16295690d6f08ff963cd16355ca4d78ec1f81dae",
+            "bytes": 21303,
+            "sha256": "86e4dd4eff3bc21f567e627e95f9ead8ff148e9238500a5593ed8ca2e02cfbcf",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q22.png",
+              "gitBlobSha1": "16295690d6f08ff963cd16355ca4d78ec1f81dae",
+              "sha256": "86e4dd4eff3bc21f567e627e95f9ead8ff148e9238500a5593ed8ca2e02cfbcf"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              686,
+              366
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q22-problem-visual-v2.svg",
+            "gitBlobSha1": "35aebf358aec6443fb7e2f7d3b550a4e643dd61f",
+            "bytes": 4428,
+            "sha256": "ae4d6a82365228deb050c187a8e587f03bc1eb01044970220a31bd30568c4d77",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "652a83bd6285532c1ec4496aaa8b4073565230133559c01ce19ae9cdfc70d1a9",
+            "decodedDimensions": [
+              1000,
+              836
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q22-solution.svg",
+            "gitBlobSha1": "c439bb5a0352185fba5f99dd77835c63d572a580",
+            "bytes": 1336,
+            "sha256": "3a7226f40fc94436c4fd38d454d7860dbbb55cdc0be703d6c6a23076e5451f7c",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "e6a9e328241362646fd1cf1237eac9ca5a956fdca9d60c8b33a7ff18be2c9792",
+            "decodedDimensions": [
+              1000,
+              1000
+            ],
+            "displayRole": "SOLUTION"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "c1a71d385069c15a58161c099e81b001183c430b1d6fccb312db6fc54872cd3b",
+        "currentQuestionSha256": "09dee73af7d598749cc0e127de1cd2922bb576f33cfb0e13488967b552b4ed32",
+        "beforeStudentSha256": "e386386ca84ab043625bece54771be8fdfc15d31533145442eb7b2171563d952",
+        "currentStudentSha256": "d745c1ab0c7d2d9381344df2d969e70fc9fbadc8e57fbbe99547c9e68045e9f4",
+        "compactItemSha256": "2a4a87296597dd2d4adf33667c9c7fc395d7f6489f2683331b7b117f9aff769a",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    },
+    {
+      "exam": "E017",
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_59226ef933e59db710d0814eb8f94bfc56270f061f29a306a03837395c1b7472",
+      "observedAtUtc": "2026-11-16T00:36:03.797750+00:00",
+      "actualObserver": "/root/audit_m2",
+      "actualRead": {
+        "fullStem": true,
+        "choices": true,
+        "answer": true,
+        "writtenSolution": true,
+        "nativeFourSlot": true,
+        "priorAndCurrentReferencedRenderers": true
+      },
+      "decision": "RETAIN_EXISTING_VECTOR",
+      "observations": [
+        "A-D-B 순서, ABC와 ACD의 같은 각 표시 및 AB/AC/BC 전체 길이가 유지된다. 새 문제에 닮음비나 목표 길이 결과를 넣지 않았고 풀이 SVG는 동일하다."
+      ],
+      "protectedBodyChange": false,
+      "changedFields": [
+        "image",
+        "imageAlt",
+        "imageSize",
+        "layoutTag"
+      ],
+      "unchangedFourSlot": {
+        "ordinal": 23,
+        "format": "소문항 묶음",
+        "given": [
+          158
+        ],
+        "goal": [
+          439,
+          721,
+          215
+        ],
+        "method": [
+          439,
+          578
+        ],
+        "condition": [
+          174
+        ],
+        "candidates": []
+      },
+      "compactItemSha256": "0cbeeb8b79d4ecc39fd20e26c78d8ea63b4089c45d996a0fcadc661d8b43cd6a",
+      "beforeQuestionSha256": "2b84a404a2a8e276a5d0e86172e26fde44996f0b7f523e92650b448302d648be",
+      "currentQuestionSha256": "d34a95cbc008087500ae79d5cd0ff1de97bc92f0b600652f2a81e3f6bdb511e4",
+      "beforeStudentSha256": "6afa7dae17ece77cc00eb78af885d09e8c26aa064d1dedcb126ff3cfb97e9f11",
+      "currentStudentSha256": "9de5e64ffc8988977c601f57d7624c151ca215b449cb49612feb270024d21a86",
+      "contextRef": {
+        "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+        "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+      },
+      "priorSourceRef": {
+        "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "4134e04ee4214c161c740988bf024592c4247e3f",
+        "sha256": "3c5a0f0ae254b2f5c3dafa15dfe55c269a9c8055c70d6936fb9ba44002469161",
+        "bytes": 61302
+      },
+      "currentSourceRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687",
+        "bytes": 66448
+      },
+      "priorCompactRef": {
+        "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "gitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "sha256": "34f53db38afc8945956e963efc25777e9705e27b16b7d1352723f6a3e01d3fe0",
+        "bytes": 4316
+      },
+      "authorityRefs": [
+        {
+          "branch": "review/m2-s2-meta-full-20261114",
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+          "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75",
+          "rootAcceptance": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+            "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+          },
+          "independentReview": {
+            "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+            "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+            "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+          },
+          "sourceReuse": {
+            "kind": "UNCHANGED_STUDENT_PAYLOAD",
+            "reviewedSourceGitBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+            "currentSourceGitBlobSha": "4134e04ee4214c161c740988bf024592c4247e3f"
+          },
+          "kind": "nativeFourSlot"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+          "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82",
+          "kind": "rootAcceptance"
+        },
+        {
+          "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+          "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+          "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4",
+          "kind": "independentReview"
+        }
+      ],
+      "card": {
+        "exam": "E017",
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_59226ef933e59db710d0814eb8f94bfc56270f061f29a306a03837395c1b7472",
+        "cardPath": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/cards/E017-q23.jpg",
+        "cardSha256": "b4c8ef8c7aaa8b45c1e5bff7b5ec5d850acbedc3ee48088bf46af2044c5303b8",
+        "cardBytes": 142747,
+        "cardDimensions": [
+          1400,
+          1255
+        ],
+        "assets": [
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q23-solution.svg",
+            "gitBlobSha1": "ef576d66d669a3ec610b639310032e9fa5a16bf6",
+            "bytes": 1044,
+            "sha256": "94923b6444835c5a7013cdf37262daae6f6d6c93ba21c114608880ad15dab586",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q23-solution.svg",
+              "gitBlobSha1": "ef576d66d669a3ec610b639310032e9fa5a16bf6",
+              "sha256": "94923b6444835c5a7013cdf37262daae6f6d6c93ba21c114608880ad15dab586"
+            },
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "a0e69c96ac02cabd82efe0047270b16d9f9a8ddc7187e979d0c903a7775ab0eb",
+            "decodedDimensions": [
+              1000,
+              912
+            ],
+            "displayRole": "SOLUTION"
+          },
+          {
+            "commit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q23.png",
+            "gitBlobSha1": "8bd1b949203af1d0657ae6f97f173ff87f08b9d8",
+            "bytes": 13833,
+            "sha256": "643248b047916baf5188cd6b64705bb4dc74439c5f34cdd64e4c158026669de1",
+            "phase": "prior",
+            "rawBytesVerified": true,
+            "nativeAssetRef": {
+              "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+              "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q23.png",
+              "gitBlobSha1": "8bd1b949203af1d0657ae6f97f173ff87f08b9d8",
+              "sha256": "643248b047916baf5188cd6b64705bb4dc74439c5f34cdd64e4c158026669de1"
+            },
+            "renderEngine": "original raster decode",
+            "decodedDimensions": [
+              418,
+              268
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q23-problem-visual-v2.svg",
+            "gitBlobSha1": "6cb01593a000a050d3d66505a398dc400cf4808b",
+            "bytes": 3802,
+            "sha256": "80759968165b6eb1f4d4407a2fd2ea098e9136e18d9e946c5852f4e16cd9ae32",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "865e115179c8e37e7b611285b527b0203df876777a69ef31903e0219d7a47c90",
+            "decodedDimensions": [
+              1000,
+              685
+            ],
+            "displayRole": "PROBLEM"
+          },
+          {
+            "commit": "9620c353f307cbfc553566d0511b633a2eff643b",
+            "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q23-solution.svg",
+            "gitBlobSha1": "ef576d66d669a3ec610b639310032e9fa5a16bf6",
+            "bytes": 1044,
+            "sha256": "94923b6444835c5a7013cdf37262daae6f6d6c93ba21c114608880ad15dab586",
+            "phase": "current",
+            "rawBytesVerified": true,
+            "embeddedStaticSvgInventory": [],
+            "nonlocalReferences": [],
+            "dynamicMarkupPresent": false,
+            "renderEngine": "Inkscape 1.4; browser NOT_RUN",
+            "renderedSha256": "a0e69c96ac02cabd82efe0047270b16d9f9a8ddc7187e979d0c903a7775ab0eb",
+            "decodedDimensions": [
+              1000,
+              912
+            ],
+            "displayRole": "SOLUTION"
+          }
+        ],
+        "contextRef": {
+          "path": "/workspace/scratch/987d4bf32f40/AP-m3-f932-final-continuity/.tmp/m2s2-wave131/E017-context.json",
+          "sha256": "d0282d6ed1c222341ce574aa6cc83c86e1b7e69f08391defae96e908bfe6717a"
+        },
+        "protectedBodyChange": false,
+        "beforeQuestionSha256": "2b84a404a2a8e276a5d0e86172e26fde44996f0b7f523e92650b448302d648be",
+        "currentQuestionSha256": "d34a95cbc008087500ae79d5cd0ff1de97bc92f0b600652f2a81e3f6bdb511e4",
+        "beforeStudentSha256": "6afa7dae17ece77cc00eb78af885d09e8c26aa064d1dedcb126ff3cfb97e9f11",
+        "currentStudentSha256": "9de5e64ffc8988977c601f57d7624c151ca215b449cb49612feb270024d21a86",
+        "compactItemSha256": "0cbeeb8b79d4ecc39fd20e26c78d8ea63b4089c45d996a0fcadc661d8b43cd6a",
+        "visualStatus": "PREPARED_NOT_OBSERVED"
+      }
+    }
+  ],
+  "counts": {
+    "observed": 21,
+    "selected": 21,
+    "decisions": {
+      "HOLD_PROTECTED_BODY_CHANGE": 1,
+      "HOLD_RELATION_CONTINUITY": 1,
+      "RETAIN_EXISTING_VECTOR": 19
+    }
+  }
+}

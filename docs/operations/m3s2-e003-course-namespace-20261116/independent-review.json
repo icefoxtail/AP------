@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "e003-native-course-namespace-independent-readonly-v1",
+  "reviewer": "/root/audit_m2",
+  "createdAtUtc": "2026-11-16T01:15:33.221690+00:00",
+  "base": "480c7bb963547d99bf8e060a5621d8d96c0d9b28",
+  "inputManifest": [
+    {
+      "path": "archive/exams/original/middle/m3/2mid/26_팔마중_2학기_중간_중3_기출.js",
+      "sha256": "02be89e9ab1191ff6b7fce00e8bf477438f371ff22702f411aec1d8ffa6d91d1",
+      "bytes": 59317
+    },
+    {
+      "path": ".archive-meta-register/inbox/m3s2-audit-e003-native9-20261116.json",
+      "sha256": "4e32ae6ba63a499bd21fbbcb5af852fa514973e77c436e6bd3f207095ddd83d4",
+      "bytes": 49240
+    },
+    {
+      "path": ".archive-meta-register/inbox/m3s2-e003-course-namespace-preserve4-20261116.json",
+      "sha256": "7bc08a5c663c883c98ea7cfc96233f1b369f2298c9f3dfe956853a5622bd47ed",
+      "bytes": 6787
+    },
+    {
+      "path": "docs/operations/m3s2-e003-course-namespace-20261116/namespace-transport-proof.json",
+      "sha256": "51239bbc64098e6020f5ec5a356ec83f3258b6f358757205f79192f49c853f03",
+      "bytes": 12805
+    }
+  ],
+  "result": "STATIC_BOUNDARY_PASS",
+  "blockingFindings": [],
+  "directChecks": {
+    "sourceWholeObjects": {
+      "total": 24,
+      "onlyCourseKeyAddedAt": [
+        1,
+        2,
+        7,
+        10,
+        12,
+        13,
+        16,
+        21,
+        22
+      ],
+      "outsideWholeObjectsUnchanged": 15,
+      "studentFieldChanges": 0,
+      "curriculumValueChanges": 0
+    },
+    "nativeExactC17Bytes": true,
+    "nativeExplicitScope9": "rpm.base.scope=M3-2",
+    "requestAfterOnlyAddedCourseKey": 9,
+    "requestBeforeOnlyAddedExplicitNullCourseKey": 9,
+    "rootSourceDeclaration2015AlreadyAccepted": {
+      "reviewedSourceDeclarationCount": 24,
+      "sourceOutputBlobSha1": "28fc14ff4cfcfc7c20bb946d753bd4fbb9b7ec4a",
+      "sourcePortAfterSha256": "0ab7a82733c857887f5bd24328d12d2a6ca7ef03255503ab97814f7c149cc0cf"
+    },
+    "allSixCanonicalEvidenceRawHashesAtBase": true,
+    "preserve4": {
+      "ordinals": [
+        3,
+        4,
+        5,
+        11
+      ],
+      "priorReceiptRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e003-release-20261115.json",
+        "sha256": "d9ee3c0606a6d5b1be850b987575fdfdeab4f335e858e288a35cf5eb945c4401"
+      },
+      "priorReceiptActualBaseRawExact": true,
+      "beforeAfterEmpty": true,
+      "sourceWholeObjectsUnchanged": true,
+      "newApprovals": 0
+    },
+    "registryChanges": 0
+  },
+  "limits": {
+    "noNewCurriculumOrMathematicalJudgment": true,
+    "productionSourceOrPacketWrites": 0,
+    "officialRegistrarExecutedByThisReviewer": false,
+    "actualConsumerExecutedByThisReviewer": false,
+    "runtimeActualScopeVerifiedByThisReviewer": false,
+    "writerTests": 0,
+    "currentM3OfficialDryWriteResultsBelongToAuthor": true,
+    "missingProposalsAndSparseRepairDoNotConstituteAnApproval": true
+  }
+}

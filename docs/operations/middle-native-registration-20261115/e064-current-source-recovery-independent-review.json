@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "e064-current-source-recovery-independent-code-review-v1",
+  "reviewer": "GPT_AUDIT_M3_INDEPENDENT",
+  "scope": "STATIC_CODE_REVIEW_ONLY",
+  "snapshot": {
+    "root": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration",
+    "head": "411b28cce03e8ce01f43a3619908355c93827fd0",
+    "path": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+    "baseSha256": "0a40d5a8c82f6b7a7af7459fe3f47e7c1406f1e98f3a698a0bf395875387e9a7",
+    "currentSha256": "e5e813f5772b5d48ad83a010048f8262605f464ce6b398733093852f360bbcfa",
+    "baseBytes": 55118,
+    "currentBytes": 62306,
+    "diffSha256": "ba46f4d317c8754eef36bbfc4e10d66e3de441b94f7fcf3cae40ae07e064984a",
+    "scope": "READ_ONLY_SNAPSHOT"
+  },
+  "snapshotStillMatchesLive": true,
+  "blockingFindings": [],
+  "checks": [
+    {
+      "boundary": "separate opt-in",
+      "finding": "The original v1 exact-key set and exact issued source remain; current source requires its separate schema with four exact commit/path/blob/raw fields."
+    },
+    {
+      "boundary": "original authority",
+      "finding": "replayOriginal official registrar/native replay is unchanged except returning its pre-write full-source UID layout; issued receipt, historical source binding, prerequisite/native authority equality and missing-binding restriction remain."
+    },
+    {
+      "boundary": "selected whole cohort",
+      "finding": "The request retains all original UIDs/ordinals, empty before/after, exact approval and refs. Selected whole-question objects are identical; current full source denominator, IDs/order and current identity layout remain exact."
+    },
+    {
+      "boundary": "renderer bytes",
+      "finding": "Each selected referenced asset is freshly read at original-request, issued-receipt and current-source commits and live; all bytes and SHA values agree with the original replay authority. New batch verdict/cache is absent."
+    },
+    {
+      "boundary": "live peers and withdrawal",
+      "finding": "Registration and reuse check every cohort peer metadata/runtime/identity and invoke authority-hold state for all selected peers. Both valid and invalid hold claims refuse recovery."
+    },
+    {
+      "boundary": "new outputs only",
+      "finding": "Original receipt/source/assets are never output targets. Only new receipt/proof and carried metadata/runtime provenance are generated. Existing semantic fields and identity records are unchanged."
+    },
+    {
+      "boundary": "runtime and descendants",
+      "finding": "Current-source receipt/proof is reconstructed deterministically and full live cohort rechecked. Generic source-only descendants must preserve the complete cohort, exact predecessor digest, selected question/identity/approval values and original recovery replay."
+    },
+    {
+      "boundary": "dispatch and no fallback",
+      "finding": "Registrar, native runtime, Consumer and preview use existing strict explicit-recovery predicates; no broad legacy permission is added. Unknown/malformed current-source schema/ref fails typed validation."
+    },
+    {
+      "boundary": "cache boundary",
+      "finding": "Existing immutable original replay cache is not rewritten by transport. Returned request and transport evidence are cloned. Fresh current source, assets, refs, registry and cohort checks occur outside cached replay."
+    }
+  ],
+  "recommendedFocusedRegressions": [
+    {
+      "type": "positive",
+      "case": "Same original cohort and assets, distinct committed current source changing only outside rows: dry/write/replay/native all cohort pass; old receipt/source/assets byte-identical."
+    },
+    {
+      "type": "positive",
+      "case": "A later whole-cohort generic source-only preservation can replay the new transport receipt through the original authority."
+    },
+    {
+      "type": "refusal",
+      "case": "Keep the v1 schema while using changed whole-source bytes; or use new schema with absent/extra/wrong current source ref; no write."
+    },
+    {
+      "type": "refusal",
+      "case": "Mutate any selected whole-question field, including a field outside stored fingerprints; reject even when source/current ref is honestly resealed."
+    },
+    {
+      "type": "refusal",
+      "case": "Missing/duplicate/reordered full-source IDs, changed full identity UID/ordinal/question-number layout, or denominator drift; no write."
+    },
+    {
+      "type": "refusal",
+      "case": "Valid target row but another selected peer metadata/runtime/identity differs, or has an authority-hold seal/claim; reject whole cohort."
+    },
+    {
+      "type": "refusal",
+      "case": "Selected same-path asset differs in any original/issued/current Git snapshot or fresh live bytes, including warm-cache call, missing file or symlink; no write."
+    },
+    {
+      "type": "refusal",
+      "case": "Remove or alter new proof/schema/output-digest/evidence binding; existing no-fallback guards must continue to reject."
+    },
+    {
+      "type": "refusal",
+      "case": "A later descendant preserves only a subset, splits revisions, changes a peer/identity, loses predecessor proof, or adds approval fields; reject."
+    }
+  ],
+  "authorTests": "ROOT_OWNED_NOT_RERUN",
+  "actualE064Registration": "NOT_RUN_BY_REVIEWER",
+  "productionWrites": 0,
+  "testExecutions": 0,
+  "remoteWrites": 0,
+  "limits": [
+    "This review does not claim actual E064 dry/write/replay, Consumer, shadow or main success.",
+    "Final frozen commit must be bound to the reviewed module SHA or re-read if the bytes change."
+  ]
+}
