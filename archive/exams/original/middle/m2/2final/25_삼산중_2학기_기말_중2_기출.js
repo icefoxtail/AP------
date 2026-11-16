@@ -1335,3 +1335,13 @@ window.questionBank = [
     "decisiveStep": "BOF≅DOE로 대각선 이등분을 얻고 BOF∼BCD에서 OF를 계산한다."
   }
 ];
+
+// Carry the immutable native review and independently finalized application.
+Object.assign(window.questionBank[11], {
+  "crossConceptKeys": [
+    "CC_SIMILAR_FIGURES_AREA_VOLUME",
+    "CC_TRIANGLE_CENTROID_MEDIAN_RATIO"
+  ],
+  "curriculumKey": "2015",
+  "courseKey": "M2-2"
+});

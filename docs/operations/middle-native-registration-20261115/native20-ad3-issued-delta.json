@@ -1,0 +1,766 @@
+{
+  "schemaVersion": "m2-native-queue-ad3-issued-delta-static-v1",
+  "author": "/root/audit_m2",
+  "baselineMain": "a6df5f9189253c0d316af8b9b763f5d4e3e0cddf",
+  "currentMain": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+  "a6InventoryRef": {
+    "path": "/workspace/scratch/987d4bf32f40/m2-native-queue-a6df/static-queue.json",
+    "sha256": "e10a91f8a573e56c2a756ccd9fd0e7db081d6082c1a686ef548e03bbd9358ba7"
+  },
+  "currentSelectedDataReadRefs": [
+    {
+      "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+      "path": "archive/data/question_metadata.json",
+      "gitBlobSha1": "fac5d968a6b5134a4f9b5dfca904eaa2992d960d",
+      "sha256": "5a41c235a5e6305507ad424a6c5d171f362fa21012ef40c0aef1b8665d32f4a2",
+      "bytes": 72037644
+    },
+    {
+      "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+      "path": "archive/data/question_identity_map.json",
+      "gitBlobSha1": "f5ca33273b4016bdd4b3433fccbd4a81ddf0b016",
+      "sha256": "2ca3d891a24a47b95be8b47e8134f6fb1dbb80812e2316b5102f2350db084744",
+      "bytes": 27938431
+    },
+    {
+      "commit": "a6df5f9189253c0d316af8b9b763f5d4e3e0cddf",
+      "path": "archive/data/question_metadata.json",
+      "gitBlobSha1": "8ac989fadc6d64206f1a9d1e51c908fc889dc2f8",
+      "sha256": "317f8ccf747f9393ca464542fbf49d02a53cb00479d4d9b674f93ce3351d5f2f",
+      "bytes": 72025108
+    },
+    {
+      "commit": "a6df5f9189253c0d316af8b9b763f5d4e3e0cddf",
+      "path": "archive/data/question_identity_map.json",
+      "gitBlobSha1": "240df45e5d835ae32c49d78b2e4781cc2e3ce85a",
+      "sha256": "ceb965af4a5bd4192e1cb4af00afbf403f98de001bfda945a8938689d823d06e",
+      "bytes": 27938431
+    }
+  ],
+  "fixedCommitDiff": {
+    "changedPaths": [
+      "M\t.archive-meta-register/auto/4slot/last-verification.json",
+      "A\t.archive-meta-register/auto/4slot/receipts/7a72fd129255f9f599928288ff0007c81e6a1bde41bb6ea979d8f0cfad28160f.json",
+      "M\t.archive-meta-register/auto/state.json",
+      "M\t.archive-meta-register/auto/writer-state.json",
+      "A\t.archive-meta-register/evidence/middle-audit-repair-34c2-m2-current-native-reassessment/current-native-three-application-evidence.r1.json",
+      "A\t.archive-meta-register/evidence/middle-audit-repair-34c2-m2-current-native-reassessment/m2-current-native-three-independent-review.r1.json",
+      "A\t.archive-meta-register/evidence/middle-audit-repair-34c2-m2-current-native-reassessment/root-current-native-three-approval.r1.json",
+      "A\t.archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q18-issued-preservation-after-integer-extrema.4b504e10b1ce.json",
+      "A\t.archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-actual-input-binding.4b504e10b1ce.json",
+      "A\t.archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-exact-template-application-proposal.r1.json",
+      "A\t.archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-root-approval.r1.json",
+      "A\t.archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-source-and-native-transport.r1.json",
+      "A\t.archive-meta-register/evidence/middle-audit-repair-34c2-m2-integer-extrema/e007-q19-q20-template-application-independent-review.r1.json",
+      "D\t.archive-meta-register/inbox/m3s2-audit-e043-q11-target34c2-r1-20261116.json",
+      "D\t.archive-meta-register/inbox/m3s2-audit-e043-target-preserve1q13-34c2-r1-20261116.json",
+      "D\t.archive-meta-register/inbox/m3s2-audit-e043-target-preserve1q16-34c2-r1-20261116.json",
+      "D\t.archive-meta-register/inbox/m3s2-audit-e043-target-preserve22-34c2-r1-20261116.json",
+      "D\t.archive-meta-register/inbox/m3s2-audit-e052-course-preserve2-r2-20261116.json",
+      "D\t.archive-meta-register/inbox/m3s2-audit-e052-native2-course-r2-20261116.json",
+      "M\tarchive/data/archive2-canonical-input-manifest.json",
+      "M\tarchive/data/archive2-catalog.json",
+      "M\tarchive/data/archive2-source-verification-index.json",
+      "M\tarchive/data/archive2-source-verification/v1/52ff0930e2936f79053abe028be7cefb0e315de703bef352326ff9c048a33d7f.json",
+      "M\tarchive/data/archive2-source-verification/v1/5f0563e1381c09598ac288f513b53d28d98190ad71a02a45a443c034f4c660e3.json",
+      "M\tarchive/data/archive2-source-verification/v1/7d301ff99bd5a68b670e3604c2196e58d65d52bb12f158cea1ec2a794b5d2e43.json",
+      "M\tarchive/data/archive2-source-verification/v1/d9336faa74c8d10927476d8ee91992f3beb76ebb1964885b5edb582a89ca4978.json",
+      "M\tarchive/data/basic-scope-parent-links.json",
+      "M\tarchive/data/item-4slot-index.json",
+      "M\tarchive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "M\tarchive/data/meta-foundation/canonical/packs/h1-foundation/pack.json",
+      "M\tarchive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+      "M\tarchive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "M\tarchive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+      "M\tarchive/data/meta-foundation/canonical/registry_index.json",
+      "M\tarchive/data/meta-foundation/compiled/concept_registry.json",
+      "M\tarchive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "M\tarchive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "M\tarchive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-q11-target34c2-r1-20261116.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-q11-target34c2-r1-20261116.renderer-binding.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-q11-target34c2-r1-20261116.source-review-binding.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-target-preserve1q13-34c2-r1-20261116.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-target-preserve1q16-34c2-r1-20261116.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-target-preserve22-34c2-r1-20261116.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e052-course-preserve2-r2-20261116.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e052-native2-course-r2-20261116.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e052-native2-course-r2-20261116.source-review-binding.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-current-native-reassessment.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q18-preserve-after-integer-extrema.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q19-integer-extrema.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q20-integer-extrema.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12-current-native-reassessment.json",
+      "A\tarchive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18-current-native-reassessment.json",
+      "M\tarchive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "M\tarchive/data/meta-foundation/runtime/middle2-v1.json",
+      "M\tarchive/data/meta-foundation/runtime/runtime-bridge-receipt.json",
+      "M\tarchive/data/question_identity_map.json",
+      "M\tarchive/data/question_metadata.json",
+      "M\tarchive/data/svg-accessibility-index.js",
+      "M\tarchive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "M\tarchive/question-identity.js",
+      "M\tarchive/question-index-report.md",
+      "M\tarchive/question-index.js",
+      "M\tarchive/tools/meta-foundation/reviewed-pack-version-lineage.mjs",
+      "A\tdocs/operations/middle-audit-repair-34c2-m2-pack-lineage/focused-tests.r3.log",
+      "A\tdocs/operations/middle-audit-repair-34c2-m2-pack-lineage/independent-code-review.r3.json",
+      "A\tdocs/operations/middle-audit-repair-34c2-m2-pack-lineage/native-reuse3.r5.json",
+      "A\tdocs/operations/middle-audit-repair-34c2-m2-pack-lineage/repair-design-and-evidence.r3.json",
+      "A\tdocs/operations/middle-audit-repair-34c2-m2-pack-lineage/root-approval.r1.json",
+      "A\tdocs/operations/middle-audit-repair-34c2-m2-pack-lineage/unit27-native-reuse3.r5.mjs",
+      "A\ttests/archive-reviewed-pack-version-lineage-companions.test.mjs"
+    ],
+    "examSourceChangedPaths": [
+      "archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js"
+    ],
+    "currentInboxPaths": []
+  },
+  "observedMain6CommittedReceipts": [
+    {
+      "requestId": "m3s2-audit-e043-q11-target34c2-r1-20261116",
+      "requestCount": 1,
+      "receiptRef": {
+        "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-q11-target34c2-r1-20261116.json",
+        "sha256": "082b89a8abf51271964279a9c84f1fd76e85257eb80f663e3405299ba45d63f1",
+        "gitBlobSha1": "b693b96ebd38c86368c839a0d50c06a57346c28d"
+      },
+      "checks": {
+        "fullUidSetExact": true,
+        "sourceBlobExact": true,
+        "sourceRawShaExact": true,
+        "allAppliedMetadataEqualsCurrent": true,
+        "allAppliedIdentityEqualsCurrent": true,
+        "allRuntimeRowsEqualCurrent": true,
+        "inboxAbsent": true,
+        "requestCanonicalShaBound": true
+      },
+      "metadataRegistrationStatus": "REGISTERED",
+      "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+      "consumerSearchStatus": "NOT_RUN",
+      "requestDigest": {
+        "kind": "SHA256 of canonical stable parsed request; registrar contract",
+        "canonicalSha256": "bed09eb4f8ae157ad1e117953e50d1c900f923b472470bcf975fd0061aa80484",
+        "rawInputSha256": "d35d2e61cc0db2e8255808fc1b603bfed9bd4a3661de130fe5940f363ae1a67a"
+      }
+    },
+    {
+      "requestId": "m3s2-audit-e043-target-preserve1q13-34c2-r1-20261116",
+      "requestCount": 1,
+      "receiptRef": {
+        "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-target-preserve1q13-34c2-r1-20261116.json",
+        "sha256": "f98fd1530096b3f18432dd4d12e9b0323a4f3284214b74451eae34debc0f237f",
+        "gitBlobSha1": "8bd72e124424551e23cc7dcd6e949b87a74daf00"
+      },
+      "checks": {
+        "fullUidSetExact": true,
+        "sourceBlobExact": true,
+        "sourceRawShaExact": true,
+        "allAppliedMetadataEqualsCurrent": true,
+        "allAppliedIdentityEqualsCurrent": true,
+        "allRuntimeRowsEqualCurrent": true,
+        "inboxAbsent": true,
+        "requestCanonicalShaBound": true
+      },
+      "metadataRegistrationStatus": "REGISTERED",
+      "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+      "consumerSearchStatus": "NOT_RUN",
+      "requestDigest": {
+        "kind": "SHA256 of canonical stable parsed request; registrar contract",
+        "canonicalSha256": "c73b1ef20f036489ffa89581a0bb8b7d4ba65c0782621f7bf028e0b1cceea556",
+        "rawInputSha256": "65ed40a56d673392c47f8fbcc1e9d53d50247600ed6b5b238cf347f54e96a5e0"
+      }
+    },
+    {
+      "requestId": "m3s2-audit-e043-target-preserve1q16-34c2-r1-20261116",
+      "requestCount": 1,
+      "receiptRef": {
+        "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-target-preserve1q16-34c2-r1-20261116.json",
+        "sha256": "aaeac458934709d532cd21eabad8933938d952a2591ac7ff2e3e02b4d652a22e",
+        "gitBlobSha1": "c17b7a9dcc9a0b3f5cdf01ee935a7ce433299bd3"
+      },
+      "checks": {
+        "fullUidSetExact": true,
+        "sourceBlobExact": true,
+        "sourceRawShaExact": true,
+        "allAppliedMetadataEqualsCurrent": true,
+        "allAppliedIdentityEqualsCurrent": true,
+        "allRuntimeRowsEqualCurrent": true,
+        "inboxAbsent": true,
+        "requestCanonicalShaBound": true
+      },
+      "metadataRegistrationStatus": "REGISTERED",
+      "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+      "consumerSearchStatus": "NOT_RUN",
+      "requestDigest": {
+        "kind": "SHA256 of canonical stable parsed request; registrar contract",
+        "canonicalSha256": "bed1b881488aaf8949ca10d24eadfc330f99548126b0f04c313efdb42bd41ac1",
+        "rawInputSha256": "fbd8d40a887a5a691d6a68bd27cc2999f694096ce3cd2153b25a4bf893d2fb26"
+      }
+    },
+    {
+      "requestId": "m3s2-audit-e043-target-preserve22-34c2-r1-20261116",
+      "requestCount": 22,
+      "receiptRef": {
+        "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e043-target-preserve22-34c2-r1-20261116.json",
+        "sha256": "371b2d975d69abe140928e5773e04cbca2080f443ce3af566933f1d0f37289d8",
+        "gitBlobSha1": "ef55bbc9798ef89d22bc0366cf65c0636275c144"
+      },
+      "checks": {
+        "fullUidSetExact": true,
+        "sourceBlobExact": true,
+        "sourceRawShaExact": true,
+        "allAppliedMetadataEqualsCurrent": true,
+        "allAppliedIdentityEqualsCurrent": true,
+        "allRuntimeRowsEqualCurrent": true,
+        "inboxAbsent": true,
+        "requestCanonicalShaBound": true
+      },
+      "metadataRegistrationStatus": "REGISTERED",
+      "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+      "consumerSearchStatus": "NOT_RUN",
+      "requestDigest": {
+        "kind": "SHA256 of canonical stable parsed request; registrar contract",
+        "canonicalSha256": "856efc00ccdaa341230f092d4b6d4967cae2834e351927f9198c7977476e8ff9",
+        "rawInputSha256": "e14586b649f12761977076813223fc6754425f6431b20145afeae0f78829286c"
+      }
+    },
+    {
+      "requestId": "m3s2-audit-e052-course-preserve2-r2-20261116",
+      "requestCount": 2,
+      "receiptRef": {
+        "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e052-course-preserve2-r2-20261116.json",
+        "sha256": "4336dfe0d2ef4092e4c6cb4cb9b55c4829278526977bbc4afcc296c6b96b70ef",
+        "gitBlobSha1": "df886a0bad1af81ed5c9c7fe45827663b995e922"
+      },
+      "checks": {
+        "fullUidSetExact": true,
+        "sourceBlobExact": true,
+        "sourceRawShaExact": true,
+        "allAppliedMetadataEqualsCurrent": true,
+        "allAppliedIdentityEqualsCurrent": true,
+        "allRuntimeRowsEqualCurrent": true,
+        "inboxAbsent": true,
+        "requestCanonicalShaBound": true
+      },
+      "metadataRegistrationStatus": "REGISTERED",
+      "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+      "consumerSearchStatus": "NOT_RUN",
+      "requestDigest": {
+        "kind": "SHA256 of canonical stable parsed request; registrar contract",
+        "canonicalSha256": "6068ab6908595f81bd38a5043baa4485b78cc192d5691ad30d67605fa8e67dd6",
+        "rawInputSha256": "3fbc2ef3dfbf60174cc91b8d6277f8d67dc6de659607f0a1c92a7d8012629b42"
+      }
+    },
+    {
+      "requestId": "m3s2-audit-e052-native2-course-r2-20261116",
+      "requestCount": 2,
+      "receiptRef": {
+        "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e052-native2-course-r2-20261116.json",
+        "sha256": "c44a99b1b1b09bfdde74d46819115d1369fb9bbbc7f602c79477375450848be3",
+        "gitBlobSha1": "e01550ad3fde0f4970467a9386c3a8c06bd6f12c"
+      },
+      "checks": {
+        "fullUidSetExact": true,
+        "sourceBlobExact": true,
+        "sourceRawShaExact": true,
+        "allAppliedMetadataEqualsCurrent": true,
+        "allAppliedIdentityEqualsCurrent": true,
+        "allRuntimeRowsEqualCurrent": true,
+        "inboxAbsent": true,
+        "requestCanonicalShaBound": true
+      },
+      "metadataRegistrationStatus": "REGISTERED",
+      "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+      "consumerSearchStatus": "NOT_RUN",
+      "requestDigest": {
+        "kind": "SHA256 of canonical stable parsed request; registrar contract",
+        "canonicalSha256": "419aab88e29c732e4110067ae0f41b40b10fa05ec8f2885f10819a05a6911126",
+        "rawInputSha256": "11340db7f7bc346e65f23919f7b53bf62789bc3f3436125acb464202034c2ca7"
+      }
+    }
+  ],
+  "additionalOwnerReceipts": [
+    {
+      "requestId": "middle-audit-repair-34c2-m2-e007-q17-current-native-reassessment",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17-current-native-reassessment.json",
+      "sha256": "f1e4da964e6405873e8e9c32614178cbc5fbdfa7c1b77bff77db0acddfe5ee78",
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "uids": [
+        "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e"
+      ],
+      "own133Intersection": []
+    },
+    {
+      "requestId": "middle-audit-repair-34c2-m2-e007-q18-preserve-after-integer-extrema",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q18-preserve-after-integer-extrema.json",
+      "sha256": "35de88e4f4c6a531d2fc63c21aa34329980269ec96f3028439028c4af48b2bcf",
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "uids": [
+        "qid_v1_a4b3418a5df90ae608ef84ba58fe6f667ea8dabb8c4f0ba10140bb31d04ba3b4"
+      ],
+      "own133Intersection": []
+    },
+    {
+      "requestId": "middle-audit-repair-34c2-m2-e007-q19-integer-extrema",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q19-integer-extrema.json",
+      "sha256": "f5714293e1819d0d23a780e41522df66aa0902981c58f2b019f34f70977b55fa",
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "uids": [
+        "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c"
+      ],
+      "own133Intersection": []
+    },
+    {
+      "requestId": "middle-audit-repair-34c2-m2-e007-q20-integer-extrema",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q20-integer-extrema.json",
+      "sha256": "1a2c3323cff808e3cdcfec1ce2022eba0665ea41335b07f9ba6913f454c3dc11",
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "uids": [
+        "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0"
+      ],
+      "own133Intersection": []
+    },
+    {
+      "requestId": "middle-audit-repair-34c2-m2-e035-q12-current-native-reassessment",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q12-current-native-reassessment.json",
+      "sha256": "d2b86d3af741301ad3073acd99515edfd86ca7ba5db4c40898e5f2c5b6387860",
+      "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+      "uids": [
+        "qid_v1_76dd55da73d9edb2aeb41cdd76997b70ec4a5d668fc94f00736038cde358937d"
+      ],
+      "own133Intersection": []
+    },
+    {
+      "requestId": "middle-audit-repair-34c2-m2-e035-q18-current-native-reassessment",
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e035-q18-current-native-reassessment.json",
+      "sha256": "a3ba094717991ef8c5186292fdc056621be8d238ce5c5c8ad33166b381622c73",
+      "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+      "uids": [
+        "qid_v1_dae274cb2ec304a5e2bd854ac3d05b7af18ff8a9a2720fed024df2b6cae9efdb"
+      ],
+      "own133Intersection": []
+    }
+  ],
+  "middleRuntimePins": [
+    {
+      "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "beforeBlob": "7d82c6b9f4496eb3ee1567d59949395f6c333c5e",
+      "currentBlob": "c53a02dc638672d990d3a60b4ed6eb42957100eb",
+      "rawExact": false,
+      "selectedOwnRows": 129
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+      "beforeBlob": "0eddb47207486a2686f8321cf2f06e753eeb8eaf",
+      "currentBlob": "0eddb47207486a2686f8321cf2f06e753eeb8eaf",
+      "rawExact": true,
+      "selectedOwnRows": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+      "beforeBlob": "50610d5c851dc73d798bb9728b8889fdfc166eb8",
+      "currentBlob": "a73a7ab92acf570c45303c7b9a81d0cf601e21bb",
+      "rawExact": false,
+      "selectedOwnRows": 0
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle3-v1.json",
+      "beforeBlob": "d7f4ada14637007b2c37a3b51815e8b8c2abcbae",
+      "currentBlob": "d7f4ada14637007b2c37a3b51815e8b8c2abcbae",
+      "rawExact": true,
+      "selectedOwnRows": 0
+    }
+  ],
+  "ownSourceChecks": [
+    {
+      "requestId": "issued-binding-recovery-e001-current-native-preservation-20261115",
+      "path": "archive/exams/original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "a6Blob": "0a0e5aec13c00148729fc333d2f9913b5db30062",
+      "currentBlob": "0a0e5aec13c00148729fc333d2f9913b5db30062",
+      "rawExact": true
+    },
+    {
+      "requestId": "issued-binding-recovery-e017-current695-native-preserve-20261115",
+      "path": "archive/exams/original/middle/m3/2final/24_풍덕중_2학기_기말_중3_수학.js",
+      "a6Blob": "e5ce08221f84f902088d8fd3582cc56cd2dbf277",
+      "currentBlob": "e5ce08221f84f902088d8fd3582cc56cd2dbf277",
+      "rawExact": true
+    },
+    {
+      "requestId": "issued-binding-recovery-e048-current695-native-preserve-20261115",
+      "path": "archive/exams/original/middle/m3/2final/21_연향중_2학기_기말_중3_수학.js",
+      "a6Blob": "3e83797a4a7e0abdceb4dc47be8f7a60e5a268a7",
+      "currentBlob": "3e83797a4a7e0abdceb4dc47be8f7a60e5a268a7",
+      "rawExact": true
+    },
+    {
+      "requestId": "issued-binding-recovery-e053-current695-native-preserve-20261115",
+      "path": "archive/exams/original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+      "a6Blob": "29e8324717f9d94167fdba606124b62dd92e5971",
+      "currentBlob": "29e8324717f9d94167fdba606124b62dd92e5971",
+      "rawExact": true
+    },
+    {
+      "requestId": "issued-binding-recovery-e064-current11-existing8-preserve-20261115",
+      "path": "archive/exams/original/middle/m3/2final/20_이수중_2학기_기말_중3_기출.js",
+      "a6Blob": "9eb370a4facbf8bf591e5b4d5815962c7bb94b53",
+      "currentBlob": "9eb370a4facbf8bf591e5b4d5815962c7bb94b53",
+      "rawExact": true
+    },
+    {
+      "requestId": "issued-binding-recovery-wangun-visual-reassessment-20261115",
+      "path": "archive/exams/original/middle/m3/2final/19_왕운중_2학기_기말_중3_기출.js",
+      "a6Blob": "6ba408d51f059a3c1e10f984154cda530ff33ef0",
+      "currentBlob": "6ba408d51f059a3c1e10f984154cda530ff33ef0",
+      "rawExact": true
+    },
+    {
+      "requestId": "m2s2-centroid2-20261115-E023",
+      "path": "archive/exams/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+      "a6Blob": "f0cd94780d1f2c277bad52142cfa20cb932e0e96",
+      "currentBlob": "f0cd94780d1f2c277bad52142cfa20cb932e0e96",
+      "rawExact": true
+    },
+    {
+      "requestId": "m2s2-e029-audit-cc-append-20261115",
+      "path": "archive/exams/original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+      "a6Blob": "1564b9a4e8168d29f93ee9b0122d2f0c4f336183",
+      "currentBlob": "1564b9a4e8168d29f93ee9b0122d2f0c4f336183",
+      "rawExact": true
+    },
+    {
+      "requestId": "m2s2-follow6-20261115-E004",
+      "path": "archive/exams/original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "a6Blob": "6ff9c3e9c5ec9457caa6a811a6a850c0c39b5e45",
+      "currentBlob": "6ff9c3e9c5ec9457caa6a811a6a850c0c39b5e45",
+      "rawExact": true
+    },
+    {
+      "requestId": "m2s2-follow6-20261115-E005",
+      "path": "archive/exams/original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+      "a6Blob": "dbc3648a0ce007125279c81262f3e28e9616636a",
+      "currentBlob": "dbc3648a0ce007125279c81262f3e28e9616636a",
+      "rawExact": true
+    },
+    {
+      "requestId": "m2s2-follow6-20261115-E026",
+      "path": "archive/exams/original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js",
+      "a6Blob": "86fa0cd84000f91130f2256708fc417904b08ade",
+      "currentBlob": "86fa0cd84000f91130f2256708fc417904b08ade",
+      "rawExact": true
+    },
+    {
+      "requestId": "m2s2-follow6-20261115-E035",
+      "path": "archive/exams/original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+      "a6Blob": "813c84c3ec4bb9ec0af026896fc6884aa1ea4c1a",
+      "currentBlob": "813c84c3ec4bb9ec0af026896fc6884aa1ea4c1a",
+      "rawExact": true
+    },
+    {
+      "requestId": "m2s2-follow6-20261115-E054",
+      "path": "archive/exams/original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+      "a6Blob": "186a00403ca79166df1ed8a109725db7fb37574f",
+      "currentBlob": "186a00403ca79166df1ed8a109725db7fb37574f",
+      "rawExact": true
+    },
+    {
+      "requestId": "m2s2-follow6-preserve-20261115-E004",
+      "path": "archive/exams/original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "a6Blob": "6ff9c3e9c5ec9457caa6a811a6a850c0c39b5e45",
+      "currentBlob": "6ff9c3e9c5ec9457caa6a811a6a850c0c39b5e45",
+      "rawExact": true
+    },
+    {
+      "requestId": "m2s2-retained2-20261115-E006",
+      "path": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+      "a6Blob": "5566eba8e4c5e3f47d34525e6414d1fe3c7d225d",
+      "currentBlob": "5566eba8e4c5e3f47d34525e6414d1fe3c7d225d",
+      "rawExact": true
+    },
+    {
+      "requestId": "m3s2-finalized-e010-transport-20261115",
+      "path": "archive/exams/original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+      "a6Blob": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+      "currentBlob": "e1210719a52bb803a14ce8af0dfb9a126bd6f70f",
+      "rawExact": true
+    },
+    {
+      "requestId": "m3s2-finalized-e011-transport-20261115",
+      "path": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "a6Blob": "56f0bbf80029562f4c1b2877d075146d4fdb267b",
+      "currentBlob": "56f0bbf80029562f4c1b2877d075146d4fdb267b",
+      "rawExact": true
+    },
+    {
+      "requestId": "m3s2-finalized-e014-transport-20261115",
+      "path": "archive/exams/original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+      "a6Blob": "547854b067b341377e39eb644b3380a128e3d869",
+      "currentBlob": "547854b067b341377e39eb644b3380a128e3d869",
+      "rawExact": true
+    },
+    {
+      "requestId": "m3s2-finalized-e034-transport-20261115",
+      "path": "archive/exams/original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+      "a6Blob": "fc0c618f376e8fe025612b5f629b0c0bf2617e30",
+      "currentBlob": "fc0c618f376e8fe025612b5f629b0c0bf2617e30",
+      "rawExact": true
+    },
+    {
+      "requestId": "m3s2-tpl5-e005-transport-20261115",
+      "path": "archive/exams/original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+      "a6Blob": "7d32038189c13bf1ce57daff903dc9e1fd06d318",
+      "currentBlob": "7d32038189c13bf1ce57daff903dc9e1fd06d318",
+      "rawExact": true
+    }
+  ],
+  "referencedAssetDelta": [],
+  "remainingRegistryBefore": [
+    {
+      "requestId": "m2s2-centroid2-20261115-E023",
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "collection": "concepts",
+      "match": {
+        "conceptKey": "CC_TRIANGLE_CENTROID_MEDIAN_RATIO"
+      },
+      "currentMatches": 0,
+      "beforeExact": true
+    },
+    {
+      "requestId": "m2s2-e029-audit-cc-append-20261115",
+      "path": "archive/data/meta-foundation/canonical/concepts/middle1.json",
+      "collection": "concepts",
+      "match": {
+        "conceptKey": "CC_PRISM_VOLUME"
+      },
+      "currentMatches": 0,
+      "beforeExact": true
+    },
+    {
+      "requestId": "m2s2-follow6-20261115-E004",
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "collection": "concepts",
+      "match": {
+        "conceptKey": "CC_RIGHT_TRIANGLE_THIRTY_DEGREE_HALF_HYPOTENUSE"
+      },
+      "currentMatches": 0,
+      "beforeExact": true
+    },
+    {
+      "requestId": "m2s2-follow6-20261115-E054",
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "collection": "problemTypes",
+      "match": {
+        "problemTypeKey": "PT_M2_PARALLELOGRAM_OPPOSITE_SIDES_PROOF"
+      },
+      "currentMatches": 0,
+      "beforeExact": true
+    },
+    {
+      "requestId": "m2s2-follow6-20261115-E054",
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M2_PARALLELOGRAM_OPPOSITE_SIDES_DIAGONAL_ASA"
+      },
+      "currentMatches": 0,
+      "beforeExact": true
+    },
+    {
+      "requestId": "m2s2-follow6-20261115-E054",
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "problemTypeKey": "PT_M2_PARALLELOGRAM_OPPOSITE_SIDES_PROOF",
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+      },
+      "currentMatches": 0,
+      "beforeExact": true
+    },
+    {
+      "requestId": "m3s2-finalized-e011-transport-20261115",
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "collection": "conditions",
+      "match": {
+        "conditionKey": "COND_SPECIFIED_APPROXIMATIONS"
+      },
+      "currentMatches": 0,
+      "beforeExact": true
+    },
+    {
+      "requestId": "m3s2-finalized-e011-transport-20261115",
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "collection": "concepts",
+      "match": {
+        "conceptKey": "CC_POLYGON_INTERIOR_ANGLE_SUM"
+      },
+      "currentMatches": 0,
+      "beforeExact": true
+    }
+  ],
+  "counts": {
+    "ownPendingRequests": 20,
+    "ownPendingUniqueUids": 133,
+    "mainPreviouslyPendingRequestsNowReceipted": 6,
+    "mainPreviouslyPendingUidsNowReceipted": 29,
+    "additionalOwnerReceipts": 6,
+    "additionalOwnerUids": 6,
+    "allNewReceiptOwn133Intersection": 0,
+    "currentMainInboxRequests": 0,
+    "ownSelectedMetadataChanged": 0,
+    "ownSelectedIdentityChanged": 0,
+    "ownSelectedRuntimeChanged": 0,
+    "ownSourceRawChanged": 0,
+    "referencedAssetPathsChecked": 703,
+    "referencedAssetChanged": 0,
+    "registryBeforeMismatches": 0
+  },
+  "boundaries": {
+    "registrarRuns": 0,
+    "nativeAutoRuns": 0,
+    "consumerRuns": 0,
+    "sourceWrites": 0,
+    "remoteWrites": 0
+  },
+  "qualification": "Observed committed receipt/input/state equality is static evidence of issuing. It is not a fresh native/AutoMeta/Consumer validation. Per-receipt consumerSearchStatus is preserved without promotion.",
+  "original140MetadataDelta": [
+    {
+      "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+      "changedFields": [
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "approvalEvidence",
+        "conditionKeys",
+        "contentFingerprint",
+        "courseKey",
+        "crossConceptKeys",
+        "curriculum",
+        "curriculumApplicability",
+        "curriculumKey",
+        "decisiveStep",
+        "defaultSelectable",
+        "difficultyBoundaryFlag",
+        "difficultyConfidence",
+        "fieldStatus",
+        "foundationTaxonomyStatus",
+        "integrationPattern",
+        "l3Disposition",
+        "l4Disposition",
+        "legacyLevelCompatibility",
+        "level",
+        "metaFoundationHoldReason",
+        "metaFoundationPackId",
+        "metaFoundationPackVersion",
+        "metaFoundationStatus",
+        "metadataApprovalType",
+        "metadataRevision",
+        "metadataStatus",
+        "primaryMethod",
+        "problemTypeKey",
+        "projectionStatus",
+        "reviewStatus",
+        "sourceFingerprint",
+        "subUnit",
+        "subUnitKey",
+        "tagConfidence",
+        "tagStatus"
+      ],
+      "oldSha256": "70105f1e2bcfdb7473f18c7025e6103818b47d4388e2a392b578210a1c437c02",
+      "currentSha256": "bf5e99c0875ff7f523caceb807ad1d27c7b237277d65075179eaa223c8997629"
+    }
+  ],
+  "retainedOwn133MetadataDelta": [],
+  "original140IdentityDelta": [
+    {
+      "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+      "changedFields": [
+        "sourceFingerprint"
+      ],
+      "oldSha256": "20ca035657b5d1b31f477d8e493179ca6cbd788a6f37ffaf8a650b44462d8d46",
+      "currentSha256": "3b1013c7ee67cd664e2206b5b60e6126a3bf85ad6c1f630d1f5ab7a72769e69a"
+    }
+  ],
+  "retainedOwn133IdentityDelta": [],
+  "original140RuntimeDelta": [
+    {
+      "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+      "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "changedFields": [
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "approvalEvidence",
+        "approvedSourceFingerprint",
+        "conceptClusterKey",
+        "conditionKeys",
+        "contentFingerprint",
+        "courseKey",
+        "crossConceptKeys",
+        "curriculum",
+        "curriculumApplicability",
+        "curriculumKey",
+        "decisiveStep",
+        "defaultSelectable",
+        "difficultyBoundaryFlag",
+        "difficultyBucket",
+        "difficultyConfidence",
+        "fieldStatus",
+        "foundationTaxonomyStatus",
+        "integrationPattern",
+        "l3Disposition",
+        "l4Disposition",
+        "legacyLevel",
+        "legacyLevelCompatibility",
+        "level",
+        "metaFoundationHoldReason",
+        "metaFoundationPackId",
+        "metaFoundationPackVersion",
+        "metaFoundationStatus",
+        "metadataApprovalType",
+        "metadataRevision",
+        "metadataStatus",
+        "primaryMethod",
+        "problemTypeKey",
+        "projectionStatus",
+        "questionUid",
+        "reviewStatus",
+        "runtimeSelectable",
+        "sourceArchiveFile",
+        "sourceFingerprint",
+        "sourceIdentity",
+        "sourceOrdinal",
+        "sourceQuestionNo",
+        "standardCourse",
+        "standardUnit",
+        "standardUnitKey",
+        "subUnit",
+        "subUnitKey",
+        "tagConfidence",
+        "tagStatus",
+        "templateKey"
+      ],
+      "beforeSha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "currentSha256": "344c3369a12b078e8b1753dabcf46ba18435e8d0fbef3502c911e650c5f8ddbd"
+    }
+  ],
+  "retainedOwn133RuntimeDelta": [],
+  "requestDigestReview": {
+    "initialDiagnostic": "Raw request bytes SHA was initially compared with canonical receipt requestSha256. The official registrar uses digest(stable(req)); all six canonical digests were recomputed with Node using that exact serialization, and bind successfully. No request or receipt bytes changed.",
+    "registrarCodeRef": {
+      "commit": "ad3d5fd967a5fecfc335a8e76d579dd50a91e40e",
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs"
+    }
+  }
+}
