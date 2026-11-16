@@ -1,0 +1,106 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "axisVariable": false,
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "2",
+            "showValue": true
+          },
+          {
+            "id": "B",
+            "value": "7",
+            "showValue": true
+          },
+          {
+            "id": "P",
+            "value": "2-sqrt(10)",
+            "showValue": true
+          },
+          {
+            "id": "Q",
+            "value": "7+2*sqrt(2)",
+            "showValue": true
+          }
+        ]
+      }
+    ],
+    "constructions": [
+      {
+        "id": "c1",
+        "center": "A",
+        "radius": {
+          "value": "sqrt(10)"
+        },
+        "arc": {
+          "side": "LEFT"
+        },
+        "hits": [
+          {
+            "id": "P",
+            "branch": "LEFT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            2,
+            0
+          ],
+          "to": [
+            -1,
+            1
+          ],
+          "toName": "R"
+        }
+      },
+      {
+        "id": "c2",
+        "center": "B",
+        "radius": {
+          "value": "2*sqrt(2)"
+        },
+        "arc": {
+          "side": "RIGHT"
+        },
+        "hits": [
+          {
+            "id": "Q",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            7,
+            0
+          ],
+          "to": [
+            9,
+            2
+          ],
+          "toName": "S"
+        }
+      }
+    ]
+  },
+  "caption": "두 빗변을 중심 A와 B에서 각각 왼쪽·오른쪽으로 옮긴 뒤, P와 Q 사이의 정수를 찾는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(2), 가로3 세로1의 빗변; B(7), 가로2 세로2의 빗변.",
+      "mappedTo": [
+        "numberLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "교점 좌표는 중간값으로 보이고 정수 개수는 쓰지 않는다."
+  ],
+  "accessibilityDescription": "두 빗변을 중심 A와 B에서 각각 왼쪽·오른쪽으로 옮긴 뒤, P와 Q 사이의 정수를 찾는다."
+}
