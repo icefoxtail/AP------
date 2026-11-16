@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { isDeepStrictEqual } from "node:util";
+import { authenticatedPrerequisiteRpmScope } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
 
 export const REVIEWED_RPM_FIELDS = Object.freeze(["rpmPrimaryId", "rpmPrimaryPath", "rpmL1", "rpmL2", "rpmL3", "rpmL4"]);
 const MASTER = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
@@ -51,7 +52,7 @@ function normalizedPath(value) {
 // This alias identifies an RPM path, not a new PT/TPL authority. The ordinary
 // registrar still validates the reviewed PT/TPL, parent and exact ACTIVE binding.
 // A crosswalk's old single-template mapping must not override a reviewed decision.
-export function validateRpmPrimaryProvenance({ root, question, final, cache = new Map() }) {
+export function validateRpmPrimaryProvenance({ root, question, final, cache = new Map(), prerequisiteAuthority = null }) {
   const id = final.rpmPrimaryId;
   if (!Object.hasOwn(question, "rpmPrimaryId") || !isDeepStrictEqual(question.rpmPrimaryId, id))
     fail("rpmPrimaryId must carry the exact declared source value");
@@ -63,9 +64,11 @@ export function validateRpmPrimaryProvenance({ root, question, final, cache = ne
   if (doc.schemaVersion !== "rpm-primary-active-crosswalk-v1" || doc.status !== "ACTIVE_REFERENCE" ||
       doc.rpmAuthority?.source !== MASTER) fail("crosswalk authority mismatch");
   const curricula = [final.curriculum, final.curriculumKey].filter(present);
-  if (!curricula.length || curricula.some(value => value !== record.curriculum) ||
-      ![final.courseKey, final.standardCourse].some(value => compact(value) === compact(record.scope)))
+  if (!curricula.length || curricula.some(value => value !== record.curriculum))
     fail("record curriculum/scope mismatch");
+  const sameScope = [final.courseKey, final.standardCourse].some(value => compact(value) === compact(record.scope));
+  const prerequisiteScopeBinding = sameScope ? null : authenticatedPrerequisiteRpmScope(prerequisiteAuthority, { question, final, record });
+  if (!sameScope && !prerequisiteScopeBinding) fail("record curriculum/scope mismatch");
   for (const field of REVIEWED_RPM_FIELDS) if (Object.hasOwn(question, field) && !isDeepStrictEqual(question[field], final[field]))
     fail(`declared source/final value mismatch: ${field}`);
   const declared = normalizedPath(final.rpmPrimaryPath || Object.fromEntries(dimensions.map((key, i) => [key, final[`rpmL${i + 1}`]])));
@@ -87,5 +90,6 @@ export function validateRpmPrimaryProvenance({ root, question, final, cache = ne
       .filter(c => c.concept === declared.l3).flatMap(c => (c.problemTypes || []).filter(p => p.problemType === declared.l4)));
   if (leaves.length !== 1) fail("record path missing or ambiguous in RPM master");
   return { recordId: id, crosswalkRef: ref, masterRef: master.ref, curriculum: record.curriculum,
-    scope: record.scope, rpmPath: declared, authorityUse: "RPM_PATH_PROVENANCE_ONLY", selectsPtTpl: false };
+    scope: record.scope, rpmPath: declared, authorityUse: "RPM_PATH_PROVENANCE_ONLY", selectsPtTpl: false,
+    ...(prerequisiteScopeBinding ? { prerequisiteScopeBinding } : {}) };
 }

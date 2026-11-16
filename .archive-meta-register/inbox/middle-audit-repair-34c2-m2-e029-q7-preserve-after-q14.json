@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "middle-audit-repair-34c2-m2-e029-q7-preserve-after-q14",
+  "examUid": "23_연향중_1학기_기말_중2_기출",
+  "sourceArchiveFile": "original/middle/m2/1final/23_연향중_1학기_기말_중2_기출.js",
+  "expectedSourceBlobSha1": "4d133716fc9336b49bd7ba7c59a7e045635c1ef9",
+  "expectedQuestionCount": 23,
+  "scope": "PARTIAL_UIDS",
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_ROOT_0A70543C4CE8",
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s1-binding-20261115-E029-Q7.json",
+        "sha256": "387bb448bf76008ddb49429f12f288d16b5ba7af7eb3b5f2b8073b6e9c8e4422"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e029-q7-issued-source-preservation-impact.json",
+        "sha256": "dac6d39e20a29bfd372b867766d8af45c40c312118fc2109e08ca17ea4fce2d1"
+      }
+    ],
+    "sourceRebind": {
+      "priorReceiptRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s1-binding-20261115-E029-Q7.json",
+        "sha256": "387bb448bf76008ddb49429f12f288d16b5ba7af7eb3b5f2b8073b6e9c8e4422"
+      }
+    }
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+      "sourceOrdinal": 7,
+      "before": {},
+      "after": {},
+      "reason": "Preserve the exact issued Q7 metadata after the separately reviewed Q14 metadata-only source application. No new approval or mathematical review.",
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e029-q7-issued-source-preservation-impact.json",
+          "sha256": "dac6d39e20a29bfd372b867766d8af45c40c312118fc2109e08ca17ea4fce2d1"
+        }
+      ]
+    }
+  ]
+}
