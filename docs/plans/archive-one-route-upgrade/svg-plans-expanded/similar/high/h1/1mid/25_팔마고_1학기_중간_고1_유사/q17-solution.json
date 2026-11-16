@@ -1,0 +1,483 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "왼쪽은 밑변 6, 높이 4인 삼각형과 높이 x인 내접 직사각형이다. 오른쪽은 위쪽 작은 삼각형을 실제와 같은 크기로 옮긴 것이다. 예시 배치는 x=1이며 최댓값을 나타내지 않는다.",
+  "accessibilityDescription": "왼쪽은 밑변 6, 높이 4인 삼각형과 높이 x인 내접 직사각형이다. 오른쪽은 위쪽 작은 삼각형을 실제와 같은 크기로 옮긴 것이다. 예시 배치는 x=1이며 최댓값을 나타내지 않는다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "level",
+        "op": "TRANSLATE_LINE",
+        "inputs": [
+          "lAB"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lCA",
+          "level"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBC",
+          "level"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "E",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "F",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "T",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "O",
+          "level"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "37",
+            "denominator": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "37",
+            "denominator": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "37",
+            "denominator": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lJK",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "J",
+          "K"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "L",
+          "lJK"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "F",
+    "G",
+    "H",
+    "O",
+    "T",
+    "J",
+    "K",
+    "L",
+    "M"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "F",
+    "G",
+    "H",
+    "O",
+    "T",
+    "J",
+    "K",
+    "L",
+    "M"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "GE",
+      "refs": [
+        "G",
+        "E"
+      ]
+    },
+    {
+      "id": "CO",
+      "refs": [
+        "C",
+        "O"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "JK",
+      "refs": [
+        "J",
+        "K"
+      ]
+    },
+    {
+      "id": "KL",
+      "refs": [
+        "K",
+        "L"
+      ]
+    },
+    {
+      "id": "LJ",
+      "refs": [
+        "L",
+        "J"
+      ]
+    },
+    {
+      "id": "LM",
+      "refs": [
+        "L",
+        "M"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "l0",
+        "ownerSegment": "AB",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "ownerSegment": "CO",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "ownerSegment": "FG",
+        "text": "x",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l3",
+        "ownerSegment": "EF",
+        "text": "\\frac{3}{2}(4-x)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l4",
+        "ownerSegment": "JK",
+        "text": "\\frac{3}{2}(4-x)",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l5",
+        "ownerSegment": "LM",
+        "text": "4-x",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rect",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "G",
+              "H",
+              "F",
+              "E"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "small",
+        "fill": "LIGHT",
+        "shapes": [
+          {
+            "polygon": [
+              "J",
+              "K",
+              "L"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coordinateCanvas": {
+    "width": 720,
+    "height": 420
+  },
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑변의 길이가 $6$, 높이가 $4$인 이등변삼각형 내부에 밑변과 평행한 직사각형을 내접시킬 때, 이 직사각형의 넓이의 최댓값을 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "relation",
+      "condition": "닮은 큰 삼각형과 위쪽 작은 삼각형의 높이4와4−x, 대응 밑변을 실제 비율로 비교해 직사각형 가로를 정한다.",
+      "mappedTo": [
+        "caption"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "닮은 큰 삼각형과 위쪽 작은 삼각형의 높이4와4−x, 대응 밑변을 실제 비율로 비교해 직사각형 가로를 정한다."
+  ]
+}
