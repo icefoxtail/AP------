@@ -90,7 +90,8 @@ export function nativeReviewedRendererRebind(receipt, nativeSource, previous, qu
       receipt.approval.sourceRebind || repair.rebind !== undefined ||
       receipt.expectedQuestionCount !== nativeSource.bank.length ||
       repair.sourceOrdinal !== ordinal || proof.questionUid !== identity.questionUid || proof.sourceOrdinal !== ordinal ||
-      proof.schemaVersion !== 'archive-reviewed-source-reassessment-v1' || proof.nativeSchemaVersion !== 'm3-s2-complete-semantic-review-v1' ||
+      proof.schemaVersion !== 'archive-reviewed-source-reassessment-v1' ||
+      !['m3-s2-complete-semantic-review-v1', 'm2-s2-meta-review-v1'].includes(proof.nativeSchemaVersion) ||
       proof.scope !== 'METADATA_SOURCE_BINDING_ONLY' || proof.newMathematicalQa !== false || proof.proposalFinalization !== undefined ||
       renderer?.schemaVersion !== 'archive-reviewed-current-renderer-continuity-v1' ||
       renderer.scope !== 'NATIVE_SEMANTIC_REUSE_WITH_INDEPENDENT_CURRENT_RENDERER' ||

@@ -46,8 +46,9 @@ window.examData = {
     },
     {
       "id": 4,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "<p>4. 민이가 샌드위치 3개, 우유 1컵을 사고 지불한 금액은 7500원이고, 찬영이가 샌드위치 1개, 우유 1컵을 사고 지불한 금액은 3500원이라고 한다. 이 때, 샌드위치 한 개의 가격을 $x$원, 우유 한 컵의 가격을 $y$원이라고 할 때, 다음 그림에서 샌드위치 한 개의 가격을 구하시오. (4점)</p><p><img src=\"assets/images/23_순천여중_1학기_기말_중2_수학/q04.png\"></p>",
+      "question": "<p>4. 민이가 샌드위치 3개, 우유 1컵을 사고 지불한 금액은 7500원이고, 찬영이가 샌드위치 1개, 우유 1컵을 사고 지불한 금액은 3500원이라고 한다. 이 때, 샌드위치 한 개의 가격을 $x$원, 우유 한 컵의 가격을 $y$원이라고 할 때, 다음 그림에서 샌드위치 한 개의 가격을 구하시오. (4점)</p><p><img src=\"assets/images/23_순천여중_1학기_기말_중2_수학/q4-problem-visual-v2.svg\" alt=\"민이의 샌드위치 세 개와 우유 한 컵은 7500원이고 식이 3x+y=7500이다. 찬영이의 샌드위치 한 개와 우유 한 컵은 3500원이다. 아래 차이 줄에는 샌드위치 두 개와 금액·식 빈칸이 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "4000원",
         "3000원",
@@ -88,8 +89,9 @@ window.examData = {
     },
     {
       "id": 7,
+      "layoutTag": "fullwidth",
       "score": 4.0,
-      "question": "<p>7. 다음 그림에서 $\\text{A, B}$는 두 수 $x, y$에서 시작하여 화살표를 따라 계산하여 3과 1을 얻는 과정을 각각 나타낸 것이다. $\\text{A}$에 해당하는 일차방정식이 $x+y=3$일 때, $\\text{A, B}$를 모두 만족시키는 $x-y$의 값을 구하시오. (4점)</p><p><img src=\"assets/images/23_순천여중_1학기_기말_중2_수학/q07.png\"></p>",
+      "question": "<p>7. 다음 그림에서 $\\text{A, B}$는 두 수 $x, y$에서 시작하여 화살표를 따라 계산하여 3과 1을 얻는 과정을 각각 나타낸 것이다. $\\text{A}$에 해당하는 일차방정식이 $x+y=3$일 때, $\\text{A, B}$를 모두 만족시키는 $x-y$의 값을 구하시오. (4점)</p><p><img src=\"assets/images/23_순천여중_1학기_기말_중2_수학/q7-problem-visual-v2.svg\" alt=\"A에서 x와 y를 더해 3을 얻는다. B에서 x는 3배해 3x로, y는 −1배해 (가)의 빈칸으로 간다. 마지막에 두 결과를 더해 결과값 1을 얻는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$-2$",
         "$-1$",
@@ -200,8 +202,9 @@ window.examData = {
     },
     {
       "id": 15,
+      "layoutTag": "fullwidth",
       "score": 3.0,
-      "question": "<p>15. 일차함수의 그래프가 아래 그림과 같을 때, 이 직선을 그래프로 하는 일차함수의 식을 구하시오. (3점)</p><p><img src=\"assets/images/23_순천여중_1학기_기말_중2_수학/q15.png\"></p>",
+      "question": "<p>15. 일차함수의 그래프가 아래 그림과 같을 때, 이 직선을 그래프로 하는 일차함수의 식을 구하시오. (3점)</p><p><img src=\"assets/images/23_순천여중_1학기_기말_중2_수학/q15-problem-visual-v2.svg\" alt=\"격자 위에서 파란 직선은 세로축의 −2와 0 사이, 가로축의 2를 지나 오른쪽 위로 올라간다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$y = -\\frac{1}{2}x - 1$",
         "$y = \\frac{1}{2}x - 1$",
@@ -242,8 +245,9 @@ window.examData = {
     },
     {
       "id": 18,
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "<p>18. 일차함수 $y=ax-b$의 그래프가 아래 그림과 같을 때, 일차함수 $y=-ax-b$의 그래프가 지나지 않는 사분면을 구하시오. (단, $a, b$는 수) (5점)</p><p><img src=\"assets/images/23_순천여중_1학기_기말_중2_수학/q18.png\"></p>",
+      "question": "<p>18. 일차함수 $y=ax-b$의 그래프가 아래 그림과 같을 때, 일차함수 $y=-ax-b$의 그래프가 지나지 않는 사분면을 구하시오. (단, $a, b$는 수) (5점)</p><p><img src=\"assets/images/23_순천여중_1학기_기말_중2_수학/q18-problem-visual-v2.svg\" alt=\"직선의 식은 y=ax−b이다. 직선은 세로축의 음의 쪽과 가로축의 양의 쪽을 지나 오른쪽 위로 올라간다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "제2, 제4사분면",
         "제1사분면",
@@ -256,8 +260,9 @@ window.examData = {
     },
     {
       "id": 19,
+      "layoutTag": "fullwidth",
       "score": 5.0,
-      "question": "<p>19. 다음 그림에서 두 일차함수 $y=ax+b$와 $y=\\frac{1}{6}x+1$의 그래프는 $x$축 위의 점 $\\text{A}$에서 만난다. $\\triangle \\text{ABC}$의 넓이가 15일 때, 두 수 $a+b$의 값을 구하시오. (단, $b>1$) (5점)</p><p><img src=\"assets/images/23_순천여중_1학기_기말_중2_수학/q19.png\"></p>",
+      "question": "<p>19. 다음 그림에서 두 일차함수 $y=ax+b$와 $y=\\frac{1}{6}x+1$의 그래프는 $x$축 위의 점 $\\text{A}$에서 만난다. $\\triangle \\text{ABC}$의 넓이가 15일 때, 두 수 $a+b$의 값을 구하시오. (단, $b>1$) (5점)</p><p><img src=\"assets/images/23_순천여중_1학기_기말_중2_수학/q19-problem-visual-v2.svg\" alt=\"파란 직선과 주황 점선은 가로축의 A에서 만난다. 파란 직선은 세로축의 B를, 주황 점선은 세로축의 C를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$5$",
         "$6$",

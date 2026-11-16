@@ -32,7 +32,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "(1) 양수 $a$의 제곱근은 $\\sqrt{a}$와 $-\\sqrt{a}$이므로 두 제곱근의 합은 $0$이다.\n(2) $0$의 제곱근은 $0$ 하나이고, 그 합도 $0$이다.\n(3) 음수의 제곱근은 실수 범위에서 존재하지 않는다.\n따라서 옳은 설명은 ②이다.\n$\\therefore$ ②",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
@@ -281,7 +281,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$\\sqrt2\\approx1.41$, $\\sqrt3\\approx1.73$을 이용하면\n$A\\approx-0.27$, $B\\approx-0.73$, $C\\approx1.41$, $D\\approx1.59$이다.\n따라서 $B<A<C<D$이므로 가장 작은 수는 $B$, 가장 큰 수는 $D$이다.\n$\\therefore$ ⑤",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
@@ -387,7 +387,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "두 다항식을 각각 인수분해한다.\n$(x+1)(x^2+2x-8)=(x+1)(x+4)(x-2)$\n$(x+4)(2x^2-4x-6)=2(x+4)(x-3)(x+1)$\n보기에 있는 공통인수는 $x+1$이다.\n$\\therefore$ ①",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -398,7 +398,7 @@ window.questionBank = [
     "category": "다항식의 곱셈",
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-02",
+    "standardUnitKey": "M3-01",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
@@ -424,7 +424,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "같은 지수끼리 묶으면\n$(\\sqrt7-3)^5(\\sqrt7+3)^5=\\{(\\sqrt7-3)(\\sqrt7+3)\\}^5=(7-9)^5=(-2)^5=-32$이다.\n$\\therefore$ ⑤",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -495,7 +495,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "완전제곱식인지 확인한다.\n① $(4a-3x)^2$\n② $(x-5)^2$\n④ $(2a+4)^2$\n⑤ $(x-3)^2$\n③에서 $(2x-4)^2$의 가운데 항은 $-16x$이어야 하므로 $4x^2-12x+16$은 완전제곱식이 아니다.\n$\\therefore$ ③",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -603,7 +603,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$2-1=1$을 함께 곱해도 값은 변하지 않는다.\n$a=(2-1)(2+1)(2^2+1)(2^4+1)(2^8+1)\n=(2^2-1)(2^2+1)(2^4+1)(2^8+1)\n=(2^4-1)(2^4+1)(2^8+1)\n=(2^8-1)(2^8+1)=2^{16}-1$이다.\n따라서 $\\frac{a}{257}=\\frac{2^{16}-1}{2^8+1}=2^8-1=255$이다.\n$\\therefore$ ⑤",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -639,7 +639,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$2<x<3$이므로\n$|x|=x$, $|x-1|=x-1$, $|x-2|=x-2$, $|x-3|=3-x$이다.\n따라서 주어진 식은 $x-(x-1)+(x-2)-(3-x)=2x-4$이다.\n$\\therefore$ ①",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
@@ -650,7 +650,7 @@ window.questionBank = [
     "category": "다항식의 곱셈",
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-02",
+    "standardUnitKey": "M3-01",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
@@ -676,7 +676,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "분모를 유리화하면\n$a=\\frac{2}{2\\sqrt2+2}=\\sqrt2-1$, $b=\\frac{2}{2\\sqrt2-2}=\\sqrt2+1$이다.\n따라서 $a+b=2\\sqrt2$, $ab=1$이고\n$a^2-6ab+b^2=(a+b)^2-8ab=8-8=0$이다.\n$\\therefore$ ①",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -711,7 +711,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "두 쌍을 묶는다.\n$(a-1)(a+5)=a^2+4a-5$, $(a+1)(a+3)=a^2+4a+3$.\n$t=a^2+4a$라 두면\n$A=(t-5)(t+3)-9=t^2-2t-24=(t-6)(t+4)$이다.\n따라서 $A=(a^2+4a-6)(a+2)^2$이므로 $a-3$은 인수가 아니다.\n$\\therefore$ ④",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -735,7 +735,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$a < c < b$",
     "solution": "근삿값을 이용하면\n$a=-\\frac52\\sqrt2\\approx-3.54$, $b=-3$, $c=-6+2\\sqrt2\\approx-3.17$이다.\n따라서 $-3.54<-3.17<-3$이므로 $a<c<b$이다.\n$\\therefore a<c<b$",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
@@ -759,7 +759,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$(x+3y-2)(x-2y+3)$",
     "solution": "$x$에 대하여 정리하면\n$x^2+(y+1)x-6y^2+13y-6$이다.\n$3y-2$와 $-2y+3$의 합은 $y+1$이고 곱은 $-6y^2+13y-6$이다.\n따라서 $(x+3y-2)(x-2y+3)$으로 인수분해된다.\n$\\therefore (x+3y-2)(x-2y+3)$",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"
@@ -770,7 +770,7 @@ window.questionBank = [
     "category": "다항식의 곱셈",
     "originalCategory": "다항식의 곱셈",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-02",
+    "standardUnitKey": "M3-01",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "서술형",
@@ -783,7 +783,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$-2\\sqrt{2}$",
     "solution": "근호 안을 완전제곱식으로 만들면\n$\\sqrt{a^2+4ab+4b^2}-\\sqrt{a^2}=|a+2b|-|a|$이다.\n$a=-3$, $b=\\sqrt2$이므로 $a+2b=-3+2\\sqrt2<0$, $a<0$이다.\n따라서 $(3-2\\sqrt2)-3=-2\\sqrt2$이다.\n$\\therefore -2\\sqrt2$",
-    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented"

@@ -26,7 +26,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 좌변을 전개하고 인수분해하여 일차항 계수를 비교합니다.\n정석 풀이:\n$(x+2)(x-4)-7=x^2-2x-8-7=x^2-2x-15=(x+3)(x-5)$입니다.\n따라서 $a,b$는 $3,-5$이므로 $a+b=-2$입니다.",
-    "subUnitKey": "M3-02-FACTORIZATION",
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
@@ -235,10 +235,8 @@ window.questionBank = [
     "rpmPrimaryKey": "M3-RPM-028",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "crossConceptKeys": ["CC_RECTANGLE_AREA"],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
@@ -300,10 +298,10 @@ window.questionBank = [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 7,
@@ -391,12 +389,12 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
@@ -441,7 +439,7 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NONZERO"
     ],
-    "integrationPattern": "REINTERPRETATION",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
@@ -489,7 +487,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
@@ -545,7 +543,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 12,
@@ -583,11 +581,9 @@ window.questionBank = [
     "rpmPrimaryKey": "M3-RPM-031",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [
-      "CC_ROOTS_COEFFICIENTS"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
@@ -635,7 +631,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
@@ -682,10 +678,8 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
-    "integrationPattern": "CASE_BRANCH",
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
@@ -733,7 +727,7 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
@@ -781,12 +775,12 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
@@ -828,18 +822,16 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
-    "integrationPattern": "INTERDEPENDENT",
+    "conditionKeys": ["COND_RESTRICTED_INTERVAL"],
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "solutionImage": "assets/images/21_동산중_1학기_기말_중3_기출c/q17-solution.svg",
     "solutionImageAlt": "해설 그림: 수직선에서 −2와 6 사이를 표시한다. P와 Q는 예시로 놓은 두 움직이는 근이며, 두 점 모두 열린 구간 안에 있다.",
     "solutionImageCaption": "고정된 두 근은 −2와 6이다. 작은 근 a−3은 −2보다 크고 큰 근 a+3은 6보다 작아야 하므로 1<a<3이다.",
@@ -885,12 +877,12 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
@@ -932,15 +924,13 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
-    "integrationPattern": "SEQUENTIAL",
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
@@ -995,7 +985,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 21,
@@ -1043,7 +1033,7 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "solutionImage": "assets/images/21_동산중_1학기_기말_중3_기출c/q21-solution.svg",
     "solutionImageAlt": "해설 그림: 파란 아래쪽과 초록 위쪽 곡선은 x축에 대하여 대칭이다. 같은 낮은 높이에서 파란 두 점의 간격은 주황 두 점의 간격보다 넓다.",
     "solutionImageCaption": "y=−x²/3의 꼭짓점과 대칭축은 원점과 y축이다. 같은 높이에서 파란 그래프는 y=−2x²보다 폭이 넓으므로 폭이 더 좁다는 설명이 옳지 않다.",
@@ -1092,10 +1082,10 @@ window.questionBank = [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "difficultyConfidence": "high",
-    "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "solutionImage": "assets/images/21_동산중_1학기_기말_중3_기출c/q22-solution.svg",
     "solutionImageAlt": "해설 그림: 파란 포물선 위에서 M은 x좌표가 2이고 높이가 6인 점이며, N의 x좌표는 4이고 높이는 b이다. 각각 x축에 점선으로 연결한다.",
     "solutionImageCaption": "(2,6)을 대입하면 a=3/2이다. x가 2에서 4로 두 배가 되면 함수값은 네 배가 되므로 b=24, ab=36이다.",
@@ -1133,15 +1123,15 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   },
   {
     "id": 24,
@@ -1177,12 +1167,12 @@ window.questionBank = [
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "metaDebtFields": [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL"
@@ -1217,7 +1207,7 @@ window.questionBank = [
     "rpmPrimaryKey": "M3-RPM-039",
     "problemTypeKey": null,
     "templateKey": null,
-    "crossConceptKeys": [],
+    "crossConceptKeys": ["CC_LINEAR_FUNCTIONS", "CC_RECTANGLE_AREA"],
     "conditionKeys": [
       "COND_RANGE"
     ],
@@ -1226,10 +1216,10 @@ window.questionBank = [
       "ACTIVE_PT_TPL"
     ],
     "metaDebtReason": "M3 source-branch crosswalk is RPM-only or has no active PT/TPL mapping; exact active machine-binding is not established. Projection debt is retained without inventing a key.",
-    "difficultyBucket": 4,
+    "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
     "image": "assets/images/21_동산중_1학기_기말_중3_기출c/q25-problem-v2.svg",
     "imageSize": "large",
     "solutionImage": "assets/images/21_동산중_1학기_기말_중3_기출c/q25-solution-v2.svg",

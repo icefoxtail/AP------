@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "archive-m3s2-native-primary-reuse-with-explicit-publisher-leaf-debt-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "owner": "GPT_ROOT_0A70543C4CE8",
+  "questionUid": "qid_v1_1aac12db1a167973138e8dc51afcd5e0b19fcf73d4bb030ea406701acd0b8c4a",
+  "sourceOrdinal": 12,
+  "sourceArchiveFile": "original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+  "currentMain": "ede1e94855bc452e8b75e92b1461077c9b22d3da",
+  "currentSourceBlobSha1": "2b71e1d36ec1ad2c3886298a7eb70080394bf18c",
+  "nativeReview": {
+    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+    "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a"
+  },
+  "independentReview": {
+    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.independent.json",
+    "sha256": "5dffc90f281489d4bf5af604f5963a124274a47dde83528d0fe13e12de4fdfdf",
+    "ordinal": 12,
+    "status": "PASS",
+    "metadataClassification": "PASS",
+    "newMathematicalVerification": false
+  },
+  "nativeProposal": {
+    "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.proposals.json",
+    "sha256": "71e00d1d3adedeebffba9da19d66c7f7350813c9f29a67b56981c16e3db7146c",
+    "id": "ROOT-E052-4",
+    "kind": "RPM_LEAF_GAP_ACTIVE_TEMPLATE_REUSE",
+    "existingTemplateKey": "TM_CIRCLE_CHORD_LENGTH",
+    "nativeTemplateProposalWithdrawn": true,
+    "registrationStatus": "PUBLISHER_LEAF_AND_CONNECTION_ONLY_NATIVE_REUSE"
+  },
+  "semanticBasis": "기존 독립 검토는 TM_CIRCLE_CHORD_LENGTH의 실제 canonical/compiled 전체 정의와 지원2문항을 대조하여 현 길이 조건 이용이라는 broad 의미의 재사용을 수용했다. 교차현 곱의 직접 지원 UID 또는 exact RPM leaf 존재를 주장하지 않았다. ROOT-E052-4도 과거 native-template-gap 주장을 철회하고 publisher leaf/연결 부채만 남겼다.",
+  "currentStudentPayloadDelta": [],
+  "assets": [
+    {
+      "path": "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q12.png",
+      "nativeGitBlobSha1": "c15772bbe39f413b55983d8f2a3a25cf05d2d9bd",
+      "currentGitBlobSha1": "c15772bbe39f413b55983d8f2a3a25cf05d2d9bd",
+      "sha256": "bfb704b227ea7993892aab32d876a43fcc2e296573cd3135a6fb8c863ea93002",
+      "priorIndependentInspectionReused": true,
+      "newVisualReview": false
+    },
+    {
+      "path": "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q12-solution.svg",
+      "nativeGitBlobSha1": "7eb6aa19741ee39c6fc6da969b9db263e2182f4a",
+      "currentGitBlobSha1": "7eb6aa19741ee39c6fc6da969b9db263e2182f4a",
+      "sha256": "fccf213c100f57ba32f8257aaa687ccb2c1cdf1006be532f1d14726d99af0ffe",
+      "priorIndependentInspectionReused": true,
+      "newVisualReview": false
+    }
+  ],
+  "newMathematicalQa": false,
+  "newDifficultyJudgments": 0,
+  "newSemanticTypeJudgments": 0,
+  "newDefinitions": 0,
+  "exactRpmLeafAdded": false,
+  "remainingDebts": [
+    {
+      "type": "RPM_LEAF_GAP_ACTIVE_TEMPLATE_REUSE",
+      "detail": "현 길이 조건을 이용하는 native ACTIVE TM_CIRCLE_CHORD_LENGTH를 재사용하되 교차현 길이곱의 원본2015/현재2022 exact publisher leaf는 없다."
+    },
+    {
+      "type": "CANONICAL_BINDING_OWNER_ALIGNMENT_PENDING",
+      "detail": "실제2015 M3 원과 직선 ACTIVE PT binding은1개이고 owner MIDDLE_GEOMETRY이며 canonical PT/TPL owner GEOMETRY_EQUATIONS와 정합화 대기다. binding 부재로 기록하지 않는다."
+    },
+    {
+      "type": "CURRENT_2022_ACTIVE_CONNECTION_GAP",
+      "detail": "Global ACTIVE native PT/TPL 재사용은 가능하나2022 중3 수학 M3-06/M3-06-CIRCLE_LINE PT exact binding은0개이며 publisher exact 교차현 leaf도 별도 공백이다."
+    }
+  ],
+  "originalEvidenceLimit": "원본 PNG 상단 crop 때문에 A와 AC 조건 전체는 원본만으로 읽히지 않는다. 기존 독립 검토는 현재 기존 해설의 AE⊥BC·AB=AC=5 재진술과 해설SVG를 원본에서 보이는 AB=5·AE=3·E 직각과 구분하여 읽었다. 그 근거 한계는 보존하며 원문 조건을 새로 작성하지 않는다.",
+  "scope": "Transport the already independently accepted native broad PT/TPL and difficulty values into shared metadata. Exact publisher leaf, 2022 binding and original-source completeness remain separate explicit debts."
+}
