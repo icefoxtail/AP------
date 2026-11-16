@@ -1,0 +1,763 @@
+{
+  "schemaVersion": "m2s2-existing-native-rhs-solution-clarification-and-renderer-restoration-proposal-v2",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "preparedAt": "2026-11-16T03:27:54.223Z",
+  "reviewer": "GPT_M3_34C2",
+  "decision": "PROPOSE_EXACT_REVIEWED_RHS_FIRST_LINE_CLARIFICATION_AND_RENDERER_RESTORATION",
+  "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+  "sourceOrdinal": 2,
+  "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+  "currentRemoteMain": "b645719341bc7deae6ed3b21a78f878109dc7789",
+  "currentSource": {
+    "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+    "gitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+    "sha256": "916dd50a26c8ca09fc87d67012d70f0a410d4eb3803ba844b46969f63df6b687"
+  },
+  "candidateSource": {
+    "localPath": "/workspace/scratch/0a70543c4ce8/m3-prep/m2s2-next-continuity/S2-E017/candidates/e017-q2-restored-renderer-native-rhs-solution.r2.js",
+    "sha256": "22c605bd1b96618563f72e48d5428ee4f5c6226e22e94d668c7ad9bb8e53449c",
+    "gitBlobSha1": "41e074035e7ab7558bc1ae89820a2a60ebe3c806",
+    "bytes": 66329
+  },
+  "sourceDelta": {
+    "set": {
+      "image": "assets/images/24_연향중_2학기_중간_중2_수학/q02.png",
+      "layoutTag": "grid",
+      "solution": {
+        "before": "[키포인트] 그림의 같은 각 표시를 먼저 읽으면 \\angle ABD=\\angle DBC이다.\n그림에서 \\angle DBC=24^\\circ이므로 \\angle ABD=24^\\circ이다. 따라서\n\\angle ABC=24^\\circ+24^\\circ=48^\\circ이다.\n또 \\triangle ABC는 C에서 직각이므로\nx+48^\\circ+90^\\circ=180^\\circ이다.\n따라서 x=42^\\circ이다.\n그러므로 정답은 ②이다.",
+        "after": "[키포인트] 두 직각삼각형 BDE와 BDC는 빗변 BD가 공통이고 BE=BC이므로 RHS 합동이다. 따라서 \\angle EBD=\\angle DBC이고 E가 선분 AB 위에 있으므로 \\angle ABD=\\angle DBC이다.\n그림에서 \\angle DBC=24^\\circ이므로 \\angle ABD=24^\\circ이다. 따라서\n\\angle ABC=24^\\circ+24^\\circ=48^\\circ이다.\n또 \\triangle ABC는 C에서 직각이므로\nx+48^\\circ+90^\\circ=180^\\circ이다.\n따라서 x=42^\\circ이다.\n그러므로 정답은 ②이다."
+      }
+    },
+    "remove": {
+      "imageSize": "tall",
+      "imageAlt": "C는 직각이다. B에서 그은 이등분선은 AC 위의 D에 닿는다. D에서 빗변 AB로 내린 수선은 E에서 만난다. DBC는 24도이고 A의 각은 x이다."
+    }
+  },
+  "finding": {
+    "actualBeforeAndCurrentImagesViewed": true,
+    "actualNativeAndCurrentSourceTextRead": true,
+    "actualCurrentSvgMarkupAndAccessibilityTextRead": true,
+    "currentAlt": "C는 직각이다. B에서 그은 이등분선은 AC 위의 D에 닿는다. D에서 빗변 AB로 내린 수선은 E에서 만난다. DBC는 24도이고 A의 각은 x이다.",
+    "nativePrimaryMethod": "RHS로 두 예각 같음을 얻고 직각삼각형 각 계산",
+    "nativeDecisiveStep": "BDE와BDC에서 공통빗변BD와 BE=BC로 RHS 합동을 얻어 ABD=DBC를 정당화한다.",
+    "currentIllustrationDifference": "The reviewed raster marks BE=BC and the right angles at E and C, with BD as the common hypotenuse. The later problem SVG drops the equal-side ticks and directly draws equal angle arcs at B, and its alt declares an angle bisector. This supplies the conclusion of the accepted RHS step and does not preserve method continuity.",
+    "proposedRestoration": "Restore the existing reviewed q02.png and grid layout, remove only the later imageSize/imageAlt, and replace only the first solution line with the already accepted native RHS argument. Preserve the solution suffix, solution SVG, content, choices, answer, source metadata and all other22 questions.",
+    "originalRasterTextMovedToHtml": false,
+    "duplicatedTranscriptionIntroduced": false,
+    "comparisonContact": {
+      "path": "/workspace/scratch/0a70543c4ce8/m3-prep/m2s2-next-continuity/S2-E017/s2-e017-q2-problem-before-current-contact.png",
+      "sha256": "27a11ecac8ff72c9e02067dba64070d7c44e24cb3e9c48d4defaacc6ef2622eb"
+    }
+  },
+  "nativeAuthority": {
+    "refs": {
+      "four-slot.json": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/four-slot.json",
+        "gitBlobSha1": "e6683bdb6009f840849dcfc8e942d260b4ad5c43",
+        "sha256": "6a09ca648d8ea0ab8fbf4ec3742f3fd79933ac55d7d45027c81f81532f38ca75"
+      },
+      "review.json": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/review.json",
+        "gitBlobSha1": "63eab81ab79d055e3cee12f7810a6d6ead7c4b91",
+        "sha256": "f5d321f7ad0b43045075ea06e6e573f89641507df89c40bc1d89915c46c956f0"
+      },
+      "root-acceptance.json": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/root-acceptance.json",
+        "gitBlobSha1": "352883823b49db9b4c5a67f5a4e9b87f70b9cbf3",
+        "sha256": "de6cb693d39a5ea7eeefba95e8f0a6e3598bf9bc4386f07d214b6ce2e0597e82"
+      },
+      "independent-sample.json": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/independent-sample.json",
+        "gitBlobSha1": "252afd6f371caf4dc29e6c6ed1792566288f0ef4",
+        "sha256": "3f19dab765ad3e30d5473a172dd6f4d3c10cba0002a3b78a32fdfbf28abafae4"
+      },
+      "mechanical-check.json": {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/mechanical-check.json",
+        "gitBlobSha1": "0cb163bd01d08d50987b461793ab184b8627005d",
+        "sha256": "2ee9663b2ecf54c09df69acf9de28e8a3807ef07e0560aa4e308a53566549594"
+      }
+    },
+    "nativeItemStableSha256": "7965970ce20afa01019e35d813be95a040e2008a4dbcc308955a5ca612f82ac3",
+    "verdict": "CORRECT",
+    "registrationDebt": [
+      "Resolver 재실행 및 changed-UID 소비자 검증은 후속 Codex 등록 단계; 이 파일은 승인 proof를 생성하지 않음"
+    ],
+    "proposalRefs": [],
+    "rootQ2Resolution": {
+      "ordinal": 2,
+      "resolution": "The actual diagram marks equal legs and two right angles with a common hypotenuse, establishing RHS. Preserve the distinction between this visual evidence and the source explanation referring to equal-angle marks."
+    },
+    "independentQ2Note": "기존 해설의 같은 각 표시 설명과 원본 그림의 같은 변 표시 차이는 별도 source note로 보존.",
+    "freshFullMathematicalReverification": false,
+    "rootOperationalStatus": "REGISTRATION_PENDING"
+  },
+  "restoredAsset": {
+    "commit": "16f0413bbf709581eededf19497008031d80b808",
+    "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q02.png",
+    "gitBlobSha1": "fd1f4b906e2a1a082721d15359691cd618b5397a",
+    "sha256": "c667a734e5183fe1949d991592cef0c3c6934715482100988cdc621d43b9a866"
+  },
+  "currentIssuedScope": {
+    "snapshot": "b645719341bc7deae6ed3b21a78f878109dc7789",
+    "remoteBlobRefs": [
+      {
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "expectedGitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "actualGitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "exact": true
+      },
+      {
+        "path": "archive/data/item-4slot/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.4slot.json",
+        "expectedGitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "actualGitBlobSha1": "d25058654087767d05f5c585a847bdbb498d1ac8",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q1-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "0fc064371cd83f131163fe57ed03f1f7fa7fa4ba",
+        "actualGitBlobSha1": "0fc064371cd83f131163fe57ed03f1f7fa7fa4ba",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q02-solution.svg",
+        "expectedGitBlobSha1": "501cb2268009c8e7bf8ef5cdc615c08d297c452a",
+        "actualGitBlobSha1": "501cb2268009c8e7bf8ef5cdc615c08d297c452a",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q2-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "bab4a51959bbc52cec399fbae555456bf47fdb33",
+        "actualGitBlobSha1": "bab4a51959bbc52cec399fbae555456bf47fdb33",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q3-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "4f40e6c1732bd1ad3364d4a14dc6978917bfb66f",
+        "actualGitBlobSha1": "4f40e6c1732bd1ad3364d4a14dc6978917bfb66f",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q4-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "7b60b51d28f8f147fad306c00b1f48fa8a4e5c9a",
+        "actualGitBlobSha1": "7b60b51d28f8f147fad306c00b1f48fa8a4e5c9a",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q5-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "a2e851ec2e5fe722404c95e6dff473ea99bc67d3",
+        "actualGitBlobSha1": "a2e851ec2e5fe722404c95e6dff473ea99bc67d3",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q6-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "67ed351835e0a6b28c839d58574a634ae26df054",
+        "actualGitBlobSha1": "67ed351835e0a6b28c839d58574a634ae26df054",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q7-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "dda6617473be7baace216bc6eec9a4edf029c2c2",
+        "actualGitBlobSha1": "dda6617473be7baace216bc6eec9a4edf029c2c2",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q8-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "4c1e0e8b2dafaa0c9cd5f1480a437447e3c5fcb9",
+        "actualGitBlobSha1": "4c1e0e8b2dafaa0c9cd5f1480a437447e3c5fcb9",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q09-solution.svg",
+        "expectedGitBlobSha1": "fa061a9b61b4eec02234a5ab4c262e2d1a43e616",
+        "actualGitBlobSha1": "fa061a9b61b4eec02234a5ab4c262e2d1a43e616",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q9-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "2d06fb735ded3015612ba2b61ffc14fa7491a300",
+        "actualGitBlobSha1": "2d06fb735ded3015612ba2b61ffc14fa7491a300",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q10-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "0fa7d6452eeb00e9bbc5b6a81ca455179a435036",
+        "actualGitBlobSha1": "0fa7d6452eeb00e9bbc5b6a81ca455179a435036",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q12-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "cbe1052a84cc85a9af943b03cb477b0af16bcab8",
+        "actualGitBlobSha1": "cbe1052a84cc85a9af943b03cb477b0af16bcab8",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q12-solution.svg",
+        "expectedGitBlobSha1": "f4e8e43b09d022697c09ffbd21dc7b8b638482ca",
+        "actualGitBlobSha1": "f4e8e43b09d022697c09ffbd21dc7b8b638482ca",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q13-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "5df545afc80f57175bef3935a9c473e15a2dd0d1",
+        "actualGitBlobSha1": "5df545afc80f57175bef3935a9c473e15a2dd0d1",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q13-solution.svg",
+        "expectedGitBlobSha1": "8a99a19afc1a62358627a9c9429a11017eda664a",
+        "actualGitBlobSha1": "8a99a19afc1a62358627a9c9429a11017eda664a",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q14-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "b7b54448a4115e9e9889be44147a3c8b69891839",
+        "actualGitBlobSha1": "b7b54448a4115e9e9889be44147a3c8b69891839",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q14-solution.svg",
+        "expectedGitBlobSha1": "9e95243b77c174064d4408b3dc5f413fbb0bbd44",
+        "actualGitBlobSha1": "9e95243b77c174064d4408b3dc5f413fbb0bbd44",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q16-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "1eefb37e9222768466c9ec3e9fda2db8b9991952",
+        "actualGitBlobSha1": "1eefb37e9222768466c9ec3e9fda2db8b9991952",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q16-solution.svg",
+        "expectedGitBlobSha1": "2320fbcfeeb9a5f18f1a141aa346c02e9b85ac9d",
+        "actualGitBlobSha1": "2320fbcfeeb9a5f18f1a141aa346c02e9b85ac9d",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q17-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "e4faca93063177969b694fe48fe476f91828bbeb",
+        "actualGitBlobSha1": "e4faca93063177969b694fe48fe476f91828bbeb",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q17-solution.svg",
+        "expectedGitBlobSha1": "9eff246d62039458dfdd2fe42c8fc5b362177475",
+        "actualGitBlobSha1": "9eff246d62039458dfdd2fe42c8fc5b362177475",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q18-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "147eaf6f09ea70d3b3f5793565d4e310163c6c24",
+        "actualGitBlobSha1": "147eaf6f09ea70d3b3f5793565d4e310163c6c24",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q19-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "da71f3e0bb8c971e60d9a85adc3cef9451fa0ea6",
+        "actualGitBlobSha1": "da71f3e0bb8c971e60d9a85adc3cef9451fa0ea6",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q19-solution.svg",
+        "expectedGitBlobSha1": "8d43cd9980bc052075806db63a3b92165fa9adbe",
+        "actualGitBlobSha1": "8d43cd9980bc052075806db63a3b92165fa9adbe",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q20-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "b06bbbe91eb11f6b223a78f3e914080f3245e789",
+        "actualGitBlobSha1": "b06bbbe91eb11f6b223a78f3e914080f3245e789",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q20-solution.svg",
+        "expectedGitBlobSha1": "29698f364167c01f5086388d713dc2e272b7ef9c",
+        "actualGitBlobSha1": "29698f364167c01f5086388d713dc2e272b7ef9c",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q21-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "d8312703feb46b73e5cebf935e98e4008ec193a2",
+        "actualGitBlobSha1": "d8312703feb46b73e5cebf935e98e4008ec193a2",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q21-solution.svg",
+        "expectedGitBlobSha1": "175d1c4c8a829c6e39dfb96822cc07890a3ea82e",
+        "actualGitBlobSha1": "175d1c4c8a829c6e39dfb96822cc07890a3ea82e",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q22-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "35aebf358aec6443fb7e2f7d3b550a4e643dd61f",
+        "actualGitBlobSha1": "35aebf358aec6443fb7e2f7d3b550a4e643dd61f",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q22-solution.svg",
+        "expectedGitBlobSha1": "c439bb5a0352185fba5f99dd77835c63d572a580",
+        "actualGitBlobSha1": "c439bb5a0352185fba5f99dd77835c63d572a580",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q23-problem-visual-v2.svg",
+        "expectedGitBlobSha1": "6cb01593a000a050d3d66505a398dc400cf4808b",
+        "actualGitBlobSha1": "6cb01593a000a050d3d66505a398dc400cf4808b",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q23-solution.svg",
+        "expectedGitBlobSha1": "ef576d66d669a3ec610b639310032e9fa5a16bf6",
+        "actualGitBlobSha1": "ef576d66d669a3ec610b639310032e9fa5a16bf6",
+        "exact": true
+      },
+      {
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "expectedGitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "actualGitBlobSha1": "a6a8419ba3ea9b6e271b57c34b920088277dc226",
+        "exact": true
+      },
+      {
+        "path": "archive/data/question_metadata.json",
+        "expectedGitBlobSha1": "153fd5198d4fecbccaddcc9fff228545909db57c",
+        "actualGitBlobSha1": "153fd5198d4fecbccaddcc9fff228545909db57c",
+        "exact": true
+      },
+      {
+        "path": "archive/data/question_identity_map.json",
+        "expectedGitBlobSha1": "5860f657b01e042fce17a9fdb6fcf031dc81889e",
+        "actualGitBlobSha1": "5860f657b01e042fce17a9fdb6fcf031dc81889e",
+        "exact": true
+      },
+      {
+        "path": "archive/data/item-4slot-index.json",
+        "expectedGitBlobSha1": "f5fc629a77cb5a15f87e3b6b9c61264248799475",
+        "actualGitBlobSha1": "f5fc629a77cb5a15f87e3b6b9c61264248799475",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/algebra-2022-v1.json",
+        "expectedGitBlobSha1": "a4b6acb801aa7036beb6bbfb6a35d4f2a4ef8b0a",
+        "actualGitBlobSha1": "a4b6acb801aa7036beb6bbfb6a35d4f2a4ef8b0a",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/derivative-v1.json",
+        "expectedGitBlobSha1": "d9a1d22759b3f88cfa8d8641612fb42b6c60389d",
+        "actualGitBlobSha1": "d9a1d22759b3f88cfa8d8641612fb42b6c60389d",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json",
+        "expectedGitBlobSha1": "d9000995a2614e6835c535f335994bcda3392685",
+        "actualGitBlobSha1": "d9000995a2614e6835c535f335994bcda3392685",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+        "expectedGitBlobSha1": "53ed3e0f6dbb245c3060eab40f1ccf092d985db1",
+        "actualGitBlobSha1": "53ed3e0f6dbb245c3060eab40f1ccf092d985db1",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/geometry-equations-v1.json",
+        "expectedGitBlobSha1": "e930dc97cb5fa9608ab0c50522782a498c15e97a",
+        "actualGitBlobSha1": "e930dc97cb5fa9608ab0c50522782a498c15e97a",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/geometry-v1.json",
+        "expectedGitBlobSha1": "ad8b73867dc4731a840d516bb3de1dd2fdb80a2f",
+        "actualGitBlobSha1": "ad8b73867dc4731a840d516bb3de1dd2fdb80a2f",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/h1-foundation-v1.json",
+        "expectedGitBlobSha1": "263e8e3c58f5b47793f7944bb139b34a547ee7f3",
+        "actualGitBlobSha1": "263e8e3c58f5b47793f7944bb139b34a547ee7f3",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/h1-original-source-v1.json",
+        "expectedGitBlobSha1": "cff2c222c8e371eb55f66b8578a28db0b4bd1b90",
+        "actualGitBlobSha1": "cff2c222c8e371eb55f66b8578a28db0b4bd1b90",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/integral-calculus-v1.json",
+        "expectedGitBlobSha1": "72c146f374741a84c2c5cbbc2859563c303fd8b0",
+        "actualGitBlobSha1": "72c146f374741a84c2c5cbbc2859563c303fd8b0",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/limit-continuity-v1.json",
+        "expectedGitBlobSha1": "c42653673ded4622f51b18ccb12c9e9603d4fc3f",
+        "actualGitBlobSha1": "c42653673ded4622f51b18ccb12c9e9603d4fc3f",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "expectedGitBlobSha1": "8fbfade8234a74b58aaf8d29f921afe08c164f04",
+        "actualGitBlobSha1": "8fbfade8234a74b58aaf8d29f921afe08c164f04",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "expectedGitBlobSha1": "0eddb47207486a2686f8321cf2f06e753eeb8eaf",
+        "actualGitBlobSha1": "0eddb47207486a2686f8321cf2f06e753eeb8eaf",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+        "expectedGitBlobSha1": "dfd8ba423b17e2fe558fc69ba736e13873ca9206",
+        "actualGitBlobSha1": "dfd8ba423b17e2fe558fc69ba736e13873ca9206",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle3-v1.json",
+        "expectedGitBlobSha1": "d7f4ada14637007b2c37a3b51815e8b8c2abcbae",
+        "actualGitBlobSha1": "d7f4ada14637007b2c37a3b51815e8b8c2abcbae",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/probability-statistics-v1.json",
+        "expectedGitBlobSha1": "fec687ecf7e55a9b57449e8850d47ddd4c541a9a",
+        "actualGitBlobSha1": "fec687ecf7e55a9b57449e8850d47ddd4c541a9a",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json",
+        "expectedGitBlobSha1": "8502c4486345886090ed527b709e1dd7659819b4",
+        "actualGitBlobSha1": "8502c4486345886090ed527b709e1dd7659819b4",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/sets-propositions-v1.json",
+        "expectedGitBlobSha1": "48ffe4bd8e3a063982bb9cf9daf0205dc12256f3",
+        "actualGitBlobSha1": "48ffe4bd8e3a063982bb9cf9daf0205dc12256f3",
+        "exact": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/trigonometry-v1.json",
+        "expectedGitBlobSha1": "32a9726d0e4cf90cc7befe1d28fca1b0158047d2",
+        "actualGitBlobSha1": "32a9726d0e4cf90cc7befe1d28fca1b0158047d2",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q02.png",
+        "expectedGitBlobSha1": "fd1f4b906e2a1a082721d15359691cd618b5397a",
+        "actualGitBlobSha1": "fd1f4b906e2a1a082721d15359691cd618b5397a",
+        "exact": true
+      },
+      {
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q02-solution.svg",
+        "expectedGitBlobSha1": "501cb2268009c8e7bf8ef5cdc615c08d297c452a",
+        "actualGitBlobSha1": "501cb2268009c8e7bf8ef5cdc615c08d297c452a",
+        "exact": true
+      }
+    ],
+    "allRuntimePackDocumentsRead": 18,
+    "missingRemoteBlobs": 0,
+    "denominator": 23,
+    "finalQaRecords": 0,
+    "finalRecords": [
+      {
+        "sourceOrdinal": 11,
+        "questionUid": "qid_v1_061f56b801d84fca7fb2dccabc0f36cd424db51a71705aaf9907bbe01c0206a4"
+      }
+    ],
+    "heldRecords": [
+      {
+        "sourceOrdinal": 10,
+        "questionUid": "qid_v1_204dd3224ff8354e6989356a1f9151983e1bb875d1705e1aaf2d884aeafcfbc9",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 2,
+        "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 15,
+        "questionUid": "qid_v1_4ad4963857cd28e9d6dc520af77e1d6ef455036cb0da5de3f01f20341805078a",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 7,
+        "questionUid": "qid_v1_56134964da05fe0b1f0c03da443c3f5b954bf9479a9ee8b7250ff9363f2db98d",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 23,
+        "questionUid": "qid_v1_59226ef933e59db710d0814eb8f94bfc56270f061f29a306a03837395c1b7472",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 8,
+        "questionUid": "qid_v1_76f0b67bec2a21754fd8f036418aae1956e62d1f19d0f60bf9acd93ba2606cc8",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 9,
+        "questionUid": "qid_v1_7d1571b986962c1d131481898b66de1a5f13030e0a5c19a4435ccda48b68f1ad",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 21,
+        "questionUid": "qid_v1_8d5adb66553e5a1bd552ef118800a9e9daa315723365055741bff1a87eafa26d",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 6,
+        "questionUid": "qid_v1_9a0686ad7215cc2afff66c158131fd343a64bd2111f30341df6b8383aaba1b7c",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 12,
+        "questionUid": "qid_v1_9a1c71c7ed648940f63646fd8f2062e131ad914bdf109362eef3aef1a880d7f2",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 13,
+        "questionUid": "qid_v1_9da60224de63e75d017892461250ba4a324d2fc267022173e70fc89770f4a75f",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 4,
+        "questionUid": "qid_v1_aa3c1ee5ab7ec90917755d06c8c44c1b8d06b3a14fde0c985c4fc769572eb51b",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 14,
+        "questionUid": "qid_v1_adddde57b20b47317e783fa0120657234da8c0ec3f49cbba8b9a507a5807776c",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 18,
+        "questionUid": "qid_v1_e13b9dba98304967b524525611b6af91ed51580938601d9986ea7335cb415c67",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 20,
+        "questionUid": "qid_v1_ea8f9602a6a276cbaafa321190b673abbc47deafe5eae964c6d3caf81a3bfdb7",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 22,
+        "questionUid": "qid_v1_ec4315a58b66e1ebad91df2b293bc4368c9a198026fe07235d1c7051c557102b",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 5,
+        "questionUid": "qid_v1_ef2f75003ed913b20f7bb4d1482589a1566675e22862440bf9c035c2da9b8490",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 16,
+        "questionUid": "qid_v1_ef6f8fb975efde2d9df111dda5acaca3127662d056b740d01d79924a89790e48",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 19,
+        "questionUid": "qid_v1_f1ddbf57a4d17f4d8bb30c857fc401d30a193945bb24f8c684dd8086e322d7d2",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 17,
+        "questionUid": "qid_v1_f609573d96834aca9d5a21693e0ac6150be59ed77721e3cccc0005ed5f6e89fa",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 3,
+        "questionUid": "qid_v1_f867386595af4f85ce29e7ce9d88ded95c6ad8c288eceb582812d0b4b8d171f7",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      {
+        "sourceOrdinal": 1,
+        "questionUid": "qid_v1_fc40513f50e6014b508eb1e8061f135682b5a065fbf336fa755918de6c97ccf7",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      }
+    ],
+    "q2": {
+      "runtime": {
+        "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "metadataStatus": "DIFFICULTY_RECHECK_HOLD",
+        "reviewStatus": "manual_review",
+        "metaFoundationStatus": "DIFFICULTY_RECHECK_HOLD",
+        "difficultyRecheckDisposition": "HOLD_RECHECK_PENDING",
+        "defaultSelectable": false
+      },
+      "sharedMetadata": {
+        "metadataStatus": "approved_partial_with_explicit_holds",
+        "fieldStatus": {
+          "standardUnit": "approved_source",
+          "subUnit": "approved_source",
+          "concept": "approved_classification",
+          "problemType": "manual_review_pending",
+          "template": "manual_review_pending",
+          "difficulty": "approved_source"
+        },
+        "tagStatus": "approved_subunit_concept_partial",
+        "tagConfidence": "candidate_evidence"
+      },
+      "currentReviewedV2ReceiptReferencePresent": false,
+      "receiptScopeNote": "Current selected runtime and metadata contain no reviewed-v2 request/sourceReview/receipt reference. Historical receipt archives were not exhaustively searched."
+    },
+    "fourSlot": {
+      "registered": 2,
+      "pending": 21,
+      "q2Reason": "STALE_STUDENT_PAYLOAD",
+      "compactRegistrationHolds": 0
+    }
+  },
+  "impact": {
+    "changedSourceQuestionCount": 1,
+    "changedSourceFields": [
+      "image",
+      "imageAlt",
+      "imageSize",
+      "layoutTag",
+      "solution"
+    ],
+    "otherSourceQuestionsUnchanged": 22,
+    "contentChoicesAnswerSolutionAndSolutionImageUnchanged": false,
+    "identityHashUnchanged": false,
+    "beforeCurrentIdentityHash": "66d2c19d8f48cad0d8be5a4cde8ea3fec496b6276eac4cea183544f6c4df3ec3",
+    "candidateIdentityHash": "76a93d062d2172652bdd205f5ae327fde311a3daba43caceb24fa28415fcab0e",
+    "candidateIdentityHashEqualsNativeQfull": false,
+    "existingIdentityMapRecordPreserved": true,
+    "questionUidAndSourceTupleUnchanged": true,
+    "beforeFourSlotPayloadHash": "22d7949f8092ca771ed00e2ada614ad77c8f9f1a0e25da5bd257bea7974925e0",
+    "candidateFourSlotPayloadHash": "8a711d8787d1553c7e3218d2c62bac1688bca43fed0d4296068663872ccbdd95",
+    "candidateStudentPayloadEqualsNativeAndPriorCompact": false,
+    "newSourceSemantics": 0,
+    "newMetadataApprovals": 0,
+    "registryMutations": 0,
+    "existingSourceAndRuntimeHoldsReleased": 0,
+    "sourceOnlyPreservationRequest": "Latest b645 exact current runtime/shared metadata remains identical to the inspected snapshot: FINAL_QA0, legacy FINAL Q11 and22 runtime holds. No current reviewed-v2 receipt for Q2 was identified; do not manufacture one. Preserve all these states.",
+    "contentChoicesAnswerSolutionSuffixAndSolutionImageUnchanged": true,
+    "solutionFirstLineClarified": true,
+    "studentPayloadDifferenceFromNative": "Only the first solution line, expressing the already accepted RHS step."
+  },
+  "preservedDebts": {
+    "q2SourceSolutionEqualAngleWording": {
+      "historicalNote": "기존 해설의 같은 각 표시 설명과 원본 그림의 같은 변 표시 차이는 별도 source note로 보존.",
+      "currentDisposition": "FIRST_LINE_MISMATCH_CORRECTED_USING_EXISTING_NATIVE_RHS_APPROVAL",
+      "historicalNativeEvidenceUnmodified": true
+    },
+    "q6SourceContentHold": {
+      "ordinal": 6,
+      "reason": "The statement names the incircle radius and area, while the existing choices/solution pair the radius with triangle area. Metadata follows that supplied-solution interpretation; source wording needs a separate content decision."
+    },
+    "newAnswerOrSolutionCertification": false
+  },
+  "rootNextActions": [
+    "Apply only the exact Q2 four renderer fields and first solution line, together with the candidate compact and r2 evidence.",
+    "Keep every source/shared metadata value, native registration debt, Q6 SOURCE_HOLD, legacy FINAL Q11 and22 runtime holds.",
+    "After main merge, read official writer and actual23 consumer records; distinguish new21bindings from prior2; report student deployment separately."
+  ],
+  "limits": {
+    "repositoryWrites": 0,
+    "officialRegistration": "NOT_RUN",
+    "studentDeployment": "NOT_RUN",
+    "newFullMathematicalQa": false
+  },
+  "solutionClarification": {
+    "decision": "APPROVE_SCOPED_EXISTING_NATIVE_METHOD_TRANSPORT_TO_FIRST_SOLUTION_LINE",
+    "changedLines": 1,
+    "originalFirstLine": "[키포인트] 그림의 같은 각 표시를 먼저 읽으면 \\angle ABD=\\angle DBC이다.",
+    "replacementFirstLine": "[키포인트] 두 직각삼각형 BDE와 BDC는 빗변 BD가 공통이고 BE=BC이므로 RHS 합동이다. 따라서 \\angle EBD=\\angle DBC이고 E가 선분 AB 위에 있으므로 \\angle ABD=\\angle DBC이다.",
+    "following24DegreeCalculationAndAnswerByteIdentical": true,
+    "actualReviewedProblemImageViewedAgain": true,
+    "actualExistingSolutionSvgMarkupRead": true,
+    "imageFacts": [
+      "E is on segment AB.",
+      "BE=BC is marked by equal-leg ticks.",
+      "Angles BED and BCD are right angles.",
+      "BD is the shared hypotenuse."
+    ],
+    "existingNativeItemRef": {
+      "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+      "path": "archive/data/meta-review/m2-s2-20261114/exams/E017/review.json",
+      "gitBlobSha1": "63eab81ab79d055e3cee12f7810a6d6ead7c4b91",
+      "sha256": "f5d321f7ad0b43045075ea06e6e573f89641507df89c40bc1d89915c46c956f0",
+      "sourceOrdinal": 2,
+      "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+      "itemStableSha256": "7965970ce20afa01019e35d813be95a040e2008a4dbcc308955a5ca612f82ac3"
+    },
+    "acceptedNativePrimaryMethod": "RHS로 두 예각 같음을 얻고 직각삼각형 각 계산",
+    "acceptedNativeDecisiveStep": "BDE와BDC에서 공통빗변BD와 BE=BC로 RHS 합동을 얻어 ABD=DBC를 정당화한다.",
+    "rootQ2Resolution": {
+      "ordinal": 2,
+      "resolution": "The actual diagram marks equal legs and two right angles with a common hypotenuse, establishing RHS. Preserve the distinction between this visual evidence and the source explanation referring to equal-angle marks."
+    },
+    "independentQ2": {
+      "sourceOrdinal": 2,
+      "verdict": "PASS",
+      "reason": "실제 그림에는 BE=BC의 같은 길이 눈금과 E/C의 두 직각이 있으며 BD는 공통 빗변이다. BDE와 BDC의 RHS로 B의 두 각이 같음을 얻는 분류가 타당하다. source 해설의 같은 각 표시라는 말과 그림은 다르며, 저자는 이 차이를 명시하고 결론각을 IMPLIED 근거로 사용했다. 그림에서 읽은 합동을 텍스트에 명시된 합동이라고 주장하지 않아 현 상태 수용 가능하다. 이는 기존 수학 해설의 공식 재검수 PASS는 아니다.",
+      "repairs": [],
+      "imageViewed": "workers/B/images/E017-02.png",
+      "sourceContentNote": "기존 해설의 같은 각 표시 설명과 원본 그림의 같은 변 표시 차이는 별도 source note로 보존.",
+      "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+      "fourSlotCriticalDefect": false,
+      "quotesExact": true,
+      "quoteCount": 4,
+      "inspectedRpmRecordId": "M2-RPM-070"
+    },
+    "reason": "The replacement states precisely the already accepted RHS reasoning instead of attributing its conclusion to absent equal-angle marks. The later 24°, 48°, 42° calculation, choices, answer and original derived solution SVG remain unchanged.",
+    "originalHistoricalSourceNotePreserved": true,
+    "currentFirstLineMismatchResolved": true,
+    "allOtherNativeDebtsRemain": true,
+    "newSourceConditionInvented": false,
+    "newFullMathQa": false,
+    "newMetadataOrResolverApproval": false
+  }
+}

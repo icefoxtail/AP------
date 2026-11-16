@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "small-m2-current-four-slot-literal-validation-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "examId": "E017",
+  "reviewer": "GPT_M3_34C2",
+  "checkedAt": "2026-11-16T02:43:05.114Z",
+  "scope": "NINE_RENDERER_CHANGED_UIDS_CURRENT_LITERAL_QUOTES_ONLY",
+  "sourceRef": {
+    "commit": "203435e095b5f4c65f7c5bef5131e375633ba95c",
+    "path": "archive/exams/original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+    "beforeGitBlobSha1": "cbd7abbd131be61c271af81b31e84230b49152d7",
+    "beforeRawSha256": "a85438a7a8806da5b701e7e8d4e66cd07601d96824f9d5f8ec40bc1522d36ae5",
+    "currentGitBlobSha1": "c219ef6aa139f87ac7cae5c2c7d15bb72de4ef6c",
+    "currentRawSha256": "419c2f3455af63245a457c955dbab57e503198e07ea4a7d62359e27fb1a25fd3"
+  },
+  "nativeFourSlotRef": {
+    "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+    "path": "docs/operations/m2-s1-meta-full-20261114/exams/E017/amendments/fresh-difficulty-evidence-r1/four-slot.json",
+    "sha256": "a77a1d871bb6484018ebdfa367c242a479c9e43700117e3ec5277c980f34dbcd",
+    "sourceGitBlobSha": "cbd7abbd131be61c271af81b31e84230b49152d7"
+  },
+  "dictionaryRef": {
+    "path": "docs/architecture/4slot/term-dictionary-v1.5.json",
+    "version": "term-dict-v1.5-2026-11-04",
+    "sha256": "c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be",
+    "gitBlobSha1": "f25c84d3d8dd84f2987317c13f59a63aa20fd4f0"
+  },
+  "partialProjection": {
+    "scope": "PARTIAL_UIDS",
+    "selected": [
+      {
+        "questionUid": "qid_v1_6b720257c3715c5b52f7fd0e99c0feb79d08cc8aea81d83dbad8af7539e3c13c",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12"
+      },
+      {
+        "questionUid": "qid_v1_54d9e914570853eb3891648cad5570f1bd85f85f4ada6564fd543288b651a00c",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13"
+      },
+      {
+        "questionUid": "qid_v1_b115dd886da2a9fdbf5592a703c142b1f451a5a6b9efc9ea11a61d378856f01d",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14"
+      },
+      {
+        "questionUid": "qid_v1_e15ab35f7d9b353f63623bd7f715e95be6ca54ea7c0548869435fbe8fc67be6c",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16"
+      },
+      {
+        "questionUid": "qid_v1_63d98fdf7e29066e11b323ae7ea8b3c2f5653aa3c6c3b8af00f5b502ef9fa701",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17"
+      },
+      {
+        "questionUid": "qid_v1_570bbbed926ec01b30b4dfa165542da89697458db171362c75379dac5145b896",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18"
+      },
+      {
+        "questionUid": "qid_v1_5681a3a6894b70eeec122c5caccefb266330102bce61806cf780fb1d2346e427",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21"
+      },
+      {
+        "questionUid": "qid_v1_add0145ba3ff99270bed5f582002dc72d07e7eb4d6e7c55508304906ae224365",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24"
+      },
+      {
+        "questionUid": "qid_v1_ee7bd25adb45780b251a0eb3edbe953670d44145c407feaf042634379b61ab31",
+        "sourceOrdinal": 25,
+        "sourceQuestionNo": "25"
+      }
+    ],
+    "unsubmittedCount": 16,
+    "expectedQuestionCount": 25,
+    "itemsIdenticalToNative": true,
+    "submissionCreated": false,
+    "registrationReceiptCreated": false
+  },
+  "validation": {
+    "fail": [],
+    "warn": [
+      "#17 only 4 distinct terms"
+    ],
+    "stats": {
+      "items": 9,
+      "examItems": 25,
+      "quotes": 66,
+      "scope": "PARTIAL_UIDS",
+      "unsubmitted": 16,
+      "completeExam": false
+    }
+  },
+  "existingWarningReuse": {
+    "priorNativeWarnings": [
+      "#1 only 4 distinct terms",
+      "#2 only 3 distinct terms",
+      "#5 only 4 distinct terms",
+      "#6 only 4 distinct terms",
+      "#7 only 4 distinct terms",
+      "#17 only 4 distinct terms"
+    ],
+    "selectedWarningsAreSubsetOfPrior": true,
+    "adjudication": "Few-term warnings are unchanged in the accepted native vector. No term, method or normal blank was padded to satisfy a count."
+  },
+  "codeRefs": [
+    {
+      "path": "tools/4slot/validate-4slot.cjs",
+      "sha256": "8f35827437b4ae5e5a063f5968a5f23069fbc1e28244c2a8cab9c367d7a9edc7"
+    },
+    {
+      "path": "tools/4slot/partial-submission.cjs",
+      "sha256": "499ce72f4b936ce9041b3e740a9baea0ca36583a2dc96623b5f951a6c9d9c614"
+    },
+    {
+      "path": "tools/4slot/exam-items.cjs",
+      "sha256": "60e348829239772dfb916763835d2e21659ecd8eb2ba96e2621867352a935cf2"
+    }
+  ],
+  "limits": {
+    "newMathematicalQa": 0,
+    "newSemanticApproval": 0,
+    "newFourSlotVector": 0,
+    "officialMainRegistration": "NOT_RUN",
+    "studentDeployment": "NOT_RUN",
+    "repositoryWrites": 0
+  }
+}

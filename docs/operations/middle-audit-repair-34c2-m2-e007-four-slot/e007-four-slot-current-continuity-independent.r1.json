@@ -1,0 +1,805 @@
+{
+  "schemaVersion": "m2-small-exam-four-slot-current-renderer-continuity-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "reviewer": "GPT_M2_34C2",
+  "reviewedAt": "2026-11-16T03:19:21.538877+00:00",
+  "examId": "E007",
+  "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+  "baseRemoteMain": "16f0413bbf709581eededf19497008031d80b808",
+  "lastExactRemoteMainConfirmation": "b645719341bc7deae6ed3b21a78f878109dc7789",
+  "actualStoredDataCommit": "e9af62176fc10bce6c30f420d911664082ec059b",
+  "scope": "CURRENT_RENDERER_CONTINUITY_AND_EXISTING_FOUR_SLOT_VECTOR_BINDING_ONLY",
+  "decision": "ACCEPT_CURRENT_RENDERER_AND_EXISTING_FOUR_SLOT_BINDING_ONLY",
+  "sourceRef": {
+    "path": "archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+    "beforeGitBlobSha1": "5457f28dd7e7c32f5a05b090c7df9c33096a4d5c",
+    "beforeRawSha256": "38bc790c5ef52db03c8a04738accab33e97380718cac3f36b3d5235765fe1d53",
+    "currentGitBlobSha1": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+    "currentRawSha256": "40c140a6a46d476b7058eb715105e6dc18a3ef4f3933d8cde6118ac281693e5c"
+  },
+  "compactRef": {
+    "path": "archive/data/item-4slot/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.4slot.json",
+    "rawSha256": "18ff89486d35ca3a75669d18e17ea57590d06ff7046b02cf602698f4b9e7a664",
+    "gitBlobSha1": "291adc0a7c718cb3850a1de334a32521cf9f391a",
+    "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+    "evidence": {
+      "branch": "review/m2s1-4slot-rebind6-26fc-20261115",
+      "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+      "path": "archive-work/m2s1-4slot-current-20261115/exams/E007.4slot.json"
+    },
+    "reviewedBy": {
+      "agent": "M2-S1 original author, independent sample and root acceptance (reused)",
+      "at": "2026-11-14",
+      "sampled": [
+        2,
+        13,
+        22
+      ],
+      "continuityReview": {
+        "agent": "GPT_ROOT_26FC42390A50 + independent /root/m3s2_release",
+        "at": "2026-11-15",
+        "ordinals": [
+          22
+        ],
+        "proofCommit": "34b27e9a8634740f92964e750675ef96e3353955",
+        "proofPath": "archive-work/m2s1-4slot-current-20261115/independent-review.json",
+        "proofSha256": "cee36d67cc324d0f5bbda83db9f084917cfeeee2f42a9be20f59d55a44ed8e02"
+      }
+    }
+  },
+  "nativeRefs": {
+    "CURRENT.json": {
+      "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "path": "docs/operations/m2-s1-meta-full-20261114/exams/E007/CURRENT.json",
+      "sha256": "665ac9b589cb159dd33f75c1697bea0a9c025b9ef0cdfc34c44f85b31b7c9024"
+    },
+    "root-review.json": {
+      "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "path": "docs/operations/m2-s1-meta-full-20261114/exams/E007/root-review.json",
+      "sha256": "420c12a07f205e735e240567278cda52a8287ff29aa8602dffb8a9a560463592"
+    },
+    "independent.json": {
+      "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "path": "docs/operations/m2-s1-meta-full-20261114/exams/E007/independent.json",
+      "sha256": "764faea538d31f2a00d67536953520869325b77561e6b8606947e854740e6094"
+    },
+    "root-adjudication.json": {
+      "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "path": "docs/operations/m2-s1-meta-full-20261114/exams/E007/amendments/resume-prerequisite-scope-r1/root-adjudication.json",
+      "sha256": "6b9849c259ab37832724bf3f9de155552b3b620d199a396668030e1b7c257a77"
+    },
+    "validation.json": {
+      "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "path": "docs/operations/m2-s1-meta-full-20261114/exams/E007/amendments/resume-prerequisite-scope-r1/validation.json",
+      "sha256": "b7f68b68c046975ec0cce33e3e638740d0c280f09e6992bef7c77684129c7fd1"
+    },
+    "accepted-review.json": {
+      "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "path": "docs/operations/m2-s1-meta-full-20261114/exams/E007/amendments/resume-prerequisite-scope-r1/accepted-review.json",
+      "sha256": "a16f62a23a5cd5e1f8120cae39cc333b9d852412fe144c13edbabd04f26647bd"
+    },
+    "continuity-independent.json": {
+      "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+      "path": "archive-work/m2s1-4slot-current-20261115/independent-review.json",
+      "sha256": "cee36d67cc324d0f5bbda83db9f084917cfeeee2f42a9be20f59d55a44ed8e02"
+    },
+    "original-four-slot.json": {
+      "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+      "path": "docs/operations/m2-s1-meta-full-20261114/exams/E007/amendments/resume-prerequisite-scope-r1/four-slot.json",
+      "sha256": "17c6677b1c194eaa31b5763a9874570fc1586e851e1a6fa546f84acb882faad1"
+    },
+    "four-slot.json": {
+      "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+      "path": "archive-work/m2s1-4slot-current-20261115/exams/E007.4slot.json",
+      "sha256": "049ff85aeb2c5ccde47562ebdbb5418f44a38a2265406625ebaaf8521eadad2f"
+    }
+  },
+  "rebindReuse": {
+    "kind": "ORIGINAL_ACCEPTED_NATIVE_PLUS_PREEXISTING_Q22_CONTINUITY",
+    "priorAcceptedSourceGitBlobSha": "d5e0d4112b9d617c9ac474aa0423c890626dcba9",
+    "currentCompactBaselineSourceGitBlobSha": "5457f28dd7e7c32f5a05b090c7df9c33096a4d5c",
+    "changedNativeOrdinals": [
+      22
+    ],
+    "originalSelectedNativeRowsExact": true,
+    "preexistingQ22Decision": {
+      "examId": "E007",
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_8171d41b62f36fba0ba61a42a12330feec6722317af1c011cdf1abc96eac2c91",
+      "mappingDecision": "ACCEPT_SCOPED_REUSE_AND_MAPPING",
+      "bindingDecision": "ACCEPT",
+      "finding": "기존 지수법칙·자릿수·경우분류가 현재의 a<9 상한 수리와 일치한다.",
+      "sourceGitBlobSha": "5457f28dd7e7c32f5a05b090c7df9c33096a4d5c",
+      "currentSolutionSha256": "0d1a7788f2bdd121da9f01c6ba0b1654ddd24415d15370e32a2a27b1fd591939",
+      "originalNativeRef": {
+        "commit": "150b22a57f1a7075cae4ea89810bacc3bb7fff15",
+        "path": "docs/operations/m2-s1-meta-full-20261114/exams/E007/amendments/resume-prerequisite-scope-r1/four-slot.json",
+        "sha256": "17c6677b1c194eaa31b5763a9874570fc1586e851e1a6fa546f84acb882faad1"
+      },
+      "repairRef": {
+        "commit": "e269a237d6de67ec3d51bfa778c7e58f112db505",
+        "path": ".archive-meta-register/evidence/m2s1-closeout-20261115/source-solution-repairs.json",
+        "sha256": "232c5a2cf38e6ad2f1fdbe9367a8751e3bdc617e94f63d27bc0a247c5b6694c2",
+        "afterSolutionSha256": "0d1a7788f2bdd121da9f01c6ba0b1654ddd24415d15370e32a2a27b1fd591939"
+      },
+      "amendedRawRef": {
+        "path": "archive-work/m2s1-4slot-current-20261115/exams/E007.4slot.json",
+        "sha256": "049ff85aeb2c5ccde47562ebdbb5418f44a38a2265406625ebaaf8521eadad2f"
+      },
+      "methodOrQuoteChanged": false,
+      "currentFingerprints": {
+        "QBODY": "2445df9ce5832dd330e90366c3a63943ba579830d7858329c79e618dbd8804b5",
+        "QFULL": "2f58b4a360d24e5aa1e6ba88d7d7f8cf3f1e9e9aba00e2a90183fdcaa11f2e42"
+      },
+      "fingerprintMismatches": []
+    }
+  },
+  "nativeAcceptance": "Original accepted author, independent sample and root/current adjudication are reused with named debts intact. Existing Q22 continuity in E007 is preserved. No new full exam, metadata, RPM, PT/TPL or difficulty approval.",
+  "counts": {
+    "examDenominator": 24,
+    "existingApprovedCompactVectorsReused": 24,
+    "exactStudentAndAssetReuse": 22,
+    "newNarrowRendererContinuity": 2,
+    "vectorChanges": 0,
+    "methodChanges": 0,
+    "existingCompactRegistrationHolds": 0,
+    "newMathematicalQa": 0,
+    "newSemanticApprovals": 0,
+    "newTermIds": 0
+  },
+  "visualReviews": [
+    {
+      "examId": "E007",
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "decision": "ACCEPT_RENDERER_CONTINUITY_ONLY",
+      "actualBeforeAndCurrentImagesViewed": true,
+      "actualSvgMarkupRead": true,
+      "preservedRelations": [
+        "Rectangle vertices remain A upper-left, B lower-left, C lower-right and D upper-right. The semicircle retains diameter AB, center O on AB and the same arc within the rectangle; diagonal AC remains the triangle edge.",
+        "BC is labeled 2x³y in both images. The old raster crops part of the left-hand dimension; the exact unchanged stem explicitly gives AB=4x³y, which the current SVG displays. No missing dimension is guessed from the cropped raster.",
+        "The SVG coordinates use AB=390 and BC=195 with semicircle radius195, preserving the stated2:1 relation. The existing solution image is byte-identical."
+      ],
+      "sourceTextAnswerChoicesSolutionExact": true,
+      "contact": {
+        "path": "docs/operations/middle-audit-repair-34c2-m2-e007-four-slot/e007-q13-before-current-contact.png",
+        "sha256": "0dc576541cffc8e90fd2fd1cc5b7b7a3ea864c13acb317f5d5187ee517b6179c"
+      },
+      "newFullMathQa": false,
+      "newMetadataApproval": false,
+      "limits": "Exact native/current images and SVG markup were inspected. Browser/print output and student deployment are separate and not executed by this verifier."
+    },
+    {
+      "examId": "E007",
+      "sourceOrdinal": 23,
+      "questionUid": "qid_v1_98a3a1d7b2a875d1fff0c408e7abd547c5069866636f60130ea6fe9c48aec23b",
+      "decision": "ACCEPT_RENDERER_CONTINUITY_ONLY",
+      "actualBeforeAndCurrentImagesViewed": true,
+      "actualSvgMarkupRead": true,
+      "preservedRelations": [
+        "Both diagrams have adjoining rectangles A on the left and B on the right with a common baseline, heights5xy and3x²y² and total horizontal span L.",
+        "The current rectangle primitives retain right angles although the old right-angle glyphs are not repeated. The unchanged stem explicitly calls both shapes rectangles; no mathematical condition is lost.",
+        "No new width, area, answer or computation is placed in the problem image. The existing solution image and full answer/solution text are exact."
+      ],
+      "sourceTextAnswerChoicesSolutionExact": true,
+      "contact": {
+        "path": "docs/operations/middle-audit-repair-34c2-m2-e007-four-slot/e007-q23-before-current-contact.png",
+        "sha256": "c3f38605c596bdec8f3e8d16f9cf26d62ed08b56dd5da073c210b503697c82de"
+      },
+      "newFullMathQa": false,
+      "newMetadataApproval": false,
+      "limits": "Exact native/current images and SVG markup were inspected. Browser/print output and student deployment are separate and not executed by this verifier."
+    }
+  ],
+  "currentLiteralValidation": {
+    "path": "docs/operations/middle-audit-repair-34c2-m2-e007-four-slot/e007-current-literal-validation.r1.json",
+    "sha256": "67a3471e85cebc5940a93d4730efc0920de7012a125938e2907d83d6306540cc",
+    "selectedUidCount": 2,
+    "quoteCount": 16,
+    "failCount": 0,
+    "warnCount": 0
+  },
+  "dictionaryRef": {
+    "path": "docs/architecture/4slot/term-dictionary-v1.5.json",
+    "sha256": "c78c8817264970fed79026bd76e31113f7f3d3e3e184b36bd6a03af05330b2be",
+    "version": "term-dict-v1.5-2026-11-04"
+  },
+  "protection": {
+    "allCompactItemsPreservedExactly": true,
+    "allOriginalMethodsAndFormatsPreserved": true,
+    "allExistingCandidatesPreserved": true,
+    "normalGivenAndConditionBlanksPreserved": true,
+    "sourceContentHoldReleased": 0,
+    "metadataOrRegistryWrites": 0,
+    "originalNativeDebtStateHash": "bff5f5cb7e03e061026121cca770ae43af7823d694cb376343b61937b27c4cac",
+    "ordinarySearchEligibilityChanged": 0
+  },
+  "rows": [
+    {
+      "questionUid": "qid_v1_41cb0d88e130b4752cc58bf43d6ddee479a64ac1ee32f2f39a06cb56be6417dd",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "beforeStudentPayloadSha256": "3450cb5c302d5fcc7b1c4e813b091c827c1a45911927b0c5859da24e1c3add7a",
+      "currentStudentPayloadSha256": "3450cb5c302d5fcc7b1c4e813b091c827c1a45911927b0c5859da24e1c3add7a",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "d4a68ade45b31d588d8f9eb01f29627889f683944c21766ca8bf98e455722f54",
+      "existingNativeItemSha256": "31035ad4fa7acba05ae1cc90e2887eceba46c92772c9e6a11b65926005cb0399",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_3c499607afb3d37a4051a0fde3607d3a41f9599116816f0b04e7596a6f27b6eb",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2",
+      "beforeStudentPayloadSha256": "1390390578f12c61fd64f5bea0dbe08a90c0348a2bbb9e3a685e105621630c70",
+      "currentStudentPayloadSha256": "1390390578f12c61fd64f5bea0dbe08a90c0348a2bbb9e3a685e105621630c70",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "c7b815364b341c9f40bd3f5f123d7d0faecb386959c3e4085ee12e96b036d4e8",
+      "existingNativeItemSha256": "ccc13b1a1934a268b43f97e3d2696d1b261d5ba1e9a3e6a9b58725e8d2229b02",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_8f298cf8263ed8419d43e21ffd7d7479554f6f0c49506924f9926555e5243590",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": "3",
+      "beforeStudentPayloadSha256": "c252644b651a296675378f9eecfec2c86d79e846b948e3d3c39c3dbc48e9dd38",
+      "currentStudentPayloadSha256": "c252644b651a296675378f9eecfec2c86d79e846b948e3d3c39c3dbc48e9dd38",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "8693a1c1aa96967297525cf31fd8505a912a4b2d025a2bd52828f88f3addab2d",
+      "existingNativeItemSha256": "6773908028eb947e675ec811269625c62eb4426e8d6defbc61c1ad556159ebe4",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": false,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_420a1dda4c48d5c9371f389e6b3c7b66278981ccfeec6d3719890192cc3e6e7d",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "beforeStudentPayloadSha256": "1b94652c092bbe97e56bee25ec58e78cfb53a5d7edaa858abe464d5e6b3f21ee",
+      "currentStudentPayloadSha256": "1b94652c092bbe97e56bee25ec58e78cfb53a5d7edaa858abe464d5e6b3f21ee",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "c06a2a2ea81ef072f6f5bdbdf053170c9b842a22858c683bd81adc28fa140f3c",
+      "existingNativeItemSha256": "0c2f6016d397030c161d2f46eebc910d55b10185d61829fd3abbf3bb7b5ac21f",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": false,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_a0ce1744cd42beac8a70f8a989ba073108af1fecf062a7d601027aa803329bc5",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "beforeStudentPayloadSha256": "481f545f2e1e4560e636b871b44429f5dc380024340d0280cf06de4c51768576",
+      "currentStudentPayloadSha256": "481f545f2e1e4560e636b871b44429f5dc380024340d0280cf06de4c51768576",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "09674635b21153a9069ef64c7017de6d67517407c60c88651a5a945e52d55428",
+      "existingNativeItemSha256": "766b74464dd619c580175776cc16098ca0bfd89790471adee25b363ba9599e8f",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_7463434467b9baff8f506d7a98500e3b9c4c5e85ae43a6589f6aeedb4ebb4608",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": "6",
+      "beforeStudentPayloadSha256": "961fc99717bac99425872d5e828628000c8e57b787972a35fce89e724717c3e1",
+      "currentStudentPayloadSha256": "961fc99717bac99425872d5e828628000c8e57b787972a35fce89e724717c3e1",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "3d318f6da76829cdecb352057fcdeb6a8c228996c092b046b1842f9d28d458cf",
+      "existingNativeItemSha256": "4372ca289705be7631eee86fa4ff41a7cf194d8ecece8fd5bc884ee5f64c7cdc",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": false,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_21efa95e9b625778c8ff053e9ba7d28e4d0f503951c2c6d0af24a4e9f6698a63",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "beforeStudentPayloadSha256": "625122374fd97641b10229b88858c7005a8e75e768b6d31cb3e612a082c48227",
+      "currentStudentPayloadSha256": "625122374fd97641b10229b88858c7005a8e75e768b6d31cb3e612a082c48227",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "2884bc682c19eead2c3cc6cfbfdbd7682d4be3fca331c9e736e97221420eb022",
+      "existingNativeItemSha256": "c1970db4e95d0e2893605b8fcad3f135ff3dc34cabac353cf8cd3c29260d2eda",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_b91238505a39dbc9d4fc3938193232c16a1c8347c296d77e99242ca15e37f88b",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "beforeStudentPayloadSha256": "b66d8fd9d0a6ce1ebc7d5936665e1ba2acbfe7b4206791b51932cf003866ac01",
+      "currentStudentPayloadSha256": "b66d8fd9d0a6ce1ebc7d5936665e1ba2acbfe7b4206791b51932cf003866ac01",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "8f57340a6fe4a8b5d07d3dd4eba6d726af1a824841c20df4f62148f0b4cc665e",
+      "existingNativeItemSha256": "8e22bbcdce564c44970fd2dddaed835f8f51a78eb39a0ef7241089e08bd7156d",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": false,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_814d4aacc0a0fc6c2060ebd7b8eef05659639172a08d679ba83540fb86c40cd9",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "beforeStudentPayloadSha256": "040f9ee08a85e9792eb46c582fa86cf5608e7ba2ae88d33293d80e86199d9a62",
+      "currentStudentPayloadSha256": "040f9ee08a85e9792eb46c582fa86cf5608e7ba2ae88d33293d80e86199d9a62",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "06e5d095bb920ab4bc510dc7838c586b33908407b2b4eaeb99990be1fafcd79b",
+      "existingNativeItemSha256": "724505e90054024a45812fc695d92013304c8bd7c7062bafabf0f9cd3ca597a2",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_c40f580591a30f49a44c96f2e2dca34cbacbb4c30d4d0201529590c3e3c82e6d",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "beforeStudentPayloadSha256": "ec2a6859d1fc34f886dc42df843a414f1d06571caf7b4c19034f22397d0921a4",
+      "currentStudentPayloadSha256": "ec2a6859d1fc34f886dc42df843a414f1d06571caf7b4c19034f22397d0921a4",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "45903835170bb4494112f7c3751f8997f0159b92609e52eeacb894a5e0be7260",
+      "existingNativeItemSha256": "ed9e389b6cc20f1893c6783ad132c419b7d232f537c44b4a8df4f6b917b32215",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_2a8db68ee7490188319a294445c461bee207ef36b0bbfc4d30b4a67a5a555864",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "beforeStudentPayloadSha256": "77b1f3f505357aea74d4377ad6ab3f2adf90c4278638738a6d1496d065b20d00",
+      "currentStudentPayloadSha256": "77b1f3f505357aea74d4377ad6ab3f2adf90c4278638738a6d1496d065b20d00",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "6da589b49d3b84305ee943ad0f0ee8b422d366c0bd53da343ae3ee2154ca5486",
+      "existingNativeItemSha256": "4dd74064552bceb28ca57d77e3fd6c40470ab9105b31d07e4dd77f9766ab9607",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_f6dd83e5a9ae0fc965bddc03167c5e2cf0ab89372637700d1c6dfa80bd58c109",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "beforeStudentPayloadSha256": "9b154cd7580842b7ab83503bbe8bf1400b49ce38de2c59e27be6367b13a2307e",
+      "currentStudentPayloadSha256": "9b154cd7580842b7ab83503bbe8bf1400b49ce38de2c59e27be6367b13a2307e",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "471fa29717ab57853a8ad83ad7ee20addb519b0c0f5c34bcd0b7e534bc2dd701",
+      "existingNativeItemSha256": "21d6b396b9c58e3248ef2f3b49e7035bb92a9b0b6cca598c3f97983e819149d9",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_e313f197c85540a8494acbaad204ab5f796321824f8df22ac10459bdfff5eb69",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "beforeStudentPayloadSha256": "ded474efbff95dd331fb510a13faf5fb67eda93e70d874149c20d332f2e76a56",
+      "currentStudentPayloadSha256": "22004408e664c2c51d211464ec455490816832421f75d660a7586ddd8f2b3315",
+      "studentPayloadExact": false,
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "imageSize",
+        "imageAlt"
+      ],
+      "existingCompactItemSha256": "d1e405b75b96368df973ab4d4fb91addb6f1f2efe81c1ab306b2b5f549707f7e",
+      "existingNativeItemSha256": "6644e4d2d30fe902e0808137ffc9c754a4c8b92927f67dc75085e00dcc2473e2",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [
+        {
+          "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+          "path": "archive/assets/images/26_왕운중_1학기_중간_중2_기출/q13-solution.svg",
+          "gitBlobSha1": "0d2777ebbf344ed8f698876a3ba8868128337687",
+          "rawSha256": "a445cef18d58c91dc06954b5f8b64c11da91824577d78f0a8457302242d75c26"
+        },
+        {
+          "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+          "path": "archive/assets/images/26_왕운중_1학기_중간_중2_기출/q13.png",
+          "gitBlobSha1": "3601358dcec81919ae7a596fe0add0ccb1cda3ea",
+          "rawSha256": "4f612e3b8bb46f6cf43799f5349ce44f237e8083592db924deab76bbda77ae7a"
+        }
+      ],
+      "currentAssets": [
+        {
+          "commit": "16f0413bbf709581eededf19497008031d80b808",
+          "path": "archive/assets/images/26_왕운중_1학기_중간_중2_기출/q13-problem-visual-v2.svg",
+          "gitBlobSha1": "f5c7616c96a2accf12194e82b2bdd0e41d6991d3",
+          "rawSha256": "d0eed1a11257017059845107b352919135f22d8290463c7a7a14279744861f4a"
+        },
+        {
+          "commit": "16f0413bbf709581eededf19497008031d80b808",
+          "path": "archive/assets/images/26_왕운중_1학기_중간_중2_기출/q13-solution.svg",
+          "gitBlobSha1": "0d2777ebbf344ed8f698876a3ba8868128337687",
+          "rawSha256": "a445cef18d58c91dc06954b5f8b64c11da91824577d78f0a8457302242d75c26"
+        }
+      ],
+      "currentRendererDecision": "ACCEPT_RENDERER_CONTINUITY_ONLY"
+    },
+    {
+      "questionUid": "qid_v1_454d0cfce5246112ec96d47053f41ed5f8d0b8d4a59969119843391e964b0dfa",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "beforeStudentPayloadSha256": "7cb41ac4ea6cbacdb2aa0e329c926a7c2ec6ab0b4c55288177d82c768c7f2e74",
+      "currentStudentPayloadSha256": "7cb41ac4ea6cbacdb2aa0e329c926a7c2ec6ab0b4c55288177d82c768c7f2e74",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "198cc70bdf67f0dc660bbc43411928ab1505cd4931d5e5bea8ce6de812a2c447",
+      "existingNativeItemSha256": "061f84e60bfd297ed8c08e380dfacdfcb41615f9b906b1db713f29a7b6fc1054",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_f77d649baa2048876eb5c573715b65a085b65219d4d7ff2f18e6b7638df513ac",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "beforeStudentPayloadSha256": "7d5cc1d85afb93c26907d8c9159098ac9ac26a1108dbd6e41b9624cf57fb0794",
+      "currentStudentPayloadSha256": "7d5cc1d85afb93c26907d8c9159098ac9ac26a1108dbd6e41b9624cf57fb0794",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "8d684b71e50b127e69766797ddf86b740d05afbd7261e6fe11e1f31d20659f6f",
+      "existingNativeItemSha256": "c332c21078f7dd94a56f7e295287c55bd0f8b25eb7c2e4705cda7e74e51713b2",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_670bcb378bf92967e1aa9f534587aec3d9ee0049f4bc6afb3b7689b0e38d226c",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "beforeStudentPayloadSha256": "86dfeecd20483c81bf917a1e2f9278ba164cc582c37fbd8c92f16badad61a05b",
+      "currentStudentPayloadSha256": "86dfeecd20483c81bf917a1e2f9278ba164cc582c37fbd8c92f16badad61a05b",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "d63f69901eca47df6f1a23db70def560ac143254ebf3b00a329d355b4ff37abb",
+      "existingNativeItemSha256": "d6e1aa925b10f219da22cb23f4b247b47ea3e36ac36bb5f60637e41333505166",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "beforeStudentPayloadSha256": "543db4ece1a1520d5ff3c1da468c5c5e4ec48ce0779eb2edf7876119a86a1d3a",
+      "currentStudentPayloadSha256": "543db4ece1a1520d5ff3c1da468c5c5e4ec48ce0779eb2edf7876119a86a1d3a",
+      "studentPayloadExact": true,
+      "changedFields": [
+        "problemTypeKey",
+        "templateKey",
+        "curriculum",
+        "courseKey",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryId",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4",
+        "rpmPrimaryRecordId"
+      ],
+      "existingCompactItemSha256": "7fbef3ac17bda217f637cef93a262262ea8e8c4da095a30e53578116fc0cf5c2",
+      "existingNativeItemSha256": "311aa037071abc201b7eb44f75d2056eca371c23b2b97a27dff5a16b415f57ea",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_a4b3418a5df90ae608ef84ba58fe6f667ea8dabb8c4f0ba10140bb31d04ba3b4",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "beforeStudentPayloadSha256": "7c4a17b66e1a0afbce544fd9ae9a43e2bc231a10e9e0905012257de0d87fd51e",
+      "currentStudentPayloadSha256": "7c4a17b66e1a0afbce544fd9ae9a43e2bc231a10e9e0905012257de0d87fd51e",
+      "studentPayloadExact": true,
+      "changedFields": [
+        "problemTypeKey",
+        "templateKey",
+        "conditionKeys",
+        "curriculum",
+        "courseKey",
+        "primaryMethod",
+        "decisiveStep",
+        "rpmPrimaryId",
+        "rpmPrimaryPath",
+        "rpmL1",
+        "rpmL2",
+        "rpmL3",
+        "rpmL4",
+        "rpmPrimaryRecordId"
+      ],
+      "existingCompactItemSha256": "f900fe0716be9f5a2bdda49babaadc329d734a92641f2c978838c81b4d0e25dd",
+      "existingNativeItemSha256": "b2a79d1a5771caa7ef0885a7b14a895986f363465312e8dceb9383e277e4ac2e",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": false,
+      "beforeAssets": [
+        {
+          "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+          "path": "archive/assets/images/26_왕운중_1학기_중간_중2_기출/q18-solution.svg",
+          "gitBlobSha1": "4e52abb5e22cc46e591f4a713eba8ea0c447514d"
+        }
+      ],
+      "currentAssets": [
+        {
+          "commit": "16f0413bbf709581eededf19497008031d80b808",
+          "path": "archive/assets/images/26_왕운중_1학기_중간_중2_기출/q18-solution.svg",
+          "gitBlobSha1": "4e52abb5e22cc46e591f4a713eba8ea0c447514d"
+        }
+      ],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_f722d362c4f0296a7425d667621355dd04504eaebd4e3bbb8277ac6b25559a1c",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": "19",
+      "beforeStudentPayloadSha256": "acc4396a452cd853982bf121b85edeb24f49c15da6c97a11fb6b58e0abf39695",
+      "currentStudentPayloadSha256": "acc4396a452cd853982bf121b85edeb24f49c15da6c97a11fb6b58e0abf39695",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "173c55763ed6f65c6bff3818c11282dbb9dd20dbae584b295b3a9eb6859eb3f9",
+      "existingNativeItemSha256": "9ebf1a05e2bd89a776b7d813407c64f9d04369d70222d78290294e292241a4c0",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": false,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "beforeStudentPayloadSha256": "cd5ceceaeb9601d0dff1f607a868c9d8388cb5ead14132f8b6d1d97438803c4b",
+      "currentStudentPayloadSha256": "cd5ceceaeb9601d0dff1f607a868c9d8388cb5ead14132f8b6d1d97438803c4b",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "8f7271b7a5a80f13b1efe1fff26159bc698a6c942dd48fbf3ba68d70b9e5e41b",
+      "existingNativeItemSha256": "5a3f6b2e08603ff2d7643e4ac994a7193a8d7e101571a16e059ade5b47512581",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": false,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_117afc4615d5f8f40e0bb8935da10e2769340b13b47d8a2c017897fcfb72a00c",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "beforeStudentPayloadSha256": "54ea67bd81a1ec1eff3fac028ef101156d4ee9b8bd241d9fb95eb55b229e4b4f",
+      "currentStudentPayloadSha256": "54ea67bd81a1ec1eff3fac028ef101156d4ee9b8bd241d9fb95eb55b229e4b4f",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "f7e9a0fc23c5bca5b50367f1146b0ec3f44d58b50f0e8222196dabed754b0280",
+      "existingNativeItemSha256": "0c888cd6b6ac5ad51cbebaf0ad312b7cb016c2eb23f688df6c555e20a237730d",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": false,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_8171d41b62f36fba0ba61a42a12330feec6722317af1c011cdf1abc96eac2c91",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "22",
+      "beforeStudentPayloadSha256": "609ba1a9b2acfa18cb623a1d735f838c791758faeff04d7c85f4ba7e4f5041a2",
+      "currentStudentPayloadSha256": "609ba1a9b2acfa18cb623a1d735f838c791758faeff04d7c85f4ba7e4f5041a2",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "06fa2e62f1734802d02182f9a5f4e9a703e966717a92aa42db8884175b92f8aa",
+      "existingNativeItemSha256": "a8c07d405c9859e9128a1ca1582f4ead4605cc6d28e1d724fc28ea357420dcfd",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": false,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    },
+    {
+      "questionUid": "qid_v1_98a3a1d7b2a875d1fff0c408e7abd547c5069866636f60130ea6fe9c48aec23b",
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": "23",
+      "beforeStudentPayloadSha256": "e3df1fc376756604b78051ab57afb78db3c082b1bf0c311bf17403cfac91acf5",
+      "currentStudentPayloadSha256": "fb2f659010bec5c0861c3758f66ea6663076fbee772bf4ffdc4102723be9bc2c",
+      "studentPayloadExact": false,
+      "changedFields": [
+        "layoutTag",
+        "image",
+        "imageSize",
+        "imageAlt"
+      ],
+      "existingCompactItemSha256": "9a185b2bf647473f31ce11e413913b643bc1bea5f14aa079c5fe2fdbf868bc47",
+      "existingNativeItemSha256": "027df987977d1aea189032c786205d6693ab57a36a8501f09e1a6677659f0dfe",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": true,
+      "beforeAssets": [
+        {
+          "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+          "path": "archive/assets/images/26_왕운중_1학기_중간_중2_기출/q23-solution.svg",
+          "gitBlobSha1": "0d5d3d07e64ac55e337e01580e58cf05b41d5181",
+          "rawSha256": "a7ff6c5f93b5d7a3db80fc87c9016d34520093aaf198a4435f1247a0d4eed931"
+        },
+        {
+          "commit": "34b27e9a8634740f92964e750675ef96e3353955",
+          "path": "archive/assets/images/26_왕운중_1학기_중간_중2_기출/q23.png",
+          "gitBlobSha1": "23949d4644ac78fe3aa3f78bda919b58f6e1ad00",
+          "rawSha256": "d41afbdda402e55b2ba17a84a11f0760be03a875ed515a989cd5c92f327d6f31"
+        }
+      ],
+      "currentAssets": [
+        {
+          "commit": "16f0413bbf709581eededf19497008031d80b808",
+          "path": "archive/assets/images/26_왕운중_1학기_중간_중2_기출/q23-problem-visual-v2.svg",
+          "gitBlobSha1": "42c8083576f4df47f318501d86ab966930b726e7",
+          "rawSha256": "5b7be6e2530323ffeff64a04ea6858f1456fee295100b34af4da63fe6cc71e8a"
+        },
+        {
+          "commit": "16f0413bbf709581eededf19497008031d80b808",
+          "path": "archive/assets/images/26_왕운중_1학기_중간_중2_기출/q23-solution.svg",
+          "gitBlobSha1": "0d5d3d07e64ac55e337e01580e58cf05b41d5181",
+          "rawSha256": "a7ff6c5f93b5d7a3db80fc87c9016d34520093aaf198a4435f1247a0d4eed931"
+        }
+      ],
+      "currentRendererDecision": "ACCEPT_RENDERER_CONTINUITY_ONLY"
+    },
+    {
+      "questionUid": "qid_v1_853f962fcf94cfef5eec13cb28d0323ec78b911c67f9168dc807e4b5a8da048d",
+      "sourceOrdinal": 24,
+      "sourceQuestionNo": "24",
+      "beforeStudentPayloadSha256": "848928e31d0e6bcbd01bc30e292ccd1dd49bfa9d169e1d7d4e2d88fa83a1abab",
+      "currentStudentPayloadSha256": "848928e31d0e6bcbd01bc30e292ccd1dd49bfa9d169e1d7d4e2d88fa83a1abab",
+      "studentPayloadExact": true,
+      "changedFields": [],
+      "existingCompactItemSha256": "ddbd4d8b9f3deaa941e6a3964fc6d565bf9d38028ff746c526dd13a6ddd59b2c",
+      "existingNativeItemSha256": "f28bd2734fec14c54b0bc7231c4274e15e99bf91d7e282d777e837fa5823ec7b",
+      "existingValidTermIdVectorsExact": true,
+      "formatUnchanged": true,
+      "methodUnchanged": true,
+      "originalCandidateTerms": [],
+      "normalBlankGivenPreserved": false,
+      "normalBlankConditionPreserved": false,
+      "beforeAssets": [],
+      "currentAssets": [],
+      "currentRendererDecision": "EXACT_EXISTING_STUDENT_PAYLOAD_AND_ASSET_REUSE"
+    }
+  ],
+  "repositoryWrites": 0,
+  "actualMainRegistration": "PENDING_OFFICIAL_WRITER",
+  "studentDeployment": "NOT_RUN"
+}
