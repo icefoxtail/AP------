@@ -45,7 +45,7 @@ jobs:
         run: >-
           node docs/operations/m2-e035-current-renderer-20261116/producer.cjs
           --repo "$GITHUB_WORKSPACE"
-          --commit e162ece8868f9d9dcb8c1e0f9590a738dcf36a16
+          --commit 63050c3475be52f6ebf5b34c4d0ac3c785915aa7
           --producer-commit "$E035_PRODUCER_COMMIT"
           --output "$RUNNER_TEMP/e035-ui-evidence"
           --chrome "$CHROME_BIN"
