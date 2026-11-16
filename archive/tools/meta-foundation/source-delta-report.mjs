@@ -14,10 +14,11 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import vm from 'node:vm';
-import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { classify, fingerprints, CLASSES, REPLACED_RECALL_THRESHOLD } from './source-delta.mjs';
+
+import { loadBank, loadExamHistory, findHistoricalQuestion } from './source-history.mjs';
+export { loadBank, historyBlobs, readBlobs } from './source-history.mjs';
 
 const DEFAULT_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const UNDETERMINED = ['NO_PRIOR_BLOB', 'ORDINAL_MISMATCH', 'SOURCE_MISSING'];
@@ -45,49 +46,6 @@ export function resolveOutputPath(out, root) {
   const inside = rel === '' || (!rel.startsWith('..') && !path.isAbsolute(rel));
   if (inside) throw new Error(`output path is inside the repository (${target}); choose a path outside it`);
   return target;
-}
-
-export function loadBank(text, name = 'source') {
-  const sandbox = { window: {}, console: { log() {}, warn() {}, error() {} } };
-  vm.createContext(sandbox);
-  vm.runInContext(text, sandbox, { filename: name, timeout: 8000 });
-  const bank = sandbox.window.questionBank || sandbox.window.questions || sandbox.questionBank || sandbox.questions || sandbox.window.examData?.questions;
-  if (!Array.isArray(bank) || !bank.length) throw new Error('SOURCE_BANK_MISSING');
-  return JSON.parse(JSON.stringify(bank));
-}
-
-function git(root, args, input) {
-  const r = spawnSync('git', args, { cwd: root, input, maxBuffer: 512 * 1024 * 1024 });
-  if (r.error || r.status !== 0) throw new Error(`git ${args[0]} failed: ${r.error?.message || String(r.stderr)}`);
-  return r.stdout;
-}
-
-// Newest-first unique blob ids that ever held this path.
-export function historyBlobs(root, ref, rel) {
-  const log = git(root, ['log', ref, '--format=%H', '--raw', '--no-abbrev', '--no-renames', '--', rel]).toString('utf8');
-  const blobs = [];
-  for (const line of log.split('\n')) {
-    const m = line.match(/^:\d+ \d+ [0-9a-f]{40} ([0-9a-f]{40}) [AM]\t/);
-    if (m && !blobs.includes(m[1])) blobs.push(m[1]);
-  }
-  return blobs;
-}
-
-// One `git cat-file --batch` for all blobs of one exam.
-export function readBlobs(root, ids) {
-  if (!ids.length) return new Map();
-  const buf = git(root, ['cat-file', '--batch'], ids.join('\n') + '\n');
-  const out = new Map();
-  let pos = 0;
-  for (const id of ids) {
-    const nl = buf.indexOf(10, pos);
-    const header = buf.slice(pos, nl).toString('utf8').split(' ');
-    if (header[1] !== 'blob') { pos = nl + 1; continue; }
-    const size = Number(header[2]);
-    out.set(id, buf.slice(nl + 1, nl + 1 + size).toString('utf8'));
-    pos = nl + 1 + size + 1;
-  }
-  return out;
 }
 
 const bump = (map, key) => { map[key] = (map[key] || 0) + 1; };
@@ -131,39 +89,23 @@ export function buildReport(opts) {
     if (processed >= limit) break;
     processed++; totals.filesWithStale++; totals.stale += stale.length;
 
-    let history = null; // lazy: [{id, bank}] newest first
-    const old = () => {
-      if (history) return history;
-      history = [];
-      const ids = historyBlobs(root, ref, `archive/exams/${file}`);
-      const texts = readBlobs(root, ids);
-      for (const id of ids) {
-        try { history.push({ id, bank: loadBank(texts.get(id), id) }); } catch { /* blob that does not evaluate cannot be the old source */ }
-      }
-      return history;
-    };
+    let history = null;
+    const old = () => history ??= loadExamHistory(root, ref, `archive/exams/${file}`);
 
     for (const { r, q } of stale) {
       const row = { questionUid: r.questionUid, file, ordinal: r.sourceOrdinal };
       if (missing) row.class = 'SOURCE_MISSING';
       else if (!q) row.class = 'ORDINAL_MISMATCH';
       else {
-        let found = null;
-        for (const h of old()) {
-          const candidate = h.bank[r.sourceOrdinal - 1];
-          if (candidate && fingerprints(candidate).sourceFingerprint === r.sourceFingerprint) { found = { h, candidate }; break; }
-        }
-        if (!found) {
-          // The recorded text exists in history but at another position: the slot moved.
-          const moved = old().some(h => h.bank.some(c => fingerprints(c).sourceFingerprint === r.sourceFingerprint));
-          row.class = moved ? 'ORDINAL_MISMATCH' : 'NO_PRIOR_BLOB';
-        } else {
-          const verdict = classify(found.candidate, q);
+        const found = findHistoricalQuestion(old(), r);
+        if (!found.ok) row.class = found.reason;
+        else {
+          const verdict = classify(found.oldQuestion, q);
           row.class = verdict.class;
           row.changed = verdict.changed;
           row.stemRecall = verdict.stemRecall;
-          row.oldBlob = found.h.id.slice(0, 12);
-          row.bankLength = { old: found.h.bank.length, new: bank.length };
+          row.oldBlob = found.oldBlob.slice(0, 12);
+          row.bankLength = { old: found.questionCount, new: bank.length };
         }
       }
       rows.push(row);

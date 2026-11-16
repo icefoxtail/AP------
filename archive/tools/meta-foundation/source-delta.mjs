@@ -40,7 +40,7 @@ const TEXT_KEYS = new Set(['content', 'question', 'choices', 'answer', 'solution
 // Any other key whose name says image/svg/figure is figure data (image, images,
 // figureSvg, solutionImage(s), solutionFigureSvg, imageSize, imageAlt, ...).
 const FIGURE_KEY = /image|svg|figure/i;
-const INLINE_FIGURE = /<img\b[^>]*>|<svg\b[\s\S]*?<\/svg>/gi;
+const INLINE_FIGURE = /<img\b(?:[^>"']|"[^"]*"|'[^']*')*>|<svg\b[\s\S]*?<\/svg>/gi;
 
 // ---------------------------------------------------------------------------
 // Notation normalization. ONLY the rules below make two different strings "the
@@ -61,7 +61,7 @@ export const NOTATION_RULES = Object.freeze([
   ['dfrac-tfrac', '\\dfrac and \\tfrac are \\frac in another size'],
   ['tex-aliases', '\\leq=\\le, \\geq=\\ge, \\neq=\\ne are TeX aliases'],
   ['single-char-script', '^{x} and _{x} equal ^x and _x for one alphanumeric character'],
-  ['whitespace', 'spaces and line breaks (a space between a \\command and a following letter is kept: \\alpha b is not \\alphab)'],
+  ['whitespace', 'outside math keep digit separators; preserve text spans and command-letter boundaries; other whitespace is presentation'],
 ]);
 
 export function normalizeNotation(input) {
@@ -70,7 +70,30 @@ export function normalizeNotation(input) {
   s = s.replace(/[！-～]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0)).replace(/　/g, ' ');
   s = s.replace(/−/g, '-');
   s = s.replace(/&nbsp;/gi, ' ').replace(/<br\s*\/?>/gi, ' ');
+  // Protect literal text spans before any TeX spacing/alias transformations.
+  const literals = [];
+  let protectedText = '';
+  for (let i = 0; i < s.length;) {
+    const match = s.slice(i).match(/^\\text\s*\{/);
+    if (!match) { protectedText += s[i++]; continue; }
+    let end = i + match[0].length, depth = 1;
+    for (; end < s.length && depth; end++) {
+      if (s[end] === '\\') { end++; continue; }
+      if (s[end] === '{') depth++;
+      if (s[end] === '}') depth--;
+    }
+    if (depth) { protectedText += s[i++]; continue; }
+    const token = `\uE000${literals.length}\uE001`;
+    literals.push(s.slice(i, end));
+    protectedText += token;
+    i = end;
+  }
+  s = protectedText;
   s = s.replace(/\\\$/g, '\u0002');
+  // Outside math mode preserve numeric token boundaries. Keep the existing
+  // presentation normalization elsewhere; math text spans are protected above.
+  const pieces = s.split(/(\$\$[\s\S]*?\$\$|\$[^$]*?\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\])/g);
+  s = pieces.map((piece, i) => i % 2 ? piece : piece.replace(/(?<=[0-9])\s+(?=[0-9])/g, '\u0003')).join('');
   s = s.replace(/(?<!\\)\\[()[\]]/g, '').replace(/\$/g, '');
   s = s.replace(/\\(?:left|right)\s*\./g, '').replace(/\\(?:left|right)(?![A-Za-z])/g, '');
   s = s.replace(/(?<!\\)\\[,;:! ]/g, '').replace(/\\q?quad(?![A-Za-z])/g, '');
@@ -79,7 +102,8 @@ export function normalizeNotation(input) {
   s = s.replace(/\\leq(?![A-Za-z])/g, '\\le').replace(/\\geq(?![A-Za-z])/g, '\\ge').replace(/\\neq(?![A-Za-z])/g, '\\ne');
   s = s.replace(/([\^_])\s*\{\s*([A-Za-z0-9])\s*\}/g, '$1$2');
   s = s.replace(/(\\[A-Za-z]+)\s+(?=[A-Za-z])/g, '$1\u0001').replace(/\s+/g, '').replace(/\u0001/g, ' ');
-  return s.replace(/\u0002/g, '\\$');
+  return s.replace(/\u0002/g, '\\$').replace(/\u0003/g, ' ').trim()
+    .replace(/\uE000(\d+)\uE001/g, (_, i) => literals[Number(i)]);
 }
 
 // ---------------------------------------------------------------------------
@@ -186,6 +210,8 @@ export function classify(oldQuestion, newQuestion) {
       gramCount: { old: ga.size, new: gb.size },
       number: { old: numOld, new: numNew },
       otherChangedKeys,
+      answerFilled: answer && (isEmpty(oldQuestion?.answer) || (typeof oldQuestion?.answer === 'string' && !oldQuestion.answer.trim()))
+        && !isEmpty(newQuestion?.answer) && normB.answer.trim() !== '',
     },
   };
 }

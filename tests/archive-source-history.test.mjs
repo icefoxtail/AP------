@@ -1,0 +1,43 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
+import { fingerprints } from '../archive/tools/meta-foundation/source-delta.mjs';
+import { loadExamHistory, findHistoricalQuestion } from '../archive/tools/meta-foundation/source-history.mjs';
+
+test('real git history finds newest matching blob and refuses moved/missing/count mismatches', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'source-history-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'] }).trim();
+  git('init'); git('config', 'user.name', 'Fixture'); git('config', 'user.email', 'fixture@example.invalid');
+  const rel = 'exam.js';
+  const original = { id: 1, content: '문항', answer: 1 };
+  const second = { id: 2, content: '다른 문항', answer: 2 };
+  const save = bank => {
+    fs.writeFileSync(path.join(root, rel), `window.questionBank = ${JSON.stringify(bank)};\n`);
+    git('add', rel); git('commit', '-m', 'fixture');
+    return git('rev-parse', `HEAD:${rel}`);
+  };
+  const oldest = save([original, second]);
+  const newestMatch = save([original, { ...second, solution: 'updated' }]);
+  save([{ ...original, solution: 'changed' }, second]);
+  const history = loadExamHistory(root, 'HEAD', rel);
+  assert.equal(history.length, 3);
+  const row = { questionUid: 'stable-uid', sourceOrdinal: 1, ...fingerprints(original) };
+  const found = findHistoricalQuestion(history, row, { expectedCount: 2 });
+  assert.equal(found.ok, true);
+  assert.equal(found.oldBlob, newestMatch);
+  assert.notEqual(found.oldBlob, oldest);
+  assert.deepEqual(found.oldQuestion, original);
+  assert.equal(found.questionUid, row.questionUid);
+  assert.equal(found.sourceOrdinal, 1);
+  assert.equal(found.questionCount, 2);
+  assert.equal(findHistoricalQuestion(history, row, { expectedCount: 3 }).reason, 'QUESTION_COUNT_MISMATCH');
+  assert.equal(findHistoricalQuestion(history, { ...row, sourceOrdinal: 2 }).reason, 'ORDINAL_MISMATCH');
+  assert.equal(findHistoricalQuestion(history, { ...row, sourceOrdinal: 0 }).reason, 'ORDINAL_MISMATCH');
+  assert.equal(findHistoricalQuestion(history, { ...row, sourceFingerprint: 'missing' }).reason, 'NO_PRIOR_BLOB');
+  assert.equal(findHistoricalQuestion([], row).reason, 'NO_PRIOR_BLOB');
+  assert.deepEqual(loadExamHistory(root, 'HEAD', 'absent.js'), []);
+});

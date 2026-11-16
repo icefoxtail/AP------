@@ -21,6 +21,9 @@ import { hasApprovedRendererPreservationClaim, verifyApprovedRendererReceipt } f
 import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,planPreservedAuditRecord,
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 
+import { planRebind } from './registrar-rebind.mjs';
+import { loadExamHistory, findHistoricalQuestion } from './source-history.mjs';
+
 import { nativeAuthorityHoldState } from './native-authority-correction.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
@@ -479,8 +482,92 @@ function replayBatch(root, file, {config,state,head}) {
   return binding;
 }
 
-export async function registerMergedSource({root=ROOT,write:doWrite=false,reportPath,replayReportPath,canonicalParentRetryRequestPath,canonicalParentRetryRequestSha256}={}) {
+// This opt-in lane never grants a semantic approval or rewrites native evidence.
+export function planSourceRebind({current,identity,question,bank,history,source,ordinal,at,root}) {
+  const refuse=reason=>({action:'REFUSE',deltaClass:null,changed:{},tags:{},reason});
+  if(!current||!identity||current.questionUid!==identity.questionUid
+    ||current.sourceArchiveFile!==source||identity.sourceArchiveFile!==source
+    ||current.sourceOrdinal!==ordinal||identity.sourceOrdinal!==ordinal
+    ||identity.status&&identity.status!=='VERIFIED')return refuse('UID_JOIN_MISMATCH');
+  const authorityHold=nativeAuthorityHoldState({root,current,identity,source,ordinal});
+  if(authorityHold)return refuse(authorityHold.reason);
+  if(question.questionUid&&question.questionUid!==identity.questionUid)return refuse('SOURCE_UID_CONFLICT');
+  if(!Array.isArray(bank)||!bank[ordinal-1]||!equal(bank[ordinal-1],question))return refuse('ORDINAL_MISMATCH');
+  if(String(current.sourceQuestionNo??'')!==String(identity.sourceQuestionNo??''))return refuse('NUMBER_MISMATCH');
+  const prior=findHistoricalQuestion(history,current,{expectedCount:bank.length});
+  if(!prior.ok)return refuse(prior.reason);
+  if(prior.oldQuestion.questionUid&&prior.oldQuestion.questionUid!==identity.questionUid)return refuse('PRIOR_SOURCE_UID_CONFLICT');
+  if([question,prior.oldQuestion].some(q=>q.sourceQuestionNo!=null&&identity.sourceQuestionNo!=null
+    &&String(q.sourceQuestionNo)!==String(identity.sourceQuestionNo)))return refuse('NUMBER_MISMATCH');
+  if(identity.sourceFingerprint!==current.sourceFingerprint&&identity.sourceFingerprint!==sourceFingerprint(question))
+    return refuse('IDENTITY_SOURCE_FINGERPRINT_CONFLICT');
+  return {...planRebind({current,question,previous:prior.oldQuestion,priorBlob:prior.oldBlob,at}),priorBlob:prior.oldBlob};
+}
+
+function outsideReportPath(root,file) {
+  const full=path.resolve(file),parent=fs.realpathSync(path.dirname(full));
+  const actual=fs.existsSync(full)?fs.realpathSync(full):path.join(parent,path.basename(full));
+  const repo=fs.realpathSync(root);
+  if(actual===repo||actual.startsWith(repo+path.sep))throw Error('REBIND_REPORT_MUST_BE_OUTSIDE_REPOSITORY');
+  return actual;
+}
+
+export function reportSourceRebind({root=ROOT,reportPath,at}={}) {
   root=path.resolve(root);
+  const output=outsideReportPath(root,reportPath),started=Date.now();
+  const metadata=read(root,META),identities=read(root,IDENTITY);
+  const byJoin=mapUnique(identities.records,r=>`${r.sourceArchiveFile}#${r.sourceOrdinal}`,'IDENTITY_SOURCE');
+  const head=git(root,'rev-parse','HEAD').trim(),cache=new Map(),results=[],priorCache=new Map();
+  const state=read(root,STATE,{}),config=read(root,CONFIG,{});
+  const selected=config.enabled===true?new Map(selectTargets(root,state,config,head)):new Map();
+  at??=git(root,'show','-s','--format=%cI',head).trim();
+  for(const current of metadata.records) {
+    const source=sourcePath(current.sourceArchiveFile),ordinal=current.sourceOrdinal;
+    let item=cache.get(source);
+    if(!item) {
+      const rel=`archive/exams/${source}`;
+      try {item={bank:loadBank(fs.readFileSync(path.join(root,rel),'utf8'),rel)};}
+      catch(e){item={error:String(e.message)};}
+      cache.set(source,item);
+    }
+    if(item.error){results.push({questionUid:current.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,
+      standardCourse:current.standardCourse??null,action:'REFUSE',deltaClass:null,changed:{},tags:{},reason:'SOURCE_UNAVAILABLE:'+item.error});continue;}
+    const question=item.bank[ordinal-1],identity=byJoin.get(`${source}#${ordinal}`);
+    if(!question){results.push({questionUid:current.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,
+      standardCourse:current.standardCourse??null,action:'REFUSE',deltaClass:null,changed:{},tags:{},reason:'ORDINAL_MISMATCH'});continue;}
+    if(current.sourceFingerprint===sourceFingerprint(question)&&identity?.sourceFingerprint===sourceFingerprint(question))continue;
+    let plan;
+    try {
+      if(!item.history)item.history=loadExamHistory(root,head,`archive/exams/${source}`);
+      plan=planSourceRebind({current,identity,question,bank:item.bank,history:item.history,source,ordinal,at,root});
+    }catch(e){plan={action:'REFUSE',deltaClass:null,changed:{},tags:{},reason:String(e.message)};}
+    const candidateAction=plan.action,target=selected.get(`${source}#${ordinal}`);
+    if(target) {
+      try {
+        const priorKey=`${target.baseCommit}:${source}`;
+        if(!priorCache.has(priorKey))priorCache.set(priorKey,archived(root,target.baseCommit,source));
+        const previous=priorCache.get(priorKey)[ordinal-1];
+        if(previous&&String(previous.sourceQuestionNo??previous.id??'')!==String(question.sourceQuestionNo??question.id??''))
+          plan={...plan,action:'REFUSE',reason:'SOURCE_ORDINAL_CHANGED',blockedByExistingRegistrar:'SOURCE_ORDINAL_CHANGED'};
+      }catch(e){plan={...plan,action:'REFUSE',reason:String(e.message),blockedByExistingRegistrar:String(e.message)};}
+    }
+    results.push({questionUid:current.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,
+      standardCourse:current.standardCourse??null,sourceFingerprint:current.sourceFingerprint,
+      selectedByCurrentRegistrar:Boolean(target),candidateAction,...plan});
+  }
+  const report={schemaVersion:'archive-source-rebind-report-v1',head,write:false,mismatchCount:results.filter(r=>r.sourceFingerprint!==undefined).length,
+    unresolvedCount:results.filter(r=>r.sourceFingerprint===undefined).length,candidateCount:results.length,
+    scope:'ALL_SOURCE_MISMATCHES; selectedByCurrentRegistrar marks current queue; no write or batch cap applied',
+    actionCounts:{},deltaCounts:{},elapsedMs:Date.now()-started,results};
+  for(const result of results){report.actionCounts[result.action]=(report.actionCounts[result.action]||0)+1;
+    const key=result.deltaClass||'UNKNOWN';report.deltaCounts[key]=(report.deltaCounts[key]||0)+1;}
+  fs.writeFileSync(output,json(report));return report;
+}
+
+export async function registerMergedSource({root=ROOT,write:doWrite=false,reportPath,replayReportPath,canonicalParentRetryRequestPath,canonicalParentRetryRequestSha256,rebind=process.env.ARCHIVE_REBIND==='1',rebindReportPath}={}) {
+  root=path.resolve(root);
+  if(rebindReportPath){if(doWrite)throw Error('REBIND_REPORT_READ_ONLY');return reportSourceRebind({root,reportPath:rebindReportPath});}
+  if(rebind&&(replayReportPath||canonicalParentRetryRequestPath))throw Error('REBIND_INCOMPATIBLE_REPLAY_OR_PARENT_RETRY');
   if(replayReportPath&&doWrite)throw Error('AUTO_META_REPLAY_READ_ONLY');
   const config=read(root,CONFIG); if(config?.enabled!==true){const r={status:'DISABLED',processed:0,results:[]};if(reportPath)fs.writeFileSync(reportPath,json(r));return r;}
   const head=git(root,'rev-parse','HEAD').trim();
@@ -514,7 +601,8 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
     return {key,questionUid:identity?.questionUid??null,identitySha256:hash(identity??null),metadataSha256:hash(current??null)};
   };
   if(replay&&!equal(replay.rowBindings,targets.map(([key])=>rowBinding(key))))throw Error('AUTO_META_REPLAY_UID_STATE_DRIFT');
-  const attemptedTargets=[],attemptedResults=[];
+  const attemptedTargets=[],attemptedResults=[],rebindHistories=new Map();
+  let identityTouched=false;
   const nextState=structuredClone(state);nextState.pending={...state.pending};nextState.latestReceipts={...state.latestReceipts};nextState.completedPilots=[...(state.completedPilots||[])];
   const beforeRows=new Map(c.metadata.records.map(r=>[r.questionUid,hash(r)])),touched=new Set(),sourceHashes=new Map();
   const max=config.maxQuestionsPerRun||100;
@@ -542,7 +630,8 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       const priorPath=state.latestReceipts?.[id?.questionUid];
       if(priorPath&&!new RegExp('^\\.archive-meta-register/auto/receipts/[A-Za-z0-9_-]+\\.json$').test(priorPath))throw Error('RECEIPT_PATH_INVALID');
       const prior=priorPath?read(root,priorPath):null;
-      const attemptSignature=hash({source:sourceHashes.get(rel),metadata:current,registry:c.registry.registrySha,...(parentRetry?{canonicalParentRetry:{requestSha256:parentRetry.requestSha256,masterSha256:parentRetry.request.masterRef.sha256}}:{})});
+      const attemptHash=()=>hash({source:sourceHashes.get(rel),metadata:current,registry:c.registry.registrySha,...(rebind?{rebind:true}:{}),...(parentRetry?{canonicalParentRetry:{requestSha256:parentRetry.requestSha256,masterSha256:parentRetry.request.masterRef.sha256}}:{})});
+      const attemptSignature=attemptHash();
       if(!replay&&state.pending?.[key]?.attemptSignature===attemptSignature) {
         report.results.push({status:'SUPPLEMENT_PENDING_UNCHANGED',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:state.pending[key].lastReasons});
         continue;
@@ -554,6 +643,46 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,canonicalParentRetry:parentRetry,
         nativeSource:{...nativeSource,...(parentRetry?{previousSourceBytes:execFileSync('git',['show',`${target.baseCommit}:${rel}`],{cwd:root,maxBuffer:16*1024*1024,stdio:['pipe','pipe','pipe']})}:{}),identityMap:c.identityMap,identityByJoin:c.identityByJoin,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
           runtimeStatus:c.runtimes.get(runtimeOwner)?.data.status}});
+      if(rebind&&result.status==='SUPPLEMENT_PENDING'&&result.reasons?.some(r=>
+        ['IDENTITY_SOURCE_FINGERPRINT_MISMATCH','METADATA_SOURCE_FINGERPRINT_CONFLICT'].includes(r))) {
+        if(!rebindHistories.has(source))rebindHistories.set(source,loadExamHistory(root,head,rel));
+        const priorRebind=prior?.kind==='SOURCE_REBIND'&&prior.sourceSha256===sourceHashes.get(rel)?prior:null;
+        const at=priorRebind?.plan?.tags?.sourceDrift?.at||git(root,'show','-s','--format=%cI',head).trim();
+        const plan=planSourceRebind({current,identity:id,question:q,bank:banks.get(source),
+          history:rebindHistories.get(source),source,ordinal,at,root});
+        result={...result,rebindPlan:plan,...(plan.action==='REFUSE'?{reasons:[...result.reasons,'REBIND_REFUSED:'+plan.reason]}:{})};
+        if(['REBIND','BLOCK'].includes(plan.action)) {
+          const before=structuredClone(current),final={...structuredClone(current),...plan.tags};
+          if(plan.action==='REBIND'){final.sourceFingerprint=sourceFingerprint(q);final.contentFingerprint=contentFingerprint(q);}
+          const permitted=new Set(['sourceFingerprint','contentFingerprint','sourceDrift','reviewPending']);
+          for(const field of new Set([...Object.keys(before),...Object.keys(final)]))
+            if(!permitted.has(field)&&!equal(before[field],final[field]))throw Error('REBIND_METADATA_MUTATION:'+field);
+          if(plan.action==='BLOCK'&&priorRebind&&equal(current,final)&&equal(priorRebind.after,final)) {
+            result={status:'BLOCK',questionUid:id.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,
+              reasons:['SOURCE_REPLACED_RECLASSIFICATION_REQUIRED'],rebindPlan:plan,inputHash:priorRebind.inputHash,
+              requestId:priorRebind.requestId,receiptPath:priorPath};
+          } else {
+            const inputHash=hash({kind:'SOURCE_REBIND',before,after:final,priorBlob:plan.priorBlob});
+            const requestId=`rebind-${id.questionUid.slice(7,23)}-${inputHash.slice(0,24)}`;
+            const receiptPath=`${AUTO}/receipts/${requestId}.json`;
+            const receipt={schemaVersion:VERSION,kind:'SOURCE_REBIND',requestId,questionUid:id.questionUid,
+              sourceArchiveFile:source,sourceOrdinal:ordinal,sourceSha256:sourceHashes.get(rel),sourceCommit:head,
+              approvalBasis:'HISTORICAL_SOURCE_CONTINUITY',independentReviewClaim:false,
+              metadataRegistrationStatus:plan.action==='REBIND'?'REBOUND':'BLOCKED',consumerStatus:'PENDING_VERIFICATION',
+              inputHash,plan,before,after:final,identityBefore:structuredClone(id)};
+            const existing=read(root,receiptPath);
+            if(existing&&!equal(existing,receipt))throw Error('IMMUTABLE_RECEIPT_CONFLICT');
+            if(!existing)outputs.set(receiptPath,receipt);
+            if(!equal(current,final)){Object.assign(current,final);touched.add(id.questionUid);}
+            if(plan.action==='REBIND'&&id.sourceFingerprint!==sourceFingerprint(q)){
+              id.sourceFingerprint=sourceFingerprint(q);identityTouched=true;
+            }
+            nextState.latestReceipts[id.questionUid]=receiptPath;
+            result={status:plan.action,questionUid:id.questionUid,sourceArchiveFile:source,sourceOrdinal:ordinal,
+              reasons:plan.action==='BLOCK'?['SOURCE_REPLACED_RECLASSIFICATION_REQUIRED']:[],rebindPlan:plan,inputHash,requestId,receiptPath};
+          }
+        }
+      }
       if(result.status==='APPLY') {
         const rt=c.runtimes.get(result.ownerPack);if(!rt||rt.data.status!=='ACTIVE')throw Error('OWNER_RUNTIME_MISSING');
         const requestId=`main-${result.questionUid.slice(7,23)}-${result.inputHash.slice(0,24)}`;
@@ -583,8 +712,9 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
         nextState.latestReceipts[result.questionUid]=receiptPath;
         result={...result,requestId,receiptPath};delete result.final;
       }
+      if(rebind)target.attemptSignature=attemptHash();
       if(parentRetry&&result.status==='ALREADY_REGISTERED')result={...result,receiptPath:priorPath};
-      if(['APPLY','ALREADY_REGISTERED'].includes(result.status)) {
+      if(['APPLY','ALREADY_REGISTERED','REBIND'].includes(result.status)) {
         delete nextState.pending[key];
         if(target.pilot&&!nextState.completedPilots.includes(key))nextState.completedPilots.push(key);
       } else nextState.pending[key]={...target,lastReasons:result.reasons};
@@ -625,12 +755,13 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
     if(attemptedTargets.length)nextState.lastBatchSha256=digest;
     report.replayBatch={...batch,sha256:digest,stateAfterSha256:hash(nextState)};
   }
+  if(identityTouched)outputs.set(IDENTITY,c.identityMap);
   if(!equal(state,nextState))outputs.set(STATE,nextState);
   if(replay) {
     if(acted!==replay.targets.length||touched.size||outputs.size)throw Error('AUTO_META_REPLAY_NOT_IDEMPOTENT');
     report.replayVerified=true;report.replayed=acted;report.replayOf=replay.sha256;
   }
-  report.status=report.results.some(r=>r.status.startsWith('SUPPLEMENT_PENDING'))?'REGISTERED_WITH_SUPPLEMENTS':touched.size?'REGISTERED':'NO_CHANGE';
+  report.status=report.results.some(r=>(r.status.startsWith('SUPPLEMENT_PENDING')||r.status==='BLOCK'))?'REGISTERED_WITH_SUPPLEMENTS':touched.size?'REGISTERED':'NO_CHANGE';
   report.unrelatedMetadataDigest=hash(c.metadata.records.filter(r=>!touched.has(r.questionUid)).sort((a,b)=>a.questionUid.localeCompare(b.questionUid,'en')));
   report.sourceHashes=Object.fromEntries(sourceHashes);
   report.applied=touched.size;report.pending=Object.keys(nextState.pending).length;report.plannedPaths=[...outputs.keys()];
@@ -642,8 +773,9 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
 export async function verifyMergedSource({root=ROOT,reportPath}) {
   const report=JSON.parse(fs.readFileSync(reportPath,'utf8')),c=await context(root);
   const {loadResolvedConsumerCatalog}=await import('./reviewed-exam-registration-v2.mjs');
-  const catalog=loadResolvedConsumerCatalog(root),byUid=new Map((catalog.records||[]).map(r=>[r.questionUid,r]));
-  const appliedUids=new Set(report.results.filter(r=>r.status==='APPLY').map(r=>r.questionUid));
+  const rebindOnly=report.results.some(r=>['REBIND','BLOCK'].includes(r.status))&&!report.results.some(r=>r.status==='APPLY'||report.canonicalParentRetryRequest&&r.status==='ALREADY_REGISTERED');
+  const catalog=rebindOnly?{records:[]}:loadResolvedConsumerCatalog(root),byUid=new Map((catalog.records||[]).map(r=>[r.questionUid,r]));
+  const appliedUids=new Set(report.results.filter(r=>['APPLY','REBIND','BLOCK'].includes(r.status)).map(r=>r.questionUid));
   if(report.unrelatedMetadataDigest&&hash(c.metadata.records.filter(r=>!appliedUids.has(r.questionUid)).sort((a,b)=>a.questionUid.localeCompare(b.questionUid,'en')))!==report.unrelatedMetadataDigest)throw Error('BUILD_CHANGED_UNRELATED_METADATA');
   for(const [rel,digest] of Object.entries(report.sourceHashes||{}))if(sha256(fs.readFileSync(path.join(root,rel)))!==digest)throw Error('BUILD_CHANGED_SOURCE');
   const verified=[];
@@ -665,7 +797,23 @@ export async function verifyMergedSource({root=ROOT,reportPath}) {
     for(const field of ['crossConceptKeys','conditionKeys'])if(Object.hasOwn(consumer,field)&&!equal(consumer[field],row[field]))throw Error('CONSUMER_'+field+'_MISMATCH');
     verified.push({questionUid:r.questionUid,sourceOrdinal:r.sourceOrdinal,problemTypeKey:cpt,templateKey:ctpl,metaBinding:consumer.metaBinding||null});
   }
-  const result={status:'PASS',verifiedCount:verified.length,verified,studentMutation:0};
+  const rebindVerified=[];
+  for(const r of report.results.filter(r=>['REBIND','BLOCK'].includes(r.status))) {
+    if(!new RegExp('^\\.archive-meta-register/auto/receipts/[A-Za-z0-9_-]+\\.json$').test(r.receiptPath||''))throw Error('REBIND_RECEIPT_PATH_INVALID');
+    const receipt=read(root,r.receiptPath),row=c.metaByUid.get(r.questionUid);
+    const identity=c.identityByJoin.get(`${r.sourceArchiveFile}#${r.sourceOrdinal}`);
+    if(receipt?.kind!=='SOURCE_REBIND'||!equal(row,receipt.after)||receipt.questionUid!==r.questionUid
+      ||receipt.sourceArchiveFile!==r.sourceArchiveFile||receipt.sourceOrdinal!==r.sourceOrdinal)
+      throw Error('REBIND_RECEIPT_STATE_DRIFT');
+    const q=loadBank(fs.readFileSync(path.join(root,'archive/exams',r.sourceArchiveFile),'utf8'))[r.sourceOrdinal-1];
+    if(!q||sha256(fs.readFileSync(path.join(root,'archive/exams',r.sourceArchiveFile)))!==receipt.sourceSha256)
+      throw Error('REBIND_SOURCE_DRIFT');
+    const expectedIdentity={...receipt.identityBefore,...(r.status==='REBIND'?{sourceFingerprint:sourceFingerprint(q)}:{})};
+    if(!equal(identity,expectedIdentity))throw Error('REBIND_IDENTITY_DRIFT');
+    rebindVerified.push({questionUid:r.questionUid,status:r.status,consumerStatus:'PENDING_VERIFICATION'});
+  }
+  const result={status:rebindVerified.length?'REBIND_CORE_VERIFIED_CONSUMERS_PENDING':'PASS',verifiedCount:verified.length,verified,studentMutation:0,
+    ...(rebindVerified.length?{rebindVerified,consumerVerification:'NOT_RUN'}:{})};
   if(verified.length)write(root,`${AUTO}/last-verification.json`,{schemaVersion:VERSION,head:report.head,...result});
   return result;
 }
@@ -673,8 +821,9 @@ export async function verifyMergedSource({root=ROOT,reportPath}) {
 async function runCli() {
   const a=process.argv.slice(2),get=k=>a.includes(k)?a[a.indexOf(k)+1]:undefined;
   try {
+    if(a.includes('--rebind-report')&&(!get('--rebind-report')||get('--rebind-report').startsWith('--')))throw Error('REBIND_REPORT_PATH_REQUIRED');
     const root=get('--root')||ROOT,reportPath=get('--report')||path.join(process.env.RUNNER_TEMP||'/tmp','archive-auto-meta-report.json');
-    const result=a.includes('--verify')?await verifyMergedSource({root,reportPath}):await registerMergedSource({root,write:a.includes('--write'),reportPath,replayReportPath:get('--replay-report'),canonicalParentRetryRequestPath:get('--canonical-parent-retry-request'),canonicalParentRetryRequestSha256:get('--canonical-parent-retry-sha256')});
+    const result=a.includes('--verify')?await verifyMergedSource({root,reportPath}):await registerMergedSource({root,write:a.includes('--write'),reportPath,replayReportPath:get('--replay-report'),canonicalParentRetryRequestPath:get('--canonical-parent-retry-request'),canonicalParentRetryRequestSha256:get('--canonical-parent-retry-sha256'),rebind:a.includes('--rebind')||process.env.ARCHIVE_REBIND==='1',rebindReportPath:get('--rebind-report')});
     console.log(JSON.stringify(result,null,2));
   }catch(e){console.error('AUTO_META_FAILED:',e.stack||e);process.exitCode=1;}
 }

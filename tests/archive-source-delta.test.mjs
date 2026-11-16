@@ -203,3 +203,40 @@ test('report options parse and reject unknown or valueless flags', () => {
   assert.throws(() => parseArgs(['--limit', '0']), /positive integer/);
   assert.throws(() => parseArgs(['--scope']), /needs a value/);
 });
+
+// Regression guard: presentation normalization must not fuse numeric tokens.
+test('numeric whitespace outside math and text command spaces remain meaningful', () => {
+  for (const [a, b] of [['1 2', '12'], ['1\t2', '12'], ['$\\text{a b}$', '$\\text{ab}$'],
+    ['$\\text{a {b c}}$', '$\\text{a {bc}}$']]) {
+    assert.notEqual(normalizeNotation(a), normalizeNotation(b));
+    assert.equal(classify(stem(a), stem(b)).changed.stemText, true);
+  }
+  assert.equal(normalizeNotation('$1 2$'), normalizeNotation('$12$'));
+  assert.equal(normalizeNotation('\\(1 2\\)'), normalizeNotation('$12$'));
+  assert.equal(normalizeNotation('\\[1 2\\]'), normalizeNotation('$$12$$'));
+  assert.equal(normalizeNotation('1   2'), normalizeNotation('1 2'));
+  assert.equal(normalizeNotation('$\\text{a  b}$'), '\\text{a  b}');
+});
+
+test('quoted image attribute greater-than signs remain entirely figure data', () => {
+  for (const quote of ['"', "'"]) {
+    const a = stem(`문제 <img alt=${quote}a > b${quote} src="old.png"> 끝`);
+    const b = stem(`문제 <img alt=${quote}a > c${quote} src="new.png"> 끝`);
+    const result = classify(a, b);
+    assert.equal(result.class, 'FIGURE');
+    assert.equal(result.changed.stemText, false);
+    assert.equal(result.changed.figure, true);
+  }
+});
+
+test('answerFilled distinguishes missing answers from changed existing answers', () => {
+  for (const answer of [null, undefined, '', '  ', []]) {
+    const result = classify(stem('문제', { answer }), stem('문제', { answer: '0' }));
+    assert.equal(result.class, 'ANSWER');
+    assert.equal(result.details.answerFilled, true);
+  }
+  for (const answer of ['1', 0, false]) {
+    assert.equal(classify(stem('문제', { answer }), stem('문제', { answer: '2' })).details.answerFilled, false);
+  }
+  assert.equal(classify(stem('문제', { answer: '' }), stem('문제', { answer: null })).details.answerFilled, false);
+});
