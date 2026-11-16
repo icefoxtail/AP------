@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "archive-difficulty5-register-request-v1",
+  "gemini": {
+    "schemaVersion": "v1",
+    "requestId": "middle-audit-repair-34c2-m2-difficulty-reviewed-E016-r2",
+    "sourceArchiveFile": "original/middle/m2/1mid/25_진남중_1학기_중간_중2_기출.js",
+    "latestBlobSha": "0bdaba5a37137fd2c1747d4c9245ba154c8e96cd",
+    "items": [
+      {
+        "ordinal": 23,
+        "questionUid": "qid_v1_cd165fc6c9ac85769f05ddf2e86ebe0036f5beae8b2fa643da29feebc2c67cd5",
+        "before": {
+          "level": "중"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "NORMAL"
+        }
+      }
+    ]
+  },
+  "reviewedCorrection": {
+    "schemaVersion": "archive-difficulty5-reviewed-correction-v1",
+    "approvalRef": "GPT_ROOT_0A70543C4CE8/middle-audit-repair-34c2/existing-source-d5-transport-r2",
+    "evidencePath": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/difficulty-four-reviewed-transport-r2.json",
+    "evidenceSha256": "9b18cdd627173b62f4b7e0166d4f7c4aa0c43209c8c9cbcda03d6659a81bbc8c",
+    "rows": [
+      {
+        "sourceArchiveFile": "original/middle/m2/1mid/25_진남중_1학기_중간_중2_기출.js",
+        "ordinal": 23,
+        "questionUid": "qid_v1_cd165fc6c9ac85769f05ddf2e86ebe0036f5beae8b2fa643da29feebc2c67cd5",
+        "decision": "CORRECT",
+        "before": {
+          "level": "중",
+          "difficultyBucket": "상",
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "sourceFingerprint": "33cb8f68ae98203865871e579075078b1958a8e9c5d57e14f9ab4003c92357f2",
+          "contentFingerprint": "3c24611fb11be7c9567b21d8959a15a77aa9fd52cfb24d69eb49ef2701866934"
+        },
+        "after": {
+          "difficultyBucket": 2,
+          "difficultyConfidence": "low",
+          "difficultyBoundaryFlag": "B12",
+          "legacyLevelCompatibility": "NORMAL"
+        },
+        "sourceFingerprint": "2fee788f862e9c148b1cb0beef92c3c93d317acc1ee71c7d396592473dbfe2b4",
+        "contentFingerprint": "3c24611fb11be7c9567b21d8959a15a77aa9fd52cfb24d69eb49ef2701866934",
+        "staleSourceBinding": false,
+        "refreshBinding": false,
+        "reason": "Transport the exact previously reviewed current-source numeric D5 tuple without recalculating its accepted compatibility. Preserve all semantic approval statuses, content holds, source/identity fingerprints, PT/TPL and student payload; this is a repair of the refused official transport, not a new difficulty adjudication."
+      }
+    ]
+  },
+  "provenance": {
+    "type": "RETRY_EXISTING_SOURCE_D5_REVIEWED_TUPLE_TRANSPORT",
+    "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+    "owner": "GPT_ROOT_0A70543C4CE8",
+    "baseCommit": "e9af62176fc10bce6c30f420d911664082ec059b",
+    "replacesRejectedRequestId": "middle-audit-repair-34c2-m2-difficulty-E016",
+    "newSemanticApproval": false,
+    "contentDebtClosed": false
+  }
+}

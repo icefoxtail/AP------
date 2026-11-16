@@ -51,6 +51,104 @@ test('all 326 locked leaves keep their L3/L4 and round trip through one effectiv
   }
 });
 
+test('an added canonical binding shares its original RPM leaf and publisher parent', () => {
+  const rows = JSON.parse(fs.readFileSync(path.join(root,
+    'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json'), 'utf8')).records;
+  const original = rows.find(row => row.id === 'M2-RPM-136');
+  const added = rows.find(row => row.id === 'M2-RPM-136-INEQUALITY-PROPERTIES-34C2');
+  const rpmPath = row => [row.curriculum, row.scope, row.rpmPath.majorUnit,
+    row.rpmPath.midUnit, row.rpmPath.l3, row.rpmPath.l4];
+  assert.equal(original.mappingStatus, 'RPM_ONLY');
+  assert.equal(added.mappingStatus, 'DIRECT_ACTIVE');
+  assert.equal(added.bindingStatus, 'ACTIVE');
+  assert.equal(added.promotesRpmOnlyRowId, original.id);
+  assert.deepEqual(rpmPath(added), rpmPath(original));
+  const mappings = authority.leafMappings.filter(row => row.crosswalkRecordIds.includes(added.id));
+  assert.equal(mappings.length, 1);
+  assert.deepEqual(mappings[0].basePath, rpmPath(original));
+  assert.ok(mappings[0].crosswalkRecordIds.includes(original.id));
+  const resolved = Toc.refinePath(rpmPath(added));
+  assert.equal(resolved.status, 'EXACT');
+  assert.equal(resolved.parentKey, JSON.stringify(rpmPath(original).slice(0, 4)));
+  assert.deepEqual([resolved.effectivePath.L3, resolved.effectivePath.L4], rpmPath(original).slice(4));
+  assert.equal(authority.leafMappings.length, 326);
+  assert.equal(validateParentAuthority(authority, root).leafCount, 326);
+  assert.equal(Toc.parents().length, 54);
+});
+
+test('the three added middle2 mappings already name exact ACTIVE canonical bindings and definitions', () => {
+  const rows = JSON.parse(fs.readFileSync(path.join(root,
+    'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json'), 'utf8')).records;
+  const bindings = JSON.parse(fs.readFileSync(path.join(root,
+    'archive/data/meta-foundation/canonical/packs/middle2/bindings.json'), 'utf8')).bindings;
+  const taxonomies = ['middle2', 'geometry-equations'].map(pack => JSON.parse(fs.readFileSync(path.join(root,
+    `archive/data/meta-foundation/canonical/packs/${pack}/taxonomy.json`), 'utf8')));
+  const bindingFields = ['curriculum', 'standardCourse', 'standardUnitKey', 'subUnitKey', 'problemTypeKey', 'ownerPack'];
+  for (const id of ['M2-RPM-136-INEQUALITY-PROPERTIES-34C2',
+    'M2-RPM-052-LINE-TWO-POINTS-34C2', 'M2-RPM-059-SEGMENT-INTERSECTION-34C2']) {
+    const row = rows.find(candidate => candidate.id === id);
+    assert.ok(row, id);
+    assert.equal(row.bindingStatus, 'ACTIVE');
+    assert.equal(row.mappingStatus, 'DIRECT_ACTIVE');
+    const matches = bindings.filter(binding => binding.status === 'ACTIVE' &&
+      bindingFields.every(key => binding[key] === row.binding[key]));
+    assert.equal(matches.length, 1, id);
+    const types = taxonomies.flatMap(taxonomy => taxonomy.problemTypes).filter(type =>
+      type.problemTypeKey === row.problemTypeKey && type.ownerPack === row.ownerPack && type.status === 'ACTIVE');
+    const templates = taxonomies.flatMap(taxonomy => taxonomy.templates).filter(template =>
+      template.templateKey === row.templateKey && template.ownerPack === row.ownerPack && template.status === 'ACTIVE');
+    assert.equal(types.length, 1, id);
+    assert.equal(templates.length, 1, id);
+    assert.equal(templates[0].parentProblemTypeKey, types[0].problemTypeKey, id);
+  }
+});
+
+test('2015 binding extensions remain outside the 2022 publisher leaf inventory', () => {
+  const rows = JSON.parse(fs.readFileSync(path.join(root,
+    'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json'), 'utf8')).records;
+  for (const [originalId, addedId] of [['M2-RPM-052', 'M2-RPM-052-LINE-TWO-POINTS-34C2'],
+    ['M2-RPM-059', 'M2-RPM-059-SEGMENT-INTERSECTION-34C2']]) {
+    const original = rows.find(row => row.id === originalId);
+    const added = rows.find(row => row.id === addedId);
+    assert.equal(added.curriculum, '2015');
+    assert.equal(added.scope, original.scope);
+    assert.deepEqual(added.rpmPath, original.rpmPath);
+    assert.equal(authority.leafMappings.some(row => row.crosswalkRecordIds.includes(added.id)), false);
+    const path = [added.curriculum, added.scope, added.rpmPath.majorUnit, added.rpmPath.midUnit,
+      added.rpmPath.l3, added.rpmPath.l4];
+    assert.equal(Toc.refinePath(path).status, 'OUT_OF_SCOPE');
+  }
+});
+
+for (const mutation of ['missing', 'duplicate', 'unknown', 'different-leaf', '2015-alias']) {
+  test(`the added binding cannot hide ${mutation} crosswalk ID drift`, () => {
+    const changed = structuredClone(authority);
+    const row = changed.leafMappings.find(mapping => mapping.crosswalkRecordIds.includes('M2-RPM-136'));
+    const addedId = 'M2-RPM-136-INEQUALITY-PROPERTIES-34C2';
+    if (mutation === 'missing') row.crosswalkRecordIds = row.crosswalkRecordIds.filter(id => id !== addedId);
+    if (mutation === 'duplicate') row.crosswalkRecordIds.push(addedId);
+    if (mutation === 'unknown') row.crosswalkRecordIds.push(`${addedId}-UNREVIEWED`);
+    if (mutation === 'different-leaf') {
+      row.crosswalkRecordIds = row.crosswalkRecordIds.filter(id => id !== addedId);
+      changed.leafMappings.find(mapping => mapping !== row).crosswalkRecordIds.push(addedId);
+    }
+    if (mutation === '2015-alias') row.crosswalkRecordIds.push('M2-RPM-052-LINE-TWO-POINTS-34C2');
+    assert.throws(() => validateParentAuthority(changed, root), /RPM_MIDDLE_CROSSWALK_ID_DRIFT/);
+  });
+}
+
+test('an additional binding cannot be represented as another physical publisher leaf', () => {
+  const duplicate = structuredClone(authority);
+  duplicate.leafMappings.push(structuredClone(duplicate.leafMappings.find(row => row.crosswalkRecordIds.includes('M2-RPM-136'))));
+  assert.throws(() => validateParentAuthority(duplicate, root), /RPM_MIDDLE_LEAF_MAPPING_DUPLICATE/);
+  const invented = structuredClone(authority);
+  const extra = structuredClone(invented.leafMappings.find(row => row.crosswalkRecordIds.includes('M2-RPM-136')));
+  extra.basePath[5] = 'unreviewed publisher leaf';
+  invented.leafMappings.push(extra);
+  invented.counts.baseL4 += 1;
+  assert.throws(() => validateParentAuthority(invented, root), /RPM_MIDDLE_MAPPING_UNKNOWN_LEAF/);
+});
+
 test('publisher-confirmed chapter splits follow the existing concept, including the retained 원주각 label', () => {
   const cases = [
     ['M1-2', '평행선과 각', '위치 관계'],

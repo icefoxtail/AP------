@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "archive-independent-problem-renderer-label-repair-review-v1",
+  "scope": "EXACT_E006_Q3_D_LABEL_POSITION_ONLY",
+  "reviewer": "/root/m3s2_release",
+  "producer": "/root",
+  "reviewedAt": "2026-11-15T21:13:35.724135+00:00",
+  "questionUid": "qid_v1_77bdb41803d8e38bf819ade572a121911b9ef1bf783541203c671df15ec0985f",
+  "sourceOrdinal": 3,
+  "decision": "PASS_NARROW_PROBLEM_RENDERER_LABEL_REPAIR",
+  "expectedFactsFrozenBeforeCandidateOpen": true,
+  "expectedFactsRef": {
+    "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/expected-facts.json",
+    "sha256": "14d956978fe89a371900a776b157fd6ec2062e2f350d05afbbfd39b77e82da1e",
+    "bytes": 5711
+  },
+  "priorIndependentReviewRef": {
+    "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/independent-review.json",
+    "sha256": "8ff6677cb39c1f36281afc4166f53f9d9d9cfea73f21c2056e2eeb3aff06b9e8",
+    "bytes": 24684
+  },
+  "producerManifestRef": {
+    "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-q3-label-repair-r1/manifest.json",
+    "sha256": "51b82e87c031d73f5da5ad74f957729c3a3f064112b874b8e120f9588c0bcacf",
+    "bytes": 1603
+  },
+  "deltaProofRef": {
+    "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/q3-v3-label-delta.json",
+    "sha256": "dda6800c1035559dc42868ff4a160fbb2d06221affca2bcd15f04bb318f5c9fc",
+    "bytes": 1228
+  },
+  "originalPublicAssetRef": {
+    "commit": "32467a13be16e40be70c99b2c57fe863685e83c7",
+    "path": "archive/assets/images/25_연향중_2학기_기말_중2_기출/q3-problem-visual-v2.svg",
+    "gitBlobSha1": "091dab5b27fbc303c12180d688d3d0ac068f9bc8",
+    "sha256": "99517b7f14779fd3bacd7b879992ee920cc737a9c0d76e75b3edec91de710f54"
+  },
+  "candidateAssetRef": {
+    "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-q3-label-repair-r1/q3-problem-visual-v3.svg",
+    "sha256": "d1d29913cf799c82380e2765ac1648ad9cda6324e421a5418055b779e7ba61c7",
+    "bytes": 3552,
+    "repositoryPath": "archive/assets/images/25_연향중_2학기_기말_중2_기출/q3-problem-visual-v3.svg",
+    "gitBlobSha1": "f3f0e19b5a70233587f70139c2ec58c947345a0a"
+  },
+  "changedAttributes": [
+    {
+      "elementIndex": 29,
+      "tag": "text",
+      "label": "D",
+      "attribute": "x",
+      "before": "225.5000",
+      "after": "260.5000"
+    }
+  ],
+  "reversePatchByteExact": true,
+  "geometryAndTextAndDescriptionUnchanged": true,
+  "observed": [
+    "Independently viewed the 1400-pixel-wide full rendering and the 375-pixel-wide mobile-scaled rendering of the exact proposed SVG.",
+    "The D glyph now has clear space from the AD dimension end cap at both inspected widths; it does not touch the hypotenuse, the right-angle marker, or another label.",
+    "D still identifies the perpendicular foot on AC without altering the A-D-C order. The right-angle markers at B and D and the AB=6 and AD=3 dimension ownership remain as recorded in the frozen problem-only expected facts.",
+    "All geometric coordinates, all other label positions, text, styles and description remain byte-exact after reversing the single D x-coordinate edit. No numerical conclusion or extra construction was introduced."
+  ],
+  "renders": [
+    {
+      "kind": "full",
+      "widthPixels": 1400,
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/E006-Q3-v3-full.png",
+      "sha256": "c44b77d35265ba3219c2fb17064ef4d80f6be93420bea82bbb4e28bb3cb247e2",
+      "visuallyInspected": true,
+      "standaloneLabelClearance": "PASS"
+    },
+    {
+      "kind": "mobile",
+      "widthPixels": 375,
+      "path": "/workspace/scratch/c9f85667609e/ap-release-recovery/evidence/pr2188-m3-independent-renderer-review-r1/E006-Q3-v3-mobile.png",
+      "sha256": "93765e55b837def1519a105f33d83b6ea85d9b586e16e3ecb58c321b28384fd9",
+      "visuallyInspected": true,
+      "standaloneLabelClearance": "PASS"
+    }
+  ],
+  "producerAndVerifierAreDifferent": true,
+  "reviewerProvenance": "Not the foreign PR2188 source/SVG author or the root-authored label-repair producer. Prior retained metadata request/code preparation is disclosed; this record grants no independent metadata approval.",
+  "actualArchiveStudentSurface": "NOT_RUN; standalone full and mobile-scaled render checks only",
+  "newFullMathematicalQa": false,
+  "newMetadataApprovals": 0,
+  "newDifficultyJudgments": 0,
+  "newReview2Count": 0,
+  "newFourSlotApprovals": 0,
+  "answerAndSolutionModelInspection": false,
+  "sourceWrites": 0,
+  "originalAssetWrites": 0,
+  "remoteWrites": 0,
+  "nextAction": "Root may bind this exact candidate to the separate student-surface check and release evidence; original v2 failure and the two previous narrow renderer passes remain immutable."
+}
