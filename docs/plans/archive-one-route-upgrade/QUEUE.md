@@ -25,14 +25,18 @@
 
 | 순서 | 지시 파일 | 코드 브랜치 | 상태 |
 | --- | --- | --- | --- |
-| 1 | `TASK-01-completion-check.md` | `feat/completion-check-20261116` | 보고 완료, 검수 중 |
-| 2 | `TASK-02-type-judgment-tools.md` | `feat/type-judgment-tools-20261116` | 보고 완료 → 수정 요청 `FEEDBACK-02.md` |
-| 3 | `TASK-03-registrar-rebind.md` | `feat/registrar-rebind-20261116` | 대기 |
-| 4 | `TASK-04-type-unlock-code.md` | `feat/type-unlock-code-20261116` | 대기 |
-| 5 | `TASK-05-ci-blockers.md` | `fix/ci-blockers-20261116` | 대기 |
-| 5-2 | `TASK-09-scope-alias.md` (5번 다음, 6번보다 먼저) | `feat/scope-alias-20261116` | 대기 |
-| 6 | `TASK-06-bundle-manifest.md` | `feat/exam-bundle-20261116` | 대기 |
-| 7 | `TASK-07-coverage-map.md` | `feat/coverage-map-20261116` | 대기 |
-| 8 | `TASK-08-one-route-doc.md` | `docs/one-route-20261116` | 대기 |
+| 1 | `TASK-01-completion-check.md` | `feat/completion-check-20261116` | 보고 완료, 관제 수정·PR #2320 |
+| 2 | `TASK-02-type-judgment-tools.md` | `feat/type-judgment-tools-20261116` | 보고 완료(수정 반영), 검수 대기 |
+| 3 | `TASK-03-registrar-rebind.md` | `feat/registrar-rebind-20261116` | 보고 완료, 검수 대기 |
+| 4 | `TASK-04-type-unlock-code.md` | `feat/type-unlock-code-20261116` | 보고 완료, 검수 대기 |
+| 5 | `TASK-05-ci-blockers.md` | `fix/ci-blockers-20261116` | 보고 완료, 검수 대기 |
+| 6 | `TASK-09-scope-alias.md` | `feat/scope-alias-20261116` | 보고 완료, 검수 대기 |
+| 7 | `TASK-06-bundle-manifest.md` | `feat/exam-bundle-20261116` | 보고 완료, 검수 대기 |
+| **8 (지금 먼저)** | `TASK-10-type-judgment.md` — 중등 유형 판정 | 결과표 `data/type-judgment-c-20261116` | 대기 |
+| **8 (같이)** | `TASK-11-type-judgment-high.md` — 고2 유형 판정 | 결과표 `data/type-judgment-d-20261116` | 대기 |
+| 9 | `TASK-07-coverage-map.md` | `feat/coverage-map-20261116` | 대기 (유형 판정 뒤) |
+| 10 | `TASK-08-one-route-doc.md` | `docs/one-route-20261116` | 대기 |
+
+**순서 변경(2026-11-16 밤, 사용자 결정):** 작업 10·11(유형 판정)을 작업 7·8보다 먼저 한다. 빈 곳 지도(작업 7)는 유형이 채워져야 뜻 있는 숫자가 나온다. 작업 10과 11은 범위(중등 / 고2)와 결과표 브랜치가 달라 서브 에이전트로 동시에 진행해도 된다. 진행 중이던 작업이 있으면 지금 단계를 커밋하고 보고서에 "중단 지점"을 적은 뒤 넘어온다.
 
 관제가 이 표를 갱신한다. 표에 없는 `TASK-*.md`가 폴더에 있으면 번호 순서대로 대기열 끝에 있는 것으로 본다.
