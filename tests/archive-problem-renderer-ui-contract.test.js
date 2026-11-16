@@ -13,7 +13,9 @@ const scope = changedFiles => ({ schemaVersion: 'archive-ci-scope-v2', eventName
 const fontDir = path.posix.dirname(checker.FONT_STYLESHEET) + '/';
 const readFont = file => fs.readFileSync(path.join(__dirname, '..', file));
 const studentCss = readFont(checker.FONT_STYLESHEET).toString('utf8');
-const studentFonts = [400, 700, 800].map(weight => fontDir + `nanum-myeongjo-${weight}.woff2`);
+const studentFonts = [...checker.declaredStudentFonts(studentCss).keys()];
+const fontPathToken = './' + path.posix.basename(studentFonts[0]);
+const fontResources = new Set([checker.FONT_STYLESHEET, ...studentFonts]);
 const localOrigin = 'http://127.0.0.1:49160';
 const localUrl = file => localOrigin + '/' + file;
 
@@ -32,9 +34,9 @@ test('the real engine imports its student font before qualified CSS rules', () =
   assert.match(css, /\.archive2-snapshot-output #print-header-editor-wrap,\.archive2-snapshot-output #qr-output-wrap\{display:none!important\}/);
 });
 
-test('only the exact same-origin student stylesheet and three fonts qualify', () => {
-  for (const rel of [checker.FONT_STYLESHEET, ...studentFonts]) {
-    assert.equal(checker.studentFontResourcePath(localUrl(rel), localOrigin), rel);
+test('only the exact same-origin student stylesheet and declared font subsets qualify', () => {
+  for (const rel of fontResources) {
+    assert.equal(checker.studentFontResourcePath(localUrl(rel), localOrigin, fontResources), rel);
   }
 });
 for (const [name, value] of [
@@ -45,18 +47,22 @@ for (const [name, value] of [
   ['query string', localUrl(studentFonts[0]) + '?extra=1'],
   ['fragment', localUrl(checker.FONT_STYLESHEET) + '#extra'],
   ['credentials', localUrl(checker.FONT_STYLESHEET).replace('http://', 'http://user@')],
-  ['encoded filename', localUrl(studentFonts[0]).replace('400', '%3400')],
+  ['encoded filename', localUrl(studentFonts[0]).replace('/9B', '/%39B')],
   ['unknown file', localUrl(fontDir + 'nanum-myeongjo-900.woff2')],
-]) test(`student font transport refuses ${name}`, () => assert.equal(checker.studentFontResourcePath(value, localOrigin), null));
+  ['superseded full font', localUrl(fontDir + 'nanum-myeongjo-400.woff2')],
+]) test(`student font transport refuses ${name}`, () => assert.equal(checker.studentFontResourcePath(value, localOrigin, fontResources), null));
 
-test('the real stylesheet declares exactly the three full normal faces with swap', () => {
-  assert.deepEqual([...checker.declaredStudentFonts(studentCss)], studentFonts);
+test('the real stylesheet declares 92 normal swap font subsets for each of the three weights', () => {
+  const fonts = checker.declaredStudentFonts(studentCss);
+  assert.equal(fonts.size, 276);
+  assert.deepEqual([400, 700, 800].map(weight => [...fonts.values()].filter(value => value === weight).length), [92, 92, 92]);
 });
 const fontReader = read => ({ read, ref: (file, data) => ({ path: file, bytes: data.length, sha256: checker.sha256(data) }) });
-test('the declared assets are the locked v31 WOFF2 payloads and their upstream OFL', () => {
-  const { refs, licenseRef } = checker.checkedStudentFontRefs(fontReader(readFont));
-  assert.deepEqual([...refs.keys()], [checker.FONT_STYLESHEET, ...studentFonts]);
-  assert.deepEqual(studentFonts.map(file => refs.get(file).bytes), [535336, 608232, 727448]);
+test('the declared assets are the locked v31 Chromium WOFF2 payloads and their upstream OFL', () => {
+  const { refs, licenseRef, weights } = checker.checkedStudentFontRefs(fontReader(readFont));
+  assert.deepEqual([...refs.keys()], [checker.FONT_STYLESHEET, ...studentFonts.slice().sort()]);
+  assert.deepEqual([...weights.keys()], studentFonts);
+  assert.equal(studentFonts.reduce((sum, file) => sum + refs.get(file).bytes, 0), 6002860);
   assert.equal(licenseRef.path, checker.FONT_LICENSE);
   assert.equal(licenseRef.bytes, 4457);
   const pages = JSON.parse(readFont('tools/archive-pages-release-manifest.json'));
@@ -70,6 +76,20 @@ test('a missing, altered or swapped font or altered license fails closed', () =>
   assert.throws(() => check(file => file === studentFonts[0] ? Buffer.from('wOF2tampered') : readFont(file)), /UI_FONT_BYTES_DRIFT/);
   assert.throws(() => check(file => file === checker.FONT_LICENSE ? Buffer.from('altered') : readFont(file)), /UI_FONT_LICENSE_DRIFT/);
 });
+test('the font CSS must preserve both the original unicode ranges and declaration order', () => {
+  const range = studentCss.replace(/unicode-range:\s*U\+[0-9a-f]+/i, 'unicode-range: U+EE');
+  const [first, second] = studentCss.match(/@font-face\s*\{[^{}]*\}/g);
+  const head = studentCss.indexOf(first);
+  const next = studentCss.indexOf(second, head + first.length);
+  const swapped = studentCss.slice(0, head) + second + studentCss.slice(head + first.length, next) +
+    first + studentCss.slice(next + second.length);
+  for (const css of [range, swapped]) {
+    assert.notEqual(css, studentCss);
+    assert.equal(checker.declaredStudentFonts(css).size, 276);
+    assert.throws(() => checker.checkedStudentFontRefs(fontReader(file => file === checker.FONT_STYLESHEET ? Buffer.from(css) : readFont(file))),
+      /UI_FONT_STYLESHEET_BYTES_DRIFT/);
+  }
+});
 for (const suffix of ['120.woff2', '999.woff2', '00.woff2', '01.woff2', '-1.woff2', '+1.woff2',
   '1e2.woff2', 'subset.woff2', '1.2.woff2', '119.woff', '119.ttf', '119.woff2?other=1', '119.woff2#other']) {
   test(`font CSS refuses undeclared subset shape ${suffix}`, () => {
@@ -79,16 +99,16 @@ for (const suffix of ['120.woff2', '999.woff2', '00.woff2', '01.woff2', '-1.woff
 }
 for (const [name, css] of [
   ['nested stylesheet', `@import 'https://example.test/font.css';\n${studentCss}`],
-  ['another family directory', studentCss.replace('./nanum-myeongjo-', './other/nanum-myeongjo-')],
-  ['another origin', studentCss.replace('./nanum-myeongjo-', 'https://example.test/nanum-myeongjo-')],
+  ['another family directory', studentCss.replace(fontPathToken, './other/' + path.posix.basename(studentFonts[0]))],
+  ['another origin', studentCss.replace(fontPathToken, 'https://example.test/font.woff2')],
   ['missing required weight', studentCss.replace('font-weight: 800;', 'font-weight: 900;')],
-  ['malformed escaped URL', studentCss.replace('./nanum-myeongjo-', '.\\escape/nanum-myeongjo-')],
+  ['malformed escaped URL', studentCss.replace(fontPathToken, '.\\escape/font.woff2')],
   ['incorrect family', studentCss.replace('Nanum Myeongjo', 'Other')],
   ['changed loading strategy', studentCss.replace('font-display: swap;', 'font-display: block;')],
   ['changed style', studentCss.replace('font-style: normal;', 'font-style: italic;')],
   ['duplicate declaration', studentCss.replace('font-weight: 400;', 'font-weight: 400; font-weight: 700;')],
   ['workstation-only fallback', studentCss.replace('src: url(', 'src: local("Nanum Myeongjo"), url(')],
-  ['subset coverage', studentCss.replace('font-display: swap;', 'font-display: swap; unicode-range: U+0-7F;')],
+  ['unspecified subset coverage', studentCss.replace(/unicode-range:[^;]+;/, '')],
   ['other CSS rule', studentCss + 'body { color: white; }'],
 ]) test(`font CSS refuses ${name}`, () => assert.throws(() => checker.declaredStudentFonts(css)));
 
@@ -96,7 +116,7 @@ test('font failure diagnostics distinguish parsed CSS refusal from request failu
   const observation = { kind: 'STYLESHEET', urlSha256: 'a'.repeat(64), stage: 'CSS_DECLARATIONS', httpStatus: 200,
     responseUrlSha256: 'a'.repeat(64), mime: 'text/css', bytes: 173575, responseSha256: 'b'.repeat(64), rawBody: 'DO_NOT_EXPORT_BODY' };
   let parserError;
-  try { checker.declaredStudentFonts(studentCss.replace('./nanum-myeongjo-', './other/nanum-myeongjo-')); } catch (error) { parserError = error; }
+  try { checker.declaredStudentFonts(studentCss.replace(fontPathToken, './other/font.woff2')); } catch (error) { parserError = error; }
   const diagnostic = checker.fontFailureDiagnostic(observation, parserError);
   assert.equal(diagnostic.stage, 'CSS_DECLARATIONS'); assert.equal(diagnostic.httpStatus, 200);
   assert.equal(diagnostic.mime, 'text/css'); assert.equal(diagnostic.bytes, 173575);
@@ -473,6 +493,9 @@ test('every exact source, asset and checker trigger requires six cases', () => {
   const plan = checker.planRequired(sourceManifest, scope([]), head);
   assert.equal(plan.required, false);
   for (const file of plan.triggerPaths) assert.equal(checker.planRequired(sourceManifest, scope([file]), head).required, true, file);
+  const fontChange = checker.planRequired(sourceManifest, scope([studentFonts[0]]), head);
+  assert.equal(fontChange.required, true);
+  assert.deepEqual(fontChange.matchedPaths, [studentFonts[0]]);
   assert.equal(checker.planRequired(sourceManifest, scope(['archive/exams/unrelated.js']), head).required, false);
 });
 
