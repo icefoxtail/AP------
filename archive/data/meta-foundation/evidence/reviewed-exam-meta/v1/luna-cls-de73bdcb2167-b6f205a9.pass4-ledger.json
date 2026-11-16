@@ -1,0 +1,47 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T22:18:47.452+00:00",
+ "sourceArchiveFile": "similar/high/h1/1final/25_효천고_1학기_기말_고1_유사2.js",
+ "items": [
+  {
+   "ordinal": 10,
+   "chosenFrom": "new",
+   "resolutionReason": "2400=2⁵·3·5²의 약수 중 6의 배수이면서 12의 배수가 아닌 것을 2의 지수가 정확히 1인 경우로 세는 문항이라 앞서 제안한 약수의 개수 계열을 쓴다.",
+   "choiceTableUsed": "H1-공통수학1.json",
+   "rpmPath": {
+    "majorUnit": "",
+    "midUnit": "",
+    "l3": "",
+    "l4": ""
+   },
+   "hold": "신규 제안: 공통수학1 표에 약수의 개수와 총합 경로가 없음(앞서 제안한 값 재사용).",
+   "proposedNew": {
+    "rpmPath.majorUnit": {
+     "value": "정수의 성질",
+     "label": "정수의 성질",
+     "parent": "(최상위)",
+     "why": "가장 가까운 경우의 수는 개수를 세는 단원이지만 이 문항은 소인수분해로 약수를 센다."
+    },
+    "rpmPath.midUnit": {
+     "value": "약수와 배수",
+     "label": "약수와 배수",
+     "parent": "정수의 성질",
+     "why": "가장 가까운 인수분해는 다항식의 인수이고 이 문항은 자연수의 약수다."
+    },
+    "rpmPath.l3": {
+     "value": "약수의 개수와 총합",
+     "label": "약수의 개수와 총합",
+     "parent": "정수의 성질 > 약수와 배수",
+     "why": "가장 가까운 인수분해의 활용은 수의 계산이며 이 문항은 약수의 개수 공식이다."
+    },
+    "rpmPath.l4": {
+     "value": "소인수분해를 이용한 약수의 개수와 합",
+     "label": "소인수분해를 이용한 약수의 개수와 합",
+     "parent": "정수의 성질 > 약수와 배수 > 약수의 개수와 총합",
+     "why": "가장 가까운 수의 계산은 인수분해로 수를 계산하는 것이고 이 문항은 지수 조합으로 약수를 센다."
+    }
+   }
+  }
+ ]
+}
