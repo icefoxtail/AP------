@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "m1s2-exact-six-parent-retry-scheduler-v1",
+  "status": "PASS",
+  "writerSha256": "22f6511e11312812b1e2fd797d4b4be65bc93be597d0f6e92889d5c24a849a42",
+  "request": {
+    "path": "archive/data/meta-foundation/evidence/main-auto-parent-retry/v1/m1s2-wangun24-parent-six-20261115.json",
+    "sha256": "cf57d82ec5734d0474743df07020f9694a49e113f8dd3605c8086ea74361470a"
+  },
+  "laneOrder": [
+    "reviewed",
+    "semantic",
+    "shared",
+    "generated",
+    "studentIndexes",
+    "fourSlot"
+  ],
+  "newLaneCount": 0,
+  "before": {
+    "stateSha256": "92be225f5d45992e97c67f2260807c91dfa24ba5395f5516f2ae7b2c72a9e9d6",
+    "outstandingRequests": 1,
+    "semanticCommandCount": 1,
+    "selectedRequestSha256": "cf57d82ec5734d0474743df07020f9694a49e113f8dd3605c8086ea74361470a"
+  },
+  "after": {
+    "stateSha256": "c6aa11c4c84a82bfd836564663524a6c052fb57c5bbfe4c5a10477f273665bfc",
+    "receiptCount": 6,
+    "outstandingRequests": 0,
+    "semanticCommandCount": 1,
+    "boundedRetryEnvironmentPresent": false
+  },
+  "proofScope": "Exact production nativeLanes and completion discovery using actual request, state and six generated receipts; no mocked scheduler.",
+  "failureIsolation": "Existing writer lane rollback covered by 29 passing tests; exact six row-CAS failure buffers and aborts all six writes as separately proven.",
+  "mainPublication": "NOT_RUN"
+}

@@ -8,6 +8,8 @@ import { REVIEWED_META_VALUE_FIELDS } from './reviewed-meta-value-fields.mjs';
 import { reviewedRendererBindingPath, buildReviewedRendererBinding } from './reviewed-current-renderer-continuity.mjs';
 import { REVIEWED_RPM_FIELDS } from './reviewed-rpm-provenance.mjs';
 import { validateNativeReviewedSourceReuse } from './native-reviewed-source-reuse.mjs';
+import { readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
+import { readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
 
 const fail = message => { throw Error(`native reviewed renderer reuse: ${message}`); };
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -30,11 +32,13 @@ function safePath(root, relative) {
   return full;
 }
 
-function claimedRows(receipt, root, identity, ordinal, cache) {
+function claimedRows(receipt, root, identity, ordinal, cache, historicalContext, solutionHistory) {
   const claims = [];
   for (const ref of receipt.approval.evidenceRefs || []) {
     if (!SHA256.test(ref.sha256 || '')) fail('SHA-bound approval evidence required');
-    const bytes = fs.readFileSync(safePath(root, ref.path));
+    const bytes = solutionHistory ? readIssuedSolutionRpmHistoricalEvidence(solutionHistory, receipt, ref)
+      : historicalContext ? readIssuedRpmHistoricalEvidence(historicalContext, receipt, ref)
+        : fs.readFileSync(safePath(root, ref.path));
     if (sha(bytes) !== ref.sha256) fail('current evidence bytes changed');
     const key = `renderer-reuse-claim:${ref.sha256}`;
     if (!cache.has(key)) {
@@ -72,9 +76,12 @@ function verifyRendererBinding(receipt, root, bindingPath) {
 // null preserves the old receipt contracts. A claimed compound review must be
 // revalidated even after the pending cursor catches up to the current question.
 export function nativeReviewedRendererRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (nativeSource.issuedRpmHistoryContext && nativeSource.issuedSolutionRpmHistoryContext)
+    fail('multiple historical contexts are not supported');
   const root = fs.realpathSync(nativeSource.root);
   if (!caches.has(root)) caches.set(root, new Map());
-  const cache = caches.get(root), claims = claimedRows(receipt, root, identity, ordinal, cache);
+  const cache = caches.get(root), claims = claimedRows(receipt, root, identity, ordinal, cache,
+    nativeSource.issuedRpmHistoryContext, nativeSource.issuedSolutionRpmHistoryContext);
   const bindingPath = reviewedRendererBindingPath(receipt.requestId);
   const registeredBinding = current.approvalEvidence?.includes(bindingPath);
   const selected = (receipt.fingerprintRepairs || []).filter(r => r.questionUid === identity.questionUid);

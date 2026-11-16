@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "native-issued-child-continuity-verification-v1",
+  "status": "LOCAL_TARGET_VALIDATION_PASS",
+  "actualRegisteredMain": "4b504e10b1ce7a90576486663b3862ef99922325",
+  "scope": {
+    "targetUids": [
+      "qid_v1_a892469fdfd00bb78f77a6cfe900a8084b34d4e2d193a9f348f9f248ec75deae",
+      "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e"
+    ],
+    "sidecars": 2,
+    "registeredRowsPreserved": 2,
+    "newRegistrations": 0,
+    "newMetadataApprovals": 0,
+    "newFinalApprovals": 0,
+    "registryWrites": 0,
+    "receiptWrites": 0,
+    "sourceWrites": 0,
+    "remoteWrites": 0,
+    "excludedM3S1Selected": 0
+  },
+  "native": {
+    "uids": 2,
+    "cursorsPerUid": 2,
+    "status": "PASS",
+    "planner": "ALREADY_REGISTERED",
+    "mandatoryOriginalLeafCallbacksPerUid": 2,
+    "proofSha256": "1f49f596aa677e1140a5196c23024959c7b5a28786cf4e1e47fa7d0d1cff9f73"
+  },
+  "replay": {
+    "existingConsumedRequests": 2,
+    "write": false,
+    "status": "PASS",
+    "replay": true,
+    "plannedPaths": [],
+    "proofSha256": "41b7e8a09bff310654da49456070f85b430b6b06dace2984444f4afe82e9a6d6"
+  },
+  "consumer": {
+    "mode": "REUSE_ACTUAL_WRITER_43802613045",
+    "targetChecked": 2,
+    "targetPassed": 2,
+    "newConsumerRuns": 0,
+    "proofSha256": "b7ab6f357cb539e7b37bfac6956708708a4d87b2963f53a88f57105ebcfe8114",
+    "allSemanticPassClaimed": false
+  },
+  "protectedInputs": {
+    "files": 180,
+    "unchanged": true
+  },
+  "focusedTests": {
+    "passed": 185,
+    "failed": 0,
+    "existingFp0": 59,
+    "existingFp1": 67,
+    "newChildTests": 59,
+    "logSha256": "be4b7617b45f1696020b8c1b0e84bada1606381580a0baf7a534f1bc47bfbdbf",
+    "files": [
+      "tests/archive-native-issued-rpm-history.test.mjs",
+      "tests/archive-native-issued-solution-rpm-history.test.mjs",
+      "tests/archive-native-issued-child-continuity.test.mjs"
+    ]
+  },
+  "writerDependency": {
+    "schemaVersion": "issued-child-writer-input-dependency-v1",
+    "status": "COVERED_BY_EXISTING_STRICT_INPUTS",
+    "actualMain": "4b504e10b1ce7a90576486663b3862ef99922325",
+    "writerPath": "tools/ci/archive-registration-writer.mjs",
+    "writerGitBlobSha1": "e4ab17a977909affd9745634c10be17c385d375c",
+    "matchingRule": "A trailing slash pattern matches every descendant path; fingerprints include path, mode and Git blob.",
+    "sidecarPrefix": "archive/data/meta-foundation/evidence/native-issued-child-continuity/v1/",
+    "existingRegistrationInputPrefix": "archive/data/meta-foundation/",
+    "existingCodeInputPrefix": "archive/tools/",
+    "lanesUsingRegistrationAndCode": [
+      "reviewed",
+      "semantic",
+      "shared"
+    ],
+    "generatedLaneSidecarCovered": true,
+    "sidecarNativeOnly": true,
+    "catalogValuesChanged": false,
+    "writerPatchRequired": false,
+    "newValidationBypass": false
+  },
+  "independentReview": {
+    "status": "ACCEPT",
+    "proofSha256": "b9d9fe7571be7d548f041e9e59bf3538f378173a7591ae13858fe7fcc50f3973"
+  },
+  "releaseGates": {
+    "exactPrCI": "NOT_RUN_BY_THIS_LOCAL_PACKET",
+    "mainMerge": "NOT_RUN",
+    "Pages": "NOT_RUN"
+  },
+  "remainingObservations": [
+    "Legacy display course naming is a separate consumer-display issue; native reuse does not alter it.",
+    "Q7 original independent declared source head and original-solution-time image bytes are not claimed as verified."
+  ]
+}

@@ -5,8 +5,9 @@ window.examData = {
   questions: [
   {
     "id": 1,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "1. 다음 그림에서 $\\overline{BC} // \\overline{DE}$ 일 때, $x$의 값은? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q01.png\" alt=\"도형\">",
+    "question": "1. 다음 그림에서 $\\overline{BC} // \\overline{DE}$ 일 때, $x$의 값은? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q1-problem-visual-v2.svg\" alt=\"A에서 뻗은 두 사선이 서로 평행한 BC와 DE에서 잘린다. 왼쪽 위와 아래 길이는 x와 8 cm, 오른쪽은 6 cm와 12 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$2.5$",
       "$3$",
@@ -16,9 +17,9 @@ window.examData = {
     ],
     "answer": "④",
     "solution": "$\\overline{BC}//\\overline{DE}$이므로 삼각형 $ADE$에서\n$\\overline{AB}:\\overline{BD}=\\overline{AC}:\\overline{CE}$이다.\n$x:8=6:12$\n$12x=48$\n$x=4$이다.\n정답은 ④이다.",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q1-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 삼각형 ADE에서 변 AD 위의 점 B와 변 AE 위의 점 C를 잇는 BC가 DE와 평행한 문제 그림으로, AB는 x, BD는 8, AC는 6, CE는 12이다. 둘째는 같은 도형에서 AB와 AC를 파란색, BD와 CE를 주황색으로 칠해 대응하는 선분을 보인다. 길이의 단위는 cm이다.",
-    "solutionImageCaption": "BC와 DE가 평행하므로 삼각형 ADE에서 AB와 BD의 비는 AC와 CE의 비와 같다. x와 8의 비가 6과 12의 비이므로 12x=48이다. 정답은 x=4이다. 따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q1-solution-visual-v2.svg",
+    "solutionImageAlt": "평행선의 위쪽 AB와 AC는 청록, 아래쪽 BD와 CE는 주황이다. 위쪽에는 x와 6 cm, 아래쪽에는 8 cm와 12 cm의 치수를 각각 같은 색으로 붙였다.",
+    "solutionImageCaption": "평행선이 두 사선을 같은 비로 나누므로 x:8=6:12이다. 따라서 x=4이고 정답은 ④이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -40,8 +41,9 @@ window.examData = {
   },
   {
     "id": 2,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "2. 다음 사다리꼴 ABCD에서 $\\overline{AD} // \\overline{EF} // \\overline{BC}$일 때, $\\overline{BC}$의 길이는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q02.png\" alt=\"도형\">",
+    "question": "2. 다음 사다리꼴 ABCD에서 $\\overline{AD} // \\overline{EF} // \\overline{BC}$일 때, $\\overline{BC}$의 길이는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q2-problem-visual-v2.svg\" alt=\"윗변 AD는 8 cm, 중간 EF는 10 cm, 아랫변은 BC이다. 왼쪽 AE는 4 cm, EB는 6 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$12\\text{ cm}$",
       "$13\\text{ cm}$",
@@ -51,9 +53,9 @@ window.examData = {
     ],
     "answer": "②",
     "solution": "점 $D$를 지나고 $\\overline{AB}$에 평행한 선분을 그어 $\\overline{EF}$, $\\overline{BC}$와 만나는 점을 각각 $G$, $H$라 하자.\n사각형 $ABHD$와 사각형 $AEGD$는 두 쌍의 대변이 평행하므로 평행사변형이다.\n따라서 $\\overline{BH}=\\overline{AD}=8\\text{ cm}$, $\\overline{EG}=\\overline{AD}=8\\text{ cm}$, $\\overline{DG}=\\overline{AE}=4\\text{ cm}$, $\\overline{DH}=\\overline{AB}=4+6=10\\text{ cm}$이다.\n$\\overline{GF}=\\overline{EF}-\\overline{EG}=10-8=2\\text{ cm}$이다.\n\n삼각형 $DHC$에서 $\\overline{GF}//\\overline{HC}$이므로\n$\\overline{DG}:\\overline{DH}=\\overline{GF}:\\overline{HC}$\n$4:10=2:\\overline{HC}$\n$\\overline{HC}=5\\text{ cm}$이다.\n\n따라서 $\\overline{BC}=\\overline{BH}+\\overline{HC}=8+5=13\\text{ cm}$이다.\n정답은 ②이다.",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q2-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 사다리꼴에서 AD, EF, BC가 평행하고 AE는 4, EB는 6, AD는 8, EF는 10인 문제 그림이다. 둘째는 D를 지나 AB에 평행한 DH를 그어 EF와 만나는 점을 G, BC와 만나는 점을 H라 하고 평행사변형 두 개를 파란색과 주황색으로 칠한 그림이다. 셋째는 삼각형 DHC에서 GF가 HC와 평행하고 DG는 4, DH는 10, GF는 2, HC는 5인 그림이다. 길이의 단위는 cm이다.",
-    "solutionImageCaption": "D를 지나 AB에 평행한 DH를 그으면 두 사각형이 모두 평행사변형이다. 따라서 BH와 EG는 AD와 같은 8 cm이고 DG는 AE와 같은 4 cm, DH는 AB와 같은 10 cm이며 GF는 10에서 8을 뺀 2 cm이다. 삼각형 DHC에서 GF와 HC가 평행하므로 4:10=2:HC이어서 HC는 5 cm이고 BC는 BH와 HC를 더한 길이이다. 정답은 13 cm이다. 따라서 정답은 ②이다.",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q2-solution-visual-v2.svg",
+    "solutionImageAlt": "D에서 AB와 같은 방향으로 내려간 선이 EF에서 G, BC에서 H를 만든다. 길이가 같은 AD, EG, BH는 청록으로 표시하고 닮음을 쓰는 오른쪽 DHC만 은은하게 칠했다.",
+    "solutionImageCaption": "AD=EG=BH=8 cm이므로 GF=10−8=2 cm이다. △DGF∼△DHC에 4:10=2:HC를 적용하면 HC=5 cm이다. 따라서 BC=8+5=13 cm이고 정답은 ②이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_QUADRILATERAL_PROPERTIES"
@@ -77,8 +79,9 @@ window.examData = {
   },
   {
     "id": 3,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "3. 오른쪽 삼각형 ABC에서 세 변 AB, BC, AC의 중점을 각각 D, E, F라고 할 때, 삼각형 DEF의 넓이가 $12\\text{ cm}^2$일 때, 다음 중 옳지 않은 것은? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q03.png\" alt=\"도형\">",
+    "question": "3. 오른쪽 삼각형 ABC에서 세 변 AB, BC, AC의 중점을 각각 D, E, F라고 할 때, 삼각형 DEF의 넓이가 $12\\text{ cm}^2$일 때, 다음 중 옳지 않은 것은? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q3-problem-visual-v2.svg\" alt=\"AB의 중점 D, BC의 중점 E, AC의 중점 F를 연결했다. 각 변의 두 반쪽은 같은 눈금과 색으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$\\overline{DF} // \\overline{BC}$",
       "$\\overline{EF} = \\overline{BD}$",
@@ -88,9 +91,9 @@ window.examData = {
     ],
     "answer": "④",
     "solution": "세 점 $D, E, F$는 각 변의 중점이므로 삼각형의 중점연결정리에 의해\n$\\overline{DF}//\\overline{BC}$, $\\overline{EF}//\\overline{AB}$, $\\overline{DE}//\\overline{AC}$이고\n$\\overline{DF}=\\dfrac12\\overline{BC}$, $\\overline{EF}=\\dfrac12\\overline{AB}$, $\\overline{DE}=\\dfrac12\\overline{AC}$이다.\n\n① $\\overline{DF}//\\overline{BC}$이므로 옳다.\n② $\\overline{EF}=\\dfrac12\\overline{AB}=\\overline{BD}$이므로 옳다.\n③ $\\overline{DF}//\\overline{BC}$이므로 동위각이 같아 $\\angle AFD=\\angle ACB$이다. 옳다.\n④ 삼각형 $ADF$, $DBE$, $FEC$, $DEF$는 세 변의 길이가 각각 같으므로 서로 합동이다. 따라서 삼각형 $ABC$의 넓이는 삼각형 $DEF$의 $4$배인 $4\\times12=48\\text{ cm}^2$이다. $36\\text{ cm}^2$가 아니므로 옳지 않다.\n⑤ 삼각형 $DEF$의 세 변은 삼각형 $ABC$의 각 변의 $\\dfrac12$이므로 삼각형 $ABC$의 둘레는 삼각형 $DEF$의 2배이다. 옳다.\n따라서 옳지 않은 것은 ④이다.\n정답은 ④이다.",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 삼각형 ABC에서 세 변 AB, BC, AC의 중점 D, E, F를 이은 삼각형 DEF의 넓이가 12 cm²인 문제 그림이다. 둘째는 중점을 이은 선으로 나뉜 네 삼각형 ADF, DBE, FEC, DEF를 같은 파란색으로 칠하고 각각 넓이 12를 적은 그림이다. 평행한 변에는 같은 수의 표식이 있다.",
-    "solutionImageCaption": "D, E, F가 각 변의 중점이므로 중점연결정리에 따라 삼각형 ABC는 합동인 네 삼각형 ADF, DBE, FEC, DEF로 나뉜다. 따라서 삼각형 ABC의 넓이는 삼각형 DEF의 4배인 48 cm²이어서 36 cm²라는 ④가 옳지 않고, 나머지 보기는 중점연결정리와 닮음으로 모두 옳다. 정답은 ④이다.",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q3-solution-visual-v2.svg",
+    "solutionImageAlt": "중점 연결선이 삼각형 ABC를 네 합동 삼각형으로 나눈다. 문제에서 넓이를 준 가운데 DEF를 청록으로 칠하고 나머지 세 영역에도 같은 넓이 표기 12를 붙였다.",
+    "solutionImageCaption": "중점연결선이 나눈 네 삼각형은 합동이다. 전체 넓이는 4×12=48 cm²이므로 36 cm²라고 한 ④가 옳지 않다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_TRIANGLE_CONGRUENCE"
@@ -114,8 +117,9 @@ window.examData = {
   },
   {
     "id": 4,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "4. 오른쪽 평행사변형 ABCD에서 두 변 BC, CD의 중점을 각각 E, F라 하고 대각선 BD가 세 선분 AE, AC, AF와 만나는 점을 각각 P, O, Q이고 $\\overline{\\text{BP}}=12\\text{ cm}$일 때, $\\overline{\\text{EF}}$의 길이는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q04.png\" alt=\"도형\">",
+    "question": "4. 오른쪽 평행사변형 ABCD에서 두 변 BC, CD의 중점을 각각 E, F라 하고 대각선 BD가 세 선분 AE, AC, AF와 만나는 점을 각각 P, O, Q이고 $\\overline{\\text{BP}}=12\\text{ cm}$일 때, $\\overline{\\text{EF}}$의 길이는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q4-problem-visual-v2.svg\" alt=\"BC의 중점 E와 CD의 중점 F를 표시했다. 대각선 BD가 AE, AC, AF와 차례로 P, O, Q에서 만나고 BP는 12 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$16\\text{ cm}$",
       "$17\\text{ cm}$",
@@ -125,9 +129,9 @@ window.examData = {
     ],
     "answer": "③",
     "solution": "대각선 $AC$와 $BD$의 교점이 $O$이고 평행사변형의 두 대각선은 서로를 이등분하므로 $O$는 $\\overline{AC}$, $\\overline{BD}$의 중점이다.\n삼각형 $ABC$에서 $\\overline{AE}$와 $\\overline{BO}$는 각각 $\\overline{BC}$, $\\overline{AC}$의 중점을 지나는 중선이므로 점 $P$는 삼각형 $ABC$의 무게중심이다.\n따라서 $\\overline{BP}:\\overline{PO}=2:1$이고 $\\overline{BP}=12\\text{ cm}$이므로 $\\overline{BO}=\\dfrac32\\times12=18\\text{ cm}$이다.\n$\\overline{BD}=2\\overline{BO}=36\\text{ cm}$이다.\n\n삼각형 $CBD$에서 $E$, $F$가 각각 $\\overline{BC}$, $\\overline{CD}$의 중점이므로 중점연결정리에 의해\n$\\overline{EF}=\\dfrac12\\overline{BD}=18\\text{ cm}$이다.\n정답은 ③이다.",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 평행사변형에서 BC, CD의 중점을 E, F라 하고 대각선 BD가 AE, AC, AF와 만나는 점을 P, O, Q로 나타낸 문제 그림이며 BP는 12이다. 둘째는 삼각형 ABC에서 중선 AE와 BO가 만나는 무게중심 P를 보이며 BP는 파란색 12, PO는 주황색 6이다. 셋째는 삼각형 CBD에서 BC, CD의 중점 E, F를 이은 EF가 BD와 평행하고 BD는 36인 그림이다. 길이의 단위는 cm이다.",
-    "solutionImageCaption": "P는 삼각형 ABC의 무게중심이므로 BP:PO=2:1이고 BP가 12 cm이므로 PO는 6 cm, BO는 18 cm이다. O가 BD의 중점이므로 BD는 36 cm이다. 삼각형 CBD에서 E, F가 중점이므로 EF는 BD의 절반이다. 정답은 18 cm이다. 따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q4-solution-visual-v2.svg",
+    "solutionImageAlt": "삼각형 CBD 안의 중점연결선 EF와 나란한 BD를 보라색으로 표시했다. 무게중심 P가 BO를 2 대 1로 나누는 BP와 PO에는 각 몫을 붙였다.",
+    "solutionImageCaption": "P는 △ABC의 무게중심이므로 BP:PO=2:1이다. BP=12 cm에서 BO=18 cm, BD=36 cm를 얻고, EF는 △CBD의 중점연결선이므로 EF=18 cm이다. 정답은 ③이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_PARALLELOGRAM_PROPERTIES",
@@ -152,8 +156,9 @@ window.examData = {
   },
   {
     "id": 5,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "5. 구 모양인 축구공과 농구공은 닮음비가 $3:4$인 닮은 도형이다. 농구공의 부피가 $128\\text{ cm}^3$일 때, 축구공의 부피는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q05.png\" alt=\"도형\">",
+    "question": "5. 구 모양인 축구공과 농구공은 닮음비가 $3:4$인 닮은 도형이다. 농구공의 부피가 $128\\text{ cm}^3$일 때, 축구공의 부피는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q5-problem-visual-v2.svg\" alt=\"왼쪽은 오각형 무늬가 있는 축구공, 오른쪽은 굽은 선이 있는 농구공이다. 지름의 비 3:4를 실제 그림 크기로 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$50\\text{ cm}^3$",
       "$52\\text{ cm}^3$",
@@ -187,8 +192,9 @@ window.examData = {
   },
   {
     "id": 6,
+    "layoutTag": "fullwidth",
     "score": 3,
-    "question": "6. 오른쪽 그림과 같이 가로의 길이가 $80\\text{ cm}$, 세로의 길이가 $60\\text{ cm}$인 직사각형 모양의 대형 모니터 화면이 있다. 이 대형 모니터 화면의 대각선의 길이는? (3점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q06.png\" alt=\"도형\">",
+    "question": "6. 오른쪽 그림과 같이 가로의 길이가 $80\\text{ cm}$, 세로의 길이가 $60\\text{ cm}$인 직사각형 모양의 대형 모니터 화면이 있다. 이 대형 모니터 화면의 대각선의 길이는? (3점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q6-problem-visual-v2.svg\" alt=\"직사각형 화면의 가로는 80 cm, 세로는 60 cm이다. 왼쪽 아래에서 오른쪽 위로 이어지는 청록색 선이 대각선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$95\\text{ cm}$",
       "$100\\text{ cm}$",
@@ -259,8 +265,9 @@ window.examData = {
   },
   {
     "id": 8,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "8. 오른쪽 정사각형 ABCD에서 $a^2 + b^2 = 49$일 때, 사각형 EFGH에 대한 설명으로 옳지 않은 것은? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q08.png\" alt=\"도형\">",
+    "question": "8. 오른쪽 정사각형 ABCD에서 $a^2 + b^2 = 49$일 때, 사각형 EFGH에 대한 설명으로 옳지 않은 것은? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q8-problem-visual-v2.svg\" alt=\"정사각형 ABCD의 각 변을 a와 b 두 길이로 나눈다. 안쪽의 E, F, G, H를 서로 이었다. 길이 a는 검정, b는 청록으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "정사각형이다.",
       "둘레의 길이는 $28$이다.",
@@ -270,9 +277,9 @@ window.examData = {
     ],
     "answer": "④",
     "solution": "정사각형 $ABCD$의 네 귀퉁이의 직각삼각형 $AEH$, $BFE$, $CGF$, $DHG$는 직각을 낀 두 변의 길이가 $a$, $b$로 서로 합동이므로 사각형 $EFGH$의 네 변의 길이는 모두 같다. 그 한 변의 길이를 $c$라 하면 피타고라스 정리에 의해 $c^2=a^2+b^2=49$이므로 $c=7$이다.\n또 합동이므로 $\\angle BEF=\\angle AHE$이고, 삼각형 $AEH$에서 $\\angle AEH+\\angle AHE=90^\\circ$이므로 $\\angle AEH+\\angle BEF=90^\\circ$이다. 따라서 $\\angle FEH=180^\\circ-90^\\circ=90^\\circ$이다. 네 변의 길이가 같고 한 각이 직각이므로 사각형 $EFGH$는 정사각형이다. (①, ⑤ 옳다.)\n둘레의 길이는 $4\\times7=28$이다. (② 옳다.)\n넓이는 $7\\times7=49$이다. (③ 옳다.)\n④ 대각선 $\\overline{EG}$는 직각삼각형 $EFG$의 빗변이므로 $\\overline{EG}^2=7^2+7^2=98$이다. $49^2=2401$이므로 $\\overline{EG}=49$가 아니다. ($\\overline{EG}^2=98$이므로 $\\overline{EG}$는 $9$보다 크고 $10$보다 작다.) 옳지 않다.\n정답은 ④이다.",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q8-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 정사각형의 네 변 위에 점 E, F, G, H를 잡아 안쪽 사각형을 만든 문제 그림으로, 각 변이 길이 a인 부분(파란색)과 b인 부분(주황색)으로 나뉘고 네 꼭짓점은 직각이다. 둘째는 네 귀퉁이의 합동인 직각삼각형을 파란색으로, 안쪽 사각형을 주황색으로 칠하고 한 변을 c로 나타낸 그림이다. 셋째는 정사각형과 대각선 EG를 그리고 두 변의 길이를 7로 나타낸 그림이다.",
-    "solutionImageCaption": "네 귀퉁이의 직각삼각형은 합동이므로 안쪽 사각형의 네 변이 같고 한 각이 직각이어서 정사각형이다. 한 변의 길이는 7이므로 둘레는 28, 넓이는 49이다. 대각선 EG는 직각삼각형 EFG의 빗변이므로 EG의 제곱은 7의 제곱의 2배인 98이어서 EG는 49가 아니다. 정답은 ④이다.",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q8-solution-visual-v2.svg",
+    "solutionImageAlt": "EFGH에서 EF와 FG는 모두 7이고 서로 직각이다. 옅게 칠한 직각삼각형 EFG의 빗변이 비교하는 대각선 EG다.",
+    "solutionImageCaption": "안쪽 정사각형의 한 변은 √49=7이다. △EFG에서 EG²=7²+7²=98이므로 대각선 EG는 49가 아니다. 옳지 않은 것은 ④이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_TRIANGLE_CONGRUENCE",
@@ -297,8 +304,9 @@ window.examData = {
   },
   {
     "id": 9,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "9. 오른쪽 그림에서 삼각형 $\\triangle\\text{ABE} \\equiv \\triangle\\text{ECD}$이고 세 점 B, E, C는 한 직선 위에 있다. $\\overline{\\text{AB}}=12\\text{ cm}$, $\\overline{\\text{CD}}=16\\text{ cm}$일 때, 삼각형 AED의 넓이는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q09.png\" alt=\"도형\">",
+    "question": "9. 오른쪽 그림에서 삼각형 $\\triangle\\text{ABE} \\equiv \\triangle\\text{ECD}$이고 세 점 B, E, C는 한 직선 위에 있다. $\\overline{\\text{AB}}=12\\text{ cm}$, $\\overline{\\text{CD}}=16\\text{ cm}$일 때, 삼각형 AED의 넓이는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q9-problem-visual-v2.svg\" alt=\"B, E, C가 한 수평선에 있고 B와 C에서 수직으로 올린 길이는 각각 12 cm와 16 cm이다. 꼭짓점 A, E, D를 서로 이었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$50\\text{ cm}^2$",
       "$100\\text{ cm}^2$",
@@ -308,9 +316,9 @@ window.examData = {
     ],
     "answer": "③",
     "solution": "$\\triangle ABE\\equiv\\triangle ECD$이므로 $\\overline{AE}=\\overline{ED}$, $\\overline{BE}=\\overline{CD}=16\\text{ cm}$이고 $\\angle AEB=\\angle EDC$이다.\n직각삼각형 $ECD$에서 $\\angle EDC+\\angle DEC=90^\\circ$이므로\n$\\angle AEB+\\angle DEC=\\angle EDC+\\angle DEC=90^\\circ$이다.\n따라서 $\\angle AED=180^\\circ-90^\\circ=90^\\circ$이다.\n\n직각삼각형 $ABE$에서 $\\overline{AE}^2=12^2+16^2=400=20^2$이므로 $\\overline{AE}=20\\text{ cm}$이고 $\\overline{ED}=20\\text{ cm}$이다.\n삼각형 $AED$는 $\\angle AED=90^\\circ$인 직각이등변삼각형이므로\n넓이는 $\\dfrac12\\times20\\times20=200\\text{ cm}^2$이다.\n정답은 ③이다.",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: 네 개의 그림이다. 첫째는 B, E, C가 한 직선 위에 있고 B와 C가 직각이며 AB는 12, CD는 16인 문제 그림이다. 둘째는 직각삼각형 ABE로 AB는 파란색 12, BE는 주황색 16, 빗변 AE는 초록색이다. 셋째는 같은 방향으로 나타낸 합동인 직각삼각형 ECD로 EC는 파란색 12, CD는 주황색 16, 빗변 DE는 초록색이다. 넷째는 E에서 직각이고 AE와 ED가 같은 길이 20인 삼각형 AED이다.",
-    "solutionImageCaption": "합동이므로 AE와 ED, EC와 AB(12 cm), BE와 CD(16 cm)가 각각 같다. 직각삼각형 ABE에서 AE의 제곱은 12의 제곱과 16의 제곱의 합 400이므로 AE=ED=20 cm이고, 각 AEB와 각 EDC가 같아 각 AED는 90°이다. 삼각형 AED는 직각을 낀 두 변이 20 cm인 직각삼각형이므로 넓이는 2분의 1 곱하기 20 곱하기 20이다. 정답은 200 cm²이다. 따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q9-solution-visual-v2.svg",
+    "solutionImageAlt": "합동인 두 직각삼각형의 빗변 AE와 ED는 같은 길이이고 E에서 직각을 이룬다. 이 두 빗변으로 둘러싼 삼각형 AED만 옅게 칠했다.",
+    "solutionImageCaption": "AE와 ED는 각각 √(12²+16²)=20 cm이고 ∠AED=90°이다. 따라서 AED의 넓이는 20×20÷2=200 cm²이고 정답은 ③이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_TRIANGLE_CONGRUENCE",
@@ -335,8 +343,9 @@ window.examData = {
   },
   {
     "id": 10,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "10. 오른쪽 그림과 같이 $\\angle\\text{C} = \\angle\\text{D} = 90^\\circ$인 사다리꼴 ABCD에서 $\\overline{\\text{AD}}=5\\text{ cm}$, $\\overline{\\text{BC}}=8\\text{ cm}$일 때, 사다리꼴 ABCD의 둘레의 길이는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q10.png\" alt=\"도형\">",
+    "question": "10. 오른쪽 그림과 같이 $\\angle\\text{C} = \\angle\\text{D} = 90^\\circ$인 사다리꼴 ABCD에서 $\\overline{\\text{AD}}=5\\text{ cm}$, $\\overline{\\text{BC}}=8\\text{ cm}$일 때, 사다리꼴 ABCD의 둘레의 길이는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q10-problem-visual-v2.svg\" alt=\"윗변 AD는 5 cm, 아랫변 BC는 8 cm이며 높이 CD는 4 cm이다. C와 D에서 각각 직각 표시가 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$22\\text{ cm}$",
       "$23\\text{ cm}$",
@@ -346,9 +355,9 @@ window.examData = {
     ],
     "answer": "①",
     "solution": "꼭짓점 $A$에서 $\\overline{BC}$에 내린 수선의 발을 $H$라 하면 사각형 $AHCD$는 직사각형이다.\n$\\overline{AH}=\\overline{DC}=4\\text{ cm}$, $\\overline{HC}=\\overline{AD}=5\\text{ cm}$이므로\n$\\overline{BH}=8-5=3\\text{ cm}$이다.\n직각삼각형 $ABH$에서 $\\overline{AB}^2=3^2+4^2=25=5^2$이므로 $\\overline{AB}=5\\text{ cm}$이다.\n따라서 둘레의 길이는 $5+8+4+5=22\\text{ cm}$이다.\n정답은 ①이다.",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q10-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 C와 D가 직각인 사다리꼴로 AD는 5, BC는 8, CD는 4인 문제 그림이다. 둘째는 A에서 BC에 내린 수선의 발을 H라 하고 직사각형을 파란색, 직각삼각형 ABH를 주황색으로 칠한 그림으로 BH는 3, HC는 5, CD는 4이다. 셋째는 직각을 낀 두 변이 BH 3, AH 4이고 빗변 AB가 5인 직각삼각형 ABH이다.",
-    "solutionImageCaption": "수선의 발 H를 잡으면 AH=DC=4 cm, HC=AD=5 cm이므로 BH=8-5=3 cm이다. 직각삼각형 ABH에서 AB의 제곱은 3의 제곱 더하기 4의 제곱인 25이므로 AB=5 cm이다. 둘레는 AB+BC+CD+DA를 더한 길이이다. 정답은 22 cm이다. 따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q10-solution-visual-v2.svg",
+    "solutionImageAlt": "A에서 아랫변으로 내린 수선은 H에서 만난다. 옅게 칠한 직각삼각형 ABH의 다리는 3 cm와 4 cm이고 사다리꼴의 다른 부분은 흰색이다.",
+    "solutionImageCaption": "AH=CD=4 cm이고 BH=8−5=3 cm이다. 피타고라스 정리로 AB=5 cm이므로 둘레는 22 cm이고 정답은 ①이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_QUADRILATERAL_PROPERTIES"
@@ -372,8 +381,9 @@ window.examData = {
   },
   {
     "id": 11,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "11. 오른쪽 그림과 같이 $\\angle\\text{A} = 90^\\circ$, $\\overline{\\text{BC}}=18\\text{ cm}$인 직각삼각형 ABC의 각 변을 지름으로 하는 세 반원 $P, Q, R$의 넓이의 합을 구하면? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q11.png\" alt=\"도형\">",
+    "question": "11. 오른쪽 그림과 같이 $\\angle\\text{A} = 90^\\circ$, $\\overline{\\text{BC}}=18\\text{ cm}$인 직각삼각형 ABC의 각 변을 지름으로 하는 세 반원 $P, Q, R$의 넓이의 합을 구하면? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q11-problem-visual-v2.svg\" alt=\"직각삼각형 ABC의 세 변을 지름으로 하는 반원은 AB 바깥쪽 P, AC 바깥쪽 Q, BC 아래쪽 R이다. BC는 18 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$18\\pi\\text{ cm}^2$",
       "$36\\pi\\text{ cm}^2$",
@@ -407,8 +417,9 @@ window.examData = {
   },
   {
     "id": 12,
+    "layoutTag": "fullwidth",
     "score": 5,
-    "question": "12. 오른쪽 그림과 같이 가로, 세로의 길이가 각각 $13\\text{ cm}, 12\\text{ cm}$인 직사각형 모양의 종이를 접어서 점 D가 선분 BC와 만나는 점을 P라고 할 때, 삼각형 APQ의 넓이는? (5점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q12.png\" alt=\"도형\">",
+    "question": "12. 오른쪽 그림과 같이 가로, 세로의 길이가 각각 $13\\text{ cm}, 12\\text{ cm}$인 직사각형 모양의 종이를 접어서 점 D가 선분 BC와 만나는 점을 P라고 할 때, 삼각형 APQ의 넓이는? (5점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q12-problem-visual-v2.svg\" alt=\"13 cm와 12 cm인 직사각형 종이에서 D가 밑변 위 점 P로 옮겨진다. 오른쪽 변 위 Q와 A를 접는 선으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
       "$\\dfrac{169}{3}\\text{ cm}^2$",
       "$\\dfrac{178}{3}\\text{ cm}^2$",
@@ -418,9 +429,9 @@ window.examData = {
     ],
     "answer": "①",
     "solution": "종이를 접으면 $\\overline{AP}=\\overline{AD}=13\\text{ cm}$이고 $\\overline{AB}=12\\text{ cm}$이다.\n직각삼각형 $ABP$에서 $\\overline{BP}^2=13^2-12^2=25$이므로 $\\overline{BP}=5\\text{ cm}$이고\n$\\overline{PC}=13-5=8\\text{ cm}$이다.\n\n$\\overline{CQ}=y\\text{ cm}$라 하면 $\\overline{PQ}=\\overline{DQ}=12-y$이다.\n직각삼각형 $PCQ$에서 $8^2+y^2=(12-y)^2$\n$64+y^2=144-24y+y^2$\n$24y=80$, $y=\\dfrac{10}{3}$이다.\n따라서 $\\overline{PQ}=12-\\dfrac{10}{3}=\\dfrac{26}{3}\\text{ cm}$이다.\n\n접은 도형이므로 $\\angle APQ=\\angle ADQ=90^\\circ$이다. 삼각형 $APQ$의 넓이는\n$\\dfrac12\\times\\overline{AP}\\times\\overline{PQ}=\\dfrac12\\times13\\times\\dfrac{26}{3}=\\dfrac{169}{3}\\text{ cm}^2$이다.\n정답은 ①이다.",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q12-solution.svg",
-    "solutionImageAlt": "해설 그림: 네 개의 그림이다. 첫째는 가로 13 cm, 세로 12 cm인 직사각형을 접어 D가 BC 위의 점 P에 놓이고 접은 선이 CD와 만나는 점을 Q라 한 문제 그림이다. 둘째는 AP가 AD와 같고 직각삼각형 ABP의 변이 12, 5이며 PC가 8인 그림이다. 셋째는 직각삼각형 PCQ에서 PC가 8, CQ가 y, PQ가 12-y인 그림이다. 넷째는 P에서 직각이고 AP가 13, PQ가 3분의 26인 삼각형 APQ이다.",
-    "solutionImageCaption": "접으면 AP=AD=13 cm이므로 직각삼각형 ABP에서 BP=5 cm, PC=8 cm이다. CQ=y라 하면 PQ=DQ=12-y이고 직각삼각형 PCQ에서 8의 제곱 더하기 y의 제곱이 12-y의 제곱이므로 y는 3분의 10, PQ는 3분의 26이다. 각 APQ가 직각이므로 삼각형 APQ의 넓이는 2분의 1 곱하기 13 곱하기 3분의 26이다. 정답은 3분의 169 cm²이다. 따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q12-solution-visual-v2.svg",
+    "solutionImageAlt": "D가 P로 옮겨지면서 AD와 AP가 같고 DQ와 PQ가 같다. 색칠한 APQ는 P에서 직각이다. 원래 접기 전 둘레의 일부는 점선으로 표시했다.",
+    "solutionImageCaption": "AP=AD=13 cm에서 BP=5 cm, PC=8 cm이다. CQ=y이면 PQ=12−y이고 8²+y²=(12−y)²라서 y=10/3이다. 따라서 △APQ의 넓이는 169/3 cm²이며 정답은 ①이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_TRIANGLE_AREA"
@@ -737,14 +748,15 @@ window.examData = {
   },
   {
     "id": 21,
+    "layoutTag": "fullwidth",
     "score": 9,
-    "question": "<p>【서답형 1】【서술형】</p><p>【수준별 1-①】 아래 그림에서 점 G는 삼각형 ABC의 무게중심이다. 삼각형 ABC의 넓이가 $60\\text{ cm}^2$일 때, 삼각형 GDC의 넓이를 구하는 풀이과정과 답을 쓰시오. (4점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/s01_1.png\" alt=\"도형\"></p><p>【수준별 1-②】 아래 그림의 $\\angle\\text{A} = 90^\\circ$인 직각삼각형 ABC에서 점 G는 삼각형 ABC의 무게중심, 점 E는 삼각형 ABD의 무게중심, 점 F는 삼각형 ADC의 무게중심이다. $\\overline{\\text{AB}}=15\\text{ cm}$, $\\overline{\\text{AC}}=8\\text{ cm}$일 때, 삼각형 AEF의 넓이를 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/s01_2.png\" alt=\"도형\"></p>",
+    "question": "<p>【서답형 1】【서술형】</p><p>【수준별 1-①】 아래 그림에서 점 G는 삼각형 ABC의 무게중심이다. 삼각형 ABC의 넓이가 $60\\text{ cm}^2$일 때, 삼각형 GDC의 넓이를 구하는 풀이과정과 답을 쓰시오. (4점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q21-problem-visual-v2.svg\" alt=\"삼각형 ABC의 중선 AD, BE, CF가 G에서 만난다. D는 아래쪽 밑변의 중점이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>【수준별 1-②】 아래 그림의 $\\angle\\text{A} = 90^\\circ$인 직각삼각형 ABC에서 점 G는 삼각형 ABC의 무게중심, 점 E는 삼각형 ABD의 무게중심, 점 F는 삼각형 ADC의 무게중심이다. $\\overline{\\text{AB}}=15\\text{ cm}$, $\\overline{\\text{AC}}=8\\text{ cm}$일 때, 삼각형 AEF의 넓이를 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q21-stem-2-problem-visual-v2.svg\" alt=\"A에서 직각을 이루는 AB와 AC는 각각 15 cm와 8 cm이다. 아래쪽 D의 좌우와 중앙의 세 삼각형 무게중심 E, G, F가 같은 가로선 위에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "수준별 1-① $10\\text{ cm}^2$, 1-② $\\dfrac{40}{3}\\text{ cm}^2$",
     "solution": "[수준별 1-①]\n$\\overline{AD}$는 삼각형 $ABC$의 중선이므로 삼각형 $ADC$의 넓이는 $\\dfrac12\\times60=30\\text{ cm}^2$이다.\n무게중심 $G$는 중선 $AD$를 $2:1$로 나누므로 $\\overline{AG}:\\overline{GD}=2:1$이다.\n삼각형 $ADC$와 삼각형 $GDC$는 높이가 같으므로 넓이의 비는 밑변의 비와 같아 $\\triangle GDC=\\dfrac13\\triangle ADC$이다.\n따라서 $\\triangle GDC=\\dfrac13\\times30=10\\text{ cm}^2$이다.\n답: $10\\text{ cm}^2$\n\n[수준별 1-②]\n삼각형 $ABC$의 넓이는 $\\dfrac12\\times15\\times8=60\\text{ cm}^2$이다.\n$\\overline{BD}$, $\\overline{DC}$의 중점을 각각 $M$, $N$이라 하면 $E$는 삼각형 $ABD$의 중선 $AM$을, $F$는 삼각형 $ADC$의 중선 $AN$을 꼭짓점 $A$에서 $2:1$로 나누는 점이다.\n$\\overline{AE}:\\overline{AM}=\\overline{AF}:\\overline{AN}=2:3$이므로 $\\overline{EF}//\\overline{MN}$이고 삼각형 $AEF$와 삼각형 $AMN$은 닮음비가 $2:3$인 닮은 도형이다.\n$\\overline{MN}=\\overline{MD}+\\overline{DN}=\\dfrac12\\overline{BD}+\\dfrac12\\overline{DC}=\\dfrac12\\overline{BC}$이므로 $\\triangle AMN=\\dfrac12\\triangle ABC=30\\text{ cm}^2$이다.\n닮은 도형의 넓이의 비는 닮음비의 제곱이므로 $\\triangle AEF:\\triangle AMN=2^2:3^2=4:9$이다.\n따라서 $\\triangle AEF=30\\times\\dfrac49=\\dfrac{40}{3}\\text{ cm}^2$이다.\n답: $\\dfrac{40}{3}\\text{ cm}^2$",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 개의 그림이다. 첫째는 삼각형 ABC의 세 중선과 무게중심 G를 그리고 삼각형 AGC를 파란색, 삼각형 GDC를 주황색으로 칠한 그림으로 삼각형 ABC의 넓이는 60이고 AG와 GD의 길이의 비는 2 대 1이다. 둘째는 각 A가 직각이고 AB는 15, AC는 8인 삼각형에서 BC의 중점 D, BD와 DC의 중점 M, N을 잡고 삼각형 AMN을 파란색으로 칠한 그림이다. 셋째는 삼각형 AMN 안에서 AM, AN 위의 점 E, F와 무게중심 G를 나타내고 삼각형 AEF를 주황색, 나머지를 파란색으로 칠한 그림으로 닮음비는 2 대 3이다.",
-    "solutionImageCaption": "1-① 중선 AD가 삼각형 ABC의 넓이를 이등분하므로 삼각형 ADC는 30 cm²이고, AG:GD=2:1이므로 삼각형 GDC는 삼각형 ADC의 3분의 1이다. 1-② 삼각형 ABC의 넓이는 2분의 1 곱하기 15 곱하기 8인 60 cm²이다. M, N이 BD, DC의 중점이므로 MN은 BC의 절반이고 파란색 삼각형 AMN은 30 cm²이다. E, F가 AM, AN을 2:1로 나누므로 삼각형 AEF와 AMN의 닮음비는 2:3이고 넓이의 비는 4:9이다. 정답은 1-①이 10 cm², 1-②가 3분의 40 cm²이다.",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q21-solution-visual-v2.svg",
+    "solutionImageAlt": "윗그림에서 GDC와 ADC가 공통으로 가지는 높이는 C에서 직선 AD까지의 거리다. 아래에서는 무게중심 E, F를 이은 작은 삼각형 AEF와 밑변 MN을 포함하는 큰 삼각형 AMN을 비교한다.",
+    "solutionImageCaption": "1-① △GDC의 넓이는 △ADC의 1/3이므로 10 cm²이다. 1-② △AEF와 △AMN의 닮음비는 2:3, 넓이비는 4:9이므로 △AEF의 넓이는 40/3 cm²이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_SIMILAR_FIGURES_AREA_VOLUME",
@@ -769,14 +781,15 @@ window.examData = {
   },
   {
     "id": 22,
+    "layoutTag": "fullwidth",
     "score": 9,
-    "question": "<p>【서답형 2】【서술형】</p><p>【수준별 2-①】 아래 그림과 같이 직각삼각형 ABC의 세 변을 각각 한 변으로 하고 사각형 BCGF의 넓이가 $169\\text{ cm}^2$, 사각형 AIHC의 넓이가 $25\\text{ cm}^2$인 두 정사각형이 있을 때, 색칠한 부분의 정사각형 ABED의 넓이를 구하는 풀이과정과 답을 쓰시오. (4점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/s02_1.png\" alt=\"도형\"></p><p>【수준별 2-②】 아래 그림과 같은 $\\overline{\\text{OA}}=1$이고 나머지 한 변의 길이가 $1$인 직각이등변삼각형을 기준으로 하여 테오도로스 나선을 그렸을 때 $\\overline{\\text{OB}}^2$의 값을 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/s02_2.png\" alt=\"도형\"></p>",
+    "question": "<p>【서답형 2】【서술형】</p><p>【수준별 2-①】 아래 그림과 같이 직각삼각형 ABC의 세 변을 각각 한 변으로 하고 사각형 BCGF의 넓이가 $169\\text{ cm}^2$, 사각형 AIHC의 넓이가 $25\\text{ cm}^2$인 두 정사각형이 있을 때, 색칠한 부분의 정사각형 ABED의 넓이를 구하는 풀이과정과 답을 쓰시오. (4점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q22-problem-visual-v2.svg\" alt=\"빗변 BC에 붙인 정사각형의 넓이는 169 cm², AC에 붙인 것은 25 cm²이다. AB에 붙인 정사각형 ABED만 옅게 색칠했다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\"></p><p>【수준별 2-②】 아래 그림과 같은 $\\overline{\\text{OA}}=1$이고 나머지 한 변의 길이가 $1$인 직각이등변삼각형을 기준으로 하여 테오도로스 나선을 그렸을 때 $\\overline{\\text{OB}}^2$의 값을 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q22-stem-2-problem-visual-v2.svg\" alt=\"OA에 길이 1인 선분을 수직으로 잇는 것부터 시작한다. 다섯 번 이어서 끝점 B를 표시했다. 바깥쪽 다섯 변의 길이는 모두 1이다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "수준별 2-① $144\\text{ cm}^2$, 2-② $6$",
     "solution": "[수준별 2-①]\n정사각형 $BCGF$의 넓이가 $169\\text{ cm}^2$이므로 $\\overline{BC}^2=169$이다.\n정사각형 $AIHC$의 넓이가 $25\\text{ cm}^2$이므로 $\\overline{AC}^2=25$이다.\n직각삼각형 $ABC$에서 피타고라스 정리에 의해 $\\overline{AB}^2=\\overline{BC}^2-\\overline{AC}^2=169-25=144$이다.\n색칠한 정사각형 $ABED$의 넓이는 $\\overline{AB}^2=144\\text{ cm}^2$이다.\n답: $144\\text{ cm}^2$\n\n[수준별 2-②]\n$\\overline{OA}=1$이고 이웃한 변이 $1$인 첫 직각삼각형에서 빗변의 제곱은 $1^2+1^2=2$이다.\n다음 직각삼각형에서는 $2+1^2=3$, 그다음은 $3+1^2=4$, $4+1^2=5$로 한 단계마다 $1$씩 커진다.\n그림에는 길이가 $1$인 바깥쪽 변이 $5$개이므로 직각삼각형은 $5$개이고, 마지막 빗변이 $\\overline{OB}$이다.\n따라서 $\\overline{OB}^2=1+5=6$이다.\n답: $6$",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q22-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 직각삼각형 ABC의 세 변을 각각 한 변으로 하는 정사각형 세 개를 그린 그림으로, 변 BC 위의 정사각형은 파란색이고 넓이가 169, 변 CA 위의 정사각형은 초록색이고 넓이가 25이며, 변 AB 위의 정사각형은 주황색으로 칠하고 넓이를 S로 두었다. 둘째는 OA가 1이고 길이가 1인 바깥 변 다섯 개를 이어 직각삼각형 다섯 개를 점 O 둘레에 펼친 그림으로, 길이가 같은 변에는 같은 표시가 있다.",
-    "solutionImageCaption": "2-① 정사각형의 넓이가 곧 변의 길이의 제곱이므로 파란색 정사각형은 BC의 제곱이 169, 초록색 정사각형은 AC의 제곱이 25이다. 직각삼각형에서 빗변 BC의 제곱은 나머지 두 변의 제곱의 합이므로, 주황색 정사각형의 넓이는 169에서 25를 뺀 값이다. 2-② 첫 직각삼각형의 빗변의 제곱은 1의 제곱 더하기 1의 제곱으로 2이고, 직각삼각형을 하나 붙일 때마다 빗변의 제곱이 1씩 커져 3, 4, 5가 된다. 길이가 1인 바깥 변이 5개이므로 마지막 빗변 OB의 제곱은 처음 값 1에 5를 더한 값이다. 정답은 2-①이 144 cm², 2-②가 6이다.",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q22-solution-visual-v2.svg",
+    "solutionImageAlt": "윗그림은 직각삼각형 세 변에 붙인 세 정사각형이다. 아래 그림에서는 각 단계에 길이 1인 새 직각변을 잇고 빗변이 다음 직각삼각형의 변이 되는 모습을 보인다.",
+    "solutionImageCaption": "2-① 피타고라스 정리로 AB²=169−25=144 cm²이다. 2-② 각 단계에서 빗변 길이의 제곱이 1씩 커진다. OA²=1에서 다섯 번 늘어나므로 OB²=6이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -798,8 +811,9 @@ window.examData = {
   },
   {
     "id": 23,
+    "layoutTag": "fullwidth",
     "score": 9,
-    "question": "<p>【서답형 3】【서술형】</p><p>【수준별 3-①】 현지는 500원짜리 동전 5개, 100원짜리 동전 10개가 있다. 이 동전으로 2500원짜리 공책 한 권을 사려고 할 때, 공책값을 지불하는 경우의 수를 구하는 풀이과정과 답을 쓰시오. (4점)</p><p>【수준별 3-②】 좌표평면 위를 움직이는 점 P가 있다. 주사위를 던져서 나오는 눈의 수 $a$가 홀수이면 $x$축의 양의 방향으로 $a$만큼 나아가고, $a$가 짝수이면 $y$축의 양의 방향으로 $a$만큼 나아간다고 한다. 이러한 시행을 몇 번 반복하여 원점에서 출발한 점 P가 점 $(3, 2)$에 도달하게 되는 경우의 수를 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/s03_2.png\" alt=\"도형\"></p>",
+    "question": "<p>【서답형 3】【서술형】</p><p>【수준별 3-①】 현지는 500원짜리 동전 5개, 100원짜리 동전 10개가 있다. 이 동전으로 2500원짜리 공책 한 권을 사려고 할 때, 공책값을 지불하는 경우의 수를 구하는 풀이과정과 답을 쓰시오. (4점)</p><p>【수준별 3-②】 좌표평면 위를 움직이는 점 P가 있다. 주사위를 던져서 나오는 눈의 수 $a$가 홀수이면 $x$축의 양의 방향으로 $a$만큼 나아가고, $a$가 짝수이면 $y$축의 양의 방향으로 $a$만큼 나아간다고 한다. 이러한 시행을 몇 번 반복하여 원점에서 출발한 점 P가 점 $(3, 2)$에 도달하게 되는 경우의 수를 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q23-problem-visual-v2.svg\" alt=\"가로축과 세로축의 1, 2, 3이 표시된 빈 모눈이다. 점 P가 이동할 경로는 그려져 있지 않다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "수준별 3-① $3$가지, 3-② $6$가지",
     "solution": "[수준별 3-①]\n$500$원짜리 $a$개, $100$원짜리 $b$개로 $2500$원을 내면 $500a+100b=2500$, 즉 $5a+b=25$이다. 단 $0\\le a\\le5$, $0\\le b\\le10$이다.\n$a=5$이면 $b=0$, $a=4$이면 $b=5$, $a=3$이면 $b=10$이다.\n$a=2$이면 $b=15$로 $10$개를 넘으므로 불가능하다.\n따라서 $(a,b)=(5,0),(4,5),(3,10)$의 $3$가지이다.\n답: $3$가지\n\n[수준별 3-②]\n점 $(3,2)$에 도달하려면 $x$축 방향으로 합이 $3$, $y$축 방향으로 합이 $2$가 되어야 한다.\n$y$축 방향은 짝수의 눈만 쓰고 합이 $2$이므로 $2$가 한 번 나온다.\n$x$축 방향은 홀수의 눈만 쓰고 합이 $3$이므로 $3$이 한 번 나오거나 $1$이 세 번 나온다.\n(i) $3$과 $2$가 나오는 경우: 순서가 $(3,2)$, $(2,3)$의 $2$가지\n(ii) $1,1,1,2$가 나오는 경우: $2$가 나오는 차례를 정하는 $4$가지 $(1,1,1,2),(1,1,2,1),(1,2,1,1),(2,1,1,1)$\n따라서 $2+4=6$가지이다.\n답: $6$가지",
@@ -832,14 +846,15 @@ window.examData = {
   },
   {
     "id": 24,
+    "layoutTag": "fullwidth",
     "score": 9,
-    "question": "<p>【서답형 4】【서술형】</p><p>【수준별 4-①】 태양계 행성과 그 표면 온도가 하나씩 적힌 8장의 카드가 있다. 이 중에서 임의로 한 장의 카드를 뽑을 때, 표면온도가 영상인 행성의 카드가 뽑힐 확률을 구하는 풀이과정과 답을 쓰시오. (4점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/s04_1.png\" alt=\"도형\"></p><p>【수준별 4-②】 아래 그림과 같이 한 변의 길이가 1인 정육각형의 꼭짓점 A에 점 P가 있다. 점 P는 주사위를 던질 때 나오는 눈의 수만큼의 길이를 정육각형의 변을 따라 시곗바늘이 도는 반대 방향으로 움직인다. 한 개의 주사위를 두 번 던질 때, 점 P가 꼭짓점 D에 놓일 확률을 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/s04_2.png\" alt=\"도형\"></p>",
+    "question": "<p>【서답형 4】【서술형】</p><p>【수준별 4-①】 태양계 행성과 그 표면 온도가 하나씩 적힌 8장의 카드가 있다. 이 중에서 임의로 한 장의 카드를 뽑을 때, 표면온도가 영상인 행성의 카드가 뽑힐 확률을 구하는 풀이과정과 답을 쓰시오. (4점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q24-problem-visual-v2.svg\" alt=\"수성 +179°C, 금성 +467°C, 지구 +17°C, 화성 −80°C, 목성 −148°C, 토성 −176°C, 천왕성 −215°C, 해왕성 −214°C를 각각 원문 카드 순서로 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>【수준별 4-②】 아래 그림과 같이 한 변의 길이가 1인 정육각형의 꼭짓점 A에 점 P가 있다. 점 P는 주사위를 던질 때 나오는 눈의 수만큼의 길이를 정육각형의 변을 따라 시곗바늘이 도는 반대 방향으로 움직인다. 한 개의 주사위를 두 번 던질 때, 점 P가 꼭짓점 D에 놓일 확률을 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q24-stem-2-problem-visual-v2.svg\" alt=\"정육각형 A, B, C, D, E, F의 각 변은 길이 1이다. 점 P는 위쪽 A에서 출발해서 반시계 방향인 B 쪽으로 움직인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "수준별 4-① $\\dfrac38$, 4-② $\\dfrac16$",
     "solution": "[수준별 4-①]\n카드는 모두 $8$장이다. 표면온도가 영상($0^\\circ\\text{C}$보다 높음)인 행성은 수성($+179^\\circ\\text{C}$), 금성($+467^\\circ\\text{C}$), 지구($+17^\\circ\\text{C}$)의 $3$장이다.\n따라서 확률은 $\\dfrac38$이다.\n답: $\\dfrac38$\n\n[수준별 4-②]\n정육각형의 둘레는 $6$이고, 꼭짓점 $A$에서 $D$까지는 $3$만큼 움직여야 한다.\n두 번 던져 나온 눈의 합이 $3$ 또는 $9$이면 $D$에 놓인다. (합이 $15$ 이상은 불가능하다.)\n합이 $3$인 경우: $(1,2),(2,1)$의 $2$가지\n합이 $9$인 경우: $(3,6),(4,5),(5,4),(6,3)$의 $4$가지\n전체 경우의 수는 $6\\times6=36$가지이므로 확률은 $\\dfrac{2+4}{36}=\\dfrac16$이다.\n답: $\\dfrac16$",
-    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q24-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 개의 그림이다. 첫째는 한 변의 길이가 1인 정육각형이고 점 P가 꼭짓점 A에서 시곗바늘 반대 방향인 B 쪽으로 움직이는 문제 그림이다. 둘째는 A에서 B, C, D까지 세 변을 파란색, 나머지 세 변을 주황색으로 칠해 A에서 D까지가 3칸, 한 바퀴가 6칸임을 나타낸 그림이다.",
-    "solutionImageCaption": "4-② 정육각형의 둘레는 6이고 A에서 D까지는 3만큼 움직여야 한다. 두 번 던져 나온 눈의 합이 3 또는 6+3=9이면 P가 D에 놓인다(합이 15 이상은 불가능하다). 합이 3인 경우는 (1,2), (2,1)의 2가지, 합이 9인 경우는 (3,6), (4,5), (5,4), (6,3)의 4가지이고 전체 36가지이므로 확률은 36분의 6이다. 정답은 4-①이 8분의 3, 4-②가 6분의 1이다.",
+    "solutionImage": "assets/images/21_매산중_2학기_기말_중2_수학/q24-solution-visual-v2.svg",
+    "solutionImageAlt": "정육각형의 A에서 B, C, D로 가는 세 구간에 검정 화살표가 있다. D에서 E, F, A로 이어지는 나머지 반 바퀴는 옅은 회색 선이다.",
+    "solutionImageCaption": "4-① 여덟 카드 중 영상은 수성·금성·지구 세 장이므로 확률은 3/8이다. 4-② 두 눈의 합이 3 또는 9이면 D에 놓인다. 각각 2가지와 4가지여서 확률은 6/36=1/6이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_POLYGON_VERTEX_MOTION"

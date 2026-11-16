@@ -18,7 +18,7 @@ const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const blob=b=>crypto.createHash('sha1').update(`blob ${b.length}\0`).update(b).digest('hex');
 const tuple=['curriculum','problemTypeKey','standardCourse','standardUnitKey','subUnitKey'];
 
-function fixture(t,{midbatch=true,mixed=true,laterForeign=true,publishIssued=true}={}){
+function fixture(t,{midbatch=true,mixed=true,laterForeign=true,publishIssued=true,implicitBindingOwner=false,packOnlyBaseline=false}={}){
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'reviewed-pack-companion-'));
   t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
   const put=(p,v)=>{const f=path.join(root,p);fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,
@@ -65,11 +65,13 @@ function fixture(t,{midbatch=true,mixed=true,laterForeign=true,publishIssued=tru
     const requestId='lineage-step-'+n,requestPath='.archive-meta-register/inbox/'+requestId+'.json',receiptPath=RP+requestId+'.json';
     const companion=mixed&&(n===3||n===4),pt=companion?'PT_FOREIGN':'PT_ROOT',tpl=companion?'TPL_COMPANION_'+n:'TPL_ROOT';
     const after={...binding,curriculum:'2022',subUnitKey:'M2-01-STEP-'+n,problemTypeKey:pt};
-    const changes=[];
-    if(n===1)changes.push({path:base+'/pack.json',before:structuredClone(pack),after:{...structuredClone(pack),curricula:['2015','2022']},evidenceRefs:[ref('review/witness.json')]});
+    if(implicitBindingOwner)delete after.ownerPack;
+    const changes=[],packOnly=packOnlyBaseline&&n===(midbatch?1:2);
+    if(n===1||packOnly)changes.push({path:base+'/pack.json',before:structuredClone(pack),
+      after:{...structuredClone(pack),curricula:n===1?['2015','2022']:['2015','2022','2009']},evidenceRefs:[ref('review/witness.json')]});
     if(companion)changes.push({path:foreignBase+'/taxonomy.json',collection:'templates',match:{templateKey:tpl},before:null,
       after:{templateKey:tpl,parentProblemTypeKey:pt,status:'ACTIVE',ownerPack:'H1_FOUNDATION',definition:'exact synthetic companion '+n},evidenceRefs:[ref('review/witness.json')]});
-    changes.push({path:base+'/bindings.json',collection:'bindings',match:Object.fromEntries(tuple.map(k=>[k,after[k]])),before:null,after,evidenceRefs:[ref('review/witness.json')]});
+    if(!packOnly)changes.push({path:base+'/bindings.json',collection:'bindings',match:Object.fromEntries(tuple.map(k=>[k,after[k]])),before:null,after,evidenceRefs:[ref('review/witness.json')]});
     const record={...after,templateKey:tpl,questionUid:'qid_v1_'+String(n).padStart(64,'0'),sourceOrdinal:1,metaFoundationPackId:'MIDDLE2',metadataApprovalType:'FINAL_QA'};
     const request={schemaVersion:'archive-reviewed-exam-meta-register-request-v2',requestId,scope:'PARTIAL_UIDS',sourceArchiveFile:source,
       expectedQuestionCount:1,expectedSourceBlobSha1:blob(bytes),approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'SYNTHETIC_FIXTURE',evidenceRefs:[ref('review/witness.json')]},
@@ -85,7 +87,9 @@ function fixture(t,{midbatch=true,mixed=true,laterForeign=true,publishIssued=tru
     pack.bindingCount=bindings.bindingCount=bindings.bindings.length;pack.packVersion='1.0.'+p.n;
     if(p.companion){foreign.pack.packVersion=foreign.pack.packVersion.replace(/\d+$/,n=>String(Number(n)+1));foreign.pack.templateCount=foreign.taxonomy.templateCount=foreign.taxonomy.templates.length;}
     writeAuthority();const record={...p.record,metaFoundationPackVersion:pack.packVersion,metadataRevision:`meta-foundation:MIDDLE2@${pack.packVersion}:exam-final_qa-v2:${p.requestId}`};
-    const digests=[ref(base+'/pack.json'),ref(base+'/bindings.json')];if(p.companion)digests.push(ref(foreignBase+'/pack.json'),ref(foreignBase+'/taxonomy.json'));
+    const digests=[ref(base+'/pack.json')];
+    if(p.request.registryChanges.some(c=>c.path===base+'/bindings.json'))digests.push(ref(base+'/bindings.json'));
+    if(p.companion)digests.push(ref(foreignBase+'/pack.json'),ref(foreignBase+'/taxonomy.json'));
     p.receipt={schemaVersion:'archive-reviewed-exam-meta-registration-v2',requestId:p.requestId,requestSha256:sha(stable(p.request)),
       sourceArchiveFile:source,sourceBlobSha1:blob(bytes),sourceRawSha256:sha(bytes),expectedQuestionCount:1,
       metadataRegistrationStatus:'REGISTERED',approval:p.request.approval,registryChanges:structuredClone(p.request.registryChanges),
@@ -118,10 +122,24 @@ test('mixed add-only template transactions reproduce outputs and preserve a prio
   assert.equal(versions.includes('1.0.1'),false);assert.equal(f.priorReceipt.outputDigests.length,0);assert.equal(f.check(),true);
 });
 test('mixed transactions retain the original exact-prior-snapshot path',t=>assert.equal(fixture(t,{midbatch:false}).check(),true));
+test('pack-only issuance uses exact published prior bindings when it has no bindings output',t=>{
+  assert.equal(fixture(t,{midbatch:false,packOnlyBaseline:true}).check(),true);
+  assert.throws(fixture(t,{packOnlyBaseline:true}).check,/immutable prior\/request authority/);
+});
+test('a baseline binding mutation still requires the issued bindings digest',t=>{
+  const f=fixture(t,{midbatch:false}),p=f.providers[1];
+  p.receipt.outputDigests=p.receipt.outputDigests.filter(d=>d.path!==f.base+'/bindings.json');f.saveReceipt(p);
+  assert.throws(f.check,/unique canonical output digest required/);
+});
 test('receipt-bound midbatch anchoring also preserves a binding-only transaction chain',t=>assert.equal(fixture(t,{mixed:false}).check(),true));
+test('historical bindings without an owner field use the exact canonical pack path',t=>{
+  const f=fixture(t,{mixed:false,implicitBindingOwner:true});assert.equal(f.check(),true);
+});
 
 for(const [name,mutate,pattern]of[
   ['foreign replacement instead of addition',f=>{f.providers[2].receipt.registryChanges[0].before={status:'ACTIVE'};f.saveReceipt(f.providers[2]);},/only target bindings/],
+  ['explicit foreign target binding owner',f=>{const p=f.providers[2];p.receipt.registryChanges.find(c=>c.collection==='bindings').after.ownerPack='H1_FOUNDATION';f.saveReceipt(p);},/only target bindings/],
+  ['explicit null target binding owner',f=>{const p=f.providers[2];p.receipt.registryChanges.find(c=>c.collection==='bindings').after.ownerPack=null;f.saveReceipt(p);},/only target bindings/],
   ['foreign owner/path mismatch',f=>{f.providers[2].receipt.registryChanges[0].path=f.base+'/taxonomy.json';f.saveReceipt(f.providers[2]);},/only target bindings/],
   ['unknown extra operation including a post-prior curricula edit',f=>{const p=f.providers[2];p.receipt.registryChanges.push({path:f.base+'/pack.json',before:f.pack,after:{...f.pack,curricula:['9999']}});f.saveReceipt(p);},/only target bindings/],
   ['companion current full row changed',f=>{f.foreign.taxonomy.templates[0].definition='changed';f.writeAuthority();},/companion template/],

@@ -1,4 +1,65 @@
 import fs from "node:fs";
+import { bindM2FinalizedScopeParent } from "./reviewed-m2-finalized-scope-parent.mjs";
+
+function finalizedCurriculumTransport(ctx, rpm, snapshot, choice, h) {
+  const spec = ctx.spec.curriculumTransport;
+  if (spec === undefined) return null;
+  const { fail, equal, sha, stable } = h;
+  const schemaVersion = "archive-native-m2-finalized-curriculum-v1";
+  const owns = (row, key) => Object.hasOwn(row || {}, key);
+  if (!spec || typeof spec !== "object" || Array.isArray(spec) ||
+      Object.keys(spec).length !== 1 || spec.schemaVersion !== schemaVersion ||
+      ctx.request.scope !== "PARTIAL_UIDS" || ctx.request.approval?.type !== "FINAL_QA" ||
+      ctx.request.approval.metadataReviewed !== true || ctx.request.approval.sourceRebind !== undefined ||
+      ctx.request.registrationMode !== undefined || ctx.patch.rebind !== undefined || choice.disposition !== "ADD_ONLY" ||
+      !/^original\/middle\/m2\/(?:2mid|2final)\/[^/]+\.js$/.test(ctx.request.sourceArchiveFile || "") ||
+      ctx.native.review.sourceArchiveFile !== ctx.request.sourceArchiveFile ||
+      ctx.patch.sourceReview.schemaVersion !== "archive-reviewed-source-reassessment-v1" ||
+      Object.keys(ctx.patch.sourceReview).length !== 5 ||
+      Object.keys(ctx.patch.sourceReview).some(k => !["schemaVersion", "reviewCommit", "reviewPath", "reviewRef", "proposalFinalization"].includes(k)))
+    fail("v3 curriculum transport requires its exclusive explicit M2 partial FINAL_QA contract");
+  if (rpm.record.curriculum !== "2015" || rpm.record.scope !== "M2-2" ||
+      ctx.final.standardCourse !== "중2 수학" ||
+      !owns(ctx.patch.before, "curriculum") || ctx.patch.before.curriculum !== null ||
+      ctx.patch.after.curriculum !== "2015" || ctx.final.curriculum !== "2015" ||
+      owns(ctx.patch.after, "curriculumKey") || owns(ctx.patch.before, "curriculumKey"))
+    fail("v3 curriculum transport must name the exact omitted native 2015 curriculum");
+  // Absence is material. A source or native after that explicitly carries null,
+  // another year, or an alias is outside this metadata-only transport contract.
+  const priorSources = [ctx.native.reviewedBank[ctx.patch.sourceOrdinal - 1],
+    ctx.native.committedBank[ctx.patch.sourceOrdinal - 1], snapshot.question, ctx.question];
+  for (const row of [ctx.row.after, ctx.accepted, ...priorSources])
+    if (!row || ["curriculum", "curriculumKey"].some(key => owns(row, key)))
+      fail("v3 curriculum transport requires absent native and source curriculum properties");
+  const scopeAliases = ["courseKey", "courseSemester", "semester", "grade", "gradeKey"];
+  if ([ctx.row.after, ctx.accepted, ...priorSources].some(row => scopeAliases.some(key => owns(row, key))) ||
+      scopeAliases.some(key => owns(ctx.patch.before, key) || owns(ctx.patch.after, key)) ||
+      scopeAliases.slice(1).some(key => owns(ctx.metadata, key) || owns(ctx.final, key)) ||
+      owns(ctx.final, "courseKey") && ctx.final.courseKey !== "중2 수학")
+    fail("v3 curriculum transport cannot override an existing course or semester declaration");
+  const metadataBefore = { curriculum: { present: false }, curriculumKey: { present: false } };
+  const issued = ctx.issuedSourceReview?.proposalFinalization?.curriculumTransport;
+  if (issued !== undefined) {
+    // The caller obtains this context only after exact issued receipt/sidecar
+    // validation. Its normal before merge represents the original absent key
+    // as null and leaves the registrar-derived curriculumKey on the issued row.
+    if (!equal(issued.metadataBefore, metadataBefore) ||
+        !owns(ctx.metadata, "curriculum") || ctx.metadata.curriculum !== null ||
+        !owns(ctx.metadata, "curriculumKey") || ctx.metadata.curriculumKey !== "2015" ||
+        owns(ctx.metadata, "courseKey") && ctx.metadata.courseKey !== "중2 수학")
+      fail("v3 curriculum transport issued before context changed");
+  } else if (!ctx.metadata || ["curriculum", "curriculumKey", "courseKey"].some(key => owns(ctx.metadata, key))) {
+    fail("v3 curriculum transport requires an originally absent metadata curriculum");
+  }
+  const proof = { schemaVersion, origin: "IMMUTABLE_NATIVE_RPM_AND_INDEPENDENT_V3_WITNESS",
+    fields: { curriculum: "2015" }, metadataBefore, nativeItemSha256: sha(stable(ctx.row)),
+    nativeRpmContext: { path: rpm.path, sha256: rpm.sha256, recordId: rpm.record.id,
+      recordSha256: sha(stable(rpm.record)), curriculum: "2015", scope: "M2-2" },
+    nativeAndSourceCurriculumPropertiesAbsent: true, sourceWrites: 0,
+    newClassificationJudgments: false, newMathematicalQa: false, newDifficultyJudgments: false };
+  if (issued !== undefined && !equal(issued, proof)) fail("v3 curriculum transport issued proof changed");
+  return proof;
+}
 
 // This lane resolves a native M2 proposal only through its separately authored,
 // immutable definition review. It leaves v1/v2 and their refusal rules intact.
@@ -180,7 +241,10 @@ export function finalizeM2NativeDisposition(ctx, proof, proposals, h) {
       fail("v3 cannot add missing or new native auxiliary values");
     fields[field] = value;retained[field] = sha(stable(value));
   }
+  const scopeParentTransport = bindM2FinalizedScopeParent(ctx, rpm, snapshot, h);
+  const curriculumTransport = finalizedCurriculumTransport(ctx, rpm, snapshot, choice, h);
   return { fields, snapshot, assets, definitions, decisions: [{ selection: selected.selection, disposition: choice.disposition,
     key: choice.definition.conceptKey || choice.definition.templateKey, retainedNativeFields: retained }],
-    independentReviews: [app.independentReviewRef], reviewer: app.reviewer };
+    independentReviews: [app.independentReviewRef], reviewer: app.reviewer,
+    ...(curriculumTransport ? { curriculumTransport } : {}), ...(scopeParentTransport ? { scopeParentTransport } : {}) };
 }

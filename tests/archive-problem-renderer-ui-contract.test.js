@@ -10,38 +10,265 @@ const sourceManifest = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures
 const copy = value => JSON.parse(JSON.stringify(value));
 const head = 'a'.repeat(40);
 const scope = changedFiles => ({ schemaVersion: 'archive-ci-scope-v2', eventName: 'pull_request', headSha: head, changedFiles });
-const studentCss = [400, 700, 800].map(weight => `@font-face { font-family: 'Nanum Myeongjo'; font-style: normal; font-weight: ${weight}; src: url(https://fonts.gstatic.com/s/nanummyeongjo/v1/reviewed_${weight}.woff2) format('woff2'); }`).join('\n');
+const fontDir = path.posix.dirname(checker.FONT_STYLESHEET) + '/';
+const readFont = file => fs.readFileSync(path.join(__dirname, '..', file));
+const studentCss = readFont(checker.FONT_STYLESHEET).toString('utf8');
+const studentFonts = [...checker.declaredStudentFonts(studentCss).keys()];
+const fontPathToken = './' + path.posix.basename(studentFonts[0]);
+const fontResources = new Set([checker.FONT_STYLESHEET, ...studentFonts]);
+const localOrigin = 'http://127.0.0.1:49160';
+const localUrl = file => localOrigin + '/' + file;
+
+function deferredRouteStep() {
+  let resolve;
+  const promise = new Promise(done => { resolve = done; });
+  return { promise, resolve };
+}
+
+function studentFontRouteFixture(overrides = {}) {
+  const fontPath = studentFonts[0];
+  const url = new URL(localUrl(fontPath));
+  const bytes = readFont(fontPath);
+  const state = { declaredFonts: new Set([fontPath]), fontRefs: new Map([[fontPath, { path: fontPath, sha256: checker.sha256(bytes) }]]),
+    fontWeights: new Map([[fontPath, 400]]), studentFontResources: new Map(), fontResources: new Map(), failures: [] };
+  const calls = [];
+  const response = { headers: () => ({ 'content-type': 'font/woff2' }), status: () => 200, url: () => url.href,
+    body: async () => bytes };
+  const route = { request: () => ({ url: () => url.href }), async fetch(options) {
+    calls.push('fetch'); assert.deepEqual(options, { timeout: 15000, maxRedirects: 0 }); return response;
+  }, async fulfill(options) { calls.push('fulfill'); assert.equal(options.response, response); },
+  async abort(reason) { calls.push('abort'); assert.equal(reason, 'failed'); }, ...overrides };
+  return { url, fontPath, state, calls, response, route };
+}
+
+test('owned route work settles concurrent and newly arrived handlers before interception is removed', async () => {
+  const failures = [], lifecycle = checker.createStudentRouteLifecycle(failures), events = [];
+  const first = deferredRouteStep(), second = deferredRouteStep(), late = deferredRouteStep();
+  let completed = 0;
+  const route = { request: () => ({ url: () => 'https://example.test/hashed-only' }) };
+  const lateHandler = lifecycle.wrap(async () => { await late.promise; completed++; events.push('late-settled'); });
+  lifecycle.wrap(async () => { await first.promise; completed++; events.push('first-settled'); lateHandler(route); })(route);
+  lifecycle.wrap(async () => { await second.promise; completed++; events.push('second-settled'); })(route);
+  const page = { async unrouteAll(options) {
+    assert.deepEqual(options, { behavior: 'wait' });
+    assert.equal(completed, 3, 'unroute must not release another in-flight route'); events.push('unroute');
+  } };
+  const closing = checker.closeStudentContext(page, { async close() { events.push('close'); } },
+    () => { assert.equal(failures.length, 0); events.push('verify'); }, lifecycle);
+  await Promise.resolve(); assert.deepEqual(events, []);
+  first.resolve(); await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(events, ['first-settled']);
+  second.resolve(); await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(events, ['first-settled', 'second-settled']);
+  late.resolve(); await closing;
+  assert.deepEqual(events, ['first-settled', 'second-settled', 'late-settled', 'unroute', 'verify', 'close']);
+});
+
+test('student font route records a resource only after successful fulfillment', async () => {
+  const fixture = studentFontRouteFixture(), fulfill = deferredRouteStep();
+  fixture.route.fulfill = async () => { fixture.calls.push('fulfill'); await fulfill.promise; };
+  const work = checker.serveStudentFont(fixture.route, fixture.url, fixture.fontPath, fixture.state);
+  await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(fixture.calls, ['fetch', 'fulfill']);
+  assert.equal(fixture.state.fontResources.size, 0); assert.equal(fixture.state.studentFontResources.size, 0);
+  fulfill.resolve(); await work;
+  assert.equal(fixture.state.fontResources.size, 1); assert.equal(fixture.state.studentFontResources.size, 1);
+  assert.equal(fixture.state.failures.length, 0);
+});
+
+test('student font route fetch failure aborts once and still fails owned cleanup', async () => {
+  const failure = new Error('actual font fetch failed'), fixture = studentFontRouteFixture();
+  fixture.route.fetch = async () => { fixture.calls.push('fetch'); throw failure; };
+  const lifecycle = checker.createStudentRouteLifecycle(fixture.state.failures);
+  await lifecycle.wrap(route => checker.serveStudentFont(route, fixture.url, fixture.fontPath, fixture.state))(fixture.route);
+  let closed = 0;
+  await assert.rejects(checker.closeStudentContext({ async unrouteAll() { assert.fail('failed work must not wait for an unresolved Playwright handled promise'); } },
+    { async close() { closed++; } }, () => assert.fail('failure cannot become PASS'), lifecycle), error => error === failure);
+  assert.equal(closed, 1); assert.deepEqual(fixture.calls, ['fetch', 'abort']);
+  assert.equal(fixture.state.fontResources.size, 0);
+  assert.equal(fixture.state.failures[0].stage, 'FETCH');
+  assert.equal(fixture.state.failures[0].errorMessageSha256, checker.sha256(failure.message));
+});
+
+test('student font route aborts altered checkout bytes before fulfillment', async () => {
+  const fixture = studentFontRouteFixture();
+  fixture.response.body = async () => Buffer.from('altered font');
+  await assert.rejects(checker.serveStudentFont(fixture.route, fixture.url, fixture.fontPath, fixture.state), /UI_FONT_BYTES_DRIFT/);
+  assert.deepEqual(fixture.calls, ['fetch', 'abort']);
+  assert.equal(fixture.state.fontResources.size, 0);
+  assert.equal(fixture.state.studentFontResources.size, 0);
+  assert.equal(fixture.state.failures[0].stage, 'BODY_HASH');
+});
+
+test('student font route asynchronous fulfillment failure is recorded and is never aborted twice', async () => {
+  const failure = new Error('route.fulfill: Route is already handled!'), fixture = studentFontRouteFixture();
+  fixture.route.fulfill = async () => { fixture.calls.push('fulfill'); await Promise.resolve(); throw failure; };
+  const lifecycle = checker.createStudentRouteLifecycle(fixture.state.failures);
+  await lifecycle.wrap(route => checker.serveStudentFont(route, fixture.url, fixture.fontPath, fixture.state))(fixture.route);
+  let closed = false;
+  await assert.rejects(checker.closeStudentContext({ async unrouteAll() { assert.fail('no unroute wait after a settlement error'); } },
+    { async close() { closed = true; } }, () => assert.fail('failure cannot become PASS'), lifecycle), error => error === failure);
+  assert.equal(closed, true); assert.deepEqual(fixture.calls, ['fetch', 'fulfill']);
+  assert.equal(fixture.state.fontResources.size, 0); assert.equal(fixture.state.studentFontResources.size, 0);
+  assert.equal(fixture.state.failures[0].stage, 'FULFILL');
+  assert.equal(fixture.state.failures[0].errorMessageSha256, checker.sha256(failure.message));
+});
+
+test('student font route preserves both the original fetch failure and an abort failure', async () => {
+  const fetchError = new Error('fetch failed'), abortError = new Error('abort failed'), fixture = studentFontRouteFixture();
+  fixture.route.fetch = async () => { fixture.calls.push('fetch'); throw fetchError; };
+  fixture.route.abort = async () => { fixture.calls.push('abort'); throw abortError; };
+  await assert.rejects(checker.serveStudentFont(fixture.route, fixture.url, fixture.fontPath, fixture.state), error =>
+    error instanceof AggregateError && error.message === 'UI_ROUTE_ABORT_FAILED' &&
+    error.errors[0] === fetchError && error.errors[1] === abortError);
+  assert.deepEqual(fixture.calls, ['fetch', 'abort']);
+  assert.deepEqual(fixture.state.failures.map(x => x.stage), ['FETCH', 'ABORT']);
+  assert.equal(fixture.state.failures[1].errorMessageSha256, checker.sha256(abortError.message));
+});
+
+test('owned route work records a non-font handler rejection and never calls the success verifier', async () => {
+  const failures = [], lifecycle = checker.createStudentRouteLifecycle(failures), failure = new Error('continue failed');
+  const route = { request: () => ({ url: () => 'https://example.test/request-not-exported' }) };
+  await lifecycle.wrap(async () => { throw failure; })(route);
+  let closed = false;
+  await assert.rejects(checker.closeStudentContext(null, { async close() { closed = true; } },
+    () => assert.fail('must not verify failed work'), lifecycle), error => error === failure);
+  assert.equal(closed, true); assert.equal(failures.length, 1);
+  assert.equal(failures[0].code, 'UI_ROUTE_HANDLER_FAILED');
+  assert(!JSON.stringify(failures).includes('request-not-exported'));
+});
+
+test('student context retains the original case failure alongside route and close failures', async () => {
+  const failures = [], lifecycle = checker.createStudentRouteLifecycle(failures);
+  const original = new Error('UI_RENDERED_IMAGES'), routeError = new Error('route fulfillment failed'), closeError = new Error('context close failed');
+  const route = { request: () => ({ url: () => 'https://example.test/private-request' }) };
+  await lifecycle.wrap(async () => { throw routeError; })(route);
+  await assert.rejects(checker.closeStudentContext(null, { async close() { throw closeError; } },
+    () => assert.fail('failed work cannot pass verification'), lifecycle, original), error =>
+      error instanceof AggregateError && error.message === original.message && error.cause === original &&
+      error.errors.length === 3 && error.errors[0] === original && error.errors[1] === routeError && error.errors[2] === closeError);
+  assert.equal(failures.length, 1);
+});
+
+test('student context waits for a pending font body and route fulfillment before disposal', async () => {
+  const events = []; let disposed = false, releaseBody;
+  const bodyReady = new Promise(resolve => { releaseBody = resolve; });
+  const handler = (async () => {
+    await bodyReady;
+    assert.equal(disposed, false, 'pending response must still be readable');
+    events.push('body-read', 'route-fulfilled');
+  })();
+  const page = { async unrouteAll(options) {
+    assert.deepEqual(options, { behavior: 'wait' });
+    events.push('drain-start'); await handler; events.push('drain-end');
+  } };
+  const context = { async close() { disposed = true; events.push('context-closed'); } };
+  const completion = checker.closeStudentContext(page, context, () => {
+    assert.equal(disposed, false); events.push('late-check');
+  });
+  await Promise.resolve();
+  assert.equal(disposed, false); assert.deepEqual(events, ['drain-start']);
+  releaseBody(); await completion;
+  assert.deepEqual(events, ['drain-start', 'body-read', 'route-fulfilled', 'drain-end', 'late-check', 'context-closed']);
+});
+
+test('student context draining preserves late font failure diagnostics and does not suppress handler errors', async () => {
+  const failures = []; let releaseFailure, closed = false;
+  const pending = new Promise(resolve => { releaseFailure = resolve; });
+  const message = 'apiResponse.body: genuine response body read failure';
+  const handler = (async () => {
+    await pending;
+    failures.push(checker.fontFailureDiagnostic({ kind: 'FONT', stage: 'BODY_READ', httpStatus: 200,
+      urlSha256: 'a'.repeat(64), responseUrlSha256: 'a'.repeat(64), mime: 'font/woff2' }, new Error(message)));
+  })();
+  const completion = checker.closeStudentContext({ async unrouteAll(options) {
+    assert.deepEqual(options, { behavior: 'wait' }); await handler;
+  } }, { async close() { closed = true; } }, () => {
+    assert.equal(closed, false);
+    assert.equal(failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE');
+  });
+  await Promise.resolve(); assert.equal(closed, false); assert.equal(failures.length, 0);
+  const rejects = assert.rejects(completion, /UI_LATE_NETWORK_OR_PAGE_FAILURE/);
+  releaseFailure(); await rejects;
+  assert.equal(closed, true); assert.equal(failures.length, 1);
+  assert.equal(failures[0].errorMessageSha256, checker.sha256(message));
+  assert.equal(failures[0].stage, 'BODY_READ');
+  assert.throws(() => assert.equal(failures.length, 0, 'UI_LATE_NETWORK_OR_PAGE_FAILURE'), /UI_LATE_NETWORK_OR_PAGE_FAILURE/);
+  const original = new Error('route handler failed'); let closedAfterError = false;
+  await assert.rejects(checker.closeStudentContext({ async unrouteAll() { throw original; } },
+    { async close() { closedAfterError = true; } }), error => error === original);
+  assert.equal(closedAfterError, true);
+});
 
 test('the real engine imports its student font before qualified CSS rules', () => {
   const engine = fs.readFileSync(path.join(__dirname, '..', 'archive/engine.html'), 'utf8');
+  const importRef = checker.FONT_STYLESHEET.slice('archive/'.length);
   const fontStyles = [...engine.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)]
-    .map(match => match[1]).filter(css => css.includes('fonts.googleapis.com/css2'));
+    .map(match => match[1]).filter(css => css.includes(importRef));
   assert.equal(fontStyles.length, 1, 'UI_ENGINE_UNIQUE_FONT_STYLESHEET');
   const css = fontStyles[0].replace(/\/\*[\s\S]*?\*\//g, '').trimStart();
   const firstRule = css.match(/^@import\s+url\((['"])([^'"]+)\1\)\s*;/);
   assert(firstRule, 'UI_ENGINE_FONT_IMPORT_MUST_PRECEDE_QUALIFIED_RULES');
-  assert.equal(checker.isStudentFontStylesheet(firstRule[2]), true);
+  assert.equal(firstRule[2], importRef);
+  assert.doesNotMatch(engine, /fonts\.(?:googleapis|gstatic)\.com/);
+  assert.match(css, /font-family:\s*'Nanum Myeongjo',\s*serif;/);
+  assert.match(css, /\.archive2-snapshot-output #print-header-editor-wrap,\.archive2-snapshot-output #qr-output-wrap\{display:none!important\}/);
 });
 
-test('only the exact student stylesheet query is allowed', () => {
-  assert.equal(checker.isStudentFontStylesheet('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap'), true);
-  assert.equal(checker.isStudentFontStylesheet('https://fonts.googleapis.com/css2?display=swap&family=Nanum%20Myeongjo%3Awght%40400%3B700%3B800'), true);
+test('only the exact same-origin student stylesheet and declared font subsets qualify', () => {
+  for (const rel of fontResources) {
+    assert.equal(checker.studentFontResourcePath(localUrl(rel), localOrigin, fontResources), rel);
+  }
 });
-for (const value of [
-  'http://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap',
-  'https://fonts.googleapis.com.evil.test/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap',
-  'https://fonts.googleapis.com/css2?family=Other:wght@400;700;800&display=swap',
-  'https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap&extra=1'
-]) test(`font stylesheet refuses non-exact URL ${value.split('?')[0]}`, () => assert.equal(checker.isStudentFontStylesheet(value), false));
+for (const [name, value] of [
+  ['Google stylesheet', 'https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap'],
+  ['Google font', 'https://fonts.gstatic.com/s/nanummyeongjo/v31/9Btx3DZF0dXLMZlywRbVRNhxy1Lu.woff2'],
+  ['wrong origin', 'http://127.0.0.1:49161/' + checker.FONT_STYLESHEET],
+  ['host lookalike', 'http://127.0.0.1.evil.test:49160/' + checker.FONT_STYLESHEET],
+  ['query string', localUrl(studentFonts[0]) + '?extra=1'],
+  ['fragment', localUrl(checker.FONT_STYLESHEET) + '#extra'],
+  ['credentials', localUrl(checker.FONT_STYLESHEET).replace('http://', 'http://user@')],
+  ['encoded filename', localUrl(studentFonts[0]).replace('/9B', '/%39B')],
+  ['unknown file', localUrl(fontDir + 'nanum-myeongjo-900.woff2')],
+  ['superseded full font', localUrl(fontDir + 'nanum-myeongjo-400.woff2')],
+]) test(`student font transport refuses ${name}`, () => assert.equal(checker.studentFontResourcePath(value, localOrigin, fontResources), null));
 
-test('font files are restricted to the returned stylesheet declarations and all three weights', () => {
-  assert.deepEqual([...checker.declaredStudentFonts(studentCss)], [400, 700, 800].map(weight => `https://fonts.gstatic.com/s/nanummyeongjo/v1/reviewed_${weight}.woff2`));
+test('the real stylesheet declares 92 normal swap font subsets for each of the three weights', () => {
+  const fonts = checker.declaredStudentFonts(studentCss);
+  assert.equal(fonts.size, 276);
+  assert.deepEqual([400, 700, 800].map(weight => [...fonts.values()].filter(value => value === weight).length), [92, 92, 92]);
 });
-test('declared Korean font subsets accept the observed canonical numeric suffix range', () => {
-  for (const suffix of [0, 9, 10, 65, 94, 99, 100, 119]) {
-    const css = studentCss.replaceAll('.woff2', `.${suffix}.woff2`);
-    assert.deepEqual([...checker.declaredStudentFonts(css)], [400, 700, 800].map(weight =>
-      `https://fonts.gstatic.com/s/nanummyeongjo/v1/reviewed_${weight}.${suffix}.woff2`));
+const fontReader = read => ({ read, ref: (file, data) => ({ path: file, bytes: data.length, sha256: checker.sha256(data) }) });
+test('the declared assets are the locked v31 Chromium WOFF2 payloads and their upstream OFL', () => {
+  const { refs, licenseRef, weights } = checker.checkedStudentFontRefs(fontReader(readFont));
+  assert.deepEqual([...refs.keys()], [checker.FONT_STYLESHEET, ...studentFonts.slice().sort()]);
+  assert.deepEqual([...weights.keys()], studentFonts);
+  assert.equal(studentFonts.reduce((sum, file) => sum + refs.get(file).bytes, 0), 6002860);
+  assert.equal(licenseRef.path, checker.FONT_LICENSE);
+  assert.equal(licenseRef.bytes, 4457);
+  const pages = JSON.parse(readFont('tools/archive-pages-release-manifest.json'));
+  const tree = pages.trees.find(row => row.path === 'archive/vendor');
+  assert(tree && !tree.exclude?.includes('nanum-myeongjo'));
+});
+test('a missing, altered or swapped font or altered license fails closed', () => {
+  const check = read => checker.checkedStudentFontRefs(fontReader(read));
+  assert.throws(() => check(file => readFont(file === studentFonts[0] ? fontDir + 'missing.woff2' : file)), /ENOENT/);
+  assert.throws(() => check(file => file === studentFonts[0] ? readFont(studentFonts[1]) : readFont(file)), /UI_FONT_BYTES_DRIFT/);
+  assert.throws(() => check(file => file === studentFonts[0] ? Buffer.from('wOF2tampered') : readFont(file)), /UI_FONT_BYTES_DRIFT/);
+  assert.throws(() => check(file => file === checker.FONT_LICENSE ? Buffer.from('altered') : readFont(file)), /UI_FONT_LICENSE_DRIFT/);
+});
+test('the font CSS must preserve both the original unicode ranges and declaration order', () => {
+  const range = studentCss.replace(/unicode-range:\s*U\+[0-9a-f]+/i, 'unicode-range: U+EE');
+  const [first, second] = studentCss.match(/@font-face\s*\{[^{}]*\}/g);
+  const head = studentCss.indexOf(first);
+  const next = studentCss.indexOf(second, head + first.length);
+  const swapped = studentCss.slice(0, head) + second + studentCss.slice(head + first.length, next) +
+    first + studentCss.slice(next + second.length);
+  for (const css of [range, swapped]) {
+    assert.notEqual(css, studentCss);
+    assert.equal(checker.declaredStudentFonts(css).size, 276);
+    assert.throws(() => checker.checkedStudentFontRefs(fontReader(file => file === checker.FONT_STYLESHEET ? Buffer.from(css) : readFont(file))),
+      /UI_FONT_STYLESHEET_BYTES_DRIFT/);
   }
 });
 for (const suffix of ['120.woff2', '999.woff2', '00.woff2', '01.woff2', '-1.woff2', '+1.woff2',
@@ -53,17 +280,24 @@ for (const suffix of ['120.woff2', '999.woff2', '00.woff2', '01.woff2', '-1.woff
 }
 for (const [name, css] of [
   ['nested stylesheet', `@import 'https://example.test/font.css';\n${studentCss}`],
-  ['another family directory', studentCss.replace('/s/nanummyeongjo/', '/s/other/')],
-  ['another origin', studentCss.replace('fonts.gstatic.com', 'example.test')],
+  ['another family directory', studentCss.replace(fontPathToken, './other/' + path.posix.basename(studentFonts[0]))],
+  ['another origin', studentCss.replace(fontPathToken, 'https://example.test/font.woff2')],
   ['missing required weight', studentCss.replace('font-weight: 800;', 'font-weight: 900;')],
-  ['malformed escaped URL', studentCss.replace('https://fonts.gstatic.com', 'https://fonts.gstatic.com\\escape')]
+  ['malformed escaped URL', studentCss.replace(fontPathToken, '.\\escape/font.woff2')],
+  ['incorrect family', studentCss.replace('Nanum Myeongjo', 'Other')],
+  ['changed loading strategy', studentCss.replace('font-display: swap;', 'font-display: block;')],
+  ['changed style', studentCss.replace('font-style: normal;', 'font-style: italic;')],
+  ['duplicate declaration', studentCss.replace('font-weight: 400;', 'font-weight: 400; font-weight: 700;')],
+  ['workstation-only fallback', studentCss.replace('src: url(', 'src: local("Nanum Myeongjo"), url(')],
+  ['unspecified subset coverage', studentCss.replace(/unicode-range:[^;]+;/, '')],
+  ['other CSS rule', studentCss + 'body { color: white; }'],
 ]) test(`font CSS refuses ${name}`, () => assert.throws(() => checker.declaredStudentFonts(css)));
 
 test('font failure diagnostics distinguish parsed CSS refusal from request failure without raw response content', () => {
   const observation = { kind: 'STYLESHEET', urlSha256: 'a'.repeat(64), stage: 'CSS_DECLARATIONS', httpStatus: 200,
     responseUrlSha256: 'a'.repeat(64), mime: 'text/css', bytes: 173575, responseSha256: 'b'.repeat(64), rawBody: 'DO_NOT_EXPORT_BODY' };
   let parserError;
-  try { checker.declaredStudentFonts(studentCss.replace('/s/nanummyeongjo/', '/s/other/')); } catch (error) { parserError = error; }
+  try { checker.declaredStudentFonts(studentCss.replace(fontPathToken, './other/font.woff2')); } catch (error) { parserError = error; }
   const diagnostic = checker.fontFailureDiagnostic(observation, parserError);
   assert.equal(diagnostic.stage, 'CSS_DECLARATIONS'); assert.equal(diagnostic.httpStatus, 200);
   assert.equal(diagnostic.mime, 'text/css'); assert.equal(diagnostic.bytes, 173575);
@@ -440,6 +674,9 @@ test('every exact source, asset and checker trigger requires six cases', () => {
   const plan = checker.planRequired(sourceManifest, scope([]), head);
   assert.equal(plan.required, false);
   for (const file of plan.triggerPaths) assert.equal(checker.planRequired(sourceManifest, scope([file]), head).required, true, file);
+  const fontChange = checker.planRequired(sourceManifest, scope([studentFonts[0]]), head);
+  assert.equal(fontChange.required, true);
+  assert.deepEqual(fontChange.matchedPaths, [studentFonts[0]]);
   assert.equal(checker.planRequired(sourceManifest, scope(['archive/exams/unrelated.js']), head).required, false);
 });
 

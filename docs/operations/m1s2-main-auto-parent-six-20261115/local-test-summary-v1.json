@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "m1s2-parent-retry-local-test-summary-v1",
+  "status": "PASS",
+  "suites": [
+    {
+      "localLog": "parent-retry-final-auto-suites.log",
+      "sha256": "8fb2cc48f67e34e8d5153da7cf8eb6946d2b2e529bb1053ab116ac4f0fc68c57",
+      "tests": 455,
+      "passed": 455,
+      "failed": 0,
+      "scope": "437 existing AutoMeta plus 18 exact-parent tests"
+    },
+    {
+      "localLog": "parent-retry-existing-writer-suite.log",
+      "sha256": "19da43a3eb657b5e0299e7d972537921f62d188b3cb1c7852e29b842d4bf860c",
+      "tests": 29,
+      "passed": 29,
+      "failed": 0,
+      "scope": "existing registration-writer regression suite"
+    }
+  ],
+  "syntaxChecks": [
+    "node --check tools/run-tests.js",
+    "bash -n tools/ci/archive-main-auto-meta-pass.sh"
+  ],
+  "mainPrRequiredCi": "NOT_RUN",
+  "fullIntegratedMainWriter": "NOT_RUN",
+  "mainPages": "NOT_RUN"
+}

@@ -117,7 +117,11 @@ window.questionBank = [
       "l4": "길이"
     },
     "primaryMethod": "뒤바뀐 AA 대응의 전체·부분 길이",
-    "decisiveStep": "A와DEC의 등각 및 공통C로 ABC와 EDC를 대응시킨 뒤 전체BC에서 EC를 뺀다."
+    "decisiveStep": "A와DEC의 등각 및 공통C로 ABC와 EDC를 대응시킨 뒤 전체BC에서 EC를 뺀다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 3,
@@ -175,7 +179,11 @@ window.questionBank = [
       "l4": "SAS"
     },
     "primaryMethod": "여러 부분삼각형에서 SAS 쌍 식별",
-    "decisiveStep": "전체AB,AC를 합으로 만들어 AD,AF와의 두 비 및 공통A각을 대조한다."
+    "decisiveStep": "전체AB,AC를 합으로 만들어 AD,AF와의 두 비 및 공통A각을 대조한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 4,
@@ -235,7 +243,11 @@ window.questionBank = [
       "l4": "길이"
     },
     "primaryMethod": "직각삼각형 높이 닮음과 넓이비 비교",
-    "decisiveStep": "높이의 비례중항 관계로 빗변조각을 복원한 뒤 공통높이의 밑변비를 넓이비로 옮긴다."
+    "decisiveStep": "높이의 비례중항 관계로 빗변조각을 복원한 뒤 공통높이의 밑변비를 넓이비로 옮긴다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 5,
@@ -293,7 +305,11 @@ window.questionBank = [
       "l4": "기본 비례"
     },
     "primaryMethod": "삼각형 중점연결의 길이·평행 판정",
-    "decisiveStep": "세 중점연결선을 각 원래변의 절반으로 옮기고 평행각 및 작은삼각형 둘레를 확인한다."
+    "decisiveStep": "세 중점연결선을 각 원래변의 절반으로 옮기고 평행각 및 작은삼각형 둘레를 확인한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 6,
@@ -351,7 +367,11 @@ window.questionBank = [
       "l4": "여러 평행선"
     },
     "primaryMethod": "세 평행선의 전체와 부분 선분비",
-    "decisiveStep": "l-m구간과 l-n전체구간을 대응시켜 오른쪽 전체를9+x로 놓는다."
+    "decisiveStep": "l-m구간과 l-n전체구간을 대응시켜 오른쪽 전체를9+x로 놓는다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 7,
@@ -411,7 +431,11 @@ window.questionBank = [
       "l4": "무게중심을 이용한 복합도형"
     },
     "primaryMethod": "무게중심의 중선비와 평행 닮음",
-    "decisiveStep": "중선의 끝점과2:3비로 AGE와AMC의 두 대응길이를 정한다."
+    "decisiveStep": "중선의 끝점과2:3비로 AGE와AMC의 두 대응길이를 정한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 8,
@@ -531,7 +555,11 @@ window.questionBank = [
       "l4": "선분비를 이용한 복합도형"
     },
     "primaryMethod": "중점연결과 평행사변형의 교차 선분비",
-    "decisiveStep": "BCD의 중점연결로 MN을 정하고 BEM과DEA의1:2비로 대각선의 부분BE를 얻는다."
+    "decisiveStep": "BCD의 중점연결로 MN을 정하고 BEM과DEA의1:2비로 대각선의 부분BE를 얻는다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 10,
@@ -627,7 +655,11 @@ window.questionBank = [
       "l4": "직각삼각형 판정"
     },
     "primaryMethod": "세 변의 제곱합으로 직각 여부 판정",
-    "decisiveStep": "각 보기의 가장 긴변 제곱을 나머지 두변의 제곱합과 비교한다."
+    "decisiveStep": "각 보기의 가장 긴변 제곱을 나머지 두변의 제곱합과 비교한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 12,
@@ -687,7 +719,11 @@ window.questionBank = [
       "l4": "평면도형 길이"
     },
     "primaryMethod": "밑변차의 직각삼각형에서 사다리꼴 높이",
-    "decisiveStep": "두 밑변의 차와 빗변으로 높이를 복원한 뒤 사다리꼴 넓이에 넣는다."
+    "decisiveStep": "두 밑변의 차와 빗변으로 높이를 복원한 뒤 사다리꼴 넓이에 넣는다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 13,
@@ -747,7 +783,11 @@ window.questionBank = [
       "l4": "길이"
     },
     "primaryMethod": "대각선 피타고라스에서 AA 둘레 계산",
-    "decisiveStep": "직사각형의 대각선을 먼저 구하고 DOE와DAB의 AA대응으로 두 미지변을 전달한다."
+    "decisiveStep": "직사각형의 대각선을 먼저 구하고 DOE와DAB의 AA대응으로 두 미지변을 전달한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 14,
@@ -861,7 +901,11 @@ window.questionBank = [
       "l4": "중복 없이 세기"
     },
     "primaryMethod": "두 합 조건의 배반 순서쌍 열거",
-    "decisiveStep": "합5와 합7의 순서쌍을 각각 빠짐없이 열거한 뒤 서로 겹치지 않아 더한다."
+    "decisiveStep": "합5와 합7의 순서쌍을 각각 빠짐없이 열거한 뒤 서로 겹치지 않아 더한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 16,
@@ -975,7 +1019,11 @@ window.questionBank = [
       "l4": "확률 계산"
     },
     "primaryMethod": "불가능 사건과 같은 눈 사건의 확률 비교",
-    "decisiveStep": "각 식의 눈 범위 내 실현가능성을 확인해 확률0인 사건과 같은눈의6/36을 구별한다."
+    "decisiveStep": "각 식의 눈 범위 내 실현가능성을 확인해 확률0인 사건과 같은눈의6/36을 구별한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 18,
@@ -1039,7 +1087,11 @@ window.questionBank = [
       "l4": "사건의 합"
     },
     "primaryMethod": "소수·배수 사건의 중복 제거",
-    "decisiveStep": "소수와5의배수를 열거한 뒤 중복5를 한 번 빼고 전체15와 비교한다."
+    "decisiveStep": "소수와5의배수를 열거한 뒤 중복5를 한 번 빼고 전체15와 비교한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 19,
@@ -1097,7 +1149,11 @@ window.questionBank = [
       "l4": "연속 시행"
     },
     "primaryMethod": "연속 실패의 확률과 여사건",
-    "decisiveStep": "기존 해설의 독립모형에서 두 실패확률을 곱하고1에서 뺀다."
+    "decisiveStep": "기존 해설의 독립모형에서 두 실패확률을 곱하고1에서 뺀다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 20,
@@ -1153,7 +1209,11 @@ window.questionBank = [
       "l4": "확률 계산"
     },
     "primaryMethod": "서로 다른 집단에서 한명씩 뽑는 확률",
-    "decisiveStep": "전체 두명선택의 중복순서를 제거하고 남녀각한명 선택수를 곱해 확률비로 만든다."
+    "decisiveStep": "전체 두명선택의 중복순서를 제거하고 남녀각한명 선택수를 곱해 확률비로 만든다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 21,
@@ -1206,7 +1266,11 @@ window.questionBank = [
       "l4": "길이"
     },
     "primaryMethod": "그림자 직각삼각형의 AA 측정",
-    "decisiveStep": "공통 그림자끝 각과 두 직각으로 닮음을 확인하고 높이:그림자비를 대응한다."
+    "decisiveStep": "공통 그림자끝 각과 두 직각으로 닮음을 확인하고 높이:그림자비를 대응한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 22,
@@ -1262,7 +1326,11 @@ window.questionBank = [
       "l4": "무게중심을 이용한 복합도형"
     },
     "primaryMethod": "두 무게중심의 같은 중선비로 SAS",
-    "decisiveStep": "두 작은삼각형의 중선 끝점으로 EF=BC/2를 얻고 같은2:3분할비와 공통A각으로 GG′를 대응한다."
+    "decisiveStep": "두 작은삼각형의 중선 끝점으로 EF=BC/2를 얻고 같은2:3분할비와 공통A각으로 GG′를 대응한다.",
+    "courseKey": "M2-2",
+    "reviewStatus": "reviewed_pass",
+    "tagStatus": "reviewed_pass",
+    "tagConfidence": "approved_final_qa"
   },
   {
     "id": 23,
