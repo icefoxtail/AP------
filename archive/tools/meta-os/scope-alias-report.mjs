@@ -12,6 +12,7 @@ export function buildScopeAliasReport(records, bindings) {
   const byType = new Map();
   for (const b of active) { const rows = byType.get(b.problemTypeKey) || []; rows.push(b); byType.set(b.problemTypeKey, rows); }
   const observed = {}, byGradeSemester = {}, confidence = {}, unknownAliases = {}, samples = { conflicts: [], unknown: [], recovered: [] };
+  const conflicts = [], unknownRecords = [];
   let conflictCount = 0, unknownCount = 0;
   const lookup = { eligible: 0, noProblemType: 0, missingCurriculum: 0, exact: 0, alias: 0, missingBefore: 0, missingAfter: 0, ambiguousBefore: 0, ambiguousAfter: 0, preservedExact: 0 };
   for (const row of records) {
@@ -22,8 +23,8 @@ export function buildScopeAliasReport(records, bindings) {
     const g = byGradeSemester[group] ||= { records: 0, exact: 0, alias: 0, missingBefore: 0, missingAfter: 0 };
     g.records++;
     const sample = { questionUid: row.questionUid, ...input, canonical: c };
-    if (c.conflict || c.confidence === 'CONFLICT') { conflictCount++; if (samples.conflicts.length < 10) samples.conflicts.push(sample); }
-    if (c.unknownAlias || c.confidence === 'UNKNOWN_ALIAS') { unknownCount++; add(unknownAliases, input.course); if (samples.unknown.length < 10) samples.unknown.push(sample); }
+    if (c.conflict || c.confidence === 'CONFLICT') { conflictCount++; conflicts.push(sample); if (samples.conflicts.length < 10) samples.conflicts.push(sample); }
+    if (c.unknownAlias || c.confidence === 'UNKNOWN_ALIAS') { unknownCount++; unknownRecords.push(sample); add(unknownAliases, input.course); if (samples.unknown.length < 10) samples.unknown.push(sample); }
     if (!row.problemTypeKey) { lookup.noProblemType++; continue; }
     lookup.eligible++;
     if (!input.curriculum) lookup.missingCurriculum++;
@@ -36,7 +37,7 @@ export function buildScopeAliasReport(records, bindings) {
     else { lookup.missingAfter++; g.missingAfter++; if (aliases.length > 1) lookup.ambiguousAfter++; }
   }
   lookup.ambiguousAfter += lookup.ambiguousBefore;
-  return { schemaVersion: 'scope-alias-report-v1', mode: 'READ_ONLY_BINDING_LOOKUP', note: 'Same-curriculum/PT/subunit ACTIVE binding lookup only; no metadata mutation, key/pack/parent approval or full registration inferred. UI integration deferred.', records: records.length, observed, confidence, conflictCount, unknownCount, unknownAliases, lookup, byGradeSemester, samples };
+  return { schemaVersion: 'scope-alias-report-v1', mode: 'READ_ONLY_BINDING_LOOKUP', note: 'Same-curriculum/PT/subunit ACTIVE binding lookup only; no metadata mutation, key/pack/parent approval or full registration inferred. UI integration deferred.', records: records.length, observed, confidence, conflictCount, unknownCount, conflicts, unknownRecords, unknownAliases, lookup, byGradeSemester, samples };
 }
 export function outsideOutput(file, root = ROOT) {
   const output = path.resolve(file);
