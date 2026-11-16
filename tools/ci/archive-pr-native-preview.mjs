@@ -1065,12 +1065,45 @@ export function nativeOutputManifest(root, plans) {
   return sorted(plans.flatMap(p => p.plannedPaths)).map(file => fileRef(root, file));
 }
 
+// Exact immutable references inside the already selected evidence can also
+// name live renderer helpers, runtime files and fonts. Restore only those
+// declared paths from HEAD. Historical-only paths stay in Git, and a current
+// file is never replaced by the older bytes named by a review. This discovers
+// inputs, not approvals: the ordinary registrar still validates every ref and
+// the real checkout's live bytes after the independent shadow replay.
+function referencedNativeHeadInputs(root, headSha, requests) {
+  const paths = new Set();
+  const visit = value => {
+    if (!value || typeof value !== 'object') return;
+    if (typeof value.path === 'string' && /^[a-f0-9]{40}$/.test(value.commit || '')
+        && /^[a-f0-9]{40}$/.test(value.gitBlobSha1 || '') && /^[a-f0-9]{64}$/.test(value.sha256 || '')
+        && Number.isSafeInteger(value.bytes) && value.bytes > 0) paths.add(value.path);
+    for (const child of Object.values(value)) visit(child);
+  };
+  for (const file of sorted(requests.flatMap(r => r.evidence.map(ref => ref.path)))) {
+    if (!file.endsWith('.json')) continue;
+    let doc;
+    try { doc = JSON.parse(gitBytes(root, `${headSha}:${file}`)); }
+    catch { continue; } // Non-JSON evidence remains the registrar's responsibility.
+    visit(doc);
+  }
+  return sorted(paths).filter(file => {
+    safe('/', file);
+    const entry = git(root, 'ls-tree', '-z', headSha, '--', file);
+    if (!entry) return false;
+    if (!/^100(?:644|755) blob [a-f0-9]{40}\t/.test(entry)
+        || entry.slice(entry.indexOf('\t') + 1) !== `${file}\0`) fail(`SHADOW_REFERENCE_NOT_REGULAR:${file}`);
+    return true;
+  });
+}
+
 // Re-derive the *initial* official plan from the immutable Git input. A replay
 // on the post-state returns plannedPaths:[] and cannot authenticate a new
 // allowlist. This shadow has independent bytes; verify-local never writes its
 // actual checkout, consumes inbox files or runs another catalog build.
 export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
   if (!requests.length) return { plans: [], outputs: [] };
+  const headSha = git(root, 'rev-parse', '--verify', 'HEAD').trim();
   const shadow = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-pr-native-plan-'));
   try {
     nativeCommand('git', ['clone', '--quiet', '--shared', '--no-checkout', '--local', root, shadow], root);
@@ -1078,26 +1111,27 @@ export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
     // reached through an older receipt. Recreate that immutable input tree too;
     // never copy current worktree bytes or share mutable asset inodes.
     const restore = ['archive/data', 'archive/assets', 'docs/rules/01_CANONICAL/taxonomy']
-      .filter(file => git(root, 'ls-tree', 'HEAD', '--', file).trim());
+      .filter(file => git(root, 'ls-tree', headSha, '--', file).trim());
     // Data plus assets can exceed the child-process memory buffer. Stream Git's
     // exact archive into a private temporary file, removed with this shadow.
     const snapshotPath = path.join(shadow, '.native-input-snapshot.tar');
     const snapshotFd = fs.openSync(snapshotPath, 'wx', 0o600);
     let tar;
     try {
-      tar = spawnSync('git', ['archive', '--format=tar', 'HEAD', '--', ...restore],
+      tar = spawnSync('git', ['archive', '--format=tar', headSha, '--', ...restore],
         { cwd: root, stdio: ['ignore', snapshotFd, 'pipe'], maxBuffer: 1024 * 1024 });
     } finally { fs.closeSync(snapshotFd); }
     if (tar.error || tar.status !== 0) fail('SHADOW_GIT_SNAPSHOT_FAILED');
     const extracted = spawnSync('tar', ['-xf', snapshotPath, '-C', shadow], { maxBuffer: 1024 * 1024 });
     if (extracted.error || extracted.status !== 0) fail('SHADOW_EXTRACT_FAILED');
     fs.unlinkSync(snapshotPath);
-    const inputs = sorted(requests.flatMap(r => [r.path, r.source.path, ...r.evidence.map(e => e.path)]));
-    const attrs = git(root, 'ls-tree', '-r', '--name-only', 'HEAD').split('\n').filter(p => path.posix.basename(p) === '.gitattributes');
+    const inputs = sorted([...requests.flatMap(r => [r.path, r.source.path, ...r.evidence.map(e => e.path)]),
+      ...referencedNativeHeadInputs(root, headSha, requests)]);
+    const attrs = git(root, 'ls-tree', '-r', '--name-only', headSha).split('\n').filter(p => path.posix.basename(p) === '.gitattributes');
     for (const file of sorted([...inputs, ...attrs])) {
       const full = safe(shadow, file);
       fs.mkdirSync(path.dirname(full), { recursive: true });
-      fs.writeFileSync(full, gitBytes(root, `HEAD:${file}`));
+      fs.writeFileSync(full, gitBytes(root, `${headSha}:${file}`));
     }
     const plans = applyNativeRequests({ root: shadow, requests, run, scriptRoot: root, guard: false });
     return { plans, outputs: nativeOutputManifest(shadow, plans) };

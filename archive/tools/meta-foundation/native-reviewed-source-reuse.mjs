@@ -10,6 +10,7 @@ import { execFileSync } from 'node:child_process';
 import { loadCanonical } from './compile-meta-foundation.mjs';
 import { validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
 import { M2_PROBLEM_RENDERER_SCHEMA } from './reviewed-m2-problem-renderer-continuity.mjs';
+import { M2_E006_PROBLEM_SCHEMA, M2_E006_PROBLEM_ITEMS } from './reviewed-m2-e006-problem-continuity.mjs';
 import { M2_PROBLEM21_CONTINUITY_SCHEMA, M2_PROBLEM21_ITEMS } from './reviewed-m2-problem21-continuity.mjs';
 import { M2_FAMILY3_PROBLEM_CONTINUITY_SCHEMA, M2_FAMILY3_PROBLEM_SCOPE, M2_FAMILY3_PROBLEM_ITEMS } from './reviewed-m2-family3-problem-continuity.mjs';
 import { E023_SOLUTION_DISPLAY_SCHEMA, E023_SOLUTION_DISPLAY_FIELDS } from './reviewed-m2-e023-solution-display-continuity.mjs';
@@ -458,6 +459,53 @@ export function nativeReviewedM2ProblemRendererRebind(receipt, nativeSource, pre
     const previousSha = sha(stable(previous));
     return [proof.nativeReviewedSource, proof.nativeCommittedSource, proof.prefigureSource]
       .some(ref => SHA256.test(ref?.questionSha256 || '') && ref.questionSha256 === previousSha);
+  } catch { return false; }
+}
+
+// Exact pending Q3 cursor. Its whole question is also the initial independent
+// label-repair predecessor. Recognition follows a fresh typed Native/UI replay;
+// this immutable historical context grants no display or metadata approval.
+const E006_Q3_CURSOR_SOURCE = Object.freeze({
+  commit: 'd511d4f82d3da2224cc43f8ff26f30469b436af3',
+  path: 'archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js',
+  gitBlobSha1: 'fb5492f096e8d7cfa8cccbf2f5cb9c98181a0ce1',
+  sha256: '1ad6a014c40c64d8524b7f616fcbd5b717e7b0051887189bcbbdf0e46b6fbf9f',
+  bytes: 58252
+});
+const E006_Q3_CURSOR_QUESTION_SHA256 = 'caf314395157fdeb6543107e3e12bcb0b73bd8b5a9670155cb4aa5375bfd1d43';
+function matchesE006Q3HistoricalCursor(root, previous) {
+  if (sha(stable(previous)) !== E006_Q3_CURSOR_QUESTION_SHA256) return false;
+  const ref = E006_Q3_CURSOR_SOURCE;
+  const run = args => execFileSync('git', args, {cwd:fs.realpathSync(root), maxBuffer:1024*1024,
+    stdio:['ignore','pipe','pipe'], env:{...process.env,GIT_NO_LAZY_FETCH:'1',GIT_OPTIONAL_LOCKS:'0'}});
+  if (run(['ls-tree','-z',ref.commit,'--',ref.path]).toString() !==
+      `100644 blob ${ref.gitBlobSha1}\t${ref.path}\0`) return false;
+  const raw = run(['cat-file','blob',ref.gitBlobSha1]);
+  if (raw.length !== ref.bytes || sha(raw) !== ref.sha256 || blob(raw) !== ref.gitBlobSha1) return false;
+  const context = vm.createContext(Object.create(null), {codeGeneration:{strings:false,wasm:false}});
+  vm.runInContext('globalThis.window = {}; globalThis.console = Object.freeze({log(){},warn(){},error(){}});', context);
+  vm.runInContext(raw.toString('utf8'), context, {timeout:3000});
+  const bank = context.window.questionBank || context.window.questions;
+  return Array.isArray(bank) && bank.length === 23 && same(JSON.parse(JSON.stringify(bank[2])), previous);
+}
+
+// The E006 four-case observation remains separate from the original THREE
+// profile. Reuse replays every native, current source, asset and UI gate first.
+export function nativeReviewedM2E006ProblemRebind(receipt, nativeSource, previous, question, identity, ordinal, current, registry) {
+  if (!previous || receipt.approval?.sourceRebind !== undefined || !M2_E006_PROBLEM_ITEMS.some(item =>
+      item.questionUid === identity.questionUid && item.sourceOrdinal === ordinal && item.sourceArchiveFile === receipt.sourceArchiveFile)) return false;
+  const matches = receipt.fingerprintRepairs?.filter(row => row.questionUid === identity.questionUid && row.sourceOrdinal === ordinal);
+  const proof = matches?.[0]?.sourceReview?.m2E006ProblemContinuity;
+  if (matches?.length !== 1 || proof?.schemaVersion !== M2_E006_PROBLEM_SCHEMA ||
+      proof.questionUid !== identity.questionUid || proof.sourceOrdinal !== ordinal || proof.sourceArchiveFile !== receipt.sourceArchiveFile ||
+      proof.memoryOnlyNormalization !== true || proof.newMathematicalQa !== false || proof.newMetadataApprovals !== 0 ||
+      proof.newDifficultyJudgments !== 0 || proof.newReview2Claims !== 0 || proof.sourceWrites !== 0 || proof.rendererWrites !== 0) return false;
+  try {
+    if (validateNativeReviewedSourceReuse(receipt, nativeSource, question, identity, ordinal, current, registry) !== true) return false;
+    const previousSha = sha(stable(previous));
+    return [proof.nativeReviewedSource, proof.nativeCommittedSource, proof.prefigureSource]
+      .some(ref => SHA256.test(ref?.questionSha256 || '') && ref.questionSha256 === previousSha) ||
+      ordinal === 3 && matchesE006Q3HistoricalCursor(nativeSource.root, previous);
   } catch { return false; }
 }
 
