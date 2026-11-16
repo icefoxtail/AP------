@@ -752,3 +752,11 @@ FEEDBACK-10-11의 판정/검사분리, PT-only,후보0 직접ACTIVE정의선택,
 - 최신 main `56b9da73484799c7b6b47965ae6fc4cec4216fac` 기준 source 6개 blob 일치, UID·경로·순번 일치, 승인 중첩 0, 기존 D 중복 0. ACTIVE 키·TPL 상위 PT 관계 PASS.
 - 저장 후 GitHub 읽기로 결과표 전체 본문·843행·blob SHA 일치 확인.
 - 이 회차 복구 누계는 앞의 1,422행과 이번 120행을 합쳐 79시험지 1,542행. 고등 전체 완료를 뜻하지 않으며 남은 수학Ⅱ·고1·유사 등의 미기록 판정은 계속한다. 기존 승인 데이터·JS·main은 변경하지 않았다.
+
+### 고1 수학(상) 추가 10시험지 저장 (2026-11-17 KST)
+- 결과 브랜치 `data/type-judgment-d-20261116`의 `h1-1final.jsonl`에 독립 판정 209행 추가, 130 → 339행.
+- 결과 커밋 `41a2a77ae5868506b01e9de039a5bb421bf1dfbd`, blob `899e9963afdfc84593ff20e092ee8286cd5ae16d`.
+- 209행 모두 PICK. check PASS 180 / PT_ONLY 12 / OUT_OF_CANDIDATES 17. NEW_KEY 0.
+- 최신 main `56b9da73484799c7b6b47965ae6fc4cec4216fac` 및 metadata blob `1bbbf70031d034a17a1481daf9623cc3e80b3491` 기준 원문 JS 10개 blob 일치, UID·경로·순번 일치, 승인 boolean 중첩 0, 기존 D 결과 중복 0. ACTIVE 키·TPL 상위 PT 관계 PASS.
+- 저장 후 읽기 전용 GitHub fetch_file로 전체 본문·339행·blob SHA 일치 확인.
+- 기존 결과 행 보존. PR·main 병합·정본·등록 요청·시험지 JS 변경 없음. 이번 복구 저장 누계 89시험지 1,751행이며, 전체 고등 범위 완료가 아닌 중간 체크포인트다.
