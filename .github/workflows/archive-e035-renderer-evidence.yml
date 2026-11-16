@@ -1,0 +1,59 @@
+name: E035 Current Renderer Evidence
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/archive-e035-renderer-evidence.yml'
+      - 'docs/operations/m2-e035-current-renderer-20261116/producer.cjs'
+      - 'archive/assets/images/21_연향중_2학기_기말_중2_기출/q12-solution-visual-v2.svg'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: e035-renderer-evidence-${{ github.event.pull_request.number || github.ref }}-${{ github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  exact-four-case-ui:
+    name: E035 exact problem and solution Chrome
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Install the pinned project browser driver outside the checkout
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --prefix "$RUNNER_TEMP/e035-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
+      - name: Capture the exact repaired source in four unchanged student views
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          NODE_PATH: ${{ runner.temp }}/e035-browser/node_modules
+          E035_PRODUCER_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          node docs/operations/m2-e035-current-renderer-20261116/producer.cjs
+          --repo "$GITHUB_WORKSPACE"
+          --commit e162ece8868f9d9dcb8c1e0f9590a738dcf36a16
+          --producer-commit "$E035_PRODUCER_COMMIT"
+          --output "$RUNNER_TEMP/e035-ui-evidence"
+          --chrome "$CHROME_BIN"
+      - name: Preserve original PNG tiles and all failure diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e035-current-renderer-ui-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/e035-ui-evidence/
+          if-no-files-found: warn
+          retention-days: 14
