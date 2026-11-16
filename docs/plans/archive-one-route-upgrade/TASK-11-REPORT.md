@@ -844,3 +844,10 @@ FEEDBACK-10-11의 판정/검사분리, PT-only,후보0 직접ACTIVE정의선택,
 - 고2 유사 대수5시험지116행: similar-h2-1mid 46→162행. 결과 커밋 `a4b52b6ba9d862f20d1b1f13c11da335f0069923`, blob `b5040c5eba54eac00c6533610f4ec8872021c8b8`. PICK116, PASS76/PT_ONLY7/OUT_OF_CANDIDATES33.
 - 최신 main `82eb5d09f85d1b082facaef47645b978ff2bdcf5` 기준 원문7개 blob·UID·경로·순번 일치, 승인 중첩·기존 결과 중복0, ACTIVE 키 및 TPL 상위 PT 관계 PASS.
 - 각 저장 후 원격 전체 본문·행수·blob 일치 확인. 기존 행 보존. PR·main 병합·정본·JS·등록 요청 변경 없음.
+
+### 고1 batch8·9 67행 저장
+- batch8 2시험지45행: h1-1mid 439→484행, 결과 커밋 `aae406eb4e2a7e0fdcec40ad3e85387b5b14f3fa`. PICK45, PASS39/PT_ONLY6.
+- batch9 1시험지22행: h1-1mid 484→506행, 결과 커밋 `dec48d623278b58d86bdebd53ce46d315a886829`, blob `4a5cc3f0a00cf70471e1714d907d5b72643d8159`. PICK21/NEW_KEY1, PASS15/PT_ONLY6/TOOL_ERROR1.
+- main `82eb5d09f85d1b082facaef47645b978ff2bdcf5` 기준 소스 blob·UID·경로·순번 일치, 승인 중첩·기존 결과 중복0, ACTIVE·상위 관계 PASS. 각 결과 파일 저장 후 전체 본문·행수·blob readback 일치.
+- 새 PT 제안 **매개변수 일차방정식의 불능·부정 판정**, 1문항. 정의: Ax+B=0의 계수 소멸 여부로 유일해·불능·부정을 나누고 매개변수를 결정한다. 대표: 22 효천고 1학기 중간 고1 Q12 (`qid_v1_02d86d499dc840d87785b2f9cb851b8136e1ff7738891f531ddf0256ff61f77c`). 해당 과목 ACTIVE PT에서 직접 대응하는 결정 단계가 없어 NEW_KEY로 보존했다.
+- 기존 행 보존. 정본·JS·등록 요청·main·PR 변경 없음.
