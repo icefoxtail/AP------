@@ -851,3 +851,12 @@ FEEDBACK-10-11의 판정/검사분리, PT-only,후보0 직접ACTIVE정의선택,
 - main `82eb5d09f85d1b082facaef47645b978ff2bdcf5` 기준 소스 blob·UID·경로·순번 일치, 승인 중첩·기존 결과 중복0, ACTIVE·상위 관계 PASS. 각 결과 파일 저장 후 전체 본문·행수·blob readback 일치.
 - 새 PT 제안 **매개변수 일차방정식의 불능·부정 판정**, 1문항. 정의: Ax+B=0의 계수 소멸 여부로 유일해·불능·부정을 나누고 매개변수를 결정한다. 대표: 22 효천고 1학기 중간 고1 Q12 (`qid_v1_02d86d499dc840d87785b2f9cb851b8136e1ff7738891f531ddf0256ff61f77c`). 해당 과목 ACTIVE PT에서 직접 대응하는 결정 단계가 없어 NEW_KEY로 보존했다.
 - 기존 행 보존. 정본·JS·등록 요청·main·PR 변경 없음.
+
+### 고1 수학(하) 유사113행 및 원본 batch10 46행 저장
+- 유사5시험지113행: similar-h1-2final 69→182행, 결과 커밋 `98b5e33a5f2e1103afec31864399c1a44bf019bc`, blob `e1067d9be635361fbe1ffeb5a6051b3fbce08e32`. PICK113, PASS100/PT_ONLY4/OUT_OF_CANDIDATES9.
+- 원본2시험지46행: h1-1mid 506→552행, 결과 커밋 `36148f07a667dd1d78507a38ae4aa6eff0bb50ff`, blob `de416dbfaf24db9232139a1d1d63653e43422ba7`. PICK46, PASS41/PT_ONLY4/OUT_OF_CANDIDATES1.
+- main `82eb5d09f85d1b082facaef47645b978ff2bdcf5`에서 원문7개 blob·UID·경로·순번 일치, 승인 중첩·기존 결과 중복0, ACTIVE 키·TPL 상위 PT 관계 PASS. 저장 후 각 파일 전체 본문·행수·blob readback 일치.
+- 유사 담당자는 문항·해설 전부 독해, 그림26문항의 문제·해설 그림28개 직접 확인을 기록했다. 기존 정본 유형 값 및 다른 판정 내용 미열람, 결과표 UID만 중복 확인에 사용했다.
+- 새 TPL **팩토리얼·순열·조합 직접 값 계산**, PT_H1_PERMUTATION_COMBINATION_CALCULATION. 정의: 정의식 또는 조합 대칭성으로 직접 값을 계산하거나 팩토리얼 값을 역으로 식별한다. 3문항. 대표: 24 금당고 2학기 기말 유사 Q1(n!=120), Q4(14C12), 24 매산여고 유사 Q10(7P2+9C9). 기존 두 값의 차 계산 TPL을 강제하지 않았다.
+- 새 TPL **제곱항 항등식에 의한 선형식 극값**, PT_ABSOLUTE_INEQUALITY_EXTREMUM. 정의: 제곱합 제약과 선형식 제곱의 차를 완전제곱으로 나타내 범위·등호조건을 구한다. 1문항. 대표: 24 제일고 2학기 기말 유사 Q19. 핵심은 10(x²+y²)−(3x−y)²=(x+3y)²≥0 및 등호 좌표 결정이다.
+- 이 유사 묶음 인계에는 별도 원문 결함이 보고되지 않았다. 원문 무결성 전수 PASS로 확대하지 않는다. 기존 결과 보존, 정본·JS·등록 요청·main·PR 변경 없음.
