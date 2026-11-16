@@ -1,0 +1,1583 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "similar-23-dongsan-m1-1mid-similar2-candidate-v1",
+  "examUid": "23_동산중_1학기_중간_중1_유사2",
+  "sourceArchiveFile": "similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사2.js",
+  "expectedSourceBlobSha1": "85ca2a3d025006aca3d7546f08822536ec63ecb0",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "approvedBy": "codex-exam-import-candidate-author",
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_bf0d6d9e798679c2830172d92d24d5021df3cb0443960ffcb1bed58971518ce3",
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION",
+        "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+        "templateKey": "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 1,
+        "primaryMethod": "소수의 정의에 따라 1과 각 자연수의 약수 구성을 확인해 소수와 합성수를 가려낸다.",
+        "decisiveStep": "21=3×7과 57=3×19가 합성수이고 1은 소수가 아니므로, 남는 13·31·47을 세어 3개로 확정한다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "소수의 정의에 따라 1과 각 자연수의 약수 구성을 확인해 소수와 합성수를 가려낸다.",
+      "decisiveStep": "21=3×7과 57=3×19가 합성수이고 1은 소수가 아니므로, 남는 13·31·47을 세어 3개로 확정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 소인수분해 > 소인수분해 > 소수와 합성수 > 소수·합성수 판별",
+        "directJudgment": {
+          "source": "original exam same-type item q1",
+          "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+          "templateKey": "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-001",
+          "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+          "templateKey": "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver projection offered TPL_M1_PRIME_COMPOSITE_JUDGMENT_DIRECT_PRIME_TEST for the RPM leaf, but the original exam item of the same solution type is judged with a more specific template.  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q1 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_38c4cd95ec2f317e1a9a12012105ab6353a22f44213d3c730971471214d53120",
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION",
+        "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+        "templateKey": "TPL_M1_PRIME_FACTORIZATION_JUDGMENT_FACTORIZATION_CLAIM_AUDIT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 2,
+        "primaryMethod": "108을 작은 소수로 차례로 나누어 더 이상 나누어지지 않을 때까지 분해하고 그 결과를 거듭제곱으로 묶는다.",
+        "decisiveStep": "108을 2로 두 번 나누어 27을 얻은 뒤 27=3³으로 바꾸어 2²×3³의 지수 조합을 확정한다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "BOUNDARY"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "108을 작은 소수로 차례로 나누어 더 이상 나누어지지 않을 때까지 분해하고 그 결과를 거듭제곱으로 묶는다.",
+      "decisiveStep": "108을 2로 두 번 나누어 27을 얻은 뒤 27=3³으로 바꾸어 2²×3³의 지수 조합을 확정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 소인수분해 > 소인수분해 > 소인수분해 > 자연수의 소인수분해",
+        "directJudgment": {
+          "source": "original exam same-type item q2",
+          "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+          "templateKey": "TPL_M1_PRIME_FACTORIZATION_JUDGMENT_FACTORIZATION_CLAIM_AUDIT"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-003",
+          "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+          "templateKey": "TPL_M1_PRIME_FACTORIZATION_JUDGMENT_FACTORIZATION_CLAIM_AUDIT"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q2 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8893b5791f417c625535f6dcf63929165aa45b98a88450b40aaed5ab79d6e1e8",
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+        "subUnit": "소인수분해",
+        "conceptClusterKey": "PRIME_FACTORIZATION",
+        "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+        "templateKey": "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 3,
+        "primaryMethod": "2³×7²의 약수가 갖는 소인수 지수의 범위를 기준으로 삼아 보기마다 2와 7의 지수를 대조한다.",
+        "decisiveStep": "①의 7의 지수가 3으로 원래 수의 7의 지수 2를 넘으므로 약수가 아니라고 확정한다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "2³×7²의 약수가 갖는 소인수 지수의 범위를 기준으로 삼아 보기마다 2와 7의 지수를 대조한다.",
+      "decisiveStep": "①의 7의 지수가 3으로 원래 수의 7의 지수 2를 넘으므로 약수가 아니라고 확정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 소인수분해 > 소인수분해 > 소인수분해 > 소인수분해를 이용한 약수의 구조",
+        "directJudgment": {
+          "source": "original exam same-type item q3",
+          "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+          "templateKey": "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_CORE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-004",
+          "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+          "templateKey": "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_CORE"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q3 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f14bd3490cd5c7869e69e2ef5e4cd89fe9009d1cec59d9f79e50749fa3470d56",
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+        "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_PARAMETER_RECOVERY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 4,
+        "primaryMethod": "최대공약수와 최소공배수가 정하는 소인수별 최소·최대 지수 조건을 차례로 비교해 a, b, c를 복원한다.",
+        "decisiveStep": "최대공약수의 2의 지수에서 a=2, 5의 지수에서 c=1을 얻고, 최소공배수에 홀로 나타나는 3에서 b=3을 정해 합 6을 확정한다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "최대공약수와 최소공배수가 정하는 소인수별 최소·최대 지수 조건을 차례로 비교해 a, b, c를 복원한다.",
+      "decisiveStep": "최대공약수의 2의 지수에서 a=2, 5의 지수에서 c=1을 얻고, 최소공배수에 홀로 나타나는 3에서 b=3을 정해 합 6을 확정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 소인수분해 > 최대공약수와 최소공배수 > 공약수와 최대공약수 > 공약수 조건으로 수 찾기",
+        "directJudgment": {
+          "source": "original exam same-type item q4",
+          "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+          "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_PARAMETER_RECOVERY"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-008",
+          "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+          "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_PARAMETER_RECOVERY"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q4 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0a3fdf0be1abc43abac962b87c80f6cd5cc55a18db494e02fd60137ed010f6b6",
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "PT_M1_GCD_DIVISOR_APPLICATION",
+        "templateKey": "TPL_M1_GCD_DIVISOR_APPLICATION_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_DIVISIBILITY"
+        ],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 5,
+        "primaryMethod": "두 분수가 모두 자연수가 되는 n을 108과 180의 공약수로 바꾸고, 그중 가장 큰 최대공약수를 소인수분해로 구한다.",
+        "decisiveStep": "108=2²×3³과 180=2²×3²×5에서 공통 소인의 최소 지수를 택해 36을 얻는 지점에서 가장 큰 n이 확정된다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "두 분수가 모두 자연수가 되는 n을 108과 180의 공약수로 바꾸고, 그중 가장 큰 최대공약수를 소인수분해로 구한다.",
+      "decisiveStep": "108=2²×3³과 180=2²×3²×5에서 공통 소인의 최소 지수를 택해 36을 얻는 지점에서 가장 큰 n이 확정된다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 소인수분해 > 최대공약수와 최소공배수 > 공약수와 최대공약수 > 공약수 조건으로 수 찾기",
+        "directJudgment": {
+          "source": "original exam same-type item q5",
+          "problemTypeKey": "PT_M1_GCD_DIVISOR_APPLICATION",
+          "templateKey": "TPL_M1_GCD_DIVISOR_APPLICATION_CORE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-008",
+          "problemTypeKey": "PT_M1_GCD_DIVISOR_APPLICATION",
+          "templateKey": "TPL_M1_GCD_DIVISOR_APPLICATION_CORE"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "n을 자연수로 한정한 COND_NATURAL_NUMBER와 두 몫이 자연수가 되어야 한다는 COND_DIVISIBILITY가 실제로 n의 값을 제한한다.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q5 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1b297f0a81a366f7d0c42dd2cff3f461c33547c6fc86b4293e4649884835b24b",
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "PT_LCM_APPLICATION",
+        "templateKey": "TPL_LCM_APPLICATION_GEAR_CYCLE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 6,
+        "primaryMethod": "두 톱니바퀴가 같은 톱니에서 다시 맞물리는 데 필요한 톱니 수를 두 톱니 수의 최소공배수로 구하고, 이를 B의 한 바퀴 톱니 수로 나눈다.",
+        "decisiveStep": "lcm(30,45)=90이고 B는 한 바퀴에 45개의 톱니를 지나므로 90÷45=2바퀴로 확정된다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "두 톱니바퀴가 같은 톱니에서 다시 맞물리는 데 필요한 톱니 수를 두 톱니 수의 최소공배수로 구하고, 이를 B의 한 바퀴 톱니 수로 나눈다.",
+      "decisiveStep": "lcm(30,45)=90이고 B는 한 바퀴에 45개의 톱니를 지나므로 90÷45=2바퀴로 확정된다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 소인수분해 > 최대공약수와 최소공배수 > 최대공약수·최소공배수의 활용 > 주기·배열·묶음 문제",
+        "directJudgment": {
+          "source": "original exam same-type item q6",
+          "problemTypeKey": "PT_LCM_APPLICATION",
+          "templateKey": "TPL_LCM_APPLICATION_GEAR_CYCLE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-012",
+          "problemTypeKey": "PT_LCM_APPLICATION",
+          "templateKey": "TPL_LCM_APPLICATION_GEAR_CYCLE"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q6 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_249a39d619139f00388d6723c9a0761a0a6cc4c00eae21a3dd3f18415f4a782e",
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
+        "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+        "templateKey": "TPL_M1_RATIONAL_PROPERTY_JUDGMENT_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 7,
+        "primaryMethod": "유리수를 양의 유리수·0·음의 유리수로 나누는 기준을 세우고, 다섯 설명을 포함 관계·0의 지위·절댓값·조밀성 순으로 하나씩 검증한다.",
+        "decisiveStep": "0이 유리수이면서 양수도 음수도 아니라는 사실이 드러나면서, 유리수가 양의 유리수와 음의 유리수로만 이루어졌다는 ②만 거짓으로 확정된다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "BOUNDARY"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "유리수를 양의 유리수·0·음의 유리수로 나누는 기준을 세우고, 다섯 설명을 포함 관계·0의 지위·절댓값·조밀성 순으로 하나씩 검증한다.",
+      "decisiveStep": "0이 유리수이면서 양수도 음수도 아니라는 사실이 드러나면서, 유리수가 양의 유리수와 음의 유리수로만 이루어졌다는 ②만 거짓으로 확정된다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 정수와 유리수 > 정수와 유리수 > 수 체계 > 양수·음수 분류",
+        "directJudgment": {
+          "source": "original exam same-type item q7",
+          "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+          "templateKey": "TPL_M1_RATIONAL_PROPERTY_JUDGMENT_CORE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-013",
+          "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+          "templateKey": "TPL_M1_RATIONAL_PROPERTY_JUDGMENT_CORE"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q7 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b9d32bdcfac19e9c1a70142a2431d98a2fd2a9cbb192495fb19ebae081e893cc",
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
+        "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+        "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 8,
+        "primaryMethod": "수직선에서 오른쪽에 있는 수가 더 크다는 기준에 맞춰 다섯 수를 비교하고, 분수 7/2를 3.5로 고쳐 나머지 수와 크기를 견준다.",
+        "decisiveStep": "7/2=3.5가 +3보다 크다는 비교 한 번으로 가장 오른쪽의 수가 7/2임이 정해져 ③만 남는다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "수직선에서 오른쪽에 있는 수가 더 크다는 기준에 맞춰 다섯 수를 비교하고, 분수 7/2를 3.5로 고쳐 나머지 수와 크기를 견준다.",
+      "decisiveStep": "7/2=3.5가 +3보다 크다는 비교 한 번으로 가장 오른쪽의 수가 7/2임이 정해져 ③만 남는다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 정수와 유리수 > 정수와 유리수 > 수직선과 대소 관계 > 유리수의 대소 비교",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-016",
+          "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+          "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8728977ac959ffcd7bbf6cea2120213a6cd5c73051d2614e52f1f33049375de7",
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
+        "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+        "templateKey": "TPL_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 9,
+        "primaryMethod": "절댓값이 같은 두 수는 부호만 반대라는 성질로 A=-B를 세우고, A-B=8/5에 대입해 B에 대한 일차방정식을 푼다.",
+        "decisiveStep": "-2B=8/5에서 B=-4/5가 계산되는 순간, 부호와 크기가 함께 맞는 ④만 남는다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "절댓값이 같은 두 수는 부호만 반대라는 성질로 A=-B를 세우고, A-B=8/5에 대입해 B에 대한 일차방정식을 푼다.",
+      "decisiveStep": "-2B=8/5에서 B=-4/5가 계산되는 순간, 부호와 크기가 함께 맞는 ④만 남는다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 정수와 유리수 > 정수와 유리수 > 절댓값 > 절댓값 조건으로 수 찾기",
+        "directJudgment": {
+          "source": "original exam same-type item q9",
+          "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+          "templateKey": "TPL_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY_CORE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-018",
+          "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+          "templateKey": "TPL_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY_CORE"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q9 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2c76a084725063f98f136be5ffe98a7f7326d3f75ce2bb12e41640257702a338",
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS",
+        "templateKey": "TPL_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 10,
+        "primaryMethod": "밑변 네 수의 합으로 세 변의 공통합 6을 먼저 구하고, 왼쪽 변과 오른쪽 변의 합에 대한 식을 차례로 세워 x와 y를 확정한다.",
+        "decisiveStep": "왼쪽 변에서 x=7을 얻은 뒤 오른쪽 변 식 7+y+1=6에 넣어 y=-2가 정해지고, x+y=5로 ⑤가 확정된다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "밑변 네 수의 합으로 세 변의 공통합 6을 먼저 구하고, 왼쪽 변과 오른쪽 변의 합에 대한 식을 차례로 세워 x와 y를 확정한다.",
+      "decisiveStep": "왼쪽 변에서 x=7을 얻은 뒤 오른쪽 변 식 7+y+1=6에 넣어 y=-2가 정해지고, x+y=5로 ⑤가 확정된다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 정수와 유리수 > 정수와 유리수의 계산 > 덧셈과 뺄셈 > 덧셈·뺄셈 혼합",
+        "directJudgment": {
+          "source": "original exam same-type item q10",
+          "problemTypeKey": "PT_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS",
+          "templateKey": "TPL_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS_CORE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-021",
+          "problemTypeKey": "PT_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS",
+          "templateKey": "TPL_MISSING_VALUES_FROM_EQUAL_SIDE_SUMS_CORE"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver projection offered TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER for the RPM leaf, but the original exam item of the same solution type is judged with a more specific template.  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q10 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_33716cdf5b3b1d861deeba48b970772f24e646f30542c556d1249bc2df54855f",
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 11,
+        "primaryMethod": "네 분수를 분모의 최소공배수 12로 통분해 분자끼리 부호를 살려 더하고, 결과 2/12를 기약분수로 줄인다.",
+        "decisiveStep": "분자 계산 8-9-2+5=2에서 2/12를 1/6으로 약분하는 지점에서 ①이 정해진다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "BOUNDARY"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "네 분수를 분모의 최소공배수 12로 통분해 분자끼리 부호를 살려 더하고, 결과 2/12를 기약분수로 줄인다.",
+      "decisiveStep": "분자 계산 8-9-2+5=2에서 2/12를 1/6으로 약분하는 지점에서 ①이 정해진다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 정수와 유리수 > 정수와 유리수의 계산 > 덧셈과 뺄셈 > 덧셈·뺄셈 혼합",
+        "directJudgment": {
+          "source": "original exam same-type item q11",
+          "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+          "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-021",
+          "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+          "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver projection offered TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER for the RPM leaf, but the original exam item of the same solution type is judged with a more specific template.  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q11 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8feaefca27b84fdce8cd68026ecc4fab685801264e8d34e11251cf8c6de5deb2",
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+        "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 12,
+        "primaryMethod": "계산 과정의 각 등식이 수의 순서를 바꾼 것인지 묶는 순서를 바꾼 것인지 구분하고, (-25)×(-4)=+100과 (+100)×(+17)=+1700을 직접 계산해 ㉠~㉣의 내용을 검증한다.",
+        "decisiveStep": "둘째 등식은 앞의 두 인수를 괄호로 묶은 결합법칙인데 ②가 분배법칙이라고 했으므로 ②만 옳지 않다고 확정된다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "계산 과정의 각 등식이 수의 순서를 바꾼 것인지 묶는 순서를 바꾼 것인지 구분하고, (-25)×(-4)=+100과 (+100)×(+17)=+1700을 직접 계산해 ㉠~㉣의 내용을 검증한다.",
+      "decisiveStep": "둘째 등식은 앞의 두 인수를 괄호로 묶은 결합법칙인데 ②가 분배법칙이라고 했으므로 ②만 옳지 않다고 확정된다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 정수와 유리수 > 정수와 유리수의 계산 > 곱셈과 나눗셈 > 부호가 있는 수의 곱셈",
+        "directJudgment": {
+          "source": "original exam same-type item q12",
+          "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+          "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_CORE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-022",
+          "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+          "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_CORE"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q12 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_10b24fe3566ca56293082c4a2941e5be0f08c2ead43b51b76723faa308a40e6e",
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS",
+        "templateKey": "TPL_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 13,
+        "primaryMethod": "세 수의 곱의 부호를 먼저 정하고, 양의 곱이 되는 조합 가운데 절댓값이 큰 음수 둘을 골라 곱을 최대로 만든다.",
+        "decisiveStep": "유일한 양수 2/5에 절댓값이 가장 큰 음수 -5/2와 -3/2를 짝지어 곱한 3/2가 최댓값임을 확인하는 부분.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "세 수의 곱의 부호를 먼저 정하고, 양의 곱이 되는 조합 가운데 절댓값이 큰 음수 둘을 골라 곱을 최대로 만든다.",
+      "decisiveStep": "유일한 양수 2/5에 절댓값이 가장 큰 음수 -5/2와 -3/2를 짝지어 곱한 3/2가 최댓값임을 확인하는 부분.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 정수와 유리수 > 정수와 유리수의 계산 > 곱셈과 나눗셈 > 부호가 있는 수의 곱셈",
+        "directJudgment": {
+          "source": "original exam same-type item q13",
+          "problemTypeKey": "PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS",
+          "templateKey": "TPL_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS_CORE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-022",
+          "problemTypeKey": "PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS",
+          "templateKey": "TPL_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS_CORE"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q13 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2554609e70fd830895b2b70f8db7108ca53f91ca7a7654b690ed5144fbb1189f",
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
+        "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+        "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EVALUATE_AND_RANK",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 14,
+        "primaryMethod": "다섯 식을 각각 거듭제곱과 부호 규칙으로 계산해 분모가 같은 유리수로 만든 뒤 크기를 비교한다.",
+        "decisiveStep": "계산한 값을 -8/9, -4/9, 2/9, 4/9, 6/9로 나열해 작은 쪽에서 세 번째인 2/9를 답으로 확정함.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "다섯 식을 각각 거듭제곱과 부호 규칙으로 계산해 분모가 같은 유리수로 만든 뒤 크기를 비교한다.",
+      "decisiveStep": "계산한 값을 -8/9, -4/9, 2/9, 4/9, 6/9로 나열해 작은 쪽에서 세 번째인 2/9를 답으로 확정함.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 정수와 유리수 > 정수와 유리수 > 수직선과 대소 관계 > 유리수의 대소 비교",
+        "directJudgment": {
+          "source": "original exam same-type item q14",
+          "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+          "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EVALUATE_AND_RANK"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-016",
+          "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+          "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EVALUATE_AND_RANK"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver projection offered TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER for the RPM leaf, but the original exam item of the same solution type is judged with a more specific template.  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q14 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0ff70e0d3b936c93f17d30085b1f705e6d258581d12ebcf1a31370b450491ded",
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
+        "templateKey": "TPL_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT_CORE",
+        "crossConceptKeys": [
+          "CC_RATIONAL_RECIPROCAL",
+          "CC_POLYHEDRON_NET"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 15,
+        "primaryMethod": "전개도에서 마주 보는 면을 짝지어 역수 관계로 a, c, b의 값을 정한 뒤 (a+c)÷b를 계산한다.",
+        "decisiveStep": "마주 보는 면끼리 곱이 1임을 이용해 a=-2, c=-4, b=3을 얻고 (-6)÷3=-2로 답을 정함.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "전개도에서 마주 보는 면을 짝지어 역수 관계로 a, c, b의 값을 정한 뒤 (a+c)÷b를 계산한다.",
+      "decisiveStep": "마주 보는 면끼리 곱이 1임을 이용해 a=-2, c=-4, b=3을 얻고 (-6)÷3=-2로 답을 정함.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 정수와 유리수 > 정수와 유리수의 계산 > 곱셈과 나눗셈 > 부호가 있는 수의 나눗셈",
+        "directJudgment": {
+          "source": "original exam same-type item q15",
+          "problemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
+          "templateKey": "TPL_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT_CORE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-023",
+          "problemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
+          "templateKey": "TPL_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT_CORE"
+        },
+        "crossConcept": "CC_RATIONAL_RECIPROCAL은 마주 보는 면의 수에서 a, c, b의 값을 역수로 정하는 데, CC_POLYHEDRON_NET은 전개도에서 마주 보는 면 쌍을 읽는 데 각각 기여함.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q15 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b76fdb542fe9153178c6d991afb2ed87075d995a57b648c362f5d4a7afe5332b",
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+        "templateKey": "TPL_M1_RECOVER_VALUE_BY_INVERSE_OPERATION_ISOLATE_UNKNOWN_FACTOR",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 16,
+        "primaryMethod": "거듭제곱을 먼저 계산하고 나눗셈을 역수의 곱셈으로 고쳐 □의 계수를 만든 뒤 역연산으로 값을 구한다.",
+        "decisiveStep": "(-3/2)²=9/4에서 식을 (-4/3)×□=4로 정리해 □=-3을 얻는 부분.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "거듭제곱을 먼저 계산하고 나눗셈을 역수의 곱셈으로 고쳐 □의 계수를 만든 뒤 역연산으로 값을 구한다.",
+      "decisiveStep": "(-3/2)²=9/4에서 식을 (-4/3)×□=4로 정리해 □=-3을 얻는 부분.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 정수와 유리수 > 정수와 유리수의 계산 > 혼합 계산 > 거듭제곱이 포함된 혼합 계산",
+        "directJudgment": {
+          "source": "original exam same-type item q16",
+          "problemTypeKey": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+          "templateKey": "TPL_M1_RECOVER_VALUE_BY_INVERSE_OPERATION_ISOLATE_UNKNOWN_FACTOR"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-026",
+          "problemTypeKey": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+          "templateKey": "TPL_M1_RECOVER_VALUE_BY_INVERSE_OPERATION_ISOLATE_UNKNOWN_FACTOR"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver projection offered TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER for the RPM leaf, but the original exam item of the same solution type is judged with a more specific template.  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q16 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_159f6e247c699432fabc97e833aed891e2775e654a182d320088cb5950feb0a3",
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_ALGEBRAIC_PRODUCT_TERM_RECOVERY",
+        "templateKey": "TPL_ALGEBRAIC_PRODUCT_TERM_RECOVERY_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 17,
+        "primaryMethod": "분배법칙으로 (a+b)c를 ac+bc로 전개한 뒤 주어진 두 곱의 값을 대입해 bc를 구한다.",
+        "decisiveStep": "(a+b)c=-2/7과 ac=3/7을 ac+bc=-2/7에 넣어 bc=-5/7을 계산하는 부분.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "분배법칙으로 (a+b)c를 ac+bc로 전개한 뒤 주어진 두 곱의 값을 대입해 bc를 구한다.",
+      "decisiveStep": "(a+b)c=-2/7과 ac=3/7을 ac+bc=-2/7에 넣어 bc=-5/7을 계산하는 부분.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 문자와 식 > 문자의 사용과 식의 계산 > 일차식의 계산 > 괄호가 있는 일차식 계산",
+        "directJudgment": {
+          "source": "original exam same-type item q17",
+          "problemTypeKey": "PT_ALGEBRAIC_PRODUCT_TERM_RECOVERY",
+          "templateKey": "TPL_ALGEBRAIC_PRODUCT_TERM_RECOVERY_CORE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-034",
+          "problemTypeKey": "PT_ALGEBRAIC_PRODUCT_TERM_RECOVERY",
+          "templateKey": "TPL_ALGEBRAIC_PRODUCT_TERM_RECOVERY_CORE"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q17 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_47025818ae188d6d2c08977737980a43bfa733a793b818dcf9ad08c9f42c900e",
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+        "crossConceptKeys": [
+          "CC_PERCENTAGE_CALCULATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 18,
+        "primaryMethod": "정가에서 30%를 덜어낸 판매가를 문자식으로 세우고 지불한 금액에서 빼 거스름돈을 나타낸다.",
+        "decisiveStep": "할인 후 가격이 0.7x원임을 구해 30000-0.7x로 거스름돈을 확정하는 부분.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "정가에서 30%를 덜어낸 판매가를 문자식으로 세우고 지불한 금액에서 빼 거스름돈을 나타낸다.",
+      "decisiveStep": "할인 후 가격이 0.7x원임을 구해 30000-0.7x로 거스름돈을 확정하는 부분.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 문자와 식 > 문자의 사용과 식의 계산 > 문자의 사용 > 문자로 수량 나타내기",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-027",
+          "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+          "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION"
+        },
+        "crossConcept": "30% 할인을 0.7배로 바꾸는 백분율 계산이 판매가 식을 만드는 데 실제로 기여함.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a5c4ddf7c083517494f3ccf18011b1fd72db40c9f3c1190527431e0da80a6954",
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 19,
+        "primaryMethod": "각 보기의 나눗셈을 분모로 옮기고 곱셈 기호를 생략한 꼴로 고쳐 계수와 지수를 정리한다.",
+        "decisiveStep": "④의 a×b÷(-3)×b를 왼쪽부터 계산하면 -ab²/3이 되어 -3ab²과 같지 않으므로 ④를 옳지 않은 식으로 확정한다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "각 보기의 나눗셈을 분모로 옮기고 곱셈 기호를 생략한 꼴로 고쳐 계수와 지수를 정리한다.",
+      "decisiveStep": "④의 a×b÷(-3)×b를 왼쪽부터 계산하면 -ab²/3이 되어 -3ab²과 같지 않으므로 ④를 옳지 않은 식으로 확정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 문자와 식 > 문자의 사용과 식의 계산 > 문자의 사용 > 곱셈·나눗셈 기호 생략",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-028",
+          "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+          "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9f872004ee6d2c5a3acd0694f89f5e88c24cfae637ffacfe812d831527d66c26",
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-03",
+        "standardUnit": "문자와 식",
+        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+        "subUnit": "문자의 사용과 식의 값",
+        "conceptClusterKey": "ALGEBRAIC_EXPRESSION",
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE",
+        "crossConceptKeys": [
+          "CC_RATIONAL_RECIPROCAL"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 20,
+        "primaryMethod": "x=-1/2을 다섯 식에 각각 대입해 분모가 분수인 나눗셈을 역수의 곱으로 바꾸어 값을 낸다.",
+        "decisiveStep": "⑤가 -2÷(-1/2)=-2×(-2)=4가 되어 ①의 -4와 부호가 갈리는 지점에서 ⑤를 확정한다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "x=-1/2을 다섯 식에 각각 대입해 분모가 분수인 나눗셈을 역수의 곱으로 바꾸어 값을 낸다.",
+      "decisiveStep": "⑤가 -2÷(-1/2)=-2×(-2)=4가 되어 ①의 -4와 부호가 갈리는 지점에서 ⑤를 확정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 문자와 식 > 문자의 사용과 식의 계산 > 식의 값 > 대입하여 식의 값 구하기",
+        "directJudgment": {
+          "source": "original exam same-type item q20",
+          "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
+          "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-029",
+          "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
+          "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE"
+        },
+        "crossConcept": "①·⑤의 2÷(-1/2)를 -2의 곱으로 바꾸는 역수 계산이 정답 판별에 실제로 기여해 CC_RATIONAL_RECIPROCAL을 걸었다.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q20 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_51c5b83fe61e828661948d70aa07504d6e7b87c4ea583553b41acef7e2b4f9cb",
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-01",
+        "standardUnit": "소인수분해",
+        "subUnitKey": "M1-01-GCD_LCM",
+        "subUnit": "최대공약수와 최소공배수",
+        "conceptClusterKey": "GCD_LCM",
+        "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+        "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_THIRD_CANDIDATE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 21,
+        "primaryMethod": "12와 18을 소인수분해한 뒤 최소공배수와 최대공약수가 정하는 소인수별 지수 조건을 맞추어 A=2³×3^k의 k를 정한다.",
+        "decisiveStep": "최소공배수 72의 2의 지수 3이 A에 2³을 강제하고, 3의 지수는 최대공약수 6 때문에 1 이상·최소공배수 때문에 2 이하이므로 A가 24와 72로 확정된다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "12와 18을 소인수분해한 뒤 최소공배수와 최대공약수가 정하는 소인수별 지수 조건을 맞추어 A=2³×3^k의 k를 정한다.",
+      "decisiveStep": "최소공배수 72의 2의 지수 3이 A에 2³을 강제하고, 3의 지수는 최대공약수 6 때문에 1 이상·최소공배수 때문에 2 이하이므로 A가 24와 72로 확정된다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 소인수분해 > 최대공약수와 최소공배수 > 공배수와 최소공배수 > 공배수 조건으로 수 찾기",
+        "directJudgment": {
+          "source": "original exam same-type item q21",
+          "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+          "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_THIRD_CANDIDATE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-010",
+          "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+          "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_THIRD_CANDIDATE"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "세 수를 자연수로 한정한 COND_NATURAL_NUMBER가 실제로 걸려 있다.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q21 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e05de8661f2cfc8c673b151fbb81f3d982a9c06e31a53b64b4f35536de05e024",
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "subUnit": "정수와 유리수의 뜻",
+        "conceptClusterKey": "INTEGER_RATIONAL_NUMBER",
+        "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+        "templateKey": "TPL_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS_CORE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INEQUALITY_CONSTRAINT"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 22,
+        "primaryMethod": "몫과 곱의 부호 조건으로 세 수 사이의 부호 관계를 세우고, 대소 조건으로 어느 쪽이 양수인지 가른다.",
+        "decisiveStep": "b와 c의 부호가 반대인데 b>c이므로 b는 양수, c는 음수로 정해지고 c와 같은 부호인 a도 음수가 된다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "몫과 곱의 부호 조건으로 세 수 사이의 부호 관계를 세우고, 대소 조건으로 어느 쪽이 양수인지 가른다.",
+      "decisiveStep": "b와 c의 부호가 반대인데 b>c이므로 b는 양수, c는 음수로 정해지고 c와 같은 부호인 a도 음수가 된다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 정수와 유리수 > 정수와 유리수 > 수 체계 > 양수·음수 분류",
+        "directJudgment": {
+          "source": "original exam same-type item q22",
+          "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+          "templateKey": "TPL_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS_CORE"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M1-RPM-013",
+          "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+          "templateKey": "TPL_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS_CORE"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "a×b<0, b-c>0, c÷a>0라는 변수 사이 부등식이 풀이를 직접 제약하므로 COND_INEQUALITY_CONSTRAINT를 걸었다.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver result was RPM_ONLY_COMPATIBILITY_PROJECTION (no exact crosswalk/projection row for this leaf).  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q22 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c2c95de9e1c5c90d397a64854f7fc7bac8c0a9c275644163b98ad0838cbd60fd",
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "중1 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "중1 수학",
+        "standardUnitKey": "M1-02",
+        "standardUnit": "정수와 유리수",
+        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "subUnit": "정수와 유리수의 계산",
+        "conceptClusterKey": "RATIONAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "EVIDENCE_DEBT",
+        "sourceQid": 23,
+        "primaryMethod": "거듭제곱, 중괄호 안 나눗셈과 뺄셈, 괄호 밖 곱셈, 마지막 뺄셈 순으로 차례대로 계산한다.",
+        "decisiveStep": "(-1/2)²=1/4을 먼저 계산해 3÷1/4=12, 1-12=-11, (-11)×(-2)=22, 2-22=-20으로 이어지므로 순서가 ㄹ→ㄷ→ㄴ→ㅁ→ㄱ이고 값이 -20임이 확정된다.",
+        "semanticStatus": "SELF_CHECKED",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "reason": "Semantic fields judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver; operator-checked; no independent human review recorded.",
+      "evidenceRefs": [],
+      "primaryMethod": "거듭제곱, 중괄호 안 나눗셈과 뺄셈, 괄호 밖 곱셈, 마지막 뺄셈 순으로 차례대로 계산한다.",
+      "decisiveStep": "(-1/2)²=1/4을 먼저 계산해 3÷1/4=12, 1-12=-11, (-11)×(-2)=22, 2-22=-20으로 이어지므로 순서가 ㄹ→ㄷ→ㄴ→ㅁ→ㄱ이고 값이 -20임이 확정된다.",
+      "metaRationale": {
+        "rpmPath": "2015 M1-1 > 정수와 유리수 > 정수와 유리수의 계산 > 혼합 계산 > 거듭제곱이 포함된 혼합 계산",
+        "directJudgment": {
+          "source": "original exam same-type item q23",
+          "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+          "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
+        },
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M1-RPM-026",
+          "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+          "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
+        },
+        "crossConcept": "No separate cross-concept key assigned.",
+        "condition": "No ACTIVE condition key in the 중1 key-selection table matches the stated constraints; left empty.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Resolver projection offered TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER for the RPM leaf, but the original exam item of the same solution type is judged with a more specific template.  PT/TPL set by direct judgment under the 2026-11-17 rule: same solution type as original exam item 23 동산중 중1 1학기 중간 q23 (ACTIVE keys, TPL parent PT checked). Crosswalk row/binding not modified here (shared data)."
+        },
+        {
+          "fields": [
+            "reviewStatus"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "Semantic fields were judged by DeepSeek v4.1 flash from the keyed selection table and the official Resolver, then operator-checked; no independent human/second-reviewer record."
+        }
+      ]
+    }
+  ],
+  "rpmStatus": "EVIDENCE_DEBT",
+  "expectedSourceSha256": "3db1d5019f06afa7bd6adfa685565dd0715574ddc1eaa96b1f1a75e101cbad1c"
+}
