@@ -10,6 +10,8 @@ import { fileURLToPath } from 'node:url';
 import { M2S1_SVG7_IMAGE_POINTER_PROFILE as PROFILE, M2S1_SVG7_IMAGE_POINTER_SCHEMA as SCHEMA,
   M2S1_SVG7_STATIC_SCHEMA as STATIC_SCHEMA, M2S1_SVG7_REVIEWED_SOURCE_COMMIT as ORIGINAL,
   M2S1_SVG7_ASSET_COMMIT as ASSET_COMMIT, M2S1_SVG7_SCOPE as SCOPE,
+  M2S1_SVG7_Q24_ORIGIN_PROFILE as ORIGIN_PROFILE, M2S1_SVG7_Q24_ORIGIN_SCHEMA as ORIGIN_SCHEMA,
+  M2S1_SVG7_Q24_ORIGIN_SCOPE as ORIGIN_SCOPE, M2S1_SVG7_Q24_ORIGIN_STATIC_REF as ORIGIN_STATIC_REF,
   materializeM2s1Svg7ImagePointer, validateM2s1Svg7ImagePointerCandidate }
   from '../archive/tools/meta-foundation/materialize-reviewed-m2s1-svg7-image-pointer.mjs';
 import { CANDIDATE_ENVELOPE, CANDIDATE_SCHEMA, inspectSourceMetadataCandidate,
@@ -68,7 +70,8 @@ function staticFixture() {
 }
 
 function fixture(t, { changeReview, changeReviewText, changeSource, changeBank, sourceTail, changeOldAsset,
-  changeIdentity, changeManifest, changeManifestText, changeEnvelope, changeExpectedAfter, extraInput } = {}) {
+  changeIdentity, changeManifest, changeManifestText, changeEnvelope, changeExpectedAfter, extraInput, originRevision = false } = {}) {
+  const activeScope = originRevision ? ORIGIN_SCOPE : SCOPE;
   const container = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-m2s1-svg7-fixture-'));
   t.after(() => fs.rmSync(container, { recursive: true, force: true }));
   const root = path.join(container, 'repo'); fs.mkdirSync(root);
@@ -85,7 +88,7 @@ function fixture(t, { changeReview, changeReviewText, changeSource, changeBank, 
   const reviewCommit = git(root, 'rev-parse', 'HEAD'); git(root, 'rm', '--', STATIC);
   const sources = new Map(), after = new Map(), banks = new Map(), records = [];
   for (const [index, p] of sourcePaths.entries()) {
-    const original = publicBytes(ORIGINAL, p), originalBank = bankOf(original), scope = SCOPE.filter(s => s.sourcePath === p);
+    const original = publicBytes(ORIGINAL, p), originalBank = bankOf(original), scope = activeScope.filter(s => s.sourcePath === p);
     const sourceArchiveFile = p.slice('archive/exams/'.length);
     for (const [i, q] of originalBank.entries()) {
       const questionUid = scope.find(s => s.sourceOrdinal === i + 1)?.questionUid || 'qid_v1_' + sha(`${p}:${i + 1}`);
@@ -116,16 +119,19 @@ function fixture(t, { changeReview, changeReviewText, changeSource, changeBank, 
   changeIdentity?.(identity); const identityRaw = json(identity); put(IDENTITY, identityRaw);
   git(root, 'add', '.'); git(root, 'commit', '-qm', 'synthetic current whole banks and identity');
   const baseCommit = git(root, 'rev-parse', 'HEAD');
-  const manifest = { schemaVersion: SCHEMA, transportProfile: PROFILE, materializationId: 'fixture-m2s1-svg7-pointer', baseCommit,
-    identityRef: inputRef(IDENTITY, identityRaw), staticEvidenceRef: ref(reviewCommit, STATIC, reviewRaw), outputScope: sourcePaths,
+  const manifest = { schemaVersion: originRevision ? ORIGIN_SCHEMA : SCHEMA,
+    transportProfile: originRevision ? ORIGIN_PROFILE : PROFILE, materializationId: 'fixture-m2s1-svg7-pointer', baseCommit,
+    identityRef: inputRef(IDENTITY, identityRaw),
+    staticEvidenceRef: originRevision ? structuredClone(ORIGIN_STATIC_REF) : ref(reviewCommit, STATIC, reviewRaw), outputScope: sourcePaths,
     files: sourcePaths.map(p => ({ path: p, sourceBeforeRef: ref(baseCommit, p, sources.get(p)), after: pair(after.get(p)),
-      expectedQuestionCount: banks.get(p).length, changes: SCOPE.filter(s => s.sourcePath === p).map(s => ({
+      expectedQuestionCount: banks.get(p).length, changes: activeScope.filter(s => s.sourcePath === p).map(s => ({
         key: s.key, questionUid: s.questionUid, sourceOrdinal: s.sourceOrdinal,
         wholeQuestionBeforeSha256: sha(stable(banks.get(p)[s.sourceOrdinal - 1])), pointerField: 'content', pointerKind: 'EXACT_SINGLE_IMG_SRC_URI',
         pointerBefore: s.oldAssetPath.slice('archive/'.length), pointerAfter: s.newAssetPath.slice('archive/'.length),
         contentBeforeSha256: s.reviewedContentSha256, contentAfterSha256: s.pointerContentAfterSha256,
         oldAssetRef: ref(baseCommit, s.oldAssetPath, fs.readFileSync(path.join(root, s.oldAssetPath))),
-        newAssetRef: ref(ASSET_COMMIT, s.newAssetPath, publicBytes(ASSET_COMMIT, s.newAssetPath)),
+        newAssetRef: ref(s.approvedAssetCommit || ASSET_COMMIT, s.newAssetPath,
+          publicBytes(s.approvedAssetCommit || ASSET_COMMIT, s.newAssetPath)),
       })) })) };
   changeManifest?.(manifest, { root, baseCommit, reviewCommit, review, sources, after });
   const manifestRaw = changeManifestText?.(json(manifest)) ?? json(manifest);
@@ -135,7 +141,7 @@ function fixture(t, { changeReview, changeReviewText, changeSource, changeBank, 
   changeEnvelope?.(envelope); for (const [p, b] of Object.entries(inputs)) put(p, b); put(CANDIDATE_ENVELOPE, json(envelope));
   git(root, 'add', '.'); git(root, 'commit', '-qm', 'synthetic metadata input without source changes');
   const inputCommit = git(root, 'rev-parse', 'HEAD'); git(root, 'reset', '--hard', baseCommit);
-  return { root, container, baseCommit, inputCommit, manifest, envelope, sources, after, banks,
+  return { root, container, baseCommit, inputCommit, manifest, envelope, sources, after, banks, scope: activeScope,
     options: { repoRoot: root, inputCommit, eventRef: 'archive-meta-source-input/' + manifest.materializationId } };
 }
 function dry(f) { return materializeM2s1Svg7ImagePointer({ repoRoot: f.root, manifest: f.manifest,
@@ -340,4 +346,99 @@ test('SVG7 direct graph validator refuses detached manifest objects', t => {
   const f = fixture(t), file = { path: MANIFEST, value: f.manifest };
   assert.throws(() => validateM2s1Svg7ImagePointerCandidate({ root:f.root,baseCommit:f.baseCommit,inputCommit:f.inputCommit,
     envelope:f.envelope,manifestFile:file,files:new Map([[MANIFEST,{...file}]]) }), /SOURCE_M2S1_SVG7:INPUT_GRAPH_SCOPE/);
+});
+
+test('SVG7 V2: separate public Q24 origin revision keeps the exact other six repairs', async t => {
+  const f = fixture(t, { originRevision: true });
+  const inspected = inspectSourceMetadataCandidate(f.options);
+  assert.equal(inspected.closure.transportProfile, ORIGIN_PROFILE);
+  assert.equal(inspected.closure.selectedUidCount, 7);
+  assert.equal(inspected.closure.unchangedPriorAssets, 6);
+  assert.equal(inspected.closure.assetRevisionKey, 'E045-Q24');
+  assert.deepEqual(inspected.closure.assetRevisionChange,
+    { tag: 'text', text: 'O', attribute: 'x', before: '118.158', after: '158.158' });
+  assert.equal(inspected.closure.newApprovals, 0); assert.equal(inspected.closure.actualUi, 'PENDING');
+  assert.deepEqual(inspected.closure.sourceFiles.map(r => r.nonselectedWholeQuestionsPreserved), [23, 23, 22]);
+  const result = await buildSourceMetadataCandidate({ ...f.options, outputRoot: path.join(f.container, 'v2-output') });
+  assert.equal(result.sourceFileCount, 3); assert.equal(result.approvalEffect, 'NONE');
+  const changed = git(f.root, 'diff-tree', '--no-commit-id', '--name-only', '-r', f.inputCommit, result.candidateCommit)
+    .split('\n').sort();
+  assert.deepEqual(changed, [CANDIDATE_ENVELOPE, result.receiptPath, ...sourcePaths].sort());
+  for (const p of sourcePaths) {
+    const actual = fs.readFileSync(path.join(f.container, 'v2-output', p));
+    assert.equal(sha(actual), sha(f.after.get(p)));
+    let inverse = actual.toString(); const wanted = structuredClone(f.banks.get(p));
+    for (const s of f.scope.filter(s => s.sourcePath === p)) {
+      inverse = inverse.replace(s.newAssetPath.slice(8), s.oldAssetPath.slice(8));
+      wanted[s.sourceOrdinal - 1].content = wanted[s.sourceOrdinal - 1].content.replace(
+        s.oldAssetPath.slice(8), s.newAssetPath.slice(8));
+      assert.equal(git(f.root, 'rev-parse', result.candidateCommit + ':' + s.oldAssetPath),
+        git(f.root, 'rev-parse', f.baseCommit + ':' + s.oldAssetPath));
+    }
+    assert.equal(sha(inverse), sha(f.sources.get(p)));
+    assert.deepEqual(bankOf(actual), wanted);
+    if (p !== SCOPE.find(s => s.key === 'E045-Q24').sourcePath) {
+      let v1 = f.sources.get(p);
+      for (const s of SCOPE.filter(s => s.sourcePath === p)) v1 = v1.replace(s.oldAssetPath.slice(8), s.newAssetPath.slice(8));
+      assert.equal(actual.toString(), v1);
+    }
+  }
+  for (const s of ORIGIN_SCOPE.filter(s => s.key !== 'E045-Q24')) assert.deepEqual(s, SCOPE.find(r => r.key === s.key));
+  assert.equal(git(f.root, 'rev-parse', 'HEAD'), f.baseCommit);
+  assert.equal(git(f.root, 'diff', '--name-only', 'HEAD'), '');
+  assert.equal(git(f.root, 'rev-parse', result.candidateCommit + ':' + IDENTITY), git(f.root, 'rev-parse', f.baseCommit + ':' + IDENTITY));
+});
+
+test('SVG7 V2: current nonselected executable metadata remains exact', t => {
+  const f = fixture(t, { originRevision: true,
+    sourceTail: () => '\nwindow.questionBank[0].currentNonselectedMetadata = "synthetic";\n' });
+  const result = dry(f);
+  assert.equal(result.nonselectedWholeQuestionChanges, 0);
+  assert.equal(result.sourcePrefixSuffixChanged, 0);
+});
+
+for (const [name, changeManifest, error] of [
+  ['V1 schema under V2 profile', m => { m.schemaVersion = SCHEMA; }, 'MANIFEST_PROFILE'],
+  ['V2 static in V1 profile', m => { m.schemaVersion = SCHEMA; m.transportProfile = PROFILE; }, 'IMMUTABLE_REF_BINDING'],
+  ['old static review in V2 profile', (m, f) => {
+    const raw = json(f.review); m.staticEvidenceRef = ref(f.reviewCommit, STATIC, raw);
+  }, 'ORIGIN_STATIC_FIXED_REF'],
+  ['caller reseals the fixed capsule hash', m => { m.staticEvidenceRef.sha256 = '0'.repeat(64); }, 'ORIGIN_STATIC_FIXED_REF'],
+  ['caller selects another historical review', m => { m.staticEvidenceRef.commit = ORIGINAL; }, 'ORIGIN_STATIC_FIXED_REF'],
+  ['own null static reference', m => { m.staticEvidenceRef = null; }, 'ORIGIN_STATIC_FIXED_REF'],
+  ['a seventh repair is omitted', m => { m.files[2].changes = m.files[2].changes.filter(r => r.key !== 'E045-Q24'); }, 'CHANGE_SCOPE'],
+  ['an unchanged repair is redirected', m => { m.files[0].changes[0].pointerAfter += '-other'; }, 'POINTER_FIXED_SCOPE'],
+  ['the old Q24 repair path is reused', m => {
+    m.files[2].changes.find(r => r.key === 'E045-Q24').pointerAfter = SCOPE.find(r => r.key === 'E045-Q24').newAssetPath.slice(8);
+  }, 'POINTER_FIXED_SCOPE'],
+  ['the new asset is resealed around other geometry', m => {
+    const a = m.files[2].changes.find(r => r.key === 'E045-Q24').newAssetRef;
+    a.sha256 = '0'.repeat(64); a.gitBlobSha1 = '1'.repeat(40);
+  }, 'ASSET_STATIC_JOIN'],
+  ['Q24 asset authority is used on another selected UID', m => {
+    m.files[2].changes.find(r => r.key === 'E045-Q15').newAssetRef = m.files[2].changes.find(r => r.key === 'E045-Q24').newAssetRef;
+  }, 'ASSET_STATIC_JOIN'],
+]) test('SVG7 V2 rejects ' + name, t => {
+  const f = fixture(t, { originRevision: true, changeManifest });
+  assert.throws(() => dry(f), new RegExp('SOURCE_M2S1_SVG7:' + error));
+});
+
+test('SVG7 V2 rejects resealed current Q24 wording instead of inheriting old static approval', t => {
+  const f = fixture(t, { originRevision: true, changeBank: (bank, i) => {
+    if (i === 2) bank[23].question = 'synthetic changed given';
+  } });
+  assert.throws(() => dry(f), /SOURCE_M2S1_SVG7:STATIC_CURRENT_WHOLE_QUESTION/);
+});
+
+test('SVG7 V2 rejects resealed current original Q24 asset', t => {
+  const f = fixture(t, { originRevision: true,
+    changeOldAsset: (raw, s) => s.key === 'E045-Q24' ? Buffer.concat([raw, Buffer.from('\n')]) : raw });
+  assert.throws(() => dry(f), /SOURCE_M2S1_SVG7:STATIC_CURRENT_OLD_ASSET/);
+});
+
+test('SVG7 V2 rejects URI-triggered nonselected executable mutation', t => {
+  const uri = ORIGIN_SCOPE.find(s => s.key === 'E045-Q24').newAssetPath.slice(8);
+  const f = fixture(t, { originRevision: true, sourceTail: i => i === 2
+    ? '\nif (window.questionBank[23].content.includes(' + JSON.stringify(uri.slice(0, -4)) + ' + ".svg")) window.questionBank[0].syntheticMutation = true;\n' : '' });
+  assert.throws(() => dry(f), /SOURCE_M2S1_SVG7:EXECUTED_WHOLE_BANK_DRIFT/);
 });

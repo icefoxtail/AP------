@@ -13,6 +13,18 @@ export const M2S1_SVG7_IMAGE_POINTER_SCHEMA = 'archive-m2s1-svg7-image-pointer-m
 export const M2S1_SVG7_STATIC_SCHEMA = 'archive-independent-m2s1-svg7-image-pointer-static-v1';
 export const M2S1_SVG7_REVIEWED_SOURCE_COMMIT = '13c39484af09ca5fc0606f1e219daf7412b80be3';
 export const M2S1_SVG7_ASSET_COMMIT = 'c39e2b8a727d1b170980b9decd2288a56102622f';
+// A separately reviewed revision of one asset. The original V1 profile and its
+// seven immutable approvals remain unchanged; this enum never accepts a subset.
+export const M2S1_SVG7_Q24_ORIGIN_PROFILE = 'M2S1_SVG7_IMAGE_POINTER_Q24_ORIGIN_V2';
+export const M2S1_SVG7_Q24_ORIGIN_SCHEMA = 'archive-m2s1-svg7-image-pointer-materialization-v2';
+export const M2S1_SVG7_Q24_ORIGIN_STATIC_SCHEMA = 'archive-independent-m2s1-svg7-q24-origin-label-static-v2';
+export const M2S1_SVG7_Q24_ORIGIN_ASSET_COMMIT = '987990e2452af47732dc62e1925c1bc397d474e4';
+export const M2S1_SVG7_Q24_ORIGIN_STATIC_REF = Object.freeze({
+  commit: 'b13247a6c8bc7793f011395c0c0b68fa8c0352d6',
+  path: 'docs/operations/m2s1-svg7-source-repair-20261116/q24-origin-label-static-v2.json',
+  gitBlobSha1: '488a87750eb5075d7d4f24eff4d295c71833f817',
+  sha256: 'a754f9bbb97df32d07a109592673194cd4b28a1c9d24a90fccbfa89a36735c54', bytes: 1986,
+});
 export const M2S1_SVG7_SCOPE = Object.freeze([
   {
     "key": "E037-Q3",
@@ -176,6 +188,23 @@ export const M2S1_SVG7_SCOPE = Object.freeze([
     "reviewedOldAssetBytes": 12000
   }
 ].map(row => Object.freeze(row)));
+export const M2S1_SVG7_Q24_ORIGIN_SCOPE = Object.freeze(M2S1_SVG7_SCOPE.map(row => row.key !== 'E045-Q24'
+  ? row : Object.freeze({ ...row,
+    pointerContentAfterSha256: '0a3a28c7c1802c1a6d70bfd3594cbe8f24e1cb8532e1f7843546c5f9d28da3b7',
+    newAssetPath: 'archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2-source-repair-r2.svg',
+    approvedAssetGitBlobSha1: '6ddf55bc8a7575124342f996cd654b6df3ca5013',
+    approvedAssetSha256: 'a7f34be6ce3556987911922fe8df74cfca412de47f8ce1af3d0dd4bccc8c3749',
+    approvedAssetBytes: 10634,
+    approvedAssetCommit: M2S1_SVG7_Q24_ORIGIN_ASSET_COMMIT,
+  })));
+const Q24_PRIOR_STATIC_REF = Object.freeze({
+  commit: '34b9e6ab851d78f90bba4975416cbeb5ee8817e3',
+  path: 'docs/operations/m2s1-svg7-source-repair-20261116/independent-static-v1.json',
+  gitBlobSha1: 'c0f84ef234a430067e79e563712bb2c95b0ae3a0',
+  sha256: '2fa5c28da0a4d22c6443a6a164caa300fadc3642201265224b7351eb273b520e', bytes: 13196,
+});
+const Q24_ORIGIN_DELTA = Object.freeze({ tag: 'text', text: 'O', attribute: 'x', before: '118.158', after: '158.158' });
+const Q24_XML_PROOF_SHA256 = 'ae35439e0fec97839bf8bac613c90e51c27b3b20d9c61cc3c31e82aa4d727bec';
 const STATIC_PATH = 'docs/operations/m2s1-svg7-source-repair-20261116/independent-static-v1.json';
 const STATIC_BASIS = Object.freeze({
   rootOriginalFreezeSha256: '4fd7aaedd5666a65ccb32c5eefaf413cddd6e38f43b422f47ab146d23bf07344',
@@ -447,6 +476,55 @@ function checkedStaticReview(root, ref, inputCommit) {
   return doc;
 }
 
+function checkedQ24OriginRevision(root, ref, inputCommit) {
+  // The new review cannot be resealed around another source, another O label,
+  // another asset, or an apparent static approval made by the caller.
+  need(plain(ref) && equal(ref, M2S1_SVG7_Q24_ORIGIN_STATIC_REF), 'ORIGIN_STATIC_FIXED_REF');
+  const raw = immutableRef(root, ref, { expectedPath: M2S1_SVG7_Q24_ORIGIN_STATIC_REF.path,
+    expectedCommit: M2S1_SVG7_Q24_ORIGIN_STATIC_REF.commit, inputCommit });
+  const doc = parseJson(raw);
+  keys(doc, ['schemaVersion', 'transportProfile', 'producer', 'reviewer', 'priorStaticRef', 'repair',
+    'staticDecision', 'actualUi', 'newFullMathematicalQa', 'newNativeApprovals', 'newReview2Claims',
+    'newMetadataApprovals', 'newDifficultyJudgments', 'newFourSlotVectors'], 'ORIGIN_STATIC_SHAPE');
+  need(doc.schemaVersion === M2S1_SVG7_Q24_ORIGIN_STATIC_SCHEMA
+    && doc.transportProfile === M2S1_SVG7_Q24_ORIGIN_PROFILE, 'ORIGIN_STATIC_PROFILE');
+  need(doc.producer === 'GPT_M2S1_RELEASE' && doc.reviewer === 'GPT_ROOT_C8F1B0BFB4FA'
+    && doc.producer !== doc.reviewer, 'ORIGIN_STATIC_INDEPENDENT_ROLES');
+  need(equal(doc.priorStaticRef, Q24_PRIOR_STATIC_REF), 'ORIGIN_PRIOR_STATIC_REF');
+  need(doc.staticDecision === 'ACCEPT_ORIGIN_LABEL_POSITION_ONLY' && doc.actualUi === 'PENDING'
+    && doc.newFullMathematicalQa === false && doc.newNativeApprovals === 0 && doc.newReview2Claims === 0
+    && doc.newMetadataApprovals === 0 && doc.newDifficultyJudgments === 0 && doc.newFourSlotVectors === 0,
+    'ORIGIN_STATIC_NO_APPROVAL');
+  const prior = checkedStaticReview(root, doc.priorStaticRef, inputCommit);
+  const oldFixed = scoped.get('E045-Q24'), fixed = M2S1_SVG7_Q24_ORIGIN_SCOPE.find(r => r.key === oldFixed.key);
+  const priorRow = prior.rows.find(r => r.key === fixed.key), repair = doc.repair;
+  keys(repair, ['key', 'questionUid', 'sourceOrdinal', 'priorRepairAssetRef', 'newAssetRef',
+    'attributeDelta', 'xmlPropertyProofSha256'], 'ORIGIN_REPAIR_SHAPE');
+  need(repair.key === fixed.key && repair.questionUid === fixed.questionUid
+    && repair.sourceOrdinal === fixed.sourceOrdinal, 'ORIGIN_REPAIR_SCOPE');
+  need(equal(repair.attributeDelta, Q24_ORIGIN_DELTA)
+    && repair.xmlPropertyProofSha256 === Q24_XML_PROOF_SHA256, 'ORIGIN_REPAIR_DELTA');
+  need(equal(repair.priorRepairAssetRef, priorRow.newAssetRef), 'ORIGIN_PRIOR_REPAIR_ASSET');
+  const before = immutableRef(root, repair.priorRepairAssetRef, { expectedPath: oldFixed.newAssetPath,
+    expectedCommit: M2S1_SVG7_ASSET_COMMIT, inputCommit });
+  need(repair.newAssetRef?.commit === M2S1_SVG7_Q24_ORIGIN_ASSET_COMMIT
+    && repair.newAssetRef?.path === fixed.newAssetPath
+    && repair.newAssetRef?.gitBlobSha1 === fixed.approvedAssetGitBlobSha1
+    && repair.newAssetRef?.sha256 === fixed.approvedAssetSha256
+    && repair.newAssetRef?.bytes === fixed.approvedAssetBytes, 'ORIGIN_FIXED_NEW_ASSET');
+  const after = immutableRef(root, repair.newAssetRef, { expectedPath: fixed.newAssetPath,
+    expectedCommit: M2S1_SVG7_Q24_ORIGIN_ASSET_COMMIT, inputCommit });
+  const text = before.toString('utf8'), matches = [...text.matchAll(/<text\b[^>]*>O<\/text>/gu)];
+  need(Buffer.from(text).equals(before) && matches.length === 1
+    && matches[0][0].split('x="118.158"').length === 2, 'ORIGIN_SINGLE_LABEL');
+  const oldElement = matches[0][0], newElement = oldElement.replace('x="118.158"', 'x="158.158"');
+  const expected = text.slice(0, matches[0].index) + newElement + text.slice(matches[0].index + oldElement.length);
+  need(Buffer.from(expected).equals(after) && expected.replace(newElement, oldElement) === text,
+    'ORIGIN_ATTRIBUTE_ONLY_INVERSE');
+  return { ...prior, rows: prior.rows.map(row => row.key === fixed.key
+    ? { ...row, contentAfterSha256: fixed.pointerContentAfterSha256, newAssetRef: repair.newAssetRef } : row) };
+}
+
 function exactContentPointer(q, node, literal, fixed, change) {
   need(change.pointerField === 'content' && change.pointerKind === 'EXACT_SINGLE_IMG_SRC_URI'
     && change.pointerBefore === fixed.oldAssetPath.slice('archive/'.length)
@@ -479,8 +557,10 @@ export function materializeM2s1Svg7ImagePointer({ repoRoot, manifest, baseCommit
   need(write === false || write === true, 'WRITE_BOOLEAN');
   keys(manifest, ['schemaVersion', 'transportProfile', 'materializationId', 'baseCommit', 'identityRef',
     'staticEvidenceRef', 'outputScope', 'files'], 'MANIFEST_SHAPE');
-  need(manifest.schemaVersion === M2S1_SVG7_IMAGE_POINTER_SCHEMA
-    && manifest.transportProfile === M2S1_SVG7_IMAGE_POINTER_PROFILE
+  const originRevision = manifest.transportProfile === M2S1_SVG7_Q24_ORIGIN_PROFILE;
+  need((originRevision ? manifest.schemaVersion === M2S1_SVG7_Q24_ORIGIN_SCHEMA
+    : manifest.schemaVersion === M2S1_SVG7_IMAGE_POINTER_SCHEMA
+      && manifest.transportProfile === M2S1_SVG7_IMAGE_POINTER_PROFILE)
     && /^[a-z0-9][a-z0-9-]{5,80}$/.test(manifest.materializationId || ''), 'MANIFEST_PROFILE');
   need(SHA1.test(baseCommit || '') && SHA1.test(inputCommit || '') && baseCommit !== inputCommit
     && manifest.baseCommit === baseCommit, 'MANIFEST_BASE');
@@ -495,7 +575,10 @@ export function materializeM2s1Svg7ImagePointer({ repoRoot, manifest, baseCommit
   const identity = parseJson(identityRaw);
   need(identity.schemaVersion === 'question-identity-map-v1' && Array.isArray(identity.records), 'IDENTITY_SCHEMA');
   const resolver = createQuestionIdentityResolver(identity);
-  const review = checkedStaticReview(repoRoot, manifest.staticEvidenceRef, inputCommit);
+  const scopeRows = originRevision ? M2S1_SVG7_Q24_ORIGIN_SCOPE : M2S1_SVG7_SCOPE;
+  const scopeByKey = new Map(scopeRows.map(row => [row.key, row]));
+  const review = originRevision ? checkedQ24OriginRevision(repoRoot, manifest.staticEvidenceRef, inputCommit)
+    : checkedStaticReview(repoRoot, manifest.staticEvidenceRef, inputCommit);
   const reviewed = new Map(review.rows.map(r => [r.key, r])), seen = new Set(), output = [], selection = [];
   for (const file of manifest.files) {
     keys(file, ['path', 'sourceBeforeRef', 'after', 'expectedQuestionCount', 'changes'], 'FILE_SHAPE');
@@ -503,7 +586,7 @@ export function materializeM2s1Svg7ImagePointer({ repoRoot, manifest, baseCommit
     const raw = immutableRef(repoRoot, file.sourceBeforeRef, { expectedPath: file.path, expectedCommit: baseCommit,
       inputCommit, max: MAX_SOURCE });
     const before = executedBank(raw), literal = layout(raw);
-    const scope = M2S1_SVG7_SCOPE.filter(r => r.sourcePath === file.path);
+    const scope = scopeRows.filter(r => r.sourcePath === file.path);
     need(Number.isSafeInteger(file.expectedQuestionCount) && file.expectedQuestionCount === scope[0].expectedBankCount
       && before.length === file.expectedQuestionCount && literal.tree.elements.length === before.length, 'SOURCE_DENOMINATOR');
     need(Array.isArray(file.changes) && file.changes.length === scope.length, 'CHANGE_SCOPE');
@@ -511,7 +594,7 @@ export function materializeM2s1Svg7ImagePointer({ repoRoot, manifest, baseCommit
     for (const change of file.changes) {
       keys(change, ['key', 'questionUid', 'sourceOrdinal', 'wholeQuestionBeforeSha256', 'pointerField', 'pointerKind',
         'pointerBefore', 'pointerAfter', 'contentBeforeSha256', 'contentAfterSha256', 'oldAssetRef', 'newAssetRef'], 'CHANGE_SHAPE');
-      const fixed = scoped.get(change.key);
+      const fixed = scopeByKey.get(change.key);
       need(fixed && fixed.sourcePath === file.path && fixed.questionUid === change.questionUid
         && fixed.sourceOrdinal === change.sourceOrdinal && !seen.has(change.key), 'CHANGE_FIXED_SCOPE');
       seen.add(change.key);
@@ -527,7 +610,7 @@ export function materializeM2s1Svg7ImagePointer({ repoRoot, manifest, baseCommit
         need(change.oldAssetRef[key] === reviewed.get(change.key).oldAssetRef[key], 'STATIC_CURRENT_OLD_ASSET');
       need(equal(change.newAssetRef, reviewed.get(change.key).newAssetRef), 'ASSET_STATIC_JOIN');
       immutableRef(repoRoot, change.newAssetRef, { expectedPath: fixed.newAssetPath,
-        expectedCommit: M2S1_SVG7_ASSET_COMMIT, inputCommit });
+        expectedCommit: fixed.approvedAssetCommit || M2S1_SVG7_ASSET_COMMIT, inputCommit });
       edits.push(patch.edit);wanted[change.sourceOrdinal - 1].content = patch.content;
       selection.push({ key:change.key, questionUid:change.questionUid, sourceOrdinal:change.sourceOrdinal,
         beforeWholeQuestionSha256:change.wholeQuestionBeforeSha256,
@@ -554,9 +637,13 @@ export function materializeM2s1Svg7ImagePointer({ repoRoot, manifest, baseCommit
     const target=isolatedOutput(repoRoot,outputRoot);fs.mkdirSync(target);
     for (const file of output) {const p=path.join(target,file.path);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,file.raw,{flag:'wx'});}
   }
-  return {transportProfile:M2S1_SVG7_IMAGE_POINTER_PROFILE,requestCount:0,preservationRequestCount:0,selectedUidCount:7,
+  return {transportProfile:manifest.transportProfile,requestCount:0,preservationRequestCount:0,selectedUidCount:7,
     evidenceFileCount:1,newApprovals:0,approvalEffect:'NONE',actualUi:'PENDING',staticEvidenceRef:manifest.staticEvidenceRef,
-    sourceFiles:output.map(({raw,...r})=>r),selection,evidenceTraversal:'EXACT_ROOT_STATIC7_CURRENT_WHOLE_SOURCE_AND_IDENTITY',
+    sourceFiles:output.map(({raw,...r})=>r),selection,
+    evidenceTraversal:originRevision ? 'EXACT_ROOT_STATIC7_Q24_ORIGIN_REVISION_CURRENT_WHOLE_SOURCE_AND_IDENTITY'
+      : 'EXACT_ROOT_STATIC7_CURRENT_WHOLE_SOURCE_AND_IDENTITY',
+    ...(originRevision ? {priorStaticEvidenceRef:Q24_PRIOR_STATIC_REF,assetRevisionKey:'E045-Q24',
+      assetRevisionChange:Q24_ORIGIN_DELTA,unchangedPriorAssets:6} : {}),
     sourceFieldsChanged:['content'],literalChangeKind:'EXACT_SINGLE_IMG_SRC_URI_ONLY',selectedOtherFieldsChanged:0,
     nonselectedWholeQuestionChanges:0,originalAssetsChanged:0,sourcePrefixSuffixChanged:0};
 }
