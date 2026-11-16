@@ -173,7 +173,7 @@ window.examData = {
     {
       "id": 13,
       "score": 4.0,
-      "question": "<p>13. 아래 일차함수의 그래프에 대한 설명으로 옳은 것은? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q13.png\"></p>",
+      "question": "<p>13. 아래 일차함수의 그래프에 대한 설명으로 옳은 것은? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q13-problem-visual-v2.svg\" alt=\"직선이 왼쪽 위에서 오른쪽 아래로 내려가고 세로축은 원점과 2 사이에서 지난다. 두 축에 같은 간격의 눈금이 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$y$절편은 $-2$이다.",
         "직선의 기울기는 $\\frac{1}{2}$이다.",
@@ -187,7 +187,7 @@ window.examData = {
     {
       "id": 14,
       "score": 4.0,
-      "question": "<p>14. 다음에서 일차함수 $y-\\frac{5}{3}x+5=0$의 그래프는? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q14.png\"></p>",
+      "question": "<p>14. 다음에서 일차함수 $y-\\frac{5}{3}x+5=0$의 그래프는? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q14-problem-visual-v2.svg\" alt=\"①은 가로 절편 5와 세로 절편 3인 내리막이다. ②는 왼쪽 가로축과 세로축의 3을 지나는 오르막이다. ③은 두 음의 절편을 가진 내리막이다. ④는 세로축의 −3을 지나는 오르막이다. ⑤의 직선은 가로 절편 3과 세로 절편 −5를 지나는 오르막이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "①",
         "②",
@@ -229,7 +229,7 @@ window.examData = {
     {
       "id": 17,
       "score": 4.0,
-      "question": "<p>17. 아래 그래프를 보고 $\\begin{cases} y=-x-2 \\\\ y=-\\frac{1}{2}x \\end{cases}$의 해로 올바른 것은? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q17.png\"></p>",
+      "question": "<p>17. 아래 그래프를 보고 $\\begin{cases} y=-x-2 \\\\ y=-\\frac{1}{2}x \\end{cases}$의 해로 올바른 것은? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q17-problem-visual-v2.svg\" alt=\"원점을 지나는 완만한 내리막과 두 번째 내리막, 오른쪽의 오르막이 같은 좌표평면에 있다. 위 범례에는 원본의 두 내리막 식을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$x=-3, y=2$",
         "$x=-4, y=2$",
@@ -271,7 +271,7 @@ window.examData = {
     {
       "id": 20,
       "score": 5.0,
-      "question": "<p>20. 동생과 형이 $1000\\,\\text{m}$ 달리기 시합을 하는데 동생이 출발선으로부터 $200\\,\\text{m}$ 앞에서 출발하기로 하였다. 오른쪽 그림은 두 사람이 동시에 출발한 지 $x$초 후에 출발선으로부터의 거리를 $y\\,\\text{m}$라고 할 때, $x$와 $y$ 사이의 관계를 그래프로 나타낸 것이다. 두 사람이 출발한 지 몇 초 후에 형이 동생을 앞지르기 시작했는가? (5점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q20.png\"></p>",
+      "question": "<p>20. 동생과 형이 $1000\\,\\text{m}$ 달리기 시합을 하는데 동생이 출발선으로부터 $200\\,\\text{m}$ 앞에서 출발하기로 하였다. 오른쪽 그림은 두 사람이 동시에 출발한 지 $x$초 후에 출발선으로부터의 거리를 $y\\,\\text{m}$라고 할 때, $x$와 $y$ 사이의 관계를 그래프로 나타낸 것이다. 두 사람이 출발한 지 몇 초 후에 형이 동생을 앞지르기 시작했는가? (5점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q20-problem-visual-v2.svg\" alt=\"거리 그래프에서 형은 0초에 출발선에서 시작해 250초에 1000 m에 닿는다. 동생은 출발선에서 200 m 앞에서 시작해 300초에 1000 m에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "150초",
         "152초",
@@ -293,7 +293,7 @@ window.examData = {
     {
       "id": 22,
       "score": 5.0,
-      "question": "<p>【서답형 2】 [서술형]<br><b>[수준별 2-①]</b> 한 병에 500원인 생수를 $x$병 살 때 지불해야 하는 금액을 $y$원이라고 할 때, 다음에 답하시오.<br>(1) $y=f(x)$라고 할 때, $f(x)$를 구하시오. (2점)<br>(2) $f(11)$를 구하시오. (2점)<br><br><b>[수준별 2-②]</b> 아래 그림과 같이 길이와 모양이 같은 성냥개비를 이용하여 육각형을 연결하여 만들 때, 육각형 18개를 만드는 데 필요한 성냥개비의 개수를 구하시오. (5점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q22.png\"></p>",
+      "question": "<p>【서답형 2】 [서술형]<br><b>[수준별 2-①]</b> 한 병에 500원인 생수를 $x$병 살 때 지불해야 하는 금액을 $y$원이라고 할 때, 다음에 답하시오.<br>(1) $y=f(x)$라고 할 때, $f(x)$를 구하시오. (2점)<br>(2) $f(11)$를 구하시오. (2점)<br><br><b>[수준별 2-②]</b> 아래 그림과 같이 길이와 모양이 같은 성냥개비를 이용하여 육각형을 연결하여 만들 때, 육각형 18개를 만드는 데 필요한 성냥개비의 개수를 구하시오. (5점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q22-problem-visual-v2.svg\" alt=\"같은 길이의 성냥개비로 정육각형 넷을 옆으로 이어 그렸다. 각 육각형은 바로 옆 육각형과 세로 변 하나를 공유한다. 같은 모양이 오른쪽으로 계속 이어진다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "",
       "solution": ""
@@ -309,7 +309,7 @@ window.examData = {
     {
       "id": 24,
       "score": 5.0,
-      "question": "<p>【서답형 4】 [서술형]<br><b>[수준별 4-①]</b> $x=-1, x=2, y=1, y=3$의 그래프를 그리고 둘러싸인 도형의 넓이를 구하시오. (4점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24_1.png\"><br><br><b>[수준별 4-②]</b> 두 일차방정식 $y-3x-1=0, y+x-1=0$의 그래프와 $y=m$의 직선과 둘러싸인 삼각형의 넓이가 6미만이 되도록 하는 모든 정수 $m$의 합을 구하는 풀이 과정과 답을 쓰시오. (5점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24_2.png\"></p>",
+      "question": "<p>【서답형 4】 [서술형]<br><b>[수준별 4-①]</b> $x=-1, x=2, y=1, y=3$의 그래프를 그리고 둘러싸인 도형의 넓이를 구하시오. (4점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24-problem-visual-v2.svg\" alt=\"가로축과 세로축이 있는 각 칸이 정사각형인 격자이다. 학생이 직선을 그릴 수 있도록 좌표 격자와 눈금만 표시했다.\" style=\"display:block;width:min(100%,410px);height:auto;margin:0 auto;\"><br><br><b>[수준별 4-②]</b> 두 일차방정식 $y-3x-1=0, y+x-1=0$의 그래프와 $y=m$의 직선과 둘러싸인 삼각형의 넓이가 6미만이 되도록 하는 모든 정수 $m$의 합을 구하는 풀이 과정과 답을 쓰시오. (5점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24-stem-2-problem-visual-v2.svg\" alt=\"가로축과 세로축이 있는 각 칸이 정사각형인 격자이다. 학생이 직선을 그릴 수 있도록 좌표 격자와 눈금만 표시했다.\" style=\"display:block;width:min(100%,410px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "",
       "solution": ""
@@ -502,8 +502,9 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>13. 아래 일차함수의 그래프에 대한 설명으로 옳은 것은? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q13.png\"></p>",
+    "question": "<p>13. 아래 일차함수의 그래프에 대한 설명으로 옳은 것은? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q13-problem-visual-v2.svg\" alt=\"직선이 왼쪽 위에서 오른쪽 아래로 내려가고 세로축은 원점과 2 사이에서 지난다. 두 축에 같은 간격의 눈금이 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$y$절편은 $-2$이다.",
       "직선의 기울기는 $\\frac{1}{2}$이다.",
@@ -513,12 +514,13 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>13. 아래 일차함수의 그래프에 대한 설명으로 옳은 것은? (4점)</div><div><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q13.png\"></div>"
+    "content": "<div>13. 아래 일차함수의 그래프에 대한 설명으로 옳은 것은? (4점)</div><div><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q13-problem-visual-v2.svg\" alt=\"직선이 왼쪽 위에서 오른쪽 아래로 내려가고 세로축은 원점과 2 사이에서 지난다. 두 축에 같은 간격의 눈금이 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 14,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>14. 다음에서 일차함수 $y-\\frac{5}{3}x+5=0$의 그래프는? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q14.png\"></p>",
+    "question": "<p>14. 다음에서 일차함수 $y-\\frac{5}{3}x+5=0$의 그래프는? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q14-problem-visual-v2.svg\" alt=\"①은 가로 절편 5와 세로 절편 3인 내리막이다. ②는 왼쪽 가로축과 세로축의 3을 지나는 오르막이다. ③은 두 음의 절편을 가진 내리막이다. ④는 세로축의 −3을 지나는 오르막이다. ⑤의 직선은 가로 절편 3과 세로 절편 −5를 지나는 오르막이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "①",
       "②",
@@ -528,7 +530,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>14. 다음에서 일차함수 $y-\\frac{5}{3}x+5=0$의 그래프는? (4점)</div><div><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q14.png\"></div>"
+    "content": "<div>14. 다음에서 일차함수 $y-\\frac{5}{3}x+5=0$의 그래프는? (4점)</div><div><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q14-problem-visual-v2.svg\" alt=\"①은 가로 절편 5와 세로 절편 3인 내리막이다. ②는 왼쪽 가로축과 세로축의 3을 지나는 오르막이다. ③은 두 음의 절편을 가진 내리막이다. ④는 세로축의 −3을 지나는 오르막이다. ⑤의 직선은 가로 절편 3과 세로 절편 −5를 지나는 오르막이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 15,
@@ -562,8 +564,9 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>17. 아래 그래프를 보고 $\\begin{cases} y=-x-2 \\\\ y=-\\frac{1}{2}x \\end{cases}$의 해로 올바른 것은? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q17.png\"></p>",
+    "question": "<p>17. 아래 그래프를 보고 $\\begin{cases} y=-x-2 \\\\ y=-\\frac{1}{2}x \\end{cases}$의 해로 올바른 것은? (4점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q17-problem-visual-v2.svg\" alt=\"원점을 지나는 완만한 내리막과 두 번째 내리막, 오른쪽의 오르막이 같은 좌표평면에 있다. 위 범례에는 원본의 두 내리막 식을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$x=-3, y=2$",
       "$x=-4, y=2$",
@@ -573,7 +576,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>17. 아래 그래프를 보고 $\\begin{cases} y=-x-2 \\\\ y=-\\frac{1}{2}x \\end{cases}$의 해로 올바른 것은? (4점)</div><div><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q17.png\"></div>"
+    "content": "<div>17. 아래 그래프를 보고 $\\begin{cases} y=-x-2 \\\\ y=-\\frac{1}{2}x \\end{cases}$의 해로 올바른 것은? (4점)</div><div><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q17-problem-visual-v2.svg\" alt=\"원점을 지나는 완만한 내리막과 두 번째 내리막, 오른쪽의 오르막이 같은 좌표평면에 있다. 위 범례에는 원본의 두 내리막 식을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 18,
@@ -607,8 +610,9 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "layoutTag": "fullwidth",
     "score": 5,
-    "question": "<p>20. 동생과 형이 $1000\\,\\text{m}$ 달리기 시합을 하는데 동생이 출발선으로부터 $200\\,\\text{m}$ 앞에서 출발하기로 하였다. 오른쪽 그림은 두 사람이 동시에 출발한 지 $x$초 후에 출발선으로부터의 거리를 $y\\,\\text{m}$라고 할 때, $x$와 $y$ 사이의 관계를 그래프로 나타낸 것이다. 두 사람이 출발한 지 몇 초 후에 형이 동생을 앞지르기 시작했는가? (5점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q20.png\"></p>",
+    "question": "<p>20. 동생과 형이 $1000\\,\\text{m}$ 달리기 시합을 하는데 동생이 출발선으로부터 $200\\,\\text{m}$ 앞에서 출발하기로 하였다. 오른쪽 그림은 두 사람이 동시에 출발한 지 $x$초 후에 출발선으로부터의 거리를 $y\\,\\text{m}$라고 할 때, $x$와 $y$ 사이의 관계를 그래프로 나타낸 것이다. 두 사람이 출발한 지 몇 초 후에 형이 동생을 앞지르기 시작했는가? (5점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q20-problem-visual-v2.svg\" alt=\"거리 그래프에서 형은 0초에 출발선에서 시작해 250초에 1000 m에 닿는다. 동생은 출발선에서 200 m 앞에서 시작해 300초에 1000 m에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "150초",
       "152초",
@@ -618,7 +622,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>20. 동생과 형이 $1000\\,\\text{m}$ 달리기 시합을 하는데 동생이 출발선으로부터 $200\\,\\text{m}$ 앞에서 출발하기로 하였다. 오른쪽 그림은 두 사람이 동시에 출발한 지 $x$초 후에 출발선으로부터의 거리를 $y\\,\\text{m}$라고 할 때, $x$와 $y$ 사이의 관계를 그래프로 나타낸 것이다. 두 사람이 출발한 지 몇 초 후에 형이 동생을 앞지르기 시작했는가? (5점)</div><div><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q20.png\"></div>"
+    "content": "<div>20. 동생과 형이 $1000\\,\\text{m}$ 달리기 시합을 하는데 동생이 출발선으로부터 $200\\,\\text{m}$ 앞에서 출발하기로 하였다. 오른쪽 그림은 두 사람이 동시에 출발한 지 $x$초 후에 출발선으로부터의 거리를 $y\\,\\text{m}$라고 할 때, $x$와 $y$ 사이의 관계를 그래프로 나타낸 것이다. 두 사람이 출발한 지 몇 초 후에 형이 동생을 앞지르기 시작했는가? (5점)</div><div><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q20-problem-visual-v2.svg\" alt=\"거리 그래프에서 형은 0초에 출발선에서 시작해 250초에 1000 m에 닿는다. 동생은 출발선에서 200 m 앞에서 시작해 300초에 1000 m에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 21,
@@ -631,12 +635,13 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "layoutTag": "fullwidth",
     "score": 5,
-    "question": "<p>【서답형 2】 [서술형]<br><b>[수준별 2-①]</b> 한 병에 500원인 생수를 $x$병 살 때 지불해야 하는 금액을 $y$원이라고 할 때, 다음에 답하시오.<br>(1) $y=f(x)$라고 할 때, $f(x)$를 구하시오. (2점)<br>(2) $f(11)$를 구하시오. (2점)<br><br><b>[수준별 2-②]</b> 아래 그림과 같이 길이와 모양이 같은 성냥개비를 이용하여 육각형을 연결하여 만들 때, 육각형 18개를 만드는 데 필요한 성냥개비의 개수를 구하시오. (5점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q22.png\"></p>",
+    "question": "<p>【서답형 2】 [서술형]<br><b>[수준별 2-①]</b> 한 병에 500원인 생수를 $x$병 살 때 지불해야 하는 금액을 $y$원이라고 할 때, 다음에 답하시오.<br>(1) $y=f(x)$라고 할 때, $f(x)$를 구하시오. (2점)<br>(2) $f(11)$를 구하시오. (2점)<br><br><b>[수준별 2-②]</b> 아래 그림과 같이 길이와 모양이 같은 성냥개비를 이용하여 육각형을 연결하여 만들 때, 육각형 18개를 만드는 데 필요한 성냥개비의 개수를 구하시오. (5점)</p><p><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q22-problem-visual-v2.svg\" alt=\"같은 길이의 성냥개비로 정육각형 넷을 옆으로 이어 그렸다. 각 육각형은 바로 옆 육각형과 세로 변 하나를 공유한다. 같은 모양이 오른쪽으로 계속 이어진다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "",
     "solution": "",
-    "content": "<div>【서답형 2】 [서술형]<br><b>[수준별 2-①]</b> 한 병에 500원인 생수를 $x$병 살 때 지불해야 하는 금액을 $y$원이라고 할 때, 다음에 답하시오.<br>(1) $y=f(x)$라고 할 때, $f(x)$를 구하시오. (2점)<br>(2) $f(11)$를 구하시오. (2점)<br><br><b>[수준별 2-②]</b> 아래 그림과 같이 길이와 모양이 같은 성냥개비를 이용하여 육각형을 연결하여 만들 때, 육각형 18개를 만드는 데 필요한 성냥개비의 개수를 구하시오. (5점)</div><div><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q22.png\"></div>"
+    "content": "<div>【서답형 2】 [서술형]<br><b>[수준별 2-①]</b> 한 병에 500원인 생수를 $x$병 살 때 지불해야 하는 금액을 $y$원이라고 할 때, 다음에 답하시오.<br>(1) $y=f(x)$라고 할 때, $f(x)$를 구하시오. (2점)<br>(2) $f(11)$를 구하시오. (2점)<br><br><b>[수준별 2-②]</b> 아래 그림과 같이 길이와 모양이 같은 성냥개비를 이용하여 육각형을 연결하여 만들 때, 육각형 18개를 만드는 데 필요한 성냥개비의 개수를 구하시오. (5점)</div><div><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q22-problem-visual-v2.svg\" alt=\"같은 길이의 성냥개비로 정육각형 넷을 옆으로 이어 그렸다. 각 육각형은 바로 옆 육각형과 세로 변 하나를 공유한다. 같은 모양이 오른쪽으로 계속 이어진다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 23,
@@ -649,11 +654,12 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "layoutTag": "fullwidth",
     "score": 5,
-    "question": "<p>【서답형 4】 [서술형]<br><b>[수준별 4-①]</b> $x=-1, x=2, y=1, y=3$의 그래프를 그리고 둘러싸인 도형의 넓이를 구하시오. (4점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24_1.png\"><br><br><b>[수준별 4-②]</b> 두 일차방정식 $y-3x-1=0, y+x-1=0$의 그래프와 $y=m$의 직선과 둘러싸인 삼각형의 넓이가 6미만이 되도록 하는 모든 정수 $m$의 합을 구하는 풀이 과정과 답을 쓰시오. (5점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24_2.png\"></p>",
+    "question": "<p>【서답형 4】 [서술형]<br><b>[수준별 4-①]</b> $x=-1, x=2, y=1, y=3$의 그래프를 그리고 둘러싸인 도형의 넓이를 구하시오. (4점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24-problem-visual-v2.svg\" alt=\"가로축과 세로축이 있는 각 칸이 정사각형인 격자이다. 학생이 직선을 그릴 수 있도록 좌표 격자와 눈금만 표시했다.\" style=\"display:block;width:min(100%,410px);height:auto;margin:0 auto;\"><br><br><b>[수준별 4-②]</b> 두 일차방정식 $y-3x-1=0, y+x-1=0$의 그래프와 $y=m$의 직선과 둘러싸인 삼각형의 넓이가 6미만이 되도록 하는 모든 정수 $m$의 합을 구하는 풀이 과정과 답을 쓰시오. (5점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24-stem-2-problem-visual-v2.svg\" alt=\"가로축과 세로축이 있는 각 칸이 정사각형인 격자이다. 학생이 직선을 그릴 수 있도록 좌표 격자와 눈금만 표시했다.\" style=\"display:block;width:min(100%,410px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "",
     "solution": "",
-    "content": "<div>【서답형 4】 [서술형]<br><b>[수준별 4-①]</b> $x=-1, x=2, y=1, y=3$의 그래프를 그리고 둘러싸인 도형의 넓이를 구하시오. (4점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24_1.png\"><br><br><b>[수준별 4-②]</b> 두 일차방정식 $y-3x-1=0, y+x-1=0$의 그래프와 $y=m$의 직선과 둘러싸인 삼각형의 넓이가 6미만이 되도록 하는 모든 정수 $m$의 합을 구하는 풀이 과정과 답을 쓰시오. (5점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24_2.png\"></div>"
+    "content": "<div>【서답형 4】 [서술형]<br><b>[수준별 4-①]</b> $x=-1, x=2, y=1, y=3$의 그래프를 그리고 둘러싸인 도형의 넓이를 구하시오. (4점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24-problem-visual-v2.svg\" alt=\"가로축과 세로축이 있는 각 칸이 정사각형인 격자이다. 학생이 직선을 그릴 수 있도록 좌표 격자와 눈금만 표시했다.\" style=\"display:block;width:min(100%,410px);height:auto;margin:0 auto;\"><br><br><b>[수준별 4-②]</b> 두 일차방정식 $y-3x-1=0, y+x-1=0$의 그래프와 $y=m$의 직선과 둘러싸인 삼각형의 넓이가 6미만이 되도록 하는 모든 정수 $m$의 합을 구하는 풀이 과정과 답을 쓰시오. (5점)<br><img src=\"assets/images/23_매산중_1학기_기말_중2_수학/q24-stem-2-problem-visual-v2.svg\" alt=\"가로축과 세로축이 있는 각 칸이 정사각형인 격자이다. 학생이 직선을 그릴 수 있도록 좌표 격자와 눈금만 표시했다.\" style=\"display:block;width:min(100%,410px);height:auto;margin:0 auto;\"></div>"
   }
 ];

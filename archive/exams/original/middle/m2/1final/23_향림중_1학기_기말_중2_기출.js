@@ -143,6 +143,7 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "imageAlt": "다섯 그림에서 점의 위치와 포함 표시가 다르다. ①는 -5에서 오른쪽으로 이어지며 끝점은 포함한다. ②는 -5에서 왼쪽으로 이어지며 끝점은 포함한다. ③는 5에서 오른쪽으로 이어지며 끝점은 포함한다. ④는 5에서 왼쪽으로 이어지며 끝점은 포함한다. ⑤는 10에서 오른쪽으로 이어지며 끝점은 포함한다. ",
     "level": "중",
     "category": "일차부등식의 해와 수직선",
     "originalCategory": "일차부등식의 해와 수직선",
@@ -151,7 +152,7 @@ window.questionBank = [
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차부등식",
@@ -160,7 +161,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "일차부등식 $\\dfrac16x-\\dfrac{x-8}{2}\\leq\\dfrac{x+2}{3}$의 해를 수직선 위에 바르게 나타낸 것은?",
-    "image": "assets/images/23_향림중_1학기_기말_중2_기출/q3.png",
+    "image": "assets/images/23_향림중_1학기_기말_중2_기출/q3-problem-visual-v2.svg",
     "imageSize": "tall",
     "choices": [],
     "answer": "③",
@@ -1120,6 +1121,8 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "imageSize": "tall",
+    "imageAlt": "격자 위에서 직선이 세로축의 −4를 지난다. 오른쪽의 가로 2와 4 사이에서 가로축을 가로지른다.",
     "level": "하",
     "category": "일차함수 그래프의 기울기",
     "originalCategory": "일차함수 그래프의 기울기",
@@ -1128,7 +1131,7 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "일차함수",
@@ -1137,7 +1140,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "일차함수의 그래프가 다음 그림과 같을 때, 기울기를 구하면?",
-    "image": "assets/images/23_향림중_1학기_기말_중2_기출/q17.png",
+    "image": "assets/images/23_향림중_1학기_기말_중2_기출/q17-problem-visual-v2.svg",
     "choices": [
       "1",
       "$\\dfrac34$",
