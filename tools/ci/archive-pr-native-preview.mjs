@@ -984,6 +984,14 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
   }
   const result = parsed(run(process.execPath, [CONSUMER, ...requests.flatMap(r => ['--request', r.path]), '--root', root], root));
   const count = requests.reduce((sum, r) => sum + r.questionCount, 0);
+  console.error('DEBUG_CONSUMER ' + JSON.stringify({ status: result.status, counts: result.counts, count, reqLen: requests.length,
+    examsLen: Array.isArray(result.exams) ? result.exams.length : null,
+    failures: Array.isArray(result.failures) ? result.failures.slice(0, 40) : result.failures,
+    failuresLen: Array.isArray(result.failures) ? result.failures.length : null,
+    unobserved: Array.isArray(result.unobservedFields) ? result.unobservedFields.slice(0, 40) : result.unobservedFields,
+    pendingIsArray: Array.isArray(result.assignmentPending),
+    requests: requests.map(r => ({ path: r.path, kind: r.kind, q: r.questionCount, mode: r.registrationMode })),
+    exams: Array.isArray(result.exams) ? result.exams.map(e => ({ file: e.file, kind: e.kind, changed: e.changed, checked: e.checked, passed: e.passed, skippedUnchanged: e.skippedUnchanged })) : null }));
   const complete = (counts, total) => counts && ['changed', 'checked', 'passed', 'skippedUnchanged']
     .every(k => Number.isSafeInteger(counts[k]) && counts[k] >= 0)
     && counts.changed + counts.skippedUnchanged === total && counts.checked === counts.changed && counts.passed === counts.changed;
