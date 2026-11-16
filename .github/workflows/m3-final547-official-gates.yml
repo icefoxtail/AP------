@@ -1,0 +1,75 @@
+name: M3 final 547 official gates
+
+on:
+  push:
+    branches:
+      - review-reference/m3-final547-official-gates-20261116
+    paths:
+      - .github/workflows/m3-final547-official-gates.yml
+      - tools/ci/verify-m3-final547-official-gates.mjs
+      - docs/operations/m3-final547-official-gates-20261116/input-manifest.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: m3-final547-official-gates-20261116
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/review-reference/m3-final547-official-gates-20261116'
+    runs-on: ubuntu-latest
+    # This single serial job includes 67 dry/write/cold-replay/projection gates,
+    # 1,094 Native checks, both Consumer states, and the full derived/4slot gates.
+    # Existing product assertions and their outcomes are never relaxed.
+    timeout-minutes: 90
+    env:
+      M3_SOURCE_HEAD: 27f87bb0dc438f1bd3624fd5ba3f6c1771b8293c
+      GIT_NO_LAZY_FETCH: '1'
+      NODE_OPTIONS: --max-old-space-size=4096
+    steps:
+      - name: Check out the exact closed verification revision and public history
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Use the existing official Node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify the small orchestration contracts
+        run: >-
+          node --max-old-space-size=256 tools/ci/verify-m3-final547-official-gates.mjs
+          --self-test docs/operations/m3-final547-official-gates-20261116/input-manifest.json
+
+      - name: Create an isolated disposable checkout without copying source payloads through inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e "$RUNNER_TEMP/m3-final547-cow"
+          git config gc.auto 0
+          git config maintenance.auto false
+          git worktree add --detach "$RUNNER_TEMP/m3-final547-cow" "$M3_SOURCE_HEAD"
+
+      - name: Run all fixed official gates in one measured serial sequence
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --max-old-space-size=256 tools/ci/verify-m3-final547-official-gates.mjs \
+            --root "$RUNNER_TEMP/m3-final547-cow" \
+            --scope "$GITHUB_WORKSPACE/docs/operations/m3-final547-official-gates-20261116/input-manifest.json" \
+            --output "$RUNNER_TEMP/m3-final547-evidence" \
+            --private "$RUNNER_TEMP/m3-final547-private"
+
+      - name: Preserve only sanitized counts, hashes, gate outcomes and resource observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m3-final547-official-gates-${{ github.run_id }}
+          path: ${{ runner.temp }}/m3-final547-evidence
+          if-no-files-found: error
+          retention-days: 30
