@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "archive-problem-only-expected-observations-v2",
+  "scope": "Q22_PROBLEM_DISPLAY_CONTINUITY_ONLY",
+  "reviewer": "ROOT_INDEPENDENT_DISPLAY_REVIEW",
+  "stage": "ORIGINAL_PROBLEM_IMAGE_OBSERVED_CURRENT_IMAGE_UNSEEN",
+  "givenRef": {
+    "path": "evidence/m2-q22-problem-only-continuity-r1/given-only.json",
+    "sha256": "b50bda32bb6395986162ccbe6bb1ceed5ddebc388726a14017c76fcacf3deb54"
+  },
+  "questionUid": "qid_v1_0704335d6e4bedb837a893f8f28eac2587963888307021abc83e61407b889051",
+  "sourceOrdinal": 22,
+  "exposure": {
+    "originalImageSeen": true,
+    "currentImageSeen": false,
+    "answersOrSolutionsSeen": false,
+    "nativeJudgmentsSeen": false,
+    "upstreamReviewOutcomeSeen": false
+  },
+  "expected": [
+    {
+      "part": "2-1",
+      "requirements": [
+        "A triangle has vertices A, B, C.",
+        "I is the triangle incenter; any shown angle-bisector/equal-angle markings must agree with that given.",
+        "The unknown angle x must have one unambiguous indicated location.",
+        "The part remains a written-response item worth 4 points."
+      ],
+      "unresolvedFromText": [],
+      "originalDiagramFacts": [
+        "A is above the base BC; I is inside triangle ABC.",
+        "The segments AI, BI and CI connect each vertex to I.",
+        "The x angle is between AB and AI at A.",
+        "The marked 25-degree angle is between BI and BC at B.",
+        "The marked 30-degree angle is between CA and CI at C.",
+        "No numeric answer is displayed for x."
+      ]
+    },
+    {
+      "part": "2-2",
+      "requirements": [
+        "O is the circle center and A, B, C lie on the circle.",
+        "The 27-degree label belongs at A between AB and AO.",
+        "The 18-degree label belongs at C between CB and CO.",
+        "OC is a radius labeled 8; no different length may be implied for another radius.",
+        "The original shaded region must be preserved exactly in meaning, without adding a solution cue.",
+        "The part remains a written-response area question worth 5 points."
+      ],
+      "unresolvedFromText": [],
+      "originalDiagramFacts": [
+        "A is upper-left, C upper-right and B at the bottom of the circle; O is inside at its center.",
+        "AB, BC and AC are chords. OA and OB are solid radii; OC is shown as a dashed radius with the 8 label.",
+        "The 27-degree mark is between AB and AO at A.",
+        "The 18-degree mark is between CB and CO at C.",
+        "The faint shaded area appears to be the circular segment above chord AC, bounded by chord AC and the minor arc AC; the sector down to O is not shaded."
+      ],
+      "shadingObservation": "Original scan is faint. The boundary expectation is frozen from the original alone and must be checked explicitly against the current diagram; no answer or solution was used."
+    }
+  ],
+  "globalRequirements": [
+    "Both subparts remain distinct, with no crossed labels between their diagrams.",
+    "All required original problem conditions, labels and shading must remain visible and legible.",
+    "A diagram review grants no new mathematical, metadata, difficulty or four-slot approval."
+  ],
+  "newApprovals": 0,
+  "priorExpectedRef": {
+    "path": "evidence/root-q22-given-expected-r1.json",
+    "sha256": "7fc8356baf98d65c7b2b9f7c7edd42f070c547de5b9349ab2f9ccdc4d90ed2a1"
+  },
+  "originalImageRef": {
+    "path": "evidence/m2-q22-problem-only-continuity-r1/before.png",
+    "sha256": "37f46eb9139404b8423bdbdd7d605265e9168668c8c7cac29958b7eca9d370e4",
+    "gitCommit": "ce35ff92baeef7c07014a8ea7a75ea6e0770e3b0",
+    "gitBlobSha1": "bfb0fb4d4f6268726d06666b41a86c72f2b458b2"
+  },
+  "inspectionOnlyRef": {
+    "path": "evidence/root-q22-before-circle-inspection-3x.png",
+    "sha256": "011776fa056811a999bef63c12937c9dc5927dcdf5565768619d969ec3fe44a3",
+    "transform": "nearest-neighbor 3x crop for inspection only"
+  }
+}

@@ -86,7 +86,7 @@ function clock() {
   };
 }
 const flush = async () => { for (let i=0;i<12;i++) await Promise.resolve(); };
-function harness({ faces, check = true, unavailable = false, defaultReady } = {}) {
+function harness({ faces, check = true, unavailable = false, defaultReady, output = { unknownText() {} } } = {}) {
   const load = deferred(), time = clock(), calls = [];
   const fonts = unavailable ? undefined : {
     load(descriptor, text) { calls.push({ event: 'load', descriptor, points: Array.from(text, c=>c.codePointAt(0)) }); return load.promise; },
@@ -99,6 +99,7 @@ function harness({ faces, check = true, unavailable = false, defaultReady } = {}
   assert(script, 'exact production MathJax config');
   vm.runInContext(script[0].replace(/^<script>|<\/script>$/g, ''), context);
   const config = context.window.MathJax;
+  config.startup.document = { outputJax: output };
   config.startup.defaultPageReady = () => { calls.push({event:'defaultReady'}); return defaultReady ? defaultReady() : Promise.resolve('typeset-ready'); };
   if (faces) load.resolve(faces);
   return { context, config, calls, load, time, start:()=>config.startup.pageReady() };
@@ -131,7 +132,7 @@ test('font bytes, renamed family, provenance and complete OFL notice are fixed',
 });
 test('engine keeps TeX math font and serif fallback and limits the added face to U24B6–U24E9', () => {
   const {config}=harness();
-  assert.equal(config.output.font,'mathjax-tex');assert.equal(config.output.unknownFamily,'AP Enclosed Latin, serif');
+  assert.equal(config.output.font,'mathjax-tex');assert.equal(config.output.unknownFamily,undefined);
   assert.equal(config.output.displayOverflow,'linebreak');assert.deepEqual(JSON.parse(JSON.stringify(config.output.linebreaks)),{inline:true,width:'100%',lineleading:0.2});
   assert.equal(config.startup.typeset,false); assert.equal(config.options.enableMenu,false);
   const face=engine.match(/@font-face\s*\{[^}]*font-family:\s*'AP Enclosed Latin';[^}]*\}/g);
@@ -140,17 +141,61 @@ test('engine keeps TeX math font and serif fallback and limits the added face to
   assert.match(engine,/body \{ margin: 0; font-family: 'Nanum Myeongjo', serif;/);
   assert(!engine.includes('mjx-utext {')); assert(!engine.includes('mtextInheritFont: true'));
 });
-test('the actual vendored default normal variant uses the named unknown-family mapping', () => {
-  const vendor=fs.readFileSync(path.join(root,'archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js'),'utf8');
+function vendoredOutput() {
+  const vendor = fs.readFileSync(path.join(root, 'archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js'), 'utf8');
   const defaults=vendor.match(/\.defaultCssFonts=(\{[^;]+?\}),[A-Za-z_$][\w$]*\.default/);
-  const method=vendor.match(/defineCssFonts\(t\)\{([^}]+)\}defineDelimiters/);
-  assert(defaults&&method,'vendored CSS family mapping must be inspected if it changes');
-  const result=vm.runInNewContext(`const f={cssFontMap:{},options:{unknownFamily:'AP Enclosed Latin, serif'},defineCssFonts(t){${method[1]}}};f.defineCssFonts(${defaults[1]});f.cssFontMap;`);
-  assert.deepEqual(Array.from(result.normal),['AP Enclosed Latin, serif',false,false]);
-  assert.deepEqual(Array.from(result.bold),['AP Enclosed Latin, serif',false,true]);
-  assert.deepEqual(Array.from(result.script),['cursive',false,false]);
-  assert(vendor.includes('this.cssFontStyles(this.font.getCssFont(e),i)'));
-  assert(vendor.includes('this.cssFamilyPrefix+", "+t'));
+  const methods = {
+    define: vendor.match(/(defineCssFonts\(t\)\{[^}]+\})defineDelimiters/),
+    font: vendor.match(/(getCssFont\(t\)\{[^}]*\}getFamily\(t\)\{[^}]*\})getRemappedChar/),
+    style: vendor.match(/(cssFontStyles\(t,e=\{\}\)\{[^}]*\})getFontData/),
+    unknown: vendor.match(/(unknownText\(t,e,s=null\)\{[^\n]+?\})measureTextNode\(t\)/),
+    measure: vendor.match(/(measureText\(t,e,s=\["",!1,!1\]\)\{[^\n]+?\})measureTextNodeWithCache\(t,e,s/)
+  };
+  assert(defaults && Object.values(methods).every(Boolean), 'review vendored CHTML binding if the bundle changes');
+  assert(vendor.includes('unknownFamily:"serif"'));
+  const parentOf = new WeakMap();
+  const append = (parent, child) => { parent.children.push(child); parentOf.set(child, parent); };
+  const adaptor = {
+    append,
+    firstChild: node => node.children[0],
+    remove: child => { const parent = parentOf.get(child); parent.children.splice(parent.children.indexOf(child), 1); },
+    setAttributes: (node, props) => Object.assign(node.props.style, props.style)
+  };
+  const html = (tag, props, children) => {
+    const node = { tag, props, children: [] };
+    for (const child of children) append(node, child);
+    return node;
+  };
+  const font = vm.runInNewContext(`const f={cssFontMap:{},cssFamilyPrefix:'MJX-TEX-ZERO',options:{unknownFamily:'serif'},${methods.define[1]},${methods.font[1].replace('}getFamily(', '},getFamily(')}};f.defineCssFonts(${defaults[1]});f;`);
+  return vm.runInNewContext(`({font,adaptor,html,${methods.style[1]},${methods.unknown[1]},${methods.measure[1]},
+    math:{metrics:{scale:1}}, fixed:w=>String(w), text:text=>({text}), measureTextNodeWithCache:node=>node})`,
+    { font, adaptor, html, Hr: text => Array.from(text, c => c.codePointAt(0)) });
+}
+
+test('vendored CHTML keeps default families and byte-identical markup for ordinary unknown glyphs', async () => {
+  const output = vendoredOutput();
+  assert.deepEqual(Array.from(output.font.getCssFont('normal')), ['serif', false, false]);
+  assert.deepEqual(Array.from(output.font.getCssFont('bold')), ['serif', false, true]);
+  assert.deepEqual(Array.from(output.font.getCssFont('script')), ['cursive', false, false]);
+  const inputs = [['①②', 'normal'], ['계급의 도수', 'bold'], ['ㄱㄴㄷ', 'normal'], ['⒵⓪', 'script'], ['𝒜', 'normal']];
+  const render = () => JSON.stringify(inputs.map(args => output.unknownText(...args)));
+  const original = render();
+  await harness({ faces: loaded(), output }).start();
+  assert.equal(render(), original);
+});
+
+test('CHTML paints and measures only enclosed Latin runs with the local face, preserving mixed text order and style', async () => {
+  const output = vendoredOutput();
+  const letters = String.fromCodePoint(...points);
+  const text = `①한글${letters}ㄱⓐ②`;
+  const before = JSON.parse(JSON.stringify(output.unknownText(text, 'bold', 1)));
+  await harness({ faces: loaded(), output }).start();
+  const render = JSON.parse(JSON.stringify(output.unknownText(text, 'bold', 1)));
+  const run = contents => ({ tag: 'span', props: { class: 'ap-enclosed-latin', style: { 'font-family': 'MJX-TEX-ZERO, "AP Enclosed Latin", serif' } }, children: [{ text: contents }] });
+  assert.deepEqual(render, { ...before, children: [{ text: '①한글' }, run(letters), { text: 'ㄱ' }, run('ⓐ'), { text: '②' }] });
+  const measured = JSON.parse(JSON.stringify(output.measureText(text, '-explicitFont', ['monospace', true, false])));
+  assert.deepEqual(measured.props.style, { 'font-family': 'MJX-TEX-ZERO, monospace', 'font-style': 'italic' });
+  assert.deepEqual(measured.children, render.children);
 });
 test('first typeset remains pending until the exact face for all 52 letters is loaded', async () => {
   const h=harness(), p=h.start(); await flush();
@@ -189,6 +234,12 @@ test('normal MathJax startup rejection is preserved',async()=>{
   const h=harness({faces:loaded(),defaultReady:()=>Promise.reject(new Error('MathJax startup failed'))});
   await assert.rejects(h.start(),/MathJax startup failed/);assert.equal(h.time.timers.size,0);
 });
+test('missing CHTML output refuses readiness before the default startup', async () => {
+  const h = harness({ faces: loaded(), output: {} });
+  await assert.rejects(h.start(), /ENCLOSED_LATIN_MATHJAX_OUTPUT_UNAVAILABLE/);
+  assert.equal(h.time.timers.size, 0);
+  assert(!h.calls.some(call => call.event === 'defaultReady'));
+});
 
 function connectedCaller(options = {}) {
   const h=harness(options), c=h.context;
@@ -201,6 +252,9 @@ function connectedCaller(options = {}) {
   let measurements=0;
   h.config.typesetPromise=async()=>{measurements++;return true;};
   h.config.startup.promise=h.start();h.config.startup.promise.catch(()=>{});
+  // MathJax moves the initial configuration under MathJax.config at startup.
+  h.config.config = { startup: { pageReady: h.config.startup.pageReady } };
+  delete h.config.startup.pageReady;
   return {...h,measurements:()=>measurements,
     call:async (text='ⓐ',directFallback=false)=>{
       await c.waitForMathJaxOrContinue();
@@ -244,8 +298,8 @@ test('missing startup promise refuses named-glyph measurement but not unrelated 
   await assert.rejects(h.runtimeCall('ⓐ'),/ENCLOSED_LATIN_FONT_NOT_READY/);assert.equal(h.measurements(),0);
   assert.equal(await h.runtimeCall('한글'),true);assert.equal(h.measurements(),1);
 });
-test('another MathJax font family retains its existing continuation contract',async()=>{
-  const h=connectedCaller();h.load.reject(new Error('font request failed'));h.config.output.unknownFamily='serif';
+test('another MathJax startup configuration retains its existing continuation contract',async()=>{
+  const h=connectedCaller();h.load.reject(new Error('font request failed'));h.config.config={startup:{pageReady(){}}};
   assert.equal(await h.call('ⓐ'),true);assert.equal(h.measurements(),1);
 });
 test('undefined elements and selector inputs still guard actual enclosed glyphs',async()=>{
