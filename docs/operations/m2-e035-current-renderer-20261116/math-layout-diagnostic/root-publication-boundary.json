@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "e035-read-only-math-diagnostic-publication-boundary-v1",
+  "baseCommit": "54c833f5b32faa040ce15d68344c93cb157156cc",
+  "baseTree": "849f58ffdb1d2109db51791f3fd007e3813d2b41",
+  "rendererCommit": "2fd3ab926f40212c7fbe3a224a6d492e928741ba",
+  "diagnosticOnly": true,
+  "sourceAssetRendererCssChanges": 0,
+  "capturePredicateChanges": 0,
+  "nativeIntakeChanges": 0,
+  "priorActual": {
+    "runId": 43855734634,
+    "technicalCasesPassed": 4,
+    "originalTiles": 5,
+    "independentVisualHoldCases": 2
+  },
+  "packagingRepair": {
+    "path": "tools/archive-pages-release-manifest.json",
+    "beforeSha256": "4d3f0a01d736ea82f0c4da13593bfa38ba539edc7064a91a130b4bc9b92fcbc4",
+    "afterSha256": "c7961d056139b4290957e1ccf468466d58a1ffdabeb0811a6c5f3a3fe880c0fc",
+    "addedOnly": "archive/student-review-mobile.css",
+    "existingManifestFieldsAndEntriesExact": true,
+    "observedFailure": {
+      "workflowRunId": 43855734628,
+      "jobId": 133259389398,
+      "test": "every local script and stylesheet a shipped page names is in the site",
+      "failure": "archive/mixed_engine.html -> archive/student-review-mobile.css"
+    },
+    "verification": "JSON_PARSE_AND_EXACT_ONE_ENTRY_DELTA; FULL_REQUIRED_RUNTIME_GUARD_PENDING"
+  },
+  "status": "DIAGNOSTIC_PENDING_VISUAL_HOLD",
+  "newApprovals": 0
+}

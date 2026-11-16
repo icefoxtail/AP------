@@ -56,6 +56,23 @@ function recordMandatoryDiagnostic(stage,frame,tileIndex=null){
 }
 const server=http.createServer((req,res)=>{try{const rel=decodeURIComponent(new URL(req.url,'http://localhost').pathname).replace(/^\//,'');if(rel==='favicon.ico'){res.writeHead(204);res.end();return;}const b=read(rel);served.set(rel,ref(rel));res.writeHead(200,{'content-type':mime(rel),'cache-control':'no-store'});res.end(b);}catch(e){failures.push({kind:'STATIC',requestSha256:sha(req.url||''),code:e.code||e.message.split('\n')[0]});res.writeHead(404);res.end();}});
 // Measurement only: no browser DOM/style/viewport replacement establishes evidence.
+// Bounded read-only diagnostics. No text, source attributes, HTML or CSS writes.
+function inspectMathLayout(selector){
+ const selected=document.querySelectorAll(selector);if(selected.length!==1)throw Error('MATH_DIAGNOSTIC_UNIQUE_ASSET');
+ const box=selected[0].closest('.q-box');if(!box||!box.isConnected)throw Error('MATH_DIAGNOSTIC_ATTACHED_CONTAINER');
+ const maximumContainers=8,maximumNodes=64,maximumFragments=8;
+ const rect=r=>({x:r.x,y:r.y,width:r.width,height:r.height});
+ const geometry=e=>({rect:rect(e.getBoundingClientRect()),fragments:[...e.getClientRects()].slice(0,maximumFragments).map(rect),fragmentCount:e.getClientRects().length});
+ const properties=['display','position','fontFamily','fontSize','lineHeight','verticalAlign','whiteSpace','wordBreak','overflowWrap','width','height','boxSizing','transform','top','left'];
+ const style=(e,pseudo)=>{const s=getComputedStyle(e,pseudo);return Object.fromEntries(properties.map(k=>[k,String(s[k]||'').slice(0,192)]));};
+ const all=[...box.querySelectorAll('mjx-container')],containers=all.slice(0,maximumContainers).map((container,containerIndex)=>{
+  const allNodes=[container,...container.querySelectorAll('*')].filter(e=>e.localName.startsWith('mjx-')||['svg','g','path'].includes(e.localName));
+  const nodes=allNodes.slice(0,maximumNodes),indices=new Map(nodes.map((e,i)=>[e,i]));
+  return{containerIndex,totalNodes:allNodes.length,truncated:allNodes.length>maximumNodes,nodes:nodes.map((e,nodeIndex)=>({nodeIndex,parentIndex:indices.get(e.parentElement)??null,tag:e.localName,...geometry(e),style:style(e),beforeStyle:e.localName==='mjx-c'?style(e,'::before'):null}))};
+ });
+ const parents=[];for(let e=box,n=0;e&&n<4;e=e.parentElement,n++)parents.push({level:n,tag:e.localName,...geometry(e),style:style(e)});
+ return{schemaVersion:'archive-e035-math-layout-diagnostic-v1',maximumContainers,maximumNodes,maximumFragments,totalContainers:all.length,truncated:all.length>maximumContainers,containers,parents,sourceTextEmitted:false,attributeValuesEmitted:false,htmlEmitted:false,cssWrites:0,domWrites:0,authority:'DIAGNOSTIC_ONLY_NOT_VISUAL_APPROVAL'};
+}
 async function measure(selector){
  const matches=document.querySelectorAll(selector);if(matches.length!==1)throw Error('UNIQUE_SELECTED_ASSET');const image=matches[0];if(!image.isConnected||!document.contains(image))throw Error('SELECTED_ASSET_DETACHED');
  const box=image.closest('.q-box');if(!box)throw Error('SELECTED_CONTAINER_MISSING');
@@ -164,6 +181,7 @@ async function main(){
    const selector=`#print-area img[src*="${path.posix.basename(view==='problem'?PROBLEM:SOLUTION)}"]`;const target=page.locator(selector);assert.equal(await target.count(),1,'UNIQUE_SELECTED_ASSET');
    const boxes=await page.locator('#print-area .q-box').evaluateAll(nodes=>nodes.filter(n=>/^12\.(?:\s|$)/.test(n.querySelector('.q-num')?.textContent||'')).length);assert.equal(boxes,1,'COMPLETE_SELECTED_CONTAINER_NOT_SPLIT');
    const captured=await capture(page,selector,view,viewport);const screenshots=captured.tiles.map(t=>{const b=fs.readFileSync(path.join(OUT,t.filename));return{tileIndex:t.tileIndex,path:t.filename,sha256:sha(b),bytes:b.length};});
+   const mathLayout=await page.evaluate(inspectMathLayout,selector);fs.writeFileSync(path.join(OUT,`${activeCase}-math-layout.json`),JSON.stringify({caseId:activeCase,captureAlreadyCompleted:true,...mathLayout},null,2)+'\n');
    assert.equal(pageErrors.length+requestFailures.length+failures.length,0,'UI_LATE_FAILURE');
    cases.push({caseId:activeCase,questionUid:UID,sourceOrdinal:12,view,viewport,status:'PASS',visualReview:'PENDING',...technical,pageErrors,requestFailures,capture:captured,screenshots});console.log(JSON.stringify({completed:activeCase,tiles:screenshots.length}));write('IN_PROGRESS');
   }catch(error){const page=context.pages()[0];if(page){await page.screenshot({path:path.join(OUT,`${activeCase}-failure-viewport.png`),fullPage:false}).catch(()=>{});const state=await page.evaluate(()=>({readiness:document.documentElement.dataset.apPrintReadiness||null,questions:window.AppState?.data?.length,renderError:window.__AP_OUTPUT_RENDER_ERROR__||null,bodyTextLength:document.body?.textContent?.length})).catch(()=>null);fs.writeFileSync(path.join(OUT,`${activeCase}-failure-state.json`),JSON.stringify(state,null,2)+'\n');}throw error;}finally{await context.close();}
