@@ -1,0 +1,13 @@
+{
+  "schemaVersion":"meta-judgment-ledger-v1",
+  "judge":"luna-pass2",
+  "createdAt":"2026-11-12T16:34:00+09:00",
+  "sourceArchiveFile":"original/high/h2/1mid/20_매산여고_1학기_중간_고2_확률과통계.js",
+  "items":[
+    {"ordinal":4,"questionUid":"","primaryMethod":"중복조합 공식과 이항 전개 항의 개수를 각각 비교해 세 설명의 참거짓을 판정한다.","decisiveStep":"중복조합은 C(n+r-1,r)이고 (a+b+c)^7 항은 C(9,2)=36개여서 ㄱ과 ㄷ이 틀리다.","rpmPath":{"majorUnit":"경우의 수","midUnit":"순열과 조합","l3":"중복조합","l4":"중복을 허용한 선택"},"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"NONE"},
+    {"ordinal":10,"questionUid":"","primaryMethod":"윗줄에 처음 진입하는 열을 3부터 6까지 나누고 각 진입점까지 오른쪽·위쪽 이동 순서를 조합으로 센다.","decisiveStep":"각 열의 경로 수 20, 35, 56, 84를 더해 195개를 얻는다.","rpmPath":{"majorUnit":"경우의 수","midUnit":"순열과 조합","l3":"조합","l4":"선택"},"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"NONE"},
+    {"ordinal":17,"questionUid":"","primaryMethod":"파스칼 항등식과 rC(n,r)=nC(n-1,r-1)을 확인하고 거듭제곱의 합으로 계수를 바꾼다.","decisiveStep":"(x+1)^10(x+1)^10=(x+1)^20이라 x^10 계수는 C(20,10)이고 C(21,10)은 아니다.","rpmPath":{"majorUnit":"경우의 수","midUnit":"이항정리","l3":"이항계수","l4":"이항계수의 성질"},"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"NONE"},
+    {"ordinal":19,"questionUid":"","primaryMethod":"마지막 이동이 한 계단인지 두 계단인지에 따라 aₙ=aₙ₋₁+aₙ₋₂를 세우고 11번째까지 계산한다.","decisiveStep":"a₁=1, a₂=2에서 점화식을 반복하면 a₁₁=144이다.","rpmPath":{"majorUnit":"경우의 수","midUnit":"순열과 조합","l3":"순열","l4":"일렬 배열"},"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"NONE"},
+    {"ordinal":22,"questionUid":"","primaryMethod":"두 자리에 각각 2가지인 중복순열과 3종에서 5개를 고르는 중복조합을 계산해 더한다.","decisiveStep":"2Π5=32, 3H5=C(7,5)=21이므로 합은 53이다.","rpmPath":{"majorUnit":"경우의 수","midUnit":"순열과 조합","l3":"중복조합","l4":"중복을 허용한 선택"},"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"NONE"}
+  ]
+}

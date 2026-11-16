@@ -1,0 +1,155 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass1",
+    "createdAt":  "2026-11-11T21:00:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/18_금당고_1학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "questionUid":  "qid_v1_65793489e226d281cb97c54b9d918285da628569e28580170bb7213deebda422",
+                      "primaryMethod":  "1부터 30까지의 4의 배수와 9의 배수를 각각 세고 겹치는 수를 빼어 합집합의 크기를 구한다.",
+                      "decisiveStep":  "최소공배수 36은 30보다 커 공배수가 없으므로 7+3=10이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "선택"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  2,
+                      "questionUid":  "qid_v1_6d29aad4547c93ca480d10a06debbb67f8151a937e825cd7a7dfcbccf2f4bb2d",
+                      "primaryMethod":  "400을 2^4·5^2로 소인수분해하고 두 지수의 선택 수를 곱해 약수 개수를 센다.",
+                      "decisiveStep":  "2의 지수는 5가지, 5의 지수는 3가지이므로 약수는 5·3=15개다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "hold":  "소인수분해한 400의 약수 수를 세는 문제로, 확률과 통계 선택지의 네 칸 유형 경로에 해당하는 조합을 찾지 못했다."
+                  },
+                  {
+                      "ordinal":  3,
+                      "questionUid":  "qid_v1_adfa7393eedb3ebf557d7d335aa1227bd47271e5c78cb139f30bd82268bca7dd",
+                      "primaryMethod":  "처음과 마지막 자리에 들어갈 남학생 2명을 순서 있게 정한 뒤 나머지 4명을 가운데 배열한다.",
+                      "decisiveStep":  "양끝 배치는 3·2가지이고 가운데 배열은 4!가지이므로 3·2·4!=144이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "일렬 배열"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  6,
+                      "questionUid":  "qid_v1_cae526a8a67546d0184de0ca67f95d5c378652c35a41acb9db004064b967e514",
+                      "primaryMethod":  "각 조합 항의 대칭성을 이용해 합을 C(2,2)부터 C(10,2)까지의 합으로 바꾼다.",
+                      "decisiveStep":  "파스칼 항등식으로 합을 C(11,3)로 접고 대칭성을 써서 165를 얻는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "이항정리",
+                                      "l3":  "이항계수",
+                                      "l4":  "조합 항등식"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  10,
+                      "questionUid":  "qid_v1_402349b0a4d0f33f07d5cd62b6e71e4a100ce80d008dc93acbc76f1b65d3714b",
+                      "primaryMethod":  "8의 짝수 부분 분할을 각 부분을 2로 나눠 얻는 4의 분할과 일대일 대응시킨다.",
+                      "decisiveStep":  "부분 수가 4개 이하인 4의 분할 4, 3+1, 2+2, 2+1+1, 1+1+1+1을 세어 5개를 얻는다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "분할·분배"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  13,
+                      "questionUid":  "qid_v1_c4ac9d83b4f4519f8b9030c69f56c740d771dabb14b131a67bb1a0afeb1b0332",
+                      "primaryMethod":  "8개 원 위의 점 중 3개를 택하는 전체 경우와 지름을 포함하는 직각삼각형의 수를 비교한다.",
+                      "decisiveStep":  "지름 4개마다 남은 점 6개가 꼭짓점이 될 수 있어 24개이며, 24/C(8,3)=3/7이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "확률",
+                                      "midUnit":  "확률의 뜻과 활용",
+                                      "l3":  "확률의 기본",
+                                      "l4":  "확률 계산"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  16,
+                      "questionUid":  "qid_v1_27f2a801846302e6bb8681e97a12d75010bd4fa1048daf264964a8a6e998aaca",
+                      "primaryMethod":  "나머지정리로 a+b와 c의 조건을 얻고 양의 정수 a,b의 합별 순서쌍을 센다.",
+                      "decisiveStep":  "2a+2b+c=18에서 a+b≤8이며, 합이 2부터 8까지일 때 경우 수 1부터 7까지를 더해 28이다.",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "정수해 개수"
+                                  },
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE"
+                  },
+                  {
+                      "ordinal":  21,
+                      "questionUid":  "qid_v1_d48fd069e065759d143420b9261008746850fce8fff27c3f66b1e9687b79d9db",
+                      "primaryMethod":  "세 점의 공선 조건을 c(a−1)=b(b−1)로 바꾸고 a+b+c≤13인 양의 정수 해를 나눈다.",
+                      "decisiveStep":  "b=1,2,3,4의 약수쌍을 각각 세고 겹치는 점을 만드는 해를 제외해 10+1+3+3=17을 얻는다.",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "조합",
+                                      "l4":  "정수해 개수"
+                                  }
+                  }
+              ]
+}

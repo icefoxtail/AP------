@@ -1,0 +1,172 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T19:03:26+09:00",
+    "sourceArchiveFile":  "original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "8^(1/3)=2여서 a=2²·2=8이고 b=log₁₅(3·5)=1이므로 a+b=9이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "standardUnitKey":  "H15-M1-01",
+                      "subUnitKey":  "H15-M1-01-EXPONENT",
+                      "hold":  "rpmPath.majorUnit, rpmPath.midUnit, rpmPath.l3, rpmPath.l4: 표에 지수·로그 동시 계산 단일 행 없음; integrationPattern: 표에 값 목록 없음"
+                  },
+                  {
+                      "ordinal":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "공통 현 BD에 사인법칙을 쓰면 2R₁sin A=2R₂sin C이고 R₂/R₁=2라서 로그 차는 log₂2=1이다.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "standardUnitKey":  "H22-A-05",
+                      "subUnitKey":  "H22-A-05-CORE",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "rpmPath":  {
+                                      "majorUnit":  "삼각함수",
+                                      "l3":  "사인법칙",
+                                      "midUnit":  "삼각함수의 활용",
+                                      "l4":  "외접원 반지름"
+                                  },
+                      "hold":  "선택지 표에 없음: 2019 고2 기준 H15 접두어 키가 이 표에 없어 H22-A-05 사용; integrationPattern: 표에 값 목록 없음"
+                  },
+                  {
+                      "ordinal":  21,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "−1≤f(a)≤1이고 α=π/2−1, β=3π/2+1이므로 10(α+β)/π=20이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "standardUnitKey":  "H15-M1-06",
+                      "subUnitKey":  "H15-M1-06-TRIGONOMETRIC_GRAPH",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_RESTRICTED_INTERVAL"
+                                        ],
+                      "rpmPath":  {
+                                      "majorUnit":  "삼각함수",
+                                      "l3":  "그래프 활용",
+                                      "midUnit":  "삼각함수의 그래프",
+                                      "l4":  "최대·최소"
+                                  },
+                      "hold":  "integrationPattern: 표에 값 목록 없음"
+                  },
+                  {
+                      "ordinal":  24,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "f(k)−f(k+1)=f(k/(k+1))이므로 항은 1/f(k+1)−1/f(k)로 소거되고 f(2)=1,f(16)=4에서 합은 −3/4이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "standardUnitKey":  "H15-M1-10",
+                      "subUnitKey":  "H15-M1-10-SEQUENCE_SUM",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NONZERO",
+                                            "COND_UNIVERSAL_INPUTS"
+                                        ],
+                      "rpmPath":  {
+                                      "majorUnit":  "수열",
+                                      "l3":  "여러 가지 수열의 합",
+                                      "midUnit":  "수열의 합",
+                                      "l4":  "부분분수·망원급수형"
+                                  },
+                      "hold":  "integrationPattern: 표에 값 목록 없음"
+                  },
+                  {
+                      "ordinal":  25,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "O₁O₂=2,O₁A:O₂A=2:1에서 O₁A=4/3,O₂A=2/3이며 접원 반지름 조건으로 O₃A=2√6/3이다.",
+                      "choiceTableUsed":  "H2-대수.json",
+                      "standardUnitKey":  "H22-A-05",
+                      "subUnitKey":  "H22-A-05-CORE",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "rpmPath":  {
+                                      "majorUnit":  "삼각함수",
+                                      "l3":  "코사인법칙",
+                                      "midUnit":  "삼각함수의 활용",
+                                      "l4":  "변·각 계산"
+                                  },
+                      "hold":  "선택지 표에 없음: 2019 고2 기준 H15 접두어 키가 이 표에 없어 H22-A-05 사용; integrationPattern: 표에 값 목록 없음"
+                  },
+                  {
+                      "ordinal":  26,
+                      "chosenFrom":  "new",
+                      "resolutionReason":  "logₐb=k/3은 aᵏ=b³이고 2≤a,b≤100인 자연수 쌍을 세면 n(Aₖ)=1인 k는 5,15,18이라 합은 38이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "standardUnitKey":  "H15-M1-02",
+                      "subUnitKey":  "H15-M1-02-EXPONENT_LOG_APPLICATION",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL_NUMBER",
+                                            "COND_RANGE"
+                                        ],
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "l3":  "로그의 뜻",
+                                      "midUnit":  "로그",
+                                      "l4":  "로그와 지수 관계"
+                                  },
+                      "hold":  "integrationPattern: 표에 값 목록 없음"
+                  },
+                  {
+                      "ordinal":  27,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "(1)은 cos60°·sin30°=1/4이고 (2)는 공통 인수 약분 뒤 근호 안이 a²⁰이므로 a\u003e0에서 a¹⁰이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "standardUnitKey":  "H15-M1-01",
+                      "subUnitKey":  "H15-M1-01-EXPONENT",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "rpmPath":  {
+                                      "majorUnit":  "지수함수와 로그함수",
+                                      "l3":  "지수법칙",
+                                      "midUnit":  "지수",
+                                      "l4":  "지수식 계산"
+                                  },
+                      "hold":  "integrationPattern: 표에 값 목록 없음"
+                  },
+                  {
+                      "ordinal":  8,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "등차 조건 b=2a+7, 등비 중항 ab=9이므로 a=1,b=9가 양수 해이고 a+b=10이다.",
+                      "choiceTableUsed":  "H2-수학I.json",
+                      "standardUnitKey":  "H15-M1-09",
+                      "subUnitKey":  "H15-M1-09-GEOMETRIC_SEQUENCE",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ],
+                      "rpmPath":  {
+                                      "majorUnit":  "수열",
+                                      "l3":  "등비수열",
+                                      "midUnit":  "등차수열과 등비수열",
+                                      "l4":  "중항"
+                                  },
+                      "hold":  "integrationPattern: 표에 값 목록 없음"
+                  }
+              ]
+}
