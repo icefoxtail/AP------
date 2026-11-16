@@ -6,6 +6,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
+import canonical from '../archive/archive2-canonical.js';
 import {planQuestion,nativeReviewReceipt,activeBindingContext,sourceFingerprint,contentFingerprint,loadBank,sourcePath,selectTargets} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
 import {validateActiveMetaFields} from '../archive/tools/meta-foundation/active-registry.mjs';
 import {validateReviewedSourceReassessment,REASSESSED_STUDENT_FIELDS} from '../archive/tools/meta-foundation/reviewed-source-reassessment.mjs';
@@ -1667,4 +1668,67 @@ for(const [name,change]of [
 ])test('official pack binding lineage refuses '+name+' without producer fallback',t=>{
   const f=approvedBindingVersionFixture(t);assert.equal(planQuestion(f).nativeReviewReceipt,f.receiptPath);
   change(f);const result=planQuestion(f);assert.equal(result.status,'SUPPLEMENT_PENDING',JSON.stringify(result));assert.equal(result.nativeReviewReceipt,undefined);assert.equal(result.final,undefined);
+});
+
+// Exercise the actual CLI entry point; importing the API alone does not reveal
+// a top-level-await cycle when its Consumer registrar imports the entry module.
+function verificationCliFixture(t) {
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'auto-meta-verify-cli-'));
+  t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const sha=value=>crypto.createHash('sha256').update(value).digest('hex');
+  const put=(rel,value)=>{const file=path.join(dir,rel);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,JSON.stringify(value,null,2)+'\n');return sha(fs.readFileSync(file));};
+  const canon='archive/data/meta-foundation/canonical',compiled='archive/data/meta-foundation/compiled';
+  const sources=[['metadata_rules',{status:'ACTIVE',integrationPatterns:['NONE']}],['condition_registry',{status:'ACTIVE',conditions:[]}]]
+    .map(([name,value])=>{const p=canon+'/'+name+'.json';return {path:p,sha256:put(p,value)};});
+  const artifacts=[['taxonomy_registry',{status:'DERIVED_READ_ONLY',problemTypes:[],templates:[]}],['concept_registry',{status:'DERIVED_READ_ONLY',concepts:[]}],
+    ['condition_registry',{status:'DERIVED_READ_ONLY',conditions:[]}],['curriculum_bindings',{status:'DERIVED_READ_ONLY',bindings:[]}]]
+    .map(([name,value])=>{const p=compiled+'/'+name+'.json';return {path:p,sha256:put(p,value)};});
+  put(canon+'/registry_index.json',{status:'ACTIVE',activePacks:[],canonicalSources:sources,compiledArtifacts:artifacts});
+  put('archive/data/question_metadata.json',{records:[]});put('archive/data/question_identity_map.json',{records:[]});
+  const parent={grade:'fixture',curriculumKey:'fixture',courseKey:'fixture',L1:'fixture',L2:'fixture'};
+  const masterSha=put('archive/'+canonical.CANONICAL_MASTER_PATH,{records:[{curriculum:'fixture',scope:'fixture',majorUnit:'fixture',midUnit:'fixture',concepts:[]}]});
+  put('archive/data/archive2-canonical-projection-policy.json',{schemaVersion:'archive2-canonical-projection-policy-v1',status:'ACTIVE',canonicalMasterSha256:masterSha,gradeCourseAllowlist:[parent]});
+  put('archive/data/archive2-item-review-overrides.json',{schemaVersion:'archive2-item-review-override-index-v1',records:[]});
+  put('archive/data/basic-scope-parent-links.json',{schemaVersion:'archive2-basic-scope-parent-links-v1',status:'DERIVED_READ_ONLY',authority:{source:canonical.CANONICAL_MASTER_PATH,sha256:masterSha},records:[],sourceParents:[]});
+  put('archive/data/archive2-catalog.json',{schemaVersion:'archive2-catalog-v1',indexVersion:'empty-cli-fixture',exams:[],records:[],sourceHashes:[]});
+  const runtimePaths=canonical.runtimeInputPathsFromManifest([]);
+  for(const relative of canonical.MANIFEST_REQUIRED_PATHS)if(!fs.existsSync(path.join(dir,'archive',relative)))
+    put('archive/'+relative,runtimePaths.includes(relative)?{packId:path.basename(relative,'.json').toUpperCase().replaceAll('-','_'),packVersion:'1.0.0',status:'ACTIVE',records:[]}:{records:[]});
+  const packs=runtimePaths.map(p=>JSON.parse(fs.readFileSync(path.join(dir,'archive',p),'utf8')));
+  const files=[...new Set([...canonical.MANIFEST_REQUIRED_PATHS,...runtimePaths,...canonical.reviewedRegistrationProofPaths(packs)])]
+    .map(p=>({path:p,sha256:sha(fs.readFileSync(path.join(dir,'archive',p)))}));
+  put('archive/data/archive2-canonical-input-manifest.json',{schemaVersion:'archive2-canonical-input-manifest-v1',resolverVersion:canonical.RESOLVER_VERSION,
+    projectionVersion:'archive2-canonical-v1:'+sha(canonical.projectionManifestPayload(files,canonical.RESOLVER_VERSION)),files});
+  put('report.json',{results:[]});
+  const run=()=>{
+    try {return {status:0,stdout:execFileSync(process.execPath,[path.join(root,'archive/tools/meta-foundation/auto-register-merged-source.mjs'),
+      '--verify','--root',dir,'--report',path.join(dir,'report.json')],{encoding:'utf8',timeout:10000,stdio:['ignore','pipe','pipe']}),stderr:''};}
+    catch(e){return {status:e.status,stdout:String(e.stdout||''),stderr:String(e.stderr||'')};}
+  };
+  return {dir,put,run};
+}
+
+test('main auto-meta verify CLI completes the Consumer registrar import cycle',t=>{
+  const f=verificationCliFixture(t),paths=['archive/data/question_metadata.json','archive/data/question_identity_map.json','report.json'];
+  const before=paths.map(p=>fs.readFileSync(path.join(f.dir,p)));
+  const result=f.run();assert.equal(result.status,0,result.stderr);
+  assert.deepEqual(JSON.parse(result.stdout),{status:'PASS',verifiedCount:0,verified:[],studentMutation:0});
+  for(let i=0;i<paths.length;i++)assert.deepEqual(fs.readFileSync(path.join(f.dir,paths[i])),before[i]);
+  assert.equal(fs.existsSync(path.join(f.dir,'.archive-meta-register/auto/last-verification.json')),false);
+});
+
+test('main auto-meta verify CLI preserves Consumer input digest rejection',t=>{
+  const f=verificationCliFixture(t);
+  fs.appendFileSync(path.join(f.dir,'archive/data/archive2-catalog.json'),'\n');
+  const result=f.run();assert.equal(result.status,1,result.stderr);
+  assert.match(result.stderr,/canonical input digest mismatch: data\/archive2-catalog\.json/);
+  assert.doesNotMatch(result.stderr,/unsettled top-level await/);
+});
+
+test('main auto-meta verify CLI preserves missing registered UID rejection',t=>{
+  const f=verificationCliFixture(t);
+  f.put('report.json',{results:[{status:'APPLY',questionUid:'qid_v1_'+'a'.repeat(64),receiptPath:'.archive-meta-register/auto/receipts/missing.json'}]});
+  const result=f.run();assert.equal(result.status,1,result.stderr);
+  assert.match(result.stderr,/REGISTERED_UID_MISSING:qid_v1_a{64}/);
+  assert.doesNotMatch(result.stderr,/unsettled top-level await/);
 });

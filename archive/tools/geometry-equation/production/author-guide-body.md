@@ -311,6 +311,19 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 사인·코사인의 각속도가 `ratePi`일 때는 같은 전체 실수 정의역을 유지하고 `displayWindowX:["-3/5","23/4"]`처럼 일반 x 단위의 표시 범위를 지정한다. `axisTickValues`에도 일반 x 값을 넣는다. `displayWindowPi`와 `axisTickPi`를 함께 쓰지 않는다. 기존 `displayGuides`와 `showOriginLabel`을 쓸 수 있다.
 
+### 3-7c. 원본 PNG를 따르는 문자 지수·로그 개형
+
+문제의 본문 그림에 연결된 원본 PNG에 숫자 밑이 정해지지 않은 두 곡선과 직선이 있는 경우, 공식 문제 그림 명령에서 'source-exp-log-schematic-v1' 계획을 쓸 수 있다. 현재 범위는 원문에 있는 y=a^(x−1), y=log_a(x−1), y=−x+c와 A, B, C, O의 관계다. c는 발문의 양의 정수다.
+
+- 계획에 capability, sourceAsset, sourceSha256, paths, labelOrigins를 쓴다. sourceAsset은 해당 문항 본문에 직접 연결된 PNG이며 SHA-256은 원본 파일의 것이다. decoder는 8비트 비인터레이스 흑백/RGB PNG만 받는다.
+- paths는 xAxis, yAxis, secant(각 두 점), exponential, logarithm(각 6~64점)이다. 점쌍은 수학 좌표가 아니라 **원본 픽셀의 정수 좌표**다. 전체 선을 따라 잉크를 대조하고, A/B의 두 교차와 C/O를 다시 계산한다. 가로축·세로축은 수평/수직으로 정리한다.
+- labelOrigins에 O, A, B, C, x, y, exp, log, line, schematic의 위쪽 왼쪽 위치를 준다. 함수식은 원문에서만 읽고 그림에 개형을 표시한다. 밑 수치, 점의 수치 좌표, 눈금, 사용자 입력 SVG나 새 식은 지원하지 않는다. 기존 글꼴·충돌·잘림 검사는 같은 경로에서 실행한다.
+
+같은 문자 밑의 두 로그곡선이 하나의 내림 직선과 만나는 문제에는 'source-log-translate-schematic-v1'을 쓸 수 있다. 발문에 두 로그식과 유리 기울기인 내림 직선이 있고, 둘째 로그가 첫 로그를 오른쪽 아래로 옮긴 것이며 그 이동이 직선을 보존해야 한다. 원본 PNG 검증과 브라우저 글꼴·겹침 기준은 동일하다.
+
+- paths에는 xAxis, yAxis, secant, logOriginal, logShifted의 원본 픽셀 좌표를 준다. 두 로그곡선 모두 증가하고 오목해야 한다. A와 B는 직선과 두 축이 만나는 점, P와 Q는 각 로그곡선과 직선이 만나는 점이며 O는 두 축의 교차다. 원본과 같이 직선 위에 A, P, Q, B 순서로 있어야 한다.
+- labelOrigins에는 O, A, B, P, Q, x, y, logOriginal, logShifted, line, schematic을 준다. 그림 파일에서 잘린 식도 발문을 근거로 조판한다. 개형 위에는 풀이 수치, 점 좌표, 눈금을 표시하지 않는다.
+
 ### 3-8. 중학교 평면도형: 각·선분·호 표식이 있는 축 없는 그림 (`PLANE_FIGURE_v1`, `planeMarks`)
 
 - **plan 최상위 `caption`은 필수다.** 평면도형·좌표 도형(`construction-spike-v1`)도 `caption`(한 문장, 정답·숨긴 점 이름 없이)이 있어야 하고, 없으면 `SPEC_ERROR`/`PLAN_CAPTION_REQUIRED`(path `caption`)로 거절된다. 숨긴 점(`hiddenPointNames`)의 이름을 caption에 쓰면 `HIDDEN_POINT_NAMED_IN_TEXT:<id>`이다. publish.json의 caption(풀이 요약+정답)과는 별개다. 이유: 금당고 14개 그림이 caption 없이 `NON_JSON_VALUE`(spec.title 미정의)로 거절됐다.
@@ -945,6 +958,7 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 - **분자가 이차인 유리곡선 `numerator:[a0,a1,a2]`(2026-11-12)** = `y=(a2*x^2+a1*x+a0)/(d0+d1*x)`. 문제의 함수가 `x+16/(x+2)`처럼 일차식+반비례꼴일 때 쓴다(`numerator:["16","2","1"]`, `denominator:["2","1"]`). 세로 점근선 `x=p`는 일차 분자와 같이 점선과 글자로 나오지만 **수평 점근선은 없다**. 비스듬한 점근선 `y=qx+r`(q=a2/d1)은 엔진이 그리지 않으니 같은 그림에 `LINE` 곡선 `{"kind":"LINE","coefficients":[r,q],"style":"DASHED","label":"y=x"}`로 직접 그린다(곡선이 하나뿐이어도 이 선이 둘째 곡선이다). `a2`가 0이면 `MULTI_CURVE_COEFFICIENT_INVALID:<id>`(일차 분자로 쓴다), 분자가 극점에서 0인 구멍은 `MULTI_CURVE_RATIONAL_DEGENERATE:<id>`, `abs:true`는 `MULTI_CURVE_COEFFICIENT_INVALID:<id>`, `inverseOf`의 원본으로는 `MULTI_CURVE_INVERSE_UNSUPPORTED`이다. `x>-2`처럼 극점이 정의역 끝이면 `domain:["-2","9"]`, `domainStates:["OPEN","NONE"]`로 쓴다. 가장 낮은 점은 `overlays.points`의 `{"id":"M","x":"2","y":"6","unnamed":true}`로 표시하고 좌표(답)는 쓰지 않는다. **교육과정 밖 그래프이니 문제 자체가 그 함수일 때만 쓰고 풀이에 없는 치환·우회 그래프로 쓰지 않는다.** 예: 순천고 2학기 중간 q05(골든 `item156obliquerationalq05`).
 
 - `EXPONENTIAL`에는 밑 문자열 `base` (`"2"`, `"107/100"`처럼 1이 아닌 양의 기약 정수·분수, 분자와 분모가 각각 1000 이하), 유리수 계수 `[A,k,C]`, 선택 수평 이동 `shiftX`, 그리고 표시 구간 `domain`을 준다. `y=A·base^{k(x-shiftX)}+C`에서 (A)와 (k)는 0이 아니어야 한다. `viewport`도 명시하며 역함수나 절댓값 옵션은 적용하지 않는다.
+- `LOGARITHMIC`은 같은 좌표축에 다른 곡선과 함께 그리는 로그다. `base`는 지수와 같은 양의 기약 정수·분수 밑이고 `coefficients:[A,k,b,C]`는 정확한 유리수다. `y=A*log_base(k*x+b)+C`에서 A와 k는 0이 아니다. `viewport`와 유한한 표시 구간 `domain:[lo,hi]`을 명시한다. 양 끝의 로그 진수는 모두 양수여야 한다. 예를 들어 `{"id":"g","kind":"LOGARITHMIC","base":"1/3","coefficients":["1","1","-2","0"],"domain":["2001/1000","3"]}`은 x=2 바로 오른쪽의 교점을 담을 수 있다. 표시 끝점에는 점을 찍지 않는다. 이 종류는 역함수, 절댓값, 구간 강조, 영역 경계로 사용하지 않는다. 격자점은 정확한 좌표의 `overlays.points`로 표시할 수 있다.
 - 정수 밑과 율이 각각 같은 두 지수함수 사이 영역에는 `regions:[{id:"band",between:["f","g"],from:"4",to:"7",integerColumns:true}]`처럼 정수 열을 요청할 수 있다. 끝 열은 실선으로, 안쪽 열은 점선으로 나눈다. 각 열의 정수점 개수만 표시한다. 개별 점이나 합계는 그리지 않는다. 2~8개의 열을 지원하며 각 열에서 두 지수의 지수부가 정수여야 한다.
 
 - 유리함수의 극점이 정의역 끝점이면 그 끝점은 반드시 열린 끝점(배열형 `domain`의 `domainStates` 또는 객체형 `domain`의 `fromState`·`toState`에서 해당 끝을 `OPEN`으로 지정)이어야 한다. 이때 해당 쪽의 한 가지(from이면 CURVE_<id>_R, to이면 CURVE_<id>_L)만 그리고, 극점에는 유한한 끝점 표시를 그리지 않는다. 닫힌 극점 끝점은 거부하며, 정의역 내부 극점은 기존처럼 LEFT/RIGHT 두 가지로 나눈다.

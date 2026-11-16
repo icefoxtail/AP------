@@ -3,6 +3,8 @@ window.examTitle = "23_이수중_2학기_기말_중2_기출";
 window.questionBank = [
   {
     "id": 1,
+    "imageSize": "tall",
+    "imageAlt": "가로 빗변은 17 cm이다. 왼쪽 사선은 15 cm, 오른쪽 짧은 사선은 x cm이며 두 사선이 직각을 이룬다.",
     "level": "하",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -11,7 +13,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -26,7 +28,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 피타고라스 정리로 모르는 직각변의 길이를 구한다.\n빗변이 $17\\rm\\,cm$, 한 직각변이 $15\\rm\\,cm$이므로 $x^2+15^2=17^2$이다.\n$x^2=289-225=64$이고 길이는 양수이므로 $x=8$이다.\n따라서 정답은 ④이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q1.png",
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q1-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
@@ -43,6 +45,8 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC에서 BC는 8이고 AC는 6이다. 오른쪽 아래 C는 직각이고 빗변 AB에는 x가 적혀 있다.",
     "level": "하",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -51,7 +55,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -66,7 +70,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 두 직각변이 주어졌으므로 피타고라스 정리로 빗변을 구한다.\n$x^2=6^2+8^2=36+64=100$이다.\n따라서 $x=10$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q2.png",
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q2-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
@@ -83,6 +87,8 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "imageSize": "tall",
+    "imageAlt": "직각삼각형 ABC의 빗변 위 정사각형 AHIB는 169 cm², 짧은 변 위 정사각형 ACFG는 25 cm²이다. 나머지 가로변 아래에도 정사각형이 있다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -91,7 +97,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -106,7 +112,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 직각삼각형의 세 변 위에 만든 정사각형의 넓이는 피타고라스 정리와 직접 연결된다.\n그림에서 $AB$가 빗변이고 $AC$, $BC$가 직각변이므로 $AB^2=AC^2+BC^2$이다.\n$AB^2=169$, $AC^2=25$이므로 $BC^2=169-25=144$이다.\n$\\square BDCE$의 넓이는 $BC^2=144\\rm\\,cm^2$이다.\n따라서 정답은 ②이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q3.png",
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q3-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -123,6 +129,9 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "curriculum": "2015",
+    "imageSize": "tall",
+    "imageAlt": "직사각형의 가로는 10, 세로는 8이다. AP를 접는 선으로 하여 D를 BC 위 D′으로 옮겼다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -131,7 +140,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -146,14 +155,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 접어서 겹치는 점은 접는 선 위의 점까지의 거리가 같다.\n$A$는 접는 선 $AP$ 위에 있으므로 $AD=AD'=10$이다. 또 직사각형이므로 $AB=8$이고 $\\angle ABD'=90^\\circ$이다.\n$BD'^2+8^2=10^2$에서 $BD'^2=36$, 따라서 $BD'=6$이다.\n$BC=AD=10$이므로 $D'C=10-6=4$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q4.png",
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q4-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 직사각형에서 D가 D′에 포개질 때 AD=AD′와 PD=PD′를 다른 색으로 표시한다.",
-    "solutionImageCaption": "AD=AD′=10cm이므로 직각삼각형 ABD′에서 BD′=6cm이다. 답: ① 4cm",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q4-solution-visual-v2.svg",
+    "solutionImageAlt": "직사각형의 가로는 10, 세로는 8이다. AP를 접는 선으로 하여 D를 BC 위 D′으로 옮겼다. 포개지는 같은 선분을 색과 눈금으로 연결했다.",
+    "solutionImageCaption": "AD′=AD=10이고 AB=8이어서 BD′=6이다. 따라서 D′C=10−6=4이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_GEOMETRIC_FOLDING"
@@ -208,6 +217,8 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "imageSize": "tall",
+    "imageAlt": "작은 두 반원에서 빗변을 지름으로 하는 반원 밖에 있는 두 초승달을 칠했다. AB는 24 cm, AC는 10 cm이다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -216,7 +227,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -231,14 +242,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 피타고라스 정리에 의해 두 직각변을 지름으로 하는 반원의 넓이의 합은 빗변을 지름으로 하는 반원의 넓이와 같다.\n따라서 그림의 두 색칠한 초승달 모양의 넓이의 합은 직각삼각형 $ABC$의 넓이와 같다.\n$AB=24$, $AC=10$이므로 $\\triangle ABC$의 넓이는 $\\dfrac12\\times24\\times10=120\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q6.png",
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q6-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q6-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형 세 변을 지름으로 하는 반원과 두 초승달 영역을 표시한다.",
-    "solutionImageCaption": "두 작은 반원의 넓이 합이 큰 반원의 넓이와 같으므로 두 초승달의 넓이 합은 삼각형 ABC의 넓이와 같다. 답: ③ 120cm²",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q6-solution-visual-v2.svg",
+    "solutionImageAlt": "작은 두 반원에서 빗변을 지름으로 하는 반원 밖에 있는 두 초승달을 칠했다. AB는 24 cm, AC는 10 cm이다.",
+    "solutionImageCaption": "두 초승달의 넓이 합은 직각삼각형 ABC의 넓이와 같다. 따라서 24×10÷2=120 cm²이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -260,12 +271,12 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
     "wide": false,
-    "content": "다음은 $\\square ABCD$에서 두 대각선 $AC$, $BD$가 직교할 때, $\\overline{AB}^2+\\overline{CD}^2=\\overline{AD}^2+\\overline{BC}^2$이 성립함을 설명하는 과정이다. (가), (나)에 알맞은 것을 바르게 나타낸 것은? [4점]",
+    "content": "다음은 $\\square ABCD$에서 두 대각선 $AC$, $BD$가 직교할 때, $\\overline{AB}^2+\\overline{CD}^2=\\overline{AD}^2+\\overline{BC}^2$이 성립함을 설명하는 과정이다. (가), (나)에 알맞은 것을 바르게 나타낸 것은? [4점]<br><img src=\"assets/images/23_이수중_2학기_기말_중2_기출/q7-problem-visual-v2.svg\" alt=\"AC와 BD는 O에서 서로 수직으로 만난다. O에서 A, B, C, D에 이르는 네 선분의 길이를 각각 a, b, c, d로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><div class=\"question-note-box\"><p>피타고라스 정리에 의해</p><p>$\\overline{AB}^{2}=\\boxed{\\text{(가)}},\\;\\overline{CD}^{2}=\\boxed{\\text{(나)}}$</p><p>$\\overline{AD}^{2}=a^{2}+d^{2},\\;\\overline{BC}^{2}=b^{2}+c^{2}$</p><p>따라서 $\\overline{AB}^{2}+\\overline{CD}^{2}$<br>$=\\boxed{\\text{(가)}}+\\boxed{\\text{(나)}}$<br>$=(a^{2}+d^{2})+(b^{2}+c^{2})$<br>$=\\overline{AD}^{2}+\\overline{BC}^{2}$</p></div>",
     "choices": [
       "(가) $a^2+b^2$, (나) $c^2+d^2$",
       "(가) $a^2+c^2$, (나) $b^2+d^2$",
@@ -275,7 +286,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 대각선의 교점 $O$에서 생기는 네 직각삼각형에 피타고라스 정리를 적용한다.\n$\\triangle AOB$에서 $AB^2=a^2+b^2$이므로 (가)는 $a^2+b^2$이다.\n$\\triangle COD$에서 $CD^2=c^2+d^2$이므로 (나)는 $c^2+d^2$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q7.png",
+    "image": "",
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
@@ -292,6 +303,8 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "imageSize": "tall",
+    "imageAlt": "직각삼각형 ABC에서 위쪽 두 변을 지름으로 하는 반원만 색칠하였다. 가로 빗변 BC는 16 cm이다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -300,7 +313,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -315,7 +328,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 지름이 $d$인 반원의 넓이는 $\\dfrac{\\pi d^2}{8}$이므로 넓이는 지름의 제곱에 비례한다.\n$\\angle A=90^\\circ$이므로 $AB^2+AC^2=BC^2$이다. 따라서 $AB$, $AC$를 지름으로 하는 두 반원의 넓이의 합은 $BC$를 지름으로 하는 반원의 넓이와 같다.\n그림에서 $BC=16\\rm\\,cm$이므로 색칠한 부분의 넓이는 $\\dfrac{\\pi\\times16^2}{8}=32\\pi\\rm\\,cm^2$이다.\n따라서 정답은 ①이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q8.png",
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q8-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -527,6 +540,8 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "imageSize": "tall",
+    "imageAlt": "반원 위쪽의 호에 A, B, C 세 점이 있고, 아래 지름에 D, E, F, G 네 점이 왼쪽부터 있다.",
     "level": "상",
     "category": "확률",
     "originalCategory": "확률",
@@ -535,7 +550,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "도형"
     ],
@@ -550,7 +565,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] $7$개 점에서 $3$개를 고른 뒤, 한 직선 위의 세 점을 고른 경우를 제외한다.\n$7$개 중 $3$개를 고르는 경우는 $\\dfrac{7\\times6\\times5}{3\\times2\\times1}=35$가지이다.\n지름 위의 $D,E,F,G$ 중 $3$개를 고르면 삼각형이 되지 않으며, 그런 경우는 $\\dfrac{4\\times3\\times2}{3\\times2\\times1}=4$가지이다.\n따라서 삼각형의 수는 $35-4=31$개이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q14.png",
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q14-problem-visual-v2.svg",
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
@@ -725,12 +740,12 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "표"
     ],
     "wide": false,
-    "content": "다음은 다연이의 책장에 꽂혀 있는 책을 종류별로 나타낸 것이다. 책장에 꽂혀 있는 책을 임의로 한 권 선택할 때, 세계사 또는 고전문학일 확률은? [4점]",
+    "content": "다음은 다연이의 책장에 꽂혀 있는 책을 종류별로 나타낸 것이다. 책장에 꽂혀 있는 책을 임의로 한 권 선택할 때, 세계사 또는 고전문학일 확률은? [4점]\n\n| 종류 | 수필 | 세계사 | 고전문학 | 만화책 |\n| --- | --- | --- | --- | --- |\n| 수(권) | 25 | 15 | 30 | 10 |\n\n",
     "choices": [
       "$\\dfrac38$",
       "$\\dfrac12$",
@@ -740,7 +755,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 표에서 전체 책의 수와 세계사·고전문학 책의 수를 각각 합한다.\n전체 책은 $25+15+30+10=80$권이다.\n세계사 또는 고전문학은 $15+30=45$권이므로 확률은 $\\dfrac{45}{80}=\\dfrac9{16}$이다.\n따라서 정답은 ③이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q19.png",
+    "image": "",
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -796,6 +811,8 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "imageSize": "tall",
+    "imageAlt": "한 직각변이 회전축 l에 놓인 삼각형이다. 반지름이 될 가로변은 8 cm이고 빗변은 17 cm이다.",
     "level": "중",
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
@@ -804,7 +821,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
@@ -814,14 +831,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$320\\pi\\rm\\,cm^3$",
     "solution": "[키포인트] 먼저 피타고라스 정리로 원뿔의 높이를 구한 뒤 원뿔의 부피 공식을 사용한다.\n원뿔의 높이를 $h\\rm\\,cm$라 하면 직각삼각형에서 $h^2+8^2=17^2$이다.\n$h^2=289-64=225$이므로 $h=15$이다.\n회전하여 생기는 원뿔의 밑면 반지름은 $8\\rm\\,cm$이므로 부피는 $\\dfrac13\\pi\\times8^2\\times15=320\\pi\\rm\\,cm^3$이다.\n따라서 구하는 값은 $320\\pi\\rm\\,cm^3$이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q21.png",
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q21-problem-visual-v2.svg",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 직각삼각형을 축 l 주위로 회전시켜 만든 원뿔의 높이 15cm, 반지름 8cm와 모선 17cm를 나타낸다.",
-    "solutionImageCaption": "회전축을 따라 높이 h=15cm이고 원뿔의 반지름은 8cm이다. 답: 320πcm³",
+    "solutionImage": "assets/images/23_이수중_2학기_기말_중2_기출/q21-solution-visual-v2.svg",
+    "solutionImageAlt": "한 직각변이 회전축 l에 놓인 삼각형이다. 반지름이 될 가로변은 8 cm이고 빗변은 17 cm이다. 회전으로 생기는 원뿔과 축을 따라 구한 높이 15 cm를 표시했다.",
+    "solutionImageCaption": "회전축을 따라 높이는 h=15 cm이고 반지름은 8 cm이다. 부피는 π×8²×15÷3=320π cm³이다.",
     "solutionImageSize": "full",
     "crossConceptKeys": [
       "CC_CONE_VOLUME"
@@ -839,6 +856,8 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "imageSize": "full",
+    "imageAlt": "가로로 긴 직사각형을 둘로 이등분하였다. 왼쪽은 A, 오른쪽은 B이고 두 부분 모두 아직 칠하지 않았다.",
     "level": "상",
     "category": "확률",
     "originalCategory": "확률",
@@ -847,7 +866,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
@@ -857,7 +876,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac3{16}$",
     "solution": "[키포인트] 한 번의 시행에서 $A$, $B$가 색칠될 확률을 구하고, 세 번째 시행에서 처음으로 두 부분이 모두 색칠되는 순서를 센다.\n두 눈이 모두 홀수일 확률은 $P(B)=\\dfrac36\\times\\dfrac36=\\dfrac14$, 따라서 $P(A)=\\dfrac34$이다.\n세 번째 만에 모두 색칠되는 경우는 $AAB$, $BBA$ 두 가지이다.\n$P=\\left(\\dfrac34\\right)^2\\dfrac14+\\left(\\dfrac14\\right)^2\\dfrac34=\\dfrac9{64}+\\dfrac3{64}=\\dfrac3{16}$이다.\n따라서 구하는 값은 $\\dfrac3{16}$이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q22.png",
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q22-problem-visual-v2.svg",
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
@@ -911,6 +930,8 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "imageSize": "full",
+    "imageAlt": "수직선에서 −3부터 3까지 같은 간격으로 눈금을 그렸다. 점 P는 가운데 0 위에 있다.",
     "level": "중",
     "category": "확률",
     "originalCategory": "확률",
@@ -919,7 +940,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
@@ -929,7 +950,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac5{32}$",
     "solution": "[키포인트] 앞면과 뒷면의 횟수에 대한 연립방정식으로 필요한 횟수를 먼저 구한다.\n앞면을 $x$회, 뒷면을 $y$회라 하면 $x+y=5$, $x-y=3$이다.\n두 식을 더하면 $2x=8$이므로 $x=4$, 따라서 $y=1$이다.\n다섯 번 중 뒷면이 나오는 한 번의 위치를 정하는 경우가 $5$가지이고 전체 결과는 $2^5=32$가지이다.\n따라서 확률은 $\\dfrac5{32}$이다.\n따라서 구하는 값은 $\\dfrac5{32}$이다.",
-    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q24.png",
+    "image": "assets/images/23_이수중_2학기_기말_중2_기출/q24-problem-visual-v2.svg",
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",

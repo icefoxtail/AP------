@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "source-quality-hold-existing-fixture-validation-v1",
+  "owner": "/root/m1_release_closeout",
+  "baseMain": "aa3789e87da68ccd649d950946e8b06aca5d9754",
+  "initialRelatedSuiteRun": {
+    "tests": 115,
+    "pass": 77,
+    "fail": 38,
+    "syntheticFixtureMissingMandatoryLedgerFailures": 30,
+    "incompleteScopedDataFixtureFailures": 8,
+    "logSha256": "1c6564a11cd2b1fae7dfdb1b88f65dde8a1d204b87e6e6e58e0ca6dd29a36fd4"
+  },
+  "repairedSuiteRun": {
+    "command": "node --test --test-reporter=tap tests/archive-pr-registration-proof.test.mjs tests/archive-pages-release-identity.test.mjs",
+    "tests": 33,
+    "pass": 33,
+    "fail": 0,
+    "logSha256": "1f0d77c037a9b63a1263cf8af8aa8b744690e36df1189eb01851ec9ebd19612c"
+  },
+  "sharedSyntheticFixtureContract": {
+    "status": "PASS",
+    "productionLoadSourceQualityHoldsAccepted": true,
+    "holdCount": 1,
+    "dependencyCount": 9,
+    "realStudentContentCopied": 0
+  },
+  "unchangedEvidenceReuse": {
+    "sourceQualityNewFocusedTests": 17,
+    "actualConsumerProofSha256": "332e2f88f4ddd09ef33d6eccaca5d26ce4d337b140b8f1ca0c1cf1be6bb32885",
+    "sameExamBoundedActualQuestions": 24,
+    "other23Unchanged": true
+  },
+  "remainingGate": {
+    "status": "ROOT_LATEST_INTEGRATED_PR_CI_REQUIRED",
+    "fullSourceShardAndMixedTests": "NOT_COMPLETED_LOCALLY_INCOMPLETE_FIXTURE",
+    "sourceShardExpectedObservationFieldPatch": "PROPOSED_NOT_EXECUTED_WITH_FULL_DATA",
+    "runtimeRunnerRegistrationPatch": "PROPOSED_NOT_FULL_RUN",
+    "broad1211SourceHydration": "NOT_PERFORMED_PER_ROOT_SCOPE"
+  },
+  "productionFallbacksAdded": 0,
+  "productionFilesChangedByThisAddendum": 0
+}

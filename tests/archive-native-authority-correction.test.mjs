@@ -63,6 +63,8 @@ function fixture(t, options = {}) {
     sourceArchiveFile: source, sourceBlobSha1: blob(Buffer.from(sourceRaw)), sourceRawSha256: sha(sourceRaw),
     metadataRegistrationStatus: 'REGISTERED', approval: { type: 'FINAL_QA' }, fingerprintRepairs: [],
     appliedRecords: [f.registered], runtimeRecords: [f.runtime], appliedIdentityRecords: [f.identity[0]] };
+  if (Object.hasOwn(options, 'originalEvidenceRefs')) f.originalReceipt.approval.evidenceRefs =
+    typeof options.originalEvidenceRefs === 'function' ? options.originalEvidenceRefs(f) : options.originalEvidenceRefs;
   put(f, RP + 'old-final.json', f.originalReceipt); fs.rmSync(path.join(f.root, f.originalRequestPath)); f.actualCommit = commit(f);
   f.withheldPath = '.archive-meta-register/evidence/withheld.json';
   const nativeRef = ref(f, f.nativePath), reasonCode = 'UNAPPLIED_DEFINITION_CANDIDATE_NOT_GENERIC_FINAL_QA_AUTHORITY';
@@ -176,3 +178,76 @@ test('fixed Git PR preview selects and applies the typed withdrawal with exact U
   assert.equal(read(f, RP + 'withdraw-final.json').newMetadataApprovals, 0);
   assert.equal(f.state().status, 'VALID_HOLD');
 });
+
+function fixedWithdrawalSelection(f) {
+  put(f, '.archive-meta-register/inbox/withdraw-final.json', f.request);
+  const headSha = commit(f);
+  return () => selectNativeRequests({ root: f.root, baseSha: f.actualCommit, headSha });
+}
+
+test('typed withdrawal permits an empty evidence array only for its exact unsupported original receipt', t => {
+  const f = fixture(t, { originalEvidenceRefs: [] }), original = fs.readFileSync(path.join(f.root, RP + 'old-final.json'));
+  const requests = fixedWithdrawalSelection(f)();
+  assert.equal(requests[0].kind, 'native-authority-withdrawal');
+  assert.ok(requests[0].evidence.some(r => r.path === RP + 'old-final.json' && r.sha256 === sha(original)));
+  const scriptRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const plans = applyNativeRequests({ root: f.root, requests, scriptRoot });
+  assert.equal(plans.length, 1); assert.equal(read(f, RP + 'withdraw-final.json').newMetadataApprovals, 0);
+  assert.equal(f.state().status, 'VALID_HOLD');
+  assert.deepEqual(fs.readFileSync(path.join(f.root, RP + 'old-final.json')), original);
+});
+
+for (const [label, value] of [['null', null], ['object', {}]]) {
+  test(`typed withdrawal rejects malformed ${label} approval evidence on its designated original`, t => {
+    const f = fixture(t, { originalEvidenceRefs: value });
+    assert.throws(fixedWithdrawalSelection(f), /EVIDENCE_REQUIRED/);
+  });
+}
+
+for (const label of ['path', 'sha256']) {
+  test(`typed withdrawal cannot exempt an original receipt with a different declared ${label}`, t => {
+    const f = fixture(t);
+    f.request.authorityCorrection.originalReceiptRef[label] = label === 'path' ? RP + 'different.json' : '0'.repeat(64);
+    assert.throws(fixedWithdrawalSelection(f), /EVIDENCE_REQUIRED/);
+  });
+}
+
+for (const label of ['absent', 'empty']) {
+  test(`typed withdrawal does not exempt an unrelated native receipt with ${label} evidence`, t => {
+    const f = fixture(t), other = RP + 'unrelated-final.json';
+    put(f, other, { schemaVersion: 'archive-reviewed-exam-meta-registration-v2',
+      approval: label === 'empty' ? { evidenceRefs: [] } : {} });
+    f.request.items[0].evidenceRefs.push(ref(f, other));
+    assert.throws(fixedWithdrawalSelection(f), /EVIDENCE_REQUIRED/);
+  });
+}
+
+test('typed withdrawal stages nonempty original approval evidence through the ordinary fixed Git closure', t => {
+  const leaf = 'docs/operations/unsupported-original-evidence.json';
+  const f = fixture(t, { originalEvidenceRefs: f => { put(f, leaf, { fixture: true }); return [ref(f, leaf)]; } });
+  const requests = fixedWithdrawalSelection(f)();
+  assert.ok(requests[0].evidence.some(r => r.path === leaf && r.sha256 === ref(f, leaf).sha256));
+});
+
+for (const [label, expected] of [['missing', /MISSING_FILE/], ['hash', /EVIDENCE_DRIFT/], ['fixed Git', /EVIDENCE_NOT_FIXED/], ['cycle', /EVIDENCE_CYCLE/]]) {
+  test(`typed withdrawal retains the ${label} rejection for nonempty original evidence`, t => {
+    const leaf = 'docs/operations/unsupported-original-evidence.json', forged = json({ forged: true });
+    const f = fixture(t, { originalEvidenceRefs: f => {
+      if (label === 'cycle') return [{ path: RP + 'old-final.json', sha256: '0'.repeat(64) }];
+      if (label !== 'missing') put(f, leaf, { fixture: true });
+      return [{ path: leaf, sha256: label === 'fixed Git' ? sha(forged) : '0'.repeat(64) }];
+    } });
+    const select = fixedWithdrawalSelection(f);
+    if (label === 'fixed Git') put(f, leaf, forged);
+    assert.throws(select, expected);
+  });
+}
+
+for (const label of ['approval', 'item']) {
+  test(`typed withdrawal still requires nonempty top-level ${label} evidence`, t => {
+    const f = fixture(t);
+    if (label === 'approval') f.request.approval.evidenceRefs = [];
+    else f.request.items[0].evidenceRefs = [];
+    assert.throws(fixedWithdrawalSelection(f), /EVIDENCE_REQUIRED/);
+  });
+}

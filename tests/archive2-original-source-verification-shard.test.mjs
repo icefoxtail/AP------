@@ -125,7 +125,7 @@ function expectedShardRecord(row, normalizedFile) {
     sourceFingerprint: row.sourceFingerprint || "",
     rawQuestionHash: row.rawQuestionHash || "",
   };
-  for (const field of core.META_FIELDS)
+  for (const field of [...core.META_FIELDS, "sourceQualityHold"])
     if (Object.prototype.hasOwnProperty.call(row, field))
       result[field] = row[field];
   return JSON.parse(JSON.stringify(result));

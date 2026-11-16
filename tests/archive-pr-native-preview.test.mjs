@@ -12,6 +12,7 @@ import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, prRegistrationProofNeeded,
 } from '../tools/ci/archive-pr-registration-proof.mjs';
 
 import { preparePrRegistration } from '../tools/ci/archive-pr-registration-prepare.mjs';
+import { registerDifficulty5 } from '../archive/tools/meta-foundation/register-difficulty5.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = value => JSON.stringify(value, null, 2) + '\n';
@@ -30,6 +31,32 @@ const RECEIPT = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/own
 const PLANNED = [META, AUTHORITY, RECEIPT].sort();
 const ALLOWED = [/^archive\/db\.js$/, /^archive\/data\/question_metadata\.json$/,
   /^archive\/data\/archive2-(?:catalog|canonical-input-manifest)\.json$/];
+
+function sourceQualityHoldFixture(write) {
+  const evidencePath = 'docs/operations/fixture-quality-hold-evidence.json';
+  const evidence = json({ unresolved: 'synthetic source condition; no approval granted' });
+  const evidenceRef = { path: evidencePath, sha256: sha(evidence) };
+  write(evidencePath, evidence);
+  const sourceArchiveFile = 'original/quality-held.js';
+  const imagePath = 'archive/assets/images/quality-held.svg', image = '<svg/>\n';
+  const questionUid = 'qid_v1_' + 'c'.repeat(64);
+  const source = 'window.questions = ' + JSON.stringify([{ id: 1, questionUid,
+    image: imagePath.slice('archive/'.length) }]) + ';\n';
+  const receiptPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/fixture-quality-hold.json';
+  const receipt = json({ approval: { evidenceRefs: [evidenceRef] } });
+  write('archive/exams/' + sourceArchiveFile, source); write(imagePath, image); write(receiptPath, receipt);
+  write('archive/data/meta-foundation/source-quality-holds-v1.json', json({
+    schemaVersion: 'archive-source-quality-holds-v1', status: 'ACTIVE', records: [{
+      holdId: 'fixture-quality-hold', status: 'HOLD', reasonCode: 'SOURCE_CONDITION_NOT_ESTABLISHED',
+      questionUid, sourceArchiveFile, sourceOrdinal: 1, expectedQuestionCount: 1,
+      sourceBlobSha1: createHash('sha1').update(`blob ${Buffer.byteLength(source)}\0`).update(source).digest('hex'),
+      sourceSha256: sha(source), image: { path: imagePath, sha256: sha(image), bytes: Buffer.byteLength(image) },
+      originalReceipt: { path: receiptPath, sha256: sha(receipt) },
+      pendingRootEvidence: evidenceRef, independentEvidence: evidenceRef, unresolvedEvidence: evidenceRef,
+      releasePolicy: 'EXPLICIT_SOURCE_EVIDENCE_RESOLUTION_REQUIRED',
+    }],
+  }));
+}
 
 function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
@@ -60,6 +87,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
   ].join('\n') + '\n');
   write(SOURCE, 'window.questions = '+JSON.stringify(Array.from({length:partial?24:1},(_,i)=>({id:i+1})))+';\n');
   write(EVIDENCE, json({ reviewed: 'fixture approval evidence, without student content' }));
+  sourceQualityHoldFixture(write);
   write(DIFFICULTY_EVIDENCE, json({ schemaVersion: 'archive-difficulty5-reviewed-correction-v1', rows: [] }));
   write(META, json({ records: [{ questionUid: 'fixture', before: true }] }));
   write(IDENTITY, json({ records: [{ questionUid: 'fixture', sourceFingerprint: 'old' }] }));
@@ -171,7 +199,9 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       const replay = meta.records[0].difficultyBucket === 2, verify = phase === 'projection';
       if (verify && !replay) throw Error('FIXTURE_DIFFICULTY_NOT_APPLIED');
       const count = req.gemini.items.length, changedFields = !verify && !replay ? 4 * count : 0;
-      const result = { status: 'PASS', mode: verify ? 'verify-reviewed-correction' : phase === 'write' ? 'write-reviewed-correction' : 'dry-run-reviewed-correction',
+      const result = { status: 'PASS', mode: req.reviewedCorrection === undefined
+        ? verify ? 'verify-projection' : phase === 'write' ? 'write' : 'dry-run'
+        : verify ? 'verify-reviewed-correction' : phase === 'write' ? 'write-reviewed-correction' : 'dry-run-reviewed-correction',
         requestId: req.gemini.requestId, sourceArchiveFile: req.gemini.sourceArchiveFile, sourceBlobSha: req.gemini.latestBlobSha,
         items: req.gemini.items.map(item => ({ questionUid: item.questionUid, ordinal: item.ordinal })),
         summary: { total: count, APPLY: !verify && !replay ? count : 0, ALREADY_REGISTERED: !verify && replay ? count : 0,
@@ -674,6 +704,185 @@ test('reviewed difficulty preview binds selected UIDs and evidence without creat
   assert.throws(()=>f.validate(proof),/EVIDENCE_DRIFT/);
 });
 
+function ordinaryDifficultyRequest(request) {
+  delete request.reviewedCorrection;
+  request.gemini.requestId = 'luna-diff5-20261112-합성_시험지';
+}
+
+test('ordinary difficulty selects the exact main inbox and PR inputs without inventing review evidence', t => {
+  const f = fixture(t, { partial: true, difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  const selected = f.selected(), main = selectPendingNativeRequests({ root: f.root, headSha: f.headSha });
+  assert.deepEqual(main, selected);
+  assert.equal(selected[0].kind, 'difficulty5-ratings');
+  assert.equal(selected[0].difficultyRegistrationMode, 'ordinary-ratings');
+  assert.equal(selected[0].difficultySourceBlobSha1, f.request.gemini.latestBlobSha);
+  assert.equal(selected[0].requestId, 'luna-diff5-20261112-합성_시험지');
+  assert.equal(selected[0].sourceQuestionCount, 24);
+  assert.deepEqual(selected[0].selectedItems, [{ questionUid: 'fixture', sourceOrdinal: 5 }]);
+  assert.deepEqual(selected[0].evidence, []);
+  assert.equal(selected[0].receiptPath, undefined);
+  const identity = fs.readFileSync(path.join(f.root, IDENTITY)), authority = fs.readFileSync(path.join(f.root, AUTHORITY));
+  const proof = f.produce();
+  assert.equal(proof.status, 'PASS');
+  assert.deepEqual(proof.nativePreview.plans, [{ requestPath: REQUEST, replay: false, plannedPaths: [META] }]);
+  assert.equal(proof.nativePreview.checks.find(c => c.id === 'native-consumer').difficultyOnly.newAdvancedMetadataApprovals, 0);
+  assert.equal(fs.existsSync(path.join(f.root, RECEIPT)), false);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, IDENTITY)), identity);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, AUTHORITY)), authority);
+  const before = f.snapshot();
+  assert.equal(f.validate(proof).reusable, true); assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+test('ordinary main temporary preparation uses the official difficulty modes and preserves the inbox', t => {
+  const f = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  const requestBytes = fs.readFileSync(path.join(f.root, REQUEST));
+  const report = preparePrRegistration({ root: f.root, eventName: 'push',
+    event: { before: f.baseSha, after: f.headSha }, expectedSha: f.headSha, run: f.run });
+  assert.equal(report.state, 'PREPARED');
+  assert.deepEqual(report.pendingRequestPaths, [REQUEST]);
+  assert.equal(report.nativePreview.requests[0].difficultyRegistrationMode, 'ordinary-ratings');
+  assert.equal(report.nativePreview.checks.find(c => c.id === 'native-consumer').outcome, 'success');
+  assert.deepEqual(fs.readFileSync(path.join(f.root, REQUEST)), requestBytes);
+  assert.equal(f.git('rev-parse', 'HEAD'), f.headSha);
+});
+
+test('unchanged ordinary difficulty stays outside a later unrelated PR selection', t => {
+  const f = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  f.write('tools/ci/unrelated-fixture.mjs', '// later unrelated change\n');
+  f.git('add', '--', 'tools/ci/unrelated-fixture.mjs'); f.git('commit', '-qm', 'later unrelated code');
+  const headSha = f.git('rev-parse', 'HEAD');
+  assert.deepEqual(selectNativeRequests({ root: f.root, baseSha: f.headSha, headSha }), []);
+  assert.equal(selectPendingNativeRequests({ root: f.root, headSha }).length, 1);
+});
+
+test('ordinary difficulty fails closed for malformed scope, correction claims and unknown main schemas', t => {
+  for (const [mutate, error] of [
+    [r => { r.gemini.schemaVersion = 'unknown'; }, /DIFFICULTY_APPROVAL/],
+    [r => { r.gemini.requestId = ''; }, /REQUEST_ID/],
+    [r => { r.gemini.requestId = 'id\nforged'; }, /REQUEST_ID/],
+    [r => { r.gemini.items = []; }, /QUESTION_COUNT/],
+    [r => { r.gemini.items = [null]; }, /SELECTED_UID_SCOPE/],
+    [r => { r.gemini.items.push({ ...r.gemini.items[0], ordinal: 6 }); }, /SELECTED_UID_SCOPE/],
+    [r => { r.gemini.items[0].ordinal = 25; }, /SOURCE_DENOMINATOR/],
+    [r => { r.gemini.latestBlobSha = '0'.repeat(40); }, /SOURCE_NOT_FIXED/],
+    [r => { r.gemini.sourceArchiveFile = '../native.js'; }, /UNSAFE_PATH/],
+    [r => { r.reviewedCorrection = null; }, /DIFFICULTY_APPROVAL/],
+    [r => { r.reviewedCorrection = {}; }, /DIFFICULTY_APPROVAL/],
+    [r => { r.schemaVersion = 'unknown-difficulty-request'; }, /PENDING_SCHEMA_UNSUPPORTED/],
+  ]) {
+    const f = fixture(t, { partial: true, difficultyOnly: true, otherOwner: false,
+      mutateRequest: r => { ordinaryDifficultyRequest(r); mutate(r); } });
+    assert.throws(() => selectPendingNativeRequests({ root: f.root, headSha: f.headSha }), error);
+    assert.equal(f.calls.filter(c => c.program !== 'git').length, 0);
+  }
+  const request = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  fs.appendFileSync(path.join(request.root, REQUEST), '\n');
+  assert.throws(request.selected, /REQUEST_NOT_FIXED/);
+  const source = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  fs.appendFileSync(path.join(source.root, SOURCE), '\n');
+  assert.throws(source.selected, /SOURCE_NOT_FIXED/);
+});
+
+test('ordinary difficulty keeps the official CRLF binding but rejects any other source drift', t => {
+  const f = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  const originalBlob = f.request.gemini.latestBlobSha;
+  const source = fs.readFileSync(path.join(f.root, SOURCE), 'utf8').replace(/\n/g, '\r\n');
+  f.write(SOURCE, source); f.git('add', '--', SOURCE); f.git('commit', '-qm', 'exact CRLF source snapshot');
+  const headSha = f.git('rev-parse', 'HEAD');
+  const [selected] = selectPendingNativeRequests({ root: f.root, headSha });
+  assert.equal(selected.difficultySourceBlobSha1, originalBlob);
+  assert.notEqual(selected.source.blobSha1, originalBlob);
+  assert.equal(selected.source.sha256, sha(source));
+  f.write(SOURCE, source.replace('id', 'changedField'));
+  f.git('add', '--', SOURCE); f.git('commit', '-qm', 'non-newline source change');
+  assert.throws(() => selectPendingNativeRequests({ root: f.root, headSha: f.git('rev-parse', 'HEAD') }), /SOURCE_NOT_FIXED/);
+});
+
+test('ordinary difficulty rejects partial registrar success, wrong modes and foreign output mutations', t => {
+  for (const phase of ['dry-run', 'write', 'projection']) for (const mutate of [
+    r => ({ ...r, mode: 'dry-run-reviewed-correction' }),
+    r => ({ ...r, summary: { ...r.summary, SKIP_INVALID: 1 } }),
+    r => ({ ...r, summary: { ...r.summary, CONFLICT: 1 } }),
+    r => ({ ...r, sourceBlobSha: '0'.repeat(40) }),
+    r => ({ ...r, items: [{ questionUid: 'foreign', ordinal: 1 }] }),
+  ]) {
+    const f = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+    f.hook.difficultyResult = (p, r) => p === phase ? mutate(r) : r;
+    assert.throws(f.produce, /DIFFICULTY_RESULT_(NOT_PASS|UID_SCOPE)/);
+  }
+  for (const file of [SOURCE, IDENTITY, AUTHORITY]) {
+    const f = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+    f.hook.afterDifficultyWrite = root => f.write(file, 'undeclared write\n', root);
+    assert.throws(f.produce, /UNDECLARED_NATIVE_OUTPUT/);
+  }
+});
+
+function ordinaryOfficialFixture(t, mutate) {
+  const f = fixture(t, { partial: true, difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  const records = Array.from({ length: 24 }, (_, i) => {
+    const q = { id: i + 1 }, questionUid = i === 4 ? 'fixture' : `synthetic-uid-${i + 1}`;
+    return { questionUid, sourceArchiveFile: 'original/native.js', sourceOrdinal: i + 1,
+      sourceFingerprint: sha(JSON.stringify({ content: null, choices: null, answer: null, solution: null, image: null })),
+      contentFingerprint: sha(JSON.stringify({ content: null, choices: null, image: null })),
+      level: '중', metadataApprovalType: 'MAIN_MERGE', reviewStatus: 'review_required', sourceQuestionNo: q.id,
+      ...(i === 4 ? { difficultyBucket: 2, difficultyConfidence: 'high', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL' } : {}) };
+  });
+  const identity = records.map(r => ({ questionUid: r.questionUid, sourceArchiveFile: r.sourceArchiveFile,
+    sourceOrdinal: r.sourceOrdinal, sourceQuestionNo: r.sourceQuestionNo, sourceFingerprint: r.sourceFingerprint }));
+  f.request.gemini.items.push({ ...copy(f.request.gemini.items[0]), questionUid: records[5].questionUid, ordinal: 6 });
+  mutate?.({ request: f.request, records, identity });
+  f.write(META, json({ records })); f.write(IDENTITY, json({ records: identity })); f.write(REQUEST, json(f.request));
+  f.git('add', '--', META, IDENTITY, REQUEST); f.git('commit', '-qm', 'synthetic exact ordinary registrar inputs');
+  const headSha = f.git('rev-parse', 'HEAD'), officialResults = [];
+  const run = (program, args, root = f.root) => {
+    if (program === 'git') return f.run(program, args, root);
+    if (args[0].endsWith('/register-difficulty5.mjs')) {
+      const request = JSON.parse(fs.readFileSync(path.join(root, args[args.indexOf('--request') + 1]), 'utf8'));
+      const result = registerDifficulty5({ root, request, write: args.includes('--write'), verifyProjection: args.includes('--verify-projection') });
+      officialResults.push(copy(result)); return json(result);
+    }
+    return f.run(program, args, root);
+  };
+  return { ...f, headSha, run, officialResults, select: () => selectPendingNativeRequests({ root: f.root, headSha }) };
+}
+
+test('ordinary preview invokes the real registrar for mixed replay, metadata-only write and exact projection', t => {
+  const f = ordinaryOfficialFixture(t), selected = f.select();
+  const before = JSON.parse(fs.readFileSync(path.join(f.root, META), 'utf8')).records;
+  const protectedBytes = [SOURCE, IDENTITY, AUTHORITY, REQUEST].map(file => [file, fs.readFileSync(path.join(f.root, file))]);
+  assert.deepEqual(applyNativeRequests({ root: f.root, requests: selected, run: f.run }),
+    [{ requestPath: REQUEST, replay: false, plannedPaths: [META] }]);
+  assert.equal(f.officialResults[0].summary.APPLY, 1); assert.equal(f.officialResults[0].summary.ALREADY_REGISTERED, 1);
+  const after = JSON.parse(fs.readFileSync(path.join(f.root, META), 'utf8')).records;
+  const difficultyFields = new Set(['difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility']);
+  const withoutDifficulty = row => Object.fromEntries(Object.entries(row).filter(([key]) => !difficultyFields.has(key)));
+  assert.deepEqual(after.map(withoutDifficulty), before.map(withoutDifficulty));
+  assert.deepEqual(after.filter(r => r.sourceOrdinal !== 6), before.filter(r => r.sourceOrdinal !== 6));
+  assert.equal(after[5].difficultyBucket, 2);
+  assert.deepEqual(applyNativeRequests({ root: f.root, requests: selected, run: f.run }),
+    [{ requestPath: REQUEST, replay: true, plannedPaths: [] }]);
+  assert.equal(verifyNativeRequests({ root: f.root, requests: selected, run: f.run })[0].outcome, 'success');
+  assert.equal(f.officialResults.at(-1).mode, 'verify-projection');
+  assert.equal(f.officialResults.at(-1).summary.VERIFIED, 2);
+  assert.equal(f.officialResults.at(-1).summary.changedFields, 0);
+  for (const [file, bytes] of protectedBytes) assert.deepEqual(fs.readFileSync(path.join(f.root, file)), bytes);
+  assert.equal(fs.existsSync(path.join(f.root, RECEIPT)), false);
+});
+
+test('ordinary preview cannot convert real registrar invalid rows, conflicts or UID drift to success', t => {
+  for (const mutate of [
+    ({ request }) => { request.gemini.items[1].after.difficultyBucket = 9; },
+    ({ request }) => { request.gemini.items[1].after.difficultyConfidence = 'invented'; },
+    ({ records }) => { records[5].difficultyBucket = 4; },
+  ]) {
+    const f = ordinaryOfficialFixture(t, mutate), before = fs.readFileSync(path.join(f.root, META));
+    assert.throws(() => applyNativeRequests({ root: f.root, requests: f.select(), run: f.run }), /DIFFICULTY_RESULT_NOT_PASS/);
+    assert.deepEqual(fs.readFileSync(path.join(f.root, META)), before);
+  }
+  const f = ordinaryOfficialFixture(t, ({ identity }) => { identity[5].questionUid = 'unrelated-identity'; });
+  assert.throws(() => applyNativeRequests({ root: f.root, requests: f.select(), run: f.run }), /ordinal\/questionUid mismatch/);
+});
+
 test('identity repair and reviewed difficulty run in the same preview before strict projection', t => {
   const f=fixture(t,{partial:true,identityOnly:true,pairedDifficulty:true});
   f.hook.projection=target=>assert.equal(JSON.parse(fs.readFileSync(path.join(target,META),'utf8')).records[0].difficultyBucket,2);
@@ -1087,7 +1296,8 @@ function fingerprintReassessmentFixture(t, { mutateRequest, mutateBaseline } = {
   const metadata = { records: [copy(record)] }, identities = { records: [copy(identity)] };
   const runtime = { status: 'ACTIVE', records: [copy(runtimeRecord)], generatedFrom: { 'reviewedExam_previous-native': PRIOR_NATIVE } };
   const prior = { schemaVersion: 'archive-reviewed-exam-meta-registration-v2', requestId: 'previous-native',
-    sourceArchiveFile: record.sourceArchiveFile, approval: { type: 'FINAL_QA', metadataReviewed: true },
+    sourceArchiveFile: record.sourceArchiveFile, approval: { type: 'FINAL_QA', metadataReviewed: true,
+      evidenceRefs: copy(f.request.approval.evidenceRefs) },
     metadataRegistrationStatus: 'REGISTERED', totalQuestions: 1, expectedQuestionCount: 24, scope: 'PARTIAL_UIDS', partialUidCount: 1,
     appliedRecords: [copy(record)], appliedIdentityRecords: [copy(identity)], runtimeRecords: [copy(runtimeRecord)],
     outputDigests: [{ path: NATIVE_RUNTIME, sha256: sha(json(runtime)) }] };
@@ -1433,3 +1643,132 @@ test('new BASIC proof rejects false preserved counts, advanced approval, and unc
   output.exams[0].approvalCreated = false; f.hook.consumerResult = output;
   assert.throws(() => verifyNativeRequests({ root: f.root, requests, run: f.run }), /CONSUMER_NOT_PASS/);
 });
+
+// Ancestor proof closure regression: preserving existing native approvals does not
+// infer a new approval or select another pending request.
+function ancestralEvidenceFixture(t, { mutateLeafRef, missingLeaf = false, cycle = false } = {}) {
+  const f = fixture(t, { partial: true, finalQaPreservation: true, otherOwner: false });
+  const leafPath = '.archive-meta-register/evidence/ancestor-native-review.json';
+  const priorPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/prior.json';
+  const ancestorPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/ancestor.json';
+  const unrelatedPath = '.archive-meta-register/evidence/unrelated-owner.json';
+  const leafBytes = json({ reviewed: 'immutable fixture evidence' });
+  const leafRef = { path: leafPath, sha256: sha(leafBytes) };
+  mutateLeafRef?.(leafRef);
+  if (!missingLeaf) f.write(leafPath, leafBytes);
+  f.write(unrelatedPath, json({ unrelated: true }));
+  const ancestorBytes = json({ schemaVersion: 'archive-reviewed-exam-meta-registration-v2',
+    approval: { evidenceRefs: cycle ? [{ path: priorPath, sha256: '0'.repeat(64) }] : [leafRef] } });
+  const ancestorRef = { path: ancestorPath, sha256: sha(ancestorBytes) };
+  f.write(ancestorPath, ancestorBytes);
+  const priorBytes = json({ schemaVersion: 'archive-reviewed-exam-meta-registration-v2',
+    approval: { evidenceRefs: [ancestorRef, leafRef] } });
+  const priorRef = { path: priorPath, sha256: sha(priorBytes) };
+  f.write(priorPath, priorBytes);
+  f.request.approval.evidenceRefs = [priorRef];
+  f.request.approval.sourceRebind.priorReceiptRef = priorRef;
+  f.request.items[0].evidenceRefs = [priorRef];
+  f.write(REQUEST, json(f.request));
+  f.git('add', '.'); f.git('commit', '-qm', 'fixed transitive native receipt evidence');
+  const headSha = f.git('rev-parse', 'HEAD'), repo = 'owner/repository';
+  const event = { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
+    number: 17, base: { sha: f.baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } },
+  } };
+  const options = { root: f.root, repo, event, expectedSha: headSha, runId: 41, runAttempt: 1, run: f.run };
+  return { ...f, headSha, leafPath, leafBytes, leafRef, priorPath, ancestorPath, unrelatedPath,
+    refs: [priorRef, ancestorRef, leafRef],
+    selected: () => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha }),
+    produce: () => producePrRegistrationProof(options),
+    validate: proof => validateLocalRegistrationProof({ ...options, proof }) };
+}
+
+test('shadow re-plan includes fixed transitive native receipt evidence without adopting unrelated files', t => {
+  const f = ancestralEvidenceFixture(t);
+  f.hook['dry-run'] = target => {
+    for (const ref of f.refs) assert.equal(sha(fs.readFileSync(path.join(target, ref.path))), ref.sha256);
+    if (target !== f.root) assert.equal(fs.existsSync(path.join(target, f.unrelatedPath)), false);
+  };
+  const proof = f.produce(), before = f.snapshot();
+  assert.equal(f.validate(proof).reusable, true);
+  assert.deepEqual(f.snapshot(), before);
+  assert.deepEqual(proof.nativePreview.requests[0].evidence.map(ref => ref.path).sort(),
+    f.refs.map(ref => ref.path).sort(), 'a repeated leaf is copied and fingerprinted exactly once');
+  assert.equal(proof.nativePreview.requests.length, 1, 'evidence closure never selects another request');
+  f.assertShadowsRemoved();
+});
+
+for (const [name, options, error] of [
+  ['missing leaf', { missingLeaf: true }, /MISSING_FILE/],
+  ['wrong leaf hash', { mutateLeafRef: ref => { ref.sha256 = '0'.repeat(64); } }, /EVIDENCE_DRIFT/],
+  ['malformed leaf hash', { mutateLeafRef: ref => { ref.sha256 = 'not-a-digest'; } }, /EVIDENCE_SHA/],
+  ['unsafe leaf path', { mutateLeafRef: ref => { ref.path = '../outside.json'; } }, /UNSAFE_PATH/],
+  ['cyclic receipt reference', { cycle: true }, /EVIDENCE_CYCLE/],
+]) test(`transitive native evidence rejects ${name} before official registration`, t => {
+  const f = ancestralEvidenceFixture(t, options), before = f.snapshot();
+  assert.throws(() => f.produce(), error);
+  assert.deepEqual(f.snapshot(), before);
+  assert.equal(f.calls.some(call => call.args[0]?.endsWith('/register-reviewed-exam-meta-source.mjs')), false);
+});
+
+test('transitive native evidence rejects worktree drift and symlinks on proof reuse', t => {
+  for (const symlink of [false, true]) {
+    const f = ancestralEvidenceFixture(t), proof = f.produce();
+    if (symlink) {
+      fs.rmSync(path.join(f.root, f.leafPath));
+      fs.symlinkSync(path.join(f.root, EVIDENCE), path.join(f.root, f.leafPath));
+    } else fs.appendFileSync(path.join(f.root, f.leafPath), '\n');
+    const before = f.snapshot();
+    assert.throws(() => f.validate(proof), symlink ? /SYMLINK/ : /EVIDENCE_DRIFT/);
+    assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+  }
+});
+
+test('transitive evidence must match fixed Git even when its worktree hash matches every reference', t => {
+  const f = ancestralEvidenceFixture(t), changedBytes = f.leafBytes + '\n';
+  const leafRef = { path: f.leafPath, sha256: sha(changedBytes) };
+  f.write(f.leafPath, changedBytes);
+  const ancestor = JSON.parse(fs.readFileSync(path.join(f.root, f.ancestorPath), 'utf8'));
+  ancestor.approval.evidenceRefs = [leafRef]; f.write(f.ancestorPath, json(ancestor));
+  const prior = JSON.parse(fs.readFileSync(path.join(f.root, f.priorPath), 'utf8'));
+  prior.approval.evidenceRefs = [{ path: f.ancestorPath, sha256: sha(json(ancestor)) }, leafRef];
+  f.write(f.priorPath, json(prior));
+  const priorRef = { path: f.priorPath, sha256: sha(json(prior)) };
+  f.request.approval.evidenceRefs = [priorRef]; f.request.items[0].evidenceRefs = [priorRef];
+  f.request.approval.sourceRebind.priorReceiptRef = priorRef; f.write(REQUEST, json(f.request));
+  f.git('add', '--', f.ancestorPath, f.priorPath, REQUEST);
+  f.git('commit', '-qm', 'references cannot authorize an uncommitted evidence leaf');
+  const before = f.snapshot();
+  assert.throws(() => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha: f.git('rev-parse', 'HEAD') }), /EVIDENCE_NOT_FIXED/);
+  assert.deepEqual(f.snapshot(), before);
+});
+
+test('complete transitive input staging cannot turn an official ancestor rejection into a reusable proof', t => {
+  const f = ancestralEvidenceFixture(t), proof = f.produce(), before = f.snapshot();
+  f.hook['dry-run'] = target => {
+    if (target !== f.root) {
+      assert.equal(sha(fs.readFileSync(path.join(target, f.leafPath))), f.leafRef.sha256);
+      throw Error('OFFICIAL_ANCESTOR_APPROVAL_REJECTED');
+    }
+  };
+  assert.throws(() => f.validate(proof), /OFFICIAL_ANCESTOR_APPROVAL_REJECTED/);
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+for (const label of ['absent', 'empty']) {
+  test(`ordinary positive native preservation still rejects ${label} approval evidence on its original receipt`, t => {
+    const f = ancestralEvidenceFixture(t);
+    const prior = JSON.parse(fs.readFileSync(path.join(f.root, f.priorPath), 'utf8'));
+    if (label === 'empty') prior.approval.evidenceRefs = [];
+    else delete prior.approval.evidenceRefs;
+    const bytes = json(prior), priorRef = { path: f.priorPath, sha256: sha(bytes) };
+    f.write(f.priorPath, bytes);
+    f.request.approval.evidenceRefs = [priorRef];
+    f.request.approval.sourceRebind.priorReceiptRef = priorRef;
+    f.request.items[0].evidenceRefs = [priorRef];
+    f.write(REQUEST, json(f.request));
+    f.git('add', '.'); f.git('commit', '-qm', 'positive original receipt lacks approval evidence');
+    const headSha = f.git('rev-parse', 'HEAD');
+    assert.throws(() => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha }), /EVIDENCE_REQUIRED/);
+  });
+}
+

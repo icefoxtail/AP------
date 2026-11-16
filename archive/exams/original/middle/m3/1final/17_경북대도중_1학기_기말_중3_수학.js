@@ -228,11 +228,18 @@ window.examData = {
     },
     {
       "id": 12,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "오른쪽 x절편은 3이다. y=0에 x=3을 대입하면 9a+3b+c=0이므로 정답은 ②이다.",
+      "solutionImageAlt": "파란 포물선은 아래로 열리고 꼭짓점은 y축 오른쪽에 있다. 오른쪽 x절편의 눈금은 3이다. y절편은 x축 위에 있다.",
+      "solutionImage": "assets/images/17_경북대도중_1학기_기말_중3_수학/q12-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
+      "imageSize": "large",
+      "imageAlt": "파란 포물선은 아래로 열리고 꼭짓점은 y축 오른쪽에 있다. 오른쪽 x절편의 눈금은 3이다. y절편은 x축 위에 있다.",
       "questionNumber": 12,
       "number": 12,
       "questionType": "객관식",
-      "question": "12. 이차함수 $y=ax^2+bx+c$의 그래프가 오른쪽 그림과 같을 때, 다음 중 옳은 것은? [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q12.png\" alt=\"위로 볼록하고 x축과 두 점 (-1, 0), (3, 0)에서 만나며 y축과 양의 부분에서 만나는 포물선 그래프\"></div>",
-      "content": "12. 이차함수 $y=ax^2+bx+c$의 그래프가 오른쪽 그림과 같을 때, 다음 중 옳은 것은? [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q12.png\" alt=\"위로 볼록하고 x축과 두 점 (-1, 0), (3, 0)에서 만나며 y축과 양의 부분에서 만나는 포물선 그래프\"></div>",
+      "question": "12. 이차함수 $y=ax^2+bx+c$의 그래프가 오른쪽 그림과 같을 때, 다음 중 옳은 것은? [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"파란 포물선은 아래로 열리고 꼭짓점은 y축 오른쪽에 있다. 오른쪽 x절편의 눈금은 3이다. y절편은 x축 위에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+      "content": "12. 이차함수 $y=ax^2+bx+c$의 그래프가 오른쪽 그림과 같을 때, 다음 중 옳은 것은? [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"파란 포물선은 아래로 열리고 꼭짓점은 y축 오른쪽에 있다. 오른쪽 x절편의 눈금은 3이다. y절편은 x축 위에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
       "choices": [
         "① $a<0, b<0, c>0$",
         "② $9a+3b+c=0$",
@@ -240,21 +247,26 @@ window.examData = {
         "④ $a+b+c<0$",
         "⑤ $4a+2b+c<0$"
       ],
-      "images": [
-        "assets/images/17_경북대도중_1학기_기말_중3_수학/q12.png"
-      ],
+      "images": ["assets/images/17_경북대도중_1학기_기말_중3_수학/q12-problem-visual-v2.svg"],
       "answer": "②",
       "solution": "[원문 조건 및 구할 대상]\n- 조건: 위로 볼록하고 $x$축과의 교점이 $(-1, 0), (3, 0)$인 이차함수 $y=ax^2+bx+c$의 그래프\n- 구할 대상: 주어진 보기 중 옳은 식\n\n[핵심 발상 및 공식]\n- $f(x) = ax^2+bx+c$라 할 때, 그래프 위의 점 $(x_0, y_0)$에 대하여 $f(x_0) = y_0$가 성립합니다.\n\n[연속 등식과 세부 계산]\n- 그래프가 점 $(3, 0)$을 지나므로 $x=3$을 대입하면:\n  $$f(3) = a(3)^2 + b(3) + c = 9a + 3b + c = 0$$\n\n[선지 검토]\n- ① 위로 볼록하므로 $a<0$, 축이 $x = \\dfrac{-1+3}{2} = 1 > 0$이므로 $-\\dfrac{b}{2a} > 0 \\implies b > 0$, $y$절편 $c > 0$. 즉 $a<0, b>0, c>0$이므로 옳지 않습니다.\n- ② $x=3$일 때의 함숫값이 $0$이므로 $9a+3b+c=0$은 옳습니다.\n- ③, ④ 꼭짓점의 $x$좌표가 $1$이고 꼭짓점의 $y$좌표는 양수이므로 $f(1) = a+b+c > 0$입니다. 특정 값 $1$이라고 단정할 수 없으며 부호도 양수이므로 둘 다 옳지 않습니다.\n- ⑤ $x=2$는 두 절편 $-1$과 $3$ 사이에 위치하므로 $f(2) = 4a+2b+c > 0$입니다. 따라서 옳지 않습니다.\n\n[최종 결론]\n따라서 옳은 것은 ②입니다.",
       "score": 4.0,
-      "image": "assets/images/17_경북대도중_1학기_기말_중3_수학/q12.png"
+      "image": "assets/images/17_경북대도중_1학기_기말_중3_수학/q12-problem-visual-v2.svg"
     },
     {
       "id": 13,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "OB의 길이는 2이고 여기에 대응하는 높이는 꼭짓점 A의 x좌표 4이다. 넓이는 2×4÷2=4이고 정답은 ①이다.",
+      "solutionImageAlt": "아래로 열린 곡선에서 꼭짓점 A와 세로축을 지나는 점 B를 찾는다. A와 B, 원점 O를 이은 안쪽 삼각형을 칠했다. A에서 y축으로 수평선을 그어 삼각형의 높이를 표시했다.",
+      "solutionImage": "assets/images/17_경북대도중_1학기_기말_중3_수학/q13-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
+      "imageSize": "large",
+      "imageAlt": "아래로 열린 곡선에서 꼭짓점 A와 세로축을 지나는 점 B를 찾는다. A와 B, 원점 O를 이은 안쪽 삼각형을 칠했다.",
       "questionNumber": 13,
       "number": 13,
       "questionType": "객관식",
-      "question": "13. 오른쪽 그림과 같이 이차함수 $y=-x^2+8x+2$의 그래프에서 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{B}$, 원점을 $\\text{O}$라고 할 때, $\\triangle\\text{ABO}$의 넓이를 구하여라. [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q13.png\" alt=\"이차함수 y=-x^2+8x+2의 꼭짓점 A, y축 교점 B, 원점 O로 둘러싸인 삼각형 ABO\"></div>",
-      "content": "13. 오른쪽 그림과 같이 이차함수 $y=-x^2+8x+2$의 그래프에서 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{B}$, 원점을 $\\text{O}$라고 할 때, $\\triangle\\text{ABO}$의 넓이를 구하여라. [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q13.png\" alt=\"이차함수 y=-x^2+8x+2의 꼭짓점 A, y축 교점 B, 원점 O로 둘러싸인 삼각형 ABO\"></div>",
+      "question": "13. 오른쪽 그림과 같이 이차함수 $y=-x^2+8x+2$의 그래프에서 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{B}$, 원점을 $\\text{O}$라고 할 때, $\\triangle\\text{ABO}$의 넓이를 구하여라. [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"아래로 열린 곡선에서 꼭짓점 A와 세로축을 지나는 점 B를 찾는다. A와 B, 원점 O를 이은 안쪽 삼각형을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+      "content": "13. 오른쪽 그림과 같이 이차함수 $y=-x^2+8x+2$의 그래프에서 꼭짓점을 $\\text{A}$, $y$축과의 교점을 $\\text{B}$, 원점을 $\\text{O}$라고 할 때, $\\triangle\\text{ABO}$의 넓이를 구하여라. [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"아래로 열린 곡선에서 꼭짓점 A와 세로축을 지나는 점 B를 찾는다. A와 B, 원점 O를 이은 안쪽 삼각형을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
       "choices": [
         "① 4",
         "② 8",
@@ -262,13 +274,11 @@ window.examData = {
         "④ 32",
         "⑤ 36"
       ],
-      "images": [
-        "assets/images/17_경북대도중_1학기_기말_중3_수학/q13.png"
-      ],
+      "images": ["assets/images/17_경북대도중_1학기_기말_중3_수학/q13-problem-visual-v2.svg"],
       "answer": "①",
       "solution": "[원문 조건 및 구할 대상]\n- 조건: 이차함수 $y=-x^2+8x+2$의 꼭짓점 $\\text{A}$, $y$축과의 교점 $\\text{B}$, 원점 $\\text{O}$\n- 구할 대상: $\\triangle\\text{ABO}$의 넓이\n\n[핵심 발상 및 공식]\n- 꼭짓점 $\\text{A}$와 $y$축과의 교점 $\\text{B}$의 좌표를 구합니다.\n- $y$축 위의 선분 $\\text{OB}$를 밑변으로 잡으면, 높이는 점 $\\text{A}$의 $x$좌표의 절댓값입니다.\n\n[연속 등식과 세부 계산]\n- 식을 완전제곱꼴로 변형하여 꼭짓점 $\\text{A}$를 구합니다:\n  $$y = -(x^2 - 8x) + 2 = -(x-4)^2 + 16 + 2 = -(x-4)^2 + 18$$\n  따라서 꼭짓점은 $\\text{A}(4, 18)$입니다.\n- $y$축과의 교점 $\\text{B}$는 $x=0$을 대입하여 구합니다:\n  $$y = 0 + 0 + 2 = 2 \\implies \\text{B}(0, 2)$$\n- 밑변의 길이: 선분 $\\text{OB}$는 원점 $(0, 0)$과 점 $(0, 2)$ 사이의 거리이므로 $2$입니다.\n- 높이: 점 $\\text{A}(4, 18)$에서 $y$축까지의 거리는 $x$좌표인 $4$입니다.\n- 삼각형 $\\triangle\\text{ABO}$의 넓이를 계산합니다:\n  $$\\triangle\\text{ABO} = \\dfrac{1}{2} \\times \\overline{\\text{OB}} \\times (\\text{높이}) = \\dfrac{1}{2} \\times 2 \\times 4 = 4$$\n\n[선지 검토]\n- 계산 결과 넓이가 $4$이므로 선지 ①과 일치합니다.\n\n[최종 결론]\n따라서 정답은 ①입니다.",
       "score": 4.0,
-      "image": "assets/images/17_경북대도중_1학기_기말_중3_수학/q13.png"
+      "image": "assets/images/17_경북대도중_1학기_기말_중3_수학/q13-problem-visual-v2.svg"
     },
     {
       "id": 14,
@@ -312,11 +322,18 @@ window.examData = {
     },
     {
       "id": 16,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "PQ=t²/2−t+2=(t−1)²/2+3/2이다. t=1에서 최솟값 3/2이고 정답은 ③이다.",
+      "solutionImageAlt": "파란 포물선은 위로 열리고 y축을 2에서 지난다. 주황 점선 직선은 원점을 지난다. 포물선의 P와 직선의 Q는 같은 세로선에 놓인다.",
+      "solutionImage": "assets/images/17_경북대도중_1학기_기말_중3_수학/q16-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
+      "imageSize": "large",
+      "imageAlt": "파란 포물선은 위로 열리고 y축을 2에서 지난다. 주황 점선 직선은 원점을 지난다. 포물선의 P와 직선의 Q는 같은 세로선에 놓인다.",
       "questionNumber": 16,
       "number": 16,
       "questionType": "객관식",
-      "question": "16. 다음 그림과 같이 이차함수 $y=\\dfrac{1}{2}x^2+2$의 그래프 위의 한 점 $\\text{P}$에서 $y$축에 평행한 직선을 그어 직선 $y=x$와 만나는 점을 $\\text{Q}$라고 하자. 선분 $\\text{PQ}$의 길이의 최솟값을 구하여라. [5.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q16.png\" alt=\"이차함수 y=1/2x^2+2의 그래프와 직선 y=x, 그리고 두 점 P, Q를 잇는 수직 선분\"></div>",
-      "content": "16. 다음 그림과 같이 이차함수 $y=\\dfrac{1}{2}x^2+2$의 그래프 위의 한 점 $\\text{P}$에서 $y$축에 평행한 직선을 그어 직선 $y=x$와 만나는 점을 $\\text{Q}$라고 하자. 선분 $\\text{PQ}$의 길이의 최솟값을 구하여라. [5.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q16.png\" alt=\"이차함수 y=1/2x^2+2의 그래프와 직선 y=x, 그리고 두 점 P, Q를 잇는 수직 선분\"></div>",
+      "question": "16. 다음 그림과 같이 이차함수 $y=\\dfrac{1}{2}x^2+2$의 그래프 위의 한 점 $\\text{P}$에서 $y$축에 평행한 직선을 그어 직선 $y=x$와 만나는 점을 $\\text{Q}$라고 하자. 선분 $\\text{PQ}$의 길이의 최솟값을 구하여라. [5.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"파란 포물선은 위로 열리고 y축을 2에서 지난다. 주황 점선 직선은 원점을 지난다. 포물선의 P와 직선의 Q는 같은 세로선에 놓인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+      "content": "16. 다음 그림과 같이 이차함수 $y=\\dfrac{1}{2}x^2+2$의 그래프 위의 한 점 $\\text{P}$에서 $y$축에 평행한 직선을 그어 직선 $y=x$와 만나는 점을 $\\text{Q}$라고 하자. 선분 $\\text{PQ}$의 길이의 최솟값을 구하여라. [5.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"파란 포물선은 위로 열리고 y축을 2에서 지난다. 주황 점선 직선은 원점을 지난다. 포물선의 P와 직선의 Q는 같은 세로선에 놓인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
       "choices": [
         "① $\\dfrac{1}{2}$",
         "② 1",
@@ -324,13 +341,11 @@ window.examData = {
         "④ 2",
         "⑤ $\\dfrac{5}{2}$"
       ],
-      "images": [
-        "assets/images/17_경북대도중_1학기_기말_중3_수학/q16.png"
-      ],
+      "images": ["assets/images/17_경북대도중_1학기_기말_중3_수학/q16-problem-visual-v2.svg"],
       "answer": "③",
       "solution": "[원문 조건 및 구할 대상]\n- 조건: 이차함수 $y=\\dfrac{1}{2}x^2+2$ 위의 점 $\\text{P}$, $y=x$ 위의 점 $\\text{Q}$, 선분 $\\text{PQ}$는 $y$축에 평행함\n- 구할 대상: 선분 $\\text{PQ}$의 길이의 최솟값\n\n[핵심 발상 및 공식]\n- 점 $\\text{P}$와 $\\text{Q}$의 $x$좌표를 $t$로 두면, 두 점의 $y$좌표의 차가 선분 $\\text{PQ}$의 길이입니다.\n\n[연속 등식과 세부 계산]\n- 점 $\\text{P}$와 점 $\\text{Q}$의 좌표 설정:\n  $$\\text{P}\\left(t, \\dfrac{1}{2}t^2+2\\right), \\quad \\text{Q}(t, t)$$\n- 포물선 $y=\\dfrac{1}{2}x^2+2$는 모든 실수 $x$에 대하여 직선 $y=x$보다 위쪽에 위치하므로:\n  $$\\overline{\\text{PQ}} = \\left(\\dfrac{1}{2}t^2+2\\right) - t = \\dfrac{1}{2}t^2 - t + 2$$\n- 이를 완전제곱꼴로 정리합니다:\n  $$\\overline{\\text{PQ}} = \\dfrac{1}{2}(t^2 - 2t) + 2$$\n  $$\\overline{\\text{PQ}} = \\dfrac{1}{2}(t-1)^2 - \\dfrac{1}{2} + 2$$\n  $$\\overline{\\text{PQ}} = \\dfrac{1}{2}(t-1)^2 + \\dfrac{3}{2}$$\n- 따라서 $t=1$일 때 선분 $\\text{PQ}$의 최솟값은 $\\dfrac{3}{2}$입니다.\n\n[선지 검토]\n- 최솟값 $\\dfrac{3}{2}$는 선지 ③과 일치합니다.\n\n[최종 결론]\n따라서 정답은 ③입니다.",
       "score": 5.0,
-      "image": "assets/images/17_경북대도중_1학기_기말_중3_수학/q16.png"
+      "image": "assets/images/17_경북대도중_1학기_기말_중3_수학/q16-problem-visual-v2.svg"
     },
     {
       "id": 17,
@@ -354,11 +369,18 @@ window.examData = {
     },
     {
       "id": 18,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "1반의 중앙값은 3점이고, 2반과 3반은 4점이다. 2반의 가장 높은 도수는 4점에서 나온다. 옳은 것은 ㄴ이므로 정답은 ②이다.",
+      "solutionImageAlt": "가로축은 점수, 세로축은 사람 수이다. 1반은 파란 실선과 원, 2반은 주황 점선과 네모, 3반은 초록 짧은 점선과 세모로 표시했다. 세 반의 각 점수에 관한 도수를 한 좌표평면에 나타냈다. 2반의 주황 꺾은선은 4점에서 도수가 가장 크다.",
+      "solutionImage": "assets/images/17_경북대도중_1학기_기말_중3_수학/q18-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
+      "imageSize": "large",
+      "imageAlt": "가로축은 점수, 세로축은 사람 수이다. 1반은 파란 실선과 원, 2반은 주황 점선과 네모, 3반은 초록 짧은 점선과 세모로 표시했다. 세 반의 각 점수에 관한 도수를 한 좌표평면에 나타냈다.",
       "questionNumber": 18,
       "number": 18,
       "questionType": "객관식",
-      "question": "18. 오른쪽 그림은 1반, 2반, 3반 학생들의 수학 쪽지시험 점수를 꺾은선그래프로 나타낸 것이다. 다음 <보기> 중에서 옳은 것을 모두 고른 것은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q18.png\" alt=\"1반, 2반, 3반 학생들의 쪽지시험 점수별 도수를 나타낸 꺾은선그래프\"></div>\n<보기>\nㄱ. 1반 학생의 중앙값이 가장 크다.\nㄴ. 2반 학생의 최빈값은 4점이다.\nㄷ. 3반 학생의 중앙값이 가장 작다.",
-      "content": "18. 오른쪽 그림은 1반, 2반, 3반 학생들의 수학 쪽지시험 점수를 꺾은선그래프로 나타낸 것이다. 다음 <보기> 중에서 옳은 것을 모두 고른 것은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q18.png\" alt=\"1반, 2반, 3반 학생들의 쪽지시험 점수별 도수를 나타낸 꺾은선그래프\"></div>\n<보기>\nㄱ. 1반 학생의 중앙값이 가장 크다.\nㄴ. 2반 학생의 최빈값은 4점이다.\nㄷ. 3반 학생의 중앙값이 가장 작다.",
+      "question": "18. 오른쪽 그림은 1반, 2반, 3반 학생들의 수학 쪽지시험 점수를 꺾은선그래프로 나타낸 것이다. 다음 <보기> 중에서 옳은 것을 모두 고른 것은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q18-problem-visual-v2.svg\" alt=\"가로축은 점수, 세로축은 사람 수이다. 1반은 파란 실선과 원, 2반은 주황 점선과 네모, 3반은 초록 짧은 점선과 세모로 표시했다. 세 반의 각 점수에 관한 도수를 한 좌표평면에 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>\n<보기>\nㄱ. 1반 학생의 중앙값이 가장 크다.\nㄴ. 2반 학생의 최빈값은 4점이다.\nㄷ. 3반 학생의 중앙값이 가장 작다.",
+      "content": "18. 오른쪽 그림은 1반, 2반, 3반 학생들의 수학 쪽지시험 점수를 꺾은선그래프로 나타낸 것이다. 다음 <보기> 중에서 옳은 것을 모두 고른 것은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q18-problem-visual-v2.svg\" alt=\"가로축은 점수, 세로축은 사람 수이다. 1반은 파란 실선과 원, 2반은 주황 점선과 네모, 3반은 초록 짧은 점선과 세모로 표시했다. 세 반의 각 점수에 관한 도수를 한 좌표평면에 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>\n<보기>\nㄱ. 1반 학생의 중앙값이 가장 크다.\nㄴ. 2반 학생의 최빈값은 4점이다.\nㄷ. 3반 학생의 중앙값이 가장 작다.",
       "choices": [
         "① ㄱ",
         "② ㄴ",
@@ -366,13 +388,11 @@ window.examData = {
         "④ ㄱ, ㄷ",
         "⑤ ㄴ, ㄷ"
       ],
-      "images": [
-        "assets/images/17_경북대도중_1학기_기말_중3_수학/q18.png"
-      ],
+      "images": ["assets/images/17_경북대도중_1학기_기말_중3_수학/q18-problem-visual-v2.svg"],
       "answer": "②",
       "solution": "[원문 조건 및 구할 대상]\n- 조건: 세 반의 수학 쪽지시험 점수 분포 꺾은선그래프\n- 구할 대상: 보기 중 옳은 것\n\n[핵심 발상 및 공식]\n- 최빈값은 그래프에서 가장 높은 정점에 해당하는 가로축의 점수입니다.\n- 중앙값은 학생들의 누적 도수가 전체 인원의 절반이 되는 지점의 점수입니다.\n\n[연속 등식과 세부 계산]\n- 2반 그래프에서 가장 높은 도수(정점)를 나타내는 점수는 $4$점입니다.\n  따라서 2반 학생의 최빈값은 $4$점입니다 (ㄴ 참).\n- 1반, 2반, 3반의 누적 도수를 분석하면 중앙값은 반별 학생수 분포에 따라 산출되며,\n  1반의 중앙값이 가장 크지 않고, 3반의 중앙값이 가장 작지 않습니다 (ㄱ 거짓, ㄷ 거짓).\n\n[선지 검토]\n- ㄱ: 거짓\n- ㄴ: 참\n- ㄷ: 거짓\n- 따라서 옳은 것은 ㄴ뿐이므로 선지 ②와 일치합니다.\n\n[최종 결론]\n따라서 정답은 ②입니다.",
       "score": 3.0,
-      "image": "assets/images/17_경북대도중_1학기_기말_중3_수학/q18.png"
+      "image": "assets/images/17_경북대도중_1학기_기말_중3_수학/q18-problem-visual-v2.svg"
     },
     {
       "id": 19,
@@ -472,19 +492,24 @@ window.examData = {
     },
     {
       "id": 24,
+      "solutionImageSize": "full",
+      "solutionImageCaption": "오른쪽 x좌표가 2+d이면 둘레는 2(2d+4−d²)=10−2(d−1)²이다. 최대 둘레는 10이고, 그때 D의 좌표는 (3,3)이다.",
+      "solutionImageAlt": "아래로 열린 포물선 위에 A와 D, 가로축 위에 B와 C가 있다. 네 점을 이은 연두색 사각형의 가로변과 세로변은 좌표축에 평행하다.",
+      "solutionImage": "assets/images/17_경북대도중_1학기_기말_중3_수학/q24-solution-visual-v2.svg",
+      "layoutTag": "fullwidth",
+      "imageSize": "large",
+      "imageAlt": "아래로 열린 포물선 위에 A와 D, 가로축 위에 B와 C가 있다. 네 점을 이은 연두색 사각형의 가로변과 세로변은 좌표축에 평행하다.",
       "questionNumber": 24,
       "number": 24,
       "questionType": "서술형",
-      "question": "서술형 2) 오른쪽 그림에서 $\\square\\text{ABCD}$는 이차함수 $y=-(x-2)^2+4$의 그래프 위의 두 점 $\\text{A, D}$와 $x$축 위의 두 점 $\\text{B, C}$로 이루어진 직사각형이고, 각 변은 각각 $x$축, $y$축에 평행하다. 이때, [8.0점]\n(1) 직사각형 $\\text{ABCD}$의 둘레의 길이의 최댓값을 구하는 과정과 답을 서술하여라. [4.0점]\n(2) 직사각형 $\\text{ABCD}$의 둘레의 길이가 최대일 때, $\\text{D}$의 좌표를 구하는 과정과 답을 서술하여라. [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q24.png\" alt=\"이차함수 y=-(x-2)^2+4의 그래프와 x축 사이에 내접하고 각 변이 좌표축에 평행한 직사각형 ABCD\"></div>",
-      "content": "서술형 2) 오른쪽 그림에서 $\\square\\text{ABCD}$는 이차함수 $y=-(x-2)^2+4$의 그래프 위의 두 점 $\\text{A, D}$와 $x$축 위의 두 점 $\\text{B, C}$로 이루어진 직사각형이고, 각 변은 각각 $x$축, $y$축에 평행하다. 이때, [8.0점]\n(1) 직사각형 $\\text{ABCD}$의 둘레의 길이의 최댓값을 구하는 과정과 답을 서술하여라. [4.0점]\n(2) 직사각형 $\\text{ABCD}$의 둘레의 길이가 최대일 때, $\\text{D}$의 좌표를 구하는 과정과 답을 서술하여라. [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q24.png\" alt=\"이차함수 y=-(x-2)^2+4의 그래프와 x축 사이에 내접하고 각 변이 좌표축에 평행한 직사각형 ABCD\"></div>",
+      "question": "서술형 2) 오른쪽 그림에서 $\\square\\text{ABCD}$는 이차함수 $y=-(x-2)^2+4$의 그래프 위의 두 점 $\\text{A, D}$와 $x$축 위의 두 점 $\\text{B, C}$로 이루어진 직사각형이고, 각 변은 각각 $x$축, $y$축에 평행하다. 이때, [8.0점]\n(1) 직사각형 $\\text{ABCD}$의 둘레의 길이의 최댓값을 구하는 과정과 답을 서술하여라. [4.0점]\n(2) 직사각형 $\\text{ABCD}$의 둘레의 길이가 최대일 때, $\\text{D}$의 좌표를 구하는 과정과 답을 서술하여라. [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"아래로 열린 포물선 위에 A와 D, 가로축 위에 B와 C가 있다. 네 점을 이은 연두색 사각형의 가로변과 세로변은 좌표축에 평행하다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
+      "content": "서술형 2) 오른쪽 그림에서 $\\square\\text{ABCD}$는 이차함수 $y=-(x-2)^2+4$의 그래프 위의 두 점 $\\text{A, D}$와 $x$축 위의 두 점 $\\text{B, C}$로 이루어진 직사각형이고, 각 변은 각각 $x$축, $y$축에 평행하다. 이때, [8.0점]\n(1) 직사각형 $\\text{ABCD}$의 둘레의 길이의 최댓값을 구하는 과정과 답을 서술하여라. [4.0점]\n(2) 직사각형 $\\text{ABCD}$의 둘레의 길이가 최대일 때, $\\text{D}$의 좌표를 구하는 과정과 답을 서술하여라. [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"아래로 열린 포물선 위에 A와 D, 가로축 위에 B와 C가 있다. 네 점을 이은 연두색 사각형의 가로변과 세로변은 좌표축에 평행하다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
       "choices": [],
-      "images": [
-        "assets/images/17_경북대도중_1학기_기말_중3_수학/q24.png"
-      ],
+      "images": ["assets/images/17_경북대도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg"],
       "answer": "(1) 10\n(2) $(3, 3)$",
       "solution": "[원문 조건 및 구할 대상]\n- 조건: 이차함수 $y=-(x-2)^2+4$ 위의 점 $\\text{A, D}$, $x$축 위의 점 $\\text{B, C}$로 이루어진 직사각형 $\\text{ABCD}$\n- 구할 대상: (1) 둘레의 길이의 최댓값, (2) 그때의 점 $\\text{D}$의 좌표\n\n[핵심 발상 및 공식]\n- 포물선의 대칭축은 직선 $x=2$입니다.\n- 점 $\\text{D}$의 $x$좌표를 $t\\,(2 < t < 4)$로 설정하면, 가로의 길이는 $2(t-2)$, 세로의 길이는 점 $\\text{D}$의 $y$좌표입니다.\n\n[연속 등식과 세부 계산]\n(1) 둘레의 길이의 최댓값:\n- 점 $\\text{D}$의 좌표: $\\text{D}(t, -(t-2)^2 + 4)$\n- 변의 길이:\n  - 가로의 길이: $\\overline{\\text{AD}} = 2(t-2)$\n  - 세로의 길이: $\\overline{\\text{CD}} = -(t-2)^2 + 4$\n- 직사각형의 둘레의 길이 $L(t)$:\n  $$L(t) = 2 \\times (\\text{가로} + \\text{세로}) = 2 \\left[ 2(t-2) - (t-2)^2 + 4 \\right]$$\n  $$L(t) = 2 \\left[ -(t-2)^2 + 2(t-2) + 4 \\right] = -2(t-2)^2 + 4(t-2) + 8$$\n- $X = t-2$ ($0 < X < 2$)로 치환하여 정리하면:\n  $$L = -2X^2 + 4X + 8 = -2(X^2 - 2X + 1 - 1) + 8 = -2(X-1)^2 + 10$$\n- $0 < X < 2$ 범위에서 $X=1$일 때, 둘레의 길이는 최댓값 $10$을 갖습니다.\n\n(2) 점 $\\text{D}$의 좌표:\n- 둘레가 최대일 때 $X = t-2 = 1 \\implies t = 3$\n- 이때 점 $\\text{D}$의 $y$좌표는:\n  $$y = -(3-2)^2 + 4 = -1 + 4 = 3$$\n- 따라서 점 $\\text{D}$의 좌표는 $(3, 3)$입니다.\n\n[조건 적합성 검토]\n- $t=3$은 $2 < t < 4$ 범위에 속하며, 가로 $2(3-2)=2$, 세로 $3$일 때 둘레는 $2(2+3)=10$으로 계산과 완벽히 부합합니다.\n\n[최종 결론]\n따라서 구하는 답은 다음과 같습니다:\n(1) 10\n(2) $(3, 3)$",
       "score": 8.0,
-      "image": "assets/images/17_경북대도중_1학기_기말_중3_수학/q24.png"
+      "image": "assets/images/17_경북대도중_1학기_기말_중3_수학/q24-problem-visual-v2.svg"
     },
     {
       "id": 25,
