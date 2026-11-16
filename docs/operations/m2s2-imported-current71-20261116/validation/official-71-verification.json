@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "m2s2-imported71-official-verification-v1",
+  "author": "/root/audit_m2",
+  "codeCommit": "7750545487ebe33e681c842233315cd6c7c6289a",
+  "inputManifest": {
+    "path": ".tmp/imported71-compacts-manifest.json",
+    "sha256": "c7a16bf1a2915651f6ca4fad80bd99a4ce1b32b9d9ad9a5097f0b852fd6d2880"
+  },
+  "currentMain": "203435e095b5f4c65f7c5bef5131e375633ba95c",
+  "sourceCandidateCommit": "f6d8f94d35de2459fb3bfb344e9bff339253c84a",
+  "counts": {
+    "sources": 3,
+    "total": 71,
+    "actualRetain": 49,
+    "untouched": 21,
+    "hold": 1
+  },
+  "registered": 70,
+  "held": 1,
+  "heldQuestionUids": [
+    "qid_v1_f576f0fba9d5fe82129f295aa2bbd265d66926ef480f68b387df0bb6842669e6"
+  ],
+  "officialBuilder": {
+    "dry": {
+      "path": ".tmp/imported71-official-dry.json",
+      "sha256": "a759620def2ef1c3941ab1df0658a566b1dab496988b100fd1b76ed903ef4d95",
+      "durationMs": 7835,
+      "result": {
+        "schemaVersion": "archive-item-4slot-runtime-v1",
+        "status": "PASS_WITH_SUPPLEMENTS",
+        "verified": 70,
+        "pending": 1,
+        "indexSha256": "74b84d8205ae1a6521d82b5d404c80413ed48830eacc40895636d8684dc1c3c0",
+        "sourceMutation": 0,
+        "semanticApprovalMutation": 0,
+        "revalidatedFiles": 3,
+        "reusedFiles": 0,
+        "counts": {
+          "files": 3,
+          "items": 71,
+          "registered": 70,
+          "pending": 1,
+          "withCandidates": 8,
+          "identityFingerprintHistorical": 51
+        },
+        "changed": true,
+        "write": false,
+        "output": "archive/data/item-4slot-index.json",
+        "inputDigest": "742213cb881e6fc9673aedeb65af0821dfd465d5d0f8178f95d1b48565ec0d57",
+        "sourceFiles": [
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.4slot.json",
+            "sha256": "5973e5fce7a2ea531f3ad3d2163434c6c4c1398d3c41e03df06f23a5415375f5",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+            "sha256": "25d3c4ce345520424fa2cf326df0985f01bd43198ab8f721548f3aad20eea3e1",
+            "status": "SUPPLEMENT_PENDING"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.4slot.json",
+            "sha256": "1188df1b59833f3c2ce364f7dfd2fdefce61288cf91c438bcedfcc94937cc1b8",
+            "status": "REGISTERED"
+          }
+        ],
+        "pendingItems": [
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+            "ordinal": 12,
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+            "questionUid": "qid_v1_f576f0fba9d5fe82129f295aa2bbd265d66926ef480f68b387df0bb6842669e6",
+            "sourceArchiveFile": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+            "nextAction": "Keep the exact existing vector pending. A separately authorized renderer correction and exact current continuity review are required before releasing this UID."
+          }
+        ]
+      }
+    },
+    "write": {
+      "path": ".tmp/imported71-official-write.json",
+      "sha256": "90be07107ab84e0608cb42730607f318781cf2b4b33c258f3a65744c89feea7a",
+      "durationMs": 8182,
+      "result": {
+        "schemaVersion": "archive-item-4slot-runtime-v1",
+        "status": "PASS_WITH_SUPPLEMENTS",
+        "verified": 70,
+        "pending": 1,
+        "indexSha256": "74b84d8205ae1a6521d82b5d404c80413ed48830eacc40895636d8684dc1c3c0",
+        "sourceMutation": 0,
+        "semanticApprovalMutation": 0,
+        "revalidatedFiles": 3,
+        "reusedFiles": 0,
+        "counts": {
+          "files": 3,
+          "items": 71,
+          "registered": 70,
+          "pending": 1,
+          "withCandidates": 8,
+          "identityFingerprintHistorical": 51
+        },
+        "changed": true,
+        "write": true,
+        "output": "archive/data/item-4slot-index.json",
+        "inputDigest": "742213cb881e6fc9673aedeb65af0821dfd465d5d0f8178f95d1b48565ec0d57",
+        "sourceFiles": [
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.4slot.json",
+            "sha256": "5973e5fce7a2ea531f3ad3d2163434c6c4c1398d3c41e03df06f23a5415375f5",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+            "sha256": "25d3c4ce345520424fa2cf326df0985f01bd43198ab8f721548f3aad20eea3e1",
+            "status": "SUPPLEMENT_PENDING"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.4slot.json",
+            "sha256": "1188df1b59833f3c2ce364f7dfd2fdefce61288cf91c438bcedfcc94937cc1b8",
+            "status": "REGISTERED"
+          }
+        ],
+        "pendingItems": [
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+            "ordinal": 12,
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+            "questionUid": "qid_v1_f576f0fba9d5fe82129f295aa2bbd265d66926ef480f68b387df0bb6842669e6",
+            "sourceArchiveFile": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+            "nextAction": "Keep the exact existing vector pending. A separately authorized renderer correction and exact current continuity review are required before releasing this UID."
+          }
+        ]
+      }
+    },
+    "check": {
+      "path": ".tmp/imported71-official-check.json",
+      "sha256": "012f046ea1ca0446c88d9b32c3bcde32b29c11e4370d2407bc981e15323b9ef8",
+      "durationMs": 8367,
+      "result": {
+        "schemaVersion": "archive-item-4slot-runtime-v1",
+        "status": "PASS_WITH_SUPPLEMENTS",
+        "verified": 70,
+        "pending": 1,
+        "indexSha256": "74b84d8205ae1a6521d82b5d404c80413ed48830eacc40895636d8684dc1c3c0",
+        "sourceMutation": 0,
+        "semanticApprovalMutation": 0,
+        "revalidatedFiles": 3,
+        "reusedFiles": 0,
+        "counts": {
+          "files": 3,
+          "items": 71,
+          "registered": 70,
+          "pending": 1,
+          "withCandidates": 8,
+          "identityFingerprintHistorical": 51
+        },
+        "changed": false,
+        "write": false,
+        "output": "archive/data/item-4slot-index.json",
+        "inputDigest": "742213cb881e6fc9673aedeb65af0821dfd465d5d0f8178f95d1b48565ec0d57",
+        "sourceFiles": [
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.4slot.json",
+            "sha256": "5973e5fce7a2ea531f3ad3d2163434c6c4c1398d3c41e03df06f23a5415375f5",
+            "status": "REGISTERED"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+            "sha256": "25d3c4ce345520424fa2cf326df0985f01bd43198ab8f721548f3aad20eea3e1",
+            "status": "SUPPLEMENT_PENDING"
+          },
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.4slot.json",
+            "sha256": "1188df1b59833f3c2ce364f7dfd2fdefce61288cf91c438bcedfcc94937cc1b8",
+            "status": "REGISTERED"
+          }
+        ],
+        "pendingItems": [
+          {
+            "path": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+            "ordinal": 12,
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+            "questionUid": "qid_v1_f576f0fba9d5fe82129f295aa2bbd265d66926ef480f68b387df0bb6842669e6",
+            "sourceArchiveFile": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+            "nextAction": "Keep the exact existing vector pending. A separately authorized renderer correction and exact current continuity review are required before releasing this UID."
+          }
+        ]
+      }
+    }
+  },
+  "consumer": {
+    "module": "archive/item-4slot.js",
+    "registered": 70,
+    "vectorExact": 70,
+    "heldAbsent": 1,
+    "unexpectedRows": 0
+  },
+  "boundary": {
+    "originalVectorsUnchanged": 71,
+    "reviewedByUnchanged": true,
+    "protectedInputsRawUnchanged": 117,
+    "sourceWrites": 0,
+    "assetWrites": 0,
+    "identityWrites": 0,
+    "newMathQa": 0,
+    "newMetadataApprovals": 0,
+    "newSlotValues": 0,
+    "generatedFilesToCommit": 0,
+    "excludedISU24Unchanged": true
+  },
+  "limits": {
+    "mainRegistration": "NOT_RUN",
+    "fullMetadataConsumer": "NOT_RUN_NOT_REQUIRED_FOR_4SLOT_SCOPED_CHECK",
+    "browser": "NOT_RUN",
+    "latestMainDriftGate": "ROOT_INTEGRATION_REQUIRED"
+  }
+}

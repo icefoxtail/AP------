@@ -37,3 +37,16 @@ UID의 권위는 기존 identity 계약의 고유 UID + source 경로 + 배열 �
 현재 지원되는 원검토는 중1 1학기 `m1-s1-independent-exam-review-v1`의 `PARTIAL_METHOD_EVIDENCE_DEBT` 표본 결정과, 중2 2학기 root-acceptance·review·independent-sample·four-slot 네 문서가 결속한 `SOURCE_EVIDENCE_UNRESOLVED` 결정이다. 중2 보류는 root acceptance에 등록된 unresolved UID/ordinal/fields, review의 `BLOCKED_SOURCE_EVIDENCE`, 독립 검토자 분리와 네 원문 해시를 모두 확인한다. 근거가 누락되거나 달라지면 `INVALID_REGISTRATION_HOLD`로 남기며 등록하지 않는다. 근거 바이트는 캐시 입력과 실행 중 변경 감시에 포함된다.
 
 보류 문항을 제외한 기존 검토 문항은 계속 등록한다. 이 운반 형식은 난도 등록, 전체 의미 메타 승인, 원본 또는 풀이의 수학 검수와 별개다.
+
+## 교정 renderer HOLD 이후의 명시적 메타데이터 운반 (2026-11-16)
+
+중3 2학기의 `m3-s2-renderer-correction-registration-hold-continuity-v1`에 의해 교정 그림과 결속된 기존 HOLD는, 별도 FINAL_QA 메타데이터 등록으로 source에 scope 키가 추가되어도 자동 승인되지 않는다. `m3-s2-renderer-hold-metadata-continuity-v1`은 아래의 한 단계 연속성만 지원한다.
+
+- 공개 immutable candidate의 `M3_REVIEWED_METADATA_V1` manifest와 원 요청은 정확한 source before/after, 전체 문항 분모, 선택 UID/ordinal, 현재 identity를 결속한다. 선택 문항의 `curriculumKey`와 `courseKey` 두 own-field만 absent에서 각각 `2015`, `M3-2`로 추가할 수 있다. 기존 null, 값 교체, 다른 필드, 비선택 문항 변경은 허용하지 않는다.
+- 각 선택의 immutable `m3-s2-complete-semantic-review-v1` 원문은 해당 UID/ordinal의 `rpm.sourceComparison.curriculum=2015`와 `scope=M3-2`를 명시해야 한다. 원 after에 모순되는 scope 값이 있으면 거부한다. native source/current source/current metadata 및 candidate base의 immutable 초기 metadata에 이미 있는 curriculum, curriculumKey, courseKey, standardCourse, courseSemester, semester, grade, gradeKey도 이 명시 scope와 일치해야 한다. 초기 행은 UID/source/ordinal과 원 요청 before에도 결속하므로 writer가 파생한 curriculum 값으로 원래의 명시적 null을 숨길 수 없다. 알려진 일치값은 바꾸지 않고 보존하며, null·다른 학년/학기·알 수 없는 alias는 이 named carrier에서만 거부한다. renderer 독립검토를 교육과정 승인으로 사용하지 않는다.
+- carrier는 원 corrected HOLD, 그 상태의 compact 전체, candidate manifest/request, materialized source hash, 선택 inventory를 묶는다. 현재 compact에서 달라질 수 있는 것은 source blob 결속 및 두 위치의 동일 `metadataTransportEvidence`/`metadataContinuity` 참조뿐이다. 원 HOLD, 검수자, 모든 슬롯, 학생 payload, 교정 에셋은 그대로여야 한다. 이 carrier를 다음 carrier의 임의 출발점으로 쓰는 chain은 지원하지 않는다.
+- official metadata write가 먼저 완료되어 임시 checkout에 생성한 영수증을 읽는다. `verify-hold-metadata-replay.mjs`는 immutable 후보를 공식 materializer의 read-only 모드로 재생하고, 기존 V2의 공식 replay에서 current metadata·identity·runtime·영수증을 검증한다. 각 immutable patch의 native sourceReview도 다시 재생하여 저장된 proof 전체와 일치시킨다. registry 변경은 0이다.
+- 이 검사는 catalog/Consumer가 갱신되기 전에도 실행 가능하다. 아직 존재하지 않는 미래 main 영수증 커밋을 요구하지 않는다. 공개된 candidate 입력과 로컬에서 공식 발급된 영수증을 구분하며, 실제 main 등록/배포 확인은 후속 gate이다.
+- child 실행은 60초 유한 상한을 사용하고 source/metadata를 쓰지 않는다. typed metadata HOLD는 캐시된 성공을 그대로 재사용하지 않고 매 빌드에서 current 발급 상태를 확인한다. 근거·영수증·marker 삭제, source/asset/승인값 변조, unknown schema/scope/field는 `INVALID_REGISTRATION_HOLD`로 남는다. marker를 함께 숨겨도 원 corrected HOLD의 고정 source와 불일치하므로 기존 경로로 통과할 수 없다.
+
+이 과정에서 새 4slot 승인, 새 의미 판정, 난도 판정, 검토 횟수는 모두 0이다. 메타데이터 요청의 실제 승인 건수와 renderer HOLD 유지 건수를 합산하지 않는다. 검증된 HOLD UID는 여전히 `EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING`이며 등록 인덱스에서 제외한다. 실제 검증 순서는 metadata write → 4slot build → 공식 catalog/readiness/parent closure → typed Consumer이다.

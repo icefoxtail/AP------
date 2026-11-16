@@ -1,0 +1,362 @@
+{
+  "schemaVersion": "issued-rpm-actual-read-execution-addendum-v1",
+  "originalReport": {
+    "path": ".tmp/issued-rpm-q17-actual-read.json",
+    "sha256": "ef80e54afdc752fb37bae1df992aa366129f4b9aa95e634dcace7cca4faac61c",
+    "rewritten": false
+  },
+  "codeCommit": "459e096d0a503431468658b071786bed31eeb729",
+  "parentReportedConcurrentOperation": {
+    "operation": "git merge main16f --no-commit",
+    "rootHeadRemained": "7de06edb0636a7b065cdf5ac1d7a8eed00e54011",
+    "stagedRootChangesPresent": true,
+    "rootCleanClaim": false
+  },
+  "capturedExecutionGuards": {
+    "headBeforeAndAfterEqual": true,
+    "comprehensiveLiveInputStartEndHashManifestCaptured": false,
+    "helperPerCallChecks": "Exact current HEAD/source/crosswalk/master/receipt bytes plus original immutable request and authority hashes; every selected whole question and current RPM provenance rechecked",
+    "activeRegistryRead": "Fresh seven-document load and indexed canonical/compiled normalized-SHA verification before ACTIVE context",
+    "selectedMetadataRuntimeIdentity": "Exact issued receipt rows; no current whole metadata/catalog read"
+  },
+  "codeLocation": {
+    "allProbeImportsFromOwnWorktree": true,
+    "rootProductionCodeImported": false,
+    "staticModuleGraphCheckedAfterExecution": [
+      {
+        "path": "archive/tools/meta-foundation/issued-rpm-evidence-continuity.mjs",
+        "sha256": "2455b76d675f79abc6c9d97d6961237b27468a0a59cee6771da282ee61fac278",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-rpm-provenance.mjs",
+        "sha256": "bd8c9eaeca865a78221a7f800778168fbd9ee2df97ad8fa57ea6d210e8739a82",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/active-registry.mjs",
+        "sha256": "fb92f3db9c869183cf04415f9a1d678c60ba52a7ad1ec995beb57e77bdf402ed",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+        "sha256": "76650a5e911f706d3c6363087452d604caad56f32078c8818ed8bb50d3f39975",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+        "sha256": "1100f4815d460f1f6c2bd124b6c493fa7230065949b1ea28b7bb264d94bac69f",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/native-authority-correction.mjs",
+        "sha256": "aa1b594bc02da817719524f3f589275adca500081f1c00452b93e21461414a4b",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/problem-bank-meta.js",
+        "sha256": "1c0fd1aac6b59a053f0f300ee2797f66475e3cc19a2292fa7bab0a67775abfba",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-runtime-summary.mjs",
+        "sha256": "127e3991991ccb52393f7fe005ef6c4a51515e5f78d53051953f8955be29a8b3",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/issued-source-binding-recovery.mjs",
+        "sha256": "09bc03280c922601417dc2b78229ccf0bb68eee215d628c50aeda85587ae2e6d",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/immutable-git-batch.mjs",
+        "sha256": "f87a003d0aa8f93cbc5149a31dc20487a351831b84e00c0a8457e26225c024c2",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/immutable-git-metadata.mjs",
+        "sha256": "213422eb621c9f792ea69936901da5480cd901e5af5cdd358870a3b8476f4172",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+        "sha256": "e6f5ab0cb29793299094e2a658ad47fdcd99908292057583731dfdc18c842ffa",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-m2-provider-current-renderer-continuity.mjs",
+        "sha256": "286eff8eb9764759968376f89558f04959532955a16c660e12c96dbc8f132d24",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-m2-current-renderer-continuity.mjs",
+        "sha256": "dcd5c824514e919fa60a9ed60db5470bfe69083518363ceeb66ec7340197d0b7",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/source-subset-preservation.mjs",
+        "sha256": "c5fc418e2ac775d36c39e37591cadd6f8ca3d5a3cab19d7398c0cee7cf67f5c7",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+        "sha256": "379eeaf20109485b8073369a90060e2e91650821f336c4254818011c7bf43389",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-m2s1-current-definition-application.mjs",
+        "sha256": "c47fb64d0114d6cca0eb008b61f20dacdcf2e144c510365b5b61db9976b16d16",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-native-retained-fields.mjs",
+        "sha256": "7eb37fdf8c19a257ae7baeb60a23b1e45e0743b561399823461f8804fe64b53c",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-existing-primary-disposition.mjs",
+        "sha256": "462195fd31d76b0abcd81ff695d54689220fcd80d618ec5bb3ad30a2ed3dd485",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/archive-content-inputs.mjs",
+        "sha256": "ca36f83f4674a493ba0db21da386d90c5c1d70fedd0505f4e40294ace5a69950",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-native-scope-fields.mjs",
+        "sha256": "5141941aa255071121d605921e9c179d6483b6f14e672f385ee9993e9f59b8f8",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs",
+        "sha256": "38d941b8c7a0d3e54b300eb7020fae7e0519bd2935e8e31b873929a25c6d8a8f",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-proposal-finalization.mjs",
+        "sha256": "db634b26665155331252399d27421878355fda6752b4c9f3eb9d7b6ebbe557e1",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-m2-proposal-finalization.mjs",
+        "sha256": "26942c38274a1f18656ed709b9e9cac7a2e28a83bcc69482e1b7f75f9bdcc714",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-replay-registry-context.mjs",
+        "sha256": "91f44671182c31449ee0ae24ed6e0e99f77fd312f05b92dbbf720576d6ffd733",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-source-binding.mjs",
+        "sha256": "feffdb413599c4317d6de3e1d455b21002b0246071ba172836aaad5f0e632b8d",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-meta-value-fields.mjs",
+        "sha256": "ebce5ab16817840a87fa1a316719c17c850fe772a89e40cbc9004f3dae808e65",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-native-parent.mjs",
+        "sha256": "8cb270275e0b1087adbd7f0d98f6522a7239dfed372980e8aff0c48dc4ab92d6",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/exact-json-byte-parser.mjs",
+        "sha256": "2d116b4c6799a3996ca8819efa4151874b65e87258f2ba119c32538292eca7d1",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/compile-meta-foundation.mjs",
+        "sha256": "742cac9a4abf22c3efaf1aa6759e285c9229e9a6c769b7bdec162eb82a93caa5",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/original-finalqa-renderer-preservation.mjs",
+        "sha256": "2a3ab8904dea74b0eee7f14e70ee69c83c11cd61e30419e9b1bf4cc6822b7229",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/intelligence/question-identity-contract.mjs",
+        "sha256": "2ef84cd2baeefaae4d77c262f354a4a1e57b16a4b979c71bd86c134bb2f36524",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/native-approved-renderer-preservation.mjs",
+        "sha256": "49eb0e8a2de75688ebf8db146d0d2b1c7e71b327b364230eaac436d1f861d434",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/audited-cross-concept-append.mjs",
+        "sha256": "03ce5e52f4df3dcfb6da1dc280d69fb480f66029359942470fc77581022186d1",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/native-audit-preservation.mjs",
+        "sha256": "e650401e9ec9281ace5dda5acd375bad69afcc780a59840951e80389bae9a3de",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/archive-unit-order.mjs",
+        "sha256": "ae070bda93511a26aecb8b7bc6419be787d38b0e443935c60a3f5e1debc632dc",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/archive-codex-artifact-io.mjs",
+        "sha256": "1b3a31fda62fb877260f0e38af96bf84cd7a6b5beaab358d929c87c7ac47017b",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/archive-stage-validator-compat-v1.mjs",
+        "sha256": "acdb9faa38fa611d60ebd3c234d48bd040f4d4484999a5c57c5c19053ebe3360",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/review-evidence-gate.mjs",
+        "sha256": "26ebc3515c2d7b02ed5d0096c6aa708bc9c1d35d6ad6701fa8cd82cfa343a866",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/evidence-authority-v1.mjs",
+        "sha256": "1ead1c23be30cc9917cdf3b45c8289f962114e5f9ef40fbfe45dbe56dcf1b864",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/question-only-replacement-v2.mjs",
+        "sha256": "5fec4481ac8c4ada8a209eefe5ed13a21b04c4e42099ea5633777bc70461a959",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/archive-student-bundle.mjs",
+        "sha256": "b9b2bb2d9de4ac30a12add593887659eabe75215432b7d134be207cba3c5641a",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/solution-calibration-gate.mjs",
+        "sha256": "fc5230b62afbec3146ee1669a143910b667ed0377f04f90b0f7b255e283af98d",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/register-difficulty5.mjs",
+        "sha256": "681e30501e9a9f0df7ac78c560a868cba8564864f8ab1468220223d28d360d6e",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/archive2-canonical.js",
+        "sha256": "7c653df0ad709c77c64484747ce1e848dfc6ff94204beb27f63ecfe7ec42b20e",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/semantic-run-scope.mjs",
+        "sha256": "a584a7d3e6271501209b49136f895cdc41434d8bfc25678b0264695f9fd3db34",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+        "sha256": "19f5a8b87400d88f54a3cccf4200f55f54d598e8f7f2389b959c8118b54c42fa",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-pack-version-lineage.mjs",
+        "sha256": "a8c9c9f5c96133d8d2ab7eaacb1d392598e2d26c07983e35b9263c8c2a48162a",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+        "sha256": "628ec209507b4228f603d06d53452f8fd1a9e5960ab2823389115fa78baa9a74",
+        "exactCodeCommit": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs",
+        "sha256": "4c4b8ac84f2b260a9899d334431b2bcf4d16dcf870102bd96fb662a8cfacf513",
+        "exactCodeCommit": true
+      }
+    ],
+    "currentOwnBytesEqualFrozenCode": true,
+    "rootCodeExecutionViaSubprocessOnSelectedOrdinaryRoute": false,
+    "gitSubprocesses": "Data reads only: exact immutable objects and actual HEAD ancestry"
+  },
+  "mergeInputIntersection": {
+    "base": "203435e095b5f4c65f7c5bef5131e375633ba95c",
+    "incoming": "16f0413bbf709581eededf19497008031d80b808",
+    "selectedSourceReceiptApprovalRefs": [
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q17-current-key-application.json",
+        "beforeBlob": "bdc109164ab6e3d6ece5543bd631275046fcfb0b",
+        "afterBlob": "bdc109164ab6e3d6ece5543bd631275046fcfb0b",
+        "equal": true,
+        "role": "BOUND_INPUT"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q17-e035-q12-crosswalk-additions.json",
+        "beforeBlob": "6783140a89fe8c50fa34ab65f5274550945253de",
+        "afterBlob": "6783140a89fe8c50fa34ab65f5274550945253de",
+        "equal": true,
+        "role": "BOUND_INPUT"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q17-planned-resolver.json",
+        "beforeBlob": "dd0b7ece951b99a225897feea7c630111392d8d7",
+        "afterBlob": "dd0b7ece951b99a225897feea7c630111392d8d7",
+        "equal": true,
+        "role": "BOUND_INPUT"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e035-q12-q18-source-and-crosswalk-amendment.json",
+        "beforeBlob": "98b6decaf2a84645a087025a1c13603930cf89ea",
+        "afterBlob": "98b6decaf2a84645a087025a1c13603930cf89ea",
+        "equal": true,
+        "role": "BOUND_INPUT"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E007.accepted-review.json",
+        "beforeBlob": "130409de93968a4256597d14258f2e63989e1b96",
+        "afterBlob": "130409de93968a4256597d14258f2e63989e1b96",
+        "equal": true,
+        "role": "BOUND_INPUT"
+      },
+      {
+        "path": "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.evidence.final.r1_09.revision2.json",
+        "beforeBlob": null,
+        "afterBlob": null,
+        "equal": true,
+        "role": "HISTORICAL_METADATA_REFERENCE_NOT_OPENED_ON_THIS_ROUTE"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "beforeBlob": "7a8fb4b9395377897937e3dbc2f0702ce76e88ee",
+        "afterBlob": "7a8fb4b9395377897937e3dbc2f0702ce76e88ee",
+        "equal": true,
+        "role": "BOUND_INPUT"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json",
+        "beforeBlob": "d5e9c7efc0ff84c642c085a26c0e0cd03272b168",
+        "afterBlob": "d5e9c7efc0ff84c642c085a26c0e0cd03272b168",
+        "equal": true,
+        "role": "BOUND_INPUT"
+      },
+      {
+        "path": "archive/exams/original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+        "beforeBlob": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+        "afterBlob": "1ba4f27dbd473eb9b22c840c0ff5fa733da57cc4",
+        "equal": true,
+        "role": "BOUND_INPUT"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "beforeBlob": "ba2f9577f4feb148dba342cbec6db8dd3be4d123",
+        "afterBlob": "ba2f9577f4feb148dba342cbec6db8dd3be4d123",
+        "equal": true,
+        "role": "BOUND_INPUT"
+      }
+    ],
+    "canonicalOrCompiledChangedPaths": []
+  },
+  "assessment": "No intersecting incoming Git change was found for the selected proof/authority reads; the result remains scoped evidence for the original issued Q17 native leaf under the freshly validated input state. This is not a clean-root claim or a completed latest-union/current-preservation registration.",
+  "repeatedNativeCalls": 0,
+  "productionWrites": 0,
+  "currentProductionRegistration": "NOT_RUN_BY_THIS_PROBE"
+}

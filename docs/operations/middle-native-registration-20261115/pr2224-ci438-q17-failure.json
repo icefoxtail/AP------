@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "root-pr2224-exact-ci-failure-v1",
+  "pr": 2224,
+  "head": "438f0362378a364abbd932dd859a5bb380518b13",
+  "base": "203435e095b5f4c65f7c5bef5131e375633ba95c",
+  "run": 43791799195,
+  "job": 133051914035,
+  "status": "FAIL",
+  "stage": "Prepare PR registration data",
+  "error": "PR_NATIVE_PREVIEW:EVIDENCE_DRIFT:archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+  "ownProductionMerge": 0,
+  "laterFullTests": "NOT_REACHED",
+  "narrowCause": "Old issued Q17 references old242 RPM crosswalk; current244 preserves every old record and adds two unrelated records. Immutable typed RPM provenance continuity requires explicit verification; generic evidence drift remains a refusal.",
+  "fixStatus": "IN_PROGRESS_WITH_REAL_REGISTRAR_FIXTURES_AND_INDEPENDENT_REVIEW"
+}

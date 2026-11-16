@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-item-4slot-runtime-v1",
+  "status": "PASS_WITH_SUPPLEMENTS",
+  "verified": 70,
+  "pending": 1,
+  "indexSha256": "74b84d8205ae1a6521d82b5d404c80413ed48830eacc40895636d8684dc1c3c0",
+  "sourceMutation": 0,
+  "semanticApprovalMutation": 0,
+  "revalidatedFiles": 3,
+  "reusedFiles": 0,
+  "counts": {
+    "files": 3,
+    "items": 71,
+    "registered": 70,
+    "pending": 1,
+    "withCandidates": 8,
+    "identityFingerprintHistorical": 51
+  },
+  "changed": true,
+  "write": true,
+  "output": "archive/data/item-4slot-index.json",
+  "inputDigest": "742213cb881e6fc9673aedeb65af0821dfd465d5d0f8178f95d1b48565ec0d57",
+  "sourceFiles": [
+    {
+      "path": "archive/data/item-4slot/original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.4slot.json",
+      "sha256": "5973e5fce7a2ea531f3ad3d2163434c6c4c1398d3c41e03df06f23a5415375f5",
+      "status": "REGISTERED"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+      "sha256": "25d3c4ce345520424fa2cf326df0985f01bd43198ab8f721548f3aad20eea3e1",
+      "status": "SUPPLEMENT_PENDING"
+    },
+    {
+      "path": "archive/data/item-4slot/original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.4slot.json",
+      "sha256": "1188df1b59833f3c2ce364f7dfd2fdefce61288cf91c438bcedfcc94937cc1b8",
+      "status": "REGISTERED"
+    }
+  ],
+  "pendingItems": [
+    {
+      "path": "archive/data/item-4slot/original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.4slot.json",
+      "ordinal": 12,
+      "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_RENDERER_CORRECTION_PENDING",
+      "questionUid": "qid_v1_f576f0fba9d5fe82129f295aa2bbd265d66926ef480f68b387df0bb6842669e6",
+      "sourceArchiveFile": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+      "nextAction": "Keep the exact existing vector pending. A separately authorized renderer correction and exact current continuity review are required before releasing this UID."
+    }
+  ]
+}

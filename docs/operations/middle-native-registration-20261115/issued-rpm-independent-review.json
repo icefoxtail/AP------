@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "issued-rpm-evidence-continuity-independent-read-v1",
+  "reviewer": "root/audit_m3",
+  "author": "root/m1_compact_transport",
+  "status": "PASS_SCOPED_STATIC_READ",
+  "blockingFindings": [],
+  "commit": "459e096d0a503431468658b071786bed31eeb729",
+  "tree": "0d48a4eebcbbf2dadd2fbf829819d709d678eb44",
+  "parent": "d07b74797b425d8450fbe3ca7a79b0f34173b180",
+  "reviewedFileCount": 8,
+  "productionFileCount": 6,
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/issued-rpm-evidence-continuity.mjs",
+      "sha256": "2455b76d675f79abc6c9d97d6961237b27468a0a59cee6771da282ee61fac278",
+      "sizeBytes": 14432,
+      "frozenGitAndReadBytesExact": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "sha256": "76650a5e911f706d3c6363087452d604caad56f32078c8818ed8bb50d3f39975",
+      "sizeBytes": 60872,
+      "frozenGitAndReadBytesExact": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-preserved-source-reuse.mjs",
+      "sha256": "19f5a8b87400d88f54a3cccf4200f55f54d598e8f7f2389b959c8118b54c42fa",
+      "sizeBytes": 34945,
+      "frozenGitAndReadBytesExact": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs",
+      "sha256": "4c4b8ac84f2b260a9899d334431b2bcf4d16dcf870102bd96fb662a8cfacf513",
+      "sizeBytes": 21713,
+      "frozenGitAndReadBytesExact": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+      "sha256": "628ec209507b4228f603d06d53452f8fd1a9e5960ab2823389115fa78baa9a74",
+      "sizeBytes": 11327,
+      "frozenGitAndReadBytesExact": true
+    },
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "sha256": "916817ab10aede355e334c793774e6e1d6871a33340ac2a648b4805105699552",
+      "sizeBytes": 73855,
+      "frozenGitAndReadBytesExact": true
+    },
+    {
+      "path": "tests/archive-issued-rpm-evidence-continuity.test.mjs",
+      "sha256": "c0650ee65f3863f9ad8b57ec570e2c035f7fd13ecd9e2f153dc677888af87202",
+      "sizeBytes": 19842,
+      "frozenGitAndReadBytesExact": true
+    },
+    {
+      "path": "docs/architecture/Issued_RPM_Evidence_Continuity_CURRENT_v1.md",
+      "sha256": "aa991023805df799bc90023be4ba45c62a0197758cf6f3eaf1c6a7671a3731ec",
+      "sizeBytes": 4335,
+      "frozenGitAndReadBytesExact": true
+    }
+  ],
+  "authorManifest": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/issued-rpm-publication-manifest.json",
+    "sha256": "9789df1c366e70aa0645db82a415bb324698284f0b682392ce298fa008b2cb5e"
+  },
+  "authorValidationLogsRead": [
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/issued-rpm-targeted36.log",
+      "sha256": "58acc068fba781f6b97ebe852dadd223f00bced05391882ed6ef959489f72146",
+      "authorTestsPassed": 36,
+      "authorTestsFailed": 0,
+      "authorTestsSkipped": 0,
+      "reviewerExecution": false
+    },
+    {
+      "path": "/workspace/scratch/987d4bf32f40/AP-issued-rpm-evidence-continuity/.tmp/issued-rpm-scanner-compatibility.log",
+      "sha256": "da073733479c4e834290c941bf391f47586ac37ec763c203345c5393b589d422",
+      "authorTestsPassed": 9,
+      "authorTestsFailed": 0,
+      "authorTestsSkipped": 0,
+      "reviewerExecution": false
+    }
+  ],
+  "confirmedBoundaries": [
+    "Only an explicitly RPM_PATH_PROVENANCE_ONLY, selectsPtTpl:false binding in an ordinary committed PARTIAL_UIDS FINAL_QA receipt can authenticate this changed crosswalk ref. Other evidence mismatches retain ordinary refusal.",
+    "Actual HEAD ancestry must contain one unambiguous addition of the exact raw receipt. The original inbox request is found in that issuance ancestry by bound canonical request digest; source, approval, registry and selected after values are compared.",
+    "Old crosswalk rows remain the exact ordered prefix with unique IDs, nonempty additions, valid counts and unchanged authority header. The locked master raw bytes match issuance, HEAD and live files.",
+    "All originally selected UID/ordinal/identity joins and whole question objects remain exact. Every selected RPM binding is rerun through validateRpmPrimaryProvenance with a fresh map and current authorities; this grants no PT/TPL selection authority.",
+    "Preview checks a mismatched nested typed ref before returning any previously staged known path. An untyped direct request using the old SHA is still rejected; current bytes are fixed to HEAD.",
+    "Ordinary native and preserved-leaf callers still compare current metadata/runtime/identity/source and invoke their existing approval validators. The helper does not return native approval or Consumer success.",
+    "Figure/renderer scanners still scan claims and reject missing selected repairs. Renderer parsed claims use the freshly verified current byte digest, while ordinary SHA checks and asset/immutable review checks remain.",
+    "Current authority-HOLD and ACTIVE canonical guards remain outside and after evidence continuity; no approval/verdict cache or new live-byte cache was added."
+  ],
+  "limitations": [
+    "Static independent code/fixture/log review only; reviewer did not rerun tests, clone, register or edit the owner worktree.",
+    "Author fixture covers official ordinary issuance and actual source-only preservation with leaf native reuse; it does not substitute for current production Q17 full Consumer or latest-main integrated CI.",
+    "Latest main16f merge semantics are a separate review/report."
+  ],
+  "productionSourceOrApprovalMutations": 0,
+  "reviewerCodeEdits": 0,
+  "reviewerTestExecutions": 0,
+  "reviewerRemoteWrites": 0,
+  "currentProductionRegistration": "NOT_RUN_BY_REVIEWER",
+  "newMathematicalQa": false
+}

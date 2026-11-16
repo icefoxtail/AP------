@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "main16f-semantic-union-independent-read-v1",
+  "reviewer": "root/audit_m3",
+  "status": "PASS_SCOPED_STATIC_READ",
+  "blockingFindings": [],
+  "ours": "7de06edb0636a7b065cdf5ac1d7a8eed00e54011",
+  "incoming": "16f0413bbf709581eededf19497008031d80b808",
+  "reviewedState": "ROOT_STAGED_RESOLVED_MERGE_BEFORE_COMMIT",
+  "ownerWorktree": "/workspace/scratch/987d4bf32f40/AP-middle-main034-integration",
+  "conflictManifest": {
+    "path": ".tmp/main16f-resolved-conflicts.json",
+    "sha256": "335a477c4257adf3066b5fd173b6b36834f3cd1c9b056c972af07d7af6106026"
+  },
+  "primaryFiles": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs",
+      "stagedBlobSha1": "90f50c10fdad56411319c1cfe93484d1979183a7",
+      "sha256": "e5a9df511b78d99d7949ff42cf87d35fa721d6c3a1872cd3f41882f9ca8f16ba",
+      "stagedLiveAndManifestAfterExact": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-binding.mjs",
+      "stagedBlobSha1": "b468a4d07da947c0b3e0af49bfc6fccd29c55d29",
+      "sha256": "5a3986117f09bd73ee01589516371d58607180f465bce038346c8fb1756b60da",
+      "stagedLiveAndManifestAfterExact": true
+    },
+    {
+      "path": "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs",
+      "stagedBlobSha1": "6eb292711b5892e9233d7f5c1830ecf7f4076bbd",
+      "sha256": "4b8b2b8e641271286d3783df4ebbbe8642cd27e7f850b92657366f68c315d7ee",
+      "stagedLiveAndManifestAfterExact": true
+    },
+    {
+      "path": "tools/ci/archive-pr-native-preview.mjs",
+      "stagedBlobSha1": "9edc0a472ab1640be3320821ed5afc6433cdece3",
+      "sha256": "03304ea844dd8da84f62ebe7f4abfc1799ee303bcbe76070f2f60e62c3acbca8",
+      "stagedLiveAndManifestAfterExact": true
+    },
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "stagedBlobSha1": "de7ed3c6533ba1713c7b3692bae1b69d8811395b",
+      "sha256": "3423d9559dc7959eb40d57e1c3d810ce579223345038804dde448fed09fc3785",
+      "stagedLiveAndManifestAfterExact": true
+    }
+  ],
+  "reviewedUnions": [
+    {
+      "boundary": "Registrar typed dispatch and sidecars",
+      "conclusion": "PASS",
+      "details": [
+        "New audit-source schema dispatches only through authenticated META_PIPELINE_AUDIT preservation; existing audit CC append and original FULL renderer paths remain separate.",
+        "Only a validated sourceOnly audit context omits a new difficulty registration; its original FULL audit history is replayed by the new loader.",
+        "Rebind-prior exclusion retains audit preservation, audit CC append and original renderer exclusions.",
+        "Output digests force inclusion of renderer, source-review, audit-source, original-renderer, audit-CC and approved-renderer sidecars; current existing-file equality guards remain."
+      ]
+    },
+    {
+      "boundary": "Durable source binding selected inventory",
+      "conclusion": "PASS",
+      "details": [
+        "All own M2 renderer/provider opt-ins and new retained-scope/rationale opt-ins coexist.",
+        "retainedScopeParent and nativeSourceReview each require exactly one parent proof; lineage plus sourceReview still selects the durable source binding.",
+        "The registrar rejects simultaneous nativeSourceReview and retainedScopeParent and uses each dedicated validator."
+      ]
+    },
+    {
+      "boundary": "Changed UID Consumer preservation dispatch",
+      "conclusion": "PASS",
+      "details": [
+        "isAuditPreservation recognizes the legacy and new audit-source type, while explicit audit CC append, FINAL_QA subset, recovery, original-renderer and approved-renderer paths remain.",
+        "Subset/recovery/original renderer retain PARTIAL_UIDS requirement. Values stay empty and all preservation requests reach the official registrar replay and Consumer.",
+        "Registry mutation remains allowed only for the separately exact audited CC append descriptor in this preservation branch."
+      ]
+    },
+    {
+      "boundary": "Preview immutable ancestor staging",
+      "conclusion": "PASS",
+      "details": [
+        "historicalAuditReceipt is retained for the explicitly typed audit CC append prior.",
+        "auditSourceAncestor is additionally allowed only for exact priorCommit/raw SHA, original FULL audit receipt/source/count/request snapshot shape.",
+        "Ordinary ancestor refs continue recursive live fixed-input staging; stopping historical staging does not skip the official registrar authority replay."
+      ]
+    },
+    {
+      "boundary": "4slot builder invalidation and evidence closure",
+      "conclusion": "PASS",
+      "details": [
+        "BUILDER_SHA retains current-renderer negative v1/v2, M2 continuity/imported continuity and existing helpers, and adds metadata-hold plus its replay helper.",
+        "holdEvidenceDigests adds metadataTransportEvidence while retaining all existing fields and currentRendererHold directFields.",
+        "Any metadata continuation claim forces fresh evaluation instead of reusing the previous file result; the other input hash and negative obligations remain."
+      ]
+    }
+  ],
+  "limitations": [
+    "Review covers the named merge-union boundaries and their directly called dispatches, not a complete re-audit of all newly merged upstream modules.",
+    "Reviewer ran no syntax, unit, registration, build, Consumer, clone or remote commands.",
+    "Q17 exact459e continuity review is a separate report; this staged preview predates that integration.",
+    "Owner compact row choices and data review were not repeated by this code-only reviewer.",
+    "Latest merged-head tests, full Consumer and remote CI remain required owner gates."
+  ],
+  "reviewerMutationsToOwner": 0,
+  "reviewerTestExecutions": 0,
+  "newMathematicalQa": false,
+  "sourceOrApprovalChangesByReviewer": 0
+}

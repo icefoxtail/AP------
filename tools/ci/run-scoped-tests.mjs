@@ -20,6 +20,11 @@ const metadataConsumers = [
   /^tests\/(?:problem-bank-meta|apms-result-clinic-uid-bridge\.|apmath-omr-result-identity\.|apms-clinic-uid-refresh\.)/,
 ];
 const registrationContracts = [
+  /^tests\/archive-(?:issued-rpm-evidence-continuity|audited-cc-append|audited-cc-catalog-precedence|changed-uid-consumer-approval|m2-current-renderer-continuity|m2-current-renderer-registration|m2-provider-current-renderer|original-finalqa-renderer-preservation)\.test\.mjs$/,
+  /^tests\/native-approved-renderer-(?:consumer|preservation|preview)\.test\.mjs$/,
+  /^tests\/archive-(?:source-quality-holds|native-authority-correction)\.test\.mjs$/,
+  /^tests\/archive-reviewed-exam-registration-v2\.test\.mjs$/,
+  /^tests\/archive-reviewed-retained-scope-transport\.test\.mjs$/,
   /^tests\/archive-reviewed-parent-correction\.test\.mjs$/,
   /^tests\/archive-(?:semantic-run-scope\.|registration-|register-|single-writer-|main-(?:merge-meta|meta-batch-replay)\.|native-(?:proposal-|replay-registry-context\.)|pr-(?:registration-|native-preview\.)|pages-|package-only\.|reviewed-(?:apply-bridge\.|native-)|meta-backlog-)/,
   /^tests\/archive2-registration-contracts\.test\.mjs$/,

@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "m2s2-imported-current71-local-closeout-v1",
+  "recordedAtUtc": "2026-11-16T03:03:18.504617+00:00",
+  "status": "LOCAL_OFFICIAL_70_PLUS_HOLD1_PASS_PENDING_ROOT_INTEGRATION_CI_AND_MAIN",
+  "author": "/root/audit_m2",
+  "codeCommits": [
+    "ca4ef905d9846997072f335ccb5e6fac45a41ef9",
+    "7750545487ebe33e681c842233315cd6c7c6289a"
+  ],
+  "compactInputCommit": "8f0c5d95597c94797f5dec6e1f93ea166dc5a79c",
+  "immutableRawCommit": "f45cf1b5b6c2d23e24296aecc212fd3910336135",
+  "immutableCarrierCommit": "b5274cbdd5db87a8d860317302edebcacf219dc3",
+  "counts": {
+    "sources": 3,
+    "fullItems": 71,
+    "actualOrdinaryObservations": 49,
+    "unchangedStudentAndAssetRows": 21,
+    "activeExistingVectors": 70,
+    "explicitRendererHold": 1
+  },
+  "heldQuestionUids": [
+    "qid_v1_f576f0fba9d5fe82129f295aa2bbd265d66926ef480f68b387df0bb6842669e6"
+  ],
+  "heldReason": "SINHEUNG23 Q12 current solution area label has ambiguous region attribution; no new mathematical judgment.",
+  "original95Target": "SUPERSEDED_BY_LATEST_OWNER_ISU24_PLUS_REMAINING71",
+  "latestOwnerISU24": {
+    "commit": "203435e095b5f4c65f7c5bef5131e375633ba95c",
+    "existingBuilder": {
+      "verified": 24,
+      "pending": 0,
+      "write": false
+    },
+    "existingNativeCorrectionsPreserved": 6,
+    "unchangedOn16f": true,
+    "oldVectorsRestored": false
+  },
+  "observerAttribution": {
+    "ordinary49": "/root/m1_compact_transport original frozen observations",
+    "negative1": "Original observer plus separate ROOT followup",
+    "rootDirectlyObservedOrdinary49": false,
+    "browser": "NOT_RUN"
+  },
+  "validation": {
+    "targeted54": {
+      "commit": "7750545487ebe33e681c842233315cd6c7c6289a",
+      "passed": 54,
+      "failed": 0,
+      "skipped": 0
+    },
+    "priorExistingRuntime97": {
+      "commit": "ca4ef905d9846997072f335ccb5e6fac45a41ef9",
+      "passed": 97,
+      "failed": 0,
+      "skipped": 0,
+      "notRecountedAsSameHeadRun": true
+    },
+    "officialDryWriteCheck": {
+      "eachRegistered": 70,
+      "eachHeld": 1,
+      "checkChanged": false,
+      "indexSha256": "74b84d8205ae1a6521d82b5d404c80413ed48830eacc40895636d8684dc1c3c0"
+    },
+    "Consumer": {
+      "exactOriginalVector": 70,
+      "heldAbsent": 1
+    },
+    "initialDry": {
+      "registered": 48,
+      "fileLevelRejection": 1,
+      "fullScopePass": false,
+      "writeExecuted": false,
+      "reason": "M2_IMPORTED_CONTINUITY_PROTECTED_TEXT",
+      "subsequentFix": "Separate exact existing-image-token replacement; original observations and carrier inputs unchanged"
+    }
+  },
+  "latestReadback": {
+    "main": "16f0413bbf709581eededf19497008031d80b808",
+    "sourceFiles": 3,
+    "priorCompacts": 3,
+    "currentAssets": 92,
+    "selectedIdentityRows": 71,
+    "allExact": true,
+    "dictionaryExact": true
+  },
+  "boundaries": {
+    "sourceWrites": 0,
+    "assetWrites": 0,
+    "newSlots": 0,
+    "newMathApproval": 0,
+    "newDifficultyApproval": 0,
+    "newMetadataApproval": 0,
+    "generatedFilesToCommit": 0,
+    "original165InputsAndProofUnchanged": true
+  },
+  "remainingGates": [
+    "ROOT independent followup-code read",
+    "ROOT latest builder three-way union",
+    "Final exact-head CI",
+    "Actual main writer and deployment evidence"
+  ],
+  "evidence": [
+    {
+      "path": "docs/operations/m2s2-imported-current71-20261116/validation/official-71-verification.json",
+      "sha256": "d3ac6a86cdaa04b25c708adef538911da4ca91d46490b31b0275cc467c0fcc0e",
+      "gitBlobSha1": "3fffd92f387768c35411c40f83f247d8fc5130ee",
+      "bytes": 9009
+    },
+    {
+      "path": "docs/operations/m2s2-imported-current71-20261116/validation/official-dry.json",
+      "sha256": "a759620def2ef1c3941ab1df0658a566b1dab496988b100fd1b76ed903ef4d95",
+      "gitBlobSha1": "0f08cd4405b9c99a143e18501f01904f0711de90",
+      "bytes": 2032
+    },
+    {
+      "path": "docs/operations/m2s2-imported-current71-20261116/validation/official-write.json",
+      "sha256": "90be07107ab84e0608cb42730607f318781cf2b4b33c258f3a65744c89feea7a",
+      "gitBlobSha1": "4922782f480c5d6e7a16747d70b613a0395c3b0e",
+      "bytes": 2031
+    },
+    {
+      "path": "docs/operations/m2s2-imported-current71-20261116/validation/official-check.json",
+      "sha256": "012f046ea1ca0446c88d9b32c3bcde32b29c11e4370d2407bc981e15323b9ef8",
+      "gitBlobSha1": "d439f9b2f0047d045b2f988be515405c14cf0f4c",
+      "bytes": 2033
+    },
+    {
+      "path": "docs/operations/m2s2-imported-current71-20261116/validation/initial-dry-before-image-token-support.json",
+      "sha256": "81e75c902e7c34176cc707c6874a77a84d1f082a5f5d1b6b700687fa55fd010e",
+      "gitBlobSha1": "a39fbb8f2ae7a17aac618612a96be2bbdd60df40",
+      "bytes": 1615
+    },
+    {
+      "path": "docs/operations/m2s2-imported-current71-20261116/validation/targeted-54-tests.txt",
+      "sha256": "4abc512718929ef1e118e5ad4cd9fd04a16804fc8ee023a192fadcec22c6e525",
+      "gitBlobSha1": "77001c03fd3c79cd45d0df3a6a0e2851bf543af1",
+      "bytes": 4849
+    },
+    {
+      "path": "docs/operations/m2s2-imported-current71-20261116/validation/existing-runtime-97-tests-at-ca4.txt",
+      "sha256": "69d97f804bbb65dfbdc55dbfc5bb85831a36659a22c8ec21940da24d3bc0027e",
+      "gitBlobSha1": "cd4aef73cc170641f2183a390acf61de5bad294d",
+      "bytes": 7907
+    },
+    {
+      "path": "docs/operations/m2s2-imported-current71-20261116/validation/latest-main-16f-scope-readback.json",
+      "sha256": "0323f4e1743b7c4d667ada81a6bc01632fe72d80b1176ce2aa7bc55a72404d7a",
+      "gitBlobSha1": "b95cca1ff8d0243122ff3786670687d62d1e5b3d",
+      "bytes": 33352
+    },
+    {
+      "path": "docs/operations/m2s2-imported-current71-20261116/validation/isu24-current203-existing-builder.json",
+      "sha256": "bb59ae5b5c3f8628a72c5991ffbb6062cd0f84c48b2a8f95f5fc223c03a30853",
+      "gitBlobSha1": "b93b047421c74bb19197edcbdac4040dcdc0bac6",
+      "bytes": 5269
+    },
+    {
+      "path": "docs/operations/m2s2-imported-current71-20261116/validation/isu24-current203-authority-readback.json",
+      "sha256": "af6397f3cc107818779e9ec490bb9c34864a73661b0e152368049e9c092f186f",
+      "gitBlobSha1": "14d4a0f961cb3f4432004e933498d24bedbc61af",
+      "bytes": 4202
+    },
+    {
+      "path": "docs/operations/m2s2-imported-current71-20261116/validation/compact-input-manifest.json",
+      "sha256": "c7a16bf1a2915651f6ca4fad80bd99a4ce1b32b9d9ad9a5097f0b852fd6d2880",
+      "gitBlobSha1": "548cd58c2cae9e92a284995fb1e39249c9ac5898",
+      "bytes": 2840
+    },
+    {
+      "path": "docs/operations/m2s2-imported-current71-20261116/validation/materialized-inputs.json",
+      "sha256": "ff46bcd2dbd911aaebee5f7f177eddcf07e0e2a0fe8df5100b40ffb8196b157c",
+      "gitBlobSha1": "65d38f108b1518e690be3b18d54ec9470dc37b3c",
+      "bytes": 29131
+    }
+  ]
+}
