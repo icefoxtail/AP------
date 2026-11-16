@@ -20,6 +20,16 @@ const TILE_SCHEMA = 'archive-problem-scroll-coverage-v1';
 const TILE_OVERLAP = 32;
 const TILE_LIMIT = 8;
 const FONT_FAMILY = 'Nanum Myeongjo';
+const FONT_DIR = 'archive/vendor/nanum-myeongjo/';
+const FONT_STYLESHEET = FONT_DIR + 'nanum-myeongjo.css';
+const FONT_LICENSE = FONT_DIR + 'OFL.txt';
+// Upstream Google Fonts OFL at f12cf9db03e8, with only trailing spaces removed.
+const FONT_LICENSE_SHA256 = 'a06fb4706bd70da776e78c0df4fc08e49f12e604668d1da26abd689661e2ba4d';
+const FONT_FILES = new Map([
+  [400, '0e383e44f70f06c62a7a94d042bbad7a2fdd2d32137e97ba172975ffc5761884'],
+  [700, '934b542e575774ab965341885ca5528e564f3b75a10e380aa20cb4a8e9dbf949'],
+  [800, '592d9384a2ecbb64889a08b1d6d44446d7e51071b9795e91142401df49b6f5a7']
+].map(([weight, sha]) => [FONT_DIR + `nanum-myeongjo-${weight}.woff2`, { weight, sha }]));
 const EXPECTED_KEYS = ['E005-Q12', 'E006-Q21', 'E006-Q3'];
 const SHA256 = /^[a-f0-9]{64}$/;
 const SHA1 = /^[a-f0-9]{40}$/;
@@ -333,40 +343,62 @@ function assertScreenshotInventory(results, artifacts) {
   return expected.length;
 }
 
-function isStudentFontStylesheet(value) {
-  const url = new URL(value);
-  return url.origin === 'https://fonts.googleapis.com' && url.pathname === '/css2' && !url.hash &&
-    [...url.searchParams.keys()].sort().join(',') === 'display,family' && url.searchParams.get('display') === 'swap' &&
-    url.searchParams.get('family') === 'Nanum Myeongjo:wght@400;700;800';
+function studentFontResourcePath(value, origin) {
+  const url = new URL(value), rel = url.pathname.slice(1);
+  return value === origin + '/' + rel && (rel === FONT_STYLESHEET || FONT_FILES.has(rel)) ? rel : null;
 }
 
 function declaredStudentFonts(css) {
+  css = css.replace(/\/\*[\s\S]*?\*\//g, '');
   assert(!/@import\b/i.test(css), 'UI_NESTED_FONT_IMPORT');
-  const urls = [...css.matchAll(/url\(\s*(['"]?)([^)'"\s]+)\1\s*\)/gi)].map(match => match[2]);
-  assert(urls.length > 0, 'UI_FONT_URLS_REQUIRED');
-  assert.equal((css.match(/url\(/gi) || []).length, urls.length, 'UI_FONT_URL_SYNTAX');
-  for (const value of urls) {
-    const url = new URL(value);
-    // The observed Korean subset files add one canonical numeric suffix, 0..119,
-    // before .woff2. Other suffix shapes remain outside this declared family.
-    assert(url.origin === 'https://fonts.gstatic.com' && /^\/s\/nanummyeongjo\/[A-Za-z0-9/_-]+\.(?:woff2?|ttf|(?:[0-9]|[1-9][0-9]|1[01][0-9])\.woff2)$/.test(url.pathname) && !url.search && !url.hash,
-      'UI_FONT_URL_OUTSIDE_DECLARED_FAMILY');
+  const rules = /@font-face\s*\{([^{}]*)\}/gi;
+  const files = new Set();
+  for (const [, declarations] of css.matchAll(rules)) {
+    const fields = {};
+    for (const declaration of declarations.split(';').map(value => value.trim()).filter(Boolean)) {
+      const field = declaration.match(/^([a-z-]+)\s*:\s*(.+)$/);
+      assert(field && !Object.hasOwn(fields, field[1]), 'UI_FONT_DECLARATIONS');
+      fields[field[1]] = field[2];
+    }
+    ownKeys(fields, ['font-family', 'font-style', 'font-weight', 'font-display', 'src'], 'UI_FONT_DECLARATIONS');
+    assert(/^(['"])Nanum Myeongjo\1$/.test(fields['font-family']), 'UI_FONT_FAMILY_REQUIRED');
+    assert(fields['font-style'] === 'normal' && fields['font-display'] === 'swap', 'UI_FONT_DECLARATIONS');
+    const file = fields.src.match(/^url\(\.\/(nanum-myeongjo-(?:400|700|800)\.woff2)\)\s+format\((['"])woff2\2\)$/)?.[1];
+    assert(file, 'UI_FONT_URL_OUTSIDE_DECLARED_FAMILY');
+    const rel = FONT_DIR + file;
+    assert(String(FONT_FILES.get(rel).weight) === fields['font-weight'] && !files.has(rel), 'UI_FONT_WEIGHT_REQUIRED');
+    files.add(rel);
   }
-  assert(/font-family:\s*['"]Nanum Myeongjo['"]/i.test(css), 'UI_FONT_FAMILY_REQUIRED');
-  for (const weight of [400, 700, 800]) assert(new RegExp(`font-weight:\\s*${weight}\\s*;`).test(css), 'UI_FONT_WEIGHT_REQUIRED');
-  return new Set(urls);
+  assert(!css.replace(rules, '').trim(), 'UI_FONT_DECLARATIONS');
+  assert.equal(files.size, FONT_FILES.size, 'UI_FONT_WEIGHT_REQUIRED');
+  return files;
+}
+
+function checkedStudentFontRefs(reader) {
+  const css = reader.read(FONT_STYLESHEET);
+  const files = declaredStudentFonts(css.toString('utf8'));
+  const refs = new Map([[FONT_STYLESHEET, reader.ref(FONT_STYLESHEET, css)]]);
+  for (const file of files) {
+    const bytes = reader.read(file);
+    assert(bytes.length <= 2 * 1024 * 1024 && bytes.toString('ascii', 0, 4) === 'wOF2', 'UI_FONT_BODY_SIZE');
+    assert.equal(sha256(bytes), FONT_FILES.get(file).sha, 'UI_FONT_BYTES_DRIFT');
+    refs.set(file, reader.ref(file, bytes));
+  }
+  const license = reader.read(FONT_LICENSE);
+  assert.equal(sha256(license), FONT_LICENSE_SHA256, 'UI_FONT_LICENSE_DRIFT');
+  return { refs, licenseRef: reader.ref(FONT_LICENSE, license) };
 }
 
 function fontFailureDiagnostic(observation, error) {
   const message = typeof error?.message === 'string' ? error.message : '';
   const code = message.split('\n')[0];
-  const knownCodes = ['UI_FONT_HTTP_STATUS', 'UI_FONT_REDIRECT', 'UI_FONT_MIME', 'UI_FONT_BODY_SIZE',
-    'UI_NESTED_FONT_IMPORT', 'UI_FONT_URLS_REQUIRED', 'UI_FONT_URL_SYNTAX', 'UI_FONT_URL_OUTSIDE_DECLARED_FAMILY',
-    'UI_FONT_FAMILY_REQUIRED', 'UI_FONT_WEIGHT_REQUIRED'];
+  const knownCodes = ['UI_FONT_HTTP_STATUS', 'UI_FONT_REDIRECT', 'UI_FONT_MIME', 'UI_FONT_BODY_SIZE', 'UI_FONT_BYTES_DRIFT',
+    'UI_NESTED_FONT_IMPORT', 'UI_FONT_URL_OUTSIDE_DECLARED_FAMILY',
+    'UI_FONT_FAMILY_REQUIRED', 'UI_FONT_WEIGHT_REQUIRED', 'UI_FONT_DECLARATIONS', 'UI_FONT_NOT_DECLARED'];
   return { code: 'UI_STUDENT_FONT_FAILED',
     kind: ['STYLESHEET', 'FONT'].includes(observation.kind) ? observation.kind : 'UNKNOWN',
     urlSha256: SHA256.test(observation.urlSha256 || '') ? observation.urlSha256 : null,
-    stage: ['FETCH', 'HTTP_STATUS', 'RESPONSE_URL', 'MIME', 'BODY_READ', 'BODY_SIZE', 'CSS_DECLARATIONS'].includes(observation.stage)
+    stage: ['FETCH', 'HTTP_STATUS', 'RESPONSE_URL', 'MIME', 'BODY_READ', 'BODY_SIZE', 'BODY_HASH', 'CSS_DECLARATIONS'].includes(observation.stage)
       ? observation.stage : 'UNKNOWN',
     httpStatus: Number.isInteger(observation.httpStatus) && observation.httpStatus >= 100 && observation.httpStatus <= 599 ? observation.httpStatus : null,
     responseUrlSha256: SHA256.test(observation.responseUrlSha256 || '') ? observation.responseUrlSha256 : null,
@@ -414,7 +446,8 @@ function planRequired(manifest, scope, checkoutCommit) {
   assert.equal(scope.schemaVersion, 'archive-ci-scope-v2', 'UI_SCOPE_SCHEMA');
   assert.equal(scope.headSha, checkoutCommit, 'UI_SCOPE_HEAD');
   assert(scope.changedFiles === null || (Array.isArray(scope.changedFiles) && scope.changedFiles.every(relativePath)), 'UI_CHANGED_FILES');
-  const triggers = new Set([MANIFEST_PATH, CHECKER_PATH, TEST_PATH, WORKFLOW_PATH]);
+  const triggers = new Set([MANIFEST_PATH, CHECKER_PATH, TEST_PATH, WORKFLOW_PATH, 'archive/engine.html',
+    FONT_STYLESHEET, FONT_LICENSE, ...FONT_FILES.keys()]);
   for (const item of manifest.items) { triggers.add(item.sourcePath); triggers.add(item.assetPath); }
   const repaired = manifest.items.find(item => item.key === 'E006-Q3');
   triggers.add(repaired.assetPath.replace('-v3.svg', '-v2.svg'));
@@ -494,7 +527,8 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
   const reader = createGitReader(root, expectedCommit);
   const manifestBytes = reader.read(MANIFEST_PATH), manifest = JSON.parse(manifestBytes);
   const inputs = preflight(reader, manifest);
-  const served = new Map(), mirrored = new Map(), externalFontResources = new Map(), failures = [], results = [];
+  const { refs: fontRefs, licenseRef: fontLicenseRef } = checkedStudentFontRefs(reader);
+  const served = new Map(), mirrored = new Map(), studentFontResources = new Map(), failures = [], results = [];
   let activeCase = null;
   fs.mkdirSync(out, { recursive: true });
   const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_SUPPORTED_CHROME', checkoutCommit: reader.commit,
@@ -502,7 +536,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
     mode: 'exam', studentReview: true, screenshotsScope: 'SELECTED_PROBLEM_ORIGINAL_SCROLL_TILES_ONLY', problemOnlyScreenshots: true,
     sourceOverlay: false, sourceOverlayCount: 0, sourceWrites: 0,
     solutionsOpened: false, productionCdnTest: false, assetTransport: 'EXACT_CHECKOUT_BYTES_FOR_DEFAULT_IMAGE_ORIGIN',
-    fontTransport: 'EXACT_STUDENT_GOOGLE_STYLESHEET_AND_ITS_DECLARED_NANUM_MYEONGJO_FILES',
+    fontTransport: 'EXACT_CHECKOUT_LOCAL_NANUM_MYEONGJO_V31', fontLicenseRef,
     newFullMathematicalQa: false, newMetadataApprovals: 0, newDifficultyJudgments: 0, newReviewPassCount: 0, newFourSlotApprovals: 0 };
   const writeProof = (status, code = null) => {
     const screenshotArtifacts = readScreenshotArtifacts(out);
@@ -510,7 +544,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
     const proof = { ...proofBase, status, ...(code ? { failureCode: code, activeCase } : {}), expectedLogicalCases: manifest.expectedCases,
       completedLogicalCases: results.length, screenshotArtifactCount: screenshotArtifacts.length, screenshotArtifacts,
       results, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
-      externalFontResources: [...externalFontResources.values()], failures };
+      studentFontResources: [...studentFontResources.values()], externalFontResources: [], failures };
     fs.writeFileSync(path.join(out, 'technical-proof.json'), JSON.stringify(proof, null, 2) + '\n');
     return proof;
   };
@@ -545,16 +579,18 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
       try {
         const page = await context.newPage();
         page.setDefaultTimeout(10000);
-        const pageErrors = [], requestFailures = [], externalRequests = [], declaredFonts = new Set(), fontResources = new Set();
+        const pageErrors = [], requestFailures = [], externalRequests = [], fontResources = new Map();
+        let declaredFonts = new Set();
         page.on('pageerror', error => pageErrors.push({ messageSha256: sha256(error.message) }));
         page.on('requestfailed', request => requestFailures.push({ urlSha256: sha256(request.url()), errorSha256: sha256(request.failure()?.errorText || '') }));
         await page.route('**/*', async route => {
           const url = new URL(route.request().url());
-          if (url.origin === origin) return route.continue();
-          const stylesheet = isStudentFontStylesheet(url.href);
-          if (stylesheet || declaredFonts.has(url.href)) {
+          const fontPath = studentFontResourcePath(url.href, origin);
+          if (fontPath) {
+            const stylesheet = fontPath === FONT_STYLESHEET;
             const fontObservation = { kind: stylesheet ? 'STYLESHEET' : 'FONT', urlSha256: sha256(url.href), stage: 'FETCH' };
             try {
+              assert(stylesheet || declaredFonts.has(fontPath), 'UI_FONT_NOT_DECLARED');
               const response = await route.fetch({ timeout: 15000, maxRedirects: 0 });
               const contentType = response.headers()['content-type'] || '', mediaType = contentType.split(';')[0].trim().toLowerCase();
               Object.assign(fontObservation, { httpStatus: response.status(), responseUrlSha256: sha256(response.url()), mime: mediaType, stage: 'HTTP_STATUS' });
@@ -562,23 +598,32 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
               fontObservation.stage = 'RESPONSE_URL';
               assert.equal(response.url(), url.href, 'UI_FONT_REDIRECT');
               fontObservation.stage = 'MIME';
-              assert(stylesheet ? mediaType === 'text/css' : ['font/woff2', 'font/woff', 'font/ttf', 'application/font-woff', 'application/x-font-ttf'].includes(mediaType), 'UI_FONT_MIME');
+              assert.equal(mediaType, stylesheet ? 'text/css' : 'font/woff2', 'UI_FONT_MIME');
               fontObservation.stage = 'BODY_READ';
               const bytes = await response.body();
               Object.assign(fontObservation, { bytes: bytes.length, responseSha256: sha256(bytes), stage: 'BODY_SIZE' });
               assert(bytes.length > 0 && bytes.length <= 2 * 1024 * 1024, 'UI_FONT_BODY_SIZE');
+              fontObservation.stage = 'BODY_HASH';
+              const ref = fontRefs.get(fontPath);
+              assert.equal(fontObservation.responseSha256, ref.sha256, 'UI_FONT_BYTES_DRIFT');
               fontObservation.stage = 'CSS_DECLARATIONS';
-              if (stylesheet) for (const file of declaredStudentFonts(bytes.toString('utf8'))) declaredFonts.add(file);
-              const urlSha256 = sha256(url.href), responseSha256 = sha256(bytes);
-              const resourceId = sha256(stable({ urlSha256, responseSha256, mime: contentType }));
-              externalFontResources.set(resourceId, { resourceId, kind: stylesheet ? 'STYLESHEET' : 'FONT', host: url.hostname, urlSha256,
-                status: response.status(), mime: contentType, sha256: responseSha256, bytes: bytes.length });
-              fontResources.add(resourceId);
+              if (stylesheet) declaredFonts = declaredStudentFonts(bytes.toString('utf8'));
+              const resourceId = sha256(stable({ path: fontPath, responseSha256: ref.sha256, mime: contentType }));
+              studentFontResources.set(resourceId, { resourceId, kind: fontObservation.kind, ...ref, mime: contentType,
+                status: response.status(), weight: FONT_FILES.get(fontPath)?.weight ?? null });
+              fontResources.set(fontPath, resourceId);
               return route.fulfill({ response });
             } catch (error) {
               failures.push(fontFailureDiagnostic(fontObservation, error));
               return route.abort('failed');
             }
+          }
+          if (url.origin === origin) {
+            if (url.pathname.startsWith('/' + FONT_DIR)) {
+              failures.push({ code: 'UI_FONT_NOT_DECLARED', requestSha256: sha256(url.href) });
+              return route.abort('blockedbyclient');
+            }
+            return route.continue();
           }
           if (url.protocol === 'https:' && url.hostname === 'img.wangjiedu.com' && url.pathname.startsWith('/exams/images/')) {
             try {
@@ -602,8 +647,9 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
           const weights = [];
           for (const weight of [400, 700, 800]) {
             const faces = await document.fonts.load(`${weight} 12px "${family}"`, '한글 ABC 123');
-            weights.push({ weight, loadedFaces: faces.length, allLoaded: faces.length > 0 && faces.every(face =>
-              face.status === 'loaded' && face.family.replace(/["']/g, '') === family), checked: document.fonts.check(`${weight} 12px "${family}"`, '한글 ABC 123') });
+            weights.push({ weight, loadedFaces: faces.length, allLoaded: faces.length === 1 && faces.every(face =>
+              face.status === 'loaded' && face.family.replace(/["']/g, '') === family &&
+              face.weight === String(weight) && face.style === 'normal'), checked: document.fonts.check(`${weight} 12px "${family}"`, '한글 ABC 123') });
           }
           await document.fonts.ready;
           await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
@@ -613,8 +659,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
         assert.equal(fontReadiness.status, 'loaded', 'UI_DOCUMENT_FONTS_READY');
         assert(fontReadiness.weights.every(row => row.allLoaded && row.checked), 'UI_STUDENT_FONT_NOT_LOADED');
         assert(fontReadiness.problemFontFamilies.length > 0 && fontReadiness.problemFontFamilies.every(value => value.includes(FONT_FAMILY)), 'UI_STUDENT_FONT_NOT_APPLIED');
-        assert([...fontResources].some(key => externalFontResources.get(key)?.kind === 'STYLESHEET') &&
-          [...fontResources].some(key => externalFontResources.get(key)?.kind === 'FONT'), 'UI_FONT_RESPONSES_REQUIRED');
+        assert.deepEqual([...fontResources.keys()].sort(), [...fontRefs.keys()].sort(), 'UI_FONT_RESPONSES_REQUIRED');
         await page.waitForFunction(() => JSON.parse(document.documentElement.dataset.apPrintReadiness || '{}').state === 'RENDER_READY', null, { timeout: 30000 });
         const technical = await page.evaluate(() => ({
           mode: AppState.mode, questions: AppState.data.length, pages: document.querySelectorAll('#print-area .page').length,
@@ -653,7 +698,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath }) {
             return { tileIndex: tile.tileIndex, path: tile.filename, sha256: sha256(bytes), bytes: bytes.length }; });
           results.push({ status: 'PASS', key: item.key, questionUid: item.questionUid, sourceOrdinal: item.sourceOrdinal, viewport,
             sourceRef: item.sourceRef, assetRef: item.assetRef, screenshots,
-            technical: { ...technical, fontReadiness, fontResourceIds: [...fontResources].sort() }, geometry, capture,
+            technical: { ...technical, fontReadiness, fontResourceIds: [...fontResources.values()].sort() }, geometry, capture,
             visualReview: 'PENDING', pageErrors, requestFailures, externalRequests });
           activeCase = null;
         }
@@ -703,7 +748,7 @@ async function main() {
 }
 
 module.exports = { MANIFEST_PATH, CHECKER_PATH, TEST_PATH, WORKFLOW_PATH, IDENTITY_PATH, SCHEMA, stable, sha256, gitBlob, validateManifest, planRequired, createGitReader, preflight,
-  isStudentFontStylesheet, declaredStudentFonts, fontFailureDiagnostic,
+  FONT_STYLESHEET, FONT_LICENSE, studentFontResourcePath, declaredStudentFonts, checkedStudentFontRefs, fontFailureDiagnostic,
   problemContentClip, planProblemScroll, assertProblemCapture, captureCompleteProblem,
   TILE_SCHEMA, TILE_OVERLAP, TILE_LIMIT, planProblemTiles, planProblemTileScroll, assertTileCoverage, assertProblemTileCapture, captureProblemTiles,
   readScreenshotArtifacts, assertScreenshotInventory };

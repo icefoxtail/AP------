@@ -10,39 +10,65 @@ const sourceManifest = JSON.parse(fs.readFileSync(path.join(__dirname, 'fixtures
 const copy = value => JSON.parse(JSON.stringify(value));
 const head = 'a'.repeat(40);
 const scope = changedFiles => ({ schemaVersion: 'archive-ci-scope-v2', eventName: 'pull_request', headSha: head, changedFiles });
-const studentCss = [400, 700, 800].map(weight => `@font-face { font-family: 'Nanum Myeongjo'; font-style: normal; font-weight: ${weight}; src: url(https://fonts.gstatic.com/s/nanummyeongjo/v1/reviewed_${weight}.woff2) format('woff2'); }`).join('\n');
+const fontDir = path.posix.dirname(checker.FONT_STYLESHEET) + '/';
+const readFont = file => fs.readFileSync(path.join(__dirname, '..', file));
+const studentCss = readFont(checker.FONT_STYLESHEET).toString('utf8');
+const studentFonts = [400, 700, 800].map(weight => fontDir + `nanum-myeongjo-${weight}.woff2`);
+const localOrigin = 'http://127.0.0.1:49160';
+const localUrl = file => localOrigin + '/' + file;
 
 test('the real engine imports its student font before qualified CSS rules', () => {
   const engine = fs.readFileSync(path.join(__dirname, '..', 'archive/engine.html'), 'utf8');
+  const importRef = checker.FONT_STYLESHEET.slice('archive/'.length);
   const fontStyles = [...engine.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)]
-    .map(match => match[1]).filter(css => css.includes('fonts.googleapis.com/css2'));
+    .map(match => match[1]).filter(css => css.includes(importRef));
   assert.equal(fontStyles.length, 1, 'UI_ENGINE_UNIQUE_FONT_STYLESHEET');
   const css = fontStyles[0].replace(/\/\*[\s\S]*?\*\//g, '').trimStart();
   const firstRule = css.match(/^@import\s+url\((['"])([^'"]+)\1\)\s*;/);
   assert(firstRule, 'UI_ENGINE_FONT_IMPORT_MUST_PRECEDE_QUALIFIED_RULES');
-  assert.equal(checker.isStudentFontStylesheet(firstRule[2]), true);
+  assert.equal(firstRule[2], importRef);
+  assert.doesNotMatch(engine, /fonts\.(?:googleapis|gstatic)\.com/);
+  assert.match(css, /font-family:\s*'Nanum Myeongjo',\s*serif;/);
+  assert.match(css, /\.archive2-snapshot-output #print-header-editor-wrap,\.archive2-snapshot-output #qr-output-wrap\{display:none!important\}/);
 });
 
-test('only the exact student stylesheet query is allowed', () => {
-  assert.equal(checker.isStudentFontStylesheet('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap'), true);
-  assert.equal(checker.isStudentFontStylesheet('https://fonts.googleapis.com/css2?display=swap&family=Nanum%20Myeongjo%3Awght%40400%3B700%3B800'), true);
-});
-for (const value of [
-  'http://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap',
-  'https://fonts.googleapis.com.evil.test/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap',
-  'https://fonts.googleapis.com/css2?family=Other:wght@400;700;800&display=swap',
-  'https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap&extra=1'
-]) test(`font stylesheet refuses non-exact URL ${value.split('?')[0]}`, () => assert.equal(checker.isStudentFontStylesheet(value), false));
-
-test('font files are restricted to the returned stylesheet declarations and all three weights', () => {
-  assert.deepEqual([...checker.declaredStudentFonts(studentCss)], [400, 700, 800].map(weight => `https://fonts.gstatic.com/s/nanummyeongjo/v1/reviewed_${weight}.woff2`));
-});
-test('declared Korean font subsets accept the observed canonical numeric suffix range', () => {
-  for (const suffix of [0, 9, 10, 65, 94, 99, 100, 119]) {
-    const css = studentCss.replaceAll('.woff2', `.${suffix}.woff2`);
-    assert.deepEqual([...checker.declaredStudentFonts(css)], [400, 700, 800].map(weight =>
-      `https://fonts.gstatic.com/s/nanummyeongjo/v1/reviewed_${weight}.${suffix}.woff2`));
+test('only the exact same-origin student stylesheet and three fonts qualify', () => {
+  for (const rel of [checker.FONT_STYLESHEET, ...studentFonts]) {
+    assert.equal(checker.studentFontResourcePath(localUrl(rel), localOrigin), rel);
   }
+});
+for (const [name, value] of [
+  ['Google stylesheet', 'https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap'],
+  ['Google font', 'https://fonts.gstatic.com/s/nanummyeongjo/v31/9Btx3DZF0dXLMZlywRbVRNhxy1Lu.woff2'],
+  ['wrong origin', 'http://127.0.0.1:49161/' + checker.FONT_STYLESHEET],
+  ['host lookalike', 'http://127.0.0.1.evil.test:49160/' + checker.FONT_STYLESHEET],
+  ['query string', localUrl(studentFonts[0]) + '?extra=1'],
+  ['fragment', localUrl(checker.FONT_STYLESHEET) + '#extra'],
+  ['credentials', localUrl(checker.FONT_STYLESHEET).replace('http://', 'http://user@')],
+  ['encoded filename', localUrl(studentFonts[0]).replace('400', '%3400')],
+  ['unknown file', localUrl(fontDir + 'nanum-myeongjo-900.woff2')],
+]) test(`student font transport refuses ${name}`, () => assert.equal(checker.studentFontResourcePath(value, localOrigin), null));
+
+test('the real stylesheet declares exactly the three full normal faces with swap', () => {
+  assert.deepEqual([...checker.declaredStudentFonts(studentCss)], studentFonts);
+});
+const fontReader = read => ({ read, ref: (file, data) => ({ path: file, bytes: data.length, sha256: checker.sha256(data) }) });
+test('the declared assets are the locked v31 WOFF2 payloads and their upstream OFL', () => {
+  const { refs, licenseRef } = checker.checkedStudentFontRefs(fontReader(readFont));
+  assert.deepEqual([...refs.keys()], [checker.FONT_STYLESHEET, ...studentFonts]);
+  assert.deepEqual(studentFonts.map(file => refs.get(file).bytes), [535336, 608232, 727448]);
+  assert.equal(licenseRef.path, checker.FONT_LICENSE);
+  assert.equal(licenseRef.bytes, 4457);
+  const pages = JSON.parse(readFont('tools/archive-pages-release-manifest.json'));
+  const tree = pages.trees.find(row => row.path === 'archive/vendor');
+  assert(tree && !tree.exclude?.includes('nanum-myeongjo'));
+});
+test('a missing, altered or swapped font or altered license fails closed', () => {
+  const check = read => checker.checkedStudentFontRefs(fontReader(read));
+  assert.throws(() => check(file => readFont(file === studentFonts[0] ? fontDir + 'missing.woff2' : file)), /ENOENT/);
+  assert.throws(() => check(file => file === studentFonts[0] ? readFont(studentFonts[1]) : readFont(file)), /UI_FONT_BYTES_DRIFT/);
+  assert.throws(() => check(file => file === studentFonts[0] ? Buffer.from('wOF2tampered') : readFont(file)), /UI_FONT_BYTES_DRIFT/);
+  assert.throws(() => check(file => file === checker.FONT_LICENSE ? Buffer.from('altered') : readFont(file)), /UI_FONT_LICENSE_DRIFT/);
 });
 for (const suffix of ['120.woff2', '999.woff2', '00.woff2', '01.woff2', '-1.woff2', '+1.woff2',
   '1e2.woff2', 'subset.woff2', '1.2.woff2', '119.woff', '119.ttf', '119.woff2?other=1', '119.woff2#other']) {
@@ -53,17 +79,24 @@ for (const suffix of ['120.woff2', '999.woff2', '00.woff2', '01.woff2', '-1.woff
 }
 for (const [name, css] of [
   ['nested stylesheet', `@import 'https://example.test/font.css';\n${studentCss}`],
-  ['another family directory', studentCss.replace('/s/nanummyeongjo/', '/s/other/')],
-  ['another origin', studentCss.replace('fonts.gstatic.com', 'example.test')],
+  ['another family directory', studentCss.replace('./nanum-myeongjo-', './other/nanum-myeongjo-')],
+  ['another origin', studentCss.replace('./nanum-myeongjo-', 'https://example.test/nanum-myeongjo-')],
   ['missing required weight', studentCss.replace('font-weight: 800;', 'font-weight: 900;')],
-  ['malformed escaped URL', studentCss.replace('https://fonts.gstatic.com', 'https://fonts.gstatic.com\\escape')]
+  ['malformed escaped URL', studentCss.replace('./nanum-myeongjo-', '.\\escape/nanum-myeongjo-')],
+  ['incorrect family', studentCss.replace('Nanum Myeongjo', 'Other')],
+  ['changed loading strategy', studentCss.replace('font-display: swap;', 'font-display: block;')],
+  ['changed style', studentCss.replace('font-style: normal;', 'font-style: italic;')],
+  ['duplicate declaration', studentCss.replace('font-weight: 400;', 'font-weight: 400; font-weight: 700;')],
+  ['workstation-only fallback', studentCss.replace('src: url(', 'src: local("Nanum Myeongjo"), url(')],
+  ['subset coverage', studentCss.replace('font-display: swap;', 'font-display: swap; unicode-range: U+0-7F;')],
+  ['other CSS rule', studentCss + 'body { color: white; }'],
 ]) test(`font CSS refuses ${name}`, () => assert.throws(() => checker.declaredStudentFonts(css)));
 
 test('font failure diagnostics distinguish parsed CSS refusal from request failure without raw response content', () => {
   const observation = { kind: 'STYLESHEET', urlSha256: 'a'.repeat(64), stage: 'CSS_DECLARATIONS', httpStatus: 200,
     responseUrlSha256: 'a'.repeat(64), mime: 'text/css', bytes: 173575, responseSha256: 'b'.repeat(64), rawBody: 'DO_NOT_EXPORT_BODY' };
   let parserError;
-  try { checker.declaredStudentFonts(studentCss.replace('/s/nanummyeongjo/', '/s/other/')); } catch (error) { parserError = error; }
+  try { checker.declaredStudentFonts(studentCss.replace('./nanum-myeongjo-', './other/nanum-myeongjo-')); } catch (error) { parserError = error; }
   const diagnostic = checker.fontFailureDiagnostic(observation, parserError);
   assert.equal(diagnostic.stage, 'CSS_DECLARATIONS'); assert.equal(diagnostic.httpStatus, 200);
   assert.equal(diagnostic.mime, 'text/css'); assert.equal(diagnostic.bytes, 173575);
