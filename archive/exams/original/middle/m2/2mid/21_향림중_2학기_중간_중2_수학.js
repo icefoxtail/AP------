@@ -61,7 +61,7 @@ window.examData = {
     {
       "id": 5,
       "score": 3.0,
-      "question": "<p>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q05.png\" /></p>",
+      "question": "<p>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"파란 직선이 세로축의 3과 가로축의 1을 지난다. 좌표축과 단위 모눈의 눈금을 함께 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$-3$",
         "$-\\dfrac{1}{3}$",
@@ -89,7 +89,7 @@ window.examData = {
     {
       "id": 7,
       "score": 4.0,
-      "question": "<p>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q07.png\" /></p>",
+      "question": "<p>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"파란 직선이 왼쪽 위에서 오른쪽 아래로 내려간다. 세로축과 만나는 점은 원점 아래이고, 가로축과 만나는 점은 원점 왼쪽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$a > 0, b > 0$",
         "$a > 0, b < 0$",
@@ -201,7 +201,7 @@ window.examData = {
     {
       "id": 15,
       "score": 4.0,
-      "question": "<p>15. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{B}$의 이등분선과 $\\angle\\text{C}$의 외각의 이등분선의 교점을 $\\text{D}$라고 하자. $\\angle\\text{ABD} = 22^\\circ$일 때, $\\angle\\text{BDC}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q15.png\" /></p>",
+      "question": "<p>15. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{B}$의 이등분선과 $\\angle\\text{C}$의 외각의 이등분선의 교점을 $\\text{D}$라고 하자. $\\angle\\text{ABD} = 22^\\circ$일 때, $\\angle\\text{BDC}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"AB와 AC는 같은 길이이다. B의 각을 이등분한 BD와 C의 외각을 이등분한 CD가 D에서 만난다. 각 ABD는 22°이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$40^\\circ$",
         "$42^\\circ$",
@@ -215,7 +215,7 @@ window.examData = {
     {
       "id": 16,
       "score": 4.0,
-      "question": "<p>16. 다음 중 오른쪽 그림의 삼각형과 합동인 삼각형을 고르면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16.png\" /></p>",
+      "question": "<p>16. 다음 중 오른쪽 그림의 삼각형과 합동인 삼각형을 고르면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"맨 위의 빗변 길이는 10 cm이다. 오른쪽 위의 각은 40°이고 아래 꼭짓점은 직각이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "<img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16_1.png\" />",
         "<img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16_2.png\" />",
@@ -229,7 +229,7 @@ window.examData = {
     {
       "id": 17,
       "score": 4.0,
-      "question": "<p>17. 오른쪽 그림과 같이 $\\angle\\text{C} = 90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선이 $\\overline{\\text{BC}}$와 만나는 점을 $\\text{D}$, 점 $\\text{D}$에서 $\\overline{\\text{AB}}$에 내린 수선의 발을 $\\text{M}$이라 하자. $\\overline{\\text{AM}} = \\overline{\\text{BM}}$일 때, 다음 중 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q17.png\" /></p>",
+      "question": "<p>17. 오른쪽 그림과 같이 $\\angle\\text{C} = 90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선이 $\\overline{\\text{BC}}$와 만나는 점을 $\\text{D}$, 점 $\\text{D}$에서 $\\overline{\\text{AB}}$에 내린 수선의 발을 $\\text{M}$이라 하자. $\\overline{\\text{AM}} = \\overline{\\text{BM}}$일 때, 다음 중 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"C는 직각이다. A의 각을 이등분한 AD와, D에서 AB의 중점 M에 내린 수선 DM을 표시했다. AM과 BM은 같은 길이이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$\\overline{\\text{BD}} = \\overline{\\text{AD}}$",
         "$\\overline{\\text{BM}} = \\overline{\\text{AC}}$",
@@ -243,7 +243,7 @@ window.examData = {
     {
       "id": 18,
       "score": 4.0,
-      "question": "<p>18. 오른쪽 그림과 같이 $\\angle\\text{B}$가 직각인 직각이등변삼각형 $\\text{ABC}$의 두 꼭짓점 $\\text{A, C}$에서 직선 $l$에 내린 수선의 발을 각각 $\\text{D, E}$라고 할 때, 사각형 $\\text{ADEC}$의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q18.png\" /></p>",
+      "question": "<p>18. 오른쪽 그림과 같이 $\\angle\\text{B}$가 직각인 직각이등변삼각형 $\\text{ABC}$의 두 꼭짓점 $\\text{A, C}$에서 직선 $l$에 내린 수선의 발을 각각 $\\text{D, E}$라고 할 때, 사각형 $\\text{ADEC}$의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q18-problem-visual-v2.svg\" alt=\"직각이등변삼각형 ABC에서 B는 직각이다. A에서 D까지 6 cm, C에서 E까지 8 cm이고, AB는 10 cm이다. D와 E를 지나는 직선은 l이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$88\\text{ cm}^2$",
         "$90\\text{ cm}^2$",
@@ -257,7 +257,7 @@ window.examData = {
     {
       "id": 19,
       "score": 4.0,
-      "question": "<p>19. 오른쪽 그림에서 점 $\\text{O}$는 $\\triangle\\text{ABC}$의 외심일 때, $\\angle\\text{BAC}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q19.png\" /></p>",
+      "question": "<p>19. 오른쪽 그림에서 점 $\\text{O}$는 $\\triangle\\text{ABC}$의 외심일 때, $\\angle\\text{BAC}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q19-problem-visual-v2.svg\" alt=\"외심 O를 세 꼭짓점과 이었다. 각 BOC는 110°이고 C의 각 OCA가 20°이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$55^\\circ$",
         "$56^\\circ$",
@@ -299,7 +299,7 @@ window.examData = {
     {
       "id": 22,
       "score": 4.0,
-      "question": "<p>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22.png\" /></p>",
+      "question": "<p>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22-problem-visual-v2.svg\" alt=\"A에 직각 표시가 있다. O를 중심으로 하는 외접원은 A, B, C를 지나고 I를 중심으로 하는 내접원은 각 변에 접한다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
         "$\\dfrac{111}{2}$",
         "60",
@@ -321,7 +321,7 @@ window.examData = {
     {
       "id": 24,
       "score": 5.0,
-      "question": "<p>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/s02.png\" /></p>",
+      "question": "<p>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"A(1,4)와 B(3,3)을 파란색 선분으로 이었다. 옅은 단위 모눈을 사용했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "",
       "solution": ""
@@ -329,7 +329,7 @@ window.examData = {
     {
       "id": 25,
       "score": 6.0,
-      "question": "<p>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/s03.png\" /></p>",
+      "question": "<p>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"수도꼭지에서 물이 아래로 흘러 직육면체 수조에 들어가는 모습을 보여 준다. 수면 아래의 물이 든 영역만 연한 파랑으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "",
       "solution": ""
@@ -337,7 +337,7 @@ window.examData = {
     {
       "id": 26,
       "score": 5.0,
-      "question": "<p>서술형 4. 오른쪽 그림에서 점 $\\text{O}$는 삼각형 $\\text{ABC}$의 외심이다. $\\angle\\text{OAB} = 48^\\circ$, $\\angle\\text{OCA} = 32^\\circ$이고 $\\overline{\\text{AO}} = 9\\text{ cm}$일 때, 부채꼴 $\\text{BOC}$의 호의 길이를 구하는 과정과 답을 쓰시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/s04.png\" /></p>",
+      "question": "<p>서술형 4. 오른쪽 그림에서 점 $\\text{O}$는 삼각형 $\\text{ABC}$의 외심이다. $\\angle\\text{OAB} = 48^\\circ$, $\\angle\\text{OCA} = 32^\\circ$이고 $\\overline{\\text{AO}} = 9\\text{ cm}$일 때, 부채꼴 $\\text{BOC}$의 호의 길이를 구하는 과정과 답을 쓰시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q26-problem-visual-v2.svg\" alt=\"O는 삼각형의 외심이고 반지름 AO는 9 cm이다. 각 OAB는 48°이고 각 OCA는 32°이다. B에서 C까지 연결되는 부채꼴 호를 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
       "answer": "",
       "solution": ""
@@ -474,8 +474,9 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "layoutTag": "fullwidth",
     "score": 3,
-    "question": "<p>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q05.png\" /></p>",
+    "question": "<p>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"파란 직선이 세로축의 3과 가로축의 1을 지난다. 좌표축과 단위 모눈의 눈금을 함께 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$-3$",
       "$-\\dfrac{1}{3}$",
@@ -485,7 +486,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q05.png\" /></div>",
+    "content": "<div>5. 오른쪽 그림과 같은 일차함수의 그래프와 일차함수 $y = ax - 1$의 그래프의 기울기가 서로 같을 때, 상수 $a$의 값을 구하면? [3점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"파란 직선이 세로축의 3과 가로축의 1을 지난다. 좌표축과 단위 모눈의 눈금을 함께 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "standardUnitKey": "M2-04",
@@ -536,8 +537,9 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q07.png\" /></p>",
+    "question": "<p>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"파란 직선이 왼쪽 위에서 오른쪽 아래로 내려간다. 세로축과 만나는 점은 원점 아래이고, 가로축과 만나는 점은 원점 왼쪽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$a > 0, b > 0$",
       "$a > 0, b < 0$",
@@ -547,7 +549,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q07.png\" /></div>",
+    "content": "<div>7. 일차함수 $y = ax - b$의 그래프가 오른쪽 그림과 같을 때, $a$와 $b$의 부호는? (단, $a$와 $b$는 상수) [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"파란 직선이 왼쪽 위에서 오른쪽 아래로 내려간다. 세로축과 만나는 점은 원점 아래이고, 가로축과 만나는 점은 원점 왼쪽이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "standardUnitKey": "M2-04",
@@ -770,8 +772,9 @@ window.questionBank = [
   },
   {
     "id": 15,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>15. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{B}$의 이등분선과 $\\angle\\text{C}$의 외각의 이등분선의 교점을 $\\text{D}$라고 하자. $\\angle\\text{ABD} = 22^\\circ$일 때, $\\angle\\text{BDC}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q15.png\" /></p>",
+    "question": "<p>15. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{B}$의 이등분선과 $\\angle\\text{C}$의 외각의 이등분선의 교점을 $\\text{D}$라고 하자. $\\angle\\text{ABD} = 22^\\circ$일 때, $\\angle\\text{BDC}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"AB와 AC는 같은 길이이다. B의 각을 이등분한 BD와 C의 외각을 이등분한 CD가 D에서 만난다. 각 ABD는 22°이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$40^\\circ$",
       "$42^\\circ$",
@@ -781,7 +784,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>15. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{B}$의 이등분선과 $\\angle\\text{C}$의 외각의 이등분선의 교점을 $\\text{D}$라고 하자. $\\angle\\text{ABD} = 22^\\circ$일 때, $\\angle\\text{BDC}$의 크기를 구하면? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q15.png\" /></div>",
+    "content": "<div>15. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{B}$의 이등분선과 $\\angle\\text{C}$의 외각의 이등분선의 교점을 $\\text{D}$라고 하자. $\\angle\\text{ABD} = 22^\\circ$일 때, $\\angle\\text{BDC}$의 크기를 구하면? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q15-problem-visual-v2.svg\" alt=\"AB와 AC는 같은 길이이다. B의 각을 이등분한 BD와 C의 외각을 이등분한 CD가 D에서 만난다. 각 ABD는 22°이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
     "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
     "standardUnitKey": "M2-05",
@@ -803,8 +806,9 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>16. 다음 중 오른쪽 그림의 삼각형과 합동인 삼각형을 고르면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16.png\" /></p>",
+    "question": "<p>16. 다음 중 오른쪽 그림의 삼각형과 합동인 삼각형을 고르면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"맨 위의 빗변 길이는 10 cm이다. 오른쪽 위의 각은 40°이고 아래 꼭짓점은 직각이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "<img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16_1.png\" />",
       "<img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16_2.png\" />",
@@ -814,7 +818,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>16. 다음 중 오른쪽 그림의 삼각형과 합동인 삼각형을 고르면? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16.png\" /></div>",
+    "content": "<div>16. 다음 중 오른쪽 그림의 삼각형과 합동인 삼각형을 고르면? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"맨 위의 빗변 길이는 10 cm이다. 오른쪽 위의 각은 40°이고 아래 꼭짓점은 직각이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
     "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
     "standardUnitKey": "M2-05",
@@ -834,8 +838,9 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>17. 오른쪽 그림과 같이 $\\angle\\text{C} = 90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선이 $\\overline{\\text{BC}}$와 만나는 점을 $\\text{D}$, 점 $\\text{D}$에서 $\\overline{\\text{AB}}$에 내린 수선의 발을 $\\text{M}$이라 하자. $\\overline{\\text{AM}} = \\overline{\\text{BM}}$일 때, 다음 중 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q17.png\" /></p>",
+    "question": "<p>17. 오른쪽 그림과 같이 $\\angle\\text{C} = 90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선이 $\\overline{\\text{BC}}$와 만나는 점을 $\\text{D}$, 점 $\\text{D}$에서 $\\overline{\\text{AB}}$에 내린 수선의 발을 $\\text{M}$이라 하자. $\\overline{\\text{AM}} = \\overline{\\text{BM}}$일 때, 다음 중 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"C는 직각이다. A의 각을 이등분한 AD와, D에서 AB의 중점 M에 내린 수선 DM을 표시했다. AM과 BM은 같은 길이이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$\\overline{\\text{BD}} = \\overline{\\text{AD}}$",
       "$\\overline{\\text{BM}} = \\overline{\\text{AC}}$",
@@ -845,7 +850,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>17. 오른쪽 그림과 같이 $\\angle\\text{C} = 90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선이 $\\overline{\\text{BC}}$와 만나는 점을 $\\text{D}$, 점 $\\text{D}$에서 $\\overline{\\text{AB}}$에 내린 수선의 발을 $\\text{M}$이라 하자. $\\overline{\\text{AM}} = \\overline{\\text{BM}}$일 때, 다음 중 옳지 않은 것은? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q17.png\" /></div>",
+    "content": "<div>17. 오른쪽 그림과 같이 $\\angle\\text{C} = 90^\\circ$인 직각삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선이 $\\overline{\\text{BC}}$와 만나는 점을 $\\text{D}$, 점 $\\text{D}$에서 $\\overline{\\text{AB}}$에 내린 수선의 발을 $\\text{M}$이라 하자. $\\overline{\\text{AM}} = \\overline{\\text{BM}}$일 때, 다음 중 옳지 않은 것은? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"C는 직각이다. A의 각을 이등분한 AD와, D에서 AB의 중점 M에 내린 수선 DM을 표시했다. AM과 BM은 같은 길이이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
     "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
     "standardUnitKey": "M2-05",
@@ -867,8 +872,9 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>18. 오른쪽 그림과 같이 $\\angle\\text{B}$가 직각인 직각이등변삼각형 $\\text{ABC}$의 두 꼭짓점 $\\text{A, C}$에서 직선 $l$에 내린 수선의 발을 각각 $\\text{D, E}$라고 할 때, 사각형 $\\text{ADEC}$의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q18.png\" /></p>",
+    "question": "<p>18. 오른쪽 그림과 같이 $\\angle\\text{B}$가 직각인 직각이등변삼각형 $\\text{ABC}$의 두 꼭짓점 $\\text{A, C}$에서 직선 $l$에 내린 수선의 발을 각각 $\\text{D, E}$라고 할 때, 사각형 $\\text{ADEC}$의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q18-problem-visual-v2.svg\" alt=\"직각이등변삼각형 ABC에서 B는 직각이다. A에서 D까지 6 cm, C에서 E까지 8 cm이고, AB는 10 cm이다. D와 E를 지나는 직선은 l이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$88\\text{ cm}^2$",
       "$90\\text{ cm}^2$",
@@ -878,7 +884,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>18. 오른쪽 그림과 같이 $\\angle\\text{B}$가 직각인 직각이등변삼각형 $\\text{ABC}$의 두 꼭짓점 $\\text{A, C}$에서 직선 $l$에 내린 수선의 발을 각각 $\\text{D, E}$라고 할 때, 사각형 $\\text{ADEC}$의 넓이를 구하면? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q18.png\" /></div>",
+    "content": "<div>18. 오른쪽 그림과 같이 $\\angle\\text{B}$가 직각인 직각이등변삼각형 $\\text{ABC}$의 두 꼭짓점 $\\text{A, C}$에서 직선 $l$에 내린 수선의 발을 각각 $\\text{D, E}$라고 할 때, 사각형 $\\text{ADEC}$의 넓이를 구하면? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q18-problem-visual-v2.svg\" alt=\"직각이등변삼각형 ABC에서 B는 직각이다. A에서 D까지 6 cm, C에서 E까지 8 cm이고, AB는 10 cm이다. D와 E를 지나는 직선은 l이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
     "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
     "standardUnitKey": "M2-05",
@@ -898,8 +904,9 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>19. 오른쪽 그림에서 점 $\\text{O}$는 $\\triangle\\text{ABC}$의 외심일 때, $\\angle\\text{BAC}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q19.png\" /></p>",
+    "question": "<p>19. 오른쪽 그림에서 점 $\\text{O}$는 $\\triangle\\text{ABC}$의 외심일 때, $\\angle\\text{BAC}$의 크기를 구하면? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q19-problem-visual-v2.svg\" alt=\"외심 O를 세 꼭짓점과 이었다. 각 BOC는 110°이고 C의 각 OCA가 20°이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$55^\\circ$",
       "$56^\\circ$",
@@ -909,7 +916,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>19. 오른쪽 그림에서 점 $\\text{O}$는 $\\triangle\\text{ABC}$의 외심일 때, $\\angle\\text{BAC}$의 크기를 구하면? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q19-restored-20261105.png\" /></div>",
+    "content": "<div>19. 오른쪽 그림에서 점 $\\text{O}$는 $\\triangle\\text{ABC}$의 외심일 때, $\\angle\\text{BAC}$의 크기를 구하면? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q19-problem-visual-v2.svg\" alt=\"외심 O를 세 꼭짓점과 이었다. 각 BOC는 110°이고 C의 각 OCA가 20°이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "standardUnitKey": "M2-05",
@@ -1003,8 +1010,9 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22.png\" /></p>",
+    "question": "<p>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22-problem-visual-v2.svg\" alt=\"A에 직각 표시가 있다. O를 중심으로 하는 외접원은 A, B, C를 지나고 I를 중심으로 하는 내접원은 각 변에 접한다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "$\\dfrac{111}{2}$",
       "60",
@@ -1014,7 +1022,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22.png\" /></div>",
+    "content": "<div>22. $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$의 외접원과 내접원의 둘레가 각각 $17\\pi$, $6\\pi$일 때, $\\triangle\\text{ABC}$의 넓이는? [4점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q22-problem-visual-v2.svg\" alt=\"A에 직각 표시가 있다. O를 중심으로 하는 외접원은 A, B, C를 지나고 I를 중심으로 하는 내접원은 각 변에 접한다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "curriculum": "2015",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-05",
@@ -1073,12 +1081,13 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "layoutTag": "fullwidth",
     "score": 5,
-    "question": "<p>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/s02.png\" /></p>",
+    "question": "<p>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"A(1,4)와 B(3,3)을 파란색 선분으로 이었다. 옅은 단위 모눈을 사용했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "",
     "solution": "",
-    "content": "<div>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/s02.png\" /></div>",
+    "content": "<div>서술형 2. 두 점 $\\text{A}(1, 4)$, $\\text{B}(3, 3)$에 대하여 일차함수 $y = 3x + b$의 그래프가 선분 $\\text{AB}$와 만나도록 하는 상수 $b$의 값의 범위를 구하시오. [5점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q24-problem-visual-v2.svg\" alt=\"A(1,4)와 B(3,3)을 파란색 선분으로 이었다. 옅은 단위 모눈을 사용했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
     "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
     "standardUnitKey": "M2-04",
@@ -1098,12 +1107,13 @@ window.questionBank = [
   },
   {
     "id": 25,
+    "layoutTag": "fullwidth",
     "score": 6,
-    "question": "<p>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/s03.png\" /></p>",
+    "question": "<p>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"수도꼭지에서 물이 아래로 흘러 직육면체 수조에 들어가는 모습을 보여 준다. 수면 아래의 물이 든 영역만 연한 파랑으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "",
     "solution": "",
-    "content": "<div>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/s03.png\" /></div>",
+    "content": "<div>서술형 3. 물이 조금 들어 있는 직육면체 모양의 수조에 시간당 일정한 양의 수돗물을 채우고 있다. 수돗물을 채우기 시작한 지 5분 후에 물의 높이가 바닥으로부터 $20\\text{ cm}$가 되었고, 15분 후에는 바닥으로부터 $40\\text{ cm}$까지 채워졌다. 바닥으로부터의 물의 높이가 $90\\text{ cm}$가 되는 것은 수돗물을 채우기 시작한 지 몇 분 후 인지 구하시오. [6점]<br/>[물을 채우기 시작한 지 $x$분 후의 물의 높이를 $y\\text{ cm}$라고 하고 식을 세워 풀이 과정과 함께 답을 쓰시오.]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q25-problem-visual-v2.svg\" alt=\"수도꼭지에서 물이 아래로 흘러 직육면체 수조에 들어가는 모습을 보여 준다. 수면 아래의 물이 든 영역만 연한 파랑으로 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "",
     "problemTypeKey": "PT_LINE_EQUATION",
     "standardUnitKey": "M2-04",
@@ -1123,12 +1133,13 @@ window.questionBank = [
   },
   {
     "id": 26,
+    "layoutTag": "fullwidth",
     "score": 5,
-    "question": "<p>서술형 4. 오른쪽 그림에서 점 $\\text{O}$는 삼각형 $\\text{ABC}$의 외심이다. $\\angle\\text{OAB} = 48^\\circ$, $\\angle\\text{OCA} = 32^\\circ$이고 $\\overline{\\text{AO}} = 9\\text{ cm}$일 때, 부채꼴 $\\text{BOC}$의 호의 길이를 구하는 과정과 답을 쓰시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/s04.png\" /></p>",
+    "question": "<p>서술형 4. 오른쪽 그림에서 점 $\\text{O}$는 삼각형 $\\text{ABC}$의 외심이다. $\\angle\\text{OAB} = 48^\\circ$, $\\angle\\text{OCA} = 32^\\circ$이고 $\\overline{\\text{AO}} = 9\\text{ cm}$일 때, 부채꼴 $\\text{BOC}$의 호의 길이를 구하는 과정과 답을 쓰시오. [5점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q26-problem-visual-v2.svg\" alt=\"O는 삼각형의 외심이고 반지름 AO는 9 cm이다. 각 OAB는 48°이고 각 OCA는 32°이다. B에서 C까지 연결되는 부채꼴 호를 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
     "answer": "",
     "solution": "",
-    "content": "<div>서술형 4. 오른쪽 그림에서 점 $\\text{O}$는 삼각형 $\\text{ABC}$의 외심이다. $\\angle\\text{OAB} = 48^\\circ$, $\\angle\\text{OCA} = 32^\\circ$이고 $\\overline{\\text{AO}} = 9\\text{ cm}$일 때, 부채꼴 $\\text{BOC}$의 호의 길이를 구하는 과정과 답을 쓰시오. [5점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/s04.png\" /></div>",
+    "content": "<div>서술형 4. 오른쪽 그림에서 점 $\\text{O}$는 삼각형 $\\text{ABC}$의 외심이다. $\\angle\\text{OAB} = 48^\\circ$, $\\angle\\text{OCA} = 32^\\circ$이고 $\\overline{\\text{AO}} = 9\\text{ cm}$일 때, 부채꼴 $\\text{BOC}$의 호의 길이를 구하는 과정과 답을 쓰시오. [5점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q26-problem-visual-v2.svg\" alt=\"O는 삼각형의 외심이고 반지름 AO는 9 cm이다. 각 OAB는 48°이고 각 OCA는 32°이다. B에서 C까지 연결되는 부채꼴 호를 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "problemTypeKey": "PT_TRIANGLE_CENTERS",
     "standardUnitKey": "M2-05",
