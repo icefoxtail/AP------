@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "caption": "예: k=1인 파란 포물선과 k=−1인 주황 포물선에 초록 직선이 같은 점에서 접한다. 두 예시는 모든 k에 대한 판별식 조건을 이해하기 위한 것이다.",
+  "accessibilityDescription": "예: k=1인 파란 포물선과 k=−1인 주황 포물선에 초록 직선이 같은 점에서 접한다. 두 예시는 모든 k에 대한 판별식 조건을 이해하기 위한 것이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y=kx^2-2(k+2)x+k+1$의 그래프와 직선 $y=ax+b$가 $k$의 값에 관계없이 항상 한 점에서 만날 때, $a+b$의 값은? (단, $a,\\ b$는 상수이고, $k\\ne0$이다.) [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "relation",
+      "condition": "서로 다른 k의 포물선과 공통 접선을 색으로 구분하여 어떤 k에서도 판별식이0이어야 하는 의미를 보여 주고 a+b의 최종 합은 숨긴다.",
+      "mappedTo": [
+        "caption",
+        "graphPlan"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "서로 다른 k의 포물선과 공통 접선을 색으로 구분하여 어떤 k에서도 판별식이0이어야 하는 의미를 보여 주고 a+b의 최종 합은 숨긴다."
+  ],
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=x^2-6x+2"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=-x^2-2x"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-4"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "GREEN",
+        "label": "y=-4x+1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "x": "1",
+          "y": "-3",
+          "coordinates": false
+        }
+      ]
+    }
+  }
+}
