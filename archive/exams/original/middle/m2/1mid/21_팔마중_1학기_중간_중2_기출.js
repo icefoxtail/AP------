@@ -634,6 +634,8 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "imageSize": "tall",
+    "imageAlt": "왼쪽은 세 번 올라가고, 위에서는 한 번 내려가 오른쪽 변과 이어진다. 오른쪽 위로 들어간 세로는 2a−b, 오른쪽 변은 4b−a, 전체 아래쪽 가로는 3a+2b이다.",
     "level": "중",
     "category": "다항식의 계산(도형)",
     "originalCategory": "다항식의 계산(도형)",
@@ -642,7 +644,7 @@ window.questionBank = [
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "다항식",
@@ -652,7 +654,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 그림과 같은 도형의 둘레의 길이를 구하면? [4점]",
-    "image": "assets/images/21_팔마중_1학기_중간_중2_기출/q10.png",
+    "image": "assets/images/21_팔마중_1학기_중간_중2_기출/q10-problem-visual-v2.svg",
     "choices": [
       "$8a+10b$",
       "$4a-b$",
@@ -1532,9 +1534,9 @@ window.questionBank = [
     "projectionReason": "Preserve RPM semantic without inventing PT/TPL.",
     "semanticBoundaryReason": null,
     "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
-    "solutionImage": "assets/images/21_팔마중_1학기_중간_중2_기출/q22-solution.svg",
-    "solutionImageAlt": "반지름 a, 높이 3a인 원기둥과 반지름 2a, 높이 h인 원뿔의 부피가 같음을 나타낸 해설 도형",
-    "solutionImageCaption": "물의 부피 보존: 3πa³ = (4/3)πa²h",
+    "solutionImage": "assets/images/21_팔마중_1학기_중간_중2_기출/q22-solution-visual-v2.svg",
+    "solutionImageAlt": "원기둥은 높이 3a, 반지름 a이다. 원뿔은 높이 h, 밑면의 반지름 2a이다. 높이는 주황 점선, 반지름은 청록 실선이다.",
+    "solutionImageCaption": "원기둥의 물을 원뿔에 모두 옮겼으므로 두 부피를 같게 둔다.",
     "solutionImageSize": "full"
   },
   {
