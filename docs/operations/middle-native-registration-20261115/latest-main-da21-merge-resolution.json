@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "root-current-main-da21-merge-resolution-v1",
+  "currentMain": "da21db5a35ee9d1f06b3d1e8e29ac909b62ffce2",
+  "sourceResolution": {
+    "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+    "decision": "KEEP_EXACT_LATEST_MAIN_SOURCE",
+    "currentCrossConceptKeys": [
+      "CC_INSCRIBED_ANGLE",
+      "CC_QUADRILATERAL_ANGLE_SUM"
+    ],
+    "pendingOldOwnRequest": "m3s2-finalized-e052-transport-20261115",
+    "oldOwnRequestStillUnreconciled": true,
+    "newSemanticApproval": false
+  },
+  "testResolution": [
+    {
+      "path": "tests/archive-pr-native-preview.test.mjs",
+      "existingTestFamiliesPreserved": true,
+      "staticNameCount": 89,
+      "upstreamSchemaMatrixRenaming": []
+    },
+    {
+      "path": "tests/archive-register-isolation.test.js",
+      "existingTestFamiliesPreserved": true,
+      "staticNameCount": 30,
+      "upstreamSchemaMatrixRenaming": []
+    },
+    {
+      "path": "tests/archive-reviewed-exam-registration-v2.test.mjs",
+      "existingTestFamiliesPreserved": true,
+      "staticNameCount": 279,
+      "upstreamSchemaMatrixRenaming": [
+        "renderer v2 official write/replay and native reuse preserve exact inspected "
+      ]
+    }
+  ],
+  "fixtureResolution": "Retain root compound-renderer options and upstream M2/M3 schema/mutator fixtures; use upstream normalized static import/require closure copier. Preserve both test families.",
+  "verification": "NODE_SYNTAX_ONLY_TARGETED_EXECUTION_PENDING",
+  "nextAction": "Publish and verify shared contracts separately from pending inputs; reconcile E052 using current main authority before input publication"
+}

@@ -4,6 +4,7 @@ import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { finalizeM2NativeDisposition } from "./reviewed-m2-proposal-finalization.mjs";
 import { createImmutableGitMetadataLookup } from "./immutable-git-metadata.mjs";
+import { readImmutableGitFiles } from "./immutable-git-batch.mjs";
 
 const fail = message => { throw new Error(`native proposal finalization: ${message}`); };
 const sha = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -45,6 +46,25 @@ function gitFile(ctx, commit, relative) {
     ctx.cache.set(key, { blob, bytes, sha256: sha(bytes) });
   }
   return ctx.cache.get(key);
+}
+
+function batchAssetFiles(ctx, entries) {
+  const missing = new Map();
+  for (const entry of entries) {
+    safePath(ctx.root, entry.path);
+    if (!SHA1.test(entry.commit || "")) fail("exact immutable commit required");
+    const key = `proposal-git:${entry.commit}:${entry.path}`;
+    if (!ctx.cache.has(key)) missing.set(key, entry);
+  }
+  // Keep the existing single-file path when batching would add Git processes.
+  if (missing.size <= new Set([...missing.values()].map(e => e.commit)).size + 1) return;
+  const raw = readImmutableGitFiles(ctx.root, [...missing.values()]);
+  if (raw.some(bytes => bytes.length > 16 * 1024 * 1024)) fail("immutable Git object unavailable");
+  let index = 0;
+  for (const [key] of missing) {
+    const bytes = raw[index++], blob = crypto.createHash("sha1").update(`blob ${bytes.length}\0`).update(bytes).digest("hex");
+    ctx.cache.set(key, { blob, bytes, sha256: sha(bytes) });
+  }
 }
 
 function parse(bytes) {
@@ -229,6 +249,7 @@ function assetBindings(ctx, snapshot, primary) {
   };
   inspectInline(ctx.studentPayload(ctx.question));
   if (!primary || primary.path !== assetPath(ctx.question.image) || !SHA256.test(primary.sha256 || "")) fail("independently inspected primary image binding missing");
+  batchAssetFiles(ctx, sorted(references).flatMap(path => [snapshot.commit, ctx.native.spec.reviewCommit].map(commit => ({ commit, path }))));
   return sorted(references).map(p => {
     const file = gitFile(ctx, snapshot.commit, p), original = gitFile(ctx, ctx.native.spec.reviewCommit, p), full = safePath(ctx.root, p);
     if (file.sha256 !== original.sha256 || !fs.existsSync(full) || sha(fs.readFileSync(full)) !== file.sha256 ||
@@ -302,6 +323,7 @@ function dispositionAssets(ctx, snapshot, declared) {
       declared.some(r => Object.keys(r).some(k => !["path", "gitBlobSha1", "sha256", "visuallyInspected"].includes(k)) ||
         !SHA1.test(r.gitBlobSha1 || "") || !SHA256.test(r.sha256 || "") || r.visuallyInspected !== true))
     fail("complete independently inspected renderer inventory required");
+  batchAssetFiles(ctx, expected.flatMap(path => [snapshot.commit, ctx.native.spec.reviewCommit].map(commit => ({ commit, path }))));
   return expected.map(relative => {
     const row = declared.find(r => r.path === relative), file = gitFile(ctx, snapshot.commit, relative),
       native = gitFile(ctx, ctx.native.spec.reviewCommit, relative), local = safePath(ctx.root, relative);

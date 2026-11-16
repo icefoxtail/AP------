@@ -13,6 +13,7 @@ import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, prRegistrationProofNeeded,
 
 import { preparePrRegistration } from '../tools/ci/archive-pr-registration-prepare.mjs';
 import { SOURCE_SUBSET_SCHEMA, sourceSubsetEvidencePath, FULL_SOURCE_SUBSET_SCHEMA, fullSourceSubsetEvidencePath } from '../archive/tools/meta-foundation/source-subset-preservation.mjs';
+import { registerDifficulty5 } from '../archive/tools/meta-foundation/register-difficulty5.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = value => JSON.stringify(value, null, 2) + '\n';
@@ -211,7 +212,9 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       const replay = meta.records[0].difficultyBucket === 2, verify = phase === 'projection';
       if (verify && !replay) throw Error('FIXTURE_DIFFICULTY_NOT_APPLIED');
       const count = req.gemini.items.length, changedFields = !verify && !replay ? 4 * count : 0;
-      const result = { status: 'PASS', mode: verify ? 'verify-reviewed-correction' : phase === 'write' ? 'write-reviewed-correction' : 'dry-run-reviewed-correction',
+      const result = { status: 'PASS', mode: req.reviewedCorrection === undefined
+        ? verify ? 'verify-projection' : phase === 'write' ? 'write' : 'dry-run'
+        : verify ? 'verify-reviewed-correction' : phase === 'write' ? 'write-reviewed-correction' : 'dry-run-reviewed-correction',
         requestId: req.gemini.requestId, sourceArchiveFile: req.gemini.sourceArchiveFile, sourceBlobSha: req.gemini.latestBlobSha,
         items: req.gemini.items.map(item => ({ questionUid: item.questionUid, ordinal: item.ordinal })),
         summary: { total: count, APPLY: !verify && !replay ? count : 0, ALREADY_REGISTERED: !verify && replay ? count : 0,
@@ -813,6 +816,185 @@ test('reviewed difficulty preview binds selected UIDs and evidence without creat
   const before=f.snapshot();assert.equal(f.validate(proof).reusable,true);assert.deepEqual(f.snapshot(),before);f.assertShadowsRemoved();
   fs.appendFileSync(path.join(f.root,DIFFICULTY_EVIDENCE),'\n');
   assert.throws(()=>f.validate(proof),/EVIDENCE_DRIFT/);
+});
+
+function ordinaryDifficultyRequest(request) {
+  delete request.reviewedCorrection;
+  request.gemini.requestId = 'luna-diff5-20261112-합성_시험지';
+}
+
+test('ordinary difficulty selects the exact main inbox and PR inputs without inventing review evidence', t => {
+  const f = fixture(t, { partial: true, difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  const selected = f.selected(), main = selectPendingNativeRequests({ root: f.root, headSha: f.headSha });
+  assert.deepEqual(main, selected);
+  assert.equal(selected[0].kind, 'difficulty5-ratings');
+  assert.equal(selected[0].difficultyRegistrationMode, 'ordinary-ratings');
+  assert.equal(selected[0].difficultySourceBlobSha1, f.request.gemini.latestBlobSha);
+  assert.equal(selected[0].requestId, 'luna-diff5-20261112-합성_시험지');
+  assert.equal(selected[0].sourceQuestionCount, 24);
+  assert.deepEqual(selected[0].selectedItems, [{ questionUid: 'fixture', sourceOrdinal: 5 }]);
+  assert.deepEqual(selected[0].evidence, []);
+  assert.equal(selected[0].receiptPath, undefined);
+  const identity = fs.readFileSync(path.join(f.root, IDENTITY)), authority = fs.readFileSync(path.join(f.root, AUTHORITY));
+  const proof = f.produce();
+  assert.equal(proof.status, 'PASS');
+  assert.deepEqual(proof.nativePreview.plans, [{ requestPath: REQUEST, replay: false, plannedPaths: [META] }]);
+  assert.equal(proof.nativePreview.checks.find(c => c.id === 'native-consumer').difficultyOnly.newAdvancedMetadataApprovals, 0);
+  assert.equal(fs.existsSync(path.join(f.root, RECEIPT)), false);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, IDENTITY)), identity);
+  assert.deepEqual(fs.readFileSync(path.join(f.root, AUTHORITY)), authority);
+  const before = f.snapshot();
+  assert.equal(f.validate(proof).reusable, true); assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+test('ordinary main temporary preparation uses the official difficulty modes and preserves the inbox', t => {
+  const f = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  const requestBytes = fs.readFileSync(path.join(f.root, REQUEST));
+  const report = preparePrRegistration({ root: f.root, eventName: 'push',
+    event: { before: f.baseSha, after: f.headSha }, expectedSha: f.headSha, run: f.run });
+  assert.equal(report.state, 'PREPARED');
+  assert.deepEqual(report.pendingRequestPaths, [REQUEST]);
+  assert.equal(report.nativePreview.requests[0].difficultyRegistrationMode, 'ordinary-ratings');
+  assert.equal(report.nativePreview.checks.find(c => c.id === 'native-consumer').outcome, 'success');
+  assert.deepEqual(fs.readFileSync(path.join(f.root, REQUEST)), requestBytes);
+  assert.equal(f.git('rev-parse', 'HEAD'), f.headSha);
+});
+
+test('unchanged ordinary difficulty stays outside a later unrelated PR selection', t => {
+  const f = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  f.write('tools/ci/unrelated-fixture.mjs', '// later unrelated change\n');
+  f.git('add', '--', 'tools/ci/unrelated-fixture.mjs'); f.git('commit', '-qm', 'later unrelated code');
+  const headSha = f.git('rev-parse', 'HEAD');
+  assert.deepEqual(selectNativeRequests({ root: f.root, baseSha: f.headSha, headSha }), []);
+  assert.equal(selectPendingNativeRequests({ root: f.root, headSha }).length, 1);
+});
+
+test('ordinary difficulty fails closed for malformed scope, correction claims and unknown main schemas', t => {
+  for (const [mutate, error] of [
+    [r => { r.gemini.schemaVersion = 'unknown'; }, /DIFFICULTY_APPROVAL/],
+    [r => { r.gemini.requestId = ''; }, /REQUEST_ID/],
+    [r => { r.gemini.requestId = 'id\nforged'; }, /REQUEST_ID/],
+    [r => { r.gemini.items = []; }, /QUESTION_COUNT/],
+    [r => { r.gemini.items = [null]; }, /SELECTED_UID_SCOPE/],
+    [r => { r.gemini.items.push({ ...r.gemini.items[0], ordinal: 6 }); }, /SELECTED_UID_SCOPE/],
+    [r => { r.gemini.items[0].ordinal = 25; }, /SOURCE_DENOMINATOR/],
+    [r => { r.gemini.latestBlobSha = '0'.repeat(40); }, /SOURCE_NOT_FIXED/],
+    [r => { r.gemini.sourceArchiveFile = '../native.js'; }, /UNSAFE_PATH/],
+    [r => { r.reviewedCorrection = null; }, /DIFFICULTY_APPROVAL/],
+    [r => { r.reviewedCorrection = {}; }, /DIFFICULTY_APPROVAL/],
+    [r => { r.schemaVersion = 'unknown-difficulty-request'; }, /PENDING_SCHEMA_UNSUPPORTED/],
+  ]) {
+    const f = fixture(t, { partial: true, difficultyOnly: true, otherOwner: false,
+      mutateRequest: r => { ordinaryDifficultyRequest(r); mutate(r); } });
+    assert.throws(() => selectPendingNativeRequests({ root: f.root, headSha: f.headSha }), error);
+    assert.equal(f.calls.filter(c => c.program !== 'git').length, 0);
+  }
+  const request = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  fs.appendFileSync(path.join(request.root, REQUEST), '\n');
+  assert.throws(request.selected, /REQUEST_NOT_FIXED/);
+  const source = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  fs.appendFileSync(path.join(source.root, SOURCE), '\n');
+  assert.throws(source.selected, /SOURCE_NOT_FIXED/);
+});
+
+test('ordinary difficulty keeps the official CRLF binding but rejects any other source drift', t => {
+  const f = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  const originalBlob = f.request.gemini.latestBlobSha;
+  const source = fs.readFileSync(path.join(f.root, SOURCE), 'utf8').replace(/\n/g, '\r\n');
+  f.write(SOURCE, source); f.git('add', '--', SOURCE); f.git('commit', '-qm', 'exact CRLF source snapshot');
+  const headSha = f.git('rev-parse', 'HEAD');
+  const [selected] = selectPendingNativeRequests({ root: f.root, headSha });
+  assert.equal(selected.difficultySourceBlobSha1, originalBlob);
+  assert.notEqual(selected.source.blobSha1, originalBlob);
+  assert.equal(selected.source.sha256, sha(source));
+  f.write(SOURCE, source.replace('id', 'changedField'));
+  f.git('add', '--', SOURCE); f.git('commit', '-qm', 'non-newline source change');
+  assert.throws(() => selectPendingNativeRequests({ root: f.root, headSha: f.git('rev-parse', 'HEAD') }), /SOURCE_NOT_FIXED/);
+});
+
+test('ordinary difficulty rejects partial registrar success, wrong modes and foreign output mutations', t => {
+  for (const phase of ['dry-run', 'write', 'projection']) for (const mutate of [
+    r => ({ ...r, mode: 'dry-run-reviewed-correction' }),
+    r => ({ ...r, summary: { ...r.summary, SKIP_INVALID: 1 } }),
+    r => ({ ...r, summary: { ...r.summary, CONFLICT: 1 } }),
+    r => ({ ...r, sourceBlobSha: '0'.repeat(40) }),
+    r => ({ ...r, items: [{ questionUid: 'foreign', ordinal: 1 }] }),
+  ]) {
+    const f = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+    f.hook.difficultyResult = (p, r) => p === phase ? mutate(r) : r;
+    assert.throws(f.produce, /DIFFICULTY_RESULT_(NOT_PASS|UID_SCOPE)/);
+  }
+  for (const file of [SOURCE, IDENTITY, AUTHORITY]) {
+    const f = fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+    f.hook.afterDifficultyWrite = root => f.write(file, 'undeclared write\n', root);
+    assert.throws(f.produce, /UNDECLARED_NATIVE_OUTPUT/);
+  }
+});
+
+function ordinaryOfficialFixture(t, mutate) {
+  const f = fixture(t, { partial: true, difficultyOnly: true, otherOwner: false, mutateRequest: ordinaryDifficultyRequest });
+  const records = Array.from({ length: 24 }, (_, i) => {
+    const q = { id: i + 1 }, questionUid = i === 4 ? 'fixture' : `synthetic-uid-${i + 1}`;
+    return { questionUid, sourceArchiveFile: 'original/native.js', sourceOrdinal: i + 1,
+      sourceFingerprint: sha(JSON.stringify({ content: null, choices: null, answer: null, solution: null, image: null })),
+      contentFingerprint: sha(JSON.stringify({ content: null, choices: null, image: null })),
+      level: '중', metadataApprovalType: 'MAIN_MERGE', reviewStatus: 'review_required', sourceQuestionNo: q.id,
+      ...(i === 4 ? { difficultyBucket: 2, difficultyConfidence: 'high', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL' } : {}) };
+  });
+  const identity = records.map(r => ({ questionUid: r.questionUid, sourceArchiveFile: r.sourceArchiveFile,
+    sourceOrdinal: r.sourceOrdinal, sourceQuestionNo: r.sourceQuestionNo, sourceFingerprint: r.sourceFingerprint }));
+  f.request.gemini.items.push({ ...copy(f.request.gemini.items[0]), questionUid: records[5].questionUid, ordinal: 6 });
+  mutate?.({ request: f.request, records, identity });
+  f.write(META, json({ records })); f.write(IDENTITY, json({ records: identity })); f.write(REQUEST, json(f.request));
+  f.git('add', '--', META, IDENTITY, REQUEST); f.git('commit', '-qm', 'synthetic exact ordinary registrar inputs');
+  const headSha = f.git('rev-parse', 'HEAD'), officialResults = [];
+  const run = (program, args, root = f.root) => {
+    if (program === 'git') return f.run(program, args, root);
+    if (args[0].endsWith('/register-difficulty5.mjs')) {
+      const request = JSON.parse(fs.readFileSync(path.join(root, args[args.indexOf('--request') + 1]), 'utf8'));
+      const result = registerDifficulty5({ root, request, write: args.includes('--write'), verifyProjection: args.includes('--verify-projection') });
+      officialResults.push(copy(result)); return json(result);
+    }
+    return f.run(program, args, root);
+  };
+  return { ...f, headSha, run, officialResults, select: () => selectPendingNativeRequests({ root: f.root, headSha }) };
+}
+
+test('ordinary preview invokes the real registrar for mixed replay, metadata-only write and exact projection', t => {
+  const f = ordinaryOfficialFixture(t), selected = f.select();
+  const before = JSON.parse(fs.readFileSync(path.join(f.root, META), 'utf8')).records;
+  const protectedBytes = [SOURCE, IDENTITY, AUTHORITY, REQUEST].map(file => [file, fs.readFileSync(path.join(f.root, file))]);
+  assert.deepEqual(applyNativeRequests({ root: f.root, requests: selected, run: f.run }),
+    [{ requestPath: REQUEST, replay: false, plannedPaths: [META] }]);
+  assert.equal(f.officialResults[0].summary.APPLY, 1); assert.equal(f.officialResults[0].summary.ALREADY_REGISTERED, 1);
+  const after = JSON.parse(fs.readFileSync(path.join(f.root, META), 'utf8')).records;
+  const difficultyFields = new Set(['difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility']);
+  const withoutDifficulty = row => Object.fromEntries(Object.entries(row).filter(([key]) => !difficultyFields.has(key)));
+  assert.deepEqual(after.map(withoutDifficulty), before.map(withoutDifficulty));
+  assert.deepEqual(after.filter(r => r.sourceOrdinal !== 6), before.filter(r => r.sourceOrdinal !== 6));
+  assert.equal(after[5].difficultyBucket, 2);
+  assert.deepEqual(applyNativeRequests({ root: f.root, requests: selected, run: f.run }),
+    [{ requestPath: REQUEST, replay: true, plannedPaths: [] }]);
+  assert.equal(verifyNativeRequests({ root: f.root, requests: selected, run: f.run })[0].outcome, 'success');
+  assert.equal(f.officialResults.at(-1).mode, 'verify-projection');
+  assert.equal(f.officialResults.at(-1).summary.VERIFIED, 2);
+  assert.equal(f.officialResults.at(-1).summary.changedFields, 0);
+  for (const [file, bytes] of protectedBytes) assert.deepEqual(fs.readFileSync(path.join(f.root, file)), bytes);
+  assert.equal(fs.existsSync(path.join(f.root, RECEIPT)), false);
+});
+
+test('ordinary preview cannot convert real registrar invalid rows, conflicts or UID drift to success', t => {
+  for (const mutate of [
+    ({ request }) => { request.gemini.items[1].after.difficultyBucket = 9; },
+    ({ request }) => { request.gemini.items[1].after.difficultyConfidence = 'invented'; },
+    ({ records }) => { records[5].difficultyBucket = 4; },
+  ]) {
+    const f = ordinaryOfficialFixture(t, mutate), before = fs.readFileSync(path.join(f.root, META));
+    assert.throws(() => applyNativeRequests({ root: f.root, requests: f.select(), run: f.run }), /DIFFICULTY_RESULT_NOT_PASS/);
+    assert.deepEqual(fs.readFileSync(path.join(f.root, META)), before);
+  }
+  const f = ordinaryOfficialFixture(t, ({ identity }) => { identity[5].questionUid = 'unrelated-identity'; });
+  assert.throws(() => applyNativeRequests({ root: f.root, requests: f.select(), run: f.run }), /ordinal\/questionUid mismatch/);
 });
 
 test('identity repair and reviewed difficulty run in the same preview before strict projection', t => {

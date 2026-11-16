@@ -5,6 +5,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { createImmutableGitMetadataLookup } from './immutable-git-metadata.mjs';
+import { readImmutableGitFiles } from './immutable-git-batch.mjs';
 
 const immutableMetadata = createImmutableGitMetadataLookup();
 
@@ -227,6 +228,22 @@ function gitFile(ctx, commit, relative) {
   }
   return ctx.cache.get(key);
 }
+function batchAssetFiles(ctx, entries) {
+  const missing=new Map();
+  for(const entry of entries) {
+    safePath(ctx.root,entry.path);
+    if(!SHA1.test(entry.commit||''))fail('exact immutable commit required');
+    const key=`renderer-source-git:${entry.commit}:${entry.path}`;
+    if(!ctx.cache.has(key))missing.set(key,entry);
+  }
+  if(missing.size<=new Set([...missing.values()].map(e=>e.commit)).size+1)return;
+  const raw=readImmutableGitFiles(ctx.root,[...missing.values()]);let index=0;
+  if(raw.some(bytes=>bytes.length>32*1024*1024))fail('immutable Git evidence unavailable');
+  for(const [key,entry]of missing) {
+    const bytes=raw[index++],gitBlobSha1=crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+    ctx.cache.set(key,{commit:entry.commit,path:entry.path,gitBlobSha1,sha256:sha(bytes),bytes});
+  }
+}
 function boundDocument(ctx, ref) {
   if (!ownKeys(ref, ['path', 'sha256']) || !SHA256.test(ref.sha256 || '')) fail('SHA-bound review reference required');
   for (const refs of [ctx.request.approval.evidenceRefs, ctx.patch.evidenceRefs])
@@ -299,6 +316,8 @@ function normalizedAssets(rows) {
 function verifyAssets(ctx, rows, snapshot, { live = false, alsoCommit } = {}) {
   const assets = normalizedAssets(rows);
   if (!equal(assets.map(r => r.path).sort(), references(ctx, snapshot.question))) fail('asset inventory is incomplete or excessive');
+  batchAssetFiles(ctx,assets.flatMap(r=>[snapshot.ref.commit,...(r.commit?[r.commit]:[]),...(alsoCommit?[alsoCommit]:[])]
+    .map(commit=>({commit,path:r.path}))));
   return assets.map(r => {
     if (!SHA1.test(r.gitBlobSha1 || '') || !SHA256.test(r.sha256 || '')) fail('exact asset hashes required');
     const file = gitFile(ctx, snapshot.ref.commit, r.path);
@@ -577,7 +596,9 @@ export function validateReviewedCurrentRendererContinuity(args) {
       spec.schemaVersion !== 'archive-reviewed-current-renderer-continuity-v1' || !SHA1.test(spec.reviewCommit || '') ||
       ctx.request.scope !== 'PARTIAL_UIDS' || ctx.request.approval?.type !== 'FINAL_QA' || ctx.request.registrationMode ||
       ctx.request.approval.sourceRebind || ctx.patch.rebind !== undefined || ctx.patch.sourceReview.proposalFinalization !== undefined ||
-      ctx.native.review.schemaVersion !== 'm3-s2-complete-semantic-review-v1' || ctx.native.review.reviewScope !== undefined)
+      !['m3-s2-complete-semantic-review-v1', 'm2-s2-meta-review-v1'].includes(ctx.native.review.schemaVersion) ||
+      (ctx.native.review.schemaVersion === 'm2-s2-meta-review-v1' && ctx.row.verdict !== 'REGISTRATION_PENDING') ||
+      ctx.native.review.reviewScope !== undefined)
     fail('exclusive native-semantic and narrow-renderer scope required');
   const doc = boundDocument(ctx, spec.reviewRef);
   if (!ownKeys(doc, ['schemaVersion', 'scope', 'sourceArchiveFile', 'expectedQuestionCount', 'selectedUidCount',

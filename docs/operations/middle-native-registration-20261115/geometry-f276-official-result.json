@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "geometry-f276-official-result-v1",
+  "status": "FAIL_TIMEOUT_300_SECONDS",
+  "official300Pass": false,
+  "codeCommit": "f27675729368bccffa04ff625a347df1c043c697",
+  "fixtureCommit": "c9e91333da3474af56e0dffca92a8f86b76478c4",
+  "frozenInput": "b47525eda9c571d2c38e9f4f1913d594ee182e87",
+  "result": {
+    "schemaVersion": "geometry-call-local-unprofiled-v1",
+    "codeCommit": "f27675729368bccffa04ff625a347df1c043c697",
+    "fixtureCommit": "c9e91333da3474af56e0dffca92a8f86b76478c4",
+    "validationDataBase": "b47525eda9c571d2c38e9f4f1913d594ee182e87",
+    "command": [
+      "timeout",
+      "300s",
+      "node",
+      "tests/meta-foundation-middle-geometry-runtime.test.js"
+    ],
+    "nodeOptions": null,
+    "instrumented": false,
+    "timeoutSeconds": 300,
+    "testSha256": "81448429a09eebcda1a53b6905452011fe0eca645816b5525d884da5cf45e756",
+    "codeBoundarySha256": "62f911896af2cb39fc27dfcf3ec01086f0d89c79faf876b61486fd3f4ecec3d4",
+    "startedAt": "2026-11-16T00:41:09.609886+00:00",
+    "initialFreeBytes": 691179520,
+    "status": "UNINSTRUMENTED_TIMEOUT_300_SECONDS",
+    "events": [],
+    "exitCode": 124,
+    "elapsedSeconds": 300.20277407699905,
+    "endedAt": "2026-11-16T00:46:09.812622+00:00",
+    "maxRssKiB": 2909116,
+    "userSeconds": 340.143369,
+    "systemSeconds": 137.130308,
+    "finalFreeBytes": 796475392,
+    "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "logBytes": 0,
+    "stage": "f276-call-local-batch-exact-command-uninstrumented",
+    "resultPath": "/workspace/scratch/987d4bf32f40/AP-geometry-runtime-perf/.tmp/geometry-call-local-unprofiled/result.json",
+    "resultSha256": "e29608f0b5a55a035f0907bb525e4136ad4bca75989d8eedd5c0cc9a3f14946d",
+    "log": "/workspace/scratch/987d4bf32f40/AP-geometry-runtime-perf/.tmp/geometry-call-local-unprofiled/stdout.log",
+    "firstPassObserved": false,
+    "comparisonValid": true,
+    "copiedProofFixturePhaseReached": false
+  },
+  "correctnessEvidence": "28 focused regressions passed at4ac;6 relevant cases repeated afterf276 limit guards passed; independent static code reviewe625 has no blocking finding. These are not official runtime PASS.",
+  "performanceInference": "The exact300 cutoff still occurs before first block output, so a full-suite speedup or completion time cannot be measured from this run. Earlier V8 diagnostic reached first historicalPASS at377.119s with7a then failed at copied-proof preparation.",
+  "fixtureStatus": "c9 complete current ordinary source-review fixture preparation is present but was not reached by this300 run. No actual positive copied-proof claim.",
+  "sourceAssetMetadataMutation": false,
+  "assertionsOrBudgetRelaxed": false,
+  "newApprovalResultCache": false,
+  "cleanup": [
+    {
+      "name": "issued-source-binding-replay-mAGGIr",
+      "origin": "/workspace/scratch/987d4bf32f40/AP-geometry-runtime-perf",
+      "configSha256": "1bda1d7e8ee2eaa4237145da8eebce554670163933bd6f20c095a3e159532d25",
+      "action": "REMOVED_OWN_FINISHED_TEMP_REPLAY"
+    }
+  ],
+  "cumulativeReport": {
+    "path": "/workspace/scratch/987d4bf32f40/AP-geometry-runtime-cache-code/.tmp/geometry-performance-attempts-v10.json",
+    "sha256": "247fd239efae6efec749cd2daaa480e3fba82901e145e9935475dcd432dd6c7a"
+  },
+  "nextAction": "No repeat of unchanged300 or900. Keep officialFAIL explicit. Root may evaluate the code-only PR on its exact CI environment; a further local candidate requires a measured material cold-path reduction, not a timeout/assertion change or approval-result cache."
+}

@@ -61,7 +61,7 @@ window.examData = {
     {
       "id": 5,
       "score": 4.0,
-      "question": "<p>다음 그림에서 직사각형의 넓이와 삼각형의 넓이가 서로 같을 때, 삼각형의 높이를 구하면? [4점]</p><div class=\"question-image\"><img src=\"assets/images/23_연향중_1학기_중간_중2_수학/q05.png\"/></div>",
+      "question": "<p>다음 그림에서 직사각형의 넓이와 삼각형의 넓이가 서로 같을 때, 삼각형의 높이를 구하면? [4점]</p><div class=\"question-image\"><img src=\"assets/images/23_연향중_1학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"직사각형의 가로 길이는 6a²b⁴이고 세로 길이는 2a³을 b³으로 나눈 값이다. 삼각형의 밑변은 4a³b³이다. 꼭짓점에서 밑변에 내리는 높이를 점선으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
       "choices": [
         "$3a^2b^2$",
         "$6a^2b^2$",
@@ -368,8 +368,9 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "layoutTag": "fullwidth",
     "score": 4,
-    "question": "<p>다음 그림에서 직사각형의 넓이와 삼각형의 넓이가 서로 같을 때, 삼각형의 높이를 구하면? [4점]</p><div class=\"question-image\"><img src=\"assets/images/23_연향중_1학기_중간_중2_수학/q05.png\"/></div>",
+    "question": "<p>다음 그림에서 직사각형의 넓이와 삼각형의 넓이가 서로 같을 때, 삼각형의 높이를 구하면? [4점]</p><div class=\"question-image\"><img src=\"assets/images/23_연향중_1학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"직사각형의 가로 길이는 6a²b⁴이고 세로 길이는 2a³을 b³으로 나눈 값이다. 삼각형의 밑변은 4a³b³이다. 꼭짓점에서 밑변에 내리는 높이를 점선으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "choices": [
       "$3a^2b^2$",
       "$6a^2b^2$",
@@ -379,7 +380,7 @@ window.questionBank = [
     ],
     "answer": "",
     "solution": "",
-    "content": "<div>다음 그림에서 직사각형의 넓이와 삼각형의 넓이가 서로 같을 때, 삼각형의 높이를 구하면? [4점]</div><div class=\"question-image\"><img src=\"assets/images/23_연향중_1학기_중간_중2_수학/q05.png\"/></div>"
+    "content": "<div>다음 그림에서 직사각형의 넓이와 삼각형의 넓이가 서로 같을 때, 삼각형의 높이를 구하면? [4점]</div><div class=\"question-image\"><img src=\"assets/images/23_연향중_1학기_중간_중2_수학/q5-problem-visual-v2.svg\" alt=\"직사각형의 가로 길이는 6a²b⁴이고 세로 길이는 2a³을 b³으로 나눈 값이다. 삼각형의 밑변은 4a³b³이다. 꼭짓점에서 밑변에 내리는 높이를 점선으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 6,

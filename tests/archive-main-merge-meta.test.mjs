@@ -5,6 +5,8 @@ import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import childProcess from 'node:child_process';
+import {syncBuiltinESMExports} from 'node:module';
 import {fileURLToPath} from 'node:url';
 import canonical from '../archive/archive2-canonical.js';
 import {planQuestion,nativeReviewReceipt,activeBindingContext,sourceFingerprint,contentFingerprint,loadBank,sourcePath,selectTargets} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
@@ -520,7 +522,7 @@ test('pinned DongSan source validates through the official registry and planner'
   assert.equal(r.status,'APPLY',JSON.stringify(r));assert.equal(r.final.problemTypeKey,'PT_M3_SQUARE_ROOT_PROPERTY');assert.equal(r.final.templateKey,'TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT');
 });
 
-function reviewedFigureNativeFixture(t,{form='image',mutateCurrent,mutatePending,mutateIndependent,mutateRenderer,mutateNative,nestedDependency=false,genericReview=false,completeFields=false}={}) {
+function reviewedFigureNativeFixture(t,{form='image',mutateCurrent,mutatePending,mutateIndependent,mutateRenderer,mutateNative,nestedDependency=false,genericReview=false,completeFields=false,extraSolutionAsset=false}={}) {
   const f=partialNativeReviewFixture(t,{completeFields}),dir=f.nativeSource.root;
   const sha=v=>crypto.createHash('sha256').update(v).digest('hex');
   const blob=v=>crypto.createHash('sha1').update(`blob ${v.length}\0`).update(v).digest('hex');
@@ -553,15 +555,18 @@ function reviewedFigureNativeFixture(t,{form='image',mutateCurrent,mutatePending
   else if(form==='image')q.image='assets/current-problem.svg';
   Object.assign(q,{solutionImage:'assets/current-solution.svg',solutionImageAlt:'The original triangle with matching side labels.',
     solutionImageCaption:'The reviewed relation remains unchanged.',solutionImageSize:'full',layoutTag:'fullwidth'});
+  if(extraSolutionAsset)q.solutionImage=[q.solutionImage,'assets/second-current-solution.svg'];
   mutateCurrent?.(q);f.question=q;f.previous=structuredClone(before);
   f.nativeSource.bank=structuredClone(beforeBank);f.nativeSource.bank[2]=structuredClone(q);
   f.nativeSource.bytes=Buffer.from('window.questionBank='+JSON.stringify(f.nativeSource.bank)+';\n');f.nativeSource.blobSha1=blob(f.nativeSource.bytes);
   put(sourcePath,f.nativeSource.bytes);
   if(form!=='solution')put(newAsset,svg);
   put(solutionAsset,nestedDependency?svg.replace('</svg>','<image href="other.svg"/></svg>'):svg);
+  if(extraSolutionAsset)put('archive/assets/second-current-solution.svg',svg);
   const currentCommit=commit();
   const asset=p=>{const bytes=fs.readFileSync(path.join(dir,p));return {path:p,gitBlobSha:blob(bytes),rawSha256:sha(bytes)};};
-  const beforeAssets=form==='solution'?[]:[asset(oldAsset)],currentAssets=[...(form==='solution'?[]:[asset(newAsset)]),asset(solutionAsset)];
+  const beforeAssets=form==='solution'?[]:[asset(oldAsset)],currentAssets=[...(form==='solution'?[]:[asset(newAsset)]),asset(solutionAsset),
+    ...(extraSolutionAsset?[asset('archive/assets/second-current-solution.svg')]:[])];
   const currentHash=sha(JSON.stringify(q)),beforeHash=sha(JSON.stringify(before));
   const changed=[...new Set([...Object.keys(before),...Object.keys(q)])].filter(k=>JSON.stringify(before[k]??null)!==JSON.stringify(q[k]??null));
   const independentPath='review/independent-figure.json',independent={schemaVersion:'archive-narrow-current-renderer-independent-review-v1',
@@ -622,6 +627,50 @@ for(const form of ['image','html','solution'])test('exact current figure native 
   f.previous=structuredClone(f.question);assert.equal(planQuestion(f).status,'ALREADY_REGISTERED','a caught-up cursor still verifies the same reviewed assets');
   fs.appendFileSync(path.join(f.nativeSource.root,f.solutionAsset),'<!-- later unreviewed asset -->');
   assert.notEqual(planQuestion(f).status,'ALREADY_REGISTERED','a warmed cache and unchanged cursor must not hide changed current asset bytes');
+});
+
+test('figure asset batches preserve the original result and keep the one-asset fallback',async t=>{
+  for(const form of ['image','solution'])await t.test(form,t=>{
+    const f=reviewedFigureNativeFixture(t,{form}),before=JSON.stringify({current:f.current,identity:f.identity,
+      runtime:f.nativeSource.runtimeRecord,question:f.question,receipt:f.receipt});
+    const original=childProcess.execFileSync;let batches=0;
+    childProcess.execFileSync=function(command,args,options){
+      if(command==='git'&&options?.cwd===f.nativeSource.root&&args[0]==='cat-file'&&args[1]==='--batch')batches++;
+      return original.call(this,command,args,options);
+    };syncBuiltinESMExports();
+    try {
+      assert.equal(f.verifyFigure(),true);
+      assert.equal(batches>0,form==='image','multiple current assets batch; a single asset uses the original path');
+      assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
+      assert.equal(JSON.stringify({current:f.current,identity:f.identity,runtime:f.nativeSource.runtimeRecord,
+        question:f.question,receipt:f.receipt}),before);
+    } finally {childProcess.execFileSync=original;syncBuiltinESMExports();}
+  });
+});
+
+test('figure asset batch rejects incomplete raw Git output before accepting the existing approval',t=>{
+  const f=reviewedFigureNativeFixture(t),original=childProcess.execFileSync;let changed=0;
+  childProcess.execFileSync=function(command,args,options){
+    const output=original.call(this,command,args,options);
+    if(command==='git'&&options?.cwd===f.nativeSource.root&&args[0]==='cat-file'&&args[1]==='--batch'){
+      changed++;return output.subarray(0,-1);
+    }
+    return output;
+  };syncBuiltinESMExports();
+  try {assert.throws(()=>f.verifyFigure(),/immutable Git batch/);assert.equal(changed,1);}
+  finally {childProcess.execFileSync=original;syncBuiltinESMExports();}
+  assert.equal(f.verifyFigure(),true,'the unchanged complete raw objects still verify');
+});
+
+test('batched figure assets still reject deleted and symlinked live files after a warm verification',async t=>{
+  for(const mode of ['deleted','symlink'])await t.test(mode,t=>{
+    const f=reviewedFigureNativeFixture(t),target=path.join(f.nativeSource.root,f.solutionAsset);
+    assert.equal(f.verifyFigure(),true);assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
+    if(mode==='deleted')fs.unlinkSync(target);
+    else {fs.renameSync(target,target+'.original');fs.symlinkSync(target+'.original',target);}
+    assert.throws(()=>f.verifyFigure());
+    assert.notEqual(planQuestion(f).status,'ALREADY_REGISTERED');
+  });
 });
 
 test('current figure reuse rejects meaning changes even when current Git, native review and hashes are truthful',async t=>{
@@ -855,8 +904,8 @@ test('a claimed current figure row cannot drop its repair after the cursor catch
     assert.notEqual(planQuestion(f).status,'ALREADY_REGISTERED');});
 });
 
-function compoundRendererNativeFixture(t,{form='image',mutateManifest,mutateIndependent,unapprovedNativeDisplayField=false}={}) {
-  const f=reviewedFigureNativeFixture(t,{form,mutateNative:unapprovedNativeDisplayField?
+function compoundRendererNativeFixture(t,{form='image',mutateManifest,mutateIndependent,unapprovedNativeDisplayField=false,extraSolutionAsset=false}={}) {
+  const f=reviewedFigureNativeFixture(t,{form,extraSolutionAsset,mutateNative:unapprovedNativeDisplayField?
     native=>{const r=native.items.find(r=>r.questionUid===uid);r.after={...r.after,standardUnitOrder:17};}:undefined}),dir=f.nativeSource.root;
   const nativeCommit=f.review.previousSourceCommit,currentCommit=f.review.currentSourceCommit;
   const nativePath='review/original-native.json',sourcePath='archive/exams/'+source;
@@ -910,6 +959,19 @@ function compoundRendererNativeFixture(t,{form='image',mutateManifest,mutateInde
   return {...f,bindingPath,compoundBinding:binding,compoundManifest:manifest,compoundManifestPath:manifestPath,compoundIndependentPath:independentPath,
     verifyCompound:()=>nativeReviewedRendererRebind(f.receipt,f.nativeSource,f.previous,f.question,f.identity,f.ordinal,f.current,f.registry)};
 }
+
+test('compound renderer batches a complete multi-asset inventory and still checks every live file',t=>{
+  const f=compoundRendererNativeFixture(t,{extraSolutionAsset:true}),original=childProcess.execFileSync;let batches=0;
+  childProcess.execFileSync=function(command,args,options){
+    if(command==='git'&&options?.cwd===f.nativeSource.root&&args[0]==='cat-file'&&args[1]==='--batch')batches++;
+    return original.call(this,command,args,options);
+  };syncBuiltinESMExports();
+  try {assert.equal(f.verifyCompound(),true);assert.ok(batches>0);}
+  finally {childProcess.execFileSync=original;syncBuiltinESMExports();}
+  assert.equal(planQuestion(f).status,'ALREADY_REGISTERED');
+  fs.appendFileSync(path.join(f.nativeSource.root,'archive/assets/second-current-solution.svg'),'<!-- changed live asset -->');
+  assert.notEqual(planQuestion(f).status,'ALREADY_REGISTERED');
+});
 
 for(const form of ['image','html','solution'])test('compound native renderer proof keeps stale bindings distinct and reuses the original approval: '+form,t=>{
   const f=compoundRendererNativeFixture(t,{form});

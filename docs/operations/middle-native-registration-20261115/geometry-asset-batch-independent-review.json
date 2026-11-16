@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "geometry-asset-batch-independent-static-review-v1",
+  "reviewer": "/root/m1_compact_transport",
+  "reviewedAtUtc": "2026-11-16T00:42:05.760700+00:00",
+  "baselineCommit": "c9e91333da3474af56e0dffca92a8f86b76478c4",
+  "batchCommit": "4acb4e0e9ebe7735886f282173ec1576e351c0cd",
+  "followupCommit": "f27675729368bccffa04ff625a347df1c043c697",
+  "productionFiles": [
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs",
+      "baselineSha256": "ade879b4632d2341512447ff1068cb33485b2d112d56db8b6d870da543b7c9f8",
+      "batchCommitSha256": "c9ef295a9d6f51b8ccd98c9711b9306d88b02a8790e90555673da0edc84151cd",
+      "currentSha256": "260c38112b220842f5e369048c55703860c1711340aed5a792151ab6e6c50f01"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs",
+      "baselineSha256": "8141acba639714be3456ba71bae4ee57658ea73faf0a12ccbdfff83f9d843a56",
+      "batchCommitSha256": "d45bc59567f10915d0e52437a18a77efc1f10e83a2c97d958c78792585073a35",
+      "currentSha256": "b0213ac6f0e742475c6e95896f9f969105c99e2c89991939d6eee04cb1e8d4b6"
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-proposal-finalization.mjs",
+      "baselineSha256": "99005285d48109ead1e1e0d391253be16094e3b8ac147a023a276186a22dfe92",
+      "batchCommitSha256": "7f5c4d7bbf57afe861768ccc2ec7e0b4b2cb9607a749ccdff3ded141f8727493",
+      "currentSha256": "c522b207c4b402f0a7c593fa30eeb1937c71a1cfcf71ebd069b3fa98a06217b6"
+    }
+  ],
+  "decoder": {
+    "path": "archive/tools/meta-foundation/immutable-git-batch.mjs",
+    "sha256": "f87a003d0aa8f93cbc5149a31dc20487a351831b84e00c0a8457e26225c024c2",
+    "unchangedFromBaseline": true
+  },
+  "scope": "Independent read-only review of the three exact production asset-read batching changes and the three-line original byte-limit preservation follow-up. No new run, clone, performance measurement, or approval decision.",
+  "checks": [
+    {
+      "boundary": "Uncached exact immutable asset reads",
+      "observation": "Only safe path / exact 40-hex commit entries missing from the module existing immutable-file cache are selected. The batch invocation is call-local and reads raw Git bytes; the preexisting immutable Git cache lifetime is not expanded."
+    },
+    {
+      "boundary": "Fallback and file object shape",
+      "observation": "Small sets retain the old gitFile read path. Batch result order maps to the requested entries and preserves each module existing cached file object shape, including independently computed raw SHA-256 and Git blob SHA-1."
+    },
+    {
+      "boundary": "Immutable decoder",
+      "observation": "The unchanged decoder resolves exact commits and regular modes, verifies ordered object identifiers, blob type, declared length, raw Git blob hash, and rejects missing, truncated, extra/trailing data. Returned Buffers do not expose the internal concatenated response."
+    },
+    {
+      "boundary": "Live freshness and authority",
+      "observation": "Original asset-list equality, declared blob/SHA, snapshot/native/origin linkage, per-call live filesystem bytes/hash, symlink guard, SVG dependency checks, and full proposal/review authority checks remain. The change does not cache an approval/verdict or skip a live source/evidence check."
+    },
+    {
+      "boundary": "Original per-asset limits",
+      "observation": "The follow-up rejects any batch buffer larger than 32 MiB in figure reuse and current renderer continuity, or 16 MiB in proposal finalization, before inserting any batch member into the existing cache. These match the old single-file gitFile maxBuffer limits."
+    }
+  ],
+  "blockingFindings": [],
+  "result": "NO_BLOCKING_FINDING_IN_SCOPED_STATIC_READ",
+  "authorReportedTests": {
+    "batchCommit": {
+      "passed": 28,
+      "skipped": 0,
+      "scope": "10 decoder +14 figure +4 proposal tests, including actual batch/fallback and raw/live negatives"
+    },
+    "followupCommit": {
+      "passed": 6,
+      "scope": "related byte-limit follow-up regressions"
+    },
+    "independentlyExecutedByReviewer": 0
+  },
+  "limitations": [
+    "No claim of full current-main CI or geometry300 performance success.",
+    "Existing module immutable Git caches remain; this review does not claim every warm immutable Git cache hit becomes a fresh Git process. Live checks remain per call."
+  ],
+  "codeMutationByReviewer": 0,
+  "testsRunByReviewer": 0,
+  "clonesByReviewer": 0,
+  "newSemanticApprovals": 0
+}

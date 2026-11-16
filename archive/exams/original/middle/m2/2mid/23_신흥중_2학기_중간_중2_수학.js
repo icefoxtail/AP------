@@ -3,6 +3,8 @@ window.examTitle = "23_신흥중_2학기_중간_중2_수학";
 window.questionBank = [
   {
     "id": 1,
+    "imageSize": "tall",
+    "imageAlt": "수평으로 뻗는 파란 직선은 세로축의 −2에 닿는다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -11,14 +13,14 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "그래프"
     ],
     "wide": false,
     "content": "일차방정식 $ax+by-4=0$의 그래프가 다음 그림과 같을 때, 두 수 $a$, $b$에 대하여 $a+b$의 값을 구하면? (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q1.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q1-problem-visual-v2.svg",
     "choices": [
       "$-2$",
       "$-1$",
@@ -57,6 +59,8 @@ window.questionBank = [
   },
   {
     "id": 2,
+    "imageSize": "tall",
+    "imageAlt": "파란 오르막 직선과 주황 내리막 점선의 교점에서 그은 점선이 가로축의 1과 세로축의 −2를 가리킨다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -65,14 +69,14 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "그래프"
     ],
     "wide": false,
     "content": "오른쪽 그림은 두 일차방정식 $x-ay=3$과 $bx+y=2$의 그래프를 각각 그린 것이다. 두 수 $a$와 $b$에 대하여 $a-b$의 값을 구하면? (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q2.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q2-problem-visual-v2.svg",
     "choices": [
       "$-3$",
       "$-2$",
@@ -111,6 +115,8 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "imageSize": "tall",
+    "imageAlt": "동생은 원점에서 출발해 30분에 1500 m에 닿는다. 형은 10분에 출발해 20분에 1500 m에 닿는다. 가로축은 시간, 세로축은 거리이다.",
     "level": "중",
     "category": "일차함수와 그래프",
     "originalCategory": "일차함수와 그래프",
@@ -119,14 +125,14 @@ window.questionBank = [
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "그래프"
     ],
     "wide": false,
     "content": "집에서 $1500\\mathrm{m}$ 떨어져 있는 도서관까지 가는데, 동생은 걸어서 가고, 형은 동생이 출발한 지 10분 후에 같은 길을 자전거를 타고 갔다. 다음 그래프는 동생이 출발한 지 $x$분 후에 동생과 형이 간 거리 $y\\mathrm{m}$를 각각 나타낸 것이다. 형과 동생이 처음으로 만나는 것은 동생이 출발하고 나서 몇 분 후인지 구하면? (5점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q3.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q3-problem-visual-v2.svg",
     "choices": [
       "11분 후",
       "12분 후",
@@ -165,6 +171,8 @@ window.questionBank = [
   },
   {
     "id": 4,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC에서 AB와 BC는 같은 길이이고 B의 각은 40도이다. CA를 A 너머로 연장하여 생긴 외각에 x를 표시했다.",
     "level": "하",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -173,14 +181,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "다음 $\\triangle ABC$에서 $x$의 값을 구하면? (3점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q4.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q4-problem-visual-v2.svg",
     "choices": [
       "$80^\\circ$",
       "$90^\\circ$",
@@ -219,6 +227,8 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "imageSize": "tall",
+    "imageAlt": "가로선 위에는 A, B, D, F가 차례로 놓인다. C와 E는 A에서 20도 올라가는 사선 위에 있으며 각 선분 AB, BC, CD, DE의 길이는 같다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -227,14 +237,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 $AB=BC=CD=DE$이고, $\\angle CAB=20^\\circ$일 때, $\\angle EDF$의 크기는? (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q5.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q5-problem-visual-v2.svg",
     "choices": [
       "$74^\\circ$",
       "$76^\\circ$",
@@ -273,6 +283,8 @@ window.questionBank = [
   },
   {
     "id": 6,
+    "imageSize": "tall",
+    "imageAlt": "왼쪽 삼각형 ABC는 C에서 직각이고 오른쪽 삼각형 DEF는 F에서 직각이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -281,14 +293,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "다음 중에서 오른쪽 두 직각삼각형 $ABC$와 $DEF$가 서로 합동이 되는 조건이 아닌 것은? (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q6.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q6-problem-visual-v2.svg",
     "choices": [
       "$\\angle A=\\angle D$, $\\angle B=\\angle E$",
       "$AB=DE$, $BC=EF$",
@@ -317,6 +329,8 @@ window.questionBank = [
   },
   {
     "id": 7,
+    "imageSize": "tall",
+    "imageAlt": "A의 각은 46도이다. B의 각은 직각이다. AC 위 D에서 ED는 AC에 수직이며 BC와 DC는 길이가 같다. E는 AB 위에 있다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -325,14 +339,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $BC=DC$이고 $AC\\perp ED$이다. $\\angle A=46^\\circ$일 때, $\\angle DEC$의 크기를 구하면? (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q7.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q7-problem-visual-v2.svg",
     "choices": [
       "$60^\\circ$",
       "$64^\\circ$",
@@ -371,6 +385,8 @@ window.questionBank = [
   },
   {
     "id": 8,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC의 외심은 O이다. O를 각 꼭짓점과 연결했다. AB, AC, BC에 내린 수선은 각각 M, L, N에 닿는다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -379,7 +395,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "복수정답",
@@ -387,7 +403,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "오른쪽 그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, 다음 중에서 옳은 것을 모두 고르면? (정답2개) (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q8.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q8-problem-visual-v2.svg",
     "choices": [
       "$BM=BN$",
       "$OA=OB=OC$",
@@ -426,6 +442,8 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "imageSize": "tall",
+    "imageAlt": "외심 O를 A, B, C에 이었다. B에서 BO와 BC가 이루는 각은 30도, C에서 CO와 CA가 이루는 각은 35도이다. B와 A 쪽 선이 O에서 이루는 각은 x이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -434,14 +452,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "오른쪽 그림에서 점 $O$가 $\\triangle ABC$의 외심일 때, $x$의 크기를 구하면? (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q9.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q9-problem-visual-v2.svg",
     "choices": [
       "$90^\\circ$",
       "$100^\\circ$",
@@ -480,6 +498,8 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC에서 내심 I와 B, C를 이었다. AB와 BI의 각은 36도이고, CB와 CI의 각은 24도이다. A의 각은 x이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -488,14 +508,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 점 $I$가 $\\triangle ABC$의 내심일 때, $x$의 크기를 구하면? (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q10.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q10-problem-visual-v2.svg",
     "choices": [
       "$40^\\circ$",
       "$50^\\circ$",
@@ -534,6 +554,8 @@ window.questionBank = [
   },
   {
     "id": 11,
+    "imageSize": "tall",
+    "imageAlt": "A의 각은 직각이고 B의 각은 30도이다. 빗변 BC는 10 cm이고 중점 M과 A를 이었다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -542,14 +564,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 $\\triangle ABC$는 $\\angle A=90^\\circ$인 직각삼각형이다. 점 $M$은 $\\overline{BC}$의 중점이고, $\\angle B=30^\\circ$일 때, $\\triangle AMC$의 둘레의 길이를 구하면? (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q11.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q11-problem-visual-v2.svg",
     "choices": [
       "$5\\mathrm{cm}$",
       "$10\\mathrm{cm}$",
@@ -588,6 +610,8 @@ window.questionBank = [
   },
   {
     "id": 12,
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC의 내심 I에서 A와 D가 한 직선 위에 있고 B와 E가 한 직선 위에 있다. D의 BDA각은 70도이고 E의 AEB각은 80도이다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -596,14 +620,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "다음 그림에서 $I$가 $\\triangle ABC$의 내심일 때, $\\angle C$의 크기를 구하면? (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q12.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q12-problem-visual-v2.svg",
     "choices": [
       "$20^\\circ$",
       "$30^\\circ$",
@@ -644,6 +668,8 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "imageSize": "tall",
+    "imageAlt": "왼쪽 변 AB는 6 cm이다. 청록 대각선 AC 전체는 8 cm, 보라 대각선 BD 전체는 12 cm이다. 두 대각선은 O에서 만난다.",
     "level": "하",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -652,14 +678,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "오른쪽 평행사변형 $ABCD$에서 점 $O$가 두 대각선의 교점일 때, $\\triangle ABO$의 둘레의 길이를 구하면? (3점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q13.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q13-problem-visual-v2.svg",
     "choices": [
       "$14\\mathrm{cm}$",
       "$16\\mathrm{cm}$",
@@ -698,6 +724,8 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "imageSize": "tall",
+    "imageAlt": "평행사변형 위쪽 AD의 길이는 10 cm, 왼쪽 AB는 8 cm이다. A에서 그은 각의 이등분선이 E에, D에서 그은 각의 이등분선이 F에 닿는다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -706,14 +734,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "오른쪽 그림과 같이 평행사변형 $ABCD$에서 $\\angle A$의 이등분선과 $\\angle D$의 이등분선이 $\\overline{BC}$와 만나는 점을 각각 $E$, $F$라고 할 때, $EF$의 길이를 구하면? (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q14.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q14-problem-visual-v2.svg",
     "choices": [
       "$2\\mathrm{cm}$",
       "$4\\mathrm{cm}$",
@@ -752,6 +780,8 @@ window.questionBank = [
   },
   {
     "id": 15,
+    "imageSize": "tall",
+    "imageAlt": "등변사다리꼴 ABCD에서 위 가로변 AD는 9 cm이고, 왼쪽 옆변 AB는 6 cm이다. A의 안쪽 각은 120도이다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -760,14 +790,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "다음 그림과 같이 $AD\\parallel BC$인 등변사다리꼴 $ABCD$에서 $AD=9\\mathrm{cm}$, $AB=6\\mathrm{cm}$이고 $\\angle A=120^\\circ$일 때, $\\square ABCD$의 둘레의 길이를 구하면? (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q15.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q15-problem-visual-v2.svg",
     "choices": [
       "$36\\mathrm{cm}$",
       "$37\\mathrm{cm}$",
@@ -911,6 +941,8 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "imageSize": "tall",
+    "imageAlt": "정사각형 ABCD의 대각선 AC 위 E를 B와 D에 이었다. E에서 EB와 EC가 이루는 각은 65도이다. D에서는 DE와 DA 사이를 표시했다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -919,14 +951,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "도형"
     ],
     "wide": false,
     "content": "오른쪽 그림과 같은 정사각형 $ABCD$에서 대각선 $AC$ 위에 임의의 한 점 $E$를 잡았다. $\\angle BEC=65^\\circ$일 때, $\\angle EDA$의 크기를 구하면? (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q18.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q18-problem-visual-v2.svg",
     "choices": [
       "$10^\\circ$",
       "$20^\\circ$",
@@ -965,6 +997,11 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "AB=AC이고 AD는 공통이면서 두 꼭짓각의 반이 같다. 따라서 두 삼각형은 SAS 합동이므로 두 밑각이 같다.",
+    "solutionImageAlt": "삼각형의 두 옆변 AB와 AC는 같은 길이이다. 꼭짓각을 두 부분으로 나눈 선분 AD와 같은 각 표식을 표시했다.",
+    "imageSize": "tall",
+    "imageAlt": "삼각형의 두 옆변 AB와 AC는 같은 길이이다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -973,18 +1010,18 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
     "content": "[서술형1] $AB=AC$인 이등변삼각형에서 두 밑각의 크기는 같다. 그 이유를 $\\angle A$의 이등분선을 긋고, 삼각형의 합동을 이용하여 설명하시오. (6점)<br>(설명) $\\angle A$의 이등분선과 $\\overline{BC}$의 교점을 $D$라 하자.",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q19.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q19-problem-visual-v2.svg",
     "choices": [],
     "answer": "$\\angle B=\\angle C$",
     "solution": "두 밑각이 각각 포함된 두 삼각형의 합동을 보인다.\n$AB=AC$이고, $AD$는 공통인 변이다. 또한 $AD$가 $\\angle A$의 이등분선이므로 $\\angle BAD=\\angle CAD$이다. 따라서 두 변과 그 끼인각이 각각 같으므로 $\\triangle ABD\\cong\\triangle ACD$이다. 합동인 두 삼각형의 대응각은 같으므로 $\\angle ABD=\\angle ACD$이다. $D$가 $BC$ 위의 점이므로 $\\angle ABD=\\angle B$, $\\angle ACD=\\angle C$이다.\n따라서 $\\angle B=\\angle C$이다.",
-    "solutionImage": "assets/images/23_신흥중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중2_수학/q19-solution-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -1014,6 +1051,11 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "호 위 세 점 A, B, C로 두 현을 그린다. 현의 수직이등분선은 원의 중심을 지나므로 두 직선의 교점 O가 중심이다.",
+    "solutionImageAlt": "원호 일부가 남아 있다. 호의 세 점으로 이은 두 현의 중점에서 수직이등분선을 그어 O를 찾는다.",
+    "imageSize": "tall",
+    "imageAlt": "원호 일부가 남아 있다. 호는 왼쪽 위에서 아래를 거쳐 오른쪽 아래까지 이어진다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1022,18 +1064,18 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
     "content": "[서술형2] 다음 그림은 원의 일부가 그려진 그림이다. 원의 중심을 찾아 원을 완성하려고 한다. 원의 중심을 찾는 방법을 수학적 근거를 들어 설명하시오. (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q20.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q20-problem-visual-v2.svg",
     "choices": [],
     "answer": "원호 위의 세 점으로 만든 두 현의 수직이등분선의 교점",
     "solution": "원의 중심은 모든 현의 수직이등분선 위에 있다.\n원호 위에 서로 다른 세 점 $A$, $B$, $C$를 잡고 두 현 $AB$, $BC$를 긋는다. 원의 중심은 현의 양 끝점에서 같은 거리에 있으므로 현 $AB$의 수직이등분선 위에 있고, 같은 이유로 현 $BC$의 수직이등분선 위에도 있다. 따라서 두 현의 수직이등분선의 교점이 원의 중심 $O$이다. $O$에서 원호 위의 한 점까지의 거리를 반지름으로 하여 원을 그리면 원을 완성할 수 있다.\n따라서 원의 중심은 두 현의 수직이등분선의 교점이다.",
-    "solutionImage": "assets/images/23_신흥중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중2_수학/q20-solution-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -1063,6 +1105,11 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "내심 I에서 BC에 수선을 긋고 그 발을 H라 한다. IH가 BC에 수직이고 내심에서 각 변까지의 거리가 같으므로 IH를 반지름으로 잡는다.",
+    "solutionImageAlt": "삼각형 ABC의 세 이등분선이 I에서 만난다. I에서 변에 수직인 세 선분은 내접원의 반지름이다.",
+    "imageSize": "tall",
+    "imageAlt": "삼각형 ABC의 세 이등분선이 I에서 만난다. 이등분선이 각 맞은편 변에서 P, Q, R에 닿는다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1071,18 +1118,18 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
     "content": "[서술형3] 다음 그림은 신흥이가 삼각형의 세 내각의 이등분선을 그려 내심 $I$를 작도한 것이다. 내접원을 바르게 그리기 위해 반지름을 어떻게 잡아야 할지 설명하고, 그림에 반지름을 바르게 표시하시오. (4점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q21.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q21-problem-visual-v2.svg",
     "choices": [],
     "answer": "내심 $I$에서 한 변에 내린 수선의 길이",
     "solution": "내접원의 반지름은 내심에서 삼각형의 한 변까지의 수직거리이다.\n내심 $I$에서 변 $BC$에 수선을 내리고 그 발을 $H$라 하자. 그러면 $IH\\perp BC$이다. 내심에서 세 변까지의 거리는 모두 같으므로 $IH$가 내접원의 반지름이다. 그림에는 선분 $IH$를 긋고 $H$에 직각 표시를 한 뒤, 중심을 $I$, 반지름을 $IH$로 하는 원을 그리면 된다.\n따라서 반지름은 내심 $I$에서 한 변에 내린 수선의 길이이다.",
-    "solutionImage": "assets/images/23_신흥중_2학기_중간_중2_수학/q21-solution.svg",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중2_수학/q21-solution-visual-v2.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -1112,6 +1159,8 @@ window.questionBank = [
   },
   {
     "id": 22,
+    "imageSize": "tall",
+    "imageAlt": "평행사변형 ABCD의 대각선 AC가 도형을 삼각형 ABC와 CDA로 나누고 있다.",
     "level": "중",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1120,14 +1169,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
     "content": "[서술형4] 다음 $\\square ABCD$가 평행사변형일 때, $\\triangle ABC\\cong\\triangle CDA$이면 두 쌍의 대변의 길이는 각각 같다고 할 수 있다. 두 삼각형이 합동인 이유를 설명하시오. (5점)",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q22.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q22-problem-visual-v2.svg",
     "choices": [],
     "answer": "두 각과 그 사이의 변이 각각 같으므로 $\\triangle ABC\\cong\\triangle CDA$",
     "solution": "평행선에서 생기는 엇각 두 쌍과 공통변을 이용한다.\n$AB\\parallel CD$이므로 엇각인 $\\angle BAC=\\angle DCA$이다. 또 $BC\\parallel AD$이므로 엇각인 $\\angle BCA=\\angle DAC$이다. 그리고 $AC$는 두 삼각형의 공통인 변이다. 따라서 두 각과 그 사이의 변이 각각 같으므로 $\\triangle ABC\\cong\\triangle CDA$이다. 합동인 삼각형의 대응변은 같으므로 $AB=CD$, $BC=AD$이다.\n따라서 두 삼각형은 두 각과 그 사이의 변이 각각 같아서 합동이다.",
@@ -1160,6 +1209,8 @@ window.questionBank = [
   },
   {
     "id": 23,
+    "imageSize": "tall",
+    "imageAlt": "사각형 ABCD의 A와 C, B와 D가 각각 같은 색의 각으로 표시되어 있다. 선분 BA를 A 너머로 연장한 선에 E가 있다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1168,14 +1219,14 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
     "content": "[서술형5] 다음은 두 쌍의 대각의 크기가 각각 같으면 평행사변형임을 설명하는 과정이다. 빈 칸에 알맞은 것을 써넣으시오. (6점)<br>※ 여기서 $\\angle A$는 $\\angle BAD$를 의미함.<br><br>(설명) $\\angle A=(\\qquad)$, $\\angle B=(\\qquad)$<br>$\\angle A+\\angle B+\\angle C+\\angle D=\\square^\\circ$이므로<br>$\\therefore\\ \\angle A+\\angle B=\\square^\\circ$ … ㉠<br>$\\overline{AB}$의 연장선 위에 한 점 $E$를 잡으면<br>$\\angle A+\\angle EAD=\\square^\\circ$ … ㉡<br>㉠, ㉡에서 $\\angle B=(\\qquad)$<br>즉, 동위각의 크기가 같으므로 $AD\\parallel(\\qquad)$ … ㉢<br>같은 방법으로 $AB\\parallel DC$ … ㉣<br>㉢, ㉣에서 두 쌍의 대변이 각각 평행하므로 $\\square ABCD$는 평행사변형이다.",
-    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q23.png",
+    "image": "assets/images/23_신흥중_2학기_중간_중2_수학/q23-problem-visual-v2.svg",
     "choices": [],
     "answer": "$\\angle C$, $\\angle D$, $360$, $180$, $180$, $\\angle EAD$, $BC$",
     "solution": "마주 보는 각이 각각 같다는 조건과 사각형의 내각의 합을 이용해 두 쌍의 대변이 평행함을 보인다.\n$\\angle A=\\angle C$, $\\angle B=\\angle D$이고 사각형의 내각의 합은 $360^\\circ$이므로 $2(\\angle A+\\angle B)=360^\\circ$이다. 따라서 $\\angle A+\\angle B=180^\\circ$이다. 한편 $E,A,B$가 한 직선 위에 있으므로 $\\angle A+\\angle EAD=180^\\circ$이다. 두 식을 비교하면 $\\angle B=\\angle EAD$이다. 이 두 각은 직선 $AB$가 두 직선 $AD$, $BC$와 만들고 있는 동위각이므로 $AD\\parallel BC$이다. 같은 방법으로 $AB\\parallel DC$이다. 따라서 두 쌍의 대변이 각각 평행하므로 $ABCD$는 평행사변형이다.\n따라서 빈칸에는 순서대로 $\\angle C$, $\\angle D$, $360$, $180$, $180$, $\\angle EAD$, $BC$가 들어간다.",
@@ -1208,6 +1259,9 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "solutionImageSize": "full",
+    "solutionImageCaption": "OA=OB=2이고 OC=OD=3인 예에서는 두 대각선이 서로를 이등분하지 않는다. 따라서 조건만으로 평행사변형이라고 할 수 없다.",
+    "solutionImageAlt": "O를 기준으로 OA와 OB가 2로 같고 OC와 OD는 3으로 같다. 각 대각선에는 서로 다른 수치가 하나씩 있다.",
     "level": "상",
     "category": "도형의 성질",
     "originalCategory": "도형의 성질",
@@ -1226,7 +1280,7 @@ window.questionBank = [
     "choices": [],
     "answer": "평행사변형이라고 할 수 없다.",
     "solution": "평행사변형의 판정 조건은 두 대각선이 서로를 이등분하는 것이다.\n평행사변형이 되려면 대각선 $AC$가 $O$에서 이등분되어 $OA=OC$이어야 하고, 대각선 $BD$도 $O$에서 이등분되어 $OB=OD$이어야 한다. 그러나 주어진 $OA=OB$, $OC=OD$만으로는 이 두 조건을 알 수 없다. 예를 들어 대각선의 교점 $O$를 기준으로 $OA=OB=2$, $OC=OD=3$이 되도록 네 점을 잡으면 주어진 조건은 만족하지만 $OA\\ne OC$, $OB\\ne OD$이므로 두 대각선은 서로를 이등분하지 않는다. 따라서 이 사각형은 평행사변형이 아니다. 그림에는 $OA$와 $OB$에 같은 표시, $OC$와 $OD$에 다른 같은 표시를 하면 된다.\n따라서 주어진 조건만으로는 $ABCD$가 평행사변형이라고 할 수 없다.",
-    "solutionImage": "assets/images/23_신흥중_2학기_중간_중2_수학/q24-solution.svg",
+    "solutionImage": "assets/images/23_신흥중_2학기_중간_중2_수학/q24-solution-visual-v2.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",

@@ -7,6 +7,7 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { REASSESSED_STUDENT_FIELDS, validateReviewedSourceReassessment } from './reviewed-source-reassessment.mjs';
 import { createImmutableGitMetadataLookup } from './immutable-git-metadata.mjs';
+import { readImmutableGitFiles } from './immutable-git-batch.mjs';
 
 const immutableMetadata = createImmutableGitMetadataLookup();
 
@@ -48,6 +49,22 @@ function gitFile(ctx, commit, relative) {
     ctx.cache.set(key, {blob, bytes, sha256:sha(bytes)});
   }
   return ctx.cache.get(key);
+}
+function batchAssetFiles(ctx, entries) {
+  const missing=new Map();
+  for(const entry of entries) {
+    safePath(ctx.root,entry.path);
+    if(!SHA1.test(entry.commit||''))fail('exact evidence commit required');
+    const key=`figure-git:${entry.commit}:${entry.path}`;
+    if(!ctx.cache.has(key))missing.set(key,entry);
+  }
+  if(missing.size<=new Set([...missing.values()].map(e=>e.commit)).size+1)return;
+  const raw=readImmutableGitFiles(ctx.root,[...missing.values()]);let index=0;
+  if(raw.some(bytes=>bytes.length>32*1024*1024))fail('immutable Git evidence unavailable');
+  for(const [key]of missing) {
+    const bytes=raw[index++],blob=crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+    ctx.cache.set(key,{blob,bytes,sha256:sha(bytes)});
+  }
 }
 function bankFromFile(ctx, file) {
   const key = `figure-bank:${file.blob}`;
@@ -148,6 +165,7 @@ function references(root, question) {
 }
 function verifyAssets(ctx, assets, question, commit, live=false) {
   if(!equal(assets.map(a=>a.path).sort(),references(ctx.root,question)))fail('renderer asset inventory is incomplete or excessive');
+  batchAssetFiles(ctx,assets.flatMap(a=>(live?[commit,ctx.proof.reviewCommit]:[commit]).map(commit=>({commit,path:a.path}))));
   for(const a of assets){
     const file=gitFile(ctx,commit,a.path);
     if(!SHA1.test(a.gitBlobSha||'')||!SHA256.test(a.rawSha256||'')||file.blob!==a.gitBlobSha||file.sha256!==a.rawSha256)

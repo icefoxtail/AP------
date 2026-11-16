@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "middle-audit-native-curriculum-transport-v1",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "questionUid": "qid_v1_70a153fd0db92774327a2a79647a464cb887d400f870eb8b8280cab9f094b147",
+  "sourceOrdinal": 4,
+  "sourceArchiveFile": "original/middle/m2/2final/23_이수중_2학기_기말_중2_기출.js",
+  "decision": "ACCEPT_EXPLICIT_NATIVE_CLASSIFICATION_CURRICULUM_TRANSPORT",
+  "approvedBy": "GPT_ROOT_0A70543C4CE8",
+  "classificationPurpose": "Declare the exact native reviewed classification namespace used by the ACTIVE target binding; not an inference of original exam curriculum from its year.",
+  "nativeReviewRef": {
+    "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+    "path": "archive/data/meta-review/m2-s2-20261114/exams/E024/review.json",
+    "sha256": "c6813c370014429f47b12d4c7ed8e6477b31c780814f720d13428989f9da649f"
+  },
+  "nativeEvidence": {
+    "rpmPathCurriculum": "2015",
+    "rpmPathScope": "M2-2",
+    "exactBinding": {
+      "curriculum": "2015",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-07",
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "status": "ACTIVE"
+    }
+  },
+  "rootObservation": "Root directly read the native Q4 rpmPath 2015/M2-2 and its exact 2015/M2-07/M2-07-PYTHAGOREAN_APPLICATION binding, then authorized the one-field source transport.",
+  "before": {
+    "sourceBlobSha1": "cda537e2c90300d967c7d8799661542872530540",
+    "sourceRawSha256": "f7831da50e0934a68d20a0950340c256ae03f7c1e48ef0c3e82465b462b18816",
+    "fieldPresent": false
+  },
+  "after": {
+    "sourceBlobSha1": "6c857633edb9fe267375cd9b1c9326cc975817ba",
+    "sourceRawSha256": "ebda72d20030605af7dd7a8434d04d731a0422bc3f66090f15e0160e818e3dd8",
+    "curriculum": "2015"
+  },
+  "changedSourceFields": [
+    "curriculum"
+  ],
+  "sourceQuestionCount": 24,
+  "unaffectedWholeQuestions": 23,
+  "unchangedStudentPayloadQuestions": 24,
+  "newMathematicalQa": false,
+  "newProblemTypeOrTemplateDefinition": false,
+  "rendererImmutableSourceRefPreserved": {
+    "commit": "1a3db9d6d8f5e7e1404c17f4978398eb90dbe6a5",
+    "path": "archive/exams/original/middle/m2/2final/23_이수중_2학기_기말_중2_기출.js",
+    "gitBlobSha1": "cda537e2c90300d967c7d8799661542872530540",
+    "sha256": "f7831da50e0934a68d20a0950340c256ae03f7c1e48ef0c3e82465b462b18816",
+    "questionSha256": "b742111e8ee70483a97f4c3295544fd93a68717b65f958c2787008075f7fa494",
+    "studentPayloadHash": "1dba5aae80b98f4c4788d3f5318e3ac2cbeacc29b42fc5558dedfcaba79cde3b"
+  },
+  "remoteMainRegistration": "NOT_RUN",
+  "studentDeployment": "NOT_RUN"
+}
