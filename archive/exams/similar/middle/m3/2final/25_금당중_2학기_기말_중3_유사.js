@@ -22,18 +22,16 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "중심각의 크기는 그 중심각이 바라보는 호의 크기와 같다. 따라서 작은 호 $AB$의 크기는 $146^\\circ$이고, $\\angle x$가 바라보는 반대쪽 큰 호 $AB$의 크기는 다음과 같다. $$ \\begin{aligned} 360^\\circ - 146^\\circ = 214^\\circ \\end{aligned} $$ 원주각의 크기는 같은 호에 대한 중심각의 크기의 절반이므로 $$ \\begin{aligned} \\angle x = \\dfrac{214^\\circ}{2} = 107^\\circ \\end{aligned} $$ 따라서 정답은 ①이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-    "crossConceptKeys": [
-      "CC_CIRCLE_PROPERTIES"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
   },
   {
     "id": 2,
@@ -56,18 +54,16 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$Q$는 큰 호 $AC$ 위에 있으므로 $\\angle AQC=75^\\circ$가 바라보는 호 $AC$는 작은 호이다. 따라서\n$$ \\begin{aligned} \\wideparen{AC} = 2 \\times 75^\\circ = 150^\\circ \\end{aligned} $$\n중심각 $\\angle BOC=80^\\circ$가 바라보는 호 $BC$의 크기는 $80^\\circ$이다. $A,B,C$가 작은 호 $AC$ 위에 이 순서로 놓였으므로\n$$ \\begin{aligned} \\wideparen{AB} &= \\wideparen{AC}-\\wideparen{BC} \\\\ &= 150^\\circ-80^\\circ \\\\ &= 70^\\circ \\end{aligned} $$\n$P$는 큰 호 $AC$ 위에 있으므로 $\\angle APB$가 바라보는 호는 작은 호 $AB$이다. 같은 호에 대한 원주각의 크기는 호의 크기의 절반이므로\n$$ \\begin{aligned} \\angle APB = \\dfrac{70^\\circ}{2} = 35^\\circ \\end{aligned} $$\n따라서 정답은 ②이다.",
-    "score": 3.0,
+    "points": 3,
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-    "crossConceptKeys": [
-      "CC_CIRCLE_PROPERTIES"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 3,
@@ -90,18 +86,18 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "세 호의 길이의 비가 $2:3:4$이므로 비의 합은 다음과 같다. $$ \\begin{aligned} 2 + 3 + 4 = 9 \\end{aligned} $$ 원 전체의 둘레에 대한 중심각의 총합은 $360^\\circ$이므로 호 $AB$의 크기는 $$ \\begin{aligned} \\wideparen{AB} = 360^\\circ \\times \\dfrac{2}{9} = 80^\\circ \\end{aligned} $$ $\\angle C$는 호 $AB$를 바라보는 원주각이므로 $$ \\begin{aligned} \\angle C = \\dfrac{80^\\circ}{2} = 40^\\circ \\end{aligned} $$ 따라서 정답은 ③이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
     "crossConceptKeys": [
-      "CC_CIRCLE_PROPERTIES"
+      "CC_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
   },
   {
     "id": 4,
@@ -124,18 +120,18 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "호 $AB$의 길이가 원주의 $\\dfrac{1}{6}$이므로 그 호의 크기는 다음과 같다. $$ \\begin{aligned} \\wideparen{AB} = 360^\\circ \\times \\dfrac{1}{6} = 60^\\circ \\end{aligned} $$ 호 $CD$의 길이는 호 $AB$의 길이의 $\\dfrac{3}{2}$배이므로 $$ \\begin{aligned} \\wideparen{CD} = 60^\\circ \\times \\dfrac{3}{2} = 90^\\circ \\end{aligned} $$ 원 내부에서 두 현이 교차할 때 생기는 각의 크기는 마주 보는 두 호의 크기의 합의 절반이므로 $$ \\begin{aligned} \\angle APB &= \\dfrac{\\wideparen{AB} + \\wideparen{CD}}{2} \\\\ &= \\dfrac{60^\\circ + 90^\\circ}{2} \\\\ &= \\dfrac{150^\\circ}{2} \\\\ &= 75^\\circ \\end{aligned} $$ 따라서 정답은 ④이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
     "crossConceptKeys": [
-      "CC_CIRCLE_PROPERTIES"
+      "CC_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 5,
@@ -158,22 +154,20 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$\\overline{AB}$는 지름이므로 한 반원의 호 $AB$는 $180^\\circ$이다. 점 $A,D,E,B$가 한 반원 위에 이 순서로 놓이고 $\\angle AOD=20^\\circ$, $\\angle DOE=40^\\circ$이므로\n$$ \\begin{aligned} \\wideparen{AD} &= 20^\\circ \\\\ \\wideparen{DE} &= 40^\\circ \\\\ \\wideparen{EB} &= 180^\\circ - 20^\\circ - 40^\\circ = 120^\\circ \\end{aligned} $$\n점 $C$에서 원에 그은 두 할선의 바깥쪽 각은 먼 교점 $B,E$가 정하는 호와 가까운 교점 $A,D$가 정하는 호의 차의 절반이다.\n$$ \\begin{aligned} \\angle ACD &= \\dfrac{\\wideparen{BE}-\\wideparen{AD}}{2} \\\\ &= \\dfrac{120^\\circ-20^\\circ}{2} \\\\ &= 50^\\circ \\end{aligned} $$\n따라서 정답은 ①이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-    "crossConceptKeys": [
-      "CC_CIRCLE_PROPERTIES"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 6,
-    "level": "중",
+    "level": "상",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
@@ -192,18 +186,16 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$\\angle BAE = 70^\\circ$가 바라보는 호 $BCDE$의 크기는 원주각의 $2$배이므로 $$ \\begin{aligned} \\wideparen{BCDE} = 2 \\times 70^\\circ = 140^\\circ \\end{aligned} $$ $\\angle EDC = 135^\\circ$가 바라보는, 점 $D$를 포함하지 않는 호 $EABC$의 크기는 다음과 같다. $$ \\begin{aligned} \\wideparen{EABC} = 2 \\times 135^\\circ = 270^\\circ \\end{aligned} $$ 따라서 점 $D$를 포함하는 작은 호 $EDC$의 크기는 원 전체에서 이를 뺀 값이다. $$ \\begin{aligned} \\wideparen{EDC} = 360^\\circ - 270^\\circ = 90^\\circ \\end{aligned} $$ 그러므로 호 $BC$의 크기는 호 $BCDE$에서 호 $EDC$를 뺀 값이다. $$ \\begin{aligned} \\wideparen{BC} &= \\wideparen{BCDE} - \\wideparen{EDC} \\\\ &= 140^\\circ - 90^\\circ \\\\ &= 50^\\circ \\end{aligned} $$ 중심각 $\\angle BOC$의 크기는 자신이 바라보는 호 $BC$의 크기와 같으므로 $$ \\begin{aligned} \\angle BOC = 50^\\circ \\end{aligned} $$ 따라서 정답은 ①이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-    "crossConceptKeys": [
-      "CC_CIRCLE_PROPERTIES"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 7,
@@ -226,18 +218,18 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$\\overline{AB} = \\overline{AC}$이므로 $\\triangle ABC$는 이등변삼각형이다. $$ \\begin{aligned} \\angle ABC = \\angle BCA = \\beta \\end{aligned} $$ 라 두면 삼각형의 세 내각의 크기의 합에서 $$ \\begin{aligned} \\angle BAC = 180^\\circ - 2\\beta \\end{aligned} $$ 이다. 점 $A, B, P$가 한 직선 위에 있으므로 $$ \\begin{aligned} \\angle PBC = 180^\\circ - \\beta \\end{aligned} $$ 이고, 접선 $PC$와 현 $BC$가 이루는 각의 성질에 의해 $$ \\begin{aligned} \\angle PCB = \\angle BAC = 180^\\circ - 2\\beta \\end{aligned} $$ 이다. $\\triangle PBC$의 세 내각의 합은 $180^\\circ$이므로 $$ \\begin{aligned} (180^\\circ - \\beta) + 30^\\circ + (180^\\circ - 2\\beta) &= 180^\\circ \\\\ 390^\\circ - 3\\beta &= 180^\\circ \\\\ 3\\beta &= 210^\\circ \\\\ \\beta &= 70^\\circ \\end{aligned} $$ 원에 내접하는 사각형 $ABCD$에서 마주 보는 두 대각의 크기의 합은 $180^\\circ$이므로 $$ \\begin{aligned} \\angle ADC &= 180^\\circ - \\beta \\\\ &= 180^\\circ - 70^\\circ \\\\ &= 110^\\circ \\end{aligned} $$ 따라서 정답은 ②이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
     "crossConceptKeys": [
-      "CC_CIRCLE_PROPERTIES"
+      "CC_ISOSCELES_TRIANGLE"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 8,
@@ -260,18 +252,16 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "$\\angle BAC = 65^\\circ$가 바라보는 호 $BC$의 크기는 $$ \\begin{aligned} \\wideparen{BC} = 2 \\times 65^\\circ = 130^\\circ \\end{aligned} $$ 이고, $\\angle BCA = 55^\\circ$가 바라보는 호 $AB$의 크기는 다음과 같다. $$ \\begin{aligned} \\wideparen{AB} = 2 \\times 55^\\circ = 110^\\circ \\end{aligned} $$ 두 현 $AC, BD$의 교각 $\\angle BEC = 95^\\circ$이므로 $$ \\begin{aligned} 95^\\circ &= \\dfrac{\\wideparen{BC} + \\wideparen{AD}}{2} \\\\ 190^\\circ &= 130^\\circ + \\wideparen{AD} \\\\ \\wideparen{AD} &= 60^\\circ \\end{aligned} $$ 원 전체 둘레 $360^\\circ$에서 호 $CD$의 크기를 구하면 $$ \\begin{aligned} \\wideparen{CD} &= 360^\\circ - (110^\\circ + 130^\\circ + 60^\\circ) \\\\ &= 360^\\circ - 300^\\circ \\\\ &= 60^\\circ \\end{aligned} $$ 따라서 $\\angle x$와 $\\angle y$는 각각 호 $CD$, 호 $AD$를 바라보는 원주각이므로 $$ \\begin{aligned} \\angle x &= \\dfrac{\\wideparen{CD}}{2} = \\dfrac{60^\\circ}{2} = 30^\\circ \\\\ \\angle y &= \\dfrac{\\wideparen{AD}}{2} = \\dfrac{60^\\circ}{2} = 30^\\circ \\end{aligned} $$ 그러므로 구하는 식의 값은 다음과 같다. $$ \\begin{aligned} 2\\angle x - \\angle y &= 2 \\times 30^\\circ - 30^\\circ \\\\ &= 60^\\circ - 30^\\circ \\\\ &= 30^\\circ \\end{aligned} $$ 따라서 정답은 ③이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-    "crossConceptKeys": [
-      "CC_CIRCLE_PROPERTIES"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
   },
   {
     "id": 9,
@@ -294,18 +284,18 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "점 $A$에서 두 원에 공통 접선 $ST$를 그으면 큰 원에서 접선과 현이 이루는 각의 성질에 의해 $$ \\begin{aligned} \\angle TAB = \\angle ACB = 65^\\circ \\end{aligned} $$ 이다. 같은 접선이 작은 원에도 점 $A$에서 접하므로 작은 원에서 접선과 현이 이루는 각의 성질에 의해 $$ \\begin{aligned} \\angle ADE = \\angle TAE = \\angle TAB = 65^\\circ \\end{aligned} $$ 이다. 또 선분 $BC$는 작은 원에 점 $D$에서 접하므로 접선과 현이 이루는 각에 의해 $$ \\begin{aligned} \\angle EDB = \\angle EAD = x \\end{aligned} $$ 이다. $\\triangle EBD$에서 세 내각의 합은 $180^\\circ$이므로 $$ \\begin{aligned} \\angle BED &= 180^\\circ - 55^\\circ - x \\\\ &= 125^\\circ - x \\end{aligned} $$ 이고, 점 $A, E, B$가 한 직선 위에 있으므로 $$ \\begin{aligned} \\angle AED &= 180^\\circ - \\angle BED \\\\ &= 180^\\circ - (125^\\circ - x) \\\\ &= 55^\\circ + x \\end{aligned} $$ 이다. $\\triangle AED$의 세 내각의 크기의 합은 $180^\\circ$이므로 $$ \\begin{aligned} x + (55^\\circ + x) + 65^\\circ &= 180^\\circ \\\\ 2x + 120^\\circ &= 180^\\circ \\\\ 2x &= 60^\\circ \\\\ x &= 30^\\circ \\end{aligned} $$ 따라서 정답은 ④이다.",
-    "score": 5.0,
+    "points": 5,
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
     "crossConceptKeys": [
-      "CC_CIRCLE_PROPERTIES"
+      "CC_TRIANGLE_ANGLE_SUM"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 4,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
   },
   {
     "id": 10,
@@ -328,19 +318,16 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "자료의 개수가 $8$개이고 평균이 $9$이므로 전체 자료의 총합은 다음과 같다. $$ \\begin{aligned} 8 \\times 9 = 72 \\end{aligned} $$ $x$를 제외한 나머지 $7$개 수의 합을 구하면 $$ \\begin{aligned} 10 + 7 + 8 + 9 + 12 + 7 + 6 = 59 \\end{aligned} $$ 이므로 $x$의 값은 $$ \\begin{aligned} x = 72 - 59 = 13 \\end{aligned} $$ 이다. 이제 $8$개의 자료를 작은 값부터 크기순으로 나열하면 $$ \\begin{aligned} 6, \\quad 7, \\quad 7, \\quad 8, \\quad 9, \\quad 10, \\quad 12, \\quad 13 \\end{aligned} $$ 이다. 자료의 개수가 짝수($8$개)이므로 중앙값은 한가운데 위치한 $4$번째 값($8$)과 $5$번째 값($9$)의 평균이다. $$ \\begin{aligned} \\text{중앙값} = \\dfrac{8 + 9}{2} = 8.5 \\end{aligned} $$ 따라서 정답은 ⑤이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-    "crossConceptKeys": [
-      "CC_MEAN",
-      "CC_MEDIAN"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
   },
   {
     "id": 11,
@@ -363,18 +350,17 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "줄기와 잎 그림의 자료 $16$개를 작은 값부터 차례대로 나열하면 다음과 같다. $$ \\begin{aligned} &12, \\quad 14, \\quad 16, \\quad 18, \\quad 20, \\quad 21, \\quad 23, \\quad 25, \\\\ &25, \\quad 27, \\quad 29, \\quad 32, \\quad 35, \\quad 35, \\quad 35, \\quad 38 \\end{aligned} $$ 자료의 총 개수가 $16$개이므로 중앙값 $a$는 $8$번째 값($25$)과 $9$번째 값($25$)의 평균이다. $$ \\begin{aligned} a = \\dfrac{25 + 25}{2} = 25 \\end{aligned} $$ 가장 많이 나타나는 값(도수가 $3$회로 가장 큰 값)은 $35$이므로 최빈값은 $$ \\begin{aligned} b = 35 \\end{aligned} $$ 이다. 따라서 $b - a$의 값은 다음과 같다. $$ \\begin{aligned} b - a = 35 - 25 = 10 \\end{aligned} $$ 따라서 정답은 ①이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
     "crossConceptKeys": [
-      "CC_MEDIAN",
-      "CC_MODE"
+      "CC_STEM_AND_LEAF_PLOT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
     "templateKey": ""
   },
   {
@@ -398,20 +384,16 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "②의 자료를 작은 값부터 크기순으로 나열하면 다음과 같다. $$ \\begin{aligned} 1, \\quad 2, \\quad 2, \\quad 3, \\quad 3, \\quad 4, \\quad 5, \\quad 42 \\end{aligned} $$ 이 자료는 대부분의 변량이 $1$부터 $5$ 사이에 밀집되어 있으나, 다른 값들과 매우 크게 동떨어진 극단값 $42$가 포함되어 있다. 중앙값은 한가운데 두 값의 평균인 $$ \\begin{aligned} \\dfrac{3 + 3}{2} = 3 \\end{aligned} $$ 으로 자료의 중심적인 위치를 잘 반영하지만, 평균은 $$ \\begin{aligned} \\dfrac{1 + 2 + 2 + 3 + 3 + 4 + 5 + 42}{8} = \\dfrac{62}{8} = 7.75 \\end{aligned} $$ 로 극단값 $42$의 영향으로 전체적인 밀집 구간($1 \\sim 5$)보다 크게 치우쳐 나타난다. 따라서 중앙값이 평균보다 자료의 중심적인 경향을 더 잘 나타내는 것은 극단값을 가진 ②이다. 따라서 정답은 ②이다.",
-    "score": 3.0,
+    "points": 3,
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-    "crossConceptKeys": [
-      "CC_CENTRAL_TENDENCY",
-      "CC_MEAN",
-      "CC_MEDIAN"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT"
   },
   {
     "id": 13,
@@ -434,18 +416,18 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "고정된 $5$개의 수를 작은 값부터 크기순으로 나열하면 다음과 같다. $$ \\begin{aligned} 7, \\quad 10, \\quad 13, \\quad 17, \\quad 20 \\end{aligned} $$ 자료의 총 개수는 $6$개이므로 중앙값은 크기순으로 세 번째와 네 번째에 놓인 두 수의 평균이다. 중앙값이 $14$가 되려면 $a$는 $13$과 $17$ 사이에 놓여야 하므로, 가운데 두 수는 $13$과 $a$가 된다. $$ \\begin{aligned} \\dfrac{13 + a}{2} &= 14 \\\\ 13 + a &= 28 \\\\ a &= 15 \\end{aligned} $$ 실제로 $13 < 15 < 17$이므로 전체 자료를 나열하면 $7, 10, 13, 15, 17, 20$이 되어 중앙값이 $\\dfrac{13+15}{2} = 14$로 일치한다. 따라서 정답은 ③이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
     "crossConceptKeys": [
-      "CC_MEDIAN"
+      "CC_LINEAR_EQUATIONS"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
   },
   {
     "id": 14,
@@ -468,18 +450,17 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "자료 $8$개의 총합은 다음과 같다. $$ \\begin{aligned} 6 + 10 + 8 + 5 + 12 + 8 + 4 + 3 = 56 \\end{aligned} $$ 자료의 개수가 $8$개이므로 평균은 $$ \\begin{aligned} \\text{평균} = \\dfrac{56}{8} = 7 \\end{aligned} $$ 이다. 편차는 각 변량에서 평균을 뺀 값이므로 변량 $4$의 편차는 $$ \\begin{aligned} \\text{편차} &= \\text{변량} - \\text{평균} \\\\ &= 4 - 7 \\\\ &= -3 \\end{aligned} $$ 따라서 정답은 ④이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
     "crossConceptKeys": [
-      "CC_MEAN",
-      "CC_DEVIATION"
+      "CC_MEAN"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
     "templateKey": ""
   },
   {
@@ -503,7 +484,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "각 보기를 검토한다. ① 편차의 총합은 항상 $0$이다. (옳음) ② 표준편차는 분산의 음이 아닌 제곱근으로 정의되므로 옳다. (옳음) $$ \\begin{aligned} \\text{표준편차} = \\sqrt{\\text{분산}} \\end{aligned} $$ ③ $\\text{편차} = \\text{변량} - \\text{평균}$이므로 변량이 평균보다 크면 편차는 양수이다. (옳음) ④ 편차의 제곱의 총합을 변량의 개수로 나눈 값, 즉 편차의 제곱의 평균을 분산이라고 한다. (옳음) ⑤ 산포도는 자료가 평균을 중심으로 흩어져 있는 정도를 나타낸 값이므로, 변량들이 평균을 중심으로 널리 퍼져 있을수록 분산과 표준편차, 즉 산포도는 커진다. 따라서 작아진다고 한 ⑤는 옳지 않다. 따라서 정답은 ⑤이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
@@ -514,9 +495,9 @@ window.questionBank = [
       "CC_SUM_OF_DEVIATIONS_ZERO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "PARALLEL",
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
     "templateKey": ""
   },
   {
@@ -540,20 +521,20 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "세 항목의 평균은 모두 $6$점이다. 디자인 만족도 점수는 다섯 명 모두 $6$점이므로 편차가 모두 $0$이고 분산과 표준편차도 $0$이다. 가격 만족도 점수는 모두 같지 않으므로 분산이 양수이다. 따라서 디자인 만족도의 변량이 평균에 가장 모여 있다. (②, ⑤ 옳음)\n성능 만족도의 평균 $6$점에 대한 편차는 차례로 $2, 3, -3, 0, -2$이다. 편차의 합은 $0$이므로 ③은 옳다. B고객의 성능 점수 $9$점은 다섯 명 중 가장 높으므로 ④도 옳다.\n성능 만족도의 분산은 편차 제곱의 평균이므로\n$$ \\begin{aligned} \\text{분산} &= \\dfrac{2^2+3^2+(-3)^2+0^2+(-2)^2}{5} \\\\ &= \\dfrac{26}{5}=5.2 \\end{aligned} $$\n따라서 분산이 $4$라고 한 ①이 옳지 않다. 정답은 ①이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
     "crossConceptKeys": [
-      "CC_MEAN",
       "CC_DEVIATION",
       "CC_VARIANCE",
-      "CC_STANDARD_DEVIATION"
+      "CC_STANDARD_DEVIATION",
+      "CC_SUM_OF_DEVIATIONS_ZERO"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
     "templateKey": ""
   },
   {
@@ -567,7 +548,7 @@ window.questionBank = [
     "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "content": "다음은 어느 식당의 고객 $10$명에게 식당의 서비스 만족도에 대한 점수를 조사하여 나타낸 도수분포표이다. 서비스 만족도 점수의 분산을 구하면? [4점] | 점수(점) | 1 | 2 | 3 | 4 | 5 |\n| --- | --- | --- | --- | --- | --- |\n| 고객(명) | 1 | 3 | 2 | 3 | 1 |",
+    "content": "다음은 어느 식당의 고객 $10$명에게 식당의 서비스 만족도에 대한 점수를 조사하여 나타낸 도수분포표이다. 서비스 만족도 점수의 분산을 구하면? [4점]\n\n| 점수(점) | 1 | 2 | 3 | 4 | 5 |\n| --- | --- | --- | --- | --- | --- |\n| 고객(명) | 1 | 3 | 2 | 3 | 1 |",
     "choices": [
       "$\\dfrac{6}{5}$",
       "$\\dfrac{7}{5}$",
@@ -577,19 +558,16 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "전체 고객 수는 $1 + 3 + 2 + 3 + 1 = 10$명이다. 만족도 점수의 평균을 구하면 다음과 같다. $$ \\begin{aligned} \\text{평균} &= \\dfrac{1 \\times 1 + 2 \\times 3 + 3 \\times 2 + 4 \\times 3 + 5 \\times 1}{10} \\\\ &= \\dfrac{1 + 6 + 6 + 12 + 5}{10} \\\\ &= \\dfrac{30}{10} \\\\ &= 3\\text{점} \\end{aligned} $$ 평균 $3$점에 대한 각 점수의 편차는 각각 $-2, -1, 0, 1, 2$이다. 편차의 제곱에 각 도수를 곱하여 편차의 제곱의 총합을 구하면 $$ \\begin{aligned} \\text{편차 제곱의 총합} &= (1-3)^2 \\times 1 + (2-3)^2 \\times 3 + (3-3)^2 \\times 2 + (4-3)^2 \\times 3 + (5-3)^2 \\times 1 \\\\ &= 4 \\times 1 + 1 \\times 3 + 0 \\times 2 + 1 \\times 3 + 4 \\times 1 \\\\ &= 4 + 3 + 0 + 3 + 4 \\\\ &= 14 \\end{aligned} $$ 따라서 분산은 편차의 제곱의 총합을 총 도수로 나눈 값이므로 $$ \\begin{aligned} \\text{분산} = \\dfrac{14}{10} = \\dfrac{7}{5} \\end{aligned} $$ 따라서 정답은 ②이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-    "crossConceptKeys": [
-      "CC_MEAN",
-      "CC_VARIANCE"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+    "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE"
   },
   {
     "id": 18,
@@ -612,18 +590,17 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "자료 $6$개의 평균이 $6$이므로 $$ \\begin{aligned} 2 + 6 + 8 + 9 + x + y &= 6 \\times 6 = 36 \\\\ 25 + x + y &= 36 \\\\ x + y &= 11 \\end{aligned} $$ 이다. 분산이 $7$이므로 편차의 제곱의 총합은 $$ \\begin{aligned} 6 \\times 7 = 42 \\end{aligned} $$ 이다. 주어진 $4$개 수의 평균 $6$에 대한 편차 제곱의 합은 다음과 같다. $$ \\begin{aligned} (2-6)^2 + (6-6)^2 + (8-6)^2 + (9-6)^2 &= (-4)^2 + 0^2 + 2^2 + 3^2 \\\\ &= 16 + 0 + 4 + 9 \\\\ &= 29 \\end{aligned} $$ 따라서 $x$와 $y$의 편차 제곱의 합은 $$ \\begin{aligned} (x-6)^2 + (y-6)^2 &= 42 - 29 \\\\ &= 13 \\end{aligned} $$ 이다. 좌변을 전개하면 $$ \\begin{aligned} (x^2 - 12x + 36) + (y^2 - 12y + 36) &= 13 \\\\ x^2 + y^2 - 12(x+y) + 72 &= 13 \\end{aligned} $$ 여기에 $x + y = 11$을 대입하면 $$ \\begin{aligned} x^2 + y^2 - 12 \\times 11 + 72 &= 13 \\\\ x^2 + y^2 - 132 + 72 &= 13 \\\\ x^2 + y^2 - 60 &= 13 \\\\ x^2 + y^2 &= 73 \\end{aligned} $$ 이다. 이제 곱셈공식의 변형을 이용하면 $$ \\begin{aligned} (x+y)^2 &= x^2 + y^2 + 2xy \\\\ 11^2 &= 73 + 2xy \\\\ 121 &= 73 + 2xy \\\\ 2xy &= 48 \\\\ xy &= 24 \\end{aligned} $$ 따라서 정답은 ③이다.",
-    "score": 5.0,
+    "points": 5,
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
     "crossConceptKeys": [
-      "CC_MEAN",
-      "CC_VARIANCE"
+      "CC_SYMMETRIC_SUM_PRODUCT"
     ],
     "conditionKeys": [],
-    "integrationPattern": "INTERDEPENDENT",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
     "templateKey": ""
   },
   {
@@ -647,13 +624,13 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "산점도의 가로축은 수학 성적, 세로축은 과학 성적이다. ① 점 B는 점 C보다 오른쪽에 있으므로 B의 수학 성적이 더 우수하다. (옳음) ② 점 D는 직선 $y=x$의 위쪽에 위치하므로 과학 성적이 수학 성적보다 높다. 즉, 과학 성적보다 수학 성적이 낮다. (옳음) ③ 점 A는 오른쪽 위에 위치하므로 두 과목 성적이 모두 우수한 편이다. (옳음) ⑤ 점들이 대체로 왼쪽 아래에서 오른쪽 위로 향하는 띠 모양으로 분포하므로, 한 변량(수학)이 증가함에 따라 다른 변량(과학)도 대체로 증가하는 경향이 있다. (옳음) ④ 이처럼 한쪽이 커짐에 따라 다른 쪽도 커지는 관계는 '양의 상관관계'이다. 따라서 '음의 상관관계가 있다'고 한 ④는 옳지 않다. 따라서 정답은 ④이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 1,
     "problemTypeKey": "",
     "templateKey": ""
@@ -679,13 +656,15 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "주어진 순서쌍을 산점도의 점으로 보고 위치와 개수를 파악한다. ① 점들이 대체로 오른쪽 위를 향해 분포하므로 두 과목 사이에는 양의 상관관계가 있다. (옳음) ② 두 과목의 점수가 같은 점은 $y=x$ 위에 있는 점으로 $(60, 60), (80, 80)$의 $2$명이다. (옳음) ③ 국어점수가 영어점수보다 높은 점($x > y$)은 $(50, 40), (70, 60), (80, 70), (90, 80)$의 $4$명이다. (옳음) ④ 국어점수와 영어점수가 모두 $80$점 이상($x \\ge 80, y \\ge 80$)인 점은 $(80, 80), (90, 80), (90, 100)$의 $3$명이다. (옳음) ⑤ 국어점수가 $70$점 이상인 학생은 $(70, 60), (70, 80), (80, 70), (80, 80), (90, 80), (90, 100)$의 총 $6$명이다. 이 $6$명 중에서 영어점수가 $80$점 이상인 학생은 $(70, 80), (80, 80), (90, 80), (90, 100)$의 $4$명이다. 따라서 그 비율은 $$ \\begin{aligned} \\dfrac{4}{6} = \\dfrac{2}{3} \\end{aligned} $$ 이다. 그러므로 비율이 $\\dfrac{1}{3}$이라고 한 ⑤가 옳지 않다. 따라서 정답은 ⑤이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "CC_ORDERED_PAIR_SATISFACTION_CHECK"
+    ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH",
+    "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "problemTypeKey": "",
     "templateKey": ""
@@ -705,23 +684,24 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) 풀이 참조 ($\\overline{AB}=\\overline{AC}$인 이등변삼각형), (2) $60^\\circ$",
     "solution": "(1) 직선 $AT$와 현 $BC$가 평행하므로($AT \\parallel BC$), 직선 $AB$를 가로지르는 선으로 보면 엇각의 크기가 서로 같다. $$ \\begin{aligned} \\angle BAT = \\angle ABC \\quad (\\text{엇각}) \\end{aligned} $$ 또한 접선과 현이 이루는 각의 성질에 의하여 접선 $AT$와 현 $AB$가 이루는 각은 그 현의 원주각과 같으므로 $$ \\begin{aligned} \\angle BAT = \\angle ACB \\end{aligned} $$ 이다. 따라서 $$ \\begin{aligned} \\angle ABC = \\angle ACB \\end{aligned} $$ 이므로, 밑각의 크기가 같은 두 대변의 길이가 같다. $$ \\begin{aligned} \\overline{AB} = \\overline{AC} \\end{aligned} $$ 그러므로 $\\triangle ABC$는 $\\overline{AB}=\\overline{AC}$인 이등변삼각형이다.\n(2) 위 (1)의 결과에 의하여 $$ \\begin{aligned} \\angle BAT = \\angle ABC = \\angle ACB \\end{aligned} $$ 이다. $\\triangle ABC$가 정삼각형이 되려면 세 내각의 크기가 모두 $60^\\circ$로 같아야 하므로 $$ \\begin{aligned} \\angle ABC = \\angle ACB = 60^\\circ \\end{aligned} $$ 이어야 한다. 따라서 $$ \\begin{aligned} \\angle BAT = 60^\\circ \\end{aligned} $$ 이다. 따라서 (1) $\\overline{AB}=\\overline{AC}$인 이등변삼각형, (2) $60^\\circ$이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
     "crossConceptKeys": [
-      "CC_GEOMETRIC_PROOF",
-      "CC_CIRCLE_PROPERTIES"
+      "CC_PARALLEL_LINE_ANGLES",
+      "CC_ISOSCELES_TRIANGLE",
+      "CC_GEOMETRIC_PROOF"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
   },
   {
     "id": 22,
-    "level": "중",
+    "level": "상",
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "standardCourse": "중3 수학",
@@ -734,19 +714,19 @@ window.questionBank = [
     "choices": [],
     "answer": "$72\\sqrt{3}\\,\\mathrm{cm}^2$",
     "solution": "접선과 현이 이루는 각의 성질에 의하여 $$ \\begin{aligned} \\angle BAC = \\angle BCP = 30^\\circ \\end{aligned} $$ 이다. 원 $O$의 반지름이 $12\\,\\mathrm{cm}$이므로 지름 $\\overline{AB}$의 길이는 $$ \\begin{aligned} AB = 2 \\times 12 = 24\\,\\mathrm{cm} \\end{aligned} $$ 이다. 지름 $\\overline{AB}$에 대한 원주각의 크기는 $90^\\circ$이므로 $$ \\begin{aligned} \\angle ACB = 90^\\circ \\end{aligned} $$ 이다. 따라서 $\\triangle ACB$는 빗변이 $24\\,\\mathrm{cm}$이고 한 예각이 $30^\\circ$인 직각삼각형이다. 직각을 낀 두 변의 길이를 삼각비로 구하면 다음과 같다. $$ \\begin{aligned} BC &= AB \\times \\sin 30^\\circ = 24 \\times \\dfrac{1}{2} = 12\\,\\mathrm{cm} \\\\ AC &= AB \\times \\cos 30^\\circ = 24 \\times \\dfrac{\\sqrt{3}}{2} = 12\\sqrt{3}\\,\\mathrm{cm} \\end{aligned} $$ 그러므로 직각삼각형 $ACB$의 넓이는 $$ \\begin{aligned} \\text{넓이} &= \\dfrac{1}{2} \\times BC \\times AC \\\\ &= \\dfrac{1}{2} \\times 12 \\times 12\\sqrt{3} \\\\ &= 72\\sqrt{3}\\,\\mathrm{cm}^2 \\end{aligned} $$ 따라서 구하는 넓이는 $72\\sqrt{3}\\,\\mathrm{cm}^2$이다.",
-    "score": 6.0,
+    "points": 6,
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
     "crossConceptKeys": [
-      "CC_CIRCLE_PROPERTIES",
+      "CC_TRIG_RATIO",
       "CC_TRIANGLE_AREA_TRIG"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
   },
   {
     "id": 23,
@@ -763,19 +743,16 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $12$회, (2) $7.5$회",
     "solution": "(1) $10$명의 턱걸이 횟수의 총합은 다음과 같다. $$ \\begin{aligned} \\text{총합} &= 8 + 7 + 9 + 4 + 9 + 6 + 5 + 8 + 6 + 58 \\\\ &= 120\\text{회} \\end{aligned} $$ 학생 수가 $10$명이므로 턱걸이 횟수의 평균은 $$ \\begin{aligned} \\text{평균} = \\dfrac{120}{10} = 12\\text{회} \\end{aligned} $$ 이다. (2) 자료 $10$개를 작은 값부터 크기순으로 나열하면 다음과 같다. $$ \\begin{aligned} 4, \\quad 5, \\quad 6, \\quad 6, \\quad 7, \\quad 8, \\quad 8, \\quad 9, \\quad 9, \\quad 58 \\end{aligned} $$ 자료의 총 개수가 짝수($10$개)이므로 중앙값은 한가운데 놓인 $5$번째 값($7$)과 $6$번째 값($8$)의 평균이다. $$ \\begin{aligned} \\text{중앙값} = \\dfrac{7 + 8}{2} = 7.5\\text{회} \\end{aligned} $$ 따라서 (1) 평균은 $12$회, (2) 중앙값은 $7.5$회이다.",
-    "score": 4.0,
+    "points": 4,
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-    "crossConceptKeys": [
-      "CC_MEAN",
-      "CC_MEDIAN"
-    ],
+    "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL",
+    "integrationPattern": "PARALLEL",
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": ""
+    "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+    "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC"
   },
   {
     "id": 24,
@@ -792,18 +769,17 @@ window.questionBank = [
     "choices": [],
     "answer": "평균 $8$, 분산 $\\dfrac{16}{3}$",
     "solution": "세 자료 $a, b, c$의 평균이 $8$이므로 $$ \\begin{aligned} a + b + c = 3 \\times 8 = 24 \\end{aligned} $$ 이다. 또한 분산이 $6$이므로 평균 $8$에 대한 세 변량의 편차의 제곱의 합은 다음과 같다. $$ \\begin{aligned} (a-8)^2 + (b-8)^2 + (c-8)^2 = 3 \\times 6 = 18 \\end{aligned} $$ 새로운 $6$개의 자료 ‘$a, b, c, 5, 9, 10$’의 총합을 구하면 $$ \\begin{aligned} \\text{새 총합} &= (a + b + c) + 5 + 9 + 10 \\\\ &= 24 + 24 \\\\ &= 48 \\end{aligned} $$ 이므로 새로운 평균은 $$ \\begin{aligned} \\text{새 평균} = \\dfrac{48}{6} = 8 \\end{aligned} $$ 이다. 새 자료의 평균도 원래 평균과 동일하게 $8$이다. 새로 추가된 세 변량 $5, 9, 10$의 평균 $8$에 대한 편차의 제곱의 합을 구하면 $$ \\begin{aligned} (5-8)^2 + (9-8)^2 + (10-8)^2 &= (-3)^2 + 1^2 + 2^2 \\\\ &= 9 + 1 + 4 \\\\ &= 14 \\end{aligned} $$ 이다. 따라서 $6$개 자료 전체의 편차의 제곱의 총합은 $$ \\begin{aligned} \\text{편차 제곱의 총합} = 18 + 14 = 32 \\end{aligned} $$ 이므로 새로운 분산은 다음과 같다. $$ \\begin{aligned} \\text{새 분산} = \\dfrac{32}{6} = \\dfrac{16}{3} \\end{aligned} $$ 따라서 구하는 값은 평균 $8$, 분산 $\\dfrac{16}{3}$이다.",
-    "score": 6.0,
+    "points": 6,
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
     "crossConceptKeys": [
-      "CC_MEAN",
-      "CC_VARIANCE"
+      "CC_MEAN"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
     "templateKey": ""
   }
 ];

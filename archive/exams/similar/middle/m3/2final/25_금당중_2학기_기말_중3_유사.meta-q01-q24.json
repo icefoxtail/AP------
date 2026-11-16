@@ -3,7 +3,7 @@
   "requestId": "similar-25-geumdang-m3-2final-candidate-v1",
   "examUid": "25_금당중_2학기_기말_중3_유사",
   "sourceArchiveFile": "similar/middle/m3/2final/25_금당중_2학기_기말_중3_유사.js",
-  "expectedSourceBlobSha1": "7b5b990c5ca2d515ab27f8fb40798605723e7fb2",
+  "expectedSourceBlobSha1": "bfdf83399d89e9b217a971bf6f056a2c68ad7be4",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -23,7 +23,7 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-06",
         "standardUnit": "원의 성질",
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -31,19 +31,45 @@
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-        "crossConceptKeys": [
-          "CC_CIRCLE_PROPERTIES"
-        ],
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "SEQUENTIAL",
+        "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
         "sourceQid": 1,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_7ddf5a40fd66a46555a3163a1915d62543cde5f98936b556b600460f6854adc1",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "작은 호 AB가 중심각 146°를 그대로 받는다는 점에서 반대쪽 큰 호 214°를 만들고, 그 큰 호를 바라보는 원주각을 절반으로 계산한다.",
+        "decisiveStep": "∠x = (360°-146°)/2 = 107°로 정해진다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M3-RPM-075"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q1와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "작은 호 AB가 중심각 146°를 그대로 받는다는 점에서 반대쪽 큰 호 214°를 만들고, 그 큰 호를 바라보는 원주각을 절반으로 계산한다.",
+      "decisiveStep": "∠x = (360°-146°)/2 = 107°로 정해진다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각과 중심각 > 중심각과 원주각",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-075",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE)",
+          "ptTplWhy": "중심각을 같은 호의 크기로 바꾼 뒤 그 호를 바라보는 원주각을 중심각의 절반으로 구하는 한 줄기 관계라 CENTER_ARC가 맞는다.",
+          "matchesResolver": true
+        },
+        "crossConcept": "None judged: 해당 없음: 중심각과 원주각의 관계만으로 풀리며, 현행 CC_CIRCLE_PROPERTIES는 Primary와 같은 뜻이라 중복으로 제외했다.",
+        "condition": "None judged: 해당 없음: 각도와 호의 크기만 주어지고 정수·범위·부등식 같은 제약 조건은 없다.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_ef1a7bcc6f1c42f2ab47d6bc1a99f693bea039e8731fbc477c4f50d46c65d98c",
@@ -53,27 +79,53 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-06",
         "standardUnit": "원의 성질",
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
         "subUnit": "원주각",
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-        "crossConceptKeys": [
-          "CC_CIRCLE_PROPERTIES"
-        ],
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "SEQUENTIAL",
+        "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
         "sourceQid": 2,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_2f1c5a1c5eb8f02c71b6de3feeb051166061fde8a3a269f92a4041bc6767756c",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "원주각 75°가 호 AC 150°를, 중심각 80°가 호 BC 80°를 정한다는 것을 이용해 두 호의 차로 호 AB를 남기고, 그 호의 원주각을 절반으로 읽는다.",
+        "decisiveStep": "호 AB = 150°-80° = 70°이므로 ∠APB = 70°/2 = 35°이다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-080"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q2와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "원주각 75°가 호 AC 150°를, 중심각 80°가 호 BC 80°를 정한다는 것을 이용해 두 호의 차로 호 AB를 남기고, 그 호의 원주각을 절반으로 읽는다.",
+      "decisiveStep": "호 AB = 150°-80° = 70°이므로 ∠APB = 70°/2 = 35°이다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각의 활용 > 복합 각 추론",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-080",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE); rpm path aligned with composite",
+          "ptTplWhy": "원주각 75°와 중심각 80°를 각각 호의 크기로 환산해 호의 차를 만들고 다시 원주각으로 되돌리는 복합 각 추론이라 COMPOSITE가 맞는다.",
+          "matchesResolver": true
+        },
+        "crossConcept": "None judged: 해당 없음: 호의 환산과 차 계산이 모두 원주각·중심각 계열 Primary 안에 있어 바깥 개념이 기여하지 않으며, CC_CIRCLE_PROPERTIES는 중복이라 제외했다.",
+        "condition": "None judged: 해당 없음: 주어진 것은 두 각의 크기뿐이고 별도의 수치 제약이 없다.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_dceaf397955cb8ccd444f161846e39cf22756e12e6c69901b3e52c6b0d4a4b96",
@@ -83,7 +135,7 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-06",
         "standardUnit": "원의 성질",
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -92,7 +144,7 @@
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
         "crossConceptKeys": [
-          "CC_CIRCLE_PROPERTIES"
+          "CC_RATIO"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -101,9 +153,37 @@
         "sourceQid": 3,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_e4cb347d93c065e7b5ec6a83da08b25662820f16d4f5d8ee27d62e5281128b25",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "세 호의 비의 합 9로 원 전체 360°를 배분해 호 AB의 크기를 먼저 정하고, 그 호를 바라보는 원주각을 절반으로 계산한다.",
+        "decisiveStep": "호 AB = 360°×(2/9) = 80°이므로 ∠ACB = 80°/2 = 40°이다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-075"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q3와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "세 호의 비의 합 9로 원 전체 360°를 배분해 호 AB의 크기를 먼저 정하고, 그 호를 바라보는 원주각을 절반으로 계산한다.",
+      "decisiveStep": "호 AB = 360°×(2/9) = 80°이므로 ∠ACB = 80°/2 = 40°이다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각과 중심각 > 중심각과 원주각",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-075",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE); original CC",
+          "ptTplWhy": "호의 비를 360°에 배분해 중심각 80°를 정하고 그 호를 바라보는 원주각을 절반으로 구하므로 CENTER_ARC 한 관계로 설명된다.",
+          "matchesResolver": true
+        },
+        "crossConcept": "CC_RATIO: 2:3:4의 합 9로 360°를 나누어 호 AB를 정하는 비례 배분이 정답의 절반을 결정한다.",
+        "condition": "None judged: 해당 없음: 호의 길이 비라는 관계 조건만 있고 정수·범위 제약은 없다.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_b9d529955cbf48c54b9227baa69e85e67f027c15c07f8d822fd9c07f342e5fc9",
@@ -113,7 +193,7 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-06",
         "standardUnit": "원의 성질",
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -122,7 +202,7 @@
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
         "crossConceptKeys": [
-          "CC_CIRCLE_PROPERTIES"
+          "CC_RATIO"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -131,9 +211,37 @@
         "sourceQid": 4,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_e88de51c21b517c71edb363cb84f4f8395814e7dba8e86c9cb9496fc922f836c",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "호의 길이가 원주의 분율이라는 조건과 배수 관계를 각각 중심각 60°, 90°로 환산하고, 원 안에서 두 현이 만드는 각을 마주 보는 두 호의 합의 절반으로 계산한다.",
+        "decisiveStep": "∠APB = (60°+90°)/2 = 75°로 확정된다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-080"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q4와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "호의 길이가 원주의 분율이라는 조건과 배수 관계를 각각 중심각 60°, 90°로 환산하고, 원 안에서 두 현이 만드는 각을 마주 보는 두 호의 합의 절반으로 계산한다.",
+      "decisiveStep": "∠APB = (60°+90°)/2 = 75°로 확정된다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각의 활용 > 복합 각 추론",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-080",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE); original CC",
+          "ptTplWhy": "원주에 대한 호의 비율을 중심각으로 환산한 뒤 원 내부에서 만나는 두 현의 교각 공식을 결합하므로 COMPOSITE가 맞는다.",
+          "matchesResolver": true
+        },
+        "crossConcept": "CC_RATIO: 원주의 1/6과 그 3/2배라는 비율 관계로 두 호의 크기 60°, 90°를 만드는 계산이 정답에 직접 기여한다.",
+        "condition": "None judged: 해당 없음: 호의 길이 비율과 교점 위치만 주어지고 수치 범위나 정수 조건은 없다.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_5476d29e46de4088053e1cf62e28940872b5f190968b64e4f15bb7e699ecb543",
@@ -143,7 +251,7 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-06",
         "standardUnit": "원의 성질",
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -151,19 +259,45 @@
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-        "crossConceptKeys": [
-          "CC_CIRCLE_PROPERTIES"
-        ],
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "SEQUENTIAL",
+        "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
         "sourceQid": 5,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_aa2152836380cf64e52bd50d0f5003e42d62cd8f2444b66c793867d676cd477c",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "지름이 반원의 호 180°를 만든다는 것과 중심각 20°, 40°가 각각 호 AD, DE를 정한다는 것을 이용해 먼 교점 쪽 호 BE 120°를 남기고, 원 밖 두 할선의 각을 호의 차의 절반으로 구한다.",
+        "decisiveStep": "∠ACD = (호 BE - 호 AD)/2 = (120°-20°)/2 = 50°이다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-080"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q5와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "지름이 반원의 호 180°를 만든다는 것과 중심각 20°, 40°가 각각 호 AD, DE를 정한다는 것을 이용해 먼 교점 쪽 호 BE 120°를 남기고, 원 밖 두 할선의 각을 호의 차의 절반으로 구한다.",
+      "decisiveStep": "∠ACD = (호 BE - 호 AD)/2 = (120°-20°)/2 = 50°이다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각의 활용 > 복합 각 추론",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-080",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE)",
+          "ptTplWhy": "반원의 호 180°와 중심각이 정하는 두 호를 구해 원 밖 두 할선의 교각 공식에 넣는 복합 각 추론이라 COMPOSITE가 맞는다.",
+          "matchesResolver": true
+        },
+        "crossConcept": "None judged: 해당 없음: 지름의 반원, 중심각의 호 환산, 할선 교각이 모두 원주각·중심각 계열 Primary 안에 있어 별도 개념이 기여하지 않는다.",
+        "condition": "None judged: 해당 없음: 점의 위치와 각도만 주어지고 정수·범위 조건은 없다.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_60d191932012919c001370b04cfc78f0462d9b5a71223244a1a48bdc81c4bec4",
@@ -173,27 +307,53 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-06",
         "standardUnit": "원의 성질",
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
         "subUnit": "원주각",
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-        "crossConceptKeys": [
-          "CC_CIRCLE_PROPERTIES"
-        ],
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "SEQUENTIAL",
-        "level": "중",
-        "difficultyBucket": 2,
+        "integrationPattern": "NONE",
+        "level": "상",
+        "difficultyBucket": 3,
         "sourceQid": 6,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_a648a0c72f64d65cb15fd9efb6c9c417d994a13d895a7097a3acc57dbbfdd5fc",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "내접오각형의 두 내각 70°, 135°를 각각 2배 해 호 BCDE 140°, 호 EABC 270°로 바꾸고, 360°에서 270°를 빼 호 EDC 90°를 얻어 호 BC를 남긴다.",
+        "decisiveStep": "호 BC = 140°-90° = 50°이므로 중심각 ∠BOC = 50°이다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-080"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q6와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "내접오각형의 두 내각 70°, 135°를 각각 2배 해 호 BCDE 140°, 호 EABC 270°로 바꾸고, 360°에서 270°를 빼 호 EDC 90°를 얻어 호 BC를 남긴다.",
+      "decisiveStep": "호 BC = 140°-90° = 50°이므로 중심각 ∠BOC = 50°이다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각의 활용 > 복합 각 추론",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-080",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE); difficulty 3 as original",
+          "ptTplWhy": "두 원주각을 2배 해 두 개의 큰 호를 만들고 360° 보수와 호의 차로 목표 호를 남긴 뒤 중심각과 호의 대응으로 마무리하는 복합 관계라 COMPOSITE가 맞는다.",
+          "matchesResolver": true
+        },
+        "crossConcept": "None judged: 해당 없음: 원주각의 2배와 호의 보수·차가 모두 원주각·중심각 관계 안에서 처리되어 바깥 개념 키가 필요 없다.",
+        "condition": "None judged: 해당 없음: 내접오각형의 각도만 주어지고 별도의 수치 제약은 없다.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_341154bbe5d7138495aa94b48a2c0fe19090d8b7726718b399707b30dbb61a81",
@@ -203,16 +363,16 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-06",
         "standardUnit": "원의 성질",
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
         "subUnit": "원주각",
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
         "crossConceptKeys": [
-          "CC_CIRCLE_PROPERTIES"
+          "CC_ISOSCELES_TRIANGLE"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -221,9 +381,37 @@
         "sourceQid": 7,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_a6aad8410d4054414cf17875be93409f2ede79d1aa4041636d84389eb9ed1cd2",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "AB=AC에서 밑각을 β로 두고, 접선 PC와 현 BC가 이루는 각을 ∠BAC와 같게 놓아 삼각형 PBC의 내각합으로 β를 정한 뒤 내접사각형의 대각의 합으로 ∠ADC를 구한다.",
+        "decisiveStep": "3β = 210°에서 β = 70°이고, ∠ADC = 180°-70° = 110°로 정해진다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M3-RPM-080"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q7와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "AB=AC에서 밑각을 β로 두고, 접선 PC와 현 BC가 이루는 각을 ∠BAC와 같게 놓아 삼각형 PBC의 내각합으로 β를 정한 뒤 내접사각형의 대각의 합으로 ∠ADC를 구한다.",
+      "decisiveStep": "3β = 210°에서 β = 70°이고, ∠ADC = 180°-70° = 110°로 정해진다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각의 활용 > 복합 각 추론",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-080",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE); original CC (registry ACTIVE)",
+          "ptTplWhy": "접선과 현이 이루는 각으로 β를 묶고 이등변삼각형의 내각합, 내접사각형의 대각의 합을 차례로 결합하므로 여러 원의 각 관계를 순차 조합하는 COMPOSITE가 맞는다.",
+          "matchesResolver": true
+        },
+        "crossConcept": "이등변삼각형의 두 밑각이 같다는 성질이 β 방정식에 실제로 기여하지만 선택지 표의 crossConcepts에 해당 키가 없어 비웠다. 원본 q7의 CC_ISOSCELES_TRIANGLE는 이 표에 없는 키다.",
+        "condition": "None judged: 해당 없음: 접선과 내접사각형, 선분 위의 점이라는 위치 조건만 있고 수치 범위 제약은 없다.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_0ea402e4465c9dfcae338b05104b9b29b5f26cd63db685770209ed07d3a80ac1",
@@ -233,7 +421,7 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-06",
         "standardUnit": "원의 성질",
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -241,19 +429,45 @@
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-        "crossConceptKeys": [
-          "CC_CIRCLE_PROPERTIES"
-        ],
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "SEQUENTIAL",
+        "integrationPattern": "NONE",
         "level": "상",
         "difficultyBucket": 3,
         "sourceQid": 8,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_af915e8311ee3443936d0e65c4ca4ad1886484c3fc43f4e04087981343295665",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "원주각 65°, 55°를 2배 해 호 BC 130°, 호 AB 110°를 얻고, 내부 교각 95° 공식으로 호 AD 60°를 역산한 뒤 360°에서 나머지 호 CD 60°를 구해 x, y를 정한다.",
+        "decisiveStep": "호 AD = 호 CD = 60°이므로 x = 30°, y = 30°이고 2x-y = 30°이다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M3-RPM-080"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q8와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "원주각 65°, 55°를 2배 해 호 BC 130°, 호 AB 110°를 얻고, 내부 교각 95° 공식으로 호 AD 60°를 역산한 뒤 360°에서 나머지 호 CD 60°를 구해 x, y를 정한다.",
+      "decisiveStep": "호 AD = 호 CD = 60°이므로 x = 30°, y = 30°이고 2x-y = 30°이다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각의 활용 > 복합 각 추론",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-080",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE)",
+          "ptTplWhy": "두 원주각을 호로 환산하고 내부 교각 공식과 360° 보수를 연쇄해 네 호를 결정한 뒤 원주각으로 x, y를 읽으므로 COMPOSITE가 맞는다.",
+          "matchesResolver": true
+        },
+        "crossConcept": "None judged: 해당 없음: 원주각의 2배와 내부 교각, 호의 보수가 모두 원주각 계열 Primary 안에 있어 바깥 개념 키가 필요 없다.",
+        "condition": "None judged: 해당 없음: 각도 조건만 주어지고 정수·범위·부등식 제약은 없다.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_b060895beb7aae4f0e0088d9af9ba1befda3112c3e15cec90e724567c405ae81",
@@ -263,7 +477,7 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-06",
         "standardUnit": "원의 성질",
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -272,7 +486,7 @@
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
         "crossConceptKeys": [
-          "CC_CIRCLE_PROPERTIES"
+          "CC_TRIANGLE_ANGLE_SUM"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -281,9 +495,37 @@
         "sourceQid": 9,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_1ab115f9959ad3ef912912757e7dcecc9577859286f1138f4780dd042adbd915",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "두 원에 공통인 점 A를 지나는 접선을 그어 접선-현 각을 두 원에 차례로 적용하고, 삼각형 EBD와 AED의 내각 합을 이어 x를 구한다.",
+        "decisiveStep": "∠AED가 55°+x, ∠ADE가 65°임을 삼각형 AED의 내각 합 180°에 넣어 2x=60°, 즉 x=30°를 얻는 단계.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-079"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q9와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "두 원에 공통인 점 A를 지나는 접선을 그어 접선-현 각을 두 원에 차례로 적용하고, 삼각형 EBD와 AED의 내각 합을 이어 x를 구한다.",
+      "decisiveStep": "∠AED가 55°+x, ∠ADE가 65°임을 삼각형 AED의 내각 합 180°에 넣어 2x=60°, 즉 x=30°를 얻는 단계.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각의 활용 > 접선과 현이 이루는 각",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-079",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE); original CC (registry ACTIVE)",
+          "ptTplWhy": "점 A의 공통 접선을 그어 접선-현 각을 큰 원과 작은 원에 연속 적용하는 것이 해설의 결정 골격이므로 접선-현 TPL이 맞다.",
+          "matchesResolver": true
+        },
+        "crossConcept": "해당 없음 — 삼각형 내각의 합과 평각이 실제로 쓰이지만 선택지 표에 맞는 CC 키가 없고, 현재 JS의 CC_CIRCLE_PROPERTIES는 Primary인 접선-현 각과 중복되어 쓰지 않았다.",
+        "condition": "None judged: 해당 없음 — 각 55°, 65°는 주어진 값일 뿐 풀이에 별도 제약 키가 걸리지 않는다.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_d0efeef617a9a5713f3664a708cbf925b22679c1e12df45a8dcc31fa97e005dc",
@@ -293,18 +535,15 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
-        "templateKey": "",
-        "crossConceptKeys": [
-          "CC_MEAN",
-          "CC_MEDIAN"
-        ],
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "level": "하",
@@ -312,9 +551,37 @@
         "sourceQid": 10,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_919b6be1662970b6dc14eced5091bdf760d97a39d4b63f41247d11550d18dd65",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "평균 9로 전체 합 72를 구해 빠진 변량 x=13을 먼저 복원한 뒤, 여덟 값을 정렬해 가운데 두 값 8과 9의 평균으로 중앙값을 낸다.",
+        "decisiveStep": "정렬된 자료의 4번째 값 8과 5번째 값 9를 평균해 중앙값 8.5를 정하는 계산.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "BOUNDARY",
+        "rpmPrimaryRecordId": "M3-RPM-081"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q10와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "평균 9로 전체 합 72를 구해 빠진 변량 x=13을 먼저 복원한 뒤, 여덟 값을 정렬해 가운데 두 값 8과 9의 평균으로 중앙값을 낸다.",
+      "decisiveStep": "정렬된 자료의 4번째 값 8과 5번째 값 9를 평균해 중앙값 8.5를 정하는 계산.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 대푯값 > 평균·중앙값·최빈값",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-081",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE) (mean condition -> missing value -> median)",
+          "ptTplWhy": "평균 조건으로 총합을 만들어 빠진 변량을 복원한 뒤 정렬된 가운데 두 값으로 중앙값을 정하는 흐름이 결정적이며, 원본의 PT_M1 계열 키는 ACTIVE 목록에 없어 다시 골랐다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "None judged: CC_MEAN: 평균×개수로 총합 72를 만들어 x=13을 복원하는 데 실제로 기여한다. CC_MEDIAN은 Primary와 중복되어 제외했다.",
+        "condition": "None judged: 해당 없음 — 평균 9와 자료 개수 8은 계산에 쓰이는 값일 뿐 별도 제약 키가 없다.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_a047f4e6181be8a9e3be690d7a1371423a12655352bf2b63b5c68849a729094b",
@@ -324,28 +591,63 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
+        "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
         "templateKey": "",
         "crossConceptKeys": [
-          "CC_MEDIAN",
-          "CC_MODE"
+          "CC_STEM_AND_LEAF_PLOT"
         ],
         "conditionKeys": [],
-        "integrationPattern": "SEQUENTIAL",
+        "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
         "sourceQid": 11,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_523502e8e30f18c43b9c230f1fa62b3c4dabdd27a628eaf29d32d2a8598349ec",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "줄기와 잎 그림을 16개 값으로 풀어 8·9번째 값으로 중앙값 25를, 도수가 가장 큰 35로 최빈값을 정해 차를 구한다.",
+        "decisiveStep": "도수 3인 35를 최빈값 b로 확정하고 b-a=35-25=10을 계산하는 단계.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-081"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q11와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "줄기와 잎 그림을 16개 값으로 풀어 8·9번째 값으로 중앙값 25를, 도수가 가장 큰 35로 최빈값을 정해 차를 구한다.",
+      "decisiveStep": "도수 3인 35를 최빈값 b로 확정하고 b-a=35-25=10을 계산하는 단계.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 대푯값 > 평균·중앙값·최빈값",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-081",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "original PT/CC (registry ACTIVE); TPL blank (original blank; ACTIVE TPL covers odd-count data only; new TPL proposed)",
+          "ptTplWhy": "줄기와 잎 그림을 값으로 풀어 중앙값과 최빈값을 각각 정하고 그 차를 구하는 일이 결정적이므로 중앙값·최빈값 결정 PT가 맞다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "해당 없음 — 줄기와 잎 그림 읽기는 보조 개념이지만 표에 맞는 CC 키가 없고, 중앙값·최빈값은 Primary라 중복을 피했다.",
+        "condition": "None judged: 해당 없음 — 자료 개수 16과 도수 분포는 주어진 자료 자체이며 별도 제약 키가 걸리지 않는다.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "PT is ACTIVE but no ACTIVE template under it matches the decisive step; new TPL proposed in new-key-proposals.json, not registered."
+        }
+      ]
     },
     {
       "questionUid": "qid_v1_c8b198dfa34a66e17ddd363a46a48b0fad5681cbdc98df4a4dca320b304b680c",
@@ -355,29 +657,53 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
-        "templateKey": "",
-        "crossConceptKeys": [
-          "CC_CENTRAL_TENDENCY",
-          "CC_MEAN",
-          "CC_MEDIAN"
-        ],
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "CASE_BRANCH",
+        "integrationPattern": "SEQUENTIAL",
         "level": "하",
         "difficultyBucket": 1,
         "sourceQid": 12,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_4490f377ce8daba62e7001106cba3fa31912fafced4e91c2f68c938ed0a7af86",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "각 자료의 극단값 여부를 보고, 42가 섞인 ②에서 중앙값 3과 평균 7.75를 비교해 중앙값이 중심 경향을 더 잘 드러낸다고 판정한다.",
+        "decisiveStep": "42 때문에 평균이 7.75로 끌려 올라간 반면 중앙값은 3에 머문다는 대비를 확인하는 판정.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-082"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q12와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "각 자료의 극단값 여부를 보고, 42가 섞인 ②에서 중앙값 3과 평균 7.75를 비교해 중앙값이 중심 경향을 더 잘 드러낸다고 판정한다.",
+      "decisiveStep": "42 때문에 평균이 7.75로 끌려 올라간 반면 중앙값은 3에 머문다는 대비를 확인하는 판정.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 대푯값 > 대푯값 비교",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-082",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE)",
+          "ptTplWhy": "극단값이 있는 자료에서 중앙값과 평균을 산출해 어느 대푯값이 중심을 더 잘 나타내는지 판정하는 것이 결정적이므로 중앙값 중심의 PT가 가장 가깝다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "None judged: CC_MEAN: 선택지 ②의 평균 62/8=7.75를 구해 중앙값 3과 대비하는 데 실제로 기여한다. CC_MEDIAN은 Primary와 중복되어 제외했다.",
+        "condition": "None judged: 해당 없음 — 다섯 자료는 선택지로 주어졌을 뿐 풀이에 별도 제약 키가 걸리지 않는다.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_1793e79824abb897ae28011f78fe430893d52f1cda7ee786130730d4bae81b79",
@@ -387,16 +713,16 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
         "crossConceptKeys": [
-          "CC_MEDIAN"
+          "CC_LINEAR_EQUATIONS"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -405,9 +731,37 @@
         "sourceQid": 13,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_3e407e59611ede535b710ae7745493d1f7234e52a73a905cf7df9cd50019b386",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "고정된 다섯 수 사이에 a를 넣어 중앙값 14를 만드는 위치를 정하고, 가운데 두 값 13과 a의 평균 식을 풀어 a를 구한다.",
+        "decisiveStep": "(13+a)/2=14를 풀어 a=15를 얻고 13<15<17로 위치 조건까지 확인하는 단계.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-087"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q13와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "고정된 다섯 수 사이에 a를 넣어 중앙값 14를 만드는 위치를 정하고, 가운데 두 값 13과 a의 평균 식을 풀어 a를 구한다.",
+      "decisiveStep": "(13+a)/2=14를 풀어 a=15를 얻고 13<15<17로 위치 조건까지 확인하는 단계.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 자료 비교 > 조건으로 자료 추론",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-087",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE); direct CC (linear equation for a); range of a is derived in the solution, not a stem constraint",
+          "ptTplWhy": "주어진 중앙값 14를 만족하도록 a의 위치를 정하고 가운데 두 값의 평균 식을 세워 미지 변량을 역산하는 것이 결정적이므로 중앙값 결정 PT가 맞다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "CC_LINEAR_EQUATIONS: (13+a)/2=14를 일차방정식으로 풀어 a=15를 얻는 데 실제로 기여한다.",
+        "condition": "None judged: COND_RANGE: 중앙값이 14가 되려면 a가 13과 17 사이에 있어야 한다는 범위 조건을 해설에서 확인한다.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_cc6133c14e263e4207a84166e71fd2aa0461ec9d611cadd2b6f68382a612f513",
@@ -417,17 +771,16 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
         "templateKey": "",
         "crossConceptKeys": [
-          "CC_MEAN",
-          "CC_DEVIATION"
+          "CC_MEAN"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -436,9 +789,45 @@
         "sourceQid": 14,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_8e728a7c737d0b1224dd70910204b7b41f2cff76baf3810fc861b8ec0f4100e8",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "여덟 변량의 합 56에서 평균 7을 내고, 변량 4에서 평균을 빼 편차를 계산한다.",
+        "decisiveStep": "편차=변량-평균에 4와 7을 대입해 -3을 정하는 계산.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-083"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q14와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "여덟 변량의 합 56에서 평균 7을 내고, 변량 4에서 평균을 빼 편차를 계산한다.",
+      "decisiveStep": "편차=변량-평균에 4와 7을 대입해 -3을 정하는 계산.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 산포도 > 편차",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-083",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "original PT (registry ACTIVE); TPL blank (new TPL proposed); mean is needed to get the deviation",
+          "ptTplWhy": "평균을 구한 뒤 특정 변량에서 평균을 빼 편차를 정하는 것이 결정적이므로 편차의 성질을 쓰는 PT가 맞다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "CC_MEAN: 총합 56을 8로 나눠 평균 7을 구하는 단계가 편차 계산에 필요하다. CC_DEVIATION은 Primary와 중복되어 제외했다.",
+        "condition": "None judged: 해당 없음 — 자료 값과 구하려는 변량 4 외에 별도 제약이 없다.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "PT is ACTIVE but no ACTIVE template under it matches the decisive step; new TPL proposed in new-key-proposals.json, not registered."
+        }
+      ]
     },
     {
       "questionUid": "qid_v1_900d8d4c358de65bcd268fdab82aebaeecba3d9bd1f8ed7156c0ada85924dc1e",
@@ -448,13 +837,13 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
+        "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_DEVIATION",
@@ -463,15 +852,51 @@
           "CC_SUM_OF_DEVIATIONS_ZERO"
         ],
         "conditionKeys": [],
-        "integrationPattern": "CASE_BRANCH",
+        "integrationPattern": "PARALLEL",
         "level": "하",
         "difficultyBucket": 1,
         "sourceQid": 15,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_8f6ca9e0b64b831c43ae6024fe78fbab07eef087bf941f0c67cef5b04a4d52e6",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "편차·분산·표준편차의 정의를 하나씩 보기에 대조해, 흩어짐이 클수록 산포도가 작아진다는 ⑤를 거짓으로 가려낸다.",
+        "decisiveStep": "평균에서 멀리 퍼질수록 분산과 표준편차가 커진다는 성질로 ⑤의 방향이 반대임을 밝히는 판정.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-086"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q15와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "편차·분산·표준편차의 정의를 하나씩 보기에 대조해, 흩어짐이 클수록 산포도가 작아진다는 ⑤를 거짓으로 가려낸다.",
+      "decisiveStep": "평균에서 멀리 퍼질수록 분산과 표준편차가 커진다는 성질로 ⑤의 방향이 반대임을 밝히는 판정.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 자료 비교 > 평균과 산포도 비교",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-086",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "original PT (same solving: judge statements on deviation/variance/SD); TPL blank (new TPL proposed, same key as Shinheung m3 q13)",
+          "ptTplWhy": "편차·분산·표준편차의 정의를 각 보기에 대조해 옳고 그름을 가리는 것이 전부이므로 개념 진위 판정 PT가 맞다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "CC_SUM_OF_DEVIATIONS_ZERO: ①의 참을 판정한다. CC_STANDARD_DEVIATION: ②의 표준편차=√분산 정의를 판정한다. CC_DEVIATION: ③의 편차 부호를 판정한다. CC_VARIANCE: ④의 분산 정의를 판정한다.",
+        "condition": "None judged: 해당 없음 — 보기 자체가 판정 대상이며 별도 제약 조건이 걸리지 않는다.",
+        "integration": "PARALLEL"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "PT is ACTIVE but no ACTIVE template under it matches the decisive step; new TPL proposed in new-key-proposals.json, not registered."
+        }
+      ]
     },
     {
       "questionUid": "qid_v1_689d3d087e2d9e800a97e523e9b172295f97fb9d1863b34567184b1b86ef0aa7",
@@ -481,30 +906,66 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
+        "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
         "templateKey": "",
         "crossConceptKeys": [
-          "CC_MEAN",
           "CC_DEVIATION",
           "CC_VARIANCE",
-          "CC_STANDARD_DEVIATION"
+          "CC_STANDARD_DEVIATION",
+          "CC_SUM_OF_DEVIATIONS_ZERO"
         ],
         "conditionKeys": [],
-        "integrationPattern": "CASE_BRANCH",
+        "integrationPattern": "SEQUENTIAL",
         "level": "중",
         "difficultyBucket": 2,
         "sourceQid": 16,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_773c156d87b16cf01c9325adb7aa6a61c1ef6c4a174016f3403eac89ddad9bf7",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "디자인은 편차가 모두 0임을 확인하고, 성능의 편차 2, 3, -3, 0, -2로 제곱합 26을 만들어 분산 5.2를 계산해 ①을 거짓으로 판정한다.",
+        "decisiveStep": "성능 만족도의 편차 제곱합 26을 5로 나눈 5.2가 제시된 4와 다름을 확인하는 계산.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-084"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q16와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "디자인은 편차가 모두 0임을 확인하고, 성능의 편차 2, 3, -3, 0, -2로 제곱합 26을 만들어 분산 5.2를 계산해 ①을 거짓으로 판정한다.",
+      "decisiveStep": "성능 만족도의 편차 제곱합 26을 5로 나눈 5.2가 제시된 4와 다름을 확인하는 계산.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 산포도 > 분산",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-084",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "original PT (judge statements from per-item data); TPL blank (new TPL proposed, same key as Shinheung m3 q15)",
+          "ptTplWhy": "성능 만족도의 편차를 구해 제곱합 26을 만들고 분산 5.2를 계산해 ①을 거짓으로 판정하는 것이 결정적이므로 편차 성질 활용 PT가 맞다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "CC_MEAN: 평균 6을 기준으로 성능의 편차 2, 3, -3, 0, -2를 만드는 데 쓰인다. CC_STANDARD_DEVIATION: 디자인 점수가 모두 6이라 표준편차가 0이라는 ②와 ⑤ 판정에 기여한다. CC_DEVIATION·CC_VARIANCE는 Primary와 중복되어 제외했다.",
+        "condition": "None judged: 해당 없음 — '가격 점수는 모두 같지 않다'가 ⑤ 판정에 쓰이지만 선택지 표에 맞는 COND 키가 없다.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "PT is ACTIVE but no ACTIVE template under it matches the decisive step; new TPL proposed in new-key-proposals.json, not registered."
+        }
+      ]
     },
     {
       "questionUid": "qid_v1_ac70411cd28682f263d65798e6d11ed115b5a95074096b95a3ed17049db57343",
@@ -514,18 +975,15 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
-        "templateKey": "",
-        "crossConceptKeys": [
-          "CC_MEAN",
-          "CC_VARIANCE"
-        ],
+        "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+        "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+        "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
         "level": "중",
@@ -533,9 +991,37 @@
         "sourceQid": 17,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_0bff84730bfa584139049ea52c4c76555081d3795a870f1102c100b3be0ea753",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "도수로 가중한 평균을 먼저 구하고, 각 점수의 편차를 제곱해 도수만큼 더한 뒤 전체 도수로 나누어 분산을 계산한다.",
+        "decisiveStep": "편차 제곱의 총합 14를 전체 도수 10으로 나누어 분산 7/5를 정한다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-084"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q17와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "도수로 가중한 평균을 먼저 구하고, 각 점수의 편차를 제곱해 도수만큼 더한 뒤 전체 도수로 나누어 분산을 계산한다.",
+      "decisiveStep": "편차 제곱의 총합 14를 전체 도수 10으로 나누어 분산 7/5를 정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 산포도 > 분산",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-084",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE)",
+          "ptTplWhy": "도수분포표의 점수와 도수로 평균을 낸 뒤 편차 제곱에 도수를 곱해 분산을 구하는 흐름이 PT_M3_DISPERSION_FREQUENCY_TABLE과 일치하고, 이 PT 아래의 활성 TPL이 없어 비웠다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "None judged: 도수 가중 평균과 분산 계산이 모두 Primary 안에 포함되어 해당 없음.",
+        "condition": "None judged: 평균·분산 외에 해법을 제한하는 조건이 없어 해당 없음.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_ec3437230bf28ec4e7599d1cf14bce785b26ce7616ba289645dc75e8ec533058",
@@ -545,28 +1031,63 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
         "templateKey": "",
         "crossConceptKeys": [
-          "CC_MEAN",
-          "CC_VARIANCE"
+          "CC_SYMMETRIC_SUM_PRODUCT"
         ],
         "conditionKeys": [],
-        "integrationPattern": "INTERDEPENDENT",
+        "integrationPattern": "SEQUENTIAL",
         "level": "상",
         "difficultyBucket": 3,
         "sourceQid": 18,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_19ad6b2648447796a2189d4c7b831df4ccc388e1dfaa847d08c8507d438a0cd9",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "평균 조건으로 두 수의 합을, 분산 조건으로 편차 제곱의 합을 구한 뒤 전개와 대칭식 변형으로 두 수의 곱을 계산한다.",
+        "decisiveStep": "x+y=11과 x²+y²=73을 (x+y)²=x²+y²+2xy에 대입해 xy=24를 정한다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-084"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q18와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "평균 조건으로 두 수의 합을, 분산 조건으로 편차 제곱의 합을 구한 뒤 전개와 대칭식 변형으로 두 수의 곱을 계산한다.",
+      "decisiveStep": "x+y=11과 x²+y²=73을 (x+y)²=x²+y²+2xy에 대입해 xy=24를 정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 산포도 > 분산",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-084",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "direct: mean/variance condition -> sums and sum of squares; original CC (registry ACTIVE); TPL blank (new TPL proposed, same key as Shinheung m3 q16/q23)",
+          "ptTplWhy": "평균·분산 조건을 총합과 편차 제곱합으로 바꾸는 결정적 흐름이 PT_M3_DISPERSION_DEVIATION_PROPERTIES에 해당하고, 맞는 활성 TPL이 없어 비웠다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "평균 조건으로 합을 구하는 평균 개념과, 합과 제곱합에서 곱을 복원하는 대칭식 변형이 Primary 밖에서 기여한다.",
+        "condition": "None judged: 주어진 평균·분산은 수치 조건일 뿐 선택지 표의 조건 키에 해당하지 않아 해당 없음.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "PT is ACTIVE but no ACTIVE template under it matches the decisive step; new TPL proposed in new-key-proposals.json, not registered."
+        }
+      ]
     },
     {
       "questionUid": "qid_v1_3fde00cc78930a457d3d3f97a2e63d1ec85eaf66a87a01f203c839500c903130",
@@ -576,7 +1097,7 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
@@ -586,15 +1107,52 @@
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "CASE_BRANCH",
+        "integrationPattern": "NONE",
         "level": "하",
         "difficultyBucket": 1,
         "sourceQid": 19,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_21a4d3a0893d43b44b275b39530dfd6353a6379371cd8581b0b3eeb8423b9181",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "산점도에서 각 점의 위치와 전체 분포가 향하는 방향을 읽어 보기의 설명이 성립하는지 판정한다.",
+        "decisiveStep": "점들이 왼쪽 아래에서 오른쪽 위로 향하는 것을 양의 상관관계로 읽어, 음의 상관관계라고 한 ④를 옳지 않은 설명으로 정한다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "EVIDENCE_DEBT",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-090"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q19와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "산점도에서 각 점의 위치와 전체 분포가 향하는 방향을 읽어 보기의 설명이 성립하는지 판정한다.",
+      "decisiveStep": "점들이 왼쪽 아래에서 오른쪽 위로 향하는 것을 양의 상관관계로 읽어, 음의 상관관계라고 한 ④를 옳지 않은 설명으로 정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 상관관계 > 상관관계 > 양의 상관관계",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-090",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "no ACTIVE PT for correlation judgment; new PT/TPL proposed (same keys as Shinheung m3 q18)",
+          "ptTplWhy": "산점도의 분포 방향으로 상관관계의 종류를 판정하는 활성 PT가 없어 비우고 PT/TPL 제안으로 남겼다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "None judged: 산점도 읽기와 상관관계 판정이 Primary 그 자체여서 해당 없음.",
+        "condition": "None judged: y=x 위쪽이라는 위치 설명은 보기 내용이고 선택지 표의 조건 키에 해당하지 않아 해당 없음.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "No ACTIVE problem type in the registry covers this solving structure (scatter/correlation reading); new PT/TPL proposed in new-key-proposals.json, not registered."
+        }
+      ]
     },
     {
       "questionUid": "qid_v1_9f23f1c773bc1334e79a7dd3722a47089329b9882c225ee8f92f402bf9c70183",
@@ -604,7 +1162,7 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
@@ -612,17 +1170,56 @@
         "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
         "problemTypeKey": "",
         "templateKey": "",
-        "crossConceptKeys": [],
+        "crossConceptKeys": [
+          "CC_ORDERED_PAIR_SATISFACTION_CHECK"
+        ],
         "conditionKeys": [],
-        "integrationPattern": "CASE_BRANCH",
+        "integrationPattern": "NONE",
         "level": "중",
         "difficultyBucket": 2,
         "sourceQid": 20,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_d1842da393d94c3c51b3ed646e47e0d0233a93157dac44d0e0b6c33f0643dd23",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "주어진 순서쌍을 좌표평면의 점으로 놓고 각 설명의 조건에 맞는 점을 골라 개수와 비율을 계산한다.",
+        "decisiveStep": "국어 70점 이상인 6명 중 영어 80점 이상이 4명임을 세어 비율 2/3을 얻고, 1/3이라고 한 ⑤를 옳지 않은 설명으로 정한다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "EVIDENCE_DEBT",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-088"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q20와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "주어진 순서쌍을 좌표평면의 점으로 놓고 각 설명의 조건에 맞는 점을 골라 개수와 비율을 계산한다.",
+      "decisiveStep": "국어 70점 이상인 6명 중 영어 80점 이상이 4명임을 세어 비율 2/3을 얻고, 1/3이라고 한 ⑤를 옳지 않은 설명으로 정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 상관관계 > 산점도 > 산점도 읽기",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-088",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "no ACTIVE PT for scatter/ordered-pair counting; new PT/TPL proposed (same keys as Shinheung m3 q19/q20)",
+          "ptTplWhy": "산점도에서 조건에 맞는 점의 개수와 비율을 세는 활성 PT가 없어 비우고 PT/TPL 제안으로 남겼다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "조건별 점 개수 세기가 Primary 그 자체여서 해당 없음.",
+        "condition": "None judged: 점수 기준은 보기별 부분 조건이고 선택지 표의 조건 키에 해당하는 제약이 없어 해당 없음.",
+        "integration": "NONE"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "problemTypeKey",
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "No ACTIVE problem type in the registry covers this solving structure (scatter/correlation reading); new PT/TPL proposed in new-key-proposals.json, not registered."
+        }
+      ]
     },
     {
       "questionUid": "qid_v1_da26f4a2c53e115f4223f1b4a301da699226b3e4985989efce1888485dbdc113",
@@ -632,7 +1229,7 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-06",
         "standardUnit": "원의 성질",
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -641,8 +1238,9 @@
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
         "crossConceptKeys": [
-          "CC_GEOMETRIC_PROOF",
-          "CC_CIRCLE_PROPERTIES"
+          "CC_PARALLEL_LINE_ANGLES",
+          "CC_ISOSCELES_TRIANGLE",
+          "CC_GEOMETRIC_PROOF"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -651,9 +1249,37 @@
         "sourceQid": 21,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_1d54adefc00dc675affa923d916410f8f5c2b56fdcfee14350acf452455939a5",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "평행선의 엇각으로 ∠BAT=∠ABC를, 접선과 현이 이루는 각의 성질로 ∠BAT=∠ACB를 얻어 두 밑각이 같음을 보이고, 세 각이 60도일 조건으로 접선-현각을 정한다.",
+        "decisiveStep": "∠ABC=∠ACB에서 대변 AB=AC인 이등변삼각형임을 이끌어 내고, 정삼각형이 되려면 ∠BAT=60도임을 정한다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-079"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q21와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "평행선의 엇각으로 ∠BAT=∠ABC를, 접선과 현이 이루는 각의 성질로 ∠BAT=∠ACB를 얻어 두 밑각이 같음을 보이고, 세 각이 60도일 조건으로 접선-현각을 정한다.",
+      "decisiveStep": "∠ABC=∠ACB에서 대변 AB=AC인 이등변삼각형임을 이끌어 내고, 정삼각형이 되려면 ∠BAT=60도임을 정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각의 활용 > 접선과 현이 이루는 각",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-079",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE); original CC (registry ACTIVE) + proof",
+          "ptTplWhy": "평행선의 엇각과 접선-현각이 같은 각을 가리킨다는 성질을 연결해 밑각이 같은 삼각형을 증명하는 흐름이 해당 TPL과 일치한다.",
+          "matchesResolver": true
+        },
+        "crossConcept": "증명의 논증 구조가 Primary 밖에서 기여하며, 평행선 엇각과 이등변삼각형 성질은 선택지 표에 맞는 키가 없어 CC_GEOMETRIC_PROOF로 대신했다.",
+        "condition": "None judged: ∠BAT가 예각이라는 제한은 도형의 형태를 정하는 서술이지만 선택지 표의 조건 키에 해당하지 않아 해당 없음.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_d6f41d563d95bb5f4a4dec8dc0bf1671378734fd0f1ab01ea12430c92cf4533e",
@@ -663,7 +1289,7 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-06",
         "standardUnit": "원의 성질",
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
@@ -672,19 +1298,47 @@
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
         "crossConceptKeys": [
-          "CC_CIRCLE_PROPERTIES",
+          "CC_TRIG_RATIO",
           "CC_TRIANGLE_AREA_TRIG"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "level": "중",
-        "difficultyBucket": 2,
+        "level": "상",
+        "difficultyBucket": 3,
         "sourceQid": 22,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_b84004e3bc2a05d6ea00514e1051f48d78d3776666ee16f15932eb311b06fbf1",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "접선과 현이 이루는 각으로 ∠BAC=30도를 얻고, 지름에 대한 원주각이 90도임을 이용해 직각삼각형의 두 변을 삼각비로 구한 뒤 넓이를 계산한다.",
+        "decisiveStep": "빗변 AB=24cm, 한 예각 30도인 직각삼각형에서 BC=12cm, AC=12√3cm를 구해 넓이 72√3cm²를 정한다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-079"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q22와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "접선과 현이 이루는 각으로 ∠BAC=30도를 얻고, 지름에 대한 원주각이 90도임을 이용해 직각삼각형의 두 변을 삼각비로 구한 뒤 넓이를 계산한다.",
+      "decisiveStep": "빗변 AB=24cm, 한 예각 30도인 직각삼각형에서 BC=12cm, AC=12√3cm를 구해 넓이 72√3cm²를 정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 원의 성질 > 원주각 > 원주각의 활용 > 접선과 현이 이루는 각",
+        "resolver": {
+          "projectionStatus": "PROJECTION_REUSE",
+          "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+          "crosswalkRecordId": "M3-RPM-079",
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD"
+        },
+        "ptTpl": {
+          "source": "original PT/TPL (same solving type as original q, registry ACTIVE); original CC",
+          "ptTplWhy": "접선-현각으로 ∠BAC를 구한 뒤 지름에 대한 원주각이 직각임을 이용해 삼각비와 넓이로 연결하는 흐름이 해당 TPL과 일치한다.",
+          "matchesResolver": true
+        },
+        "crossConcept": "30도 삼각비로 두 변을 구하고 직각삼각형의 넓이 공식으로 마무리하는 개념이 Primary 밖에서 기여한다.",
+        "condition": "None judged: 점 P가 접선 위에 있다는 위치 조건과 30도 각은 보조 설명이고 조건 키에 해당하지 않아 해당 없음.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_51a8b47b4610e8f4e844458406938227de22ba8061b7cabc7894c57d4ee04d6f",
@@ -694,28 +1348,53 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
-        "templateKey": "",
-        "crossConceptKeys": [
-          "CC_MEAN",
-          "CC_MEDIAN"
-        ],
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+        "crossConceptKeys": [],
         "conditionKeys": [],
-        "integrationPattern": "SEQUENTIAL",
+        "integrationPattern": "PARALLEL",
         "level": "하",
         "difficultyBucket": 1,
         "sourceQid": 23,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_f9f36239de48866cbd5b2f5f496bb8a17d75b7880becad771713478ed70fe725",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "자료의 총합을 학생 수로 나누어 평균을 구하고, 자료를 크기순으로 나열해 가운데 두 값의 평균으로 중앙값을 구한다.",
+        "decisiveStep": "정렬한 10개 값의 5번째 7과 6번째 8을 평균하여 중앙값 7.5회를 정한다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "FINAL",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-081"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q23와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "자료의 총합을 학생 수로 나누어 평균을 구하고, 자료를 크기순으로 나열해 가운데 두 값의 평균으로 중앙값을 구한다.",
+      "decisiveStep": "정렬한 10개 값의 5번째 7과 6번째 8을 평균하여 중앙값 7.5회를 정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 대푯값 > 평균·중앙값·최빈값",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-081",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "original PT; direct TPL (sort and take the middle two values of even-count data)",
+          "ptTplWhy": "자료를 크기순으로 나열해 가운데 두 값의 평균으로 중앙값을 정하는 결정적 흐름이 PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE에 해당하고, 맞는 활성 TPL이 없어 비웠다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "None judged: 평균 계산은 중앙값 중심의 Primary 밖에서 (1)의 답에 기여한다.",
+        "condition": "None judged: 이상치 58은 자료값일 뿐 해법을 제한하는 조건 키가 아니어서 해당 없음.",
+        "integration": "PARALLEL"
+      },
+      "evidenceDebt": []
     },
     {
       "questionUid": "qid_v1_77bbfcd57d858e11ad12188325ac66daec2df76d455eb16e5d724c19fc504d10",
@@ -725,17 +1404,16 @@
         "standardCourse": "중3 수학",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "중3 수학",
+        "courseKey": "MID-MATH-3",
         "standardUnitKey": "M3-07",
         "standardUnit": "통계",
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "",
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
         "templateKey": "",
         "crossConceptKeys": [
-          "CC_MEAN",
-          "CC_VARIANCE"
+          "CC_MEAN"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -744,9 +1422,47 @@
         "sourceQid": 24,
         "sourceArchiveFile": "archive/exams/original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
         "sourceQuestionUid": "qid_v1_7d6f033859cf8bda81b737421e98488efea5ca28ba40048044e856e7416933c7",
-        "variationType": "STRICT_VARIANT"
+        "variationType": "STRICT_VARIANT",
+        "primaryMethod": "기존 자료의 평균과 분산을 각각 총합과 편차 제곱합으로 바꾸고, 새로 더한 값들의 총합과 편차 제곱합을 합쳐 새 평균과 분산을 계산한다.",
+        "decisiveStep": "편차 제곱합 18과 새 값들의 편차 제곱합 14를 더한 32를 자료 수 6으로 나누어 분산 16/3을 정한다.",
+        "rpmSemanticStatus": "FINAL",
+        "semanticStatus": "FINAL",
+        "ptTplStatus": "SELF_CHECKED",
+        "difficultyBoundaryFlag": "NONE",
+        "rpmPrimaryRecordId": "M3-RPM-084"
       },
-      "reason": "금당중 3-2 기말 유사 문항 생성, 원본 Q24와 1:1 대응. 의미 경로와 PT/TPL은 공식 Resolver 결과를 반영했으며, 후보 생성 메타는 미검토 상태."
+      "reason": "Semantic fields judged by one DeepSeek v4.1 flash pass and operator review. PT/TPL/CrossConcept continue the original exam judgment where the solving type is the same, otherwise set by direct judgment from the decisive solution step against ACTIVE registry keys; the official Resolver (stage-meta-bridge CREATE) was run for comparison. No second independent pass and no human review recorded.",
+      "primaryMethod": "기존 자료의 평균과 분산을 각각 총합과 편차 제곱합으로 바꾸고, 새로 더한 값들의 총합과 편차 제곱합을 합쳐 새 평균과 분산을 계산한다.",
+      "decisiveStep": "편차 제곱합 18과 새 값들의 편차 제곱합 14를 더한 32를 자료 수 6으로 나누어 분산 16/3을 정한다.",
+      "metaRationale": {
+        "rpmPath": "2015 M3-2 > 통계 > 대푯값과 산포도 > 산포도 > 분산",
+        "resolver": {
+          "projectionStatus": "PROJECTION_UNMATERIALIZED",
+          "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+          "crosswalkRecordId": "M3-RPM-084",
+          "problemTypeKey": "",
+          "templateKey": ""
+        },
+        "ptTpl": {
+          "source": "direct: sum of squared deviations from mean/variance; TPL blank (new TPL proposed, same key as Shinheung m3 q16)",
+          "ptTplWhy": "기존 자료의 평균·분산을 총합과 편차 제곱합으로 바꾸고 추가된 값들의 같은 양을 합쳐 새 분산을 구하는 흐름이 PT_M3_DISPERSION_DEVIATION_PROPERTIES에 해당하고, 맞는 활성 TPL이 없어 비웠다.",
+          "matchesResolver": false
+        },
+        "crossConcept": "새 자료의 평균을 구하는 데 평균 개념이 Primary 밖에서 기여하며, 분산은 Primary와 중복되어 넣지 않았다.",
+        "condition": "None judged: 평균·분산은 주어진 수치 조건이고 선택지 표의 조건 키에 해당하지 않아 해당 없음.",
+        "integration": "SEQUENTIAL"
+      },
+      "evidenceDebt": [
+        {
+          "fields": [
+            "templateKey"
+          ],
+          "status": "EVIDENCE_DEBT",
+          "reason": "PT is ACTIVE but no ACTIVE template under it matches the decisive step; new TPL proposed in new-key-proposals.json, not registered."
+        }
+      ]
     }
-  ]
+  ],
+  "rpmStatus": "FINAL",
+  "expectedSourceSha256": "78601c6153049f7c5184441b448704dbaa23de9d5fb681a36eb925d93edc37ad"
 }
