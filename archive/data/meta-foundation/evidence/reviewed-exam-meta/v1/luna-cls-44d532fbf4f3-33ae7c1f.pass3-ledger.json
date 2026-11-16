@@ -1,0 +1,149 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "tera-pass3",
+    "createdAt":  "2026-11-13T12:17:11+09:00",
+    "sourceArchiveFile":  "original/high/h2/1mid/19_금당고_1학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "72=2³×3²이므로 1부터 72까지에서 2 또는 3의 배수를 포함배제로 제외하며 H15 접두어 키는 선택지 표에 없음.",
+                      "choiceTableUsed":  "H1-공통수학1.json",
+                      "standardUnitKey":  "H22-C-07",
+                      "subUnitKey":  "H22-C-07-CORE",
+                      "crossConceptKeys":  [
+
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_COPRIME_TO_FIXED_INTEGER"
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "경우의 수와 순열",
+                                      "l3":  "합·곱의 법칙",
+                                      "l4":  "경우를 나누어 세기"
+                                  }
+                  },
+                  {
+                      "ordinal":  10,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "x₁+x₃=3의 음이 아닌 정수해 4개마다 나머지 세 변수 합이 5인 해를 중복조합으로 센다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "subUnitKey":  "H15-PS-01-COMBINATION",
+                      "conditionKeys":  [
+                                            "COND_INTEGER"
+                                        ]
+                  },
+                  {
+                      "ordinal":  12,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "(x⁷+x⁻³)ⁿ에서 상수항 조건 7n-10k=0을 만족하는 자연수 n은 10의 배수이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "subUnitKey":  "H15-PS-02-BINOMIAL_BASIC",
+                      "crossConceptKeys":  [
+                                               "CC_EXPONENT_LAWS"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ]
+                  },
+                  {
+                      "ordinal":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "9¹⁰=(10-1)¹⁰을 전개하면 250으로 나눈 나머지는 151이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "subUnitKey":  "H15-PS-02-BINOMIAL_APPLICATION"
+                  },
+                  {
+                      "ordinal":  15,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "(2x-y)ⁿ의 서로 다른 항 수 n+1=10에서 n=9이고 x⁹의 계수는 2⁹이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "subUnitKey":  "H15-PS-02-BINOMIAL_BASIC",
+                      "crossConceptKeys":  [
+                                               "CC_POLYNOMIAL_TERM_COUNT"
+                                           ],
+                      "rpmPath":  {
+                                      "l3":  "이항정리",
+                                      "l4":  "전개식의 항"
+                                  }
+                  },
+                  {
+                      "ordinal":  18,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "짝수 n에 대해 짝수 차수 이항계수의 합 2ⁿ⁻¹이 1000과 10000 사이이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "subUnitKey":  "H15-PS-02-BINOMIAL_COEFFICIENT",
+                      "conditionKeys":  [
+                                            "COND_RANGE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  19,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "이항계수의 가중합은 (1+4)ⁿ, 전체합은 (1+1)³ⁿ, 짝수항 합은 2²ⁿ⁻¹이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "subUnitKey":  "H15-PS-02-BINOMIAL_COEFFICIENT"
+                  },
+                  {
+                      "ordinal":  22,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "(1+2x)ᵏ의 x³ 계수 8C(k,3)을 k=3부터 10까지 더한다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "subUnitKey":  "H15-PS-02-BINOMIAL_COEFFICIENT",
+                      "crossConceptKeys":  [
+                                               "CC_BINOMIAL_TERM_COEFFICIENT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  4,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "서로 다른 편지 5통 각각에 우체통 A, B, C 중 하나를 선택하여 3⁵가지이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "subUnitKey":  "H15-PS-01-PERMUTATION",
+                      "rpmPath":  {
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  }
+                  },
+                  {
+                      "ordinal":  6,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "작은 정사각형으로 이루어진 그림 속 정사각형의 개수를 묻고 H15 접두어 키는 선택지 표에 없음.",
+                      "choiceTableUsed":  "H1-공통수학1.json",
+                      "standardUnitKey":  "H22-C-07",
+                      "subUnitKey":  "H22-C-07-CORE",
+                      "hold":  "rpmPath.majorUnit, rpmPath.midUnit, rpmPath.l3, rpmPath.l4, crossConceptKeys, conditionKeys, integrationPattern: 정사각형의 배치 그림을 확인할 수 없음"
+                  },
+                  {
+                      "ordinal":  8,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "정삼각기둥의 다섯 면을 서로 다른 다섯 색으로 칠하고 회전한 배치를 같은 것으로 본다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "standardUnitKey":  "H15-PS-01",
+                      "subUnitKey":  "H15-PS-01-PERMUTATION",
+                      "crossConceptKeys":  [
+                                               "CC_POLYHEDRON_COLORING_ROTATION"
+                                           ],
+                      "conditionKeys":  [
+
+                                        ],
+                      "integrationPattern":  "NONE",
+                      "rpmPath":  {
+                                      "majorUnit":  "경우의 수",
+                                      "midUnit":  "순열과 조합",
+                                      "l3":  "순열",
+                                      "l4":  "중복·원순열"
+                                  }
+                  },
+                  {
+                      "ordinal":  9,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "갑과 을이 A와 B에서 동시에 같은 속력으로 최단 경로를 이동하여 도중에 만나는 경우를 센다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "standardUnitKey":  "H15-PS-01",
+                      "hold":  "subUnitKey, rpmPath.majorUnit, rpmPath.midUnit, rpmPath.l3, rpmPath.l4, crossConceptKeys, conditionKeys, integrationPattern: 도로망의 형태와 이동 경로를 그림에서 확인할 수 없음"
+                  }
+              ]
+}

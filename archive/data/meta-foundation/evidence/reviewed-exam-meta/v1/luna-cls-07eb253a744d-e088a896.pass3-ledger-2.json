@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T12:45:00+09:00",
+  "sourceArchiveFile": "original/high/h2/1mid/19_금당고_1학기_중간_고2_수학I.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l3": "로그의 성질",
+        "l4": "곱·몫·거듭제곱"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “$\\log_{\\sqrt{3}} \\sqrt{27} + 10^{\\log 3}$을 간단히 한 값은? [4.0점]”에서 첫 항은 3, 둘째 항은 3이어서 값은 6이다."
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l4": "삼각함수 값"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “원점 $O$와 점 $P(-8, 15)$에 대하여 동경 $OP$가 나타내는 각의 크기를 $\\theta$라 할 때, $\\dfrac{17\\sin\\theta + 16\\tan\\theta}{17\\cos\\theta + 5}$의 값은? [4.8점]”에서 분자는 15−30=−15, 분모는 −8+5=−3이므로 값은 5이다."
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “0이 아닌 두 실수 $x$, $y$에 대하여 $2^x+2^y = 2-p$, $x+y=0$일 때, $(1+p\\times 2^x + 2^{2x})(1+p\\times 2^y + 2^{2y})$의 값은? (단, $p$는 상수이다.) [4.8점]”에서 각 괄호는 2u와 2v로 줄어들어 곱은 4이다."
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l3": "그래프 변환",
+        "l4": "주기·진폭"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “$\\cos 0 + \\cos\\dfrac{\\pi}{12} + \\cos\\dfrac{2\\pi}{12} + \\cdots + \\cos\\dfrac{23\\pi}{12} + 1$의 값은? [4.8점]”에서 대응하는 각 π−θ의 코사인이 반대 부호여서 24항 합은 0이고 마지막 1을 더해 1이다."
+    },
+    {
+      "ordinal": 16,
+      "chosenFrom": "pass2",
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “10이하의 자연수 $n$에 대하여 $n-6$의 제곱근 중 실수인 것의 개수를 $f(n)$, $n-6$의 다섯제곱근 중 실수인 것의 개수를 $g(n)$이라 하자. $f(n)+g(n)=3$을 만족시키는 10이하의 자연수 $n$의 개수는? [5.0점]”에서 f(n)+g(n)=3은 n=7,8,9,10에서만 성립해 네 개이다.",
+      "hold": {
+        "integrationPattern": "choiceTableUsed에 integrationPattern 선택 목록이 없어 표 안의 값을 고를 수 없음"
+      }
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_RANGE",
+        "COND_POSITIVE"
+      ],
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “$x$에 대한 부등식 $3^{2x}-(2a+10)3^x + 20a \\le 0$을 만족시키는 정수 $x$의 개수가 3이 되도록 하는 1보다 작은 양수 $a$의 최댓값은? [5.0점]”에서 정확히 x=0,1,2만 남으려면 1/6<a≤1/2이므로 최댓값은 1/2이다.",
+      "hold": {
+        "integrationPattern": "choiceTableUsed에 integrationPattern 선택 목록이 없어 표 안의 값을 고를 수 없음"
+      }
+    },
+    {
+      "ordinal": 2,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "midUnit": "지수함수",
+        "l3": "지수방정식",
+        "l4": "밑 통일"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “방정식 $5^{2x+4} = 125^{x+1}$의 해는? [4.0점]”에서 2x+4=3x+3에서 x=1이다."
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "rpmPath": {
+        "l3": "지수부등식",
+        "l4": "치환"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “[서술형2] 모든 실수 $x$에 대하여 부등식 $a \\cdot 2^{2x} + a \\cdot 2^{x+1} - a^2+2a+3 > 0$이 항상 성립하도록 하는 모든 정수 $a$의 개수를 구하시오. [7점]”에서 a는 양수이고 t→0에서 상수항 −a²+2a+3은 0 이상이면 되어 정수 a는 1,2,3이다.",
+      "hold": {
+        "integrationPattern": "choiceTableUsed에 integrationPattern 선택 목록이 없어 표 안의 값을 고를 수 없음"
+      }
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “$\\log_{(a-2)} (-a^2+3a+10)$이 정의되기 위한 정수 $a$의 값은? [4.0점]”에서 2<a<5인 정수는 3,4이나 밑이 1인 a=3은 제외되어 a=4이다.",
+      "hold": {
+        "integrationPattern": "choiceTableUsed에 integrationPattern 선택 목록이 없어 표 안의 값을 고를 수 없음"
+      }
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "pass2",
+      "conditionKeys": [],
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “$\\pi < \\theta < \\dfrac{3}{2}\\pi$이고, $\\tan\\theta + \\dfrac{1}{\\tan\\theta}=2$일 때, $\\sin\\theta + \\cos\\theta$의 값은? [4.0점]”에서 tanθ=1이라 sinθ=cosθ=−√2/2이고 합은 −√2이다."
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l3": "지수의 확장",
+        "l4": "유리수 지수"
+      },
+      "choiceTableUsed": "H2-수학I.json",
+      "resolutionReason": "문항의 “$(\\sqrt{\\sqrt[3]{4}\\sqrt[4]{8}})^n$이 자연수가 되도록 하는 자연수 $n$의 최솟값은? [4.0점]”에서 괄호 안은 2^(17/24)이므로 자연수 지수를 얻는 최소 n은 24이다."
+    }
+  ]
+}
