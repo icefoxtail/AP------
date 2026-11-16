@@ -95,6 +95,10 @@ const requiredCommands = [
     timeout: 300000
   },
   {
+    label: 'tests/archive-reviewed-m2-cc-renderer.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-m2-cc-renderer.test.mjs']
+  },
+  {
     label: 'tests/archive-reviewed-native-scope-fields.test.mjs',
     args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
   },
@@ -130,6 +134,14 @@ const requiredCommands = [
   {
     label: 'tests/archive-e013-q20-enclosed-latin-ui.test.cjs',
     args: ['--test', 'tests/archive-e013-q20-enclosed-latin-ui.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-public-reviewed-rebind.test.cjs',
+    args: ['--test', 'tests/item-4slot-public-reviewed-rebind.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-existing-renderer-v2.test.cjs',
+    args: ['--test', 'tests/item-4slot-existing-renderer-v2.test.cjs']
   },
   {
     label: 'tests/item-4slot-existing-vector-continuity.test.cjs',
