@@ -76,6 +76,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-m2-current-renderer-registration.test.mjs']
   },
   {
+    label: 'tests/archive-m2-current-renderer-refresh.test.mjs',
+    args: ['--test', 'tests/archive-m2-current-renderer-refresh.test.mjs']
+  },
+  {
     label: 'tests/archive-original-finalqa-renderer-preservation.test.mjs',
     args: ['--test', 'tests/archive-original-finalqa-renderer-preservation.test.mjs']
   },

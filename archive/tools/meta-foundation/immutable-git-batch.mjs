@@ -13,7 +13,7 @@ const blob = raw => crypto.createHash('sha1').update(`blob ${raw.length}\0`).upd
 const safe = value => typeof value === 'string' && value && !path.isAbsolute(value) &&
   !/[\\\x00-\x1f]/.test(value) && !value.split('/').some(p => !p || p === '.' || p === '..');
 
-export function decodeImmutableGitBatch(output, expected) {
+function verifiedObjectRanges(output, expected) {
   if (!Buffer.isBuffer(output) || !Array.isArray(expected)) fail('binary output and exact inventory required');
   let offset = 0;
   const result = [];
@@ -29,14 +29,18 @@ export function decodeImmutableGitBatch(output, expected) {
     if (!Number.isSafeInteger(after) || after >= output.length || output[after] !== 10) fail('truncated object or missing delimiter');
     const raw = output.subarray(offset, after);
     if (blob(raw) !== entry.objectId) fail('object bytes do not match their Git identity');
-    result.push(Buffer.from(raw));
+    result.push([offset, after]);
     offset = after + 1;
   }
   if (offset !== output.length) fail('unexpected trailing output');
   return result;
 }
 
-function readFiles(root, inputs, consume) {
+export function decodeImmutableGitBatch(output, expected) {
+  return verifiedObjectRanges(output, expected).map(([start,end]) => Buffer.from(output.subarray(start,end)));
+}
+
+function readFiles(root, inputs, consume, copy = true) {
   if (!Array.isArray(inputs)) fail('exact file inventory required');
   if (!inputs.length) return;
   const byCommit = new Map();
@@ -71,7 +75,13 @@ function readFiles(root, inputs, consume) {
   const flush = () => {
     if (!batch.length) return;
     const output = git(['cat-file','--batch'], batch.map(entry => entry.objectId).join('\n') + '\n');
-    for (const raw of decodeImmutableGitBatch(output,batch)) consume(raw,index++);
+    // Finish every frame/hash/trailing check before the first consumer runs.
+    // The allocating API retains independent bytes; hydration borrows a view.
+    const ranges = verifiedObjectRanges(output,batch);
+    for (const [start,end] of ranges) {
+      const raw = output.subarray(start,end);
+      consume(copy ? Buffer.from(raw) : raw,index++);
+    }
     batch = [];size = 0;
   };
   for (const entry of ordered) {
@@ -88,8 +98,10 @@ export function readImmutableGitFiles(root, inputs) {
 }
 
 // Hydration consumes each already verified batch before reading the next one,
-// so large original metadata/identity files do not accumulate in memory.
+// so large original metadata/identity files do not accumulate in memory or get
+// copied a second time. Consumers borrow the batch storage; callers requiring
+// independent byte ownership use readImmutableGitFiles instead.
 export function forEachImmutableGitFile(root, inputs, consume) {
   if (typeof consume !== 'function') fail('file consumer required');
-  readFiles(root,inputs,consume);
+  readFiles(root,inputs,consume,false);
 }

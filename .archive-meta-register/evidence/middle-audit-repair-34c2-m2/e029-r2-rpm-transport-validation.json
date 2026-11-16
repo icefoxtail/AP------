@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "middle-audit-e029-native-semantic-rpm-r2-manifest-v1",
+  "priorImmutableProofCommit": "6b672ca51bb274803bfd6fe0287b5f13b4ce90f3",
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2s1-prerequisite-existing-application.mjs",
+      "sha256": "a0ebb6c148b6ecb23ac88fe0a75b07693d6478727ab05bc24dc71eadb374bd57"
+    },
+    {
+      "path": "tests/archive-m2s1-prerequisite-existing-application.test.mjs",
+      "sha256": "584980dee2f086872bca04d4760193edae1eaaba7f92be963c51403190d7362f"
+    }
+  ],
+  "rootCauseEvidence": {
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e029-q14-native-semantic-rpm-transport-r2.json",
+    "sha256": "9899ad7538b565fb88fd31d17d2eea9f459bb6f45cfbaaccb84f902d5ae4e133"
+  },
+  "sourceAndApplicationEvidenceChanges": 0,
+  "sourceDelta": {
+    "set": 6,
+    "remove": 4,
+    "changedSincePriorProof": false
+  },
+  "nativeSourceMetadataDefaultFallbackChanges": 0,
+  "validation": {
+    "fullFocusedRun": {
+      "tests": 22,
+      "pass": 22,
+      "fail": 0,
+      "log": "state/m2-e029-r2-focused-tests.log"
+    },
+    "subsequentMoreExactNativeCase": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "scope": "Native M2-RPM-038 L1-L4 and scope before; accepted M1-RPM-042 afterwards. Unaffected 21 tests reused.",
+      "log": "state/m2-e029-r2-exact-native-rpm-test.log"
+    }
+  },
+  "nextAction": "Root copies only helper/test and r2 evidence after independent delta review; issue new immutable proof commit; reuse completed Q7 fixture write and continue Q14 dry/write/replay/consumer.",
+  "taskId": "34c2e1a2-83bf-4be4-9a70-8f5eb30d6d04",
+  "independentReviewRef": {
+    "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e029-r2-rpm-transport-independent-review.json",
+    "sha256": "43ddce969226572685e07c0cc6992c8b4d3a94f5dcafe5813b12b6f6d6b8e281"
+  },
+  "officialRegistration": "PENDING_R2_IMMUTABLE_COMMIT_AND_REAL_REQUEST"
+}

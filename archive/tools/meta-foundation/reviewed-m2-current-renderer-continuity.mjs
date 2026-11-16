@@ -9,9 +9,13 @@ import { execFileSync } from 'node:child_process';
 
 export const M2_RENDERER_SCHEMA = 'archive-reviewed-m2-current-renderer-continuity-v1';
 export const M2_RENDERER_REVIEW_SCHEMA = 'archive-independent-m2-current-renderer-review-v1';
+export const M2_RENDERER_REFRESH_SCHEMA = 'archive-reviewed-m2-current-renderer-refresh-v1';
+export const M2_RENDERER_REFRESH_REVIEW_SCHEMA = 'archive-m2-current-renderer-refresh-v1';
 export const M2_RENDERER_FIELDS = Object.freeze(['image', 'imageAlt', 'imageSize', 'layoutTag']);
 const SCOPE = 'M2_EXISTING_METADATA_WITH_INDEPENDENT_CURRENT_RENDERER';
+const REFRESH_SCOPE = 'M2_EXISTING_METADATA_WITH_CURRENT_RENDERER_REFRESH';
 const WITNESS_PATH = /^\.archive-meta-register\/evidence\/m2-current-renderer-[A-Za-z0-9_-]+\/independent-review\.json$/;
+const REFRESH_PATH = /^\.archive-meta-register\/evidence\/m2-current-renderer-refresh-[A-Za-z0-9_-]+\/transport\.json$/;
 const immutableClaimInventories = new Map();
 const SHA1 = /^[a-f0-9]{40}$/, SHA256 = /^[a-f0-9]{64}$/;
 const fail = message => { throw Error(`M2 renderer continuity: ${message}`); };
@@ -125,7 +129,21 @@ function svg(bytes) {
   if (dependencies.some(value => !value.startsWith('#'))) fail('external SVG dependency outside this contract');
 }
 
-function assets(ctx, rows, source, alsoCommit) {
+function staticRefreshSvg(bytes) {
+  svg(bytes);
+  const value = bytes.toString('utf8'), forbidden = new Set(['script', 'foreignobject', 'iframe', 'object', 'embed', 'image',
+    'animate', 'animatemotion', 'animatetransform', 'animatecolor', 'set', 'discard']);
+  if ([...value.matchAll(/<([^\s/>!?]+)(?=[\s/>])/g)].some(match => forbidden.has(match[1].split(':').at(-1).toLowerCase())) ||
+      /<\?xml-stylesheet\b|\bxml:base\s*=|@import\b|@(?:-[a-z]+-)?keyframes\b|(?:^|[;"'\s{])(?:-[a-z]+-)?animation(?:-[a-z-]+)?\s*:/i.test(value))
+    fail('refresh requires static SVG without animation or stylesheet dependencies');
+  for (const style of [...value.matchAll(/\bstyle\s*=\s*(["'])(.*?)\1/gs)].map(match => match[2])
+    .concat([...value.matchAll(/<(?:[^\s/>!?]+:)?style\b[^>]*>([\s\S]*?)<\//gi)].map(match => match[1])))
+    if (/[\\&]/.test(style)) fail('escaped or entity-encoded SVG style outside refresh contract');
+  for (const ref of value.matchAll(/(?:src|href)\s*=\s*["']([^"']+)["']/gi))
+    if (/[\\&]/.test(ref[1])) fail('encoded SVG dependency outside refresh contract');
+}
+
+function assets(ctx, rows, source, alsoCommit, strictStatic = false) {
   if (!Array.isArray(rows) || rows.some(row => !exactKeys(row, ['path', 'gitBlobSha1', 'sha256'])) ||
       new Set(rows.map(row => row.path)).size !== rows.length ||
       !same(rows.map(row => row.path).sort(), references(ctx, source.question))) fail('complete exact renderer asset inventory required');
@@ -135,18 +153,19 @@ function assets(ctx, rows, source, alsoCommit) {
     if (file.gitBlobSha1 !== row.gitBlobSha1 || file.sha256 !== row.sha256 ||
         alsoCommit && gitFile(ctx, alsoCommit, row.path).sha256 !== row.sha256) fail('immutable renderer bytes changed');
     if (!boundLive(ctx, { path: row.path, sha256: row.sha256 }).equals(file.bytes)) fail('live renderer differs from inspected snapshot');
-    if (row.path.endsWith('.svg')) svg(file.bytes);
+    if (strictStatic ? /\.svg$/i.test(row.path) : row.path.endsWith('.svg'))
+      (strictStatic ? staticRefreshSvg : svg)(file.bytes);
     return clone(row);
   }).sort((a, b) => a.path.localeCompare(b.path, 'en'));
 }
 
-function presentationTransition(before, after) {
+function presentationTransition(before, after, size = 'full') {
   const changes = delta(before, after);
   if (!same(Object.keys(changes), M2_RENDERER_FIELDS) || !same(without(before, M2_RENDERER_FIELDS), without(after, M2_RENDERER_FIELDS)))
     fail('only the four exact presentation fields may change');
   if (typeof before.image !== 'string' || !before.image.endsWith('.png') ||
       typeof after.image !== 'string' || !after.image.endsWith('.svg') ||
-      Object.hasOwn(before, 'imageSize') || after.imageSize !== 'full' ||
+      Object.hasOwn(before, 'imageSize') || after.imageSize !== size ||
       !['grid', 'subjective-2up'].includes(before.layoutTag) || after.layoutTag !== 'fullwidth' ||
       Object.hasOwn(before, 'imageAlt') || !text(after.imageAlt) || after.imageAlt.length > 1000 ||
       /[\x00-\x1f]|<[A-Za-z!/?]/.test(after.imageAlt)) fail('presentation field types or exact transition unsupported');
@@ -155,6 +174,7 @@ function presentationTransition(before, after) {
 
 export function validateM2CurrentRendererContinuity(args) {
   const ctx = { ...args, cache: args.cache || new Map() }, spec = ctx.patch.sourceReview?.m2RendererProof;
+  if (spec?.schemaVersion === M2_RENDERER_REFRESH_SCHEMA) return validateRefresh(ctx, spec);
   if (!exactKeys(spec, ['schemaVersion', 'reviewCommit', 'reviewRef']) || spec.schemaVersion !== M2_RENDERER_SCHEMA ||
       ctx.request.scope !== 'PARTIAL_UIDS' || ctx.request.approval?.type !== 'FINAL_QA' || ctx.request.approval.metadataReviewed !== true ||
       ctx.request.registrationMode !== undefined || ctx.request.approval.sourceRebind !== undefined || ctx.patch.rebind !== undefined ||
@@ -192,6 +212,13 @@ export function validateM2CurrentRendererContinuity(args) {
       !exactKeys(row.observed, ['preservedGivenConditions', 'presentationChanges', 'noNewInferenceOrAnswerHint']) ||
       Object.values(row.observed).some(value => !text(value)))
     fail('exact selected UID, native authority and direct visual observations required');
+  return validateFrozenTransport(ctx, spec, witness, row);
+}
+
+// This shared private core never chooses an authority or substitutes an after
+// value. Only the original v1 validator and the separately authenticated tall
+// observation can enter it. The v1 transition remains absent -> full.
+function validateFrozenTransport(ctx, spec, witness, row, { size = 'full', strictStatic = false } = {}) {
   const frozenRef = row.frozenRequestRef;
   if (!exactKeys(frozenRef, ['commit', 'gitPath', 'path', 'sha256']) ||
       !frozenRef.gitPath.startsWith('.archive-meta-register/inbox/') || frozenRef.path.startsWith('.archive-meta-register/inbox/'))
@@ -213,8 +240,8 @@ export function validateM2CurrentRendererContinuity(args) {
   if (frozenRef.commit !== prefigure.ref.commit || frozen.expectedSourceBlobSha1 !== prefigure.file.gitBlobSha1 ||
       ctx.request.expectedSourceBlobSha1 !== current.file.gitBlobSha1 ||
       !same(ctx.question, current.question)) fail('frozen/current request source or live object mismatch');
-  const ownerDelta = presentationTransition(productionBefore.question, productionCurrent.question),
-    candidateDelta = presentationTransition(prefigure.question, current.question);
+  const ownerDelta = presentationTransition(productionBefore.question, productionCurrent.question, size),
+    candidateDelta = presentationTransition(prefigure.question, current.question, size);
   const metadataPatch = delta(productionBefore.question, prefigure.question);
   if (!same(ctx.studentPayload(productionBefore.question), ctx.studentPayload(prefigure.question)) ||
       !same(ctx.studentPayload(productionCurrent.question), ctx.studentPayload(current.question)) ||
@@ -232,8 +259,8 @@ export function validateM2CurrentRendererContinuity(args) {
   if (!same(ctx.studentPayload(prefigure.question), ctx.studentPayload(ctx.native.reviewedBank[ordinal - 1])) ||
       !same(ctx.studentPayload(prefigure.question), ctx.studentPayload(ctx.native.committedBank[ordinal - 1])))
     fail('prefigure is not the exact immutable native student payload');
-  const beforeAssets = assets(ctx, row.beforeAssets, prefigure, ctx.native.spec.reviewCommit),
-    currentAssets = assets(ctx, row.currentAssets, current);
+  const beforeAssets = assets(ctx, row.beforeAssets, prefigure, ctx.native.spec.reviewCommit, strictStatic),
+    currentAssets = assets(ctx, row.currentAssets, current, undefined, strictStatic);
   for (const asset of beforeAssets) if (gitFile(ctx, productionBefore.ref.commit, asset.path).sha256 !== asset.sha256)
     fail('production before asset differs from native/prefigure bytes');
   for (const asset of currentAssets) if (gitFile(ctx, productionCurrent.ref.commit, asset.path).sha256 !== asset.sha256)
@@ -250,6 +277,136 @@ export function validateM2CurrentRendererContinuity(args) {
     fieldDeltaHashes: clone(row.fieldDeltaHashes), metadataPatchSha256: row.metadataPatchSha256,
     nativeStudentPayloadSha256: sha(stable(ctx.studentPayload(prefigure.question))),
     currentStudentPayloadSha256: sha(stable(ctx.studentPayload(ctx.question))), beforeAssets, currentAssets,
+    suppliesMetadataValues: false, newMathematicalQa: false, newMetadataApprovals: 0, newDifficultyJudgments: 0 } };
+}
+
+const SOURCE_REF_KEYS = ['commit', 'path', 'gitBlobSha1', 'sha256'];
+const DIRECT_ROW_KEYS = ['questionUid', 'sourceOrdinal', 'sourceArchiveFile', 'expectedQuestionCount',
+  'nativeReviewRef', 'nativeItemSha256', 'frozenRequestRef', 'productionBeforeSourceRef', 'productionCurrentSourceRef',
+  'prefigureSourceRef', 'currentSourceRef', 'changedFields', 'fieldDeltaHashes', 'metadataPatchSha256',
+  'beforeAssets', 'currentAssets', 'observationRowSha256'];
+
+function directTallObservation(ctx, witness, row) {
+  const ref = witness.actualObservationRef;
+  if (!exactKeys(ref, ['commit', 'path', 'sha256']) || ref.path.startsWith('.archive-meta-register/inbox/'))
+    fail('immutable raw direct observation required');
+  const raw = document(ctx, { path: ref.path, sha256: ref.sha256 }, ref.commit);
+  if (!exactKeys(raw, ['schemaVersion', 'taskId', 'reviewer', 'observedAtUtc', 'scope', 'selectedUidCount', 'rows',
+      'priorTruncatedImageOutputUsedAsObservation', 'fullExamIndependentReview', 'e006Q21NewObservation',
+      'newMetadataApprovals', 'sourceWrites', 'assetWrites', 'productionRegistration', 'nextAction']) ||
+      raw.schemaVersion !== 'root-targeted-m2-renderer-direct-observations-v1' || !text(raw.taskId) ||
+      !text(raw.scope) || !text(raw.nextAction) || !text(raw.reviewer) || !text(raw.observedAtUtc) ||
+      raw.reviewer === ctx.native.reviewer || raw.reviewer === ctx.request.approval.approvedBy ||
+      raw.reviewer === witness.transportAuthor || raw.priorTruncatedImageOutputUsedAsObservation !== false ||
+      raw.fullExamIndependentReview !== false || raw.e006Q21NewObservation !== false ||
+      [raw.newMetadataApprovals, raw.sourceWrites, raw.assetWrites, raw.productionRegistration].some(value => value !== 0) ||
+      !Array.isArray(raw.rows) || raw.rows.length !== raw.selectedUidCount || raw.selectedUidCount < 1 || raw.selectedUidCount > 3 ||
+      new Set(raw.rows.map(value => value.questionUid)).size !== raw.rows.length)
+    fail('exact targeted raw observation and independent attribution required');
+  const selected = raw.rows.filter(value => value.questionUid === ctx.patch.questionUid), observed = selected[0];
+  if (selected.length !== 1 || !exactKeys(observed, ['sourceArchiveFile', 'questionUid', 'sourceOrdinal', 'nativeSourceRef',
+      'observedCurrentSourceRef', 'assets', 'stemAndChoicesRead', 'stemAndChoicesUnchanged',
+      'answerAndSolutionFieldsByteComparedOnly', 'answerAndSolutionFieldsUnchanged', 'observations', 'decision']) ||
+      observed.sourceArchiveFile !== ctx.request.sourceArchiveFile || observed.sourceOrdinal !== ctx.patch.sourceOrdinal ||
+      row.observationRowSha256 !== sha(stable(observed)) ||
+      observed.decision !== 'SELECTED_STUDENT_CONDITIONS_PRESERVED' ||
+      [observed.stemAndChoicesRead, observed.stemAndChoicesUnchanged, observed.answerAndSolutionFieldsByteComparedOnly,
+        observed.answerAndSolutionFieldsUnchanged].some(value => value !== true) ||
+      !exactKeys(observed.observations, ['relations', 'stemSupport', 'newUnsupportedConditionObserved']) ||
+      observed.observations.newUnsupportedConditionObserved !== false ||
+      [observed.observations.relations, observed.observations.stemSupport].some(values =>
+        !Array.isArray(values) || !values.length || values.some(value => !text(value))))
+    fail('exact selected raw observation required; no observation may be inferred');
+  const prefigure = snapshot(ctx, row.prefigureSourceRef), current = snapshot(ctx, row.currentSourceRef),
+    nativeFile = gitFile(ctx, ctx.native.spec.reviewCommit, prefigure.ref.path);
+  const nativeRef = Object.fromEntries(SOURCE_REF_KEYS.map(key => [key, nativeFile[key]]));
+  if (!exactKeys(observed.nativeSourceRef, SOURCE_REF_KEYS) || !same(observed.nativeSourceRef, nativeRef) ||
+      !exactKeys(observed.observedCurrentSourceRef, SOURCE_REF_KEYS) ||
+      !same(observed.observedCurrentSourceRef, without(row.currentSourceRef, ['questionSha256'])) ||
+      !Array.isArray(observed.assets) || observed.assets.length !== 2)
+    fail('raw observation source and primary renderer anchors differ');
+  for (const [state, source, commit] of [['native', prefigure, nativeRef.commit], ['current', current, current.ref.commit]]) {
+    const rows = observed.assets.filter(value => value.state === state), value = rows[0],
+      file = gitFile(ctx, commit, assetPath(ctx, source.question.image)),
+      expected = Object.fromEntries(SOURCE_REF_KEYS.map(key => [key, file[key]]));
+    if (rows.length !== 1 || !exactKeys(value, ['state', 'ref', 'viewedPngSha256', 'actuallyViewed', 'viewMethod']) ||
+        !exactKeys(value.ref, SOURCE_REF_KEYS) || !same(value.ref, expected) || value.actuallyViewed !== true ||
+        !SHA256.test(value.viewedPngSha256 || '') || !text(value.viewMethod))
+      fail('raw direct primary asset observation is incomplete or changed');
+  }
+  return { reviewer: raw.reviewer, observedAt: raw.observedAtUtc, actualObservationRef: clone(ref),
+    observationRowSha256: row.observationRowSha256, answerAndSolutionFieldsByteComparedOnly: true };
+}
+
+function validateRefresh(ctx, spec) {
+  if (!exactKeys(spec, ['schemaVersion', 'reviewCommit', 'reviewRef']) || !REFRESH_PATH.test(spec.reviewRef?.path || '') ||
+      ctx.request.scope !== 'PARTIAL_UIDS' || ctx.request.approval?.type !== 'FINAL_QA' || ctx.request.approval.metadataReviewed !== true ||
+      ctx.request.registrationMode !== undefined || ctx.request.approval.sourceRebind !== undefined || ctx.patch.rebind !== undefined ||
+      ctx.patch.sourceReview.rendererProof !== undefined || ctx.patch.sourceReview.m2ProviderRendererProof !== undefined ||
+      (ctx.request.registryChanges || []).length || !/^original\/middle\/m2\/2(?:mid|final)\//.test(ctx.request.sourceArchiveFile || '') ||
+      ctx.native.review.schemaVersion !== 'm2-s2-meta-review-v1' || !['KEEP', 'CORRECT'].includes(ctx.row.rpmDecision))
+    fail('exclusive settled M2 refresh scope required');
+  const hasProposal = ctx.patch.sourceReview.proposalFinalization?.schemaVersion === 'archive-native-proposal-finalization-v3',
+    hasRetained = ctx.patch.sourceReview.retainedFields?.schemaVersion === 'archive-reviewed-native-retained-fields-v1';
+  if (hasProposal === hasRetained) fail('one unchanged native finalization or retention authority is required');
+  const witness = document(ctx, spec.reviewRef, spec.reviewCommit), direct = witness.mode === 'DIRECT_NATIVE_TO_TALL';
+  if (!exactKeys(witness, ['schemaVersion', 'scope', 'mode', 'transportAuthor', 'selectedUidCount', 'rows', 'newObservation',
+      'newMathematicalQa', 'newMetadataApprovals', 'newDifficultyJudgments', 'newReviewPassCount', ...(direct ? ['actualObservationRef'] : [])]) ||
+      witness.schemaVersion !== M2_RENDERER_REFRESH_REVIEW_SCHEMA || witness.scope !== REFRESH_SCOPE ||
+      !['DIRECT_NATIVE_TO_TALL', 'REUSE_EXACT_V1_OBSERVATION'].includes(witness.mode) || !text(witness.transportAuthor) ||
+      witness.newObservation !== direct || witness.newMathematicalQa !== false || witness.newMetadataApprovals !== 0 ||
+      witness.newDifficultyJudgments !== 0 || witness.newReviewPassCount !== 0 || !Array.isArray(witness.rows) ||
+      !Number.isInteger(witness.selectedUidCount) || witness.selectedUidCount < 1 || witness.selectedUidCount > 3 ||
+      witness.rows.length !== witness.selectedUidCount || new Set(witness.rows.map(row => row.questionUid)).size !== witness.rows.length)
+    fail('exact typed refresh and honest observation attribution required');
+  const selected = witness.rows.filter(row => row.questionUid === ctx.patch.questionUid), row = selected[0];
+  const expectedKeys = direct ? DIRECT_ROW_KEYS : ['questionUid', 'sourceOrdinal', 'sourceArchiveFile', 'expectedQuestionCount',
+    'priorV1Proof', 'priorObservationRowSha256', 'currentSourceRef', 'currentAssets', 'newObservation'];
+  if (selected.length !== 1 || !exactKeys(row, expectedKeys) || row.sourceOrdinal !== ctx.patch.sourceOrdinal ||
+      row.sourceArchiveFile !== ctx.request.sourceArchiveFile || row.expectedQuestionCount !== ctx.request.expectedQuestionCount)
+    fail('exact refresh UID, source and denominator required');
+  if (direct) {
+    if (!same(row.nativeReviewRef, { commit: ctx.native.spec.reviewCommit, path: ctx.native.spec.reviewPath, sha256: ctx.native.spec.reviewRef.sha256 }) ||
+        row.nativeItemSha256 !== sha(stable(ctx.row)) || !same(row.changedFields, M2_RENDERER_FIELDS))
+      fail('unchanged native authority and four-field tall transition required');
+    const observation = directTallObservation(ctx, witness, row), result = validateFrozenTransport(ctx, spec, observation, row,
+      { size: 'tall', strictStatic: true });
+    result.proof = { ...result.proof, scope: REFRESH_SCOPE, mode: witness.mode, newObservation: true, ...observation };
+    return result;
+  }
+  // One original v1 leaf only. No recursive refresh, synthetic new review or
+  // inherited success cache can stand in for this complete fresh v1 replay.
+  const prior = row.priorV1Proof;
+  if (row.newObservation !== false || !exactKeys(prior, ['schemaVersion', 'reviewCommit', 'reviewRef']) ||
+      prior.schemaVersion !== M2_RENDERER_SCHEMA || !WITNESS_PATH.test(prior.reviewRef?.path || '') ||
+      prior.reviewRef.path === spec.reviewRef.path)
+    fail('one original v1 observation leaf required, without a new observation claim');
+  const original = document(ctx, prior.reviewRef, prior.reviewCommit), priorRows = original.rows?.filter(value => value.questionUid === ctx.patch.questionUid),
+    priorRow = priorRows?.[0];
+  if (priorRows?.length !== 1 || row.priorObservationRowSha256 !== sha(stable(priorRow)) ||
+      original.reviewer === witness.transportAuthor)
+    fail('exact original observation row and separate transport author required');
+  const current = snapshot(ctx, row.currentSourceRef), previous = snapshot(ctx, priorRow.currentSourceRef);
+  // The registrar or native ancestry verifier authenticates actual source bytes.
+  // Its source-only descendant may have a newer whole-file blob while replaying
+  // this sealed leaf. Never substitute that descendant for the leaf snapshot:
+  // require the exact selected whole object here and every live asset below.
+  if (ctx.request.expectedSourceBlobSha1 !== current.file.gitBlobSha1 || !same(ctx.question, current.question) ||
+      !same(current.question, previous.question))
+    fail('reused observation requires exact bound source snapshot and current whole object');
+  const currentAssets = assets(ctx, row.currentAssets, current, previous.ref.commit, true);
+  if (!same(currentAssets, [...(priorRow.currentAssets || [])].sort((a, b) => a.path.localeCompare(b.path, 'en'))))
+    fail('reused observation requires every original observed asset unchanged');
+  const priorPatch = { ...ctx.patch, sourceReview: { ...ctx.patch.sourceReview, m2RendererProof: clone(prior) } },
+    priorRequest = { ...ctx.request, expectedSourceBlobSha1: previous.file.gitBlobSha1,
+      items: ctx.request.items.map(item => item.questionUid === priorPatch.questionUid ? priorPatch : item) },
+    replayed = validateM2CurrentRendererContinuity({ ...ctx, request: priorRequest, patch: priorPatch });
+  return { semanticQuestion: replayed.semanticQuestion, proof: { ...clone(spec), scope: REFRESH_SCOPE, mode: witness.mode,
+    questionUid: ctx.patch.questionUid, sourceOrdinal: ctx.patch.sourceOrdinal, newObservation: false,
+    reviewer: original.reviewer, observedAt: original.observedAt, priorV1Proof: replayed.proof,
+    priorObservationRowSha256: row.priorObservationRowSha256, currentSourceRef: clone(row.currentSourceRef), currentAssets,
+    nativeStudentPayloadSha256: replayed.proof.nativeStudentPayloadSha256,
+    currentStudentPayloadSha256: sha(stable(ctx.studentPayload(ctx.question))),
     suppliesMetadataValues: false, newMathematicalQa: false, newMetadataApprovals: 0, newDifficultyJudgments: 0 } };
 }
 
@@ -273,13 +430,15 @@ export function hasImmutableM2CurrentRendererClaim({root,current,runtimeRecord})
       // earlier version also prevents a committed deletion or empty replacement
       // from erasing the obligation established by the issued transport.
       const commits=run(['log','--full-history','--format=%H','--diff-filter=AM',head,'--',
-        ':(glob).archive-meta-register/evidence/m2-current-renderer-*/independent-review.json']).toString().split(/\s+/).filter(Boolean);
+        ':(glob).archive-meta-register/evidence/m2-current-renderer-*/independent-review.json',
+        ':(glob).archive-meta-register/evidence/m2-current-renderer-refresh-*/transport.json']).toString().split(/\s+/).filter(Boolean);
       for(const commit of new Set([head,...commits])){
-        const files=run(['ls-tree','-rz','--name-only',commit,'--','.archive-meta-register/evidence']).toString().split('\0').filter(p=>WITNESS_PATH.test(p));
+        const files=run(['ls-tree','-rz','--name-only',commit,'--','.archive-meta-register/evidence']).toString().split('\0').filter(p=>WITNESS_PATH.test(p)||REFRESH_PATH.test(p));
         for(const relative of files){
           const blob=run(['rev-parse',`${commit}:${relative}`]).toString().trim();if(seenBlobs.has(blob))continue;seenBlobs.add(blob);
           const doc=JSON.parse(run(['cat-file','blob',blob]).toString());
-          if(doc.schemaVersion!==M2_RENDERER_REVIEW_SCHEMA||doc.scope!==SCOPE)continue;
+          if(!((doc.schemaVersion===M2_RENDERER_REVIEW_SCHEMA&&doc.scope===SCOPE)||
+            (doc.schemaVersion===M2_RENDERER_REFRESH_REVIEW_SCHEMA&&doc.scope===REFRESH_SCOPE)))continue;
           for(const row of Array.isArray(doc.rows)?doc.rows:[])
             if(text(row.questionUid)&&text(row.sourceArchiveFile))claims.add(stable([row.questionUid,row.sourceArchiveFile]));
         }

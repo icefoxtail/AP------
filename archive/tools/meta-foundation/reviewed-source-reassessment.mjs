@@ -15,6 +15,7 @@ import { bindReviewedRetainedScopeTransport } from "./reviewed-retained-scope-tr
 import { bindReviewedNativeFamilyCourse } from "./reviewed-native-parent.mjs";
 import { bindReviewedNativeRationaleContinuity } from "./reviewed-native-rationale-continuity.mjs";
 import { validateM2S1CurrentDefinitionApplication } from "./reviewed-m2s1-current-definition-application.mjs";
+import { validateM2S1PrerequisiteExistingApplication } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
 
 const fail = message => { throw new Error(`source reassessment: ${message}`); };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
@@ -244,6 +245,10 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     accepted, question, final, canonicalBefore, canonicalAfter, studentPayload,
     studentFields: REASSESSED_STUDENT_FIELDS, bankFromBytes, cache });
   if (currentDefinitionApplication) Object.assign(accepted, currentDefinitionApplication.fields);
+  const prerequisiteExistingApplication = validateM2S1PrerequisiteExistingApplication({ root, request, patch, native: loaded, row,
+    accepted, question, final, canonicalBefore, canonicalAfter, studentPayload,
+    studentFields: REASSESSED_STUDENT_FIELDS, bankFromBytes, cache });
+  if (prerequisiteExistingApplication) Object.assign(accepted, prerequisiteExistingApplication.fields);
   const unchangedPrimary = identityOnly ? null : bindUnchangedReviewedPrimary({ native: loaded, row, accepted,
     patch, question, final, canonicalBefore, canonicalAfter, proposalFinalization });
   if (unchangedPrimary) Object.assign(accepted, unchangedPrimary.fields);
@@ -261,7 +266,10 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   if (!identityOnly) for (const field of ["primaryMethod", "decisiveStep"]) {
     if (!Object.hasOwn(patch.after, field) && !Object.hasOwn(question, field)) continue;
     let value, origin;
-    if (Object.hasOwn(currentDefinitionApplication?.retainedRationaleFields || {}, field)) {
+    if (Object.hasOwn(prerequisiteExistingApplication?.retainedRationaleFields || {}, field)) {
+      value = prerequisiteExistingApplication.retainedRationaleFields[field];
+      origin = "PREREQUISITE_EXISTING_APPLICATION_UNCHANGED_NATIVE_SOURCE";
+    } else if (Object.hasOwn(currentDefinitionApplication?.retainedRationaleFields || {}, field)) {
       value = currentDefinitionApplication.retainedRationaleFields[field];
       origin = "CURRENT_DEFINITION_APPLICATION_UNCHANGED_NATIVE_SOURCE";
     } else if (Object.hasOwn(accepted, field)) { value = accepted[field]; origin = "NATIVE_AFTER"; }
@@ -295,7 +303,10 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
   if (!identityOnly) for (const field of REVIEWED_RPM_FIELDS) {
     if (!Object.hasOwn(patch.after, field) && !Object.hasOwn(question, field)) continue;
     let value, origin;
-    if (Object.hasOwn(currentDefinitionApplication?.nativeRpmAliasFields || {}, field)) {
+    if (Object.hasOwn(prerequisiteExistingApplication?.nativeRpmAliasFields || {}, field)) {
+      value = prerequisiteExistingApplication.nativeRpmAliasFields[field];
+      origin = "PREREQUISITE_EXISTING_APPLICATION_NATIVE_RPM_ALIAS";
+    } else if (Object.hasOwn(currentDefinitionApplication?.nativeRpmAliasFields || {}, field)) {
       value = currentDefinitionApplication.nativeRpmAliasFields[field];
       origin = "CURRENT_DEFINITION_APPLICATION_NATIVE_RPM_ALIAS";
     } else if (Object.hasOwn(accepted, field)) { value = accepted[field]; origin = "NATIVE_AFTER"; }
@@ -350,6 +361,7 @@ export function validateReviewedSourceReassessment({ root, request, patch, metad
     ...(retainedScopeTransport ? { retainedScopeTransport: retainedScopeTransport.proof } : {}),
     ...(nativeFamilyCourseTransport ? { nativeFamilyCourseTransport: nativeFamilyCourseTransport.proof } : {}),
     ...(currentDefinitionApplication ? { currentDefinitionApplication: currentDefinitionApplication.proof } : {}),
+    ...(prerequisiteExistingApplication ? { prerequisiteExistingApplication: prerequisiteExistingApplication.proof } : {}),
     ...(proposalFinalization?.proof ? { proposalFinalization: proposalFinalization.proof } : {}),
     ...(proposalFinalization?.technicalBindings?.length ? { technicalProposalBindings: proposalFinalization.technicalBindings } : {}),
     scope: identityOnly ? "IDENTITY_BINDING_ONLY" : "METADATA_SOURCE_BINDING_ONLY", newMathematicalQa: false };

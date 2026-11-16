@@ -267,7 +267,7 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
       const m2Proofs=receipt.fingerprintRepairs?.filter(repair=>repair.questionUid===identity.questionUid&&repair.sourceOrdinal===ordinal)
         .map(repair=>repair.sourceReview?.m2RendererContinuity).filter(Boolean)||[];
       const reviewedM2Renderer=reviewedSource===true&&m2Proofs.length===1&&
-        m2Proofs[0].schemaVersion==='archive-reviewed-m2-current-renderer-continuity-v1'&&
+        ['archive-reviewed-m2-current-renderer-continuity-v1','archive-reviewed-m2-current-renderer-refresh-v1'].includes(m2Proofs[0].schemaVersion)&&
         m2Proofs[0].nativeStudentPayloadSha256===hash(pick(previous,REASSESSED_STUDENT_FIELDS));
       const m2ProviderProofs=receipt.fingerprintRepairs?.filter(repair=>repair.questionUid===identity.questionUid&&repair.sourceOrdinal===ordinal)
         .map(repair=>repair.sourceReview?.m2ProviderRendererContinuity).filter(Boolean)||[];

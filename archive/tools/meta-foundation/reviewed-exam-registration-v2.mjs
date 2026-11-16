@@ -25,6 +25,7 @@ import { AUDIT_CC_APPEND_SCHEMA, isAuditCcAppend, isExplicitAuditCcAppendRequest
 import { activeBindingContext } from "./auto-register-merged-source.mjs";
 import { loadApprovedRendererPreservation, planApprovedRendererRecord, buildApprovedRendererBinding, verifyApprovedRendererReceipt } from "./native-approved-renderer-preservation.mjs";
 import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
+import { preparePrerequisiteExistingRpmAuthority } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 import { isExplicitSourceSubsetRebind, isFullSourceSubsetRebind, validateExplicitSourceSubsetEvidence, preservedSourceEvidence, priorSourceIdentityContext, replayOriginalFullFinalQa } from "./source-subset-preservation.mjs";
 import { nativeReviewReceipt } from "./auto-register-merged-source.mjs";
@@ -2343,7 +2344,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         fail(`registered explicit source review ${requestKey} inventory drift`);
     }
     const replayBeforeTables = sourceBindingPatches.some(patch => patch.sourceReview?.proposalFinalization !== undefined ||
-      patch.sourceReview?.scopeFieldBinding !== undefined || patch.sourceReview?.currentDefinitionApplication !== undefined)
+      patch.sourceReview?.scopeFieldBinding !== undefined || patch.sourceReview?.currentDefinitionApplication !== undefined ||
+      patch.sourceReview?.prerequisiteExistingApplication !== undefined)
       ? restoreReviewedReplayCanonicalBefore({ request: req, currentTables, root }) : currentTables;
     for (const patch of sourceBindingPatches) {
       const repairs = (previous.fingerprintRepairs || []).filter(repair => repair.questionUid === patch.questionUid && repair.sourceOrdinal === patch.sourceOrdinal);
@@ -2685,8 +2687,11 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (!Object.hasOwn(patch.before, field)) fail(`before required: ${current.questionUid}.${field}`);
     }
     const final = { ...current, ...structuredClone(patch.after) };
+    const prerequisiteRpmAuthority = preparePrerequisiteExistingRpmAuthority({ root, request: req, patch, question: q, final,
+      canonicalBefore: beforeTables || tables, canonicalAfter: tables, cache: sourceReviewCache });
     if (Object.hasOwn(patch.after, "rpmPrimaryId")) {
-      const provenance = validateRpmPrimaryProvenance({ root, question: q, final, cache: sourceReviewCache });
+      const provenance = validateRpmPrimaryProvenance({ root, question: q, final, cache: sourceReviewCache,
+        prerequisiteAuthority: prerequisiteRpmAuthority });
       if (provenance) rpmPrimaryBindings.push({ questionUid: current.questionUid, sourceOrdinal: i + 1, ...provenance });
     }
     if (patch.fieldCandidates !== undefined) {

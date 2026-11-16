@@ -7,6 +7,7 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {REVIEWED_RPM_FIELDS,validateRpmPrimaryProvenance} from './reviewed-rpm-provenance.mjs';
+import {REASSESSED_STUDENT_FIELDS} from './reviewed-source-reassessment.mjs';
 
 const RECEIPTS='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
 const MASTER='docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
@@ -15,6 +16,11 @@ const ID=/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/, SHA1=/^[a-f0-9]{40}$/, SHA256=/^[a
 const LIMIT=16*1024*1024;
 const BINDING_KEYS=['questionUid','sourceOrdinal','recordId','crosswalkRef','masterRef','curriculum','scope','rpmPath','authorityUse','selectsPtTpl'];
 const STATUSES=['DIRECT_ACTIVE','FAMILY_ACTIVE','DIRECT_BINDING_GAP','FAMILY_BINDING_GAP','RPM_ONLY'];
+// Read the imported field vector only when invoked, after the module graph is
+// initialized. Native/renderer readers can reach this helper through a cycle.
+const solutionFixedFields=()=>[...REASSESSED_STUDENT_FIELDS.filter(k=>k!=='solution'),'imageAlt'];
+const REPAIR_KEYS=['questionUid','sourceOrdinal','metadataBefore','identityBefore','after','rebind'];
+const MAPPING_ONLY_FIELDS=new Set(['mappingStatus','bindingStatus','standardCourse','binding']);
 const stable=v=>JSON.stringify(v,(_,x)=>x&&typeof x==='object'&&!Array.isArray(x)
   ?Object.fromEntries(Object.keys(x).sort().map(k=>[k,x[k]])):x);
 const same=(a,b)=>stable(a)===stable(b);
@@ -107,9 +113,106 @@ function originalRequest(root,issued,receipt) {
     r.registrationMode===undefined&&r.expectedQuestionCount===receipt.expectedQuestionCount&&
     r.expectedSourceBlobSha1===receipt.sourceBlobSha1&&same(r.approval,receipt.approval)&&
     same(r.registryChanges||[],receipt.registryChanges||[]),'original request and issued receipt differ');
-  need(Array.isArray(r.items)&&r.items.every(p=>p.sourceReview===undefined&&p.rebind===undefined),
-    'ordinary original request without source/renderer reassessment required');
+  const repaired=hasSingleSolutionRepair(receipt);
+  need(Array.isArray(r.items)&&r.items.every(p=>p.sourceReview===undefined&&
+    (repaired?p.rebind!==undefined:p.rebind===undefined)),
+    'ordinary original request or explicit issued solution rebind required');
   return found;
+}
+
+// This additional branch is a single, already issued solution-only leaf. It
+// cannot reinterpret a missing marker or a mixed/sourceReview repair as one.
+function hasSingleSolutionRepair(receipt) {
+  return receipt.partialUidCount===1&&Array.isArray(receipt.fingerprintRepairs)&&receipt.fingerprintRepairs.length===1&&
+    keys(receipt.fingerprintRepairs[0],REPAIR_KEYS)&&
+    keys(receipt.fingerprintRepairs[0].rebind,['priorSourceBlobSha1','priorContentFingerprint']);
+}
+function crosswalkGrowth(before,after,receipt) {
+  if(!hasSingleSolutionRepair(receipt)){
+    need(after.records.length>before.records.length&&same(after.records.slice(0,before.records.length),before.records),
+      'crosswalk is not an exact append-only extension');return null;
+  }
+  need(receipt.rpmPrimaryBindings.length===1,'one original solution RPM binding required');
+  const selected=receipt.rpmPrimaryBindings[0].recordId,prefix=after.records.slice(0,before.records.length);
+  need(after.records.length>before.records.length&&same(prefix.map(r=>r.id),before.records.map(r=>r.id)),
+    'solution RPM original ordered ID prefix changed');
+  const fixed=r=>Object.fromEntries(Object.entries(r).filter(([k])=>!MAPPING_ONLY_FIELDS.has(k)));
+  let selectedRow,unselectedMappingRefreshCount=0;
+  for(const [i,row]of before.records.entries()){
+    const current=prefix[i];
+    if(row.id===selected){need(same(row,current),'selected solution RPM row changed');selectedRow=row;}
+    else{need(same(fixed(row),fixed(current)),'unselected RPM non-mapping fields changed');
+      if(!same(row,current))unselectedMappingRefreshCount++;}
+  }
+  need(selectedRow,'selected solution RPM row absent from original authority');
+  return {unselectedMappingRefreshCount,selectedFullRowSha256:sha(stable(selectedRow))};
+}
+function fingerprints(q) {
+  const content={content:q.content??null,choices:Array.isArray(q.choices)?q.choices:null,image:q.image??null};
+  return {sourceFingerprint:sha(JSON.stringify({content:content.content,choices:content.choices,answer:q.answer??null,
+    solution:q.solution??null,image:content.image})),contentFingerprint:sha(JSON.stringify(content))};
+}
+function solutionAssetPaths(question) {
+  const found=new Set(),fields=new Set(['image','images','solutionImage','solutionImages','src','href','xlink:href']);
+  const add=value=>{
+    if(!value||value.startsWith('#')||/^data:image\/(?:png|jpe?g|gif|webp);base64,[A-Za-z0-9+/=\s]+$/u.test(value))return;
+    need(!/^data:|^[a-z]+:|^\/\/|[?#]/iu.test(value),'unsupported solution renderer dependency');
+    let p=value.replace(/^\.\//,'');if(p.startsWith('/archive/'))p=p.slice(1);else if(p.startsWith('assets/'))p='archive/'+p;
+    need(p.startsWith('archive/assets/')&&p.split('/').every(k=>k&&k!=='.'&&k!=='..'),'unsupported solution renderer path');found.add(p);
+  };
+  const visit=(value,key='')=>{
+    if(Array.isArray(value)){value.forEach(x=>visit(x,key));return;}
+    if(value&&typeof value==='object'){for(const[k,x]of Object.entries(value))visit(x,k);return;}
+    if(typeof value!=='string')return;
+    if(fields.has(key)&&!value.includes('<'))add(value);
+    if(/<(?:img|image|svg|use)\b/iu.test(value)){
+      const attrs=[...value.matchAll(/\b(?:src|(?:xlink:)?href)\s*=\s*(["'])(.*?)\1/giu)];
+      need((value.match(/\b(?:src|(?:xlink:)?href)\s*=/giu)||[]).length===attrs.length,'malformed solution renderer dependency');
+      attrs.forEach(m=>add(m[2]));
+    }
+    need(!/url\s*\(/iu.test(value.replace(/url\(\s*["']?#[A-Za-z0-9_.:-]+["']?\s*\)/giu,'')),'external renderer CSS dependency');
+  };
+  for(const field of [...solutionFixedFields(),'solution'])visit(question[field],field);
+  return [...found].sort();
+}
+function verifySolutionRepair({root,head,issued,receipt,original,oldBank,nowBank}) {
+  if(!hasSingleSolutionRepair(receipt))return null;
+  need(original.request.items.length===1,'one original solution item required');
+  const repair=receipt.fingerprintRepairs[0],patch=original.request.items[0],n=repair.sourceOrdinal;
+  need(patch.questionUid===repair.questionUid&&patch.sourceOrdinal===n&&Number.isInteger(n)&&n>0&&n<=oldBank.length&&
+    same(patch.rebind,repair.rebind)&&same(patch.identityBefore,repair.identityBefore)&&
+    keys(repair.metadataBefore,['sourceFingerprint','contentFingerprint'])&&keys(repair.identityBefore,['sourceFingerprint'])&&
+    keys(repair.after,['sourceFingerprint','contentFingerprint'])&&SHA1.test(repair.rebind.priorSourceBlobSha1)&&
+    SHA256.test(repair.rebind.priorContentFingerprint),'exact original solution repair required');
+  const raw=git(root,['cat-file','blob',repair.rebind.priorSourceBlobSha1]);
+  need(blob(raw)===repair.rebind.priorSourceBlobSha1,'original solution source blob mismatch');
+  const previous=bank(raw,receipt.expectedQuestionCount)[n-1],question=oldBank[n-1];
+  const pick=q=>Object.fromEntries(solutionFixedFields().map(k=>[k,q[k]??null]));
+  need(typeof previous.solution==='string'&&typeof question.solution==='string'&&previous.solution!==question.solution&&
+    same(pick(previous),pick(question)),'issued repair is not solution-only');
+  // A changed inline/embedded drawing needs its own renderer approval. This
+  // branch only preserves the previously issued text-solution repair.
+  need(![previous.solution,question.solution].some(s=>/<\s*(?:\/\s*)?[A-Za-z][^>]*>|<!|<\?|&(?:#(?:x[a-f0-9]+|[0-9]+)|[a-z][a-z0-9]+);|url\s*\(|data:image/iu.test(s)),
+    'solution renderer reassessment is outside this branch');
+  const before=fingerprints(previous),after=fingerprints(question);
+  need(before.contentFingerprint===after.contentFingerprint&&repair.rebind.priorContentFingerprint===before.contentFingerprint&&
+    repair.metadataBefore.sourceFingerprint===before.sourceFingerprint&&
+    [null,before.contentFingerprint].includes(repair.metadataBefore.contentFingerprint)&&
+    repair.identityBefore.sourceFingerprint===before.sourceFingerprint&&same(repair.after,after),'issued solution fingerprints differ');
+  for(const field of ['sourceFingerprint','contentFingerprint'])need(Object.hasOwn(patch.before,field)&&Object.hasOwn(patch.after,field)&&
+    same(patch.before[field],repair.metadataBefore[field])&&same(patch.after[field],after[field]),'original solution before/after differs');
+  const paths=solutionAssetPaths(question);
+  need(same(solutionAssetPaths(previous),paths)&&same(solutionAssetPaths(nowBank[n-1]),paths),'solution renderer inventory changed');
+  for(const p of paths){const old=gitRaw(root,issued,p),now=live(root,p);
+    need(now.equals(old)&&gitRaw(root,head,p).equals(now),'solution renderer bytes changed');
+    if(/\.svg$/iu.test(p)){
+      const svg=now.toString('utf8');
+      need(!/<!DOCTYPE|<!ENTITY|<(?:[^<>\s/:]+:)?(?:script|foreignObject|style|animate|animateColor|animateTransform|animateMotion|set|discard)\b|\b(?:xml:base|style|on\w+)\s*=|@import|&|\\/iu.test(svg),'unsupported SVG dependency');
+      need(solutionAssetPaths({figureSvg:svg}).length===0,'nested external SVG dependency');
+    }
+  }
+  return {questionUid:repair.questionUid,sourceOrdinal:n,priorSourceBlobSha1:repair.rebind.priorSourceBlobSha1,
+    priorSourceRawSha256:sha(raw),selectedAssetCount:paths.length,authorityUse:'EXISTING_ISSUED_SOLUTION_REBIND_ONLY'};
 }
 
 // Returns null outside the existing typed RPM-provenance claim. Callers keep
@@ -126,7 +229,7 @@ export function verifyIssuedRpmEvidenceContinuity({root,receipt,receiptPath,evid
     receiptPath===RECEIPTS+receipt.requestId+'.json'&&SHA256.test(receipt.requestSha256||'')&&
     receipt.scope==='PARTIAL_UIDS'&&receipt.approval?.type==='FINAL_QA'&&receipt.approval.metadataReviewed===true&&
     text(receipt.approval.approvedBy)&&receipt.approval.sourceRebind===undefined&&receipt.registrationMode===undefined&&
-    (receipt.fingerprintRepairs===undefined||Array.isArray(receipt.fingerprintRepairs)&&receipt.fingerprintRepairs.length===0)&&
+    (receipt.fingerprintRepairs===undefined||Array.isArray(receipt.fingerprintRepairs)&&receipt.fingerprintRepairs.length===0||hasSingleSolutionRepair(receipt))&&
     (receipt.nativeParentBindings===undefined||Array.isArray(receipt.nativeParentBindings)&&receipt.nativeParentBindings.length===0)&&
     Number.isInteger(receipt.partialUidCount)&&receipt.partialUidCount>0&&receipt.totalQuestions===receipt.partialUidCount&&
     Number.isInteger(receipt.expectedQuestionCount)&&receipt.expectedQuestionCount>=receipt.partialUidCount&&
@@ -143,8 +246,7 @@ export function verifyIssuedRpmEvidenceContinuity({root,receipt,receiptPath,evid
   need(before.schemaVersion==='rpm-primary-active-crosswalk-v1'&&before.status==='ACTIVE_REFERENCE'&&
     before.rpmAuthority?.source===MASTER&&same(header(before),header(after)),'crosswalk authority header changed');
   summary(before);summary(after);
-  need(after.records.length>before.records.length&&same(after.records.slice(0,before.records.length),before.records),
-    'crosswalk is not an exact append-only extension');
+  const growth=crosswalkGrowth(before,after,receipt);
   const applied=unique(receipt.appliedRecords,'questionUid','issued metadata'),runtime=unique(receipt.runtimeRecords,'questionUid','issued runtime'),
     identities=unique(receipt.appliedIdentityRecords,'questionUid','issued identity'),patches=unique(original.request.items,'questionUid','original selected items');
   need([applied,runtime,identities,patches].every(m=>m.size===receipt.partialUidCount)&&
@@ -160,6 +262,7 @@ export function verifyIssuedRpmEvidenceContinuity({root,receipt,receiptPath,evid
     ...(original.request.registryChanges||[]).map(c=>c.evidenceRefs)];
   for(const list of refs){need(Array.isArray(list)&&list.length>0,'original approval evidence missing');
     for(const r of list){ref(r);need(sha(gitRaw(root,issued,r.path))===r.sha256,'original immutable authority changed');}}
+  const solutionRepair=verifySolutionRepair({root,head,issued,receipt,original,oldBank,nowBank});
   const seen=new Set(),ordinals=new Set();
   for(const binding of receipt.rpmPrimaryBindings){
     need(keys(binding,BINDING_KEYS)&&binding.authorityUse==='RPM_PATH_PROVENANCE_ONLY'&&binding.selectsPtTpl===false&&
@@ -191,5 +294,6 @@ export function verifyIssuedRpmEvidenceContinuity({root,receipt,receiptPath,evid
     originalRequestRef:{commit:original.commit,path:original.path,sha256:original.sha256},
     historicalRef:{...evidenceRef},currentRef:{path:evidenceRef.path,sha256:sha(currentBytes)},
     selectedCount:seen.size,retainedRecordCount:before.records.length,appendedRecordCount:after.records.length-before.records.length,
-    authorityUse:'RPM_PATH_PROVENANCE_ONLY',selectsPtTpl:false,newMetadataApprovals:0};
+    authorityUse:'RPM_PATH_PROVENANCE_ONLY',selectsPtTpl:false,newMetadataApprovals:0,
+    ...(solutionRepair?{solutionRepair,...growth}:{})};
 }

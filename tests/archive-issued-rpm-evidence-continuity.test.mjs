@@ -25,7 +25,7 @@ const refresh=doc=>{doc.summary={recordCount:doc.records.length,...Object.fromEn
 
 // The ordinary registrar issues the successful receipt. No mock approval,
 // bypassed verifier, production data clone or generated production write.
-function fixture(t,{mutateReceipt,omitRequest=false}={}) {
+function fixture(t,{mutateReceipt,omitRequest=false,solutionRepair=false,withAsset=false,assetSuffix='svg',assetBytes,mutateRepairedQuestion,otherOriginalRecord=false}={}) {
   const root=fs.mkdtempSync(path.join(os.tmpdir(),'issued-rpm-continuity-'));
   t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
   const git=(...a)=>execFileSync('git',a,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:4*1024*1024}).toString().trim();
@@ -41,15 +41,19 @@ function fixture(t,{mutateReceipt,omitRequest=false}={}) {
     level:'중',difficultyBucket:2,difficultyConfidence:'high',difficultyBoundaryFlag:'NONE',legacyLevelCompatibility:'NORMAL',
     primaryMethod:'Synthetic existing method',decisiveStep:'Synthetic existing step',rpmPrimaryId:'M2-RPM-1',rpmPrimaryPath:rpmPath,
     rpmL1:'Unit',rpmL2:'Subunit',rpmL3:'RPM concept',rpmL4:'RPM method'};
-  const bank=[q,{...copy(q),id:2,content:'Unselected synthetic question'}];
+  const assetRef=withAsset?put('archive/assets/synthetic-rpm.'+assetSuffix,assetBytes||'<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L1 1"/></svg>\n'):null;
+  if(assetRef)q.image=assetRef.path;
+  const originalQuestion=copy(q),bank=[q,{...copy(q),id:2,content:'Unselected synthetic question'}];
   const source=()=>put(sourcePath,'window.questionBank = '+JSON.stringify(bank)+';\n');source();
   const masterRef=put(MASTER,{schemaVersion:'js-archive-taxonomy-rpm-primary-v1.0',authorityStatus:'LOCKED',records:[{
-    curriculum:'2022',scope:'M2-1',majorUnit:'Unit',midUnit:'Subunit',concepts:[{concept:'RPM concept',problemTypes:[{problemType:'RPM method'}]}]}]});
+    curriculum:'2022',scope:'M2-1',majorUnit:'Unit',midUnit:'Subunit',concepts:[{concept:'RPM concept',problemTypes:[{problemType:'RPM method'},
+      ...(otherOriginalRecord?[{problemType:'Other original RPM method'}]:[])]}]}]});
   const walk=refresh({schemaVersion:'rpm-primary-active-crosswalk-v1',status:'ACTIVE_REFERENCE',grade:'M2',
     rpmAuthority:{source:MASTER,status:'LOCKED'},policy:{purpose:'Synthetic existing RPM provenance'},records:[{
       id:'M2-RPM-1',curriculum:'2022',scope:'M2-1',rpmPath:copy(rpmPath),mappingStatus:'RPM_ONLY',bindingStatus:'NO_ACTIVE_MAPPING'}]});
+  if(otherOriginalRecord){walk.records.push({...copy(walk.records[0]),id:'M2-RPM-OTHER',rpmPath:{...rpmPath,l4:'Other original RPM method'}});refresh(walk);}
   const crosswalkRef=put(WALK,walk),reviewRef=put('docs/synthetic-reviewed-values.json',{reviewer:'synthetic-original',newMathematicalQa:false});
-  const refs=[reviewRef,crosswalkRef,masterRef];
+  const refs=[reviewRef,crosswalkRef,masterRef,...(assetRef?[assetRef]:[])];
   const pack={schemaVersion:'meta-foundation-pack-v1',packId:'MIDDLE2',packVersion:'1.0.0',canonicalStatus:'ACTIVE',curricula:['2022'],standardCourses:['중2 수학','M2-1']};
   const pt={problemTypeKey:'PT_EXISTING',canonicalLabelKo:'Existing type',definition:'Synthetic existing type',ownerPack:'MIDDLE2',status:'ACTIVE',sourceUnit:'M2-02',supportingQuestionUids:['uid1'],supportingItemCount:1};
   const tpl={templateKey:'TPL_EXISTING',canonicalLabelKo:'Existing method',definition:'Synthetic existing method',parentProblemTypeKey:'PT_EXISTING',ownerPack:'MIDDLE2',status:'ACTIVE',sourceUnit:'M2-02',supportingQuestionUids:['uid1'],supportingItemCount:1};
@@ -65,11 +69,17 @@ function fixture(t,{mutateReceipt,omitRequest=false}={}) {
   const ids=bank.map((q,i)=>({questionUid:'uid'+(i+1),sourceArchiveFile,sourceOrdinal:i+1,sourceQuestionNo:String(q.id),status:'VERIFIED',sourceFingerprint:sourceFingerprint(q)}));
   const rows=ids.map((id,i)=>({...id,contentFingerprint:contentFingerprint(bank[i]),reviewStatus:'review_required'}));
   put(META,{records:rows,counts:{}});put(IDENTITY,{records:ids});fs.mkdirSync(path.join(root,'archive/data/meta-foundation/runtime'),{recursive:true});
-  const after=Object.fromEntries(Object.entries(q).filter(([k])=>!['id','content','choices','answer','solution','image'].includes(k)));
+  const priorSourceBlob=blob(fs.readFileSync(path.join(root,sourcePath)));
+  if(solutionRepair){commit('Original source before explicitly reviewed solution repair');
+    bank[0].solution='Synthetic already reviewed corrected explanation';mutateRepairedQuestion?.(bank[0]);source();}
+  const after=Object.fromEntries(Object.entries(originalQuestion).filter(([k])=>!['id','content','choices','answer','solution','image'].includes(k)));
+  if(solutionRepair)Object.assign(after,{sourceFingerprint:sourceFingerprint(bank[0]),contentFingerprint:contentFingerprint(bank[0])});
   const request={schemaVersion:'archive-reviewed-exam-meta-register-request-v2',requestId:'synthetic-issued-rpm',examUid:'exam-rpm',sourceArchiveFile,
     expectedQuestionCount:2,expectedSourceBlobSha1:blob(fs.readFileSync(path.join(root,sourcePath))),scope:'PARTIAL_UIDS',
     approval:{type:'FINAL_QA',metadataReviewed:true,approvedBy:'synthetic-original-reviewer',evidenceRefs:refs},registryChanges:[],
-    items:[{questionUid:'uid1',sourceOrdinal:1,before:Object.fromEntries(Object.keys(after).map(k=>[k,rows[0][k]??null])),after,reason:'Synthetic original approved values',evidenceRefs:refs}]};
+    items:[{questionUid:'uid1',sourceOrdinal:1,before:Object.fromEntries(Object.keys(after).map(k=>[k,rows[0][k]??null])),after,
+      ...(solutionRepair?{identityBefore:{sourceFingerprint:ids[0].sourceFingerprint},rebind:{priorSourceBlobSha1:priorSourceBlob,priorContentFingerprint:contentFingerprint(originalQuestion)}}:{}),
+      reason:'Synthetic original approved values',evidenceRefs:refs}]};
   const requestPath='.archive-meta-register/inbox/'+request.requestId+'.json',receiptPath=RECEIPTS+request.requestId+'.json';
   if(!omitRequest)put(requestPath,request);const requestCommit=commit('Original request and exact authorities');
   const result=registerReviewedExamV2({root,request,write:true});assert.equal(result.status,'PASS');
@@ -82,9 +92,9 @@ function fixture(t,{mutateReceipt,omitRequest=false}={}) {
   const context=()=>{const current=read(META).records.find(r=>r.questionUid==='uid1'),identity=read(IDENTITY).records.find(r=>r.questionUid==='uid1');
     const runtimePath=fs.readdirSync(path.join(root,'archive/data/meta-foundation/runtime')).filter(p=>p.endsWith('.json')).map(p=>'archive/data/meta-foundation/runtime/'+p).find(p=>read(p).records?.some(r=>r.questionUid==='uid1'));
     const runtime=read(runtimePath),bytes=fs.readFileSync(path.join(root,sourcePath)),registry=loadActiveMetaRegistry(root);
-    return{source:sourceArchiveFile,ordinal:1,question:copy(bank[0]),previous:copy(q),current,identity,registry,validate:validateActiveMetaFields,
+    return{source:sourceArchiveFile,ordinal:1,question:copy(bank[0]),previous:copy(originalQuestion),current,identity,registry,validate:validateActiveMetaFields,
       nativeSource:{root,bytes,blobSha1:blob(bytes),bank:copy(bank),runtimeRecord:runtime.records.find(r=>r.questionUid==='uid1'),runtimeStatus:runtime.status,
-        identityMap:read(IDENTITY),identityByJoin:new Map(ids.map(id=>[sourceArchiveFile+'#'+id.sourceOrdinal,id]))}};};
+        identityMap:read(IDENTITY),identityByJoin:new Map(read(IDENTITY).records.map(id=>[sourceArchiveFile+'#'+id.sourceOrdinal,id]))}};};
   const native=()=>{const c=context(),active=activeBindingContext({candidate:c.current,check:{curriculum:'2022'},registry:c.registry,runtimeOwner:'MIDDLE2'});
     return active.reason?null:nativeReviewReceipt({...c,...active});};
   const preserve=()=>{bank[1].content='Unselected changed synthetic question';source();
@@ -94,7 +104,7 @@ function fixture(t,{mutateReceipt,omitRequest=false}={}) {
       items:[{questionUid:'uid1',sourceOrdinal:1,before:{},after:{},reason:'Preserve original values after outside UID change',evidenceRefs:[priorRef]}]};
     const p='.archive-meta-register/inbox/'+r.requestId+'.json';put(p,r);commit('Current preserving request');return{request:r,path:p,receiptPath:RECEIPTS+r.requestId+'.json'};};
   return{root,git,put,read,commit,request,requestPath,requestCommit,issuedCommit,receipt,receiptPath,receiptBytes,refs,crosswalkRef,masterRef,reviewRef,
-    bank,source,sourcePath,sourceArchiveFile,walk,append,verify,native,context,preserve};
+    bank,source,sourcePath,sourceArchiveFile,walk,append,verify,native,context,preserve,originalQuestion,priorSourceBlob,assetRef};
 }
 
 test('actual ordinary issuance keeps old RPM evidence after append; no approval bytes change',t=>{
@@ -171,4 +181,116 @@ test('fresh current authority hold still blocks reuse after a positive continuit
   const f=fixture(t);f.append();assert.ok(f.verify());assert.equal(f.native(),f.receiptPath);
   const rows=f.read(META);rows.records[0].metadataAuthorityHold={schemaVersion:'archive-native-authority-hold-v1',status:'AUTHORITY_REVIEW_REQUIRED'};
   f.put(META,rows);assert.ok(f.verify(),'evidence continuity alone does not grant approval');assert.equal(f.native(),null);
+});
+
+test('issued solution-only leaf authenticates exact original repair after RPM append',t=>{
+  const f=fixture(t,{solutionRepair:true,withAsset:true});assert.equal(f.native(),f.receiptPath);f.append();
+  const result=f.verify();assert.equal(result.solutionRepair.priorSourceBlobSha1,f.priorSourceBlob);
+  assert.equal(result.solutionRepair.authorityUse,'EXISTING_ISSUED_SOLUTION_REBIND_ONLY');assert.equal(result.solutionRepair.selectedAssetCount,1);
+  assert.equal(result.newMetadataApprovals,0);assert.equal(f.native(),f.receiptPath);
+  assert.equal(sha(fs.readFileSync(path.join(f.root,f.receiptPath))),sha(f.receiptBytes));
+});
+test('issued solution leaf remains replayable through preview and official source preservation',t=>{
+  const f=fixture(t,{solutionRepair:true});f.append();const p=f.preserve();
+  const selected=selectPendingNativeRequests({root:f.root,headSha:f.git('rev-parse','HEAD')});assert.equal(selected.length,1);
+  const dry=registerReviewedExamV2({root:f.root,request:p.request,write:false});assert.equal(dry.status,'PASS');
+  const result=registerReviewedExamV2({root:f.root,request:p.request,write:true});assert.equal(result.newMetadataApprovals,0);
+  const replay=registerReviewedExamV2({root:f.root,request:p.request,write:true});assert.equal(replay.status,'PASS');
+  assert.equal(replay.replay,true);assert.deepEqual(replay.plannedPaths,[]);
+  assert.equal(f.native(),p.receiptPath);assert.deepEqual(f.read(f.receiptPath),f.receipt);
+});
+for(const [name,mutate]of [
+  ['repair marker removal',r=>{delete r.fingerprintRepairs;}],
+  ['rebind marker removal',r=>{delete r.fingerprintRepairs[0].rebind;}],
+  ['additional repair',r=>{r.fingerprintRepairs.push(copy(r.fingerprintRepairs[0]));}],
+  ['different prior blob',r=>{r.fingerprintRepairs[0].rebind.priorSourceBlobSha1='0'.repeat(40);}],
+  ['before fingerprint alteration',r=>{r.fingerprintRepairs[0].metadataBefore.sourceFingerprint='0'.repeat(64);}],
+  ['identity before alteration',r=>{r.fingerprintRepairs[0].identityBefore.sourceFingerprint='0'.repeat(64);}],
+  ['after fingerprint alteration',r=>{r.fingerprintRepairs[0].after.sourceFingerprint='0'.repeat(64);}],
+  ['sourceReview addition',r=>{r.fingerprintRepairs[0].sourceReview={};}],
+])test('issued solution '+name+' cannot use RPM continuity',t=>{
+  const f=fixture(t,{solutionRepair:true,mutateReceipt:mutate});f.append();assert.throws(f.verify,/issued RPM evidence continuity/);assert.equal(f.native(),null);
+});
+for(const [name,mutate]of [
+  ['answer',q=>{q.answer='b';}],
+  ['question figure',q=>{q.figureSvg='<svg><path d="M0 0L2 2"/></svg>';}],
+  ['figure caption',q=>{q.imageAlt='changed caption';}],
+  ['embedded solution drawing',q=>{q.solution+='<svg><path d="M0 0L2 2"/></svg>';}],
+])test('issued repair that also changes '+name+' is not solution-only continuity',t=>{
+  const f=fixture(t,{solutionRepair:true,mutateRepairedQuestion:mutate});f.append();assert.throws(f.verify,/solution-only|renderer reassessment/);assert.equal(f.native(),null);
+});
+for(const [name,mutate]of [
+  ['stem',q=>{q.content+=' changed';}],['answer',q=>{q.answer='b';}],
+  ['inline figure',q=>{q.figureSvg='<svg><path d="M0 0L3 3"/></svg>';}],
+])test('current solution leaf '+name+' change is rejected after a warm read',t=>{
+  const f=fixture(t,{solutionRepair:true});f.append();assert.ok(f.verify());mutate(f.bank[0]);f.source();f.commit();
+  assert.throws(f.verify,/selected whole question/);assert.equal(f.native(),null);
+});
+test('solution leaf asset bytes are rechecked after warm continuity',t=>{
+  const f=fixture(t,{solutionRepair:true,withAsset:true});f.append();assert.ok(f.verify());
+  f.put(f.assetRef.path,'<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0L3 3"/></svg>\n');f.commit();
+  assert.throws(f.verify,/renderer bytes changed/);assert.equal(f.native(),null);
+});
+test('solution leaf still rejects alteration of the original RPM row',t=>{
+  const f=fixture(t,{solutionRepair:true});f.append();assert.ok(f.verify());const d=f.read(WALK);d.records[0].bindingStatus='DIFFERENT';f.put(WALK,d);f.commit();
+  assert.throws(f.verify,/selected solution RPM row changed/);assert.equal(f.native(),null);
+});
+for(const tag of ['iframe','canvas','video','audio','foreignObject','script'])test('issued solution nontext renderer '+tag+' requires a separate contract',t=>{
+  const f=fixture(t,{solutionRepair:true,mutateRepairedQuestion:q=>{q.solution+='<'+tag+'></'+tag+'>';}});f.append();
+  assert.throws(f.verify,/solution renderer reassessment/);assert.equal(f.native(),null);
+});
+test('solution leaf uppercase SVG retains the same dependency guard',t=>{
+  const f=fixture(t,{solutionRepair:true,withAsset:true,assetSuffix:'SVG',assetBytes:'<svg xmlns="http://www.w3.org/2000/svg"><image href="assets/nested.png"/></svg>\n'});f.append();
+  assert.throws(f.verify,/nested external SVG dependency/);assert.equal(f.native(),null);
+});
+test('solution leaf does not interpret encoded HTML styling as text-only evidence',t=>{
+  const f=fixture(t,{solutionRepair:true,mutateRepairedQuestion:q=>{q.solution+='<span style="background-image:u&#114;l(https://example.invalid/a.png)">x</span>';}});f.append();
+  assert.throws(f.verify,/solution renderer reassessment/);assert.equal(f.native(),null);
+});
+for(const [name,value]of [['character reference','u&#114;l(https://example.invalid/a.png)'],['CSS escape',String.raw`u\72l(https://example.invalid/a.png)`]])
+test('solution leaf SVG '+name+' cannot hide a renderer dependency',t=>{
+  const f=fixture(t,{solutionRepair:true,withAsset:true,assetBytes:'<svg xmlns="http://www.w3.org/2000/svg"><path fill="'+value+'" d="M0 0L1 1"/></svg>\n'});f.append();
+  assert.throws(f.verify,/unsupported SVG dependency/);assert.equal(f.native(),null);
+});
+function unselectedMappingRefresh(f) {
+  const d=f.read(WALK),row=d.records.find(r=>r.id==='M2-RPM-OTHER');
+  Object.assign(row,{mappingStatus:'DIRECT_ACTIVE',bindingStatus:'ACTIVE',standardCourse:'중2 수학',
+    binding:{curriculum:'2022',standardCourse:'중2 수학',standardUnitKey:'M2-02',subUnitKey:'M2-02-SUB',problemTypeKey:'PT_EXISTING'}});
+  f.put(WALK,refresh(d));f.commit('Refresh only an unselected original mapping');return d;
+}
+test('solution leaf permits an unselected mapping-only refresh with an exact ordered RPM identity prefix',t=>{
+  const f=fixture(t,{solutionRepair:true,otherOriginalRecord:true});f.append();unselectedMappingRefresh(f);
+  const result=f.verify();assert.equal(result.unselectedMappingRefreshCount,1);
+  assert.equal(result.selectedFullRowSha256,sha(stable(f.walk.records[0])));assert.equal(f.native(),f.receiptPath);
+  assert.equal(result.authorityUse,'RPM_PATH_PROVENANCE_ONLY');assert.equal(result.selectsPtTpl,false);assert.equal(result.newMetadataApprovals,0);
+});
+test('ordinary zero-repair branch still refuses any original mapping refresh',t=>{
+  const f=fixture(t,{otherOriginalRecord:true});f.append();unselectedMappingRefresh(f);
+  assert.throws(f.verify,/exact append-only extension/);assert.equal(f.native(),null);
+});
+for(const [name,mutate]of [
+  ['selected mapping mutation',d=>{d.records[0].bindingStatus='CHANGED';}],
+  ['unselected RPM path mutation',d=>{d.records[1].rpmPath.l4='Different RPM method';}],
+  ['unselected curriculum mutation',d=>{d.records[1].curriculum='2015';}],
+  ['unselected extra non-mapping field',d=>{d.records[1].newAuthority=true;}],
+  ['unselected non-mapping deletion',d=>{delete d.records[1].scope;}],
+  ['old prefix reordering',d=>{[d.records[0],d.records[1]]=[d.records[1],d.records[0]];}],
+  ['old record deletion',d=>{d.records.splice(1,1);refresh(d);}],
+])test('solution mapping exception rejects '+name,t=>{
+  const f=fixture(t,{solutionRepair:true,otherOriginalRecord:true});f.append();const d=unselectedMappingRefresh(f);
+  mutate(d);f.put(WALK,d);f.commit();assert.throws(f.verify,/selected solution RPM row changed|unselected RPM non-mapping fields changed|original ordered ID prefix changed/);assert.equal(f.native(),null);
+});
+for(const [name,element]of [
+  ['namespaced script','<s:script/>'],['Unicode-prefixed style','<검토:style/>'],
+  ['namespaced foreign object','<s:foreignObject/>'],['animation','<animate/>'],
+  ['transform animation','<animateTransform/>'],['motion animation','<animateMotion/>'],
+  ['set','<set/>'],['namespaced animation','<검토:animate/>'],
+  ['namespaced color animation','<s:animateColor/>'],
+])test('solution leaf nonstatic SVG '+name+' is refused',t=>{
+  const assetBytes='<svg xmlns="http://www.w3.org/2000/svg" xmlns:s="http://www.w3.org/2000/svg" xmlns:검토="http://www.w3.org/2000/svg">'+element+'</svg>\n';
+  const f=fixture(t,{solutionRepair:true,withAsset:true,assetBytes});f.append();assert.throws(f.verify,/unsupported SVG dependency/);assert.equal(f.native(),null);
+});
+test('solution leaf SVG base URI cannot redirect an internal reference',t=>{
+  const assetBytes='<svg xmlns="http://www.w3.org/2000/svg" xml:base="https://example.invalid/"><use href="#shape"/></svg>\n';
+  const f=fixture(t,{solutionRepair:true,withAsset:true,assetBytes});f.append();assert.throws(f.verify,/unsupported SVG dependency/);assert.equal(f.native(),null);
 });
