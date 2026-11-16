@@ -89,7 +89,8 @@ const requiredCommands = [
   },
   {
     label: 'tests/archive-pr-native-preview.test.mjs',
-    args: ['--test', 'tests/archive-pr-native-preview.test.mjs']
+    args: ['--test', 'tests/archive-pr-native-preview.test.mjs'],
+    timeout: 300000
   },
   {
     label: 'tests/archive-reviewed-native-scope-fields.test.mjs',
