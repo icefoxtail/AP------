@@ -2812,7 +2812,7 @@
   function preparingMarkup() {
     const title = (isQuickAssessmentView() && Quick?.PRODUCTS[state.view]?.title) || PREPARING_TITLES[state.view] || "아카이브";
     if (state.bootError)
-      return `<section class="panel boot-wait" data-boot-wait="failed"><h1>${esc(title)}</h1><p class="callout danger" role="alert">${esc(state.bootError)}</p><p>${button("boot-retry", "다시 시도", 'class="primary"')} <a href="index.html?legacy=1">기존 아카이브 열기</a></p></section>`;
+      return `<section class="panel boot-wait" data-boot-wait="failed"><h1>${esc(title)}</h1><p class="callout danger" role="alert">${esc(state.bootError)}</p><p>${button("boot-retry", "다시 시도", 'class="primary"')}</p></section>`;
     return `<section class="panel boot-wait" data-boot-wait="loading" aria-busy="true"><h1>${esc(title)}</h1>${bootWaitText}<p class="muted">자료 준비가 끝나면 이 화면이 저절로 열립니다.</p></section>`;
   }
   function renderHome() {
@@ -2866,7 +2866,6 @@
           <div class="home-quick-list">${products.map(productMarkup).join("")}</div>
         </section>
       </div>
-      <nav class="home-tools" aria-label="그 밖의 도구"><a href="problem-bank-search.html">유형·개념으로 문항 찾기</a><button type="button" class="home-link" data-view="health">자료 점검</button><a href="index.html?legacy=1">아카이브 1.0</a></nav>
     </div>`;
   }
 
@@ -4811,7 +4810,7 @@
     } catch (e) {
       showDialog(
         "교사 로그인",
-        `<p>${esc(teacherErrorMessage(e))}</p><a href="index.html" target="_blank">기존 아카이브에서 로그인</a><p class="muted">로그인 후 이 창으로 돌아와 학생 선택을 다시 누르세요.</p>`,
+        `<p>${esc(teacherErrorMessage(e))}</p><a href="../apmath/" target="_blank" rel="noopener">선생님 로그인</a><p class="muted">로그인 후 이 창으로 돌아와 학생 선택을 다시 누르세요.</p>`,
       );
     }
   }
@@ -6493,19 +6492,18 @@
   }
   function renderUidRoute() {
     const route = state.uidRoute;
-    const back = '<a href="problem-bank-search.html">검색으로 돌아가기</a>';
     const clear = button("uid-route-clear", "전체 범위에서 직접 고르기", 'class="small"');
     if (route.error) {
       const rows = route.rejected.slice(0, 10).map((item) =>
         `<li><code>${esc(item.uid.length > 24 ? item.uid.slice(0, 24) + "…" : item.uid)}</code> · ${esc(UID_ROUTE_REASONS[item.reason] || item.reason)}</li>`).join("");
       const more = route.rejected.length > 10 ? `<li>외 ${route.rejected.length - 10}문항</li>` : "";
-      return `<div class="resultbar"><h2>단원</h2></div><div class="callout danger" role="alert" data-uid-route="rejected"><strong>선택한 문항으로 문제지를 만들 수 없습니다.</strong><p>${esc(route.error)}</p>${rows || more ? `<ul>${rows}${more}</ul>` : ""}<p>${back} · ${clear}</p></div>`;
+      return `<div class="resultbar"><h2>단원</h2></div><div class="callout danger" role="alert" data-uid-route="rejected"><strong>선택한 문항으로 문제지를 만들 수 없습니다.</strong><p>${esc(route.error)}</p>${rows || more ? `<ul>${rows}${more}</ul>` : ""}<p>${clear}</p></div>`;
     }
     const names = route.records.slice(0, 8).map((record, i) =>
       `${esc([record.year, record.school].filter(Boolean).join(" "))} ${esc(record.sourceQuestionNo ?? record.sourceOrdinal)}번`).join(" · ");
     const rest = route.records.length > 8 ? ` 외 ${route.records.length - 8}문항` : "";
     const scope = route.scopes[0];
-    return `<div class="resultbar"><h2>단원</h2></div><div class="callout" role="status" data-uid-route="accepted">검색에서 선택한 ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${back} · ${clear}</p></div>
+    return `<div class="resultbar"><h2>단원</h2></div><div class="callout" role="status" data-uid-route="accepted">검색에서 선택한 ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${clear}</p></div>
       <div class="scope-list"><div class="scope-group"><div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(scope.key)}" ${scopeIsSelected(scope) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(scope.label)}</label><small>${scope.count}문항</small></div></div></div>`;
   }
   function applySourceRoute() {

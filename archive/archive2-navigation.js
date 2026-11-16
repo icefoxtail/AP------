@@ -27,12 +27,13 @@
     { key: "quick", label: "빠른 평가", view: "five-minute", url: "workspace.html?view=five-minute" },
     { key: "library", label: "보관함 · 출제 내역", view: "saved", url: "workspace.html?view=saved" },
   ];
-  // Phone: 빠른 평가 is reached from the 홈 and 만들기 screens, so 만들기 stays current there.
+  // Phone: the same six destinations with short names (the bottom bar is six equal cells).
   const TABS = [
     { key: "home", label: "홈", view: "home", url: "workspace.html?view=home" },
     { key: "find", label: "학교별", view: "find", url: "workspace.html?view=find" },
     { key: "unit", label: "단원별", view: "", url: "unit-past-exams.html?ready=1" },
     { key: "make", label: "만들기", view: "compose", url: "workspace.html?view=compose" },
+    { key: "quick", label: "빠른평가", view: "five-minute", url: "workspace.html?view=five-minute" },
     { key: "library", label: "보관함", view: "saved", url: "workspace.html?view=saved" },
   ];
   // 5분 테스트 / 소단원 평가 / 중단원 평가 / 종합평가 share the 빠른 평가 menu entry.
@@ -62,7 +63,7 @@
 
   function matches(key, view) {
     if (key === "quick") return QUICK_VIEWS.includes(view);
-    if (key === "make") return view === "compose" || QUICK_VIEWS.includes(view);
+    if (key === "make") return view === "compose";
     if (key === "library") return view === "saved" || view === "recent";
     if (key === "unit") return view === "unit";
     return key === view;
@@ -118,14 +119,6 @@
     return `<a href="${item.url}"${keyAttr}${current} data-nav-role="${role}">${body}</a>`;
   }
 
-  function toolsMarkup(mode) {
-    const health =
-      mode === "workspace"
-        ? '<button type="button" data-view="health">자료 점검</button>'
-        : '<a href="workspace.html?view=health">자료 점검</a>';
-    return `<a href="index.html?legacy=1">아카이브 1.0</a>${health}<a href="problem-bank-search.html">유형·개념으로 문항 찾기</a>`;
-  }
-
   function markup(mode, options = {}) {
     const view = options.view || currentView(mode);
     const session = options.session || null;
@@ -134,7 +127,7 @@
     return `<aside class="archive-sidebar">
         <a class="archive-navigation-brand" href="workspace.html?view=home">JS 아카이브</a>
         <nav class="archive-navigation-tasks" aria-label="주 메뉴">${SIDEBAR.map((item) => itemMarkup(mode, item, view, "task")).join("")}</nav>
-        <div class="archive-sidebar-foot">${loginMarkup(session, "archive-login-side")}<div class="archive-navigation-tools">${toolsMarkup(mode)}</div></div>
+        <div class="archive-sidebar-foot">${loginMarkup(session, "archive-login-side")}</div>
       </aside>
       <div class="archive-mobile-topbar${home ? " is-home" : ""}">
         <a class="archive-mobile-brand" href="workspace.html?view=home">JS 아카이브</a>
