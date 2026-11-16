@@ -512,8 +512,7 @@ window.questionBank = [
         "도형"
       ],
       "wide": false,
-      "image": "assets/images/23_왕운중_2학기_기말_중1_기출/q10-problem-geometry-20261116.svg",
-      "imageAlt": "① 계단 모양과 두 층의 원기둥. ② 축에서 떨어진 삼각형과 밑면이 붙은 두 원뿔. ③ 사분원과 빗변이 이어진 모양과 원뿔 위 반구. ④ 직사각형 위 사분원과 원기둥 위 반구. ⑤ 축에서 떨어진 직사각형과 가운데가 뚫린 원기둥.",
+      "image": "assets/images/23_왕운중_2학기_기말_중1_기출/q10.png",
       "imageSize": "tall",
       "content": "다음 중 평면도형을 회전시켜 만든 입체도형으로 옳지 않은 것은? [4점]",
       "choices": [],

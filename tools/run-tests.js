@@ -41,6 +41,13 @@ const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.t
 // CI invokes this runner, so both the verifier syntax gate and its ESM test
 // become blocking checks on every normal test run.
 const requiredCommands = [
+  { label: 'tests/archive-m1s2-problem-surface.test.cjs', args: ['--test', 'tests/archive-m1s2-problem-surface.test.cjs'] },
+  { label: 'tests/archive-m3s2-q16-layout-browser.test.cjs', args: ['--test', 'tests/archive-m3s2-q16-layout-browser.test.cjs'] },
+  { label: 'tests/item-4slot-m1s2-problem-continuity.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-problem-continuity.test.cjs'] },
+  { label: 'tests/item-4slot-m1s2-ui-provenance.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-ui-provenance.test.cjs'] },
+  { label: 'tests/item-4slot-m1-m3-transport.test.cjs', args: ['--test', 'tests/item-4slot-m1-m3-transport.test.cjs'] },
+  { label: 'tests/archive-m3s2-layout-continuity.test.cjs', args: ['--test', 'tests/archive-m3s2-layout-continuity.test.cjs'] },
+  { label: 'tests/archive-renderer-continuity-writer-inputs.test.mjs', args: ['--test', 'tests/archive-renderer-continuity-writer-inputs.test.mjs'] },
   {
     label: 'tests/archive-reviewed-m2-problem21-continuity.test.mjs',
     args: ['--test', 'tests/archive-reviewed-m2-problem21-continuity.test.mjs']

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { BOUNDED_RENDERER_UI_INPUTS } from '../4slot/bounded-renderer-ui-inputs.mjs';
 import { sourceQualityHoldDependencyPaths } from '../../archive/tools/source-quality-holds.mjs';
 import { canonicalParentRetryRequests, canonicalParentRetryDependencies } from '../../archive/tools/meta-foundation/canonical-parent-retry.mjs';
 // One preparation transaction for the existing registration producers. This script never commits or pushes.
@@ -160,7 +161,7 @@ export function nativeLanes(root) {
       parameters:{accessibilityBase},
       commands:[cmd('node','archive/tools/build-svg-accessibility-index.cjs','--base',accessibilityBase),
         cmd('node','archive/tools/build-archive2-extension-keys.mjs')]},
-    {id:'fourSlot',inputs:['archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',
+    {id:'fourSlot',inputs:[...BOUNDED_RENDERER_UI_INPUTS,'archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',
       '.archive-meta-register/4slot-existing-vector-continuity/',
       '.archive-meta-register/4slot-renderer-continuity/','archive/data/question_metadata.json',
       'archive/data/meta-foundation/evidence/reviewed-exam-meta/','.archive-meta-register/evidence/',
