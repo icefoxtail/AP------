@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-hot-authority-preservation-receipt/v1",
+  "status": "FULL_BYTES_VERIFIED",
+  "verifiedAtUtc": "2026-11-16T12:30:59.524869+00:00",
+  "allowedRoots": [
+    "archive/analysis/"
+  ],
+  "baselineCommit": "2639194d30f75c42a553b51dc68164cb65163627",
+  "baselineAnalysisTreeSha": "a4993691811b485e1b7f6d368bafe40d5d5bacba",
+  "paths": 7,
+  "rawBytes": 246224,
+  "artifacts": [
+    {
+      "kind": "pack",
+      "name": "e035-actual-native-inputs-2639194-20261116-0001.zip",
+      "sizeBytes": 189904,
+      "sha256": "faf924f29ce574720e2434926e94a0edc0f4abe2c8ebb44e5262c67ead01eed7",
+      "driveFileId": "1PmKe55WHdEhequoP_35VTu9BZUQbFeav",
+      "driveParentId": "1rCUfGWKyTTVktV7HzEyYhF0p4lZmo9E4",
+      "driveMimeType": "application/zip",
+      "driveUrl": "https://drive.google.com/file/d/1PmKe55WHdEhequoP_35VTu9BZUQbFeav/view",
+      "sourceVersion": {
+        "id": "1PmKe55WHdEhequoP_35VTu9BZUQbFeav",
+        "parentIds": [
+          "1rCUfGWKyTTVktV7HzEyYhF0p4lZmo9E4"
+        ],
+        "observedModifiedTime": "2026-11-16T12:29:16.145Z"
+      },
+      "driveReadback": {
+        "status": "FULL_BYTES_VERIFIED",
+        "sha256": "faf924f29ce574720e2434926e94a0edc0f4abe2c8ebb44e5262c67ead01eed7",
+        "sizeBytes": 189904
+      }
+    },
+    {
+      "kind": "index",
+      "name": "e035-actual-native-inputs-2639194-20261116.fullpath-index.json",
+      "sizeBytes": 6604,
+      "sha256": "3bfa477c88a1e73a415544145f91e9d30a2aa22e83b52df1a1cc9235442a0c84",
+      "driveFileId": "1MvGHeQrHkhjObisDPQgJzreav4VlDMT7",
+      "driveParentId": "1rCUfGWKyTTVktV7HzEyYhF0p4lZmo9E4",
+      "driveMimeType": "application/json",
+      "driveUrl": "https://drive.google.com/file/d/1MvGHeQrHkhjObisDPQgJzreav4VlDMT7/view",
+      "sourceVersion": {
+        "id": "1MvGHeQrHkhjObisDPQgJzreav4VlDMT7",
+        "parentIds": [
+          "1rCUfGWKyTTVktV7HzEyYhF0p4lZmo9E4"
+        ],
+        "observedModifiedTime": "2026-11-16T12:29:19.817Z"
+      },
+      "driveReadback": {
+        "status": "FULL_BYTES_VERIFIED",
+        "sha256": "3bfa477c88a1e73a415544145f91e9d30a2aa22e83b52df1a1cc9235442a0c84",
+        "sizeBytes": 6604
+      }
+    }
+  ],
+  "retainedGitLane": "archive/data/evidence-authority/v1/",
+  "metadataApproval": "NONE",
+  "qualityVerdict": "NO_NEW_VERDICT",
+  "purpose": "Preserve exact source transport snapshot before replacing its temporary analysis paths with the byte-bound offline authority lane; not a cold lookup catalogue."
+}
