@@ -471,6 +471,8 @@ def _mc_plain_expression(curve):
     if curve['kind']=='RATIONAL':return '('+_polynomial_text(curve['numerator'])+')/('+_polynomial_text(curve['denominator'])+')'
     if curve['kind']=='EXPONENTIAL':
         return _exp_log_base_expression({**curve,'family':'exponential-affine'})
+    if curve['kind']=='LOGARITHMIC':
+        return _exp_log_base_expression({**curve,'family':'logarithmic-affine'})
     return '('+curve['offset']+')+('+curve['amplitude']+')*sqrt('+_polynomial_text(curve['radicand'])+')'
 
 def _mc_free_expression(curve):
@@ -625,7 +627,7 @@ def _produce_multi_curve(plan,vp):
     region_fills,region_labels=_mc_region_parts(features,vp)
     for curve in features['curves']:
         ident=curve.get('id');stroke,look=_mc_look_attrs(curve)
-        if curve.get('kind') in ('Y_OF_X','LINE','RATIONAL','SQRT','EXPONENTIAL'):
+        if curve.get('kind') in ('Y_OF_X','LINE','RATIONAL','SQRT','EXPONENTIAL','LOGARITHMIC'):
             intervals=curve.get('branches') or []
             if curve['kind']=='Y_OF_X' and len(intervals)!=1:raise ValueError('MULTI_CURVE_BRANCH_INVENTORY_REQUIRED:'+str(ident))
             for branch in intervals:
@@ -637,7 +639,7 @@ def _produce_multi_curve(plan,vp):
                     slope=float(Fraction(curve['radicand'][1]));amplitude=abs(float(Fraction(curve['amplitude'])));step=(1.2/((vp.sy)*math.sqrt(abs(slope))*amplitude))**2
                     if slope>0 and domain[0]+step<domain[1]:critical.append(domain[0]+step)
                     elif slope<0 and domain[1]-step>domain[0]:critical.append(domain[1]-step)
-                result=sample(_mc_free_expression(curve),domain,vp,critical_x=critical)
+                result=sample(_mc_free_expression(curve),domain,vp,critical_x=critical,clip_refine=curve['kind']=='LOGARITHMIC')
                 if len(result['branches'])!=1:raise ValueError('MULTI_CURVE_SAMPLING_FAILED:'+str(ident))
                 sampling.append({'id':'curve-'+str(ident)+suffix.lower(),**{key:value for key,value in result.items() if key!='branches'}})
                 points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])

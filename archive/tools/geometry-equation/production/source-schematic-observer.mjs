@@ -19,17 +19,19 @@ export function auditSourceSchematic(svg,expected){
     '<title id="visual-title">'+title+'</title><desc id="visual-desc">'+description+'</desc><rect width="'+width+'" height="'+height+'" fill="#fff"/>';
   if(!parts||parts[1]!==header)return {status:'FAIL',errors:['SCHEMATIC_SVG_AUTHORITY_MISMATCH']};
   const tags=[...parts[2].matchAll(/<(line|polyline|circle) [^<>]*\/>/g)];
-  if(tags.map(m=>m[0]).join('')!==parts[2]||tags.length!==9)errors.push('SCHEMATIC_PRIMITIVE_INVENTORY_MISMATCH');
+  const pathCount=Object.keys(expected.paths).length,pointCount=Object.keys(expected.points).length;
+  if(tags.map(m=>m[0]).join('')!==parts[2]||tags.length!==pathCount+pointCount)errors.push('SCHEMATIC_PRIMITIVE_INVENTORY_MISMATCH');
   const byId=new Map(tags.map(m=>[attr(m[0],'id'),m]));
   if(byId.size!==tags.length)errors.push('SCHEMATIC_PRIMITIVE_INVENTORY_MISMATCH');
   for(const [id,points] of Object.entries(expected.paths)){
-    const m=byId.get(id),curved=id==='exponential'||id==='logarithm';
+    const m=byId.get(id),firstCurve=id==='exponential'||id==='logOriginal',secondCurve=id==='logarithm'||id==='logShifted';
+    const curved=firstCurve||secondCurve;
     if(!m||m[1]!== (curved?'polyline':'line')||
       attr(m[0],'data-role')!==(curved?'curve':id==='secant'?'line':'axis')){
       errors.push('SCHEMATIC_PATH_MISSING:'+id);continue;
     }
-    const extra=id==='logarithm'?['stroke-dasharray']:[];
-    const style=id==='exponential'?['#1f5fa8','3.2']:id==='logarithm'?['#2e7d32','3.2']:id==='secant'?['#b85c00','3.2']:['#111','1.8'];
+    const extra=secondCurve?['stroke-dasharray']:[];
+    const style=firstCurve?['#1f5fa8','3.2']:secondCurve?['#2e7d32','3.2']:id==='secant'?['#b85c00','3.2']:['#111','1.8'];
     const allowed=['id','data-role','stroke','stroke-width',...(curved?['points','fill',...extra]:['x1','y1','x2','y2'])];
     if(!expectedAttributes(m[0],allowed)||attr(m[0],'stroke')!==style[0]||attr(m[0],'stroke-width')!==style[1]||
       (curved&&attr(m[0],'fill')!=='none')||(extra.length&&attr(m[0],'stroke-dasharray')!=='8 4'))
@@ -49,5 +51,5 @@ export function auditSourceSchematic(svg,expected){
   if(parts[3]!==expected.groups.map(g=>g.group).join(''))errors.push('SCHEMATIC_LABELS_CHANGED');
   const language=validateSvgStudentLanguage(svg,{assetRef:'source schematic'});
   if(language.status!=='PASS')errors.push(...language.errors.map(e=>e.code));
-  return {status:errors.length?'FAIL':'PASS',errors,pathsVerified:5,pointsVerified:4,labelsVerified:expected.groups.length};
+  return {status:errors.length?'FAIL':'PASS',errors,pathsVerified:pathCount,pointsVerified:pointCount,labelsVerified:expected.groups.length};
 }
