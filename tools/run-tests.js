@@ -89,7 +89,8 @@ const requiredCommands = [
   },
   {
     label: 'tests/archive-pr-native-preview.test.mjs',
-    args: ['--test', 'tests/archive-pr-native-preview.test.mjs']
+    args: ['--test', 'tests/archive-pr-native-preview.test.mjs'],
+    timeout: 300000
   },
   {
     label: 'tests/archive-reviewed-native-scope-fields.test.mjs',
@@ -107,6 +108,11 @@ const requiredCommands = [
   {
     label: 'tests/item-4slot-runtime.test.cjs',
     args: ['--test', 'tests/item-4slot-runtime.test.cjs']
+  },
+  {
+    label: 'tests/item-4slot-existing-vector-continuity.test.cjs',
+    args: ['--test', 'tests/item-4slot-existing-vector-continuity.test.cjs'],
+    timeout: 180000
   },
   {
     label: 'tests/item-4slot-m3-renderer-hold.test.cjs',
