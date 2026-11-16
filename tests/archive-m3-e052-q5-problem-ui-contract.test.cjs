@@ -11,6 +11,77 @@ const clone = value => structuredClone(value);
 const sealed = () => ({ ...clone(original), bindingState: C.SEALED });
 const digest = value => H.sha256(H.stable(value));
 
+function diagnosticCase() {
+  const commit = 'a'.repeat(40), item = original.items[0], source = original.sourceBindings[0];
+  const selected = Object.fromEntries(['key','questionUid','sourceOrdinal','expectedBankCount','imageBinding','problemPayloadSha256',
+    'problemFieldsSha256','presentationSha256','choicePresentationSha256','expectedImageWidth','expectedImageHeight'].map(k => [k,item[k]]));
+  selected.sourceRef = { commit, path: source.sourcePath, gitBlobSha1: source.gitBlobSha1, sha256: source.sha256, bytes: source.bytes };
+  selected.assetRef = { commit, path: item.assetPath, gitBlobSha1: item.assetGitBlobSha1, sha256: item.assetSha256, bytes: item.assetBytes };
+  const refs = new Map([selected.sourceRef, selected.assetRef, ...[C.MANIFEST_PATH,C.CHECKER_PATH,C.SHARED_CHECKER_PATH].map(p=>({
+    commit,path:p,gitBlobSha1:'b'.repeat(40),sha256:p===C.SHARED_CHECKER_PATH?C.SHARED_CHECKER_SHA256:'c'.repeat(64),bytes:100
+  }))].map(ref=>[ref.path,ref]));
+  const reader = {commit,ref:p=>clone(refs.get(p))};
+  const viewport=clone(C.VIEWPORTS[0]);
+  const frame={schemaVersion:'archive-problem-role-frame-v1',mode:'exam',solutionNodes:0,bankCount:25,questionNumber:5,
+    sourcePageMatched:true,targetAssetMatched:true,inputUnchanged:true,cssWrites:0,domWrites:0,viewportChanges:0,scrollOperations:0,
+    viewport:{width:viewport.width,height:viewport.height},domSha256:'d'.repeat(64),directNodeCount:3,visibleDirectNodeCount:2,
+    directNodes:[],mediaNodes:[]};
+  return {reader,item:selected,viewport,refs,frame,target:{evaluate:async()=>clone(frame)}};
+}
+test('Q5 diagnostic leaves a successful original capture unchanged and never probes', async()=>{
+  const expected={status:'ORIGINAL_CAPTURE'},diagnostics=[];let probes=0,calls=0;
+  const result=await C.captureQ5WithFailureDiagnostic({diagnostics,capture:async()=>{calls++;return expected},diagnose:async()=>{probes++;}});
+  assert.equal(result,expected);assert.equal(calls,1);assert.equal(probes,0);assert.deepEqual(diagnostics,[]);
+});
+test('Q5 diagnostic records the two-role observation without accepting or replacing the original failure', async()=>{
+  const x=diagnosticCase(),originalError=new Error('UI_COMPLETE_PROBLEM_CHILDREN'),diagnostics=[];let calls=0;
+  await assert.rejects(()=>C.captureQ5WithFailureDiagnostic({...x,diagnostics,capture:async()=>{calls++;throw originalError}}),e=>e===originalError);
+  assert.equal(calls,1);assert.equal(diagnostics.length,1);assert.equal(diagnostics[0].captureAccepted,false);
+  assert.equal(diagnostics[0].screenshotCreated,false);assert.equal(diagnostics[0].newNativeApprovals,0);
+  assert.equal(diagnostics[0].frame.visibleDirectNodeCount,2);assert.equal(diagnostics[0].frameSha256,digest(x.frame));
+});
+test('Q5 diagnostic does not intercept another capture error', async()=>{
+  const originalError=new Error('UI_PROBLEM_FOREIGN_HIT'),diagnostics=[];let probes=0;
+  await assert.rejects(()=>C.captureQ5WithFailureDiagnostic({diagnostics,capture:async()=>{throw originalError},diagnose:async()=>{probes++}}),e=>e===originalError);
+  assert.equal(probes,0);assert.deepEqual(diagnostics,[]);
+});
+test('Q5 diagnostic failure keeps the original capture error and exports only an error hash', async()=>{
+  const originalError=new Error('UI_COMPLETE_PROBLEM_CHILDREN'),diagnostics=[];
+  await assert.rejects(()=>C.captureQ5WithFailureDiagnostic({diagnostics,capture:async()=>{throw originalError},diagnose:async()=>{throw Error('Synthetic private text must not leave')}}),e=>e===originalError);
+  assert.equal(diagnostics[0].status,'DIAGNOSTIC_UNAVAILABLE_ORIGINAL_CAPTURE_FAILURE');assert.equal(diagnostics[0].captureAccepted,false);
+  assert.equal(JSON.stringify(diagnostics).includes('Synthetic private'),false);assert.match(diagnostics[0].diagnosticErrorSha256,/^[a-f0-9]{64}$/);
+});
+for(const [name,change]of Object.entries({
+  'foreign UID':x=>{x.item.questionUid='qid_v1_'+'f'.repeat(64)},
+  'another ordinal':x=>{x.item.sourceOrdinal=6},
+  '24 denominator':x=>{x.item.expectedBankCount=24},
+  'changed problem hash':x=>{x.item.problemFieldsSha256='0'.repeat(64)},
+  'changed choice visibility hash':x=>{x.item.choicePresentationSha256='0'.repeat(64)},
+  'unknown permission':x=>{x.item.allowTwoRoles=true},
+  'enlarged viewport':x=>{x.viewport.height++},
+  'wrong source Git':x=>{x.item.sourceRef.gitBlobSha1='0'.repeat(40)},
+  'wrong asset raw':x=>{x.item.assetRef.sha256='0'.repeat(64)},
+  'extra ref key':x=>{x.item.assetRef.allowDifferent=true},
+  'foreign commit':x=>{x.item.assetRef.commit='0'.repeat(40)}
+}))test('Q5 diagnostic rejects '+name+' before evaluating the page',async()=>{
+  const x=diagnosticCase();let calls=0;x.target.evaluate=async()=>{calls++;return x.frame};change(x);
+  await assert.rejects(()=>C.readQ5RoleDiagnostic(x),/UI_Q5_DIAGNOSTIC_/);assert.equal(calls,0);
+});
+for(const [name,change]of Object.entries({
+  'solution surface':x=>{x.frame.solutionNodes=1},
+  'non-exam mode':x=>{x.frame.mode='solution'},
+  'DOM mutation':x=>{x.frame.inputUnchanged=false},
+  'CSS write':x=>{x.frame.cssWrites=1},
+  'viewport change':x=>{x.frame.viewportChanges=1},
+  'wrong selected number':x=>{x.frame.questionNumber=6}
+}))test('Q5 diagnostic does not record an unsafe frame: '+name,async()=>{
+  const x=diagnosticCase();change(x);await assert.rejects(()=>C.readQ5RoleDiagnostic(x),/UI_Q5_DIAGNOSTIC_FRAME/);
+});
+test('Q5 diagnostic re-reads all evidence after the browser observation',async()=>{
+  const x=diagnosticCase();x.target.evaluate=async()=>{x.refs.get(C.CHECKER_PATH).sha256='0'.repeat(64);return x.frame};
+  await assert.rejects(()=>C.readQ5RoleDiagnostic(x),/UI_Q5_DIAGNOSTIC_INPUT_CHANGED/);
+});
+
 test('closed cohort is exactly Q5, a 25-question bank, original 550 by 330 PNG and two viewports', () => {
   C.validateManifest(original);
   assert.equal(original.items.length, 1);

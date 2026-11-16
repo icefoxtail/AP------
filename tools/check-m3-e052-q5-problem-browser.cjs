@@ -192,6 +192,146 @@ function checkedOutput(root, out) {
   return out;
 }
 
+async function measureProblemRoles(image, expected) {
+  const check = (condition, code) => { if (!condition) throw new Error(code); };
+  const mode = typeof AppState === 'undefined' ? null : AppState.mode;
+  const solutionNodes = document.querySelectorAll('#print-area .sol-box,#print-area .sol-meta,#print-area .sol-ans,#print-area .sol-exp,#print-area .ans-v').length;
+  check(mode === 'exam' && solutionNodes === 0, 'UI_ROLE_DIAGNOSTIC_SURFACE');
+  const box = image?.closest('.q-box');
+  check(image?.tagName === 'IMG' && box && document.querySelector('#print-area')?.contains(box), 'UI_ROLE_DIAGNOSTIC_TARGET');
+  check(innerWidth === expected.width && innerHeight === expected.height, 'UI_ROLE_DIAGNOSTIC_VIEWPORT');
+  check(AppState.data.length === expected.bankCount, 'UI_ROLE_DIAGNOSTIC_BANK');
+  const query = new URL(location.href).searchParams;
+  check(query.get('mode') === 'exam' && query.get('data') === expected.sourcePath.slice('archive/'.length) && query.get('studentReview') === '1', 'UI_ROLE_DIAGNOSTIC_PAGE');
+  const digest = async text => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text)))].map(byte => byte.toString(16).padStart(2, '0')).join('');
+  const imagePath = element => {
+    try { return decodeURIComponent(new URL(element.currentSrc || element.src, location.href).pathname); } catch { return ''; }
+  };
+  const allowedPaths = [expected.assetPath, '/' + expected.assetPath, '/exams/images/' + expected.assetPath.slice('archive/assets/images/'.length)];
+  check(allowedPaths.includes(imagePath(image)), 'UI_ROLE_DIAGNOSTIC_TARGET_ASSET');
+  check([...document.querySelectorAll('#print-area img')].filter(node => allowedPaths.includes(imagePath(node))).length === 1, 'UI_ROLE_DIAGNOSTIC_UNIQUE_TARGET');
+  const numbers = [...box.querySelectorAll('.q-num')], contents = [...box.querySelectorAll('.q-content')];
+  const ordinal = numbers.length === 1 ? Number((numbers[0].textContent.trim().match(/^(\d+)\./) || [])[1]) : null;
+  check(ordinal === expected.ordinal, 'UI_ROLE_DIAGNOSTIC_ORDINAL');
+  const rect = element => { const r = element.getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height }; };
+  const state = element => {
+    const css = getComputedStyle(element), r = rect(element);
+    return { rect: r, displayNone: css.display === 'none', visibilityHidden: ['hidden', 'collapse'].includes(css.visibility), opacityZero: Number(css.opacity) === 0,
+      visible: css.display !== 'none' && !['hidden', 'collapse'].includes(css.visibility) && Number(css.opacity) !== 0 && r.width > 0 && r.height > 0 };
+  };
+  const nodes = [...box.childNodes], media = [...box.querySelectorAll('img,svg,math,mjx-container')], bodyElements = [...document.querySelectorAll('body *')];
+  check(nodes.length <= 128 && media.length <= 256 && bodyElements.length <= 30000 && box.outerHTML.length <= 2000000, 'UI_ROLE_DIAGNOSTIC_LIMIT');
+  const initialDomSha256 = await digest(box.outerHTML), initialScroll = { x: scrollX, y: scrollY }, initialViewport = { width: innerWidth, height: innerHeight };
+  const knownClasses = ['q-header', 'q-head', 'q-num', 'q-content', 'q-image', 'q-choices', 'choices', 'choice', 'q-space', 'answer-space', 'work-space', 'workspace'];
+  const knownTags = ['DIV', 'SPAN', 'IMG', 'P', 'SECTION', 'TABLE', 'OL', 'UL', 'SVG', 'MATH', 'MJX-CONTAINER'];
+  const directNodes = [];
+  for (let index = 0; index < nodes.length; index++) {
+    const node = nodes[index];
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      const classes = [...node.classList], unknownClasses = classes.filter(value => !knownClasses.includes(value)).sort();
+      directNodes.push({ index, kind: 'ELEMENT', tag: knownTags.includes(node.tagName) ? node.tagName : 'OTHER', knownClasses: classes.filter(value => knownClasses.includes(value)).sort(),
+        otherClassCount: unknownClasses.length, otherClassesSha256: unknownClasses.length ? await digest(JSON.stringify(unknownClasses)) : null,
+        ...state(node), hasText: !!node.textContent.trim(), mediaCount: node.querySelectorAll('img,svg,math,mjx-container').length + Number(['IMG', 'SVG', 'MATH', 'MJX-CONTAINER'].includes(node.tagName)),
+        numberCount: numbers.filter(value => node === value || node.contains(value)).length,
+        contentCount: contents.filter(value => node === value || node.contains(value)).length,
+        containsTargetImage: node === image || node.contains(image) });
+    } else if (node.nodeType === Node.TEXT_NODE) {
+      const hasText = !!node.textContent.trim(), range = document.createRange(); range.selectNodeContents(node);
+      const r = range.getBoundingClientRect();
+      directNodes.push({ index, kind: 'TEXT', hasText, rect: { x: r.x, y: r.y, width: r.width, height: r.height }, visible: hasText && r.width > 0 && r.height > 0 });
+    } else directNodes.push({ index, kind: 'OTHER', visible: false });
+  }
+  const mediaNodes = media.map((node, index) => ({ index, kind: node.tagName.toUpperCase(), ...state(node),
+    directNodeIndex: nodes.findIndex(child => child === node || (child.nodeType === Node.ELEMENT_NODE && child.contains(node))),
+    insideContent: contents.some(content => content === node || content.contains(node)), isTargetImage: node === image,
+    ...(node.tagName === 'IMG' ? { complete: node.complete, naturalWidth: node.naturalWidth, naturalHeight: node.naturalHeight } : {}) }));
+  const obstructions = bodyElements.filter(node => !box.contains(node) && !node.contains(box) && ['fixed', 'sticky'].includes(getComputedStyle(node).position) && state(node).visible)
+    .map(rect).filter(r => r.x < innerWidth && r.x + r.width > 0 && r.y < innerHeight && r.y + r.height > 0);
+  check(obstructions.length <= 256, 'UI_ROLE_DIAGNOSTIC_LIMIT');
+  const q = rect(box), visibleBounds = { left: Math.max(0, q.x), right: Math.min(innerWidth, q.x + q.width), top: Math.max(0, q.y), bottom: Math.min(innerHeight, q.y + q.height) };
+  let hitTestSamples = 0, foreignContentHits = 0;
+  if (visibleBounds.right > visibleBounds.left && visibleBounds.bottom > visibleBounds.top) {
+    for (let y = 0; y < 5; y++) for (let x = 0; x < 5; x++) {
+      const top = document.elementFromPoint(visibleBounds.left + (x + 0.5) * (visibleBounds.right - visibleBounds.left) / 5,
+        visibleBounds.top + (y + 0.5) * (visibleBounds.bottom - visibleBounds.top) / 5);
+      hitTestSamples++; if (!top || (top !== box && !box.contains(top))) foreignContentHits++;
+    }
+  }
+  const panel = document.getElementById('ap-archive-render-feedback');
+  const finalDomSha256 = await digest(box.outerHTML);
+  check(finalDomSha256 === initialDomSha256 && scrollX === initialScroll.x && scrollY === initialScroll.y && innerWidth === initialViewport.width && innerHeight === initialViewport.height,
+    'UI_ROLE_DIAGNOSTIC_INPUT_CHANGED');
+  return { schemaVersion: 'archive-problem-role-frame-v1', mode, solutionNodes, sourcePageMatched: true, targetAssetMatched: true,
+    bankCount: AppState.data.length, questionNumber: ordinal, question: q, image: rect(image), viewport: initialViewport, scroll: initialScroll,
+    readiness: JSON.parse(document.documentElement.dataset.apPrintReadiness || '{}').state,
+    feedbackIdle: !panel || panel.hidden || !state(panel).visible,
+    numberCount: numbers.length, visibleNumberCount: numbers.filter(node => state(node).visible).length,
+    contentCount: contents.length, visibleContentCount: contents.filter(node => state(node).visible).length,
+    directNodeCount: directNodes.length, visibleDirectNodeCount: directNodes.filter(node => node.visible).length,
+    directNodes, mediaNodes, obstructions, hitTestSamples, foreignContentHits,
+    domSha256: initialDomSha256, inputUnchanged: true, cssWrites: 0, domWrites: 0, viewportChanges: 0, scrollOperations: 0 };
+}
+
+
+// Diagnostic only. Every capture failure remains the same thrown failure.
+const Q5_CHILD_FAILURE = 'UI_COMPLETE_PROBLEM_CHILDREN';
+const Q5_DIAGNOSTIC_ITEM_SHA256 = 'c8435288e0ab156661f686299fa1a91947490e3da347476f01585ca1a600c7ae';
+function checkedQ5DiagnosticScope(reader, item, viewport) {
+  const fields = ['key','questionUid','sourceOrdinal','expectedBankCount','imageBinding','problemPayloadSha256','problemFieldsSha256',
+    'presentationSha256','choicePresentationSha256','expectedImageWidth','expectedImageHeight'];
+  ownKeys(item, [...fields, 'sourceRef', 'assetRef'], 'UI_Q5_DIAGNOSTIC_ITEM');
+  assert.equal(sha256(stable(Object.fromEntries(fields.map(key => [key, item[key]])))), Q5_DIAGNOSTIC_ITEM_SHA256, 'UI_Q5_DIAGNOSTIC_SCOPE');
+  assert(VIEWPORTS.some(v => stable(v) === stable(viewport)), 'UI_Q5_DIAGNOSTIC_VIEWPORT');
+  assert(SHA1.test(reader.commit || ''), 'UI_Q5_DIAGNOSTIC_COMMIT');
+  for (const ref of [item.sourceRef, item.assetRef]) {
+    ownKeys(ref, ['commit','path','gitBlobSha1','sha256','bytes'], 'UI_Q5_DIAGNOSTIC_REF');
+    assert.equal(ref.commit, reader.commit, 'UI_Q5_DIAGNOSTIC_COMMIT');
+    assert.deepEqual(reader.ref(ref.path), ref, 'UI_Q5_DIAGNOSTIC_LIVE_REF');
+  }
+  const source = EXPECTED_SOURCE_BINDINGS[0];
+  assert.deepEqual(item.sourceRef, { commit: reader.commit, path: source.sourcePath, gitBlobSha1: source.gitBlobSha1,
+    sha256: source.sha256, bytes: source.bytes }, 'UI_Q5_DIAGNOSTIC_SOURCE');
+  assert.deepEqual(item.assetRef, { commit: reader.commit,
+    path: 'archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q05-problem-source-v2.png',
+    gitBlobSha1: '716c4228fd5e2ab0ad995eae9b498f8b57a8eb88',
+    sha256: 'e09a9ffa670e31766c57c4687e88a8d44fb773e0ca265cc4d1ad06e40a79ad6f', bytes: 57270 }, 'UI_Q5_DIAGNOSTIC_ASSET');
+  const evidence = [item.sourceRef, item.assetRef, reader.ref(MANIFEST_PATH), reader.ref(CHECKER_PATH), reader.ref(SHARED_CHECKER_PATH)];
+  assert.equal(evidence[4].sha256, SHARED_CHECKER_SHA256, 'UI_Q5_DIAGNOSTIC_CAPTURE_HELPER');
+  return evidence;
+}
+async function readQ5RoleDiagnostic({ reader, item, viewport, target }) {
+  const evidence = checkedQ5DiagnosticScope(reader, item, viewport);
+  let timer;
+  const frame = await Promise.race([
+    target.evaluate(measureProblemRoles, { ordinal: item.sourceOrdinal, bankCount: item.expectedBankCount,
+      width: viewport.width, height: viewport.height, sourcePath: item.sourceRef.path, assetPath: item.assetRef.path }),
+    new Promise((_resolve, reject) => { timer = setTimeout(() => reject(new Error('UI_Q5_DIAGNOSTIC_TIMEOUT')), 15000); })
+  ]).finally(() => clearTimeout(timer));
+  assert(frame && frame.schemaVersion === 'archive-problem-role-frame-v1' && frame.mode === 'exam' && frame.solutionNodes === 0 &&
+    frame.bankCount === 25 && frame.questionNumber === 5 && frame.sourcePageMatched === true && frame.targetAssetMatched === true &&
+    frame.inputUnchanged === true && frame.cssWrites === 0 && frame.domWrites === 0 && frame.viewportChanges === 0 && frame.scrollOperations === 0 &&
+    frame.viewport.width === viewport.width && frame.viewport.height === viewport.height && SHA256.test(frame.domSha256), 'UI_Q5_DIAGNOSTIC_FRAME');
+  for (const ref of evidence) assert.deepEqual(reader.ref(ref.path), ref, 'UI_Q5_DIAGNOSTIC_INPUT_CHANGED');
+  return { schemaVersion: 'archive-m3-e052-q5-problem-role-diagnostic-v1', status: 'DIAGNOSTIC_ONLY_ORIGINAL_CAPTURE_FAILURE',
+    originalFailureCode: Q5_CHILD_FAILURE, checkoutCommit: reader.commit, key: item.key, questionUid: item.questionUid,
+    sourceOrdinal: item.sourceOrdinal, viewport, evidence, frame, frameSha256: sha256(stable(frame)),
+    captureAccepted: false, screenshotCreated: false, solutionsOpened: false, sourceWrites: 0, newNativeApprovals: 0 };
+}
+async function captureQ5WithFailureDiagnostic({ page, target, filename, reader, item, viewport, diagnostics,
+  capture = captureProblemTiles, diagnose = readQ5RoleDiagnostic }) {
+  try { return await capture(page, target, filename); }
+  catch (originalError) {
+    if (String(originalError?.message || '').split('\n')[0] === Q5_CHILD_FAILURE) {
+      try { diagnostics.push(await diagnose({ reader, item, viewport, target })); }
+      catch (diagnosticError) { diagnostics.push({ schemaVersion: 'archive-m3-e052-q5-problem-role-diagnostic-v1',
+        status: 'DIAGNOSTIC_UNAVAILABLE_ORIGINAL_CAPTURE_FAILURE', originalFailureCode: Q5_CHILD_FAILURE,
+        diagnosticErrorSha256: sha256(String(diagnosticError?.message || '')), captureAccepted: false,
+        screenshotCreated: false, solutionsOpened: false, sourceWrites: 0, newNativeApprovals: 0 }); }
+    }
+    throw originalError;
+  }
+}
+
 // The bounded browser driver below is copied from the independently checked
 // Q22 problem-only driver; only the closed cohort names and bank counts differ.
 const mime = rel => ({ '.js': 'text/javascript', '.json': 'application/json', '.html': 'text/html', '.css': 'text/css', '.svg': 'image/svg+xml',
@@ -207,6 +347,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
   const inputs = preflight(reader, manifest);
   const { refs: fontRefs, weights: fontWeights, licenseRef: fontLicenseRef } = checkedStudentFontRefs(reader);
   const served = new Map(), mirrored = new Map(), studentFontResources = new Map(), failures = [], results = [];
+  const diagnosticFrames = [];
   let activeCase = null;
   fs.mkdirSync(out, { recursive: true });
   const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_SUPPORTED_CHROME', checkoutCommit: reader.commit,
@@ -223,7 +364,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     if (status === 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING') assertCompletedResults(results, inputs, manifest, screenshotArtifacts);
     const proof = { ...proofBase, status, ...(code ? { failureCode: code, activeCase } : {}), expectedLogicalCases: manifest.expectedCases,
       completedLogicalCases: results.length, screenshotArtifactCount: screenshotArtifacts.length, screenshotArtifacts,
-      results, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
+      results, ...(diagnosticFrames.length ? { diagnosticFrames } : {}), servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
       studentFontResources: [...studentFontResources.values()], externalFontResources: [], failures };
     fs.writeFileSync(path.join(out, 'technical-proof.json'), JSON.stringify(proof, null, 2) + '\n');
     return proof;
@@ -334,7 +475,8 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
           const box = target.locator('xpath=ancestor::div[contains(concat(" ",normalize-space(@class)," ")," q-box ")][1]');
           assert.equal(await box.count(), 1, 'UI_UNIQUE_PROBLEM_BOX');
           const screenshotPath = `${item.key}-${viewport.name}.png`;
-          const capture = await captureProblemTiles(page, target, path.join(out, screenshotPath));
+          const capture = await captureQ5WithFailureDiagnostic({ page, target, filename: path.join(out, screenshotPath),
+            reader, item, viewport, diagnostics: diagnosticFrames });
           const geometry = await target.evaluate(image => {
             const box = image.closest('.q-box'), a = image.getBoundingClientRect(), b = box.getBoundingClientRect();
             return { naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
@@ -393,7 +535,7 @@ async function main() {
     newParentApprovals: 0, releaseGate: proof.releaseGate }));
 }
 module.exports = { MANIFEST_PATH, CHECKER_PATH, SHARED_CHECKER_PATH, SHARED_CHECKER_SHA256, IDENTITY_PATH, SCHEMA,
-  EXPECTED_ITEMS_SHA256, EXPECTED_SOURCE_BINDINGS, EXPECTED_SURFACE_REFS, checkedSurface, VIEWPORTS, DRAFT, SEALED, ownSnapshot, validateManifest, requireSealedManifest, checkoutEvidence, loadQuestions, assertBoundQuestion, preflight, assertTechnicalState, assertCompletedResults, checkedOutput };
+  EXPECTED_ITEMS_SHA256, EXPECTED_SOURCE_BINDINGS, EXPECTED_SURFACE_REFS, checkedSurface, VIEWPORTS, DRAFT, SEALED, ownSnapshot, validateManifest, requireSealedManifest, checkoutEvidence, loadQuestions, assertBoundQuestion, preflight, assertTechnicalState, assertCompletedResults, checkedOutput, checkedQ5DiagnosticScope, readQ5RoleDiagnostic, captureQ5WithFailureDiagnostic, measureProblemRoles };
 if (require.main === module) main().catch(error => {
   const message = String(error?.message || ''), code = message.split('\n')[0];
   console.error(JSON.stringify({ schemaVersion: SCHEMA, status: 'FAIL', newParentApprovals: 0,
