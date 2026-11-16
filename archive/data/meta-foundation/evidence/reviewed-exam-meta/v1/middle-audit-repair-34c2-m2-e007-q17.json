@@ -1,0 +1,405 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "middle-audit-repair-34c2-m2-e007-q17",
+  "requestSha256": "4da9b00b5ba60ae011e3fb02ab5f9d11345ae851c3a85b43aef1705ba6ef5d08",
+  "examUid": "26_왕운중_1학기_중간_중2_기출",
+  "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+  "sourceBlobSha1": "5b2b82a0698986eaa464e85de2dbed93a948eada",
+  "sourceRawSha256": "927b41384bf04d7f228700e8e71a240b07bb1bb7323c9586d24da8c68a88d0f4",
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "GPT_ROOT_0A70543C4CE8",
+    "evidenceRefs": [
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E007.accepted-review.json",
+        "sha256": "a16f62a23a5cd5e1f8120cae39cc333b9d852412fe144c13edbabd04f26647bd"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q17-current-key-application.json",
+        "sha256": "c86ed8804f573cd57e96813a4dd73e30576b266f86d8bc6c51206c5df8740e92"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q17-e035-q12-crosswalk-additions.json",
+        "sha256": "8c5a50194672741bc06e1b44ed73f6ff9c6310d1ee95399fe27256cf8814d1eb"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "faf7473ff5e6514535effb7f0afc45b5c51b75f25ffa28820bede4f9f0dfc511"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q17-planned-resolver.json",
+        "sha256": "8f182524148233cdc4802a7e1782e9ddbd21e5006378cff0e12b67527904fd98"
+      },
+      {
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e035-q12-q18-source-and-crosswalk-amendment.json",
+        "sha256": "60ed1e23558580a1d5ad7aed69907e954d5263b3b26cfc939fc3fa95c3af5674"
+      }
+    ]
+  },
+  "rpmPrimaryBindings": [
+    {
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "sourceOrdinal": 17,
+      "recordId": "M2-RPM-136",
+      "crosswalkRef": {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "sha256": "faf7473ff5e6514535effb7f0afc45b5c51b75f25ffa28820bede4f9f0dfc511"
+      },
+      "masterRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      },
+      "curriculum": "2022",
+      "scope": "M2-1",
+      "rpmPath": {
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식",
+        "l3": "부등식의 성질",
+        "l4": "부등식의 성질"
+      },
+      "authorityUse": "RPM_PATH_PROVENANCE_ONLY",
+      "selectsPtTpl": false
+    }
+  ],
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+      "before": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "MIDDLE2",
+        "packVersion": "1.0.6",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "MIDDLE2",
+        "curricula": [
+          "2015"
+        ],
+        "standardCourses": [
+          "중2",
+          "M2-1",
+          "중2-1",
+          "중2 수학"
+        ],
+        "ownedStandardUnitDomains": [
+          "M2-01",
+          "M2-02",
+          "M2-03",
+          "M2-04"
+        ],
+        "activeItemEvidenceCount": 24,
+        "productionJsMutation": false,
+        "promotionReviewDisposition": "NOV04_M2_DEFINITIONS_NOV04-6",
+        "notes": [
+          "Add-only MIDDLE2 pack authorized by the user; no prior MIDDLE2 pack is edited.",
+          "standardCourses carries the actual source course 중2-1 and the exact RPM parent scope alias M2-1.",
+          "Units and subunits are exact ACTIVE tag-master keys from nov04-m2-definitions.mjs."
+        ],
+        "problemTypeCount": 36,
+        "templateCount": 36,
+        "bindingCount": 52,
+        "aliasCount": 0
+      },
+      "after": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "MIDDLE2",
+        "packVersion": "1.0.6",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "MIDDLE2",
+        "curricula": [
+          "2015",
+          "2022"
+        ],
+        "standardCourses": [
+          "중2",
+          "M2-1",
+          "중2-1",
+          "중2 수학"
+        ],
+        "ownedStandardUnitDomains": [
+          "M2-01",
+          "M2-02",
+          "M2-03",
+          "M2-04"
+        ],
+        "activeItemEvidenceCount": 24,
+        "productionJsMutation": false,
+        "promotionReviewDisposition": "NOV04_M2_DEFINITIONS_NOV04-6",
+        "notes": [
+          "Add-only MIDDLE2 pack authorized by the user; no prior MIDDLE2 pack is edited.",
+          "standardCourses carries the actual source course 중2-1 and the exact RPM parent scope alias M2-1.",
+          "Units and subunits are exact ACTIVE tag-master keys from nov04-m2-definitions.mjs."
+        ],
+        "problemTypeCount": 36,
+        "templateCount": 36,
+        "bindingCount": 52,
+        "aliasCount": 0
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E007.accepted-review.json",
+          "sha256": "a16f62a23a5cd5e1f8120cae39cc333b9d852412fe144c13edbabd04f26647bd"
+        },
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q17-current-key-application.json",
+          "sha256": "c86ed8804f573cd57e96813a4dd73e30576b266f86d8bc6c51206c5df8740e92"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "ownerPack": "MIDDLE2",
+        "subUnitLabelKo": "일차부등식",
+        "L1": "일차부등식",
+        "L2": "일차부등식",
+        "status": "ACTIVE",
+        "supportingQuestionUids": [
+          "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e"
+        ],
+        "supportingItemCount": 1
+      },
+      "evidenceRefs": [
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/native/E007.accepted-review.json",
+          "sha256": "a16f62a23a5cd5e1f8120cae39cc333b9d852412fe144c13edbabd04f26647bd"
+        },
+        {
+          "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m2/e007-q17-current-key-application.json",
+          "sha256": "c86ed8804f573cd57e96813a4dd73e30576b266f86d8bc6c51206c5df8740e92"
+        }
+      ]
+    }
+  ],
+  "appliedRecords": [
+    {
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceFingerprint": "357d377f27984d759c5ced9c479b967b738e0a096b1eb4042f73208ae4cb5820",
+      "contentFingerprint": "3c18f378c8e14b7c8480c3c75b629d3c8be8bb28ab9636c4928b42f97012b418",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-02",
+      "standardUnit": "일차부등식",
+      "standardUnitOrder": 2,
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "subUnit": "일차부등식",
+      "conceptClusterKey": "LINEAR_INEQUALITY",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE2@1.0.7:exam-final_qa-v2:middle-audit-repair-34c2-m2-e007-q17",
+      "approvalEvidence": [
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.evidence.final.r1_09.revision2.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "reviewStatus": "reviewed_pass",
+      "curriculum": "2022",
+      "courseKey": "M2-1",
+      "level": "하",
+      "primaryMethod": "부등식동치와음수곱의부등호반전판정",
+      "decisiveStep": "a<b로돌린뒤-3곱하면방향이>로바뀜.",
+      "rpmPrimaryId": "M2-RPM-136",
+      "rpmPrimaryPath": {
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식",
+        "l3": "부등식의 성질",
+        "l4": "부등식의 성질"
+      },
+      "rpmL1": "일차부등식",
+      "rpmL2": "일차부등식",
+      "rpmL3": "부등식의 성질",
+      "rpmL4": "부등식의 성질",
+      "curriculumKey": "2022",
+      "L1": "일차부등식",
+      "L2": "일차부등식",
+      "L3": "부등식 성질 적용의 옳고 그름 판별",
+      "L4": "부등식 변형 성질 검증 절차",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE2",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true
+    }
+  ],
+  "appliedIdentityRecords": [
+    {
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "legacyQKey": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js_17",
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceFingerprint": "357d377f27984d759c5ced9c479b967b738e0a096b1eb4042f73208ae4cb5820"
+    }
+  ],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [
+    {
+      "questionUid": "qid_v1_fc830b51bc963544c673ec6b6560afb6356e63c2fa6eb3b6a65bfaa5baef7d4e",
+      "sourceArchiveFile": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceFingerprint": "357d377f27984d759c5ced9c479b967b738e0a096b1eb4042f73208ae4cb5820",
+      "contentFingerprint": "3c18f378c8e14b7c8480c3c75b629d3c8be8bb28ab9636c4928b42f97012b418",
+      "standardCourse": "중2 수학",
+      "standardUnitKey": "M2-02",
+      "standardUnit": "일차부등식",
+      "standardUnitOrder": 2,
+      "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+      "subUnit": "일차부등식",
+      "conceptClusterKey": "LINEAR_INEQUALITY",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "NORMAL",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "approved_final_qa",
+      "tagStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_final_qa",
+        "subUnit": "approved_final_qa",
+        "concept": "approved_final_qa",
+        "problemType": "approved_final_qa",
+        "template": "approved_final_qa",
+        "difficulty": "approved_final_qa",
+        "crossConcept": "approved_final_qa",
+        "condition": "approved_final_qa",
+        "integrationPattern": "approved_final_qa"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE2@1.0.7:exam-final_qa-v2:middle-audit-repair-34c2-m2-e007-q17",
+      "approvalEvidence": [
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_왕운중_1학기_중간_중2_기출/R1.evidence.final.r1_09.revision2.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/middle-audit-repair-34c2-m2-e007-q17.json"
+      ],
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "reviewStatus": "reviewed_pass",
+      "curriculum": "2022",
+      "courseKey": "M2-1",
+      "level": "하",
+      "primaryMethod": "부등식동치와음수곱의부등호반전판정",
+      "decisiveStep": "a<b로돌린뒤-3곱하면방향이>로바뀜.",
+      "rpmPrimaryId": "M2-RPM-136",
+      "rpmPrimaryPath": {
+        "majorUnit": "일차부등식",
+        "midUnit": "일차부등식",
+        "l3": "부등식의 성질",
+        "l4": "부등식의 성질"
+      },
+      "rpmL1": "일차부등식",
+      "rpmL2": "일차부등식",
+      "rpmL3": "부등식의 성질",
+      "rpmL4": "부등식의 성질",
+      "curriculumKey": "2022",
+      "L1": "일차부등식",
+      "L2": "일차부등식",
+      "L3": "부등식 성질 적용의 옳고 그름 판별",
+      "L4": "부등식 변형 성질 검증 절차",
+      "metadataApprovalType": "FINAL_QA",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE2",
+      "metaFoundationPackVersion": "1.0.7",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m2/1mid/26_왕운중_1학기_중간_중2_기출.js#17",
+      "approvedSourceFingerprint": "357d377f27984d759c5ced9c479b967b738e0a096b1eb4042f73208ae4cb5820",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    }
+  ],
+  "outputDigests": [
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "61de42031b5ed80ff16696a98bd6951e45e11792a5fd1c085ab79df694bc1cfd"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "d938c429e6472a27a79d3a3367eaf33712a083683c5560535a676a469732c5d1"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "sha256": "8cfe1a3426ebb3d3a2e54e82efa30543ab6efb35166715230388ced1145d1bf1"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/registry_index.json",
+      "sha256": "20d9803505b5baa6110c3b838e2241a38a5a01b47dd44544c3a602545d3918cf"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/pack.json",
+      "sha256": "6e13b071cd630dc3fac1188ba6734a2819ab84e5b5e2e274cdda5a143ce987fd"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle2/bindings.json",
+      "sha256": "4caf6a0ac58839cf146ed84b0fa289c45a031b699513d583400a40a8b1eaf7c0"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle2-v1.json",
+      "sha256": "6abeabcfd84d6e4ab91edf0f0626df17976b4e35bc23232d45c6dd317eed1589"
+    }
+  ],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}
