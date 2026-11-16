@@ -1909,3 +1909,11 @@
 ### 완료 체크포인트: 중2 2학기 기말
 - index31–33 미승인 3시험지 70행 추가: PICK69 / NEW_KEY0 / HOLD1, check PASS54 / PT_ONLY1 / OUT_OF_CANDIDATES15. 그림46개 확인, 기존694행과 UID 중복 및 신규 승인 중첩0 확인. C `f49c2066604a5b74810832e960a93fb655d20a02` 원격764행 확인.
 - 25 왕운중 10번은 두 독립 개념 결합으로 단일 PT 결정 불가 HOLD. 왕운중 12번 SVG 점 D가 B로 중복 표기된 점 등은 note에 보존. 승인된 기존 중첩46행은 앞선 감사대로 그대로 보존.
+
+
+### 재승인 후 중3 결과 저장 체크포인트
+- 결과 브랜치: `data/type-judgment-c-20261116`. 이번 저장은 아래 결과표 두 파일에 신규 UID만 추가했다. 기존 중3 결과 행은 수정·삭제하지 않았고, 정본·시험지 JS·main·PR 변경은 없다.
+- `m3-2mid.jsonl`: 기존 117행 보존 + 신규 409행 = **526행 / 36시험지**. PICK 511 / NEW_KEY 13 / HOLD 2. check PASS 275 / PT_ONLY 106 / OUT_OF_CANDIDATES 47 / TOOL_ERROR 98. commit `7c5b3b457d1ce23e5e0149f2f0dcdbf8e45e1b0d`, blob `a14019ac9a36ba075dc55b43587941814bbd3564`.
+- `m3-2final.jsonl`: 기존 585행 보존 + 신규 357행 = **942행 / 43시험지**. PICK 760 / NEW_KEY 181 / HOLD 1. check PASS 225 / PT_ONLY 125 / OUT_OF_CANDIDATES 70 / TOOL_ERROR 522. commit `324208f4cd1e7ddcd514acf1512099000a55df9e`, blob `4c6c3eb79c7df70abd4c4e27191c56ad71486643`.
+- 이번 신규 저장 합계 **766행**. 각 결과표 UID 중복 0이며, 두 파일 모두 원격 readback 내용이 저장 내용과 완전히 일치함을 확인했다. 전체 C 브랜치 누적 수치는 이번에 전수 재집계하지 않았으므로 갱신하지 않는다.
+- 미반영 차이 1건: `qid_v1_d353b1f366c77711379b1e4b45f92049a09089332cb6b37a617b53e4c228ecf1`은 원격에서 HOLD이며 그대로 보존했다. 로컬 보정은 편차의 도수가중합이 -4≠0이라는 원문 모순을 note에 유지하되, 편차제곱의 도수가중평균이라는 풀이 구조로 `PT_M3_DISPERSION_FREQUENCY_TABLE` / `TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE`을 PICK하는 내용이다. 이번 신규행 append에서는 기존행을 바꾸지 않았으므로 해당 보정은 미반영 상태다.
