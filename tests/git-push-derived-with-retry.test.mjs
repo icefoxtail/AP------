@@ -85,7 +85,7 @@ test("3b: unrelated competitor input change -> reset, regenerate on the new base
   assert.throws(() => f.originFile("inbox/r1.txt"), "consumed request must stay deleted");
 });
 
-test("4: persistent contention -> exactly 3 attempts, RETRY_EXHAUSTED, nothing forced away", t => {
+test("4: default persistent contention -> exactly 3 attempts, RETRY_EXHAUSTED, nothing forced away", t => {
   const f = fixture(t);
   const counter = path.join(f.dir, "regen-count.txt");
   const noise = path.join(f.dir, "contend.mjs");
@@ -100,7 +100,7 @@ fs.appendFileSync(path.join(c, "noise.txt"), "n\\n");
 g(c, "add", "-A"); g(c, "commit", "-q", "-m", "competitor noise"); g(c, "push", "-q", "origin", "HEAD:main");\n`);
   f.competitorPush("competitor noise", () => fs.writeFileSync(path.join(f.competitor, "noise.txt"), "first\n"));
   f.derive(f.runner);
-  const r = f.run(["--regenerate", `${q(node)} ${q(noise)}`, "--max-attempts", "9"]); // hard cap is 3
+  const r = f.run(["--regenerate", `${q(node)} ${q(noise)}`]); // omitted option retains the three-attempt default
   assert.equal(r.status, 1, r.stdout + r.stderr);
   assert.match(r.output, /result=RETRY_EXHAUSTED/);
   assert.match(r.output, /attempts=3/);
@@ -329,4 +329,188 @@ test("without --reapply-check an unrelated race still regenerates exactly as bef
   assert.match(r.output, /result=PUSHED/);
   assert.deepEqual(f.events().map(e => e.name), ["regenerate"]);
   assert.doesNotMatch(r.summary, /re-applied/);
+});
+
+function repeatedVerifiedContention(t, { races, failAt = 0, maxAttempts = '6' }) {
+  const f = fixture(t), proof = path.join(f.dir, 'verified-candidates.jsonl');
+  const regenerated = path.join(f.dir, 'regenerate-count.txt'), checked = path.join(f.dir, 'related-check-count.txt');
+  const verifier = path.join(f.tools, 'verify-with-contention.mjs');
+  fs.writeFileSync(verifier, String.raw`import fs from 'node:fs';import path from 'node:path';import {execFileSync} from 'node:child_process';
+const g=(cwd,...args)=>execFileSync('git',args,{cwd,encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
+const base=process.env.DERIVED_BASE_SHA,head=process.env.DERIVED_HEAD_SHA;
+if(g('.', 'rev-parse', head+'^')!==base)throw Error('EXACT_PARENT_REQUIRED');
+const input=g('.', 'show', head+':input.txt'),output=g('.', 'show', head+':out.txt');
+if(output!=='derived:'+input)throw Error('FRESH_DERIVATION_REQUIRED');
+fs.appendFileSync(${JSON.stringify(proof)},JSON.stringify({base,head,input,output})+'\n');
+const n=fs.readFileSync(${JSON.stringify(proof)},'utf8').trim().split('\n').length;
+if(n===${failAt}){console.error('LATE_VERIFICATION_REFUSAL');process.exit(23);}
+if(n<=${races}){const c=${JSON.stringify(f.competitor)};g(c,'pull','-q','--ff-only','origin','main');fs.writeFileSync(path.join(c,'input.txt'),'v'+(n+1)+'\n');g(c,'add','-A');g(c,'commit','-qm','competitor input '+(n+1));g(c,'push','-q','origin','HEAD:main');}
+`);
+  const regen = path.join(f.tools, 'counted-regenerate.mjs');
+  fs.writeFileSync(regen, `import fs from 'node:fs';import {execFileSync} from 'node:child_process';fs.appendFileSync(${JSON.stringify(regenerated)},'x');execFileSync(${JSON.stringify(node)},[${JSON.stringify(path.join(f.tools,'derive.mjs'))},'.']);`);
+  const check = path.join(f.tools, 'related-check.mjs');
+  fs.writeFileSync(check, `import fs from 'node:fs';fs.appendFileSync(${JSON.stringify(checked)},'x');process.exit(1);`);
+  f.derive(f.runner);
+  const result = f.run(['--max-attempts',maxAttempts,'--verify-command',`${q(node)} ${q(verifier)}`,
+    '--regenerate',`${q(node)} ${q(regen)}`,'--reapply-check',`${q(node)} ${q(check)}`]);
+  const rows = fs.readFileSync(proof,'utf8').trim().split('\n').map(JSON.parse);
+  return {...f,result,rows,regenerations:fs.existsSync(regenerated)?fs.readFileSync(regenerated,'utf8').length:0,
+    relatedChecks:fs.existsSync(checked)?fs.readFileSync(checked,'utf8').length:0};
+}
+
+test('explicit six-attempt budget survives four input races and publishes only the fifth fully verified derivation', t => {
+  const f = repeatedVerifiedContention(t, {races:4});
+  assert.equal(f.result.status,0,f.result.stdout+f.result.stderr);
+  assert.match(f.result.output,/result=PUSHED/);assert.match(f.result.output,/attempts=5/);
+  assert.equal(f.regenerations,4);assert.equal(f.relatedChecks,4);
+  assert.deepEqual(f.rows.map(r=>r.input),['v1','v2','v3','v4','v5']);
+  assert.equal(new Set(f.rows.map(r=>r.base)).size,5,'each verification uses its new exact parent');
+  const tip=git(f.origin,'rev-parse','main');assert.equal(tip,f.rows[4].head);
+  assert.match(f.result.output,new RegExp(`registered_sha=${tip}`));
+  assert.equal(f.originFile('out.txt'),'derived:v5');assert.equal(f.originFile('input.txt'),'v5');
+  for(let i=2;i<=5;i++)assert.ok(f.originLog().includes('competitor input '+i),'every competitor commit survives');
+  assert.throws(()=>f.originFile('inbox/r1.txt'),'only the verified derivation consumes the request');
+});
+
+test('explicit oversized attempt option remains capped at six and never reports an unregistered remote tip as success', t => {
+  const f = repeatedVerifiedContention(t, {races:99,maxAttempts:'99'});
+  assert.equal(f.result.status,1,f.result.stdout+f.result.stderr);
+  assert.match(f.result.output,/result=RETRY_EXHAUSTED/);assert.match(f.result.output,/attempts=6/);
+  assert.match(f.result.output,/^registered_sha=$/m);assert.equal(f.rows.length,6);
+  assert.equal(f.regenerations,5);assert.equal(f.relatedChecks,5);
+  assert.equal(f.originLog().filter(s=>s.startsWith('competitor input ')).length,6);
+  assert.ok(!f.originLog().includes('chore: derived [skip ci]'));
+  assert.equal(f.originFile('out.txt'),'derived:v0');assert.equal(f.originFile('input.txt'),'v7');
+  assert.equal(f.originFile('inbox/r1.txt'),'request');
+});
+
+test('extra attempts still stop at a failed fourth candidate verification without pushing or certifying it', t => {
+  const f = repeatedVerifiedContention(t, {races:3,failAt:4});
+  assert.equal(f.result.status,1,f.result.stdout+f.result.stderr);
+  assert.match(f.result.output,/result=VERIFICATION_FAILED/);assert.match(f.result.output,/attempts=4/);
+  assert.match(f.result.output,/^registered_sha=$/m);assert.match(f.result.stderr,/LATE_VERIFICATION_REFUSAL/);
+  assert.equal(f.rows.length,4);assert.equal(f.regenerations,3);assert.equal(f.relatedChecks,3);
+  assert.ok(!f.originLog().includes('chore: derived [skip ci]'));
+  assert.equal(f.originFile('out.txt'),'derived:v0');assert.equal(f.originFile('input.txt'),'v4');
+  assert.equal(f.originFile('inbox/r1.txt'),'request');
+});
+
+// The workflow checkout predates an immutable evidence branch that a later main
+// input references by exact commit/path/digest. Main history does not contain it.
+function lateEvidenceFixture(t, {wrongDigest = false} = {}) {
+  const f = fixture(t), reviewPath = 'review.json';
+  git(f.competitor, 'checkout', '-q', '-b', 'review/late-evidence');
+  const review = '{"schema":"fixture-immutable-review-v1","decision":"accepted"}\n';
+  fs.writeFileSync(path.join(f.competitor, reviewPath), review);
+  git(f.competitor, 'add', reviewPath); git(f.competitor, 'commit', '-qm', 'immutable review after worker checkout');
+  const reviewCommit = git(f.competitor, 'rev-parse', 'HEAD');
+  git(f.competitor, 'push', '-q', 'origin', 'HEAD:refs/heads/review/late-evidence');
+  git(f.competitor, 'checkout', '-q', 'main');
+  const digest = execFileSync(node, ['--input-type=module', '-e',
+    'import {createHash} from "node:crypto";process.stdout.write(createHash("sha256").update(process.argv[1]).digest("hex"));', review], {encoding:'utf8'});
+  const witness = {commit:reviewCommit, path:reviewPath, sha256:wrongDigest ? '0'.repeat(64) : digest};
+  f.competitorPush('main references late immutable review', () => {
+    fs.writeFileSync(path.join(f.competitor, 'input.txt'), 'v2\n');
+    fs.writeFileSync(path.join(f.competitor, 'witness.json'), JSON.stringify(witness) + '\n');
+  });
+  const mainBefore = git(f.origin, 'rev-parse', 'main');
+  assert.notEqual(spawnSync('git', ['merge-base','--is-ancestor',reviewCommit,mainBefore], {cwd:f.origin}).status, 0);
+  assert.notEqual(spawnSync('git', ['cat-file','-e',reviewCommit], {cwd:f.runner}).status, 0,
+    'the runner really lacks the new immutable commit');
+  const observed = path.join(f.dir, 'immutable-observed.jsonl');
+  const check = `import fs from 'node:fs';import {createHash} from 'node:crypto';import {execFileSync} from 'node:child_process';
+const g=(...a)=>execFileSync('git',a,{encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
+const verify=process.argv[2]==='verify',head=verify?process.env.DERIVED_HEAD_SHA:'HEAD';
+if(verify&&g('rev-parse',head+'^')!==process.env.DERIVED_BASE_SHA)throw Error('EXACT_CANDIDATE_PARENT_REQUIRED');
+let w=null;try{w=JSON.parse(g('show',head+':witness.json'));}catch{}
+if(w){let raw;try{raw=execFileSync('git',['show',w.commit+':'+w.path],{stdio:['ignore','pipe','pipe']});}catch{console.error('IMMUTABLE_GIT_INPUT_UNAVAILABLE');process.exit(17);}
+if(createHash('sha256').update(raw).digest('hex')!==w.sha256){console.error('IMMUTABLE_GIT_INPUT_HASH_MISMATCH');process.exit(18);}
+if(JSON.parse(raw).schema!=='fixture-immutable-review-v1')throw Error('IMMUTABLE_SCHEMA_REFUSED');
+if(fs.existsSync('review.json'))throw Error('EVIDENCE_BRANCH_MUST_NOT_BE_CHECKED_OUT');
+fs.appendFileSync(${JSON.stringify(observed)},JSON.stringify({mode:verify?'verify':'regenerate',head,commit:w.commit,sha256:w.sha256})+'\\n');}
+if(verify){if(g('show',head+':out.txt')!=='derived:'+g('show',head+':input.txt'))throw Error('STALE_DERIVED_OUTPUT');}
+else execFileSync(${JSON.stringify(node)},[${JSON.stringify(path.join(f.tools,'derive.mjs'))},'.']);
+`;
+  const script = path.join(f.tools, 'validate-immutable-and-derive.mjs'); fs.writeFileSync(script, check);
+  f.derive(f.runner);
+  const options = ['--regenerate',`${q(node)} ${q(script)} regenerate`,'--verify-command',`${q(node)} ${q(script)} verify`];
+  return {...f, reviewCommit, mainBefore, witness, options, observed};
+}
+
+test('late immutable evidence: default branch-only fetch still refuses a commit absent from main history', t => {
+  const f = lateEvidenceFixture(t), result = f.run(f.options);
+  assert.equal(result.status,1,result.stdout+result.stderr);
+  assert.match(result.output,/result=REGENERATE_FAILED/);
+  assert.match(result.stderr,/IMMUTABLE_GIT_INPUT_UNAVAILABLE/);
+  assert.match(result.output,/^registered_sha=$/m);
+  assert.equal(git(f.origin,'rev-parse','main'),f.mainBefore);
+  assert.notEqual(spawnSync('git',['cat-file','-e',f.reviewCommit],{cwd:f.runner}).status,0);
+  assert.equal(f.originFile('out.txt'),'derived:v0');
+  assert.equal(f.originFile('inbox/r1.txt'),'request');
+  t.diagnostic('default branch-only reproduces IMMUTABLE_GIT_INPUT_UNAVAILABLE; no registered SHA or remote derived write');
+});
+
+test('late immutable evidence: main all-heads opt-in hydrates exact evidence before regenerating and verifying the new candidate', t => {
+  const f = lateEvidenceFixture(t), result = f.run([...f.options,'--race-fetch-scope','all-heads']);
+  assert.equal(result.status,0,result.stdout+result.stderr);
+  assert.match(result.output,/result=PUSHED/);assert.match(result.output,/attempts=2/);
+  const tip=git(f.origin,'rev-parse','main');
+  assert.equal(git(f.origin,'rev-parse',tip+'^'),f.mainBefore);
+  assert.match(result.output,new RegExp(`registered_sha=${tip}`));
+  assert.equal(f.originFile('out.txt'),'derived:v2');
+  assert.deepEqual(JSON.parse(f.originFile('witness.json')),f.witness);
+  assert.equal(git(f.runner,'rev-parse','refs/remotes/origin/review/late-evidence'),f.reviewCommit);
+  assert.equal(git(f.origin,'rev-parse','refs/heads/review/late-evidence'),f.reviewCommit);
+  assert.throws(()=>f.originFile('review.json'),'evidence tree is not merged into main');
+  assert.throws(()=>f.originFile('inbox/r1.txt'),'only the exact verified derivation consumes the request');
+  const checks=fs.readFileSync(f.observed,'utf8').trim().split('\n').map(JSON.parse);
+  assert.deepEqual(checks.map(c=>c.mode),['regenerate','verify']);
+  assert.ok(checks.every(c=>c.commit===f.reviewCommit&&c.sha256===f.witness.sha256));
+  assert.equal(checks[1].head,tip);
+});
+
+test('late immutable evidence: all-heads hydration cannot approve a wrong immutable digest', t => {
+  const f = lateEvidenceFixture(t,{wrongDigest:true}), result=f.run([...f.options,'--race-fetch-scope','all-heads']);
+  assert.equal(result.status,1,result.stdout+result.stderr);
+  assert.match(result.output,/result=REGENERATE_FAILED/);
+  assert.match(result.stderr,/IMMUTABLE_GIT_INPUT_HASH_MISMATCH/);
+  assert.equal(spawnSync('git',['cat-file','-e',f.reviewCommit],{cwd:f.runner}).status,0,'the evidence was hydrated, then its validator refused it');
+  assert.match(result.output,/^registered_sha=$/m);
+  assert.equal(git(f.origin,'rev-parse','main'),f.mainBefore);
+  assert.equal(f.originFile('out.txt'),'derived:v0');
+  assert.equal(f.originFile('inbox/r1.txt'),'request');
+});
+
+test('race fetch scope rejects unknown enum values and arbitrary refspecs before Git mutation', t => {
+  const f=fixture(t), before=git(f.origin,'rev-parse','main');f.derive(f.runner);
+  for(const invalid of ['','all','+refs/*:refs/remotes/origin/*','all-heads\n']){
+    const result=f.run(['--race-fetch-scope',invalid]);
+    assert.equal(result.status,2,result.stdout+result.stderr);
+    assert.match(result.stderr,/race-fetch-scope must be branch or all-heads/);
+    assert.equal(result.output,'');assert.equal(git(f.runner,'rev-parse','HEAD'),before);
+    assert.equal(git(f.origin,'rev-parse','main'),before);
+  }
+});
+
+test('all-heads race opt-in is limited to the main writer origin/main target', t => {
+  const f=fixture(t), before=git(f.origin,'rev-parse','main');f.derive(f.runner);
+  for(const extra of [['--remote','elsewhere'],['--branch','release']]){
+    const result=f.run(['--race-fetch-scope','all-heads',...extra]);
+    assert.equal(result.status,2,result.stdout+result.stderr);
+    assert.match(result.stderr,/all-heads race fetch requires origin\/main/);
+    assert.equal(result.output,'');assert.equal(git(f.runner,'rev-parse','HEAD'),before);
+    assert.equal(git(f.origin,'rev-parse','main'),before);
+  }
+});
+
+test('all-heads race opt-in does not fetch unrelated evidence when main never moves', t => {
+  const f=lateEvidenceFixture(t);
+  // Move the runner to the current input without fetching the separate review branch,
+  // then use the fixture's source-only derivation to exercise the no-race path.
+  git(f.runner,'fetch','--no-tags','origin','+refs/heads/main:refs/remotes/origin/main');
+  git(f.runner,'reset','--hard','refs/remotes/origin/main');f.derive(f.runner);
+  const result=f.run(['--race-fetch-scope','all-heads']);
+  assert.equal(result.status,0,result.stdout+result.stderr);assert.match(result.output,/attempts=1/);
+  assert.notEqual(spawnSync('git',['cat-file','-e',f.reviewCommit],{cwd:f.runner}).status,0);
+  assert.notEqual(spawnSync('git',['rev-parse','--verify','refs/remotes/origin/review/late-evidence'],{cwd:f.runner}).status,0);
 });

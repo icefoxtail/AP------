@@ -489,7 +489,11 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "content": "그림과 같은 직사각형 ABCD에서 삼각형 AEF의 넓이를 구하면? [5점]<br><div style=\"text-align: center; margin: 10px 0;\"><svg width=\"160\" height=\"120\" viewBox=\"0 0 160 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"20\" y=\"20\" width=\"120\" height=\"80\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/><line x1=\"20\" y1=\"20\" x2=\"60\" y2=\"100\" stroke=\"black\" stroke-width=\"1.5\"/><line x1=\"60\" y1=\"100\" x2=\"140\" y2=\"73\" stroke=\"black\" stroke-width=\"1.5\"/><line x1=\"140\" y1=\"73\" x2=\"20\" y2=\"20\" stroke=\"black\" stroke-width=\"1.5\"/><text x=\"10\" y=\"15\" font-size=\"10\" font-family=\"sans-serif\">A</text><text x=\"10\" y=\"105\" font-size=\"10\" font-family=\"sans-serif\">B</text><text x=\"145\" y=\"105\" font-size=\"10\" font-family=\"sans-serif\">C</text><text x=\"145\" y=\"15\" font-size=\"10\" font-family=\"sans-serif\">D</text><text x=\"55\" y=\"115\" font-size=\"10\" font-family=\"sans-serif\">E</text><text x=\"145\" y=\"78\" font-size=\"10\" font-family=\"sans-serif\">F</text><text x=\"65\" y=\"15\" font-size=\"10\" font-family=\"sans-serif\">5a+b</text><text x=\"0\" y=\"60\" font-size=\"10\" font-family=\"sans-serif\">3b</text><text x=\"35\" y=\"115\" font-size=\"10\" font-family=\"sans-serif\">2a</text><text x=\"145\" y=\"92\" font-size=\"10\" font-family=\"sans-serif\">b</text></svg></div>",
+    "solutionImageSize": "full",
+    "solutionImageCaption": "직사각형에서 삼각형 ABE, ECF, FDA의 넓이를 빼면 색칠한 삼각형 AEF의 넓이가 된다.",
+    "solutionImageAlt": "직사각형 ABCD에서 전체 가로는 5a+b, 세로는 3b이다. E는 아랫변 위에 있고 BE는 2a이다. F는 오른쪽 변 위에 있고 FC는 b이다. A와 E와 F를 연결한 삼각형이 표시된다. 삼각형 AEF와 나머지 세 삼각형의 바탕을 달리해 필요한 부분만 채색했다.",
+    "solutionImage": "assets/images/21_왕운중_1학기_중간_중2_기출/q15-solution-visual-v2.svg",
+    "content": "그림과 같은 직사각형 ABCD에서 삼각형 AEF의 넓이를 구하면? [5점]<br><div style=\"text-align: center; margin: 10px 0;\"><img src=\"assets/images/21_왕운중_1학기_중간_중2_기출/q15-problem-visual-v2.svg\" alt=\"직사각형 ABCD에서 전체 가로는 5a+b, 세로는 3b이다. E는 아랫변 위에 있고 BE는 2a이다. F는 오른쪽 변 위에 있고 FC는 b이다. A와 E와 F를 연결한 삼각형이 표시된다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></div>",
     "choices": [
       "$\\frac{5}{2}ab + \\frac{1}{2}b^2$",
       "$\\frac{5}{2}ab + \\frac{3}{2}b^2$",
@@ -505,7 +509,7 @@ window.questionBank = [
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "fullwidth",
     "tags": [
       "객관식",
       "다항식",
