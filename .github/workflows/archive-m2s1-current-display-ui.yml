@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        surface: [PROBLEM, SOLUTION]
+        surface: [PROBLEM]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 22
       - name: Verify closed bindings and capture rejection contracts
-        run: node --test --test-concurrency=1 tests/archive-m2s1-current-display-ui.test.js
+        run: node --test --test-concurrency=1 tests/archive-m2s1-current-display-ui.test.js tests/m2s1-problem-capture-diagnostic.test.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
         with:

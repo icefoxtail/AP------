@@ -10,6 +10,7 @@ const H = require('./check-reviewed-problem-renderer-browser.cjs');
 const { stable, sha256, gitBlob, createGitReader, isStudentFontStylesheet, declaredStudentFonts,
   fontFailureDiagnostic, captureProblemTiles, readScreenshotArtifacts, assertScreenshotInventory } = H;
 const { captureSolutionTiles } = require("./check-m2s1-solution-scroll.cjs");
+const { diagnoseProblemCaptureFailure } = require('./m2s1-problem-capture-diagnostic.cjs');
 
 const CHECKER_PATH='tools/check-m2s1-current-display-browser.cjs';
 const SHARED_CHECKER_PATH='tools/check-reviewed-problem-renderer-browser.cjs';
@@ -109,7 +110,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
   assert.equal(manifest.surface,surface,"UI_SELECTED_SURFACE");
   const inputs = preflight(reader, manifest);
   const served = new Map(), mirrored = new Map(), externalFontResources = new Map(), failures = [], results = [];
-  let activeCase = null;
+  let activeCase = null, captureFailureDiagnostic = null;
   fs.mkdirSync(out, { recursive: true });
   const proofBase = { schemaVersion: SCHEMA, executionOwner: 'GITHUB_ACTIONS_SUPPORTED_CHROME', checkoutCommit: reader.commit,
     manifestRef: reader.ref(MANIFEST_PATH, manifestBytes), checkerRef: reader.ref(CHECKER_PATH), captureHelperRef, solutionCaptureHelperRef: reader.ref(SOLUTION_CHECKER_PATH), ...inputs,
@@ -126,7 +127,7 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
     const proof = { ...proofBase, status, ...(code ? { failureCode: code, activeCase } : {}), expectedLogicalCases: manifest.expectedCases,
       completedLogicalCases: results.length, screenshotArtifactCount: screenshotArtifacts.length, screenshotArtifacts,
       results, servedFiles: [...served.values()], mirroredAssets: [...mirrored.values()],
-      externalFontResources: [...externalFontResources.values()], failures };
+      externalFontResources: [...externalFontResources.values()], failures, ...(captureFailureDiagnostic ? { captureFailureDiagnostic } : {}) };
     fs.writeFileSync(path.join(out, 'technical-proof.json'), JSON.stringify(proof, null, 2) + '\n');
     return proof;
   };
@@ -250,7 +251,20 @@ async function inspectStudentUi({ root, out, expectedCommit, executablePath, git
           const box = target.locator('xpath=ancestor::div[contains(concat(" ",normalize-space(@class)," ")," q-box ")][1]');
           assert.equal(await box.count(), 1, 'UI_UNIQUE_PROBLEM_BOX');
           const screenshotPath = `${item.key}-${viewport.name}.png`;
-          const capture = await (surface==='PROBLEM'?captureProblemTiles:captureSolutionTiles)(page, target, path.join(out, screenshotPath));
+          let capture;
+          try {
+            capture = await (surface==='PROBLEM'?captureProblemTiles:captureSolutionTiles)(page, target, path.join(out, screenshotPath));
+          } catch (error) {
+            if (surface === 'PROBLEM' && item.key === 'E009-Q17' && viewport.name === 'mobile' && error.message === 'UI_COMPLETE_PROBLEM_CHILDREN') {
+              try {
+                captureFailureDiagnostic = await diagnoseProblemCaptureFailure({ root, expectedCommit: reader.commit, item, viewport,
+                  surface: 'PROBLEM', mode: 'exam', failureCode: error.message, target });
+              } catch (diagnosticError) {
+                captureFailureDiagnostic = { status: 'DIAGNOSTIC_FAILED_ORIGINAL_CAPTURE_FAILURE', messageSha256: sha256(diagnosticError.message) };
+              }
+            }
+            throw error;
+          }
           const geometry = await target.evaluate(image => {
             const box = image.closest('.q-box'), a = image.getBoundingClientRect(), b = box.getBoundingClientRect();
             return { naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight,
