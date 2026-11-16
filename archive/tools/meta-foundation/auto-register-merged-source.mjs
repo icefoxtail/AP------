@@ -627,6 +627,7 @@ export async function verifyMergedSource({root=ROOT,reportPath}) {
   if(verified.length)write(root,`${AUTO}/last-verification.json`,{schemaVersion:VERSION,head:report.head,...result});
   return result;
 }
+// Finish module evaluation before Consumer imports this module back through the registrar.
 async function runCli() {
   const a=process.argv.slice(2),get=k=>a.includes(k)?a[a.indexOf(k)+1]:undefined;
   try {
@@ -635,7 +636,4 @@ async function runCli() {
     console.log(JSON.stringify(result,null,2));
   }catch(e){console.error('AUTO_META_FAILED:',e.stack||e);process.exitCode=1;}
 }
-if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
-  // Finish module evaluation before --verify imports the registrar, which imports this module.
-  void runCli();
-}
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) void runCli();
