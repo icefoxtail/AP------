@@ -1,0 +1,4186 @@
+{
+  "schemaVersion": "archive-four-slot-existing-vector-display-ui-v1",
+  "status": "TECHNICAL_PASS_VISUAL_REVIEW_PENDING",
+  "executionOwner": "GITHUB_ACTIONS_SUPPORTED_CHROME",
+  "checkoutCommit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+  "sourceOverlayCount": 0,
+  "domWrites": 0,
+  "cssWrites": 0,
+  "expectedLogicalCases": 32,
+  "completedLogicalCases": 32,
+  "screenshotArtifactCount": 36,
+  "screenshotArtifacts": [
+    {
+      "path": "E009-Q08-desktop-tile-01.png",
+      "sha256": "3b942feaa4de99483e6506e545dcb08eb77eb51d9bc05854c507c295290a984b",
+      "bytes": 71928
+    },
+    {
+      "path": "E009-Q17-desktop-tile-01.png",
+      "sha256": "d073097aad11ded102ba09bc449e3cfcdcef9e6b810b7abaab5c6a1af3119b65",
+      "bytes": 33541
+    },
+    {
+      "path": "E009-Q17-desktop-tile-02.png",
+      "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+      "bytes": 652
+    },
+    {
+      "path": "E010-Q13-desktop-tile-01.png",
+      "sha256": "156c5647e757eb08de72ff3ad2751bda9daffd7827d059633a823753eecd92af",
+      "bytes": 28953
+    },
+    {
+      "path": "E010-Q16-desktop-tile-01.png",
+      "sha256": "c1b8067dbf57fb126cad1dec08987c1a703b5a48354edfab03a8aea5db0ca4c2",
+      "bytes": 19919
+    },
+    {
+      "path": "E010-Q18-desktop-tile-01.png",
+      "sha256": "6e70d2a10d6d5ff0290599b5b41edc73cd63413ba74c2f8a561bb1747f3a19f3",
+      "bytes": 34148
+    },
+    {
+      "path": "E011-Q08-desktop-tile-01.png",
+      "sha256": "c401055a890f958e117b89899c6732fe350da5901031c5f249141946e7db08dd",
+      "bytes": 22795
+    },
+    {
+      "path": "E011-Q13-desktop-tile-01.png",
+      "sha256": "4b7f6313b5a0bc190baafe2c1472af5c6985e0d5e185aeaf5f0acb8f7c128013",
+      "bytes": 31474
+    },
+    {
+      "path": "E011-Q15-desktop-tile-01.png",
+      "sha256": "117ef74916941dc143ea57967aa20562b4452d7dccaddd1f32743266c3a2e559",
+      "bytes": 20658
+    },
+    {
+      "path": "E011-Q17-desktop-tile-01.png",
+      "sha256": "f042a339d6cfaa2f2aa54edc52f2ce694102cb5fc6caeb10d0ad2b73064e8026",
+      "bytes": 22019
+    },
+    {
+      "path": "E011-Q18-desktop-tile-01.png",
+      "sha256": "9fbf9c001913b979d756712b5d4d7bb775f628df86563237bf37759e2e3cee9b",
+      "bytes": 30109
+    },
+    {
+      "path": "E011-Q19-desktop-tile-01.png",
+      "sha256": "f088ad24a9e4da9937322e77e257dfc887dcdeb672770430f6a5e0d3751968ae",
+      "bytes": 21924
+    },
+    {
+      "path": "E011-Q24-desktop-tile-01.png",
+      "sha256": "d5da88a6ccff013cee6872b232509c1db92d6973398fea77f14acb50f589311c",
+      "bytes": 31589
+    },
+    {
+      "path": "E011-Q24-desktop-tile-02.png",
+      "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+      "bytes": 652
+    },
+    {
+      "path": "E013-Q17-desktop-tile-01.png",
+      "sha256": "3d3b95618e4e5c643967fecc591228ee880d2e9aa49d1320664e3122df0d653d",
+      "bytes": 17108
+    },
+    {
+      "path": "E013-Q22-desktop-tile-01.png",
+      "sha256": "2507111cca4c2911b22f545745f2f1b60f529f0b81ee0abc52d7feb70de8a655",
+      "bytes": 26273
+    },
+    {
+      "path": "E013-Q22-desktop-tile-02.png",
+      "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+      "bytes": 652
+    },
+    {
+      "path": "E014-Q23-desktop-tile-01.png",
+      "sha256": "caad7c8968985e739541bdb8535435a383f0fa2e76789c313d28fa96122e6cb8",
+      "bytes": 22473
+    },
+    {
+      "path": "E014-Q23-desktop-tile-02.png",
+      "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+      "bytes": 652
+    },
+    {
+      "path": "E015-Q14-desktop-tile-01.png",
+      "sha256": "f6286bb8ad1279cce9eba4c26bc673bea5eff98f7de5e463621e2f8b036d66fd",
+      "bytes": 24812
+    },
+    {
+      "path": "E009-Q08-mobile-tile-01.png",
+      "sha256": "d0ff60aae85faece615451e3f5363effb74cac1fababb6a80b8fa2cec4ca62d0",
+      "bytes": 60564
+    },
+    {
+      "path": "E009-Q17-mobile-tile-01.png",
+      "sha256": "497b462db94b5702f96ef76389b13a396d214cf2ee035aaec5f092b6f6c637bd",
+      "bytes": 18488
+    },
+    {
+      "path": "E010-Q13-mobile-tile-01.png",
+      "sha256": "544e1fe90b14c4616a4cce363a43767183dfb1e974a8a03b9007d5e8c2fb15c6",
+      "bytes": 26631
+    },
+    {
+      "path": "E010-Q16-mobile-tile-01.png",
+      "sha256": "06ff9852b0db68aec97ddafdbe3423290436c3c9a60ab26416c9147f2ba1c4b8",
+      "bytes": 19367
+    },
+    {
+      "path": "E010-Q18-mobile-tile-01.png",
+      "sha256": "ecb872da008ee6564c915c0a19c79eb2c9b515d6fc481737eec30523f2293005",
+      "bytes": 28753
+    },
+    {
+      "path": "E011-Q08-mobile-tile-01.png",
+      "sha256": "79daa359247570481b62cfc41f7369e57ff886c82a0b3fe3f3cbd31bb78bd97f",
+      "bytes": 21814
+    },
+    {
+      "path": "E011-Q13-mobile-tile-01.png",
+      "sha256": "7bfbc6a05a3fad84c035b5b2becec206d4066a6a504ff8e629437bcafe4b546f",
+      "bytes": 29328
+    },
+    {
+      "path": "E011-Q15-mobile-tile-01.png",
+      "sha256": "575c41c4bc53a611eaaae8c639c875b68ae020c9eefd6d015ddd40636afbeed0",
+      "bytes": 20403
+    },
+    {
+      "path": "E011-Q17-mobile-tile-01.png",
+      "sha256": "710096d668680dd59eb3e9565ec940656246de135a9c20a5967538d53a2aaaff",
+      "bytes": 21246
+    },
+    {
+      "path": "E011-Q18-mobile-tile-01.png",
+      "sha256": "aa23de0b324531c7dfede1991386f8663aeb42015babdaac38695e897721d44a",
+      "bytes": 27220
+    },
+    {
+      "path": "E011-Q19-mobile-tile-01.png",
+      "sha256": "9b24a82b9fcd0c2c9307848182f68921ba863b7ee12460fce2fcc6fc060e7ba9",
+      "bytes": 19004
+    },
+    {
+      "path": "E011-Q24-mobile-tile-01.png",
+      "sha256": "bb2e3ed3e794d179527665c9ba7212e57b048865f59c0d3a5120acf4549e4520",
+      "bytes": 28583
+    },
+    {
+      "path": "E013-Q17-mobile-tile-01.png",
+      "sha256": "fd017268a5da124c262796917d409d84ba4489e00962a9413b9b78164f6e21ac",
+      "bytes": 15011
+    },
+    {
+      "path": "E013-Q22-mobile-tile-01.png",
+      "sha256": "6b4e708dab82467860680ecb6bb4b9849112d6e7f75d6717bdb042a9e19547ed",
+      "bytes": 18892
+    },
+    {
+      "path": "E014-Q23-mobile-tile-01.png",
+      "sha256": "53e4f106d1b568bb3f343a94aa079abf6c4031b5e15841e2d9790affd83ecfc2",
+      "bytes": 16834
+    },
+    {
+      "path": "E015-Q14-mobile-tile-01.png",
+      "sha256": "f3dbd57965944f039cc876eb8de3ce560b0fafcc29ea82d6f0e302f7ecc37e51",
+      "bytes": 22775
+    }
+  ],
+  "results": [
+    {
+      "questionUid": "qid_v1_82414dd0e9204aaa0641cd5200fc982a77dd4b54fc589be1d9efb279a5700061",
+      "sourceOrdinal": 8,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "a5addb0951dcd0892cde2e21e3bc23b080c9a5bc",
+        "sha256": "10aee6984c88c649e6df3571d9c16bccd812076643b98a75270c1a67d1692737",
+        "bytes": 69826
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_연향중_1학기_기말_중2_기출/q8-problem-visual-v2.svg",
+          "gitBlobSha1": "db08d3bd0fe553d5f3972b41e5e4051321873277",
+          "sha256": "b9bf84857815ea68f2fbc865600c353feb4b8984e95b2098dd2c228023b69006",
+          "bytes": 2896
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "ddecc6b8ff119c1b79762ce6fcfc354555c81902054c51d5101df3688dc4ba46"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 350.34375,
+          "y": 2475.9375,
+          "width": 664.3125,
+          "height": 663.609375
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 2467.9375,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 3,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            663.609375
+          ],
+          "coveredInterval": [
+            0,
+            663.609375
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              663.609375
+            ],
+            "filename": "E009-Q08-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 123.9375,
+              "width": 664.3125,
+              "height": 663.609375
+            },
+            "scroll": {
+              "x": 0,
+              "y": 2352
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 3698,
+            "foreignContentHits": 0,
+            "domSha256": "392bd26edc2c7b0bca8c07ab328cd852ca8e0f1298f9f4a5c3b1c2b6de19aca9"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 2352
+        },
+        "scrollOperations": 1,
+        "domSha256": "392bd26edc2c7b0bca8c07ab328cd852ca8e0f1298f9f4a5c3b1c2b6de19aca9",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E009-Q08-desktop-tile-01.png",
+          "sha256": "3b942feaa4de99483e6506e545dcb08eb77eb51d9bc05854c507c295290a984b",
+          "bytes": 71928
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b31a67c9954946ec253d475f53ca1674fe691087548f3e36d8b024108b8edc14",
+      "sourceOrdinal": 17,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "a5addb0951dcd0892cde2e21e3bc23b080c9a5bc",
+        "sha256": "10aee6984c88c649e6df3571d9c16bccd812076643b98a75270c1a67d1692737",
+        "bytes": 69826
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_연향중_1학기_기말_중2_기출/q17-problem-visual-v2.svg",
+          "gitBlobSha1": "8202b078ae3402f029dfdf47b61ee01b8953fcc4",
+          "sha256": "2b2fa52d85f3f0b160d7f43c35440ed7a5b1fb03296860c50031f2ada3601700",
+          "bytes": 8252
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "96a6d0167264a71ce339d51d2cbb066085b6d7dfa2810103ff9bc842f6fa006e"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 2,
+        "content": {
+          "x": 350.34375,
+          "y": 5903.484375,
+          "width": 664.3125,
+          "height": 978.03125
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 5895.484375,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 3,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            978.03125
+          ],
+          "coveredInterval": [
+            0,
+            978.03125
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              868
+            ],
+            "filename": "E009-Q17-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 124.484375,
+              "width": 664.3125,
+              "height": 868
+            },
+            "scroll": {
+              "x": 0,
+              "y": 5779
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 4816,
+            "foreignContentHits": 0,
+            "domSha256": "7392558d2bf2fd15b0654728f1cecce9d114f5e66e306fa690e213ccd1afa352"
+          },
+          {
+            "tileIndex": 2,
+            "relativeInterval": [
+              836,
+              978.03125
+            ],
+            "filename": "E009-Q17-desktop-tile-02.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 124.484375,
+              "width": 664.3125,
+              "height": 142.03125
+            },
+            "scroll": {
+              "x": 0,
+              "y": 6615
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 860,
+            "foreignContentHits": 0,
+            "domSha256": "7392558d2bf2fd15b0654728f1cecce9d114f5e66e306fa690e213ccd1afa352"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 2352
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 6615
+        },
+        "scrollOperations": 2,
+        "domSha256": "7392558d2bf2fd15b0654728f1cecce9d114f5e66e306fa690e213ccd1afa352",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E009-Q17-desktop-tile-01.png",
+          "sha256": "d073097aad11ded102ba09bc449e3cfcdcef9e6b810b7abaab5c6a1af3119b65",
+          "bytes": 33541
+        },
+        {
+          "tileIndex": 2,
+          "path": "E009-Q17-desktop-tile-02.png",
+          "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+          "bytes": 652
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_594a94974ad128fef949b5ad8e5b88adf7658172b79e76e4cbabaa9f40b8f101",
+      "sourceOrdinal": 13,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "1379be73f9f2e980d910b6e045317612e570f79e",
+        "sha256": "a884be45f512f955f165b4d0e1c577e276d4fddc5e047ed23068dea02be429ce",
+        "bytes": 98858
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕운중_1학기_기말_중2_수학/q13-problem-visual-v2.svg",
+          "gitBlobSha1": "6b233140aa1c7a622fd0d43c841ab0396cc11f9b",
+          "sha256": "7cf1d408ad0e5c5c9b10b53d2fcec1096dffd893986bae34aeac05d6f134f67b",
+          "bytes": 3214
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "2a67d2a114ad9981aecb9303cece8a35dfd5c4818a12b9238016807951e6342d"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 350.34375,
+          "y": 3618.453125,
+          "width": 664.3125,
+          "height": 436.375
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 3610.453125,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            436.375
+          ],
+          "coveredInterval": [
+            0,
+            436.375
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              436.375
+            ],
+            "filename": "E010-Q13-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 124.453125,
+              "width": 664.3125,
+              "height": 436.375
+            },
+            "scroll": {
+              "x": 0,
+              "y": 3494
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 2494,
+            "foreignContentHits": 0,
+            "domSha256": "b7036333a197c1b52d6e2315bde629c517f234f09d59404cd0227ae707ceec23"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 3494
+        },
+        "scrollOperations": 1,
+        "domSha256": "b7036333a197c1b52d6e2315bde629c517f234f09d59404cd0227ae707ceec23",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E010-Q13-desktop-tile-01.png",
+          "sha256": "156c5647e757eb08de72ff3ad2751bda9daffd7827d059633a823753eecd92af",
+          "bytes": 28953
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fe80164b56537676f9a9487317f70fbd0e2396ee8ec1f16f4fb8b75b288af878",
+      "sourceOrdinal": 16,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "1379be73f9f2e980d910b6e045317612e570f79e",
+        "sha256": "a884be45f512f955f165b4d0e1c577e276d4fddc5e047ed23068dea02be429ce",
+        "bytes": 98858
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕운중_1학기_기말_중2_수학/q16-problem-visual-v2.svg",
+          "gitBlobSha1": "79569b90fa8d2a78c97305cfb3157739c68038a0",
+          "sha256": "9ba16173e3b0f9ccd9f442a56251ac88866d846141cd33546f4b5e3766ea9a80",
+          "bytes": 7516
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "78c96c5dd0946c6da01ae0c3c22753086f4d08603b70f339d989c322e736e95d"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 350.34375,
+          "y": 5903.484375,
+          "width": 664.3125,
+          "height": 414.640625
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 5895.484375,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            414.640625
+          ],
+          "coveredInterval": [
+            0,
+            414.640625
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              414.640625
+            ],
+            "filename": "E010-Q16-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 124.484375,
+              "width": 664.3125,
+              "height": 414.640625
+            },
+            "scroll": {
+              "x": 0,
+              "y": 5779
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 2322,
+            "foreignContentHits": 0,
+            "domSha256": "19558a49083e646df2ef3c5e33717f6507c0e25f809392be163ad6730ef616de"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 3494
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 5779
+        },
+        "scrollOperations": 1,
+        "domSha256": "19558a49083e646df2ef3c5e33717f6507c0e25f809392be163ad6730ef616de",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E010-Q16-desktop-tile-01.png",
+          "sha256": "c1b8067dbf57fb126cad1dec08987c1a703b5a48354edfab03a8aea5db0ca4c2",
+          "bytes": 19919
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7eaf50ef21da3797bc76bcc61ce0aa541b63deb6cca31c3cb09757d55140cbf3",
+      "sourceOrdinal": 18,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "1379be73f9f2e980d910b6e045317612e570f79e",
+        "sha256": "a884be45f512f955f165b4d0e1c577e276d4fddc5e047ed23068dea02be429ce",
+        "bytes": 98858
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕운중_1학기_기말_중2_수학/q18-problem-visual-v2.svg",
+          "gitBlobSha1": "c78f4044b274e680607f7f5ca20f74c890d37b8c",
+          "sha256": "afcacbe35da44d1a764dcdb63e94ca9bd571cd4104e981942a9992f5a9f5e36f",
+          "bytes": 2032
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "78c96c5dd0946c6da01ae0c3c22753086f4d08603b70f339d989c322e736e95d"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 350.34375,
+          "y": 8188.515625,
+          "width": 664.3125,
+          "height": 435.25
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 8180.515625,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            435.25
+          ],
+          "coveredInterval": [
+            0,
+            435.25
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              435.25
+            ],
+            "filename": "E010-Q18-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 123.515625,
+              "width": 664.3125,
+              "height": 435.25
+            },
+            "scroll": {
+              "x": 0,
+              "y": 8065
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 2494,
+            "foreignContentHits": 0,
+            "domSha256": "dfb64051f5ce4628780f98f4fe29f58c652d8ef8c17be626d5fbcee8fd4f092b"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 5779
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 8065
+        },
+        "scrollOperations": 1,
+        "domSha256": "dfb64051f5ce4628780f98f4fe29f58c652d8ef8c17be626d5fbcee8fd4f092b",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E010-Q18-desktop-tile-01.png",
+          "sha256": "6e70d2a10d6d5ff0290599b5b41edc73cd63413ba74c2f8a561bb1747f3a19f3",
+          "bytes": 34148
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9bcc3d0e4498fdf3db35889ed339791b2d3942bc82f9139bc7ad26da9da91a2b",
+      "sourceOrdinal": 8,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q8-problem-visual-v2.svg",
+          "gitBlobSha1": "616fc3e73734f4f291b83501175de188f8d97fbe",
+          "sha256": "f9f2e49a8a097925384dcc0b182e79203d0c74f12cbac642ed6b4e6f009735b4",
+          "bytes": 2113
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "0fb29713bb097333c9b857d2f29d29b110dbb458483643aa9074b215b36c79c6"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 350.34375,
+          "y": 2475.9375,
+          "width": 664.3125,
+          "height": 356.375
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 2467.9375,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            356.375
+          ],
+          "coveredInterval": [
+            0,
+            356.375
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              356.375
+            ],
+            "filename": "E011-Q08-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 123.9375,
+              "width": 664.3125,
+              "height": 356.375
+            },
+            "scroll": {
+              "x": 0,
+              "y": 2352
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 2064,
+            "foreignContentHits": 0,
+            "domSha256": "3a8bc52b751920958e85c2541c0648b4b47e109df38c9d8b039ec9cb7bdaa1c4"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 2352
+        },
+        "scrollOperations": 1,
+        "domSha256": "3a8bc52b751920958e85c2541c0648b4b47e109df38c9d8b039ec9cb7bdaa1c4",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q08-desktop-tile-01.png",
+          "sha256": "c401055a890f958e117b89899c6732fe350da5901031c5f249141946e7db08dd",
+          "bytes": 22795
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_63f27101865078add0471dae1c4ad21dda312cf70a21ba9fa78288e8b7fbb824",
+      "sourceOrdinal": 13,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q13-problem-visual-v2.svg",
+          "gitBlobSha1": "c8d610f0daf142dc5c1b6acd20cf57d8a7c5d829",
+          "sha256": "5e29002ed0c687d4d30c2c313bab51e77d75f68adb48b3eed411a6b7ce30eb8b",
+          "bytes": 3817
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "2c391f6c7ff549a0d927ed75782d83e8e40dbfd43f5893903578dce437674063"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 350.34375,
+          "y": 4760.96875,
+          "width": 664.3125,
+          "height": 452.453125
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 4752.96875,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            452.453125
+          ],
+          "coveredInterval": [
+            0,
+            452.453125
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              452.453125
+            ],
+            "filename": "E011-Q13-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 123.96875,
+              "width": 664.3125,
+              "height": 452.453125
+            },
+            "scroll": {
+              "x": 0,
+              "y": 4637
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 2580,
+            "foreignContentHits": 0,
+            "domSha256": "fc383305731bbbd3c874455dcb8f3e26be900ddd4486208095cea59adf70fcc8"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 2352
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 4637
+        },
+        "scrollOperations": 1,
+        "domSha256": "fc383305731bbbd3c874455dcb8f3e26be900ddd4486208095cea59adf70fcc8",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q13-desktop-tile-01.png",
+          "sha256": "4b7f6313b5a0bc190baafe2c1472af5c6985e0d5e185aeaf5f0acb8f7c128013",
+          "bytes": 31474
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_22d96508247774bd58f34a8cb0b6bb7dc8bde20166a7b37438b95ae325d5af4e",
+      "sourceOrdinal": 15,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q15-problem-visual-v2.svg",
+          "gitBlobSha1": "759e72a8e0c7705c87e1dd247a1a9bcbd72f3d1a",
+          "sha256": "16146fd5b1637eb8ed05fc60af711c0bc5d15f668ccf97dab01d203498881496",
+          "bytes": 2577
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "2c391f6c7ff549a0d927ed75782d83e8e40dbfd43f5893903578dce437674063"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 350.34375,
+          "y": 7046,
+          "width": 664.3125,
+          "height": 428.078125
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 7038,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            428.078125
+          ],
+          "coveredInterval": [
+            0,
+            428.078125
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              428.078125
+            ],
+            "filename": "E011-Q15-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 124,
+              "width": 664.3125,
+              "height": 428.078125
+            },
+            "scroll": {
+              "x": 0,
+              "y": 6922
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 2408,
+            "foreignContentHits": 0,
+            "domSha256": "4924ba142d95c9753bd563fe185eba573abbb3e7f778a5b2cbf46c65dcffb578"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 4637
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 6922
+        },
+        "scrollOperations": 1,
+        "domSha256": "4924ba142d95c9753bd563fe185eba573abbb3e7f778a5b2cbf46c65dcffb578",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q15-desktop-tile-01.png",
+          "sha256": "117ef74916941dc143ea57967aa20562b4452d7dccaddd1f32743266c3a2e559",
+          "bytes": 20658
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_85751b4b83c5310d0471e18a6c32cc3573999d0c87acff8b5e0a4a2954f2fb20",
+      "sourceOrdinal": 17,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q17-problem-visual-v2.svg",
+          "gitBlobSha1": "ae13544d64c841099ac6aab552e483f152ce7f38",
+          "sha256": "e6431d6f0bb1c54a13d70debec2b023aa3261bd08f9e4db3fef7f40f3980b0f0",
+          "bytes": 4372
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "2c391f6c7ff549a0d927ed75782d83e8e40dbfd43f5893903578dce437674063"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 350.34375,
+          "y": 9331.03125,
+          "width": 664.3125,
+          "height": 436.46875
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 9323.03125,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            436.46875
+          ],
+          "coveredInterval": [
+            0,
+            436.46875
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              436.46875
+            ],
+            "filename": "E011-Q17-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 124.03125,
+              "width": 664.3125,
+              "height": 436.46875
+            },
+            "scroll": {
+              "x": 0,
+              "y": 9207
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 2494,
+            "foreignContentHits": 0,
+            "domSha256": "9f34cd874da6a962317a016b4db09a2f05387bc91e0a1fac06019ff6eb7c4c17"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 6922
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 9207
+        },
+        "scrollOperations": 1,
+        "domSha256": "9f34cd874da6a962317a016b4db09a2f05387bc91e0a1fac06019ff6eb7c4c17",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q17-desktop-tile-01.png",
+          "sha256": "f042a339d6cfaa2f2aa54edc52f2ce694102cb5fc6caeb10d0ad2b73064e8026",
+          "bytes": 22019
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_de381bb5aafc560b21544d8b8678371e14a69c6c2476825072d3c170ec659366",
+      "sourceOrdinal": 18,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q18-problem-visual-v2.svg",
+          "gitBlobSha1": "e9dafc6d2e075e28ca39be731f4ad31b24346a28",
+          "sha256": "04fadef39194803e55b3e1beab246f0d498aa9c08a786970e491dd88189dfe75",
+          "bytes": 3559
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "2c391f6c7ff549a0d927ed75782d83e8e40dbfd43f5893903578dce437674063"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 350.34375,
+          "y": 10473.546875,
+          "width": 664.3125,
+          "height": 356.46875
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 10465.546875,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            356.46875
+          ],
+          "coveredInterval": [
+            0,
+            356.46875
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              356.46875
+            ],
+            "filename": "E011-Q18-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 123.546875,
+              "width": 664.3125,
+              "height": 356.46875
+            },
+            "scroll": {
+              "x": 0,
+              "y": 10350
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 2064,
+            "foreignContentHits": 0,
+            "domSha256": "bb48b56d95bba185edea3db99bac9f050ebf3b8944469e4a17bfe65a4d5cc752"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 9207
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 10350
+        },
+        "scrollOperations": 1,
+        "domSha256": "bb48b56d95bba185edea3db99bac9f050ebf3b8944469e4a17bfe65a4d5cc752",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q18-desktop-tile-01.png",
+          "sha256": "9fbf9c001913b979d756712b5d4d7bb775f628df86563237bf37759e2e3cee9b",
+          "bytes": 30109
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7438796316d2234cbfa6d523736689dcb81fcff9ddea0cb0b80f29d156093c16",
+      "sourceOrdinal": 19,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q19-problem-visual-v2.svg",
+          "gitBlobSha1": "ea438039a82ba06911ff7a9707491f790e934791",
+          "sha256": "b81e523e170b7f516f9e0c9af5a1a7a74fbc3c865da5a9f03e2fc6065660fd30",
+          "bytes": 1640
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "2c391f6c7ff549a0d927ed75782d83e8e40dbfd43f5893903578dce437674063"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 350.34375,
+          "y": 11616.0625,
+          "width": 664.3125,
+          "height": 555.8125
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 11608.0625,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            555.8125
+          ],
+          "coveredInterval": [
+            0,
+            555.8125
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              555.8125
+            ],
+            "filename": "E011-Q19-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 124.0625,
+              "width": 664.3125,
+              "height": 555.8125
+            },
+            "scroll": {
+              "x": 0,
+              "y": 11492
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 3096,
+            "foreignContentHits": 0,
+            "domSha256": "7dd42cfdac38e612d6eceb13b40d1e98cd88ed15ad53ecaa2ed9f88e630eb1a5"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 10350
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 11492
+        },
+        "scrollOperations": 1,
+        "domSha256": "7dd42cfdac38e612d6eceb13b40d1e98cd88ed15ad53ecaa2ed9f88e630eb1a5",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q19-desktop-tile-01.png",
+          "sha256": "f088ad24a9e4da9937322e77e257dfc887dcdeb672770430f6a5e0d3751968ae",
+          "bytes": 21924
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_76a3115ebc485573c1eed65c10fb22b2e3e669a9d8d50aa125fa16c1fe1bb7fc",
+      "sourceOrdinal": 24,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q24-problem-visual-v2.svg",
+          "gitBlobSha1": "6cc2896038dcad0dbce465296a24d4c8e0090b51",
+          "sha256": "eac6078dcfe51c3c66451d3ca0baa0e653a79d68034c8572b08889e023d35a34",
+          "bytes": 7086
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "2c391f6c7ff549a0d927ed75782d83e8e40dbfd43f5893903578dce437674063"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 2,
+        "content": {
+          "x": 350.34375,
+          "y": 13901.09375,
+          "width": 664.3125,
+          "height": 978.03125
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 13893.09375,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            978.03125
+          ],
+          "coveredInterval": [
+            0,
+            978.03125
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              868
+            ],
+            "filename": "E011-Q24-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 124.09375,
+              "width": 664.3125,
+              "height": 868
+            },
+            "scroll": {
+              "x": 0,
+              "y": 13777
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 4816,
+            "foreignContentHits": 0,
+            "domSha256": "450aa08ad986e4aa1615df43660208b6744e20880cf7a64e3495db030e2735d0"
+          },
+          {
+            "tileIndex": 2,
+            "relativeInterval": [
+              836,
+              978.03125
+            ],
+            "filename": "E011-Q24-desktop-tile-02.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 754.09375,
+              "width": 664.3125,
+              "height": 142.03125
+            },
+            "scroll": {
+              "x": 0,
+              "y": 13983
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 860,
+            "foreignContentHits": 0,
+            "domSha256": "450aa08ad986e4aa1615df43660208b6744e20880cf7a64e3495db030e2735d0"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 11492
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 13983
+        },
+        "scrollOperations": 2,
+        "domSha256": "450aa08ad986e4aa1615df43660208b6744e20880cf7a64e3495db030e2735d0",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q24-desktop-tile-01.png",
+          "sha256": "d5da88a6ccff013cee6872b232509c1db92d6973398fea77f14acb50f589311c",
+          "bytes": 31589
+        },
+        {
+          "tileIndex": 2,
+          "path": "E011-Q24-desktop-tile-02.png",
+          "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+          "bytes": 652
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_198def5b93fe80a67337bbcb2bfed0b5992999d93d8944a66e4b92284c33bfb0",
+      "sourceOrdinal": 17,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+        "gitBlobSha1": "fe6b625aa8c36a994e7fe026c6c9d6eab827e889",
+        "sha256": "4ccae3e25d173235d090952676063728b2fe100e4bd096632a4a48273f72bdfa",
+        "bytes": 71792
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_삼산중_1학기_중간_중2_수학/q17-problem-visual-v2.svg",
+          "gitBlobSha1": "93024d8dae3077768b74625871c56a762946279e",
+          "sha256": "9cde3556c7f247deca8b54abae627b813ca5bda4db5220641417ff0fb46c5236",
+          "bytes": 3344
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "85bf397845da09369eccd74c383e23b6778e5c06884b502d3ac4cce15cf549bc"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 350.34375,
+          "y": 4760.96875,
+          "width": 664.3125,
+          "height": 339.578125
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 4752.96875,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 3,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            339.578125
+          ],
+          "coveredInterval": [
+            0,
+            339.578125
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              339.578125
+            ],
+            "filename": "E013-Q17-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 123.96875,
+              "width": 664.3125,
+              "height": 339.578125
+            },
+            "scroll": {
+              "x": 0,
+              "y": 4637
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1978,
+            "foreignContentHits": 0,
+            "domSha256": "8a47f4128a3399282715456546846392be6e70a8f68b71dd3cd4561f3e6f1bb3"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 4637
+        },
+        "scrollOperations": 1,
+        "domSha256": "8a47f4128a3399282715456546846392be6e70a8f68b71dd3cd4561f3e6f1bb3",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E013-Q17-desktop-tile-01.png",
+          "sha256": "3d3b95618e4e5c643967fecc591228ee880d2e9aa49d1320664e3122df0d653d",
+          "bytes": 17108
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a661c28f67a02a5be2c7a0c941ee1f03dd35afac90e4237fad71c2447b91b53b",
+      "sourceOrdinal": 22,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+        "gitBlobSha1": "fe6b625aa8c36a994e7fe026c6c9d6eab827e889",
+        "sha256": "4ccae3e25d173235d090952676063728b2fe100e4bd096632a4a48273f72bdfa",
+        "bytes": 71792
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_삼산중_1학기_중간_중2_수학/q22-problem-visual-v2.svg",
+          "gitBlobSha1": "967928dcbbd5496d68ae6e3e8b65c7898dad4944",
+          "sha256": "6c7fb7552c5943b105679f4472b2b7c79382659d728a50b127ef39b1aa7b9576",
+          "bytes": 7049
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "9de5c2342971b5b75b7547fb65b5b4bacfea706fac1809faee916436d77942c8"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 2,
+        "content": {
+          "x": 350.34375,
+          "y": 9331.03125,
+          "width": 664.3125,
+          "height": 978.03125
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 9323.03125,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 3,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            978.03125
+          ],
+          "coveredInterval": [
+            0,
+            978.03125
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              868
+            ],
+            "filename": "E013-Q22-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 124.03125,
+              "width": 664.3125,
+              "height": 868
+            },
+            "scroll": {
+              "x": 0,
+              "y": 9207
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 4816,
+            "foreignContentHits": 0,
+            "domSha256": "000969d9684141b28bfc0cac5a50d389515a44f46091fd0bd6b5112dc69050b1"
+          },
+          {
+            "tileIndex": 2,
+            "relativeInterval": [
+              836,
+              978.03125
+            ],
+            "filename": "E013-Q22-desktop-tile-02.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 124.03125,
+              "width": 664.3125,
+              "height": 142.03125
+            },
+            "scroll": {
+              "x": 0,
+              "y": 10043
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 860,
+            "foreignContentHits": 0,
+            "domSha256": "000969d9684141b28bfc0cac5a50d389515a44f46091fd0bd6b5112dc69050b1"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 6922
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 10043
+        },
+        "scrollOperations": 2,
+        "domSha256": "000969d9684141b28bfc0cac5a50d389515a44f46091fd0bd6b5112dc69050b1",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E013-Q22-desktop-tile-01.png",
+          "sha256": "2507111cca4c2911b22f545745f2f1b60f529f0b81ee0abc52d7feb70de8a655",
+          "bytes": 26273
+        },
+        {
+          "tileIndex": 2,
+          "path": "E013-Q22-desktop-tile-02.png",
+          "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+          "bytes": 652
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_52d2c67faafaa51afb1b1c7d7996d4904789dbf10842d474b0230689c7cfd8ad",
+      "sourceOrdinal": 23,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "e39b48115fa8d81469f020d66cc3d935b12c93e8",
+        "sha256": "aef5866ce6f89be4008c80ac29535c961b44c2d5ef15ed74ddf9f1d0ddf70261",
+        "bytes": 37885
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_연향중_1학기_중간_중2_기출/q23-problem-visual-v2.svg",
+          "gitBlobSha1": "505b1c6db4f2989ba46bf5699d3cd506c2b6903c",
+          "sha256": "518d50a8351fbec21800aafc44736d65863d8d1942d73187032893a9bfbcbf5d",
+          "bytes": 3071
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "04ea825b1e75510f802cfbcb369ae0f383648c035f7b8633db8245835c18cedc"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 2,
+        "content": {
+          "x": 350.34375,
+          "y": 7046,
+          "width": 664.3125,
+          "height": 978.03125
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 7038,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            978.03125
+          ],
+          "coveredInterval": [
+            0,
+            978.03125
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              868
+            ],
+            "filename": "E014-Q23-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 124,
+              "width": 664.3125,
+              "height": 868
+            },
+            "scroll": {
+              "x": 0,
+              "y": 6922
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 4816,
+            "foreignContentHits": 0,
+            "domSha256": "8aa2da32e35792392164d672cb28db9f3990cc3e9e5f6b3ab6420af9d25e6874"
+          },
+          {
+            "tileIndex": 2,
+            "relativeInterval": [
+              836,
+              978.03125
+            ],
+            "filename": "E014-Q23-desktop-tile-02.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 754,
+              "width": 664.3125,
+              "height": 142.03125
+            },
+            "scroll": {
+              "x": 0,
+              "y": 7128
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 860,
+            "foreignContentHits": 0,
+            "domSha256": "8aa2da32e35792392164d672cb28db9f3990cc3e9e5f6b3ab6420af9d25e6874"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 7128
+        },
+        "scrollOperations": 2,
+        "domSha256": "8aa2da32e35792392164d672cb28db9f3990cc3e9e5f6b3ab6420af9d25e6874",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E014-Q23-desktop-tile-01.png",
+          "sha256": "caad7c8968985e739541bdb8535435a383f0fa2e76789c313d28fa96122e6cb8",
+          "bytes": 22473
+        },
+        {
+          "tileIndex": 2,
+          "path": "E014-Q23-desktop-tile-02.png",
+          "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+          "bytes": 652
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_241843642e7596d75f5f99dad036ba61b4ecfa4e59147d8337bfa3312bdbd5c7",
+      "sourceOrdinal": 14,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "d7c4616ed29b0b4617da37952c21f87bfe179834",
+        "sha256": "566712db3e1b794cf57e1264e1fb2b2ae004a80d5ae93ac982bd9d9c2faca60b",
+        "bytes": 38090
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕운중_1학기_중간_중2_기출/q14-problem-visual-v2.svg",
+          "gitBlobSha1": "5556665181c274db542f35547d8278dd3f202cbd",
+          "sha256": "cebbca9668a9e5f5baebc0a3252c2d1bbfe338b1556e72e673b6a3714f033d19",
+          "bytes": 1526
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "62c5fe038362c650f76828253be464a326148439dfd6861f8be99d33e76b9313"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 350.34375,
+          "y": 4760.96875,
+          "width": 664.3125,
+          "height": 415.859375
+        },
+        "question": {
+          "x": 350.34375,
+          "y": 4752.96875,
+          "width": 664.3125,
+          "height": 994.03125
+        },
+        "viewport": {
+          "width": 1365,
+          "height": 1000
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            415.859375
+          ],
+          "coveredInterval": [
+            0,
+            415.859375
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              415.859375
+            ],
+            "filename": "E015-Q14-desktop-tile-01.png",
+            "clip": {
+              "x": 350.34375,
+              "y": 123.96875,
+              "width": 664.3125,
+              "height": 415.859375
+            },
+            "scroll": {
+              "x": 0,
+              "y": 4637
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 2322,
+            "foreignContentHits": 0,
+            "domSha256": "a4ef4577e2319e1eb6182616de2d0f6cb5bca8e26f0a0782b4e9694841a35361"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 4637
+        },
+        "scrollOperations": 1,
+        "domSha256": "a4ef4577e2319e1eb6182616de2d0f6cb5bca8e26f0a0782b4e9694841a35361",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E015-Q14-desktop-tile-01.png",
+          "sha256": "f6286bb8ad1279cce9eba4c26bc673bea5eff98f7de5e463621e2f8b036d66fd",
+          "bytes": 24812
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_82414dd0e9204aaa0641cd5200fc982a77dd4b54fc589be1d9efb279a5700061",
+      "sourceOrdinal": 8,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "a5addb0951dcd0892cde2e21e3bc23b080c9a5bc",
+        "sha256": "10aee6984c88c649e6df3571d9c16bccd812076643b98a75270c1a67d1692737",
+        "bytes": 69826
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_연향중_1학기_기말_중2_기출/q8-problem-visual-v2.svg",
+          "gitBlobSha1": "db08d3bd0fe553d5f3972b41e5e4051321873277",
+          "sha256": "b9bf84857815ea68f2fbc865600c353feb4b8984e95b2098dd2c228023b69006",
+          "bytes": 2896
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "08a7303a5cb24b609df9fa01d0ab545713f83bfdf574943a93fae9aeb4a8d4d4"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 1364.28125,
+          "width": 334,
+          "height": 653.640625
+        },
+        "question": {
+          "x": 28,
+          "y": 1354.28125,
+          "width": 334,
+          "height": 673.640625
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 3,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            653.640625
+          ],
+          "coveredInterval": [
+            0,
+            653.640625
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              653.640625
+            ],
+            "filename": "E009-Q08-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 60.28125,
+              "width": 334,
+              "height": 653.640625
+            },
+            "scroll": {
+              "x": 0,
+              "y": 1304
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1848,
+            "foreignContentHits": 0,
+            "domSha256": "392bd26edc2c7b0bca8c07ab328cd852ca8e0f1298f9f4a5c3b1c2b6de19aca9"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 1304
+        },
+        "scrollOperations": 1,
+        "domSha256": "392bd26edc2c7b0bca8c07ab328cd852ca8e0f1298f9f4a5c3b1c2b6de19aca9",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E009-Q08-mobile-tile-01.png",
+          "sha256": "d0ff60aae85faece615451e3f5363effb74cac1fababb6a80b8fa2cec4ca62d0",
+          "bytes": 60564
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b31a67c9954946ec253d475f53ca1674fe691087548f3e36d8b024108b8edc14",
+      "sourceOrdinal": 17,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "a5addb0951dcd0892cde2e21e3bc23b080c9a5bc",
+        "sha256": "10aee6984c88c649e6df3571d9c16bccd812076643b98a75270c1a67d1692737",
+        "bytes": 69826
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_연향중_1학기_기말_중2_기출/q17-problem-visual-v2.svg",
+          "gitBlobSha1": "8202b078ae3402f029dfdf47b61ee01b8953fcc4",
+          "sha256": "2b2fa52d85f3f0b160d7f43c35440ed7a5b1fb03296860c50031f2ada3601700",
+          "bytes": 8252
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "08a7303a5cb24b609df9fa01d0ab545713f83bfdf574943a93fae9aeb4a8d4d4"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 3431.109375,
+          "width": 334,
+          "height": 334.265625
+        },
+        "question": {
+          "x": 28,
+          "y": 3421.109375,
+          "width": 334,
+          "height": 364.265625
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 2,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            334.265625
+          ],
+          "coveredInterval": [
+            0,
+            334.265625
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              334.265625
+            ],
+            "filename": "E009-Q17-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 60.109375,
+              "width": 334,
+              "height": 334.265625
+            },
+            "scroll": {
+              "x": 0,
+              "y": 3371
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 968,
+            "foreignContentHits": 0,
+            "domSha256": "7392558d2bf2fd15b0654728f1cecce9d114f5e66e306fa690e213ccd1afa352"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 1304
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 3371
+        },
+        "scrollOperations": 1,
+        "domSha256": "7392558d2bf2fd15b0654728f1cecce9d114f5e66e306fa690e213ccd1afa352",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false,
+        "closedProblemRoles": {
+          "schemaVersion": "archive-m2s1-problem18-two-direct-roles-v1",
+          "key": "E009-Q17",
+          "questionUid": "qid_v1_b31a67c9954946ec253d475f53ca1674fe691087548f3e36d8b024108b8edc14",
+          "sourceOrdinal": 17,
+          "manifestRef": {
+            "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+            "path": "tests/fixtures/archive-m2s1-current-problem-display-ui.json",
+            "gitBlobSha1": "5a78f23961292e13c061b4979feb3c4b54f3426f",
+            "sha256": "3b445bd5f807948e56685276d455eb71904385ad837529e13b3267126686d342",
+            "bytes": 18095
+          },
+          "sourceRef": {
+            "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+            "path": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+            "gitBlobSha1": "a5addb0951dcd0892cde2e21e3bc23b080c9a5bc",
+            "sha256": "10aee6984c88c649e6df3571d9c16bccd812076643b98a75270c1a67d1692737",
+            "bytes": 69826
+          },
+          "assetRef": {
+            "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+            "path": "archive/assets/images/25_연향중_1학기_기말_중2_기출/q17-problem-visual-v2.svg",
+            "gitBlobSha1": "8202b078ae3402f029dfdf47b61ee01b8953fcc4",
+            "sha256": "2b2fa52d85f3f0b160d7f43c35440ed7a5b1fb03296860c50031f2ada3601700",
+            "bytes": 8252
+          },
+          "helperRef": {
+            "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+            "path": "tools/m2s1-problem18-capture.cjs",
+            "gitBlobSha1": "058094f355588a021f2c8ac6156f0fe693507b33",
+            "sha256": "785ed7749edf170e38db86119704e19e21dcdb39798a2d23889a4925284d6377",
+            "bytes": 18677
+          },
+          "roleHelperRef": {
+            "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+            "path": "tools/m2s1-problem-capture-diagnostic.cjs",
+            "gitBlobSha1": "da3e1e22887df491382167ce17003a6d91aa9f29",
+            "sha256": "9951724223fffe462fec790d444a5fb1d04e7a5bf9c4c0d1a2a81ad84f9e2ee9",
+            "bytes": 14569
+          },
+          "observedFrameSha256": "16ea5f3c9d164327c5fce653bbdd36dbd84056f2c4d6bd81c518cc2f85781bef",
+          "numberRoleCount": 1,
+          "contentRoleCount": 1,
+          "targetImageCount": 1,
+          "emptyZeroHeightNodeCount": 1,
+          "originalSharedHelperUnchanged": true
+        }
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E009-Q17-mobile-tile-01.png",
+          "sha256": "497b462db94b5702f96ef76389b13a396d214cf2ee035aaec5f092b6f6c637bd",
+          "bytes": 18488
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_594a94974ad128fef949b5ad8e5b88adf7658172b79e76e4cbabaa9f40b8f101",
+      "sourceOrdinal": 13,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "1379be73f9f2e980d910b6e045317612e570f79e",
+        "sha256": "a884be45f512f955f165b4d0e1c577e276d4fddc5e047ed23068dea02be429ce",
+        "bytes": 98858
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕운중_1학기_기말_중2_수학/q13-problem-visual-v2.svg",
+          "gitBlobSha1": "6b233140aa1c7a622fd0d43c841ab0396cc11f9b",
+          "sha256": "7cf1d408ad0e5c5c9b10b53d2fcec1096dffd893986bae34aeac05d6f134f67b",
+          "bytes": 3214
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "5dd3ea5df33167352b02f747aebd735ddb5d381b98cab36bc8f7869305e10c3a"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 2935.15625,
+          "width": 334,
+          "height": 440.40625
+        },
+        "question": {
+          "x": 28,
+          "y": 2925.15625,
+          "width": 334,
+          "height": 460.40625
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            440.40625
+          ],
+          "coveredInterval": [
+            0,
+            440.40625
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              440.40625
+            ],
+            "filename": "E010-Q13-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 60.15625,
+              "width": 334,
+              "height": 440.40625
+            },
+            "scroll": {
+              "x": 0,
+              "y": 2875
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1276,
+            "foreignContentHits": 0,
+            "domSha256": "b7036333a197c1b52d6e2315bde629c517f234f09d59404cd0227ae707ceec23"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 2875
+        },
+        "scrollOperations": 1,
+        "domSha256": "b7036333a197c1b52d6e2315bde629c517f234f09d59404cd0227ae707ceec23",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E010-Q13-mobile-tile-01.png",
+          "sha256": "544e1fe90b14c4616a4cce363a43767183dfb1e974a8a03b9007d5e8c2fb15c6",
+          "bytes": 26631
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fe80164b56537676f9a9487317f70fbd0e2396ee8ec1f16f4fb8b75b288af878",
+      "sourceOrdinal": 16,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "1379be73f9f2e980d910b6e045317612e570f79e",
+        "sha256": "a884be45f512f955f165b4d0e1c577e276d4fddc5e047ed23068dea02be429ce",
+        "bytes": 98858
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕운중_1학기_기말_중2_수학/q16-problem-visual-v2.svg",
+          "gitBlobSha1": "79569b90fa8d2a78c97305cfb3157739c68038a0",
+          "sha256": "9ba16173e3b0f9ccd9f442a56251ac88866d846141cd33546f4b5e3766ea9a80",
+          "bytes": 7516
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "5dd3ea5df33167352b02f747aebd735ddb5d381b98cab36bc8f7869305e10c3a"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 3796.046875,
+          "width": 334,
+          "height": 427.15625
+        },
+        "question": {
+          "x": 28,
+          "y": 3786.046875,
+          "width": 334,
+          "height": 447.15625
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            427.15625
+          ],
+          "coveredInterval": [
+            0,
+            427.15625
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              427.15625
+            ],
+            "filename": "E010-Q16-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 60.046875,
+              "width": 334,
+              "height": 427.15625
+            },
+            "scroll": {
+              "x": 0,
+              "y": 3736
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1232,
+            "foreignContentHits": 0,
+            "domSha256": "19558a49083e646df2ef3c5e33717f6507c0e25f809392be163ad6730ef616de"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 2875
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 3736
+        },
+        "scrollOperations": 1,
+        "domSha256": "19558a49083e646df2ef3c5e33717f6507c0e25f809392be163ad6730ef616de",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E010-Q16-mobile-tile-01.png",
+          "sha256": "06ff9852b0db68aec97ddafdbe3423290436c3c9a60ab26416c9147f2ba1c4b8",
+          "bytes": 19367
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7eaf50ef21da3797bc76bcc61ce0aa541b63deb6cca31c3cb09757d55140cbf3",
+      "sourceOrdinal": 18,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "1379be73f9f2e980d910b6e045317612e570f79e",
+        "sha256": "a884be45f512f955f165b4d0e1c577e276d4fddc5e047ed23068dea02be429ce",
+        "bytes": 98858
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕운중_1학기_기말_중2_수학/q18-problem-visual-v2.svg",
+          "gitBlobSha1": "c78f4044b274e680607f7f5ca20f74c890d37b8c",
+          "sha256": "afcacbe35da44d1a764dcdb63e94ca9bd571cd4104e981942a9992f5a9f5e36f",
+          "bytes": 2032
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "ee078ea0f3f55b475a233bd9168622dac0f29d09afd2440a6594e8e44b49c3d3"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 4701.9375,
+          "width": 334,
+          "height": 443.9375
+        },
+        "question": {
+          "x": 28,
+          "y": 4691.9375,
+          "width": 334,
+          "height": 463.9375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            443.9375
+          ],
+          "coveredInterval": [
+            0,
+            443.9375
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              443.9375
+            ],
+            "filename": "E010-Q18-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 59.9375,
+              "width": 334,
+              "height": 443.9375
+            },
+            "scroll": {
+              "x": 0,
+              "y": 4642
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1276,
+            "foreignContentHits": 0,
+            "domSha256": "dfb64051f5ce4628780f98f4fe29f58c652d8ef8c17be626d5fbcee8fd4f092b"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 3736
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 4642
+        },
+        "scrollOperations": 1,
+        "domSha256": "dfb64051f5ce4628780f98f4fe29f58c652d8ef8c17be626d5fbcee8fd4f092b",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E010-Q18-mobile-tile-01.png",
+          "sha256": "ecb872da008ee6564c915c0a19c79eb2c9b515d6fc481737eec30523f2293005",
+          "bytes": 28753
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9bcc3d0e4498fdf3db35889ed339791b2d3942bc82f9139bc7ad26da9da91a2b",
+      "sourceOrdinal": 8,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q8-problem-visual-v2.svg",
+          "gitBlobSha1": "616fc3e73734f4f291b83501175de188f8d97fbe",
+          "sha256": "f9f2e49a8a097925384dcc0b182e79203d0c74f12cbac642ed6b4e6f009735b4",
+          "bytes": 2113
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "c993a746362ee5fe4dc09fafa343b434249c24cd181249745cec52b2e89c6081"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 1253.125,
+          "width": 334,
+          "height": 339.53125
+        },
+        "question": {
+          "x": 28,
+          "y": 1243.125,
+          "width": 334,
+          "height": 359.53125
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            339.53125
+          ],
+          "coveredInterval": [
+            0,
+            339.53125
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              339.53125
+            ],
+            "filename": "E011-Q08-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 60.125,
+              "width": 334,
+              "height": 339.53125
+            },
+            "scroll": {
+              "x": 0,
+              "y": 1193
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1012,
+            "foreignContentHits": 0,
+            "domSha256": "3a8bc52b751920958e85c2541c0648b4b47e109df38c9d8b039ec9cb7bdaa1c4"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 1193
+        },
+        "scrollOperations": 1,
+        "domSha256": "3a8bc52b751920958e85c2541c0648b4b47e109df38c9d8b039ec9cb7bdaa1c4",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q08-mobile-tile-01.png",
+          "sha256": "79daa359247570481b62cfc41f7369e57ff886c82a0b3fe3f3cbd31bb78bd97f",
+          "bytes": 21814
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_63f27101865078add0471dae1c4ad21dda312cf70a21ba9fa78288e8b7fbb824",
+      "sourceOrdinal": 13,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q13-problem-visual-v2.svg",
+          "gitBlobSha1": "c8d610f0daf142dc5c1b6acd20cf57d8a7c5d829",
+          "sha256": "5e29002ed0c687d4d30c2c313bab51e77d75f68adb48b3eed411a6b7ce30eb8b",
+          "bytes": 3817
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "c993a746362ee5fe4dc09fafa343b434249c24cd181249745cec52b2e89c6081"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 2326.234375,
+          "width": 334,
+          "height": 466.1875
+        },
+        "question": {
+          "x": 28,
+          "y": 2316.234375,
+          "width": 334,
+          "height": 486.1875
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            466.1875
+          ],
+          "coveredInterval": [
+            0,
+            466.1875
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              466.1875
+            ],
+            "filename": "E011-Q13-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 60.234375,
+              "width": 334,
+              "height": 466.1875
+            },
+            "scroll": {
+              "x": 0,
+              "y": 2266
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1320,
+            "foreignContentHits": 0,
+            "domSha256": "fc383305731bbbd3c874455dcb8f3e26be900ddd4486208095cea59adf70fcc8"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 1193
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 2266
+        },
+        "scrollOperations": 1,
+        "domSha256": "fc383305731bbbd3c874455dcb8f3e26be900ddd4486208095cea59adf70fcc8",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q13-mobile-tile-01.png",
+          "sha256": "7bfbc6a05a3fad84c035b5b2becec206d4066a6a504ff8e629437bcafe4b546f",
+          "bytes": 29328
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_22d96508247774bd58f34a8cb0b6bb7dc8bde20166a7b37438b95ae325d5af4e",
+      "sourceOrdinal": 15,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q15-problem-visual-v2.svg",
+          "gitBlobSha1": "759e72a8e0c7705c87e1dd247a1a9bcbd72f3d1a",
+          "sha256": "16146fd5b1637eb8ed05fc60af711c0bc5d15f668ccf97dab01d203498881496",
+          "bytes": 2577
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "2c391f6c7ff549a0d927ed75782d83e8e40dbfd43f5893903578dce437674063"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 3151.59375,
+          "width": 334,
+          "height": 452.296875
+        },
+        "question": {
+          "x": 28,
+          "y": 3141.59375,
+          "width": 334,
+          "height": 472.296875
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            452.296875
+          ],
+          "coveredInterval": [
+            0,
+            452.296875
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              452.296875
+            ],
+            "filename": "E011-Q15-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 59.59375,
+              "width": 334,
+              "height": 452.296875
+            },
+            "scroll": {
+              "x": 0,
+              "y": 3092
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1320,
+            "foreignContentHits": 0,
+            "domSha256": "4924ba142d95c9753bd563fe185eba573abbb3e7f778a5b2cbf46c65dcffb578"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 2266
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 3092
+        },
+        "scrollOperations": 1,
+        "domSha256": "4924ba142d95c9753bd563fe185eba573abbb3e7f778a5b2cbf46c65dcffb578",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q15-mobile-tile-01.png",
+          "sha256": "575c41c4bc53a611eaaae8c639c875b68ae020c9eefd6d015ddd40636afbeed0",
+          "bytes": 20403
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_85751b4b83c5310d0471e18a6c32cc3573999d0c87acff8b5e0a4a2954f2fb20",
+      "sourceOrdinal": 17,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q17-problem-visual-v2.svg",
+          "gitBlobSha1": "ae13544d64c841099ac6aab552e483f152ce7f38",
+          "sha256": "e6431d6f0bb1c54a13d70debec2b023aa3261bd08f9e4db3fef7f40f3980b0f0",
+          "bytes": 4372
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "2c391f6c7ff549a0d927ed75782d83e8e40dbfd43f5893903578dce437674063"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 3924.875,
+          "width": 334,
+          "height": 446.09375
+        },
+        "question": {
+          "x": 28,
+          "y": 3914.875,
+          "width": 334,
+          "height": 466.09375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            446.09375
+          ],
+          "coveredInterval": [
+            0,
+            446.09375
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              446.09375
+            ],
+            "filename": "E011-Q17-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 59.875,
+              "width": 334,
+              "height": 446.09375
+            },
+            "scroll": {
+              "x": 0,
+              "y": 3865
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1276,
+            "foreignContentHits": 0,
+            "domSha256": "9f34cd874da6a962317a016b4db09a2f05387bc91e0a1fac06019ff6eb7c4c17"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 3092
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 3865
+        },
+        "scrollOperations": 1,
+        "domSha256": "9f34cd874da6a962317a016b4db09a2f05387bc91e0a1fac06019ff6eb7c4c17",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q17-mobile-tile-01.png",
+          "sha256": "710096d668680dd59eb3e9565ec940656246de135a9c20a5967538d53a2aaaff",
+          "bytes": 21246
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_de381bb5aafc560b21544d8b8678371e14a69c6c2476825072d3c170ec659366",
+      "sourceOrdinal": 18,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q18-problem-visual-v2.svg",
+          "gitBlobSha1": "e9dafc6d2e075e28ca39be731f4ad31b24346a28",
+          "sha256": "04fadef39194803e55b3e1beab246f0d498aa9c08a786970e491dd88189dfe75",
+          "bytes": 3559
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "2c391f6c7ff549a0d927ed75782d83e8e40dbfd43f5893903578dce437674063"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 4459.96875,
+          "width": 334,
+          "height": 364.34375
+        },
+        "question": {
+          "x": 28,
+          "y": 4449.96875,
+          "width": 334,
+          "height": 384.34375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            364.34375
+          ],
+          "coveredInterval": [
+            0,
+            364.34375
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              364.34375
+            ],
+            "filename": "E011-Q18-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 59.96875,
+              "width": 334,
+              "height": 364.34375
+            },
+            "scroll": {
+              "x": 0,
+              "y": 4400
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1056,
+            "foreignContentHits": 0,
+            "domSha256": "bb48b56d95bba185edea3db99bac9f050ebf3b8944469e4a17bfe65a4d5cc752"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 3865
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 4400
+        },
+        "scrollOperations": 1,
+        "domSha256": "bb48b56d95bba185edea3db99bac9f050ebf3b8944469e4a17bfe65a4d5cc752",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q18-mobile-tile-01.png",
+          "sha256": "aa23de0b324531c7dfede1991386f8663aeb42015babdaac38695e897721d44a",
+          "bytes": 27220
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7438796316d2234cbfa6d523736689dcb81fcff9ddea0cb0b80f29d156093c16",
+      "sourceOrdinal": 19,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q19-problem-visual-v2.svg",
+          "gitBlobSha1": "ea438039a82ba06911ff7a9707491f790e934791",
+          "sha256": "b81e523e170b7f516f9e0c9af5a1a7a74fbc3c865da5a9f03e2fc6065660fd30",
+          "bytes": 1640
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "2c391f6c7ff549a0d927ed75782d83e8e40dbfd43f5893903578dce437674063"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 4913.3125,
+          "width": 334,
+          "height": 520.59375
+        },
+        "question": {
+          "x": 28,
+          "y": 4903.3125,
+          "width": 334,
+          "height": 540.59375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            520.59375
+          ],
+          "coveredInterval": [
+            0,
+            520.59375
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              520.59375
+            ],
+            "filename": "E011-Q19-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 60.3125,
+              "width": 334,
+              "height": 520.59375
+            },
+            "scroll": {
+              "x": 0,
+              "y": 4853
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1496,
+            "foreignContentHits": 0,
+            "domSha256": "7dd42cfdac38e612d6eceb13b40d1e98cd88ed15ad53ecaa2ed9f88e630eb1a5"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 4400
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 4853
+        },
+        "scrollOperations": 1,
+        "domSha256": "7dd42cfdac38e612d6eceb13b40d1e98cd88ed15ad53ecaa2ed9f88e630eb1a5",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q19-mobile-tile-01.png",
+          "sha256": "9b24a82b9fcd0c2c9307848182f68921ba863b7ee12460fce2fcc6fc060e7ba9",
+          "bytes": 19004
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_76a3115ebc485573c1eed65c10fb22b2e3e669a9d8d50aa125fa16c1fe1bb7fc",
+      "sourceOrdinal": 24,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+        "gitBlobSha1": "b7351136dbfbbb0e26ad01f95418a4cd4d9a66bd",
+        "sha256": "ffd95e1f13d5b983a3e146d68f95399fd1401cc1a92bf4f6c3d37d43ec4ce319",
+        "bytes": 42334
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕의중_1학기_기말_중2_기출/q24-problem-visual-v2.svg",
+          "gitBlobSha1": "6cc2896038dcad0dbce465296a24d4c8e0090b51",
+          "sha256": "eac6078dcfe51c3c66451d3ca0baa0e653a79d68034c8572b08889e023d35a34",
+          "bytes": 7086
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "2c391f6c7ff549a0d927ed75782d83e8e40dbfd43f5893903578dce437674063"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 6268.40625,
+          "width": 334,
+          "height": 517.109375
+        },
+        "question": {
+          "x": 28,
+          "y": 6258.40625,
+          "width": 334,
+          "height": 547.109375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 3,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            517.109375
+          ],
+          "coveredInterval": [
+            0,
+            517.109375
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              517.109375
+            ],
+            "filename": "E011-Q24-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 191.40625,
+              "width": 334,
+              "height": 517.109375
+            },
+            "scroll": {
+              "x": 0,
+              "y": 6077
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1496,
+            "foreignContentHits": 0,
+            "domSha256": "450aa08ad986e4aa1615df43660208b6744e20880cf7a64e3495db030e2735d0"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 4853
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 6077
+        },
+        "scrollOperations": 1,
+        "domSha256": "450aa08ad986e4aa1615df43660208b6744e20880cf7a64e3495db030e2735d0",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E011-Q24-mobile-tile-01.png",
+          "sha256": "bb2e3ed3e794d179527665c9ba7212e57b048865f59c0d3a5120acf4549e4520",
+          "bytes": 28583
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_198def5b93fe80a67337bbcb2bfed0b5992999d93d8944a66e4b92284c33bfb0",
+      "sourceOrdinal": 17,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+        "gitBlobSha1": "fe6b625aa8c36a994e7fe026c6c9d6eab827e889",
+        "sha256": "4ccae3e25d173235d090952676063728b2fe100e4bd096632a4a48273f72bdfa",
+        "bytes": 71792
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_삼산중_1학기_중간_중2_수학/q17-problem-visual-v2.svg",
+          "gitBlobSha1": "93024d8dae3077768b74625871c56a762946279e",
+          "sha256": "9cde3556c7f247deca8b54abae627b813ca5bda4db5220641417ff0fb46c5236",
+          "bytes": 3344
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "d324253edad53d02283b5a145fec4b8a09f265ef599670f438bf32e2995504e0"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 3309.546875,
+          "width": 334,
+          "height": 279.03125
+        },
+        "question": {
+          "x": 28,
+          "y": 3299.546875,
+          "width": 334,
+          "height": 299.03125
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 3,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            279.03125
+          ],
+          "coveredInterval": [
+            0,
+            279.03125
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              279.03125
+            ],
+            "filename": "E013-Q17-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 59.546875,
+              "width": 334,
+              "height": 279.03125
+            },
+            "scroll": {
+              "x": 0,
+              "y": 3250
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 836,
+            "foreignContentHits": 0,
+            "domSha256": "8a47f4128a3399282715456546846392be6e70a8f68b71dd3cd4561f3e6f1bb3"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 3250
+        },
+        "scrollOperations": 1,
+        "domSha256": "8a47f4128a3399282715456546846392be6e70a8f68b71dd3cd4561f3e6f1bb3",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E013-Q17-mobile-tile-01.png",
+          "sha256": "fd017268a5da124c262796917d409d84ba4489e00962a9413b9b78164f6e21ac",
+          "bytes": 15011
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a661c28f67a02a5be2c7a0c941ee1f03dd35afac90e4237fad71c2447b91b53b",
+      "sourceOrdinal": 22,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+        "gitBlobSha1": "fe6b625aa8c36a994e7fe026c6c9d6eab827e889",
+        "sha256": "4ccae3e25d173235d090952676063728b2fe100e4bd096632a4a48273f72bdfa",
+        "bytes": 71792
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_삼산중_1학기_중간_중2_수학/q22-problem-visual-v2.svg",
+          "gitBlobSha1": "967928dcbbd5496d68ae6e3e8b65c7898dad4944",
+          "sha256": "6c7fb7552c5943b105679f4472b2b7c79382659d728a50b127ef39b1aa7b9576",
+          "bytes": 7049
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "d324253edad53d02283b5a145fec4b8a09f265ef599670f438bf32e2995504e0"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 4842.09375,
+          "width": 334,
+          "height": 313.8125
+        },
+        "question": {
+          "x": 28,
+          "y": 4832.09375,
+          "width": 334,
+          "height": 343.8125
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 2,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            313.8125
+          ],
+          "coveredInterval": [
+            0,
+            313.8125
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              313.8125
+            ],
+            "filename": "E013-Q22-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 60.09375,
+              "width": 334,
+              "height": 313.8125
+            },
+            "scroll": {
+              "x": 0,
+              "y": 4782
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 924,
+            "foreignContentHits": 0,
+            "domSha256": "000969d9684141b28bfc0cac5a50d389515a44f46091fd0bd6b5112dc69050b1"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 3995
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 4782
+        },
+        "scrollOperations": 1,
+        "domSha256": "000969d9684141b28bfc0cac5a50d389515a44f46091fd0bd6b5112dc69050b1",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false,
+        "closedProblemRoles": {
+          "schemaVersion": "archive-m2s1-problem18-two-direct-roles-v1",
+          "key": "E013-Q22",
+          "questionUid": "qid_v1_a661c28f67a02a5be2c7a0c941ee1f03dd35afac90e4237fad71c2447b91b53b",
+          "sourceOrdinal": 22,
+          "manifestRef": {
+            "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+            "path": "tests/fixtures/archive-m2s1-current-problem-display-ui.json",
+            "gitBlobSha1": "5a78f23961292e13c061b4979feb3c4b54f3426f",
+            "sha256": "3b445bd5f807948e56685276d455eb71904385ad837529e13b3267126686d342",
+            "bytes": 18095
+          },
+          "sourceRef": {
+            "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+            "path": "archive/exams/original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+            "gitBlobSha1": "fe6b625aa8c36a994e7fe026c6c9d6eab827e889",
+            "sha256": "4ccae3e25d173235d090952676063728b2fe100e4bd096632a4a48273f72bdfa",
+            "bytes": 71792
+          },
+          "assetRef": {
+            "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+            "path": "archive/assets/images/25_삼산중_1학기_중간_중2_수학/q22-problem-visual-v2.svg",
+            "gitBlobSha1": "967928dcbbd5496d68ae6e3e8b65c7898dad4944",
+            "sha256": "6c7fb7552c5943b105679f4472b2b7c79382659d728a50b127ef39b1aa7b9576",
+            "bytes": 7049
+          },
+          "helperRef": {
+            "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+            "path": "tools/m2s1-problem18-capture.cjs",
+            "gitBlobSha1": "058094f355588a021f2c8ac6156f0fe693507b33",
+            "sha256": "785ed7749edf170e38db86119704e19e21dcdb39798a2d23889a4925284d6377",
+            "bytes": 18677
+          },
+          "roleHelperRef": {
+            "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+            "path": "tools/m2s1-problem-capture-diagnostic.cjs",
+            "gitBlobSha1": "da3e1e22887df491382167ce17003a6d91aa9f29",
+            "sha256": "9951724223fffe462fec790d444a5fb1d04e7a5bf9c4c0d1a2a81ad84f9e2ee9",
+            "bytes": 14569
+          },
+          "observedFrameSha256": "16ea5f3c9d164327c5fce653bbdd36dbd84056f2c4d6bd81c518cc2f85781bef",
+          "numberRoleCount": 1,
+          "contentRoleCount": 1,
+          "targetImageCount": 1,
+          "emptyZeroHeightNodeCount": 1,
+          "originalSharedHelperUnchanged": true
+        }
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E013-Q22-mobile-tile-01.png",
+          "sha256": "6b4e708dab82467860680ecb6bb4b9849112d6e7f75d6717bdb042a9e19547ed",
+          "bytes": 18892
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_52d2c67faafaa51afb1b1c7d7996d4904789dbf10842d474b0230689c7cfd8ad",
+      "sourceOrdinal": 23,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1mid/25_연향중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "e39b48115fa8d81469f020d66cc3d935b12c93e8",
+        "sha256": "aef5866ce6f89be4008c80ac29535c961b44c2d5ef15ed74ddf9f1d0ddf70261",
+        "bytes": 37885
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_연향중_1학기_중간_중2_기출/q23-problem-visual-v2.svg",
+          "gitBlobSha1": "505b1c6db4f2989ba46bf5699d3cd506c2b6903c",
+          "sha256": "518d50a8351fbec21800aafc44736d65863d8d1942d73187032893a9bfbcbf5d",
+          "bytes": 3071
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "5a6ab96139d1ebe491290fcc5163141523ec47938e1ac62ada661e70c930db34"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 3974.765625,
+          "width": 334,
+          "height": 249.9375
+        },
+        "question": {
+          "x": 28,
+          "y": 3964.765625,
+          "width": 334,
+          "height": 279.9375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 3,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            249.9375
+          ],
+          "coveredInterval": [
+            0,
+            249.9375
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              249.9375
+            ],
+            "filename": "E014-Q23-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 458.765625,
+              "width": 334,
+              "height": 249.9375
+            },
+            "scroll": {
+              "x": 0,
+              "y": 3516
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 748,
+            "foreignContentHits": 0,
+            "domSha256": "8aa2da32e35792392164d672cb28db9f3990cc3e9e5f6b3ab6420af9d25e6874"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 3516
+        },
+        "scrollOperations": 1,
+        "domSha256": "8aa2da32e35792392164d672cb28db9f3990cc3e9e5f6b3ab6420af9d25e6874",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E014-Q23-mobile-tile-01.png",
+          "sha256": "53e4f106d1b568bb3f343a94aa079abf6c4031b5e15841e2d9790affd83ecfc2",
+          "bytes": 16834
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_241843642e7596d75f5f99dad036ba61b4ecfa4e59147d8337bfa3312bdbd5c7",
+      "sourceOrdinal": 14,
+      "surface": "PROBLEM",
+      "mode": "exam",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+        "path": "archive/exams/original/middle/m2/1mid/25_왕운중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "d7c4616ed29b0b4617da37952c21f87bfe179834",
+        "sha256": "566712db3e1b794cf57e1264e1fb2b2ae004a80d5ae93ac982bd9d9c2faca60b",
+        "bytes": 38090
+      },
+      "assetRefs": [
+        {
+          "commit": "026679f8dc6794e7ef4ee8a5347088a4d370021e",
+          "path": "archive/assets/images/25_왕운중_1학기_중간_중2_기출/q14-problem-visual-v2.svg",
+          "gitBlobSha1": "5556665181c274db542f35547d8278dd3f202cbd",
+          "sha256": "cebbca9668a9e5f5baebc0a3252c2d1bbfe338b1556e72e673b6a3714f033d19",
+          "bytes": 1526
+        }
+      ],
+      "status": "PASS",
+      "fonts": {
+        "ready": true,
+        "expectedFamilyLoaded": true,
+        "responseInventorySha256": "a81745ac2a20cc6606e3d858b85632e50b0b4b2209c12ebe5e8809677892a242"
+      },
+      "capture": {
+        "schemaVersion": "archive-problem-scroll-coverage-v1",
+        "method": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+        "tileLimit": 8,
+        "overlapCssPixels": 32,
+        "tileCount": 1,
+        "content": {
+          "x": 28,
+          "y": 2683.5625,
+          "width": 334,
+          "height": 397.390625
+        },
+        "question": {
+          "x": 28,
+          "y": 2673.5625,
+          "width": 334,
+          "height": 417.390625
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "visibleChildren": 4,
+        "coverage": {
+          "requiredInterval": [
+            0,
+            397.390625
+          ],
+          "coveredInterval": [
+            0,
+            397.390625
+          ],
+          "complete": true
+        },
+        "tiles": [
+          {
+            "tileIndex": 1,
+            "relativeInterval": [
+              0,
+              397.390625
+            ],
+            "filename": "E015-Q14-mobile-tile-01.png",
+            "clip": {
+              "x": 28,
+              "y": 59.5625,
+              "width": 334,
+              "height": 397.390625
+            },
+            "scroll": {
+              "x": 0,
+              "y": 2624
+            },
+            "scrollOperations": 1,
+            "feedbackIdle": true,
+            "obstructionsIntersectingClip": 0,
+            "hitTestSamples": 1144,
+            "foreignContentHits": 0,
+            "domSha256": "a4ef4577e2319e1eb6182616de2d0f6cb5bca8e26f0a0782b4e9694841a35361"
+          }
+        ],
+        "scrollBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "scrollAfter": {
+          "x": 0,
+          "y": 2624
+        },
+        "scrollOperations": 1,
+        "domSha256": "a4ef4577e2319e1eb6182616de2d0f6cb5bca8e26f0a0782b4e9694841a35361",
+        "feedbackIdle": true,
+        "foreignContentHits": 0,
+        "cssWrites": 0,
+        "domWrites": 0,
+        "viewportChanges": 0,
+        "compositeImageCreated": false
+      },
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E015-Q14-mobile-tile-01.png",
+          "sha256": "f3dbd57965944f039cc876eb8de3ce560b0fafcc29ea82d6f0e302f7ecc37e51",
+          "bytes": 22775
+        }
+      ]
+    }
+  ]
+}
