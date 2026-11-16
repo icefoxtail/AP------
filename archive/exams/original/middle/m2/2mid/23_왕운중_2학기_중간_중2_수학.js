@@ -1099,3 +1099,11 @@ window.questionBank = [
   }
 ];
 window.questionBank.forEach(q => { if ([21, 22, 23, 24].includes(q.id)) q.imageSize = "tall"; });
+
+// Carry the immutable native review and independently finalized definition.
+Object.assign(window.questionBank[1], {
+  "templateKey": "TPL_ISOSCELES_PROPERTY_STATEMENT_JUDGMENT",
+  "curriculum": "2015",
+  "curriculumKey": "2015",
+  "courseKey": "M2-2"
+});

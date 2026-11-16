@@ -1167,3 +1167,8 @@ window.questionBank = [
     "decisiveStep": "서로 다른 두 현의 수직이등분선 교점으로 중심을 작도하고, 반지름·공통변·직각의 RHS 합동으로 현의 이등분 성질을 설명한다."
   }
 ];
+
+// Reuse the immutable native review and independently finalized exact metadata application.
+(function () {
+  Object.assign(window.questionBank[7], {"conditionKeys":["COND_EXCLUDED_ANGLE_VALUE"]});
+})();

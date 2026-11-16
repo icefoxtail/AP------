@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "archive-meta-pipeline-parent-label-evidence-v1",
+  "sourcePath": "archive/data/basic-scope-parent-links.json",
+  "sourceSha256": "30051ca3e483bed013b78f8bd22648bc2c40fc4108b3a024f6a0f867e0aff3ee",
+  "sourceCommit": "6b608e3e606eb50ce4fd3d9ad6954d6fc4120f1f",
+  "scope": "EXPLICIT_NATIVE_CURRICULUM_COURSE_AND_PARENT_LABEL_TRANSPORT",
+  "semanticApprovalMutation": 0,
+  "newMathematicalReview": false,
+  "records": [
+    {
+      "grade": "중2",
+      "curriculumKey": "2015",
+      "courseKey": "M2-2",
+      "standardUnitKey": "M2-07",
+      "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+      "L1": "도형의 닮음과 피타고라스 정리",
+      "L2": "피타고라스 정리"
+    }
+  ],
+  "selectionEvidence": [
+    {
+      "questionUid": "qid_v1_f52728bf18c0d1ea1c18d6b40f8872316a43e47d83ac83d5b7fa4745f08c13f9",
+      "sourceOrdinal": 12,
+      "nativeReviewRef": {
+        "path": ".archive-meta-register/evidence/m2s2-cc7-ready3-20261115/E059.review.json",
+        "sha256": "d373868271cc4d73033d5d9a560ad677a71175599d5f95f31cc9db896137d544"
+      },
+      "nativeRootAcceptanceRef": {
+        "path": ".archive-meta-register/evidence/m2s2-cc7-ready3-20261115/E059.root-acceptance.json",
+        "sha256": "42e56ecde1852bf5818cd21498c96e15b3deed2a5956b2fddc0d3da625535f73"
+      },
+      "nativeScopeProofRef": {
+        "path": "docs/operations/m2s2-e059-cc2-20261115/native-scope-and-proposal-proof.json",
+        "sha256": "6bfa5b662954ab3ca01c00fe8c7f213b5b8afbb56b3db3fcbbc9cd98ffb26004"
+      },
+      "field": "native.after.curriculum + semanticRpm.effectivePath + immutable RPM scope",
+      "matchingParentRecordCount": 1
+    }
+  ],
+  "existingActiveBindingTargetParents": [
+    {
+      "questionUid": "qid_v1_7c0c618d63f2d9206e5e301a165195bbdf84f94024985da9a551967f5eedea78",
+      "sourceOrdinal": 7,
+      "targetParentRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "majorUnit": "도형의 닮음과 피타고라스 정리",
+        "midUnit": "삼각형의 무게중심"
+      },
+      "bindingRef": {
+        "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+        "sha256": "83f10a0787289d40a896f6118015d224b3672ebac059121f59bb7d31a500a83d"
+      },
+      "exactBinding": {
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+        "subUnitLabelKo": "삼각형의 무게중심",
+        "supportingItemCount": 2,
+        "supportingQuestionUids": [
+          "qid_v1_d8b94ee2b9b63f5326a011e0f23c8b86234f3c81bedcacb9a6240c76055dddf2",
+          "qid_v1_92ed29b514280561d03d1b87b6b494055a1bb98b10e6d74a8769779099db8f3c"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      },
+      "masterRef": {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      },
+      "primarySelectedFromNativeAfter": true,
+      "crosswalkCandidateUsedForPrimary": false
+    }
+  ]
+}
