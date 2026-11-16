@@ -504,7 +504,7 @@ window.examData = {
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
+      "reviewStatus": "reviewed_pass",
       "content": "【대체 문항】그림과 같이 $\\angle B=30^\\circ$, $\\overline{\\mathrm{AB}}=10\\,\\text{cm}$인 삼각형 $\\mathrm{ABC}$에서 $H$는 $A$에서 $BC$에 내린 수선의 발이다. $\\overline{\\mathrm{AH}}$의 길이는? <br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q10_altitude.png\" />"
     ,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -514,7 +514,9 @@ window.examData = {
     "integrationPattern": "NONE",
     "curriculum": "2015",
     "primaryMethod": "이미 제시된 수선AH를 빗변10과30°의 사인으로 바로 계산한다.",
-    "decisiveStep": "이미 제시된 수선AH를 빗변10과30°의 사인으로 바로 계산한다."
+    "decisiveStep": "이미 제시된 수선AH를 빗변10과30°의 사인으로 바로 계산한다.",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
     {
       "id": 11,

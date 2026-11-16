@@ -141,7 +141,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "30°·45°·0°·90°의 삼각비 표준값을 그대로 대입하여 식의 값을 계산한다.",
-    "decisiveStep": "30°·45°·0°·90°의 삼각비 표준값을 그대로 대입하여 식의 값을 계산한다."
+    "decisiveStep": "30°·45°·0°·90°의 삼각비 표준값을 그대로 대입하여 식의 값을 계산한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -186,7 +189,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "오른쪽으로 내려가는 직선의 음의 기울기를tan60°의 절댓값으로 정하고 y절편4를 결합해 직선식을 구한다.",
-    "decisiveStep": "오른쪽으로 내려가는 직선의 음의 기울기를tan60°의 절댓값으로 정하고 y절편4를 결합해 직선식을 구한다."
+    "decisiveStep": "오른쪽으로 내려가는 직선의 음의 기울기를tan60°의 절댓값으로 정하고 y절편4를 결합해 직선식을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -229,7 +235,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "0<x<45°로sin과cos의 부호·크기관계를 정하고 제곱근제곱을 절댓값으로 풀어 식을 간단히 한다.",
-    "decisiveStep": "0<x<45°로sin과cos의 부호·크기관계를 정하고 제곱근제곱을 절댓값으로 풀어 식을 간단히 한다."
+    "decisiveStep": "0<x<45°로sin과cos의 부호·크기관계를 정하고 제곱근제곱을 절댓값으로 풀어 식을 간단히 한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -274,7 +283,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 1,
     "primaryMethod": "단위 사분원 그림에서 주어진 삼각비 수치를 읽어tan55°에서cos35°를 뺀다.",
-    "decisiveStep": "단위 사분원 그림에서 주어진 삼각비 수치를 읽어tan55°에서cos35°를 뺀다."
+    "decisiveStep": "단위 사분원 그림에서 주어진 삼각비 수치를 읽어tan55°에서cos35°를 뺀다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -317,7 +329,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 2,
     "primaryMethod": "이차식을 인수분해한 두 근 중 예각의sin 범위에 맞는 근을 고르고 cos·tan을sin으로 정리한다.",
-    "decisiveStep": "이차식을 인수분해한 두 근 중 예각의sin 범위에 맞는 근을 고르고 cos·tan을sin으로 정리한다."
+    "decisiveStep": "이차식을 인수분해한 두 근 중 예각의sin 범위에 맞는 근을 고르고 cos·tan을sin으로 정리한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -461,7 +476,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyBucket": 3,
     "primaryMethod": "탑의 공통높이에서 두 수평거리를tan으로 나타내고 거리합10의 식을 정리한 과정을 빈칸과 대조한다.",
-    "decisiveStep": "탑의 공통높이에서 두 수평거리를tan으로 나타내고 거리합10의 식을 정리한 과정을 빈칸과 대조한다."
+    "decisiveStep": "탑의 공통높이에서 두 수평거리를tan으로 나타내고 거리합10의 식을 정리한 과정을 빈칸과 대조한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,

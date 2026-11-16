@@ -170,8 +170,8 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "difficultyReason": "3-4-5 직각삼각형에서 빗변에 내린 수선으로 생긴 닮은 삼각형의 길이 비를 구한다.",
-      "primaryMethod": "3·4인 직각변에서 빗변5를 얻고 같은 삼각형의 두 넓이로 수선 길이를 구한다. AA닮음의 대응변으로 반대편 조각을 얻은 뒤 두 길이의 비를 tanx로 읽는다.",
-      "decisiveStep": "3·4인 직각변에서 빗변5를 얻고 같은 삼각형의 두 넓이로 수선 길이를 구한다. AA닮음의 대응변으로 반대편 조각을 얻은 뒤 두 길이의 비를 tanx로 읽는다.",
+      "primaryMethod": "빗변에 내린 수선과 닮은 직각삼각형",
+      "decisiveStep": "AH=12/5, CH=9/5, tan x=CH/AH=3/4",
       "curriculum": "2015",
       "grade": "M3",
       "semanticSourceScope": "M3-2",
@@ -194,7 +194,9 @@ window.examData = {
       "originalSourceProvenance": "ORIGINAL",
       "originalSourceGitBlob": "3a5848fa449ac45a0e15b6c0cb5bbaf80872ed72",
       "visualDisposition": "ORIGINAL_SOURCE_PNG_PRESERVED",
-      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q03.png"
+      "sourceAssetRef": "assets/images/22_연향중_2학기_중간_중3_수학/q03.png",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
     },
     {
       "id": 4,

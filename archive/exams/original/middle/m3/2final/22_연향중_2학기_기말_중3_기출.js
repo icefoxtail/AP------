@@ -46,7 +46,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "점C를 포함하지 않는 큰 호를 360°에서 작은 중심각을 빼서 구하고 그 절반을 원주각으로 취한다.",
-    "decisiveStep": "점C를 포함하지 않는 큰 호를 360°에서 작은 중심각을 빼서 구하고 그 절반을 원주각으로 취한다."
+    "decisiveStep": "점C를 포함하지 않는 큰 호를 360°에서 작은 중심각을 빼서 구하고 그 절반을 원주각으로 취한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -93,7 +96,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "지름직각과 접현각으로 삼각형의 각을 α로 표현하고 이등분선과 맞꼭지각을 연결한 일차식에서 목표각을 정한다.",
-    "decisiveStep": "지름직각과 접현각으로 삼각형의 각을 α로 표현하고 이등분선과 맞꼭지각을 연결한 일차식에서 목표각을 정한다."
+    "decisiveStep": "지름직각과 접현각으로 삼각형의 각을 α로 표현하고 이등분선과 맞꼭지각을 연결한 일차식에서 목표각을 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -140,7 +146,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "두 접선 사이 각의 보각으로 중심각을 구한 뒤 그 절반을 같은 호의 원주각으로 구한다.",
-    "decisiveStep": "두 접선 사이 각의 보각으로 중심각을 구한 뒤 그 절반을 같은 호의 원주각으로 구한다."
+    "decisiveStep": "두 접선 사이 각의 보각으로 중심각을 구한 뒤 그 절반을 같은 호의 원주각으로 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -234,7 +243,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "큰 호를 보는 원주각에서 다른 원주각의 보각을 정하고 접현각으로 외부 삼각형의 한 각을 얻어 내각합을 적용한다.",
-    "decisiveStep": "큰 호를 보는 원주각에서 다른 원주각의 보각을 정하고 접현각으로 외부 삼각형의 한 각을 얻어 내각합을 적용한다."
+    "decisiveStep": "큰 호를 보는 원주각에서 다른 원주각의 보각을 정하고 접현각으로 외부 삼각형의 한 각을 얻어 내각합을 적용한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -281,7 +293,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "지름직각과30° 길이비로 BC를 구한 뒤 접현각을 외부삼각형에 옮겨 두 각이 같은 사실에서 BP=BC를 얻는다.",
-    "decisiveStep": "지름직각과30° 길이비로 BC를 구한 뒤 접현각을 외부삼각형에 옮겨 두 각이 같은 사실에서 BP=BC를 얻는다."
+    "decisiveStep": "지름직각과30° 길이비로 BC를 구한 뒤 접현각을 외부삼각형에 옮겨 두 각이 같은 사실에서 BP=BC를 얻는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -833,7 +848,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "큰 원의 접현각을 공통접선 교점의 각으로 전달하고 작은 원의 두 접선이 같은 길이임으로 얻은 이등변삼각형에서 목표 각의 차를 구한다.",
-    "decisiveStep": "큰 원의 접현각을 공통접선 교점의 각으로 전달하고 작은 원의 두 접선이 같은 길이임으로 얻은 이등변삼각형에서 목표 각의 차를 구한다."
+    "decisiveStep": "큰 원의 접현각을 공통접선 교점의 각으로 전달하고 작은 원의 두 접선이 같은 길이임으로 얻은 이등변삼각형에서 목표 각의 차를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 20,

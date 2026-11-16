@@ -43,7 +43,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "주어진 직각삼각형의 빗변·인접변·대변을 구별해 코사인과 사인의 차를 정의로 구한다.",
-    "decisiveStep": "주어진 직각삼각형의 빗변·인접변·대변을 구별해 코사인과 사인의 차를 정의로 구한다."
+    "decisiveStep": "주어진 직각삼각형의 빗변·인접변·대변을 구별해 코사인과 사인의 차를 정의로 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 2,
@@ -85,7 +88,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "보기마다 특수각의 삼각비를 대입해 얻은 값을 비교한다.",
-    "decisiveStep": "보기마다 특수각의 삼각비를 대입해 얻은 값을 비교한다."
+    "decisiveStep": "보기마다 특수각의 삼각비를 대입해 얻은 값을 비교한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 3,
@@ -130,7 +136,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "코사인으로 두 변의 비를 정하고 피타고라스로 나머지 변을 구해 사인·탄젠트의 곱으로 전환한다.",
-    "decisiveStep": "코사인으로 두 변의 비를 정하고 피타고라스로 나머지 변을 구해 사인·탄젠트의 곱으로 전환한다."
+    "decisiveStep": "코사인으로 두 변의 비를 정하고 피타고라스로 나머지 변을 구해 사인·탄젠트의 곱으로 전환한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 4,
@@ -174,7 +183,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "단위 사분원에서 읽은 사인·코사인·탄젠트 근삿값을 지정한 식에 넣는다.",
-    "decisiveStep": "단위 사분원에서 읽은 사인·코사인·탄젠트 근삿값을 지정한 식에 넣는다."
+    "decisiveStep": "단위 사분원에서 읽은 사인·코사인·탄젠트 근삿값을 지정한 식에 넣는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 5,
@@ -221,7 +233,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "높이로 나뉜 삼각형의 닮음에서 두 표시각을 원래 삼각형의 예각으로 옮겨 읽고 삼각비의 몫을 정한다.",
-    "decisiveStep": "높이로 나뉜 삼각형의 닮음에서 두 표시각을 원래 삼각형의 예각으로 옮겨 읽고 삼각비의 몫을 정한다."
+    "decisiveStep": "높이로 나뉜 삼각형의 닮음에서 두 표시각을 원래 삼각형의 예각으로 옮겨 읽고 삼각비의 몫을 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 6,
@@ -268,7 +283,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "특수각 삼각비로 직각삼각형의 변을 복원하고 각의 이등분선 정리의 변 비로 BC를 나누어 BD를 정한다.",
-    "decisiveStep": "특수각 삼각비로 직각삼각형의 변을 복원하고 각의 이등분선 정리의 변 비로 BC를 나누어 BD를 정한다."
+    "decisiveStep": "특수각 삼각비로 직각삼각형의 변을 복원하고 각의 이등분선 정리의 변 비로 BC를 나누어 BD를 정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 7,
@@ -315,7 +333,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "첫 직각삼각형의 45도 변비로 공통변 BC를 구한 뒤 두 번째 직각삼각형에서 코사인으로 BD를 구한다.",
-    "decisiveStep": "첫 직각삼각형의 45도 변비로 공통변 BC를 구한 뒤 두 번째 직각삼각형에서 코사인으로 BD를 구한다."
+    "decisiveStep": "첫 직각삼각형의 45도 변비로 공통변 BC를 구한 뒤 두 번째 직각삼각형에서 코사인으로 BD를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 8,
@@ -362,7 +383,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "주어진 변을 수평·수직 성분으로 나눈 후 남은 밑변 조각과 높이로 피타고라스 길이를 구한다.",
-    "decisiveStep": "주어진 변을 수평·수직 성분으로 나눈 후 남은 밑변 조각과 높이로 피타고라스 길이를 구한다."
+    "decisiveStep": "주어진 변을 수평·수직 성분으로 나눈 후 남은 밑변 조각과 높이로 피타고라스 길이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 9,
@@ -409,7 +433,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "둔각의 바깥각으로 45도 직각이등변삼각형을 만들어 AH=CH를 얻고 같은 높이를 공유하는 탄젠트 식으로 높이를 결정한다.",
-    "decisiveStep": "둔각의 바깥각으로 45도 직각이등변삼각형을 만들어 AH=CH를 얻고 같은 높이를 공유하는 탄젠트 식으로 높이를 결정한다."
+    "decisiveStep": "둔각의 바깥각으로 45도 직각이등변삼각형을 만들어 AH=CH를 얻고 같은 높이를 공유하는 탄젠트 식으로 높이를 결정한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 10,
@@ -456,7 +483,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "정사각형에서 모서리 삼각형을 빼 삼각형 EBF의 넓이를 구하고 같은 두 변을 복원해 사인값을 얻은 뒤 코사인으로 전환한다.",
-    "decisiveStep": "정사각형에서 모서리 삼각형을 빼 삼각형 EBF의 넓이를 구하고 같은 두 변을 복원해 사인값을 얻은 뒤 코사인으로 전환한다."
+    "decisiveStep": "정사각형에서 모서리 삼각형을 빼 삼각형 EBF의 넓이를 구하고 같은 두 변을 복원해 사인값을 얻은 뒤 코사인으로 전환한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 11,
@@ -503,7 +533,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "이등변삼각형의 두 밑각으로 꼭짓각 30도를 구하고 두 변과 끼인각의 삼각비 넓이 공식을 적용한다.",
-    "decisiveStep": "이등변삼각형의 두 밑각으로 꼭짓각 30도를 구하고 두 변과 끼인각의 삼각비 넓이 공식을 적용한다."
+    "decisiveStep": "이등변삼각형의 두 밑각으로 꼭짓각 30도를 구하고 두 변과 끼인각의 삼각비 넓이 공식을 적용한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 12,
@@ -550,7 +583,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "접힌 선분과 폭으로 30도를 얻고 접기 대칭으로 60도를 정한 다음 두 수평거리의 차에서 삼각형의 밑변을 복원한다.",
-    "decisiveStep": "접힌 선분과 폭으로 30도를 얻고 접기 대칭으로 60도를 정한 다음 두 수평거리의 차에서 삼각형의 밑변을 복원한다."
+    "decisiveStep": "접힌 선분과 폭으로 30도를 얻고 접기 대칭으로 60도를 정한 다음 두 수평거리의 차에서 삼각형의 밑변을 복원한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 13,
@@ -597,7 +633,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "넓이식에서 한 변을 먼저 역산한 뒤 그 변의 수평·수직 성분과 남은 밑변으로 피타고라스 길이를 구한다.",
-    "decisiveStep": "넓이식에서 한 변을 먼저 역산한 뒤 그 변의 수평·수직 성분과 남은 밑변으로 피타고라스 길이를 구한다."
+    "decisiveStep": "넓이식에서 한 변을 먼저 역산한 뒤 그 변의 수평·수직 성분과 남은 밑변으로 피타고라스 길이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 14,
@@ -644,7 +683,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중심에서 현에 내린 수선이 현을 이등분한다는 성질로 반현 길이를 읽는다.",
-    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분한다는 성질로 반현 길이를 읽는다."
+    "decisiveStep": "중심에서 현에 내린 수선이 현을 이등분한다는 성질로 반현 길이를 읽는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 15,
@@ -691,7 +733,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "현의 절반을 구하고 중심에서 현까지 거리를 r−3으로 표현해 반지름과 함께 피타고라스 방정식에 넣는다.",
-    "decisiveStep": "현의 절반을 구하고 중심에서 현까지 거리를 r−3으로 표현해 반지름과 함께 피타고라스 방정식에 넣는다."
+    "decisiveStep": "현의 절반을 구하고 중심에서 현까지 거리를 r−3으로 표현해 반지름과 함께 피타고라스 방정식에 넣는다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 16,
@@ -880,7 +925,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "원주까지의 최단거리와 반지름을 합해 중심거리를 구하고 접점 직각삼각형에서 접선 길이를 구한다.",
-    "decisiveStep": "원주까지의 최단거리와 반지름을 합해 중심거리를 구하고 접점 직각삼각형에서 접선 길이를 구한다."
+    "decisiveStep": "원주까지의 최단거리와 반지름을 합해 중심거리를 구하고 접점 직각삼각형에서 접선 길이를 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 20,
@@ -927,7 +975,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "중심거리와 반지름으로 두 직각삼각형의 변·각을 복원하고 가운데 남은 부채꼴각을 구해 삼각형 둘과 부채꼴 넓이를 합한다.",
-    "decisiveStep": "중심거리와 반지름으로 두 직각삼각형의 변·각을 복원하고 가운데 남은 부채꼴각을 구해 삼각형 둘과 부채꼴 넓이를 합한다."
+    "decisiveStep": "중심거리와 반지름으로 두 직각삼각형의 변·각을 복원하고 가운데 남은 부채꼴각을 구해 삼각형 둘과 부채꼴 넓이를 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 21,
@@ -968,7 +1019,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "코사인 정의로 빗변에 대한 인접변을 구하고 그 결과와 빗변으로 피타고라스를 적용해 나머지 변을 구한다.",
-    "decisiveStep": "코사인 정의로 빗변에 대한 인접변을 구하고 그 결과와 빗변으로 피타고라스를 적용해 나머지 변을 구한다."
+    "decisiveStep": "코사인 정의로 빗변에 대한 인접변을 구하고 그 결과와 빗변으로 피타고라스를 적용해 나머지 변을 구한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 22,
@@ -1009,7 +1063,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "일차함수의 축 교점을 구해 좌표축 직각삼각형을 만들고 변의 비로 사인·코사인·탄젠트를 정한 뒤 식에 대입한다.",
-    "decisiveStep": "일차함수의 축 교점을 구해 좌표축 직각삼각형을 만들고 변의 비로 사인·코사인·탄젠트를 정한 뒤 식에 대입한다."
+    "decisiveStep": "일차함수의 축 교점을 구해 좌표축 직각삼각형을 만들고 변의 비로 사인·코사인·탄젠트를 정한 뒤 식에 대입한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,
@@ -1050,7 +1107,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "primaryMethod": "45도 직각삼각형에서 대각선 AC를 얻고 이를 이웃 삼각형의 삼각비 넓이에 사용해 사각형 넓이를 합한다.",
-    "decisiveStep": "45도 직각삼각형에서 대각선 AC를 얻고 이를 이웃 삼각형의 삼각비 넓이에 사용해 사각형 넓이를 합한다."
+    "decisiveStep": "45도 직각삼각형에서 대각선 AC를 얻고 이를 이웃 삼각형의 삼각비 넓이에 사용해 사각형 넓이를 합한다.",
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 24,

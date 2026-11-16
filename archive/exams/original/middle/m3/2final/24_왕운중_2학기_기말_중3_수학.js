@@ -1490,7 +1490,7 @@ window.questionBank = [
     "rpmPrimaryPath": "원의 성질/원주각/원주각의 활용/복합 각 추론",
     "rpmL3": "원주각의 활용",
     "rpmL4": "복합 각 추론",
-    "primaryMethod": "접선현각으로 첫 원주각을 정하고 내접사각형의 대각합으로 다른 각을 정한 뒤 삼각형 내각합으로 남은 각을 구한다.",
+    "primaryMethod": "원주각의 활용",
     "decisiveStep": "접선현각으로 첫 원주각을 정하고 내접사각형의 대각합으로 다른 각을 정한 뒤 삼각형 내각합으로 남은 각을 구한다.",
     "image": "assets/images/24_왕운중_2학기_기말_중3_수학/s02-student-clean.png",
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q22-solution.svg",
@@ -1498,7 +1498,9 @@ window.questionBank = [
     "solutionImageCaption": "접선과 현 AB가 이루는 각 70°는 호 AB의 원주각 ∠ADB와 같아 ∠ADB=70°이고, 내접사각형 ABCD에서 ∠DAB=180°−100°=80°이다. 따라서 △DAB에서 x=180°−70°−80°=30°이다.",
     "solutionImageSize": "medium"
   ,
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "curriculumKey": "2015",
+    "courseKey": "M3-2"
   },
   {
     "id": 23,
